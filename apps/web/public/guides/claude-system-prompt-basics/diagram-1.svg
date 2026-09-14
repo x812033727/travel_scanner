@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">系統提示詞的六個部件與修正循環 / Six parts of a system prompt and the loop that fixes it</title>
+  <desc id="desc">左半邊把一段系統提示詞拆成六個由上往下排列的部件，例子是文具網路商店的客服回覆助手。第一個部件角色：你是誰、替誰工作，例句是「你是一家文具網路商店的客服回覆助手，替我草擬回覆顧客的訊息」。第二個部件範圍：管什麼、不管什麼、超出範圍怎麼辦，例句是「只處理商品用途、訂單狀態與退換貨流程；折扣與贈品改成請我確認」。第三個部件輸入會長什麼樣：我每次會貼什麼給你，例句是「一則顧客的原文私訊，可能有錯字，也可能一次問三件事」。第四個部件輸出格式：長度、段落、先後順序，例句是「先同理一句，再分點回答，最後寫下一步；全篇不超過 200 字」。第五個部件拒答與求證：資料不足時說什麼，例句是「價格與到貨日我沒給你就不要推測，改成幫您確認後回覆」。第六個部件語氣：具體的描述加一個對照，例句是「口語但有禮，稱呼用您，不用表情符號與驚嘆號」。左下角註記：缺哪一個部件，Claude 就自己補一個預設值，而它補的通常不是你要的。右半邊是寫完之後的修正循環，四個步驟由上往下用箭頭相連，最後一個步驟再用一條線繞回第一個步驟。第一步寫一版短的：六個部件各一到兩句，不求寫完所有例外。第二步測 3 題：最常見的一題、資料不足的一題、超出範圍的一題。第三步只改 1 處：存檔後開新對話，再跑同樣的 3 題。第四步還是不聽話：先刪掉互相衝突的規則，再加一個具體例子。右下角註記：一次改三句，變好了也不知道是哪一句起作用；介面名稱與建議依 2026 年 9 月的 Claude 官網。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">系統提示詞的六個部件與修正循環（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Six parts of a system prompt for a shop's reply assistant, and the loop that fixes it</text>
+
+  <!-- left: the six parts -->
+  <text x="60" y="130" font-size="20" font-weight="700" fill="#102A2B">六個部件（以文具網路商店的客服回覆助手為例）</text>
+
+  <rect x="60" y="146" width="850" height="100" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="88" y="184" font-size="19" font-weight="700" fill="#0B4F4D">一　角色：你是誰、替誰工作</text>
+  <text x="88" y="220" font-size="16" fill="#102A2B">例：你是一家文具網路商店的客服回覆助手，替我草擬回覆顧客的訊息</text>
+
+  <rect x="60" y="256" width="850" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="88" y="294" font-size="19" font-weight="700" fill="#0B4F4D">二　範圍：管什麼、不管什麼、超出範圍怎麼辦</text>
+  <text x="88" y="330" font-size="16" fill="#102A2B">例：只處理商品用途、訂單狀態與退換貨流程；折扣與贈品改成請我確認</text>
+
+  <rect x="60" y="366" width="850" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="88" y="404" font-size="19" font-weight="700" fill="#1F4E73">三　輸入會長什麼樣：我每次會貼什麼給你</text>
+  <text x="88" y="440" font-size="16" fill="#102A2B">例：一則顧客的原文私訊，可能有錯字，也可能一次問三件事</text>
+
+  <rect x="60" y="476" width="850" height="100" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="88" y="514" font-size="19" font-weight="700" fill="#1F4E73">四　輸出格式：長度、段落、先後順序</text>
+  <text x="88" y="550" font-size="16" fill="#102A2B">例：先同理一句，再分點回答，最後寫下一步；全篇不超過 200 字</text>
+
+  <rect x="60" y="586" width="850" height="100" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="88" y="624" font-size="19" font-weight="700" fill="#B8442D">五　拒答與求證：資料不足時說什麼</text>
+  <text x="88" y="660" font-size="16" fill="#102A2B">例：價格與到貨日我沒給你就不要推測，改成「幫您確認後回覆」</text>
+
+  <rect x="60" y="696" width="850" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="88" y="734" font-size="19" font-weight="700" fill="#A85C18">六　語氣：具體的描述加一個對照</text>
+  <text x="88" y="770" font-size="16" fill="#102A2B">例：口語但有禮，稱呼用「您」，不用表情符號與驚嘆號</text>
+
+  <text x="60" y="832" font-size="15" fill="#5C6B6B">缺哪一個部件，Claude 就自己補一個預設值，而它補的通常不是你要的</text>
+
+  <!-- right: the loop -->
+  <text x="960" y="130" font-size="20" font-weight="700" fill="#102A2B">寫完之後的循環　Write, test, change one thing</text>
+
+  <rect x="960" y="146" width="500" height="110" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="988" y="188" font-size="19" font-weight="700" fill="#0B4F4D">先寫一版，越短越好</text>
+  <text x="988" y="224" font-size="16" fill="#102A2B">六個部件各一到兩句，不求寫完例外</text>
+  <path d="M 1210 256 L 1210 292" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="960" y="296" width="500" height="110" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="988" y="338" font-size="19" font-weight="700" fill="#1F4E73">測 3 題固定測試</text>
+  <text x="988" y="374" font-size="16" fill="#102A2B">最常見的、資料不足的、超出範圍的</text>
+  <path d="M 1210 406 L 1210 442" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="960" y="446" width="500" height="110" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="988" y="488" font-size="19" font-weight="700" fill="#245E45">一次只改 1 處</text>
+  <text x="988" y="524" font-size="16" fill="#102A2B">存檔後開新對話，再跑同樣的 3 題</text>
+  <path d="M 1210 556 L 1210 592" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="960" y="596" width="500" height="110" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="988" y="638" font-size="19" font-weight="700" fill="#B8442D">還是不聽話</text>
+  <text x="988" y="674" font-size="16" fill="#102A2B">先刪掉互相衝突的規則，再加例子</text>
+
+  <path d="M 1460 651 L 1512 651 L 1512 201 L 1470 201" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="960" y="762" font-size="15" fill="#5C6B6B">一次改三句，變好了也不知道是哪一句起作用</text>
+  <text x="960" y="792" font-size="15" fill="#5C6B6B">介面名稱與建議依 2026 年 9 月的 Claude 官網</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

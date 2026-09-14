@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">有快取與沒快取的一次呼叫，與三個省錢手段 / One API call with and without prompt caching, and the three cost levers</title>
+  <desc id="desc">左半邊上下兩塊是同一次呼叫的兩種算法。上面那塊是沒有快取：一段 20,000 token 的前綴照基礎輸入價整段重算，後面再加上使用者打的 200 個 token，每次呼叫都重算一遍。下面那塊是有快取：同一段 20,000 token 的前綴改成讀快取，只收 0.1 倍，後面一樣加上 200 個 token；第一次寫進快取收 1.25 倍，1 小時版收 2 倍；快取存活 5 分鐘，每讀一次免費續命，1 小時是另一個選項。左下方是一個每天呼叫 200 次的小工具試算，四個方塊由左到右是什麼都不做 9.08 美元、加提示快取 2.64 美元、再加批次處理 0.98 美元、再換輕一階的模型 0.49 美元，單位都是美元每天，全部依官網標價推算，不是官方公布的數字。右半邊由上到下是三個手段。第一個是提示快取，省的是重複的長前綴：讀取 0.1 倍、寫入 1.25 倍、1 小時版 2 倍；適合同一份長文件被問很多次與固定的長系統提示；不適合每次內容都不同或間隔超過存活時間。第二個是批次處理，整張帳單打五折：輸入與輸出都收 50%，多數一小時內完成；適合整批分類、整批摘要與離線的資料處理；不適合要即時回覆的情況，最長要等 24 小時，逾時過期。第三個是選對模型，把單價降一階：簡單的工作換輕一階的模型，單價大約砍半；適合分類、抽欄位、判斷格式這種每次都簡單的事；長對話也要定期重開，因為前面整段每次都要重讀。三個可以疊起來用，批次折扣與快取折扣會相乘，順序是先做快取、再搬批次、最後才檢討模型。最底下提醒先看主控台的用量分佈，帳單多半是被同一段長前綴重送幾千次吃掉的。價格與規則依 2026 年 9 月 14 日的 Anthropic 官方文件。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">有快取與沒快取的一次呼叫，與三個省錢手段</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">One API call with and without prompt caching, and when each cost lever applies</text>
+
+  <!-- left: one call, cached vs not -->
+  <text x="60" y="134" font-size="20" font-weight="700" fill="#102A2B">一次呼叫：同樣的 20,000 token 前綴</text>
+
+  <rect x="60" y="152" width="700" height="154" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="90" y="190" font-size="18" font-weight="700" fill="#B8442D">沒有快取：整段重算</text>
+  <rect x="90" y="206" width="500" height="48" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="340" y="236" font-size="16" fill="#102A2B" text-anchor="middle">20,000 token 前綴，照基礎輸入價</text>
+  <rect x="602" y="206" width="128" height="48" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="666" y="236" font-size="16" fill="#102A2B" text-anchor="middle">+200</text>
+  <text x="90" y="282" font-size="15" fill="#5C6B6B">每次呼叫都重算一遍，使用者其實只打了 200 個 token</text>
+
+  <rect x="60" y="322" width="700" height="182" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="90" y="360" font-size="18" font-weight="700" fill="#0B4F4D">有快取：前綴只讀不算</text>
+  <rect x="90" y="376" width="500" height="48" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="340" y="406" font-size="16" fill="#102A2B" text-anchor="middle">20,000 token 讀快取，收 0.1 倍</text>
+  <rect x="602" y="376" width="128" height="48" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="666" y="406" font-size="16" fill="#102A2B" text-anchor="middle">+200</text>
+  <text x="90" y="452" font-size="15" fill="#102A2B">第一次寫進快取收 1.25 倍，1 小時版收 2 倍</text>
+  <text x="90" y="480" font-size="15" fill="#5C6B6B">存活 5 分鐘，每讀一次免費續命；1 小時是另一個選項</text>
+
+  <!-- left: worked example -->
+  <text x="60" y="548" font-size="20" font-weight="700" fill="#102A2B">試算：每天 200 次的小工具（依官網標價推算）</text>
+
+  <rect x="60" y="568" width="154" height="126" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="137" y="606" font-size="16" fill="#102A2B" text-anchor="middle">什麼都不做</text>
+  <text x="137" y="646" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">9.08</text>
+  <text x="137" y="674" font-size="15" fill="#5C6B6B" text-anchor="middle">美元／天</text>
+  <path d="M 220 631 L 236 631" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="242" y="568" width="154" height="126" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="319" y="606" font-size="16" fill="#0B4F4D" text-anchor="middle">＋提示快取</text>
+  <text x="319" y="646" font-size="22" font-weight="700" fill="#0B4F4D" text-anchor="middle">2.64</text>
+  <text x="319" y="674" font-size="15" fill="#5C6B6B" text-anchor="middle">美元／天</text>
+  <path d="M 402 631 L 418 631" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="424" y="568" width="154" height="126" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="501" y="606" font-size="16" fill="#1F4E73" text-anchor="middle">＋批次處理</text>
+  <text x="501" y="646" font-size="22" font-weight="700" fill="#1F4E73" text-anchor="middle">0.98</text>
+  <text x="501" y="674" font-size="15" fill="#5C6B6B" text-anchor="middle">美元／天</text>
+  <path d="M 584 631 L 600 631" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="606" y="568" width="154" height="126" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="683" y="606" font-size="16" fill="#A8571B" text-anchor="middle">＋輕一階模型</text>
+  <text x="683" y="646" font-size="22" font-weight="700" fill="#A8571B" text-anchor="middle">0.49</text>
+  <text x="683" y="674" font-size="15" fill="#5C6B6B" text-anchor="middle">美元／天</text>
+
+  <text x="60" y="726" font-size="15" fill="#5C6B6B">依官網標價推算，不是官方公布的數字</text>
+
+  <!-- right: the three levers -->
+  <text x="800" y="134" font-size="20" font-weight="700" fill="#102A2B">三個手段：省在哪、什麼情況適合</text>
+
+  <rect x="800" y="152" width="740" height="154" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="830" y="190" font-size="18" font-weight="700" fill="#0B4F4D">① 提示快取：省重複的長前綴</text>
+  <text x="830" y="222" font-size="16" fill="#102A2B">讀取 0.1 倍、寫入 1.25 倍，1 小時版 2 倍</text>
+  <text x="830" y="252" font-size="16" fill="#102A2B">適合：同一份長文件被問很多次、固定的長系統提示</text>
+  <text x="830" y="282" font-size="15" fill="#B8442D">不適合：每次內容都不同、間隔超過存活時間</text>
+
+  <rect x="800" y="326" width="740" height="154" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="830" y="364" font-size="18" font-weight="700" fill="#1F4E73">② 批次處理：整張帳單打五折</text>
+  <text x="830" y="396" font-size="16" fill="#102A2B">輸入與輸出都收 50%，多數一小時內完成</text>
+  <text x="830" y="426" font-size="16" fill="#102A2B">適合：整批分類、整批摘要、離線的資料處理</text>
+  <text x="830" y="456" font-size="15" fill="#B8442D">不適合：要即時回覆；最長等 24 小時，逾時過期</text>
+
+  <rect x="800" y="500" width="740" height="154" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="830" y="538" font-size="18" font-weight="700" fill="#A8571B">③ 選對模型：把單價降一階</text>
+  <text x="830" y="570" font-size="16" fill="#102A2B">簡單的工作換輕一階的模型，單價大約砍半</text>
+  <text x="830" y="600" font-size="16" fill="#102A2B">適合：分類、抽欄位、判斷格式這種每次都簡單的事</text>
+  <text x="830" y="630" font-size="15" fill="#5C6B6B">長對話定期重開，前面整段每次都要重讀</text>
+
+  <text x="800" y="690" font-size="16" fill="#102A2B">三個可以疊起來用：批次折扣與快取折扣會相乘</text>
+  <text x="800" y="726" font-size="15" fill="#5C6B6B">順序：先做快取，再搬批次，最後才檢討模型</text>
+
+  <text x="60" y="790" font-size="16" fill="#B8442D">先看主控台的用量分佈：帳單多半是被同一段長前綴重送幾千次吃掉的</text>
+  <text x="60" y="824" font-size="15" fill="#5C6B6B">價格與規則依 2026 年 9 月 14 日的 Anthropic 官方文件，以官網為準</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -13,8 +13,14 @@ const securityHeaders = [
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
   { key: "Content-Security-Policy", value: cspBaseline },
+  // `includeSubDomains` added 2026-09-14, on the owner's confirmation that nothing under
+  // mokaair.com is served over plain HTTP. It has to be asked rather than inferred: a browser
+  // that sees this honours it for a year, so a subdomain still on HTTP goes dark for everyone
+  // who visited the site once, and the repository cannot enumerate the DNS.
+  // `preload` is deliberately not here. It is the same promise made to browser vendors
+  // instead of to one visitor, and removing an entry from the preload list takes months.
   ...(process.env.NODE_ENV === "production"
-    ? [{ key: "Strict-Transport-Security", value: "max-age=31536000" }]
+    ? [{ key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" }]
     : []),
 ];
 

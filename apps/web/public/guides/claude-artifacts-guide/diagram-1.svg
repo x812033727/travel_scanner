@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Claude Artifacts 的四個步驟與六種類型 / The four steps of an artifact and its six common types</title>
+  <desc id="desc">上半部是一個 Artifact 的一生，四個方框由左到右用箭頭相連。第一步描述你要什麼：先講用途與使用者，再列欄位與畫面，一次只要求一件事，讓 Claude 先反問你。第二步 Artifact 出現：內容夠大、自成一體，通常超過 15 行，就會放到對話右邊的視窗；不出現就直接開口要。第三步追問修改：明講要改哪裡、範圍多大，出錯按 Try fixing with Claude，每改一次就是一個新版本，版本選單可以切回上一版。第四步分享與發布：按 Publish 取得公開連結，發布後同時進側欄的 Artifacts 專區，取消發布後就不能再發布同一個；Team 與 Enterprise 只能在組織內分享。下半部列出官網的六種常見類型與各自適合做的東西：文件（Markdown 或純文字）適合行程注意事項、社團公告、報告草稿；程式碼片段適合小腳本、Excel 公式、自動化範例；單頁 HTML 網站適合可列印的行程表、報名表、計算機；SVG 圖適合放進簡報或文件的長條圖、示意圖；圖表與流程圖適合流程圖、組織圖、決策樹；互動元件（React）適合記帳工具、待辦清單、小遊戲、互動圖表。最下面三行註記：AI 驅動的 Artifact 程式跑在 Anthropic 的機器上，不用 API 金鑰，用的人各自用自己的方案額度；分享一次，不管幫到 10 個人還是 10,000 個人，都不算你的錢；限制是不能呼叫外部服務，沒用持久儲存的資料只留在瀏覽器，付費方案的持久儲存每個 Artifact 20 MB、只存文字。內容依 2026 年 9 月的 Claude 說明中心與官方公告。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">Claude Artifacts：從描述到發布的四步（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From a prompt to a published link: when an artifact appears, how to change it, and how to share it</text>
+
+  <!-- the four steps -->
+  <text x="60" y="134" font-size="20" font-weight="700" fill="#102A2B">一個 Artifact 的一生　The life of an artifact</text>
+
+  <rect x="60" y="156" width="325" height="216" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="222" y="196" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">① 描述你要什麼</text>
+  <text x="222" y="236" font-size="16" fill="#102A2B" text-anchor="middle">先講用途與使用者</text>
+  <text x="222" y="268" font-size="16" fill="#102A2B" text-anchor="middle">再列欄位與畫面</text>
+  <text x="222" y="300" font-size="16" fill="#102A2B" text-anchor="middle">一次只要求一件事</text>
+  <text x="222" y="332" font-size="16" fill="#102A2B" text-anchor="middle">讓 Claude 先反問你</text>
+
+  <path d="M 395 264 L 437 264" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="445" y="156" width="325" height="216" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="607" y="196" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">② Artifact 出現</text>
+  <text x="607" y="236" font-size="16" fill="#102A2B" text-anchor="middle">內容夠大、自成一體</text>
+  <text x="607" y="268" font-size="16" fill="#102A2B" text-anchor="middle">通常超過 15 行</text>
+  <text x="607" y="300" font-size="16" fill="#102A2B" text-anchor="middle">在對話右邊的視窗</text>
+  <text x="607" y="332" font-size="16" fill="#102A2B" text-anchor="middle">不出現就直接開口要</text>
+
+  <path d="M 780 264 L 822 264" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="830" y="156" width="325" height="216" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="992" y="196" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">③ 追問修改</text>
+  <text x="992" y="236" font-size="16" fill="#102A2B" text-anchor="middle">明講要改哪裡、範圍</text>
+  <text x="992" y="268" font-size="16" fill="#102A2B" text-anchor="middle">出錯按 Try fixing with Claude</text>
+  <text x="992" y="300" font-size="16" fill="#102A2B" text-anchor="middle">每改一次就是新版本</text>
+  <text x="992" y="332" font-size="16" fill="#102A2B" text-anchor="middle">版本選單切回上一版</text>
+
+  <path d="M 1165 264 L 1207 264" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1215" y="156" width="325" height="216" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1377" y="196" font-size="20" font-weight="700" fill="#245E45" text-anchor="middle">④ 分享與發布</text>
+  <text x="1377" y="236" font-size="16" fill="#102A2B" text-anchor="middle">按 Publish 取公開連結</text>
+  <text x="1377" y="268" font-size="16" fill="#102A2B" text-anchor="middle">同時進側欄 Artifacts</text>
+  <text x="1377" y="300" font-size="16" fill="#102A2B" text-anchor="middle">取消後不能再發布</text>
+  <text x="1377" y="332" font-size="16" fill="#102A2B" text-anchor="middle">Team 與 Enterprise 只限組織內</text>
+
+  <!-- the six common types -->
+  <text x="60" y="432" font-size="20" font-weight="700" fill="#102A2B">官網列出的六種常見類型　Six common artifact types</text>
+
+  <rect x="60" y="452" width="466" height="104" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="84" y="490" font-size="18" font-weight="700" fill="#0B4F4D">文件（Markdown 或純文字）</text>
+  <text x="84" y="524" font-size="16" fill="#5C6B6B">行程注意事項、社團公告、報告草稿</text>
+
+  <rect x="567" y="452" width="466" height="104" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="591" y="490" font-size="18" font-weight="700" fill="#0B4F4D">程式碼片段</text>
+  <text x="591" y="524" font-size="16" fill="#5C6B6B">小腳本、Excel 公式、自動化範例</text>
+
+  <rect x="1074" y="452" width="466" height="104" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1098" y="490" font-size="18" font-weight="700" fill="#1F4E73">單頁 HTML 網站</text>
+  <text x="1098" y="524" font-size="16" fill="#5C6B6B">可列印的行程表、報名表、計算機</text>
+
+  <rect x="60" y="576" width="466" height="104" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="84" y="614" font-size="18" font-weight="700" fill="#1F4E73">SVG 圖</text>
+  <text x="84" y="648" font-size="16" fill="#5C6B6B">放進簡報或文件的長條圖、示意圖</text>
+
+  <rect x="567" y="576" width="466" height="104" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="591" y="614" font-size="18" font-weight="700" fill="#A85A17">圖表與流程圖</text>
+  <text x="591" y="648" font-size="16" fill="#5C6B6B">流程圖、組織圖、決策樹</text>
+
+  <rect x="1074" y="576" width="466" height="104" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1098" y="614" font-size="18" font-weight="700" fill="#0B4F4D">互動元件（React）</text>
+  <text x="1098" y="648" font-size="16" fill="#5C6B6B">記帳工具、待辦清單、小遊戲、互動圖表</text>
+
+  <!-- notes -->
+  <text x="60" y="726" font-size="15" fill="#0D6B68">AI 驅動的 Artifact：程式跑在 Anthropic 的機器上，不用申請 API 金鑰；用的人各自用自己的方案額度</text>
+  <text x="60" y="756" font-size="15" fill="#2E7D5B">分享一次，不管幫到 10 個人還是 10,000 個人，都不算你的錢</text>
+  <text x="60" y="786" font-size="15" fill="#B8442D">限制：不能呼叫外部服務；沒用持久儲存的資料只留在瀏覽器；付費方案的持久儲存每個 Artifact 20 MB、只存文字</text>
+  <text x="60" y="816" font-size="15" fill="#5C6B6B">介面名稱依 2026 年 9 月的 Claude 說明中心，以英文介面為準；功能與方案會變，以官網為準</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

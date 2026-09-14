@@ -1,0 +1,325 @@
+{
+  "slug": "claude-extended-thinking-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude 延伸思考模式：什麼題目該開、怎麼看它的推理",
+      "description": "延伸思考是 Claude 回答前先拆題、試做法、檢查再作答的開關，免費版就有，開關在送出鍵旁的模型名稱底下。這篇依 2026 年 9 月 13 日官網查證，說明它在哪些方案與模型可用、Effort 怎麼調，用數學與邏輯、多步驟規劃、程式除錯、長文分析、日常問答五類題目示範開與不開的差別，教你讀它的思考摘要，並說明額度與速度的代價與四種常見誤用。",
+      "hero": {
+        "src": "/guides/claude-extended-thinking-guide/hero.jpg",
+        "alt": "一個白色對話泡泡裡，一條藍色的蜿蜒路徑從左下方繞過幾個轉折點，通往右上方一顆亮起的橘色燈泡，泡泡下方一行字：該不該開延伸思考",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude 的延伸思考（extended thinking，介面上的開關叫 Thinking 或 Extended）是讓模型在回答前先拆題、試幾種做法、檢查中間結果再作答的功能；它不是另一個更聰明的模型，而是同一個模型多出來的一段「先想再答」。值得開的題目只有一種：答案取決於中間步驟的題目，像分攤旅費、排有前後相依的準備清單、找程式錯誤的原因；翻譯、改信、查天氣這類題目開了只是慢，而且開了也不代表答案一定對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇依 2026 年 9 月 13 日在 Claude 說明中心、claude.com 定價頁與 Anthropic 開發者文件查到的內容，先講延伸思考和「推理模型」這個概念的關係，再說明它在 claude.ai 的開關位置、哪些方案與模型有、Effort 怎麼調，接著用五類題目各給一個範例提示，比較開與不開的差別，最後教你讀它的思考摘要、認識額度與速度的代價，以及最常見的幾種誤用。功能名稱與方案歸屬變動很快，細節以官網當下的頁面為準。"
+        },
+        {
+          "type": "heading",
+          "text": "延伸思考是什麼：同一個模型多了「先想再答」",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般的回答是一次寫到底：模型讀完你的問題，從第一個字開始直接產生答案，途中沒有草稿，也不回頭檢查。Anthropic 的文件把開了思考之後的過程描述成四個動作：先重述題目在問什麼、試幾種做法、檢查中間結果、放棄走不通的路，然後根據這段推理寫出最後的答案。文件也說明這就是它在數學、程式、分析與長時間代理任務上表現變好的原因：這些題目的答案品質取決於中間工作，而中間工作原本會被壓縮進答案裡，或者直接被跳過。"
+        },
+        {
+          "type": "paragraph",
+          "text": "名稱上有一點要先釐清。在 claude.ai 與定價頁，這個功能叫延伸思考，開關叫 Thinking 或 Extended；在開發者文件裡，現役的主力模型用的是「自適應思考」（adaptive thinking），由模型自己決定要不要想、想多深，「延伸思考」一詞專指舊模型手動給思考預算的模式。對一般使用者來說這是同一件事的兩個世代，本文統一叫延伸思考。OpenAI 的 Think、Google 的 Thinking level 也是同一類功能，各家的名稱與預設值整理在下面這篇，這裡不重複。"
+        },
+        {
+          "type": "link",
+          "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼開：開關在哪、哪些方案與模型有",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開關藏在模型選單裡。網頁與桌面版的模型名稱顯示在輸入框下方、送出鍵旁邊，手機 App 顯示在畫面上方；說明中心的步驟是：點模型名稱、把滑鼠移到 Effort、切換 Thinking 或 Extended 開關。設定可以在對話中途改，從 Claude 的下一則回覆生效。開了之後，回答時會先出現帶計時器的 Thinking 指示，回答上方多一段可以展開的 Thinking 區塊，裡面是它的思考摘要與解題方向。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "開新對話或在現有對話裡，點輸入框旁的模型名稱，先確認要用的模型；點「More models」可以看到更多選項。",
+            "把滑鼠移到 Effort，看到 Thinking（或 Extended）開關，把它打開；手機版從畫面上方的模型名稱進入，細節以說明中心為準。",
+            "在同一個地方選 Effort 等級：Low、Medium、High、Extra high、Max，說明中心把 High 列為建議的預設值。",
+            "送出問題，等計時器結束，先展開 Thinking 區塊看它有沒有讀對你的條件，再看答案。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "方案方面，claude.com 定價頁在免費版的功能清單裡列了「延伸思考」，Pro 與 Max 包含免費版的全部功能再加上更多用量與模型，所以不用付費就能試。模型方面，說明中心寫明 Claude Fable 5.1 的思考一律開著，Claude Opus 5 在網頁與 App 上也一律開著，兩者都關不掉；其他模型才有開關可切。Effort 等級只在 Fable 5.1、Opus 5、Sonnet 5、Fable 5、Opus 4.8、4.7、4.6 與 Sonnet 4.6 提供，說明中心對各級的說明是：Low 與 Medium 適合例行工作、也讓額度撐得更久，High 是建議的預設值、品質與速度最平衡，Extra high 給長時間的程式與代理任務，Max 留給需要最深推理的題目。免費版當下能選哪幾個模型會隨時間調整，Fable 系列只在付費方案提供，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "claude.ai 裡沒有「思考預算」這種數字可以填，能調的只有開關與 Effort。預算是 API 才有的東西：舊一代模型（例如 Claude Haiku 4.5）用 budget_tokens 參數指定思考的 token 上限，最低 1,024 個 token；現役的 Opus 5、Sonnet 5、Fable 5.1 改用 effort 參數控制深淺，不再接受預算。這篇不談 API 用法，知道有這個參數就好。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/claude-model-lineup-2026"
+        },
+        {
+          "type": "link",
+          "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
+          "url": "https://mokaair.com/zh-TW/life/claude-plans-free-pro-max-2026"
+        },
+        {
+          "type": "heading",
+          "text": "五類題目：開與不開差在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "說明中心對延伸思考的建議範圍是數學計算與證明、競賽等級的程式題、完整的專案規劃、細讀文件的分析、多步驟的技術問題，並提醒它適合不需要最新網路資訊的題目。下面把一般人會碰到的題目分成五類，每類給一個範例提示，說明開與不開的差別。"
+        },
+        {
+          "type": "paragraph",
+          "text": "數學與邏輯。範例提示：「四個人去花蓮三天兩夜，房費 6,000 元、租車 4,200 元、油錢 900 元，小美只住第一晚、回程也沒坐車，請算每個人該付多少，列出算式。」不開時，常見的結果是四個人平均分，或者只把房費按晚數分、租車與油錢忘了小美少坐一段；開了之後，思考摘要通常會先列出誰參與了哪些項目，再分項計算、最後加總驗算。建議：開，提示裡把每個例外條件寫清楚，並要求列出算式，你才能逐項核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "多步驟規劃。範例提示：「三週後去日本自由行，機票已買，住宿還沒訂，要換日幣、辦網卡，家裡的貓要送寄宿，寄宿要求先打疫苗、打完等七天才能收，請排出處理順序與每件事最晚哪天要做。」不開時，回答多半是一份看起來完整的清單，但順序按項目排而不是按相依關係排，容易把打疫苗排在出發前幾天；開了之後，摘要會先找出哪件事卡住其他事、哪件事有等待期，再從出發日倒推期限。建議：開，並在提示裡要求它先列出前後相依關係，再排順序。"
+        },
+        {
+          "type": "paragraph",
+          "text": "程式除錯。範例提示：把整段錯誤訊息、出錯的那段程式碼、你已經試過的修法一起貼上，問「這個錯誤的原因是什麼，為什麼我改了還是一樣」。不開時，模型容易抓到錯誤訊息裡最眼熟的關鍵字就給一個常見的修法，往往就是你試過的那個；開了之後，摘要會對照錯誤訊息指到哪一行、假設幾個可能的原因、用你貼的程式碼逐一排除。建議：開，貼的資料越完整，它能排除的假設越多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "長文分析。範例提示：上傳一份租屋契約或一份三十頁的報告，問「找出前後矛盾或漏掉的條款」。這一類要看你要什麼：只要摘要、翻譯或抓重點，原料都在文件裡，不開比較快；要交叉比對、找矛盾、判斷條款之間的關係，就值得開，因為摘要會顯示它逐條對照的順序，漏掉哪一段你看得出來。建議：看情況，先想清楚你要的是重組還是判斷。"
+        },
+        {
+          "type": "paragraph",
+          "text": "日常問答。範例提示：「把這封信改得客氣一點」「這句英文怎麼翻」「台北明天會下雨嗎」。這些題目沒有中間步驟，答案不是在文字裡重組就是靠搜尋，開了只是多等一段時間；用自適應思考的模型碰到簡單的問題本來就可能跳過思考，摘要會很短或根本沒有。建議：不開，或把 Effort 調到 Low、Medium，說明中心說這樣額度撐得更久。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-extended-thinking-guide/diagram-1.svg",
+          "alt": "上半部並排兩條流程：一般回答從問題直接到答案；延伸思考在問題與答案之間多一段思考（重述題目、試做法、檢查、換路），畫面上看到計時器與可展開的摘要。下半部五張卡片是數學與邏輯、多步驟規劃、程式除錯、長文分析、日常問答各自開不開的建議",
+          "width": 1600,
+          "height": 900,
+          "caption": "上半部左右對照兩條流程，延伸思考多出來的那一格就是你在畫面上看到的計時器與 Thinking 摘要；下半部五張卡片是五類題目的開關建議，綠色開、橘色看情況、藍色不開，2026 年 9 月 13 日依官網整理。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "題目類型",
+            "開不開",
+            "為什麼",
+            "提示重點"
+          ],
+          "rows": [
+            [
+              "分攤費用、算利息、邏輯題",
+              "開",
+              "一步錯全錯，讓它列式並驗算",
+              "把每個例外條件寫清楚，要求列出算式"
+            ],
+            [
+              "有前後相依的準備清單、專案規劃",
+              "開",
+              "順序取決於誰卡住誰、誰有等待期",
+              "要求先列相依關係再排順序，給出發日或截止日"
+            ],
+            [
+              "程式跑出錯誤訊息、找原因",
+              "開",
+              "要假設、驗證、排除，典型的多步驟",
+              "貼完整錯誤訊息、相關程式碼與已試過的修法"
+            ],
+            [
+              "長文件找矛盾、交叉比對條款",
+              "開",
+              "要逐條對照，摘要看得出漏了哪段",
+              "說清楚要比對的範圍與判斷標準"
+            ],
+            [
+              "長文件摘要、抓重點、翻譯",
+              "不開",
+              "原料都在文件裡，重組即可",
+              "指定長度、格式與讀者"
+            ],
+            [
+              "改信、潤稿、換語氣",
+              "不開",
+              "沒有中間步驟，開了只是慢",
+              "給對象、目的與想保留的句子"
+            ],
+            [
+              "查天氣、匯率、營業時間",
+              "不開",
+              "靠搜尋，不靠推理",
+              "開網頁搜尋，寫明地點與日期"
+            ],
+            [
+              "不確定該不該開的題目",
+              "先不開",
+              "答案不穩再開，比較兩次結果",
+              "第二次把第一次錯的地方寫進提示"
+            ]
+          ],
+          "caption": "題目類型與是否開延伸思考的對照，依 Claude 說明中心與 Anthropic 文件 2026 年 9 月 13 日的建議整理；「先不開」表示先用一般回答試一次，答案不穩再開。"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼看它的思考過程：是摘要，不是保證",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先弄清楚你看到的是什麼。說明中心說 Thinking 區塊顯示的是「思考過程的摘要與解題方向」；開發者文件講得更直接：任何設定都不會回傳原始的思路，思考區塊裡的文字是由另一個模型整理出來的摘要，而且摘要的做法會持續調整。所以不必把它當逐字的解題紀錄讀，它比較像一份工作日誌的重點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二件事是思考內容不等於答案正確。Anthropic 在 2025 年公開可見的思考過程時就寫明，他們無法確定思考過程裡的內容真的代表模型內部發生的事，模型常常依據它沒有在思考裡明說的因素做決定。實際的用法是把摘要當檢查清單：看它有沒有把你給的每個條件都列出來、有沒有讀錯數字或單位、中途有沒有換過做法、最後有沒有回頭驗算。條件漏了或讀錯，答案再流暢也要重問，並把漏掉的條件寫進下一個提示；摘要看起來沒問題，答案仍然要自己驗算一次，怎麼查請看下面這篇。"
+        },
+        {
+          "type": "link",
+          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "heading",
+          "text": "額度與速度：開了會慢多少、耗多少",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官網沒有給「開了慢幾秒、多耗幾成」的數字，只給方向，這裡也只寫方向。速度上，說明中心寫 Effort 越高回應時間越長；開發者文件說實際延遲取決於提示長度、輸出長度與思考的 Effort，模型總覽也把思考常開的 Fable 5.1 標為相對較慢；API 的舊模式則明講預算越大延遲越高。額度上，說明中心的用量說明列出影響用量的四個因素：對話的長度與複雜度、用到的功能、選的模型、選的 Effort 等級，並直接建議不需要深入推理時把延伸思考關掉、例行工作把 Effort 調低。原因寫在開發者文件裡：思考用掉的 token 按輸出計費，即使思考文字沒有回傳，算的也是完整思考的 token 數，而不是摘要的長度。訂閱方案看不到帳單，但看得到額度：免費版是以工作階段計、每 5 小時重置的上限，開了思考就會更快碰到。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先不開試一次，答案不穩再開；開了也要驗算",
+          "text": "拿不準的題目先用一般回答問一次，答案前後不一致、漏了條件或算不出來，再開延伸思考重問，並把第一次錯的地方寫進提示。開了之後仍然要驗算：摘要是給你檢查它有沒有讀對條件用的，不是正確保證。Fable 5.1 與 Opus 5 關不掉，想省額度就把 Effort 調到 Low 或 Medium。"
+        },
+        {
+          "type": "heading",
+          "text": "四種常見誤用",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "日常問答也開著：翻譯、改信、查匯率開了只是慢，摘要通常也很短或沒有；養成看題目再開的習慣，或者把 Effort 留在 Low、Medium。",
+            "把思考內容當結論貼出去：摘要裡的中間假設常常在後面被推翻，而且它是另一個模型整理的摘要，不是原始思路；要引用就引用最後的答案，並且自己查證過。",
+            "開了就不驗算：思考只是讓模型多做幾步檢查，不是正確保證；數字、日期、法規、程式碼仍然要自己算一次、跑一次。",
+            "把 Effort 一律拉到 Max 當保險：開發者文件寫在多數工作上 Max 會大幅增加成本、品質只有小幅提升，在不需要深度推理的任務上還可能想過頭；從 High 開始，不夠再往上。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你還沒用過 Claude，先從下面這篇把帳號、方案與六個主要功能走一遍，再回來開延伸思考；行程規劃類的題目，本站的旅遊攻略有各城市的範例可以拿來當練習題。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "Mokaair 旅遊攻略：各城市的行程範例",
+          "url": "https://mokaair.com/zh-TW/guides"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 說明中心：Change the model, effort, and thinking settings（模型選單位置、Effort 五級與建議、Thinking／Extended 開關、Fable 5.1 與 Opus 5 關不掉、計時器與可展開摘要、建議題型、Effort 越高越慢越耗）",
+          "url": "https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：When should I use web search, extended thinking, and research（延伸思考適合不需要最新網路資訊的複雜推理：數學、除錯、多角度分析）",
+          "url": "https://support.claude.com/en/articles/11095361-when-should-i-use-web-search-extended-thinking-and-research",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：How do usage and length limits work?（影響用量的因素、Effort 越高用越多 token、不需要時關掉延伸思考、例行工作調低 Effort）",
+          "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Get started with Claude（免費版以工作階段計、每 5 小時重置；模型名稱在網頁與桌面版的輸入框下方、手機版在畫面上方）",
+          "url": "https://support.claude.com/en/articles/8114491-get-started-with-claude",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 說明中心：Claude Fable models on your plan（Fable 系列只在付費方案提供）",
+          "url": "https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Claude 定價頁（免費版功能清單列有延伸思考；Pro、Max 包含免費版全部功能）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Thinking（先想再答的四個動作、思考 token 按輸出計費、任何設定都不回傳原始思路、摘要由另一個模型整理、自適應思考可能跳過簡單題、Fable 5.1 關不掉）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/thinking",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Steering thinking（模型依題目難易決定想不想、Effort 各級的思考行為、計費算完整思考 token 而非摘要）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Troubleshooting thinking（各模型的思考模式對照表：Fable 5.1 常開、Opus 5 與 Sonnet 5 預設開、Haiku 4.5 只有延伸思考）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/thinking-troubleshooting",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Extended thinking（budget_tokens 最低 1,024、預算越大延遲越高、4.7 以後的模型不接受預算）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Effort（low 到 max 五級、預設 high、Max 在多數工作上成本大增品質小增、可能過度思考）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方文件：Models overview（Fable 5.1 自適應思考常開且相對較慢、實際延遲取決於提示長度、輸出長度與思考 Effort）",
+          "url": "https://platform.claude.com/docs/en/models/overview",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Anthropic 官方公告：Claude's extended thinking（2025 年公開可見思考時的說明：無法確定思考內容代表模型內部真正的過程）",
+          "url": "https://www.anthropic.com/news/visible-extended-thinking",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

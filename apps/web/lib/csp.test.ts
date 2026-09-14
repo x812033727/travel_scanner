@@ -1,12 +1,19 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { CSP_BASELINE, buildStrictContentSecurityPolicy, createNonce } from "./csp";
+import {
+  CSP_BASELINE,
+  buildEnforcedContentSecurityPolicy,
+  buildStrictContentSecurityPolicy,
+  createNonce,
+} from "./csp";
+
+const SCRIPT_SOURCES = "'self' 'nonce-abc123' 'strict-dynamic' https://www.googletagmanager.com https://oapi.map.naver.com https://maps.googleapis.com https://scripts.stay22.com https://emrldtp.cc";
 
 /** What every response outside the two advertising article routes carries, in full. */
 const STRICT_PRODUCTION = [
   "default-src 'self'",
-  "script-src 'self' 'nonce-abc123' 'strict-dynamic' https://www.googletagmanager.com https://oapi.map.naver.com https://emrldtp.cc",
+  `script-src ${SCRIPT_SOURCES}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
@@ -22,10 +29,54 @@ const STRICT_PRODUCTION = [
 ].join("; ");
 
 describe("content security policy", () => {
-  it("permits the exact Stay22 frame origin without allowing its scripts or parent connections", () => {
+  it("permits the exact Stay22 frame origin and its loader, but never a parent connection to it", () => {
     const directives = buildStrictContentSecurityPolicy({ nonce: "n", production: true }).split("; ");
     expect(directives.find((value) => value.startsWith("frame-src"))).toBe("frame-src https://www.google.com https://www.stay22.com https://www.youtube-nocookie.com");
-    expect(directives.filter((value) => !value.startsWith("frame-src")).join(";")).not.toContain("stay22");
+    // `components/stay22-script.tsx` injects scripts.stay22.com into the public document, so
+    // naming it in script-src is describing what already happens rather than widening anything:
+    // 'strict-dynamic' admits a runtime-injected script whatever the host list says. The entry
+    // exists for browsers that ignore the keyword, and is the exact host, not a wildcard.
+    const scripts = directives.find((value) => value.startsWith("script-src"))!;
+    expect(scripts).toContain("https://scripts.stay22.com");
+    expect(scripts).not.toContain("*.stay22.com");
+    // The parent page still may not talk to Stay22 — only frame it and load its loader.
+    expect(directives.filter((value) => !/^(frame|script)-src/.test(value)).join(";")).not.toContain("stay22");
+  });
+
+  it("enforces script execution and nothing that could break a page's resources", () => {
+    const enforced = buildEnforcedContentSecurityPolicy({ nonce: "abc123", production: true });
+    expect(enforced).toBe([
+      `script-src ${SCRIPT_SOURCES}`,
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self' https:",
+      "frame-ancestors 'none'",
+    ].join("; "));
+    // The resource directives stay out on purpose: enforcing connect-src today would cut the
+    // map's own XHR, which names no Google host. They remain in the Report-Only policy.
+    for (const directive of ["default-src", "connect-src", "style-src", "font-src", "img-src", "frame-src", "media-src"]) {
+      expect(enforced).not.toContain(directive);
+    }
+  });
+
+  it("gates scripts identically in the enforced and the reported policy", () => {
+    // A script allowed by one and refused by the other would make every report meaningless.
+    const scriptSrc = (policy: string) => policy.split("; ").find((value) => value.startsWith("script-src"));
+    for (const options of [
+      { nonce: "abc123", production: true },
+      { nonce: "abc123", production: false },
+      { nonce: "abc123", production: true, adsense: true },
+    ]) {
+      expect(scriptSrc(buildEnforcedContentSecurityPolicy(options)))
+        .toBe(scriptSrc(buildStrictContentSecurityPolicy(options)));
+    }
+  });
+
+  it("keeps every enforced baseline directive in the enforced policy", () => {
+    const enforced = buildEnforcedContentSecurityPolicy({ nonce: "n", production: true });
+    // proxy.ts replaces the next.config.ts header on documents it handles, so anything the
+    // baseline protects has to survive that replacement.
+    for (const directive of CSP_BASELINE.split("; ")) expect(enforced).toContain(directive);
   });
   it("permits only the privacy-enhanced YouTube frame, not provider parent scripts or connections", () => {
     const directives = buildStrictContentSecurityPolicy({ nonce: "n", production: true }).split("; ");
@@ -48,6 +99,17 @@ describe("content security policy", () => {
       expect(buildStrictContentSecurityPolicy({ nonce: "n", production: false })).not.toContain("media.example.test");
     }
   });
+  it("promises HSTS for the subdomains too, and does not promise the preload list", () => {
+    const config = readFileSync(resolve(__dirname, "..", "next.config.ts"), "utf8");
+    // The header's own value, not the file: the paragraph above it in next.config.ts
+    // explains why `preload` is absent, so a whole-file search finds the word either way.
+    const hsts = /"Strict-Transport-Security",\s*value:\s*"([^"]*)"/.exec(config)?.[1];
+    expect(hsts).toBe("max-age=31536000; includeSubDomains");
+    // `preload` is a promise to browser vendors rather than to one visitor, and an entry
+    // takes months to remove. Adding it is a separate decision, not a tidy-up of this line.
+    expect(hsts).not.toContain("preload");
+  });
+
   it("keeps the enforced baseline identical in next.config.ts", () => {
     const config = readFileSync(resolve(__dirname, "..", "next.config.ts"), "utf8");
     expect(config).toContain(CSP_BASELINE);

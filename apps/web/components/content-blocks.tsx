@@ -8,6 +8,8 @@ import {
 } from "@/lib/content-blocks";
 import { siteUrl } from "@/lib/seo";
 import { GuideImage } from "@/components/guides/guide-image";
+import { GuideCodeBlock, type CodeLabels } from "@/components/guide-code-block";
+import type { ArticleReference } from "@/lib/guide-series";
 
 /** The words the renderer cannot invent: a credit prefix and one name per callout tone. A
  *  caller that renders only the four shared blocks (the legal pages) passes nothing. */
@@ -16,6 +18,7 @@ export type ContentBlockLabels = {
   tip: string;
   warning: string;
   info: string;
+  code?: CodeLabels;
 };
 
 const TONE_CLASSES: Record<CalloutTone, string> = {
@@ -64,14 +67,35 @@ export function ImageCreditLine({ credit, prefix }: { credit: ImageCredit; prefi
  * pages want.
  */
 export function ContentBlocks({
-  blocks, labels, headingStart,
+  blocks, labels, headingStart, articleLinks = [], locale = "en",
 }: {
   blocks: readonly RichContentBlock[];
   labels?: ContentBlockLabels;
   headingStart?: number;
+  articleLinks?: readonly ArticleReference[];
+  locale?: string;
 }) {
   let sections = headingStart ?? 0;
   return <>{blocks.map((block, index) => {
+    if (block.type === "code") return <GuideCodeBlock key={index} block={block} labels={labels?.code} />;
+    if (block.type === "rich_paragraph") return <p key={index} className="whitespace-pre-wrap leading-8">{block.inlines.map((node, i) => {
+      if (node.type === "code") return <code key={i} className="rounded bg-[var(--paper)] px-1 font-mono text-[0.92em]">{node.text}</code>;
+      if (node.type === "article") {
+        const target = articleLinks.find(ref => ref.slug === node.slug && ref.kind === node.kind);
+        if (!target) return <span key={i}>{node.text}</span>;
+        const path = target.kind === "life" ? `/life/${target.slug}` : `/guides/${target.kind}/${target.slug}`;
+        return <a key={i} href={`/${locale}${path}`} className="text-[var(--teal)] underline underline-offset-4">{node.text}</a>;
+      }
+      if (node.type === "link") {
+        const href = contentBlockLink(node.url);
+        if (!href) return <span key={i}>{node.text}</span>;
+        const external = !sameSite(href);
+        const parsed = new URL(href);
+        const targetHref = external ? href : parsed.pathname + parsed.search + parsed.hash;
+        return <a key={i} href={targetHref} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} className="text-[var(--teal)] underline underline-offset-4">{node.text}</a>;
+      }
+      return <span key={i}>{node.text}</span>;
+    })}</p>;
     if (block.type === "heading") {
       if (block.level === 3) return <h3 key={index} className="pt-2 text-lg font-semibold">{block.text}</h3>;
       const id = headingStart === undefined ? undefined : `section-${++sections}`;

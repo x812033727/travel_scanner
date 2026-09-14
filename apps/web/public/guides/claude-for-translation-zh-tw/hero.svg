@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">中英日翻譯的提示詞 / Prompting Claude to translate between Chinese, English and Japanese</title>
+  <desc id="desc">插圖：米色底上有兩個大小相同的對話泡泡，左右並排，泡泡的尾巴都朝下。左邊是深青色的實心泡泡，裡面有一個很大的白色「文」字，代表中文。右邊是白色泡泡，藍色粗邊，裡面有一個很大的藍色「A」，代表英文。兩個泡泡之間有一條水平的雙向箭頭，兩端各有一個箭頭，代表兩種語言互相翻譯。箭頭上方浮著一個橘色圓形，圓形裡有一個白色的「あ」，代表日文也在同一條線上。背景左上角與右下角各有一個淺藍與淺綠的大圓、幾個小圓點作為裝飾，泡泡下方有一道淺色的橢圓陰影。畫面下方只有一行字：中英日翻譯的提示詞。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="tip-end" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#102A2B"/></marker>
+    <marker id="tip-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 10 0 L 0 5 L 10 10 z" fill="#102A2B"/></marker>
+  </defs>
+
+  <!-- soft background shapes -->
+  <circle cx="215" cy="185" r="140" fill="#E6F0F7"/>
+  <circle cx="1420" cy="720" r="118" fill="#E3F0EF"/>
+  <circle cx="1500" cy="215" r="58" fill="#E3F0EF"/>
+  <circle cx="120" cy="690" r="46" fill="#E3F0EF"/>
+
+  <!-- ground shadow -->
+  <ellipse cx="800" cy="766" rx="520" ry="26" fill="#E3DDD2"/>
+
+  <!-- left bubble: Chinese -->
+  <path d="M 226 250 H 574 A 56 56 0 0 1 630 306 V 574 A 56 56 0 0 1 574 630 H 360 L 250 716 L 300 630 H 226 A 56 56 0 0 1 170 574 V 306 A 56 56 0 0 1 226 250 Z" fill="#0D6B68" stroke="#102A2B" stroke-width="10" stroke-linejoin="round"/>
+  <text x="400" y="512" font-size="210" font-weight="700" fill="#FFFFFF" text-anchor="middle">文</text>
+
+  <!-- right bubble: English -->
+  <path d="M 1026 250 H 1374 A 56 56 0 0 1 1430 306 V 574 A 56 56 0 0 1 1374 630 H 1300 L 1350 716 L 1240 630 H 1026 A 56 56 0 0 1 970 574 V 306 A 56 56 0 0 1 1026 250 Z" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="10" stroke-linejoin="round"/>
+  <text x="1200" y="512" font-size="210" font-weight="700" fill="#2F6F9F" text-anchor="middle">A</text>
+
+  <!-- two-way arrow between them -->
+  <path d="M 672 442 L 928 442" stroke="#102A2B" stroke-width="12" stroke-linecap="butt" marker-start="url(#tip-start)" marker-end="url(#tip-end)"/>
+
+  <!-- Japanese badge riding above the arrow -->
+  <circle cx="800" cy="268" r="84" fill="#D97A2B" stroke="#102A2B" stroke-width="10"/>
+  <text x="800" y="300" font-size="88" font-weight="700" fill="#FFFFFF" text-anchor="middle">あ</text>
+
+  <!-- small accents -->
+  <circle cx="700" cy="620" r="16" fill="#D97A2B"/>
+  <circle cx="900" cy="640" r="11" fill="#0D6B68"/>
+  <circle cx="1330" cy="150" r="14" fill="#2E7D5B"/>
+
+  <!-- single line of text -->
+  <text x="800" y="836" font-size="58" font-weight="700" fill="#102A2B" text-anchor="middle">中英日翻譯的提示詞</text>
+</svg>

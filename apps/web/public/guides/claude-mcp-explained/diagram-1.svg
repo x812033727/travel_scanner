@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一次 MCP 往返與加裝流程 / One MCP round trip and how a connector gets added</title>
+  <desc id="desc">左半邊由上往下是一次 MCP 往返的五個步驟。第一，你問一句話，例如「我下週有哪些會議」。第二，Claude 讀伺服器給的工具清單，決定用哪個工具、帶什麼參數。第三，橘色的檢查點：呼叫前停下來要你核准，規格寫明工具等同於執行任意程式碼。第四，你同意後伺服器去查真正的資料再回傳，資料到這一步才離開原本的服務。第五，Claude 拿回結果用中文回答你，需要時再跑下一輪。右半邊由上往下是加裝一個連接器的五個步驟與三個橘色的權限檢查點。第一步先決定遠端還是本機：雲端服務選網頁連接器，本機檔案選桌面版擴充功能。第二步在 Claude 裡加上，設定的 Customize 底下 Connectors，或 Claude Desktop 的 Settings 底下 Extensions。第三步是橘色檢查點，看授權畫面要的權限範圍是檢視還是管理、有沒有包含刪除。第四步也是橘色檢查點，每次工具呼叫都要核准，只對信任的伺服器按 Always allow。第五步同樣是橘色檢查點，收斂權限，沒在用的連接器關掉，不需要的工具設成 Blocked。左下角註記 MCP 規格版本 2026-07-28，呼叫任何工具前必須取得使用者明確同意。介面名稱與規格版本依 2026 年 9 月的官方文件。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">一次 MCP 往返與加裝流程（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">One MCP round trip, and the steps and permission checkpoints for adding a connector</text>
+
+  <!-- left column: one round trip -->
+  <text x="60" y="134" font-size="20" font-weight="700" fill="#102A2B">一次往返：從你問到 Claude 作答</text>
+
+  <rect x="60" y="154" width="700" height="100" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="410" y="194" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">① 你問一句話</text>
+  <text x="410" y="230" font-size="16" fill="#102A2B" text-anchor="middle">例如「我下週有哪些會議」</text>
+  <path d="M 410 254 L 410 288" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="292" width="700" height="100" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="410" y="332" font-size="18" font-weight="700" fill="#1F4E73" text-anchor="middle">② Claude 讀工具清單</text>
+  <text x="410" y="368" font-size="16" fill="#102A2B" text-anchor="middle">決定用哪個工具、帶什麼參數</text>
+  <path d="M 410 392 L 410 426" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="430" width="700" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="410" y="470" font-size="18" font-weight="700" fill="#A8571B" text-anchor="middle">③ 停下來要你核准</text>
+  <text x="410" y="506" font-size="16" fill="#102A2B" text-anchor="middle">工具等同於執行任意程式碼</text>
+  <path d="M 410 530 L 410 564" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="568" width="700" height="100" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="410" y="608" font-size="18" font-weight="700" fill="#0B4F4D" text-anchor="middle">④ 伺服器查資料再回傳</text>
+  <text x="410" y="644" font-size="16" fill="#102A2B" text-anchor="middle">資料到這一步才離開原本的服務</text>
+  <path d="M 410 668 L 410 702" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="706" width="700" height="100" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="410" y="746" font-size="18" font-weight="700" fill="#245E45" text-anchor="middle">⑤ Claude 用中文回答你</text>
+  <text x="410" y="782" font-size="16" fill="#102A2B" text-anchor="middle">需要時再跑下一輪</text>
+
+  <!-- right column: adding a connector -->
+  <text x="820" y="134" font-size="20" font-weight="700" fill="#102A2B">加裝流程與橘色的權限檢查點</text>
+
+  <rect x="820" y="154" width="720" height="100" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="850" y="194" font-size="18" font-weight="700" fill="#102A2B">先決定遠端還是本機</text>
+  <text x="850" y="230" font-size="16" fill="#102A2B">雲端服務選網頁連接器，本機檔案選桌面版擴充功能</text>
+  <path d="M 1180 254 L 1180 288" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="292" width="720" height="100" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="850" y="332" font-size="18" font-weight="700" fill="#0B4F4D">在 Claude 裡加上</text>
+  <text x="850" y="368" font-size="16" fill="#102A2B">設定的 Customize 底下 Connectors，或 Settings 底下 Extensions</text>
+  <path d="M 1180 392 L 1180 426" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="430" width="720" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="850" y="470" font-size="18" font-weight="700" fill="#A8571B">看授權畫面的權限範圍</text>
+  <text x="850" y="506" font-size="16" fill="#102A2B">是檢視還是管理、是一個行事曆還是全部、有沒有含刪除</text>
+  <path d="M 1180 530 L 1180 564" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="568" width="720" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="850" y="608" font-size="18" font-weight="700" fill="#A8571B">每次工具呼叫都要核准</text>
+  <text x="850" y="644" font-size="16" fill="#102A2B">只對信任的伺服器按 Always allow</text>
+  <path d="M 1180 668 L 1180 702" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="706" width="720" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="850" y="746" font-size="18" font-weight="700" fill="#A8571B">用完把權限收回來</text>
+  <text x="850" y="782" font-size="16" fill="#102A2B">沒在用的連接器關掉，不需要的工具設成 Blocked</text>
+
+  <text x="60" y="848" font-size="15" fill="#B8442D">MCP 規格版本 2026-07-28：呼叫任何工具前，必須取得使用者明確同意</text>
+  <text x="60" y="876" font-size="15" fill="#5C6B6B">介面名稱與方案依 2026 年 9 月的官方文件，以官網為準</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

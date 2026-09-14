@@ -139,7 +139,8 @@ export const MIN_BLOCKS_BETWEEN = 10;
 export const BLOCKS_PER_AD = 12;
 export const MAX_ADS = 3;
 
-const PROSE = new Set(["paragraph", "list"]);
+const PARAGRAPHS = new Set(["paragraph", "rich_paragraph"]);
+const PROSE = new Set([...PARAGRAPHS, "list"]);
 
 export type AdsensePiece<T> = { blocks: T[]; headingStart: number };
 
@@ -152,7 +153,7 @@ export function adsensePlacements<T extends { type: string; level?: number }>(
   const firstHeading = flat.findIndex((block) => block.type === "heading" && block.level === 2);
   const firstParagraph = firstHeading < 0
     ? -1
-    : flat.findIndex((block, index) => index > firstHeading && block.type === "paragraph");
+    : flat.findIndex((block, index) => index > firstHeading && PARAGRAPHS.has(block.type));
   if (firstParagraph >= 0) {
     const earliest = hasHero
       ? firstParagraph + 1

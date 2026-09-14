@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { isArticleReference, isGuideSeries, isSeriesNavigation, type GuideSeries } from "./guide-series";
 import {
   isGuidePartnerLink,
   isGuideSummary,
@@ -154,8 +155,17 @@ export async function loadGuideArticle(
   // A malformed entry costs only its own link, never the article: the block it belongs to
   // finds no match and draws nothing.
   const partnerLinks = Array.isArray(body.partner_links) ? body.partner_links.filter(isGuidePartnerLink) : [];
-  return { ...shared, status: "published", document: body.document, partner_links: partnerLinks };
+  return { ...shared, status: "published", document: body.document, partner_links: partnerLinks,
+    article_links: Array.isArray(body.article_links) ? body.article_links.filter(isArticleReference) : [],
+    series: isSeriesNavigation(body.series) ? body.series : null,
+  };
 }
+
+export async function loadGuideSeries(slug: string, locale: Locale): Promise<GuideSeries | null> {
+  const row = await fetchJson(`/guides/series/${encodeURIComponent(slug)}?locale=${encodeURIComponent(locale)}`, locale);
+  return isGuideSeries(row) && row.slug === slug && row.locale === locale ? row : null;
+}
+export const getGuideSeries = cache(loadGuideSeries);
 
 /** One published translation of one article, for the sitemap. */
 export type GuideSitemapEntry = {

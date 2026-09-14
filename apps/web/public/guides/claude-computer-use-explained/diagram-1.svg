@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一次 computer use 循環與四個風險檢查點 / One computer use loop and the four places to stop and check</title>
+  <desc id="desc">左半邊是一次 computer use 循環的四個步驟，四個框排成正方形，箭頭順時針相連並回到起點。第一步看畫面：截一張螢幕畫面交給模型，小字看不清就放大某一塊。第二步決定動作：點擊、打字、捲動、拖曳、按組合鍵，算的是像素座標，不是網頁原始碼。第三步執行動作：程式或 App 真的去按、去打字，高風險動作會先停下來問你。第四步再看一次：截圖確認剛才那一步真的成功，沒確認就往下做是常見的錯。循環下方三行註記：一次任務會重複幾十輪，看、想、做、再看；每一張截圖約 1,000 到 1,800 個輸入 token，截圖是最大的開銷；捲動、拖曳、下拉選單與捲軸最容易失手。右半邊由上往下是四個風險檢查點。第一，任務開始前選環境與帳號：用獨立帳號或受限的環境，不要拿主要帳號讓它跑，網路銀行、支付、下單這類事不交給它。第二，讀畫面時的提示詞注入：網頁裡可能藏著給 AI 看的指令，把它帶去做別的事，官方有分類器會攔，但風險不是零。第三，動作前的權限模式：手動核准每個動作都問你，自動核准由它自己審查，購買、註冊帳號、交易、永久刪除它一律不做。第四，任務結束後自己驗收：要它附上來源頁面，自己抽查幾格數字，送出與付款這兩個鍵永遠自己按。內容依 2026 年 9 月的 Claude 官方文件與說明中心。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">一次 computer use 循環與四個風險檢查點（2026 年 9 月）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Claude computer use: one screenshot-to-action loop, and the four places to stop and check</text>
+
+  <!-- left: the loop -->
+  <text x="70" y="140" font-size="20" font-weight="700" fill="#102A2B">看畫面 → 決定動作 → 執行 → 再看畫面　The loop</text>
+
+  <rect x="70" y="170" width="360" height="146" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="250" y="214" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">① 看畫面</text>
+  <text x="250" y="252" font-size="16" fill="#102A2B" text-anchor="middle">截一張螢幕畫面交給模型</text>
+  <text x="250" y="286" font-size="16" fill="#102A2B" text-anchor="middle">小字看不清就放大某一塊</text>
+
+  <path d="M 434 243 L 502 243" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="510" y="170" width="360" height="146" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="690" y="214" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">② 決定動作</text>
+  <text x="690" y="252" font-size="16" fill="#102A2B" text-anchor="middle">點擊、打字、捲動、拖曳、按組合鍵</text>
+  <text x="690" y="286" font-size="16" fill="#102A2B" text-anchor="middle">算的是像素座標，不是原始碼</text>
+
+  <path d="M 690 320 L 690 422" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="510" y="430" width="360" height="146" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="690" y="474" font-size="20" font-weight="700" fill="#9C5418" text-anchor="middle">③ 執行動作</text>
+  <text x="690" y="512" font-size="16" fill="#102A2B" text-anchor="middle">真的去按、去打字、去填表</text>
+  <text x="690" y="546" font-size="16" fill="#102A2B" text-anchor="middle">高風險動作先停下來問你</text>
+
+  <path d="M 506 503 L 438 503" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="70" y="430" width="360" height="146" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="250" y="474" font-size="20" font-weight="700" fill="#245E45" text-anchor="middle">④ 再看一次</text>
+  <text x="250" y="512" font-size="16" fill="#102A2B" text-anchor="middle">截圖確認那一步真的成功</text>
+  <text x="250" y="546" font-size="16" fill="#102A2B" text-anchor="middle">沒確認就往下做，是常見的錯</text>
+
+  <path d="M 250 426 L 250 324" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="70" y="640" font-size="16" fill="#5C6B6B">一次任務會重複幾十輪：看、想、做、再看</text>
+  <text x="70" y="674" font-size="16" fill="#5C6B6B">每一張截圖約 1,000 到 1,800 個輸入 token，截圖是最大的開銷</text>
+  <text x="70" y="708" font-size="16" fill="#B8442D">捲動、拖曳、下拉選單與捲軸最容易失手</text>
+
+  <!-- right: the four checkpoints -->
+  <text x="920" y="140" font-size="20" font-weight="700" fill="#102A2B">四個風險檢查點　Where to stop and check</text>
+
+  <rect x="920" y="170" width="620" height="132" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="944" y="210" font-size="18" font-weight="700" fill="#0B4F4D">① 任務開始前：選環境與帳號</text>
+  <text x="944" y="248" font-size="16" fill="#102A2B">用獨立帳號或受限的環境，不要拿主要帳號讓它跑</text>
+  <text x="944" y="280" font-size="16" fill="#102A2B">網路銀行、支付、下單這類事不交給它</text>
+
+  <rect x="920" y="322" width="620" height="132" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="944" y="362" font-size="18" font-weight="700" fill="#8E3322">② 讀畫面時：提示詞注入</text>
+  <text x="944" y="400" font-size="16" fill="#102A2B">網頁裡可能藏著給 AI 看的指令，把它帶去做別的事</text>
+  <text x="944" y="432" font-size="16" fill="#102A2B">官方有分類器會攔，但風險不是零</text>
+
+  <rect x="920" y="474" width="620" height="132" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="944" y="514" font-size="18" font-weight="700" fill="#9C5418">③ 動作前：權限模式與確認</text>
+  <text x="944" y="552" font-size="16" fill="#102A2B">手動核准每個動作都問你，自動核准由它自己審</text>
+  <text x="944" y="584" font-size="16" fill="#102A2B">購買、註冊帳號、交易、永久刪除它一律不做</text>
+
+  <rect x="920" y="626" width="620" height="132" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="944" y="666" font-size="18" font-weight="700" fill="#245E45">④ 任務結束後：自己驗收</text>
+  <text x="944" y="704" font-size="16" fill="#102A2B">要它附上來源頁面，自己抽查幾格數字</text>
+  <text x="944" y="736" font-size="16" fill="#102A2B">送出、付款這兩個鍵永遠自己按</text>
+
+  <text x="920" y="800" font-size="15" fill="#5C6B6B">形式、方案與限制依 Claude 官方文件與說明中心，以官網為準</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
