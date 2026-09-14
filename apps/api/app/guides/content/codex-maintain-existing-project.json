@@ -177,6 +177,26 @@
           "code": "export function countTasks(tasks) {\n  return {\n    active: tasks.filter((task) => !task.completed).length,\n    total: tasks.length,\n  };\n}\n"
         },
         {
+          "type": "paragraph",
+          "text": "在 app.js 原有的第一行匯入清單加上 countTasks，保留原六個函式。接著找到 render 中原本寫入 #count.textContent 的那一行，用第二段替換；不要把整個 render 換掉，也不改前面產生 shown 的篩選。以下兩段只是指定位置的片段，不是完整 app.js。"
+        },
+        {
+          "type": "code",
+          "label": "app.js：替換原本的 core 匯入行",
+          "language": "javascript",
+          "code": "import { countTasks, addTask, toggleTask, removeTask, visibleTasks, decodeTasks, encodeTasks } from \"./core.mjs\";\n"
+        },
+        {
+          "type": "code",
+          "label": "app.js：替換 render 中原本的統計賦值",
+          "language": "javascript",
+          "code": "const counts = countTasks(tasks);\ndocument.querySelector(\"#count\").textContent = `${counts.active} active / ${counts.total} total`;\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "檢查這裡的參數確實是 tasks。只有 Read 完成、Build 未完成時，Completed 的 shown 只有一筆；若誤傳 shown，會得到 0 active / 1 total，而正確畫面應仍為 1 active / 2 total。核心六項測試只驗 countTasks 的函式契約，仍可能全部通過，所以保留這個獨立的接線與畫面核對。"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "步驟 5：回歸畫面與保存資料"
@@ -417,6 +437,26 @@
           "label": "Reference addition to core.mjs",
           "language": "javascript",
           "code": "export function countTasks(tasks) {\n  return {\n    active: tasks.filter((task) => !task.completed).length,\n    total: tasks.length,\n  };\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Add countTasks to app.js's existing import, retaining its six functions. Replace only render's #count.textContent assignment with the second fragment. Keep the rest of render, including the earlier shown filter. These are fragments for specific locations, not a complete app.js."
+        },
+        {
+          "type": "code",
+          "label": "app.js: replace the existing core import",
+          "language": "javascript",
+          "code": "import { countTasks, addTask, toggleTask, removeTask, visibleTasks, decodeTasks, encodeTasks } from \"./core.mjs\";\n"
+        },
+        {
+          "type": "code",
+          "label": "app.js: replace the existing count assignment inside render",
+          "language": "javascript",
+          "code": "const counts = countTasks(tasks);\ndocument.querySelector(\"#count\").textContent = `${counts.active} active / ${counts.total} total`;\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the argument is tasks. With Read completed and Build active, Completed's shown subset has one item. Passing shown would display 0 active / 1 total instead of 1 active / 2 total. The six core tests can still pass because they test countTasks's contract, so retain this separate wiring and page check."
         },
         {
           "type": "heading",
@@ -661,6 +701,26 @@
           "code": "export function countTasks(tasks) {\n  return {\n    active: tasks.filter((task) => !task.completed).length,\n    total: tasks.length,\n  };\n}\n"
         },
         {
+          "type": "paragraph",
+          "text": "app.js の既存 import に countTasks を加え、元の六関数を残します。render 内の #count.textContent 代入行だけを二つ目の断片へ置き換えます。先の shown 絞込みを含む他の render は保持します。指定位置の断片であり、完全な app.js ではありません。"
+        },
+        {
+          "type": "code",
+          "label": "app.js：元の core import 行を置換",
+          "language": "javascript",
+          "code": "import { countTasks, addTask, toggleTask, removeTask, visibleTasks, decodeTasks, encodeTasks } from \"./core.mjs\";\n"
+        },
+        {
+          "type": "code",
+          "label": "app.js：render 内の元の件数代入を置換",
+          "language": "javascript",
+          "code": "const counts = countTasks(tasks);\ndocument.querySelector(\"#count\").textContent = `${counts.active} active / ${counts.total} total`;\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "引数が tasks か確認します。Read 完了、Build 未完了なら Completed の shown は一件です。shown を渡すと本来の 1 active / 2 total でなく 0 active / 1 total になります。六つの核心テストは関数契約だけを検査するため成功し得ます。接続と画面の別検証を残します。"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "手順5：画面と保存資料の回帰確認"
@@ -903,6 +963,26 @@
           "code": "export function countTasks(tasks) {\n  return {\n    active: tasks.filter((task) => !task.completed).length,\n    total: tasks.length,\n  };\n}\n"
         },
         {
+          "type": "paragraph",
+          "text": "app.js의 기존 import에 countTasks를 추가하고 원래 여섯 함수는 남깁니다. render의 #count.textContent 대입 줄만 두 번째 부분으로 바꾸세요. 앞의 shown 필터를 포함한 다른 render 코드는 유지합니다. 특정 위치의 일부이며 전체 app.js가 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "app.js: 기존 core import 줄 교체",
+          "language": "javascript",
+          "code": "import { countTasks, addTask, toggleTask, removeTask, visibleTasks, decodeTasks, encodeTasks } from \"./core.mjs\";\n"
+        },
+        {
+          "type": "code",
+          "label": "app.js: render 안의 기존 개수 대입 교체",
+          "language": "javascript",
+          "code": "const counts = countTasks(tasks);\ndocument.querySelector(\"#count\").textContent = `${counts.active} active / ${counts.total} total`;\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "인수가 tasks인지 확인하세요. Read 완료·Build 미완료일 때 Completed의 shown은 한 항목입니다. shown을 전달하면 올바른 1 active / 2 total 대신 0 active / 1 total이 나옵니다. 여섯 핵심 테스트는 함수 계약을 검사하므로 여전히 통과할 수 있어 별도의 연결·화면 확인이 필요합니다."
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "5단계: 화면·저장 데이터 회귀 확인"
@@ -1143,6 +1223,26 @@
           "label": "core.mjs 的参考新增函式",
           "language": "javascript",
           "code": "export function countTasks(tasks) {\n  return {\n    active: tasks.filter((task) => !task.completed).length,\n    total: tasks.length,\n  };\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 app.js 原有的第一行汇入清单加上 countTasks，保留原六个函式。接著找到 render 中原本写入 #count.textContent 的那一行，用第二段替换；不要把整个 render 换掉，也不改前面产生 shown 的筛选。以下两段只是指定位置的片段，不是完整 app.js。"
+        },
+        {
+          "type": "code",
+          "label": "app.js：替换原本的 core 汇入行",
+          "language": "javascript",
+          "code": "import { countTasks, addTask, toggleTask, removeTask, visibleTasks, decodeTasks, encodeTasks } from \"./core.mjs\";\n"
+        },
+        {
+          "type": "code",
+          "label": "app.js：替换 render 中原本的统计赋值",
+          "language": "javascript",
+          "code": "const counts = countTasks(tasks);\ndocument.querySelector(\"#count\").textContent = `${counts.active} active / ${counts.total} total`;\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "检查这里的参数确实是 tasks。只有 Read 完成、Build 未完成时，Completed 的 shown 只有一笔；若误传 shown，会得到 0 active / 1 total，而正确画面应仍为 1 active / 2 total。核心六项测试只验 countTasks 的函式契约，仍可能全部通过，所以保留这个独立的接线与画面核对。"
         },
         {
           "type": "heading",

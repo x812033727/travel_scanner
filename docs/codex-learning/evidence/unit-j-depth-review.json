@@ -1,0 +1,363 @@
+{
+  "checked_on": "2026-09-14",
+  "scope": "Targeted Unit J revision: six full Traditional Chinese drafts read; changed text and examples compared across four author languages and compiled Simplified Chinese. Not final full-text editorial acceptance.",
+  "changes": {
+    "12": "Added exact PowerShell cmdlet success probes, native-exit distinction, a matching shell exercise and preservation checks.",
+    "31": "Added a concrete website handoff with step-by-step expected full-list counts and empty observed fields.",
+    "32": "Protected backup filenames and added first-invalid/later-valid email data, exact 1/1/1 counts and preserved original outputs.",
+    "58": "Added exact import/render fragments and demonstrated that a shown-versus-tasks wiring bug can survive all core tests.",
+    "59": "Added ignore-versus-tracking commands and explained their distinct evidence from content and tool history.",
+    "60": "Added an explicitly fictional equal-time/different-quality case, accounting for unmeasured remediation and unavailable usage."
+  },
+  "code_blocks": {
+    "original_blocks_retained": 30,
+    "added_blocks": 8,
+    "locales": 5,
+    "original_copyable_code_changed": false,
+    "all_blocks_have_labels": true
+  },
+  "official_documents_reviewed": [
+    {
+      "url": "https://learn.chatgpt.com/docs/permissions.md",
+      "sha256": "a4ef92666fcff0fceb7ab5332588585d3b4958909263e5576bf54dd14acf022e",
+      "body_characters": 36813,
+      "review_scope": "Actual opening profile/legacy distinction and separately read Scope and enforcement: command policies versus connectors/MCP/browser and model traffic."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/pricing.md",
+      "sha256": "095adeca37f9e8ac4b21ef79a819701fe0138fcfd25b94cfeb0d64394b8eda56",
+      "body_characters": 47179,
+      "review_scope": "Actual account/API distinction plus separately read usage variability and current-limit lookup; no new price/model numbers copied into lesson."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/models.md",
+      "sha256": "f4ffe196ccff81a40e1ff1f80d97ddd0c9523bb01b1716f1bd5a8aa4836bda23",
+      "body_characters": 19007,
+      "review_scope": "Actual surface selection/reasoning-cost guidance; model catalogue excerpt read but no per-model recommendations added."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/MicrosoftDocs/PowerShell-Docs/main/reference/7.5/Microsoft.PowerShell.Core/About/about_Automatic_Variables.md",
+      "sha256": "802cf17e9a5f2bd392f6502f52c1ec6e1f6e03fb091b338d9a6e8517595e3e93",
+      "body_characters": 35930,
+      "review_scope": "Actual $? and LASTEXITCODE definitions, cmdlet/native distinction and immediate-result semantics."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/prompting",
+      "review_scope": "Actual result/context/scope and Codex example sections read earlier in this turn's Unit G review; no new prompting API claims."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/browser",
+      "review_scope": "Actual local preview, annotations and inspection sections read in this turn's Unit I review; no preview executed."
+    },
+    {
+      "url": "https://git-scm.com/docs/gitignore",
+      "review_scope": "Actual tracked versus untracked behavior and rule scope."
+    },
+    {
+      "url": "https://docs.python.org/3/library/csv.html",
+      "review_scope": "Actual DictReader first-row mapping, missing/extra fields, strict parsing and writer newline guidance."
+    }
+  ],
+  "practice": {
+    "report": "docs/codex-learning/evidence/workshop-reference.json",
+    "checks_total": 12,
+    "scope": "Windows temporary Python/Node/Git/PowerShell reference exercises: CSV fixtures, malformed input, overwrite protection, maintenance failures/restoration, miswired count data, path status and identical broken baselines.",
+    "model_invoked": false,
+    "prompt_injection_resistance_tested": false,
+    "usage_measured": false,
+    "browser_executed": false,
+    "other_os_executed": false,
+    "csv_archive_note": "The five-file base ZIP remains unchanged. The first-valid fixture is an optional reader-created extension.",
+    "report_sha256": "000675bb88147539cf9e6bb88c710c7c2d72f5ba2150f874e5833624ebbb4ce5",
+    "environment": "Windows; local Python and Node; isolated fictional files; explicit reference edits",
+    "csv_archive_unchanged": true,
+    "archive_sha256": "6bdea5a49206d359f60da53b10dfb43dd6b8d31dc9312a2c0541d0f08acda527"
+  },
+  "validation": {
+    "series_integrity": {
+      "lessons": 60,
+      "locale_documents": 300,
+      "result": "passed"
+    },
+    "api_content_tests": {
+      "passed": 9
+    },
+    "compiler_tests": {
+      "passed": 9
+    },
+    "affected_tool_ruff": "passed",
+    "shared_catalogues": "Five API catalogues match the shared manifest",
+    "content_audit": {
+      "errors": 0,
+      "warnings": 21,
+      "note": "No new or removed advisories; thresholds unchanged."
+    },
+    "table_comparison": "Initial exact equality assertion caught the intended lesson 12 Traditional Chinese label correction from 规则層級 to 規則層級. Rechecked all tables allowing only that exact correction; table structure and all other cells unchanged.",
+    "relative_file_links": {
+      "checked": 1125,
+      "result": "passed",
+      "scope": "README/progress/deepening relative file targets; anchors separate."
+    },
+    "task_check": {
+      "files": 412,
+      "result": "passed",
+      "existing_unrelated_warnings": "retained"
+    },
+    "diff_whitespace": "passed"
+  },
+  "final_acceptance": {
+    "targeted_depth_revised_lessons_total": 60,
+    "other_lessons_pending_targeted_review": 0,
+    "next_phase": "Full-text five-language editorial review, product evidence and final integrated page acceptance.",
+    "accepted_lessons": 0,
+    "full_editorial_accepted": false,
+    "preview_accepted": false,
+    "blocker": "Automatic approval review rejected preview startup, including loopback-only retry: blocked by policy; no specific reason. No alternative startup/rendering route attempted."
+  },
+  "publication": {
+    "pushed": false,
+    "pr": false,
+    "merged": false,
+    "imported": false,
+    "published": false,
+    "deployed": false
+  },
+  "base_commit": "c0c7e03950f202b29c4fd4aae955272e9cd49abc",
+  "hash_convention": "Source/pack/report hashes use compiler-compatible UTF-8 text with LF endings; reference author and ZIP hashes use bytes.",
+  "lessons": [
+    {
+      "id": 12,
+      "slug": "codex-troubleshooting",
+      "source_hashes": {
+        "zh-TW": "59ba58f95d3b925c181dc281e4f5ec482846d273734dd821f737066c5af37f97",
+        "en": "45ad08a565f2a9019dbe7d898356e190a4e20d63a2e9ea08e1198a403fb4586c",
+        "ja": "e72aac422bcdc85762238162fe69b29b2c735000b77af0da62d43e27866f1589",
+        "ko": "424739c028a1331245b3a5a2db2a5d0afca211ca362c48a4822b9c20973be798",
+        "zh-CN": "1eab42746635efb5ad83aae3c0973c2aaf279729c71f07e8b4abac1c4535cb1c"
+      },
+      "pack_hash": "8ec4cb912d1b2bfa787413014cbaae1f55478c12e0312146fba1322d04dddd83",
+      "zh_tw_prose_characters": 2115,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 4,
+          "after": 6
+        },
+        "zh-CN": {
+          "before": 4,
+          "after": 6
+        },
+        "en": {
+          "before": 4,
+          "after": 6
+        },
+        "ja": {
+          "before": 4,
+          "after": 6
+        },
+        "ko": {
+          "before": 4,
+          "after": 6
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "existing_tables_retained": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 31,
+      "slug": "codex-website-workshop",
+      "source_hashes": {
+        "zh-TW": "821625b48912ff6fe68ff1422dcc1607be8f74738508b67ccd606969787cb422",
+        "en": "88b2c20e0194da0a7676710c7b501f74d1ca9160b4ba118dcd7790ff79a6293c",
+        "ja": "b01c24cdf075a076b521ad93d179b51eb962c762e20dd00b766d2dbfee5321af",
+        "ko": "3a097e3d5086b8089bfcca4c5c2ae6a3be03a7c8497d1240e695559b930fc469",
+        "zh-CN": "9d23f024a976ad0cf966dabd4c50c0be7a929cd186cc462f72c2b533609d84da"
+      },
+      "pack_hash": "dbaa743e9a247935e619a19295a3967de9d8e0378e169461abf61318785f80b3",
+      "zh_tw_prose_characters": 2191,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 6,
+          "after": 7
+        },
+        "zh-CN": {
+          "before": 6,
+          "after": 7
+        },
+        "en": {
+          "before": 6,
+          "after": 7
+        },
+        "ja": {
+          "before": 6,
+          "after": 7
+        },
+        "ko": {
+          "before": 6,
+          "after": 7
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "existing_tables_retained": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 32,
+      "slug": "codex-csv-workshop",
+      "source_hashes": {
+        "zh-TW": "4ee3fed153c1566cc7719ae8a02983ee9944d0c1d9460e2abab6ca47e0bd55e3",
+        "en": "0b981a4b5a14dd2011ded420ae539e60754a7c7eed40dde247e0004d4efab581",
+        "ja": "f292640e23ae4338a7e2146620a5baebcc5096ba842c941c980ce6999a8ba942",
+        "ko": "e6b8d5f29c0664ba536e9e602819dfa3d16be3141f13df18f840fc41151a78f8",
+        "zh-CN": "4ce19d30bc86f9d4e38419c5eb7588eddda85b7c49ffb91a1857a705936af9a6"
+      },
+      "pack_hash": "f83a2185e0a562ddbd6ac1a5ce5cc4d94db2bebd9259a558d97a801441e5373f",
+      "zh_tw_prose_characters": 2226,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 8,
+          "after": 10
+        },
+        "zh-CN": {
+          "before": 8,
+          "after": 10
+        },
+        "en": {
+          "before": 8,
+          "after": 10
+        },
+        "ja": {
+          "before": 8,
+          "after": 10
+        },
+        "ko": {
+          "before": 8,
+          "after": 10
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "existing_tables_retained": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 58,
+      "slug": "codex-maintain-existing-project",
+      "source_hashes": {
+        "zh-TW": "5d3a059c8116c383d2373b6c1c03cbe89be09b23414b32c36d318b9db077657b",
+        "en": "63fb5e8008f8c59307e14e082e4ab0425ba37d9f733f677cb049ed836aa9526b",
+        "ja": "08a35aeff59d1d005cc769fba5a9ad17ad4b6ceb96708002c48dad2aabe52e9f",
+        "ko": "97d1d4ef476a1ed6cecc560db081cee3af0bc6199730f940039657f763394961",
+        "zh-CN": "2ef48da6fa0429fe5d9e89c374d7b138677c13b056bd8af15e57e6810e53c834"
+      },
+      "pack_hash": "565a8ae69c0edaef4d5884fbee1648d61ffdef00e9efac6eb47551366f2c8ad2",
+      "zh_tw_prose_characters": 2067,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 4,
+          "after": 6
+        },
+        "en": {
+          "before": 4,
+          "after": 6
+        },
+        "ja": {
+          "before": 4,
+          "after": 6
+        },
+        "ko": {
+          "before": 4,
+          "after": 6
+        },
+        "zh-CN": {
+          "before": 4,
+          "after": 6
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "existing_tables_retained": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 59,
+      "slug": "codex-project-data-safety",
+      "source_hashes": {
+        "zh-TW": "66f3210b8f1c414d88292c5b9873b12ea1ec842bb45c75701d46f6dc18ea5ebb",
+        "en": "245371bc9224fbe579a30493909ee434cb9858b966bb654e9b3a446ee10c7ee4",
+        "ja": "056af9378e35a52e20781cb54481ad0da6e5b39c0d547befcb03bd23bb05af77",
+        "ko": "1a16b0e0002578aee68d39aae84a87fe41368b1b45623b7b9ff9f691420dbfdb",
+        "zh-CN": "7b8a444b153562288072c5316c0ea54d43e5b90697676136dc77924af410c574"
+      },
+      "pack_hash": "6ab9c24c4c60af3e53a7e99135dfcbcb7c40f53104b232cf03e6331901da3128",
+      "zh_tw_prose_characters": 1810,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 5,
+          "after": 6
+        },
+        "en": {
+          "before": 5,
+          "after": 6
+        },
+        "ja": {
+          "before": 5,
+          "after": 6
+        },
+        "ko": {
+          "before": 5,
+          "after": 6
+        },
+        "zh-CN": {
+          "before": 5,
+          "after": 6
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "existing_tables_retained": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 60,
+      "slug": "codex-usage-efficiency",
+      "source_hashes": {
+        "zh-TW": "3f6cc92ef9fb7bf6da0a80f714547248a1bd4236793dfe5e07efaaf84f98de20",
+        "en": "671ec441f5e3b21e74ba43a8ac1d6e4fe6773d004186d854aafcc8e274caa16f",
+        "ja": "4be7150ccbf7634fc3dd2ea6960bcbf69000df4b8e13abea93242ae19bd14a8b",
+        "ko": "ce97b395dc459e576511ab0610a705979653c0fda57cdcc3af38d62f74630de9",
+        "zh-CN": "af50026c313e67e81ab94ff193d709448af06f76a50d5330d3dac01353655679"
+      },
+      "pack_hash": "2bb54fd497d726f7363d2f2664d923375c7ba838311e8011eca6c9b8cb337d28",
+      "zh_tw_prose_characters": 1944,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 3,
+          "after": 3
+        },
+        "en": {
+          "before": 3,
+          "after": 3
+        },
+        "ja": {
+          "before": 3,
+          "after": 3
+        },
+        "ko": {
+          "before": 3,
+          "after": 3
+        },
+        "zh-CN": {
+          "before": 3,
+          "after": 3
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "existing_tables_retained": true,
+      "source_lists_unchanged": true
+    }
+  ]
+}

@@ -1,23 +1,28 @@
 {
-  "checkedAt": "2026-09-14T08:49:08.678332+00:00",
+  "checkedAt": "2026-09-14T13:09:48.741682+00:00",
   "status": "passed",
   "checks": [
     "The deterministic CSV ZIP contains the exact article input, reference program, tests and Unicode fixture",
     "CLI counts/output are correct; repeated output and same-input targets fail while preserving bytes",
     "Quoted Unicode is preserved; missing/extra columns, reversed headers and malformed quoting produce no output",
+    "An invalid first row does not reserve its email; exact later valid output and 1/1/1 counts are verified while prior files remain unchanged",
     "All three CSV tests pass, detect deliberately removed overwrite protection, then pass after restoration",
     "Maintenance starts with 3 passing tests, exposes 3 missing-helper failures, then passes all 6 with only the planned code changes",
+    "Miswiring to shown leaves all six core tests green; direct data evaluation demonstrates the 0/1 versus 1/2 difference without claiming browser execution",
     "The new tests catch incorrect active counts; targeted restoration returns all five original files and 3 passing tests",
-    "The path drill's missing and explicit-relative paths match its declared fixture"
+    "The path drill's missing and explicit-relative paths match its declared fixture",
+    "The exact PowerShell cmdlet-status exercise yields False then True and preserves the marker; POSIX shell execution remains untested",
+    "A fresh isolated Git repository ignores the fictional env file without tracking or changing it; no model resistance or read-denial claim",
+    "Both efficiency reference copies reproduce the same 2-pass/1-failure baseline without edits; no usage or model-time measurements"
   ],
   "environment": "Windows; local Python and Node; isolated fictional files; explicit reference edits",
   "authorHashes": {
-    "12": "edf7c97b2abf6524176ed2487261058b667c3f04aa4cd99341d4f1bd58664fe0",
-    "31": "1fef9a9f22a6ce45df0eaab71e5288460b4931dd98578962ceaa0e0cabdb05bc",
-    "32": "406be668c76ceb04b57347c916866044ac63fe76d9fb027f632dc97cd600974a",
-    "58": "d4022581c8522651ffcfe84f525467edfe846bea9d958cdfec89d6d36d572de7",
-    "59": "1f6362657d1b93661f6bfeee81155c979b2fe734ef355e9785d8fb9628dad4d9",
-    "60": "14c78838cf576b075811fac292b3fb297bee81658d3ad12da695106db3c566f3"
+    "12": "5fd05ffc98a392867675d6b4b0c9a7482ba860041611cd203e15779b96e7fb7e",
+    "31": "32142cd521200cc26e581f7443b35ab688954058995355224073f52cc8b45275",
+    "32": "dcd3984bd580bde667a7b78b958660b572fefafa77c0296224f01da2a9f4b726",
+    "58": "010178c82c94ab4fba0839713e679cdd4b3aaa915adac2b2c87703778e805b85",
+    "59": "d9ef56e87f58f5e8b5ab8346857a68c78806c9b40b562270e4a8fc4a87f74c0f",
+    "60": "1e1e9e53f219e0ddb27858e01b0715eab14b66299691ab5de0cc34aec0c7e297"
   },
   "archiveHash": "6bdea5a49206d359f60da53b10dfb43dd6b8d31dc9312a2c0541d0f08acda527",
   "notTested": [

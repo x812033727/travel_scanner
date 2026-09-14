@@ -225,6 +225,26 @@
     {
       "type": "p",
       "text": [
+        "交接前從清空的虛構資料開始，再走一次下方順序，將「預期」與「實際」分欄填寫。即使讀者使用參考版本，也要自行觀察自己的頁面。篩選時統計仍來自全部任務，這能抓到只看目前畫面筆數的錯誤；未能啟動預覽的項目留未驗證，不能把期望數字填成實測。",
+        "Before handing over, start with cleared fictional data and follow the sequence below, keeping expected and observed columns separate. Observe your own page even when using the reference implementation. Counts use all tasks while filtering, which catches accidental counting of the visible subset. Leave browser checks unverified when preview is unavailable.",
+        "引継ぎ前に架空データを空にして次の順序をたどり、期待と観察を別欄に記録します。参照実装でも自分のページを観察します。絞込み時も全タスクを数える条件で、表示部分だけを数える誤りを検出できます。プレビュー不可なら未確認とし、期待値を実測にしません。",
+        "인계 전에 가상 데이터를 비운 뒤 아래 순서로 진행하고 기대와 관찰을 나누어 적습니다. 참조 구현을 써도 자신의 페이지를 관찰하세요. 필터를 적용해도 전체 작업을 세는 조건은 보이는 일부만 세는 오류를 잡습니다. 미리보기를 사용할 수 없으면 미검증으로 남기고 기대값을 실측으로 적지 마세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "# Website handoff\nRoot / source version:\nNode test command / exit status:\nBrowser / version / viewport / date:\n\n| Step | Expected active / total | Observed |\n| --- | --- | --- |\n| Reset fictional practice data | 0 / 0 | |\n| Add Read, then Build | 2 / 2 | |\n| Complete Read | 1 / 2 | |\n| Select Active; only Build visible | 1 / 2 | |\n| Select Completed; only Read visible | 1 / 2 | |\n| Select All tasks, delete Read | 1 / 1 | |\n\nInput/storage recovery evidence:\nKeyboard and narrow-layout evidence:\nActual changed files:\nUnverified requirements:\nHow to restart / restore:\n",
+      "label": [
+        "website-lab/handoff.md：預期不是實測結果",
+        "website-lab/handoff.md: expectations are not observations",
+        "website-lab/handoff.md：期待値と実測を区別",
+        "website-lab/handoff.md: 기대값은 관찰 결과가 아님"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
         "驗收失敗時回報確切輸入、操作、預期與實際值，請 Codex 只修對應層並重跑相關檢查，參考 [Bug 流程](article:codex-debugging)。交付時保留 brief、五個檔案、Node 測試紀錄、桌面及窄版畫面、未實測平台與還原方法。伺服器用原終端機 Ctrl+C 停止。最後請 Codex 用[交接格式](article:codex-context-handoff)說明如何重新啟動；若要改用框架、加入後端或正式上線，另開明確需求，不能把本機畫面可見視為已部署。",
         "When acceptance fails, report exact input, actions, expected and actual values. Ask Codex to fix the relevant layer and rerun affected checks using the [Bug workflow](article:codex-debugging). Deliver the brief, five files, Node test record, wide/narrow screenshots, untested platforms and recovery method. Stop the server with Ctrl+C in its original terminal. Ask for restart instructions in the [Handoff format](article:codex-context-handoff). Frameworks, a backend or public hosting require a separate explicit scope; a visible local page is not a deployment.",
         "失敗時は入力・操作・期待・実際を正確に伝え、[Bug 手順](article:codex-debugging)で該当層だけ修正・再検証します。brief、5ファイル、Node 記録、広幅・狭幅画面、未実測プラットフォーム、復元方法を引渡します。元端末の Ctrl+C で停止し、[交接形式](article:codex-context-handoff)で再起動法を説明させます。framework・バックエンド・公開は別の明確な範囲であり、ローカル表示を配備済みとしません。",

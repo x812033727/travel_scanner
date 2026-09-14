@@ -87,7 +87,7 @@
     {
       "type": "p",
       "text": [
-        "A 是資訊較少但仍有目標的請求；B 加入可重現輸入、預期／實際與檔案範圍。兩者的最終目標相同，不同的是你提前提供多少可靠背景。記下各自撰寫提示詞花的時間，再送出一次。若代理追問，正常回答並計入補充次數；不為了讓 B 勝出而拒绝提供 A 所需要的資訊。",
+        "A 是資訊較少但仍有目標的請求；B 加入可重現輸入、預期／實際與檔案範圍。兩者的最終目標相同，不同的是你提前提供多少可靠背景。記下各自撰寫提示詞花的時間，再送出一次。若代理追問，正常回答並計入補充次數；不為了讓 B 勝出而拒絕提供 A 所需要的資訊。",
         "A provides less context but still has an objective; B adds reproducible input, expected/actual behavior and file scope. Both target the same outcome. The variable is how much reliable context you provide in advance. Record prompt-writing time and submit each once. Answer clarification questions normally and count them; do not withhold needed information from A to make B win.",
         "A は情報が少なくても目的があり、B は再現入力・期待／実際・ファイル範囲を加えます。成果目標は同じで、先に渡す確かな背景量が違います。依頼作成時間を記録して各1回送信し、質問には普通に答えて補足回数へ数えます。B を勝たせるため A に必要情報を隠しません。",
         "A는 정보가 적어도 목표가 있고 B는 재현 입력·예상/실제·파일 범위를 추가합니다. 결과 목표는 같으며 미리 주는 확실한 배경의 양이 다릅니다. 작성 시간을 기록하고 각각 한 번 보내세요. 질문에는 정상 답변하고 보충 횟수로 세며 B를 이기게 하려고 A에 필요한 정보를 숨기지 않습니다."
@@ -156,10 +156,28 @@
     {
       "type": "p",
       "text": [
-        "比較人的準備＋驗證時間、等待與重工，而非只看最快的回答。B 若讓準備多花兩分鐘卻省下多次追問，可能適合日常流程；若 A 也能一次完整通過，就沒有證據說每個小任務都要寫長文件。將有效的重現格式存到[可複用範本](article:codex-templates-cheatsheet)，保留目標、來源、範圍與驗收即可，不把整段聊天歷史全部貼回每次任務。這能减少過期背景與相互矛盾的條件。",
+        "比較人的準備＋驗證時間、等待與重工，而非只看最快的回答。B 若讓準備多花兩分鐘卻省下多次追問，可能適合日常流程；若 A 也能一次完整通過，就沒有證據說每個小任務都要寫長文件。將有效的重現格式存到[可複用範本](article:codex-templates-cheatsheet)，保留目標、來源、範圍與驗收即可，不把整段聊天歷史全部貼回每次任務。這能減少過期背景與相互矛盾的條件。",
         "Compare preparation plus verification time, waiting and rework, not just the fastest answer. If B takes two more minutes to prepare but saves several clarifications, it may suit daily work. If A also passes completely in one turn, there is no evidence every small task needs a long brief. Save an effective reproduction format in [Reusable templates](article:codex-templates-cheatsheet), retaining objective, source, scope and acceptance instead of pasting entire chat histories. This reduces stale and contradictory context.",
         "最速回答だけでなく準備＋検証時間、待機、手戻りを比較します。B の準備が2分増えて補足が減るなら日常に適すかもしれません。A も1回で全合格なら全小課題に長文が必要という証拠はありません。有効形式を[再利用雛形](article:codex-templates-cheatsheet)へ保存し、目的・出典・範囲・検証を残して全会話を毎回貼りません。古い文脈や矛盾を減らせます。",
         "가장 빠른 답변뿐 아니라 준비+검증 시간·대기·재작업을 비교합니다. B 준비가 2분 늘어도 보충 여러 번을 줄이면 일상에 적합할 수 있습니다. A도 한 번에 모두 통과하면 모든 작은 작업에 긴 문서가 필요하다는 증거는 없습니다. 효과적인 형식을 [재사용 템플릿](article:codex-templates-cheatsheet)에 저장하고 목표·출처·범위·검증을 유지하되 전체 대화를 매번 붙이지 마세요. 오래되거나 충돌하는 맥락을 줄입니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "用一個明確虛構的算例練習判讀：A 準備 1 分鐘、等待 3 分鐘、驗證 4 分鐘，四項只符合三項；B 準備 3 分鐘、等待 4 分鐘、驗證 1 分鐘，四項皆符合。兩者已記錄時間合計都是 8 分鐘，B 的首次等待較長但交付較完整；A 的補救時間尚未量到，所以不能宣稱兩個完整工作同樣快。這不是任何模型的效能數據。",
+        "Use a clearly fictional interpretation exercise: A takes 1 minute to prepare, 3 to wait and 4 to verify, meeting three of four criteria. B takes 3, 4 and 1 minutes, meeting all four. Both recorded totals are 8 minutes. B waits longer initially but delivers more; A's remediation time is unknown, so equal end-to-end completion time is unproven. These are not model performance measurements.",
+        "明示した架空例で判断を練習します。A は準備 1 分・待機 3 分・確認 4 分で四条件中三つ、B は 3 分・4 分・1 分で全四条件を満たします。記録合計は共に 8 分です。B の初回待機は長くても成果は完全で、A の補修時間は未計測です。完了まで同速とは結論できず、モデル性能の実測値でもありません。",
+        "명확한 가상 사례로 판단을 연습합니다. A는 준비 1분·대기 3분·검증 4분에 네 조건 중 세 개, B는 3분·4분·1분에 네 조건 모두를 충족합니다. 기록한 합계는 둘 다 8분입니다. B의 첫 대기는 더 길지만 결과가 완전하고 A의 보완 시간은 미측정이므로 전체 완료 시간이 같다고 결론낼 수 없습니다. 모델 성능 실측값도 아닙니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "判讀時再問：四項是不是事先訂好、品質是否真的核對、未提供用量是否留 unavailable。若兩者都符合四項，才比較完整操作時間與重工。將上面的虛構數字和自己的觀測表分開；下一輪沿用同一份評分條件，一次只調整一個因素，才有辦法解釋變化來源。",
+        "Check that criteria were set beforehand, quality was verified and missing usage stays unavailable. Compare complete time and rework once both meet all four criteria. Keep these fictional numbers separate from your observations. Reuse the criteria and change one factor per follow-up so differences remain interpretable.",
+        "条件の事前設定、品質確認、利用量不明を unavailable としたかも点検します。双方が全四条件を満たしてから全体時間と手戻りを比べます。架空数値は自分の観察と分離し、次も同条件で一要因だけを変えて差の原因を判断します。",
+        "기준을 미리 정했는지, 품질을 실제 확인했는지, 사용량 누락을 unavailable로 남겼는지도 확인합니다. 둘 다 네 조건을 충족한 뒤 전체 시간과 재작업을 비교하세요. 가상 숫자는 관찰표와 분리하고 다음에도 같은 기준에서 한 요인만 바꿔 차이 원인을 해석합니다."
       ]
     },
     {

@@ -190,7 +190,7 @@
         },
         {
           "type": "paragraph",
-          "text": "同一台電腦上的 Windows、WSL、容器與遠端主機不一定共用登入或設定；先确认出錯的是哪個環境。"
+          "text": "同一台電腦上的 Windows、WSL、容器與遠端主機不一定共用登入或設定；先確認出錯的是哪個環境。"
         },
         {
           "type": "paragraph",
@@ -217,7 +217,7 @@
             [
               "AGENTS.md 好像沒作用",
               "真正檔名、所在層級、任務工作根目錄",
-              "规则層級"
+              "規則層級"
             ],
             [
               "把 README 當成永久規則",
@@ -270,7 +270,7 @@
             },
             {
               "type": "article",
-              "text": "规则層級",
+              "text": "規則層級",
               "kind": "life",
               "slug": "codex-agents-md-scopes"
             }
@@ -365,6 +365,40 @@
         {
           "type": "paragraph",
           "text": "第一個讀檔失敗，後面兩次應顯示相同 PATH-PRACTICE-1；marker 內容未改，修正的是操作位置。完成後回到原本工作目錄，練習資料可保留，不需要遞迴刪除。若套用到 Codex，先請它回報目前根目錄及指定檔案是否存在，再決定是否開錯專案。不要把桌面同名任務、另一個 worktree 或手機看到的舊內容當成同一資料夾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果需要記錄成功狀態，PowerShell 的 Get-Content 是 cmdlet，應立即保存 $?；$LASTEXITCODE 主要用於 codex、node 等原生程式。前面的路徑練習結束後，終端機應在 project，以下先讀不存在的 other/marker.md，再讀真正的 marker。PowerShell 預期依序 False、True；shell 則先非零、後 0。不要等其他命令跑完才讀狀態。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：目前在 project",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath ..\\other\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\nGet-Content -LiteralPath .\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux shell：目前在 project",
+          "language": "sh",
+          "code": "cat ../other/marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\ncat ./marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自動變數的精確定義見 "
+            },
+            {
+              "type": "link",
+              "text": "PowerShell 官方文件",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables"
+            },
+            {
+              "type": "text",
+              "text": "。兩次讀檔都不改 marker；若檔案內容改了，另記為未預期修改並先找原因。這樣交接時能把「路徑錯誤已修正」和「檔案原文保持」分開核對。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -975,6 +1009,40 @@
           "text": "第一个读档失败，后面两次应显示相同 PATH-PRACTICE-1；marker 内容未改，修正的是操作位置。完成后回到原本工作目录，练习资料可保留，不需要递回删除。若套用到 Codex，先请它回报目前根目录及指定档案是否存在，再决定是否开错专案。不要把桌面同名任务、另一个 worktree 或手机看到的旧内容当成同一资料夹。"
         },
         {
+          "type": "paragraph",
+          "text": "如果需要记录成功状态，PowerShell 的 Get-Content 是 cmdlet，应立即保存 $?；$LASTEXITCODE 主要用于 codex、node 等原生程式。前面的路径练习结束后，终端机应在 project，以下先读不存在的 other/marker.md，再读真正的 marker。PowerShell 预期依序 False、True；shell 则先非零、后 0。不要等其他命令跑完才读状态。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：目前在 project",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath ..\\other\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\nGet-Content -LiteralPath .\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux shell：目前在 project",
+          "language": "sh",
+          "code": "cat ../other/marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\ncat ./marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自动变数的精确定义见 "
+            },
+            {
+              "type": "link",
+              "text": "PowerShell 官方文件",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables"
+            },
+            {
+              "type": "text",
+              "text": "。两次读档都不改 marker；若档案内容改了，另记为未预期修改并先找原因。这样交接时能把「路径错误已修正」和「档案原文保持」分开核对。"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "工具、远端与自动化"
@@ -1581,6 +1649,40 @@
         {
           "type": "paragraph",
           "text": "The first read fails; the next two show the same PATH-PRACTICE-1. You corrected location, not file contents. Return to your original working folder afterward and retain the fixture without recursive deletion. In Codex, first ask for its working root and whether a specified file exists before deciding that the wrong project is open. Same-named desktop tasks, another worktree or old phone content are not proof of the same folder."
+        },
+        {
+          "type": "paragraph",
+          "text": "For Get-Content, a PowerShell cmdlet, save $? immediately; $LASTEXITCODE is primarily for native programs such as codex or node. After the path exercise you should be in project. The blocks below read missing other/marker.md, then the real marker. Expect False then True in PowerShell, or nonzero then 0 in the shell. Do not wait until other commands replace the status."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell: currently in project",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath ..\\other\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\nGet-Content -LiteralPath .\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS/Linux shell: currently in project",
+          "language": "sh",
+          "code": "cat ../other/marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\ncat ./marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "See "
+            },
+            {
+              "type": "link",
+              "text": "PowerShell's automatic variables",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables"
+            },
+            {
+              "type": "text",
+              "text": " for exact definitions. Neither read changes the marker. Investigate unexpected edits separately, so the handoff distinguishes corrected paths from preserved file contents."
+            }
+          ]
         },
         {
           "type": "heading",
@@ -2191,6 +2293,40 @@
           "text": "最初は失敗、後2回は同じ PATH-PRACTICE-1 で、内容ではなく操作場所を修正したと分かります。元場所に戻り教材は残せばよく、再帰削除は不要です。Codex でも先に根ディレクトリ・指定ファイルの存在を報告させてプロジェクト違いを判断します。同名タスク・別 worktree・携帯の古い内容は同じディレクトリの証拠ではありません。"
         },
         {
+          "type": "paragraph",
+          "text": "PowerShell の Get-Content は cmdlet なので $? を直後に保存します。$LASTEXITCODE は主に codex や node などの外部実行ファイル用です。経路演習後の project から、下では不在の other/marker.md と本物を順に読みます。PowerShell は False、True、shell は非ゼロ、0 を期待します。他の命令で状態を上書きする前に保存します。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：現在 project 内",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath ..\\other\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\nGet-Content -LiteralPath .\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux shell：現在 project 内",
+          "language": "sh",
+          "code": "cat ../other/marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\ncat ./marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "正確な定義は "
+            },
+            {
+              "type": "link",
+              "text": "PowerShell 自動変数",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables"
+            },
+            {
+              "type": "text",
+              "text": "を参照します。二回の読取りは marker を変更しません。予期しない編集は別途調べ、経路修正と原文保持を引継ぎで分けます。"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "ツール・遠隔・自動化"
@@ -2797,6 +2933,40 @@
         {
           "type": "paragraph",
           "text": "처음은 실패하고 뒤 두 번은 같은 PATH-PRACTICE-1이며 내용을 고친 것이 아니라 위치를 고쳤음을 확인합니다. 원래 위치로 돌아가고 자료는 보관하며 재귀 삭제는 필요 없습니다. Codex에서도 작업 루트·지정 파일 존재부터 확인해 잘못 연 프로젝트인지 판단하세요. 같은 이름 작업·다른 worktree·휴대전화의 오래된 내용이 같은 폴더의 증거는 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "PowerShell cmdlet인 Get-Content는 $?를 즉시 저장합니다. $LASTEXITCODE는 주로 codex·node 같은 네이티브 프로그램용입니다. 경로 실습을 마치면 project에 있어야 하며 아래는 없는 other/marker.md, 실제 marker 순서로 읽습니다. PowerShell은 False·True, shell은 0이 아닌 값·0이 나와야 합니다. 다른 명령이 상태를 덮기 전에 저장하세요."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell: 현재 project",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath ..\\other\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\nGet-Content -LiteralPath .\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS/Linux shell: 현재 project",
+          "language": "sh",
+          "code": "cat ../other/marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\ncat ./marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "정확한 정의는 "
+            },
+            {
+              "type": "link",
+              "text": "PowerShell 자동 변수",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하세요. 두 읽기는 marker를 바꾸지 않습니다. 예상 밖 편집은 별도로 조사해 경로 수정과 파일 원문 보존을 나누어 인계합니다."
+            }
+          ]
         },
         {
           "type": "heading",

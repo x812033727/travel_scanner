@@ -71,7 +71,7 @@
     {
       "type": "p",
       "text": [
-        "| 症狀 | 先做的小檢查 | 詳細操作 |\n| --- | --- | --- |\n| codex 找不到或不是內外部命令 | 關閉舊終端機再開，查可執行檔位置 | [CLI 安裝](article:codex-cli-getting-started) |\n| PowerShell 阻擋腳本 | 記下被阻擋的檔名與執行方式 | [Windows CLI](article:codex-cli-windows) |\n| macOS／Linux 安裝位置不同 | 分辨 shell、PATH 及實際執行檔 | [macOS](article:codex-cli-macos)、[Linux／WSL](article:codex-cli-linux-wsl) |\n| 登入後還是未授權 | 同一終端機看 codex login status | [帳號與額度](article:codex-account-usage) |\n| 找不到桌面或手機的某按鈕 | 記錄版本、帳號、工作空間與入口 | [平台選擇](article:codex-platforms-guide) |\n\n同一台電腦上的 Windows、WSL、容器與遠端主機不一定共用登入或設定；先确认出錯的是哪個環境。",
+        "| 症狀 | 先做的小檢查 | 詳細操作 |\n| --- | --- | --- |\n| codex 找不到或不是內外部命令 | 關閉舊終端機再開，查可執行檔位置 | [CLI 安裝](article:codex-cli-getting-started) |\n| PowerShell 阻擋腳本 | 記下被阻擋的檔名與執行方式 | [Windows CLI](article:codex-cli-windows) |\n| macOS／Linux 安裝位置不同 | 分辨 shell、PATH 及實際執行檔 | [macOS](article:codex-cli-macos)、[Linux／WSL](article:codex-cli-linux-wsl) |\n| 登入後還是未授權 | 同一終端機看 codex login status | [帳號與額度](article:codex-account-usage) |\n| 找不到桌面或手機的某按鈕 | 記錄版本、帳號、工作空間與入口 | [平台選擇](article:codex-platforms-guide) |\n\n同一台電腦上的 Windows、WSL、容器與遠端主機不一定共用登入或設定；先確認出錯的是哪個環境。",
         "| Symptom | Small first check | Detailed guide |\n| --- | --- | --- |\n| codex not found | Reopen the terminal and locate the executable | [CLI setup](article:codex-cli-getting-started) |\n| PowerShell blocks a script | Record the blocked filename and invocation | [Windows CLI](article:codex-cli-windows) |\n| Different macOS/Linux install paths | Identify shell, PATH and executable | [macOS](article:codex-cli-macos), [Linux/WSL](article:codex-cli-linux-wsl) |\n| Unauthorized after login | Run codex login status in that terminal | [Account/usage](article:codex-account-usage) |\n| Missing desktop/mobile control | Record version, account, workspace and surface | [Platform selection](article:codex-platforms-guide) |\n\nWindows, WSL, containers and remote hosts need not share login/configuration even on one computer. Identify the failing environment.",
         "| 症状 | 最小確認 | 詳細 |\n| --- | --- | --- |\n| codex がない | 端末を開き直し実行ファイルを探す | [CLI 導入](article:codex-cli-getting-started) |\n| PowerShell が阻止 | ファイル名と起動方法を記録 | [Windows CLI](article:codex-cli-windows) |\n| macOS／Linux の導入場所違い | shell・PATH・実行ファイルを識別 | [macOS](article:codex-cli-macos)、[Linux／WSL](article:codex-cli-linux-wsl) |\n| ログイン後も無権限 | 同じ端末の codex login status | [アカウント・利用量](article:codex-account-usage) |\n| 桌面・携帯の操作がない | 版・アカウント・ワークスペース・入口を記録 | [プラットフォーム選択](article:codex-platforms-guide) |\n\n同じ PC の Windows・WSL・容器・遠隔も認証や設定を共有するとは限らず、失敗環境を識別します。",
         "| 증상 | 최소 확인 | 상세 |\n| --- | --- | --- |\n| codex 없음 | 터미널 재열기·실행 파일 위치 | [CLI 설치](article:codex-cli-getting-started) |\n| PowerShell 차단 | 차단 파일명·호출법 기록 | [Windows CLI](article:codex-cli-windows) |\n| macOS/Linux 설치 위치 다름 | shell·PATH·실행 파일 구분 | [macOS](article:codex-cli-macos), [Linux/WSL](article:codex-cli-linux-wsl) |\n| 로그인 후 권한 없음 | 같은 터미널의 codex login status | [계정·사용량](article:codex-account-usage) |\n| 데스크톱·모바일 조작 없음 | 버전·계정·워크스페이스·진입점 기록 | [플랫폼 선택](article:codex-platforms-guide) |\n\n같은 PC의 Windows·WSL·컨테이너·원격도 인증·설정을 공유하지 않을 수 있으므로 실패 환경을 식별합니다."
@@ -98,7 +98,7 @@
     {
       "type": "p",
       "text": [
-        "| 症狀 | 先確認 | 深入篇 |\n| --- | --- | --- |\n| 改了程式但頁面沒變 | 正確資料夾、服務網址、檔案版本 | [路徑](article:codex-terminal-paths)、[瀏覽器](article:codex-browser-images) |\n| AGENTS.md 好像沒作用 | 真正檔名、所在層級、任務工作根目錄 | [规则層級](article:codex-agents-md-scopes) |\n| 把 README 當成永久規則 | 區分入口規則與任務資料 | [文件分工](article:codex-rules-and-context-files) |\n| config.toml 解析失敗 | 最後改動、引號、重複 table、有效設定位置 | [設定排錯](article:codex-config-troubleshooting) |\n| 續接後沿用舊結論 | 核對現有檔案與版本，不只讀交接文字 | [工作階段](article:codex-sessions-resume)、[交接](article:codex-context-handoff) |\n\n一次只改一個條件。設定恢復正常後保留必要改動，移走你自己加的診斷標記，不能把整份設定覆蓋成網路上的範本。",
+        "| 症狀 | 先確認 | 深入篇 |\n| --- | --- | --- |\n| 改了程式但頁面沒變 | 正確資料夾、服務網址、檔案版本 | [路徑](article:codex-terminal-paths)、[瀏覽器](article:codex-browser-images) |\n| AGENTS.md 好像沒作用 | 真正檔名、所在層級、任務工作根目錄 | [規則層級](article:codex-agents-md-scopes) |\n| 把 README 當成永久規則 | 區分入口規則與任務資料 | [文件分工](article:codex-rules-and-context-files) |\n| config.toml 解析失敗 | 最後改動、引號、重複 table、有效設定位置 | [設定排錯](article:codex-config-troubleshooting) |\n| 續接後沿用舊結論 | 核對現有檔案與版本，不只讀交接文字 | [工作階段](article:codex-sessions-resume)、[交接](article:codex-context-handoff) |\n\n一次只改一個條件。設定恢復正常後保留必要改動，移走你自己加的診斷標記，不能把整份設定覆蓋成網路上的範本。",
         "| Symptom | First check | In-depth lesson |\n| --- | --- | --- |\n| Edits do not appear | Folder, served URL and file version | [Paths](article:codex-terminal-paths), [Browser](article:codex-browser-images) |\n| AGENTS.md seems ignored | Filename, hierarchy and task root | [Rule scopes](article:codex-agents-md-scopes) |\n| README treated as permanent rules | Distinguish instruction entry points and task data | [Document roles](article:codex-rules-and-context-files) |\n| config.toml parse failure | Last edit, quotes, duplicate tables and active path | [Config troubleshooting](article:codex-config-troubleshooting) |\n| Resume repeats stale conclusions | Inspect current files/revision, not just notes | [Sessions](article:codex-sessions-resume), [Handoff](article:codex-context-handoff) |\n\nChange one condition at a time. After recovery, keep necessary changes and remove your diagnostic markers rather than replacing the full config with an online template.",
         "| 症状 | 最初の確認 | 詳しい解説 |\n| --- | --- | --- |\n| 編集が画面に出ない | 場所・提供 URL・版 | [パス](article:codex-terminal-paths)、[ブラウザー](article:codex-browser-images) |\n| AGENTS.md が効かない | 名・階層・作業根 | [規則範囲](article:codex-agents-md-scopes) |\n| README を永久規則扱い | 指示入口とタスク資料を分ける | [文書役割](article:codex-rules-and-context-files) |\n| TOML 解析失敗 | 最終編集・引用符・table 重複・有効場所 | [設定トラブルシューティング](article:codex-config-troubleshooting) |\n| 再開で古い結論 | 記録だけでなく現ファイル・版 | [セッション](article:codex-sessions-resume)、[引き継ぎ](article:codex-context-handoff) |\n\n1条件ずつ変え、復旧後は必要変更を残して自分の診断識別マーカーを除き、全設定をインターネット上の雛形で上書きしません。",
         "| 증상 | 첫 확인 | 심화 편 |\n| --- | --- | --- |\n| 수정이 화면에 없음 | 폴더·제공 URL·버전 | [경로](article:codex-terminal-paths), [브라우저](article:codex-browser-images) |\n| AGENTS.md 적용 안 됨 | 이름·계층·작업 루트 | [규칙 범위](article:codex-agents-md-scopes) |\n| README를 영구 규칙으로 취급 | 지시 진입점·작업 자료 구분 | [문서 역할](article:codex-rules-and-context-files) |\n| TOML 해석 실패 | 최근 수정·따옴표·table 중복·실제 위치 | [설정 문제](article:codex-config-troubleshooting) |\n| 재개 후 오래된 결론 | 기록뿐 아니라 현재 파일·버전 | [세션](article:codex-sessions-resume), [인계](article:codex-context-handoff) |\n\n한 조건씩 바꾸고 복구 후 필요한 변경은 유지하며 자신의 진단 표시만 제거하세요. 전체 설정을 인터넷 서식으로 덮어쓰지 않습니다."
@@ -162,6 +162,46 @@
         "The first read fails; the next two show the same PATH-PRACTICE-1. You corrected location, not file contents. Return to your original working folder afterward and retain the fixture without recursive deletion. In Codex, first ask for its working root and whether a specified file exists before deciding that the wrong project is open. Same-named desktop tasks, another worktree or old phone content are not proof of the same folder.",
         "最初は失敗、後2回は同じ PATH-PRACTICE-1 で、内容ではなく操作場所を修正したと分かります。元場所に戻り教材は残せばよく、再帰削除は不要です。Codex でも先に根ディレクトリ・指定ファイルの存在を報告させてプロジェクト違いを判断します。同名タスク・別 worktree・携帯の古い内容は同じディレクトリの証拠ではありません。",
         "처음은 실패하고 뒤 두 번은 같은 PATH-PRACTICE-1이며 내용을 고친 것이 아니라 위치를 고쳤음을 확인합니다. 원래 위치로 돌아가고 자료는 보관하며 재귀 삭제는 필요 없습니다. Codex에서도 작업 루트·지정 파일 존재부터 확인해 잘못 연 프로젝트인지 판단하세요. 같은 이름 작업·다른 worktree·휴대전화의 오래된 내용이 같은 폴더의 증거는 아닙니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "如果需要記錄成功狀態，PowerShell 的 Get-Content 是 cmdlet，應立即保存 $?；$LASTEXITCODE 主要用於 codex、node 等原生程式。前面的路徑練習結束後，終端機應在 project，以下先讀不存在的 other/marker.md，再讀真正的 marker。PowerShell 預期依序 False、True；shell 則先非零、後 0。不要等其他命令跑完才讀狀態。",
+        "For Get-Content, a PowerShell cmdlet, save $? immediately; $LASTEXITCODE is primarily for native programs such as codex or node. After the path exercise you should be in project. The blocks below read missing other/marker.md, then the real marker. Expect False then True in PowerShell, or nonzero then 0 in the shell. Do not wait until other commands replace the status.",
+        "PowerShell の Get-Content は cmdlet なので $? を直後に保存します。$LASTEXITCODE は主に codex や node などの外部実行ファイル用です。経路演習後の project から、下では不在の other/marker.md と本物を順に読みます。PowerShell は False、True、shell は非ゼロ、0 を期待します。他の命令で状態を上書きする前に保存します。",
+        "PowerShell cmdlet인 Get-Content는 $?를 즉시 저장합니다. $LASTEXITCODE는 주로 codex·node 같은 네이티브 프로그램용입니다. 경로 실습을 마치면 project에 있어야 하며 아래는 없는 other/marker.md, 실제 marker 순서로 읽습니다. PowerShell은 False·True, shell은 0이 아닌 값·0이 나와야 합니다. 다른 명령이 상태를 덮기 전에 저장하세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "powershell",
+      "code": "Get-Content -LiteralPath ..\\other\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\nGet-Content -LiteralPath .\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\n",
+      "label": [
+        "Windows PowerShell：目前在 project",
+        "Windows PowerShell: currently in project",
+        "Windows PowerShell：現在 project 内",
+        "Windows PowerShell: 현재 project"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "cat ../other/marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\ncat ./marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\n",
+      "label": [
+        "macOS／Linux shell：目前在 project",
+        "macOS/Linux shell: currently in project",
+        "macOS／Linux shell：現在 project 内",
+        "macOS/Linux shell: 현재 project"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "自動變數的精確定義見 [PowerShell 官方文件](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables)。兩次讀檔都不改 marker；若檔案內容改了，另記為未預期修改並先找原因。這樣交接時能把「路徑錯誤已修正」和「檔案原文保持」分開核對。",
+        "See [PowerShell's automatic variables](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables) for exact definitions. Neither read changes the marker. Investigate unexpected edits separately, so the handoff distinguishes corrected paths from preserved file contents.",
+        "正確な定義は [PowerShell 自動変数](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables)を参照します。二回の読取りは marker を変更しません。予期しない編集は別途調べ、経路修正と原文保持を引継ぎで分けます。",
+        "정확한 정의는 [PowerShell 자동 변수](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables)를 참고하세요. 두 읽기는 marker를 바꾸지 않습니다. 예상 밖 편집은 별도로 조사해 경로 수정과 파일 원문 보존을 나누어 인계합니다."
       ]
     },
     {

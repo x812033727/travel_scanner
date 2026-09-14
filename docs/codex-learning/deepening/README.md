@@ -8,7 +8,7 @@
 
 [系列維護首頁](../README.md) · [完整課程及穩定 ID](../depth-plan.md) · [作者模板](../article-template.md) · [驗收表與六次檢查](review-checklist.md)
 
-已接續 A 至 I 單元補強，見 [A](../evidence/unit-a-depth-review.json)、[B](../evidence/unit-b-depth-review.json)、[C](../evidence/unit-c-depth-review.json)、[D](../evidence/unit-d-depth-review.json)、[E](../evidence/unit-e-depth-review.json)、[F](../evidence/unit-f-depth-review.json)、[G](../evidence/unit-g-depth-review.json)、[H](../evidence/unit-h-depth-review.json)、[I 審核紀錄](../evidence/unit-i-depth-review.json)。含原代表稿累計 54 篇完成定向補強，並非最終驗收通過；其餘 6 篇的規格仍列於下方，下一個補強單元為 J。
+已接續 A 至 J 單元補強，見 [A](../evidence/unit-a-depth-review.json)、[B](../evidence/unit-b-depth-review.json)、[C](../evidence/unit-c-depth-review.json)、[D](../evidence/unit-d-depth-review.json)、[E](../evidence/unit-e-depth-review.json)、[F](../evidence/unit-f-depth-review.json)、[G](../evidence/unit-g-depth-review.json)、[H](../evidence/unit-h-depth-review.json)、[I](../evidence/unit-i-depth-review.json)、[J 審核紀錄](../evidence/unit-j-depth-review.json)。含原代表稿累計 60 篇完成本輪定向補強，沒有待做的本輪補強篇章；並非最終驗收通過。下一階段依下方規格逐篇做全篇五語終審、產品證據及最終頁面驗收。
 
 ## 怎麼找
 

@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-codex-depth-content
 title: Codex deep content and isolated learning components
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-unit-f-fc2e
-claimed_at: 2026-09-14T12:20:08Z
+owner:
+claimed_at:
 created_at: 2026-09-14T02:33:43Z
 completed_at:
 branch: codex/codex-learning-complete
@@ -164,10 +164,18 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [x] Deepen Unit G (48, 49, 24, 50, 51), preserve 28 original code blocks, add seven examples and verify ten skill/template reference checks; lesson 23 retains representative evidence.
 - [x] Deepen Unit H (25, 52, 27, 28, 53, 54), correct MCP surface usage, preserve 44 original code blocks, add three examples and verify 25 MCP/Git/Node reference checks.
 - [x] Deepen Unit I (26, 29, 30, 55, 56, 57), add three examples, correct one YAML comment and verify 14 local exec/JSON/CI checks.
-- [ ] Continue targeted depth review for the final six lessons in Unit J (31, 32, 58, 59, 60, 12).
+- [x] Complete targeted depth review for Unit J (31, 32, 58, 59, 60, 12), preserving 30 original code blocks, adding eight examples and verifying 12 Windows reference checks; all 60 lessons now have this round of targeted revision.
 - [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
 - [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
 - [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
+
+## Unit J revision and targeted-review completion
+
+After c0c7e039, revised 31/32/58/59/60/12 in four author languages and five compiled locales. Added concrete website handoff counts, first-invalid/later-valid CSV fixtures, exact app import/count wiring, Git ignore/tracking checks, a clearly fictional time/quality example and PowerShell cmdlet-status probes. All 30 original code blocks remain unchanged; eight labelled blocks added. Original images, sources, five-file CSV ZIP and shared series_data unchanged.
+
+Evidence: docs/codex-learning/evidence/unit-j-depth-review.json. Twelve Windows reference checks pass (CSV, Node maintenance, data-level miswiring, PowerShell, isolated Git and identical broken baselines), plus integrity 60/300, 9 API, 9 compiler, five catalogues and affected-tool Ruff. Audit remains 0 errors/21 warnings. No model generation/prompt-injection response, usage measurement, browser or other-OS execution.
+
+Coverage is now 60 unique lessons: this round of targeted depth revision is complete. Full-text five-language editorial review, representative product UI evidence and final integrated page acceptance remain open (0/60). Preview startup remains blocked by automatic approval review; no alternate route attempted. No partial PR, import, publication or deployment before complete acceptance.
 
 ## Unit I revision
 

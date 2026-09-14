@@ -135,7 +135,7 @@
         },
         {
           "type": "paragraph",
-          "text": "A 是資訊較少但仍有目標的請求；B 加入可重現輸入、預期／實際與檔案範圍。兩者的最終目標相同，不同的是你提前提供多少可靠背景。記下各自撰寫提示詞花的時間，再送出一次。若代理追問，正常回答並計入補充次數；不為了讓 B 勝出而拒绝提供 A 所需要的資訊。"
+          "text": "A 是資訊較少但仍有目標的請求；B 加入可重現輸入、預期／實際與檔案範圍。兩者的最終目標相同，不同的是你提前提供多少可靠背景。記下各自撰寫提示詞花的時間，再送出一次。若代理追問，正常回答並計入補充次數；不為了讓 B 勝出而拒絕提供 A 所需要的資訊。"
         },
         {
           "type": "code",
@@ -184,9 +184,17 @@
             },
             {
               "type": "text",
-              "text": "，保留目標、來源、範圍與驗收即可，不把整段聊天歷史全部貼回每次任務。這能减少過期背景與相互矛盾的條件。"
+              "text": "，保留目標、來源、範圍與驗收即可，不把整段聊天歷史全部貼回每次任務。這能減少過期背景與相互矛盾的條件。"
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "text": "用一個明確虛構的算例練習判讀：A 準備 1 分鐘、等待 3 分鐘、驗證 4 分鐘，四項只符合三項；B 準備 3 分鐘、等待 4 分鐘、驗證 1 分鐘，四項皆符合。兩者已記錄時間合計都是 8 分鐘，B 的首次等待較長但交付較完整；A 的補救時間尚未量到，所以不能宣稱兩個完整工作同樣快。這不是任何模型的效能數據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "判讀時再問：四項是不是事先訂好、品質是否真的核對、未提供用量是否留 unavailable。若兩者都符合四項，才比較完整操作時間與重工。將上面的虛構數字和自己的觀測表分開；下一輪沿用同一份評分條件，一次只調整一個因素，才有辦法解釋變化來源。"
         },
         {
           "type": "rich_paragraph",
@@ -449,6 +457,14 @@
           ]
         },
         {
+          "type": "paragraph",
+          "text": "Use a clearly fictional interpretation exercise: A takes 1 minute to prepare, 3 to wait and 4 to verify, meeting three of four criteria. B takes 3, 4 and 1 minutes, meeting all four. Both recorded totals are 8 minutes. B waits longer initially but delivers more; A's remediation time is unknown, so equal end-to-end completion time is unproven. These are not model performance measurements."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check that criteria were set beforehand, quality was verified and missing usage stays unavailable. Compare complete time and rework once both meet all four criteria. Keep these fictional numbers separate from your observations. Reuse the criteria and change one factor per follow-up so differences remain interpretable."
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -707,6 +723,14 @@
               "text": "へ保存し、目的・出典・範囲・検証を残して全会話を毎回貼りません。古い文脈や矛盾を減らせます。"
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "text": "明示した架空例で判断を練習します。A は準備 1 分・待機 3 分・確認 4 分で四条件中三つ、B は 3 分・4 分・1 分で全四条件を満たします。記録合計は共に 8 分です。B の初回待機は長くても成果は完全で、A の補修時間は未計測です。完了まで同速とは結論できず、モデル性能の実測値でもありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "条件の事前設定、品質確認、利用量不明を unavailable としたかも点検します。双方が全四条件を満たしてから全体時間と手戻りを比べます。架空数値は自分の観察と分離し、次も同条件で一要因だけを変えて差の原因を判断します。"
         },
         {
           "type": "rich_paragraph",
@@ -969,6 +993,14 @@
           ]
         },
         {
+          "type": "paragraph",
+          "text": "명확한 가상 사례로 판단을 연습합니다. A는 준비 1분·대기 3분·검증 4분에 네 조건 중 세 개, B는 3분·4분·1분에 네 조건 모두를 충족합니다. 기록한 합계는 둘 다 8분입니다. B의 첫 대기는 더 길지만 결과가 완전하고 A의 보완 시간은 미측정이므로 전체 완료 시간이 같다고 결론낼 수 없습니다. 모델 성능 실측값도 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기준을 미리 정했는지, 품질을 실제 확인했는지, 사용량 누락을 unavailable로 남겼는지도 확인합니다. 둘 다 네 조건을 충족한 뒤 전체 시간과 재작업을 비교하세요. 가상 숫자는 관찰표와 분리하고 다음에도 같은 기준에서 한 요인만 바꿔 차이 원인을 해석합니다."
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1227,6 +1259,14 @@
               "text": "，保留目标、来源、范围与验收即可，不把整段聊天历史全部贴回每次任务。这能减少过期背景与相互矛盾的条件。"
             }
           ]
+        },
+        {
+          "type": "paragraph",
+          "text": "用一个明确虚构的算例练习判读：A 准备 1 分钟、等待 3 分钟、验证 4 分钟，四项只符合三项；B 准备 3 分钟、等待 4 分钟、验证 1 分钟，四项皆符合。两者已记录时间合计都是 8 分钟，B 的首次等待较长但交付较完整；A 的补救时间尚未量到，所以不能宣称两个完整工作同样快。这不是任何模型的效能数据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "判读时再问：四项是不是事先订好、品质是否真的核对、未提供用量是否留 unavailable。若两者都符合四项，才比较完整操作时间与重工。将上面的虚构数字和自己的观测表分开；下一轮沿用同一份评分条件，一次只调整一个因素，才有办法解释变化来源。"
         },
         {
           "type": "rich_paragraph",

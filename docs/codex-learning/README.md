@@ -6,7 +6,7 @@
 
 本系列有一個總目錄與 60 篇獨立教學，每篇提供繁中、簡中、英文、日文、韓文，共 61 個內容包、305 份語言文件。路由為 `/{locale}/life/codex-learning-hub` 與既有 `/life/<slug>`。**沒有 push、PR、匯入、正式發布或部署**。使用者已授權全部完成且驗收後，再開 PR、合併與部署；完成前不提前交付部分 PR。
 
-已補強 A 至 I 單元的 49 篇，加上原五篇代表稿，共 **54 篇有定向補強，6 篇待逐篇核對**。最新 [I 審核紀錄](evidence/unit-i-depth-review.json)包含瀏覽器量測、排程檔案保護、exec 退出證據、JSON 內容判斷及 CI 版本／排隊規則；[H](evidence/unit-h-depth-review.json)、[G](evidence/unit-g-depth-review.json)、[F](evidence/unit-f-depth-review.json)保留先前補強。下一單元為 J，全部仍待完整五語終審與最終頁面驗收。
+五篇代表稿與 A 至 J 十單元已完成本輪定向補強，合計 **60 篇，沒有待做的本輪補強篇章**。最新 [J 審核紀錄](evidence/unit-j-depth-review.json)包含網站交接、CSV 去重邊界、重構接線、Git 忽略、效率判讀及 PowerShell 狀態；[I](evidence/unit-i-depth-review.json)、[H](evidence/unit-h-depth-review.json)、[G](evidence/unit-g-depth-review.json)保留先前補強。下一階段為完整五語終審、產品證據與最終頁面驗收，正式驗收仍為 0/60。
 
 ## 內容與發布來源
 
@@ -61,7 +61,7 @@ apps/api/.venv/Scripts/python.exe tools/codex-learning/check-exec-practice.py --
 apps/api/.venv/Scripts/python.exe tools/codex-learning/check-workshop-practice.py
 ```
 
-九組共 89 項參考檢查。Git 使用暫存庫；MCP 使用獨立程序設定及官方公開文件服務。exec 模擬模型程序，CI 只在本機執行精確輸出驗證器；沒有呼叫付費模型、真正觸發 GitHub 工作流程或啟動教材中的插件、子代理與排程。精確範圍及未實測項目見各自 evidence JSON。
+九組共 94 項參考檢查。Git 使用暫存庫；MCP 使用獨立程序設定及官方公開文件服務。exec 模擬模型程序，CI 只在本機執行精確輸出驗證器；沒有呼叫付費模型、真正觸發 GitHub 工作流程或啟動教材中的插件、子代理與排程。精確範圍及未實測項目見各自 evidence JSON。
 
 ## 查證、圖片與限制
 

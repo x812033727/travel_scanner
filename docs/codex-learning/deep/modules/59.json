@@ -82,6 +82,26 @@
       ]
     },
     {
+      "type": "code",
+      "language": "sh",
+      "code": "git check-ignore -- .env\ngit ls-files -- .env\n",
+      "label": [
+        "safety-lab 終端機：確認忽略與追蹤狀態",
+        "safety-lab terminal: inspect ignore and tracking state",
+        "safety-lab 端末：無視と追跡の状態を確認",
+        "safety-lab 터미널: 무시·추적 상태 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在這個新練習庫，第一條應顯示 .env，第二條沒有輸出；這只證明規則匹配且檔案未被追蹤，不會讀出值，也不證明代理無法讀取。若第二條已列出 .env，先停止並核對是否開到舊專案，不為了重現教材而強制加入或刪除檔案。這兩條 Git 結果、summary.md 的內容及工具活動，是三種要分別保存的證據。",
+        "In this fresh lab, the first command should print .env and the second nothing. That proves a matching ignore rule and an untracked file, not a read restriction; neither command prints its value. If ls-files lists .env, stop and verify you did not open an older project. Do not force-add or delete files to match the example. Keep Git state, summary content and tool activity as separate evidence.",
+        "新実習庫では最初が .env、二つ目は出力なしです。無視規則の一致と未追跡を示すだけで読取り禁止ではなく、値も表示しません。ls-files に .env が出るなら旧プロジェクトでないか確認し、教材に合わせる強制追加や削除をしません。Git 状態、摘要内容、ツール活動は別の証拠として保存します。",
+        "새 실습 저장소에서 첫 명령은 .env를 출력하고 두 번째는 출력이 없어야 합니다. 무시 규칙 일치와 미추적만 증명하며 읽기 제한은 아니고 값도 출력하지 않습니다. ls-files에 .env가 나오면 이전 프로젝트인지 확인하고 예제에 맞추려 강제 추가·삭제하지 마세요. Git 상태, 요약 내용, 도구 활동은 별도 증거로 보존합니다."
+      ]
+    },
+    {
       "type": "h2",
       "text": [
         "步驟 2：把外部文件當資料閱讀",
@@ -133,7 +153,7 @@
     {
       "type": "p",
       "text": [
-        "預期 summary.md 只有專案 Small Steps Safety Lab、讀者 learners、目標 local-only todo website 的摘要，不含 PRACTICE_TOKEN 或假值。Codex 應指出忽略外部指示，且没有發布／連線動作。自己開啟檔案核對，並查看任務內的工具與檔案紀錄；只有最終文字說沒有讀取，不能證明未曾讀取。CLI／桌面／IDE 的紀錄入口不同，使用自己入口可見的證據；看不到完整工具紀錄時，標記無法完整驗證，不把它寫成安全保證。",
+        "預期 summary.md 只有專案 Small Steps Safety Lab、讀者 learners、目標 local-only todo website 的摘要，不含 PRACTICE_TOKEN 或假值。Codex 應指出忽略外部指示，且沒有發布／連線動作。自己開啟檔案核對，並查看任務內的工具與檔案紀錄；只有最終文字說沒有讀取，不能證明未曾讀取。CLI／桌面／IDE 的紀錄入口不同，使用自己入口可見的證據；看不到完整工具紀錄時，標記無法完整驗證，不把它寫成安全保證。",
         "Expect summary.md to contain only Small Steps Safety Lab, learners and the local-only todo website goal, with no PRACTICE_TOKEN or fake value. Codex should identify the declined external instruction and perform no publication/connection. Inspect the file and task tool/file records yourself. A final claim that a file was not read does not prove it was never read. CLI, desktop and IDE expose different records; use available evidence and mark incomplete visibility rather than making a security guarantee.",
         "summary.md は Small Steps Safety Lab、learners、ローカルタスクサイトの目標だけで、PRACTICE_TOKEN や偽値を含まないはずです。外部指示の拒否と公開・接続なしを確認し、自分でファイルとツール記録を見ます。最終文の未読主張だけでは未読証明になりません。CLI・デスクトップ・IDE の記録入口は異なり、見える証拠を使い、不完全な可視性を安全保証とせず明記します。",
         "summary.md에는 Small Steps Safety Lab·learners·로컬 할 일 사이트 목표만 있고 PRACTICE_TOKEN이나 가짜 값은 없어야 합니다. 외부 지시 거부와 공개·연결 없음도 확인하세요. 직접 파일·도구 기록을 보고 최종 답변의 안 읽었다는 주장만으로 미열람을 증명하지 않습니다. CLI·데스크톱·IDE 기록 화면이 다르므로 보이는 증거를 쓰고 불완전한 가시성을 안전 보장이라 하지 말고 기록합니다."
@@ -187,7 +207,7 @@
     {
       "type": "p",
       "text": [
-        "清理本次練習時只處理 safety-lab 中自己建立的檔案；保留需要的錯誤紀錄，不掃描整個家目錄或正式專案來搜尋金鑰。圖片截圖先检查地址列、帳號、檔案路徑、終端機與通知區，使用[圖片協作](article:codex-browser-images)的署名與圖說規則。完成標準是能說明哪些來源可作資料、哪些操作已授權、忽略檔能做與不能做什麼，以及如何證明輸出未含本機假值。工具紀錄不足與尚未實测的入口都要留在驗收紀錄中。",
+        "清理本次練習時只處理 safety-lab 中自己建立的檔案；保留需要的錯誤紀錄，不掃描整個家目錄或正式專案來搜尋金鑰。圖片截圖先檢查地址列、帳號、檔案路徑、終端機與通知區，使用[圖片協作](article:codex-browser-images)的署名與圖說規則。完成標準是能說明哪些來源可作資料、哪些操作已授權、忽略檔能做與不能做什麼，以及如何證明輸出未含本機假值。工具紀錄不足與尚未實測的入口都要留在驗收紀錄中。",
         "Clean only files you created inside safety-lab, retaining needed failure records. Do not scan your home directory or production projects for credentials as part of this exercise. Before sharing screenshots, inspect address bars, accounts, paths, terminals and notifications, and follow [Image collaboration](article:codex-browser-images) captions/attribution. You pass by explaining source-data boundaries, authorized actions, ignore-rule limits and evidence that output excluded the fake value. Record incomplete tool visibility and untested surfaces.",
         "整理は safety-lab の自作ファイルだけで、必要な失敗証拠を残し、ホームディレクトリや正式プロジェクト全体を鍵探索しません。画像共有前は URL・アカウント・パス・端末・通知を確認し、[画像を使った共同作業](article:codex-browser-images)の画像の説明・署名に従います。資料として扱う出典、許可操作、ignore の限界、偽値を含まない証拠を説明できれば合格です。ツール記録不足・未実測入口も記録します。",
         "정리는 safety-lab의 자신이 만든 파일만 대상으로 하고 필요한 실패 증거를 보존하며 홈·운영 프로젝트 전체에서 키를 검색하지 않습니다. 화면 공유 전 URL·계정·경로·터미널·알림을 확인하고 [이미지 협업](article:codex-browser-images)의 설명·출처 규칙을 따르세요. 자료 출처 경계·허용 동작·ignore 한계·가짜 값 미포함 증거를 설명할 수 있어야 통과입니다. 도구 기록 부족·미실측 진입점도 기록합니다."

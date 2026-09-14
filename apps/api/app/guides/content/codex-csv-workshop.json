@@ -42,7 +42,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "做出一個保留原始資料的 CSV 整理工具：修剪空白、統一 email 大小寫、保留第一筆有效資料、统计重複與無效列，拒絕覆寫既有檔案。閱讀約 20 分鐘、實作約 45 分鐘。準備 Python 3、Codex 與自己的空白 csv-lab；只使用下方虛構姓名及 example.test 地址。這是格式整理，不會寄信，也不能證明 email 真正存在。"
+          "text": "做出一個保留原始資料的 CSV 整理工具：修剪空白、統一 email 大小寫、保留第一筆有效資料、統計重複與無效列，拒絕覆寫既有檔案。閱讀約 20 分鐘、實作約 45 分鐘。準備 Python 3、Codex 與自己的空白 csv-lab；只使用下方虛構姓名及 example.test 地址。這是格式整理，不會寄信，也不能證明 email 真正存在。"
         },
         {
           "type": "heading",
@@ -145,7 +145,7 @@
         },
         {
           "type": "paragraph",
-          "text": "執行前確認 cleaned-01.csv 不存在。在 Windows PowerShell 記下輸入 SHA256；macOS／Linux 複製一份 contacts-before.csv 供 cmp 比較。這些備份都是自己剛建立的虛構檔案。清理程式的計數寫在 stderr，所以成功時終端機也會顯示一行 JSON；這不是失敗訊息。退出狀態要立即保存，再開啟輸出與輸入核對。"
+          "text": "執行前確認 cleaned-01.csv 不存在；macOS／Linux 的 contacts-before.csv 也須是未使用檔名，避免 cp 覆蓋舊備份。Windows PowerShell 記下輸入 SHA256；macOS／Linux 則複製自己這份虛構輸入供 cmp 比較。計數寫在 stderr，成功時仍會顯示 JSON，不能只因這個通道有文字就判定失敗。立即保存退出狀態，再核對輸出與原件。"
         },
         {
           "type": "code",
@@ -167,7 +167,7 @@
         },
         {
           "type": "paragraph",
-          "text": "預期退出 0，計數為 kept 2、duplicate 1、invalid 1，輸出兩筆且順序保留，PowerShell 比對 True 或 cmp 無差異。接著原指令再執行一次，因 cleaned-01.csv 已存在應退出 1，既有輸出內容不變；不要先刪掉它來假装通過覆寫防護。再把輸入與輸出都指定 contacts.csv，應拒絕且原件不變。這些失敗是驗收成功的一部分。"
+          "text": "預期退出 0，計數為 kept 2、duplicate 1、invalid 1，輸出兩筆且順序保留，PowerShell 比對 True 或 cmp 無差異。接著原指令再執行一次，因 cleaned-01.csv 已存在應退出 1，既有輸出內容不變；不要先刪掉它來假裝通過覆寫防護。再把輸入與輸出都指定 contacts.csv，應拒絕且原件不變。這些失敗是驗收成功的一部分。"
         },
         {
           "type": "heading",
@@ -183,6 +183,27 @@
           "label": "contacts-unicode.csv",
           "language": "csv",
           "code": "name,email\n\"林, Alex\",alex@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "延伸：保留第一筆有效資料"
+        },
+        {
+          "type": "code",
+          "label": "contacts-first-valid.csv",
+          "language": "csv",
+          "code": "name,email\n ,first@example.test\nFirst valid,FIRST@example.test\nLater duplicate,first@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "用這份新增輸入與尚不存在的 cleaned-first-valid.csv 執行同一程式，其他參數不變。預期 kept 1、duplicate 1、invalid 1：第一筆姓名空白而無效，不應先占住 email；第二筆才是第一筆有效資料；第三筆才算重複。若輸出沒有 First valid，檢查 seen 是在資料通過驗證後才加入，而不是先去重再驗證。原 contacts.csv 與 cleaned-01.csv 都保持原樣。"
+        },
+        {
+          "type": "code",
+          "label": "cleaned-first-valid.csv 的預期內容",
+          "language": "csv",
+          "code": "name,email\nFirst valid,first@example.test\n"
         },
         {
           "type": "heading",
@@ -407,7 +428,7 @@
         },
         {
           "type": "paragraph",
-          "text": "执行前确认 cleaned-01.csv 不存在。在 Windows PowerShell 记下输入 SHA256；macOS／Linux 复制一份 contacts-before.csv 供 cmp 比较。这些备份都是自己刚建立的虚构档案。清理程式的计数写在 stderr，所以成功时终端机也会显示一行 JSON；这不是失败讯息。退出状态要立即保存，再开启输出与输入核对。"
+          "text": "执行前确认 cleaned-01.csv 不存在；macOS／Linux 的 contacts-before.csv 也须是未使用档名，避免 cp 覆盖旧备份。Windows PowerShell 记下输入 SHA256；macOS／Linux 则复制自己这份虚构输入供 cmp 比较。计数写在 stderr，成功时仍会显示 JSON，不能只因这个通道有文字就判定失败。立即保存退出状态，再核对输出与原件。"
         },
         {
           "type": "code",
@@ -445,6 +466,27 @@
           "label": "contacts-unicode.csv",
           "language": "csv",
           "code": "name,email\n\"林, Alex\",alex@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "延伸：保留第一笔有效资料"
+        },
+        {
+          "type": "code",
+          "label": "contacts-first-valid.csv",
+          "language": "csv",
+          "code": "name,email\n ,first@example.test\nFirst valid,FIRST@example.test\nLater duplicate,first@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "用这份新增输入与尚不存在的 cleaned-first-valid.csv 执行同一程式，其他参数不变。预期 kept 1、duplicate 1、invalid 1：第一笔姓名空白而无效，不应先占住 email；第二笔才是第一笔有效资料；第三笔才算重复。若输出没有 First valid，检查 seen 是在资料通过验证后才加入，而不是先去重再验证。原 contacts.csv 与 cleaned-01.csv 都保持原样。"
+        },
+        {
+          "type": "code",
+          "label": "cleaned-first-valid.csv 的预期内容",
+          "language": "csv",
+          "code": "name,email\nFirst valid,first@example.test\n"
         },
         {
           "type": "heading",
@@ -669,7 +711,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Confirm cleaned-01.csv does not exist. Record the input SHA256 in Windows PowerShell, or copy contacts-before.csv for cmp on macOS/Linux. These are your own new fictional files. Counts go to stderr, so success also displays one JSON line; that is not an error. Capture exit status immediately, then inspect output and compare input."
+          "text": "Check that cleaned-01.csv is unused. On macOS/Linux, contacts-before.csv must also be unused so cp cannot overwrite a backup. Record the input SHA256 in PowerShell or copy this fictional input for cmp on macOS/Linux. Counts are written to stderr even on success; text on that channel alone is not failure. Save exit status immediately, then compare output and input."
         },
         {
           "type": "code",
@@ -707,6 +749,27 @@
           "label": "contacts-unicode.csv",
           "language": "csv",
           "code": "name,email\n\"林, Alex\",alex@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Extension: retain the first valid row"
+        },
+        {
+          "type": "code",
+          "label": "contacts-first-valid.csv",
+          "language": "csv",
+          "code": "name,email\n ,first@example.test\nFirst valid,FIRST@example.test\nLater duplicate,first@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Run the same program with this new input and an unused cleaned-first-valid.csv target. Expect kept 1, duplicate 1, invalid 1. The blank-name row must not reserve the email; First valid is the first valid row, and the final row is the duplicate. If First valid is missing, check that seen is updated only after validation. Preserve contacts.csv and cleaned-01.csv."
+        },
+        {
+          "type": "code",
+          "label": "Expected cleaned-first-valid.csv content",
+          "language": "csv",
+          "code": "name,email\nFirst valid,first@example.test\n"
         },
         {
           "type": "heading",
@@ -931,7 +994,7 @@
         },
         {
           "type": "paragraph",
-          "text": "cleaned-01.csv が未作成か確認し、Windows は入力 SHA256、macOS／Linux は contacts-before.csv のコピーを cmp 用に用意します。全て自分の架空ファイルです。集計は stderr に出るため成功でも JSON が1行表示され、エラーではありません。直後に終了状態を保存し出力と入力を確認します。"
+          "text": "cleaned-01.csv が未使用か確認します。macOS／Linux は cp が旧バックアップを上書きしないよう contacts-before.csv も未使用にします。PowerShell では入力 SHA256、macOS／Linux では架空入力コピーと cmp を使います。成功時も件数 JSON は stderr に出るため、その文字だけで失敗としません。終了値をすぐ保存して入出力を照合します。"
         },
         {
           "type": "code",
@@ -969,6 +1032,27 @@
           "label": "contacts-unicode.csv",
           "language": "csv",
           "code": "name,email\n\"林, Alex\",alex@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "応用：最初の有効行を保持"
+        },
+        {
+          "type": "code",
+          "label": "contacts-first-valid.csv",
+          "language": "csv",
+          "code": "name,email\n ,first@example.test\nFirst valid,FIRST@example.test\nLater duplicate,first@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じプログラムにこの新入力と未使用の cleaned-first-valid.csv を渡します。kept 1、duplicate 1、invalid 1 が期待値です。空名の無効行は email を占有せず、First valid が最初の有効行、最後が重複です。First valid が出なければ seen への追加が検証後か確認します。contacts.csv と cleaned-01.csv は保持します。"
+        },
+        {
+          "type": "code",
+          "label": "cleaned-first-valid.csv の期待内容",
+          "language": "csv",
+          "code": "name,email\nFirst valid,first@example.test\n"
         },
         {
           "type": "heading",
@@ -1193,7 +1277,7 @@
         },
         {
           "type": "paragraph",
-          "text": "cleaned-01.csv가 없는지 확인하고 Windows는 입력 SHA256, macOS/Linux는 cmp용 contacts-before.csv 복사본을 준비합니다. 모두 자신이 만든 가상 파일입니다. 집계는 stderr에 출력되어 성공해도 JSON 한 줄이 보이며 오류가 아닙니다. 종료 상태를 즉시 저장한 뒤 출력·입력을 확인하세요."
+          "text": "cleaned-01.csv가 없는지 확인합니다. macOS/Linux의 contacts-before.csv도 사용하지 않은 이름이어야 cp가 이전 백업을 덮어쓰지 않습니다. PowerShell은 입력 SHA256, macOS/Linux는 가상 입력 사본과 cmp를 사용합니다. 성공 시에도 개수 JSON이 stderr에 나오므로 해당 채널의 텍스트만으로 실패라 판단하지 마세요. 종료 상태를 즉시 저장하고 입출력을 비교합니다."
         },
         {
           "type": "code",
@@ -1231,6 +1315,27 @@
           "label": "contacts-unicode.csv",
           "language": "csv",
           "code": "name,email\n\"林, Alex\",alex@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "확장: 첫 번째 유효 행 보존"
+        },
+        {
+          "type": "code",
+          "label": "contacts-first-valid.csv",
+          "language": "csv",
+          "code": "name,email\n ,first@example.test\nFirst valid,FIRST@example.test\nLater duplicate,first@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 프로그램에 새 입력과 아직 없는 cleaned-first-valid.csv를 지정합니다. kept 1, duplicate 1, invalid 1이 기대값입니다. 빈 이름의 무효 행이 email을 선점하면 안 되며 First valid가 첫 유효 행이고 마지막 행이 중복입니다. First valid가 없으면 검증 후 seen에 추가하는지 확인하세요. contacts.csv와 cleaned-01.csv는 그대로 유지합니다."
+        },
+        {
+          "type": "code",
+          "label": "cleaned-first-valid.csv 예상 내용",
+          "language": "csv",
+          "code": "name,email\nFirst valid,first@example.test\n"
         },
         {
           "type": "heading",

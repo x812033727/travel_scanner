@@ -1,18 +1,22 @@
 """Verify the final workshops in temporary folders and build the CSV download."""
-from datetime import datetime, timezone
-from hashlib import sha256
 import json
-from pathlib import Path
+import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
-from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
+from datetime import datetime, timezone
+from hashlib import sha256
+from pathlib import Path
+from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parents[2]
 EXAMPLES = ROOT / "docs/codex-learning/examples"
 modules = {id_: json.loads((ROOT / f"docs/codex-learning/deep/modules/{id_}.json").read_text(encoding="utf-8")) for id_ in [12, 31, 32, 58, 59, 60]}
 checks = []
+git_env = {key: value for key, value in os.environ.items() if not key.startswith("GIT_")}
+git_env.update(GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_GLOBAL=os.devnull, GIT_TERMINAL_PROMPT="0")
 
 
 def code(id_, label):
@@ -20,7 +24,7 @@ def code(id_, label):
 
 
 def run(command, cwd, *, expected=0):
-    result = subprocess.run(command, cwd=cwd, capture_output=True, encoding="utf-8", timeout=30)
+    result = subprocess.run(command, cwd=cwd, env=git_env if command[0] == "git" else None, capture_output=True, encoding="utf-8", timeout=30, check=False)
     assert result.returncode == expected, result.stdout + result.stderr
     return result
 
@@ -58,7 +62,7 @@ Expected / 預期 / 预期 / 期待 / 예상: kept=2, duplicate=1, invalid=1; 3 
 This writes a local output; it sends no email and does not publish anything.
 教學 / 教程 / Tutorial / 教材 / 학습: https://mokaair.com/en/life/codex-csv-workshop
 Use the site's language switcher for zh-TW, zh-CN, en, ja and ko.
-""".encode("utf-8")
+""".encode()
 archive_path = ROOT / "apps/web/public/guides/codex-csv-workshop/contacts-practice.zip"
 archive_path.parent.mkdir(parents=True, exist_ok=True)
 with ZipFile(archive_path, "w", compression=ZIP_DEFLATED) as archive:
@@ -71,6 +75,7 @@ checks.append("The deterministic CSV ZIP contains the exact article input, refer
 with tempfile.TemporaryDirectory(prefix="codex-workshop-reference-") as temporary:
     root = Path(temporary).resolve()
     assert root.parent == Path(tempfile.gettempdir()).resolve()
+    assert root.name.startswith("codex-workshop-reference-")
     csv_folder = root / "csv"
     csv_folder.mkdir()
     with ZipFile(archive_path) as archive:
@@ -98,6 +103,15 @@ with tempfile.TemporaryDirectory(prefix="codex-workshop-reference-") as temporar
         run([*command, "bad.csv", target], csv_folder, expected=1)
         assert not (csv_folder / target).exists()
     checks.append("Quoted Unicode is preserved; missing/extra columns, reversed headers and malformed quoting produce no output")
+    first_input = code(32, "contacts-first-valid.csv")
+    (csv_folder / "contacts-first-valid.csv").write_text(first_input, encoding="utf-8")
+    first_result = run([*command, "contacts-first-valid.csv", "cleaned-first-valid.csv"], csv_folder)
+    assert json.loads(first_result.stderr) == {"kept": 1, "duplicate": 1, "invalid": 1}
+    assert (csv_folder / "cleaned-first-valid.csv").read_text(encoding="utf-8") == code(32, "cleaned-first-valid.csv 的預期內容")
+    assert (csv_folder / "contacts-first-valid.csv").read_text(encoding="utf-8") == first_input
+    assert (csv_folder / "contacts.csv").read_bytes() == original
+    assert (csv_folder / "cleaned-01.csv").read_bytes() == output
+    checks.append("An invalid first row does not reserve its email; exact later valid output and 1/1/1 counts are verified while prior files remain unchanged")
     tests = [sys.executable, "-X", "utf8", "-m", "unittest", "-v", "test_clean_contacts.py"]
     assert "Ran 3 tests" in run(tests, csv_folder).stderr
     (csv_folder / "clean_contacts.py").write_text(files["clean_contacts.py"].decode("utf-8").replace('target.open("x"', 'target.open("w"'), encoding="utf-8")
@@ -120,14 +134,24 @@ with tempfile.TemporaryDirectory(prefix="codex-workshop-reference-") as temporar
     helper = code(58, "core.mjs 的參考新增函式")
     (maintenance / "core.mjs").write_text(original_files["core.mjs"].decode("utf-8") + "\n" + helper, encoding="utf-8")
     app = original_files["app.js"].decode("utf-8")
-    app = app.replace('import { addTask,', 'import { countTasks, addTask,', 1)
+    old_import = app.splitlines()[0]
+    new_import = code(58, "app.js：替換原本的 core 匯入行").rstrip("\n")
+    app = app.replace(old_import, new_import, 1)
     old = 'document.querySelector("#count").textContent = `${tasks.filter((task) => !task.completed).length} active / ${tasks.length} total`;'
     assert old in app
-    app = app.replace(old, 'const counts = countTasks(tasks);\n  document.querySelector("#count").textContent = `${counts.active} active / ${counts.total} total`;')
+    new_count = code(58, "app.js：替換 render 中原本的統計賦值").rstrip("\n")
+    app = app.replace(old, new_count.replace("\n", "\n  "))
     (maintenance / "app.js").write_text(app, encoding="utf-8")
     node_tests(maintenance, ["core.test.mjs", "maintenance.test.mjs"], 6, 0)
     assert all((maintenance / name).read_bytes() == original_files[name] for name in ["core.test.mjs", "index.html", "style.css"])
     checks.append("Maintenance starts with 3 passing tests, exposes 3 missing-helper failures, then passes all 6 with only the planned code changes")
+    (maintenance / "app.js").write_text(app.replace("countTasks(tasks)", "countTasks(shown)"), encoding="utf-8")
+    node_tests(maintenance, ["core.test.mjs", "maintenance.test.mjs"], 6, 0)
+    probe = "import {addTask,toggleTask,visibleTasks,countTasks} from './core.mjs';const tasks=toggleTask(addTask(addTask([],'Read','a'),'Build','b'),'a');console.log(JSON.stringify({full:countTasks(tasks),filtered:countTasks(visibleTasks(tasks,'completed'))}));"
+    observed = json.loads(run(["node", "--input-type=module", "-e", probe], maintenance).stdout)
+    assert observed == {"full": {"active": 1, "total": 2}, "filtered": {"active": 0, "total": 1}}
+    (maintenance / "app.js").write_text(app, encoding="utf-8")
+    checks.append("Miswiring to shown leaves all six core tests green; direct data evaluation demonstrates the 0/1 versus 1/2 difference without claiming browser execution")
     changed = (maintenance / "core.mjs").read_text(encoding="utf-8")
     bad = helper.replace('active: tasks.filter((task) => !task.completed).length', 'active: tasks.length')
     (maintenance / "core.mjs").write_text(changed.replace(helper, bad), encoding="utf-8")
@@ -136,7 +160,9 @@ with tempfile.TemporaryDirectory(prefix="codex-workshop-reference-") as temporar
     node_tests(maintenance, ["core.test.mjs", "maintenance.test.mjs"], 6, 0)
     for name, body in original_files.items():
         (maintenance / name).write_bytes(body)
-    (maintenance / "maintenance.test.mjs").unlink()
+    extra_test = maintenance / "maintenance.test.mjs"
+    assert extra_test.resolve().parent == maintenance and extra_test.name == "maintenance.test.mjs"
+    extra_test.unlink()
     node_tests(maintenance, ["core.test.mjs"], 3, 0)
     assert {p.name: p.read_bytes() for p in maintenance.iterdir() if p.is_file()} == original_files
     checks.append("The new tests catch incorrect active counts; targeted restoration returns all five original files and 3 passing tests")
@@ -148,6 +174,34 @@ with tempfile.TemporaryDirectory(prefix="codex-workshop-reference-") as temporar
     assert not (paths / "other/marker.md").exists()
     assert (paths / "other/../project/marker.md").read_text(encoding="utf-8") == "# Correct folder: PATH-PRACTICE-1\n"
     checks.append("The path drill's missing and explicit-relative paths match its declared fixture")
+    pwsh = shutil.which("pwsh")
+    assert pwsh, "The Windows PowerShell status example requires pwsh for this check"
+    powershell = run([pwsh, "-NoProfile", "-NonInteractive", "-Command", code(12, "Windows PowerShell：目前在 project")], paths / "project")
+    assert powershell.stdout.splitlines() == ["False", "# Correct folder: PATH-PRACTICE-1", "True"]
+    assert "marker.md" in powershell.stderr
+    assert (paths / "project/marker.md").read_text(encoding="utf-8") == code(12, "project/marker.md")
+    checks.append("The exact PowerShell cmdlet-status exercise yields False then True and preserves the marker; POSIX shell execution remains untested")
+
+    safety = root / "safety-lab"
+    safety.mkdir()
+    safety_files = {".env": code(59, ".env（只有假值）"), ".gitignore": code(59, ".gitignore（僅此新練習）"), "brief.md": code(59, "brief.md")}
+    for name, value in safety_files.items():
+        (safety / name).write_text(value, encoding="utf-8")
+    run(["git", "init"], safety)
+    assert run(["git", "check-ignore", "--", ".env"], safety).stdout.strip() == ".env"
+    assert run(["git", "ls-files", "--", ".env"], safety).stdout == ""
+    assert all((safety / name).read_text(encoding="utf-8") == value for name, value in safety_files.items())
+    checks.append("A fresh isolated Git repository ignores the fictional env file without tracking or changing it; no model resistance or read-denial claim")
+
+    broken = {p.name: p.read_bytes() for p in (ROOT / "docs/codex-learning/practice/broken").iterdir() if p.is_file()}
+    for name in ["efficiency-a", "efficiency-b"]:
+        target = root / name
+        target.mkdir()
+        for filename, value in broken.items():
+            (target / filename).write_bytes(value)
+        node_tests(target, ["core.test.mjs"], 2, 1)
+        assert {p.name: p.read_bytes() for p in target.iterdir() if p.is_file()} == broken
+    checks.append("Both efficiency reference copies reproduce the same 2-pass/1-failure baseline without edits; no usage or model-time measurements")
 
 report = {"checkedAt": datetime.now(timezone.utc).isoformat(), "status": "passed", "checks": checks,
           "environment": "Windows; local Python and Node; isolated fictional files; explicit reference edits",
