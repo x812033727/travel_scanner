@@ -155,11 +155,20 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [x] Complete fictional practice materials and reference checks, with platform and model-execution limits recorded.
 - [x] Run a targeted Japanese terminology review across the series and correct 26 affected lessons without changing copyable code or link targets.
 - [x] Visually inspect six existing 390/1280px practice screenshots and provide accurate five-language alternative text and dimension captions.
+- [x] Deepen five representative drafts with independent comparison, host identification, rule-condition checks, CLI input/resume details and skill missing-material recovery; compile matching five-language packs and record the exact targeted review scope.
 - [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
 - [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
 - [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
 
-## Current review evidence
+## Representative depth revision
+
+After planning checkpoint 2011e83b, revised lessons 03, 04, 10, 11 and 23 in four author languages and rebuilt all five locale packs. Added independent backup/comparison, a host-side Remote marker, instruction-condition evidence, CLI flags/resume behavior, and missing-material skill recovery. New sections are aligned across languages; this is not full-text editorial sign-off.
+
+docs/codex-learning/evidence/representative-depth-review.json records final source/pack hashes, seven official document bodies reviewed, read-only CLI help checks, and isolated practice tests. Expected: 3 pass; broken: 2 pass/1 fail; missing test file: error; restored: 3 pass. No model, skill invocation, Remote pairing, browser preview or new screenshots.
+
+Series integrity passed for all 60 lessons/300 documents; 9 API content tests and 9 compiler tests passed. All original code, source lists and image blocks in the five revised packs remain intact. Audit: 0 errors/25 warnings, including one added English-length advisory for the necessary skill failure/recovery explanation. Full editorial review of the representatives and remaining 55 lessons, product evidence and browser acceptance stay open. No partial PR or deployment.
+
+## Earlier review evidence
 
 docs/codex-learning/evidence/editorial-review.json records this review's precise scope and image hashes. Relative to d3f28a25, all 300 lesson documents retain identical executable code, article/external link targets and sources. Non-Japanese prose remains identical; image text is localized.
 

@@ -88,7 +88,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "四種輸入要分清楚"
+          "text": "五種輸入要分清楚"
         },
         {
           "type": "table",
@@ -99,6 +99,12 @@
             "會發生什麼"
           ],
           "rows": [
+            [
+              "啟動參數／旗標",
+              "接在終端機命令後面",
+              "codex --help 中的 --help",
+              "控制該次命令；--help 不能單獨當成斜線指令"
+            ],
             [
               "終端機命令",
               "PowerShell／Terminal／Linux shell",
@@ -210,6 +216,10 @@
           "text": "合格計畫應指出相關檔案、按鈕位置、資料操作、儲存方式與測試案例，不能只有「修改、測試、完成」三個空泛步驟。檢查是否誤提不存在的 React 元件或資料庫。發現不符就補充限制，直到你能用計畫判斷成果。之後要實作，依目前介面的模式控制與提示交付；計畫本身不代表已改好網站。"
         },
         {
+          "type": "paragraph",
+          "text": "如果 Codex 正在工作，/plan 暫時無法使用。先等這次工作結束；確實需要中止時再使用目前介面的停止功能，核對已完成的修改後才送出規劃要求。不要重複傳送多次 /plan，或以為切換模式會撤銷先前操作。"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "第四步：退出並找到同一個工作階段"
@@ -233,6 +243,25 @@
         {
           "type": "paragraph",
           "text": "官方文件也提供 codex resume --last 接續目前目錄最近的工作階段；加 --all 會擴大搜尋範圍。這些選項先查 resume --help 再使用。接續後請它摘要剛才的計畫和未完成事項，並核對路徑。能說出功能不表示檔案就在正確位置，兩項都要查。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "續接時，啟動位置與原工作階段的儲存位置若不同，CLI 可能要求選擇要使用哪個目錄；tui.resume_cwd 設定也會影響選擇。對這份練習先核對 codex-practice 的完整路徑，不要只靠對話標題。明確的 --cd 覆寫會優先於該設定；新手先不要加覆寫，詳見"
+            },
+            {
+              "type": "article",
+              "text": "工作階段與續接",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -528,7 +557,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "四种输入要分清楚"
+          "text": "五种输入要分清楚"
         },
         {
           "type": "table",
@@ -539,6 +568,12 @@
             "会发生什么"
           ],
           "rows": [
+            [
+              "启动参数／旗标",
+              "接在终端机命令后面",
+              "codex --help 中的 --help",
+              "控制该次命令；--help 不能单独当成斜线指令"
+            ],
             [
               "终端机命令",
               "PowerShell／Terminal／Linux shell",
@@ -650,6 +685,10 @@
           "text": "合格计划应指出相关档案、按钮位置、资料操作、储存方式与测试案例，不能只有「修改、测试、完成」三个空泛步骤。检查是否误提不存在的 React 元件或资料库。发现不符就补充限制，直到你能用计划判断成果。之后要实作，依目前介面的模式控制与提示交付；计划本身不代表已改好网站。"
         },
         {
+          "type": "paragraph",
+          "text": "如果 Codex 正在工作，/plan 暂时无法使用。先等这次工作结束；确实需要中止时再使用目前介面的停止功能，核对已完成的修改后才送出规划要求。不要重复传送多次 /plan，或以为切换模式会撤销先前操作。"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "第四步：退出并找到同一个工作阶段"
@@ -673,6 +712,25 @@
         {
           "type": "paragraph",
           "text": "官方文件也提供 codex resume --last 接续目前目录最近的工作阶段；加 --all 会扩大搜寻范围。这些选项先查 resume --help 再使用。接续后请它摘要刚才的计划和未完成事项，并核对路径。能说出功能不表示档案就在正确位置，两项都要查。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "续接时，启动位置与原工作阶段的储存位置若不同，CLI 可能要求选择要使用哪个目录；tui.resume_cwd 设定也会影响选择。对这份练习先核对 codex-practice 的完整路径，不要只靠对话标题。明确的 --cd 覆写会优先于该设定；新手先不要加覆写，详见"
+            },
+            {
+              "type": "article",
+              "text": "工作阶段与续接",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -968,7 +1026,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "Distinguish four kinds of input"
+          "text": "Distinguish five kinds of input"
         },
         {
           "type": "table",
@@ -979,6 +1037,12 @@
             "Effect"
           ],
           "rows": [
+            [
+              "Startup option or flag",
+              "After a terminal command",
+              "--help in codex --help",
+              "Controls that command; --help is not a standalone slash command"
+            ],
             [
               "Shell command",
               "PowerShell / Terminal / Linux shell",
@@ -1090,6 +1154,10 @@
           "text": "A useful plan identifies files, button placement, data operations, persistence and test cases. “Edit, test, finish” is insufficient. Check for invented React components or a database that this project does not have. Add constraints until you can use the plan to judge results. When ready to implement later, follow the current interface's mode controls and prompts. A plan does not establish that the website has changed."
         },
         {
+          "type": "paragraph",
+          "text": "While Codex is working, /plan is temporarily unavailable. Wait for that work to finish. If you actually need to interrupt it, use the current interface's stop control and inspect completed changes before requesting a plan. Repeating /plan or switching modes does not undo earlier actions."
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "Step 4: exit and locate the same session"
@@ -1113,6 +1181,25 @@
         {
           "type": "paragraph",
           "text": "The documentation also provides codex resume --last for the latest session in the current directory; --all broadens the search. Check resume --help before using these options. After resuming, ask for the previous plan and outstanding work, then verify the path. Remembering the feature does not prove the files are in the right location."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "When the launch directory differs from the saved session directory, the CLI may ask which directory to use; tui.resume_cwd also affects that choice. Check the full codex-practice path rather than trusting the chat title. An explicit --cd overrides that setting. Beginners can leave overrides out and consult "
+            },
+            {
+              "type": "article",
+              "text": "sessions and resuming",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1404,7 +1491,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "四つの入力を区別する"
+          "text": "五つの入力を区別する"
         },
         {
           "type": "table",
@@ -1415,6 +1502,12 @@
             "結果"
           ],
           "rows": [
+            [
+              "起動オプション／フラグ",
+              "ターミナルのコマンドに続ける",
+              "codex --help の --help",
+              "そのコマンドの動作を指定する。単独のスラッシュコマンドではない"
+            ],
             [
               "シェルコマンド",
               "PowerShell / Terminal / Linux shell",
@@ -1526,6 +1619,10 @@
           "text": "良い計画はファイル、ボタン位置、データ操作、保存、テスト例を示します。「変更、テスト、完了」だけでは不十分です。存在しない React コンポーネントやデータベースを想定していないか確認し、成果を判断できるまで条件を補います。後で実装する際は現在の画面のモード操作に従います。計画があることはサイト変更済みの証明ではありません。"
         },
         {
+          "type": "paragraph",
+          "text": "Codex の作業中は /plan を一時的に使えません。まず作業の終了を待ちます。中断が必要なら現在の画面の停止操作を使い、すでに行われた変更を確認してから計画を依頼してください。/plan の連続送信やモード切り替えで、過去の操作が元に戻るわけではありません。"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "手順 4：終了して同じセッションを探す"
@@ -1549,6 +1646,25 @@
         {
           "type": "paragraph",
           "text": "codex resume --last は現在のディレクトリの直近セッションを再開し、--all は検索範囲を広げます。使う前に resume --help を確認します。再開後は前の計画と残作業を要約させ、パスも確認します。機能を覚えているだけではファイルの場所が正しいとは限りません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "起動場所と保存されたセッションの作業場所が異なると、CLI が使用するディレクトリを尋ねることがあります。tui.resume_cwd の設定も関係します。会話のタイトルだけで判断せず、codex-practice の絶対パスを確認してください。明示した --cd はその設定より優先されます。最初は上書き指定を付けず、"
+            },
+            {
+              "type": "article",
+              "text": "セッションの再開",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "を参照します。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1836,7 +1952,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "네 가지 입력 구분"
+          "text": "다섯 가지 입력 구분"
         },
         {
           "type": "table",
@@ -1847,6 +1963,12 @@
             "결과"
           ],
           "rows": [
+            [
+              "시작 옵션／플래그",
+              "터미널 명령 뒤에 붙임",
+              "codex --help의 --help",
+              "해당 명령의 동작을 지정. 독립된 슬래시 명령이 아님"
+            ],
             [
               "셸 명령",
               "PowerShell / Terminal / Linux shell",
@@ -1958,6 +2080,10 @@
           "text": "좋은 계획은 관련 파일, 버튼 위치, 데이터 처리, 저장 방식, 테스트 사례를 밝힙니다. 수정, 테스트, 완료만으로는 부족합니다. 존재하지 않는 React 컴포넌트나 데이터베이스를 가정하지 않는지 확인하고 결과를 판단할 수 있을 때까지 조건을 보완합니다. 나중에 구현할 때는 현재 UI의 모드 제어와 안내를 따릅니다. 계획이 있다고 사이트가 수정된 것은 아닙니다."
         },
         {
+          "type": "paragraph",
+          "text": "Codex가 작업 중일 때는 /plan을 일시적으로 사용할 수 없습니다. 우선 작업이 끝나기를 기다리세요. 중단이 필요하다면 현재 화면의 중지 기능을 사용하고 이미 완료된 변경을 확인한 뒤 계획을 요청합니다. /plan을 반복 전송하거나 모드를 바꿔도 이전 작업이 되돌아가지는 않습니다."
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "4단계: 종료 후 같은 세션 찾기"
@@ -1981,6 +2107,25 @@
         {
           "type": "paragraph",
           "text": "codex resume --last는 현재 폴더의 최근 세션을 재개하며 --all은 검색 범위를 넓힙니다. 사용 전에 resume --help를 확인합니다. 재개 후 이전 계획과 남은 일을 요약하게 하고 경로도 확인합니다. 기능을 기억한다고 파일 위치까지 올바른 것은 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "시작 위치와 저장된 세션의 작업 위치가 다르면 CLI가 사용할 디렉터리를 물을 수 있으며 tui.resume_cwd 설정도 영향을 줍니다. 대화 제목만 믿지 말고 codex-practice의 전체 경로를 확인하세요. 명시한 --cd는 이 설정보다 우선합니다. 처음에는 덮어쓰기 옵션을 추가하지 말고 "
+            },
+            {
+              "type": "article",
+              "text": "세션 이어 하기",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하세요."
+            }
+          ]
         },
         {
           "type": "heading",

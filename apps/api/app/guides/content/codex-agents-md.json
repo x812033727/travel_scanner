@@ -138,6 +138,35 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方規則發現流程找不到專案根目錄時，只檢查目前目錄；所以本例必須從 codex-practice 根目錄開始，不能從它的任意子資料夾啟動後假定會往上找到規則。已有儲存庫的根目錄與子目錄比較見"
+            },
+            {
+              "type": "article",
+              "text": "規則層級",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": "。需要拆分長文件時看"
+            },
+            {
+              "type": "article",
+              "text": "規則與參考資料分工",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "第一步：確認位置與檔名"
@@ -222,6 +251,46 @@
         {
           "type": "paragraph",
           "text": "正常案例是修改範圍正確、既有資料仍在、交付紀錄符合規則。邊界案例是在無瀏覽器環境中要求檢查：合格回應應說明限制及待手動確認項目，不能捏造截圖或通過結果。這也說明規則是工作指引，仍需要人或工具核對證據。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "把規則逐條對到證據"
+        },
+        {
+          "type": "table",
+          "header": [
+            "本次情況",
+            "規則要求",
+            "可以核對的證據"
+          ],
+          "rows": [
+            [
+              "只改 HTML 標題",
+              "畫面寬度、焦點、交付紀錄",
+              "指定文字與實際畫面；未執行項目明列"
+            ],
+            [
+              "改動 JavaScript",
+              "執行既有資料測試",
+              "實際命令、退出狀態與測試數量"
+            ],
+            [
+              "工具不可用",
+              "回報原因，不寫成通過",
+              "原始錯誤及 NOT RUN；沒有捏造結果"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本次只改 HTML，沒有觸發「改 JavaScript 後測試」的條件，不能因此認定 Codex 漏做。若要確認測試命令可用，可另外送出下列唯讀要求；expected 副本應是 3 個通過、0 個失敗。這只驗證命令與回報，不代表已實測所有規則分支。"
+        },
+        {
+          "type": "code",
+          "label": "同一個 Codex 任務；額外檢查測試命令",
+          "language": "text",
+          "code": "Run node --test core.test.mjs from this practice folder without editing any files.\nReport the working folder, command, exit status, and test counts.\nIf the command cannot run, quote the error and mark the check NOT RUN.\n"
         },
         {
           "type": "heading",
@@ -494,6 +563,35 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方规则发现流程找不到专案根目录时，只检查目前目录；所以本例必须从 codex-practice 根目录开始，不能从它的任意子资料夹启动后假定会往上找到规则。已有储存库的根目录与子目录比较见"
+            },
+            {
+              "type": "article",
+              "text": "规则层级",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": "。需要拆分长文件时看"
+            },
+            {
+              "type": "article",
+              "text": "规则与参考资料分工",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "第一步：确认位置与档名"
@@ -578,6 +676,46 @@
         {
           "type": "paragraph",
           "text": "正常案例是修改范围正确、既有资料仍在、交付纪录符合规则。边界案例是在无浏览器环境中要求检查：合格回应应说明限制及待手动确认项目，不能捏造截图或通过结果。这也说明规则是工作指引，仍需要人或工具核对证据。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "把规则逐条对到证据"
+        },
+        {
+          "type": "table",
+          "header": [
+            "本次情况",
+            "规则要求",
+            "可以核对的证据"
+          ],
+          "rows": [
+            [
+              "只改 HTML 标题",
+              "画面宽度、焦点、交付纪录",
+              "指定文字与实际画面；未执行项目明列"
+            ],
+            [
+              "改动 JavaScript",
+              "执行既有资料测试",
+              "实际命令、退出状态与测试数量"
+            ],
+            [
+              "工具不可用",
+              "回报原因，不写成通过",
+              "原始错误及 NOT RUN；没有捏造结果"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本次只改 HTML，没有触发「改 JavaScript 后测试」的条件，不能因此认定 Codex 漏做。若要确认测试命令可用，可另外送出下列唯读要求；expected 副本应是 3 个通过、0 个失败。这只验证命令与回报，不代表已实测所有规则分支。"
+        },
+        {
+          "type": "code",
+          "label": "同一个 Codex 任务；额外检查测试命令",
+          "language": "text",
+          "code": "Run node --test core.test.mjs from this practice folder without editing any files.\nReport the working folder, command, exit status, and test counts.\nIf the command cannot run, quote the error and mark the check NOT RUN.\n"
         },
         {
           "type": "heading",
@@ -850,6 +988,35 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Without a discoverable project root, instruction discovery checks only the current directory. Start this non-Git exercise at the codex-practice root rather than assuming a session launched in any child folder will find the parent instructions. See "
+            },
+            {
+              "type": "article",
+              "text": "instruction scopes",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": " for repository-root and subdirectory comparisons, and "
+            },
+            {
+              "type": "article",
+              "text": "splitting instructions and reference files",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": " for longer documents."
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "Step 1: check the directory and filename"
@@ -934,6 +1101,46 @@
         {
           "type": "paragraph",
           "text": "A successful case has the requested scope, preserved data and a report that follows the instructions. The boundary case is a task without browser access: a valid response states that limitation and the remaining manual checks, rather than inventing screenshots or passes. Instructions still require verification through real files and tools."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Match each instruction to evidence"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Situation",
+            "Requirement",
+            "Evidence to inspect"
+          ],
+          "rows": [
+            [
+              "Only the HTML heading changes",
+              "Viewport, focus and delivery checks",
+              "Requested text and actual screen; missing checks explicitly listed"
+            ],
+            [
+              "JavaScript changes",
+              "Run existing data tests",
+              "Actual command, exit status and test counts"
+            ],
+            [
+              "A tool is unavailable",
+              "Explain why; do not report a pass",
+              "Original error and NOT RUN, with no invented result"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The heading-only edit does not trigger the “after changing JavaScript” condition. Do not classify that alone as a missed test. You can separately check that the command works with the read-only request below; expected should produce 3 passes and 0 failures. This verifies the command and report, not every instruction branch."
+        },
+        {
+          "type": "code",
+          "label": "The same Codex task; separately check the test command",
+          "language": "text",
+          "code": "Run node --test core.test.mjs from this practice folder without editing any files.\nReport the working folder, command, exit status, and test counts.\nIf the command cannot run, quote the error and mark the check NOT RUN.\n"
         },
         {
           "type": "heading",
@@ -1202,6 +1409,35 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "プロジェクトルートを見つけられない場合、指示の探索対象は現在のディレクトリだけです。Git を使わないこの例は codex-practice 直下から開始し、任意の子フォルダーからでも親のルールが見つかるとは考えないでください。リポジトリ内の比較は"
+            },
+            {
+              "type": "article",
+              "text": "ルールの適用範囲",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": "、長い文書の分割は"
+            },
+            {
+              "type": "article",
+              "text": "ルールと参考資料の役割",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "で扱います。"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "手順 1：場所とファイル名を確認する"
@@ -1286,6 +1522,46 @@
         {
           "type": "paragraph",
           "text": "正常な例では、変更範囲が正しく、データが残り、報告が指示に沿っています。境界の例はブラウザが使えない場合です。制約と手動確認項目を示すのが適切で、スクリーンショットや成功を作り話にしてはいけません。ルールがあっても、実際のファイルやツールによる確認は必要です。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "ルールと証拠を一つずつ対応させる"
+        },
+        {
+          "type": "table",
+          "header": [
+            "今回の状況",
+            "必要な確認",
+            "確認する証拠"
+          ],
+          "rows": [
+            [
+              "HTML の見出しだけを変更",
+              "画面幅、フォーカス、結果の報告",
+              "指定文字列と実際の画面。未実施項目も明記"
+            ],
+            [
+              "JavaScript を変更",
+              "既存のデータテストを実行",
+              "実際のコマンド、終了状態、テスト件数"
+            ],
+            [
+              "ツールを使えない",
+              "理由を示し、合格とは書かない",
+              "元のエラーと NOT RUN。結果を作らない"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "見出しだけの変更では「JavaScript を変更した後」という条件は成立しません。それだけでテスト漏れとは判断しないでください。コマンドが動くかは次の読み取り専用の依頼で別途確認できます。expected は成功 3 件、失敗 0 件になる想定です。これはコマンドと報告の確認であり、ルールの全分岐を実測したことにはなりません。"
+        },
+        {
+          "type": "code",
+          "label": "同じ Codex タスク。テストコマンドを別途確認",
+          "language": "text",
+          "code": "Run node --test core.test.mjs from this practice folder without editing any files.\nReport the working folder, command, exit status, and test counts.\nIf the command cannot run, quote the error and mark the check NOT RUN.\n"
         },
         {
           "type": "heading",
@@ -1554,6 +1830,35 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "프로젝트 루트를 찾을 수 없으면 규칙 탐색은 현재 디렉터리만 확인합니다. Git을 쓰지 않는 이 실습은 codex-practice 바로 아래에서 시작하세요. 임의의 하위 폴더에서 시작해도 상위 규칙을 찾는다고 가정하면 안 됩니다. 저장소 안의 비교는 "
+            },
+            {
+              "type": "article",
+              "text": "규칙 적용 범위",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": ", 긴 문서 분리는 "
+            },
+            {
+              "type": "article",
+              "text": "규칙과 참고 자료의 역할",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "을 참고하세요."
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "1단계: 경로와 파일 이름 확인"
@@ -1638,6 +1943,46 @@
         {
           "type": "paragraph",
           "text": "정상 사례는 요청한 범위만 바뀌고 기존 데이터가 남으며 보고가 규칙을 따르는 것입니다. 경계 사례는 브라우저가 없는 환경입니다. 제한과 수동 확인 항목을 밝혀야 하며 화면이나 통과 결과를 만들어 내면 안 됩니다. 규칙이 있어도 실제 파일과 도구로 증거를 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "규칙을 증거와 하나씩 연결"
+        },
+        {
+          "type": "table",
+          "header": [
+            "상황",
+            "필요한 확인",
+            "확인할 증거"
+          ],
+          "rows": [
+            [
+              "HTML 제목만 변경",
+              "화면 너비, 포커스, 결과 보고",
+              "요청한 문자열과 실제 화면. 미실행 항목도 명시"
+            ],
+            [
+              "JavaScript 변경",
+              "기존 데이터 테스트 실행",
+              "실제 명령, 종료 상태, 테스트 수"
+            ],
+            [
+              "도구 사용 불가",
+              "이유를 설명하고 통과로 보고하지 않음",
+              "원래 오류와 NOT RUN. 결과를 지어내지 않음"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "제목만 바꾸면 “JavaScript 변경 후”라는 조건은 충족되지 않습니다. 이것만으로 테스트를 빠뜨렸다고 판단하지 마세요. 명령 실행 가능 여부는 아래 읽기 전용 요청으로 별도 확인할 수 있습니다. expected 사본은 통과 3개, 실패 0개가 예상됩니다. 이는 명령과 보고를 확인하는 것이며 모든 규칙 분기를 실측한 것은 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "같은 Codex 작업. 테스트 명령을 별도로 확인",
+          "language": "text",
+          "code": "Run node --test core.test.mjs from this practice folder without editing any files.\nReport the working folder, command, exit status, and test counts.\nIf the command cannot run, quote the error and mark the check NOT RUN.\n"
         },
         {
           "type": "heading",

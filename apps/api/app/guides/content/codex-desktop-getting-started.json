@@ -107,6 +107,34 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "先保留原始副本"
+        },
+        {
+          "type": "paragraph",
+          "text": "解壓縮後先在檔案管理員把 expected 複製成兩份並排的資料夾：codex-practice 用來修改，codex-practice-before 用來比對。兩者都應直接包含五個原始程式檔；備份放在工作資料夾外，不要放進它的子目錄。Windows 用檔案總管，macOS 用 Finder，Linux 用檔案管理員完成相同操作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "尚未建立 Git 儲存庫時，應用程式的 Git 差異功能可能無法使用。你仍可用文字編輯器開啟兩份同名檔案逐項比對；不必先學會提交或還原整個儲存庫。需要正式版本管理再接"
+            },
+            {
+              "type": "article",
+              "text": "Git 教學",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "第一步：依作業系統安裝"
         },
@@ -198,7 +226,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Linux 安裝後從應用程式選單開啟 ChatGPT，或在終端機執行 chatgpt。後續更新使用發行版套件管理器。預覽版尚未支援 Computer Use，原生 Wayland 仍有實驗性限制；這不妨礙你先練习檔案修改與手動瀏覽器驗收，也不要用 macOS 截圖代表 Linux 實際畫面。"
+          "text": "Linux 安裝後從應用程式選單開啟 ChatGPT，或在終端機執行 chatgpt。後續更新使用發行版套件管理器。預覽版尚未支援 Computer Use，原生 Wayland 仍有實驗性限制；這不妨礙你先練習檔案修改與手動瀏覽器驗收，也不要用 macOS 截圖代表 Linux 實際畫面。"
         },
         {
           "type": "heading",
@@ -252,6 +280,36 @@
         {
           "type": "paragraph",
           "text": "等待任務提供成果後，從檔案或變更檢視開啟 index.html、style.css。檢查標題字串與顏色設定是否對應需求，是否意外修改儲存格式或刪除標籤。檔案差異中的新增與刪除只是比較結果，不表示網站已發布。第一次不用同時要求登入、雲端部署與資料庫；先完成一個可以自己驗收的小範圍。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先核對差異，再看畫面"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檔案",
+            "本次應檢查的內容"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "主標題變成指定字串，其餘標籤與文字保留"
+            ],
+            [
+              "style.css",
+              "標題色彩的必要差異；實際對比度仍要看畫面"
+            ],
+            [
+              "app.js、core.mjs、core.test.mjs",
+              "與原始副本內容相同；本題沒有要求改動資料邏輯或測試"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "若多改了檔案，先要求說明每處差異，核對後只撤回本題以外的修改。不要用整個資料夾覆蓋來掩蓋原因。也不要用「只有兩個檔案變動」代替接下來的功能驗收。"
         },
         {
           "type": "heading",
@@ -540,6 +598,34 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "先保留原始副本"
+        },
+        {
+          "type": "paragraph",
+          "text": "解压缩后先在档案管理员把 expected 复制成两份并排的资料夹：codex-practice 用来修改，codex-practice-before 用来比对。两者都应直接包含五个原始程式档；备份放在工作资料夹外，不要放进它的子目录。Windows 用档案总管，macOS 用 Finder，Linux 用档案管理员完成相同操作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "尚未建立 Git 储存库时，应用程式的 Git 差异功能可能无法使用。你仍可用文字编辑器开启两份同名档案逐项比对；不必先学会提交或还原整个储存库。需要正式版本管理再接"
+            },
+            {
+              "type": "article",
+              "text": "Git 教学",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "第一步：依作业系统安装"
         },
@@ -685,6 +771,36 @@
         {
           "type": "paragraph",
           "text": "等待任务提供成果后，从档案或变更检视开启 index.html、style.css。检查标题字串与颜色设定是否对应需求，是否意外修改储存格式或删除标签。档案差异中的新增与删除只是比较结果，不表示网站已发布。第一次不用同时要求登入、云端部署与资料库；先完成一个可以自己验收的小范围。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先核对差异，再看画面"
+        },
+        {
+          "type": "table",
+          "header": [
+            "档案",
+            "本次应检查的内容"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "主标题变成指定字串，其余标签与文字保留"
+            ],
+            [
+              "style.css",
+              "标题色彩的必要差异；实际对比度仍要看画面"
+            ],
+            [
+              "app.js、core.mjs、core.test.mjs",
+              "与原始副本内容相同；本题没有要求改动资料逻辑或测试"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "若多改了档案，先要求说明每处差异，核对后只撤回本题以外的修改。不要用整个资料夹覆盖来掩盖原因。也不要用「只有两个档案变动」代替接下来的功能验收。"
         },
         {
           "type": "heading",
@@ -973,6 +1089,34 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "Keep an untouched copy first"
+        },
+        {
+          "type": "paragraph",
+          "text": "After extracting expected, use your file manager to make two sibling folders: codex-practice for edits and codex-practice-before for comparison. Each must directly contain the five source files. Keep the backup outside the working folder, not in a child directory. Use File Explorer on Windows, Finder on macOS, or your Linux file manager."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The app's Git diff features may be unavailable before you create a Git repository. You can still compare matching files in a text editor. You do not need to commit or restore an entire repository for this exercise; continue to the "
+            },
+            {
+              "type": "article",
+              "text": "Git lesson",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": " when you need version control."
+            }
+          ]
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "Step 1: install for your operating system"
         },
@@ -1118,6 +1262,36 @@
         {
           "type": "paragraph",
           "text": "After the task responds, open index.html and style.css through its file or changes view. Check the heading string and color against the request, and look for unintended storage changes or removed labels. Added and removed lines in a diff are a comparison, not publication. For the first task, keep a scope you can verify rather than adding accounts, deployment and a database at once."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Inspect files before the screen"
+        },
+        {
+          "type": "table",
+          "header": [
+            "File",
+            "Check for this request"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "The main heading matches the requested text; other labels and text remain"
+            ],
+            [
+              "style.css",
+              "Only necessary heading-color changes; contrast still needs visual inspection"
+            ],
+            [
+              "app.js, core.mjs, core.test.mjs",
+              "Contents match the untouched copy; this request does not change data logic or tests"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "If other files changed, ask for an explanation of each difference, then undo only changes outside this request. Do not overwrite the whole folder to hide the cause. “Only two files changed” also does not replace the functional checks that follow."
         },
         {
           "type": "heading",
@@ -1402,6 +1576,34 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "変更前のコピーを残す"
+        },
+        {
+          "type": "paragraph",
+          "text": "expected を展開したら、ファイルマネージャーで同じ階層に二つのコピーを作ります。編集用は codex-practice、比較用は codex-practice-before とします。どちらも直下に五つのソースファイルがあることを確認してください。バックアップは作業フォルダーの外に置き、子フォルダーにはしません。Windows はエクスプローラー、macOS は Finder、Linux はファイルマネージャーで操作します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Git リポジトリを作っていない場合、アプリの Git 差分機能を使えないことがあります。その場合も、テキストエディターで同名ファイルを開いて比較できます。この練習のためにリポジトリ全体のコミットや復元を覚える必要はありません。バージョン管理が必要になったら、"
+            },
+            {
+              "type": "article",
+              "text": "Git のレッスン",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "に進みます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "手順 1：OS に合わせてインストールする"
         },
@@ -1547,6 +1749,36 @@
         {
           "type": "paragraph",
           "text": "結果が出たらファイル表示や変更表示から index.html と style.css を開きます。見出しと色が依頼に合い、保存形式の変更やラベル削除が紛れていないか確認します。差分の追加・削除行は比較結果であり、公開されたという意味ではありません。最初からログイン、デプロイ、データベースを加えず、自分で確認できる範囲を完了します。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "画面を見る前に差分を確認する"
+        },
+        {
+          "type": "table",
+          "header": [
+            "ファイル",
+            "今回の確認内容"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "主見出しが指定文字列になり、ほかのラベルや文字は残っている"
+            ],
+            [
+              "style.css",
+              "見出しの色に必要な変更だけがある。コントラストは画面でも確認する"
+            ],
+            [
+              "app.js、core.mjs、core.test.mjs",
+              "変更前のコピーと内容が同じ。今回はデータ処理やテストの変更を依頼していない"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "ほかのファイルも変わっていたら、それぞれの差分の理由を確認してから、依頼範囲外の変更だけを戻します。原因を隠すためにフォルダー全体を上書きしないでください。また、「変更は二ファイルだけ」という確認では、この後の機能確認を代替できません。"
         },
         {
           "type": "heading",
@@ -1831,6 +2063,34 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "수정 전 사본 보관"
+        },
+        {
+          "type": "paragraph",
+          "text": "expected를 압축 해제한 뒤 파일 관리자로 같은 상위 폴더에 사본 두 개를 만듭니다. codex-practice는 수정용, codex-practice-before는 비교용입니다. 두 폴더 바로 아래에 소스 파일 다섯 개가 있어야 합니다. 백업은 작업 폴더의 하위 폴더가 아닌 외부에 둡니다. Windows에서는 파일 탐색기, macOS에서는 Finder, Linux에서는 파일 관리자를 사용합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Git 저장소를 만들지 않았다면 앱의 Git 차이 보기를 사용할 수 없을 수 있습니다. 이때도 텍스트 편집기에서 같은 이름의 파일을 열어 비교할 수 있습니다. 이 실습을 위해 저장소 전체를 커밋하거나 복원할 필요는 없습니다. 버전 관리가 필요하면 "
+            },
+            {
+              "type": "article",
+              "text": "Git 수업",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "으로 이어 가세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "1단계: 운영체제에 맞게 설치"
         },
@@ -1976,6 +2236,36 @@
         {
           "type": "paragraph",
           "text": "결과가 나오면 파일 또는 변경 보기에서 index.html과 style.css를 엽니다. 제목과 색이 요청과 맞는지, 저장 형식 변경이나 라벨 삭제가 섞이지 않았는지 확인합니다. diff의 추가와 삭제는 비교 결과이며 배포를 뜻하지 않습니다. 처음부터 로그인, 배포, 데이터베이스를 더하기보다 직접 검증할 수 있는 범위를 완성합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "화면보다 먼저 파일 차이 확인"
+        },
+        {
+          "type": "table",
+          "header": [
+            "파일",
+            "이번 요청에서 확인할 내용"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "주 제목이 요청한 문자열과 같고 다른 레이블과 문구는 유지됨"
+            ],
+            [
+              "style.css",
+              "제목 색상에 필요한 변경만 있음. 대비는 화면에서도 확인"
+            ],
+            [
+              "app.js, core.mjs, core.test.mjs",
+              "수정 전 사본과 내용이 같음. 이번 요청은 데이터 로직이나 테스트를 변경하지 않음"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "다른 파일도 바뀌었다면 각 차이의 이유를 확인한 다음 요청 범위 밖의 변경만 되돌립니다. 원인을 가리기 위해 폴더 전체를 덮어쓰지 마세요. “두 파일만 바뀌었다”는 확인도 다음 기능 검증을 대신하지 못합니다."
         },
         {
           "type": "heading",

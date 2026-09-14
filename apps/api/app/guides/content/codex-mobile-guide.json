@@ -91,6 +91,25 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "為這份副本加上辨識標記"
+        },
+        {
+          "type": "paragraph",
+          "text": "在電腦的 codex-practice 根目錄，用純文字編輯器新增 remote-check.txt。這是本篇額外的辨識檔，不是五個網站程式檔之一。若同名檔案已存在，先閱讀；不要覆寫其他工作的檔案。寫入下列一行，並在儲存前把尾端 01 改成自己選的代號。同名副本使用不同代號，不要填帳號、密碼或配對碼。"
+        },
+        {
+          "type": "code",
+          "label": "電腦：codex-practice/remote-check.txt；儲存前自行改尾端代號",
+          "language": "text",
+          "code": "REMOTE-PRACTICE-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "把代號、主機名稱與完整資料夾路徑記在自己的筆記。稍後詢問時不把代號貼給 Codex，讓它從檔案讀取；這能區分一般知識回答與讀到這份副本，仍需搭配工具紀錄核對。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "第一階段：在電腦啟用連接"
         },
@@ -155,6 +174,21 @@
         {
           "type": "paragraph",
           "text": "預期提到 core.mjs 的 addTask 會整理文字並拒絕空白，搭配表單的錯誤顯示。你可以在電腦預覽中實際輸入空白確認。正常案例是成功讀取專案；邊界案例是拒絕空白輸入，兩者都要有可比對依據。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "再核對主機與即時檔案"
+        },
+        {
+          "type": "code",
+          "label": "同一個手機 Remote 任務；代號不要貼進提示詞",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's working folder and quote its one-line content.\nReport the absolute file path and the tool used to read it.\nDo not edit files. If the file cannot be read, stop and report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "將回覆的代號與路徑對照電腦筆記，再看它是否真的有讀檔紀錄。代號不符、檔案不存在或只有猜測，都先停止後續修改，回查 Remote 選中的主機及任務。修正位置後重讀同一檔案；不要把正確代號告訴它來「修正答案」。若無法取得工具紀錄，保留該項未驗證。練習結束只移除自己新增的 remote-check.txt，保留網站原始檔。"
         },
         {
           "type": "heading",
@@ -421,6 +455,25 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "为这份副本加上辨识标记"
+        },
+        {
+          "type": "paragraph",
+          "text": "在电脑的 codex-practice 根目录，用纯文字编辑器新增 remote-check.txt。这是本篇额外的辨识档，不是五个网站程式档之一。若同名档案已存在，先阅读；不要覆写其他工作的档案。写入下列一行，并在储存前把尾端 01 改成自己选的代号。同名副本使用不同代号，不要填帐号、密码或配对码。"
+        },
+        {
+          "type": "code",
+          "label": "电脑：codex-practice/remote-check.txt；储存前自行改尾端代号",
+          "language": "text",
+          "code": "REMOTE-PRACTICE-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "把代号、主机名称与完整资料夹路径记在自己的笔记。稍后询问时不把代号贴给 Codex，让它从档案读取；这能区分一般知识回答与读到这份副本，仍需搭配工具纪录核对。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "第一阶段：在电脑启用连接"
         },
@@ -485,6 +538,21 @@
         {
           "type": "paragraph",
           "text": "预期提到 core.mjs 的 addTask 会整理文字并拒绝空白，搭配表单的错误显示。你可以在电脑预览中实际输入空白确认。正常案例是成功读取专案；边界案例是拒绝空白输入，两者都要有可比对依据。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "再核对主机与即时档案"
+        },
+        {
+          "type": "code",
+          "label": "同一个手机 Remote 任务；代号不要贴进提示词",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's working folder and quote its one-line content.\nReport the absolute file path and the tool used to read it.\nDo not edit files. If the file cannot be read, stop and report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "将回复的代号与路径对照电脑笔记，再看它是否真的有读档纪录。代号不符、档案不存在或只有猜测，都先停止后续修改，回查 Remote 选中的主机及任务。修正位置后重读同一档案；不要把正确代号告诉它来「修正答案」。若无法取得工具纪录，保留该项未验证。练习结束只移除自己新增的 remote-check.txt，保留网站原始档。"
         },
         {
           "type": "heading",
@@ -751,6 +819,25 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "Mark this particular copy"
+        },
+        {
+          "type": "paragraph",
+          "text": "On the computer, create remote-check.txt in the codex-practice root with a plain-text editor. This is an extra identification file, not one of the five website source files. Read an existing file first rather than overwriting another task's data. Write the line below, replacing the final 01 with a code you choose before saving. Give different copies different codes; do not use account details, passwords or pairing codes."
+        },
+        {
+          "type": "code",
+          "label": "Computer: codex-practice/remote-check.txt; choose your own final code before saving",
+          "language": "text",
+          "code": "REMOTE-PRACTICE-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the code, host name and full folder path in your own notes. Do not include the code in the later prompt: have Codex read it from the file. This helps distinguish a generic answer from access to this copy; also inspect the tool record."
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "Stage 1: enable the connection on the computer"
         },
@@ -815,6 +902,21 @@
         {
           "type": "paragraph",
           "text": "Expect an explanation of addTask in core.mjs trimming and rejecting blank text, together with form error feedback. You can try blank input in the computer's preview. The normal case is reading the project successfully; the boundary case is rejected whitespace. Both need evidence you can compare."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Check the host and current file again"
+        },
+        {
+          "type": "code",
+          "label": "The same mobile Remote task; do not put the code into the prompt",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's working folder and quote its one-line content.\nReport the absolute file path and the tool used to read it.\nDo not edit files. If the file cannot be read, stop and report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare the returned code and path with your computer-side notes, then inspect the file-read record. A wrong code, missing file or guessed answer means you should stop further edits and check the selected Remote host and task. Correct the location and read the same file again; do not “fix the answer” by telling Codex the code. If no tool record is available, leave that check unverified. Afterwards, remove only the remote-check.txt you created and keep the website sources."
         },
         {
           "type": "heading",
@@ -1081,6 +1183,25 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "このコピー専用の目印を付ける"
+        },
+        {
+          "type": "paragraph",
+          "text": "パソコンの codex-practice 直下に、テキストエディターで remote-check.txt を作ります。これは識別用の追加ファイルで、五つのサイト用ソースファイルには含みません。同名ファイルがあれば先に読み、別の作業のデータを上書きしないでください。次の一行を書き、保存する前に末尾の 01 を自分で選んだ識別子に変えます。コピーごとに別の識別子を使い、アカウント情報、パスワード、ペアリングコードは書きません。"
+        },
+        {
+          "type": "code",
+          "label": "パソコン：codex-practice/remote-check.txt。保存前に末尾の識別子を変更",
+          "language": "text",
+          "code": "REMOTE-PRACTICE-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "識別子、ホスト名、フォルダーの絶対パスを自分のメモに残します。後で依頼するときに識別子を教えず、ファイルから読ませてください。一般的な回答とこのコピーへのアクセスを区別する手掛かりになりますが、ツールの記録も確認します。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "段階 1：パソコンで接続を有効にする"
         },
@@ -1145,6 +1266,21 @@
         {
           "type": "paragraph",
           "text": "core.mjs の addTask が文字列を整え、空白を拒否することと、フォームのエラー表示の説明を期待します。パソコンのプレビューで空白を入力して比べられます。正常な読み取りと、空白入力という境界例の両方に照合可能な根拠が必要です。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "ホストと現在のファイルを再確認する"
+        },
+        {
+          "type": "code",
+          "label": "同じスマートフォンの Remote タスク。識別子はプロンプトに書かない",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's working folder and quote its one-line content.\nReport the absolute file path and the tool used to read it.\nDo not edit files. If the file cannot be read, stop and report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "返された識別子とパスをパソコン側のメモと照合し、実際の読み取り記録を確認します。識別子が違う、ファイルがない、推測だけで答えている場合は、その先の編集を止めて Remote のホストとタスクを確認してください。場所を修正して同じファイルを読み直し、正しい識別子を教えて「回答を修正」してはいけません。ツール記録を取得できなければ、その項目は未検証とします。練習後は自分が作った remote-check.txt だけを取り除き、サイトのソースは残します。"
         },
         {
           "type": "heading",
@@ -1411,6 +1547,25 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "이 사본만의 식별 표시 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "컴퓨터의 codex-practice 바로 아래에 텍스트 편집기로 remote-check.txt를 만듭니다. 웹사이트 소스 다섯 개와 별도로 추가하는 식별 파일입니다. 같은 이름의 파일이 있으면 먼저 읽고 다른 작업의 자료를 덮어쓰지 마세요. 아래 한 줄을 작성하되 저장 전에 끝의 01을 자신이 고른 코드로 바꿉니다. 사본마다 다른 코드를 쓰고 계정 정보, 비밀번호, 페어링 코드는 넣지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "컴퓨터: codex-practice/remote-check.txt. 저장 전에 끝의 코드를 변경",
+          "language": "text",
+          "code": "REMOTE-PRACTICE-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "코드, 호스트 이름, 전체 폴더 경로를 개인 메모에 기록합니다. 나중에 요청할 때 코드를 알려 주지 말고 파일에서 읽게 하세요. 일반적인 답변과 이 사본을 읽은 결과를 구분하는 단서가 되지만 도구 기록도 함께 확인해야 합니다."
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "1단계: 컴퓨터에서 연결 활성화"
         },
@@ -1475,6 +1630,21 @@
         {
           "type": "paragraph",
           "text": "core.mjs의 addTask가 문자열을 정리하고 공백을 거부하며 폼에서 오류를 보여 준다는 설명이 예상됩니다. 컴퓨터 미리보기에서 공백을 직접 입력해 대조할 수 있습니다. 정상적인 읽기와 공백 거부라는 경계 사례 모두 비교 가능한 근거가 필요합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "호스트와 현재 파일 다시 확인"
+        },
+        {
+          "type": "code",
+          "label": "같은 휴대전화 Remote 작업. 프롬프트에 코드를 넣지 않음",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's working folder and quote its one-line content.\nReport the absolute file path and the tool used to read it.\nDo not edit files. If the file cannot be read, stop and report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "반환된 코드와 경로를 컴퓨터에서 적은 메모와 비교하고 실제 파일 읽기 기록을 확인합니다. 코드가 다르거나 파일이 없거나 추측한 답변뿐이라면 추가 수정을 멈추고 Remote에서 선택한 호스트와 작업을 확인하세요. 위치를 바로잡고 같은 파일을 다시 읽게 합니다. 정답 코드를 알려 주어 “답변을 고치게” 하지 마세요. 도구 기록을 볼 수 없다면 해당 항목은 미검증으로 남깁니다. 실습 후에는 자신이 만든 remote-check.txt만 제거하고 웹사이트 소스는 보존합니다."
         },
         {
           "type": "heading",

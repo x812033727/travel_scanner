@@ -215,6 +215,44 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "再驗證「材料不足就停止」"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外複製 expected 成一份獨立的 incomplete 練習目錄，放入同一份技能。先把這個副本的 core.test.mjs 移到該目錄外的備份位置，保留原始 expected 與 broken 不變，再從 incomplete 開新任務選用技能。合格結果是指出缺少的檔案與檢查路徑，停止後續驗收；不能自行補寫測試、改到另一份目錄執行，或沿用先前的通過結果。完成後把備份放回原位置，再重新驗收。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這與 broken 的差別是：broken 材料齊全、測試確實執行但失敗；incomplete 尚不符合起步條件；沒有瀏覽器工具則只讓畫面項目 NOT RUN。不要把三種情況都寫成同一個 FAIL。要整理更多輸入與觸發情境，接著看"
+            },
+            {
+              "type": "article",
+              "text": "技能測試",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": "；要加入腳本與參考文件，先看"
+            },
+            {
+              "type": "article",
+              "text": "技能資源",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "常見問題、停用與還原"
         },
@@ -563,6 +601,44 @@
         {
           "type": "paragraph",
           "text": "这个比较能验证工作流程是否会忠实回报失败。档案格式检查只证明 YAML、名称与结构能解析，不证明代理真的照流程做；反过来，测试失败也可能正是技能成功找到问题。请分开保存这些证据，避免只有一个模糊的「成功」勾选。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "再验证「材料不足就停止」"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外复制 expected 成一份独立的 incomplete 练习目录，放入同一份技能。先把这个副本的 core.test.mjs 移到该目录外的备份位置，保留原始 expected 与 broken 不变，再从 incomplete 开新任务选用技能。合格结果是指出缺少的档案与检查路径，停止后续验收；不能自行补写测试、改到另一份目录执行，或沿用先前的通过结果。完成后把备份放回原位置，再重新验收。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "这与 broken 的差别是：broken 材料齐全、测试确实执行但失败；incomplete 尚不符合起步条件；没有浏览器工具则只让画面项目 NOT RUN。不要把三种情况都写成同一个 FAIL。要整理更多输入与触发情境，接著看"
+            },
+            {
+              "type": "article",
+              "text": "技能测试",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": "；要加入脚本与参考文件，先看"
+            },
+            {
+              "type": "article",
+              "text": "技能资源",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -917,6 +993,44 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "Verify the missing-material stop condition"
+        },
+        {
+          "type": "paragraph",
+          "text": "Make a separate incomplete copy of expected and add the same skill. Move only that copy's core.test.mjs to a backup outside the folder, leaving the original expected and broken intact. Start a new task in incomplete and select the skill. It should name the missing file and checked path, then stop acceptance work. It must not invent tests, run against a different copy or reuse an earlier passing result. Put the backup back in its original location before running acceptance again."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "These are different outcomes: broken has all required files and actually runs a failing test; incomplete does not meet the starting conditions; a missing browser makes only the screen checks NOT RUN. Do not collapse all three into one FAIL. Continue to "
+            },
+            {
+              "type": "article",
+              "text": "skill testing",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": " for input and trigger cases, or "
+            },
+            {
+              "type": "article",
+              "text": "skill resources",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            },
+            {
+              "type": "text",
+              "text": " before adding scripts and references."
+            }
+          ]
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "Troubleshooting, disabling and restoring"
         },
@@ -1095,7 +1209,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "Small Steps の ToDo サイトを検証する技能を作り、練習プロジェクトに保存して Codex に認識させます。有効なファイル、発見済み、選択済み、検査完了の四つの状態を区別し、正常版と故障版を比較します。読む時間は約 12 分、操作は約 25 分です。"
+          "text": "Small Steps の ToDo サイトを検証するスキルを作り、練習プロジェクトに保存して Codex に認識させます。有効なファイル、発見済み、選択済み、検査完了の四つの状態を区別し、正常版と故障版を比較します。読む時間は約 12 分、操作は約 25 分です。"
         },
         {
           "type": "rich_paragraph",
@@ -1122,7 +1236,7 @@
             },
             {
               "type": "text",
-              "text": "は技能とサービス接続の配布に使えます。"
+              "text": "はスキルとサービス接続の配布に使えます。"
             }
           ]
         },
@@ -1154,11 +1268,11 @@
           "inlines": [
             {
               "type": "text",
-              "text": "テストは Node.js、プレビューは Python 3 を使います。ブラウザがなければ技能は画面確認を未実施として手動手順を示します。指示を書くだけでツールが増えるわけではありません。"
+              "text": "テストは Node.js、プレビューは Python 3 を使います。ブラウザがなければスキルは画面確認を未実施として手動手順を示します。指示を書くだけでツールが増えるわけではありません。"
             },
             {
               "type": "link",
-              "text": "完全な技能サンプル",
+              "text": "完全なスキルサンプル",
               "url": "https://mokaair.com/guides/codex-skills/todo-acceptance.zip"
             },
             {
@@ -1174,7 +1288,7 @@
         },
         {
           "type": "paragraph",
-          "text": "技能には SKILL.md を含むフォルダーが必要です。先頭の YAML frontmatter に name と description、本文に手順を書きます。Codex は最初に名前と説明を見て、使用時に全文を読みます。「何でも手伝う」という説明は無関係の依頼にも選ばれやすくなります。"
+          "text": "スキルには SKILL.md を含むフォルダーが必要です。先頭の YAML frontmatter に name と description、本文に手順を書きます。Codex は最初に名前と説明を見て、使用時に全文を読みます。「何でも手伝う」という説明は無関係の依頼にも選ばれやすくなります。"
         },
         {
           "type": "paragraph",
@@ -1187,7 +1301,7 @@
         },
         {
           "type": "paragraph",
-          "text": "codex-practice のルートに .agents/skills/todo-acceptance を作ります。先頭の点も名前の一部で、.codex や点のない agents ではありません。Windows では次を実行します。既存のフォルダーがあれば技能を上書きする前に内容を確認します。"
+          "text": "codex-practice のルートに .agents/skills/todo-acceptance を作ります。先頭の点も名前の一部で、.codex や点のない agents ではありません。Windows では次を実行します。既存のフォルダーがあればスキルを上書きする前に内容を確認します。"
         },
         {
           "type": "code",
@@ -1203,7 +1317,7 @@
         },
         {
           "type": "paragraph",
-          "text": "テキストエディターで SKILL.md を作ります。Windows は .txt が付いていないか、Linux は大文字か確認します。必要な構成は以下です。練習プロジェクトと一緒に管理し、全プロジェクト共通の技能にはしません。"
+          "text": "テキストエディターで SKILL.md を作ります。Windows は .txt が付いていないか、Linux は大文字か確認します。必要な構成は以下です。練習プロジェクトと一緒に管理し、全プロジェクト共通のスキルにはしません。"
         },
         {
           "type": "code",
@@ -1214,7 +1328,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "手順 2：完全な技能を書く"
+          "text": "手順 2：完全なスキルを書く"
         },
         {
           "type": "paragraph",
@@ -1237,7 +1351,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Codex は技能の変更を検出します。見えなければセッションを再開し、作業場所を確認します。CLI／IDE は /skills または $ で検索できます。デスクトップでは側欄の Skills と現在の選択 UI を使います。名前が見えることは発見の証拠で、実行の証拠ではありません。"
+          "text": "Codex はスキルの変更を検出します。見えなければセッションを再開し、作業場所を確認します。CLI／IDE は /skills または $ で検索できます。デスクトップでは側欄の Skills と現在の選択 UI を使います。名前が見えることは発見の証拠で、実行の証拠ではありません。"
         },
         {
           "type": "code",
@@ -1247,7 +1361,7 @@
         },
         {
           "type": "paragraph",
-          "text": "デスクトップの選択 UI では todo-acceptance を選び、同じ検証を依頼します。このプロジェクトの SKILL.md を読み、別の同名技能ではないか確認します。同名技能は自動で統合されないため、グローバルや他の場所にもある場合はパスが重要です。"
+          "text": "デスクトップの選択 UI では todo-acceptance を選び、同じ検証を依頼します。このプロジェクトの SKILL.md を読み、別の同名スキルではないか確認します。同名スキルは自動で統合されないため、グローバルや他の場所にもある場合はパスが重要です。"
         },
         {
           "type": "heading",
@@ -1256,15 +1370,53 @@
         },
         {
           "type": "paragraph",
-          "text": "expected のコピーでは node --test core.test.mjs が 3 テスト成功のはずです。報告には実際の命令と結果を含めます。ブラウザも動かしたなら Read、Build、フィルター、再読み込み、空白入力の観察を期待します。ブラウザがなければ NOT RUN であり、成功でも技能全体の失敗でもありません。"
+          "text": "expected のコピーでは node --test core.test.mjs が 3 テスト成功のはずです。報告には実際の命令と結果を含めます。ブラウザも動かしたなら Read、Build、フィルター、再読み込み、空白入力の観察を期待します。ブラウザがなければ NOT RUN であり、成功でもスキル全体の失敗でもありません。"
         },
         {
           "type": "paragraph",
-          "text": "独立した broken コピーを作り、同じ技能をその .agents/skills に置き、その場所から新しいタスクを始めます。この版では Completed が反転し、Read が完了、Build が未完了のとき誤って Build を表示します。テストは 2 成功、1 失敗のはずです。技能は FAIL と再現手順を報告し、ソースを変更しないことを確認します。"
+          "text": "独立した broken コピーを作り、同じスキルをその .agents/skills に置き、その場所から新しいタスクを始めます。この版では Completed が反転し、Read が完了、Build が未完了のとき誤って Build を表示します。テストは 2 成功、1 失敗のはずです。スキルは FAIL と再現手順を報告し、ソースを変更しないことを確認します。"
         },
         {
           "type": "paragraph",
           "text": "これで失敗を忠実に報告する流れか比較できます。形式検証はメタデータと構造が読めることだけを示し、エージェントが手順に従った証明ではありません。逆にテスト失敗はスキルがバグを見つけた成功でもあります。一つの「成功」だけにまとめず、証拠を分けます。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "材料不足で停止することも確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "expected から独立した incomplete コピーを作り、同じスキルを入れます。そのコピーの core.test.mjs だけをフォルダー外へ退避し、元の expected と broken は変更しません。incomplete から新しいタスクを開始してスキルを選びます。欠けたファイルと確認したパスを示して受け入れ確認を止めるのが期待する動作です。テストの創作、別コピーでの実行、以前の合格結果の再利用は認めません。退避したファイルを元の場所に戻してから再確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "broken は材料がそろい、実際に実行したテストが失敗します。incomplete は開始条件を満たしません。ブラウザがない場合は画面確認だけが NOT RUN です。この三つを同じ FAIL にまとめないでください。入力や選択のケースは"
+            },
+            {
+              "type": "article",
+              "text": "スキルのテスト",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": "、スクリプトや参考資料の追加は"
+            },
+            {
+              "type": "article",
+              "text": "スキルのリソース",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            },
+            {
+              "type": "text",
+              "text": "で学べます。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1273,7 +1425,7 @@
         },
         {
           "type": "paragraph",
-          "text": "表示されない場合は .agents/skills の場所、実際の拡張子、frontmatter の二つの ---、name と description を確認します。ZIP を置いただけでは展開済み技能ではありません。直して Codex を再起動し、一覧を調べます。"
+          "text": "表示されない場合は .agents/skills の場所、実際の拡張子、frontmatter の二つの ---、name と description を確認します。ZIP を置いただけでは展開済みスキルではありません。直して Codex を再起動し、一覧を調べます。"
         },
         {
           "type": "paragraph",
@@ -1281,11 +1433,11 @@
         },
         {
           "type": "paragraph",
-          "text": "選ばれてもテストできなければ、実際のホストの Node.js と作業場所の core.test.mjs を確認します。スマートフォンの Remote でも技能とツールはホストにあります。A にインストール済みでも B にあるとは限りません。不足ツールをすべて自動インストールして前提を隠さないでください。"
+          "text": "選ばれてもテストできなければ、実際のホストの Node.js と作業場所の core.test.mjs を確認します。スマートフォンの Remote でもスキルとツールはホストにあります。A にインストール済みでも B にあるとは限りません。不足ツールをすべて自動インストールして前提を隠さないでください。"
         },
         {
           "type": "paragraph",
-          "text": "実行中の検証はタスク内で停止します。無効化は技能をプロジェクトの探索場所から外に移して保存し、再起動後に確認します。設定で無効にする場合は公式 [[skills.config]] を参照し、既存 config.toml を残します。無効化しても過去の報告やファイル変更は消えません。"
+          "text": "実行中の検証はタスク内で停止します。無効化はスキルをプロジェクトの探索場所から外に移して保存し、再起動後に確認します。設定で無効にする場合は公式 [[skills.config]] を参照し、既存 config.toml を残します。無効化しても過去の報告やファイル変更は消えません。"
         },
         {
           "type": "table",
@@ -1324,7 +1476,7 @@
         },
         {
           "type": "paragraph",
-          "text": "「Small Steps のフィルターと保存を検証」と「今日の練習目標を説明」を比較します。前者は技能に合い、後者は全検証を必要としません。選択、パス、結果を記録して説明を調整します。一度正しく選ばれただけでは全状況の検証になりません。"
+          "text": "「Small Steps のフィルターと保存を検証」と「今日の練習目標を説明」を比較します。前者はスキルに合い、後者は全検証を必要としません。選択、パス、結果を記録して説明を調整します。一度正しく選ばれただけでは全状況の検証になりません。"
         },
         {
           "type": "rich_paragraph",
@@ -1616,6 +1768,44 @@
         {
           "type": "paragraph",
           "text": "이 비교로 실패를 정확히 보고하는 절차인지 확인합니다. 형식 검증은 메타데이터와 구조가 해석된다는 뜻이며 에이전트가 절차를 따랐다는 증거는 아닙니다. 반대로 테스트 실패는 스킬이 버그를 찾은 성공일 수 있습니다. 모호한 성공 표시 하나 대신 증거를 나눠 보존합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "자료가 부족하면 멈추는지도 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "expected에서 독립적인 incomplete 사본을 만들고 같은 스킬을 넣습니다. 이 사본의 core.test.mjs만 폴더 밖의 백업 위치로 옮기고 원본 expected와 broken은 유지합니다. incomplete에서 새 작업을 시작해 스킬을 선택하세요. 누락된 파일과 확인한 경로를 알리고 검수를 멈춰야 합니다. 테스트를 새로 지어내거나 다른 사본에서 실행하거나 이전 통과 결과를 재사용하면 안 됩니다. 백업 파일을 원래 위치로 돌려놓은 뒤 다시 검수합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "broken은 자료가 갖춰져 있고 실제로 실행한 테스트가 실패합니다. incomplete는 시작 조건을 충족하지 못합니다. 브라우저가 없을 때는 화면 확인만 NOT RUN입니다. 세 상황을 모두 같은 FAIL로 기록하지 마세요. 입력과 선택 조건은 "
+            },
+            {
+              "type": "article",
+              "text": "스킬 테스트",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": ", 스크립트와 참고 자료 추가는 "
+            },
+            {
+              "type": "article",
+              "text": "스킬 리소스",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            },
+            {
+              "type": "text",
+              "text": "에서 이어서 배울 수 있습니다."
+            }
+          ]
         },
         {
           "type": "heading",
