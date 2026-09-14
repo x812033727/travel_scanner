@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">河內四天分區圖 / Hanoi 4-day itinerary zones</title>
+  <desc id="desc">示意圖，不按比例。中央是還劍湖 Hồ Hoàn Kiếm，湖北側是老城區 Phố cổ，標 Day 1 與水上木偶戲；湖南側是法國區。西邊巴亭一帶有胡志明陵與一柱寺，往南是文廟，湖西南是火爐監獄，三處都是 Day 2。北方是西湖與鎮國寺，標 Day 4。區與區之間步行或搭 Grab。右上箭頭指向內排機場 T2：約 27 公里、約 1 小時、86 路 50,000 越南盾。往東箭頭指向下龍灣、往南箭頭指向寧平長安，兩者都是 Day 3 二選一。右下小框：文廟成人門票 70,000 越南盾、火爐監獄 50,000 越南盾。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#102A2B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">河內四天分區圖：每天一個方向</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Hà Nội 4-day zones · 位置為示意、不按比例；區與區之間步行或 Grab</text>
+
+  <!-- connectors: walk or Grab -->
+  <g stroke="#5C6B6B" stroke-width="3" stroke-dasharray="10 8" fill="none">
+    <line x1="760" y1="175" x2="820" y2="245"/>
+    <line x1="500" y1="340" x2="820" y2="300"/>
+    <line x1="260" y1="440" x2="260" y2="540"/>
+    <line x1="460" y1="615" x2="520" y2="665"/>
+    <line x1="890" y1="530" x2="800" y2="620"/>
+    <line x1="1000" y1="340" x2="1000" y2="408"/>
+    <line x1="1020" y1="552" x2="1020" y2="610"/>
+  </g>
+  <g font-size="16" fill="#5C6B6B">
+    <text x="800" y="200">Grab</text>
+    <text x="660" y="306" text-anchor="middle">Grab</text>
+    <text x="280" y="497">步行或 Grab</text>
+    <text x="474" y="600">Grab</text>
+    <text x="832" y="560" text-anchor="end">步行</text>
+    <text x="1016" y="382">步行</text>
+    <text x="1036" y="588">步行</text>
+  </g>
+
+  <!-- Ho Tay, Day 4 -->
+  <rect x="400" y="120" width="360" height="110" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="580" y="165" font-size="20" font-weight="700" fill="#2E7D5B" text-anchor="middle">Day 4 · Hồ Tây 西湖</text>
+  <text x="580" y="202" font-size="17" fill="#102A2B" text-anchor="middle">Chùa Trấn Quốc 鎮國寺</text>
+
+  <!-- Ba Dinh, Day 2 -->
+  <rect x="60" y="290" width="440" height="150" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="280" y="335" font-size="20" font-weight="700" fill="#B8442D" text-anchor="middle">Day 2 · Ba Đình 巴亭一帶</text>
+  <text x="280" y="372" font-size="17" fill="#102A2B" text-anchor="middle">Lăng Chủ tịch Hồ Chí Minh 胡志明陵</text>
+  <text x="280" y="406" font-size="17" fill="#102A2B" text-anchor="middle">Chùa Một Cột 一柱寺</text>
+
+  <!-- Van Mieu, Day 2 -->
+  <rect x="60" y="540" width="400" height="110" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="260" y="585" font-size="20" font-weight="700" fill="#B8442D" text-anchor="middle">Day 2 · Văn Miếu 文廟</text>
+  <text x="260" y="622" font-size="17" fill="#102A2B" text-anchor="middle">Quốc Tử Giám 國子監</text>
+
+  <!-- Hoa Lo, Day 2 -->
+  <rect x="520" y="620" width="320" height="110" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="680" y="665" font-size="20" font-weight="700" fill="#B8442D" text-anchor="middle">Day 2 · Hỏa Lò 火爐監獄</text>
+  <text x="680" y="702" font-size="17" fill="#102A2B" text-anchor="middle">還劍湖西南側</text>
+
+  <!-- Old Quarter, Day 1 -->
+  <rect x="820" y="220" width="360" height="120" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1000" y="265" font-size="20" font-weight="700" fill="#0D6B68" text-anchor="middle">Day 1 · Phố cổ 老城區</text>
+  <text x="1000" y="302" font-size="17" fill="#102A2B" text-anchor="middle">水上木偶戲 múa rối nước</text>
+
+  <!-- Hoan Kiem Lake -->
+  <ellipse cx="1000" cy="480" rx="140" ry="72" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1000" y="474" font-size="20" font-weight="700" fill="#2F6F9F" text-anchor="middle">Hồ Hoàn Kiếm</text>
+  <text x="1000" y="504" font-size="17" fill="#102A2B" text-anchor="middle">還劍湖</text>
+
+  <!-- French Quarter -->
+  <rect x="880" y="610" width="280" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1020" y="652" font-size="20" font-weight="700" fill="#2F6F9F" text-anchor="middle">Khu phố Pháp</text>
+  <text x="1020" y="686" font-size="17" fill="#102A2B" text-anchor="middle">法國區（湖南側）</text>
+
+  <!-- Noi Bai airport -->
+  <line x1="1185" y1="265" x2="1244" y2="222" stroke="#102A2B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1250" y="110" width="300" height="150" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="1400" y="152" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">Nội Bài 內排機場 T2</text>
+  <text x="1400" y="190" font-size="17" fill="#102A2B" text-anchor="middle">約 27 公里、約 1 小時</text>
+  <text x="1400" y="226" font-size="17" fill="#102A2B" text-anchor="middle">86 路 50,000 越南盾</text>
+
+  <!-- Ha Long, Day 3 option -->
+  <line x1="1145" y1="478" x2="1262" y2="470" stroke="#102A2B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1270" y="410" width="280" height="120" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4" stroke-dasharray="14 8"/>
+  <text x="1410" y="455" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">Hạ Long 下龍灣</text>
+  <text x="1410" y="492" font-size="17" fill="#B8442D" text-anchor="middle">往東 · Day 3 二選一</text>
+
+  <!-- Ninh Binh, Day 3 option -->
+  <line x1="1020" y1="712" x2="1020" y2="762" stroke="#102A2B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="820" y="770" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4" stroke-dasharray="14 8"/>
+  <text x="1020" y="812" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">Ninh Bình 寧平（Tràng An 長安）</text>
+  <text x="1020" y="848" font-size="17" fill="#B8442D" text-anchor="middle">往南 · Day 3 二選一</text>
+
+  <!-- ticket box -->
+  <rect x="1250" y="600" width="300" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1400" y="642" font-size="18" font-weight="700" fill="#0D6B68" text-anchor="middle">門票（成人）</text>
+  <text x="1400" y="680" font-size="17" fill="#102A2B" text-anchor="middle">文廟 70,000 越南盾</text>
+  <text x="1400" y="716" font-size="17" fill="#102A2B" text-anchor="middle">火爐監獄 50,000 越南盾</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
