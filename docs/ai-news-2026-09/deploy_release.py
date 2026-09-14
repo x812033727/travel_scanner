@@ -1,4 +1,4 @@
-"""Guarded content-only release; based on the verified existing host release procedure.
+"""Guarded news release; based on the verified existing host release procedure.
 Run on the production host with NEWS_RELEASE_SHA and NEWS_PREVIOUS_SHA set explicitly.
 The activate phase requires ci.json from the successful exact merged-SHA CI run.
 This script does not import or publish articles, edit nginx, or print runtime secrets.
@@ -17,7 +17,17 @@ import urllib.request
 
 TARGET = os.environ['NEWS_RELEASE_SHA']
 PREVIOUS = os.environ['NEWS_PREVIOUS_SHA']
+CONTENT_BASE = os.environ.get('NEWS_CONTENT_BASE_SHA', PREVIOUS)
 assert re.fullmatch(r'[0-9a-f]{40}', TARGET) and re.fullmatch(r'[0-9a-f]{40}', PREVIOUS)
+assert re.fullmatch(r'[0-9a-f]{40}', CONTENT_BASE)
+# PR #472 reached main while this batch's CI was running. Its deployment impact was
+# reviewed: no migration, compose change or new secret; existing accounts stay intact.
+# Only this exact reviewed integration may precede the news delta in one activation.
+if CONTENT_BASE != PREVIOUS:
+    assert (PREVIOUS, CONTENT_BASE) == (
+        'a4ee0f50770334051c7e2618a2138617875a1b40',
+        '24af149062dd99aad3f4c2bb16cea70f8edf164c',
+    ), 'unreviewed changes between live release and content base'
 ROOT = Path('/root/travel_scanner')
 BASE = Path('/root/mokaair-release-ai-news-' + TARGET[:8])
 SOURCE = BASE / 'source'
@@ -124,12 +134,14 @@ if phase == 'prepare':
     assert git('rev-parse', 'origin/main') == TARGET, 'main moved; refresh CI target'
     assert not git('diff', '--name-only', PREVIOUS, TARGET, '--',
                    'apps/api/migrations', 'docker-compose.prod.yml', '.env.example')
-    changed = git('diff', '--name-only', PREVIOUS, TARGET).splitlines()
+    git('merge-base', '--is-ancestor', PREVIOUS, CONTENT_BASE)
+    git('merge-base', '--is-ancestor', CONTENT_BASE, TARGET)
+    changed = git('diff', '--name-only', CONTENT_BASE, TARGET).splitlines()
     allowed = ('apps/api/app/guides/content/ai-news-', 'apps/web/public/guides/ai-news-', 'docs/ai-news-2026-09/', 'tasks/')
     assert changed and all(path.startswith(allowed) for path in changed), changed
     before = containers()
     assert all(value['status'] == 'running' for value in before.values())
-    state = {'target': TARGET, 'previous': PREVIOUS, 'before': before,
+    state = {'target': TARGET, 'previous': PREVIOUS, 'content_base': CONTENT_BASE, 'before': before,
              'env_hash': digest(ENV_FILE), 'started_at': datetime.datetime.now(datetime.timezone.utc).isoformat()}
     SOURCE.mkdir(mode=0o755)
     run(['git', '-C', str(ROOT), 'archive', '--format=tar', '--output', str(BASE / 'source.tar'), TARGET])

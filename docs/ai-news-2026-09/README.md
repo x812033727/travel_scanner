@@ -26,8 +26,12 @@ validation.json 記錄五十份文件的結構、字數、圖片、來源、內�
 
 PR #473 合併且合併 SHA 的 CI 全綠後，依 deploy_release.py 的 prepare／activate 程序建立不可變映像、保留舊映像、取得部署鎖、暫停應用程式寫入、產生及驗證新的 PostgreSQL 備份，核對資料指紋與健康狀態後啟用。此批次不修改 nginx 或額外修補資料庫內容。
 
+等待 CI 時，主分支另合併資安 PR #472（24af1490），並同步進本 PR。已核對它沒有遷移、compose 變更或新增必要密鑰；內容差異仍以這個確切主分支為界。部署工具只允許已檢視的 a4ee0f50 → 24af1490 整合，不接受其他未核對的程式變更。此次正式版本將包含已合併的密碼政策、分析雜湊金鑰分離及 script CSP；既有設定、帳戶與文章保持不變。
+
 部署後使用既有 app.cli guides-import，**逐一列出 manifest 的十個 --slug，並明列五個 --locale**。先核對 dry-run 僅包含十篇、五十個新翻譯，再以既有管理員與 --publish 刊登。核對五十筆發布結果，重跑應全部 unchanged；既有文章、翻譯、主題、修訂紀錄、站點頁面與供應商設定的指紋必須保持相同。
 
 node docs/ai-news-2026-09/verify_public.mjs 使用未登入的 Chromium，在桌面與手機檢查五十份完整正文、圖片、表格、提醒、來源、內鏈、canonical、Open Graph、JSON-LD、五語 hreflang 與 x-default、五個生活列表及五十筆 sitemap 網址。正式結果另記於 public-verification.json，本地截圖在忽略的 browser/。
+
+verify_assets_links.mjs 另核對一百張公開圖片的雜湊與檔案大小，並實際開啟所有延伸閱讀網址，確認是已刊登文章且 canonical 正確。
 
 目前狀態：五語內容與本地驗證完成，正式發布尚待 PR、CI、部署與匯入。只有正式驗證成功後才能宣告刊登完成。
