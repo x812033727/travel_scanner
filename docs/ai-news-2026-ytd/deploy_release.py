@@ -33,6 +33,8 @@ if CONTENT_BASE != PREVIOUS:
         ('673a64b67bc525686dd9959e9b521a0c7662137e', '5a00f72e7aae229de0f77a51c4d9afdcb967b0cf'),
         # PR #480: pytest-cov development dependency only; all 14 PR checks passed.
         ('a9d5b40e7067b321ee886a817b1712aec44afc1b', '05d0b671efddedb75da1c20093cce42f8b2f09ca'),
+        # PR #477: Vitest development dependency only; all 14 PR checks passed.
+        ('a9d5b40e7067b321ee886a817b1712aec44afc1b', '769a892bc4e862f9cca73c341adbf13f27a5e563'),
     }
     assert (PREVIOUS, CONTENT_BASE) in reviewed_pairs, 'unreviewed integration baseline'
 ROOT = Path('/root/travel_scanner')
