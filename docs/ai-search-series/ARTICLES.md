@@ -1,11 +1,10 @@
 # 搜尋最佳化名詞系列編輯清單
 
-搜尋截止：2026-09-14。10 篇專文加一篇總索引，全部新增、全部 zh-TW、全部 `kind: life`。
+查證截止：2026-09-14。10 篇專文加一篇總索引，全部新增、全部 zh-TW、全部 `kind: life`。
 規格在 [`brief.md`](brief.md)，逐篇指派在 [`catalogue.json`](catalogue.json)，
-任務票是 `2026-09-14-ai-search-terms-series`。
+系列自訂規則的檢查腳本是 [`check.py`](check.py)，任務票是 `2026-09-14-ai-search-terms-series`。
 
-**尚未發布。** 這份清單是編輯總表，不記錄「寫了沒」——
-`apps/api/app/guides/content/<slug>.json` 存在就是寫了。
+**內容包已進 repo，尚未發布上線。** 發布方式見文末。
 
 ## 為什麼做這個系列
 
@@ -15,22 +14,26 @@
 
 ## 篇目
 
-| # | slug | 標題 | 主軸 | 時效 |
-| --- | --- | --- | --- | --- |
-| 1 | `ai-search-seo` | SEO 是什麼：搜尋引擎最佳化在 AI 時代沒有改變的那一半 | 地基篇。 |  |
-| 2 | `ai-search-geo` | GEO（生成引擎最佳化）是什麼：論文定義與行銷業用法的落差 | 出身與指標。 |  |
-| 3 | `ai-search-aeo` | AEO（答案引擎最佳化）是什麼：生成式 AI 之前就存在的做法 | 它比 LLM 更早。 |  |
-| 4 | `ai-search-aio` | AIO 是什麼：同一個縮寫的三種用法，以及怎麼分辨 | 這是命名碰撞，不是一門方法。 |  |
-| 5 | `ai-search-llmo` | LLMO 是什麼：和 LLMOps 差在哪，哪些說法無法驗證 | 最投機的詞，加上一個真實的名稱衝突。 |  |
-| 6 | `ai-search-eeat` | E-E-A-T 是什麼：品質評分指南裡的概念，不是可以設定的排名訊號 | 重點在「它不是什麼」。 |  |
-| 7 | `ai-search-structured-data` | 結構化資料與 Schema.org：能換到什麼、換不到什麼 | 資格 vs 排名。 |  |
-| 8 | `ai-search-llms-txt` | llms.txt 是什麼：一份提案，以及 robots.txt 真正能做的事 | 提案 vs 已部署的機制。 | 易變 |
-| 9 | `ai-search-generated-answers` | AI 摘要與 AI 模式：生成式答案怎麼組出來，站長能控制什麼 | 講機制，不講操作（操作歸既有那兩篇）。 | 易變 |
-| 10 | `ai-search-measuring-citations` | 怎麼量 AI 引用：測得到的、測不到的，與不能相信的分數 | 量測邊界。 | 易變 |
-| 11 | `ai-search-terms-index` | GEO、AEO、AIO 與 SEO 名詞總索引：10 篇看懂差在哪 | 系列總索引兼旗艦比較表。 |  |
+| # | slug | 標題 | 字數 | H2 | 來源 | 時效 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | `ai-search-seo` | SEO 是什麼：搜尋引擎最佳化在 AI 時代沒有改變的那一半 | 2,978 | 6 | 14 |  |
+| 2 | `ai-search-geo` | GEO（生成引擎最佳化）是什麼：論文定義與行銷業用法的落差 | 2,995 | 8 | 8 |  |
+| 3 | `ai-search-aeo` | AEO（答案引擎最佳化）是什麼：生成式 AI 之前就存在的做法 | 2,996 | 7 | 15 |  |
+| 4 | `ai-search-aio` | AIO 是什麼：同一個縮寫的三種用法，以及怎麼分辨 | 2,986 | 7 | 14 |  |
+| 5 | `ai-search-llmo` | LLMO 是什麼：和 LLMOps 差在哪，哪些說法無法驗證 | 2,998 | 6 | 16 |  |
+| 6 | `ai-search-eeat` | E-E-A-T 是什麼：品質評分指南裡的概念，不是可以設定的排名訊號 | 2,995 | 6 | 10 |  |
+| 7 | `ai-search-structured-data` | 結構化資料與 Schema.org：能換到什麼、換不到什麼 | 2,995 | 6 | 16 |  |
+| 8 | `ai-search-llms-txt` | llms.txt 是什麼：一份社群提案，以及 robots.txt 真正能做的事 | 2,835 | 8 | 12 | 易變 |
+| 9 | `ai-search-generated-answers` | AI 摘要與 AI 模式：生成式答案怎麼組出來，站長能控制什麼 | 2,900 | 6 | 11 | 易變 |
+| 10 | `ai-search-measuring-citations` | 怎麼量 AI 引用：測得到的、測不到的，與不能相信的分數 | 2,872 | 7 | 15 | 易變 |
+| 11 | `ai-search-terms-index` | GEO、AEO、AIO 與 SEO 名詞總索引：10 篇看懂差在哪 | 2,013 | 8 | 8 |  |
 
+字數是 `pack_ingest._body_length` 算出的正文字數（不含標題、圖說、連結文字與來源）。
 「易變」欄打勾的三篇要定期回查：llms.txt 的採用狀況、AI 模式的開放地區、
 Search Console 生成式 AI 報表都還在變。life 內容包不走到期邏輯，`valid_until` 維持 null。
+
+**`ai-search-llms-txt` 與 `ai-search-structured-data` 引述了本站自己的做法並標了查證日。
+日後改 `apps/web/app/robots.ts` 或 `apps/web/lib/structured-data.ts`，要回頭複查這兩篇。**
 
 ## 五個必須逐條點名的真實分歧
 
@@ -52,8 +55,8 @@ Search Console 生成式 AI 報表都還在變。life 內容包不走到期邏�
 | `google-ai-mode-search` | 讀者怎麼用 AI 模式追問與判讀來源 |
 | `chatgpt-search-vs-google` | 讀者什麼時候該用 ChatGPT 搜尋、什麼時候用 Google |
 
-`ai-search-generated-answers` 與 `ai-search-measuring-citations` 最容易漂過去，
-這兩篇的第一段就要明寫「這篇不重複⋯⋯」並附上連結。
+`ai-search-generated-answers` 與 `ai-search-measuring-citations` 的第一段都明寫了
+「這篇不重複⋯⋯」並附上連結。
 
 ## slug 前綴為什麼是 `ai-search-`
 
@@ -61,21 +64,37 @@ Search Console 生成式 AI 報表都還在變。life 內容包不走到期邏�
 等於在 11 個永久網址裡先替其中一方站隊。`ai-search-` 對爭議中立、不撞名，
 形狀也和既有的 `ai-term-`、`claude-code-`、`gemini-cli-` 一致。
 
-## 產製與發布
+## 驗收紀錄
 
 ```bash
-# 撰稿代理自驗（什麼都不會寫）
-cd apps/api && uv run python -m app.guides.pack_cli ingest \
-  --from ../../docs/ai-search-series/staging --slug <slug> --dry-run
+# 系列自訂規則（字數、H2 數、連結允許清單、查證日一致、簡體用詞⋯⋯）
+cd apps/api && uv run python ../../docs/ai-search-series/check.py
+# → 11 article(s) checked, 0 finding(s)
 
-# 協調者正式收件（渲染 hero.svg 成 hero.jpg 並寫進 repo）
-cd apps/api && uv run python -m app.guides.pack_cli ingest \
-  --from ../../docs/ai-search-series/staging --slug <slug>
-
-# 全批 lint 並渲染 PNG 供目視。不要加 --catalogue，見任務票 Notes
+# 工具本身的規則，連 warning 都不放過
 cd apps/api && uv run python -m app.guides.pack_cli lint --kind life \
-  --slug ai-search-seo ... --render-dir ../../docs/ai-search-series/renders --warnings
+  --slug ai-search-seo ... --slug ai-search-terms-index --warnings
+# → 11 entries checked，退出碼 0
+
+# 回歸：全部 284 篇 life 內容包，這 11 篇零問題
+cd apps/api && uv run python -m app.guides.pack_cli lint --kind life
+
+cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest
+npm run check:tasks
 ```
 
-發布時 **10 篇正文先上，總索引最後上**：`/life` 公開列表是 `published_at` 由新到舊排，
-總索引靠最後發布落到列表最上方。
+22 張 SVG（11 hero ＋ 11 圖解）全部渲染成 PNG 逐張目視過：沒有文字壓線、溢框、標籤互疊，
+沒有產品 logo 或介面截圖，縮到約 400 px 仍可讀。圖檔最大 63 KB（測試的上限是 300 KB）。
+
+**未量測搜尋引擎實際的收錄或引用結果。** 本系列不宣稱任何成效。
+
+## 發布
+
+部署後在主機上做，**10 篇正文先上、確認後總索引最後上**——`/life` 公開列表是
+`published_at` 由新到舊排，總索引靠最後發布落到列表最上方。
+
+```bash
+python -m app.cli guides-import --actor-email <admin> --dry-run --slug ai-search-seo ...
+python -m app.cli guides-import --actor-email <admin> --publish --slug ai-search-seo ...   # 10 篇正文
+python -m app.cli guides-import --actor-email <admin> --publish --slug ai-search-terms-index
+```

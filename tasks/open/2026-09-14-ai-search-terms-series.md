@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-ai-search-terms-series
 title: GEO、AEO、AIO 搜尋最佳化名詞系列（10 篇＋總索引）
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-opus-5
@@ -58,28 +58,28 @@ LLMO 能不能影響訓練資料、llms.txt 有沒有引擎真的在讀——每
 
 ## Definition of done
 
-- [ ] `docs/ai-search-series/` 的 `brief.md`、`ARTICLES.md`、`catalogue.json` 寫定，11 個 slug 與標題不再變動。
-- [ ] 11 個內容包落在 `apps/api/app/guides/content/ai-search-*.json`，各自的
+- [x] `docs/ai-search-series/` 的 `brief.md`、`ARTICLES.md`、`catalogue.json` 寫定，11 個 slug 與標題不再變動。
+- [x] 11 個內容包落在 `apps/api/app/guides/content/ai-search-*.json`，各自的
       `apps/web/public/guides/<slug>/` 有 `hero.svg`、`hero.jpg`、`diagram-1.svg`。
-- [ ] `pack_cli lint --warnings` 對這 11 個 slug 零 error 零 warning。
-- [ ] 每篇正文 1,800–3,000 中文字（按 `_body_length` 的算法），≥5 個 level-2 heading。
-- [ ] 每篇 ≥2 個獨立一手來源，`sources[]` 每筆帶**實際查證日**的 `checked_on`。
-- [ ] 22 張 SVG（11 hero ＋ 11 圖解）逐張目視過，全尺寸與縮到約 400 px 各看一次。
-- [ ] 所有站內連結的目標 slug 都真的存在。
-- [ ] `cd apps/api && uv run pytest tests/test_guides_content_pack.py` 通過。
-- [ ] `npm run check:tasks` 通過，`tasks/BOARD.md` 沒有被 commit。
-- [ ] 總索引 `ai-search-terms-index` **最後**發布。
+- [x] `pack_cli lint --warnings` 對這 11 個 slug 零 error 零 warning。
+- [x] 每篇正文 1,800–3,000 中文字（按 `_body_length` 的算法），≥5 個 level-2 heading。
+- [x] 每篇 ≥2 個獨立一手來源，`sources[]` 每筆帶**實際查證日**的 `checked_on`。
+- [x] 22 張 SVG（11 hero ＋ 11 圖解）逐張目視過，全尺寸與縮到約 400 px 各看一次。
+- [x] 所有站內連結的目標 slug 都真的存在。
+- [x] `cd apps/api && uv run pytest tests/test_guides_content_pack.py` 通過。
+- [x] `npm run check:tasks` 通過，`tasks/BOARD.md` 沒有被 commit。
+- [ ] 總索引 `ai-search-terms-index` **最後**發布。（部署時才發生，見 ARTICLES.md「發布」）
 
 ## Steps
 
-- [ ] 寫 `docs/ai-search-series/brief.md`（撰稿指令，沿用 `docs/life-ai-series-brief.md` 再加本題守則）。
-- [ ] 寫 `docs/ai-search-series/ARTICLES.md` 與 `catalogue.json`，把 11 篇的 slug、標題、主軸、
+- [x] 寫 `docs/ai-search-series/brief.md`（撰稿指令，沿用 `docs/life-ai-series-brief.md` 再加本題守則）。
+- [x] 寫 `docs/ai-search-series/ARTICLES.md` 與 `catalogue.json`，把 11 篇的 slug、標題、主軸、
       必涵蓋點與**確切的連結目標**定死，再開始撰稿。
-- [ ] 一篇一個撰稿代理，每波 ≤7 個，只寫自己的 `docs/ai-search-series/staging/<slug>/`。
-- [ ] 每篇交件就 `pack_cli ingest --from docs/ai-search-series/staging --slug <slug>`。
-- [ ] 10 篇正文齊了才寫總索引。
-- [ ] `pack_cli lint --render-dir` 產出 PNG，逐張目視。
-- [ ] 跑完驗證指令，commit、push。
+- [x] 一篇一個撰稿代理，每波 ≤7 個，只寫自己的 `docs/ai-search-series/staging/<slug>/`。
+- [x] 每篇交件就 `pack_cli ingest --from docs/ai-search-series/staging --slug <slug>`。
+- [x] 10 篇正文齊了才寫總索引。
+- [x] `pack_cli lint --render-dir` 產出 PNG，逐張目視。
+- [x] 跑完驗證指令，commit、push。
 
 ## How to verify
 
