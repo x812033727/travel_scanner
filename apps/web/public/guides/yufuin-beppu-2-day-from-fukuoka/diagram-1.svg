@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">博多、由布院、別府兩天一夜三段交通路線圖 / Hakata, Yufuin and Beppu two-day loop by train and bus</title>
+  <desc id="desc">三角形路線圖：博多到由布院可搭 JR 特急ゆふいんの森約 2 小時 15 分、6,130 円，或西鉄高速巴士ゆふいん号約 2 小時 25 分、3,250 円；由布院到別府搭亀の井巴士 36 番約 52 分、1,100 円，或觀光快速ゆふりん經鉄輪約 66 分；別府回博多搭 JR 特急ソニック最短 2 小時 1 分，九州ネットきっぷ 3,500 円。實線是 JR 特急，虛線是巴士。</desc>
+  <defs>
+    <marker id="arrow-teal" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" refX="20" refY="12" orient="auto">
+      <path d="M0,0 L24,12 L0,24 z" fill="#0D6B68"/>
+    </marker>
+    <marker id="arrow-coral" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" refX="20" refY="12" orient="auto">
+      <path d="M0,0 L24,12 L0,24 z" fill="#B8442D"/>
+    </marker>
+    <marker id="arrow-mocha" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" refX="20" refY="12" orient="auto">
+      <path d="M0,0 L24,12 L0,24 z" fill="#6B4A3A"/>
+    </marker>
+    <marker id="arrow-orange" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" refX="20" refY="12" orient="auto">
+      <path d="M0,0 L24,12 L0,24 z" fill="#D97A2B"/>
+    </marker>
+    <marker id="arrow-blue" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" refX="20" refY="12" orient="auto">
+      <path d="M0,0 L24,12 L0,24 z" fill="#2F6F9F"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="80" font-size="40" font-weight="700" fill="#102A2B">博多 → 由布院 → 別府 → 博多　兩天一夜的三段交通</text>
+  <text x="80" y="120" font-size="22" fill="#5C6B6B">Hakata · Yufuin · Beppu · 車程為官網時刻表的概略值，2026 年 9 月查證</text>
+
+  <!-- 博多 → 由布院：JR ゆふいんの森（實線）與 ゆふいん号（虛線） -->
+  <path d="M 330 420 C 600 420, 900 205, 1176 205" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round" marker-end="url(#arrow-teal)"/>
+  <path d="M 330 460 C 620 460, 900 255, 1176 255" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round" marker-end="url(#arrow-coral)"/>
+  <!-- 由布院 → 別府：亀の井 36 番（虛線）與 観光快速ゆふりん 經鉄輪（虛線） -->
+  <path d="M 1310 260 L 1310 656" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round" marker-end="url(#arrow-mocha)"/>
+  <path d="M 1200 260 C 1110 350, 1000 430, 1000 560 C 1000 640, 1090 715, 1176 690" fill="none" stroke="#D97A2B" stroke-width="8" stroke-dasharray="14 12" stroke-linecap="round" marker-end="url(#arrow-orange)"/>
+  <!-- 別府 → 博多：JR ソニック（實線） -->
+  <path d="M 1180 745 C 900 745, 600 490, 334 490" fill="none" stroke="#2F6F9F" stroke-width="12" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+
+  <!-- 三個城市 -->
+  <g>
+    <rect x="50" y="395" width="280" height="110" rx="24" fill="#0D6B68"/>
+    <text x="190" y="447" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">博多 Hakata</text>
+    <text x="190" y="483" font-size="18" fill="#E6F2F1" text-anchor="middle">博多駅・博多バスターミナル</text>
+  </g>
+  <g>
+    <rect x="1180" y="150" width="260" height="110" rx="24" fill="#6B4A3A"/>
+    <text x="1310" y="202" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">由布院 Yufuin</text>
+    <text x="1310" y="238" font-size="18" fill="#F3E9E3" text-anchor="middle">由布院駅・駅前バスセンター</text>
+  </g>
+  <g>
+    <rect x="1180" y="660" width="260" height="110" rx="24" fill="#B8442D"/>
+    <text x="1310" y="712" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">別府 Beppu</text>
+    <text x="1310" y="748" font-size="18" fill="#F8E4DF" text-anchor="middle">別府駅 Beppu Station</text>
+  </g>
+
+  <!-- 鉄輪 -->
+  <circle cx="1000" cy="560" r="16" fill="#FFFFFF" stroke="#D97A2B" stroke-width="8"/>
+  <text x="1024" y="552" font-size="22" font-weight="700" fill="#102A2B">鉄輪 Kannawa</text>
+  <text x="1024" y="578" font-size="18" fill="#5C6B6B">地獄めぐり Hells</text>
+
+  <!-- 標籤：JR ゆふいんの森 -->
+  <text x="400" y="212" font-size="24" font-weight="700" fill="#0D6B68">JR 特急ゆふいんの森 Yufuin no Mori</text>
+  <text x="400" y="242" font-size="20" fill="#5C6B6B">約 2 小時 15 分・6,130 円・一個月前 10:00 開賣</text>
+
+  <!-- 標籤：ゆふいん号 -->
+  <text x="660" y="438" font-size="24" font-weight="700" fill="#B8442D">西鉄高速バス ゆふいん号</text>
+  <text x="660" y="464" font-size="18" fill="#5C6B6B">Nishitetsu Highway Bus Yufuin-go</text>
+  <text x="660" y="490" font-size="20" fill="#5C6B6B">約 2 小時 25 分・3,250 円・要預約</text>
+
+  <!-- 標籤：ゆふりん -->
+  <text x="965" y="540" font-size="22" font-weight="700" fill="#D97A2B" text-anchor="end">観光快速ゆふりん Yufurin</text>
+  <text x="965" y="568" font-size="20" fill="#5C6B6B" text-anchor="end">経由 鉄輪・約 66 分・平日 1 班</text>
+
+  <!-- 標籤：亀の井 36 番 -->
+  <text x="1332" y="400" font-size="22" font-weight="700" fill="#6B4A3A">亀の井バス 36 番</text>
+  <text x="1332" y="428" font-size="18" fill="#5C6B6B">Kamenoi Bus No. 36</text>
+  <text x="1332" y="456" font-size="20" fill="#5C6B6B">約 52 分・1,100 円</text>
+  <text x="1332" y="484" font-size="20" fill="#5C6B6B">免預約・平日 17 班</text>
+
+  <!-- 標籤：ソニック -->
+  <text x="420" y="680" font-size="24" font-weight="700" fill="#2F6F9F">JR 特急ソニック Sonic</text>
+  <text x="420" y="710" font-size="20" fill="#5C6B6B">最短 2 小時 1 分・九州ネットきっぷ 3,500 円</text>
+  <text x="420" y="738" font-size="20" fill="#5C6B6B">一天單向 31 班・出發前 6 分鐘都能買</text>
+
+  <!-- 圖例與版權 -->
+  <g font-size="20" fill="#102A2B">
+    <line x1="80" y1="860" x2="140" y2="860" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="867">JR 特急（實線）</text>
+    <line x1="360" y1="860" x2="420" y2="860" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="432" y="867">高速巴士（虛線）</text>
+    <line x1="660" y1="860" x2="720" y2="860" stroke="#6B4A3A" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="732" y="867">亀の井路線巴士（虛線）</text>
+    <line x1="980" y1="860" x2="1040" y2="860" stroke="#D97A2B" stroke-width="8" stroke-dasharray="14 12" stroke-linecap="round"/>
+    <text x="1052" y="867">観光快速ゆふりん（虛線）</text>
+    <text x="1380" y="867" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans KR','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">首爾到加平一日路線圖 / Seoul to Gapyeong day-trip route: ITX-Cheongchun, Gyeongchun line and the Gapyeong tourist circular bus</title>
+  <desc id="desc">首爾龍山、清涼里搭 ITX-청춘 到加平站，約一小時、6,900 韓元；上鳳搭京春線電鐵較慢但便宜。加平站換觀光循環巴士 A 線 5 分到南怡島渡口、再 25 分到小法國；小法國換 B 線 42 分經清平站到晨靜樹木園。江村鐵道自行車金裕貞路線要搭京春線電鐵到金裕貞站，加平路線在加平站旁。循環巴士一日券 8,000 韓元，每週三停駛。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="80" y="78" font-size="38" font-weight="700" fill="#102A2B">首爾 → 加平：南怡島、小法國、晨靜樹木園一日路線</text>
+  <text x="80" y="118" font-size="22" fill="#5C6B6B">Seoul → Gapyeong · 分鐘為官方時刻表推算的概略車程，以當天為準</text>
+
+  <!-- rail lines: ITX (teal) and Gyeongchun line (mocha) -->
+  <line x1="320" y1="680" x2="1420" y2="680" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <line x1="320" y1="704" x2="1420" y2="704" stroke="#6B4A3A" stroke-width="7" stroke-linecap="round"/>
+  <text x="1440" y="698" font-size="18" fill="#6B4A3A">→ 춘천 春川</text>
+
+  <!-- circular bus A (coral, dashed): Gapyeong station -> Nami wharf -> Petite France -->
+  <line x1="940" y1="680" x2="940" y2="470" stroke="#B8442D" stroke-width="9" stroke-dasharray="20 14" stroke-linecap="round"/>
+  <line x1="940" y1="470" x2="790" y2="300" stroke="#B8442D" stroke-width="9" stroke-dasharray="20 14" stroke-linecap="round"/>
+  <!-- circular bus B (purple, dashed): Petite France -> Cheongpyeong station -> Garden of Morning Calm -->
+  <path d="M 790 300 C 700 340, 620 520, 660 692" fill="none" stroke="#7E57C2" stroke-width="9" stroke-dasharray="20 14" stroke-linecap="round"/>
+  <path d="M 660 692 C 580 560, 430 480, 400 300" fill="none" stroke="#7E57C2" stroke-width="9" stroke-dasharray="20 14" stroke-linecap="round"/>
+  <!-- rail bike (green): Gimyujeong station -> Gangchon Rail Park -->
+  <line x1="1280" y1="704" x2="1280" y2="480" stroke="#2E7D5B" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- Seoul box -->
+  <rect x="80" y="622" width="240" height="136" rx="24" fill="#0D6B68"/>
+  <text x="200" y="668" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">首爾 Seoul</text>
+  <text x="200" y="704" font-size="18" fill="#E6F2F1" text-anchor="middle">龍山 · 清涼里 → ITX</text>
+  <text x="200" y="730" font-size="18" fill="#E6F2F1" text-anchor="middle">上鳳 → 京春線電鐵</text>
+
+  <!-- ITX labels -->
+  <text x="330" y="596" font-size="22" font-weight="700" fill="#0D6B68">ITX-청춘 龍山 → 加平</text>
+  <text x="330" y="624" font-size="20" fill="#102A2B">約 1 小時 · 6,900 韓元</text>
+  <text x="330" y="652" font-size="20" fill="#102A2B">清涼里 40 分 · 5,700 韓元</text>
+
+  <!-- stations -->
+  <circle cx="660" cy="692" r="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <circle cx="940" cy="692" r="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <circle cx="1280" cy="704" r="14" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="7"/>
+  <g font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">
+    <text x="660" y="752">청평 清平 Cheongpyeong</text>
+    <text x="940" y="752">가평 加平 Gapyeong</text>
+    <text x="1280" y="752">김유정 金裕貞 Gimyujeong</text>
+  </g>
+  <g font-size="18" fill="#5C6B6B" text-anchor="middle">
+    <text x="660" y="778">ITX · 京春線</text>
+    <text x="940" y="778">ITX · 京春線 · 循環巴士</text>
+    <text x="1280" y="778">只有京春線電鐵停</text>
+    <text x="940" y="808">加平鐵道自行車 來回 8 km · 站旁</text>
+  </g>
+  <text x="330" y="840" font-size="18" fill="#6B4A3A">京春線電鐵：上鳳發 · T-money · 平日約 20 分一班</text>
+
+  <!-- bus nodes -->
+  <circle cx="940" cy="470" r="22" fill="#B8442D"/>
+  <circle cx="790" cy="300" r="22" fill="#B8442D" stroke="#7E57C2" stroke-width="8"/>
+  <circle cx="400" cy="300" r="22" fill="#7E57C2"/>
+  <circle cx="1280" cy="480" r="20" fill="#2E7D5B"/>
+
+  <!-- bus leg labels -->
+  <text x="958" y="590" font-size="18" font-weight="700" fill="#B8442D">A 線 5 分</text>
+  <text x="895" y="395" font-size="18" font-weight="700" fill="#B8442D">A 線 25 分</text>
+  <text x="690" y="470" font-size="18" font-weight="700" fill="#7E57C2">B 線到樹木園共 42 分</text>
+  <text x="690" y="494" font-size="18" fill="#5C6B6B">經清平客運站、清平站</text>
+  <text x="425" y="430" font-size="18" font-weight="700" fill="#7E57C2" text-anchor="end">B 線 17 分 · 回程 25 分</text>
+
+  <!-- Nami Island -->
+  <text x="970" y="458" font-size="24" font-weight="700" fill="#102A2B">남이섬 南怡島 Nami Island</text>
+  <text x="970" y="486" font-size="18" fill="#5C6B6B">門票 19,000 韓元含來回渡輪</text>
+  <text x="970" y="512" font-size="18" fill="#5C6B6B">Zip Wire 55,000 韓元起</text>
+
+  <!-- Petite France -->
+  <text x="825" y="292" font-size="24" font-weight="700" fill="#102A2B">쁘띠프랑스 小法國 Petite France</text>
+  <text x="825" y="320" font-size="18" fill="#5C6B6B">A／B 線轉乘站 · 門票以官網為準</text>
+
+  <!-- Garden of Morning Calm -->
+  <text x="400" y="200" font-size="18" fill="#5C6B6B" text-anchor="middle">Garden of Morning Calm</text>
+  <text x="400" y="232" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">아침고요수목원 晨靜樹木園</text>
+  <text x="400" y="262" font-size="18" fill="#5C6B6B" text-anchor="middle">門票 11,000 韓元 · 冬季燈節以官網為準</text>
+
+  <!-- Rail park -->
+  <text x="1305" y="472" font-size="24" font-weight="700" fill="#102A2B">강촌레일파크 鐵道自行車</text>
+  <text x="1305" y="500" font-size="18" fill="#5C6B6B">金裕貞路線 8.5 km</text>
+  <text x="1305" y="526" font-size="18" fill="#5C6B6B">雙人車 40,000 韓元 · 要預約</text>
+
+  <!-- circular bus note -->
+  <text x="1120" y="168" font-size="22" font-weight="700" fill="#B8442D">가평 관광지 순환버스 觀光循環巴士</text>
+  <text x="1120" y="196" font-size="18" fill="#102A2B">一日券 8,000 韓元 · 每週三停駛 · 跟司機買</text>
+  <text x="1120" y="220" font-size="18" fill="#B8442D">A 線：加平站 → 南怡島 → 小法國</text>
+  <text x="1120" y="244" font-size="18" fill="#7E57C2">B 線：小法國 → 清平站 → 晨靜樹木園</text>
+
+  <!-- legend -->
+  <g font-size="18" fill="#102A2B">
+    <line x1="80" y1="872" x2="140" y2="872" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="879">ITX-청춘</text>
+    <line x1="330" y1="872" x2="390" y2="872" stroke="#6B4A3A" stroke-width="7" stroke-linecap="round"/>
+    <text x="402" y="879">京春線電鐵</text>
+    <line x1="540" y1="872" x2="600" y2="872" stroke="#B8442D" stroke-width="8" stroke-dasharray="16 10" stroke-linecap="round"/>
+    <text x="612" y="879">循環巴士 A 線</text>
+    <line x1="780" y1="872" x2="840" y2="872" stroke="#7E57C2" stroke-width="8" stroke-dasharray="16 10" stroke-linecap="round"/>
+    <text x="852" y="879">循環巴士 B 線</text>
+    <line x1="1020" y1="872" x2="1080" y2="872" stroke="#2E7D5B" stroke-width="8" stroke-linecap="round"/>
+    <text x="1092" y="879">鐵道自行車</text>
+    <text x="1330" y="879" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>
