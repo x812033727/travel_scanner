@@ -38,19 +38,19 @@ scope:
 
 ## Why
 
-Publish ten original Traditional Chinese AI news analyses covering 2026-07-14 through 2026-09-14 in Mokaair life. The user authorized writing, images, PR, merge, deployment and publication. Use dated official sources and distinguish announcements from current access.
+Publish ten original AI news analyses covering 2026-07-14 through 2026-09-14 in Mokaair life. The user authorized writing, images, PR, merge, deployment and publication, then explicitly expanded the scope to all five site languages: zh-TW, zh-CN, en, ja and ko (50 locale documents). Use dated official sources and distinguish announcements from current access.
 
 ## Definition of done
 
-- [x] Ten sourced 1800-3000-character articles with distinct slugs, hero illustrations, diagrams, tables, callouts and public internal links.
-- [x] Lint, packaged-content tests and isolated import/publication/idempotence checks pass.
+- [x] Ten sourced articles, each with all five complete locale documents, localized hero illustrations and diagrams, tables, callouts and public internal links; zh-TW body is 1800-3000 characters.
+- [x] Lint, packaged-content tests and isolated 50-document import/publication/idempotence checks pass.
 - [ ] Content PR merged with green CI; fresh verified backup and deployment completed.
-- [ ] Only the ten zh-TW articles published; all ten checked on desktop/mobile, listing, metadata and sitemap.
+- [ ] Only the ten slugs published in all five locales; all 50 documents checked on desktop/mobile, listing, metadata and sitemap.
 
 ## Steps
 
 - [x] Verify existing public titles, reserve precise scopes and inspect current production release.
-- [x] Research, write and inspect the complete batch.
+- [x] Research, write, translate and inspect the complete five-language batch.
 - [ ] Validate, merge, deploy, publish and record public evidence.
 
 ## How to verify
@@ -60,3 +60,7 @@ Run the batch verification script in docs/ai-news-2026-09, app.guides.pack_cli l
 ## Notes
 
 Baseline a4ee0f50770334051c7e2618a2138617875a1b40. Public life index contains 40 articles (no next cursor), all existing tutorials. All eight application containers currently use this same release; readiness is 0074_lifestyle_guides, PostgreSQL and Redis healthy. Deployment-agent service is inactive; current host uses manually staged immutable release directories. Resolve and verify the existing manual backup/activation procedure before activation.
+
+PR #473 was initially created for zh-TW. Before merge, the user requested all five languages. Expand this same PR and rerun the complete checks; no production articles have been imported or published yet.
+
+Five-language local validation: 50 draft creations, 50 publications, 50 unchanged on replay, and 50 public reads pass in isolated SQLite. Pack tests: 9 passed / 5 PostgreSQL-only skipped. Lint has no errors; ten advisory English text-length warnings are documented in the batch README. All 100 localized images were inspected; all are below the existing 300 KB ceiling. Translation structure and source URLs are preserved, and ten editorial corrections are recorded.

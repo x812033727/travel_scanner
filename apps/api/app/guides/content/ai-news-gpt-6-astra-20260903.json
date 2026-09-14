@@ -195,6 +195,750 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "GPT-6 Astra Announced: From Answering Questions to Completing Computer Tasks",
+      "description": "OpenAI announced GPT-6 Astra on September 3, 2026, emphasizing computer use, multi-step workflows, and template-based document output. Focusing on general reporting, data organization, and admin tasks, this article explains the gap between model ability and tool permissions, how to draft verifiable tasks, set required confirmation checkpoints, and recognize phased rollouts without assuming launch demos are instantly available to every account.",
+      "hero": {
+        "src": "/guides/ai-news-gpt-6-astra-20260903/hero-en.jpg",
+        "alt": "Original illustration showing an on-screen cursor linking to reports, spreadsheets, and confirmation cards, representing a computer task handover workflow.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI released GPT-6 Astra on September 3, 2026, highlighting computer operation, browsing, coding, and professional workflows, while also emphasizing the completion of documents, spreadsheets, and presentations according to templates. For general readers, the question this news addresses is not whether the model can chat, but whether tools can turn clearly communicated tasks into deliverables that you can open, inspect, and sign off on."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was verified on September 14, 2026. Because the launch announcement referenced a phased rollout, this article reflects the status at the time of the announcement and does not guarantee that every account in Taiwan has currently received the same features. The workflows below are editorial recommendations; there is no claim that this site has replicated the demonstrations shown in the announcement, nor should vendor benchmarks be equated with universal reliability."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Distinguish Computer Use Capabilities from the Tools You Actually Use"
+        },
+        {
+          "type": "paragraph",
+          "text": "The launch announcement showcased Astra's capabilities across computer and browser tasks, citing the handling of documents, tables, and multi-step workflows. What actions can actually be performed still depends on whether your specific product provides the relevant tools, whether data is accessible, and what permissions your account has granted. The model name itself is not an all-access pass to every app."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, when organizing a roster, a tool might only read the files you upload, or it might be able to edit documents directly within an authorized workspace; the data scope and delivery methods differ between the two. Before starting, confirm where the final deliverables will be stored and which files the tool is permitted to modify, so you do not end up with merely a descriptive summary when you cannot find an actual document."
+        },
+        {
+          "type": "paragraph",
+          "text": "General users do not need to understand every technical term first, but they must distinguish between answering, drafting, and executing. Answering provides information, drafting produces content pending adoption, and executing can alter files or external systems. Stating these three requirements clearly is essential to retaining control where human judgment is needed."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "A Good Task Must Include Verifiable Deliverables"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rather than saying 'help me finish the report,' you can first specify the audience, purpose, source materials, length, and output format. For instance, ask it to summarize internal survey data for a meeting discussion, retaining the original figures and listing missing data as questions without inventing additions. This clarifies what the tool needs to produce and how you will check it at the end."
+        },
+        {
+          "type": "paragraph",
+          "text": "If an existing template is available, specify which elements must remain consistent and which can be modified. Preserving column headers, section order, or page limits represents a different requirement than matching a visual style. Editors suggest having the tool confirm its understanding of these constraints before generating the entire piece; a brief upfront clarification often takes far less effort than a complete reformatting later."
+        },
+        {
+          "type": "paragraph",
+          "text": "When verifying deliverables, do not merely check whether a file exists. Open it and check whether text is truncated, table calculations are correct, citations can be traced back, and template requirements were truly maintained. While capability descriptions in the launch announcement suggest worthwhile testing directions, your work still requires your own completion standards."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Task Phase",
+            "Assigned Deliverable",
+            "Verification Point"
+          ],
+          "rows": [
+            [
+              "Information Gathering",
+              "Source list and gaps",
+              "Whether data is up to date"
+            ],
+            [
+              "Drafting & Organizing",
+              "Report or spreadsheet copy",
+              "Content, format, and math"
+            ],
+            [
+              "Preparing Actions",
+              "Prefilled entries or draft outbox",
+              "Recipient, scope, commitments"
+            ],
+            [
+              "Formal Handover",
+              "Files and completion logs",
+              "Open and inspect yourself"
+            ]
+          ],
+          "caption": "Verified on September 14, 2026; workflow recommendations compiled by Mokaair editors."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Start with Daily Admin, Assigning in Phases"
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose you are organizing event registration details: you can first ask the tool to look up official information, listing deadlines, required documents, and registration portals, and then outline a checklist of what you need to prepare. These two phases focus on gathering and organizing, and the deliverables should include trails back to the original source pages."
+        },
+        {
+          "type": "paragraph",
+          "text": "Once the data is verified, decide whether you need help filling out forms. Before entering content, verify the target recipient, fields, and data scope; before submission, review the final entries and any commitments they might trigger. Do not replace these decisions with a vague 'take care of everything for me,' and do not mistake a tool's willingness to assist for a completed application."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a task involves contacting others, ask for a draft and a recipient list first. Confirm them before choosing to send. This setup hands time-consuming organizational tasks over to the tool while maintaining clear checkpoints for actions that speak on your behalf, making it especially suitable for those beginning to experiment with agentic workflows."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-6-astra-20260903/diagram-1-en.svg",
+          "alt": "Workflow for delegating computer tasks to AI",
+          "width": 1600,
+          "height": 900,
+          "caption": "Data, drafts, confirmations, and deliverables each have distinct outputs, preventing task descriptions from being mistaken for completion.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How to Respond Effectively When the Tool Asks Questions"
+        },
+        {
+          "type": "paragraph",
+          "text": "The release also highlighted that Astra can clarify missing requirements during an assignment and adjust as you provide additional conditions. For users, the most practical answer is not 'you decide,' but communicating priorities. For example, whether a report should be concise or comprehensive, whether the budget can increase, or which data cannot be used—all of these alter the final output."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the tool presents multiple options, respond based on the trade-offs you care about rather than redescribing the entire job. Saying 'keep an editable table for now and leave images until content is confirmed' lets it know where to focus immediate effort. Where you are unsure, directly ask it to list the implications first, rather than making irreversible decisions on your behalf."
+        },
+        {
+          "type": "paragraph",
+          "text": "When shifting direction midway through, clarify which existing deliverables remain valid and which need reworking. Asking the tool to update its to-do list and deliverable inventory reduces the chance that it continues applying outdated requirements. This is a collaborative arrangement and does not imply that any model can entirely eliminate misunderstandings; critical constraints should still be rechecked before final handover."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How to Gauge Whether a New Model Actually Helps"
+        },
+        {
+          "type": "paragraph",
+          "text": "You can start with a weekly recurring task, record the time and editing steps originally required, and then test the tool using the same de-identified data. Observe whether the result is complete, whether it can be handed off directly, and whether it reduces your time spent fixing errors—rather than judging solely by how long the tool ran or how confident its replies sounded."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a model produces a beautifully formatted document filled with unverified figures, it still cannot be adopted; if it proactively points out data gaps and prompts you to fill them early, that may represent far more valuable performance. Defining success around 'verifiable deliverables' prevents you from being swayed merely by showcase demos or marketing terminology."
+        },
+        {
+          "type": "paragraph",
+          "text": "The release of GPT-6 Astra gives general users more reason to rethink which computer tasks can be delegated. The best starting points are tasks with clear data boundaries, easily checked outputs, and recoverable errors. Establishing traceable work logs and delivery methods before gradually adding complexity is the best way to see the real impact of increased capabilities on your own work."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before handing work over to colleagues, you can ask for brief user guidance: where the files are located, which fields can be modified, the basis of calculations, and constraints to watch for during future updates. This documentation should be checked alongside the deliverable, ensuring that after the model finishes generation, the person taking over does not have to guess how the file works."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Verify Capability Demos and Account Access Separately",
+          "text": "The release uses a phased rollout; for actual available tools, plans, and regional criteria, refer to your current account and official documentation."
+        },
+        {
+          "type": "link",
+          "text": "Claude Fable 5.1 and Mythos 5.1: Capabilities, Access, and Limits",
+          "url": "https://mokaair.com/en/life/ai-news-claude-fable-51-20260901"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Free Tier and Thinking Feature Updates: What Changes in Daily Use?",
+          "url": "https://mokaair.com/en/life/ai-news-chatgpt-free-thinking-20260806"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: GPT-6 Astra Announcement",
+          "url": "https://openai.com/index/gpt-6-astra/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Newsroom: GPT-6 Astra Release Date",
+          "url": "https://openai.com/news/company-announcements/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "GPT-6 Astra発表：質問への回答からコンピュータ作業の完遂へ",
+      "description": "OpenAIは2026年9月3日にGPT-6 Astraを発表し、コンピュータ操作、複数ステップの作業、テンプレートに基づく文書生成を強調しました。本稿では一般ユーザーのレポート作成、データ整理、日常的な事務処理の視点から、モデル能力とツール権限の違い、検収可能な指示の出し方、確認アクションの設定、段階的リリースの情報の見極め方、そして発表デモをすべてのアカウントで直接使える機能だと思い込まない方法を解説します。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-6-astra-20260903/hero-ja.jpg",
+        "alt": "画面上のカーソルがレポート、スプレッドシート、確認待ちカードに繋がり、PC作業の委託フローを示すオリジナルイラスト",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAIは2026年9月3日にGPT-6 Astraを発表し、コンピュータ操作、ブラウジング、コーディング、専門業務を重点として挙げ、テンプレートに沿った文書、スプレッドシート、プレゼンテーションの作成も強調しました。一般の読者にとって、このニュースが答えるべきなのはモデルが雑談できるかどうかではなく、明確に指示した作業をツールが実際に開き、確認し、納品できる成果物に変換できるかどうかです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文は2026年9月14日に検証されました。発表リリースでは段階的な展開という表現が用いられているため、本文は発表当時の状態を維持しており、台湾のすべてのアカウントが現在すでに同様の機能を利用できることを保証するものではありません。以下のプロセスは編集部が設計した業務上の提案であり、当サイトが発表リリース内の操作デモを再現・完了したと主張するものではなく、ベンダーによるベンチマーク評価を一般的な信頼性と同等に見なすものでもありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "コンピュータ操作能力と、実際に使用するツールを切り離して捉える"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表リリースでは、Astraがコンピュータやブラウザ上で作業を行う能力が示され、文書や表の処理、複数ステップにわたるタスクへの対応が言及されました。実際にどのような操作が可能かは、利用している製品が対応するツールを提供しているか、データにアクセス可能か、そしてアカウントにどのような権限が付与されているかに依然として左右されます。モデル名それ自体は、あらゆるアプリへの万能なアクセスパスではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば名簿を整理する場合、ツールがアップロードされたファイルを読み取るだけの場合もあれば、権限のある作業環境内で直接文書を編集できる場合もあります。両者ではデータの対象範囲や成果物の受け渡し方法が異なります。開始する前に、成果物がどこに保存されるのか、ツールがどのファイルを変更できるのかをまず確認し、最終的に説明文だけが得られて実際のファイルが見当たらないという事態を避けてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般のユーザーがすべての技術用語をあらかじめ理解しておく必要はありませんが、「回答」「下書き」「実行」の区別をつける必要があります。回答は情報の提供、下書きは採用を前提としたコンテンツの生成、実行はファイルや外部システムに変更を加える可能性を伴います。これら3つの要求を明確に分けることで、人間による判断が必要な局面でコントロールを維持できます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "優れたタスク指示には、検収可能な成果物が含まれるべきである"
+        },
+        {
+          "type": "paragraph",
+          "text": "単に「レポートを作成して」と依頼するよりも、想定読者、用途、素材、分量、出力フォーマットを先に提示するとよいでしょう。例えば、社内独自の調査データを会議での討議用サマリーにまとめ、元の数値をそのまま保持し、不足しているデータは勝手に補完せず課題点としてリストアップする、といった具合です。これにより、ツールは何を完成させるべきかを把握でき、自身も最終的にどうチェックすべきかが分かります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "すでにテンプレートがある場合は、どの部分を一致させ、どの部分を変更してよいかも併せて指示してください。項目名、章の順序、ページ数を維持することと、ビジュアルスタイルを模倣することは異なる要求です。編集部としては、文書全体の作成を開始する前に、まずツール側に制約条件の理解状況を確認させることを推奨します。事前のわずかな説明が、後の全面的なレイアウト修正よりも手間を省くことにつながります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "検収の際は、ファイルが存在しているかどうかを見るだけでは不十分です。ファイルを開き、文章が途切れていないか、表の計算が正しいか、引用元に遡って確認できるか、そしてテンプレートの要件が確実に維持されているかをチェックしてください。発表リリースにおける能力の説明は試す価値のある方向性を示していますが、自身の業務には独自の完了基準が依然として求められます。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "タスク段階",
+            "指示できる成果物",
+            "確認ポイント"
+          ],
+          "rows": [
+            [
+              "情報収集",
+              "情報源リストと不足点",
+              "データが最新かどうか"
+            ],
+            [
+              "下書き整理",
+              "レポートや表の複製",
+              "内容、書式、計算"
+            ],
+            [
+              "操作の準備",
+              "入力予定内容や送信下書き",
+              "対象、範囲、コミットメント"
+            ],
+            [
+              "正式な納品",
+              "ファイルと完了ログ",
+              "自身で開いて検収"
+            ]
+          ],
+          "caption": "2026年9月14日検証。利用シナリオの提案はMokaair編集部によるまとめ。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "日常的な事務処理から始め、段階的に指示を出す"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えばイベントの申し込み情報を整理する場合、まずツールに公式情報を検索させ、締切日、必要書類、申し込み窓口をリストアップさせます。次に、自分が準備すべきチェックリストを整理させます。これら2つの段階は収集と整理が中心であり、成果物には元のウェブページに戻れるリンクや手掛かりが添えられているべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "情報を確認した後に、フォーム入力の支援が必要かどうかを判断します。内容を入力する前に、対象、入力欄、データの範囲をまず確認し、送信する前に、最終的な内容や発生し得る約定事項を自身で確認してください。曖昧に「全部やっておいて」と丸投げしてこれらの判断を省略してはならず、ツールが支援可能と返答したことをもって申請が完了したと思い込んではいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作業に他者への連絡が含まれる場合は、まず下書きと宛先リストの作成を要求できます。確認を経てから、実際に送信するかどうかを決定します。このような段取りを踏むことで、時間の節約になる整理作業はツールに任せつつ、対外的に自身を代表して発信される実際のアクションには明確な確認ポイントを確保できます。これはAIエージェントによる作業を試み始めたばかりの人に特に適しています。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-6-astra-20260903/diagram-1-ja.svg",
+          "alt": "PC作業をAIに委託するプロセス",
+          "width": 1600,
+          "height": 900,
+          "caption": "データ、下書き、確認、納品の各段階に固有の成果物を設け、作業の記述を完了と誤認することを防ぎます。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "ツールから質問された際、最も効果的な返答方法"
+        },
+        {
+          "type": "paragraph",
+          "text": "今回の発表では、Astraが作業中に不足している要件を明確化し、ユーザーが条件を追加した際に柔軟に調整できる点も強調されました。ユーザーにとって最も実用的な返答は「お任せします」ではなく、優先順位を明確に伝えることです。例えば、レポートを簡潔にするか網羅的にするか、予算を増額できるか、どのデータを使用してはいけないかなど、これらは成果物を大きく左右します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ツールが複数の選択肢を提示してきた場合、作業全体を最初から説明し直すのではなく、自身が重視するトレードオフに基づいて回答できます。例えば「まずは編集可能な表の作成を優先し、画像は内容確認後に追加する」と伝えれば、現時点でどこにリソースを集中すべきかをツールに指示できます。確信が持てない点については、不可逆な決定を勝手に下させず、どのような影響があるかを先に箇条書きで示すよう直接要求することも可能です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "途中で方針を変更する際は、既存の成果物のうちどれが有効なままで、どれをやり直す必要があるかを具体的に指摘してください。ツールにToDoリストや納品物リストを更新させることで、過去の古い要件を引きずり続けるリスクを低減できます。これは双方の協調作業のための取り決めであり、いかなるモデルであっても誤解を完全に防げるわけではありません。重要な制約事項は、納品前に改めて確認する必要があります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "新しいモデルが真に役立っているかをどう判断するか"
+        },
+        {
+          "type": "paragraph",
+          "text": "毎週行っているルーティン業務から始め、本来必要だった整理時間や修正手順を記録した上で、同じ匿名化データを用いてテストしてみるのがよいでしょう。観察すべきは、結果が完全であるか、そのまま引き継げる状態か、ミスを探す時間を削減できたかであり、単にツールの実行時間や回答の自信満々さだけを見るべきではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルが見栄えのよい文書を作成したとしても、未確認の数値が記入されていれば採用することはできません。一方で、データの不足点を能動的に指摘し、早期の補完を促してくれたとすれば、それこそがより価値の高いパフォーマンスと言えます。成功の定義を「検収可能な成果物」と置くことで、デモ画面や宣伝文句だけに振り回されるのを防ぐことができます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-6 Astraの発表は、どのPC作業を委託できるかを一般の人々が再考するさらなる契機となります。取り掛かるのに最も適しているのは、データの対象範囲が明確で、出力の確認が容易であり、誤りがあっても修正可能なタスクです。まずは検証可能な作業ログと受け渡し方法を確立し、その後に段階的に複雑さを増していくことで、能力の向上が自分自身に与える真の影響を見極めることができます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同僚に引き渡す前に、ファイルがどこにあるか、どの項目が編集可能か、計算の根拠は何か、そして今後の更新時に留意すべき制約事項は何かをまとめた簡単な取扱説明書の作成を求めることができます。この説明書は成果物と一緒に確認し、モデルが作成を完了したものの、引き継いだ側が文書の使い方をゼロから推測しなければならない事態を防ぎましょう。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "機能デモとアカウント権限は切り離して確認を",
+          "text": "発表時は段階的な展開が採用されています。実際に利用可能なツール、プラン、および地域の条件については、現在のアカウント状況および公式の案内に準拠してください。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Fable 5.1とMythos 5.1：機能、対象ユーザー、制限事項",
+          "url": "https://mokaair.com/ja/life/ai-news-claude-fable-51-20260901"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT無料版と思考機能の更新：日常利用で何が変わるのか？",
+          "url": "https://mokaair.com/ja/life/ai-news-chatgpt-free-thinking-20260806"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：GPT-6 Astra 発表",
+          "url": "https://openai.com/index/gpt-6-astra/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Newsroom：GPT-6 Astra 発表日",
+          "url": "https://openai.com/news/company-announcements/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "GPT-6 Astra 발표: 질문 답변을 넘어 컴퓨터 작업 완수로",
+      "description": "OpenAI가 2026년 9월 3일 컴퓨터 조작, 다단계 업무 및 템플릿 기반 문서 생성을 강조한 GPT-6 Astra를 발표했습니다. 본 글은 일반 사용자의 보고서 작성, 데이터 정리 및 일상 행정 업무를 바탕으로 모델 역량과 도구 권한의 차이, 검수 가능한 업무 작성법, 확인이 필요한 작업 설정법, 단계적 배포 정보 식별법을 설명하며 발표 시연을 모든 계정에서 즉시 쓸 수 있는 기능으로 오인하지 않도록 안내합니다.",
+      "hero": {
+        "src": "/guides/ai-news-gpt-6-astra-20260903/hero-ko.jpg",
+        "alt": "화면 앞 커서가 보고서, 스프레드시트, 확인 대기 카드로 연결되어 컴퓨터 작업 위임 흐름을 보여주는 오리지널 일러스트",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 2026년 9월 3일 컴퓨터 조작, 브라우징, 코딩 및 전문 업무를 핵심으로 내세우고 템플릿 기반의 문서, 스프레드시트 및 프레젠테이션 작성을 강조한 GPT-6 Astra를 발표했습니다. 일반 독자에게 이 소식이 던지는 핵심 질문은 모델이 대화를 잘하는가가 아니라, 명확히 설명한 작업을 실제로 열어보고 검토하며 전달할 수 있는 결과물로 만들어낼 수 있는가입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 14일에 확인되었습니다. 발표 자료에서 단계적 배포 방식을 언급했으므로, 본문은 발표 당시의 상태를 유지하며 대만의 모든 계정이 현재 동일한 기능을 이용할 수 있다고 보장하지 않습니다. 아래의 프로세스는 에디터가 설계한 업무 제안이며, 본 사이트가 발표 자료의 시연 작업을 직접 완수했다고 주장하거나 제공업체의 벤치마크 평가를 범용적 신뢰성과 동일시하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "컴퓨터 조작 역량과 실제 사용하는 도구는 구분해서 보아야 합니다"
+        },
+        {
+          "type": "paragraph",
+          "text": "발표 자료는 컴퓨터 및 브라우저 작업에서 Astra의 역량을 보여주며 문서, 스프레드시트 및 다단계 작업 처리를 언급합니다. 실제로 어떤 작업을 수행할 수 있는지는 사용하는 제품이 해당 도구를 제공하는지, 데이터에 접근할 수 있는지, 계정에 어떤 권한이 부여되었는지에 따라 달라집니다. 모델 이름 자체가 모든 앱으로 통하는 자유이용권은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 명단을 정리할 때, 도구가 업로드된 파일만 읽을 수도 있고 권한이 부여된 작업 환경에서 문서를 직접 편집할 수도 있습니다. 두 방식은 데이터 범위와 전달 방식이 다릅니다. 작업을 시작하기 전에 결과물이 어디에 저장되는지, 도구가 어떤 파일을 수정할 수 있는지 먼저 확인해야 최종적으로 설명 글만 남고 실제 파일은 찾지 못하는 상황을 방지할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 사용자가 모든 기술 용어를 미리 알 필요는 없지만, 답변, 초안 작성, 실행은 명확히 구분해야 합니다. 답변은 정보를 제공하는 것이고, 초안 작성은 채택할 콘텐츠를 생성하는 것이며, 실행은 파일이나 외부 시스템을 변경할 수 있는 작업입니다. 이 세 가지 요구사항을 명확히 구분해야 사람이 결정해야 하는 부분에서 통제권을 유지할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "좋은 작업 요청에는 검수 가능한 결과물이 포함되어야 합니다"
+        },
+        {
+          "type": "paragraph",
+          "text": "\"보고서 작성을 도와줘\"라고 하기보다는 독자, 용도, 자료, 분량 및 출력 형식을 먼저 제공하는 것이 좋습니다. 예를 들어 자체 조사 데이터를 회의 논의용 요약본으로 정리하면서 원본 수치는 그대로 유지하고, 누락된 데이터는 임의로 작성하지 말고 질문으로 남겨두도록 지정할 수 있습니다. 이렇게 하면 도구는 무엇을 완수해야 하는지 알게 되고, 사용자 역시 최종 결과물을 어떻게 검토할지 알 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 템플릿이 있다면 어떤 부분을 일치시키고 어떤 부분을 수정할 수 있는지 함께 명시해야 합니다. 필드 이름, 섹션 순서, 페이지 수를 유지하는 것과 시각적 스타일을 모방하는 것은 서로 다른 요구사항입니다. 에디터는 도구가 제약 조건을 제대로 이해했는지 먼저 확인한 뒤 전체 작업을 시작할 것을 권장합니다. 소량의 사전 지침이 나중에 전체를 다시 배치하는 것보다 훨씬 수월합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "검수할 때 파일 존재 여부만 보아서는 안 됩니다. 파일을 열어 텍스트가 잘리지 않았는지, 표 계산이 정확한지, 인용 출처를 역추적할 수 있는지 확인하고 템플릿 요구사항이 실제로 반영되었는지 점검해야 합니다. 발표 자료의 역량 설명은 테스트해 볼 가치가 있는 방향을 제시하지만, 실제 업무에는 사용자가 정한 완성 기준이 여전히 필요합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "작업 단계",
+            "지시할 결과물",
+            "확인 포인트"
+          ],
+          "rows": [
+            [
+              "정보 수집",
+              "출처 목록 및 누락 정보",
+              "데이터의 최신 여부"
+            ],
+            [
+              "초안 정리",
+              "보고서 또는 표 사본",
+              "내용, 서식 및 계산"
+            ],
+            [
+              "작업 준비",
+              "입력 대기 내용 또는 발송 초안",
+              "대상, 범위 및 약정 사항"
+            ],
+            [
+              "최종 전달",
+              "파일 및 완료 기록",
+              "직접 열어 검수 수행"
+            ]
+          ],
+          "caption": "2026년 9월 14일 확인 기준. 시나리오 제안은 Mokaair 에디터가 정리했습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "일상 행정 업무부터 단계별로 지시하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "이벤트 신청 정보를 정리해야 한다고 가정해 보겠습니다. 먼저 도구에 공식 정보를 검색하게 하여 마감일, 필요 서류, 신청 링크를 정리하게 한 뒤, 사용자가 준비해야 할 체크리스트를 만들도록 할 수 있습니다. 이 두 단계는 수집과 정리가 중심이 되며, 결과물에는 원본 페이지로 되돌아갈 수 있는 출처 단서가 포함되어야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "자료가 확인된 후에 양식 작성을 요청할지 결정합니다. 내용을 입력하기 전에 대상, 항목, 데이터 범위를 먼저 확인하고, 제출 전에는 최종 내용과 이로 인해 발생할 수 있는 약정 사항을 직접 확인해야 합니다. 모호하게 \"알아서 다 처리해 줘\"라며 이러한 결정을 생략해서는 안 되며, 도구가 작성을 돕겠다고 응답한 것을 신청이 완료된 것으로 착각해서도 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "타인과의 연락이 수반되는 작업이라면 먼저 초안과 수신인 목록을 요청할 수 있습니다. 확인을 마친 후 실제 발송 여부를 결정하면 됩니다. 이러한 방식은 시간 절약이 되는 정리 작업은 도구에 맡기면서도 사용자를 대변하는 대외 행동에 명확한 확인 지점을 남겨두므로, 에이전트 작업을 처음 시도하는 사용자에게 특히 적합합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-6-astra-20260903/diagram-1-ko.svg",
+          "alt": "컴퓨터 작업을 AI에 위임하는 프로세스",
+          "width": 1600,
+          "height": 900,
+          "caption": "데이터, 초안, 확인, 전달 단계마다 각각의 결과물이 존재해야 하며 작업 설명을 완료된 것으로 오인하지 않아야 합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "도구가 질문할 때 가장 효과적으로 답변하는 방법"
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 발표에서는 Astra가 작업 중에 누락된 요구사항을 명확히 파악하고 사용자가 조건을 보완할 때 이를 반영해 조정할 수 있다는 점도 강조되었습니다. 사용자 입장에서 가장 실용적인 답변은 \"알아서 결정해 줘\"가 아니라 우선순위를 설명하는 것입니다. 예컨대 보고서를 간결하게 할지 완결성 있게 할지, 예산을 늘릴 수 있는지, 어떤 데이터를 사용해서는 안 되는지와 같은 기준이 결과물을 바꿉니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도구가 여러 대안을 제시한다면 전체 작업을 다시 설명하기보다 자신이 중시하는 트레이드오프(절충점)를 기준으로 답할 수 있습니다. 예를 들어 \"수정 가능한 표를 먼저 유지하고, 이미지는 내용이 확정된 후 작업해 줘\"라고 하면 현재 어디에 집중해야 하는지 알려줄 수 있습니다. 확신이 서지 않는 부분은 취소할 수 없는 결정을 대신 내리게 하지 말고 예상되는 영향을 먼저 나열해 달라고 요구할 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "진행 도중 방향을 바꿀 때는 기존 결과물 중 유효한 것과 다시 작업해야 할 것을 명시해야 합니다. 도구에 할 일과 전달 결과물 목록을 업데이트하도록 요청하면 이전 요구사항을 그대로 적용하는 일을 줄일 수 있습니다. 이는 상호 협업을 위한 조치이며, 어떤 모델도 오해를 완전히 피할 수 있다는 의미는 아닙니다. 중요한 제약 조건은 전달 전에 반드시 재확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "새 모델이 실제로 도움이 되었는지 판단하는 방법"
+        },
+        {
+          "type": "paragraph",
+          "text": "매주 반복하는 업무 하나로 시작해 볼 수 있습니다. 기존에 소요되던 정리 시간과 수정 단계를 기록한 뒤 비식별화된 동일 데이터로 테스트합니다. 이때 살펴볼 점은 도구가 얼마나 오래 실행되었는지나 얼마나 자신 있게 답변하는지가 아니라, 결과물이 완전한지, 곧바로 인계 가능한 수준인지, 오류를 찾는 시간을 줄여주었는지입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모델이 보기 좋은 문서를 만들었더라도 검증되지 않은 수치를 입력했다면 채택할 수 없습니다. 반대로 데이터의 누락을 능동적으로 지적하여 미리 보완할 수 있게 해준다면 그것이 훨씬 더 가치 있는 성과일 수 있습니다. 성공의 기준을 '검수 가능한 결과물'로 정의하면 시연 화면이나 홍보 문구에만 휩쓸리는 것을 방지할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-6 Astra의 발표는 일반인에게도 어떤 컴퓨터 작업을 위임할 수 있는지 다시 고민해 볼 계기를 마련해 줍니다. 시작하기 가장 적합한 작업은 데이터 범위가 명확하고, 출력을 쉽게 검토할 수 있으며, 오류 발생 시 수정이 가능한 작업입니다. 먼저 추적 가능한 작업 기록과 전달 방식을 구축한 다음 점진적으로 복잡성을 높여야 역량 향상이 자신에게 미치는 실질적인 영향을 체감할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "동료에게 인계하기 전에 파일 위치, 수정 가능한 항목, 계산 근거, 향후 업데이트 시 주의해야 할 제약 조건을 담은 간단한 사용 안내서를 작성해 달라고 요청할 수 있습니다. 이 안내서는 결과물과 함께 검토되어야 하며, 모델이 작업을 끝마쳤음에도 인계받는 사람이 문서 사용법을 다시 추측해야 하는 상황을 막아줍니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "역량 시연과 계정 권한은 구분하여 확인해야 합니다",
+          "text": "발표 시 단계적 배포 방식이 적용되었습니다. 실제 사용 가능한 도구, 요금제 및 지역 조건은 현재 계정과 공식 설명을 기준으로 확인하시기 바랍니다."
+        },
+        {
+          "type": "link",
+          "text": "Claude Fable 5.1 및 Mythos 5.1: 기능, 제공 대상 및 제한 사항",
+          "url": "https://mokaair.com/ko/life/ai-news-claude-fable-51-20260901"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 무료 버전 및 생각하기 기능 업데이트: 일상적 사용은 어떻게 달라지나?",
+          "url": "https://mokaair.com/ko/life/ai-news-chatgpt-free-thinking-20260806"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: GPT-6 Astra 발표",
+          "url": "https://openai.com/index/gpt-6-astra/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Newsroom: GPT-6 Astra 발표일",
+          "url": "https://openai.com/news/company-announcements/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "GPT-6 Astra 发布：从回答问题到完成电脑工作",
+      "description": "OpenAI 于 2026 年 9 月 3 日发布 GPT-6 Astra，强调电脑操作、多步骤工作与依模板产出文件。本文从普通用户的报告、资料整理和日常行政出发，说明模型能力与工具权限的区别，如何写出可验收的任务、设定需要确认的操作，以及识别分阶段开放信息，不把发布演示当成每个账号都能直接使用的功能。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-6-astra-20260903/hero-zh-cn.jpg",
+        "alt": "屏幕前的光标连接到报告、电子表格与待确认卡片，呈现电脑工作交付流程的原创插图",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI 于 2026 年 9 月 3 日发布 GPT-6 Astra，将电脑操作、浏览、编程与专业工作列为重点，也强调依模板完成文件、电子表格及演示文稿。对普通读者而言，这则新闻要回答的不是模型会不会聊天，而是工具能否把你说明清楚的工作变成可以打开、检查与交付的成果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 14 日核实。发布稿使用分阶段开放的表述，因此本文保留宣布当时的状态，不据此保证每个台湾账号现在都已取得相同功能。以下流程是编辑设计的工作建议，并未声称本站完成了发布稿中的操作演示，也不把供应商评测等同于通用可靠性。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "电脑操作能力，和你实际使用的工具分开看"
+        },
+        {
+          "type": "paragraph",
+          "text": "发布稿展示了 Astra 在电脑与浏览器工作上的能力，并提到处理文件、表格与多步骤任务。实际能做到哪些操作，仍取决于你使用的产品是否提供对应工具、数据是否可获取，以及账号授予了哪些权限。模型名称本身并不是一张通往所有 App 的通行证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如整理一份名单，工具可能只读取你上传的文件，也可能能在有权限的工作环境中编辑文件；两者的资料范围和交付方式不同。开始之前，先确认成果会存放在哪里、工具可以改动哪些文件，避免最后只得到一段描述，却找不到真正的文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "普通用户不必先懂所有技术名词，但需要分清楚回答、草拟和执行。回答是提供信息，草拟是产出待采用内容，执行则可能改变文件或外部系统。把这三种要求说清楚，才能在需要人工决定的地方保留控制。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一个好的任务，应该包含可验收的成果"
+        },
+        {
+          "type": "paragraph",
+          "text": "与其说“帮我完成报告”，可以先提供读者、用途、材料、篇幅和输出格式。例如把自有调研数据整理成一份供会议讨论的摘要，保留原始数字，缺少数据的地方列为问题，不自行编造补写。这样工具知道要完成什么，你也知道最后如何检查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若已有模板，请同时说明哪些地方要保持一致，哪些可以改动。保留字段名称、章节顺序或页数，和模仿视觉风格是不同要求。编辑建议先让工具确认它理解的限制，再开始整份制作；少量前置说明可能比后续全面重排更省力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "验收时不要只看文件是否存在。打开后检查文字有没有被截断、表格计算是否正确、引用是否可回查，并确认模板要求确实保留。发布稿中的能力描述提供了值得测试的方向，但你的工作仍需要自己的完成标准。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "任务阶段",
+            "可以交代的成果",
+            "确认点"
+          ],
+          "rows": [
+            [
+              "收集信息",
+              "来源清单与缺口",
+              "数据是否最新"
+            ],
+            [
+              "整理草稿",
+              "报告或表格副本",
+              "内容、格式与计算"
+            ],
+            [
+              "准备操作",
+              "待填内容或发送草稿",
+              "对象、范围与承诺"
+            ],
+            [
+              "正式交付",
+              "文件与完成记录",
+              "自己打开并验收"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日核实；场景建议由 Mokaair 编辑整理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "从生活行政开始，分阶段交代"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设你要整理一份活动报名信息，可以先让工具查找官方资料，列出截止日、所需文件与报名入口；接着整理你需要准备的清单。这两个阶段以收集和整理为主，成果应附上能回到原始页面的线索。"
+        },
+        {
+          "type": "paragraph",
+          "text": "等数据确认后，再决定是否需要协助填写表单。填入内容前，先确认对象、字段与数据范围；提交之前，自己查看最终内容及可能产生的承诺。不要用一个模糊的“都帮我处理”取代这些决定，也不要把工具表示愿意协助当成已完成申请。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若工作涉及联络他人，可以先要求草稿与收件对象清单。确认后再决定实际发送。这种安排能把省时的整理工作交给工具，同时让真正代表你对外表态的操作有清楚的确认点，尤其适合刚开始尝试代理工作的人。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-6-astra-20260903/diagram-1-zh-cn.svg",
+          "alt": "把电脑工作交付给 AI 的流程",
+          "width": 1600,
+          "height": 900,
+          "caption": "数据、草稿、确认与交付各自有成果，避免把工作描述误当成完成。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "工具问你问题时，怎么回复最有效"
+        },
+        {
+          "type": "paragraph",
+          "text": "这次发布也强调，Astra 能在工作中澄清缺少的需求，并在你补充条件时进行调整。对用户而言，最实用的回复不是“你决定就好”，而是说明优先级。例如报告要简短还是完整、预算能否增加、哪些数据不能使用，这些都会改变成果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果工具提出多个选项，可以按自己在乎的权衡回答，而不是重新描述整件工作。比如“先保留可修改的表格，图片等内容确认后再做”，就能让它知道目前该把精力放在哪里。对你不确定的地方，也可以直接要求先列出影响，不要替你作出不可逆的决定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "中途改变方向时，指出哪些已有成果仍然有效，哪些需要重做。要求工具更新待办和交付清单，能减少它继续沿用旧要求的概率。这是双方协作的安排，不代表任何模型都能完全避免误解；重要的限制仍应在交付前再次核对。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "如何判断新模型真的帮上忙"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以从一项你每周都会做的工作开始，记录原本需要的整理时间与修改步骤，再用同一份去标识化数据进行测试。观察的是结果是否完整、能否直接交接、是否减少了你纠错的时间，而不是单看工具执行了多久或回答得有多自信。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果模型做出了漂亮的文件，却填入了未证实的数据，仍然不能采用；如果它主动指出数据缺口，让你及早补齐，那反而可能是更有价值的表现。把成功定义成“可验收的成果”，可以避免只被演示画面或宣传用语牵着走。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-6 Astra 的发布，让普通人有更多理由重新思考哪些电脑工作可以委派。最适合开始尝试的，是数据范围清楚、输出容易检查、出错后能修正的任务。先建立可查的工作记录与交付方式，再逐步增加复杂度，才能看出能力提升对自己带来的真正影响。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付给同事前，可以要求一份简短的使用说明：文件在哪里、哪些字段可修改、计算依据是什么，以及后续更新时要注意哪些限制。这份说明应与成果一起检查，避免模型完成了制作，接手的人却还得重新猜测整份文件该如何使用。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "能力演示与账号权限要分开确认",
+          "text": "发布时采取分阶段开放；实际可用工具、套餐与地区条件，请以当前账号及官方说明为准。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Fable 5.1 与 Mythos 5.1：功能、开放对象与限制",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-fable-51-20260901"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 免费版与思考功能更新：日常使用有什么不同？",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-chatgpt-free-thinking-20260806"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：GPT-6 Astra 发布",
+          "url": "https://openai.com/index/gpt-6-astra/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Newsroom：GPT-6 Astra 发布日期",
+          "url": "https://openai.com/news/company-announcements/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

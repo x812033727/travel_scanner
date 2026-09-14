@@ -28,6 +28,7 @@ from test_guides import TABLES,make_app,client
 
 research=[json.loads(p.read_text(encoding='utf-8')) for p in sorted((HERE/'research').glob('*.json'))]
 slugs={r['slug'] for r in research}
+locales={'zh-TW','zh-CN','en','ja','ko'}
 assert len(slugs)==10
 packs=load_packs()
 new=[p for p in packs if p.slug in slugs]
@@ -53,7 +54,7 @@ checks=[]
 hero_hashes=[]
 all_docs={p.slug:p.locales['zh-TW'] for p in packs if 'zh-TW' in p.locales}
 for pack in new:
-    assert pack.kind=='life' and list(pack.locales)==['zh-TW'] and pack.destination_id is None
+    assert pack.kind=='life' and set(pack.locales)==locales and pack.destination_id is None
     doc=pack.locales['zh-TW']
     text=paragraphs(doc)
     assert 1800<=len(text)<=3000,(pack.slug,len(text))
@@ -83,6 +84,31 @@ for pack in new:
     checks.append({'slug':pack.slug,'paragraph_characters':len(text),'hero_bytes':hero.stat().st_size,'closest_article':nearest,'five_character_jaccard':round(score,4),'sources':len(doc.sources)})
 assert len(set(hero_hashes))==10
 
+locale_checks=[]
+for pack in new:
+    original=pack.locales['zh-TW']
+    for locale,doc in pack.locales.items():
+        assert [b.type for b in doc.blocks]==[b.type for b in original.blocks]
+        assert [(str(s.url),str(s.checked_on)) for s in doc.sources]==[(str(s.url),str(s.checked_on)) for s in original.sources]
+        assert len(doc.title)<=200 and len(doc.description)<=500
+        body=paragraphs(doc)
+        assert len(body)>=len(paragraphs(original))*0.7,(pack.slug,locale,'translation too short')
+        if locale=='en':assert not re.search(r'[\u3400-\u9fff]{4}',body)
+        for block,source in zip(doc.blocks,original.blocks):
+            if block.type=='table':
+                assert len(block.rows)==len(source.rows) and len(block.header)==len(source.header)
+            if block.type=='link':
+                url=urlparse(str(block.url))
+                assert url.path.rsplit('/',1)[-1] in live_slugs|slugs
+                if locale!='zh-TW':assert url.path.startswith('/'+locale+'/')
+        assets=[doc.hero,*[b for b in doc.blocks if b.type=='image']]
+        for asset in assets:
+            file=ROOT/'apps/web/public'/asset.src.lstrip('/')
+            assert file.exists() and file.stat().st_size<=300_000
+            if locale!='zh-TW':assert '-'+locale.lower()+'.' in file.name
+        locale_checks.append({'slug':pack.slug,'locale':locale,'paragraph_characters':len(body),'complete_block_structure':True,'sources_preserved':True,'localized_assets':len(assets)})
+assert len(locale_checks)==50
+
 
 async def verify_import():
     engine=create_async_engine('sqlite+aiosqlite:///:memory:')
@@ -100,30 +126,32 @@ async def verify_import():
             session.add(actor)
             await session.commit()
             first=await apply_import(session,actor,await plan_import(session,new),publish=False)
-            assert first.failed is None and len(first.created)==10 and not first.published
+            assert first.failed is None and len(first.created)==50 and not first.published
         async with client(make_app(factory)) as api:
-            assert not (await api.get('/guides',params={'locale':'zh-TW','kind':'life'})).json()['articles']
+            for locale in locales:
+                assert not (await api.get('/guides',params={'locale':locale,'kind':'life'})).json()['articles']
         async with factory() as session:
             published=await apply_import(session,actor,await plan_import(session,new),publish=True)
-            assert published.failed is None and len(published.published)==10
+            assert published.failed is None and len(published.published)==50
             replay=await apply_import(session,actor,await plan_import(session,new),publish=True)
-            assert replay.failed is None and len(replay.unchanged)==10
+            assert replay.failed is None and len(replay.unchanged)==50
             assert not replay.created and not replay.updated and not replay.published
         async with client(make_app(factory)) as api:
-            for pack in new:
-                r=await api.get(f'/guides/life/{pack.slug}',params={'locale':'zh-TW'})
-                assert r.status_code==200 and r.json()['status']=='published'
-                assert r.json()['published_locales']==['zh-TW']
-                body=r.json()['document']
-                assert body['title']==pack.locales['zh-TW'].title
-                assert len(body['blocks'])==len(pack.locales['zh-TW'].blocks)
-            listed=(await api.get('/guides',params={'locale':'zh-TW','kind':'life','limit':50})).json()
-            assert {a['slug'] for a in listed['articles']}==slugs
-        return {'database':'SQLite memory only','draft_created':10,'draft_publicly_hidden':10,'published_in_test':10,'idempotent_unchanged':10,'public_reads':10,'production_writes':0}
+            for locale in locales:
+                for pack in new:
+                    r=await api.get(f'/guides/life/{pack.slug}',params={'locale':locale})
+                    assert r.status_code==200 and r.json()['status']=='published'
+                    assert set(r.json()['published_locales'])==locales
+                    body=r.json()['document']
+                    assert body['title']==pack.locales[locale].title
+                    assert len(body['blocks'])==len(pack.locales[locale].blocks)
+                listed=(await api.get('/guides',params={'locale':locale,'kind':'life','limit':50})).json()
+                assert {a['slug'] for a in listed['articles']}==slugs
+        return {'database':'SQLite memory only','draft_created':50,'draft_publicly_hidden':50,'published_in_test':50,'idempotent_unchanged':50,'public_reads':50,'production_writes':0}
     finally:
         await engine.dispose()
 
 
-result={'checked_on':'2026-09-14','articles':checks,'local_import':asyncio.run(verify_import()),'new_articles':10,'duplicate_titles':0,'duplicate_bodies':0,'duplicate_hero_hashes':0,'existing_public_life_articles':len(live_slugs),'all_repository_packs_validated':len(packs),'lint_warnings':{s:[str(p) for p in ps] for s,ps in findings.items() if ps}}
+result={'checked_on':'2026-09-14','articles':checks,'locale_checks':locale_checks,'local_import':asyncio.run(verify_import()),'new_articles':10,'locale_documents':50,'duplicate_titles':0,'duplicate_bodies':0,'duplicate_hero_hashes':0,'existing_public_life_articles':len(live_slugs),'all_repository_packs_validated':len(packs),'lint_warnings':{s:[str(p) for p in ps] for s,ps in findings.items() if ps}}
 (HERE/'validation.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(result,ensure_ascii=False,indent=2))

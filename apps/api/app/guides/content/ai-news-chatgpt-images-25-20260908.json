@@ -186,6 +186,714 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "ChatGPT Images 2.5: Image Generation, Inpainting, and Sketch Updates",
+      "description": "OpenAI released ChatGPT Images 2.5 on September 8, 2026, highlighting detailed images, targeted edits, Sketch, templates and image comments. This guide covers asset preparation, preserving unchanged areas and checking details in posters, travel photos and social images. It separates consumer tools from API models and vendor claims about speed and availability from hands-on tests.",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-images-25-20260908/hero-en.jpg",
+        "alt": "Original illustration of an image canvas with sketch strokes, localized selection boxes, and edit annotations.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 8, 2026, OpenAI released ChatGPT Images 2.5, focusing on image details, localized edits, and consistency across multi-turn editing, alongside introducing workflows such as Sketch, templates, and image annotations. For everyday creators, the most noteworthy aspect of this update is the editing process: whether it can adjust only what you point out while preserving previously confirmed content."
+        },
+        {
+          "type": "paragraph",
+          "text": "Verified on September 14, 2026, this article compiles features and creative methods based on official announcements. The poster, photo, and social media scenarios discussed are editorial recommendations rather than showcases of hands-on testing with the new model by this site; the accompanying visuals are also merely original concept illustrations. Product features may vary depending on the platform and rollout progress, so please verify your access point before operating."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "First, Distinguish Generating New Images from Modifying Existing Ones"
+        },
+        {
+          "type": "paragraph",
+          "text": "When generating an image from scratch, you describe its purpose, subject, composition, and style; when modifying an existing image, you also need to clarify which parts must be preserved. Both tasks can produce pleasing visuals, but their review criteria differ. The former evaluates whether it meets the brief, while the latter requires checking whether the tool altered areas you intended to leave untouched."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, when preparing an event poster for a social media post, you can let the tool handle the concept and negative space first, then verify the text and dates. If you only want to adjust the background of a photo of your own product, you must explicitly demand the preservation of the product's shape, color, and identifiable details. If these conditions are not clearly specified, the generated results—no matter how polished—may still be unsuitable for practical use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Official statements claim that Images 2.5 is better at maintaining the subject of reference photos and adhering to editing instructions, but this still requires verification with your own assets. Especially when the image contains people, product structures, or text, you cannot assume all details are correct simply by glancing at a thumbnail. Retaining the original image first and comparing it with the revised results is the most fundamental workflow."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "For Localized Edits, Specify Both What to Change and What to Keep"
+        },
+        {
+          "type": "paragraph",
+          "text": "Editors recommend structuring revision requests into two parts. The first part specifies the location and objective of the adjustment, such as simplifying the background or removing distractions. The second part states what cannot be changed, such as the subject's pose, clothing color, product proportions, and text content. This makes evaluating success or failure much easier than simply saying \"make this better for me.\""
+        },
+        {
+          "type": "paragraph",
+          "text": "If more precise guidance is required, you can use the selection or annotation tools currently offered by the product to indicate the areas you care about. However, an interface markup is not a guarantee of the outcome; you must still inspect whether incidental changes occurred across the entire image. You can zoom in to compare subject edges, shadows, text, and repeating patterns to prevent localized edits from introducing new inconsistencies."
+        },
+        {
+          "type": "paragraph",
+          "text": "When the first round is missing only a single detail, try to propose adjustments using the already confirmed version while specifying that the rest should be preserved. If you re-describe the entire image every time, the tool may reprocess compositions that already met your requirements. The clearer your version management, the easier it is to direct revisions to the areas that truly need improvement."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Workflow",
+            "Prompt Focus",
+            "Review Focus"
+          ],
+          "rows": [
+            [
+              "New Image Generation",
+              "Purpose, composition, and negative space",
+              "Suitability for the actual layout"
+            ],
+            [
+              "Inpainting / Local Edits",
+              "Edit areas and preserved elements",
+              "Whether other areas have changed"
+            ],
+            [
+              "Sketch Reference",
+              "Positioning and spatial relationships",
+              "Whether the output follows the layout"
+            ],
+            [
+              "Iterative Edits",
+              "Building on the confirmed version",
+              "Consistency of text and main subject"
+            ]
+          ],
+          "caption": "Verified on September 14, 2026; scenario recommendations compiled by Mokaair editors."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Sketch and Templates Help Express Spatial Relationships Early"
+        },
+        {
+          "type": "paragraph",
+          "text": "The announcement introduced Sketch, enabling users to provide visual reference through rough sketches. For those who find it difficult to translate composition into words, a sketch can establish where the subject roughly sits, where negative space is kept, and how foreground and background relate. It does not need to look like a finished piece; the goal is to help the tool understand the arrangement you care about."
+        },
+        {
+          "type": "paragraph",
+          "text": "For instance, if you want to create an article cover, you can use simple shapes to mark out the visual area, headline area, and visual flow, then supplement it with text describing the theme and color scheme. This is an editorially suggested approach, and it does not mean any sketch can be transformed precisely into your intended image. After generation, you must still check whether there is enough negative space and whether the key focus remains clear when scaled down."
+        },
+        {
+          "type": "paragraph",
+          "text": "Templates, on the other hand, are suitable for quickly establishing a starting point with common layouts. Once applied, first confirm whether it truly suits your purpose before adjusting individual elements, rather than forcing information to fit the template. Posters, social media graphics, and product showcases have different reading patterns, so text density and subject scale should adapt accordingly."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-images-25-20260908/diagram-1-en.svg",
+          "alt": "Four review stages of image generation and editing",
+          "width": 1600,
+          "height": 900,
+          "caption": "Prepare assets and requirements first, refine iteratively, and finally verify real-world facts and visual details.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Text, People, and Real-World Facts Require Separate Verification"
+        },
+        {
+          "type": "paragraph",
+          "text": "An image looking natural does not mean the information inside it is accurate. Event dates, store names, addresses, and pricing should be verified against your source materials; do not accept them merely because the text shows no obvious gibberish. If the information requires frequent updates, you can also leave designated text areas blank in the image and insert editable official copy using familiar design tools."
+        },
+        {
+          "type": "paragraph",
+          "text": "When modifying people or products, pay close attention to identifying features. Editors recommend placing the original image and the result side-by-side to examine faces, hands, clothing details, accessories, and product structures, ensuring no unwanted alterations occurred. If your work requires faithful representation of reality, do not let generated outputs replace details you cannot personally verify."
+        },
+        {
+          "type": "paragraph",
+          "text": "Travel and lifestyle content must also clearly distinguish between records and illustrative representations. Modifying a scene to display different weather or inserting non-existent objects alters the photograph's role as documentation. When sharing publicly, clearly indicate that it is a creative edit or concept image to prevent readers from mistaking generated amenities, signage, or surroundings for factual reality."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Do Not Conflate General Image Tools with API Models"
+        },
+        {
+          "type": "paragraph",
+          "text": "The same release announcement also introduced GPT-Image-2.5 Flare and Sunburst, which are model options for the developer API. The image experience that everyday users see in ChatGPT cannot be directly equated with the billing, latency, and configurations developers encounter when calling the models."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you only produce occasional personal images, simply checking your account's current feature access and quotas is sufficient. However, if you are running bulk asset generation workflows, you must independently evaluate API pricing, failure or retry costs, and the time required for manual curation and verification. Official claims of speed improvements do not guarantee identical wait times for every image you generate."
+        },
+        {
+          "type": "paragraph",
+          "text": "The most fitting takeaway from this update is re-evaluating your editing workflow: define the purpose first, archive original images and versions, address specific issues round by round, and finally verify content and details. When you can articulate the objective of each edit, it becomes much easier to judge whether the new features truly streamline your creation, rather than merely producing another batch of hard-to-choose images."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Article Visuals Are Not Test Results of the New Model",
+          "text": "Feature descriptions are based on official announcements, while usage scenarios were designed by editors; original illustrations are used solely to explain workflows."
+        },
+        {
+          "type": "link",
+          "text": "Lyria 3.5 Joins Gemini: New Options for AI Music Creation",
+          "url": "https://mokaair.com/en/life/ai-news-lyria-35-gemini-20260904"
+        },
+        {
+          "type": "link",
+          "text": "EU AI Transparency Rules Take Effect: How Are Chatbots and Generated Content Labeled?",
+          "url": "https://mokaair.com/en/life/ai-news-eu-transparency-20260802"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: ChatGPT Images 2.5, 2026-09-08",
+          "url": "https://openai.com/index/introducing-chatgpt-images-2-5/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ChatGPT Images 2.5：画像生成、部分編集、スケッチ機能のアップデート",
+      "description": "OpenAIは2026年9月8日、ChatGPT Images 2.5を発表しました。より精細な画像、部分編集、複数回の修正での一貫性を打ち出し、Sketch、テンプレート、画像アノテーション機能を紹介。ポスター、旅行写真、SNS素材を例に、素材の準備、残したい部分の保持、細部の照合、一般向けツールと開発者APIの違いを解説し、生成速度や可用性の宣伝を個人の実測結果と混同しないようにするためのポイントを伝えます。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-images-25-20260908/hero-ja.jpg",
+        "alt": "スケッチの筆跡、部分選択枠、修正メモが描かれたキャンバスのオリジナルイラスト",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAIは2026年9月8日にChatGPT Images 2.5を発表しました。重点は画像の細部描写、部分的な修正、複数回の編集における一貫性であり、Sketch、テンプレート、画像アノテーションといった使い方を紹介しています。一般のクリエイターにとって、今回のアップデートで最も注目すべきは修正プロセスです。自分が指定した場所だけを調整し、すでに確定した内容を維持できるかどうかにあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月14日に確認を行い、公式発表に基づいて機能と制作手法を整理したものです。文中で扱うポスター、写真、SNSのシチュエーションは編集部による提案であり、当サイトが新モデルを用いて実測検証した成果の提示ではありません。また、記事中の画像もオリジナルの概念イラストです。製品機能はプラットフォームや公開段階によって異なる場合があるため、操作前にお使いの利用環境を改めてご確認ください。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "まず新しい画像の生成と既存画像の修正を切り分ける"
+        },
+        {
+          "type": "paragraph",
+          "text": "空白の状態から画像を生成する際は、用途、主題、構図、スタイルを言葉で記述します。一方、既存の画像を修正する際には、どの部分を必ず保持しなければならないかも明確に伝える必要があります。どちらのタスクでも見栄えの良い画像が得られる可能性はありますが、検収方法は異なります。前者は要求を満たしているかを見ますが、後者はツールが本来変更したくなかった部分まで変えていないかをより厳密にチェックしなければなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "たとえばSNS投稿用のイベントポスターを準備する場合、まずはツールにコンセプトや余白の配置を任せ、その後に文字や日付を照合するといった進め方が可能です。しかし、自社商品の写真の背景だけを調整したい場合は、商品の形状、色、識別可能なディテールを保持するよう明確に要求しなければなりません。これらの条件を明確に指定しないと、生成結果がどれほど精細であっても、実際の用途に適さないものになってしまう可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式発表では、Images 2.5は参照写真の主体をより維持しやすく、編集指示にもより忠実に従うと謳われています。しかし、これは依然として自身の手元の素材を使って検証する必要があります。特に画面内に人物、製品構造、文字が含まれる場合、サムネイルを見ただけで細部がすべて正しいと判断してはいけません。元の画像を保持した上で修正結果と比較することが、最も基本的な進め方です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "部分編集では、変える部分と残す部分を同時に指示する"
+        },
+        {
+          "type": "paragraph",
+          "text": "編集部では、修正の要望を2つのパートに分けて記述することを提案しています。第1パートには調整したい位置と目標を書き、たとえば「背景をよりシンプルにし、邪魔なオブジェクトを取り除く」などとします。第2パートには変更してはならない内容を書き、「被写体のポーズ、衣服の色、商品のサイズ比率、文字内容」などを指定します。これは単に「もっと良く修正して」と指示するよりも、成否をはるかに判断しやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "より正確な指示が必要な場合は、製品が現在提供している選択ツールやアノテーション機能を使い、気にしているエリアを直接指定できます。ただし、インターフェース上での指定は結果を保証するものではなく、画像全体に伴う変化がないかを確かめる必要があります。被写体の輪郭、影、文字、繰り返しのパターンなどを拡大して比較し、部分修正によって新たな不整合が生じていないかを確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "1回目の生成で細部が1箇所だけ惜しい場合は、確定済みのバージョンを引き継いで修正を指示し、他の部分は保持するよう指定してください。毎回画像全体を最初から記述し直すと、ツールはすでに要求を満たしていた構図まで再処理してしまうおそれがあります。バージョン管理を明確にするほど、修正を本当に改善が必要な箇所へと誘導しやすくなります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "作業手法",
+            "指示のポイント",
+            "検収のポイント"
+          ],
+          "rows": [
+            [
+              "新規画像生成",
+              "用途、構図、余白",
+              "実際のレイアウトに適しているか"
+            ],
+            [
+              "部分編集",
+              "修正エリアと保持項目",
+              "その他のエリアに変更がないか"
+            ],
+            [
+              "スケッチ参照",
+              "配置と空間的な関係",
+              "結果が意図した配置に従っているか"
+            ],
+            [
+              "連続修正",
+              "確定済みバージョンの引き継ぎ",
+              "文字や主体が一貫しているか"
+            ]
+          ],
+          "caption": "2026年9月14日確認。シチュエーション別の提案はMokaair編集部が整理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Sketchとテンプレートで、あらかじめ空間関係を表現する"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表文では、ユーザーがラフスケッチで視覚的な参考情報を提供できる「Sketch」が紹介されています。構図を文章で表現するのが得意でない人にとって、スケッチは主体の配置場所、余白の位置、前景と背景の関係をあらかじめ伝える手段となります。完成品のように綺麗に描く必要はなく、重視している配置をツールに理解させることが肝要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "たとえば記事のカバー画像を作成したい場合、まず単純な図形で画像エリア、タイトルエリア、視線の流れを示し、その上でテキストによってテーマや配色を補足することができます。これは編集部が推奨する活用法であり、どんなスケッチでも正確に期待どおりの画面になることを意味するわけではありません。生成後も、十分な余白があるか、縮小表示した際に重要部分が分かりやすいかを点検する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テンプレートは、よくあるレイアウトの出発点を手早く得るのに適しています。適用後は、それが本当に自分の用途に合っているかをまず確認し、その上で項目ごとに調整を進めるべきであり、テンプレートに合わせるために情報を無理やり詰め込むべきではありません。ポスター、SNS画像、商品展示では閲覧のされ方が異なるため、文字量や主体の大きさも用途に応じて変化させる必要があります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-images-25-20260908/diagram-1-ja.svg",
+          "alt": "画像生成と修正における4つの検収フェーズ",
+          "width": 1600,
+          "height": 900,
+          "caption": "素材と要件をまず準備し、順次修正を重ね、最後に現実の情報と画面の細部を照合する。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "文字、人物、現実の情報は個別に照合する"
+        },
+        {
+          "type": "paragraph",
+          "text": "画像が自然に見えるからといって、そこに含まれる情報が正しいとは限りません。イベントの日時、店名、住所、価格などは元の資料と照合すべきであり、文字に明らかな文字化けがないからという理由だけでそのまま採用してはいけません。情報が頻繁に変更される場合は、あらかじめ画像側にテキストエリアを空けておき、使い慣れたデザインツールで編集可能な正式テキストを流し込むのもひとつの方法です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "人物や商品の修正では、識別特徴に注意を払う必要があります。編集部では、元画像と生成結果を並べて表示し、顔、手、衣服の細部、アクセサリー、製品の構造を確認して、意図しない変化が起きていないかを確かめることを推奨します。実際の状態を忠実に再現する必要がある制作物の場合、確認できない細部を生成結果で安易に置き換えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "旅行や日常の記録に関するコンテンツも、実際の記録なのかイメージ図なのかを明確に分ける必要があります。天候を変えたり、存在しないオブジェクトを追加したりすることは、記録としての写真の意味を変えてしまいます。公開して共有する際は、これがクリエイティブな加工やコンセプトイメージであることを明記し、読者が生成された設備、看板、環境を実際の情報だと誤認しないようにしてください。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一般向け画像ツールとAPIモデルを混同しない"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ発表文のなかで、開発者向けAPIのモデル選択肢として「GPT-Image-2.5 Flare」と「Sunburst」も紹介されています。一般ユーザーがChatGPT内で目にする画像生成の体験と、開発者がAPI経由でモデルを呼び出す際の課金形態、生成速度、設定項目を、まったく同一の製品条件として直接捉えることはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "個人の画像をたまに作成する程度であれば、現在のアカウントで利用可能な機能と利用枠を確認しておけば十分です。一方、大量の素材を作成するワークフローを組む場合は、APIの料金体系、生成失敗やリトライにかかるコスト、そして人間による選別と照合の時間を別途見積もる必要があります。公式が謳う速度向上も、すべての画像で等しく同じ待機時間になることを保証するものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "今回のアップデートは、自身の修正プロセスを見直す機会として最も適しています。用途をまず定義し、元画像とバージョンを保存し、ラウンドごとに具体的な問題を調整し、最後に内容と細部を点検する。それぞれの修正目的を言葉で明確に説明できるようになれば、新機能が制作を真に円滑にしたのか、単に選びきれない画像が無駄に増えただけなのかを、より適切に判断できるようになります。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本記事の図版は新モデルの実測結果ではありません",
+          "text": "機能説明は公式発表に基づき、活用シーンは編集部が考案したものです。オリジナルイラストは作業手法を解説するためにのみ使用しています。"
+        },
+        {
+          "type": "link",
+          "text": "Lyria 3.5がGeminiに登場：AI音楽制作の新たな選択肢とは？",
+          "url": "https://mokaair.com/ja/life/ai-news-lyria-35-gemini-20260904"
+        },
+        {
+          "type": "link",
+          "text": "EUのAI透明性ルールが施行：チャットボットと生成コンテンツの表示はどうなる？",
+          "url": "https://mokaair.com/ja/life/ai-news-eu-transparency-20260802"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：ChatGPT Images 2.5、2026-09-08",
+          "url": "https://openai.com/index/introducing-chatgpt-images-2-5/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "ChatGPT Images 2.5: 이미지 생성, 부분 수정 및 스케치 기능 업데이트",
+      "description": "OpenAI가 2026년 9월 8일 세밀해진 이미지, 부분 편집, 다회차 수정을 내세우며 Sketch, 템플릿, 이미지 주석 기능을 갖춘 ChatGPT Images 2.5를 발표했습니다. 포스터, 여행 사진, 소셜 미디어 소재를 바탕으로 소재 준비법, 유지할 부분 보존법, 세부 사항 검토법을 짚어보고, 일반 소비자용 도구와 개발자 API 모델을 구분해 속도 및 가용성 홍보를 개인 실측으로 오인하지 않는 법을 전합니다.",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-images-25-20260908/hero-ko.jpg",
+        "alt": "스케치 획, 부분 선택 영역, 수정 메모가 포함된 이미지 캔버스 오리지널 일러스트",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 2026년 9월 8일 이미지 디테일, 부분 수정, 다회차 편집의 일관성에 중점을 둔 ChatGPT Images 2.5를 발표하고 Sketch, 템플릿, 이미지 주석 등의 사용 방식을 소개했습니다. 일반 창작자에게 이번 업데이트에서 가장 주목할 만한 부분은 수정 과정입니다. 즉, 지정한 영역만 정확히 조정하면서 이미 확정된 내용을 그대로 보존할 수 있는지 여부입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 14일 기준으로 공식 발표 내용을 바탕으로 기능과 창작 방식을 정리하여 검증했습니다. 본문의 포스터, 사진, 소셜 미디어 시나리오는 에디터의 제안이며 새 모델을 본 사이트에서 직접 테스트한 결과물이 아닙니다. 본문의 삽화 역시 오리지널 콘셉트 일러스트에 불과합니다. 제품 기능은 플랫폼과 배포 단계에 따라 다를 수 있으므로 이용 전 본인이 사용하는 접속 경로를 다시 확인하시기 바랍니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "새 이미지 생성과 기존 이미지 수정 먼저 구분하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "빈 캔버스에서 생성을 시작할 때는 용도, 주제, 구도, 스타일을 서술해야 합니다. 반면 기존 이미지를 수정할 때는 어떤 부분을 반드시 유지해야 하는지도 명확히 밝혀야 합니다. 두 작업 모두 보기 좋은 이미지를 얻을 수는 있지만 검수 방법은 다릅니다. 전자는 요구사항에 맞는지 확인하는 반면, 후자는 원래 건드리고 싶지 않았던 부분을 도구가 임의로 바꾸지 않았는지 더욱 꼼꼼히 살펴야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 소셜 미디어 게시물용 행사 포스터를 준비한다면 도구에 콘셉트와 여백을 먼저 맡긴 뒤 텍스트와 날짜를 대조할 수 있습니다. 자사 상품 사진의 배경만 바꾸고 싶다면 상품의 외형, 색상, 식별 가능한 세부 사항을 유지하도록 명확히 요구해야 합니다. 이러한 조건이 명시되지 않으면 생성 결과가 정교하더라도 실제 용도에 맞지 않을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 발표에 따르면 Images 2.5는 참조 사진의 피사체를 더 잘 유지하고 편집 지시를 준수한다고 하지만, 이는 여전히 각자의 소재로 검증해야 합니다. 특히 화면에 인물, 제품 구조, 텍스트가 있을 경우 썸네일만 보고 모든 디테일이 정확하다고 단정해서는 안 됩니다. 원본 이미지를 먼저 보존하고 수정 결과를 비교하는 것이 가장 기본적인 작업 방식입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "부분 수정 시 변경할 부분과 유지할 부분을 함께 명시하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "에디터는 수정 요청을 두 부분으로 나누어 작성할 것을 권장합니다. 첫 번째 부분에는 배경을 깔끔하게 정리하거나 방해 요소를 제거하는 등 조정할 위치와 목표를 적습니다. 두 번째 부분에는 피사체의 포즈, 의상 색상, 제품의 비례 관계, 텍스트 내용 등 변경하면 안 되는 요소를 명시합니다. 이는 단순히 \"더 멋지게 고쳐줘\"라고 요청하는 것보다 성공 여부를 판단하기 훨씬 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "더 정밀한 지시가 필요하다면 제품에서 현재 제공하는 선택 또는 주석 기능을 사용해 신경 쓰이는 영역을 지정할 수 있습니다. 다만 인터페이스 상의 표기가 결과물을 보장하는 것은 아니므로 전체 이미지에 연쇄적인 변화가 생기지 않았는지 여전히 확인해야 합니다. 피사체의 가장자리, 그림자, 텍스트, 반복 패턴을 확대 비교하여 부분 수정으로 인한 새로운 불일치를 방지할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 번째 시도에서 세부 사항 하나만 아쉬운 경우, 가급적 확정된 버전을 유지한 채 수정을 요청하고 다른 부분은 보존하라고 명시하세요. 매번 전체 이미지를 다시 묘사하면 이미 요구에 부합했던 구도까지 도구가 재처리해 버릴 수 있습니다. 버전 관리가 명확할수록 수정을 정말로 개선이 필요한 지점으로 유도하기 쉽습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "작업 방식",
+            "요청 핵심",
+            "검수 핵심"
+          ],
+          "rows": [
+            [
+              "새 이미지 생성",
+              "용도, 구도 및 여백",
+              "실제 레이아웃 적합성"
+            ],
+            [
+              "부분 편집",
+              "수정 영역 및 유지 항목",
+              "다른 영역의 변형 유무"
+            ],
+            [
+              "스케치 참조",
+              "위치 및 공간 관계",
+              "결과의 배치 준수 여부"
+            ],
+            [
+              "연속 수정",
+              "확정 버전 활용",
+              "텍스트 및 피사체 일관성"
+            ]
+          ],
+          "caption": "2026년 9월 14일 검증 완료; 상황별 권장안은 Mokaair 에디터 정리."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Sketch와 템플릿으로 공간 관계 먼저 전달하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문에서는 사용자가 러프한 스케치로 시각적 참고 자료를 제공할 수 있는 Sketch 기능을 소개했습니다. 구도를 글로 표현하는 데 서툰 사람이라면 스케치를 통해 주 피사체의 대략적인 위치, 여백 공간, 전경과 배경의 관계를 먼저 전달할 수 있습니다. 완성작처럼 잘 그릴 필요는 없으며 도구가 중요하게 여기는 배치를 이해하도록 돕는 데 의의가 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 아티클 커버를 만들 때 간단한 도형으로 이미지 영역, 제목 영역, 시선 방향을 표시한 다음 텍스트로 주제와 색상을 보완할 수 있습니다. 이는 에디터가 권장하는 활용법이며 모든 스케치가 기대한 화면으로 정밀하게 변환된다는 의미는 아닙니다. 생성 후에도 여백이 충분한지, 축소했을 때 핵심 요소가 명확히 보이는지 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "템플릿은 흔히 쓰이는 특정 레이아웃의 시작점을 빠르게 잡는 데 적합합니다. 템플릿을 적용한 뒤에는 본인의 목적에 실제로 맞는지 먼저 확인한 다음 항목별로 조정해야 하며 템플릿에 맞추기 위해 정보를 억지로 구겨 넣어서는 안 됩니다. 포스터, 소셜 미디어 이미지, 상품 전시는 읽는 방식이 다르므로 텍스트 양과 주 피사체의 크기도 용도에 맞춰 변경해야 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-images-25-20260908/diagram-1-ko.svg",
+          "alt": "이미지 생성 및 수정의 4단계 검수 과정",
+          "width": 1600,
+          "height": 900,
+          "caption": "소재와 요구사항을 먼저 준비하고 단계별로 수정한 뒤 실제 정보와 화면 세부 사항을 대조합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "텍스트, 인물, 실제 정보는 별도로 대조하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "이미지가 자연스러워 보인다고 해서 그 안의 정보까지 정확한 것은 아닙니다. 행사 날짜, 매장 이름, 주소, 가격은 원본 자료와 대조해야 하며 텍스트에 눈에 띄는 깨짐 현상이 없다는 이유만으로 그대로 사용해서는 안 됩니다. 정보를 자주 수정해야 한다면 이미지에 텍스트 영역만 비워둔 뒤 익숙한 조판 도구에서 편집 가능한 공식 텍스트를 배치할 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인물이나 상품을 수정할 때는 식별 특징에 주의해야 합니다. 에디터는 원본과 결과물을 나란히 놓고 얼굴, 손, 의상 디테일, 액세서리, 제품 구조를 살펴 원치 않는 변화가 없는지 확인할 것을 권장합니다. 작품이 실제 상태를 충실히 전달해야 한다면 확인할 수 없는 세부 사항을 생성 결과로 대체해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "여행이나 일상 콘텐츠 역시 기록용과 예시용을 명확히 구분해야 합니다. 날씨를 다르게 바꾸거나 존재하지 않는 사물을 추가하면 기록으로서 사진이 지니는 의미가 달라집니다. 공개적으로 공유할 때는 창작된 수정물이나 콘셉트 이미지임을 명확히 밝혀 독자가 생성된 시설, 간판, 환경을 실제 정보로 오해하지 않도록 해야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "일반 이미지 도구와 API 모델을 혼동하지 말 것"
+        },
+        {
+          "type": "paragraph",
+          "text": "동일한 발표문에서 개발자 API용 모델 옵션인 GPT-Image-2.5 Flare 및 Sunburst도 소개되었습니다. 일반 사용자가 ChatGPT 내에서 경험하는 이미지 기능과 개발자가 모델을 호출할 때의 과금 체계, 속도, 설정값은 완전히 동일한 제품 조건으로 볼 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "개인적인 이미지를 가끔 제작하는 수준이라면 본인 계정에서 현재 사용 가능한 기능과 한도만 확인하면 됩니다. 하지만 대량으로 소재를 제작하는 워크플로라면 API 요금표, 생성 실패 및 재시도 비용, 사람이 직접 선별하고 검수하는 데 드는 시간을 별도로 평가해야 합니다. 공식적으로 발표된 속도 개선 수치도 모든 이미지에서 동일한 대기 시간을 보장하는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 업데이트는 수정 프로세스를 다시 점검해 보기에 가장 적합합니다. 용도를 먼저 정의하고 원본과 버전을 저장하며 구체적인 문제를 단계별로 조정한 뒤 내용과 디테일을 확인하세요. 매 수정의 목적을 명확히 설명할 수 있을 때 새 기능이 창작을 정말로 원활하게 해 주는지, 아니면 고르기 힘든 이미지만 대량으로 늘려 놓았는지 판단하기가 수월해집니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "본문 삽화는 새 모델의 실측 결과물이 아닙니다",
+          "text": "기능 설명은 공식 발표에 따랐으며 활용 시나리오는 에디터가 기획했습니다. 오리지널 일러스트는 작업 방식을 설명하기 위해 사용되었습니다."
+        },
+        {
+          "type": "link",
+          "text": "Gemini에 도입된 Lyria 3.5: AI 음악 창작의 새로운 선택지는?",
+          "url": "https://mokaair.com/ko/life/ai-news-lyria-35-gemini-20260904"
+        },
+        {
+          "type": "link",
+          "text": "EU AI 투명성 규정 시행: 챗봇과 생성 콘텐츠는 어떻게 표기해야 할까?",
+          "url": "https://mokaair.com/ko/life/ai-news-eu-transparency-20260802"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: ChatGPT Images 2.5, 2026-09-08",
+          "url": "https://openai.com/index/introducing-chatgpt-images-2-5/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "ChatGPT Images 2.5：图像生成、局部修改与草图功能更新",
+      "description": "OpenAI 于 2026 年 9 月 8 日发布 ChatGPT Images 2.5，主打更细腻的图像、局部编辑与多轮修改，并介绍 Sketch、模板和图像注释功能。本文从海报、旅行照片与社交素材出发，说明如何准备素材、保留不想修改的部分、核对细节，并厘清消费者图像工具与开发者 API 模型，避免将生成速度与可用性宣传误当成个人实测。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-images-25-20260908/hero-zh-cn.jpg",
+        "alt": "一张图像画布上带有草图笔划、局部选框与修改批注的原创插图",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI 于 2026 年 9 月 8 日发布 ChatGPT Images 2.5，重点包括图像细节、局部修改与多轮编辑的一致性，并介绍了 Sketch、模板及图像注释等使用方式。对一般创作者而言，这次更新最值得留意的是修改过程：能否仅调整你指出的地方，并保留已经确认的内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 14 日核实，依官方发布内容整理功能与创作方法。文中的海报、照片与社交场景均为编辑建议，并非本站使用新模型实测后的成果展示；本文配图也仅为原创概念插图。产品功能可能因平台与开放进度而异，操作前请再次确认自己使用的入口。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先把生成新图和修改旧图分开"
+        },
+        {
+          "type": "paragraph",
+          "text": "从空白开始生成图像时，你需要描述用途、主题、构图与风格；修改既有图像时，还需要说清楚哪些部分必须保留。两种任务都可能得到好看的画面，但验收方法不同。前者关注是否符合需求，后者更要检查工具是否改动了你原本不想调整的地方。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如为社交贴文准备一张活动海报，可以先让工具处理概念与留白，再核对文字和日期；若只是想调整自有商品照片的背景，就要明确要求保留商品外形、颜色与可辨识细节。这些条件若没有说清楚，生成结果即使精细，也可能不适合实际用途。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方宣称 Images 2.5 更能维持参考照片的主体并遵循编辑指示，但这仍需要用自己的素材进行检查。尤其画面中有人物、产品结构或文字时，不能只看缩略图就认定所有细节准确无误。先保留原图，再对比修改结果，是最基本的工作方式。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "局部修改，请同时说明要改与要保留"
+        },
+        {
+          "type": "paragraph",
+          "text": "编辑建议将修改需求拆分为两部分。第一部分说明要调整的位置与目标，例如让背景更简洁、移除干扰物；第二部分说明哪些内容不可更改，例如主体姿势、衣物颜色、商品比例关系与文字内容。这比单纯说“帮我修得更好”更容易判断成败。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若需要更精确的指示，可以使用产品当前提供的选取或注释方式，指出你在意的区域。但界面标记并不等于结果保证，仍要观察整张图像是否出现连带变化。可以放大对比主体边缘、阴影、文字和重复图案，避免局部修改带来新的不一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "当第一轮只差一个细节时，尽量沿用已确认的版本提出修正，并指明保留其他部分。若每次都重新描述整张图，工具可能会重新处理原本已经符合要求的构图。版本管理越清晰，越容易将修改引导到真正需要改善的地方。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作方式",
+            "需求重点",
+            "验收重点"
+          ],
+          "rows": [
+            [
+              "新图生成",
+              "用途、构图与留白",
+              "是否适合实际版面"
+            ],
+            [
+              "局部编辑",
+              "修改区域与保留项目",
+              "其他区域有无变动"
+            ],
+            [
+              "草图参考",
+              "位置与空间关系",
+              "结果是否遵循安排"
+            ],
+            [
+              "连续修改",
+              "沿用已确认版本",
+              "文字与主体是否一致"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日核实；场景建议由 Mokaair 编辑整理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Sketch 与模板，可以先表达空间关系"
+        },
+        {
+          "type": "paragraph",
+          "text": "发布稿介绍了 Sketch，让用户通过草图提供视觉参考。对于不擅长用文字描写构图的人，草图可以先交代主体大致位置、哪些区域留白，以及前景与背景的关系。它不需要画得像成品，重点在于让工具理解你所看重的安排。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如你想制作一张文章封面，可以先用简单形状标出图片区、标题区与视线方向，再用文字补充主题与配色。这是编辑建议的用法，并不表示任何草图都能精准转化成预期画面。生成后仍要检查留白是否充足，缩小后的视觉重点是否清晰。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模板则适合用来快速获取某种常见版式的起点。套用后，先确认它是否真正符合你的用途，再逐项调整，而不是为了迎合模板而生硬塞入信息。海报、社交图片与商品展示的阅读逻辑不同，字数与主体大小也应随用途而变。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-images-25-20260908/diagram-1-zh-cn.svg",
+          "alt": "图像生成与修改的四个验收阶段",
+          "width": 1600,
+          "height": 900,
+          "caption": "先准备材料与需求，再逐次修改，最后核对现实信息与画面细节。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "文字、人物与现实信息要另外核对"
+        },
+        {
+          "type": "paragraph",
+          "text": "画面看起来自然，并不代表其中的信息就准确无误。活动日期、店名、地址与价格应与你的原始材料进行核对，不能仅因文字没有明显乱码就直接采用。若信息需要经常更改，也可以让图像先预留文字区域，之后再在熟悉的排版工具中填入可编辑的正式文本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "人物或商品的修改则需注意识别特征。编辑建议将原图与结果并排查看面部、手部、衣物细节、配饰及商品结构，确认没有产生不希望出现的变动。若作品需要如实反映真实状态，切勿用生成结果取代你无法核实的细节。"
+        },
+        {
+          "type": "paragraph",
+          "text": "旅行与生活类内容也应分清记录与示意。将场景改为不同天气或加入不存在的物件，会改变照片作为记录的意义。在公开发布时，可明确说明这是创意修改或概念图，避免读者将生成的设施、招牌或环境误认作实际信息。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一般图像工具与 API 模型不要混在一起看"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一篇发布稿还介绍了 GPT-Image-2.5 Flare 与 Sunburst，这是面向开发者 API 的模型选择。一般用户在 ChatGPT 中看到的图像体验，与开发者调用模型时的计费、速度和参数配置，不能直接划等号，亦非完全相同的产品条件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若你只是偶尔制作个人图像，只需先确认当前账号能使用的功能与额度即可；若属于大批量创建素材的工作流，则需额外评估 API 价格表、生成失败或重试成本，以及人工筛选与核对的时间。官方宣称的速度提升，也无法保证你的每张图片都享有相同的等待时间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本次更新最适合用来重新梳理修改流程。先明确用途，保留原图与版本，逐轮调整具体问题，最后检查内容与细节。当你能清楚说明每一次修改的目的时，就更容易判断新功能是否真正让创作更为顺畅，而不是仅仅多生成了一批难以取舍的图片。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本文配图非新模型实测成果",
+          "text": "功能描述基于官方发布，使用场景由编辑设计；原创插图仅用于阐释工作方法。"
+        },
+        {
+          "type": "link",
+          "text": "Lyria 3.5 接入 Gemini：AI 音乐创作有哪些新选择？",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-lyria-35-gemini-20260904"
+        },
+        {
+          "type": "link",
+          "text": "欧盟 AI 透明度规则上路：聊天机器人与生成内容如何标示？",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-eu-transparency-20260802"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：ChatGPT Images 2.5，2026-09-08",
+          "url": "https://openai.com/index/introducing-chatgpt-images-2-5/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

@@ -12,6 +12,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 import time
+import sys
 
 from PIL import Image, ImageDraw
 
@@ -36,7 +37,10 @@ def circle(x, y, r, fill=PALE, stroke=TEAL):
     return f'<circle cx="{x}" cy="{y}" r="{r}" fill="{fill}" stroke="{stroke}" stroke-width="6"/>'
 
 
-def label(x, y, value, size=40, fill=INK, anchor="middle"):
+def label(x, y, value, size=40, fill=INK, anchor="middle", max_width=None):
+    if max_width:
+        units=sum(1 if ord(c)>255 else 0.58 for c in value)
+        size=min(size,round(max_width/max(units,1),1))
     return f'<text x="{x}" y="{y}" font-size="{size}" font-weight="600" fill="{fill}" text-anchor="{anchor}">{html.escape(value)}</text>'
 
 
@@ -62,7 +66,7 @@ def svg(title, desc, body):
 <rect width="1600" height="900" fill="{CREAM}"/>{body}</svg>'''
 
 
-def hero(index, title, alt):
+def hero(index, title, alt, hero_label=None):
     b = circle(800,440,305,PALE,"none") + circle(225,675,72,"#F0DBC4","none") + circle(1360,220,55,"#DBE8F2","none")
     if index == 0:
         b += document(335,270,280,340)+document(920,245,270,330)+line(650,440,875,440)+check(1135,590)
@@ -107,18 +111,19 @@ def hero(index, title, alt):
         b += '<rect x="500" y="350" width="315" height="225" rx="12" fill="none" stroke="#2F6F9F" stroke-width="8" stroke-dasharray="20 14"/>'
         b += line(1130,665,1295,425,ORANGE,40)+circle(1295,425,24,ORANGE,"none")+rect(920,605,175,85,"#E6F0F7",BLUE)
     hero_labels=["工作交接","用量與帳單","清楚標示來源","回答之前先想清楚","用語音整理一天","能力與存取資格","模型到日常工具","交付電腦工作","把想法變成音樂","保留重點再修改"]
-    b += label(800,805,hero_labels[index],52)
+    b += label(800,805,hero_label or hero_labels[index],52,max_width=1400)
     return svg(title,alt,b)
 
 
-def diagram(data):
-    b = label(800,102,data['title'],46)
+def diagram(data,locale='zh-TW'):
+    b = label(800,102,data['title'],46,max_width=1440)
     positions=[(110,180),(850,180),(110,500),(850,500)]
     for i,((x,y),(heading,detail)) in enumerate(zip(positions,data['nodes'])):
         b += rect(x,y,640,245, "#FFFFFF", TEAL if i%2==0 else BLUE)
         b += circle(x+63,y+66,23,TEAL if i%2==0 else BLUE,"none")
-        b += label(x+320,y+91,heading,44)+label(x+320,y+168,detail,32,"#5C6B6B")
-    b += label(1540,865,"© Mokaair 製圖 2026",20,"#5C6B6B","end")
+        b += label(x+360,y+91,heading,44,max_width=510)+label(x+320,y+168,detail,32,"#5C6B6B",max_width=580)
+    credits={'zh-TW':'© Mokaair 製圖 2026','zh-CN':'© Mokaair 制图 2026','en':'© Mokaair Illustration 2026','ja':'© Mokaair 作図 2026','ko':'© Mokaair 제작 2026'}
+    b += label(1540,865,credits[locale],20,"#5C6B6B","end")
     return svg(data['title'],data['caption'],b)
 
 
@@ -141,35 +146,47 @@ def render(svg_file, png):
 def main():
     (HERE/"renders").mkdir(exist_ok=True)
     manifest=[]
+    jobs=[]
     for research_file in sorted((HERE/"research").glob("*.json")):
         research=json.loads(research_file.read_text(encoding="utf-8"))
         slug=research['slug']
         pack=json.loads((CONTENT/f"{slug}.json").read_text(encoding="utf-8"))
-        doc=pack['locales']['zh-TW']
         target=PUBLIC/"guides"/slug
         target.mkdir(parents=True,exist_ok=True)
-        (target/"hero.svg").write_text(hero(research['hero_style'],doc['title'],doc['hero']['alt']),encoding="utf-8")
-        (target/"diagram-1.svg").write_text(diagram(research['diagram']),encoding="utf-8")
-        for kind in ['hero','diagram-1']:
-            png=(HERE/"renders"/f"{slug}-{kind}.png").resolve()
-            render(target/f"{kind}.svg",png)
-            if kind=='hero':
-                with Image.open(png) as picture:
-                    assert picture.size==(1600,900),picture.size
-                    picture.convert('RGB').save(target/"hero.jpg",quality=88,optimize=True,progressive=True)
-        manifest.append({'slug':slug,'title':doc['title'],'event_date':research['event_date'],'url':f'https://mokaair.com/zh-TW/life/{slug}'})
-        print(f"rendered {slug}",flush=True)
+        for locale,doc in pack['locales'].items():
+            suffix='' if locale=='zh-TW' else '-'+locale.lower()
+            localized=research.get('translations',{}).get(locale,{})
+            if '--finalize' not in sys.argv:
+                (target/f"hero{suffix}.svg").write_text(hero(research['hero_style'],doc['title'],doc['hero']['alt'],localized.get('hero_label')),encoding="utf-8")
+                (target/f"diagram-1{suffix}.svg").write_text(diagram(localized.get('diagram',research['diagram']),locale),encoding="utf-8")
+            for kind in ['hero','diagram-1']:
+                png=(HERE/"renders"/f"{slug}-{locale}-{kind}.png").resolve()
+                jobs.append({'svg':str((target/f'{kind}{suffix}.svg').resolve()),'png':str(png)})
+                if '--svg-only' in sys.argv:continue
+                if '--finalize' not in sys.argv:render(target/f"{kind}{suffix}.svg",png)
+                if kind=='hero':
+                    with Image.open(png) as picture:
+                        assert picture.size==(1600,900),picture.size
+                        picture.convert('RGB').save(target/f"hero{suffix}.jpg",quality=88,optimize=True,progressive=True)
+        doc=pack['locales']['zh-TW']
+        manifest.append({'slug':slug,'title':doc['title'],'event_date':research['event_date'],'url':f'https://mokaair.com/zh-TW/life/{slug}',
+            'locales':{locale:{'title':doc['title'],'url':f'https://mokaair.com/{locale}/life/{slug}'} for locale,doc in pack['locales'].items()}})
+        print(f"prepared {slug}",flush=True)
     manifest.sort(key=lambda v:v['event_date'])
     (HERE/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    (HERE/'renders/jobs.json').write_text(json.dumps(jobs),encoding='utf-8')
+    if '--svg-only' in sys.argv:return
     for kind in ['hero','diagram-1']:
-        for start in range(0,len(manifest),4):
-            sheet=Image.new('RGB',(1600,960),CREAM)
-            draw=ImageDraw.Draw(sheet)
-            for j,item in enumerate(manifest[start:start+4]):
-                with Image.open(HERE/"renders"/f"{item['slug']}-{kind}.png") as picture:
-                    sheet.paste(picture.resize((800,450)),((j%2)*800,(j//2)*480))
-                draw.text(((j%2)*800+20,(j//2)*480+455),item['slug'],fill=INK)
-            sheet.save(HERE/f"{kind}-sheet-{start//4+1}.jpg",quality=92)
+        for locale in pack['locales']:
+            for start in range(0,len(manifest),4):
+                sheet=Image.new('RGB',(1600,960),CREAM)
+                draw=ImageDraw.Draw(sheet)
+                for j,item in enumerate(manifest[start:start+4]):
+                    with Image.open(HERE/"renders"/f"{item['slug']}-{locale}-{kind}.png") as picture:
+                        sheet.paste(picture.resize((800,450)),((j%2)*800,(j//2)*480))
+                    draw.text(((j%2)*800+20,(j//2)*480+455),item['slug']+' '+locale,fill=INK)
+                suffix='' if locale=='zh-TW' else '-'+locale
+                sheet.save(HERE/f"{kind}-sheet-{start//4+1}{suffix}.jpg",quality=92)
 
 
 if __name__=='__main__':

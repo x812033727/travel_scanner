@@ -9,6 +9,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../..');
 const manifest = JSON.parse(await fs.readFile(path.join(here, 'manifest.json'), 'utf8'));
 assert.equal(manifest.length, 10);
+const locales=['zh-TW','en','ja','ko','zh-CN'];
 const output = path.join(here, 'browser');
 await fs.mkdir(output, {recursive:true});
 const browser = await chromium.launch({headless:true, ...(process.env.CHROMIUM_BIN ? {executablePath:process.env.CHROMIUM_BIN}: {})});
@@ -19,9 +20,11 @@ try {
       ? {...devices['iPhone 13'], locale:'zh-TW'}
       : {viewport:{width:1365,height:900},locale:'zh-TW'});
     const page = await context.newPage();
-    for (const item of manifest) {
+    for(const locale of locales) {
+    for (const entry of manifest) {
+      const item={...entry,url:entry.locales[locale].url};
       const pack = JSON.parse(await fs.readFile(path.join(root, 'apps/api/app/guides/content', item.slug+'.json'), 'utf8'));
-      const doc = pack.locales['zh-TW'];
+      const doc = pack.locales[locale];
       const response = await page.goto(item.url, {waitUntil:'domcontentloaded',timeout:60000});
       assert.equal(response.status(),200,item.url);
       await page.locator('article h1').waitFor();
@@ -54,37 +57,42 @@ try {
       const robots = await page.locator('meta[name="robots"]').evaluateAll(nodes=>nodes.map(n=>n.content));
       assert(robots.every(content=>!content.includes('noindex')));
       const alternates = await page.locator('link[rel="alternate"][hreflang]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('hreflang')));
-      assert.deepEqual(alternates,['zh-TW']);
+      assert.deepEqual(alternates.sort(),[...locales,'x-default'].sort());
       const structured = await page.locator('script[type="application/ld+json"]').evaluateAll(nodes=>nodes.flatMap(n=>JSON.parse(n.textContent)));
-      assert(structured.some(data=>data['@type']==='Article' && data.headline===doc.title && data.inLanguage==='zh-TW'));
+      assert(structured.some(data=>data['@type']==='Article' && data.headline===doc.title && data.inLanguage===locale));
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'horizontal page overflow');
       await page.evaluate(()=>scrollTo(0,0));
-      await page.screenshot({path:path.join(output,`${viewport}-${item.slug}.png`),fullPage:true});
-      await page.screenshot({path:path.join(output,`${viewport}-${item.slug}-top.png`)});
-      await article.locator('table').screenshot({path:path.join(output,`${viewport}-${item.slug}-table.png`)});
-      report.pages.push({slug:item.slug,viewport,status:response.status(),full_text:true,images:images.length,table:true,sources:doc.sources.length,internal_links:2,metadata:true,screenshot:`browser/${viewport}-${item.slug}.png`});
-      console.log(`${viewport}: ${item.slug} passed`);
+      await page.screenshot({path:path.join(output,`${viewport}-${locale}-${item.slug}.png`),fullPage:true});
+      await page.screenshot({path:path.join(output,`${viewport}-${locale}-${item.slug}-top.png`)});
+      await article.locator('table').screenshot({path:path.join(output,`${viewport}-${locale}-${item.slug}-table.png`)});
+      report.pages.push({slug:item.slug,locale,viewport,status:response.status(),full_text:true,images:images.length,table:true,sources:doc.sources.length,internal_links:2,metadata:true,screenshot:`browser/${viewport}-${locale}-${item.slug}.png`});
+      console.log(`${viewport} ${locale}: ${item.slug} passed`);
     }
-    const listResponse = await page.goto('https://mokaair.com/zh-TW/life',{waitUntil:'domcontentloaded',timeout:60000});
+    const listResponse = await page.goto(`https://mokaair.com/${locale}/life`,{waitUntil:'domcontentloaded',timeout:60000});
     assert.equal(listResponse.status(),200);
     // The first page may be paginated; the public API inventory separately covers all ten.
     const listed = await page.locator('main a[href*="/life/"]').evaluateAll(nodes=>nodes.map(n=>n.href));
-    assert(listed.some(url=>manifest.some(item=>item.url===url)),'new articles absent from life listing');
-    await page.screenshot({path:path.join(output,`${viewport}-life-list.png`),fullPage:true});
-    report.listings.push({viewport,status:200,new_articles_shown:manifest.filter(item=>listed.includes(item.url)).length});
+    assert(listed.some(url=>manifest.some(item=>item.locales[locale].url===url)),'new articles absent from life listing');
+    await page.screenshot({path:path.join(output,`${viewport}-${locale}-life-list.png`),fullPage:true});
+    report.listings.push({viewport,locale,status:200,new_articles_shown:manifest.filter(item=>listed.includes(item.locales[locale].url)).length});
+    }
     await context.close();
   }
   const api = await browser.newContext();
-  const listing = await api.request.get('https://mokaair.com/api/travel/guides?locale=zh-TW&kind=life&limit=50');
+  report.public_index_articles={};
+  for(const locale of locales) {
+  const listing = await api.request.get(`https://mokaair.com/api/travel/guides?locale=${locale}&kind=life&limit=50`);
   assert.equal(listing.status(),200);
   const inventory=await listing.json();
   assert(manifest.every(item=>inventory.articles.some(a=>a.slug===item.slug)));
+  report.public_index_articles[locale]=inventory.articles.length;
+  }
   const sitemap=await api.request.get('https://mokaair.com/sitemap.xml');
   assert.equal(sitemap.status(),200);
   const xml=await sitemap.text();
-  for(const item of manifest) assert(xml.includes(`<loc>${item.url}</loc>`),item.slug+' sitemap missing');
-  report.sitemap_articles=10;
-  report.public_index_articles=inventory.articles.length;
+  for(const item of manifest) for(const locale of locales) assert(xml.includes(`<loc>${item.locales[locale].url}</loc>`),item.slug+' '+locale+' sitemap missing');
+  report.sitemap_locale_articles=50;
+  assert.equal(report.pages.length,100);
   await api.close();
   await fs.writeFile(path.join(here,'public-verification.json'),JSON.stringify(report,null,2)+'\n');
 } finally { await browser.close(); }

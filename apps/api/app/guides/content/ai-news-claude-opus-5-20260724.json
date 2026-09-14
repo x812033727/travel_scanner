@@ -182,6 +182,698 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Claude Opus 5 Released: What Changes Matter Most for Everyday Work Users?",
+      "description": "Anthropic released Claude Opus 5 on July 24, 2026, focusing on coding, knowledge work, and multi-step tasks. From the everyday office worker's perspective—document organization, proposal revisions, and task handoffs—this article covers the announced capability shifts, how to distinguish vendor benchmarks from real-world results, and how to set up data boundaries, acceptance criteria, and manual checkpoints before switching plans.",
+      "hero": {
+        "src": "/guides/ai-news-claude-opus-5-20260724/hero-en.jpg",
+        "alt": "Original illustration of a desk workflow connecting documents, a magnifying glass, and checklist cards",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic released Claude Opus 5 on July 24, 2026. The company focused improvements on programming, knowledge work, and tasks requiring sustained verification, noting that at launch it became the default model for Claude Max and the highest-capability model available for Claude Pro. That was the setup at product launch; this article was verified on September 14, 2026, and which models an actual account can select still depends on the current subscription plan and model menu."
+        },
+        {
+          "type": "paragraph",
+          "text": "For regular office workers, the most worthwhile aspect of this news is whether it reduces back-and-forth revisions on the same task. Polishing an email into fluent prose is merely the starting point; understanding attachments, pinpointing contradictions, proposing revised drafts, and verifying that no requirements were missed are far closer to the realities of workplace needs. The scenarios below were designed by editors to help you translate official announcements into verifiable questions, rather than serving as benchmark leaderboards."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "With model updates, first check which part of your workflow becomes easier"
+        },
+        {
+          "type": "paragraph",
+          "text": "The release announcement describes Opus 5 as placing greater emphasis on verification and iterative revision, citing benchmark results in coding and knowledge work. These results reflect Anthropic's performance under specific test prompts and configurations; they cannot be directly extrapolated to how much your reports will improve or how much time any given person will save. When reading the news, first rephrase \"the model performs better\" into an observable question: Can it catch its own misquoted figures before final submission?"
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, when organizing event registration data, the real hassle is often not creating a clean table, but dealing with duplicate sign-ups, unupdated payment statuses, or dietary changes left in the notes. A fitting task description asks it to list inconsistent fields, preserve the original records, and provide an items-to-confirm checklist. If you only ask it to \"clean this up for me,\" it is difficult to tell which exceptions it simply discarded as noise."
+        },
+        {
+          "type": "paragraph",
+          "text": "Starting with a test task where you already know the correct answer makes evaluation much easier than throwing in your most critical project right away. Keep the original file, write down acceptance criteria beforehand, and finally compare the number of revision rounds and omitted items. The model name is only one test variable; data completeness, prompting approach, and whether you provided tools will equally influence the outcome."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How to delegate document organization and proposal revisions"
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose you need to turn meeting discussion notes into a proposal. You can start by providing three types of material: raw notes, confirmed decisions, and undecided issues. Request that the output clearly distinguish these three states and trace each conclusion back to its corresponding source excerpt. That way, fluent writing will not mask a lack of supporting evidence, and managers can easily see which areas still require a decision."
+        },
+        {
+          "type": "paragraph",
+          "text": "When revising documents, rather than asking all at once for the text to be \"more professional, concise, and persuasive,\" specify your priorities first. For example, keep delivery dates and responsible owners, remove redundant background, and only then adjust the tone. This is an editor-recommended workflow design, not an Opus 5-exclusive feature; its value lies in allowing you to maintain identical standards when comparing different models."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can also request two deliverables: a readable revised draft, and a checklist listing substantive changes. The checklist should explain what was added, what was deleted, and what content still lacks a source. If the model merely summarizes an entire section of edits as \"optimized,\" ask it to provide exact locations; otherwise, you will still have to guess what changed sentence by sentence."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Work Scenario",
+            "Key Instructions",
+            "Acceptance Method"
+          ],
+          "rows": [
+            [
+              "Meeting minutes",
+              "Distinguish decisions from items pending confirmation",
+              "Verify each point against raw notes"
+            ],
+            [
+              "Proposal revision",
+              "Specify required information and tone",
+              "Inspect list of substantive changes"
+            ],
+            [
+              "Spreadsheet cleanup",
+              "Preserve raw files and exceptions",
+              "Check duplicate rows and missing values"
+            ],
+            [
+              "Task handoff",
+              "List files and unfinished action items",
+              "Open deliverables to verify item by item"
+            ]
+          ],
+          "caption": "Verified on September 14, 2026; scenario recommendations compiled by Mokaair editors."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Multi-step tasks require clear handoff points"
+        },
+        {
+          "type": "paragraph",
+          "text": "When handing over work to tools with agentic capabilities, first distinguish between the model and the tools. The model is responsible for understanding and generating content; whether it can access cloud documents, control a browser, or execute files depends on the product used, integration methods, and account permissions. You should not assume that opening a chat window gives you the same capabilities simply because the release announcement demonstrated a particular operation."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can break a task down into four stages: organizing, drafting, verifying, and delivering. For example, ask it to list the required data first, and only write the report after you supply what is missing; once the report is finished, have it presented for your review, reserving emailing or public sharing until explicit approval is given. Especially when client data and team shared files are involved, every step that modifies external states must have clearly defined boundaries."
+        },
+        {
+          "type": "paragraph",
+          "text": "The final handoff must also be auditable. Instruct the tool to list output filenames, data gaps, assumptions used, and any incomplete tasks. When it says \"done,\" you need to be able to locate and open the actual deliverable, not just read a descriptive paragraph. This acceptance method helps you determine whether the model truly reduces coordination overhead."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-opus-5-20260724/diagram-1-en.svg",
+          "alt": "Four handoff points for delegating document workflows to AI",
+          "width": 1600,
+          "height": 900,
+          "caption": "Define data scope first, generate drafts, verify content, and obtain owner approval before delivery.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Should you adjust your plan for the new model?"
+        },
+        {
+          "type": "paragraph",
+          "text": "If your primary use case currently involves revising short messages or organizing personal notes, running a comparison with whatever models you already have on hand is sufficient. When dealing with long documents, cross-referencing multiple files, or proposals requiring repeated revisions, observe whether higher-capability models save you enough verification time. Do not decide whether an upgrade is worth paying for based solely on answer length or eloquent phrasing."
+        },
+        {
+          "type": "paragraph",
+          "text": "When comparing, you can keep a small set of fixed tasks: a spreadsheet with duplicate rows, meeting notes containing unresolved items, and a draft reply where the tone could easily come across as discourteous. Each time, evaluate accuracy, omissions, traceability, and the time you spent reviewing. Using the same materials allows you to continue comparing when models are updated in the future, avoiding reliance on vague impressions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Plan pricing, available models, and usage limits are subject to change; this article does not treat launch-day configurations as permanent commitments. First check your own account to clarify whether the bottleneck you want to solve stems from model capabilities, tool permissions, or simply incomplete data. Only the first issue is likely to improve solely by changing models."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Turning capability gains into reliable work deliverables"
+        },
+        {
+          "type": "paragraph",
+          "text": "For releases like Opus 5 that center on extended tasks, the most practical expectation is that \"it is easier to finish things thoroughly,\" not that \"manual checks are no longer necessary.\" You still need to decide which data can be provided, which inferences are acceptable, and who confirms the work before final delivery. The closer your input matches real-world work, the less these conditions can be skipped."
+        },
+        {
+          "type": "paragraph",
+          "text": "When trying it out for the first time, you can provide an example stripped of personal data and explicitly state that if data is missing, it should halt and list questions rather than fabricating background details. Once you confirm it delivers work according to your format, gradually increase complexity. Usage logs gathered this way will answer whether it fits your daily workflow far better than any single score in a launch announcement."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Do not treat benchmark scores as your own test results",
+          "text": "Comparisons in release announcements come from vendor-specified evaluations. The scenarios here are editorial recommendations; verify effectiveness with your own fixed tasks."
+        },
+        {
+          "type": "link",
+          "text": "Claude Fable 5.1 and Mythos 5.1: Capabilities, Access, and Limits",
+          "url": "https://mokaair.com/en/life/ai-news-claude-fable-51-20260901"
+        },
+        {
+          "type": "link",
+          "text": "GPT-6 Astra Announced: From Answering Questions to Completing Computer Tasks",
+          "url": "https://mokaair.com/en/life/ai-news-gpt-6-astra-20260903"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic: Introducing Claude Opus 5",
+          "url": "https://www.anthropic.com/news/claude-opus-5",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Claude Opus 5登場：一般のデスクワーカーが注目すべき変化とは？",
+      "description": "Anthropicが2026年7月24日にClaude Opus 5を発表。コーディング、ナレッジワーク、多段階タスクに注力したモデルです。本稿では文書整理や提案書修正、業務引き継ぎの視点から機能変化を解説し、ベンダーのベンチマークと実際の業務成果の見分け方、試用時のデータ範囲や検収条件、人的確認ポイントの設定法を整理。単なるモデル更新による安易なプラン変更を防ぐ指針を提示します。",
+      "hero": {
+        "src": "/guides/ai-news-claude-opus-5-20260724/hero-ja.jpg",
+        "alt": "デスク上で書類、ルーペ、照合カードが一連のワークフローとして並ぶオリジナルイラスト",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropicは2026年7月24日、Claude Opus 5を発表しました。公式発表では、コーディング、ナレッジワーク、継続的な確認を要するタスクの改善に重点が置かれており、発表時点でClaude Maxのデフォルトモデル、およびClaude Proで利用可能な最上位モデルになると案内されました。これはリリース時点の構成であり、2026年9月14日の確認時点において、自身のアカウントでどのモデルを選択できるかは最新の契約プランやモデルメニューを確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般の会社員にとって、今回のニュースで最も注目すべき点は「同じ業務において往復の修正作業をどれだけ減らせるか」です。メールの文章を自然に整えることは出発点にすぎません。添付ファイルを読み込み、矛盾を見つけ出し、修正案を提示したうえで、要求漏れがないか再確認することこそが実際の業務現場で求められる対応です。以下では編集部が設計した実務シナリオをもとに、公式発表の内容を読者自身で検証可能な問いへと落とし込んで解説します。本サイトの実測ランキングではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "モデル更新時、まずどの作業工程が楽になるかを見る"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表文では、Opus 5が確認や反復修正をより重視していると説明され、コーディングやナレッジワークに関するベンチマーク結果も掲載されています。ただし、それらの結果はAnthropicが指定した問題や設定の下で得られた性能を示したものであり、自社のレポート作成がどれだけ改善するか、あるいは個々の作業時間をどれだけ削減できるかに直接換算することはできません。ニュースを読む際は、「モデルの性能向上」という表現を「提出前に自身が誤って引用した数値を見つけ出せるか」といった観察可能な問いに置き換えて捉えるのが賢明です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "たとえばイベントの申込データを整理する場合、本当に厄介なのは見栄えの良い表を作ることではなく、重複申込の存在や未更新の支払い状況、備考欄での食事変更要望といったイレギュラーへの対応です。適切なタスク指示としては、不整合のある項目をリストアップさせ、元の記録を保持し、確認待ちリストを作成させる形が挙げられます。単に「きれいに整理して」とだけ指示してしまうと、どの例外事項がノイズとして勝手に削除されたかを把握するのが困難になります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まずは最も重要な案件を投入するのではなく、すでに正解が分かっている業務を選んで試す方が性能を判断しやすくなります。元のファイルを保持し、完了基準をあらかじめ書き出したうえで、最終的な修正回数や見落とし項目を比較します。モデル名はテスト条件の一つにすぎず、データの完全性、プロンプトの指示方法、利用可能なツールを与えているかどうかも同様に結果を大きく左右します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "文書整理と提案書の修正をどう指示すべきか"
+        },
+        {
+          "type": "paragraph",
+          "text": "会議や議論の記録を提案書にまとめる場合、まずは3種類の素材を提供すると効果的です。すなわち「元のメモ」「すでに確定した決定事項」「未決定の課題」の3つです。出力時にはこれら3つの状態を明確に区別して記載させ、各結論が元データのどの記述に対応しているかを紐付けるよう求めます。こうすることで、文章の流暢さによって根拠の不足が覆い隠されるのを防ぎ、上司もどの部分に判断が必要かを把握しやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文書を推敲する際は、一度に「より専門的で、簡潔かつ説得力のある文章に」と指示するよりも、優先順位をあらかじめ指定する方が得策です。たとえば、納品期日と担当者の記述を最優先で維持し、重複する背景説明を削り、最後にトーンを調整するといった具合です。これは編集部が推奨するワークフロー設計であり、Opus 5独自の機能ではありません。この方法の価値は、異なるモデル間を比較する際にも同一の基準を維持できる点にあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "また、2種類の成果物を同時に要求するのも有効です。一つは通読用の改訂原稿、もう一つは実質的な変更点を列挙した照合リストです。照合リストには、何を追加し、何を削除し、どの記述に出典がないかを明記させます。モデルが段落全体の変更を「最適化しました」といった一言で片付けてしまう場合は、具体的な該当箇所を追記させるべきです。そうでなければ、利用者が一行ずつ変更内容を推測する羽目になります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "業務シナリオ",
+            "指示のポイント",
+            "検収・確認方法"
+          ],
+          "rows": [
+            [
+              "議事録作成",
+              "決定事項と未確定事項を区別する",
+              "元のメモと1項目ずつ照合する"
+            ],
+            [
+              "提案書の修正",
+              "必須情報と文体トーンを指定する",
+              "実質的な変更点リストを確認する"
+            ],
+            [
+              "データ表の整理",
+              "元ファイルと例外データを保持する",
+              "重複行や欠損値を確認する"
+            ],
+            [
+              "業務引き継ぎ",
+              "成果物ファイルと未完了タスクを列挙する",
+              "成果物を実際に開き1つずつ確認する"
+            ]
+          ],
+          "caption": "2026年9月14日確認。業務シナリオの提案はMokaair編集部による整理です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "多段階タスクには明確なハンドオフポイントが必要"
+        },
+        {
+          "type": "paragraph",
+          "text": "自律的なエージェント機能を持つツールに業務を任せる際は、まず「モデル」と「ツール」を明確に区別しなければなりません。モデルは理解とコンテンツ生成を担う一方、クラウド上のドキュメントを読み込めるか、ブラウザを操作できるか、あるいはファイルを実行できるかは、利用中の製品、接続方式、アカウント権限に依存します。発表リリースで特定の操作が実演されていたからといって、自身のチャット画面を開けば同じことができると思い込むのは早計です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "業務は「整理」「下書き作成」「照合」「納品」の4段階に分割して進めるのが実用的です。たとえば、まず必要な情報をリストアップさせ、人間側が不足分を補ってからレポートの執筆に移らせます。レポートが完成したら人間によるチェックを挟み、メール送信や社外への共有は明確な承認を得た後に行わせます。顧客データやチームの共有ファイルを扱う際は、外部環境の状態を変更するすべてのステップにおいて明確な境界線を設ける必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最終的な引き継ぎ内容も検証可能である必要があります。生成されたファイル名、データの不足箇所、使用した前提条件、および未完了の作業をツールに列挙させます。ツールが「完了」と返答した際には、単なる文章による説明だけでなく、成果物のファイルが実際に存在し開ける状態になっていることを確認しなければなりません。このような検収方法をとることで、モデルが引き継ぎコストを本当に削減できているかを判断できます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-opus-5-20260724/diagram-1-ja.svg",
+          "alt": "文書作成業務をAIに任せる際の4つのハンドオフポイント",
+          "width": 1600,
+          "height": 900,
+          "caption": "まずデータ範囲を画定し、下書き作成、内容照合を経て、責任者が最終納品を確認します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "新モデルのためにプランを変更すべきか"
+        },
+        {
+          "type": "paragraph",
+          "text": "主な用途が短いメッセージの推敲や自身のメモ整理にとどまるなら、まずは手元で使える既存モデルを用いて比較検証を行うだけで十分です。長文のドキュメント作成、複数資料の突き合わせ、反復修正が必要な提案書作成などを扱うようになって初めて、上位モデルが十分な確認時間の削減につながるかどうかを見極めるべきです。回答の長さや表現の巧みさだけで有料プランの価値を判断してはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較を行う際は、固定のテスト用タスクを一組用意しておくと役立ちます。重複行を含むデータ表、未決定事項を含む議事録、文面が失礼になりがちな返信メールの下書きなどが適しています。毎回、正確性、記載漏れ、追跡可能性、そして自身が費やした確認時間を検証します。同じ素材を使い続ければ、今後さらにモデルが更新された際にも継続して比較でき、印象論による判断を避けられます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プランの料金、選択可能なモデル、利用上限は変更される可能性があるため、本稿では発表当日の構成を恒久的な保証とは位置づけていません。まずは自身のアカウント設定を確認し、解決したいボトルネックがモデルの能力なのか、ツールの権限設定なのか、あるいは提供データ自体の不備なのかを見極める必要があります。モデルの切り替えだけで解決できる可能性があるのは、最初の課題に限られます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "能力向上を安心して使える実務成果へつなげる"
+        },
+        {
+          "type": "paragraph",
+          "text": "Opus 5のように長時間の複雑なタスクを主眼に置いたリリースに対して、最も実用的な期待値は「作業を最後まで破綻なく完了させやすくなること」であり、「確認作業が不要になること」ではありません。どのデータを提供してよいか、どの推論を受け入れられるか、納品前に誰が確認するかを判断する責任は、依然として人間にあります。入力内容が実際の業務に近づくほど、これらの条件設定を省略することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "初めて使用する際は、個人情報を含まないサンプルデータを用意し、情報が不足している場合は勝手な背景を創作せず作業を止めて質問をリストアップするよう明確に指示します。指定フォーマット通りに納品できることが確認できてから、徐々にタスクの複雑度を上げていきます。こうした手順で得られた利用実績こそが、発表リリースに並ぶ単一のスコアよりも、日々の業務に適しているかどうかを判断する確かな指標となります。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "ベンチマークスコアを自社の実測値と混同しない",
+          "text": "発表リリース内の比較データはベンダー指定のベンチマークに基づくものです。本稿のシナリオは編集部推奨の枠組みであり、効果の検証は自社の固定タスクで行ってください。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Fable 5.1とMythos 5.1：機能、対象ユーザー、制限事項",
+          "url": "https://mokaair.com/ja/life/ai-news-claude-fable-51-20260901"
+        },
+        {
+          "type": "link",
+          "text": "GPT-6 Astra発表：質問への回答からコンピュータ作業の完遂へ",
+          "url": "https://mokaair.com/ja/life/ai-news-gpt-6-astra-20260903"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Introducing Claude Opus 5",
+          "url": "https://www.anthropic.com/news/claude-opus-5",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Claude Opus 5 출시: 일반 직장인은 어떤 변화에 주목해야 할까?",
+      "description": "Anthropic이 2026년 7월 24일 코딩, 지식 업무, 다단계 작업을 강조하며 Claude Opus 5를 발표했습니다. 직장인의 문서 정리, 제안서 수정, 인수인계 관점에서 발표된 능력 변화, 벤치마크와 실제 체감 효과의 구분법, 데이터 범위와 검수 조건 설정법을 살펴보고 플랜 변경 전 고려할 점을 짚어봅니다.",
+      "hero": {
+        "src": "/guides/ai-news-claude-opus-5-20260724/hero-ko.jpg",
+        "alt": "업무용 책상 위에 문서, 돋보기, 대조용 카드가 하나의 작업 흐름으로 연결된 오리지널 일러스트",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic은 2026년 7월 24일 Claude Opus 5를 발표했습니다. 공식 발표에서는 코딩, 지식 업무, 지속적인 점검이 필요한 작업을 개선 중점으로 제시했으며, 발표 당시 기준으로 Claude Max의 기본 모델이자 Claude Pro에서 사용 가능한 최고 성능 모델이 된다고 밝혔습니다. 이는 제품 발표 당시의 구성이며, 본문은 2026년 9월 14일 기준으로 확인되었으므로 실제 계정에서 선택 가능한 모델은 현재 플랜과 모델 메뉴를 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 직장인 입장에서 이번 발표를 볼 때 가장 주목할 점은 동일한 작업에서 오가는 수정 횟수를 줄일 수 있는지 여부입니다. 메일 한 통을 매끄럽게 다듬는 것은 시작에 불과하며, 첨부파일을 이해하고 모순을 찾아내며 수정안을 제시하고 누락된 요구사항이 없는지 확인하는 것이 실제 업무 현장의 필요에 더 가깝습니다. 아래 내용은 에디터가 설계한 시나리오를 바탕으로 공식 발표 내용을 스스로 검증할 수 있는 질문으로 바꾼 것이며, 본 사이트의 실측 순위표가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "모델 업데이트, 어떤 업무 단계가 더 쉬워지는지 먼저 확인하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "발표 자료는 Opus 5가 점검과 반복 수정에 더 중점을 두었다고 설명하며, 코딩 및 지식 업무에 관한 벤치마크 결과를 제시합니다. 이러한 결과는 Anthropic이 지정된 문제와 환경에서 얻은 성능을 나타내며, 여러분의 보고서 품질이 얼마나 향상될지 혹은 누구나 시간을 얼마나 절약할 수 있는지로 직결되지 않습니다. 뉴스를 읽을 때는 '모델 성능 향상'이라는 말을 '원고 제출 전에 자신이 잘못 인용한 숫자를 찾아낼 수 있는가?'와 같은 관찰 가능한 질문으로 바꾸어 생각해 볼 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 행사 참가 신청 데이터를 정리할 때, 진짜 까다로운 부분은 예쁜 표를 만드는 것이 아니라 중복 신청자, 결제 상태 미갱신, 비고란의 식사 변경 요청 등입니다. 이때 적합한 작업 지시는 불일치하는 항목을 나열하고, 원본 기록을 보존하며, 확인 대기 목록을 작성해 달라고 요청하는 것입니다. 단순히 '깔끔하게 정리해 줘'라고만 하면 어떤 예외 항목을 노이즈로 여겨 무단 삭제했는지 알기 어렵습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "가장 중요한 프로젝트를 바로 투입하기보다는 이미 정답을 알고 있는 업무를 골라 먼저 테스트해보는 것이 판별하기 훨씬 쉽습니다. 원본 파일을 보관하고 완료 기준을 미리 적어둔 뒤, 최종 수정 횟수와 누락 항목을 비교해 보세요. 모델 이름은 테스트 조건 중 하나일 뿐이며, 데이터의 완결성, 프롬프트 방식, 도구 제공 여부 역시 결과에 똑같이 영향을 미칩니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문서 정리와 제안서 수정, 어떻게 지시할 것인가"
+        },
+        {
+          "type": "paragraph",
+          "text": "회의록을 제안서로 발전시켜야 한다면 원본 메모, 확정된 결정 사항, 미결 질문 등 세 가지 자료를 먼저 제공할 수 있습니다. 결과물 출력 시 이 세 가지 상태를 구분하여 표시하고, 각 결론이 대응하는 원본 데이터 단락을 가리키도록 요구해 보세요. 이렇게 하면 글이 매끄럽다는 이유로 근거 부족이 가려지지 않으며, 관리자 역시 어느 부분에 추가 결정이 필요한지 쉽게 파악할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "문서를 수정할 때도 한 번에 '더 전문적이고 간결하며 설득력 있게' 요청하기보다는 우선순위를 먼저 지정하는 편이 낫습니다. 예를 들어 납기일과 담당자는 반드시 유지하고, 중복된 배경 설명은 삭제한 뒤, 마지막에 어조를 조정하도록 순서를 정하는 식입니다. 이는 에디터가 제안하는 업무 설계 방식이며 Opus 5 전용 기능은 아닙니다. 그 가치는 서로 다른 모델을 비교할 때도 동일한 기준을 적용할 수 있다는 데 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "결과물을 두 가지 형태로 요구할 수도 있습니다. 하나는 바로 읽을 수 있는 수정본이고, 다른 하나는 실질적인 변경 사항을 정리한 대조표입니다. 대조표에는 새로 추가된 내용, 삭제된 내용, 여전히 출처가 없는 내용이 명시되어야 합니다. 모델이 수정 내용 전체를 '최적화 완료'라는 한마디로 뭉뚱그린다면 구체적인 위치를 기재하도록 요구해야 합니다. 그렇지 않으면 변경점을 일일이 추측해야 합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "업무 시나리오",
+            "지시 핵심",
+            "검수 방식"
+          ],
+          "rows": [
+            [
+              "회의록",
+              "결정 사항과 확인 대기 항목 구분",
+              "원본 메모와 항목별 대조 확인"
+            ],
+            [
+              "제안서 수정",
+              "필수 유지 정보 및 어조 지정",
+              "실질적 수정 사항 목록 확인"
+            ],
+            [
+              "표 정리",
+              "원본 파일과 예외 항목 보존",
+              "중복 행 및 누락값 대조"
+            ],
+            [
+              "업무 인수인계",
+              "파일 및 미완료 작업 목록화",
+              "결과물 직접 열어 항목별 확인"
+            ]
+          ],
+          "caption": "2026년 9월 14일 확인 기준; 시나리오 제안은 Mokaair 에디터 정리."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "다단계 작업에는 명확한 인수인계 지점이 필요하다"
+        },
+        {
+          "type": "paragraph",
+          "text": "에이전트 능력을 갖춘 도구에 업무를 맡길 때는 모델과 도구를 먼저 구분해야 합니다. 모델은 내용을 이해하고 생성하는 역할을 맡으며, 클라우드 문서를 읽거나 브라우저를 조작하고 파일을 실행할 수 있는지는 사용하는 제품, 연결 방식, 계정 권한에 달려 있습니다. 발표 자료에서 특정 동작을 시연했다고 해서 채팅창을 열었을 때 자신에게도 동일한 능력이 주어질 것이라 단정해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "작업은 정리, 초안 작성, 대조, 납품의 네 단계로 나눌 수 있습니다. 예를 들어 필요한 자료 목록을 먼저 작성하게 하고, 보완이 끝난 뒤 보고서를 쓰게 할 수 있습니다. 보고서가 완성되면 먼저 검토를 받고, 이메일 발송이나 외부 공유는 명시적인 동의를 얻은 후에 진행하도록 설정합니다. 특히 고객 데이터나 팀 공유 파일이 관련된 경우 외부 상태를 변경하는 모든 단계에 명확한 범위를 지정해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "최종 전달 내용 또한 직접 검증할 수 있어야 합니다. 도구에 생성된 파일명, 누락된 데이터, 사용된 가설, 아직 완료되지 않은 작업을 나열하도록 요청하세요. 도구가 '완료'라고 말했을 때 단순한 텍스트 설명에 그치지 않고 결과물을 직접 찾아 열어볼 수 있어야 합니다. 이러한 검수 방식은 모델이 인수인계 비용을 실제로 줄여주는지 판단하는 데 도움이 됩니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-opus-5-20260724/diagram-1-ko.svg",
+          "alt": "문서 작업을 AI에 위임할 때의 네 가지 인수인계 지점",
+          "width": 1600,
+          "height": 900,
+          "caption": "데이터 범위를 먼저 정하고 초안을 생성한 뒤 내용을 대조하고, 최종적으로 담당자가 확인하여 납품합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "새 모델을 위해 플랜을 변경해야 할까?"
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 주된 용도가 짧은 메시지 수정이나 개인 메모 정리라면, 지금 사용 가능한 모델로 한 차례 비교해보는 것으로 충분합니다. 긴 문서, 여러 자료 간의 교차 대조, 반복적인 수정이 필요한 제안서를 다룰 때 더 높은 성능의 모델이 검토 시간을 충분히 줄여주는지 관찰해 보세요. 단순히 답변의 길이나 문장의 유려함만으로 유료 플랜 전환 가치를 판단해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "비교할 때는 고정된 작업 세트를 보관해 두는 것이 좋습니다. 중복 행이 포함된 표, 미확인 사항이 있는 회의록, 어조가 자칫 무례해질 수 있는 답장 초안 등이 그 예입니다. 매번 정확도, 누락 여부, 추적 가능성, 자신이 투입한 검토 시간을 확인하세요. 동일한 자료를 사용하면 향후 모델이 다시 업데이트될 때도 연속해서 비교할 수 있어 매번 막연한 인상에 의존하는 것을 방지할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "플랜 가격, 선택 가능한 모델, 사용 한도는 조정될 수 있으므로 본문은 발표 당일의 구성을 영구적인 약속으로 간주하지 않습니다. 먼저 본인의 계정을 확인하고, 해결하려는 병목이 모델 능력인지 도구 권한인지 아니면 애초에 데이터가 불완전한 탓인지 파악해야 합니다. 오직 첫 번째 문제만이 모델 변경만으로 개선될 가능성이 높습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "능력 향상을 안심하고 쓸 수 있는 결과물로 바꾸기"
+        },
+        {
+          "type": "paragraph",
+          "text": "Opus 5처럼 긴 호흡의 작업에 중점을 둔 발표에 대해 가장 실용적인 기대는 '더 이상 확인할 필요가 없다'가 아니라 '일을 끝까지 완수하기가 더 수월해졌다'는 점입니다. 어떤 데이터를 제공할 수 있는지, 어떤 추론을 허용할 수 있는지, 제출 전에 누가 승인할지는 여전히 사용자가 결정해야 합니다. 입력하는 데이터가 실제 업무에 가까울수록 이러한 조건들을 생략해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "처음 사용할 때는 개인정보가 없는 샘플을 제공하고, 데이터가 부족하면 임의로 배경을 지어내지 말고 멈춰 서서 질문을 나열하도록 명확히 지시해 보세요. 지정된 형식에 맞춰 결과물을 제출하는지 확인한 뒤 점진적으로 복잡도를 높여가면 됩니다. 이렇게 쌓은 실제 사용 기록이야말로 발표 자료의 단편적인 점수보다 일상 업무 적합성을 판단하는 데 훨씬 더 도움이 됩니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "벤치마크 점수를 개인 실측치로 혼동하지 않기",
+          "text": "발표 자료의 비교치는 공급업체가 지정한 벤치마크 결과입니다. 본문 시나리오는 에디터의 제안이며, 고정된 자체 작업으로 효과를 직접 확인하세요."
+        },
+        {
+          "type": "link",
+          "text": "Claude Fable 5.1 및 Mythos 5.1: 기능, 제공 대상 및 제한 사항",
+          "url": "https://mokaair.com/ko/life/ai-news-claude-fable-51-20260901"
+        },
+        {
+          "type": "link",
+          "text": "GPT-6 Astra 발표: 질문 답변을 넘어 컴퓨터 작업 완수로",
+          "url": "https://mokaair.com/ko/life/ai-news-gpt-6-astra-20260903"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic: Introducing Claude Opus 5",
+          "url": "https://www.anthropic.com/news/claude-opus-5",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Claude Opus 5 发布：普通办公用户值得关注哪些变化？",
+      "description": "Anthropic 于 2026 年 7 月 24 日发布 Claude Opus 5，主打编程、知识工作与多步骤任务。本文从普通上班族的文件整理、提案修改与工作交接切入，阐明公告中的能力变化、如何辨别厂商基准测试与实际使用效果，以及开始试用时怎样设定数据范围、验收标准与人工确认节点，避免仅因模型更新而盲目更换方案。",
+      "hero": {
+        "src": "/guides/ai-news-claude-opus-5-20260724/hero-zh-cn.jpg",
+        "alt": "一张办公桌上，文件、放大镜与核对卡片串联成工作流程的原创插图",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic 于 2026 年 7 月 24 日发布 Claude Opus 5。官方将改进重点放在编程、知识工作以及需要持续检查的任务上，并表示其在发布当时成为 Claude Max 的默认模型，以及 Claude Pro 可用的最高能力模型。这是产品发布时的安排；本文于 2026 年 9 月 14 日核实，具体账号能选用哪些模型仍应以当前方案与模型菜单为准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对普通上班族而言，这条新闻最值得观察之处，在于同一项工作能否减少来回修改的次数。把一封邮件改得通顺只是起点；读懂附件、找出矛盾、提出修改稿，再确认是否遗漏要求，才更贴近实际工作场景的需求。以下采用编辑设计的情境，帮助你将官方发布转化为可自行验证的问题，并非本站实测排行榜。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "模型更新，先看哪部分工作变得更容易"
+        },
+        {
+          "type": "paragraph",
+          "text": "发布稿中提到 Opus 5 更重视检查与反复修正，并列出了编程及知识工作的评测结果。这些结果代表 Anthropic 在特定考题和设定下测得的表现，无法直接折算为你的报告能提升多少质量，或是每人能节省多少时间。阅读新闻时，不妨先将“模型表现更好”转化为一个可观察的具体问题：它能否在交稿前找出自己引用错误的数字？"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如你要整理活动报名数据，真正棘手的可能不是排版出漂亮的表格，而是部分人重复报名、部分付款状态未更新，还有人在备注栏中修改了用餐需求。适宜的任务要求是请其列出不一致的字段、保留原始记录、提出待确认清单。若只笼统要求“帮我整理好”，你很难查明它究竟把哪些特例直接当作噪音过滤删除了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先挑选一项你已知正确答案的工作进行测试，比起直接丢入最重要的业务项目更容易研判。保留原始文件、提前写下验收标准，最终对比修改次数与疏漏项目。模型名称仅是测试条件之一，数据完整度、提示词表述方式以及你是否配置了工具，都会对结果产生同等重要的影响。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "文件整理与提案修改，可以怎样交代"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设你要将讨论记录整理为提案，可以先提供三种材料：原始笔记、已确认的决策，以及尚未决定的议题。要求输出时分别标明这三种状态，并将每项结论对应回源数据段落。如此一来，流畅的行文便不会掩盖论据的不足，主管也更容易看出哪些地方仍需定夺。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修改文档时，与其笼统要求“更专业、更精简、更有说服力”，不如先明确优先级。例如先保留交付日期与责任人，删减重复背景，最后再润色语调。这是编辑推荐的工作设计，并非 Opus 5 的专属功能；其价值在于让你在横向对比不同模型时，能够维持一致的评判标准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "你也可以要求提供两份产出：一份可直接阅读的修订稿，一份列出实质改动的核对表。核对表应当注明新增了什么、删除了什么，以及哪些内容仍缺乏出处。如果模型仅用“已优化”概括整段改动，请要求其补上具体位置，否则你仍需逐句揣测其变更之处。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作场景",
+            "交代重点",
+            "验收方式"
+          ],
+          "rows": [
+            [
+              "会议纪要",
+              "区分决策与待确认事项",
+              "逐项核对原始笔记"
+            ],
+            [
+              "提案修改",
+              "指定必留信息与语气",
+              "检查实质改动清单"
+            ],
+            [
+              "表格整理",
+              "保留源文件与特例",
+              "核对重复行及缺失值"
+            ],
+            [
+              "任务交接",
+              "列出文件与未决事项",
+              "打开交付成果逐项确认"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日核实；场景建议由 Mokaair 编辑整理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "多步骤任务需要明确的交接节点"
+        },
+        {
+          "type": "paragraph",
+          "text": "将任务委托给具备代理能力的工具时，应先厘清模型与工具的区别。模型负责理解与生成内容；能否读取云端文档、操作浏览器或执行文件，则取决于你所使用的产品、接入方式以及账号权限。切勿因发布演示展示了某种操作，就认定自己在聊天窗口中也能获得相同能力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可将一项任务拆解为整理、拟定草稿、核对、交付四个阶段。例如先让其梳理所需材料，待你补齐后再撰写报告；报告完成后先供你检查，发送邮件或公开分享必须留待明确同意之后。尤其是涉及客户数据与团队共享文件时，应当让每一个会改变外部状态的操作步骤都具备清晰的边界。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最终的交接内容也必须可查验。请工具列出生成的文件名、数据缺口、采用的假设，以及尚未完成的工作。当它提示“完成”时，你需要能够找到成果并打开查看，而非仅仅看到一段文字描述。这种验收方式能帮助你判断模型是否切实降低了交接成本。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-opus-5-20260724/diagram-1-zh-cn.svg",
+          "alt": "将文档工作托付给 AI 的四个交接节点",
+          "width": 1600,
+          "height": 900,
+          "caption": "先界定数据范围，再生成草稿、核对内容，最终由负责人确认交付。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "是否需要为了新模型调整套餐方案"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果当前主要用途是修改短消息、整理个人笔记，直接用手头可用的模型完成一轮比对即可。遇到长篇文档、跨多份资料相互比对、需要反复修改的提案时，再观察更高能力模型是否能为你省下足够的复核时间。切勿仅仅依据回答的长短或措辞是否华丽，来决定是否值得付费。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比对时可以保留一组固定的测试任务：一份含重复行的表格、一段附带未确认事项的会议记录，以及一封语气容易失礼的回复草稿。每次都重点审视准确性、遗漏率、可追溯性以及你耗费的检查时间。借助同一套材料，也能在未来模型再次迭代时接续对比，避免每次都仅凭主观印象。"
+        },
+        {
+          "type": "paragraph",
+          "text": "方案价格、可选模型与使用配额均会调整，本文不将发布当天的配置视为长久承诺。先查看自己的账号，确认你想解决的瓶颈究竟是模型能力、工具权限，还是数据根本不完整。通常只有第一类问题，才更有可能单纯通过更换模型得到改善。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把能力提升转化为可放心交付的成果"
+        },
+        {
+          "type": "paragraph",
+          "text": "对于 Opus 5 这类以长任务为重点的发布，最务实的期待是“更容易把事情做周全”，而非“从此无需再检查”。你依然需要把控哪些数据可以提供、哪些推论可以采纳，以及在交付前由谁确认。输入内容越贴近真实工作，这些前置条件就越不可省略。"
+        },
+        {
+          "type": "paragraph",
+          "text": "初次试用时，可先提供一份去除个人敏感信息的样本，明确要求遇到数据缺失时停下来列出疑问，不要自行填补虚构不存在的背景。待你确认其能够按照既定格式交稿后，再逐步加大复杂度。以此积累的使用记录，比发布公告中的单一跑分更能说明它是否契合你的日常工作。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "切勿把评测成绩直接当作个人实测",
+          "text": "发布稿中的对比均来自供应商指定的评测。本文情境为编辑建议；请利用个人固定的任务确认实际效果。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Fable 5.1 与 Mythos 5.1：功能、开放对象与限制",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-fable-51-20260901"
+        },
+        {
+          "type": "link",
+          "text": "GPT-6 Astra 发布：从回答问题到完成电脑工作",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-6-astra-20260903"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Introducing Claude Opus 5",
+          "url": "https://www.anthropic.com/news/claude-opus-5",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
