@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-codex-depth-content
 title: Codex deep content and isolated learning components
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-final-validation-fc2e
-claimed_at: 2026-09-14T16:12:32Z
+owner:
+claimed_at:
 created_at: 2026-09-14T02:33:43Z
 completed_at:
 branch: codex/codex-learning-complete
@@ -367,3 +367,9 @@ Preview commands and full implementation history are in docs/codex-learning/READ
 - Added tools/codex-learning/practice_archive.py to package existing sources without regenerating any exercise variant. It uses LF bytes, POSIX filename ordering, fixed ZIP timestamps/Unix metadata, and a matching manifest. The legacy prepare-practice.py now shares this packager; it was not executed. README documents which command preserves existing exercise sources.
 - The final ZIP contains 28 members identical to their Git HEAD file contents. All 17 original exercise files retain their content; ten now use LF instead of CRLF. No practice source was edited. Both simulated checkout styles produce identical ZIP and manifest bytes and preserve every temporary source byte.
 - Final API/content/download validation: 13 passed in 73.05 seconds; affected Python Ruff and 412-task checks pass. Evidence files were updated with the final test/archive/packager hashes and retain the intermediate results. LF/CRLF tests ran on Windows, not native Linux/macOS.
+
+## Claude curriculum alignment refresh — 2026-09-15
+
+- Read the requested task, "規劃 Claude Code 教學目錄", and its current local advanced README/verification records. It now has 96 lessons plus a hub, including a separate 36-lesson expansion. No files or task messages were written in its workspace.
+- Added a nine-group comparison to the existing Codex 60-lesson curriculum, with hashes of the inspected sources. Educational acceptance stays aligned; product commands, Hooks/Teams behavior and real-operation evidence are not transplanted. Dedicated custom MCP server/pagination and Agent SDK courses are explicitly outside the current 60 lessons, rather than falsely marked covered.
+- Evidence: docs/codex-learning/evidence/claude-alignment-20260915.json, linked from depth-plan.md. This does not revise blocked editorial checkpoints, claim any pending lesson passed or change the all-complete-before-PR gate.

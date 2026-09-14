@@ -151,8 +151,28 @@
   },
   "final_complete_runs": [],
   "limits": [
-    "Three full runs after the final changes are pending.",
+    "Post-fix full repetition was interrupted for upstream reconciliation; no three-pass claim. Subsequent integration validation is recorded separately.",
     "Commit-boundary tests establish concrete defects; they do not establish that all historical intermittent failures shared a single cause.",
     "No final Codex browser preview, PR, CI, production import, publication or deployment occurred."
-  ]
+  ],
+  "superseded_validation_attempt": {
+    "run": 1,
+    "commit": "00a513c5",
+    "result": "interrupted",
+    "reported_exec_exit": 1,
+    "passed_cases_before_interruption": 504,
+    "reason": "Stopped with Ctrl+C after discovering merged PR #493 already supplies equivalent modal/result-focus fixes; synchronize main before spending further full-suite runs on the old base. No completed-suite pass/fail is claimed.",
+    "log": "frontend-final-1.log",
+    "archive": "docs/codex-learning/evidence/frontend-validation-20260915/frontend-final-1.log.gz",
+    "raw_sha256": "a8ecd8a36f122b6adc4320cdd9c0a67b18a4b785ea261f85c37631d74931656b",
+    "gzip_sha256": "7bf4853a59e4d0f3e913cac87cfa24fb99ca246d9343bbb0a246de0183089e54"
+  },
+  "upstream_reconciliation": {
+    "pr": "https://github.com/x812033727/travel_scanner/pull/493",
+    "verified_state": "MERGED",
+    "merge_commit": "46298e2863e9c2c4d6776e9d58a821be683a4b32",
+    "merged_at": "2026-09-14T10:32:48Z",
+    "observed_main": "3d1df9cc2a0334c1e4045ffc488187283f982975",
+    "decision": "Adopt upstream implementations and tests during integration, retaining these independent historical diagnostics. Do not present duplicate modal fixes as a new PR change."
+  }
 }

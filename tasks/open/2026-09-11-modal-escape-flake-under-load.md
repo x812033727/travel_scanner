@@ -1,11 +1,11 @@
 ---
 id: 2026-09-11-modal-escape-flake-under-load
 title: 整套測試在負載下，有守門的 Escape 偶爾不生效
-status: in-progress
+status: open
 priority: P1
 area: web
-owner: codex-modal-final-fc2e
-claimed_at: 2026-09-14T16:12:34Z
+owner:
+claimed_at:
 created_at: 2026-09-11T21:23:54Z
 completed_at:
 branch: codex/codex-learning-complete
