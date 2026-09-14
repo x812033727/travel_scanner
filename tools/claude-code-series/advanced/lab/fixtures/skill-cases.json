@@ -1,0 +1,34 @@
+[
+  {
+    "id": "toggle",
+    "input": "fixtures/toggle.diff",
+    "expected": [
+      "id 比較反轉",
+      "影響另一筆待辦"
+    ],
+    "kind": "known-defect"
+  },
+  {
+    "id": "render",
+    "input": "fixtures/render.diff",
+    "expected": [
+      "innerHTML",
+      "不可信輸入"
+    ],
+    "kind": "known-defect"
+  },
+  {
+    "id": "clean",
+    "input": "fixtures/clean.diff",
+    "expected": [],
+    "kind": "no-confirmed-defect"
+  },
+  {
+    "id": "missing",
+    "input": "fixtures/missing.diff",
+    "expected": [
+      "資訊不足"
+    ],
+    "kind": "missing-input"
+  }
+]

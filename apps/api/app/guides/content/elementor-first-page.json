@@ -1,0 +1,248 @@
+{
+  "slug": "elementor-first-page",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Elementor 編輯頁面：用容器、間距與響應式建立版面",
+      "description": "Elementor 頁面排版可以從容器開始，逐步安排文字、圖片與按鈕，而不必靠大量空白或固定位置拼湊。本文以小型手作課程介紹頁為例，說明容器方向、內容寬度、間距、背景裁切與手機設定，並區分單頁版面與全站頁首頁尾。搭配檢查清單，讓讀者能從草稿完成可閱讀、可點擊、可回復的第一個頁面。",
+      "hero": {
+        "src": "/guides/elementor-first-page/hero.jpg",
+        "alt": "原創文件與螢幕插圖，表示先整理內容，再建立 Elementor 的容器版面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "打開 Elementor 後，畫面能自由拖曳，卻不代表每個元素都應隨意放置。桌面上看起來整齊的三欄，到了手機可能變成一串擠在一起的文字。先建立清楚的容器結構，再安排內容，往後改字與換圖會容易很多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文用一個原創練習：介紹週末陶作體驗，包含課程說明、流程、作品示意與詢問按鈕。操作以官方 Flexbox 容器文件中的 Layout、Style 與 Advanced 設定為基礎；既有網站可能仍有舊式區段或不同元件介面，先確認所選元素再對照設定。"
+        },
+        {
+          "type": "heading",
+          "text": "先整理內容與頁面邊界",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開始排版前，寫出課程適合誰、會完成什麼、需要多久，以及訪客下一步要做什麼。標題、三段簡短說明與一個明確詢問入口，足以建立初稿。不要先用示範文字排滿整頁，最後才發現真實中文比英文範本長很多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新增草稿頁並使用 Elementor 編輯，先檢查 Page Layout。一般頁面常需保留網站導覽；Elementor Canvas 則會移除頁首、頁尾與側邊欄，適合確實不需要這些元素的用途。切成 Canvas 後導覽消失，不必立刻判斷為佈景主題壞掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "將頁面分成開場介紹、課程流程、作品示意與聯絡四個區域。每個區域先使用一個主要容器，必要時再放子容器。替結構中的容器取容易理解的名稱，讓「修改課程流程」能找到對應範圍，不必每次在畫面上猜選取位置。"
+        },
+        {
+          "type": "heading",
+          "text": "用容器決定排列與寬度",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "容器的 Direction 決定主要排列方向：Row 橫向、Column 縱向。開場介紹可用縱向堆疊標題、文字與按鈕；流程卡片在寬螢幕可以橫向排列，手機再改成縱向。先確定內容順序，再調整視覺，避免靠反向排列掩蓋混亂的原始順序。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Content Width 的 Boxed 與 Full Width 控制方式不同。Boxed 常用來限制內容寬度，讓背景仍可延伸；Full Width 則配合容器寬度與內距安排內容。父容器限制仍然存在，子容器設滿寬不一定會突破外層範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Justify Content 與 Align Items 分別處理主軸與交叉軸的對齊，主軸會隨 Row、Column 改變。找不到預期的置中效果時，先確認方向與可用空間。不要為了讓文字看似置中，直接輸入巨大邊距或拖到固定座標。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "新增開場容器，選 Column，依序放入標題、文字與按鈕。",
+            "設定內容寬度及左右內距，讓文字與螢幕邊緣保持空間。",
+            "新增課程流程容器，再放入三個內容一致的子容器。",
+            "先調整方向、對齊與間距，確認結構成立後才加入裝飾。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "分清 Gap、Padding 與 Margin",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gap 是同一容器內項目之間的空間；Padding 是內容與容器邊界的內部空間；Margin 則在元素外側。想讓流程卡片彼此分開，先看 Gap；想讓卡片文字不要貼著底色邊緣，應調整 Padding。對症設定能避免到處加空白元件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般內距與外距可在 Advanced 找到，四個方向預設可能連動，需不同數值時先解除連結。按鈕也可能在自己的 Style 設定內有內距。以少量一致數值建立節奏，例如卡片內距統一，再按內容微調，不用每個元件各猜一個數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若三張卡片都設為三分之一寬度，再加額外間距，總和可能超過父容器可用範圍。檢查子容器寬度、是否換行與 Gap 的關係。突然多出水平捲動時，先找出超寬元素，不要直接把 Overflow 設為隱藏，因為那可能連重要文字一起裁掉。"
+        },
+        {
+          "type": "heading",
+          "text": "背景圖片與內容圖片分別安排",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開場若需要氣氛照片，可選容器的 Style、背景與 Classic 類型，從媒體庫選擇有權使用的圖片。Cover 會填滿背景範圍，但不同長寬比可能裁掉邊緣；調整位置時，應在手機與桌面都確認主體仍在畫面內。"
+        },
+        {
+          "type": "paragraph",
+          "text": "背景適合裝飾，不適合承擔唯一的課程資訊。作品步驟或必須理解的圖片，使用圖片元件並填寫適當替代文字，旁邊補上說明。不要把時間、地點與報名條件全部做進一張圖片，否則手機縮小後難讀，也不方便日後更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有背景的文字區需檢查對比，必要時加上合適的覆蓋色或改用純色背景。避免靠固定超大高度維持桌面構圖；中文內容變多時，區域應能自然增高。圖片先依展示尺寸處理，沒有必要每張都上傳相機原始大檔。"
+        },
+        {
+          "type": "heading",
+          "text": "手機設定要理解繼承方向",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在編輯器上方切換桌面、平板與手機視圖。帶裝置圖示的設定才可針對不同寬度調整；不是所有內容在手機視圖下修改都只影響手機。官方說明響應式值由較寬裝置往較窄裝置繼承，較窄尺寸的個別設定則可覆蓋繼承值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先建立桌面的基本設定，再檢查平板和手機，調整欄位方向、左右內距、標題字級與按鈕寬度。斷點代表視窗寬度，不是特定手機型號；網站可自訂斷點，因此不要把教學中的某個數字當成所有網站的固定界線。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讓課程名稱自然換行，不要只為一種螢幕插入許多手動斷行。檢查長網址、表格與未換行文字是否超出畫面。手機需要完整的課程條件與聯絡入口，不能把重要內容隱藏後就視為完成響應式設計。"
+        },
+        {
+          "type": "heading",
+          "text": "預覽、保存與還原都要確認",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "草稿完成後，用獨立預覽頁檢查連結、按鈕與圖片，不只看編輯器畫布。詢問按鈕應指向實際可用的聯絡頁或表單，不能保留空連結。再用真實手機操作，確認文字可讀、按鈕不互相擠壓，放大頁面仍能取得重要資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Elementor 的 History 包含目前編輯期間的 Actions，以及已保存版本的 Revisions。改錯時可以回到適當版本，但先確認選取的時間與內容，避免把同事剛更新的課程資訊一起覆蓋。歷史紀錄也不等於全站備份，不能拿來回復所有外掛或主機變更。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後整理頁面標題、網址與圖片說明，再依網站流程發布。日後換課程時，沿著同樣容器更新文字與素材，檢查是否出現更長標題或不同圖片比例。保留簡單結構，可以讓第二次維護比第一次建頁更省力。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/elementor-first-page/diagram-1.svg",
+          "alt": "四個方框表示整理內容、建立容器、調整間距背景及手機驗證的順序。",
+          "width": 1600,
+          "height": 900,
+          "caption": "好的版面能承受文字更新、圖片替換與螢幕寬度變化。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "想調整的結果",
+            "優先查看",
+            "常見誤用"
+          ],
+          "rows": [
+            [
+              "卡片彼此分開",
+              "父容器 Gap",
+              "用空白字或多個空白元件"
+            ],
+            [
+              "文字離開底色邊界",
+              "Padding",
+              "只把文字往外推"
+            ],
+            [
+              "整個區域與旁邊拉開",
+              "Margin",
+              "過大的負值造成重疊"
+            ],
+            [
+              "手機三欄變一欄",
+              "Direction、寬度與斷點",
+              "只縮小所有字體"
+            ],
+            [
+              "背景填滿又不切掉主體",
+              "Cover、位置與區域比例",
+              "只檢查桌面畫面"
+            ]
+          ],
+          "caption": "先找控制範圍，再修改數值；同一問題可能同時涉及外層與子容器。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要把預覽當作全部驗收",
+          "text": "完成編輯後，至少用獨立頁面與手機檢查一次。文字、按鈕、圖片與聯絡路徑都能使用，才算完成這個頁面；容器排列整齊只是其中一項。"
+        },
+        {
+          "type": "link",
+          "text": "了解 Astra 如何控制頁首與全域外觀",
+          "url": "https://mokaair.com/zh-TW/life/astra-theme-customization"
+        },
+        {
+          "type": "link",
+          "text": "管理網站字型與本機託管",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-fonts-self-hosting"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Elementor：以容器建立第一頁",
+          "url": "https://elementor.com/help/build-first-page-containers/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：容器版面控制",
+          "url": "https://elementor.com/help/container-layout-tab-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：內距與外距",
+          "url": "https://elementor.com/help/create-space-with-padding-and-margin/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：手機與平板編輯",
+          "url": "https://elementor.com/help/mobile-editing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：Canvas 頁面版型",
+          "url": "https://elementor.com/help/using-elementors-canvas-page-template/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：歷史與版本還原",
+          "url": "https://elementor.com/help/revision-history-undo-and-redo/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "slug": "claude-code-mcp-failure-contract-tests",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 182,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜MCP 排錯實驗室：斷線、逾時與格式錯誤",
+      "description": "用固定故障重現診斷及復原流程。MCP 顯示錯誤時，先找出故障發生在啟動、協定、工具或結果處理哪一層，比反覆重新安裝更有效。本篇提供會退出、輸出錯誤格式和持續等待的伺服器材料，讓你練習有限時間內結束、保留診斷資料並恢復正常連線。",
+      "hero": {
+        "src": "/guides/claude-code-mcp-failure-contract-tests/hero.jpg",
+        "alt": "MCP 排錯實驗室：斷線、逾時與格式錯誤：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MCP 顯示錯誤時，先找出故障發生在啟動、協定、工具或結果處理哪一層，比反覆重新安裝更有效。本篇提供會退出、輸出錯誤格式和持續等待的伺服器材料，讓你練習有限時間內結束、保留診斷資料並恢復正常連線。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-local-server-workshop",
+              "text": "自建 MCP"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-tool-contracts",
+              "text": "工具契約"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-82.zip",
+              "text": "第 82 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，開啟 starter。需要 Node.js 22 以上，先執行 npm ci --ignore-scripts。閱讀約 20 分鐘，實作約 45 分鐘；本機故障測試不需要 Claude 登入。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先保留一個能工作的對照組"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-mcp-failure-contract-tests/diagram-1.svg",
+          "alt": "先保留一個能工作的對照組 → 案例一：程序立即退出 → 案例二：標準輸出被非協定文字污染",
+          "width": 1600,
+          "height": 900,
+          "caption": "先保留一個能工作的對照組 → 案例一：程序立即退出 → 案例二：標準輸出被非協定文字污染",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "開始前執行 mcp/probe.mjs，確認正常伺服器能列出 list_tasks、get_task，並取得已知假資料。再執行 tests/mcp.test.mjs，確認契約測試通過。沒有正常基準時，後續所有失敗看起來都相似，很難知道故障是刻意注入還是安裝本來就壞。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：正常對照",
+          "code": "node mcp/probe.mjs\nnode --test tests/mcp.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "記錄 Node、套件鎖定版本與工作目錄。教材使用 v2 的 client、server 套件，不與舊版單一 sdk 套件的匯入範例混用。若出現 module not found，先確認是在解壓縮出的正確資料夾安裝依賴，不要立刻修改協定程式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇故障材料只是一個受控子程序，不接外部服務、不讀私人資料。每個案例都有正常退出或由測試客戶端關閉的方式。不要把故障伺服器放進日常設定，否則每次啟動 Claude 都可能重新遇到相同問題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "案例一：程序立即退出"
+        },
+        {
+          "type": "paragraph",
+          "text": "fault.mjs 的 exit 模式會寫出 Injected exit 並以退出碼七結束。fault-probe.mjs 以真正的 MCP 客戶端連線，預期不能完成初始化，最後回報 connected=false 及錯誤。探測器本身以非零退出碼結束，表示受測連線失敗。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：預期失敗的啟動案例",
+          "code": "node mcp/fault-probe.mjs exit\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "七是故障伺服器的退出碼，一是探測器的失敗退出碼，兩者不必相同。讀者應記錄哪個程序回傳哪個數字。把所有數字放在同一欄叫 error code，會讓之後查日誌時誤以為伺服器換了錯誤類型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "常見真實原因包括執行檔不存在、依賴未安裝、程式啟動時拋錯及設定路徑不正確。先直接執行伺服器或用受控探測器觀察 stderr，再處理原因。不要把 stdout 亂加診斷文字，因為 stdio MCP 用它傳協定訊息。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "案例二：標準輸出被非協定文字污染"
+        },
+        {
+          "type": "paragraph",
+          "text": "invalid 模式在 stdout 寫入 not MCP JSON，然後等待。客戶端可能立即回報解析錯誤，也可能等到探測上限才結束；本課接受有限時間內失敗，但不接受成功連線。原始錯誤與 timeout 要照實保留，不能強迫每個版本顯示相同措辭。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：預期失敗的協定案例",
+          "code": "node mcp/fault-probe.mjs invalid\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這種問題常來自 console.log 啟動訊息、shell 包裝器輸出歡迎文字，或把一般 CLI 當 MCP 伺服器啟動。一般診斷訊息應送到 stderr，stdout 留給協定。移除污染後，再以正常客戶端完成列工具和呼叫，不能只看沒有紅字就停止檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "合法 JSON 也不一定是合法 MCP 訊息。JSON.parse 通過只驗證語法，仍可能缺少協定欄位、識別碼或握手流程。這也是本篇使用正式客戶端而不是單純讀 stdout 後解析的原因。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "案例三：程序還活著卻不回應"
+        },
+        {
+          "type": "paragraph",
+          "text": "hang 模式保持程序等待，不完成 MCP 初始化。探測器設定一點五秒連線上限，時間到後回報 timeout，再於 finally 關閉客戶端與所管理的傳輸。這是練習用的短時間；真實服務應依啟動和網路特性選擇合理上限。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：預期失敗的等待案例",
+          "code": "node mcp/fault-probe.mjs hang\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "逾時表示客戶端在期限內沒有取得完成結果，不能推論服務一定完全沒有做任何事情。尤其工具具有寫入副作用時，回應遺失後直接重試可能造成重複操作。本課只測初始化，因此可以單純關閉再恢復；實際寫入流程需要冪等鍵或查詢確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把等待上限設得極短，再把每個正常服務都判成故障；也不要使用無限等待，讓使用者無法知道該如何停止。紀錄應包括開始時間、上限、結束狀態及是否留有程序。時間有合理誤差，測試重點是有限結束與正確狀態。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "工具錯誤與連線錯誤分開測"
+        },
+        {
+          "type": "paragraph",
+          "text": "恢復正常 server，再送入 limit=0 等不合法參數。這次連線和初始化都成功，失敗發生在工具輸入驗證。回應的 isError 不代表伺服器已崩潰；你應能接著用合法參數完成下一次查詢。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：包含錯誤參數及正常查詢的契約測試",
+          "code": "node --test tests/mcp.test.mjs\nnode mcp/contract-probe.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "還要檢查未知 id 與空清單。它們在本課是成功查詢的資料結果，不應與錯誤參數混在一起。使用者查不到某筆待辦時，重啟 MCP 伺服器可能完全沒有幫助，因為資料確實不存在。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "HTTP 遠端連線還有 401、403、TLS 等情境，可參考"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-http-auth-workshop",
+              "text": "授權實驗"
+            },
+            {
+              "type": "text",
+              "text": "。先依階段分類，再決定重啟、重新認證、修正 scope 或調整參數，不要對所有症狀套用同一個解法。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一次跑完整故障集合"
+        },
+        {
+          "type": "paragraph",
+          "text": "environment 測試會以子程序執行 exit、invalid、hang 三個探測器，確認非零退出與 connected=false；它也驗證本機 HTTP 假服務的三種授權回應。這份測試可以在沒有 Claude 帳號時完成，適合先排除材料本身的問題。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：完整本機故障集合",
+          "code": "node --test tests/environment.test.mjs tests/mcp.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這些測試使用自己建立的程序與本機端點，結束後應正常關閉。若超過預定時間仍不結束，先保存目前命令與程序識別，只停止本次測試啟動的程序。不要終止所有 Node，因為編輯器、開發伺服器也可能使用它。"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試通過的意義是故障按照預期被識別與結束，不是故障模式本身變成成功。因此報告應寫「故障測試通過，受測連線預期失敗」，讓讀者不會把非零退出誤看成教材有問題，或反過來把測試綠燈當成服務正常。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "回到 Claude 驗證恢復"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你曾把故障設定加入 Claude，只移除本課的伺服器項目，恢復正常 fixtures.mcp.json，建立新工作階段後查看 /mcp。先列工具，再呼叫已知的 list_tasks 查詢，最後確認結果仍是原本三筆假資料。登入受阻時，將這段保留待測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只保存「Connected」截圖。恢復驗證要包含一次實際工具呼叫，才能知道新設定、資料層與回應處理都正常。若原本問題是 stdout 污染，還應確認新的診斷訊息已改到 stderr，沒有僅在某次執行剛好避開。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "所在階段",
+            "第一個檢查"
+          ],
+          "rows": [
+            [
+              "找不到程序、立即退出",
+              "啟動",
+              "命令、工作目錄、stderr"
+            ],
+            [
+              "無法解析協定",
+              "初始化",
+              "stdout 污染、SDK 版本"
+            ],
+            [
+              "一直等待",
+              "初始化或工具執行",
+              "上限、程序狀態、網路"
+            ],
+            [
+              "isError",
+              "已連線的工具層",
+              "參數、Schema、業務錯誤"
+            ],
+            [
+              "空結果",
+              "資料層",
+              "查詢條件及資料是否存在"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成判準與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付三種故障的命令與結果、工具錯誤對照、程序停止紀錄，以及恢復後的正常查詢。每個案例都能指出故障層級，不以重新安裝作為唯一答案。日誌只保留必要錯誤資訊，不帶入真實權杖或私人輸入。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是在正常伺服器新增一條寫到 stderr 的診斷訊息，再確認契約測試仍通過；改回 stdout 時則應觀察協定問題。完成後恢復正確輸出通道，再繼續"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-untrusted-output",
+              "text": "MCP 不受信任資料"
+            },
+            {
+              "type": "text",
+              "text": "，了解連線正確也不代表回傳文字可以當成操作指令。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Connect Claude Code to tools via MCP",
+          "url": "https://code.claude.com/docs/en/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Build an MCP server - Model Context Protocol",
+          "url": "https://modelcontextprotocol.io/docs/develop/build-server",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "or",
+          "url": "https://github.com/modelcontextprotocol/typescript-sdk",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

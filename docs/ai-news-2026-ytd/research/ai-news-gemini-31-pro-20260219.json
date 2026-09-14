@@ -1,0 +1,170 @@
+{
+  "slug": "ai-news-gemini-31-pro-20260219",
+  "event_date": "2026-02-19",
+  "title": "Gemini 3.1 Pro 發布：複雜問題如何轉成可驗證的答案？",
+  "sources": [
+    {
+      "title": "Google：Gemini 3.1 Pro",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Google：2026 年 2 月 Gemini 更新",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-drop-february-2026/",
+      "checked_on": "2026-09-14"
+    }
+  ],
+  "checked_on": "2026-09-14",
+  "verified_facts": [
+    "2 月 19 日 Google 發布 Gemini 3.1 Pro，強調複雜推理、資料整合和程式產生視覺。",
+    "當時開發者在 Gemini API 等入口取得 preview；消費者入口包含 Gemini app 與 NotebookLM。",
+    "原文說 Gemini app 的 Pro／Ultra 有較高上限，NotebookLM 的 3.1 Pro 當時限 Pro／Ultra；不同入口條件不能混寫。",
+    "ARC-AGI-2 等評測屬 Google 發表的結果，不代表日常答案的正確率。"
+  ],
+  "editorial_brief": "原創情境：家長比較三個課程，把費用、時段、距離、資料缺口轉成比較表，再要求逐條解釋推薦的權重。簡介推理模型用途和資料不足時該保留未知。對互動視覺先查公式和單位，別讓漂亮動畫代替證據。",
+  "hero_label": "把推理變成檢查點",
+  "diagram_nodes": [
+    [
+      "列出條件",
+      "保留未知資訊"
+    ],
+    [
+      "比較選項",
+      "說明取捨理由"
+    ],
+    [
+      "回查來源",
+      "日期與單位"
+    ],
+    [
+      "自己決定",
+      "核對關鍵假設"
+    ]
+  ],
+  "source_policy": "Facts only from listed official sources checked on 2026-09-14. Benchmarks belong to vendors. Editorial examples are hypothetical, not hands-on product tests. Announcement access and future promises must be dated.",
+  "status": "researched-not-written",
+  "diagram": {
+    "title": "把推理變成檢查點",
+    "caption": "列出條件：保留未知資訊、比較選項：說明取捨理由、回查來源：日期與單位、自己決定：核對關鍵假設。",
+    "nodes": [
+      [
+        "列出條件",
+        "保留未知資訊"
+      ],
+      [
+        "比較選項",
+        "說明取捨理由"
+      ],
+      [
+        "回查來源",
+        "日期與單位"
+      ],
+      [
+        "自己決定",
+        "核對關鍵假設"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "diagram": {
+        "title": "Turn Reasoning into Checkpoints",
+        "caption": "List criteria: preserve unknowns; compare options: clarify tradeoffs; trace sources: check dates and units; decide yourself: verify assumptions.",
+        "nodes": [
+          [
+            "List Criteria",
+            "Preserve unknown info"
+          ],
+          [
+            "Compare Options",
+            "Explain trade-offs"
+          ],
+          [
+            "Trace Sources",
+            "Check dates and units"
+          ],
+          [
+            "Decide Yourself",
+            "Verify assumptions"
+          ]
+        ]
+      },
+      "hero_label": "Turn Reasoning into Checkpoints"
+    },
+    "ja": {
+      "diagram": {
+        "title": "推論を検証ポイントに変える",
+        "caption": "条件の列挙：未知の情報を保持、選択肢の比較：トレードオフの理由説明、出典の再確認：日付と単位、自己決定：重要前提の照合。",
+        "nodes": [
+          [
+            "条件の列挙",
+            "未知の情報を保持"
+          ],
+          [
+            "選択肢の比較",
+            "トレードオフ理由を説明"
+          ],
+          [
+            "出典の再確認",
+            "日付と単位"
+          ],
+          [
+            "自己決定",
+            "重要前提を照合"
+          ]
+        ]
+      },
+      "hero_label": "推論をチェックポイント化"
+    },
+    "ko": {
+      "diagram": {
+        "title": "추론을 체크포인트로 전환",
+        "caption": "조건 나열: 미확인 정보 보존, 대안 비교: 절충 이유 설명, 출처 대조: 날짜와 단위 확인, 직접 결정: 핵심 가설 검증.",
+        "nodes": [
+          [
+            "조건 나열",
+            "미확인 정보 보존"
+          ],
+          [
+            "대안 비교",
+            "절충 이유 설명"
+          ],
+          [
+            "출처 대조",
+            "날짜와 단위 확인"
+          ],
+          [
+            "직접 결정",
+            "핵심 가설 검증"
+          ]
+        ]
+      },
+      "hero_label": "추론을 체크포인트로 전환"
+    },
+    "zh-CN": {
+      "diagram": {
+        "title": "把推理变成检查点",
+        "caption": "列出条件：保留未知信息、比较选项：说明取舍理由、回查来源：日期与单位、自己决定：核对关键假设。",
+        "nodes": [
+          [
+            "列出条件",
+            "保留未知信息"
+          ],
+          [
+            "比较选项",
+            "说明取舍理由"
+          ],
+          [
+            "回查来源",
+            "日期与单位"
+          ],
+          [
+            "自己决定",
+            "核对关键假设"
+          ]
+        ]
+      },
+      "hero_label": "把推理变成检查点"
+    }
+  }
+}

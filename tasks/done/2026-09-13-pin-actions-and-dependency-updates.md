@@ -50,8 +50,13 @@ which is the good time to automate it rather than the bad one.
       human-readable version in a trailing comment.
 - [x] Dependabot opens pull requests for npm, uv and GitHub Actions, and the actions
       ecosystem is included so the pins stay current rather than frozen.
-- [x] CI is green on the pinned workflows: merged PR #472 at 24af149062dd99aad3f4c2bb16cea70f8edf164c;
-      GitHub CI run 34808942136 completed successfully (verified 2026-09-14).
+- [x] CI is green on the pinned workflows, confirmed twice rather than assumed. On the PR:
+      every job on #472's head `a8661be` resolved its pinned actions and passed — the job
+      logs name `actions/checkout@11d5960a…` and `astral-sh/setup-uv@d0cc045d…` at the
+      `Download action repository` step. On `main` after the merge (`24af149`): CI run
+      34808942136 completed successfully. Locally only `tools/workflow-pins.test.mjs` and a
+      YAML parse can be checked, and both pass. Dependabot then opened its first actions
+      bump within the day (#475), which is the pairing this task existed to set up.
 
 ## Steps
 

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>我的待辦清單｜Claude Code 練習</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">CLAUDE CODE 練習專案</p>
+    <h1>我的待辦清單</h1>
+    <p>把今天想完成的小事寫下來，一次完成一件。</p>
+    <form id="todo-form">
+      <label for="todo-title">新增待辦</label>
+      <div class="input-row"><input id="todo-title" maxlength="100" autocomplete="off" required><button>新增</button></div>
+    </form>
+    <!-- 篩選功能在第 33 篇加入；起始版列出所有項目。 -->
+    <p id="message" role="status"></p>
+    <ul id="todo-list" aria-label="待辦項目"></ul>
+  </main>
+</body>
+</html>

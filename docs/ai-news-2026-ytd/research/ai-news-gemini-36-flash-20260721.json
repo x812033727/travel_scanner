@@ -1,0 +1,170 @@
+{
+  "slug": "ai-news-gemini-36-flash-20260721",
+  "event_date": "2026-07-21",
+  "title": "Gemini 3.6 Flash 與 Flash-Lite：快速模型該如何分工？",
+  "sources": [
+    {
+      "title": "Google：3.6 Flash、3.5 Flash-Lite 與 Cyber",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "Google：2026 年 7 月 Gemini Drop",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-drop-july-2026/",
+      "checked_on": "2026-09-14"
+    }
+  ],
+  "checked_on": "2026-09-14",
+  "verified_facts": [
+    "7 月 21 日 Google 發布 Gemini 3.6 Flash、3.5 Flash-Lite、3.5 Flash Cyber，分別強調綜合效率、大量低延遲工作及防禦資安用途。",
+    "公告列 3.6 Flash API 每百萬輸入／輸出 1.50／7.50 美元，Flash-Lite 0.30／2.50 美元；屬當日美元 API 報價，不是訂閱月費。",
+    "Cyber 的防禦用途與存取資格不能推定一般帳號可隨意切換；效能比較為 Google 發表結果。",
+    "7 月 Gemini Drop 確認新 Flash 模型進入 Gemini app；9 月另有 3.8 Flash，本文是七月分工策略的歷史解析。"
+  ],
+  "editorial_brief": "原創情境：公益市集大量整理攤位資料，先用快模型提取欄位，把衝突與模糊規格交給較強模型或人工。每筆保留原始來源，抽樣看漏字、數字、地址，不只比較每秒輸出。表格比較簡單分類、跨表比對、專業資安和最終發布核對。",
+  "hero_label": "快慢工作分開做",
+  "diagram_nodes": [
+    [
+      "簡單整理",
+      "固定欄位輸出"
+    ],
+    [
+      "辨識例外",
+      "缺值與矛盾"
+    ],
+    [
+      "深入核對",
+      "難題另行處理"
+    ],
+    [
+      "抽查交付",
+      "品質與總成本"
+    ]
+  ],
+  "source_policy": "Facts only from listed official sources checked on 2026-09-14. Benchmarks belong to vendors. Editorial examples are hypothetical, not hands-on product tests. Announcement access and future promises must be dated.",
+  "status": "researched-not-written",
+  "diagram": {
+    "title": "快慢工作分開做",
+    "caption": "簡單整理：固定欄位輸出、辨識例外：缺值與矛盾、深入核對：難題另行處理、抽查交付：品質與總成本。",
+    "nodes": [
+      [
+        "簡單整理",
+        "固定欄位輸出"
+      ],
+      [
+        "辨識例外",
+        "缺值與矛盾"
+      ],
+      [
+        "深入核對",
+        "難題另行處理"
+      ],
+      [
+        "抽查交付",
+        "品質與總成本"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "diagram": {
+        "title": "Dividing Fast and Slow Tasks",
+        "caption": "Basic sorting: fixed fields; identify exceptions: missing/conflicts; deep check: resolve edge cases; sample audit: quality and TCO.",
+        "nodes": [
+          [
+            "Basic Sorting",
+            "Fixed field outputs"
+          ],
+          [
+            "Identify Exceptions",
+            "Missing & conflicts"
+          ],
+          [
+            "Deep Verification",
+            "Resolve edge cases"
+          ],
+          [
+            "Sample Audit",
+            "Quality and total cost"
+          ]
+        ]
+      },
+      "hero_label": "Dividing Fast and Slow Tasks"
+    },
+    "ja": {
+      "diagram": {
+        "title": "高速・低速処理の切り分け",
+        "caption": "シンプル整理：固定項目出力、例外認識：欠損と矛盾、詳細照合：難題の個別対応、抜取納品：品質と総コスト。",
+        "nodes": [
+          [
+            "シンプル整理",
+            "固定項目の出力"
+          ],
+          [
+            "例外の認識",
+            "欠損と矛盾の検知"
+          ],
+          [
+            "詳細な照合",
+            "難題の個別処理"
+          ],
+          [
+            "抜取と納品",
+            "品質と総コスト管理"
+          ]
+        ]
+      },
+      "hero_label": "高速・低速処理の切り分け"
+    },
+    "ko": {
+      "diagram": {
+        "title": "빠른 작업과 느린 작업 분리",
+        "caption": "단순 정리: 고정 필드 출력, 예외 식별: 누락 및 모순, 심층 대조: 난제 별도 처리, 표본 납품: 품질과 총비용.",
+        "nodes": [
+          [
+            "단순 정리",
+            "고정 필드 출력"
+          ],
+          [
+            "예외 식별",
+            "누락 및 모순"
+          ],
+          [
+            "심층 대조",
+            "난제 별도 처리"
+          ],
+          [
+            "표본 납품",
+            "품질과 총비용"
+          ]
+        ]
+      },
+      "hero_label": "빠른 작업과 느린 작업 분리"
+    },
+    "zh-CN": {
+      "diagram": {
+        "title": "快慢工作分开做",
+        "caption": "简单整理：固定字段输出、辨识例外：缺值与矛盾、深入核对：难题另行处理、抽查交付：品质与总成本。",
+        "nodes": [
+          [
+            "简单整理",
+            "固定字段输出"
+          ],
+          [
+            "辨识例外",
+            "缺值与矛盾"
+          ],
+          [
+            "深入核对",
+            "难题另行处理"
+          ],
+          [
+            "抽查交付",
+            "品质与总成本"
+          ]
+        ]
+      },
+      "hero_label": "快慢工作分开做"
+    }
+  }
+}

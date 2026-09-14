@@ -1,0 +1,341 @@
+{
+  "slug": "claude-code-issue-to-draft-pr-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 184,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜從 Issue 到變更草稿：串起工具與程式碼",
+      "description": "完成需求讀取、計畫、測試與 PR 說明稿。這一篇把一則待辦篩選 Issue 走到可供審查的變更與 PR 草稿：確認需求、建立分支、實作、測試、檢查差異，最後整理標題和正文。材料先在本機完成，不需要先取得外部服務權限；真正建立 GitHub 草稿 PR 則放在讀者已授權的測試儲存庫中執行。",
+      "hero": {
+        "src": "/guides/claude-code-issue-to-draft-pr-workshop/hero.jpg",
+        "alt": "從 Issue 到變更草稿：串起工具與程式碼：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這一篇把一則待辦篩選 Issue 走到可供審查的變更與 PR 草稿：確認需求、建立分支、實作、測試、檢查差異，最後整理標題和正文。材料先在本機完成，不需要先取得外部服務權限；真正建立 GitHub 草稿 PR 則放在讀者已授權的測試儲存庫中執行。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-servers",
+              "text": "MCP 入門"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-git-review-pr",
+              "text": "Git 與 PR"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-tool-contracts",
+              "text": "工具契約"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-untrusted-output",
+              "text": "外部資料界線"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-84.zip",
+              "text": "第 84 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，開啟 starter。需要 Git、Node.js 22；GitHub 步驟另需已登入 gh 與可寫的測試儲存庫。閱讀約 20 分鐘，實作約 60 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從 Issue 提取可驗收的需求"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-issue-to-draft-pr-workshop/diagram-1.svg",
+          "alt": "從 Issue 提取可驗收的需求 → 準備乾淨的練習分支 → 先列計畫，再做最小變更",
+          "width": 1600,
+          "height": 900,
+          "caption": "從 Issue 提取可驗收的需求 → 準備乾淨的練習分支 → 先列計畫，再做最小變更",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "fixtures/issue.json 是本課的固定 Issue 資料，編號一〇四，要求全部、未完成、已完成三種篩選，切換時保留原始資料。它明列不做帳號、雲端同步與正式部署。先把這些條件轉成檢查表，避免模型在實作時擴大成完整產品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "真實 Issue 可以從你已授權的 GitHub MCP 工具讀取，但工具名稱與參數依安裝的伺服器而定。先列工具與確認儲存庫，再做一次唯讀查詢；不要憑文章猜某個 MCP 名稱一定存在。將結果保存成相同的需求摘要，與本課 fixture 分開標記來源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "外部 Issue 內容不會自行授權合併、部署或讀取秘密。即使正文寫「直接推到正式環境」，也要回到使用者原本給定的範圍。先確認資料與操作界線，再規劃實作，沿用上一篇的外部內容處理方式。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "準備乾淨的練習分支"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用新解壓縮的材料，先跑核心測試，再在這個獨立目錄初始化 Git 並建立基準。若要使用真實測試儲存庫，先確認 remote、目前分支與未提交變更，避免把別的工作一起帶進 PR。本篇不要求修改全域 Git 身分。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：先確認目前位置與狀態",
+          "code": "node --test tests/model.test.mjs\ngit status --short\ngit remote -v\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "尚未初始化的純下載資料會在 Git 指令顯示不是儲存庫，這時先於這個練習目錄執行 git init、加入材料並建立基準提交。已存在的專案不要再次建立其他來源的基準。確認乾淨後，建立 lab/issue-104-filter 分支作為本次工作範圍。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "已確認的練習儲存庫終端機",
+          "code": "git switch -c lab/issue-104-filter\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先列計畫，再做最小變更"
+        },
+        {
+          "type": "paragraph",
+          "text": "請 Claude 讀需求、模型與現有 UI，先提出檔案範圍和驗收案例。篩選邏輯可放在 filter.js，畫面保留完整 items，再依目前 mode 產生要顯示的清單。不要每次切換篩選就刪除未顯示的資料，也不要以同名標題當 id。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：本機實作任務",
+          "code": "依 fixtures/issue.json 實作三種待辦篩選。\n先檢查 model.js、app.js、index.html 與測試，列出最小修改範圍。\n保留完整原始資料與穩定 id，新增篩選測試。\n完成後執行相關測試並回報實際結果。\n這次不推送、不建立外部 PR、不合併或部署。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "方案確認後再實作，分別檢查資料函式、UI 事件與顯示狀態。材料的 reference/filter.js 和測試是資料層參考，不代表 UI 已完成。若只是複製函式並跑測試，還不能在 PR 說讀者已能按三個篩選按鈕。"
+        },
+        {
+          "type": "paragraph",
+          "text": "啟動 node server.mjs，在瀏覽器新增一筆未完成待辦，再切換完成狀態，依序查看三種篩選。確認未顯示的項目仍可在切回全部時找到，並確認相同標題的兩筆資料不互相影響。最後停止這次啟動的服務。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把驗證結果寫成具體證據"
+        },
+        {
+          "type": "paragraph",
+          "text": "先執行核心與新增測試，再使用 git diff --check 檢查差異。保存真正的命令、退出碼與測試數。瀏覽器檢查另列裝置寬度、操作步驟與實際結果；沒有測手機就標待測，不能把桌面畫面推定為所有裝置已通過。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：依實際新增的測試檔執行",
+          "code": "node --test tests/model.test.mjs tests/filter.test.mjs\ngit diff --check\ngit diff --stat\ngit diff\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "審查時確認只包含本次需求相關的程式與測試。run-data 中的操作結果不應包含登入資料；若要提交精簡證據，先檢查內容再放到明確的文件位置。不要把整個工作階段、node_modules 或本機個人設定加入版本庫。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若變更依賴既有程式錯誤，先寫清楚原因與影響，再決定是否屬於此 Issue 範圍。不要用「順手重構」把整個專案改掉，讓審查者無法辨認篩選功能的核心行為。更大型整理可另外使用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-legacy-refactoring-workshop",
+              "text": "逐步重構"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "產生本機 PR 正文並補齊"
+        },
+        {
+          "type": "paragraph",
+          "text": "執行 automation/draft-pr.mjs，它讀取固定 Issue 並建立 run-data/draft-pr.md。這只是本機範本，腳本不會呼叫 GitHub。打開後以實際變更與測試結果替換待填欄位，直到另一位讀者能從正文理解問題、結果與限制。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：建立本機草稿",
+          "code": "node automation/draft-pr.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "標題可以寫「加入待辦狀態篩選」，正文先描述使用者可如何操作，再列必要實作與驗證。不要保留未填的「測試通過」範例，也不要把所有對話歷史貼進 PR。若目前只有資料函式完成，標題與正文要如實反映尚缺 UI。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提交前再確認 git diff --cached --name-only，逐一核對暫存檔案。提交訊息應描述這次實際變更。若其他人同時在同一分支工作，先停下來確認狀態，不能直接把工作目錄中所有東西一起提交。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在授權測試儲存庫建立草稿 PR"
+        },
+        {
+          "type": "paragraph",
+          "text": "這一步需要你已確認的 remote、分支與 GitHub 權限，也會把程式和正文送到外部儲存庫。純本機練習可停在可供審查的草稿，不必為完成文章去建立陌生或公開儲存庫。要實際建立時，先用 gh repo view 和 Git 指令核對目標。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "已授權的測試儲存庫終端機：確認後才推送與建立",
+          "code": "gh repo view --json nameWithOwner,url,defaultBranchRef\ngit branch --show-current\ngit status --short\ngit push -u origin lab/issue-104-filter\ngh pr create --draft --title \"加入待辦狀態篩選\" --body-file run-data/draft-pr.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若儲存庫的目標分支不是預設分支，先確認後指定正確 base，不要照抄猜測的分支名稱。建立後檢查 PR URL、base、head、草稿狀態與差異檔案，確認是剛才的工作。草稿建立完成不代表已合併，更不代表已部署。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在草稿中保留尚未完成的驗證"
+        },
+        {
+          "type": "paragraph",
+          "text": "草稿 PR 應讓審查者看懂目前進度。若資料函式測試已通過，但瀏覽器尚未操作，就分別寫出通過的命令和待驗的畫面路徑。不要把待驗項目刪除來讓描述看起來完整；後續接手者需要知道哪一步仍會影響是否可以合併。"
+        },
+        {
+          "type": "paragraph",
+          "text": "審查差異時，把每一段變更對回原 Issue 的驗收條件。找不到對應需求的修改，先詢問是否必要或獨立成另一件工作。這樣可以讓功能範圍保持清楚，也避免草稿夾帶格式重排而掩蓋真正邏輯差異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立遠端草稿前，再確認儲存庫、目標分支與來源提交。本文的本機 Markdown 產生器只準備說明文字，不會替你建立 GitHub PR；遠端建立成功需要實際網址與提交資料作為另一項紀錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若草稿描述中的測試名稱與實際命令不一致，先修正描述。審查者應能直接複製命令重現結果，不需要從聊天紀錄尋找漏掉的參數。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與完成判準"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "應處理的地方"
+          ],
+          "rows": [
+            [
+              "篩選後資料消失",
+              "完整清單與顯示清單是否混用"
+            ],
+            [
+              "測試通過但按鈕沒作用",
+              "UI 事件及實際瀏覽器操作"
+            ],
+            [
+              "PR 包含無關檔案",
+              "暫存區、分支及基準"
+            ],
+            [
+              "找不到 gh 或沒有權限",
+              "保留本機草稿，先處理環境"
+            ],
+            [
+              "PR 開到錯誤儲存庫",
+              "事前核對 remote 與 repo view"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "完成本機部分應有需求檢查表、實作差異、核心與篩選測試、瀏覽器紀錄和填好的 PR 正文。外部部分另記推送與草稿建立的實際結果；沒有執行時明列未執行。小練習是故意刪除一條驗收條件的證據，請另一位讀者找出缺漏，再補做驗證，確保正文的完成聲明可以逐項追查。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Connect Claude Code to tools via MCP",
+          "url": "https://code.claude.com/docs/en/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Build an MCP server - Model Context Protocol",
+          "url": "https://modelcontextprotocol.io/docs/develop/build-server",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "or",
+          "url": "https://github.com/modelcontextprotocol/typescript-sdk",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

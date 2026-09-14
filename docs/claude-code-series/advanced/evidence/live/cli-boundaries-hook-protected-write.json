@@ -1,0 +1,70 @@
+{
+  "started_at": "2026-09-14T13:32:26.095263+00:00",
+  "scope": "Actual CLI tool behavior in independent disposable exercises; no real secrets or business data",
+  "cli_version": "2.1.233 (Claude Code)",
+  "cases": [
+    {
+      "name": "hook-protected-write",
+      "lessons": [
+        73,
+        76
+      ],
+      "exit": 0,
+      "passed": true,
+      "conditions": {
+        "read_before_write": true,
+        "tool_denied": true,
+        "hook_reason_observed": true,
+        "file_unchanged": true
+      },
+      "result": "The hook blocked the write.\n\n**What ran:**\n- `Read` on `private/demo.txt` — succeeded. Contents were a single line: `SYNTHETIC-PROTECTED-MARKER-64`\n- `Write` to the same path with `CHANGED` — refused.\n\n**Hook's reason (verbatim):** `protected fixture directory`\n\nPer your instruction, I did not retry and did not attempt any other tool (no PowerShell/Bash fallback). The file is unchanged, still holding the original marker line.\n\n**Not verified:** whether the hook blocks all of `private/` or only this file; whether it blocks other tools besides `Write`. Determining either would require additional attempts you told me not to make.",
+      "tool_calls": [
+        {
+          "type": "tool_use",
+          "id": "toolu_012Bf1CsJVU1VdcpVfj7Sbq6",
+          "name": "Read",
+          "input": {
+            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-24gs0men\\private\\demo.txt"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01QTZ1uvX1Ki8S6R6vHP8mAw",
+          "name": "Write",
+          "input": {
+            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-24gs0men\\private\\demo.txt",
+            "content": "CHANGED\n"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "tool_results": [
+        {
+          "tool_use_id": "toolu_012Bf1CsJVU1VdcpVfj7Sbq6",
+          "type": "tool_result",
+          "content": "1\tSYNTHETIC-PROTECTED-MARKER-64\n2\t"
+        },
+        {
+          "type": "tool_result",
+          "content": "protected fixture directory",
+          "is_error": true,
+          "tool_use_id": "toolu_01QTZ1uvX1Ki8S6R6vHP8mAw"
+        }
+      ],
+      "seconds": 9.97,
+      "stderr": "",
+      "source_hashes": {
+        ".claude/CLAUDE.md": "f56947e7df725934fbbd237f16fbb7fcd610818e901ef76bb930ea7389cd2826",
+        "case-settings.json": "c5490e4acd516d95b774530e7a2a16202b73bd6fb97303bbe0dbc722d86ca7ea",
+        "test-mcp.json": "139f0a6d5883f3caadbca38e6cbcc1d39ffcbff19c43fc17f5d6163673021b5e"
+      },
+      "model_override": null
+    }
+  ],
+  "passed": true
+}

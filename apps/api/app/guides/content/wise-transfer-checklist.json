@@ -1,0 +1,278 @@
+{
+  "slug": "wise-transfer-checklist",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Wise 匯款前要確認什麼：地區、費用與收款資料",
+      "description": "使用 Wise 前，先分清居住地資格、可匯款幣別、帳戶餘額與卡片功能。本文以原創美元轉入台灣外幣帳戶的規劃情境，說明如何確認匯款路徑、比較總費用、核對收款人資料、追蹤交易與處理取消。附逐步清單、查核比較表和自繪圖解，協助台灣一般使用者在送出款項前掌握必要資訊，避免把試算報價或匯出狀態當成已經入帳。",
+      "hero": {
+        "src": "/guides/wise-transfer-checklist/hero.jpg",
+        "alt": "Mokaair 原創盾牌、計算器與文件插圖，代表匯款資格、總成本和收款資料確認。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "手上有一筆美元，想透過 Wise 轉入自己的台灣外幣帳戶，先查哪一項？如果只搜尋「台灣能不能用 Wise」，很容易把開戶、持有外幣、申請卡片和新臺幣匯款混在一起。真正要確認的是這筆錢從哪裡出發、用什麼幣別，最後進入哪一種帳戶。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文採原創個人資金調度情境，依 2026 年 9 月 14 日查閱的 Wise 官方資料整理，不是實際匯款測試或匯率預測。本例假設已有可用美元資金，仍須確認帳戶、付款來源與收款銀行是否接受該路徑；沒有提供保證成功或一定最便宜的方案。"
+        },
+        {
+          "type": "heading",
+          "text": "台灣可用性要拆成幾個問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Wise 的持有餘額地區清單目前包含 Taiwan，但這不代表台灣居民能使用所有功能。官方也提醒新舊帳戶可能有差異。註冊時如實填寫居住地與個人資料，再看帳戶內實際可用功能，不使用借來的海外地址推定自己符合其他地區資格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新臺幣 TWD 目前沒有列在官方可匯入、匯出幣別清單中。這與網站提供 TWD 匯率換算資訊是不同事情，不能因為查得到換算器，就認為能從台灣新臺幣帳戶直接以本地轉帳完成付款，或讓收款人直接收到 TWD。先在匯款流程確認真正可選的組合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Wise 個人卡片的發行地區清單目前不含台灣，因此不能把持有餘額等同可在台灣申辦卡片。不過，台灣列在美元透過 Swift 匯往美國以外地區的名單，收款帳戶須為美元帳戶。本例的查核方向是美元入台灣外幣戶，不是新臺幣本地匯款或卡片消費。"
+        },
+        {
+          "type": "heading",
+          "text": "把整條資金路徑畫出來",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在筆記上分成付款來源、Wise 處理及收款銀行三段，分別寫幣別、戶名和所在國家。本例若使用 Wise 內既有美元，和先從外部銀行匯美元到 Wise，會多出不同的步驟與費用。比較工具時把起點保持一致，才不會漏算前面那一段成本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "收款銀行端先確認外幣帳戶能接收該種境外匯入，以及它要求的戶名格式、帳號和 Swift/BIC。不要把新臺幣帳號直接填進美元收款欄，也不要自行猜測英文姓名。若銀行另要求入帳用途或文件，就在送出前整理，讓匯款資料與實際資金用途一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果目的是讓別人匯進自己的 Wise，則需查看 Get account details 所提供的特定幣別收款資料，並完成身分驗證等條件。它和這次匯出時 Wise 提供的付款指示不是同一組用途。轉入 Wise、從 Wise 轉出和台灣銀行收款，各自複製正確的資料。"
+        },
+        {
+          "type": "heading",
+          "text": "比較總支出，不只看匯率",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Wise 台灣費用頁說明採用市場中間匯率並另收費用，實際報價仍由幣別、金額、付款方式及路徑決定。將這份報價與銀行或其他服務比較時，使用相同時點、相同收款金額及相同費用負擔條件。不要將某一次截圖變成長期固定匯率或固定手續費。"
+        },
+        {
+          "type": "paragraph",
+          "text": "美元經 Swift 匯往美國以外地區，官方另列 Swift 費用；部分路徑會把預估中間銀行費用計入報價。這不等於所有表格數字都是總費用，因為換匯或付款方式費用可能另外計算。讀到台灣那一列時，也要繼續看腳註及最後確認畫面的合計。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本例可先設定收款人要收到 1000 美元，記下 Wise 要求支付多少、使用哪種付款來源，再向來源及收款銀行確認各自收費。這只是比較方法，並非本文取得的即時報價。若資金先由新臺幣換成美元，該次換匯的匯差與費用也應列入原始成本。"
+        },
+        {
+          "type": "heading",
+          "text": "送出前重新讀一遍收款資料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般流程是從 Send 選擇收款人，輸入金額與幣別，再選可用付款方式。介面可依「你支付多少」或「對方收到多少」設定；兩者並非同一個數字。最後確認收款人、幣別、金額與預計時間，再進行付款，不以存過的收款人資料代替當次核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若需要從外部銀行付款，建立 Wise 匯款後，還要依它提供的銀行資料完成實際付款，並核對附言或交易識別資訊。不要以為按完建立交易就已從自己的銀行扣款，也不要用前一次留下的截圖當成這一次的付款指示。可用付款方式依所在地和交易而異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本例可以分兩次閱讀：先核對戶名、帳號和銀行代碼，再核對金額、幣別與用途。收款資料若由他人臨時更改，使用原本可信的聯絡方式確認。不要因對方催促就省略查核，也不要把驗證碼、完整帳戶畫面或證件交給自稱協助轉帳的陌生人。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "確認台灣帳戶可用功能、匯款幣別與收款銀行條件。",
+            "列出完整資金路徑，用相同收款金額比較總成本。",
+            "檢查收款人和付款指示，再依當次流程完成付款。",
+            "追蹤交易狀態，保存證明，並以收款銀行紀錄確認入帳。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "完成狀態和收款入帳分別核對",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "付款後在交易清單查看狀態，留意是否等待資金、處理中或已完成。Wise 說明 Completed 代表款項已離開 Wise，不能再由平台直接取消；這仍需要與收款銀行的實際紀錄核對。本例應在台灣外幣戶確認入帳金額與幣別，再把這筆調度列為收款完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若預計時間已過，先看交易頁是否有要求補充資料，並確認外部付款是否真的完成。Swift 路徑與一般本地付款的時間不同，還可能經過銀行處理。保留合理緩衝，不將畫面中的預估時間當成保證，也不要在未查明原交易前再送一筆相同款項。"
+        },
+        {
+          "type": "paragraph",
+          "text": "已完成交易可下載 PDF transfer confirmation；網站交易旁的選單提供 Get transfer confirmation。證明上的銀行合作夥伴參考號可協助收款銀行查找款項，與自行寫的備註不同。將證明、原始用途和收款紀錄一起保存，對外提供時只給對方處理所需的資料。"
+        },
+        {
+          "type": "heading",
+          "text": "發現錯誤，依交易階段處理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "尚未付款時，通常可自行取消；已付款但 Wise 尚未收到，取消後仍可能要等資金到達才能退款。處理中可能已沒有自行取消按鈕，需要立即聯絡 Wise，且不保證攔得住。本例若發現收款帳號有誤，先查交易狀態，避免盲目重複建立或取消。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交易完成後，不能只按一個撤回鈕把錢拿回來。錯誤資料可能被銀行退回，但若款項已送到可收款的其他帳戶，追回方式就不同。應聯絡 Wise 和相關銀行確認下一步，不把「填錯應該會退」當成事先可以不核對的理由，退款時間也依付款方式及處理情況而異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "長期使用時，定期確認居住資料、帳戶用途與收款資訊。Wise 個人帳戶用於個人交易，商業交易則需依商業帳戶要求處理，不能因為金額小就混用。本篇的查核表可作為每次匯款前的紀錄，但稅務、申報及銀行文件仍要依自己的交易性質和適用規則辦理。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wise-transfer-checklist/diagram-1.svg",
+          "alt": "四張卡片依序列出資格、報價、資料與入帳檢查，區分匯款可用性和最後收款確認。",
+          "width": 1600,
+          "height": 900,
+          "caption": "可持有餘額、可匯款與可申請卡片各有條件；匯出完成後仍要核對銀行入帳。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "查核層次",
+            "要確認什麼",
+            "不能直接推論"
+          ],
+          "rows": [
+            [
+              "居住地與帳戶",
+              "台灣資格、驗證、個人或商業用途",
+              "能開戶就有全部功能"
+            ],
+            [
+              "匯款幣別",
+              "實際可用的付款與收款組合",
+              "有匯率換算器就可匯款"
+            ],
+            [
+              "總成本",
+              "匯差、Wise、付款與銀行費用",
+              "單一費率就是總支出"
+            ],
+            [
+              "收款資料",
+              "戶名、幣別帳戶、銀行代碼",
+              "舊截圖永遠適用"
+            ],
+            [
+              "完成與入帳",
+              "平台狀態、證明、銀行紀錄",
+              "已匯出就等於已入帳"
+            ]
+          ],
+          "caption": "原創匯款查核表；實際交易以當次顯示、帳戶資格與銀行確認為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先確定這筆交易能走，再比較價格",
+          "text": "居住地、幣別、付款方式和收款銀行都要相容。沒有可用路徑時，低費率的宣傳數字也無法代表這筆交易的實際選項。"
+        },
+        {
+          "type": "link",
+          "text": "海外平台收款前，先核對 YouTube 付款與稅務資料",
+          "url": "https://mokaair.com/zh-TW/life/youtube-payment-tax-info"
+        },
+        {
+          "type": "link",
+          "text": "網站收款另看 PayPal 帳戶與退款流程",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-paypal-setup"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wise：可持有餘額的居住地",
+          "url": "https://wise.com/help/articles/2813542/where-do-i-need-to-live-to-hold-money-with-wise",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wise：匯入與匯出幣別",
+          "url": "https://wise.com/help/articles/2571907/what-currencies-can-i-send-to-and-from",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wise：卡片發行地區",
+          "url": "https://wise.com/help/articles/2968915/can-i-get-the-wise-card-in-my-country",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wise：美元 Swift 收款地區",
+          "url": "https://wise.com/help/articles/2974947/what-countries-and-regions-can-i-send-usd-to-via-swift",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wise 台灣：匯款費用說明",
+          "url": "https://wise.com/tw/pricing/send-money",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wise：美元匯往美國以外地區的費用",
+          "url": "https://wise.com/help/articles/2946451/how-much-does-it-cost-to-send-usd-to-countries-outside-the-us",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wise：建立匯款流程",
+          "url": "https://wise.com/help/articles/2977959/how-do-i-send-money-with-wise",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wise：取得收款帳戶資料",
+          "url": "https://wise.com/help/articles/2978028/how-do-i-open-account-details-to-receive-money",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wise：交易取消條件",
+          "url": "https://wise.com/help/articles/2971625/how-do-i-cancel-my-transfer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wise：Completed 交易與退款",
+          "url": "https://wise.com/help/articles/2565014/how-do-i-get-my-money-back-if-the-transfer-is-complete",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wise：下載匯款證明",
+          "url": "https://wise.com/help/articles/2977946/how-do-i-download-a-transfer-confirmation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wise：帳戶與個人、商業用途",
+          "url": "https://wise.com/help/articles/2897226/what-is-a-wise-account",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

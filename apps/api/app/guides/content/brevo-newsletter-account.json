@@ -1,0 +1,273 @@
+{
+  "slug": "brevo-newsletter-account",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Brevo 電子報與帳戶管理：寄件驗證、名單與停用處理",
+      "description": "Brevo 電子報帳戶要能持續寄送，除了完成寄件身分與網域驗證，也需要維護名單來源、退訂排除與投遞紀錄。本文以原創手工紙工作室為例，說明新版網域設定差異、聯絡人匯入檢查，以及遇到停用時如何辨識原因、整理申訴資料與驗收復原。附步驟、比較表及原創圖解，不把重新啟用或購買方案當成投遞保證。",
+      "hero": {
+        "src": "/guides/brevo-newsletter-account/hero.jpg",
+        "alt": "Mokaair 原創寄件伺服器、名單資料夾與安全盾牌，表達 Brevo 驗證、名單品質與帳戶復原。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "手工紙工作室把過去展售活動留下的地址整理進 Brevo，準備寄出紙材保存教學。有人確實訂閱，有人只是詢問訂單，另一些人早已退訂。若只看名單有幾筆，就很難判斷一次寄送出了問題時，應該先修內容、名單還是帳戶設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇依 2026 年 9 月 14 日查閱的 Brevo 官方文件整理，工作室、資料清單與復原情境均為原創。沒有實際註冊、變更 DNS、匯入聯絡人或提交支援單，也沒有宣稱某種清理方法必定讓帳戶恢復。"
+        },
+        {
+          "type": "heading",
+          "text": "先建立讀者辨識得出的寄件身分",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo 的 sender 包含顯示給收件者的名稱與電子郵件地址。原創工作室可使用一致的品牌名稱，搭配自己控制網域下的地址，再確認回覆信由誰處理。名稱不應假裝成收件者熟悉的私人聯絡人，也不宜每期更換成難以辨識的活動名稱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在目前文件的 Settings > Senders, Domains, IPs 可管理寄件者與網域。官方建議先驗證網域，使用該網域的寄件者便可自動驗證；未驗證網域時，建立寄件者可能會要求輸入寄到該地址的驗證碼。完成單一地址驗證與完成網域驗證仍是不同概念。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立活動時再確認實際選用的寄件者，尤其團隊有多個品牌或不同名單設定時。測試信應看收件匣顯示的名稱、地址與回覆行為，而不是只核對後台選單。品牌熟悉度來自讀者過去的訂閱關係，不能靠技術驗證代替。"
+        },
+        {
+          "type": "heading",
+          "text": "網域驗證依帳戶目前流程操作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo 正逐步推出整合網域驗證、品牌子網域與專用 IP 的新流程，並非每個帳戶畫面都一樣。先確認自己看到哪個版本，再依官方對應說明操作。不要把舊教學的固定紀錄數，套用到新流程產生的所有 DNS 設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般驗證文件列有 Brevo code、DKIM 與 DMARC，實際紀錄型態與值由帳戶提供。只能驗證自己或公司擁有且控制的網域，不能驗證 Gmail 等免費信箱供應商的網域。已有 DMARC 時先了解現行政策及其他寄信服務，避免為了通過畫面而直接覆蓋原設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新流程若使用由 Brevo 管理的 NS 方式，官方要求在子網域層級處理，因為根網域的 DNS 委派會影響整個網站及其他服務。本篇建議由網域維護者核對影響範圍，完成後回到 Brevo 檢查驗證狀態，並查看自己測試信的結果，而不是看到儲存成功就移除原有紀錄。"
+        },
+        {
+          "type": "heading",
+          "text": "匯入前把同意與退出紀錄整理好",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo 禁止買來、租來、借來或從公開網頁擷取的地址名單。即使平台資料規則允許某類聯絡人存在，也不代表每個人都適合收到所有活動。原創工作室採清楚訂閱的方式，只把期待紙材教學與相關通知的人列入這次寄送，不把訂單詢問地址一併使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "匯入表先整理地址、必要屬性、來源與訂閱紀錄，再核對欄位對應及加入哪份 list。Brevo 可在匯入時更新既有聯絡人的屬性，也有以空白欄位清除既有值的選項。資料合併前先用少量自控測試紀錄驗證，避免一張缺欄位的表格覆蓋原本完整的資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "從其他服務搬移時，也要匯入退出或無效地址的封鎖狀態。Brevo 的 blocklist 可依電子報、簡訊等通道設定，匯入時選定的通道會套用到該檔案全部聯絡人。需要不同排除範圍的人應分檔處理，不能把退出電子報自行解讀成同意改收其他行銷通道。"
+        },
+        {
+          "type": "heading",
+          "text": "寄送後看投遞異常，不只看開信數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "首次寄送或加入新來源時，先用與讀者期待一致的內容及可負擔的頻率，觀察退信、申訴與退訂。投遞失敗不只是文案問題，可能與無效地址、寄件身分或名單來源有關；開信追蹤也有隱私及機器活動限制，不適合成為唯一判斷依據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Deliverability center 提供帳戶狀態與相關改善資訊。工作室可留下活動日期、名單來源、寄件者、可觀察到的投遞結果及異常開始時間。若某批名單產生明顯問題，先暫停同來源的後續行銷安排，核對原因，再決定修正方式，不把它混入更大名單掩蓋比例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "清理應針對已確認的退出、無效地址及不符合原訂用途的來源，並留下排除理由。不要為了讓數字變漂亮，刪掉所有過去紀錄後重新匯入。平台的建議篩選是排查起點，不等於某個人沒留下開信紀錄，就已證明對方從未閱讀或可以任意重設同意。"
+        },
+        {
+          "type": "heading",
+          "text": "停用先辨識原因，再走對應復原路徑",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo 官方列出註冊異常、電子報結果不佳、交易郵件問題、帳戶遭入侵及違反服務條款等原因。先查看通知與 Deliverability center 的實際訊息，確認是帳戶還是特定寄送功能受到限制。這些原因處理方式不同，不能直接照別人的截圖按同一個重新啟用按鈕。"
+        },
+        {
+          "type": "paragraph",
+          "text": "因電子報結果或新名單寄送而首次停用時，官方提供依 Deliverability center 完成改善後的自助復原流程。其他情況可能需要支援團隊檢查；再次停用或條款問題也可能無法恢復，認為判斷有誤則提交具體資料請求審查。不要承諾幾小時必解封或以新帳戶逃避原問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果通知指出可疑活動，處理重點是帳戶安全：改密碼、調查洩漏來源、撤換外洩金鑰及啟用雙因素驗證，再依支援單確認復原。把公開憑證改成私人檔案，不能消除先前已洩漏的風險。清理名單也不能取代修好被入侵的網站或整合。"
+        },
+        {
+          "type": "heading",
+          "text": "支援資料與重新啟用驗收分開記錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原創工作室可整理一份支援摘要，包含受影響功能、通知原文、活動識別資訊、名單取得方式、已檢查的網域設定與已完成修正。只提供支援所需的資料，不把完整金鑰、無關顧客個資或整份聯絡名單貼到公開討論區，也不捏造同意證據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "依官方說明，停用期間訂閱方案仍可能持續運作與計費；帳戶不能寄信，不等於方案已取消。若需要處理方案或費用，應另外查看帳務狀態及聯絡支援。購買更高方案也不能取代品質審查，復原狀態仍以平台確認為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "恢復後先重新核對排程、收件名單與退出排除，再用自己控制的地址確認內容和身分。接著依修正後的來源與合理頻率觀察結果，確定同樣異常沒有再發生。重新啟用只是恢復功能，持續能把正確內容寄給期待它的人，才是帳戶維護的實際工作。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "確認寄件者與自有網域，依目前帳戶流程完成驗證。",
+            "整理合法來源、訂閱用途與各通道封鎖紀錄，測試匯入設定。",
+            "保存寄送異常的具體資料，依停用通知判斷需修正的原因。",
+            "完成對應修正及平台復原程序，再驗收排程、排除與投遞結果。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/brevo-newsletter-account/diagram-1.svg",
+          "alt": "四張卡片呈現寄件驗證、名單檢查、停用辨識及復原驗收，區分技術設定、資料品質與帳戶安全。",
+          "width": 1600,
+          "height": 900,
+          "caption": "修好造成問題的原因，再確認功能恢復與後續投遞。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "狀況",
+            "優先檢查",
+            "後續處理"
+          ],
+          "rows": [
+            [
+              "寄件地址可驗證",
+              "使用的網域與 DNS 狀態",
+              "分別完成地址及網域設定"
+            ],
+            [
+              "新名單出現高退信",
+              "來源、欄位與地址品質",
+              "排除問題來源並查看投遞紀錄"
+            ],
+            [
+              "舊服務有退出名單",
+              "退出的通道與範圍",
+              "依通道匯入 blocklist"
+            ],
+            [
+              "註冊後立即被限制",
+              "官方通知要求的驗證",
+              "透過支援流程請求檢查"
+            ],
+            [
+              "電子報品質導致停用",
+              "Deliverability center 的改善清單",
+              "依適用條件完成修正與復原"
+            ],
+            [
+              "帳戶出現陌生寄送",
+              "憑證、登入與外部整合",
+              "先修復安全問題再確認恢復"
+            ]
+          ],
+          "caption": "依官方停用類型整理的原創排查順序，不能替代個別帳戶的審查結果。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "封鎖狀態也是搬家資料的一部分",
+          "text": "只搬可寄送名單會漏掉退出限制。依通道保留必要排除狀態，並測試舊資料再次匯入時不會恢復成可寄送。"
+        },
+        {
+          "type": "link",
+          "text": "建立電子報訂閱與退出的完整流程",
+          "url": "https://mokaair.com/zh-TW/life/email-newsletter-planning"
+        },
+        {
+          "type": "link",
+          "text": "核對 WordPress 表單與 Mailchimp 名單同步",
+          "url": "https://mokaair.com/zh-TW/life/mailchimp-wordpress-newsletter"
+        },
+        {
+          "type": "link",
+          "text": "整理行銷工具之間的資料責任",
+          "url": "https://mokaair.com/zh-TW/life/martech-tool-stack"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Brevo：建立寄件者",
+          "url": "https://help.brevo.com/hc/en-us/articles/208836149-Create-a-new-sender-From-name-and-From-email",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：網域驗證與現有 DMARC",
+          "url": "https://help.brevo.com/hc/en-us/articles/12163873383186-Authenticate-your-domain-with-Brevo-Brevo-code-DKIM-DMARC",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：逐步推出的新版網域流程",
+          "url": "https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：名單來源與平台規則",
+          "url": "https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：匯入與覆蓋設定",
+          "url": "https://help.brevo.com/hc/en-us/articles/115000719584-Import-your-contacts-to-Brevo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：依通道匯入封鎖名單",
+          "url": "https://help.brevo.com/hc/en-us/articles/5317230365074-Import-a-list-of-blocklisted-contacts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：帳戶與電子報停用原因",
+          "url": "https://help.brevo.com/hc/en-us/articles/360017299259-Why-have-my-account-or-email-campaigns-been-suspended",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：電子報停用後復原流程",
+          "url": "https://help.brevo.com/hc/en-us/articles/209408165-Reactivate-your-email-campaigns-after-a-suspension",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：遭入侵帳戶處理",
+          "url": "https://help.brevo.com/hc/en-us/articles/4409685261714-My-account-has-been-compromised-what-should-I-do",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

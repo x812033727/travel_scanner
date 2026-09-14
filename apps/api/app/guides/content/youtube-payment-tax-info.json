@@ -1,0 +1,288 @@
+{
+  "slug": "youtube-payment-tax-info",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "YouTube 收款設定：AdSense 付款資料與稅務表單查核",
+      "description": "YouTube 收款需要同時確認頻道獲利、AdSense for YouTube 帳戶、身分與地址驗證、稅務資料和付款方式。本文以原創手作影片頻道為例，整理官方設定路徑、W-8BEN 與其他表單的差別、稅表狀態、付款門檻及紀錄保護，並區分預估收入、扣繳和銀行入帳。附步驟、比較表與原創圖解，協助創作者按自己的資料逐項查核。",
+      "hero": {
+        "src": "/guides/youtube-payment-tax-info/hero.jpg",
+        "alt": "Mokaair 原創付款紀錄、文件資料夾與資料保護盾牌，呈現 YouTube 收款帳戶及稅表查核。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "手作影片頻道開始出現預估收益，創作者卻還沒收到銀行款項。這不一定是影片收入算錯，也可能是付款帳戶、身分驗證、稅表或付款門檻尚未完成。把各個狀態分開核對，才能知道真正卡在哪個環節。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依 2026 年 9 月 14 日查閱的 Google 與美國 IRS 官方文件整理，手作頻道及查核流程為原創情境。這是收款設定與文件辨識指南；個別稅務身分、適用優惠與台灣申報方式，應依本人情況向稅務機關或專業人員確認，不能照別人的表單選項逐格複製。"
+        },
+        {
+          "type": "heading",
+          "text": "由 YouTube Studio 確認頻道與付款帳戶",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先到自己的 YouTube Studio 查看獲利狀態與需要完成的步驟，再確認連接的是哪個 AdSense for YouTube 帳戶。建立付款帳戶不會自動讓頻道取得所有獲利功能；同樣地，看見預估收入也不代表每項付款設定都已完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 要求新增 AdSense for YouTube 帳戶時經由 YouTube Studio 處理。若已有 AdSense 帳戶，應使用管理既有帳戶的 Google 帳號連接，不因頻道換名稱或忘記曾申請，就另開重複帳戶。同一收款人名稱下的重複帳戶可能無法核准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網站 AdSense 與 YouTube 收益可能有分開的付款帳戶，兩者獨立累積餘額。這不等於要另外註冊兩組重複的 AdSense 登入帳戶。原創手作創作者同時經營部落格時，應在 Payments 的付款帳戶選單核對目前看的到底是哪一項產品。"
+        },
+        {
+          "type": "heading",
+          "text": "驗證、付款方式與付款金額各有門檻",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 區分驗證、選擇付款方式及實際付款等門檻，金額依帳戶幣別而不同。官方以美元帳戶列出驗證及付款方式門檻為 US$10，付款門檻為 US$100。這不是把台灣銀行台幣餘額換算後湊到一百元，也不能直接套用到其他報表幣別。"
+        },
+        {
+          "type": "paragraph",
+          "text": "達到相關門檻後，依帳戶提示完成身分與地址驗證。部分地區或情況可能有線上驗證選項；若介面要求郵寄 PIN，就核對實際可收信的付款地址並照指示處理。不要把所有創作者都描述成一定只用郵寄，也不要將證件驗證與地址 PIN 當成完全相同的步驟。"
+        },
+        {
+          "type": "paragraph",
+          "text": "付款方式依付款地址及帳戶提供的選項決定，銀行資料應以金融機構給自己的正確收款資訊核對。若有網站及 YouTube 兩個付款帳戶，各自要達到門檻並設定相應付款方式；不能把兩邊未達門檻的餘額加總，推定本月就會一起匯出。"
+        },
+        {
+          "type": "heading",
+          "text": "稅表依實際身分產生，不按頻道語言選擇",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 AdSense for YouTube 的 Payments、Payments info、Manage settings，找到 United States tax info，再進入 Manage tax info。官方問答流程會依回答產生適合的表單。先確認收入的實際受益人、個人或實體身分及稅務居住情況，不因觀眾大多在台灣就省略填報。"
+        },
+        {
+          "type": "paragraph",
+          "text": "IRS 的 W-8BEN 是供適用的非美國個人證明外國身分等用途；W-8BEN-E 對應適用的外國實體。美國人士通常走 W-9，涉及美國營業所得、合夥或中介等情況也可能需要其他表單。因此不是所有使用繁體中文的頻道，都應選 W-8BEN。"
+        },
+        {
+          "type": "paragraph",
+          "text": "W-8BEN 是交給扣繳義務人或付款方的文件，在本情境依 Google 稅務流程提交，不是自己把表格寄給 IRS 當年度報稅。名字、地址與識別資料應符合本人文件；需要拉丁字母欄位時，採與既有正式文件一致的寫法，不用頻道暱稱取代法律姓名。"
+        },
+        {
+          "type": "heading",
+          "text": "表單核准、稅率與當地申報不能混為一談",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 說明所有 YouTube 獲利創作者都需提供稅務資料，可能適用的美國扣繳與美國觀眾產生的收益有關。未提供有效資料時，扣繳的範圍與預設方式可能不同。應先完成正確資料，再看自己帳戶顯示的適用稅率，不只從網路上找最低的百分比。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Approved 表示稅務資料已審核接受，不保證適用零稅率或租稅優惠。優惠要依居住地、收入類型與實際協定條件確認，不能借用他人的國家與條款。查證日 IRS 的所得稅協定 A–Z 清單未列台灣；沒有核實適用依據時，不勾選不屬於自己的優惠。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的扣繳不是替創作者完成所在地的全部申報。原創手作頻道應保存收益、扣繳與收款資料，再依自己的居住身分及收入情況確認台灣或其他適用申報。公司收入與個人收入也不能只因使用同一台電腦操作，就任意互換收款人。"
+        },
+        {
+          "type": "heading",
+          "text": "提交前看預覽，提交後看狀態與有效期限",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 會產生已填資料的表單 PDF 供預覽。送出前逐項核對姓名、地址、身分與聲明，不能只確認沒有紅字就完成。TIN 等識別資料應依本人適用規則填寫；不確定所填號碼與身分是否相符時，先釐清再提交，不自行編造一組格式看似正確的號碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提交後查看 In review、Approved 或 Declined。審核中若被要求補件，應從已確認的付款中心進入；拒絕時先查原因及文件是否一致。付款資料、稅務資料與身分文件不同步可能延誤處理，反覆提交彼此矛盾的表單反而不利於確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "稅表並非填一次就永遠有效。IRS 說明 W-8BEN 一般有效至簽署年後第三個曆年的年底，但也有例外與情況變更規則。原創例子：2026 年簽署，在一般規則且資料仍正確時可至 2029 年底；仍應每年查看 Google 提示，身分改變時及早依要求更新，不能只等日曆到期。"
+        },
+        {
+          "type": "heading",
+          "text": "最後用交易紀錄與銀行入帳核對收款",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "YouTube 的上月確定收益通常於次月 7 至 12 日加入相應付款帳戶；符合門檻且沒有暫停付款等問題時，Google 一般於 21 至 26 日辦理付款。這些是平台處理時間，銀行實際入帳還受付款方式、假日與銀行作業影響，不代表每月固定某日一定收到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若沒有入帳，先查看付款頁的提示、交易狀態與是否有自行設定的暫停付款，再核對銀行資訊。預估收益、確定收益、扣繳、平台發出款項與銀行淨入帳金額可分欄保存；出現差額時逐項核對原因，不直接當成收入被漏算或全部都是稅金。"
+        },
+        {
+          "type": "paragraph",
+          "text": "稅表 PDF、證件、地址 PIN 與完整銀行資料應保存在受控位置，只交給確實需要處理的人。對外求助可提供已遮蔽敏感欄位的狀態與錯誤說明，先從官方登入入口核對通知，再提交必要資料。沒有必要把整張稅表貼到公開討論區，也不應讓陌生代辦代管自己的 Google 帳號。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "由 YouTube Studio 核對獲利狀態及既有付款帳戶，避免重複申請。",
+            "按幣別與帳戶提示完成身分、地址、付款方式與門檻查核。",
+            "依實際稅務身分完成官方問答、預覽與提交，追蹤審核及有效期限。",
+            "分別保存收益、扣繳、平台付款與銀行紀錄，依提示處理付款問題。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/youtube-payment-tax-info/diagram-1.svg",
+          "alt": "四張卡片呈現頻道與付款帳戶、身分地址、稅表狀態及交易入帳的獨立查核項目。",
+          "width": 1600,
+          "height": 900,
+          "caption": "完成收款設定，不代表已完成所有適用稅務申報。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "代表的事情",
+            "不能直接推定"
+          ],
+          "rows": [
+            [
+              "頻道獲利狀態",
+              "頻道相應功能與資格",
+              "所有付款步驟已完成"
+            ],
+            [
+              "身分及地址驗證",
+              "依要求確認收款人資料",
+              "稅表也一定核准"
+            ],
+            [
+              "W-8BEN Approved",
+              "提交的稅務資料被接受",
+              "自動免稅或零扣繳"
+            ],
+            [
+              "網站與 YouTube 餘額",
+              "不同付款帳戶獨立累積",
+              "可以合併湊付款門檻"
+            ],
+            [
+              "平台發出付款",
+              "Google 已進入付款作業",
+              "銀行同日必定入帳"
+            ],
+            [
+              "已扣美國稅款",
+              "相應收益已處理扣繳",
+              "所在地全部申報已完成"
+            ]
+          ],
+          "caption": "原創收款核對表，適用表單與稅務結果仍依本人資料判斷。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Approved 不等於免稅",
+          "text": "稅務表單核准代表資料被接受。適用稅率、優惠資格與所在地申報仍需各自確認，不要為追求低稅率改填不實身分。"
+        },
+        {
+          "type": "link",
+          "text": "區分網站 AdSense 的申請與審查",
+          "url": "https://mokaair.com/zh-TW/life/adsense-site-preparation"
+        },
+        {
+          "type": "link",
+          "text": "規劃影片的內容任務與量測",
+          "url": "https://mokaair.com/zh-TW/life/short-video-marketing"
+        },
+        {
+          "type": "link",
+          "text": "用完整成本判斷內容經營成果",
+          "url": "https://mokaair.com/zh-TW/life/marketing-metrics-roi-roas"
+        }
+      ],
+      "sources": [
+        {
+          "title": "YouTube：建立及連接收款帳戶",
+          "url": "https://support.google.com/youtube/answer/9914702?hl=en-GB",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：分開的付款帳戶",
+          "url": "https://support.google.com/adsense/answer/11558397?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：不同幣別與付款門檻",
+          "url": "https://support.google.com/adsense/answer/1709871?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YouTube：身分、地址與收款步驟",
+          "url": "https://support.google.com/youtube/answer/14732067?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YouTube：美國稅務資料要求",
+          "url": "https://support.google.com/youtube/answer/10391362?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：表單問答與審核狀態",
+          "url": "https://support.google.com/adsense/answer/10735961?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IRS：W-8BEN 個人表單用途",
+          "url": "https://www.irs.gov/forms-pubs/about-form-w-8-ben",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IRS：W-8BEN-E 實體表單用途",
+          "url": "https://www.irs.gov/forms-pubs/about-form-w-8-ben-e",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IRS：W-8BEN 有效期限與情況變更",
+          "url": "https://www.irs.gov/instructions/iw8ben",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IRS：所得稅協定清單",
+          "url": "https://www.irs.gov/businesses/international-businesses/united-states-income-tax-treaties-a-to-z",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：收益確定與付款時程",
+          "url": "https://support.google.com/adsense/answer/7164703?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YouTube：付款暫停與官方資料要求",
+          "url": "https://support.google.com/youtube/answer/14727845?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
