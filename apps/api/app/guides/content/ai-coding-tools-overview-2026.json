@@ -1,0 +1,389 @@
+{
+  "slug": "ai-coding-tools-overview-2026",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+      "description": "五個常一起出現的 AI 寫程式工具，差別在跑在哪裡：終端機代理、編輯器內建、雲端代理。依 2026 年 9 月官網資料，整理 Claude Code、OpenAI Codex、Gemini CLI、Cursor 與 GitHub Copilot 各自要什麼帳號、有沒有免費額度、入門要多少錢、適合誰，最後給一個「你是哪種人就先裝哪個」的決策，並回答信用卡、中文與 Windows 三個常見問題。",
+      "hero": {
+        "src": "/guides/ai-coding-tools-overview-2026/hero.jpg",
+        "alt": "插圖：一個終端機視窗、一個編輯器視窗與一朵雲，用一條路徑連起來，代表三種 AI 寫程式工具的執行位置",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想開始用 AI 幫忙寫程式的人，第一關通常不是不會用，而是不知道該裝哪一個。Claude Code、OpenAI Codex、Gemini CLI、Cursor、GitHub Copilot 這五個名字經常一起出現，看起來像五個互相取代的選項，其實它們分成三種型態：在終端機裡跑的代理、裝進編輯器的助手、以及在供應商機器上替你跑完整件事的雲端代理。先分清楚型態，再看帳號與價格，選擇就會變得很單純。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇是給沒用過這類工具的台灣讀者的一張地圖。往下看會知道每一個工具跑在哪裡、要哪一種帳號、有沒有免費額度、入門方案多少錢、適合什麼樣的人，以及代理動手改你的檔案時有哪些風險。最後有一張決策樹：照著「你會不會寫程式」和「你想在哪裡工作」兩個問題走下來，就會得到一個先裝哪個的答案。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "三種型態：終端機代理、編輯器內建、雲端代理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "五個工具最大的差別不是誰比較聰明，而是它在哪裡執行、碰得到你的哪些東西。終端機代理跑在你自己的電腦上，直接讀寫專案資料夾裡的檔案，也會替你執行指令；編輯器內建的助手活在你打字的那個視窗裡，補完下一行、在側邊對話，或是在同一個專案裡進入代理模式；雲端代理則是把任務丟到供應商的虛擬機器，它自己把程式碼複製一份、改完、推一個分支回來給你看。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "終端機代理：Claude Code、Codex CLI、Gemini CLI。裝好之後在專案資料夾裡輸入一個指令就開始對話，適合已經會開終端機的人。",
+            "編輯器內建：Cursor 是一套獨立的編輯器，GitHub Copilot 則是裝進 Visual Studio Code、Visual Studio、JetBrains、Xcode、Eclipse 等工具的擴充功能。",
+            "雲端代理：Claude Code 的網頁版、Codex cloud、GitHub Copilot 的雲端代理、Cursor 的 Cloud Agents。共同點是要先把 GitHub 之類的程式碼倉庫接上去，任務才有東西可以改。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "三種型態的風險也不一樣。終端機代理與編輯器代理直接動你硬碟上的檔案，所以要先看清楚它預設能做到哪裡。Codex 在有版本控制的資料夾裡，預設是 workspace-write 沙箱加上 on-request 核准，意思是在工作目錄內讀檔、改檔、執行指令不會問你，要跨出目錄或連上網路才停下來等你同意；Claude Code 則提供六種權限模式，從每個動作都問你的 Manual 到幾乎不問的 auto，官方文件寫明 Pro、Max 與 Team 方案的內建起始模式就是 auto。雲端代理碰不到你的電腦，但碰得到你的程式碼倉庫，而且每開一個任務就在花訂閱裡的用量。"
+        },
+        {
+          "type": "link",
+          "text": "氛圍編碼（Vibe Coding）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-vibe-coding"
+        },
+        {
+          "type": "link",
+          "text": "代理式工程（Agentic Engineering）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-agentic-engineering"
+        },
+        {
+          "type": "heading",
+          "text": "三個終端機代理：Claude Code、Codex CLI、Gemini CLI",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "Claude Code：門檻最高，要先有付費方案",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Code 是 Anthropic 的終端機代理，官方文件在 code.claude.com。帳號門檻是五個裡最高的：安裝說明寫著它需要 Pro、Max、Team、Enterprise 或 Console 帳號，免費的 Claude.ai 方案不含 Claude Code，另外也可以改用 Amazon Bedrock、Google Cloud 或 Microsoft Foundry 這類第三方供應商。Anthropic 官網的個人方案價格是 Pro 年繳每月 17 美元、月繳每月 20 美元，Max 自每月 100 美元起。系統需求是 macOS 13.0 以上、Windows 10 1809 以上或 Ubuntu 20.04 以上，4 GB 以上記憶體。不想碰終端機的人，官方也提供桌面版應用程式；網頁版 Claude Code 目前是研究預覽，開放給 Pro、Max 與 Team 使用者。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "在 macOS、Linux 或 WSL 安裝 Claude Code",
+          "code": "curl -fsSL https://claude.ai/install.sh | bash\nclaude --version\n"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code 入門：認識工具與第一條學習路線",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "Codex CLI：有 ChatGPT 帳號就能開始",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 是 OpenAI 的寫程式代理，文件集中在 learn.chatgpt.com。它同時有四個入口：終端機的 Codex CLI、編輯器的 IDE 擴充、ChatGPT 桌面版裡的 Codex 模式，以及網頁上的雲端版。第一次執行 codex 會請你選「Sign in with ChatGPT」，也就是用你原本的 ChatGPT 帳號登入。官方定價頁把 Codex 列進每一個方案：Free 是 0 美元、可以做快速的小任務，Go 每月 8 美元，Plus 每月 20 美元，Pro 自每月 100 美元起、Codex 用量是 Plus 的 5 倍或 20 倍，Business 每人每月 20 美元。雲端版要先連上 GitHub 或 GitLab 並替專案建立一個環境；官方說明代理階段預設沒有網路存取，要自己開啟。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "安裝 Codex CLI（macOS 或 Linux，也可以改用 npm）",
+          "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n# 或者\nnpm install -g @openai/codex\n"
+        },
+        {
+          "type": "link",
+          "text": "OpenAI Codex 是什麼：從 ChatGPT 裡的寫程式代理到 Codex CLI",
+          "url": "https://mokaair.com/zh-TW/life/codex-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "Codex CLI 入門：在終端機裡讓 OpenAI 幫你改程式",
+          "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "Gemini CLI：免費額度最寬的一個",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini CLI 是 Google 的開源終端機代理，以 Apache 2.0 授權放在 GitHub 上，文件在 geminicli.com。它的免費額度是五個工具裡最清楚也最寬的：用個人 Google 帳號登入，官方寫明每分鐘 60 次、每天 1,000 次請求，用的是 Gemini 3 模型與 100 萬 token 的上下文視窗。另外兩種登入方式是 Gemini API key 與企業用的 Vertex AI。安裝需要 Node.js 20.0.0 以上，官方建議的系統是 macOS 15 以上、Windows 11 24H2 以上或 Ubuntu 20.04 以上，一般使用 4 GB 記憶體、長時間處理大專案建議 16 GB。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "安裝 Gemini CLI（也可以用 npx 直接執行，不安裝）",
+          "code": "npm install -g @google/gemini-cli\ngemini\n"
+        },
+        {
+          "type": "link",
+          "text": "Gemini CLI 安裝：第一次在終端機對話",
+          "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "兩個編輯器內建：Cursor 與 GitHub Copilot",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cursor 是一套獨立下載的編輯器，不是擴充功能。官網說註冊一個免費的 Cursor 帳號、下載對應系統的版本就能用，Mac 是把程式拖進應用程式資料夾、Windows 執行安裝程式、Linux 用 apt 或 dnf。原本在用 Visual Studio Code 的人可以從設定裡的 VS Code Import 一次匯入擴充、佈景、設定與快捷鍵，但要知道 Cursor 用的是 Open VSX 而不是 VS Code Marketplace，不是每個擴充都找得到。價格方面，官網列出 Hobby 免費且寫明不需要信用卡、代理請求次數有限，Individual 每月 20 美元，Teams 每人每月 40 美元。它也有 Cloud Agents，在雲端的隔離虛擬機器上跑，支援 GitHub、GitLab、Bitbucket 與 Azure DevOps。"
+        },
+        {
+          "type": "link",
+          "text": "Cursor 編輯器入門：Tab 補全、Chat 與代理模式",
+          "url": "https://mokaair.com/zh-TW/life/cursor-editor-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "GitHub Copilot 走的是另一條路：它是裝進你原本編輯器的擴充功能，官方快速入門列出的環境包括 Visual Studio Code、Visual Studio、JetBrains 系列、Xcode、Eclipse 與 Windows Terminal，另外在 GitHub 網站、GitHub 手機版與 GitHub CLI 裡也有。要用它需要一個個人 GitHub 帳號加上一個 Copilot 方案。官方方案頁列出 Free 方案，行內建議每月上限 2,000 次補全，另外附一份 GitHub AI Credits 額度；付費的是 Pro 每月 10 美元、Pro+ 每月 39 美元、Max 每月 100 美元，團隊用的 Business 每人每月 19 美元、Enterprise 每人每月 39 美元。它的雲端代理跑在 GitHub Actions 的臨時環境裡，所有付費方案都能用，可以從 GitHub 網站、議題、Visual Studio Code 或在 PR 留言標記代理來指派工作。"
+        },
+        {
+          "type": "link",
+          "text": "GitHub Copilot 入門：VS Code 裡的補全、Chat 與代理",
+          "url": "https://mokaair.com/zh-TW/life/github-copilot-guide"
+        },
+        {
+          "type": "heading",
+          "text": "五個工具一次看：跑在哪、帳號與入門方案、適合誰",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "跑在哪",
+            "帳號與入門方案",
+            "適合誰"
+          ],
+          "rows": [
+            [
+              "Claude Code",
+              "終端機代理，另有桌面版與網頁版",
+              "Anthropic 付費方案：Pro 月繳 20 美元（年繳每月 17 美元）、Max 自每月 100 美元起；免費方案不含",
+              "已經習慣終端機，願意付月費換一個能自己跑完整件事的代理"
+            ],
+            [
+              "OpenAI Codex",
+              "終端機的 Codex CLI、IDE 擴充、ChatGPT 裡的雲端版",
+              "ChatGPT 帳號：Free 0 美元可試、Go 每月 8 美元、Plus 每月 20 美元、Pro 自每月 100 美元起",
+              "已經在付 ChatGPT，想用同一個帳號順便寫程式的人"
+            ],
+            [
+              "Gemini CLI",
+              "終端機代理，開源 Apache 2.0",
+              "個人 Google 帳號登入即可，免費額度每分鐘 60 次、每天 1,000 次",
+              "想零成本先試終端機代理，手上只有 Google 帳號的人"
+            ],
+            [
+              "Cursor",
+              "獨立編輯器，可匯入 VS Code 設定，另有雲端代理",
+              "Cursor 帳號：Hobby 免費且不需信用卡、Individual 每月 20 美元、Teams 每人每月 40 美元",
+              "不想碰終端機，希望編輯、對話與代理都在同一個視窗的人"
+            ],
+            [
+              "GitHub Copilot",
+              "VS Code、Visual Studio、JetBrains、Xcode、Eclipse 擴充，另有雲端代理",
+              "個人 GitHub 帳號：Free 每月 2,000 次補全、Pro 每月 10 美元、Pro+ 每月 39 美元",
+              "已經在用 Visual Studio Code 或 GitHub，想從補全開始的人"
+            ]
+          ],
+          "caption": "五個工具的入門條件，價格為官網美元標價，2026 年 9 月 14 日查證；台幣定價、實際用量上限與最新額度以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有兩件事表格說不清楚。第一，免費方案的額度多半只寫得出一個數字。Cursor 的 Hobby 只說代理請求次數有限，GitHub Copilot Free 除了補全次數之外只寫「一份 AI Credits 額度」，ChatGPT 各方案的 Codex 用量也只標示是 Plus 的幾倍，實際能做多少事以官網為準。第二，這些價格是訂閱制，和按 token 計費的 API 是兩套算法；如果你打算改用 API key 登入，花費就會跟著你送出去的字數走，而不是每月固定。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+        },
+        {
+          "type": "heading",
+          "text": "台灣使用者最常問的三件事",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "要不要信用卡：Cursor 的 Hobby 方案官網寫明不需要信用卡，GitHub Copilot Free 只要一個個人 GitHub 帳號，Gemini CLI 用個人 Google 帳號登入就有免費額度，ChatGPT 的 Free 方案本身就含 Codex。只有 Claude Code 一定要先有付費方案。地區方面，Anthropic 與 OpenAI 的支援清單都列有台灣。",
+            "介面有沒有中文：五個工具的選單、指令與官方文件都以英文為主，但你可以用中文下指令，它們也會用中文回答。Visual Studio Code 官方文件列出的 github.copilot.chat.localeOverride 設定可以直接指定回覆語言；其他工具的通用做法是在專案的規則檔裡寫一句「一律用台灣繁體中文回答」，之後每次對話都會照做。",
+            "Windows 能不能用：五個都可以。Claude Code 支援 Windows 10 1809 以上，也可以裝在 WSL 裡；Codex CLI 有 Windows 的 PowerShell 安裝指令；Gemini CLI 建議 Windows 11 24H2 以上，並需要 Node.js 20 以上；Cursor 有 Windows 安裝程式；Copilot 本來就跟著 Visual Studio 或 Visual Studio Code 走。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "代理動手之前，先確認兩件事",
+          "text": "第一是它能改哪些檔案。終端機代理與編輯器代理會直接寫你硬碟上的檔案，第一次用請挑一個已經用 Git 管起來、壞掉也沒關係的練習專案，並把權限調到每一步都要你按確認：Claude Code 的 Manual 模式與 Codex 的 read-only 沙箱就是給這種場合用的。第二是它會花掉額度。免費額度用完時，工具不會停下來問你要不要付費，而是直接擋住；Gemini CLI 每天 1,000 次、GitHub Copilot Free 每月 2,000 次補全，都是以這個單位在扣。雲端代理更要留意：同時開好幾個任務，用量就是好幾倍。"
+        },
+        {
+          "type": "heading",
+          "text": "你是哪種人，就先裝哪個",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把前面的資訊收成兩個問題就夠了：你會不會寫程式，以及你想在哪裡工作。下面五條對應五個工具，挑最像你的那一條先做就好。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "完全沒寫過程式，想先看到成果：先裝 Cursor，用免費的 Hobby 方案，把需求用中文講清楚讓它去做。",
+            "已經在用 Visual Studio Code，只想讓它幫忙補下一行：開 GitHub Copilot 的 Free 方案，每月 2,000 次補全足夠你試出習不習慣。",
+            "已經會開終端機，想零成本試試代理：裝 Gemini CLI，用 Google 帳號登入，每天 1,000 次請求夠你做完一個小專案。",
+            "已經在付 ChatGPT：直接裝 Codex CLI，不必多開一個訂閱；想把任務丟到雲端跑，就用 ChatGPT 裡的 Codex cloud。",
+            "已經在付 Claude Pro 或 Max，或工作上需要代理自己把一件事做完：裝 Claude Code。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有哪一個是絕對最好的選擇。第一次挑的原則是把失敗成本壓到最低：用你已經有的帳號、挑免費或已經在付的方案、拿一個壞掉也沒關係的專案。用兩個星期之後，你會清楚自己卡在哪裡，那時候再換一個或多加一個都不遲。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-coding-tools-overview-2026/diagram-1.svg",
+          "alt": "決策樹：從會不會寫程式、想在哪裡工作兩個問題，分到 Cursor、GitHub Copilot、Gemini CLI、Codex CLI、Claude Code 五個工具",
+          "width": 1600,
+          "height": 900,
+          "caption": "從最上面的問題往下走，每一層選一個答案，最底下那一排就是建議先裝的工具與它的入門條件。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式代理實測比較：同一個需求三個工具怎麼做",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-agents-compared"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude Code 進階設定與系統需求（Anthropic 官方文件）",
+          "url": "https://code.claude.com/docs/en/setup",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 方案與價格（Anthropic 官網）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code 權限模式（Anthropic 官方文件）",
+          "url": "https://code.claude.com/docs/en/permission-modes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code 網頁版（Anthropic 官方文件）",
+          "url": "https://code.claude.com/docs/en/claude-code-on-the-web",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 支援的國家與地區（官網）",
+          "url": "https://www.anthropic.com/supported-countries",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI（OpenAI 官方文件）",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ChatGPT 與 Codex 方案價格（OpenAI 官方文件）",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex 的核准機制與沙箱（OpenAI 官方文件）",
+          "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex cloud（OpenAI 官方文件）",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ChatGPT 支援的國家與地區（OpenAI 說明中心）",
+          "url": "https://help.openai.com/en/articles/7947663-chatgpt-supported-countries",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 專案說明與免費額度（Google 官方 GitHub）",
+          "url": "https://github.com/google-gemini/gemini-cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 安裝與系統需求（官方文件）",
+          "url": "https://geminicli.com/docs/get-started/installation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor 方案與價格（官網）",
+          "url": "https://cursor.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "下載與安裝 Cursor（官方文件）",
+          "url": "https://cursor.com/help/getting-started/install",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "從 VS Code 移轉到 Cursor（官方文件）",
+          "url": "https://cursor.com/help/getting-started/migrate-vscode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor Cloud Agents（官方文件）",
+          "url": "https://cursor.com/docs/cloud-agent",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Copilot 方案與價格（GitHub 官方文件）",
+          "url": "https://docs.github.com/en/copilot/get-started/plans",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Copilot 快速入門與支援環境（GitHub 官方文件）",
+          "url": "https://docs.github.com/en/copilot/get-started/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Copilot 雲端代理（GitHub 官方文件）",
+          "url": "https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Visual Studio Code 的 Copilot 設定參考（官方文件）",
+          "url": "https://code.visualstudio.com/docs/copilot/reference/copilot-settings",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
