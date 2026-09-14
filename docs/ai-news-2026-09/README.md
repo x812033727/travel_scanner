@@ -30,6 +30,8 @@ PR #473 合併且合併 SHA 的 CI 全綠後，依 deploy_release.py 的 prepare
 
 其後主分支合併 Claude 教學 PR #474（ef6bcfd1），已同步並核對僅有其他內容包、圖片與文件變更。部署工具亦列明這個確切整合基線；匯入仍限本批十個 slug，不會順帶刊登或更新 #474 的其他文章。正式機若先由其他任務更新，會重新確認實際基線再部署。
 
+再同步已合併的 Claude Code 教學中心 PR #485（35a2d258）。它增加系列 API 與 rich_paragraph／code 的可選渲染支援，但沒有資料庫遷移、compose 或必要密鑰變更，既有段落格式仍相容。本批新聞不使用新增區塊或系列 API，也不匯入該系列文章；已在這個版本重驗五十份新聞的匯入、發布與公開讀取。
+
 部署後使用既有 app.cli guides-import，**逐一列出 manifest 的十個 --slug，並明列五個 --locale**。先核對 dry-run 僅包含十篇、五十個新翻譯，再以既有管理員與 --publish 刊登。核對五十筆發布結果，重跑應全部 unchanged；既有文章、翻譯、主題、修訂紀錄、站點頁面與供應商設定的指紋必須保持相同。
 
 node docs/ai-news-2026-09/verify_public.mjs 使用未登入的 Chromium，在桌面與手機檢查五十份完整正文、圖片、表格、提醒、來源、內鏈、canonical、Open Graph、JSON-LD、五語 hreflang 與 x-default、五個生活列表及五十筆 sitemap 網址。正式結果另記於 public-verification.json，本地截圖在忽略的 browser/。
