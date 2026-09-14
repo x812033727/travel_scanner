@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">自訂指令與記憶插圖 / Custom instructions and memory illustration</title>
+  <desc id="desc">米色底上，左邊是一個深綠色的大對話泡泡，泡泡裡有三條淺綠色的橫線代表文字，泡泡左下有一個尖角。泡泡右下角貼著一張微微傾斜的橘色便條紙，紙上有三條橘色短線，頂端有一段膠帶，代表你親手寫的自訂指令。泡泡右上方浮著一個藍色的大腦形狀，由圓弧組成、中間有一條分隔線與幾道彎曲的紋路，代表 ChatGPT 自己記下的記憶；一條淺灰的虛線把泡泡與大腦連在一起。底部一行字：記住你的偏好。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft background blobs -->
+  <circle cx="1290" cy="260" r="250" fill="#E6F0F7"/>
+  <circle cx="420" cy="420" r="300" fill="#E3F0EF"/>
+
+  <!-- speech bubble -->
+  <path d="M 300 660 L 250 760 L 420 660 Z" fill="#0D6B68"/>
+  <rect x="180" y="170" width="800" height="490" rx="64" fill="#0D6B68"/>
+  <rect x="270" y="280" width="540" height="48" rx="24" fill="#E3F0EF"/>
+  <rect x="270" y="372" width="400" height="48" rx="24" fill="#E3F0EF"/>
+  <rect x="270" y="464" width="470" height="48" rx="24" fill="#E3F0EF" opacity="0.7"/>
+
+  <!-- dashed link from bubble to brain -->
+  <path d="M 990 330 C 1040 330 1060 300 1110 290" stroke="#5C6B6B" stroke-width="8" stroke-dasharray="18 16" fill="none" stroke-linecap="round"/>
+
+  <!-- brain: outline pass then fill pass -->
+  <g stroke="#2F6F9F" stroke-width="16" fill="#2F6F9F">
+    <circle cx="1170" cy="245" r="105"/>
+    <circle cx="1235" cy="165" r="90"/>
+    <circle cx="1315" cy="170" r="88"/>
+    <circle cx="1380" cy="240" r="100"/>
+    <circle cx="1320" cy="320" r="88"/>
+    <circle cx="1225" cy="330" r="92"/>
+  </g>
+  <g fill="#E6F0F7">
+    <circle cx="1170" cy="245" r="105"/>
+    <circle cx="1235" cy="165" r="90"/>
+    <circle cx="1315" cy="170" r="88"/>
+    <circle cx="1380" cy="240" r="100"/>
+    <circle cx="1320" cy="320" r="88"/>
+    <circle cx="1225" cy="330" r="92"/>
+  </g>
+  <g stroke="#2F6F9F" stroke-width="10" fill="none" stroke-linecap="round">
+    <path d="M 1275 90 C 1250 180 1290 260 1268 410"/>
+    <path d="M 1130 210 C 1160 190 1190 230 1215 200"/>
+    <path d="M 1150 300 C 1185 280 1205 320 1240 300"/>
+    <path d="M 1300 220 C 1330 200 1350 250 1400 225"/>
+    <path d="M 1300 330 C 1330 310 1355 350 1390 320"/>
+    <path d="M 1190 370 C 1215 355 1235 385 1255 365"/>
+  </g>
+  <rect x="1248" y="410" width="44" height="52" rx="14" fill="#2F6F9F"/>
+
+  <!-- sticky note stuck to the bubble -->
+  <g transform="rotate(-8 1010 600)">
+    <rect x="860" y="450" width="300" height="300" rx="10" fill="#FCEFE4" stroke="#D97A2B" stroke-width="10"/>
+    <rect x="950" y="428" width="120" height="44" rx="8" fill="#D97A2B" opacity="0.75"/>
+    <rect x="900" y="530" width="210" height="18" rx="9" fill="#D97A2B"/>
+    <rect x="900" y="586" width="160" height="18" rx="9" fill="#D97A2B"/>
+    <rect x="900" y="642" width="190" height="18" rx="9" fill="#D97A2B"/>
+  </g>
+
+  <text x="800" y="840" font-size="56" font-weight="700" fill="#102A2B" text-anchor="middle">記住你的偏好</text>
+</svg>

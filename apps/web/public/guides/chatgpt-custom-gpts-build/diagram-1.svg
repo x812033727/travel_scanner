@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">自製 GPT 編輯器的欄位與建立到發布的流程 / Custom GPT editor fields and the path from draft to publish</title>
+  <desc id="desc">圖分三區。左邊是 GPT 編輯器 Configure 分頁由上到下的八個欄位與每欄該放什麼：名稱出現在搜尋結果與對話上方；說明是一句話講給誰用、能回答什麼；指令寫角色、範圍、拒答規則與格式，是核心；對話起始句放使用者最常問的幾句範例；知識放參考資料，最多 20 個檔案、每個 512 MB；建議模型是開新對話時預設的模型；能力開關有網頁搜尋、產圖、Canvas、程式與資料分析、App；動作連外部 API，要描述檔，與 App 二選一。右上是 Preview 預覽窗：自動存草稿、可從版本紀錄還原；跳出角色就縮短指令、刪衝突規則、寫成遇到 X 就做 Y、加例子；亂編就確認資訊在檔案裡、改成文字檔、寫檔案沒有就說沒有；一次只改一小處再測。右下是 2026 年 9 月現況：Free、Go、Plus、Pro 只能使用與編輯既有 GPT，不能建新的；Business、Enterprise、Edu 工作區依權限可建立、分享、發布；OpenAI 預告自製 GPT 退場改用 Plugins，Enterprise 2026 年 12 月 11 日退場、遷移工具 2026 年 9 月 17 日起；個人帳號改用專案。下方是 1 到 6 的流程：開編輯器（側欄 Explore GPTs 再按 Create，只能在網頁版）、填欄位、上傳知識（個資不要放）、預覽測試、選分享層級（邀請、工作區、有連結的人、GPT Store）、Save 發布後改動先存草稿、Update 才上線。註記：個人帳號的分享選項是灰的；公開到 GPT Store 要完成 Builder profile，有 Actions 的要隱私權政策網址；依 OpenAI help center 2026 年 9 月 13 日查證，以官網為準。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">自製 GPT 編輯器的欄位與建立到發布的流程（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Custom GPT editor fields and the path from draft to publish</text>
+
+  <!-- left: editor fields -->
+  <rect x="48" y="110" width="760" height="440" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="76" y="146" font-size="20" font-weight="700" fill="#0B4F4D">Configure 分頁：由上到下八個欄位　Editor fields</text>
+
+  <rect x="76" y="166" width="190" height="34" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="2"/>
+  <text x="171" y="190" font-size="16" font-weight="700" fill="#0B4F4D" text-anchor="middle">名稱 Name</text>
+  <text x="286" y="190" font-size="16" fill="#102A2B">出現在搜尋結果與對話上方</text>
+
+  <rect x="76" y="210" width="190" height="34" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="2"/>
+  <text x="171" y="234" font-size="16" font-weight="700" fill="#0B4F4D" text-anchor="middle">說明 Description</text>
+  <text x="286" y="234" font-size="16" fill="#102A2B">一句話：給誰用、能回答什麼</text>
+
+  <rect x="76" y="254" width="190" height="34" rx="10" fill="#0D6B68" stroke="#0D6B68" stroke-width="2"/>
+  <text x="171" y="278" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">指令 Instructions</text>
+  <text x="286" y="278" font-size="16" fill="#102A2B">角色、範圍、拒答規則、格式（核心，見正文範例）</text>
+
+  <rect x="76" y="298" width="190" height="34" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="2"/>
+  <text x="171" y="322" font-size="16" font-weight="700" fill="#0B4F4D" text-anchor="middle">對話起始句</text>
+  <text x="286" y="322" font-size="16" fill="#102A2B">使用者最常問的幾句範例提問</text>
+
+  <rect x="76" y="342" width="190" height="34" rx="10" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="2"/>
+  <text x="171" y="366" font-size="16" font-weight="700" fill="#1F4E73" text-anchor="middle">知識 Knowledge</text>
+  <text x="286" y="366" font-size="16" fill="#102A2B">參考資料；最多 20 個檔案、每個 512 MB</text>
+
+  <rect x="76" y="386" width="190" height="34" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="2"/>
+  <text x="171" y="410" font-size="16" font-weight="700" fill="#0B4F4D" text-anchor="middle">建議模型</text>
+  <text x="286" y="410" font-size="16" fill="#102A2B">使用者開新對話時預設的模型</text>
+
+  <rect x="76" y="430" width="190" height="34" rx="10" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="2"/>
+  <text x="171" y="454" font-size="16" font-weight="700" fill="#1F5A40" text-anchor="middle">能力 Capabilities</text>
+  <text x="286" y="454" font-size="16" fill="#102A2B">網頁搜尋、產圖、Canvas、程式與資料分析、App</text>
+
+  <rect x="76" y="474" width="190" height="34" rx="10" fill="#FCEFE4" stroke="#D97A2B" stroke-width="2"/>
+  <text x="171" y="498" font-size="16" font-weight="700" fill="#8A4A16" text-anchor="middle">動作 Actions</text>
+  <text x="286" y="498" font-size="16" fill="#102A2B">連外部 API，要描述檔；與 App 二選一，新手先不碰</text>
+
+  <!-- right top: preview -->
+  <rect x="840" y="110" width="712" height="210" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="868" y="146" font-size="20" font-weight="700" fill="#1F4E73">Preview 預覽窗：邊改邊測　Test before you publish</text>
+  <text x="868" y="182" font-size="16" fill="#102A2B">・修改自動存成草稿，改壞了從版本紀錄還原</text>
+  <text x="868" y="212" font-size="16" fill="#102A2B">・跳出角色 → 縮短指令、刪衝突規則、寫「遇到 X 就做 Y」、加例子</text>
+  <text x="868" y="242" font-size="16" fill="#102A2B">・亂編 → 確認資訊在檔案裡、改成文字檔、寫「檔案沒有就說沒有」</text>
+  <text x="868" y="272" font-size="16" fill="#B8442D">・一次只改一小處再測，才知道是哪一句起作用</text>
+  <text x="868" y="302" font-size="15" fill="#5C6B6B">建立者看不到使用者的對話，知識檔案裡別放個資</text>
+
+  <!-- right bottom: status -->
+  <rect x="840" y="340" width="712" height="210" rx="14" fill="#FCEFE4" stroke="#D97A2B" stroke-width="4"/>
+  <text x="868" y="376" font-size="20" font-weight="700" fill="#8A4A16">2026 年 9 月現況：誰能建　Who can build today</text>
+  <text x="868" y="412" font-size="16" fill="#102A2B">・Free、Go、Plus、Pro：只能使用與編輯既有 GPT，不能建新的</text>
+  <text x="868" y="442" font-size="16" fill="#102A2B">・Business、Enterprise、Edu 工作區：依權限可建立、分享、發布</text>
+  <text x="868" y="472" font-size="16" fill="#B8442D">・OpenAI 預告自製 GPT 退場改用 Plugins：Enterprise 2026 年 12 月 11 日</text>
+  <text x="868" y="502" font-size="16" fill="#102A2B">・遷移工具 2026 年 9 月 17 日起；其他方案的日期以官網為準</text>
+  <text x="868" y="532" font-size="16" fill="#102A2B">・個人帳號的替代做法：專案（專案指令＋檔案），八九成一樣</text>
+
+  <!-- bottom: flow -->
+  <text x="48" y="598" font-size="20" font-weight="700" fill="#102A2B">建立到發布的順序　From draft to publish</text>
+
+  <rect x="48" y="620" width="220" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="80" cy="652" r="20" fill="#0D6B68"/>
+  <text x="80" y="659" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="110" y="659" font-size="18" font-weight="700" fill="#0B4F4D">開編輯器</text>
+  <text x="68" y="696" font-size="16" fill="#102A2B">側欄 Explore GPTs</text>
+  <text x="68" y="722" font-size="16" fill="#102A2B">→ Create</text>
+  <text x="68" y="748" font-size="16" fill="#102A2B">只能在網頁版</text>
+  <path d="M 272 695 L 298 695" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="304" y="620" width="220" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="336" cy="652" r="20" fill="#2F6F9F"/>
+  <text x="336" y="659" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="366" y="659" font-size="18" font-weight="700" fill="#1F4E73">填欄位</text>
+  <text x="324" y="696" font-size="16" fill="#102A2B">Configure 分頁</text>
+  <text x="324" y="722" font-size="16" fill="#102A2B">名稱、說明、指令</text>
+  <text x="324" y="748" font-size="16" fill="#102A2B">起始句、模型、能力</text>
+  <path d="M 528 695 L 554 695" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="560" y="620" width="220" height="150" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <circle cx="592" cy="652" r="20" fill="#102A2B"/>
+  <text x="592" y="659" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="622" y="659" font-size="18" font-weight="700" fill="#102A2B">上傳知識</text>
+  <text x="580" y="696" font-size="16" fill="#102A2B">價格表、規則、</text>
+  <text x="580" y="722" font-size="16" fill="#102A2B">交通說明</text>
+  <text x="580" y="748" font-size="16" fill="#B8442D">個資與名單不要放</text>
+  <path d="M 784 695 L 810 695" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="816" y="620" width="220" height="150" rx="14" fill="#FCEFE4" stroke="#D97A2B" stroke-width="4"/>
+  <circle cx="848" cy="652" r="20" fill="#D97A2B"/>
+  <text x="848" y="659" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="878" y="659" font-size="18" font-weight="700" fill="#8A4A16">預覽測試</text>
+  <text x="836" y="696" font-size="16" fill="#102A2B">正常問題、範圍外</text>
+  <text x="836" y="722" font-size="16" fill="#102A2B">與檔案沒有的</text>
+  <text x="836" y="748" font-size="16" fill="#102A2B">各問一次</text>
+  <path d="M 1040 695 L 1066 695" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1072" y="620" width="220" height="150" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <circle cx="1104" cy="652" r="20" fill="#2E7D5B"/>
+  <text x="1104" y="659" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+  <text x="1134" y="659" font-size="18" font-weight="700" fill="#1F5A40">選分享層級</text>
+  <text x="1092" y="696" font-size="16" fill="#102A2B">邀請、工作區、</text>
+  <text x="1092" y="722" font-size="16" fill="#102A2B">有連結的人、</text>
+  <text x="1092" y="748" font-size="16" fill="#102A2B">GPT Store</text>
+  <path d="M 1296 695 L 1322 695" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1328" y="620" width="220" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="1360" cy="652" r="20" fill="#0D6B68"/>
+  <text x="1360" y="659" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+  <text x="1390" y="659" font-size="18" font-weight="700" fill="#0B4F4D">Save／Update</text>
+  <text x="1348" y="696" font-size="16" fill="#102A2B">Save 發布；之後</text>
+  <text x="1348" y="722" font-size="16" fill="#102A2B">改動先存草稿，</text>
+  <text x="1348" y="748" font-size="16" fill="#102A2B">按 Update 才上線</text>
+
+  <text x="48" y="812" font-size="15" fill="#5C6B6B">個人帳號的分享選項是灰的；公開到 GPT Store 要完成 Builder profile，有 Actions 的 GPT 要隱私權政策網址。</text>
+  <text x="48" y="840" font-size="15" fill="#5C6B6B">方案權限、上限與退場日期依 OpenAI help center 2026 年 9 月 13 日查證，之後可能變動，以官網為準。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">先貼草稿，再逐段改 / Paste your draft, then edit it piece by piece</title>
+  <desc id="desc">米色底上有兩個並排的白色視窗。左邊的視窗有藍色邊框，裡面是三個對話泡泡：兩個靠左的淺藍泡泡代表使用者的指令，一個靠右的淺青泡泡代表 AI 的回覆。右邊的視窗有深青色邊框，裡面是一頁文字，用淺灰色的橫條表示段落，其中一段被反白成淺青色並加上深青色外框，段落旁邊有一個深青色的游標。兩個視窗之間有一條帶箭頭的線，表示左邊的指令改右邊的文件。周圍散布幾個橘色、藍色與綠色的小圓點。下方一行字：先貼草稿，再逐段改。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft background shapes -->
+  <circle cx="200" cy="160" r="140" fill="#E6F0F7"/>
+  <circle cx="1420" cy="140" r="90" fill="#E3F0EF"/>
+  <circle cx="1480" cy="760" r="110" fill="#E6F2EC"/>
+
+  <!-- left window: chat -->
+  <rect x="150" y="150" width="520" height="560" rx="36" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="12"/>
+  <rect x="150" y="150" width="520" height="70" rx="36" fill="#E6F0F7"/>
+  <rect x="150" y="190" width="520" height="30" fill="#E6F0F7"/>
+  <circle cx="200" cy="185" r="12" fill="#2F6F9F"/>
+  <circle cx="240" cy="185" r="12" fill="#2F6F9F" opacity="0.5"/>
+  <circle cx="280" cy="185" r="12" fill="#2F6F9F" opacity="0.25"/>
+  <!-- user bubble 1 -->
+  <rect x="200" y="260" width="330" height="72" rx="24" fill="#E6F0F7"/>
+  <rect x="228" y="284" width="270" height="12" rx="6" fill="#2F6F9F" opacity="0.5"/>
+  <rect x="228" y="306" width="180" height="12" rx="6" fill="#2F6F9F" opacity="0.5"/>
+  <!-- assistant bubble -->
+  <rect x="290" y="362" width="330" height="72" rx="24" fill="#E3F0EF"/>
+  <rect x="318" y="386" width="270" height="12" rx="6" fill="#0D6B68" opacity="0.5"/>
+  <rect x="318" y="408" width="200" height="12" rx="6" fill="#0D6B68" opacity="0.5"/>
+  <!-- user bubble 2 -->
+  <rect x="200" y="464" width="330" height="72" rx="24" fill="#E6F0F7"/>
+  <rect x="228" y="488" width="240" height="12" rx="6" fill="#2F6F9F" opacity="0.5"/>
+  <rect x="228" y="510" width="120" height="12" rx="6" fill="#2F6F9F" opacity="0.5"/>
+  <!-- composer -->
+  <rect x="200" y="600" width="420" height="60" rx="30" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <rect x="232" y="624" width="200" height="12" rx="6" fill="#2F6F9F" opacity="0.35"/>
+  <circle cx="580" cy="630" r="18" fill="#2F6F9F"/>
+
+  <!-- arrow from chat to document -->
+  <path d="M 690 430 L 780 430" stroke="#D97A2B" stroke-width="12" stroke-linecap="round"/>
+  <polygon points="770,400 830,430 770,460" fill="#D97A2B"/>
+
+  <!-- right window: document -->
+  <rect x="850" y="110" width="620" height="640" rx="36" fill="#FFFFFF" stroke="#0D6B68" stroke-width="12"/>
+  <rect x="850" y="110" width="620" height="70" rx="36" fill="#E3F0EF"/>
+  <rect x="850" y="150" width="620" height="30" fill="#E3F0EF"/>
+  <rect x="900" y="134" width="120" height="22" rx="11" fill="#0D6B68" opacity="0.6"/>
+  <rect x="1040" y="134" width="80" height="22" rx="11" fill="#0D6B68" opacity="0.35"/>
+  <rect x="1140" y="134" width="80" height="22" rx="11" fill="#0D6B68" opacity="0.35"/>
+  <!-- paragraph 1 -->
+  <rect x="910" y="230" width="500" height="14" rx="7" fill="#CFD6D6"/>
+  <rect x="910" y="262" width="420" height="14" rx="7" fill="#CFD6D6"/>
+  <rect x="910" y="294" width="470" height="14" rx="7" fill="#CFD6D6"/>
+  <!-- highlighted paragraph -->
+  <rect x="892" y="340" width="536" height="150" rx="20" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+  <rect x="920" y="372" width="470" height="14" rx="7" fill="#0D6B68" opacity="0.55"/>
+  <rect x="920" y="408" width="380" height="14" rx="7" fill="#0D6B68" opacity="0.55"/>
+  <rect x="920" y="444" width="430" height="14" rx="7" fill="#0D6B68" opacity="0.55"/>
+  <rect x="1364" y="436" width="10" height="34" rx="3" fill="#0D6B68"/>
+  <!-- paragraph 3 -->
+  <rect x="910" y="536" width="480" height="14" rx="7" fill="#CFD6D6"/>
+  <rect x="910" y="568" width="360" height="14" rx="7" fill="#CFD6D6"/>
+  <rect x="910" y="600" width="440" height="14" rx="7" fill="#CFD6D6"/>
+  <rect x="910" y="632" width="260" height="14" rx="7" fill="#CFD6D6"/>
+  <!-- done badge -->
+  <circle cx="1470" cy="720" r="52" fill="#2E7D5B"/>
+  <path d="M 1444 720 L 1462 738 L 1498 700" stroke="#FFFFFF" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- small accents -->
+  <circle cx="110" cy="640" r="18" fill="#D97A2B"/>
+  <circle cx="1540" cy="420" r="14" fill="#2F6F9F"/>
+  <circle cx="760" cy="120" r="12" fill="#2E7D5B"/>
+  <circle cx="1300" cy="820" r="10" fill="#D97A2B"/>
+
+  <!-- one line of text -->
+  <text x="800" y="830" font-size="48" font-weight="700" fill="#102A2B" text-anchor="middle">先貼草稿，再逐段改</text>
+</svg>

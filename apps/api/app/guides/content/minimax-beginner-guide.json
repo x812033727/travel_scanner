@@ -1,0 +1,334 @@
+{
+  "slug": "minimax-beginner-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+      "description": "MiniMax 是上海的 AI 公司，海螺 AI（Hailuo）、MiniMax Audio 語音、Music 3.0 音樂、MiniMax Agent 對話助理與開源的 M 系列模型都是它的產品。這篇用 2026 年 9 月查證的官網與香港交易所資料，說明五條產品線各做什麼、台灣使用者走哪個國際版網址、費用怎麼算、隱私政策把資料放在哪裡，並示範用海螺做一支 5 秒影片，附費用對照表。",
+      "hero": {
+        "src": "/guides/minimax-beginner-guide/hero.jpg",
+        "alt": "一個播放鍵、一道聲波與一個對話泡泡從同一個圓心向外長出來的插圖，代表 MiniMax 的影片、語音與對話三種產品",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MiniMax 是一家總部在上海、2026 年 1 月在香港交易所掛牌的 AI 公司，你在短影音上看到的「海螺 AI 做的影片」就是它的產品之一；台灣使用者打開國際版網址，用 Google 或 Apple 帳號登入就能免費試做幾支影片、試聽幾段語音，不需要中國手機號碼，但要先知道資料會存到哪裡、哪些東西不該上傳。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇先用一節講清楚 MiniMax 是誰，再把五條產品線各用一段說明：海螺 AI 的影片與圖片、MiniMax Audio 的語音、Music 3.0 的音樂、MiniMax Agent 的對話與代理，以及開源的 M 系列模型與 API 平台。接著整理台灣的可用性、付費方式、隱私政策裡寫了什麼，最後帶你用海螺做一支 5 秒影片，並附一張產品線與費用的對照表。所有方案名稱、價格與模型都在 2026 年 9 月 13 日查自 MiniMax 官網、API 文件與香港交易所的公告。"
+        },
+        {
+          "type": "heading",
+          "text": "MiniMax 是誰：上海公司，2026 年在香港上市",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MiniMax 官網的公司介紹寫它「成立於 2022 年初」，使命是「Intelligence with Everyone」，自己訓練文字、影片、語音、音樂的基礎模型，再做成一般人用的產品和給開發者的 API。香港交易所的招股書寫得更具體：總部與中國主要營業地址在上海徐匯區桂青路的新研大廈，營運主體與研發都在中國大陸，另外在新加坡設有負責海外產品營運的公司。2026 年 1 月，MiniMax Group Inc. 以股票代號 0100 在香港掛牌。"
+        },
+        {
+          "type": "paragraph",
+          "text": "規模方面，官網與投資人關係頁寫的數字是累計服務超過 3 億個人使用者、遍及 230 多個國家與地區，以及 100 多個國家的 200 萬家企業與開發者。台灣讀者比較熟的名字通常是海螺 AI（Hailuo），因為它做的影片在短影音平台上很常見；另一個在海外常見的產品是角色聊天 App Talkie。這兩個牌子和 MiniMax 是同一家公司，只是產品線不同。"
+        },
+        {
+          "type": "heading",
+          "text": "五條產品線各做什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "海螺 AI（Hailuo AI）是影片與圖片生成產品，國際版網址是 hailuoai.video，也有 iOS 與 Android App。2026 年 7 月 31 日推出的 MiniMax H3 是目前的主力模型：文字、圖片、影片、聲音都可以一起當參考素材，一次生成 4 到 15 秒、24 fps 的影片，預設短邊 768 像素，可以再放大到 2K，而且影片自帶立體聲的配音與環境音，不必另外配音。舊一代的 Hailuo 2.3 仍留在 API 上，1080p 只能做 6 秒、768p 最長 10 秒。H3 的基礎模型權重已經放上 Hugging Face，採 MiniMax H3 Community License，有顯示卡的人可以自己架。同一家還有一個叫 MiniMax Design 的桌面創作平台，官網定位是商業內容創作的代理平台；一般人先從海螺的網頁版開始就夠。"
+        },
+        {
+          "type": "paragraph",
+          "text": "語音產品叫 MiniMax Audio，網址在 minimax.io 的 audio 分頁。2026 年 1 月 23 日發表的 Speech 2.8 是現行模型，官方文章說用 10 秒的聲音樣本就能複製一個人的音色與語速，還加入「嗯」「呃」這類口語標記讓合成語音更像真人；文字轉語音頁面的文案寫有 300 多種聲音、32 種語言。網頁版可以直接輸入文字試聽，配音、有聲書、影片旁白是它主打的用途。開發者則走 API，模型名是 speech-2.8-hd 與 speech-2.8-turbo，按字元計費。"
+        },
+        {
+          "type": "paragraph",
+          "text": "音樂生成是第三條線。2026 年 8 月 13 日發表的 MiniMax Music 3.0 可以從一段描述加上歌詞，一次生成最長 5 分鐘、含人聲與編曲的完整歌曲，官方示範有英文與中文歌；官方文章說模型權重同樣開放，放在 Hugging Face 的 MiniMax-Music3。一般使用者的入口在 MiniMax Audio 的音樂功能，開發者用 API 的 music-3.0 模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對話助理在國際版叫 MiniMax Agent，網址是 agent.minimax.io，2025 年 10 月跟 M2 模型一起推出，有處理日常問答與摘要的 Lightning 模式，以及跑長任務的 Pro 模式。2026 年 5 月 27 日的更新加入 Agent Team，讓多個代理分工做研究、寫程式、排版並互相檢查，官方文章也把升級後的 Agent 改名為 Mavis，意思是「MiniMax as a Jarvis」。桌面版叫 MiniMax Code，有 macOS 與 Windows 版，另有命令列工具；Android 手機 App 在 Google Play 的名稱是 MiniMax。官方把 Agent、CLI 與 API 的訂閱合併成一個，點數共用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第五條是開源模型與 API 平台。M 系列是 MiniMax 的大型語言模型：M2 在 2025 年 10 月 27 日開源，M2.5 採 Modified-MIT 授權，M2.7 約 229B 參數，2026 年推出的 M3 約 428B 總參數、23B 啟用參數，上下文長度 1M token，能讀圖片與影片，Hugging Face 上的授權標示為 minimax-community。權重都放在 Hugging Face 的 MiniMaxAI 組織與 GitHub 的 MiniMax-AI 組織。不想自己架的開發者用 platform.minimax.io 的 API，文字、影片、語音、音樂、圖片都在同一個平台。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/minimax-beginner-guide/diagram-1.svg",
+          "alt": "MiniMax 產品家族結構圖：最上層是 MiniMax 公司（上海、2022 年初成立、2026 年 1 月香港上市），往下分成五條產品線：海螺 AI 影片與圖片（MiniMax H3，4 到 15 秒、2K，入口 hailuoai.video 與 App）、語音 MiniMax Audio（Speech 2.8，10 秒樣本複製聲音、32 種語言，入口 minimax.io/audio）",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下看：一家公司、五條產品線、各自的入口；台灣使用者走右側標示的國際版網址即可。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "台灣能不能用：網址、登入方式、付費",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "可以用，而且不需要中國手機號碼。MiniMax 把中國版與國際版分開：國際版是 minimax.io、hailuoai.video、agent.minimax.io、platform.minimax.io，登入頁提供 Google、Apple 帳號或 Email 驗證碼；中國版是 minimax.cn、hailuoai.com 與 agent.minimax.cn，登入頁以手機號碼驗證為主，內容審查也依中國法規。台灣使用者一律走國際版，兩邊帳號、點數與訂閱互不相通。App 的部分，海螺官網連到 App Store 與 Google Play 的版本，MiniMax Agent 有 Google Play 版與桌面版；台灣的商店能不能搜到，以當時的上架狀態為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "海螺 AI：註冊就有一批免費點數，網頁介面另有每日領取的獎勵點數；免費做出來的影片有浮水印、解析度受限。訂閱方案以點數計，分月繳與年繳，金額與各方案的點數以官網訂閱頁為準，以美元計價，網頁上刷卡或在 App 內購買。",
+            "MiniMax Audio：網頁版可免費試聽；API 端的語音訂閱從每月 5 美元的 Starter（10 萬 audio points）起，按量計費則是 speech-2.8-hd 每百萬字元 100 美元、speech-2.8-turbo 60 美元，快速聲音複製每個聲音 1.5 美元。",
+            "MiniMax Agent 與 MiniMax Code：官方更新紀錄提到每日簽到可拿點數，免費能做多少以當下介面為準；付費是 Token Plan，Plus 每月 22 美元、Max 55 美元、Ultra 132 美元，同一個訂閱涵蓋 Agent、桌面版、命令列與 API，模型含 M3、M2.7、圖片與語音。",
+            "API 平台：按量付費，M3 每百萬 token 輸入 0.30 美元、輸出 1.20 美元（超過 512k 上下文加倍）；H3 影片 768p 每秒 0.08 美元、2K 每秒 0.13 美元。儲值支援線上付款與銀行轉帳，官方 FAQ 有寫。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "價格都是美元，官網沒有台灣定價；MiniMax 的價目表變動頻繁，M3 目前的價格是官網標示「永久 5 折」後的數字，下單前再看一次價目頁。如果你只是想知道這家公司跟 DeepSeek 有什麼不一樣：兩家都是中國的模型公司、都開源權重，但 DeepSeek 以文字模型為主，MiniMax 的重心在影片、語音與音樂這些多模態產品。"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "資料去哪裡：隱私政策與內容審查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "國際版的營運主體不是上海公司本身，而是新加坡的 Nanonoble Pte. Ltd.，登記地址在新加坡 Beach Road。海螺 AI 的隱私政策（2025 年 12 月 9 日更新）寫明「原則上不會把個人資料轉移到新加坡以外」，若需轉移給關係企業或第三方，會採取相當於新加坡個資法 PDPA 的保護；API 平台的隱私政策（2026 年 3 月 30 日更新）則寫資料「存放在美國的資料中心」，並依 GDPR 等法規處理。兩份政策都寫服務不提供給 16 歲以下的人。至於中國版，適用的是中國法規，這也是建議台灣使用者只用國際版的原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "跟你上傳的東西最相關的兩條：海螺的隱私政策說，上傳含人臉的照片時，系統會暫時擷取臉部特徵來生成影片，這些資料「只用於該次任務、不儲存、不用來辨識你」，生成完成後照片與臉部資料會刪除；API 平台的政策則承諾不用你的輸入資料推斷個人特徵，也不用來做使用者畫像或投放廣告。不過兩份政策都沒有明確寫「不用你的內容訓練模型」，帳號名稱、Email、裝置資訊與使用紀錄則會保留到「達成收集目的所需的期間」。想刪除資料，兩份政策都留了信箱與帳號刪除的路徑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "內容審查一定有。海螺的服務條款列出禁止的內容類型，要求使用者在法律要求或可能誤導他人時標示內容為 AI 生成，也禁止自行移除平台加的浮水印或標記；介面上申請去除浮水印時，還有一段要你確認內容不涉及深偽的聲明。實務上，包含真人臉孔、名人、暴力或政治敏感題材的提示詞可能被拒絕生成或事後移除，這在中國背景的服務上會比美國的服務更嚴一些，先有心理準備就不會覺得莫名其妙。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "上傳自己的照片或聲音前，先想三件事",
+          "text": "一、服務條款寫你保留內容所有權，但同時授予公司一個「免權利金、永久、不可撤銷、全球」的使用授權，你的照片、聲音樣本與生成結果都在這個範圍裡。二、10 秒就能複製聲音，代表別人拿你的一段語音也做得到；自己的聲音樣本不要放在公開的作品裡，家人的聲音更不要替他們上傳。三、別人的臉與聲音需要本人同意，服務條款也要求你保證擁有必要的授權；用來開玩笑的合成影片一旦流出，責任在上傳的人身上。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "試用示範：用海螺做一支 5 秒影片",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下用電腦瀏覽器操作海螺的網頁版，介面的按鈕名稱以你看到的版本為準，功能位置大致相同。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "打開 hailuoai.video，按右上角的登入，選 Google 或 Apple 帳號；第一次登入會請你同意服務條款與隱私政策，同意前先看上一節。",
+            "進入後左側是功能選單，選影片生成；上方或側欄可以切換模型，選 MiniMax H3。想從一張圖片開始就在輸入框旁邊上傳圖片，只想用文字就直接打。",
+            "在提示詞框用中文或英文描述畫面，一句話寫清楚主體、動作、鏡頭與氣氛，例如「清晨的台北街口，一杯手沖咖啡冒著熱氣，鏡頭緩慢推近，背景有機車聲」。H3 會連聲音一起生成，所以把想聽到的聲音也寫進去。",
+            "輸入框下方的設定選長度 5 秒、比例 9:16（直式短影音）或 16:9、解析度先用 768p，這樣扣的點數最少；確認一次要扣的點數後按生成。",
+            "等待期間可以看排隊狀態，做好後點開預覽，不滿意就改提示詞重做；免費帳號下載的影片有浮水印，要拿掉浮水印或做 2K 必須付費。",
+            "做完到帳號設定看點數餘額與已上傳的素材，不需要的照片刪掉。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次做建議選一個沒有真人的題材，例如食物、風景或動物，先感受 H3 的鏡頭與聲音表現；等你確定要繼續用，再考慮上傳自己的照片。想做語音就到 MiniMax Audio 的文字轉語音頁，貼一段文字、挑一個聲音直接試聽，流程比影片更短。"
+        },
+        {
+          "type": "heading",
+          "text": "產品線與費用一覽",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "產品線",
+            "做什麼",
+            "入口",
+            "免費額度或收費方式"
+          ],
+          "rows": [
+            [
+              "海螺 AI（影片、圖片）",
+              "文字或圖片生成 4 到 15 秒、含立體聲的影片，可放大到 2K",
+              "hailuoai.video、iOS 與 Android App",
+              "註冊送免費點數、每日獎勵點數，免費版有浮水印；訂閱以點數計，金額以官網為準；API 依秒計費，H3 768p 每秒 0.08 美元、2K 每秒 0.13 美元"
+            ],
+            [
+              "語音 MiniMax Audio",
+              "文字轉語音、10 秒樣本複製聲音、配音與旁白",
+              "minimax.io 的 audio 分頁、API",
+              "網頁版可免費試聽；API 訂閱 Starter 每月 5 美元起；按量 speech-2.8-hd 每百萬字元 100 美元、turbo 60 美元"
+            ],
+            [
+              "音樂 Music 3.0",
+              "描述加歌詞生成最長 5 分鐘的完整歌曲",
+              "MiniMax Audio、API、Hugging Face 開源權重",
+              "網頁版額度以官網為準；API 依官網價目；權重可免費下載"
+            ],
+            [
+              "對話與代理 MiniMax Agent（Mavis）、MiniMax Code",
+              "問答、摘要、研究、寫程式，Agent Team 多代理分工",
+              "agent.minimax.io、macOS 與 Windows 桌面版、手機 App",
+              "每日簽到點數；Token Plan Plus 22、Max 55、Ultra 132 美元／月，與 API 共用"
+            ],
+            [
+              "開源模型與 API 平台",
+              "M3、M2.7 等權重可下載；API 提供文字、影片、語音、音樂、圖片",
+              "Hugging Face MiniMaxAI、GitHub MiniMax-AI、platform.minimax.io",
+              "權重依各模型的社群授權免費；API M3 每百萬 token 輸入 0.30、輸出 1.20 美元；儲值支援線上付款與銀行轉帳"
+            ]
+          ],
+          "caption": "MiniMax 五條產品線與收費方式，2026 年 9 月查自官網、API 文件與 Hugging Face；價格為美元，方案會變動，下單前再看一次官網。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你的需求是做短影音配圖或替影片配音，海螺與 MiniMax Audio 是這家公司最成熟、也最容易免費試到的兩條線；純粹想找一個聊天助理，MiniMax Agent 值得試，但它的強項在長任務與代理分工，日常問答用你原本習慣的工具就好。想知道哪類工作該用哪個工具，看下面這篇。"
+        },
+        {
+          "type": "link",
+          "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+        }
+      ],
+      "sources": [
+        {
+          "title": "MiniMax 官網：About（成立時間、使命、使用者與企業數）",
+          "url": "https://www.minimax.io/about",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "香港交易所披露易：MiniMax Group Inc. 招股書（總部與中國主要營業地址在上海徐匯區桂青路、營運主體、新加坡子公司）",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1231/2025123100025.pdf",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "香港交易所披露易：MiniMax Group Inc. 超額配股權獲悉數行使公告（股票代號 0100、2026 年 1 月）",
+          "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0111/2026011100015.pdf",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax 官方部落格：MiniMax H3（2026 年 7 月 31 日推出、最長 15 秒、2K、原生立體聲、開放權重）",
+          "url": "https://www.minimax.io/blog/minimax-h3",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Hugging Face：MiniMaxAI/MiniMax-H3 模型卡（4 到 15 秒、24 fps、短邊 768、Community License）",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax 官方新聞：MiniMax Speech 2.8（2026 年 1 月 23 日、10 秒樣本複製聲音、口語標記）",
+          "url": "https://www.minimax.io/news/minimax-speech-28",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax Audio：文字轉語音頁（免費試用、300 多種聲音、32 種語言）",
+          "url": "https://www.minimax.io/audio/text-to-speech",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax 官方部落格：MiniMax Music 3.0（2026 年 8 月 13 日、最長 5 分鐘、開放權重）",
+          "url": "https://www.minimax.io/blog/minimax-music-3-0-next-generation-open-weights-production-ready-versatile-music-model",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Google Play：MiniMax - Your AI Agent（Android App 名稱與開發者）",
+          "url": "https://play.google.com/store/apps/details?id=com.minimax.ai",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax 官方部落格：MiniMax Agent Team（2026 年 5 月 27 日、改名 Mavis、訂閱合併、桌面版）",
+          "url": "https://www.minimax.io/blog/minimax-agent-team-long-running-1779893953",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax 官方新聞：MiniMax M2 與 Agent（2025 年 10 月 27 日開源、Lightning 與 Pro 模式）",
+          "url": "https://www.minimax.io/news/minimax-m2",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Hugging Face：MiniMaxAI/MiniMax-M3 模型卡（約 428B 總參數、23B 啟用、1M 上下文、minimax-community 授權）",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax API 文件：模型總覽（M 系列、H3、Hailuo 2.3、speech-2.8、music-3.0 模型名稱與規格）",
+          "url": "https://platform.minimax.io/docs/guides/models-intro",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax API 文件：Pay as You Go 價目（M3、speech-2.8、聲音複製、H3 每秒價格）",
+          "url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax API 文件：Token Plan（Plus 22、Max 55、Ultra 132 美元／月）",
+          "url": "https://platform.minimax.io/docs/guides/pricing-token-plan",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax API 文件：Audio Subscription（Starter 每月 5 美元、10 萬 audio points）",
+          "url": "https://platform.minimax.io/docs/guides/pricing-speech",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax API 文件：帳號 FAQ（線上付款與銀行轉帳、帳號刪除）",
+          "url": "https://platform.minimax.io/docs/faq/about-account",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Hailuo AI 隱私政策（Nanonoble Pte. Ltd.、新加坡、臉部資料處理、16 歲、2025 年 12 月 9 日更新）",
+          "url": "https://hailuoai.video/doc/privacy-policy.html",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Hailuo AI 服務條款（禁止內容、AI 生成標示、浮水印、內容授權、新加坡法律）",
+          "url": "https://hailuoai.video/doc/terms-of-service.html",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "MiniMax API 平台隱私政策（2026 年 3 月 30 日更新、資料存放美國資料中心、不用輸入做畫像）",
+          "url": "https://platform.minimax.io/protocol/privacy-policy",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">寫作區塊的畫面與改稿五步 / Writing block layout and the five-step editing flow</title>
+  <desc id="desc">上半部畫的是 ChatGPT 寫作區塊切到全螢幕編輯畫面之後的結構。左邊是對話面板，你在這裡下指令、看它說明改了什麼，面板裡有四個泡泡：先原封不動放進區塊不要改內容、這段只保留時間地點費用、已更新第三段其他段落沒動、列出你剛剛改了哪幾處。右邊是文件面板，最上面一排是工具列，按鈕依 help center 列出的動作畫成複製、全螢幕、復原、重做、存進 Library、下載、寄 Email，以畫面為準；工具列下面是文件「秋季健行公告（800 字）」，用橫條表示段落，第三段被反白成淺青色並加外框，旁邊寫著反白的這一段才會被改、其他段落不動。下半部是改稿五步，由左到右用箭頭串起：1 貼草稿，把 800 字的公告全文放進區塊，說原封不動放進區塊不要改內容，確認和原稿一樣；2 反白一段，選取要改的那一段，只有這段會被改，其他段落不動；3 下指令，講改哪裡、怎麼改、什麼不要動，例如縮到 600 字以內，人名、日期、金額不改；4 復原、看版本，改壞了按復原，大改前先留底，兩種改法先在對話裡並列；5 匯出，複製到要發布的地方，全螢幕可以存進 Library，或下載、寄 Email。最下面兩行備註：Canvas 獨立視窗自 2026 年 5 月 28 日起不再提供給 GPT-5.5，改由寫作區塊與程式區塊接手；按鈕名稱與位置依方案、裝置與推出進度不同，以畫面為準。2026 年 9 月查證。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">寫作區塊的畫面與改稿五步（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Writing block layout and the five-step editing flow: paste, select, instruct, undo, export</text>
+
+  <!-- ===== top: screen structure ===== -->
+  <text x="48" y="122" font-size="20" font-weight="700" fill="#102A2B">畫面結構（切到全螢幕編輯畫面之後）</text>
+  <rect x="48" y="136" width="1504" height="320" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+
+  <!-- left panel: chat -->
+  <rect x="64" y="152" width="440" height="288" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="84" y="184" font-size="18" font-weight="700" fill="#1F4E73">左：對話</text>
+  <text x="168" y="184" font-size="15" fill="#5C6B6B">你在這裡下指令、看它說明改了什麼</text>
+  <rect x="84" y="204" width="400" height="40" rx="12" fill="#E6F0F7"/>
+  <text x="104" y="230" font-size="16" fill="#102A2B">先原封不動放進區塊，不要改內容</text>
+  <rect x="84" y="256" width="400" height="40" rx="12" fill="#E6F0F7"/>
+  <text x="104" y="282" font-size="16" fill="#102A2B">這段只保留時間、地點、費用</text>
+  <rect x="84" y="308" width="400" height="40" rx="12" fill="#E3F0EF"/>
+  <text x="104" y="334" font-size="16" fill="#0B4F4D">已更新第三段，其他段落沒動</text>
+  <rect x="84" y="360" width="400" height="40" rx="12" fill="#E6F0F7"/>
+  <text x="104" y="386" font-size="16" fill="#102A2B">列出你剛剛改了哪幾處</text>
+  <text x="84" y="428" font-size="15" fill="#5C6B6B">要比較兩種改法，也是在這裡叫它並列</text>
+
+  <!-- right panel: document -->
+  <rect x="528" y="152" width="1008" height="288" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <!-- toolbar -->
+  <rect x="544" y="166" width="976" height="44" rx="10" fill="#F7F1E8" stroke="#5C6B6B" stroke-width="2"/>
+  <rect x="560" y="174" width="64" height="28" rx="8" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="592" y="194" font-size="15" fill="#102A2B" text-anchor="middle">複製</text>
+  <rect x="636" y="174" width="84" height="28" rx="8" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="678" y="194" font-size="15" fill="#102A2B" text-anchor="middle">全螢幕</text>
+  <rect x="732" y="174" width="64" height="28" rx="8" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="764" y="194" font-size="15" fill="#102A2B" text-anchor="middle">復原</text>
+  <rect x="808" y="174" width="64" height="28" rx="8" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="840" y="194" font-size="15" fill="#102A2B" text-anchor="middle">重做</text>
+  <rect x="884" y="174" width="150" height="28" rx="8" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="959" y="194" font-size="15" fill="#102A2B" text-anchor="middle">存進 Library</text>
+  <rect x="1046" y="174" width="64" height="28" rx="8" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="1078" y="194" font-size="15" fill="#102A2B" text-anchor="middle">下載</text>
+  <rect x="1122" y="174" width="110" height="28" rx="8" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+  <text x="1177" y="194" font-size="15" fill="#102A2B" text-anchor="middle">寄 Email</text>
+  <text x="1504" y="194" font-size="15" fill="#5C6B6B" text-anchor="end">上：工具列（以畫面為準）</text>
+  <!-- document -->
+  <text x="560" y="240" font-size="18" font-weight="700" fill="#0B4F4D">右：文件　秋季健行公告（800 字）</text>
+  <text x="1504" y="240" font-size="15" fill="#5C6B6B" text-anchor="end">直接打字，或反白一段再下指令</text>
+  <rect x="560" y="256" width="900" height="10" rx="5" fill="#CFD6D6"/>
+  <rect x="560" y="274" width="760" height="10" rx="5" fill="#CFD6D6"/>
+  <rect x="560" y="298" width="900" height="10" rx="5" fill="#CFD6D6"/>
+  <rect x="560" y="316" width="620" height="10" rx="5" fill="#CFD6D6"/>
+  <rect x="552" y="338" width="940" height="52" rx="8" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <rect x="568" y="350" width="860" height="10" rx="5" fill="#7FB3B0"/>
+  <rect x="568" y="370" width="520" height="10" rx="5" fill="#7FB3B0"/>
+  <rect x="1100" y="364" width="6" height="22" rx="2" fill="#0D6B68"/>
+  <text x="560" y="418" font-size="16" fill="#0D6B68">反白的這一段才會被改，其他段落不動</text>
+
+  <!-- ===== bottom: five steps ===== -->
+  <text x="48" y="492" font-size="20" font-weight="700" fill="#102A2B">改稿五步</text>
+
+  <!-- step 1 -->
+  <rect x="48" y="508" width="272" height="236" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="88" cy="548" r="22" fill="#0D6B68"/>
+  <text x="88" y="556" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="122" y="556" font-size="20" font-weight="700" fill="#0B4F4D">貼草稿</text>
+  <text x="122" y="580" font-size="15" fill="#5C6B6B">Paste</text>
+  <text x="72" y="618" font-size="16" fill="#102A2B">800 字的公告全文</text>
+  <text x="72" y="646" font-size="16" fill="#102A2B">「原封不動放進區塊，</text>
+  <text x="72" y="674" font-size="16" fill="#102A2B">不要改內容」</text>
+  <text x="72" y="702" font-size="16" fill="#102A2B">確認和原稿一樣</text>
+  <path d="M 322 626 L 350 626" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 2 -->
+  <rect x="356" y="508" width="272" height="236" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="396" cy="548" r="22" fill="#2F6F9F"/>
+  <text x="396" y="556" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="430" y="556" font-size="20" font-weight="700" fill="#1F4E73">反白一段</text>
+  <text x="430" y="580" font-size="15" fill="#5C6B6B">Select</text>
+  <text x="380" y="618" font-size="16" fill="#102A2B">選取要改的那一段</text>
+  <text x="380" y="646" font-size="16" fill="#102A2B">只有這段會被改</text>
+  <text x="380" y="674" font-size="16" fill="#102A2B">其他段落不動</text>
+  <text x="380" y="702" font-size="16" fill="#102A2B">找不到入口就用文字說明</text>
+  <path d="M 630 626 L 658 626" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 3 -->
+  <rect x="664" y="508" width="272" height="236" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <circle cx="704" cy="548" r="22" fill="#102A2B"/>
+  <text x="704" y="556" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="738" y="556" font-size="20" font-weight="700" fill="#102A2B">下指令</text>
+  <text x="738" y="580" font-size="15" fill="#5C6B6B">Instruct</text>
+  <text x="688" y="618" font-size="16" fill="#102A2B">改哪裡、怎麼改、</text>
+  <text x="688" y="646" font-size="16" fill="#102A2B">什麼不要動</text>
+  <text x="688" y="674" font-size="16" fill="#102A2B">例：縮到 600 字以內</text>
+  <text x="688" y="702" font-size="16" fill="#102A2B">人名、日期、金額不改</text>
+  <path d="M 938 626 L 966 626" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 4 -->
+  <rect x="972" y="508" width="272" height="236" rx="14" fill="#FCEFE4" stroke="#D97A2B" stroke-width="4"/>
+  <circle cx="1012" cy="548" r="22" fill="#D97A2B"/>
+  <text x="1012" y="556" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="1046" y="556" font-size="20" font-weight="700" fill="#8A4A16">復原、看版本</text>
+  <text x="1046" y="580" font-size="15" fill="#5C6B6B">Undo</text>
+  <text x="996" y="618" font-size="16" fill="#102A2B">改壞了按復原</text>
+  <text x="996" y="646" font-size="16" fill="#102A2B">大改前先留底</text>
+  <text x="996" y="674" font-size="16" fill="#102A2B">兩種改法先在對話並列</text>
+  <text x="996" y="702" font-size="16" fill="#B8442D">日期與金額每次重對</text>
+  <path d="M 1246 626 L 1274 626" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 5 -->
+  <rect x="1280" y="508" width="272" height="236" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4"/>
+  <circle cx="1320" cy="548" r="22" fill="#2E7D5B"/>
+  <text x="1320" y="556" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+  <text x="1354" y="556" font-size="20" font-weight="700" fill="#1F5A40">匯出</text>
+  <text x="1354" y="580" font-size="15" fill="#5C6B6B">Export</text>
+  <text x="1304" y="618" font-size="16" fill="#102A2B">複製到要發布的地方</text>
+  <text x="1304" y="646" font-size="16" fill="#102A2B">全螢幕：存進 Library</text>
+  <text x="1304" y="674" font-size="16" fill="#102A2B">或下載、寄 Email</text>
+  <text x="1304" y="702" font-size="16" fill="#102A2B">程式區塊：唯讀連結</text>
+
+  <!-- notes -->
+  <text x="48" y="790" font-size="15" fill="#5C6B6B">Canvas 獨立視窗自 2026 年 5 月 28 日起不再提供給 GPT-5.5，改由對話裡的寫作區塊與程式區塊接手。</text>
+  <text x="48" y="818" font-size="15" fill="#5C6B6B">按鈕名稱與位置依方案、裝置與推出進度不同，以你的畫面為準；全螢幕、Library 與下載目前在網頁版。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

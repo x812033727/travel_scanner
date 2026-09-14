@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 隱私設定檢查清單：ChatGPT、Claude、Gemini 各四個開關 / AI privacy settings checklist</title>
+  <desc id="desc">檢查清單，三欄並列、每欄四列，由上到下編號 1 到 4。左欄 ChatGPT：1 關掉訓練，Settings → Data Controls → Improve the model for everyone（預設開）；2 暫時對話，新對話右上角 Temporary 按鈕，不進歷史、不用記憶，保留最多 30 天；3 記憶，Settings → Personalization → Memory，逐條刪，或 Delete and turn off memory；4 匯出與刪除，Data Controls → Export data，連結 24 小時，Account → Delete account，30 天內刪除。中欄 Claude：1 關掉訓練，Settings → Privacy → Help improve our AI models（註冊時選一次）；2 無痕對話，新對話右上角的幽靈圖示，不進歷史、不用記憶、不訓練，保留 30 天；3 記憶，Settings → Memory → Topics，逐條編輯或刪除，Pause 或 Reset；4 匯出與刪除，Privacy → Export data，連結 24 小時，允許訓練保留 5 年、不允許 30 天。右欄 Gemini：1 關掉活動記錄，Settings &amp; help → Activity → Keep Activity，預設開、自動刪除預設 18 個月、關掉仍存 72 小時；2 暫時對話，New chat 旁的 Temporary chat，限個人帳號，保留 72 小時；3 記憶，Settings &amp; help → Personal Intelligence → Memory，要刪就到活動記錄刪對話；4 匯出與刪除，takeout.google.com 勾 Gemini Apps，連結 7 天，活動記錄頁刪，人工審閱過的保留 3 年。底部兩行：關掉訓練不等於不存在伺服器，刪掉的對話 ChatGPT、Claude 30 天內移除，Claude 允許訓練保留 5 年，Gemini 關掉活動記錄仍存 72 小時、人工審閱 3 年；公司或學校帳號預設不訓練，但管理員或擁有者可以取得對話，選單名稱與位置以各家官網為準。2026 年 9 月依官網查證。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">AI 隱私設定檢查清單：三家各四個開關（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Privacy settings checklist: ChatGPT, Claude and Gemini, four switches each</text>
+
+  <!-- ===== column 1: ChatGPT (blue) ===== -->
+  <rect x="60" y="110" width="440" height="56" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="280" y="146" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">ChatGPT</text>
+
+  <rect x="60" y="186" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="102" cy="220" r="20" fill="#2F6F9F"/>
+  <text x="102" y="227" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="134" y="227" font-size="18" font-weight="700" fill="#1F4E73">關掉訓練</text>
+  <rect x="444" y="206" width="28" height="28" rx="6" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <path d="M 450 220 L 457 227 L 467 213" fill="none" stroke="#2F6F9F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="80" y="260" font-size="16" fill="#102A2B">Settings → Data Controls →</text>
+  <text x="80" y="288" font-size="16" fill="#102A2B">Improve the model for everyone（預設開）</text>
+
+  <rect x="60" y="326" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="102" cy="360" r="20" fill="#2F6F9F"/>
+  <text x="102" y="367" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="134" y="367" font-size="18" font-weight="700" fill="#1F4E73">暫時對話</text>
+  <rect x="444" y="346" width="28" height="28" rx="6" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <path d="M 450 360 L 457 367 L 467 353" fill="none" stroke="#2F6F9F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="80" y="400" font-size="16" fill="#102A2B">新對話右上角 Temporary 按鈕</text>
+  <text x="80" y="428" font-size="16" fill="#102A2B">不進歷史、不用記憶；保留最多 30 天</text>
+
+  <rect x="60" y="466" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="102" cy="500" r="20" fill="#2F6F9F"/>
+  <text x="102" y="507" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="134" y="507" font-size="18" font-weight="700" fill="#1F4E73">記憶</text>
+  <rect x="444" y="486" width="28" height="28" rx="6" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <path d="M 450 500 L 457 507 L 467 493" fill="none" stroke="#2F6F9F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="80" y="540" font-size="16" fill="#102A2B">Settings → Personalization → Memory</text>
+  <text x="80" y="568" font-size="16" fill="#102A2B">逐條刪；Delete and turn off memory</text>
+
+  <rect x="60" y="606" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="102" cy="640" r="20" fill="#2F6F9F"/>
+  <text x="102" y="647" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="134" y="647" font-size="18" font-weight="700" fill="#1F4E73">匯出與刪除</text>
+  <rect x="444" y="626" width="28" height="28" rx="6" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <path d="M 450 640 L 457 647 L 467 633" fill="none" stroke="#2F6F9F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="80" y="680" font-size="16" fill="#102A2B">Data Controls → Export data，連結 24 小時</text>
+  <text x="80" y="708" font-size="16" fill="#102A2B">Account → Delete account，30 天內刪除</text>
+
+  <!-- ===== column 2: Claude (teal) ===== -->
+  <rect x="580" y="110" width="440" height="56" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="146" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">Claude</text>
+
+  <rect x="580" y="186" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="622" cy="220" r="20" fill="#0D6B68"/>
+  <text x="622" y="227" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="654" y="227" font-size="18" font-weight="700" fill="#0B4F4D">關掉訓練</text>
+  <rect x="964" y="206" width="28" height="28" rx="6" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <path d="M 970 220 L 977 227 L 987 213" fill="none" stroke="#0D6B68" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="260" font-size="16" fill="#102A2B">Settings → Privacy →</text>
+  <text x="600" y="288" font-size="16" fill="#102A2B">Help improve our AI models（註冊時選一次）</text>
+
+  <rect x="580" y="326" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="622" cy="360" r="20" fill="#0D6B68"/>
+  <text x="622" y="367" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="654" y="367" font-size="18" font-weight="700" fill="#0B4F4D">無痕對話</text>
+  <rect x="964" y="346" width="28" height="28" rx="6" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <path d="M 970 360 L 977 367 L 987 353" fill="none" stroke="#0D6B68" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="400" font-size="16" fill="#102A2B">新對話右上角的幽靈圖示</text>
+  <text x="600" y="428" font-size="16" fill="#102A2B">不進歷史、不用記憶、不訓練；保留 30 天</text>
+
+  <rect x="580" y="466" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="622" cy="500" r="20" fill="#0D6B68"/>
+  <text x="622" y="507" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="654" y="507" font-size="18" font-weight="700" fill="#0B4F4D">記憶</text>
+  <rect x="964" y="486" width="28" height="28" rx="6" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <path d="M 970 500 L 977 507 L 987 493" fill="none" stroke="#0D6B68" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="540" font-size="16" fill="#102A2B">Settings → Memory → Topics</text>
+  <text x="600" y="568" font-size="16" fill="#102A2B">逐條編輯或刪除；Pause 或 Reset</text>
+
+  <rect x="580" y="606" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="622" cy="640" r="20" fill="#0D6B68"/>
+  <text x="622" y="647" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="654" y="647" font-size="18" font-weight="700" fill="#0B4F4D">匯出與刪除</text>
+  <rect x="964" y="626" width="28" height="28" rx="6" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <path d="M 970 640 L 977 647 L 987 633" fill="none" stroke="#0D6B68" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="680" font-size="16" fill="#102A2B">Privacy → Export data，連結 24 小時</text>
+  <text x="600" y="708" font-size="16" fill="#102A2B">允許訓練保留 5 年，不允許 30 天</text>
+
+  <!-- ===== column 3: Gemini (green) ===== -->
+  <rect x="1100" y="110" width="440" height="56" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1320" y="146" font-size="20" font-weight="700" fill="#245E45" text-anchor="middle">Gemini</text>
+
+  <rect x="1100" y="186" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <circle cx="1142" cy="220" r="20" fill="#2E7D5B"/>
+  <text x="1142" y="227" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="1174" y="227" font-size="18" font-weight="700" fill="#245E45">關掉活動記錄</text>
+  <rect x="1484" y="206" width="28" height="28" rx="6" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="3"/>
+  <path d="M 1490 220 L 1497 227 L 1507 213" fill="none" stroke="#2E7D5B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1120" y="260" font-size="16" fill="#102A2B">Settings &amp; help → Activity → Keep Activity</text>
+  <text x="1120" y="288" font-size="16" fill="#102A2B">預設開；自動刪除預設 18 個月；關掉仍存 72 小時</text>
+
+  <rect x="1100" y="326" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <circle cx="1142" cy="360" r="20" fill="#2E7D5B"/>
+  <text x="1142" y="367" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="1174" y="367" font-size="18" font-weight="700" fill="#245E45">暫時對話</text>
+  <rect x="1484" y="346" width="28" height="28" rx="6" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="3"/>
+  <path d="M 1490 360 L 1497 367 L 1507 353" fill="none" stroke="#2E7D5B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1120" y="400" font-size="16" fill="#102A2B">New chat 旁的 Temporary chat</text>
+  <text x="1120" y="428" font-size="16" fill="#102A2B">限個人帳號；保留 72 小時</text>
+
+  <rect x="1100" y="466" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <circle cx="1142" cy="500" r="20" fill="#2E7D5B"/>
+  <text x="1142" y="507" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="1174" y="507" font-size="18" font-weight="700" fill="#245E45">記憶</text>
+  <rect x="1484" y="486" width="28" height="28" rx="6" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="3"/>
+  <path d="M 1490 500 L 1497 507 L 1507 493" fill="none" stroke="#2E7D5B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1120" y="540" font-size="16" fill="#102A2B">Settings &amp; help → Personal Intelligence</text>
+  <text x="1120" y="568" font-size="16" fill="#102A2B">→ Memory；要刪就到活動記錄刪對話</text>
+
+  <rect x="1100" y="606" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <circle cx="1142" cy="640" r="20" fill="#2E7D5B"/>
+  <text x="1142" y="647" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="1174" y="647" font-size="18" font-weight="700" fill="#245E45">匯出與刪除</text>
+  <rect x="1484" y="626" width="28" height="28" rx="6" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="3"/>
+  <path d="M 1490 640 L 1497 647 L 1507 633" fill="none" stroke="#2E7D5B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1120" y="680" font-size="16" fill="#102A2B">takeout.google.com 勾 Gemini Apps，連結 7 天</text>
+  <text x="1120" y="708" font-size="16" fill="#102A2B">活動記錄頁刪；人工審閱過的保留 3 年</text>
+
+  <!-- footer notes -->
+  <text x="60" y="772" font-size="15" fill="#B8442D">關掉訓練不等於不存在伺服器：刪掉的對話 ChatGPT、Claude 30 天內移除；Claude 允許訓練保留 5 年；Gemini 關掉活動記錄仍存 72 小時、人工審閱 3 年</text>
+  <text x="60" y="800" font-size="15" fill="#5C6B6B">公司或學校帳號：預設不訓練，但管理員或擁有者可以取得對話；選單名稱與位置以各家官網為準</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

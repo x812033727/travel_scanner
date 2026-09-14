@@ -1,0 +1,382 @@
+{
+  "slug": "chatgpt-troubleshooting-common-errors",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT 常見問題排解：登不進、額度用完、回應中斷",
+      "description": "ChatGPT 登不進、跳出 Something went wrong 或「已達方案上限」時，先別急著重灌 App。這篇依 OpenAI help center 與 status.openai.com 在 2026 年 9 月的說明，把問題分成進不去、進得去但用不了、能用但中斷三類，每個症狀給可能原因、先試的一步與還不行怎麼辦：狀態頁怎麼讀與訂閱、登入與驗證碼、額度重置與換模型、回應中斷與再生成、檔案圖片語音、App 重裝順序、帳號安全、聯絡客服要準備什麼，附一張症狀對照表與排解決策樹。",
+      "hero": {
+        "src": "/guides/chatgpt-troubleshooting-common-errors/hero.jpg",
+        "alt": "米色底上一個白色對話泡泡，泡泡裡的線條打了一個青綠色的結，右下角靠著一把橘色的扳手，下方一行字「先看狀態頁，再重裝」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 登不進、送出後跳出「Something went wrong」、或被告知已達方案上限時，多數人第一個念頭是重灌 App。這篇只回答一件事：出問題時先看什麼、再試什麼。依 OpenAI help center 與狀態頁 status.openai.com 在 2026 年 9 月的說明，正確順序是先看狀態頁，再依症狀分三類處理：進不去、進得去但用不了、能用但中斷；重灌 App 排在最後，因為它不會改變帳號、訂閱綁定或額度，而多數中斷是服務端或連線的問題，等一下再試比什麼都有效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會知道狀態頁怎麼讀與訂閱、登入與驗證碼哪一步先做、「已達上限」有哪三個選擇、回應中斷時怎麼再生成與換對話、檔案圖片語音各自卡在哪、App 重裝前的順序、帳號安全，以及聯絡客服要準備什麼；中間有排解決策樹，文末有症狀對照表。價格與額度數字只連到方案篇。"
+        },
+        {
+          "type": "heading",
+          "text": "第一步永遠是狀態頁：status.openai.com 怎麼讀、怎麼訂閱",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "status.openai.com 是 OpenAI 的官方狀態頁，不用登入。最上方一句總結，正常時寫 We're fully operational；下面分成 APIs、ChatGPT、Codex、FedRAMP、Ads Platform 幾組，點開 ChatGPT 可以看到 Conversations、File uploads 等細項。標籤有五種：Operational（正常）、Degraded performance（效能降級）、Partial outage（部分中斷）、Full outage（全面中斷）、Under maintenance（維護）。進行中的事件列在頁面上方，標明受影響的元件與最新進度；按 View history 可以翻過去的事件，例如對話錯誤率升高、檔案上傳延遲。"
+        },
+        {
+          "type": "paragraph",
+          "text": "右上角的 Subscribe to updates 可以選電子郵件、SMS 簡訊、Slack、RSS 或 Atom feed，也可以按 Subscribe to specific components 只訂 ChatGPT 這一組；簡訊是否支援台灣門號以頁面為準。用法很簡單：ChatGPT 那一組不是 Operational，你的裝置多半沒問題，先等 10 分鐘再試。help center 的排解文章也把查狀態頁放在前兩步，登入錯誤更是先等 60 秒、再看狀態頁、確定沒有事件才動自己的設定。"
+        },
+        {
+          "type": "heading",
+          "text": "進不去：登入、驗證碼、密碼、帳號被停用、地區與年齡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "進不去分成幾種不同的狀況。help center 的共同建議是先清 cache 與 cookie、用無痕視窗排除擴充功能、換一台裝置或瀏覽器；以下依症狀分開講。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "登入頁一直轉圈或出現 Something went wrong：先等至少 60 秒再試，看狀態頁；沒有事件就清 cache 與 cookie、開無痕視窗、換裝置或網路。卡在 Cloudflare 的「Checking your browser…」時，關掉 VPN、代理與廣告阻擋，允許 chatgpt.com、openai.com、auth.openai.com 的 cookie 與 JavaScript。出現偵測到可疑登入行為的訊息，做完這些後等最多 1 小時再登入。",
+            "用 Google、Apple 或 Microsoft 登入的分歧：用哪種方式註冊就要一直用同一種，換一種會出現 Wrong authentication method；不確定就把密碼、Google、Microsoft、Apple 四種各試一次。用 Apple 註冊又開了「隱藏我的電子郵件」，帳號綁的是 @privaterelay.appleid.com 的轉寄地址；不同登入方式會建立不同的帳號與訂閱，OpenAI 不會自動合併。",
+            "驗證碼收不到：從新裝置或不尋常的地點登入時，OpenAI 會寄六位數的一次性驗證碼（OTP）到註冊的 Email，正牌寄件人只有 noreply@tm.openai.com 與 otp@tm1.openai.com。先翻垃圾郵件、確認 Email 沒打錯、重寄並只用最新的一組；多次輸錯會暫時鎖住。手機 App 可能改用推播核准，推播沒來就選 Try with email。",
+            "密碼重設：登入頁輸入 Email 後選 Forgot password?，照信件指示做；已登入的人在 Settings → Account 新增或更改密碼。用 Google、Microsoft 或 Apple 註冊的帳號沒有密碼可以重設，要到那家服務改。",
+            "帳號被停用或鎖住：原因包括違反使用政策或條款、疑似被盜而暫時停權、多次警告未改善、沒完成身分或年齡驗證。用通知信裡的連結申訴，找不到信就用 OpenAI 的申訴表單，附上 User ID、使用情境與已做的處理；沒收到信卻登不進，用 help center 的對話小幫手。",
+            "地區與年齡：台灣在 ChatGPT 的支援名單內。到不支援的地區會登不進，回國後仍被判定在不支援地區，清 cache 與 cookie 或換無痕視窗即可；用 VPN 讓連線看起來在不支援地區一樣會出錯，還可能被停權。年齡上未滿 13 歲不能用，13 到 18 歲要家長同意；系統推測帳號未滿 18 歲會自動套用 ChatGPT for Teens 的保護，成年人被誤判想解除才需要驗證年齡，驗證次數用完會被停用。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "進得去但用不了：額度、上限與模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「已達方案上限」這類提示的意思是：每個方案、每個模型與每項工具（產圖、檔案上傳、語音、資料分析）各有獨立的額度，達到時 ChatGPT 會通知你，有資料時會顯示重置時間。三個選擇：等畫面上的時間重置；改用另一個還能用的模型，推理額度用完時也可能自動換另一個推理模型接手；或買點數、升級，Plus 與 Pro 可以加購 credits，數字都在方案篇。客服不會替你重置額度，help center 寫明 OpenAI Support does not reset ChatGPT or Codex usage limits；只有用量算錯、或過了重置時間仍不能用，才值得找客服。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "免費版的圖片與檔案限制：免費版的產圖、檔案上傳、語音上限都比付費方案嚴，達到就會提示；每天能傳幾個檔案、產幾張圖以方案篇與官網為準。",
+            "檔案出現 upload limit reached：有兩種上限，滾動計算的上傳次數與整個帳號共用的儲存容量，失敗的上傳也可能被計入。先確認登入的是對的帳號與方案，到 Settings → Storage 看 Library 容量，再看狀態頁。",
+            "付了錢方案卻沒生效：App 內購後要幾分鐘才出現，先重開 App；iOS 到 Settings → Account → Restore purchases。出現 This subscription is associated with another OpenAI account，表示你的 Apple ID 或 Google Play 帳號已綁在另一個 ChatGPT 帳號，登出後改用購買時登入的帳號，不要再買一次；訂閱不能轉移，重裝 App 也不會改變綁定。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+        },
+        {
+          "type": "heading",
+          "text": "能用但中斷：Something went wrong、網路錯誤、停在一半、對話載入不了",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "help center 把這類錯誤逐條列出，前三步幾乎相同：重新整理或開新對話、看狀態頁、清 cache 與 cookie 並改用無痕視窗；再來才是關擴充功能、關 VPN 與安全 DNS 工具、換網路。依訊息分開看："
+        },
+        {
+          "type": "list",
+          "items": [
+            "「Something went wrong.」：一般性錯誤，可能是伺服器暫時性問題或本機設定，順序是重新整理或開新對話 → 看狀態頁 → 清 cache → 無痕 → 關擴充功能 → 關 VPN → 換網路。",
+            "「A network error occurred.」或 websocket 錯誤：裝置連不上伺服器。關 VPN 或代理、關安全過濾軟體、換瀏覽器或無痕、換網路或裝置；公司網路要請 IT 放行 openai.com、chatgpt.com 等網域與走 TCP 443 的 WebSocket。",
+            "「There was an error generating a response.」：常是一次性錯誤，按 Regenerate（重新產生）就好；再發生就重啟瀏覽器、關 VPN、換網路。",
+            "回應停在一半、畫面停在 Thinking 一直轉：先等 30 到 60 秒；沒完成就按 Stop generating 再按 Regenerate；還不行就開新對話重送提示詞、硬重新整理（Ctrl 或 Cmd + Shift + R）、登出再登入、換瀏覽器或網路。",
+            "「There was a problem preparing your chat.」、空白畫面或一直載入：多半是擴充功能或網址阻擋工具干擾。關掉會擋腳本的擴充功能、改用無痕或另一個瀏覽器、清掉 chat.openai.com 的站台資料。",
+            "對話不見了：確認登入的是同一個帳號或工作區，到 Settings → Data controls 的 Archived Chats 看是不是被封存，再重新整理或看狀態頁；暫時對話本來就不留在側欄，刪掉的對話救不回來。",
+            "太長的對話變慢、容易中斷：help center 直接建議對話太長或輪次太多就開新對話。每次回覆都要重讀整段對話，越長、附件越多，每則訊息吃掉的處理量越大，也越容易撞到上下文視窗的邊界。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-troubleshooting-common-errors/diagram-1.svg",
+          "alt": "ChatGPT 排解決策樹：最上面是先看狀態頁，下面分成進不去、進得去但用不了、能用但中斷三欄，每欄四個步驟由上往下，最後都通到 help center 的對話小幫手。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下看：先看狀態頁，再依「進不去、進得去但用不了、能用但中斷」三欄逐步往下試，每一欄的最後一步都通往 help center 的對話小幫手；依 2026 年 9 月 help center 的說法整理。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "heading",
+          "text": "檔案、圖片與語音",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "檔案上傳失敗：先看格式與大小。常見的文字、試算表、簡報與文件格式都支援；每個檔案硬上限 512 MB，文字與文件類每檔 2M token，CSV 與試算表約 50 MB，圖片每張 20 MB。數量上每 3 小時最多 80 個檔案，免費版另有每日上限（見方案篇），失敗的嘗試也可能計入。都沒超過就看狀態頁的 File uploads。",
+            "圖片產不出來：產圖本來就要幾分鐘，複雜的更久。免費版的產圖上限較嚴，達到會提示。提示詞被擋（prompt was blocked）是內容被判定違反使用政策，或被判定在操弄、繞過系統；先改寫要求，覺得誤判可透過對話小幫手反映。",
+            "語音沒聲音或聽不到你：第一次用要允許 App 或瀏覽器使用麥克風，iPhone 在設定 → ChatGPT → 麥克風，Android 在 App 權限。聽不清就戴耳機、換安靜的地方、調高音量；iPhone 通話中打開控制中心 → Mic Mode → Voice Isolation。一直被打斷可以先說「等我叫你回答再回答」；公司防火牆擋掉 UDP 3478 會讓語音斷斷續續。時數上限依方案，見方案篇。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 手機 App 十個技巧：拍照提問、捷徑與小工具",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-mobile-app-tips"
+        },
+        {
+          "type": "heading",
+          "text": "App 問題與帳號安全",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "重灌前的順序：更新 App（iOS 看 App Store 的相容性需求，Android 要 7.0 以上，Play 商店本身也要新版）→ 重新啟動 → 登出再登入 → 清除 App 資料或快取 → 移除重裝 → 改用瀏覽器登入或換裝置。iPhone 出現「Something went wrong. Please make sure your device's date and time are set properly…（DeviceCheckError）」，多半是裝置檢查沒過：把日期與時間設成自動、確認網路、更新 App 與系統；檢查結果會快取最多 24 小時，所以清掉 App 資料再試，或先用瀏覽器登入。Android 登入時的 Something went wrong 常是 Play 商店版本太舊，到 Play 商店 → 個人圖示 → 設定 → 關於更新；Android App 登入會呼叫 Chrome 或 Brave，沒安裝會出錯，建議把 Chrome 設為預設瀏覽器。只從 App Store 或 Google Play 搜尋「openai chatgpt」、認明發行者是 OpenAI。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "登出所有裝置：頭像 → Settings → Security → Active sessions，列出每個登入中的裝置與大約位置，不認得的那一列可以單獨 Log out；全部登出選 Log out of all sessions → Log out all → 確認 Log out of all devices，其他裝置最多 30 分鐘內生效。",
+            "兩步驟驗證：Settings → Security → Multi-factor authentication，可選驗證器 App、手機推播、SMS 或 WhatsApp 的六位數碼、passkey；平常的方法用不了時在登入畫面選 Try another method。開啟 MFA 不會登出已登入的裝置，懷疑被盜要先改密碼、再登出所有裝置、最後開 MFA。",
+            "可疑活動或被盜用：立刻改密碼，所有登入中的裝置會在 30 分鐘內被登出；接著登出所有裝置、開兩步驟驗證。Suspicious Activity Alert 多半是預防性提醒，帳號共用與 VPN 都可能觸發；限制不解除就關掉 VPN 再試，還不行找客服。",
+            "辨識官方訊息：驗證碼信只會來自 noreply@tm.openai.com 或 otp@tm1.openai.com；OpenAI 不會在社群媒體上處理帳號細節，客服也不會要你的密碼或一次性驗證碼。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼聯絡客服：對話小幫手在哪、要準備什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方入口是 help.openai.com 右下角的對話泡泡。先由虛擬助理回答，help center 寫的是「如果機器人無法解決、而且有真人客服加入」時要準備好資料，也就是真人客服是可能加入、不是保證，回覆時間以官網為準；可以直接寫中文，不支援的語言會改用英文。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "要準備的資訊：問題描述與重現步驟；登入用的 Email、登入方式與方案；日期時間與時區；去掉個資的截圖或錄影；裝置、瀏覽器版本、家用或公司網路；被擋的訊息全文與 request ID。",
+            "網頁介面問題可能會被要求錄 HAR 檔：在 chatgpt.com 按 Ctrl+Shift+I → Network → 勾 Preserve log → 重現問題 → Export HAR (sanitized) 存檔；桌面版 App 不能錄。",
+            "不要給密碼或一次性驗證碼；也別期待客服重置額度、救回刪除的對話。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "可能原因",
+            "先試什麼",
+            "還不行怎麼辦"
+          ],
+          "rows": [
+            [
+              "登入頁轉圈或 Something went wrong",
+              "服務端事件、VPN、擴充功能",
+              "等 60 秒、看狀態頁、無痕、關 VPN",
+              "換裝置或網路；公司網路請 IT 放行"
+            ],
+            [
+              "Wrong authentication method",
+              "用了跟註冊不同的登入方式",
+              "四種登入方式各試一次",
+              "找客服附登入方式"
+            ],
+            [
+              "驗證碼收不到",
+              "進了垃圾郵件、用到舊碼、輸錯被鎖",
+              "翻垃圾郵件、重寄、只用最新一組",
+              "等解鎖再重寄；改用 Try with email"
+            ],
+            [
+              "帳號被停用",
+              "違反政策、共用帳號、沒完成驗證",
+              "用通知信的連結申訴",
+              "申訴表單附 User ID"
+            ],
+            [
+              "已達上限",
+              "方案、模型或工具的額度用完",
+              "等重置時間或換模型",
+              "買點數或升級（見方案篇）"
+            ],
+            [
+              "回應停在一半",
+              "服務端負載、對話太長、連線不穩",
+              "等 30 到 60 秒、Stop generating 再 Regenerate",
+              "開新對話重送、硬重新整理、換網路"
+            ],
+            [
+              "網路錯誤",
+              "VPN、代理、安全過濾、公司防火牆",
+              "關 VPN 與安全軟體、換網路",
+              "請 IT 放行網域；找客服附 HAR"
+            ],
+            [
+              "檔案或圖片失敗",
+              "格式、大小、次數上限、提示詞被擋",
+              "縮小檔案、稍後再傳、改寫要求",
+              "看狀態頁；找客服附截圖與 request ID"
+            ],
+            [
+              "語音沒聲音",
+              "麥克風權限、噪音、防火牆擋 UDP",
+              "允許麥克風、戴耳機、Voice Isolation",
+              "換網路；請 IT 放行 3478 連接埠"
+            ],
+            [
+              "App 打不開或 DeviceCheckError",
+              "App 太舊、日期時間錯",
+              "更新、時間設自動、登出再登入",
+              "清 App 資料再重裝；先用瀏覽器登入"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI help center 與 status.openai.com 整理；每一列的細節與官方原文在正文對應段落。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先看狀態頁再重裝 App",
+          "text": "多數中斷是服務端問題，status.openai.com 上 ChatGPT 那一組不是 Operational 的時候，你在手機上做什麼都沒用，等 10 分鐘再試比什麼都有效。重裝 App 不會改變帳號、訂閱綁定或額度，只會把你推回登入問題；真的要重裝，也先做完更新、重啟、登出再登入、清 App 資料這四步。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Status（狀態頁：服務分組、Operational／Degraded performance／Partial outage／Full outage 等標籤、Subscribe to updates 的 email／SMS／Slack／RSS 與 Atom、只訂特定元件、View history）",
+          "url": "https://status.openai.com/",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Troubleshooting ChatGPT Error Messages（Something went wrong、network error、error generating a response、停在一半等 30 到 60 秒、Stop generating 與 Regenerate、空白畫面、HAR 檔）",
+          "url": "https://help.openai.com/en/articles/7996703-troubleshooting-chatgpt-error-messages",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Why can't I log in to ChatGPT（等 60 秒再看狀態頁、同一種登入方式、Hide My Email、Cloudflare 驗證、cookie 與 JavaScript、可疑登入等 1 小時、帳號不會自動合併）",
+          "url": "https://help.openai.com/en/articles/7426629-why-cant-i-log-in-to-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Why Am I Being Asked to Verify My Login（六位數 OTP、寄件人 noreply@tm.openai.com 與 otp@tm1.openai.com、收不到或過期的處理、推播核准與 Try with email）",
+          "url": "https://help.openai.com/en/articles/9889414-why-am-i-being-asked-to-verify-my-login",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Resetting or Changing Your ChatGPT Password（Forgot password?、Settings → Account、社群登入沒有密碼）",
+          "url": "https://help.openai.com/en/articles/4936828-resetting-or-changing-your-chatgpt-password",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Why Was My OpenAI Account Deactivated（停用原因、通知信申訴連結與申訴表單、要附的資料）",
+          "url": "https://help.openai.com/en/articles/10562188-why-was-my-openai-account-deactivated",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Supported Countries（支援名單含 Taiwan；名單外使用可能被封鎖或停權）",
+          "url": "https://help.openai.com/en/articles/7947663-chatgpt-supported-countries",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Age prediction in ChatGPT（推測未滿 18 歲自動套用 ChatGPT for Teens、成年人驗證年齡、驗證次數用完停用）",
+          "url": "https://help.openai.com/en/articles/12652064-age-prediction-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Free Tier FAQ（達到上限會通知並顯示重置時間、產圖／檔案／語音各有上限、免費版上限較嚴）",
+          "url": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：GPT-5.6 and GPT-6 Pro in ChatGPT（模型額度用完暫時不可用、顯示重置時間、可換模型、客服不重置額度）",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-5-6-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Network recommendations for ChatGPT errors on web and apps（先看狀態頁、要放行的網域、WebSocket 走 TCP 443、語音走 UDP 3478、上傳失敗與 oaiusercontent.com）",
+          "url": "https://help.openai.com/en/articles/9247338-network-recommendations-for-chatgpt-errors-on-web-and-apps",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：How to Delete and Archive Chats in ChatGPT（對話不見的檢查順序：帳號、Archived Chats、重新整理、狀態頁；刪除的救不回）",
+          "url": "https://help.openai.com/en/articles/8809935-how-to-delete-and-archive-chats-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：File Uploads FAQ（512MB、2M tokens、約 50MB、20MB、每 3 小時 80 個、upload limit reached 的兩種上限、失敗也計入、Settings → Storage）",
+          "url": "https://help.openai.com/en/articles/8555545-file-uploads-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Why Was My ChatGPT Prompt Blocked（內容違規或安全考量、先看使用政策、誤判找客服）",
+          "url": "https://help.openai.com/en/articles/9824988-why-was-my-chatgpt-prompt-blocked",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Voice（麥克風權限、耳機與安靜環境、Mic Mode 與 Voice Isolation、被打斷先講一句、用量以 24 小時滾動計算並會通知）",
+          "url": "https://help.openai.com/en/articles/20001274",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：DeviceCheckError（錯誤全文、日期時間、網路、更新、完整性檢查快取最多 24 小時、清 App 資料、改用瀏覽器登入）",
+          "url": "https://help.openai.com/en/articles/9945489-something-went-wrong-please-make-sure-your-devices-date-and-time-are-set-properly-check-that-your-internet-connection-is-stable-then-restart-the-app-and-try-again-devicecheckerror",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Android App FAQ（Google Play 搜尋 openai chatgpt 認明發行者、Android 7.0 以上、登入需 Chrome 或 Brave、Play 商店版本太舊的 Something went wrong）",
+          "url": "https://help.openai.com/en/articles/8142208-chatgpt-android-app-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Enabling or disabling multi-factor authentication（Settings → Security、驗證器 App／推播／SMS 或 WhatsApp／passkey、Try another method、開 MFA 不登出其他裝置、Log out of all devices 最多 30 分鐘）",
+          "url": "https://help.openai.com/en/articles/7967234-enabling-or-disabling-multi-factor-authentication-mfa",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：I'm seeing unrecognized activity on my OpenAI account（改密碼後所有工作階段 30 分鐘內登出、改密碼步驟）",
+          "url": "https://help.openai.com/en/articles/8485685-im-seeing-unrecognized-activity-on-my-openai-account",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：How can I contact support（右下角對話泡泡、虛擬助理先、真人客服可能加入、語言、要附的資料、不給密碼與驗證碼、HAR 錄法）",
+          "url": "https://help.openai.com/en/articles/6614161-how-can-i-contact-support",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

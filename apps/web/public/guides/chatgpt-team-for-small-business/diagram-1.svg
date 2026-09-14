@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">小公司選 Plus 還是 Business：三階比較與三個問題 / Plus vs Business vs Enterprise for a small company, and three questions to decide</title>
+  <desc id="desc">左半是三張由上到下排列的卡片。Plus：個人方案，每人每月 20 美元，只有月繳；資料預設會用對話訓練，要自己到 Data Controls 關掉；專案可分享，最多 10 位協作者，不能建新 GPT；各自刷卡、各自收據，離職時對話跟著人走；適合一兩個人或彼此不需要共用的團隊。Business（原 Team）：每人每月 25 美元，年繳 20 美元，至少 2 個座位、最多 200 個，Standard 與 Premium 可混搭；工作區預設不訓練，對話彼此看不到，不能匯出；共用專案最多 100 人、40 個檔案，連接器預設開啟；一張帳單，邀請與移除成員，SSO 與網域驗證；適合 3 到 30 人、會貼客戶資料、要有人管帳號的公司。Enterprise：聯絡業務，沒有公開價格，超過 200 個座位或需要合約、發票與法遵條件；可設保留期限例如 90 天，合規 API，資料存放地區；可整個工作區禁用分享連結，RBAC 細分權限；SCIM 自動開帳號，發票、匯款、採購單付款；適合人數多、有 IT 或法遵政策要求的公司。右半是三個問題的流程：第一題有沒有人會把客戶資料貼進去，第二題要不要共用同一套指令與檔案，第三題要不要有人管帳號與帳單；任一題答是就走到右側的結果框「買 Business」：Standard 座位月繳 25 美元、年繳 20 美元與 Plus 同價、至少 2 個座位、重度成員給 Premium、先填統編免 5% 稅；三題都否就走到下方的「各買 Plus」，各自到 Data Controls 關掉模型訓練。底部兩行補充：一到兩人不要買 Business，至少要付 2 個座位，一個人月繳 50 美元，是 Plus 的 2.5 倍；價格為 OpenAI help center 的美元定價，台灣結帳幣別與金額以結帳頁為準，自製 GPT 退場中，共用改用專案。2026 年 9 月查證。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0D6B68"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">小公司選 Plus 還是 Business：三階比較與三個問題（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Plus vs Business vs Enterprise on data, sharing and admin, and three questions that decide it</text>
+
+  <!-- left: three tiers -->
+  <text x="48" y="122" font-size="19" font-weight="700" fill="#102A2B">三階比較　Plan comparison</text>
+
+  <rect x="48" y="134" width="732" height="190" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="72" y="166" font-size="20" font-weight="700" fill="#102A2B">Plus　個人方案，每人每月 20 美元，只有月繳</text>
+  <text x="72" y="189" font-size="15" fill="#5C6B6B">Personal plan</text>
+  <text x="72" y="218" font-size="16" fill="#102A2B">資料：預設會用對話訓練，要自己到 Data Controls 關掉</text>
+  <text x="72" y="244" font-size="16" fill="#102A2B">共用：專案可分享，最多 10 位協作者；不能建新 GPT</text>
+  <text x="72" y="270" font-size="16" fill="#102A2B">管理：各自刷卡、各自收據，離職時對話跟著人走</text>
+  <text x="72" y="296" font-size="16" fill="#5C6B6B">適合：一兩個人，或彼此不需要共用的團隊</text>
+  <path d="M 414 326 L 414 346" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="48" y="352" width="732" height="190" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="72" y="384" font-size="20" font-weight="700" fill="#0B4F4D">Business（原 Team）　每人每月 25 美元，年繳 20 美元</text>
+  <text x="72" y="407" font-size="15" fill="#5C6B6B">至少 2 個座位、最多 200 個；Standard 與 Premium 可混搭</text>
+  <text x="72" y="436" font-size="16" fill="#102A2B">資料：工作區預設不訓練；對話彼此看不到；不能匯出</text>
+  <text x="72" y="462" font-size="16" fill="#102A2B">共用：共用專案最多 100 人、40 個檔案；連接器預設開啟</text>
+  <text x="72" y="488" font-size="16" fill="#102A2B">管理：一張帳單；邀請與移除成員；SSO 與網域驗證</text>
+  <text x="72" y="514" font-size="16" fill="#0B4F4D">適合：3 到 30 人、會貼客戶資料、要有人管帳號的公司</text>
+  <path d="M 414 544 L 414 564" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="48" y="570" width="732" height="190" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="72" y="602" font-size="20" font-weight="700" fill="#1F4E73">Enterprise　聯絡業務，沒有公開價格</text>
+  <text x="72" y="625" font-size="15" fill="#5C6B6B">超過 200 個座位，或需要合約、發票與法遵條件</text>
+  <text x="72" y="654" font-size="16" fill="#102A2B">資料：可設保留期限（例如 90 天）；合規 API；資料存放地區</text>
+  <text x="72" y="680" font-size="16" fill="#102A2B">共用：可整個工作區禁用分享連結；RBAC 細分權限</text>
+  <text x="72" y="706" font-size="16" fill="#102A2B">管理：SCIM 自動開帳號；發票、匯款、採購單付款</text>
+  <text x="72" y="732" font-size="16" fill="#5C6B6B">適合：人數多、有 IT 或法遵政策要求的公司</text>
+
+  <!-- right: decision flow -->
+  <text x="820" y="122" font-size="19" font-weight="700" fill="#102A2B">三個問題決定　Three questions to decide</text>
+
+  <rect x="820" y="134" width="440" height="84" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="1040" y="168" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">1. 有沒有人會把客戶資料貼進去？</text>
+  <text x="1040" y="196" font-size="15" fill="#5C6B6B" text-anchor="middle">合約、報價、病歷摘要、客戶名單、財報</text>
+  <path d="M 1262 176 L 1330 176" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrowGreen)"/>
+  <text x="1296" y="164" font-size="15" font-weight="700" fill="#0D6B68" text-anchor="middle">是</text>
+  <path d="M 1040 220 L 1055 262" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="1062" y="246" font-size="15" font-weight="700" fill="#5C6B6B">否</text>
+
+  <rect x="820" y="268" width="440" height="84" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="1040" y="302" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">2. 要不要共用同一套指令與檔案？</text>
+  <text x="1040" y="330" font-size="15" fill="#5C6B6B" text-anchor="middle">統一的提示詞、公版文件、客戶問答範本</text>
+  <path d="M 1262 310 L 1330 310" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrowGreen)"/>
+  <text x="1296" y="298" font-size="15" font-weight="700" fill="#0D6B68" text-anchor="middle">是</text>
+  <path d="M 1040 354 L 1055 396" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="1062" y="380" font-size="15" font-weight="700" fill="#5C6B6B">否</text>
+
+  <rect x="820" y="402" width="440" height="84" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="1040" y="436" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">3. 要不要有人管帳號與帳單？</text>
+  <text x="1040" y="464" font-size="15" fill="#5C6B6B" text-anchor="middle">一張卡、一張帳單，離職當天移除成員</text>
+  <path d="M 1262 444 L 1330 444" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrowGreen)"/>
+  <text x="1296" y="432" font-size="15" font-weight="700" fill="#0D6B68" text-anchor="middle">是</text>
+  <path d="M 1040 488 L 1055 530" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="1062" y="514" font-size="15" font-weight="700" fill="#5C6B6B">否</text>
+
+  <rect x="820" y="536" width="440" height="96" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1040" y="572" font-size="17" font-weight="700" fill="#8A4A16" text-anchor="middle">三題都否：各買 Plus</text>
+  <text x="1040" y="600" font-size="15" fill="#102A2B" text-anchor="middle">各自到 Data Controls 關掉模型訓練</text>
+
+  <rect x="1336" y="134" width="216" height="352" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1444" y="172" font-size="18" font-weight="700" fill="#0B4F4D" text-anchor="middle">任一題答「是」</text>
+  <text x="1444" y="200" font-size="18" font-weight="700" fill="#0B4F4D" text-anchor="middle">買 Business</text>
+  <text x="1444" y="244" font-size="15" fill="#102A2B" text-anchor="middle">Standard 座位</text>
+  <text x="1444" y="270" font-size="15" fill="#102A2B" text-anchor="middle">月繳 25 美元</text>
+  <text x="1444" y="296" font-size="15" fill="#102A2B" text-anchor="middle">年繳 20 美元</text>
+  <text x="1444" y="322" font-size="15" fill="#102A2B" text-anchor="middle">與 Plus 同價</text>
+  <text x="1444" y="348" font-size="15" fill="#102A2B" text-anchor="middle">至少 2 個座位</text>
+  <text x="1444" y="374" font-size="15" fill="#102A2B" text-anchor="middle">重度成員給 Premium</text>
+  <text x="1444" y="400" font-size="15" fill="#102A2B" text-anchor="middle">先填統編免 5% 稅</text>
+  <text x="1444" y="440" font-size="15" fill="#5C6B6B" text-anchor="middle">Any yes: buy Business</text>
+
+  <!-- notes -->
+  <text x="48" y="800" font-size="15" fill="#B8442D">一到兩人不要買 Business：至少要付 2 個座位，一個人月繳 50 美元，是 Plus 的 2.5 倍。</text>
+  <text x="48" y="826" font-size="15" fill="#5C6B6B">價格為 OpenAI help center 的美元定價，台灣結帳幣別與金額以結帳頁為準；自製 GPT 退場中，共用改用專案。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

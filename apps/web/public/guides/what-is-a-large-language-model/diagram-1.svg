@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">語言模型怎麼寫出一句話：切 token、猜下一個、接回去 / How a language model writes: tokenize, predict, append, repeat</title>
+  <desc id="desc">上半部是四個步驟的流程。第一步輸入句子：「今天天氣很好，我們去公園」，你打的字、之前的對話、貼進來的文件都算輸入，全部放在上下文視窗裡。第二步切成 token：句子被切成今天、天氣、很好、逗號、我們、去、公園七塊，切法依各家模型不同，中文一字幾個 token 沒有定值。第三步猜下一個 token：候選「散步」的機率長條最長，「野餐」次之，「走走」再次，「開會」幾乎沒有，每個候選都有機率，從高的挑一個。第四步接回去再猜下一個：句子變成「今天天氣很好，我們去公園散步」，接下來可能是句號或「，順便」，一直重複到整段話寫完，每猜一次就多一個 token；一條迴圈箭頭從第四步繞回第三步。下半部三格說明。token 是什麼：一段被切開的文字，可能是整個單字、半個單字、一個標點或一個中文字的一部分；英文在 Anthropic 約 3.5 個字元一個 token、Google 約 4 個字元，中文依各家分詞方式不同；計價與上下文視窗都用 token 計算，對話太長就是 token 用完了。為什麼會錯：幻覺是因為它不是查資料庫，而是接最順的句子，講錯時語氣跟講對時一樣肯定；數字母會錯是因為它看到的是 token 塊不是字母；算數是猜算式後面最常接的數字，不是在計算；知識截止日之後的事沒接搜尋工具就不知道；只看過一兩次的冷門事實記不牢就用猜的。怎麼用才安心：原料在對話裡的事放心交，例如改寫、摘要、翻譯、列大綱、寫初稿；它從記憶裡拿出的具體事實一律自己查，例如法規、劑量、營業時間、價格、書名、電話；要它算數就給工具或自己按計算機；問時效性問題先確認工具有沒有連網。圖中的機率長條只是示意，沒有實際數值。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">語言模型怎麼寫出一句話：切 token、猜下一個、接回去</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">How a language model writes: tokenize, predict the next token, append it, repeat</text>
+
+  <!-- step 1 -->
+  <rect x="60" y="130" width="330" height="210" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="225" y="162" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">第一步　輸入句子</text>
+  <text x="225" y="202" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">今天天氣很好，我們去公園</text>
+  <text x="225" y="240" font-size="15" fill="#5C6B6B" text-anchor="middle">你打的字、之前的對話、</text>
+  <text x="225" y="262" font-size="15" fill="#5C6B6B" text-anchor="middle">貼進來的文件都算輸入</text>
+  <text x="225" y="304" font-size="15" fill="#5C6B6B" text-anchor="middle">（這些全部放在上下文視窗裡）</text>
+  <path d="M 392 235 L 436 235" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 2 -->
+  <rect x="440" y="130" width="330" height="210" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="605" y="162" font-size="19" font-weight="700" fill="#0B4F4D" text-anchor="middle">第二步　切成 token</text>
+  <rect x="509" y="184" width="46" height="30" rx="7" fill="#FFFFFF" stroke="#0D6B68" stroke-width="2"/>
+  <text x="532" y="205" font-size="16" fill="#102A2B" text-anchor="middle">今天</text>
+  <rect x="563" y="184" width="46" height="30" rx="7" fill="#FFFFFF" stroke="#0D6B68" stroke-width="2"/>
+  <text x="586" y="205" font-size="16" fill="#102A2B" text-anchor="middle">天氣</text>
+  <rect x="617" y="184" width="46" height="30" rx="7" fill="#FFFFFF" stroke="#0D6B68" stroke-width="2"/>
+  <text x="640" y="205" font-size="16" fill="#102A2B" text-anchor="middle">很好</text>
+  <rect x="671" y="184" width="30" height="30" rx="7" fill="#FFFFFF" stroke="#0D6B68" stroke-width="2"/>
+  <text x="686" y="205" font-size="16" fill="#102A2B" text-anchor="middle">，</text>
+  <rect x="536" y="224" width="46" height="30" rx="7" fill="#FFFFFF" stroke="#0D6B68" stroke-width="2"/>
+  <text x="559" y="245" font-size="16" fill="#102A2B" text-anchor="middle">我們</text>
+  <rect x="590" y="224" width="30" height="30" rx="7" fill="#FFFFFF" stroke="#0D6B68" stroke-width="2"/>
+  <text x="605" y="245" font-size="16" fill="#102A2B" text-anchor="middle">去</text>
+  <rect x="628" y="224" width="46" height="30" rx="7" fill="#FFFFFF" stroke="#0D6B68" stroke-width="2"/>
+  <text x="651" y="245" font-size="16" fill="#102A2B" text-anchor="middle">公園</text>
+  <text x="605" y="288" font-size="15" fill="#5C6B6B" text-anchor="middle">切法依各家模型不同，</text>
+  <text x="605" y="310" font-size="15" fill="#5C6B6B" text-anchor="middle">中文一字幾個 token 沒有定值</text>
+  <path d="M 772 235 L 816 235" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 3 -->
+  <rect x="820" y="130" width="330" height="210" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="985" y="162" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">第三步　猜下一個 token</text>
+  <text x="844" y="200" font-size="16" fill="#102A2B">散步</text>
+  <rect x="890" y="186" width="220" height="16" rx="8" fill="#2E7D5B"/>
+  <text x="844" y="228" font-size="16" fill="#102A2B">野餐</text>
+  <rect x="890" y="214" width="140" height="16" rx="8" fill="#2F6F9F"/>
+  <text x="844" y="256" font-size="16" fill="#102A2B">走走</text>
+  <rect x="890" y="242" width="90" height="16" rx="8" fill="#D97A2B"/>
+  <text x="844" y="284" font-size="16" fill="#102A2B">開會</text>
+  <rect x="890" y="270" width="18" height="16" rx="8" fill="#B8442D"/>
+  <text x="985" y="316" font-size="15" fill="#5C6B6B" text-anchor="middle">每個候選都有機率，從高的挑一個</text>
+  <path d="M 1152 235 L 1196 235" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 4 -->
+  <rect x="1200" y="130" width="330" height="210" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1365" y="162" font-size="19" font-weight="700" fill="#0B4F4D" text-anchor="middle">第四步　接回去，再猜下一個</text>
+  <text x="1365" y="202" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">今天天氣很好，我們去公園散步</text>
+  <text x="1365" y="240" font-size="15" fill="#5C6B6B" text-anchor="middle">接下來可能是「。」或「，順便」</text>
+  <text x="1365" y="262" font-size="15" fill="#5C6B6B" text-anchor="middle">一直重複到整段話寫完</text>
+  <text x="1365" y="304" font-size="15" fill="#5C6B6B" text-anchor="middle">（每猜一次就多一個 token）</text>
+
+  <!-- loop back from step 4 to step 3 -->
+  <path d="M 1365 342 L 1365 392 L 985 392 L 985 348" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="1175" y="420" font-size="15" fill="#5C6B6B" text-anchor="middle">把新 token 接在句尾，整句重新猜下一個，直到寫完</text>
+
+  <!-- notes -->
+  <rect x="60" y="460" width="480" height="300" rx="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="88" y="494" font-size="19" font-weight="700" fill="#102A2B">token 是什麼　What a token is</text>
+  <text x="88" y="530" font-size="16" fill="#102A2B">・一段被切開的文字：可能是整個單字、半個單字、</text>
+  <text x="88" y="558" font-size="16" fill="#102A2B">　一個標點，或一個中文字的一部分</text>
+  <text x="88" y="586" font-size="16" fill="#102A2B">・英文：Anthropic 約 3.5 個字元一個 token，</text>
+  <text x="88" y="614" font-size="16" fill="#102A2B">　Google 約 4 個字元；中文依各家分詞方式不同</text>
+  <text x="88" y="642" font-size="16" fill="#102A2B">・計價與上下文視窗都用 token 計算，</text>
+  <text x="88" y="670" font-size="16" fill="#102A2B">　「對話太長」就是 token 用完了</text>
+
+  <rect x="560" y="460" width="480" height="300" rx="16" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="588" y="494" font-size="19" font-weight="700" fill="#102A2B">為什麼會錯　Why it gets things wrong</text>
+  <text x="588" y="530" font-size="16" fill="#102A2B">・幻覺：它不是查資料庫，而是接最順的句子，</text>
+  <text x="588" y="558" font-size="16" fill="#102A2B">　講錯時語氣跟講對時一樣肯定</text>
+  <text x="588" y="586" font-size="16" fill="#102A2B">・數字母：看到的是 token 塊，不是一個一個字母</text>
+  <text x="588" y="614" font-size="16" fill="#102A2B">・算數：猜算式後面最常接的數字，不是在計算</text>
+  <text x="588" y="642" font-size="16" fill="#102A2B">・知識截止日之後的事，沒接搜尋工具就不知道</text>
+  <text x="588" y="670" font-size="16" fill="#102A2B">・只看過一兩次的冷門事實，記不牢就用猜的</text>
+
+  <rect x="1060" y="460" width="480" height="300" rx="16" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="3"/>
+  <text x="1088" y="494" font-size="19" font-weight="700" fill="#102A2B">怎麼用才安心　How to use it safely</text>
+  <text x="1088" y="530" font-size="16" fill="#102A2B">・原料在對話裡的事放心交：改寫、摘要、翻譯、</text>
+  <text x="1088" y="558" font-size="16" fill="#102A2B">　列大綱、寫初稿</text>
+  <text x="1088" y="586" font-size="16" fill="#102A2B">・它「從記憶裡」拿出的具體事實一律自己查：</text>
+  <text x="1088" y="614" font-size="16" fill="#102A2B">　法規、劑量、營業時間、價格、書名、電話</text>
+  <text x="1088" y="642" font-size="16" fill="#102A2B">・要它算數就給工具，或自己按計算機</text>
+  <text x="1088" y="670" font-size="16" fill="#102A2B">・問時效性問題，先確認工具有沒有連網</text>
+
+  <text x="60" y="806" font-size="15" fill="#5C6B6B">圖中的機率長條只是示意，沒有實際數值；切 token 的方式依各家模型而定，這裡以兩字一塊示範。</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

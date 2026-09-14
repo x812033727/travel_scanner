@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一長條對話紙帶穿過取景框，框外的部分變淡 / A tape of chat bubbles runs through a viewfinder; what lies outside the frame fades</title>
+  <desc id="desc">米色底上，一條白色、邊緣有一排排小圓孔的紙帶橫貫整張圖，紙帶上印著九個交替為青綠色與藍色的對話泡泡，每個泡泡裡有兩條代表文字的短線。畫面中央偏右有一個粗線的深青綠色方形取景框，框內的三個泡泡清楚鮮明；框外左右兩側的泡泡被一層米色漸層蓋住，越遠離框越淡，表示模型看不到那些內容。紙帶下方一行字：「它只看得到框裡的」。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <linearGradient id="fadeL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F7F1E8" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#F7F1E8" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="fadeR" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F7F1E8" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#F7F1E8" stop-opacity="0.92"/>
+    </linearGradient>
+  </defs>
+
+  <!-- tape -->
+  <rect x="-60" y="370" width="1720" height="170" rx="12" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <!-- sprocket holes, top row -->
+  <g fill="#F7F1E8" stroke="#102A2B" stroke-width="3">
+    <circle cx="20" cy="392" r="8"/><circle cx="100" cy="392" r="8"/><circle cx="180" cy="392" r="8"/><circle cx="260" cy="392" r="8"/><circle cx="340" cy="392" r="8"/><circle cx="420" cy="392" r="8"/><circle cx="500" cy="392" r="8"/><circle cx="580" cy="392" r="8"/><circle cx="660" cy="392" r="8"/><circle cx="740" cy="392" r="8"/><circle cx="820" cy="392" r="8"/><circle cx="900" cy="392" r="8"/><circle cx="980" cy="392" r="8"/><circle cx="1060" cy="392" r="8"/><circle cx="1140" cy="392" r="8"/><circle cx="1220" cy="392" r="8"/><circle cx="1300" cy="392" r="8"/><circle cx="1380" cy="392" r="8"/><circle cx="1460" cy="392" r="8"/><circle cx="1540" cy="392" r="8"/>
+    <circle cx="20" cy="518" r="8"/><circle cx="100" cy="518" r="8"/><circle cx="180" cy="518" r="8"/><circle cx="260" cy="518" r="8"/><circle cx="340" cy="518" r="8"/><circle cx="420" cy="518" r="8"/><circle cx="500" cy="518" r="8"/><circle cx="580" cy="518" r="8"/><circle cx="660" cy="518" r="8"/><circle cx="740" cy="518" r="8"/><circle cx="820" cy="518" r="8"/><circle cx="900" cy="518" r="8"/><circle cx="980" cy="518" r="8"/><circle cx="1060" cy="518" r="8"/><circle cx="1140" cy="518" r="8"/><circle cx="1220" cy="518" r="8"/><circle cx="1300" cy="518" r="8"/><circle cx="1380" cy="518" r="8"/><circle cx="1460" cy="518" r="8"/><circle cx="1540" cy="518" r="8"/>
+  </g>
+
+  <!-- chat bubbles on the tape: x = 120 + k*160, alternating teal / blue -->
+  <g>
+    <rect x="120" y="420" width="120" height="70" rx="16" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+    <rect x="140" y="442" width="80" height="8" rx="4" fill="#0D6B68" opacity="0.55"/>
+    <rect x="140" y="462" width="54" height="8" rx="4" fill="#0D6B68" opacity="0.55"/>
+
+    <rect x="280" y="420" width="120" height="70" rx="16" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+    <rect x="300" y="442" width="80" height="8" rx="4" fill="#2F6F9F" opacity="0.55"/>
+    <rect x="300" y="462" width="60" height="8" rx="4" fill="#2F6F9F" opacity="0.55"/>
+
+    <rect x="440" y="420" width="120" height="70" rx="16" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+    <rect x="460" y="442" width="80" height="8" rx="4" fill="#0D6B68" opacity="0.55"/>
+    <rect x="460" y="462" width="48" height="8" rx="4" fill="#0D6B68" opacity="0.55"/>
+
+    <rect x="600" y="420" width="120" height="70" rx="16" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+    <rect x="620" y="442" width="80" height="8" rx="4" fill="#2F6F9F" opacity="0.7"/>
+    <rect x="620" y="462" width="56" height="8" rx="4" fill="#2F6F9F" opacity="0.7"/>
+
+    <rect x="760" y="420" width="120" height="70" rx="16" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+    <rect x="780" y="442" width="80" height="8" rx="4" fill="#0D6B68" opacity="0.7"/>
+    <rect x="780" y="462" width="64" height="8" rx="4" fill="#0D6B68" opacity="0.7"/>
+
+    <rect x="920" y="420" width="120" height="70" rx="16" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+    <rect x="940" y="442" width="80" height="8" rx="4" fill="#2F6F9F" opacity="0.7"/>
+    <rect x="940" y="462" width="44" height="8" rx="4" fill="#2F6F9F" opacity="0.7"/>
+
+    <rect x="1080" y="420" width="120" height="70" rx="16" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+    <rect x="1100" y="442" width="80" height="8" rx="4" fill="#0D6B68" opacity="0.55"/>
+    <rect x="1100" y="462" width="58" height="8" rx="4" fill="#0D6B68" opacity="0.55"/>
+
+    <rect x="1240" y="420" width="120" height="70" rx="16" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+    <rect x="1260" y="442" width="80" height="8" rx="4" fill="#2F6F9F" opacity="0.55"/>
+    <rect x="1260" y="462" width="50" height="8" rx="4" fill="#2F6F9F" opacity="0.55"/>
+
+    <rect x="1400" y="420" width="120" height="70" rx="16" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+    <rect x="1420" y="442" width="80" height="8" rx="4" fill="#0D6B68" opacity="0.55"/>
+    <rect x="1420" y="462" width="62" height="8" rx="4" fill="#0D6B68" opacity="0.55"/>
+  </g>
+
+  <!-- fade outside the frame -->
+  <rect x="-60" y="360" width="640" height="190" fill="url(#fadeL)"/>
+  <rect x="1040" y="360" width="700" height="190" fill="url(#fadeR)"/>
+
+  <!-- viewfinder frame -->
+  <rect x="580" y="290" width="460" height="330" rx="24" fill="none" stroke="#0D6B68" stroke-width="14"/>
+  <rect x="604" y="314" width="412" height="282" rx="14" fill="none" stroke="#0D6B68" stroke-width="3" opacity="0.35"/>
+  <!-- small orange marks on the frame corners, like a camera viewfinder -->
+  <path d="M 566 340 L 566 276 L 630 276" fill="none" stroke="#D97A2B" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 990 276 L 1054 276 L 1054 340" fill="none" stroke="#D97A2B" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 566 570 L 566 634 L 630 634" fill="none" stroke="#D97A2B" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 990 634 L 1054 634 L 1054 570" fill="none" stroke="#D97A2B" stroke-width="10" stroke-linecap="round"/>
+
+  <text x="800" y="748" font-size="48" font-weight="700" fill="#102A2B" text-anchor="middle">它只看得到框裡的</text>
+</svg>

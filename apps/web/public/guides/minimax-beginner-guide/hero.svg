@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">影片、語音、對話從同一個圓心長出來 / Video, voice and chat growing from one centre</title>
+  <desc id="desc">米色底上，畫面中央是一個深綠色的圓心，外面有兩圈淡淡的同心圓。三條粗線從圓心往外延伸：左上連到一個藍色圓角方框裡的播放三角形，代表影片；右邊連到一排橘色高低不一的直條，代表聲波與語音；左下連到一個綠色的對話泡泡，裡面有三個點，代表對話。底部一行字：影片、語音、對話。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- rings -->
+  <circle cx="800" cy="420" r="230" fill="none" stroke="#0D6B68" stroke-width="6" opacity="0.12"/>
+  <circle cx="800" cy="420" r="150" fill="none" stroke="#0D6B68" stroke-width="6" opacity="0.2"/>
+
+  <!-- connectors -->
+  <path d="M 800 420 C 720 380, 640 340, 560 300" stroke="#2F6F9F" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M 800 420 C 880 420, 960 420, 1040 420" stroke="#D97A2B" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M 800 420 C 720 470, 640 520, 560 570" stroke="#2E7D5B" stroke-width="14" fill="none" stroke-linecap="round"/>
+
+  <!-- play button -->
+  <rect x="330" y="120" width="240" height="240" rx="48" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="10"/>
+  <polygon points="410,175 410,305 530,240" fill="#2F6F9F"/>
+
+  <!-- sound wave -->
+  <rect x="1050" y="290" width="380" height="260" rx="48" fill="#FFFFFF" stroke="#D97A2B" stroke-width="10"/>
+  <rect x="1090" y="380" width="26" height="80" rx="13" fill="#D97A2B"/>
+  <rect x="1132" y="345" width="26" height="150" rx="13" fill="#D97A2B"/>
+  <rect x="1174" y="320" width="26" height="200" rx="13" fill="#D97A2B"/>
+  <rect x="1216" y="360" width="26" height="120" rx="13" fill="#D97A2B"/>
+  <rect x="1258" y="330" width="26" height="180" rx="13" fill="#D97A2B"/>
+  <rect x="1300" y="370" width="26" height="100" rx="13" fill="#D97A2B"/>
+  <rect x="1342" y="345" width="26" height="150" rx="13" fill="#D97A2B"/>
+  <rect x="1384" y="390" width="26" height="60" rx="13" fill="#D97A2B"/>
+
+  <!-- chat bubble -->
+  <rect x="300" y="530" width="300" height="180" rx="48" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="10"/>
+  <polygon points="380,705 350,770 440,705" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="10" stroke-linejoin="round"/>
+  <rect x="380" y="690" width="60" height="24" fill="#E3F0EF"/>
+  <circle cx="400" cy="620" r="18" fill="#2E7D5B"/>
+  <circle cx="450" cy="620" r="18" fill="#2E7D5B"/>
+  <circle cx="500" cy="620" r="18" fill="#2E7D5B"/>
+
+  <!-- hub -->
+  <circle cx="800" cy="420" r="78" fill="#0D6B68"/>
+  <circle cx="800" cy="420" r="30" fill="#F7F1E8"/>
+
+  <text x="800" y="840" font-size="52" font-weight="700" fill="#102A2B" text-anchor="middle">影片、語音、對話</text>
+</svg>

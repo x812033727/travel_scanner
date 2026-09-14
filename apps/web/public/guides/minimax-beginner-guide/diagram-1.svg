@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">MiniMax 產品家族結構圖：一家公司、五條產品線、各自的入口 / MiniMax product family: one company, five product lines, their entry points</title>
+  <desc id="desc">最上層是 MiniMax 公司：總部在上海，2022 年初成立，2026 年 1 月在香港上市；海外產品由新加坡的 Nanonoble Pte. Ltd. 營運，中國版網址另有一套，台灣使用者走國際版。往下分成五條產品線。一、海螺 AI 影片與圖片：模型 MiniMax H3，文字或圖片生成影片，4 到 15 秒、最高 2K，自帶立體聲配音；入口是 hailuoai.video 與 iOS、Android App。二、語音 MiniMax Audio：模型 Speech 2.8，文字轉語音與配音，10 秒樣本複製聲音，32 種語言；入口是 minimax.io 的 audio 分頁與 API。三、音樂 Music 3.0：描述加歌詞生成歌曲，最長 5 分鐘、含人聲，權重開放下載；入口是 MiniMax Audio、API 的 music-3.0 與 Hugging Face。四、對話與代理 MiniMax Agent：升級版改名 Mavis，有 Lightning 與 Pro 模式，Agent Team 多代理分工，桌面版叫 MiniMax Code；入口是 agent.minimax.io、macOS 與 Windows 桌面版、Google Play App。五、開源模型與 API 平台：M3 有 1M 上下文並支援多模態，M2.7、M2.5、M2 已開源，API 含文字、影片、語音、音樂；入口是 Hugging Face 的 MiniMaxAI、GitHub 的 MiniMax-AI 與 platform.minimax.io。底部註記：海螺註冊送點數並有每日獎勵點數，Audio 網頁可免費試聽，Agent 有每日簽到點數，價格以官網為準、以美元計價。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">MiniMax 產品家族：一家公司、五條產品線、各自的入口（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">MiniMax product family: the company, five product lines and where Taiwan users sign in</text>
+
+  <!-- company -->
+  <rect x="440" y="108" width="720" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="146" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">MiniMax　上海公司，2022 年初成立，2026 年 1 月香港上市</text>
+  <text x="800" y="178" font-size="15" fill="#0B4F4D" text-anchor="middle">海外產品由新加坡的 Nanonoble Pte. Ltd. 營運；中國版網址另有一套，台灣走國際版</text>
+
+  <!-- bus -->
+  <path d="M 800 204 L 800 252" stroke="#5C6B6B" stroke-width="4"/>
+  <path d="M 200 252 L 1400 252" stroke="#5C6B6B" stroke-width="4"/>
+  <path d="M 200 252 L 200 296" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 500 252 L 500 296" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 800 252 L 800 296" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1100 252 L 1100 296" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1400 252 L 1400 296" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- col 1: Hailuo -->
+  <rect x="60" y="300" width="280" height="250" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="200" y="336" font-size="19" font-weight="700" fill="#0B4F4D" text-anchor="middle">海螺 AI　影片、圖片</text>
+  <text x="200" y="372" font-size="15" fill="#102A2B" text-anchor="middle">模型 MiniMax H3</text>
+  <text x="200" y="400" font-size="15" fill="#102A2B" text-anchor="middle">文字或圖片生成影片</text>
+  <text x="200" y="428" font-size="15" fill="#102A2B" text-anchor="middle">4 到 15 秒，最高 2K</text>
+  <text x="200" y="456" font-size="15" fill="#102A2B" text-anchor="middle">自帶立體聲配音</text>
+  <text x="200" y="484" font-size="15" fill="#5C6B6B" text-anchor="middle">免費版有浮水印</text>
+  <text x="200" y="512" font-size="15" fill="#5C6B6B" text-anchor="middle">API 依秒計費</text>
+  <path d="M 200 552 L 200 586" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="60" y="590" width="280" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="200" y="622" font-size="16" font-weight="700" fill="#1F4E73" text-anchor="middle">入口</text>
+  <text x="200" y="654" font-size="15" fill="#1F4E73" text-anchor="middle">hailuoai.video</text>
+  <text x="200" y="682" font-size="15" fill="#1F4E73" text-anchor="middle">iOS、Android App</text>
+  <text x="200" y="710" font-size="15" fill="#1F4E73" text-anchor="middle">API 也能叫 H3</text>
+
+  <!-- col 2: Audio -->
+  <rect x="360" y="300" width="280" height="250" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="500" y="336" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">語音　MiniMax Audio</text>
+  <text x="500" y="372" font-size="15" fill="#102A2B" text-anchor="middle">模型 Speech 2.8</text>
+  <text x="500" y="400" font-size="15" fill="#102A2B" text-anchor="middle">文字轉語音、配音、旁白</text>
+  <text x="500" y="428" font-size="15" fill="#102A2B" text-anchor="middle">10 秒樣本複製聲音</text>
+  <text x="500" y="456" font-size="15" fill="#102A2B" text-anchor="middle">32 種語言</text>
+  <text x="500" y="484" font-size="15" fill="#5C6B6B" text-anchor="middle">網頁版可免費試聽</text>
+  <text x="500" y="512" font-size="15" fill="#5C6B6B" text-anchor="middle">API 按字元計費</text>
+  <path d="M 500 552 L 500 586" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="360" y="590" width="280" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="500" y="622" font-size="16" font-weight="700" fill="#1F4E73" text-anchor="middle">入口</text>
+  <text x="500" y="654" font-size="15" fill="#1F4E73" text-anchor="middle">minimax.io 的 audio 分頁</text>
+  <text x="500" y="682" font-size="15" fill="#1F4E73" text-anchor="middle">API speech-2.8-hd</text>
+  <text x="500" y="710" font-size="15" fill="#1F4E73" text-anchor="middle">API speech-2.8-turbo</text>
+
+  <!-- col 3: Music -->
+  <rect x="660" y="300" width="280" height="250" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="800" y="336" font-size="19" font-weight="700" fill="#1F5C42" text-anchor="middle">音樂　Music 3.0</text>
+  <text x="800" y="372" font-size="15" fill="#102A2B" text-anchor="middle">描述加歌詞生成歌曲</text>
+  <text x="800" y="400" font-size="15" fill="#102A2B" text-anchor="middle">最長 5 分鐘、含人聲</text>
+  <text x="800" y="428" font-size="15" fill="#102A2B" text-anchor="middle">一次做完編曲與演唱</text>
+  <text x="800" y="456" font-size="15" fill="#102A2B" text-anchor="middle">權重開放下載</text>
+  <text x="800" y="484" font-size="15" fill="#5C6B6B" text-anchor="middle">網頁額度以官網為準</text>
+  <text x="800" y="512" font-size="15" fill="#5C6B6B" text-anchor="middle">API 依官網價目</text>
+  <path d="M 800 552 L 800 586" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="660" y="590" width="280" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="800" y="622" font-size="16" font-weight="700" fill="#1F4E73" text-anchor="middle">入口</text>
+  <text x="800" y="654" font-size="15" fill="#1F4E73" text-anchor="middle">MiniMax Audio 音樂功能</text>
+  <text x="800" y="682" font-size="15" fill="#1F4E73" text-anchor="middle">API music-3.0</text>
+  <text x="800" y="710" font-size="15" fill="#1F4E73" text-anchor="middle">Hugging Face 權重</text>
+
+  <!-- col 4: Agent -->
+  <rect x="960" y="300" width="280" height="250" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1100" y="336" font-size="19" font-weight="700" fill="#8A4A12" text-anchor="middle">對話與代理</text>
+  <text x="1100" y="372" font-size="15" fill="#102A2B" text-anchor="middle">MiniMax Agent，升級版叫 Mavis</text>
+  <text x="1100" y="400" font-size="15" fill="#102A2B" text-anchor="middle">Lightning、Pro 兩種模式</text>
+  <text x="1100" y="428" font-size="15" fill="#102A2B" text-anchor="middle">Agent Team 多代理分工</text>
+  <text x="1100" y="456" font-size="15" fill="#102A2B" text-anchor="middle">桌面版叫 MiniMax Code</text>
+  <text x="1100" y="484" font-size="15" fill="#5C6B6B" text-anchor="middle">每日簽到有點數</text>
+  <text x="1100" y="512" font-size="15" fill="#5C6B6B" text-anchor="middle">訂閱與 API 共用</text>
+  <path d="M 1100 552 L 1100 586" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="960" y="590" width="280" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="1100" y="622" font-size="16" font-weight="700" fill="#1F4E73" text-anchor="middle">入口</text>
+  <text x="1100" y="654" font-size="15" fill="#1F4E73" text-anchor="middle">agent.minimax.io</text>
+  <text x="1100" y="682" font-size="15" fill="#1F4E73" text-anchor="middle">macOS、Windows 桌面版</text>
+  <text x="1100" y="710" font-size="15" fill="#1F4E73" text-anchor="middle">Google Play App</text>
+
+  <!-- col 5: Open models & API -->
+  <rect x="1260" y="300" width="280" height="250" rx="14" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="4"/>
+  <text x="1400" y="336" font-size="19" font-weight="700" fill="#4E3428" text-anchor="middle">開源模型與 API 平台</text>
+  <text x="1400" y="372" font-size="15" fill="#102A2B" text-anchor="middle">M3：1M 上下文、多模態</text>
+  <text x="1400" y="400" font-size="15" fill="#102A2B" text-anchor="middle">M2.7、M2.5、M2 已開源</text>
+  <text x="1400" y="428" font-size="15" fill="#102A2B" text-anchor="middle">給開發者與會架模型的人</text>
+  <text x="1400" y="456" font-size="15" fill="#102A2B" text-anchor="middle">API：文字、影片、語音、音樂</text>
+  <text x="1400" y="484" font-size="15" fill="#5C6B6B" text-anchor="middle">權重免費下載</text>
+  <text x="1400" y="512" font-size="15" fill="#5C6B6B" text-anchor="middle">API 按量付費</text>
+  <path d="M 1400 552 L 1400 586" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1260" y="590" width="280" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="1400" y="622" font-size="16" font-weight="700" fill="#1F4E73" text-anchor="middle">入口</text>
+  <text x="1400" y="654" font-size="15" fill="#1F4E73" text-anchor="middle">Hugging Face MiniMaxAI</text>
+  <text x="1400" y="682" font-size="15" fill="#1F4E73" text-anchor="middle">GitHub MiniMax-AI</text>
+  <text x="1400" y="710" font-size="15" fill="#1F4E73" text-anchor="middle">platform.minimax.io</text>
+
+  <!-- notes -->
+  <text x="60" y="790" font-size="15" fill="#5C6B6B">免費額度：海螺註冊送點數並有每日獎勵點數；Audio 網頁可免費試聽；Agent 每日簽到有點數。價格以官網為準、以美元計價，方案常變動。</text>
+  <text x="60" y="818" font-size="15" fill="#5C6B6B">資料存放：海螺隱私政策寫原則上不轉移到新加坡以外；API 平台隱私政策寫存放在美國的資料中心；兩者都不提供給 16 歲以下的人。</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

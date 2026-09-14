@@ -1,0 +1,347 @@
+{
+  "slug": "chatgpt-custom-gpts-build",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代）",
+      "description": "自製 GPT 是把角色指令、知識檔案與能力開關包成可分享的專用助手。這篇依 OpenAI help center 2026 年 9 月的說明逐欄講 GPT 編輯器，附民宿訂房問答與家裡食譜助手兩份完整指令，講知識檔案上限、分享層級與 Store 條件、跳出角色與亂編怎麼修；並如實說明個人帳號已不能建新 GPT、只有 Business 以上工作區能建、OpenAI 預告自製 GPT 將退場改用 Plugins，個人使用者改用專案即可。",
+      "hero": {
+        "src": "/guides/chatgpt-custom-gpts-build/hero.jpg",
+        "alt": "米色底上一個機器人形狀的對話泡泡，周圍的齒輪、書本與開關零件沿著虛線組裝進去，下方一行字「組裝你的專用助手」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "自製 GPT（OpenAI 官網稱 custom GPT）是把一個固定角色的指令、幾份參考檔案與需要的能力開關包在一起，存成一個能重複打開、也能分享給別人的專用助手，不用寫程式。先講 2026 年 9 月 13 日依 OpenAI help center 查到的結論：Free、Go、Plus、Pro 這些個人帳號已經不能建立或發布新的 GPT，只能使用與編輯既有的；能建的是 Business、Enterprise、Edu 工作區的成員，而且 OpenAI 已預告自製 GPT 會退場、改由 Plugins 接手。個人使用者想要同樣的效果，用專案就能做出八九成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會知道編輯器每一欄的用途，拿到「民宿的訂房問答小幫手」與「家裡的食譜助手」兩份可以直接貼上的完整指令，知道知識檔案的上限與該放什麼、分享層級怎麼選、公開到 GPT Store 要什麼條件，以及預覽時遇到跳出角色、亂編答案該怎麼改指令。這些寫法搬到專案裡一樣通用，就算你的帳號建不了 GPT，指令範例也不會白學。"
+        },
+        {
+          "type": "heading",
+          "text": "自製 GPT 是什麼、和專案、自訂指令差在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般對話每次都要重講「你是誰、要做什麼、不要做什麼」；自製 GPT 是把這些話寫一次存起來，附上它該讀的檔案，之後每次打開就是那個角色。它適合重複性高、角色固定、知識固定的工作：同一份住宿規則要回答上百位住客、同一本家常食譜每天翻。help center 把它定位成「為特定目的設定過的 ChatGPT 版本」，並提醒 GPT 不會用你的記憶、自訂指令與先前的對話，每次對話都從零開始，這是它穩定的原因，也是它的限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "跟同系列另外兩篇講的功能相比：自訂指令是套用在你所有新對話的一段話，沒有檔案、不能分享；專案是一個資料夾，裡面有專案指令、參考檔案與多個對話，所有方案都能開，Business 以上可以分享給同事；自製 GPT 則是一個能獨立分享、甚至公開上架的成品。三者的字元與檔案上限整理在文末的表格。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "2026 年 9 月的現況：誰能建、誰能用、Store 還在不在",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建立與發布：help center 寫明「新的 GPT 建立與發布不開放給個人 ChatGPT 帳號，包括 Free、Go、Plus 與 Pro」；以前建過的 GPT 還能用，在方案與權限允許下也還能編輯。Business、Enterprise、Edu 工作區的成員能不能建立、編輯、發布，看工作區設定與管理員給的權限。建立與編輯只能在網頁版做，手機 App 只能使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用：GPT 對所有 ChatGPT 使用者開放，登入後從側欄的 Explore GPTs、別人給的連結或工作區分享就能打開。GPT Store（網址 chatgpt.com/gpts）今天仍在線上，分成 Top Picks、Trending、By ChatGPT、Images、Programming、Research & Analysis、Productivity、Writing、Lifestyle、Education 等類別。"
+        },
+        {
+          "type": "paragraph",
+          "text": "退場時程：每一頁 GPT 相關的 help center 頂端都掛著同一段公告：OpenAI 計畫讓自製 GPT 退場，建議把工作流程搬到 Plugins；受影響的 Enterprise 工作區預定 2026 年 12 月 11 日退場，協助搬遷的工具預定 2026 年 9 月 17 日推出，不一定同時開放給每個帳號；既有的 GPT 在退場前都能用，其他方案的日期官網沒寫，以官網為準。Plugins 是 2026 年 7 月 9 日起在 Plugin Directory 上架的東西，一個 Plugin 可以包 Skills（可重用的指令與流程）、連接的 App 與 App 範本，Skills 目前只開放給 Business、Enterprise、Healthcare、Edu 使用者。個人帳號可以直接跳到最後一節。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+        },
+        {
+          "type": "heading",
+          "text": "編輯器逐欄填：名稱、說明、指令、起始句、知識、能力",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在網頁版側欄點 Explore GPTs，右上角的 Create 就是編輯器。編輯器左邊有兩個分頁：Create 是用聊天的方式讓 ChatGPT 幫你起草，Configure 是自己逐欄填；右邊是 Preview 預覽窗，邊改邊測。所有修改會自動存成草稿，改壞了可以從版本紀錄還原。下面用「民宿的訂房問答小幫手」示範 Configure 每一欄該填什麼，圖上的 1 到 6 對應這六步。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "名稱與說明：名稱會出現在搜尋結果與對話上方，填「山邊民宿訂房小幫手」這種一看就知道是誰的；說明用一句話講它給誰用、能回答什麼。",
+            "指令（Instructions）：整個 GPT 的核心，寫角色、範圍、拒答規則與回答格式，下一節有兩份完整範例。help center 的建議是用標題與清單分段、多步驟流程寫成「遇到 X 就做 Y」、多寫要做什麼而不是一長串不要，並附一兩個可接受與不可接受的例子。",
+            "對話起始句（Conversation starters）：使用者打開時看到的幾句範例提問，填住客最常問的，例如「入住和退房是幾點」「可以帶寵物嗎」。",
+            "知識（Knowledge）：上傳房型價格表、住宿規則、交通說明這類參考資料，上限與該放什麼見下一段。",
+            "建議模型與能力開關：建議模型是使用者開新對話時預設用的模型；能力有網頁搜尋、產圖、Canvas、程式與資料分析（Code Interpreter & Data Analysis）、App 五個開關。問答小幫手只需要讀檔案，網頁搜尋與產圖都可以關掉，答的範圍越窄越不會亂編；食譜助手可以開產圖畫擺盤參考。",
+            "動作（Actions）：讓 GPT 呼叫外部 API。它今天仍然存在，但要提供 OpenAPI 描述檔與驗證方式，公開的 GPT 還要填隱私權政策網址，而且一個 GPT 只能在 App 與 Actions 之間二選一。這超出「不用寫程式」的範圍，第一個 GPT 先不要碰。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "知識檔案的上限，help center 的 Knowledge in GPTs 頁寫的是一個 GPT 最多 20 個檔案、每個最大 512 MB；檔案上傳 FAQ 另外寫文字與文件檔每個最多 2M token、圖片每張 20 MB、試算表約 50 MB，同一頁還有「每個 GPT 10 個檔案」的舊句子，以編輯器實際能上傳的為準。適合放的是參考資料而不是規則：房型與價格表、住宿規則、交通說明、食譜本身；語氣、流程、拒答要寫在指令裡，官網明講知識欄不是放行為規則的地方。實務上把 PDF 轉成純文字、把表格做成一列一筆的簡單版本，會比排版複雜的 DM 好用；官網也提醒不要只靠圖片。要它引用檔案原文，要在指令裡寫明。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chatgpt-custom-gpts-build/diagram-1.svg",
+          "alt": "GPT 編輯器欄位結構與建立到發布的六步流程圖：左側列出名稱、說明、指令、對話起始句、知識、建議模型、能力、動作八個欄位，右側是預覽時的常見失敗與 2026 年 9 月的現況，下方六個步驟從開編輯器到 Update。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊是 Configure 分頁由上到下的欄位與每欄該放什麼，右邊是預覽時的兩種常見失敗與 2026 年 9 月的方案現況，下方 1 到 6 是從開編輯器到更新正式版的順序。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "知識檔案裡別放個資與客戶名單",
+          "text": "公開或用連結分享的 GPT，任何拿到連結的人都能問它任何問題，知識檔案裡有的內容都可能被問出來。訂房紀錄、住客姓名電話、員工資料、內部成本都不要上傳，只放你願意印在官網上的資訊。GPT 的建立者看不到使用者的對話，無法事後檢查誰問了什麼；個人方案上傳的資料除非關掉「改善模型」設定，否則可能被用於訓練，Business、Enterprise、Edu 工作區預設不會。"
+        },
+        {
+          "type": "heading",
+          "text": "指令怎麼寫：兩份完整範例",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一份好用的指令有四段：角色（它是誰、對誰說話、什麼語氣）、範圍（只回答什麼、答案以什麼為準）、拒答規則（範圍外的問題怎麼回、哪些事不能代為承諾）、格式（幾句、要不要清單、結尾做什麼）。下面兩份可以直接貼進 Instructions 欄，把檔名換成你自己的就行。第一份是民宿的訂房問答小幫手："
+        },
+        {
+          "type": "list",
+          "items": [
+            "角色：你是「山邊民宿」的訂房問答小幫手，用繁體中文、口語但有禮貌的語氣回答住客的問題，稱呼對方「您」。",
+            "範圍：只回答與山邊民宿有關的問題：房型、價格、入住與退房時間、交通、周邊景點、取消規則。答案一律以知識檔案「房型與價格.txt」「住宿規則.txt」為準；檔案裡沒有的資訊，回答「這題我沒有資料，請直接私訊民宿確認」，不要自己猜。",
+            "拒答規則：不談其他民宿、不比價、不回答與住宿無關的問題，遇到就說明這裡只回答山邊民宿的問題。訂房、改期、退款這類要動到訂單的要求，一律請住客用官方 LINE 聯絡，不代為承諾任何優惠或保留房間。",
+            "格式：每次回答不超過 5 句；提到價格時加一句「以訂房頁面顯示的價格為準」；結尾問一句還有沒有其他想知道的。可接受的回答例子：「雙人房含早餐，入住 15:00 以後、退房 11:00 以前，以訂房頁面顯示的價格為準。還有其他想知道的嗎？」不可接受的例子：向住客保證一定有房。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "第二份是家裡的食譜助手，只有自己家用，所以可以把口味偏好直接寫進去："
+        },
+        {
+          "type": "list",
+          "items": [
+            "角色：你是我們家的食譜助手，用輕鬆的繁體中文回答。記住家裡的口味：不吃香菜、少油、小孩不吃辣。",
+            "範圍：只根據知識檔案「家常菜.docx」裡的食譜回答。使用者說出手邊有哪些食材時，先從檔案裡找能做的菜；找不到再提一道新菜，並標明「這道不在家裡的食譜本裡」。",
+            "規則：份量預設 4 人，使用者說人數就換算；每道菜列出食材、步驟、大約要多久；不建議家裡沒有的調味料。遇到「今天吃什麼」這種沒給食材的問題，先反問冰箱裡有什麼。",
+            "格式：用清單列步驟，步驟不超過 8 步；最後給一句保存或加熱的提醒。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "兩份都刻意寫了「檔案裡沒有就說沒有」與「不要自己猜」，這是防亂編最有效的一句；也都用正面句寫要做什麼，help center 說這比一長串禁止事項更穩。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "發布、分享與測試修改",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "編輯器右上角的 Share 決定誰看得到。help center 列的層級由窄到寬是：只邀請特定人（Invite-only，最多直接分享給 100 個使用者或群組）、工作區裡有連結的人、整個工作區、任何有連結的人、GPT Store。每個被分享的人還能設權限：只能對話、可以看設定、可以編輯，公開分享不支援「看設定」。選好按 Save；已經發布的 GPT 之後修改都先留在草稿，按 Update 才會推到正式版；想收回就把層級改窄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要上 GPT Store 得選最寬的層級，用「任何有連結的人」分享的 GPT 不會出現在 Store 裡。條件是先完成 Builder profile：顯示名稱、經過網域驗證的網站連結、驗證過的社群帳號；可能要選一個類別；用了 Actions 的公開 GPT 必須填隱私權政策網址；接了 App 的可能不能公開；送出後還要過審查。這整段只適用於工作區帳號，個人帳號的分享選項是灰的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試時把 Preview 當成第一個住客：問正常的問題、範圍外的問題、檔案裡沒有的問題。兩種最常見的失敗都有固定解法。跳出角色（聊著聊著開始回答別家民宿）：help center 的處理順序是縮短指令、刪掉重複或互相衝突的規則、把多步驟寫成明確的「遇到 X 就做 Y」、加一兩個例子，然後一次只改一小處再回 Preview 測。亂編（價格、時間答得有模有樣但檔案裡沒有）：先確認資訊真的在檔案裡，把檔案改成文字為主的簡單格式，在指令加上「檔案裡沒有的就回答沒有資料」，並用更窄的問法點名檔案。官網的原則是先收緊指令、加例子，再考慮開更多工具。連結點不了就在指令裡要求用 Markdown 格式；檔案下載不了先確認程式與資料分析有開。"
+        },
+        {
+          "type": "heading",
+          "text": "個人帳號的替代做法：用專案做同一件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Free、Go、Plus、Pro 今天建不了新的 GPT，但同樣的東西在專案裡能做到八九成：側欄新增一個專案「山邊民宿問答」，把上面那份指令貼進專案指令（只在這個專案裡生效，會覆蓋全域自訂指令），把住宿規則與價格表加進專案檔案，之後在這個專案裡開的每個對話都是那個小幫手。差別有三：個人方案的專案不能分享給別人（Business、Enterprise、Edu 才能分享給同事），所以做不成給住客用的公開問答；專案的檔案上限依方案是 5、25 或 40 個；專案可以選要不要連到你其他對話的記憶，GPT 一律不用。食譜助手這種只有自己家用的，專案反而比 GPT 合適；要給住客用的公開版本，目前得靠 Business 工作區建 GPT，或等 Plugins 對個人方案的做法明朗，以官網為準。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "面向",
+            "自製 GPT",
+            "專案",
+            "自訂指令"
+          ],
+          "rows": [
+            [
+              "誰能建立",
+              "Business、Enterprise、Edu 工作區，依權限；個人帳號只能使用與編輯既有的",
+              "所有方案",
+              "所有方案"
+            ],
+            [
+              "指令放哪",
+              "編輯器的 Instructions 欄",
+              "專案指令，覆蓋全域自訂指令",
+              "Settings → Personalization；Free 與 Go 1,500 字元、Plus 以上 5,000 字元"
+            ],
+            [
+              "檔案",
+              "最多 20 個、每個 512 MB",
+              "Free 5 個、Go 與 Plus 25 個、Pro 與 Business 以上 40 個",
+              "沒有"
+            ],
+            [
+              "記憶與先前對話",
+              "不用記憶、不用自訂指令，每次從零開始",
+              "可選只用專案內的記憶或連到全部記憶",
+              "套用在所有新對話"
+            ],
+            [
+              "分享",
+              "邀請、工作區、連結、GPT Store（限工作區帳號）",
+              "個人方案不能分享；Business 以上可分享給同事",
+              "不能分享"
+            ],
+            [
+              "適合",
+              "給很多人用、角色固定的助手；公開問答",
+              "自己或團隊的長期工作、家用助手",
+              "全域的語氣與背景"
+            ],
+            [
+              "現況",
+              "OpenAI 預告退場改用 Plugins；Enterprise 2026 年 12 月 11 日",
+              "持續提供",
+              "持續提供"
+            ]
+          ],
+          "caption": "2026 年 9 月依 OpenAI help center 整理；各方案的權限與上限之後可能變動，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Help Center：Creating and editing GPTs（個人帳號 Free、Go、Plus、Pro 不能建立或發布新 GPT；Business、Enterprise、Edu 依工作區權限；只能在網頁版建立；Explore GPTs → Create；Create 與 Configure 分頁；名稱、說明、指令、對話起始句、知識最多 20 個檔案每個 512 MB）",
+          "url": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：GPTs in ChatGPT（GPT 的定義；所有使用者登入後可用；GPT 不用記憶、自訂指令與先前對話；建立者看不到使用者對話；個人方案資料可能用於訓練、工作區預設不會；App 與 Actions 二選一；Explore GPTs）",
+          "url": "https://help.openai.com/en/articles/8554407-gpts-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Sharing and publishing GPTs（分享層級 Invite-only、工作區有連結的人、整個工作區、任何有連結的人、GPT Store；權限只能對話／看設定／編輯；最多直接分享給 100 個對象；Builder profile 需名稱、驗證網域的網站、驗證的社群帳號；Share → Save、Update）",
+          "url": "https://help.openai.com/en/articles/8798878-sharing-and-publishing-gpts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Knowledge in GPTs（每個 GPT 最多 20 個檔案、每個最大 512 MB；支援常見文件、試算表、圖片、文字與程式碼檔；部分格式需開 Code Interpreter & Data Analysis；知識放參考資料而非規則；要引用需在指令寫明；上傳後用 Preview 測）",
+          "url": "https://help.openai.com/en/articles/8843948-knowledge-in-gpts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：File Uploads FAQ（每個檔案硬上限 512 MB；文字與文件檔每個最多 2M token；圖片 20 MB；試算表約 50 MB；頁上另有「每個 GPT 10 個檔案」的句子與知識頁不一致；專案檔案 Free 5、Go 與 Plus 25、Edu／Pro／Business／Enterprise 40）",
+          "url": "https://help.openai.com/en/articles/8555545-file-uploads-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Configuring actions in GPTs（Actions 仍存在；需 OpenAPI 描述檔（JSON 或 YAML）與驗證方式 None／API key／OAuth；公開 GPT 需隱私權政策網址；App 與 Actions 不能同時用；Enterprise／Edu 可限制網域）",
+          "url": "https://help.openai.com/en/articles/9442513-configuring-actions-in-gpts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Key guidelines for writing instructions for custom GPTs（多步驟寫成「遇到 X 就做 Y」；用標題與清單；正面具體指令優於一長串禁止；附可接受與不可接受的例子；知識放參考資料、規則放指令；先收緊指令再加工具）",
+          "url": "https://help.openai.com/en/articles/9358033-key-guidelines-for-writing-instructions-for-custom-gpts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Troubleshooting GPTs（不聽指令：縮短、刪重複衝突規則、明確步驟、加例子、小幅修改後在 Preview 測；不用知識檔：確認資訊在檔案裡、改用文字為主的檔案、不要只靠圖片；連結不能點用 Markdown 格式；下載失敗先開 Code Interpreter & Data Analysis；個人帳號分享選項灰掉）",
+          "url": "https://help.openai.com/en/articles/11325361-troubleshooting-gpts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Using GPTs on our free tier FAQ（免費使用者可用既有 GPT、不能建立；退場時程）",
+          "url": "https://help.openai.com/en/articles/9300383-using-gpts-on-our-free-tier-faq",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Does memory function with GPTs?（GPT 不用已儲存的記憶、自訂指令與先前對話，每次對話從零開始）",
+          "url": "https://help.openai.com/en/articles/8983148-does-memory-function-with-gpts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Managing GPT access in Enterprise and Edu workspaces（管理員決定誰能建立、編輯、分享 GPT 與分享層級；退場公告：Enterprise 2026 年 12 月 11 日、遷移工具 2026 年 9 月 17 日）",
+          "url": "https://help.openai.com/en/articles/8555535-managing-gpt-access-in-enterprise-and-edu-workspaces",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Getting your GPT featured（發布時可能要選類別；個人帳號不能發布；退場公告）",
+          "url": "https://help.openai.com/en/articles/8793007-getting-your-gpt-featured",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "ChatGPT：GPT Store（chatgpt.com/gpts，2026 年 9 月 13 日仍在線上，類別 Top Picks、Trending、By ChatGPT、Images、Programming、Research & Analysis、Productivity、Writing、Lifestyle、Education）",
+          "url": "https://chatgpt.com/gpts",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Plugins in ChatGPT and Codex（Plugin 包含 Skills、連接的 App 與 App 範本；Plugin Directory 依方案與帳號逐步開放）",
+          "url": "https://help.openai.com/en/articles/20001256-plugins-in-chatgpt-and-codex",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Skills in ChatGPT（Skills 開放給符合資格的 Business、Enterprise、Healthcare、Edu 使用者；Plugins → Skills → Create）",
+          "url": "https://help.openai.com/en/articles/20001066-skills-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT — Release Notes（2026 年 7 月 9 日 Plugin Directory 取代 App Directory；Plugins 可包 Skills、App 與 App 範本）",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：Projects in ChatGPT（所有方案可用；專案檔案 Free 5、Go 與 Plus 25、Edu／Pro／Business／Enterprise 40；專案指令覆蓋全域設定；專案限定記憶；Business、Enterprise、Edu 可分享給同事）",
+          "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "OpenAI Help Center：ChatGPT Custom Instructions（Settings → Personalization；Free 與 Go 1,500 字元、Plus／Pro／Business／Enterprise／Edu 5,000 字元；套用到所有新對話）",
+          "url": "https://help.openai.com/en/articles/8096356-custom-instructions-for-chatgpt",
+          "checked_on": "2026-09-13"
+        }
+      ]
+    }
+  }
+}

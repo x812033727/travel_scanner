@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">大型語言模型：一串 token 排成句子，最後一格是問號 / A large language model: a row of tokens with the next one unknown</title>
+  <desc id="desc">米色底上有一排白色圓角方塊，分別寫著「今天」「天氣」「很好」「，」「我們」「去」「公園」，排成一句還沒寫完的話；最後一格是綠色底的方塊，裡面畫著一個問號，代表模型正在猜下一個 token。問號方塊上方浮著三條長短不一的綠、橘、藍色長條，象徵幾個候選字的機率高低。整張圖沒有其他文字。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <circle cx="1328" cy="500" r="230" fill="#E3F0EF"/>
+  <circle cx="240" cy="180" r="70" fill="#E6F0F7"/>
+  <circle cx="1460" cy="790" r="46" fill="#E6F0F7"/>
+  <circle cx="120" cy="760" r="28" fill="#0D6B68" opacity="0.25"/>
+  <!-- token boxes -->
+  <rect x="92" y="400" width="176" height="200" rx="22" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="180" y="521" font-size="60" font-weight="700" fill="#102A2B" text-anchor="middle">今天</text>
+  <rect x="288" y="400" width="176" height="200" rx="22" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="376" y="521" font-size="60" font-weight="700" fill="#102A2B" text-anchor="middle">天氣</text>
+  <rect x="484" y="400" width="176" height="200" rx="22" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="572" y="521" font-size="60" font-weight="700" fill="#102A2B" text-anchor="middle">很好</text>
+  <rect x="680" y="400" width="110" height="200" rx="22" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="735" y="521" font-size="60" font-weight="700" fill="#102A2B" text-anchor="middle">，</text>
+  <rect x="810" y="400" width="176" height="200" rx="22" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="898" y="521" font-size="60" font-weight="700" fill="#102A2B" text-anchor="middle">我們</text>
+  <rect x="1006" y="400" width="110" height="200" rx="22" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="1061" y="521" font-size="60" font-weight="700" fill="#102A2B" text-anchor="middle">去</text>
+  <rect x="1136" y="400" width="176" height="200" rx="22" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <text x="1224" y="521" font-size="60" font-weight="700" fill="#102A2B" text-anchor="middle">公園</text>
+  <!-- the unknown next token -->
+  <rect x="1332" y="400" width="176" height="200" rx="22" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <path d="M 1386 466 C 1386 432 1404 420 1420 420 C 1440 420 1454 434 1454 452 C 1454 470 1440 476 1428 486 C 1420 493 1420 502 1420 516" fill="none" stroke="#0D6B68" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1420" cy="553" r="10" fill="#0D6B68"/>
+  <!-- candidate bars above the unknown token -->
+  <line x1="1420" y1="398" x2="1420" y2="340" stroke="#0D6B68" stroke-width="4" stroke-dasharray="8 10" stroke-linecap="round"/>
+  <rect x="1332" y="300" width="250" height="24" rx="12" fill="#2E7D5B"/>
+  <rect x="1332" y="258" width="164" height="24" rx="12" fill="#D97A2B"/>
+  <rect x="1332" y="216" width="96" height="24" rx="12" fill="#2F6F9F"/>
+  <!-- baseline path under the sentence -->
+  <line x1="92" y1="650" x2="1300" y2="650" stroke="#5C6B6B" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+  <circle cx="1310" cy="650" r="8" fill="#5C6B6B" opacity="0.5"/>
+</svg>

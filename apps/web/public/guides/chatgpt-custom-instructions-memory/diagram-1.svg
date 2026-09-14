@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">ChatGPT 的三層設定與記憶怎麼流進來 / Three layers of ChatGPT instructions and how memory flows in</title>
+  <desc id="desc">上排由左到右三層，越右越具體、越優先。第 1 層自訂指令：設定、個人化、自訂指令，整個帳號的每個對話都讀，免費與 Go 最多 1,500 字元，Plus 以上最多 5,000 字元，存檔後立即套用含已開著的舊對話，內容分成關於你與希望它怎麼回答兩塊，例如一律用台灣的繁體中文用語。第 2 層專案指令：專案右上角三點選單、專案設定，只在這個專案內生效，與第 1 層衝突時以專案指令為準，例如這個專案的文件一律用英文。第 3 層這個對話：你這次打的提示詞與貼上的資料，最具體、最後決定，回答前把第 1、2 層與記憶一起讀進來，回答下方的書本圖示可看這次用了哪些來源，對話結束後新學到的事更新回記憶。下排左：暫時對話繞過記憶，新對話右上角的暫時按鈕，開始時選個人化或未個人化，個人化讀自訂指令與既有記憶但不更新記憶，未個人化連自訂指令與記憶都不讀，不進歷史紀錄、不用來訓練模型，OpenAI 為了安全可能保留最多 30 天，幫別人問或共用電腦時用這個。下排中：專案的記憶規則，預設可參考同專案與依方案專案外的對話，project-only 只讀同專案的對話、不用已儲存的記憶，專案外的對話也讀不到專案內容，共用給別人的專案一律 project-only。下排右：記憶是它自己記下的事，來源有兩種，已儲存的記憶是你叫它記的一句話，聊天紀錄是從對話、檔案、App 整理出來的，兩者合成記憶摘要，在設定、個人化、記憶可看、可改、逐條刪，刪記憶不會刪對話，徹底刪要連來源一起刪；記憶在回答前讀進第 3 層，對話後更新回摘要；暫時對話的內容不會寫進記憶。底下備註：免費版記憶較精簡、付費版較長，能記多少與選單名稱以官網為準。2026 年 9 月查證。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">ChatGPT 的三層設定與記憶怎麼流進來（2026 年 9 月查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Three layers of instructions, how memory flows in, and how Temporary Chat bypasses it</text>
+
+  <!-- layer 1 custom instructions -->
+  <rect x="60" y="118" width="460" height="280" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="100" cy="160" r="22" fill="#0D6B68"/>
+  <text x="100" y="168" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="134" y="168" font-size="20" font-weight="700" fill="#0B4F4D">自訂指令</text>
+  <text x="134" y="194" font-size="15" fill="#5C6B6B">Custom instructions・整個帳號</text>
+  <text x="84" y="236" font-size="16" fill="#102A2B">設定 → 個人化 → 自訂指令，每個對話都讀</text>
+  <text x="84" y="264" font-size="16" fill="#102A2B">免費與 Go 最多 1,500 字元</text>
+  <text x="84" y="292" font-size="16" fill="#102A2B">Plus 以上最多 5,000 字元</text>
+  <text x="84" y="320" font-size="16" fill="#102A2B">存檔後立即套用，含已開著的舊對話</text>
+  <text x="84" y="348" font-size="16" fill="#102A2B">寫兩塊：關於你、希望它怎麼回答</text>
+  <text x="84" y="376" font-size="16" fill="#102A2B">例：一律用台灣的繁體中文用語</text>
+  <text x="540" y="108" font-size="15" fill="#5C6B6B" text-anchor="middle">蓋過</text>
+  <path d="M 522 258 L 552 258" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- layer 2 project instructions -->
+  <rect x="560" y="118" width="460" height="280" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="600" cy="160" r="22" fill="#2F6F9F"/>
+  <text x="600" y="168" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="634" y="168" font-size="20" font-weight="700" fill="#1F4E73">專案指令</text>
+  <text x="634" y="194" font-size="15" fill="#5C6B6B">Project instructions・只在專案內</text>
+  <text x="584" y="236" font-size="16" fill="#102A2B">專案右上角三點選單 → 專案設定</text>
+  <text x="584" y="264" font-size="16" fill="#102A2B">只在這個專案內生效</text>
+  <text x="584" y="292" font-size="16" fill="#102A2B">與第 1 層衝突時，以專案指令為準</text>
+  <text x="584" y="320" font-size="16" fill="#102A2B">例：這個專案的文件一律用英文</text>
+  <text x="584" y="348" font-size="16" fill="#102A2B">專案的記憶另有規則（見下方中間）</text>
+  <text x="1040" y="108" font-size="15" fill="#5C6B6B" text-anchor="middle">蓋過</text>
+  <path d="M 1022 258 L 1052 258" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- layer 3 this chat -->
+  <rect x="1060" y="118" width="460" height="280" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <circle cx="1100" cy="160" r="22" fill="#102A2B"/>
+  <text x="1100" y="168" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="1134" y="168" font-size="20" font-weight="700" fill="#102A2B">這個對話</text>
+  <text x="1134" y="194" font-size="15" fill="#5C6B6B">This chat・最具體、最後決定</text>
+  <text x="1084" y="236" font-size="16" fill="#102A2B">你這次打的提示詞與貼上的資料</text>
+  <text x="1084" y="264" font-size="16" fill="#102A2B">回答前把第 1、2 層與記憶一起讀進來</text>
+  <text x="1084" y="292" font-size="16" fill="#102A2B">回答下方的書本圖示：看用了哪些來源</text>
+  <text x="1084" y="320" font-size="16" fill="#102A2B">對話結束後，新學到的事更新回記憶</text>
+  <text x="1084" y="348" font-size="16" fill="#102A2B">幫別人問、談客戶資料：改用暫時對話</text>
+
+  <!-- memory <-> chat arrows -->
+  <path d="M 1120 456 L 1120 402" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1460 400 L 1460 452" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="1290" y="433" font-size="15" fill="#8A4A16" text-anchor="middle">回答前讀進來 ・ 對話後更新摘要</text>
+
+  <!-- project box connector -->
+  <path d="M 790 400 L 790 452" stroke="#2F6F9F" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- temporary chat -->
+  <rect x="60" y="456" width="460" height="320" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4" stroke-dasharray="14 10"/>
+  <text x="84" y="506" font-size="20" font-weight="700" fill="#B8442D">暫時對話：繞過記憶</text>
+  <text x="84" y="532" font-size="15" fill="#5C6B6B">Temporary Chat</text>
+  <text x="84" y="574" font-size="16" fill="#102A2B">新對話右上角「暫時」按鈕，開始時選：</text>
+  <text x="84" y="602" font-size="16" fill="#102A2B">個人化：讀自訂指令與既有記憶，但不更新</text>
+  <text x="84" y="630" font-size="16" fill="#102A2B">未個人化：自訂指令與記憶都不讀</text>
+  <text x="84" y="658" font-size="16" fill="#102A2B">不進歷史紀錄、不用來訓練模型</text>
+  <text x="84" y="686" font-size="16" fill="#102A2B">OpenAI 為了安全可能保留最多 30 天</text>
+  <text x="84" y="714" font-size="16" fill="#B8442D">幫別人問問題、共用電腦時用這個</text>
+
+  <!-- project memory rules -->
+  <rect x="560" y="456" width="460" height="230" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="584" y="506" font-size="20" font-weight="700" fill="#1F4E73">專案的記憶規則</text>
+  <text x="584" y="532" font-size="15" fill="#5C6B6B">Project memory</text>
+  <text x="584" y="574" font-size="16" fill="#102A2B">預設：可參考同專案與（依方案）專案外的對話</text>
+  <text x="584" y="602" font-size="16" fill="#102A2B">project-only：只讀同專案，不用已儲存的記憶</text>
+  <text x="584" y="630" font-size="16" fill="#102A2B">專案外的對話也讀不到專案裡的內容</text>
+  <text x="584" y="658" font-size="16" fill="#102A2B">共用給別人的專案一律 project-only</text>
+
+  <!-- temporary chat does not write memory -->
+  <path d="M 520 740 L 1018 740" stroke="#B8442D" stroke-width="4" stroke-dasharray="14 10"/>
+  <circle cx="1036" cy="740" r="16" fill="#B8442D"/>
+  <text x="1036" y="746" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">✕</text>
+  <text x="770" y="724" font-size="15" fill="#B8442D" text-anchor="middle">暫時對話的內容不會寫進記憶</text>
+
+  <!-- memory -->
+  <rect x="1060" y="456" width="460" height="336" rx="14" fill="#FCEFE4" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1084" y="506" font-size="20" font-weight="700" fill="#8A4A16">記憶：它自己記下的事</text>
+  <text x="1084" y="532" font-size="15" fill="#5C6B6B">Memory・兩種來源合成一份摘要</text>
+  <rect x="1084" y="548" width="196" height="96" rx="10" fill="#FFFFFF" stroke="#D97A2B" stroke-width="3"/>
+  <text x="1182" y="578" font-size="16" font-weight="700" fill="#102A2B" text-anchor="middle">已儲存的記憶</text>
+  <text x="1182" y="600" font-size="15" fill="#5C6B6B" text-anchor="middle">Saved memories</text>
+  <text x="1182" y="626" font-size="15" fill="#102A2B" text-anchor="middle">你叫它記的一句話</text>
+  <rect x="1300" y="548" width="196" height="96" rx="10" fill="#FFFFFF" stroke="#D97A2B" stroke-width="3"/>
+  <text x="1398" y="578" font-size="16" font-weight="700" fill="#102A2B" text-anchor="middle">聊天紀錄</text>
+  <text x="1398" y="600" font-size="15" fill="#5C6B6B" text-anchor="middle">Chat history</text>
+  <text x="1398" y="626" font-size="15" fill="#102A2B" text-anchor="middle">對話、檔案、App 整理</text>
+  <path d="M 1182 646 L 1182 672" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1398 646 L 1398 672" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1084" y="678" width="412" height="96" rx="10" fill="#FFFFFF" stroke="#D97A2B" stroke-width="3"/>
+  <text x="1290" y="706" font-size="16" font-weight="700" fill="#102A2B" text-anchor="middle">記憶摘要 Memory summary</text>
+  <text x="1290" y="732" font-size="15" fill="#102A2B" text-anchor="middle">設定 → 個人化 → 記憶：可看、可改、逐條刪</text>
+  <text x="1290" y="756" font-size="15" fill="#102A2B" text-anchor="middle">刪記憶不會刪對話；徹底刪要連來源一起刪</text>
+
+  <!-- notes -->
+  <text x="60" y="828" font-size="15" fill="#5C6B6B">記憶摘要來自對話、上傳的檔案與連接的 App；免費版記憶較精簡、付費版較長，能記多少以官網為準。</text>
+  <text x="60" y="856" font-size="15" fill="#5C6B6B">選單名稱與路徑依 OpenAI 說明中心，會隨版本調整；字數上限與保留天數同樣以官網為準。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

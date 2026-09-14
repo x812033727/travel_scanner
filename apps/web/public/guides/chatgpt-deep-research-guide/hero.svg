@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Deep Research：放大鏡下攤開的頁面匯成一份報告 / Deep research: pages under a magnifier flow into one report</title>
+  <desc id="desc">米色底上，左半邊攤開六張略微傾斜、彼此交疊的白色頁面，每張頁面上有幾條灰色橫條代表文字，其中幾條是橘色，代表被挑出來的段落。一支藍框的大放大鏡懸在這些頁面上方，鏡片罩住最上面的一張。從頁面群往右畫出三條藍綠色的弧線，匯聚到右邊一份較大的白色報告：報告頂端有一條深綠色標題橫條，下面是三行文字條與三個綠色的勾選圓點，右下角有一個橘色圓形標記。畫面下方置中一行短字「讓 AI 幫你做研究」。整體用簡單幾何形狀表達「AI 讀很多網頁，替你整理成一份報告」。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft background blobs -->
+  <circle cx="260" cy="200" r="170" fill="#E3F0EF"/>
+  <circle cx="1380" cy="680" r="200" fill="#E6F0F7"/>
+
+  <!-- scattered pages (back to front) -->
+  <g transform="rotate(-14 330 470)">
+    <rect x="200" y="330" width="260" height="300" rx="16" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="6"/>
+    <rect x="232" y="372" width="180" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+    <rect x="232" y="412" width="196" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+    <rect x="232" y="452" width="150" height="18" rx="9" fill="#D97A2B"/>
+    <rect x="232" y="492" width="190" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+  </g>
+  <g transform="rotate(9 610 520)">
+    <rect x="480" y="370" width="260" height="300" rx="16" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="6"/>
+    <rect x="512" y="412" width="196" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+    <rect x="512" y="452" width="160" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+    <rect x="512" y="492" width="200" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+    <rect x="512" y="532" width="140" height="18" rx="9" fill="#D97A2B"/>
+  </g>
+  <g transform="rotate(-5 470 560)">
+    <rect x="340" y="410" width="260" height="300" rx="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+    <rect x="372" y="452" width="190" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+    <rect x="372" y="492" width="200" height="18" rx="9" fill="#D97A2B"/>
+    <rect x="372" y="532" width="160" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+    <rect x="372" y="572" width="196" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+    <rect x="372" y="612" width="120" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+  </g>
+  <g transform="rotate(4 250 620)">
+    <rect x="120" y="470" width="240" height="280" rx="16" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="6"/>
+    <rect x="150" y="512" width="170" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+    <rect x="150" y="552" width="180" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+    <rect x="150" y="592" width="130" height="18" rx="9" fill="#D97A2B"/>
+    <rect x="150" y="632" width="176" height="18" rx="9" fill="#5C6B6B" opacity="0.45"/>
+  </g>
+
+  <!-- magnifier over the pages -->
+  <line x1="640" y1="300" x2="790" y2="150" stroke="#2F6F9F" stroke-width="46" stroke-linecap="round"/>
+  <line x1="640" y1="300" x2="790" y2="150" stroke="#E6F0F7" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="520" cy="410" r="180" fill="#E6F0F7" opacity="0.55"/>
+  <circle cx="520" cy="410" r="180" fill="none" stroke="#2F6F9F" stroke-width="28"/>
+  <circle cx="520" cy="410" r="142" fill="none" stroke="#FFFFFF" stroke-width="6" opacity="0.8"/>
+
+  <!-- flow lines from pages to the report -->
+  <path d="M 720 440 C 860 400, 900 300, 1040 300" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round" opacity="0.85"/>
+  <path d="M 740 520 C 860 520, 920 420, 1040 400" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round" opacity="0.85"/>
+  <path d="M 700 620 C 860 640, 900 520, 1040 500" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- the report -->
+  <rect x="1040" y="180" width="400" height="500" rx="24" fill="#FFFFFF" stroke="#0D6B68" stroke-width="10"/>
+  <rect x="1084" y="230" width="312" height="44" rx="12" fill="#0D6B68"/>
+  <circle cx="1112" cy="330" r="16" fill="#2E7D5B"/>
+  <path d="M 1102 330 L 1110 338 L 1124 322" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1146" y="318" width="230" height="22" rx="11" fill="#5C6B6B" opacity="0.5"/>
+  <circle cx="1112" cy="410" r="16" fill="#2E7D5B"/>
+  <path d="M 1102 410 L 1110 418 L 1124 402" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1146" y="398" width="180" height="22" rx="11" fill="#5C6B6B" opacity="0.5"/>
+  <circle cx="1112" cy="490" r="16" fill="#2E7D5B"/>
+  <path d="M 1102 490 L 1110 498 L 1124 482" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1146" y="478" width="210" height="22" rx="11" fill="#5C6B6B" opacity="0.5"/>
+  <rect x="1084" y="560" width="250" height="22" rx="11" fill="#5C6B6B" opacity="0.35"/>
+  <circle cx="1380" cy="620" r="34" fill="#D97A2B"/>
+
+  <!-- one line of text -->
+  <text x="800" y="830" font-size="52" font-weight="700" fill="#102A2B" text-anchor="middle">讓 AI 幫你做研究</text>
+</svg>

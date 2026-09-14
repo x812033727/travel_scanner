@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 名詞地圖：五組 50 個詞繞著大型語言模型 / A map of 50 AI terms in five groups around the large language model</title>
+  <desc id="desc">圖的正中央是一個框，寫著「大型語言模型 Large language model」，五條箭頭從它指向周圍五個方塊，每個方塊是一組名詞，只列代表詞。左上「模型與訓練 Models and training」：token（模型眼中的字）、參數 parameter、預訓練與微調、上下文視窗 context window、知識截止日 knowledge cutoff、幻覺 hallucination。右上「使用與功能 Everyday features」：提示詞 prompt、記憶 memory、專案 project、Artifacts 與 Canvas、深入研究 deep research、暫時對話 temporary chat。左下「推理與代理 Reasoning and agents」：推理模型 reasoning model、代理 agent、工具呼叫 tool use、MCP、電腦操作 computer use、提示詞注入 prompt injection。中下「基礎設施與費用 Infrastructure and cost」：API 與金鑰、每百萬 token 計價、速率限制 rate limit、GPU 與 NPU、本機推論 local inference、RAG、向量資料庫與 embedding。右下「生成與媒體 Generation and media」：擴散模型 diffusion model、文生圖 text-to-image、文生影 text-to-video、語音克隆 voice cloning、浮水印 watermark、C2PA 內容憑證。圖下方註明每組只列代表詞，完整的 50 條在正文。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">AI 名詞地圖：五組 50 個詞繞著大型語言模型</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">A map of 50 AI terms in five groups around the large language model</text>
+
+  <!-- hub -->
+  <rect x="620" y="340" width="360" height="120" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="800" y="398" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">大型語言模型</text>
+  <text x="800" y="430" font-size="15" fill="#5C6B6B" text-anchor="middle">Large language model</text>
+
+  <!-- arrows from hub -->
+  <path d="M 618 372 L 504 300" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 982 372 L 1096 300" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 660 462 L 440 556" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 940 462 L 1160 556" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 800 462 L 800 556" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- A: models and training (top left) -->
+  <rect x="60" y="130" width="440" height="270" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="280" y="166" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">模型與訓練</text>
+  <text x="280" y="190" font-size="15" fill="#5C6B6B" text-anchor="middle">Models and training</text>
+  <text x="280" y="228" font-size="16" fill="#102A2B" text-anchor="middle">token（模型眼中的字）</text>
+  <text x="280" y="256" font-size="16" fill="#102A2B" text-anchor="middle">參數 parameter</text>
+  <text x="280" y="284" font-size="16" fill="#102A2B" text-anchor="middle">預訓練與微調</text>
+  <text x="280" y="312" font-size="16" fill="#102A2B" text-anchor="middle">上下文視窗 context window</text>
+  <text x="280" y="340" font-size="16" fill="#102A2B" text-anchor="middle">知識截止日 knowledge cutoff</text>
+  <text x="280" y="368" font-size="16" fill="#102A2B" text-anchor="middle">幻覺 hallucination</text>
+
+  <!-- B: everyday features (top right) -->
+  <rect x="1100" y="130" width="440" height="270" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1320" y="166" font-size="20" font-weight="700" fill="#1F4E73" text-anchor="middle">使用與功能</text>
+  <text x="1320" y="190" font-size="15" fill="#5C6B6B" text-anchor="middle">Everyday features</text>
+  <text x="1320" y="228" font-size="16" fill="#102A2B" text-anchor="middle">提示詞 prompt</text>
+  <text x="1320" y="256" font-size="16" fill="#102A2B" text-anchor="middle">記憶 memory</text>
+  <text x="1320" y="284" font-size="16" fill="#102A2B" text-anchor="middle">專案 project</text>
+  <text x="1320" y="312" font-size="16" fill="#102A2B" text-anchor="middle">Artifacts 與 Canvas</text>
+  <text x="1320" y="340" font-size="16" fill="#102A2B" text-anchor="middle">深入研究 deep research</text>
+  <text x="1320" y="368" font-size="16" fill="#102A2B" text-anchor="middle">暫時對話 temporary chat</text>
+
+  <!-- C: reasoning and agents (bottom left) -->
+  <rect x="60" y="560" width="440" height="270" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="280" y="596" font-size="20" font-weight="700" fill="#2E7D5B" text-anchor="middle">推理與代理</text>
+  <text x="280" y="620" font-size="15" fill="#5C6B6B" text-anchor="middle">Reasoning and agents</text>
+  <text x="280" y="658" font-size="16" fill="#102A2B" text-anchor="middle">推理模型 reasoning model</text>
+  <text x="280" y="686" font-size="16" fill="#102A2B" text-anchor="middle">代理 agent</text>
+  <text x="280" y="714" font-size="16" fill="#102A2B" text-anchor="middle">工具呼叫 tool use</text>
+  <text x="280" y="742" font-size="16" fill="#102A2B" text-anchor="middle">MCP</text>
+  <text x="280" y="770" font-size="16" fill="#102A2B" text-anchor="middle">電腦操作 computer use</text>
+  <text x="280" y="798" font-size="16" fill="#102A2B" text-anchor="middle">提示詞注入 prompt injection</text>
+
+  <!-- E: infrastructure and cost (bottom center) -->
+  <rect x="580" y="560" width="440" height="270" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="800" y="596" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">基礎設施與費用</text>
+  <text x="800" y="620" font-size="15" fill="#5C6B6B" text-anchor="middle">Infrastructure and cost</text>
+  <text x="800" y="658" font-size="16" fill="#102A2B" text-anchor="middle">API 與金鑰</text>
+  <text x="800" y="686" font-size="16" fill="#102A2B" text-anchor="middle">每百萬 token 計價</text>
+  <text x="800" y="714" font-size="16" fill="#102A2B" text-anchor="middle">速率限制 rate limit</text>
+  <text x="800" y="742" font-size="16" fill="#102A2B" text-anchor="middle">GPU 與 NPU</text>
+  <text x="800" y="770" font-size="16" fill="#102A2B" text-anchor="middle">本機推論 local inference</text>
+  <text x="800" y="798" font-size="16" fill="#102A2B" text-anchor="middle">RAG・向量資料庫・embedding</text>
+
+  <!-- D: generation and media (bottom right) -->
+  <rect x="1100" y="560" width="440" height="270" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1320" y="596" font-size="20" font-weight="700" fill="#B85F1A" text-anchor="middle">生成與媒體</text>
+  <text x="1320" y="620" font-size="15" fill="#5C6B6B" text-anchor="middle">Generation and media</text>
+  <text x="1320" y="658" font-size="16" fill="#102A2B" text-anchor="middle">擴散模型 diffusion model</text>
+  <text x="1320" y="686" font-size="16" fill="#102A2B" text-anchor="middle">文生圖 text-to-image</text>
+  <text x="1320" y="714" font-size="16" fill="#102A2B" text-anchor="middle">文生影 text-to-video</text>
+  <text x="1320" y="742" font-size="16" fill="#102A2B" text-anchor="middle">語音克隆 voice cloning</text>
+  <text x="1320" y="770" font-size="16" fill="#102A2B" text-anchor="middle">浮水印 watermark</text>
+  <text x="1320" y="798" font-size="16" fill="#102A2B" text-anchor="middle">C2PA 內容憑證</text>
+
+  <text x="60" y="870" font-size="15" fill="#5C6B6B">每組只列代表詞，完整的 50 條在正文各節。</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>
