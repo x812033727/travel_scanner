@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">分期的三種成本，換算到同一個基準 / Adding up the three hidden costs of an instalment</title>
+  <desc id="desc">一張以假設值說明算法的結構圖。最上方是比較基準：現金一次付 30,000 元。下面一排三個框，分別是成本一分期手續費 900 元，一次收取的固定金額、不得按期收取；成本二分期價與現金價的差額，本例假設兩者同價，契約應載明差額，差額就是分期的成本；成本三放棄的現金折扣 600 元，只適用現金付款的折扣，選了分期就拿不到。三個框各有一個箭頭往下匯入中間的總成本框：三筆相加等於這筆分期的總成本 1,500 元，占現金價 5%。總成本框再往下接到換算列：年化粗估等於 5% 乘以 24 再除以 13，約 9.2%；說明是乘以 24 再除以期數加一，12 期即除以 13。圖下方註明金額皆為假設值，正式數字以帳單上的應付總費用年百分率為準。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">分期的三種成本，換算到同一個基準</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Adding up the three hidden costs of an instalment</text>
+
+  <rect x="540" y="112" width="520" height="100" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="152" font-size="18" fill="#5C6B6B" text-anchor="middle">比較基準：現金一次付</text>
+  <text x="800" y="192" font-size="30" font-weight="700" fill="#102A2B" text-anchor="middle">30,000 元（假設）</text>
+
+  <line x1="800" y1="212" x2="800" y2="256" stroke="#5C6B6B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <rect x="80" y="262" width="460" height="195" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="310" y="307" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">成本一：分期手續費</text>
+  <text x="310" y="362" font-size="30" font-weight="700" fill="#0D6B68" text-anchor="middle">900 元</text>
+  <text x="310" y="405" font-size="17" fill="#5C6B6B" text-anchor="middle">一次收取的固定金額</text>
+  <text x="310" y="433" font-size="17" fill="#5C6B6B" text-anchor="middle">不得按期收取</text>
+
+  <rect x="570" y="262" width="460" height="195" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="307" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">成本二：分期價與現金價的差額</text>
+  <text x="800" y="362" font-size="24" font-weight="700" fill="#0D6B68" text-anchor="middle">本例假設兩者同價</text>
+  <text x="800" y="405" font-size="17" fill="#5C6B6B" text-anchor="middle">契約應載明兩者的差額</text>
+  <text x="800" y="433" font-size="17" fill="#5C6B6B" text-anchor="middle">差額就是分期的成本</text>
+
+  <rect x="1060" y="262" width="460" height="195" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1290" y="307" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">成本三：放棄的現金折扣</text>
+  <text x="1290" y="362" font-size="30" font-weight="700" fill="#0D6B68" text-anchor="middle">600 元</text>
+  <text x="1290" y="405" font-size="17" fill="#5C6B6B" text-anchor="middle">只適用現金付款的折扣</text>
+  <text x="1290" y="433" font-size="17" fill="#5C6B6B" text-anchor="middle">選了分期就拿不到</text>
+
+  <line x1="310" y1="457" x2="676" y2="522" stroke="#5C6B6B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+  <line x1="800" y1="457" x2="800" y2="522" stroke="#5C6B6B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+  <line x1="1290" y1="457" x2="924" y2="522" stroke="#5C6B6B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <rect x="500" y="528" width="600" height="158" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="570" font-size="18" fill="#5C6B6B" text-anchor="middle">三筆相加＝這筆分期的總成本</text>
+  <text x="800" y="624" font-size="30" font-weight="700" fill="#0D6B68" text-anchor="middle">1,500 元</text>
+  <text x="800" y="664" font-size="20" fill="#102A2B" text-anchor="middle">占現金價 5%</text>
+
+  <line x1="800" y1="686" x2="800" y2="724" stroke="#5C6B6B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <rect x="240" y="726" width="1120" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="774" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">年化粗估 ＝ 5% × 24 ÷ 13 ≈ 9.2%</text>
+  <text x="800" y="806" font-size="18" fill="#5C6B6B" text-anchor="middle">乘以 24 再除以期數加一；12 期即除以 13</text>
+
+  <text x="60" y="870" font-size="17" fill="#5C6B6B">圖中金額皆為假設值；正式數字以帳單上的應付總費用年百分率為準</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
