@@ -52,6 +52,7 @@ from app.guides.schemas import (
     GuideDocument,
     ImageBlock,
     Kind,
+    LinkInline,
     LocaleState,
     OfferBlock,
     PartnerLinkBlock,
@@ -60,6 +61,7 @@ from app.guides.schemas import (
     RevisionAction,
     RevisionDetail,
     RevisionSummary,
+    RichParagraphBlock,
     Section,
     VisibilityWrite,
     section_of,
@@ -225,6 +227,10 @@ def _ordinary_urls(document: GuideDocument) -> Iterator[str]:
     for block in document.blocks:
         if isinstance(block, LinkBlock):
             yield block.url
+        elif isinstance(block, RichParagraphBlock):
+            for node in block.inlines:
+                if isinstance(node, LinkInline):
+                    yield node.url
         elif isinstance(block, ImageBlock) and block.credit and block.credit.source_url:
             yield block.credit.source_url
     if document.hero and document.hero.credit and document.hero.credit.source_url:
@@ -461,9 +467,7 @@ async def update_article(
         # a PUT that carries no topics at all.
         rows = (await _locale_rows(session, [article.id])).get(article.id, [])
         if any(row.published_version is not None for row in rows):
-            raise AppError(
-                409, "guide_kind_locked", "已發布的文章不能換專區，請先撤下所有語言版本"
-            )
+            raise AppError(409, "guide_kind_locked", "已發布的文章不能換專區，請先撤下所有語言版本")
     topics = await _resolve_topics(session, payload.topics, section)
     before = {
         "kind": article.kind,
@@ -914,7 +918,10 @@ async def list_articles(
         # `?section=life&kind=intel` asks for a combination nothing satisfies. Answering
         # with an unfiltered list is how lifestyle articles would leak into a travel one.
         return ArticleList(
-            articles=[], total=0, page=max(page, 1), pages=0,
+            articles=[],
+            total=0,
+            page=max(page, 1),
+            pages=0,
             facets=ArticleFacets(
                 status=[FacetCount(code=value, count=0) for value in ARTICLE_STATUSES],
                 kind=[FacetCount(code=value, count=0) for value in KINDS],

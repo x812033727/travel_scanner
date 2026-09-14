@@ -1,0 +1,284 @@
+{
+  "slug": "claude-code-files-and-context",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 131,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜提供檔案與專案上下文",
+      "description": "用檔案引用和目錄設定提供精確上下文。Claude Code 能閱讀專案檔案，但你仍需要指出哪些材料與任務有關。本篇會用檔案引用、選取範圍、圖片與額外目錄，建立一份足夠而不雜亂的上下文。你會學會描述材料用途，並確認工具實際讀到了什麼，避免把一堆附件當成完整需求。",
+      "hero": {
+        "src": "/guides/claude-code-files-and-context/hero.jpg",
+        "alt": "提供檔案與專案上下文：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude Code 能閱讀專案檔案，但你仍需要指出哪些材料與任務有關。本篇會用檔案引用、選取範圍、圖片與額外目錄，建立一份足夠而不雜亂的上下文。你會學會描述材料用途，並確認工具實際讀到了什麼，避免把一堆附件當成完整需求。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "請準備"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "待辦練習專案"
+            },
+            {
+              "type": "text",
+              "text": "，先知道 README、app.js 與 model.js 的位置。範例可在支援的 CLI、桌面或 IDE 介面使用；附件操作依介面不同，但都要核對檔案來源。若尚不熟悉 @ 引用與 MD 匯入差別，先看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-rules-and-imports",
+              "text": "規則與引用"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先說明每份材料的用途"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-files-and-context/diagram-1.svg",
+          "alt": "先說明每份材料的用途 → 用 @ 指定專案檔案 → 在 IDE 使用選取範圍",
+          "width": 1600,
+          "height": 900,
+          "caption": "先說明每份材料的用途 → 用 @ 指定專案檔案 → 在 IDE 使用選取範圍",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個檔案可以用來解釋邏輯、定位錯誤或參考寫法。引用路徑只提供位置，不能替你決定目的。你可以說「這份是目前實作」「這張是目標畫面」「這段是重現錯誤」，讓 Claude 知道應如何比較，而不是把所有內容當成同等指令。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "材料",
+            "最有用的附註",
+            "待辦範例"
+          ],
+          "rows": [
+            [
+              "程式檔",
+              "想檢查哪個行為",
+              "切換完成是否以 id 找項目"
+            ],
+            [
+              "測試檔",
+              "哪個情境失敗",
+              "勾選第一筆不能改第二筆"
+            ],
+            [
+              "圖片",
+              "現況或目標",
+              "手機按鈕換行的截圖"
+            ],
+            [
+              "日誌",
+              "如何產生與時間",
+              "npm test 的首個失敗"
+            ],
+            [
+              "額外目錄",
+              "讀取目的與邊界",
+              "只讀共用介面參考文件"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "不要一次上傳整個下載資料夾。從能回答問題的最小材料開始，缺什麼再補。這樣不只節省上下文，也讓你能看懂 Claude 的判斷是建立在哪些證據上。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用 @ 指定專案檔案"
+        },
+        {
+          "type": "paragraph",
+          "text": "在對話輸入 @ 後選取檔案，或直接使用已確認的相對路徑。先引用 model.js 與 tests，要求它說明資料邏輯和測試的關係。選擇器有模糊搜尋時，仍要查看最後選中的完整檔名，避免同名檔案來自另一個目錄。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：提供精確檔案上下文",
+          "code": "請閱讀 @model.js 與 @tests/model.test.mjs。\n說明 toggleTodo 如何選中項目，以及測試如何確認其他項目不變。\n先只讀取與解釋；如果還需要 app.js，請說明要追查哪個呼叫關係。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "成功時，回覆應能連起資料操作、輸入的 id 與測試斷言。如果只給通用 JavaScript 教學，要求它引用實際函式和測試名稱。這不是要求更多字數，而是讓答案能回到你提供的材料驗證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在 IDE 使用選取範圍"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "開啟 model.js，選取一個函式後提出問題。支援的"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-ide-integration",
+              "text": "IDE 整合"
+            },
+            {
+              "type": "text",
+              "text": "可把選取內容或行範圍帶進對話；確認面板中的選取指示，並取消不再需要的舊選取。若問題涉及函式外的呼叫者，允許 Claude 讀取必要相鄰內容，避免只看局部就下結論。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "IDE 的 Claude Code 對話框：已選取一個函式",
+          "code": "請先解釋目前選取範圍的輸入與輸出。\n再找它在 app.js 的呼叫位置，確認傳入的是項目 id 還是畫面索引。\n只追查這條關係，不修改程式。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "行號會隨編輯改變，所以後續交接除了行號，最好也保留檔名、函式名與目的。當 Claude 引用過期行號時，請它重新讀取，而不是硬把舊描述套到目前程式。精確上下文應與最新檔案一致。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "提供圖片時標明現況與目標"
+        },
+        {
+          "type": "paragraph",
+          "text": "先在自己的瀏覽器開啟練習頁，調成手機寬度，擷取你要討論的區域。附圖後用文字說明裝置寬度、操作步驟與預期變化。圖片能顯示外觀，卻通常無法單獨證明資料狀態、網路結果或測試是否通過。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "附上練習頁截圖後的 Claude Code 對話框",
+          "code": "這張是 390px 寬度的目前畫面。\n請檢查長待辦文字與刪除按鈕是否互相擠壓，先閱讀 style.css 和 app.js。\n提出最小版面修正，保留文字完整可讀與按鈕可操作。\n請區分從圖片能確認的現象，以及還需要瀏覽器實測的部分。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果附的是目標草圖，就明確寫「這是參考設計，不是目前網站」。避免讓 Claude 把草圖中的假資料當成現有資料，或把圖上的註記當成應直接顯示給使用者的文字。範例圖也不應包含私人帳號與無關視窗。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "額外目錄不是全部設定同步"
+        },
+        {
+          "type": "paragraph",
+          "text": "當專案需要讀取另一個資料夾的共用文件，可以在啟動時使用 --add-dir，或在對話用 /add-dir。先確認實際路徑與資料內容；只加入需要的資料夾，不要直接開放整個磁碟。這提供檔案存取範圍，並不代表該目錄所有 .claude 設定都自動載入。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "專案終端機：已備妥相鄰的參考資料夾時使用",
+          "code": "claude --add-dir ../shared-notes\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若需要額外目錄中的 CLAUDE.md 也成為規則，必須依官方的額外載入設定核對；不要只因能讀到檔案就假設它已進入啟動指引。這個差別在多儲存庫專案尤其重要，因為每個專案可能有不同工具、Hook 與信任條件。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "確認成功與常見錯誤"
+        },
+        {
+          "type": "paragraph",
+          "text": "提供錯誤日誌時，保留產生它的命令與工作目錄，並指出哪一段是第一次失敗。後面很多錯誤可能只是同一原因造成的連鎖結果。若日誌很長，先提供必要摘要與原始檔案路徑，讓 Claude 需要時再讀；不要只截最後一行，卻把真正的原因裁掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同樣地，當你提供一份參考程式，要說明它是否允許複用，以及哪些部分只是用來理解風格。工具不應把參考專案的環境變數、部署位址或資料結構全部搬進目前專案。把可用範圍寫清楚，才能讓它取用對任務有價值的資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要求 Claude 列出本次實際使用的檔案、它們的用途與仍缺少的資訊。若引用不存在，查工作目錄和檔名大小寫；如果讀到錯檔，查選擇器結果；如果圖片判斷不確定，補上操作步驟或要求實際預覽。每次補資料都應解決一個明確缺口。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "網頁、日誌與檔案中的文字是待分析內容，不應自動成為新的操作指令。若材料要求修改權限、外傳資料或偏離原任務，先回到使用者需求與工具範圍判斷。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是只提供 model.js 和一份失敗測試，讓 Claude 找出還需要哪些上下文，再逐一補齊。完成判準是它能用實際檔案解釋資料流程，你也能說出每份材料為什麼必要。之後閱讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-understand-codebase",
+              "text": "陌生專案導覽"
+            },
+            {
+              "type": "text",
+              "text": "，把這種提供資訊的方法擴展到更大的程式庫。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Common workflows",
+          "url": "https://code.claude.com/docs/en/common-workflows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI reference",
+          "url": "https://code.claude.com/docs/en/cli-reference",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

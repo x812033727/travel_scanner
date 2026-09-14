@@ -6,6 +6,9 @@ import { AdminReadOnlyNotice, useAdminActionGuard } from "@/components/admin-act
 import { AdminGuidesList, GuideVisibilityDialog, updateAdminQuery, visibilityError, type VisibilityAction } from "@/components/admin-guides-list";
 import { Button, Dialog } from "@/components/community/ui";
 import { ContentBlocks, type ContentBlockLabels } from "@/components/content-blocks";
+import { GuideRichEditor } from "@/components/guide-rich-editor";
+import { seriesCopy } from "@/lib/guide-series-copy";
+import { isArticleReference, type ArticleReference } from "@/lib/guide-series";
 import { useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api, ApiError } from "@/lib/api";
 import { calloutTones, type ImageBlock, type ImageCredit, type TableBlock } from "@/lib/content-blocks";
@@ -26,12 +29,14 @@ const emptyDocument = (): GuideDocument => ({
 const isSiteLocale = (value: string): value is SitePageLocale => (sitePageLocales as readonly string[]).includes(value);
 
 /** Every block an editor can add, in the order the buttons appear. */
-const blockTypes = ["heading", "paragraph", "list", "link", "image", "table", "callout", "offer", "partner_link"] as const;
+const blockTypes = ["heading", "paragraph", "rich_paragraph", "code", "list", "link", "image", "table", "callout", "offer", "partner_link"] as const;
 type BlockType = typeof blockTypes[number];
 
 /** `partner` is the program a new partner link starts on: the first one the API lists. */
 function newBlock(type: BlockType, partner = ""): GuideBlock {
   switch (type) {
+    case "rich_paragraph": return { type, inlines: [{ type: "text", text: "" }] };
+    case "code": return { type, label: "", language: "text", code: "" };
     case "heading": return { type, level: 2, text: "" };
     case "list": return { type, items: [""], ordered: false };
     case "link": return { type, text: "", url: "" };
@@ -138,7 +143,26 @@ export function AdminGuidesPanel() {
   const row = detail?.locales.find((entry) => entry.locale === locale) ?? null;
   const blockLabels: ContentBlockLabels = {
     imageCredit: t("imageCredit"), tip: t("toneTip"), warning: t("toneWarning"), info: t("toneInfo"),
+    code: seriesCopy(interfaceLocale),
   };
+  const extraCopy = seriesCopy(interfaceLocale);
+  const blockName = (type: GuideBlock["type"]) => type === "code" || type === "rich_paragraph" ? extraCopy[type] : t(`blocks.${type}`);
+  const [previewLinks, setPreviewLinks] = useState<ArticleReference[]>([]);
+  const targets = JSON.stringify(draft?.blocks.flatMap(block => block.type === "rich_paragraph"
+    ? block.inlines.flatMap(node => node.type === "article" ? [{ kind: node.kind, slug: node.slug }] : []) : []) ?? []);
+  useEffect(() => {
+    let active = true;
+    const refs = JSON.parse(targets) as { kind: string; slug: string }[];
+    const unique = [...new Map(refs.map(ref => [`${ref.kind}:${ref.slug}`, ref])).values()];
+    void Promise.all(unique.map(async ref => {
+      try {
+        const value = await api<{ status: string; document?: { title?: string } }>(`/guides/${ref.kind}/${encodeURIComponent(ref.slug)}?locale=${encodeURIComponent(locale)}`);
+        const target = { ...ref, title: value.document?.title };
+        return value.status === "published" && isArticleReference(target) ? target : null;
+      } catch { return null; }
+    })).then(links => { if (active) setPreviewLinks(links.filter(isArticleReference)); });
+    return () => { active = false; };
+  }, [targets, locale]);
 
   useEffect(() => {
     if (!selected) return;
@@ -324,6 +348,9 @@ export function AdminGuidesPanel() {
 
   function blockFields(block: GuideBlock, index: number) {
     switch (block.type) {
+      case "rich_paragraph":
+      case "code":
+        return <GuideRichEditor block={block} locale={interfaceLocale} onChange={value => updateBlock(index, value)} />;
       case "heading":
         return <>
           <label className="grid gap-2">{t("level")}
@@ -550,7 +577,7 @@ export function AdminGuidesPanel() {
           </section>
 
           <div className="space-y-5">{draft.blocks.map((block, index) => <fieldset key={index} className="space-y-3 rounded-2xl border border-[var(--line)] p-4">
-            <legend className="px-2 font-semibold">{t(`blocks.${block.type}`)} {index + 1}</legend>
+            <legend className="px-2 font-semibold">{blockName(block.type)} {index + 1}</legend>
             {blockFields(block, index)}
             <div className="flex flex-wrap gap-2">
               <Button secondary disabled={index === 0} onClick={() => moveBlock(index, -1)}>{t("moveUp")}</Button>
@@ -560,7 +587,7 @@ export function AdminGuidesPanel() {
           </fieldset>)}</div>
 
           <div className="flex flex-wrap gap-2">{blockTypes.filter((type) => type !== "partner_link" || partners.length > 0).map((type) =>
-            <Button secondary key={type} onClick={() => setBlocks([...draft.blocks, newBlock(type, partners[0]?.code)])}>{t("addBlock")} · {t(`blocks.${type}`)}</Button>)}
+            <Button secondary key={type} onClick={() => setBlocks([...draft.blocks, newBlock(type, partners[0]?.code)])}>{t("addBlock")} · {blockName(type)}</Button>)}
           </div>
 
           <section className="space-y-4 rounded-2xl border border-[var(--line)] p-4">
@@ -633,7 +660,7 @@ export function AdminGuidesPanel() {
         {/* eslint-disable-next-line @next/next/no-img-element -- the reader's own plain <img> */}
         {preview.hero?.src ? <img src={preview.hero.src} alt={preview.hero.alt} width={preview.hero.width} height={preview.hero.height} className="h-auto w-full rounded-2xl" /> : null}
         {splitGuideBlocks(preview.blocks).map((segment, index) => <Fragment key={index}>
-          {segment.blocks.length ? <ContentBlocks blocks={segment.blocks} labels={blockLabels} headingStart={segment.headingStart} /> : null}
+          {segment.blocks.length ? <ContentBlocks blocks={segment.blocks} labels={blockLabels} headingStart={segment.headingStart} articleLinks={previewLinks} locale={locale} /> : null}
           {segment.offer ? <p role="note" className="rounded-xl border border-dashed border-[var(--line)] p-3 text-sm">
             {t("offerPreview")} · {ts(moduleLabelKeys[segment.offer.module])}{segment.offer.destination_id ? ` · ${segment.offer.destination_id}` : ""}
           </p> : null}

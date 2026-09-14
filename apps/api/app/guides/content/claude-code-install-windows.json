@@ -1,0 +1,278 @@
+{
+  "slug": "claude-code-install-windows",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 107,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜Windows CLI 安裝教學",
+      "description": "完成安裝、登入、路徑檢查與首次啟動。這篇會帶你在 Windows 的 PowerShell 安裝 Claude Code，確認終端機找得到指令，再進入練習專案完成第一次只讀任務。安裝工具、登入帳號與啟動網站是三件不同的事；做到哪一步，就用那一步的結果確認，不必一開始把所有環境都裝齊。",
+      "hero": {
+        "src": "/guides/claude-code-install-windows/hero.jpg",
+        "alt": "Windows CLI 安裝教學：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這篇會帶你在 Windows 的 PowerShell 安裝 Claude Code，確認終端機找得到指令，再進入練習專案完成第一次只讀任務。安裝工具、登入帳號與啟動網站是三件不同的事；做到哪一步，就用那一步的結果確認，不必一開始把所有環境都裝齊。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "適用於官方支援的 Windows 版本與具備 Claude Code 使用資格的帳號。請先閱讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-accounts-and-access",
+              "text": "帳號與使用資格"
+            },
+            {
+              "type": "text",
+              "text": "。本篇選原生 Windows；若你的專案需要 Linux 工具鏈，改讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-install-linux-wsl",
+              "text": "Linux 與 WSL"
+            },
+            {
+              "type": "text",
+              "text": "，不要在兩種環境反覆貼同一串指令。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先確認正在使用 PowerShell"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-install-windows/diagram-1.svg",
+          "alt": "先確認正在使用 PowerShell → 使用官方安裝方式 → 重新開啟終端機並檢查路徑",
+          "width": 1600,
+          "height": 900,
+          "caption": "先確認正在使用 PowerShell → 使用官方安裝方式 → 重新開啟終端機並檢查路徑",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "從開始功能表搜尋 PowerShell，開啟一般使用者視窗。提示字元常以 PS 開頭；Windows Terminal 只是容納分頁的視窗，分頁內仍可能是 PowerShell、CMD 或 Ubuntu。指令前的語言標籤是輸入位置，複製時只複製區塊內文字，不包含提示字元。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell：查看目前位置與版本",
+          "code": "Get-Location\n$PSVersionTable.PSVersion\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一行顯示目前所在資料夾；第二行顯示 PowerShell 版本。這不會安裝或修改任何東西。若你看見「不是內部或外部命令」，先檢查分頁是不是 CMD。遇到語法錯誤時，先確認輸入位置，比直接更改系統設定更容易找出問題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "使用官方安裝方式"
+        },
+        {
+          "type": "paragraph",
+          "text": "下列指令會從官方網址取得安裝程式並執行。先對照本篇來源的官方安裝頁，確認網域與指令一致，再於 PowerShell 貼上。原生安裝一般不需要系統管理員權限，也不需要先安裝 Node.js；練習網站會另用 Node.js，那是網站本身的需求。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell：安裝 Claude Code",
+          "code": "irm https://claude.ai/install.ps1 | iex\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "等待安裝程式結束，閱讀最後顯示的成功或失敗訊息。如果公司網路阻擋下載，記錄錯誤碼與網域，依組織的網路規則處理。不要把陌生網站提供的替代下載位址當成同一份安裝程式，也不要因為一次連線失敗就關閉所有安全設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個官方選項是 WinGet。兩種方式擇一即可；本篇後續以原生安裝為準。若你已用 WinGet 管理工具，可以保留原有方式，並依該方式更新，避免同時有多份程式而分不清實際啟動的是哪個。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell：選用 WinGet 時的安裝與更新",
+          "code": "winget install Anthropic.ClaudeCode\nwinget upgrade Anthropic.ClaudeCode\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "重新開啟終端機並檢查路徑"
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝完成後關閉原本的 PowerShell，開新視窗再檢查。PATH 是系統尋找可執行檔的一組資料夾清單；新安裝的路徑可能還沒進入舊視窗，所以重新開啟是必要的基本排查，並不代表安裝失敗。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell：確認啟動位置與安裝狀態",
+          "code": "Get-Command claude\nclaude --version\nclaude doctor\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期第一個結果能指出指令所在位置，第二個輸出 Claude Code 版本，第三個提供安裝與設定診斷。版本數字會更新，不必與教學截圖完全相同。若找到多個位置，可用 Get-Command claude -All 列出來，先判斷每一份是如何安裝，再決定保留方式。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "先確認什麼",
+            "下一步"
+          ],
+          "rows": [
+            [
+              "找不到 claude",
+              "是否重開 PowerShell",
+              "查看安裝程式列出的 PATH 提示"
+            ],
+            [
+              "irm 無法辨識",
+              "是否在 CMD 分頁",
+              "改用 PowerShell 重試"
+            ],
+            [
+              "安裝遇到 403",
+              "官方網域與網路政策",
+              "記錄錯誤並檢查連線條件"
+            ],
+            [
+              "版本與預期不同",
+              "是否有多份安裝",
+              "找出目前解析的執行路徑"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "進入專案並登入"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先依"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-practice-project-setup",
+              "text": "練習專案準備"
+            },
+            {
+              "type": "text",
+              "text": "解壓縮起始版。用檔案總管複製實際資料夾路徑，再把下例的路徑換成自己的位置；引號可以保留路徑中的空白。確認列出的檔案包含 package.json、index.html 和 model.js，才啟動 Claude。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell：路徑請換成自己的練習資料夾",
+          "code": "Set-Location -LiteralPath \"C:\\Projects\\claude-todo\"\nGet-ChildItem\nclaude\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "依畫面選擇登入方式，在瀏覽器確認帳號後返回終端機。若工作階段提示使用 API 金鑰，先確認那是不是你原本要用的計費來源。登入成功後閱讀專案信任提示，只對自己認識的練習資料夾繼續；不要為了測試而選整個使用者目錄。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：第一次只讀任務",
+          "code": "請確認目前專案的實際路徑，閱讀 package.json、README.md 與 model.js。\n用繁體中文說明網站如何啟動、有哪些功能，以及測試指令。\n這次只讀取並解釋，不修改檔案，也不安裝套件。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "成功判準是回覆能對上這個待辦專案的檔案與指令，而不只是通用的程式介紹。退出對話後再查看檔案，應沒有這次任務造成的修改。之後要跑網站，另開一個 PowerShell 執行 npm start，讓對話與開發伺服器各有自己的分頁。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Git 與更新的常見誤會"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前官方文件將 Git for Windows 列為原生 Windows 的建議工具；安裝它可提供 Git Bash，未安裝時 Claude Code 可使用 PowerShell 工具。不要把舊教學的「一定要先裝 Git Bash」當成所有版本的固定前提。不過本系列的版本管理練習仍需要 Git，請在開始 Git 章節前備妥。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "原生安裝會在背景更新；WinGet 安裝依套件管理方式更新。診斷時一併記錄安裝方式與實際版本，才有辦法比較相同環境的結果。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "最後練習重新開機後進入同一資料夾，執行版本檢查並啟動只讀任務。完成時，你應能自己說出「哪個 PowerShell 分頁、哪個資料夾、哪種登入來源」，也能區分找不到指令和帳號登入失敗。需要進一步排查時，帶著這三項資訊前往"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-help-status-doctor",
+              "text": "診斷教學"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Advanced setup",
+          "url": "https://code.claude.com/docs/en/setup",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Troubleshooting",
+          "url": "https://code.claude.com/docs/en/troubleshooting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

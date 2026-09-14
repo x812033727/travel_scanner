@@ -45,6 +45,7 @@ from app.guides.schemas import (
     SitemapEntry,
     SitemapList,
 )
+from app.guides.series import article_navigation, resolve_article_links
 from app.guides.taxonomy import topic_option
 from app.i18n import LOCALES, Locale
 from app.models import AffiliateClick
@@ -290,6 +291,10 @@ async def public_article(
         document=document,
         published_locales=[item for item in LOCALES if item in set(published_locales)],
         partner_links=[] if expired or document is None else partner_link_views(document),
+        article_links=[]
+        if document is None
+        else await resolve_article_links(session, locale, document),
+        series=None if expired else await article_navigation(session, kind, slug, locale),
     )
 
 
