@@ -1,0 +1,209 @@
+{
+  "slug": "ai-term-agent2agent-protocol",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
+      "description": "A2A 是讓不同系統的代理交換能力資訊、任務狀態與工作產物的開放協定，重點是跨代理協作，不是公開對方的內部提示或工具。本文用活動場地詢問的情境，解釋 Agent Card、Task、Message 與 Artifact，分清收到請求、需要補資料和真正完成。附任務生命週期圖，並比較 A2A、MCP 與 Agent Skills 的角色與相容性限制。",
+      "hero": {
+        "src": "/guides/ai-term-agent2agent-protocol/hero.jpg",
+        "alt": "兩座各自封閉的工作站隔著橋交換任務卡和成果文件，內部工具沒有展開。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "代理互通協定（Agent2Agent Protocol，A2A）是讓不同系統的代理交換任務與結果的開放協定。委派方可以知道對方提供哪些能力、任務目前進行到哪裡，以及最後產出什麼，不必直接掌握對方內部使用的模型、工具或記憶。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 在推出 A2A 的說明中，將它定位為跨框架與供應者的代理互通方式；官方文件則定義能力描述、訊息、任務與產物等概念。本文用活動場地詢問作原創示例，聚焦這些穩定概念，不把某個版本的欄位細節當成所有實作永遠相同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "互通的對象是一個能接工作的系統"
+        },
+        {
+          "type": "paragraph",
+          "text": "MCP 常讓應用程式發現和使用工具與資料，A2A 則讓一個代理或應用向另一個代理系統交辦工作。遠端代理可能需要多個步驟才能回答，也可能反問缺少的資料。委派方看到的是對外能力與結果，內部如何完成通常保持不透明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如你的活動助理想請場地服務查詢可行時段。它不一定要知道場地代理先查日曆、再核對人數還是詢問管理員；但需要知道它接受什麼任務、能回什麼結果，以及目前是否仍在處理。A2A 提供的是這類交流的共同結構。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一家公司內的多代理系統也可以不用 A2A，以函式或共享資料完成協作。選用協定的價值在於跨系統相容與共同語意，不是代理數量一多就必須使用。相反地，就算只有兩個系統，只要需要標準化互通，也可能值得採用。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-agent2agent-protocol/diagram-1.svg",
+          "alt": "委派代理先讀能力卡，再交辦查詢；遠端代理要求補人數，補齊後回傳場地清單並標示任務完成。",
+          "width": 1600,
+          "height": 900,
+          "caption": "任務狀態與實際產物分開傳達，方便追蹤長時間協作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Agent Card 是能力說明，不是品質保證"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件中的 Agent Card 是描述代理的結構化資料，包含身分、能力、服務位置及認證需求等資訊。委派方可以先讀這些內容，判斷對方是否適合某項工作，以及如何建立互動。你可以把它理解成機器可讀的服務介紹。"
+        },
+        {
+          "type": "paragraph",
+          "text": "但能力卡寫「可處理場地詢問」，不代表對方提供的每個答案都已被驗證。它也不會自動給委派方全部存取權。仍需要認證、授權與實際結果檢查；宣告自己會做什麼，和用可信證據完成某項任務，是不同層次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "A2A 裡的 skill 也需注意語境。能力卡中的技能描述是對外宣告可做的事情，不等同於 Agent Skills 開放格式中的 SKILL.md 資料夾。兩者都用技能這個字，但一個描述服務能力，另一個封裝供代理載入的工作知識。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Message、Task 與 Artifact 如何分工"
+        },
+        {
+          "type": "paragraph",
+          "text": "Message 是一次交流內容，可以是指示、回答或補充資訊；Task 是具有狀態與識別的工作單位，適合追蹤較長工作；Artifact 則是實際交付物，例如場地候選表或文件。官方文件允許某些簡單互動直接回訊息，不必每個回答都建立長任務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個區分在等待時特別重要。「已收到需求」是一則訊息，可能只證明請求送達；「需要人數資料」表示任務尚未完成；一份候選表則可能是產物，但仍要核對是否滿足原始要求。不能把任何一種回覆都翻譯成工作已完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "任務狀態也應保留原來的意義。處理中、需要輸入、完成與失敗對後續操作不同。若接收方只把它們全部顯示成進度文字，使用者可能不知道應等待、補資料還是重新嘗試。協定讓狀態可交換，產品仍需把狀態清楚呈現。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "活動場地詢問的完整示意"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設活動助理代表使用者查詢一個已指定日期的場地，輸入包含時間範圍與用途，但沒有參加人數。它先確認遠端代理提供場地詢問能力，完成必要認證，再送出需求。對方可能建立任務並回報缺少人數，而不是直接猜一個規模。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用者補上人數後，委派方把資料傳給同一工作流程。遠端代理完成查詢，回傳候選場地、限制與查詢依據。預期產物是可比較的場地清單；若原始要求只是詢問，不能把任務完成誤解為已訂場地或已付款。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若回報「目前無符合條件的場地」，這也可能是一次完整的查詢結果。完成表示工作已依要求處理，不表示結果一定符合使用者願望。若工具失敗、沒有取得資料，則應呈現未完成或失敗，而不是把兩種空結果混在一起。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "連線方式與安全仍需系統實作"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件描述輪詢、串流與推播等取得更新的方式。它們解決的是如何接收進度，不能代替任務語意。串流畫面不斷出現文字，不代表工作更可靠；推播送達，也不代表產物已通過驗收。應看對方宣告的能力與實際實作選擇方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "跨系統還需要處理身分、資料範圍與操作權限。場地詢問可以只提供必要條件，不必把使用者全部對話傳給遠端代理。不同系統可能有不同保存政策，傳輸標準一致也不代表彼此的資料治理規則相同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果網路中斷後想重送請求，應先確認既有任務狀態，尤其未來加入預訂等會改變外部狀態的操作時。避免重複工作、回查產物與判斷錯誤，仍需應用程式設計；A2A 的存在不會自動解決所有重試問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "理解 A2A 最有用的方法，是把它看成跨系統的交辦與回報約定。MCP 提供工具與資料介面，Skills 提供工作方法，A2A 提供代理之間的任務交流。真正好用的協作，還要有清楚需求、正確權限與可驗收的交付物。"
+        },
+        {
+          "type": "paragraph",
+          "text": "相容性也應用真正的測試任務確認。能讀取能力卡只是起點，還要確認雙方能交換所需資料、接收狀態並取回產物。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "元素",
+            "用途",
+            "場地詢問示例"
+          ],
+          "rows": [
+            [
+              "Agent Card",
+              "描述對外能力",
+              "可查場地與所需認證"
+            ],
+            [
+              "Message",
+              "一次交流",
+              "請補參加人數"
+            ],
+            [
+              "Task",
+              "追蹤工作狀態",
+              "查詢中或已完成"
+            ],
+            [
+              "Artifact",
+              "交付實際成果",
+              "候選場地清單"
+            ]
+          ],
+          "caption": "概念與使用情境比較；查證於 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "完成查詢不等於完成預訂",
+          "text": "任務成功要依原始交辦理解，不能把候選清單當成已取得場地。"
+        },
+        {
+          "type": "link",
+          "text": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-model-context-protocol"
+        },
+        {
+          "type": "link",
+          "text": "代理技能（Agent Skills）是什麼：可重用的工作方法包",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-skills"
+        },
+        {
+          "type": "link",
+          "text": "多代理系統（Multi-agent System）是什麼：分工與協作的代價",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-multi-agent-system"
+        },
+        {
+          "type": "link",
+          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+        }
+      ],
+      "sources": [
+        {
+          "title": "A2A：Core Concepts",
+          "url": "https://a2a-protocol.org/latest/topics/key-concepts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：Announcing the Agent2Agent Protocol",
+          "url": "https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Agent Skills：Specification",
+          "url": "https://agentskills.io/specification",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

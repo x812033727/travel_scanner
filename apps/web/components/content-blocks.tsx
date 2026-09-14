@@ -104,14 +104,14 @@ export function ContentBlocks({
       // A wide table scrolls inside its own box; the page must never scroll sideways for it.
       return (
         <div key={index} className="overflow-x-auto">
-          <table className="w-full border-collapse text-sm">
+          <table className="w-full border-collapse text-sm [overflow-wrap:normal]">
             {caption ? <caption className="caption-bottom pt-2 text-left text-[var(--muted)]">{caption}</caption> : null}
             <thead>
-              <tr>{block.header.map((cell, i) => <th key={i} scope="col" className="border-b-2 border-[var(--line)] px-3 py-2 text-left font-semibold">{cell}</th>)}</tr>
+              <tr>{block.header.map((cell, i) => <th key={i} scope="col" className="min-w-28 border-b-2 border-[var(--line)] px-3 py-2 text-left font-semibold">{cell}</th>)}</tr>
             </thead>
             <tbody>
               {block.rows.map((row, r) => (
-                <tr key={r}>{row.map((cell, c) => <td key={c} className="border-b border-[var(--line)] px-3 py-2 align-top leading-6">{cell}</td>)}</tr>
+                <tr key={r}>{row.map((cell, c) => <td key={c} className="min-w-28 border-b border-[var(--line)] px-3 py-2 align-top leading-6">{cell}</td>)}</tr>
               ))}
             </tbody>
           </table>
