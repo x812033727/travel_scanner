@@ -28,6 +28,9 @@ if CONTENT_BASE != PREVIOUS:
         ('46298e2863e9c2c4d6776e9d58a821be683a4b32', 'fc0c6763875ed7693ef2a94974a06338b6001968'),
         # PR #476: web minor/patch dependency updates; all 14 PR checks passed.
         ('a9d5b40e7067b321ee886a817b1712aec44afc1b', '673a64b67bc525686dd9959e9b521a0c7662137e'),
+        # PR #478: backend lockfile updates; all 14 PR checks passed.
+        ('a9d5b40e7067b321ee886a817b1712aec44afc1b', '5a00f72e7aae229de0f77a51c4d9afdcb967b0cf'),
+        ('673a64b67bc525686dd9959e9b521a0c7662137e', '5a00f72e7aae229de0f77a51c4d9afdcb967b0cf'),
     }
     assert (PREVIOUS, CONTENT_BASE) in reviewed_pairs, 'unreviewed integration baseline'
 ROOT = Path('/root/travel_scanner')
