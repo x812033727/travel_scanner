@@ -1,4 +1,5 @@
 import { defineConfig } from "vitest/config";
+import { createRequire } from "node:module";
 export default defineConfig({
   test: {
     environment: "jsdom",
@@ -12,5 +13,6 @@ export default defineConfig({
     // Keep the existing fail-fast budget in Linux CI.
     testTimeout: process.platform === "win32" ? 15_000 : 5_000,
   },
-  resolve: { alias: { "@": import.meta.dirname } },
+  // Next supplies this marker during app builds; Vitest runs server helpers outside Next.
+  resolve: { alias: { "@": import.meta.dirname, "server-only": createRequire(import.meta.url).resolve("next/dist/compiled/server-only/empty") } },
 });
