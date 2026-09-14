@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import { GuideImage } from "./guide-image";
 import { guideHref, type GuideKind, type GuideSummary } from "@/lib/guides";
 
 /** One label per kind: the badge in the corner. A card carries no dates — neither when the
@@ -15,10 +16,7 @@ export function GuideCard({ article, labels }: { article: GuideSummary; labels: 
   return (
     <li className="rounded-2xl border border-[var(--line)] p-4">
       {article.hero ? (
-        // A plain <img>: the standalone build has no image optimizer, and the stored size
-        // already reserves the box. Same trade-off as discovery/card.tsx.
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <GuideImage
           src={article.hero.src}
           alt={article.hero.alt}
           width={article.hero.width}

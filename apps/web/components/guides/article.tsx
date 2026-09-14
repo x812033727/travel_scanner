@@ -1,4 +1,5 @@
 import { Fragment, type ReactNode } from "react";
+import { GuideImage } from "./guide-image";
 import { ArticleAdSlot } from "@/components/ads/article-ad-slot";
 import { ContentBlocks, ImageCreditLine, type ContentBlockLabels } from "@/components/content-blocks";
 import { adsensePlacements, type AdsenseConfig } from "@/lib/adsense";
@@ -144,10 +145,7 @@ export function GuideArticle({
 
       {document.hero ? (
         <figure>
-          {/* Plain <img>: the standalone build has no image optimizer, and width/height are
-              stored so the box is reserved before the bytes arrive. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <GuideImage
             src={document.hero.src}
             alt={document.hero.alt}
             width={document.hero.width}
