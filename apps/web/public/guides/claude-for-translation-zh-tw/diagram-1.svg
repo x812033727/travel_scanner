@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">翻譯提示詞的五個部件與整份文件的流程 / Five parts of a translation prompt and the four steps for a whole document</title>
+  <desc id="desc">左半邊由上往下是翻譯提示詞的五個部件，每個部件一個框。第一，語言方向：兩邊都寫出來，英文翻成繁體中文，台灣用語。第二，用途與讀者：這份文件要幹嘛、給誰看，報價回信還是官網文案。第三，語氣層級：用一句話描述並給參考點，不要只寫正式一點。第四，不翻的詞：品牌名、產品名、介面字樣，加上整份共用的術語表，這一格用底色標示，因為它接到右邊的第一步。第五，輸出格式：只輸出譯文，不確定的地方列成清單，不要自己猜。左下三行註記：五個部件缺哪一塊，譯文就會在哪裡出問題；同一份提示詞與術語表整份文件重複使用，不要每段重寫；數字、日期與人名一律自己對，不要相信任何翻譯工具。右半邊是整份文件的四個步驟，用箭頭由上往下相連。第一步定術語表：原文、譯法、不要譯成三欄一次定完，整份共用。第二步分段翻：一段一章，每段都帶同一份提示詞與術語表。第三步整篇順稿：全部貼回去，只做前後一致的檢查並列出改動。第四步回譯驗證：另開一個對話把譯文翻回原文比對，數字、日期、人名自己對。右下三行註記：上下文視窗方面，付費方案依模型為 1M、500K 或 200K token，200K 約 500 頁；檔案上限方面，對話單檔 500 MB、每個對話 20 個檔案、PDF 最多 1,000 頁；專案知識單檔 30 MB，免費方案的上下文視窗以官網為準。數字依 2026 年 9 月的 Anthropic 官方文件與說明中心。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">翻譯提示詞的五個部件與整份文件的流程（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Five parts of a translation prompt, and the four steps from the glossary to back-translation</text>
+
+  <!-- left column: the five parts of the prompt -->
+  <text x="60" y="134" font-size="20" font-weight="700" fill="#102A2B">每次都要填的五個部件　Five parts of the prompt</text>
+
+  <rect x="60" y="154" width="680" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="90" y="194" font-size="18" font-weight="700" fill="#0B4F4D">① 語言方向</text>
+  <text x="90" y="230" font-size="16" fill="#102A2B">兩邊都寫出來：英文翻成繁體中文，台灣用語</text>
+
+  <rect x="60" y="266" width="680" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="90" y="306" font-size="18" font-weight="700" fill="#0B4F4D">② 文件用途與讀者</text>
+  <text x="90" y="342" font-size="16" fill="#102A2B">要幹嘛、給誰看：報價回信還是官網文案</text>
+
+  <rect x="60" y="378" width="680" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="90" y="418" font-size="18" font-weight="700" fill="#0B4F4D">③ 語氣層級</text>
+  <text x="90" y="454" font-size="16" fill="#102A2B">一句話描述並給參考點，不要只寫「正式一點」</text>
+
+  <rect x="60" y="490" width="680" height="100" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="90" y="530" font-size="18" font-weight="700" fill="#0B4F4D">④ 不翻的詞</text>
+  <text x="90" y="566" font-size="16" fill="#102A2B">品牌名、產品名、介面字樣，加上整份共用的術語表</text>
+
+  <rect x="60" y="602" width="680" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="90" y="642" font-size="18" font-weight="700" fill="#0B4F4D">⑤ 輸出格式</text>
+  <text x="90" y="678" font-size="16" fill="#102A2B">只輸出譯文；不確定的地方列清單，不要自己猜</text>
+
+  <text x="60" y="748" font-size="15" fill="#5C6B6B">五個部件缺哪一塊，譯文就會在哪裡出問題</text>
+  <text x="60" y="776" font-size="15" fill="#5C6B6B">同一份提示詞與術語表整份文件重複使用，不要每段重寫</text>
+  <text x="60" y="804" font-size="15" fill="#B8442D">數字、日期與人名一律自己對，不要相信任何翻譯工具</text>
+
+  <!-- right column: the four steps for a whole document -->
+  <text x="820" y="134" font-size="20" font-weight="700" fill="#102A2B">整份文件的流程　From glossary to back-translation</text>
+
+  <rect x="820" y="154" width="720" height="106" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="850" y="194" font-size="18" font-weight="700" fill="#0B4F4D">① 定術語表</text>
+  <text x="850" y="230" font-size="16" fill="#102A2B">原文｜譯法｜不要譯成，一次定完，整份文件共用</text>
+  <path d="M 1180 260 L 1180 298" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="302" width="720" height="106" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="850" y="342" font-size="18" font-weight="700" fill="#1F4E73">② 分段翻</text>
+  <text x="850" y="378" font-size="16" fill="#102A2B">一段一章，每段都帶同一份提示詞與術語表</text>
+  <path d="M 1180 408 L 1180 446" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="450" width="720" height="106" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="850" y="490" font-size="18" font-weight="700" fill="#1F4E73">③ 整篇順稿</text>
+  <text x="850" y="526" font-size="16" fill="#102A2B">全部貼回去，只做前後一致的檢查並列出改動</text>
+  <path d="M 1180 556 L 1180 594" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="598" width="720" height="106" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="850" y="638" font-size="18" font-weight="700" fill="#245E45">④ 回譯驗證</text>
+  <text x="850" y="674" font-size="16" fill="#102A2B">另開對話翻回原文比對；數字、日期、人名自己對</text>
+
+  <text x="820" y="748" font-size="15" fill="#5C6B6B">上下文視窗：付費方案依模型 1M／500K／200K token，200K 約 500 頁</text>
+  <text x="820" y="776" font-size="15" fill="#5C6B6B">檔案上限：對話單檔 500 MB、每個對話 20 個檔案、PDF 最多 1,000 頁</text>
+  <text x="820" y="804" font-size="15" fill="#5C6B6B">專案知識單檔 30 MB；免費方案的上下文視窗以官網為準</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

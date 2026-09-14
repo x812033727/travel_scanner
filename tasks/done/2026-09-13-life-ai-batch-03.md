@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-life-ai-batch-03
 title: 生活分享 AI 系列批次 03：Claude 教學（20 篇）
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-13T23:49:45Z
 created_at: 2026-09-13T11:55:59Z
-completed_at:
+completed_at: 2026-09-14T05:07:59Z
 branch: claude/festive-brown-6nsxfm
 depends_on:
   - 2026-09-13-life-ai-series-tooling
@@ -67,12 +67,12 @@ scope:
 
 ## Definition of done
 
-- [ ] 二十個 `apps/api/app/guides/content/<slug>.json`（zh-TW），每篇：hero（自繪插圖渲染的 `hero.jpg` 或 Commons 照片）、
+- [x] 二十個 `apps/api/app/guides/content/<slug>.json`（zh-TW），每篇：hero（自繪插圖渲染的 `hero.jpg` 或 Commons 照片）、
       至少一張自繪 `diagram-1.svg`、≥3 個 h2、一表、一 callout、sources 每筆有 `checked_on`、至少一個站內 `link`；
       合作連結只在總表標了的篇、只放文章真的用到的段落。
-- [ ] 沒有任何產品 logo、字標、圖示或介面截圖；照片只來自 Commons 的 CC0／PD／CC BY／CC BY-SA，授權由 Commons API 讀回。
-- [ ] 方案、價格、模型名、額度都在寫作當天查官網；查不到的寫「以官網為準」。
-- [ ] `guides-pack lint --kind life` 沒有 error；每張 hero 與圖解渲染成 PNG 後人工看過；`test_guides_content_pack.py` 全綠。
+- [x] 沒有任何產品 logo、字標、圖示或介面截圖；照片只來自 Commons 的 CC0／PD／CC BY／CC BY-SA，授權由 Commons API 讀回。
+- [x] 方案、價格、模型名、額度都在寫作當天查官網；查不到的寫「以官網為準」。
+- [x] `guides-pack lint --kind life` 沒有 error；每張 hero 與圖解渲染成 PNG 後人工看過；`test_guides_content_pack.py` 全綠。
 
 ## Steps
 
@@ -99,9 +99,9 @@ scope:
 19. `claude-model-lineup-2026` · Claude 模型家族：Opus、Sonnet、Haiku 怎麼選 · ai · 圖：插 · 易變
 20. `claude-for-teachers-lesson-plans` · 老師用 Claude：出題、教案與批改回饋 · ai, productivity · 圖：照
 
-- [ ] 認領後從總表抄出指派，一篇一個撰稿代理、每波最多七個，代理照 `docs/life-ai-series-brief.md` 產出工作區。
-- [ ] 每篇落地就 `guides-pack ingest`；被拒的退回修。
-- [ ] `guides-pack lint --render-dir` 逐張看圖；跑測試；更新這張票；commit。
+- [x] 認領後從總表抄出指派，一篇一個撰稿代理、每波最多七個，代理照 `docs/life-ai-series-brief.md` 產出工作區。
+- [x] 每篇落地就 `guides-pack ingest`；被拒的退回修。
+- [x] `guides-pack lint --render-dir` 逐張看圖；跑測試；更新這張票；commit。
 
 ## How to verify
 
@@ -116,3 +116,28 @@ npm run check:tasks
 ## Notes
 
 - 前三批旅遊文章的經驗：兩篇一個代理會在半小時左右撞到額度，一篇一個代理、先寫檔再寫報告最穩。
+
+## Outcome (2026-09-14)
+
+- 二十篇全部進 `apps/api/app/guides/content/`，`guides-pack lint --kind life` 對本批零 error 零 warning；
+  `test_guides_content_pack.py`、`test_guides_pack_ingest.py`、`test_guide_partner_links.py` 83 passed；`ruff`、`mypy`、`check:tasks` 皆過。
+  每篇的 hero 與圖解都渲染成 PNG 人工看過。十八篇 hero 是自繪插圖，兩篇是 Commons 照片（桌面版 CC0、老師篇 CC BY-SA 3.0，無正面人臉、無 logo）。
+- 產製：一篇一個撰稿代理、同時七個；sources 每篇 7–20 筆，全部是 Anthropic 官方文件、說明中心、官方公告或法規，`checked_on` 為 2026-09-13 或 09-14。
+- **撰稿代理會繼承 session 的 plan mode**：第一波七個代理只寫出計畫檔、沒寫交付物。`ExitPlanMode` 後用 SendMessage 讓同一個代理接著執行，
+  查證不必重做。開新一波前先確認 session 不在 plan mode——這條已寫進總表的經驗記錄。
+- **本批第一次出現指向未來批次的死連結**：指派時把 `ai-prompt-injection-explained`、`ai-writing-traditional-chinese-tips`、
+  `ai-token-cost-estimation` 等批次 04／10／11 才會寫的 slug 列進站內連結，八篇共 13 個連結指向不存在的文章。
+  已全部移除（清單見下），等那幾批寫完再補回去。下一批的指派只列**已經寫完或同批會寫**的 slug。
+  移除的連結：`claude-api-first-call`→ai-account-security-2fa-api-keys、ai-coding-cost-tokens-explained；
+  `claude-api-prompt-caching-cost`→ai-coding-cost-tokens-explained、ai-token-cost-estimation、ai-api-pricing-comparison-2026；
+  `claude-computer-use-explained`／`claude-in-chrome-browser-agent`／`claude-mcp-explained`→ai-prompt-injection-explained；
+  `claude-for-translation-zh-tw`→ai-translation-apps-travel、ai-writing-traditional-chinese-tips；
+  `claude-vs-chatgpt-writing-test`→ai-benchmarks-explained、ai-writing-traditional-chinese-tips；
+  `claude-writing-style-guide`→ai-writing-traditional-chinese-tips。
+- 總表第 54 列原本寫「同一題目的實測」，但我們沒有帳號、不能真的跑兩家產品，改寫成讀者可照做的自測法，
+  標題與 description 都明寫不是本站實測；總表標題已同步。另外四列（43、46、53、59）也同步成實際篇名。
+- 一張圖解（記憶與隱私）的雙語標題與右側說明相撞，說明欄整排右移後重畫——人工看圖這步仍然不能省。
+- `lint --catalogue` 會把不屬於本系列的 life 文章報成缺漏（#468 併進來的十五篇），已另開票
+  `2026-09-14-guides-pack-lint-catalogue-life`。
+- 部署後在主機：`python -m app.cli guides-import --actor-email <admin> --dry-run`，確認二十篇為 create，再 `--publish`；
+  `/zh-TW/life` 應列出六十篇 AI 系列文章。

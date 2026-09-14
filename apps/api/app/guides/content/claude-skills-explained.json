@@ -1,0 +1,330 @@
+{
+  "slug": "claude-skills-explained",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Skills 是什麼：把重複流程包成可重用的技能",
+      "description": "Claude Skills（技能）是一個資料夾：一份 SKILL.md 寫清楚這件事該怎麼做，旁邊放範本與腳本，Claude 判斷用得上時才讀進來。這篇依 2026 年 9 月的 Claude 官方文件與說明中心，講技能和提示詞差在哪、哪些產品與方案能用、SKILL.md 該寫什麼、怎麼建立與開關、官方有哪些現成技能，並用月結報表與社群貼文示範，最後用一張表分清楚技能、專案、個人指令與 MCP。",
+      "hero": {
+        "src": "/guides/claude-skills-explained/hero.jpg",
+        "alt": "米色底上一個深青色資料夾，裡面抽出一張寫著步驟清單的白色卡片，左邊是一個對話泡泡，右邊是一個橘色齒輪，下方一行字「重複的事寫成技能」。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude 的 Skills（技能）是一個資料夾：裡面有一份叫 SKILL.md 的檔案，用文字寫清楚某件事該怎麼做，旁邊可以再放範本、對照表與腳本。Anthropic 開發者文件的說法是，提示詞是一次性的對話層指令，技能則是按需載入，不必每次對話都把同一套規則重講一遍。結論很單純：每個月都要重做一次的事，寫成技能只要寫一次，之後 Claude 判斷用得上時會自己把它讀進來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇用兩個例子貫穿：每月都要整理的月結報表，和每篇都要套同一套格式的社群貼文改寫。讀完你會知道技能跟提示詞差在哪、哪些產品與方案能用、一個技能裡該有什麼、在 Claude 應用程式與 Claude Code 怎麼建立與開關、官方有哪些現成技能可以直接用，以及技能、專案、個人指令與 MCP 各自解決什麼問題。"
+        },
+        {
+          "type": "heading",
+          "text": "技能是什麼：為什麼不是「再貼一次提示詞」",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的工程部落格把技能定義成「指令、腳本與資源的資料夾，代理可以動態發現並載入，藉此把特定任務做得更好」。重點在載入的時機。官方把這個設計叫做漸進式揭露，分成三層：第一層是 SKILL.md 開頭的名稱與描述，每個技能大約 100 個 token，Claude 一開機就把它放進系統提示詞；第二層是 SKILL.md 的正文，只有 Claude 判斷這次用得上才讀進來，官方給的規模是 5k token 以內；第三層是附帶的參考檔與腳本，用到哪一份才讀哪一份，腳本執行時程式碼本身不進上下文視窗，只有輸出會。"
+        },
+        {
+          "type": "paragraph",
+          "text": "跟每次重貼一段提示詞比起來，差別有三個。一是提示詞貼在對話裡，換一個對話就沒了，技能放在帳號或專案資料夾裡，相關的對話都叫得到。二是提示詞一貼就整段佔住上下文視窗，技能沒被叫用時只佔名稱與描述那一百個 token，官方文件因此說裝很多個技能也不會有上下文的代價。三是提示詞只能是文字，技能可以帶範本、對照表與可執行的腳本。官方形容它像給新同事的入職手冊：先看目錄，需要哪一章再翻哪一章。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "哪些產品與方案能用：應用程式、Claude Code、API",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "技能在 Claude 應用程式、Claude Code、Claude API 與 Claude Agent SDK 都支援，另外也支援 AWS 與 Microsoft Foundry 上的 Claude 平台。方案的寫法兩邊不一致：說明中心寫 Free、Pro、Max、Team、Enterprise 都能用，前提是帳號開啟了程式執行；開發者文件講到應用程式時寫的卻是自訂技能限 Pro、Max、Team、Enterprise，2025 年 10 月 16 日的公告也是這四個方案。免費帳號實際能不能用，以你登入後設定裡看不看得到 Skills 為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有三件事容易踩到。一是自訂技能不跨介面同步：在應用程式上傳的不會自動出現在 API，用 API 上傳的也不會出現在應用程式，Claude Code 的技能是電腦上的資料夾，跟前兩者各自獨立，要在哪裡用就在哪裡放一份。二是分享範圍不同：應用程式裡的自訂技能是個人的，同事要自己上傳一份，說明中心另外寫 Team 與 Enterprise 的擁有者可以佈署組織層級的技能；API 上傳的整個工作區共用；Claude Code 放專案目錄的那份會跟著程式碼一起交給同事。三是執行環境不同：API 的技能跑在沒有網路、不能安裝套件的沙箱裡，應用程式依設定可能有完整、部分或沒有網路，Claude Code 的技能跟你電腦上的其他程式一樣有完整網路。"
+        },
+        {
+          "type": "heading",
+          "text": "一個技能裡有什麼：名稱、什麼時候用、步驟、附帶檔案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最小的技能就是一個資料夾加一份 SKILL.md。檔案最上面是 YAML 前置資料，只有兩個必填欄位，下面是用 Markdown 寫的正文。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "名稱（name）：最多 64 個字元，只能用小寫英文字母、數字與連字號，不能用 anthropic 或 claude 這兩個保留字。官方建議用動名詞，像 processing-pdfs、writing-documentation，不要取 helper、utils 這種看不出在做什麼的名字。",
+            "描述（description）：必填，開發者文件寫上限 1,024 個字元，應用程式的說明中心寫 200 個字元。這一欄要同時寫「做什麼」與「什麼時候用」，因為 Claude 就是拿它跟你的問題比對來決定要不要載入；官方要求用第三人稱寫，不要寫成「我可以幫你整理報表」。",
+            "正文（步驟說明）：工作流程、檢查清單與範例，官方建議控制在 500 行以內，超過就拆成別的檔案。",
+            "附帶檔案：同一個資料夾裡可以放 REFERENCE.md 這類參考檔、scripts 子資料夾裡的腳本，還有範本與對照表。參考檔只從 SKILL.md 連出去一層，不要一層再一層，官方說巢狀太深時 Claude 可能只讀到片段；超過 100 行的參考檔要在開頭加一份目錄。",
+            "相依套件（dependencies）：選填，寫這個技能需要什麼，例如 python 3.8 以上。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-skills-explained/diagram-1.svg",
+          "alt": "圖解：左邊是技能資料夾的組成與被叫用的四個步驟，從你提問、Claude 比對描述、照步驟做到產出；右邊是技能、專案與 MCP 三者的分工。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊看技能怎麼組成、什麼時候才被讀進來；右邊看技能、專案與 MCP 各管一件事。圖上的數字依 2026 年 9 月的 Claude 官方文件與說明中心。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "建立與安裝：介面路徑、官方現成技能、怎麼開關",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下用網頁版的 Claude 應用程式說明，介面名稱以英文版為準。技能要能跑，帳號得先開啟程式執行與檔案建立。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "先開啟程式執行：Free、Pro、Max 走設定（Settings）→ 功能（Capabilities），把「Code execution and file creation」打開；Team 與 Enterprise 由管理者在組織設定的 Skills 那一區開啟，Team 方案預設是開的。",
+            "到個人化（Customize）→ Skills 看技能清單，每一個旁邊有開關，用不到的關掉，Claude 就叫不到它。說明中心與 Claude Academy 的教學各自寫成 Customize 與 Capabilities 底下的 Skills，介面名稱可能已經調整，以你帳號裡看到的為準。",
+            "要裝自己寫的技能，在同一頁按「Add」上傳 zip 檔。zip 的根目錄必須是技能資料夾本身，裡面放 skill.md 與選用的 resources 子資料夾，不能把檔案直接丟在 zip 的根目錄。",
+            "不想自己排格式，官方有一個 skill-creator 技能會用問答帶你做：問你的工作流程、產生資料夾結構、排好 SKILL.md、把要附的檔案打包進去。",
+            "Claude Code 不用上傳：把資料夾放在家目錄的 .claude/skills 底下（只有自己用），或放專案裡的 .claude/skills（跟著程式碼交給同事），每個技能一個資料夾，裡面一份 SKILL.md。用斜線指令 skills 看目前有哪些，改完立刻生效不必重開；要停用就在 settings.json 的 skillOverrides 設成 off，刪掉資料夾就是移除。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "官方確實有現成技能。Anthropic 自己維護的文件技能有四個：Excel、Word、PowerPoint 與 PDF，在應用程式與 API 上直接可用，你請它做簡報或試算表時自動生效，不必手動指定。Claude Code 沒有這四個，但內建了開源的 Claude API 技能。Anthropic 也在 GitHub 的 skills 倉庫公開了一批開源技能，Notion、Figma、Atlassian 這類夥伴技能則搭配 MCP 連接器使用。技能會給 Claude 新的能力與可執行的程式碼，官方文件明講只裝你自己寫的或來自 Anthropic 的技能，來路不明的要先逐個檔案看過。"
+        },
+        {
+          "type": "heading",
+          "text": "示範一：月結報表整理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原本怎麼做：每個月初把系統匯出的明細貼給 Claude，再打一段「幫我分成收入、成本、異常三塊，金額用千分位，跟上個月差超過一成的列出來，最後寫三句摘要」。每次打的句子都不太一樣，出來的欄位順序跟著飄，上個月那份範例還得翻對話紀錄才找得到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技能怎麼寫：建一個資料夾叫 monthly-close-report，SKILL.md 的描述寫「整理月結明細，產出收入、成本與異常三段報表。使用者提到月結、對帳、當月報表或上傳明細檔時使用。」正文寫成可以逐項勾掉的清單：一、確認明細的月份與幣別；二、依科目分成收入、成本、異常三段；三、跟基準檔比對，差異超過一成的標出來；四、照報表範本的欄位順序輸出；五、寫三句摘要，只寫數字看得出來的事，看不出來的改寫成要向誰確認。會變的東西全部放成獨立檔案：科目對照表、上月基準、報表範本各一份，改了換檔案就好，不必回頭動 SKILL.md。"
+        },
+        {
+          "type": "paragraph",
+          "text": "之後怎麼叫用：開一個新對話，把當月明細丟進去說「整理這個月的月結」。描述對得上，Claude 會自己讀 SKILL.md，要比對時才去讀基準檔，要輸出時才去讀範本。想確認它有沒有用到，說明中心建議把話講明白一點，例如「用我的月結報表技能整理這份明細」。明細與基準檔如果每個月都放在同一個地方，把資料放專案的知識庫、把步驟放技能，兩邊搭配最順。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+        },
+        {
+          "type": "heading",
+          "text": "示範二：社群貼文改寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原本怎麼做：每次發文前把草稿貼給 Claude，交代開頭要有一句鉤子、中間分三小段、結尾放一個問句、不要用驚嘆號、標籤最多五個。講漏一項就得重來一次，換一個人代班發文，格式又變成另一套。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技能怎麼寫：資料夾叫 social-post-rewrite，描述寫「把草稿改寫成社群貼文，套用固定的開頭、分段、結尾與標籤規則。使用者要發社群貼文或說要改寫貼文時使用。」正文先寫規則清單，再放三組「改寫前、改寫後」的實際例子，官方文件說範例比描述更能把想要的風格講清楚。品牌用語表、禁用詞與標籤清單放在參考檔裡，換季或換活動只要換那一份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "之後怎麼叫用：貼上草稿說「改寫成這週的貼文」。多個技能可以疊著用，官方文件說 Claude 會自己判斷需要哪幾個並協調它們一起做事。技能該被叫到卻沒被叫到時，先回頭改描述，把你真的會講的詞寫進去，因為觸發靠的是語意比對，不是關鍵字比對。"
+        },
+        {
+          "type": "link",
+          "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
+          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+        },
+        {
+          "type": "heading",
+          "text": "技能、專案、個人指令與 MCP 各解決什麼問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這四樣常被混在一起，解決的卻是不同的問題。Claude Academy 的課程用一句話分開前兩個：專案存知識，技能做事。專案是一個工作區，放這件事的背景資料與專案指令，只在專案裡生效；技能是一份步驟說明，一般對話與專案裡都能用，Claude 判斷用得上才載入。個人指令是帳號層級的全域偏好，每個對話都套用；自訂樣式改的是語氣與輸出格式，說明中心現在把調整語氣與格式這件事也歸到技能底下。MCP 是一個開放標準，負責把 Claude 接到外部的工具與資料，官方把它比喻成 AI 的 USB-C。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "功能",
+            "解決什麼問題",
+            "什麼時候生效",
+            "裡面放什麼"
+          ],
+          "rows": [
+            [
+              "技能 Skills",
+              "同一套流程每次都要重講一遍",
+              "Claude 比對描述，判斷用得上才載入",
+              "SKILL.md 的步驟說明，加上範本、對照表與腳本"
+            ],
+            [
+              "專案 Projects",
+              "同一批背景資料每次都要重貼",
+              "只在這個專案裡開的對話",
+              "專案指令與知識檔案"
+            ],
+            [
+              "個人指令與自訂樣式",
+              "語氣、格式、稱呼每次都要交代",
+              "個人指令套用所有對話；樣式是你選了才套用",
+              "偏好與寫作風格的文字說明"
+            ],
+            [
+              "MCP 連接器",
+              "Claude 拿不到外部系統的資料，也做不了那邊的動作",
+              "你授權過的連接器，需要時才呼叫",
+              "連到雲端硬碟、Notion 這類服務的設定與權限"
+            ]
+          ],
+          "caption": "2026 年 9 月依 Claude 官方文件、說明中心與 Claude Academy 整理；四者可以同時使用，功能與方案之後可能變動，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "它們是可以疊在一起的。技能的步驟裡可以指名要用哪個 MCP 工具，官方文件提醒這時候工具名稱要寫成「伺服器名稱冒號工具名稱」的完整寫法，只寫工具名稱，在你同時接了好幾個連接器時會找不到。夥伴技能就是這樣做的：Notion、Figma、Atlassian 的技能配上各自的 MCP 連接器一起用。"
+        },
+        {
+          "type": "link",
+          "text": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
+          "url": "https://mokaair.com/zh-TW/life/claude-mcp-explained"
+        },
+        {
+          "type": "link",
+          "text": "系統提示詞入門：讓 Claude 穩定扮演一種角色",
+          "url": "https://mokaair.com/zh-TW/life/claude-system-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "寫技能的三個原則",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的撰寫指南很長，對一般使用者最有用的是三件事。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "描述寫清楚「什麼時候用」。描述是 Claude 唯一拿來判斷的依據，要同時寫做什麼與何時用，把你真的會講的詞放進去。官方舉的反例是「Helps with documents」這種空話，正例是「擷取 PDF 的文字與表格、填表單、合併檔案。使用者提到 PDF、表單或文件擷取時使用。」",
+            "步驟寫成可以檢查的清單。複雜的流程拆成依序的步驟，官方建議直接給一份 Claude 可以照抄進回覆、做一步勾一步的檢查清單，並在關鍵步驟後面加一個驗證：沒通過就回到前一步重做，這樣能防止它跳過該檢查的地方。",
+            "會變的東西放檔案，不要寫死在 SKILL.md 裡。價目、名單、品牌用語、範本都放成獨立檔案，SKILL.md 只寫「需要時去讀哪一份」。官方特別提醒不要把會過期的資訊寫進正文，舊做法要留就另外開一段「舊版做法」收著。附帶檔案沒被讀到就不佔上下文視窗，放得再多也不虧。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一個省事的做法：先照平常的方式跟 Claude 把這件事從頭做完一次，做完直接說「把我們剛才的做法寫成一個技能」。官方文件說 Claude 本來就懂技能的格式，不需要另外給它什麼特別的提示詞，它會產生前置資料與正文都排好的 SKILL.md。之後用得不順再回來改描述或調整檔案結構，官方的建議是從真實使用去觀察，不要憑想像先寫一大堆用不到的規則。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "同一件事做第三次，就值得寫成技能",
+          "text": "只做一次的事寫提示詞就好，官方文件也把提示詞定義成一次性的對話層指令。做第二次你會開始重打同一段交代，做第三次就該把它變成技能。Claude 官方部落格給的門檻更保守：做過至少 5 次、而且預期還要再做 10 次以上才值得動手。不確定的話看兩個徵兆：你正在翻舊對話找上次那段交代，或者同一件事每次做出來的格式都不太一樣。出現一個，寫技能就划算了。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 開發者文件：Agent Skills 總覽（定義、漸進式揭露三層與 token 量、支援的產品、名稱與描述限制、不跨介面同步、分享範圍、執行環境、安全性）",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 工程部落格：Equipping agents for the real world with Agent Skills（技能的定義、漸進式揭露、與 MCP 互補、支援 Claude.ai 與 Claude Code 等）",
+          "url": "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：What are Skills?（技能定義、Free 到 Enterprise 方案、需開啟程式執行、Anthropic 內建文件技能、組織佈署技能、夥伴技能搭配 MCP 連接器）",
+          "url": "https://support.claude.com/en/articles/12512176-what-are-skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Use skills in Claude（Customize 的 Skills 開關、設定與功能裡的程式執行、自動判斷何時使用、可以直接指名要用哪個技能）",
+          "url": "https://support.claude.com/en/articles/12512180-use-skills-in-claude",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：How to create custom skills（zip 的資料夾結構、名稱 64 字元、描述 200 字元、dependencies 欄位、上傳與開關、Edit with Claude）",
+          "url": "https://support.claude.com/en/articles/12512198-how-to-create-custom-skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 開發者文件：Skill authoring best practices（描述要寫做什麼與何時用、第三人稱、500 行上限、參考檔一層深、檢查清單與驗證迴圈、避免時效性資訊、MCP 工具全名）",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code 文件：Extend Claude with skills（個人與專案的 .claude/skills 路徑、skills 指令、skillOverrides 停用、刪資料夾移除、改完立刻生效）",
+          "url": "https://code.claude.com/docs/en/skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic 公告：Introducing Agent Skills（2025 年 10 月 16 日、可組合與可攜、skill-creator、多個技能自動疊用、Pro 至 Enterprise）",
+          "url": "https://claude.com/blog/skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Academy：Working with skills（專案存知識、技能做事；設定與功能裡開啟程式執行；Anthropic 技能與自訂技能的差別）",
+          "url": "https://academy.claude.com/courses/claude-101/working-with-skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Academy 教學：Teach Claude your way of working using Skills（什麼時候該寫技能、如何請 Claude 直接產生技能、技能與專案及個人指令的分工、非工程師的技能範例）",
+          "url": "https://academy.claude.com/tutorials/teach-claude-your-way-of-working-using-skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Understanding Claude's personalization features（個人指令、專案指令與技能各自的作用範圍；技能可調整語氣與格式）",
+          "url": "https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 部落格：How to create Skills for Claude（建立技能的步驟、skill-creator、觸發靠語意比對、做過至少 5 次且預期再做 10 次以上才值得）",
+          "url": "https://claude.com/blog/how-to-create-skills-key-steps-limitations-and-examples",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 部落格：What is Model Context Protocol?（MCP 是連接 AI 與工具、資料的開放標準，官方比喻成 AI 的 USB-C）",
+          "url": "https://claude.com/blog/what-is-model-context-protocol",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 開發者文件：Using Agent Skills with the API（/v1/skills 端點上傳自訂技能、container 參數帶 skill_id、需搭配程式執行工具）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

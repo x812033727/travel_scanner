@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Claude 操作電腦：畫面、游標與一句指令 / A cursor on a screen window, linked by a dashed line to a chat bubble</title>
+  <desc id="desc">自繪插圖：畫面右半邊是一個白色的螢幕視窗，圓角、深綠色外框，上緣有一條淺綠色標題列與紅、橘、綠三個小圓點；視窗裡有一條深灰色的標題橫條、兩條淺灰色的文字橫線，以及一顆綠色的圓角按鈕。一個深色的箭頭游標停在那顆按鈕的左上角，像是正要按下去。左半邊是一個藍色的對話泡泡，泡泡裡有三個白色圓點代表一句指令；一條藍色虛線從對話泡泡彎過中間的空白，一路連到游標的尖端，代表你說的話直接變成畫面上的動作。底色是米白色，左下與右下各有一個淡色圓形當背景。畫面下方有一行深色文字「看得到畫面，才動得了手」。整張圖沒有任何品牌標誌或介面截圖。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft background shapes -->
+  <circle cx="200" cy="700" r="110" fill="#E6F0F7"/>
+  <circle cx="1450" cy="700" r="140" fill="#E3F0EF"/>
+
+  <!-- chat bubble -->
+  <path d="M 180 230 h 320 a 40 40 0 0 1 40 40 v 160 a 40 40 0 0 1 -40 40 h -230 l -80 66 v -66 h -10 a 40 40 0 0 1 -40 -40 v -160 a 40 40 0 0 1 40 -40 z" fill="#2F6F9F"/>
+  <circle cx="270" cy="350" r="18" fill="#FFFFFF"/>
+  <circle cx="340" cy="350" r="18" fill="#FFFFFF"/>
+  <circle cx="410" cy="350" r="18" fill="#FFFFFF"/>
+
+  <!-- screen window -->
+  <rect x="620" y="150" width="780" height="470" rx="28" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <path d="M 620 178 a 28 28 0 0 1 28 -28 h 724 a 28 28 0 0 1 28 28 v 42 h -780 z" fill="#E3F0EF"/>
+  <line x1="624" y1="220" x2="1396" y2="220" stroke="#0D6B68" stroke-width="6"/>
+  <circle cx="670" cy="186" r="12" fill="#B8442D"/>
+  <circle cx="710" cy="186" r="12" fill="#D97A2B"/>
+  <circle cx="750" cy="186" r="12" fill="#2E7D5B"/>
+  <rect x="820" y="170" width="480" height="32" rx="16" fill="#FFFFFF"/>
+
+  <!-- page content -->
+  <rect x="680" y="270" width="400" height="26" rx="13" fill="#5C6B6B"/>
+  <rect x="680" y="326" width="600" height="16" rx="8" fill="#C9D3D3"/>
+  <rect x="680" y="364" width="520" height="16" rx="8" fill="#C9D3D3"/>
+
+  <!-- the button the cursor is about to press -->
+  <rect x="900" y="430" width="250" height="72" rx="36" fill="#2E7D5B"/>
+  <rect x="965" y="459" width="120" height="14" rx="7" fill="#FFFFFF"/>
+
+  <!-- dashed link: the instruction runs from the bubble into the screen and becomes the cursor -->
+  <path d="M 558 392 C 690 436, 812 420, 942 434" fill="none" stroke="#2F6F9F" stroke-width="9" stroke-dasharray="20 18" stroke-linecap="round"/>
+
+  <!-- cursor -->
+  <g transform="translate(948 436) scale(1.25)">
+    <path d="M 0 0 l 0 96 l 26 -24 l 20 46 l 26 -12 l -20 -46 l 34 -4 z" fill="#102A2B" stroke="#F7F1E8" stroke-width="6" stroke-linejoin="round"/>
+  </g>
+
+  <text x="800" y="790" text-anchor="middle" font-size="56" font-weight="700" fill="#102A2B">看得到畫面，才動得了手</text>
+</svg>

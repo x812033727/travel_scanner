@@ -130,23 +130,23 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 |---|---|---|---|---|---|---|
 | 41 | `claude-plans-free-pro-max-2026` | Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得 | ai, software | 插 |  | ✓ |
 | 42 | `claude-projects-knowledge-base` | Claude Projects：把資料與指令放進專案，越用越懂你 | ai, tutorial | 插 |  |  |
-| 43 | `claude-artifacts-guide` | Claude Artifacts：在對話裡直接做出網頁、圖表與小工具 | ai, tutorial | 插 |  |  |
+| 43 | `claude-artifacts-guide` | Claude Artifacts 教學：不會寫程式也能在對話裡做出網頁、圖表與小工具 | ai, tutorial | 插 |  |  |
 | 44 | `claude-extended-thinking-guide` | Claude 延伸思考模式：什麼題目該開、怎麼看它的推理 | ai, tutorial | 插 |  | ✓ |
 | 45 | `claude-file-analysis-pdf-excel` | 給 Claude 讀 PDF 與試算表：摘要、比對與抓數字 | ai, tutorial | 插 |  |  |
-| 46 | `claude-writing-style-guide` | 用 Claude 寫作：設定風格、長文結構與潤稿 | ai, productivity | 插 |  |  |
+| 46 | `claude-writing-style-guide` | 用 Claude 寫作：設定風格、長文結構與潤稿，寫出像自己寫的中文 | ai, productivity | 插 |  |  |
 | 47 | `claude-for-translation-zh-tw` | 用 Claude 做中英日翻譯：語氣、專有名詞與術語表 | ai, productivity | 插 |  |  |
 | 48 | `claude-system-prompt-basics` | 系統提示詞入門：讓 Claude 穩定扮演一種角色 | ai, tutorial | 插 |  |  |
 | 49 | `claude-computer-use-explained` | Claude 操作電腦是怎麼回事：能力、限制與安全 | ai | 插 |  | ✓ |
 | 50 | `claude-mcp-explained` | MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫 | ai, tutorial | 插 |  |  |
 | 51 | `claude-desktop-mobile-app-setup` | Claude 桌面版與手機 App：安裝、快捷鍵與語音 | ai, software | 照 |  |  |
 | 52 | `claude-in-chrome-browser-agent` | Claude 在瀏覽器裡：Chrome 擴充功能替你操作網頁 | ai, tutorial | 插 |  | ✓ |
-| 53 | `claude-memory-and-privacy` | Claude 的記憶與隱私：什麼會被記住、怎麼清除 | ai, misc | 插 |  | ✓ |
-| 54 | `claude-vs-chatgpt-writing-test` | Claude 和 ChatGPT 寫作比一比：同一題目的實測 | ai | 插 |  | ✓ |
+| 53 | `claude-memory-and-privacy` | Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練 | ai, misc | 插 |  | ✓ |
+| 54 | `claude-vs-chatgpt-writing-test` | Claude 與 ChatGPT 寫作自測法：五道題、五個面向，結論自己測出來 | ai | 插 |  | ✓ |
 | 55 | `claude-for-research-summaries` | 用 Claude 讀論文與長報告：摘要、提問與批判 | ai, productivity | 插 |  |  |
 | 56 | `claude-skills-explained` | Claude Skills 是什麼：把重複流程包成可重用的技能 | ai, tutorial | 插 |  | ✓ |
 | 57 | `claude-api-first-call` | 第一次呼叫 Claude API：金鑰、費用與十行 Python | ai, tutorial | 插 |  | ✓ |
 | 58 | `claude-api-prompt-caching-cost` | Claude API 省錢：提示快取與批次處理怎麼用 | ai, tutorial | 插 |  | ✓ |
-| 59 | `claude-model-lineup-2026` | Claude 模型家族：Opus、Sonnet、Haiku 怎麼選 | ai | 插 |  | ✓ |
+| 59 | `claude-model-lineup-2026` | Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選 | ai | 插 |  | ✓ |
 | 60 | `claude-for-teachers-lesson-plans` | 老師用 Claude：出題、教案與批改回饋 | ai, productivity | 照 |  |  |
 
 ### 批次 04｜AI 寫程式：Claude Code、Codex、Gemini CLI、Cursor、Copilot
@@ -360,4 +360,8 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
   `ExitPlanMode` 後用 SendMessage 讓同一個代理接著執行，查證不用重做。被額度切斷的代理留下的 `pack.json` 可由新代理接手補圖。
   官網 403 的讀法（help center 網址加 `.json`、Wayback 快照、WebSearch 限定網域）已寫進 brief 第 5 節。代理在協調者 ingest 之後還會再改檔，
   收尾前用 `find -newer` 再對一次。總表標題以實際篇名為準（本批同步了 12 列），life→life 連結文字收完後統一。
+- 批次 03（2026-09-14，`tasks/done/2026-09-13-life-ai-batch-03.md`）：**指派的站內連結只能列已經寫完或同批會寫的 slug**——
+  本批列了批次 04／10／11 的篇名，八篇共 13 個連結指向不存在的文章，收尾時才由 `normalise_links.py` 的 missing target 抓到並移除。
+  撰稿代理會繼承 session 的 plan mode，開著時代理只寫計畫檔；`ExitPlanMode` 後用 SendMessage 讓同一個代理接著執行即可，查證不用重做。
+  總表標題以實際篇名為準（本批同步 5 列，其中「兩家寫作比一比」因為我們無法真的實測，改寫成讀者自測法）。
 - Commons 照片：工具的 User-Agent 要有聯絡信箱，而且請求要走 urllib（httpx 的連線被 Wikimedia 擋 403）；十個代理同時搜 Commons 會被 429，工具會退避重試。

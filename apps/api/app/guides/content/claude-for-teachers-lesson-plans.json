@@ -1,0 +1,325 @@
+{
+  "slug": "claude-for-teachers-lesson-plans",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "老師用 Claude：出題、教案與批改回饋",
+      "description": "備課教案、出考題、批改回饋、家長聯絡與行政公文這四件每週都要做的事，Claude 可以先給你草稿，專業判斷還是你的。這篇依 Anthropic 說明中心與教育部注意事項，示範先用專案把課綱、課本目錄與班級程度存起來，四件事各給一套提示詞全文與「它會怎麼回、你要改什麼」，說明學生姓名與成績一律不上傳、要用先去識別化的做法，並列出它最容易出錯的四個地方與查法。",
+      "hero": {
+        "src": "/guides/claude-for-teachers-lesson-plans/hero.jpg",
+        "alt": "一間沒有人的教室，長排課桌椅沿著三面圍成一圈，左側牆上是一面綠色黑板，右側是整排採光窗",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Martin Kraft",
+          "license": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Klassenraum_Grundschule.jpg"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "老師用 Claude 的規則只有一句：它產出草稿，你做專業判斷。備課教案、出考題、批改回饋、家長聯絡與行政公文這四件每週固定要做的事，它都能給你一份可以改的初稿；但目標訂得對不對、難度合不合這個班，只有你知道。還有一條不能退讓的底線：學生的姓名、學號、成績與輔導紀錄，一律不要貼進任何 AI 工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇寫給台灣的國高中與大專老師：先做一次專案設定，四件事各一套做法，每節附提示詞全文與「它會怎麼回、你要改什麼」，後半段講個資與它會出錯在哪。先講方案：Anthropic 在 2026 年 7 月推出的 Claude for Teachers 免費，但只開放美國經驗證的 K-12 教師與學區；台灣老師用一般方案，官網列 Pro 年繳每月 17 美元、月繳每月 20 美元。"
+        },
+        {
+          "type": "heading",
+          "text": "先做一次的設定：把課程背景放進專案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每開新對話就重打一次「我教高一物理、用哪個版本課本、班上落差很大」，是最大的浪費。Claude 的專案（Projects）有自己的對話紀錄與知識檔案，資料放一次，裡面每個對話都讀得到。依 Anthropic 說明中心 2026 年 9 月的說明，免費帳號最多 5 個專案，付費沒有上限；知識檔案單檔上限 30 MB，放不進上下文視窗時付費方案會自動改用檢索模式。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "一個科目一個專案，名稱寫清楚，例如「高一物理 甲班 上學期」。",
+            "知識檔案放四樣：課程綱要或學校教學計畫、課本目錄、本學期進度表，以及一份你滿意的舊教案與舊考卷。",
+            "專案指令寫你教的階段與科目、班上程度、要的輸出格式，最後補一句「不要編造課綱條目與統計數字」。",
+            "放檔案前逐份檢查，夾帶學生姓名、學號或成績的先刪掉。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "設定好之後，下面四節的提示詞都不必再交代背景。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+        },
+        {
+          "type": "heading",
+          "text": "教案：一節 50 分鐘的流程與差異化",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "括號裡換成你的：「這節課 50 分鐘，主題是（單元名稱），對象是（年級與科目）。請給我一份教案：一句話的教學目標，用學生做得到的動作描述；四到五段流程與每段分鐘數；每段學生實際在做什麼；兩種差異化——提早做完的做什麼延伸任務、跟不上的用什麼方式補。流程裡至少一次讓學生開口或動手。最後列出我要先準備的東西。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "它會回一份時間剛好排滿 50 分鐘、結構完整但偏理想的教案：討論活動估得太短、教材未必是你的版本、目標常寫成「理解某某概念」，看不出做到沒有。三處要改：時間依班上節奏重估；教材換成手上的；目標改寫成可觀察的行為。差異化那兩段留著，補救方式換成你推得動的。"
+        },
+        {
+          "type": "heading",
+          "text": "出題：分層難度、解析與超綱標記",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「依專案裡的課本目錄，針對（章節）出一份小考：基礎題 6 題、應用題 3 題、挑戰題 1 題。每題附正確答案、完整解析，以及每個錯誤選項是針對哪個常見迷思設計的。若有題目超出（年級與課綱範圍）或需要沒教過的先備知識，請在該題下標註『可能超綱』並說明理由。最後說明整份的難度分布。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "分層看得出層次，但三件事要自己確認：多步計算的答案它會算錯，逐題算一次；它沒讀過台灣的十二年國民基本教育課程綱要，「超綱」標記只能當提醒，要對照國家教育研究院的課綱與你的進度；選項偶爾兩個都對。教育部給國中小的注意事項也提醒採多元評量，避免 AI 過度取代評量形式。"
+        },
+        {
+          "type": "heading",
+          "text": "批改回饋：先去識別化，再要三句式草稿",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "順序不能顛倒：先去識別化，再貼。姓名換成學生 A、B、C，刪掉學號、座號、班級與作答裡寫到家裡的事，確認沒有認得出是誰的線索。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「下面是同一份（作業名稱）的三份作答，已去識別化為學生 A、B、C。請各給一段回饋草稿，每段只寫三句：第一句具體指出哪裡好，要引用他寫的內容，不要只說『很好』；第二句指出最主要的一個問題，說清楚為什麼；第三句給一個下次可以練的具體動作。語氣是對（年級）學生說話，不要教條。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "限制成三句是關鍵，不限制它會寫成五段長文。它常見的毛病是第一句空泛、第三句太大（「多讀課外書」）。把第一句改成引用學生原句、第三句改成下週做得完的動作，並確認它沒把甲的優點寫到乙身上。教育部的寫法是「綜合教師自身意見，給予學生適當回饋及建議」。"
+        },
+        {
+          "type": "heading",
+          "text": "家長聯絡與行政：語氣要在提示詞裡寫死",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "通知單、聯絡簿短文與行政簽呈格式固定，最適合讓它寫草稿，但語氣要寫死。提示詞：「把下面的要點寫成一則給家長的聯絡簿短文，一百字以內：（要點條列）。語氣平實、尊重、不責備，先說事實再說希望家長協助的事，最後留一句歡迎聯絡。不要用驚嘆號，不要用『務必』『切勿』，也不要替學生下性格評語。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "行政文書把前半句換成「寫成一則校內公告的本文，依我放在專案裡的格式範例」，把舊公告放進專案當樣本比形容詞準。三件事要改：日期、金額與人名自己核對；用語與職稱照學校既有的；正式公文格式以學校與上級機關規定為準。行政院民國 112 年 8 月通過的使用生成式 AI 參考指引寫明，製作機密文書不得使用生成式 AI。"
+        },
+        {
+          "type": "link",
+          "text": "用 Claude 寫作：設定風格、長文結構與潤稿，寫出像自己寫的中文",
+          "url": "https://mokaair.com/zh-TW/life/claude-writing-style-guide"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-for-teachers-lesson-plans/diagram-1.svg",
+          "alt": "五列流程圖，由上而下是專案設定、教案、出題、批改回饋、家長聯絡與行政，每一列分成「它做什麼」與「你做什麼」兩欄，底下兩行提醒學生個資不上傳與台灣老師適用的方案",
+          "width": 1600,
+          "height": 900,
+          "caption": "一週備課的五個步驟，每一步左邊是 Claude 產草稿的部分，右邊是非你不可的專業判斷；底下兩行是兩條底線。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "學生個資與校務資料：一律不上傳",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "個人資料保護法第 2 條所稱個人資料，包含姓名、國民身分證統一編號、家庭、教育、病歷及其他得以直接或間接識別該個人之資料，學生的學號與成績也在裡面。第 6 條把病歷、醫療、健康檢查與犯罪前科列為特種個人資料，原則上不得蒐集、處理或利用，輔導紀錄常有這類內容；第 5 條則要求不得超越特定目的之必要範圍。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "不上傳：姓名、學號、座號、身分證統一編號、電話地址、成績與排名、輔導與特教紀錄、家庭經濟、醫療與健康資料。",
+            "要用先去識別化：人名換成學生 A、B、C，刪掉學號與班級，作答裡的人事時地改寫，確認無法回推是誰。",
+            "學校已訂規範的以學校為準；不少學校與縣市已公告校務機密不得輸入生成式 AI。",
+            "Anthropic 自己也寫著，可識別的學生資訊能不能用由學校或學區決定；台灣老師更要自己畫界線。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "帳號層級還有一層：對話會不會拿去改進模型，是可以自己調的設定。三家怎麼關，另有一篇。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "它會出錯的四個地方，以及怎麼查",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "課綱與考試範圍：它沒讀台灣的課綱，某題超不超綱是從一般教材推的。查法：對照國家教育研究院的課綱與學校進度表。",
+            "自創的史地事實與數據：人名、年份、條約與統計數字，它會生出格式完整但不存在的東西。查法：要寫進講義或題目的事實，回教科書或原始出處確認。",
+            "難度誤判：它標的「基礎題」對你的班可能是難題。查法：挑兩三題給程度中間的學生試做，才定分層。",
+            "回饋空泛：「再多加練習」這類句子還是會冒出來。查法：每一句都問，學生看完知道下一步要做什麼嗎。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "教育部的注意事項也寫著：對生成式 AI 的結果與建議應多方查證，進行批判性思考。"
+        },
+        {
+          "type": "link",
+          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "heading",
+          "text": "與其禁止學生用，不如把用法講清楚",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "教育部給高中的注意事項要求教師在課程與評量實施前明確說明生成式 AI 的使用規範，並列出四種形式：學生自行寫完再交由 AI 修改、AI 產生架構後由學生寫內容、學生擬好架構後交 AI 產生內容再自己修改、不得使用。每份作業勾一種，學生就沒有模糊空間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作業設計也能調整：把「寫一篇心得」改成「附上你和 AI 的對話紀錄與你改了哪裡」；把一鍵可生成的題目換成要用課堂資料或自己的實驗數據才寫得出來的。國中小的注意事項還提醒，班上不是都拿得到軟硬體或具備操作能力時，不宜使用該 AI 工具，以維持評量公平性。"
+        },
+        {
+          "type": "link",
+          "text": "學生怎麼用 AI 不踩線：學習、整理筆記與學術誠信",
+          "url": "https://mokaair.com/zh-TW/life/ai-for-students-honest-use"
+        },
+        {
+          "type": "heading",
+          "text": "四件事的分工對照表",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "任務",
+            "提示詞重點",
+            "它的產出",
+            "老師一定要做的事"
+          ],
+          "rows": [
+            [
+              "教案",
+              "50 分鐘、目標寫成可觀察行為、分段時間、差異化",
+              "一節課的教案草稿",
+              "重估時間、換教材、改寫目標"
+            ],
+            [
+              "出題",
+              "分層題數、附解析與誤答理由、標出可能超綱",
+              "分層題組與解析",
+              "自己算一次、對照課綱、選項唯一"
+            ],
+            [
+              "批改回饋",
+              "去識別化為學生 A、B、C，每人只寫三句",
+              "三句式回饋草稿",
+              "先去識別化、空泛句改成原句與動作"
+            ],
+            [
+              "家長聯絡與行政",
+              "要點條列、語氣寫死、舊公告當樣本",
+              "通知與公告本文草稿",
+              "核對日期金額人名、改成學校格式"
+            ]
+          ],
+          "caption": "四件事的分工（2026 年 9 月依 Anthropic 說明中心與教育部注意事項整理；學校另有規範時以學校為準）。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "它寫的是草稿，教學判斷是你的",
+          "text": "每一份教案、每一題考題、每一段回饋，送出去前都要有你自己的判斷：目標對不對、難度合不合這個班、這句話學生看了會怎麼想。學生的名字與成績永遠不要貼進去，連同學號與輔導紀錄；真要用作答內容，先去識別化成學生 A、B、C。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Introducing Claude for Teachers（美國經驗證 K-12 教師免費、2026 年 7 月 14 日發布、2027 年 6 月 30 日前註冊可享一年、不以 Claude for Teachers 對話訓練模型）",
+          "url": "https://www.anthropic.com/news/claude-for-teachers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Claude for Teachers, your data and our terms（學生帳號不屬於此方案；可識別的學生資訊能否使用由學校或學區政策決定）",
+          "url": "https://support.claude.com/en/articles/15926041-claude-for-teachers-your-data-and-our-terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude by Anthropic：Claude for Teachers, now available for U.S. K-12 schools and districts（2026 年 8 月 28 日擴及學校與學區，含備課與檢核理解兩項教學技能）",
+          "url": "https://claude.com/blog/claude-for-teachers-now-available-for-schools-and-districts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude：Plans & Pricing（Free、Pro 年繳每月 17 美元或月繳每月 20 美元、Max 自每月 100 美元起、Team、Enterprise）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：What are projects?（免費帳號最多 5 個專案、專案指令、付費方案的檢索模式可再擴大 10 倍容量）",
+          "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Upload files to Claude（專案知識檔案單檔 30 MB、對話單檔 500 MB 且每次對話最多 20 個檔案、PDF 上限 1,000 頁）",
+          "url": "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Understanding Claude's personalization features（帳號層級的 Instructions for Claude、專案指令與技能三種個人化方式）",
+          "url": "https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：輸入敏感資料與誰看得到對話（建議輸入財務、健康、密碼與機密文件前先想一下；可在隱私設定調整是否用於改進模型）",
+          "url": "https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-free-claude-ai-or-claude-pro-who-can-view-my-conversations",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "教育部：高級中等學校學生學習評量及學習歷程檔案使用「生成式人工智慧」注意事項（113 年 12 月 13 日臺教授國部字第 1135406551 號函、114 年 6 月 10 日臺教授國部字第 1145402561 號函；教師指引六點、附表二 APA 揭露範例、附表三使用情形聲明書）",
+          "url": "https://www.pttsh.ttct.edu.tw/resource/openfid.php?id=6970",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "教育部：國民中小學學生學習評量及作業使用生成式人工智慧注意事項（114 年 3 月 3 日臺教授國部字第 1145500214 號函；輔助訂定評量規準、多元評量、軟硬體不普及時不宜使用、注意學生隱私保護）",
+          "url": "https://www.plnes.ntpc.edu.tw/p/406-1000-3423,r77.php",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "全國法規資料庫：個人資料保護法（第 2 條個人資料定義、第 5 條必要範圍、第 6 條特種個人資料、第 15 與第 16 條公務機關蒐集處理利用）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0050021",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "行政院：行政院及所屬機關（構）使用生成式 AI 參考指引（112 年 8 月 31 日院會通過，總說明及十點規定）",
+          "url": "https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "國家教育研究院：十二年國教課程綱要（總綱與各領域課程綱要，查證年級歸屬與是否超綱的依據）",
+          "url": "https://www.naer.edu.tw/PageSyllabus?fid=52",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

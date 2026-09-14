@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">被放大鏡照著的文件與試算表 / Documents and a spreadsheet under a magnifier</title>
+  <desc id="desc">插圖：米色底上，左邊疊著三張白色文件，每一張略微傾斜，紙上畫著灰色的文字線條，最上面那張有一條藍色的線當標題。文件上覆著一個大的深青色放大鏡，鏡片是淡青色的半透明圓形，握把從鏡片右下方斜向右下延伸。右邊立著一張試算表，白底綠框，最上面一列是深綠色的表頭，表格內有直線與橫線分出欄列，幾格裡有灰色與橘色的短線代表數字。試算表右上方浮著一個深青色的對話泡泡，泡泡裡有三個白點，尾巴朝向試算表。畫面下方只有一行字：先看出處再看數字。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft background shapes -->
+  <circle cx="250" cy="230" r="150" fill="#E6F0F7"/>
+  <circle cx="1420" cy="690" r="120" fill="#E3F0EF"/>
+  <circle cx="1470" cy="255" r="58" fill="#E3F0EF"/>
+
+  <!-- ground shadow -->
+  <ellipse cx="800" cy="762" rx="520" ry="30" fill="#E3DDD2"/>
+
+  <!-- stack of documents -->
+  <g transform="rotate(-9 560 440)">
+    <rect x="380" y="215" width="320" height="450" rx="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="7"/>
+    <rect x="418" y="262" width="200" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="418" y="306" width="240" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="418" y="350" width="170" height="14" rx="7" fill="#5C6B6B"/>
+  </g>
+  <g transform="rotate(-4 610 435)">
+    <rect x="430" y="200" width="320" height="450" rx="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="7"/>
+    <rect x="468" y="247" width="230" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="468" y="291" width="180" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="468" y="335" width="240" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="468" y="379" width="150" height="14" rx="7" fill="#5C6B6B"/>
+  </g>
+  <g transform="rotate(3 660 430)">
+    <rect x="480" y="190" width="320" height="450" rx="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="7"/>
+    <rect x="518" y="237" width="210" height="14" rx="7" fill="#2F6F9F"/>
+    <rect x="518" y="281" width="240" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="518" y="325" width="180" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="518" y="369" width="235" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="518" y="413" width="160" height="14" rx="7" fill="#5C6B6B"/>
+  </g>
+
+  <!-- spreadsheet -->
+  <rect x="880" y="250" width="440" height="380" rx="18" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="7"/>
+  <path d="M 887 268 A 14 14 0 0 1 901 254 L 1299 254 A 14 14 0 0 1 1313 268 L 1313 312 L 887 312 Z" fill="#2E7D5B"/>
+  <g stroke="#2E7D5B" stroke-width="4" opacity="0.45">
+    <path d="M 887 374 L 1313 374"/>
+    <path d="M 887 436 L 1313 436"/>
+    <path d="M 887 498 L 1313 498"/>
+    <path d="M 887 560 L 1313 560"/>
+    <path d="M 1029 312 L 1029 623"/>
+    <path d="M 1171 312 L 1171 623"/>
+  </g>
+  <g>
+    <rect x="912" y="337" width="86" height="13" rx="6" fill="#5C6B6B"/>
+    <rect x="1054" y="337" width="70" height="13" rx="6" fill="#5C6B6B"/>
+    <rect x="1196" y="337" width="78" height="13" rx="6" fill="#D97A2B"/>
+    <rect x="912" y="399" width="70" height="13" rx="6" fill="#5C6B6B"/>
+    <rect x="1054" y="399" width="86" height="13" rx="6" fill="#5C6B6B"/>
+    <rect x="1196" y="399" width="60" height="13" rx="6" fill="#5C6B6B"/>
+    <rect x="912" y="461" width="80" height="13" rx="6" fill="#5C6B6B"/>
+    <rect x="1054" y="461" width="62" height="13" rx="6" fill="#D97A2B"/>
+    <rect x="1196" y="461" width="84" height="13" rx="6" fill="#5C6B6B"/>
+    <rect x="912" y="523" width="66" height="13" rx="6" fill="#5C6B6B"/>
+    <rect x="1054" y="523" width="84" height="13" rx="6" fill="#5C6B6B"/>
+    <rect x="1196" y="523" width="70" height="13" rx="6" fill="#5C6B6B"/>
+  </g>
+
+  <!-- magnifier over the documents -->
+  <path d="M 782 556 L 900 674" stroke="#0D6B68" stroke-width="36" stroke-linecap="round"/>
+  <circle cx="646" cy="420" r="186" fill="#E3F0EF" opacity="0.45"/>
+  <circle cx="646" cy="420" r="186" fill="none" stroke="#0D6B68" stroke-width="18"/>
+
+  <!-- speech bubble -->
+  <path d="M 1120 96 Q 1120 74 1142 74 L 1508 74 Q 1530 74 1530 96 L 1530 214 Q 1530 236 1508 236 L 1286 236 L 1224 284 L 1242 236 L 1142 236 Q 1120 236 1120 214 Z" fill="#0D6B68" stroke="#102A2B" stroke-width="7" stroke-linejoin="round"/>
+  <circle cx="1256" cy="155" r="18" fill="#FFFFFF"/>
+  <circle cx="1325" cy="155" r="18" fill="#FFFFFF"/>
+  <circle cx="1394" cy="155" r="18" fill="#FFFFFF"/>
+
+  <!-- small accents -->
+  <circle cx="240" cy="640" r="18" fill="#D97A2B"/>
+  <circle cx="185" cy="720" r="12" fill="#0D6B68"/>
+  <circle cx="1400" cy="420" r="12" fill="#D97A2B"/>
+
+  <!-- single line of text -->
+  <text x="800" y="852" font-size="54" font-weight="700" fill="#102A2B" text-anchor="middle">先看出處再看數字</text>
+</svg>
