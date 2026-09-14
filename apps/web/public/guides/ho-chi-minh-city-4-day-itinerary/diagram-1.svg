@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">胡志明市四天路線與分區示意圖 / Ho Chi Minh City 4-day route map</title>
+  <desc id="desc">北側是新山一機場，國際線在 T2 航廈，T3 是國內線。機場往南到市中心 8 公里，塞車時 50 分鐘以上，搭 Grab 或計程車，計程車參考 120,000 到 180,000 越南盾另加進場費 10,000；公車路線以現場公告為準。市中心分兩區：Day 1 是統一宮、中央郵局、阮惠街與 Bạch Đằng 碼頭，Day 2 是 Phường Xuân Hòa 的戰爭遺跡博物館、濱城市場與 Bùi Viện。地鐵 1 號線從 Bến Thành 往東北到 Suối Tiên，共 14 站，Bến Thành、Nhà hát Thành phố、Ba Son 三站在地下；單程現金 7,000 到 20,000、非現金 6,000 到 19,000，一日票 40,000、三日票 90,000，營運時間與班距以車站公告為準。西貢河上的 Saigon Waterbus 從 Bạch Đằng 到 Thảo Điền 20 分鐘、到 Linh Đông 52 分鐘，是 Day 4 的路線。Day 3 往西北是古芝地道，往西南是湄公河三角洲，二選一。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#102A2B"/>
+    </marker>
+    <marker id="arrowGrey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="40" y="52" font-size="30" font-weight="700" fill="#102A2B">胡志明市四天路線：機場、地鐵 1 號線與西貢河 Waterbus</text>
+  <text x="40" y="84" font-size="18" fill="#5C6B6B">Ho Chi Minh City 4-day map · Tân Sơn Nhất, Metro Line 1, Saigon Waterbus · 示意圖，不按比例</text>
+
+  <!-- Saigon River band -->
+  <path d="M 905 900 L 905 800 C 930 760, 975 720, 985 690 C 1000 640, 1000 610, 990 570 C 970 510, 960 460, 980 400 C 1000 330, 1050 240, 1080 100" fill="none" stroke="#CFE3EF" stroke-width="44" stroke-linecap="round"/>
+  <text x="1040" y="345" font-size="16" fill="#2F6F9F">Sông Sài Gòn 西貢河</text>
+
+  <!-- Waterbus route (Day 4) -->
+  <path d="M 905 850 L 905 800 C 930 760, 975 720, 985 690 C 1000 640, 1000 610, 990 570 C 970 510, 960 460, 980 400 C 1000 330, 1030 270, 1048 213" fill="none" stroke="#D97A2B" stroke-width="6" stroke-dasharray="16 10" stroke-linecap="round"/>
+  <circle cx="905" cy="850" r="10" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+  <circle cx="997" cy="626" r="10" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+  <circle cx="1048" cy="213" r="10" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+  <text x="935" y="857" font-size="17" font-weight="700" fill="#102A2B">Bạch Đằng 碼頭</text>
+  <text x="965" y="632" font-size="17" font-weight="700" fill="#102A2B" text-anchor="end">Thảo Điền 20 分</text>
+  <text x="1020" y="219" font-size="17" font-weight="700" fill="#102A2B" text-anchor="end">Linh Đông 52 分</text>
+  <text x="1012" y="470" font-size="18" font-weight="700" fill="#D97A2B">Day 4 Saigon Waterbus</text>
+
+  <!-- Waterbus info box -->
+  <rect x="1240" y="120" width="330" height="170" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1262" y="158" font-size="19" font-weight="700" fill="#D97A2B">Waterbus 單程票</text>
+  <text x="1262" y="192" font-size="17" fill="#102A2B">Bạch Đằng → Thảo Điền 20 分</text>
+  <text x="1262" y="224" font-size="17" fill="#102A2B">Bạch Đằng → Linh Đông 52 分</text>
+  <text x="1262" y="256" font-size="17" fill="#102A2B">開船前至少 15 分鐘到碼頭</text>
+
+  <!-- Airport -->
+  <rect x="260" y="110" width="380" height="100" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="450" y="152" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">Tân Sơn Nhất T2 國際線</text>
+  <text x="450" y="190" font-size="17" fill="#0D6B68" text-anchor="middle">新山一機場 · <tspan fill="#B8442D" font-weight="700">T3 國內線，別走錯</tspan></text>
+
+  <line x1="420" y1="214" x2="420" y2="440" stroke="#102A2B" stroke-width="6" marker-end="url(#arrow)"/>
+  <line x1="500" y1="214" x2="500" y2="440" stroke="#5C6B6B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowGrey)"/>
+  <text x="400" y="290" font-size="18" font-weight="700" fill="#102A2B" text-anchor="end">Grab／計程車</text>
+  <text x="400" y="320" font-size="17" fill="#102A2B" text-anchor="end">8 公里，塞車 50 分鐘以上</text>
+  <text x="400" y="350" font-size="17" fill="#102A2B" text-anchor="end">計程車 120,000–180,000</text>
+  <text x="400" y="380" font-size="17" fill="#102A2B" text-anchor="end">＋進場費 10,000</text>
+  <text x="520" y="320" font-size="17" font-weight="700" fill="#5C6B6B">公車</text>
+  <text x="520" y="350" font-size="17" fill="#5C6B6B">路線以現場公告為準</text>
+
+  <!-- Day zones -->
+  <rect x="40" y="450" width="320" height="230" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="62" y="488" font-size="22" font-weight="700" fill="#2F6F9F">Day 2</text>
+  <text x="62" y="524" font-size="18" fill="#102A2B">戰爭遺跡博物館</text>
+  <text x="62" y="550" font-size="16" fill="#5C6B6B">Phường Xuân Hòa</text>
+  <text x="62" y="588" font-size="17" fill="#102A2B">濱城市場 Chợ Bến Thành</text>
+  <text x="62" y="624" font-size="17" fill="#102A2B">Bùi Viện 背包客街</text>
+
+  <rect x="380" y="450" width="340" height="230" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="402" y="488" font-size="22" font-weight="700" fill="#0D6B68">Day 1</text>
+  <text x="402" y="524" font-size="17" fill="#102A2B">統一宮 Dinh Độc Lập</text>
+  <text x="402" y="558" font-size="17" fill="#102A2B">中央郵局 Bưu điện</text>
+  <text x="402" y="592" font-size="17" fill="#102A2B">阮惠街 Nguyễn Huệ</text>
+  <text x="402" y="626" font-size="17" fill="#102A2B">傍晚到 Bạch Đằng 碼頭</text>
+
+  <!-- Day 3 arrows -->
+  <line x1="130" y1="444" x2="72" y2="250" stroke="#102A2B" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="40" y="196" font-size="18" font-weight="700" fill="#102A2B">Củ Chi 古芝地道</text>
+  <text x="40" y="222" font-size="16" fill="#5C6B6B">Day 3 往西北</text>
+  <line x1="110" y1="686" x2="66" y2="800" stroke="#102A2B" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="30" y="840" font-size="18" font-weight="700" fill="#102A2B">湄公河三角洲</text>
+  <text x="30" y="866" font-size="16" fill="#5C6B6B">Mekong Delta · Day 3 往西南</text>
+
+  <!-- Metro line 1 -->
+  <path d="M 560 760 L 820 760 L 1530 470" fill="none" stroke="#0D6B68" stroke-width="8" stroke-linejoin="round"/>
+  <g fill="#FFFFFF" stroke="#102A2B" stroke-width="4">
+    <rect x="550" y="750" width="20" height="20"/>
+    <rect x="680" y="750" width="20" height="20"/>
+    <rect x="810" y="750" width="20" height="20"/>
+  </g>
+  <g fill="#FFFFFF" stroke="#0D6B68" stroke-width="4">
+    <circle cx="885" cy="734" r="8"/>
+    <circle cx="949" cy="707" r="8"/>
+    <circle cx="1014" cy="681" r="8"/>
+    <circle cx="1078" cy="654" r="8"/>
+    <circle cx="1143" cy="628" r="8"/>
+    <circle cx="1207" cy="602" r="8"/>
+    <circle cx="1272" cy="575" r="8"/>
+    <circle cx="1336" cy="549" r="8"/>
+    <circle cx="1401" cy="523" r="8"/>
+    <circle cx="1465" cy="496" r="8"/>
+    <circle cx="1530" cy="470" r="8"/>
+  </g>
+  <g font-size="16" font-weight="700" fill="#102A2B" text-anchor="middle">
+    <text x="560" y="800">Bến Thành</text>
+    <text x="690" y="800">Nhà hát Thành phố</text>
+    <text x="820" y="800">Ba Son</text>
+  </g>
+  <g font-size="16" font-weight="700" fill="#102A2B">
+    <text x="1030" y="712">Thảo Điền</text>
+    <text x="1352" y="580">Thủ Đức</text>
+    <text x="1560" y="448" text-anchor="end">Suối Tiên</text>
+  </g>
+  <text x="1146" y="590" font-size="19" font-weight="700" fill="#0D6B68" transform="rotate(-22.3 1146 590)">地鐵 1 號線 · 14 站</text>
+
+  <!-- Metro fare box -->
+  <rect x="1170" y="640" width="400" height="200" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1192" y="676" font-size="19" font-weight="700" fill="#0D6B68">地鐵 1 號線票價（越南盾）</text>
+  <text x="1192" y="708" font-size="17" fill="#102A2B">單程 現金 7,000–20,000</text>
+  <text x="1192" y="736" font-size="17" fill="#102A2B">單程 非現金 6,000–19,000</text>
+  <text x="1192" y="764" font-size="17" fill="#102A2B">一日票 40,000／三日票 90,000</text>
+  <text x="1192" y="792" font-size="17" fill="#102A2B">營運時間與班距以車站公告為準</text>
+  <text x="1192" y="822" font-size="15" fill="#5C6B6B">2026 年 9 月查證</text>
+
+  <!-- Legend -->
+  <g font-size="16" fill="#102A2B">
+    <rect x="300" y="738" width="16" height="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="3"/>
+    <text x="330" y="752">地下站</text>
+    <circle cx="308" cy="772" r="7" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+    <text x="330" y="778">高架站</text>
+    <line x1="290" y1="798" x2="322" y2="798" stroke="#102A2B" stroke-width="5"/>
+    <text x="330" y="804">Grab／計程車</text>
+    <line x1="290" y1="824" x2="322" y2="824" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="8 5"/>
+    <text x="330" y="830">公車</text>
+    <line x1="290" y1="850" x2="322" y2="850" stroke="#D97A2B" stroke-width="4" stroke-dasharray="8 5"/>
+    <text x="330" y="856">Waterbus</text>
+  </g>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

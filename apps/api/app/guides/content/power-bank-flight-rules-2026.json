@@ -1,0 +1,330 @@
+{
+  "slug": "power-bank-flight-rules-2026",
+  "kind": "intel",
+  "destination_id": null,
+  "topics": [
+    "packing",
+    "safety"
+  ],
+  "valid_until": "2027-01-31",
+  "featured": true,
+  "display_order": 820,
+  "locales": {
+    "zh-TW": {
+      "title": "2026 行動電源帶上飛機新規定：每人 2 個、機上禁止充電與使用，台灣、韓國、日本實施日與 100Wh、160Wh 怎麼算",
+      "description": "行動電源只能手提、每人最多 2 個、每個 160Wh 以下，上機後不能替它充電也不能拿它替手機充電。整理 ICAO 3 月 27 日、台灣 4 月 8 日、韓國 4 月 20 日、日本 4 月 24 日的實施日，Wh 換算公式、三個容量級距、備用電池怎麼算、置物櫃與罰則、分享器與電子菸；2026 年 9 月依 ICAO、民航局、韓國國土交通部與日本國土交通省公告查證。",
+      "hero": {
+        "src": "/guides/power-bank-flight-rules-2026/hero.jpg",
+        "alt": "放在木桌上、插著充電線的淺色行動電源",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Santeri Viinamäki",
+          "license": "CC BY-SA 4.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Portable_power_bank.jpg"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "行動電源只能放手提行李，不能託運；每人最多 2 個，每個 160Wh 以下；上機後不能替它充電，也不能拿它替手機充電。台灣、韓國、日本都已上路，這篇 2026 年 9 月依 ICAO、交通部民用航空局、韓國國土交通部與日本國土交通省的公告查證。"
+        },
+        {
+          "type": "heading",
+          "text": "新制從哪來、各地何時上路",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ICAO 理事會 2026 年 3 月 27 日緊急修訂危險物品技術細則，當天生效。民航局說國籍航空原本就禁止機上使用與充電，這次主要多了個數限制；韓國原本 100Wh 以下限 5 個，現在降為 2 個。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "地區",
+            "實施日",
+            "個數",
+            "機上與置物櫃"
+          ],
+          "rows": [
+            [
+              "ICAO",
+              "2026 年 3 月 27 日",
+              "每人 2 個",
+              "飛行中禁止充電"
+            ],
+            [
+              "台灣 民航局",
+              "2026 年 4 月 8 日",
+              "每人 2 個，只能手提",
+              "不能使用、不能充電；公告沒提置物櫃，照航空公司指示"
+            ],
+            [
+              "韓國 國土交通部",
+              "2026 年 4 月 20 日",
+              "每人 2 個，160Wh 以下",
+              "不能充電、不能替手機充電；2025 年 3 月 1 日起不放置物櫃"
+            ],
+            [
+              "日本 國土交通省",
+              "2026 年 4 月 24 日",
+              "每人 2 個，160Wh 以下",
+              "不能充電、不能替其他裝置充電；2025 年 7 月 8 日起不放置物櫃"
+            ]
+          ],
+          "caption": "2026 年 9 月依 ICAO、民航局、韓國政策簡報與日本國交省公告查證；航空公司可以訂得更嚴。"
+        },
+        {
+          "type": "heading",
+          "text": "Wh 怎麼算：看標籤，三個級距",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "標籤沒印 Wh 就用 Wh＝mAh×V÷1,000 換算。國交省的示例是 27,000mAh×3.7V＝99.9Wh；韓國政府換算 160Wh 約 43,000mAh。電壓不一定是 3.7V，要看標籤。高雄國際航空站的公告要求標示清楚、有合格認證，模糊、破損或膨脹的不要帶；買時認明 BSMI 標章，民航局危險物品表也要求電池通過 UN38.3 測試。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "100Wh 以下：手提可以，託運不行，算進每人 2 個。",
+            "超過 100Wh、160Wh 以下：手提可以，託運不行，也算進 2 個。民航局危險物品表與韓國規定都寫要航空公司同意，國交省旅客說明沒寫；帶這個級距前先問航空公司。",
+            "超過 160Wh：不能帶上飛機。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "image",
+          "src": "/guides/power-bank-flight-rules-2026/diagram-1.svg",
+          "alt": "行動電源決策圖：依 Wh 分三級，前兩級每人最多 2 個，機上三條禁止事項，以及 ICAO、台灣、韓國、日本的實施日",
+          "width": 1600,
+          "height": 900,
+          "caption": "先看 Wh 決定能不能帶，再數個數，上機後三件事不要做。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "備用電池不算行動電源",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "相機、空拍機的備用電池不算行動電源，但一樣只能手提，端子要絕緣或個別裝袋。國交省規定 100Wh 以下的備用電池不限個數；100–160Wh 的備用電池要跟行動電源合算：帶 2 個 100Wh 以下行動電源可再帶 2 顆，帶 2 個 100–160Wh 的不能再帶，兩級各 1 個可再帶 1 顆。台灣與韓國官方沒寫合算方式，以航空公司為準。"
+        },
+        {
+          "type": "heading",
+          "text": "機上規定、罰則與超標怎麼辦",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "行動電源放身上或前座椅背袋，不放上方置物櫃。日本 2025 年版原本允許在看得到的地方充電，已被 2026 年 4 月 24 日的新制取代；手機用座位電源充電。國交省寫明，託運、超過 160Wh、沒防短路、超過 2 個、在機上替行動電源充電，可能依航空法受罰。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/power-bank-flight-rules-2026/photo-1.webp",
+          "alt": "飛機經濟艙座位上方打開的行李置物櫃，裡面放著幾件行李箱",
+          "width": 1200,
+          "height": 900,
+          "caption": "上方置物櫃關起來就看不到裡面，行動電源要放身上或前座椅背袋。",
+          "credit": {
+            "author": "User:Mattes",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Luggage_compartments_Airbus.JPG"
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "安檢發現超過 2 個",
+          "text": "高雄航空站公告寫明，安檢發現超標會要求自願放棄或委託送回。超標的電池也別想改用宅配寄，國交省提醒宅配也可能無法空運。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在日本寄行李時，電池收不收依業者規定。"
+        },
+        {
+          "type": "link",
+          "text": "日本行李宅配怎麼安排：飯店代收與機場取件",
+          "url": "https://mokaair.com/zh-TW/guides/howto/japan-luggage-forwarding-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "回程從日本、韓國起飛同樣適用當地新制，其他國家以航空公司為準；回台入境的菸酒與免稅額看回台海關篇。"
+        },
+        {
+          "type": "link",
+          "text": "出國回台灣行李規定：免稅額、菸酒與申報",
+          "url": "https://mokaair.com/zh-TW/guides/howto/return-to-taiwan-customs-duty-free-guide"
+        },
+        {
+          "type": "heading",
+          "text": "分享器、電子菸與打火機",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WiFi 分享器在民航局危險物品表上屬於「內含鋰電池之可攜式電子裝置」，和行動電源分開列：建議手提，要託運就完全關機（不是睡眠或休眠）並防止意外開機。分享器和手機都靠行動電源續電的人，出發前把行動電源數在 2 個以內。"
+        },
+        {
+          "type": "link",
+          "text": "日本上網怎麼選：eSIM、實體 SIM、WiFi 分享器",
+          "url": "https://mokaair.com/zh-TW/guides/howto/japan-esim-sim-wifi"
+        },
+        {
+          "type": "link",
+          "text": "韓國上網怎麼選：eSIM、實體 SIM、WiFi 分享器",
+          "url": "https://mokaair.com/zh-TW/guides/howto/korea-esim-sim-wifi"
+        },
+        {
+          "type": "link",
+          "text": "泰國上網怎麼選：旅客 SIM、eSIM、WiFi 分享器",
+          "url": "https://mokaair.com/zh-TW/guides/howto/thailand-esim-sim-wifi"
+        },
+        {
+          "type": "link",
+          "text": "越南上網、換錢、叫車一篇搞定",
+          "url": "https://mokaair.com/zh-TW/guides/howto/vietnam-money-sim-grab-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "電子菸不能託運、只能手提，裝置和電池都不能在機上充電（民航局危險物品表第 3 項）。能帶上飛機不代表能帶入境：越南全面禁止電子菸與加熱菸，香港禁止輸入、新加坡禁止攜帶與使用，細節看入境文。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年入境越南：e-visa、海關與電子菸規定",
+          "url": "https://mokaair.com/zh-TW/guides/intel/vietnam-entry-2026-evisa"
+        },
+        {
+          "type": "link",
+          "text": "2026 入境香港：預辦入境登記、電子菸與免稅額",
+          "url": "https://mokaair.com/zh-TW/guides/intel/hong-kong-entry-2026"
+        },
+        {
+          "type": "link",
+          "text": "2026 入境新加坡：SG Arrival Card、免稅額與電子菸",
+          "url": "https://mokaair.com/zh-TW/guides/intel/singapore-entry-2026-sg-arrival-card"
+        },
+        {
+          "type": "paragraph",
+          "text": "打火機每人最多 1 個香菸打火機或 1 盒安全火柴，要隨身帶，不能託運（民航局危險物品表第 5 項）。"
+        },
+        {
+          "type": "heading",
+          "text": "出發前 5 項檢查",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "看標籤：確認 Wh，超過 100Wh 先問航空公司。",
+            "數個數：行動電源每人 2 個以內。",
+            "護端子：貼絕緣膠帶或個別裝袋。",
+            "放手提：行動電源不放託運行李。",
+            "上機後：放身上或椅背袋，不替它充電、不拿它替手機充電。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "星宇、台灣虎航與各家廉航可能更嚴，以各家官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "桃園機場出國流程：報到託運、安檢與自動通關",
+          "url": "https://mokaair.com/zh-TW/guides/howto/taoyuan-airport-departure-guide"
+        },
+        {
+          "type": "link",
+          "text": "東京城市頁：景點、住宿與交通",
+          "url": "https://mokaair.com/zh-TW/destinations/tokyo"
+        },
+        {
+          "type": "link",
+          "text": "首爾城市頁：景點、住宿與交通",
+          "url": "https://mokaair.com/zh-TW/destinations/seoul"
+        }
+      ],
+      "sources": [
+        {
+          "title": "ICAO：New power bank restrictions will safeguard international aviation（3 月 27 日生效、每人 2 個、飛行中禁止充電）",
+          "url": "https://www.icao.int/news/new-power-bank-restrictions-will-safeguard-international-aviation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "交通部民用航空局：4月8日起，旅客搭機限帶2個行動電源（2026-04-02 新聞稿）",
+          "url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&nid=2547&lang=1",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "高雄國際航空站：2026年4月8日起旅客搭機限帶2個行動電源並嚴禁機上使用（標示與認證、超標自願放棄或委託送回）",
+          "url": "https://kol.kia.gov.tw/zh_tw/news/-%E9%87%8D%E8%A6%81%E5%85%AC%E5%91%8A-2026%E5%B9%B44%E6%9C%888%E6%97%A5%E8%B5%B7-%E6%97%85%E5%AE%A2%E6%90%AD%E6%A9%9F%E9%99%90%E5%B8%B6-2-%E5%80%8B%E8%A1%8C%E5%8B%95%E9%9B%BB%E6%BA%90%E4%B8%A6%E5%9A%B4%E7%A6%81%E6%A9%9F%E4%B8%8A%E4%BD%BF%E7%94%A8-22212285",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "交通部民用航空局：行動電源應攜帶上飛機並做好保護，切勿託運（2023-01-11 新聞稿，100Wh、100–160Wh、BSMI）",
+          "url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?lang=1&nid=2176&a=381&ssd=2022/02/01&sed=2023/02/01&ngid=1",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "交通部民用航空局：旅客及組員可攜帶或託運上機之危險物品（頁面，2025-02-11 更新）",
+          "url": "https://www.caa.gov.tw/Article.aspx?a=4302&lang=1",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "交通部民用航空局：旅客及組員可攜帶或託運上機之危險物品表 PDF（第 1 項鋰電池、第 3 項電子菸、第 5 項打火機）",
+          "url": "https://www.caa.gov.tw/FileAtt.ashx?lang=1&id=36996",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "대한민국 정책브리핑：보조배터리 여객기 반입, 20일부터 1인당 2개까지만 허용（2026-04-08，含安全守則圖）",
+          "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148962298",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "대한민국 정책브리핑：3월부터 보조배터리 기내 선반 보관 금지（2025-02-13，置物櫃、端子保護、100–160Wh 航空公司核准）",
+          "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148939574",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "国土交通省：モバイルバッテリーの機内持込みの新たなルールについて（2026-04-14，4 月 24 日適用）",
+          "url": "https://www.mlit.go.jp/report/press/kouku10_hh_000310.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "国土交通省：別紙1【旅客の皆様へ】モバイルバッテリーの持込みについて PDF（Wh 公式、七點規定、罰則、備用電池合算）",
+          "url": "https://www.mlit.go.jp/report/press/content/001995959.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "国土交通省：モバイルバッテリーを収納棚に入れないで（2025-07-01，7 月 8 日起）",
+          "url": "https://www.mlit.go.jp/report/press/kouku10_hh_000284.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "香港海關：Alternative Smoking Products（禁止輸入另類吸煙產品）",
+          "url": "https://www.customs.gov.hk/en/service-enforcement-information/trade-facilitation/ASP/index.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "新加坡衛生科學局 HSA：Vaping enforcement（禁止購買、持有與使用電子菸）",
+          "url": "https://www.hsa.gov.sg/tobacco-regulation/vaping-enforcement/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "新加坡海關：Controlled and prohibited goods for imports（電子菸列為禁止進口品）",
+          "url": "https://www.customs.gov.sg/doing-business/import-operations/import-procedures/controlled-and-prohibited-goods-for-imports/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "越南政府入口網：國會第 173/2024/QH15 號決議，2025 年起禁止電子菸與加熱菸",
+          "url": "https://xaydungchinhsach.chinhphu.vn/cam-san-xuat-kinh-doanh-nhap-khau-chua-chap-van-chuyen-su-dung-thuoc-la-dien-tu-thuoc-la-nung-nong-tu-nam-2025-119241214164955394.htm",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
