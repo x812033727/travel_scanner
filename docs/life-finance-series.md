@@ -184,13 +184,15 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life \
 | 13 | `personal-balance-sheet` | 寫一張個人資產負債表：把自己的淨值算出來 | finance, tutorial | 插 |  |  |
 | 14 | `monthly-money-review` | 每月收支回顧：30 分鐘看完一個月的錢去哪了 | finance, productivity | 插 |  |  |
 | 15 | `savings-goal-planning` | 存錢目標怎麼設：把「想買」換算成每月要存的金額 | finance, tutorial | 插 |  |  |
-| 16 | `spending-triggers-and-habits` | 錢為什麼會不見：找出自己的消費觸發點 | finance, daily | 照 |  |  |
-| 17 | `couple-money-management` | 兩個人的錢怎麼管：共同帳戶、分攤比例與定期對帳 | finance, daily | 照 |  |  |
-| 18 | `kids-allowance-money-education` | 零用錢怎麼給：把金錢觀教給孩子的實際做法 | finance, daily | 照 |  |  |
+| 16 | `spending-triggers-and-habits` | 錢為什麼會不見：找出自己的消費觸發點 | finance, daily | 插 |  |  |
+| 17 | `couple-money-management` | 兩個人的錢怎麼管：共同帳戶、分攤比例與定期對帳 | finance, daily | 插 |  |  |
+| 18 | `kids-allowance-money-education` | 零用錢怎麼給：把金錢觀教給孩子的實際做法 | finance, daily | 插 |  |  |
 | 19 | `bank-fee-audit` | 銀行手續費健檢：跨行、匯款與帳管費怎麼省 | finance | 插 |  | ✓ |
 | 20 | `financial-document-organization` | 財務文件整理：保單、對帳單與稅單放哪裡才找得到 | finance, productivity | 插 |  |  |
 
 `finance-glossary-50-terms` 是總索引篇，`display_order: 10`，其他篇 `100`。
+**批次 01 全部用自繪插圖**：試點確認財經沒有安全的攝影主體（卡片、提款機、招牌都帶商標），
+自繪也省掉 Commons 的授權與網路風險。原本標「照」的第 16、17、18 篇已改為「插」。
 第 20 篇連回既有的 `digital-receipt-archive`（收據與保固資料夾）。
 
 ### 批次 02｜銀行、支付與信用
