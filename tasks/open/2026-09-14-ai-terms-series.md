@@ -190,7 +190,7 @@ Publish a researched Traditional Chinese AI terminology series on Mokaair, one c
 - [x] 81 candidate concepts researched, deduplicated, and covered by complete articles (76 new, 5 existing URLs revised), with exclusion reasons if evidence proves insufficient.
 - [x] Every article has 1800–3000 characters of original running prose, verified primary sources, a hero, a concept diagram, a table, and relevant internal links.
 - [x] ai-terms-index and the existing 50-term quick reference connect the complete series.
-- [ ] Content/schema/import/publication checks and individual visual review pass.
+- [x] Content/schema/import/publication checks and individual visual review pass.
 - [ ] Full series published together through exact-slug import; public pages, images, canonical and sitemap verified; index published last.
 
 ## Steps
@@ -198,7 +198,7 @@ Publish a researched Traditional Chinese AI terminology series on Mokaair, one c
 - [x] Establish catalogue and existing/public baseline; claim precise paths.
 - [x] User explicitly approved three parallel article authors. Each writes distinct staging directories; root integrates and reviews.
 - [x] Write and review all articles and evidence.
-- [ ] Ingest, render, validate and test the complete series.
+- [x] Ingest, render, validate and test the complete series.
 - [ ] Deliver reviewed release, exact-scope draft import, full publication and public verification.
 
 ## How to verify
