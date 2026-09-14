@@ -58,8 +58,7 @@ While here: `Strict-Transport-Security` is `max-age=31536000` with no `includeSu
       from `Content-Security-Policy-Report-Only`.
 - [x] Maps, GA4, Stay22, Travelpayouts and the theme/text-size bootstrap scripts all still
       work in all five locales, signed in and signed out.
-- [ ] `Strict-Transport-Security` carries `includeSubDomains`, or a note here says which
-      subdomain is not on HTTPS and therefore blocks it. **Left open — see Notes.**
+- [x] `Strict-Transport-Security` carries `includeSubDomains`.
 
 ## Steps
 
@@ -76,7 +75,8 @@ While here: `Strict-Transport-Security` is `max-age=31536000` with no `includeSu
 - [ ] `upgrade-insecure-requests`: still omitted, and still correctly so. It is a resource
       directive, so it belongs with the half that is still Report-Only, where Chromium logs
       its own console error for the misuse. It goes in when the rest is promoted.
-- [ ] HSTS `includeSubDomains`: not done. See Notes.
+- [x] HSTS `includeSubDomains`: done on 2026-09-14, after the owner confirmed nothing under
+      `mokaair.com` is served over plain HTTP. `preload` deliberately left out.
 
 ## What was actually done, and what was deliberately not
 
@@ -116,12 +116,15 @@ this work cannot go unread again.
 
 ## Notes
 
-- **HSTS `includeSubDomains` was not added, on purpose.** It cannot be decided from the
-  repository: `COMMUNITY_MEDIA_ORIGIN` is a configurable subdomain and production validation
-  already forces it to HTTPS, but nothing here can enumerate the rest of `mokaair.com`, and a
-  browser that sees the directive honours it for a year. Getting it wrong takes a subdomain
-  off the air for everyone who visited once. Whoever knows the DNS should add
-  `includeSubDomains` to `next.config.ts`; `preload` is a separate, harder-to-undo decision.
+- **HSTS `includeSubDomains` is in as of 2026-09-14.** It could not be decided from the
+  repository — nothing here can enumerate `mokaair.com`'s DNS, and a browser that sees the
+  directive honours it for a year, so getting it wrong takes a subdomain off the air for
+  everyone who visited once. The owner confirmed no subdomain is served over plain HTTP, and
+  that is what unblocked it. Verified as served, not just written: a production build answers
+  `/zh-TW` with `Strict-Transport-Security: max-age=31536000; includeSubDomains`.
+  `preload` stays out. It is the same promise made to browser vendors rather than to one
+  visitor, and removing an entry from the preload list takes months; that is its own decision,
+  not a tidy-up of this line. `lib/csp.test.ts` pins both halves.
 - Evidence that the enforcement is real, from the control case: before, an injected
   `<img src=x onerror=...>` executed and produced a `disposition: "report"` entry. After, the
   same payload produces `disposition: "enforce"` and does not execute. That case is now

@@ -99,6 +99,17 @@ describe("content security policy", () => {
       expect(buildStrictContentSecurityPolicy({ nonce: "n", production: false })).not.toContain("media.example.test");
     }
   });
+  it("promises HSTS for the subdomains too, and does not promise the preload list", () => {
+    const config = readFileSync(resolve(__dirname, "..", "next.config.ts"), "utf8");
+    // The header's own value, not the file: the paragraph above it in next.config.ts
+    // explains why `preload` is absent, so a whole-file search finds the word either way.
+    const hsts = /"Strict-Transport-Security",\s*value:\s*"([^"]*)"/.exec(config)?.[1];
+    expect(hsts).toBe("max-age=31536000; includeSubDomains");
+    // `preload` is a promise to browser vendors rather than to one visitor, and an entry
+    // takes months to remove. Adding it is a separate decision, not a tidy-up of this line.
+    expect(hsts).not.toContain("preload");
+  });
+
   it("keeps the enforced baseline identical in next.config.ts", () => {
     const config = readFileSync(resolve(__dirname, "..", "next.config.ts"), "utf8");
     expect(config).toContain(CSP_BASELINE);
