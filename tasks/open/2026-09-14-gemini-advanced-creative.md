@@ -11,8 +11,7 @@ completed_at:
 branch:
 depends_on:
   - 2026-09-14-gemini-advanced-curriculum
-  - 2026-09-14-gemini-advanced-platform
-  - 2026-09-14-gemini-advanced-work
+  - 2026-09-14-gemini-advanced-content-tooling
 scope:
   - docs/gemini-series/advanced/content/creative
   - apps/api/app/guides/content/gemini-image-consistent-series.json
@@ -37,11 +36,11 @@ scope:
 
 ## Definition of done
 
-- [ ] 六篇原稿、zh-TW 內容包、可複製範例與可下載練習包完整，正文每篇 1,800–3,000 字。
-- [ ] 六組原創封面與教學圖解完成；hero.jpg 1600×900，每張渲染並逐張檢查手機可讀性，附來源／授權。
-- [ ] 每篇依課綱提供四階段操作、明確成品、至少一個故障練習與修正、三個 FAQ、2–4 篇互連。
-- [ ] 官方來源於寫作當天重查，附 checked_on；平台／帳號／CLI／SDK／模型及 API 家族條件清楚。
-- [ ] 預期結果與實際輸出分開標註；語法、fixture、真實雲端、實體裝置及文件整理分別記錄，沒有做的驗證不能標通過。
+- [x] 六篇原稿、zh-TW 內容包、可複製範例與可下載練習包完整，正文每篇 1,800–3,000 字。
+- [x] 六組原創封面與教學圖解完成；hero.jpg 1600×900，每張渲染並逐張檢查手機可讀性，附來源／授權。
+- [x] 每篇依課綱提供四階段操作、明確成品、至少一個故障練習與修正、三個 FAQ、2–4 篇互連。
+- [x] 官方來源於寫作當天重查，附 checked_on；平台／帳號／CLI／SDK／模型及 API 家族條件清楚。
+- [x] 預期結果與實際輸出分開標註；語法、fixture、真實雲端、實體裝置及文件整理分別記錄，沒有做的驗證不能標通過。
 - [ ] 凍結內容雜湊、範例驗證與逐張配圖檢視紀錄；交付整合任務前全部已完成。
 
 ## Steps
@@ -52,10 +51,10 @@ scope:
 - [ ] 66 `google-flow-shot-continuity`：Google Flow 畫面連貫：起訖影格、參考素材與轉場修正。成果：修正兩個片段間的主體、動作與鏡位不連貫。
 - [ ] 67 `gemini-sheets-data-audit-dashboard`：Gemini 與 Sheets 資料報表：清理 CSV、核對公式與圖表。成果：將含錯誤的資料整理成總數正確、可追查來源的報表。
 - [ ] 68 `gemini-content-production-handoff`：Gemini 內容專案交付：文章、圖片與短片的版本和素材清單。成果：交付同一活動的文章、三張圖與短片，附完整素材記錄。
-- [ ] 在 docs/gemini-series/advanced/content/creative/ 保存原稿、分批來源／素材定義、examples/ 與 verification/，格式依 platform 任務交接。內容包與公開圖片只寫 scope 所列位置。
-- [ ] 依單篇 prerequisites 的拓樸次序製作；所依賴的另一批次交付後再做整合測試。
-- [ ] API 及需付費生成的操作只在已有授權、可用帳號與明確成本上限下執行；缺條件時記錄待辦，不能用示意輸出替代課綱要求的實測。
-- [ ] 更新本票實際驗證及限制；不修改共享 catalogue、原 51 頁收據或其他批次文章。
+- [x] 在 docs/gemini-series/advanced/content/creative/ 保存原稿、分批來源／素材定義、examples/ 與 verification/，格式依 platform 任務交接。內容包與公開圖片只寫 scope 所列位置。
+- [x] 依單篇 prerequisites 的拓樸次序製作；所依賴的另一批次交付後再做整合測試。
+- [x] API 及需付費生成的操作只在已有授權、可用帳號與明確成本上限下執行；缺條件時記錄待辦，不能用示意輸出替代課綱要求的實測。
+- [x] 更新本票實際驗證及限制；不修改共享 catalogue、原 51 頁收據或其他批次文章。
 
 ## How to verify
 
@@ -63,4 +62,13 @@ scope:
 
 ## Notes
 
-這六篇目前只是規劃，沒有可公開教學頁。共享來源與篇序由 release 任務最後整合；需要更改原課綱或共用程式時另行協調 scope。未完成驗證的篇章保留明確未勾選項目，六批全完成後一起開放深入目錄。
+六篇作者稿與練習附件已建置，但真實生成與平台驗收未完成，尚不可公開。共享來源與篇序由 release 任務最後整合；需要更改原課綱或共用程式時另行協調 scope。未完成驗證的篇章保留明確未勾選項目，六批全完成後一起開放深入目錄。
+
+2026-09-14：使用者繼續後認領，active scope 交集零。--force 僅越過舊依賴；work 51 與 content-tooling 作者交付已提交，因此作者依賴改為 curriculum/content-tooling，真實生成與共享平台驗收仍保留。63–68 依單篇先修順序編寫，67 可獨立完成資料與本機 XLSX 模板；模板為文章下載附件，未要求建立使用者雲端試算表。圖片／影片參考素材明確標作者設計，不冒充 Gemini 或 Flow 實際輸出。
+
+
+2026-09-14 作者交付：六篇 2,043–2,181 字，十二張 SVG／六張 JPEG、十四張 SVG／PNG 原創練習參考、七個 ZIP 與本機 XLSX 已完成。二十項故障／資料測試與解壓後同組測試通過；報表 43 列採用／7 列隔離、TWD 45,340 與 USD 50，變更單價會重算。Saved XLSX 的公式、型別、空白及圖表另外讀 XML 核對。24 張文章預覽、28 張參考預覽、六張工作表預覽已逐張檢查；鏡頭方向修正後重新渲染核對。
+
+新六篇與先前二十四篇／原五十一頁內容、資產和連結檢查通過；guide pack lint 六篇通過。相關 API 測試最終 45 passed、7 skipped，跳過項需獨立 PostgreSQL 整合服務；此前一項圖上數字缺正文對照已修正圖說重測通過。Ruff 與 check:tasks 通過，僅有其他既有任務警告。來源、環境、限制與檔案凍結見 creative/README.md、verification/authoring-review.json。
+
+尚未達成的課綱成品：63 真正三張生成圖片與三張失敗圖片；64 真實多輪局部修圖；65 三段影片及合片；66 基準／修訂影片與真實影格；67 Google Sheets 匯入與 Gemini 操作；68 文章／三張實際圖／短片及更新後交付。本次瀏覽器回報 User unavailable，模型呼叫及付費生成皆為零。not_run 不當作測試通過，作者插畫不當作模型輸出。六篇 Steps 因這些實測仍保持未勾選；本次只完成作者交付，不關閉任務、不發布。

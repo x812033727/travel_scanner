@@ -1,0 +1,321 @@
+{
+  "slug": "gemini-image-editing-debugging",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 164,
+  "locales": {
+    "zh-TW": {
+      "title": "Gemini 修圖除錯：局部修改、文字錯誤與多輪退化",
+      "description": "本篇從一張日期寫錯的原創商品圖出發，練習追蹤 Gemini 每輪修圖的輸入、要求與結果。目標是把日期改正，同時檢查杯子、把手與背景是否被意外改動。你會知道何時繼續迭代、何時回到原始圖，以及精確文字為什麼需要保留可編輯的排版來源。",
+      "hero": {
+        "src": "/guides/gemini-image-editing-debugging/hero.jpg",
+        "alt": "修圖除錯：每輪查全圖教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "本篇從一張日期寫錯的原創商品圖出發，練習追蹤 Gemini 每輪修圖的輸入、要求與結果。目標是把日期改正，同時檢查杯子、把手與背景是否被意外改動。你會知道何時繼續迭代、何時回到原始圖，以及精確文字為什麼需要保留可編輯的排版來源。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-image-editing-debugging/diagram-1.svg",
+          "alt": "目標：十二月改成十月：每輪只改一件事；保留：杯身・把手・背景：未要求區域也查；退化：回原始圖重做：不覆蓋前輪結果；文字：保留可編輯圖層：人工補正另記錄",
+          "width": 1600,
+          "height": 900,
+          "caption": "修好日期，也要保留商品外觀。作者補正示例；Gemini 修圖待驗。這是原創概念圖，不是介面截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "準備：定義要改與要保留的部分",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成 "
+            },
+            {
+              "type": "link",
+              "text": "圖片編輯入門",
+              "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "商品系列一致性",
+              "url": "https://mokaair.com/zh-TW/life/gemini-image-consistent-series"
+            },
+            {
+              "type": "text",
+              "text": "。本練習用電腦網頁、可使用圖片編輯的十八歲以上 Gemini 帳號，依 2026-09-14 官方文件整理入口；方案與額度請看 "
+            },
+            {
+              "type": "link",
+              "text": "方案說明",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "。目前尚未完成真實 Gemini 編輯，下載包提供作者原圖、向量補正示例與待填紀錄。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "原圖左下寫「青禾杯體驗日 2026-12-03」，本次正確日期是「2026-10-03」。這是虛構活動，沒有真實報名或付款。先保存 reference-original.svg 與 PNG，再建立工作副本；不要直接覆蓋原檔，否則多輪退化後就沒有乾淨基準可回去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "打開 region-check.md，查看日期區域與保留區域。左下位置和座標是描述修改需求的輔助，不能推論 Gemini 提供像素級遮罩，或保證區域外完全不變。請把「只改日期」當成待驗收的要求，而不是系統已保證的能力。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：只提出一個修改目標",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Gemini 找到要修改的圖片，依介面進入聊天編輯，或上傳本篇 PNG。確認目前輸入確實是原圖，記錄其檔名、版本、模型標籤與日期，再送出下列要求。不要同時加入改背景、換視角、增加人物等需求，否則很難定位哪一項造成失真。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "edit-request.txt",
+          "code": "只把左下角日期2026-12-03改成2026-10-03。保留一個杯子、右側把手、薄荷綠杯身、橘色底圈與正面圓點；背景、杯子位置和比例不變。先做這一項修改，不同時加人物或改光線。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果圖片中的教材標題和來源註記不屬於成品，請另外寫明保留商品與日期的範圍，不要讓模型把教學註解誤當商品字樣。收到結果後下載原始尺寸，保留完整畫面；先別裁切，也不要先用其他工具修好再評估 Gemini 的成果。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：每輪都檢查目標與非目標區",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先逐字讀日期，確認年份、月份、日期與分隔符號都正確。再放大看文字邊緣、底色與周圍是否有塗抹痕跡。看起來像十月不代表字元一定是「10」，小字最容易因縮圖而漏掉錯誤。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "區域",
+            "本輪要確認的內容",
+            "紀錄方式"
+          ],
+          "rows": [
+            [
+              "日期",
+              "2026-12-03 改成 2026-10-03",
+              "貼上實際文字與局部觀察"
+            ],
+            [
+              "杯身",
+              "比例、杯口與輪廓一致",
+              "指出偏差位置"
+            ],
+            [
+              "把手與標記",
+              "一個右側把手、單一圓點",
+              "比對原圖"
+            ],
+            [
+              "背景",
+              "沒有新增物件或大片變色",
+              "完整畫面檢查"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "將結果填進 edit-log.csv。input 是真正上傳的檔案，output 是這一輪實際下載檔；target_changed 說明日期是否修好，preserved_regions 說明哪些區域仍有問題。decision 可寫採用、再修一次或回原始圖重做，並保留原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不能只保存成功後的局部裁圖。假如日期正確、杯身卻變窄，這輪仍有未解決問題。用相同檢視比例比較原圖與結果，避免一張縮得很小、一張放很大，讓邊緣差異看起來比實際更嚴重或更輕微。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：多輪退化時回到乾淨基準",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果第一輪日期修對但背景出現模糊，第二輪只要求修復背景，並保存這次輸入是第一輪結果。再核對日期與商品，不假設上一輪修好的部分這輪一定保留。連續小修可能累積偏差，這正是每輪都需全圖檢查的原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "當杯口輪廓、把手或小字逐次變差，停止沿用退化圖片。回到 reference-original，重新提出完整而精簡的日期修正要求，將新分支命名為 original-retry-v1。紀錄中保留上一條分支，才能看出回原稿後是否改善。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次嘗試前查看剩餘額度與當下模型。提高模型等級可以是實驗選項，但不能保證局部編輯一定成功；也不要在沒有成本範圍時無限重試。把可接受嘗試次數與停止條件寫進工作紀錄，達到條件就採取其他可驗證方法。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "本篇的 manual-text-correction.svg 是作者直接更改原創向量文字節點的示範。它展示人工補正方法，不能標成 Gemini 的成功修圖或第三輪模型結果。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：用可編輯文字完成精確交付",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這個原圖的日期本來就是 SVG 文字，因此可在支援 SVG 的編輯工具或文字編輯器，將日期文字節點由十二月改十月，保留其他圖形。打開作者補正版比對兩份來源，你應看到目標字元改變，杯子與背景的向量定義一致。這是可追蹤的人工修正，不代表任何點陣圖都能如此處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若實際專案只有扁平 PNG，應回到可編輯的設計原稿或重新安排獨立文字層；無法取得乾淨背景時，先記錄限制，不聲稱能無痕修掉所有小字。未來需常改日期的活動圖，優先在生成時保留文字空間，再用固定排版疊加資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "故障練習刻意只看日期就把一輪標通過，接著檢查雙把手或背景變色的版本。修正評估方式，將目標改動與保留區域分成兩欄，再比較是否仍能通過。資料夾裡的作者故障素材只用來練習判斷；真實模型失敗仍需另外保存。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "最後交付原圖、每輪真實輸入輸出、最終採用版、人工補正來源與限制說明。所有後製都記錄工具和修改範圍，讓接手者知道日期在哪裡改。要把這些版本接到活動文章與影片，可閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "內容專案交付",
+              "url": "https://mokaair.com/zh-TW/life/gemini-content-production-handoff"
+            },
+            {
+              "type": "text",
+              "text": "；進入動態畫面前先讀 "
+            },
+            {
+              "type": "link",
+              "text": "Flow 分鏡",
+              "url": "https://mokaair.com/zh-TW/life/google-flow-storyboard-workshop"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "提示詞寫只改這裡，其他地方仍變了怎麼辦？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "把改動記入保留區域檢查，再決定重試或回原稿。描述局部範圍有助於傳達意圖，但效果仍要看實際輸出。"
+        },
+        {
+          "type": "heading",
+          "text": "可以用一張差異圖證明完全沒變嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "像素差異能協助定位變化，但壓縮、尺寸和色彩處理也會造成差異。先對齊檢視條件，仍需人工判斷是否影響需求。"
+        },
+        {
+          "type": "heading",
+          "text": "人工修正後，還需要留失敗結果嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "需要。保存失敗分支與採用理由能避免重複走同一條路，也能清楚交代最終成品包含哪些人工處理。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
+              "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Gemini 圖片系列製作：參考圖、風格規格與一致性評分",
+              "url": "https://mokaair.com/zh-TW/life/gemini-image-consistent-series"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Google Flow 三鏡頭短片：腳本、分鏡與逐鏡生成",
+              "url": "https://mokaair.com/zh-TW/life/google-flow-storyboard-workshop"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 64 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-image-editing-debugging/lesson-64.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組創作練習與本機檢查程式",
+          "url": "https://mokaair.com/guides/gemini-image-editing-debugging/creative-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini 圖片生成與編輯",
+          "url": "https://support.google.com/gemini/answer/14286560?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
