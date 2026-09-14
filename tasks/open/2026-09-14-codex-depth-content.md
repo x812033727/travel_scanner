@@ -169,6 +169,16 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
 - [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
 
+## Final review schedule and intake
+
+The user asked this task to arrange the remaining progress. docs/codex-learning/final-review-schedule.md fixes the scope at 60 lessons plus the hub, starts full-text review with 03/10/04/11/23, then uses the existing six ten-lesson checkpoints. Representatives count once: 55 additional lessons remain after their five full-text reviews. Product evidence, hub review, final integrated acceptance and the already authorized complete-series PR/publication/deployment have separate gates. No unsupported completion date is promised; calibrate effort using actual representative review work.
+
+docs/codex-learning/evidence/final-review-intake.json records baseline 8fcb8645, canonical text hashes for all 61 packs, 305 locale documents, IDs/order/checkpoints, and all 21 existing advisories. Five advisories are assigned to the representatives, one to checkpoint 1 and 15 to the hub. Every disposition stays pending. This is intake and scheduling only: full-text and final acceptance remain 0/60, with no new product/browser evidence or remote writes.
+
+Next concrete work: review the complete five-language lesson 03, then 10, 04, 11 and 23. Use the existing per-article evidence format, record each locale independently, preserve code/material contracts and shared series_data ownership. Continue textual work while preview remains blocked; no alternate startup/rendering route. Preserve this intake as the baseline and add actual review records separately.
+
+Schedule verification passed: 60 unique IDs, five representatives plus 55 remaining, six exact catalogue-aligned checkpoints, 61 unchanged pack hashes/305 locale documents, all 21 advisories matching the original report, and 202 relative file targets across the four navigation documents. Task validation passed for 412 files with existing unrelated warnings. Documentation/intake changes only; no product, browser, API or frontend acceptance rerun. Release this scheduling checkpoint with the next full-text review explicitly recorded above.
+
 ## Unit J revision and targeted-review completion
 
 After c0c7e039, revised 31/32/58/59/60/12 in four author languages and five compiled locales. Added concrete website handoff counts, first-invalid/later-valid CSV fixtures, exact app import/count wiring, Git ignore/tracking checks, a clearly fictional time/quality example and PowerShell cmdlet-status probes. All 30 original code blocks remain unchanged; eight labelled blocks added. Original images, sources, five-file CSV ZIP and shared series_data unchanged.
