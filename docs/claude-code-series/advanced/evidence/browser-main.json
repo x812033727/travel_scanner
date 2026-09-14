@@ -1,0 +1,608 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-node-mhs7rw81\\node-v24.15.0-win-arm64\\node.exe",
+      "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=tools/claude-code-series/advanced/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\tools\\claude-code-series\\advanced\\playwright.config.mjs",
+    "rootDir": "C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/docs/claude-code-series/advanced/evidence/browser-runs",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "claude-code-series.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\/browser-main.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "claude-code-series.spec.ts",
+      "file": "claude-code-series.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "directory server-renders all catalogue links without JavaScript",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:36:40.648Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-directo-faeb7-ue-links-without-JavaScript\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-directo-faeb7-ue-links-without-JavaScript\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-directo-faeb7-ue-links-without-JavaScript\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-a7ed5b62e9d802ef3427",
+          "file": "claude-code-series.spec.ts",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "search aliases, combined filters, URL reload and browser back",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:36:51.075Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-search--61550-URL-reload-and-browser-back\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-search--61550-URL-reload-and-browser-back\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-search--61550-URL-reload-and-browser-back\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-fca031b87a3fd10cfb03",
+          "file": "claude-code-series.spec.ts",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "all catalogue pages render and every internal reference has a valid target",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:36:52.611Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-all-cat-88677-eference-has-a-valid-target\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-all-cat-88677-eference-has-a-valid-target\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-all-cat-88677-eference-has-a-valid-target\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-68da962c606e66ee6aa7",
+          "file": "claude-code-series.spec.ts",
+          "line": 75,
+          "column": 1
+        },
+        {
+          "title": "360 and 390px articles retain TOC, readable tables and contained code",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:36:56.392Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-360-and-e837f-e-tables-and-contained-code\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-360-and-e837f-e-tables-and-contained-code\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-360-and-e837f-e-tables-and-contained-code\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-7940ce4fda1c1c19f3c5",
+          "file": "claude-code-series.spec.ts",
+          "line": 97,
+          "column": 1
+        },
+        {
+          "title": "downloaded complete lab supports filtering, persistence, safe text and corrupted storage",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:36:58.116Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-downloa-8dfdb--text-and-corrupted-storage\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-downloa-8dfdb--text-and-corrupted-storage\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-downloa-8dfdb--text-and-corrupted-storage\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-6428b2f31a6607ba3352",
+          "file": "claude-code-series.spec.ts",
+          "line": 115,
+          "column": 1
+        },
+        {
+          "title": "downloaded TDD starter reproduces the wrong checkbox and reference fixes the same interaction",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1,
+                  "error": {
+                    "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:37:00.268Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-downloa-8c146--fixes-the-same-interaction\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-downloa-8c146--fixes-the-same-interaction\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-downloa-8c146--fixes-the-same-interaction\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-643a6a0c97c1cf9d8ec4",
+          "file": "claude-code-series.spec.ts",
+          "line": 144,
+          "column": 1
+        },
+        {
+          "title": "copy preserves raw input, indentation and text through the native clipboard",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1,
+                  "error": {
+                    "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:37:02.664Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-copy-pr-9c061-hrough-the-native-clipboard\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-copy-pr-9c061-hrough-the-native-clipboard\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-copy-pr-9c061-hrough-the-native-clipboard\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-8406e3e27f71d0551194",
+          "file": "claude-code-series.spec.ts",
+          "line": 165,
+          "column": 1
+        },
+        {
+          "title": "fixed life entry, unavailable directory retry and missing locale",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1,
+                  "error": {
+                    "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:37:05.167Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-fixed-l-d62b9-ry-retry-and-missing-locale\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-fixed-l-d62b9-ry-retry-and-missing-locale\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-fixed-l-d62b9-ry-retry-and-missing-locale\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-911b7f32951493e55e4a",
+          "file": "claude-code-series.spec.ts",
+          "line": 191,
+          "column": 1
+        },
+        {
+          "title": "preview download links stay local and serve the exact reviewed ZIP bytes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1,
+                  "error": {
+                    "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-advanced-browser\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:37:08.600Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-preview-0d0ea-he-exact-reviewed-ZIP-bytes\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-preview-0d0ea-he-exact-reviewed-ZIP-bytes\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-preview-0d0ea-he-exact-reviewed-ZIP-bytes\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-1948348862de3f1de5b0",
+          "file": "claude-code-series.spec.ts",
+          "line": 205,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-14T14:36:39.179Z",
+    "duration": 31341.398,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 9,
+    "flaky": 0
+  }
+}

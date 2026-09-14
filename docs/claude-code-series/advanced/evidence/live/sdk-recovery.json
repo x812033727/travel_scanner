@@ -1,0 +1,69 @@
+{
+  "checked_at": "2026-09-14T14:06:51.700181+00:00",
+  "scope": "Unmodified lesson 94 runner: local state rejection, executable startup failure and fresh-query recovery; not physical Ctrl+C or network interruption",
+  "source_sha256": "30ebfe5bedac29f4b57ae0cca257b4969bd9e06be51d8ec18c97fa1f1db7866f",
+  "temporary_directory": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-sdk-recovery-6u7zjp4h",
+  "cases": [
+    {
+      "name": "missing-session",
+      "exit": 2,
+      "stdout": "",
+      "stderr": "No saved session\n",
+      "state": null,
+      "passed": true
+    },
+    {
+      "name": "incompatible-session",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "file:///C:/Users/x8120/.codex/worktrees/1cff/travel_scan%E3%84%90/tools/claude-code-series/advanced/lab/automation/sdk/state.mjs:5\n if(!previous||previous.schemaVersion!==1||typeof previous.sessionId!=='string'||!previous.sessionId.trim())throw new Error('No compatible saved session id; start a new run');\n                                                                                                                  ^\n\nError: No compatible saved session id; start a new run\n    at requireResumeState (file:///C:/Users/x8120/.codex/worktrees/1cff/travel_scan%E3%84%90/tools/claude-code-series/advanced/lab/automation/sdk/state.mjs:5:115)\n    at file:///C:/Users/x8120/.codex/worktrees/1cff/travel_scan%E3%84%90/tools/claude-code-series/advanced/lab/automation/sdk/run.mjs:10:13\n    at ModuleJob.run (node:internal/modules/esm/module_job:413:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:660:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.13.0\n",
+      "state": {
+        "schemaVersion": 1,
+        "status": "failed",
+        "sessionId": null
+      },
+      "passed": true
+    },
+    {
+      "name": "executable-startup-failure",
+      "exit": 1,
+      "stdout": "{\n  \"schemaVersion\": 1,\n  \"driverVersion\": 2,\n  \"sdkVersion\": \"0.3.270\",\n  \"status\": \"failed\",\n  \"sessionId\": null,\n  \"input\": \"The synthetic project marker is MOKAAIR-SDK-94. Acknowledge it briefly. Do not use tools.\",\n  \"inputSha256\": \"ae63d6f292457deb5f1be4828caf6e2d429ebe6bcb8c46313a9ca94f1b68dc21\",\n  \"startedAt\": \"2026-09-14T14:06:53.986Z\",\n  \"updatedAt\": \"2026-09-14T14:06:54.058Z\",\n  \"error\": \"Claude Code native binary not found at C:\\\\Users\\\\x8120\\\\AppData\\\\Local\\\\Temp\\\\mokaair-sdk-recovery-6u7zjp4h\\\\intentionally-missing-claude.exe. Please ensure Claude Code is installed via native installer or specify a valid path with options.pathToClaudeCodeExecutable.\"\n}\n",
+      "stderr": "",
+      "state": {
+        "schemaVersion": 1,
+        "driverVersion": 2,
+        "sdkVersion": "0.3.270",
+        "status": "failed",
+        "sessionId": null,
+        "input": "The synthetic project marker is MOKAAIR-SDK-94. Acknowledge it briefly. Do not use tools.",
+        "inputSha256": "ae63d6f292457deb5f1be4828caf6e2d429ebe6bcb8c46313a9ca94f1b68dc21",
+        "startedAt": "2026-09-14T14:06:53.986Z",
+        "updatedAt": "2026-09-14T14:06:54.058Z",
+        "error": "Claude Code native binary not found at C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-sdk-recovery-6u7zjp4h\\intentionally-missing-claude.exe. Please ensure Claude Code is installed via native installer or specify a valid path with options.pathToClaudeCodeExecutable."
+      },
+      "passed": true
+    },
+    {
+      "name": "fresh-query-after-startup-failure",
+      "exit": 0,
+      "stdout": "Received first text output; Ctrl+C can cancel this run.\n{\n  \"schemaVersion\": 1,\n  \"driverVersion\": 2,\n  \"sdkVersion\": \"0.3.270\",\n  \"status\": \"completed\",\n  \"sessionId\": \"d7186d40-f51e-46cd-91f3-7d3cb385efc3\",\n  \"input\": \"The synthetic project marker is MOKAAIR-SDK-94. Acknowledge it briefly. Do not use tools.\",\n  \"inputSha256\": \"ae63d6f292457deb5f1be4828caf6e2d429ebe6bcb8c46313a9ca94f1b68dc21\",\n  \"startedAt\": \"2026-09-14T14:06:55.080Z\",\n  \"updatedAt\": \"2026-09-14T14:07:00.906Z\",\n  \"firstOutputAt\": \"2026-09-14T14:07:00.352Z\",\n  \"result\": \"Got it: the project marker is **MOKAAIR-SDK-94**.\",\n  \"subtype\": \"success\"\n}\n",
+      "stderr": "",
+      "state": {
+        "schemaVersion": 1,
+        "driverVersion": 2,
+        "sdkVersion": "0.3.270",
+        "status": "completed",
+        "sessionId": "d7186d40-f51e-46cd-91f3-7d3cb385efc3",
+        "input": "The synthetic project marker is MOKAAIR-SDK-94. Acknowledge it briefly. Do not use tools.",
+        "inputSha256": "ae63d6f292457deb5f1be4828caf6e2d429ebe6bcb8c46313a9ca94f1b68dc21",
+        "startedAt": "2026-09-14T14:06:55.080Z",
+        "updatedAt": "2026-09-14T14:07:00.906Z",
+        "firstOutputAt": "2026-09-14T14:07:00.352Z",
+        "result": "Got it: the project marker is **MOKAAIR-SDK-94**.",
+        "subtype": "success"
+      },
+      "passed": true
+    }
+  ],
+  "passed": true
+}

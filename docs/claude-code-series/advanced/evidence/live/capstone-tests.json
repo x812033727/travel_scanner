@@ -1,0 +1,18 @@
+[
+  {
+    "scope": "independent verifier assertions",
+    "chunk_id": "c103c3",
+    "wall_time_seconds": 0.469044,
+    "exit_code": 0,
+    "original_token_count": 83,
+    "output": "✔ three filters preserve full source and handle unknown mode (2.1332ms)\n✔ empty filters are valid for every mode (0.4843ms)\n✔ duplicate titles remain independent when toggling inside a filtered view (0.2098ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 131.9818\n"
+  },
+  {
+    "scope": "authored plus existing project tests",
+    "chunk_id": "4079e7",
+    "wall_time_seconds": 0.4349776,
+    "exit_code": 0,
+    "original_token_count": 162,
+    "output": "✔ all 模式回傳完整來源資料且不修改原陣列 (1.6383ms)\n✔ active 模式只回傳未完成項目 (0.1003ms)\n✔ completed 模式只回傳已完成項目 (0.0804ms)\n✔ 未知 mode 回傳全部項目 (0.083ms)\n✔ 同名待辦以 id 分別篩選 (0.1005ms)\n✔ 新增待辦會去除前後空白並保留既有資料 (1.7072ms)\n✔ 拒絕空白與過長內容 (0.0992ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.0936ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1056ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 126.7666\n"
+  }
+]
