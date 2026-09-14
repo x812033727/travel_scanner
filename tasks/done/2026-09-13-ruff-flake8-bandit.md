@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-ruff-flake8-bandit
 title: ruff does not run flake8-bandit, so the checks miss whole classes of finding
-status: review
+status: done
 priority: P3
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-14T01:00:35Z
 created_at: 2026-09-13T23:37:54Z
-completed_at:
+completed_at: 2026-09-14T05:16:09Z
 branch: claude/security-check-o5zaj1
 depends_on: []
 scope:

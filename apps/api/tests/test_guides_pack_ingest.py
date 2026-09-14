@@ -9,7 +9,9 @@ from __future__ import annotations
 
 import io
 import json
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
+from threading import Thread
 
 import httpx
 import pytest
@@ -19,6 +21,7 @@ from app.guides.pack_ingest import (
     HERO_MAX_BYTES,
     PHOTO_MAX_BYTES,
     PackIngestError,
+    UrllibTransport,
     catalogue_slugs,
     check_svg,
     commons_file_info,
@@ -423,3 +426,71 @@ def test_lint_all_compares_the_packs_with_the_catalogue(tmp_path: Path) -> None:
     findings = lint_all(content, public, kind="life", catalogue=catalogue)
     assert not errors(findings["chatgpt-beginner-guide"])
     assert [p.message for p in findings["catalogue"]] == ["ai-tools-2026-overview: not written yet"]
+
+
+# --- the Commons transport ------------------------------------------------------------------
+
+def _redirecting_server(location: str) -> tuple[HTTPServer, str]:
+    """A one-shot HTTP server that answers `/start` with a 302 to `location`."""
+
+    class Handler(BaseHTTPRequestHandler):
+        def do_GET(self) -> None:  # noqa: N802 -- BaseHTTPRequestHandler's own spelling
+            if self.path == "/start":
+                self.send_response(302)
+                self.send_header("Location", location)
+                self.end_headers()
+                return
+            self.send_response(200)
+            self.send_header("Content-Length", "2")
+            self.end_headers()
+            self.wfile.write(b"ok")
+
+        def log_message(self, *_: object) -> None:
+            return
+
+    server = HTTPServer(("127.0.0.1", 0), Handler)
+    Thread(target=server.serve_forever, daemon=True).start()
+    return server, f"http://127.0.0.1:{server.server_port}"
+
+
+@pytest.mark.parametrize("scheme", ["file", "ftp", "data"])
+def test_the_commons_transport_refuses_a_url_that_is_not_http(scheme: str) -> None:
+    """`urlopen` is not an HTTP client — it opens `file:`, `ftp:` and `data:` too.
+
+    The URL is not always a constant of the module: `fetch_image` passes whatever Commons
+    returned as `thumburl`, so the scheme is the vendor's choice unless something refuses it.
+    """
+    with httpx.Client(transport=UrllibTransport()) as client:
+        with pytest.raises(PackIngestError, match="refusing"):
+            client.get(f"{scheme}://example.invalid/whatever")
+
+
+@pytest.mark.parametrize(
+    "location", ["file:///etc/hostname", "ftp://example.invalid/x"]
+)
+def test_a_redirect_cannot_leave_http(location: str) -> None:
+    """The half that is easy to get wrong, and was.
+
+    Left to itself `urlopen` follows redirects internally, so the hop never comes back
+    through the transport and the scheme check only ever sees the first URL. urllib's own
+    redirect rule allows `ftp:` as well as http and https, so that hop was reachable.
+    The transport now hands the 3xx to httpx, which re-enters it for every hop.
+    """
+    server, base = _redirecting_server(location)
+    try:
+        with httpx.Client(transport=UrllibTransport(), follow_redirects=True) as client:
+            with pytest.raises(PackIngestError, match="refusing"):
+                client.get(f"{base}/start")
+    finally:
+        server.shutdown()
+
+
+def test_an_ordinary_redirect_is_still_followed() -> None:
+    # A guard that breaks the Commons fetch path is not an improvement: thumbnail URLs
+    # redirect, and that has to keep working.
+    server, base = _redirecting_server("/elsewhere")
+    try:
+        with httpx.Client(transport=UrllibTransport(), follow_redirects=True) as client:
+            assert client.get(f"{base}/start").text == "ok"
+    finally:
+        server.shutdown()

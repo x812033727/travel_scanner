@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-password-policy-length-only
 title: Password policy is length-only, so 1234567890 is accepted
-status: review
+status: done
 priority: P3
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-14T00:50:33Z
 created_at: 2026-09-13T23:37:54Z
-completed_at:
+completed_at: 2026-09-14T05:16:09Z
 branch: claude/security-check-o5zaj1
 depends_on: []
 scope:
