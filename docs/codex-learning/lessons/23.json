@@ -1,0 +1,64 @@
+{
+  "id": 23,
+  "sources": [
+    "build-skills"
+  ],
+  "code": {
+    "language": "markdown",
+    "code": "---\nname: practice-review\ndescription: Review the single-file profile-card exercise without editing it.\n---\n\n1. Read index.html and README.md.\n2. Check the requested content and narrow-screen layout.\n3. Report evidence, missing checks, and one next action.\n4. Do not change files or publish anything."
+  },
+  "text": {
+    "zh-TW": [
+      "Skill 將固定工作流程整理成可重用的指示與資源。最小結構是一個資料夾與 SKILL.md，檔案前段需要 name 和 description，正文描述操作與輸出。安裝技能不代表每個任務都必然使用，還要檢查是否載入。",
+      "先選一個你已做過、可以重複驗證的流程，例如唯讀檢查介紹卡。不要把尚未理解的長腳本直接包成技能。以下用專案的 .agents/skills/practice-review/SKILL.md 作練習，先依官方文件確認目前客戶端的發現路徑。",
+      [
+        "建立技能資料夾與下方 SKILL.md，name 用穩定識別名稱，description 清楚交代何時使用與用途。檔案內容不要包含金鑰。",
+        "從新工作階段的技能清單確認可見性；CLI 可用目前的 /skills 選單查看。若找不到，先確認路徑、YAML 前段與說明，不能只看磁碟檔案存在。",
+        "在需求中明確指定 practice-review，讓代理讀取介紹卡並按規則回報。確認這次真的使用該技能，以及沒有越界修改。",
+        "用缺少 README 的測試案例再試一次，確認它會回報缺檔而不是編造。流程穩定後才增加 scripts 或 references，分享時再評估包成 Plugin。"
+      ],
+      "技能可被找到、能被明確呼叫，而且正常與缺檔情況都有可驗證結果。",
+      "description 過於模糊時可能不會觸發。SKILL.md 不是 AGENTS.md 的替代品；前者處理特定流程，後者處理持續規則。更新後開新工作階段確認載入。",
+      "請使用 practice-review 技能檢查介紹卡，只回報證據、缺少的檢查與下一步，不修改檔案。"
+    ],
+    "en": [
+      "A skill packages a repeatable workflow with instructions and optional resources. The minimum is a directory containing SKILL.md with name and description metadata followed by the procedure and expected output. Installation alone does not prove a task used it.",
+      "Choose a workflow you already understand, such as read-only review of the practice card. Use .agents/skills/practice-review/SKILL.md for this project exercise after checking the client's documented discovery locations.",
+      [
+        "Create the folder and sample SKILL.md. Use a stable name and explain when the skill applies. Keep credentials out of its instructions.",
+        "Start a new session and confirm the skill appears; inspect the current /skills menu in CLI. If absent, check path and YAML metadata rather than only file existence.",
+        "Explicitly request practice-review and verify the skill was loaded, its report follows the procedure and no files were changed.",
+        "Repeat with README absent and confirm it reports missing input instead of inventing it. Add scripts or references only after the workflow is reliable; consider a plugin for distribution."
+      ],
+      "The skill is discoverable, explicitly invocable and behaves correctly with normal and missing inputs.",
+      "A vague description can prevent selection. SKILL.md handles a specific workflow while AGENTS.md holds ongoing rules. Verify updates in a fresh session.",
+      "Use practice-review to inspect the card. Report evidence, missing checks and the next action without editing files."
+    ],
+    "ja": [
+      "Skill は繰り返す手順と資料をまとめます。最小構成はフォルダーと SKILL.md で、先頭に name と description、本文に操作と出力を書きます。導入しただけで使用済みとは判断しません。",
+      "理解済みの読み取りレビューを選びます。公式の探索先を確認し、練習では .agents/skills/practice-review/SKILL.md を使います。",
+      [
+        "例のファイルを作り、名前と使う条件を明確にします。キーは書きません。",
+        "新規セッションの技能一覧や CLI の /skills で確認します。見つからなければパスと YAML を調べます。",
+        "practice-review を明示して依頼し、読み込み、報告内容、ファイルを変更していないことを確認します。",
+        "README がない場合も試し、不足を正しく報告するかを確認します。安定後に scripts や references を追加します。"
+      ],
+      "通常時と入力不足時の結果を確認できれば完了です。",
+      "説明が曖昧なら選ばれにくくなります。AGENTS.md の恒常規則と混同せず、更新は新規セッションで確認します。",
+      "practice-review でカードを確認し、根拠、不足、次の作業を報告してください。編集は禁止です。"
+    ],
+    "ko": [
+      "Skill은 반복할 절차와 자료를 묶습니다. 최소 구조는 폴더와 SKILL.md이며 앞부분에 name과 description, 본문에 동작과 출력을 적습니다. 설치만으로 사용되었다고 판단하지 않습니다.",
+      "이해한 읽기 리뷰 절차를 선택합니다. 공식 검색 경로를 확인하고 연습에는 .agents/skills/practice-review/SKILL.md를 사용합니다.",
+      [
+        "예시 파일을 만들고 이름과 사용 조건을 명확히 합니다. 키는 넣지 않습니다.",
+        "새 세션의 스킬 목록이나 CLI /skills에서 확인합니다. 없으면 경로와 YAML을 점검합니다.",
+        "practice-review를 명시하여 요청하고 로드 여부, 보고 내용과 파일이 바뀌지 않았는지 확인합니다.",
+        "README가 없는 경우도 시험해 누락을 보고하는지 확인합니다. 안정된 뒤 scripts와 references를 추가합니다."
+      ],
+      "정상 입력과 누락 입력의 결과를 확인하면 완료입니다.",
+      "모호한 설명은 선택을 어렵게 합니다. AGENTS.md의 지속 규칙과 구분하고 업데이트는 새 세션에서 확인하세요.",
+      "practice-review로 카드를 확인하고 근거, 누락과 다음 행동을 보고하세요. 편집하지 마세요."
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": 22,
+  "sources": [
+    "projects",
+    "prompting",
+    "developer-commands"
+  ],
+  "code": {
+    "language": "markdown",
+    "code": "# Handoff\n\n## Goal\n\n## Decisions and constraints\n\n## Changed files\n\n## Checks actually run\n\n## Remaining work\n\n## Next action"
+  },
+  "text": {
+    "zh-TW": [
+      "長工作需要把決策與證據留下，不能只依靠對話長度。README 說明怎麼使用專案，設計文件記錄為何這樣做，交接文件整理目前做到哪裡；AGENTS.md 則放持續有效的工作規則，避免把所有進度塞成規則。",
+      "準備一項已有修改的任務與實際測試結果。先對照檔案和 Git 狀態，不直接把較早聊天摘要當成最新現況。",
+      [
+        "要求 Codex 摘要目標、已接受決策、修改檔案與剩餘事項，按下方模板寫到專案的交接文件。文件不放金鑰或完整私人日誌。",
+        "對『已完成』逐項附驗證：檔案存在、命令通過，或畫面已檢查。未執行、未合併、未部署的項目清楚保留狀態。",
+        "同一 CLI 工作可用 codex resume 找回會話；上下文太長時查看 /compact。這些操作整理會話，不能取代可版本控管的交接文件。",
+        "新任務先讀交接與當前檔案，再核對是否有人又修改過。用『下一個可執行動作』開始，而不是重做全部探索。"
+      ],
+      "新任務能從文件找到目標、證據與下一步，並能辨別哪些資訊需要重新確認。",
+      "舊摘要與目前檔案衝突時以當前證據為基礎追查，不直接覆蓋新工作。記憶功能也不能替代專案中的可查證文件。",
+      "根據目前檔案與測試，整理 HANDOFF.md：目標、決策、改動、實際驗證、未完成項目與下一步。不要把未執行的測試寫成成功。"
+    ],
+    "en": [
+      "Long work needs durable decisions and evidence, not just a long conversation. README explains use, design documents explain choices, handoffs record current progress and AGENTS.md holds ongoing instructions. Do not turn all temporary progress into permanent rules.",
+      "Use a task with real changes and test results. Compare files and Git status with earlier summaries before declaring the current state.",
+      [
+        "Ask Codex to write a handoff using the template: goal, accepted decisions, changed files and remaining work. Exclude credentials and private logs.",
+        "Attach evidence to completion claims: a file exists, a command passed or a screen was checked. Preserve unrun, unmerged and undeployed states explicitly.",
+        "Use codex resume to return to a CLI session and inspect /compact for long conversations. These conversation controls do not replace a versioned handoff.",
+        "A new task should read the handoff and current files, check for intervening changes and begin with the next executable action instead of repeating all exploration."
+      ],
+      "A new task can recover the objective, evidence and next step while recognizing information that needs rechecking.",
+      "When an old summary conflicts with current files, investigate the current evidence rather than overwriting newer work. Memory is not a substitute for verifiable project documentation.",
+      "Write HANDOFF.md from current files and test evidence: goal, decisions, changes, checks actually run, remaining work and next action. Do not call unrun tests successful."
+    ],
+    "ja": [
+      "長い作業には判断と証拠を残します。README は使い方、設計書は理由、引き継ぎは進捗、AGENTS.md は継続する規則に分けます。",
+      "実際の変更と検証を用意し、過去の要約を現在のファイルと Git 状態で確かめます。",
+      [
+        "目標、判断、変更、残件をひな型で文書化します。秘密や私的ログは入れません。",
+        "完了にはファイル、命令、画面などの証拠を添え、未実行・未マージ・未公開を区別します。",
+        "会話再開は codex resume、整理は /compact を確認します。文書の代わりにはしません。",
+        "新タスクは引き継ぎと現状を読み、途中の変更を確認して次の一手から始めます。"
+      ],
+      "新しいタスクが根拠と次の作業を復元できれば完了です。",
+      "古い要約が現状と違う場合、新しい作業を上書きせずに調べます。",
+      "現在のファイルと検証から HANDOFF.md を作成し、目標、判断、変更、実行済み検証、残件、次の作業を示してください。"
+    ],
+    "ko": [
+      "긴 작업에는 결정과 증거를 남깁니다. README는 사용법, 설계 문서는 이유, 인계는 진행 상황, AGENTS.md는 지속할 규칙으로 구분합니다.",
+      "실제 변경과 검증을 준비하고 이전 요약을 현재 파일 및 Git 상태와 비교합니다.",
+      [
+        "목표, 결정, 변경과 남은 일을 템플릿으로 문서화합니다. 비밀과 개인 로그는 넣지 않습니다.",
+        "완료 주장에 파일, 명령이나 화면 증거를 붙이고 미실행·미병합·미배포를 구분합니다.",
+        "대화 재개는 codex resume, 정리는 /compact를 확인하되 문서를 대체하지 않습니다.",
+        "새 작업은 인계와 현재 상태를 읽고 중간 변경을 확인한 뒤 다음 행동부터 시작합니다."
+      ],
+      "새 작업이 근거와 다음 행동을 복구할 수 있으면 완료입니다.",
+      "오래된 요약이 현재와 다르면 새 작업을 덮어쓰지 말고 조사하세요.",
+      "현재 파일과 검증으로 HANDOFF.md를 작성하고 목표, 결정, 변경, 실제 검증, 남은 일과 다음 행동을 기록하세요."
+    ]
+  }
+}

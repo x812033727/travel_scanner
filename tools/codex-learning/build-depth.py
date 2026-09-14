@@ -1,0 +1,289 @@
+"""Compile explicitly authored Markdown into existing content packs, never publish.
+
+uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python tools/codex-learning/build-depth.py
+The legacy JSON remains a fallback until all translations of a lesson are authored.
+"""
+import argparse
+import json
+from pathlib import Path
+import re
+from hashlib import sha256
+import subprocess
+import mistune
+from opencc import OpenCC
+
+ROOT = Path(__file__).resolve().parents[2]
+AUTHORS = ROOT / "docs/codex-learning/deep"
+CATALOG = ROOT / "apps/web/lib/codex-learning/catalog.json"
+PACKS = ROOT / "apps/api/app/guides/content"
+SCREENSHOT_CAPTIONS = {
+    "zh-TW": "完整參考版的實際瀏覽器畫面，供修改前比對。Windows / Edge 153.0.4234.32，2026-09-14；使用虛構資料。390px 為響應式視窗，非實體手機。這不是 Codex 桌面介面截圖。",
+    "zh-CN": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。390px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
+    "en": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 390px is a responsive viewport, not a physical phone. This is not the Codex desktop interface.",
+    "ja": "変更前の完成参考版を実際のブラウザで撮影。Windows / Edge 153.0.4234.32、2026-09-14。架空データを使用。390px はレスポンシブ表示で実物のスマートフォンではありません。Codex デスクトップ UI の画像ではありません。",
+    "ko": "수정 전 완성 참고 버전의 실제 브라우저 화면. Windows / Edge 153.0.4234.32, 2026-09-14, 가상 데이터. 390px은 반응형 화면이며 실제 휴대전화가 아닙니다. Codex 데스크톱 UI 화면도 아닙니다.",
+}
+REFERENCE_CAPTIONS = {
+    "zh-TW": "本篇指定修改的參考成果，使用原始練習檔套用指定變更後，在 Windows / Edge 153.0.4234.32 於 2026-09-14 實際截圖。橘框是鍵盤焦點；資料皆為虛構。窄版為響應式視窗，非實體手機，也不是 Codex 介面或模型執行紀錄。",
+    "zh-CN": "本篇指定修改的参考成果，使用原始练习文件应用指定更改后，在 Windows / Edge 153.0.4234.32 于 2026-09-14 实际截图。橙框是键盘焦点；数据均为虚构。窄版为响应式窗口，非实体手机，也不是 Codex 界面或模型执行记录。",
+    "en": "Reference edits applied to the practice files; actual Windows / Edge 153.0.4234.32 screenshot, 2026-09-14. Orange outline: keyboard focus. Fictional data; narrow viewport, not a physical phone. Not Codex UI or proof of model execution.",
+    "ja": "元の教材に本記事の指定変更を適用した参考成果。Windows / Edge 153.0.4234.32、2026-09-14 の実画像です。橙枠はキーボードフォーカスでデータは架空です。狭い表示はレスポンシブ画面で実物の電話ではなく、Codex UI やモデル実行記録でもありません。",
+    "ko": "원본 실습 파일에 이 강의의 지정 변경을 적용한 참고 결과. Windows / Edge 153.0.4234.32에서 2026-09-14에 촬영했습니다. 주황 테두리는 키보드 포커스이며 데이터는 가상입니다. 좁은 화면은 반응형 뷰포트로 실제 휴대전화가 아니며 Codex UI나 모델 실행 기록도 아닙니다.",
+}
+FEATURE_CAPTIONS = {
+    "zh-TW": "本篇參考修正的實際成果：Completed 保留兩筆不同識別碼的 Read，計數仍為 1 active / 3 total。Windows / Edge 153.0.4234.32，2026-09-14；虛構資料，窄版為響應式視窗，非實體手機。這是練習網站，不是 Codex 介面或模型執行證據。",
+    "zh-CN": "本篇参考修正的实际成果：Completed 保留两笔不同识别码的 Read，计数仍为 1 active / 3 total。Windows / Edge 153.0.4234.32，2026-09-14；虚构数据，窄版为响应式窗口，非实体手机。这是练习网站，不是 Codex 界面或模型执行证据。",
+    "en": "Actual reference repair: Completed retains two Read tasks with distinct IDs; the count remains 1 active / 3 total. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data, responsive viewport rather than a physical phone. This is the practice website, not Codex UI or evidence of model execution.",
+    "ja": "参考修正の実画面です。Completed に異なる ID の Read が2件残り、全体は 1 active / 3 total です。Windows / Edge 153.0.4234.32、2026-09-14。架空データで、狭い表示は実機電話ではありません。教材サイトであり Codex UI やモデル実行の証拠ではありません。",
+    "ko": "참고 수정의 실제 화면입니다. Completed에 서로 다른 ID의 Read 두 개가 남고 전체는 1 active / 3 total입니다. Windows / Edge 153.0.4234.32, 2026-09-14. 가상 데이터와 반응형 화면이며 실제 휴대전화가 아닙니다. 실습 사이트로 Codex UI나 모델 실행 증거가 아닙니다.",
+}
+FEATURE_ALT = {
+    "zh-TW": "Completed 篩選顯示兩筆 Read，總計仍有三筆任務。",
+    "zh-CN": "Completed 筛选显示两笔 Read，总计仍有三笔任务。",
+    "en": "Completed shows two Read tasks while three tasks remain in total.",
+    "ja": "Completed は Read 2件を表示し、全体は3件のままです。",
+    "ko": "Completed는 Read 두 개를 표시하고 전체 작업은 세 개로 유지됩니다.",
+}
+cc = OpenCC("t2s")
+parse = mistune.create_markdown(renderer="ast", plugins=["table"])
+
+
+def new_pack(row):
+    """Prepare only complete authored lessons; no planned placeholder packs."""
+    slug = row["slug"]
+    artwork = {
+        "zh-TW": "原創流程示意圖，非產品介面截圖。",
+        "zh-CN": "原创流程示意图，非产品界面截图。",
+        "en": "Original workflow illustration, not a product screenshot.",
+        "ja": "独自の手順図です。製品画面の画像ではありません。",
+        "ko": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+    }
+    image = {"src": f"/guides/{slug}/hero.jpg", "width": 1600, "height": 900,
+             "credit": {"author": "Mokaair", "license": "© Mokaair"}}
+    return {"slug": slug, "kind": "life", "destination_id": None,
+            "topics": ["ai", "tutorial"], "display_order": 100 + row["order"],
+            "locales": {locale: {**copy, "hero": {**image, "alt": artwork[locale]},
+                "blocks": [{"type": "image", **image, "src": f"/guides/{slug}/diagram-1.svg",
+                            "alt": artwork[locale], "caption": artwork[locale]}], "sources": []}
+                for locale, copy in row["locales"].items()}}
+
+
+def create_artwork(row):
+    # Code-native illustration; text belongs to the article, not a fake product UI.
+    target = ROOT / "apps/web/public/guides" / row["slug"] / "diagram-1.svg"
+    if target.exists():
+        return
+    label = "CODEX LEARNING"
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900"><title>Codex learning workflow</title><desc>Three numbered stages: identify the starting point, perform the exercise, and verify the result. Original illustration, not a product screenshot.</desc>
+<rect width="1600" height="900" fill="#112e35"/><circle cx="1380" cy="100" r="440" fill="#17444c"/>
+<text x="100" y="140" font-family="sans-serif" font-size="50" fill="#a8ead7">{label}</text>
+<path d="M420 460H680M920 460H1180" stroke="#a8ead7" stroke-width="12"/>
+<path d="m650 440 30 20-30 20m500-40 30 20-30 20" fill="none" stroke="#a8ead7" stroke-width="12"/>
+<g fill="#f6f2e9"><rect x="120" y="290" width="300" height="340" rx="36"/>
+<rect x="650" y="290" width="300" height="340" rx="36"/><rect x="1180" y="290" width="300" height="340" rx="36"/></g>
+<g font-family="sans-serif" font-size="130" text-anchor="middle" fill="#17444c"><text x="270" y="510">1</text><text x="800" y="510">2</text><text x="1330" y="510">3</text></g>
+<text x="100" y="810" font-family="sans-serif" font-size="32" fill="#a8ead7">MOKAAIR / ORIGINAL LEARNING DIAGRAM</text></svg>'''
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(svg, encoding="utf-8")
+
+
+def inline(nodes, locale):
+    result = []
+    for node in nodes:
+        kind = node["type"]
+        if kind in {"text", "codespan"}:
+            result.append({"type": "text", "text": node["raw"]})
+        elif kind in {"softbreak", "linebreak"}:
+            result.append({"type": "text", "text": "\n" if kind == "linebreak" else " "})
+        elif kind in {"strong", "emphasis"}:
+            result.extend(inline(node["children"], locale))
+        elif kind == "link":
+            label = "".join(span["text"] for span in inline(node["children"], locale))
+            url = node["attrs"]["url"]
+            if url.startswith("article:"):
+                if not re.fullmatch(r"codex-[a-z0-9]+(?:-[a-z0-9]+)*", url[8:]):
+                    raise ValueError("An article reference must be a canonical Codex slug")
+                url = f'https://mokaair.com/{locale}/life/{url[8:]}'
+            result.append({"type": "link", "text": label, "url": url})
+        else:
+            raise ValueError(f"Unsupported inline {kind}")
+    # Preserve spaces while reducing unneeded adjacent text nodes.
+    merged = []
+    for span in result:
+        if not span["text"]:
+            continue
+        if merged and span["type"] == merged[-1]["type"] == "text":
+            merged[-1]["text"] += span["text"]
+        else:
+            merged.append(span)
+    return merged
+
+
+def plain(nodes, locale):
+    return "".join(span["text"] for span in inline(nodes, locale))
+
+
+def compile_body(body, locale):
+    blocks = []
+    for node in parse(body):
+        kind = node["type"]
+        if kind == "blank_line":
+            continue
+        if kind == "heading":
+            if node["attrs"]["level"] not in {2, 3}:
+                raise ValueError("Author body uses only H2/H3; title is in catalog")
+            blocks.append({"type": "heading", "level": node["attrs"]["level"], "text": plain(node["children"], locale)})
+        elif kind == "paragraph":
+            spans = inline(node["children"], locale)
+            if len(spans) == 1 and spans[0]["type"] == "link":
+                blocks.append(spans[0])
+            else:
+                blocks.append({"type": "rich_paragraph", "spans": spans} if any(s["type"] == "link" for s in spans)
+                              else {"type": "paragraph", "text": "".join(s["text"] for s in spans)})
+        elif kind == "block_code":
+            info = node.get("attrs", {}).get("info", "text").split(maxsplit=1)
+            if len(info) > 1:
+                blocks.append({"type": "paragraph", "text": info[1]})
+            blocks.append({"type": "code", "language": info[0] if info else "text", "code": node["raw"]})
+        elif kind == "list":
+            items = []
+            for item in node["children"]:
+                if len(item["children"]) != 1 or item["children"][0]["type"] not in {"block_text", "paragraph"}:
+                    raise ValueError("Use a flat list or separate prose paragraphs")
+                items.append(plain(item["children"][0]["children"], locale))
+            blocks.append({"type": "list", "ordered": node["attrs"].get("ordered", False), "items": items})
+        elif kind == "block_quote":
+            paragraphs = node["children"]
+            if not all(child["type"] == "paragraph" for child in paragraphs):
+                raise ValueError("Callouts contain plain paragraphs")
+            blocks.append({"type": "callout", "tone": "info", "text": "\n".join(plain(child["children"], locale) for child in paragraphs)})
+        elif kind == "table":
+            head, body = node["children"]
+            blocks.append({"type": "table", "header": [plain(c["children"], locale) for c in head["children"]],
+                           "rows": [[plain(c["children"], locale) for c in row["children"]] for row in body["children"]]})
+        else:
+            raise ValueError(f"Unsupported block {kind}")
+    return blocks
+
+
+def simplified(body):
+    # Only prose and fence labels are translated. Code bytes stay identical.
+    output = []
+    active = None
+    for line in body.splitlines(keepends=True):
+        if active:
+            output.append(line)
+            char, length = active
+            if re.fullmatch(re.escape(char) + "{" + str(length) + ",}", line.strip()):
+                active = None
+        else:
+            output.append(cc.convert(line))
+            opening = re.match(r"^ {0,3}(`{3,}|~{3,})[^\r\n]*(?:\r?\n|$)", line)
+            if opening:
+                fence = opening.group(1)
+                active = (fence[0], len(fence))
+    if active:
+        raise ValueError("Unclosed fenced example in author source")
+    return "".join(output)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--check", action="store_true")
+    args = parser.parse_args()
+    catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+    source = AUTHORS / "sources.json"
+    sources = json.loads(source.read_text(encoding="utf-8")) if source.exists() else {}
+    results = []
+    pending = []
+    for row in catalog:
+        id_text = f'{row["id"]:02d}'
+        texts = {}
+        for locale in ["zh-TW", "en", "ja", "ko"]:
+            path = AUTHORS / locale / f"{id_text}.md"
+            if path.exists():
+                texts[locale] = path.read_text(encoding="utf-8")
+        if "zh-TW" in texts:
+            # Convert prose only: commands and configuration inside fences are identical.
+            texts["zh-CN"] = simplified(texts["zh-TW"])
+        if not texts:
+            continue
+        entry = {"id": row["id"], "slug": row["slug"], "authoredLocales": list(texts), "fullFiveLocales": len(texts) == 5, "compiled": False}
+        entry["sourceHashes"] = {locale: sha256(body.encode("utf-8")).hexdigest() for locale, body in texts.items()}
+        # Parse partial drafts for author errors, but never replace a multilingual pack partially.
+        compiled = {locale: compile_body(body, locale) for locale, body in texts.items()}
+        # A translated command can be valid syntax while changing the example's behavior.
+        reference_locale = "zh-TW" if "zh-TW" in compiled else next(iter(compiled))
+        reference = [b for b in compiled[reference_locale] if b["type"] == "code"]
+        for locale, blocks in compiled.items():
+            if [b for b in blocks if b["type"] == "code"] != reference:
+                raise ValueError(f"{id_text}/{locale}: code differs from the shared example")
+        entry["blocksByLocale"] = {locale: len(blocks) for locale, blocks in compiled.items()}
+        entry["zhTWProseCharacters"] = sum(len(b.get("text", "")) + sum(len(s["text"]) for s in b.get("spans", [])) for b in compiled.get("zh-TW", []) if b["type"] not in {"code", "heading"})
+        if len(texts) == 5:
+            pack_path = PACKS / f'{row["slug"]}.json'
+            pack = json.loads(pack_path.read_text(encoding="utf-8")) if pack_path.exists() else new_pack(row)
+            for locale, blocks in compiled.items():
+                # Keep original artwork and attribution; authored prose replaces every old paragraph.
+                pictures = [block for block in pack["locales"][locale]["blocks"] if block["type"] == "image"]
+                # Idempotently append real example screenshots with honest platform captions.
+                if row["id"] in {3, 6}:
+                    pictures = [picture for picture in pictures if "todo-" not in picture["src"]]
+                    for width in [390, 1280]:
+                        pictures.append({"type": "image", "src": f"/guides/codex-first-project/todo-{width}.png",
+                                         "alt": f"Small Steps / {width}px / Windows Edge", "caption": SCREENSHOT_CAPTIONS[locale],
+                                         "width": width, "height": 900, "credit": {"author": "Mokaair", "license": "© Mokaair"}})
+                if row["id"] in {6, 7}:
+                    pictures = [picture for picture in pictures if "/reference-" not in picture["src"]]
+                    for width in [390, 1280]:
+                        pictures.append({"type": "image", "src": f'/guides/{row["slug"]}/reference-{width}.png',
+                                         "alt": f"Small Steps / {width}px / Windows Edge", "caption": REFERENCE_CAPTIONS[locale],
+                                         "width": width, "height": 900, "credit": {"author": "Mokaair", "license": "© Mokaair"}})
+                if row["id"] == 47:
+                    pictures = [picture for picture in pictures if "/reference-" not in picture["src"]]
+                    for width in [390, 1280]:
+                        pictures.append({"type": "image", "src": f'/guides/{row["slug"]}/reference-{width}.png',
+                                         "alt": FEATURE_ALT[locale], "caption": FEATURE_CAPTIONS[locale],
+                                         "width": width, "height": 900, "credit": {"author": "Mokaair", "license": "© Mokaair"}})
+                pack["locales"][locale]["blocks"] = blocks + pictures
+                pack["locales"][locale]["sources"] = sources[id_text]
+            encoded = json.dumps(pack, ensure_ascii=False, indent=2) + "\n"
+            entry["packHash"] = sha256(encoded.encode("utf-8")).hexdigest()
+            pending.append((row, pack_path, encoded))
+            entry["compiled"] = True
+        results.append(entry)
+    report = {"stage": "authored drafts, not editorial approval or publication", "lessons": results}
+    if args.check:
+        stale = [str(path.relative_to(ROOT)) for _, path, encoded in pending
+                 if not path.exists() or path.read_text(encoding="utf-8") != encoded]
+        if stale:
+            raise ValueError("Stale compiled packs; rebuild author sources: " + ", ".join(stale))
+        report_path = AUTHORS / "build-report.json"
+        if not report_path.exists() or json.loads(report_path.read_text(encoding="utf-8")) != report:
+            raise ValueError("Stale source/pack hash report; rebuild author sources")
+    if pending:
+        # The authoring environment has Markdown tools; use the project's API
+        # environment for the exact runtime schema before replacing any pack.
+        api_python = ROOT / "apps/api/.venv/Scripts/python.exe"
+        if not api_python.exists():
+            api_python = ROOT / "apps/api/.venv/bin/python"
+        if not api_python.exists():
+            raise ValueError("Set up apps/api/.venv before validating authored packs")
+        validator = "from app.guides.content_pack import ArticlePack\nimport json, sys\nfor slug, raw in json.load(sys.stdin):\n try: ArticlePack.model_validate_json(raw)\n except Exception as exc: raise SystemExit(f'{slug}: {exc}')\n"
+        checked = subprocess.run([str(api_python), "-X", "utf8", "-c", validator],
+            cwd=ROOT / "apps/api", input=json.dumps([(row["slug"], encoded) for row, _, encoded in pending]),
+            capture_output=True, encoding="utf-8", check=False)
+        if checked.returncode:
+            raise ValueError(checked.stderr or checked.stdout)
+    if not args.check:
+        # Validate the whole batch before replacing any published-format draft.
+        for row, pack_path, encoded in pending:
+            create_artwork(row)
+            pack_path.write_text(encoded, encoding="utf-8")
+        (AUTHORS / "build-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"stage": report["stage"], "compiled": sum(item["compiled"] for item in results),
+                      "lessons": [{key: item[key] for key in ["id", "fullFiveLocales", "zhTWProseCharacters"]} for item in results]}, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()

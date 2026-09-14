@@ -1,0 +1,1179 @@
+{
+  "slug": "codex-config-troubleshooting",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 124,
+  "locales": {
+    "zh-TW": {
+      "title": "設定優先順序與故障排除",
+      "description": "從設定來源追查無效或衝突的選項，一次修改一項，驗證結果後保留可還原的紀錄。",
+      "hero": {
+        "src": "/guides/codex-config-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "用四份獨立故障樣本分辨 TOML 語法錯、鍵放錯層、值不支援與設定被覆寫，最後只修正真正有問題的來源。閱讀約 12 分鐘，操作約 25 分鐘。先完成 config.toml 篇；額外使用 Python 3.11 或更新版本做離線檔案檢查。Windows 用 py -3，macOS／Linux 用 python3；不把故障樣本直接貼進自己的使用者設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個練習的檢查器只認識本篇的 web_search，不是 Codex 完整 schema，也不會讀其他設定或連網。它通過只代表這個檔案的語法與指定鍵符合練習，不能證明 Codex 已載入、組織允許或其他工具行為已改變。把驗證範圍先講清楚，才不會拿一個成功訊息替所有層級背書。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟一：建立離線樣本與檢查器"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立新的 codex-config-checks，使用編輯器開啟，在根目錄新增 check_config.py。下面是完整程式：它只打開命令列指定的檔案，顯示錯誤位置或本篇鍵的結果，不列印整份私人設定。這次檢查的都是你另外建立的虛構樣本，不要傳入有密碼的正式檔案來截圖。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "先新增 good.toml，內容如下。這是正確起點，用來確認檢查器和 Python 本身能執行。不要先用壞樣本測試工具，否則看到錯誤時無法分辨是工具缺失還是故障題目。檔案和程式都存成 UTF-8，確認副檔名不是 .txt。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 在練習目錄的 PowerShell 執行第一行；macOS／Linux 在 Terminal 執行第二行，擇自己的系統即可。預期顯示 PASS，並明確寫 Codex loading is not verified。若出現 No module named tomllib，先查 Python 版本；tomllib 從 Python 3.11 才加入，不是缺少某個 Codex 插件。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "py -3 check_config.py good.toml\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "python3 check_config.py good.toml\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟二：診斷四種不同失敗"
+        },
+        {
+          "type": "paragraph",
+          "text": "將下一段存成 broken-quote.toml。它缺少結束引號，TOML 解析應失敗。把執行命令最後的 good.toml 換成此檔名；錯誤可能指向行尾或下一個字元，不一定直接說「少引號」。先從指出的位置往前看這一行，補上半形引號，再執行一次確認通過。保留原錯誤內容與修正後副本便於比較。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-duplicate.toml 則有兩個相同頂層鍵。它不是「最後一行贏」；同一份 TOML 重複定義同一個鍵應報錯。先決定這份樣本只保留 disabled，再刪掉重複那行，確認通過。跨檔案的優先順序與單檔內重複鍵是兩個不同問題，不能把它們混用。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-scope.toml 的 TOML 語法本身有效，但 web_search 被放進 features 表格，變成另一個完整鍵路徑。檢查器會指出缺少頂層鍵；Codex 對錯位置或錯型別的設定也可能報錯，不能把解析通過當成設定可用。本例應將 web_search 放到任何表格標頭之前，且不保留這段為了練習加上的 features 內容。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "[features]\nweb_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-value.toml 用了看似合理但本設定不接受的 off。它是合法 TOML 字串，卻不是官方 web_search 選項。改成 disabled 後再檢查；不要因為別的軟體用 on/off，就自行翻譯設定值。模型名稱、推理選項也必須核對帳號和當前版本，但不要拿本篇小檢查器驗證那些不同設定。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"off\"\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟三：語法正確但沒有生效時"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "先回"
+            },
+            {
+              "type": "link",
+              "text": "設定入門",
+              "url": "https://mokaair.com/zh-TW/life/codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "的真實練習專案，不把故障樣本當啟動設定。用新 CLI 工作階段的 /debug-config 看載入路徑、是否啟用與要求來源。把你編輯的路徑和實際載入路徑逐字比較；再核對是否從另一個子目錄啟動、啟動命令是否帶 --search、-c 或 --profile。只改一項再重啟，不同時更換模型、登入、沙盒與工具版本。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "一般設定優先序：高到低",
+            "這一步要核對"
+          ],
+          "rows": [
+            [
+              "CLI 參數與 -c",
+              "這次啟動命令"
+            ],
+            [
+              "受信任專案設定，較近目錄優先",
+              "實際工作目錄與啟用狀態"
+            ],
+            [
+              "--profile 選定的設定檔",
+              "是否選了另一個 profile"
+            ],
+            [
+              "使用者設定",
+              "實際 Codex home"
+            ],
+            [
+              "工作區雲端管理預設",
+              "工作區提供的預設來源"
+            ],
+            [
+              "系統設定與內建預設",
+              "沒有更高設定時的來源"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "這張表整理的是一般值的合併，組織 requirements.toml 的強制限制仍需另外遵守。若專案層被標為未信任而略過，先確認來源再處理信任，不要改名或搬檔來避開限制。若 Windows 能生效而 WSL 不行，先查你用的是哪個 codex 與哪個家目錄；兩個環境可有各自設定與登入，不能用檔案名稱相同推定內容相同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "修正、還原與交付紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "真正要改設定時，先備份那份確定會載入的檔案，只修改已定位的鍵。保持原來的帳號、供應者及其他設定，不貼上整包範例取代整份檔案。重啟後核對診斷與本機標記；若無法證明有效值，寫「尚未確認」，保留原因。出現新問題就把該鍵或檔案還原，再核對已回到先前狀態，不需要清空整個 .codex。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成後應有一份通過的起點、四份能說明原因的故障樣本，以及各自修正後通過的副本。另能用真實工作階段分清「檔案沒載入」和「載入但被覆寫」，並知道何時仍缺乏證據。本篇 Python 樣本以離線解析驗證，Codex 的有效層級則依官方診斷流程確認；模型、MCP 或權限的問題再連到相應專篇，不用這個單鍵檢查器替它們下結論。"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-config-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Config basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI configuration diagnostics",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Web search",
+          "url": "https://learn.chatgpt.com/docs/web-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TOML specification",
+          "url": "https://toml.io/en/v1.0.0",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Python tomllib",
+          "url": "https://docs.python.org/3/library/tomllib.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Configuration precedence and diagnosis",
+      "description": "Trace ineffective or conflicting settings, change one item at a time and keep a reversible record.",
+      "hero": {
+        "src": "/guides/codex-config-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Use four isolated failure samples to distinguish TOML syntax, wrong key scope, unsupported values and overridden configuration, then repair only the actual source. Allow 12 minutes to read and 25 to practice. Complete configuration basics and have Python 3.11 or newer for offline checks. Windows uses py -3; macOS/Linux use python3. Keep intentionally broken samples out of user configuration."
+        },
+        {
+          "type": "paragraph",
+          "text": "The checker understands only this lesson's web_search setting, not the complete Codex schema. It reads no other settings and makes no network request. A pass establishes syntax and the selected key in that file, not client loading, organization permission or other tools' behavior. Keep that boundary clear when interpreting success."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Create offline samples and a checker"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create codex-config-checks and root check_config.py using the complete program below. It opens only the named file and reports syntax location or this one key, not the entire configuration. Use the isolated samples you create here rather than a real credential-bearing file for screenshots."
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "First create good.toml below. This valid baseline establishes that Python and the checker run before you diagnose a broken sample. Otherwise you cannot separate a missing tool from the intended failure. Save both files as UTF-8 with their actual extensions, not .txt."
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Run the Windows line in PowerShell or the macOS/Linux line in Terminal from the lab. Expect PASS and the explicit loading limitation. No module named tomllib means you should check Python: tomllib was added in 3.11, and is not a missing Codex plugin."
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "py -3 check_config.py good.toml\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "python3 check_config.py good.toml\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Diagnose four distinct failures"
+        },
+        {
+          "type": "paragraph",
+          "text": "Save broken-quote.toml below. Its missing closing quote should fail TOML parsing. Substitute its filename in the checker command. The location may point at line end or a following character, not literally say “missing quote.” Inspect backward along the named line, add the straight closing quote and rerun. Retain the original error sample and repaired copy for comparison."
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-duplicate.toml defines the same top-level key twice. This is not last-line-wins: a duplicate definition in one TOML file is invalid. Keep the intended disabled value, remove the duplicate and rerun. Cross-file precedence and same-file duplicate keys are different mechanisms."
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-scope.toml is valid TOML, but the table header places web_search inside features. The checker reports a missing top-level key. Codex may also reject a wrong location/type; parsing alone does not make it a supported setting. Move web_search before any table header and remove the features content added solely for this exercise."
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "[features]\nweb_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-value.toml uses the plausible but unsupported off value. It is a valid TOML string, not a documented web_search mode. Replace it with disabled and rerun; do not translate configuration values because another program uses on/off. Other settings such as models and reasoning need their own current account/version checks, not this narrow checker."
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"off\"\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: When valid syntax still has no effect"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Return to the real project from "
+            },
+            {
+              "type": "link",
+              "text": "configuration basics",
+              "url": "https://mokaair.com/en/life/codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": ", keeping broken samples out of startup settings. In a fresh CLI session use /debug-config to inspect paths, enabled layers and requirements. Compare the edited path with the loaded path, check the working subdirectory and launch overrides such as --search, -c or --profile. Change one factor and restart, rather than changing model, login, sandbox and tools together."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "Ordinary setting precedence: high to low",
+            "Check"
+          ],
+          "rows": [
+            [
+              "CLI flags and -c",
+              "Actual launch command"
+            ],
+            [
+              "Trusted project, nearest directory first",
+              "Working directory and enabled state"
+            ],
+            [
+              "Selected --profile file",
+              "Whether another profile was selected"
+            ],
+            [
+              "User configuration",
+              "Actual Codex home"
+            ],
+            [
+              "Workspace cloud-managed defaults",
+              "Workspace source"
+            ],
+            [
+              "System configuration, then built-in defaults",
+              "Sources remaining without higher overrides"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The table describes ordinary value merging; enforced requirements.toml constraints still apply separately. For skipped untrusted layers, verify origin and handle trust normally, without renaming or moving files to bypass restrictions. For Windows/WSL disagreement, identify the executable and home directory: each environment can have separate configuration and authentication despite matching filenames."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Repair, restore and record"
+        },
+        {
+          "type": "paragraph",
+          "text": "Before a real repair, back up the file confirmed to load and edit only the identified key. Preserve authentication, provider and unrelated settings rather than replacing the entire file with an example bundle. Restart and check diagnostics plus the local marker. If the effective value cannot be established, record that uncertainty and why. Revert the targeted key/file if a new issue appears; do not clear all of .codex."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Finish with a passing baseline, four diagnosed failures and passing repaired copies. In a real session, distinguish an unloaded file from an overridden loaded value and recognize insufficient evidence. The Python samples receive offline parsing checks; effective Codex layers use the documented diagnostics. Model, MCP and permission problems need their corresponding lessons, not conclusions from this one-key checker."
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-config-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Config basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI configuration diagnostics",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Web search",
+          "url": "https://learn.chatgpt.com/docs/web-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TOML specification",
+          "url": "https://toml.io/en/v1.0.0",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Python tomllib",
+          "url": "https://docs.python.org/3/library/tomllib.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "設定の優先順位と診断",
+      "description": "無効な設定や衝突の出典を調べ、一項目ずつ変更し、戻せる記録を残します。",
+      "hero": {
+        "src": "/guides/codex-config-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "四つの独立した故障例で構文、キーの階層、非対応の値、上書きを分け、問題の出所だけを直します。読む時間12分、操作25分です。設定基礎と Python 3.11 以降が前提で、Windows は py -3、macOS / Linux は python3 を使います。故障例をユーザー設定へ直接貼りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "検査器は本記事の web_search だけを扱い、Codex 全体の schema ではありません。他設定も通信も使いません。成功はそのファイルの構文と対象キーの確認で、読込み、組織許可、他ツールの動作を保証しません。成功の範囲を明確にします。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：オフライン例と検査器を作る"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-config-checks の check_config.py に次の全文を保存します。指定ファイルだけを開き、構文位置か対象キーだけを表示し、設定全体は出しません。画像用にはここで作る独立例を使い、認証情報入りの実ファイルを渡しません。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず good.toml を作り、Python と検査器が動く正しい基準を確認します。最初から故障例では道具の問題と題材の失敗を区別できません。両ファイルを UTF-8 と正しい拡張子で保存します。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "教材内で Windows は最初、macOS / Linux は二つ目の行を実行します。PASS と読込み未検証の表示を期待します。No module named tomllib なら Python を確認します。3.11 追加の標準機能で、Codex プラグインの不足ではありません。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "py -3 check_config.py good.toml\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "python3 check_config.py good.toml\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：四つの異なる失敗を診断"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-quote.toml は終端引用符がなく構文失敗します。コマンドの末尾をこの名前に替えます。位置が行末や次の文字を指す場合もあるので、その行を遡って確認し半角引用符を補って再実行します。元と修正版を残して比較します。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-duplicate.toml は同じトップレベルキーを二回定義します。最後が勝つ仕組みではなく構文エラーです。disabled を残して重複行を除き、再確認します。複数ファイルの優先順位と単一ファイルの重複は別です。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-scope.toml は構文として正しくても features 内の別のキーパスです。検査器はトップレベル欠落を示します。Codex も位置や型で拒否する場合があり、解析成功だけでは対応設定としません。キーを表見出しの前へ移し、実験用 features を残しません。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "[features]\nweb_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-value.toml の off は文字列として有効でも web_search の対応値ではありません。disabled に直して再確認し、別ソフトの on/off に合わせて翻訳しません。モデルや推論は別途アカウントと版を確認し、この小さな検査器で検証しません。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"off\"\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：構文が正しくても効かない場合"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "設定基礎",
+              "url": "https://mokaair.com/ja/life/codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "の実際の教材へ戻り、故障例は起動設定にしません。新規 CLI の /debug-config でパス、有効層、要件を確認し、編集先と照合します。子ディレクトリや --search、-c、--profile も調べ、一項目だけ変えて再起動します。モデルや認証、権限を一度に替えません。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "一般設定：高い順",
+            "確認点"
+          ],
+          "rows": [
+            [
+              "CLI 引数と -c",
+              "起動命令"
+            ],
+            [
+              "信頼されたプロジェクト、近い層優先",
+              "場所と有効状態"
+            ],
+            [
+              "--profile 選択ファイル",
+              "別 profile の有無"
+            ],
+            [
+              "ユーザー設定",
+              "実際の Codex home"
+            ],
+            [
+              "ワークスペース管理既定",
+              "提供元"
+            ],
+            [
+              "システム、内蔵既定の順",
+              "上書きのない場合の出所"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "表は一般値の結合であり、requirements.toml の強制制約は別途守ります。未信頼で省略なら出所と通常の信頼処理を確認し、改名や移動で迂回しません。Windows / WSL の差は実行ファイルとホームを特定します。同名でも別の設定と認証を持ちます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "修正、復元、記録"
+        },
+        {
+          "type": "paragraph",
+          "text": "実修正は読込み先を確認してバックアップし、特定キーだけ変更します。認証、提供元、他の設定を例一式で置換しません。再起動後に診断とローカル印を確認し、有効値を確認できなければ理由付きで未確認とします。新問題はそのキーやファイルだけ戻し、.codex 全体を消しません。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "正しい基準、説明できる四故障、修正版の成功を残します。実セッションでは未読込みと読込み後の上書きを区別し、証拠不足も認めます。Python 例はオフライン解析、Codex の層は公式診断で確認します。モデル、MCP、権限は各記事で扱い、この単一キー検査で結論を出しません。"
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-config-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Config basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI configuration diagnostics",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Web search",
+          "url": "https://learn.chatgpt.com/docs/web-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TOML specification",
+          "url": "https://toml.io/en/v1.0.0",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Python tomllib",
+          "url": "https://docs.python.org/3/library/tomllib.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "설정 우선순위와 진단",
+      "description": "적용되지 않거나 충돌하는 설정의 출처를 찾고 한 항목씩 변경해 복원 가능한 기록을 남깁니다.",
+      "hero": {
+        "src": "/guides/codex-config-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "독립 오류 예시 네 개로 문법/키 위치/미지원 값/덮어쓰기를 구분하고 실제 원인만 고칩니다. 읽기 12분, 실습 25분입니다. 설정 기초와 Python 3.11 이상이 필요하며 Windows는 py -3, macOS/Linux는 python3를 씁니다. 오류 예시를 사용자 설정에 직접 붙이지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "검사기는 이 강의의 web_search만 다루며 Codex 전체 schema가 아닙니다. 다른 설정이나 네트워크를 사용하지 않습니다. 통과는 해당 파일 문법/키 확인이지 로드/조직 허가/다른 도구 동작을 보장하지 않습니다. 성공의 범위를 명확히 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 오프라인 예시와 검사기 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-config-checks의 check_config.py에 다음 전체 코드를 저장합니다. 지정 파일만 열고 문법 위치나 대상 키만 표시하며 설정 전체는 출력하지 않습니다. 화면 증거에는 독립 예시를 쓰고 인증 정보가 있는 실제 파일을 넘기지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 good.toml로 Python/검사기가 동작하는 정상 기준을 확인합니다. 처음부터 오류 예시를 쓰면 도구 문제와 의도된 실패를 구분할 수 없습니다. 두 파일을 UTF-8과 올바른 확장자로 저장합니다."
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "실습 폴더에서 Windows는 첫째 줄, macOS/Linux는 둘째 줄을 실행합니다. PASS와 로드 미검증 표시가 예상됩니다. No module named tomllib이면 Python을 확인합니다. 3.11에 추가된 표준 기능이며 Codex 플러그인 누락이 아닙니다."
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "py -3 check_config.py good.toml\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "python3 check_config.py good.toml\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 서로 다른 실패 네 가지 진단"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-quote.toml은 닫는 따옴표가 없어 문법 실패합니다. 명령 끝 파일명을 바꿉니다. 위치가 줄 끝이나 다음 문자를 가리킬 수 있으므로 해당 줄을 거슬러 보고 일반 따옴표를 보완해 재실행합니다. 원본/수정본을 남겨 비교합니다."
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-duplicate.toml은 같은 최상위 키를 두 번 정의합니다. 마지막 줄이 이기는 방식이 아니라 오류입니다. disabled를 남기고 중복 줄을 제거해 재확인합니다. 파일 간 우선순위와 한 파일 내부 중복은 별개입니다."
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-scope.toml은 TOML 문법은 맞아도 features 안의 다른 키 경로입니다. 검사기는 최상위 누락을 표시합니다. Codex도 위치/형식 때문에 거부할 수 있으므로 파싱 성공만으로 지원 설정이라 하지 않습니다. 키를 테이블 헤더 앞으로 옮기고 실험용 features는 남기지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "[features]\nweb_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-value.toml의 off는 문자열로는 맞아도 지원 web_search 값이 아닙니다. disabled로 고쳐 재확인하며 다른 소프트웨어의 on/off에 맞춰 번역하지 않습니다. 모델/추론은 계정과 버전을 별도로 확인하며 이 좁은 검사기로 검증하지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"off\"\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 문법은 맞지만 효과가 없을 때"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "설정 기초",
+              "url": "https://mokaair.com/ko/life/codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "의 실제 실습으로 돌아가며 오류 예시는 시작 설정에 넣지 않습니다. 새 CLI의 /debug-config로 경로/활성 층/요구를 보고 편집 경로와 비교합니다. 하위 폴더와 --search/-c/--profile도 확인하고 한 요소씩 바꿔 재시작합니다. 모델/인증/권한을 동시에 바꾸지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "일반 설정: 높은 순서",
+            "확인점"
+          ],
+          "rows": [
+            [
+              "CLI 인수와 -c",
+              "실제 시작 명령"
+            ],
+            [
+              "신뢰 프로젝트, 가까운 층 우선",
+              "경로/활성 상태"
+            ],
+            [
+              "--profile 선택 파일",
+              "다른 profile 선택 여부"
+            ],
+            [
+              "사용자 설정",
+              "실제 Codex home"
+            ],
+            [
+              "워크스페이스 관리 기본값",
+              "제공 출처"
+            ],
+            [
+              "시스템 다음 내장 기본값",
+              "상위 덮어쓰기가 없을 때 출처"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "표는 일반 값 병합이며 requirements.toml의 강제 제약은 별도로 지킵니다. 미신뢰로 생략되면 출처/정상 신뢰 절차를 확인하고 개명/이동으로 우회하지 않습니다. Windows/WSL 차이는 실행 파일/홈을 식별합니다. 이름이 같아도 설정/인증은 별개일 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "수정, 복구, 기록"
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 수정은 로드 파일을 확인해 백업하고 해당 키만 바꿉니다. 인증/공급자/다른 설정을 예시 묶음으로 대체하지 않습니다. 재시작 후 진단/로컬 표식을 보고 유효값을 확인할 수 없으면 이유와 미확인을 적습니다. 새 문제는 해당 키/파일만 복원하며 .codex 전체를 지우지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "정상 기준, 원인을 설명할 네 실패, 수정본 성공을 남깁니다. 실제 세션에서는 미로드와 로드 후 덮어쓰기를 구분하고 증거 부족도 인정합니다. Python 예시는 오프라인 파싱, Codex 층은 공식 진단으로 확인합니다. 모델/MCP/권한은 해당 강의에서 다루며 단일 키 검사로 결론내리지 않습니다."
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-config-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Config basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI configuration diagnostics",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Web search",
+          "url": "https://learn.chatgpt.com/docs/web-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TOML specification",
+          "url": "https://toml.io/en/v1.0.0",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Python tomllib",
+          "url": "https://docs.python.org/3/library/tomllib.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "设定优先顺序与故障排除",
+      "description": "从设定来源追查无效或冲突的选项，一次修改一项，验证结果后保留可还原的纪录。",
+      "hero": {
+        "src": "/guides/codex-config-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "用四份独立故障样本分辨 TOML 语法错、键放错层、值不支援与设定被覆写，最后只修正真正有问题的来源。阅读约 12 分钟，操作约 25 分钟。先完成 config.toml 篇；额外使用 Python 3.11 或更新版本做离线档案检查。Windows 用 py -3，macOS／Linux 用 python3；不把故障样本直接贴进自己的使用者设定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这个练习的检查器只认识本篇的 web_search，不是 Codex 完整 schema，也不会读其他设定或连网。它通过只代表这个档案的语法与指定键符合练习，不能证明 Codex 已载入、组织允许或其他工具行为已改变。把验证范围先讲清楚，才不会拿一个成功讯息替所有层级背书。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤一：建立离线样本与检查器"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立新的 codex-config-checks，使用编辑器开启，在根目录新增 check_config.py。下面是完整程式：它只打开命令列指定的档案，显示错误位置或本篇键的结果，不列印整份私人设定。这次检查的都是你另外建立的虚构样本，不要传入有密码的正式档案来截图。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "先新增 good.toml，内容如下。这是正确起点，用来确认检查器和 Python 本身能执行。不要先用坏样本测试工具，否则看到错误时无法分辨是工具缺失还是故障题目。档案和程式都存成 UTF-8，确认副档名不是 .txt。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 在练习目录的 PowerShell 执行第一行；macOS／Linux 在 Terminal 执行第二行，择自己的系统即可。预期显示 PASS，并明确写 Codex loading is not verified。若出现 No module named tomllib，先查 Python 版本；tomllib 从 Python 3.11 才加入，不是缺少某个 Codex 插件。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "py -3 check_config.py good.toml\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "python3 check_config.py good.toml\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤二：诊断四种不同失败"
+        },
+        {
+          "type": "paragraph",
+          "text": "将下一段存成 broken-quote.toml。它缺少结束引号，TOML 解析应失败。把执行命令最后的 good.toml 换成此档名；错误可能指向行尾或下一个字元，不一定直接说「少引号」。先从指出的位置往前看这一行，补上半形引号，再执行一次确认通过。保留原错误内容与修正后副本便于比较。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-duplicate.toml 则有两个相同顶层键。它不是「最后一行赢」；同一份 TOML 重复定义同一个键应报错。先决定这份样本只保留 disabled，再删掉重复那行，确认通过。跨档案的优先顺序与单档内重复键是两个不同问题，不能把它们混用。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-scope.toml 的 TOML 语法本身有效，但 web_search 被放进 features 表格，变成另一个完整键路径。检查器会指出缺少顶层键；Codex 对错位置或错型别的设定也可能报错，不能把解析通过当成设定可用。本例应将 web_search 放到任何表格标头之前，且不保留这段为了练习加上的 features 内容。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "[features]\nweb_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken-value.toml 用了看似合理但本设定不接受的 off。它是合法 TOML 字串，却不是官方 web_search 选项。改成 disabled 后再检查；不要因为别的软体用 on/off，就自行翻译设定值。模型名称、推理选项也必须核对帐号和当前版本，但不要拿本篇小检查器验证那些不同设定。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "web_search = \"off\"\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤三：语法正确但没有生效时"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "先回"
+            },
+            {
+              "type": "link",
+              "text": "设定入门",
+              "url": "https://mokaair.com/zh-CN/life/codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "的真实练习专案，不把故障样本当启动设定。用新 CLI 工作阶段的 /debug-config 看载入路径、是否启用与要求来源。把你编辑的路径和实际载入路径逐字比较；再核对是否从另一个子目录启动、启动命令是否带 --search、-c 或 --profile。只改一项再重启，不同时更换模型、登入、沙盒与工具版本。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "一般设定优先序：高到低",
+            "这一步要核对"
+          ],
+          "rows": [
+            [
+              "CLI 参数与 -c",
+              "这次启动命令"
+            ],
+            [
+              "受信任专案设定，较近目录优先",
+              "实际工作目录与启用状态"
+            ],
+            [
+              "--profile 选定的设定档",
+              "是否选了另一个 profile"
+            ],
+            [
+              "使用者设定",
+              "实际 Codex home"
+            ],
+            [
+              "工作区云端管理预设",
+              "工作区提供的预设来源"
+            ],
+            [
+              "系统设定与内建预设",
+              "没有更高设定时的来源"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "这张表整理的是一般值的合并，组织 requirements.toml 的强制限制仍需另外遵守。若专案层被标为未信任而略过，先确认来源再处理信任，不要改名或搬档来避开限制。若 Windows 能生效而 WSL 不行，先查你用的是哪个 codex 与哪个家目录；两个环境可有各自设定与登入，不能用档案名称相同推定内容相同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "修正、还原与交付纪录"
+        },
+        {
+          "type": "paragraph",
+          "text": "真正要改设定时，先备份那份确定会载入的档案，只修改已定位的键。保持原来的帐号、供应者及其他设定，不贴上整包范例取代整份档案。重启后核对诊断与本机标记；若无法证明有效值，写「尚未确认」，保留原因。出现新问题就把该键或档案还原，再核对已回到先前状态，不需要清空整个 .codex。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成后应有一份通过的起点、四份能说明原因的故障样本，以及各自修正后通过的副本。另能用真实工作阶段分清「档案没载入」和「载入但被覆写」，并知道何时仍缺乏证据。本篇 Python 样本以离线解析验证，Codex 的有效层级则依官方诊断流程确认；模型、MCP 或权限的问题再连到相应专篇，不用这个单键检查器替它们下结论。"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-config-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Config basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI configuration diagnostics",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Web search",
+          "url": "https://learn.chatgpt.com/docs/web-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TOML specification",
+          "url": "https://toml.io/en/v1.0.0",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Python tomllib",
+          "url": "https://docs.python.org/3/library/tomllib.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

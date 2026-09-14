@@ -1,0 +1,207 @@
+{
+  "id": 22,
+  "readingMinutes": 12,
+  "operationMinutes": 22,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與準備",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "寫出能讓下一個工作階段接手的 handoff.md，並用一次刻意過期的交接測試它是否可靠。閱讀約 12 分鐘，操作約 22 分鐘。需要桌面版或 CLI、文字編輯器、Node.js 22 以上相容版本，以及獨立的 Small Steps 教材副本。Windows、macOS、Linux 步驟相同；終端機位置確認方式依平台不同。",
+        "Write a handoff.md that another session can use, then test it with a deliberately stale record. Allow 12 minutes to read and 22 to practice. Use desktop or CLI, a text editor, compatible Node.js 22 or later and an isolated Small Steps copy. The workflow is shared across Windows, macOS and Linux; directory inspection commands differ.",
+        "次のセッションが使える handoff.md を作り、意図的に古い記録で信頼性を試します。読む時間12分、操作22分です。デスクトップまたは CLI、エディター、対応する Node.js 22 以降、独立した Small Steps 教材を使います。3 OS 共通で、現在地の確認命令だけが異なります。",
+        "다음 세션이 사용할 handoff.md를 만들고 일부러 오래된 기록으로 신뢰성을 시험합니다. 읽기 12분, 실습 22분입니다. 데스크톱 또는 CLI, 편집기, 호환 Node.js 22 이상, 독립 Small Steps 사본을 사용합니다. 세 OS에서 절차는 같고 현재 경로 확인 명령만 다릅니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "[工作階段續接](article:codex-sessions-resume)保留對話，但對話不一定包含磁碟最新內容。交接文件的工作是保存目標、已確認的事實、未解問題與下一步，讓新任務能重新驗證。它不是把所有聊天複製成長文，也不是加入一個檔案就自動被所有工作階段讀取；應在新任務明確要求讀取。",
+        "[Session resumption](article:codex-sessions-resume) preserves conversation, which may not reflect current disk state. A handoff records goals, verified facts, unresolved issues and next steps for fresh validation. It is not a complete chat transcript or a file guaranteed to load automatically. Explicitly request it in the next task.",
+        "[セッション再開](article:codex-sessions-resume)は会話を残しますが、最新ディスクとは限りません。引継ぎは目的、確認済み事実、未解決点、次の操作を記録して再検証を可能にします。会話全コピーでも自動読込みの保証でもなく、新課題で読むよう明示します。",
+        "[세션 재개](article:codex-sessions-resume)는 대화를 보존하지만 최신 디스크와 같지는 않습니다. 인계는 목표, 확인 사실, 미해결 문제, 다음 행동을 기록해 재검증하게 합니다. 전체 대화 복사도 자동 로드 보장도 아니며 새 작업에서 읽도록 명시합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：準備故障副本與狀態標記",
+        "Step 1: Prepare a faulty copy and state marker",
+        "手順1：故障コピーと状態の印を用意",
+        "1단계: 결함 사본과 상태 표식 준비"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "取得[第一個小專案](article:codex-first-project)的練習 ZIP，把 broken 中五個檔案複製到新資料夾 codex-handoff-lab。這份故障與 start 不同：Completed 誤回傳未完成任務。用編輯器開根目錄並新增 LAB_STATE.txt，內容如下。PowerShell 用 Get-Location，macOS／Linux 用 pwd，確認操作位置後執行測試。",
+        "From the [first-project ZIP](article:codex-first-project), copy the five broken files into a new codex-handoff-lab. Unlike start, this fixture incorrectly returns unfinished tasks for Completed. Open the root in your editor and add LAB_STATE.txt below. Verify location with Get-Location in PowerShell or pwd on macOS/Linux, then run tests.",
+        "[最初の教材 ZIP](article:codex-first-project)の broken 内5ファイルを、新しい codex-handoff-lab へコピーします。start と違い Completed が未完了を返します。ルートに次の LAB_STATE.txt を作り、PowerShell の Get-Location または macOS/Linux の pwd で確認してテストします。",
+        "[첫 실습 ZIP](article:codex-first-project)의 broken 안 다섯 파일을 새 codex-handoff-lab에 복사합니다. start와 달리 Completed가 미완료를 반환합니다. 루트에 다음 LAB_STATE.txt를 만들고 PowerShell Get-Location 또는 macOS/Linux pwd로 확인해 테스트합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "node --test core.test.mjs\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "預期是 2 過 1 敗，失敗在篩選行為。只有真的執行得到這個結果，才能在交接寫「已確認」。沒有 Node 或路徑錯誤，就寫阻礙與實際錯誤摘要，不填預設成功數字。不要保存帳號、金鑰或完整私密工具輸出；這個教材只需要虛構標記與相關測試資訊。",
+        "Expect two passes and one filter failure. Mark this verified only after observing it. If Node is missing or the path is wrong, record the blocker and actual error summary instead of assumed counts. Do not store accounts, keys or full private tool output; fictional markers and relevant test evidence are enough.",
+        "2成功1失敗で、失敗はフィルターです。実際に観測してから確認済みと書きます。Node 不足や場所違いなら障害と実エラーを書き、数を推測しません。アカウント、鍵、私的な全出力は残さず、架空の印と必要なテスト情報に絞ります。",
+        "2통과1실패이며 실패는 필터입니다. 실제 관찰한 뒤 확인됨으로 씁니다. Node 누락/경로 오류면 장애와 실제 오류 요약을 쓰고 숫자를 추정하지 않습니다. 계정/키/개인 도구 전체 출력 대신 가상 표식과 필요한 테스트 정보만 남깁니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：寫一份可查證的交接",
+        "Step 2: Write a verifiable handoff",
+        "手順2：検証可能な引継ぎを書く",
+        "2단계: 검증 가능한 인계 작성"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在根目錄建立 handoff.md。下面是完成基準測試後可使用的完整範例；如果你的結果不同，先更正 Observed 欄位。目標說明要做到什麼，Scope 指出可以改哪裡，Observed 帶上版本與命令，Not checked 保留缺少的證據，Next 讓接手者知道第一步要確認什麼。",
+        "Create handoff.md at the root. This complete example assumes the observed baseline above; correct Observed if your result differs. Goal defines the outcome, Scope allowed edits, Observed revision and commands, Not checked missing evidence and Next the first checks for the next session.",
+        "ルートに handoff.md を作ります。次の完全例は上の基準結果を実測した前提です。違えば Observed を修正します。Goal は成果、Scope は許可範囲、Observed は版と命令、Not checked は未確認、Next は次の確認を示します。",
+        "루트에 handoff.md를 만듭니다. 다음 완성 예시는 위 기준 결과를 실제 관찰한 전제이므로 다르면 Observed를 수정합니다. Goal은 결과, Scope는 허용 범위, Observed는 버전/명령, Not checked는 미확인, Next는 다음 확인입니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "不要把「已做了一些修改」當成可驗證成果。寫出檔案、具體行為、執行過的命令與未執行的檢查，才方便下一個人重做。正式 Git 專案可加分支與 commit，但未提交的變更仍需看 diff；commit 相同不能證明工作樹相同。本練習不需要為了填欄位捏造 commit ID。",
+        "“Made some changes” is not verifiable evidence. File names, behavior, executed commands and omitted checks let another person repeat the work. In a Git project, add branch and commit, but inspect uncommitted diff too: equal commits do not guarantee equal working trees. Do not invent a commit ID for this lab.",
+        "「いくつか変更」では検証できません。ファイル、挙動、実行命令、未実施確認を明示します。Git ならブランチと commit も加えますが、未コミット差分も見ます。同じ commit でも作業ツリーは異なり得ます。教材に架空 ID を埋めません。",
+        "‘몇 가지 수정’만으로는 검증할 수 없습니다. 파일, 동작, 실행 명령, 미실행 확인을 명시합니다. Git에서는 브랜치/commit도 넣되 미커밋 차이도 봅니다. 같은 commit이어도 작업 트리는 다를 수 있습니다. 실습에 가짜 ID를 넣지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：讓交接刻意過期，再交給新任務",
+        "Step 3: Make the handoff stale and start fresh",
+        "手順3：記録を古くして新課題へ渡す",
+        "3단계: 기록을 오래된 상태로 만들고 새 작업 시작"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "現在做一次受控改動：只把 ZIP 裡 expected/core.mjs 複製到本練習的 core.mjs，將 LAB_STATE.txt 的 Revision 改成 FIXED-2，暫時不改 handoff.md。再跑測試應 3 項全過。這模擬你離開後另一位協作者已修好程式，但聊天與文件仍記著故障。整個網站仍是同一份教材，測試檔沒有變。",
+        "Make a controlled change: copy only expected/core.mjs from the ZIP over this lab's core.mjs, change LAB_STATE.txt to Revision: FIXED-2 and leave handoff.md stale. Tests should now pass all three. This simulates another collaborator fixing the code after the recorded conversation. Other program files and tests remain unchanged.",
+        "ZIP の expected/core.mjs だけ教材へ上書きし、LAB_STATE.txt を Revision: FIXED-2 に変え、handoff.md は古いまま残します。テストは3成功になるはずです。離席中に別の人が修正し、会話と文書だけ故障状態のままという状況を再現します。他ファイルとテストは不変です。",
+        "ZIP expected/core.mjs만 실습에 덮어쓰고 LAB_STATE.txt를 Revision: FIXED-2로 바꾸며 handoff.md는 그대로 둡니다. 테스트는 3개 통과해야 합니다. 다른 협업자가 수정했지만 대화/문서만 결함 상태로 남은 상황을 재현합니다. 다른 파일과 테스트는 바꾸지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "桌面版在同一練習專案新建任務，CLI 則先 /exit 回系統終端機，確認目錄後重新執行 codex，這次不用 resume。把下列要求送到新任務。預期它辨識 FIXED-2、舊交接 BROKEN-1 與 3 項通過之間的差異，提出只更新交接記錄，不再改已正確的篩選函式。",
+        "Create a new desktop task for the same lab. In CLI, /exit to the shell, verify the directory and launch codex again without resume. Send the following request. Expect it to detect FIXED-2 versus recorded BROKEN-1 and three passing tests, then propose updating the record without modifying the already correct filter.",
+        "同じ教材でデスクトップの新課題を作ります。CLI は /exit 後に場所を確認して resume なしで codex を起動します。次を送り、FIXED-2、古い BROKEN-1、3成功の不一致を認識し、正しい関数を再変更せず記録更新を提案するか確認します。",
+        "동일 실습의 새 데스크톱 작업을 만듭니다. CLI는 /exit 후 경로 확인하고 resume 없이 codex를 시작합니다. 다음 요청으로 FIXED-2, 오래된 BROKEN-1, 3통과 불일치를 인식하고 올바른 함수를 다시 수정하지 않고 기록 갱신을 제안하는지 확인합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "若它仍想修正 Completed，要求指出目前哪一行錯、哪個測試還失敗；不要用舊紀錄覆蓋剛讀到的證據。確認後只允許更新 handoff.md：Observed 改為 FIXED-2 與真正 3 項通過，Next 改為未完成的畫面驗證。保留「原交接過期，已重新核對」的短記錄，讓版本差異有原因可追。",
+        "If it still proposes fixing Completed, ask which current line is wrong and which test still fails. Current evidence must take priority over stale notes. Then authorize only handoff.md: update Observed to FIXED-2 and the actual three passes, and Next to the remaining browser checks. Briefly record that the original handoff was stale and revalidated.",
+        "まだ Completed 修正を提案するなら、現在の誤った行と失敗テストを求めます。最新証拠を古い記録で上書きしません。その後 handoff.md だけ更新し、Observed は FIXED-2 と実際の3成功、Next は残る画面確認とします。古い記録を再検証した理由も短く残します。",
+        "계속 Completed 수정을 제안하면 현재 틀린 줄과 실패 테스트를 요청합니다. 최신 증거를 오래된 기록으로 덮지 않습니다. 이후 handoff.md만 갱신해 Observed는 FIXED-2와 실제 3통과, Next는 남은 화면 확인으로 바꿉니다. 오래된 기록을 재검증했다는 이유도 짧게 남깁니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "長對話、compact 與文件分工",
+        "Long conversations, compact and document roles",
+        "長い会話、compact と文書の分担",
+        "긴 대화, compact와 문서 역할"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "CLI 的 /compact 可壓縮長對話保留重要內容；在互動輸入框使用，若介面要求確認就依提示操作，完成後請它重述目標、限制與未完成項目並和 handoff.md 對照。本練習不需要刻意灌滿對話。壓縮不能當作檔案備份、Git 還原或一定不漏細節的保證，重要決策應保存在可重新讀取的文件。",
+        "CLI /compact condenses long conversations while retaining important context. Enter it in the interactive composer, follow any confirmation and then compare its restated goal, constraints and remaining work with handoff.md. This lab need not artificially fill context. Compaction is not a file backup, Git rollback or guarantee that every detail survives. Preserve important decisions in readable files.",
+        "CLI の /compact は長い会話を圧縮します。対話欄で入力し、確認があれば従い、目的・制約・残作業の再述を handoff.md と比較します。教材で無理に会話を埋める必要はありません。ファイル保存、Git 復元、全詳細保持の保証ではなく、大事な決定は読める文書に残します。",
+        "CLI /compact는 긴 대화를 압축합니다. 대화 입력창에 넣고 확인 안내를 따른 뒤 목표/제약/남은 작업 요약을 handoff.md와 비교합니다. 실습에서 억지로 문맥을 채울 필요는 없습니다. 파일 백업, Git 복원, 모든 상세 보존 보장이 아니므로 중요한 결정은 읽을 수 있는 문서에 남깁니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 文件 | 保存什麼 | 何時更新 |\n| --- | --- | --- |\n| AGENTS.md | 長期規則與命令 | 團隊工作方式改變 |\n| README.md | 專案入口與啟動方法 | 使用方式改變 |\n| 設計文件 | 行為、取捨、限制 | 接受新的設計決策 |\n| handoff.md | 當前證據、阻礙、下一步 | 暫停、交接或驗證後 |",
+        "| File | Stores | Update when |\n| --- | --- | --- |\n| AGENTS.md | Durable rules and commands | Working conventions change |\n| README.md | Entry point and startup | Usage changes |\n| Design document | Behavior, tradeoffs, constraints | A design decision is accepted |\n| handoff.md | Current evidence, blockers, next step | Pausing, handing off or validating |",
+        "| 文書 | 保存するもの | 更新時 |\n| --- | --- | --- |\n| AGENTS.md | 長期ルールと命令 | 作業慣習の変更 |\n| README.md | 入口と起動方法 | 使い方の変更 |\n| 設計文書 | 挙動、判断、制約 | 設計決定の採用 |\n| handoff.md | 最新証拠、障害、次の操作 | 中断、引継ぎ、検証後 |",
+        "| 문서 | 저장 내용 | 갱신 시점 |\n| --- | --- | --- |\n| AGENTS.md | 장기 규칙과 명령 | 작업 관행 변경 |\n| README.md | 진입점과 시작 방법 | 사용법 변경 |\n| 설계 문서 | 동작, 선택 이유, 제약 | 설계 결정 채택 |\n| handoff.md | 최신 증거, 장애, 다음 행동 | 중단, 인계, 검증 후 |"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "這些角色可參考[規則與文件分工](article:codex-rules-and-context-files)。不要把一次故障的完整記錄長期塞進 AGENTS.md，讓每個任務都帶著過期資訊。交接最上方放眼前目標與最新核對日期，已解決項目用簡短結果保留，失效的路徑及臨時猜測要刪除或註明，避免接手者把歷史假設當現況。",
+        "See [rules and context files](article:codex-rules-and-context-files). Do not permanently place an entire incident log in AGENTS.md so every task inherits stale details. Put the present goal and last verification date near the top of the handoff, retain concise resolved outcomes, and remove or label invalid paths and temporary hypotheses.",
+        "[ルールと文書分担](article:codex-rules-and-context-files)も参照します。一度の障害全記録を AGENTS.md に常置して全課題へ古い情報を渡しません。引継ぎ冒頭に現在目的と確認日、解決済みは短い結果、無効パスや仮説は削除または注記します。",
+        "[규칙과 문서 역할](article:codex-rules-and-context-files)도 참고합니다. 일회성 장애 전체를 AGENTS.md에 상시 저장해 모든 작업에 오래된 정보를 주지 않습니다. 인계 위쪽에 현재 목표/확인 날짜, 해결 항목은 짧은 결과, 무효 경로/가설은 삭제하거나 표시합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "常見問題、還原與驗收",
+        "Troubleshooting, restoration and acceptance",
+        "対処、復元と受入",
+        "문제 해결, 복원과 검수"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "新任務說找不到文件，先核對工作目錄與檔名，不立刻讓它搜尋整台電腦；它沒讀交接，就明確附上路徑並要求回報讀到的 Revision；命令在別的目錄成功，不能當作這份程式已通過。若測試失敗與交接不同，保留兩份結果與時間，重新讀相關檔案後再決定，不先改測試來配合舊記錄。",
+        "If the new task cannot find the file, check directory and name rather than searching the entire computer. If unread, provide its path and request the observed Revision. A test succeeding in another directory does not validate this code. If failure differs from the handoff, preserve both results and times, reread relevant files and decide before changing tests.",
+        "見つからなければ場所と名前を確認し、全 PC 検索をすぐ依頼しません。未読ならパスと読んだ Revision の報告を求めます。別フォルダーの成功は教材の証拠ではありません。記録と違う失敗なら両結果と時刻を残して再読し、古い記録に合わせてテストを変えません。",
+        "파일을 못 찾으면 경로/이름부터 확인하고 PC 전체 검색을 바로 요청하지 않습니다. 안 읽었다면 경로와 읽은 Revision 보고를 요청합니다. 다른 폴더의 성공은 이 코드 검증이 아닙니다. 기록과 다른 실패면 두 결과/시간을 남기고 재확인하며 옛 기록에 맞춰 테스트를 바꾸지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "完成時應有舊紀錄與新磁碟不一致的說明、更新的 handoff.md，以及 core.mjs 未被重複修改的證據。想重做只還原 broken/core.mjs、將 LAB_STATE.txt 改回 BROKEN-1，再用上面的原始交接；其他檔案不動。圖中 1 是記錄事實，2 是接手時重驗，3 是更新下一步。本文的模型對話與 /compact 依文件說明，實際執行要由你的結果補上；參考程式的故障與修正另有本機測試。",
+        "Completion requires an explanation of stale versus current state, updated handoff.md and evidence that core.mjs was not redundantly edited. To repeat, restore only broken/core.mjs, set LAB_STATE.txt to BROKEN-1 and restore the reference handoff. Diagram 1 records facts, 2 revalidates on handoff, 3 updates next steps. Model dialogue and /compact are documented procedures; record your own execution. The reference defect and fix have separate local tests.",
+        "不一致の説明、更新済み handoff.md、core.mjs を重複変更していない証拠が完了条件です。再実行は broken/core.mjs だけ復元し、BROKEN-1 と元の引継ぎに戻します。図1は記録、2は再検証、3は次の操作更新です。モデル会話と /compact は資料手順で、実行結果は各自記録します。参考コードの故障と修正は別途ローカルテスト済みです。",
+        "불일치 설명, 갱신한 handoff.md, core.mjs를 중복 수정하지 않았다는 증거가 완료 조건입니다. 반복 시 broken/core.mjs만 복원하고 BROKEN-1과 원래 인계로 되돌립니다. 그림 1은 기록, 2는 재검증, 3은 다음 행동 갱신입니다. 모델 대화와 /compact는 문서 절차이며 자신의 실행 결과를 기록합니다. 참고 코드 결함/수정은 별도 로컬 테스트되었습니다."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1062 @@
+{
+  "slug": "codex-debugging",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 120,
+  "locales": {
+    "zh-TW": {
+      "title": "修 Bug 的完整流程",
+      "description": "好的除錯从可重現的症狀開始，再用證據縮小原因，最後驗證修正。『網站壞了』不夠具體；提供哪個輸入、在哪個步驟、期待什麼、實際出現什麼，能讓 Codex 更快找到相關程式。",
+      "hero": {
+        "src": "/guides/codex-debugging/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "把「Completed 顯示錯任務」轉成可重現的 Bug 報告，用最小程式定位原因、修正並做回歸，保留沒有驗證的項目。閱讀約 14 分鐘，操作約 25 分鐘。使用編輯器、已登入的 Codex、Node.js 22 以上相容版本及 Python。先完成既有專案閱讀，不需要正式帳號資料或外部服務。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：固定故障版本與重現步驟"
+        },
+        {
+          "type": "paragraph",
+          "text": "從練習 ZIP 的 broken 複製五個檔案到新資料夾 codex-bug-lab，保留原版。這份程式已有篩選分支，但 Completed 的條件故意寫反；與 start「尚未實作篩選」不同。開編輯器，PowerShell 用 Get-Location、macOS／Linux 用 pwd 確認位置，再執行既有測試，預期 2 過 1 敗。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "要確認畫面，從本目錄啟動本機預覽：Windows 執行 py -m http.server 4173 --bind 127.0.0.1，macOS／Linux 將 py 換成 python3。開 http://127.0.0.1:4173，使用本例 Reset practice data，依序新增 Read、Build，只勾選 Read，再切 Completed。預期應是 Read，故障版實際卻顯示 Build；把這個順序完整記下。"
+        },
+        {
+          "type": "paragraph",
+          "text": "故障報告要帶執行環境、起點、操作、預期、實際與證據，先不要填「原因一定是快取」。下列範本只記已觀察的現象；日期與測試結果由你填入。若你的畫面顯示不同，先核對預覽目錄及是否混入 expected，不把文章預期硬寫成自己的實測。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：建立不依賴畫面的最小重現"
+        },
+        {
+          "type": "paragraph",
+          "text": "在根目錄新增 repro.mjs，貼入下面完整程式。它直接把一個已完成與一個未完成任務送給 visibleTasks，不經 localStorage、DOM、瀏覽器快取或外部網路。保存後在另一個終端機執行 node repro.mjs。故障版應先印出實際 b，再因期待 a 而以非零狀態結束；這次 assertion 失敗就是要保留的證據。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node repro.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "現在可以縮小調查：核心函式在沒有瀏覽器的情況下就已回傳錯誤，故障不需要快取或按鈕事件才能發生。這不能證明所有 UI 都正確，但足以先查核心 Completed 分支。請 Codex 用證據解釋「為什麼目前條件選中了未完成任務」，再談修正；不要以一次重新整理偶然正常當根因已找到。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：要求最小修正與原因說明"
+        },
+        {
+          "type": "paragraph",
+          "text": "送出下面的完整要求，將範圍限定到 core.mjs 的 Completed 條件。既有測試與 repro.mjs 都不要修改，否則無法比較前後。教材的故障註解在修好後會過期，可一併移除那一行；除此以外不重構所有函式、不改 UI 文案、不換框架。若代理沒有讀測試輸出，就要求先確認原始失敗再繼續。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "根因是 Completed 使用 !task.completed，與 Active 一樣選未完成；正確條件是 task.completed。只需把該分支改成下列一行，不要連 Active 的 ! 也刪除。若只把下拉選單的標籤交換，畫面有時看起來合理，但 repro 仍會失敗；這說明修表象與修行為是兩件事。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：用同一證據做回歸"
+        },
+        {
+          "type": "paragraph",
+          "text": "修正後 node repro.mjs 應印出 [\"a\"] 與 Reproduction passed，退出碼為 0；原測試應 3 項全過。再依第一步相同操作重測畫面：Completed 只有 Read，Active 只有 Build，All 保留兩筆。先用相同輸入證明原錯誤消失，再新增空清單與取消完成等邊界，不要一開始換整批資料而失去前後比較。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "證據",
+            "修正前",
+            "修正後"
+          ],
+          "rows": [
+            [
+              "最小重現",
+              "b，assertion 失敗",
+              "a，退出碼 0"
+            ],
+            [
+              "原本核心測試",
+              "2 過 1 敗",
+              "3 過 0 敗"
+            ],
+            [
+              "Completed 畫面",
+              "Build",
+              "Read"
+            ],
+            [
+              "Active／All",
+              "需記實際結果",
+              "Build／兩筆皆在"
+            ],
+            [
+              "尚未做的檢查",
+              "明列未執行",
+              "不自動改成通過"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "最後看 core.mjs 的差異，確認沒有改 addTask、decodeTasks 或測試期待。若對方回報修好了卻沒顯示執行結果，要求命令、退出狀態及失敗摘要；不能執行時就記原因。兩個測試通過也不能取代真正畫面檢查，要由你或具備瀏覽器工具的代理完成，並標明平台與預覽網址。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "排錯習慣、還原與交付"
+        },
+        {
+          "type": "paragraph",
+          "text": "一次只改一個可驗證的假設，失敗時把「做了什麼、得到什麼」追加到報告，避免下一個任務再次重試相同無效修正。若根因不在本篇預設位置，保留新證據並重新縮小範圍，不因為教學說一行就硬改一行。真實專案的計時、帳號及網路條件可能造成不同故障，重現資料應先去除私人內容再交給 Codex。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "交付包含 Bug 報告、最小重現、原因、限定差異及回歸表。要重做時，停止自己的預覽，只把原 broken/core.mjs 複製回來，保留 repro.mjs；它應再次失敗，原測試回到 2 過 1 敗。需要完整功能案例時接"
+            },
+            {
+              "type": "link",
+              "text": "功能驗收篇",
+              "url": "https://mokaair.com/zh-TW/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "。圖中 1 是重現，2 是定位修正，3 是回歸；參考修正可本機驗證，Codex 實際對話和各平台操作仍要依你的執行記錄判定。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-debugging/diagram-1.svg",
+          "alt": "20. 修 Bug 的完整流程 — 實作順序示意圖，非產品介面截圖。 Reproduce → Fix → Regression",
+          "width": 1600,
+          "height": 900,
+          "caption": "20. 修 Bug 的完整流程 — 實作順序示意圖，非產品介面截圖。 Reproduce → Fix → Regression",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ground requests in context and verify results",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Validation and scoped changes",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "修复 Bug 的完整流程",
+      "description": "好的除错从可重现的症状开始，再用证据缩小原因，最后验证修正。『网站坏了』不够具体；提供哪个输入、在哪个步骤、期待什么、实际出现什么，能让 Codex 更快找到相关程式。",
+      "hero": {
+        "src": "/guides/codex-debugging/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "把「Completed 显示错任务」转成可重现的 Bug 报告，用最小程式定位原因、修正并做回归，保留没有验证的项目。阅读约 14 分钟，操作约 25 分钟。使用编辑器、已登入的 Codex、Node.js 22 以上相容版本及 Python。先完成既有专案阅读，不需要正式帐号资料或外部服务。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：固定故障版本与重现步骤"
+        },
+        {
+          "type": "paragraph",
+          "text": "从练习 ZIP 的 broken 复制五个档案到新资料夹 codex-bug-lab，保留原版。这份程式已有筛选分支，但 Completed 的条件故意写反；与 start「尚未实作筛选」不同。开编辑器，PowerShell 用 Get-Location、macOS／Linux 用 pwd 确认位置，再执行既有测试，预期 2 过 1 败。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "要确认画面，从本目录启动本机预览：Windows 执行 py -m http.server 4173 --bind 127.0.0.1，macOS／Linux 将 py 换成 python3。开 http://127.0.0.1:4173，使用本例 Reset practice data，依序新增 Read、Build，只勾选 Read，再切 Completed。预期应是 Read，故障版实际却显示 Build；把这个顺序完整记下。"
+        },
+        {
+          "type": "paragraph",
+          "text": "故障报告要带执行环境、起点、操作、预期、实际与证据，先不要填「原因一定是快取」。下列范本只记已观察的现象；日期与测试结果由你填入。若你的画面显示不同，先核对预览目录及是否混入 expected，不把文章预期硬写成自己的实测。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：建立不依赖画面的最小重现"
+        },
+        {
+          "type": "paragraph",
+          "text": "在根目录新增 repro.mjs，贴入下面完整程式。它直接把一个已完成与一个未完成任务送给 visibleTasks，不经 localStorage、DOM、浏览器快取或外部网路。保存后在另一个终端机执行 node repro.mjs。故障版应先印出实际 b，再因期待 a 而以非零状态结束；这次 assertion 失败就是要保留的证据。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node repro.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "现在可以缩小调查：核心函式在没有浏览器的情况下就已回传错误，故障不需要快取或按钮事件才能发生。这不能证明所有 UI 都正确，但足以先查核心 Completed 分支。请 Codex 用证据解释「为什么目前条件选中了未完成任务」，再谈修正；不要以一次重新整理偶然正常当根因已找到。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：要求最小修正与原因说明"
+        },
+        {
+          "type": "paragraph",
+          "text": "送出下面的完整要求，将范围限定到 core.mjs 的 Completed 条件。既有测试与 repro.mjs 都不要修改，否则无法比较前后。教材的故障注解在修好后会过期，可一并移除那一行；除此以外不重构所有函式、不改 UI 文案、不换框架。若代理没有读测试输出，就要求先确认原始失败再继续。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "根因是 Completed 使用 !task.completed，与 Active 一样选未完成；正确条件是 task.completed。只需把该分支改成下列一行，不要连 Active 的 ! 也删除。若只把下拉选单的标签交换，画面有时看起来合理，但 repro 仍会失败；这说明修表象与修行为是两件事。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：用同一证据做回归"
+        },
+        {
+          "type": "paragraph",
+          "text": "修正后 node repro.mjs 应印出 [\"a\"] 与 Reproduction passed，退出码为 0；原测试应 3 项全过。再依第一步相同操作重测画面：Completed 只有 Read，Active 只有 Build，All 保留两笔。先用相同输入证明原错误消失，再新增空清单与取消完成等边界，不要一开始换整批资料而失去前后比较。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "证据",
+            "修正前",
+            "修正后"
+          ],
+          "rows": [
+            [
+              "最小重现",
+              "b，assertion 失败",
+              "a，退出码 0"
+            ],
+            [
+              "原本核心测试",
+              "2 过 1 败",
+              "3 过 0 败"
+            ],
+            [
+              "Completed 画面",
+              "Build",
+              "Read"
+            ],
+            [
+              "Active／All",
+              "需记实际结果",
+              "Build／两笔皆在"
+            ],
+            [
+              "尚未做的检查",
+              "明列未执行",
+              "不自动改成通过"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "最后看 core.mjs 的差异，确认没有改 addTask、decodeTasks 或测试期待。若对方回报修好了却没显示执行结果，要求命令、退出状态及失败摘要；不能执行时就记原因。两个测试通过也不能取代真正画面检查，要由你或具备浏览器工具的代理完成，并标明平台与预览网址。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "排错习惯、还原与交付"
+        },
+        {
+          "type": "paragraph",
+          "text": "一次只改一个可验证的假设，失败时把「做了什么、得到什么」追加到报告，避免下一个任务再次重试相同无效修正。若根因不在本篇预设位置，保留新证据并重新缩小范围，不因为教学说一行就硬改一行。真实专案的计时、帐号及网路条件可能造成不同故障，重现资料应先去除私人内容再交给 Codex。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "交付包含 Bug 报告、最小重现、原因、限定差异及回归表。要重做时，停止自己的预览，只把原 broken/core.mjs 复制回来，保留 repro.mjs；它应再次失败，原测试回到 2 过 1 败。需要完整功能案例时接"
+            },
+            {
+              "type": "link",
+              "text": "功能验收篇",
+              "url": "https://mokaair.com/zh-CN/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "。图中 1 是重现，2 是定位修正，3 是回归；参考修正可本机验证，Codex 实际对话和各平台操作仍要依你的执行记录判定。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-debugging/diagram-1.svg",
+          "alt": "20. 修复 Bug 的完整流程 — 实作顺序示意图，非产品介面截图。 Reproduce → Fix → Regression",
+          "width": 1600,
+          "height": 900,
+          "caption": "20. 修复 Bug 的完整流程 — 实作顺序示意图，非产品介面截图。 Reproduce → Fix → Regression",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ground requests in context and verify results",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Validation and scoped changes",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "A complete debugging workflow",
+      "description": "Debugging starts with a reproducible symptom, narrows causes with evidence and verifies the fix. Give the input, exact step, expected behavior and observed failure instead of only saying the site is broken.",
+      "hero": {
+        "src": "/guides/codex-debugging/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Turn “Completed shows the wrong task” into a reproducible bug report, isolate it with a minimal program, fix and regress it, and preserve unchecked items. Allow 14 minutes to read and 25 to practice. Use an editor, authenticated Codex, compatible Node.js 22 or later and Python. Complete codebase orientation; no production data or external service is needed."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Fix the faulty version and reproduction steps"
+        },
+        {
+          "type": "paragraph",
+          "text": "Copy the five broken files from the ZIP into new codex-bug-lab and preserve the original. Completed has a reversed condition, unlike start's missing implementation. Verify the directory in your editor terminal with Get-Location or pwd and run existing tests, expecting two passes and one failure."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "For the UI, start preview from this folder: Windows py -m http.server 4173 --bind 127.0.0.1; macOS/Linux replace py with python3. Open http://127.0.0.1:4173, use Reset practice data, add Read then Build, complete only Read and select Completed. Expected Read, actual Build. Record this exact sequence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Include environment, starting state, steps, expected, actual and evidence without prematurely blaming cache. Fill the template from observations with your date and test result. If your UI differs, verify preview location and fixture before treating the article's expectation as your own measurement."
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Isolate a reproduction without the UI"
+        },
+        {
+          "type": "paragraph",
+          "text": "Add root repro.mjs below. It directly passes one finished and one unfinished task to visibleTasks, bypassing storage, DOM, browser cache and networking. Run node repro.mjs in another terminal. The faulty version prints actual b then exits nonzero because a was expected. This assertion failure is evidence to retain."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node repro.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The core returns the wrong result without a browser, so cache and button events are unnecessary to reproduce this defect. That does not prove all UI is correct, but directs investigation to Completed. Ask Codex to explain why the predicate selects unfinished tasks before fixing it; a lucky reload is not a root-cause finding."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Request a minimal repair and explanation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Send the scoped request below. Preserve existing tests and repro.mjs for before/after comparison. Remove the now-stale deliberate-bug comment when fixing the condition, but do not refactor unrelated functions, edit UI or switch frameworks. Require the baseline failure if the agent has not inspected it."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Completed incorrectly uses !task.completed, selecting unfinished items like Active. Change only its line below to task.completed; keep Active's negation. Swapping dropdown labels may look plausible but leaves repro failing, distinguishing a cosmetic workaround from the behavioral repair."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Regress using the same evidence"
+        },
+        {
+          "type": "paragraph",
+          "text": "After repair, repro should print [\"a\"] and Reproduction passed with exit 0, and all three existing tests should pass. Repeat the original UI steps: Completed Read, Active Build, All both. Prove the original failure is gone with identical input before adding empty-list or uncompletion cases."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Evidence",
+            "Before",
+            "After"
+          ],
+          "rows": [
+            [
+              "Minimal repro",
+              "b, failed assertion",
+              "a, exit 0"
+            ],
+            [
+              "Existing core tests",
+              "2 pass, 1 fail",
+              "3 pass, 0 fail"
+            ],
+            [
+              "Completed UI",
+              "Build",
+              "Read"
+            ],
+            [
+              "Active/All",
+              "Record actual result",
+              "Build/both retained"
+            ],
+            [
+              "Unperformed checks",
+              "Explicitly NOT RUN",
+              "Do not automatically mark passed"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Inspect core.mjs diff for unchanged addTask, decodeTasks and test expectations. Request commands, exit status and failure summaries if a “fixed” claim lacks evidence; record blockers when execution is unavailable. Passing commands do not replace UI checks by you or a browser-capable agent, with platform and preview URL recorded."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Debugging habits, restoration and delivery"
+        },
+        {
+          "type": "paragraph",
+          "text": "Change one testable hypothesis at a time and record attempts/results so the next task does not repeat failed fixes. If evidence points elsewhere, narrow scope again instead of forcing this one-line answer. Timing, accounts and networks can produce different real defects; remove private data from reproductions before sharing with Codex."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Deliver the report, minimal repro, cause, scoped diff and regression table. To repeat, stop your preview and restore only broken/core.mjs, keeping repro.mjs; it should fail again and original tests return to two passes/one failure. For fuller cases see "
+            },
+            {
+              "type": "link",
+              "text": "feature acceptance",
+              "url": "https://mokaair.com/en/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": ". Diagram 1 reproduces, 2 diagnoses/repairs, 3 regresses. Local reference validation is distinct from your Codex conversation and platform execution."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-debugging/diagram-1.svg",
+          "alt": "20. A complete debugging workflow — Workflow illustration, not a product screenshot. Reproduce → Fix → Regression",
+          "width": 1600,
+          "height": 900,
+          "caption": "20. A complete debugging workflow — Workflow illustration, not a product screenshot. Reproduce → Fix → Regression",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ground requests in context and verify results",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Validation and scoped changes",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "不具合修正の一連の流れ",
+      "description": "不具合修正は再現する症状から始め、根拠で原因を絞って検証します。入力、操作、期待、実際を伝えます。",
+      "hero": {
+        "src": "/guides/codex-debugging/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "「Completed が違うタスクを表示」を再現可能な報告にし、最小プログラムで原因特定、修正、回帰確認をします。読む時間14分、操作25分です。エディター、認証済み Codex、対応 Node.js 22 以降、Python とコード理解が前提です。本番データや外部サービスは不要です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：故障版と再現手順を固定"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken の5ファイルを新しい codex-bug-lab へコピーし原版を残します。Completed の条件が逆で、start の未実装とは異なります。Get-Location/pwd で場所を確認し、2成功1失敗を実測します。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機プレビューは Windows の py -m http.server 4173 --bind 127.0.0.1、他 OS は python3 を使います。URL を開いて教材リセット、Read/Build 追加、Read 完了、Completed 選択。期待 Read、実際 Build の順序を残します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "環境、起点、操作、期待、実際、証拠を記し、先にキャッシュ原因と決めません。日付とテストは実測で埋めます。違う画面なら教材と場所を確認し、記事の期待を自分の実測にしません。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：画面を使わない最小再現"
+        },
+        {
+          "type": "paragraph",
+          "text": "次の repro.mjs を直下へ追加します。完了・未完了を直接渡し、保存、DOM、キャッシュ、通信を通りません。別端末で node repro.mjs を実行すると b を表示し a との不一致で非ゼロ終了するのが故障の証拠です。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node repro.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "ブラウザーなしで誤答するため、この故障にキャッシュやボタンは不要です。全 UI 正常の証明ではありませんが Completed を先に調べる根拠です。未完了を選ぶ理由を説明させ、偶然の再読込成功を根因発見にしません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：最小修正と原因説明を依頼"
+        },
+        {
+          "type": "paragraph",
+          "text": "次の限定依頼を送り、既存テストと repro.mjs は固定します。修正後に古くなる故障コメント一行は消してよいが、他関数整理や画面・framework 変更はしません。失敗未確認なら先に確認させます。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Completed が Active と同じ !task.completed を使うことが原因です。次の行だけにして Active の ! は残します。表示名交換では repro が失敗し、表面変更と挙動修正を区別できます。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：同じ証拠で回帰確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "修正後 repro は [\"a\"] と成功文、終了0、既存3テスト成功です。同じ画面操作で Completed Read、Active Build、All 両方を確認します。先に同入力で原故障の解消を証明し、次に空や未完了戻しを追加します。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "証拠",
+            "修正前",
+            "修正後"
+          ],
+          "rows": [
+            [
+              "最小再現",
+              "b、assertion 失敗",
+              "a、終了0"
+            ],
+            [
+              "既存テスト",
+              "2成功1失敗",
+              "3成功0失敗"
+            ],
+            [
+              "Completed 画面",
+              "Build",
+              "Read"
+            ],
+            [
+              "Active/All",
+              "実測を記録",
+              "Build/両方維持"
+            ],
+            [
+              "未実施",
+              "未実施と明記",
+              "自動で成功にしない"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "差分で addTask、decodeTasks、期待値の不変を確認します。修正済み主張だけなら命令、終了状態、失敗要約を求め、実行不能は理由を残します。成功命令は画面確認の代わりでなく、環境と URL を付けて実施します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "調査の習慣、復元と引渡し"
+        },
+        {
+          "type": "paragraph",
+          "text": "検証できる仮説を一つずつ変え、試行と結果を残して無効修正の反復を防ぎます。別原因の証拠なら範囲を絞り直し、一行という教材へ無理に合わせません。実案件の時間、認証、通信の違いもあり、私的データを除いて再現を渡します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "報告、最小再現、原因、差分、回帰表を渡します。再実行は自分のプレビュー停止後 broken/core.mjs だけ戻し、repro と元2成功1失敗を確認します。詳しい例は"
+            },
+            {
+              "type": "link",
+              "text": "機能受入",
+              "url": "https://mokaair.com/ja/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "へ。図1再現、2原因修正、3回帰で、参考検証と各自の Codex 実行を分けます。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-debugging/diagram-1.svg",
+          "alt": "20. 不具合修正の一連の流れ — 作業の流れを表す図です。製品画面の画像ではありません。 Reproduce → Fix → Regression",
+          "width": 1600,
+          "height": 900,
+          "caption": "20. 不具合修正の一連の流れ — 作業の流れを表す図です。製品画面の画像ではありません。 Reproduce → Fix → Regression",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ground requests in context and verify results",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Validation and scoped changes",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "버그 수정의 전체 과정",
+      "description": "디버깅은 재현 가능한 증상에서 시작해 근거로 원인을 좁히고 수정 결과를 검증합니다. 입력, 단계, 기대와 실제 결과를 전달하세요.",
+      "hero": {
+        "src": "/guides/codex-debugging/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "‘Completed에 틀린 작업 표시’를 재현 가능한 보고로 만들고 최소 프로그램으로 원인 확인/수정/회귀 검증을 합니다. 읽기 14분, 실습 25분입니다. 편집기, 로그인 Codex, 호환 Node.js 22 이상, Python과 코드 이해가 전제입니다. 실제 데이터/외부 서비스는 필요 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 결함 버전과 재현 절차 고정"
+        },
+        {
+          "type": "paragraph",
+          "text": "broken 다섯 파일을 새 codex-bug-lab에 복사하고 원본을 남깁니다. Completed 조건이 반대이며 start의 미구현과 다릅니다. Get-Location/pwd로 위치를 확인하고 2통과1실패를 관찰합니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "로컬 미리 보기는 Windows py -m http.server 4173 --bind 127.0.0.1, 다른 OS는 python3입니다. URL에서 실습 리셋, Read/Build 추가, Read 완료, Completed 선택을 합니다. 기대 Read/실제 Build의 순서를 남깁니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "환경/시작/조작/기대/실제/증거를 적고 먼저 캐시 원인으로 단정하지 않습니다. 날짜/테스트는 관찰로 채웁니다. 화면이 다르면 실습/경로를 확인하고 글의 기대를 자신의 실측으로 삼지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 화면 없는 최소 재현"
+        },
+        {
+          "type": "paragraph",
+          "text": "다음 repro.mjs를 루트에 추가합니다. 완료/미완료를 직접 전달해 저장/DOM/캐시/네트워크를 거치지 않습니다. 다른 터미널에서 node repro.mjs를 실행하면 b를 표시하고 a 불일치로 0이 아닌 종료가 결함 증거입니다."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node repro.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "브라우저 없이 틀리므로 이 결함 재현에 캐시/버튼은 필요 없습니다. 전체 UI 정상 증명은 아니지만 Completed부터 조사할 근거입니다. 미완료를 고르는 이유를 설명하게 하고 우연한 새로 고침 성공을 원인 발견으로 보지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 최소 수정과 원인 설명 요청"
+        },
+        {
+          "type": "paragraph",
+          "text": "다음 제한 요청을 보내 기존 테스트/repro.mjs를 고정합니다. 수정 뒤 오래된 결함 주석 한 줄은 제거해도 되지만 다른 함수 정리/UI/framework 변경은 하지 않습니다. 실패를 안 봤으면 먼저 확인하게 합니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Completed가 Active와 같은 !task.completed를 쓰는 것이 원인입니다. 다음 줄만 바꾸고 Active의 !는 둡니다. 표시 이름 교환은 repro가 실패해 겉모습 변경과 동작 수정을 구분합니다."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 같은 증거로 회귀 검증"
+        },
+        {
+          "type": "paragraph",
+          "text": "수정 후 repro는 [\"a\"]와 성공 문구/종료0, 기존3테스트 통과입니다. 같은 화면 순서로 Completed Read, Active Build, All 둘 다를 확인합니다. 같은 입력으로 원래 결함 해소를 먼저 증명하고 빈 목록/완료 해제를 추가합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "증거",
+            "수정 전",
+            "수정 후"
+          ],
+          "rows": [
+            [
+              "최소 재현",
+              "b, assertion 실패",
+              "a, 종료0"
+            ],
+            [
+              "기존 테스트",
+              "2통과1실패",
+              "3통과0실패"
+            ],
+            [
+              "Completed 화면",
+              "Build",
+              "Read"
+            ],
+            [
+              "Active/All",
+              "실제 결과 기록",
+              "Build/둘 다 유지"
+            ],
+            [
+              "미실행",
+              "명시",
+              "자동으로 통과 처리하지 않음"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "차이에서 addTask/decodeTasks/기댓값 불변을 확인합니다. 수정 주장뿐이면 명령/종료/실패 요약을 요청하고 실행 불가는 이유를 남깁니다. 명령 성공은 화면 확인 대신이 아니며 환경/URL과 함께 수행합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "디버깅 습관, 복원과 전달"
+        },
+        {
+          "type": "paragraph",
+          "text": "검증 가능한 가설을 하나씩 바꾸고 시도/결과를 남겨 무효 수정 반복을 막습니다. 다른 원인 증거면 범위를 다시 좁히고 한 줄 실습에 억지로 맞추지 않습니다. 실제 타이밍/인증/네트워크 차이도 있으며 개인 데이터를 제거해 재현을 전달합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "보고/최소 재현/원인/차이/회귀 표를 전달합니다. 반복은 자신의 미리 보기 종료 후 broken/core.mjs만 복원하고 repro와 기존2통과1실패를 봅니다. 자세한 예는 "
+            },
+            {
+              "type": "link",
+              "text": "기능 검수",
+              "url": "https://mokaair.com/ko/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "로 갑니다. 그림1재현,2원인수정,3회귀이며 참고 검증과 각자의 Codex 실행을 구분합니다."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-debugging/diagram-1.svg",
+          "alt": "20. 버그 수정의 전체 과정 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Reproduce → Fix → Regression",
+          "width": 1600,
+          "height": 900,
+          "caption": "20. 버그 수정의 전체 과정 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Reproduce → Fix → Regression",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ground requests in context and verify results",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Validation and scoped changes",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

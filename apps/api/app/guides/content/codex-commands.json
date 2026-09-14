@@ -1,0 +1,2201 @@
+{
+  "slug": "codex-commands",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 111,
+  "locales": {
+    "zh-TW": {
+      "title": "CLI 命令與斜線指令",
+      "description": "Codex 有終端機命令、互動介面的斜線指令、鍵盤快捷鍵與自然語言需求四種操作。先知道要把內容輸入在哪裡，才不會在 shell 輸入 /plan，或把 codex --help 當成要代理修改程式的要求。",
+      "hero": {
+        "src": "/guides/codex-commands/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀完能做到什麼"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "這篇讓你從「看到指令卻不知道貼哪裡」，走到能查版本、進入工作階段、查看狀態、要求計畫、退出並接續任務。閱讀約 12 分鐘，操作約 20 分鐘。它是一條完整練習路線加上常用索引，不要求一次背下所有選項。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇以 Codex CLI 為範圍。桌面版和 ChatGPT 網頁也可能有斜線選單，但命令集合不相同。不要把 Claude Code 的命令、網路上的舊截圖，或桌面快捷鍵直接當成 CLI 語法；先查你正在使用的介面與版本。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "link",
+              "text": "CLI 安裝",
+              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "及登入，下載"
+            },
+            {
+              "type": "link",
+              "text": "待辦練習材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "，用 expected 副本建立 codex-practice。這一篇主要讀取檔案和規劃，不需要 GitHub 或付費外部服務。若 codex 命令找不到，先完成安裝排錯，不要把登入問題和路徑問題混在一起。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 在練習資料夾開 PowerShell；macOS 開 Terminal；Linux／WSL 開該環境自己的終端機。WSL 中的 /home 路徑與 Windows 的 C:\\Users 路徑不同，命令要在真的裝有 CLI 的環境執行。確認完位置，再開始以下步驟。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "四種輸入要分清楚"
+        },
+        {
+          "type": "table",
+          "header": [
+            "類型",
+            "貼在哪裡",
+            "範例",
+            "會發生什麼"
+          ],
+          "rows": [
+            [
+              "終端機命令",
+              "PowerShell／Terminal／Linux shell",
+              "codex --help",
+              "執行 CLI 程式並顯示說明"
+            ],
+            [
+              "互動斜線指令",
+              "已啟動 Codex 的輸入框",
+              "/status",
+              "由目前互動介面處理"
+            ],
+            [
+              "快捷鍵",
+              "按鍵，不是輸入文字",
+              "Ctrl+R",
+              "搜尋提示詞歷史"
+            ],
+            [
+              "自然語言提示詞",
+              "Codex 對話輸入框",
+              "Explain core.mjs without editing.",
+              "交給代理理解並完成要求"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "終端機通常顯示路徑與提示符號；Codex 互動介面則有自己的對話輸入區。在 PowerShell 輸入 /plan 會被 shell 當成命令或路徑，不能開啟 Codex 的 Plan 模式。反過來，把多行安裝命令貼進 Codex 對話，也可能變成請代理執行的要求，與你直接執行不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：查版本與說明"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows PowerShell、macOS Terminal 或 Linux shell；尚未進入 Codex 對話"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex --version\ncodex --help\ncodex resume --help\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "三行可以逐行執行。第一行顯示版本，第二行列出此版本的子命令與選項，第三行只看接續工作階段的說明。它們不會開始新的代理工作。本次 Windows 實際查得 codex-cli 0.154.0-alpha.6.2；這是驗證環境紀錄，不是要求你安裝這個預覽版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "說明中的方括號表示選用內容，角括號通常代表要替換的值。不要照抄 SESSION_ID 之類的占位文字，也不要把文件展示的所有旗標一起加上。查不到選項時，先確認拼字、子命令與版本，再判斷是否需要更新。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：啟動並檢查狀態"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個系統終端機；目前目錄為 codex-practice"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "進入互動介面後，在輸入框打 /，使用彈出的清單搜尋 status，再執行 /status。應看到目前工作階段的設定資訊，例如模型、權限與上下文狀態；顯示欄位依版本而異。它不是購買額度或兌換重置信用的指令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 互動輸入框；執行狀態檢查"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "請同時用唯讀自然語言核對工作位置。若路徑不符，離開這個工作階段，回終端機進入正確資料夾再啟動。不要試圖用切換模型來修正工作目錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 對話；讀取練習位置"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Report the current working directory and list the five Small Steps source files.\nDo not edit anything. If this is not the practice folder, stop and explain.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：使用 Plan 模式做一次規劃"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "Plan 模式",
+              "url": "https://mokaair.com/zh-TW/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "適合在實作前檢查需求、影響範圍與驗收方式。在互動輸入框執行下面的內容，要求設計一個「清除已完成」功能。這個功能不在初始需求中，所以要保留未完成資料並考慮空清單；本篇只產生計畫。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 互動輸入框；斜線命令與本次需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/plan Plan a Clear completed button for this todo website. Do not implement it yet. Preserve active tasks and explain how to verify an empty list, mixed completion states, and reload behavior.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "合格計畫應指出相關檔案、按鈕位置、資料操作、儲存方式與測試案例，不能只有「修改、測試、完成」三個空泛步驟。檢查是否誤提不存在的 React 元件或資料庫。發現不符就補充限制，直到你能用計畫判斷成果。之後要實作，依目前介面的模式控制與提示交付；計畫本身不代表已改好網站。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第四步：退出並找到同一個工作階段"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成計畫後，先記下任務名稱或工作階段識別資訊，再在互動輸入框執行 /quit。回到系統終端機後，執行 codex resume，從選擇器核對時間、內容與路徑，選回剛才的任務。剛入門先用選擇器，比直接假定最後一個就是目標更容易核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 互動輸入框；退出當前介面"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/quit\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到系統終端機後；開啟工作階段選擇器"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex resume\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件也提供 codex resume --last 接續目前目錄最近的工作階段；加 --all 會擴大搜尋範圍。這些選項先查 resume --help 再使用。接續後請它摘要剛才的計畫和未完成事項，並核對路徑。能說出功能不表示檔案就在正確位置，兩項都要查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常用指令索引"
+        },
+        {
+          "type": "table",
+          "header": [
+            "輸入",
+            "介面",
+            "用途與本次用法"
+          ],
+          "rows": [
+            [
+              "/model",
+              "CLI 互動",
+              "查看帳號可選模型與推理選項；本篇可查看後取消"
+            ],
+            [
+              "/permissions",
+              "CLI 互動",
+              "檢查與調整授權方式；查資料不需要提高權限"
+            ],
+            [
+              "/review",
+              "CLI 互動",
+              "要求檢查目前變更；審查意見仍需要驗證"
+            ],
+            [
+              "/compact",
+              "CLI 互動",
+              "摘要長對話；摘要不等於完整原始紀錄"
+            ],
+            [
+              "/skills",
+              "CLI 互動",
+              "查找可用技能，接續 Skills 篇"
+            ],
+            [
+              "/copy",
+              "CLI 互動",
+              "複製最近完成的回覆"
+            ],
+            [
+              "codex exec --help",
+              "系統終端機",
+              "查非互動執行選項；不在互動框使用"
+            ],
+            [
+              "Ctrl+R",
+              "CLI 快捷鍵",
+              "搜尋提示詞歷史，Enter 選用，Esc 取消"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "需要挑模型看"
+            },
+            {
+              "type": "link",
+              "text": "模型選擇",
+              "url": "https://mokaair.com/zh-TW/life/codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": "，調整授權看"
+            },
+            {
+              "type": "link",
+              "text": "權限與沙盒",
+              "url": "https://mokaair.com/zh-TW/life/codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "，腳本流程看"
+            },
+            {
+              "type": "link",
+              "text": "codex exec",
+              "url": "https://mokaair.com/zh-TW/life/codex-exec-scripting"
+            },
+            {
+              "type": "text",
+              "text": "。使用 /compact 前先保留需要逐字重現的錯誤與完成條件，可參考"
+            },
+            {
+              "type": "link",
+              "text": "上下文交接",
+              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "。總目錄的指令搜尋可用 /plan、AGENTS.md 或 resume 找到相關篇章。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "驗收、常見問題與還原"
+        },
+        {
+          "type": "paragraph",
+          "text": "正常驗收：版本與說明可讀、工作位置正確、計畫沒有修改檔案、退出後能接續同一任務。邊界驗收：在 / 選單輸入不存在的名稱，確認它沒有變成你以為的功能；取消輸入並回文件查證，不要因此提高權限或安裝來路不明的補充工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「不是內部或外部命令」或 command not found：這是 shell 找不到 codex，先檢查安裝位置與新的終端機環境。若 codex --help 能跑而 /plan 不能，通常是輸入介面不對，不是 CLI 沒裝好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "參數不接受：確認一般半形連字號 --，不要使用文章排版的長破折號；空格與引號也要保留。不同子命令支援的旗標可能不同，主程式接受不表示每一個子命令都接受。"
+        },
+        {
+          "type": "paragraph",
+          "text": "resume 找不到或接錯：回想是否在不同目錄、主機或 CLI 環境啟動，先看選擇器與說明。不要用刪除歷史來處理找不到的任務。這篇沒有修改原始碼，退出即可結束；退出或重開對話不會撤銷先前已經完成的檔案操作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖中的 01 是系統終端機，02 是 Codex 互動輸入，03 是需要核對的結果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小練習與查證紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "自己做一張四列備忘：查說明、查狀態、提出唯讀需求、接續工作。每列寫「貼在哪裡」與預期結果，再親自各做一次。能解釋 codex resume 和 /resume 的介面差異，就比背下大量旗標更接近實際使用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "查證日為 2026-09-14，依"
+            },
+            {
+              "type": "link",
+              "text": "官方 CLI 指令文件",
+              "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+            },
+            {
+              "type": "text",
+              "text": "及本機 --help 核對。Windows 實測包含版本、主命令與 resume 說明；互動斜線、模型選單、macOS／Linux 依官方文件查證，未宣稱全部實測。需要完整操作範例可繼續"
+            },
+            {
+              "type": "link",
+              "text": "Skills",
+              "url": "https://mokaair.com/zh-TW/life/codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "測試及審查",
+              "url": "https://mokaair.com/zh-TW/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-commands/diagram-1.svg",
+          "alt": "11. CLI 命令與斜線指令 — 實作順序示意圖，非產品介面截圖。 Shell → Interactive / → Result",
+          "width": 1600,
+          "height": 900,
+          "caption": "11. CLI 命令與斜線指令 — 實作順序示意圖，非產品介面截圖。 Shell → Interactive / → Result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI overview",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "CLI 命令与斜线命令",
+      "description": "Codex 有终端机命令、互动介面的斜线指令、键盘快捷键与自然语言需求四种操作。先知道要把内容输入在哪里，才不会在 shell 输入 /plan，或把 codex --help 当成要代理修改程式的要求。",
+      "hero": {
+        "src": "/guides/codex-commands/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "读完能做到什么"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "这篇让你从「看到指令却不知道贴哪里」，走到能查版本、进入工作阶段、查看状态、要求计划、退出并接续任务。阅读约 12 分钟，操作约 20 分钟。它是一条完整练习路线加上常用索引，不要求一次背下所有选项。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇以 Codex CLI 为范围。桌面版和 ChatGPT 网页也可能有斜线选单，但命令集合不相同。不要把 Claude Code 的命令、网路上的旧截图，或桌面快捷键直接当成 CLI 语法；先查你正在使用的介面与版本。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "link",
+              "text": "CLI 安装",
+              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "及登入，下载"
+            },
+            {
+              "type": "link",
+              "text": "待办练习材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "，用 expected 副本建立 codex-practice。这一篇主要读取档案和规划，不需要 GitHub 或付费外部服务。若 codex 命令找不到，先完成安装排错，不要把登入问题和路径问题混在一起。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 在练习资料夹开 PowerShell；macOS 开 Terminal；Linux／WSL 开该环境自己的终端机。WSL 中的 /home 路径与 Windows 的 C:\\Users 路径不同，命令要在真的装有 CLI 的环境执行。确认完位置，再开始以下步骤。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "四种输入要分清楚"
+        },
+        {
+          "type": "table",
+          "header": [
+            "类型",
+            "贴在哪里",
+            "范例",
+            "会发生什么"
+          ],
+          "rows": [
+            [
+              "终端机命令",
+              "PowerShell／Terminal／Linux shell",
+              "codex --help",
+              "执行 CLI 程式并显示说明"
+            ],
+            [
+              "互动斜线指令",
+              "已启动 Codex 的输入框",
+              "/status",
+              "由目前互动介面处理"
+            ],
+            [
+              "快捷键",
+              "按键，不是输入文字",
+              "Ctrl+R",
+              "搜寻提示词历史"
+            ],
+            [
+              "自然语言提示词",
+              "Codex 对话输入框",
+              "Explain core.mjs without editing.",
+              "交给代理理解并完成要求"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "终端机通常显示路径与提示符号；Codex 互动介面则有自己的对话输入区。在 PowerShell 输入 /plan 会被 shell 当成命令或路径，不能开启 Codex 的 Plan 模式。反过来，把多行安装命令贴进 Codex 对话，也可能变成请代理执行的要求，与你直接执行不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：查版本与说明"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows PowerShell、macOS Terminal 或 Linux shell；尚未进入 Codex 对话"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex --version\ncodex --help\ncodex resume --help\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "三行可以逐行执行。第一行显示版本，第二行列出此版本的子命令与选项，第三行只看接续工作阶段的说明。它们不会开始新的代理工作。本次 Windows 实际查得 codex-cli 0.154.0-alpha.6.2；这是验证环境纪录，不是要求你安装这个预览版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "说明中的方括号表示选用内容，角括号通常代表要替换的值。不要照抄 SESSION_ID 之类的占位文字，也不要把文件展示的所有旗标一起加上。查不到选项时，先确认拼字、子命令与版本，再判断是否需要更新。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：启动并检查状态"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一个系统终端机；目前目录为 codex-practice"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "进入互动介面后，在输入框打 /，使用弹出的清单搜寻 status，再执行 /status。应看到目前工作阶段的设定资讯，例如模型、权限与上下文状态；显示栏位依版本而异。它不是购买额度或兑换重置信用的指令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 互动输入框；执行状态检查"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "请同时用唯读自然语言核对工作位置。若路径不符，离开这个工作阶段，回终端机进入正确资料夹再启动。不要试图用切换模型来修正工作目录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 对话；读取练习位置"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Report the current working directory and list the five Small Steps source files.\nDo not edit anything. If this is not the practice folder, stop and explain.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：使用 Plan 模式做一次规划"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "Plan 模式",
+              "url": "https://mokaair.com/zh-CN/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "适合在实作前检查需求、影响范围与验收方式。在互动输入框执行下面的内容，要求设计一个「清除已完成」功能。这个功能不在初始需求中，所以要保留未完成资料并考虑空清单；本篇只产生计划。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 互动输入框；斜线命令与本次需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/plan Plan a Clear completed button for this todo website. Do not implement it yet. Preserve active tasks and explain how to verify an empty list, mixed completion states, and reload behavior.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "合格计划应指出相关档案、按钮位置、资料操作、储存方式与测试案例，不能只有「修改、测试、完成」三个空泛步骤。检查是否误提不存在的 React 元件或资料库。发现不符就补充限制，直到你能用计划判断成果。之后要实作，依目前介面的模式控制与提示交付；计划本身不代表已改好网站。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第四步：退出并找到同一个工作阶段"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成计划后，先记下任务名称或工作阶段识别资讯，再在互动输入框执行 /quit。回到系统终端机后，执行 codex resume，从选择器核对时间、内容与路径，选回刚才的任务。刚入门先用选择器，比直接假定最后一个就是目标更容易核对。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 互动输入框；退出当前介面"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/quit\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到系统终端机后；开启工作阶段选择器"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex resume\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件也提供 codex resume --last 接续目前目录最近的工作阶段；加 --all 会扩大搜寻范围。这些选项先查 resume --help 再使用。接续后请它摘要刚才的计划和未完成事项，并核对路径。能说出功能不表示档案就在正确位置，两项都要查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常用指令索引"
+        },
+        {
+          "type": "table",
+          "header": [
+            "输入",
+            "介面",
+            "用途与本次用法"
+          ],
+          "rows": [
+            [
+              "/model",
+              "CLI 互动",
+              "查看帐号可选模型与推理选项；本篇可查看后取消"
+            ],
+            [
+              "/permissions",
+              "CLI 互动",
+              "检查与调整授权方式；查资料不需要提高权限"
+            ],
+            [
+              "/review",
+              "CLI 互动",
+              "要求检查目前变更；审查意见仍需要验证"
+            ],
+            [
+              "/compact",
+              "CLI 互动",
+              "摘要长对话；摘要不等于完整原始纪录"
+            ],
+            [
+              "/skills",
+              "CLI 互动",
+              "查找可用技能，接续 Skills 篇"
+            ],
+            [
+              "/copy",
+              "CLI 互动",
+              "复制最近完成的回复"
+            ],
+            [
+              "codex exec --help",
+              "系统终端机",
+              "查非互动执行选项；不在互动框使用"
+            ],
+            [
+              "Ctrl+R",
+              "CLI 快捷键",
+              "搜寻提示词历史，Enter 选用，Esc 取消"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "需要挑模型看"
+            },
+            {
+              "type": "link",
+              "text": "模型选择",
+              "url": "https://mokaair.com/zh-CN/life/codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": "，调整授权看"
+            },
+            {
+              "type": "link",
+              "text": "权限与沙盒",
+              "url": "https://mokaair.com/zh-CN/life/codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "，脚本流程看"
+            },
+            {
+              "type": "link",
+              "text": "codex exec",
+              "url": "https://mokaair.com/zh-CN/life/codex-exec-scripting"
+            },
+            {
+              "type": "text",
+              "text": "。使用 /compact 前先保留需要逐字重现的错误与完成条件，可参考"
+            },
+            {
+              "type": "link",
+              "text": "上下文交接",
+              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "。总目录的指令搜寻可用 /plan、AGENTS.md 或 resume 找到相关篇章。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "验收、常见问题与还原"
+        },
+        {
+          "type": "paragraph",
+          "text": "正常验收：版本与说明可读、工作位置正确、计划没有修改档案、退出后能接续同一任务。边界验收：在 / 选单输入不存在的名称，确认它没有变成你以为的功能；取消输入并回文件查证，不要因此提高权限或安装来路不明的补充工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「不是内部或外部命令」或 command not found：这是 shell 找不到 codex，先检查安装位置与新的终端机环境。若 codex --help 能跑而 /plan 不能，通常是输入介面不对，不是 CLI 没装好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "参数不接受：确认一般半形连字号 --，不要使用文章排版的长破折号；空格与引号也要保留。不同子命令支援的旗标可能不同，主程式接受不表示每一个子命令都接受。"
+        },
+        {
+          "type": "paragraph",
+          "text": "resume 找不到或接错：回想是否在不同目录、主机或 CLI 环境启动，先看选择器与说明。不要用删除历史来处理找不到的任务。这篇没有修改原始码，退出即可结束；退出或重开对话不会撤销先前已经完成的档案操作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "图中的 01 是系统终端机，02 是 Codex 互动输入，03 是需要核对的结果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小练习与查证纪录"
+        },
+        {
+          "type": "paragraph",
+          "text": "自己做一张四列备忘：查说明、查状态、提出唯读需求、接续工作。每列写「贴在哪里」与预期结果，再亲自各做一次。能解释 codex resume 和 /resume 的介面差异，就比背下大量旗标更接近实际使用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "查证日为 2026-09-14，依"
+            },
+            {
+              "type": "link",
+              "text": "官方 CLI 指令文件",
+              "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+            },
+            {
+              "type": "text",
+              "text": "及本机 --help 核对。Windows 实测包含版本、主命令与 resume 说明；互动斜线、模型选单、macOS／Linux 依官方文件查证，未宣称全部实测。需要完整操作范例可继续"
+            },
+            {
+              "type": "link",
+              "text": "Skills",
+              "url": "https://mokaair.com/zh-CN/life/codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "link",
+              "text": "测试及审查",
+              "url": "https://mokaair.com/zh-CN/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-commands/diagram-1.svg",
+          "alt": "11. CLI 命令与斜线命令 — 实作顺序示意图，非产品介面截图。 Shell → Interactive / → Result",
+          "width": 1600,
+          "height": 900,
+          "caption": "11. CLI 命令与斜线命令 — 实作顺序示意图，非产品介面截图。 Shell → Interactive / → Result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI overview",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "CLI commands and slash commands",
+      "description": "Codex has shell commands, interactive slash commands, keyboard shortcuts and natural-language requests. Identify the input surface first: /plan belongs in the interactive client, while codex --help belongs in the operating-system shell.",
+      "hero": {
+        "src": "/guides/codex-commands/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will accomplish"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Move from recognizing a command without knowing where to paste it to checking versions, entering a session, inspecting status, requesting a plan, exiting and resuming. Allow 12 minutes to read and 20 minutes to practice. This is a complete workflow with a compact index, not a requirement to memorize every option."
+        },
+        {
+          "type": "paragraph",
+          "text": "The scope is Codex CLI. The desktop app and ChatGPT web can also have slash menus, but their commands differ. Do not treat Claude Code commands, older screenshots or desktop shortcuts as CLI syntax. Check the interface and version you are actually using."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before you begin"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Complete "
+            },
+            {
+              "type": "link",
+              "text": "CLI installation",
+              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": " and sign-in. Download the "
+            },
+            {
+              "type": "link",
+              "text": "todo materials",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": " and copy expected into codex-practice. This lesson primarily reads files and produces a plan; GitHub and paid external services are unnecessary. If codex is not found, resolve installation first instead of confusing path discovery with authentication."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Open PowerShell on Windows, Terminal on macOS, or a shell in the relevant Linux/WSL environment at the practice folder. WSL /home paths differ from Windows C:\\Users paths. Run commands where the CLI is installed and verify the location before proceeding."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Distinguish four kinds of input"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Type",
+            "Where it goes",
+            "Example",
+            "Effect"
+          ],
+          "rows": [
+            [
+              "Shell command",
+              "PowerShell / Terminal / Linux shell",
+              "codex --help",
+              "Runs the CLI and prints help"
+            ],
+            [
+              "Interactive slash command",
+              "Composer after Codex starts",
+              "/status",
+              "Handled by the current interactive UI"
+            ],
+            [
+              "Shortcut",
+              "Press keys, do not type their names",
+              "Ctrl+R",
+              "Searches prompt history"
+            ],
+            [
+              "Natural-language prompt",
+              "Codex conversation composer",
+              "Explain core.mjs without editing.",
+              "Gives the agent a task to interpret"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A shell usually displays a path and prompt; Codex has its own conversation input. Typing /plan in PowerShell is interpreted as a shell command or path, not Codex Plan mode. Conversely, pasting installation commands into a Codex conversation may ask the agent to execute them, which differs from running them yourself."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: inspect version and help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows PowerShell, macOS Terminal or Linux shell; outside a Codex conversation"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex --version\ncodex --help\ncodex resume --help\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Run these one line at a time. They show the version, available subcommands and flags, and resume-specific help. They do not start a new agent task. The Windows environment checked for this lesson reported codex-cli 0.154.0-alpha.6.2; that is an evidence record, not an instruction to install this preview build."
+        },
+        {
+          "type": "paragraph",
+          "text": "Square brackets in help indicate optional arguments; angle brackets usually identify a value to replace. Do not copy placeholders such as SESSION_ID literally or combine every documented flag. If an option is missing, check spelling, subcommand and version before deciding to update."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: start a session and inspect status"
+        },
+        {
+          "type": "paragraph",
+          "text": "The same system terminal, in codex-practice"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Inside the interactive interface, type /, search for status in the popup and run /status. Expect session configuration such as the model, permissions and context state, with fields varying by version. This is not a purchase or reset-credit redemption command."
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI interactive composer; inspect status"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Also ask for the working directory in a read-only prompt. If it is wrong, leave the session, enter the correct folder in the shell and restart. Switching models does not correct a directory mistake."
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI conversation; inspect the practice location"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Report the current working directory and list the five Small Steps source files.\nDo not edit anything. If this is not the practice folder, stop and explain.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: request a plan"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "Plan mode",
+              "url": "https://mokaair.com/en/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": " helps inspect requirements, scope and verification before implementation. Run the following in the interactive composer to design a Clear completed feature. It must preserve active tasks and handle an empty list. This lesson produces only the plan."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI interactive composer; slash command with this request"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/plan Plan a Clear completed button for this todo website. Do not implement it yet. Preserve active tasks and explain how to verify an empty list, mixed completion states, and reload behavior.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "A useful plan identifies files, button placement, data operations, persistence and test cases. “Edit, test, finish” is insufficient. Check for invented React components or a database that this project does not have. Add constraints until you can use the plan to judge results. When ready to implement later, follow the current interface's mode controls and prompts. A plan does not establish that the website has changed."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: exit and locate the same session"
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the task name or session identifier after planning, then enter /quit in the interactive composer. Back in the system terminal, run codex resume. Check time, content and location in the picker before selecting the task. For beginners, choosing explicitly is easier to verify than assuming the latest session is the intended one."
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI interactive composer; leave the interface"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/quit\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Back in the system terminal; open the session picker"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex resume\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation also provides codex resume --last for the latest session in the current directory; --all broadens the search. Check resume --help before using these options. After resuming, ask for the previous plan and outstanding work, then verify the path. Remembering the feature does not prove the files are in the right location."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Common-command index"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Input",
+            "Interface",
+            "Purpose and use here"
+          ],
+          "rows": [
+            [
+              "/model",
+              "Interactive CLI",
+              "Inspect available models and reasoning choices; you can cancel"
+            ],
+            [
+              "/permissions",
+              "Interactive CLI",
+              "Inspect or adjust authorization; reading does not require broader access"
+            ],
+            [
+              "/review",
+              "Interactive CLI",
+              "Review changes; findings still need verification"
+            ],
+            [
+              "/compact",
+              "Interactive CLI",
+              "Summarize a long conversation; not a complete original transcript"
+            ],
+            [
+              "/skills",
+              "Interactive CLI",
+              "Find skills for the next lesson"
+            ],
+            [
+              "/copy",
+              "Interactive CLI",
+              "Copy the most recent completed response"
+            ],
+            [
+              "codex exec --help",
+              "System terminal",
+              "Inspect non-interactive options, outside the conversation"
+            ],
+            [
+              "Ctrl+R",
+              "CLI shortcut",
+              "Search prompt history; Enter selects and Esc cancels"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "See "
+            },
+            {
+              "type": "link",
+              "text": "model selection",
+              "url": "https://mokaair.com/en/life/codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "permissions",
+              "url": "https://mokaair.com/en/life/codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "link",
+              "text": "codex exec",
+              "url": "https://mokaair.com/en/life/codex-exec-scripting"
+            },
+            {
+              "type": "text",
+              "text": " for those workflows. Before /compact, preserve errors that need exact reproduction and the acceptance criteria; see "
+            },
+            {
+              "type": "link",
+              "text": "context handoff",
+              "url": "https://mokaair.com/en/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": ". The hub's command search accepts terms such as /plan, AGENTS.md and resume."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Verification, troubleshooting and restoring"
+        },
+        {
+          "type": "paragraph",
+          "text": "Normal verification: version and help work, the directory is correct, planning did not edit files, and the same task can be resumed. Boundary verification: type a nonexistent name in the slash menu and observe that it does not become the function you expected. Cancel and check documentation rather than increasing permissions or installing an unknown add-on."
+        },
+        {
+          "type": "paragraph",
+          "text": "“Command not found” or the Windows equivalent means the shell cannot find codex. Check installation and open a fresh terminal environment. If codex --help works but /plan does not, the input surface is often wrong; that is not a missing CLI installation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Rejected argument: use ordinary -- hyphens, not a typographic dash, and preserve spaces and quotes. Different subcommands accept different flags; a flag on the main command does not necessarily work everywhere."
+        },
+        {
+          "type": "paragraph",
+          "text": "Missing or wrong resumed task: consider whether it started in another directory, host or CLI environment. Inspect the picker and help. Do not delete history as a fix. This lesson does not modify source code, so exiting ends it; leaving or restarting a conversation does not undo earlier file operations."
+        },
+        {
+          "type": "paragraph",
+          "text": "In the diagram, 01 is the system terminal, 02 is Codex interactive input, and 03 is the result to verify."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice and verification record"
+        },
+        {
+          "type": "paragraph",
+          "text": "Make a four-row note for help, status, a read-only request and resuming. Include the input location and expected result for each, then try them. Explaining the interface difference between codex resume and /resume is more useful than memorizing many flags."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Checked on 2026-09-14 against the "
+            },
+            {
+              "type": "link",
+              "text": "official CLI command documentation",
+              "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+            },
+            {
+              "type": "text",
+              "text": " and local --help. Windows checks covered version, main-command help and resume help. Interactive commands, model menus and macOS/Linux behavior were checked through documentation, not all exercised directly. Continue with "
+            },
+            {
+              "type": "link",
+              "text": "Skills",
+              "url": "https://mokaair.com/en/life/codex-skills"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "link",
+              "text": "testing and review",
+              "url": "https://mokaair.com/en/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-commands/diagram-1.svg",
+          "alt": "11. CLI commands and slash commands — Workflow illustration, not a product screenshot. Shell → Interactive / → Result",
+          "width": 1600,
+          "height": 900,
+          "caption": "11. CLI commands and slash commands — Workflow illustration, not a product screenshot. Shell → Interactive / → Result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI overview",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "CLI コマンドとスラッシュコマンド",
+      "description": "操作にはシェルコマンド、対話画面のスラッシュコマンド、ショートカット、自然文の依頼があります。/plan は対話画面、codex --help は OS の端末に入力します。",
+      "hero": {
+        "src": "/guides/codex-commands/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 学習目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "このレッスンでできること"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "コマンドの貼り付け場所が分からない状態から、バージョン確認、セッション開始、状態確認、計画、終了、再開まで進みます。読む時間は約 12 分、操作は約 20 分です。一連の練習とよく使う索引であり、すべてのオプションを暗記する必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "対象は Codex CLI です。デスクトップや ChatGPT ウェブにもスラッシュメニューがありますが、コマンド集合は異なります。Claude Code のコマンド、古い画像、デスクトップのショートカットをそのまま CLI に使わず、現在の画面とバージョンを確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "始める前に"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "CLI インストール",
+              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "とログインを終え、"
+            },
+            {
+              "type": "link",
+              "text": "ToDo 教材",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "の expected を codex-practice にコピーします。今回は主に読み取りと計画なので GitHub や有料の外部サービスは不要です。codex が見つからなければ先にインストールを直し、パスと認証の問題を混同しません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows は PowerShell、macOS は Terminal、Linux／WSL はその環境の端末を練習フォルダーで開きます。WSL の /home と Windows の C:\\Users は別のパスです。実際に CLI がある環境で実行し、場所を確認してから進みます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "四つの入力を区別する"
+        },
+        {
+          "type": "table",
+          "header": [
+            "種類",
+            "入力場所",
+            "例",
+            "結果"
+          ],
+          "rows": [
+            [
+              "シェルコマンド",
+              "PowerShell / Terminal / Linux shell",
+              "codex --help",
+              "CLI を起動しヘルプを表示"
+            ],
+            [
+              "スラッシュコマンド",
+              "Codex 起動後の入力欄",
+              "/status",
+              "現在の対話 UI が処理"
+            ],
+            [
+              "ショートカット",
+              "文字を打たずキーを押す",
+              "Ctrl+R",
+              "プロンプト履歴を検索"
+            ],
+            [
+              "自然言語の依頼",
+              "Codex の会話入力欄",
+              "Explain core.mjs without editing.",
+              "エージェントが依頼を解釈"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "シェルには通常パスとプロンプトがあり、Codex には専用の会話欄があります。PowerShell の /plan はシェルの命令やパスとして扱われ、Codex の Plan モードにはなりません。逆にインストール命令を会話へ貼ると、代理に実行を頼む意味になり、自分で直接実行するのとは異なります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 1：バージョンとヘルプを見る"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows PowerShell、macOS Terminal、Linux shell。Codex の会話の外"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex --version\ncodex --help\ncodex resume --help\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "一行ずつ実行します。バージョン、サブコマンドとオプション、再開専用ヘルプが表示され、新しい代理タスクは始まりません。今回の Windows では codex-cli 0.154.0-alpha.6.2 でした。これは検証記録であり、このプレビュー版のインストール指定ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "角括弧は省略可能な引数、山括弧は置き換える値を表すことが一般的です。SESSION_ID などをそのまま貼ったり、全オプションを同時に付けたりしません。見つからない場合はスペル、サブコマンド、バージョンを確認してから更新を判断します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 2：起動して状態を見る"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じシステム端末、codex-practice 内"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "対話画面で / を入力し、候補から status を探して /status を実行します。モデル、権限、文脈などの設定が表示されますが項目は版によって異なります。購入やリセットクレジット消費のコマンドではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI の対話入力欄。状態確認"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "自然言語でも作業場所を読み取り確認します。違っていたらセッションを離れ、シェルで正しいフォルダーに入って再起動します。モデル変更では作業場所は直りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI の会話。練習場所を確認"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Report the current working directory and list the five Small Steps source files.\nDo not edit anything. If this is not the practice folder, stop and explain.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 3：Plan モードで計画する"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "Plan モード",
+              "url": "https://mokaair.com/ja/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "では実装前に要件、範囲、確認方法を調べます。次は Clear completed ボタンの計画です。未完了タスクを残し、空のリストも考慮します。今回は計画だけを作ります。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI の対話入力欄。スラッシュ命令と今回の依頼"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/plan Plan a Clear completed button for this todo website. Do not implement it yet. Preserve active tasks and explain how to verify an empty list, mixed completion states, and reload behavior.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "良い計画はファイル、ボタン位置、データ操作、保存、テスト例を示します。「変更、テスト、完了」だけでは不十分です。存在しない React コンポーネントやデータベースを想定していないか確認し、成果を判断できるまで条件を補います。後で実装する際は現在の画面のモード操作に従います。計画があることはサイト変更済みの証明ではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 4：終了して同じセッションを探す"
+        },
+        {
+          "type": "paragraph",
+          "text": "タスク名やセッション情報を控え、入力欄で /quit を実行します。システム端末に戻ったら codex resume を実行し、選択画面で時刻、内容、パスを照合して選びます。初心者は「最後が目的のもの」と決めつけるより選択画面で確認する方が確実です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI の対話入力欄。画面を終了"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/quit\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "システム端末に戻った後。セッション選択画面を開く"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex resume\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex resume --last は現在のディレクトリの直近セッションを再開し、--all は検索範囲を広げます。使う前に resume --help を確認します。再開後は前の計画と残作業を要約させ、パスも確認します。機能を覚えているだけではファイルの場所が正しいとは限りません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "よく使うコマンド"
+        },
+        {
+          "type": "table",
+          "header": [
+            "入力",
+            "画面",
+            "用途と今回の扱い"
+          ],
+          "rows": [
+            [
+              "/model",
+              "CLI 対話",
+              "モデルと推論設定を確認。見るだけで取り消してよい"
+            ],
+            [
+              "/permissions",
+              "CLI 対話",
+              "権限確認と変更。読むだけなら権限拡大は不要"
+            ],
+            [
+              "/review",
+              "CLI 対話",
+              "変更をレビュー。指摘にも検証が必要"
+            ],
+            [
+              "/compact",
+              "CLI 対話",
+              "長い会話を要約。完全な原文記録ではない"
+            ],
+            [
+              "/skills",
+              "CLI 対話",
+              "次のレッスンで使う技能を探す"
+            ],
+            [
+              "/copy",
+              "CLI 対話",
+              "直近の完了回答をコピー"
+            ],
+            [
+              "codex exec --help",
+              "システム端末",
+              "非対話のオプションを確認"
+            ],
+            [
+              "Ctrl+R",
+              "CLI キー操作",
+              "履歴検索。Enter で選択、Esc で取り消し"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "モデル選択",
+              "url": "https://mokaair.com/ja/life/codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "権限",
+              "url": "https://mokaair.com/ja/life/codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "codex exec",
+              "url": "https://mokaair.com/ja/life/codex-exec-scripting"
+            },
+            {
+              "type": "text",
+              "text": "に各手順があります。/compact の前に正確な再現が必要なエラーと完了条件を残し、"
+            },
+            {
+              "type": "link",
+              "text": "引き継ぎ",
+              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "を参照します。目次では /plan、AGENTS.md、resume などで検索できます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "確認、問題解決、復元"
+        },
+        {
+          "type": "paragraph",
+          "text": "正常な確認は、バージョンとヘルプが読め、場所が正しく、計画でファイルを変えず、同じタスクを再開できることです。境界の確認では / メニューに存在しない名前を入力し、期待する機能にはならないと確かめます。取り消して文書を調べ、権限拡大や出所不明の追加ツールで解決しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "command not found や Windows の同等エラーはシェルが codex を見つけられない状態です。インストールと新しい端末環境を確認します。codex --help が動いて /plan だけ動かないなら、入力画面の違いがよくある原因です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引数が拒否される場合は通常の -- を使い、組版の長いダッシュを避け、空白と引用符を保ちます。メインコマンドで使えるオプションが全サブコマンドでも使えるとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再開先がない、または違う場合は別ディレクトリ、ホスト、CLI 環境で開始したか思い出し、選択画面とヘルプを確認します。履歴削除を解決策にしないでください。今回はソースを変えないため終了すれば終わりますが、会話の終了や再開始で以前のファイル操作は戻りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "図の 01 はシステム端末、02 は Codex の対話入力、03 は確認する結果です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習と確認記録"
+        },
+        {
+          "type": "paragraph",
+          "text": "ヘルプ、状態、読み取り依頼、再開の四行メモを作り、入力場所と期待結果を書いて試します。codex resume と /resume の画面の違いを説明できる方が、大量の旗標の暗記より実用的です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "2026-09-14 に"
+            },
+            {
+              "type": "link",
+              "text": "公式 CLI 命令文書",
+              "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+            },
+            {
+              "type": "text",
+              "text": "とローカル --help で確認しました。Windows で実行したのはバージョン、主命令ヘルプ、resume ヘルプです。対話命令、モデル選択、macOS／Linux は文書確認で、すべてを実測したわけではありません。次は "
+            },
+            {
+              "type": "link",
+              "text": "Skills",
+              "url": "https://mokaair.com/ja/life/codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "と"
+            },
+            {
+              "type": "link",
+              "text": "テスト・レビュー",
+              "url": "https://mokaair.com/ja/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "を参照できます。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 学習目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-commands/diagram-1.svg",
+          "alt": "11. CLI コマンドとスラッシュコマンド — 作業の流れを表す図です。製品画面の画像ではありません。 Shell → Interactive / → Result",
+          "width": 1600,
+          "height": 900,
+          "caption": "11. CLI コマンドとスラッシュコマンド — 作業の流れを表す図です。製品画面の画像ではありません。 Shell → Interactive / → Result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI overview",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "CLI 명령과 슬래시 명령",
+      "description": "조작은 셸 명령, 대화형 슬래시 명령, 키보드 단축키와 자연어 요청으로 구분됩니다. /plan은 대화형 화면에, codex --help는 운영체제 셸에 입력합니다.",
+      "hero": {
+        "src": "/guides/codex-commands/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 글에서 완성할 것"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "명령을 어디에 붙일지 모르는 상태에서 버전 확인, 세션 시작, 상태 보기, 계획 요청, 종료, 재개까지 진행합니다. 읽기 약 12분, 실습 약 20분입니다. 전체 흐름과 자주 쓰는 색인을 제공하며 모든 옵션을 외울 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대상은 Codex CLI입니다. 데스크톱이나 ChatGPT 웹에도 슬래시 메뉴가 있지만 명령 집합은 다릅니다. Claude Code 명령, 옛 화면, 데스크톱 단축키를 CLI 문법으로 쓰지 말고 현재 인터페이스와 버전을 먼저 확인합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전 준비"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "CLI 설치",
+              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "와 로그인을 마치고 "
+            },
+            {
+              "type": "link",
+              "text": "할 일 자료",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "의 expected를 codex-practice로 복사합니다. 주로 파일 읽기와 계획이므로 GitHub나 유료 외부 서비스는 필요 없습니다. codex를 찾지 못하면 먼저 설치를 해결하고 경로 문제와 인증 문제를 구분합니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows는 PowerShell, macOS는 Terminal, Linux/WSL은 해당 환경의 터미널을 실습 폴더에서 엽니다. WSL /home과 Windows C:\\Users는 다른 경로입니다. 실제로 CLI가 설치된 환경에서 실행하고 위치부터 확인합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "네 가지 입력 구분"
+        },
+        {
+          "type": "table",
+          "header": [
+            "종류",
+            "입력 위치",
+            "예시",
+            "결과"
+          ],
+          "rows": [
+            [
+              "셸 명령",
+              "PowerShell / Terminal / Linux shell",
+              "codex --help",
+              "CLI를 실행해 도움말 표시"
+            ],
+            [
+              "대화형 슬래시 명령",
+              "Codex 시작 후 입력창",
+              "/status",
+              "현재 대화형 UI가 처리"
+            ],
+            [
+              "단축키",
+              "이름을 입력하지 않고 키 누르기",
+              "Ctrl+R",
+              "프롬프트 기록 검색"
+            ],
+            [
+              "자연어 요청",
+              "Codex 대화 입력창",
+              "Explain core.mjs without editing.",
+              "에이전트가 해석하는 작업 요청"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "셸은 보통 경로와 프롬프트를 표시하고 Codex는 자체 대화 입력창이 있습니다. PowerShell의 /plan은 셸 명령이나 경로로 해석되어 Codex Plan 모드가 되지 않습니다. 반대로 설치 명령을 Codex 대화에 붙이면 직접 실행이 아닌 에이전트 실행 요청이 될 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 버전과 도움말 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows PowerShell, macOS Terminal 또는 Linux shell, Codex 대화 밖"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex --version\ncodex --help\ncodex resume --help\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "한 줄씩 실행합니다. 버전, 하위 명령과 옵션, 재개 전용 도움말을 보여 주며 새 에이전트 작업은 시작하지 않습니다. 이번 Windows 확인 결과는 codex-cli 0.154.0-alpha.6.2입니다. 검증 환경 기록이며 이 미리보기 버전을 설치하라는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대괄호는 선택 인수, 꺾쇠괄호는 바꿔 넣을 값을 나타내는 경우가 많습니다. SESSION_ID 같은 자리표시자를 그대로 붙이거나 모든 옵션을 함께 넣지 마세요. 옵션이 없으면 철자, 하위 명령, 버전을 확인한 뒤 업데이트를 판단합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 세션 시작과 상태 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 시스템 터미널, codex-practice 안"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "대화형 화면에서 /를 입력하고 목록에서 status를 찾아 /status를 실행합니다. 모델, 권한, 문맥 등 세션 설정이 나타나며 항목은 버전마다 다릅니다. 구매나 리셋 크레딧 사용 명령이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 대화형 입력창, 상태 확인"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "자연어로 작업 위치도 읽기 확인합니다. 다르면 세션을 나와 셸에서 올바른 폴더로 이동하고 다시 시작합니다. 모델 변경으로 작업 경로가 고쳐지지는 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 대화, 실습 위치 확인"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Report the current working directory and list the five Small Steps source files.\nDo not edit anything. If this is not the practice folder, stop and explain.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: Plan 모드로 계획 요청"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "Plan 모드",
+              "url": "https://mokaair.com/ko/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "는 구현 전에 요구, 범위, 검증 방법을 확인합니다. 아래는 Clear completed 버튼 계획입니다. 미완료 항목을 보존하고 빈 목록도 고려해야 합니다. 이번에는 계획만 만듭니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 대화형 입력창, 슬래시 명령과 요청"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/plan Plan a Clear completed button for this todo website. Do not implement it yet. Preserve active tasks and explain how to verify an empty list, mixed completion states, and reload behavior.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "좋은 계획은 관련 파일, 버튼 위치, 데이터 처리, 저장 방식, 테스트 사례를 밝힙니다. 수정, 테스트, 완료만으로는 부족합니다. 존재하지 않는 React 컴포넌트나 데이터베이스를 가정하지 않는지 확인하고 결과를 판단할 수 있을 때까지 조건을 보완합니다. 나중에 구현할 때는 현재 UI의 모드 제어와 안내를 따릅니다. 계획이 있다고 사이트가 수정된 것은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 종료 후 같은 세션 찾기"
+        },
+        {
+          "type": "paragraph",
+          "text": "작업 이름이나 세션 정보를 기록하고 대화창에서 /quit를 실행합니다. 시스템 터미널로 돌아와 codex resume를 실행하고 선택기에서 시간, 내용, 경로를 확인합니다. 입문자는 마지막 세션이 목표라고 가정하는 것보다 직접 선택하는 편이 검증하기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex CLI 대화형 입력창, 현재 UI 종료"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/quit\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "시스템 터미널로 돌아온 뒤, 세션 선택기 열기"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex resume\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex resume --last는 현재 폴더의 최근 세션을 재개하며 --all은 검색 범위를 넓힙니다. 사용 전에 resume --help를 확인합니다. 재개 후 이전 계획과 남은 일을 요약하게 하고 경로도 확인합니다. 기능을 기억한다고 파일 위치까지 올바른 것은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "자주 쓰는 명령 색인"
+        },
+        {
+          "type": "table",
+          "header": [
+            "입력",
+            "인터페이스",
+            "목적과 이번 사용법"
+          ],
+          "rows": [
+            [
+              "/model",
+              "CLI 대화",
+              "사용 가능한 모델과 추론 선택 확인, 취소 가능"
+            ],
+            [
+              "/permissions",
+              "CLI 대화",
+              "권한 확인과 조정, 읽기에는 권한 확대 불필요"
+            ],
+            [
+              "/review",
+              "CLI 대화",
+              "변경 검토, 지적도 검증 필요"
+            ],
+            [
+              "/compact",
+              "CLI 대화",
+              "긴 대화 요약, 전체 원문 기록은 아님"
+            ],
+            [
+              "/skills",
+              "CLI 대화",
+              "다음 글에서 쓸 스킬 찾기"
+            ],
+            [
+              "/copy",
+              "CLI 대화",
+              "최근 완료 답변 복사"
+            ],
+            [
+              "codex exec --help",
+              "시스템 터미널",
+              "비대화형 옵션 확인"
+            ],
+            [
+              "Ctrl+R",
+              "CLI 단축키",
+              "기록 검색, Enter 선택, Esc 취소"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "모델 선택",
+              "url": "https://mokaair.com/ko/life/codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "권한",
+              "url": "https://mokaair.com/ko/life/codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "codex exec",
+              "url": "https://mokaair.com/ko/life/codex-exec-scripting"
+            },
+            {
+              "type": "text",
+              "text": "에서 각 흐름을 다룹니다. /compact 전에는 정확한 재현이 필요한 오류와 완료 조건을 보존하고 "
+            },
+            {
+              "type": "link",
+              "text": "문맥 인계",
+              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "를 참고합니다. 목차는 /plan, AGENTS.md, resume 같은 검색어를 지원합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "검증, 문제 해결, 복원"
+        },
+        {
+          "type": "paragraph",
+          "text": "정상 확인은 버전과 도움말이 보이고 위치가 맞으며 계획이 파일을 바꾸지 않고 같은 작업을 재개하는 것입니다. 경계 확인으로 / 메뉴에 없는 이름을 입력해 기대한 기능이 되지 않음을 확인합니다. 취소하고 문서를 찾아야 하며 권한 확대나 출처 불명 도구 설치로 해결하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "command not found 또는 Windows의 비슷한 오류는 셸이 codex를 찾지 못하는 상태입니다. 설치와 새 터미널 환경을 확인합니다. codex --help는 되는데 /plan만 안 되면 입력 인터페이스가 다른 경우가 많습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인수를 거부하면 긴 조판용 대시 대신 일반 --를 사용하고 공백과 따옴표를 보존합니다. 주 명령의 옵션이 모든 하위 명령에서 지원되지는 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "재개 작업이 없거나 틀리면 다른 폴더, 호스트, CLI 환경에서 시작했는지 확인하고 선택기와 도움말을 봅니다. 기록 삭제로 해결하지 마세요. 이번에는 소스를 수정하지 않으므로 종료하면 끝나지만 대화 종료나 재시작이 이전 파일 작업을 취소하지는 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "그림의 01은 시스템 터미널, 02는 Codex 대화 입력, 03은 확인할 결과입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "추가 실습과 검증 기록"
+        },
+        {
+          "type": "paragraph",
+          "text": "도움말, 상태, 읽기 요청, 재개의 네 줄 메모를 만들고 입력 위치와 예상 결과를 적어 각각 실행합니다. codex resume와 /resume의 인터페이스 차이를 설명하는 편이 많은 옵션을 외우는 것보다 실용적입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "2026-09-14에 "
+            },
+            {
+              "type": "link",
+              "text": "공식 CLI 명령 문서",
+              "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli"
+            },
+            {
+              "type": "text",
+              "text": "와 로컬 --help로 확인했습니다. Windows에서는 버전, 주 명령 도움말, resume 도움말을 실행했습니다. 대화형 명령, 모델 메뉴, macOS/Linux는 공식 문서 확인이며 모두 실측한 것은 아닙니다. 다음은 "
+            },
+            {
+              "type": "link",
+              "text": "Skills",
+              "url": "https://mokaair.com/ko/life/codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "와 "
+            },
+            {
+              "type": "link",
+              "text": "테스트 및 리뷰",
+              "url": "https://mokaair.com/ko/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하세요."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-commands/diagram-1.svg",
+          "alt": "11. CLI 명령과 슬래시 명령 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Shell → Interactive / → Result",
+          "width": 1600,
+          "height": 900,
+          "caption": "11. CLI 명령과 슬래시 명령 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Shell → Interactive / → Result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI overview",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

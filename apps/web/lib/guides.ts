@@ -317,6 +317,8 @@ const CJK = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hang
 export function readingMinutes(document: GuideDocument): number {
   const parts: string[] = [];
   for (const block of document.blocks) {
+    if (block.type === "rich_paragraph") parts.push(...block.spans.map((span) => span.text));
+    if (block.type === "code") parts.push(block.code);
     if (block.type === "heading" || block.type === "paragraph" || block.type === "link") parts.push(block.text);
     if (block.type === "callout") parts.push(block.title ?? "", block.text);
     if (block.type === "list") parts.push(...block.items);

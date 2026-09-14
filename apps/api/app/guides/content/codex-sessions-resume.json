@@ -1,0 +1,1302 @@
+{
+  "slug": "codex-sessions-resume",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 126,
+  "locales": {
+    "zh-TW": {
+      "title": "工作階段、接續與分岔",
+      "description": "辨識新任務、接續與分岔的差異，從歷史中找到正確工作並核對路徑和剩餘事項。",
+      "hero": {
+        "src": "/guides/codex-sessions-resume/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "找回正確的 CLI 工作階段，辨認同名檔案屬於哪個專案，讀取磁碟最新版本後再繼續。閱讀約 12 分鐘，操作約 20 分鐘。需要已登入的 Codex CLI 與純文字編輯器；Windows、macOS、Linux 都能做本練習。先熟悉終端機路徑，這次不用 Git、網路搜尋或正式資料。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "resume 接續的是先前工作階段的對話與狀態，不是把整個磁碟還原到當時。你在編輯器改了檔案，或其他任務做了修改，重新接續時都要確認。也不要把接續與 "
+            },
+            {
+              "type": "link",
+              "text": "fork",
+              "url": "https://mokaair.com/zh-TW/life/codex-project-management"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "跨主機 Handoff",
+              "url": "https://mokaair.com/zh-TW/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "混成一件事：一個是回到既有任務，一個建立另一條工作線，另一個移動執行位置。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟一：建立容易辨認的兩個練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "在同一個練習父資料夾建立 codex-session-a 與 codex-session-b，各自新增 note.txt。A 放第一段，B 放第二段，不要把兩段放進同一個檔案。兩個檔名都叫 note.txt，但內容標記不同；這讓你不能只靠檔名猜測目前工作位置。記下父資料夾在哪裡，後續每次啟動前都先核對目錄。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "SESSION-A\nRevision: 1\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "SESSION-B\nRevision: 100\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "用編輯器開 A 資料夾，再開整合終端機。PowerShell 用 Get-Location，macOS／Linux 用 pwd，確認末端是 codex-session-a；從該處執行下列命令。進入 CLI 後送出再下一段要求。預期回覆 A 的實際路徑、SESSION-A、Revision: 1，且檔案沒有修改。記錄這次任務在清單中顯示的標題與時間。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read note.txt from the current directory without changing files. Report the exact directory and both lines. This is a session-resume exercise. Do not search other folders or infer content from the filename.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "用 /exit 退出 A，看到系統終端機提示符號後，改從 B 資料夾開相同的唯讀工作階段並送出相同要求。這次應是 SESSION-B 與 Revision: 100。退出後你有兩個可辨識的工作階段；B 較新，但接下來要找回的是 A。這比只有一個任務時按「最近」更能測出選擇是否正確。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟二：用清單找回 A"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到 A 資料夾的系統終端機執行 codex resume。用畫面清單確認專案路徑、時間與可看到的內容，再選 A。若目前清單不含想找的目錄，可以用 --all 列出其他目錄的工作階段，但必須重新核對選擇，不把全域最新項目直接當目標。清單操作鍵以當前畫面提示為準，按 Enter 確認前先看清楚目錄。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume --all\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "若啟動目錄和任務儲存的目錄不同，CLI 可能詢問要用哪個位置；不要為了快點進去隨便選。這次要繼續 A 就選 A 所在位置，接著用 /status 與新的讀檔要求確認。已設定 tui.resume_cwd 或明確 --cd 時，行為可能不同；需要理解它們時看"
+            },
+            {
+              "type": "link",
+              "text": "設定排錯",
+              "url": "https://mokaair.com/zh-TW/life/codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "，不要把沒有跳詢問框當作一定選對。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "用途",
+            "使用前的確認"
+          ],
+          "rows": [
+            [
+              "codex resume",
+              "開啟選擇清單",
+              "路徑、時間、任務內容"
+            ],
+            [
+              "codex resume --last",
+              "接續目前目錄最近任務",
+              "已在正確目錄"
+            ],
+            [
+              "codex resume --all",
+              "顯示跨目錄任務",
+              "不把最新項目誤當目標"
+            ],
+            [
+              "codex resume SESSION_ID",
+              "用已知 ID 指定任務",
+              "ID 來自真正任務，不是範例字樣"
+            ],
+            [
+              "/resume",
+              "在互動 CLI 開選擇清單",
+              "指令輸入於 Codex，而非系統 shell"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟三：證明接續會讀到新磁碟內容"
+        },
+        {
+          "type": "paragraph",
+          "text": "再次退出 A，使用文字編輯器只將 A/note.txt 第二行改為 Revision: 2，B 的檔案完全不動。回 A 的系統終端機執行下面命令，這裡 --last 依官方規則限定目前目錄的最近工作階段；不要加 --all，因為它會改變搜尋範圍。如果該目錄還有其他任務，改用清單或已知 ID，不要盲猜最近一筆就是練習。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume --last --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "進入後送出下列要求。預期指出舊對話是 Revision: 1，但目前磁碟是 Revision: 2，且 SESSION-A 沒變。這個差異是題目，不是要修復的錯誤；不要叫它把檔案改回聊天記憶中的數字。對正式工作而言，相同方法可用來確認測試紀錄、未提交修改與交接筆記是否仍符合現在版本。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Resume by reading note.txt from disk again now. Compare the current revision with the earlier conversation. Report the current directory, the file marker, and any difference. Do not restore an older value or edit any file.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見錯誤、停止與還原"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到工作階段時，先查是否換了 OS、使用者、CODEX_HOME 或主機，再用 --all 核對其他目錄；桌面與 CLI 的工作階段不應只靠標題相同就推定可互換。選錯 B 時，先停止送出後續要求，/exit 回終端機重選 A；如果已經有寫入，就到被修改的真正目錄檢查差異，退出對話不會撤銷檔案。回覆仍是 1 時則要求新讀取並確認路徑，而不是重複同一句「繼續」。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "如果規則檔剛更新，也應先完成目前小步驟並開新的工作階段驗證，不把 resume 當成清空所有舊指示的方法；"
+            },
+            {
+              "type": "link",
+              "text": "規則層級篇",
+              "url": "https://mokaair.com/zh-TW/life/codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": "有專門對照。長對話需要整理時看"
+            },
+            {
+              "type": "link",
+              "text": "上下文交接",
+              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "，保留關鍵決策、真實檔案與未完成事項，而不是把摘要當作檔案備份。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "完成時應保存 A／B 的辨識紀錄、A 接續後的新讀取，以及為何 --last 和 --all 不能隨便互換的說明。還原練習時只把 A 的 Revision 改回 1，再確認 B 仍是 100；不需要刪除工作階段或登入資料。本篇命令依官方文件與本機 help 查證，沒有替讀者執行互動工作階段或保證舊任務跨平台自動同步。下一次正式接續也先確認「哪個任務、哪個目錄、哪個版本」，再開始修改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖中 1 是先辨認 A 與 B，2 是選擇正確的工作階段，3 是重新讀取磁碟並核對版本。每次續接都保留這三個檢查點。"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-sessions-resume/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "CLI commands and session controls",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Sessions, resuming and forking",
+      "description": "Distinguish new, resumed and forked tasks, locate the right history and verify the directory and remaining work.",
+      "hero": {
+        "src": "/guides/codex-sessions-resume/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Resume the correct CLI session, distinguish identically named files in different projects and reread current disk state before continuing. Allow 12 minutes to read and 20 to practice. Use an authenticated CLI and text editor on Windows, macOS or Linux. Know terminal paths first; this exercise needs no Git, web search or production data."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Resume continues prior conversation/session state; it does not rewind the disk. Recheck files edited by you or another task. Distinguish it from "
+            },
+            {
+              "type": "link",
+              "text": "forking",
+              "url": "https://mokaair.com/en/life/codex-project-management"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "link",
+              "text": "host handoff",
+              "url": "https://mokaair.com/en/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": ": continuing an existing task, creating another line of work and moving execution are different operations."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Create two distinguishable labs"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create codex-session-a and codex-session-b under one practice parent, each with note.txt. Put the first sample in A and the second in B, not both in one file. Matching filenames but distinct markers prevent filename-only assumptions. Record the parent location and verify your directory before each launch."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "SESSION-A\nRevision: 1\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "SESSION-B\nRevision: 100\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open A in the editor and integrated terminal. Use Get-Location in PowerShell or pwd on macOS/Linux to confirm codex-session-a, then run the command and send the following prompt inside CLI. Expect A's actual directory, SESSION-A and Revision: 1 without edits. Record the visible session title and time."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read note.txt from the current directory without changing files. Report the exact directory and both lines. This is a session-resume exercise. Do not search other folders or infer content from the filename.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Exit A with /exit, wait for the shell prompt, then open the same read-only workflow from B. Expect SESSION-B and Revision: 100. Exit again. You now have two identifiable sessions: B is newer, but the next goal is A. This makes selection verifiable instead of relying on a single recent task."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Select A from the session list"
+        },
+        {
+          "type": "paragraph",
+          "text": "From A's shell run codex resume. Inspect the displayed path, time and available preview before choosing A. Use --all if you need sessions outside the current directory, then verify the selection rather than equating globally newest with intended. Follow the picker's visible controls and read the path before confirming with Enter."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume --all\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "When current and saved directories differ, CLI may ask which to use. Choose A's location deliberately, then verify with /status and a fresh read. Existing tui.resume_cwd or explicit --cd can change that behavior; see "
+            },
+            {
+              "type": "link",
+              "text": "configuration troubleshooting",
+              "url": "https://mokaair.com/en/life/codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": ". Absence of a directory prompt does not prove the selected path is correct."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Use",
+            "Verify first"
+          ],
+          "rows": [
+            [
+              "codex resume",
+              "Open picker",
+              "Path, time, task content"
+            ],
+            [
+              "codex resume --last",
+              "Latest in current directory",
+              "Correct current directory"
+            ],
+            [
+              "codex resume --all",
+              "Show sessions across directories",
+              "Newest is not automatically intended"
+            ],
+            [
+              "codex resume SESSION_ID",
+              "Select known ID",
+              "Real session ID, not placeholder"
+            ],
+            [
+              "/resume",
+              "Open picker inside CLI",
+              "Enter in Codex, not the shell"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Verify current disk contents after resuming"
+        },
+        {
+          "type": "paragraph",
+          "text": "Exit A and change only A/note.txt's second line to Revision: 2 in your editor. Keep B untouched. From A run the command below: --last is documented as scoped to the current directory, unless --all expands the search. If A contains other sessions too, use the picker or known ID instead of assuming its newest session is the lab."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume --last --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Send the request below. Expect the old conversation to say Revision: 1 while disk says Revision: 2, with SESSION-A unchanged. That discrepancy is the exercise, not a defect to repair by restoring remembered text. The same method checks whether test records, uncommitted changes and handoff notes still describe current work."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Resume by reading note.txt from disk again now. Compare the current revision with the earlier conversation. Report the current directory, the file marker, and any difference. Do not restore an older value or edit any file.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting, stopping and restoration"
+        },
+        {
+          "type": "paragraph",
+          "text": "For a missing session, check OS, user, CODEX_HOME and host, then inspect other directories with --all. Matching desktop/CLI titles do not prove interchangeable session stores. If you choose B, stop further requests and /exit before selecting A. If writes occurred, inspect the actual changed directory; leaving the conversation does not undo them. For a stale revision, request a fresh read and verify the path instead of repeating “continue.”"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "If instruction files changed, finish the current small step and verify a fresh session; resume is not a universal reset of prior instructions. See "
+            },
+            {
+              "type": "link",
+              "text": "instruction scopes",
+              "url": "https://mokaair.com/en/life/codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": ". For long conversations, use "
+            },
+            {
+              "type": "link",
+              "text": "context handoff",
+              "url": "https://mokaair.com/en/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": " to retain decisions, actual files and pending work, without treating a summary as a backup."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Retain A/B identification, the fresh resumed read and an explanation of --last versus --all. Reset only A to revision 1 and verify B remains 100; no session or authentication deletion is needed. Commands are documentation/help-checked, not claims of a reader's interactive execution or automatic cross-platform synchronization. Before real edits, identify task, directory and current version."
+        },
+        {
+          "type": "paragraph",
+          "text": "Diagram 1 distinguishes A and B, 2 selects the correct session, and 3 rereads disk and verifies the revision. Retain these three checkpoints whenever resuming."
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-sessions-resume/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "CLI commands and session controls",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "セッションの再開と分岐",
+      "description": "新規、再開、分岐を区別し、履歴から目的の作業を見つけて場所と残作業を確認します。",
+      "hero": {
+        "src": "/guides/codex-sessions-resume/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "正しい CLI セッションを再開し、別プロジェクトの同名ファイルを区別して最新ディスク状態を読んでから続けます。読む時間12分、操作20分です。各 OS の認証済み CLI とエディターを使います。端末のパス操作が前提で、Git、検索、本番データは不要です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "resume は以前の会話とセッションを続け、ディスクを巻き戻しません。自分や別課題が編集したファイルを再確認します。"
+            },
+            {
+              "type": "link",
+              "text": "fork",
+              "url": "https://mokaair.com/ja/life/codex-project-management"
+            },
+            {
+              "type": "text",
+              "text": "の別作業作成や"
+            },
+            {
+              "type": "link",
+              "text": "ホスト移動",
+              "url": "https://mokaair.com/ja/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "とも区別します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：区別できる二つの教材を作る"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ親に codex-session-a と codex-session-b を作り、それぞれの note.txt に次の別々の例を保存します。一つのファイルに両方は入れません。同名でも印が違うため、名前だけで場所を推測できません。親の場所を記録し、起動前に確認します。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "SESSION-A\nRevision: 1\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "SESSION-B\nRevision: 100\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "A を開いた統合端末で Get-Location または pwd を使い、codex-session-a を確認して起動します。次の依頼で A の実パス、SESSION-A、Revision: 1 と無変更を期待します。一覧に表示される題名と時刻を記録します。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read note.txt from the current directory without changing files. Report the exact directory and both lines. This is a session-resume exercise. Do not search other folders or infer content from the filename.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "/exit で A を終了してシェルへ戻り、B から同じ手順を行います。SESSION-B、Revision: 100 を確認して終了します。B が新しくても次は A を探すため、単一の最近課題だけより正しい選択を確認できます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：一覧で A を再開"
+        },
+        {
+          "type": "paragraph",
+          "text": "A のシェルで codex resume を実行し、パス、時刻、見える内容を確認して A を選びます。他の場所を探すなら --all を使い、全体の最新を目的と同一視しません。画面の操作案内に従い Enter 前に場所を読みます。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume --all\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "現在地と保存場所が違うと CLI が場所を尋ねる場合があります。A を選び、/status と新しい読取りで確認します。tui.resume_cwd や --cd があれば動作が変わるので"
+            },
+            {
+              "type": "link",
+              "text": "設定切り分け",
+              "url": "https://mokaair.com/ja/life/codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "を参照し、質問が出ないだけで正解としません。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "用途",
+            "先に確認"
+          ],
+          "rows": [
+            [
+              "codex resume",
+              "一覧選択",
+              "パス、時刻、内容"
+            ],
+            [
+              "codex resume --last",
+              "現在地の最新",
+              "正しい現在地"
+            ],
+            [
+              "codex resume --all",
+              "他の場所も表示",
+              "最新が目的とは限らない"
+            ],
+            [
+              "codex resume SESSION_ID",
+              "既知 ID 指定",
+              "実在 ID に置換"
+            ],
+            [
+              "/resume",
+              "CLI 内で一覧",
+              "シェルではなく Codex に入力"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：再開後に最新のディスクを読む"
+        },
+        {
+          "type": "paragraph",
+          "text": "A を終了し、A/note.txt の二行目だけ Revision: 2 にして B は保持します。A から次を実行します。--last は現在地の最新が対象で、--all は範囲を広げます。他の A 課題もあれば一覧や既知 ID を使い、最新を推測しません。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume --last --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "次を送り、旧会話の1とディスクの2、変わらない SESSION-A を確認します。差は課題であり、記憶の数字に戻して直す不具合ではありません。テスト記録、未コミット変更、引継ぎが現在版を表すかの確認にも使えます。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Resume by reading note.txt from disk again now. Compare the current revision with the earlier conversation. Report the current directory, the file marker, and any difference. Do not restore an older value or edit any file.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "問題の切り分け、停止、復元"
+        },
+        {
+          "type": "paragraph",
+          "text": "見つからなければ OS、ユーザー、CODEX_HOME、ホストと --all を確認します。デスクトップと CLI の同名課題を同じ保存先と仮定しません。B を選んだら追加依頼を止め /exit で A を選び直します。書込み済みなら実際の変更先を確認し、退出を取消しとしません。古い版には再読と場所確認を求めます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "指示ファイル変更後は現在の小段階を区切り、新規セッションで検証します。resume を旧指示の万能リセットにしません。"
+            },
+            {
+              "type": "link",
+              "text": "規則範囲",
+              "url": "https://mokaair.com/ja/life/codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": "と"
+            },
+            {
+              "type": "link",
+              "text": "文脈の引継ぎ",
+              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "で決定、実ファイル、未完了を残し、要約をバックアップとしません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A / B の識別、新しい再読、--last と --all の違いを残します。A だけ1に戻し B は100のまま確認し、セッションや認証は削除しません。命令は公式資料と help の確認で、読者の実行や自動同期を保証しません。実作業でも課題、場所、版を先に確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "図1は A/B の識別、2は正しいセッション選択、3はディスク再読と版確認です。再開時にこの三点を確認します。"
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-sessions-resume/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "CLI commands and session controls",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "세션 재개와 분기",
+      "description": "신규, 재개, 분기 작업을 구분하고 기록에서 올바른 작업과 경로, 남은 일을 확인합니다.",
+      "hero": {
+        "src": "/guides/codex-sessions-resume/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "올바른 CLI 세션을 재개하고 다른 프로젝트의 같은 파일명을 구분하며 최신 디스크 상태를 읽은 뒤 계속합니다. 읽기 12분, 실습 20분입니다. 세 OS의 인증된 CLI와 편집기를 사용합니다. 터미널 경로를 알아야 하며 Git/검색/실제 데이터는 필요 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "resume는 이전 대화/세션을 잇고 디스크를 되돌리지 않습니다. 자신이나 다른 작업이 편집한 파일을 다시 확인합니다. "
+            },
+            {
+              "type": "link",
+              "text": "fork",
+              "url": "https://mokaair.com/ko/life/codex-project-management"
+            },
+            {
+              "type": "text",
+              "text": "의 새 작업 생성, "
+            },
+            {
+              "type": "link",
+              "text": "호스트 이전",
+              "url": "https://mokaair.com/ko/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "과도 구분합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 구별할 수 있는 실습 두 개 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 상위 폴더에 codex-session-a와 codex-session-b를 만들고 각각의 note.txt에 다음 별도 예시를 저장합니다. 한 파일에 둘 다 넣지 않습니다. 이름은 같고 표식은 달라 파일명만으로 위치를 추측할 수 없습니다. 상위 위치를 기록하고 시작 전에 확인합니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "SESSION-A\nRevision: 1\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "SESSION-B\nRevision: 100\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "A의 통합 터미널에서 Get-Location 또는 pwd로 codex-session-a를 확인하고 실행합니다. 다음 요청으로 A의 실제 경로, SESSION-A, Revision: 1과 무변경을 확인합니다. 목록의 제목/시간을 기록합니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read note.txt from the current directory without changing files. Report the exact directory and both lines. This is a session-resume exercise. Do not search other folders or infer content from the filename.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "/exit로 A를 종료해 셸로 돌아오고 B에서 같은 절차를 합니다. SESSION-B, Revision: 100을 확인하고 종료합니다. B가 최신이어도 다음에는 A를 찾아야 하므로 하나뿐인 최근 작업보다 선택을 확실히 검증할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 목록에서 A 재개"
+        },
+        {
+          "type": "paragraph",
+          "text": "A의 셸에서 codex resume를 실행하고 경로/시간/미리 보기를 확인해 A를 선택합니다. 다른 경로는 --all로 찾되 전체 최신을 목표와 같다고 보지 않습니다. 화면 조작 안내를 따르고 Enter 전에 경로를 읽습니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume --all\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "현재/저장 경로가 다르면 CLI가 위치를 물을 수 있습니다. A를 선택하고 /status와 새 읽기로 확인합니다. tui.resume_cwd나 --cd가 있으면 동작이 달라지므로 "
+            },
+            {
+              "type": "link",
+              "text": "설정 문제 해결",
+              "url": "https://mokaair.com/ko/life/codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "을 참고하며 질문이 안 떴다는 이유만으로 맞다고 하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "용도",
+            "먼저 확인"
+          ],
+          "rows": [
+            [
+              "codex resume",
+              "목록 선택",
+              "경로/시간/내용"
+            ],
+            [
+              "codex resume --last",
+              "현재 경로의 최신",
+              "정확한 현재 경로"
+            ],
+            [
+              "codex resume --all",
+              "다른 경로도 표시",
+              "최신이 목표인지 확인"
+            ],
+            [
+              "codex resume SESSION_ID",
+              "알려진 ID 지정",
+              "실제 ID로 대체"
+            ],
+            [
+              "/resume",
+              "CLI 내부 목록",
+              "셸 아닌 Codex에 입력"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 재개 후 최신 디스크 읽기"
+        },
+        {
+          "type": "paragraph",
+          "text": "A를 종료하고 A/note.txt 둘째 줄만 Revision: 2로 바꾸며 B는 보존합니다. A에서 다음을 실행합니다. --last는 현재 경로의 최신을 대상으로 하고 --all은 범위를 넓힙니다. A에 다른 작업도 있으면 목록/알려진 ID를 쓰고 최신을 추측하지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume --last --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "다음을 보내 이전 대화의 1과 디스크의 2, 그대로인 SESSION-A를 확인합니다. 차이는 실습이며 기억 속 숫자로 되돌려 고칠 결함이 아닙니다. 테스트 기록/미커밋 변경/인계가 현재 버전과 맞는지도 같은 방식으로 확인합니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Resume by reading note.txt from disk again now. Compare the current revision with the earlier conversation. Report the current directory, the file marker, and any difference. Do not restore an older value or edit any file.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결, 중단, 복구"
+        },
+        {
+          "type": "paragraph",
+          "text": "안 보이면 OS/사용자/CODEX_HOME/호스트와 --all을 확인합니다. 데스크톱/CLI의 같은 제목을 같은 세션 저장소로 가정하지 않습니다. B를 골랐으면 추가 요청을 멈추고 /exit 후 A를 고릅니다. 이미 썼다면 실제 변경 경로를 보고 종료를 취소로 취급하지 않습니다. 오래된 버전에는 새 읽기/경로 확인을 요청합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "지침 파일 변경 후에는 현재 작은 단계를 마치고 새 세션으로 검증합니다. resume를 이전 지침의 만능 초기화로 보지 않습니다. "
+            },
+            {
+              "type": "link",
+              "text": "규칙 범위",
+              "url": "https://mokaair.com/ko/life/codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": "와 "
+            },
+            {
+              "type": "link",
+              "text": "문맥 인계",
+              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "로 결정/실제 파일/미완료를 남기고 요약을 백업으로 보지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A/B 식별, 재개의 새 읽기, --last/--all 차이를 남깁니다. A만 1로 복원하고 B는 100인지 확인하며 세션/인증은 삭제하지 않습니다. 명령은 공식 문서/help 확인이며 독자의 실행/자동 동기화를 보장하지 않습니다. 실제 작업도 작업/경로/버전부터 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "그림 1은 A/B 구별, 2는 올바른 세션 선택, 3은 디스크 재읽기와 버전 확인입니다. 재개할 때 세 가지를 확인합니다."
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-sessions-resume/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "CLI commands and session controls",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "工作阶段、接续与分岔",
+      "description": "辨识新任务、接续与分岔的差异，从历史中找到正确工作并核对路径和剩余事项。",
+      "hero": {
+        "src": "/guides/codex-sessions-resume/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "找回正确的 CLI 工作阶段，辨认同名档案属于哪个专案，读取磁碟最新版本后再继续。阅读约 12 分钟，操作约 20 分钟。需要已登入的 Codex CLI 与纯文字编辑器；Windows、macOS、Linux 都能做本练习。先熟悉终端机路径，这次不用 Git、网路搜寻或正式资料。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "resume 接续的是先前工作阶段的对话与状态，不是把整个磁碟还原到当时。你在编辑器改了档案，或其他任务做了修改，重新接续时都要确认。也不要把接续与 "
+            },
+            {
+              "type": "link",
+              "text": "fork",
+              "url": "https://mokaair.com/zh-CN/life/codex-project-management"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "跨主机 Handoff",
+              "url": "https://mokaair.com/zh-CN/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "混成一件事：一个是回到既有任务，一个建立另一条工作线，另一个移动执行位置。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤一：建立容易辨认的两个练习"
+        },
+        {
+          "type": "paragraph",
+          "text": "在同一个练习父资料夹建立 codex-session-a 与 codex-session-b，各自新增 note.txt。A 放第一段，B 放第二段，不要把两段放进同一个档案。两个档名都叫 note.txt，但内容标记不同；这让你不能只靠档名猜测目前工作位置。记下父资料夹在哪里，后续每次启动前都先核对目录。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "SESSION-A\nRevision: 1\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "SESSION-B\nRevision: 100\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "用编辑器开 A 资料夹，再开整合终端机。PowerShell 用 Get-Location，macOS／Linux 用 pwd，确认末端是 codex-session-a；从该处执行下列命令。进入 CLI 后送出再下一段要求。预期回复 A 的实际路径、SESSION-A、Revision: 1，且档案没有修改。记录这次任务在清单中显示的标题与时间。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read note.txt from the current directory without changing files. Report the exact directory and both lines. This is a session-resume exercise. Do not search other folders or infer content from the filename.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "用 /exit 退出 A，看到系统终端机提示符号后，改从 B 资料夹开相同的唯读工作阶段并送出相同要求。这次应是 SESSION-B 与 Revision: 100。退出后你有两个可辨识的工作阶段；B 较新，但接下来要找回的是 A。这比只有一个任务时按「最近」更能测出选择是否正确。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤二：用清单找回 A"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到 A 资料夹的系统终端机执行 codex resume。用画面清单确认专案路径、时间与可看到的内容，再选 A。若目前清单不含想找的目录，可以用 --all 列出其他目录的工作阶段，但必须重新核对选择，不把全域最新项目直接当目标。清单操作键以当前画面提示为准，按 Enter 确认前先看清楚目录。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume --all\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "若启动目录和任务储存的目录不同，CLI 可能询问要用哪个位置；不要为了快点进去随便选。这次要继续 A 就选 A 所在位置，接著用 /status 与新的读档要求确认。已设定 tui.resume_cwd 或明确 --cd 时，行为可能不同；需要理解它们时看"
+            },
+            {
+              "type": "link",
+              "text": "设定排错",
+              "url": "https://mokaair.com/zh-CN/life/codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "，不要把没有跳询问框当作一定选对。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "用途",
+            "使用前的确认"
+          ],
+          "rows": [
+            [
+              "codex resume",
+              "开启选择清单",
+              "路径、时间、任务内容"
+            ],
+            [
+              "codex resume --last",
+              "接续目前目录最近任务",
+              "已在正确目录"
+            ],
+            [
+              "codex resume --all",
+              "显示跨目录任务",
+              "不把最新项目误当目标"
+            ],
+            [
+              "codex resume SESSION_ID",
+              "用已知 ID 指定任务",
+              "ID 来自真正任务，不是范例字样"
+            ],
+            [
+              "/resume",
+              "在互动 CLI 开选择清单",
+              "指令输入于 Codex，而非系统 shell"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤三：证明接续会读到新磁碟内容"
+        },
+        {
+          "type": "paragraph",
+          "text": "再次退出 A，使用文字编辑器只将 A/note.txt 第二行改为 Revision: 2，B 的档案完全不动。回 A 的系统终端机执行下面命令，这里 --last 依官方规则限定目前目录的最近工作阶段；不要加 --all，因为它会改变搜寻范围。如果该目录还有其他任务，改用清单或已知 ID，不要盲猜最近一笔就是练习。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "codex resume --last --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "进入后送出下列要求。预期指出旧对话是 Revision: 1，但目前磁碟是 Revision: 2，且 SESSION-A 没变。这个差异是题目，不是要修复的错误；不要叫它把档案改回聊天记忆中的数字。对正式工作而言，相同方法可用来确认测试纪录、未提交修改与交接笔记是否仍符合现在版本。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Resume by reading note.txt from disk again now. Compare the current revision with the earlier conversation. Report the current directory, the file marker, and any difference. Do not restore an older value or edit any file.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见错误、停止与还原"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到工作阶段时，先查是否换了 OS、使用者、CODEX_HOME 或主机，再用 --all 核对其他目录；桌面与 CLI 的工作阶段不应只靠标题相同就推定可互换。选错 B 时，先停止送出后续要求，/exit 回终端机重选 A；如果已经有写入，就到被修改的真正目录检查差异，退出对话不会撤销档案。回复仍是 1 时则要求新读取并确认路径，而不是重复同一句「继续」。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "如果规则档刚更新，也应先完成目前小步骤并开新的工作阶段验证，不把 resume 当成清空所有旧指示的方法；"
+            },
+            {
+              "type": "link",
+              "text": "规则层级篇",
+              "url": "https://mokaair.com/zh-CN/life/codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": "有专门对照。长对话需要整理时看"
+            },
+            {
+              "type": "link",
+              "text": "上下文交接",
+              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "，保留关键决策、真实档案与未完成事项，而不是把摘要当作档案备份。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "完成时应保存 A／B 的辨识纪录、A 接续后的新读取，以及为何 --last 和 --all 不能随便互换的说明。还原练习时只把 A 的 Revision 改回 1，再确认 B 仍是 100；不需要删除工作阶段或登入资料。本篇命令依官方文件与本机 help 查证，没有替读者执行互动工作阶段或保证旧任务跨平台自动同步。下一次正式接续也先确认「哪个任务、哪个目录、哪个版本」，再开始修改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "图中 1 是先辨认 A 与 B，2 是选择正确的工作阶段，3 是重新读取磁碟并核对版本。每次续接都保留这三个检查点。"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-sessions-resume/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "CLI commands and session controls",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

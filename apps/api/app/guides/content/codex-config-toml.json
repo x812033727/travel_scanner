@@ -1,0 +1,1292 @@
+{
+  "slug": "codex-config-toml",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 116,
+  "locales": {
+    "zh-TW": {
+      "title": "config.toml 設定教學",
+      "description": "config.toml 控制 Codex 的設定值，與 AGENTS.md 的自然語言工作規則不同。使用者設定在 Codex home，受信任專案也能有 .codex/config.toml。設定可能被 CLI 參數、專案層或組織政策影響，不能只看一個檔案就斷言生效。",
+      "hero": {
+        "src": "/guides/codex-config-toml/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在獨立專案設定 web_search，確認設定檔位置、有效層級與重新啟動後的狀態，再還原這次變更。閱讀約 12 分鐘，操作約 25 分鐘。需要已能啟動的 Codex CLI、Git 和純文字編輯器；Windows、macOS、Linux 都使用同一份 TOML 內容。IDE 可從設定入口開檔，但本篇用 CLI 診斷作為共同驗證方式。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " 告訴代理如何工作，config.toml 則設定應用選項。把「使用哪個模型」寫進一段普通 Markdown，不等於已更改預設模型；同樣地，在 config.toml 留一段沒有註解符號的中文要求，可能讓 TOML 無法解析。先用一項低影響設定學會正確位置與還原，再逐步增加真正需要的選項。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分清使用者設定與專案設定"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用者設定預設是使用者目錄下的 .codex/config.toml；若啟動環境已有 CODEX_HOME，先確認實際指向哪裡。專案設定則是儲存庫內的 .codex/config.toml，只在該專案被信任時載入。兩個檔案同名，但影響範圍不同。本次只建立練習專案的檔案，不需要搬走帳號驗證、改使用者設定或更動系統環境變數。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "系統",
+            "使用者預設位置",
+            "本次專案位置"
+          ],
+          "rows": [
+            [
+              "Windows",
+              "使用者資料夾內 .codex/config.toml",
+              "codex-config-lab/.codex/config.toml"
+            ],
+            [
+              "macOS",
+              "~/.codex/config.toml",
+              "同一個練習相對路徑"
+            ],
+            [
+              "Linux／WSL",
+              "該 Linux 使用者的 ~/.codex/config.toml",
+              "該環境的練習相對路徑"
+            ],
+            [
+              "IDE 擴充套件",
+              "齒輪 → Codex Settings → Open config.toml",
+              "開檔後核對實際位置"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：先留下原本狀態"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立新的 codex-config-lab，用編輯器開啟，新增 note.txt 寫入下方一行。從整合終端機確認位置：PowerShell 用 Get-Location，macOS／Linux 用 pwd；在確認全新練習資料夾後執行 git init，讓專案根目錄明確。先不要建立 .codex/config.toml。若同名資料夾已是別人的專案，換新的練習位置，不能為了照步驟重設它。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "CONFIG-LAB-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在系統終端機輸入 codex --cd .。若出現專案信任選擇，先核對就是自己剛建立的材料，再依畫面處理。進入互動 CLI 後，分別輸入下面兩個斜線指令；它們不是 PowerShell 命令。/debug-config 用來看設定層及啟用狀態，/status 用來核對任務環境。記錄相關層的路徑與狀態即可，不將完整私人設定輸出貼到公開教學。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/debug-config\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "看不到 /debug-config 時先輸入 / 查看該版選單，並用系統終端機的 codex --version 記版本；依官方安裝來源更新後再查。不要臆造另一個同名 shell 指令。若版本或組織環境沒有足夠診斷資訊，就把有效值標成尚未確認，不能只靠模型說「已設定」就算完成。保存起始紀錄後用 /exit 退出。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：新增一項可還原設定"
+        },
+        {
+          "type": "paragraph",
+          "text": "在編輯器的專案檔案清單新增 .codex 資料夾，再建立 config.toml。檢查路徑確實為 codex-config-lab/.codex/config.toml，不是專案根目錄的 config.toml 或 config.toml.txt。如果檔案已存在，先複製到自己能辨認的備份位置並記下原值，只修改同一個頂層 web_search，不重複新增相同鍵。全新練習檔可以直接使用下方完整內容。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "鍵名和值的拼字保持原樣；字串要用半形引號，# 後面是註解。這是一個頂層鍵，不能不加判斷就貼在 [features] 或其他表格段落下面；TOML 的表格標頭會改變後續鍵的位置。不要把網頁顯示的程式碼外框反引號一起貼進檔案，存成 UTF-8 純文字後再檢查一次。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：重新啟動並確認生效來源"
+        },
+        {
+          "type": "paragraph",
+          "text": "仍在練習根目錄，用 codex --cd . 開新工作階段，不使用 --search、-c 或 --profile 等額外選項，以免混入另一個實驗。再看 /debug-config，確認專案層是否列出且啟用；若顯示因未信任被略過，先核對專案來源，再按正常信任流程處理。診斷資料的層級順序可能由低到高顯示，要看標籤與啟用狀態，不能只把第一列當成贏家。"
+        },
+        {
+          "type": "paragraph",
+          "text": "將有效設定或可用工具資訊與本檔案比對，並送出下面的本機讀取要求。預期 note.txt 正確回報 CONFIG-LAB-01，沒有為這項任務執行網頁搜尋；若介面提供 web_search 有效值，應為 disabled。單次沒有搜尋只證明那次沒用，不能單獨證明設定成功，所以需保留設定層的診斷依據。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "這個開關只關閉內建網頁搜尋工具，不能用來證明所有網路都被封鎖。Shell、瀏覽器、MCP 與外部服務還有自己的權限和設定；需要控制這些範圍時讀"
+            },
+            {
+              "type": "link",
+              "text": "權限與沙盒",
+              "url": "https://mokaair.com/zh-TW/life/codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "。本例不開新服務、不做網路測試，也不為了證明搜尋關閉而繞到其他工具上網。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：還原並留下短紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "退出 CLI 後，若原本沒有此檔案，把本次新建的 config.toml 移到專案設定目錄以外的備份位置；若原本有檔案，只還原 web_search 的舊值或移除這次新增的那一個鍵，保留其他設定。重新開新工作階段，確認專案這項覆寫已不再生效，note.txt 仍未改動。還原後的實際搜尋模式取決於其餘設定，不一定回到某個你猜測的預設值。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與下一步"
+        },
+        {
+          "type": "paragraph",
+          "text": "不能啟動時，先看錯誤指到哪份 TOML、哪一行，檢查引號、重複鍵與表格位置；能啟動但值沒變時，查檔案路徑、專案信任、啟動參數和較近的子目錄設定；編輯器與 CLI 不同時，查它們是否在相同 OS、使用者與工作目錄，尤其 Windows 和 WSL 不共享同一個使用者家目錄。這些問題需要逐一查來源，重裝程式通常不是第一個判斷。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "組織強制要求與一般預設不同，不能靠專案鍵覆寫被禁止的值。模型、推理深度與額度另看"
+            },
+            {
+              "type": "link",
+              "text": "模型選擇",
+              "url": "https://mokaair.com/zh-TW/life/codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": "，不要從網路抄一份整包設定把現有供應者與登入流程換掉。完成本篇應有起始、啟用、還原三份紀錄，並能指出哪些項目仍未確認；接著到"
+            },
+            {
+              "type": "link",
+              "text": "設定故障排除",
+              "url": "https://mokaair.com/zh-TW/life/codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "實際診斷錯誤檔案。本文入口與設定依官方文件查證，檔案語法可獨立驗證，不能把語法正確當成每台機器都已載入。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-config-toml/diagram-1.svg",
+          "alt": "16. config.toml 設定教學 — 實作順序示意圖，非產品介面截圖。 User config → Project config → CLI override",
+          "width": 1600,
+          "height": 900,
+          "caption": "16. config.toml 設定教學 — 實作順序示意圖，非產品介面截圖。 User config → Project config → CLI override",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Config basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI configuration diagnostics",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Web search",
+          "url": "https://learn.chatgpt.com/docs/web-search",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "config.toml 配置教程",
+      "description": "config.toml 控制 Codex 的设定值，与 AGENTS.md 的自然语言工作规则不同。使用者设定在 Codex home，受信任专案也能有 .codex/config.toml。设定可能被 CLI 参数、专案层或组织政策影响，不能只看一个档案就断言生效。",
+      "hero": {
+        "src": "/guides/codex-config-toml/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在独立专案设定 web_search，确认设定档位置、有效层级与重新启动后的状态，再还原这次变更。阅读约 12 分钟，操作约 25 分钟。需要已能启动的 Codex CLI、Git 和纯文字编辑器；Windows、macOS、Linux 都使用同一份 TOML 内容。IDE 可从设定入口开档，但本篇用 CLI 诊断作为共同验证方式。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " 告诉代理如何工作，config.toml 则设定应用选项。把「使用哪个模型」写进一段普通 Markdown，不等于已更改预设模型；同样地，在 config.toml 留一段没有注解符号的中文要求，可能让 TOML 无法解析。先用一项低影响设定学会正确位置与还原，再逐步增加真正需要的选项。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分清使用者设定与专案设定"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用者设定预设是使用者目录下的 .codex/config.toml；若启动环境已有 CODEX_HOME，先确认实际指向哪里。专案设定则是储存库内的 .codex/config.toml，只在该专案被信任时载入。两个档案同名，但影响范围不同。本次只建立练习专案的档案，不需要搬走帐号验证、改使用者设定或更动系统环境变数。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "系统",
+            "使用者预设位置",
+            "本次专案位置"
+          ],
+          "rows": [
+            [
+              "Windows",
+              "使用者资料夹内 .codex/config.toml",
+              "codex-config-lab/.codex/config.toml"
+            ],
+            [
+              "macOS",
+              "~/.codex/config.toml",
+              "同一个练习相对路径"
+            ],
+            [
+              "Linux／WSL",
+              "该 Linux 使用者的 ~/.codex/config.toml",
+              "该环境的练习相对路径"
+            ],
+            [
+              "IDE 扩充套件",
+              "齿轮 → Codex Settings → Open config.toml",
+              "开档后核对实际位置"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：先留下原本状态"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立新的 codex-config-lab，用编辑器开启，新增 note.txt 写入下方一行。从整合终端机确认位置：PowerShell 用 Get-Location，macOS／Linux 用 pwd；在确认全新练习资料夹后执行 git init，让专案根目录明确。先不要建立 .codex/config.toml。若同名资料夹已是别人的专案，换新的练习位置，不能为了照步骤重设它。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "CONFIG-LAB-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在系统终端机输入 codex --cd .。若出现专案信任选择，先核对就是自己刚建立的材料，再依画面处理。进入互动 CLI 后，分别输入下面两个斜线指令；它们不是 PowerShell 命令。/debug-config 用来看设定层及启用状态，/status 用来核对任务环境。记录相关层的路径与状态即可，不将完整私人设定输出贴到公开教学。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/debug-config\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "看不到 /debug-config 时先输入 / 查看该版选单，并用系统终端机的 codex --version 记版本；依官方安装来源更新后再查。不要臆造另一个同名 shell 指令。若版本或组织环境没有足够诊断资讯，就把有效值标成尚未确认，不能只靠模型说「已设定」就算完成。保存起始纪录后用 /exit 退出。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：新增一项可还原设定"
+        },
+        {
+          "type": "paragraph",
+          "text": "在编辑器的专案档案清单新增 .codex 资料夹，再建立 config.toml。检查路径确实为 codex-config-lab/.codex/config.toml，不是专案根目录的 config.toml 或 config.toml.txt。如果档案已存在，先复制到自己能辨认的备份位置并记下原值，只修改同一个顶层 web_search，不重复新增相同键。全新练习档可以直接使用下方完整内容。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "键名和值的拼字保持原样；字串要用半形引号，# 后面是注解。这是一个顶层键，不能不加判断就贴在 [features] 或其他表格段落下面；TOML 的表格标头会改变后续键的位置。不要把网页显示的程式码外框反引号一起贴进档案，存成 UTF-8 纯文字后再检查一次。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：重新启动并确认生效来源"
+        },
+        {
+          "type": "paragraph",
+          "text": "仍在练习根目录，用 codex --cd . 开新工作阶段，不使用 --search、-c 或 --profile 等额外选项，以免混入另一个实验。再看 /debug-config，确认专案层是否列出且启用；若显示因未信任被略过，先核对专案来源，再按正常信任流程处理。诊断资料的层级顺序可能由低到高显示，要看标签与启用状态，不能只把第一列当成赢家。"
+        },
+        {
+          "type": "paragraph",
+          "text": "将有效设定或可用工具资讯与本档案比对，并送出下面的本机读取要求。预期 note.txt 正确回报 CONFIG-LAB-01，没有为这项任务执行网页搜寻；若介面提供 web_search 有效值，应为 disabled。单次没有搜寻只证明那次没用，不能单独证明设定成功，所以需保留设定层的诊断依据。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "这个开关只关闭内建网页搜寻工具，不能用来证明所有网路都被封锁。Shell、浏览器、MCP 与外部服务还有自己的权限和设定；需要控制这些范围时读"
+            },
+            {
+              "type": "link",
+              "text": "权限与沙盒",
+              "url": "https://mokaair.com/zh-CN/life/codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "。本例不开新服务、不做网路测试，也不为了证明搜寻关闭而绕到其他工具上网。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：还原并留下短纪录"
+        },
+        {
+          "type": "paragraph",
+          "text": "退出 CLI 后，若原本没有此档案，把本次新建的 config.toml 移到专案设定目录以外的备份位置；若原本有档案，只还原 web_search 的旧值或移除这次新增的那一个键，保留其他设定。重新开新工作阶段，确认专案这项覆写已不再生效，note.txt 仍未改动。还原后的实际搜寻模式取决于其余设定，不一定回到某个你猜测的预设值。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题与下一步"
+        },
+        {
+          "type": "paragraph",
+          "text": "不能启动时，先看错误指到哪份 TOML、哪一行，检查引号、重复键与表格位置；能启动但值没变时，查档案路径、专案信任、启动参数和较近的子目录设定；编辑器与 CLI 不同时，查它们是否在相同 OS、使用者与工作目录，尤其 Windows 和 WSL 不共享同一个使用者家目录。这些问题需要逐一查来源，重装程式通常不是第一个判断。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "组织强制要求与一般预设不同，不能靠专案键覆写被禁止的值。模型、推理深度与额度另看"
+            },
+            {
+              "type": "link",
+              "text": "模型选择",
+              "url": "https://mokaair.com/zh-CN/life/codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": "，不要从网路抄一份整包设定把现有供应者与登入流程换掉。完成本篇应有起始、启用、还原三份纪录，并能指出哪些项目仍未确认；接著到"
+            },
+            {
+              "type": "link",
+              "text": "设定故障排除",
+              "url": "https://mokaair.com/zh-CN/life/codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "实际诊断错误档案。本文入口与设定依官方文件查证，档案语法可独立验证，不能把语法正确当成每台机器都已载入。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-config-toml/diagram-1.svg",
+          "alt": "16. config.toml 配置教程 — 实作顺序示意图，非产品介面截图。 User config → Project config → CLI override",
+          "width": 1600,
+          "height": 900,
+          "caption": "16. config.toml 配置教程 — 实作顺序示意图，非产品介面截图。 User config → Project config → CLI override",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Config basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI configuration diagnostics",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Web search",
+          "url": "https://learn.chatgpt.com/docs/web-search",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Configure Codex with config.toml",
+      "description": "config.toml sets client options, while AGENTS.md describes working instructions. User settings live in Codex home; trusted projects can add .codex/config.toml. CLI overrides, project layers and managed requirements mean a single file does not prove the effective configuration.",
+      "hero": {
+        "src": "/guides/codex-config-toml/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Set web_search in an isolated project, identify the file and effective configuration layers, verify after restart and restore the change. Allow 12 minutes to read and 25 to practice. Have a working Codex CLI, Git and a plain-text editor. Windows, macOS and Linux use identical TOML. IDE users can open configuration through its settings; this lesson uses CLI diagnostics for common verification."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/en/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " instructs the agent; config.toml configures the client. Mentioning a model in ordinary Markdown does not change the configured default. Un-commented prose in TOML may make it invalid. Learn location, verification and restoration with one low-impact option before adding other settings you need."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Distinguish user and project configuration"
+        },
+        {
+          "type": "paragraph",
+          "text": "User configuration normally lives at .codex/config.toml under your home directory; check an existing CODEX_HOME override if present. Project configuration is .codex/config.toml inside a repository and loads only for trusted projects. Same filename, different scope. This exercise creates only the lab's file, without moving authentication, changing user defaults or altering system environment variables."
+        },
+        {
+          "type": "table",
+          "header": [
+            "System",
+            "Default user location",
+            "Lab location"
+          ],
+          "rows": [
+            [
+              "Windows",
+              ".codex/config.toml under user folder",
+              "codex-config-lab/.codex/config.toml"
+            ],
+            [
+              "macOS",
+              "~/.codex/config.toml",
+              "Same lab-relative path"
+            ],
+            [
+              "Linux/WSL",
+              "That Linux user's ~/.codex/config.toml",
+              "Lab path in that environment"
+            ],
+            [
+              "IDE extension",
+              "Gear → Codex Settings → Open config.toml",
+              "Check the opened file's actual path"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Record the starting state"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a new codex-config-lab and note.txt with the line below. Verify the integrated terminal location using Get-Location in PowerShell or pwd on macOS/Linux, then run git init in this new lab to define the project root. Do not create project configuration yet. If that folder already belongs to another project, choose a new lab location instead of resetting it."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "CONFIG-LAB-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Start codex --cd . in the shell. For a trust prompt, verify it identifies the lab you just created. Inside interactive Codex, run the two slash commands separately; they are not shell commands. /debug-config shows configuration layers and enabled state, while /status checks session context. Record relevant paths/states without publishing full private diagnostics."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/debug-config\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "If /debug-config is absent, inspect that version's / menu and record codex --version in the shell; update through its official installation source and check again. Do not invent a same-named shell command. If diagnostics remain insufficient, mark the effective setting unverified rather than relying on a model assurance. Save your baseline and use /exit."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Add one reversible setting"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create .codex/config.toml through the project's file explorer. Verify it is inside .codex, not root config.toml or a .txt file. If it exists, make an identifiable backup, record the original value and modify the existing top-level web_search key without duplicating it. For a new lab file, use the complete sample below."
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep key/value spelling, use straight quotes for the string and # for comments. This is a top-level key: do not blindly append it below [features] or another table header, which changes subsequent key scope. Do not copy the website's surrounding backtick fence into the file. Save as UTF-8 plain text and recheck."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Restart and identify the effective source"
+        },
+        {
+          "type": "paragraph",
+          "text": "Launch a fresh codex --cd . from the lab without --search, -c or --profile overrides. Inspect /debug-config for an enabled project layer. If skipped as untrusted, verify the project's origin and follow the normal trust flow. Diagnostics may list layers from low to high precedence: read their labels and enabled state rather than treating the first row as the winner."
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare effective settings or available-tool information with the file, then send the local-read request below. Expect CONFIG-LAB-01 and no search for this task; if the interface exposes the effective web_search value, it should be disabled. One task not searching proves only non-use, not successful configuration, so retain layer diagnostics as evidence."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "This switch disables the built-in search tool, not every network path. Shell, browser, MCP and external services have their own permissions and settings; see "
+            },
+            {
+              "type": "link",
+              "text": "permissions and sandboxing",
+              "url": "https://mokaair.com/en/life/codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": ". This exercise neither starts services nor bypasses the setting through another network tool merely to demonstrate it."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Restore and record the result"
+        },
+        {
+          "type": "paragraph",
+          "text": "Exit CLI. If no file existed before, move the new config.toml outside the project's configuration directory as a backup. Otherwise restore only web_search's original value or remove only the newly added key. Restart and verify this override is gone and note.txt unchanged. The resulting search mode depends on remaining layers, not an assumed default."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting and next steps"
+        },
+        {
+          "type": "paragraph",
+          "text": "For startup failure, inspect the named TOML file/line for quotes, duplicate keys and table scope. For unchanged values, check path, trust, launch overrides and nearer project layers. For IDE/CLI disagreement, compare OS, user and directory, especially separate Windows and WSL homes. Diagnose the source before choosing reinstallation."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Enforced organization requirements differ from defaults; project keys cannot override forbidden values. Use "
+            },
+            {
+              "type": "link",
+              "text": "model selection",
+              "url": "https://mokaair.com/en/life/codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": " for models and reasoning rather than replacing provider/auth settings with a copied configuration bundle. Finish with baseline, enabled and restored records plus explicit unknowns. Continue to "
+            },
+            {
+              "type": "link",
+              "text": "configuration troubleshooting",
+              "url": "https://mokaair.com/en/life/codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": ". File syntax can be checked independently; valid TOML is not proof every client loaded it."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-config-toml/diagram-1.svg",
+          "alt": "16. Configure Codex with config.toml — Workflow illustration, not a product screenshot. User config → Project config → CLI override",
+          "width": 1600,
+          "height": 900,
+          "caption": "16. Configure Codex with config.toml — Workflow illustration, not a product screenshot. User config → Project config → CLI override",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Config basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI configuration diagnostics",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Web search",
+          "url": "https://learn.chatgpt.com/docs/web-search",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "config.toml による設定",
+      "description": "config.toml は設定値、AGENTS.md は作業指示を扱います。ユーザー設定に加えて信頼したプロジェクトに .codex/config.toml を置けます。引数や組織の制限もあるため、一つのファイルだけで有効値を判断しません。",
+      "hero": {
+        "src": "/guides/codex-config-toml/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "独立プロジェクトで web_search を設定し、ファイルと有効な層、再起動後の状態を確認して戻します。読む時間12分、操作25分です。Codex CLI、Git、テキストエディターが必要で、各 OS の TOML 内容は同じです。IDE の設定からも開けますが検証は共通の CLI 診断を使います。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/ja/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " は指示、config.toml はクライアントの設定です。普通の Markdown でモデル名を書いても既定設定は変わりません。TOML に注釈記号なしの説明を書くと解析できないことがあります。低影響の一項目で場所、確認、復元を覚えてから必要な設定を増やします。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "ユーザー設定とプロジェクト設定"
+        },
+        {
+          "type": "paragraph",
+          "text": "ユーザー設定は通常ホームの .codex/config.toml で、既存 CODEX_HOME があれば場所を確認します。プロジェクト側はリポジトリ内の同名パスで、信頼された場合に読まれます。同名でも範囲が違います。本課題はプロジェクトのファイルだけを作り、認証移動や全域・環境変数変更は不要です。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "環境",
+            "ユーザーの既定位置",
+            "教材位置"
+          ],
+          "rows": [
+            [
+              "Windows",
+              "ユーザーフォルダー内 .codex/config.toml",
+              "codex-config-lab/.codex/config.toml"
+            ],
+            [
+              "macOS",
+              "~/.codex/config.toml",
+              "同じ相対パス"
+            ],
+            [
+              "Linux/WSL",
+              "Linux ユーザーの ~/.codex/config.toml",
+              "その環境の教材パス"
+            ],
+            [
+              "IDE",
+              "歯車 → Codex Settings → Open config.toml",
+              "開いた実パスを確認"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：元の状態を記録"
+        },
+        {
+          "type": "paragraph",
+          "text": "新規 codex-config-lab の note.txt に次の一行を保存します。PowerShell の Get-Location、macOS / Linux の pwd で場所を確認し、新規教材で git init を実行してルートを定めます。設定はまだ作りません。同名の別プロジェクトがあればリセットせず新しい場所を使います。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "CONFIG-LAB-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "シェルで codex --cd . を起動し、信頼確認は作った教材の場所を確認して処理します。内部で次の斜線コマンドを別々に実行します。シェル命令ではありません。/debug-config で層と状態、/status で課題環境を確認し、必要情報だけ記録して私的な診断全文は公開しません。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/debug-config\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "/debug-config がなければ / の一覧とシェルの codex --version を確認し、導入元の方法で更新します。同名シェル命令を作りません。版や組織環境で診断が足りなければ有効値は未確認とし、モデルの成功宣言だけで完了扱いしません。記録後 /exit で終了します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：復元可能な一項目を追加"
+        },
+        {
+          "type": "paragraph",
+          "text": "プロジェクト内に .codex/config.toml を作り、ルート直下や .txt ではないことを確認します。既存なら分かる場所にバックアップし、元の値を記録して同じトップレベルキーを変更し、重複追加しません。新規なら次の全文を使えます。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "キーと値の綴り、半角引用符、# の注釈を守ります。トップレベルキーなので [features] などの下へ無条件に追加しません。表見出しは後続キーの所属を変えます。サイトの外側のバッククォートも入れず、UTF-8 のテキストとして保存し確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：再起動して有効な出所を確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "教材ルートから --search、-c、--profile なしで新規起動し、/debug-config のプロジェクト層と有効状態を確認します。未信頼で省略なら出所を確認して通常の信頼手順を行います。診断は低優先から表示する場合があるため、最初の行を勝者とせずラベルと状態を読みます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有効設定や利用可能ツールの情報とファイルを比較し、次のローカル読み取りを依頼します。CONFIG-LAB-01 と検索なしを期待し、有効値が表示されれば disabled を確認します。一回検索しないだけでは設定成功の証明ではないため、層の診断根拠も残します。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "この設定は内蔵検索ツールを無効にするもので全通信遮断ではありません。シェル、ブラウザ、MCP、外部サービスは別の権限と設定を持ちます。"
+            },
+            {
+              "type": "link",
+              "text": "権限とサンドボックス",
+              "url": "https://mokaair.com/ja/life/codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "を参照し、実証のために別ツールで迂回通信しません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：復元して結果を記録"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI 終了後、新規ファイルなら設定ディレクトリ外へバックアップとして移します。既存なら web_search の元値だけを戻すか追加キーだけを除き、他を保持します。再起動で上書きが消え note.txt が不変か確認します。復元後の値は残る層で決まり、想像した既定値とは限りません。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "問題の切り分けと次の手順"
+        },
+        {
+          "type": "paragraph",
+          "text": "起動不能は指定 TOML と行の引用符、重複キー、表の所属を確認します。値が変わらなければパス、信頼、起動上書き、近い層を確認します。IDE と CLI の差は OS、ユーザー、場所、とくに別々の Windows / WSL ホームを比較し、再インストール前に出所を調べます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "強制要件は一般の既定値と異なり、プロジェクトキーで禁止値を通せません。モデルや推論は"
+            },
+            {
+              "type": "link",
+              "text": "選択記事",
+              "url": "https://mokaair.com/ja/life/codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": "を使い、設定一式のコピーで認証や提供元を替えません。開始、有効、復元と未確認を記録し、"
+            },
+            {
+              "type": "link",
+              "text": "設定の切り分け",
+              "url": "https://mokaair.com/ja/life/codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "へ進みます。構文が正しくても各クライアントでの読込み証明ではありません。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-config-toml/diagram-1.svg",
+          "alt": "16. config.toml による設定 — 作業の流れを表す図です。製品画面の画像ではありません。 User config → Project config → CLI override",
+          "width": 1600,
+          "height": 900,
+          "caption": "16. config.toml による設定 — 作業の流れを表す図です。製品画面の画像ではありません。 User config → Project config → CLI override",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Config basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI configuration diagnostics",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Web search",
+          "url": "https://learn.chatgpt.com/docs/web-search",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "config.toml 설정",
+      "description": "config.toml은 설정 값을, AGENTS.md는 작업 지침을 다룹니다. 사용자 설정 외에 신뢰하는 프로젝트에 .codex/config.toml을 둘 수 있습니다. 인자와 조직 정책도 있으므로 파일 하나만으로 적용 값을 판단하지 않습니다.",
+      "hero": {
+        "src": "/guides/codex-config-toml/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "독립 프로젝트에서 web_search를 설정하고 파일/유효한 설정 층/재시작 후 상태를 확인한 다음 복원합니다. 읽기 12분, 실습 25분입니다. Codex CLI, Git, 일반 텍스트 편집기가 필요하고 세 OS의 TOML은 같습니다. IDE 설정으로도 열 수 있지만 검증은 공통 CLI 진단을 사용합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/ko/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "는 지침이고 config.toml은 클라이언트 설정입니다. 일반 Markdown에 모델명을 써도 기본 설정은 바뀌지 않습니다. TOML에 주석 표시 없이 설명을 쓰면 파싱이 실패할 수 있습니다. 영향이 작은 한 항목으로 위치/검증/복구를 익힌 뒤 필요한 설정을 추가합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "사용자 설정과 프로젝트 설정 구분"
+        },
+        {
+          "type": "paragraph",
+          "text": "사용자 설정은 기본 홈의 .codex/config.toml이며 기존 CODEX_HOME이 있으면 경로를 확인합니다. 프로젝트 설정은 저장소 안의 같은 경로이고 신뢰된 프로젝트에서 로드됩니다. 이름은 같지만 범위는 다릅니다. 실습은 프로젝트 파일만 만들며 인증 이동/전역 설정/시스템 환경 변수 변경은 필요 없습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "환경",
+            "사용자 기본 위치",
+            "실습 위치"
+          ],
+          "rows": [
+            [
+              "Windows",
+              "사용자 폴더 내 .codex/config.toml",
+              "codex-config-lab/.codex/config.toml"
+            ],
+            [
+              "macOS",
+              "~/.codex/config.toml",
+              "같은 상대 경로"
+            ],
+            [
+              "Linux/WSL",
+              "Linux 사용자의 ~/.codex/config.toml",
+              "해당 환경의 실습 경로"
+            ],
+            [
+              "IDE",
+              "톱니바퀴 → Codex Settings → Open config.toml",
+              "실제 열린 경로 확인"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 시작 상태 기록"
+        },
+        {
+          "type": "paragraph",
+          "text": "새 codex-config-lab의 note.txt에 다음 한 줄을 저장합니다. PowerShell의 Get-Location 또는 macOS/Linux의 pwd로 위치를 확인하고 새 실습에서 git init으로 루트를 정합니다. 설정 파일은 아직 만들지 않습니다. 같은 이름의 다른 프로젝트가 있으면 초기화하지 말고 새 위치를 씁니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "CONFIG-LAB-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "셸에서 codex --cd .로 시작하고 신뢰 안내가 방금 만든 실습인지 확인합니다. 내부에서 다음 슬래시 명령을 각각 실행합니다. 셸 명령이 아닙니다. /debug-config로 층/활성 상태, /status로 작업 환경을 보고 필요한 정보만 기록하며 비공개 진단 전문은 공개하지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/debug-config\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "/debug-config가 없으면 / 목록과 셸의 codex --version을 확인하고 설치한 공식 방식으로 업데이트합니다. 같은 이름의 셸 명령을 지어내지 않습니다. 버전/조직 환경의 진단이 부족하면 유효값을 미확인으로 남기고 모델 성공 선언만 믿지 않습니다. 기준 기록 후 /exit로 종료합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 복원 가능한 설정 하나 추가"
+        },
+        {
+          "type": "paragraph",
+          "text": "프로젝트 안에 .codex/config.toml을 만들고 루트 바로 아래나 .txt가 아닌지 확인합니다. 기존 파일이면 알아볼 수 있는 곳에 백업하고 원래 값을 기록한 뒤 같은 최상위 키를 수정하며 중복 추가하지 않습니다. 새 파일이면 다음 전체 예시를 씁니다."
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "키/값 철자, 일반 따옴표, # 주석을 지킵니다. 최상위 키이므로 [features] 등 아래에 무조건 붙이지 않습니다. 테이블 헤더는 뒤 키의 소속을 바꿉니다. 사이트 바깥 백틱도 넣지 말고 UTF-8 텍스트로 저장해 재확인합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 재시작 후 유효 출처 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "실습 루트에서 --search/-c/--profile 없이 새로 시작하고 /debug-config의 프로젝트 층/활성을 확인합니다. 미신뢰로 생략되면 출처 확인 후 정상 신뢰 절차를 따릅니다. 진단은 낮은 우선순위부터 표시할 수 있으므로 첫 행을 승자로 보지 말고 라벨/상태를 읽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "유효 설정/사용 가능 도구 정보와 파일을 비교하고 다음 로컬 읽기를 요청합니다. CONFIG-LAB-01과 검색 없음이 예상되며 유효값이 표시되면 disabled인지 확인합니다. 한 번 검색하지 않은 것만으로 설정 성공이 입증되지는 않으므로 층 진단 근거도 남깁니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "이 설정은 내장 검색 도구를 끄며 모든 통신 차단은 아닙니다. 셸/브라우저/MCP/외부 서비스에는 별도 권한과 설정이 있습니다. "
+            },
+            {
+              "type": "link",
+              "text": "권한과 샌드박스",
+              "url": "https://mokaair.com/ko/life/codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하고 증명을 위해 다른 도구로 우회 통신하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 복원 및 결과 기록"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI 종료 후 새 파일이면 프로젝트 설정 폴더 밖으로 백업 이동합니다. 기존 파일이면 web_search 원래 값만 복원하거나 추가 키만 제거하고 다른 설정은 보존합니다. 재시작 후 덮어쓰기가 사라지고 note.txt가 그대로인지 확인합니다. 복원값은 남은 층에 따라 달라지며 추측한 기본값과 같다고 단정하지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결과 다음 단계"
+        },
+        {
+          "type": "paragraph",
+          "text": "시작 실패는 지목된 TOML/줄의 따옴표, 중복 키, 테이블 소속을 확인합니다. 값이 안 바뀌면 경로/신뢰/시작 옵션/가까운 층을 봅니다. IDE와 CLI 차이는 OS/사용자/경로, 특히 별개인 Windows/WSL 홈을 비교하고 재설치 전에 출처를 진단합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "강제 요구는 일반 기본값과 달라 프로젝트 키로 금지값을 허용할 수 없습니다. 모델/추론은 "
+            },
+            {
+              "type": "link",
+              "text": "선택 강의",
+              "url": "https://mokaair.com/ko/life/codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하고 설정 묶음 복사로 인증/공급자를 바꾸지 않습니다. 시작/활성/복원과 미확인을 기록하고 "
+            },
+            {
+              "type": "link",
+              "text": "설정 문제 해결",
+              "url": "https://mokaair.com/ko/life/codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "로 이어 갑니다. 문법이 맞아도 모든 클라이언트의 로드 증거는 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-config-toml/diagram-1.svg",
+          "alt": "16. config.toml 설정 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. User config → Project config → CLI override",
+          "width": 1600,
+          "height": 900,
+          "caption": "16. config.toml 설정 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. User config → Project config → CLI override",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Config basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI configuration diagnostics",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Web search",
+          "url": "https://learn.chatgpt.com/docs/web-search",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

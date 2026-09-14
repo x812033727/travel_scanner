@@ -101,6 +101,23 @@ describe("permissions", () => {
 });
 
 describe("the workspace", () => {
+  it("edits and saves structured links and literal code without converting legacy text", async () => {
+    await open();
+    fireEvent.click(screen.getByRole("button", { name: /新增.*程式碼/ }));
+    fireEvent.change(screen.getByLabelText("程式語言"), { target: { value: "html" } });
+    const literal = "<script>example()</script>\n  literal";
+    fireEvent.change(screen.getByLabelText("程式碼"), { target: { value: literal } });
+    fireEvent.click(screen.getByRole("button", { name: /新增.*含連結段落/ }));
+    fireEvent.click(screen.getByRole("button", { name: "新增連結" }));
+    fireEvent.change(screen.getByDisplayValue("https://"), { target: { value: "https://learn.chatgpt.com/docs/app" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存草稿" }));
+    await waitFor(() => expect(mocks.api.mock.calls.some(([, init]) => init?.method === "PUT")).toBe(true));
+    const call = mocks.api.mock.calls.find(([, init]) => init?.method === "PUT")!;
+    const blocks = JSON.parse(call[1].body).document.blocks;
+    expect(blocks[0]).toEqual({ type: "paragraph", text: "Skyliner。" });
+    expect(blocks[1]).toEqual({ type: "code", language: "html", code: literal });
+    expect(blocks[2].spans[1]).toMatchObject({ type: "link", url: "https://learn.chatgpt.com/docs/app" });
+  });
   it("starts on the list and opens an article through the URL", async () => {
     render(<AdminGuidesPanel />);
     fireEvent.click(await screen.findByRole("button", { name: "怎麼走" }));

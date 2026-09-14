@@ -1,0 +1,1077 @@
+{
+  "slug": "codex-testing-review",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 121,
+  "locales": {
+    "zh-TW": {
+      "title": "測試、Code Review 與 PR",
+      "description": "測試確認程式在指定條件的行為，Code Review 檢查變更是否有遺漏或風險，PR 則讓人查看並討論要合併的差異。三者互補；通過測試不等於審查通過，開 PR 也不是已合併。",
+      "hero": {
+        "src": "/guides/codex-testing-review/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "審查一個「原測試仍通過」的錯誤修改，補出能抓到它的回歸測試，整理最終差異並準備 PR。閱讀約 15 分鐘，本機操作約 30 分鐘。需要 Git、Node.js 22 以上相容版本、編輯器及已登入的 Codex。先完成Git 入門；實際建立 GitHub PR 為最後可選步驟，需要自己的練習儲存庫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試回答已寫出的案例是否符合期待，Review 檢查修改是否帶來遺漏的風險與行為差異，PR 則讓指定分支的成果可以被其他人審閱。三者不能互相代替；沒有發現問題不是證明不可能有問題，PR 已開啟也不表示已合併、部署或公開。這次會讓你親自看見測試覆蓋範圍的空缺。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：建立故意有問題的提案"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立新的 codex-review-lab，複製 expected 的五個檔案，依 Git 篇用本機練習身分初始化 main 並提交五檔基準。確認工作目錄乾淨後執行下面命令建立分支。不要使用剛才仍有未完成變更的庫；在新的副本操作才能判斷本次差異來自哪裡。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "原測試應 3 項全過。現在只在 core.mjs 的 visibleTasks 最後一行，把 return tasks; 改成 return tasks.reverse();，不要改其他函式。再跑同一測試，仍應全過，因為既有篩選案例只斷言 Active 與 Completed，沒有直接檢查 All 的順序。這是故意製造的待審修改，還不能提交或當成功功能使用。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：選對 Review 範圍"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版開啟本 Git 專案，在 review 面板先看未暫存差異，再於輸入框輸入 /review，選 Review uncommitted changes。CLI 也在 Codex 互動輸入框使用 /review 並選未提交修改；不是把 /review 打在系統 shell。此處還沒 commit，所以只審某個已提交版本會漏掉剛剛的 reverse。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把「All 必須保留原順序且不能修改輸入」作為補充審查條件。預期的有效發現要指出目前那行 reverse、觸發條件是 All／預設分支、影響是反轉順序且原地改陣列，以及哪些測試沒涵蓋。只有「程式碼品質可改善」沒有位置和具體後果，不是本例可採取行動的發現。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果代理沒指出問題，不要把它的結論當唯一驗收；親自讀 reverse 的用法，接著用下面測試確認。若代理提出錯誤發現，也不要直接照改，要求能重現的輸入與結果。Review 的責任是提供可核對的證據；真正修改要在理解並同意修正後另行交付，保留原始問題與最後差異之間的對照。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：補測試並移除錯誤提案"
+        },
+        {
+          "type": "paragraph",
+          "text": "將下列內容新增為 review.test.mjs。第一項檢查 All 的原始順序，第二項用凍結陣列檢查不應嘗試原地修改。先在錯誤版執行兩個檔案，預期原三項通過、新兩項失敗；不要跳過這一步，否則不知道新測試是否真能擋住這種改動。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs review.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著只把 visibleTasks 最後一行恢復為 return tasks;，保留新測試，再跑應 5 項全過。檢查 git diff：core.mjs 應已回到 main 基準，最終要交付的只有新增 review.test.mjs。這次 Review 阻止了錯誤實作進入提交，同時留下之前缺少的保護；PR 要描述最終的測試補強，不能宣稱程式碼仍有不存在的修正。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：整理可審閱的提交與 PR 草稿"
+        },
+        {
+          "type": "paragraph",
+          "text": "只暫存新測試，先看清單與內容再提交。接著用 branch diff 核對 main 到本分支只有 review.test.mjs，檢查命令結果是這個最終版本。若又修改檔案，先重跑受影響測試，不能引用較早版本的全過記錄。下面 PR 文字中的結果只在你真的執行後才能保留。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這時本機交付已具體可審，還沒有 GitHub PR。若要練習外部 PR，在自己的 GitHub 建立空白練習庫，不預先加入 README，複製它實際顯示的遠端網址，再把下面第一行的占位符換成該網址後執行。先核對 remote -v 確實是自己的新庫；後面兩次 push 會把本機基準與測試分支傳到 GitHub。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 GitHub 的 Pull requests 選 New pull request，base 選 main、compare 選 codex/review-lab，檢查 Files changed 只有測試，再貼上整理好的標題與說明，選 Create pull request；仍要討論可用 draft 狀態。沒有設定 CI 的練習庫不會憑空出現測試檢查，有 CI 時要核對它檢查的是目前 head。這一步可先停在 PR，合併與部署各自依專案流程處理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題、還原與驗收"
+        },
+        {
+          "type": "table",
+          "header": [
+            "現象",
+            "要補的證據"
+          ],
+          "rows": [
+            [
+              "原測試全過仍有問題",
+              "新案例先失敗、修正後通過"
+            ],
+            [
+              "Review 沒看到差異",
+              "確認未提交、commit 或 base 範圍"
+            ],
+            [
+              "Review 指出問題但說不出原因",
+              "要求位置、觸發與最小重現"
+            ],
+            [
+              "PR 包含其他檔案",
+              "檢查暫存、分支起點及 base／compare"
+            ],
+            [
+              "CI 沒出現或看的是舊版本",
+              "查工作流程是否存在及 head SHA"
+            ],
+            [
+              "有人繼續改檔",
+              "重驗最終差異，不沿用舊結論"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "驗收要保留原三測試漏失問題、新兩測試抓到問題、最終五測試通過的對照，以及只有測試檔的提交。想重做就在同一獨立練習重新引入 reverse，確認失敗後再恢復，不刪除整個 Git 庫或改寫公開歷史。若已開練習 PR 而決定不合併，可在 GitHub 關閉它並保留討論。圖中 1 是測試證據，2 是審查判斷，3 是可核對交付；本篇未替你執行模型 Review、GitHub 推送或公開操作。"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-testing-review/diagram-1.svg",
+          "alt": "21. 測試、Code Review 與 PR — 實作順序示意圖，非產品介面截圖。 Tests → Review → PR",
+          "width": 1600,
+          "height": 900,
+          "caption": "21. 測試、Code Review 與 PR — 實作順序示意圖，非產品介面截圖。 Tests → Review → PR",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex review scopes",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI review commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Creating a pull request",
+          "url": "https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "测试、Code Review 与 PR",
+      "description": "测试确认程式在指定条件的行为，Code Review 检查变更是否有遗漏或风险，PR 则让人查看并讨论要合并的差异。三者互补；通过测试不等于审查通过，开 PR 也不是已合并。",
+      "hero": {
+        "src": "/guides/codex-testing-review/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "审查一个「原测试仍通过」的错误修改，补出能抓到它的回归测试，整理最终差异并准备 PR。阅读约 15 分钟，本机操作约 30 分钟。需要 Git、Node.js 22 以上相容版本、编辑器及已登入的 Codex。先完成Git 入门；实际建立 GitHub PR 为最后可选步骤，需要自己的练习储存库。"
+        },
+        {
+          "type": "paragraph",
+          "text": "测试回答已写出的案例是否符合期待，Review 检查修改是否带来遗漏的风险与行为差异，PR 则让指定分支的成果可以被其他人审阅。三者不能互相代替；没有发现问题不是证明不可能有问题，PR 已开启也不表示已合并、部署或公开。这次会让你亲自看见测试覆盖范围的空缺。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：建立故意有问题的提案"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立新的 codex-review-lab，复制 expected 的五个档案，依 Git 篇用本机练习身分初始化 main 并提交五档基准。确认工作目录干净后执行下面命令建立分支。不要使用刚才仍有未完成变更的库；在新的副本操作才能判断本次差异来自哪里。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "原测试应 3 项全过。现在只在 core.mjs 的 visibleTasks 最后一行，把 return tasks; 改成 return tasks.reverse();，不要改其他函式。再跑同一测试，仍应全过，因为既有筛选案例只断言 Active 与 Completed，没有直接检查 All 的顺序。这是故意制造的待审修改，还不能提交或当成功功能使用。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：选对 Review 范围"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版开启本 Git 专案，在 review 面板先看未暂存差异，再于输入框输入 /review，选 Review uncommitted changes。CLI 也在 Codex 互动输入框使用 /review 并选未提交修改；不是把 /review 打在系统 shell。此处还没 commit，所以只审某个已提交版本会漏掉刚刚的 reverse。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把「All 必须保留原顺序且不能修改输入」作为补充审查条件。预期的有效发现要指出目前那行 reverse、触发条件是 All／预设分支、影响是反转顺序且原地改阵列，以及哪些测试没涵盖。只有「程式码品质可改善」没有位置和具体后果，不是本例可采取行动的发现。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果代理没指出问题，不要把它的结论当唯一验收；亲自读 reverse 的用法，接著用下面测试确认。若代理提出错误发现，也不要直接照改，要求能重现的输入与结果。Review 的责任是提供可核对的证据；真正修改要在理解并同意修正后另行交付，保留原始问题与最后差异之间的对照。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：补测试并移除错误提案"
+        },
+        {
+          "type": "paragraph",
+          "text": "将下列内容新增为 review.test.mjs。第一项检查 All 的原始顺序，第二项用冻结阵列检查不应尝试原地修改。先在错误版执行两个档案，预期原三项通过、新两项失败；不要跳过这一步，否则不知道新测试是否真能挡住这种改动。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs review.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著只把 visibleTasks 最后一行恢复为 return tasks;，保留新测试，再跑应 5 项全过。检查 git diff：core.mjs 应已回到 main 基准，最终要交付的只有新增 review.test.mjs。这次 Review 阻止了错误实作进入提交，同时留下之前缺少的保护；PR 要描述最终的测试补强，不能宣称程式码仍有不存在的修正。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：整理可审阅的提交与 PR 草稿"
+        },
+        {
+          "type": "paragraph",
+          "text": "只暂存新测试，先看清单与内容再提交。接著用 branch diff 核对 main 到本分支只有 review.test.mjs，检查命令结果是这个最终版本。若又修改档案，先重跑受影响测试，不能引用较早版本的全过记录。下面 PR 文字中的结果只在你真的执行后才能保留。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "这时本机交付已具体可审，还没有 GitHub PR。若要练习外部 PR，在自己的 GitHub 建立空白练习库，不预先加入 README，复制它实际显示的远端网址，再把下面第一行的占位符换成该网址后执行。先核对 remote -v 确实是自己的新库；后面两次 push 会把本机基准与测试分支传到 GitHub。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 GitHub 的 Pull requests 选 New pull request，base 选 main、compare 选 codex/review-lab，检查 Files changed 只有测试，再贴上整理好的标题与说明，选 Create pull request；仍要讨论可用 draft 状态。没有设定 CI 的练习库不会凭空出现测试检查，有 CI 时要核对它检查的是目前 head。这一步可先停在 PR，合并与部署各自依专案流程处理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题、还原与验收"
+        },
+        {
+          "type": "table",
+          "header": [
+            "现象",
+            "要补的证据"
+          ],
+          "rows": [
+            [
+              "原测试全过仍有问题",
+              "新案例先失败、修正后通过"
+            ],
+            [
+              "Review 没看到差异",
+              "确认未提交、commit 或 base 范围"
+            ],
+            [
+              "Review 指出问题但说不出原因",
+              "要求位置、触发与最小重现"
+            ],
+            [
+              "PR 包含其他档案",
+              "检查暂存、分支起点及 base／compare"
+            ],
+            [
+              "CI 没出现或看的是旧版本",
+              "查工作流程是否存在及 head SHA"
+            ],
+            [
+              "有人继续改档",
+              "重验最终差异，不沿用旧结论"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "验收要保留原三测试漏失问题、新两测试抓到问题、最终五测试通过的对照，以及只有测试档的提交。想重做就在同一独立练习重新引入 reverse，确认失败后再恢复，不删除整个 Git 库或改写公开历史。若已开练习 PR 而决定不合并，可在 GitHub 关闭它并保留讨论。图中 1 是测试证据，2 是审查判断，3 是可核对交付；本篇未替你执行模型 Review、GitHub 推送或公开操作。"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-testing-review/diagram-1.svg",
+          "alt": "21. 测试、Code Review 与 PR — 实作顺序示意图，非产品介面截图。 Tests → Review → PR",
+          "width": 1600,
+          "height": 900,
+          "caption": "21. 测试、Code Review 与 PR — 实作顺序示意图，非产品介面截图。 Tests → Review → PR",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex review scopes",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI review commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Creating a pull request",
+          "url": "https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Tests, code review and pull requests",
+      "description": "Tests check behavior under specified conditions, review examines the change for defects and a PR presents proposed integration. They complement each other: tests passing does not establish review approval, and an open PR is not a merge.",
+      "hero": {
+        "src": "/guides/codex-testing-review/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Review a bad change that still passes existing tests, add regression coverage, inspect final scope and prepare a PR. Allow 15 minutes to read and 30 for local practice. Use Git, compatible Node.js 22 or later, an editor and authenticated Codex. Complete Git basics. Creating a GitHub PR is an optional final step using your own practice repository."
+        },
+        {
+          "type": "paragraph",
+          "text": "Tests check written cases, review looks for overlooked effects and PRs expose a branch's work for review. They do not replace one another. No finding is not proof of no defect, and an open PR is not a merge, deployment or publication. This exercise makes a coverage gap observable."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Prepare a deliberately flawed proposal"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create codex-review-lab with the five expected files. Follow Git basics to initialize main and commit a baseline with a local practice identity. Verify clean status, then create the branch below. Use a fresh copy rather than a repository with unfinished edits so the change's origin is clear."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect three passing tests. Change only visibleTasks's final return tasks; to return tasks.reverse(); and rerun. All three still pass because existing filter assertions cover Active/Completed but not All order. This intentionally flawed proposal is for review, not yet a commit or accepted feature."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Select the correct review scope"
+        },
+        {
+          "type": "paragraph",
+          "text": "In desktop, open this Git project and inspect unstaged changes in the review pane, then use /review → Review uncommitted changes. In CLI, use /review inside Codex and choose uncommitted changes, not in the system shell. Reviewing an older commit would miss the uncommitted reverse edit."
+        },
+        {
+          "type": "paragraph",
+          "text": "Add the review requirement that All preserves order and does not mutate inputs. An actionable finding identifies reverse, the All/default trigger, order reversal plus in-place mutation and missing tests. “Code quality could improve” without location or consequences is insufficient for this case."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "If the reviewer misses it, do not rely on its conclusion alone; inspect reverse and run the tests below. If a finding is wrong, request a reproducible case before applying it. Review should supply verifiable evidence. Authorize an understood correction separately and compare the original concern with the final diff."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Add tests and remove the flawed change"
+        },
+        {
+          "type": "paragraph",
+          "text": "Add review.test.mjs below. One test checks All order; the other uses a frozen array to reject attempted mutation. Run both files against the flawed version first: original three pass, new two fail. Without this step you do not know whether the new tests detect the regression."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs review.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Restore only visibleTasks's last line to return tasks; and keep the new tests. Expect five passes. Inspect diff: core.mjs matches main again, leaving only added review.test.mjs. The review prevented a bad implementation and retained missing coverage. Describe the final test addition in the PR rather than claiming a code fix absent from its diff."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Prepare a reviewable commit and PR draft"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stage only the new test, inspect paths/content and commit. Verify the main-to-branch diff contains only review.test.mjs and validation belongs to that final version. After further edits, rerun affected checks instead of citing older passes. Keep the draft's result only after actually observing it."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Local work is now reviewable but no GitHub PR exists yet. For optional practice, create an empty GitHub repository without an initial README, copy its actual remote URL and replace the placeholder before executing. Verify remote -v points to your new repository. The two pushes then upload baseline and test branches."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "On GitHub choose Pull requests → New pull request, base main and compare codex/review-lab. Verify Files changed contains only the test, add the title/body and create the PR, using draft if discussion remains. CI appears only if configured; verify checks target the current head. Stop at PR creation and handle merge/deployment through the project's process."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting, restoration and acceptance"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Symptom",
+            "Evidence needed"
+          ],
+          "rows": [
+            [
+              "Tests pass but behavior is wrong",
+              "New case fails before and passes after"
+            ],
+            [
+              "Review sees no diff",
+              "Check uncommitted/commit/base scope"
+            ],
+            [
+              "Finding lacks an explanation",
+              "Location, trigger, minimal reproduction"
+            ],
+            [
+              "PR includes unrelated files",
+              "Staging, branch origin, base/compare"
+            ],
+            [
+              "CI absent or outdated",
+              "Workflow existence and head SHA"
+            ],
+            [
+              "Further edits occur",
+              "Validate final diff again"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Retain the old three tests missing the bug, new two detecting it, final five passes and test-only commit. To repeat, reintroduce reverse in the isolated lab and restore after observing failure; do not delete the Git repository or rewrite public history. Close an unwanted practice PR while keeping its discussion. Diagram 1 is tests, 2 review judgment, 3 verifiable delivery. No model review, GitHub push or publication was performed for you."
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-testing-review/diagram-1.svg",
+          "alt": "21. Tests, code review and pull requests — Workflow illustration, not a product screenshot. Tests → Review → PR",
+          "width": 1600,
+          "height": 900,
+          "caption": "21. Tests, code review and pull requests — Workflow illustration, not a product screenshot. Tests → Review → PR",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex review scopes",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI review commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Creating a pull request",
+          "url": "https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "テスト・コードレビュー・PR",
+      "description": "テストは条件下の動作、レビューは変更の問題、PR は統合候補を扱います。テスト成功、承認、マージは別の状態です。",
+      "hero": {
+        "src": "/guides/codex-testing-review/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "既存テスト成功でも誤った変更を審査し、回帰テスト、最終差分、PR 準備を行います。読む時間15分、本機30分。Git、対応 Node.js 22 以降、エディター、認証済み Codex とGit 基礎が前提です。自分の教材リポジトリでの GitHub PR は最後の任意段階です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テストは書かれた事例、Review は見落とした影響、PR は分岐成果の確認です。互いに代替せず、指摘なしは無欠陥保証ではなく、PR 作成は merge/公開ではありません。今回は網羅の穴を実際に確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：問題のある提案を用意"
+        },
+        {
+          "type": "paragraph",
+          "text": "新しい codex-review-lab に expected 5ファイルを置き、Git 基礎の本機練習身分で main 基準を commit します。無変更確認後、次の分岐を作ります。未完了変更のある庫を流用しません。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "3成功後、visibleTasks の最後だけ return tasks.reverse(); に変えます。既存は Active/Completed だけなので再実行も3成功です。意図的な未審査提案で、まだ commit や正常機能にはしません。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：正しい Review 範囲を選ぶ"
+        },
+        {
+          "type": "paragraph",
+          "text": "Git プロジェクトの未ステージ差分を見て、入力欄 /review で未コミット変更を選びます。CLI も Codex 内で選択し、シェルでは入力しません。既存 commit だけを見ても今回の reverse は含まれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "All の順序維持と入力不変を補足します。有効な指摘は reverse の行、All 条件、順序逆転と配列直接変更、未網羅テストを示します。位置や影響のない抽象的品質改善では不十分です。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "見落としたら結論だけに頼らず reverse と次のテストを確認します。誤指摘なら再現例を求めてから判断します。Review は証拠を供給し、理解した修正を別途依頼して最終差分と対応させます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：テスト追加と誤変更の除去"
+        },
+        {
+          "type": "paragraph",
+          "text": "review.test.mjs を追加し、All 順序と凍結配列による不変を確認します。誤版で元3成功、新2失敗を先に確認し、新テストが本当に検出するかを見ます。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs review.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後の行だけ return tasks; に戻し、新テストを残して5成功を確認します。core.mjs は main と一致し、追加テストだけが成果です。PR は最終のテスト補強を説明し、差分にないコード修正を主張しません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：確認可能な commit と PR 下書き"
+        },
+        {
+          "type": "paragraph",
+          "text": "新テストだけステージし内容確認して commit、main との差分が一ファイルか確認します。追加編集後は影響テストを再実行し、旧版成功を引用しません。次の下書き結果は実測後だけ残します。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機成果は確認可能ですが PR はまだありません。任意練習は README なしの空 GitHub 庫を作り、実 URL へ占位値を置換します。remote -v が自分の新庫か確認後、二つの push で基準とテスト分岐を送ります。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "GitHub で New pull request、base main、compare codex/review-lab を選び、テストだけの差分と説明を確認して作成します。議論中なら draft を使います。CI は設定済みの場合だけで、現在 head の検査か確認します。merge と公開は別工程です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "対処、復元と受入"
+        },
+        {
+          "type": "table",
+          "header": [
+            "現象",
+            "必要な証拠"
+          ],
+          "rows": [
+            [
+              "成功テストでも誤動作",
+              "新事例の前失敗・後成功"
+            ],
+            [
+              "差分が見えない",
+              "未確定/commit/base 範囲"
+            ],
+            [
+              "指摘に理由がない",
+              "位置、条件、最小再現"
+            ],
+            [
+              "PR に無関係ファイル",
+              "stage、起点、base/compare"
+            ],
+            [
+              "CI 不在・旧版",
+              "workflow と head SHA"
+            ],
+            [
+              "追加編集",
+              "最終差分を再検証"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "元3件の見落とし、新2件の検出、最終5成功とテストだけの commit を残します。再実行は独立教材で reverse を再導入して戻し、Git 削除や公開履歴改変はしません。不要な教材 PR は議論を残して閉じます。図1証拠、2判断、3引渡しです。読者のモデル Review/push/公開は未実行です。"
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-testing-review/diagram-1.svg",
+          "alt": "21. テスト・コードレビュー・PR — 作業の流れを表す図です。製品画面の画像ではありません。 Tests → Review → PR",
+          "width": 1600,
+          "height": 900,
+          "caption": "21. テスト・コードレビュー・PR — 作業の流れを表す図です。製品画面の画像ではありません。 Tests → Review → PR",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex review scopes",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI review commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Creating a pull request",
+          "url": "https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "테스트, 코드 리뷰와 PR",
+      "description": "테스트는 조건별 동작, 리뷰는 변경의 결함, PR은 통합 제안을 다룹니다. 테스트 통과, 승인과 병합은 별도 상태입니다.",
+      "hero": {
+        "src": "/guides/codex-testing-review/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "기존 테스트가 통과해도 잘못된 변경을 검토하고 회귀 테스트/최종 차이/PR 준비를 합니다. 읽기 15분, 로컬30분입니다. Git, 호환 Node.js 22 이상, 편집기, 로그인 Codex와 Git 기초가 전제입니다. 자신의 실습 저장소 GitHub PR은 마지막 선택 단계입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "테스트는 작성 사례, Review는 놓친 영향, PR은 브랜치 결과 검토입니다. 서로 대체하지 않으며 지적 없음은 무결함 보장이 아니고 PR 생성은 merge/공개가 아닙니다. 이번에는 검증 범위 빈틈을 직접 확인합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 의도적으로 잘못된 제안 준비"
+        },
+        {
+          "type": "paragraph",
+          "text": "새 codex-review-lab에 expected 다섯 파일을 두고 Git 기초의 로컬 실습 신원으로 main 기준을 commit합니다. 무변경 확인 뒤 다음 브랜치를 만듭니다. 미완료 변경이 있는 저장소를 재사용하지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "3통과 후 visibleTasks 마지막만 return tasks.reverse();로 바꿉니다. 기존은 Active/Completed만 확인하므로 다시3통과입니다. 의도적인 미검토 제안이며 아직 commit/정상 기능으로 취급하지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 올바른 Review 범위 선택"
+        },
+        {
+          "type": "paragraph",
+          "text": "Git 프로젝트의 미스테이지 차이를 보고 입력창 /review에서 미커밋 변경을 고릅니다. CLI도 Codex 내부에서 고르며 셸에 입력하지 않습니다. 기존 commit만 보면 이번 reverse는 포함되지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "All 순서 유지/입력 불변을 보완합니다. 유효한 지적은 reverse 줄, All 조건, 순서 반전/배열 직접 변경, 누락 테스트를 보여 줍니다. 위치/영향 없는 추상적 품질 개선은 부족합니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "놓치면 결론에만 의존하지 않고 reverse와 다음 테스트를 봅니다. 틀린 지적이면 재현 예시를 요청해 판단합니다. Review는 증거를 제공하며 이해한 수정은 별도로 요청하고 최종 차이와 연결합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 테스트 추가와 잘못된 변경 제거"
+        },
+        {
+          "type": "paragraph",
+          "text": "review.test.mjs를 추가해 All 순서/동결 배열 불변을 확인합니다. 잘못된 버전에서 기존3통과/새2실패를 먼저 봐야 새 테스트가 실제 탐지하는지 압니다."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs review.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막 줄만 return tasks;로 돌려 새 테스트를 남기고5통과를 봅니다. core.mjs는 main과 같고 추가 테스트만 결과입니다. PR은 최종 테스트 보강을 설명하고 차이에 없는 코드 수정을 주장하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 검토 가능한 commit과 PR 초안"
+        },
+        {
+          "type": "paragraph",
+          "text": "새 테스트만 스테이지하고 내용 확인 후 commit하며 main 차이가 한 파일인지 봅니다. 추가 편집 뒤 영향 테스트를 다시 실행하고 이전 성공을 인용하지 않습니다. 다음 초안 결과는 실제 관찰 후만 남깁니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "로컬 결과는 검토 가능하지만 PR은 아직 없습니다. 선택 실습은 README 없는 빈 GitHub 저장소를 만들고 실제 URL로 자리표시자를 바꿉니다. remote -v가 자신의 새 저장소인지 확인한 뒤 두 push로 기준/테스트 브랜치를 보냅니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "GitHub New pull request에서 base main/compare codex/review-lab을 골라 테스트만의 차이/설명을 확인해 생성합니다. 논의 중이면 draft를 씁니다. CI는 설정했을 때만 있으며 현재 head 검사인지 봅니다. merge/공개는 별도 단계입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결, 복원과 검수"
+        },
+        {
+          "type": "table",
+          "header": [
+            "현상",
+            "필요한 증거"
+          ],
+          "rows": [
+            [
+              "테스트 성공인데 오동작",
+              "새 사례 전 실패/후 성공"
+            ],
+            [
+              "차이가 안 보임",
+              "미커밋/commit/base 범위"
+            ],
+            [
+              "지적 이유 없음",
+              "위치/조건/최소 재현"
+            ],
+            [
+              "PR 무관 파일",
+              "stage/시작점/base·compare"
+            ],
+            [
+              "CI 없음/이전 버전",
+              "workflow/head SHA"
+            ],
+            [
+              "추가 편집",
+              "최종 차이 재검증"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "기존3개 누락/새2개 탐지/최종5통과/테스트만 commit을 남깁니다. 반복은 독립 실습에서 reverse를 다시 넣고 복원하며 Git 삭제/공개 기록 변경은 하지 않습니다. 불필요한 실습 PR은 논의를 남겨 닫습니다. 그림1증거,2판단,3전달입니다. 독자의 모델 Review/push/공개는 미실행입니다."
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-testing-review/diagram-1.svg",
+          "alt": "21. 테스트, 코드 리뷰와 PR — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Tests → Review → PR",
+          "width": 1600,
+          "height": 900,
+          "caption": "21. 테스트, 코드 리뷰와 PR — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Tests → Review → PR",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex review scopes",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI review commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Creating a pull request",
+          "url": "https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

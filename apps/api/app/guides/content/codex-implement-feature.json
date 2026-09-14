@@ -1,0 +1,1117 @@
+{
+  "slug": "codex-implement-feature",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 133,
+  "locales": {
+    "zh-TW": {
+      "title": "實作功能：完成待辦篩選",
+      "description": "從 start 材料補上 Active／Completed 篩選，保留資料格式並用正常與邊界案例驗收。",
+      "hero": {
+        "src": "/guides/codex-implement-feature/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "完成 All／Active／Completed 篩選功能，用額外的驗收測試確認順序、同名任務與空清單，再檢查畫面、差異與還原。閱讀約 14 分鐘，操作約 30 分鐘。先完成專案閱讀；使用 Node.js 22 以上相容版本、Python、編輯器及已登入的 Codex。三種桌面系統均使用相同教材。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "Plan 模式篇",
+              "url": "https://mokaair.com/zh-TW/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "練習審閱與交付計畫；這篇把焦點放在功能從失敗到完成的證據。題目相同，驗收更深入：不能只看畫面剩一列就說篩選成功，還要證明被隱藏的資料沒有被刪除、排序不變，兩個相同標題仍能依識別碼正確處理。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：從未完成版本建立基準"
+        },
+        {
+          "type": "paragraph",
+          "text": "從練習 ZIP 的 start 複製五個檔案到新的 codex-feature-lab，不沿用已完成的 expected，也不把前一篇修好的 core.mjs 帶進來。開啟資料夾後確認路徑；PowerShell 用 Get-Location，macOS／Linux 用 pwd。保留 start 原版，先跑下列既有測試，預期 2 項通過、1 項篩選失敗。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "先讀 index.html 的選項與 app.js 的 filter change 事件，確認控制項已經存在。缺少的是 visibleTasks 的行為，不需要重寫 UI 或安裝框架。這也是先讀專案的價值：檔案名稱看起來像前端，不代表所有變更都要從畫面開始。將既有失敗結果記在筆記，後續不能靠刪測試改寫成功。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：用案例固定完成條件"
+        },
+        {
+          "type": "paragraph",
+          "text": "將下列三個驗收測試存為根目錄 filter.test.mjs。它是本篇新增的測試檔，不覆蓋 core.test.mjs。第一個用 a 與 c 兩個同名 Read，確認完成篩選保留兩個識別碼且順序相同；第二個確認 All 沒丟資料；第三個涵蓋三種空清單。凍結輸入會讓不當原地修改更容易被抓出來。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs filter.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 start 起點，合併執行應是 4 過、2 敗：既有篩選測試與新第一項測試會失敗，All 和空陣列本來就通過。這讓你知道新測試確實能抓到缺少篩選的問題。若出現語法錯誤或找不到檔案，先修正儲存位置與複製內容；它們不是預期的功能失敗，不能混成同一個紅燈。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：實作最小功能"
+        },
+        {
+          "type": "paragraph",
+          "text": "在此練習資料夾建立 Codex 任務，貼上完整要求。這時原始程式只有 core.mjs 可修改，新增的 filter.test.mjs 內容也已經固定。若模型認為需要其他檔案，先請它指出具體原因；不要一開始就讓它把所有測試、畫面與設定一起「整理」。沒有讀到測試時，要求先讀，避免只照自然語言猜測。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "參考實作如下。filter 產生符合條件的新陣列，裡面仍引用原任務物件；這個函式只挑選，不修改物件，因此符合本題要求。All 可以回傳原陣列，不必為了看起來「更安全」進行沒有必要的深層複製。使用 !task.completed 與 task.completed 的差別要能自己讀懂，不能只認測試變綠。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：驗收資料、畫面與範圍"
+        },
+        {
+          "type": "paragraph",
+          "text": "重跑同一條測試命令，參考修正預期 6 項全過。接著核對差異：原本五個檔案只改了 core.mjs，另外多一個你新增的 filter.test.mjs。若測試 assertions 被刪除，先恢復固定測試再跑；若增加無關檔案，逐一檢查來源，不能因為成功摘要漂亮就忽略範圍。修改完成與驗收完成分開記錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "從 codex-feature-lab 啟動 Python HTTP 預覽，Windows 用 py -m http.server 4173 --bind 127.0.0.1，macOS／Linux 用 python3 代替 py，瀏覽器開 http://127.0.0.1:4173。先處理自己原有預覽的埠占用，不停其他服務。直接雙擊 HTML 可能因模組限制載入失敗；若看到舊畫面，確認伺服器目錄及重新整理後再判斷。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用本教材 Reset practice data 後，依序加入 Read、Build、Read，勾選第一與第三項。照表切換，再回 All 確認三筆都在；同名項目以原先位置與勾選狀態辨認。取消第一項完成後，Completed 應只剩原第三項，Active 應保留原第一項與 Build。最後切回 All 重新整理，確認狀態仍在。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查點",
+            "All",
+            "Active",
+            "Completed"
+          ],
+          "rows": [
+            [
+              "原第一、第三項完成",
+              "Read、Build、Read",
+              "Build",
+              "Read、Read"
+            ],
+            [
+              "原第一項取消完成",
+              "Read、Build、Read",
+              "Read、Build",
+              "原第三項 Read"
+            ],
+            [
+              "清空教材任務後",
+              "空",
+              "空",
+              "空"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "失敗排除、交付與還原"
+        },
+        {
+          "type": "paragraph",
+          "text": "篩選時資料真的少了，先看是否錯把 filter 結果寫回 tasks 或保存；畫面數量對但同名任務不對，要檢查是否用 title 代替 id。核心全過但畫面無變，先讀 app.js 是否載入正確 core.mjs，並核對 HTTP 來源與瀏覽器快取。不要連續要求「再修一次」卻不提供哪個表格列失敗，先把重現順序與預期寫清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付應包含六項測試摘要、畫面案例、最終差異，以及沒有操作的檢查清單。重做時停止預覽，只從 start 還原 core.mjs；若保留新測試，應回到 4 過 2 敗，若只執行舊測試，則是 2 過 1 敗。保留兩個命令的差別，避免把測試數量不同誤當另一個故障。圖中 1 是固定案例，2 是限定修改，3 是回歸與還原。這些是可執行參考材料，不是聲稱已替你執行 Codex 任務。"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/reference-390.png",
+          "alt": "Completed 篩選顯示兩筆 Read，總計仍有三筆任務。",
+          "caption": "本篇參考修正的實際成果：Completed 保留兩筆不同識別碼的 Read，計數仍為 1 active / 3 total。Windows / Edge 153.0.4234.32，2026-09-14；虛構資料，窄版為響應式視窗，非實體手機。這是練習網站，不是 Codex 介面或模型執行證據。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/reference-1280.png",
+          "alt": "Completed 篩選顯示兩筆 Read，總計仍有三筆任務。",
+          "caption": "本篇參考修正的實際成果：Completed 保留兩筆不同識別碼的 Read，計數仍為 1 active / 3 total。Windows / Edge 153.0.4234.32，2026-09-14；虛構資料，窄版為響應式視窗，非實體手機。這是練習網站，不是 Codex 介面或模型執行證據。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Scoped implementation and validation",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Prompting with explicit acceptance",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Implementing the todo filters",
+      "description": "Implement Active and Completed filters from start, preserving data and verifying normal and boundary cases.",
+      "hero": {
+        "src": "/guides/codex-implement-feature/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Implement All/Active/Completed filtering, add acceptance tests for order, same-title tasks and empty lists, then check the UI, diff and restoration. Allow 14 minutes to read and 30 to practice. Complete codebase orientation; use compatible Node.js 22 or later, Python, an editor and authenticated Codex. The fixture is shared across desktop OSes."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "Plan mode",
+              "url": "https://mokaair.com/en/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": " focused on reviewing and handing off a plan. This lesson focuses on evidence from failing to completed behavior. A one-row display alone is insufficient: hidden data must survive, order must remain and equal titles must still be distinguished by identity."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Establish the unfinished baseline"
+        },
+        {
+          "type": "paragraph",
+          "text": "Copy the five start files from the ZIP into new codex-feature-lab. Do not reuse expected or a previously fixed core.mjs. Confirm the path using Get-Location in PowerShell or pwd on macOS/Linux. Preserve original start files and run existing tests: expect two passes and one filter failure."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Read index.html's options and app.js's filter change handler: controls already exist. The gap is visibleTasks behavior, so no UI rewrite or framework is needed. Frontend-looking files do not imply that every change starts with the screen. Retain the baseline failure; deleting assertions is not a fix."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Make acceptance concrete"
+        },
+        {
+          "type": "paragraph",
+          "text": "Save the three acceptance tests below as root filter.test.mjs, without replacing core.test.mjs. The first uses same-title Read tasks a/c to verify both IDs and order. The second checks All retains data; the third covers empty lists for every filter. Frozen inputs help detect improper mutation."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs filter.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Against start, expect four passes and two failures: the existing filter test and the new first test fail, while All/empty behavior already works. This proves the new test detects the missing feature. Syntax or missing-file errors are setup defects, not the expected behavioral failures; fix copying and location first."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Implement the smallest feature change"
+        },
+        {
+          "type": "paragraph",
+          "text": "Start a Codex task in this lab and send the complete request. Only core.mjs may change now; the new filter.test.mjs is also fixed. Ask for a concrete reason if other files are proposed. Avoid an unrestricted cleanup of tests, UI and settings. Ensure it reads the tests instead of guessing from prose alone."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare with the reference below. filter creates a selected array containing original task objects; selection does not modify those objects. All may return the original array, so unnecessary deep copying is not required. Understand !task.completed versus task.completed yourself, rather than recognizing only green tests."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Verify data, UI and scope"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rerun the same command: expect all six tests to pass. Inspect differences: only core.mjs among the original five files, plus your added filter.test.mjs. Restore any weakened assertions before rerunning, and inspect unrelated additions rather than accepting a polished success summary. Record implementation and acceptance separately."
+        },
+        {
+          "type": "paragraph",
+          "text": "Start Python HTTP preview from codex-feature-lab: Windows py -m http.server 4173 --bind 127.0.0.1; macOS/Linux replace py with python3. Open http://127.0.0.1:4173. Resolve only your own prior preview's port conflict. Direct HTML opening may block modules; for stale UI, verify server directory and reload."
+        },
+        {
+          "type": "paragraph",
+          "text": "After Reset practice data, add Read, Build, Read in that order and complete the first/third. Check the table, return to All and verify all records remain. Distinguish equal titles by original position and checkbox state. Uncomplete the first: Completed should retain only the original third; Active the original first plus Build. Return to All and reload to verify persistence."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Checkpoint",
+            "All",
+            "Active",
+            "Completed"
+          ],
+          "rows": [
+            [
+              "Original first/third complete",
+              "Read, Build, Read",
+              "Build",
+              "Read, Read"
+            ],
+            [
+              "Original first uncompleted",
+              "Read, Build, Read",
+              "Read, Build",
+              "Original third Read"
+            ],
+            [
+              "After resetting practice data",
+              "Empty",
+              "Empty",
+              "Empty"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Failure diagnosis, delivery and restoration"
+        },
+        {
+          "type": "paragraph",
+          "text": "If records vanish, inspect whether filtered output was assigned back to tasks or persisted. Correct counts with wrong same-title records suggest title used instead of ID. Passing core tests with stale UI calls for import, HTTP origin and cache checks. Report the specific failing matrix row and reproduction instead of repeatedly requesting another fix."
+        },
+        {
+          "type": "paragraph",
+          "text": "Deliver six-test results, UI cases, final diff and omitted checks. To repeat, stop preview and restore only core.mjs from start. With new tests retained, expect four passes/two failures; original tests alone yield two passes/one failure. Distinguish those commands rather than treating count changes as another defect. Diagram 1 fixes cases, 2 limits edits, 3 verifies regression/restoration. These are executable reference materials, not claims of running your Codex task."
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/reference-390.png",
+          "alt": "Completed shows two Read tasks while three tasks remain in total.",
+          "caption": "Actual reference repair: Completed retains two Read tasks with distinct IDs; the count remains 1 active / 3 total. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data, responsive viewport rather than a physical phone. This is the practice website, not Codex UI or evidence of model execution.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/reference-1280.png",
+          "alt": "Completed shows two Read tasks while three tasks remain in total.",
+          "caption": "Actual reference repair: Completed retains two Read tasks with distinct IDs; the count remains 1 active / 3 total. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data, responsive viewport rather than a physical phone. This is the practice website, not Codex UI or evidence of model execution.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Scoped implementation and validation",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Prompting with explicit acceptance",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ToDo のフィルターを実装する",
+      "description": "start から Active／Completed を実装し、データ形式を保って正常例と境界例を確認します。",
+      "hero": {
+        "src": "/guides/codex-implement-feature/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "All/Active/Completed を実装し、順序・同名・空一覧の受入テストと画面、差分、復元を確認します。読む時間14分、操作30分。コード理解が前提で、対応 Node.js 22 以降、Python、エディター、認証済み Codex を使います。3 OS 共通教材です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "Plan",
+              "url": "https://mokaair.com/ja/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "は計画確認が中心でした。今回は失敗から完成までの証拠です。一行表示だけでなく、非表示データの維持、順序、同名の識別を確認します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：未完成版の基準を取る"
+        },
+        {
+          "type": "paragraph",
+          "text": "ZIP の start 5ファイルを新しい codex-feature-lab へコピーします。expected や前の修正を使わず、Get-Location/pwd で場所を確認します。原版を残し、既存テストの2成功1失敗を確認します。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "選択肢と change イベントが既存であることを確認します。不足は visibleTasks で、画面全面変更や framework は不要です。フロントの名前でも変更先は画面とは限りません。失敗を残し、assertion 削除を修正にしません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：具体例で完了条件を固定"
+        },
+        {
+          "type": "paragraph",
+          "text": "次を filter.test.mjs として追加し、既存テストは上書きしません。同名 Read の a/c の ID と順序、All の全件維持、三つの空一覧を確認します。凍結入力でその場の変更も検出しやすくします。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs filter.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "start は4成功2失敗で、既存フィルターと新しい最初のテストが失敗します。All と空は元から成功です。新テストの検出力を確認します。構文・ファイル不在は準備の不具合で、期待する機能失敗と区別します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：最小の機能変更を実装"
+        },
+        {
+          "type": "paragraph",
+          "text": "教材で課題を始め、全文を送ります。今は core.mjs だけ変更可能で、新テストも固定です。他の変更案には具体的理由を求め、全体整理を任せません。文章だけで推測せずテストを読ませます。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "filter は元のオブジェクトを選ぶ新配列を作り、対象を変更しません。All は元配列を返してよく、不要な深いコピーは求めません。!task.completed と task.completed の差を理解して確認します。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：データ、画面、範囲を確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ命令で6成功を確認します。元5ファイルは core.mjs だけ変更、新規 filter.test.mjs だけ追加です。削った assertion は戻して再試験し、無関係な追加も確認します。実装終了と受入終了は別に記録します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "教材から Windows は py -m http.server 4173 --bind 127.0.0.1、macOS/Linux は python3 で起動し、http://127.0.0.1:4173 を開きます。自分の旧プレビューの競合だけ解消します。HTML 直接起動は module 制約があり、旧画面なら場所と再読込を確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "リセット後 Read、Build、Read を追加し1・3番目を完了します。表と All 全件を確認し、同名は元位置と状態で区別します。1番目を未完了に戻すと Completed は元3番目だけ、Active は元1番目と Build です。All と再読込で保存も確認します。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認点",
+            "All",
+            "Active",
+            "Completed"
+          ],
+          "rows": [
+            [
+              "元1・3番目完了",
+              "Read、Build、Read",
+              "Build",
+              "Read、Read"
+            ],
+            [
+              "元1番目未完了へ",
+              "Read、Build、Read",
+              "Read、Build",
+              "元3番目 Read"
+            ],
+            [
+              "教材データリセット後",
+              "空",
+              "空",
+              "空"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "失敗対処、引渡しと復元"
+        },
+        {
+          "type": "paragraph",
+          "text": "消失なら選択結果を tasks や保存へ戻していないか、同名違いなら title を ID 代わりにしていないか確認します。核心成功で旧画面なら import、HTTP、キャッシュを確認し、表の失敗行と再現順序を伝えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "6テスト、画面例、最終差分、未実施を渡します。再実行は停止後 core.mjs だけ start へ戻し、新テスト込みは4成功2失敗、旧テストのみは2成功1失敗です。命令差を区別します。図1は事例固定、2は限定変更、3は回帰・復元で、読者の Codex 実行を主張しません。"
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/reference-390.png",
+          "alt": "Completed は Read 2件を表示し、全体は3件のままです。",
+          "caption": "参考修正の実画面です。Completed に異なる ID の Read が2件残り、全体は 1 active / 3 total です。Windows / Edge 153.0.4234.32、2026-09-14。架空データで、狭い表示は実機電話ではありません。教材サイトであり Codex UI やモデル実行の証拠ではありません。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/reference-1280.png",
+          "alt": "Completed は Read 2件を表示し、全体は3件のままです。",
+          "caption": "参考修正の実画面です。Completed に異なる ID の Read が2件残り、全体は 1 active / 3 total です。Windows / Edge 153.0.4234.32、2026-09-14。架空データで、狭い表示は実機電話ではありません。教材サイトであり Codex UI やモデル実行の証拠ではありません。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Scoped implementation and validation",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Prompting with explicit acceptance",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "할 일 필터 구현",
+      "description": "start에서 Active/Completed 필터를 구현하고 데이터 형식과 정상 및 경계 사례를 검증합니다.",
+      "hero": {
+        "src": "/guides/codex-implement-feature/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "All/Active/Completed를 구현하고 순서/동명/빈 목록의 검수 테스트와 화면/차이/복원을 확인합니다. 읽기 14분, 실습 30분입니다. 코드 이해가 전제이며 호환 Node.js 22 이상, Python, 편집기, 로그인 Codex를 씁니다. 세 OS 공통 실습입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "Plan",
+              "url": "https://mokaair.com/ko/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "은 계획 검토가 중심이었습니다. 이번에는 실패에서 완성까지 증거를 봅니다. 한 줄 표시뿐 아니라 숨겨진 데이터 유지/순서/같은 제목의 식별을 확인합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 미완성 기준 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "ZIP start 다섯 파일을 새 codex-feature-lab으로 복사합니다. expected/이전 수정을 사용하지 않고 Get-Location/pwd로 경로를 확인합니다. 원본을 남기고 기존 테스트 2통과1실패를 확인합니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "선택지/change 이벤트가 이미 있음을 확인합니다. 부족한 것은 visibleTasks이며 UI 재작성/framework는 필요 없습니다. 프런트 파일명이라도 변경 시작이 화면인 것은 아닙니다. 실패를 남기고 assertion 삭제를 수정으로 삼지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 사례로 완료 조건 고정"
+        },
+        {
+          "type": "paragraph",
+          "text": "다음을 filter.test.mjs로 추가하고 기존 테스트는 덮어쓰지 않습니다. 동명 Read의 a/c ID와 순서, All 전체 유지, 세 빈 목록을 확인합니다. 동결 입력으로 직접 변경도 쉽게 탐지합니다."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs filter.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "start는 4통과2실패이며 기존 필터와 새 첫 테스트가 실패합니다. All/빈 입력은 원래 통과합니다. 새 테스트 탐지력을 확인합니다. 구문/파일 누락은 준비 오류로 예상한 기능 실패와 구분합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 최소 기능 변경 구현"
+        },
+        {
+          "type": "paragraph",
+          "text": "실습에서 작업을 시작해 전체 요청을 보냅니다. 이제 core.mjs만 변경 가능하며 새 테스트도 고정입니다. 다른 변경은 구체적 이유를 요청하고 전체 정리를 맡기지 않습니다. 글만으로 추측하지 말고 테스트를 읽게 합니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "filter는 원래 객체를 고른 새 배열을 만들고 객체를 바꾸지 않습니다. All은 원배열을 반환해도 되며 불필요한 깊은 복사는 요구하지 않습니다. !task.completed와 task.completed 차이를 이해해 확인합니다."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 데이터, 화면, 범위 검증"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 명령으로 6통과를 확인합니다. 원래 다섯 파일은 core.mjs만 변경, filter.test.mjs만 추가입니다. 삭제된 assertion은 복원해 재시험하고 무관한 추가도 확인합니다. 구현 완료와 검수 완료는 따로 기록합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실습에서 Windows는 py -m http.server 4173 --bind 127.0.0.1, macOS/Linux는 python3로 시작하고 http://127.0.0.1:4173을 엽니다. 자신의 이전 미리 보기 충돌만 해결합니다. HTML 직접 열기는 module 제한이 있으므로 이전 화면이면 경로/새로 고침을 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "리셋 후 Read/Build/Read를 추가하고 첫째/셋째를 완료합니다. 표와 All 전체를 확인하고 동명은 원래 위치/상태로 구분합니다. 첫째 완료를 해제하면 Completed는 원래 셋째만, Active는 원래 첫째와 Build입니다. All과 새로 고침으로 저장도 확인합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "확인점",
+            "All",
+            "Active",
+            "Completed"
+          ],
+          "rows": [
+            [
+              "원래 첫째/셋째 완료",
+              "Read, Build, Read",
+              "Build",
+              "Read, Read"
+            ],
+            [
+              "원래 첫째 완료 해제",
+              "Read, Build, Read",
+              "Read, Build",
+              "원래 셋째 Read"
+            ],
+            [
+              "실습 데이터 리셋 후",
+              "비어 있음",
+              "비어 있음",
+              "비어 있음"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "실패 해결, 전달과 복원"
+        },
+        {
+          "type": "paragraph",
+          "text": "사라지면 선택 결과를 tasks/저장에 다시 넣었는지, 동명 오류면 ID 대신 title을 썼는지 봅니다. 핵심 통과인데 화면이 오래되면 import/HTTP/캐시를 확인하고 표의 실패 행/재현 순서를 전달합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "6개 테스트/화면 사례/최종 차이/미실행을 전달합니다. 반복은 미리 보기 종료 후 core.mjs만 start로 복원하며 새 테스트 포함은 4통과2실패, 기존만은 2통과1실패입니다. 명령 차이를 구분합니다. 그림 1은 사례 고정, 2는 제한 변경, 3은 회귀/복원이며 독자의 Codex 실행을 주장하지 않습니다."
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/reference-390.png",
+          "alt": "Completed는 Read 두 개를 표시하고 전체 작업은 세 개로 유지됩니다.",
+          "caption": "참고 수정의 실제 화면입니다. Completed에 서로 다른 ID의 Read 두 개가 남고 전체는 1 active / 3 total입니다. Windows / Edge 153.0.4234.32, 2026-09-14. 가상 데이터와 반응형 화면이며 실제 휴대전화가 아닙니다. 실습 사이트로 Codex UI나 모델 실행 증거가 아닙니다.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/reference-1280.png",
+          "alt": "Completed는 Read 두 개를 표시하고 전체 작업은 세 개로 유지됩니다.",
+          "caption": "참고 수정의 실제 화면입니다. Completed에 서로 다른 ID의 Read 두 개가 남고 전체는 1 active / 3 total입니다. Windows / Edge 153.0.4234.32, 2026-09-14. 가상 데이터와 반응형 화면이며 실제 휴대전화가 아닙니다. 실습 사이트로 Codex UI나 모델 실행 증거가 아닙니다.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Scoped implementation and validation",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Prompting with explicit acceptance",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "实作功能：完成待办筛选",
+      "description": "从 start 材料补上 Active／Completed 筛选，保留资料格式并用正常与边界案例验收。",
+      "hero": {
+        "src": "/guides/codex-implement-feature/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "完成 All／Active／Completed 筛选功能，用额外的验收测试确认顺序、同名任务与空清单，再检查画面、差异与还原。阅读约 14 分钟，操作约 30 分钟。先完成专案阅读；使用 Node.js 22 以上相容版本、Python、编辑器及已登入的 Codex。三种桌面系统均使用相同教材。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "Plan 模式篇",
+              "url": "https://mokaair.com/zh-CN/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "练习审阅与交付计划；这篇把焦点放在功能从失败到完成的证据。题目相同，验收更深入：不能只看画面剩一列就说筛选成功，还要证明被隐藏的资料没有被删除、排序不变，两个相同标题仍能依识别码正确处理。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：从未完成版本建立基准"
+        },
+        {
+          "type": "paragraph",
+          "text": "从练习 ZIP 的 start 复制五个档案到新的 codex-feature-lab，不沿用已完成的 expected，也不把前一篇修好的 core.mjs 带进来。开启资料夹后确认路径；PowerShell 用 Get-Location，macOS／Linux 用 pwd。保留 start 原版，先跑下列既有测试，预期 2 项通过、1 项筛选失败。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "先读 index.html 的选项与 app.js 的 filter change 事件，确认控制项已经存在。缺少的是 visibleTasks 的行为，不需要重写 UI 或安装框架。这也是先读专案的价值：档案名称看起来像前端，不代表所有变更都要从画面开始。将既有失败结果记在笔记，后续不能靠删测试改写成功。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：用案例固定完成条件"
+        },
+        {
+          "type": "paragraph",
+          "text": "将下列三个验收测试存为根目录 filter.test.mjs。它是本篇新增的测试档，不覆盖 core.test.mjs。第一个用 a 与 c 两个同名 Read，确认完成筛选保留两个识别码且顺序相同；第二个确认 All 没丢资料；第三个涵盖三种空清单。冻结输入会让不当原地修改更容易被抓出来。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --test core.test.mjs filter.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 start 起点，合并执行应是 4 过、2 败：既有筛选测试与新第一项测试会失败，All 和空阵列本来就通过。这让你知道新测试确实能抓到缺少筛选的问题。若出现语法错误或找不到档案，先修正储存位置与复制内容；它们不是预期的功能失败，不能混成同一个红灯。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：实作最小功能"
+        },
+        {
+          "type": "paragraph",
+          "text": "在此练习资料夹建立 Codex 任务，贴上完整要求。这时原始程式只有 core.mjs 可修改，新增的 filter.test.mjs 内容也已经固定。若模型认为需要其他档案，先请它指出具体原因；不要一开始就让它把所有测试、画面与设定一起「整理」。没有读到测试时，要求先读，避免只照自然语言猜测。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "参考实作如下。filter 产生符合条件的新阵列，里面仍引用原任务物件；这个函式只挑选，不修改物件，因此符合本题要求。All 可以回传原阵列，不必为了看起来「更安全」进行没有必要的深层复制。使用 !task.completed 与 task.completed 的差别要能自己读懂，不能只认测试变绿。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：验收资料、画面与范围"
+        },
+        {
+          "type": "paragraph",
+          "text": "重跑同一条测试命令，参考修正预期 6 项全过。接著核对差异：原本五个档案只改了 core.mjs，另外多一个你新增的 filter.test.mjs。若测试 assertions 被删除，先恢复固定测试再跑；若增加无关档案，逐一检查来源，不能因为成功摘要漂亮就忽略范围。修改完成与验收完成分开记录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "从 codex-feature-lab 启动 Python HTTP 预览，Windows 用 py -m http.server 4173 --bind 127.0.0.1，macOS／Linux 用 python3 代替 py，浏览器开 http://127.0.0.1:4173。先处理自己原有预览的埠占用，不停其他服务。直接双击 HTML 可能因模组限制载入失败；若看到旧画面，确认伺服器目录及重新整理后再判断。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用本教材 Reset practice data 后，依序加入 Read、Build、Read，勾选第一与第三项。照表切换，再回 All 确认三笔都在；同名项目以原先位置与勾选状态辨认。取消第一项完成后，Completed 应只剩原第三项，Active 应保留原第一项与 Build。最后切回 All 重新整理，确认状态仍在。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查点",
+            "All",
+            "Active",
+            "Completed"
+          ],
+          "rows": [
+            [
+              "原第一、第三项完成",
+              "Read、Build、Read",
+              "Build",
+              "Read、Read"
+            ],
+            [
+              "原第一项取消完成",
+              "Read、Build、Read",
+              "Read、Build",
+              "原第三项 Read"
+            ],
+            [
+              "清空教材任务后",
+              "空",
+              "空",
+              "空"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "失败排除、交付与还原"
+        },
+        {
+          "type": "paragraph",
+          "text": "筛选时资料真的少了，先看是否错把 filter 结果写回 tasks 或保存；画面数量对但同名任务不对，要检查是否用 title 代替 id。核心全过但画面无变，先读 app.js 是否载入正确 core.mjs，并核对 HTTP 来源与浏览器快取。不要连续要求「再修一次」却不提供哪个表格列失败，先把重现顺序与预期写清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付应包含六项测试摘要、画面案例、最终差异，以及没有操作的检查清单。重做时停止预览，只从 start 还原 core.mjs；若保留新测试，应回到 4 过 2 败，若只执行旧测试，则是 2 过 1 败。保留两个命令的差别，避免把测试数量不同误当另一个故障。图中 1 是固定案例，2 是限定修改，3 是回归与还原。这些是可执行参考材料，不是声称已替你执行 Codex 任务。"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/reference-390.png",
+          "alt": "Completed 筛选显示两笔 Read，总计仍有三笔任务。",
+          "caption": "本篇参考修正的实际成果：Completed 保留两笔不同识别码的 Read，计数仍为 1 active / 3 total。Windows / Edge 153.0.4234.32，2026-09-14；虚构数据，窄版为响应式窗口，非实体手机。这是练习网站，不是 Codex 界面或模型执行证据。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-implement-feature/reference-1280.png",
+          "alt": "Completed 筛选显示两笔 Read，总计仍有三笔任务。",
+          "caption": "本篇参考修正的实际成果：Completed 保留两笔不同识别码的 Read，计数仍为 1 active / 3 total。Windows / Edge 153.0.4234.32，2026-09-14；虚构数据，窄版为响应式窗口，非实体手机。这是练习网站，不是 Codex 界面或模型执行证据。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Scoped implementation and validation",
+          "url": "https://learn.chatgpt.com/guides/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Prompting with explicit acceptance",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1344 @@
+{
+  "slug": "codex-git-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 119,
+  "locales": {
+    "zh-TW": {
+      "title": "Git、分支、diff 與還原",
+      "description": "Git 保存檔案版本，分支承接一組修改，diff 顯示差異。Codex 可以協助操作，但你仍要確認修改屬於這次任務。聊天紀錄與 Git 歷史不同，恢復舊對話不會自動還原檔案。",
+      "hero": {
+        "src": "/guides/codex-git-basics/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在獨立 Git 練習庫建立分支、看懂差異，只暫存與提交指定檔案，再分別練習未提交還原和已提交撤回。閱讀約 15 分鐘，操作約 30 分鐘。需要 Git 2.28 以上、編輯器及 expected 教材；三種 OS 的 Git 命令相同。本篇只建立本機歷史，不需要 GitHub、遠端帳號或推送。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "先熟悉"
+            },
+            {
+              "type": "link",
+              "text": "終端機路徑",
+              "url": "https://mokaair.com/zh-TW/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "。工作目錄是目前磁碟內容，暫存區是下一次 commit 要包含的內容，commit 是已記錄的版本；三者可能不同。分支指向一條版本線，不會自動複製所有未提交檔案。要同時在多份目錄工作，另看"
+            },
+            {
+              "type": "link",
+              "text": "worktree",
+              "url": "https://mokaair.com/zh-TW/life/codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "，不要把建立分支當作完成備份。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：建立獨立基準"
+        },
+        {
+          "type": "paragraph",
+          "text": "在不屬於其他專案的新資料夾 codex-git-lab 放入 expected 的五個檔案。用編輯器開該資料夾與終端機，PowerShell 用 Get-Location、macOS／Linux 用 pwd 核對位置，再跑 git --version。若系統找不到 git，先依平台的 Git 官方安裝說明完成，重開終端機；不要在原本工作庫執行接下來的初始化。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git init -b main\ngit config user.name \"Practice Learner\"\ngit config user.email \"learner@example.invalid\"\ngit add index.html style.css app.js core.mjs core.test.mjs\ngit diff --cached --name-only\ngit commit -m \"Add practice baseline\"\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "逐行執行，不略過中間檢查。初次暫存應恰好是五檔，提交後 status 應無變更。姓名與保留網域信箱只寫在這個練習庫的本機設定，不是 GitHub 登入，也沒有 --global。若 commit 遇到你既有的簽章或 hooks 要求，先依自己的設定完成或暫停記錄原因，不改全域政策來追求成功畫面。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：在分支上做兩個可辨認修改"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git switch -c codex/title-lab\ngit branch --show-current\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認分支是 codex/title-lab。用編輯器在 index.html 只把 h1 的 Make room for one small task. 改成 Plan one useful step.。另外在 style.css 最尾端加下面的註解，模擬另一份尚未提交的工作。這次要交付的是標題，CSS 註解必須保留在工作目錄但不能混入標題提交；兩個改動都是教材，無正式資料。"
+        },
+        {
+          "type": "code",
+          "language": "css",
+          "code": "/* KEEP-MY-NOTE */\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git status --short\ngit diff -- index.html style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "diff 的減號是舊行，加號是新行，周圍未改內容提供定位。檢查 index.html 是否只改 h1，style.css 是否只多註解，不能只看「2 files changed」。如果請 Codex 說明，使用下列唯讀要求，讓它辨認現有工作及本次範圍；不要一開始就叫它提交所有差異。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Inspect this lab's current branch, status and diff without editing, staging or committing. The intended change is only the h1 title in index.html. The KEEP-MY-NOTE comment in style.css represents separate work and must be preserved. Explain what belongs in the title commit and what must stay outside it.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：只暫存一檔，再練習還原"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit diff -- style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "暫存清單應只有 index.html，普通 diff 仍看到 CSS 註解。接著下面第一行只把標題移出暫存，編輯器裡的新標題仍在；第二行才把工作目錄的 index.html 回復到暫存區版本，也就是基準舊標題。執行第二行前確認這正是你要丟棄的教材修改；CSS 不在指定路徑內，必須保留。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git restore --staged -- index.html\ngit restore --worktree -- index.html\ngit status --short\ngit diff -- style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "此時 status 應只剩 style.css，h1 回到 Make room for one small task.，註解仍在。這是本篇最重要的保留檢查：撤銷自己的修改，不等於把別人的工作一起清乾淨。如果只執行 restore --staged，它並不刪除工作目錄內容；相反地 restore --worktree 會覆寫指定檔案，不能只看到 restore 一詞就把兩者當同義。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：提交指定修改，再保留歷史撤回"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新用編輯器把 h1 改成 Plan one useful step.，再次只暫存 index.html 並檢查 cached diff。下面提交只應包含標題，style.css 註解繼續留在工作目錄。用 show 的檔名清單確認真正提交了什麼，不把終端機顯示成功當作範圍一定正確。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit commit -m \"Update practice title\"\ngit show --format=short --name-only HEAD\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "撤回已提交修改前先處理工作目錄。本教材只有自己加的 CSS 註解：確認內容已保留核對後，現在明確決定結束這個保留練習，用下列第一行只丟棄它。status 必須乾淨，再檢查最新提交確實是 Update practice title，才對 HEAD 執行 revert。正式工作若仍有其他修改，不照搬這個清理步驟，先保存或另行處理。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git restore --worktree -- style.css\ngit status --short\ngit log -1 --oneline\ngit revert --no-edit HEAD\ngit log -3 --oneline\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "revert 會新增撤回提交，保留原本標題修改的歷史。預期 h1 回舊值，log 仍看得到基準、標題修改與撤回三筆，工作目錄乾淨。若出現衝突，先讀提示與實際狀態，不連按強制選項；只想取消這次未完成的 revert，可依 Git 指引使用 git revert --abort，之後重新檢查檔案。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "命令對照、常見問題與驗收"
+        },
+        {
+          "type": "table",
+          "header": [
+            "目的",
+            "命令",
+            "核對點"
+          ],
+          "rows": [
+            [
+              "看尚未暫存內容",
+              "git diff",
+              "工作目錄與暫存差異"
+            ],
+            [
+              "看將提交內容",
+              "git diff --cached",
+              "暫存與 HEAD 差異"
+            ],
+            [
+              "移出暫存",
+              "git restore --staged -- index.html",
+              "編輯仍在"
+            ],
+            [
+              "丟棄指定未提交修改",
+              "git restore --worktree -- index.html",
+              "先確認來源與路徑"
+            ],
+            [
+              "撤回已提交修改",
+              "git revert --no-edit HEAD",
+              "新增歷史，先確認目標及乾淨狀態"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "找不到分支先看是否在對的 repository；status 多出意外檔案就先查看，不使用 git add . 把它們一起帶進去。若同一檔案混有自己的與原有修改，整檔暫存會一起提交，應先讀懂每段差異再分段處理。這次驗收要能證明 CSS 在標題提交中被排除、兩種 restore 效果不同、revert 保留歷史。圖中 1 是辨認狀態，2 是限定提交，3 是驗證還原；下一步看"
+            },
+            {
+              "type": "link",
+              "text": "測試、Review 與 PR",
+              "url": "https://mokaair.com/zh-TW/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-git-basics/diagram-1.svg",
+          "alt": "19. Git、分支、diff 與還原 — 實作順序示意圖，非產品介面截圖。 Branch → Diff → Commit",
+          "width": 1600,
+          "height": 900,
+          "caption": "19. Git、分支、diff 與還原 — 實作順序示意圖，非產品介面截圖。 Branch → Diff → Commit",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Git installation",
+          "url": "https://git-scm.com/install/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git init",
+          "url": "https://git-scm.com/docs/git-init",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git diff",
+          "url": "https://git-scm.com/docs/git-diff",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git restore",
+          "url": "https://git-scm.com/docs/git-restore",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git revert",
+          "url": "https://git-scm.com/docs/git-revert",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex review workflow",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Git、分支、diff 与还原",
+      "description": "Git 保存档案版本，分支承接一组修改，diff 显示差异。Codex 可以协助操作，但你仍要确认修改属于这次任务。聊天纪录与 Git 历史不同，恢复旧对话不会自动还原档案。",
+      "hero": {
+        "src": "/guides/codex-git-basics/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在独立 Git 练习库建立分支、看懂差异，只暂存与提交指定档案，再分别练习未提交还原和已提交撤回。阅读约 15 分钟，操作约 30 分钟。需要 Git 2.28 以上、编辑器及 expected 教材；三种 OS 的 Git 命令相同。本篇只建立本机历史，不需要 GitHub、远端帐号或推送。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "先熟悉"
+            },
+            {
+              "type": "link",
+              "text": "终端机路径",
+              "url": "https://mokaair.com/zh-CN/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "。工作目录是目前磁碟内容，暂存区是下一次 commit 要包含的内容，commit 是已记录的版本；三者可能不同。分支指向一条版本线，不会自动复制所有未提交档案。要同时在多份目录工作，另看"
+            },
+            {
+              "type": "link",
+              "text": "worktree",
+              "url": "https://mokaair.com/zh-CN/life/codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "，不要把建立分支当作完成备份。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：建立独立基准"
+        },
+        {
+          "type": "paragraph",
+          "text": "在不属于其他专案的新资料夹 codex-git-lab 放入 expected 的五个档案。用编辑器开该资料夹与终端机，PowerShell 用 Get-Location、macOS／Linux 用 pwd 核对位置，再跑 git --version。若系统找不到 git，先依平台的 Git 官方安装说明完成，重开终端机；不要在原本工作库执行接下来的初始化。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git init -b main\ngit config user.name \"Practice Learner\"\ngit config user.email \"learner@example.invalid\"\ngit add index.html style.css app.js core.mjs core.test.mjs\ngit diff --cached --name-only\ngit commit -m \"Add practice baseline\"\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "逐行执行，不略过中间检查。初次暂存应恰好是五档，提交后 status 应无变更。姓名与保留网域信箱只写在这个练习库的本机设定，不是 GitHub 登入，也没有 --global。若 commit 遇到你既有的签章或 hooks 要求，先依自己的设定完成或暂停记录原因，不改全域政策来追求成功画面。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：在分支上做两个可辨认修改"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git switch -c codex/title-lab\ngit branch --show-current\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "确认分支是 codex/title-lab。用编辑器在 index.html 只把 h1 的 Make room for one small task. 改成 Plan one useful step.。另外在 style.css 最尾端加下面的注解，模拟另一份尚未提交的工作。这次要交付的是标题，CSS 注解必须保留在工作目录但不能混入标题提交；两个改动都是教材，无正式资料。"
+        },
+        {
+          "type": "code",
+          "language": "css",
+          "code": "/* KEEP-MY-NOTE */\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git status --short\ngit diff -- index.html style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "diff 的减号是旧行，加号是新行，周围未改内容提供定位。检查 index.html 是否只改 h1，style.css 是否只多注解，不能只看「2 files changed」。如果请 Codex 说明，使用下列唯读要求，让它辨认现有工作及本次范围；不要一开始就叫它提交所有差异。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Inspect this lab's current branch, status and diff without editing, staging or committing. The intended change is only the h1 title in index.html. The KEEP-MY-NOTE comment in style.css represents separate work and must be preserved. Explain what belongs in the title commit and what must stay outside it.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：只暂存一档，再练习还原"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit diff -- style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "暂存清单应只有 index.html，普通 diff 仍看到 CSS 注解。接著下面第一行只把标题移出暂存，编辑器里的新标题仍在；第二行才把工作目录的 index.html 回复到暂存区版本，也就是基准旧标题。执行第二行前确认这正是你要丢弃的教材修改；CSS 不在指定路径内，必须保留。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git restore --staged -- index.html\ngit restore --worktree -- index.html\ngit status --short\ngit diff -- style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "此时 status 应只剩 style.css，h1 回到 Make room for one small task.，注解仍在。这是本篇最重要的保留检查：撤销自己的修改，不等于把别人的工作一起清干净。如果只执行 restore --staged，它并不删除工作目录内容；相反地 restore --worktree 会覆写指定档案，不能只看到 restore 一词就把两者当同义。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：提交指定修改，再保留历史撤回"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新用编辑器把 h1 改成 Plan one useful step.，再次只暂存 index.html 并检查 cached diff。下面提交只应包含标题，style.css 注解继续留在工作目录。用 show 的档名清单确认真正提交了什么，不把终端机显示成功当作范围一定正确。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit commit -m \"Update practice title\"\ngit show --format=short --name-only HEAD\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "撤回已提交修改前先处理工作目录。本教材只有自己加的 CSS 注解：确认内容已保留核对后，现在明确决定结束这个保留练习，用下列第一行只丢弃它。status 必须干净，再检查最新提交确实是 Update practice title，才对 HEAD 执行 revert。正式工作若仍有其他修改，不照搬这个清理步骤，先保存或另行处理。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git restore --worktree -- style.css\ngit status --short\ngit log -1 --oneline\ngit revert --no-edit HEAD\ngit log -3 --oneline\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "revert 会新增撤回提交，保留原本标题修改的历史。预期 h1 回旧值，log 仍看得到基准、标题修改与撤回三笔，工作目录干净。若出现冲突，先读提示与实际状态，不连按强制选项；只想取消这次未完成的 revert，可依 Git 指引使用 git revert --abort，之后重新检查档案。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "命令对照、常见问题与验收"
+        },
+        {
+          "type": "table",
+          "header": [
+            "目的",
+            "命令",
+            "核对点"
+          ],
+          "rows": [
+            [
+              "看尚未暂存内容",
+              "git diff",
+              "工作目录与暂存差异"
+            ],
+            [
+              "看将提交内容",
+              "git diff --cached",
+              "暂存与 HEAD 差异"
+            ],
+            [
+              "移出暂存",
+              "git restore --staged -- index.html",
+              "编辑仍在"
+            ],
+            [
+              "丢弃指定未提交修改",
+              "git restore --worktree -- index.html",
+              "先确认来源与路径"
+            ],
+            [
+              "撤回已提交修改",
+              "git revert --no-edit HEAD",
+              "新增历史，先确认目标及干净状态"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "找不到分支先看是否在对的 repository；status 多出意外档案就先查看，不使用 git add . 把它们一起带进去。若同一档案混有自己的与原有修改，整档暂存会一起提交，应先读懂每段差异再分段处理。这次验收要能证明 CSS 在标题提交中被排除、两种 restore 效果不同、revert 保留历史。图中 1 是辨认状态，2 是限定提交，3 是验证还原；下一步看"
+            },
+            {
+              "type": "link",
+              "text": "测试、Review 与 PR",
+              "url": "https://mokaair.com/zh-CN/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-git-basics/diagram-1.svg",
+          "alt": "19. Git、分支、diff 与还原 — 实作顺序示意图，非产品介面截图。 Branch → Diff → Commit",
+          "width": 1600,
+          "height": 900,
+          "caption": "19. Git、分支、diff 与还原 — 实作顺序示意图，非产品介面截图。 Branch → Diff → Commit",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Git installation",
+          "url": "https://git-scm.com/install/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git init",
+          "url": "https://git-scm.com/docs/git-init",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git diff",
+          "url": "https://git-scm.com/docs/git-diff",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git restore",
+          "url": "https://git-scm.com/docs/git-restore",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git revert",
+          "url": "https://git-scm.com/docs/git-revert",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex review workflow",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Git, branches, diffs and recovery",
+      "description": "Git stores file history, branches organize changes and diffs show what changed. Codex can help, but you must verify that the changes belong to the task. Restoring an old conversation does not restore Git files.",
+      "hero": {
+        "src": "/guides/codex-git-basics/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "In an isolated Git lab, create a branch, inspect diffs, stage/commit only selected files, restore uncommitted changes and revert a commit. Allow 15 minutes to read and 30 to practice. Use Git 2.28 or later, an editor and the expected fixture. Git commands are shared across OSes. This creates local history only; no GitHub, remote account or push is needed."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Know "
+            },
+            {
+              "type": "link",
+              "text": "terminal paths",
+              "url": "https://mokaair.com/en/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": ". The working tree is current files, the index is the next commit's staged content, and commits record versions; these can differ. A branch identifies a history line, not an automatic copy of uncommitted files. For separate directories, use "
+            },
+            {
+              "type": "link",
+              "text": "worktrees",
+              "url": "https://mokaair.com/en/life/codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "; creating a branch is not a backup."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Create an isolated baseline"
+        },
+        {
+          "type": "paragraph",
+          "text": "Place the five expected files in new codex-git-lab outside any other project. Open its editor terminal, verify Get-Location or pwd and run git --version. If Git is missing, use its official platform installation guidance and reopen the terminal. Do not initialize your existing work repository for this exercise."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git init -b main\ngit config user.name \"Practice Learner\"\ngit config user.email \"learner@example.invalid\"\ngit add index.html style.css app.js core.mjs core.test.mjs\ngit diff --cached --name-only\ngit commit -m \"Add practice baseline\"\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Run line by line. Initial staging should contain exactly five files and status should be clean after committing. Identity values are local to this practice repository, not GitHub login or global configuration. If existing signing/hooks requirements prevent a commit, follow your setup or record the blocker instead of changing global policy."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Make two distinguishable changes on a branch"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git switch -c codex/title-lab\ngit branch --show-current\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Verify codex/title-lab. In index.html change only the h1 text Make room for one small task. to Plan one useful step. Append the comment below to style.css to represent separate uncommitted work. The title is the deliverable; preserve the CSS note without including it in the title commit. Both edits are fictional practice."
+        },
+        {
+          "type": "code",
+          "language": "css",
+          "code": "/* KEEP-MY-NOTE */\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git status --short\ngit diff -- index.html style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Minus lines are old, plus lines new, with surrounding context. Check the exact h1 and CSS comment instead of only “2 files changed.” Use the read-only prompt below for Codex to identify existing work and intended scope before any commit request."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Inspect this lab's current branch, status and diff without editing, staging or committing. The intended change is only the h1 title in index.html. The KEEP-MY-NOTE comment in style.css represents separate work and must be preserved. Explain what belongs in the title commit and what must stay outside it.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Stage one file, then practice restoration"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit diff -- style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The staged list must contain only index.html while ordinary diff still shows CSS. The first command below unstages the title but keeps the edit in the editor. The second restores index.html from the index, now the original baseline. Confirm you intend to discard this practice edit before the second command. CSS is outside its path and must remain."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git restore --staged -- index.html\ngit restore --worktree -- index.html\ngit status --short\ngit diff -- style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Now only style.css should be modified, h1 restored and the note preserved. Undoing your change must not clear separate work. restore --staged does not discard the working-file edit; restore --worktree overwrites the specified file from its restore source. They are not interchangeable."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Commit the scoped edit and revert with history"
+        },
+        {
+          "type": "paragraph",
+          "text": "Reapply Plan one useful step. in the editor, stage only index.html and inspect cached diff again. The commit below should contain only the title while CSS remains uncommitted. Verify committed paths with show; command success alone does not prove correct scope."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit commit -m \"Update practice title\"\ngit show --format=short --name-only HEAD\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Before reverting, resolve working-tree changes. Here the only remaining change is your fictional CSS note. After verifying its preservation, explicitly finish that exercise and discard only it with the first command below. Require clean status and confirm HEAD is Update practice title before reverting HEAD. Do not apply this cleanup to real work with unrelated changes."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git restore --worktree -- style.css\ngit status --short\ngit log -1 --oneline\ngit revert --no-edit HEAD\ngit log -3 --oneline\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "revert adds a reversing commit while preserving the original title commit. Expect original h1, three history entries and clean status. On conflict, inspect actual state instead of forcing options. To cancel an unfinished revert, use Git's git revert --abort workflow and recheck files."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Command comparison, troubleshooting and acceptance"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Goal",
+            "Command",
+            "Check"
+          ],
+          "rows": [
+            [
+              "Inspect unstaged content",
+              "git diff",
+              "Working tree versus index"
+            ],
+            [
+              "Inspect next commit",
+              "git diff --cached",
+              "Index versus HEAD"
+            ],
+            [
+              "Unstage",
+              "git restore --staged -- index.html",
+              "Edit remains"
+            ],
+            [
+              "Discard selected uncommitted edit",
+              "git restore --worktree -- index.html",
+              "Verify source and path first"
+            ],
+            [
+              "Reverse a commit",
+              "git revert --no-edit HEAD",
+              "New history; verify target and clean state"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "For a missing branch, verify the repository. Inspect unexpected files instead of staging every file at once. If one file mixes edits, whole-file staging includes all of them; review hunks before selective handling. Acceptance proves CSS exclusion, distinct restore effects and preserved revert history. Diagram 1 identifies state, 2 scopes commits, 3 verifies restoration. Continue to "
+            },
+            {
+              "type": "link",
+              "text": "testing, review and PR",
+              "url": "https://mokaair.com/en/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-git-basics/diagram-1.svg",
+          "alt": "19. Git, branches, diffs and recovery — Workflow illustration, not a product screenshot. Branch → Diff → Commit",
+          "width": 1600,
+          "height": 900,
+          "caption": "19. Git, branches, diffs and recovery — Workflow illustration, not a product screenshot. Branch → Diff → Commit",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Git installation",
+          "url": "https://git-scm.com/install/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git init",
+          "url": "https://git-scm.com/docs/git-init",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git diff",
+          "url": "https://git-scm.com/docs/git-diff",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git restore",
+          "url": "https://git-scm.com/docs/git-restore",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git revert",
+          "url": "https://git-scm.com/docs/git-revert",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex review workflow",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Git・ブランチ・差分・復元",
+      "description": "Git は履歴、ブランチは変更のまとまり、diff は差分を扱います。会話の再開ではファイルは復元されません。",
+      "hero": {
+        "src": "/guides/codex-git-basics/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "独立 Git 教材でブランチ、差分、指定ファイルのステージと commit、未確定復元、commit 撤回を練習します。読む時間15分、操作30分。Git 2.28 以降、エディター、expected 教材を使います。3 OS 共通で、本機履歴だけを作り GitHub や push は不要です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "端末パス",
+              "url": "https://mokaair.com/ja/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "を確認します。作業ツリー、次の commit 用 index、記録版は別状態です。ブランチは履歴の線で、未コミットのコピーではありません。別場所は"
+            },
+            {
+              "type": "link",
+              "text": "worktree",
+              "url": "https://mokaair.com/ja/life/codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "を使い、ブランチを保存完了としません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：独立した基準を作る"
+        },
+        {
+          "type": "paragraph",
+          "text": "他プロジェクト外の codex-git-lab に expected 5ファイルを置き、現在地と git --version を確認します。なければ公式 OS 別導入を行い端末を開き直します。既存仕事用リポジトリでこの初期化をしません。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git init -b main\ngit config user.name \"Practice Learner\"\ngit config user.email \"learner@example.invalid\"\ngit add index.html style.css app.js core.mjs core.test.mjs\ngit diff --cached --name-only\ngit commit -m \"Add practice baseline\"\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "逐行実行し、最初の5ファイルと commit 後の無変更を確認します。名前と予約ドメインは教材内設定で、GitHub 認証や global ではありません。署名・hooks の既存要件があれば従うか障害を記録し、全体方針を変更しません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：ブランチで区別できる二変更"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git switch -c codex/title-lab\ngit branch --show-current\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "ブランチ確認後、h1 の指定文だけ Plan one useful step. にし、CSS 末尾へ次のコメントを加えて別の未確定作業を模します。成果はタイトルで、CSS は保持しつつタイトル commit に混ぜません。両方とも教材です。"
+        },
+        {
+          "type": "code",
+          "language": "css",
+          "code": "/* KEEP-MY-NOTE */\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git status --short\ngit diff -- index.html style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "差分の旧行・新行と周辺を見て、h1 と CSS コメントだけか確認します。ファイル数だけで判断しません。次の読取り依頼で既存作業と対象を特定し、全差分 commit は求めません。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Inspect this lab's current branch, status and diff without editing, staging or committing. The intended change is only the h1 title in index.html. The KEEP-MY-NOTE comment in style.css represents separate work and must be preserved. Explain what belongs in the title commit and what must stay outside it.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：一ファイルをステージして復元を試す"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit diff -- style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "ステージは index.html のみ、通常差分は CSS です。次の1行目はステージ解除だけで編集を残し、2行目は index の基準へファイルを戻します。教材変更を捨ててよいと確認して実行し、指定外 CSS は保持します。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git restore --staged -- index.html\ngit restore --worktree -- index.html\ngit status --short\ngit diff -- style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "CSS だけ変更、h1 復元、コメント保持を確認します。自分の取消しで別作業を消しません。--staged は実ファイル編集を捨てず、--worktree は指定ファイルを復元元で上書きするため別物です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：限定 commit と履歴を残す撤回"
+        },
+        {
+          "type": "paragraph",
+          "text": "タイトルを再変更して index.html だけステージし差分確認します。commit はタイトルだけ、CSS は未確定のままです。show で実際の対象を確認し、成功終了だけで範囲正解としません。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit commit -m \"Update practice title\"\ngit show --format=short --name-only HEAD\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "撤回前に作業ツリーを確認します。残る教材 CSS コメントの保持を検証後、今回は明示的にその練習を終えて最初の命令でそのファイルだけ戻します。無変更と HEAD のタイトル commit を確認してから revert します。実作業の別変更には流用しません。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git restore --worktree -- style.css\ngit status --short\ngit log -1 --oneline\ngit revert --no-edit HEAD\ngit log -3 --oneline\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "revert は元変更を残して逆向き commit を追加します。旧 h1、3履歴、無変更が期待です。衝突は状態を読み、強制選択をしません。未完了 revert の取消しは git revert --abort の手順で行い再確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "命令比較、対処と受入"
+        },
+        {
+          "type": "table",
+          "header": [
+            "目的",
+            "命令",
+            "確認"
+          ],
+          "rows": [
+            [
+              "未ステージを見る",
+              "git diff",
+              "作業ツリーと index"
+            ],
+            [
+              "次の commit を見る",
+              "git diff --cached",
+              "index と HEAD"
+            ],
+            [
+              "ステージ解除",
+              "git restore --staged -- index.html",
+              "編集は残る"
+            ],
+            [
+              "指定未確定変更を捨てる",
+              "git restore --worktree -- index.html",
+              "元とパスを先に確認"
+            ],
+            [
+              "commit 撤回",
+              "git revert --no-edit HEAD",
+              "対象と無変更を確認、履歴追加"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "分岐不在は repository を確認し、不意なファイルを add . でまとめません。一ファイルに変更が混ざると全体ステージに全て入るため、各差分を理解して処理します。CSS 除外、二つの restore、revert 履歴が受入条件です。図1状態、2限定確定、3復元確認。次は"
+            },
+            {
+              "type": "link",
+              "text": "テストと PR",
+              "url": "https://mokaair.com/ja/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "です。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-git-basics/diagram-1.svg",
+          "alt": "19. Git・ブランチ・差分・復元 — 作業の流れを表す図です。製品画面の画像ではありません。 Branch → Diff → Commit",
+          "width": 1600,
+          "height": 900,
+          "caption": "19. Git・ブランチ・差分・復元 — 作業の流れを表す図です。製品画面の画像ではありません。 Branch → Diff → Commit",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Git installation",
+          "url": "https://git-scm.com/install/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git init",
+          "url": "https://git-scm.com/docs/git-init",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git diff",
+          "url": "https://git-scm.com/docs/git-diff",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git restore",
+          "url": "https://git-scm.com/docs/git-restore",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git revert",
+          "url": "https://git-scm.com/docs/git-revert",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex review workflow",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Git, 브랜치, diff와 복원",
+      "description": "Git은 파일 이력, 브랜치는 변경 묶음, diff는 차이를 관리합니다. 대화를 재개한다고 파일이 복원되지는 않습니다.",
+      "hero": {
+        "src": "/guides/codex-git-basics/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "독립 Git 실습에서 브랜치/차이/지정 파일 스테이지·commit/미커밋 복원/commit 취소를 연습합니다. 읽기 15분, 실습 30분입니다. Git 2.28 이상, 편집기, expected 실습을 씁니다. 세 OS 공통이며 로컬 기록만 만들고 GitHub/push는 필요 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "터미널 경로",
+              "url": "https://mokaair.com/ko/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "를 확인합니다. 작업 트리, 다음 commit용 index, 기록 버전은 별개입니다. 브랜치는 기록 줄이며 미커밋 사본이 아닙니다. 별도 경로는 "
+            },
+            {
+              "type": "link",
+              "text": "worktree",
+              "url": "https://mokaair.com/ko/life/codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "를 쓰고 브랜치를 백업 완료로 보지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 독립 기준 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "다른 프로젝트 밖 codex-git-lab에 expected 다섯 파일을 두고 현재 경로/git --version을 확인합니다. 없으면 공식 OS 설치 후 터미널을 다시 엽니다. 기존 작업 저장소에서 이 초기화를 하지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git init -b main\ngit config user.name \"Practice Learner\"\ngit config user.email \"learner@example.invalid\"\ngit add index.html style.css app.js core.mjs core.test.mjs\ngit diff --cached --name-only\ngit commit -m \"Add practice baseline\"\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "줄별 실행해 처음 다섯 파일과 commit 후 무변경을 확인합니다. 이름/예약 도메인은 실습 내 설정이며 GitHub 인증/global이 아닙니다. 기존 서명/hooks 요구면 따르거나 장애를 기록하고 전체 정책을 바꾸지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 브랜치에서 구별할 두 변경"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git switch -c codex/title-lab\ngit branch --show-current\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "브랜치 확인 후 h1 지정 문구만 Plan one useful step.으로 바꾸고 CSS 끝에 다음 주석으로 별도 미커밋 작업을 흉내 냅니다. 결과는 제목이며 CSS는 보존하되 제목 commit에 섞지 않습니다. 둘 다 실습입니다."
+        },
+        {
+          "type": "code",
+          "language": "css",
+          "code": "/* KEEP-MY-NOTE */\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git status --short\ngit diff -- index.html style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "차이의 이전/새 줄과 주변을 보고 h1/CSS 주석만인지 확인합니다. 파일 수만으로 판단하지 않습니다. 다음 읽기 요청으로 기존 작업/대상을 식별하며 전체 차이 commit은 요청하지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Inspect this lab's current branch, status and diff without editing, staging or committing. The intended change is only the h1 title in index.html. The KEEP-MY-NOTE comment in style.css represents separate work and must be preserved. Explain what belongs in the title commit and what must stay outside it.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 한 파일 스테이지 후 복원 연습"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit diff -- style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "스테이지는 index.html만, 일반 차이는 CSS입니다. 다음 첫 줄은 스테이지만 해제해 편집을 남기고 둘째는 index 기준으로 파일을 복원합니다. 실습 변경을 버리려는지 확인해 실행하며 지정 밖 CSS는 보존합니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git restore --staged -- index.html\ngit restore --worktree -- index.html\ngit status --short\ngit diff -- style.css\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "CSS만 변경/h1 복원/주석 보존을 확인합니다. 자기 취소로 별도 작업을 지우지 않습니다. --staged는 실제 편집을 버리지 않고 --worktree는 지정 파일을 복원 원본으로 덮으므로 다릅니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 제한 commit과 기록을 남긴 취소"
+        },
+        {
+          "type": "paragraph",
+          "text": "제목을 다시 바꾸고 index.html만 스테이지해 차이를 봅니다. commit은 제목만, CSS는 미커밋으로 둡니다. show로 실제 대상을 확인하며 명령 성공만으로 범위가 맞다고 보지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit commit -m \"Update practice title\"\ngit show --format=short --name-only HEAD\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "취소 전 작업 트리를 확인합니다. 남은 실습 CSS 주석 보존을 검증한 뒤 이번에는 명시적으로 연습을 끝내 첫 명령으로 그 파일만 되돌립니다. 무변경과 HEAD 제목 commit을 확인해 revert합니다. 실제 별도 변경에는 그대로 적용하지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "git restore --worktree -- style.css\ngit status --short\ngit log -1 --oneline\ngit revert --no-edit HEAD\ngit log -3 --oneline\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "revert는 원래 변경을 남기고 반대 commit을 추가합니다. 이전 h1/기록3개/무변경을 기대합니다. 충돌이면 상태를 읽고 강제 선택하지 않습니다. 미완료 revert 취소는 git revert --abort 절차로 하고 재확인합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "명령 비교, 문제 해결과 검수"
+        },
+        {
+          "type": "table",
+          "header": [
+            "목적",
+            "명령",
+            "확인"
+          ],
+          "rows": [
+            [
+              "미스테이지 보기",
+              "git diff",
+              "작업 트리/index"
+            ],
+            [
+              "다음 commit 보기",
+              "git diff --cached",
+              "index/HEAD"
+            ],
+            [
+              "스테이지 해제",
+              "git restore --staged -- index.html",
+              "편집 유지"
+            ],
+            [
+              "지정 미커밋 변경 버리기",
+              "git restore --worktree -- index.html",
+              "원본/경로 먼저 확인"
+            ],
+            [
+              "commit 취소",
+              "git revert --no-edit HEAD",
+              "대상/무변경 확인, 기록 추가"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "브랜치가 없으면 repository를 확인하고 예상 밖 파일을 add .로 묶지 않습니다. 한 파일에 변경이 섞이면 전체 스테이지에 모두 들어가므로 각 차이를 이해해 처리합니다. CSS 제외/두 restore/revert 기록이 검수 조건입니다. 그림1상태,2제한확정,3복원확인. 다음은 "
+            },
+            {
+              "type": "link",
+              "text": "테스트와 PR",
+              "url": "https://mokaair.com/ko/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "입니다."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-git-basics/diagram-1.svg",
+          "alt": "19. Git, 브랜치, diff와 복원 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Branch → Diff → Commit",
+          "width": 1600,
+          "height": 900,
+          "caption": "19. Git, 브랜치, diff와 복원 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Branch → Diff → Commit",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Git installation",
+          "url": "https://git-scm.com/install/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git init",
+          "url": "https://git-scm.com/docs/git-init",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git diff",
+          "url": "https://git-scm.com/docs/git-diff",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git restore",
+          "url": "https://git-scm.com/docs/git-restore",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git revert",
+          "url": "https://git-scm.com/docs/git-revert",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex review workflow",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "id": 13,
+  "readingMinutes": 12,
+  "operationMinutes": 20,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與準備",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "在一個本機專案管理兩個不同成果的任務，練習命名、切換、釘選、封存及恢復，並證明任務列表不等於檔案隔離。閱讀約 12 分鐘，操作約 20 分鐘。使用已登入的桌面版與文字編輯器；三種桌面平台使用相同練習，介面依官方文件查證，沒有冒充各 OS 的實機操作。",
+        "Manage two distinct outcomes in one local project: name, switch, pin, archive and restore tasks, while verifying that separate list entries do not isolate files. Allow 12 minutes to read and 20 to practice. Use authenticated desktop and a text editor. The same lab applies to all desktop platforms; controls are documentation-checked, not claimed tested on every OS.",
+        "一つの本機プロジェクトで二つの成果の課題を管理し、名前、切替、固定、アーカイブ、復元を練習します。一覧が別でもファイルは分離されないことを確認します。読む時間12分、操作20分。認証済みデスクトップとエディターを使い、各 OS の操作は公式確認で全機実測とはしません。",
+        "한 로컬 프로젝트에서 두 결과의 작업을 관리하며 이름, 전환, 고정, 보관, 복원을 연습합니다. 목록이 별개여도 파일은 격리되지 않음을 확인합니다. 읽기 12분, 실습 20분입니다. 로그인한 데스크톱과 편집기를 쓰며 OS별 조작은 공식 확인으로 전체 실측은 아닙니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先完成[桌面版入門](article:codex-desktop-getting-started)。專案組織共同檔案與多個任務；任務保存自己要完成的成果及對話。這次用「清點教材」與「提出修改方案」兩個名字，避免每個都叫「繼續」。ChatGPT 專案與連接電腦資料夾的本機專案不同；要讀本機檔案，先確認所選的是連接到練習資料夾的專案。",
+        "Complete [desktop basics](article:codex-desktop-getting-started). A project organizes shared files and tasks; each task has its own outcome and conversation. Use “Inventory the lab” and “Propose the edit” rather than naming everything “continue.” A ChatGPT project differs from a local project linked to a computer folder; verify that this exercise uses the latter.",
+        "[デスクトップ基礎](article:codex-desktop-getting-started)が前提です。プロジェクトは共有ファイルと課題を整理し、課題は個別成果と会話を持ちます。「教材一覧」「変更案」のように名付けます。ChatGPT プロジェクトと本機フォルダー接続は異なり、今回は後者を確認します。",
+        "[데스크톱 기초](article:codex-desktop-getting-started)가 전제입니다. 프로젝트는 공유 파일/작업을 정리하고 작업은 개별 결과/대화를 가집니다. ‘실습 목록’, ‘변경안’처럼 이름을 붙입니다. ChatGPT 프로젝트와 로컬 폴더 연결은 다르며 이번에는 후자인지 확인합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：加入練習資料夾",
+        "Step 1: Attach the practice folder",
+        "手順1：教材フォルダーを接続",
+        "1단계: 실습 폴더 연결"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "用文字編輯器建立 codex-project-lab，放入 note.txt 與 request.txt，分別貼上以下兩段。依桌面入門步驟加入本機專案，再打開專案選單的 Edit project 核對資料夾。這次只連接這一個資料夾，不把整個使用者目錄加入；將其設為主要資料夾後，建立任務前再次看實際路徑。",
+        "Create codex-project-lab with separate note.txt and request.txt samples below. Add it as a local project using desktop basics, then verify folders in the project's Edit project menu. Attach only this lab, not your entire user directory. Use it as the primary folder and check the actual path before starting a task.",
+        "codex-project-lab に次の別々の note.txt、request.txt を作ります。基礎手順で本機プロジェクトへ追加し、Edit project で場所を確認します。ユーザー全体ではなく教材一つだけ接続し、主要フォルダーと実パスを確認して課題を作ります。",
+        "codex-project-lab에 다음 별도 note.txt/request.txt를 만듭니다. 기초 절차로 로컬 프로젝트에 추가하고 Edit project에서 경로를 확인합니다. 사용자 전체가 아닌 실습 하나만 연결하고 기본 폴더/실제 경로를 확인해 작업을 만듭니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "PROJECT-LAB\nRevision: 1\nCurrent title: Small Steps\n"
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Propose the title Daily Steps.\nDo not edit note.txt until the proposal is reviewed.\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "主要資料夾決定新任務起點及一些專案設定的自動探索；其他附加資料夾也可能可讀寫，但不是隔離副本。此練習沒有 Git，也不建立 worktree，方便你清楚看到兩個任務共用同一份檔案。實際程式專案要並行修改時，另依[worktree 教學](article:codex-worktrees)建立隔離，不靠任務數量判斷是否安全。",
+        "The primary folder sets the starting location and default discovery for some project settings. Additional folders may also be readable/writable; they are not isolated copies. This lab has no Git or worktree, making shared files explicit. For concurrent code edits, use [worktrees](article:codex-worktrees) rather than assuming separate task entries are isolation.",
+        "主要フォルダーが起点と設定探索に使われ、追加場所も読書き可能な場合があります。分離コピーではありません。本教材は Git/worktree なしで共有を確認します。同時編集には[worktree](article:codex-worktrees)を使い、課題数で隔離を判断しません。",
+        "기본 폴더는 시작점/설정 탐색에 쓰이고 추가 폴더도 읽고 쓸 수 있습니다. 격리 사본은 아닙니다. 실습은 Git/worktree 없이 공유를 확인합니다. 동시 편집에는 [worktree](article:codex-worktrees)를 사용하고 작업 개수로 격리를 판단하지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：建立兩個成果不同的任務",
+        "Step 2: Create two tasks with distinct outcomes",
+        "手順2：成果の異なる課題を二つ作る",
+        "2단계: 결과가 다른 작업 두 개 만들기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "從這個專案開第一個新任務，送出下面的清點要求。回覆後看它是否真的指出兩個檔案、PROJECT-LAB 與 Revision: 1，再將任務改名為「PROJECT-LAB — 清點教材」。利用任務選單的重新命名功能，保留共同標記與成果詞，之後只記得 PROJECT-LAB 也能搜尋。此任務只讀，不需要新增文件。",
+        "Start the first task in this project and send the inventory prompt. Verify both files, PROJECT-LAB and revision 1, then rename it “PROJECT-LAB — Inventory.” Use the task menu to retain a shared marker plus outcome, making it searchable even when you remember only PROJECT-LAB. This task is read-only and needs no new document.",
+        "最初の課題で一覧依頼を送り、2ファイル、印、版1を確認して「PROJECT-LAB — 教材一覧」と改名します。メニューで共通印と成果を残せば、印だけでも探せます。読取りのみで新文書は不要です。",
+        "첫 작업에 목록 요청을 보내 두 파일/표식/버전 1을 확인하고 ‘PROJECT-LAB — 실습 목록’으로 이름을 바꿉니다. 메뉴로 공통 표식/결과를 남기면 표식만 기억해도 찾습니다. 읽기만 하며 새 문서는 필요 없습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Inventory this practice folder. Read note.txt and request.txt. Report their filenames, the lab marker, revision and current title. Do not edit files or search other directories. This task's outcome is a verified inventory only.\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "再從同一專案建立第二個新任務，使用下面的方案要求，改名為「PROJECT-LAB — 標題方案」。預期指出 Small Steps 改成 Daily Steps，只需 note.txt 的標題行；文件已要求先審閱，所以還不應改檔。切回第一個任務時，應仍看到它自己的清點對話，而不是兩段訊息混成同一份聊天。",
+        "Create another new task in the same project with the proposal prompt and name it “PROJECT-LAB — Title proposal.” Expect Small Steps to Daily Steps and only note.txt's title line as the proposed edit, without implementation yet. Switching back to Inventory should retain that task's conversation rather than merging both transcripts.",
+        "同じプロジェクトで次の提案課題を作り「PROJECT-LAB — タイトル案」とします。Small Steps を Daily Steps にする note.txt 一行の提案で、まだ編集しません。一覧課題へ戻るとその会話が残り、二つの履歴が混ざらないことを確認します。",
+        "같은 프로젝트에서 다음 제안 작업을 만들고 ‘PROJECT-LAB — 제목안’으로 이름을 정합니다. Small Steps를 Daily Steps로 바꾸는 note.txt 한 줄 제안이며 아직 편집하지 않습니다. 목록 작업으로 돌아오면 그 대화가 남고 두 기록이 섞이지 않아야 합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Read note.txt and request.txt. Propose the smallest title change that satisfies the request. Identify exactly which line would change and how to verify it. Do not implement yet; this task's outcome is a reviewable proposal.\n"
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：切換任務時重新讀檔",
+        "Step 3: Reread files when switching tasks",
+        "手順3：課題切替時にファイルを再読",
+        "3단계: 작업 전환 시 파일 다시 읽기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "現在模擬你在任務之間處理了其他事：用編輯器只把 note.txt 的 Revision 改成 2，標題仍是 Small Steps，request.txt 也不動。回到「清點教材」任務，送出下列要求。它的舊對話是 1，但新讀取應是 2。接著到「標題方案」也要求重讀版本；兩個任務都應從同一資料夾看見 2。",
+        "Simulate work between tasks: manually change only note.txt's Revision to 2, leaving the title Small Steps and request.txt unchanged. In Inventory, send the fresh-read request. Old conversation says 1 while disk now says 2. Ask the proposal task to reread too; both should observe 2 in the same folder.",
+        "課題間に別作業をした想定で、note.txt の版だけ2へ変更し、タイトルと request.txt はそのままにします。一覧で再読依頼を送り、古い会話の1と最新2を確認します。提案側にも再読させ、同じ場所の2を見るか確認します。",
+        "작업 사이 다른 일을 했다고 가정해 note.txt 버전만 2로 바꾸고 제목/request.txt는 둡니다. 목록에서 새 읽기를 요청해 이전 대화의 1과 현재 2를 확인합니다. 제안 작업에도 다시 읽게 하여 같은 폴더의 2를 보는지 확인합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Read note.txt from disk again now. Compare its current revision with this task's earlier record. Report the actual directory, current revision and unchanged title. Do not repair the mismatch by restoring old contents.\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "這個差異是刻意設計的驗收，不是叫模型把數字改回去。同一專案的兩個任務可以共用檔案，卻各有歷史對話；釘選、改名與切換都不會建立第二份磁碟。若其中一個仍是 1，先核對路徑、主機與是否真的重新讀取，再看它是否在另一個工作樹。接續長任務時用[交接文件](article:codex-context-handoff)保存這種版本差異。",
+        "The mismatch is intentional, not a request to revert it. Tasks can share files while retaining separate conversations; pinning, renaming and switching do not create another disk copy. If one still says 1, verify path, host and fresh reading, then possible worktree differences. Preserve such revision changes in a [handoff](article:codex-context-handoff) for long work.",
+        "不一致は意図的で、元へ戻す依頼ではありません。ファイル共有と会話分離は両立し、固定や改名でコピーは作られません。一方が1なら場所、ホスト、再読、別 worktree を確認します。長作業は[引継ぎ](article:codex-context-handoff)に版差を残します。",
+        "불일치는 의도적이며 복원 요청이 아닙니다. 파일 공유와 대화 분리는 함께 가능하고 고정/이름 변경이 사본을 만들지 않습니다. 한쪽이 1이면 경로/호스트/새 읽기/다른 worktree를 확인합니다. 긴 작업은 [인계](article:codex-context-handoff)에 버전 차이를 남깁니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 4：釘選、尋找與封存恢復",
+        "Step 4: Pin, find, archive and restore",
+        "手順4：固定、検索、アーカイブと復元",
+        "4단계: 고정, 검색, 보관과 복원"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "把目前常用的「標題方案」任務釘選，確認它在側欄容易找；再開其他任務後回來核對，它的對話及檔案內容都不應因釘選改變。要找清點任務時，使用側欄 Search chats 搜尋 PROJECT-LAB，再用完整標題分辨。不同版本的搜尋快捷鍵可能不同，本篇直接使用可見入口。",
+        "Pin the frequently used Title proposal task and check that it remains easy to find after opening another task. Pinning should not change its transcript or files. Use sidebar Search chats for PROJECT-LAB, then distinguish by full title. Use the visible search entry because shortcuts vary by version.",
+        "よく使うタイトル案を固定し、別課題を開いた後も見つかるか確認します。会話やファイルは変わりません。側欄 Search chats で PROJECT-LAB を検索して完全名で区別します。版による近道キー差を避けて表示入口を使います。",
+        "자주 쓰는 제목안을 고정하고 다른 작업 뒤에도 찾기 쉬운지 확인합니다. 대화/파일은 바뀌지 않습니다. 사이드바 Search chats에서 PROJECT-LAB을 검색해 전체 이름으로 구분합니다. 버전별 단축키 차이를 피해 보이는 진입점을 씁니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "完成清點後，從該任務選單選 Archive，只封存「清點教材」，不要誤選整個專案的 Archive chats。接著到 Settings 的 Archived chats 找回它並恢復，再確認原對話存在、note.txt 仍是 2。封存用來整理列表，不表示已完成程式驗收，也不是檔案備份或清理硬碟的方法。本練習不需要 Delete。",
+        "Archive only the Inventory task through its menu after finishing it; avoid the project's bulk Archive chats action. Restore it from Settings → Archived chats and verify its transcript and note.txt revision 2 remain. Archiving organizes lists; it is not feature acceptance, backup or disk cleanup. Delete is unnecessary here.",
+        "一覧課題だけメニューで Archive にし、プロジェクト全体の Archive chats を選ばないよう確認します。Settings の Archived chats から復元し、会話と版2を確認します。整理操作であり、機能受入、保存、ディスク掃除ではありません。Delete は不要です。",
+        "목록 작업만 메뉴 Archive로 보관하고 프로젝트 전체 Archive chats를 피합니다. Settings의 Archived chats에서 복원해 대화와 버전 2를 확인합니다. 목록 정리이며 기능 검수/백업/디스크 정리가 아닙니다. Delete는 필요 없습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 操作 | 會改變什麼 | 本練習如何驗證 |\n| --- | --- | --- |\n| 重新命名 | 任務顯示名稱 | 用標記及成果搜尋 |\n| 釘選 | 側欄位置 | 回到同一段對話 |\n| 封存／恢復 | 列表中的可見狀態 | 恢復後仍可讀原對話 |\n| 重新讀檔 | 取得目前磁碟證據 | 兩任務都看到 Revision: 2 |\n| 編輯主要資料夾 | 新任務預設起點 | 重新核對實際路徑 |",
+        "| Action | Changes | Verification |\n| --- | --- | --- |\n| Rename | Displayed title | Find marker plus outcome |\n| Pin | Sidebar position | Return to same conversation |\n| Archive/restore | List visibility | Original conversation remains |\n| Reread | Current disk evidence | Both see Revision: 2 |\n| Change primary folder | New task starting location | Recheck actual path |",
+        "| 操作 | 変わるもの | 確認 |\n| --- | --- | --- |\n| 改名 | 表示名 | 印と成果で検索 |\n| 固定 | 側欄位置 | 同じ会話に戻る |\n| アーカイブ/復元 | 一覧の表示状態 | 元会話が残る |\n| 再読 | 最新ディスク証拠 | 両方が版2 |\n| 主要フォルダー変更 | 新課題の起点 | 実パス再確認 |",
+        "| 조작 | 바뀌는 것 | 검증 |\n| --- | --- | --- |\n| 이름 변경 | 표시 제목 | 표식/결과로 검색 |\n| 고정 | 사이드바 위치 | 같은 대화로 돌아오기 |\n| 보관/복원 | 목록 표시 상태 | 원래 대화 유지 |\n| 다시 읽기 | 최신 디스크 증거 | 둘 다 버전 2 |\n| 기본 폴더 변경 | 새 작업 시작점 | 실제 경로 재확인 |"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "什麼時候續接、另開或停止",
+        "When to resume, start fresh or stop",
+        "再開・新規・停止の使い分け",
+        "재개, 새 시작, 중단 구분"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "同一個標題修改還在補條件，就回到原方案任務續接，保留先前決策；要獨立做另一個成果，例如整理測試紀錄，就建立新任務並明確指出要讀哪些檔案。新任務不應被假設已經看過前一個聊天中的口頭限制。把「不可改測試」這類共同規則放入專案 AGENTS.md，把本次版本與尚未完成的檢查放交接文件，再在新要求引用。",
+        "Continue the existing proposal when refining that same title change. Start a fresh task for a distinct outcome such as organizing test evidence, naming the files to read. Do not assume it has read verbal constraints from another conversation. Put durable rules such as unchanged tests in project AGENTS.md, current revisions and pending checks in a handoff, and reference them explicitly.",
+        "同じタイトル変更の条件追加は元課題へ戻り、テスト記録整理など別成果は読取対象を示して新規にします。他会話の口頭制約を既読と仮定しません。テスト不変更など共通規則は AGENTS.md、版と残確認は引継ぎに置き、新依頼で参照します。",
+        "같은 제목 변경의 조건 보완은 원래 작업으로 돌아가고 테스트 기록 정리 같은 다른 결과는 읽을 파일을 지정해 새로 만듭니다. 다른 대화의 구두 제약을 읽었다고 가정하지 않습니다. 테스트 불변 같은 공통 규칙은 AGENTS.md, 버전/미확인은 인계에 두고 새 요청에서 참조합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "工作仍在執行時，先用目前任務可見的停止控制中斷，確認不再產生新修改，再整理或封存；停止與封存是不同操作。如果已經寫入 note.txt，停止不會自動撤銷，因此要讀檔與檢查差異。要更換專案主要資料夾時，先記錄舊位置，再從新任務核對起點；不要推論現有任務已被搬過去，也不要把附加資料夾當作主資料夾的備份。",
+        "For running work, first use its visible stop control, verify no more edits are produced, then organize or archive. Stop and archive are distinct. Existing edits are not automatically undone, so reread and inspect changes. Before changing the primary folder, record the old path and verify the new starting location in a fresh task; do not assume existing tasks moved or attached folders are backups.",
+        "実行中なら表示される停止操作を先に使い、追加変更が止まったか確認して整理します。停止とアーカイブは別で、書込み済みは戻らないため再読します。主要場所の変更は旧パスを記録して新課題で確認し、既存課題の移動や追加場所をバックアップと仮定しません。",
+        "실행 중이면 표시된 중단 조작을 먼저 쓰고 추가 편집이 멈췄는지 확인해 정리합니다. 중단/보관은 다르며 이미 쓴 것은 복원되지 않아 다시 읽습니다. 기본 경로 변경은 이전 위치를 기록하고 새 작업으로 확인하며 기존 작업 이동/추가 폴더 백업을 가정하지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "常見問題與整理習慣",
+        "Troubleshooting and organizational habits",
+        "問題の対処と整理の習慣",
+        "문제 해결과 정리 습관"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "找不到任務先確認是否在其他專案、另一台主機或已封存，再用標記搜尋；不要重新建立十個同名任務。發現兩個任務都想改同一檔案，就先讓其中一個停在唯讀檢查，明確指定由另一個完成修改，之後前者再審查結果。若需要真正同時改不同功能，進入 worktree 與整合教學。",
+        "For a missing task, check another project, host or archive, then search its marker; do not create many duplicates. If both tasks want to edit the same file, keep one read-only while the other makes the change, then let the first review. For genuinely concurrent features, use the worktree and integration lessons.",
+        "見つからなければ別プロジェクト、ホスト、アーカイブ、印検索を確認し、同名を大量作成しません。両方が同じファイルを変えようとするなら一方を読取りに止め、他方の変更後に確認させます。同時機能開発は worktree と統合へ進みます。",
+        "없으면 다른 프로젝트/호스트/보관/표식 검색을 확인하고 같은 이름을 여러 개 만들지 않습니다. 둘 다 같은 파일을 바꾸려면 하나를 읽기로 두고 다른 수정 뒤 검토하게 합니다. 실제 동시 기능 개발은 worktree/통합으로 진행합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "專案變大時，任務名稱加入目標與範圍，例如「篩選器：完成 Completed」或「文件：補啟動步驟」。每個任務結束留下改了什麼、如何驗證、還剩什麼；未完成工作可以存在任務清單文件，不只留在一段很久以前的聊天。這樣下次切換不用重新解釋整個專案，也不會把封存當作沒有待辦。",
+        "As work grows, name tasks by outcome and scope, such as “Filters: complete Completed” or “Docs: startup steps.” End each with changes, verification and remaining work. Keep unfinished work in a task-list document as well as chat, so switching does not require retelling the whole project or equating archived with nothing pending.",
+        "大きくなったら「フィルター：Completed 完成」「文書：起動手順」のように成果と範囲を付けます。変更、検証、残作業を残し、未完了は会話だけでなく一覧文書へ保存します。切替ごとの全説明や、アーカイブを未完了なしとする誤解を避けます。",
+        "커지면 ‘필터: Completed 완성’, ‘문서: 시작 절차’처럼 결과/범위를 넣습니다. 변경/검증/남은 작업을 남기고 미완료는 대화뿐 아니라 목록 문서에도 저장합니다. 전환마다 전체를 다시 설명하거나 보관을 미완료 없음으로 오해하지 않게 합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "驗收時保存兩個命名任務、兩次 Revision: 2 的重新讀取與封存恢復結果。最後把 note.txt 的 Revision 手動還原為 1、確認標題仍是 Small Steps，再取消本練習的釘選；不必刪專案或檔案。圖中 1 是建立專案範圍，2 是分成果管理任務，3 是重新核對與整理。下一篇開始[閱讀既有程式](article:codex-understand-codebase)。",
+        "Retain both named tasks, their fresh revision-2 reads and the archive/restore result. Finally restore note.txt revision 1, verify Small Steps and unpin this exercise; deleting the project or files is unnecessary. Diagram 1 establishes scope, 2 separates outcomes, 3 rechecks and organizes. Continue with [understanding existing code](article:codex-understand-codebase).",
+        "二つの命名課題、版2の再読、復元結果を残します。最後に版1と Small Steps を確認して固定を解除し、削除は不要です。図1は範囲、2は成果別課題、3は再確認と整理です。次は[既存コードを読む](article:codex-understand-codebase)です。",
+        "두 이름 있는 작업, 버전 2 재읽기, 보관/복원 결과를 남깁니다. 마지막으로 버전 1과 Small Steps를 확인하고 고정을 해제하며 삭제는 필요 없습니다. 그림 1은 범위, 2는 결과별 작업, 3은 재확인/정리입니다. 다음은 [기존 코드 읽기](article:codex-understand-codebase)입니다."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1357 @@
+{
+  "slug": "codex-mobile-ios",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 114,
+  "locales": {
+    "zh-TW": {
+      "title": "iPhone／iPad：接續 Codex 工作",
+      "description": "核對 iOS 的可用入口、配對與驗證條件，送出一次支援的任務並追蹤主機結果。",
+      "hero": {
+        "src": "/guides/codex-mobile-ios/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與 iPhone 的角色"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "用 iPhone 的 ChatGPT Remote 進入主機上的 Codex 任務，送出一個可核對的讀檔要求、追問進度、離開後找回同一任務，再回電腦驗收。閱讀約 12 分鐘，操作約 25 分鐘，配對等待另計。本篇於 2026-09-14 依 OpenAI Remote 與 Apple 掃碼文件查證；未在實體 iPhone 實測，不將網站窄版截圖當成 iOS 產品畫面。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "iPhone 負責傳送需求與查看結果，程式檔、終端機、依賴與網站登入都由連接主機提供。手機裝了 ChatGPT，不等於手機已安裝 Codex CLI，也不會把電腦資料夾自動同步到「檔案」App。先了解"
+            },
+            {
+              "type": "link",
+              "text": "手機總覽",
+              "url": "https://mokaair.com/zh-TW/life/codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "Remote 主機設定",
+              "url": "https://mokaair.com/zh-TW/life/codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": "，就能分開辨認連線、任務與實際工作。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前：電腦與帳號先準備好"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "在自己的 Mac 或 Windows 電腦安裝或更新 ChatGPT 桌面版，登入與 iPhone 相同的帳號及工作區，確認能使用 Codex。將"
+            },
+            {
+              "type": "link",
+              "text": "Small Steps 練習包",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "解壓，以 expected 副本建立 codex-iphone-lab 專案。保留原 expected，並先在主機確認五個程式檔存在；不要用私人正式專案做首次配對測試。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "在 App Store 核對發行者 OpenAI，安裝或更新官方 ChatGPT。完成 SSO、多因素驗證或通行金鑰等畫面要求，再回來設定 Remote。組織帳號可能需要管理員啟用 Remote Control；功能也可能依帳號逐步提供。沒有 Remote 時先記錄版本與工作區，不要以更換 Safari 或重裝 CLI 作為已取得入口的證據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟一：從相機掃碼進入 Remote"
+        },
+        {
+          "type": "paragraph",
+          "text": "在主機桌面版開 Settings → Connections → Control this Mac or PC，選 Set up 或 Add，完成要求的驗證並顯示配對 QR code。iPhone 開「相機」的拍照模式，讓完整 QR code 進入畫面，點偵測到的連結；也可使用控制中心的掃描碼工具。這不是把 QR code 拍照後上傳給聊天機器人，掃出的連結應帶你到官方 ChatGPT 設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若掃不到，先調整距離讓整個碼可見、減少螢幕反光，確認用的是拍照或掃碼模式。若連結只開 Safari，確認官方 App 已裝好、登入正確，再從主機重啟設定流程。不要把配對網址貼到公開討論區排錯；QR code、驗證碼與帳號資料都不應出現在公開教學圖。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在手機設定流程確認帳號、工作區與主機，成功後 Remote 中應出現該主機。只看到登入完成頁還不夠；要能選主機，找到 codex-iphone-lab 專案並開啟 Codex 任務。如果列表是另一臺電腦，回主機設定核對配對對象。圖的 1 是 iPhone 入口，2 是選中的主機，3 是可核對的專案結果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟二：送出第一個明確讀檔要求"
+        },
+        {
+          "type": "paragraph",
+          "text": "在手機 Remote 的專案任務輸入框貼上下面內容。先檢查檔名與函式名稱沒有被鍵盤自動修正；這是自然語言提示詞，不是要 iPhone 執行終端機命令。送出一次後留在該任務觀察回覆，記下任務標題或可以再次辨認的資訊，避免切換 App 後找不到原工作。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期回覆會從 app.js 找到 mokaair-codex-todo-v1，從 core.mjs 指出 completed 欄位及 addTask 的空白檢查，也應提供實際工作目錄。若只有一般待辦程式知識，追問它實際讀了哪個檔案；若目錄不符，先停止本次要求、回正確主機和專案。不要把一段聽起來合理的說明當成成功連線的證據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟三：追問、核准與查看進度"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這次追問檢查同一任務的上下文，回覆應預期 Completed 只顯示 Read，空白標題被拒絕；它也應分開列出已讀程式、真的跑過的測試與尚未操作的畫面。只分析原始碼就標成「預期行為」，不能改稱已在手機完成測試。你可在電腦的本機預覽親自做上述步驟，補上驗證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若手機出現批准要求，先看操作內容、目錄與影響範圍，再決定是否符合你剛才的要求。本例只讀檔，無須為了前進而準許新增外部帳號、發布網站或刪除資料。若看不清楚長命令，回主機檢視完整內容再處理。批准視窗沒有出現時先回 Remote 原任務確認狀態，不用連續新建任務催它。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟四：離開後回到同一任務"
+        },
+        {
+          "type": "paragraph",
+          "text": "等唯讀回覆完成後，暫時切到另一個 iPhone App，再回 ChatGPT → Remote，選相同主機與任務。核對最後一筆回覆及目前狀態，送出「請重新讀取目前目錄」的短追問，確認不是只在看先前快取文字。手機畫面仍保留舊回覆，不能證明主機此刻在線；只有新的讀取結果才能確認當下可工作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通知用來提醒完成或需要注意，不代替成果驗收。若未收到通知，可主動回任務查看；若主機睡眠、斷網或關閉 App，先恢復主機，再核對上次要求是否已完成。尤其有寫入的後續任務，不要因手機暫時斷線就重送同一個建立或提交要求。這次以唯讀練習學會恢復工作流程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成檢查與常見誤會"
+        },
+        {
+          "type": "table",
+          "header": [
+            "核對項目",
+            "成功證據",
+            "不足的證據"
+          ],
+          "rows": [
+            [
+              "配對",
+              "Remote 可選正確主機",
+              "只有相同帳號登入"
+            ],
+            [
+              "讀檔",
+              "正確目錄、儲存鍵與函式來源",
+              "泛泛解釋待辦程式"
+            ],
+            [
+              "接續",
+              "同任務的新讀取成功",
+              "只看到舊通知或回覆"
+            ],
+            [
+              "驗收",
+              "電腦端核對檔案與操作",
+              "模型只說測試沒問題"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "主機的 localhost 網址在 iPhone Safari 會指向手機自己，不是那臺電腦。查看練習成果時，先從 Remote 任務看主機提供的截圖或結果，再回電腦開本機預覽；公開預覽與部署是另一個步驟。要停止手機存取，依"
+            },
+            {
+              "type": "link",
+              "text": "主機設定篇",
+              "url": "https://mokaair.com/zh-TW/life/codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": "管理連線，並分開確認任務是否停止；登出不會自動刪除既有配對。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "最後請 Codex 整理主機／目錄、已檢查內容、未跑測試與下一步，再回電腦逐項對照；不包含帳號或驗證碼。這份交接紀錄讓你下次用手機查進度時，能知道哪些真的完成。接著看"
+            },
+            {
+              "type": "link",
+              "text": "跨裝置工作",
+              "url": "https://mokaair.com/zh-TW/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "上下文交接",
+              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "；若另有 Android 手機，可用"
+            },
+            {
+              "type": "link",
+              "text": "Android 專篇",
+              "url": "https://mokaair.com/zh-TW/life/codex-mobile-android"
+            },
+            {
+              "type": "text",
+              "text": "完成同等驗收。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mobile-ios/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "iPhone QR scanning",
+          "url": "https://support.apple.com/guide/iphone/scan-a-qr-code-iphe8bda8762/ios",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Continuing Codex work on iPhone or iPad",
+      "description": "Check the available iOS entry point, pairing and authentication, then track a supported task on its host.",
+      "hero": {
+        "src": "/guides/codex-mobile-ios/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and the iPhone's role"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Use ChatGPT Remote on iPhone to enter a host's Codex task, send a verifiable file-read request, follow up, leave and return to the same task, then verify on the computer. Allow 12 minutes to read and 25 minutes to practice, plus pairing waits. Checked on 2026-09-14 against OpenAI Remote and Apple QR documentation. No physical iPhone test or iOS product screenshot is claimed."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "The iPhone sends requests and displays results; the connected host provides source files, terminal, dependencies and signed-in websites. Installing ChatGPT on the phone does not install Codex CLI or synchronize computer folders into Files. Read the "
+            },
+            {
+              "type": "link",
+              "text": "mobile overview",
+              "url": "https://mokaair.com/en/life/codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "link",
+              "text": "Remote host setup",
+              "url": "https://mokaair.com/en/life/codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": " to distinguish connection, task and execution."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before starting: prepare the host and account"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Update ChatGPT desktop on your Mac or Windows computer, use the same account/workspace as the iPhone and confirm Codex access. Extract the "
+            },
+            {
+              "type": "link",
+              "text": "Small Steps pack",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": ", copy expected into codex-iphone-lab and retain the original. Check the five source files on the host before pairing. Use this fictional practice project rather than private production work."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Install or update the official ChatGPT app from App Store, verifying OpenAI as publisher. Complete SSO, MFA or passkey requirements before Remote setup. Organization access may need administrator enablement and rollout can vary. If Remote is absent, record app version and workspace; switching Safari or reinstalling CLI does not establish feature access."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: scan into Remote with Camera"
+        },
+        {
+          "type": "paragraph",
+          "text": "On the host, open Settings → Connections → Control this Mac or PC, select Set up or Add and complete verification to display the pairing QR code. In iPhone Camera's Photo mode, frame the entire code and tap the detected link; Control Center's code scanner is another route. Do not upload a photo of the code to a chatbot. The link should open official ChatGPT setup."
+        },
+        {
+          "type": "paragraph",
+          "text": "If scanning fails, fit the whole code in frame, reduce glare and use photo/scanner mode. If only Safari opens, verify the installed official app and intended login, then restart setup from the host. Keep pairing URLs, QR codes, authentication codes and account details out of public troubleshooting posts and teaching screenshots."
+        },
+        {
+          "type": "paragraph",
+          "text": "Confirm account, workspace and host in the phone setup. Success should show the host in Remote and let you select codex-iphone-lab and open a Codex task. A login-complete page alone is insufficient. If the listed machine is wrong, revisit the intended host's pairing setup. Diagram 1 is the iPhone entry, 2 the selected host and 3 the verifiable project result."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: send a precise file-read request"
+        },
+        {
+          "type": "paragraph",
+          "text": "Paste the following into the host project's task composer in Remote. Check that keyboard autocorrection has not altered filenames or function names. This is a prompt, not a terminal command for iPhone. Send once, observe the response and record identifying task information so you can return after switching apps."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect mokaair-codex-todo-v1 from app.js, completed and addTask's blank-title check from core.mjs, and the actual working directory. Generic todo-app advice is insufficient; ask which file was inspected. For a wrong directory, stop and select the correct host/project. A plausible explanation alone does not prove the connection reached your files."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: follow up, review approvals and inspect progress"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "This follow-up tests continuity. Expect Completed to show only Read and blank titles to be rejected, with inspected code, executed tests and untested UI separated. Code analysis establishes expected behavior, not a completed phone test. Perform the steps in the computer's local preview to add hands-on verification."
+        },
+        {
+          "type": "paragraph",
+          "text": "If an approval appears, inspect the operation, directory and scope against your request. This read-only exercise does not need new external accounts, website publication or deletion. Review long commands on the host if the phone view is insufficient. If no approval appears, inspect the original Remote task's state instead of repeatedly creating new tasks."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: leave and return to the same task"
+        },
+        {
+          "type": "paragraph",
+          "text": "After the read-only response finishes, switch to another iPhone app, then return through ChatGPT → Remote to the same host/task. Inspect the last response and current state, then ask for a fresh current-directory read. Old visible text does not prove the host is online now. A new successful read verifies present access."
+        },
+        {
+          "type": "paragraph",
+          "text": "Notifications signal completion or attention; they do not validate results. Open the task even without a notification. If the host sleeps, disconnects or closes the app, restore it and inspect whether the previous request finished. For later writable tasks, avoid resending create/submit actions merely because the phone disconnected. This read-only exercise teaches recovery first."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Completion checks and common misunderstandings"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "Sufficient evidence",
+            "Insufficient evidence"
+          ],
+          "rows": [
+            [
+              "Pairing",
+              "Correct selectable Remote host",
+              "Same-account login alone"
+            ],
+            [
+              "Reading",
+              "Directory, storage key and source function",
+              "Generic todo explanation"
+            ],
+            [
+              "Continuation",
+              "Fresh read in the same task",
+              "Old notification or response"
+            ],
+            [
+              "Verification",
+              "Host file and behavior checks",
+              "Unsubstantiated model assurance"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "A host's localhost URL entered in iPhone Safari points to the phone, not the computer. Review host-provided results or screenshots in Remote and use the computer for local preview; public preview/deployment is a separate step. Manage access through "
+            },
+            {
+              "type": "link",
+              "text": "host setup",
+              "url": "https://mokaair.com/en/life/codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": ", and check task cancellation separately. Signing out does not automatically delete pairings."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Finish by asking for host/directory, inspected content, unrun tests and next steps, excluding account details and codes. Compare that handoff on the computer so future phone progress checks distinguish completed work. Continue to "
+            },
+            {
+              "type": "link",
+              "text": "cross-device work",
+              "url": "https://mokaair.com/en/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "link",
+              "text": "context handoff",
+              "url": "https://mokaair.com/en/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": ", or use the "
+            },
+            {
+              "type": "link",
+              "text": "Android lesson",
+              "url": "https://mokaair.com/en/life/codex-mobile-android"
+            },
+            {
+              "type": "text",
+              "text": " for equivalent verification on another phone."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mobile-ios/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "iPhone QR scanning",
+          "url": "https://support.apple.com/guide/iphone/scan-a-qr-code-iphe8bda8762/ios",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "iPhone／iPad で Codex の作業を続ける",
+      "description": "iOS の利用入口、接続、認証条件を確認し、対応するタスクを送りホストの結果を追跡します。",
+      "hero": {
+        "src": "/guides/codex-mobile-ios/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と iPhone の役割"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "iPhone の ChatGPT Remote でホストの Codex 課題に入り、検証できる読み取り、追問、離れてから同じ課題への復帰、PC での確認を行います。読む時間約12分、操作約25分で、ペアリング待ちは別です。2026-09-14の OpenAI Remote と Apple QR 資料で確認しました。iPhone 実機検証や iOS 製品画像とはしていません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "iPhone は依頼と結果表示を担い、ソース、端末、依存関係、ログイン済みサイトはホストが提供します。電話に ChatGPT を入れても CLI 導入やファイル App への同期にはなりません。"
+            },
+            {
+              "type": "link",
+              "text": "モバイル概要",
+              "url": "https://mokaair.com/ja/life/codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": "と"
+            },
+            {
+              "type": "link",
+              "text": "ホスト設定",
+              "url": "https://mokaair.com/ja/life/codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": "で接続、課題、実行を区別します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始前：ホストとアカウントを準備する"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Mac / Windows のデスクトップ版を更新し、電話と同じアカウントとワークスペースで Codex を確認します。"
+            },
+            {
+              "type": "link",
+              "text": "Small Steps",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "の expected を codex-iphone-lab にコピーし原本を残します。ペアリング前にホストの五つのソースを確認し、私的な本番プロジェクトではなく課題を使います。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "App Store で OpenAI を確認して公式 ChatGPT を更新します。SSO、MFA、パスキーなどを済ませて設定へ戻ります。組織管理者の有効化や段階提供が関係する場合があります。Remote がなければ版とワークスペースを記録し、Safari の変更や CLI 再導入を機能取得の証拠にしません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：カメラで Remote の設定を開く"
+        },
+        {
+          "type": "paragraph",
+          "text": "ホストの Settings → Connections → Control this Mac or PC で Set up / Add と認証を済ませ QR を表示します。iPhone カメラの写真モードで全体を写し、検出リンクを押します。コントロールセンターのコードスキャンも使えます。写真をチャットへ送る操作ではなく、公式 ChatGPT の設定へ進むリンクです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "読めなければ全体が入る距離、反射、写真かスキャンのモードを確認します。Safari だけなら公式アプリとログインを確認してホストからやり直します。ペアリング URL、QR、認証コード、アカウント情報を公開の質問や教材画像に含めないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "電話でアカウント、ワークスペース、ホストを確認します。Remote に対象が表示され、codex-iphone-lab と Codex 課題を開けることが必要です。認証完了画面だけでは不足します。別 PC なら対象ホストの設定に戻ります。図の 1 は電話の入口、2 は選んだホスト、3 は検証可能な成果です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：明確な読み取りを依頼する"
+        },
+        {
+          "type": "paragraph",
+          "text": "Remote のプロジェクト課題入力欄に次を貼ります。キーボードの自動修正で名前が変わっていないか確認します。電話で端末コマンドを実行するものではありません。一度送って返答を見ながら、アプリ切替後も戻れる課題名などを記録します。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "app.js の mokaair-codex-todo-v1、core.mjs の completed と addTask の空白確認、実際の場所を確認します。一般論だけなら読んだファイルを追問します。場所が違えば止めて正しいホストとプロジェクトを選びます。もっともらしい説明だけでは接続の証拠になりません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：追問、承認内容、進捗を確認する"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ課題の文脈を確認します。Completed は Read だけ、空白は拒否を予測し、読んだコード、実行済みテスト、未操作の画面を分けることが必要です。コード分析は予測であり、電話での実測ではありません。PC のプレビューで実際に操作して補います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "承認が出たら操作、場所、範囲を依頼と照合します。読み取り課題に外部アカウント追加、公開、削除は不要です。長い命令が見えにくければホストで確認します。承認が出ない場合も新規を繰り返さず、元の Remote 課題の状態を確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：離れてから同じ課題に戻る"
+        },
+        {
+          "type": "paragraph",
+          "text": "読み取り返答の完了後に別アプリへ切り替え、ChatGPT → Remote で同じホストと課題へ戻ります。最後の返答と状態を見て現在の場所を新たに読ませます。古い表示だけではホストの現在のオンライン状態を証明できず、新しい読み取りで確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通知は完了や注意の合図で、成果確認の代わりではありません。なくても課題を開きます。ホストの睡眠、通信断、アプリ終了は復帰させ、前の要求が完了したか確認します。後の書き込み課題では、電話の切断だけで作成や提出を再送しません。まず読み取りで復帰を学びます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完了確認とよくある誤解"
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認",
+            "十分な証拠",
+            "不足する証拠"
+          ],
+          "rows": [
+            [
+              "ペアリング",
+              "正しいホストを選べる",
+              "同じアカウントの認証だけ"
+            ],
+            [
+              "読み取り",
+              "場所、保存キー、関数の出典",
+              "ToDo アプリの一般論"
+            ],
+            [
+              "再開",
+              "同じ課題で新たに読める",
+              "古い通知や返答"
+            ],
+            [
+              "検証",
+              "ホストのファイルと操作確認",
+              "根拠のない成功宣言"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "ホストの localhost を iPhone Safari に入れても電話自身を指します。Remote のホスト側結果や画像を見て、ローカルプレビューは PC で確認します。公開プレビューや配備は別です。"
+            },
+            {
+              "type": "link",
+              "text": "ホスト設定",
+              "url": "https://mokaair.com/ja/life/codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": "で接続を管理し、タスク停止も別に確認します。ログアウトでペアリングは消えません。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "最後にホストと場所、確認済み内容、未実行テスト、次の操作を認証情報なしでまとめさせ、PC で照合します。次回の進捗確認で完了範囲を判断できます。"
+            },
+            {
+              "type": "link",
+              "text": "装置間作業",
+              "url": "https://mokaair.com/ja/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "と"
+            },
+            {
+              "type": "link",
+              "text": "文脈引き継ぎ",
+              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "、別の電話なら "
+            },
+            {
+              "type": "link",
+              "text": "Android 編",
+              "url": "https://mokaair.com/ja/life/codex-mobile-android"
+            },
+            {
+              "type": "text",
+              "text": "へ進みます。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mobile-ios/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "iPhone QR scanning",
+          "url": "https://support.apple.com/guide/iphone/scan-a-qr-code-iphe8bda8762/ios",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "iPhone/iPad에서 Codex 작업 이어가기",
+      "description": "iOS 진입점, 연결, 인증 조건을 확인하고 지원되는 작업을 보내 호스트 결과를 추적합니다.",
+      "hero": {
+        "src": "/guides/codex-mobile-ios/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 iPhone의 역할"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "iPhone의 ChatGPT Remote로 호스트 Codex 작업에 들어가 검증 가능한 파일 읽기, 후속 질문, 나갔다 같은 작업으로 복귀, 컴퓨터 검증까지 진행합니다. 읽기 약 12분, 실습 약 25분이며 페어링 대기는 별도입니다. 2026-09-14 OpenAI Remote와 Apple QR 문서로 확인했으며 실물 iPhone 테스트나 iOS 제품 화면이라고 주장하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "iPhone은 요청과 결과 표시를 맡고 소스 파일, 터미널, 의존성, 로그인된 사이트는 호스트가 제공합니다. 휴대전화 ChatGPT 설치가 CLI 설치나 파일 앱 동기화를 뜻하지 않습니다. "
+            },
+            {
+              "type": "link",
+              "text": "모바일 개요",
+              "url": "https://mokaair.com/ko/life/codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": "와 "
+            },
+            {
+              "type": "link",
+              "text": "호스트 설정",
+              "url": "https://mokaair.com/ko/life/codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": "으로 연결, 작업, 실행을 구분합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전: 호스트와 계정 준비하기"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Mac/Windows 데스크톱 앱을 업데이트하고 iPhone과 같은 계정/워크스페이스의 Codex 접근을 확인합니다. "
+            },
+            {
+              "type": "link",
+              "text": "Small Steps",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "의 expected를 codex-iphone-lab으로 복사하고 원본을 보존합니다. 페어링 전에 호스트의 다섯 소스를 확인하며 비공개 실제 프로젝트 대신 실습 자료를 사용합니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "App Store에서 OpenAI를 확인해 공식 ChatGPT를 설치하거나 업데이트합니다. SSO, MFA, 패스키 요구를 마친 뒤 Remote를 설정합니다. 관리자 활성화와 단계적 제공이 관련될 수 있습니다. Remote가 없으면 버전과 워크스페이스를 기록하고 Safari 변경이나 CLI 재설치를 기능 접근 증거로 삼지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 카메라로 Remote 설정 열기"
+        },
+        {
+          "type": "paragraph",
+          "text": "호스트 Settings → Connections → Control this Mac or PC에서 Set up/Add와 인증을 마쳐 QR을 표시합니다. iPhone 카메라 사진 모드에서 코드 전체를 잡고 감지된 링크를 누릅니다. 제어 센터 코드 스캐너도 가능합니다. QR 사진을 챗봇에 업로드하는 것이 아니라 공식 ChatGPT 설정을 여는 링크입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "스캔이 안 되면 코드 전체가 보이는 거리, 반사, 사진/스캔 모드를 확인합니다. Safari만 열리면 공식 앱 설치와 로그인을 확인하고 호스트에서 다시 시작합니다. 페어링 URL, QR, 인증 코드, 계정 정보는 공개 질문이나 교재 화면에 넣지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "전화에서 계정, 워크스페이스, 호스트를 확인합니다. Remote에 대상이 보이고 codex-iphone-lab과 Codex 작업을 열 수 있어야 합니다. 로그인 완료 화면만으로는 부족합니다. 다른 PC라면 대상 호스트의 설정을 다시 확인합니다. 그림의 1은 전화 입구, 2는 선택한 호스트, 3은 검증 가능한 결과입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 명확한 파일 읽기 요청하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "Remote 프로젝트 작업 입력창에 아래를 붙입니다. 키보드 자동 수정이 파일명이나 함수명을 바꾸지 않았는지 확인하세요. iPhone에서 터미널 명령을 실행하는 것이 아닙니다. 한 번 전송하고 응답을 보며 앱 전환 후 찾을 작업명 등을 기록합니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "app.js의 mokaair-codex-todo-v1, core.mjs의 completed와 addTask 공백 검사, 실제 경로를 확인합니다. 일반적인 할 일 앱 설명뿐이면 읽은 파일을 묻습니다. 경로가 틀리면 멈추고 올바른 호스트/프로젝트를 선택하세요. 그럴듯한 설명만으로 파일에 연결됐다고 볼 수 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 후속 질문, 승인 내용, 진행 상황 확인하기"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 작업 맥락을 확인합니다. Completed는 Read만 보이고 공백은 거절되어야 하며 읽은 코드, 실행한 테스트, 미검증 화면을 나눠야 합니다. 코드 분석은 예상 동작이며 전화 실측이 아닙니다. 컴퓨터 로컬 미리 보기에서 직접 조작해 검증을 보탭니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "승인이 뜨면 동작, 폴더, 범위를 요청과 대조합니다. 읽기 실습에 외부 계정 추가, 웹사이트 공개, 삭제는 필요하지 않습니다. 긴 명령이 잘 안 보이면 호스트에서 확인하세요. 승인이 안 나타나도 새 작업을 반복 생성하지 말고 원래 Remote 작업 상태를 봅니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 나갔다 같은 작업으로 돌아오기"
+        },
+        {
+          "type": "paragraph",
+          "text": "읽기 응답 완료 후 다른 앱으로 전환했다가 ChatGPT → Remote에서 같은 호스트/작업으로 돌아옵니다. 마지막 응답과 상태를 보고 현재 폴더를 새로 읽게 합니다. 이전 글이 보인다고 호스트가 지금 온라인이라는 증거는 아니며 새 읽기 성공으로 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "알림은 완료나 주의 신호이며 결과 검증을 대신하지 않습니다. 알림이 없어도 작업을 열어 보세요. 호스트 절전, 연결 끊김, 앱 종료는 복구한 후 이전 요청 완료 여부를 확인합니다. 이후 쓰기 작업에서는 전화 연결이 끊겼다는 이유만으로 생성이나 제출을 다시 보내지 않습니다. 먼저 읽기로 복구를 익힙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "완료 확인과 흔한 오해"
+        },
+        {
+          "type": "table",
+          "header": [
+            "확인",
+            "충분한 증거",
+            "부족한 증거"
+          ],
+          "rows": [
+            [
+              "페어링",
+              "올바른 Remote 호스트 선택 가능",
+              "같은 계정 로그인만"
+            ],
+            [
+              "읽기",
+              "경로, 저장 키, 함수 출처",
+              "일반 할 일 앱 설명"
+            ],
+            [
+              "재개",
+              "같은 작업의 새 읽기",
+              "이전 알림이나 응답"
+            ],
+            [
+              "검증",
+              "호스트 파일과 동작 확인",
+              "근거 없는 성공 선언"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "호스트 localhost URL을 iPhone Safari에 넣으면 전화 자신을 가리킵니다. Remote의 호스트 결과나 캡처를 보고 로컬 미리 보기는 컴퓨터에서 확인합니다. 공개 미리 보기/배포는 별도입니다. "
+            },
+            {
+              "type": "link",
+              "text": "호스트 설정",
+              "url": "https://mokaair.com/ko/life/codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": "으로 접근을 관리하고 작업 취소는 별도로 확인하세요. 로그아웃이 페어링을 자동 삭제하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "마지막에 인증 정보 없이 호스트/폴더, 확인한 내용, 미실행 테스트, 다음 단계를 정리하게 하고 컴퓨터에서 대조합니다. 다음 전화 진행 확인 때 완료 범위를 알 수 있습니다. "
+            },
+            {
+              "type": "link",
+              "text": "기기 간 작업",
+              "url": "https://mokaair.com/ko/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "맥락 인계",
+              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": ", 다른 전화는 "
+            },
+            {
+              "type": "link",
+              "text": "Android 강의",
+              "url": "https://mokaair.com/ko/life/codex-mobile-android"
+            },
+            {
+              "type": "text",
+              "text": "로 이어갑니다."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mobile-ios/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "iPhone QR scanning",
+          "url": "https://support.apple.com/guide/iphone/scan-a-qr-code-iphe8bda8762/ios",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "iPhone／iPad：接续 Codex 工作",
+      "description": "核对 iOS 的可用入口、配对与验证条件，送出一次支援的任务并追踪主机结果。",
+      "hero": {
+        "src": "/guides/codex-mobile-ios/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与 iPhone 的角色"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "用 iPhone 的 ChatGPT Remote 进入主机上的 Codex 任务，送出一个可核对的读档要求、追问进度、离开后找回同一任务，再回电脑验收。阅读约 12 分钟，操作约 25 分钟，配对等待另计。本篇于 2026-09-14 依 OpenAI Remote 与 Apple 扫码文件查证；未在实体 iPhone 实测，不将网站窄版截图当成 iOS 产品画面。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "iPhone 负责传送需求与查看结果，程式档、终端机、依赖与网站登入都由连接主机提供。手机装了 ChatGPT，不等于手机已安装 Codex CLI，也不会把电脑资料夹自动同步到「档案」App。先了解"
+            },
+            {
+              "type": "link",
+              "text": "手机总览",
+              "url": "https://mokaair.com/zh-CN/life/codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "link",
+              "text": "Remote 主机设定",
+              "url": "https://mokaair.com/zh-CN/life/codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": "，就能分开辨认连线、任务与实际工作。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前：电脑与帐号先准备好"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "在自己的 Mac 或 Windows 电脑安装或更新 ChatGPT 桌面版，登入与 iPhone 相同的帐号及工作区，确认能使用 Codex。将"
+            },
+            {
+              "type": "link",
+              "text": "Small Steps 练习包",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "解压，以 expected 副本建立 codex-iphone-lab 专案。保留原 expected，并先在主机确认五个程式档存在；不要用私人正式专案做首次配对测试。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "在 App Store 核对发行者 OpenAI，安装或更新官方 ChatGPT。完成 SSO、多因素验证或通行金钥等画面要求，再回来设定 Remote。组织帐号可能需要管理员启用 Remote Control；功能也可能依帐号逐步提供。没有 Remote 时先记录版本与工作区，不要以更换 Safari 或重装 CLI 作为已取得入口的证据。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤一：从相机扫码进入 Remote"
+        },
+        {
+          "type": "paragraph",
+          "text": "在主机桌面版开 Settings → Connections → Control this Mac or PC，选 Set up 或 Add，完成要求的验证并显示配对 QR code。iPhone 开「相机」的拍照模式，让完整 QR code 进入画面，点侦测到的连结；也可使用控制中心的扫描码工具。这不是把 QR code 拍照后上传给聊天机器人，扫出的连结应带你到官方 ChatGPT 设定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若扫不到，先调整距离让整个码可见、减少萤幕反光，确认用的是拍照或扫码模式。若连结只开 Safari，确认官方 App 已装好、登入正确，再从主机重启设定流程。不要把配对网址贴到公开讨论区排错；QR code、验证码与帐号资料都不应出现在公开教学图。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在手机设定流程确认帐号、工作区与主机，成功后 Remote 中应出现该主机。只看到登入完成页还不够；要能选主机，找到 codex-iphone-lab 专案并开启 Codex 任务。如果列表是另一台电脑，回主机设定核对配对对象。图的 1 是 iPhone 入口，2 是选中的主机，3 是可核对的专案结果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤二：送出第一个明确读档要求"
+        },
+        {
+          "type": "paragraph",
+          "text": "在手机 Remote 的专案任务输入框贴上下面内容。先检查档名与函式名称没有被键盘自动修正；这是自然语言提示词，不是要 iPhone 执行终端机命令。送出一次后留在该任务观察回复，记下任务标题或可以再次辨认的资讯，避免切换 App 后找不到原工作。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期回复会从 app.js 找到 mokaair-codex-todo-v1，从 core.mjs 指出 completed 栏位及 addTask 的空白检查，也应提供实际工作目录。若只有一般待办程式知识，追问它实际读了哪个档案；若目录不符，先停止本次要求、回正确主机和专案。不要把一段听起来合理的说明当成成功连线的证据。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤三：追问、核准与查看进度"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "这次追问检查同一任务的上下文，回复应预期 Completed 只显示 Read，空白标题被拒绝；它也应分开列出已读程式、真的跑过的测试与尚未操作的画面。只分析原始码就标成「预期行为」，不能改称已在手机完成测试。你可在电脑的本机预览亲自做上述步骤，补上验证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若手机出现批准要求，先看操作内容、目录与影响范围，再决定是否符合你刚才的要求。本例只读档，无须为了前进而准许新增外部帐号、发布网站或删除资料。若看不清楚长命令，回主机检视完整内容再处理。批准视窗没有出现时先回 Remote 原任务确认状态，不用连续新建任务催它。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤四：离开后回到同一任务"
+        },
+        {
+          "type": "paragraph",
+          "text": "等唯读回复完成后，暂时切到另一个 iPhone App，再回 ChatGPT → Remote，选相同主机与任务。核对最后一笔回复及目前状态，送出「请重新读取目前目录」的短追问，确认不是只在看先前快取文字。手机画面仍保留旧回复，不能证明主机此刻在线；只有新的读取结果才能确认当下可工作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通知用来提醒完成或需要注意，不代替成果验收。若未收到通知，可主动回任务查看；若主机睡眠、断网或关闭 App，先恢复主机，再核对上次要求是否已完成。尤其有写入的后续任务，不要因手机暂时断线就重送同一个建立或提交要求。这次以唯读练习学会恢复工作流程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成检查与常见误会"
+        },
+        {
+          "type": "table",
+          "header": [
+            "核对项目",
+            "成功证据",
+            "不足的证据"
+          ],
+          "rows": [
+            [
+              "配对",
+              "Remote 可选正确主机",
+              "只有相同帐号登入"
+            ],
+            [
+              "读档",
+              "正确目录、储存键与函式来源",
+              "泛泛解释待办程式"
+            ],
+            [
+              "接续",
+              "同任务的新读取成功",
+              "只看到旧通知或回复"
+            ],
+            [
+              "验收",
+              "电脑端核对档案与操作",
+              "模型只说测试没问题"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "主机的 localhost 网址在 iPhone Safari 会指向手机自己，不是那台电脑。查看练习成果时，先从 Remote 任务看主机提供的截图或结果，再回电脑开本机预览；公开预览与部署是另一个步骤。要停止手机存取，依"
+            },
+            {
+              "type": "link",
+              "text": "主机设定篇",
+              "url": "https://mokaair.com/zh-CN/life/codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": "管理连线，并分开确认任务是否停止；登出不会自动删除既有配对。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "最后请 Codex 整理主机／目录、已检查内容、未跑测试与下一步，再回电脑逐项对照；不包含帐号或验证码。这份交接纪录让你下次用手机查进度时，能知道哪些真的完成。接著看"
+            },
+            {
+              "type": "link",
+              "text": "跨装置工作",
+              "url": "https://mokaair.com/zh-CN/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "link",
+              "text": "上下文交接",
+              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "；若另有 Android 手机，可用"
+            },
+            {
+              "type": "link",
+              "text": "Android 专篇",
+              "url": "https://mokaair.com/zh-CN/life/codex-mobile-android"
+            },
+            {
+              "type": "text",
+              "text": "完成同等验收。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mobile-ios/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "iPhone QR scanning",
+          "url": "https://support.apple.com/guide/iphone/scan-a-qr-code-iphe8bda8762/ios",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

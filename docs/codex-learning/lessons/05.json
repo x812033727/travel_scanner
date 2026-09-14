@@ -1,0 +1,66 @@
+{
+  "id": 5,
+  "sources": [
+    "codex/cli",
+    "auth",
+    "windows/windows-app"
+  ],
+  "code": {
+    "language": "shell",
+    "code": "node --version\nnpm --version\nnpm install -g @openai/codex\ncodex --version\ncodex --help\nmkdir codex-practice\ncd codex-practice\ncodex"
+  },
+  "text": {
+    "zh-TW": [
+      "CLI 是在終端機使用 Codex 的方式。本篇統一用 npm 安裝，讓三平台有相同的檢查點；前提是已安裝可執行 node 與 npm 的環境。命令要貼在作業系統終端機，不是直接當作 Codex 對話輸入。",
+      "Windows 開啟 PowerShell；macOS 開啟 Terminal；Linux 開啟終端機。先執行 node --version 與 npm --version。若找不到命令，先完成 Node.js 環境安裝與 PATH 設定，再繼續。練習資料夾使用尚不存在的名稱。",
+      [
+        "三平台都逐行執行下方安裝與版本命令。npm install -g @openai/codex 成功後，重新開一個終端機，確認 codex --version 能顯示版本；--help 是目前安裝版本的指令入口。",
+        "Windows 若 PowerShell 擋住 npm.ps1，可在相同位置改用 npm.cmd 執行安裝；啟動可用 codex.cmd。不要為了方便關閉全系統執行政策。先用 Get-Command codex 檢查命令來自哪裡。",
+        "macOS 與 Linux 遇到全域安裝權限錯誤時，改用使用者可管理的 Node 安裝位置，或查看官方獨立安裝方法。不要直接把不明的安裝流程改成 sudo。用 command -v codex 檢查 PATH。",
+        "建立並進入練習資料夾後執行 codex，完成登入。先要求回報工作目錄與檔案，再進行修改。退出互動介面可使用 /quit；更新 npm 版本使用 npm install -g @openai/codex@latest，更新後再次記錄版本。"
+      ],
+      "新的終端機能找到 codex，互動工作階段顯示正確資料夾，唯讀任務能回覆。安裝成功與登入成功要分別確認。",
+      "找不到指令時先重開終端機並检查 PATH；登入卡住時回到原本終端機查看狀態。不要在多個 shell 同時反覆安裝。WSL 是另一個環境，需確認目前跑的是 Windows 還是 Linux 路徑。",
+      "請只列出目前工作目錄與檔案，說明你可讀取的練習資料夾，不要做任何修改。"
+    ],
+    "en": [
+      "The CLI runs Codex inside a terminal. This tutorial uses npm consistently across three operating systems, assuming a working Node.js and npm installation. Enter installation commands in your operating-system shell, not as messages inside a Codex conversation.",
+      "Open PowerShell on Windows, Terminal on macOS or a terminal on Linux. Check node --version and npm --version first. If either is missing, set up Node.js and PATH before continuing. Use a new name for the practice folder.",
+      [
+        "On all three systems, run the installation and version checks below one line at a time. After npm install -g @openai/codex, open a fresh terminal and confirm codex --version. Use --help for the options supported by that installed release.",
+        "If PowerShell blocks npm.ps1, use npm.cmd for installation and codex.cmd to start the client. Do not disable system-wide execution policy just to bypass it. Get-Command codex identifies the executable.",
+        "On macOS or Linux, a global npm permission error calls for a user-managed Node installation or the official standalone installation route. Do not blindly add sudo to an unfamiliar installer. Check command -v codex.",
+        "Create and enter the practice folder, run codex and finish sign-in. Ask for the directory and file list before edits. Use /quit to exit. Update the npm installation with npm install -g @openai/codex@latest and record the new version."
+      ],
+      "A fresh terminal can find Codex, the interactive session uses the intended directory and a read-only task responds. Verify installation and authentication separately.",
+      "For a missing command, reopen the terminal and inspect PATH. For stalled login, check the original terminal. Avoid simultaneous installations in several shells. WSL is a separate environment: verify whether paths are Windows or Linux.",
+      "List only the current working directory and files. Explain which practice folder you can read, without making changes."
+    ],
+    "ja": [
+      "CLI は端末で Codex を使う方法です。この手順では Node.js と npm が動く環境を前提に、三つの OS で npm を使います。インストール用コマンドは Codex の会話ではなく OS のシェルに入力します。",
+      "Windows は PowerShell、macOS は Terminal、Linux は端末を開き、node --version と npm --version を確認します。見つからなければ Node.js と PATH を設定します。練習には新しいフォルダー名を使います。",
+      [
+        "下のコマンドを一行ずつ実行します。npm install -g @openai/codex の後、新しい端末で codex --version を確認します。--help は導入済みバージョンの参照先です。",
+        "PowerShell が npm.ps1 を拒否したら npm.cmd を使用し、起動は codex.cmd で試せます。システム全体の実行ポリシーを無効化せず、Get-Command codex で場所を確認します。",
+        "macOS・Linux の権限エラーでは、ユーザー管理の Node 環境か公式の単独インストーラーを検討します。内容不明の処理に sudo を付けません。command -v codex で PATH を確認します。",
+        "フォルダーを作成して移動し、codex を起動してログインします。編集前に作業場所を報告させます。終了は /quit、npm 版の更新は npm install -g @openai/codex@latest で行い、再度バージョンを記録します。"
+      ],
+      "新しい端末で起動でき、正しいフォルダーの読み取り結果が返れば完了です。導入と認証は別々に確認します。",
+      "見つからない場合は端末の再起動と PATH を確認します。WSL は別環境なので Windows と Linux のどちらのパスを使っているかも確認します。",
+      "現在の作業ディレクトリとファイルだけを一覧にしてください。読める練習フォルダーを説明し、変更は行わないでください。"
+    ],
+    "ko": [
+      "CLI는 터미널에서 Codex를 사용하는 방법입니다. 이 문서는 Node.js와 npm이 작동한다는 전제에서 세 OS 모두 npm 설치를 사용합니다. 설치 명령은 Codex 대화가 아니라 운영체제 셸에 입력합니다.",
+      "Windows는 PowerShell, macOS는 Terminal, Linux는 터미널을 엽니다. node --version과 npm --version을 확인하고 없으면 Node.js와 PATH를 먼저 설정하세요. 연습 폴더는 새 이름을 사용합니다.",
+      [
+        "아래 명령을 한 줄씩 실행합니다. npm install -g @openai/codex 이후 새 터미널을 열어 codex --version을 확인합니다. --help는 설치된 버전이 지원하는 옵션을 보여 줍니다.",
+        "PowerShell이 npm.ps1을 차단하면 npm.cmd로 설치하고 codex.cmd로 시작할 수 있습니다. 시스템 전체 실행 정책을 해제하지 말고 Get-Command codex로 명령 위치를 확인합니다.",
+        "macOS나 Linux에서 전역 npm 권한 오류가 나면 사용자 관리 Node 환경이나 공식 독립 설치 방법을 이용합니다. 모르는 설치 명령에 무조건 sudo를 붙이지 않습니다. command -v codex로 경로를 확인합니다.",
+        "폴더를 만들고 이동한 뒤 codex를 실행하고 로그인합니다. 편집 전에 작업 경로를 보고하도록 하세요. 종료는 /quit, npm 버전 업데이트는 npm install -g @openai/codex@latest를 사용하고 버전을 다시 기록합니다."
+      ],
+      "새 터미널에서 Codex가 실행되고 올바른 폴더의 읽기 요청에 응답하면 완료입니다. 설치 성공과 인증 성공은 따로 확인합니다.",
+      "명령을 못 찾으면 터미널 재시작과 PATH를 확인하세요. WSL은 별도 환경이므로 Windows 경로인지 Linux 경로인지 구분해야 합니다. 여러 셸에서 동시에 설치하지 마세요.",
+      "현재 작업 디렉터리와 파일만 나열하세요. 읽을 수 있는 연습 폴더를 설명하고 변경하지 마세요."
+    ]
+  }
+}

@@ -20,8 +20,6 @@ scope:
   - apps/api/app/guides/content/claude-code-mcp-servers.json
   - apps/api/app/guides/content/claude-code-hooks-and-skills.json
   - apps/api/app/guides/content/claude-code-on-the-web.json
-  - apps/api/app/guides/content/codex-cli-getting-started.json
-  - apps/api/app/guides/content/codex-cloud-tasks-github.json
   - apps/api/app/guides/content/gemini-cli-getting-started.json
   - apps/api/app/guides/content/cursor-editor-guide.json
   - apps/api/app/guides/content/github-copilot-guide.json
@@ -40,8 +38,6 @@ scope:
   - apps/web/public/guides/claude-code-mcp-servers
   - apps/web/public/guides/claude-code-hooks-and-skills
   - apps/web/public/guides/claude-code-on-the-web
-  - apps/web/public/guides/codex-cli-getting-started
-  - apps/web/public/guides/codex-cloud-tasks-github
   - apps/web/public/guides/gemini-cli-getting-started
   - apps/web/public/guides/cursor-editor-guide
   - apps/web/public/guides/github-copilot-guide
@@ -116,3 +112,5 @@ npm run check:tasks
 ## Notes
 
 - 前三批旅遊文章的經驗：兩篇一個代理會在半小時左右撞到額度，一篇一個代理、先寫檔再寫報告最穩。
+
+2026-09-14: The two Codex articles (codex-cli-getting-started and codex-cloud-tasks-github), including their public image directories, are transferred to 2026-09-14-codex-learning-series under the user's approved five-language Codex plan. This task was open and unowned at transfer; retain the other 18 articles here. Do not recreate the transferred files.

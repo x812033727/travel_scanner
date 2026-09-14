@@ -1,0 +1,65 @@
+{
+  "id": 2,
+  "sources": [
+    "auth",
+    "pricing"
+  ],
+  "code": {
+    "language": "shell",
+    "code": "codex login status\ncodex --help"
+  },
+  "text": {
+    "zh-TW": [
+      "先確認登入方式，才能判斷用量扣在哪裡。ChatGPT 帳號登入使用方案提供的 Codex 額度；以 API key 使用支援的客戶端則需要另行確認 API 帳務。這篇不固定寫入容易過期的價格或訊息上限，而是教你找到自己帳號的有效資訊。",
+      "准备可登入的帳號、瀏覽器，以及需要使用的工作區名稱。團隊帳號先確認組織是否開放 Codex。不要把金鑰、登入代碼或瀏覽器授權網址貼進公開問題。",
+      [
+        "桌面版依登入畫面選 ChatGPT 帳號。CLI 執行 codex，依提示完成瀏覽器登入。瀏覽器登入後回到原本視窗，確認成功，而不是一直另開登入程序。",
+        "在 CLI 執行 codex login status，確認登入類型；在介面確認目前工作區。個人空間與公司空間可能有不同政策，切錯空間會造成看似沒有權限。",
+        "查看產品內的用量或方案頁，記錄目前餘額、重設時間與模型條件。若顯示用掉的百分比，剩餘量是 100 減掉它；沒有數字不代表無限制。",
+        "若改用 API key，先在 API 帳務頁確認付款與用量設定，再使用官方文件的登入方法。只在受保護的環境變數或認證流程輸入，完成後用一個小型唯讀任務測試。"
+      ],
+      "記下登入方式、工作區、計費來源與可查看用量的位置。之後額度不足時，就能先分辨是方案限制、帳號政策還是 API 帳務。",
+      "瀏覽器登入成功但 CLI 未登入時，確認是否完成回跳及使用相同的電腦環境。不要直接複製 auth.json 到別人的電腦。額度或功能若與文章不同，以當下帳號介面為準。",
+      "請解釋這次工作使用哪種登入與用量來源，只回報非敏感的狀態，不要顯示金鑰或認證檔案。"
+    ],
+    "en": [
+      "Check how you signed in before interpreting usage. ChatGPT sign-in uses the Codex allowance associated with that account; API-key authentication in a supported client requires checking API billing separately. This tutorial teaches you where to verify your own allowance rather than freezing a price or message limit that may change.",
+      "Have your account, browser and intended workspace name ready. For a managed account, check that Codex is enabled. Never paste keys, sign-in codes or authorization URLs into a public issue.",
+      [
+        "In desktop, follow the ChatGPT sign-in flow. In CLI, run codex and finish the browser sign-in when prompted. Return to the original terminal to confirm completion.",
+        "Run codex login status in CLI and check the workspace in the interface. Personal and organization workspaces can enforce different access policies.",
+        "Open the product's usage or plan screen. Record the remaining allowance, reset time and applicable model conditions. If a screen shows percent used, subtract it from 100 to calculate the remainder; missing data does not mean unlimited usage.",
+        "Before switching to an API key, verify API billing and usage settings, then follow the official authentication instructions. Enter secrets only through the protected credential flow or environment, and try a small read-only task."
+      ],
+      "Record the authentication method, workspace, billing source and location of the usage screen. These distinguish allowance limits from workspace policy or API billing failures.",
+      "If browser sign-in succeeded but CLI did not, check the callback and whether both ran in the same computer environment. Do not copy auth.json to someone else's computer. Your current account screen is authoritative for availability.",
+      "Explain the non-sensitive sign-in and usage source for this task. Do not reveal keys or authentication files."
+    ],
+    "ja": [
+      "利用量を見る前にログイン方法を確認します。ChatGPT アカウントでのログインと、対応クライアントでの API キー認証では、確認すべき請求先が異なります。変化しやすい価格や回数を固定せず、自分のアカウントで確かめる方法を学びます。",
+      "アカウント、ブラウザー、利用するワークスペース名を用意します。管理されたアカウントでは Codex の利用許可を確認します。キー、認証コード、認証 URL を公開の質問に貼らないでください。",
+      [
+        "デスクトップでは ChatGPT のログイン手順に従います。CLI は codex を実行し、案内されたブラウザー認証を完了して元の端末へ戻ります。",
+        "CLI で codex login status を実行し、画面でもワークスペースを確認します。個人用と組織用で権限が異なることがあります。",
+        "製品の利用量またはプラン画面で、残量、リセット時刻、対象モデルを記録します。使用済みの割合なら 100 から引いた数が残りです。不明な表示を無制限と解釈しません。",
+        "API キーへ切り替える場合は、先に API の請求と利用設定を確認します。公式の認証手順を使い、保護された入力経路や環境変数で扱い、小さい読み取りタスクで試します。"
+      ],
+      "ログイン方式、ワークスペース、請求元、利用量を確認する場所を記録できれば完了です。",
+      "ブラウザーだけ成功した場合は戻り先と実行環境を確認します。auth.json を他人のパソコンへコピーしません。利用可能な機能は現在のアカウント画面を確認します。",
+      "このタスクのログイン方式と利用量の扱いを、機密情報を含めず説明してください。キーや認証ファイルを表示しないでください。"
+    ],
+    "ko": [
+      "사용량을 해석하기 전에 로그인 방식을 확인하세요. ChatGPT 계정 로그인은 해당 계정의 Codex 사용 한도를 이용하며, 지원 클라이언트의 API 키 인증은 별도 API 결제를 확인해야 합니다. 바뀌기 쉬운 가격을 외우기보다 자신의 계정에서 확인하는 방법을 익힙니다.",
+      "계정, 브라우저, 사용할 워크스페이스 이름을 준비합니다. 조직 계정은 Codex가 허용되어 있는지 확인하세요. 키, 로그인 코드, 인증 URL을 공개 질문에 붙이지 않습니다.",
+      [
+        "데스크톱에서 ChatGPT 로그인 절차를 진행합니다. CLI는 codex를 실행하고 브라우저 인증을 마친 뒤 원래 터미널로 돌아와 성공 여부를 확인합니다.",
+        "CLI에서 codex login status를 실행하고 화면의 워크스페이스도 확인합니다. 개인 공간과 조직 공간의 정책이 다를 수 있습니다.",
+        "제품의 사용량 또는 요금제 화면에서 잔여량, 초기화 시간, 해당 모델 조건을 기록합니다. 사용한 비율이 표시되면 100에서 빼야 잔여량입니다. 수치가 없다고 무제한은 아닙니다.",
+        "API 키로 바꾸려면 API 결제와 사용 설정을 먼저 확인하고 공식 인증 절차를 따릅니다. 보호된 입력 경로나 환경 변수를 이용하고 작은 읽기 전용 작업으로 시험합니다."
+      ],
+      "인증 방식, 워크스페이스, 과금 출처와 사용량 확인 위치를 기록하면 완료입니다.",
+      "브라우저만 로그인되었다면 콜백과 실행 환경을 확인하세요. auth.json을 다른 사람의 컴퓨터로 복사하지 않습니다. 기능 제공 여부는 현재 계정 화면에서 확인합니다.",
+      "이 작업의 로그인 방식과 사용량 출처를 민감한 정보 없이 설명하세요. 키나 인증 파일을 표시하지 마세요."
+    ]
+  }
+}

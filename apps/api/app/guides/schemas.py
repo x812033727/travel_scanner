@@ -224,9 +224,48 @@ class PartnerLinkBlock(StrictModel):
     note: PlainText = Field(default="", max_length=200)
 
 
+class InlineText(StrictModel):
+    type: Literal["text"]
+    text: str = Field(min_length=1, max_length=4000)
+
+    @field_validator("text")
+    @classmethod
+    def validate_text(cls, value: str) -> str:
+        plain_text(value)
+        return value
+
+
+class InlineLink(InlineText):
+    type: Literal["link"]  # type: ignore[assignment]
+    url: Annotated[str, AfterValidator(safe_http_url)] = Field(max_length=2000)
+
+
+class RichParagraphBlock(StrictModel):
+    type: Literal["rich_paragraph"]
+    spans: list[Annotated[InlineText | InlineLink, Field(discriminator="type")]] = Field(
+        min_length=1, max_length=40
+    )
+
+
+class CodeBlock(StrictModel):
+    type: Literal["code"]
+    language: str = Field(pattern=r"^[a-zA-Z0-9#+.-]{1,30}$")
+    code: str = Field(min_length=1, max_length=20000)
+
+    @field_validator("code")
+    @classmethod
+    def printable_code(cls, value: str) -> str:
+        # Preserve whitespace and literal markup. The renderer always escapes code.
+        if re.search(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]", value):
+            raise ValueError("control characters are not supported")
+        return value.replace("\r\n", "\n").replace("\r", "\n")
+
+
 GuideBlock = Annotated[
     HeadingBlock
     | ParagraphBlock
+    | RichParagraphBlock
+    | CodeBlock
     | ListBlock
     | LinkBlock
     | ImageBlock

@@ -1,0 +1,64 @@
+{
+  "id": 31,
+  "sources": [
+    "prompting",
+    "browser",
+    "code-review"
+  ],
+  "codeFile": "docs/codex-learning/examples/index.html",
+  "codeLanguage": "html",
+  "text": {
+    "zh-TW": [
+      "這個實戰把前面的需求、Plan、MD 規則、瀏覽器與驗收串起來，完成一個三張卡片的虛構工作室網站。以單一 HTML 做出清楚的內容與自適應版面，練習完整交付，而不是追求一次加入很多功能。",
+      "預留約 45 分鐘，準備空的練習資料夾、文字編輯器、Codex 與瀏覽器。下方是可直接儲存為 index.html 的完整參考成品；你可以先讓 Codex 做自己的版本，再用相同的驗收比較。",
+      [
+        "先寫簡短需求：主標、介紹、三張專案卡、頁內導覽、說明區。資料全為虛構，不需要表單、帳號、API 或外部字型。用 Plan 模式確認範圍後再實作。",
+        "建立 README 與簡短 AGENTS.md，說明單檔限制、文字內容、手機排版與驗收。要求 Codex 只在練習資料夾建立頁面，保留所有已提供的內容。",
+        "開啟實際頁面：先以 390px 看單欄卡片，再以 1280px 看三欄；用 Tab 移動到兩個導覽連結，按 Enter 確認會到相應區塊，檢查焦點輪廓與文字對比。",
+        "請 Codex 修正一項實際問題，重新跑同樣驗收，再檢查 diff。交付說明列出檔案、啟動方式、已測尺寸與尚未測的環境；此流程不包含公開部署。"
+      ],
+      "頁面有完整內容、可用的頁內導覽、手機單欄與桌面三欄。瀏覽器沒有頁面橫向溢出，鍵盤可操作，重新開啟檔案仍正常。",
+      "如果代理加入依賴或後端，回到第一版限制。連結能看到不代表能使用，要真的按 Enter；本機打開成功也不等於已上線。不同系統依官方文件操作，沒有實测的環境保留標示。",
+      "製作單一 HTML 的虛構工作室網站，包含主標、介紹、三张卡片、頁內導覽與說明區。用原生 HTML/CSS，手機一欄、桌面三欄，不使用外部資源。先確認計畫，再實作，最後以鍵盤與兩種寬度驗證。"
+    ],
+    "en": [
+      "This workshop connects clear requests, planning, MD instructions, browser checks and delivery. Build a fictional studio site with three cards in one HTML file. Practice a complete, inspectable result before expanding features.",
+      "Allow about 45 minutes and prepare an empty folder, editor, Codex and browser. The complete reference below can be saved as index.html. You can first ask Codex to build its own version, then compare both against the same criteria.",
+      [
+        "Define a headline, introduction, three project cards, in-page navigation and an about section. Use fictional content without forms, accounts, APIs or external fonts. Confirm scope in Plan mode before implementing.",
+        "Create README and concise AGENTS.md instructions covering the single-file constraint, supplied wording, mobile layout and checks. Restrict edits to the practice folder.",
+        "Open the real page at 390px for one column and 1280px for three. Tab to both navigation links, press Enter and verify the correct section, visible focus and readable contrast.",
+        "Request one observed correction, repeat the same checks and review the diff. Deliver files, opening instructions, tested widths and untested environments. Public deployment is outside this exercise."
+      ],
+      "The page has complete content, working anchor navigation and responsive columns without page-level overflow. Keyboard navigation works and reopening the file preserves behavior.",
+      "If unnecessary dependencies appear, restate the first-version boundary. Visible links still need interaction tests. A locally opened file is not a published website; report platforms that were not actually tested.",
+      "Build one HTML file for a fictional studio with headline, introduction, three cards, anchor navigation and an about section. Use native HTML/CSS, one column on phones and three on desktop, with no external resources. Plan, implement, then verify by keyboard at both widths."
+    ],
+    "ja": [
+      "依頼、計画、MD 規則、ブラウザー確認をつなげ、三枚のカードを持つ架空のスタジオサイトを作ります。単一 HTML で検証まで完了する練習です。",
+      "約 45 分、空フォルダー、エディター、Codex、ブラウザーを用意します。下の完成例は index.html として保存できます。まず自分の版を依頼して同じ基準で比較できます。",
+      [
+        "主見出し、紹介、三枚のカード、ページ内移動、説明欄を定義します。架空情報だけを使い、フォーム、API、外部フォントなしで計画します。",
+        "README と AGENTS.md に単一ファイル、文章保持、モバイル表示、検証条件を書き、練習フォルダー内だけで作成させます。",
+        "390px で一列、1280px で三列を確認します。Tab と Enter で二つのリンクを使い、移動先、フォーカス、文字の見やすさを確認します。",
+        "実際の問題を一つ直し、同じ検証と差分確認を行います。ファイル、開き方、検証済み寸法、未検証環境を報告します。公開は含めません。"
+      ],
+      "内容、ページ内移動、レスポンシブ表示があり、横にはみ出さず、キー操作と再表示が正常なら完了です。",
+      "不要な依存があれば条件を伝え直します。リンクは実際に操作します。ローカル表示と公開を区別します。",
+      "架空スタジオの単一 HTML を作ってください。見出し、紹介、三枚のカード、ページ内リンク、説明欄を含めます。外部資源なしでモバイル一列、デスクトップ三列にし、計画後に実装してキー操作と二つの幅を検証してください。"
+    ],
+    "ko": [
+      "요청, 계획, MD 규칙과 브라우저 검사를 연결하여 카드 세 개가 있는 가상 스튜디오 사이트를 만듭니다. HTML 한 파일로 검증까지 완료하는 연습입니다.",
+      "약 45분, 빈 폴더, 편집기, Codex와 브라우저를 준비합니다. 아래 완성 예시는 index.html로 저장할 수 있습니다. 먼저 자신만의 버전을 요청한 뒤 같은 기준으로 비교할 수 있습니다.",
+      [
+        "큰 제목, 소개, 카드 세 개, 페이지 내 이동과 설명 영역을 정의합니다. 가상 정보만 쓰고 폼, API와 외부 글꼴 없이 계획합니다.",
+        "README와 AGENTS.md에 단일 파일, 문구 유지, 모바일 배치와 검증 조건을 적고 연습 폴더 안에서만 만들게 합니다.",
+        "390px에서 한 열, 1280px에서 세 열을 확인합니다. Tab과 Enter로 두 링크를 사용하고 이동 위치, 포커스와 글자 대비를 확인합니다.",
+        "실제 문제 하나를 고치고 같은 검증과 diff 확인을 반복합니다. 파일, 여는 방법, 확인한 크기와 미검증 환경을 보고합니다. 공개 배포는 포함하지 않습니다."
+      ],
+      "내용, 페이지 내 이동과 반응형 배치가 있고 가로 넘침 없이 키보드와 다시 열기가 작동하면 완료입니다.",
+      "불필요한 의존성이 생기면 조건을 다시 전달하세요. 링크는 실제 조작하고 로컬 표시와 공개 배포를 구분합니다.",
+      "가상 스튜디오의 단일 HTML을 만드세요. 제목, 소개, 카드 세 개, 페이지 내 링크와 설명 영역을 포함합니다. 외부 자원 없이 모바일 한 열, 데스크톱 세 열로 만들고 계획 후 구현하여 키보드와 두 너비를 검증하세요."
+    ]
+  }
+}

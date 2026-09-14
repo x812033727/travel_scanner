@@ -1,0 +1,65 @@
+{
+  "id": 11,
+  "sources": [
+    "developer-commands",
+    "codex/cli"
+  ],
+  "code": {
+    "language": "shell",
+    "code": "codex --help\ncodex --version\ncodex resume\ncodex exec --help\ncodex mcp --help"
+  },
+  "text": {
+    "zh-TW": [
+      "Codex 有終端機命令、互動介面的斜線指令、鍵盤快捷鍵與自然語言需求四種操作。先知道要把內容輸入在哪裡，才不會在 shell 輸入 /plan，或把 codex --help 當成要代理修改程式的要求。",
+      "開啟 CLI 並記下 codex --version。斜線選單會隨版本與目前狀態變動，本篇是使用方法與常用入口；完整支援清單以已安裝版本的 / 選單與官方文件為準。",
+      [
+        "尚未進入 Codex 時，在 shell 執行下方 --help 命令。主命令看整體功能，子命令 --help 看該功能的旗標與參數。旗標後的值有空格時需要正確引號。",
+        "進入互動介面後輸入 / 查看選單。/status 用來看工作階段狀態，/model 選模型，/permissions 檢視權限，/plan 切到規劃，/review 開始程式審查。先讀畫面再選值。",
+        "需要整理長對話時查看 /compact；要結束使用 /quit。回到 shell 後可用 codex resume 選擇舊工作階段，先核對專案與時間再續接。不要把 resume 當成 Git 還原。",
+        "快捷鍵依介面顯示的說明操作；自然語言則用來交代要做什麼。練習依序看狀態、提出唯讀问题、退出並恢復，記下命令與實際效果。"
+      ],
+      "你能分辨五個常用斜線指令與 shell 命令，並能退出後恢復正確工作。每次操作都知道它是改設定、查狀態還是提交任務。",
+      "找不到斜線指令時先確認是否在互動介面及是否正在執行工作。不要照抄其他客戶端的選單。命令出錯時保留版本與完整錯誤文字，移除認證資料後再求助。",
+      "請解釋目前專案，不修改檔案。完成後列出你檢查了哪些檔案，以及還有哪些資訊不足。"
+    ],
+    "en": [
+      "Codex has shell commands, interactive slash commands, keyboard shortcuts and natural-language requests. Identify the input surface first: /plan belongs in the interactive client, while codex --help belongs in the operating-system shell.",
+      "Record codex --version. Slash menus vary with release and current state. This tutorial explains common entry points; the installed client's / menu and official reference define actual support.",
+      [
+        "Before entering Codex, run the --help commands below in your shell. Main help lists capabilities; subcommand help lists flags and arguments. Quote argument values containing spaces.",
+        "Inside Codex, type / to browse. /status shows session state, /model selects a model, /permissions inspects permissions, /plan enters planning and /review starts code review. Read the displayed choices before changing a value.",
+        "For a long conversation inspect /compact; use /quit to leave. In the shell, codex resume selects a saved session. Verify its project and time before continuing. Resuming a conversation does not restore Git files.",
+        "Use the interface's current shortcut help for keyboard controls. Use ordinary language to request work. Practice checking status, asking a read-only question, exiting and resuming, recording each effect."
+      ],
+      "You can distinguish common slash commands from shell commands and resume the correct task. You know whether an action changes settings, checks state or submits work.",
+      "If a command is missing, check that you are inside the interactive client and whether a task is running. Do not assume another client's menu applies. Keep version and sanitized error text for diagnosis.",
+      "Explain this project without editing files. List the files inspected and any information still missing."
+    ],
+    "ja": [
+      "操作にはシェルコマンド、対話画面のスラッシュコマンド、ショートカット、自然文の依頼があります。/plan は対話画面、codex --help は OS の端末に入力します。",
+      "codex --version を記録します。選択肢はバージョンや実行状態で変わるため、導入済みの / メニューと公式参照を確認します。",
+      [
+        "Codex 起動前に下の --help を実行します。主コマンドは全体、サブコマンドは個別の引数を表示します。空白のある値は引用符で囲みます。",
+        "起動後に / を入力します。/status は状態、/model はモデル、/permissions は権限、/plan は計画、/review はレビューです。選択内容を読んで操作します。",
+        "長い会話には /compact、終了は /quit を確認します。シェルで codex resume を使い、日時とプロジェクトを確かめて再開します。Git の復元とは別です。",
+        "キー操作は画面のヘルプを参照します。状態確認、読み取り依頼、終了、再開の順に試し、実際の効果を記録します。"
+      ],
+      "コマンドの入力場所を区別し、正しい作業を再開できれば完了です。",
+      "選択肢がない場合は対話画面か、実行中かを確認します。他クライアントのメニューをそのまま使わず、バージョンと機密情報を除いたエラーを残します。",
+      "ファイルを変更せずプロジェクトを説明してください。調べたファイルと不足している情報を示してください。"
+    ],
+    "ko": [
+      "조작은 셸 명령, 대화형 슬래시 명령, 키보드 단축키와 자연어 요청으로 구분됩니다. /plan은 대화형 화면에, codex --help는 운영체제 셸에 입력합니다.",
+      "codex --version을 기록합니다. 메뉴는 버전과 실행 상태에 따라 달라지므로 설치된 클라이언트의 / 메뉴와 공식 참조를 확인하세요.",
+      [
+        "Codex를 열기 전에 아래 --help 명령을 실행합니다. 주 명령은 전체 기능, 하위 명령은 개별 인자를 보여 줍니다. 공백이 있는 값은 따옴표로 감쌉니다.",
+        "대화형 화면에서 /를 입력합니다. /status는 상태, /model은 모델, /permissions는 권한, /plan은 계획, /review는 리뷰입니다. 화면의 선택지를 읽고 조작합니다.",
+        "긴 대화는 /compact를 확인하고 종료에는 /quit를 사용합니다. 셸에서 codex resume으로 날짜와 프로젝트를 확인한 뒤 재개합니다. Git 복원과는 다릅니다.",
+        "키보드 조작은 화면의 도움말을 봅니다. 상태 확인, 읽기 요청, 종료와 재개를 순서대로 연습하고 실제 효과를 기록합니다."
+      ],
+      "명령 입력 위치를 구분하고 올바른 작업을 재개할 수 있으면 완료입니다.",
+      "메뉴가 없으면 대화형 화면인지 실행 중인지 확인하세요. 다른 클라이언트 메뉴를 그대로 적용하지 말고 버전과 민감 정보를 제거한 오류를 기록합니다.",
+      "파일을 수정하지 말고 프로젝트를 설명하세요. 확인한 파일과 부족한 정보를 알려 주세요."
+    ]
+  }
+}

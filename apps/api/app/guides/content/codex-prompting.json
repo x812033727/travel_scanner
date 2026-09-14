@@ -1,0 +1,1516 @@
+{
+  "slug": "codex-prompting",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 107,
+  "locales": {
+    "zh-TW": {
+      "title": "如何把需求說清楚",
+      "description": "有效的需求不是把提示詞寫得很長，而是讓代理知道你要什麼、已有哪些材料、有哪些界線，以及怎樣算完成。同一個『幫我改善網頁』，可以指速度、外觀或無障礙；先把目標變成能觀察的行為。",
+      "hero": {
+        "src": "/guides/codex-prompting/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀完能做到什麼"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你會把一句模糊需求改成 Codex 可以執行、自己也能驗收的任務，並在結果不符合時補充資訊而不必整段重來。閱讀約 12 分鐘，實作約 20 分鐘。本篇使用同一個待辦網站修改表單文字；重點是需求的可驗證性，不是背誦固定的提示詞公式。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "準備可重複的起點"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "從"
+            },
+            {
+              "type": "link",
+              "text": "練習材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "複製 expected 到全新的 codex-prompt-lab；不要沿用上一課已改過文字的副本。根目錄應有五個檔案，先開啟 index.html，找到 New task 標籤、Add task 按鈕與 Read the project README 提示文字。這三個可見字串就是本篇的來源；不需要貼整個專案進對話。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "已完成"
+            },
+            {
+              "type": "link",
+              "text": "第一個小專案",
+              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "者可使用相同預覽方式。Windows 在副本執行 py -m http.server 4173 --bind 127.0.0.1；macOS／Linux 執行 python3 -m http.server 4173 --bind 127.0.0.1，瀏覽 http://127.0.0.1:4173。這一課不需要先學 Git，但要保留原版，以便確認差異或取回自己改過的檔案。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：找出模糊要求缺了什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "「幫我把表單改得更好」沒有說給誰用、哪裡不好、能改哪些地方，或怎樣算完成。Codex 可能改色彩、欄位、按鈕、資料結構，甚至加入你沒需要的新套件；這不一定是它做錯，而是需求允許太多不同解讀。先用一句話說出讀者要做到的事，例如「新使用者能看懂怎麼新增一筆小任務」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著補四種資訊：目標、現況來源、限制、驗收。它們不是每次都要四個標題的格式，而是防止重要資訊漏掉的檢查方式。小幅改字只需幾行；跨多個檔案的新功能，才需要背景與分段計畫。不要為了看起來專業而塞入沒用的角色設定、工具清單或假裝精確的工時。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：寫出完整可執行需求"
+        },
+        {
+          "type": "paragraph",
+          "text": "下方是本篇完整提示詞，輸入到已選定 codex-prompt-lab 的 Codex 任務，而不是作業系統終端機。它明確指出一個 HTML 檔案與兩個字串變更，保留可及性標籤、事件繫結與資料格式，最後要求實際檢查。New task 保持不變是為了保留表單的可見標籤，不是要把所有文字強行改成同一個詞。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "背景已經在檔案裡的資訊，讓 Codex 先讀檔即可；指向精確檔名比複製整份歷史紀錄更有用。如果實際畫面沒有 Add task，先停下核對是否使用原版。不要將不符合起點的要求硬套上去，或讓它在所有檔案搜尋相似文字後全部替換。可重現範例的第一個條件就是起點一致。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：用成果判斷，而不是看回答長度"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成後開啟 index.html，應只看到按鈕文字與 placeholder 改動。New task 仍是與輸入框相連的標籤，type=\"submit\"、id、name、maxlength、required 都保留。再開其他四個檔案與原版比較，確認沒有順手改架構。若 Codex 回覆很短但差異正確、驗證完整，這仍然是好交付；很長的說明不能替代缺少的檔案與結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 http 預覽新增 Read，勾選完成，Completed 應只顯示已完成專案，重新整理後保留。空白輸入不能增加專案；Tab 焦點仍可到達輸入與提交按鈕。這些行為應與修改前一致。若只有文字改對、按鈕不能提交，表示驗收失敗，下一輪要指出實際現象，而不是籠統說「不好用」。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "結果不符時，補充一個可重現例子"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設只看到 Save task 改對，而 placeholder 還是舊文。先確認瀏覽器重新整理及檔案已存檔，再發下方追補。這裡明列已正確的部分、目前錯誤與預期，不要求把整個頁面重做。若是你在中途改了需求，也要說明哪個條件取代前一版，避免兩組相反要求同時留在任務裡。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "The button text is correct; preserve that change.\nAfter saving and refreshing, the placeholder still reads \"Read the project README\".\nExpected placeholder: \"Plan one small step\".\nInspect index.html and correct only the remaining placeholder mismatch.\nReport the relevant diff and any verification you can actually perform.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "更複雜的情況可以先用"
+            },
+            {
+              "type": "link",
+              "text": "Plan 模式",
+              "url": "https://mokaair.com/zh-TW/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "列出步驟與不確定點，但規劃不是驗證。計畫說會跑測試，不代表測試已執行；回答說會保留資料，也要檢查真實資料與程式。當需求有會改變方案的缺口，例如是否需要登入或同步，先回答這種問題，再開始相依功能，通常比做完重工更省事。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三種常見問題與修正"
+        },
+        {
+          "type": "paragraph",
+          "text": "改太多：檢查需求是否用了「全面最佳化」「順便全部整理」等擴張範圍的字句，改為列出指定檔案與保留專案，再逐項還原無關差異。一直問問題：補足真正影響決策的條件，普通字型或檔名選擇可授權它依既有風格決定。回答看似完成卻沒證據：要求列出實際命令結果與未執行專案，不要求它換句話說「已完成」。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "遇到反覆失敗，先保留最小重現資料、錯誤文字與最後已知正常狀態，再縮小到一個問題；不要每次都重貼整段無關歷史。若任務長到需要交接，可用"
+            },
+            {
+              "type": "link",
+              "text": "上下文交接",
+              "url": "https://mokaair.com/zh-TW/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "儲存目前決策。反覆要求的專案慣例則放入 "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "，每次提示詞只留下這次要完成的變更。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小練習、還原與來源"
+        },
+        {
+          "type": "paragraph",
+          "text": "把本篇目標改成「只把按鈕改為 Create task，placeholder 保留原文」，自行寫出新提示詞。驗收要明確指出 index.html 唯一改動的字串，並重做新增、空值與重新整理。結束後用保留的 expected 原版恢復 index.html，其他檔案不需替換；Python 伺服器用 Ctrl+C 停止。關閉 Codex 對話不會自動撤銷本次改字。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "提示詞原則依 2026-09-14 的"
+            },
+            {
+              "type": "link",
+              "text": "官方 Prompting 檔案",
+              "url": "https://learn.chatgpt.com/docs/prompting"
+            },
+            {
+              "type": "text",
+              "text": "核對，表單需求、輸入範例與驗收方法是本系列原創。相同英文提示詞在五語內容保持一致；模型回應不保證逐字相同，驗收看實際成果。下一步可練"
+            },
+            {
+              "type": "link",
+              "text": "新增功能",
+              "url": "https://mokaair.com/zh-TW/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "link",
+              "text": "修 Bug",
+              "url": "https://mokaair.com/zh-TW/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "，把可重現輸入與預期結果帶入更大任務。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求部分",
+            "本例的具體內容"
+          ],
+          "rows": [
+            [
+              "目標",
+              "讓新使用者理解表單"
+            ],
+            [
+              "來源",
+              "expected 的 index.html"
+            ],
+            [
+              "限制",
+              "只改兩個字串、保留資料與行為"
+            ],
+            [
+              "驗收",
+              "新增、完成、空值、重新整理"
+            ]
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/diagram-1.svg",
+          "alt": "07. 如何把需求說清楚 — 實作順序示意圖，非產品介面截圖。 Goal → Constraints → Acceptance",
+          "width": 1600,
+          "height": 900,
+          "caption": "07. 如何把需求說清楚 — 實作順序示意圖，非產品介面截圖。 Goal → Constraints → Acceptance",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/reference-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "本篇指定修改的參考成果，使用原始練習檔套用指定變更後，在 Windows / Edge 153.0.4234.32 於 2026-09-14 實際截圖。橘框是鍵盤焦點；資料皆為虛構。窄版為響應式視窗，非實體手機，也不是 Codex 介面或模型執行紀錄。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/reference-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "本篇指定修改的參考成果，使用原始練習檔套用指定變更後，在 Windows / Edge 153.0.4234.32 於 2026-09-14 實際截圖。橘框是鍵盤焦點；資料皆為虛構。窄版為響應式視窗，非實體手機，也不是 Codex 介面或模型執行紀錄。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "如何把需求说清楚",
+      "description": "有效的需求不是把提示词写得很长，而是让代理知道你要什么、已有哪些材料、有哪些界线，以及怎样算完成。同一个『帮我改善网页』，可以指速度、外观或无障碍；先把目标变成能观察的行为。",
+      "hero": {
+        "src": "/guides/codex-prompting/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "读完能做到什么"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你会把一句模糊需求改成 Codex 可以执行、自己也能验收的任务，并在结果不符合时补充资讯而不必整段重来。阅读约 12 分钟，实作约 20 分钟。本篇使用同一个待办网站修改表单文字；重点是需求的可验证性，不是背诵固定的提示词公式。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "准备可重复的起点"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "从"
+            },
+            {
+              "type": "link",
+              "text": "练习材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "复制 expected 到全新的 codex-prompt-lab；不要沿用上一课已改过文字的副本。根目录应有五个档案，先开启 index.html，找到 New task 标签、Add task 按钮与 Read the project README 提示文字。这三个可见字串就是本篇的来源；不需要贴整个专案进对话。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "已完成"
+            },
+            {
+              "type": "link",
+              "text": "第一个小专案",
+              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "者可使用相同预览方式。Windows 在副本执行 py -m http.server 4173 --bind 127.0.0.1；macOS／Linux 执行 python3 -m http.server 4173 --bind 127.0.0.1，浏览 http://127.0.0.1:4173。这一课不需要先学 Git，但要保留原版，以便确认差异或取回自己改过的档案。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：找出模糊要求缺了什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "「帮我把表单改得更好」没有说给谁用、哪里不好、能改哪些地方，或怎样算完成。Codex 可能改色彩、栏位、按钮、资料结构，甚至加入你没需要的新套件；这不一定是它做错，而是需求允许太多不同解读。先用一句话说出读者要做到的事，例如「新使用者能看懂怎么新增一笔小任务」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著补四种资讯：目标、现况来源、限制、验收。它们不是每次都要四个标题的格式，而是防止重要资讯漏掉的检查方式。小幅改字只需几行；跨多个档案的新功能，才需要背景与分段计划。不要为了看起来专业而塞入没用的角色设定、工具清单或假装精确的工时。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：写出完整可执行需求"
+        },
+        {
+          "type": "paragraph",
+          "text": "下方是本篇完整提示词，输入到已选定 codex-prompt-lab 的 Codex 任务，而不是作业系统终端机。它明确指出一个 HTML 档案与两个字串变更，保留可及性标签、事件系结与资料格式，最后要求实际检查。New task 保持不变是为了保留表单的可见标签，不是要把所有文字强行改成同一个词。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "背景已经在档案里的资讯，让 Codex 先读档即可；指向精确档名比复制整份历史纪录更有用。如果实际画面没有 Add task，先停下核对是否使用原版。不要将不符合起点的要求硬套上去，或让它在所有档案搜寻相似文字后全部替换。可重现范例的第一个条件就是起点一致。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：用成果判断，而不是看回答长度"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成后开启 index.html，应只看到按钮文字与 placeholder 改动。New task 仍是与输入框相连的标签，type=\"submit\"、id、name、maxlength、required 都保留。再开其他四个档案与原版比较，确认没有顺手改架构。若 Codex 回复很短但差异正确、验证完整，这仍然是好交付；很长的说明不能替代缺少的档案与结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 http 预览新增 Read，勾选完成，Completed 应只显示已完成专案，重新整理后保留。空白输入不能增加专案；Tab 焦点仍可到达输入与提交按钮。这些行为应与修改前一致。若只有文字改对、按钮不能提交，表示验收失败，下一轮要指出实际现象，而不是笼统说「不好用」。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "结果不符时，补充一个可重现例子"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设只看到 Save task 改对，而 placeholder 还是旧文。先确认浏览器重新整理及档案已存档，再发下方追补。这里明列已正确的部分、目前错误与预期，不要求把整个页面重做。若是你在中途改了需求，也要说明哪个条件取代前一版，避免两组相反要求同时留在任务里。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "The button text is correct; preserve that change.\nAfter saving and refreshing, the placeholder still reads \"Read the project README\".\nExpected placeholder: \"Plan one small step\".\nInspect index.html and correct only the remaining placeholder mismatch.\nReport the relevant diff and any verification you can actually perform.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "更复杂的情况可以先用"
+            },
+            {
+              "type": "link",
+              "text": "Plan 模式",
+              "url": "https://mokaair.com/zh-CN/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "列出步骤与不确定点，但规划不是验证。计划说会跑测试，不代表测试已执行；回答说会保留资料，也要检查真实资料与程式。当需求有会改变方案的缺口，例如是否需要登入或同步，先回答这种问题，再开始相依功能，通常比做完重工更省事。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三种常见问题与修正"
+        },
+        {
+          "type": "paragraph",
+          "text": "改太多：检查需求是否用了「全面最佳化」「顺便全部整理」等扩张范围的字句，改为列出指定档案与保留专案，再逐项还原无关差异。一直问问题：补足真正影响决策的条件，普通字型或档名选择可授权它依既有风格决定。回答看似完成却没证据：要求列出实际命令结果与未执行专案，不要求它换句话说「已完成」。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "遇到反复失败，先保留最小重现资料、错误文字与最后已知正常状态，再缩小到一个问题；不要每次都重贴整段无关历史。若任务长到需要交接，可用"
+            },
+            {
+              "type": "link",
+              "text": "上下文交接",
+              "url": "https://mokaair.com/zh-CN/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "储存目前决策。反复要求的专案惯例则放入 "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "，每次提示词只留下这次要完成的变更。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小练习、还原与来源"
+        },
+        {
+          "type": "paragraph",
+          "text": "把本篇目标改成「只把按钮改为 Create task，placeholder 保留原文」，自行写出新提示词。验收要明确指出 index.html 唯一改动的字串，并重做新增、空值与重新整理。结束后用保留的 expected 原版恢复 index.html，其他档案不需替换；Python 伺服器用 Ctrl+C 停止。关闭 Codex 对话不会自动撤销本次改字。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "提示词原则依 2026-09-14 的"
+            },
+            {
+              "type": "link",
+              "text": "官方 Prompting 档案",
+              "url": "https://learn.chatgpt.com/docs/prompting"
+            },
+            {
+              "type": "text",
+              "text": "核对，表单需求、输入范例与验收方法是本系列原创。相同英文提示词在五语内容保持一致；模型回应不保证逐字相同，验收看实际成果。下一步可练"
+            },
+            {
+              "type": "link",
+              "text": "新增功能",
+              "url": "https://mokaair.com/zh-CN/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "link",
+              "text": "修 Bug",
+              "url": "https://mokaair.com/zh-CN/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "，把可重现输入与预期结果带入更大任务。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求部分",
+            "本例的具体内容"
+          ],
+          "rows": [
+            [
+              "目标",
+              "让新使用者理解表单"
+            ],
+            [
+              "来源",
+              "expected 的 index.html"
+            ],
+            [
+              "限制",
+              "只改两个字串、保留资料与行为"
+            ],
+            [
+              "验收",
+              "新增、完成、空值、重新整理"
+            ]
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/diagram-1.svg",
+          "alt": "07. 如何把需求说清楚 — 实作顺序示意图，非产品介面截图。 Goal → Constraints → Acceptance",
+          "width": 1600,
+          "height": 900,
+          "caption": "07. 如何把需求说清楚 — 实作顺序示意图，非产品介面截图。 Goal → Constraints → Acceptance",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/reference-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "本篇指定修改的参考成果，使用原始练习文件应用指定更改后，在 Windows / Edge 153.0.4234.32 于 2026-09-14 实际截图。橙框是键盘焦点；数据均为虚构。窄版为响应式窗口，非实体手机，也不是 Codex 界面或模型执行记录。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/reference-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "本篇指定修改的参考成果，使用原始练习文件应用指定更改后，在 Windows / Edge 153.0.4234.32 于 2026-09-14 实际截图。橙框是键盘焦点；数据均为虚构。窄版为响应式窗口，非实体手机，也不是 Codex 界面或模型执行记录。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Write a clear task request",
+      "description": "A useful request explains the outcome, available context, boundaries and acceptance checks. 'Improve the page' could mean speed, appearance or accessibility. Convert it into observable behavior before adding more instructions.",
+      "hero": {
+        "src": "/guides/codex-prompting/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will be able to do"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Turn a vague request into a task Codex can execute and you can verify, then refine an unsatisfactory result without restarting everything. Allow 12 minutes to read and 20 to practise. You will change form text in the shared todo website. The goal is a verifiable request, not memorizing a mandatory prompt formula."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Prepare a repeatable starting point"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Copy expected from the "
+            },
+            {
+              "type": "link",
+              "text": "exercise download",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": " into a fresh codex-prompt-lab folder, rather than reusing an edited copy. Confirm its five files, then find the New task label, Add task button and Read the project README placeholder in index.html. Those three visible strings are the relevant source; you do not need to paste the whole project into chat."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Use the preview procedure from "
+            },
+            {
+              "type": "link",
+              "text": "your first project",
+              "url": "https://mokaair.com/en/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": ": py -m http.server 4173 --bind 127.0.0.1 on Windows, or python3 -m http.server 4173 --bind 127.0.0.1 on macOS/Linux, then open http://127.0.0.1:4173. Git is not required for this lesson, but retain the original so that you can compare or restore edited files."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: find what the vague request omits"
+        },
+        {
+          "type": "paragraph",
+          "text": "“Make the form better” does not identify its audience, problem, allowed scope or completion criteria. Codex could change colors, fields, buttons or data structures, or add a package you did not need. That may reflect an underspecified request rather than a mistake. Start with a user outcome, such as “A new visitor can understand how to add one small task.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "Then supply goal, current-state evidence, constraints and acceptance criteria. These are checks for missing information, not four compulsory headings for every request. A wording change may need only a few lines; a multi-file feature may need background and a staged plan. Do not add irrelevant role instructions, tool inventories or falsely precise time estimates merely to sound professional."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: write a complete actionable request"
+        },
+        {
+          "type": "paragraph",
+          "text": "Send the complete prompt below to the Codex task for codex-prompt-lab, not the operating-system shell. It names one HTML file and two string changes, preserves accessibility labels, event bindings and data format, and requests actual checks. New task remains the visible field label; not every piece of text should be forced into the same wording."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Let Codex read background already present in files; an exact filename is more useful than pasting the entire history. If the actual page has no Add task, first check whether you used the original version. Do not force mismatched instructions onto a different starting state or replace every similar string across the project. Reproducibility starts with a known baseline."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: judge evidence rather than answer length"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open index.html after completion. Only button text and placeholder should change. New task remains associated with the input, and type=\"submit\", id, name, maxlength and required remain intact. Compare the other four files with the original to rule out incidental restructuring. A concise reply with the right diff and complete verification is a good delivery; a long explanation does not replace missing changes or results."
+        },
+        {
+          "type": "paragraph",
+          "text": "In the HTTP preview, add Read, complete it, check the Completed filter and refresh to verify persistence. Whitespace must not add an item, and Tab must still reach the input and submit button. These behaviors should match the baseline. Correct wording with a broken submit button fails acceptance; describe the actual symptom in the next request instead of saying only “it is bad.”"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "When results differ, add a reproducible case"
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose Save task is correct but the placeholder is unchanged. Verify saving and browser refresh, then send the follow-up below. It distinguishes the already-correct part from the actual and expected result without requesting a whole-page rewrite. If you changed the requirement midway, explicitly state which condition supersedes the previous one so that contradictory instructions do not remain active."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "The button text is correct; preserve that change.\nAfter saving and refreshing, the placeholder still reads \"Read the project README\".\nExpected placeholder: \"Plan one small step\".\nInspect index.html and correct only the remaining placeholder mismatch.\nReport the relevant diff and any verification you can actually perform.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "For a larger task, use "
+            },
+            {
+              "type": "link",
+              "text": "Plan mode",
+              "url": "https://mokaair.com/en/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": " to identify steps and uncertainties, but planning is not verification. A promise to run tests is not a test result, and a promise to retain data still needs code and data checks. Resolve architecture-changing gaps, such as whether sign-in or synchronization is required, before dependent implementation to reduce rework."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Three common problems and corrections"
+        },
+        {
+          "type": "paragraph",
+          "text": "Too many edits: remove scope-expanding phrases such as “optimize everything,” name the permitted files and preserved behavior, then restore unrelated changes individually. Endless questions: answer conditions that affect the decision and allow routine font or filename choices to follow the existing style. Completion without evidence: request actual command results and checks not run, not another paraphrase of “done.”"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "For repeated failures, retain the smallest reproduction, error text and last known working state, then isolate one problem instead of repasting unrelated history. Use "
+            },
+            {
+              "type": "link",
+              "text": "context handoff",
+              "url": "https://mokaair.com/en/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": " for longer tasks. Put recurring project conventions in "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/en/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": ", leaving the individual prompt focused on this change."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice, restoration and sources"
+        },
+        {
+          "type": "paragraph",
+          "text": "Write a new prompt for “Change only the button to Create task and retain the original placeholder.” Acceptance should identify the sole changed string in index.html and repeat adding, empty-input and refresh checks. Restore index.html from the retained expected original afterward; no other files need replacement. Stop Python with Ctrl+C. Closing the Codex conversation does not undo the wording change."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Prompting principles were checked against "
+            },
+            {
+              "type": "link",
+              "text": "official documentation",
+              "url": "https://learn.chatgpt.com/docs/prompting"
+            },
+            {
+              "type": "text",
+              "text": " on 2026-09-14. The form request, examples and acceptance procedure are original to this series. Shared English prompts stay identical across locales; model wording can vary, while acceptance concerns actual results. Continue with "
+            },
+            {
+              "type": "link",
+              "text": "implementing a feature",
+              "url": "https://mokaair.com/en/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": " or "
+            },
+            {
+              "type": "link",
+              "text": "debugging",
+              "url": "https://mokaair.com/en/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": " using reproducible inputs and expected behavior."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "Request component",
+            "Concrete content here"
+          ],
+          "rows": [
+            [
+              "Goal",
+              "Help a new visitor understand the form"
+            ],
+            [
+              "Source",
+              "index.html from expected"
+            ],
+            [
+              "Constraints",
+              "Two strings only; preserve data and behavior"
+            ],
+            [
+              "Acceptance",
+              "Add, complete, empty input, refresh"
+            ]
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/diagram-1.svg",
+          "alt": "07. Write a clear task request — Workflow illustration, not a product screenshot. Goal → Constraints → Acceptance",
+          "width": 1600,
+          "height": 900,
+          "caption": "07. Write a clear task request — Workflow illustration, not a product screenshot. Goal → Constraints → Acceptance",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/reference-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "Reference edits applied to the practice files; actual Windows / Edge 153.0.4234.32 screenshot, 2026-09-14. Orange outline: keyboard focus. Fictional data; narrow viewport, not a physical phone. Not Codex UI or proof of model execution.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/reference-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "Reference edits applied to the practice files; actual Windows / Edge 153.0.4234.32 screenshot, 2026-09-14. Orange outline: keyboard focus. Fictional data; narrow viewport, not a physical phone. Not Codex UI or proof of model execution.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "目的が伝わる依頼の書き方",
+      "description": "よい依頼は成果、背景、制約、完了条件を明確にします。「ページを改善」だけでは速度、見た目、操作性のどれか分かりません。まず観察できる動作へ言い換えます。",
+      "hero": {
+        "src": "/guides/codex-prompting/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "このレッスンの到達点"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "曖昧な依頼を、Codex が実行でき自分も検証できるタスクに変えます。結果が違った場合も最初からやり直さず補足できるようにします。読む時間は約 12 分、実習は約 20 分です。共通 ToDo サイトのフォーム文言を変え、固定の呪文ではなく検証できる依頼を学びます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "繰り返せる開始状態を用意する"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "教材",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "の expected を新しい codex-prompt-lab にコピーし、前回の変更済みコピーを使いません。五ファイルを確認し、index.html の New task、Add task、Read the project README を探します。この三つの表示文字が今回の資料で、プロジェクト全体を会話に貼る必要はありません。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "最初のプロジェクト",
+              "url": "https://mokaair.com/ja/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "と同じ表示方法を使えます。Windows は py -m http.server 4173 --bind 127.0.0.1、macOS/Linux は python3 -m http.server 4173 --bind 127.0.0.1 をコピー内で実行し、http://127.0.0.1:4173 を開きます。Git は不要ですが、比較や復元用の原本を残してください。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 1：曖昧な依頼の不足を見つける"
+        },
+        {
+          "type": "paragraph",
+          "text": "「フォームを良くして」だけでは対象者、問題、変更範囲、完了条件が分かりません。色、項目、ボタン、データ構造、不要なパッケージまで変わるかもしれません。誤操作というより依頼の解釈が広すぎる場合があります。「初めて来た人が小さなタスクを一件追加できると分かる」など利用者の成果を先に示します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目標、現状の資料、制約、検証条件を補います。毎回四見出しが必須という意味ではなく、情報漏れの確認です。文言変更は数行で足り、多数ファイルの機能追加なら背景や段階計画が必要になります。専門的に見せるための不要な役割設定、ツール一覧、根拠のない時間指定は追加しません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 2：実行できる依頼を書く"
+        },
+        {
+          "type": "paragraph",
+          "text": "次を codex-prompt-lab の Codex タスクへ送り、OS のシェルには入力しません。一つの HTML と二つの文字変更を指定し、ラベル、イベント、データ形式を維持して実際の確認を求めます。New task は見える入力ラベルとして残し、すべての文言を同じ語に変えるわけではありません。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "既にファイルにある背景は読ませ、履歴全体より正確なファイル名を渡します。実画面に Add task がなければ原版かを先に確認してください。異なる開始状態へ無理に依頼を当てはめたり、全ファイルの似た文を一括置換させたりしません。再現可能性の出発点は状態の一致です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 3：回答の長さより成果で判断する"
+        },
+        {
+          "type": "paragraph",
+          "text": "完了後の index.html はボタン文言と placeholder だけが変わり、New task と入力の関連、type=\"submit\"、id、name、maxlength、required は残るはずです。他四ファイルも原版と比べ、余分な構造変更がないか見ます。回答が短くても正しい差分と検証があれば十分です。長い説明は存在しない変更や結果の代わりになりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "HTTP 表示で Read を追加・完了し、Completed と再読込後の保存を確認します。空白では追加されず、Tab で入力と送信に移れることも変更前と同じであるべきです。文言が正しくても送信不能なら不合格で、次の依頼では「使いにくい」だけでなく実際の症状を説明します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "結果が違うときは再現例を補う"
+        },
+        {
+          "type": "paragraph",
+          "text": "Save task は正しいのに placeholder が古い場合、保存と再読込を確認してから次の追補を送ります。正しい部分、現状、期待を分け、ページ全体の再作成を求めません。途中で要件を変えたなら、前の条件を何で置き換えるか示し、矛盾する二条件を残さないでください。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "The button text is correct; preserve that change.\nAfter saving and refreshing, the placeholder still reads \"Read the project README\".\nExpected placeholder: \"Plan one small step\".\nInspect index.html and correct only the remaining placeholder mismatch.\nReport the relevant diff and any verification you can actually perform.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "大きな作業は "
+            },
+            {
+              "type": "link",
+              "text": "Plan モード",
+              "url": "https://mokaair.com/ja/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "で手順と不明点を整理できますが、計画は検証ではありません。テスト予定は結果ではなく、データ保持の約束も実物で確認します。ログインや同期の要否など構成を変える不足は、依存機能を作る前に答える方が手戻りを減らせます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三つのよくある問題と修正"
+        },
+        {
+          "type": "paragraph",
+          "text": "変更が多すぎれば「全面最適化」などを取り除き、指定ファイルと維持項目を示して無関係な差分だけ戻します。質問が続く場合は判断に影響する条件を答え、通常の字体や名前は既存スタイルに任せます。完了に証拠がなければ「完了」の言い換えではなく、実際の命令結果と未実施項目を求めます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "失敗が続くなら最小再現、エラー、最後の正常状態を残して一問題に絞り、無関係な履歴を毎回貼り直しません。長い作業は"
+            },
+            {
+              "type": "link",
+              "text": "コンテキスト引き継ぎ",
+              "url": "https://mokaair.com/ja/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "を使い、繰り返す規約は "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/ja/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "へ置き、各依頼は今回の変更に集中させます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "追加練習、復元、出典"
+        },
+        {
+          "type": "paragraph",
+          "text": "目標を「ボタンだけ Create task にし、placeholder は原文のまま」に変えて自分で依頼を書きます。index.html の唯一の変更文字を示し、追加、空入力、再読込を検証します。終了後は expected 原本から index.html だけを戻し、Python は Ctrl+C で止めます。Codex の会話を閉じても文言変更は元に戻りません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "依頼の原則は 2026-09-14 の"
+            },
+            {
+              "type": "link",
+              "text": "公式 Prompting 文書",
+              "url": "https://learn.chatgpt.com/docs/prompting"
+            },
+            {
+              "type": "text",
+              "text": "で確認し、フォーム要件、入力、検証手順は独自に作成しました。英語入力例は各言語共通ですが、応答が逐語一致する保証はなく成果を検証します。次は"
+            },
+            {
+              "type": "link",
+              "text": "機能追加",
+              "url": "https://mokaair.com/ja/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "や"
+            },
+            {
+              "type": "link",
+              "text": "不具合修正",
+              "url": "https://mokaair.com/ja/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "で再現入力と期待結果を使います。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "依頼の要素",
+            "今回の具体化"
+          ],
+          "rows": [
+            [
+              "目標",
+              "初めての利用者に分かるフォーム"
+            ],
+            [
+              "資料",
+              "expected の index.html"
+            ],
+            [
+              "制約",
+              "二つの文字だけ、データと動作を保持"
+            ],
+            [
+              "検証",
+              "追加、完了、空入力、再読込"
+            ]
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/diagram-1.svg",
+          "alt": "07. 目的が伝わる依頼の書き方 — 作業の流れを表す図です。製品画面の画像ではありません。 Goal → Constraints → Acceptance",
+          "width": 1600,
+          "height": 900,
+          "caption": "07. 目的が伝わる依頼の書き方 — 作業の流れを表す図です。製品画面の画像ではありません。 Goal → Constraints → Acceptance",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/reference-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "元の教材に本記事の指定変更を適用した参考成果。Windows / Edge 153.0.4234.32、2026-09-14 の実画像です。橙枠はキーボードフォーカスでデータは架空です。狭い表示はレスポンシブ画面で実物の電話ではなく、Codex UI やモデル実行記録でもありません。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/reference-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "元の教材に本記事の指定変更を適用した参考成果。Windows / Edge 153.0.4234.32、2026-09-14 の実画像です。橙枠はキーボードフォーカスでデータは架空です。狭い表示はレスポンシブ画面で実物の電話ではなく、Codex UI やモデル実行記録でもありません。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "명확하게 작업 요청하기",
+      "description": "좋은 요청은 결과, 배경, 제한과 완료 조건을 명확히 합니다. '페이지 개선'만으로는 속도, 디자인, 접근성 중 무엇인지 알 수 없습니다. 먼저 관찰 가능한 동작으로 바꿔 적으세요.",
+      "hero": {
+        "src": "/guides/codex-prompting/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 강의의 목표"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "모호한 요청을 Codex가 실행하고 직접 검증할 수 있는 작업으로 바꾸고, 결과가 다르면 처음부터 다시 하지 않고 정보를 보완합니다. 읽기 약 12분, 실습 약 20분입니다. 공통 할 일 사이트의 폼 문구를 바꾸며 고정된 주문을 외우는 대신 검증 가능한 요구를 만듭니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "반복 가능한 시작 상태 준비하기"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "실습 자료",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "의 expected를 새 codex-prompt-lab으로 복사하고 이전에 수정한 복사본은 쓰지 않습니다. 파일 다섯 개를 확인한 뒤 index.html에서 New task 레이블, Add task 버튼, Read the project README 자리표시자를 찾습니다. 이 세 문자열이 필요한 근거이며 프로젝트 전체를 대화에 붙일 필요는 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "첫 프로젝트",
+              "url": "https://mokaair.com/ko/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "의 미리보기 절차를 사용합니다. Windows는 py -m http.server 4173 --bind 127.0.0.1, macOS/Linux는 python3 -m http.server 4173 --bind 127.0.0.1을 복사본에서 실행하고 http://127.0.0.1:4173을 엽니다. Git은 필요 없지만 비교하거나 수정 파일을 복원할 수 있도록 원본은 남깁니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 모호한 요청의 빈틈 찾기"
+        },
+        {
+          "type": "paragraph",
+          "text": "‘폼을 더 좋게 바꿔 줘’에는 사용자, 문제, 허용 범위, 완료 기준이 없습니다. Codex가 색상, 필드, 버튼, 데이터 구조를 바꾸거나 필요 없는 패키지를 추가할 수도 있습니다. 반드시 잘못이라기보다 해석 범위가 너무 넓은 요청일 수 있습니다. ‘처음 방문한 사용자가 작은 할 일을 추가하는 방법을 이해한다’처럼 사용자 성과부터 적으세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "목표, 현재 상태의 근거, 제한, 검증 기준을 보완합니다. 매번 네 개의 제목이 필수라는 뜻이 아니라 빠진 정보를 확인하는 방법입니다. 문구 수정은 몇 줄이면 충분하고 여러 파일에 걸친 기능은 배경과 단계별 계획이 필요할 수 있습니다. 전문적으로 보이려고 불필요한 역할 설정, 도구 목록, 근거 없는 시간 추정을 넣지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 실행 가능한 전체 요청 작성"
+        },
+        {
+          "type": "paragraph",
+          "text": "아래 전체 요청을 codex-prompt-lab의 Codex 작업에 보내며 운영체제 셸에 입력하지 않습니다. HTML 파일 하나와 문자열 변경 두 개를 지정하고 접근성 레이블, 이벤트 연결, 데이터 형식을 보존하며 실제 검사를 요청합니다. New task는 보이는 입력 레이블로 남기는 것이며 모든 문구를 같은 단어로 바꾸는 것이 아닙니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "파일에 있는 배경은 Codex가 읽도록 하고 전체 대화 이력보다 정확한 파일 이름을 알려 주세요. 실제 화면에 Add task가 없다면 원본인지 먼저 확인합니다. 다른 시작 상태에 요청을 억지로 적용하거나 프로젝트 전체의 비슷한 문자열을 일괄 변경하게 하지 않습니다. 재현성의 첫 조건은 같은 기준 상태입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 답변 길이가 아닌 결과로 판단"
+        },
+        {
+          "type": "paragraph",
+          "text": "완료 후 index.html에는 버튼 문구와 placeholder만 바뀌어야 합니다. New task와 입력 연결, type=\"submit\", id, name, maxlength, required는 그대로여야 합니다. 나머지 네 파일도 원본과 비교해 불필요한 구조 변경을 확인하세요. 답변이 짧아도 차이가 정확하고 검증이 충분하면 좋은 결과입니다. 긴 설명은 빠진 파일 변경이나 결과를 대신하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "HTTP 미리보기에서 Read를 추가하고 완료한 뒤 Completed 필터와 새로고침 후 저장 상태를 확인합니다. 공백으로 항목이 늘어나면 안 되고 Tab으로 입력창과 제출 버튼에 도달해야 합니다. 수정 전과 같은 동작이어야 합니다. 문구만 맞고 제출이 안 되면 검증 실패이므로 다음 요청에는 ‘별로야’가 아니라 실제 증상을 적습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "결과가 다르면 재현 사례 추가하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "Save task는 맞지만 placeholder가 그대로라면 저장과 새로고침부터 확인한 뒤 아래 보완 요청을 보냅니다. 이미 맞는 부분, 현재 오류, 기대 결과를 나누며 페이지 전체 재작성을 요구하지 않습니다. 중간에 요구를 바꿨다면 어떤 조건이 이전 조건을 대체하는지 명시해 모순된 요구가 동시에 남지 않게 합니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "The button text is correct; preserve that change.\nAfter saving and refreshing, the placeholder still reads \"Read the project README\".\nExpected placeholder: \"Plan one small step\".\nInspect index.html and correct only the remaining placeholder mismatch.\nReport the relevant diff and any verification you can actually perform.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "큰 작업은 "
+            },
+            {
+              "type": "link",
+              "text": "Plan 모드",
+              "url": "https://mokaair.com/ko/life/codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "로 단계와 불확실성을 정리할 수 있지만 계획은 검증이 아닙니다. 테스트하겠다는 말은 결과가 아니고 데이터를 보존하겠다는 말도 코드와 데이터로 확인해야 합니다. 로그인이나 동기화 필요 여부처럼 구조를 바꾸는 빈틈은 관련 구현 전에 답하면 재작업을 줄일 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "자주 생기는 세 문제와 수정"
+        },
+        {
+          "type": "paragraph",
+          "text": "수정이 너무 많다면 ‘전부 최적화’ 같은 범위 확장 표현을 빼고 허용 파일과 보존 동작을 명시한 뒤 무관한 변경만 각각 되돌립니다. 질문이 계속되면 판단에 영향을 주는 조건을 보완하고 일반 글꼴이나 이름은 기존 스타일을 따르도록 맡깁니다. 완료 주장에 근거가 없으면 ‘완료’의 다른 표현 대신 실제 명령 결과와 미실행 항목을 요청합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "반복 실패 시 최소 재현 자료, 오류 문구, 마지막 정상 상태를 남기고 문제 하나로 좁히세요. 관련 없는 이력을 매번 다시 붙이지 않습니다. 긴 작업은 "
+            },
+            {
+              "type": "link",
+              "text": "문맥 인수인계",
+              "url": "https://mokaair.com/ko/life/codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "를 사용하고 반복되는 규칙은 "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/ko/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "에 두어 개별 요청은 이번 변경에 집중시킵니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "추가 연습, 복원과 출처"
+        },
+        {
+          "type": "paragraph",
+          "text": "‘버튼만 Create task로 바꾸고 placeholder는 원문을 유지한다’는 새 요청을 직접 작성하세요. index.html에서 바뀐 문자열 하나를 명시하고 추가, 빈 입력, 새로고침을 다시 확인합니다. 종료 후 expected 원본으로 index.html만 복원하고 Python은 Ctrl+C로 중단합니다. Codex 대화를 닫아도 문구 수정은 취소되지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "요청 원칙은 2026-09-14의 "
+            },
+            {
+              "type": "link",
+              "text": "공식 Prompting 문서",
+              "url": "https://learn.chatgpt.com/docs/prompting"
+            },
+            {
+              "type": "text",
+              "text": "로 확인했고 폼 요구, 입력 예제, 검증 절차는 직접 만들었습니다. 영어 요청은 모든 번역에서 동일하지만 모델 답변이 글자까지 같을 필요는 없으며 실제 결과로 검증합니다. 다음으로 "
+            },
+            {
+              "type": "link",
+              "text": "기능 구현",
+              "url": "https://mokaair.com/ko/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "이나 "
+            },
+            {
+              "type": "link",
+              "text": "버그 수정",
+              "url": "https://mokaair.com/ko/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "에 재현 입력과 기대 결과를 적용합니다."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "요청 요소",
+            "이번 예제의 구체 내용"
+          ],
+          "rows": [
+            [
+              "목표",
+              "처음 사용자도 폼 이해"
+            ],
+            [
+              "근거",
+              "expected의 index.html"
+            ],
+            [
+              "제한",
+              "문자열 두 개만 수정, 데이터와 동작 보존"
+            ],
+            [
+              "검증",
+              "추가, 완료, 빈 입력, 새로고침"
+            ]
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/diagram-1.svg",
+          "alt": "07. 명확하게 작업 요청하기 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Goal → Constraints → Acceptance",
+          "width": 1600,
+          "height": 900,
+          "caption": "07. 명확하게 작업 요청하기 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Goal → Constraints → Acceptance",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/reference-390.png",
+          "alt": "Small Steps / 390px / Windows Edge",
+          "caption": "원본 실습 파일에 이 강의의 지정 변경을 적용한 참고 결과. Windows / Edge 153.0.4234.32에서 2026-09-14에 촬영했습니다. 주황 테두리는 키보드 포커스이며 데이터는 가상입니다. 좁은 화면은 반응형 뷰포트로 실제 휴대전화가 아니며 Codex UI나 모델 실행 기록도 아닙니다.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-prompting/reference-1280.png",
+          "alt": "Small Steps / 1280px / Windows Edge",
+          "caption": "원본 실습 파일에 이 강의의 지정 변경을 적용한 참고 결과. Windows / Edge 153.0.4234.32에서 2026-09-14에 촬영했습니다. 주황 테두리는 키보드 포커스이며 데이터는 가상입니다. 좁은 화면은 반응형 뷰포트로 실제 휴대전화가 아니며 Codex UI나 모델 실행 기록도 아닙니다.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

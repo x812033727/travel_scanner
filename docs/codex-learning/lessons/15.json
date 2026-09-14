@@ -1,0 +1,60 @@
+{
+  "id": 15,
+  "sources": [
+    "cloud"
+  ],
+  "text": {
+    "zh-TW": [
+      "雲端任務使用為程式庫設定的遠端環境，適合把較長工作交出去並回來檢查。它不會自動讀取你電腦尚未提交的檔案；建立 PR 也不代表已合併或部署。",
+      "準備沒有秘密的練習 GitHub 程式庫，先提交可執行的基準版本。確認你有授權連接該程式庫，並知道其安裝與測試命令。",
+      [
+        "開啟官方 Codex cloud 入口並登入，連接 GitHub 時只選要練習的程式庫。確認帳號與分支，避免授權到無關專案。",
+        "在環境設定建立對應環境，填入專案需要的安裝步驟與工具。環境變數與秘密使用專用設定欄位，不寫進 README 或提示詞。",
+        "選環境送出一項小任務，例如補 README 的啟動說明。查看設定與任務記錄，確認依賴安裝真的成功；網路行為依環境設定檢查，不假定一律能連線。",
+        "檢查摘要、diff 與測試，再要求補修。符合驗收才建立 PR，核對目標分支與實際 CI。合併、發布與部署是後續獨立動作。"
+      ],
+      "雲端能讀到提交的練習專案，產出可檢查的差異與測試記錄。PR 指向正確分支，沒有包含秘密或多餘檔案。",
+      "本機有檔案、雲端看不到時先查是否提交到選定分支。環境建置失敗先修安裝步驟；不要把代理回覆成功當作環境成功證明。",
+      "檢查 README 的啟動說明是否符合程式庫現況，只修正文案。回報檢查過的檔案與驗證命令，完成後讓我檢查 diff，不要合併或部署。"
+    ],
+    "en": [
+      "Cloud tasks run in a remote environment configured for a repository. They suit longer delegated work, but cannot automatically see uncommitted files on your computer. Creating a pull request is distinct from merging or deploying it.",
+      "Prepare a practice GitHub repository with no secrets and a committed working baseline. Confirm repository access and know its setup and test commands.",
+      [
+        "Open the official Codex cloud entry point and sign in. Connect GitHub with access only to the practice repository, checking account and branch.",
+        "Create the repository environment and configure required tools and setup steps. Use dedicated secret/environment settings rather than embedding credentials in README or prompts.",
+        "Select the environment and request a small change, such as correcting startup instructions. Inspect setup and task logs; verify dependencies installed successfully and check the configured network behavior.",
+        "Review the summary, diff and checks, then request corrections. Create a PR only when it meets the criteria and verify the target branch and actual CI. Merge and deployment remain separate actions."
+      ],
+      "The environment reads the committed practice repository and returns reviewable changes and checks. Any PR targets the intended branch and excludes secrets and unrelated files.",
+      "For a file missing only in cloud, check the selected branch and whether it was committed. Fix setup failures before treating a completion message as successful environment validation.",
+      "Check README startup instructions against the repository and update only the documentation. Report inspected files and verification commands. Leave the diff for review; do not merge or deploy."
+    ],
+    "ja": [
+      "クラウドタスクはリポジトリ用に設定した遠隔環境で動きます。長い作業を委ねられますが、ローカルの未コミットファイルは自動では見えません。PR の作成とマージ・公開は別です。",
+      "秘密を含まない GitHub 練習リポジトリと動く基準コミットを用意します。権限、導入、テストの手順を確認します。",
+      [
+        "公式 Codex cloud にログインし、練習リポジトリだけを GitHub 接続で選びます。アカウントとブランチを確認します。",
+        "環境を作成し、必要なツールと導入手順を設定します。秘密は専用の設定に入れ、README や依頼文には書きません。",
+        "README 修正など小さい作業を送信します。設定ログで依存導入とネットワーク条件を確認します。",
+        "要約、差分、検証を読み、必要なら修正を依頼します。条件を満たしてから PR を作り、対象ブランチと CI を確認します。"
+      ],
+      "コミット済みの内容から確認可能な変更とテスト結果が得られれば完了です。",
+      "ローカルだけにあるファイルはコミットとブランチを確認します。環境の導入失敗を先に直します。",
+      "README の起動説明だけを現状に合わせて修正してください。調べたファイルと検証命令を示し、差分の確認で止めてください。マージや公開はしないでください。"
+    ],
+    "ko": [
+      "클라우드 작업은 저장소에 설정된 원격 환경에서 실행됩니다. 긴 작업을 맡길 수 있지만 로컬의 미커밋 파일이 자동으로 보이지는 않습니다. PR 생성과 병합·배포는 별개입니다.",
+      "비밀이 없는 GitHub 연습 저장소와 동작하는 기준 커밋을 준비합니다. 접근 권한, 설치와 테스트 절차를 확인합니다.",
+      [
+        "공식 Codex cloud에 로그인하고 GitHub 연결에서 연습 저장소만 선택합니다. 계정과 브랜치를 확인합니다.",
+        "환경을 만들고 필요한 도구와 설치 단계를 설정합니다. 비밀은 전용 설정에 넣고 README나 요청문에는 쓰지 않습니다.",
+        "README 수정 같은 작은 작업을 보냅니다. 설정 로그에서 의존성 설치와 네트워크 조건을 확인합니다.",
+        "요약, diff와 검증 결과를 읽고 필요하면 수정을 요청합니다. 기준을 만족한 뒤 PR을 만들고 대상 브랜치와 CI를 확인합니다."
+      ],
+      "커밋된 내용에서 검토 가능한 변경과 테스트 결과가 나오면 완료입니다.",
+      "로컬에만 있는 파일은 커밋과 선택한 브랜치를 확인하세요. 환경 설치 실패를 먼저 해결합니다.",
+      "README 시작 설명만 현재 저장소에 맞게 수정하세요. 확인한 파일과 검증 명령을 보고하고 diff 검토 단계에서 멈추세요. 병합하거나 배포하지 마세요."
+    ]
+  }
+}

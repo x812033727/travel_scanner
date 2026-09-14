@@ -1,0 +1,1437 @@
+{
+  "slug": "codex-terminal-paths",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 104,
+  "locales": {
+    "zh-TW": {
+      "title": "終端機與路徑：找到專案根目錄",
+      "description": "在 Windows、macOS、Linux 建立練習資料夾，確認目前目錄並辨識相對與絕對路徑。",
+      "hero": {
+        "src": "/guides/codex-terminal-paths/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀完能做到什麼"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你會在 Windows、macOS 或 Linux 開啟終端機，辨認自己所在的資料夾，讀取一個檔案，並在啟動 Codex 前確認工作位置。閱讀約 12 分鐘、操作約 20 分鐘。本篇只練習路徑和唯讀命令，沒有刪除、安裝或管理員操作；請只跟自己的作業系統那一段。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分清視窗、殼層與輸入"
+        },
+        {
+          "type": "paragraph",
+          "text": "終端機是容納文字互動的視窗；PowerShell、Bash、zsh 等殼層負責解讀命令；codex 啟動後又進入代理的對話介面。相同視窗會有不同輸入位置。看到 PS 與路徑時通常是在 PowerShell；看到 Codex 的對話輸入區時，文字會成為給代理的要求。不要把文章中的終端機命令、/plan 斜線指令、自然語言提示詞混成一串貼入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "絕對路徑從磁碟或根目錄出發，例如 C:\\Work\\demo 或 /home/reader/demo；相對路徑從目前位置計算。點號 . 是目前目錄，兩點 .. 是上一層。移動終端機位置不會搬動檔案，也不會把另一個已開啟的終端機一起移動。每次新開視窗都先檢視位置，不要只憑上一個視窗的記憶執行下一步。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "準備兩層資料夾與文字檔"
+        },
+        {
+          "type": "paragraph",
+          "text": "用檔案管理員在自己方便找到的位置建立全新的 codex-terminal-lab，裡面再建立名稱含空白的 lesson one。若已有同名資料夾，換一個新的名稱並在後面指令使用實際路徑。用純文字編輯器在 lesson one 裡建立 note.txt，內容只寫下方一行，儲存為 UTF-8。這個動作故意在圖形介面完成，讓你知道終端機讀到的檔案原本在哪裡。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Terminal practice: this is lesson one.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "目錄應是下面的形狀。Windows 記事本要避免 note.txt.txt，macOS 編輯器要避免 RTF；Linux 檔名大小寫保持一致。檔名含空白並沒有錯，正好用來練習引號。教學中的灰色範例區只有命令與內容；不要把 PS C:>、$ 等提示字元也加進輸入。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Windows：PowerShell 的完整操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "從開始選單開啟 PowerShell，或在檔案總管的 codex-terminal-lab 資料夾中選擇「在終端機開啟」。若終端機開的是命令提示字元，改開 PowerShell；本段的 Get-Location 並非 cmd.exe 指令。先執行下一組唯讀命令，確認目前位置與直接子專案。沒有看到 lesson one 時先別往下讀檔，回檔案總管核對真正所在路徑。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Get-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要手動移動時，先在檔案總管複製 codex-terminal-lab 的完整路徑，把下一行引號內的示例換成它。YOUR_NAME 是佔位文字，不能原樣執行；檔案可能在 OneDrive 或其他磁碟，請使用實際位置。LiteralPath 會按原樣解讀路徑，減少方括號被當成萬用字元的問題。移動成功通常不印出結果，所以再查一次位置。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認位於實際練習根目錄後，移入含空白的子目錄並讀檔，再退回上一層。下方整組命令沒有修改檔案；預期中間顯示完整英文句子，最後位置回到 codex-terminal-lab。不要只看輸出最後一行就判定全部成功；任一步有錯誤都先停下核對。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "macOS 與 Linux：終端機的完整操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS 從 Spotlight 開啟 Terminal，Linux 從應用程式選單開啟終端機；也可使用檔案管理員提供的在資料夾開啟終端機功能。macOS 常見 zsh、Linux 常見 Bash，本段只用兩者都能理解的基本命令。先執行 pwd 與 ls -a，前者回報目前路徑，後者包括隱藏專案。不要把 macOS 的 /Users 路徑當成 Linux 一定存在的 /home 路徑。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "pwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "手動移動時，在 cd 後輸入一個空白，再貼上用引號包住的實際資料夾絕對路徑；下面只是替換示例。也可將資料夾拖入端末，但要檢查終端機是否已自動處理空白，避免再加一層錯誤引號。若把家目錄寫成 $HOME，使用雙引號才會展開變數；本篇先直接使用完整路徑，少混入一種語法。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "看到 lesson one 後執行下一組；預期讀出同一句話並回到原來根目錄。若某一步失敗，先修正再逐行繼續，不把前一個錯誤帶進下一步。macOS 與 Linux 的基本步驟相同，但檔案名稱的大小寫行為可能依檔案系統設定不同；養成完全匹配名稱的習慣，就不用依賴寬鬆比對。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "確認錯誤行為，再啟動 Codex"
+        },
+        {
+          "type": "paragraph",
+          "text": "在練習根目錄嘗試移入不存在的 missing-folder。PowerShell 用 Set-Location -LiteralPath '.\\missing-folder'；macOS／Linux 用 cd 'missing-folder'。預期有找不到路徑的錯誤，查位置時仍在原處。錯誤文字依語言與版本不同，不要求逐字一致。這證明失敗的移動不會自動建立資料夾，也提醒你不能在 cd 失敗後照常執行修改命令。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "已安裝 CLI 才在確認過的練習根目錄執行 codex，並送出下方唯讀要求。未安裝者到 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 入門",
+              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "繼續，不需要在本篇臨時改許可權。代理應找到 lesson one/note.txt，讀到英文句子並回報工作位置；若位置不同，先檢查入口是否建立了工作副本，再判斷是否選錯目錄。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "問題排除、結束與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到指令先看目前殼層，Get-Content 不能直接當成 Bash 指令。路徑被拆成兩段先檢查空白與直引號，避免從文書軟體複製彎引號。顯示拒絕存取時，確認你選的是自己的練習資料夾，不要立刻以管理員身分執行。終端機看不到檔案但編輯器看得到，先按儲存，再核對副檔名、工作目錄，以及是否在 WSL 的另一個家目錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇沒有改動原始檔，結束時關閉終端機或離開練習目錄即可。正在執行的程式通常可用 Ctrl+C 中斷，但中斷不等於還原已寫入資料。再自行建立 lesson two/note.txt，寫不同句子，從根目錄分別讀取兩份內容。能分清路徑與檔案、正確處理空白、辨認失敗後的位置，就透過練習；圖中 1、2、3 是定位、讀取、驗證。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "PowerShell 路徑語義依"
+            },
+            {
+              "type": "link",
+              "text": "Microsoft Set-Location 檔案",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location"
+            },
+            {
+              "type": "text",
+              "text": "核對；Codex 啟動依 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 官方檔案",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": "，查證日 2026-09-14。Windows 命令另外以獨立練習資料夾檢查；macOS／Linux 段落為通用殼層操作說明，不冒充該平臺實機截圖。接著可讀 "
+            },
+            {
+              "type": "link",
+              "text": "Markdown",
+              "url": "https://mokaair.com/zh-TW/life/codex-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": "與 "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "目的",
+            "PowerShell",
+            "macOS／Linux"
+          ],
+          "rows": [
+            [
+              "目前位置",
+              "Get-Location",
+              "pwd"
+            ],
+            [
+              "列出檔案",
+              "Get-ChildItem -Name",
+              "ls -a"
+            ],
+            [
+              "移入子目錄",
+              "Set-Location -LiteralPath '.\\lesson one'",
+              "cd 'lesson one'"
+            ],
+            [
+              "讀取檔案",
+              "Get-Content -LiteralPath '.\\note.txt'",
+              "cat note.txt"
+            ],
+            [
+              "返回上一層",
+              "Set-Location -LiteralPath '..'",
+              "cd .."
+            ]
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-terminal-paths/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "PowerShell Set-Location",
+          "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Terminal paths and project roots",
+      "description": "Create a practice folder on Windows, macOS or Linux and distinguish current, relative and absolute paths.",
+      "hero": {
+        "src": "/guides/codex-terminal-paths/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will be able to do"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Open a terminal on Windows, macOS or Linux, identify the current folder, read a file and verify location before starting Codex. Allow 12 minutes to read and 20 to practise. This lesson uses paths and read-only commands, with no deletion, installation or administrator operations. Follow the section for your own operating system."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Distinguish window, shell and input"
+        },
+        {
+          "type": "paragraph",
+          "text": "The terminal is the window hosting text interaction; shells such as PowerShell, Bash and zsh interpret commands. Starting codex enters another conversational interface inside that window. A single window can therefore contain different input contexts. A PS prompt with a path usually indicates PowerShell; the Codex composer sends requests to the agent. Do not paste shell commands, /plan and natural-language prompts as one undifferentiated block."
+        },
+        {
+          "type": "paragraph",
+          "text": "An absolute path starts from a drive or filesystem root, such as C:\\Work\\demo or /home/reader/demo. A relative path is interpreted from the current directory. A dot means this directory and two dots mean its parent. Changing a terminal's directory does not move files or change another open terminal. Check location in each new window rather than relying on the previous window's state."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Prepare nested folders and a text file"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a file manager to create a new codex-terminal-lab folder somewhere convenient, then a child named lesson one, including the space. If the name already exists, choose a new name and use the actual path in subsequent commands. In lesson one, save note.txt as UTF-8 plain text with the single line below. Creating it graphically first helps you connect terminal output with a known file."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Terminal practice: this is lesson one.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The folder should have the structure below. Avoid note.txt.txt in Windows and RTF in macOS; preserve case on Linux. A space in a folder name is valid and useful for practising quotation. Code blocks contain the commands or content to use; do not prepend prompt markers such as PS C:> or $."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Windows: complete PowerShell procedure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open PowerShell from Start, or use Open in Terminal from codex-terminal-lab in File Explorer. If Terminal opens Command Prompt, select PowerShell; Get-Location is not a cmd.exe command. Run the following read-only commands to inspect location and immediate children. If lesson one is missing, check the actual path in Explorer before trying to read the file."
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Get-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "If you need to navigate manually, copy the full codex-terminal-lab path from Explorer and replace the example inside the quotes below. YOUR_NAME is a placeholder, not a usable path; Documents may live in OneDrive or on another drive. LiteralPath treats the path literally, avoiding wildcard interpretation of brackets. Successful navigation usually prints nothing, so inspect location again."
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Once you are at the actual practice root, enter the child folder containing a space, read the file, then return to the parent. These commands do not change files. Expect the full English sentence, followed by a location back at codex-terminal-lab. Do not judge the whole sequence solely by its last line; stop and inspect any intermediate error."
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "macOS and Linux: complete terminal procedure"
+        },
+        {
+          "type": "paragraph",
+          "text": "On macOS, open Terminal from Spotlight; on Linux, use the application menu or your file manager's terminal action. macOS commonly uses zsh and Linux commonly Bash; this section uses basic commands understood by both. Run pwd and ls -a first: the former reports location, the latter includes hidden entries. Do not assume a macOS /Users path exists under Linux /home."
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "pwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "To navigate manually, type cd, a space, then the actual absolute folder path inside quotes; the line below is a replacement example. Dragging a folder into the terminal may also work, but inspect how spaces were escaped before adding extra quotes. If you write the home directory as $HOME, double quotes allow expansion; this lesson uses an explicit full path to avoid mixing in another syntax."
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "After locating lesson one, run the next sequence. Expect the same sentence and a return to the original root. If a step fails, correct it before continuing line by line. The basic procedure is the same on macOS and Linux, but case sensitivity can depend on the filesystem. Match names exactly rather than relying on permissive matching."
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Check an error before starting Codex"
+        },
+        {
+          "type": "paragraph",
+          "text": "At the practice root, try a nonexistent missing-folder: use Set-Location -LiteralPath '.\\missing-folder' in PowerShell or cd 'missing-folder' on macOS/Linux. Expect a missing-path error and an unchanged location. Error wording varies by language and version. This demonstrates that a failed navigation does not create a folder, and why editing commands should not follow an unchecked cd failure."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "If CLI is installed, run codex at the verified practice root and send the read-only request below. Otherwise continue to "
+            },
+            {
+              "type": "link",
+              "text": "CLI setup",
+              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "; do not change permissions just for this lesson. The agent should find lesson one/note.txt, read the sentence and report location. If the path differs, check whether the interface created a working copy before concluding the wrong folder was selected."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting, finishing and practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "For an unknown command, check the shell: Get-Content is not a Bash command. For a path split into arguments, check spaces and straight quotes rather than typographic quotes copied from a word processor. For access denied, verify that this is your own practice folder before considering administrator access. If an editor sees a file but the terminal does not, save it and check extension, directory and whether WSL is using another home."
+        },
+        {
+          "type": "paragraph",
+          "text": "No source file was changed, so close the terminal or leave the folder when finished. Ctrl+C commonly interrupts a running program, but interruption does not restore data already written. Independently create lesson two/note.txt with a different sentence and read both files from the root. You pass when you can distinguish paths from files, handle spaces and identify the location after failure. Diagram steps 1, 2 and 3 mean locate, read and verify."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "PowerShell path semantics were checked against "
+            },
+            {
+              "type": "link",
+              "text": "Microsoft Set-Location documentation",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location"
+            },
+            {
+              "type": "text",
+              "text": ", and Codex startup against "
+            },
+            {
+              "type": "link",
+              "text": "official CLI documentation",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": ", on 2026-09-14. Windows commands are also checked in an isolated exercise folder. The macOS/Linux sections describe common shell operations and are not presented as device screenshots. Continue with "
+            },
+            {
+              "type": "link",
+              "text": "Markdown",
+              "url": "https://mokaair.com/en/life/codex-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/en/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "Goal",
+            "PowerShell",
+            "macOS/Linux"
+          ],
+          "rows": [
+            [
+              "Current location",
+              "Get-Location",
+              "pwd"
+            ],
+            [
+              "List files",
+              "Get-ChildItem -Name",
+              "ls -a"
+            ],
+            [
+              "Enter child",
+              "Set-Location -LiteralPath '.\\lesson one'",
+              "cd 'lesson one'"
+            ],
+            [
+              "Read file",
+              "Get-Content -LiteralPath '.\\note.txt'",
+              "cat note.txt"
+            ],
+            [
+              "Return to parent",
+              "Set-Location -LiteralPath '..'",
+              "cd .."
+            ]
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-terminal-paths/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "PowerShell Set-Location",
+          "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ターミナルのパスとプロジェクトルート",
+      "description": "Windows、macOS、Linux で練習フォルダーを作り、現在位置、相対パス、絶対パスを区別します。",
+      "hero": {
+        "src": "/guides/codex-terminal-paths/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "このレッスンの到達点"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Windows、macOS、Linux の端末を開き、現在のフォルダーを確認してファイルを読み、Codex を起動する前に場所を確かめます。読む時間は約 12 分、実習は約 20 分です。削除、インストール、管理者操作はなく、パスと読み取りコマンドだけを扱います。自分の OS の手順を選んでください。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "画面、シェル、入力を区別する"
+        },
+        {
+          "type": "paragraph",
+          "text": "端末は文字操作のウィンドウで、PowerShell、Bash、zsh などのシェルがコマンドを解釈します。codex を起動すると同じ窓の中で代理の対話画面に入ります。一つの窓でも入力先は変わります。PS とパスがあれば通常 PowerShell、Codex の入力欄なら代理への依頼です。シェルコマンド、/plan、自然言語を区別せず一度に貼り付けないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "絶対パスは C:\\Work\\demo や /home/reader/demo のようにドライブやルートから始まります。相対パスは現在地が基準で、. は現在、.. は親です。端末の場所を変えてもファイルが移動したり、別の端末も同時に移動したりはしません。新しい窓では前の記憶に頼らず毎回場所を確かめます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "二階層のフォルダーとテキストを用意する"
+        },
+        {
+          "type": "paragraph",
+          "text": "ファイル管理画面で新しい codex-terminal-lab を作り、中に空白を含む lesson one を作ります。同名があれば別名にして、以降は実際のパスを使います。lesson one 内に UTF-8 の標準テキスト note.txt を作り、次の一行を書いて保存します。先に GUI で作ることで、端末が読んだファイルの場所を把握できます。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Terminal practice: this is lesson one.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "構造は次のとおりです。Windows では note.txt.txt、macOS では RTF を避け、Linux では大文字小文字を保ちます。名前の空白は正しく、引用符の練習に使えます。コード欄には入力する命令や内容だけがあり、PS C:> や $ のプロンプト記号を付け足さないでください。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Windows：PowerShell の操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "スタートから PowerShell を開くか、エクスプローラーの codex-terminal-lab で「ターミナルで開く」を選びます。コマンドプロンプトが開いたら PowerShell に切り替えてください。Get-Location は cmd.exe の命令ではありません。次の読み取り命令で場所と直下の項目を確認し、lesson one がなければ先にエクスプローラーで実際のパスを確認します。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Get-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "手動移動が必要なら、エクスプローラーで codex-terminal-lab の完全なパスをコピーし、次の引用符内を置き換えます。YOUR_NAME は仮の名前で、そのまま実行しません。書類が OneDrive や別ドライブにある場合も実際の場所を使います。LiteralPath は角括弧などをワイルドカードとして解釈しません。移動成功は通常無表示なので、もう一度場所を確認します。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習の親フォルダーを確認したら、空白のある子へ移動して読み、親に戻ります。次の命令はファイルを変更しません。途中で英文が表示され、最後は codex-terminal-lab に戻るのが期待値です。最後の一行だけで全体成功とせず、途中のエラーがあれば止めて確認してください。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "macOS と Linux：端末の操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS は Spotlight から Terminal、Linux はアプリメニューやファイル管理画面から端末を開きます。macOS では zsh、Linux では Bash がよく使われますが、ここでは両方に共通する基本命令だけを使います。pwd は現在地、ls -a は隠し項目を含む一覧です。macOS の /Users を Linux の /home と同じパスだと考えないでください。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "pwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "手動移動は cd と空白に続けて、引用符で囲んだ実際の絶対パスを入力します。次は置き換え用の例です。フォルダーを端末にドラッグする場合、空白が自動処理されているか見て、余計な引用符を追加しないでください。$HOME を使う場合は二重引用符で変数が展開されますが、今回は構文を混ぜないため完全なパスを使います。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "lesson one が見えたら次を実行します。同じ文を読めて元の親に戻るのが期待値です。途中で失敗したら直してから一行ずつ進みます。macOS と Linux の基本手順は共通でも、大文字小文字の扱いはファイルシステムによるため、完全に同じ名前を使いましょう。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "エラー時の動作を確認して Codex を起動する"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習の親で存在しない missing-folder へ移動します。PowerShell は Set-Location -LiteralPath '.\\missing-folder'、macOS/Linux は cd 'missing-folder' です。パス不存在のエラーが出て現在地は変わらないはずです。文言は言語や版で異なります。失敗した移動ではフォルダーは作られず、cd の失敗を確認せず編集へ進んではいけないことが分かります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "CLI 導入済みなら確認した親フォルダーで codex を実行し、次の読み取り依頼を送ります。未導入なら "
+            },
+            {
+              "type": "link",
+              "text": "CLI 入門",
+              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "に進み、この授業だけのために権限を変更しないでください。lesson one/note.txt と英文、作業場所が示されるはずです。パスが違えば、まず作業コピーが作られたかを調べてから誤選択を判断します。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "問題対応、終了、追加練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "不明な命令ならシェルを確認し、Get-Content を Bash 命令と考えないでください。パスが分割されたら空白と通常の引用符を確認し、ワープロの曲がった引用符を避けます。アクセス拒否なら管理者実行より、自分の練習フォルダーかを先に確認します。エディターだけがファイルを見ていれば保存し、拡張子、現在地、WSL の別ホームを確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "元ファイルは変更していないため、端末を閉じるか練習場所を離れれば終了です。実行中のプログラムは通常 Ctrl+C で中断できますが、書き込み済みデータの復元にはなりません。lesson two/note.txt に別の文を作り、親から二つを読み分けてください。パスとファイル、空白、失敗後の場所を理解できれば合格です。図の 1、2、3 は定位、読み取り、検証です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "PowerShell のパスは "
+            },
+            {
+              "type": "link",
+              "text": "Microsoft Set-Location 文書",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location"
+            },
+            {
+              "type": "text",
+              "text": "、起動は "
+            },
+            {
+              "type": "link",
+              "text": "Codex CLI 文書",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": "で 2026-09-14 に確認しました。Windows 命令は独立した練習フォルダーでも確認します。macOS/Linux は一般的なシェル操作の説明で、実機画像と称していません。次は "
+            },
+            {
+              "type": "link",
+              "text": "Markdown",
+              "url": "https://mokaair.com/ja/life/codex-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": "と "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/ja/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "です。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "目的",
+            "PowerShell",
+            "macOS/Linux"
+          ],
+          "rows": [
+            [
+              "現在地",
+              "Get-Location",
+              "pwd"
+            ],
+            [
+              "一覧",
+              "Get-ChildItem -Name",
+              "ls -a"
+            ],
+            [
+              "子へ移動",
+              "Set-Location -LiteralPath '.\\lesson one'",
+              "cd 'lesson one'"
+            ],
+            [
+              "読取",
+              "Get-Content -LiteralPath '.\\note.txt'",
+              "cat note.txt"
+            ],
+            [
+              "親へ戻る",
+              "Set-Location -LiteralPath '..'",
+              "cd .."
+            ]
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-terminal-paths/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "PowerShell Set-Location",
+          "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "터미널 경로와 프로젝트 루트",
+      "description": "Windows, macOS, Linux에서 실습 폴더를 만들고 현재 위치, 상대 경로, 절대 경로를 구분합니다.",
+      "hero": {
+        "src": "/guides/codex-terminal-paths/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 강의의 목표"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Windows, macOS 또는 Linux에서 터미널을 열고 현재 폴더를 확인하며 파일을 읽고 Codex 실행 전 위치를 검증합니다. 읽기 약 12분, 실습 약 20분입니다. 삭제, 설치, 관리자 작업 없이 경로와 읽기 명령만 연습합니다. 자신의 운영체제에 해당하는 부분을 따르세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "창, 셸, 입력 구분하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "터미널은 텍스트 상호작용을 담는 창이고 PowerShell, Bash, zsh 같은 셸이 명령을 해석합니다. codex를 시작하면 같은 창 안에서 에이전트 대화 화면으로 들어갑니다. 하나의 창에도 입력 대상이 달라질 수 있습니다. PS와 경로는 보통 PowerShell이고 Codex 입력창은 에이전트에게 요청하는 곳입니다. 셸 명령, /plan, 자연어 요청을 구분 없이 한꺼번에 붙이지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "절대 경로는 C:\\Work\\demo 또는 /home/reader/demo처럼 드라이브나 루트에서 시작합니다. 상대 경로는 현재 위치를 기준으로 합니다. 점 하나는 현재 폴더, 두 개는 상위 폴더입니다. 터미널의 위치를 바꿔도 파일이 이동하거나 다른 터미널 위치까지 바뀌지 않습니다. 새 창에서는 이전 창의 기억에 의존하지 말고 위치부터 확인하세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "두 단계 폴더와 텍스트 파일 준비하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "파일 관리자에서 찾기 쉬운 위치에 새 codex-terminal-lab 폴더를 만들고 그 안에 공백이 있는 lesson one 폴더를 만듭니다. 같은 이름이 있으면 다른 이름을 선택하고 이후 명령에 실제 경로를 사용하세요. lesson one 안에 note.txt를 UTF-8 일반 텍스트로 저장하고 아래 한 줄만 적습니다. 먼저 그래픽 화면에서 만들어 터미널 출력과 실제 파일 위치를 연결합니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Terminal practice: this is lesson one.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "아래와 같은 구조여야 합니다. Windows에서는 note.txt.txt, macOS에서는 RTF 저장을 피하고 Linux에서는 대소문자를 유지하세요. 폴더 이름의 공백은 잘못이 아니며 따옴표 연습에 사용합니다. 코드 영역에는 입력할 명령이나 내용만 있으므로 PS C:>나 $ 같은 프롬프트 표시를 추가하지 마세요."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Windows: PowerShell 전체 절차"
+        },
+        {
+          "type": "paragraph",
+          "text": "시작 메뉴에서 PowerShell을 열거나 탐색기의 codex-terminal-lab에서 터미널에서 열기를 선택합니다. 명령 프롬프트가 열렸다면 PowerShell로 바꾸세요. Get-Location은 cmd.exe 명령이 아닙니다. 아래 읽기 명령으로 위치와 바로 아래 항목을 확인합니다. lesson one이 없으면 파일을 읽기 전에 탐색기에서 실제 경로를 확인하세요."
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Get-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 이동해야 한다면 탐색기에서 codex-terminal-lab의 전체 경로를 복사해 아래 따옴표 안의 예시를 바꿉니다. YOUR_NAME은 그대로 실행할 경로가 아닌 자리표시자입니다. 문서가 OneDrive나 다른 드라이브에 있을 수 있으므로 실제 위치를 사용하세요. LiteralPath는 대괄호 등이 와일드카드로 해석되지 않도록 합니다. 이동 성공 시 출력이 없을 수 있으니 위치를 다시 확인합니다."
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 실습 루트에 있는지 확인한 뒤 공백이 있는 하위 폴더로 이동해 파일을 읽고 상위 폴더로 돌아옵니다. 아래 명령은 파일을 바꾸지 않습니다. 중간에 영어 문장 전체가 나오고 마지막 위치가 codex-terminal-lab이어야 합니다. 마지막 줄만 보고 전체 성공으로 판단하지 말고 중간 오류가 있으면 멈춰 확인하세요."
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "macOS와 Linux: 터미널 전체 절차"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS에서는 Spotlight로 Terminal을 열고 Linux에서는 앱 메뉴나 파일 관리자의 터미널 기능을 사용합니다. macOS는 주로 zsh, Linux는 주로 Bash를 사용하지만 여기서는 두 셸이 이해하는 기본 명령만 씁니다. pwd는 현재 위치를, ls -a는 숨김 항목까지 표시합니다. macOS의 /Users 경로가 Linux의 /home에도 그대로 존재한다고 가정하지 마세요."
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "pwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 이동하려면 cd 뒤에 공백을 넣고 실제 폴더의 절대 경로를 따옴표로 감싸 입력합니다. 아래는 바꿔 쓸 예시입니다. 폴더를 터미널에 끌어 놓을 수도 있지만 공백이 자동 처리됐는지 확인하고 따옴표를 잘못 중복하지 마세요. $HOME을 쓴다면 큰따옴표에서 변수가 확장되지만 이번에는 문법을 섞지 않도록 전체 경로를 사용합니다."
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "lesson one을 확인하면 다음 순서로 실행합니다. 같은 문장을 읽고 원래 루트로 돌아와야 합니다. 실패한 단계가 있으면 고친 후 한 줄씩 진행하세요. macOS와 Linux의 기본 절차는 같지만 대소문자 구분은 파일 시스템에 따라 다를 수 있습니다. 느슨한 일치에 기대지 말고 정확한 이름을 사용합니다."
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "오류 동작 확인 후 Codex 시작하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "실습 루트에서 없는 missing-folder로 이동해 봅니다. PowerShell은 Set-Location -LiteralPath '.\\missing-folder', macOS/Linux는 cd 'missing-folder'를 사용합니다. 경로를 찾을 수 없다는 오류가 나오고 현재 위치는 그대로여야 합니다. 오류 문구는 언어와 버전에 따라 다릅니다. 이동 실패가 폴더를 만들지는 않으며 cd 실패를 확인하지 않고 수정 명령을 실행하면 안 된다는 점을 확인합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "CLI가 설치되어 있으면 확인한 실습 루트에서 codex를 실행하고 아래 읽기 요청을 보냅니다. 설치 전이라면 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 설정",
+              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "으로 이어 가며 이번 실습 때문에 권한을 변경하지 않습니다. 에이전트는 lesson one/note.txt와 영어 문장을 찾아 작업 위치를 보고해야 합니다. 경로가 다르면 잘못된 폴더라고 판단하기 전에 작업 복사본이 만들어졌는지 확인하세요."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결, 종료와 추가 연습"
+        },
+        {
+          "type": "paragraph",
+          "text": "명령을 찾지 못하면 셸을 확인하세요. Get-Content는 Bash 명령이 아닙니다. 경로가 나뉘면 공백과 일반 따옴표를 확인하고 문서 프로그램의 곡선 따옴표를 피합니다. 접근 거부가 뜨면 바로 관리자로 실행하기보다 자신의 실습 폴더인지 확인하세요. 편집기에는 파일이 보이는데 터미널에는 없다면 저장 후 확장자, 위치, WSL의 다른 홈 폴더 여부를 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "원본을 수정하지 않았으므로 터미널을 닫거나 실습 폴더에서 나오면 됩니다. 실행 중인 프로그램은 보통 Ctrl+C로 중단하지만 이미 쓴 데이터가 복원되지는 않습니다. lesson two/note.txt에 다른 문장을 만들고 루트에서 두 파일을 각각 읽어 보세요. 경로와 파일을 구분하고 공백을 처리하며 실패 후 위치를 알면 통과입니다. 그림의 1, 2, 3은 위치 확인, 읽기, 검증입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "PowerShell 경로는 "
+            },
+            {
+              "type": "link",
+              "text": "Microsoft Set-Location 문서",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location"
+            },
+            {
+              "type": "text",
+              "text": ", Codex 시작은 "
+            },
+            {
+              "type": "link",
+              "text": "공식 CLI 문서",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": "로 2026-09-14에 확인했습니다. Windows 명령은 격리된 실습 폴더에서도 확인합니다. macOS/Linux 부분은 일반 셸 작업 설명이며 실제 기기 화면으로 제시하지 않습니다. 다음으로 "
+            },
+            {
+              "type": "link",
+              "text": "Markdown",
+              "url": "https://mokaair.com/ko/life/codex-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": "과 "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/ko/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "를 읽습니다."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "목적",
+            "PowerShell",
+            "macOS/Linux"
+          ],
+          "rows": [
+            [
+              "현재 위치",
+              "Get-Location",
+              "pwd"
+            ],
+            [
+              "파일 목록",
+              "Get-ChildItem -Name",
+              "ls -a"
+            ],
+            [
+              "하위 이동",
+              "Set-Location -LiteralPath '.\\lesson one'",
+              "cd 'lesson one'"
+            ],
+            [
+              "파일 읽기",
+              "Get-Content -LiteralPath '.\\note.txt'",
+              "cat note.txt"
+            ],
+            [
+              "상위 이동",
+              "Set-Location -LiteralPath '..'",
+              "cd .."
+            ]
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-terminal-paths/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "PowerShell Set-Location",
+          "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "终端机与路径：找到专案根目录",
+      "description": "在 Windows、macOS、Linux 建立练习资料夹，确认目前目录并辨识相对与绝对路径。",
+      "hero": {
+        "src": "/guides/codex-terminal-paths/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "读完能做到什么"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你会在 Windows、macOS 或 Linux 开启终端机，辨认自己所在的资料夹，读取一个档案，并在启动 Codex 前确认工作位置。阅读约 12 分钟、操作约 20 分钟。本篇只练习路径和唯读命令，没有删除、安装或管理员操作；请只跟自己的作业系统那一段。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分清视窗、壳层与输入"
+        },
+        {
+          "type": "paragraph",
+          "text": "终端机是容纳文字互动的视窗；PowerShell、Bash、zsh 等壳层负责解读命令；codex 启动后又进入代理的对话介面。相同视窗会有不同输入位置。看到 PS 与路径时通常是在 PowerShell；看到 Codex 的对话输入区时，文字会成为给代理的要求。不要把文章中的终端机命令、/plan 斜线指令、自然语言提示词混成一串贴入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "绝对路径从磁碟或根目录出发，例如 C:\\Work\\demo 或 /home/reader/demo；相对路径从目前位置计算。点号 . 是目前目录，两点 .. 是上一层。移动终端机位置不会搬动档案，也不会把另一个已开启的终端机一起移动。每次新开视窗都先检视位置，不要只凭上一个视窗的记忆执行下一步。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "准备两层资料夹与文字档"
+        },
+        {
+          "type": "paragraph",
+          "text": "用档案管理员在自己方便找到的位置建立全新的 codex-terminal-lab，里面再建立名称含空白的 lesson one。若已有同名资料夹，换一个新的名称并在后面指令使用实际路径。用纯文字编辑器在 lesson one 里建立 note.txt，内容只写下方一行，储存为 UTF-8。这个动作故意在图形介面完成，让你知道终端机读到的档案原本在哪里。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Terminal practice: this is lesson one.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "目录应是下面的形状。Windows 记事本要避免 note.txt.txt，macOS 编辑器要避免 RTF；Linux 档名大小写保持一致。档名含空白并没有错，正好用来练习引号。教学中的灰色范例区只有命令与内容；不要把 PS C:>、$ 等提示字元也加进输入。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Windows：PowerShell 的完整操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "从开始选单开启 PowerShell，或在档案总管的 codex-terminal-lab 资料夹中选择「在终端机开启」。若终端机开的是命令提示字元，改开 PowerShell；本段的 Get-Location 并非 cmd.exe 指令。先执行下一组唯读命令，确认目前位置与直接子专案。没有看到 lesson one 时先别往下读档，回档案总管核对真正所在路径。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Get-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要手动移动时，先在档案总管复制 codex-terminal-lab 的完整路径，把下一行引号内的示例换成它。YOUR_NAME 是占位文字，不能原样执行；档案可能在 OneDrive 或其他磁碟，请使用实际位置。LiteralPath 会按原样解读路径，减少方括号被当成万用字元的问题。移动成功通常不印出结果，所以再查一次位置。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "确认位于实际练习根目录后，移入含空白的子目录并读档，再退回上一层。下方整组命令没有修改档案；预期中间显示完整英文句子，最后位置回到 codex-terminal-lab。不要只看输出最后一行就判定全部成功；任一步有错误都先停下核对。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "macOS 与 Linux：终端机的完整操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS 从 Spotlight 开启 Terminal，Linux 从应用程式选单开启终端机；也可使用档案管理员提供的在资料夹开启终端机功能。macOS 常见 zsh、Linux 常见 Bash，本段只用两者都能理解的基本命令。先执行 pwd 与 ls -a，前者回报目前路径，后者包括隐藏专案。不要把 macOS 的 /Users 路径当成 Linux 一定存在的 /home 路径。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "pwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "手动移动时，在 cd 后输入一个空白，再贴上用引号包住的实际资料夹绝对路径；下面只是替换示例。也可将资料夹拖入端末，但要检查终端机是否已自动处理空白，避免再加一层错误引号。若把家目录写成 $HOME，使用双引号才会展开变数；本篇先直接使用完整路径，少混入一种语法。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "看到 lesson one 后执行下一组；预期读出同一句话并回到原来根目录。若某一步失败，先修正再逐行继续，不把前一个错误带进下一步。macOS 与 Linux 的基本步骤相同，但档案名称的大小写行为可能依档案系统设定不同；养成完全匹配名称的习惯，就不用依赖宽松比对。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "确认错误行为，再启动 Codex"
+        },
+        {
+          "type": "paragraph",
+          "text": "在练习根目录尝试移入不存在的 missing-folder。PowerShell 用 Set-Location -LiteralPath '.\\missing-folder'；macOS／Linux 用 cd 'missing-folder'。预期有找不到路径的错误，查位置时仍在原处。错误文字依语言与版本不同，不要求逐字一致。这证明失败的移动不会自动建立资料夹，也提醒你不能在 cd 失败后照常执行修改命令。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "已安装 CLI 才在确认过的练习根目录执行 codex，并送出下方唯读要求。未安装者到 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 入门",
+              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "继续，不需要在本篇临时改许可权。代理应找到 lesson one/note.txt，读到英文句子并回报工作位置；若位置不同，先检查入口是否建立了工作副本，再判断是否选错目录。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "问题排除、结束与小练习"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到指令先看目前壳层，Get-Content 不能直接当成 Bash 指令。路径被拆成两段先检查空白与直引号，避免从文书软体复制弯引号。显示拒绝存取时，确认你选的是自己的练习资料夹，不要立刻以管理员身分执行。终端机看不到档案但编辑器看得到，先按储存，再核对副档名、工作目录，以及是否在 WSL 的另一个家目录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇没有改动原始档，结束时关闭终端机或离开练习目录即可。正在执行的程式通常可用 Ctrl+C 中断，但中断不等于还原已写入资料。再自行建立 lesson two/note.txt，写不同句子，从根目录分别读取两份内容。能分清路径与档案、正确处理空白、辨认失败后的位置，就透过练习；图中 1、2、3 是定位、读取、验证。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "PowerShell 路径语义依"
+            },
+            {
+              "type": "link",
+              "text": "Microsoft Set-Location 档案",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location"
+            },
+            {
+              "type": "text",
+              "text": "核对；Codex 启动依 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 官方档案",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": "，查证日 2026-09-14。Windows 命令另外以独立练习资料夹检查；macOS／Linux 段落为通用壳层操作说明，不冒充该平台实机截图。接著可读 "
+            },
+            {
+              "type": "link",
+              "text": "Markdown",
+              "url": "https://mokaair.com/zh-CN/life/codex-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": "与 "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "目的",
+            "PowerShell",
+            "macOS／Linux"
+          ],
+          "rows": [
+            [
+              "目前位置",
+              "Get-Location",
+              "pwd"
+            ],
+            [
+              "列出档案",
+              "Get-ChildItem -Name",
+              "ls -a"
+            ],
+            [
+              "移入子目录",
+              "Set-Location -LiteralPath '.\\lesson one'",
+              "cd 'lesson one'"
+            ],
+            [
+              "读取档案",
+              "Get-Content -LiteralPath '.\\note.txt'",
+              "cat note.txt"
+            ],
+            [
+              "返回上一层",
+              "Set-Location -LiteralPath '..'",
+              "cd .."
+            ]
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-terminal-paths/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "PowerShell Set-Location",
+          "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

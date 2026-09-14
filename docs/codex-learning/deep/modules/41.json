@@ -1,0 +1,225 @@
+{
+  "id": 41,
+  "readingMinutes": 12,
+  "operationMinutes": 25,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標：換裝置後仍能確認同一份工作",
+        "Goal: identify the same work after changing devices",
+        "目標：端末を替えても作業を特定する",
+        "목표: 기기를 바꿔도 같은 작업 확인"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "完成一張交接紀錄，從另一個支援 Remote 的裝置接續讀取，再用新檔案標記驗證工作位置。閱讀約 12 分鐘，操作約 25 分鐘。先完成 Remote 主機設定，準備自己的 Mac／Windows 主機和已配對的 iPhone／Android；若有第二部支援遠端控制的電腦，可再練習桌面接續。Handoff 是後半段的進一步練習，需要另一臺已連接且有相同 Git 專案的主機。",
+        "Create a handoff record, continue reading from another Remote-capable device and verify the execution location with a fresh file marker. Allow 12 minutes to read and 25 to practice. First complete host setup with a Mac/Windows host and paired iPhone/Android. A second supported desktop can practice desktop continuation. The optional Handoff exercise requires another connected host with the same saved Git project.",
+        "引継ぎ記録を作り、別の Remote 対応端末から読み取りを続け、新しいファイル印で実行場所を確認します。読む時間12分、操作25分程度です。Mac / Windows ホストとペアリング済みの iPhone / Android を準備します。対応する二台目のデスクトップでも再開できます。後半の任意 Handoff は同じ Git プロジェクトを保存した別ホストが必要です。",
+        "인계 기록을 만들고 다른 Remote 지원 기기에서 읽기를 이어 간 뒤 새 파일 표식으로 실행 위치를 확인합니다. 읽기 12분, 실습 25분입니다. Mac/Windows 호스트와 페어링된 iPhone/Android를 준비합니다. 지원하는 두 번째 데스크톱에서도 이어 할 수 있습니다. 뒤의 선택 Handoff 실습은 같은 Git 프로젝트를 저장한 다른 호스트가 필요합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先分開三件事：你拿在手上的控制裝置、對話所在的任務、實際提供檔案與終端機的主機。手機換成筆電，可能只是換了控制裝置；把任務 Handoff 到另一主機，才改變執行位置。雲端又是另一種環境。只看到相同任務標題或相同資料夾名稱，不能判斷目前讀到哪一份資料。",
+        "Separate the device in your hands, the task containing the conversation, and the host supplying files and shell. Moving from phone to laptop may change only the controller. Handoff changes the execution host; cloud is another environment again. Matching task titles or folder names alone cannot identify the files currently being read.",
+        "手元の操作端末、会話を含む課題、ファイルと端末を提供するホストを分けます。電話からノート PC への変更は操作端末だけの変更かもしれません。Handoff は実行ホストを変え、クラウドは別の環境です。同じ題名やフォルダー名だけでは実際の資料を識別できません。",
+        "손에 든 제어 기기, 대화가 있는 작업, 파일/셸을 제공하는 호스트를 구분합니다. 휴대전화에서 노트북으로 바뀌어도 제어 기기만 바뀔 수 있습니다. Handoff는 실행 호스트를 바꾸며 클라우드는 또 다른 환경입니다. 같은 작업 제목이나 폴더명만으로 실제 자료를 식별할 수 없습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "本篇流程圖的 1 代表確認主機與工作目錄，2 代表送出一次新的唯讀要求，3 代表用檔案內容核對結果。三個步驟依序完成；看到主機出現在清單，只完成第 1 步的一部分，還不能證明第 2、3 步成功。",
+        "In the workflow illustration, 1 identifies the host and directory, 2 sends a fresh read-only request, and 3 checks the result against file contents. Follow that order. A host appearing in a list satisfies only part of step 1, not steps 2 and 3.",
+        "手順図の 1 はホストと場所の確認、2 は新しい読み取り依頼、3 はファイル内容との照合です。順に実施します。一覧にホストがあるだけでは 1 の一部しか確認できず、2 と 3 の成功にはなりません。",
+        "흐름도 1은 호스트/경로 확인, 2는 새 읽기 요청, 3은 파일 내용과 결과 비교입니다. 순서대로 수행합니다. 목록에 호스트가 보이는 것은 1의 일부일 뿐 2와 3의 성공을 뜻하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 動作 | 執行位置 | 檔案如何取得 |\n| --- | --- | --- |\n| 手機 Remote 接續 | 原連接主機 | 直接讀該主機檔案 |\n| 另一桌面控制同主機 | 原連接主機 | 仍用該主機的專案 |\n| Handoff 到另一主機 | 目的主機的工作樹 | 移交任務與 Git 狀態後再核對 |\n| 新雲端任務 | 雲端環境 | 從選定儲存庫版本建立 |",
+        "| Action | Execution location | File source |\n| --- | --- | --- |\n| Continue through phone Remote | Original connected host | That host's files |\n| Another desktop controls that host | Original connected host | Same host project |\n| Handoff to another host | Destination worktree | Transferred task/Git state, then verify |\n| New cloud task | Cloud environment | Selected repository revision |",
+        "| 操作 | 実行場所 | ファイル |\n| --- | --- | --- |\n| 電話の Remote で再開 | 元のホスト | ホスト上の資料 |\n| 別デスクトップから制御 | 元のホスト | 同じホストのプロジェクト |\n| 別ホストへ Handoff | 移動先の worktree | 課題と Git 状態を移して確認 |\n| 新規クラウド課題 | クラウド | 選択したリポジトリの版 |",
+        "| 동작 | 실행 위치 | 파일 출처 |\n| --- | --- | --- |\n| 휴대전화 Remote 재개 | 원래 호스트 | 해당 호스트 파일 |\n| 다른 데스크톱으로 제어 | 원래 호스트 | 같은 호스트 프로젝트 |\n| 다른 호스트로 Handoff | 대상 worktree | 작업/Git 상태 이전 후 확인 |\n| 새 클라우드 작업 | 클라우드 | 선택한 저장소 버전 |"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟一：留下可核對的交接紀錄",
+        "Step 1: Record verifiable handoff facts",
+        "手順1：検証できる引継ぎを記録",
+        "1단계: 확인 가능한 인계 정보 기록"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在[Remote 設定篇](article:codex-remote-setup)建立的 codex-remote-lab 裡，確認 host-marker.txt 有 REMOTE-LAB-A 和 Revision: 1，request.txt 保持原樣。主機上用文字編輯器新增 handoff.md，依下面範本填入自己看到的結果。主機名稱可用自訂代號，私人絕對路徑只留在自己的紀錄，不要直接放到公開截圖。",
+        "In codex-remote-lab from [Remote setup](article:codex-remote-setup), confirm host-marker.txt contains REMOTE-LAB-A and Revision: 1, with request.txt unchanged. Create handoff.md in a host text editor and fill the template from observed facts. Use a host alias if desired; keep private absolute paths in your own record, outside public screenshots.",
+        "[Remote 設定](article:codex-remote-setup)の codex-remote-lab で host-marker.txt の REMOTE-LAB-A、Revision: 1 と request.txt を確認します。ホストのエディターで handoff.md を作り、観察した事実を記入します。ホスト名は別名でもよく、私的な絶対パスは公開画像に出しません。",
+        "[Remote 설정](article:codex-remote-setup)의 codex-remote-lab에서 host-marker.txt의 REMOTE-LAB-A, Revision: 1과 원래 request.txt를 확인합니다. 호스트 편집기로 handoff.md를 만들고 관찰한 사실을 적습니다. 호스트 별칭을 써도 되며 비공개 절대 경로는 공개 이미지에 넣지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "# Remote reading handoff\n\nGoal: read this practice folder without modifying files.\nController: record the device currently sending requests.\nExecution host: record the host shown by Remote.\nProject: codex-remote-lab\nWorking directory: record the actual directory reported by the host.\nTask: record the exact task title or identifier.\nMarker: REMOTE-LAB-A / Revision: 1\nGit state: not initialized for this basic Remote exercise.\nVerified: record only checks actually performed, with time.\nPending: fresh read from the second controller.\nNext action: read host-marker.txt again and compare the revision.\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "這是要填寫的表單，不能原封不動把 record… 當成已驗證內容。任務標題相同時，用介面能提供的識別方式、專案和最近訊息一起核對；若無法取得內部 ID，記下可辨識的實際標題與時間即可。此練習還沒有 Git，所以寫明未初始化；不要杜撰分支或 commit。正式 Git 專案則另外記分支、commit 與未提交差異。",
+        "This is a form: replace “record…” with verified facts. If titles collide, check the available task identifier, project and recent messages. When no internal ID is exposed, record the exact visible title and time. This basic exercise has no Git repository, so say so rather than inventing a branch or commit. For an actual Git project, also record branch, commit and uncommitted changes.",
+        "record… を実際の確認内容に置き換えます。同じ題名なら識別子、プロジェクト、最近のメッセージも照合します。内部 ID が表示されなければ実際の題名と時刻を記録します。基本課題には Git がないのでブランチやコミットを作り話にせず、Git プロジェクトではそれらと未コミット差分を追加します。",
+        "record…를 실제 확인 정보로 바꿉니다. 제목이 겹치면 식별자, 프로젝트, 최근 메시지도 비교합니다. 내부 ID가 안 보이면 실제 제목과 시간을 적습니다. 기본 실습에는 Git이 없으므로 브랜치/커밋을 지어내지 않고 Git 프로젝트라면 이 정보와 미커밋 변경을 추가합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟二：換控制裝置，先做新讀取",
+        "Step 2: Change controllers and perform a fresh read",
+        "手順2：操作端末を替えて新たに読む",
+        "2단계: 제어 기기를 바꾸고 새로 읽기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "從手機 Remote 選原主機與原任務。若改用另一部支援的 Mac／Windows 桌面版，到 Settings → Connections → Control other devices 加入該主機，完成配對後開同一任務；這個入口依推出範圍可能尚未出現，沒有時先用已配對手機完成練習。每個控制裝置都需與要控制的主機建立連線，不能只靠相同登入推定已配好。",
+        "In phone Remote, choose the original host and task. On another supported Mac/Windows desktop, use Settings → Connections → Control other devices, pair with the host and open the same task. Availability varies; use the already paired phone if that entry is absent. Each controller needs a connection to each host it controls; matching logins alone do not prove pairing.",
+        "電話の Remote で元のホストと課題を選びます。別の対応 Mac / Windows なら Settings → Connections → Control other devices から接続して同じ課題を開きます。展開状況で表示されない場合はペアリング済み電話で実施します。制御する端末と各ホストの接続が必要で、同じログインだけでは確認できません。",
+        "휴대전화 Remote에서 원래 호스트/작업을 선택합니다. 다른 지원 Mac/Windows는 Settings → Connections → Control other devices로 연결하고 같은 작업을 엽니다. 배포 범위에 따라 안 보이면 페어링된 휴대전화를 사용합니다. 각 제어 기기는 대상 호스트마다 연결되어야 하며 같은 로그인만으로 페어링을 확인할 수 없습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先看交接紀錄，不立刻要求寫檔。在新的控制裝置送出下列要求，確認回覆真的來自當下讀檔。正常應報 REMOTE-LAB-A、Revision: 1、目前目錄，以及正在原主機執行。主機名若工具無法取得，應說無法確認，再由你對照 Remote 介面；不應把檔案內的 REMOTE-LAB-A 冒充真實電腦名稱。",
+        "Read the handoff record before requesting edits. Send the prompt below from the new controller. Expect REMOTE-LAB-A, Revision: 1, the current directory and the original execution host. If tools cannot determine the hostname, the answer should say so and you should compare the Remote UI. A file marker must not be presented as a measured computer name.",
+        "編集を依頼する前に引継ぎを読み、別端末から次の依頼を送ります。REMOTE-LAB-A、Revision: 1、作業場所、元ホストを確認します。ホスト名を取得できなければ未確認とし、Remote の表示と照合します。ファイル内の印を実測したコンピューター名として扱いません。",
+        "수정 요청 전에 인계 기록을 읽고 새 기기에서 다음 요청을 보냅니다. REMOTE-LAB-A, Revision: 1, 작업 경로, 원래 호스트를 확인합니다. 호스트명을 얻지 못하면 미확인으로 남기고 Remote 표시와 비교합니다. 파일 표식을 측정된 컴퓨터 이름으로 제시하지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Continue this exact Remote reading task. Read handoff.md and host-marker.txt from disk now, without modifying files. Report the current working directory and both marker lines. Identify the execution host if the tools expose it; otherwise state that it is unverified. Distinguish this fresh read from facts copied from earlier messages.\n"
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟三：用版本變動抓出舊內容",
+        "Step 3: Detect stale context with a revision change",
+        "手順3：版の変更で古い内容を見分ける",
+        "3단계: 버전 변경으로 오래된 내용 구별"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "回主機的文字編輯器，只把 host-marker.txt 第二行改為 Revision: 2 並儲存，保留第一行和 request.txt。不更新 handoff.md，讓它暫時保留舊紀錄，再從另一控制裝置要求重新讀兩個檔案。預期它指出實際檔案是 2，而交接文件仍是 1；若只照聊天回覆 1，先核對資料夾、主機與是否真的重新讀檔。",
+        "On the host, change only the second line of host-marker.txt to Revision: 2 and save. Preserve its first line and request.txt. Leave handoff.md at revision 1 temporarily, then ask the other controller to reread both files. Expect a discrepancy: disk marker 2, handoff note 1. If the answer repeats 1, check directory, host and whether a fresh read actually occurred.",
+        "ホストで host-marker.txt の二行目だけ Revision: 2 にして保存します。一行目と request.txt は保持し、handoff.md は一時的に1のままにします。別端末で再読させ、ディスクの2と記録の1の差を指摘できるか確認します。1を繰り返すなら場所、ホスト、実際の再読を調べます。",
+        "호스트에서 host-marker.txt 둘째 줄만 Revision: 2로 저장하고 첫 줄과 request.txt는 보존합니다. handoff.md는 잠시 1로 둔 채 다른 기기에서 다시 읽게 합니다. 디스크 2와 기록 1의 차이를 지적해야 합니다. 1만 반복하면 경로, 호스트, 실제 재읽기를 확인합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Read host-marker.txt and handoff.md again from the current project. Compare their revision values. Report any disagreement; do not assume the handoff note is newer than the file. Do not edit either file.\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "確認差異後，由你把 handoff.md 的 Marker 更新為 2，並在 Verified 寫明這次由哪個控制裝置、何時完成新讀取。只記錄看到的結果，不填「測試全部通過」，因為這次並沒有執行程式測試。要還原練習時，將標記與紀錄一起改回 1，再讀一次確認；這種精確還原不會撤銷其他程式或遠端任務。",
+        "After detecting the discrepancy, update handoff.md to marker 2 and record the controller and time under Verified. Record observed facts, not “all tests pass,” because no program tests ran. To reset the exercise, restore both marker and record to 1 and reread them. That targeted reset does not undo other code or remote tasks.",
+        "差を確認したら handoff.md の印を2にし、Verified に端末と確認時刻を記録します。プログラムテストはしていないので全成功とは書きません。課題を戻すなら両方を1にして再読します。この限定した復元は他のコードや課題を取り消しません。",
+        "차이를 확인한 뒤 handoff.md 표식을 2로 바꾸고 Verified에 기기/시간을 적습니다. 프로그램 테스트는 안 했으므로 전체 성공이라고 쓰지 않습니다. 실습을 초기화하려면 둘 다 1로 돌리고 다시 읽습니다. 이 제한된 복구는 다른 코드/작업을 취소하지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "進一步：真正把任務 Handoff 到另一主機",
+        "Further practice: hand off execution to another host",
+        "発展：別ホストへ実行を Handoff",
+        "심화: 다른 호스트로 실행 Handoff"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "前面只換控制裝置。若需要讓別臺電腦接手執行，先看[Git 與還原](article:codex-git-basics)，準備一個獨立 Git 練習儲存庫。來源與目的主機都需連接，並保存同一個 Git 儲存庫的專案；如果來源選的是儲存庫內子資料夾，目的也要保存對應子資料夾。目的地沒有相符專案時，先補設定，不是改任務名稱就能匹配。",
+        "So far only the controller changed. To move execution, prepare a separate Git practice repository using [Git basics](article:codex-git-basics). Connect both hosts and save a project for the same repository on each. If the source project is a repository subdirectory, save the corresponding subdirectory at the destination. Missing matching projects require project setup, not a task rename.",
+        "ここまでは操作端末の変更です。実行を移すなら[Git 基礎](article:codex-git-basics)で独立教材を準備し、接続済み両ホストに同じリポジトリのプロジェクトを保存します。元が子ディレクトリなら移動先も対応する場所です。候補がなければプロジェクト設定を直し、課題名変更で代用しません。",
+        "지금까지는 제어 기기만 바꿨습니다. 실행을 옮기려면 [Git 기초](article:codex-git-basics)로 독립 저장소를 준비하고 연결된 두 호스트에 같은 저장소 프로젝트를 저장합니다. 원본이 하위 폴더면 대상도 대응하는 하위 폴더여야 합니다. 일치하는 프로젝트가 없으면 설정을 보완하며 작업명 변경으로 대신하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在來源專案的終端機執行下面的唯讀 Git 命令，保存輸出及重要差異。這些命令適用 Windows PowerShell、macOS、Linux 終端機，但要先進到正確練習儲存庫。若顯示 not a git repository，這不是可繼續 Handoff 的 Git 起點。分支空白可能是 detached HEAD，應記錄 commit 並理解狀態，不要憑空補一個分支名。",
+        "Run these read-only Git commands in the source practice repository and retain the output and relevant diff. They work in PowerShell, macOS and Linux terminals once you enter the correct repository. “Not a git repository” is not a valid starting point for this exercise. An empty branch may mean detached HEAD; record the commit and investigate instead of inventing a branch name.",
+        "元の教材リポジトリで次の読み取りコマンドを使い、結果と重要な差分を残します。PowerShell、macOS、Linux で同じですが正しい場所が前提です。not a git repository なら開始条件を満たしていません。ブランチ空欄は detached HEAD の可能性があり、コミットを記録して確認します。",
+        "원본 실습 저장소에서 다음 읽기 명령을 실행하고 결과/중요 diff를 남깁니다. PowerShell, macOS, Linux 모두 같지만 올바른 경로가 전제입니다. not a git repository면 시작 조건이 아닙니다. 빈 브랜치는 detached HEAD일 수 있으니 커밋을 기록하고 확인합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "在桌面版開啟要移交的任務，從頁尾的目前執行位置選目的主機，核對目的地與分支後選 Hand off。官方流程會在目的地建立或使用工作樹並移交任務與 Git 狀態；若任務正在回覆，移交會中斷那次回覆。為了容易比對，先讓練習停在可檢查的位置。需要從另一任務用自然語言移交時，要明確指定哪個任務與主機；執行要求的任務不能搬自己。",
+        "Open the task in desktop, choose the destination through its footer run-location control, review destination and branch, then select Hand off. The documented flow uses a destination worktree and transfers the task/Git state. An active response is interrupted, so pause at a reviewable point for this exercise. If requesting handoff from another task, identify the task and host explicitly; the requesting task cannot move itself.",
+        "デスクトップで対象課題の下部実行場所から移動先を選び、ホストとブランチを確認して Hand off を実行します。移動先 worktree に課題と Git 状態が移り、実行中の返答は中断されます。課題では確認できる区切りにしておきます。別課題への自然言語依頼では対象とホストを明記し、依頼元自身は移せません。",
+        "데스크톱의 대상 작업 하단 실행 위치에서 대상 호스트/브랜치를 확인하고 Hand off를 선택합니다. 대상 worktree로 작업/Git 상태가 이전되며 실행 중 응답은 중단됩니다. 실습은 검토 가능한 지점에서 진행합니다. 다른 작업에 자연어로 요청할 때 대상과 호스트를 명시하며 요청하는 작업 자체는 옮길 수 없습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "移交成功後，再讀標記、目錄、commit 與差異，核對新的工作樹路徑。不要假設所有未追蹤資料、資料庫、環境變數、工具版本或網站登入都已移過去；先確認本次工作需要的檔案和工具實際可用，再恢復修改。要回來時在執行位置選 This computer 並再次核對。Handoff 不支援把任務直接搬進 Codex 雲端環境，雲端要按[雲端篇](article:codex-cloud-tasks-github)建立相應任務。",
+        "After success, reread the marker, directory, commit and changes, checking the new worktree path. Do not assume untracked data, databases, environment variables, tool versions or website logins transferred. Verify required files and tools before editing. To return, select This computer and verify again. Handoff does not target Codex cloud; use the [cloud workflow](article:codex-cloud-tasks-github) for that environment.",
+        "成功後も印、場所、コミット、差分と新しい worktree を確認します。未追跡資料、DB、環境変数、ツール、サイト認証の移動を仮定せず、必要物を確かめてから再開します。戻す場合は This computer を選び再確認します。Codex cloud への Handoff は対象外なので[クラウド手順](article:codex-cloud-tasks-github)を使います。",
+        "성공 후에도 표식, 경로, 커밋, diff와 새 worktree를 확인합니다. 미추적 자료, DB, 환경 변수, 도구, 사이트 인증까지 옮겨졌다고 가정하지 말고 필요한 것을 확인한 뒤 재개합니다. 돌아오려면 This computer를 선택하고 재확인합니다. Codex cloud는 Handoff 대상이 아니므로 [클라우드 절차](article:codex-cloud-tasks-github)를 사용합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "常見問題與完成判準",
+        "Troubleshooting and acceptance",
+        "問題の切り分けと完了条件",
+        "문제 해결과 완료 기준"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "另一裝置看不到任務時，依序查主機、工作區、配對與專案，不先重建同名任務；回覆仍是舊版本時，用重新讀檔和 Revision: 2 驗證；Handoff 目的地沒有出現時，查相同 Git 儲存庫及子目錄是否已保存；新主機測試不能執行時，查工具與依賴，不能因移交成功就標示測試通過。網路中斷時先查實際任務狀態，避免在兩臺主機同時重送會寫入的要求。",
+        "If another device cannot find the task, check host, workspace, pairing and project before creating a duplicate. For stale replies, reread and verify Revision: 2. For a missing Handoff destination, check the saved repository/subdirectory. If tests cannot run on the new host, inspect tools and dependencies; successful transfer is not a passed test. After disconnection, inspect task state before duplicating a write request on two hosts.",
+        "見つからない課題はホスト、ワークスペース、ペアリング、プロジェクトを調べてから新規作成を考えます。古い返答は Revision: 2 の再読、移動先欠落は保存したリポジトリと子ディレクトリ、新ホストでの実行失敗は道具と依存を確認します。移動成功はテスト成功ではありません。切断後は状態を見て二重の書込み依頼を避けます。",
+        "작업 누락은 호스트/워크스페이스/페어링/프로젝트를 먼저 확인합니다. 오래된 응답은 Revision: 2 재읽기, 대상 누락은 저장된 저장소/하위 폴더, 새 호스트 실행 실패는 도구/의존성을 확인합니다. 이전 성공은 테스트 성공이 아닙니다. 끊긴 뒤 상태를 먼저 보고 두 호스트에 쓰기 요청을 중복 전송하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "完成基本練習後應保有填妥的 handoff.md、兩次不同版本的新讀取、舊紀錄與實檔不一致的判讀，以及明確的還原結果。有第二主機才額外記錄 Handoff 前後的版本與工具檢查；沒做就標未實測。本文 Remote 與 Handoff 入口依官方文件查證，沒有用一個本機模擬資料夾宣稱完成真實跨主機移交。接著可讀[上下文交接](article:codex-context-handoff)，將同樣紀錄方式用於較長工作。",
+        "Finish the basic exercise with a completed handoff.md, fresh reads of two revisions, an identified stale-note mismatch and a recorded reset. Add before/after Handoff and tool checks only if you used a second host; otherwise mark them untested. Remote/Handoff controls are documentation-checked. A local simulated folder is not claimed as real host transfer. Continue with [context handoff](article:codex-context-handoff) for longer work.",
+        "記入済み handoff.md、二版の新規読取り、古い記録との相違、復元確認を残します。実際に別ホストを使った場合だけ Handoff 前後と道具の確認を追加し、未実施は未実測とします。入口は公式資料で確認し、単一ローカルフォルダーを真のホスト移動とはしていません。[長い作業の引継ぎ](article:codex-context-handoff)にも応用できます。",
+        "작성한 handoff.md, 두 버전의 새 읽기, 오래된 기록과의 차이, 복구 확인을 남깁니다. 실제 두 번째 호스트를 썼을 때만 Handoff 전후/도구 검사를 추가하고 안 했다면 미실측으로 적습니다. 진입점은 공식 문서로 확인했으며 단일 로컬 폴더를 실제 호스트 이전이라고 주장하지 않습니다. [긴 작업의 인계](article:codex-context-handoff)에도 적용할 수 있습니다."
+      ]
+    }
+  ]
+}

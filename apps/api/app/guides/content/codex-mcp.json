@@ -1,0 +1,849 @@
+{
+  "slug": "codex-mcp",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 125,
+  "locales": {
+    "zh-TW": {
+      "title": "MCP 設定與連線排除",
+      "description": "MCP 讓 Codex 使用外部工具與資料。STDIO 伺服器通常由本機命令啟動；HTTP 伺服器透過 URL 連線。設定檔寫入成功只代表設定存在，還需要確認服務啟動、驗證通過與工具回應。",
+      "hero": {
+        "src": "/guides/codex-mcp/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MCP 讓 Codex 使用外部工具與資料。STDIO 伺服器通常由本機命令啟動；HTTP 伺服器透過 URL 連線。設定檔寫入成功只代表設定存在，還需要確認服務啟動、驗證通過與工具回應。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "你會學到什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "有一次成功工具呼叫與可核對結果，才算連接完成。留下伺服器名稱與非敏感診斷，不保存 token。"
+        },
+        {
+          "type": "paragraph",
+          "text": "預估操作時間: 15 分鐘"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前"
+        },
+        {
+          "type": "paragraph",
+          "text": "先選有文件、可授權使用的伺服器，確認使用 STDIO 還是 HTTP。範例中的 .example 是佔位網址，不是真實可連線服務；必須換成你已核准的端點，不輸入私人金鑰到示範檔。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逐步操作"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "1. 桌面版可由 Settings → MCP servers → Add server 選類型並填命令或 URL。CLI 先用 codex mcp --help 查語法；也可在 "
+            },
+            {
+              "type": "link",
+              "text": "config.toml",
+              "url": "https://mokaair.com/zh-TW/life/codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": " 加入對應設定。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 保存後依介面 Restart；需要 OAuth 的服務完成 Authenticate，CLI 可用 codex mcp login 加伺服器名稱。確認本機與服務的網路可達。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 用 codex mcp list 看設定，再在互動介面 /mcp 看實際連線狀態與工具。檢查工具名稱、參數與讀寫性質。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 選一個沒有副作用的工具做最小測試，對照回傳資料與來源。若失敗，分別檢查命令能否啟動、URL 是否正確、認證是否過期與工作階段是否重載。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp/diagram-1.svg",
+          "alt": "25. MCP 設定與連線排除 — 實作順序示意圖，非產品介面截圖。 Configuration → Handshake → Tool result",
+          "width": 1600,
+          "height": 900,
+          "caption": "25. MCP 設定與連線排除 — 實作順序示意圖，非產品介面截圖。 Configuration → Handshake → Tool result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "列出目前 MCP 連線與可用的唯讀工具，選一個最小查詢驗證。不要執行會寫入或刪除資料的工具。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "範例與驗證"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "[mcp_servers.practice]\nurl = \"https://your-approved-server.example/mcp\""
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "驗收方式"
+          ],
+          "rows": [
+            [
+              "先確認環境",
+              "先選有文件、可授權使用的伺服器，確認使用 STDIO 還是 HTTP。範例中的 .example 是佔位網址，不是真實可連線服務；必須換成你已核准的端點，不輸入私人金鑰到示範檔。"
+            ],
+            [
+              "完成一個操作",
+              "選一個沒有副作用的工具做最小測試，對照回傳資料與來源。若失敗，分別檢查命令能否啟動、URL 是否正確、認證是否過期與工作階段是否重載。"
+            ],
+            [
+              "檢查真實結果",
+              "有一次成功工具呼叫與可核對結果，才算連接完成。留下伺服器名稱與非敏感診斷，不保存 token。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "有一次成功工具呼叫與可核對結果，才算連接完成。留下伺服器名稱與非敏感診斷，不保存 token。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題"
+        },
+        {
+          "type": "paragraph",
+          "text": "連上錯誤帳號與伺服器也可能回應成功，因此要核對資料來源。不要把未驗證的 MCP 設定當成已能控制應用程式。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "官方來源",
+          "text": "跨平台操作依官方文件查證；未在每個系統實測。介面與帳號提供的功能可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸閱讀"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "extend/mcp",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "MCP 配置与连接排查",
+      "description": "MCP 让 Codex 使用外部工具与资料。STDIO 伺服器通常由本机命令启动；HTTP 伺服器透过 URL 连线。设定档写入成功只代表设定存在，还需要确认服务启动、验证通过与工具回应。",
+      "hero": {
+        "src": "/guides/codex-mcp/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MCP 让 Codex 使用外部工具与资料。STDIO 伺服器通常由本机命令启动；HTTP 伺服器透过 URL 连线。设定档写入成功只代表设定存在，还需要确认服务启动、验证通过与工具回应。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "你会学到什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "有一次成功工具呼叫与可核对结果，才算连接完成。留下伺服器名称与非敏感诊断，不保存 token。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预估操作时间: 15 分钟"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前"
+        },
+        {
+          "type": "paragraph",
+          "text": "先选有文件、可授权使用的伺服器，确认使用 STDIO 还是 HTTP。范例中的 .example 是占位网址，不是真实可连线服务；必须换成你已核准的端点，不输入私人金钥到示范档。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逐步操作"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "1. 桌面版可由 Settings → MCP servers → Add server 选类型并填命令或 URL。CLI 先用 codex mcp --help 查语法；也可在 "
+            },
+            {
+              "type": "link",
+              "text": "config.toml",
+              "url": "https://mokaair.com/zh-CN/life/codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": " 加入对应设定。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 保存后依介面 Restart；需要 OAuth 的服务完成 Authenticate，CLI 可用 codex mcp login 加伺服器名称。确认本机与服务的网路可达。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 用 codex mcp list 看设定，再在互动介面 /mcp 看实际连线状态与工具。检查工具名称、参数与读写性质。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 选一个没有副作用的工具做最小测试，对照回传资料与来源。若失败，分别检查命令能否启动、URL 是否正确、认证是否过期与工作阶段是否重载。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp/diagram-1.svg",
+          "alt": "25. MCP 配置与连接排查 — 实作顺序示意图，非产品介面截图。 Configuration → Handshake → Tool result",
+          "width": 1600,
+          "height": 900,
+          "caption": "25. MCP 配置与连接排查 — 实作顺序示意图，非产品介面截图。 Configuration → Handshake → Tool result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "练习需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "列出目前 MCP 连线与可用的唯读工具，选一个最小查询验证。不要执行会写入或删除资料的工具。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "范例与验证"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "[mcp_servers.practice]\nurl = \"https://your-approved-server.example/mcp\""
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查项目",
+            "验收方式"
+          ],
+          "rows": [
+            [
+              "先确认环境",
+              "先选有文件、可授权使用的伺服器，确认使用 STDIO 还是 HTTP。范例中的 .example 是占位网址，不是真实可连线服务；必须换成你已核准的端点，不输入私人金钥到示范档。"
+            ],
+            [
+              "完成一个操作",
+              "选一个没有副作用的工具做最小测试，对照回传资料与来源。若失败，分别检查命令能否启动、URL 是否正确、认证是否过期与工作阶段是否重载。"
+            ],
+            [
+              "检查真实结果",
+              "有一次成功工具呼叫与可核对结果，才算连接完成。留下伺服器名称与非敏感诊断，不保存 token。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成结果"
+        },
+        {
+          "type": "paragraph",
+          "text": "有一次成功工具呼叫与可核对结果，才算连接完成。留下伺服器名称与非敏感诊断，不保存 token。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题"
+        },
+        {
+          "type": "paragraph",
+          "text": "连上错误帐号与伺服器也可能回应成功，因此要核对资料来源。不要把未验证的 MCP 设定当成已能控制应用程式。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "官方来源",
+          "text": "跨平台操作依官方文件查证；未在每个系统实测。介面与帐号提供的功能可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸阅读"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "extend/mcp",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "MCP setup and connection checks",
+      "description": "MCP connects Codex to tools and data. STDIO servers usually start as local processes; HTTP servers use a URL. Saving configuration only proves it exists: verify startup, authentication and an actual tool response.",
+      "hero": {
+        "src": "/guides/codex-mcp/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MCP connects Codex to tools and data. STDIO servers usually start as local processes; HTTP servers use a URL. Saving configuration only proves it exists: verify startup, authentication and an actual tool response."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will learn"
+        },
+        {
+          "type": "paragraph",
+          "text": "A successful tool call with a verifiable result establishes the connection. Keep non-sensitive diagnostics without tokens."
+        },
+        {
+          "type": "paragraph",
+          "text": "Estimated practice time: 15 min"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before you start"
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose a documented server you are authorized to use and identify its transport. The .example URL below is a placeholder, not a live service; replace it with an approved endpoint and keep secrets out of examples."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step by step"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "1. In desktop, use Settings → MCP servers → Add server and choose command or URL. In CLI, inspect codex mcp --help, or add the appropriate "
+            },
+            {
+              "type": "link",
+              "text": "config.toml",
+              "url": "https://mokaair.com/en/life/codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": " entry."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "2. Save and restart the connection. Complete Authenticate for OAuth servers, or use codex mcp login with the server name. Check network reachability."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. Use codex mcp list for configuration, then /mcp inside the interactive client for live connection and tools. Inspect tool names, arguments and whether they read or write."
+        },
+        {
+          "type": "paragraph",
+          "text": "4. Run one minimal read-only query and compare its response with the expected source. For failure, distinguish startup errors, wrong endpoint, expired credentials and a session that was not reloaded."
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp/diagram-1.svg",
+          "alt": "25. MCP setup and connection checks — Workflow illustration, not a product screenshot. Configuration → Handshake → Tool result",
+          "width": 1600,
+          "height": 900,
+          "caption": "25. MCP setup and connection checks — Workflow illustration, not a product screenshot. Configuration → Handshake → Tool result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice request"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "List current MCP connections and read-only tools, then perform one minimal query. Do not use tools that write or delete data."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Example and verification"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "[mcp_servers.practice]\nurl = \"https://your-approved-server.example/mcp\""
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "Acceptance method"
+          ],
+          "rows": [
+            [
+              "Confirm the environment",
+              "Choose a documented server you are authorized to use and identify its transport. The .example URL below is a placeholder, not a live service; replace it with an approved endpoint and keep secrets out of examples."
+            ],
+            [
+              "Complete one action",
+              "Run one minimal read-only query and compare its response with the expected source. For failure, distinguish startup errors, wrong endpoint, expired credentials and a session that was not reloaded."
+            ],
+            [
+              "Inspect the actual result",
+              "A successful tool call with a verifiable result establishes the connection. Keep non-sensitive diagnostics without tokens."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Expected result"
+        },
+        {
+          "type": "paragraph",
+          "text": "A successful tool call with a verifiable result establishes the connection. Keep non-sensitive diagnostics without tokens."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting"
+        },
+        {
+          "type": "paragraph",
+          "text": "A wrong account or server can still respond successfully, so verify the source. Configuration alone is not evidence that Codex controls an application."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Official sources",
+          "text": "Cross-platform steps were checked against official documentation, not tested on every operating system. Interfaces and account availability can differ."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Continue learning"
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "extend/mcp",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "MCP の設定と接続確認",
+      "description": "MCP は外部ツールと接続します。STDIO はローカル命令、HTTP は URL を使います。設定保存だけでなく起動、認証、応答を確認します。",
+      "hero": {
+        "src": "/guides/codex-mcp/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MCP は外部ツールと接続します。STDIO はローカル命令、HTTP は URL を使います。設定保存だけでなく起動、認証、応答を確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "学べること"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認できるツール応答が得られて初めて接続完了です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習時間の目安: 15 分"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "始める前に"
+        },
+        {
+          "type": "paragraph",
+          "text": "利用許可のあるサーバーを選びます。.example は接続できる実サーバーではなく置換用です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "操作手順"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Settings → MCP servers → Add server または CLI のヘルプを確認して設定します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 再起動し、必要な OAuth 認証を完了します。通信先が到達可能か確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. codex mcp list で設定、/mcp で実際の状態とツールを確認します。引数と読み書きの性質を読みます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 副作用のない最小照会を試し、出典を確認します。失敗は起動、URL、認証、再読み込みを分けて調べます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp/diagram-1.svg",
+          "alt": "25. MCP の設定と接続確認 — 作業の流れを表す図です。製品画面の画像ではありません。 Configuration → Handshake → Tool result",
+          "width": 1600,
+          "height": 900,
+          "caption": "25. MCP の設定と接続確認 — 作業の流れを表す図です。製品画面の画像ではありません。 Configuration → Handshake → Tool result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習用の依頼"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "接続と読み取りツールを示し、最小照会を一つ行ってください。書き込みや削除は禁止です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "例と確認方法"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "[mcp_servers.practice]\nurl = \"https://your-approved-server.example/mcp\""
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認項目",
+            "確認方法"
+          ],
+          "rows": [
+            [
+              "環境を確かめる",
+              "利用許可のあるサーバーを選びます。.example は接続できる実サーバーではなく置換用です。"
+            ],
+            [
+              "一つの操作を行う",
+              "副作用のない最小照会を試し、出典を確認します。失敗は起動、URL、認証、再読み込みを分けて調べます。"
+            ],
+            [
+              "実際の結果を調べる",
+              "確認できるツール応答が得られて初めて接続完了です。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "期待する結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認できるツール応答が得られて初めて接続完了です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "トラブル対応"
+        },
+        {
+          "type": "paragraph",
+          "text": "別アカウントでも応答する場合があるため、データの出所を確認します。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "公式の出典",
+          "text": "各 OS の手順は公式文書で確認していますが、すべての環境で実機検証したわけではありません。画面や提供状況は異なる場合があります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "次に学ぶこと"
+        },
+        {
+          "type": "link",
+          "text": "Codex 学習ガイドに戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "extend/mcp",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "MCP 설정과 연결 확인",
+      "description": "MCP는 외부 도구를 연결합니다. STDIO는 로컬 명령, HTTP는 URL을 사용합니다. 설정 저장뿐 아니라 시작, 인증과 응답을 확인해야 합니다.",
+      "hero": {
+        "src": "/guides/codex-mcp/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MCP는 외부 도구를 연결합니다. STDIO는 로컬 명령, HTTP는 URL을 사용합니다. 설정 저장뿐 아니라 시작, 인증과 응답을 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "학습 목표"
+        },
+        {
+          "type": "paragraph",
+          "text": "검증할 수 있는 도구 응답을 받아야 연결 완료입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예상 실습 시간: 15 분"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전 준비"
+        },
+        {
+          "type": "paragraph",
+          "text": "허가된 서버를 선택합니다. .example은 실제 서버가 아니라 교체할 자리표시자입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "단계별 작업"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Settings → MCP servers → Add server 또는 CLI 도움말을 확인하여 설정합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 재시작하고 필요한 OAuth 인증을 완료합니다. 네트워크 연결도 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. codex mcp list로 설정을, /mcp로 실제 상태와 도구를 봅니다. 인자와 읽기·쓰기 성격을 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 부작용 없는 최소 조회를 실행하고 출처를 확인합니다. 실패하면 시작, URL, 인증과 다시 로드를 구분해 점검합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp/diagram-1.svg",
+          "alt": "25. MCP 설정과 연결 확인 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Configuration → Handshake → Tool result",
+          "width": 1600,
+          "height": 900,
+          "caption": "25. MCP 설정과 연결 확인 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Configuration → Handshake → Tool result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "연습 요청"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "연결과 읽기 도구를 보여 주고 최소 조회 하나를 실행하세요. 쓰기와 삭제는 하지 마세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예시와 검증"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "code": "[mcp_servers.practice]\nurl = \"https://your-approved-server.example/mcp\""
+        },
+        {
+          "type": "table",
+          "header": [
+            "검사 항목",
+            "확인 방법"
+          ],
+          "rows": [
+            [
+              "환경 확인",
+              "허가된 서버를 선택합니다. .example은 실제 서버가 아니라 교체할 자리표시자입니다."
+            ],
+            [
+              "작업 하나 완료",
+              "부작용 없는 최소 조회를 실행하고 출처를 확인합니다. 실패하면 시작, URL, 인증과 다시 로드를 구분해 점검합니다."
+            ],
+            [
+              "실제 결과 확인",
+              "검증할 수 있는 도구 응답을 받아야 연결 완료입니다."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예상 결과"
+        },
+        {
+          "type": "paragraph",
+          "text": "검증할 수 있는 도구 응답을 받아야 연결 완료입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결"
+        },
+        {
+          "type": "paragraph",
+          "text": "다른 계정도 정상 응답할 수 있으므로 데이터 출처를 확인하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "공식 출처",
+          "text": "각 OS 절차는 공식 문서로 확인했으며 모든 환경에서 직접 시험한 것은 아닙니다. 화면과 계정별 제공 기능은 다를 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이어서 학습하기"
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "extend/mcp",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

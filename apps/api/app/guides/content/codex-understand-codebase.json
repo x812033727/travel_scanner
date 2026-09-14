@@ -1,0 +1,1174 @@
+{
+  "slug": "codex-understand-codebase",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 132,
+  "locales": {
+    "zh-TW": {
+      "title": "先讀懂一個既有專案",
+      "description": "用唯讀流程找到啟動點、資料流與測試，產生有檔案依據的專案地圖。",
+      "hero": {
+        "src": "/guides/codex-understand-codebase/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在不修改既有程式的前提下，畫出 Small Steps 的檔案分工、資料流與驗證邊界，讓下一個功能任務知道從哪裡下手。閱讀約 14 分鐘，操作約 25 分鐘。需要已登入的 Codex、編輯器、Node.js 22 以上相容版本；畫面確認另需要 Python。Windows、macOS、Linux 均用同一份公開教材。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "開始前先完成"
+            },
+            {
+              "type": "link",
+              "text": "第一個小專案",
+              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "。讀懂專案不是把所有檔案逐行翻譯，而是回答「入口在哪、動作經過哪裡、資料存在哪、什麼證據能確認」。我們先固定一個小網站，再用同一個使用者動作追查，避免只得到一張看似完整卻不能指導修改的檔名清單。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：確認版本、入口與基準"
+        },
+        {
+          "type": "paragraph",
+          "text": "將練習 ZIP 的 expected 中五個檔案複製到新的 codex-read-lab，保留原版。這次要讀正確版本，不用 start 或 broken。用編輯器開根目錄；PowerShell 執行 Get-Location，macOS／Linux 用 pwd，確認直接看得到 index.html、style.css、app.js、core.mjs 與 core.test.mjs。不要為了讓專案看起來熟悉就先新增 package.json。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --version\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "教材預期三項測試通過；先記錄實際結果，再請 Codex 做唯讀調查。若起點失敗，保留錯誤與版本資訊，不把不明故障夾在「理解架構」中順手修掉。正式專案若已有未提交修改，先記錄哪些是原有工作，讀程式階段不使用全目錄重設或自動格式化，避免把觀察變成修改。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：建立有證據的檔案地圖"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期會找到以下分工。看表時同時打開對應檔案，確認不是依副檔名猜測：index.html 實際載入 style.css 與模組 app.js；app.js 匯入 core.mjs 的功能。core.test.mjs 使用 Node 內建測試，不靠 npm script。本教材沒有後端 API、資料庫伺服器或 bundler，若回答有這些項目，請它指出證據再修正地圖。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檔案",
+            "角色",
+            "可核對的證據"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "頁面入口與可操作元素",
+              "task-form、task-title、filter、tasks"
+            ],
+            [
+              "style.css",
+              "版面、外觀、焦點樣式",
+              "表單與清單樣式規則"
+            ],
+            [
+              "app.js",
+              "DOM 事件、狀態、保存與渲染",
+              "submit、change、persist、render"
+            ],
+            [
+              "core.mjs",
+              "純資料操作與格式驗證",
+              "addTask、visibleTasks、decodeTasks"
+            ],
+            [
+              "core.test.mjs",
+              "Node 功能測試",
+              "三個 test 區塊及 assertions"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "再請它對「新增 Read」列出完整順序：表單 submit 防止預設送出，addTask 檢查文字並產生新陣列，tasks 接住結果，persist 將編碼後資料寫入 localStorage，輸入框清空，render 更新清單，最後輸入框取得焦點。每個名稱都能在 app.js 或 core.mjs 找到，先確認順序與資料型態，再談要加什麼功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這裡特別容易混淆「資料」與「畫面」：filter.value 只決定 render 顯示哪些任務，不應從 tasks 刪除被隱藏的項目；完成勾選透過 task.id 找對任務，不依目前畫面第幾列猜測。若未先理解，後續修 Completed 可能誤把未完成任務從儲存資料刪掉，測到畫面變少卻破壞功能。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：追查保存與錯誤分支"
+        },
+        {
+          "type": "paragraph",
+          "text": "搜尋 app.js 的 mokaair-codex-todo-v1，可看到本教材使用的 localStorage 鍵。啟動時 decodeTasks 讀取 JSON 並檢查 version 與欄位；保存時 encodeTasks 包成版本文件。這代表換瀏覽器來源或儲存被封鎖會影響資料，但不是雲端帳號同步。請 Codex 說明 catch 分支會如何顯示暫存狀態，不能只解釋成功路徑。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "再讀測試中的第三個案例，確認壞 JSON、錯誤版本、重複識別碼及錯誤欄位會被拒絕。這能證明核心解碼規則，但不能單靠此測試證明瀏覽器真的顯示錯誤訊息、鍵盤焦點合理或重新整理後仍保存。把「測過資料函式」與「測過使用者操作」分開記錄，會讓後續"
+            },
+            {
+              "type": "link",
+              "text": "測試與審查",
+              "url": "https://mokaair.com/zh-TW/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "更容易判讀。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：用畫面核對理解並留下地圖"
+        },
+        {
+          "type": "paragraph",
+          "text": "從 codex-read-lab 啟動第一個小專案教過的 Python 伺服器：Windows 用下面第一段，macOS／Linux 用第二段，兩者只選一個。瀏覽器開 http://127.0.0.1:4173；若埠被自己的舊練習占用，先回那個伺服器終端機停止後再啟動，不能直接沿用不明資料夾的畫面。另開終端機執行測試。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在本教材的瀏覽器來源用 Reset practice data 清掉先前虛構任務，再新增 Read 與 Build、勾選 Read。All 應顯示兩項，Active 只有 Build，Completed 只有 Read；切回 All 後重新整理，確認資料仍在。這一步驗證核心資料與畫面串接，不代表已測到每一種錯誤分支。完成後只清本例資料，不清整個瀏覽器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後用編輯器另存 project-map.md，把以下地圖作為骨架，填入你真正執行的測試與尚未驗證的項目。這是新增說明文件，不需要修改五個原始程式。若請 Codex 寫入，明確限定只能新增此文件，並要求完成後核對原始五檔沒有差異；前面的唯讀調查要求也要明確結束，避免以為已授權任何重構。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見誤判、停止與驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 說需要安裝套件時，要求指出哪個檔案宣告相依；只列目錄卻不能說明資料流，就指定追查一次 submit；把測試全過等同畫面全正常，就要求列出未測邊界。若找不到檔案先核對根目錄，不在整台電腦任意搜尋。同名函式出現在其他副本時，要用實際路徑辨認，避免讀 expected 卻把結論套到 broken。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "能依地圖指出新增、勾選、篩選及重新整理各經過哪個函式，並說明至少一項仍未驗證的行為，才算讀懂這次範圍。最後在伺服器終端機 Ctrl+C 停止，保留地圖並核對五檔與原始 expected 一致。若意外修改，只從保留原版還原那個檔案，別重設整個專案。圖中 1 是基準，2 是追查，3 是用證據核對；接下來才能"
+            },
+            {
+              "type": "link",
+              "text": "實作功能",
+              "url": "https://mokaair.com/zh-TW/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-understand-codebase/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Grounding requests in project context",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Understanding an existing codebase",
+      "description": "Use a read-only workflow to locate entry points, data flow and tests, with file-backed explanations.",
+      "hero": {
+        "src": "/guides/codex-understand-codebase/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Map Small Steps file responsibilities, data flow and verification limits without changing existing code, so the next feature task knows where to work. Allow 14 minutes to read and 25 to practice. Use authenticated Codex, an editor and compatible Node.js 22 or later; UI checks also need Python. The same public fixture works on Windows, macOS and Linux."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Complete "
+            },
+            {
+              "type": "link",
+              "text": "your first project",
+              "url": "https://mokaair.com/en/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": ". Understanding a codebase means finding its entry point, action path, storage and evidence, not translating every line. Follow one user action through a fixed small website instead of producing an impressive-looking file list that cannot guide edits."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Verify version, entry point and baseline"
+        },
+        {
+          "type": "paragraph",
+          "text": "Copy the five expected files from the practice ZIP into new codex-read-lab and preserve the original. Use the correct reference, not start/broken. Open the root and check Get-Location on PowerShell or pwd on macOS/Linux. It directly contains index.html, style.css, app.js, core.mjs and core.test.mjs. Do not add package.json merely to make the project look familiar."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --version\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect three passing tests; record actual results before the read-only investigation. If baseline fails, retain error and version rather than silently fixing an unknown defect during orientation. In a real project, record pre-existing uncommitted changes and avoid whole-directory resets or formatting while reading."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Build an evidence-based file map"
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the expected responsibilities below against actual files, not extensions alone. index.html loads style.css and module app.js, which imports core.mjs. core.test.mjs uses Node's built-in tests, not an npm script. This fixture has no backend API, database server or bundler. Ask for evidence if the response invents them."
+        },
+        {
+          "type": "table",
+          "header": [
+            "File",
+            "Role",
+            "Evidence"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "Entry and controls",
+              "task-form, task-title, filter, tasks"
+            ],
+            [
+              "style.css",
+              "Layout, appearance, focus",
+              "Form and list style rules"
+            ],
+            [
+              "app.js",
+              "DOM events, state, persistence, rendering",
+              "submit, change, persist, render"
+            ],
+            [
+              "core.mjs",
+              "Data operations and validation",
+              "addTask, visibleTasks, decodeTasks"
+            ],
+            [
+              "core.test.mjs",
+              "Node functional tests",
+              "Three test blocks and assertions"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Trace adding Read completely: submit prevents default submission, addTask validates text and returns a new array, tasks receives it, persist writes encoded data to localStorage, input is cleared, render updates the list, then input receives focus. Verify names in app.js/core.mjs and the sequence and data types before proposing features."
+        },
+        {
+          "type": "paragraph",
+          "text": "Distinguish data from display: filter.value selects what render shows without deleting hidden tasks from tasks. Completion targets task.id, not a guessed visible row index. Otherwise, a Completed “fix” might delete unfinished records and appear visually correct while corrupting behavior."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Trace persistence and error paths"
+        },
+        {
+          "type": "paragraph",
+          "text": "Find mokaair-codex-todo-v1 in app.js: it is the localStorage key. Startup decodeTasks checks JSON version and fields; encodeTasks produces the stored versioned document. Browser origin and blocked storage matter; this is not cloud-account sync. Ask how catch branches report temporary state rather than explaining only success."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Read the third test for invalid JSON, version, duplicate IDs and field types. It validates core decoding, not actual browser error messages, keyboard focus or reload persistence. Record data-function tests separately from user-interaction checks so later "
+            },
+            {
+              "type": "link",
+              "text": "testing and review",
+              "url": "https://mokaair.com/en/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": " can assess coverage."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Verify understanding in the browser and record it"
+        },
+        {
+          "type": "paragraph",
+          "text": "Start the familiar Python server from codex-read-lab: use the first command on Windows or the second on macOS/Linux, not both. Open http://127.0.0.1:4173. If your earlier practice server occupies the port, stop it in its terminal first rather than reusing an unknown folder's page. Run tests in another terminal."
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use this fixture's Reset practice data for old fictional tasks, add Read/Build and complete Read. All shows both, Active only Build, Completed only Read. Return to All and reload to verify persistence. This checks integration between core data and UI, not every error branch. Clear only this fixture's data afterwards."
+        },
+        {
+          "type": "paragraph",
+          "text": "Save project-map.md in your editor using the skeleton below, filling actual tests and unchecked items. This new document needs no changes to the five original files. If asking Codex to write it, explicitly permit only that new file and require original-file comparison afterwards, ending the earlier read-only phase without authorizing refactoring."
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Common mistakes, stopping and acceptance"
+        },
+        {
+          "type": "paragraph",
+          "text": "For package installation, ask which file declares the dependency. For a directory-only report, request one submit trace. If passing tests are equated with perfect UI, request unchecked boundaries. Verify the root before searching broadly. Distinguish same-named functions by actual path, so expected findings are not applied to broken."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Finish by tracing add, toggle, filter and reload through the map and naming at least one unverified behavior. Stop the server with Ctrl+C, retain the map and compare all five files to original expected. Restore only an accidentally edited file, not the entire project. Diagram 1 is baseline, 2 tracing, 3 evidence checks; then proceed to "
+            },
+            {
+              "type": "link",
+              "text": "feature implementation",
+              "url": "https://mokaair.com/en/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-understand-codebase/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Grounding requests in project context",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "既存のコードベースを理解する",
+      "description": "読み取りで入口、データの流れ、テストを探し、ファイルに基づくプロジェクト地図を作ります。",
+      "hero": {
+        "src": "/guides/codex-understand-codebase/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "既存コードを変えずに Small Steps の役割、データの流れ、検証範囲を整理し、次の機能の変更先を判断します。読む時間14分、操作25分。認証済み Codex、エディター、対応 Node.js 22 以降、画面確認用 Python を使います。3 OS 共通の公開教材です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "最初のプロジェクト",
+              "url": "https://mokaair.com/ja/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "が前提です。全行翻訳ではなく、入口、操作経路、保存先、確認証拠を答えます。一つの利用者操作を小サイト内で追い、変更判断に使えないファイル名一覧で終わらせません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：版、入口、基準を確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "ZIP の expected の5ファイルを新しい codex-read-lab にコピーし原本を残します。start/broken ではありません。Get-Location または pwd で、5ファイルが直下にある場所を確認します。見慣れた形にするためだけに package.json を追加しません。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --version\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "3テスト成功を実測してから読取り調査へ進みます。失敗ならエラーと版を残し、構造理解のついでに不明な故障を直しません。実プロジェクトでは既存の未コミット変更を記録し、全体リセットや整形を避けます。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：根拠付きのファイル地図"
+        },
+        {
+          "type": "paragraph",
+          "text": "表を実ファイルで確認します。index.html が CSS と module app.js を読み、app.js が core.mjs を import します。テストは Node 内蔵で npm script ではありません。API、DB サーバー、bundler はないため、挙げたら根拠を求め修正します。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "ファイル",
+            "役割",
+            "証拠"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "入口と操作要素",
+              "task-form、task-title、filter、tasks"
+            ],
+            [
+              "style.css",
+              "配置、外観、フォーカス",
+              "フォームと一覧の規則"
+            ],
+            [
+              "app.js",
+              "DOM、状態、保存、描画",
+              "submit、change、persist、render"
+            ],
+            [
+              "core.mjs",
+              "データ処理と検証",
+              "addTask、visibleTasks、decodeTasks"
+            ],
+            [
+              "core.test.mjs",
+              "Node 機能テスト",
+              "3 test と assertions"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Read 追加は submit の既定阻止、addTask の文字検証と新配列、tasks 代入、persist の保存、入力クリアと render、入力へのフォーカスを追います。名称と順序・型を実ファイルで確認してから機能案を考えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "filter.value は表示を選び、隠れた tasks を削除しません。完了は画面行番号ではなく task.id を使います。理解せず Completed を直すと、未完了データを削除して見た目だけ合う危険があります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：保存とエラー経路を追う"
+        },
+        {
+          "type": "paragraph",
+          "text": "app.js の mokaair-codex-todo-v1 は localStorage キーです。起動時 decodeTasks は JSON 版と項目、保存時 encodeTasks は版付き文書を扱います。ブラウザーの origin と保存拒否が関係し、クラウド同期ではありません。catch の一時状態表示も説明させます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "第3テストの壊れた JSON、版、重複 ID、項目型を確認します。デコード規則の証拠であり、実画面エラー、フォーカス、再読込保存の保証ではありません。データ関数と利用者操作を分けて"
+            },
+            {
+              "type": "link",
+              "text": "テストと確認",
+              "url": "https://mokaair.com/ja/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "へ残します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：画面で理解を確認して地図を残す"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-read-lab から Python サーバーを起動します。Windows は1番目、macOS/Linux は2番目だけを使い、http://127.0.0.1:4173 を開きます。自分の旧教材がポートを使うならその端末で止め、場所不明の画面を流用しません。テストは別端末です。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "教材の Reset practice data で架空データを消し、Read/Build と Read 完了を作ります。All は両方、Active は Build、Completed は Read。All に戻して再読込し保存を確認します。全エラー経路の証拠ではなく、終わったら本例だけ消します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "エディターで次の骨組みを project-map.md に保存し、実テストと未確認を記入します。元5ファイルは変更不要です。Codex に書かせるなら新文書だけ許可し、元5ファイル不変を確認させます。読取り段階の終了とリファクタリング許可は混同しません。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誤解、停止と受入"
+        },
+        {
+          "type": "paragraph",
+          "text": "依存追加には宣言ファイルを求め、一覧だけなら submit を追わせ、テスト成功と全画面正常を同一視したら未確認範囲を求めます。広く探す前にルートを確認し、expected の結論を broken に適用しないよう実パスで区別します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "追加、切替、絞込み、再読込を関数で説明し、未確認を最低一つ挙げられたら完了です。Ctrl+C でサーバーを止め、地図と元5ファイル一致を確認します。誤変更は対象だけ戻します。図1は基準、2は追跡、3は証拠確認で、次は"
+            },
+            {
+              "type": "link",
+              "text": "機能実装",
+              "url": "https://mokaair.com/ja/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "です。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-understand-codebase/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Grounding requests in project context",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "기존 코드베이스 이해",
+      "description": "읽기 흐름으로 진입점, 데이터 흐름, 테스트를 찾아 파일 근거가 있는 프로젝트 지도를 만듭니다.",
+      "hero": {
+        "src": "/guides/codex-understand-codebase/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "기존 코드를 바꾸지 않고 Small Steps의 역할/데이터 흐름/검증 범위를 정리해 다음 기능 변경 위치를 판단합니다. 읽기 14분, 실습 25분입니다. 로그인한 Codex, 편집기, 호환 Node.js 22 이상, 화면 확인용 Python을 씁니다. 세 OS 공통 공개 실습입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "첫 프로젝트",
+              "url": "https://mokaair.com/ko/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "가 전제입니다. 모든 줄 번역이 아니라 진입점/동작 경로/저장 위치/확인 증거를 답합니다. 작은 사이트의 사용자 행동 하나를 추적해 변경 판단에 못 쓰는 파일명 목록으로 끝내지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 버전, 진입점, 기준 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "ZIP expected의 다섯 파일을 새 codex-read-lab에 복사하고 원본을 남깁니다. start/broken이 아닙니다. Get-Location 또는 pwd로 다섯 파일이 바로 있는 경로를 확인합니다. 익숙한 형태로 보이게 하려고 package.json을 추가하지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --version\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "3개 통과를 실제 기록한 뒤 읽기 조사로 갑니다. 실패면 오류/버전을 남기고 구조 이해 중 불명확한 결함을 몰래 고치지 않습니다. 실제 프로젝트에서는 기존 미커밋 변경을 기록하고 전체 초기화/포맷을 피합니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 근거 있는 파일 지도"
+        },
+        {
+          "type": "paragraph",
+          "text": "표를 실제 파일로 확인합니다. index.html이 CSS와 module app.js를 읽고 app.js가 core.mjs를 import합니다. 테스트는 Node 내장이며 npm script가 아닙니다. API/DB 서버/bundler가 없으므로 답변에 있으면 근거를 요청해 수정합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "파일",
+            "역할",
+            "증거"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "진입점과 조작 요소",
+              "task-form, task-title, filter, tasks"
+            ],
+            [
+              "style.css",
+              "배치/외형/포커스",
+              "폼/목록 스타일 규칙"
+            ],
+            [
+              "app.js",
+              "DOM/상태/저장/렌더링",
+              "submit, change, persist, render"
+            ],
+            [
+              "core.mjs",
+              "데이터 처리/검증",
+              "addTask, visibleTasks, decodeTasks"
+            ],
+            [
+              "core.test.mjs",
+              "Node 기능 테스트",
+              "세 test와 assertions"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Read 추가는 submit 기본 동작 방지, addTask 텍스트 검증/새 배열, tasks 대입, persist 저장, 입력 비우기/render, 입력 포커스를 추적합니다. 이름/순서/타입을 실제 파일로 확인한 뒤 기능안을 생각합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "filter.value는 표시를 고르며 숨겨진 tasks를 삭제하지 않습니다. 완료는 화면 행 번호 아닌 task.id를 씁니다. 이해 없이 Completed를 고치면 미완료 데이터를 삭제해 겉모습만 맞을 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 저장과 오류 경로 추적"
+        },
+        {
+          "type": "paragraph",
+          "text": "app.js의 mokaair-codex-todo-v1은 localStorage 키입니다. 시작 decodeTasks는 JSON 버전/필드를, 저장 encodeTasks는 버전 문서를 다룹니다. 브라우저 origin과 저장 차단이 관련되며 클라우드 동기화가 아닙니다. catch의 임시 상태 표시도 설명하게 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "세 번째 테스트의 잘못된 JSON/버전/중복 ID/필드 타입을 확인합니다. 디코딩 규칙 증거이지 실제 화면 오류/포커스/새로 고침 저장 보장은 아닙니다. 데이터 함수와 사용자 조작을 나눠 "
+            },
+            {
+              "type": "link",
+              "text": "테스트와 검토",
+              "url": "https://mokaair.com/ko/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "에 남깁니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 화면으로 이해를 확인하고 지도 남기기"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-read-lab에서 Python 서버를 시작합니다. Windows는 첫째, macOS/Linux는 둘째만 쓰고 http://127.0.0.1:4173을 엽니다. 자신의 이전 실습이 포트를 쓰면 그 터미널에서 멈추고 경로 불명 화면을 재사용하지 않습니다. 테스트는 다른 터미널입니다."
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "실습 Reset practice data로 가상 데이터를 지우고 Read/Build와 Read 완료를 만듭니다. All은 둘, Active는 Build, Completed는 Read입니다. All로 돌아와 새로 고쳐 저장을 봅니다. 모든 오류 경로 증거는 아니며 끝나면 이 예시만 지웁니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "편집기로 다음 틀을 project-map.md에 저장하고 실제 테스트/미확인을 넣습니다. 원래 다섯 파일은 바꿀 필요 없습니다. Codex가 쓰면 새 문서만 허용하고 원래 다섯 파일 불변을 확인하게 합니다. 읽기 단계 종료를 리팩터링 허가로 혼동하지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "오해, 중단과 검수"
+        },
+        {
+          "type": "paragraph",
+          "text": "의존성 설치에는 선언 파일을, 목록뿐이면 submit 추적을, 테스트 성공을 전체 화면 정상으로 보면 미확인 범위를 요청합니다. 넓게 찾기 전에 루트를 확인하고 expected 결론을 broken에 적용하지 않도록 실제 경로로 구분합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "추가/완료/필터/새로 고침을 함수로 설명하고 미확인 하나 이상을 말하면 완료입니다. Ctrl+C로 서버를 끄고 지도/원본 다섯 파일 일치를 확인합니다. 잘못 바꾼 파일만 복원합니다. 그림 1은 기준, 2는 추적, 3은 증거 확인이며 다음은 "
+            },
+            {
+              "type": "link",
+              "text": "기능 구현",
+              "url": "https://mokaair.com/ko/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "입니다."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-understand-codebase/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Grounding requests in project context",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "先读懂一个既有专案",
+      "description": "用唯读流程找到启动点、资料流与测试，产生有档案依据的专案地图。",
+      "hero": {
+        "src": "/guides/codex-understand-codebase/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在不修改既有程式的前提下，画出 Small Steps 的档案分工、资料流与验证边界，让下一个功能任务知道从哪里下手。阅读约 14 分钟，操作约 25 分钟。需要已登入的 Codex、编辑器、Node.js 22 以上相容版本；画面确认另需要 Python。Windows、macOS、Linux 均用同一份公开教材。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "开始前先完成"
+            },
+            {
+              "type": "link",
+              "text": "第一个小专案",
+              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "。读懂专案不是把所有档案逐行翻译，而是回答「入口在哪、动作经过哪里、资料存在哪、什么证据能确认」。我们先固定一个小网站，再用同一个使用者动作追查，避免只得到一张看似完整却不能指导修改的档名清单。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：确认版本、入口与基准"
+        },
+        {
+          "type": "paragraph",
+          "text": "将练习 ZIP 的 expected 中五个档案复制到新的 codex-read-lab，保留原版。这次要读正确版本，不用 start 或 broken。用编辑器开根目录；PowerShell 执行 Get-Location，macOS／Linux 用 pwd，确认直接看得到 index.html、style.css、app.js、core.mjs 与 core.test.mjs。不要为了让专案看起来熟悉就先新增 package.json。"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "node --version\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "教材预期三项测试通过；先记录实际结果，再请 Codex 做唯读调查。若起点失败，保留错误与版本资讯，不把不明故障夹在「理解架构」中顺手修掉。正式专案若已有未提交修改，先记录哪些是原有工作，读程式阶段不使用全目录重设或自动格式化，避免把观察变成修改。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：建立有证据的档案地图"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期会找到以下分工。看表时同时打开对应档案，确认不是依副档名猜测：index.html 实际载入 style.css 与模组 app.js；app.js 汇入 core.mjs 的功能。core.test.mjs 使用 Node 内建测试，不靠 npm script。本教材没有后端 API、资料库伺服器或 bundler，若回答有这些项目，请它指出证据再修正地图。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "档案",
+            "角色",
+            "可核对的证据"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "页面入口与可操作元素",
+              "task-form、task-title、filter、tasks"
+            ],
+            [
+              "style.css",
+              "版面、外观、焦点样式",
+              "表单与清单样式规则"
+            ],
+            [
+              "app.js",
+              "DOM 事件、状态、保存与渲染",
+              "submit、change、persist、render"
+            ],
+            [
+              "core.mjs",
+              "纯资料操作与格式验证",
+              "addTask、visibleTasks、decodeTasks"
+            ],
+            [
+              "core.test.mjs",
+              "Node 功能测试",
+              "三个 test 区块及 assertions"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "再请它对「新增 Read」列出完整顺序：表单 submit 防止预设送出，addTask 检查文字并产生新阵列，tasks 接住结果，persist 将编码后资料写入 localStorage，输入框清空，render 更新清单，最后输入框取得焦点。每个名称都能在 app.js 或 core.mjs 找到，先确认顺序与资料型态，再谈要加什么功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这里特别容易混淆「资料」与「画面」：filter.value 只决定 render 显示哪些任务，不应从 tasks 删除被隐藏的项目；完成勾选透过 task.id 找对任务，不依目前画面第几列猜测。若未先理解，后续修 Completed 可能误把未完成任务从储存资料删掉，测到画面变少却破坏功能。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：追查保存与错误分支"
+        },
+        {
+          "type": "paragraph",
+          "text": "搜寻 app.js 的 mokaair-codex-todo-v1，可看到本教材使用的 localStorage 键。启动时 decodeTasks 读取 JSON 并检查 version 与栏位；保存时 encodeTasks 包成版本文件。这代表换浏览器来源或储存被封锁会影响资料，但不是云端帐号同步。请 Codex 说明 catch 分支会如何显示暂存状态，不能只解释成功路径。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "再读测试中的第三个案例，确认坏 JSON、错误版本、重复识别码及错误栏位会被拒绝。这能证明核心解码规则，但不能单靠此测试证明浏览器真的显示错误讯息、键盘焦点合理或重新整理后仍保存。把「测过资料函式」与「测过使用者操作」分开记录，会让后续"
+            },
+            {
+              "type": "link",
+              "text": "测试与审查",
+              "url": "https://mokaair.com/zh-CN/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "更容易判读。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：用画面核对理解并留下地图"
+        },
+        {
+          "type": "paragraph",
+          "text": "从 codex-read-lab 启动第一个小专案教过的 Python 伺服器：Windows 用下面第一段，macOS／Linux 用第二段，两者只选一个。浏览器开 http://127.0.0.1:4173；若埠被自己的旧练习占用，先回那个伺服器终端机停止后再启动，不能直接沿用不明资料夹的画面。另开终端机执行测试。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "language": "sh",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在本教材的浏览器来源用 Reset practice data 清掉先前虚构任务，再新增 Read 与 Build、勾选 Read。All 应显示两项，Active 只有 Build，Completed 只有 Read；切回 All 后重新整理，确认资料仍在。这一步验证核心资料与画面串接，不代表已测到每一种错误分支。完成后只清本例资料，不清整个浏览器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后用编辑器另存 project-map.md，把以下地图作为骨架，填入你真正执行的测试与尚未验证的项目。这是新增说明文件，不需要修改五个原始程式。若请 Codex 写入，明确限定只能新增此文件，并要求完成后核对原始五档没有差异；前面的唯读调查要求也要明确结束，避免以为已授权任何重构。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见误判、停止与验收"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 说需要安装套件时，要求指出哪个档案宣告相依；只列目录却不能说明资料流，就指定追查一次 submit；把测试全过等同画面全正常，就要求列出未测边界。若找不到档案先核对根目录，不在整台电脑任意搜寻。同名函式出现在其他副本时，要用实际路径辨认，避免读 expected 却把结论套到 broken。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "能依地图指出新增、勾选、筛选及重新整理各经过哪个函式，并说明至少一项仍未验证的行为，才算读懂这次范围。最后在伺服器终端机 Ctrl+C 停止，保留地图并核对五档与原始 expected 一致。若意外修改，只从保留原版还原那个档案，别重设整个专案。图中 1 是基准，2 是追查，3 是用证据核对；接下来才能"
+            },
+            {
+              "type": "link",
+              "text": "实作功能",
+              "url": "https://mokaair.com/zh-CN/life/codex-implement-feature"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-understand-codebase/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Grounding requests in project context",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

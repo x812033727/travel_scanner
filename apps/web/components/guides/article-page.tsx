@@ -18,6 +18,11 @@ import { getAdsenseSlot } from "@/lib/adsense.server";
 import { getGuideArticle, getGuideList } from "@/lib/guides.server";
 import { localeUrl, siteUrl } from "@/lib/seo";
 import { breadcrumbs, type Crumb } from "@/lib/structured-data";
+import { HUB_SLUG, lessons, learningEntries, publishedSeriesLinks } from "@/lib/codex-learning";
+import { getLearningPublication } from "@/lib/codex-learning/server";
+import { learningCopy } from "@/lib/codex-learning/copy";
+import { LearningHub } from "@/components/codex-learning/hub";
+import { LearningNavigation } from "@/components/codex-learning/navigation";
 
 /**
  * The one article page, shared by `/guides/[kind]/[slug]` and `/life/[slug]`.
@@ -235,6 +240,12 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     },
   };
   const hero = state.document.hero;
+  const inSeries = kind === "life" && (slug === HUB_SLUG || lessons.some((row) => row.slug === slug));
+  const publication = inSeries ? await getLearningPublication(locale) : null;
+  const entries = learningEntries(locale, publication?.articles ?? []);
+  const hubPublished = publication?.articles.some((row) => row.slug === HUB_SLUG) ?? false;
+  const copy = learningCopy(locale);
+  labels.blocks = { ...labels.blocks, copy: copy.copy, copied: copy.copied, copyFailed: copy.copyFailed };
 
   return (
     <>
@@ -260,13 +271,16 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
         ]}
       />
       <main className="mx-auto max-w-3xl px-5 py-10 md:py-14">
+        {inSeries && <LearningNavigation slug={slug} locale={locale} entries={entries} hubPublished={hubPublished} compact />}
         <GuideArticle
-          state={{ ...state, document: state.document }}
+          state={{ ...state, document: inSeries ? { ...state.document, blocks: publishedSeriesLinks(state.document.blocks, locale, publication?.articles ?? []) } : state.document }}
+          afterHeader={slug === HUB_SLUG && kind === "life" ? <LearningHub entries={entries} locale={locale} available={publication?.available ?? false} /> : undefined}
           related={related}
           readingTime={t("guides.readingTime", { minutes: readingMinutes(state.document) })}
           labels={labels}
           adsense={adsense}
         />
+        {inSeries && <LearningNavigation slug={slug} locale={locale} entries={entries} hubPublished={hubPublished} />}
         <p className="mt-10">
           <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={listing.path}>
             {listing.name}

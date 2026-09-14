@@ -124,6 +124,10 @@ def _document_text(document: GuideDocument) -> str:
     """Every string a reader sees, joined, for the length rule and the diagram-number rule."""
     parts = [document.title, document.description]
     for block in document.blocks:
+        if block.type == "rich_paragraph":
+            parts.extend(span.text for span in block.spans)
+        elif block.type == "code":
+            parts.append(block.code)
         if isinstance(block, ParagraphBlock | HeadingBlock):
             parts.append(block.text)
         elif isinstance(block, ListBlock):
@@ -147,6 +151,8 @@ def _body_length(document: GuideDocument) -> int:
     paragraphs, lists, tables and callouts, not the title, captions or link labels."""
     parts: list[str] = []
     for block in document.blocks:
+        if block.type == "rich_paragraph":
+            parts.extend(span.text for span in block.spans)
         if isinstance(block, ParagraphBlock):
             parts.append(block.text)
         elif isinstance(block, ListBlock):

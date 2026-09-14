@@ -1,0 +1,64 @@
+{
+  "id": 1,
+  "sources": [
+    "app",
+    "codex/cli",
+    "cloud",
+    "remote-connections"
+  ],
+  "code": null,
+  "text": {
+    "zh-TW": [
+      "Codex 是能讀取專案、修改檔案並執行工具的程式開發代理。一般聊天給你的程式碼，往往還要自己貼進編輯器；代理則可以在你選定的工作環境裡完成修改。模型是它用來推理的引擎，任務是一次工作，專案是相關檔案與工作的集合，三者不要混為一談。",
+      "準備一個沒有私人資料的空資料夾，命名為 codex-practice。第一次練習只要求解釋檔案，不需要連接正式服務，也不需要買 API 額度。登入後先查看帳號實際可用的入口與模型。",
+      [
+        "選入口：想看圖形介面選桌面版；習慣終端機選 Codex CLI；在編輯器工作選 IDE 擴充；要把 GitHub 工作交给遠端環境則選雲端任務。手機 Remote 是控制已連線電腦的入口。",
+        "確認執行位置。桌面版或 CLI 的本機任務會讀你電腦的檔案；雲端任務使用設定好的遠端環境，不能直接看見尚未上傳的本機檔案。請 Codex 先回報工作目錄。",
+        "送出下方的唯讀練習。看它是否列出實際檔案與來源，空資料夾應如實說沒有程式，而不是編造架構。",
+        "讀取結果後再要求一項小修改，例如建立 README.md。打開檔案確認內容，將『回答說做完』與『檔案真的存在』分開驗證。"
+      ],
+      "完成時你應能指出使用的入口、工作所在位置，以及 Codex 實際讀了哪些檔案。這是後面所有教學的起點。",
+      "找不到檔案通常先查工作目錄；沒有某個入口先查版本、帳號與工作區。不要用更換模型來修正選錯資料夾，也不要假定雲端與本機有相同的工具。",
+      "請只讀取目前資料夾，列出檔案並說明這個專案做什麼。回報工作目錄，不要修改檔案；若沒有足夠資料請直接說明。"
+    ],
+    "en": [
+      "Codex is a coding agent that can inspect a project, edit files and run tools in a chosen environment. A model supplies its reasoning; a task is one assignment; a project groups related work and files. Unlike copying a code answer from chat into an editor, an agent can make the change in the workspace you selected.",
+      "Create an empty folder named codex-practice without personal files. Start with a read-only request. You do not need a production service or API credits for this exercise if your account already provides Codex access.",
+      [
+        "Choose an entry point: desktop for a graphical workspace, CLI for terminal work, an IDE integration beside your editor, or cloud for a configured remote repository. Mobile Remote controls a connected computer.",
+        "Check where the work runs. Local desktop and CLI tasks inspect the selected computer folder. Cloud tasks use a remote environment and cannot see files you have not supplied or committed. Ask for the current working directory.",
+        "Send the read-only exercise below. An empty folder should produce an honest report that there is no code to inspect, not an invented architecture.",
+        "After checking the response, ask for one small change such as creating README.md. Open that file and compare it with the request instead of relying only on a completion message."
+      ],
+      "You can identify the interface, execution environment and actual files inspected. Keep those three facts with the result of your first task.",
+      "If files are missing, check the working directory before changing models. If a feature is absent, verify the app version, account and workspace. Local and cloud tools are not automatically identical.",
+      "Inspect this folder without changing files. Report the working directory, list the files and explain the project. State clearly if there is not enough information."
+    ],
+    "ja": [
+      "Codex は、指定した環境でプロジェクトを読み、ファイルを編集し、ツールを実行できる開発エージェントです。モデルは推論の仕組み、タスクは一つの依頼、プロジェクトは関連する作業やファイルのまとまりです。チャットのコードを自分で貼り付ける方法とは、変更を行う場所が異なります。",
+      "個人情報を含まない空の codex-practice フォルダーを用意します。初回は読み取りだけを依頼します。アカウントで Codex が利用できれば、この練習に本番サービスや API の追加購入は不要です。",
+      [
+        "画面で操作するならデスクトップ、端末なら CLI、編集中のコードと並べるなら IDE、設定済みの遠隔リポジトリならクラウドを選びます。スマートフォンの Remote は接続先のコンピューターを操作します。",
+        "実行場所を確認します。ローカルのタスクは選択したフォルダーを読みます。クラウドは別の環境なので、渡していないローカルファイルは見えません。現在の作業ディレクトリを報告させます。",
+        "下の読み取り専用の依頼を送ります。空のフォルダーなら、コードがないと回答することを確認します。存在しない構成を説明していないかを見ます。",
+        "結果を確認してから README.md の作成など一つだけ変更を依頼します。完了メッセージに加え、実際のファイルを開いて内容を確認します。"
+      ],
+      "利用した画面、処理が走る場所、実際に読んだファイルを説明できれば完了です。",
+      "ファイルが見つからない場合は、モデルを変える前に作業ディレクトリを確認します。機能がない場合はバージョン、アカウント、ワークスペースを確認します。",
+      "このフォルダーを変更せずに調べてください。作業ディレクトリとファイル一覧を報告し、プロジェクトを説明してください。情報が足りない場合は明記してください。"
+    ],
+    "ko": [
+      "Codex는 선택한 환경에서 프로젝트를 읽고 파일을 수정하며 도구를 실행하는 개발 에이전트입니다. 모델은 추론을 담당하고, 작업은 하나의 요청이며, 프로젝트는 관련 파일과 작업의 묶음입니다. 채팅이 준 코드를 직접 붙여 넣는 방식과 달리 선택한 작업 공간에서 변경할 수 있습니다.",
+      "개인 자료가 없는 빈 codex-practice 폴더를 만드세요. 처음에는 읽기 전용 요청으로 시작합니다. 계정에서 Codex를 사용할 수 있다면 이 연습에 운영 서비스나 별도 API 구매는 필요하지 않습니다.",
+      [
+        "화면 중심이면 데스크톱, 터미널 작업이면 CLI, 편집기 옆에서 작업하려면 IDE, 설정된 원격 저장소를 쓰려면 클라우드를 선택합니다. 모바일 Remote는 연결된 컴퓨터를 제어합니다.",
+        "실행 위치를 확인합니다. 로컬 작업은 선택한 컴퓨터 폴더를 읽습니다. 클라우드는 별도 환경이므로 전달하지 않은 로컬 파일을 볼 수 없습니다. 현재 작업 디렉터리를 먼저 보고하도록 요청합니다.",
+        "아래 읽기 전용 요청을 보내세요. 빈 폴더라면 분석할 코드가 없다고 설명해야 합니다. 존재하지 않는 구조를 만들어 설명하는지 확인합니다.",
+        "결과를 확인한 뒤 README.md 생성처럼 작은 변경 하나를 요청합니다. 완료 메시지만 믿지 말고 실제 파일을 열어 내용과 요청을 비교합니다."
+      ],
+      "사용한 인터페이스, 실행 환경, 실제로 읽은 파일을 구분해서 설명할 수 있으면 완료입니다.",
+      "파일이 안 보이면 모델을 바꾸기 전에 작업 폴더를 확인하세요. 기능이 없으면 버전, 계정과 워크스페이스를 확인합니다. 로컬과 클라우드의 도구가 자동으로 같아지는 것은 아닙니다.",
+      "파일을 수정하지 말고 이 폴더를 조사하세요. 작업 디렉터리와 파일 목록을 보고하고 프로젝트를 설명하세요. 정보가 부족하면 명확하게 알려 주세요."
+    ]
+  }
+}

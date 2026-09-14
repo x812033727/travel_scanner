@@ -1,0 +1,852 @@
+{
+  "slug": "codex-subagents",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 128,
+  "locales": {
+    "zh-TW": {
+      "title": "子代理與工作分工",
+      "description": "子代理適合把能獨立完成的工作分開處理，再由主要任務整合結果。分工會增加模型與工具用量；若工作互相依賴、都要改同一段程式，平行處理反而可能產生衝突。",
+      "hero": {
+        "src": "/guides/codex-subagents/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "子代理適合把能獨立完成的工作分開處理，再由主要任務整合結果。分工會增加模型與工具用量；若工作互相依賴、都要改同一段程式，平行處理反而可能產生衝突。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "你會學到什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後得到一份去重、經核對的結果，能追溯每項結論的證據；不是把子代理報告直接拼在一起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "預估操作時間: 15 分鐘"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前"
+        },
+        {
+          "type": "paragraph",
+          "text": "先把目標拆成兩個唯讀檢查：一個檢查文字內容，一個檢查頁面結構。為每項指定輸入、範圍與交付格式，主要任務保留最後判斷。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逐步操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 在支援的 Codex 介面明確要求使用子代理，交代每個子任務的邊界。不要只說『多找幾個人』而没有具体成果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 第一個代理只讀 README 與文字，第二個只讀 HTML 結構。兩者都不要改檔；這能先練習如何整合證據，避免並行寫入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 查看子代理的進度與結果。CLI 可依官方 /agent 操作切換檢查；其他介面使用其顯示的代理狀態，不假定所有入口相同。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "4. 主代理核對每個發現的檔案、原因與影響，處理互相矛盾的結論，再決定是否需要修改。若未來要平行實作，先分離檔案責任或 "
+            },
+            {
+              "type": "link",
+              "text": "worktree",
+              "url": "https://mokaair.com/zh-TW/life/codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-subagents/diagram-1.svg",
+          "alt": "28. 子代理與工作分工 — 實作順序示意圖，非產品介面截圖。 Bounded tasks → Subagents → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "28. 子代理與工作分工 — 實作順序示意圖，非產品介面截圖。 Bounded tasks → Subagents → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "請使用兩個子代理做唯讀檢查：A 檢查 README 與頁面文字一致性，B 檢查 HTML 結構。各回報檔案與證據，由主代理整合，不修改檔案。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "範例與驗證"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "驗收方式"
+          ],
+          "rows": [
+            [
+              "先確認環境",
+              "先把目標拆成兩個唯讀檢查：一個檢查文字內容，一個檢查頁面結構。為每項指定輸入、範圍與交付格式，主要任務保留最後判斷。"
+            ],
+            [
+              "完成一個操作",
+              "主代理核對每個發現的檔案、原因與影響，處理互相矛盾的結論，再決定是否需要修改。若未來要平行實作，先分離檔案責任或 worktree。"
+            ],
+            [
+              "檢查真實結果",
+              "最後得到一份去重、經核對的結果，能追溯每項結論的證據；不是把子代理報告直接拼在一起。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後得到一份去重、經核對的結果，能追溯每項結論的證據；不是把子代理報告直接拼在一起。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題"
+        },
+        {
+          "type": "paragraph",
+          "text": "代理數量多不保證更快。當結果依賴另一項未完成工作，改成順序執行；發現兩者碰同一檔案時先停止衝突的修改。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "官方來源",
+          "text": "跨平台操作依官方文件查證；未在每個系統實測。介面與帳號提供的功能可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸閱讀"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "agent-configuration/subagents",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "子代理与任务分工",
+      "description": "子代理适合把能独立完成的工作分开处理，再由主要任务整合结果。分工会增加模型与工具用量；若工作互相依赖、都要改同一段程式，平行处理反而可能产生冲突。",
+      "hero": {
+        "src": "/guides/codex-subagents/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "子代理适合把能独立完成的工作分开处理，再由主要任务整合结果。分工会增加模型与工具用量；若工作互相依赖、都要改同一段程式，平行处理反而可能产生冲突。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "你会学到什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后得到一份去重、经核对的结果，能追溯每项结论的证据；不是把子代理报告直接拼在一起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预估操作时间: 15 分钟"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前"
+        },
+        {
+          "type": "paragraph",
+          "text": "先把目标拆成两个唯读检查：一个检查文字内容，一个检查页面结构。为每项指定输入、范围与交付格式，主要任务保留最后判断。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逐步操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 在支援的 Codex 介面明确要求使用子代理，交代每个子任务的边界。不要只说『多找几个人』而没有具体成果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 第一个代理只读 README 与文字，第二个只读 HTML 结构。两者都不要改档；这能先练习如何整合证据，避免并行写入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 查看子代理的进度与结果。CLI 可依官方 /agent 操作切换检查；其他介面使用其显示的代理状态，不假定所有入口相同。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "4. 主代理核对每个发现的档案、原因与影响，处理互相矛盾的结论，再决定是否需要修改。若未来要平行实作，先分离档案责任或 "
+            },
+            {
+              "type": "link",
+              "text": "worktree",
+              "url": "https://mokaair.com/zh-CN/life/codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-subagents/diagram-1.svg",
+          "alt": "28. 子代理与任务分工 — 实作顺序示意图，非产品介面截图。 Bounded tasks → Subagents → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "28. 子代理与任务分工 — 实作顺序示意图，非产品介面截图。 Bounded tasks → Subagents → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "练习需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "请使用两个子代理做唯读检查：A 检查 README 与页面文字一致性，B 检查 HTML 结构。各回报档案与证据，由主代理整合，不修改档案。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "范例与验证"
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查项目",
+            "验收方式"
+          ],
+          "rows": [
+            [
+              "先确认环境",
+              "先把目标拆成两个唯读检查：一个检查文字内容，一个检查页面结构。为每项指定输入、范围与交付格式，主要任务保留最后判断。"
+            ],
+            [
+              "完成一个操作",
+              "主代理核对每个发现的档案、原因与影响，处理互相矛盾的结论，再决定是否需要修改。若未来要平行实作，先分离档案责任或 worktree。"
+            ],
+            [
+              "检查真实结果",
+              "最后得到一份去重、经核对的结果，能追溯每项结论的证据；不是把子代理报告直接拼在一起。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成结果"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后得到一份去重、经核对的结果，能追溯每项结论的证据；不是把子代理报告直接拼在一起。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题"
+        },
+        {
+          "type": "paragraph",
+          "text": "代理数量多不保证更快。当结果依赖另一项未完成工作，改成顺序执行；发现两者碰同一档案时先停止冲突的修改。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "官方来源",
+          "text": "跨平台操作依官方文件查证；未在每个系统实测。介面与帐号提供的功能可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸阅读"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "agent-configuration/subagents",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Subagents and task delegation",
+      "description": "Subagents suit independent work that can be reviewed and combined by the main task. They consume additional model and tool usage. Parallel tasks with mutual dependencies or overlapping edits can create more conflict than speed.",
+      "hero": {
+        "src": "/guides/codex-subagents/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Subagents suit independent work that can be reviewed and combined by the main task. They consume additional model and tool usage. Parallel tasks with mutual dependencies or overlapping edits can create more conflict than speed."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will learn"
+        },
+        {
+          "type": "paragraph",
+          "text": "The final report is checked, deduplicated and traceable to evidence rather than a concatenation of subagent messages."
+        },
+        {
+          "type": "paragraph",
+          "text": "Estimated practice time: 15 min"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before you start"
+        },
+        {
+          "type": "paragraph",
+          "text": "Split the exercise into two read-only checks: content consistency and HTML structure. Give each input, boundaries and an output format, retaining final judgment in the main task."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step by step"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Explicitly request subagents in a supported Codex client and define concrete deliverables rather than merely asking for more agents."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. Assign one agent README/text consistency and another HTML structure. For the first exercise, prohibit edits so you can practice evidence integration without concurrent writes."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. Inspect activity and results. CLI provides documented /agent controls; other clients expose their own activity surfaces."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "4. The main agent checks files, reasons and impacts, resolves conflicting conclusions and decides on justified fixes. For parallel implementation later, separate file ownership or use "
+            },
+            {
+              "type": "link",
+              "text": "worktree",
+              "url": "https://mokaair.com/en/life/codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "s."
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-subagents/diagram-1.svg",
+          "alt": "28. Subagents and task delegation — Workflow illustration, not a product screenshot. Bounded tasks → Subagents → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "28. Subagents and task delegation — Workflow illustration, not a product screenshot. Bounded tasks → Subagents → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice request"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Use two read-only subagents: A checks README against page wording; B checks HTML structure. Each reports files and evidence. The main agent integrates findings without editing files."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Example and verification"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "Acceptance method"
+          ],
+          "rows": [
+            [
+              "Confirm the environment",
+              "Split the exercise into two read-only checks: content consistency and HTML structure. Give each input, boundaries and an output format, retaining final judgment in the main task."
+            ],
+            [
+              "Complete one action",
+              "The main agent checks files, reasons and impacts, resolves conflicting conclusions and decides on justified fixes. For parallel implementation later, separate file ownership or use worktrees."
+            ],
+            [
+              "Inspect the actual result",
+              "The final report is checked, deduplicated and traceable to evidence rather than a concatenation of subagent messages."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Expected result"
+        },
+        {
+          "type": "paragraph",
+          "text": "The final report is checked, deduplicated and traceable to evidence rather than a concatenation of subagent messages."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting"
+        },
+        {
+          "type": "paragraph",
+          "text": "More agents do not guarantee speed. Sequence dependent tasks and stop conflicting edits when two agents touch the same files."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Official sources",
+          "text": "Cross-platform steps were checked against official documentation, not tested on every operating system. Interfaces and account availability can differ."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Continue learning"
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "agent-configuration/subagents",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "サブエージェントと作業分担",
+      "description": "サブエージェントは独立した調査を分担し、主担当が統合する仕組みです。利用量が増え、依存や編集の重複があると競合します。",
+      "hero": {
+        "src": "/guides/codex-subagents/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "サブエージェントは独立した調査を分担し、主担当が統合する仕組みです。利用量が増え、依存や編集の重複があると競合します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "学べること"
+        },
+        {
+          "type": "paragraph",
+          "text": "根拠へたどれる統合結果が得られれば完了です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習時間の目安: 15 分"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "始める前に"
+        },
+        {
+          "type": "paragraph",
+          "text": "文章の整合性と HTML 構造の二つの読み取り調査に分けます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "操作手順"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. サブエージェントの利用と、それぞれの入力、範囲、成果を明示します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 一方は README と文章、他方は構造だけを読み、編集を禁止します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 進捗と結果を確認します。CLI は /agent、他の画面は対応する操作を使います。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "4. 主担当が証拠と矛盾を確認して重複を除きます。並行実装にはファイル責任や "
+            },
+            {
+              "type": "link",
+              "text": "worktree",
+              "url": "https://mokaair.com/ja/life/codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " を分けます。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-subagents/diagram-1.svg",
+          "alt": "28. サブエージェントと作業分担 — 作業の流れを表す図です。製品画面の画像ではありません。 Bounded tasks → Subagents → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "28. サブエージェントと作業分担 — 作業の流れを表す図です。製品画面の画像ではありません。 Bounded tasks → Subagents → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習用の依頼"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "二つの読み取り専用サブエージェントを使い、A は文章整合性、B は HTML 構造を確認してください。主担当が根拠を統合し、編集は行いません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "例と確認方法"
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認項目",
+            "確認方法"
+          ],
+          "rows": [
+            [
+              "環境を確かめる",
+              "文章の整合性と HTML 構造の二つの読み取り調査に分けます。"
+            ],
+            [
+              "一つの操作を行う",
+              "主担当が証拠と矛盾を確認して重複を除きます。並行実装にはファイル責任や worktree を分けます。"
+            ],
+            [
+              "実際の結果を調べる",
+              "根拠へたどれる統合結果が得られれば完了です。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "期待する結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "根拠へたどれる統合結果が得られれば完了です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "トラブル対応"
+        },
+        {
+          "type": "paragraph",
+          "text": "依存する仕事は順番に進め、競合する編集を止めます。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "公式の出典",
+          "text": "各 OS の手順は公式文書で確認していますが、すべての環境で実機検証したわけではありません。画面や提供状況は異なる場合があります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "次に学ぶこと"
+        },
+        {
+          "type": "link",
+          "text": "Codex 学習ガイドに戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "agent-configuration/subagents",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "하위 에이전트와 작업 분담",
+      "description": "하위 에이전트는 독립 조사를 나누고 주 작업이 통합하는 방식입니다. 사용량이 늘며 의존성과 편집 중복이 있으면 충돌합니다.",
+      "hero": {
+        "src": "/guides/codex-subagents/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "하위 에이전트는 독립 조사를 나누고 주 작업이 통합하는 방식입니다. 사용량이 늘며 의존성과 편집 중복이 있으면 충돌합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "학습 목표"
+        },
+        {
+          "type": "paragraph",
+          "text": "근거를 추적할 수 있는 통합 결과가 나오면 완료입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예상 실습 시간: 15 분"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전 준비"
+        },
+        {
+          "type": "paragraph",
+          "text": "문구 일관성과 HTML 구조를 읽기 전용 조사 두 개로 나눕니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "단계별 작업"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 하위 에이전트 사용과 각 입력, 범위 및 결과물을 명시합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 한쪽은 README와 문구, 다른 쪽은 구조만 읽고 편집은 금지합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 진행과 결과를 확인합니다. CLI는 /agent, 다른 화면은 해당 조작을 사용합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "4. 주 작업이 증거와 모순을 확인하고 중복을 제거합니다. 병렬 구현에는 파일 책임이나 "
+            },
+            {
+              "type": "link",
+              "text": "worktree",
+              "url": "https://mokaair.com/ko/life/codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "를 나눕니다."
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-subagents/diagram-1.svg",
+          "alt": "28. 하위 에이전트와 작업 분담 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Bounded tasks → Subagents → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "28. 하위 에이전트와 작업 분담 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Bounded tasks → Subagents → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "연습 요청"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "읽기 전용 하위 에이전트 두 개를 사용하세요. A는 문구 일관성, B는 HTML 구조를 확인하고 주 작업이 근거를 통합합니다. 편집하지 마세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예시와 검증"
+        },
+        {
+          "type": "table",
+          "header": [
+            "검사 항목",
+            "확인 방법"
+          ],
+          "rows": [
+            [
+              "환경 확인",
+              "문구 일관성과 HTML 구조를 읽기 전용 조사 두 개로 나눕니다."
+            ],
+            [
+              "작업 하나 완료",
+              "주 작업이 증거와 모순을 확인하고 중복을 제거합니다. 병렬 구현에는 파일 책임이나 worktree를 나눕니다."
+            ],
+            [
+              "실제 결과 확인",
+              "근거를 추적할 수 있는 통합 결과가 나오면 완료입니다."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예상 결과"
+        },
+        {
+          "type": "paragraph",
+          "text": "근거를 추적할 수 있는 통합 결과가 나오면 완료입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결"
+        },
+        {
+          "type": "paragraph",
+          "text": "의존 작업은 순서대로 진행하고 충돌 편집을 중지하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "공식 출처",
+          "text": "각 OS 절차는 공식 문서로 확인했으며 모든 환경에서 직접 시험한 것은 아닙니다. 화면과 계정별 제공 기능은 다를 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이어서 학습하기"
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "agent-configuration/subagents",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Small Steps — Todo practice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header><p class="eyebrow">MOKAAIR · CODEX PRACTICE</p><h1>Make room for one small task.</h1><p>Fictional practice data. Saved only in this browser.</p></header>
+    <form id="task-form">
+      <label for="task-title">New task</label>
+      <div class="form-row"><input id="task-title" name="title" maxlength="100" autocomplete="off" required placeholder="Read the project README"><button type="submit">Add task</button></div>
+    </form>
+    <p id="message" role="status" aria-live="polite"></p>
+    <section aria-label="Task list">
+      <div class="toolbar"><p id="count"></p><label for="filter">Show <select id="filter"><option value="all">All tasks</option><option value="active">Active</option><option value="completed">Completed</option></select></label></div>
+      <ul id="tasks"></ul><p id="empty">No tasks here yet.</p>
+    </section>
+    <details><summary>About this exercise</summary><p>This page has no account or server database. The dedicated localStorage key is <code>mokaair-codex-todo-v1</code>. Opening it does not publish it.</p><button id="reset" type="button">Reset practice data</button></details>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1459 @@
+{
+  "slug": "codex-ide-getting-started",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 114,
+  "locales": {
+    "zh-TW": {
+      "title": "IDE 擴充套件入門",
+      "description": "IDE 整合把 Codex 放在程式碼旁邊，適合針對選取內容解釋與修改。VS Code、Cursor、Windsurf 使用 Codex 擴充；Xcode 與 JetBrains 有自己的整合入口，不能把安裝步驟混用。",
+      "hero": {
+        "src": "/guides/codex-ide-getting-started/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀完能做到什麼"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在 VS Code 安裝官方 Codex 擴充套件，帶入選取的函式與測試檔，修正一個可重現的篩選錯誤，再檢查差異與測試。閱讀約 12 分鐘，操作約 30 分鐘。本篇支援 Windows、macOS、Linux 的 VS Code 操作路線；產品安裝與選單依 2026-09-14 官方文件查證，參考程式與測試另有本機驗證。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "IDE 是能編輯程式、瀏覽檔案與執行工具的工作介面；擴充套件把 Codex 放在旁邊，讓選取內容能直接成為上下文。它不會因為你只選取十行，就保證代理只能修改十行。任務範圍仍要在"
+            },
+            {
+              "type": "link",
+              "text": "需求提示詞",
+              "url": "https://mokaair.com/zh-TW/life/codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "寫清楚，檔案存取由權限控制。圖中 01 是選取上下文，02 是指定修改，03 是比較與驗收。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前：安裝官方擴充套件"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows、macOS、Linux 都先開啟已安裝的 VS Code，在側邊 Extensions 搜尋 Codex，核對發行者 OpenAI 與識別碼 openai.chatgpt，再按 Install。也可由文末官方 IDE 頁前往安裝入口。不要只靠相似圖示辨識。完成後若提示重新載入視窗，先保存檔案再操作；看到已安裝只證明擴充套件存在，還要開啟它並完成登入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用側邊 Codex 圖示開啟；若圖示沒出現，開 View → Command Palette，搜尋 Codex: Open Codex Sidebar。Windows／Linux 的命令面板快捷鍵是 Ctrl＋Shift＋P，macOS 是 Command＋Shift＋P。依擴充套件畫面登入，核對帳號和工作區。CLI 與擴充套件可能共用快取認證，登出前先確認對其他工作的影響。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Cursor、Windsurf 等相容編輯器也有官方列出的入口，但本篇以 VS Code 的可重現操作為主；Xcode 和 JetBrains 使用各自整合，不要將 VS Code 的安裝識別碼當成它們的設定步驟。Windows 的 VS Code 若開的是 WSL 視窗，先核對視窗環境與終端機路徑，所需工具須在"
+            },
+            {
+              "type": "link",
+              "text": "WSL 環境",
+              "url": "https://mokaair.com/zh-TW/life/codex-cli-linux-wsl"
+            },
+            {
+              "type": "text",
+              "text": "可用。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟一：打開故障練習副本"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "下載"
+            },
+            {
+              "type": "link",
+              "text": "Small Steps 練習檔",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "，解壓後把 broken 資料夾複製成 codex-ide-lab，保留 expected 作為獨立參考。用 File → Open Folder 開啟 codex-ide-lab，核對檔案總管內有 index.html、style.css、app.js、core.mjs、core.test.mjs。信任提示只對你確認過來源的練習副本處理；不要把整個下載目錄設成這次專案。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "用 Terminal → New Terminal 開整合終端機。Windows 原生用 Get-Location，macOS／Linux 用 pwd，確認就在 codex-ide-lab。這個練習需要可執行的 Node.js，先查 node --version，再跑下列測試。預期三個測試群組中篩選那組失敗、其餘通過；這是刻意留下的錯誤，不要一開始就刪掉失敗測試或改預期值。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟二：把選取範圍帶入 Codex"
+        },
+        {
+          "type": "paragraph",
+          "text": "打開 core.mjs，選取 visibleTasks 整個函式，從命令面板找到 Add to Codex Thread，把選取範圍加入目前任務；名稱或可用命令以該版擴充套件選單為準。再開 core.test.mjs，讓測試也在上下文中。送出前查看輸入框的附件或檔案標記，確認是 core.mjs 和測試，不是只選到了相似名稱的另一份檔案。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個要求只做理解。回覆應指出 completed 分支錯用了 !task.completed，因此顯示未完成項目。若它只說「篩選邏輯可能有問題」，追問具體分支與測試；若說已修正，先確認有沒有超出這次唯讀要求。開啟的檔案有助帶入上下文，但你仍需核對它是否真的看到需要的函式與錯誤。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟三：給予精確修改範圍"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在同一個 Codex 任務送出這段；若需要批准命令，先看工作目錄與執行內容是否符合練習。完成後合格的核心變更是 completed 分支使用 task.completed，不能把 active 分支一起改錯，也不能改測試讓錯誤合理化。由 Codex 報告測試通過後，仍在自己的整合終端機重跑一次，保留獨立驗證。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這段是參考成果，用來比對，不是要求你先貼上再宣稱 Codex 修好了。原故障註解若仍說 predicate 錯誤，應在同一函式清理失效註解，避免留下誤導。除此之外不需要改版面、安裝依賴或新增後端。三個測試群組全部通過是必要條件，實際 diff 是否符合範圍也要一起判斷。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟四：檢查差異與使用結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "若練習副本已有 Git，從 Source Control 看修改的檔案；沒有 Git 時也可在檔案總管用 Select for Compare／Compare with Selected 對照保留的 broken 與修正版 core.mjs。不要為看 diff 就提交正式專案。比較應集中在篩選條件與失效註解，core.test.mjs 不應被改成容許錯誤結果。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "開本機預覽後新增 Read、Build，將 Read 勾為完成；All 應顯示兩項，Active 只有 Build，Completed 只有 Read。重新整理後再選 Completed，Read 仍應存在；清單為空時切換篩選也不應出現錯誤。預覽方式與三平臺命令見"
+            },
+            {
+              "type": "link",
+              "text": "第一個小專案",
+              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "。本篇以 localhost 練習資料驗證，不把 localhost 網址當成已部署網站。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "成功條件",
+            "常見誤判"
+          ],
+          "rows": [
+            [
+              "上下文",
+              "函式、測試與工作目錄都正確",
+              "選取即等於寫入限制"
+            ],
+            [
+              "修改",
+              "Completed 條件修正，其他行為保留",
+              "只看回覆中的完成"
+            ],
+            [
+              "測試",
+              "原有三組通過",
+              "改預期值後通過"
+            ],
+            [
+              "畫面",
+              "Active／Completed 各自正確且可重載",
+              "localhost 被當成正式網址"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "故障排除、還原與下一步"
+        },
+        {
+          "type": "paragraph",
+          "text": "擴充套件裝了卻找不到命令，先確認目前視窗啟用的擴充套件與工作環境；WSL 視窗和本機視窗可能不同。選取內容沒帶入，確認附件、檔名與範圍，或明說 core.mjs 的 visibleTasks 並貼出必要片段。工具找不到 node，從同一個整合終端機核對，不以另一個系統終端機的成功代替。模型回覆被中止時先查看 diff，再續問未完成項目，避免把已改好的部分重做。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "想重做時只在練習副本把保留的 broken/core.mjs 複製回去，測試應再次出現原篩選失敗；這是成功復原故障起點。不要用整個專案的強制重置掩蓋其他未保存工作。本機已驗證 broken 的預期失敗、expected 的通過和參考畫面；沒有把參考版直接稱作擴充套件實際產生的結果。下一步看"
+            },
+            {
+              "type": "link",
+              "text": "修 Bug 流程",
+              "url": "https://mokaair.com/zh-TW/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "測試與 Review",
+              "url": "https://mokaair.com/zh-TW/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "Git 差異",
+              "url": "https://mokaair.com/zh-TW/life/codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-ide-getting-started/diagram-1.svg",
+          "alt": "14. IDE 擴充套件入門 — 實作順序示意圖，非產品介面截圖。 Editor → Selection → Diff",
+          "width": 1600,
+          "height": 900,
+          "caption": "14. IDE 擴充套件入門 — 實作順序示意圖，非產品介面截圖。 Editor → Selection → Diff",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex IDE extension",
+          "url": "https://learn.chatgpt.com/docs/ide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Editor context and selected code",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "IDE 扩展入门",
+      "description": "IDE 整合把 Codex 放在程式码旁边，适合针对选取内容解释与修改。VS Code、Cursor、Windsurf 使用 Codex 扩充；Xcode 与 JetBrains 有自己的整合入口，不能把安装步骤混用。",
+      "hero": {
+        "src": "/guides/codex-ide-getting-started/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "读完能做到什么"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在 VS Code 安装官方 Codex 扩充套件，带入选取的函式与测试档，修正一个可重现的筛选错误，再检查差异与测试。阅读约 12 分钟，操作约 30 分钟。本篇支援 Windows、macOS、Linux 的 VS Code 操作路线；产品安装与选单依 2026-09-14 官方文件查证，参考程式与测试另有本机验证。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "IDE 是能编辑程式、浏览档案与执行工具的工作介面；扩充套件把 Codex 放在旁边，让选取内容能直接成为上下文。它不会因为你只选取十行，就保证代理只能修改十行。任务范围仍要在"
+            },
+            {
+              "type": "link",
+              "text": "需求提示词",
+              "url": "https://mokaair.com/zh-CN/life/codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "写清楚，档案存取由权限控制。图中 01 是选取上下文，02 是指定修改，03 是比较与验收。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前：安装官方扩充套件"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows、macOS、Linux 都先开启已安装的 VS Code，在侧边 Extensions 搜寻 Codex，核对发行者 OpenAI 与识别码 openai.chatgpt，再按 Install。也可由文末官方 IDE 页前往安装入口。不要只靠相似图示辨识。完成后若提示重新载入视窗，先保存档案再操作；看到已安装只证明扩充套件存在，还要开启它并完成登入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用侧边 Codex 图示开启；若图示没出现，开 View → Command Palette，搜寻 Codex: Open Codex Sidebar。Windows／Linux 的命令面板快捷键是 Ctrl＋Shift＋P，macOS 是 Command＋Shift＋P。依扩充套件画面登入，核对帐号和工作区。CLI 与扩充套件可能共用快取认证，登出前先确认对其他工作的影响。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Cursor、Windsurf 等相容编辑器也有官方列出的入口，但本篇以 VS Code 的可重现操作为主；Xcode 和 JetBrains 使用各自整合，不要将 VS Code 的安装识别码当成它们的设定步骤。Windows 的 VS Code 若开的是 WSL 视窗，先核对视窗环境与终端机路径，所需工具须在"
+            },
+            {
+              "type": "link",
+              "text": "WSL 环境",
+              "url": "https://mokaair.com/zh-CN/life/codex-cli-linux-wsl"
+            },
+            {
+              "type": "text",
+              "text": "可用。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤一：打开故障练习副本"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "下载"
+            },
+            {
+              "type": "link",
+              "text": "Small Steps 练习档",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "，解压后把 broken 资料夹复制成 codex-ide-lab，保留 expected 作为独立参考。用 File → Open Folder 开启 codex-ide-lab，核对档案总管内有 index.html、style.css、app.js、core.mjs、core.test.mjs。信任提示只对你确认过来源的练习副本处理；不要把整个下载目录设成这次专案。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "用 Terminal → New Terminal 开整合终端机。Windows 原生用 Get-Location，macOS／Linux 用 pwd，确认就在 codex-ide-lab。这个练习需要可执行的 Node.js，先查 node --version，再跑下列测试。预期三个测试群组中筛选那组失败、其余通过；这是刻意留下的错误，不要一开始就删掉失败测试或改预期值。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤二：把选取范围带入 Codex"
+        },
+        {
+          "type": "paragraph",
+          "text": "打开 core.mjs，选取 visibleTasks 整个函式，从命令面板找到 Add to Codex Thread，把选取范围加入目前任务；名称或可用命令以该版扩充套件选单为准。再开 core.test.mjs，让测试也在上下文中。送出前查看输入框的附件或档案标记，确认是 core.mjs 和测试，不是只选到了相似名称的另一份档案。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一个要求只做理解。回复应指出 completed 分支错用了 !task.completed，因此显示未完成项目。若它只说「筛选逻辑可能有问题」，追问具体分支与测试；若说已修正，先确认有没有超出这次唯读要求。开启的档案有助带入上下文，但你仍需核对它是否真的看到需要的函式与错误。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤三：给予精确修改范围"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在同一个 Codex 任务送出这段；若需要批准命令，先看工作目录与执行内容是否符合练习。完成后合格的核心变更是 completed 分支使用 task.completed，不能把 active 分支一起改错，也不能改测试让错误合理化。由 Codex 报告测试通过后，仍在自己的整合终端机重跑一次，保留独立验证。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "这段是参考成果，用来比对，不是要求你先贴上再宣称 Codex 修好了。原故障注解若仍说 predicate 错误，应在同一函式清理失效注解，避免留下误导。除此之外不需要改版面、安装依赖或新增后端。三个测试群组全部通过是必要条件，实际 diff 是否符合范围也要一起判断。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤四：检查差异与使用结果"
+        },
+        {
+          "type": "paragraph",
+          "text": "若练习副本已有 Git，从 Source Control 看修改的档案；没有 Git 时也可在档案总管用 Select for Compare／Compare with Selected 对照保留的 broken 与修正版 core.mjs。不要为看 diff 就提交正式专案。比较应集中在筛选条件与失效注解，core.test.mjs 不应被改成容许错误结果。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "开本机预览后新增 Read、Build，将 Read 勾为完成；All 应显示两项，Active 只有 Build，Completed 只有 Read。重新整理后再选 Completed，Read 仍应存在；清单为空时切换筛选也不应出现错误。预览方式与三平台命令见"
+            },
+            {
+              "type": "link",
+              "text": "第一个小专案",
+              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "。本篇以 localhost 练习资料验证，不把 localhost 网址当成已部署网站。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查项目",
+            "成功条件",
+            "常见误判"
+          ],
+          "rows": [
+            [
+              "上下文",
+              "函式、测试与工作目录都正确",
+              "选取即等于写入限制"
+            ],
+            [
+              "修改",
+              "Completed 条件修正，其他行为保留",
+              "只看回复中的完成"
+            ],
+            [
+              "测试",
+              "原有三组通过",
+              "改预期值后通过"
+            ],
+            [
+              "画面",
+              "Active／Completed 各自正确且可重载",
+              "localhost 被当成正式网址"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "故障排除、还原与下一步"
+        },
+        {
+          "type": "paragraph",
+          "text": "扩充套件装了却找不到命令，先确认目前视窗启用的扩充套件与工作环境；WSL 视窗和本机视窗可能不同。选取内容没带入，确认附件、档名与范围，或明说 core.mjs 的 visibleTasks 并贴出必要片段。工具找不到 node，从同一个整合终端机核对，不以另一个系统终端机的成功代替。模型回复被中止时先查看 diff，再续问未完成项目，避免把已改好的部分重做。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "想重做时只在练习副本把保留的 broken/core.mjs 复制回去，测试应再次出现原筛选失败；这是成功复原故障起点。不要用整个专案的强制重置掩盖其他未保存工作。本机已验证 broken 的预期失败、expected 的通过和参考画面；没有把参考版直接称作扩充套件实际产生的结果。下一步看"
+            },
+            {
+              "type": "link",
+              "text": "修 Bug 流程",
+              "url": "https://mokaair.com/zh-CN/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "测试与 Review",
+              "url": "https://mokaair.com/zh-CN/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "link",
+              "text": "Git 差异",
+              "url": "https://mokaair.com/zh-CN/life/codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-ide-getting-started/diagram-1.svg",
+          "alt": "14. IDE 扩展入门 — 实作顺序示意图，非产品介面截图。 Editor → Selection → Diff",
+          "width": 1600,
+          "height": 900,
+          "caption": "14. IDE 扩展入门 — 实作顺序示意图，非产品介面截图。 Editor → Selection → Diff",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex IDE extension",
+          "url": "https://learn.chatgpt.com/docs/ide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Editor context and selected code",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Get started in your IDE",
+      "description": "IDE integration places Codex beside your code for focused explanation and edits. VS Code, Cursor and Windsurf use the Codex extension; Xcode and JetBrains expose their own integration flows. Do not interchange their installation steps.",
+      "hero": {
+        "src": "/guides/codex-ide-getting-started/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will accomplish"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Install the official Codex extension in VS Code, provide a selected function and test file, fix a reproducible filtering bug, then inspect the diff and tests. Allow 12 minutes to read and 30 minutes to practice. The VS Code route applies to Windows, macOS and Linux. Product installation and menus were checked against official documentation on 2026-09-14; reference code and tests have separate local verification."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "An IDE combines editing, files and tools. The extension places Codex beside them so selections can become context. Selecting ten lines does not restrict the agent to editing only those lines. State the task scope in your "
+            },
+            {
+              "type": "link",
+              "text": "prompt",
+              "url": "https://mokaair.com/en/life/codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "; permissions govern file access. Diagram 01 is selected context, 02 the requested change and 03 review and verification."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before you start: install the official extension"
+        },
+        {
+          "type": "paragraph",
+          "text": "On each operating system, open your installed VS Code, search Extensions for Codex, verify OpenAI as publisher and openai.chatgpt as identifier, then install. The official IDE page below also links to installation. Do not identify it by icon alone. Save files before any requested window reload. Installed status establishes the extension's presence, not that it has opened or authenticated."
+        },
+        {
+          "type": "paragraph",
+          "text": "Open the Codex icon. If it is absent, use View → Command Palette and search Codex: Open Codex Sidebar. The palette shortcut is Ctrl+Shift+P on Windows/Linux and Command+Shift+P on macOS. Follow the extension sign-in flow and verify the account/workspace. CLI and extension can share cached authentication, so consider other active work before logging out."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Official documentation also lists compatible editors such as Cursor and Windsurf; this walkthrough uses VS Code. Xcode and JetBrains use their own integrations, so the VS Code extension identifier is not their setup procedure. In a Windows VS Code WSL window, verify the remote environment and terminal path; required tools must be available in "
+            },
+            {
+              "type": "link",
+              "text": "WSL",
+              "url": "https://mokaair.com/en/life/codex-cli-linux-wsl"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: open the broken practice copy"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Download the "
+            },
+            {
+              "type": "link",
+              "text": "Small Steps materials",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": ", extract them and copy broken to codex-ide-lab while keeping expected as an independent reference. Use File → Open Folder and verify index.html, style.css, app.js, core.mjs and core.test.mjs in Explorer. Handle trust prompts for this verified practice copy, not your entire downloads directory."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Open Terminal → New Terminal. Check Get-Location on native Windows or pwd on macOS/Linux for codex-ide-lab. This exercise needs Node.js; check node --version before running the test. Expect the filtering group to fail among three test groups while the others pass. The bug is intentional. Do not delete the failing test or change its expectation to make the initial run green."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: add the selection to Codex"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open core.mjs, select the whole visibleTasks function and use Add to Codex Thread from the command palette to attach the selection, checking the actual command available in your extension version. Open core.test.mjs as test context too. Inspect file/selection indicators before sending to confirm the intended files rather than a similarly named copy."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "This first request is explanatory only. Expect identification of !task.completed in the completed branch, which shows unfinished tasks. If the response only says filtering may be wrong, ask for the branch and assertion. If it claims to have fixed it, inspect whether it exceeded the read-only request. Open files help provide context, but verify that the needed function and failure were actually understood."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: request a precisely scoped fix"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Send this in the same Codex task. For approval prompts, inspect the working directory and command against the exercise. The essential fix uses task.completed in the completed branch while retaining active behavior and test expectations. After Codex reports passing tests, rerun them independently in your integrated terminal."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "This is the reference result for comparison, not code to paste before claiming Codex fixed the bug. Remove the obsolete deliberate-bug comment in that function if it remains misleading. Layout changes, new dependencies and a backend are unnecessary. All three test groups passing is necessary, and the actual diff must also meet the requested scope."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: inspect the diff and behavior"
+        },
+        {
+          "type": "paragraph",
+          "text": "If the copy already uses Git, inspect modified files in Source Control. Without Git, use Select for Compare / Compare with Selected in Explorer to compare the retained broken core.mjs and the fixed file. No production commit is needed to view a diff. Expect the predicate and obsolete comment to change, with test expectations intact."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "In local preview, add Read and Build and complete Read. All shows both, Active only Build, Completed only Read. After reload, selecting Completed still shows Read; filters on an empty list should not error. See "
+            },
+            {
+              "type": "link",
+              "text": "your first project",
+              "url": "https://mokaair.com/en/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": " for preview commands on each OS. This verifies localhost practice data, not a deployed website."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "Success",
+            "Common mistake"
+          ],
+          "rows": [
+            [
+              "Context",
+              "Correct function, test and folder",
+              "Treating selection as a write boundary"
+            ],
+            [
+              "Change",
+              "Correct Completed predicate, other behavior intact",
+              "Trusting only the completion message"
+            ],
+            [
+              "Tests",
+              "Three existing groups pass",
+              "Changing expected results to pass"
+            ],
+            [
+              "UI",
+              "Correct filters and reload",
+              "Treating localhost as a public URL"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting, restoration and next steps"
+        },
+        {
+          "type": "paragraph",
+          "text": "For missing commands, check the enabled extension and environment in this window; WSL and local windows can differ. For missing selection context, inspect attachment, file and range indicators, or explicitly name visibleTasks in core.mjs and provide the needed excerpt. If node is unavailable, check this integrated terminal, not a different shell. After an interrupted response, inspect the diff before requesting remaining work."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "To repeat, restore only retained broken/core.mjs into the practice copy; the original filter failure should return. That confirms restoration of the starting defect. Avoid a project-wide forced reset that discards other work. Local checks establish the intended broken failure, passing expected code and reference UI, not extension-generated output. Continue with "
+            },
+            {
+              "type": "link",
+              "text": "debugging",
+              "url": "https://mokaair.com/en/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "testing and review",
+              "url": "https://mokaair.com/en/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "link",
+              "text": "Git diffs",
+              "url": "https://mokaair.com/en/life/codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-ide-getting-started/diagram-1.svg",
+          "alt": "14. Get started in your IDE — Workflow illustration, not a product screenshot. Editor → Selection → Diff",
+          "width": 1600,
+          "height": 900,
+          "caption": "14. Get started in your IDE — Workflow illustration, not a product screenshot. Editor → Selection → Diff",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex IDE extension",
+          "url": "https://learn.chatgpt.com/docs/ide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Editor context and selected code",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "IDE 拡張機能を使い始める",
+      "description": "IDE ではコードの横で説明や編集を依頼できます。VS Code、Cursor、Windsurf は拡張機能、Xcode と JetBrains は独自の統合を使います。導入手順を混同しません。",
+      "hero": {
+        "src": "/guides/codex-ide-getting-started/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "このレッスンの成果"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "VS Code に公式拡張を導入し、関数の選択とテストファイルを渡して、再現できる絞り込み不具合を直し、差分とテストを確認します。読む時間約12分、操作約30分です。Windows、macOS、Linux の VS Code を対象とします。製品の導入とメニューは2026-09-14の公式資料、参考コードとテストは別の本機検証に基づきます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "IDE は編集、ファイル閲覧、ツール実行の作業画面です。拡張により選択箇所を Codex の文脈として渡せますが、十行を選んでも変更可能範囲が十行に制限されるわけではありません。"
+            },
+            {
+              "type": "link",
+              "text": "依頼文",
+              "url": "https://mokaair.com/ja/life/codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "で範囲を明示し、アクセスは権限で管理します。図の 01 は文脈選択、02 は変更依頼、03 は比較と検証です。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "始める前に：公式拡張を導入する"
+        },
+        {
+          "type": "paragraph",
+          "text": "各 OS の VS Code で Extensions から Codex を検索し、発行者 OpenAI と識別子 openai.chatgpt を照合して Install を押します。末尾の公式ページからも進めます。似たアイコンだけで判断しません。再読み込みを求められたら保存して実行します。導入済み表示は存在の確認であり、起動や認証の完了ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex のアイコンを開き、なければ View → Command Palette で Codex: Open Codex Sidebar を検索します。Windows / Linux は Ctrl+Shift+P、macOS は Command+Shift+P です。案内に従ってアカウントとワークスペースを確認します。CLI と認証を共有する場合があるため、ログアウト前に他の作業への影響を確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "公式には Cursor、Windsurf などもありますが、ここでは VS Code で再現します。Xcode と JetBrains は独自の統合で、VS Code の識別子をその設定手順として使いません。Windows の WSL ウィンドウでは環境表示と端末パスを照合し、"
+            },
+            {
+              "type": "link",
+              "text": "WSL",
+              "url": "https://mokaair.com/ja/life/codex-cli-linux-wsl"
+            },
+            {
+              "type": "text",
+              "text": " 内で必要なツールが使えるか確認します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：不具合を含む練習コピーを開く"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "Small Steps の材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "を展開し、broken を codex-ide-lab にコピーして expected は独立した参考に残します。File → Open Folder で開き、index.html、style.css、app.js、core.mjs、core.test.mjsを確認します。信頼は出所を確認した練習コピーに対して判断し、ダウンロード全体をプロジェクトにしません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Terminal → New Terminal で開き、Windows は Get-Location、macOS / Linux は pwd で codex-ide-lab を確認します。Node.js が必要なので node --version の後にテストします。三組のうち絞り込みが失敗し、ほかが通ることを確認します。意図的な不具合なので、最初からテストを消したり期待値を書き換えたりしません。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：選択箇所を Codex に渡す"
+        },
+        {
+          "type": "paragraph",
+          "text": "core.mjs の visibleTasks 全体を選び、コマンドパレットの Add to Codex Thread で現在のタスクへ追加します。実際の版で使える命令を確認してください。core.test.mjs も開き、送信前にファイルや選択の表示で目的の二つか確認します。同名の別コピーと取り違えないようにします。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "最初は説明だけです。completed 分岐で !task.completed を使い、未完了が出ると指摘することを確認します。「絞り込みに問題かも」だけなら分岐と検証を求めます。修正済みと言うなら読み取り依頼を越えていないか見ます。開いたファイルは文脈になりますが、必要な関数と失敗を理解したか確認が必要です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：変更範囲を具体的に依頼する"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じタスクで送ります。承認が必要なら場所とコマンドが課題に合うか確認します。中心となる修正は completed 分岐の task.completed で、active とテスト期待値は保ちます。Codex が成功を報告した後も、自分の統合端末で再実行して独立した確認を残します。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "これは比較用の参考結果で、先に貼ってから Codex が直したと扱うものではありません。同じ関数の意図的な誤りを示す古いコメントが残れば整理します。画面変更や依存追加、バックエンドは不要です。三組の成功に加え、実際の差分が範囲内かも判断します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：差分と動作を確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "コピーに Git があれば Source Control、なければ Explorer の Select for Compare / Compare with Selected で保管した broken と修正版を比較します。差分を見るために本番をコミットする必要はありません。条件と古いコメントが対象で、テストを誤った結果に合わせていないか確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "ローカルで Read と Build を追加し Read を完了にします。All は二つ、Active は Build、Completed は Read です。再読み込み後も Completed に Read があり、空一覧の切り替えもエラーなしを確認します。各 OS の起動は"
+            },
+            {
+              "type": "link",
+              "text": "最初のプロジェクト",
+              "url": "https://mokaair.com/ja/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "を参照します。localhost の検証は公開配備ではありません。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認",
+            "成功条件",
+            "誤解"
+          ],
+          "rows": [
+            [
+              "文脈",
+              "関数、テスト、場所が正しい",
+              "選択が書き込み制限になる"
+            ],
+            [
+              "変更",
+              "Completed を直して他を維持",
+              "完了メッセージだけを見る"
+            ],
+            [
+              "テスト",
+              "既存三組が成功",
+              "期待値変更で成功させる"
+            ],
+            [
+              "画面",
+              "正しい絞り込みと再読み込み",
+              "localhost を公開 URL とする"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "問題解決、復元、次の手順"
+        },
+        {
+          "type": "paragraph",
+          "text": "コマンドがなければ現在のウィンドウの拡張と環境を確認します。WSL とローカルは異なる場合があります。選択が入らなければ添付、名前、範囲を確認し、必要なら core.mjs の visibleTasks と抜粋を明示します。node は同じ統合端末で調べ、別端末の成功で代用しません。中断後は差分を確認して残作業を依頼します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "再練習では練習コピーの core.mjs だけを broken から戻し、元の失敗が再現することを確認します。ほかの作業を失う全体リセットは使いません。本機では broken の意図した失敗、expected の成功、参考画面を確認しましたが、拡張が生成した結果とはしていません。次は"
+            },
+            {
+              "type": "link",
+              "text": "デバッグ",
+              "url": "https://mokaair.com/ja/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "テストとレビュー",
+              "url": "https://mokaair.com/ja/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Git 差分",
+              "url": "https://mokaair.com/ja/life/codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "です。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-ide-getting-started/diagram-1.svg",
+          "alt": "14. IDE 拡張機能を使い始める — 作業の流れを表す図です。製品画面の画像ではありません。 Editor → Selection → Diff",
+          "width": 1600,
+          "height": 900,
+          "caption": "14. IDE 拡張機能を使い始める — 作業の流れを表す図です。製品画面の画像ではありません。 Editor → Selection → Diff",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex IDE extension",
+          "url": "https://learn.chatgpt.com/docs/ide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Editor context and selected code",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "IDE 확장 시작하기",
+      "description": "IDE에서는 코드 옆에서 설명과 편집을 요청합니다. VS Code, Cursor, Windsurf는 확장을 쓰고 Xcode와 JetBrains는 자체 통합을 사용하므로 설치 절차를 구분합니다.",
+      "hero": {
+        "src": "/guides/codex-ide-getting-started/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 강의의 목표"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "VS Code에 공식 Codex 확장을 설치하고 선택한 함수와 테스트 파일을 전달해 재현 가능한 필터 오류를 수정한 후 차이와 테스트를 확인합니다. 읽기 약 12분, 실습 약 30분입니다. Windows, macOS, Linux의 VS Code 경로를 다룹니다. 설치와 메뉴는 2026-09-14 공식 문서, 참조 코드와 테스트는 별도 로컬 검증에 근거합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "IDE는 편집, 파일 탐색, 도구 실행을 모은 작업 화면입니다. 확장은 선택 영역을 Codex 맥락으로 전달하지만 열 줄 선택이 수정 권한을 열 줄로 제한하지는 않습니다. "
+            },
+            {
+              "type": "link",
+              "text": "요청문",
+              "url": "https://mokaair.com/ko/life/codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "에 범위를 명시하고 파일 접근은 권한으로 제어합니다. 그림의 01은 맥락 선택, 02는 수정 요청, 03은 비교와 검증입니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전: 공식 확장 설치하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "각 OS의 VS Code에서 Extensions로 Codex를 검색하고 게시자 OpenAI, 식별자 openai.chatgpt를 확인해 설치합니다. 아래 공식 IDE 페이지에서도 이동할 수 있습니다. 아이콘만으로 구분하지 마세요. 창 재로드 안내가 뜨면 파일을 저장한 후 진행합니다. 설치됨 표시는 존재 확인이며 실행이나 인증 완료는 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 아이콘을 열고 없으면 View → Command Palette에서 Codex: Open Codex Sidebar를 검색합니다. Windows/Linux 단축키는 Ctrl+Shift+P, macOS는 Command+Shift+P입니다. 안내에 따라 계정과 워크스페이스를 확인합니다. CLI와 인증을 공유할 수 있으므로 로그아웃 전에 다른 작업 영향을 확인하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "공식 문서는 Cursor와 Windsurf도 안내하지만 이 실습은 VS Code를 사용합니다. Xcode와 JetBrains는 자체 통합이므로 VS Code 식별자를 설정 절차로 쓰지 않습니다. Windows의 WSL 창에서는 환경 표시와 터미널 경로를 확인하고 "
+            },
+            {
+              "type": "link",
+              "text": "WSL",
+              "url": "https://mokaair.com/ko/life/codex-cli-linux-wsl"
+            },
+            {
+              "type": "text",
+              "text": " 안에서 필요한 도구를 사용할 수 있어야 합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 오류가 있는 실습 사본 열기"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "link",
+              "text": "Small Steps 자료",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "를 풀고 broken을 codex-ide-lab으로 복사하며 expected는 독립 참조로 보관합니다. File → Open Folder로 열고 index.html, style.css, app.js, core.mjs, core.test.mjs을 확인합니다. 신뢰 안내는 출처를 확인한 실습 사본에 대해 처리하며 다운로드 폴더 전체를 프로젝트로 삼지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Terminal → New Terminal을 열고 Windows의 Get-Location 또는 macOS/Linux의 pwd로 codex-ide-lab을 확인합니다. Node.js가 필요하므로 node --version 후 테스트합니다. 세 그룹 중 필터 그룹이 실패하고 나머지는 통과해야 합니다. 의도된 오류이므로 처음부터 실패 테스트를 지우거나 기대값을 바꾸지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 선택 영역을 Codex에 전달하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "core.mjs의 visibleTasks 전체를 선택하고 명령 팔레트의 Add to Codex Thread로 현재 작업에 추가합니다. 실제 확장 버전에 제공되는 명령을 확인하세요. core.test.mjs도 열고 전송 전 파일/선택 표시가 의도한 두 파일인지 확인합니다. 비슷한 이름의 다른 사본과 혼동하지 마세요."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 요청은 설명만입니다. completed 분기의 !task.completed 때문에 미완료 항목이 나온다고 짚어야 합니다. 필터 문제일 수 있다는 말뿐이면 분기와 검증을 요구합니다. 고쳤다고 하면 읽기 요청 범위를 넘었는지 확인하세요. 열린 파일은 맥락을 돕지만 필요한 함수와 실패를 이해했는지는 검증해야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 수정 범위를 정확히 요청하기"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 작업에서 전송합니다. 승인 요청은 폴더와 명령이 실습에 맞는지 확인합니다. 핵심 수정은 completed 분기의 task.completed이며 active 동작과 테스트 기대값은 유지합니다. Codex가 테스트 성공을 보고해도 자신의 통합 터미널에서 다시 실행해 독립 검증을 남깁니다."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "비교용 참조 결과이지 먼저 붙여 넣고 Codex가 고쳤다고 주장하는 코드가 아닙니다. 같은 함수에 의도된 오류라는 오래된 주석이 남으면 정리합니다. 화면 변경, 의존성 추가, 백엔드는 필요 없습니다. 세 그룹 통과뿐 아니라 실제 diff가 요청 범위인지도 판단합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 차이와 동작 확인하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "사본에 Git이 있으면 Source Control을 보고 없으면 Explorer의 Select for Compare/Compare with Selected로 보존한 broken과 수정본을 비교합니다. diff를 보기 위해 실제 프로젝트를 커밋할 필요는 없습니다. 조건과 낡은 주석만 대상이며 테스트가 오류를 허용하도록 바뀌지 않았는지 확인합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "로컬 미리 보기에서 Read와 Build를 추가하고 Read를 완료합니다. All은 둘 다, Active는 Build, Completed는 Read입니다. 새로고침 후에도 Completed에 Read가 있고 빈 목록 필터도 오류가 없어야 합니다. OS별 실행은 "
+            },
+            {
+              "type": "link",
+              "text": "첫 프로젝트",
+              "url": "https://mokaair.com/ko/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하세요. localhost 검증은 배포된 웹사이트가 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "점검",
+            "성공 조건",
+            "흔한 오판"
+          ],
+          "rows": [
+            [
+              "맥락",
+              "함수, 테스트, 폴더가 정확",
+              "선택을 쓰기 제한으로 간주"
+            ],
+            [
+              "수정",
+              "Completed 수정과 나머지 유지",
+              "완료 메시지만 믿기"
+            ],
+            [
+              "테스트",
+              "기존 세 그룹 통과",
+              "기대값을 바꿔 통과"
+            ],
+            [
+              "화면",
+              "올바른 필터와 새로고침",
+              "localhost를 공개 URL로 간주"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결, 복구, 다음 단계"
+        },
+        {
+          "type": "paragraph",
+          "text": "명령이 없으면 현재 창의 활성 확장과 환경을 확인합니다. WSL과 로컬 창은 다를 수 있습니다. 선택 맥락이 빠지면 첨부, 파일, 범위를 확인하거나 core.mjs의 visibleTasks를 명시하고 필요한 코드를 제공합니다. node는 같은 통합 터미널에서 확인하며 다른 셸의 성공으로 대신하지 않습니다. 응답 중단 후에는 diff를 보고 남은 작업을 요청합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "다시 연습하려면 보관한 broken/core.mjs만 실습 사본에 복원해 원래 필터 실패가 돌아오는지 확인합니다. 다른 작업을 지우는 전체 강제 초기화는 하지 않습니다. 로컬 검증은 broken의 의도된 실패, expected의 통과, 참조 화면이며 확장이 생성한 결과라고 주장하지 않습니다. 다음은 "
+            },
+            {
+              "type": "link",
+              "text": "디버깅",
+              "url": "https://mokaair.com/ko/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "테스트와 리뷰",
+              "url": "https://mokaair.com/ko/life/codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "Git 차이",
+              "url": "https://mokaair.com/ko/life/codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "입니다."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-ide-getting-started/diagram-1.svg",
+          "alt": "14. IDE 확장 시작하기 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Editor → Selection → Diff",
+          "width": 1600,
+          "height": 900,
+          "caption": "14. IDE 확장 시작하기 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Editor → Selection → Diff",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex IDE extension",
+          "url": "https://learn.chatgpt.com/docs/ide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Editor context and selected code",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

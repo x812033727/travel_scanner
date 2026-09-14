@@ -1,0 +1,249 @@
+{
+  "id": 6,
+  "readingMinutes": 12,
+  "operationMinutes": 30,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "讀完能做到什麼",
+        "What you will be able to do",
+        "このレッスンの到達点",
+        "이 강의의 목표"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "你會把一個可下載的待辦網站放進獨立資料夾，啟動本機預覽，請 Codex 完成兩個明確的畫面修改，再自行驗證功能與修改範圍。閱讀約 12 分鐘，操作約 30 分鐘。成果只在自己的電腦預覽；網站能開啟、測試透過與正式上線是不同階段。",
+        "Download a todo website into an independent folder, start a local preview, ask Codex for two precise visual edits and independently verify behavior and scope. Allow 12 minutes to read and 30 to practise. The result is a local preview; opening a page, passing tests and publishing a website are separate stages.",
+        "ダウンロードできる ToDo サイトを独立フォルダーに置き、ローカル表示を起動します。Codex に二つの明確な画面変更を頼み、機能と変更範囲を自分で確認します。読む時間は約 12 分、操作は約 30 分です。成果は自分のコンピューターでの表示であり、ページが開くこと、テスト成功、公開は別段階です。",
+        "다운로드한 할 일 사이트를 독립 폴더에 두고 로컬 미리보기를 실행한 뒤 Codex에 명확한 화면 수정 두 개를 요청하고 기능과 범위를 직접 검증합니다. 읽기 약 12분, 실습 약 30분입니다. 결과는 로컬 미리보기이며 페이지 열기, 테스트 통과, 실제 공개는 서로 다른 단계입니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "開始之前：拿到正確版本",
+        "Before starting: choose the right version",
+        "準備：正しい版を選ぶ",
+        "시작 전: 올바른 버전 선택"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "下載[Small Steps 練習材料](https://mokaair.com/guides/codex-first-project/todo-practice.zip)，解壓縮後會看到 start、broken、expected。這篇只複製 expected，將副本命名為 codex-first-site，保留解壓縮的原版。start 的篩選尚未完成，broken 故意有錯，兩者留給後續課程；不要把三個資料夾合併，以免不知道自己正在驗證哪一版。",
+        "Download the [Small Steps exercise](https://mokaair.com/guides/codex-first-project/todo-practice.zip) and extract start, broken and expected. Copy only expected into a new codex-first-site folder and retain the extracted original. Filtering is unfinished in start and deliberately wrong in broken; those versions belong to later lessons. Do not merge the three folders or you will lose track of the version being checked.",
+        "[Small Steps 教材](https://mokaair.com/guides/codex-first-project/todo-practice.zip)を展開すると start、broken、expected があります。今回は expected だけを codex-first-site にコピーし、展開した原本は残します。start の絞り込みは未完成、broken は意図的な不具合があり後の教材用です。三つを混ぜず、検証対象の版が分かるようにします。",
+        "[Small Steps 실습 자료](https://mokaair.com/guides/codex-first-project/todo-practice.zip)를 풀면 start, broken, expected가 나옵니다. 이번에는 expected만 새 codex-first-site 폴더로 복사하고 압축을 푼 원본을 보존합니다. start는 필터가 미완성이고 broken에는 의도적인 오류가 있어 뒤 강의에서 씁니다. 세 폴더를 합치면 어떤 버전을 검증하는지 알기 어려우므로 따로 둡니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "副本根目錄直接包含 index.html、style.css、app.js、core.mjs、core.test.mjs。HTML 是畫面結構，CSS 是樣式，app.js 串接瀏覽器互動，core.mjs 處理資料，test 檔負責檢查核心行為。這些檔案不用先全部看懂，但必須確認都存在。本篇需要可用的 Codex、Node.js 與 Python 3；已有工具就不重灌，只核對命令可執行。",
+        "The copy's root should directly contain index.html, style.css, app.js, core.mjs and core.test.mjs. HTML defines structure, CSS presentation, app.js browser interaction, core.mjs data behavior and the test file core checks. You need not understand everything yet, but all five files must exist. You need Codex, Node.js and Python 3; if already installed, verify commands rather than reinstalling.",
+        "コピー直下には index.html、style.css、app.js、core.mjs、core.test.mjs が必要です。HTML は構造、CSS は表示、app.js はブラウザー操作、core.mjs はデータ、test は基本動作の確認を担当します。すべて理解する必要はありませんが、存在を確認します。Codex、Node.js、Python 3 が必要で、導入済みなら再インストールせずコマンドを確認します。",
+        "복사본 바로 아래에 index.html, style.css, app.js, core.mjs, core.test.mjs가 있어야 합니다. HTML은 구조, CSS는 스타일, app.js는 브라우저 상호작용, core.mjs는 데이터 동작, test 파일은 핵심 검사를 담당합니다. 전부 이해할 필요는 없지만 다섯 파일은 확인해야 합니다. Codex, Node.js, Python 3가 필요하며 이미 있다면 재설치 대신 명령 실행 여부를 확인합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Windows 在這個資料夾開啟 PowerShell，macOS／Linux 開啟終端機；不熟位置確認時先讀[終端機與路徑](article:codex-terminal-paths)。Windows 用 py --version，macOS／Linux 用 python3 --version，三個平臺都用 node --version。找不到命令時先安裝對應工具並重開終端機；這個範例沒有 package.json，因此不使用 npm install 或 npm test。",
+        "Open PowerShell in this folder on Windows or a terminal on macOS/Linux. See [terminal paths](article:codex-terminal-paths) if location checks are unfamiliar. Check Python with py --version on Windows or python3 --version elsewhere; use node --version on all three. If a command is missing, install the corresponding tool and reopen the terminal. There is no package.json here, so do not use npm install or npm test.",
+        "Windows はこのフォルダーで PowerShell、macOS/Linux は端末を開きます。不慣れなら[端末とパス](article:codex-terminal-paths)を参照してください。Python は Windows で py --version、それ以外は python3 --version、Node は全環境で node --version です。見つからなければ必要なツールを導入して端末を開き直します。この教材に package.json はないため npm install や npm test は使いません。",
+        "Windows에서는 이 폴더에서 PowerShell을, macOS/Linux에서는 터미널을 엽니다. 위치 확인이 낯설면 [터미널과 경로](article:codex-terminal-paths)를 먼저 봅니다. Python은 Windows에서 py --version, 나머지는 python3 --version으로 확인하며 Node는 모두 node --version을 씁니다. 명령이 없다면 해당 도구를 설치하고 터미널을 다시 엽니다. package.json이 없으므로 npm install이나 npm test는 사용하지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "第一步：先確認修改前能運作",
+        "Step 1: establish a working baseline",
+        "手順 1：変更前の動作を確認する",
+        "1단계: 수정 전 정상 동작 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在副本根目錄執行核心測試，應有三個測試透過、零失敗。這是「修改前」的證據；如果現在已失敗，先核對是否誤用了 start 或 broken，或缺少檔案。不要在壞掉的基礎上要求 Codex 同時改畫面和修所有錯誤，否則無法判斷哪個結果來自哪項需求。",
+        "Run the core tests at the copy's root. Expect three passing tests and zero failures. This is evidence from before the edit. If tests already fail, check whether you copied start or broken or omitted a file. Do not ask for visual edits and every unrelated fix on a broken baseline; that obscures which result belongs to which request.",
+        "コピー直下で基本テストを実行し、三件成功・失敗ゼロを確認します。これは変更前の証拠です。すでに失敗するなら start や broken をコピーしていないか、ファイル不足がないか確認します。壊れた状態で画面変更と全不具合修正を同時に頼むと、どの依頼がどの結果を生んだか分からなくなります。",
+        "복사본 루트에서 핵심 테스트를 실행해 3개 통과, 0개 실패를 확인합니다. 이는 수정 전 증거입니다. 이미 실패하면 start나 broken을 복사했거나 파일이 빠졌는지 확인하세요. 잘못된 기준 상태에서 화면 수정과 모든 오류 수정을 동시에 요청하면 어떤 요구가 어떤 결과를 만들었는지 판단하기 어렵습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "shell",
+      "code": "node --test core.test.mjs"
+    },
+    {
+      "type": "p",
+      "text": [
+        "Windows 用下方命令啟動預覽。這個終端機會持續顯示伺服器日誌，先保留它，不要等待它自動回到提示符號；需要執行別的命令時另開終端機。命令只繫結本機的 127.0.0.1。",
+        "On Windows, start the preview with the command below. Keep this terminal open while it displays server logs; it is not supposed to immediately return to a prompt. Open another terminal for other commands. The server binds only to the local address 127.0.0.1.",
+        "Windows は次で表示用サーバーを起動します。この端末はログを出し続けるので閉じず、プロンプトにすぐ戻ることを期待しません。別コマンドには別端末を使います。接続先はローカルの 127.0.0.1 だけです。",
+        "Windows에서는 아래 명령으로 미리보기를 시작합니다. 이 터미널은 서버 로그를 계속 표시하므로 열어 두고 바로 프롬프트로 돌아오기를 기다리지 마세요. 다른 명령은 새 터미널에서 실행합니다. 서버는 로컬 주소 127.0.0.1에만 연결됩니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "powershell",
+      "code": "py -m http.server 4173 --bind 127.0.0.1"
+    },
+    {
+      "type": "p",
+      "text": [
+        "macOS 或 Linux 用下方等效命令。兩段選自己的平臺其中一段執行，不能同時佔用 4173。若該埠已被自己的另一個練習使用，先停止已確認的那個伺服器，或改用 4174 並在後續網址保持一致。",
+        "On macOS or Linux, use the equivalent command below. Run only the one for your platform; two servers cannot share port 4173. If your other exercise already uses it, stop that identified server or use 4174 and consistently change the URL.",
+        "macOS/Linux は次の同等コマンドを使います。自分の OS の一方だけを実行し、二つで 4173 を共有しません。別の自分の練習が使っていれば、確認したサーバーを止めるか 4174 に変えて以後の URL も揃えます。",
+        "macOS/Linux에서는 아래의 동등한 명령을 사용합니다. 자신의 플랫폼 명령 하나만 실행하며 두 서버가 4173 포트를 같이 쓸 수는 없습니다. 다른 실습에서 사용 중이면 확인된 서버를 중단하거나 4174로 바꾸고 이후 URL도 맞춥니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "python3 -m http.server 4173 --bind 127.0.0.1"
+    },
+    {
+      "type": "p",
+      "text": [
+        "瀏覽器開啟 http://127.0.0.1:4173。看到 Small Steps 待辦畫面後，新增 Read、Build，勾選 Read，切到 Completed 應只看到 Read；切到 Active 應只看到 Build。重新整理確認狀態仍在。直接雙擊 index.html 可能因 file 網址限制無法載入模組，請使用剛啟動的 http 網址。",
+        "Open http://127.0.0.1:4173 in your browser. Add Read and Build, complete Read, then check that Completed shows only Read and Active only Build. Refresh to confirm persistence. Double-clicking index.html may prevent module loading under a file URL; use the HTTP address of the running server.",
+        "ブラウザーで http://127.0.0.1:4173 を開きます。Read と Build を追加して Read を完了し、Completed では Read だけ、Active では Build だけになることを確認します。再読み込みでも状態が残るはずです。index.html のダブルクリックは file URL の制約でモジュールを読めない場合があるため、起動した HTTP URL を使います。",
+        "브라우저에서 http://127.0.0.1:4173을 엽니다. Read와 Build를 추가하고 Read를 완료한 뒤 Completed에는 Read만, Active에는 Build만 보이는지 확인합니다. 새로고침해 상태가 유지되는지도 봅니다. index.html을 더블클릭하면 file URL 제한으로 모듈을 못 불러올 수 있으므로 실행한 HTTP 주소를 사용하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "第二步：先讓 Codex 讀取，再下修改要求",
+        "Step 2: inspect before requesting edits",
+        "手順 2：調査してから変更を依頼する",
+        "2단계: 읽은 뒤 수정 요청하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "桌面版選 codex-first-site 建立任務；CLI 則在副本根目錄啟動。先要求只讀取五個檔案並摘要用途、回報工作目錄與測試命令，暫不修改。確認它知道這是沒有套件安裝步驟的靜態網站，再送出下方完整需求。即使是小修改，也要把「要保留的功能」一起交代。",
+        "Select codex-first-site as a desktop project, or start CLI at its root. First request a read-only summary of the five files, working directory and test command. Confirm that the agent recognizes a static site without a package installation step, then send the complete request below. Even a small visual edit should state which behavior must be preserved.",
+        "デスクトップは codex-first-site を選んでタスクを作り、CLI はその直下で起動します。まず五ファイルの役割、現在地、テスト命令を読み取りだけで報告させます。パッケージ導入の不要な静的サイトと理解したことを確認してから次の依頼を送ります。小さな表示変更でも残すべき機能を伝えましょう。",
+        "데스크톱은 codex-first-site를 프로젝트로 선택하고 CLI는 루트에서 시작합니다. 먼저 파일 다섯 개의 역할, 작업 경로, 테스트 명령을 읽기만 해서 보고하도록 요청합니다. 패키지 설치가 필요 없는 정적 사이트임을 이해했는지 확인한 뒤 아래 전체 요청을 보냅니다. 작은 화면 수정도 보존할 기능을 함께 알려야 합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run."
+    },
+    {
+      "type": "p",
+      "text": [
+        "理想的差異只有 index.html 的 h1 文字與 style.css 的背景色；不是整份 HTML 被重建，也不是資料程式被換成另一套框架。Codex 若說沒有瀏覽器工具，應把畫面檢查列為未執行，你仍可自行完成。不要要求它為了證明透過而猜測畫面，或把沒有錯誤訊息當成視覺驗收。",
+        "The intended diff changes only the h1 in index.html and background color in style.css, not a wholesale HTML rewrite or a different data framework. If Codex lacks browser tools, it should mark visual checks as not run so that you can perform them. Do not invite guessed screenshots or treat absence of error messages as visual acceptance.",
+        "期待する差分は index.html の h1 と style.css の背景だけです。HTML 全体の作り直しや別フレームワークへの置換ではありません。ブラウザーツールがなければ画面検証を未実施と報告させ、自分で行います。推測画像を求めたり、エラーが出ないだけで画面合格としたりしないでください。",
+        "의도한 차이는 index.html의 h1과 style.css의 배경색뿐입니다. HTML 전체를 다시 만들거나 데이터 코드를 다른 프레임워크로 바꾸는 것이 아닙니다. Codex에 브라우저 도구가 없으면 화면 검사를 미실행으로 적고 직접 확인하세요. 화면을 추측하게 하거나 오류 메시지가 없다는 이유로 시각 검증을 통과 처리하지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "第三步：自己驗證成果",
+        "Step 3: independently verify the result",
+        "手順 3：成果を自分で確認する",
+        "3단계: 결과 직접 검증하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "重新讀取兩個檔案，核對指定字串與色碼；再次執行核心測試並保留透過結果。瀏覽器重新整理後看標題、背景與原來的 Read、Build。縮到約 390px 再看一次，頁面不應出現整頁橫向捲動；放大到 1280px 檢查內容寬度。窄視窗驗證響應式版面，不代表真的測過 iPhone 或 Android。",
+        "Reopen the two files and verify the requested text and color. Run core tests again and retain the result. Refresh the browser to check heading, background and the existing Read and Build items. At about 390px, the full page should not scroll horizontally; at 1280px, inspect content width. A narrow viewport checks responsive layout, not physical iPhone or Android behavior.",
+        "二つのファイルで指定の文字と色を確認し、再テストの結果を残します。ブラウザーを再読込して見出し、背景、以前の Read と Build を見ます。約 390px でページ全体が横スクロールせず、1280px でも幅が適切か確認します。狭い表示の確認はレスポンシブ検証で、iPhone や Android の実機試験ではありません。",
+        "두 파일을 다시 열어 문구와 색상 코드를 확인하고 핵심 테스트를 다시 실행해 결과를 남깁니다. 브라우저를 새로고침해 제목, 배경, 기존 Read와 Build를 확인하세요. 약 390px에서는 페이지 전체에 가로 스크롤이 없어야 하고 1280px에서는 내용 폭을 확인합니다. 좁은 화면 검사는 반응형 배치 검증이지 iPhone이나 Android 실기기 테스트가 아닙니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "再做兩個邊界測試：只輸入空白不能新增；輸入 下方樣本 應顯示為文字，不應成為圖片。用 Tab 移動到輸入框、按鈕、篩選與核取方塊，應有可見焦點。這些檢查確認小幅畫面修改沒有順手破壞資料處理或鍵盤操作；核心測試不會自動涵蓋 CSS 外觀，所以兩種證據都要看。",
+        "Check two boundaries: whitespace alone must not add a task, and the sample below must display as text rather than becoming an image. Use Tab to reach the input, button, filter and checkbox with visible focus. These checks catch data-handling or keyboard regressions accompanying a visual edit. Core tests do not automatically inspect CSS appearance, so examine both kinds of evidence.",
+        "境界も二つ確認します。空白だけでは追加されず、下のサンプル は画像ではなく文字として表示されます。Tab で入力、ボタン、絞り込み、チェックボックスへ移動し、フォーカスが見えることも確認します。表示変更に付随するデータやキーボード操作の退行を見つけるためです。基本テストは CSS 外観を自動確認しないので両方の証拠を見ます。",
+        "경계 사례 두 가지도 확인합니다. 공백만으로는 할 일을 추가할 수 없어야 하고 아래 샘플는 이미지가 아닌 텍스트로 보여야 합니다. Tab으로 입력창, 버튼, 필터, 체크박스를 이동하며 포커스가 보이는지 확인하세요. 작은 화면 수정에 데이터 처리나 키보드 동작 회귀가 섞이지 않았는지 검사하는 것입니다. 핵심 테스트는 CSS 외관을 자동 확인하지 않으므로 두 종류의 증거를 모두 봅니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "<img src=x>"
+    },
+    {
+      "type": "h2",
+      "text": [
+        "常見問題、停止與還原",
+        "Troubleshooting, stopping and restoring",
+        "問題対応、停止、復元",
+        "문제 해결, 중단과 복원"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "頁面變成資料夾清單，表示伺服器從太外層啟動；停止它，移入直接包含 index.html 的副本，再啟動。Port 被佔用時不要亂停其他服務，先找自己的預覽或換埠。改了檔案畫面沒變，先確認儲存、網址、資料夾與重新整理；換了埠會使用不同的瀏覽器儲存來源，待辦消失不一定是程式刪掉資料。",
+        "A directory listing means the server started too high in the folder tree: stop it, enter the copy directly containing index.html and restart. For a busy port, identify your preview or choose another port rather than stopping unrelated services. If edits do not appear, check saving, URL, folder and refresh. A different port uses a different browser storage origin, so missing todos do not necessarily mean the code deleted them.",
+        "一覧ページになったらサーバーの起動場所が上位すぎます。止めて index.html が直下にあるコピーへ移動し、再起動します。ポート使用中なら自分のサーバーを確認するか番号を変え、無関係なサービスを停止しません。変更が見えなければ保存、URL、場所、再読込を確認します。ポートが変わると保存元も変わるため、ToDo が消えて見えても削除とは限りません。",
+        "폴더 목록이 나오면 서버를 너무 상위 폴더에서 실행한 것입니다. 중단하고 index.html이 바로 있는 복사본으로 이동해 다시 시작하세요. 포트가 사용 중이면 자신의 미리보기인지 확인하거나 다른 포트를 쓰고 관련 없는 서비스를 중단하지 않습니다. 변경이 안 보이면 저장, URL, 폴더, 새로고침을 확인합니다. 포트가 바뀌면 브라우저 저장 출처도 달라져 할 일이 안 보여도 코드가 삭제했다고 단정할 수 없습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "停止預覽是在執行 Python 的終端機按 Ctrl+C。還原時只從保留的 expected 原版取回這次改過的 index.html 與 style.css，或手動恢復兩行；不要刪除瀏覽器全部資料。若要清除練習待辦，頁面 About this exercise 裡的 Reset practice data 只處理本例的儲存鍵。先保留需要的虛構記錄，再按重置。",
+        "Stop the preview with Ctrl+C in the Python terminal. Restore only index.html and style.css from the retained expected original, or undo the two edited lines. Do not clear all browser data. To remove practice todos, Reset practice data under About this exercise targets this exercise's storage key. Retain any fictional records you need before using it.",
+        "停止は Python の端末で Ctrl+C です。復元は保存した expected 原本から今回の index.html と style.css だけを戻すか、二行を手動で戻します。ブラウザー全データを消さないでください。練習の ToDo を消す場合は About this exercise 内の Reset practice data が専用キーだけを扱います。必要な架空記録を残してから操作します。",
+        "Python 터미널에서 Ctrl+C로 미리보기를 중단합니다. 복원은 보존한 expected 원본에서 이번에 바꾼 index.html과 style.css만 가져오거나 두 줄을 직접 되돌립니다. 브라우저 데이터를 전부 지우지 마세요. 실습 할 일을 없애려면 About this exercise의 Reset practice data가 전용 저장 키만 처리합니다. 필요한 가상 기록은 먼저 남기고 초기화합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "小練習與查證紀錄",
+        "Practice and verification notes",
+        "追加練習と検証記録",
+        "추가 연습과 검증 기록"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "自主練習只改主標題成自己的另一句英文，仍保留所有功能並重做正常與空值案例。你能交付修改前後差異、實際測試結果、兩種寬度的觀察及未執行專案，就完成這一篇。接著讀[需求描述](article:codex-prompting)、[專案規則](article:codex-agents-md)與[測試及審查](article:codex-testing-review)，把這次流程變成每次都能重複的工作習慣。",
+        "For independent practice, change only the heading to another English sentence, preserve all behavior and repeat normal and empty-input cases. Finish by delivering the actual diff, test results, observations at both widths and checks not run. Continue with [writing requests](article:codex-prompting), [project instructions](article:codex-agents-md) and [testing and review](article:codex-testing-review) to make the process repeatable.",
+        "追加練習は主見出しを別の英文に変えるだけにして、正常系と空入力を再確認します。実際の差分、テスト結果、二つの幅の観察、未実施項目を提出できれば完了です。[依頼の書き方](article:codex-prompting)、[プロジェクト規則](article:codex-agents-md)、[テストとレビュー](article:codex-testing-review)で繰り返せる習慣にします。",
+        "추가 연습으로 주 제목만 다른 영어 문장으로 바꾸고 모든 기능을 보존한 채 정상 입력과 빈 입력을 다시 확인합니다. 실제 차이, 테스트 결과, 두 화면 폭의 관찰, 미실행 항목을 제출하면 완료입니다. [요청 작성](article:codex-prompting), [프로젝트 규칙](article:codex-agents-md), [테스트와 검토](article:codex-testing-review)로 반복 가능한 작업 습관을 만듭니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "材料是本系列原創、可公開分享的虛構練習網站。參考版核心與瀏覽器行為已在 Windows／Edge 驗證；其他 OS 的啟動說明未冒充實機測試。Codex 入口依 2026-09-14 的[官方快速開始](https://learn.chatgpt.com/docs/quickstart)與 [CLI 檔案](https://learn.chatgpt.com/docs/codex/cli)查證。影象只表示練習成果，不是 Codex 的產品介面。",
+        "The materials are an original, shareable fictional website. Reference core and browser behavior were verified on Windows/Edge; other OS startup instructions are not claimed as hands-on tests. Codex entry points were checked on 2026-09-14 against the [official quickstart](https://learn.chatgpt.com/docs/quickstart) and [CLI documentation](https://learn.chatgpt.com/docs/codex/cli). Images illustrate exercise results, not Codex product UI.",
+        "教材はこのシリーズ独自の公開共有可能な架空サイトです。参考版の基本動作とブラウザー動作は Windows/Edge で検証し、他 OS の起動説明を実機試験と称していません。入口は 2026-09-14 の[公式クイックスタート](https://learn.chatgpt.com/docs/quickstart)と [CLI 文書](https://learn.chatgpt.com/docs/codex/cli)で確認しました。画像は練習成果で Codex UI ではありません。",
+        "자료는 이 시리즈가 직접 만든 공개 공유 가능한 가상 사이트입니다. 참고 버전의 핵심 및 브라우저 동작은 Windows/Edge에서 확인했으며 다른 OS의 시작 안내를 직접 테스트했다고 주장하지 않습니다. Codex 진입점은 2026-09-14의 [공식 빠른 시작](https://learn.chatgpt.com/docs/quickstart)과 [CLI 문서](https://learn.chatgpt.com/docs/codex/cli)로 확인했습니다. 이미지는 실습 결과이며 Codex 제품 화면이 아닙니다."
+      ]
+    },
+    {
+      "type": "p",
+      "purpose": "comparison",
+      "text": [
+        "| 驗收項目 | 修改前 | 修改後 |\n| --- | --- | --- |\n| 主標題 | Make room for one small task. | Small steps, clear progress. |\n| 背景色 | #f2f5ef | #fff8ed |\n| 核心測試 | 3 通過／0 失敗 | 3 通過／0 失敗 |\n| 既有待辦 | Read、Build | 仍保留 |",
+        "| Check | Before | After |\n| --- | --- | --- |\n| Main heading | Make room for one small task. | Small steps, clear progress. |\n| Background | #f2f5ef | #fff8ed |\n| Core tests | 3 pass / 0 fail | 3 pass / 0 fail |\n| Existing todos | Read, Build | Preserved |",
+        "| 確認 | 変更前 | 変更後 |\n| --- | --- | --- |\n| 主見出し | Make room for one small task. | Small steps, clear progress. |\n| 背景 | #f2f5ef | #fff8ed |\n| 基本テスト | 3 成功 / 0 失敗 | 3 成功 / 0 失敗 |\n| 既存 ToDo | Read、Build | 保持 |",
+        "| 검사 | 수정 전 | 수정 후 |\n| --- | --- | --- |\n| 주 제목 | Make room for one small task. | Small steps, clear progress. |\n| 배경색 | #f2f5ef | #fff8ed |\n| 핵심 테스트 | 3 통과 / 0 실패 | 3 통과 / 0 실패 |\n| 기존 할 일 | Read, Build | 보존 |"
+      ]
+    }
+  ]
+}

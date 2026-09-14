@@ -1,0 +1,61 @@
+{
+  "id": 20,
+  "sources": [
+    "prompting",
+    "code-review"
+  ],
+  "text": {
+    "zh-TW": [
+      "好的除錯从可重現的症狀開始，再用證據縮小原因，最後驗證修正。『網站壞了』不夠具體；提供哪個輸入、在哪個步驟、期待什麼、實際出現什麼，能讓 Codex 更快找到相關程式。",
+      "用練習卡片製造一個可恢復的問題，例如窄畫面超寬。保留修改前版本，記錄瀏覽器寬度、操作與截圖，不在正式資料上做破壞性重現。",
+      [
+        "寫最小重現：開啟 index.html、設定 390px、觀察橫向捲動。列期待結果與實際結果，並附相關檔案路徑。",
+        "請 Codex 先重現與提出假設，讓它指出是哪段 CSS 造成固定寬度。只改一個因素，再重跑相同步驟，避免一次重構整頁。",
+        "修正後驗證原本失敗案例，也检查寬螢幕與長文字。若測試環境不能重現，要記錄差異，不能直接宣稱問題已解決。",
+        "將真正的原因、修改、測試與剩餘限制整理成結果。對可重複驗證的邏輯問題補回歸測試，視覺問題保留對應尺寸的畫面證據。"
+      ],
+      "原重現步驟不再失敗，相鄰正常情境仍通過，且有原因與證據可以對照。",
+      "沒有重現就先猜原因容易改錯。測試全綠但原操作還壞，代表檢查沒有涵蓋症狀；回到原步驟而不是繼續增加無關測試。",
+      "重現步驟：以 390px 開啟介紹卡，頁面出現橫向捲動。期待：卡片完整可讀。先找原因與最小修改，再驗證 390px、1280px 和長文字，不改其他功能。"
+    ],
+    "en": [
+      "Debugging starts with a reproducible symptom, narrows causes with evidence and verifies the fix. Give the input, exact step, expected behavior and observed failure instead of only saying the site is broken.",
+      "Use a reversible issue in the practice card, such as a narrow-screen overflow. Preserve a baseline and record viewport, actions and screenshots. Do not reproduce destructively against production data.",
+      [
+        "Write the minimal reproduction: open index.html at 390px and observe horizontal scrolling. Include expected versus actual behavior and relevant paths.",
+        "Ask Codex to reproduce and identify a hypothesis, such as fixed-width CSS. Change one factor and rerun the same steps instead of refactoring the entire page.",
+        "Verify the original failure, wide layout and long text after the fix. If the environment cannot reproduce it, document the mismatch instead of claiming resolution.",
+        "Report root cause, changes, checks and remaining limits. Add a regression test for repeatable logic and retain viewport-specific evidence for visual behavior."
+      ],
+      "The original reproduction passes, nearby normal cases still work and evidence supports the stated cause.",
+      "Passing tests do not resolve a failure they never exercise. If the original operation still breaks, return to its reproduction instead of adding unrelated tests.",
+      "At 390px the profile card causes horizontal scrolling. It should fit and remain readable. Find the cause, make the smallest fix and check 390px, 1280px and long text without changing other features."
+    ],
+    "ja": [
+      "不具合修正は再現する症状から始め、根拠で原因を絞って検証します。入力、操作、期待、実際を伝えます。",
+      "カードの横はみ出しなど戻せる問題を使い、基準、幅、操作、画像を保存します。",
+      [
+        "390px で index.html を開く最小手順と期待・実際を記録します。",
+        "先に再現と仮説を依頼し、固定幅 CSS など一要因だけを変えて同じ手順を試します。",
+        "狭い画面、広い画面、長文を確認します。再現できない環境は違いを記録し、解決済みとはしません。",
+        "原因、変更、検証、制限を報告します。ロジックには回帰テスト、表示には画面の証拠を残します。"
+      ],
+      "元の失敗と周辺ケースが通り、原因を証拠で説明できれば完了です。",
+      "テストが症状を確認していない場合、全成功でも解決とは限りません。元の手順へ戻ります。",
+      "390px で紹介カードが横にはみ出します。原因と最小修正を示し、390px、1280px、長文を検証してください。他の機能は変更しません。"
+    ],
+    "ko": [
+      "디버깅은 재현 가능한 증상에서 시작해 근거로 원인을 좁히고 수정 결과를 검증합니다. 입력, 단계, 기대와 실제 결과를 전달하세요.",
+      "카드 가로 넘침처럼 되돌릴 수 있는 문제를 쓰고 기준 상태, 화면 너비, 동작과 이미지를 저장합니다.",
+      [
+        "390px에서 index.html을 여는 최소 단계와 기대·실제를 기록합니다.",
+        "먼저 재현과 가설을 요청하고 고정 폭 CSS 같은 요인 하나만 바꿔 같은 단계를 시험합니다.",
+        "좁은 화면, 넓은 화면과 긴 문구를 확인합니다. 재현할 수 없는 환경은 차이를 기록하고 해결로 표시하지 않습니다.",
+        "원인, 변경, 검증과 제한을 보고합니다. 로직에는 회귀 테스트, 화면에는 시각 증거를 남깁니다."
+      ],
+      "원래 실패와 인접 사례가 통과하고 원인을 증거로 설명할 수 있으면 완료입니다.",
+      "테스트가 증상을 다루지 않으면 모두 통과해도 해결된 것이 아닙니다. 원래 단계로 돌아가세요.",
+      "390px에서 소개 카드가 가로로 넘칩니다. 원인과 최소 수정을 찾고 390px, 1280px, 긴 문구를 검증하세요. 다른 기능은 변경하지 마세요."
+    ]
+  }
+}

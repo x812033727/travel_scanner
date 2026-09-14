@@ -1,0 +1,238 @@
+{
+  "id": 40,
+  "readingMinutes": 12,
+  "operationMinutes": 25,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標：知道手機連到哪個工作環境",
+        "Goal: identify the environment your phone controls",
+        "目標：スマートフォンの接続先を特定する",
+        "목표: 휴대전화가 연결된 작업 환경 확인하기"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "從 Mac 或 Windows 主機開始設定 Remote，讓自己的 iPhone 或 Android 連入，再用主機、目錄、標記三項資料驗證。閱讀約 12 分鐘，首次操作約 25 分鐘，更新與帳號驗證另計。產品入口依 2026-09-14 官方文件查證；沒有實體手機配對、主機睡眠或遠端連線實測紀錄。",
+        "Set up Remote from a Mac or Windows host, connect your iPhone or Android, and verify host, directory and file marker. Allow 12 minutes to read and 25 minutes for first setup, plus updates and account verification. Product routes were checked against official documentation on 2026-09-14. No physical phone pairing, host-sleep or remote-connection test is claimed.",
+        "Mac / Windows ホストで Remote を設定し、自分の iPhone / Android を接続して、ホスト、場所、印を検証します。読む時間約12分、初回操作約25分で、更新と認証は別です。2026-09-14の公式資料で入口を確認しました。実機の電話のペアリング、スリープ、遠隔接続を検証した記録ではありません。",
+        "Mac/Windows 호스트에서 Remote를 설정하고 자신의 iPhone/Android를 연결한 뒤 호스트, 폴더, 파일 표식을 검증합니다. 읽기 약 12분, 최초 실습 약 25분이며 업데이트와 인증은 별도입니다. 제품 경로는 2026-09-14 공식 문서로 확인했으며 실물 휴대전화 페어링, 호스트 절전, 원격 연결 실측 기록은 아닙니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Remote 讓手機傳送需求、核准與追問；實際檔案、工具與登入服務來自主機。它不會把手機變成可執行桌面工具的電腦，也不代表專案已上傳到 Codex 雲端。先看[手機總覽](article:codex-mobile-guide)；iOS 和 Android 是替代入口，不必先擁有兩種手機。本篇主線只連一臺已使用中的電腦，不需要新租伺服器。",
+        "Remote lets a phone send prompts, approvals and follow-ups while the host supplies files, tools and signed-in services. It does not turn the phone into a desktop-tool runtime or establish a Codex cloud upload. Review the [mobile overview](article:codex-mobile-guide). iOS and Android are alternatives; you do not need both. This route connects one existing computer without renting a server.",
+        "Remote では電話から依頼、承認、追問を送り、ファイル、ツール、ログイン済みサービスはホストが提供します。電話でデスクトップツールが動くわけでも、Codex クラウドへアップロード済みになるわけでもありません。[モバイル概要](article:codex-mobile-guide)を確認します。iOS と Android は選択肢で、両方は不要です。既存の一台を使いサーバーは借りません。",
+        "Remote는 휴대전화에서 요청, 승인, 후속 질문을 보내고 호스트가 파일, 도구, 로그인 서비스를 제공합니다. 전화가 데스크톱 도구 실행 환경이 되거나 Codex 클라우드 업로드가 완료된다는 뜻은 아닙니다. [모바일 개요](article:codex-mobile-guide)를 확인하세요. iOS와 Android는 대안이며 둘 다 필요하지 않습니다. 기존 컴퓨터 한 대를 쓰고 서버를 빌리지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "本篇流程圖的 1 代表確認主機與工作目錄，2 代表送出一次新的唯讀要求，3 代表用檔案內容核對結果。三個步驟依序完成；看到主機出現在清單，只完成第 1 步的一部分，還不能證明第 2、3 步成功。",
+        "In the workflow illustration, 1 identifies the host and directory, 2 sends a fresh read-only request, and 3 checks the result against file contents. Follow that order. A host appearing in a list satisfies only part of step 1, not steps 2 and 3.",
+        "手順図の 1 はホストと場所の確認、2 は新しい読み取り依頼、3 はファイル内容との照合です。順に実施します。一覧にホストがあるだけでは 1 の一部しか確認できず、2 と 3 の成功にはなりません。",
+        "흐름도 1은 호스트/경로 확인, 2는 새 읽기 요청, 3은 파일 내용과 결과 비교입니다. 순서대로 수행합니다. 목록에 호스트가 보이는 것은 1의 일부일 뿐 2와 3의 성공을 뜻하지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "開始之前：兩端條件與工作位置",
+        "Before setup: both devices and the work location",
+        "開始前：両端末と作業場所",
+        "시작 전: 양쪽 기기와 작업 위치"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "電腦需有目前支援的 ChatGPT 桌面版、登入可使用 Codex 的同一帳號與工作區，並開著應用程式、連線且未睡眠。手機更新官方 ChatGPT 應用程式。若組織要求 SSO、多因素驗證或通行金鑰，先完成該流程；管理員也可能須啟用 Remote Control。功能依分階段提供，沒有 Remote 選項時先查版本、工作區與資格。",
+        "Use a supported ChatGPT desktop host with Codex access in the same account/workspace, awake, online and running the app. Update the official ChatGPT mobile app. Complete required SSO, MFA or passkey steps; an administrator may also need to enable Remote Control. Availability rolls out in stages. Missing Remote controls call for version, workspace and access checks first.",
+        "対応するデスクトップ版で Codex を使える同じアカウントとワークスペースに入り、オンラインかつ起動・非スリープにします。公式モバイルアプリを更新し、SSO、MFA、パスキーなどを済ませます。管理者による有効化が必要な場合もあります。段階提供のため Remote がなければ版、ワークスペース、利用資格を確認します。",
+        "Codex를 쓸 수 있는 같은 계정/워크스페이스의 지원 데스크톱 호스트가 깨어 있고 온라인이며 앱이 실행 중이어야 합니다. 공식 모바일 앱을 업데이트하고 필요한 SSO, MFA, 패스키 인증을 마칩니다. 관리자가 Remote Control을 켜야 할 수도 있습니다. 단계적 제공이므로 Remote가 없으면 버전, 워크스페이스, 이용 자격부터 확인합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "官方列出的手機 Remote 主機是 macOS 與 Windows；不能因 Linux 桌面預覽版存在，就推定它也支援同一配對流程。首次手機配對從桌面應用程式開始，CLI 或 IDE 的登入不能代替。主機上的 Git、Node.js、瀏覽器、Skills 和 MCP 可用性也不會由手機補齊；後續任務需要哪個工具，就在真正執行的主機檢查。",
+        "The documented mobile Remote hosts are macOS and Windows; a Linux desktop preview does not establish support for this pairing route. Initial setup starts from the desktop app, not CLI or IDE sign-in. The phone does not supply missing Git, Node.js, browsers, Skills or MCP configuration. Check required tools on the machine that will actually execute the task.",
+        "公式の電話 Remote ホストは macOS と Windows です。Linux プレビューがあるだけで同じペアリング対応とは判断しません。初回はデスクトップアプリから始め、CLI や IDE の認証では代用できません。Git、Node.js、ブラウザー、Skills、MCP は電話が補うものではなく、実行ホストで確認します。",
+        "공식 모바일 Remote 호스트는 macOS와 Windows입니다. Linux 미리 보기가 있다는 이유만으로 같은 페어링 지원을 추정하지 않습니다. 최초 설정은 데스크톱 앱에서 시작하며 CLI나 IDE 로그인으로 대신할 수 없습니다. Git, Node.js, 브라우저, Skills, MCP도 휴대전화가 보충하지 않으므로 실행 호스트에서 확인합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟一：在主機準備可辨認的專案",
+        "Step 1: prepare an identifiable host project",
+        "手順1：識別できるホスト側プロジェクトを用意する",
+        "1단계: 식별 가능한 호스트 프로젝트 준비하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在主機建立新資料夾 codex-remote-lab，用純文字編輯器存兩個檔案。host-marker.txt 使用下面第一個區塊，request.txt 使用第二個。REMOTE-LAB-A 是本篇虛構練習標記，不是主機的真實名稱；你仍要另記錄桌面版顯示的裝置名稱與實際專案路徑。若資料夾已存在，就換新名稱，不覆寫舊資料。",
+        "Create a new codex-remote-lab folder on the host and save two plain-text files. Put the first block in host-marker.txt and the second in request.txt. REMOTE-LAB-A is a fictional exercise marker, not the actual host name. Separately record the device name shown in the app and the real project path. Use a new folder name if it exists.",
+        "ホストに新しい codex-remote-lab を作り、最初のブロックを host-marker.txt、次を request.txt として保存します。REMOTE-LAB-A は架空の課題用の印で、実際のホスト名ではありません。アプリの装置名と実際のパスを別に記録します。既存なら新しい名前で旧データを保ちます。",
+        "호스트에 새 codex-remote-lab 폴더를 만들고 첫 블록은 host-marker.txt, 둘째는 request.txt로 저장합니다. REMOTE-LAB-A는 가상 실습 표식이며 실제 호스트 이름이 아닙니다. 앱에 표시된 장치명과 실제 경로는 별도로 기록하세요. 폴더가 있으면 새 이름으로 기존 데이터를 보존합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "REMOTE-LAB-A\nRevision: 1\n"
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Read the host marker and report it. Keep both files unchanged.\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "在桌面版將這個資料夾加入專案，建立唯讀練習任務，要求列出路徑與兩個檔案，確認電腦端本來就能存取。Windows 可在練習資料夾用 Get-Location、Get-Content 核對；macOS 用 pwd、cat。先有本機成功基準，再做遠端；否則手機看到的失敗可能原本就是檔案不存在，而不是連線問題。",
+        "Add that folder as a desktop project and create a read-only practice task that reports its path and two files. Confirm host-side access first. Use Get-Location/Get-Content in the Windows practice folder or pwd/cat on macOS. Establish this local baseline before Remote, so missing files are not mistaken for connection failures.",
+        "フォルダーをデスクトップのプロジェクトに追加し、場所と二つのファイルを報告する読み取り専用課題を作ります。Windows の Get-Location / Get-Content、macOS の pwd / cat でも確認します。先にローカルの成功基準を作り、元から存在しないファイルを接続障害と取り違えないようにします。",
+        "폴더를 데스크톱 프로젝트에 추가하고 경로와 두 파일을 보고하는 읽기 전용 작업으로 호스트 접근을 확인합니다. Windows는 Get-Location/Get-Content, macOS는 pwd/cat으로도 확인합니다. 로컬 성공 기준을 먼저 확보해 원래 없는 파일을 원격 연결 실패로 오해하지 않도록 합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟二：在主機啟用並配對手機",
+        "Step 2: enable access and pair the phone",
+        "手順2：ホストで有効化して電話をペアリングする",
+        "2단계: 호스트에서 접근을 켜고 휴대전화 페어링하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在要接收工作的那臺電腦開 Settings → Connections → Control this Mac or PC，選 Set up 或 Add，依畫面啟用遠端與完成驗證。不要在另一臺同帳號的空白電腦設定後，期待自動找到這臺主機的資料夾。畫面提供的 QR code 用於配對裝置與主機，不應放進公開教學或傳給別人掃描。",
+        "On the intended host, open Settings → Connections → Control this Mac or PC, choose Set up or Add and complete access/verification prompts. Setting up a different empty computer on the same account will not automatically provide this host's folder. The QR code pairs a device with the host; keep it out of public teaching material and do not send it to others to scan.",
+        "作業を受けるホストで Settings → Connections → Control this Mac or PC の Set up / Add を選び、アクセスと認証を完了します。同じアカウントの別の空の PC を設定しても、このホストのフォルダーが自動的に使えるわけではありません。QR は装置とホストのペアリング用なので公開せず、他人に送らないでください。",
+        "작업을 받을 호스트에서 Settings → Connections → Control this Mac or PC의 Set up/Add를 선택하고 접근과 인증 절차를 마칩니다. 같은 계정의 다른 빈 컴퓨터를 설정해도 이 호스트 폴더가 자동 제공되지는 않습니다. QR은 장치와 호스트 페어링용이므로 공개 자료에 넣거나 타인에게 보내지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "用自己的 iPhone 或 Android 掃碼，確認開啟官方 ChatGPT，進入 Remote 設定。核對相同帳號與工作區並完成驗證；成功後應在手機 Remote 清單看到這臺主機。每臺手機與每臺主機需各自配對，只有「兩邊都登入同帳號」還不是配對證據。若連結只停在瀏覽器，先更新並確認應用程式入口。",
+        "Scan with your iPhone or Android, confirm the official ChatGPT app opens, and complete Remote setup with the same account/workspace. Success should show the host in the phone's Remote list. Each phone-host pair needs pairing; signing in on both is not sufficient evidence. If the link stays in a browser, check the updated app and opening route first.",
+        "自分の iPhone / Android で読み、公式 ChatGPT の Remote 設定を開いて同じアカウントとワークスペースを確認します。成功すると電話の一覧にホストが出ます。電話とホストの組ごとにペアリングが必要で、両方のログインだけでは証拠になりません。ブラウザーで止まるなら更新とアプリへの入口を確認します。",
+        "자신의 iPhone/Android로 스캔해 공식 ChatGPT의 Remote 설정을 열고 같은 계정과 워크스페이스를 확인합니다. 성공하면 전화의 Remote 목록에 호스트가 보여야 합니다. 전화-호스트 쌍마다 페어링이 필요하며 양쪽 로그인만으로는 증거가 아닙니다. 링크가 브라우저에 머물면 앱 업데이트와 열기 경로를 확인합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "回主機 Connections 檢查允許連接與保持喚醒的設定。Mac 筆電先接電、上蓋開啟；選擇 Sleep 仍會停止遠端可用性。Windows 若任務要用 Computer Use，需保持使用者工作階段解鎖且可供操作；本篇只讀檔，不需要為此開啟所有瀏覽器或桌面控制能力。其他人在用主機時，先安排好工作時段。",
+        "Review connection and keep-awake settings on the host. For a Mac laptop, connect power and keep the lid open; selecting Sleep still stops availability. Windows Computer Use tasks need an unlocked, available session. This file-reading exercise does not require enabling every browser or desktop-control capability. Arrange a suitable work period if someone else uses the host.",
+        "ホストで接続と起動維持設定を確認します。Mac ノートは接電して蓋を開き、Sleep を選ぶと接続は止まります。Windows の Computer Use はロック解除済みで操作できる状態が必要です。本課題の読み取りにすべてのブラウザーやデスクトップ制御を有効にする必要はありません。ほかの利用者がいれば時間を調整します。",
+        "호스트에서 연결 허용과 깨어 있기 설정을 확인합니다. Mac 노트북은 전원을 연결하고 덮개를 열며 Sleep을 선택하면 연결 가용성이 멈춥니다. Windows Computer Use 작업은 잠금 해제되고 사용 가능한 세션이 필요합니다. 이 읽기 실습에 모든 브라우저나 데스크톱 제어를 켤 필요는 없습니다. 다른 사용자가 있으면 시간을 조정하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟三：用三項證據核對遠端結果",
+        "Step 3: verify three pieces of evidence",
+        "手順3：三つの証拠で確認する",
+        "3단계: 세 가지 증거로 확인하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在手機 Remote 選這臺主機、codex-remote-lab 專案與剛才的任務，送出下列內容。不要在手機開一個沒有主機關聯的一般聊天後，就假定它能讀到電腦。若建立新任務，要再次確認執行位置；任務名稱相同不代表環境相同。",
+        "In phone Remote, select this host, the codex-remote-lab project and the existing task, then send the prompt below. An ordinary phone chat without a host association does not establish file access. Recheck the execution location if creating a new task. Matching task names do not establish matching environments.",
+        "電話の Remote で対象ホスト、codex-remote-lab、元の課題を選んで次を送ります。ホストと関連付けのない一般チャットではファイルアクセスは確認できません。新規なら実行場所を再確認し、同名タスクだけで同じ環境と判断しません。",
+        "휴대전화 Remote에서 해당 호스트, codex-remote-lab, 기존 작업을 골라 아래를 보냅니다. 호스트 연결이 없는 일반 채팅은 파일 접근을 보장하지 않습니다. 새 작업을 만들면 실행 위치를 다시 확인하고 같은 작업명으로 같은 환경이라고 판단하지 마세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "In this host project, read host-marker.txt and request.txt without changing files. Report the host/environment name if available, the actual working directory, and both files' exact contents. Do not infer unavailable information or use other services. If either file is missing, stop and report that.\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "合格結果包含實際目錄、REMOTE-LAB-A 與 Revision: 1、request.txt 原文；主機名稱若工具沒有提供，應明說無法取得，不能把標記當真實裝置名稱。回電腦獨立開兩個檔案比對，確認工具記錄確實讀取這個專案，檔案未被改動。三個確認點是主機選擇、工作路徑和檔案內容，少一項就保留未確認狀態。",
+        "Expect the real directory, REMOTE-LAB-A with Revision: 1 and the original request.txt text. If host identity is unavailable, the response should say so rather than treat the marker as the actual device name. Independently compare both files on the computer and inspect the read record. Host selection, working path and file contents are separate checks; keep any missing check unresolved.",
+        "実際の場所、REMOTE-LAB-A と Revision: 1、request.txt の原文を確認します。ホスト名を得られなければ不明と示し、印を実名と扱わないことが必要です。PC 側で二つを独立して読み、ツール記録と不変を照合します。ホスト選択、パス、内容は別々の確認で、欠ける項目は未確認とします。",
+        "실제 경로, REMOTE-LAB-A와 Revision: 1, request.txt 원문이 나와야 합니다. 호스트명을 얻지 못하면 표식을 실제 장치명으로 삼지 말고 확인 불가라고 해야 합니다. 컴퓨터에서 두 파일을 독립적으로 열고 읽기 기록과 변경 없음을 확인합니다. 호스트 선택, 경로, 내용은 별도 검증이며 빠진 항목은 미확인으로 남깁니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "再做一次新鮮度測試：等任務完成後，在電腦用編輯器只把標記檔第二行改為 Revision: 2 並存檔，從手機要求重新讀取，不要只摘要上次回覆。預期看到 Revision: 2；若仍回覆 1，先查是否讀了舊訊息、未存檔或另一份資料夾。完成後在主機改回 1，重新讀取確認，讓練習可以重做。",
+        "Test freshness after the task finishes: edit only the marker's second line on the host to Revision: 2 and save. From the phone, request a fresh file read rather than a summary. Expect Revision: 2. An old 1 calls for checks of stale replies, unsaved edits or a different folder. Restore 1 on the host and reread so the exercise is repeatable.",
+        "課題完了後に鮮度も試します。ホストのエディターで二行目だけ Revision: 2 にして保存し、電話から要約ではなく再読み取りを要求します。2 が必要で、1 のままなら古い返答、未保存、別フォルダーを確認します。最後にホストで 1 に戻して再読み取りし、再練習可能にします。",
+        "작업이 끝나면 최신성도 시험합니다. 호스트 편집기에서 둘째 줄만 Revision: 2로 바꾸고 저장한 뒤 전화에서 요약이 아닌 새 파일 읽기를 요청합니다. 2가 예상되며 1이면 오래된 응답, 저장 안 됨, 다른 폴더를 점검합니다. 마지막에 호스트에서 1로 복원하고 다시 읽어 반복 가능하게 만듭니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "連線中斷與停止遠端存取",
+        "Disconnection and stopping remote access",
+        "切断と遠隔アクセスの停止",
+        "연결 끊김과 원격 접근 중지"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "完成目前工作再做連線測試：在主機的 Connections 暫時關閉允許其他裝置連接的開關，回手機檢查能否再存取主機，再由主機重新啟用並核對連線。這個開關可能影響所有已配對裝置，先確認沒有其他人在進行遠端工作。暫時停用連線不應當成已刪除配對或已取消正在執行的任務；這些狀態要分別查看。",
+        "After current work completes, temporarily disable the host's allow-connections control, check access from the phone, then re-enable it on the host and verify reconnection. This can affect all paired devices, so first confirm no other remote work is in progress. Treat connection availability, pairing removal and task cancellation as separate states rather than assuming one control performs all three.",
+        "作業完了後にホストの接続許可を一時無効にして電話からアクセスを確認し、ホストで再有効化して戻るか見ます。全ペアリング端末に影響する場合があるため他の遠隔作業がないことを確認します。接続可否、ペアリング削除、実行中タスクの取消は別の状態として確認します。",
+        "현재 작업이 끝난 뒤 호스트 연결 허용을 잠시 끄고 전화 접근을 확인한 다음 호스트에서 다시 켜 재연결을 확인합니다. 모든 페어링 장치에 영향을 줄 수 있어 다른 원격 작업이 없는지 먼저 확인합니다. 연결 가용성, 페어링 삭제, 작업 취소는 서로 다른 상태로 점검하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "官方文件明確說明：登出會關閉 Remote Control，但不移除既有配對；重新登入後可能需要再啟用。因此不要把登出當作永久撤銷裝置。要管理個別配對，回主機 Settings → Connections 檢查當版裝置清單及可用管理動作，操作後從原裝置驗證已失去控制能力。文件未固定列出所有版本的移除按鈕名稱，本篇不虛構一個通用選單。",
+        "Official documentation states that sign-out turns off Remote Control but retains pairings; re-enabling may be needed after sign-in. Do not treat logout as permanent device revocation. For an individual pairing, inspect the host's current Connections device list and available management actions, then verify loss of control from the original device. The documentation does not establish one removal-button label across all versions.",
+        "公式ではログアウトで Remote Control は無効になりますが、ペアリングは残り、再ログイン後に再有効化が必要な場合があります。永久取消と扱わないでください。個別管理はホストの Connections の装置一覧とその版の操作を確認し、元の装置から制御できなくなったか検証します。全版共通の削除ボタン名は資料で確立されていません。",
+        "공식 문서는 로그아웃이 Remote Control을 끄지만 페어링은 남고 재로그인 후 다시 켜야 할 수 있다고 설명합니다. 영구 장치 해제로 간주하지 마세요. 개별 페어링은 호스트 Connections의 현재 장치 목록과 관리 동작을 확인하고 원래 장치에서 제어가 사라졌는지 검증합니다. 모든 버전의 공통 삭제 버튼명은 문서에서 확정하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 現象 | 先確認 | 成功證據 |\n| --- | --- | --- |\n| 手機沒有 Remote | App 更新、帳號工作區與提供範圍 | 入口實際出現 |\n| 有入口卻沒有主機 | 配對、主機 App、連線許可 | 清單出現正確主機 |\n| 主機可見但讀錯檔 | 任務位置、檔案版本與工具記錄 | 路徑及 Revision: 2 對上 |\n| 中途離線 | 睡眠、網路、App 是否關閉 | 恢復後能重新讀取目前檔案 |",
+        "| Symptom | Check first | Evidence |\n| --- | --- | --- |\n| No Remote entry | App, account/workspace, rollout | Entry actually appears |\n| Entry but no host | Pairing, host app, connection permission | Correct host appears |\n| Wrong file | Task location, revision, read record | Path and Revision: 2 match |\n| Connection lost | Sleep, network, closed app | Fresh read works after recovery |",
+        "| 症状 | 最初の確認 | 証拠 |\n| --- | --- | --- |\n| Remote がない | 更新、アカウント、提供範囲 | 入口が表示される |\n| ホストがない | ペアリング、アプリ、接続許可 | 正しいホストが出る |\n| 違うファイル | 場所、版、読み取り記録 | パスと Revision: 2 が一致 |\n| 途中で切断 | スリープ、通信、アプリ終了 | 復帰後に現在のファイルを読める |",
+        "| 증상 | 먼저 확인 | 증거 |\n| --- | --- | --- |\n| Remote 없음 | 업데이트, 계정, 제공 범위 | 실제 입구 표시 |\n| 호스트 없음 | 페어링, 앱, 연결 허용 | 올바른 호스트 표시 |\n| 다른 파일 | 작업 위치, 버전, 읽기 기록 | 경로와 Revision: 2 일치 |\n| 연결 끊김 | 절전, 네트워크, 앱 종료 | 복구 후 현재 파일 새로 읽기 |"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "完成條件與延伸閱讀",
+        "Completion and further reading",
+        "完了条件と関連レッスン",
+        "완료 조건과 관련 강의"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "成功不是看到一次通知，而是能指出正確主機、重讀正確路徑的檔案、辨識更新後標記，並知道如何停止遠端存取。只收到摘要或通知時仍回任務查看工具與結果。後續看[iPhone](article:codex-mobile-ios)、[Android](article:codex-mobile-android)操作分篇，以及[跨裝置交接](article:codex-cross-device-workflow)。若需要電腦關閉後仍由獨立環境工作，再理解[雲端任務](article:codex-cloud-tasks-github)的另一套環境與成果流程。",
+        "Success means identifying the host, freshly reading the correct path, recognizing the updated marker and knowing how to stop remote access, not merely receiving a notification. Review tool activity and results in the task. Continue with [iPhone](article:codex-mobile-ios), [Android](article:codex-mobile-android) and [cross-device handoff](article:codex-cross-device-workflow). For independent execution while your computer is off, learn the separate [cloud-task](article:codex-cloud-tasks-github) environment and delivery workflow.",
+        "通知一回ではなく、ホスト特定、正しいパスの再読み取り、更新した印、接続停止を確認できれば完了です。タスクでツールと結果を見ます。次は [iPhone](article:codex-mobile-ios)、[Android](article:codex-mobile-android)、[装置間の引き継ぎ](article:codex-cross-device-workflow)です。PC 終了後も別環境で動かすなら[クラウド課題](article:codex-cloud-tasks-github)の環境と成果の流れを学びます。",
+        "알림 한 번이 아닌 호스트 식별, 올바른 경로 새로 읽기, 갱신된 표식, 원격 접근 중지 방법까지 확인해야 완료입니다. 작업에서 도구와 결과를 확인하세요. 다음은 [iPhone](article:codex-mobile-ios), [Android](article:codex-mobile-android), [기기 간 인계](article:codex-cross-device-workflow)입니다. 컴퓨터가 꺼져도 별도 환경에서 실행하려면 [클라우드 작업](article:codex-cloud-tasks-github)의 환경과 결과 흐름을 배웁니다."
+      ]
+    }
+  ]
+}

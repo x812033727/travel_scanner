@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-09-14T06:06:29.292495+00:00",
+  "environment": "Windows / Python 3.14.6 / local reference files",
+  "method": "Exact authored examples; no real user config, Codex model request, or effective-client-setting claim",
+  "checks": [
+    "Lesson 43: four exact documents, forward/return paths and a missing-file boundary",
+    "Lesson 43: copied reference tests pass, all five source files remain byte-identical",
+    "Lesson 44: good.toml passes",
+    "Lesson 44: broken-quote.toml fails as expected",
+    "Lesson 44: broken-duplicate.toml fails as expected",
+    "Lesson 44: broken-scope.toml fails as expected",
+    "Lesson 44: broken-value.toml fails as expected",
+    "Lesson 44: repaired-quote.toml passes after its targeted correction",
+    "Lesson 44: repaired-duplicate.toml passes after its targeted correction",
+    "Lesson 44: repaired-scope.toml passes after its targeted correction",
+    "Lesson 44: repaired-value.toml passes after its targeted correction",
+    "Lesson 16: exact authored setting passes the narrow offline checker"
+  ],
+  "sourceHashes": {
+    "app.js": "001e6fc55774b50732e6878bb336d1d4346e4d4f49739f659d570cfab5e1cf3c",
+    "core.mjs": "15bc1b245cb17815b58799dc4e7b32f666300046007690ef56c2e20e7e989753",
+    "core.test.mjs": "111187cc469b5d2bf551126d72b8584589f97ac7bab6816f899502c6b498ebc1",
+    "index.html": "5740079d2988294ef077375172d2b34845f5798d465c03dcea9f18d2c4e64a07",
+    "style.css": "8fa375135810ed68890ee1bae3a331cf78690dafcd8ef8d8e711df80e115327c"
+  }
+}

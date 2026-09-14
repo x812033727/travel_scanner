@@ -1,0 +1,1272 @@
+{
+  "slug": "codex-markdown-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 109,
+  "locales": {
+    "zh-TW": {
+      "title": "Markdown 與 MD 檔入門",
+      "description": "Markdown 是用純文字標記標題、清單、連結與程式碼的格式，常見副檔名是 .md。README.md 通常用來說明專案，AGENTS.md 提供代理工作規則，SKILL.md 描述可重用技能；不是所有 MD 檔都會被 Codex 自動當作指令。",
+      "hero": {
+        "src": "/guides/codex-markdown-basics/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與開始之前"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "建立 README.md 與 notes.md，使用標題、清單、連結、引用及程式碼區塊，把兩篇文件互相連起來，再請 Codex 依檔案回答。閱讀約 10 分鐘，操作約 20 分鐘。Windows、macOS、Linux 都可用純文字編輯器；本文用 VS Code 展示相同操作，不需要先安裝網站套件或把文件發布上網。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Markdown 是純文字的排版語法，.md 是常見副檔名。檔案本身可以用一般編輯器讀寫，預覽工具才把井字、星號和括號呈現成標題、清單與連結。把一個 Word 文件改名成 .md 不會轉換格式；同樣地，寫進程式碼區塊的命令也不會因為開啟預覽就執行。先認識文字與顯示的差別，才知道該修改哪裡。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟一：建立真正的純文字檔"
+        },
+        {
+          "type": "paragraph",
+          "text": "在新的 codex-md-lab 資料夾開啟 VS Code，從檔案總管新增 README.md 與 notes.md。Windows、macOS、Linux 都使用相同檔名與大小寫，不要存成 README.md.txt。使用其他編輯器也可以，但要選純文字與 UTF-8；如果編輯器自動加 .txt，存檔後回檔案清單核對完整名稱。這次只用新資料夾，不覆寫正式專案既有 README。"
+        },
+        {
+          "type": "paragraph",
+          "text": "將下面整段複製到 README.md，再儲存。外面顯示的程式碼框只是本網站讓你複製的容器，不必另外把它的外框加進文件；內容裡那三個反引號則是練習檔的一部分，必須保留。共同範例固定用英文檔名與文字，讓五語讀者可以對照同一份成果。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Small Steps notebook\n\n## Purpose\n\nKeep a short record of this practice project.\n\n## Working steps\n\n1. Read the request.\n2. Make one focused change.\n3. Verify the result.\n\n- Keep original files.\n- Record checks that have not run.\n\n[Open task notes](./notes.md)\n\n## Example command\n\n```sh\nnode --version\n```\n\n> This command is an example, not a record of execution.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著在 notes.md 放入下一段並儲存。兩份文件放同一層，README 的 ./notes.md 表示從 README 所在資料夾找到 notes.md；notes 的 ./README.md 則回到原文件。這就是小型目錄與分篇互相連結的起點，不需要資料庫，也不需要先做網頁路由。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Task notes\n\n[Back to the notebook](./README.md)\n\n## Accepted result\n\n- **Completed** shows only finished tasks.\n- `Read` is the sample task title.\n- Empty titles must be rejected.\n\n## Pending checks\n\nThe browser check has not run yet.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟二：看懂六種常用語法"
+        },
+        {
+          "type": "paragraph",
+          "text": "# 後面有空格，表示主要標題；## 是下一層。這份筆記只有一個主標題，讓閱讀者先知道文件用途，再看段落。把所有句子都寫成大標題會失去結構，不是越醒目越好。標題文字改了以後，若其他地方有連到該章節，也要一起檢查；章節網址的產生方式可能因預覽工具而異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "編號清單適合步驟，減號清單適合彼此並列的條件。段落之間保留空白行，讓原始碼和預覽都容易閱讀。Completed 的兩組星號表示強調，單反引號包住 Read 表示行內程式文字；這些符號只改變呈現，不會讓 Codex 自動給該詞更高權限。引用符號 > 則用來區分說明或摘錄，不是「已經證實」的標章。"
+        },
+        {
+          "type": "paragraph",
+          "text": "連結用方括號寫讀者看到的名稱，圓括號放目的地。本例用相對檔案路徑，外部網站則用完整 https 網址。不要把自己的 C:\\Users 路徑寫成全站讀者都能開的連結，也不要把不存在的 notes.md 當成已完成文件。文字名稱可以不同，但目標路徑必須精確，尤其在區分大小寫的系統上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "程式碼區塊以相同組數的反引號開啟和結束，開頭的 sh 是語言標籤，幫助預覽顯示語法。node --version 必須保持在區塊內，底下的引用說明則在區塊外。若忘了結尾，之後整篇可能都變成等寬文字；修正的是少掉的分隔線，不是重裝 Markdown。檔案名稱或命令要保留半形符號，不要把反引號換成一般引號。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟三：預覽、點連結與故障練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 VS Code 打開 README.md，使用命令面板的 Markdown: Open Preview；也可用 Windows／Linux 的 Ctrl＋Shift＋V，macOS 的 Command＋Shift＋V。原始碼與預覽是同一個檔案的兩種視圖，不是兩份獨立內容。先存檔，再確認主標題、工作步驟、兩項條件與命令區塊都有正確呈現。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在預覽點 Open task notes，確認開啟的是同資料夾 notes.md，再從 Back to the notebook 回來。若工具在新編輯分頁開文件，重新對該檔開預覽即可；不要只看標題相同就當連結正確。接著故意將 README 的目的地改成 ./missing.md，存檔並點一次，預期無法找到目標；把路徑改回 ./notes.md 後再確認雙向都能走通。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "如果想多練一次，先複製 README.md 作為備份，只刪除命令區塊的結尾反引號，觀察後面的引用如何被包含進去，再把分隔線補回並比對備份。不要在同一次練習同時改路徑、標題與結尾，否則不知道是哪個變動造成結果。這個小故障練習也適合用來學"
+            },
+            {
+              "type": "link",
+              "text": "除錯流程",
+              "url": "https://mokaair.com/zh-TW/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟四：讓 Codex 讀取文件"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "用桌面版、"
+            },
+            {
+              "type": "link",
+              "text": "CLI",
+              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "link",
+              "text": "IDE 擴充套件",
+              "url": "https://mokaair.com/zh-TW/life/codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "開啟 codex-md-lab，確認這個工作目錄，再送出下列要求。這次只讀檔與比較，不執行 README 中的命令。能看到一個檔名，不代表 Codex 已讀過內容；要求它引用具體檔案及尚未完成的檢查，才能核對理解是否正確。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read README.md and notes.md in this practice folder. Explain the purpose, the accepted result, and the checks explicitly still pending. Identify each source file. Verify both relative file links point to existing files. Do not edit anything or execute the example command.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "合格回答應說 README 記錄工作流程，notes 定義 Completed、範例 Read 與空白標題限制，而且瀏覽器檢查尚未執行。若它把 example command 說成已跑過，請要求更正並指出依據；文件裡有命令或成功條件，不等於實際執行紀錄。完成後保存這次讀取結果與你自己點通連結的確認。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一般 .md 與 AGENTS.md 的差別"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檔案",
+            "本次用途",
+            "如何使用"
+          ],
+          "rows": [
+            [
+              "README.md",
+              "說明專案與入口",
+              "主動開啟或要求讀取"
+            ],
+            [
+              "notes.md",
+              "記錄驗收與待辦",
+              "任務中明確引用"
+            ],
+            [
+              "AGENTS.md",
+              "Codex 專案指示",
+              "依官方檔名、目錄及載入規則"
+            ],
+            [
+              "SKILL.md",
+              "技能說明與觸發資訊",
+              "依技能結構建立，不能只改副檔名"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "本次沒有建立 AGENTS.md，因此不能聲稱 Codex 已自動載入這份規則。接著依"
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md 專篇",
+              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "設定作用範圍與驗證，技能則看"
+            },
+            {
+              "type": "link",
+              "text": "SKILL.md",
+              "url": "https://mokaair.com/zh-TW/life/codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "。Markdown 負責讓文件可讀，特定工具如何發現和使用檔案，是另一層規則。這個區分也能避免將別人的專案筆記直接當成你的操作指令。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "完成時應有兩個真實 .md 檔、雙向可用連結、正確的程式碼區塊、修復過的一次缺檔或缺結尾故障，以及 Codex 能分開辨認已寫條件與未跑檢查的結果。預覽可能因工具樣式不同而有字型與間距差異，重點是結構、內容和目的地一致。本文查證 VS Code 官方預覽與連結文件；範例內容是原創，網站編譯與複製會另外核對內外層程式碼分隔，避免多語轉換改動樣本。"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-markdown-basics/diagram-1.svg",
+          "alt": "09. Markdown 與 MD 檔入門 — 實作順序示意圖，非產品介面截圖。 Plain text → README.md → Preview",
+          "width": 1600,
+          "height": 900,
+          "caption": "09. Markdown 與 MD 檔入門 — 實作順序示意圖，非產品介面截圖。 Plain text → README.md → Preview",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "VS Code Markdown and preview",
+          "url": "https://code.visualstudio.com/docs/languages/markdown",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Markdown 与 MD 文件入门",
+      "description": "Markdown 是用纯文字标记标题、清单、连结与程式码的格式，常见副档名是 .md。README.md 通常用来说明专案，AGENTS.md 提供代理工作规则，SKILL.md 描述可重用技能；不是所有 MD 档都会被 Codex 自动当作指令。",
+      "hero": {
+        "src": "/guides/codex-markdown-basics/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与开始之前"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "建立 README.md 与 notes.md，使用标题、清单、连结、引用及程式码区块，把两篇文件互相连起来，再请 Codex 依档案回答。阅读约 10 分钟，操作约 20 分钟。Windows、macOS、Linux 都可用纯文字编辑器；本文用 VS Code 展示相同操作，不需要先安装网站套件或把文件发布上网。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Markdown 是纯文字的排版语法，.md 是常见副档名。档案本身可以用一般编辑器读写，预览工具才把井字、星号和括号呈现成标题、清单与连结。把一个 Word 文件改名成 .md 不会转换格式；同样地，写进程式码区块的命令也不会因为开启预览就执行。先认识文字与显示的差别，才知道该修改哪里。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤一：建立真正的纯文字档"
+        },
+        {
+          "type": "paragraph",
+          "text": "在新的 codex-md-lab 资料夹开启 VS Code，从档案总管新增 README.md 与 notes.md。Windows、macOS、Linux 都使用相同档名与大小写，不要存成 README.md.txt。使用其他编辑器也可以，但要选纯文字与 UTF-8；如果编辑器自动加 .txt，存档后回档案清单核对完整名称。这次只用新资料夹，不覆写正式专案既有 README。"
+        },
+        {
+          "type": "paragraph",
+          "text": "将下面整段复制到 README.md，再储存。外面显示的程式码框只是本网站让你复制的容器，不必另外把它的外框加进文件；内容里那三个反引号则是练习档的一部分，必须保留。共同范例固定用英文档名与文字，让五语读者可以对照同一份成果。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Small Steps notebook\n\n## Purpose\n\nKeep a short record of this practice project.\n\n## Working steps\n\n1. Read the request.\n2. Make one focused change.\n3. Verify the result.\n\n- Keep original files.\n- Record checks that have not run.\n\n[Open task notes](./notes.md)\n\n## Example command\n\n```sh\nnode --version\n```\n\n> This command is an example, not a record of execution.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著在 notes.md 放入下一段并储存。两份文件放同一层，README 的 ./notes.md 表示从 README 所在资料夹找到 notes.md；notes 的 ./README.md 则回到原文件。这就是小型目录与分篇互相连结的起点，不需要资料库，也不需要先做网页路由。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Task notes\n\n[Back to the notebook](./README.md)\n\n## Accepted result\n\n- **Completed** shows only finished tasks.\n- `Read` is the sample task title.\n- Empty titles must be rejected.\n\n## Pending checks\n\nThe browser check has not run yet.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤二：看懂六种常用语法"
+        },
+        {
+          "type": "paragraph",
+          "text": "# 后面有空格，表示主要标题；## 是下一层。这份笔记只有一个主标题，让阅读者先知道文件用途，再看段落。把所有句子都写成大标题会失去结构，不是越醒目越好。标题文字改了以后，若其他地方有连到该章节，也要一起检查；章节网址的产生方式可能因预览工具而异。"
+        },
+        {
+          "type": "paragraph",
+          "text": "编号清单适合步骤，减号清单适合彼此并列的条件。段落之间保留空白行，让原始码和预览都容易阅读。Completed 的两组星号表示强调，单反引号包住 Read 表示行内程式文字；这些符号只改变呈现，不会让 Codex 自动给该词更高权限。引用符号 > 则用来区分说明或摘录，不是「已经证实」的标章。"
+        },
+        {
+          "type": "paragraph",
+          "text": "连结用方括号写读者看到的名称，圆括号放目的地。本例用相对档案路径，外部网站则用完整 https 网址。不要把自己的 C:\\Users 路径写成全站读者都能开的连结，也不要把不存在的 notes.md 当成已完成文件。文字名称可以不同，但目标路径必须精确，尤其在区分大小写的系统上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "程式码区块以相同组数的反引号开启和结束，开头的 sh 是语言标签，帮助预览显示语法。node --version 必须保持在区块内，底下的引用说明则在区块外。若忘了结尾，之后整篇可能都变成等宽文字；修正的是少掉的分隔线，不是重装 Markdown。档案名称或命令要保留半形符号，不要把反引号换成一般引号。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤三：预览、点连结与故障练习"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 VS Code 打开 README.md，使用命令面板的 Markdown: Open Preview；也可用 Windows／Linux 的 Ctrl＋Shift＋V，macOS 的 Command＋Shift＋V。原始码与预览是同一个档案的两种视图，不是两份独立内容。先存档，再确认主标题、工作步骤、两项条件与命令区块都有正确呈现。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在预览点 Open task notes，确认开启的是同资料夹 notes.md，再从 Back to the notebook 回来。若工具在新编辑分页开文件，重新对该档开预览即可；不要只看标题相同就当连结正确。接著故意将 README 的目的地改成 ./missing.md，存档并点一次，预期无法找到目标；把路径改回 ./notes.md 后再确认双向都能走通。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "如果想多练一次，先复制 README.md 作为备份，只删除命令区块的结尾反引号，观察后面的引用如何被包含进去，再把分隔线补回并比对备份。不要在同一次练习同时改路径、标题与结尾，否则不知道是哪个变动造成结果。这个小故障练习也适合用来学"
+            },
+            {
+              "type": "link",
+              "text": "除错流程",
+              "url": "https://mokaair.com/zh-CN/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤四：让 Codex 读取文件"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "用桌面版、"
+            },
+            {
+              "type": "link",
+              "text": "CLI",
+              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "link",
+              "text": "IDE 扩充套件",
+              "url": "https://mokaair.com/zh-CN/life/codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "开启 codex-md-lab，确认这个工作目录，再送出下列要求。这次只读档与比较，不执行 README 中的命令。能看到一个档名，不代表 Codex 已读过内容；要求它引用具体档案及尚未完成的检查，才能核对理解是否正确。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read README.md and notes.md in this practice folder. Explain the purpose, the accepted result, and the checks explicitly still pending. Identify each source file. Verify both relative file links point to existing files. Do not edit anything or execute the example command.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "合格回答应说 README 记录工作流程，notes 定义 Completed、范例 Read 与空白标题限制，而且浏览器检查尚未执行。若它把 example command 说成已跑过，请要求更正并指出依据；文件里有命令或成功条件，不等于实际执行纪录。完成后保存这次读取结果与你自己点通连结的确认。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一般 .md 与 AGENTS.md 的差别"
+        },
+        {
+          "type": "table",
+          "header": [
+            "档案",
+            "本次用途",
+            "如何使用"
+          ],
+          "rows": [
+            [
+              "README.md",
+              "说明专案与入口",
+              "主动开启或要求读取"
+            ],
+            [
+              "notes.md",
+              "记录验收与待办",
+              "任务中明确引用"
+            ],
+            [
+              "AGENTS.md",
+              "Codex 专案指示",
+              "依官方档名、目录及载入规则"
+            ],
+            [
+              "SKILL.md",
+              "技能说明与触发资讯",
+              "依技能结构建立，不能只改副档名"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "本次没有建立 AGENTS.md，因此不能声称 Codex 已自动载入这份规则。接著依"
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md 专篇",
+              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "设定作用范围与验证，技能则看"
+            },
+            {
+              "type": "link",
+              "text": "SKILL.md",
+              "url": "https://mokaair.com/zh-CN/life/codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "。Markdown 负责让文件可读，特定工具如何发现和使用档案，是另一层规则。这个区分也能避免将别人的专案笔记直接当成你的操作指令。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "完成时应有两个真实 .md 档、双向可用连结、正确的程式码区块、修复过的一次缺档或缺结尾故障，以及 Codex 能分开辨认已写条件与未跑检查的结果。预览可能因工具样式不同而有字型与间距差异，重点是结构、内容和目的地一致。本文查证 VS Code 官方预览与连结文件；范例内容是原创，网站编译与复制会另外核对内外层程式码分隔，避免多语转换改动样本。"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-markdown-basics/diagram-1.svg",
+          "alt": "09. Markdown 与 MD 文件入门 — 实作顺序示意图，非产品介面截图。 Plain text → README.md → Preview",
+          "width": 1600,
+          "height": 900,
+          "caption": "09. Markdown 与 MD 文件入门 — 实作顺序示意图，非产品介面截图。 Plain text → README.md → Preview",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "VS Code Markdown and preview",
+          "url": "https://code.visualstudio.com/docs/languages/markdown",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Markdown and MD files",
+      "description": "Markdown uses plain-text markers for headings, lists, links and code, commonly in .md files. README.md explains a project, AGENTS.md supplies agent instructions and SKILL.md defines a reusable skill. An arbitrary MD file is not automatically an instruction source.",
+      "hero": {
+        "src": "/guides/codex-markdown-basics/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Create README.md and notes.md using headings, lists, links, quotes and code blocks, link them together and ask Codex to answer from the files. Allow 10 minutes to read and 20 minutes to practice. Any plain-text editor works on Windows, macOS or Linux; this walkthrough uses VS Code. No website packages or publication are needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Markdown is a plain-text formatting syntax, commonly saved with .md. Editors read and write the text; preview tools render its hashes, stars and brackets as structure. Renaming a Word document to .md does not convert it. Opening a preview also does not execute commands in code blocks. Distinguish source text from presentation before editing."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: create plain-text files"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open a new codex-md-lab folder in VS Code and create README.md and notes.md in Explorer. Keep exact names and capitalization on all OSes, avoiding README.md.txt. Other editors are fine if they save plain text as UTF-8; check the full filename if .txt is added automatically. Use a new folder rather than overwrite a production README."
+        },
+        {
+          "type": "paragraph",
+          "text": "Copy the complete sample into README.md and save. This website's outer code frame is a display container, not another wrapper to type. The triple backticks inside the sample are part of the file and must remain. Shared English sample text and filenames let all five language versions compare the same result."
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Small Steps notebook\n\n## Purpose\n\nKeep a short record of this practice project.\n\n## Working steps\n\n1. Read the request.\n2. Make one focused change.\n3. Verify the result.\n\n- Keep original files.\n- Record checks that have not run.\n\n[Open task notes](./notes.md)\n\n## Example command\n\n```sh\nnode --version\n```\n\n> This command is an example, not a record of execution.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Save the next sample in notes.md at the same folder level. ./notes.md resolves relative to README's folder, and ./README.md points back from the notes. This creates a small index-and-article relationship without a database or website routing."
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Task notes\n\n[Back to the notebook](./README.md)\n\n## Accepted result\n\n- **Completed** shows only finished tasks.\n- `Read` is the sample task title.\n- Empty titles must be rejected.\n\n## Pending checks\n\nThe browser check has not run yet.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: understand six common forms"
+        },
+        {
+          "type": "paragraph",
+          "text": "A hash followed by a space marks a main heading; two hashes mark the next level. Use one main title here and organize sections beneath it. Making every sentence a large heading loses structure. After renaming headings, check any links to them; generated heading anchors can vary by renderer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Numbered lists suit steps; dash lists suit parallel conditions. Blank lines separate paragraphs in source and preview. Double stars emphasize Completed, and single backticks mark inline code such as Read. Formatting does not grant a word special authority in Codex. A > quote distinguishes a note or excerpt, not verified evidence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Links put the visible label in brackets and the destination in parentheses. This example uses relative file paths; websites use complete HTTPS URLs. Your private C:\\Users path is not a shareable destination for everyone, and a nonexistent notes.md is not a completed document. Labels can differ, but target names and case must be exact."
+        },
+        {
+          "type": "paragraph",
+          "text": "Fenced code has opening and closing backtick fences; sh labels the language for rendering. Keep node --version inside and the quote below outside. A missing closing fence can render the rest as code. Restore the delimiter rather than reinstalling anything. Preserve ASCII command characters and backticks instead of replacing them with ordinary quotes."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: preview, follow links and test a failure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open README.md in VS Code and run Markdown: Open Preview, or Ctrl+Shift+V on Windows/Linux and Command+Shift+V on macOS. Source and preview are two views of one file. Save first, then check the main title, steps, two conditions and code block."
+        },
+        {
+          "type": "paragraph",
+          "text": "Follow Open task notes to the same-folder notes.md and return with Back to the notebook. If the tool opens an editor tab, open preview for that file. Matching titles alone are insufficient. Change README's destination to ./missing.md, save and try it to observe the missing target, then restore ./notes.md and verify both directions."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "For another test, back up README.md, remove only the closing code fence, observe the quote becoming code, then restore the fence and compare the backup. Change one thing at a time rather than paths, headings and fences together. This small failure exercise also introduces "
+            },
+            {
+              "type": "link",
+              "text": "debugging",
+              "url": "https://mokaair.com/en/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: ask Codex to read the documents"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Open codex-md-lab in desktop, "
+            },
+            {
+              "type": "link",
+              "text": "CLI",
+              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": " or the "
+            },
+            {
+              "type": "link",
+              "text": "IDE extension",
+              "url": "https://mokaair.com/en/life/codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": ", verify the directory and send this request. Read and compare only; do not execute README's example command. A visible filename is not proof of reading. Ask for specific file attribution and pending checks."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read README.md and notes.md in this practice folder. Explain the purpose, the accepted result, and the checks explicitly still pending. Identify each source file. Verify both relative file links point to existing files. Do not edit anything or execute the example command.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "A passing answer identifies README's workflow and notes' Completed, Read and blank-title criteria, while preserving that the browser check has not run. If it claims the example command executed, request correction and evidence. Written commands and acceptance criteria are not execution records. Keep the reading result and your independent link checks."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Ordinary .md files and AGENTS.md"
+        },
+        {
+          "type": "table",
+          "header": [
+            "File",
+            "Purpose here",
+            "How it is used"
+          ],
+          "rows": [
+            [
+              "README.md",
+              "Project explanation and entry",
+              "Open or explicitly request it"
+            ],
+            [
+              "notes.md",
+              "Acceptance and pending checks",
+              "Reference it in the task"
+            ],
+            [
+              "AGENTS.md",
+              "Codex project instructions",
+              "Follow documented naming, scope and loading"
+            ],
+            [
+              "SKILL.md",
+              "Skill instructions and triggering",
+              "Follow skill structure, not just an extension change"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "This exercise creates no AGENTS.md, so it does not establish automatic rule loading. Continue to "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/en/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " for scope and validation, or "
+            },
+            {
+              "type": "link",
+              "text": "SKILL.md",
+              "url": "https://mokaair.com/en/life/codex-skills"
+            },
+            {
+              "type": "text",
+              "text": " for skills. Markdown makes text readable; tool-specific discovery and use are separate rules. This also avoids treating someone else's project notes as your own instructions."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Finish with two real .md files, bidirectional links, correct code formatting, a repaired missing-link or fence failure, and an answer that distinguishes written criteria from unrun checks. Fonts and spacing may vary; structure, content and destinations should agree. VS Code preview/link behavior is documentation-checked. The original samples also receive compiler/copy checks for nested fences and unchanged code across languages."
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-markdown-basics/diagram-1.svg",
+          "alt": "09. Markdown and MD files — Workflow illustration, not a product screenshot. Plain text → README.md → Preview",
+          "width": 1600,
+          "height": 900,
+          "caption": "09. Markdown and MD files — Workflow illustration, not a product screenshot. Plain text → README.md → Preview",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "VS Code Markdown and preview",
+          "url": "https://code.visualstudio.com/docs/languages/markdown",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Markdown と MD ファイル入門",
+      "description": "Markdown は見出し、一覧、リンク、コードを純粋なテキストで表す形式です。README.md は説明、AGENTS.md は代理の作業規則、SKILL.md は再利用する技能を扱います。すべての MD が自動的に指示として読まれるわけではありません。",
+      "hero": {
+        "src": "/guides/codex-markdown-basics/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "README.md と notes.md に見出し、一覧、リンク、引用、コードを使い、相互に結んで Codex に読ませます。読む時間約10分、操作約20分です。各 OS のテキストエディターででき、ここでは VS Code を使います。サイト用パッケージや公開は不要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Markdown はプレーンテキストの書式で、.md が一般的な拡張子です。編集する文字を、プレビューが見出しや一覧、リンクへ表示します。Word を改名しても変換されず、コード内の命令もプレビューで実行されません。元の文字と表示を区別して編集します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：プレーンテキストを作る"
+        },
+        {
+          "type": "paragraph",
+          "text": "新しい codex-md-lab を VS Code で開き、Explorer に README.md と notes.md を作ります。全 OS で大文字小文字も合わせ、README.md.txt にしません。他のエディターなら UTF-8 のプレーンテキストで保存し、拡張子の自動追加を確認します。本番 README を上書きせず新規フォルダーを使います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例全体を README.md にコピーして保存します。サイト外側のコード枠は表示用で追加しませんが、例に含まれる三つのバッククォートはファイルの一部として残します。英語の共通例と名前を使い、五言語で同じ成果を比較します。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Small Steps notebook\n\n## Purpose\n\nKeep a short record of this practice project.\n\n## Working steps\n\n1. Read the request.\n2. Make one focused change.\n3. Verify the result.\n\n- Keep original files.\n- Record checks that have not run.\n\n[Open task notes](./notes.md)\n\n## Example command\n\n```sh\nnode --version\n```\n\n> This command is an example, not a record of execution.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "次を同じ階層の notes.md に保存します。./notes.md は README の場所から探し、./README.md で戻ります。データベースやサイトのルーティングなしで、小さな目次と分篇の関係を作れます。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Task notes\n\n[Back to the notebook](./README.md)\n\n## Accepted result\n\n- **Completed** shows only finished tasks.\n- `Read` is the sample task title.\n- Empty titles must be rejected.\n\n## Pending checks\n\nThe browser check has not run yet.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：六つの基本表現を理解する"
+        },
+        {
+          "type": "paragraph",
+          "text": "# と空白は主見出し、## は次の階層です。この筆記は主題一つの下に節を置きます。全てを大見出しにすると構造を失います。見出しを改名したら関連リンクも確認します。見出しアンカーは表示ツールで異なる場合があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "番号一覧は手順、ハイフン一覧は並列条件向きです。段落間に空行を置きます。二重星印は強調、単一バッククォートは Read などのコード表示ですが、Codex の権限を高めません。> は注記や引用の区別で、検証済みの印ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "リンクは角括弧に表示名、丸括弧に行き先を置きます。例は相対ファイル、サイトは完全な HTTPS URL です。自分の C:\\Users は全読者が使えるリンクではなく、ない notes.md は完成文書ではありません。表示名と違ってもよいですが、行き先と大文字小文字は正確にします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "コードは開始と終了のバッククォートで囲み、sh は表示用の言語名です。命令は内側、注記は外側に置きます。終了がなければ残りもコードになり得るので、再導入でなく区切りを戻します。半角文字を保ち、バッククォートを普通の引用符に置き換えません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：プレビュー、リンク、失敗の練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "VS Code で README.md を開き Markdown: Open Preview、または Windows / Linux の Ctrl+Shift+V、macOS の Command+Shift+V を使います。元とプレビューは同じファイルの二つの表示です。保存して主題、手順、二条件、コードを確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open task notes で同じフォルダーの notes.md を開き、戻るリンクを確認します。編集タブになればそのファイルをプレビューします。同じ題名だけで判断しません。次に行き先を ./missing.md にして失敗を確認し、./notes.md へ戻して双方向を再確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "追加練習では README.md を保存コピーして終了フェンスだけを消し、注記がコードに入る様子を見て戻します。場所、見出し、区切りを同時に変えず一つずつ確認します。"
+            },
+            {
+              "type": "link",
+              "text": "デバッグ",
+              "url": "https://mokaair.com/ja/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "の練習にもなります。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：Codex に文書を読ませる"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "デスクトップ、"
+            },
+            {
+              "type": "link",
+              "text": "CLI",
+              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "IDE",
+              "url": "https://mokaair.com/ja/life/codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "で codex-md-lab を開いて場所を確認し、次を送ります。読み取りと比較だけで例の命令は実行しません。名前が見えるだけでは読んだ証拠でないため、出典と未完了を確認します。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read README.md and notes.md in this practice folder. Explain the purpose, the accepted result, and the checks explicitly still pending. Identify each source file. Verify both relative file links point to existing files. Do not edit anything or execute the example command.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "README の手順、notes の Completed、Read、空白条件と、ブラウザー未実行が説明されれば確認できます。例を実行済みと言えば根拠と訂正を求めます。命令や成功条件の記載は実行記録ではありません。読み取り結果と独立したリンク確認を残します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "通常の .md と AGENTS.md の違い"
+        },
+        {
+          "type": "table",
+          "header": [
+            "ファイル",
+            "用途",
+            "使い方"
+          ],
+          "rows": [
+            [
+              "README.md",
+              "説明と入口",
+              "開くか読ませる"
+            ],
+            [
+              "notes.md",
+              "検証と残作業",
+              "課題で明示"
+            ],
+            [
+              "AGENTS.md",
+              "プロジェクト指示",
+              "名前、範囲、読込規則に従う"
+            ],
+            [
+              "SKILL.md",
+              "技能と起動情報",
+              "拡張子変更だけでなく構造に従う"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "今回は AGENTS.md を作っていないので自動読込の確認ではありません。"
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/ja/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "で範囲と検証、"
+            },
+            {
+              "type": "link",
+              "text": "SKILL.md",
+              "url": "https://mokaair.com/ja/life/codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "で技能を学びます。Markdown の読みやすさと、ツールが発見して使う規則は別です。他者の筆記を自分への操作指示と混同しません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "二つの実ファイル、双方向リンク、コード表示、欠落の修復、条件と未実行を区別する返答を残します。字形や余白が違っても構造、内容、行き先が一致すればよく、VS Code の表示とリンクは公式資料で確認しました。独自例は入れ子フェンスと多言語でのコード保持をコンパイル・コピーでも検証します。"
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-markdown-basics/diagram-1.svg",
+          "alt": "09. Markdown と MD ファイル入門 — 作業の流れを表す図です。製品画面の画像ではありません。 Plain text → README.md → Preview",
+          "width": 1600,
+          "height": 900,
+          "caption": "09. Markdown と MD ファイル入門 — 作業の流れを表す図です。製品画面の画像ではありません。 Plain text → README.md → Preview",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "VS Code Markdown and preview",
+          "url": "https://code.visualstudio.com/docs/languages/markdown",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Markdown과 MD 파일 입문",
+      "description": "Markdown은 제목, 목록, 링크와 코드를 일반 텍스트 기호로 표현하는 형식입니다. README.md는 프로젝트 설명, AGENTS.md는 에이전트 규칙, SKILL.md는 재사용할 스킬을 다룹니다. 모든 MD 파일이 자동으로 지침이 되는 것은 아닙니다.",
+      "hero": {
+        "src": "/guides/codex-markdown-basics/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "README.md와 notes.md에 제목, 목록, 링크, 인용, 코드 블록을 쓰고 서로 연결한 뒤 Codex가 파일을 읽어 답하게 합니다. 읽기 약 10분, 실습 약 20분입니다. 세 OS의 일반 텍스트 편집기를 쓸 수 있으며 여기서는 VS Code를 사용합니다. 웹사이트 패키지나 공개는 필요 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Markdown은 일반 텍스트 서식 문법이며 .md는 흔한 확장자입니다. 편집기는 문자를 다루고 미리 보기가 이를 제목, 목록, 링크로 표시합니다. Word 이름만 바꿔도 변환되지 않고 코드 명령도 미리 보기로 실행되지 않습니다. 원문과 표시를 구분해 편집합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 일반 텍스트 파일 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "새 codex-md-lab을 VS Code로 열고 Explorer에서 README.md와 notes.md를 만듭니다. OS에 관계없이 대소문자를 맞추고 README.md.txt가 되지 않게 합니다. 다른 편집기는 UTF-8 일반 텍스트로 저장하고 확장자 자동 추가를 확인하세요. 실제 README를 덮지 않고 새 폴더를 사용합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예제 전체를 README.md에 복사해 저장합니다. 웹사이트 바깥 코드 틀은 표시용이라 추가하지 않지만 예제 안의 백틱 세 개는 파일 내용이므로 유지합니다. 다섯 언어가 같은 결과를 비교하도록 영어 예제와 파일명을 공통 사용합니다."
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Small Steps notebook\n\n## Purpose\n\nKeep a short record of this practice project.\n\n## Working steps\n\n1. Read the request.\n2. Make one focused change.\n3. Verify the result.\n\n- Keep original files.\n- Record checks that have not run.\n\n[Open task notes](./notes.md)\n\n## Example command\n\n```sh\nnode --version\n```\n\n> This command is an example, not a record of execution.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "다음 예제를 같은 위치의 notes.md에 저장합니다. ./notes.md는 README 폴더 기준이며 ./README.md로 돌아갑니다. 데이터베이스나 웹 라우팅 없이 작은 목차와 개별 문서 관계를 만듭니다."
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "code": "# Task notes\n\n[Back to the notebook](./README.md)\n\n## Accepted result\n\n- **Completed** shows only finished tasks.\n- `Read` is the sample task title.\n- Empty titles must be rejected.\n\n## Pending checks\n\nThe browser check has not run yet.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 여섯 가지 기본 문법 이해하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "# 뒤 공백은 주 제목, ##는 다음 계층입니다. 여기서는 주 제목 하나 아래 절을 구성합니다. 모든 문장을 큰 제목으로 만들면 구조가 사라집니다. 제목을 바꾼 뒤 해당 링크도 확인하며 앵커 생성은 렌더러마다 다를 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "번호 목록은 단계, 하이픈 목록은 병렬 조건에 맞습니다. 문단 사이에 빈 줄을 둡니다. 별표 두 개는 강조, 백틱 하나는 Read 같은 인라인 코드 표시이며 Codex 권한을 높이지 않습니다. >는 메모나 인용 구분이지 검증 완료 표식이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "링크는 대괄호에 표시명, 괄호에 목적지를 둡니다. 예제는 상대 파일 경로, 사이트는 완전한 HTTPS URL입니다. 개인 C:\\Users 경로는 모두가 열 수 있는 링크가 아니며 없는 notes.md는 완성 문서가 아닙니다. 표시명은 달라도 대상 경로와 대소문자는 정확해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "코드는 시작/끝 백틱으로 감싸고 sh는 표시용 언어명입니다. 명령은 안, 아래 인용은 밖에 둡니다. 끝 구분자가 없으면 뒤가 모두 코드처럼 보일 수 있으므로 재설치 대신 구분자를 복구합니다. 반각 문자를 유지하고 백틱을 일반 따옴표로 바꾸지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 미리 보기, 링크, 실패 실습"
+        },
+        {
+          "type": "paragraph",
+          "text": "VS Code에서 README.md를 열고 Markdown: Open Preview 또는 Windows/Linux의 Ctrl+Shift+V, macOS의 Command+Shift+V를 씁니다. 원문과 미리 보기는 같은 파일의 두 보기입니다. 저장 후 주 제목, 단계, 두 조건, 코드 블록을 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Open task notes로 같은 폴더의 notes.md를 열고 돌아오는 링크를 확인합니다. 편집 탭으로 열리면 그 파일을 미리 보기 합니다. 제목이 같다는 이유만으로 판단하지 않습니다. 목적지를 ./missing.md로 바꿔 실패를 확인한 뒤 ./notes.md로 복구해 양방향을 확인합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "추가로 README.md를 백업하고 끝 코드 구분자만 지워 인용이 코드로 들어가는 것을 본 뒤 복원합니다. 경로, 제목, 구분자를 동시에 바꾸지 말고 하나씩 확인합니다. "
+            },
+            {
+              "type": "link",
+              "text": "디버깅",
+              "url": "https://mokaair.com/ko/life/codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": " 기초 연습이기도 합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: Codex가 문서를 읽게 하기"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "데스크톱, "
+            },
+            {
+              "type": "link",
+              "text": "CLI",
+              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "IDE",
+              "url": "https://mokaair.com/ko/life/codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "에서 codex-md-lab 경로를 확인해 요청합니다. 읽기/비교만 하고 예제 명령은 실행하지 않습니다. 파일명이 보인다고 읽은 증거는 아니므로 출처와 미완료 검사를 묻습니다."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read README.md and notes.md in this practice folder. Explain the purpose, the accepted result, and the checks explicitly still pending. Identify each source file. Verify both relative file links point to existing files. Do not edit anything or execute the example command.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "README 흐름, notes의 Completed/Read/공백 조건, 브라우저 미실행을 설명해야 합니다. 예제를 실행했다고 하면 근거와 수정을 요구하세요. 명령이나 성공 조건의 기록이 실행 기록은 아닙니다. 읽기 결과와 독립적인 링크 확인을 남깁니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "일반 .md와 AGENTS.md의 차이"
+        },
+        {
+          "type": "table",
+          "header": [
+            "파일",
+            "용도",
+            "사용법"
+          ],
+          "rows": [
+            [
+              "README.md",
+              "프로젝트 설명과 입구",
+              "열거나 읽도록 요청"
+            ],
+            [
+              "notes.md",
+              "검증과 미완료",
+              "작업에서 명시"
+            ],
+            [
+              "AGENTS.md",
+              "프로젝트 지침",
+              "이름, 범위, 로드 규칙 따르기"
+            ],
+            [
+              "SKILL.md",
+              "스킬과 실행 정보",
+              "확장자 변경만이 아닌 구조 따르기"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "이번에는 AGENTS.md를 만들지 않아 자동 규칙 로드를 검증한 것이 아닙니다. "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/ko/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "에서 범위/검증, "
+            },
+            {
+              "type": "link",
+              "text": "SKILL.md",
+              "url": "https://mokaair.com/ko/life/codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "에서 스킬을 배웁니다. Markdown 가독성과 도구의 파일 발견/사용 규칙은 별개입니다. 다른 사람 메모를 자신의 실행 지침과 혼동하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 파일 두 개, 양방향 링크, 코드 표시, 누락 오류 복구, 조건과 미실행을 구분한 응답을 남깁니다. 글꼴/간격이 달라도 구조, 내용, 목적지는 같아야 합니다. VS Code 표시/링크는 공식 문서로 확인했고 원본 예제의 중첩 구분자와 다국어 코드 보존도 컴파일/복사로 검증합니다."
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-markdown-basics/diagram-1.svg",
+          "alt": "09. Markdown과 MD 파일 입문 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Plain text → README.md → Preview",
+          "width": 1600,
+          "height": 900,
+          "caption": "09. Markdown과 MD 파일 입문 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Plain text → README.md → Preview",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "VS Code Markdown and preview",
+          "url": "https://code.visualstudio.com/docs/languages/markdown",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

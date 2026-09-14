@@ -1,0 +1,902 @@
+{
+  "slug": "codex-plugins",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 124,
+  "locales": {
+    "zh-TW": {
+      "title": "Plugins 與外部服務",
+      "description": "Plugin 可以把 Skills 與 MCP 工具包在一起，提供可安裝的工作能力。安裝套件、連接外部帳號與實際執行工具是三個不同步驟；找到插件不代表已能讀你的服務資料。",
+      "hero": {
+        "src": "/guides/codex-plugins/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Plugin 可以把 Skills 與 "
+            },
+            {
+              "type": "link",
+              "text": "MCP",
+              "url": "https://mokaair.com/zh-TW/life/codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " 工具包在一起，提供可安裝的工作能力。安裝套件、連接外部帳號與實際執行工具是三個不同步驟；找到插件不代表已能讀你的服務資料。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "你會學到什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "能在正確帳號用一次工具取得預期結果，並知道如何停止連線與移除插件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "預估操作時間: 15 分鐘"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前"
+        },
+        {
+          "type": "paragraph",
+          "text": "選一項有明確目的的外部服務，先確認其插件適用平台。官方目前不提供 IDE Plugins；CLI 可使用 /plugins，桌面版從 Plugins 分頁操作。標示 Desktop only 的功能不能假定手機可用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逐步操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 在支援入口開啟 Plugins，搜尋名稱並核對說明、來源與需要的權限。只安裝這次練習需要的套件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 若要求連接帳號，使用官方授權流程並確認工作區與資料範圍。不要把密碼交給提示詞，也不要使用別人的帳號憑證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. CLI 安裝後依文件開新工作階段，再要求一個唯讀的查詢。核對結果是否來自預期帳號，並區分『插件已裝』與『工具呼叫成功』。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 要停止使用時，從插件管理移除或停用，必要時另到外部服務撤销連線。卸載本機插件不應被當成外部帳號授權一定已撤銷。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugins/diagram-1.svg",
+          "alt": "24. Plugins 與外部服務 — 實作順序示意圖，非產品介面截圖。 Plugin → Connect → Tool",
+          "width": 1600,
+          "height": 900,
+          "caption": "24. Plugins 與外部服務 — 實作順序示意圖，非產品介面截圖。 Plugin → Connect → Tool",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "使用已連接的指定插件做一個唯讀查詢，先說明將查詢的資料範圍。不要傳送訊息或修改外部資料。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "範例與驗證"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/plugins"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "驗收方式"
+          ],
+          "rows": [
+            [
+              "先確認環境",
+              "選一項有明確目的的外部服務，先確認其插件適用平台。官方目前不提供 IDE Plugins；CLI 可使用 /plugins，桌面版從 Plugins 分頁操作。標示 Desktop only 的功能不能假定手機可用。"
+            ],
+            [
+              "完成一個操作",
+              "要停止使用時，從插件管理移除或停用，必要時另到外部服務撤销連線。卸載本機插件不應被當成外部帳號授權一定已撤銷。"
+            ],
+            [
+              "檢查真實結果",
+              "能在正確帳號用一次工具取得預期結果，並知道如何停止連線與移除插件。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "能在正確帳號用一次工具取得預期結果，並知道如何停止連線與移除插件。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題"
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有工具時檢查客戶端支援、是否開新工作階段、帳號是否連接與管理員限制。不要為了看見工具就授權無關資料。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "官方來源",
+          "text": "跨平台操作依官方文件查證；未在每個系統實測。介面與帳號提供的功能可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸閱讀"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "plugins",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "build-skills",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Plugins 与外部服务",
+      "description": "Plugin 可以把 Skills 与 MCP 工具包在一起，提供可安装的工作能力。安装套件、连接外部帐号与实际执行工具是三个不同步骤；找到插件不代表已能读你的服务资料。",
+      "hero": {
+        "src": "/guides/codex-plugins/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Plugin 可以把 Skills 与 "
+            },
+            {
+              "type": "link",
+              "text": "MCP",
+              "url": "https://mokaair.com/zh-CN/life/codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " 工具包在一起，提供可安装的工作能力。安装套件、连接外部帐号与实际执行工具是三个不同步骤；找到插件不代表已能读你的服务资料。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "你会学到什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "能在正确帐号用一次工具取得预期结果，并知道如何停止连线与移除插件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预估操作时间: 15 分钟"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前"
+        },
+        {
+          "type": "paragraph",
+          "text": "选一项有明确目的的外部服务，先确认其插件适用平台。官方目前不提供 IDE Plugins；CLI 可使用 /plugins，桌面版从 Plugins 分页操作。标示 Desktop only 的功能不能假定手机可用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逐步操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 在支援入口开启 Plugins，搜寻名称并核对说明、来源与需要的权限。只安装这次练习需要的套件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 若要求连接帐号，使用官方授权流程并确认工作区与资料范围。不要把密码交给提示词，也不要使用别人的帐号凭证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. CLI 安装后依文件开新工作阶段，再要求一个唯读的查询。核对结果是否来自预期帐号，并区分『插件已装』与『工具呼叫成功』。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 要停止使用时，从插件管理移除或停用，必要时另到外部服务撤销连线。卸载本机插件不应被当成外部帐号授权一定已撤销。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugins/diagram-1.svg",
+          "alt": "24. Plugins 与外部服务 — 实作顺序示意图，非产品介面截图。 Plugin → Connect → Tool",
+          "width": 1600,
+          "height": 900,
+          "caption": "24. Plugins 与外部服务 — 实作顺序示意图，非产品介面截图。 Plugin → Connect → Tool",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "练习需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "使用已连接的指定插件做一个唯读查询，先说明将查询的资料范围。不要传送讯息或修改外部资料。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "范例与验证"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/plugins"
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查项目",
+            "验收方式"
+          ],
+          "rows": [
+            [
+              "先确认环境",
+              "选一项有明确目的的外部服务，先确认其插件适用平台。官方目前不提供 IDE Plugins；CLI 可使用 /plugins，桌面版从 Plugins 分页操作。标示 Desktop only 的功能不能假定手机可用。"
+            ],
+            [
+              "完成一个操作",
+              "要停止使用时，从插件管理移除或停用，必要时另到外部服务撤销连线。卸载本机插件不应被当成外部帐号授权一定已撤销。"
+            ],
+            [
+              "检查真实结果",
+              "能在正确帐号用一次工具取得预期结果，并知道如何停止连线与移除插件。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成结果"
+        },
+        {
+          "type": "paragraph",
+          "text": "能在正确帐号用一次工具取得预期结果，并知道如何停止连线与移除插件。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题"
+        },
+        {
+          "type": "paragraph",
+          "text": "没有工具时检查客户端支援、是否开新工作阶段、帐号是否连接与管理员限制。不要为了看见工具就授权无关资料。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "官方来源",
+          "text": "跨平台操作依官方文件查证；未在每个系统实测。介面与帐号提供的功能可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸阅读"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "plugins",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "build-skills",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Plugins and connected services",
+      "description": "A plugin can distribute skills and MCP tools as an installable capability. Installing it, connecting an external account and successfully calling a tool are distinct stages. A listing does not establish access to your data.",
+      "hero": {
+        "src": "/guides/codex-plugins/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "A plugin can distribute skills and "
+            },
+            {
+              "type": "link",
+              "text": "MCP",
+              "url": "https://mokaair.com/en/life/codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " tools as an installable capability. Installing it, connecting an external account and successfully calling a tool are distinct stages. A listing does not establish access to your data."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will learn"
+        },
+        {
+          "type": "paragraph",
+          "text": "A tool returns the expected data from the correct account, and you know how to disconnect and remove it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Estimated practice time: 15 min"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before you start"
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose one service for a specific purpose and check platform support. The current IDE extension does not support plugins; use /plugins in CLI or the desktop Plugins tab. Desktop-only capabilities are not automatically available on mobile."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step by step"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Search in Plugins and inspect the description, source and requested permissions. Install only what the exercise needs."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. If account connection is requested, use the official authorization flow and verify workspace and data scope. Never put passwords in the prompt."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. After CLI installation, start a new session as documented and make a read-only query. Verify the result belongs to the intended account, separately from installation status."
+        },
+        {
+          "type": "paragraph",
+          "text": "4. Disable or uninstall the plugin when finished. Revoke external authorization separately when necessary; local removal does not prove the service-side grant was revoked."
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugins/diagram-1.svg",
+          "alt": "24. Plugins and connected services — Workflow illustration, not a product screenshot. Plugin → Connect → Tool",
+          "width": 1600,
+          "height": 900,
+          "caption": "24. Plugins and connected services — Workflow illustration, not a product screenshot. Plugin → Connect → Tool",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice request"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Use the selected connected plugin for a read-only query and state the data scope first. Do not send messages or modify external records."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Example and verification"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/plugins"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "Acceptance method"
+          ],
+          "rows": [
+            [
+              "Confirm the environment",
+              "Choose one service for a specific purpose and check platform support. The current IDE extension does not support plugins; use /plugins in CLI or the desktop Plugins tab. Desktop-only capabilities are not automatically available on mobile."
+            ],
+            [
+              "Complete one action",
+              "Disable or uninstall the plugin when finished. Revoke external authorization separately when necessary; local removal does not prove the service-side grant was revoked."
+            ],
+            [
+              "Inspect the actual result",
+              "A tool returns the expected data from the correct account, and you know how to disconnect and remove it."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Expected result"
+        },
+        {
+          "type": "paragraph",
+          "text": "A tool returns the expected data from the correct account, and you know how to disconnect and remove it."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting"
+        },
+        {
+          "type": "paragraph",
+          "text": "For missing tools, check client support, fresh session, account connection and admin policy. Do not grant unrelated access merely to make a tool appear."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Official sources",
+          "text": "Cross-platform steps were checked against official documentation, not tested on every operating system. Interfaces and account availability can differ."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Continue learning"
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "plugins",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "build-skills",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Plugins と外部サービス",
+      "description": "Plugin は Skills や MCP を配布できます。導入、アカウント接続、ツール成功は別段階です。",
+      "hero": {
+        "src": "/guides/codex-plugins/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Plugin は Skills や "
+            },
+            {
+              "type": "link",
+              "text": "MCP",
+              "url": "https://mokaair.com/ja/life/codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " を配布できます。導入、アカウント接続、ツール成功は別段階です。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "学べること"
+        },
+        {
+          "type": "paragraph",
+          "text": "正しいアカウントで結果を得て、接続解除方法も分かれば完了です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習時間の目安: 15 分"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "始める前に"
+        },
+        {
+          "type": "paragraph",
+          "text": "目的を一つ選び、対応画面を確認します。現在 IDE は Plugins 非対応で、CLI は /plugins、デスクトップは Plugins を使います。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "操作手順"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 説明、提供元、権限を確認し必要なものだけ導入します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 公式認証でアカウントと範囲を確認します。パスワードを依頼文に入れません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. CLI は新規セッションから読み取りを試し、期待するアカウントの結果か確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 不要なら無効化や削除を行い、必要に応じて外部サービス側の許可も解除します。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugins/diagram-1.svg",
+          "alt": "24. Plugins と外部サービス — 作業の流れを表す図です。製品画面の画像ではありません。 Plugin → Connect → Tool",
+          "width": 1600,
+          "height": 900,
+          "caption": "24. Plugins と外部サービス — 作業の流れを表す図です。製品画面の画像ではありません。 Plugin → Connect → Tool",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習用の依頼"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "指定したプラグインで範囲を明示して読み取りだけを行ってください。送信や変更はしないでください。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "例と確認方法"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/plugins"
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認項目",
+            "確認方法"
+          ],
+          "rows": [
+            [
+              "環境を確かめる",
+              "目的を一つ選び、対応画面を確認します。現在 IDE は Plugins 非対応で、CLI は /plugins、デスクトップは Plugins を使います。"
+            ],
+            [
+              "一つの操作を行う",
+              "不要なら無効化や削除を行い、必要に応じて外部サービス側の許可も解除します。"
+            ],
+            [
+              "実際の結果を調べる",
+              "正しいアカウントで結果を得て、接続解除方法も分かれば完了です。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "期待する結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "正しいアカウントで結果を得て、接続解除方法も分かれば完了です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "トラブル対応"
+        },
+        {
+          "type": "paragraph",
+          "text": "機能がない場合は対応画面、再起動、接続、管理者設定を確認します。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "公式の出典",
+          "text": "各 OS の手順は公式文書で確認していますが、すべての環境で実機検証したわけではありません。画面や提供状況は異なる場合があります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "次に学ぶこと"
+        },
+        {
+          "type": "link",
+          "text": "Codex 学習ガイドに戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "plugins",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "build-skills",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Plugins와 외부 서비스",
+      "description": "Plugin은 Skills와 MCP를 배포할 수 있습니다. 설치, 계정 연결과 도구 성공은 별도 단계입니다.",
+      "hero": {
+        "src": "/guides/codex-plugins/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Plugin은 Skills와 "
+            },
+            {
+              "type": "link",
+              "text": "MCP",
+              "url": "https://mokaair.com/ko/life/codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": "를 배포할 수 있습니다. 설치, 계정 연결과 도구 성공은 별도 단계입니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "학습 목표"
+        },
+        {
+          "type": "paragraph",
+          "text": "올바른 계정에서 결과를 얻고 연결 해제 방법도 알면 완료입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예상 실습 시간: 15 분"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전 준비"
+        },
+        {
+          "type": "paragraph",
+          "text": "목적 하나를 정하고 지원 화면을 확인합니다. 현재 IDE는 Plugins를 지원하지 않으며 CLI는 /plugins, 데스크톱은 Plugins를 사용합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "단계별 작업"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 설명, 출처와 권한을 확인하고 필요한 것만 설치합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 공식 인증에서 계정과 범위를 확인합니다. 비밀번호를 요청문에 넣지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. CLI는 새 세션에서 읽기를 시험하고 예상한 계정의 결과인지 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 필요 없으면 비활성화하거나 제거하고 필요에 따라 외부 서비스 권한도 해제합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugins/diagram-1.svg",
+          "alt": "24. Plugins와 외부 서비스 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Plugin → Connect → Tool",
+          "width": 1600,
+          "height": 900,
+          "caption": "24. Plugins와 외부 서비스 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Plugin → Connect → Tool",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "연습 요청"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "선택한 플러그인으로 범위를 명시한 읽기만 수행하세요. 전송하거나 변경하지 마세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예시와 검증"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "/plugins"
+        },
+        {
+          "type": "table",
+          "header": [
+            "검사 항목",
+            "확인 방법"
+          ],
+          "rows": [
+            [
+              "환경 확인",
+              "목적 하나를 정하고 지원 화면을 확인합니다. 현재 IDE는 Plugins를 지원하지 않으며 CLI는 /plugins, 데스크톱은 Plugins를 사용합니다."
+            ],
+            [
+              "작업 하나 완료",
+              "필요 없으면 비활성화하거나 제거하고 필요에 따라 외부 서비스 권한도 해제합니다."
+            ],
+            [
+              "실제 결과 확인",
+              "올바른 계정에서 결과를 얻고 연결 해제 방법도 알면 완료입니다."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예상 결과"
+        },
+        {
+          "type": "paragraph",
+          "text": "올바른 계정에서 결과를 얻고 연결 해제 방법도 알면 완료입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결"
+        },
+        {
+          "type": "paragraph",
+          "text": "도구가 없으면 지원 화면, 새 세션, 연결과 관리자 정책을 확인하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "공식 출처",
+          "text": "각 OS 절차는 공식 문서로 확인했으며 모든 환경에서 직접 시험한 것은 아닙니다. 화면과 계정별 제공 기능은 다를 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이어서 학습하기"
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "plugins",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "build-skills",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": 7,
+  "sources": [
+    "prompting"
+  ],
+  "text": {
+    "zh-TW": [
+      "有效的需求不是把提示詞寫得很長，而是讓代理知道你要什麼、已有哪些材料、有哪些界線，以及怎樣算完成。同一個『幫我改善網頁』，可以指速度、外觀或無障礙；先把目標變成能觀察的行為。",
+      "準備目前畫面或檔案路徑、問題出現的條件，以及一個希望改成的例子。不要把整個硬碟或所有聊天紀錄當成背景。先選一個能獨立完成的小需求。",
+      [
+        "目標寫使用者行為，例如『手機上可看完介紹卡，不會橫向捲動』。避免只有『優化』『專業一點』這類無法驗證的形容詞。",
+        "背景寫目前使用的檔案與狀況，例如只有 index.html、沒有後端。附上必要截圖，說明截圖是在什麼寬度下取得。",
+        "限制寫真正需要保留的內容，例如不能新增框架、不能更改原有文字。把可以自主決定的細節留給 Codex，避免每一行都互相矛盾。",
+        "完成條件列出檢查方式，例如 390px 與 1280px 都能閱讀、鍵盤可操作。回覆若偏離目標，指出具體差異並要求在原任務續修，不需要整段重新開始。"
+      ],
+      "你能用四部分描述需求，而且第三人可根據完成條件判斷結果是否合格。留存一份可以重用的需求模板。",
+      "代理反覆問問題時，檢查是否缺少輸入範例或結果定義。若兩個限制衝突，直接決定取捨；只增加『務必完美』並不能解決衝突。",
+      "目標：讓 index.html 在 390px 寬度可讀。背景：單一靜態介紹卡。限制：保留文字，不加套件。完成條件：無頁面橫向捲動，文字有左右留白；請說明如何驗證。"
+    ],
+    "en": [
+      "A useful request explains the outcome, available context, boundaries and acceptance checks. 'Improve the page' could mean speed, appearance or accessibility. Convert it into observable behavior before adding more instructions.",
+      "Collect the relevant file path or screenshot, the conditions that reveal the problem and one example of the desired result. Do not attach an entire disk or conversation history. Choose one independently finishable change.",
+      [
+        "State a user-visible goal, such as reading the profile card on a phone without horizontal scrolling. Avoid unverifiable adjectives like 'better' or 'professional'.",
+        "Describe the current setup: index.html only, no backend. Attach the necessary screenshot and identify the viewport used.",
+        "List constraints that really matter, such as keeping the wording and adding no framework. Leave routine implementation details to Codex and remove contradictory requirements.",
+        "Define checks at 390px and 1280px and include keyboard use when relevant. If the answer misses the goal, point out the exact difference and continue the same task."
+      ],
+      "A third party can judge the result using your acceptance criteria. Keep the four-part request as a reusable template.",
+      "Repeated clarification often means a missing input example or an undefined result. Resolve conflicting constraints explicitly; adding 'make it perfect' does not resolve them.",
+      "Goal: make index.html readable at 390px. Context: one static profile card. Constraints: keep all text and add no packages. Done: no page-level horizontal scrolling and adequate side padding. Explain verification."
+    ],
+    "ja": [
+      "よい依頼は成果、背景、制約、完了条件を明確にします。「ページを改善」だけでは速度、見た目、操作性のどれか分かりません。まず観察できる動作へ言い換えます。",
+      "対象ファイルや画像、問題が出る条件、期待する例を用意します。関係ない全履歴は渡さず、一つの独立した変更を選びます。",
+      [
+        "目標を「スマートフォンで紹介カードを横スクロールせず読める」のように書きます。曖昧な形容詞だけにしません。",
+        "背景に index.html 一つでバックエンドがないことを記載します。画像には撮影した画面幅も添えます。",
+        "文章を維持する、フレームワークを追加しないなど必要な制約を示します。細部の判断をすべて固定せず、矛盾する条件は取り除きます。",
+        "390px と 1280px での表示やキーボード操作を完了条件にします。ずれた結果には具体的な差を伝え、同じタスクで修正します。"
+      ],
+      "第三者が完了条件から合否を判断できる依頼になれば完了です。四項目のひな型を保存します。",
+      "質問が繰り返される場合は入力例と成果の定義を確認します。矛盾した制約は優先順位を決めます。",
+      "目標：index.html を幅 390px で読めるようにする。背景：静的な紹介カード一枚。制約：文章を維持しパッケージは追加しない。完了：横スクロールがなく左右に余白がある。確認方法も示してください。"
+    ],
+    "ko": [
+      "좋은 요청은 결과, 배경, 제한과 완료 조건을 명확히 합니다. '페이지 개선'만으로는 속도, 디자인, 접근성 중 무엇인지 알 수 없습니다. 먼저 관찰 가능한 동작으로 바꿔 적으세요.",
+      "관련 파일이나 스크린샷, 문제가 발생하는 조건과 원하는 예시를 준비합니다. 전체 기록을 넘기지 말고 독립적으로 끝낼 수 있는 변경 하나를 선택합니다.",
+      [
+        "'휴대폰에서 소개 카드를 가로 스크롤 없이 읽기'처럼 사용자 동작을 목표로 적습니다. '더 좋게'라는 형용사만 쓰지 않습니다.",
+        "index.html 하나이고 백엔드가 없다는 현재 상황을 적습니다. 스크린샷에는 촬영한 화면 너비를 덧붙입니다.",
+        "문구 유지, 프레임워크 추가 금지처럼 중요한 제한을 명시합니다. 세부 구현 판단은 남겨 두고 충돌하는 조건은 정리합니다.",
+        "390px와 1280px 표시 및 필요한 키보드 동작을 완료 조건으로 정합니다. 결과가 다르면 차이를 구체적으로 설명하고 같은 작업에서 수정합니다."
+      ],
+      "제삼자가 완료 조건을 보고 합격 여부를 판단할 수 있으면 됩니다. 네 부분으로 된 요청 템플릿을 저장하세요.",
+      "질문이 반복되면 입력 예시나 결과 정의가 빠졌는지 확인합니다. 충돌하는 조건은 우선순위를 결정하세요.",
+      "목표: index.html을 390px 너비에서 읽기 쉽게 하기. 배경: 정적 소개 카드 한 장. 제한: 문구 유지, 패키지 추가 금지. 완료: 가로 스크롤이 없고 좌우 여백이 있음. 검증 방법도 설명하세요."
+    ]
+  }
+}

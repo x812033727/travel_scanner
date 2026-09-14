@@ -1,0 +1,782 @@
+{
+  "slug": "codex-automations",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 129,
+  "locales": {
+    "zh-TW": {
+      "title": "排程、自動化與提醒",
+      "description": "排程讓固定工作在指定時間執行，但要先確認使用哪個環境。需要本機檔案的桌面排程，電腦與應用程式必須在執行時可用；雲端任務不能直接讀取未提供的本機資料。",
+      "hero": {
+        "src": "/guides/codex-automations/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "排程讓固定工作在指定時間執行，但要先確認使用哪個環境。需要本機檔案的桌面排程，電腦與應用程式必須在執行時可用；雲端任務不能直接讀取未提供的本機資料。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "你會學到什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "排程設定與需求一致，有一次可核對的測試執行，並能找到暫停或移除入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "預估操作時間: 15 分鐘"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前"
+        },
+        {
+          "type": "paragraph",
+          "text": "選一項沒有副作用的練習，例如每週檢查練習專案的待辦。先決定時區、頻率、資料來源與通知條件，不從自動發布或刪除資料開始。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逐步操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 在桌面版或支援的網頁介面描述排程需求。CLI 與 IDE 可準備提示詞，但官方目前不提供 Scheduled 管理介面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 建立前核對工作環境、每週哪一天幾點、時區與要讀的資料。說清楚什麼時候通知，例如只有出現新的待辦或執行失敗。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 建立後到 Scheduled 檢查保存的設定，先執行一次測試並查看近期執行結果。真的產出符合格式的報告後，再信任下一次排程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 停止使用時暫停或刪除這個特定排程，確認清單狀態已變更。修改時間時更新既有排程，不再建立一個同名副本。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-automations/diagram-1.svg",
+          "alt": "29. 排程、自動化與提醒 — 實作順序示意圖，非產品介面截圖。 Schedule → Run → Notification",
+          "width": 1600,
+          "height": 900,
+          "caption": "29. 排程、自動化與提醒 — 實作順序示意圖，非產品介面截圖。 Schedule → Run → Notification",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "每週一上午 9 點，Asia/Taipei 時區，唯讀檢查練習專案的待辦。只有新待辦或執行失敗才通知，不修改檔案。先讓我核對保存的頻率與資料來源。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "範例與驗證"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "驗收方式"
+          ],
+          "rows": [
+            [
+              "先確認環境",
+              "選一項沒有副作用的練習，例如每週檢查練習專案的待辦。先決定時區、頻率、資料來源與通知條件，不從自動發布或刪除資料開始。"
+            ],
+            [
+              "完成一個操作",
+              "停止使用時暫停或刪除這個特定排程，確認清單狀態已變更。修改時間時更新既有排程，不再建立一個同名副本。"
+            ],
+            [
+              "檢查真實結果",
+              "排程設定與需求一致，有一次可核對的測試執行，並能找到暫停或移除入口。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "排程設定與需求一致，有一次可核對的測試執行，並能找到暫停或移除入口。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題"
+        },
+        {
+          "type": "paragraph",
+          "text": "排程存在不等於已執行。沒有通知先查最近執行記錄、通知設定與本機是否在線；不要反覆新增排程造成重複工作。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "官方來源",
+          "text": "跨平台操作依官方文件查證；未在每個系統實測。介面與帳號提供的功能可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸閱讀"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "automations",
+          "url": "https://learn.chatgpt.com/docs/automations",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "计划任务、自动化与提醒",
+      "description": "排程让固定工作在指定时间执行，但要先确认使用哪个环境。需要本机档案的桌面排程，电脑与应用程式必须在执行时可用；云端任务不能直接读取未提供的本机资料。",
+      "hero": {
+        "src": "/guides/codex-automations/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "排程让固定工作在指定时间执行，但要先确认使用哪个环境。需要本机档案的桌面排程，电脑与应用程式必须在执行时可用；云端任务不能直接读取未提供的本机资料。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "你会学到什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "排程设定与需求一致，有一次可核对的测试执行，并能找到暂停或移除入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预估操作时间: 15 分钟"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前"
+        },
+        {
+          "type": "paragraph",
+          "text": "选一项没有副作用的练习，例如每周检查练习专案的待办。先决定时区、频率、资料来源与通知条件，不从自动发布或删除资料开始。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逐步操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 在桌面版或支援的网页介面描述排程需求。CLI 与 IDE 可准备提示词，但官方目前不提供 Scheduled 管理介面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 建立前核对工作环境、每周哪一天几点、时区与要读的资料。说清楚什么时候通知，例如只有出现新的待办或执行失败。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 建立后到 Scheduled 检查保存的设定，先执行一次测试并查看近期执行结果。真的产出符合格式的报告后，再信任下一次排程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 停止使用时暂停或删除这个特定排程，确认清单状态已变更。修改时间时更新既有排程，不再建立一个同名副本。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-automations/diagram-1.svg",
+          "alt": "29. 计划任务、自动化与提醒 — 实作顺序示意图，非产品介面截图。 Schedule → Run → Notification",
+          "width": 1600,
+          "height": 900,
+          "caption": "29. 计划任务、自动化与提醒 — 实作顺序示意图，非产品介面截图。 Schedule → Run → Notification",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "练习需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "每周一上午 9 点，Asia/Taipei 时区，唯读检查练习专案的待办。只有新待办或执行失败才通知，不修改档案。先让我核对保存的频率与资料来源。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "范例与验证"
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查项目",
+            "验收方式"
+          ],
+          "rows": [
+            [
+              "先确认环境",
+              "选一项没有副作用的练习，例如每周检查练习专案的待办。先决定时区、频率、资料来源与通知条件，不从自动发布或删除资料开始。"
+            ],
+            [
+              "完成一个操作",
+              "停止使用时暂停或删除这个特定排程，确认清单状态已变更。修改时间时更新既有排程，不再建立一个同名副本。"
+            ],
+            [
+              "检查真实结果",
+              "排程设定与需求一致，有一次可核对的测试执行，并能找到暂停或移除入口。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成结果"
+        },
+        {
+          "type": "paragraph",
+          "text": "排程设定与需求一致，有一次可核对的测试执行，并能找到暂停或移除入口。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题"
+        },
+        {
+          "type": "paragraph",
+          "text": "排程存在不等于已执行。没有通知先查最近执行记录、通知设定与本机是否在线；不要反复新增排程造成重复工作。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "官方来源",
+          "text": "跨平台操作依官方文件查证；未在每个系统实测。介面与帐号提供的功能可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸阅读"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "automations",
+          "url": "https://learn.chatgpt.com/docs/automations",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Scheduled tasks and reminders",
+      "description": "Scheduled work needs a defined execution environment. A desktop task that reads local files requires the computer and app to be available at run time. Cloud work cannot directly read local data you have not supplied.",
+      "hero": {
+        "src": "/guides/codex-automations/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Scheduled work needs a defined execution environment. A desktop task that reads local files requires the computer and app to be available at run time. Cloud work cannot directly read local data you have not supplied."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will learn"
+        },
+        {
+          "type": "paragraph",
+          "text": "The saved schedule matches the request, a test run has evidence and you can locate pause/removal controls."
+        },
+        {
+          "type": "paragraph",
+          "text": "Estimated practice time: 15 min"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before you start"
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose a read-only exercise such as a weekly backlog check. Define time zone, frequency, source and notification conditions before scheduling anything that publishes or deletes."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step by step"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Describe the schedule in desktop or a supported web interface. CLI and IDE can prepare prompts, but currently do not provide Scheduled management."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. Verify environment, weekday, time, time zone and source. Specify meaningful notification conditions, such as new backlog items or failure."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. Inspect the saved configuration in Scheduled, run a test and read the recent result. Verify the report before relying on the next run."
+        },
+        {
+          "type": "paragraph",
+          "text": "4. Pause or remove that specific schedule when done and check its state. Update the existing schedule when changing time instead of creating a duplicate."
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-automations/diagram-1.svg",
+          "alt": "29. Scheduled tasks and reminders — Workflow illustration, not a product screenshot. Schedule → Run → Notification",
+          "width": 1600,
+          "height": 900,
+          "caption": "29. Scheduled tasks and reminders — Workflow illustration, not a product screenshot. Schedule → Run → Notification",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice request"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Every Monday at 09:00 Asia/Taipei, read the practice-project backlog. Notify only for new items or execution failure. Do not edit files. Show the saved frequency and source for verification."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Example and verification"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "Acceptance method"
+          ],
+          "rows": [
+            [
+              "Confirm the environment",
+              "Choose a read-only exercise such as a weekly backlog check. Define time zone, frequency, source and notification conditions before scheduling anything that publishes or deletes."
+            ],
+            [
+              "Complete one action",
+              "Pause or remove that specific schedule when done and check its state. Update the existing schedule when changing time instead of creating a duplicate."
+            ],
+            [
+              "Inspect the actual result",
+              "The saved schedule matches the request, a test run has evidence and you can locate pause/removal controls."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Expected result"
+        },
+        {
+          "type": "paragraph",
+          "text": "The saved schedule matches the request, a test run has evidence and you can locate pause/removal controls."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting"
+        },
+        {
+          "type": "paragraph",
+          "text": "A schedule's existence is not proof of execution. Check run history, notification settings and host availability before creating another schedule."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Official sources",
+          "text": "Cross-platform steps were checked against official documentation, not tested on every operating system. Interfaces and account availability can differ."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Continue learning"
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "automations",
+          "url": "https://learn.chatgpt.com/docs/automations",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "スケジュール実行とリマインダー",
+      "description": "定期実行には実行環境を決めます。ローカルファイルを読む場合、実行時にコンピューターとアプリが利用可能である必要があります。",
+      "hero": {
+        "src": "/guides/codex-automations/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "定期実行には実行環境を決めます。ローカルファイルを読む場合、実行時にコンピューターとアプリが利用可能である必要があります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "学べること"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存設定と試験結果を確認し、停止方法が分かれば完了です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習時間の目安: 15 分"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "始める前に"
+        },
+        {
+          "type": "paragraph",
+          "text": "読み取りだけの週次確認を選び、時刻、時区、頻度、通知条件を決めます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "操作手順"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 対応するデスクトップや Web で依頼します。CLI・IDE には現在 Scheduled 管理画面がありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 曜日、時刻、時区、環境、資料を確認し、新規項目や失敗だけ通知するなど条件を指定します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. Scheduled で保存内容を確認して試験実行し、最近の結果を読みます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 不要なら該当設定を停止・削除します。時刻変更は既存設定を更新し、重複を作りません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-automations/diagram-1.svg",
+          "alt": "29. スケジュール実行とリマインダー — 作業の流れを表す図です。製品画面の画像ではありません。 Schedule → Run → Notification",
+          "width": 1600,
+          "height": 900,
+          "caption": "29. スケジュール実行とリマインダー — 作業の流れを表す図です。製品画面の画像ではありません。 Schedule → Run → Notification",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習用の依頼"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "毎週月曜 9 時、Asia/Taipei で練習プロジェクトの残件を読み取り、新規項目か失敗だけ通知してください。変更せず、保存設定を確認させてください。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "例と確認方法"
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認項目",
+            "確認方法"
+          ],
+          "rows": [
+            [
+              "環境を確かめる",
+              "読み取りだけの週次確認を選び、時刻、時区、頻度、通知条件を決めます。"
+            ],
+            [
+              "一つの操作を行う",
+              "不要なら該当設定を停止・削除します。時刻変更は既存設定を更新し、重複を作りません。"
+            ],
+            [
+              "実際の結果を調べる",
+              "保存設定と試験結果を確認し、停止方法が分かれば完了です。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "期待する結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存設定と試験結果を確認し、停止方法が分かれば完了です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "トラブル対応"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定の存在と実行成功は別です。通知がなければ履歴とホストを確認します。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "公式の出典",
+          "text": "各 OS の手順は公式文書で確認していますが、すべての環境で実機検証したわけではありません。画面や提供状況は異なる場合があります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "次に学ぶこと"
+        },
+        {
+          "type": "link",
+          "text": "Codex 学習ガイドに戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "automations",
+          "url": "https://learn.chatgpt.com/docs/automations",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "예약 작업과 알림",
+      "description": "예약 작업에는 실행 환경을 정해야 합니다. 로컬 파일을 읽는 작업은 실행 시 컴퓨터와 앱을 사용할 수 있어야 합니다.",
+      "hero": {
+        "src": "/guides/codex-automations/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "예약 작업에는 실행 환경을 정해야 합니다. 로컬 파일을 읽는 작업은 실행 시 컴퓨터와 앱을 사용할 수 있어야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "학습 목표"
+        },
+        {
+          "type": "paragraph",
+          "text": "저장 설정과 시험 결과를 확인하고 중지 방법을 알면 완료입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예상 실습 시간: 15 분"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전 준비"
+        },
+        {
+          "type": "paragraph",
+          "text": "읽기 전용 주간 점검을 선택하고 시간, 시간대, 빈도와 알림 조건을 정합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "단계별 작업"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 지원 데스크톱이나 웹에서 요청합니다. CLI와 IDE에는 현재 Scheduled 관리 화면이 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 요일, 시간, 시간대, 환경과 자료를 확인하고 새 항목이나 실패만 알리는 조건을 지정합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. Scheduled에서 저장 내용을 확인하고 시험 실행하여 최근 결과를 읽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 필요 없으면 해당 설정을 중지하거나 삭제합니다. 시간 변경은 기존 설정을 업데이트하고 중복 생성하지 않습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-automations/diagram-1.svg",
+          "alt": "29. 예약 작업과 알림 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Schedule → Run → Notification",
+          "width": 1600,
+          "height": 900,
+          "caption": "29. 예약 작업과 알림 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Schedule → Run → Notification",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "연습 요청"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "매주 월요일 9시 Asia/Taipei에 연습 프로젝트의 남은 일을 읽고 새 항목이나 실패만 알리세요. 수정하지 말고 저장 설정을 확인하게 해 주세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예시와 검증"
+        },
+        {
+          "type": "table",
+          "header": [
+            "검사 항목",
+            "확인 방법"
+          ],
+          "rows": [
+            [
+              "환경 확인",
+              "읽기 전용 주간 점검을 선택하고 시간, 시간대, 빈도와 알림 조건을 정합니다."
+            ],
+            [
+              "작업 하나 완료",
+              "필요 없으면 해당 설정을 중지하거나 삭제합니다. 시간 변경은 기존 설정을 업데이트하고 중복 생성하지 않습니다."
+            ],
+            [
+              "실제 결과 확인",
+              "저장 설정과 시험 결과를 확인하고 중지 방법을 알면 완료입니다."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예상 결과"
+        },
+        {
+          "type": "paragraph",
+          "text": "저장 설정과 시험 결과를 확인하고 중지 방법을 알면 완료입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결"
+        },
+        {
+          "type": "paragraph",
+          "text": "설정 존재와 실행 성공은 다릅니다. 알림이 없으면 이력과 호스트를 확인하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "공식 출처",
+          "text": "각 OS 절차는 공식 문서로 확인했으며 모든 환경에서 직접 시험한 것은 아닙니다. 화면과 계정별 제공 기능은 다를 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이어서 학습하기"
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "automations",
+          "url": "https://learn.chatgpt.com/docs/automations",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

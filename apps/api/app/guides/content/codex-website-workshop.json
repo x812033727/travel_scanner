@@ -1,0 +1,1047 @@
+{
+  "slug": "codex-website-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 131,
+  "locales": {
+    "zh-TW": {
+      "title": "實戰：製作小網站",
+      "description": "這個實戰把前面的需求、Plan、MD 規則、瀏覽器與驗收串起來，完成一個三張卡片的虛構工作室網站。以單一 HTML 做出清楚的內容與自適應版面，練習完整交付，而不是追求一次加入很多功能。",
+      "hero": {
+        "src": "/guides/codex-website-workshop/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這個實戰把前面的需求、Plan、MD 規則、瀏覽器與驗收串起來，完成一個三張卡片的虛構工作室網站。以單一 HTML 做出清楚的內容與自適應版面，練習完整交付，而不是追求一次加入很多功能。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "你會學到什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "頁面有完整內容、可用的頁內導覽、手機單欄與桌面三欄。瀏覽器沒有頁面橫向溢出，鍵盤可操作，重新開啟檔案仍正常。"
+        },
+        {
+          "type": "paragraph",
+          "text": "預估操作時間: 45 分鐘"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前"
+        },
+        {
+          "type": "paragraph",
+          "text": "預留約 45 分鐘，準備空的練習資料夾、文字編輯器、Codex 與瀏覽器。下方是可直接儲存為 index.html 的完整參考成品；你可以先讓 Codex 做自己的版本，再用相同的驗收比較。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逐步操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 先寫簡短需求：主標、介紹、三張專案卡、頁內導覽、說明區。資料全為虛構，不需要表單、帳號、API 或外部字型。用 Plan 模式確認範圍後再實作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "2. 建立 README 與簡短 "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/zh-TW/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "，說明單檔限制、文字內容、手機排版與驗收。要求 Codex 只在練習資料夾建立頁面，保留所有已提供的內容。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 開啟實際頁面：先以 390px 看單欄卡片，再以 1280px 看三欄；用 Tab 移動到兩個導覽連結，按 Enter 確認會到相應區塊，檢查焦點輪廓與文字對比。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 請 Codex 修正一項實際問題，重新跑同樣驗收，再檢查 diff。交付說明列出檔案、啟動方式、已測尺寸與尚未測的環境；此流程不包含公開部署。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/diagram-1.svg",
+          "alt": "31. 實戰：製作小網站 — 實作順序示意圖，非產品介面截圖。 Brief → HTML / CSS → Browser checks",
+          "width": 1600,
+          "height": 900,
+          "caption": "31. 實戰：製作小網站 — 實作順序示意圖，非產品介面截圖。 Brief → HTML / CSS → Browser checks",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "製作單一 HTML 的虛構工作室網站，包含主標、介紹、三张卡片、頁內導覽與說明區。用原生 HTML/CSS，手機一欄、桌面三欄，不使用外部資源。先確認計畫，再實作，最後以鍵盤與兩種寬度驗證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "範例與驗證"
+        },
+        {
+          "type": "code",
+          "language": "html",
+          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/workshop-390.png",
+          "alt": "實戰：製作小網站 — 390px / Windows Edge",
+          "caption": "Windows 上的 Edge 153.0.4234.32 實際瀏覽器截圖，2026-09-14；使用公開虛構練習 HTML。數字 01／02／03 對應規劃、製作與驗證。390px 為模擬手機寬度，非 iPhone 或 Android 實機測試。橘框是 Tab 鍵的焦點提示。",
+          "width": 390,
+          "height": 1589,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/workshop-1280.png",
+          "alt": "實戰：製作小網站 — 1280px / Windows Edge",
+          "caption": "Windows 上的 Edge 153.0.4234.32 實際瀏覽器截圖，2026-09-14；使用公開虛構練習 HTML。數字 01／02／03 對應規劃、製作與驗證。390px 為模擬手機寬度，非 iPhone 或 Android 實機測試。橘框是 Tab 鍵的焦點提示。",
+          "width": 1280,
+          "height": 1092,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "驗收方式"
+          ],
+          "rows": [
+            [
+              "先確認環境",
+              "預留約 45 分鐘，準備空的練習資料夾、文字編輯器、Codex 與瀏覽器。下方是可直接儲存為 index.html 的完整參考成品；你可以先讓 Codex 做自己的版本，再用相同的驗收比較。"
+            ],
+            [
+              "完成一個操作",
+              "請 Codex 修正一項實際問題，重新跑同樣驗收，再檢查 diff。交付說明列出檔案、啟動方式、已測尺寸與尚未測的環境；此流程不包含公開部署。"
+            ],
+            [
+              "檢查真實結果",
+              "頁面有完整內容、可用的頁內導覽、手機單欄與桌面三欄。瀏覽器沒有頁面橫向溢出，鍵盤可操作，重新開啟檔案仍正常。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "頁面有完整內容、可用的頁內導覽、手機單欄與桌面三欄。瀏覽器沒有頁面橫向溢出，鍵盤可操作，重新開啟檔案仍正常。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果代理加入依賴或後端，回到第一版限制。連結能看到不代表能使用，要真的按 Enter；本機打開成功也不等於已上線。不同系統依官方文件操作，沒有實测的環境保留標示。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "官方來源",
+          "text": "跨平台操作依官方文件查證；未在每個系統實測。介面與帳號提供的功能可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸閱讀"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "browser",
+          "url": "https://learn.chatgpt.com/docs/browser",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "code-review",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "实战：制作小网站",
+      "description": "这个实战把前面的需求、Plan、MD 规则、浏览器与验收串起来，完成一个三张卡片的虚构工作室网站。以单一 HTML 做出清楚的内容与自适应版面，练习完整交付，而不是追求一次加入很多功能。",
+      "hero": {
+        "src": "/guides/codex-website-workshop/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "这个实战把前面的需求、Plan、MD 规则、浏览器与验收串起来，完成一个三张卡片的虚构工作室网站。以单一 HTML 做出清楚的内容与自适应版面，练习完整交付，而不是追求一次加入很多功能。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "你会学到什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "页面有完整内容、可用的页内导览、手机单栏与桌面三栏。浏览器没有页面横向溢出，键盘可操作，重新开启档案仍正常。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预估操作时间: 45 分钟"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前"
+        },
+        {
+          "type": "paragraph",
+          "text": "预留约 45 分钟，准备空的练习资料夹、文字编辑器、Codex 与浏览器。下方是可直接储存为 index.html 的完整参考成品；你可以先让 Codex 做自己的版本，再用相同的验收比较。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逐步操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 先写简短需求：主标、介绍、三张专案卡、页内导览、说明区。资料全为虚构，不需要表单、帐号、API 或外部字型。用 Plan 模式确认范围后再实作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "2. 建立 README 与简短 "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/zh-CN/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "，说明单档限制、文字内容、手机排版与验收。要求 Codex 只在练习资料夹建立页面，保留所有已提供的内容。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 开启实际页面：先以 390px 看单栏卡片，再以 1280px 看三栏；用 Tab 移动到两个导览连结，按 Enter 确认会到相应区块，检查焦点轮廓与文字对比。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 请 Codex 修正一项实际问题，重新跑同样验收，再检查 diff。交付说明列出档案、启动方式、已测尺寸与尚未测的环境；此流程不包含公开部署。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/diagram-1.svg",
+          "alt": "31. 实战：制作小网站 — 实作顺序示意图，非产品介面截图。 Brief → HTML / CSS → Browser checks",
+          "width": 1600,
+          "height": 900,
+          "caption": "31. 实战：制作小网站 — 实作顺序示意图，非产品介面截图。 Brief → HTML / CSS → Browser checks",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "练习需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "制作单一 HTML 的虚构工作室网站，包含主标、介绍、三张卡片、页内导览与说明区。用原生 HTML/CSS，手机一栏、桌面三栏，不使用外部资源。先确认计划，再实作，最后以键盘与两种宽度验证。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "范例与验证"
+        },
+        {
+          "type": "code",
+          "language": "html",
+          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/workshop-390.png",
+          "alt": "实战：制作小网站 — 390px / Windows Edge",
+          "caption": "Windows 上的 Edge 153.0.4234.32 实际浏览器截图，2026-09-14；使用公开虚构练习 HTML。数字 01／02／03 对应规划、制作与验证。390px 为模拟手机宽度，非 iPhone 或 Android 实机测试。橘框是 Tab 键的焦点提示。",
+          "width": 390,
+          "height": 1589,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/workshop-1280.png",
+          "alt": "实战：制作小网站 — 1280px / Windows Edge",
+          "caption": "Windows 上的 Edge 153.0.4234.32 实际浏览器截图，2026-09-14；使用公开虚构练习 HTML。数字 01／02／03 对应规划、制作与验证。390px 为模拟手机宽度，非 iPhone 或 Android 实机测试。橘框是 Tab 键的焦点提示。",
+          "width": 1280,
+          "height": 1092,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查项目",
+            "验收方式"
+          ],
+          "rows": [
+            [
+              "先确认环境",
+              "预留约 45 分钟，准备空的练习资料夹、文字编辑器、Codex 与浏览器。下方是可直接储存为 index.html 的完整参考成品；你可以先让 Codex 做自己的版本，再用相同的验收比较。"
+            ],
+            [
+              "完成一个操作",
+              "请 Codex 修正一项实际问题，重新跑同样验收，再检查 diff。交付说明列出档案、启动方式、已测尺寸与尚未测的环境；此流程不包含公开部署。"
+            ],
+            [
+              "检查真实结果",
+              "页面有完整内容、可用的页内导览、手机单栏与桌面三栏。浏览器没有页面横向溢出，键盘可操作，重新开启档案仍正常。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成结果"
+        },
+        {
+          "type": "paragraph",
+          "text": "页面有完整内容、可用的页内导览、手机单栏与桌面三栏。浏览器没有页面横向溢出，键盘可操作，重新开启档案仍正常。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果代理加入依赖或后端，回到第一版限制。连结能看到不代表能使用，要真的按 Enter；本机打开成功也不等于已上线。不同系统依官方文件操作，没有实测的环境保留标示。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "官方来源",
+          "text": "跨平台操作依官方文件查证；未在每个系统实测。介面与帐号提供的功能可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸阅读"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "browser",
+          "url": "https://learn.chatgpt.com/docs/browser",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "code-review",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Workshop: build a small website",
+      "description": "This workshop connects clear requests, planning, MD instructions, browser checks and delivery. Build a fictional studio site with three cards in one HTML file. Practice a complete, inspectable result before expanding features.",
+      "hero": {
+        "src": "/guides/codex-website-workshop/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "This workshop connects clear requests, planning, MD instructions, browser checks and delivery. Build a fictional studio site with three cards in one HTML file. Practice a complete, inspectable result before expanding features."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will learn"
+        },
+        {
+          "type": "paragraph",
+          "text": "The page has complete content, working anchor navigation and responsive columns without page-level overflow. Keyboard navigation works and reopening the file preserves behavior."
+        },
+        {
+          "type": "paragraph",
+          "text": "Estimated practice time: 45 min"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before you start"
+        },
+        {
+          "type": "paragraph",
+          "text": "Allow about 45 minutes and prepare an empty folder, editor, Codex and browser. The complete reference below can be saved as index.html. You can first ask Codex to build its own version, then compare both against the same criteria."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step by step"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Define a headline, introduction, three project cards, in-page navigation and an about section. Use fictional content without forms, accounts, APIs or external fonts. Confirm scope in Plan mode before implementing."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "2. Create README and concise "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/en/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " instructions covering the single-file constraint, supplied wording, mobile layout and checks. Restrict edits to the practice folder."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "3. Open the real page at 390px for one column and 1280px for three. Tab to both navigation links, press Enter and verify the correct section, visible focus and readable contrast."
+        },
+        {
+          "type": "paragraph",
+          "text": "4. Request one observed correction, repeat the same checks and review the diff. Deliver files, opening instructions, tested widths and untested environments. Public deployment is outside this exercise."
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/diagram-1.svg",
+          "alt": "31. Workshop: build a small website — Workflow illustration, not a product screenshot. Brief → HTML / CSS → Browser checks",
+          "width": 1600,
+          "height": 900,
+          "caption": "31. Workshop: build a small website — Workflow illustration, not a product screenshot. Brief → HTML / CSS → Browser checks",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice request"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Build one HTML file for a fictional studio with headline, introduction, three cards, anchor navigation and an about section. Use native HTML/CSS, one column on phones and three on desktop, with no external resources. Plan, implement, then verify by keyboard at both widths."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Example and verification"
+        },
+        {
+          "type": "code",
+          "language": "html",
+          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/workshop-390.png",
+          "alt": "Workshop: build a small website — 390px / Windows Edge",
+          "caption": "Actual browser capture: Edge 153.0.4234.32 on Windows, 2026-09-14, using fictional practice HTML. 01/02/03 identify planning, building and verification. 390px simulates a mobile viewport, not an iPhone or Android device test. The orange outline shows keyboard focus after Tab.",
+          "width": 390,
+          "height": 1589,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/workshop-1280.png",
+          "alt": "Workshop: build a small website — 1280px / Windows Edge",
+          "caption": "Actual browser capture: Edge 153.0.4234.32 on Windows, 2026-09-14, using fictional practice HTML. 01/02/03 identify planning, building and verification. 390px simulates a mobile viewport, not an iPhone or Android device test. The orange outline shows keyboard focus after Tab.",
+          "width": 1280,
+          "height": 1092,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "Acceptance method"
+          ],
+          "rows": [
+            [
+              "Confirm the environment",
+              "Allow about 45 minutes and prepare an empty folder, editor, Codex and browser. The complete reference below can be saved as index.html. You can first ask Codex to build its own version, then compare both against the same criteria."
+            ],
+            [
+              "Complete one action",
+              "Request one observed correction, repeat the same checks and review the diff. Deliver files, opening instructions, tested widths and untested environments. Public deployment is outside this exercise."
+            ],
+            [
+              "Inspect the actual result",
+              "The page has complete content, working anchor navigation and responsive columns without page-level overflow. Keyboard navigation works and reopening the file preserves behavior."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Expected result"
+        },
+        {
+          "type": "paragraph",
+          "text": "The page has complete content, working anchor navigation and responsive columns without page-level overflow. Keyboard navigation works and reopening the file preserves behavior."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting"
+        },
+        {
+          "type": "paragraph",
+          "text": "If unnecessary dependencies appear, restate the first-version boundary. Visible links still need interaction tests. A locally opened file is not a published website; report platforms that were not actually tested."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Official sources",
+          "text": "Cross-platform steps were checked against official documentation, not tested on every operating system. Interfaces and account availability can differ."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Continue learning"
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "browser",
+          "url": "https://learn.chatgpt.com/docs/browser",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "code-review",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "実践：小さな Web サイトを作る",
+      "description": "依頼、計画、MD 規則、ブラウザー確認をつなげ、三枚のカードを持つ架空のスタジオサイトを作ります。単一 HTML で検証まで完了する練習です。",
+      "hero": {
+        "src": "/guides/codex-website-workshop/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "依頼、計画、MD 規則、ブラウザー確認をつなげ、三枚のカードを持つ架空のスタジオサイトを作ります。単一 HTML で検証まで完了する練習です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "学べること"
+        },
+        {
+          "type": "paragraph",
+          "text": "内容、ページ内移動、レスポンシブ表示があり、横にはみ出さず、キー操作と再表示が正常なら完了です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習時間の目安: 45 分"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "始める前に"
+        },
+        {
+          "type": "paragraph",
+          "text": "約 45 分、空フォルダー、エディター、Codex、ブラウザーを用意します。下の完成例は index.html として保存できます。まず自分の版を依頼して同じ基準で比較できます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "操作手順"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 主見出し、紹介、三枚のカード、ページ内移動、説明欄を定義します。架空情報だけを使い、フォーム、API、外部フォントなしで計画します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "2. README と "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/ja/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " に単一ファイル、文章保持、モバイル表示、検証条件を書き、練習フォルダー内だけで作成させます。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 390px で一列、1280px で三列を確認します。Tab と Enter で二つのリンクを使い、移動先、フォーカス、文字の見やすさを確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 実際の問題を一つ直し、同じ検証と差分確認を行います。ファイル、開き方、検証済み寸法、未検証環境を報告します。公開は含めません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/diagram-1.svg",
+          "alt": "31. 実践：小さな Web サイトを作る — 作業の流れを表す図です。製品画面の画像ではありません。 Brief → HTML / CSS → Browser checks",
+          "width": 1600,
+          "height": 900,
+          "caption": "31. 実践：小さな Web サイトを作る — 作業の流れを表す図です。製品画面の画像ではありません。 Brief → HTML / CSS → Browser checks",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習用の依頼"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "架空スタジオの単一 HTML を作ってください。見出し、紹介、三枚のカード、ページ内リンク、説明欄を含めます。外部資源なしでモバイル一列、デスクトップ三列にし、計画後に実装してキー操作と二つの幅を検証してください。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "例と確認方法"
+        },
+        {
+          "type": "code",
+          "language": "html",
+          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/workshop-390.png",
+          "alt": "実践：小さな Web サイトを作る — 390px / Windows Edge",
+          "caption": "Windows の Edge 153.0.4234.32 による実際のブラウザー画像、2026-09-14。公開可能な架空の練習 HTML を使用。01／02／03 は計画・制作・確認です。390px はモバイル幅の模擬表示で、iPhone・Android の実機試験ではありません。オレンジ枠は Tab キーによるフォーカスです。",
+          "width": 390,
+          "height": 1589,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/workshop-1280.png",
+          "alt": "実践：小さな Web サイトを作る — 1280px / Windows Edge",
+          "caption": "Windows の Edge 153.0.4234.32 による実際のブラウザー画像、2026-09-14。公開可能な架空の練習 HTML を使用。01／02／03 は計画・制作・確認です。390px はモバイル幅の模擬表示で、iPhone・Android の実機試験ではありません。オレンジ枠は Tab キーによるフォーカスです。",
+          "width": 1280,
+          "height": 1092,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認項目",
+            "確認方法"
+          ],
+          "rows": [
+            [
+              "環境を確かめる",
+              "約 45 分、空フォルダー、エディター、Codex、ブラウザーを用意します。下の完成例は index.html として保存できます。まず自分の版を依頼して同じ基準で比較できます。"
+            ],
+            [
+              "一つの操作を行う",
+              "実際の問題を一つ直し、同じ検証と差分確認を行います。ファイル、開き方、検証済み寸法、未検証環境を報告します。公開は含めません。"
+            ],
+            [
+              "実際の結果を調べる",
+              "内容、ページ内移動、レスポンシブ表示があり、横にはみ出さず、キー操作と再表示が正常なら完了です。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "期待する結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "内容、ページ内移動、レスポンシブ表示があり、横にはみ出さず、キー操作と再表示が正常なら完了です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "トラブル対応"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要な依存があれば条件を伝え直します。リンクは実際に操作します。ローカル表示と公開を区別します。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "公式の出典",
+          "text": "各 OS の手順は公式文書で確認していますが、すべての環境で実機検証したわけではありません。画面や提供状況は異なる場合があります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "次に学ぶこと"
+        },
+        {
+          "type": "link",
+          "text": "Codex 学習ガイドに戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "browser",
+          "url": "https://learn.chatgpt.com/docs/browser",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "code-review",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "실습: 작은 웹사이트 만들기",
+      "description": "요청, 계획, MD 규칙과 브라우저 검사를 연결하여 카드 세 개가 있는 가상 스튜디오 사이트를 만듭니다. HTML 한 파일로 검증까지 완료하는 연습입니다.",
+      "hero": {
+        "src": "/guides/codex-website-workshop/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "요청, 계획, MD 규칙과 브라우저 검사를 연결하여 카드 세 개가 있는 가상 스튜디오 사이트를 만듭니다. HTML 한 파일로 검증까지 완료하는 연습입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "학습 목표"
+        },
+        {
+          "type": "paragraph",
+          "text": "내용, 페이지 내 이동과 반응형 배치가 있고 가로 넘침 없이 키보드와 다시 열기가 작동하면 완료입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예상 실습 시간: 45 분"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전 준비"
+        },
+        {
+          "type": "paragraph",
+          "text": "약 45분, 빈 폴더, 편집기, Codex와 브라우저를 준비합니다. 아래 완성 예시는 index.html로 저장할 수 있습니다. 먼저 자신만의 버전을 요청한 뒤 같은 기준으로 비교할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "단계별 작업"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 큰 제목, 소개, 카드 세 개, 페이지 내 이동과 설명 영역을 정의합니다. 가상 정보만 쓰고 폼, API와 외부 글꼴 없이 계획합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "2. README와 "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md",
+              "url": "https://mokaair.com/ko/life/codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "에 단일 파일, 문구 유지, 모바일 배치와 검증 조건을 적고 연습 폴더 안에서만 만들게 합니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 390px에서 한 열, 1280px에서 세 열을 확인합니다. Tab과 Enter로 두 링크를 사용하고 이동 위치, 포커스와 글자 대비를 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 실제 문제 하나를 고치고 같은 검증과 diff 확인을 반복합니다. 파일, 여는 방법, 확인한 크기와 미검증 환경을 보고합니다. 공개 배포는 포함하지 않습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/diagram-1.svg",
+          "alt": "31. 실습: 작은 웹사이트 만들기 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Brief → HTML / CSS → Browser checks",
+          "width": 1600,
+          "height": 900,
+          "caption": "31. 실습: 작은 웹사이트 만들기 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Brief → HTML / CSS → Browser checks",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "연습 요청"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "가상 스튜디오의 단일 HTML을 만드세요. 제목, 소개, 카드 세 개, 페이지 내 링크와 설명 영역을 포함합니다. 외부 자원 없이 모바일 한 열, 데스크톱 세 열로 만들고 계획 후 구현하여 키보드와 두 너비를 검증하세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예시와 검증"
+        },
+        {
+          "type": "code",
+          "language": "html",
+          "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Small steps studio — practice website</title>\n  <style>\n    * { box-sizing: border-box; }\n    body { margin: 0; background: #f2f5ef; color: #173b39; font: 18px/1.7 system-ui, sans-serif; }\n    main { max-width: 1080px; margin: auto; padding: 64px 24px; }\n    h1 { font-size: clamp(2rem, 7vw, 4.8rem); line-height: 1.08; max-width: 800px; letter-spacing: -.045em; }\n    .label { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }\n    .intro { max-width: 650px; }\n    nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 32px 0; }\n    a { color: inherit; text-underline-offset: .2em; padding: 10px 0; }\n    a:focus-visible { outline: 3px solid #c4602c; outline-offset: 4px; }\n    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }\n    article { background: #fff; border: 1px solid #cee0d5; border-radius: 20px; padding: 28px; overflow-wrap: anywhere; }\n    article h2 { font-size: 1.3rem; }\n    .number { color: #a54b26; font-size: .85rem; }\n    footer { margin-top: 48px; border-top: 1px solid #cee0d5; padding-top: 24px; }\n    @media (max-width: 680px) { .cards { grid-template-columns: 1fr; } main { padding-top: 36px; } }\n  </style>\n</head>\n<body>\n  <main>\n    <p class=\"label\">Small steps studio / practice only</p>\n    <h1>Build something small.<br>Check that it works.</h1>\n    <p class=\"intro\">A fictional studio learning to turn clear requests into useful, verifiable results. No account, form, tracker or external resource is used.</p>\n    <nav aria-label=\"Page sections\"><a href=\"#projects\">Explore projects</a><a href=\"#about\">About this exercise</a></nav>\n    <section class=\"cards\" id=\"projects\" aria-label=\"Practice projects\">\n      <article><p class=\"number\">01 / PLAN</p><h2>One clear request</h2><p>Define the outcome, context, constraints and checks before changing files.</p></article>\n      <article><p class=\"number\">02 / BUILD</p><h2>One focused change</h2><p>Keep the first version small enough to inspect and explain.</p></article>\n      <article><p class=\"number\">03 / VERIFY</p><h2>One real result</h2><p>Open the page, use the keyboard and test the layout at a narrow width.</p></article>\n    </section>\n    <footer id=\"about\"><h2>About this exercise</h2><p>This is a local practice page with fictional content. Opening it successfully does not publish it to the internet.</p></footer>\n  </main>\n</body>\n</html>\n"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/workshop-390.png",
+          "alt": "실습: 작은 웹사이트 만들기 — 390px / Windows Edge",
+          "caption": "Windows의 Edge 153.0.4234.32 실제 브라우저 캡처, 2026-09-14. 공개 가능한 가상 연습 HTML을 사용했습니다. 01/02/03은 계획·제작·검증입니다. 390px은 모바일 화면 폭 시뮬레이션이며 iPhone·Android 실기기 시험이 아닙니다. 주황색 테두리는 Tab 키 포커스입니다.",
+          "width": 390,
+          "height": 1589,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-website-workshop/workshop-1280.png",
+          "alt": "실습: 작은 웹사이트 만들기 — 1280px / Windows Edge",
+          "caption": "Windows의 Edge 153.0.4234.32 실제 브라우저 캡처, 2026-09-14. 공개 가능한 가상 연습 HTML을 사용했습니다. 01/02/03은 계획·제작·검증입니다. 390px은 모바일 화면 폭 시뮬레이션이며 iPhone·Android 실기기 시험이 아닙니다. 주황색 테두리는 Tab 키 포커스입니다.",
+          "width": 1280,
+          "height": 1092,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "검사 항목",
+            "확인 방법"
+          ],
+          "rows": [
+            [
+              "환경 확인",
+              "약 45분, 빈 폴더, 편집기, Codex와 브라우저를 준비합니다. 아래 완성 예시는 index.html로 저장할 수 있습니다. 먼저 자신만의 버전을 요청한 뒤 같은 기준으로 비교할 수 있습니다."
+            ],
+            [
+              "작업 하나 완료",
+              "실제 문제 하나를 고치고 같은 검증과 diff 확인을 반복합니다. 파일, 여는 방법, 확인한 크기와 미검증 환경을 보고합니다. 공개 배포는 포함하지 않습니다."
+            ],
+            [
+              "실제 결과 확인",
+              "내용, 페이지 내 이동과 반응형 배치가 있고 가로 넘침 없이 키보드와 다시 열기가 작동하면 완료입니다."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예상 결과"
+        },
+        {
+          "type": "paragraph",
+          "text": "내용, 페이지 내 이동과 반응형 배치가 있고 가로 넘침 없이 키보드와 다시 열기가 작동하면 완료입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결"
+        },
+        {
+          "type": "paragraph",
+          "text": "불필요한 의존성이 생기면 조건을 다시 전달하세요. 링크는 실제 조작하고 로컬 표시와 공개 배포를 구분합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "공식 출처",
+          "text": "각 OS 절차는 공식 문서로 확인했으며 모든 환경에서 직접 시험한 것은 아닙니다. 화면과 계정별 제공 기능은 다를 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이어서 학습하기"
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "browser",
+          "url": "https://learn.chatgpt.com/docs/browser",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "code-review",
+          "url": "https://learn.chatgpt.com/docs/code-review",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -16,6 +16,7 @@ import {
 } from "@/lib/guides";
 import { isUuid, type ArticleDetail, type ArticleSummary } from "@/lib/guides-admin";
 import { sitePageLocales, type SitePageLocale } from "@/lib/site-pages";
+import { learningCopy, editorBlockCopy } from "@/lib/codex-learning/copy";
 
 const control = "min-h-11 w-full rounded-xl border border-[var(--control-border,var(--line))] bg-[var(--surface)] px-3 py-2 text-[var(--ink)]";
 const languages: Record<SitePageLocale, string> = { "zh-TW": "繁體中文", "zh-CN": "简体中文", en: "English", ja: "日本語", ko: "한국어" };
@@ -26,12 +27,14 @@ const emptyDocument = (): GuideDocument => ({
 const isSiteLocale = (value: string): value is SitePageLocale => (sitePageLocales as readonly string[]).includes(value);
 
 /** Every block an editor can add, in the order the buttons appear. */
-const blockTypes = ["heading", "paragraph", "list", "link", "image", "table", "callout", "offer", "partner_link"] as const;
+const blockTypes = ["heading", "paragraph", "rich_paragraph", "code", "list", "link", "image", "table", "callout", "offer", "partner_link"] as const;
 type BlockType = typeof blockTypes[number];
 
 /** `partner` is the program a new partner link starts on: the first one the API lists. */
 function newBlock(type: BlockType, partner = ""): GuideBlock {
   switch (type) {
+    case "code": return { type, language: "text", code: "" };
+    case "rich_paragraph": return { type, spans: [{ type: "text", text: "" }] };
     case "heading": return { type, level: 2, text: "" };
     case "list": return { type, items: [""], ordered: false };
     case "link": return { type, text: "", url: "" };
@@ -137,8 +140,11 @@ export function AdminGuidesPanel() {
   const kindLocked = Boolean(detail?.locales.some((entry) => entry.published_version !== null));
   const row = detail?.locales.find((entry) => entry.locale === locale) ?? null;
   const blockLabels: ContentBlockLabels = {
+    copy: learningCopy(locale).copy, copied: learningCopy(locale).copied, copyFailed: learningCopy(locale).copyFailed,
     imageCredit: t("imageCredit"), tip: t("toneTip"), warning: t("toneWarning"), info: t("toneInfo"),
   };
+  const extraBlockLabels = editorBlockCopy(locale);
+  const blockName = (type: GuideBlock["type"]) => type === "code" || type === "rich_paragraph" ? extraBlockLabels[type] : t(`blocks.${type}`);
 
   useEffect(() => {
     if (!selected) return;
@@ -324,6 +330,21 @@ export function AdminGuidesPanel() {
 
   function blockFields(block: GuideBlock, index: number) {
     switch (block.type) {
+      case "code": return <>
+        <label className="grid gap-2">{extraBlockLabels.language}<input className={control} value={block.language} onChange={(event) => updateBlock(index, { ...block, language: event.target.value })} /></label>
+        <label className="grid gap-2">{extraBlockLabels.code}<textarea className={`${control} font-mono`} rows={10} spellCheck={false} value={block.code} onChange={(event) => updateBlock(index, { ...block, code: event.target.value })} /></label>
+      </>;
+      case "rich_paragraph": return <>
+        {block.spans.map((span, spanIndex) => <div key={spanIndex} className="space-y-2 rounded-lg border border-[var(--line)] p-3">
+          <label className="grid gap-2">{t("text")}<textarea className={control} value={span.text} onChange={(event) => updateBlock(index, { ...block, spans: block.spans.map((value, i) => i === spanIndex ? { ...value, text: event.target.value } : value) })} /></label>
+          {span.type === "link" && <label className="grid gap-2">{t("url")}<input className={control} value={span.url} onChange={(event) => updateBlock(index, { ...block, spans: block.spans.map((value, i) => i === spanIndex ? { ...span, url: event.target.value } : value) })} /></label>}
+          <button type="button" className="min-h-11 underline" disabled={block.spans.length === 1} onClick={() => updateBlock(index, { ...block, spans: block.spans.filter((_, i) => i !== spanIndex) })}>−</button>
+        </div>)}
+        <div className="flex gap-3">
+          <button type="button" className="min-h-11 underline" disabled={block.spans.length >= 40} onClick={() => updateBlock(index, { ...block, spans: [...block.spans, { type: "text", text: "" }] })}>{extraBlockLabels.addText}</button>
+          <button type="button" className="min-h-11 underline" disabled={block.spans.length >= 40} onClick={() => updateBlock(index, { ...block, spans: [...block.spans, { type: "link", text: "", url: "https://" }] })}>{extraBlockLabels.addLink}</button>
+        </div>
+      </>;
       case "heading":
         return <>
           <label className="grid gap-2">{t("level")}
@@ -550,7 +571,7 @@ export function AdminGuidesPanel() {
           </section>
 
           <div className="space-y-5">{draft.blocks.map((block, index) => <fieldset key={index} className="space-y-3 rounded-2xl border border-[var(--line)] p-4">
-            <legend className="px-2 font-semibold">{t(`blocks.${block.type}`)} {index + 1}</legend>
+            <legend className="px-2 font-semibold">{blockName(block.type)} {index + 1}</legend>
             {blockFields(block, index)}
             <div className="flex flex-wrap gap-2">
               <Button secondary disabled={index === 0} onClick={() => moveBlock(index, -1)}>{t("moveUp")}</Button>
@@ -560,7 +581,7 @@ export function AdminGuidesPanel() {
           </fieldset>)}</div>
 
           <div className="flex flex-wrap gap-2">{blockTypes.filter((type) => type !== "partner_link" || partners.length > 0).map((type) =>
-            <Button secondary key={type} onClick={() => setBlocks([...draft.blocks, newBlock(type, partners[0]?.code)])}>{t("addBlock")} · {t(`blocks.${type}`)}</Button>)}
+            <Button secondary key={type} onClick={() => setBlocks([...draft.blocks, newBlock(type, partners[0]?.code)])}>{t("addBlock")} · {blockName(type)}</Button>)}
           </div>
 
           <section className="space-y-4 rounded-2xl border border-[var(--line)] p-4">

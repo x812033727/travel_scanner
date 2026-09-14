@@ -1,0 +1,1732 @@
+{
+  "slug": "codex-platforms-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 103,
+  "locales": {
+    "zh-TW": {
+      "title": "平台選擇：找到適合的 Codex 入口",
+      "description": "用具體工作情境比較桌面、手機、CLI、IDE 與雲端，核對檔案和工具在哪裡執行。",
+      "hero": {
+        "src": "/guides/codex-platforms-guide/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀完能做到什麼"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你會選出一個適合目前工作的主要入口，說明檔案在哪裡、命令在哪裡執行、要去哪裡看結果，並用唯讀任務確認選擇。閱讀約 10 分鐘、操作約 15 分鐘。這篇不要求把所有版本都安裝一次；先讓一條完整路線可用，再擴充其他入口。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把入口與執行環境分開"
+        },
+        {
+          "type": "paragraph",
+          "text": "入口是你送出需求的地方，環境才是代理實際工作的地方。桌面、CLI 與 IDE 都可能操作本機專案；遠端專案與雲端任務則涉及另一個環境。手機畫面小，不代表任務比較小；桌面視窗看起來一樣，也不代表背後使用相同電腦。先畫出「我從哪裡送出 → 哪臺機器做事 → 哪裡檢查成果」，比先比較按鈕多寡有用。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "入口",
+            "主要操作方式",
+            "第一個確認點"
+          ],
+          "rows": [
+            [
+              "桌面",
+              "專案、任務、檔案與差異畫面",
+              "選到哪個專案與主機"
+            ],
+            [
+              "CLI",
+              "終端機的文字指令與對話",
+              "目前工作目錄"
+            ],
+            [
+              "IDE",
+              "編輯器旁的檔案與程式上下文",
+              "開啟哪個資料夾與檔案"
+            ],
+            [
+              "雲端",
+              "設定好的遠端環境與任務",
+              "儲存庫、分支及環境設定"
+            ],
+            [
+              "手機 Remote",
+              "控制已連線主機的任務",
+              "配對的主機是否可用"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：從現有工作選入口"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "主要用圖形介面、希望直接管理多個任務，可先走"
+            },
+            {
+              "type": "link",
+              "text": "桌面版入門",
+              "url": "https://mokaair.com/zh-TW/life/codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。Windows 與 macOS 依各自官方安裝流程；Linux 依官方桌面預覽支援的發行版與架構挑套件，不把 Windows 安裝檔搬過去執行。Linux 桌面預覽的存在也不代表 Remote 主機支援完全相同，兩個功能要分別查證。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "平常會在終端機行動資料夾、執行測試，或準備把工作接到指令碼，就選 "
+            },
+            {
+              "type": "link",
+              "text": "CLI",
+              "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。Windows 原生與 WSL 是不同環境，工具安裝、家目錄與路徑要分別確認；macOS 與 Linux 也不能把使用者路徑直接互貼。還不熟終端機，可先讀"
+            },
+            {
+              "type": "link",
+              "text": "路徑與終端機",
+              "url": "https://mokaair.com/zh-TW/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "，這比一次學兩種殼層更容易找到錯誤。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "已經在官方支援的編輯器內寫程式，希望把目前檔案或選取區段帶入，就讀 "
+            },
+            {
+              "type": "link",
+              "text": "IDE 擴充",
+              "url": "https://mokaair.com/zh-TW/life/codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。先用目前的編輯器核對官方可用入口，不要只根據商店裡相似的名稱安裝。即使同時安裝桌面與 IDE，第一次仍只用一個入口改檔；兩個任務一起改同一檔案，很難判斷是哪次修改造成結果。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：判斷是否需要雲端或手機"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "需要把 GitHub 儲存庫的工作交給配置好的遠端環境，再回來看差異或 PR，可走"
+            },
+            {
+              "type": "link",
+              "text": "雲端任務",
+              "url": "https://mokaair.com/zh-TW/life/codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "。開始前記下儲存庫與分支；只在自己電腦修改但尚未提交的檔案，不會因名稱一樣就出現在雲端。你需要的是把正確版本提供給環境，而不是重新貼一次模糊需求。沒有 GitHub 練習庫時，先用本機路線也能完成入門。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "外出時追蹤或接續電腦工作，可以考慮"
+            },
+            {
+              "type": "link",
+              "text": "手機 Remote",
+              "url": "https://mokaair.com/zh-TW/life/codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": "。官方檔案列出 iOS、Android 控制可用的 macOS 或 Windows 桌面主機；主機需要保持可連線，配對與工作區許可權也要成立。手機不是把 npm、專案與本機瀏覽器搬到自己儲存空間。若電腦關機或離線，先恢復主機，不要改成在手機終端機亂裝套件來修復連線。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：用同一個小任務驗證"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立一個空白 codex-platform-check 資料夾，以純文字檔 location.txt 寫下唯一一行 Practice marker: local-copy-A。桌面或 IDE 開啟該資料夾，CLI 先移入資料夾再啟動；選擇雲端者則在自己的練習儲存庫建立同一檔案並提交，確認雲端選到包含它的分支。不要為了驗證入口而上傳正式專案。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期讀到 local-copy-A，並能以工具結果支援工作路徑。平臺可能使用隔離工作副本，因此不要求路徑和自己桌面文字完全相同；重點是所選分支、檔案標記和工作環境能對上。若它無法證實是哪臺主機，就把主機身份列為未知，再回連線設定核對，而不是把推測當作成功。"
+        },
+        {
+          "type": "paragraph",
+          "text": "邊界練習：只在本機把標記改成 local-copy-B，但不要提交。詢問既有雲端副本時，它仍可能讀到 A；這正是不同版本的可觀察證據，不是模型忘記。手機連到同一主機且同一資料夾則應以主機目前檔案為準。每次都報出來源與標記，比問「是不是最新」更容易判斷。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與完成判準"
+        },
+        {
+          "type": "paragraph",
+          "text": "入口看不到：先核對官方支援、程式版本、帳號工作區及逐步開放狀態，沒有按鈕時保留未確認結果。檔案看不到：核對資料夾、雲端分支或連線主機，再檢查提交狀態。命令找不到：到實際執行的環境檢查工具，不能用自己筆電裝過 Node.js 證明雲端也有。這三種問題分別是入口、版本資料與執行環境，不要全部用重新登入處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "結束時把標記恢復成 A，保留練習資料夾供後續課程使用；只停止自己這次建立的任務。你應能完成一句話：「我使用＿＿入口，檔案在＿＿環境，以＿＿檢查成果」。若改換入口仍不知道檔案去哪裡，先完成這個唯讀測試，不急著開始多工。圖中的 1、2、3 分別代表選入口、確認環境、驗證成果。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "平臺支援依 2026-09-14 的"
+            },
+            {
+              "type": "link",
+              "text": "桌面檔案",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Linux 桌面預覽",
+              "url": "https://learn.chatgpt.com/docs/linux/linux-app"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "IDE 檔案",
+              "url": "https://learn.chatgpt.com/docs/ide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "雲端檔案",
+              "url": "https://learn.chatgpt.com/docs/cloud"
+            },
+            {
+              "type": "text",
+              "text": "及 "
+            },
+            {
+              "type": "link",
+              "text": "Remote 檔案",
+              "url": "https://learn.chatgpt.com/docs/remote-connections"
+            },
+            {
+              "type": "text",
+              "text": "查證；這是檔案核對與原創練習設計，不宣稱逐一實測所有裝置。下一步選擇"
+            },
+            {
+              "type": "link",
+              "text": "終端機基礎",
+              "url": "https://mokaair.com/zh-TW/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "第一個小專案",
+              "url": "https://mokaair.com/zh-TW/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "link",
+              "text": "跨裝置工作",
+              "url": "https://mokaair.com/zh-TW/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-platforms-guide/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Linux desktop preview",
+          "url": "https://learn.chatgpt.com/docs/linux/linux-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IDE extension",
+          "url": "https://learn.chatgpt.com/docs/ide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloud tasks",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Choosing a Codex platform",
+      "description": "Compare desktop, mobile, CLI, IDE and cloud scenarios, and identify where files and tools run.",
+      "hero": {
+        "src": "/guides/codex-platforms-guide/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will be able to do"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Choose one primary interface for your current work, identify where files live and commands run, and verify that choice with a read-only task. Allow 10 minutes to read and 15 to practise. You do not need to install every interface: make one complete workflow usable before adding others."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Separate the interface from execution"
+        },
+        {
+          "type": "paragraph",
+          "text": "An interface is where you send a request; the environment is where the agent works. Desktop, CLI and IDE can operate on local projects, while remote projects and cloud tasks involve another environment. A phone's small screen does not make its task smaller, and similar desktop windows do not establish that the same computer is working. Map request origin, executing machine and result location before comparing buttons."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Interface",
+            "Main interaction",
+            "First check"
+          ],
+          "rows": [
+            [
+              "Desktop",
+              "Projects, tasks, files and diffs",
+              "Selected project and host"
+            ],
+            [
+              "CLI",
+              "Terminal commands and conversation",
+              "Current working directory"
+            ],
+            [
+              "IDE",
+              "Editor files and code context",
+              "Open folder and files"
+            ],
+            [
+              "Cloud",
+              "Configured remote environment and tasks",
+              "Repository, branch and environment"
+            ],
+            [
+              "Mobile Remote",
+              "Tasks on a connected host",
+              "Whether the paired host is available"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: start from your existing workflow"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "If you prefer a graphical workspace and managing several tasks, start with "
+            },
+            {
+              "type": "link",
+              "text": "desktop setup",
+              "url": "https://mokaair.com/en/life/codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": ". Use the official Windows or macOS procedure for your platform. On Linux, choose the desktop preview package for a supported distribution and architecture; a Windows installer is not interchangeable. Linux desktop availability does not establish identical Remote host support: verify those features separately."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Choose "
+            },
+            {
+              "type": "link",
+              "text": "CLI",
+              "url": "https://mokaair.com/en/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": " if you already navigate folders and run tests in a terminal, or intend to connect work to scripts. Native Windows and WSL are different environments with separate installations, home directories and paths. User paths are not interchangeable between macOS and Linux either. If terminals are unfamiliar, begin with "
+            },
+            {
+              "type": "link",
+              "text": "terminal paths",
+              "url": "https://mokaair.com/en/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": " rather than learning two shells at once."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "If you already code in an officially supported editor and want to include an open file or selection, use the "
+            },
+            {
+              "type": "link",
+              "text": "IDE extension",
+              "url": "https://mokaair.com/en/life/codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": ". Confirm official availability for your editor rather than installing an item merely because its marketplace name looks similar. Even with both desktop and IDE installed, use one interface for the first edit; concurrent tasks editing the same file make attribution difficult."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: decide whether cloud or mobile is needed"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Use "
+            },
+            {
+              "type": "link",
+              "text": "cloud tasks",
+              "url": "https://mokaair.com/en/life/codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": " when you want a configured remote environment to work on a GitHub repository and return a diff or PR for review. Record repository and branch first. Uncommitted local changes do not appear in cloud just because the project name matches. Supply the correct version to the environment rather than repeating an ambiguous request. Without a practice GitHub repository, the local route still supports the introductory lessons."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Consider "
+            },
+            {
+              "type": "link",
+              "text": "mobile Remote",
+              "url": "https://mokaair.com/en/life/codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": " to follow or continue computer work while away. Documentation describes iOS and Android controlling available macOS or Windows desktop hosts, with host connectivity, pairing and workspace permission required. This does not move npm, the project and its local browser into phone storage. If the host is off or offline, restore its availability rather than installing packages in a phone terminal to fix the connection."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: verify with one small task"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create an empty codex-platform-check folder and put the single line Practice marker: local-copy-A in a plain-text file named location.txt. Open that folder in desktop or IDE, or enter it before starting CLI. For cloud, create and commit the same file in your practice repository and select a branch containing it. Do not upload a production project merely to test an interface."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect local-copy-A and a working path supported by tool results. Some interfaces use isolated working copies, so the path need not literally match your desktop path; the selected branch, marker and environment should agree. If the host identity cannot be established, record it as unknown and inspect connection settings rather than accepting a guess."
+        },
+        {
+          "type": "paragraph",
+          "text": "Boundary exercise: change the local marker to local-copy-B without committing it. An existing cloud copy may still read A, demonstrating different file versions rather than a model forgetting. A phone controlling the same host and folder should observe that host's current file. Reporting the source and marker is more useful than simply asking whether something is latest."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting and completion criteria"
+        },
+        {
+          "type": "paragraph",
+          "text": "Missing interface: check official support, app version, account workspace and rollout status; keep an unavailable option unverified. Missing file: inspect folder, cloud branch or host, then commit state. Missing command: inspect tools where commands actually run; Node.js on your laptop does not prove it exists in cloud. These are interface, file-version and execution-environment issues, not all sign-in problems."
+        },
+        {
+          "type": "paragraph",
+          "text": "Restore marker A when finished and keep the practice folder for later; stop only the task created for this exercise. Complete this sentence: “I use interface __, files live in environment __, and I verify results with __.” If a new interface leaves the file location unclear, finish this read-only check before multitasking. Diagram numbers 1, 2 and 3 represent selecting an interface, identifying the environment and checking results."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "Platform support was checked on 2026-09-14 against "
+            },
+            {
+              "type": "link",
+              "text": "desktop",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "Linux preview",
+              "url": "https://learn.chatgpt.com/docs/linux/linux-app"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "IDE",
+              "url": "https://learn.chatgpt.com/docs/ide"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "cloud",
+              "url": "https://learn.chatgpt.com/docs/cloud"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "link",
+              "text": "Remote",
+              "url": "https://learn.chatgpt.com/docs/remote-connections"
+            },
+            {
+              "type": "text",
+              "text": " documentation. This is documentation verification and an original exercise, not a claim of testing every device. Continue with "
+            },
+            {
+              "type": "link",
+              "text": "terminal basics",
+              "url": "https://mokaair.com/en/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "your first project",
+              "url": "https://mokaair.com/en/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": " or "
+            },
+            {
+              "type": "link",
+              "text": "cross-device work",
+              "url": "https://mokaair.com/en/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-platforms-guide/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Linux desktop preview",
+          "url": "https://learn.chatgpt.com/docs/linux/linux-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IDE extension",
+          "url": "https://learn.chatgpt.com/docs/ide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloud tasks",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Codex の利用環境を選ぶ",
+      "description": "デスクトップ、モバイル、CLI、IDE、クラウドを具体例で比べ、ファイルとツールの実行場所を確認します。",
+      "hero": {
+        "src": "/guides/codex-platforms-guide/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "このレッスンの到達点"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "今回の作業に合う入口を一つ選び、ファイルの場所、コマンドの実行場所、成果の確認場所を説明し、読み取りタスクで選択を確認します。読む時間は約 10 分、操作は約 15 分です。全種類のインストールは不要で、まず一つの経路を使えるようにします。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "入口と実行環境を分ける"
+        },
+        {
+          "type": "paragraph",
+          "text": "入口は依頼を送る場所で、環境はエージェントが実際に作業する場所です。デスクトップ、CLI、IDE はローカル作業に使えますが、リモートプロジェクトやクラウドは別環境を扱います。画面が小さいスマートフォンでも仕事量が小さいとは限らず、同じ見た目のウィンドウでも同じ機械とは限りません。ボタン数より「依頼元 → 実行する機械 → 成果の場所」を整理します。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "入口",
+            "主な操作",
+            "最初の確認"
+          ],
+          "rows": [
+            [
+              "デスクトップ",
+              "プロジェクト、タスク、ファイル、差分",
+              "選択中のプロジェクトとホスト"
+            ],
+            [
+              "CLI",
+              "端末のコマンドと対話",
+              "現在の作業ディレクトリ"
+            ],
+            [
+              "IDE",
+              "エディター内のファイルとコード",
+              "開いているフォルダーとファイル"
+            ],
+            [
+              "クラウド",
+              "設定済みの遠隔環境とタスク",
+              "リポジトリ、ブランチ、環境"
+            ],
+            [
+              "モバイル Remote",
+              "接続先ホストのタスク",
+              "ペアリング先が利用可能か"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 1：普段の作業から入口を選ぶ"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "GUI と複数タスクの管理を使いたいなら"
+            },
+            {
+              "type": "link",
+              "text": "デスクトップ入門",
+              "url": "https://mokaair.com/ja/life/codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "から始めます。Windows と macOS は各 OS の公式手順を使い、Linux はデスクトッププレビューが対応するディストリビューションと構成のパッケージを選びます。Windows 用インストーラーは流用しません。Linux デスクトップがあることと Remote ホストの対応は別に確認してください。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "端末でフォルダー移動やテストを行う、またはスクリプトに接続したいなら "
+            },
+            {
+              "type": "link",
+              "text": "CLI",
+              "url": "https://mokaair.com/ja/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "を選びます。Windows ネイティブと WSL は別環境なのでインストール、ホーム、パスを分けて確認します。macOS と Linux のユーザーパスもそのまま流用しません。端末に不慣れなら"
+            },
+            {
+              "type": "link",
+              "text": "パスと端末",
+              "url": "https://mokaair.com/ja/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "を先に読み、二つのシェルを同時に覚える負担を減らします。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "対応エディターで作業中のファイルや選択範囲を渡したいなら "
+            },
+            {
+              "type": "link",
+              "text": "IDE 拡張",
+              "url": "https://mokaair.com/ja/life/codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "を使います。ストアの似た名前だけで選ばず、現在のエディターに公式対応があるか確認します。デスクトップと IDE の両方を入れていても、最初の編集は一方だけで行ってください。同じファイルを同時変更すると原因の切り分けが難しくなります。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 2：クラウドとモバイルの必要性を判断する"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "GitHub リポジトリを設定済みの遠隔環境で作業させ、差分や PR を確認したいなら"
+            },
+            {
+              "type": "link",
+              "text": "クラウドタスク",
+              "url": "https://mokaair.com/ja/life/codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "を使います。開始前にリポジトリとブランチを記録します。ローカルの未コミット変更は同名だからといってクラウドには現れません。曖昧な依頼を繰り返すより、正しい版を環境に渡します。練習用 GitHub がなければ入門はローカルで進められます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "外出先でコンピューターの作業を追跡・継続するなら"
+            },
+            {
+              "type": "link",
+              "text": "モバイル Remote",
+              "url": "https://mokaair.com/ja/life/codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": "を検討します。公式文書では iOS と Android から利用可能な macOS または Windows のデスクトップホストを操作します。ホストの接続、ペアリング、ワークスペース権限が必要です。npm、プロジェクト、ローカルブラウザーを電話へ移す機能ではありません。主機が停止・オフラインなら接続を復旧し、電話にパッケージを入れて直そうとしないでください。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 3：小さなタスクで確かめる"
+        },
+        {
+          "type": "paragraph",
+          "text": "空の codex-platform-check フォルダーを作り、location.txt に Practice marker: local-copy-A の一行を書きます。デスクトップや IDE はそのフォルダーを開き、CLI は移動してから起動します。クラウドなら自分の練習用リポジトリに同じファイルを作ってコミットし、それを含むブランチを選びます。入口確認のために本番プロジェクトをアップロードしないでください。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "local-copy-A を読み、ツール結果で裏付けられた作業パスを示すことが期待されます。隔離コピーを使う入口もあるため、自分のデスクトップと同じ文字列のパスである必要はありません。ブランチ、目印、環境が一致するかを見ます。ホストを特定できなければ不明と記録し、推測を成功扱いせず接続設定を確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "境界の練習ではローカルだけを local-copy-B に変え、コミットしません。既存クラウドコピーで A が読めても、それは版の違いを示す証拠で、モデルが忘れたとは限りません。同じホストとフォルダーを操作する電話では、そのホストの現ファイルを基準にします。「最新ですか」より出典と目印を毎回報告する方が確実です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "よくある問題と完了条件"
+        },
+        {
+          "type": "paragraph",
+          "text": "入口がなければ公式対応、バージョン、ワークスペース、段階的提供を確認し、未確認を残します。ファイルがなければフォルダー、クラウドのブランチ、ホスト、コミットを見ます。コマンドがなければ実際の実行環境で調べ、手元の Node.js をクラウドにもある証拠にしません。入口、データの版、実行環境の問題をすべて再ログインで解決しようとしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "終了時は目印を A に戻し、フォルダーは後の練習に残します。止めるのは今回作ったタスクだけです。「入口は＿＿、ファイルの環境は＿＿、成果確認は＿＿」と説明できれば完了です。別入口でファイルの場所が分からなければ、多重作業より読み取り確認を先にします。図の 1、2、3 は入口の選択、環境確認、成果検証です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "2026-09-14 に"
+            },
+            {
+              "type": "link",
+              "text": "デスクトップ",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Linux プレビュー",
+              "url": "https://learn.chatgpt.com/docs/linux/linux-app"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "IDE",
+              "url": "https://learn.chatgpt.com/docs/ide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "クラウド",
+              "url": "https://learn.chatgpt.com/docs/cloud"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Remote",
+              "url": "https://learn.chatgpt.com/docs/remote-connections"
+            },
+            {
+              "type": "text",
+              "text": "の公式文書で対応を確認しました。文書確認と独自教材の設計であり全端末の実機試験ではありません。次は"
+            },
+            {
+              "type": "link",
+              "text": "端末の基本",
+              "url": "https://mokaair.com/ja/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "最初のプロジェクト",
+              "url": "https://mokaair.com/ja/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "端末間の作業",
+              "url": "https://mokaair.com/ja/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "です。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 教学目次に戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-platforms-guide/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Linux desktop preview",
+          "url": "https://learn.chatgpt.com/docs/linux/linux-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IDE extension",
+          "url": "https://learn.chatgpt.com/docs/ide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloud tasks",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Codex 사용 환경 선택",
+      "description": "데스크톱, 모바일, CLI, IDE, 클라우드를 사례로 비교하고 파일과 도구의 실행 위치를 확인합니다.",
+      "hero": {
+        "src": "/guides/codex-platforms-guide/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 강의의 목표"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "현재 작업에 맞는 기본 진입점을 선택하고 파일 위치, 명령 실행 위치, 결과 확인 위치를 설명한 뒤 읽기 전용 작업으로 확인합니다. 읽기 약 10분, 실습 약 15분입니다. 모든 버전을 설치할 필요는 없습니다. 먼저 한 가지 작업 흐름을 완성한 뒤 다른 화면을 추가합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "사용 화면과 실행 환경 구분하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "사용 화면은 요청을 보내는 곳이고 환경은 에이전트가 실제로 일하는 곳입니다. 데스크톱, CLI, IDE는 로컬 프로젝트를 다룰 수 있고 원격 프로젝트나 클라우드 작업은 별도 환경을 사용합니다. 휴대전화 화면이 작다고 작업 규모가 작지는 않고 같은 모양의 창이라고 같은 컴퓨터에서 실행되는 것도 아닙니다. 버튼 수보다 요청 출발점, 실행 컴퓨터, 결과 위치를 먼저 정리하세요."
+        },
+        {
+          "type": "table",
+          "header": [
+            "화면",
+            "주요 작업 방식",
+            "첫 확인 사항"
+          ],
+          "rows": [
+            [
+              "데스크톱",
+              "프로젝트, 작업, 파일, 차이 보기",
+              "선택한 프로젝트와 호스트"
+            ],
+            [
+              "CLI",
+              "터미널 명령과 대화",
+              "현재 작업 디렉터리"
+            ],
+            [
+              "IDE",
+              "편집기 파일과 코드 문맥",
+              "열린 폴더와 파일"
+            ],
+            [
+              "클라우드",
+              "설정된 원격 환경과 작업",
+              "저장소, 브랜치, 환경"
+            ],
+            [
+              "모바일 Remote",
+              "연결된 호스트의 작업",
+              "페어링한 호스트의 가용 상태"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 현재 작업 방식으로 선택하기"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "그래픽 화면과 여러 작업 관리가 편하다면 "
+            },
+            {
+              "type": "link",
+              "text": "데스크톱 입문",
+              "url": "https://mokaair.com/ko/life/codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "부터 시작합니다. Windows와 macOS는 각 운영체제의 공식 설치 절차를 따릅니다. Linux는 데스크톱 미리보기에서 지원하는 배포판과 아키텍처에 맞는 패키지를 고르며 Windows 설치 파일을 대신 쓰지 않습니다. Linux 데스크톱 지원이 Remote 호스트 지원과 같다는 뜻도 아니므로 각각 확인하세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "터미널에서 폴더를 이동하거나 테스트를 실행하고 스크립트와 연결하려면 "
+            },
+            {
+              "type": "link",
+              "text": "CLI",
+              "url": "https://mokaair.com/ko/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "를 선택하세요. Windows 네이티브와 WSL은 설치, 홈 디렉터리, 경로가 다른 환경입니다. macOS와 Linux의 사용자 경로도 그대로 바꿔 쓸 수는 없습니다. 터미널이 낯설면 두 셸을 한꺼번에 배우기보다 "
+            },
+            {
+              "type": "link",
+              "text": "터미널과 경로",
+              "url": "https://mokaair.com/ko/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "부터 익힙니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "공식 지원 편집기에서 현재 파일이나 선택 영역을 전달하려면 "
+            },
+            {
+              "type": "link",
+              "text": "IDE 확장",
+              "url": "https://mokaair.com/ko/life/codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "을 사용합니다. 마켓플레이스에서 이름이 비슷하다는 이유만으로 설치하지 말고 현재 편집기의 공식 지원을 확인하세요. 데스크톱과 IDE를 모두 설치했어도 첫 수정은 한쪽에서만 합니다. 두 작업이 같은 파일을 동시에 바꾸면 변경 원인을 찾기 어렵습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 클라우드나 모바일이 필요한지 판단하기"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "GitHub 저장소를 구성된 원격 환경에서 작업하게 한 뒤 차이 또는 PR을 검토하려면 "
+            },
+            {
+              "type": "link",
+              "text": "클라우드 작업",
+              "url": "https://mokaair.com/ko/life/codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "을 사용합니다. 먼저 저장소와 브랜치를 기록하세요. 로컬에서 수정하고 커밋하지 않은 파일은 프로젝트 이름이 같다고 클라우드에 나타나지 않습니다. 모호한 요청을 다시 보내기보다 올바른 버전을 환경에 제공해야 합니다. 연습용 GitHub 저장소가 없어도 로컬로 입문 과정을 진행할 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "외출 중 컴퓨터 작업을 확인하거나 이어 가려면 "
+            },
+            {
+              "type": "link",
+              "text": "모바일 Remote",
+              "url": "https://mokaair.com/ko/life/codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": "를 고려합니다. 공식 문서는 iOS와 Android에서 사용 가능한 macOS 또는 Windows 데스크톱 호스트를 제어하는 방식을 설명하며 호스트 연결, 페어링, 워크스페이스 권한이 필요합니다. npm, 프로젝트, 로컬 브라우저가 휴대전화 저장소로 옮겨지는 것은 아닙니다. 호스트가 꺼졌거나 오프라인이면 호스트를 복구하고 휴대전화 터미널에 패키지를 설치해 연결을 고치려 하지 마세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 작은 작업으로 확인하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "빈 codex-platform-check 폴더에 location.txt를 만들고 Practice marker: local-copy-A 한 줄을 씁니다. 데스크톱이나 IDE에서는 해당 폴더를 열고 CLI에서는 먼저 이동한 뒤 시작합니다. 클라우드라면 연습용 저장소에 같은 파일을 만들고 커밋한 후 그 파일이 있는 브랜치를 선택하세요. 진입점 확인만을 위해 실제 운영 프로젝트를 업로드하지 않습니다."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "local-copy-A와 도구 결과로 뒷받침되는 작업 경로가 나와야 합니다. 격리된 작업 복사본을 쓰는 화면도 있으므로 경로가 데스크톱 경로와 글자까지 같을 필요는 없습니다. 선택한 브랜치, 표식, 환경이 맞는지가 중요합니다. 호스트를 확인할 수 없으면 모름으로 기록하고 추측을 성공으로 처리하지 말고 연결 설정을 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "경계 사례로 로컬 표식만 local-copy-B로 바꾸고 커밋하지 않습니다. 기존 클라우드 복사본에서 A를 읽는다면 이는 모델이 잊은 것이 아니라 버전 차이의 증거일 수 있습니다. 동일 호스트와 폴더를 제어하는 휴대전화는 호스트의 현재 파일을 기준으로 해야 합니다. 최신인지 묻기보다 출처와 표식을 매번 보고하게 하면 판단하기 쉽습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결과 완료 기준"
+        },
+        {
+          "type": "paragraph",
+          "text": "화면이 없다면 공식 지원, 앱 버전, 계정 워크스페이스, 순차 제공 상태를 확인하고 미확인 상태를 남깁니다. 파일이 없다면 폴더, 클라우드 브랜치, 호스트, 커밋 여부를 확인합니다. 명령이 없다면 실제 실행 환경의 도구를 확인하세요. 노트북에 Node.js가 있다는 사실이 클라우드에도 있다는 증거는 아닙니다. 화면, 파일 버전, 실행 환경 문제를 모두 재로그인으로 해결하려 하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마치면 표식을 A로 복원하고 폴더는 이후 강의를 위해 남깁니다. 이번 실습에서 만든 작업만 중단하세요. ‘나는 __ 화면을 쓰고 파일은 __ 환경에 있으며 __로 결과를 확인한다’라는 문장을 완성할 수 있으면 됩니다. 화면을 바꿨을 때 파일 위치를 모르면 여러 작업을 시작하기 전에 읽기 확인부터 마칩니다. 그림의 1, 2, 3은 화면 선택, 환경 확인, 결과 검증을 뜻합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "2026-09-14에 "
+            },
+            {
+              "type": "link",
+              "text": "데스크톱",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "Linux 미리보기",
+              "url": "https://learn.chatgpt.com/docs/linux/linux-app"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "IDE",
+              "url": "https://learn.chatgpt.com/docs/ide"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "클라우드",
+              "url": "https://learn.chatgpt.com/docs/cloud"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "Remote",
+              "url": "https://learn.chatgpt.com/docs/remote-connections"
+            },
+            {
+              "type": "text",
+              "text": " 공식 문서로 지원을 확인했습니다. 문서 검증과 직접 만든 실습이며 모든 기기를 테스트했다는 뜻은 아닙니다. 다음으로 "
+            },
+            {
+              "type": "link",
+              "text": "터미널 기초",
+              "url": "https://mokaair.com/ko/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "첫 프로젝트",
+              "url": "https://mokaair.com/ko/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "기기 간 작업",
+              "url": "https://mokaair.com/ko/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "을 읽습니다."
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-platforms-guide/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Linux desktop preview",
+          "url": "https://learn.chatgpt.com/docs/linux/linux-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IDE extension",
+          "url": "https://learn.chatgpt.com/docs/ide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloud tasks",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "平台选择：找到适合的 Codex 入口",
+      "description": "用具体工作情境比较桌面、手机、CLI、IDE 与云端，核对档案和工具在哪里执行。",
+      "hero": {
+        "src": "/guides/codex-platforms-guide/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "读完能做到什么"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你会选出一个适合目前工作的主要入口，说明档案在哪里、命令在哪里执行、要去哪里看结果，并用唯读任务确认选择。阅读约 10 分钟、操作约 15 分钟。这篇不要求把所有版本都安装一次；先让一条完整路线可用，再扩充其他入口。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把入口与执行环境分开"
+        },
+        {
+          "type": "paragraph",
+          "text": "入口是你送出需求的地方，环境才是代理实际工作的地方。桌面、CLI 与 IDE 都可能操作本机专案；远端专案与云端任务则涉及另一个环境。手机画面小，不代表任务比较小；桌面视窗看起来一样，也不代表背后使用相同电脑。先画出「我从哪里送出 → 哪台机器做事 → 哪里检查成果」，比先比较按钮多寡有用。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "入口",
+            "主要操作方式",
+            "第一个确认点"
+          ],
+          "rows": [
+            [
+              "桌面",
+              "专案、任务、档案与差异画面",
+              "选到哪个专案与主机"
+            ],
+            [
+              "CLI",
+              "终端机的文字指令与对话",
+              "目前工作目录"
+            ],
+            [
+              "IDE",
+              "编辑器旁的档案与程式上下文",
+              "开启哪个资料夹与档案"
+            ],
+            [
+              "云端",
+              "设定好的远端环境与任务",
+              "储存库、分支及环境设定"
+            ],
+            [
+              "手机 Remote",
+              "控制已连线主机的任务",
+              "配对的主机是否可用"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：从现有工作选入口"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "主要用图形介面、希望直接管理多个任务，可先走"
+            },
+            {
+              "type": "link",
+              "text": "桌面版入门",
+              "url": "https://mokaair.com/zh-CN/life/codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。Windows 与 macOS 依各自官方安装流程；Linux 依官方桌面预览支援的发行版与架构挑套件，不把 Windows 安装档搬过去执行。Linux 桌面预览的存在也不代表 Remote 主机支援完全相同，两个功能要分别查证。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "平常会在终端机行动资料夹、执行测试，或准备把工作接到指令码，就选 "
+            },
+            {
+              "type": "link",
+              "text": "CLI",
+              "url": "https://mokaair.com/zh-CN/life/codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。Windows 原生与 WSL 是不同环境，工具安装、家目录与路径要分别确认；macOS 与 Linux 也不能把使用者路径直接互贴。还不熟终端机，可先读"
+            },
+            {
+              "type": "link",
+              "text": "路径与终端机",
+              "url": "https://mokaair.com/zh-CN/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "，这比一次学两种壳层更容易找到错误。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "已经在官方支援的编辑器内写程式，希望把目前档案或选取区段带入，就读 "
+            },
+            {
+              "type": "link",
+              "text": "IDE 扩充",
+              "url": "https://mokaair.com/zh-CN/life/codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。先用目前的编辑器核对官方可用入口，不要只根据商店里相似的名称安装。即使同时安装桌面与 IDE，第一次仍只用一个入口改档；两个任务一起改同一档案，很难判断是哪次修改造成结果。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：判断是否需要云端或手机"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "需要把 GitHub 储存库的工作交给配置好的远端环境，再回来看差异或 PR，可走"
+            },
+            {
+              "type": "link",
+              "text": "云端任务",
+              "url": "https://mokaair.com/zh-CN/life/codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "。开始前记下储存库与分支；只在自己电脑修改但尚未提交的档案，不会因名称一样就出现在云端。你需要的是把正确版本提供给环境，而不是重新贴一次模糊需求。没有 GitHub 练习库时，先用本机路线也能完成入门。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "外出时追踪或接续电脑工作，可以考虑"
+            },
+            {
+              "type": "link",
+              "text": "手机 Remote",
+              "url": "https://mokaair.com/zh-CN/life/codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": "。官方档案列出 iOS、Android 控制可用的 macOS 或 Windows 桌面主机；主机需要保持可连线，配对与工作区许可权也要成立。手机不是把 npm、专案与本机浏览器搬到自己储存空间。若电脑关机或离线，先恢复主机，不要改成在手机终端机乱装套件来修复连线。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：用同一个小任务验证"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立一个空白 codex-platform-check 资料夹，以纯文字档 location.txt 写下唯一一行 Practice marker: local-copy-A。桌面或 IDE 开启该资料夹，CLI 先移入资料夹再启动；选择云端者则在自己的练习储存库建立同一档案并提交，确认云端选到包含它的分支。不要为了验证入口而上传正式专案。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期读到 local-copy-A，并能以工具结果支援工作路径。平台可能使用隔离工作副本，因此不要求路径和自己桌面文字完全相同；重点是所选分支、档案标记和工作环境能对上。若它无法证实是哪台主机，就把主机身份列为未知，再回连线设定核对，而不是把推测当作成功。"
+        },
+        {
+          "type": "paragraph",
+          "text": "边界练习：只在本机把标记改成 local-copy-B，但不要提交。询问既有云端副本时，它仍可能读到 A；这正是不同版本的可观察证据，不是模型忘记。手机连到同一主机且同一资料夹则应以主机目前档案为准。每次都报出来源与标记，比问「是不是最新」更容易判断。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题与完成判准"
+        },
+        {
+          "type": "paragraph",
+          "text": "入口看不到：先核对官方支援、程式版本、帐号工作区及逐步开放状态，没有按钮时保留未确认结果。档案看不到：核对资料夹、云端分支或连线主机，再检查提交状态。命令找不到：到实际执行的环境检查工具，不能用自己笔电装过 Node.js 证明云端也有。这三种问题分别是入口、版本资料与执行环境，不要全部用重新登入处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "结束时把标记恢复成 A，保留练习资料夹供后续课程使用；只停止自己这次建立的任务。你应能完成一句话：「我使用＿＿入口，档案在＿＿环境，以＿＿检查成果」。若改换入口仍不知道档案去哪里，先完成这个唯读测试，不急著开始多工。图中的 1、2、3 分别代表选入口、确认环境、验证成果。"
+        },
+        {
+          "type": "rich_paragraph",
+          "spans": [
+            {
+              "type": "text",
+              "text": "平台支援依 2026-09-14 的"
+            },
+            {
+              "type": "link",
+              "text": "桌面档案",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Linux 桌面预览",
+              "url": "https://learn.chatgpt.com/docs/linux/linux-app"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "IDE 档案",
+              "url": "https://learn.chatgpt.com/docs/ide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "云端档案",
+              "url": "https://learn.chatgpt.com/docs/cloud"
+            },
+            {
+              "type": "text",
+              "text": "及 "
+            },
+            {
+              "type": "link",
+              "text": "Remote 档案",
+              "url": "https://learn.chatgpt.com/docs/remote-connections"
+            },
+            {
+              "type": "text",
+              "text": "查证；这是档案核对与原创练习设计，不宣称逐一实测所有装置。下一步选择"
+            },
+            {
+              "type": "link",
+              "text": "终端机基础",
+              "url": "https://mokaair.com/zh-CN/life/codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "第一个小专案",
+              "url": "https://mokaair.com/zh-CN/life/codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "link",
+              "text": "跨装置工作",
+              "url": "https://mokaair.com/zh-CN/life/codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-platforms-guide/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Linux desktop preview",
+          "url": "https://learn.chatgpt.com/docs/linux/linux-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IDE extension",
+          "url": "https://learn.chatgpt.com/docs/ide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloud tasks",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,94 @@
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { useEffect, useState, type ReactNode } from "react";
+import { SearchParamsContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
+import { LearningHub } from "./hub";
+import { CodeSample } from "./code-sample";
+import { LearningNavigation } from "./navigation";
+import { lessons, learningEntries, filterLessons } from "@/lib/codex-learning";
+import type { GuideSummary } from "@/lib/guides";
+import { ContentBlocks } from "@/components/content-blocks";
+import { learningFilterUrl, readLearningFilters } from "@/lib/codex-learning/filters";
+
+const published = (index: number): GuideSummary => ({ slug: lessons[index].slug, kind: "life", title: lessons[index].locales.en.title, description: lessons[index].locales.en.description, destination_id: null, destination_label: null, topics: [], published_at: "2026-09-14T00:00:00Z", valid_until: null, featured: false });
+
+// Supply Next's URL context in jsdom. Real router timing and rapid Back are
+// covered by history-browser.mjs, which reproduced the pre-fix failure.
+function RouterHarness({ children }: { children: ReactNode }) {
+  const [search, setSearch] = useState(window.location.search);
+  useEffect(() => {
+    const sync = () => setSearch(window.location.search);
+    const push = window.history.pushState.bind(window.history);
+    const replace = window.history.replaceState.bind(window.history);
+    const pushSpy = vi.spyOn(window.history, "pushState").mockImplementation((...args) => { push(...args); sync(); });
+    const replaceSpy = vi.spyOn(window.history, "replaceState").mockImplementation((...args) => { replace(...args); sync(); });
+    window.addEventListener("popstate", sync);
+    return () => { pushSpy.mockRestore(); replaceSpy.mockRestore(); window.removeEventListener("popstate", sync); };
+  }, []);
+  return <SearchParamsContext.Provider value={new URLSearchParams(search)}>{children}</SearchParamsContext.Provider>;
+}
+
+describe("Codex learning", () => {
+  beforeEach(() => window.history.replaceState(null, "", "/en/life/codex-learning-hub"));
+  it("finds command aliases and intersects all filters", () => {
+    const entries = learningEntries("en", []);
+    expect(filterLessons(entries, "AGENTS.md", "0", "2", "1").map((r) => r.id)).toContain(10);
+    expect(filterLessons(entries, "/plan", "2", "", "")).toEqual([]);
+  });
+  it("links only published articles and clears filters", () => {
+    render(<LearningHub locale="en" entries={learningEntries("en", [published(0)])} available />, { wrapper: RouterHarness });
+    expect(screen.getByRole("link", { name: published(0).title })).toBeTruthy();
+    expect(screen.queryByRole("link", { name: lessons[1].locales.en.title })).toBeNull();
+    fireEvent.change(screen.getByRole("searchbox"), { target: { value: "does-not-exist" } });
+    expect(screen.getByText("No matching tutorials")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Clear filters" }));
+    expect(screen.getByRole("link", { name: published(0).title })).toBeTruthy();
+  });
+  it("omits an unpublished hub and keeps planned neighbors as text in the same unit", () => {
+    render(<LearningNavigation slug={lessons[11].slug} locale="en" entries={learningEntries("en", [published(10), published(11), published(12)])} hubPublished={false} />);
+    expect(screen.queryByText(/Back to the Codex/)).toBeNull();
+    expect(screen.queryByText(/^Next:/)).toBeNull();
+    expect(screen.getByText(/^Previous:/)).toBeTruthy();
+    expect(screen.queryByRole("link", { name: /^Previous:/ })).toBeNull();
+  });
+  it("hydrates shared filters, keeps them in URLs, and responds to browser history", () => {
+    window.history.replaceState(null, "", "/en/life/codex-learning-hub?unit=D&q=AGENTS.md&utm_source=shared#lessons");
+    render(<LearningHub locale="en" entries={learningEntries("en", [])} available />, { wrapper: RouterHarness });
+    expect((screen.getByRole("searchbox") as HTMLInputElement).value).toBe("AGENTS.md");
+    expect((screen.getByLabelText("Unit") as HTMLSelectElement).value).toBe("D");
+    fireEvent.change(screen.getByLabelText("Unit"), { target: { value: "E" } });
+    expect(window.location.search).toContain("unit=E");
+    expect(window.location.search).toContain("utm_source=shared");
+    expect(window.location.hash).toBe("#lessons");
+    act(() => { window.history.replaceState(null, "", "?unit=D&q=AGENTS.md"); window.dispatchEvent(new PopStateEvent("popstate")); });
+    expect((screen.getByLabelText("Unit") as HTMLSelectElement).value).toBe("D");
+    fireEvent.click(screen.getByRole("button", { name: "Clear filters" }));
+    expect(window.location.search).toBe("");
+  });
+  it("rejects invalid filter enums, bounds searches and preserves unrelated URL data", () => {
+    const filters = readLearningFilters(`?level=-1&platform=99&goal=NaN&unit=K&q=${"a".repeat(250)}`);
+    expect(filters).toEqual({ level: "", platform: "", goal: "", unit: "", q: "a".repeat(200) });
+    expect(learningFilterUrl("https://mokaair.com/en/life/codex-learning-hub?ref=1#x", { ...filters, q: "a & b", unit: "D" })).toBe("/en/life/codex-learning-hub?ref=1&q=a+%26+b&unit=D#x");
+  });
+  it("renders code as inert text and copies exact whitespace", async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText } });
+    const code = "<script>alert(1)</script>\n\tvalue = 2\n";
+    const { container } = render(<CodeSample language="html" code={code} />);
+    expect(container.querySelector("script")).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "Copy" }));
+    await waitFor(() => expect(writeText).toHaveBeenCalledWith(code));
+    await screen.findByText("Copied");
+  });
+  it("shows a recoverable clipboard error", async () => {
+    Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText: vi.fn().mockRejectedValue(new Error("denied")) } });
+    render(<CodeSample language="text" code="test" />);
+    fireEvent.click(screen.getByRole("button", { name: "Copy" }));
+    await screen.findByText("Select and copy the code");
+  });
+  it("preserves inline spaces and does not interpret legacy Markdown", () => {
+    const { container } = render(<ContentBlocks blocks={[{ type: "rich_paragraph", spans: [{ type: "text", text: "Read " }, { type: "link", text: "guide", url: "https://example.com" }, { type: "text", text: " now." }] }, { type: "paragraph", text: "[literal](url)" }]} />);
+    expect(container.querySelector("p")?.textContent).toBe("Read guide now.");
+    expect(screen.getByText("[literal](url)")).toBeTruthy();
+  });
+});

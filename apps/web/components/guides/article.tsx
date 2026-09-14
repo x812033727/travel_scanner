@@ -52,11 +52,12 @@ export const CONTENTS_MIN_HEADINGS = 3;
  * synchronous and renders directly under React Testing Library.
  */
 export function GuideArticle({
-  state, labels, related, readingTime, adsense,
+  state, labels, related, readingTime, adsense, afterHeader,
 }: {
   state: GuideArticleState & { document: NonNullable<GuideArticleState["document"]> };
   labels: GuideArticleLabels;
   related?: ReactNode;
+  afterHeader?: ReactNode;
   /** Already worded by the page ("about 5 min"); omitted when the page does not want it. */
   readingTime?: string | null;
   /** Disabled, or absent, means no slot AND no reserved space anywhere in the body. */
@@ -141,6 +142,8 @@ export function GuideArticle({
           </p>
         ) : null}
       </header>
+
+      {afterHeader}
 
       {document.hero ? (
         <figure>

@@ -1,0 +1,857 @@
+{
+  "slug": "codex-exec-scripting",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 130,
+  "locales": {
+    "zh-TW": {
+      "title": "codex exec 與腳本整合",
+      "description": "codex exec 在非互動模式執行一次任務，適合腳本與 CI。預設一般輸出把進度放 stderr、最後回答放 stdout；--json 改成逐行 JSON 事件，不能把整份輸出當成單一 JSON 物件解析。",
+      "hero": {
+        "src": "/guides/codex-exec-scripting/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "codex exec 在非互動模式執行一次任務，適合腳本與 CI。預設一般輸出把進度放 stderr、最後回答放 stdout；--json 改成逐行 JSON 事件，不能把整份輸出當成單一 JSON 物件解析。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "你會學到什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "腳本能區分成功、失敗與格式錯誤，報告內容可以核對，CI 不會把代理產出的文字直接當成發布命令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "預估操作時間: 15 分鐘"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前"
+        },
+        {
+          "type": "paragraph",
+          "text": "在有基準提交的練習 Git repo 執行，先確認登入與 codex exec --help。範例會透過 -o 寫出新的 review.md，確保沒有同名重要檔案；這個輸出檔與代理讀取程式的唯讀限制要分開理解。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逐步操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 先跑下方第一個唯讀檢查，確認命令退出狀態與 review.md 實際內容。不要只看檔案存在，因為錯誤或不完整回答也可能需要處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 再用 --json 觀察事件。每一行分別解析，檢查 turn.completed、turn.failed 與 error，分開保存診斷與最後報告。不要將日誌中的工具輸出當成可直接執行命令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 在腳本中設逾時、檢查退出碼並驗證輸出格式。PowerShell 看 $LASTEXITCODE，POSIX shell 看 $?；非零即停止依賴這個結果的後續步驟。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 接 CI 時使用組織核准的認證與 secrets 機制，先做唯讀報告。只有需要修改才明確設定 workspace-write，並仍保留人工 review；不把危險全權限作為通用預設。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-exec-scripting/diagram-1.svg",
+          "alt": "30. codex exec 與腳本整合 — 實作順序示意圖，非產品介面截圖。 Prompt → codex exec → JSONL / report",
+          "width": 1600,
+          "height": 900,
+          "caption": "30. codex exec 與腳本整合 — 實作順序示意圖，非產品介面截圖。 Prompt → codex exec → JSONL / report",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "只讀 README 並回報缺少的啟動步驟。每項包含證據與建議，不修改專案檔案，不發布或部署。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "範例與驗證"
+        },
+        {
+          "type": "code",
+          "language": "shell",
+          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\""
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "驗收方式"
+          ],
+          "rows": [
+            [
+              "先確認環境",
+              "在有基準提交的練習 Git repo 執行，先確認登入與 codex exec --help。範例會透過 -o 寫出新的 review.md，確保沒有同名重要檔案；這個輸出檔與代理讀取程式的唯讀限制要分開理解。"
+            ],
+            [
+              "完成一個操作",
+              "接 CI 時使用組織核准的認證與 secrets 機制，先做唯讀報告。只有需要修改才明確設定 workspace-write，並仍保留人工 review；不把危險全權限作為通用預設。"
+            ],
+            [
+              "檢查真實結果",
+              "腳本能區分成功、失敗與格式錯誤，報告內容可以核對，CI 不會把代理產出的文字直接當成發布命令。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "腳本能區分成功、失敗與格式錯誤，報告內容可以核對，CI 不會把代理產出的文字直接當成發布命令。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題"
+        },
+        {
+          "type": "paragraph",
+          "text": "預設要求 Git repo 是保護機制之一，先在正確專案目錄執行。--full-auto 在目前文件已屬相容性舊旗標，新的腳本採明確權限選項。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "官方來源",
+          "text": "跨平台操作依官方文件查證；未在每個系統實測。介面與帳號提供的功能可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸閱讀"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "non-interactive-mode",
+          "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "developer-commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "auth",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "codex exec 与脚本集成",
+      "description": "codex exec 在非互动模式执行一次任务，适合脚本与 CI。预设一般输出把进度放 stderr、最后回答放 stdout；--json 改成逐行 JSON 事件，不能把整份输出当成单一 JSON 物件解析。",
+      "hero": {
+        "src": "/guides/codex-exec-scripting/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "codex exec 在非互动模式执行一次任务，适合脚本与 CI。预设一般输出把进度放 stderr、最后回答放 stdout；--json 改成逐行 JSON 事件，不能把整份输出当成单一 JSON 物件解析。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "你会学到什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "脚本能区分成功、失败与格式错误，报告内容可以核对，CI 不会把代理产出的文字直接当成发布命令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预估操作时间: 15 分钟"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前"
+        },
+        {
+          "type": "paragraph",
+          "text": "在有基准提交的练习 Git repo 执行，先确认登入与 codex exec --help。范例会透过 -o 写出新的 review.md，确保没有同名重要档案；这个输出档与代理读取程式的唯读限制要分开理解。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逐步操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 先跑下方第一个唯读检查，确认命令退出状态与 review.md 实际内容。不要只看档案存在，因为错误或不完整回答也可能需要处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. 再用 --json 观察事件。每一行分别解析，检查 turn.completed、turn.failed 与 error，分开保存诊断与最后报告。不要将日志中的工具输出当成可直接执行命令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 在脚本中设逾时、检查退出码并验证输出格式。PowerShell 看 $LASTEXITCODE，POSIX shell 看 $?；非零即停止依赖这个结果的后续步骤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. 接 CI 时使用组织核准的认证与 secrets 机制，先做唯读报告。只有需要修改才明确设定 workspace-write，并仍保留人工 review；不把危险全权限作为通用预设。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-exec-scripting/diagram-1.svg",
+          "alt": "30. codex exec 与脚本集成 — 实作顺序示意图，非产品介面截图。 Prompt → codex exec → JSONL / report",
+          "width": 1600,
+          "height": 900,
+          "caption": "30. codex exec 与脚本集成 — 实作顺序示意图，非产品介面截图。 Prompt → codex exec → JSONL / report",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "练习需求"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "只读 README 并回报缺少的启动步骤。每项包含证据与建议，不修改专案档案，不发布或部署。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "范例与验证"
+        },
+        {
+          "type": "code",
+          "language": "shell",
+          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\""
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查项目",
+            "验收方式"
+          ],
+          "rows": [
+            [
+              "先确认环境",
+              "在有基准提交的练习 Git repo 执行，先确认登入与 codex exec --help。范例会透过 -o 写出新的 review.md，确保没有同名重要档案；这个输出档与代理读取程式的唯读限制要分开理解。"
+            ],
+            [
+              "完成一个操作",
+              "接 CI 时使用组织核准的认证与 secrets 机制，先做唯读报告。只有需要修改才明确设定 workspace-write，并仍保留人工 review；不把危险全权限作为通用预设。"
+            ],
+            [
+              "检查真实结果",
+              "脚本能区分成功、失败与格式错误，报告内容可以核对，CI 不会把代理产出的文字直接当成发布命令。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成结果"
+        },
+        {
+          "type": "paragraph",
+          "text": "脚本能区分成功、失败与格式错误，报告内容可以核对，CI 不会把代理产出的文字直接当成发布命令。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题"
+        },
+        {
+          "type": "paragraph",
+          "text": "预设要求 Git repo 是保护机制之一，先在正确专案目录执行。--full-auto 在目前文件已属相容性旧旗标，新的脚本采明确权限选项。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "官方来源",
+          "text": "跨平台操作依官方文件查证；未在每个系统实测。介面与帐号提供的功能可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸阅读"
+        },
+        {
+          "type": "link",
+          "text": "返回 Codex 教学总目录",
+          "url": "https://mokaair.com/zh-CN/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "non-interactive-mode",
+          "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "developer-commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "auth",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "codex exec and scripts",
+      "description": "codex exec runs one non-interactive task for scripts or CI. Normally progress goes to stderr and the final answer to stdout. --json produces JSON Lines events, not a single JSON object.",
+      "hero": {
+        "src": "/guides/codex-exec-scripting/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "codex exec runs one non-interactive task for scripts or CI. Normally progress goes to stderr and the final answer to stdout. --json produces JSON Lines events, not a single JSON object."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will learn"
+        },
+        {
+          "type": "paragraph",
+          "text": "The script distinguishes success, failure and malformed output, and does not treat agent text as deployment instructions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Estimated practice time: 15 min"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before you start"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a practice Git repo with a baseline, verify authentication and inspect codex exec --help. The -o example writes review.md: ensure that name is safe to use. Report-file output is separate from read-only access to project files."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step by step"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Run the first read-only example and inspect both exit status and report contents. File existence alone does not establish a complete or correct result."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. Try --json and parse each line separately. Distinguish turn.completed, turn.failed and error. Keep diagnostics separate from the final report and never execute commands copied from tool-output text automatically."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. Add a timeout, exit-code check and output validation to the calling script. PowerShell uses $LASTEXITCODE and POSIX shells use $?. Stop dependent steps on nonzero status."
+        },
+        {
+          "type": "paragraph",
+          "text": "4. In CI, use approved credentials and secret storage, starting with a read-only report. Request workspace-write only for intended edits and retain review rather than using full access as a general default."
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-exec-scripting/diagram-1.svg",
+          "alt": "30. codex exec and scripts — Workflow illustration, not a product screenshot. Prompt → codex exec → JSONL / report",
+          "width": 1600,
+          "height": 900,
+          "caption": "30. codex exec and scripts — Workflow illustration, not a product screenshot. Prompt → codex exec → JSONL / report",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice request"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "Read README and report missing startup steps with evidence and suggestions. Do not edit project files, publish or deploy."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Example and verification"
+        },
+        {
+          "type": "code",
+          "language": "shell",
+          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\""
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "Acceptance method"
+          ],
+          "rows": [
+            [
+              "Confirm the environment",
+              "Use a practice Git repo with a baseline, verify authentication and inspect codex exec --help. The -o example writes review.md: ensure that name is safe to use. Report-file output is separate from read-only access to project files."
+            ],
+            [
+              "Complete one action",
+              "In CI, use approved credentials and secret storage, starting with a read-only report. Request workspace-write only for intended edits and retain review rather than using full access as a general default."
+            ],
+            [
+              "Inspect the actual result",
+              "The script distinguishes success, failure and malformed output, and does not treat agent text as deployment instructions."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Expected result"
+        },
+        {
+          "type": "paragraph",
+          "text": "The script distinguishes success, failure and malformed output, and does not treat agent text as deployment instructions."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting"
+        },
+        {
+          "type": "paragraph",
+          "text": "Run from the intended Git repository. Current documentation treats --full-auto as a deprecated compatibility flag; use explicit sandbox choices for new scripts."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Official sources",
+          "text": "Cross-platform steps were checked against official documentation, not tested on every operating system. Interfaces and account availability can differ."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Continue learning"
+        },
+        {
+          "type": "link",
+          "text": "Back to the Codex learning hub",
+          "url": "https://mokaair.com/en/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "non-interactive-mode",
+          "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "developer-commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "auth",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "codex exec とスクリプト連携",
+      "description": "codex exec は非対話で一回のタスクを実行します。通常は stderr に進捗、stdout に最終回答、--json では一行ずつ JSON のイベントが出ます。",
+      "hero": {
+        "src": "/guides/codex-exec-scripting/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "codex exec は非対話で一回のタスクを実行します。通常は stderr に進捗、stdout に最終回答、--json では一行ずつ JSON のイベントが出ます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "学べること"
+        },
+        {
+          "type": "paragraph",
+          "text": "失敗と不正な出力を区別でき、結果を勝手に公開命令へ渡さなければ完了です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習時間の目安: 15 分"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "始める前に"
+        },
+        {
+          "type": "paragraph",
+          "text": "基準のある Git repo と認証を確認します。例の -o は review.md を作るため、既存の重要ファイルがないことを確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "操作手順"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 最初の例を実行し、終了状態と報告内容を確認します。存在だけで成功にしません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. --json は行ごとに解析し、完了、失敗、error を区別します。ツール出力を自動実行しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 呼び出すスクリプトに時間制限、終了コード、形式検証を入れます。PowerShell は $LASTEXITCODE、POSIX は $? を確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. CI は承認された秘密管理を使い、最初は読み取り報告にします。編集が必要な時だけ workspace-write を選び、レビューを残します。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-exec-scripting/diagram-1.svg",
+          "alt": "30. codex exec とスクリプト連携 — 作業の流れを表す図です。製品画面の画像ではありません。 Prompt → codex exec → JSONL / report",
+          "width": 1600,
+          "height": 900,
+          "caption": "30. codex exec とスクリプト連携 — 作業の流れを表す図です。製品画面の画像ではありません。 Prompt → codex exec → JSONL / report",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習用の依頼"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "README の不足する起動手順を根拠付きで報告してください。編集、公開、デプロイはしないでください。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "例と確認方法"
+        },
+        {
+          "type": "code",
+          "language": "shell",
+          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\""
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認項目",
+            "確認方法"
+          ],
+          "rows": [
+            [
+              "環境を確かめる",
+              "基準のある Git repo と認証を確認します。例の -o は review.md を作るため、既存の重要ファイルがないことを確認します。"
+            ],
+            [
+              "一つの操作を行う",
+              "CI は承認された秘密管理を使い、最初は読み取り報告にします。編集が必要な時だけ workspace-write を選び、レビューを残します。"
+            ],
+            [
+              "実際の結果を調べる",
+              "失敗と不正な出力を区別でき、結果を勝手に公開命令へ渡さなければ完了です。"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "期待する結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "失敗と不正な出力を区別でき、結果を勝手に公開命令へ渡さなければ完了です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "トラブル対応"
+        },
+        {
+          "type": "paragraph",
+          "text": "正しい Git repo から実行します。旧 --full-auto ではなく明示的な権限指定を使います。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "公式の出典",
+          "text": "各 OS の手順は公式文書で確認していますが、すべての環境で実機検証したわけではありません。画面や提供状況は異なる場合があります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "次に学ぶこと"
+        },
+        {
+          "type": "link",
+          "text": "Codex 学習ガイドに戻る",
+          "url": "https://mokaair.com/ja/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "non-interactive-mode",
+          "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "developer-commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "auth",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "codex exec와 스크립트 연동",
+      "description": "codex exec는 비대화형으로 작업 한 번을 실행합니다. 보통 stderr는 진행, stdout은 최종 답변이며 --json은 한 줄씩 JSON 이벤트를 출력합니다.",
+      "hero": {
+        "src": "/guides/codex-exec-scripting/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "codex exec는 비대화형으로 작업 한 번을 실행합니다. 보통 stderr는 진행, stdout은 최종 답변이며 --json은 한 줄씩 JSON 이벤트를 출력합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "학습 목표"
+        },
+        {
+          "type": "paragraph",
+          "text": "실패와 잘못된 출력을 구분하고 결과를 자동 배포 명령으로 넘기지 않으면 완료입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예상 실습 시간: 15 분"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전 준비"
+        },
+        {
+          "type": "paragraph",
+          "text": "기준이 있는 Git repo와 인증을 확인합니다. 예시 -o는 review.md를 만들므로 중요한 기존 파일이 없는지 확인하세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "단계별 작업"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. 첫 예시를 실행하고 종료 상태와 보고 내용을 확인합니다. 파일 존재만으로 성공을 판단하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. --json을 줄별로 파싱하고 완료, 실패와 error를 구분합니다. 도구 출력을 자동 실행하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. 호출 스크립트에 시간 제한, 종료 코드와 형식 검증을 넣습니다. PowerShell은 $LASTEXITCODE, POSIX는 $?를 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "4. CI는 승인된 비밀 관리를 쓰고 처음에는 읽기 보고만 합니다. 편집이 필요할 때만 workspace-write를 선택하고 리뷰를 유지합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-exec-scripting/diagram-1.svg",
+          "alt": "30. codex exec와 스크립트 연동 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Prompt → codex exec → JSONL / report",
+          "width": 1600,
+          "height": 900,
+          "caption": "30. codex exec와 스크립트 연동 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Prompt → codex exec → JSONL / report",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "연습 요청"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "README의 빠진 시작 단계를 근거와 함께 보고하세요. 편집, 게시와 배포는 하지 마세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예시와 검증"
+        },
+        {
+          "type": "code",
+          "language": "shell",
+          "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\""
+        },
+        {
+          "type": "table",
+          "header": [
+            "검사 항목",
+            "확인 방법"
+          ],
+          "rows": [
+            [
+              "환경 확인",
+              "기준이 있는 Git repo와 인증을 확인합니다. 예시 -o는 review.md를 만들므로 중요한 기존 파일이 없는지 확인하세요."
+            ],
+            [
+              "작업 하나 완료",
+              "CI는 승인된 비밀 관리를 쓰고 처음에는 읽기 보고만 합니다. 편집이 필요할 때만 workspace-write를 선택하고 리뷰를 유지합니다."
+            ],
+            [
+              "실제 결과 확인",
+              "실패와 잘못된 출력을 구분하고 결과를 자동 배포 명령으로 넘기지 않으면 완료입니다."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예상 결과"
+        },
+        {
+          "type": "paragraph",
+          "text": "실패와 잘못된 출력을 구분하고 결과를 자동 배포 명령으로 넘기지 않으면 완료입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결"
+        },
+        {
+          "type": "paragraph",
+          "text": "올바른 Git repo에서 실행합니다. 오래된 --full-auto보다 명확한 권한 옵션을 사용하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "공식 출처",
+          "text": "각 OS 절차는 공식 문서로 확인했으며 모든 환경에서 직접 시험한 것은 아닙니다. 화면과 계정별 제공 기능은 다를 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이어서 학습하기"
+        },
+        {
+          "type": "link",
+          "text": "Codex 학습 목차로 돌아가기",
+          "url": "https://mokaair.com/ko/life/codex-learning-hub"
+        }
+      ],
+      "sources": [
+        {
+          "title": "non-interactive-mode",
+          "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "developer-commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "auth",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
