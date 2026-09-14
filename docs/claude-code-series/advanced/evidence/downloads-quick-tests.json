@@ -3,775 +3,775 @@
   "archives": [
     {
       "number": 61,
-      "sha256": "6db30767ec8445db6ee7d72c45468325df537130f4c10b27da8778d17dbcd212",
+      "sha256": "f8d318ef214b94cdaa112cd208e8baa63357da5111e6e45b431344f3c281092f",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.5795ms)\n✔ 拒絕空白與過長內容 (0.1433ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1685ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1277ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 336.3695\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.6435ms)\n✔ 拒絕空白與過長內容 (0.2248ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2522ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.3381ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 285.8094\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.0352ms)\n✔ 拒絕空白與過長內容 (0.2081ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.167ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1513ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 547.4826\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (6.4648ms)\n✔ 拒絕空白與過長內容 (0.1784ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1313ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1134ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 256.3641\n"
         }
       ]
     },
     {
       "number": 62,
-      "sha256": "e170f4fcd98d85a275fd358a65d7996d02e076637b5996dc0d0b7a59a20bb6e7",
+      "sha256": "9f38f04e7ecf46b3d8e7278b254b0a4ec08c16c097e984530ff220bd35ab5a9b",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.1287ms)\n✔ 拒絕空白與過長內容 (0.1732ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1543ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1563ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 379.2408\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.7342ms)\n✔ 拒絕空白與過長內容 (0.163ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1408ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1251ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 189.5866\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.9761ms)\n✔ 拒絕空白與過長內容 (0.626ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1663ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1496ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 284.6564\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.0687ms)\n✔ 拒絕空白與過長內容 (0.3967ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.6358ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.2862ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 248.8136\n"
         }
       ]
     },
     {
       "number": 63,
-      "sha256": "9bbfb63023824cbd6626e4378985e53a87f5fb418493a7c5dc7e30e0a9f72fdd",
+      "sha256": "c55cf1097f3079980c47402c1e8fe3dd4d244a064c281466362785b8d22cdf7a",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (5.7086ms)\n✔ 拒絕空白與過長內容 (0.1867ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1562ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1431ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 320.244\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.8319ms)\n✔ 拒絕空白與過長內容 (0.1682ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1445ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.124ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 339.7756\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.7594ms)\n✔ 拒絕空白與過長內容 (0.1929ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.155ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1421ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 445.1441\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.1615ms)\n✔ 拒絕空白與過長內容 (0.1494ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1266ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1197ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 269.9416\n"
         }
       ]
     },
     {
       "number": 64,
-      "sha256": "f95d74570c002c67b3027c9740c47b27fff353b5a5d37771b084a2c2105512b2",
+      "sha256": "63b55340bf5afaa29b7c69e6b9921d6438a1039f22337b9f4500c6f9de8ed539",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.6037ms)\n✔ 拒絕空白與過長內容 (0.1645ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2034ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (1.4778ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1204.5461\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.2318ms)\n✔ 拒絕空白與過長內容 (0.2717ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.206ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1458ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 324.6554\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.9216ms)\n✔ 拒絕空白與過長內容 (0.1899ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1644ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.3506ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 610.0888\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.4628ms)\n✔ 拒絕空白與過長內容 (0.2545ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1908ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1709ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 969.3023\n"
         }
       ]
     },
     {
       "number": 65,
-      "sha256": "8eb24c2a9b147ee35555b94660c1fb833d54c9ee47d8afee8c62f5b6f69eb878",
+      "sha256": "95e10f9db1b6785675a50b13daa5efa277e7d328acaa74c79eeaa7236fa988e5",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.2684ms)\n✔ 拒絕空白與過長內容 (0.2265ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1707ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1442ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1261.0023\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.6892ms)\n✔ 拒絕空白與過長內容 (0.4089ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2118ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1862ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2518.152\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.6831ms)\n✔ 拒絕空白與過長內容 (0.3084ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1899ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1586ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 704.0233\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.0612ms)\n✔ 拒絕空白與過長內容 (0.1904ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1588ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1528ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 3622.932\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/filter.test.mjs",
           "exit": 0,
-          "output": "✔ filters preserve stable ids, original data and all three modes (4.9629ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 492.3733\n"
+          "output": "✔ filters preserve stable ids, original data and all three modes (5.0287ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2374.6222\n"
         }
       ]
     },
     {
       "number": 66,
-      "sha256": "536a8bd64ec51e6df2b4545a05778cebe8ef11da375c040e32a3b0c6067b8c97",
+      "sha256": "4b0a959bda67c0ccfdf919439d6c7757bd5110c1c0d5bc90a642395978ed856b",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (9.6048ms)\n✔ 拒絕空白與過長內容 (0.2403ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1795ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1583ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 673.8486\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.6915ms)\n✔ 拒絕空白與過長內容 (0.177ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1996ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1687ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 345.8541\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.9418ms)\n✔ 拒絕空白與過長內容 (0.3612ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2572ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1724ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 578.6334\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.5912ms)\n✔ 拒絕空白與過長內容 (0.164ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.8026ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.148ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 347.4856\n"
         }
       ]
     },
     {
       "number": 67,
-      "sha256": "4c7af0ae4abc146dac9985e88aceb34d2d0c314ef08403f720f65d40a955504c",
+      "sha256": "07fdfb1acd696d2f400e04bea193e2969521f4cfef315f40b237507743f75eef",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.4448ms)\n✔ 拒絕空白與過長內容 (0.1463ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.142ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1439ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 573.7111\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.3729ms)\n✔ 拒絕空白與過長內容 (0.3845ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2228ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1522ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 454.2331\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.8506ms)\n✔ 拒絕空白與過長內容 (0.1712ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.942ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1807ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 629.6982\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.1515ms)\n✔ 拒絕空白與過長內容 (0.3417ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1503ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1395ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 412.5922\n"
         }
       ]
     },
     {
       "number": 68,
-      "sha256": "75e5d65659c9af52f6871e5c3e1621452abbae7f80f6eda817702be2e2979977",
+      "sha256": "d8daad9d81872f71e86eac62b9dff2cfbd38acfd05c41c210b82bd7d16f82806",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.4479ms)\n✔ 拒絕空白與過長內容 (0.1441ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1345ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1199ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 290.7161\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.3945ms)\n✔ 拒絕空白與過長內容 (0.1703ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1435ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1796ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 249.464\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.2057ms)\n✔ 拒絕空白與過長內容 (0.1346ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1174ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1199ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 360.9514\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (4.0212ms)\n✔ 拒絕空白與過長內容 (0.161ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1331ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1206ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 272.0585\n"
         }
       ]
     },
     {
       "number": 69,
-      "sha256": "332d0449063a4231b533421fdf0a7e64cdc4821048417b2d9c9d15e3beff7feb",
+      "sha256": "405d2fc3de84e1626393787b58c1e5a9aa2866c23544790efc58154e0ee4df40",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.3369ms)\n✔ 拒絕空白與過長內容 (0.139ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1343ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1093ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 193.5188\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (9.0436ms)\n✔ 拒絕空白與過長內容 (1.2839ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2266ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1961ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1967.9527\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.0472ms)\n✔ 拒絕空白與過長內容 (0.1308ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1233ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1093ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 179.0627\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (7.8163ms)\n✔ 拒絕空白與過長內容 (0.4137ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2252ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.187ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2473.3022\n"
         }
       ]
     },
     {
       "number": 70,
-      "sha256": "dfc19ca5726d8aa41d8a742afcf0ddd75ecdb4bdc6f463fe7bec33164c1b1e06",
+      "sha256": "6db731e8d65542fe06274049f45a4d03174e1a496c0cbf502cb8a9a21d985fb7",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.6114ms)\n✔ 拒絕空白與過長內容 (0.1638ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1399ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1188ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 275.6212\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.933ms)\n✔ 拒絕空白與過長內容 (0.1858ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1624ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1401ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2836.0646\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.0915ms)\n✔ 拒絕空白與過長內容 (0.1229ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.115ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.111ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 199.2912\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.5146ms)\n✔ 拒絕空白與過長內容 (0.24ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1647ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1479ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1437.4025\n"
         }
       ]
     },
     {
       "number": 71,
-      "sha256": "018f836a2f739e23238723a740f3ab5985ba193b824a1ed57ed58700a6389e8b",
+      "sha256": "0a1a2af2fe8a82317c9f010b64ba0656c5fa5f775d84c28e15f0937d32a83665",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.5839ms)\n✔ 拒絕空白與過長內容 (0.1515ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1503ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.2026ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 273.1032\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.2487ms)\n✔ 拒絕空白與過長內容 (0.1637ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1337ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1354ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 355.5723\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (11.3922ms)\n✔ 拒絕空白與過長內容 (0.31ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.7057ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1967ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 398.0561\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.9867ms)\n✔ 拒絕空白與過長內容 (0.1708ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2911ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1526ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 250.8138\n"
         }
       ]
     },
     {
       "number": 72,
-      "sha256": "f5761fa7bbaedbf5de193ae2798ad4be70c9d7dbe483633344c50296f40fd26a",
+      "sha256": "e6ed2f9bbecce08e1702f2bc2eca08f8fd1adc0bd68c880248dbb505434794cf",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.8725ms)\n✔ 拒絕空白與過長內容 (0.3378ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1943ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1954ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 420.9001\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.2053ms)\n✔ 拒絕空白與過長內容 (0.2495ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.159ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1275ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 288.6127\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.0239ms)\n✔ 拒絕空白與過長內容 (0.1711ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1627ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1642ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 408.0674\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.4274ms)\n✔ 拒絕空白與過長內容 (0.2048ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1469ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1299ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 318.5373\n"
         }
       ]
     },
     {
       "number": 73,
-      "sha256": "e091f53560476877706e329dc3f0300bd6db24d246f8d7cc0aa561f558147ba7",
+      "sha256": "d7614f1e9da99f6b6bbff913eebc49518503c2f0d5468239b4a7a0c060135b3f",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (5.4436ms)\n✔ 拒絕空白與過長內容 (0.2352ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1854ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1645ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 348.4461\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.3804ms)\n✔ 拒絕空白與過長內容 (0.2162ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.295ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1415ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 412.8905\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.9669ms)\n✔ 拒絕空白與過長內容 (0.2675ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.193ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1725ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 530.441\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (4.303ms)\n✔ 拒絕空白與過長內容 (0.2447ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1806ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.2728ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 230.5328\n"
         }
       ]
     },
     {
       "number": 74,
-      "sha256": "88da529a7c81a18d4626fce83190fe9ed47bcd76f9db3a8c426e478461081d0c",
+      "sha256": "561c9a104a509c69a5625ea50c6582588af6653d689767ae46ecdb0b9aacad07",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (5.2164ms)\n✔ 拒絕空白與過長內容 (0.238ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1819ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1565ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 601.5448\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.8574ms)\n✔ 拒絕空白與過長內容 (0.1568ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1584ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1348ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 512.5344\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.1286ms)\n✔ 拒絕空白與過長內容 (0.175ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.16ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1539ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 512.3389\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.5323ms)\n✔ 拒絕空白與過長內容 (0.2425ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1852ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1792ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 4215.8253\n"
         }
       ]
     },
     {
       "number": 75,
-      "sha256": "c540fa1fe6753cc26ef74bc60dde5d61b7a0f6d165a1d40fea7c123878f2310f",
+      "sha256": "2a8c545ad0b7c8a70c47e6d1ca5d01101d70fd0bbbda4c13fd9e46b9ccb387bd",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (6.5019ms)\n✔ 拒絕空白與過長內容 (0.3383ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2186ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.172ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 700.1191\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (13.0545ms)\n✔ 拒絕空白與過長內容 (0.5648ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2237ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1962ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 3172.332\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.952ms)\n✔ 拒絕空白與過長內容 (0.1619ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1505ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1415ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 546.0459\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (6.0355ms)\n✔ 拒絕空白與過長內容 (0.2107ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1447ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1555ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 685.9044\n"
         }
       ]
     },
     {
       "number": 76,
-      "sha256": "267893e8cc30c8b0568cff9a2a8693ba75a43f729ab520bbc8743e2ab4f7b70d",
+      "sha256": "83f6991d3408c965e7c6a0f7927cc637bbb9e83f46c8c07805d3a16de091baa7",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.7878ms)\n✔ 拒絕空白與過長內容 (0.136ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1421ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1381ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1061.1953\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.4847ms)\n✔ 拒絕空白與過長內容 (0.1577ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1307ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1182ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 749.3646\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.7975ms)\n✔ 拒絕空白與過長內容 (0.1706ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1439ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1411ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 648.8301\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.1321ms)\n✔ 拒絕空白與過長內容 (0.128ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1251ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1209ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 491.3339\n"
         }
       ]
     },
     {
       "number": 77,
-      "sha256": "41306f27f4cc3132556feb8e6670826f3a5619c4c489e3b7639689bcaad3f736",
+      "sha256": "d6c2d3435b5afb21b3c59c6ec08b48d2befd995ce1ddc352f18f25464e5865e2",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (7.6216ms)\n✔ 拒絕空白與過長內容 (1.0847ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.3065ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.186ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1259.7364\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.2304ms)\n✔ 拒絕空白與過長內容 (0.9772ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.4518ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.2967ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 686.7646\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.7836ms)\n✔ 拒絕空白與過長內容 (0.1678ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.158ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1598ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 428.7166\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.4805ms)\n✔ 拒絕空白與過長內容 (0.2243ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1979ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1662ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 616.6771\n"
         }
       ]
     },
     {
       "number": 78,
-      "sha256": "8416e874713d4f420f45be4bf122d5f383de9202523c0eef4b8943c1c79df608",
+      "sha256": "b35b59eaa66db58366d81fa2f56700b63075dd14a3eeaffcd2404d243930166d",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.0411ms)\n✔ 拒絕空白與過長內容 (0.2339ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1636ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1456ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 320.3731\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.0511ms)\n✔ 拒絕空白與過長內容 (0.2346ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1999ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.4917ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 809.1303\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.3929ms)\n✔ 拒絕空白與過長內容 (0.1883ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.3252ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1645ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 308.8922\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.9755ms)\n✔ 拒絕空白與過長內容 (0.1848ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.165ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1829ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1170.4758\n"
         }
       ]
     },
     {
       "number": 79,
-      "sha256": "0376a6e42d79d3e60dbf7ed81aac5ecb8d319f29b52e12cca2665d58bf407dba",
+      "sha256": "8583cfffdcad17c5ab9c1d243169e53f18460bc94beb34cdc1244a51eb64a1df",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (4.6419ms)\n✔ 拒絕空白與過長內容 (0.1834ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1596ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1456ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 338.4703\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (7.5007ms)\n✔ 拒絕空白與過長內容 (0.5317ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.3369ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.2122ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 3418.4587\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.5953ms)\n✔ 拒絕空白與過長內容 (0.1482ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1435ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1379ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 424.0438\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (4.1088ms)\n✔ 拒絕空白與過長內容 (0.2678ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1779ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1548ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2048.9909\n"
         }
       ]
     },
     {
       "number": 80,
-      "sha256": "b229084684dd430e016072b34633fb76d8179238268ce5251669604373a84976",
+      "sha256": "0ba29327a8aae69817f8fbb73987131843d5614ea4e2e044e6f3a4899bac60a3",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.7638ms)\n✔ 拒絕空白與過長內容 (0.1856ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1494ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1432ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 340.6095\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (4.4706ms)\n✔ 拒絕空白與過長內容 (0.1645ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.135ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1878ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 395.9965\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.6651ms)\n✔ 拒絕空白與過長內容 (0.1866ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1489ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1405ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 298.63\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.1688ms)\n✔ 拒絕空白與過長內容 (0.1514ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1154ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1072ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 643.8894\n"
         }
       ]
     },
     {
       "number": 81,
-      "sha256": "7293450c42961129bc8c011d0275d148f98c05b31e28cc836b939d89187a636a",
+      "sha256": "f2a963826db535a7d822a4d71bac12fe622de8a77225b43812a783e6e5a69d79",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.7308ms)\n✔ 拒絕空白與過長內容 (0.1481ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.7671ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1831ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 315.6137\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.4726ms)\n✔ 拒絕空白與過長內容 (0.1431ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1319ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (6.1092ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 564.399\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.0787ms)\n✔ 拒絕空白與過長內容 (0.1591ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1529ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1488ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 533.6359\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (5.0465ms)\n✔ 拒絕空白與過長內容 (0.149ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1253ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1198ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 228.617\n"
         }
       ]
     },
     {
       "number": 82,
-      "sha256": "8727f9974edffd31bb68cf9db2d8d77591148c2df87c4b718cca85f07dba1e3e",
+      "sha256": "001e2c883c0fc597539290b4ce9d778b3de8e576c59a06185c729f79e2b14b7c",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.1367ms)\n✔ 拒絕空白與過長內容 (2.059ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2864ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1697ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1213.6425\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.4961ms)\n✔ 拒絕空白與過長內容 (0.1644ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.6276ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1499ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 353.4466\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.6849ms)\n✔ 拒絕空白與過長內容 (0.1675ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1492ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1479ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 690.2763\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.2833ms)\n✔ 拒絕空白與過長內容 (0.1538ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1189ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1231ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 734.083\n"
         }
       ]
     },
     {
       "number": 83,
-      "sha256": "996a484b4e70c66d4102d15a7dc320e6816c608ff73fe523ed5b393f7e06f201",
+      "sha256": "8eeb256dec65f8fe9963460b68dc0139b40c32ff40e6b474e604734a9871bf0b",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (4.185ms)\n✔ 拒絕空白與過長內容 (0.208ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.3092ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.2421ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 360.7036\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.8608ms)\n✔ 拒絕空白與過長內容 (0.2679ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1993ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1629ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 828.4525\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.5224ms)\n✔ 拒絕空白與過長內容 (0.1381ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1462ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1369ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 269.5361\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (7.3425ms)\n✔ 拒絕空白與過長內容 (0.2229ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1716ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1597ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 585.6081\n"
         }
       ]
     },
     {
       "number": 84,
-      "sha256": "fff42ac8e21426e43719f2a729d7a61a1742f907f6a3a23a9f7b523035e97d97",
+      "sha256": "a8285cf49e1ce8fd4f9623cb3f258d67bac34b4d4a26ce759dc9c7af1f4396ca",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.7076ms)\n✔ 拒絕空白與過長內容 (0.1851ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1629ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1433ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 434.1858\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (6.0856ms)\n✔ 拒絕空白與過長內容 (0.2024ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1586ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1491ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 860.7342\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.7019ms)\n✔ 拒絕空白與過長內容 (0.1812ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1548ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1411ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 263.689\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (24.4839ms)\n✔ 拒絕空白與過長內容 (0.3441ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2332ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (1.0271ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 983.2135\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/filter.test.mjs",
           "exit": 0,
-          "output": "✔ filters preserve stable ids, original data and all three modes (3.1358ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 219.0513\n"
+          "output": "✔ filters preserve stable ids, original data and all three modes (8.0122ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1638.7337\n"
         }
       ]
     },
     {
       "number": 85,
-      "sha256": "98449f7434d11d62eb8c4a206ad25ed65be2d6cc43bfb2c30a2c3a7598517802",
+      "sha256": "6f079e3a4497e4c8b6be3cba7113f60bb8b72b6015b723aee20bbfa5e85b7595",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 1,
           "expected_exit": 1,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.881ms)\n✔ 拒絕空白與過長內容 (0.16ms)\n✖ 依照識別碼切換指定項目，不改動其他項目 (1.2341ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1607ms)\nℹ tests 4\nℹ suites 0\nℹ pass 3\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 240.0156\n\n✖ failing tests:\n\ntest at tests\\model.test.mjs:16:1\n✖ 依照識別碼切換指定項目，不改動其他項目 (1.2341ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  false !== true\n  \n      at TestContext.<anonymous> (file:///C:/Users/x8120/AppData/Local/Temp/mokaair-downloads-v1d2e_9x/lesson-85/starter/tests/model.test.mjs:19:10)\n      at Test.runInAsyncScope (node:async_hooks:214:14)\n      at Test.run (node:internal/test_runner/test:1106:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)\n      at Test.postRun (node:internal/test_runner/test:1235:19)\n      at Test.run (node:internal/test_runner/test:1163:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: false,\n    expected: true,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.2271ms)\n✔ 拒絕空白與過長內容 (0.2491ms)\n✖ 依照識別碼切換指定項目，不改動其他項目 (28.5876ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.548ms)\nℹ tests 4\nℹ suites 0\nℹ pass 3\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1652.6715\n\n✖ failing tests:\n\ntest at tests\\model.test.mjs:16:1\n✖ 依照識別碼切換指定項目，不改動其他項目 (28.5876ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  false !== true\n  \n      at TestContext.<anonymous> (file:///C:/Users/x8120/AppData/Local/Temp/mokaair-downloads-3ue9r7en/lesson-85/starter/tests/model.test.mjs:19:10)\n      at Test.runInAsyncScope (node:async_hooks:214:14)\n      at Test.run (node:internal/test_runner/test:1106:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)\n      at Test.postRun (node:internal/test_runner/test:1235:19)\n      at Test.run (node:internal/test_runner/test:1163:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: false,\n    expected: true,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.4491ms)\n✔ 拒絕空白與過長內容 (0.1329ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1384ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1353ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 246.4505\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.7612ms)\n✔ 拒絕空白與過長內容 (0.4128ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2092ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1625ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1386.0483\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/filter.test.mjs",
           "exit": 0,
-          "output": "✔ filters preserve stable ids, original data and all three modes (4.1268ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 221.833\n"
+          "output": "✔ filters preserve stable ids, original data and all three modes (3.9352ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1803.3859\n"
         }
       ]
     },
     {
       "number": 86,
-      "sha256": "e3e634baf91005d37e0c5983f34b2392e39624e218adeec14b0f8a0e79e383c9",
+      "sha256": "cf4699dcddab76ef9c02c5fa1c613600799d472c6ecb2ad9f987a7abddd3ca98",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.5055ms)\n✔ 拒絕空白與過長內容 (0.1499ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.147ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1307ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 242.0283\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (4.259ms)\n✔ 拒絕空白與過長內容 (0.2439ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1414ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.3968ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 277.512\n"
         },
         {
           "variant": "starter",
           "command": "node --test tests/stats.test.mjs",
           "exit": 0,
-          "output": "✔ statistics preserve empty, mixed and same-title data without mutation (3.8925ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 262.5467\n"
+          "output": "✔ statistics preserve empty, mixed and same-title data without mutation (2.2143ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 220.9095\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.4578ms)\n✔ 拒絕空白與過長內容 (0.1958ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1683ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1421ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 235.8244\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.6368ms)\n✔ 拒絕空白與過長內容 (0.1467ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1719ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.3817ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 225.8601\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/filter.test.mjs",
           "exit": 0,
-          "output": "✔ filters preserve stable ids, original data and all three modes (4.0237ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 212.8933\n"
+          "output": "✔ filters preserve stable ids, original data and all three modes (3.0933ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 221.3036\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/stats.test.mjs",
           "exit": 0,
-          "output": "✔ statistics preserve empty, mixed and same-title data without mutation (2.7323ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 251.4643\n"
+          "output": "✔ statistics preserve empty, mixed and same-title data without mutation (2.6104ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 231.5186\n"
         }
       ]
     },
     {
       "number": 87,
-      "sha256": "e68da1b3b3fd2138e8721e632e6e0d65dfd5ffdc47a5440a6bf109cdecbd96f2",
+      "sha256": "d08a1f701f8ec1cefb4a1dc937b8777c8c75400cedafe27b2e3078c34b4eb5dc",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.6232ms)\n✔ 拒絕空白與過長內容 (0.1914ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1499ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1786ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 867.5898\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (5.1004ms)\n✔ 拒絕空白與過長內容 (0.1727ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1409ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1239ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 220.8222\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.7667ms)\n✔ 拒絕空白與過長內容 (0.1429ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.158ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1731ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 518.4779\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.1169ms)\n✔ 拒絕空白與過長內容 (0.246ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1515ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1237ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 263.6417\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/filter.test.mjs",
           "exit": 0,
-          "output": "✔ filters preserve stable ids, original data and all three modes (4.4839ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1002.774\n"
+          "output": "✔ filters preserve stable ids, original data and all three modes (2.501ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 213.9931\n"
         }
       ]
     },
     {
       "number": 88,
-      "sha256": "f7a228481972a28fb2ab435091f2cdc27dd6cef5720766655ebfa1030ddea925",
+      "sha256": "d5cb961d3fc151a406280ebc6fffc5262ea1bce5b32edc038085cd35af6f9415",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (8.5856ms)\n✔ 拒絕空白與過長內容 (0.4424ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1749ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1458ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 871.1266\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.9026ms)\n✔ 拒絕空白與過長內容 (0.1945ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1367ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1422ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 200.7816\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (4.4843ms)\n✔ 拒絕空白與過長內容 (0.2203ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.4546ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1871ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 725.7152\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.1633ms)\n✔ 拒絕空白與過長內容 (0.1317ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1245ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1233ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 189.2382\n"
         }
       ]
     },
     {
       "number": 89,
-      "sha256": "4fecbbab852f303290bb2773ffa6cdc09b90073bca05cb264e057504d731656f",
+      "sha256": "9d029040f05410c57b41051074b5a064d7d69c4b5f2df16433beb1b132cadd8e",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.7679ms)\n✔ 拒絕空白與過長內容 (0.1506ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1443ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1355ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 313.8855\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.9344ms)\n✔ 拒絕空白與過長內容 (0.325ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.3085ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.2709ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 638.3221\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.6918ms)\n✔ 拒絕空白與過長內容 (0.1583ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1503ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1415ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 552.2042\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (10.592ms)\n✔ 拒絕空白與過長內容 (0.234ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2666ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.2375ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2280.6381\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/filter.test.mjs",
           "exit": 0,
-          "output": "✔ filters preserve stable ids, original data and all three modes (3.423ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 475.6729\n"
+          "output": "✔ filters preserve stable ids, original data and all three modes (3.2894ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1492.2546\n"
         }
       ]
     },
     {
       "number": 90,
-      "sha256": "5292df137b90084c64bb5c1474671cbd02294ea2bf82a179eff87cc2594e47ee",
+      "sha256": "f9eb07f7243929e749d3442a413373ad1bf4da35220f3c530296ace8927b8156",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.7605ms)\n✔ 拒絕空白與過長內容 (0.3483ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2232ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (3.5932ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 662.6001\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.7102ms)\n✔ 拒絕空白與過長內容 (0.8584ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.5764ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.662ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1802.5736\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.621ms)\n✔ 拒絕空白與過長內容 (0.1567ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1425ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1339ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 473.3772\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.3401ms)\n✔ 拒絕空白與過長內容 (0.3019ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2028ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1534ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1942.2143\n"
         }
       ]
     },
     {
       "number": 91,
-      "sha256": "4fad9bca7d1a503100ee69409a2a3f0519c8ad674ac231b5f203ee2d7d2c46c2",
+      "sha256": "1d89126c100f73fa84ea744c82d9f55064b0229762e1e491092280dcb295b661",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.5166ms)\n✔ 拒絕空白與過長內容 (1.1357ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.3519ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.2121ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 626.5271\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.9941ms)\n✔ 拒絕空白與過長內容 (0.2015ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1438ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.124ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 752.373\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.3217ms)\n✔ 拒絕空白與過長內容 (0.5295ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2775ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.2687ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 707.9474\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (7.2075ms)\n✔ 拒絕空白與過長內容 (0.2837ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1485ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1293ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 227.774\n"
         }
       ]
     },
     {
       "number": 92,
-      "sha256": "1ed8a58fda20e6cf28a3ad99944d488ff3e51296450d0814399c9500ecbece6d",
+      "sha256": "0cac0ef6cdc3999c990f74c0baa9ef2521267dfcd8a2f4f9c93532444e61aff0",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.0651ms)\n✔ 拒絕空白與過長內容 (0.157ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1338ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1287ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 490.0869\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.6558ms)\n✔ 拒絕空白與過長內容 (0.1473ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1381ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.122ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 157.3472\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.2551ms)\n✔ 拒絕空白與過長內容 (0.1161ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1169ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1137ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 204.7456\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.2131ms)\n✔ 拒絕空白與過長內容 (0.1303ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1878ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1822ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 158.2219\n"
         }
       ]
     },
     {
       "number": 93,
-      "sha256": "a8924d6d0401fd166981c65ebc64e788f027771250ba23257c04ee1556d78e08",
+      "sha256": "21d30709b2c8b05fe9264001aecd92c7f7f2e2715b70e174c7d7f2ff6a92c810",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.2338ms)\n✔ 拒絕空白與過長內容 (0.0998ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1264ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1202ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 377.0413\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.7136ms)\n✔ 拒絕空白與過長內容 (0.143ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1368ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.2067ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 162.8505\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.1732ms)\n✔ 拒絕空白與過長內容 (0.1134ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1134ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1092ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 225.3402\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.1837ms)\n✔ 拒絕空白與過長內容 (0.1487ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1594ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.121ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 169.9814\n"
         }
       ]
     },
     {
       "number": 94,
-      "sha256": "9ec0fbe40e99fe3b0a4bbf66f23fba13fbcb6950eee1992280d47d0a748a13aa",
+      "sha256": "2afc394c027681b7e872398d81360d8de5477b307b0b65867277f662276d0d0d",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.0951ms)\n✔ 拒絕空白與過長內容 (0.1109ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1181ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.108ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 205.4532\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.9398ms)\n✔ 拒絕空白與過長內容 (0.1351ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2961ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1587ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 289.6669\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.252ms)\n✔ 拒絕空白與過長內容 (0.4079ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.2537ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.129ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 257.2122\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.0154ms)\n✔ 拒絕空白與過長內容 (0.1293ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1224ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1118ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 200.5708\n"
         }
       ]
     },
     {
       "number": 95,
-      "sha256": "33385f5191140ba0749cd1b82255366191ffa85aac0e332342f5ccc4743011d5",
+      "sha256": "57f780972d7e3bbf3d3e02085a93cae7e08e05b4436b788badf9184f0ea51f63",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.0665ms)\n✔ 拒絕空白與過長內容 (0.1024ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.155ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1318ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 173.806\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.4061ms)\n✔ 拒絕空白與過長內容 (0.1419ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1169ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1103ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 246.1821\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.0567ms)\n✔ 拒絕空白與過長內容 (0.1917ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.18ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1648ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 278.0044\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.225ms)\n✔ 拒絕空白與過長內容 (0.1686ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1245ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.5807ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 207.7988\n"
         }
       ]
     },
     {
       "number": 96,
-      "sha256": "3e2146522aa1317169df74c88fcea19051bdc7028a14c1a54c32fe6395b45445",
+      "sha256": "04b803d98ec822de1855c5e01712ec8371f4143b4c9e8e89a03450fcbaa19f2e",
       "checks": [
         {
           "variant": "starter",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (3.5831ms)\n✔ 拒絕空白與過長內容 (0.1877ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1645ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1582ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 323.3639\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (32.8975ms)\n✔ 拒絕空白與過長內容 (0.2583ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1537ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1323ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 226.3985\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/model.test.mjs",
           "exit": 0,
           "expected_exit": 0,
-          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.8521ms)\n✔ 拒絕空白與過長內容 (0.1541ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1659ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1588ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 314.8888\n"
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.0959ms)\n✔ 拒絕空白與過長內容 (0.1172ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1128ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1037ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 196.0611\n"
         },
         {
           "variant": "reference",
           "command": "node --test tests/filter.test.mjs",
           "exit": 0,
-          "output": "✔ filters preserve stable ids, original data and all three modes (3.3313ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 271.0596\n"
+          "output": "✔ filters preserve stable ids, original data and all three modes (4.1121ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 373.8252\n"
         }
       ]
     }

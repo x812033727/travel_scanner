@@ -11,7 +11,7 @@
   "locales": {
     "zh-TW": {
       "title": "Claude Code｜只處理變更檔案的格式化 Hook",
-      "description": "限制格式化範圍並避免事件重複執行格式化 Hook 如果每次都掃描整個專案，可能改到與任務無關的檔案。本篇只處理 Write 或 Edit 剛完成的 JSON 練習檔，檢查路徑、解析內容，再在有必要時寫回。你會用連續重播確認第二次不再產生變更，也會驗證失敗時原始資料仍保留。",
+      "description": "限制格式化範圍並避免事件重複執行。格式化 Hook 如果每次都掃描整個專案，可能改到與任務無關的檔案。本篇只處理 Write 或 Edit 剛完成的 JSON 練習檔，檢查路徑、解析內容，再在有必要時寫回。你會用連續重播確認第二次不再產生變更，也會驗證失敗時原始資料仍保留。",
       "hero": {
         "src": "/guides/claude-code-hook-scoped-formatting/hero.jpg",
         "alt": "只處理變更檔案的格式化 Hook：文件、螢幕與完成記號的幾何插圖",

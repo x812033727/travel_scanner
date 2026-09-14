@@ -1,5 +1,6 @@
 """Create the review index and per-lesson evidence map from existing local receipts."""
 import json
+import re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
 DOC=ROOT/'docs/claude-code-series/advanced'
@@ -109,6 +110,20 @@ if live.get('github_actions',{}).get('local_workflow_prepared'):
     readme=readme.replace('| 發布 |','| GitHub Actions | [儲存庫驗證流程](../../../.github/workflows/claude-tutorial-validation.yml)已備妥；12 項系列測試與 8 項基礎測試通過。尚未合併或遠端執行；[設定與驗證步驟](github-actions-validation.md) |\n| 發布 |')
 if live.get('capstone',{}).get('passed'):
     readme=readme.replace('| 發布 |','| 第 96 篇實際開發 | Claude 從 starter 完成篩選、畫面與保存；9 項專案測試、3 項獨立斷言、10 個內建瀏覽器案例、故障紅綠與乾淨解壓重驗通過。[實際成果 ZIP](evidence/live/capstone-result.zip)；一處交接文字由驗收者更正，真實手機仍待測 |\n| 發布 |')
+if live.get('sdk',{}).get('terminal_cancel_resume_passed'):
+    readme=re.sub(r'\| SDK \|[^\n]+', '| SDK | 0.3.270、runner v2：query、resume、錯誤狀態、啟動恢復、實際終端機 Ctrl+C 取消及同一中斷 session 恢復通過。[紀錄](evidence/live/sdk-terminal-recovery.json) |', readme)
+if live.get('teams',{}).get('passed'):
+    readme=readme.replace('| 外部環境 |','| 互動式產品 | 兩位 Teams 隊友的讀檔、任務、訊息與後續接續；一次性 Cron 真實觸發及清單清空。[紀錄](evidence/live/interactive-products.json)。僅驗證所列範圍，未宣稱完整雙角色功能開發 |\n| 外部環境 |')
+    readme=re.sub(r'\| 外部環境 \|[^\n]+','| 外部環境 | 真實手機、遠端 MCP OAuth、Bash sandbox 與 Actions 模型 job 尚未通過；Remote Control 瀏覽器要求裝置重新驗證。完整待辦見最新操作紀錄 |',readme)
+if live.get('extra_boundaries',{}).get('passed'):
+    readme=readme.replace('| CLI 邊界案例 | 七項通過：','| CLI 邊界案例 | 另六項涵蓋規則衝突、Skill 材料與缺檔、Hook 程式失敗、MCP 不可信輸出及無效參數；原七項通過：')
+if live.get('workflow_comparison',{}).get('passed'):
+    readme+='\n[單代理／Teams 流程觀察](evidence/live/workflow-observations.json)：各一次、相同合成輸入，保存版本、模型與計時。模型組合與協調流程不同，不據此宣稱效能排名或節省費用。\n'
+readme=readme.replace('補驗：整站前端','較早來源快照的本機補驗：整站前端').replace('2,500–2,700','2,500–2,800')
+if (DOC/'evidence/live/post-main-checks.json').exists():
+    readme=readme.replace('## 驗證狀態\n','## 驗證狀態\n\n同步 main 後，Node.js 24.15.0 的建置、lint、i18n、型別、52 項工具測試、Ruff 與 mypy 通過；9 類瀏覽器案例重跑通過。相關前端共 73 項斷言通過：第一輪有工作程序逾時，缺少的 23 項以 forks 單獨補跑。API 本次 18 通過、12 項 PostgreSQL 跳過，完整資料庫紀錄屬較早快照。[目前檢查與失敗重試紀錄](evidence/live/post-main-checks.json)。\n')
+readme=readme.replace('需要 Node.js 22 以上與已安裝的網站依賴','需要符合儲存庫依賴的 Node.js 版本與已安裝的網站依賴（本次使用 24.15.0）')
+readme=readme.replace('Claude 帳號及外部環境的實測仍有待辦','部分裝置及外部環境實測仍有待辦')
 (DOC/'README.md').write_text(readme.replace('预覽','預覽'),encoding='utf-8')
 brief=DOC/'lesson-briefs.md'
 text=brief.read_text(encoding='utf-8')
@@ -167,6 +182,13 @@ if live.get('cli',{}).get('passed'):
     if live.get('capstone',{}).get('passed'):
         source_text=source_text.replace('其餘故障、Bash sandbox、Agent Teams 與完整實作仍依逐篇表補齊','其餘故障、Bash sandbox、Agent Teams 與真實比較仍依逐篇表補齊')
         source_text+='\n第 96 篇另完成實際 Claude 開發驗證：Sonnet 從 starter 製作篩選、畫面與保存；指定比較符號故障由 Haiku 修正，同一組獨立斷言先紅後綠。內建瀏覽器驗證 10 個指定案例，另從實際成果 ZIP 乾淨解壓縮重驗。驗收者更正原 handoff 對部分無效資料處理的一句說明；完整原始模型輸出保留，不把驗收者的修正歸因給模型。尺寸模擬不代表真實手機。\n'
+    if live.get('sdk',{}).get('terminal_cancel_resume_passed'):
+        source_text=source_text.replace('實體 Ctrl+C 與中斷 session 恢復仍待測','runner v2 已用串流輸入完成終端機 Ctrl+C 取消，且同一中斷 session 恢復通過；輸入由驗收工具送進真實 PTY，不宣稱真人按鍵')
+    if live.get('teams',{}).get('passed'):
+        source_text=source_text.replace('其餘故障、Bash sandbox、Agent Teams 與真實比較仍依逐篇表補齊','已另驗證兩位具名 Teams 隊友、任務與訊息、一次性 Cron 觸發及一組流程觀察；完整 UI 團隊整合與 Bash sandbox 仍未通過')
+    source_text=source_text.replace('仍缺 claude-lab 環境與 Anthropic CI 憑證','claude-lab 已建立並限制 main，仍缺 Anthropic CI 憑證')
+    if live.get('extra_boundaries',{}).get('passed'):
+        source_text+='\n補驗六項：規則衝突、Skill 資料材料選用／缺檔、Hook 執行失敗、真正 MCP 不可信輸出與無效參數。手動輸入斜線 Skill 會直接展開，不以缺少另一筆 Skill 工具呼叫判成失敗；判讀修正與原始結果均保留。\n'
     source_path.write_text(source_text,encoding='utf-8')
 text=base.read_text(encoding='utf-8')
 notice='> 第二階段已新增 36 篇，現在可預覽 97 頁；請見[深入教學交付目錄](advanced/README.md)。下列 60／61 篇與驗證數量保留第一階段的歷史紀錄。\n\n'

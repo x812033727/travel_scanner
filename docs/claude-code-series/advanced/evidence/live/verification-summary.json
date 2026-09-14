@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-09-14T13:48:47.814940+00:00",
-  "git_base": "46298e2863e9c2c4d6776e9d58a821be683a4b32",
-  "scope": "Supplementary full frontend and isolated PostgreSQL checks for the current uncommitted phase 2 changes",
+  "checked_at": "2026-09-14T14:19:22.338366+00:00",
+  "git_base": "95ff5c352c6eecd473b79d041db0e95c0c380c5d",
+  "scope": "Historical local full frontend and isolated PostgreSQL checks; source applicability is explicitly recorded below. Current-head CI is recorded separately.",
   "web": {
     "environment": "Windows",
     "source": "web-full.json",
@@ -48,7 +48,70 @@
   "cleanup_note": "Initial automatic cleanup encountered a Windows DLL lock after successful shutdown. Follow-up deletion of the verified disposable directory was rejected by automatic approval review (blocked by policy); remaining temporary files were preserved.",
   "source_hash_verification": {
     "files": 2761,
-    "changed": [],
+    "changed": [
+      "apps/api/app/guides/content/claude-code-advanced-capstone.json",
+      "apps/api/app/guides/content/claude-code-agent-sdk-stateful-runner.json",
+      "apps/api/app/guides/content/claude-code-agent-teams-integration-lab.json",
+      "apps/api/app/guides/content/claude-code-github-actions-review-workshop.json",
+      "apps/api/app/guides/content/claude-code-hook-file-boundaries.json",
+      "apps/api/app/guides/content/claude-code-hook-quality-gates.json",
+      "apps/api/app/guides/content/claude-code-hook-scoped-formatting.json",
+      "apps/api/app/guides/content/claude-code-legacy-refactoring-workshop.json",
+      "apps/api/app/guides/content/claude-code-mcp-failure-contract-tests.json",
+      "apps/api/app/guides/content/claude-code-mcp-http-auth-workshop.json",
+      "apps/api/app/guides/content/claude-code-mcp-tool-contracts.json",
+      "apps/api/app/guides/content/claude-code-scheduled-workflow-reliability.json",
+      "apps/api/app/guides/content/claude-code-skill-invocation-control.json",
+      "apps/api/app/guides/content/claude-code-skill-resource-design.json",
+      "apps/api/app/guides/content/claude-code-subagent-review-workshop.json",
+      "apps/web/package.json",
+      "apps/web/public/guides/claude-code-advanced-capstone/diagram-1.svg",
+      "apps/web/public/tutorials/claude-code/advanced/automation-lab.zip",
+      "apps/web/public/tutorials/claude-code/advanced/config-lab.zip",
+      "apps/web/public/tutorials/claude-code/advanced/hook-lab.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-61.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-62.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-63.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-64.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-65.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-66.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-67.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-68.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-69.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-70.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-71.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-72.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-73.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-74.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-75.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-76.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-77.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-78.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-79.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-80.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-81.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-82.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-83.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-84.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-85.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-86.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-87.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-88.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-89.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-90.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-91.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-92.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-93.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-94.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-95.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-96.zip",
+      "apps/web/public/tutorials/claude-code/advanced/mcp-lab.zip",
+      "apps/web/public/tutorials/claude-code/advanced/skill-kit.zip",
+      "apps/web/public/tutorials/claude-code/advanced/todo-workbench.zip",
+      "package-lock.json",
+      "package.json"
+    ],
+    "matches_current_worktree": false,
     "source": "web-linux-source-hashes.json"
   },
   "content": {
@@ -66,17 +129,16 @@
     "initial_attempt": "51 passed, 1 failed because version comments were absent; fixed using verified tags before rerun"
   },
   "pending": [
-    "Other rule conflicts, Skill resource selection, Hook event failures and supported-OS Bash sandbox",
-    "Physical mobile reconnection, sleep and recovery",
-    "Real remote MCP HTTP/OAuth authorization and recovery",
-    "Merge the manual CI workflow and configure an Anthropic credential and claude-lab environment for the authorized travel_scanner Actions test",
-    "Product scheduling, physical SDK runner Ctrl+C and interrupted-session recovery",
-    "Actual Agent Teams and real workflow comparison",
+    "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
+    "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
+    "Supported OS Bash sandbox; WSL setup could not complete",
+    "Merge/register the manual Actions workflow and run baseline; paid model job awaits dedicated ANTHROPIC_API_KEY",
+    "Additional product-specific failure and full Teams feature-integration exercises beyond the documented smoke scope",
     "Phase 2 PR and merge",
     "Deployment, content import and publication"
   ],
   "real_operations": {
-    "checked_at": "2026-09-14T13:48:45.945723+00:00",
+    "checked_at": "2026-09-14T14:15:40.078727+00:00",
     "scope": "Supplementary actual Claude, browser cloud task and SDK smoke checks; not complete per-lesson failure coverage",
     "cli": {
       "passed": true,
@@ -116,10 +178,11 @@
       "sources": [
         "sdk-query-resume.json",
         "sdk-cancel.json",
-        "sdk-recovery.json"
+        "sdk-recovery.json",
+        "sdk-terminal-recovery.json"
       ],
       "limitations": [
-        "Physical Ctrl+C and recovery of an interrupted session remain untested; the startup recovery uses a fresh query"
+        "Ctrl+C was sent through a real terminal PTY by the verifier, not a human keyboard. No network interruption or external side effect rollback is claimed."
       ],
       "sources_checked_on": "2026-09-14",
       "official_source": "https://code.claude.com/docs/en/agent-sdk/streaming-vs-single-mode",
@@ -129,28 +192,32 @@
         "incompatible-session",
         "executable-startup-failure",
         "fresh-query-after-startup-failure"
-      ]
+      ],
+      "terminal_cancel_resume_passed": true,
+      "runner_driver_version": 2
     },
     "github_actions": {
       "repository": "x812033727/travel_scanner",
       "repository_secret_count": 0,
-      "environment_count": 0,
+      "environment_count": 1,
       "required_example_environment": "claude-lab",
       "required_example_secret": "ANTHROPIC_API_KEY",
       "live_model_workflow_run": false,
-      "reason": "A monorepo workflow is prepared locally with manual opt-in model review. It is not merged or dispatched; the selected repository still needs the claude-lab environment and a dedicated Anthropic CI credential.",
+      "reason": "Dedicated claude-lab environment exists with a main-only branch policy. Manual workflow awaits merge and baseline dispatch; the model job requires the user to add ANTHROPIC_API_KEY.",
       "registered_claude_workflows": [],
       "local_workflow_prepared": true,
       "workflow_path": ".github/workflows/claude-tutorial-validation.yml",
-      "local_validation_source": "ci-workflow-validation.json"
+      "local_validation_source": "ci-workflow-validation.json",
+      "environment_created": true,
+      "branch_policy": "main only",
+      "environment_secret_count": 0
     },
     "pending": [
-      "Other rule conflicts, Skill resource selection, Hook event failures and supported-OS Bash sandbox",
-      "Physical mobile reconnection, sleep and recovery",
-      "Real remote MCP HTTP/OAuth authorization and recovery",
-      "Merge the manual CI workflow and configure an Anthropic credential and claude-lab environment for the authorized travel_scanner Actions test",
-      "Product scheduling, physical SDK runner Ctrl+C and interrupted-session recovery",
-      "Actual Agent Teams and real workflow comparison"
+      "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
+      "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
+      "Supported OS Bash sandbox; WSL setup could not complete",
+      "Merge/register the manual Actions workflow and run baseline; paid model job awaits dedicated ANTHROPIC_API_KEY",
+      "Additional product-specific failure and full Teams feature-integration exercises beyond the documented smoke scope"
     ],
     "cli_boundaries": {
       "passed": true,
@@ -237,6 +304,86 @@
         "Handoff: mixed arrays retain valid items; malformed JSON/non-array returns empty. Added actual browser evidence and explicit server stop instructions."
       ],
       "test_server_stopped": true
+    },
+    "extra_boundaries": {
+      "passed": true,
+      "source": "extra-boundaries.json",
+      "case_count": 6,
+      "cases": [
+        {
+          "name": "rules-conflict",
+          "lessons": [
+            61,
+            63
+          ]
+        },
+        {
+          "name": "skill-data-resources",
+          "lessons": [
+            69
+          ]
+        },
+        {
+          "name": "skill-missing-resource",
+          "lessons": [
+            69
+          ]
+        },
+        {
+          "name": "hook-command-failure",
+          "lessons": [
+            73,
+            78
+          ]
+        },
+        {
+          "name": "mcp-untrusted-output",
+          "lessons": [
+            83
+          ]
+        },
+        {
+          "name": "mcp-invalid-input",
+          "lessons": [
+            80,
+            82
+          ]
+        }
+      ]
+    },
+    "teams": {
+      "passed": true,
+      "source": "interactive-products.json",
+      "scope": "Two named in-process teammates, independent reads, task assignment, mailbox replies and a follow-up in the same teammate; not the full UI feature integration exercise"
+    },
+    "schedule": {
+      "passed": true,
+      "source": "interactive-products.json",
+      "scope": "Session CronCreate/CronList with a real one-shot trigger reading local synthetic data; not cloud/desktop scheduling, sleep recovery or the lesson job runner"
+    },
+    "workflow_comparison": {
+      "passed": true,
+      "source": "workflow-observations.json",
+      "scope": "Exploratory single observation of each workflow; not a performance benchmark"
+    },
+    "remote_control": {
+      "local_session_started": true,
+      "browser_history_visible": true,
+      "browser_command_sent": false,
+      "passed": false,
+      "session_stopped": true,
+      "session_url": "https://claude.ai/code/session_01AtAGQZpAd4QrtVs7P7ix5o",
+      "reason": "Browser required elevated device verification (device_key_missing). Google sign-in did not navigate in the in-app browser; no remote command or physical phone recovery is claimed."
+    },
+    "sandbox": {
+      "passed": false,
+      "environment": "WSL Ubuntu ARM64",
+      "preflight": {
+        "bubblewrap_present": true,
+        "socat_present": false,
+        "linux_claude_present": false
+      },
+      "reason": "During dependency setup WSL became unresponsive, including a read-only process listing. Only the three owned Windows WSL client trees were stopped; Linux installation outcome is unconfirmed. No WSL shutdown or sandbox weakening was used."
     }
   }
 }

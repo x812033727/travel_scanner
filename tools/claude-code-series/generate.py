@@ -169,7 +169,9 @@ def main():
         # Prerequisites and the single related-reading list are rendered from live series
         # navigation. Do not duplicate them in authored blocks or expose draft targets.
         lead = next((b.get('text', '') for b in blocks if b['type'] == 'paragraph'), '')
-        description = (entry['outcome'] + lead)[:190]
+        outcome = entry['outcome'].rstrip()
+        separator = '' if outcome.endswith(('。', '！', '？', '.', '!', '?')) else '。'
+        description = (outcome + separator + lead)[:190]
         pack = {'slug': entry['slug'], 'kind': 'life', 'destination_id': None, 'topics': ['ai', 'tutorial'], 'featured': False, 'display_order': 100 + number,
                 'locales': {'zh-TW': {'title': 'Claude Code｜' + entry['title'] if not entry['title'].startswith('Claude') else entry['title'], 'description': description,
                 'hero': {'src': f'/guides/{entry["slug"]}/hero.jpg', 'alt': entry['title'] + '：文件、螢幕與完成記號的幾何插圖', 'width': 1600, 'height': 900, 'credit': {'author': 'Mokaair', 'license': '© Mokaair'}},

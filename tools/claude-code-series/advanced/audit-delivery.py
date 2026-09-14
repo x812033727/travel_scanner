@@ -27,14 +27,21 @@ def specs(report):
         for child in node.get('suites',[]):yield from visit(child)
     return list(visit(report))
 final={};attempts=[]
-for filename,report in [('browser-tests.json',initial),('browser-search-recheck.json',retry),('browser-download-check.json',downloads)]:
+browser_reports=[('browser-tests.json',initial),('browser-search-recheck.json',retry),('browser-download-check.json',downloads)]
+if (E/'browser-main-retry.json').exists():
+    browser_reports.append(('browser-main-retry.json',read('browser-main-retry.json')))
+for filename,report in browser_reports:
     for spec in specs(report):
         status=spec['tests'][0]['results'][-1]['status']
         row={'title':spec['title'],'status':status,'source':filename}
         attempts.append(row);final[spec['title']]=row
 assert len(final)==9 and all(row['status']=='passed' for row in final.values())
-write('browser-verification.json',{'passed':True,'cases':list(final.values()),'attempts':attempts,'note':'Initial missing --json-schema alias was fixed; only the affected search/filter test was rerun. Device sizes are browser emulation, not real phones.'})
+write('browser-verification.json',{'passed':True,'cases':list(final.values()),'attempts':attempts,'note':'Historical search alias correction retained. Post-main first attempt could not launch the old browser revision; matching Chromium was installed before rerunning. Device sizes are browser emulation, not real phones.'})
 web=read('web-focused-tests.json');assert web['success'] and web['numFailedTests']==0
+current=read('live/post-main-checks.json') if (E/'live/post-main-checks.json').exists() else None
+if current:
+    web=current['affected_web_tests']
+    assert web['numPassedTests']==73 and web['numFailedTests']==0
 tools=(E/'tools-tests.txt').read_text(encoding='utf-8');assert re.search(r'fail 0\b',tools)
 model_source='live/claude-live-all.json' if (E/'live/claude-live-all.json').exists() else 'claude-live-all.json'
 model_attempts=read(model_source)
@@ -95,6 +102,19 @@ if real_operations.get('sdk',{}).get('recovery_passed'):
     local[94]='authored query/resume, missing/incompatible state rejection, failed executable startup and fresh-query recovery passed; separate streaming cancellation probe passed; physical Ctrl+C and interrupted-session recovery remain pending'
 if real_operations.get('capstone',{}).get('passed'):
     local[96]='actual Claude-authored filters/UI/storage passed 9 project and 3 independent tests, 10 in-app browser cases, specified defect red/green repair and clean archive replay; verifier corrected one handoff statement; physical phone and deployment not performed'
+if real_operations.get('extra_boundaries',{}).get('passed'):
+    for case in real_operations['extra_boundaries']['cases']:
+        for number in case['lessons']:
+            local[number]+='; actual additional case passed: '+case['name']
+            boundary_lessons.add(number)
+if real_operations.get('sdk',{}).get('terminal_cancel_resume_passed'):
+    local[94]='runner v2 streaming input: actual query/resume, state and startup failures, terminal PTY Ctrl+C after first output, then same interrupted-session resume passed; not network or external side-effect recovery'
+if real_operations.get('teams',{}).get('passed'):
+    local[89]=real_operations['teams']['scope']+'; passed'
+if real_operations.get('schedule',{}).get('passed'):
+    local[93]=real_operations['schedule']['scope']+'; passed, no remaining jobs'
+if real_operations.get('workflow_comparison',{}).get('passed'):
+    local[95]='one actual observation per workflow with versions/models/time recorded; different model mix and coordination, no comparative advantage inferred'
 lesson_rows=[]
 for entry in manifest['entries']:
     n=entry['number']
@@ -104,21 +124,24 @@ for entry in manifest['entries']:
     execution=('passed-smoke' if models[n]['passed'] else 'failed-smoke') if n in models else ('passed-sdk-smoke' if n==94 and real_operations.get('sdk',{}).get('passed') else 'not-performed')
     if n in boundary_lessons and execution=='not-performed':execution='passed-bounded-case'
     if n==96 and real_operations.get('capstone',{}).get('passed'):execution='passed-local-capstone'
+    for lesson,key in [(89,'teams'),(93,'schedule'),(95,'workflow_comparison')]:
+        if n==lesson and real_operations.get(key,{}).get('passed'):execution='passed-bounded-product-case'
     lesson_rows.append({'number':n,'slug':entry['slug'],'author_sha256':sha(ROOT/f'docs/claude-code-series/lessons/{n}.md'),'pack_sha256':sha(ROOT/f'apps/api/app/guides/content/{entry["slug"]}.json'),'body_characters':page['body_characters'],'document_sources_verified':True,'local_material_status':local[n],'core_archive_checks':'passed-with-documented-broken-starter','browser_page':'passed','claude_execution':execution,'publication':'not-published','download_sha256':next(r['sha256'] for r in quick['archives'] if r['number']==n)})
-write('lesson-verification.json',{'checked_at':datetime.now(timezone.utc).isoformat(),'os':'Windows','node':'24.13.0','cli':model_attempts['cli_version'],'lessons':lesson_rows})
+write('lesson-verification.json',{'checked_at':datetime.now(timezone.utc).isoformat(),'os':'Windows','node':{'original_labs':'24.13.0','post_main_web':'24.15.0'},'cli':model_attempts['cli_version'],'lessons':lesson_rows})
 write('delivery-checks.json',{
  'checked_at':datetime.now(timezone.utc).isoformat(),'status':'local-preview-ready','scope':'36 new lessons and the combined 97-page local preview; not release approval',
  'content':{'pages':97,'new_lessons':36,'groups':16,'learning_paths':12,'errors':0,'warnings':0,'source':'content-validation.json'},
  'art':read('art-validation.json'),
  'downloads':{'archives':36,'groups':6,'quick_checks':sum(len(r['checks']) for r in quick['archives']),'pilot_archives':6,'tool_suite_tests_per_pilot':21,'sources':['downloads-quick-tests.json','downloads-tests.json']},
  'browser':{'latest_cases_passed':9,'source':'browser-verification.json','physically_tested_mobile_devices':False},
- 'web_tests':{'scope':'affected guide/series/editor/server helper suites','source':'web-focused-tests.json',**{k:web[k] for k in ['numTotalTests','numPassedTests','numFailedTests','numPendingTests']}},
+ 'web_tests':{'scope':'affected guide/series/editor/server helper suites; worker startup failure and successful isolated retry retained','source':'live/post-main-checks.json' if current else 'web-focused-tests.json',**{k:web[k] for k in ['numTotalTests','numPassedTests','numFailedTests','numPendingTests']}},
+ 'post_main_checks':current,
  'broad_web_suite':full_web if full_web else {'status':'not-completed','note':'No success claimed. Relevant 73 tests passed separately.'},
  'postgresql_suite':postgres if postgres else {'status':'not-performed'},
  'supplementary_verification':'live/verification-summary.json' if supplement else None,
  'real_operations':real_operations,
  'claude_smoke_source':model_source,
- 'commands_from_task_outputs':[
+ 'historical_commands_before_main_sync':[
   {'command':'npm run build:web','exit':0},
   {'command':'npm run lint:web','exit':0},
   {'command':'npm run check:i18n','exit':0,'detail':'5 locales, 25 namespaces'},

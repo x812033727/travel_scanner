@@ -8,7 +8,7 @@
 
 本機系列測試 12 項與 workflow 使用的基礎測試 8 項全部通過，包含 YAML 解析、手動觸發、分支限制、唯讀權限、固定 Action 提交及 JSON 輸出路徑。這些結果不等於 GitHub runner 已執行成功。
 
-2026-09-14 唯讀預檢查得儲存庫 secrets 為 0、environments 為 0，沒有已登錄的 Claude workflow。本機 Claude CLI 登入已恢復；GitHub Actions 仍需自己的 CI 憑證。
+2026-09-14 首輪預檢查得 secrets 與 environments 均為 0；後續已建立 claude-lab 並限制 main 分支。最新環境 secrets 仍為 0。本機 Claude CLI 登入已恢復；GitHub Actions 仍需自己的 CI 憑證。
 
 ## 合併後的操作
 

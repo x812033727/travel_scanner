@@ -1,6 +1,6 @@
 # Claude Code 深入教學：第二階段交付
 
-新增 **36 篇完整教學（61–96）、36 份獨立練習包、六組合集**，整合到同一個 Claude Code 教學目錄。全系列現在有 **96 篇教學加 1 個總目錄，共 97 頁**。內容與本機預覽已製作；Claude 帳號及外部環境的實測仍有待辦，狀態見下表。
+新增 **36 篇完整教學（61–96）、36 份獨立練習包、六組合集**，整合到同一個 Claude Code 教學目錄。全系列現在有 **96 篇教學加 1 個總目錄，共 97 頁**。內容與本機預覽已製作；部分裝置及外部環境實測仍有待辦，狀態見下表。
 
 [第一階段紀錄](../README.md) · [作者任務書](lesson-briefs.md) · [編輯清單](curriculum.json) · [來源與驗證界線](source-review.md) · [本次驗收紀錄](evidence/delivery-checks.json) · [逐篇驗證表](evidence/lesson-verification.json)
 
@@ -8,7 +8,7 @@
 
 ## 開啟 97 頁預覽
 
-在儲存庫根目錄執行；需要 Node.js 22 以上與已安裝的網站依賴：
+在儲存庫根目錄執行；需要符合儲存庫依賴的 Node.js 版本與已安裝的網站依賴（本次使用 24.15.0）：
 
 ```powershell
 npm run build:web
@@ -21,7 +21,7 @@ node --experimental-strip-types tools/claude-code-series/preview.mjs
 
 ## 36 篇完整內容
 
-下列連結直接開啟文章原稿；網站格式的 `article:` 引用由內容包與公開解析器轉成對應網址，可在上述預覽檢查。一般篇正文約 2,500–2,700 字，綜合實作約 4,000 字，程式碼另計。
+下列連結直接開啟文章原稿；網站格式的 `article:` 引用由內容包與公開解析器轉成對應網址，可在上述預覽檢查。一般篇正文約 2,500–2,800 字，綜合實作約 4,000 字，程式碼另計。
 
 | 完整教學 | 學習成果 | 獨立材料 |
 |---|---|---|
@@ -89,7 +89,9 @@ node --experimental-strip-types tools/claude-code-series/preview.mjs
 
 ## 驗證狀態
 
-補驗：整站前端 258 個測試檔、2809 項通過。執行環境與原始結果見[補充驗收紀錄](evidence/live/verification-summary.json)；此前未完成的執行保留於歷史紀錄。
+同步 main 後，Node.js 24.15.0 的建置、lint、i18n、型別、52 項工具測試、Ruff 與 mypy 通過；9 類瀏覽器案例重跑通過。相關前端共 73 項斷言通過：第一輪有工作程序逾時，缺少的 23 項以 forks 單獨補跑。API 本次 18 通過、12 項 PostgreSQL 跳過，完整資料庫紀錄屬較早快照。[目前檢查與失敗重試紀錄](evidence/live/post-main-checks.json)。
+
+較早來源快照的本機補驗：整站前端 258 個測試檔、2809 項通過。執行環境與原始結果見[補充驗收紀錄](evidence/live/verification-summary.json)；此前未完成的執行保留於歷史紀錄。
 
 | 層級 | 證據／限制 |
 |---|---|
@@ -98,11 +100,12 @@ node --experimental-strip-types tools/claude-code-series/preview.mjs
 | Git | 在臨時儲存庫建立兩個 worktree、製造並解決衝突、重跑整合測試；沒有修改遠端儲存庫 |
 | 網站 | 97 頁、導覽、篩選、手機寬度、原始內容複製、下載版綜合實作；見瀏覽器紀錄 |
 | API | 隔離 PostgreSQL 17.11 與 SQLite：164 項通過、0 項跳過；包含發布狀態、文章版本與系列導覽 |
-| SDK | 0.3.270 的原範例 query、同一 session resume 通過；另用串流輸入探針驗證 AbortController 取消。原 runner 另通過缺少／無效 session、執行檔啟動失敗及全新 query 恢復；實體 Ctrl+C 與中斷 session 恢復仍待測 |
+| SDK | 0.3.270、runner v2：query、resume、錯誤狀態、啟動恢復、實際終端機 Ctrl+C 取消及同一中斷 session 恢復通過。[紀錄](evidence/live/sdk-terminal-recovery.json) |
 | 雲端網頁 | 使用者指定 travel_scanner，實際 Node.js 計算通過；工具輸出與 No changes to show 均已在內建瀏覽器確認 |
-| CLI 邊界案例 | 七項通過：子目錄規則、Skill 缺參數／自動選用、Read 權限拒絕、Hook 拒絕 Write、MCP 啟動失敗、只讀子代理。只涵蓋指定案例，不代表各功能所有情境 |
+| CLI 邊界案例 | 另六項涵蓋規則衝突、Skill 材料與缺檔、Hook 程式失敗、MCP 不可信輸出及無效參數；原七項通過：子目錄規則、Skill 缺參數／自動選用、Read 權限拒絕、Hook 拒絕 Write、MCP 啟動失敗、只讀子代理。只涵蓋指定案例，不代表各功能所有情境 |
 | Claude CLI | 2.1.233 已透過內建瀏覽器重新授權；61、67、73、79、91 的五個主流程全部通過，故障情境另列待辦 |
-| 外部環境 | 真實 MCP OAuth、手機接續、Agent Teams、外部 GitHub Actions、產品排程與完整故障演練仍待實測 |
+| 互動式產品 | 兩位 Teams 隊友的讀檔、任務、訊息與後續接續；一次性 Cron 真實觸發及清單清空。[紀錄](evidence/live/interactive-products.json)。僅驗證所列範圍，未宣稱完整雙角色功能開發 |
+| 外部環境 | 真實手機、遠端 MCP OAuth、Bash sandbox 與 Actions 模型 job 尚未通過；Remote Control 瀏覽器要求裝置重新驗證。完整待辦見最新操作紀錄 |
 | GitHub Actions | [儲存庫驗證流程](../../../.github/workflows/claude-tutorial-validation.yml)已備妥；12 項系列測試與 8 項基礎測試通過。尚未合併或遠端執行；[設定與驗證步驟](github-actions-validation.md) |
 | 第 96 篇實際開發 | Claude 從 starter 完成篩選、畫面與保存；9 項專案測試、3 項獨立斷言、10 個內建瀏覽器案例、故障紅綠與乾淨解壓重驗通過。[實際成果 ZIP](evidence/live/capstone-result.zip)；一處交接文字由驗收者更正，真實手機仍待測 |
 | 發布 | 本批尚未開 PR、合併、部署、匯入或公開 |
@@ -122,3 +125,5 @@ npx playwright test --config tools/claude-code-series/advanced/playwright.config
 首次使用 Playwright 需安裝對應瀏覽器。build.py 只重建本批擁有的 43 組內容／圖片（總目錄、六篇舊文章與 36 篇新文章），不改寫第一階段其他文章或歷史驗收紀錄。第一階段的 validation.json 保留原意；本資料夾的 validation.json 也是先前「課程規劃一致性」紀錄，不能當作本次執行結果。
 
 內容包保持未發布。後續先補真實環境驗證，再依網站既有的預覽、審查、匯入與發布流程逐步記錄結果。
+
+[單代理／Teams 流程觀察](evidence/live/workflow-observations.json)：各一次、相同合成輸入，保存版本、模型與計時。模型組合與協調流程不同，不據此宣稱效能排名或節省費用。

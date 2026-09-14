@@ -1,28 +1,31 @@
 {
-  "checked_at": "2026-09-14T13:48:48.542340+00:00",
+  "checked_at": "2026-09-14T14:42:44.975698+00:00",
   "os": "Windows",
-  "node": "24.13.0",
+  "node": {
+    "original_labs": "24.13.0",
+    "post_main_web": "24.15.0"
+  },
   "cli": "2.1.233 (Claude Code)",
   "lessons": [
     {
       "number": 61,
       "slug": "claude-code-project-rules-workshop",
       "author_sha256": "f0539a0db060b05d37680cee3171b794a166feb4fc5511676dc217a172d634d7",
-      "pack_sha256": "80c0587339baf1254deaa6e607b69c9fa6e9540005e73717e89425a0166cd55b",
+      "pack_sha256": "2942e23ace75f41d59d257b686e90d2aebf3ae888dc55a2f318ce242478fce67",
       "body_characters": 2632,
       "document_sources_verified": true,
-      "local_material_status": "actual Claude loaded the project marker and verification command",
+      "local_material_status": "actual Claude loaded the project marker and verification command; actual additional case passed: rules-conflict",
       "core_archive_checks": "passed-with-documented-broken-starter",
       "browser_page": "passed",
       "claude_execution": "passed-smoke",
       "publication": "not-published",
-      "download_sha256": "6db30767ec8445db6ee7d72c45468325df537130f4c10b27da8778d17dbcd212"
+      "download_sha256": "f8d318ef214b94cdaa112cd208e8baa63357da5111e6e45b431344f3c281092f"
     },
     {
       "number": 62,
       "slug": "claude-code-monorepo-rules-workshop",
       "author_sha256": "f1ef2270b7a93091faf24304aa007a1a133fe9a5e49bc55d3cc989e8fa9060a2",
-      "pack_sha256": "115590ea2d7340ea6e334e01a3ee0d432843c71ad4e8bbd398b72c38f5f98ee0",
+      "pack_sha256": "48962019ce11b747c2002a42e5c4b1da39798854e2dc5bc5826f17852fe4da17",
       "body_characters": 2542,
       "document_sources_verified": true,
       "local_material_status": "actual Read loaded root and child markers and the child UI_STYLE override",
@@ -30,27 +33,27 @@
       "browser_page": "passed",
       "claude_execution": "passed-bounded-case",
       "publication": "not-published",
-      "download_sha256": "e170f4fcd98d85a275fd358a65d7996d02e076637b5996dc0d0b7a59a20bb6e7"
+      "download_sha256": "9f38f04e7ecf46b3d8e7278b254b0a4ec08c16c097e984530ff220bd35ab5a9b"
     },
     {
       "number": 63,
       "slug": "claude-code-rules-loading-diagnostics",
       "author_sha256": "3277b37ce958509a98ce9d16fbf46a9ccb56cf520c560780ce5812b9ab4cc152",
-      "pack_sha256": "04ab2ab8428fa2c41b57255fb312f9837b6ee2a0775ae44821d8c8c0712cec69",
+      "pack_sha256": "dfe2b28fc7f9613550b964cb408a73ba9dbf0360a9a46e7c8c1b3666a169962a",
       "body_characters": 2645,
       "document_sources_verified": true,
-      "local_material_status": "actual lazy loading of child rules observed after reading a file in that directory; other rule conflicts remain untested",
+      "local_material_status": "actual lazy loading of child rules observed after reading a file in that directory; other rule conflicts remain untested; actual additional case passed: rules-conflict",
       "core_archive_checks": "passed-with-documented-broken-starter",
       "browser_page": "passed",
       "claude_execution": "passed-bounded-case",
       "publication": "not-published",
-      "download_sha256": "9bbfb63023824cbd6626e4378985e53a87f5fb418493a7c5dc7e30e0a9f72fdd"
+      "download_sha256": "c55cf1097f3079980c47402c1e8fe3dd4d244a064c281466362785b8d22cdf7a"
     },
     {
       "number": 64,
       "slug": "claude-code-permissions-sandbox-lab",
       "author_sha256": "d48271529cf4f40ef3a1e3440da1ec5ea15f6bc8630932231eee224d97984d37",
-      "pack_sha256": "0c9d3e0c3e88f51cc6fc399ffef51f2dc22981ce3a553253c0965c1ec2d4acbe",
+      "pack_sha256": "b15016b309c69165ade4ff0f10f0703d48e8bd91d5b73b79a6ee3e5a890ec070",
       "body_characters": 2577,
       "document_sources_verified": true,
       "local_material_status": "actual Read deny withheld the synthetic protected value; supported-OS Bash sandbox remains untested",
@@ -58,13 +61,13 @@
       "browser_page": "passed",
       "claude_execution": "passed-bounded-case",
       "publication": "not-published",
-      "download_sha256": "f95d74570c002c67b3027c9740c47b27fff353b5a5d37771b084a2c2105512b2"
+      "download_sha256": "63b55340bf5afaa29b7c69e6b9921d6438a1039f22337b9f4500c6f9de8ed539"
     },
     {
       "number": 65,
       "slug": "claude-code-context-handoff-workshop",
       "author_sha256": "4cdba21a4467ea5f90ace120a667e30bfdc67a4cb76a0723435918ac149bbd2c",
-      "pack_sha256": "12dd54b7cf6929c86bd0f8a37a500da6f024709c345e22f4ad932d7482af7caf",
+      "pack_sha256": "8d0d5c34a940565714627acca98bb0444ffa8c848a6693894da31b7dc88f2190",
       "body_characters": 2546,
       "document_sources_verified": true,
       "local_material_status": "handoff template and reference filter tests; actual conversation handoff pending",
@@ -72,13 +75,13 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "8eb24c2a9b147ee35555b94660c1fb833d54c9ee47d8afee8c62f5b6f69eb878"
+      "download_sha256": "95e10f9db1b6785675a50b13daa5efa277e7d328acaa74c79eeaa7236fa988e5"
     },
     {
       "number": 66,
       "slug": "claude-code-team-config-maintenance",
       "author_sha256": "366f5b0aca73d52c362a212d038ca41f388a34d0905bb95a51f59231db63897a",
-      "pack_sha256": "6df6a794ca11c84fd04138e14d94965fa208516ffc5e17b839e78adda5b09b3c",
+      "pack_sha256": "3dda56ad756b486cdd6c0af0a158a94821471be9820a030a0ae14e5eabeb4fb0",
       "body_characters": 2630,
       "document_sources_verified": true,
       "local_material_status": "correct and incorrect settings accepted/rejected by course validator",
@@ -86,13 +89,13 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "536a8bd64ec51e6df2b4545a05778cebe8ef11da375c040e32a3b0c6067b8c97"
+      "download_sha256": "4b0a959bda67c0ccfdf919439d6c7757bd5110c1c0d5bc90a642395978ed856b"
     },
     {
       "number": 67,
       "slug": "claude-code-skill-sop-workshop",
       "author_sha256": "a1efa69eb2613e4a4c66d9c66d5a3b8bc6060490ac334c82400c1f754b1d00ca",
-      "pack_sha256": "ccd4fac7e1f882fabf9c627d86975e61ae7fd611e6ef98d82307eef6fd51ef8e",
+      "pack_sha256": "1fe3eba8defdce4ba72cd9d96a164fbc84a5bb5ff18facbdc8273abbde05cdff",
       "body_characters": 2520,
       "document_sources_verified": true,
       "local_material_status": "actual Skill invocation identified the synthetic inverted ID condition using readonly tools",
@@ -100,13 +103,13 @@
       "browser_page": "passed",
       "claude_execution": "passed-smoke",
       "publication": "not-published",
-      "download_sha256": "4c7af0ae4abc146dac9985e88aceb34d2d0c314ef08403f720f65d40a955504c"
+      "download_sha256": "07fdfb1acd696d2f400e04bea193e2969521f4cfef315f40b237507743f75eef"
     },
     {
       "number": 68,
       "slug": "claude-code-skill-input-validation",
       "author_sha256": "91cca70e54bfce66f2f634d2d3e8beb1a30871aacc202cc070e4cd91a669f176",
-      "pack_sha256": "2af541b8da5604094d05d41ca7ecb4115ec2e0027bd484de77de3b0d803e1502",
+      "pack_sha256": "aeee0a87433febd9106ed5bee9c908a04a25b165155d4b6eacd2443374ccd51f",
       "body_characters": 2539,
       "document_sources_verified": true,
       "local_material_status": "actual Skill call without arguments requested the filename and did not guess a diff; parser edge cases also passed",
@@ -114,27 +117,27 @@
       "browser_page": "passed",
       "claude_execution": "passed-bounded-case",
       "publication": "not-published",
-      "download_sha256": "75e5d65659c9af52f6871e5c3e1621452abbae7f80f6eda817702be2e2979977"
+      "download_sha256": "d8daad9d81872f71e86eac62b9dff2cfbd38acfd05c41c210b82bd7d16f82806"
     },
     {
       "number": 69,
       "slug": "claude-code-skill-resource-design",
-      "author_sha256": "1ca9fb4ba55f6454abad19b6848070b72921a252ed36b8f7c7d1670912944665",
-      "pack_sha256": "a75bd0adca93d4cc7ce865dc30a6069f00b2059ffe8ca6d0c0d064d0989659b4",
+      "author_sha256": "ae4f93f684b5d338359bc442aded492916e26bf5821ae4c0ebafe9eb95323bbc",
+      "pack_sha256": "99174f35de68b198f2ce32efea9ff6bf4eef7c28e01f0e2f4a58440ffc9fe3d5",
       "body_characters": 2505,
       "document_sources_verified": true,
-      "local_material_status": "resource routing materials included; actual conditional loading pending",
+      "local_material_status": "resource routing materials included; actual conditional loading pending; actual additional case passed: skill-data-resources; actual additional case passed: skill-missing-resource",
       "core_archive_checks": "passed-with-documented-broken-starter",
       "browser_page": "passed",
-      "claude_execution": "not-performed",
+      "claude_execution": "passed-bounded-case",
       "publication": "not-published",
-      "download_sha256": "332d0449063a4231b533421fdf0a7e64cdc4821048417b2d9c9d15e3beff7feb"
+      "download_sha256": "405d2fc3de84e1626393787b58c1e5a9aa2866c23544790efc58154e0ee4df40"
     },
     {
       "number": 70,
       "slug": "claude-code-skill-invocation-control",
-      "author_sha256": "eb23f69d0cdeb3595374dba7cc0bd11bcd671b9d24264e82ebe7c0f9c91fb685",
-      "pack_sha256": "05ba6cf5f99f82a255c02017f3931d15a39927974ba4f6e924c9e9e8ad198a1d",
+      "author_sha256": "a7ebd03dc81f7ff61252221546fed9834a51837abb7a3dbbd640bc8a36205809",
+      "pack_sha256": "be82825a6bd4cc59898130c2b6ba114e86b6af5376b59d003cfc6548779f063c",
       "body_characters": 2569,
       "document_sources_verified": true,
       "local_material_status": "actual model-selected Skill tool call observed without supplying its slash command; automatic variant was installed",
@@ -142,13 +145,13 @@
       "browser_page": "passed",
       "claude_execution": "passed-bounded-case",
       "publication": "not-published",
-      "download_sha256": "dfc19ca5726d8aa41d8a742afcf0ddd75ecdb4bdc6f463fe7bec33164c1b1e06"
+      "download_sha256": "6db731e8d65542fe06274049f45a4d03174e1a496c0cbf502cb8a9a21d985fb7"
     },
     {
       "number": 71,
       "slug": "claude-code-skill-regression-testing",
       "author_sha256": "52578388a582f76e2d714018047cfc833d32ceb932800b045bf6a310f6744e1c",
-      "pack_sha256": "b758c4cd6e8233a842312866e35624c72d4271d0bbdfa677c22d7ef47d71d00d",
+      "pack_sha256": "1a8a0540fcf45fb04688a8313ac3ddb716077848521d174e2ebaee34a326d98e",
       "body_characters": 2654,
       "document_sources_verified": true,
       "local_material_status": "human-rating parser on synthetic fixtures; no model benchmark claimed",
@@ -156,13 +159,13 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "018f836a2f739e23238723a740f3ab5985ba193b824a1ed57ed58700a6389e8b"
+      "download_sha256": "0a1a2af2fe8a82317c9f010b64ba0656c5fa5f775d84c28e15f0937d32a83665"
     },
     {
       "number": 72,
       "slug": "claude-code-plugin-team-distribution",
       "author_sha256": "216e84a6ce90209fb92f2a8bcec1c3bef9bac431c34820567d6ed01ba46bc757",
-      "pack_sha256": "6a456b394e074d862707a1bf0e8f388bf7fdd4ea0f0a4fb434efa0fcf7a201d7",
+      "pack_sha256": "96cc5de5c33ebb288864bc437f90b001df16a08ea03515a56b7c9ed01e0c682b",
       "body_characters": 2670,
       "document_sources_verified": true,
       "local_material_status": "claude plugin validate passed; marketplace installation not tested",
@@ -170,27 +173,27 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "f5761fa7bbaedbf5de193ae2798ad4be70c9d7dbe483633344c50296f40fd26a"
+      "download_sha256": "e6ed2f9bbecce08e1702f2bc2eca08f8fd1adc0bd68c880248dbb505434794cf"
     },
     {
       "number": 73,
       "slug": "claude-code-hook-event-test-lab",
       "author_sha256": "f1cd85f1155da719726e73c8cb04ed17c48ef0a9dba068a8a4a6a341c97c5abf",
-      "pack_sha256": "7f1d32d27810136bea6609d66def0b7179e1dd80fc9d3619e2e4b6eaaee88508",
+      "pack_sha256": "ee85a35e6facc4076b819b7aeca6b30cd735b43488ead394022d094f63963150",
       "body_characters": 2605,
       "document_sources_verified": true,
-      "local_material_status": "actual Claude Read triggered the configured PostToolUse Hook and produced an audit event",
+      "local_material_status": "actual Claude Read triggered the configured PostToolUse Hook and produced an audit event; actual additional case passed: hook-command-failure",
       "core_archive_checks": "passed-with-documented-broken-starter",
       "browser_page": "passed",
       "claude_execution": "passed-smoke",
       "publication": "not-published",
-      "download_sha256": "e091f53560476877706e329dc3f0300bd6db24d246f8d7cc0aa561f558147ba7"
+      "download_sha256": "d7614f1e9da99f6b6bbff913eebc49518503c2f0d5468239b4a7a0c060135b3f"
     },
     {
       "number": 74,
       "slug": "claude-code-hook-scoped-formatting",
-      "author_sha256": "e6f4f787e8e9ea10cf64042718f1b4f6d5ff5ad788c51b4ba07856ebf21d6c05",
-      "pack_sha256": "009cc12ba85c9580d5f08eb93a6217cc7ec92c6033ed8b77e8032f58aaa304fc",
+      "author_sha256": "47f6b1ae509d5eb46069833849831a6ee384bfc60c718ca9bc936229a24e3c04",
+      "pack_sha256": "45e1813c32eed6af8d6a5fb87e1625a1612db47c3afbbb63dce79649a311f69d",
       "body_characters": 2639,
       "document_sources_verified": true,
       "local_material_status": "formatter fixed events: scoped, idempotent, preserves data",
@@ -198,13 +201,13 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "88da529a7c81a18d4626fce83190fe9ed47bcd76f9db3a8c426e478461081d0c"
+      "download_sha256": "561c9a104a509c69a5625ea50c6582588af6653d689767ae46ecdb0b9aacad07"
     },
     {
       "number": 75,
       "slug": "claude-code-hook-quality-gates",
-      "author_sha256": "74ef6e192e58cf1e359c2e792cc6e2f121a8eaa88cc37832305bc4cf552bdd2f",
-      "pack_sha256": "83d4cfc35d176a4a4d7e0fae3a9780d59475468e91e0615d99fb02907122128c",
+      "author_sha256": "ace54d0cdd90e99e75775b36e5b2c4c70a184185906acdbbeb80a325c76cdf09",
+      "pack_sha256": "f4154afaff0d4090657557055bc193184c892cc2c830beb46806b4d57207ec2f",
       "body_characters": 2553,
       "document_sources_verified": true,
       "local_material_status": "quality script and repeated Stop fixed events; actual product trigger pending",
@@ -212,13 +215,13 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "c540fa1fe6753cc26ef74bc60dde5d61b7a0f6d165a1d40fea7c123878f2310f"
+      "download_sha256": "2a8c545ad0b7c8a70c47e6d1ca5d01101d70fd0bbbda4c13fd9e46b9ccb387bd"
     },
     {
       "number": 76,
       "slug": "claude-code-hook-file-boundaries",
-      "author_sha256": "944af22eaf8440abc1a9075b3505cd2cf8ce59bc332c9cb5fc2b64fb531b0ba1",
-      "pack_sha256": "62038c9bc9e35542869ac81d93bd5ce11fff156ced590310f3e55537d2734051",
+      "author_sha256": "41366456e5c6520a8b7e9ea1927b0e94cd5057c2706d130cc03a1c86e7aa5084",
+      "pack_sha256": "392089cd2c40944d0addb71ef95ea1546303622f641cfb778b4fbeb56f692c99",
       "body_characters": 2605,
       "document_sources_verified": true,
       "local_material_status": "actual Read followed by Write reached the PreToolUse Hook; its protected fixture directory reason and unchanged bytes were verified",
@@ -226,13 +229,13 @@
       "browser_page": "passed",
       "claude_execution": "passed-bounded-case",
       "publication": "not-published",
-      "download_sha256": "267893e8cc30c8b0568cff9a2a8693ba75a43f729ab520bbc8743e2ab4f7b70d"
+      "download_sha256": "83f6991d3408c965e7c6a0f7927cc637bbb9e83f46c8c07805d3a16de091baa7"
     },
     {
       "number": 77,
       "slug": "claude-code-hook-notifications-audit",
       "author_sha256": "17ba62ba4b300486d0c04c2f7780bd1b930e03b8b57653891ef40a5d71d514fe",
-      "pack_sha256": "f3e0efe545aa1a7ca194c293aec366f2c25d3dac31deb9ac6e0a0f21040c50e3",
+      "pack_sha256": "c68ce3b3d4a8f5afc63b2be3d99785df23984cc3658a04d9d1a7f43ff9f24b71",
       "body_characters": 2581,
       "document_sources_verified": true,
       "local_material_status": "audit field selection and local notification deduplication tested",
@@ -240,27 +243,27 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "41306f27f4cc3132556feb8e6670826f3a5619c4c489e3b7639689bcaad3f736"
+      "download_sha256": "d6c2d3435b5afb21b3c59c6ec08b48d2befd995ce1ddc352f18f25464e5865e2"
     },
     {
       "number": 78,
       "slug": "claude-code-hook-portability-recovery",
       "author_sha256": "5299d821963f860e5ae80f4305d4f515cd13f3c712c17e118a5a27ac50dfc955",
-      "pack_sha256": "4b44ad1fa89b0bcba185380f3e35da619b9af5093df0699e50ad80cd8f081845",
+      "pack_sha256": "40bfaf7e251532a48ac50f7d1d792d103468efdf4aedeb2cca8c4a1e91755ea3",
       "body_characters": 2575,
       "document_sources_verified": true,
-      "local_material_status": "Windows fixtures and bounded timeout probe; macOS/Linux execution pending",
+      "local_material_status": "Windows fixtures and bounded timeout probe; macOS/Linux execution pending; actual additional case passed: hook-command-failure",
       "core_archive_checks": "passed-with-documented-broken-starter",
       "browser_page": "passed",
-      "claude_execution": "not-performed",
+      "claude_execution": "passed-bounded-case",
       "publication": "not-published",
-      "download_sha256": "8416e874713d4f420f45be4bf122d5f383de9202523c0eef4b8943c1c79df608"
+      "download_sha256": "b35b59eaa66db58366d81fa2f56700b63075dd14a3eeaffcd2404d243930166d"
     },
     {
       "number": 79,
       "slug": "claude-code-mcp-local-server-workshop",
       "author_sha256": "555ae8389d4d57c830b2a66f9bcab18791c157aa3afe7b9dca2ea1036fd2d004",
-      "pack_sha256": "e4b5a8f23d1bf10f6807d8aac66b0e4002ff793f563347573fdff95413bc41ca",
+      "pack_sha256": "07983b5057dd8812171f6c0440b58244ee507fe2007e161435899cb7e8cb9e9e",
       "body_characters": 2585,
       "document_sources_verified": true,
       "local_material_status": "actual Claude MCP smoke returned IDs a and b and nextOffset 2",
@@ -268,27 +271,27 @@
       "browser_page": "passed",
       "claude_execution": "passed-smoke",
       "publication": "not-published",
-      "download_sha256": "0376a6e42d79d3e60dbf7ed81aac5ecb8d319f29b52e12cca2665d58bf407dba"
+      "download_sha256": "8583cfffdcad17c5ab9c1d243169e53f18460bc94beb34cdc1244a51eb64a1df"
     },
     {
       "number": 80,
       "slug": "claude-code-mcp-tool-contracts",
-      "author_sha256": "600be874f75bde9f14fe27211cf26f08dd64d06d8ca30cd6af398298cbbd070c",
-      "pack_sha256": "b279e0cc6e14bac133e151505bd0dd29778e21d8be114eefa909076103c009aa",
+      "author_sha256": "06ad4674597092f1a8cd94640a9401d9fa9919d59585a9092f48d8c9cc96ed82",
+      "pack_sha256": "0a9de8ffc14c9f4ae61088d5c30384fb9c35f0fc654462ce0681f2c95d972b89",
       "body_characters": 2531,
       "document_sources_verified": true,
-      "local_material_status": "actual MCP pagination, invalid input and missing/empty results tested",
+      "local_material_status": "actual MCP pagination, invalid input and missing/empty results tested; actual additional case passed: mcp-invalid-input",
       "core_archive_checks": "passed-with-documented-broken-starter",
       "browser_page": "passed",
-      "claude_execution": "not-performed",
+      "claude_execution": "passed-bounded-case",
       "publication": "not-published",
-      "download_sha256": "b229084684dd430e016072b34633fb76d8179238268ce5251669604373a84976"
+      "download_sha256": "0ba29327a8aae69817f8fbb73987131843d5614ea4e2e044e6f3a4899bac60a3"
     },
     {
       "number": 81,
       "slug": "claude-code-mcp-http-auth-workshop",
-      "author_sha256": "1821eb30196dbfdcbeac4368379822ed8d80e7154c3c3dd6c09cfcbc43dc20c8",
-      "pack_sha256": "60a053e38e6b826a1f53eb5f4cb1b6533057021aa0d7dfc0e41a6b89dd875d59",
+      "author_sha256": "1929325df8f8b560227092dc6b0b5d232dbfe0bbc1042c60e9a3dbf53eeceaab",
+      "pack_sha256": "382a11d681c14e889480747fe7e2395cc713d3edffac7cdb7b8ef7c032fd9c3f",
       "body_characters": 2548,
       "document_sources_verified": true,
       "local_material_status": "local non-MCP HTTP 401/403/200 fixture; real OAuth pending",
@@ -296,41 +299,41 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "7293450c42961129bc8c011d0275d148f98c05b31e28cc836b939d89187a636a"
+      "download_sha256": "f2a963826db535a7d822a4d71bac12fe622de8a77225b43812a783e6e5a69d79"
     },
     {
       "number": 82,
       "slug": "claude-code-mcp-failure-contract-tests",
-      "author_sha256": "d4697c1c5f8ba1c1840c7e274838571bf5469995f0cdaabe913fb26c4ff524ce",
-      "pack_sha256": "72e2fb8b2f85e32a23d0a11dc5e75208147dfda9b0b41090bf296464abe72a89",
+      "author_sha256": "82a57c7c208a1851515b9286dc835fb7514568cc17c859803b31c72a96d24aeb",
+      "pack_sha256": "a7bbda1ce1c4dfaf9ce4e03c47dac4b0ecb7f9a49b1a156bbdfa64074988cf16",
       "body_characters": 2672,
       "document_sources_verified": true,
-      "local_material_status": "actual Claude client reported the failed MCP server and made no fabricated tool call; invalid-output and hang remain local protocol probes",
+      "local_material_status": "actual Claude client reported the failed MCP server and made no fabricated tool call; invalid-output and hang remain local protocol probes; actual additional case passed: mcp-invalid-input",
       "core_archive_checks": "passed-with-documented-broken-starter",
       "browser_page": "passed",
       "claude_execution": "passed-bounded-case",
       "publication": "not-published",
-      "download_sha256": "8727f9974edffd31bb68cf9db2d8d77591148c2df87c4b718cca85f07dba1e3e"
+      "download_sha256": "001e2c883c0fc597539290b4ce9d778b3de8e576c59a06185c729f79e2b14b7c"
     },
     {
       "number": 83,
       "slug": "claude-code-mcp-untrusted-output",
       "author_sha256": "ad1d4a7bff0f78cb9cc967b23f89622b779e012df9de7a3b31c986182b410a02",
-      "pack_sha256": "b430a33a29a3cfdefb598cef275aee11b97e13d98ca8d95ebea9d6acf37a4690",
+      "pack_sha256": "995b9c9c4387625aa251fca3ae8daacc0530f3ba2b3130f1ac25ae15c174a275",
       "body_characters": 2552,
       "document_sources_verified": true,
-      "local_material_status": "untrusted MCP output fixture included; model resistance not live-tested",
+      "local_material_status": "untrusted MCP output fixture included; model resistance not live-tested; actual additional case passed: mcp-untrusted-output",
       "core_archive_checks": "passed-with-documented-broken-starter",
       "browser_page": "passed",
-      "claude_execution": "not-performed",
+      "claude_execution": "passed-bounded-case",
       "publication": "not-published",
-      "download_sha256": "996a484b4e70c66d4102d15a7dc320e6816c608ff73fe523ed5b393f7e06f201"
+      "download_sha256": "8eeb256dec65f8fe9963460b68dc0139b40c32ff40e6b474e604734a9871bf0b"
     },
     {
       "number": 84,
       "slug": "claude-code-issue-to-draft-pr-workshop",
       "author_sha256": "869efc05410c0b833e7e180504b754c8b1a22508f8b21a2fee3d34660e9e144f",
-      "pack_sha256": "4b36063a4a90470b6b8abbf10baf31e77468e8e4e07f43356a843515575cebc6",
+      "pack_sha256": "1345ca886d1823ffac081b24dd296367f06ade147a11d380215619cc36beef9c",
       "body_characters": 2544,
       "document_sources_verified": true,
       "local_material_status": "local draft template and reference filter; no remote PR created",
@@ -338,13 +341,13 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "fff42ac8e21426e43719f2a729d7a61a1742f907f6a3a23a9f7b523035e97d97"
+      "download_sha256": "a8285cf49e1ce8fd4f9623cb3f258d67bac34b4d4a26ce759dc9c7af1f4396ca"
     },
     {
       "number": 85,
       "slug": "claude-code-tdd-debugging-workshop",
       "author_sha256": "a194eed84e15acf6dc7a2d8b0feeba233b9c2ca78af5b0659cae7786e39d294e",
-      "pack_sha256": "f313b09fee01426e0c3cb379635dba7b4f26c11427c423a0083d1576edc49e32",
+      "pack_sha256": "73f88a40289a52a0219e9382bb2849d08b4887ca4906a1c760a6c88087027236",
       "body_characters": 2551,
       "document_sources_verified": true,
       "local_material_status": "same authored assertions fail on starter and pass on reference; same browser interaction verified",
@@ -352,13 +355,13 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "98449f7434d11d62eb8c4a206ad25ed65be2d6cc43bfb2c30a2c3a7598517802"
+      "download_sha256": "6f079e3a4497e4c8b6be3cba7113f60bb8b72b6015b723aee20bbfa5e85b7595"
     },
     {
       "number": 86,
       "slug": "claude-code-legacy-refactoring-workshop",
-      "author_sha256": "4c4800bb333418925927dd6a636124d8929a17c36cfbe2be18955eb5902eee35",
-      "pack_sha256": "723bbda693583b1069bd97e8da2db05c509ba36f2dfccef9e8e32d24b1d3a2c8",
+      "author_sha256": "808b978e112006c460abe1a0a2a091a7248ec308b592e6b36bc95da28c12b8f5",
+      "pack_sha256": "03db4ca1c504e8cbfad9721b1babd6b8d5599768a8380a79251db882f0eacf5c",
       "body_characters": 2553,
       "document_sources_verified": true,
       "local_material_status": "legacy/reference statistics and independent downloaded tests pass",
@@ -366,13 +369,13 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "e3e634baf91005d37e0c5983f34b2392e39624e218adeec14b0f8a0e79e383c9"
+      "download_sha256": "cf4699dcddab76ef9c02c5fa1c613600799d472c6ecb2ad9f987a7abddd3ca98"
     },
     {
       "number": 87,
       "slug": "claude-code-subagent-review-workshop",
-      "author_sha256": "dfde54568f679b9158ac8db202187ac2818562718659560a1112d94f59ebef56",
-      "pack_sha256": "11d82145b75ffc2890cb715c64aa9e7e250c43d3b3cb35d70065af273750442a",
+      "author_sha256": "737a86d401694b7a2941d04c89d9e5ad4292f9e56bba80562474bbe8d9141b27",
+      "pack_sha256": "04ce08f7b7692fa0e3593fcc25ec6691cf1a0118c3feb1141ad2740a881c337f",
       "body_characters": 2525,
       "document_sources_verified": true,
       "local_material_status": "actual data-reviewer subagent used only Read and Grep and identified the inverted condition; Haiku override, no Agent Teams claim",
@@ -380,13 +383,13 @@
       "browser_page": "passed",
       "claude_execution": "passed-bounded-case",
       "publication": "not-published",
-      "download_sha256": "e68da1b3b3fd2138e8721e632e6e0d65dfd5ffdc47a5440a6bf109cdecbd96f2"
+      "download_sha256": "d08a1f701f8ec1cefb4a1dc937b8777c8c75400cedafe27b2e3078c34b4eb5dc"
     },
     {
       "number": 88,
       "slug": "claude-code-worktree-integration-workshop",
       "author_sha256": "d2dcb1236144478f5ea9298e37afb0de9bdfd8882de8fa093f246fd7a8ade6a0",
-      "pack_sha256": "b0b7344fdf96177dc502ae62c5da5c05c8fe279ac08ab7e0a9e5ed29bd0dcc65",
+      "pack_sha256": "44ec35df821c9303d965009737f2fbb7627890dee60171958f2b0cbfe8c530ba",
       "body_characters": 2542,
       "document_sources_verified": true,
       "local_material_status": "two real temporary Git worktrees, controlled conflict and five integration tests",
@@ -394,27 +397,27 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "f7a228481972a28fb2ab435091f2cdc27dd6cef5720766655ebfa1030ddea925"
+      "download_sha256": "d5cb961d3fc151a406280ebc6fffc5262ea1bce5b32edc038085cd35af6f9415"
     },
     {
       "number": 89,
       "slug": "claude-code-agent-teams-integration-lab",
-      "author_sha256": "343aa462fb6207628907512bef9cf4b4a39d2322ea61389d80d4b969e9335e51",
-      "pack_sha256": "c3861d9d069674800d82715322d55c484c7ccca0fe5e2740f783e29ec34bb766",
-      "body_characters": 2506,
+      "author_sha256": "1e8f817e808fbdb3f0729cf6bfdf025cba10b5ce5e2f221d52d8884ca01eaaf7",
+      "pack_sha256": "f10d49e8d73cf0e232bb2dcb0ac6feab9ec426bdbda322c733f58a8a566bc295",
+      "body_characters": 2600,
       "document_sources_verified": true,
-      "local_material_status": "team roles and integration material; no actual Agent Teams execution",
+      "local_material_status": "Two named in-process teammates, independent reads, task assignment, mailbox replies and a follow-up in the same teammate; not the full UI feature integration exercise; passed",
       "core_archive_checks": "passed-with-documented-broken-starter",
       "browser_page": "passed",
-      "claude_execution": "not-performed",
+      "claude_execution": "passed-bounded-product-case",
       "publication": "not-published",
-      "download_sha256": "4fecbbab852f303290bb2773ffa6cdc09b90073bca05cb264e057504d731656f"
+      "download_sha256": "9d029040f05410c57b41051074b5a064d7d69c4b5f2df16433beb1b132cadd8e"
     },
     {
       "number": 90,
       "slug": "claude-code-cross-device-recovery-workshop",
       "author_sha256": "cce03beee38bab7823da872776c697791f5d7c43bc18f8661f3dde0435540a17",
-      "pack_sha256": "3acc87975cae9eafb507703a68c3a92a99aeb63f3a64dd625eb1d855f013dc4c",
+      "pack_sha256": "14391d26d9c06e947b897a8dd30906203e3e25f36eabf4342dc26c6bce04da10",
       "body_characters": 2562,
       "document_sources_verified": true,
       "local_material_status": "device recovery checklist only; no physical device pairing or interruption test",
@@ -422,13 +425,13 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "5292df137b90084c64bb5c1474671cbd02294ea2bf82a179eff87cc2594e47ee"
+      "download_sha256": "f9eb07f7243929e749d3442a413373ad1bf4da35220f3c530296ace8927b8156"
     },
     {
       "number": 91,
       "slug": "claude-code-structured-cli-pipeline",
       "author_sha256": "4cb07b5d281ee46e54bd2e14733c5c927662ada51748b9d7a12cc58767be5dfa",
-      "pack_sha256": "a0e539af63c0486af4487b19307602f6a04adea40f7b0b1465d50acc179cb333",
+      "pack_sha256": "00bb74c30e116f41c032d764d7405c0bfecd0b779c0538fd97e59a2c4d673700",
       "body_characters": 2534,
       "document_sources_verified": true,
       "local_material_status": "actual Claude structured output matched the schema and returned all three task IDs",
@@ -436,13 +439,13 @@
       "browser_page": "passed",
       "claude_execution": "passed-smoke",
       "publication": "not-published",
-      "download_sha256": "4fad9bca7d1a503100ee69409a2a3f0519c8ad674ac231b5f203ee2d7d2c46c2"
+      "download_sha256": "1d89126c100f73fa84ea744c82d9f55064b0229762e1e491092280dcb295b661"
     },
     {
       "number": 92,
       "slug": "claude-code-github-actions-review-workshop",
-      "author_sha256": "af2734d330942e7639f657ffc3ccf6ce0e99e292963a5f784165ad47bbfed2cb",
-      "pack_sha256": "42a8617aac01266d09cbb9cdda6270e0f6c949ad04d175750f6151c1ee7ab9e1",
+      "author_sha256": "994239a840c1e35bef8b5176e7e19740ec7ddf7b9795c2da822688bc508bc96b",
+      "pack_sha256": "3a79a0781b750b3b2754d330c9090bd979220e3d9e3dff08b3db8982b82eafa5",
       "body_characters": 2652,
       "document_sources_verified": true,
       "local_material_status": "workflow YAML and artifact validator tested locally; no external Actions run",
@@ -450,55 +453,55 @@
       "browser_page": "passed",
       "claude_execution": "not-performed",
       "publication": "not-published",
-      "download_sha256": "1ed8a58fda20e6cf28a3ad99944d488ff3e51296450d0814399c9500ecbece6d"
+      "download_sha256": "0cac0ef6cdc3999c990f74c0baa9ef2521267dfcd8a2f4f9c93532444e61aff0"
     },
     {
       "number": 93,
       "slug": "claude-code-scheduled-workflow-reliability",
-      "author_sha256": "410438bac791a2c5f83f420e8e72320727340727259f5ef277474e4de01add3d",
-      "pack_sha256": "62cfe3a4b6db84a21b6821037fdfdc1e77f1f51a2f994f7deaec347931ae03d1",
+      "author_sha256": "d7f304bce189371ca2312efce6a6402967cbbfc073a927f6b5229c549e9b3ffb",
+      "pack_sha256": "c9cd4672853b42273371e292239b0cc8ec490d79bcd28b087edcd4716710d1ee",
       "body_characters": 2689,
       "document_sources_verified": true,
-      "local_material_status": "CLI failure/recovery/reuse/cancellation and separate attempt files tested; no scheduler activated",
+      "local_material_status": "Session CronCreate/CronList with a real one-shot trigger reading local synthetic data; not cloud/desktop scheduling, sleep recovery or the lesson job runner; passed, no remaining jobs",
       "core_archive_checks": "passed-with-documented-broken-starter",
       "browser_page": "passed",
-      "claude_execution": "not-performed",
+      "claude_execution": "passed-bounded-product-case",
       "publication": "not-published",
-      "download_sha256": "a8924d6d0401fd166981c65ebc64e788f027771250ba23257c04ee1556d78e08"
+      "download_sha256": "21d30709b2c8b05fe9264001aecd92c7f7f2e2715b70e174c7d7f2ff6a92c810"
     },
     {
       "number": 94,
       "slug": "claude-code-agent-sdk-stateful-runner",
-      "author_sha256": "8c03971dc7b04a9dfa7d07400d0541a54f23cb6c0b93094e41b3626893253645",
-      "pack_sha256": "1f81d0507e18ab112b7bc56e86ab55a027291d093d5f176824346fbb6a3cd328",
-      "body_characters": 2504,
+      "author_sha256": "aa4979b60e939a23c629201210dea926b90f0065eff6d63726dd1941cebd26b5",
+      "pack_sha256": "55134b29ba0c8fcfdec46a85cad81c0eded0b4540bd4b3b3026df6ed0958fbf0",
+      "body_characters": 2718,
       "document_sources_verified": true,
-      "local_material_status": "authored query/resume, missing/incompatible state rejection, failed executable startup and fresh-query recovery passed; separate streaming cancellation probe passed; physical Ctrl+C and interrupted-session recovery remain pending",
+      "local_material_status": "runner v2 streaming input: actual query/resume, state and startup failures, terminal PTY Ctrl+C after first output, then same interrupted-session resume passed; not network or external side-effect recovery",
       "core_archive_checks": "passed-with-documented-broken-starter",
       "browser_page": "passed",
       "claude_execution": "passed-sdk-smoke",
       "publication": "not-published",
-      "download_sha256": "9ec0fbe40e99fe3b0a4bbf66f23fba13fbcb6950eee1992280d47d0a748a13aa"
+      "download_sha256": "2afc394c027681b7e872398d81360d8de5477b307b0b65867277f662276d0d0d"
     },
     {
       "number": 95,
       "slug": "claude-code-workflow-evaluation-cost",
       "author_sha256": "9d60d19fac62e1418a1513a6dd5e1d19874c5a87ff295656aa266f36ed4d6338",
-      "pack_sha256": "cef753ed74ea3b89726352f91588a0d00deb58713e01feb86c20edcb2cc114af",
+      "pack_sha256": "77429b452b09e22acdd421257bf648f67bb265f215378e28be087724fb7e8f67",
       "body_characters": 2648,
       "document_sources_verified": true,
-      "local_material_status": "evaluation and CSV export use explicitly synthetic observations",
+      "local_material_status": "one actual observation per workflow with versions/models/time recorded; different model mix and coordination, no comparative advantage inferred",
       "core_archive_checks": "passed-with-documented-broken-starter",
       "browser_page": "passed",
-      "claude_execution": "not-performed",
+      "claude_execution": "passed-bounded-product-case",
       "publication": "not-published",
-      "download_sha256": "33385f5191140ba0749cd1b82255366191ffa85aac0e332342f5ccc4743011d5"
+      "download_sha256": "57f780972d7e3bbf3d3e02085a93cae7e08e05b4436b788badf9184f0ea51f63"
     },
     {
       "number": 96,
       "slug": "claude-code-advanced-capstone",
-      "author_sha256": "4dd76c0e4e929ed91eb629b6d0a82e0885d0e76c9424d20f900d1b3a50a2dc70",
-      "pack_sha256": "812cd2329a671055fda26fb03f6b8a311f2807637b77bc91ecfc1b5706c96758",
+      "author_sha256": "f49c2a6526020bc956e328884d29542eb91fb81a5760e479419858a93bed93d7",
+      "pack_sha256": "be3af9b4278e16d7654e82898d7023220bd7556ab1f4d97ed712a57885bd5438",
       "body_characters": 4018,
       "document_sources_verified": true,
       "local_material_status": "actual Claude-authored filters/UI/storage passed 9 project and 3 independent tests, 10 in-app browser cases, specified defect red/green repair and clean archive replay; verifier corrected one handoff statement; physical phone and deployment not performed",
@@ -506,7 +509,7 @@
       "browser_page": "passed",
       "claude_execution": "passed-local-capstone",
       "publication": "not-published",
-      "download_sha256": "3e2146522aa1317169df74c88fcea19051bdc7028a14c1a54c32fe6395b45445"
+      "download_sha256": "04b803d98ec822de1855c5e01712ec8371f4143b4c9e8e89a03450fcbaa19f2e"
     }
   ]
 }

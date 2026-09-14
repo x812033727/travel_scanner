@@ -11,7 +11,7 @@
   "locales": {
     "zh-TW": {
       "title": "Claude Code｜把 claude -p 接進有驗證的 JSON 流程",
-      "description": "處理合法結果、錯誤、逾時與不完整輸出這次輸出只要兩個欄位：summary 是非空的繁體中文摘要，taskIds 是不重複的待辦識別碼陣列。先把契約寫清楚，才能決定什麼資料不應往下傳。如果只是要求「回傳 JSON」，模型即使回傳一個空物件，語法上仍是合法 JSON，卻不能完成工作。",
+      "description": "處理合法結果、錯誤、逾時與不完整輸出。這次輸出只要兩個欄位：summary 是非空的繁體中文摘要，taskIds 是不重複的待辦識別碼陣列。先把契約寫清楚，才能決定什麼資料不應往下傳。如果只是要求「回傳 JSON」，模型即使回傳一個空物件，語法上仍是合法 JSON，卻不能完成工作。",
       "hero": {
         "src": "/guides/claude-code-structured-cli-pipeline/hero.jpg",
         "alt": "把 claude -p 接進有驗證的 JSON 流程：文件、螢幕與完成記號的幾何插圖",

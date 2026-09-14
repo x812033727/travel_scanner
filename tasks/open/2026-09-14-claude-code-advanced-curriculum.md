@@ -5,7 +5,7 @@ status: in-progress
 priority: P2
 area: docs
 owner: codex-claude-completion
-claimed_at: 2026-09-14T13:54:23Z
+claimed_at: 2026-09-14T14:22:53Z
 created_at: 2026-09-14T11:02:28Z
 completed_at:
 branch: codex/claude-code-advanced-tutorials

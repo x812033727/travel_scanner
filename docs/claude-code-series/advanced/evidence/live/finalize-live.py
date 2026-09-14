@@ -47,20 +47,19 @@ assert counts == {'tests': 164, 'failures': 0, 'errors': 0, 'skipped': 0}, count
 api = {'passed': True, **counts, 'postgresql_version': pg['version'].split()[-1], 'source': 'postgres-validation.json', 'test_report': 'postgres-tests.xml', 'environment': 'Windows; disposable PostgreSQL 17 and SQLite', 'server_stopped': True, 'remaining_test_schemas': 0}
 source_hashes = read('web-linux-source-hashes.json')
 changed = [name for name, expected in source_hashes.items() if hashlib.sha256((ROOT / name).read_bytes()).hexdigest() != expected]
-assert not changed, f'Source changed after test snapshot: {changed}'
 content = read('content-recheck.json')
 assert content['complete'] and len(content['pages']) == 97
 summary = {
     'checked_at': datetime.now(timezone.utc).isoformat(),
     'git_base': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
-    'scope': 'Supplementary full frontend and isolated PostgreSQL checks for the current uncommitted phase 2 changes',
+    'scope': 'Historical local full frontend and isolated PostgreSQL checks; source applicability is explicitly recorded below. Current-head CI is recorded separately.',
     'web': web_runs[0],
     'web_runs': web_runs,
     'other_web_attempts': web_attempts,
     'api': api,
     'temporary_postgresql_files_removed': pg.get('temporary_runtime_removed', False),
     'cleanup_note': pg.get('cleanup_note'),
-    'source_hash_verification': {'files': len(source_hashes), 'changed': changed, 'source': 'web-linux-source-hashes.json'},
+    'source_hash_verification': {'files': len(source_hashes), 'changed': changed, 'matches_current_worktree':not changed, 'source': 'web-linux-source-hashes.json'},
     'content': {'pages': 97, 'passed': True, 'source': 'content-recheck.json'},
     'tools': {'tests': 11, 'source': 'series-tools-recheck.log'},
     'pending': ['Claude account reauthentication and real model workflows', 'Physical mobile, MCP OAuth, Agent Teams, external CI, product schedules and SDK calls', 'Phase 2 PR and merge', 'Deployment, content import and publication'],

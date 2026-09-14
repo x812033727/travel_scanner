@@ -25,14 +25,16 @@ scope:
 - [x] 使用內建瀏覽器完成 CLI 重新授權，61、67、73、79、91 五個主流程全部通過
 - [ ] 補完五篇的 Claude 故障情境，不能用主流程通過代替
 - [x] 子目錄規則、Read 拒絕、Skill 缺參數／自動選用、Hook Write 拒絕、MCP 啟動失敗、只讀子代理七個案例通過
-- [ ] 其餘規則衝突、Skill 附屬材料選用、Hook 故障、支援平台 Bash sandbox 與真正 Agent Teams
+- [x] 規則衝突、Skill 附屬材料／缺檔、Hook 故障、MCP 無效參數及不可信輸出
+- [x] 互動式 Teams：兩位具名隊友、任務分派、訊息回覆與後續訊息接續
+- [ ] 支援平台 Bash sandbox 與第 89 篇完整雙角色功能整合（已有讀檔／訊息實測）
 - [ ] 第 81 篇取得測試 MCP HTTP／OAuth 服務，完成授權、操作、撤銷與恢復
 - [ ] 第 90 篇在真實手機與電腦完成接續、斷線、休眠及恢復測試
 - [ ] 第 92 篇在明確授權的測試儲存庫執行 GitHub Actions，保存 run URL、輸入與產物；不在正式儲存庫任意觸發
-- [ ] 第 93 篇完成產品排程；第 94 篇補原 runner 的實體 Ctrl+C 與中斷 session 恢復
+- [x] 第 93 篇完成產品一次性排程；第 94 篇修正 runner 串流輸入後，實際終端機 Ctrl+C 與中斷 session 恢復
 - [x] 第 94 篇原 runner 補測缺少／無效狀態、啟動失敗與全新 query 恢復
 - [x] 第 94 篇原 SDK runner 的 query、同 session resume 通過；另建串流輸入探針實測 AbortController 取消
-- [ ] 第 95 篇加入明示版本的真實比較紀錄
+- [x] 第 95 篇加入明示版本的真實流程觀察：每種一次，模型與協調成本不同，不宣稱效能優劣
 - [x] 第 96 篇實際 Claude 開發、獨立斷言、瀏覽器、指定故障修復及乾淨解壓重驗
 - [ ] 發布前重查高變動功能與來源日期
 - [x] 完成 PR 所需完整前端測試：Windows 258 檔、2,809 項全部通過
@@ -68,3 +70,13 @@ scope:
 SDK 原 runner 四種狀態／啟動案例通過（sdk-recovery.json）。第 96 篇由 Sonnet 從 starter 完成篩選、畫面與保存，9 項專案測試、3 項獨立斷言、10 項內建瀏覽器案例通過。指定故障由 Haiku 修正，相同斷言先紅後綠；capstone-result.zip 在乾淨目錄重驗通過。驗收者修正 handoff 一句部分無效資料的說明，原始模型輸出保留。臨時伺服器已停止。
 
 GitHub 專用 workflow 已在 .github/workflows/claude-tutorial-validation.yml 準備，由 claude-tutorial-ci-validation 任務管理，預設只做 baseline；尚未合併／dispatch，仍需 claude-lab 與專用 ANTHROPIC_API_KEY。相關系列測試 12 項、workflow baseline 8 項及工具全套 52 項通過。最新審查包含 380 個檔案；425 個文件連結無失效。資料與動作紀錄在 real-operations-summary.json、ci-workflow-validation.json 及 capstone-*.json。
+
+2026-09-14 收尾補驗：六個額外 CLI 案例通過，見 extra-boundaries.json。手動斜線指令直接展開，初次誤要求另一個 Skill 工具事件的判準已更正，原始失敗判讀保留。
+
+SDK runner v2 已改為串流輸入，真實 PTY 在首段輸出後送出 Ctrl+C，29.418 秒內保存 cancelled；同一 session 隨後正確回覆先前標記。query/resume 與四種失敗／恢復重驗皆通過。此為工具送入實際終端機的按鍵，不宣稱真人鍵盤。
+
+兩位具名 Teams 隊友讀檔、任務與訊息完成；lead 曾把隊友錯叫普通 subagent，也重複完成已由隊友結束的任務，原始 trace 和判讀更正保留。一次性 Cron 在 22:06 Asia/Taipei 實際觸發，回覆 total=3/completed=1，後續 CronList 清空；工作階段正常退出。各一次單代理與 Teams 流程觀察已保存，不能據此當成模型排名。
+
+目前外部阻塞：claude-lab 已建立並限制 main，但沒有 ANTHROPIC_API_KEY；真實手機未提供；真實遠端 MCP OAuth 服務未提供。Remote Control 本機已啟動，瀏覽器可見歷史，但要求 device_key_missing 的裝置重新驗證，Google 登入沒有跳轉，未送出遠端操作。WSL 設定期間連唯讀 process list 也無回應，僅停止本次 Windows WSL 客戶端，未 shutdown 共用 WSL；安裝結果未知，不算 sandbox 通過。
+
+主分支已同步至 8c83e90a，先前全套前端／PostgreSQL 證據保留為歷史快照；本次採用官方 SHA 驗證的 Node 24.15.0 更新依賴並重驗，CI／PR 狀態另記。正式部署、匯入和公開均未執行。
