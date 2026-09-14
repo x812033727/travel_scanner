@@ -1,0 +1,24 @@
+{
+  "checked_on": "2026-09-14",
+  "browser": "Codex in-app browser",
+  "url": "http://127.0.0.1:57084/",
+  "scope": "Actual Claude-authored capstone; DOM states and one 360px screenshot observed through browser UI",
+  "cases": [
+    {"name": "add-duplicate-and-literal-titles", "passed": true, "observation": "Two same-title tasks plus literal <b>純文字</b> displayed; total 3, completed 0"},
+    {"name": "active-filter-by-id", "passed": true, "observation": "Completing the first same-title item left the second and literal title visible in active; total 3, completed 1"},
+    {"name": "completed-filter", "passed": true, "observation": "Only one checked same-title item visible"},
+    {"name": "reload-persistence", "passed": true, "observation": "After reload all 3 items restored with exactly one completed"},
+    {"name": "mobile-360", "passed": true, "width": 360, "document_scroll_width": 360, "filter_button_heights": [44, 44, 44], "visual_review": true},
+    {"name": "mobile-390-delete-from-filter", "passed": true, "width": 390, "document_scroll_width": 390, "observation": "Deleting the remaining active duplicate left total 2, completed 1 when switching back to all"},
+    {"name": "specified-bug-reproduction", "passed": true, "observation": "After injecting !==, clicking the checked same-title task left it checked and checked the other task; total completed incorrectly increased from 1 to 2"},
+    {"name": "corrupt-storage-recovery", "passed": true, "observation": "Local-only test page backed up and corrupted mokaair-capstone-96; app opened an empty list and could add a new task. The original synthetic data was then restored and probe backup removed."},
+    {"name": "repaired-toggle", "passed": true, "observation": "After real Claude repair, clicking same-title toggled only that item off; the literal-title item stayed checked, total 2 completed 1"},
+    {"name": "blank-input-feedback", "passed": true, "observation": "Whitespace input showed 請輸入一到一百字的待辦。 and preserved the two tasks"}
+  ],
+  "error_console_entries": [],
+  "viewport_reset": true,
+  "physical_mobile": false,
+  "storage_probe_author": "Codex verifier; separate from Claude-authored production files",
+  "unsupported_attempt": "DOMStorage raw CDP command was unsupported and did not change storage. A temporary app test page provided ordinary UI controls for the corruption and restore test.",
+  "passed": true
+}

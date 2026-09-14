@@ -1,0 +1,247 @@
+{
+  "slug": "dataforseo-api-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "DataForSEO 適合誰：資料 API、查詢成本與工作流",
+      "description": "DataForSEO 提供搜尋與網站研究資料 API，適合把固定查詢接進報表或內部流程，但仍需要整理回應、處理錯誤及控制費用。本文用台灣課程網站的每週搜尋觀察為例，解釋 SERP、Standard 與 Live、Sandbox 和真實請求的差別，並附查詢量估算、比較表及原創流程圖。協助一般使用者判斷何時採用現成介面，何時值得投入串接與維護。",
+      "hero": {
+        "src": "/guides/dataforseo-api-basics/hero.jpg",
+        "alt": "Mokaair 原創文件、伺服器與計算器圖像，說明 DataForSEO 的查詢條件、資料回傳與成本規劃。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "如果每週都要把同一批關鍵字的搜尋結果整理進報表，重複開啟工具、匯出和貼表格會花掉不少時間。DataForSEO 的用途，是讓系統依指定條件取回資料，再交給自己的程式或整合工具處理。它能提供資料，但不會自動決定哪些內容值得寫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇以課程網站的固定搜尋觀察為原創情境，介紹規劃方式與成本邊界。沒有建立帳戶、儲值或送出付費 API 請求，範例數量僅供試算；功能與計費規則依 2026 年 9 月 14 日查閱的一手文件整理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先決定需要哪種資料與交付方式"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 可以理解成軟體之間交換資料的入口：你送出問題與條件，服務回傳有固定欄位的結果。DataForSEO 有 SERP、關鍵字、網站檢查及其他資料產品，每個入口的用途、欄位和費用不同。先寫出要完成的報表，才選對應產品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若只是每月研究幾個題目，現成 SEO 工具的介面與匯出可能已足夠。當查詢條件固定、需要多次執行，或資料必須與自己的編輯表合併時，API 才比較值得評估。判斷標準應包含節省的人工時間，以及誰能維護串接。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不寫程式也有整合選項，官方提供 Google Sheets 等工具的連接資源，帳戶內也有 API Playground。這些介面降低操作門檻，但仍需理解輸入與回應。尤其 Playground 會送出真實請求，可能使用帳戶餘額，不能因為在瀏覽器操作就當成免費展示。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "以 SERP 為例，固定每次查詢的條件"
+        },
+        {
+          "type": "paragraph",
+          "text": "SERP 指搜尋結果頁。查詢時需要決定搜尋引擎、字詞、語言、地區與裝置，必要時還有取得深度。台灣課程站若要觀察手機搜尋，應在設定中明確指定，不能把官方英文範例的美國地區代碼照貼後，將結果當成台灣市場。"
+        },
+        {
+          "type": "paragraph",
+          "text": "地區與語言值應從該產品支援的清單核對，不憑一般國碼猜測。結果也可能受到搜尋當時的版位與拼字修正影響。保存請求參數、結果時間和實際回傳字詞，才知道兩次報表是否真的在比較同一件事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方說明，SERP 取得結果不包含個人的偏好與搜尋歷史。因此它適合觀察指定條件下的搜尋結果，不代表每位讀者手機上都會看到相同畫面。若同事手動搜尋與報表不同，先檢查條件與時間，不急著判定工具錯誤或網站掉排名。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Standard 與 Live 影響流程，也影響費用"
+        },
+        {
+          "type": "paragraph",
+          "text": "Standard 的基本流程是先送出任務，再於完成後取得結果；Live 則在單次請求等待回應。每週報表通常可以接受排隊，互動功能才可能需要較快回傳。先按使用情境選擇，不必讓所有背景工作都採用成本較高的即時方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Standard 還有不同優先程度，SERP 也有 Regular、Advanced 和 HTML 等回傳形式。要觀察特殊結果版位，就要核對相應格式是否提供需要的欄位。取得深度增加時也可能增加費用，不能只看最低單價便假定能拿到全部結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "任務受理與結果完成應分開記錄。回應中的 task ID 用來對應同一筆工作；依查閱的 SERP Task GET 文件，既有任務結果可在三十天內再取得，該取回動作不另計費。需要長期比較時，應安排保存結果，不依賴服務永久留存。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先算查詢數，再算資料與維護成本"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設要觀察二百個字詞、兩個地區、兩種裝置，每月執行四次，基本組合就是三千二百筆。這是原創工作量範例，尚未計入增加深度、其他搜尋引擎或額外功能。將組合數乘上所選入口的適用費率，再逐項補上其他收費條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "截至查閱日，官方價格頁列出最低付款為五十美元；這是帳戶加值門檻，不是所有 API 的固定月費。SERP 採用依用量計費，其他產品仍應分別查閱最低承諾或訂閱要求。不要把一個產品的規則概括成整個平台都相同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "總成本也包括整合工具、儲存空間、維護與人工解讀。每月只執行少量查詢時，開發時間可能比資料費更重要。先列出誰會使用結果、哪個決策需要它，以及現有訂閱能否完成同樣工作，再決定是否新增資料供應商。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先用 Sandbox 驗證格式，再小量測試真實資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sandbox 是免費的技術測試環境，回傳模擬內容，用來檢查程式能否讀取欄位與接續流程。它不是免費查真實排名的方法，結果不能放進市場報告。測試紀錄應清楚標記環境，避免模擬數字被誤當成網站現況。"
+        },
+        {
+          "type": "paragraph",
+          "text": "準備真實小量測試時，先核對所選入口的費率與帳戶限制，再使用少量已整理的查詢。憑證應保存在受控的設定或密鑰管理方式，不放進公開網頁、共享試算表儲存格或文章截圖。帳戶密碼與 API 密碼用途不同，也不要混用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗收不只看 HTTP 是否成功。DataForSEO 回應還有自己的 status_code、status_message 與每筆任務狀態；20100 代表任務已建立，並不表示結果已完成。若有部分結果或錯誤，報表應標示缺口，不能默默補零後呈現成完整觀察。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "寫出報表需要的欄位，選擇 API 產品、條件及執行頻率。",
+            "估算查詢組合與費率，設定預算及維護負責人。",
+            "用 Sandbox 檢查資料格式，再於核對成本後小量取得真實資料。",
+            "驗證每筆狀態與結果，保存參數、時間、費用及錯誤紀錄。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用預算限制與紀錄維持可控流程"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方帳戶 Settings 可設定每日花費限制，範圍包括 API 或特定入口；Usage 則可查看請求與費用。初期先設符合測試規模的限制，並在自己的流程加入每次執行筆數上限。自動加值是另外的付款設定，啟用前應確認負責人與預算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "遇到逾時，不要無限制重新送出相同任務。先保存已取得的 task ID 並查核狀態；真正需要重送時，再依錯誤類型與既定次數處理。每日花費異常也應能暫停後續工作，讓負責人有機會查出是清單放大、重複執行或設定變更。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交接資料時，同時提供欄位說明、缺資料處理方式和停止條件。課程站的報表應回答哪些問題值得人工查看，而非只堆出大量排名數字。能穩定取得、合理解讀並由明確的人維護，才是這個資料流程真正完成的標準。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/dataforseo-api-basics/diagram-1.svg",
+          "alt": "四欄呈現先定義輸出、計算查詢成本、分開模擬與真實測試，再保存任務和結果供驗收的流程。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先證明流程有用且可維護，再逐步擴大查詢規模。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "適合情境",
+            "需要負責的工作"
+          ],
+          "rows": [
+            [
+              "現成 SEO 介面",
+              "少量研究與人工比較",
+              "解讀、匯出和選題"
+            ],
+            [
+              "試算表或整合工具",
+              "固定欄位與較少開發",
+              "憑證、費用和錯誤處理"
+            ],
+            [
+              "SERP Standard",
+              "能等待的定期報表",
+              "保存任務與取回結果"
+            ],
+            [
+              "SERP Live",
+              "需要當次取得結果",
+              "核對費率與等待限制"
+            ],
+            [
+              "Sandbox",
+              "驗證串接與欄位",
+              "標記模擬資料不可當現況"
+            ]
+          ],
+          "caption": "選擇依工作需要，不以單次 API 標價取代完整成本評估。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "API 回應成功，不等於文章研究完成",
+          "text": "先核對任務狀態、地區、時間和資料定義，再交給編輯判斷。模擬資料、部分結果與真實完整結果要有清楚標示。"
+        },
+        {
+          "type": "link",
+          "text": "先建立關鍵字研究任務",
+          "url": "https://mokaair.com/zh-TW/life/seo-keyword-research"
+        },
+        {
+          "type": "link",
+          "text": "比較 Semrush 的介面研究與追蹤",
+          "url": "https://mokaair.com/zh-TW/life/semrush-research-workflow"
+        },
+        {
+          "type": "link",
+          "text": "辨認市場流量估計的限制",
+          "url": "https://mokaair.com/zh-TW/life/similarweb-traffic-estimates"
+        }
+      ],
+      "sources": [
+        {
+          "title": "DataForSEO 價格與產品入口",
+          "url": "https://dataforseo.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DataForSEO SERP 方法與回傳形式",
+          "url": "https://docs.dataforseo.com/v3/serp-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DataForSEO Live SERP 請求參數",
+          "url": "https://docs.dataforseo.com/v3/serp-se-type-live-regular/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DataForSEO SERP 取回結果與保存期限",
+          "url": "https://docs.dataforseo.com/v3/serp-se-type-task-get-regular/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DataForSEO Sandbox 模擬資料",
+          "url": "https://docs.dataforseo.com/v3/appendix-sandbox/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DataForSEO 帳戶、Playground 與花費限制",
+          "url": "https://dataforseo.com/help-center/dfs-dashboard-how-to-find-everything",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DataForSEO 內部狀態與錯誤碼",
+          "url": "https://docs.dataforseo.com/v3/appendix/errors/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "started_at": "2026-09-14T13:17:47.271Z",
+  "scope": "Cancel a real SDK stream on its first output text delta; no tool execution",
+  "sdk_version": "0.3.270",
+  "initialized": true,
+  "received_text_delta": true,
+  "aborted": true,
+  "completed": false,
+  "session_id": "fbdfe74a-a61e-46f6-a5c9-b8ab0aee84a0",
+  "first_delta": "Printing ",
+  "abort_requested_at": "2026-09-14T13:18:03.373Z",
+  "result_subtype": "success",
+  "result": "Printing 1\u201310000 comma-separated is ~49,000 characters (roughly 40\u201360k output tokens), which exceeds both my single-response output limit and the remaining $0.25 budget. A truncated list would end mid-sequence without the closing marker, which is worse than none.\n\nOptions:\n1. I output it in chunks (e.g., 1\u20132500, 2501\u20135000, \u2026) across several turns \u2014 this will still likely exhaust the budget.\n2. I output a smaller range in full now (e.g., 1\u20132000) ending with the marker.\n3. I give you a one-liner to generate it locally, e.g. `python3 -c \"print(','.join(map(str,range(1,10001))))\"`.\n\nTell me which and I'll proceed.",
+  "error_name": "Error",
+  "error": "Operation aborted",
+  "passed": false,
+  "finished_at": "2026-09-14T13:18:07.380Z",
+  "validation_note": "The model returned a normal refusal before cancellation settled; this does not prove interruption of an unfinished response. Replaced by a streaming-input test."
+}

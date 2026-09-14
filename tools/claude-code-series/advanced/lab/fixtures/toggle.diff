@@ -1,0 +1,7 @@
+--- a/model.js
++++ b/model.js
+@@ -5,3 +5,3 @@
+ export function toggleTodo(items, id) {
+-  return items.map(item => item.id === id ? { ...item, completed: !item.completed } : item);
++  return items.map(item => item.id !== id ? { ...item, completed: !item.completed } : item);
+ }

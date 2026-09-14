@@ -1,0 +1,248 @@
+{
+  "slug": "pagespeed-performance-review",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "PageSpeed Insights 分數怎麼讀：量測網站速度的正確順序",
+      "description": "PageSpeed Insights 分數忽高忽低，未必代表網站每次都有改動。本文從台灣網站管理者的閱讀需求出發，說明真實使用資料、Lighthouse 測試與各類分數如何區分，並建立可比較的網址、裝置、版本與測試條件。附原創報表閱讀順序、改善紀錄表與操作步驟，讓速度檢查能支持具體決策，不再只收藏一張高分截圖。",
+      "hero": {
+        "src": "/guides/pagespeed-performance-review/hero.jpg",
+        "alt": "原創螢幕、計算面板和文件圖像，表示讀取測試報表、比較指標並保存紀錄。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "同一個網站早上測得綠色，下午又變橘色，是否表示剛做的優化失效？先別急著下結論。PageSpeed Insights 同時呈現一段時間的真實使用資料與一次模擬載入測試，兩者的範圍和用途不同，不能把所有數字混成一張成績單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀報表時可以照著「測的是什麼、資料從哪來、哪個數值異常、如何安排比較」的順序。這篇著重把量測方法固定下來，讓改動前後有可追查的依據；真正要修程式或主機時，再把明確的問題交給負責人。"
+        },
+        {
+          "type": "heading",
+          "text": "先選代表頁面，寫下測試目的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只測首頁。以小型工作室網站為例，首頁、作品列表、單一作品與聯絡頁可能使用不同版型和資源。可以各挑一個代表網址，並註明想確認的是首次看見內容的速度、圖片載入，還是某個改版是否增加負擔。"
+        },
+        {
+          "type": "paragraph",
+          "text": "到 PageSpeed Insights 輸入完整網址並執行分析，完成後確認測到的頁面與預期一致。HTTP 到 HTTPS、網域別名或舊路徑若發生轉址，也要記下最後頁面。測到錯誤頁、登入頁或網站防護提示時，該次分數不能當作原本內容頁的結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在紀錄中保存網址、測試日期、頁面版本與所選手機或桌機檢視。手機結果可以提醒你資源受限時的問題，但仍屬工具設定下的結果，不等於每位台灣讀者的實際手機。比較前先確認兩份報告的前提相同。"
+        },
+        {
+          "type": "heading",
+          "text": "把真實使用資料與本次測試分開閱讀",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "報表的真實使用資料來自 Chrome 使用者體驗報告 CrUX，採過去 28 天的觀測。它能幫助判斷讀者在現實裝置與網路下的體驗，但新頁面或樣本太少時可能沒有資料。這種情況應記為無法評估，不是零分，也不是測試失敗。"
+        },
+        {
+          "type": "paragraph",
+          "text": "注意顯示的是這個網址還是來源網站層級。若單頁資料不足，工具可能改用來源網站的彙總。作品頁若只有全站資料，就應標示其範圍，不能在簡報裡改稱「這篇作品的真實速度」。裝置切換後資料也要重新核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下方的診斷則由 Lighthouse 在模擬環境分析目前頁面，適合發現可重現的載入問題。它和歷史資料不同步很正常：剛調整的圖片可能已反映在本次測試，過去使用資料仍涵蓋修改前的造訪。保留兩欄各自的時間範圍，才有合理解讀。"
+        },
+        {
+          "type": "heading",
+          "text": "看原始指標與分類，別只看圓圈分數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Lighthouse 會分別提供效能、無障礙、最佳做法與 SEO 等分類。效能分數是多個量測指標經換算與加權後的結果，不是「所有讀者中有多少比例覺得快」。各分類也不能互換；SEO 類別的高分不能證明文章將取得某個搜尋排名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方以 90 分以上標示良好、50 至 89 分為待改善、低於 50 分為較差，但顏色只是閱讀入口。展開指標，確認主要內容出現的時間、阻塞情況或版面位移等數值，才知道下一步的調查方向。不要為了把 99 變成 100 而破壞必要功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工具版本可能調整權重或檢查項目，因此跨版本的總分不一定能直接比較。保存報表中的版本與原始數值，比只留一個分數更有用。舊教學列出的指標名稱，也應對照目前報表，不能把已退休項目當成所有新測試都會提供。"
+        },
+        {
+          "type": "heading",
+          "text": "建立固定條件，讓多次結果可以對照",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網站即使沒有改碼，第三方內容、伺服器負載或網路條件仍可能變動。Lighthouse 官方建議重複量測並觀察分布。一般編輯檢查可先用同一組條件連續做幾次，保存每次結果與中間值；不要刪掉較差的紀錄，只留下最漂亮的一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若用自己電腦的 DevTools 測試，其他分頁、擴充功能與同時執行的工作都可能影響結果。避免在同一台電腦同時跑多份 Lighthouse，並維持一致的測試環境。無痕視窗可減少部分干擾，但不能保證排除所有硬體或背景資源差異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "登入狀態、Cookie、活動橫幅和快取設定也應固定。為了測試而暫時移除實際會出現的第三方元件時，要把它標示成原因隔離測試，不能拿它冒充正式頁面的成效。每份結果都應回答同一個問題，才值得放在前後比較表。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "選定同一網址與版型，保存修改前的版本資訊。",
+            "固定裝置檢視、測試工具與可控制的登入和快取條件。",
+            "依序執行多次量測，保留全部報告與代表性結果。",
+            "只改一組有共同原因的項目，再以相同條件重新比較。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "把建議轉成可執行、可驗收的工作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "點開診斷項目，讀出涉及的檔案、元素與原因，再記下它影響哪一個體驗。作品圖過大和程式執行過重需要不同處理；若只把整張報表傳給工程師說「全部變綠」，容易把時間花在對目前讀者影響很小的項目上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工具列出的估計節省時間是協助判斷的線索，不宜把每列直接相加，承諾整頁一定快相同秒數。不同項目可能影響同一段載入過程。任務應寫清楚預期改善的資源或指標、修改範圍、回復方法與必要功能檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如工作室作品列表可先處理送出過大縮圖的問題，修改後核對手機實際載入版本與畫質，再比較相同條件的指標。若數字沒有明顯變化，就保留結果並重新檢查瓶頸，不必為證明改動有效而改換比較對象。"
+        },
+        {
+          "type": "heading",
+          "text": "遇到資料不符時，選對下一個工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "PageSpeed Insights 主要適合可供遠端讀取的網頁。需要登入的頁面或本機開發環境，可依情境使用 Chrome DevTools 的 Lighthouse；它能沿用瀏覽器可存取的頁面。檢查清除儲存空間等設定，避免在不知情下改變要測的狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果問題發生在點選、捲動或載入後的變化，單次頁面載入報告可能不足。Chrome 官方建議用 Performance 面板做深入效能診斷；Lighthouse 也有不同模式，但提供的檢查並不完全相同。先描述要重現的操作，再選相應的量測方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後保存報表、修改紀錄和實際功能結果。若真實使用資料尚未反映變更，寫明待觀察的期間與範圍。完成的速度檢查應能交代測了什麼、改善了哪個問題，以及仍有哪些限制，而不是只留下沒有日期與網址的高分圖片。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/pagespeed-performance-review/diagram-1.svg",
+          "alt": "四步依序確認量測頁面與條件、分辨資料來源、讀出具體指標，再保存可比較的修改前後結果。",
+          "width": 1600,
+          "height": 900,
+          "caption": "一張高分截圖無法取代完整、可比較的量測紀錄。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "報表內容",
+            "適合回答",
+            "不能直接推論"
+          ],
+          "rows": [
+            [
+              "CrUX 真實資料",
+              "過去使用體驗如何",
+              "剛修改後立即全數改善"
+            ],
+            [
+              "單次 Lighthouse",
+              "此條件下有哪些載入問題",
+              "所有讀者的實際速度"
+            ],
+            [
+              "效能總分",
+              "工具加權後的概況",
+              "精確的讀者滿意比例"
+            ],
+            [
+              "診斷項目",
+              "哪些資源值得調查",
+              "每項節省可直接相加"
+            ],
+            [
+              "多次同條件紀錄",
+              "變化是否持續出現",
+              "跨版本跨裝置都可混比"
+            ]
+          ],
+          "caption": "每種資料都有適用的問題，先標明範圍再解讀。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "留下全部結果",
+          "text": "前後比較要保存網址、版本、裝置、工具設定和每次報告。把異常結果刪掉只留最高分，會讓後續無法判斷是否真的改善。"
+        },
+        {
+          "type": "link",
+          "text": "從 Core Web Vitals 找出體驗瓶頸",
+          "url": "https://mokaair.com/zh-TW/life/core-web-vitals-diagnosis"
+        },
+        {
+          "type": "link",
+          "text": "檢查圖片尺寸與文字說明",
+          "url": "https://mokaair.com/zh-TW/life/image-seo-workflow"
+        },
+        {
+          "type": "link",
+          "text": "安排技術 SEO 的檢查順序",
+          "url": "https://mokaair.com/zh-TW/life/technical-seo-checklist"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google PageSpeed Insights 說明",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 效能評分原理",
+          "url": "https://developer.chrome.com/docs/lighthouse/performance/performance-scoring",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 官方量測變動文件",
+          "url": "https://github.com/GoogleChrome/lighthouse/blob/main/docs/variability.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chrome DevTools Lighthouse 面板",
+          "url": "https://developer.chrome.com/docs/devtools/lighthouse",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 入門與報表保存",
+          "url": "https://developer.chrome.com/docs/lighthouse/overview",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "slug": "hostinger-wordpress-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Hostinger 架站教學：把第一個 WordPress 網站整理好",
+      "description": "Hostinger 的 WordPress 建站流程會隨介面更新調整，第一次使用時應先確認產品與方案，再建立網站和管理帳號。本文依目前 hPanel 官方文件，說明新增 WordPress、選擇空白網站或 AI 引導、連接網域及檢查 HTTPS 的順序，並提供內容整理與手機驗收清單。你可以用最少的必要頁面完成第一個可使用的網站，再逐步增加功能，避免把不同建站工具、舊版教學與現有網站混在一起操作。",
+      "hero": {
+        "src": "/guides/hostinger-wordpress-setup/hero.jpg",
+        "alt": "主機、網站畫面與內容文件構成的原創插圖，未使用品牌標誌。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "使用 Hostinger 架設 WordPress，先確認你要建立的是 WordPress 網站，以及目前方案支援的管理方式。hPanel、WordPress 後台與其他建站產品各有角色，看到 AI 建站選項也不代表所有產品的資料與外掛都相同。選對流程，會比安裝後才發現工具不符合需求更省事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依官方公開文件整理，查證日期為 2026 年 9 月 14 日，沒有帳戶實測或主機速度排名。以一個提供服務介紹、作品與聯絡表單的小型網站為例，帶你先建立必要內容與管理資料，再把正式網域和訪客流程接起來。實際畫面若不同，先查當前產品文件。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先確認購買的是哪種服務"
+        },
+        {
+          "type": "paragraph",
+          "text": "在方案頁及訂單中核對網站數量、資源、備份、信箱與可用功能，並分開記錄首次總額及續約條件。若你需要 WordPress 外掛或特定程式，先確認所選服務確實提供相應環境，不只看到「可以做網站」就完成購買。VPS 的系統管理責任也與一般 hPanel 建站流程不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "請為網站列三項必要工作，例如訪客能看服務、找到作品並送出詢問。沒有商店需求，就不必為了範本看起來完整而加入結帳流程；沒有明確用途的付費外掛，也可以先不購買。這是本文的需求縮減建議，讓第一版有清楚驗收標準，而不是把所有功能一次堆上去。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從 Websites 新增 WordPress"
+        },
+        {
+          "type": "paragraph",
+          "text": "依目前官方流程，在 hPanel 的 Websites 找到目標主機方案，使用 Add website 並選 WordPress。接著設定後台語言、管理者電子郵件與安全密碼。請確認沒有選到其他既有網站；若是搬站，應使用適用的遷移方式，不以刪除原網站再新增作為預設步驟。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前文件提供 AI 引導建站與空白 WordPress 兩種起點。若你已有文案和版面想法，可以從空白站開始；想先產生頁面初稿，也可以使用引導後逐項修改。官方新流程已將佈景選擇移到建立後的 WordPress 後台，不能因為舊教學有選版型畫面，就認定目前安裝漏了步驟。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "登入 hPanel，在 Websites 核對主機方案，選 Add website，再選 WordPress。",
+            "設定後台語言、管理信箱與獨立密碼，選擇空白網站或需要的 AI 引導。",
+            "依需求使用既有網域、子網域或暫時網址，完成建立後保存網站名稱與位置。",
+            "回到 Websites，使用 Admin Panel 進入 WordPress，再開始編輯頁面與導覽。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Auto Installer 適合另一種安裝入口"
+        },
+        {
+          "type": "paragraph",
+          "text": "已有主機及網站環境時，官方也提供 Auto Installer 安裝 WordPress 的方式，入口位於網站 Dashboard 的 Website 區域。這條路需要核對安裝位置、登入資料、語言及更新選項。請先判斷根目錄或子目錄是否已有內容，不要在不清楚範圍的情況下覆蓋既有安裝。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新增網站與 Auto Installer 都可能達成安裝目的，但起點與欄位不同，不必為了跟上另一份教學而再安裝第二次。完成後先找目前的 WordPress 後台與應用狀態。如果看不到預期功能，提供網站名稱、安裝方式與畫面給官方支援，會比重複建立多個相似站點容易排查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先把內容整理成可使用的第一版"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立首頁、服務或作品頁，以及可用的聯絡方式，再安排導覽順序。假設是個人插畫接案網站，首頁先說明提供哪些服務，作品頁標示作品與使用情境，聯絡頁則說清楚詢問時需要哪些資料。這是原創示例，不需要寫成虛構的大型公司，也不必加入沒有依據的客戶數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 AI 產生的內容時，逐項檢查服務承諾、地址、電話、作品說明與評價。沒有真實依據的內容應刪除或改寫，圖片也需有使用權。安裝佈景與外掛時，先選滿足目前需求的組合，再測試手機版面，避免幾個工具同時控制字型、導覽或快取而難以維護。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後核對 WordPress 的網站標題、語言、時區、首頁與文章列表設定。若網站仍含測試資料，使用適當的存取限制，不以搜尋引擎可見性選項代替保護。公開前移除示範文章、空白按鈕與預設聯絡資料，再請未參與編輯的人試著找到主要服務。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "正式網域、DNS 與 HTTPS 分別驗證"
+        },
+        {
+          "type": "paragraph",
+          "text": "網域可以在 Hostinger 或其他註冊商購買。使用外部網域時，依官方連接文件完成網站綁定與解析；修改名稱伺服器前，先保存郵件和驗證紀錄。請使用帳戶提供的設定值，不把搜尋結果中的舊 IP 當成所有方案通用。網域移轉與 DNS 指向也應分開理解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件說明適用主機方案提供自動 SSL 管理，但仍需要網域與網站條件正確。請查看自己網站的憑證狀態，再測試根網域、www 及 HTTPS。若顯示等待或安裝失敗，先核對解析與官方錯誤說明，不直接購買另一張憑證，也不要求訪客略過安全警告。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用手機與表單完成上線驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "用未登入的瀏覽器視窗檢查首頁與深層頁面，再用手機確認導覽、圖片、文字與按鈕。送出一筆不含敏感資料的測試詢問，確認表單成功畫面與收件通知都正常。這兩項可能分開失敗，不能只看到「已送出」就認定管理者已收到信。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成後記錄 hPanel、WordPress、網域、DNS、備份與續約負責人，並安排更新和還原檢查。若要刪除測試網站，先閱讀當下顯示的影響範圍；Hostinger 官方文件提醒刪除網站前應保存備份，並注意相關郵件。保留能接手的管理資料，才能讓第一個網站持續使用下去。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/hostinger-wordpress-setup/diagram-1.svg",
+          "alt": "Hostinger 建站分為確認方案、安裝 WordPress、整理內容與正式驗收四步。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先做出能使用的第一版，再依需求增加功能。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "入口或工作",
+            "適合處理",
+            "先確認"
+          ],
+          "rows": [
+            [
+              "Websites → Add website",
+              "新增 WordPress 網站",
+              "主機方案與網站身分"
+            ],
+            [
+              "Auto Installer",
+              "在指定環境安裝應用",
+              "目錄、既有資料與更新選項"
+            ],
+            [
+              "WordPress 後台",
+              "頁面、佈景與外掛",
+              "管理者及必要功能"
+            ],
+            [
+              "網域與 DNS",
+              "正式入口連線",
+              "目前代管位置與郵件紀錄"
+            ],
+            [
+              "訪客驗收",
+              "公開內容及互動流程",
+              "手機、HTTPS 與收件通知"
+            ]
+          ],
+          "caption": "不同入口各有用途，避免重複安裝或更動錯誤網站。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要因舊教學畫面不同就重裝",
+          "text": "Hostinger 已調整部分初始流程，佈景可在網站建立後選擇。先確認現有安裝與目前官方文件，再決定是否需要任何額外操作。"
+        },
+        {
+          "type": "link",
+          "text": "第一次架設 WordPress：從測試站到公開網站",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-first-site"
+        },
+        {
+          "type": "link",
+          "text": "網域或主機到期會怎樣：續約與停用前的檢查表",
+          "url": "https://mokaair.com/zh-TW/life/domain-hosting-renewal"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hostinger：新增 WordPress 網站",
+          "url": "https://www.hostinger.com/support/6640339-how-to-add-a-wordpress-website-in-hostinger/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hostinger：Auto Installer 安裝 WordPress",
+          "url": "https://www.hostinger.com/support/3220304-how-to-install-wordpress-using-auto-installer-in-hostinger/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hostinger：連接網域",
+          "url": "https://www.hostinger.com/support/1863967-how-to-point-a-domain-to-hostinger/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hostinger：主機方案的 SSL",
+          "url": "https://www.hostinger.com/support/1575761-how-to-claim-a-free-ssl-that-comes-with-a-hostinger-hosting-plan/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

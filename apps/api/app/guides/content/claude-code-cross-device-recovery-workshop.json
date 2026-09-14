@@ -1,0 +1,344 @@
+{
+  "slug": "claude-code-cross-device-recovery-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 190,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜桌面到手機：離線、中斷與返回工作現場",
+      "description": "確認執行位置，練習接續及故障後的核對。手機畫面仍顯示一段工作，不代表電腦上的程序還在執行。本篇選定一種實際可用的跨裝置入口，記錄任務跑在哪裡，再分別測試手機斷線、主機睡眠與程序退出。返回時，你會依工作階段、目錄與檔案證據確認進度，避免重複執行尚不確定的操作。",
+      "hero": {
+        "src": "/guides/claude-code-cross-device-recovery-workshop/hero.jpg",
+        "alt": "桌面到手機：離線、中斷與返回工作現場：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "手機畫面仍顯示一段工作，不代表電腦上的程序還在執行。本篇選定一種實際可用的跨裝置入口，記錄任務跑在哪裡，再分別測試手機斷線、主機睡眠與程序退出。返回時，你會依工作階段、目錄與檔案證據確認進度，避免重複執行尚不確定的操作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-remote-control",
+              "text": "Remote Control"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-desktop-dispatch",
+              "text": "Dispatch"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-cross-device-workflow",
+              "text": "跨裝置入門"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-context-handoff-workshop",
+              "text": "交接文件"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-90.zip",
+              "text": "第 90 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "。需要一台可運作的電腦、手機或平板、可用網路及符合當前功能資格的帳號。閱讀約 20 分鐘，實作約 75 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先選一種入口並記錄執行位置"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-cross-device-recovery-workshop/diagram-1.svg",
+          "alt": "先選一種入口並記錄執行位置 → 在電腦建立可辨認的基準 → 從手機完成一個小而可核對的動作",
+          "width": 1600,
+          "height": 900,
+          "caption": "先選一種入口並記錄執行位置 → 在電腦建立可辨認的基準 → 從手機完成一個小而可核對的動作",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "Remote Control 連到電腦上的 Claude 工作階段，檔案與命令仍在該電腦；網頁雲端任務在遠端環境使用儲存庫；Dispatch 是派送入口，還要查看它實際建立的是哪種任務。三者不能只因為都在手機 App 裡就當成相同的執行環境。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇主要操作採 Remote Control。沒有資格或設備時，可以閱讀與準備資料，但不能填寫真實裝置接續已完成。使用其他入口做替代時，將入口名稱與主機重新記錄，不拿雲端成功的結果推定本機程序也會持續運作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開啟 config/device-checklist.md，先填作業系統、App 與 CLI 版本、選定入口、專案位置及帳號資格。官方功能條件會更新，應以目前帳號和管理設定確認；API key 登入與一般訂閱登入不一定支援相同跨裝置功能。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在電腦建立可辨認的基準"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 starter 跑核心測試，並於 config/handoff.md 記錄目前版本、四個模型測試結果及下一步。給本次任務一個不含私人資訊的名稱，例如 lab-device-90。名稱方便辨認，但真正核對仍要看工作階段與專案目錄。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "電腦的專案終端機",
+          "code": "node --test tests/model.test.mjs\nclaude --version\nclaude\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "進入 Claude 後，先請它只讀 model.js，說明測試命令與專案位置。確認本機工作正常，再輸入 /remote-control，依當前介面完成連接。若首次使用需要確認或組織需要啟用，先依畫面處理，不能以其他工具繞過限制。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "電腦上的 Claude Code 對話框",
+          "code": "/remote-control\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "連結或 QR 是本次工作階段的連接資訊，保留在自己的裝置操作，不放進教學截圖或公開紀錄。手機登入適合的帳號後，依官方介面開啟同一工作階段，先核對名稱與已出現的對話，再送出新指示。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從手機完成一個小而可核對的動作"
+        },
+        {
+          "type": "paragraph",
+          "text": "先做唯讀核對，要求說出專案中的檔名與當前待辦資料契約。確認是同一份專案後，再請它在 fixtures/device-note.txt 寫入固定假文字。回到電腦查看檔案與差異，確認手機指示真的落到預期位置。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "手機的同一 Remote Control 對話",
+          "code": "先確認這個工作階段使用的是本次 starter 專案。\n在 fixtures/device-note.txt 寫入「跨裝置練習第一輪」。\n只修改這個假資料檔，完成後回報位置；不要提交或部署。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存手機送出時間、電腦實際工具動作及最後檔案內容。只看手機回覆「完成」不足以判定成功，也不要以檔案已存在就推定內容是本輪新寫入。使用固定但不同的輪次文字，能協助辨認是否讀到舊結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機網站的 localhost 預覽網址不會因 Remote Control 自動變成手機可開的網址。檔案控制與網頁預覽連線是不同功能；若需要手機瀏覽網站，另依你的網路與預覽方案設定，不把連不上 localhost 誤當成遠端工作階段失敗。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "中斷一：只有手機離線"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認沒有高影響操作進行後，短暫讓手機離線，電腦保持連線與程序運作。先在電腦觀察工作是否繼續，手機恢復網路後再看狀態如何同步。這一輪測的是遠端觀看端中斷，不是執行主機停止。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果離線時送出的訊息顯示等待，回線後先確認是否已送達，不要立刻重複點送出。用新的輪次識別文字或查詢最後完成動作，避免同一任務執行兩遍。本課只寫假文字；涉及付款、通知或外部修改時更需要去重與確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記錄最後一個確定完成的檔案操作及仍不確定的訊息。恢復後先做唯讀查詢核對，再繼續下一步。對話畫面仍有舊內容，只表示先前紀錄可見，不是當前連線一定正常的證據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "中斷二：執行主機睡眠"
+        },
+        {
+          "type": "paragraph",
+          "text": "在沒有其他重要工作受影響的測試電腦上，保存資料後短暫進入睡眠。手機端可能仍能顯示對話，但本機程式不會因手機在線就繼續使用休眠的 CPU。喚醒電腦、恢復網路後，依當前 Remote Control 狀態觀察重連與待送訊息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件描述可在主機回線後重新連接，但實際結果還受到版本、網路與工作階段狀態影響。應記錄恢復時間與畫面，不保證每次在固定秒數內回復。若顯示工作階段已結束或被其他裝置接手，先讀原因再決定是否重新連接。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要為了完成課程讓正在部署或執行重要工作的主機睡眠。可以將本案例留到獨立測試時執行，清楚標示待測。沒有做過就不填通過，也不以關閉手機螢幕代替主機睡眠實驗。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "中斷三：本機程序退出"
+        },
+        {
+          "type": "paragraph",
+          "text": "正常結束這次 Claude 程序，再從手機查看狀態。程序退出和暫時斷網不同；恢復時先在電腦確認檔案、未提交差異及工作階段保存情況，再選擇 resume 或建立新階段。不要假定手機還看得到歷史就能繼續原程序。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "電腦的專案終端機：返回現場先核對",
+          "code": "git status --short\nnode -e \"const fs=require('node:fs');console.log(fs.existsSync('fixtures/device-note.txt')?fs.readFileSync('fixtures/device-note.txt','utf8'):'尚未產生檔案')\"\nclaude --resume\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果對話無法接續，使用 handoff.md 和實際檔案建立新的工作階段。新階段可以接手工作，但不應寫成原 session 完整恢復。兩者都能達成繼續工作的目的，證據與名稱仍需正確區分。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "對照雲端與 Dispatch 的恢復方式"
+        },
+        {
+          "type": "paragraph",
+          "text": "雲端任務要核對遠端環境、分支、提交及產出，再把需要的變更帶回本機；不能只在電腦切換資料夾就看見雲端尚未取回的檔案。Dispatch 則先找實際被派送的工作，再查看它的執行位置與結果，不把派送成功當成工作完成。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "中斷情境",
+            "先確認什麼",
+            "不應直接推定"
+          ],
+          "rows": [
+            [
+              "手機離線",
+              "電腦程序與訊息送達",
+              "任務必定已停止"
+            ],
+            [
+              "主機睡眠",
+              "喚醒後程序和網路",
+              "手機在線就能繼續本機運算"
+            ],
+            [
+              "程序退出",
+              "session、檔案與差異",
+              "歷史可見就是原程序仍在"
+            ],
+            [
+              "雲端轉本機",
+              "遠端提交與取回狀態",
+              "對話同步等於檔案同步"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "離線期間先保留可以對回的狀態"
+        },
+        {
+          "type": "paragraph",
+          "text": "手機失去連線時，記下最後可見的工作名稱與狀態，不連續重送相同要求。恢復後先查看電腦端是否仍在執行，再核對最後一個結果。若本機工作已完成，重送相同任務可能造成重複修改，因此接續前先讀取現況。"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試表同時記錄手機系統、電腦是否保持運作與網路切換方式。單次在同一 Wi-Fi 成功，不能推定休眠、行動網路切換或跨帳號都支援。本文提供測試步驟，真實裝置結果需另外填入。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成判準與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付選定入口的真實接續紀錄、三種中斷的實際或待測狀態、最後完成動作與恢復方式。每一列都能指出執行主機，不保存配對碼或私人憑證。停止練習時，在對應工作階段停用連接或結束程序，確認沒有留著不需要的本機工作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是請接手者只看 handoff.md 和檔案狀態，判斷是否應重送最後一個指示。若無法判斷，就補上操作識別與結果確認方式。對需要定期執行的工作，進一步閱讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-scheduled-workflow-reliability",
+              "text": "排程故障恢復"
+            },
+            {
+              "type": "text",
+              "text": "，不要讓手機連線狀態成為唯一的工作紀錄。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Create custom subagents",
+          "url": "https://code.claude.com/docs/en/sub-agents",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Orchestrate teams of Claude Code sessions",
+          "url": "https://code.claude.com/docs/en/agent-teams",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue local sessions from any device with Remote Control",
+          "url": "https://code.claude.com/docs/en/remote-control",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

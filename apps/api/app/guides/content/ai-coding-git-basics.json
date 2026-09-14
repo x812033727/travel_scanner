@@ -1,0 +1,445 @@
+{
+  "slug": "ai-coding-git-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+      "description": "讓 AI 代理改你的專案之前，先有一個回得去的檢查點。這篇依 Git 與 GitHub 官方文件，只教「還原得回來」用得到的那一小套：安裝與第一次設定、init 到 commit 的最小循環、用 git diff 看代理改了什麼、開分支再放手，以及 restore、reset、revert 三種還原分別會不會丟掉東西，附 .gitignore 與推上 GitHub 的步驟。",
+      "hero": {
+        "src": "/guides/ai-coding-git-basics/hero.jpg",
+        "alt": "插圖：一條主線在中途分出兩條支線，一條繞回主線合併，另一條走到底畫上叉號被丟掉",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "讓 AI 代理改程式最常出事的不是它寫錯，而是它寫錯了你回不去。解法不是先學整套 Git，而是先學會做檢查點：隨時能回到「還沒讓它動手之前」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇只挑「還原得回來」用得到的那一小套，依 Git 與 GitHub 官方文件。讀完你會裝好 Git、做出第一個提交、開分支再放手，也分得清 restore、reset、revert 哪一個會把沒存的修改丟掉。"
+        },
+        {
+          "type": "heading",
+          "text": "讓代理動手之前，先有一個回得去的點",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "人改程式一次改一處，出錯了還記得動過哪裡。代理不是這樣：一個回合它可能讀十幾個檔案、改其中五個，還動到你沒注意的設定，修改散在好幾個檔案裡，復原鍵幫不上忙。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提交（commit）是你自己蓋的存檔點，分支（branch）是一條可以整條丟掉的支線。把這兩件事放進流程，讓代理改程式就變成一個固定循環。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "開一條分支，主線先保持乾淨",
+            "動手之前先提交一個檢查點",
+            "把目標與完成條件講清楚，讓代理去改",
+            "用 git diff 把改過的每一行看過",
+            "跑專案自己的測試",
+            "過了就合併回主線，沒過就整條丟掉"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "link",
+          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-coding-git-basics/diagram-1.svg",
+          "alt": "流程圖：開分支、提交檢查點、讓代理改、看差異、跑測試、收尾六個步驟，最後分成合併回主線與整條丟掉兩條路",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右、再由右到左看六個步驟：1 開分支、2 做檢查點、3 讓代理改、4 看差異、5 跑測試、6 收尾；藍色那一格是代理在做的事，其他都是你在做。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "安裝 Git 與第一次設定",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS 用 Homebrew 或 Xcode 命令列工具，Debian 與 Ubuntu 用 apt，Windows 到 Git 官網下載頁抓安裝程式。裝完用 git --version 確認，查證當天官網列出的最新版本是 2.55.0。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "三大系統的安裝方式與版本確認",
+          "code": "# macOS：Homebrew，或改用 Xcode 命令列工具\nbrew install git\nxcode-select --install\n\n# Debian / Ubuntu（官網列的是 apt-get install git）\nsudo apt-get install git\n\n# Windows：到 Git 官網的 Windows 下載頁取得安裝程式\n\n# 裝好了沒\ngit --version"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著設定身分，每個提交都會記下作者是誰。--global 對這台電腦所有儲存庫生效，做一次就好，專案 .git 目錄裡那份設定比全域優先。順便把預設分支設成 main：官方文件說明 git init 的預設分支名稱仍是 master，Git 3.0 才換成 main。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "第一次設定：身分、預設分支與檢查",
+          "code": "git config --global user.name \"你的名字\"\ngit config --global user.email \"you@example.com\"\ngit config --global init.defaultBranch main\n\n# 看目前的設定，以及每一條是從哪個檔案來的\ngit config --list --show-origin"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜終端機、路徑與 Git 基礎",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-terminal-git-basics"
+        },
+        {
+          "type": "heading",
+          "text": "最小循環：init、status、add、commit",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "git init 會在專案資料夾建立一個空的儲存庫，也就是一個 .git 目錄，加 -b 可指定初始分支名稱。之後的日常只有四個動作：改檔案、git status 看狀態、git add 放進索引、git commit 收成提交。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "從空目錄到第一個提交",
+          "code": "cd my-project\ngit init -b main\n\ngit status            # 哪些改了、哪些已進暫存區、哪些還沒被追蹤\ngit add README.md     # 指定單一檔案\ngit add -A            # 這次的全部變更\ngit commit -m \"第一個提交\""
+        },
+        {
+          "type": "paragraph",
+          "text": "git add 的目的地叫索引（index），官方文件也稱它為暫存區（staging area），用來準備下一個提交要放什麼，commit 只收錄索引裡的東西。git commit -a 可省掉 add，但官方寫明它只自動暫存已修改與已刪除的檔案，新檔案不受影響——代理新增的檔案常常就這樣漏掉。"
+        },
+        {
+          "type": "heading",
+          "text": "看它改了什麼：git diff 與 git log",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "代理說「改好了」不等於改對了。git diff 不加參數看的是工作目錄相對於索引，也就是還沒 add 的部分；--staged 看索引相對於上一個提交，也就是現在 commit 會提交什麼；HEAD 是兩邊加起來。git log 則是看歷史，官方文件說明 --graph 會在左邊畫出分支與合併的文字圖。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "四種差異與兩種歷史",
+          "code": "git diff              # 還沒暫存的修改\ngit diff --staged     # 已暫存、下一個提交會帶走的修改\ngit diff HEAD         # 相對於上一個提交的全部改動\ngit diff --stat       # 只看哪些檔案各動了幾行\n\ngit log --oneline --graph    # 一行一個提交，左邊附分支圖\ngit log -p README.md         # 這個檔案每次改了什麼"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜Git、差異審查與 PR",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-git-review-pr"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+        },
+        {
+          "type": "heading",
+          "text": "開一條分支，改壞了就整條丟掉",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "git switch -c 會建立一條新分支並切過去，官方文件說它等同於先 git branch 再 git switch。代理在這條分支上做什麼都影響不到主線，要丟也是丟一整條。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "開分支、合併與刪除分支",
+          "code": "git switch -c ai/login        # 開一條新分支並切過去\n# ……讓代理改，看 diff，跑測試……\n\ngit switch main               # 回主線\ngit merge ai/login            # 滿意：合併進來\ngit branch -d ai/login        # 已經合併過，安全刪除\n\ngit branch -D ai/login        # 不要了：強制刪除，沒合併也刪"
+        },
+        {
+          "type": "paragraph",
+          "text": "開分支後主線沒有新提交的話，合併只是把主線的指標移過去，官方稱為快轉合併（fast-forward）。衝突時可用 git merge --abort 回到合併前，但官方提醒：開始時若還有未提交的修改，不一定救得回來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "刪分支有兩級：git branch -d 要求已完全合併才肯刪，git branch -D 是 --delete --force 的簡寫，沒合併也照刪。試錯分支確定不要才用 -D。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜Git Worktree 平行工作",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-worktrees-parallel"
+        },
+        {
+          "type": "heading",
+          "text": "三種「還原」差在哪裡",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "git restore 換的是檔案內容：預設用索引的版本覆蓋工作目錄，把還沒 add 的修改丟掉；加 --staged 則用 HEAD 覆蓋索引，把已 add 的退出暫存區。",
+            "git reset 動的是分支指向哪個提交：--soft 只移動 HEAD，預設的 --mixed 連索引一起更新、工作目錄保留，--hard 則連工作目錄一起覆蓋。",
+            "git revert 不改寫歷史，而是照舊提交做一個反向的新提交；官方原話是把那些提交帶來的修改反轉過來並記錄成新的提交，它要求工作目錄是乾淨的。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "三種還原的最短寫法",
+          "code": "git restore src/app.js          # 丟掉這個檔案還沒暫存的修改\ngit restore --staged src/app.js # 退出暫存區，內容留著\n\ngit reset --soft HEAD~1         # 取消上一個提交，修改全留著\ngit reset HEAD~1                # 同上，但暫存區也清掉（預設 --mixed）\ngit reset --hard HEAD~1         # 連工作目錄一起回去，修改直接消失\n\ngit revert 1a2b3c4              # 新增一個反向提交，歷史留著"
+        },
+        {
+          "type": "paragraph",
+          "text": "判準很簡單：還沒提交用 restore，提交了但還沒推出去用 reset，已經推上遠端別人可能拉走了，就只能用 revert。這個分工在官方文件的 revert 說明裡也寫得很清楚。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "用哪個指令",
+            "會不會丟掉東西"
+          ],
+          "rows": [
+            [
+              "改壞一個檔案，還沒 add",
+              "git restore 檔名",
+              "會。修改被索引的版本蓋掉"
+            ],
+            [
+              "已經 add 了，想退出暫存",
+              "git restore --staged 檔名",
+              "不會。索引回到 HEAD，內容留著"
+            ],
+            [
+              "上一個提交不對，還沒推",
+              "git reset --soft HEAD~1",
+              "不會。只有 HEAD 往回一格"
+            ],
+            [
+              "把幾個提交退回未暫存",
+              "git reset HEAD~2",
+              "修改不丟，但暫存區會清空"
+            ],
+            [
+              "工作目錄整個回到某提交",
+              "git reset --hard 編號",
+              "會。未提交的修改被覆蓋"
+            ],
+            [
+              "要撤銷的提交已推上遠端",
+              "git revert 編號",
+              "不會。新增反向提交，歷史留著"
+            ],
+            [
+              "這條試錯分支不要了",
+              "git branch -D 分支名",
+              "會。沒合併的提交失去入口"
+            ]
+          ],
+          "caption": "三種還原的選法，依 Git 官方文件整理，2026 年 9 月查證。只有 revert 不改寫既有的提交。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "--hard 沒有回收桶",
+          "text": "git reset --hard 會把所有檔案與目錄覆蓋成指定提交的版本，官方文件寫明甚至可能覆蓋到未追蹤的檔案。代理跑了半小時、你還沒 commit 的修改，打完這一行就找不回來，用之前先 git status 看一次。已經推給別人的提交更不要用 reset 改寫，官方範例直接寫「已經給了別人就不要這樣做」，那種情況改用 git revert。"
+        },
+        {
+          "type": "heading",
+          "text": ".gitignore：密鑰與相依目錄不該進儲存庫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": ".env 與各種金鑰檔、node_modules 這類可重裝的相依目錄、建置產物，都不該進儲存庫。做法是在專案根目錄放一個 .gitignore，官方定義是：指定「刻意不追蹤、Git 應該忽略」的檔案。代理很常 git add -A，這份清單要先寫好。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": ".gitignore 的起手式（放在專案根目錄）",
+          "code": "# 密鑰與環境變數\n.env\n.env.*\n*.pem\n*.key\n\n# 可以重新產生的東西\nnode_modules/\ndist/\nbuild/\n__pycache__/\n\n# 系統與編輯器\n.DS_Store\n.idea/"
+        },
+        {
+          "type": "paragraph",
+          "text": "最常踩的坑是：.gitignore 只管還沒被追蹤的檔案，官方明講「已經被 Git 追蹤的檔案不受影響」。已經進過提交的檔案，要先用 git rm --cached 從索引移除，再寫進 .gitignore。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "檔案已經被追蹤了才想忽略",
+          "code": "git rm --cached .env       # 從索引移除，檔案留在硬碟上\necho \".env\" >> .gitignore\ngit commit -m \"stop tracking .env\""
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "密鑰進了儲存庫，第一件事是換掉它",
+          "text": "GitHub 官方文件講得很明白：敏感資料如果是密碼、權杖、憑證這類機密，第一步是撤銷或輪替它。把檔案刪掉再提交一次沒有用，舊的提交還在歷史裡；就算照官方指引用 git filter-repo（需要 2.47 以上、支援 sensitive-data-removal 參數的版本）改寫歷史再強制推上去，官方也說明那個提交只要存在於任何 fork 就仍可被存取。順序永遠是：先作廢金鑰再處理歷史。"
+        },
+        {
+          "type": "heading",
+          "text": "推到 GitHub：remote、push 與憑證",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先在 GitHub 建一個空的儲存庫，再把它設成本機的遠端。GitHub 官方文件提醒：建立時不要勾選 README、授權條款或 .gitignore，這些等推上去之後再加。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "把本機儲存庫接上 GitHub",
+          "code": "git remote add origin 你的儲存庫網址\ngit remote -v                  # 確認網址對不對\ngit push -u origin main        # 第一次推，順便記住上游分支"
+        },
+        {
+          "type": "paragraph",
+          "text": "網址有 HTTPS 與 SSH 兩種，GitHub 官方文件沒有偏好，只說明差別：HTTPS 網址所有儲存庫都有，在防火牆或 Proxy 後面也能用，但要搭配憑證輔助工具；SSH 要先產生金鑰加到帳號。另外 GitHub 已移除 Git 的密碼驗證，走 HTTPS 時填的是個人存取權杖。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "產生 GitHub 用的 SSH 金鑰",
+          "code": "# GitHub 建議的演算法\nssh-keygen -t ed25519 -C \"you@example.com\"\n\n# 舊系統不支援 ed25519 時的替代方案\nssh-keygen -t rsa -b 4096 -C \"you@example.com\""
+        },
+        {
+          "type": "heading",
+          "text": "代理自己的 checkpoint 不能取代 Git",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "多數程式代理都有自己的還原功能。以 Claude Code 為例，官方文件說明它會在你送出每一個開啟新回合的提示詞之前自動建立檢查點，用 /rewind 叫出選單，可選擇只還原程式碼、只還原對話或兩者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "但範圍有明確邊界，官方文件都列出來了：bash 指令改掉的檔案不會被追蹤；子代理做的修改通常不在這個 session 的檢查點裡，官方直接寫那種情況要用 Git 還原；在 Claude Code 之外手動改的也不算。一個 session 只留最近 100 個檢查點的快照，預設在最後一次存檔約 30 天後清掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件那一節的標題就叫「不是版本控制的替代品」：檢查點是為了 session 層級的快速復原，長期歷史與協作還是要用 Git。分界線很好記——那個狀態你想留到明天，就 commit。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜Checkpoint 與 /rewind",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-checkpoints-rewind"
+        },
+        {
+          "type": "link",
+          "text": "Codex CLI 入門：在終端機裡讓 OpenAI 幫你改程式",
+          "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Git 官方文件 git config 首次設定（Pro Git：user.name、user.email 與設定層級）",
+          "url": "https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方網站安裝頁（各系統安裝方式與目前版本）",
+          "url": "https://git-scm.com/install/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 git-init（建立 .git 目錄與 --initial-branch 預設值）",
+          "url": "https://git-scm.com/docs/git-init",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 git-status（顯示哪些會提交、哪些要先 add）",
+          "url": "https://git-scm.com/docs/git-status",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 git-add（索引即暫存區的定義）",
+          "url": "https://git-scm.com/docs/git-add",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 git-commit（-m 與 -a 的行為與限制）",
+          "url": "https://git-scm.com/docs/git-commit",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 git-diff（無參數、--staged、HEAD 與 --stat 各看什麼）",
+          "url": "https://git-scm.com/docs/git-diff",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 git-log（--oneline、--graph 與 -p）",
+          "url": "https://git-scm.com/docs/git-log",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 git-switch（-c 建立並切換分支）",
+          "url": "https://git-scm.com/docs/git-switch",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 git-branch（-d 與 -D 的差別）",
+          "url": "https://git-scm.com/docs/git-branch",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 git-merge（快轉合併與 --abort）",
+          "url": "https://git-scm.com/docs/git-merge",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 git-restore（預設從索引還原工作目錄、--staged）",
+          "url": "https://git-scm.com/docs/git-restore",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 git-reset（--soft、--mixed、--hard 各動到什麼）",
+          "url": "https://git-scm.com/docs/git-reset",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 git-revert（反向提交，與 reset、restore 的分工）",
+          "url": "https://git-scm.com/docs/git-revert",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Git 官方文件 gitignore（定義、優先序與已追蹤檔案不受影響）",
+          "url": "https://git-scm.com/docs/gitignore",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub 官方文件：把本機既有的程式碼加到 GitHub（remote add 與 push -u）",
+          "url": "https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub 官方文件：關於遠端儲存庫（HTTPS 與 SSH 網址、密碼驗證已移除）",
+          "url": "https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub 官方文件：產生新的 SSH 金鑰（建議的演算法）",
+          "url": "https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub 官方文件：從儲存庫移除敏感資料（第一步是撤銷或輪替機密）",
+          "url": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code 官方文件：Checkpointing 與 /rewind（範圍、限制與不是版本控制替代品）",
+          "url": "https://code.claude.com/docs/en/checkpointing",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

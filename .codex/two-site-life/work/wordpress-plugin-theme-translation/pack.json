@@ -1,0 +1,217 @@
+{
+  "slug": "wordpress-plugin-theme-translation",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 主題外掛中文化：Loco Translate 與 Poedit 工作流",
+      "description": "WordPress 外掛或佈景主題仍出現英文時，先確認文字來自程式介面、內容設定還是外部服務。本篇介紹 Loco Translate 與 Poedit 的翻譯流程、語系檔用途、避免更新覆寫的保存方式，以及台灣用語與變數的校對方法，協助站長完成可維護的繁體中文介面，而不是只改掉眼前一個按鈕。",
+      "hero": {
+        "src": "/guides/wordpress-plugin-theme-translation/hero.jpg",
+        "alt": "原創插畫以文件、資料夾與螢幕呈現語系翻譯從編輯到載入網站的流程。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "網站已經設定繁體中文，預約外掛卻還有英文按鈕，付款失敗的提示也看不懂。遇到這種情況，先記下文字出現的位置與操作條件，再決定要修改設定還是語系檔。相同的英文可能分別由佈景、外掛與外部付款頁產生，選錯對象就會一直找不到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇以小型工作室修正預約介面為例，處理按鈕、欄位及狀態訊息的中文化。你不需要先翻完整個外掛，而是先把使用者必經的流程做對，再建立更新後能持續檢查的翻譯清單。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先找到文字真正的來源"
+        },
+        {
+          "type": "paragraph",
+          "text": "先到外掛設定或頁面編輯器搜尋該文字。自訂表單標籤、文章內容與導覽名稱通常是網站自己儲存的資料，應回原設定修改；Loco Translate 主要處理程式提供的可翻譯字串，無法把所有資料庫內容自動列出。外部嵌入視窗則要查看外部服務的語言設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把未翻譯文字、頁面網址、登入身分、觸發步驟及所屬外掛寫在表格中。例如「送出後才出現的錯誤」要真的送出不完整資料才看得到。WordPress 網站語言與個人後台語言也要分別確認，避免只改了自己的管理介面就以為訪客端已經完成。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "用未登入視窗走一次預約流程，記錄英文文字及出現條件。",
+            "先查可編輯的內容設定，再查佈景或外掛的語系檔。",
+            "在測試站挑一個容易辨識的按鈕驗證翻譯是否載入。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "選擇後台翻譯或桌面編輯"
+        },
+        {
+          "type": "paragraph",
+          "text": "Loco Translate 可以在 WordPress 後台選擇外掛或佈景，搜尋原文字串並填入譯文。它適合站長維護少量自訂用語，但需要理解檔案保存位置與載入依賴。不要因為介面就在後台，就把每位編輯者都升級成可修改外掛檔案的管理員。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Poedit 可用桌面介面編輯翻譯檔。官方目前把專用 WordPress 工作流程列為 Poedit Pro 功能，可讀取本機外掛資料夾，或透過伺服器連線操作。若採伺服器模式，儲存時會上傳翻譯，因此第一次應連受控測試站，先確認路徑及帳號權限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "選工具時要考量誰會接手。經常由站長修正文案，可採後台流程；需要譯者離線交付檔案，則可安排桌面編輯與版本交接。兩者都應保留原文、譯文及檔案備份，避免改完後只有一個人知道資料在哪裡。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "使用 Loco Translate 建立自訂檔案"
+        },
+        {
+          "type": "paragraph",
+          "text": "從 Loco Translate 的 Plugins 或 Themes 選擇對象，確認語言為繁體中文及正確 locale，例如 zh_TW。已有系統翻譯時，可依官方自訂翻譯流程複製原文字串，再建立同語言的 Custom 檔案，填入需要覆蓋的少量譯文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存位置很重要。Author 位於外掛或佈景安裝目錄，更新可能覆寫；System 可能被 WordPress 語言更新覆寫；官方建議的 Custom 位於 wp-content/languages/loco/。自訂位置的優先載入依賴 Loco Translate 啟用，交接紀錄應清楚標示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "搜尋完整原文，閱讀相關上下文，再填入台灣讀者看得懂的文字。儲存後重新開啟對應畫面；若有快取，依網站設定清除相關項目。不要直接編輯 System 檔後期待永久保留，也不要為了寫入檔案就把整個網站開放所有人寫入。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "理解檔案，再用 Poedit 交付"
+        },
+        {
+          "type": "paragraph",
+          "text": "POT 是可翻譯原文的範本，PO 是可編輯的語言翻譯，MO 是編譯後供程式使用的格式。只把 POT 改成中文並上傳，不等於完成載入。現行 Poedit 的 WordPress 工作流程也會依內容產生需要的其他格式，例如 PHP 翻譯檔與 JavaScript 使用的 JSON。"
+        },
+        {
+          "type": "paragraph",
+          "text": "離線作業時，先取得與網站版本一致的外掛或佈景資料夾，建立目標語言翻譯，或開啟既有 PO。完成後儲存並保留工具產生的相關檔案；官方提醒手動複製時應維持正確名稱與位置。不要自行省略看起來重複的檔案，否則部分後台區塊可能仍顯示原文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付清單至少記錄外掛名稱與版本、語言、來源範本日期、產出檔名、安裝位置及是否需要特定載入方式。先請維護者在測試站安裝，確認成功後再安排正式更新，避免譯者直接覆寫正在服務的檔案。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "校對意思，也保留程式需要的符號"
+        },
+        {
+          "type": "paragraph",
+          "text": "遇到 %s、%d 或有編號的佔位符，先閱讀譯者註解，確認它代表姓名、數量還是其他動態資料。保留必要符號與對應關係，不要把它改成固定的測試人名。複數形式及不同上下文也要逐項確認，同樣的英文不一定在每個畫面都適合同一譯法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用語應配合操作結果。例如取消訂閱與取消預約不能只因英文相似就互換；按鈕若只是儲存草稿，也不應翻成發布。建立一張常用詞表，固定帳號、密碼、通知及預約等詞彙，並由熟悉業務的人確認錯誤訊息是否提供可行的下一步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手機畫面要特別查看長按鈕、換行與錯誤提示。測試短姓名、較長姓名、不同數量及空白欄位，觀察動態資料插入後是否自然。機器翻譯可協助草擬，但不能代替實際操作下的語意與版面檢查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "更新後重新同步與抽查"
+        },
+        {
+          "type": "paragraph",
+          "text": "外掛更新可能新增或修改原文，即使自訂檔案沒有被刪除，舊譯文也可能不再對應。Loco 官方要求手動檢查並使用 Sync 同步，再確認新增或淘汰字串後儲存。Poedit 的本機流程可重新從更新後的原始碼整理字串，處理方式依所用工作流程而定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把翻譯驗收放進網站維護紀錄：先備份、更新測試站、同步原文、校對變更，再檢查必經操作。若有字串始終找不到，提供原文、畫面與外掛版本給作者，確認是否符合 WordPress 翻譯標準；不要以大量搜尋取代直接改動程式碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後從未登入訪客、一般會員與管理者三種身分抽查相關畫面。確認成功與失敗訊息都能理解後，保留更新前後差異與檔案備份。下一次換工具或交接時，就能知道哪些用語是自訂、哪些來自官方語言套件。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-plugin-theme-translation/diagram-1.svg",
+          "alt": "四步圖解說明定位文字來源、保存自訂語系檔、校對變數與台灣用語、更新後重新同步驗證。",
+          "width": 1600,
+          "height": 900,
+          "caption": "以實際操作結果驗收翻譯，並保留後續維護方法。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "作法",
+            "適合需求",
+            "需要注意"
+          ],
+          "rows": [
+            [
+              "內容設定直接修改",
+              "表單標籤、頁面文字",
+              "回原功能維護，不一定是語系字串"
+            ],
+            [
+              "Loco Custom 翻譯",
+              "後台修正少量介面文字",
+              "保留外掛載入依賴並定期同步"
+            ],
+            [
+              "Poedit 檔案交付",
+              "離線翻譯與版本管理",
+              "核對方案、檔名、格式及安裝位置"
+            ]
+          ],
+          "caption": "依文字來源選擇流程，先完成代表性操作再擴充。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "譯文存在，不代表畫面一定會使用",
+          "text": "先確認語言、文字所屬外掛、檔案位置與載入方式，再檢查快取及更新後原文。保留可回復的檔案副本，讓每次改字都能被追蹤。"
+        },
+        {
+          "type": "link",
+          "text": "規劃多語系網站的內容與網址",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-multilingual-site"
+        },
+        {
+          "type": "link",
+          "text": "建立更新前的 WordPress 備份",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Loco：新增語言與保存位置",
+          "url": "https://localise.biz/wordpress/plugin/manual/msginit",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Loco：自訂翻譯與更新同步",
+          "url": "https://localise.biz/wordpress/plugin/custom-translations",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Poedit：WordPress 翻譯工作流程",
+          "url": "https://poedit.com/docs/get-started/wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：本地化與語系檔",
+          "url": "https://developer.wordpress.org/apis/internationalization/localization/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：字串、變數與上下文",
+          "url": "https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

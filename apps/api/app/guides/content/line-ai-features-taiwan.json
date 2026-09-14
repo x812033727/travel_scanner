@@ -1,0 +1,421 @@
+{
+  "slug": "line-ai-features-taiwan",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "daily"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "LINE 裡的 AI：聊天、翻譯與台灣可用功能",
+      "description": "台灣版 LINE 沒有內建的 AI 助理入口：支援中心的 AI 分類只有日文版，Agent i、AI Friends 與吃到飽方案查不到繁體中文說明。這篇整理官網當天列出的項目，包含社群聊天室的訊息摘要與翻譯自動程式、貼圖的 AI 生成標示、店家端的 AI 聊天機器人（β）與廣告智慧助手，以及 LY Corporation 隱私權政策寫的資料存放地、機器學習用途與關閉路徑。",
+      "hero": {
+        "src": "/guides/line-ai-features-taiwan/hero.jpg",
+        "alt": "插圖：一個對話框連到三個區塊，分別代表聊天室、店家後台與設定畫面，右側有一個開關。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "台灣使用者在 LINE 裡能用到的 AI，比多數人想的少。把官方網站當天的頁面翻過一遍，結論是：台灣版沒有一個叫「AI 助理」的內建入口，日本版有的 Agent i、AI Friends 與吃到飽方案只有日文說明頁。台灣查得到繁體中文說明的，是社群的訊息摘要與翻譯自動程式，以及店家付費後才有的 AI 聊天機器人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把每個項目拆成名稱、入口、免費或付費、台灣可用性，說清楚在哪個畫面點得到；也整理隱私權政策寫的資料存放地、哪些內容會拿去做機器學習，以及哪一個開關可以收回同意。官網沒寫台灣可用的，一律寫「以官網為準」。"
+        },
+        {
+          "type": "heading",
+          "text": "先分清楚三種「LINE 裡的 AI」",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "談 LINE 的 AI 之前要先分層，否則很容易把別人做的東西算到 LINE 頭上。第一層是 LINE 內建、打開軟體就在畫面上的功能；第二層是給店家的後台功能，一般使用者只會在跟店家的聊天室裡遇到；第三層是開發者用 Messaging API 串上去的第三方機器人，名字裡有 AI，其實跟 LY Corporation 無關。這篇只寫前兩層。"
+        },
+        {
+          "type": "heading",
+          "text": "台灣確定有的：社群的訊息摘要與翻譯",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE 社群（OpenChat）的訊息摘要，是台灣官方部落格明確寫出來的生成式 AI 功能，2023 年 11 月 6 日公告上線。官方說明寫得直白：訊息累積到足夠量時，AI 會在固定時間自動彙整摘要，不需要主動操作。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "入口：社群聊天室右下角的「訊息摘要」按鈕；免費，所有成員都看得到",
+            "範圍：只限主社群聊天室，不支援子社群聊天室",
+            "版本：僅支援 LINE 應用程式 13.16.0 及更高版本，公告當時電腦版不支援",
+            "技術：公告寫「我們使用 OpenAI 的生成式 AI 模型」，訊息不會保存在 OpenAI"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "同一篇公告下面有一段更新紀錄：2024 年 3 月 26 日的更新寫著，自 3 月 21 日起逐步擴大範圍並更新政策，功能不會因設定調整而遭到移除，因此刪掉了問答裡「是否能停用」那一段。它沒有單獨的開關。"
+        },
+        {
+          "type": "paragraph",
+          "text": "翻譯在同一個選單裡。支援中心繁體中文版寫得最完整的翻譯路徑，是社群的自動程式（Bot）：官方把它分成翻譯、垃圾訊息過濾器、自動回應三項，翻譯的說明是「透過 LINE 翻譯 Bot 自動翻譯聊天訊息的功能」。這條路只在社群裡，需要管理權限。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在註冊 LINE 帳號的主要裝置上開啟 LINE 應用程式",
+            "點「聊天」，再點加號裡的「我的社群」，開啟要設定的社群",
+            "選「聊天室」，點畫面上方的選單，再點「自動程式」",
+            "點「翻譯」右邊的關閉鍵把功能打開",
+            "選好翻譯 Bot 後點「加入」；勾選「所有成員」就會套用給全體"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "支援中心沒有列出可選的 Bot 清單與語言對照，實際有哪幾組要在那個畫面上看。要翻整頁網頁或整份文件時，另外一套瀏覽器工具比較合適。"
+        },
+        {
+          "type": "link",
+          "text": "沉浸式翻譯怎麼設定：網頁、文件與內容校對",
+          "url": "https://mokaair.com/zh-TW/life/immersive-translate-guide"
+        },
+        {
+          "type": "heading",
+          "text": "貼圖與圖片：LINE 做的是標示，不是生成",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不少人以為 LINE 會跟其他通訊軟體一樣提供 AI 貼圖或 AI 頭像生成。翻支援中心繁體中文版，貼圖相關的 AI 條目只有一條，方向還相反：〈什麼是 AI 生成商品？〉教的是怎麼辨識別人用 AI 做的貼圖。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "定義：官方寫「AI生成商品是使用AI製作而成或在製作過程中使用了AI所生成的項目」",
+            "對象商品：貼圖、表情貼、主題；判定之後，說明頁面等處會顯示對應的標示",
+            "認定範圍：以 AI 生成的方式繪製，或使用 AI 作為輔助工具"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "也就是說，台灣版 LINE 官網當天沒有列出任何提供給一般使用者的 AI 貼圖或 AI 圖片生成入口。日本版有圖片生成，台灣這邊以官網為準。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/line-ai-features-taiwan/diagram-1.svg",
+          "alt": "圖解：把 LINE 內的 AI 功能依聊天室、官方帳號、設定三個位置分區排列，並標出台灣與日本的可用差別。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看：一般使用者在聊天室碰得到的、店家在後台買得到的、以及設定裡唯一能自己動手的那個開關。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Agent i 與 AI Friends：查得到日文，查不到中文",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "支援中心的側邊分類，是判斷功能開放到哪裡最快的方法。日文版的「讓 LINE 更方便使用」底下有一個獨立的 AI 分類，裡面六篇文章；繁體中文版同一個位置的「LINE的便利功能」沒有這個分類，那六篇的內容編號在繁體中文與英文都落到首頁。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "自己驗一次：同一個支援中心分類換語系",
+          "code": "支援中心分類網址的語系參數\n  .../categoryId/200000602/3/pc?lang=ja        → 標題「AI」，底下六篇文章\n  .../categoryId/200000602/3/pc?lang=zh-Hant   → 標題「首頁」，被導回支援中心首頁\n\n判讀方式\n  標題是分類名稱  → 這個語系有這個分類\n  標題變成「首頁」 → 這個語系沒有，別當成台灣可用"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Agent i：官方寫它是可以像和朋友聊天一樣往返訊息、蒐集資訊的服務，入口在主頁的 Agent i 圖示；圖片編輯免費每月 10 次，日本付費會員每月 20 次",
+            "聊天室的 Agent i：分析對話後給回覆建議、語氣轉換與錯字修正，從聊天室下方的加號選單打開；免費每天 3 次，日本付費會員每天 10 次",
+            "AI Friends：和 AI 生成的角色對話，入口在聊天畫面上方；每則訊息先扣免費點數，用完改扣 LINE 代幣",
+            "LINE AI 服務吃到飽方案：訂閱制，加入後上面幾項無限使用，入口在主頁的設定裡"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE 台灣官方部落格 2026 年 1 月到 9 月之間沒有一篇 AI 功能的公告；台灣版 LINE Premium 的服務指南（2026 年 3 月 23 日公告）也沒有提到 AI。這是「日本有、台灣官網沒寫」，不是「台灣禁止使用」，之後會不會開放以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
+          "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+        },
+        {
+          "type": "link",
+          "text": "Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援",
+          "url": "https://mokaair.com/zh-TW/life/apple-intelligence-guide"
+        },
+        {
+          "type": "heading",
+          "text": "店家端：AI 聊天機器人（β）與廣告智慧助手",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣的店家端有一個確實上線、有繁體中文說明的 AI 功能：LINE 官方帳號的「AI 聊天機器人（β）」。支援中心寫，使用者在聊天室內提問時，它會從設定完成的常見問答內自動選最適切的內容回覆，也能透過 PDF 或圖片自動產生常見問答。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "方案：「聊天進階方案」的專屬功能，官方頁面寫訂閱制 NT$100",
+            "開啟路徑：管理後台點帳號名稱，「設定」、「回應設定」，在「回應方式」選含「AI 聊天機器人（β）」的選項",
+            "先試再買：「常見問答回應測試」在主頁的「自動回應」底下，官方寫明不須購買方案也能操作",
+            "版本狀態：官方標示為測試版本，有每月回覆上限，建議好友數低於 25,000 的商家使用",
+            "資料用途：支援中心直接寫「不會，上傳的資訊不會使用於AI學習」"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "業種有限制。官方列出醫療與社會福利、金融、宗教、政治與行政機關、法律這幾類，理由是可能觸及使用者的機敏資訊；即使加購了方案，仍可能經該公司判斷而無法使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "廣告端另外有一組。LINE Biz-Solutions 台灣站寫，成效型廣告的三個廣告智慧助手在 2026 年 3 月 9 日正式推出，分別負責自動建立廣告活動、生成圖文素材與一鍵生成報表。"
+        },
+        {
+          "type": "link",
+          "text": "LINE 廣告適合什麼需求：帳號、版位與轉換規劃",
+          "url": "https://mokaair.com/zh-TW/life/line-ads-basics"
+        },
+        {
+          "type": "paragraph",
+          "text": "這些後台功能跟自己寫程式做機器人是兩件事：AI 聊天機器人（β）在後台設定，回覆來源是你自己建的常見問答；Messaging API 是給開發者的介面，LINE Platform 把事件送到你的伺服器，要回什麼由你的程式決定。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 幫你做 LINE 機器人：從零到上線",
+          "url": "https://mokaair.com/zh-TW/life/ai-build-line-bot-tutorial"
+        },
+        {
+          "type": "link",
+          "text": "社群聊天機器人：Manychat、Chatfuel 與真人接手流程",
+          "url": "https://mokaair.com/zh-TW/life/social-chatbot-workflow"
+        },
+        {
+          "type": "table",
+          "header": [
+            "功能",
+            "怎麼開",
+            "台灣可用性"
+          ],
+          "rows": [
+            [
+              "社群訊息摘要",
+              "社群聊天室右下角的「訊息摘要」按鈕",
+              "官方部落格公告；需 13.16.0 以上版本，沒有單獨的關閉開關"
+            ],
+            [
+              "社群翻譯自動程式",
+              "社群聊天室上方選單，自動程式，翻譯，選 Bot 後加入",
+              "支援中心繁體中文版有說明，需要管理權限"
+            ],
+            [
+              "AI 生成商品標示",
+              "貼圖、表情貼、主題的說明頁面上自動顯示",
+              "支援中心繁體中文版有說明；是辨識標示，不是生成工具"
+            ],
+            [
+              "AI 聊天機器人（β）",
+              "官方帳號後台的設定，回應設定，回應方式",
+              "需聊天進階方案，訂閱制 NT$100；部分業種不適用"
+            ],
+            [
+              "廣告智慧助手",
+              "廣告管理後台的「建立 AI 廣告活動」與「AI Report」",
+              "tw.linebiz.com 寫 2026 年 3 月 9 日正式推出"
+            ],
+            [
+              "Agent i、聊天室的 Agent i",
+              "日文版：主頁的 Agent i 圖示、聊天室的加號選單",
+              "支援中心只有日文版，繁體中文查不到；以官網為準"
+            ],
+            [
+              "AI Friends",
+              "日文版：聊天畫面上方的 AI Friends 圖示",
+              "支援中心只有日文版，繁體中文查不到；以官網為準"
+            ],
+            [
+              "LINE AI 服務吃到飽方案",
+              "日文版：主頁的設定裡的 Agent i",
+              "支援中心只有日文版，繁體中文查不到；以官網為準"
+            ]
+          ],
+          "caption": "LINE 內 AI 功能與台灣可用性，2026 年 9 月查證於 LINE 官方網站、支援中心與 tw.linebiz.com。"
+        },
+        {
+          "type": "heading",
+          "text": "資料流向：政策寫了什麼，哪一格可以關",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LY Corporation 隱私權政策繁體中文版的最後更新日期是 2026 年 7 月 31 日。政策寫該公司於日本、歐洲經濟區、其個人資料保護適足性經歐盟執委會認可的國家或地區，或跨境隱私規則體系會員國設有資料中心據點；可以存取這些資料的人，可能位於法規與日本不同的第三國。分包移轉的國家裡也有台灣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "跟 AI 最直接相關的一段，在「關於台端資訊的使用」這份台灣適用的說明裡：「我們計畫將用戶提供的資訊作為機器學習與深度學習的學習資料，以改善本公司各種服務的功能及品質。」"
+        },
+        {
+          "type": "list",
+          "items": [
+            "使用者之間的聊天：只使用格式資訊與用到的貼圖、表情貼，文字、照片、影片等內容不會被使用",
+            "與官方帳號的對話：所有通訊往來，包括對話內容和格式，都可能被使用",
+            "例外：經判定可能含機敏資訊的官方帳號不會被使用，例子有政府機關、政黨、金融機構、醫院與宗教團體",
+            "免費通話與 LINE VOOM：通話內容不會被取得；公開與半公開的貼文會連內容一起使用"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "怎麼關？隱私權政策自己把設定路徑列在參考資料裡，並標明每一條適用哪些國家。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "隱私權政策列出的台灣適用設定路徑",
+          "code": "設定 > 隱私設定 > 提供使用資料 > 聊天室資訊\n    為改善服務品質而蒐集與使用額外資訊；適用日本、台灣、泰國、印尼\n\n設定 > 隱私設定 > 提供使用資料 > 允許LINE取得位置資訊\n    利用位置資訊提供優化資訊與服務；適用日本、台灣、泰國\n\n設定 > 隱私設定 > 廣告相關設定\n    服務優化；適用日本、台灣、泰國"
+        },
+        {
+          "type": "paragraph",
+          "text": "政策寫明這份同意是選擇性的：「您可自由選擇是否同意本公司使用您的資訊來完善服務，也可以隨時在 LINE 應用程式中透過隱私權設定變更您的同意。」"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "兩個最容易搞錯的地方",
+          "text": "第一，社群的訊息摘要沒有單獨的開關。官方部落格 2024 年 3 月的更新紀錄寫明，功能不會因設定調整而遭到移除，並因此刪掉了「是否能停用」的問答；不想被整理的內容就別貼進社群的主聊天室。第二，「提供使用資料」裡的「聊天室資訊」關掉的是拿你的資訊去改善服務，不是關掉某一個 AI 功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不管是社群的摘要、店家的自動回覆，還是第三方機器人，產出的都是模型的猜測。官方公告自己就寫了訊息摘要的準確性可能不是百分之百，店家端的頁面也註明不保證準確性與適當性。"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        }
+      ],
+      "sources": [
+        {
+          "title": "LINE支援中心：什麼是自動程式（Bot）？（社群的翻譯、垃圾訊息過濾器與自動回應）",
+          "url": "https://help.line.me/line/smartphone/sp?contentId=20020103&lang=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE支援中心：什麼是AI生成商品？（貼圖、表情貼、主題的 AI 生成標示）",
+          "url": "https://help.line.me/line/smartphone/sp?contentId=200001248&lang=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE支援中心：LINE Labs的基本說明（繁體中文版列出的實驗功能清單）",
+          "url": "https://help.line.me/line/smartphone/sp?contentId=20008668&lang=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINEヘルプセンター：AI（日文版支援中心的 AI 分類與六篇文章）",
+          "url": "https://help.line.me/line/smartphone/categoryId/200000602/3/pc?lang=ja",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINEヘルプセンター：Agent iとは？（入口與免費、付費會員的次數）",
+          "url": "https://help.line.me/line/smartphone/sp?contentId=200001144&lang=ja",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINEヘルプセンター：トークルームのAgent iとは？（聊天室內的建議功能與次數）",
+          "url": "https://help.line.me/line/smartphone/sp?contentId=200001143&lang=ja",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINEヘルプセンター：AI Friendsとは？（角色對話與點數、代幣）",
+          "url": "https://help.line.me/line/smartphone/sp?contentId=200001408&lang=ja",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINEヘルプセンター：LINE AI サービス使い放題プランとは？（訂閱入口與付款方式）",
+          "url": "https://help.line.me/line/smartphone/sp?contentId=200001625&lang=ja",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE台灣 官方BLOG：訊息摘要功能上線！用 AI 總結社群聊天室訊息！",
+          "url": "https://line-tw-official.weblog.to/archives/25515573.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE台灣 官方BLOG：2026 年 9 月文章列表（確認當年度沒有 AI 功能公告）",
+          "url": "https://line-tw-official.weblog.to/archives/2026-09.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TW Official Account支援中心：AI 聊天機器人（β）（啟用路徑、並用規則與 AI 學習問答）",
+          "url": "https://help2.line.me/official_account_tw/web/categoryId/200000670/3/pc?lang=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Biz-Solutions：LINE官方帳號自動回應再升級！AI 聊天機器人（方案、測試版上限與業種限制）",
+          "url": "https://tw.linebiz.com/column/oa-aichatbot/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Biz-Solutions：如何啟用 AI 聊天機器人 (β)？",
+          "url": "https://tw.linebiz.com/faq/oa-ai-chatbot/oa-ai-chatbot-start/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Biz-Solutions：LINE 成效型廣告全新升級，三大廣告智慧助手",
+          "url": "https://tw.linebiz.com/column/line-ads-ai-agent/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LY Corporation 隱私權政策（繁體中文版，含資料中心據點與台灣適用設定）",
+          "url": "https://terms.line.me/line_rules?lang=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "關於台端資訊的使用 - 常見問題及詳細資訊（台灣，含機器學習用途與使用範圍）",
+          "url": "https://terms.line.me/line_communication_privacy_tw?lang=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Premium 服務指南：月租方案（台灣，2026 年 3 月 23 日公告）",
+          "url": "https://terms.line.me/line_lnp_terms_tw_ios/sp?lang=zh-Hant&country=TW",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：Messaging API 介紹（webhook 與回覆訊息的運作方式）",
+          "url": "https://developers.line.biz/zh-hant/docs/messaging-api/overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE 台灣官方網站（首頁當天未列出任何 AI 功能）",
+          "url": "https://line.me/zh-hant/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一篇 Markdown 變成一個公開網址 / From a Markdown file to your own domain</title>
+  <desc id="desc">由左至右的五個階段。第一階段是 Markdown 文章，放在 content 資料夾，開頭的 front matter 寫標題、日期與標籤。第二階段是產生器建置，執行 hugo，在本機的 1313 埠預覽，front matter 裡 draft 設成 true 的文章不會被發布。第三階段是靜態檔，全部放進 public 目錄，包含每篇文章的 index.html、當作 RSS 的 index.xml 與一份 sitemap.xml。第四階段是代管服務，可選 GitHub Pages 或 Cloudflare Pages，git push 之後自動建置。第五階段是自訂網域，在 DNS 建 A 或 CNAME 記錄指向代管服務，憑證由平台自動申請，接著開啟 HTTPS。圖下方左邊列出之後每次發文只做的三件事：寫好 Markdown 並把 draft 改成 false、git commit 與 git push、代管服務自動重建後網址上的內容就換了。右邊列出不必自己做的事：RSS 與 sitemap 由產生器產生、HTTPS 憑證由代管服務自動申請、沒有資料庫要備份而整個專案都在 Git 裡、建置產物 public 不進版控。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="51" y="52" font-size="30" font-weight="700" fill="#102A2B">一篇 Markdown 變成一個公開網址</text>
+  <text x="51" y="84" font-size="18" fill="#5C6B6B">From a Markdown file to your own domain</text>
+
+  <!-- stage 1 -->
+  <rect x="51" y="150" width="250" height="250" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="176" cy="192" r="22" fill="#0D6B68"/>
+  <text x="176" y="200" text-anchor="middle" font-size="20" font-weight="700" fill="#FFFFFF">1</text>
+  <text x="176" y="256" text-anchor="middle" font-size="20" font-weight="700" fill="#102A2B">Markdown 文章</text>
+  <text x="176" y="296" text-anchor="middle" font-size="16" fill="#5C6B6B">content 資料夾裡的 .md</text>
+  <text x="176" y="326" text-anchor="middle" font-size="16" fill="#5C6B6B">front matter 寫上</text>
+  <text x="176" y="356" text-anchor="middle" font-size="16" fill="#5C6B6B">標題、日期、標籤</text>
+
+  <line x1="309" y1="275" x2="355" y2="275" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- stage 2 -->
+  <rect x="363" y="150" width="250" height="250" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="488" cy="192" r="22" fill="#0D6B68"/>
+  <text x="488" y="200" text-anchor="middle" font-size="20" font-weight="700" fill="#FFFFFF">2</text>
+  <text x="488" y="256" text-anchor="middle" font-size="20" font-weight="700" fill="#102A2B">產生器建置</text>
+  <text x="488" y="296" text-anchor="middle" font-size="16" fill="#5C6B6B">在自己的電腦執行 hugo</text>
+  <text x="488" y="326" text-anchor="middle" font-size="16" fill="#5C6B6B">預覽 localhost:1313</text>
+  <text x="488" y="356" text-anchor="middle" font-size="16" fill="#5C6B6B">draft 草稿不會發布</text>
+
+  <line x1="621" y1="275" x2="667" y2="275" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- stage 3 -->
+  <rect x="675" y="150" width="250" height="250" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="800" cy="192" r="22" fill="#0D6B68"/>
+  <text x="800" y="200" text-anchor="middle" font-size="20" font-weight="700" fill="#FFFFFF">3</text>
+  <text x="800" y="256" text-anchor="middle" font-size="20" font-weight="700" fill="#102A2B">靜態檔</text>
+  <text x="800" y="296" text-anchor="middle" font-size="16" fill="#5C6B6B">全部放進 public 目錄</text>
+  <text x="800" y="326" text-anchor="middle" font-size="16" fill="#5C6B6B">index.html 與</text>
+  <text x="800" y="356" text-anchor="middle" font-size="16" fill="#5C6B6B">index.xml、sitemap.xml</text>
+
+  <line x1="933" y1="275" x2="979" y2="275" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- stage 4 -->
+  <rect x="987" y="150" width="250" height="250" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="1112" cy="192" r="22" fill="#2F6F9F"/>
+  <text x="1112" y="200" text-anchor="middle" font-size="20" font-weight="700" fill="#FFFFFF">4</text>
+  <text x="1112" y="256" text-anchor="middle" font-size="20" font-weight="700" fill="#102A2B">代管服務</text>
+  <text x="1112" y="296" text-anchor="middle" font-size="16" fill="#5C6B6B">GitHub Pages 或</text>
+  <text x="1112" y="326" text-anchor="middle" font-size="16" fill="#5C6B6B">Cloudflare Pages</text>
+  <text x="1112" y="356" text-anchor="middle" font-size="16" fill="#5C6B6B">git push 後自動建置</text>
+
+  <line x1="1245" y1="275" x2="1291" y2="275" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- stage 5 -->
+  <rect x="1299" y="150" width="250" height="250" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="1424" cy="192" r="22" fill="#D97A2B"/>
+  <text x="1424" y="200" text-anchor="middle" font-size="20" font-weight="700" fill="#FFFFFF">5</text>
+  <text x="1424" y="256" text-anchor="middle" font-size="20" font-weight="700" fill="#102A2B">自訂網域</text>
+  <text x="1424" y="296" text-anchor="middle" font-size="16" fill="#5C6B6B">DNS 建 A 或 CNAME</text>
+  <text x="1424" y="326" text-anchor="middle" font-size="16" fill="#5C6B6B">記錄指向代管服務</text>
+  <text x="1424" y="356" text-anchor="middle" font-size="16" fill="#5C6B6B">憑證自動申請、開 HTTPS</text>
+
+  <!-- bottom left band -->
+  <rect x="51" y="470" width="719" height="330" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="91" y="528" font-size="22" font-weight="700" fill="#0D6B68">之後每次發文只做三件事</text>
+  <text x="91" y="590" font-size="18" fill="#102A2B">1. 寫好 Markdown，把 draft 改成 false</text>
+  <text x="91" y="640" font-size="18" fill="#102A2B">2. git commit，然後 git push</text>
+  <text x="91" y="690" font-size="18" fill="#102A2B">3. 代管服務自動重建，網址上的內容就換了</text>
+  <text x="91" y="752" font-size="17" fill="#5C6B6B">改版型、加標籤頁也是同一條路線，不必再上傳一次檔案</text>
+
+  <!-- bottom right band -->
+  <rect x="830" y="470" width="719" height="330" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="870" y="528" font-size="22" font-weight="700" fill="#2F6F9F">不必自己做的事</text>
+  <text x="870" y="586" font-size="18" fill="#102A2B">RSS 的 index.xml 與 sitemap.xml 由產生器產生</text>
+  <text x="870" y="630" font-size="18" fill="#102A2B">HTTPS 憑證由代管服務自動申請</text>
+  <text x="870" y="674" font-size="18" fill="#102A2B">沒有資料庫要備份，整個專案都在 Git 裡</text>
+  <text x="870" y="718" font-size="18" fill="#102A2B">建置產物 public 不進版控，每次建置重新產生</text>
+  <text x="870" y="766" font-size="17" fill="#5C6B6B">免費方案的額度與限制以各家官方文件為準</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

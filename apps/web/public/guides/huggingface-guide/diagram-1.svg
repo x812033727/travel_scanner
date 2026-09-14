@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">從搜尋到本機執行：Hugging Face 的五個關卡 / Five steps from search to a local run on the Hugging Face Hub</title>
+<desc id="desc">由上而下的五段流程圖。第一段是搜尋與篩選：Models 頁左欄可選 Tasks、Libraries、Languages、Licenses 等篩選欄，要找 GGUF 量化檔就用函式庫標籤篩選，篩選條件會寫進網址列。第二段是讀模型頁：Model card 看說明，Files and versions 是檔案與提交歷史，標籤列顯示任務、函式庫與授權，授權標籤來自模型卡的 YAML。第三段是確認授權與 gated：授權代號是 other 就要去讀倉庫裡的 LICENSE 檔，標籤不是法律意見；gated 模型要登入並按同意，作者可以設自動或人工核准。第四段是下載：hf auth login 之後用 hf download，先加 --dry-run 看檔案大小，預設會存進 HF_HOME 指定的快取，要指定資料夾用 --local-dir。第五段是本機執行：GGUF 檔交給 llama.cpp、Ollama、LM Studio 或 GPT4All，safetensors 交給 transformers 之類的函式庫載入。圖下方註記：下載公開模型不需要帳號，gated 模型一定要登入。</desc>
+<defs><marker id="arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/></marker></defs>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">從搜尋到本機執行：Hugging Face 的五個關卡</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">From search to a local run on the Hugging Face Hub</text>
+<rect x="60" y="136" width="400" height="108" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="260" y="180" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">搜尋與篩選</text>
+<text x="260" y="212" font-size="17" fill="#5C6B6B" text-anchor="middle">Search and filter</text>
+<rect x="520" y="136" width="1020" height="108" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+<text x="550" y="180" font-size="17" fill="#102A2B">Models 頁左欄可選 Tasks、Libraries、Languages、Licenses</text>
+<text x="550" y="212" font-size="17" fill="#5C6B6B">要找 GGUF 量化檔就用函式庫標籤篩選，條件會寫進網址列</text>
+<line x1="462" y1="190" x2="516" y2="190" stroke="#5C6B6B" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="260" y1="246" x2="260" y2="274" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="60" y="276" width="400" height="108" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="260" y="320" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">讀模型頁</text>
+<text x="260" y="352" font-size="17" fill="#5C6B6B" text-anchor="middle">Read the model page</text>
+<rect x="520" y="276" width="1020" height="108" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+<text x="550" y="320" font-size="17" fill="#102A2B">Model card 看說明，Files and versions 是檔案與提交歷史</text>
+<text x="550" y="352" font-size="17" fill="#5C6B6B">標籤列顯示任務、函式庫與授權；授權來自模型卡的 YAML</text>
+<line x1="462" y1="330" x2="516" y2="330" stroke="#5C6B6B" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="260" y1="386" x2="260" y2="414" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="60" y="416" width="400" height="108" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="260" y="460" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">確認授權與 gated</text>
+<text x="260" y="492" font-size="17" fill="#5C6B6B" text-anchor="middle">License and gated access</text>
+<rect x="520" y="416" width="1020" height="108" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+<text x="550" y="460" font-size="17" fill="#102A2B">代號是 other 就讀倉庫裡的 LICENSE 檔；標籤不是法律意見</text>
+<text x="550" y="492" font-size="17" fill="#5C6B6B">gated 模型要登入並按同意，作者可設自動或人工核准</text>
+<line x1="462" y1="470" x2="516" y2="470" stroke="#5C6B6B" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="260" y1="526" x2="260" y2="554" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="60" y="556" width="400" height="108" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="260" y="600" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">下載</text>
+<text x="260" y="632" font-size="17" fill="#5C6B6B" text-anchor="middle">Download</text>
+<rect x="520" y="556" width="1020" height="108" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+<text x="550" y="600" font-size="17" fill="#102A2B">hf auth login 之後 hf download，先用 --dry-run 看大小</text>
+<text x="550" y="632" font-size="17" fill="#5C6B6B">預設存進 HF_HOME 的快取；要指定資料夾用 --local-dir</text>
+<line x1="462" y1="610" x2="516" y2="610" stroke="#5C6B6B" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="260" y1="666" x2="260" y2="694" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="60" y="696" width="400" height="108" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+<text x="260" y="740" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">本機執行</text>
+<text x="260" y="772" font-size="17" fill="#5C6B6B" text-anchor="middle">Run it locally</text>
+<rect x="520" y="696" width="1020" height="108" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+<text x="550" y="740" font-size="17" fill="#102A2B">GGUF 檔交給 llama.cpp、Ollama、LM Studio 或 GPT4All</text>
+<text x="550" y="772" font-size="17" fill="#5C6B6B">safetensors 交給 transformers 之類的函式庫載入</text>
+<line x1="462" y1="750" x2="516" y2="750" stroke="#5C6B6B" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="60" y1="838" x2="1540" y2="838" stroke="#5C6B6B" stroke-width="2" stroke-opacity="0.35"/>
+<text x="60" y="870" font-size="18" fill="#5C6B6B">下載公開模型不需要帳號；gated 模型一定要登入</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

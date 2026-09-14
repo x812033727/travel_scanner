@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">從一句話需求到一個網址 / From one prompt to a live URL</title>
+  <desc id="desc">五個步驟由上往下排成一列，每一格左邊是要做的事，右邊是做完要檢查的東西。步驟一，把需求寫成一段話：寫出目的、內容、風格、不要什麼，再加上技術邊界；檢查要出現的文字是你自己寫的。步驟二，讓 AI 產生一個 HTML 檔：可以用 Claude 的 Artifacts、ChatGPT Sites 或 Gemini 的 Canvas；檢查只有一個檔、檔名是 index.html、沒有連外部資源。步驟三，下載檔案並用瀏覽器打開：預覽面板不等於檔案本身，點兩下自己看一次；檢查錯字、每個連結、視窗拉窄後的排版。步驟四，一次只要求改一件事：改配色、加一段、手機版排版分成三次講；檢查每改一次就重新下載、重新打開。步驟五，放到免費的靜態網站服務：用 GitHub Pages 或 Cloudflare Pages，首頁檔名是 index.html，拿到的網址是帳號名稱接上 github.io，或專案名稱接上 pages.dev。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">從一句話需求到一個網址</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From one prompt to a live URL</text>
+
+  <!-- step 1 -->
+  <rect x="150" y="110" width="1390" height="130" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <line x1="880" y1="132" x2="880" y2="218" stroke="#D8CFC2" stroke-width="2"/>
+  <circle cx="100" cy="175" r="32" fill="#2F6F9F"/>
+  <text x="100" y="186" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="180" y="162" font-size="24" font-weight="700" fill="#102A2B">把需求寫成一段話</text>
+  <text x="180" y="202" font-size="18" fill="#5C6B6B">目的、內容、風格、不要什麼，再加上技術邊界</text>
+  <text x="915" y="166" font-size="17" fill="#5C6B6B">做完要檢查</text>
+  <text x="915" y="202" font-size="18" fill="#2E7D5B">要出現的文字是你自己寫的</text>
+  <line x1="100" y1="212" x2="100" y2="282" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 2 -->
+  <rect x="150" y="255" width="1390" height="130" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <line x1="880" y1="277" x2="880" y2="363" stroke="#D8CFC2" stroke-width="2"/>
+  <circle cx="100" cy="320" r="32" fill="#0D6B68"/>
+  <text x="100" y="331" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="180" y="307" font-size="24" font-weight="700" fill="#102A2B">讓 AI 產生一個 HTML 檔</text>
+  <text x="180" y="347" font-size="18" fill="#5C6B6B">Claude 的 Artifacts、ChatGPT Sites 或 Gemini 的 Canvas</text>
+  <text x="915" y="311" font-size="17" fill="#5C6B6B">做完要檢查</text>
+  <text x="915" y="347" font-size="18" fill="#2E7D5B">只有一個檔、檔名 index.html、不連外部資源</text>
+  <line x1="100" y1="357" x2="100" y2="427" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 3 -->
+  <rect x="150" y="400" width="1390" height="130" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <line x1="880" y1="422" x2="880" y2="508" stroke="#D8CFC2" stroke-width="2"/>
+  <circle cx="100" cy="465" r="32" fill="#D97A2B"/>
+  <text x="100" y="476" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="180" y="452" font-size="24" font-weight="700" fill="#102A2B">下載檔案，用瀏覽器打開</text>
+  <text x="180" y="492" font-size="18" fill="#5C6B6B">預覽面板不等於檔案本身，點兩下自己看一次</text>
+  <text x="915" y="456" font-size="17" fill="#5C6B6B">做完要檢查</text>
+  <text x="915" y="492" font-size="18" fill="#2E7D5B">錯字、每個連結、視窗拉窄後的排版</text>
+  <line x1="100" y1="502" x2="100" y2="572" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 4 -->
+  <rect x="150" y="545" width="1390" height="130" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <line x1="880" y1="567" x2="880" y2="653" stroke="#D8CFC2" stroke-width="2"/>
+  <circle cx="100" cy="610" r="32" fill="#2E7D5B"/>
+  <text x="100" y="621" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="180" y="597" font-size="24" font-weight="700" fill="#102A2B">一次只要求改一件事</text>
+  <text x="180" y="637" font-size="18" fill="#5C6B6B">改配色、加一段、手機版排版，分成三次講</text>
+  <text x="915" y="601" font-size="17" fill="#5C6B6B">做完要檢查</text>
+  <text x="915" y="637" font-size="18" fill="#2E7D5B">每改一次就重新下載、重新打開</text>
+  <line x1="100" y1="647" x2="100" y2="717" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 5 -->
+  <rect x="150" y="690" width="1390" height="130" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <line x1="880" y1="712" x2="880" y2="798" stroke="#B7D4D2" stroke-width="2"/>
+  <circle cx="100" cy="755" r="32" fill="#0D6B68"/>
+  <text x="100" y="766" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+  <text x="180" y="742" font-size="24" font-weight="700" fill="#102A2B">放到免費的靜態網站服務</text>
+  <text x="180" y="782" font-size="18" fill="#5C6B6B">GitHub Pages 或 Cloudflare Pages，首頁檔名 index.html</text>
+  <text x="915" y="746" font-size="17" fill="#5C6B6B">你拿到的網址</text>
+  <text x="915" y="782" font-size="18" fill="#0D6B68">帳號名稱.github.io 或 專案名稱.pages.dev</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

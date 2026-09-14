@@ -1,0 +1,232 @@
+{
+  "slug": "wordpress-smtp-delivery",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 寄信失敗怎麼辦：SMTP、網域驗證與記錄",
+      "description": "WordPress 密碼重設信或表單通知收不到，可以沿著網站、寄信服務與收件端逐段排查。本篇以 WP Mail SMTP 搭配 Brevo 說明寄件身分、API 連線、網域驗證與測試郵件，並整理錯誤紀錄的判讀方式，協助站長建立可追查的寄信流程，避免只看到送出成功就以為每封郵件都已進入收件匣。",
+      "hero": {
+        "src": "/guides/wordpress-smtp-delivery/hero.jpg",
+        "alt": "原創螢幕、伺服器與文件圖像呈現網站寄信到收件內容的流程。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "客人說沒有收到確認信，站長連按幾次重寄，結果對方隔天收到好幾封。要解決這類問題，先保留一筆測試的時間、收件地址與信件用途，查清楚它停在哪一段，再決定是否重送。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 產生郵件、外部服務接受郵件、收件系統收到郵件，是不同的事件。本篇用 WP Mail SMTP 與 Brevo 示範建立可追查的寄信設定，適用於密碼重設與通知等網站郵件；實際可用服務與額度仍依帳號方案確認。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先畫出網站的寄信路徑"
+        },
+        {
+          "type": "paragraph",
+          "text": "列出哪些功能會寄信，例如會員註冊、表單通知、留言提醒及訂單訊息，並記錄各功能的寄件人、收件人與觸發條件。若有外掛直接呼叫自己的外部服務，也要另外標示，不能假設安裝一套 SMTP 外掛就接管網站所有郵件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "檢查目前是否已有寄信外掛或主機整合。多套工具同時更改寄件設定，可能讓你無法判斷哪一套實際生效。先保留設定紀錄，在測試站確認要保留的路徑，再安排正式切換；測試站也應限制收件對象，避免把備份中的會員地址拿來群發。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般 SMTP 連線通常要核對主機、連接埠、加密與驗證方式；Brevo 專用 mailer 則使用 API 金鑰。外掛名稱雖含 SMTP，畫面選到的服務不一定要填 SMTP 密碼，因此先按所選 mailer 的官方文件準備資料。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "準備可辨識且可維護的寄件身分"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用自己控制網域的寄件地址，並指定人員處理回覆。寄件名稱可以是工作室或網站名稱，保持不同通知之間的一致性。外部寄信服務能送出郵件，不代表它自動提供日常收件信箱；需要收回信時，仍要有可運作的信箱或正確 Reply-To。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立 Brevo 帳號後，先確認帳號啟用狀態及交易郵件功能可用，再新增與 From Email 一致的網域。若使用寄件子網域，也應保持對應，不要驗證一個網域卻從另一個網域寄送。免費信箱服務的公用網域不由你控制，不能拿來完成自己的 DNS 驗證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在選方案前估算每日正常通知量、尖峰與重試量。把大量行銷活動與必要通知的需求分開評估，查看平台限制與剩餘用量。本文不把某個免費額度當成長期承諾，也不建議為了測試而一次大量寄信。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "依帳號產生的紀錄完成網域驗證"
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo 正逐步提供新的網域設定流程，部分帳號仍會看到舊版 Authenticate 介面。依目前畫面選擇自動或手動驗證，紀錄名稱、類型與值以該帳號產生的內容為準。官方列出 Brevo code、DKIM 與 DMARC；DKIM 可能是 TXT 或兩筆 CNAME，不能套用別人的範例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先確認實際管理 DNS 的服務在哪裡，再新增要求的紀錄。網域購買處不一定就是目前 DNS 管理處。保留原有設定截圖或匯出，逐筆核對主機名稱是否被控制台重複加上網域；不需要為寄信驗證任意改動網站 A 紀錄或日常收信的 MX。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若網域已有 DMARC，先理解現有政策再處理。Brevo 官方說明自動流程可能要求替換既有紀錄，不想替換時可走手動流程；不要新增互相矛盾的設定來消除警告。完成後回 Brevo 執行驗證，確認狀態成功，再把 DNS 傳播等待與設定錯誤分開判斷。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在 WP Mail SMTP 建立連線"
+        },
+        {
+          "type": "paragraph",
+          "text": "到 WP Mail SMTP 的 Settings，設定 From Email 與 From Name，mailer 選 Brevo。若要用同一寄件地址套用相關網站郵件，可評估 Force From Email，但啟用前應確認是否影響原本需要不同寄件人的功能。回覆地址仍應按實際業務配置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Brevo 的 SMTP & API 設定建立供此網站使用的 API 金鑰，命名時加上網站用途，並安全保存。複製完整金鑰到 WP Mail SMTP 的 API Key 欄位，不能使用畫面遮罩後的字串，也不要把 SMTP 金鑰誤當 API 金鑰。儲存後核對所選服務沒有變動。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "確認網域已驗證，寄件地址與驗證網域一致。",
+            "輸入對應 mailer 的有效金鑰，記錄金鑰用途與建立時間。",
+            "到 Tools 的 Email Test，先寄給自己能查看的測試信箱。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "按證據判斷失敗位置"
+        },
+        {
+          "type": "paragraph",
+          "text": "Email Test 出現錯誤時，保留時間與錯誤種類，再查看 Tools 的 Debug Events。金鑰找不到先核對完整 API 金鑰及帳號；帳號未啟用則處理平台啟用；連線或逾時問題才查主機對外網路。每次只修正一個原因，避免同時重設 DNS、換服務又更改表單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "外掛回報成功後，仍需查看實際信箱與垃圾郵件資料夾。若外掛已有送出記錄而未收到，可到 Brevo 的 Transactional Logs 用收件者、時間或 message ID 查詢事件。寄出、投遞及後續退信各有不同意義，不要把接受寄送直接當成人已閱讀。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Mail SMTP 的 Email Log 詳細功能屬付費版本，與基本寄送錯誤追蹤不同。需要長期追查時，先比較可用的外掛與服務端紀錄；若保存郵件正文或附件，還要限制查看權限與保存期間。排障結束後關閉額外除錯，避免持續累積不必要資料。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用真實功能驗收，建立維護紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試郵件成功只是第一關。接著用測試帳號觸發密碼重設、註冊通知與聯絡表單，檢查各自信件是否真的使用新設定。核對連結網域、寄件名稱、Reply-To 及中文內容，並以不同收件服務抽測，記下到達位置與所花時間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若某封郵件需要重寄，先查服務端是否已接收或正在處理，再決定動作，避免重複通知。對含時效連結的郵件，還要確認新舊信件對使用者的影響；不要把客服手動轉寄完整重設連結當作標準處理方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把寄信服務帳號、網域紀錄、金鑰用途、用量檢查與測試日期交給維護者。主機搬家、網域變更或金鑰輪替後都重測關鍵功能，先確認新連線可用，再撤除舊金鑰與不再需要的設定，讓網站通知保持可追查。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-smtp-delivery/diagram-1.svg",
+          "alt": "三格圖解依序呈現 WordPress 產生郵件、寄信服務處理事件與收件系統分類，提醒分別查證。",
+          "width": 1600,
+          "height": 900,
+          "caption": "成功送出後，仍要確認投遞結果與實際收件內容。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "看到的現象",
+            "優先查什麼",
+            "驗證方式"
+          ],
+          "rows": [
+            [
+              "測試立即報金鑰錯誤",
+              "mailer、金鑰類型與帳號",
+              "更新正確憑證後單封重測"
+            ],
+            [
+              "外掛送出但未收到",
+              "服務端事件與收件分類",
+              "以收件者、時間及 message ID 對照"
+            ],
+            [
+              "只有某種通知失敗",
+              "該功能的觸發條件與寄件設定",
+              "直接操作該功能的測試帳號"
+            ],
+            [
+              "搬家後才發生問題",
+              "新主機連線及寄件設定",
+              "保留錯誤事件逐段核對"
+            ]
+          ],
+          "caption": "先定位失敗環節，再調整相關設定。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "保留能連起三段路徑的資料",
+          "text": "測試紀錄至少包含用途、時間、收件者與服務回傳識別。提供給客服時遮蔽金鑰與不必要的個人資料，並避免反覆重寄同一則重要通知。"
+        },
+        {
+          "type": "link",
+          "text": "建立完整的聯絡表單流程",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-contact-forms"
+        },
+        {
+          "type": "link",
+          "text": "檢查 DNS 紀錄與設定位置",
+          "url": "https://mokaair.com/zh-TW/life/dns-records-troubleshooting"
+        }
+      ],
+      "sources": [
+        {
+          "title": "WP Mail SMTP：Brevo mailer",
+          "url": "https://wpmailsmtp.com/docs/how-to-set-up-the-sendinblue-mailer-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：既有網域驗證流程",
+          "url": "https://help.brevo.com/hc/en-us/articles/12163873383186-Authenticate-your-domain-with-Brevo-Brevo-code-DKIM-DMARC",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：新網域設定流程",
+          "url": "https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP：測試郵件",
+          "url": "https://wpmailsmtp.com/docs/how-to-send-a-test-email-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP：寄送除錯",
+          "url": "https://wpmailsmtp.com/docs/how-to-debug-email-sending-issues-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP：設定精靈與付費記錄功能",
+          "url": "https://wpmailsmtp.com/docs/how-to-use-the-wp-mail-smtp-setup-wizard/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：交易郵件紀錄",
+          "url": "https://help.brevo.com/hc/en-us/articles/360021533839-Manage-your-transactional-logs-and-email-previews",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

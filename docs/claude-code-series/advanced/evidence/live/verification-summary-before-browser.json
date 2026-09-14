@@ -1,0 +1,69 @@
+{
+  "checked_at": "2026-09-14T13:01:37.833403+00:00",
+  "git_base": "46298e2863e9c2c4d6776e9d58a821be683a4b32",
+  "scope": "Supplementary full frontend and isolated PostgreSQL checks for the current uncommitted phase 2 changes",
+  "web": {
+    "environment": "Windows",
+    "source": "web-full.json",
+    "files": 258,
+    "tests": 2809,
+    "total_tests": 2809,
+    "failed": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  "web_runs": [
+    {
+      "environment": "Windows",
+      "source": "web-full.json",
+      "files": 258,
+      "tests": 2809,
+      "total_tests": 2809,
+      "failed": 0,
+      "skipped": 0,
+      "passed": true
+    }
+  ],
+  "other_web_attempts": [
+    {
+      "environment": "WSL Ubuntu / Linux ARM64",
+      "passed": false,
+      "source": "web-linux-validation.json"
+    }
+  ],
+  "api": {
+    "passed": true,
+    "tests": 164,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "postgresql_version": "17.11",
+    "source": "postgres-validation.json",
+    "test_report": "postgres-tests.xml",
+    "environment": "Windows; disposable PostgreSQL 17 and SQLite",
+    "server_stopped": true,
+    "remaining_test_schemas": 0
+  },
+  "temporary_postgresql_files_removed": false,
+  "cleanup_note": "Initial automatic cleanup encountered a Windows DLL lock after successful shutdown. Follow-up deletion of the verified disposable directory was rejected by automatic approval review (blocked by policy); remaining temporary files were preserved.",
+  "source_hash_verification": {
+    "files": 2761,
+    "changed": [],
+    "source": "web-linux-source-hashes.json"
+  },
+  "content": {
+    "pages": 97,
+    "passed": true,
+    "source": "content-recheck.json"
+  },
+  "tools": {
+    "tests": 11,
+    "source": "series-tools-recheck.log"
+  },
+  "pending": [
+    "Claude account reauthentication and real model workflows",
+    "Physical mobile, MCP OAuth, Agent Teams, external CI, product schedules and SDK calls",
+    "Phase 2 PR and merge",
+    "Deployment, content import and publication"
+  ]
+}

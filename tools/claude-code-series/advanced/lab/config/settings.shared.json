@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --test tests/model.test.mjs)"
+    ],
+    "deny": [
+      "Read(./private/**)"
+    ]
+  }
+}

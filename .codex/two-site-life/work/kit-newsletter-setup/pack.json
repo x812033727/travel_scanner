@@ -1,0 +1,257 @@
+{
+  "slug": "kit-newsletter-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "misc"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Kit 電子報工作流：訂閱表單、分眾與自動信",
+      "description": "Kit 的表單、標籤、分眾、自動信與單次廣播各有不同角色，設定完成不代表收件流程已經正確。本文以原創衣物修補電子報為例，整理確認信的開關、Tag 與 Segment 邏輯、Sequence 和 Visual Automation 的銜接，以及寄送前的測試方式。也說明匯入名單與公開表單的差異，附比較表及原創圖解，讓小型創作者能逐步驗收。",
+      "hero": {
+        "src": "/guides/kit-newsletter-setup/hero.jpg",
+        "alt": "Mokaair 原創訂閱表單畫面、分眾資料夾與信件文件，表達 Kit 電子報流程的銜接。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "衣物修補創作者想讓新讀者先收到工具介紹，再依興趣閱讀補洞或換扣子的內容。若把所有信寫好卻沒有接上訂閱入口，讀者可能一封也收不到；若入口與分眾接錯，又可能同時收到不相干的教材。Kit 的重點是把這些物件的責任分清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以原創修補電子報為例，依 2026 年 9 月 14 日查閱的 Kit 官方文件整理。操作名稱以目前文件為準，沒有登入使用者帳戶、匯入真實名單或實際寄信；自動化可用範圍仍需核對自己的方案與帳戶。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先畫出表單、名單與信件的關係"
+        },
+        {
+          "type": "paragraph",
+          "text": "Form 是收集訂閱的入口，Landing Page 是可獨立分享的訂閱頁面。Kit 將訂閱者放在同一份名單，再用 Tag 和 Segment 整理；不是每增加一種興趣，就必須建立一份互不相通的名單。先以讀者任務規劃資料，能減少後續重複維護。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原創電子報只先提供補洞與換扣子兩種偏好，讓讀者自行選擇。表單文字清楚說明會收到入門教材及後續修補內容，不能只寫領取一張圖，就暗中加入長期促銷。姓名可設為非必要欄位，少收資料也能降低信件個人化出錯的機會。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先建立一張對照表，列出入口名稱、資料欄位、對應標籤、確認後要收到的信，以及退出方式。這張表是團隊自己的設計紀錄，不是 Kit 自動生成的保證；每次增加入口或合作活動，都要確認新資料會流到哪個既有流程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "確認信的兩個開關不能看反"
+        },
+        {
+          "type": "paragraph",
+          "text": "依目前官方文件，在 Form 或 Landing Page 的 Settings 開啟 Confirmation Email 分頁。要保留雙重確認，應勾選 Send confirmation email，並讓 Auto-confirm new subscribers 保持未勾選。後者若勾選，讀者不必點擊確認按鈕也會自動成為已確認狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認按鈕之後可以導向網址或下載檔案。原創修補教材可先導向一頁工具清單，同時清楚告訴讀者訂閱已完成、後續信件內容及如何退出。不要用成功下載推定所有資料用途都已獲得同意，也不要為了縮短流程直接取消原先承諾的確認步驟。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公開表單與匯入是不同入口。Kit 官方說明，匯入到表單的訂閱者會自動確認，即使該表單有雙重確認，也不會因此補寄確認信。既有名單移轉前要先確認原本選擇與資料來源，不能把匯入動作當成重新取得訂閱同意。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Tag 記狀態，Segment 表達條件"
+        },
+        {
+          "type": "paragraph",
+          "text": "Tag 可作為附在訂閱者身上的標籤，除非手動或自動移除，通常會持續存在；Segment 則依篩選條件動態納入或排除人員。原創修補電子報可用標籤記錄偏好補洞、偏好換扣子，再用分眾組合出這期實際需要寄送的讀者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如某封只給偏好補洞、且還沒完成入門教材的人，可把這個條件先寫成白話再設定。驗收要準備符合全部條件、只符合其中之一、兩者都不符合的測試資料。不要只看預估人數差不多，就認定 AND、OR 與排除邏輯都設定正確。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Tag 可以作為 Visual Automation 的觸發條件，Segment 本身不能直接充當同樣的觸發入口。若需要依複合條件走不同路徑，要在自動流程使用支援的條件設定。標籤命名也應分清興趣與已完成狀態，避免把領過教材誤當成永遠不再想看該主題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "自動信需要信件、序列與入口一起啟用"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sequence 是一組依排程寄送的信件，Visual Automation 則負責依事件讓訂閱者進入流程，例如加入表單後加入某個 Sequence。可以先建立原創的工具認識、練習準備及常見失誤內容，再把新訂閱入口接到這組信，不必一開始設計很多分支。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sequence 裡每封信需要 Published，序列本身也需要 Active；Visual Automation 還有自己的啟用狀態。信件內容有儲存、序列裡看得到信、流程線條接好了，是不同層次的完成條件。漏掉其中一處，不能只反覆重送確認信來猜原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方提醒自動流程不會回溯處理啟用前的所有訂閱者；匯入到會觸發的表單或標籤，則可能讓匯入者進入流程。新增教材或搬移名單時，先核對入口及排程，用自己的測試地址檢查，不把既有讀者直接重新丟進整套歡迎信。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Broadcast 寄送與網頁發布要分別選擇"
+        },
+        {
+          "type": "paragraph",
+          "text": "Broadcast 適合單次內容，例如本月修補聚會通知。官方目前允許選擇寄成電子郵件、發布到網頁，或兩者都做。草稿頁的主旨、預覽文字與內文完成後，還要到發布設定確認交付方式；私人通知不應因為忽略選項而變成公開文章。"
+        },
+        {
+          "type": "paragraph",
+          "text": "收件者預設為所有已確認訂閱者，所以每次分眾寄送都要再次核對篩選、排除與人數。原創聚會通知可先只寄給對相關主題有興趣的人，但標籤本身不是收信意願的永久證明。也要看寄件地址、時區與預定時間，避免把測試設定留在正式版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kit 提供桌面、手機及指定訂閱者預覽，也能寄測試郵件，但部分個人化與 Link Trigger 不會在一般預覽信完整運作。需要端到端驗收時，可另外建立只寄給自己控制地址的版本，確認收件範圍，再檢查連結行為；不能把外觀預覽通過當成所有自動化已驗證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用異常情境檢查流程，再擴大名單"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試清單包含填表但未確認、完成確認、同時有兩種偏好、已收過教材，以及提出退訂的人。逐一記下預期會收到與不應收到的信，然後查看訂閱者狀態與流程位置。測試前先確認沒有接到真實訂閱者，免得為了驗收而擾動正在進行的序列。"
+        },
+        {
+          "type": "paragraph",
+          "text": "寄件網域可在 Email 設定的 Verified Sending Domains 依 Kit 提供的 DNS 資料完成驗證。由有權維護 DNS 的人核對主機名稱和值，再回到平台驗證；不要複製別人的網域紀錄。完成寄件驗證是身分與投遞設定的一部分，不代表所有郵件一定抵達主要收件匣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "遇到讀者沒有收到信，按順序查確認狀態、入口是否在啟用後觸發、Sequence 排程與排除條件，最後再看投遞狀態。先找出哪一步與預期不同，再修改相關設定。每次只調整能解釋問題的部分，保留測試與修正紀錄，讓下一位維護者能接手。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "用白話列出每個入口、偏好、信件內容與退出條件。",
+            "在表單設定確認信，核對自動確認開關與確認後目的地。",
+            "建立標籤和分眾，接上已發布且啟用的序列及自動流程。",
+            "測試不同訂閱狀態、收件範圍與實際連結，再安排正式寄送。"
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/kit-newsletter-setup/diagram-1.svg",
+          "alt": "四張卡片呈現表單確認、標籤分眾、序列流程及寄送驗收，強調訂閱入口和每封信的收件條件必須相符。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先讓測試地址走完預期路徑，再接入真實訂閱來源。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Kit 物件",
+            "主要責任",
+            "要避免的誤會"
+          ],
+          "rows": [
+            [
+              "Form／Landing Page",
+              "訂閱入口及確認設定",
+              "匯入也會自動補做雙重確認"
+            ],
+            [
+              "Tag",
+              "記錄偏好或流程狀態",
+              "加標籤等於永遠符合所有收信條件"
+            ],
+            [
+              "Segment",
+              "依條件動態整理人員",
+              "可以直接當成自動流程的觸發入口"
+            ],
+            [
+              "Sequence",
+              "依設定寄出一組信件",
+              "信件草稿存在就一定會寄出"
+            ],
+            [
+              "Visual Automation",
+              "連接入口、動作與條件",
+              "啟用後自動回溯所有歷史訂閱"
+            ],
+            [
+              "Broadcast",
+              "單次郵件或網頁內容",
+              "寄信與公開網頁永遠是同一動作"
+            ]
+          ],
+          "caption": "依 Kit 官方文件整理角色；具體可用功能與流程仍需在帳戶驗收。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "匯入前先核對自動化入口",
+          "text": "匯入不是中性的備份動作：加入指定表單或標籤可能觸發既有流程，而且不會因表單開啟雙重確認就補寄確認信。"
+        },
+        {
+          "type": "link",
+          "text": "先規劃訂閱承諾與退訂驗收",
+          "url": "https://mokaair.com/zh-TW/life/email-newsletter-planning"
+        },
+        {
+          "type": "link",
+          "text": "整理每期內容與查證責任",
+          "url": "https://mokaair.com/zh-TW/life/content-marketing-calendar"
+        },
+        {
+          "type": "link",
+          "text": "用一致連結標記辨識寄送來源",
+          "url": "https://mokaair.com/zh-TW/life/utm-link-conventions"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kit：確認信與自動確認設定",
+          "url": "https://help.kit.com/en/articles/2502655-the-confirmation-email",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：Tag 與 Segment 的角色",
+          "url": "https://help.kit.com/en/articles/4257108-tags-and-segments-in-kit-and-when-to-use-which",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：匯入名單的確認與自動化影響",
+          "url": "https://help.kit.com/en/articles/5027047-importing-subscribers-into-kit-what-to-know-faqs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：建立並寄送 Email Sequence",
+          "url": "https://help.kit.com/en/articles/2502629-creating-and-sending-an-email-sequence-in-kit",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：Visual Automation 入口與啟用",
+          "url": "https://help.kit.com/en/articles/5523023-how-to-create-your-first-kit-visual-automation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：建立、寄送與發布 Broadcast",
+          "url": "https://help.kit.com/en/articles/2934648-creating-sending-and-publishing-broadcasts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：只寄給測試訂閱者與預覽限制",
+          "url": "https://help.kit.com/en/articles/4212107-how-to-send-a-broadcast-to-a-single-subscriber",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：驗證寄件網域",
+          "url": "https://help.kit.com/en/articles/2502558-verify-your-domain-to-optimize-your-deliverability",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

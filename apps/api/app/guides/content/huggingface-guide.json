@@ -1,0 +1,408 @@
+{
+  "slug": "huggingface-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Hugging Face 入門：找模型、看授權、下載",
+      "description": "Hugging Face 是開放模型最集中的地方。這篇從註冊與建立存取權杖開始，帶你讀懂模型頁的模型卡、Files and versions 與授權標籤，用篩選欄找到 GGUF 或特定授權的檔案，處理需要先同意條款的 gated 模型，再用 hf 指令與三行 Python 把權重下載到自己的電腦，並說明快取位置、Spaces 與官網當天的方案月費。",
+      "hero": {
+        "src": "/guides/huggingface-guide/hero.jpg",
+        "alt": "插圖：一座放滿模型卡片的書架，一道箭頭把其中一份檔案送進右邊的螢幕",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Hugging Face 的 Hub 是目前開放模型最集中的地方，官方文件說上面有超過 200 萬個模型、150 萬個資料集，以及 150 萬個 AI 應用。它比較像一間圖書館：你到這裡找權重、讀說明、確認授權，再把檔案抓回自己的電腦或伺服器執行。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你走完一輪：註冊與建立存取權杖、讀懂模型頁、用篩選欄找到要的檔案格式與授權、處理必須先同意條款的 gated 模型，再用官方指令與三行 Python 下載回本機。價格與限制以 2026 年 9 月 14 日查到的官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "三個區：Models、Datasets 與 Spaces",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Hub 的內容分成三種倉庫：Models 放權重與設定檔，Datasets 放訓練或評測資料，Spaces 是能在瀏覽器裡直接執行的示範應用。官方文件說三種都是 Git 倉庫，所以模型頁有版本、提交紀錄與差異比較，你下載到的永遠是某一個提交的內容。一個模型倉庫裡通常有權重檔、設定檔、分詞器檔案，以及一份叫 README.md 的說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要先分清楚兩件事：檔案能不能下載，和下載之後能怎麼用。前者看倉庫有沒有上鎖，後者看授權條款，兩者不一定一致。"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "link",
+          "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+        },
+        {
+          "type": "heading",
+          "text": "註冊、存取權杖，還有哪些事不用登入",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "註冊在首頁右上角的 Sign Up，填電子郵件、密碼與使用者名稱。隱私政策寫明會蒐集你提供的電子郵件、密碼、使用者名稱、全名與付款資料，也會用 cookie 自動蒐集 IP 位址與裝置資訊，要刪除資料可以寫信給政策上的信箱；服務條款要求使用者至少年滿 13 歲。介面以官網當天版本為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "登入後最該做的是建立存取權杖（token），路徑是設定頁的 Access Tokens 分頁，按 New token。官方文件列出三種角色：fine-grained 只授權到特定模型或組織，read 只能讀你本來讀得到的倉庫，write 另外加上寫入權限。官方建議一個用途發一個權杖，正式用途只用 fine-grained；權杖也可以放進 HF_TOKEN 環境變數。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "安裝官方套件並登入",
+          "code": "# huggingface_hub 套件內含 hf 指令\npip install --upgrade huggingface_hub\n\n# 開瀏覽器輸入短碼完成登入，權杖會存在本機\nhf auth login\n\n# 確認目前登入的是哪個帳號\nhf auth whoami"
+        },
+        {
+          "type": "paragraph",
+          "text": "下載公開模型其實不需要帳號。官方速率限制頁以 5 分鐘為一個時間窗分級：匿名使用者（以 IP 位址計算）是 API 500 次、檔案下載 3,000 次、網頁 100 次，免費帳號是 1,000、5,000、200，PRO 是 2,500、12,000、400。不登入照樣抓得到公開權重，只是配額較緊，官方也說沒帶權杖是被限流最常見的原因。"
+        },
+        {
+          "type": "heading",
+          "text": "模型頁怎麼讀：模型卡、Files 與 gated 條款",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型頁上方有幾個分頁：Model card 是說明文件，Files and versions 是檔案清單、大小與提交歷史，Community 是討論與變更請求，倉庫是自己的才會多一個 Settings。頁面上還有 Downloads last month，以及標出任務類型、函式庫與授權的一排標籤；屬於官方支援函式庫的模型會多一個 Use in 某某函式庫的按鈕，直接給你載入用的程式碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型卡就是倉庫裡的 README.md。官方文件說它是一份 Markdown，開頭用三個連字號包住的 YAML 放中繼資料：license 是授權代號，language 是語言，library_name 指定用哪個函式庫載入，pipeline_tag 是任務類型，base_model 指出它從哪個模型微調、量化、合併或做成轉接器而來。頁面上的授權標籤就是 license 欄位的顯示結果，不是有人逐條審查過的結論。"
+        },
+        {
+          "type": "code",
+          "language": "yaml",
+          "label": "模型卡開頭的中繼資料，授權欄位長這樣",
+          "code": "---\nlicense: other\nlicense_name: my-model-license\nlicense_link: LICENSE\nlibrary_name: transformers\npipeline_tag: text-generation\nbase_model: some-org/some-base-model\n---"
+        },
+        {
+          "type": "link",
+          "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning"
+        },
+        {
+          "type": "link",
+          "text": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-lora"
+        },
+        {
+          "type": "paragraph",
+          "text": "有些模型擋在一道同意畫面後面，官方叫它 gated model。作者打開存取請求之後，使用者必須同意把使用者名稱與電子郵件分享給作者才拿得到檔案，作者還能加欄位要你填公司、國家，或勾選只作非商業用途；申請只能在瀏覽器裡送出，一定要先登入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "核准分自動與人工兩種：自動核准按下同意就拿得到檔案，人工核准要等作者處理，被拒絕之後不能再申請。官方也寫明作者隨時可以不預先通知就收回存取權。gated 模型還能額外擋掉歐盟國家的使用者，系統依 IP 位址判斷位置。拿到權限後在程式裡下載仍要帶權杖，通常先跑一次 hf auth login 就好。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "Hub 上的授權標籤不是法律意見",
+          "text": "模型頁上的授權標籤來自模型卡開頭的 YAML，由上傳者自己填；代號是 other 的時候，真正的條款在倉庫裡的 LICENSE 檔或 license_link 指向的頁面。官方授權說明頁只留了一句提醒：要用別人的程式或資料之前，請自己找出並尊重那個專案的授權。服務條款也說，內容附帶的開源授權條款在後續取用與散布時仍然有效。要商用之前先讀原文，不要只看那一行標籤。"
+        },
+        {
+          "type": "link",
+          "text": "Llama 模型家族：授權與版本",
+          "url": "https://mokaair.com/zh-TW/life/llama-models-explained"
+        },
+        {
+          "type": "heading",
+          "text": "用篩選器與 Hub API 找到正確的檔案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Models 頁左側有一整排篩選欄：Tasks、Libraries、Languages、Licenses、Apps、Parameters 還有 Other。官方搜尋說明寫著篩選條件會寫進網址列，篩好可以直接複製分享。想找能給 llama.cpp、Ollama 或 LM Studio 用的量化檔，最直接的做法是用 GGUF 這個函式庫標籤篩選。Hub 另有全文搜尋，官方說它索引模型卡、資料集卡與 Spaces 的 app.py；習慣終端機的話，hf 指令一樣能搜尋、篩選並印出倉庫的檔案樹。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "在網址與終端機裡篩選模型",
+          "code": "# 篩選條件會寫進網址，可以直接複製分享\n# https://huggingface.co/models?library=gguf\n\n# 搜尋、依作者篩選、只看不需要申請的倉庫\nhf models ls --search \"Qwen3\" --author Qwen\nhf models ls --no-gated --author google\nhf models ls --apps llama.cpp --sort downloads --limit 10\n\n# 看某個倉庫裡有哪些檔案、各佔多大\nhf models ls openai/gpt-oss-20b --tree -h"
+        },
+        {
+          "type": "link",
+          "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+        },
+        {
+          "type": "link",
+          "text": "量化（Quantization）：用較少位元執行模型的取捨",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+        },
+        {
+          "type": "paragraph",
+          "text": "每一個倉庫都有對應的 API 網址，在網域後面接 api、models，再接組織名與模型名。回傳的 JSON 有 createdAt（建立時間）、lastModified、gated（要不要申請、自動還是人工）、downloads 與一組 tags，授權會以 license 開頭的標籤出現在 tags 裡。想確認上架時間與授權，這是最快的方法，公開倉庫也不用登入。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 Hub API 查建立日期與授權標籤",
+          "code": "# 公開倉庫不需要權杖\ncurl -s https://huggingface.co/api/models/openai/gpt-oss-20b\n\n# 只挑出建立時間、要不要申請，以及授權標籤\ncurl -s https://huggingface.co/api/models/meta-llama/Llama-3.1-8B-Instruct \\\n  | python3 -c \"import json,sys; d=json.load(sys.stdin); print(d['createdAt'], d['gated'], [t for t in d['tags'] if t.startswith('license:')])\""
+        },
+        {
+          "type": "paragraph",
+          "text": "舉例來說，2026 年 9 月 14 日查詢時，openai/gpt-oss-20b 的 createdAt 是 2025-08-04，tags 帶著 license:apache-2.0；meta-llama/Llama-3.1-8B-Instruct 的 createdAt 是 2024-07-18，gated 是 manual，授權標籤是 license:llama3.1。同一個模型的量化版本常由第三方重新上傳，建立日期與授權都要各自確認。"
+        },
+        {
+          "type": "link",
+          "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
+          "url": "https://mokaair.com/zh-TW/life/qwen-alibaba-models-guide"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+        },
+        {
+          "type": "heading",
+          "text": "下載到自己的電腦：指令、Python 與快取位置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方套件 huggingface_hub 帶的指令叫 hf。下載整個倉庫就給倉庫名稱，要單一檔案再加檔名；大倉庫可以用 include 與 exclude 只挑要的檔案，也可以先用 dry-run 看會下載幾個檔、總共多大。想放進指定資料夾而不是快取，用 local-dir。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 hf 指令下載模型檔案",
+          "code": "# 先看看會下載什麼，不會真的抓\nhf download openai/gpt-oss-20b --dry-run\n\n# 整個倉庫\nhf download HuggingFaceH4/zephyr-7b-beta\n\n# 只要單一檔案\nhf download openai-community/gpt2 config.json\n\n# 只要 safetensors，排除半精度的那幾個檔\nhf download stabilityai/stable-diffusion-xl-base-1.0 --include \"*.safetensors\" --exclude \"*.fp16.*\"\n\n# 放到指定資料夾，而不是快取\nhf download adept/fuyu-8b --local-dir ./fuyu"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "三行 Python 下載一個檔案或整個倉庫",
+          "code": "from huggingface_hub import hf_hub_download, snapshot_download\n\nprint(hf_hub_download(repo_id=\"google/pegasus-xsum\", filename=\"config.json\"))\nprint(snapshot_download(repo_id=\"lysandre/arxiv-nlp\"))"
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有指定資料夾時檔案會進快取。快取位置由 HF_HOME 決定，預設是家目錄底下的 .cache/huggingface，模型與資料集存在它下面的 hub 子資料夾，權杖也放同一個目錄。硬碟快滿時，hf cache ls 列出快取了哪些倉庫、各佔多少空間，hf cache rm 刪掉指定倉庫，hf cache prune 清掉沒被分支或標籤指到的舊版本與中斷下載的暫存檔。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/huggingface-guide/diagram-1.svg",
+          "alt": "五段流程圖：搜尋與篩選、讀模型頁、確認授權與 gated、下載、本機執行，右欄各有一段說明",
+          "width": 1600,
+          "height": 900,
+          "caption": "從搜尋到本機執行的五個關卡，右欄是每一關要看的東西與要下的指令。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "下載回來的檔案交給誰執行取決於格式。官方 GGUF 說明頁列出四個能直接吃 GGUF 的開源工具：llama.cpp、LM Studio、GPT4All 與 Ollama；safetensors 這類檔案則常用 transformers 之類的函式庫載入。先決定用哪個工具再挑檔案，比先抓一堆權重省事。"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "LM Studio 入門：圖形介面跑本機模型",
+          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "Spaces、方案價格與上傳自己的模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Spaces 是 Hub 的第三個區，放的是能在瀏覽器裡直接執行的示範應用，官方提供 Gradio、Docker 與純靜態 HTML 三種 SDK。開別人的公開 Space 來試用不用付錢也不用登入，這是在下載幾十 GB 權重之前，先確認一個模型行不行的最省事方法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自己建立 Space 就有條件。官方文件寫著：靜態 Space 對所有人免費；會跑運算的 Gradio 與 Docker Space 需要付費方案才能建立，個人帳號要 PRO，組織要 Team 或 Enterprise；狀態正常的免費個人帳號仍可放最多 2 個跑在 ZeroGPU 上的 Gradio Space。每個 Space 預設 16 GB 記憶體、2 個 CPU 核心與 50 GB 非永久磁碟，預設的 CPU Basic 硬體不收費，升級按小時計價，CPU Upgrade 每小時 0.03 美元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "方案頁當天列出 PRO 每月 9 美元，Team 每位使用者每月 20 美元，Enterprise 每位使用者每月 50 美元。方案頁沒有另外列免費方案的價目卡，但速率限制頁把 Free user 當成一個層級，所以一般帳號本身不用付費；官網沒有新台幣定價，金額以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想把自己微調或量化的模型放上去，建立倉庫的入口是網站上的 New 選單。官方入門文件說 License 欄位可以先留白，之後再到模型卡的 YAML 補上；代號用 other 的時候，把授權全文放進倉庫的 LICENSE 檔，並在 license_name 給它一個名字。模型若是從別人的權重微調而來，上游授權的條款會跟著走。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "功能",
+            "在哪裡",
+            "要不要登入"
+          ],
+          "rows": [
+            [
+              "讀模型卡與檔案清單",
+              "模型頁的 Model card 與 Files and versions 分頁",
+              "不用"
+            ],
+            [
+              "下載公開模型",
+              "hf download 指令，或 Files 分頁",
+              "不用，匿名配額較低"
+            ],
+            [
+              "查建立日期與授權標籤",
+              "Hub API 的 api、models 路徑",
+              "不用"
+            ],
+            [
+              "下載 gated 模型",
+              "先在模型頁按同意，再用權杖下載",
+              "要"
+            ],
+            [
+              "建立存取權杖",
+              "設定頁的 Access Tokens 分頁",
+              "要"
+            ],
+            [
+              "試用別人的公開 Space",
+              "Spaces 區",
+              "不用"
+            ],
+            [
+              "建立會跑運算的 Space",
+              "建立 Space 的頁面",
+              "要，而且要付費方案"
+            ],
+            [
+              "上傳自己的模型",
+              "網站上的 New 選單",
+              "要，需要 write 或 fine-grained 權杖"
+            ]
+          ],
+          "caption": "功能與登入需求對照，查證於 2026 年 9 月。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face Hub 文件首頁（官方文件，倉庫種類與數量）",
+          "url": "https://huggingface.co/docs/hub/index",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "The Model Hub（官方文件，模型區說明）",
+          "url": "https://huggingface.co/docs/hub/models-the-hub",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Model Cards（官方文件，模型卡與 YAML 中繼資料）",
+          "url": "https://huggingface.co/docs/hub/model-cards",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Licenses（官方文件，授權代號清單與提醒）",
+          "url": "https://huggingface.co/docs/hub/repositories-licenses",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gated models（官方文件，存取請求與核准流程）",
+          "url": "https://huggingface.co/docs/hub/models-gated",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "User access tokens（官方文件，權杖角色與建議）",
+          "url": "https://huggingface.co/docs/hub/security-tokens",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search（官方文件，全文搜尋與篩選網址）",
+          "url": "https://huggingface.co/docs/hub/search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GGUF（官方文件，GGUF 篩選網址與可用工具）",
+          "url": "https://huggingface.co/docs/hub/gguf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Downloading models（官方文件，下載方式）",
+          "url": "https://huggingface.co/docs/hub/models-downloading",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Spaces Overview（官方文件，SDK、硬體與建立條件）",
+          "url": "https://huggingface.co/docs/hub/spaces-overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hub rate limits（官方文件，各層級速率限制）",
+          "url": "https://huggingface.co/docs/hub/rate-limits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Getting Started with Repositories（官方文件，建立倉庫與授權欄位）",
+          "url": "https://huggingface.co/docs/hub/repositories-getting-started",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hub API Endpoints（官方文件，Hub API 入口）",
+          "url": "https://huggingface.co/docs/hub/api",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "huggingface_hub Command Line Interface（官方文件，hf 指令）",
+          "url": "https://huggingface.co/docs/huggingface_hub/guides/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "huggingface_hub Download files from the Hub（官方文件，下載函式）",
+          "url": "https://huggingface.co/docs/huggingface_hub/guides/download",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "huggingface_hub Quickstart（官方文件，安裝與登入）",
+          "url": "https://huggingface.co/docs/huggingface_hub/quick-start",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "huggingface_hub Environment variables（官方文件，HF_HOME 與 HF_TOKEN）",
+          "url": "https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face Pricing（官方方案頁，PRO 與 Team 月費）",
+          "url": "https://huggingface.co/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face Privacy Policy（官方隱私政策）",
+          "url": "https://huggingface.co/privacy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face Terms of Service（官方服務條款）",
+          "url": "https://huggingface.co/terms-of-service",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

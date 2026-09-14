@@ -1,0 +1,322 @@
+{
+  "slug": "claude-code-legacy-refactoring-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 186,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜接手缺測試舊專案：先留住行為再重構",
+      "description": "用小步變更拆出可測試模組。舊程式重複很多，不代表可以一口氣改寫後再看結果。本篇先記錄待辦統計的既有行為，補上能保護空資料、混合狀態及同名項目的測試，再分三個小差異整理模組。每一步都能說明保留了什麼，以及出問題時如何回復。",
+      "hero": {
+        "src": "/guides/claude-code-legacy-refactoring-workshop/hero.jpg",
+        "alt": "接手缺測試舊專案：先留住行為再重構：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "舊程式重複很多，不代表可以一口氣改寫後再看結果。本篇先記錄待辦統計的既有行為，補上能保護空資料、混合狀態及同名項目的測試，再分三個小差異整理模組。每一步都能說明保留了什麼，以及出問題時如何回復。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-maintain-existing-project",
+              "text": "逐步重構入門"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tdd-debugging-workshop",
+              "text": "紅綠除錯實作"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-86.zip",
+              "text": "第 86 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，開啟 starter。需要 Git 和 Node.js 22；閱讀約 20 分鐘，實作約 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先區分已知行為與理想規格"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-legacy-refactoring-workshop/diagram-1.svg",
+          "alt": "先區分已知行為與理想規格 → 建立特性測試，先保留輸出 → 第一個小差異：固定模組邊界",
+          "width": 1600,
+          "height": 900,
+          "caption": "先區分已知行為與理想規格 → 建立特性測試，先保留輸出 → 第一個小差異：固定模組邊界",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "材料的 stats.js 使用多次迴圈計算 total、completed、active，回傳固定形狀的物件。程式可以運作，但重複遍歷讓邏輯分散。這次重構目標是保持有效待辦資料的輸出，整理成一個容易測試的函式，不新增過濾、登入或儲存功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "舊程式可能對不合法資料有奇怪行為，例如把非布林 completed 當成真假值。先記錄這是觀察到的實作，不直接把它當成正式規格。課程資料契約使用布林值；若真實專案需要改驗證規則，應另立變更與驗收，避免與結構整理混在一起。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：檢查現在的基準",
+          "code": "node --test tests/model.test.mjs tests/stats.test.mjs\ngit status --short\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "下載包附了可供對照的統計測試，讀者也應自己讀過每個斷言。若不使用 Git，至少保存原始檔副本；使用 Git 時，先在獨立練習目錄建立乾淨基準，再逐步提交。不要在含其他未完成工作的目錄直接用全檔案回復命令。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立特性測試，先保留輸出"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試應包含空陣列、全部未完成、全部已完成、混合狀態與同名不同 id。檢查 total 等於項目數，completed 與 active 的分組符合輸入，原始資料不被修改。這些是可觀察行為，不需要斷言程式一定跑了幾次 for 迴圈。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "寫入 tests/stats.test.mjs",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport {countTodos} from '../stats.js';\ntest('統計保留空資料與混合狀態的契約',()=>{\n  assert.deepEqual(countTodos([]),{total:0,completed:0,active:0});\n  const items=[{id:'a',title:'同名',completed:false},{id:'b',title:'同名',completed:true}];\n  const before=structuredClone(items);\n  assert.deepEqual(countTodos(items),{total:2,completed:1,active:1});\n  assert.deepEqual(items,before);\n});\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "先對舊版執行，預期通過。這與上一篇先寫失敗測試修 bug 不同：目前要保留正常行為，所以先取得穩定基準。若這時失敗，先查測試假設是否符合目前需求，不要在尚未釐清時開始重構。"
+        },
+        {
+          "type": "paragraph",
+          "text": "真正缺測試的專案可以先從使用者最常走的路徑開始，不必一次補齊所有細節。選擇能保護本次改動的案例，記錄未覆蓋範圍。測試基準是幫助定位，不是宣告整個舊系統沒有任何缺陷。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一個小差異：固定模組邊界"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認統計只接受資料並回傳數字，不直接操作 DOM 或讀取 localStorage。材料已把舊統計放在 stats.js，真實專案若仍混在畫面事件中，第一步只移出函式並保留相同呼叫方式，先不順手改命名、輸入格式或計算規則。"
+        },
+        {
+          "type": "paragraph",
+          "text": "請 Claude 說明要移動的內容與保留的介面，完成後跑同一測試。檢查 diff，確認資料讀取和畫面渲染沒有被一起改寫。保存第一個回復點，記錄它只改模組位置與引用，不包含新功能。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：限制第一步範圍",
+          "code": "整理 stats.js 的模組邊界，保持 countTodos(items) 的輸入與回傳形狀。\n先讀測試，不新增功能，也不更改有效資料的語義。\n每完成一個可獨立檢查的小差異，先執行測試並說明結果。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "模組抽離後若出現 import 路徑錯誤，先修引用，而不是把原檔全部貼回去並宣稱已解決。這個失敗可以清楚歸因於第一步；如果同時換掉全部算法，就很難知道是路徑還是計算導致問題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二個小差異：合併重複計算"
+        },
+        {
+          "type": "paragraph",
+          "text": "在不變更介面的前提下，將多次遍歷整理成一個累計流程。你可以採 reduce，也可以使用單一迴圈；本篇不把較短程式碼當成唯一正確答案。選擇團隊容易閱讀且測試能保護的形式，並說明為何仍保留相同結果。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "寫入 stats.js：一種可對照的參考",
+          "code": "export function countTodos(items) {\n  return items.reduce((count,item)=>({\n    total:count.total+1,\n    completed:count.completed+(item.completed?1:0),\n    active:count.active+(item.completed?0:1)\n  }),{total:0,completed:0,active:0});\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "重跑統計與核心測試，確認空陣列回傳零而不是拋錯。這個細節由 reduce 的初始值提供，不能因為一般混合資料通過就忽略空值。參考實作沒有修改輸入資料，測試也應明確檢查這個契約。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要未量測就宣稱效能大幅提高。本課資料很小，主要成果是計算邏輯集中、介面清楚。若要討論效能，另設固定資料量與量測方法，避免把程式看起來更短當成速度證據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三個小差異：整理呼叫與文件"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認 app.js 或其他呼叫者仍以完整待辦清單計算統計，而不是意外改成目前篩選後的清單。兩者都可能得到合理數字，卻有不同產品語義。先讀需求，再決定畫面應顯示哪一種，不在重構中默默改掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若本次課程沒有把統計接入 UI，明確記錄資料模組已整理、畫面整合未做。需要練習完整串接時，再讓 UI 匯入 countTodos 並顯示 total、completed、active，使用新增、切換、刪除三種操作驗證數字更新。不要把只跑資料測試寫成畫面已完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新 CLAUDE.md 或交接文件中的模組位置及測試命令，移除已失效的舊路徑。文件變更應與實際檔案一致；不是每段舊說明都需要保留在常駐規則，歷史決定可放到 decisions.md。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "故障練習與回復"
+        },
+        {
+          "type": "paragraph",
+          "text": "故意在第二步移除 reduce 的初始值，對空陣列重跑測試。預期失敗，且能定位到計算改動。恢復第二步的正確內容，再確認第一步的模組邊界仍保留；不必撤銷所有已驗證的工作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 Git 時先查目前差異與提交，確認要回復的是哪一個小變更。未提交內容與已提交內容使用的方式不同，不能把 reset 或 restore 當成無條件的清理命令。最簡單的練習方式是對照保存的三個提交，逐一檢查並保留需要的成果。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "變更步驟",
+            "應保持不變",
+            "驗證"
+          ],
+          "rows": [
+            [
+              "模組邊界",
+              "函式介面及輸出",
+              "相同特性測試"
+            ],
+            [
+              "計算整理",
+              "空值、混合狀態、來源資料",
+              "核心與統計測試"
+            ],
+            [
+              "呼叫與文件",
+              "產品顯示語義",
+              "引用檢查、必要時瀏覽器"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把重構拆成可獨立回復的步驟"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次提交只增加行為測試，確認原版本也能通過。第二次才移動或整理實作，保留相同測試。第三次視需要改善命名與重複內容。這些步驟都能各自審查，若某一步出現回歸，可以縮小到該步驟而不必拆解整包變更。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本課提供的統計函式已獨立成小模組，目的是讓你直接比較舊寫法和新寫法。接手自己的專案時，函式可能仍混在 UI 裡，先找出資料輸入和輸出，再決定是否拆檔。不能僅因為範例放在獨立檔案，就斷言所有專案都必須使用相同結構。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整理後確認空陣列、全部完成與部分完成仍得到相同統計。若新需求要求改變統計意義，將它獨立成行為變更，更新需求與測試。把新功能和保持行為的整理分開描述，審查者才能知道哪一個差異是刻意改變。"
+        },
+        {
+          "type": "paragraph",
+          "text": "遇到效能疑慮先用代表性資料量測，不以程式行數少或迴圈少推定速度更快。這個小練習以可讀性和行為一致為判準，沒有提供正式環境的效能提升證據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存重構前的基準提交，讓讀者可以重新執行相同測試比較行為。若沒有基準，事後很難分辨變更是整理程式還是改變既有需求。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成判準與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付既有行為清單、三個可說明的小差異、每步測試紀錄及一個實際做過的回復案例。已知缺陷與本次保持的正常契約分開，不用把所有舊行為都視為理想需求。若只完成資料模組，報告就寫資料模組，避免擴大完成範圍。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是新增「統計只顯示目前篩選結果」的需求，先說明它為何屬於產品行為變更，再另外建立測試與提交。接著可請"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-subagent-review-workshop",
+              "text": "專責審查代理"
+            },
+            {
+              "type": "text",
+              "text": "檢查這個變更，並由你自己核對每項發現的證據。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Create custom subagents",
+          "url": "https://code.claude.com/docs/en/sub-agents",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Orchestrate teams of Claude Code sessions",
+          "url": "https://code.claude.com/docs/en/agent-teams",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue local sessions from any device with Remote Control",
+          "url": "https://code.claude.com/docs/en/remote-control",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

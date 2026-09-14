@@ -1,0 +1,248 @@
+{
+  "slug": "domain-registrar-transfer",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "網域換註冊商：移轉鎖、授權碼與 DNS 保持運作",
+      "description": "網域換註冊商，移動的是註冊管理關係，網站主機與郵件不會因此自動搬家。本篇整理移轉資格、常見鎖定原因、授權碼取得與申請流程，並用 DNS 保存、名稱伺服器及收發信驗收表，協助台灣使用者安排 .com 等網域的管理交接，也提醒 .tw 等網域應核對各自適用規則。",
+      "hero": {
+        "src": "/guides/domain-registrar-transfer/hero.jpg",
+        "alt": "原創文件、管理盾牌與主機圖卡，表示授權、管理交接及解析持續運作。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想把網域集中在同一個帳號管理，或改用比較容易操作的註冊商，通常不需要重建整個網站。這項工作主要是把網域的註冊管理關係交給另一家服務，原本的網站主機與信箱可以各自維持原位，前提是相關解析服務能持續運作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以把這次交接分成兩張清單：一張是誰管理網域、何時到期及如何續約；另一張是這個名稱目前把網站和郵件指向哪裡。兩張都核對完，才不會遇到新帳號看得到網域，客戶卻無法開站或寄信的情況。"
+        },
+        {
+          "type": "heading",
+          "text": "確認要做的是註冊商移轉",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "更換主機、變更 DNS 代管、更改網域持有人與轉到另一家註冊商，都是不同操作。若只是讓原網域使用新主機，可能只需要調整網站解析；若要把同一個網域放到另一個管理平台，才進入註冊商移轉流程。先確認目的，避免一次啟動不必要的變更。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新註冊商也必須支援你的網域後綴與目前狀態。除了移入費用，還要檢查之後的續約、幣別、付款方式及 DNS 功能。有些服務對名稱伺服器使用方式有自己的條件，不能只比較第一年的價格，就假設移入後能維持原來所有設定。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "查出目前註冊商、網域後綴、到期日與管理帳號。",
+            "確認新註冊商接受該網域，並閱讀移入與續約條件。",
+            "決定這次是否同時更換 DNS；若會更換，另排解析交接。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "查看資格與鎖定原因，不只找解鎖按鈕",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以適用 ICANN 政策的一般頂級網域為例，查證日的官方生效政策仍列有初次註冊後、前次註冊商移轉後，以及特定持有人變更後的六十天相關限制。各情境的條件與可選擇安排不同，不能把「滿六十天」當成所有網域都一定可移轉的唯一判斷。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般可由持有人解除的移轉鎖，與政策、爭議或其他狀態造成的限制也不同。先查看帳號顯示的原因與可移轉日期，資料不一致時請原註冊商說明。若已在準備移轉，不要順手更改持有人資料而未閱讀影響；某些變更可能觸發新的鎖定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文的 ICANN 流程不能直接套用所有國碼網域。.tw、.台灣 或其他後綴，應核對管理機構與受理註冊商的現行規則。遇到到期、贖回或爭議狀態時，先釐清該狀態的處理方式，再安排移轉，不要等待網站停擺後才嘗試用換註冊商解決。"
+        },
+        {
+          "type": "heading",
+          "text": "在移轉前保存 DNS 與郵件依賴",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把名稱伺服器、網站 A 或 AAAA 記錄、CNAME、郵件 MX 及相關 TXT 記錄保存成可讀清單，子網域與驗證記錄也列入。這份清單是交接基準，記錄目前值、用途與負責服務。只截首頁畫面，日後無法知道哪筆郵件驗證被漏掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "名稱伺服器名稱保持不變，不代表原註冊商一定會在移出後繼續提供 DNS。Namecheap 的官方移入說明便區分外部代管與原註冊商預設 DNS 的情況。先向原服務確認移出後是否保留解析；若需要換 DNS，應先建立完整記錄並驗證，再安排註冊管理移轉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "已啟用 DNSSEC 或使用自訂名稱伺服器的網域，另記錄相關設定，依新舊服務文件交接。不要把所有安全功能一律關閉當成通用步驟；要知道哪一項需要更新、何時驗證，以及如何恢復正常保護。若不熟悉，提供設定清單給兩邊支援確認。"
+        },
+        {
+          "type": "heading",
+          "text": "取得授權碼，再向新註冊商提出申請",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "授權碼可能被稱為 Auth-Code、AuthInfo、EPP code 或 transfer code，用來協助確認移轉授權。依原註冊商的帳號流程取得，並在需要時解除可操作的移轉鎖。授權碼應只填入已確認的新註冊商正式移入介面，不要放進公開截圖或一般協作文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在新註冊商輸入完整網域，核對拼字與後綴，再填授權碼並確認付款項目。移轉期間可能需要依通知確認或處理例外，請直接登入官方帳號查看狀態，並確保目前聯絡信箱可以收信。沒有收到郵件時，先查垃圾郵件與帳號內通知，不要連續重送申請。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "登入原註冊商，確認資格、取得授權碼並依流程解除移轉鎖。",
+            "登入新註冊商的移入頁，核對網域、代管條件、費用及申請摘要。",
+            "提交後保存訂單或案件識別碼，追蹤兩邊狀態與必要確認。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "依實際狀態處理等待與失敗",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "付款完成、申請已送出與註冊商已變更，是不同狀態。不要看到扣款就關閉舊帳號，也不要因為一天沒有變化就取消重來。依服務顯示的預計處理時間觀察；超過時間時提供案件編號、狀態與錯誤訊息，讓支援能查到同一筆申請。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若顯示授權碼錯誤，確認是否有多餘空白、是否使用最新產生的碼，以及是否填到正確網域。若是鎖定、持有人確認或網域狀態問題，處理對應原因，重新產生授權碼不一定有用。除非官方流程需要，不要同時在多家註冊商對同一網域提出移入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "移轉過程中，既有網站或信箱如果突然失效，先檢查 DNS 回應與原解析服務狀態，再查主機服務。註冊移轉不是網站內容部署，兩者的故障證據不同。保留故障發生時間與修改紀錄，可以幫助判斷問題出現在申請、DNS 交接或其他服務。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後檢查管理、解析與帳務",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "確認新註冊商帳號可以管理該網域，並以適用的官方查詢服務核對註冊商狀態。接著檢查名稱伺服器與重要記錄，使用不同網路開啟網站，再從外部信箱寄信與回覆。移入完成通知只證明註冊管理交接，不取代網站和郵件驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新核對到期日、自動續約、付款方式、聯絡資訊與帳號保護。移入費是否增加註冊期間、增加多少，以及剛續約後移轉的例外，都依網域及服務條件確認，不把「一定再送一年」寫成通則。把下一次續約日記入日曆，並保留付款與移轉紀錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後整理舊帳號仍有哪些主機、DNS、郵件或其他網域。只停止不再需要的項目，避免把仍在使用的服務一起取消。保留一份更新後的網域交接表，日後換人管理時，就能清楚知道註冊商、解析與網站主機各由誰負責。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/domain-registrar-transfer/diagram-1.svg",
+          "alt": "原創四步驟圖解：確認移轉資格，保存 DNS 與郵件清單，使用授權碼申請，再驗證註冊管理和網站郵件。",
+          "width": 1600,
+          "height": 900,
+          "caption": "移轉完成後，仍要確認每一項依賴網域的服務。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "要交接的項目",
+            "確認位置",
+            "完成證據"
+          ],
+          "rows": [
+            [
+              "註冊管理",
+              "新註冊商與官方查詢",
+              "正確網域已由新服務管理"
+            ],
+            [
+              "移轉資格",
+              "原註冊商狀態與適用政策",
+              "限制原因清楚且符合申請條件"
+            ],
+            [
+              "DNS 解析",
+              "名稱伺服器及記錄清單",
+              "網站與子網域正常解析"
+            ],
+            [
+              "電子郵件",
+              "MX、驗證與實際信箱",
+              "外部寄入及回覆成功"
+            ],
+            [
+              "續約與權限",
+              "新帳號帳務設定",
+              "到期日、付款與接手人已確認"
+            ]
+          ],
+          "caption": "註冊商移轉與服務驗收分別留下紀錄。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要等到最後一天才安排",
+          "text": "移轉可能需要處理鎖定、聯絡確認或付款例外。先核對到期狀態並保留處理時間；已到期的網域要按其適用規則處理，不能假設送出移轉申請就會自動恢復網站。"
+        },
+        {
+          "type": "link",
+          "text": "網域註冊與管理基礎",
+          "url": "https://mokaair.com/zh-TW/life/domain-registration-guide"
+        },
+        {
+          "type": "link",
+          "text": "辨識 DNS 記錄與故障",
+          "url": "https://mokaair.com/zh-TW/life/dns-records-troubleshooting"
+        },
+        {
+          "type": "link",
+          "text": "網域與主機續約清單",
+          "url": "https://mokaair.com/zh-TW/life/domain-hosting-renewal"
+        }
+      ],
+      "sources": [
+        {
+          "title": "ICANN：現行 Transfer Policy",
+          "url": "https://www.icann.org/en/contracted-parties/accredited-registrars/resources/domain-name-transfers/policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ICANN：網域持有人移轉常見問題",
+          "url": "https://www.icann.org/resources/pages/name-holder-faqs-2017-10-10-en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Namecheap：移入時名稱伺服器與 DNS",
+          "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/257/83/will-the-nameservers-associated-with-my-domain-be-transferred-over/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare：註冊商移入前置要求",
+          "url": "https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TWNIC：網域相關政策入口",
+          "url": "https://www.twnic.tw/dnservice/policy/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

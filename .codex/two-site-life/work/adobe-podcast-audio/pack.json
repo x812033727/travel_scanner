@@ -1,0 +1,242 @@
+{
+  "slug": "adobe-podcast-audio",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Adobe Podcast 音訊處理：降噪前後應該檢查什麼",
+      "description": "Adobe Podcast 的 Enhance Speech 可以協助處理語音錄音，但降噪後仍要檢查字尾、停頓和環境聲。本文以原創市集攤主訪談情境，整理上傳前準備、現行方案限制、語音與音樂分離，以及處理前後的聽覺驗收方法。附比較表、操作步驟和自繪圖解，幫助你保留原始錄音、避免過度處理，再把適合的版本交給剪輯流程。",
+      "hero": {
+        "src": "/guides/adobe-podcast-audio/hero.jpg",
+        "alt": "Mokaair 原創文件、螢幕與資料夾插圖，代表音訊問題紀錄、降噪比較與保存原始檔。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "市集攤主在帳篷旁接受訪談，錄音裡同時有冷藏櫃聲、隔壁音樂和顧客說話。把所有背景聲壓到幾乎消失，未必就是最適合的成品；如果攤主的字尾變薄、停頓被切斷，或市集氣氛完全消失，故事也會受到影響。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以這段原創情境說明 Adobe Podcast 音訊處理流程，依 2026 年 9 月 14 日查閱的 Adobe 官方文件整理。沒有上傳錄音或進行聽感實測；範例中的驗收方法是供你操作時使用的檢查清單，不代表工具一定能修復某種錄音。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先確認需要修正的是哪一種問題"
+        },
+        {
+          "type": "paragraph",
+          "text": "先完整聽一遍原檔，把問題記成可定位的描述，例如開頭有連續低鳴、第二段音樂蓋過人聲、結尾講者轉頭後變小聲。不要只寫音質不好，因為不同問題需要不同判斷。本例的主要目標是讓攤主說的品項與故事聽得清楚，同時保留適量現場感。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Enhance Speech 著重語音清晰度、噪音及回音處理；Adobe FAQ 說明它不負責跨語言翻譯，效果會受說話清楚程度與背景噪音影響。降噪、轉寫文字、剪掉片段和加入音樂是不同工作，不應只完成其中一步就宣稱整段訪談已經後製完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把失真或聽不懂的片段另外標出。若原本沒有錄到完整聲音，處理後變得流暢也不能當作受訪者原話的證據。重要資訊應回聽原檔或向受訪者確認；必要時補錄一句說明，比反覆處理到聲音看似乾淨卻無法確認內容更可靠。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "上傳前保存原檔，核對格式與方案"
+        },
+        {
+          "type": "paragraph",
+          "text": "先保存一份不再修改的原始錄音，另外建立處理副本。記下檔名、長度與問題時間點，避免下載後只剩數個名稱相近的版本。訪談內容可能包含私人對話或背景人物聲音，上傳網頁服務前應確認用途和權限，不把本機選檔視為只在自己的電腦運算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方技術文件列出 Enhance Speech 支援 WAV、MP3、M4A、AAC、FLAC 等音訊，以及部分影片格式，但帳戶方案會再限制功能。免費方案目前只處理音訊，影片支援屬付費功能。檔案格式、單檔大小、單檔長度與每日額度要一起符合，不能只看到副檔名正確就略過其他條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 8 月 30 日起，Adobe 不再向新用戶單獨販售 Podcast Premium，目前新購入口導向包含其功能的 Firefly Pro。既有訂戶有不同安排，應在帳戶核對；本篇不提供固定台幣價格，也不沿用舊文章的試用或無上限描述。先確認要用的功能，再決定是否需要變更方案。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先處理短段，再比較完整句子"
+        },
+        {
+          "type": "paragraph",
+          "text": "登入 Adobe Podcast 的 Enhance Speech，使用 Choose files 選擇處理副本，等待上傳與分析完成。第一次可先挑一段同時包含清楚人聲、噪音及停頓的短片段，用來確認方向。這是驗收樣本，不是只挑效果最好的一句當作整段錄音的品質代表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "播放原始版本和處理版本時，盡量把聽感音量調到接近，再比較同一句話。較大聲容易讓人覺得更清楚，卻未必表示字詞更完整。本例先聽品項名稱的起音與收尾，再聽講者吸氣、笑聲及句子之間的空隙，記下改善和新增問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有強度調整功能時，從較保守的設定逐步比較，而不是直接認定最高值最好。免費方案沒有相同的強度控制，若結果不合適，可保留原版、改用其他處理方式或改善錄音重錄。每次變更只調一個主要條件，才知道差異來自哪裡。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "語音、音樂與環境聲可以分開評估"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe 在 2026 年 3 月的更新中加入進階音源分離，付費功能可分別調整語音、背景噪音及音樂，並下載分離音軌。這讓本例能降低隔壁攤位音樂，同時評估是否保留少量市集環境聲。功能提供調整空間，仍不代表分離後每一軌都完全沒有其他聲音殘留。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把音樂拉低後，仔細聽歌聲、節奏或殘響是否仍穿插在語音中，也確認人聲沒有跟著失去部分頻率。分離音軌是模型處理的結果，和現場每支麥克風分別錄下的原始軌不同。若本來就有獨立收音，應先保存並比較那些原始軌，避免白白失去更容易控制的素材。"
+        },
+        {
+          "type": "paragraph",
+          "text": "降低音樂不會自動解決所有權利問題。要公開使用錄影與聲音，仍須確認相關授權及是否有可辨識殘留，不把工具的移除音樂按鈕當成免責證明。若音樂是後製要加的配樂，較容易管理的做法是先處理乾淨語音，再加入已確認授權的音軌。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "下載後在剪輯情境重新驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "Enhance Speech 的技術說明表示，下載會保留上傳的檔案格式，例如 MP3 進、MP3 出；這不代表檔案完全沒有重新處理，也不表示轉成 WAV 就能補回壓縮時失去的細節。把下載版本另命名，記錄使用模式和調整值，避免覆蓋原始素材。"
+        },
+        {
+          "type": "paragraph",
+          "text": "將結果放回影片時間軸，檢查長度、起點與嘴形同步。若先裁出短段處理，放回時也要保留原來的位置依據。本例在攤主指向商品時核對那一句話是否仍同步，再檢查段落接縫有沒有突然變安靜、變大聲或環境聲跳動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用耳機檢查細節，再用一般喇叭或手機播放確認理解是否順暢。挑一種固定的驗收紀錄方式，例如時間點、原本問題、處理後變化及採用版本。完整聽完將交付的檔案，不能只在網頁預覽幾秒，就假設下載、剪接和最終輸出都保持相同結果。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "保存原檔，記錄噪音、失真與需確認的時間點。",
+            "核對格式、長度、額度及資料用途，再上傳短段副本。",
+            "以接近音量比較原版和處理版，檢查字尾與背景聲。",
+            "下載另存，放回時間軸核對同步、接縫及完整播放效果。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "分清 Enhance Speech 與 Studio 的用途"
+        },
+        {
+          "type": "paragraph",
+          "text": "只需改善既有錄音時，可以從 Enhance Speech 開始；若要錄製遠端訪談、依逐字稿剪輯或管理多軌，才評估 Studio。兩者的瀏覽器支援、檔案上限和下載權益不同，不能把 Studio 文件中的規格直接套到 Enhance Speech。本篇的上限表只比較後者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Studio 的文字剪輯會影響對應音訊或影片，因此改逐字稿拼字與刪掉內容要分清操作目的。若後續使用轉寫功能，也應獨立確認所需語言和方案支援；Enhance Speech 不以特定語言為限制，並不代表 Studio 就能替所有語言自動產生合適字幕。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後保留原檔、採用版本與簡短處理紀錄，將疑似改變原意的片段列給審稿者。乾淨聲音是一個方向，讓讀者聽懂且保留受訪者的表達才是本例的交付標準。下一次錄音也可根據問題調整位置與收音，讓後製處理的負擔逐漸降低。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/adobe-podcast-audio/diagram-1.svg",
+          "alt": "四張卡片依序說明保留原檔、比較字詞、調整聲音層次與核對影片，避免只看噪音是否消失。",
+          "width": 1600,
+          "height": 900,
+          "caption": "處理強度越高不一定越好；保留原始版本，才能判斷改變是否適合內容。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Enhance Speech 項目",
+            "免費方案",
+            "目前付費功能"
+          ],
+          "rows": [
+            [
+              "可處理內容",
+              "音訊",
+              "音訊及支援的影片"
+            ],
+            [
+              "單檔大小上限",
+              "500 MB",
+              "1 GB"
+            ],
+            [
+              "單檔時間上限",
+              "30 分鐘",
+              "2 小時"
+            ],
+            [
+              "每日處理上限",
+              "1 小時",
+              "4 小時"
+            ],
+            [
+              "批次與強度調整",
+              "不提供",
+              "提供"
+            ],
+            [
+              "進階音源分離",
+              "不屬免費權益",
+              "語音、背景與音樂調整"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日查閱的 Enhance Speech 限制；新用戶付費入口為 Firefly Pro，實際權益以帳戶和當日方案確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要用處理後聲音補定聽不清楚的原話",
+          "text": "降噪能協助理解，但重要用詞仍應回到原始錄音核對。保留無法確認的時間點，必要時請受訪者補充。"
+        },
+        {
+          "type": "link",
+          "text": "把音訊轉成可核對的逐字稿與字幕",
+          "url": "https://mokaair.com/zh-TW/life/transcription-desktop-tools"
+        },
+        {
+          "type": "link",
+          "text": "整理配樂與素材的使用授權",
+          "url": "https://mokaair.com/zh-TW/life/licensed-assets-workflow"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Adobe Podcast：現行方案與用量限制",
+          "url": "https://podcast.adobe.com/en/plans",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：Podcast Premium 方案變更 FAQ",
+          "url": "https://helpx.adobe.com/podcast/adobe-podcast-premium-plan-change-faq.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe Podcast：2026 年 3 月音源分離更新",
+          "url": "https://podcast.adobe.com/en/guides/whats-new-in-adobe-podcast-march-2026",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：Podcast FAQ",
+          "url": "https://helpx.adobe.com/podcast/adobe-podcast-faq.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：Podcast 技術需求與檔案格式",
+          "url": "https://helpx.adobe.com/podcast/technical-requirements.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe Podcast：Enhance Speech 操作與比較",
+          "url": "https://podcast.adobe.com/en/guides/what-is-enhance-speech",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

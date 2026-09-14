@@ -68,12 +68,12 @@ export function BlockedProfiles() {
   </section>;
 }
 
-export function ProfileView({ handle }: { handle: string }) {
+export function ProfileView({ handle, initial }: { handle: string; initial?: PublicProfile }) {
   const t = useTranslations("community");
   const { user } = useHeaderSession();
   const { me } = useCommunity();
   const router = useRouter();
-  const { data: profile, error, reload } = useResource<PublicProfile>(`/community/profiles/${encodeURIComponent(handle)}`);
+  const { data: profile, error, reload } = useResource<PublicProfile>(`/community/profiles/${encodeURIComponent(handle)}`, api, initial);
   const [busy, setBusy] = useState(false);
   const [actionError, setActionError] = useState<unknown>();
   async function action(kind: "follow" | "block" | "message") {

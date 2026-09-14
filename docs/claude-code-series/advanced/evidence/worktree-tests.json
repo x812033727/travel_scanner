@@ -1,0 +1,348 @@
+{
+  "passed": true,
+  "root": "<temporary-exercise>",
+  "base": "6dda1241ca597ba211009a3e337deabff4406ec8",
+  "head": "87c093547ca06ee636534964b1dc7f304e0cbd62",
+  "controlledConflict": true,
+  "coreTests": "✔ integrated filter keeps only active ids without changing source (3.7572ms)\n✔ 新增待辦會去除前後空白並保留既有資料 (3.5267ms)\n✔ 拒絕空白與過長內容 (0.1775ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1506ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1387ms)\nℹ tests 5\nℹ suites 0\nℹ pass 5\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 589.1401\n",
+  "remainingWorktrees": "worktree C:/Users/x8120/AppData/Local/Temp/mokaair-worktree-pNahsE/main\nHEAD 87c093547ca06ee636534964b1dc7f304e0cbd62\nbranch refs/heads/main\n\n",
+  "history": [
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "init",
+        "--initial-branch=main"
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": "Initialized empty Git repository in C:/Users/x8120/AppData/Local/Temp/mokaair-worktree-pNahsE/main/.git/\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "add",
+        "."
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": "warning: in the working copy of 'model.js', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/model.test.mjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'view-mode.txt', LF will be replaced by CRLF the next time Git touches it\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "commit",
+        "-m",
+        "Create exercise baseline"
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": "[main (root-commit) 6dda124] Create exercise baseline\n 4 files changed, 41 insertions(+)\n create mode 100644 model.js\n create mode 100644 package.json\n create mode 100644 tests/model.test.mjs\n create mode 100644 view-mode.txt\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": "6dda1241ca597ba211009a3e337deabff4406ec8\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "worktree",
+        "add",
+        "-b",
+        "lab/filter",
+        "<temporary-exercise>\\filter",
+        "6dda1241ca597ba211009a3e337deabff4406ec8"
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": "HEAD is now at 6dda124 Create exercise baseline\nPreparing worktree (new branch 'lab/filter')\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "worktree",
+        "add",
+        "-b",
+        "lab/labels",
+        "<temporary-exercise>\\labels",
+        "6dda1241ca597ba211009a3e337deabff4406ec8"
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": "HEAD is now at 6dda124 Create exercise baseline\nPreparing worktree (new branch 'lab/labels')\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "add",
+        "."
+      ],
+      "directory": "filter",
+      "exit": 0,
+      "output": "warning: in the working copy of 'view-mode.txt', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'filter.js', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/filter.test.mjs', LF will be replaced by CRLF the next time Git touches it\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "commit",
+        "-m",
+        "Add active filter"
+      ],
+      "directory": "filter",
+      "exit": 0,
+      "output": "[lab/filter 862a214] Add active filter\n 3 files changed, 3 insertions(+), 1 deletion(-)\n create mode 100644 filter.js\n create mode 100644 tests/filter.test.mjs\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "add",
+        "view-mode.txt"
+      ],
+      "directory": "labels",
+      "exit": 0,
+      "output": "warning: in the working copy of 'view-mode.txt', LF will be replaced by CRLF the next time Git touches it\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "commit",
+        "-m",
+        "Clarify display label"
+      ],
+      "directory": "labels",
+      "exit": 0,
+      "output": "[lab/labels e644aba] Clarify display label\n 1 file changed, 1 insertion(+), 1 deletion(-)\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "merge",
+        "--no-edit",
+        "lab/filter"
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": "Updating 6dda124..862a214\nFast-forward\n filter.js             | 1 +\n tests/filter.test.mjs | 1 +\n view-mode.txt         | 2 +-\n 3 files changed, 3 insertions(+), 1 deletion(-)\n create mode 100644 filter.js\n create mode 100644 tests/filter.test.mjs\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "merge",
+        "--no-edit",
+        "lab/labels"
+      ],
+      "directory": "main",
+      "exit": 1,
+      "output": "Auto-merging view-mode.txt\nCONFLICT (content): Merge conflict in view-mode.txt\nAutomatic merge failed; fix conflicts and then commit the result.\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "add",
+        "view-mode.txt"
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": "warning: in the working copy of 'view-mode.txt', LF will be replaced by CRLF the next time Git touches it\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "commit",
+        "-m",
+        "Preserve active filter and new label"
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": "[main 87c0935] Preserve active filter and new label\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "status",
+        "--porcelain"
+      ],
+      "directory": "filter",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "worktree",
+        "remove",
+        "<temporary-exercise>\\filter"
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "status",
+        "--porcelain"
+      ],
+      "directory": "labels",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "worktree",
+        "remove",
+        "<temporary-exercise>\\labels"
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": "87c093547ca06ee636534964b1dc7f304e0cbd62\n"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "user.name=Mokaair Lab",
+        "-c",
+        "user.email=lab@example.com",
+        "-c",
+        "commit.gpgsign=false",
+        "worktree",
+        "list",
+        "--porcelain"
+      ],
+      "directory": "main",
+      "exit": 0,
+      "output": "worktree C:/Users/x8120/AppData/Local/Temp/mokaair-worktree-pNahsE/main\nHEAD 87c093547ca06ee636534964b1dc7f304e0cbd62\nbranch refs/heads/main\n\n"
+    }
+  ]
+}

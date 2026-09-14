@@ -1,0 +1,434 @@
+{
+  "slug": "deploy-ai-built-site-to-vps",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
+      "description": "AI 幫你生出網站之後，最後一哩是放到自己的機器上。這篇走完通用流程：挑 VPS、用 SSH 金鑰登入並關掉密碼登入、開 ufw 與自動更新、用 rsync 或 git clone 送檔案、靜態站用 Caddy 或 Nginx 加 certbot 開 HTTPS、應用程式交給 systemd 跑並由反向代理轉發、設好 A 與 AAAA 記錄與 TTL，最後照檢查清單驗收。",
+      "hero": {
+        "src": "/guides/deploy-ai-built-site-to-vps/hero.jpg",
+        "alt": "插圖：左邊一個資料夾圖形沿著一條路徑連到中間的伺服器方塊，右邊是一個鎖頭與代表網域的圓形，下方有一行短標題",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "AI 幫你把網站做出來之後，剩下的不是寫程式，是搬家：把檔案放到一台永遠開著的機器上，讓網域指過去，再讓瀏覽器願意顯示那個鎖頭。三件事都有標準做法，走過一次，下一個專案照抄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇是通用流程，不綁主機商也不列價格：方案、地區與快照收費各家不同，以各家官網為準。從挑 VPS 走到 DNS 記錄與上線驗收，每一步都附一段可以交給 AI 代理的提示詞。指令讓它寫，按下 Enter 的人是你。"
+        },
+        {
+          "type": "heading",
+          "text": "先分清楚你要放的是哪一種網站",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先看一眼 AI 給你的資料夾。點兩下 index.html 就看得到畫面，那是靜態網站，伺服器只要把檔案原樣送出去。如果要先啟動一個程式、它會監聽某個連接埠才有畫面，那是應用程式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "差別只在中段：應用程式需要一個常駐服務，再由前面的網頁伺服器把請求轉進去。其餘步驟兩種完全一樣。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "靜態網站：只有 HTML、CSS、JavaScript 與圖片，沒有要啟動的程式。",
+            "應用程式：有 package.json（Node.js）或 requirements.txt（Python）。",
+            "分不出來，就把檔案清單貼給 AI，請它判斷並說出理由。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "Vibe coding：不會寫程式也能做出第一個網站",
+          "url": "https://mokaair.com/zh-TW/life/vibe-coding-first-website"
+        },
+        {
+          "type": "heading",
+          "text": "選 VPS：先看四個通用條件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "VPS 是一台租來的 Linux 虛擬機，你拿到管理者權限，也接下更新與備份的責任。各家的方案、地區與快照收費差很多，這篇不點名任何一家，只列四個條件，規格與費用以各家官網為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "機房地區：讀者主要在台灣，就從台灣、日本、新加坡挑，來回延遲摸得出來。",
+            "記憶體：靜態網站需求很低，應用程式會吃掉不少，以專案官方文件的最低需求為準。",
+            "作業系統：選 Ubuntu LTS，每兩年一版、有五年標準安全維護，目前最新是 26.04 LTS。",
+            "快照與備份：確認能不能建快照、能不能排程、要不要加錢。能還原，你才敢動設定。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "第一次登入就把門鎖好",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新機器上線幾分鐘就會有人來試密碼，所以第一次登入要做的不是佈署，是加固。順序不能顛倒：先產生金鑰、建立一般使用者、把公開金鑰送上去，確認登得進來才關掉密碼登入，最後開防火牆與自動安全更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "金鑰用 ssh-keygen 產生，私鑰留在自己的電腦、絕對不上傳。Ubuntu 官方文件寫著 root 帳號預設被停用，日常操作一律用一般使用者加 sudo。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "在自己的電腦產生金鑰，在伺服器建立一般使用者，再把公開金鑰送上去",
+          "code": "# 在你自己的電腦上執行：產生一把金鑰，私鑰留在本機\nssh-keygen -t ed25519 -C \"my-laptop\"\n\n# 用主機商給的帳號登入伺服器，建立一般使用者並加入 sudo 群組\nsudo adduser deploy\nsudo adduser deploy sudo\n\n# 回到自己的電腦，把公開金鑰送上去，再用新帳號登入試一次\nssh-copy-id deploy@203.0.113.10\nssh deploy@203.0.113.10"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認新帳號用金鑰進得去、也能 sudo，再動 SSH 設定。設定檔在 /etc/ssh/sshd_config，預設會載入 /etc/ssh/sshd_config.d/ 底下的 .conf 檔，OpenSSH 取第一個讀到的值，新增一個檔案比改主檔保險。手冊記載 PasswordAuthentication 預設是 yes。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "新增 /etc/ssh/sshd_config.d/99-hardening.conf，關掉密碼登入與 root 登入",
+          "code": "PubkeyAuthentication yes\nPasswordAuthentication no\nPermitRootLogin no"
+        },
+        {
+          "type": "paragraph",
+          "text": "改完先用 sshd -t 驗證語法再重啟，原本的視窗不要關，另開一個視窗測登入。防火牆用 ufw，它的手冊寫著安裝後預設關閉、進入方向預設拒絕，也提醒啟用時可能切斷現有連線，先放行 SSH 再啟用。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "檢查設定、重啟 ssh，再開防火牆與自動安全更新",
+          "code": "# 先驗證語法，確認沒問題再重啟；原本的視窗留著不要關\nsudo sshd -t\nsudo systemctl restart ssh.service\n\n# 防火牆：先放行 SSH，再放行網站要用的兩個連接埠，最後才啟用\nsudo ufw default deny incoming\nsudo ufw allow 22\nsudo ufw allow 80\nsudo ufw allow 443\nsudo ufw enable\nsudo ufw status verbose\n\n# 自動安全更新\nsudo apt update\nsudo apt install unattended-upgrades\nsudo unattended-upgrade -v --dry-run"
+        },
+        {
+          "type": "paragraph",
+          "text": "自動安全更新交給 unattended-upgrades。Ubuntu 文件說明，行為寫在 /etc/apt/apt.conf.d/ 的 50unattended-upgrades，開關寫在同一層的 20auto-upgrades，設成 1 就是每天執行。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜專案資料與操作安全",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-project-data-safety"
+        },
+        {
+          "type": "heading",
+          "text": "把檔案送上去：rsync 或 git clone",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "兩種做法。rsync 把資料夾同步上去，手冊裡 -a 是封存模式（等於 -rlptgoD）、-v 顯示過程、-z 傳輸時壓縮；--delete 會刪掉目的地多出來的檔案，容易誤刪，第一次先不要加。git clone 要專案已經推上 Git 服務，之後更新只要 git pull。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "把檔案送上去：rsync 同步資料夾，或在伺服器上取回專案",
+          "code": "# 做法一：從自己的電腦同步整個資料夾（第一次先不要加 --delete）\nrsync -avz ~/site/ deploy@203.0.113.10:/var/www/site/\n\n# 做法二：在伺服器上取回專案，之後更新只要 git pull\nsudo apt install git\ngit clone https://example.com/you/your-site.git /var/www/site"
+        },
+        {
+          "type": "paragraph",
+          "text": "rsync 只傳有變動的部分，git 讓你知道線上跑的是哪一版。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+        },
+        {
+          "type": "heading",
+          "text": "靜態網站：Caddy 幾行設定，或 Nginx 加 certbot",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "靜態網站只需要一個把檔案送出去的伺服器，加上 HTTPS。最省事的是 Caddy：官方文件寫明，它預設就用 HTTPS 提供服務、自動取得並續發憑證，也會把連接埠 80 的 HTTP 自動轉到連接埠 443，預設啟用 Let's Encrypt 與 ZeroSSL 兩家憑證機構。設定檔在 /etc/caddy/Caddyfile。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "/etc/caddy/Caddyfile：上面是靜態網站，下面是把請求轉給本機的應用程式",
+          "code": "# 靜態網站：把檔案原樣送出去\nexample.com {\n    root * /var/www/site\n    file_server\n}\n\n# 應用程式：轉給只監聽本機的服務\napp.example.com {\n    reverse_proxy 127.0.0.1:3000\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一條路是 Nginx 加 certbot。Nginx 用 server 與 location 區塊，root 指到檔案目錄；certbot 官方指示是用 snap 安裝，再執行 certbot --nginx，它會改好設定並取得憑證，憑證放在 /etc/letsencrypt/live/ 底下。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "另一條路：Nginx 加 certbot，憑證由 certbot 取得與續發",
+          "code": "sudo apt install nginx\n# 在 /etc/nginx/ 底下的站台設定裡，用 server 與 location 指到檔案目錄\n#   server { server_name example.com; location / { root /var/www/site; } }\nsudo nginx -t\n\n# certbot 官方指示：先移除舊套件，再用 snap 安裝\nsudo apt-get remove certbot\nsudo snap install --classic certbot\nsudo ln -s /snap/bin/certbot /usr/local/bin/certbot\n\n# 取得憑證，certbot 會順手改好 Nginx 設定，最後演練一次續發\nsudo certbot --nginx\nsudo certbot renew --dry-run"
+        },
+        {
+          "type": "paragraph",
+          "text": "憑證不是設一次就沒事。Let's Encrypt 說明，預設憑證效期 90 天、建議每 60 天續發一次，另有需要自己選用的短期憑證，效期 6 天。certbot 從 4.0.0 版起在剩餘效期不到三分之一時續發，安裝時就裝好排程。Caddy 也會自動續發，官方頁沒寫明提前幾天，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "應用程式：systemd 顧著跑，反向代理轉進去",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "應用程式在終端機裡跑起來，關掉連線就停了，所以交給 systemd 管：寫一個服務單元檔，說明執行什麼指令、用哪個使用者、在哪個目錄、掛掉要不要重啟。systemd 文件寫著，只設 ExecStart 時 Type 預設是 simple、Restart 預設是 no，要它自己爬起來就寫 on-failure。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "/etc/systemd/system/mysite.service：讓應用程式開機自動啟動、掛掉自動重啟",
+          "code": "[Unit]\nDescription=My AI-built site\nAfter=network.target\n\n[Service]\nType=simple\nUser=deploy\nWorkingDirectory=/home/deploy/app\nEnvironment=PORT=3000\nExecStart=/usr/bin/node /home/deploy/app/server.js\nRestart=on-failure\nRestartSec=5\n\n[Install]\nWantedBy=multi-user.target\n\n# 存檔後執行：\n#   sudo systemctl daemon-reload\n#   sudo systemctl enable --now mysite\n#   systemctl status mysite"
+        },
+        {
+          "type": "paragraph",
+          "text": "讓應用程式只監聽本機，外面連不到它，只有前面的網頁伺服器轉得進去：Caddy 用 reverse_proxy，Nginx 在 location 區塊用 proxy_pass，憑證與轉址都由前面那一層處理。"
+        },
+        {
+          "type": "heading",
+          "text": "網域指過來：A、AAAA 記錄與 TTL",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網域指到機器靠 DNS 記錄：A 記錄填 IPv4 位址，AAAA 記錄填 IPv6 位址，兩種都有就兩筆都設。www 常見的做法是用 CNAME 指回主網域，再由網頁伺服器把其中一個轉向另一個。"
+        },
+        {
+          "type": "paragraph",
+          "text": "TTL 是這筆記錄可以被快取多久。RFC 1035 的定義是一個以秒為單位的欄位，說明記錄在重新向來源查詢之前可以被快取多長時間，填 0 表示不要快取。所以你改了記錄，全世界不會同時看到新值：要搬機器就提前把 TTL 調短，例如 300 秒，搬完再調回去。可選的值以你的 DNS 供應商官網為準。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/deploy-ai-built-site-to-vps/diagram-1.svg",
+          "alt": "流程圖：網站資料夾經由 SSH 送上 VPS，再由 DNS 記錄、反向代理與憑證三件事撐起來，讀者才會看到有鎖頭的網域",
+          "width": 1600,
+          "height": 900,
+          "caption": "上面一排是檔案怎麼上去，中間三格是上線必須同時成立的三件事，最下面是讀者看到的結果。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "把每一步交給 AI 代理：提示詞怎麼寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每一步都可以請 AI 代理代勞，但要給它三樣東西：機器現在的狀態、你要的結果、不准做的事。最有用的一句是「先列出你打算執行的指令和理由，等我確認再執行」；刪除檔案、覆寫設定檔、改防火牆規則，自己讀過再放行。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞範本：每一步怎麼交給 AI 代理",
+          "code": "【選機器】我要把一個（靜態網站／Node.js 專案／Python 專案）放到 VPS，讀者主要在台灣。\n請列出最低的記憶體與磁碟需求並說明你怎麼估的，作業系統假設是 Ubuntu LTS。\n不要推薦主機商，也不要寫價格，我會自己去各家官網查。\n\n【加固】這台機器剛開好，系統是 Ubuntu LTS。請給我一份步驟清單：\n建立一般使用者、設定金鑰登入、關閉密碼登入、開啟 ufw、打開自動安全更新。\n每一步先寫出指令和它會改到哪個檔案，等我說「執行」再動手。\n\n【送檔案】我的網站在本機的 ~/site，伺服器上要放在 /var/www/site。\n請給我 rsync 指令，第一次不要加 --delete，並說明怎麼確認傳完是對的。\n\n【開 HTTPS】我要用 Caddy 提供 /var/www/site，網域是 example.com。\n請寫出 Caddyfile 的內容，並列出重新載入設定與查看記錄的指令。\n\n【跑應用程式】我的 Node.js 專案在 /home/deploy/app，用 node server.js 啟動、監聽 3000。\n請寫一個 systemd 服務單元，讓它開機自動啟動、掛掉自動重啟，並確認它只監聽本機。\n\n【指網域】我的網域要指到這台機器，位址是 203.0.113.10。\n請說明我該新增哪幾筆 DNS 記錄、TTL 先設多少，以及用什麼指令確認已經生效。\n\n【驗收】請列出一份上線檢查清單：HTTPS、憑證自動續發、防火牆、備份、記錄，\n每一項寫出我該執行哪一個指令、看到什麼才算通過。"
+        },
+        {
+          "type": "link",
+          "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-sandbox"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+        },
+        {
+          "type": "heading",
+          "text": "上線後的檢查清單與三個常見卡關",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網址打得開只是第一關。下面這張表把流程折成八步，每一步都寫了怎麼確認做對；憑證續發與備份還原出問題時，都是安靜地壞掉。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "步驟",
+            "要做什麼",
+            "怎麼確認做對了"
+          ],
+          "rows": [
+            [
+              "選機器",
+              "地區、記憶體、Ubuntu LTS、快照",
+              "建一次快照，記下還原從哪裡按"
+            ],
+            [
+              "鎖好門",
+              "金鑰登入、一般使用者、關密碼登入、開 ufw",
+              "另開視窗能登入；ufw status verbose 只列 22、80、443"
+            ],
+            [
+              "自動更新",
+              "裝 unattended-upgrades",
+              "unattended-upgrade --dry-run 沒錯誤"
+            ],
+            [
+              "送檔案",
+              "rsync 同步，或在伺服器 git clone",
+              "檔案數量與首頁檔名都對"
+            ],
+            [
+              "開 HTTPS",
+              "Caddy，或 Nginx 加 certbot",
+              "網址列出現鎖頭，HTTP 會自動轉址"
+            ],
+            [
+              "跑應用程式",
+              "寫 systemd 單元，前面反向代理",
+              "status 是 active；重開機後還在"
+            ],
+            [
+              "指網域",
+              "設 A 與 AAAA 記錄，先調短 TTL",
+              "用 dig 查到的就是這台機器"
+            ],
+            [
+              "持續顧著",
+              "排程快照、留意續發、看記錄",
+              "做一次還原演練；renew --dry-run 通過"
+            ]
+          ],
+          "caption": "上線流程與驗收方式，查證於 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "三個最常見的卡關",
+          "text": "DNS 還沒生效：改完記錄馬上測，看到的往往還是舊位置，先查一次再說。連接埠沒開：Let's Encrypt 的 HTTP-01 驗證從連接埠 80 進來抓 /.well-known/acme-challenge/ 底下的檔案，ufw 沒放行 80 一定失敗，443 沒開則是拿到憑證也連不上。憑證被限速：官方寫明每個註冊網域每 7 天最多 50 張憑證、完全相同的一組名稱每 7 天最多 5 張，反覆重試會把額度用光，先用 --dry-run 走通流程。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 做個人部落格：靜態網站產生器與部署",
+          "url": "https://mokaair.com/zh-TW/life/ai-build-personal-blog-tutorial"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code 入門：認識工具與第一條學習路線",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-getting-started"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ubuntu 官方下載：目前的發行版本列表",
+          "url": "https://releases.ubuntu.com/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ubuntu 發行週期說明（官方）",
+          "url": "https://ubuntu.com/about/release-cycle",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ubuntu Server 文件：使用者管理",
+          "url": "https://ubuntu.com/server/docs/how-to/security/user-management",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ubuntu Server 文件：OpenSSH 伺服器",
+          "url": "https://ubuntu.com/server/docs/how-to/security/openssh-server",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ubuntu Server 文件：防火牆",
+          "url": "https://ubuntu.com/server/docs/how-to/security/firewalls",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ubuntu 手冊頁：ufw(8)",
+          "url": "https://manpages.ubuntu.com/manpages/noble/en/man8/ufw.8.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ubuntu Server 文件：自動更新",
+          "url": "https://ubuntu.com/server/docs/how-to/software/automatic-updates",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenSSH 官方手冊：sshd_config",
+          "url": "https://man.openbsd.org/sshd_config",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "rsync 官方手冊頁",
+          "url": "https://download.samba.org/pub/rsync/rsync.1",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Caddy 官方文件：自動 HTTPS",
+          "url": "https://caddyserver.com/docs/automatic-https",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Caddy 官方文件：提供靜態檔案",
+          "url": "https://caddyserver.com/docs/quick-starts/static-files",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Caddy 官方文件：讓 Caddy 持續執行",
+          "url": "https://caddyserver.com/docs/running",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nginx 官方文件：入門指南",
+          "url": "https://nginx.org/en/docs/beginners_guide.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Certbot 官方文件：使用說明",
+          "url": "https://eff-certbot.readthedocs.io/en/stable/using.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Certbot 官方安裝指示頁",
+          "url": "https://certbot.eff.org/instructions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Let's Encrypt 官方文件：速率限制",
+          "url": "https://letsencrypt.org/docs/rate-limits/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Let's Encrypt 官方常見問題（憑證效期）",
+          "url": "https://letsencrypt.org/docs/faq/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Let's Encrypt 官方文件：驗證方式",
+          "url": "https://letsencrypt.org/docs/challenge-types/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "systemd 官方手冊：systemd.service",
+          "url": "https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "RFC 1035：網域名稱的實作與規格",
+          "url": "https://www.rfc-editor.org/rfc/rfc1035",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,391 @@
+{
+  "slug": "minimax-m-series-models-explained",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+      "description": "M 系列是 MiniMax 的文字模型線，從 M1 一路做到 M3。這篇照 2026 年 9 月 14 日官網、API 文件與 Hugging Face 官方組織頁的內容，整理現有版本與時序、參數與上下文視窗、每一代授權能不能商用、API 每百萬 token 的價格與訂閱方案、本機執行的硬體需求，並說明開放權重和開源的差別，以及 M 系列和海螺影片、語音、音樂模型的分工。",
+      "hero": {
+        "src": "/guides/minimax-m-series-models-explained/hero.jpg",
+        "alt": "插圖：一個方塊模型往兩個方向分出路徑，一邊通往雲端 API，一邊通往本機主機",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MiniMax 的 M 系列是這家公司的文字與多模態語言模型線。2026 年 9 月 14 日在官網與 Hugging Face 官方組織頁上，最新版本是 MiniMax-M3，前幾代 M2、M2.1、M2.5、M2.7 仍可透過 API 呼叫，權重也都能下載。要注意的是授權：每一代條款都重寫過，能不能拿去做生意得一代一代看。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇整理當天官方頁面寫的內容：版本、參數與上下文視窗、授權能不能商用、API 每百萬 token 多少錢、本機執行的硬體，以及它和海螺影片、語音、音樂模型的分工。"
+        },
+        {
+          "type": "heading",
+          "text": "M 系列是哪一條線，現在有哪些版本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MiniMax 官網把自家模型分成文字、影片、語音、音樂幾條線。M 系列是文字那一條，也是可以下載權重自己部署的那一條，官方 API 文件把它描述為用於代理（Agent）推理、工具呼叫、寫程式與長文本任務的語言模型。只用海螺 AI 聊天或生影片不會碰到這些名字，要接進自己的軟體才需要挑版本。"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugging Face 上 MiniMaxAI 官方組織頁列出的 M 系列，依模型庫建立的先後如下；括號裡是模型庫建立日，不是新聞稿發表日。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "MiniMax-M1-80k（2025 年 6 月 13 日），Apache 2.0；另有 M1-40k",
+            "MiniMax-M2（2025 年 10 月 22 日）",
+            "MiniMax-M2.1（2025 年 12 月 20 日）",
+            "MiniMax-M2.5（2026 年 2 月 12 日）",
+            "MiniMax-M2.7（2026 年 4 月 9 日）",
+            "MiniMax-M3（2026 年 6 月 2 日），官網主推；另有量化版 M3-MXFP8"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "API 這一側的分類不同：官方模型總覽把 MiniMax-M3、M2.7 與 M2.7-highspeed 列為正式清單，M2.5、M2.1、M2 收在 Legacy Models 摺疊區仍可呼叫，M1 已不在模型清單與定價頁上。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/minimax-m-series-models-explained/diagram-1.svg",
+          "alt": "圖解：上半是 MiniMax 四條模型線，下半是 M 系列從 M1 到 M3 的版本時間軸與各版授權",
+          "width": 1600,
+          "height": 900,
+          "caption": "上半部是 MiniMax 的四條模型線與代表模型，下半部是 M 系列版本的先後順序；每個版本下方是官方 Hugging Face 組織上該模型庫的建立年月與授權條款。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "規格：參數、上下文視窗與推理模式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "M 系列是混合專家架構。MiniMax-M2 的模型卡寫 2,300 億總參數、每個 token 啟用 100 億，M2.1 在官方 API 文件裡相同。M2.5 與 M2.7 的模型卡沒寫參數，Hugging Face 頁面統計 2,290 億，M2.7 的設定檔顯示 256 個專家、每次挑 8 個。M3 寫約 4,280 億參數、約 230 億啟用。"
+        },
+        {
+          "type": "link",
+          "text": "模型參數（Model Parameters）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+        },
+        {
+          "type": "link",
+          "text": "混合專家模型（Mixture of Experts）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts"
+        },
+        {
+          "type": "paragraph",
+          "text": "上下文視窗上，官方 API 文件寫 M2 到 M2.7 都是 204,800 個 token，M3 是 1,000,000 個 token；官網 M3 產品頁寫最高 1,000,000 token 並保證至少 512K。M1 的模型卡寫原生支援 1,000,000 token。"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "paragraph",
+          "text": "推理的開關方式各代不同。M2 的模型卡說它是交錯思考模型，回覆裡的思考內容用 think 標籤包住，下一輪要原樣送回去。M3 提供 thinking 參數三種模式：enabled 永遠思考、adaptive 由模型決定、disabled 關掉以換速度。"
+        },
+        {
+          "type": "link",
+          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "heading",
+          "text": "授權：下載得到權重，不等於可以拿去做生意",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "M 系列每一代的授權都重寫過，方向是愈收愈緊。M1 用 Apache 2.0，屬於一般意義的開源授權。M2 的授權檔是 MIT 加一條但書：商業產品若月活躍使用者超過一億、或年度經常性收入超過 3,000 萬美元，要在介面顯著標示 MiniMax M2；M2.1 把門檻拿掉，任何商業產品都要標示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "M2.7 的授權檔標題直接寫非商業授權：非商業用途比照 MIT，商用必須先取得書面授權，個人自架、非營利與學術研究則明文免費允許。M3 的授權檔叫 MiniMax 社群授權，商用要顯著標示 Built with MiniMax M3，年營收超過 2,000 萬美元須先取得書面授權，未超過則寄一封一次性通知信。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "版本",
+            "參數與上下文視窗",
+            "授權條款",
+            "API 價格（每百萬 token）"
+          ],
+          "rows": [
+            [
+              "MiniMax-M1-80k",
+              "4,560 億，啟用 459 億；1,000,000",
+              "Apache 2.0",
+              "官方定價頁未列"
+            ],
+            [
+              "MiniMax-M2",
+              "2,300 億，啟用 100 億；204,800",
+              "MIT 加但書，超過門檻要標示",
+              "0.3／1.2 美元"
+            ],
+            [
+              "MiniMax-M2.1",
+              "2,300 億，啟用 100 億；204,800",
+              "MIT 加但書，商用都要標示",
+              "0.3／1.2 美元"
+            ],
+            [
+              "MiniMax-M2.5",
+              "約 2,290 億；204,800",
+              "標 modified-mit，授權檔讀不到",
+              "0.3／1.2 美元"
+            ],
+            [
+              "MiniMax-M2.7",
+              "約 2,290 億；204,800",
+              "非商業授權，商用須書面授權",
+              "0.3／1.2 美元"
+            ],
+            [
+              "MiniMax-M3",
+              "約 4,280 億，啟用 230 億；1,000,000",
+              "社群授權，商用要標示並通知",
+              "0.3／1.2 美元（512K 內）"
+            ]
+          ],
+          "caption": "整理自 MiniMax 官網、官方 API 文件與 Hugging Face 官方組織頁，查證日 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "下載得到權重，不代表可以商用",
+          "text": "M1 是 Apache 2.0，M2 與 M2.1 是改過的 MIT，M2.7 是非商業授權，M3 是社群授權。放進收費產品前，直接讀那一版模型庫裡的授權檔原文，不要用上一代推論這一代；條款會再改，金額門檻牽涉合約，必要時請法律專業協助。"
+        },
+        {
+          "type": "heading",
+          "text": "「開放權重」和「開源」差在哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "M 系列常被稱為開源模型，精確的說法是開放權重，也有人寫成開源權重：MiniMax 把訓練完成的權重放上 Hugging Face 讓人下載、部署與微調，但沒有公開訓練資料與完整訓練流程。開源的定義還包含任何人、任何用途都能使用，而 M2.7 的非商業條款與 M3 的商用標示義務都不符合，只有 M1 的 Apache 2.0 是例外。"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "link",
+          "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+        },
+        {
+          "type": "heading",
+          "text": "API 怎麼用、多少錢",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方 API 在 MiniMax 開放平台，流程是註冊登入、到使用者中心建立 API Key、再儲值或訂閱。端點同時提供 Anthropic 與 OpenAI 兩種相容格式，現成 SDK 大多只要改基底網址和金鑰；官方建議優先用 Anthropic 相容介面。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "官方文件列出的兩組環境變數",
+          "code": "# Anthropic 相容（官方建議）\nexport ANTHROPIC_BASE_URL=https://api.minimax.io/anthropic\nexport ANTHROPIC_API_KEY=${YOUR_API_KEY}\n\n# OpenAI 相容\nexport OPENAI_BASE_URL=https://api.minimax.io/v1\nexport OPENAI_API_KEY=${YOUR_API_KEY}"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "照官方文件範例的結構呼叫 MiniMax-M3",
+          "code": "import anthropic\n\nclient = anthropic.Anthropic()\n\nresponse = client.messages.create(\n    model=\"MiniMax-M3\",\n    max_tokens=1000,\n    messages=[{\"role\": \"user\", \"content\": \"用三句話說明什麼是上下文視窗\"}],\n)\n\nfor block in response.content:\n    if block.type == \"thinking\":\n        print(block.thinking)\n    elif block.type == \"text\":\n        print(block.text)"
+        },
+        {
+          "type": "paragraph",
+          "text": "按量計費寫在官方 Pay as You Go 頁，幣別是美元，文件沒有台幣定價。M3 輸入 512K token 以內是輸入 0.3 美元、輸出 1.2 美元，超過 512K 是 0.6 與 2.4 美元，兩段都標為長期五折後的價，提示詞快取讀取 0.06 與 0.12 美元。M2.7 與 Legacy 的 M2.5、M2.1、M2 同為 0.3 與 1.2 美元，highspeed 版 0.6 與 2.4 美元。另有 priority 服務層，價格是標準價的 1.5 倍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訂閱制叫 Token Plan：Plus 每月 22 美元、Max 55 美元、Ultra 132 美元，額度用 5 小時滾動視窗與每週視窗計算；另有 Credits 儲值包，1,000 點等於 1 美元，效期 365 天。免費額度方面，查證當天在官方定價頁與註冊準備頁上找不到明載的新帳號免費 token，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "本機跑得動嗎：官方寫的硬體需求",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "權重可直接從 Hugging Face 下載。M3 模型卡建議的推論框架有 SGLang、vLLM、Transformers、KTransformers 等，取樣參數建議 temperature 1.0、top_p 0.95。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "M3 模型卡上的權重下載指令",
+          "code": "hf download MiniMaxAI/MiniMax-M3 --local-dir MiniMax-M3"
+        },
+        {
+          "type": "paragraph",
+          "text": "硬體需求只有部分版本寫在官方文件。M2.7 模型庫裡的 SGLang 與 vLLM 部署指南寫：權重需要 220 GB 記憶體，每 1,000,000 token 的上下文再加 240 GB；建議 96G 顯示卡四張、對應 400K token 的 KV 快取，或 144G 八張、對應最多 3M token，單一序列最長仍是 196K token。M3 的模型卡沒寫硬體需求，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "和海螺影片、語音、音樂的關係，以及誰適合用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 MiniMax 的產品線上，M 系列負責文字與多模態理解，影片是 MiniMax H3 與 Legacy 清單裡的海螺 Hailuo 2.3、Hailuo 02，語音是 speech-2.8 系列，音樂是 music-3.0。它們各自獨立，共用同一組 API 金鑰與帳號餘額，不是同一個模型的不同功能；官網把影片線寫成從 Hailuo 01 走到 H3。"
+        },
+        {
+          "type": "paragraph",
+          "text": "怎麼挑：長文本、寫程式與代理任務用 M3；預算敏感、任務單純用 M2.7 或 Legacy 版本；想在自己機器上跑，先讀那一版授權檔再決定要不要投硬體；只要生影片或配音，直接用對應的影片與語音模型。"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+          "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax Agent 怎麼用：一句話做出網頁、報告與簡報",
+          "url": "https://mokaair.com/zh-TW/life/minimax-agent-guide"
+        },
+        {
+          "type": "link",
+          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+        },
+        {
+          "type": "link",
+          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        }
+      ],
+      "sources": [
+        {
+          "title": "MiniMax 官方網站首頁（模型與產品線）",
+          "url": "https://www.minimax.io/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax M3 模型頁（官網）",
+          "url": "https://www.minimax.io/models/text/m3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API 文件：模型總覽（Models）",
+          "url": "https://platform.minimax.io/docs/guides/models-intro",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API 文件：文字模型呼叫與上下文視窗一覽",
+          "url": "https://platform.minimax.io/docs/guides/text-generation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API 文件：Pay as You Go 按量計費定價",
+          "url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API 文件：Token Plan 訂閱與 Credits 定價",
+          "url": "https://platform.minimax.io/docs/guides/pricing-token-plan",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API 文件：開始前的準備（註冊、API Key、環境變數）",
+          "url": "https://platform.minimax.io/docs/guides/quickstart-preparation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API 文件：Anthropic SDK 相容介面",
+          "url": "https://platform.minimax.io/docs/api-reference/text-anthropic-api",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：MiniMaxAI 官方組織頁",
+          "url": "https://huggingface.co/MiniMaxAI",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：MiniMax-M3 模型卡",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：MiniMax-M3 授權條款 LICENSE",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：MiniMax-M2.7 模型卡",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：MiniMax-M2.7 SGLang 部署指南（硬體需求）",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7/blob/main/docs/sglang_deploy_guide.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub：MiniMax-M2.7 授權條款 LICENSE",
+          "url": "https://github.com/MiniMax-AI/MiniMax-M2.7/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub：MiniMax-M2 授權條款 LICENSE",
+          "url": "https://github.com/MiniMax-AI/MiniMax-M2/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub：MiniMax-M2.1 授權條款 LICENSE",
+          "url": "https://github.com/MiniMax-AI/MiniMax-M2.1/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：MiniMax-M2 模型卡（參數與交錯思考）",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：MiniMax-M2.5 模型卡",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：MiniMax-M1-80k 模型卡",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M1-80k",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：MiniMax-M2.7 模型設定檔 config.json",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7/blob/main/config.json",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

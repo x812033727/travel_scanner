@@ -1,0 +1,218 @@
+{
+  "slug": "hosting-com-wordpress-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "hosting.com 架站入門：從舊 A2 名稱到目前的服務選擇",
+      "description": "搜尋 A2 Hosting 教學時，現在會遇到 hosting.com 的品牌與文件。本文先整理官方更名資訊，再說明如何辨認自己的方案、控制台與 WordPress 安裝方式，避免把舊介面或不同產品的流程混用。你可以依序核對購買條件、安裝位置、網域與 HTTPS，完成內容及訪客驗收，並為既有帳戶保留備份與交接資料。文章以目前官方說明為依據，不沿用舊品牌時期的效能排名或促銷價格。",
+      "hero": {
+        "src": "/guides/hosting-com-wordpress-setup/hero.jpg",
+        "alt": "舊資料文件、主機與新網站畫面連接的原創插圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A2 Hosting 已更名為 hosting.com，官方在 2025 年 4 月 28 日發布品牌公告。這能解釋為什麼搜尋舊教學會看到新的網站名稱，但不能據此推定每個既有帳戶的方案、控制台與服務條件都一模一樣。開始操作前，先確認你實際購買的產品及目前管理入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文把新建 WordPress 的工作分成辨認環境、安裝、連線與驗收，適合第一次購買或接手舊 A2 帳戶的人。沒有登入帳戶實測，也不引用供應商未經驗證的加速倍數。遇到不同介面時，先依帳戶類型找到正確文件，比盲目尋找舊教學中的按鈕更有效。"
+        },
+        {
+          "type": "heading",
+          "text": "先辨認品牌、產品與控制台",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "從官方入口登入，核對訂單中的產品名稱、帳戶識別資料及目前提供的控制台。hosting.com 文件指出，安裝 WordPress 的方式會依帳戶類型而不同，可能使用 Webuzo，或 cPanel 裡的 Softaculous。若你的產品提供另一套專用管理介面，就應查該產品文件，而非強行套用其中一種。"
+        },
+        {
+          "type": "paragraph",
+          "text": "既有使用者應先保存服務通知、目前網站位置、DNS、備份及續約資訊。品牌變更不代表你需要立刻刪除網站重裝，也不能只因收到換牌通知就把登入資料交給郵件連結。請由官方網站進入帳戶，再核對通知涉及的是名稱調整、平台遷移，還是你個別服務的實際變更。"
+        },
+        {
+          "type": "heading",
+          "text": "購買前用需求核對方案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "請列出網站數量、資料與圖片量、需要的外掛、信箱、備份及測試環境，再對照目前方案。若既有網站需要特定 PHP 或資料庫條件，先確認相容性與升級路徑。不要只看產品名含 WordPress，就認定所有商店、會員或特殊程式需求都已被包含。"
+        },
+        {
+          "type": "paragraph",
+          "text": "費用應分成首次付款、續約、加購與可能的搬移成本。舊 A2 文章中的價格、退費或促銷內容，不一定適用現在的方案。請保留當下結帳明細與條款，遇到不清楚的功能或限制，直接把自己的需求交給官方支援確認；沒有書面依據的項目先列待確認。"
+        },
+        {
+          "type": "heading",
+          "text": "cPanel 與 Webuzo 依自己的入口安裝",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 cPanel 且帳戶提供 Softaculous 時，可依 hosting.com 的 WordPress 安裝文件開啟對應應用並選擇安裝。填寫網域、安裝目錄、網站資料與管理者資訊前，先檢查該位置是否已有網站。想讓首頁位於網域根目錄，與想放在某個子目錄，是不同的安裝位置，不要保留預設值卻沒有看懂它。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Webuzo 使用者則依其 WordPress 管理入口新增安裝，核對目標網域、目錄及管理者欄位。兩種工具都協助部署應用，但按鈕及預設內容可能不同。請把實際採用的工具與位置記錄下來，之後處理備份、更新或移除時，才能知道哪一套管理流程與這個網站有關。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果安裝工具提供附加外掛、更新或備份選項，先閱讀用途與適用範圍，選擇能持續管理的設定。不要把所有自動功能都勾選後，就認定不再需要檢查。尤其與其他正式網站共用環境時，改動系統版本或資料庫可能影響更多應用，應先做好相容性評估。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "核對帳戶產品與控制台，選用官方為該環境提供的 WordPress 安裝流程。",
+            "確認目標網域及安裝目錄沒有要保留的資料，先備份既有網站。",
+            "填入網站與管理者資訊，審查附加功能、更新及備份設定，再提交安裝。",
+            "保存完成資訊，登入 WordPress 後台並開啟網站，確認安裝位置與預期相同。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "只有特殊需求才另行規劃手動安裝",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "hosting.com 也提供手動安裝文件，大致涉及取得 WordPress 程式、上傳到正確位置、建立資料庫與使用者，再完成網站設定。這條路需要自己理解檔案、資料庫及權限的關係。一般使用者若已有受支援的安裝工具，可以先採用工具，不必只因舊文章使用 FTP 就增加一套手動流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "確實需要手動安裝時，從 WordPress 官方 HTTPS 入口取得程式，依目前環境的安全傳輸方式上傳，並保護資料庫登入資訊。不要為了配合舊教學指定的版本而長期使用已不適合的軟體。遇到應用程式問題，也要核對主機支援範圍，確認哪些由供應商處理、哪些需要網站維護者接手。"
+        },
+        {
+          "type": "heading",
+          "text": "接上正式網域後，驗證網站內容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網域註冊、DNS 與網站空間可能由不同服務管理。請使用自己帳戶提供的解析資料，先保存原 DNS，尤其是郵件與驗證紀錄，再調整必要項目。主機加入網域後，仍要確認對外解析、HTTPS 憑證與轉址。不要因品牌更名，就假設所有使用者都需要更換相同一組名稱伺服器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "進入 WordPress，整理首頁、主要內容、導覽及聯絡資料，移除示範頁與沒有用途的外掛。用未登入的視窗開啟正式網址及深層文章，再以手機檢查版面。若有表單，實際送出測試資料並確認通知；如果是搬站，還要抽查舊圖片、附件與重要網址是否保持可用。"
+        },
+        {
+          "type": "heading",
+          "text": "把舊帳戶資訊整理成新的交接紀錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "交接資料可以保留舊品牌名稱作為辨識線索，但管理網址、產品、付款及支援入口應以目前資訊為準。記錄誰能登入控制台、誰管理 WordPress、誰負責網域與續約，密碼另以安全方式保存。這樣遇到服務通知或帳務問題時，不必重新猜測它屬於哪個網站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上線後安排更新、備份及還原驗證，並記錄測試環境與正式環境的差別。若要結束某個舊方案，先確認資料已搬妥、郵件仍可用且沒有其他網站共用資源，再依官方程序處理。新品牌提供的是目前服務入口，真正可持續管理的依據，仍是你自己的設定與驗收紀錄。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/hosting-com-wordpress-setup/diagram-1.svg",
+          "alt": "由品牌與帳戶辨認、控制台安裝及正式網站驗收三個階段，整理 hosting.com 建站工作。",
+          "width": 1600,
+          "height": 900,
+          "caption": "依自己的帳戶選路線，舊教學只保留辨識線索。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "看到的情況",
+            "應採取的做法",
+            "避免的誤判"
+          ],
+          "rows": [
+            [
+              "舊文件寫 A2 Hosting",
+              "核對 hosting.com 官方及帳戶",
+              "所有設定都必須重做"
+            ],
+            [
+              "帳戶使用 cPanel",
+              "確認 Softaculous 或適用工具",
+              "套用另一種控制台按鈕"
+            ],
+            [
+              "帳戶使用 Webuzo",
+              "查其 WordPress 管理流程",
+              "到處尋找不存在的 cPanel"
+            ],
+            [
+              "需要手動安裝",
+              "確認程式、目錄與資料庫",
+              "直接覆蓋既有正式網站"
+            ],
+            [
+              "準備停止舊方案",
+              "先驗收搬移與資料保存",
+              "品牌變更等於服務已取消"
+            ]
+          ],
+          "caption": "以目前帳戶類型選擇操作流程，不以舊品牌名稱推定全部條件。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "安裝位置比按鈕名稱更重要",
+          "text": "提交前確認網域、目錄與既有資料。即使使用一鍵工具，選錯位置仍可能影響現有網站；先備份並理解操作範圍。"
+        },
+        {
+          "type": "link",
+          "text": "共享主機、VPS 與雲端代管：小網站的選擇順序",
+          "url": "https://mokaair.com/zh-TW/life/hosting-types-explained"
+        },
+        {
+          "type": "link",
+          "text": "網站維護要做什麼：備份、更新與故障回報的日常安排",
+          "url": "https://mokaair.com/zh-TW/life/website-maintenance-routine"
+        }
+      ],
+      "sources": [
+        {
+          "title": "hosting.com：A2 Hosting 更名公告",
+          "url": "https://hosting.com/blog/a-new-chapter-begins-a2-hosting-evolves-into-hosting/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "hosting.com：Softaculous 安裝 WordPress",
+          "url": "https://kb.hosting.com/docs/wordpress1",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "hosting.com：手動安裝與帳戶類型",
+          "url": "https://kb.hosting.com/docs/installing-wordpress-manually",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Webuzo：安裝 WordPress",
+          "url": "https://webuzo.com/docs/endusers-website-owners/install-a-wordpress/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

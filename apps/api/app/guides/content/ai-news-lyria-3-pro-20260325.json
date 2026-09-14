@@ -1,0 +1,799 @@
+{
+  "slug": "ai-news-lyria-3-pro-20260325",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 129,
+  "locales": {
+    "zh-TW": {
+      "title": "Lyria 3 Pro 延長 AI 音樂創作：從短片段到有段落的作品",
+      "description": "解析以 Lyria 3 Pro 為代表的長音訊段落編排思維，透過社區影展配樂案例，探討前奏、主歌、副歌與口播空間的生成工作流及驗收重點。",
+      "hero": {
+        "src": "/guides/ai-news-lyria-3-pro-20260325/hero.jpg",
+        "alt": "把音樂寫成段落的原創概念插圖，呈現本篇事件的使用脈絡",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事件日期：2026-03-25；本文查核日期：2026-09-14。3 月 25 日 Google 發表 Lyria 3 Pro，公告可產生最長 3 分鐘的音樂，並用提示安排前奏、主歌、副歌與橋段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同次公告擴展至 Google 的創作與開發入口，Vertex AI 當時為 public preview；各產品資格需分開看。Google 表示輸出嵌入 SynthID，並採避免模仿既有歌手的措施；標記不是商用授權或版權保證。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "架構規畫與現場播映情境梳理"
+        },
+        {
+          "type": "paragraph",
+          "text": "在籌辦社區微型影展的實務情境中，入場配樂肩負著引導居民步入放映空間的重要任務。策展團隊在發想音樂架構前，必須先明確界定全曲長度與每段時間對應的現場情境。舉例來說，若將總長設定為兩分半至三分鐘，前六十秒可設定為低調沉穩的環境聲景，讓觀眾安靜找尋座位；中間六十秒則逐漸豐富配器層次，提振現場參與期待；最後階段則必須迅速降下音量，預留空間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這種分段思維與一般流行歌以副歌洗腦的邏輯截然不同。活動現場需要的是具備功能性的聲音背景，而非喧賓奪主的表演曲目。若未在提示詞中明確規範段落時序，隨機生成的長音訊往往會在不合適的時刻出現激烈節奏，干擾放映前的說明廣播。因此，創作者在動筆撰寫段落提示前，應先列出時間軸清單，精確分配前奏、發展與收尾的秒數，才能確保生成成品符合場地動線需求。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "前奏與起步氛圍的音量克制"
+        },
+        {
+          "type": "paragraph",
+          "text": "入場前奏的核心在於營造舒適而不具侵略性的聆聽空間。在此階段的提示詞設定上，建議著重於溫暖的木質樂器、輕柔的弦樂長音或極簡的鋼琴單音，避免過早引入節奏強烈的大鼓或刺耳的電子合成器。由於活動剛開始時觀眾仍在交談與移動，過於複雜的旋律反而會造成聽覺疲勞。創作者應將提示重點放在音色的質地與空間殘響，使前奏聽起來開闊而安定，達到沉澱心靈的引導效果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "逐段試聽前奏時，第一項驗收重點是基礎音量與動態範圍。若音訊一開頭就出現突發性的瞬態峰值，即使後續段落漸漸平緩，也已經破壞了迎賓的溫和氛圍。此時可檢查前奏與後續樂句的連接處是否過於生硬，觀察音色音量是否有不自然的突跳。若發現前奏過於單調，應微調提示中的背景環境質感，而不是增加打擊樂器，讓入場開頭維持克制且一致的敘事底調。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "段落分工",
+            "音樂情緒與配器建議",
+            "現場驗收重點"
+          ],
+          "rows": [
+            [
+              "入場前奏（0-60秒）",
+              "以木質樂器、長音弦樂或極簡鋼琴單音為主，營造開闊且安靜的空間感。",
+              "檢查音量是否平穩克制，避免開場瞬態峰值干擾觀眾步入會場。"
+            ],
+            [
+              "主歌發展（60-120秒）",
+              "逐步加入中音木吉他與溫和低音線條，提升節奏流動感與參與期待。",
+              "確認樂器疊加的層次感，段落轉換需自然且無音質或頻率突變。"
+            ],
+            [
+              "副歌推升（120-150秒）",
+              "適度加入輕巧打擊樂或飽滿和弦，將全場氛圍推向專注凝聚的高點。",
+              "檢視各音軌頻率是否過於混濁，確保高潮能量不至轉為刺耳雜訊。"
+            ],
+            [
+              "尾奏淡出（150-180秒）",
+              "抽離低音節奏與主旋律，回歸極簡弦樂襯底，迅速收斂整體音量。",
+              "預留中高頻口播空間，對比主持人口白測試咬字與語音清晰度。"
+            ]
+          ],
+          "caption": "社區影展配樂之分段功能規畫與驗收重點對照。創作者應依現場動線分配秒數，並在逐段試聽中嚴格把關音量起伏與語音清晰度。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "中段情緒推升與樂器層次擴展"
+        },
+        {
+          "type": "paragraph",
+          "text": "當現場觀眾逐漸就座完畢，音樂進入中段主歌與副歌時，便需要適度注入活力以凝聚全場注意力。在段落安排上，創作者可以透過提示詞指示系統在中段引入中音吉他、漸進式的低音線條或輕巧的沙鈴節奏，讓原本單純的旋律線逐漸厚實。此處的目標是產生期待感，象徵放映即將展開，使現場空氣從原本鬆散的走動交談，慢慢轉為凝聚且專注的觀影心理狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗收中段時，可以聽主歌過渡到副歌附近的幾個樂句，注意樂器是否突然消失、音量是否跳動，以及旋律是否和前段接得上。這些是需要檢查的可能問題，不是本站對 Lyria 3 Pro 的實測結論。若只調整提示仍未符合活動需要，也可以在剪輯工具裡處理接段、淡出或長度，不必一直重新生成整首曲目。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-lyria-3-pro-20260325/diagram-1.svg",
+          "alt": "把音樂寫成段落：四項閱讀與使用重點",
+          "width": 1600,
+          "height": 900,
+          "caption": "定義用途：時長與播放場合、規畫段落：情緒與轉場、逐段試聽：口白與聲音平衡、確認來源：授權與標示。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "結尾弱化與現場口播空間預留"
+        },
+        {
+          "type": "paragraph",
+          "text": "配樂最後的三十至四十秒通常是活動即將正式開始的關鍵過渡期。此時音樂必須從中段的高亢情緒有條不紊地降溫，為主持人的開場口播或安全須知廣播讓出完整的頻率空間。在段落提示設計上，應主動要求進入弱化尾奏，抽離低頻節奏與中頻主奏樂器，僅保留極弱的環境弦樂或淡出的單音樂句，避免人聲廣播與背景音樂互相爭搶注意力，造成訊息傳遞不清。"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗收尾奏時，應模擬主持人手持麥克風講話的情境進行對比聆聽。若背景音樂的泛音在尾段依然過於飽滿，即使整體音量降低，仍可能遮蔽語音的清晰度與咬字識別。創作者應檢視尾奏是否有明確的結束點，或是具備平整收斂的淡出效果，切忌在最後數秒突兀收煞或爆發殘響。唯有留出清晰的中高頻對白空間，這首配樂才能真正達到支援現場活動的功能標準。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "原創素材保存與生成標記認知"
+        },
+        {
+          "type": "paragraph",
+          "text": "在完成段落編排與聲音修飾的同時，工作團隊切不可忽視素材來源的歸檔工作。任何自行填寫的口播文案、發想提示詞草稿，以及作為參考風格的自有聲音片段，都應建立專門的目錄逐案存檔。雖然現代音訊工具如 Lyria 3 Pro 內建了 SynthID 技術用於標識生成痕跡，並採取了避免模仿特定既有歌手的防護策略，但這類技術標記並不等於取得版權豁免或商業授權保證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公開播放或用於宣傳前，應核對當前平台條款、所用素材與預定的發布方式。如果希望某種氣氛，可以描述節奏、樂器與情緒，而不把特定歌手的聲音當成必須複製的目標。保留提示和輸出版本，有助於日後說明製作過程；這些紀錄與生成標記都不能單獨證明作品適用於所有商業用途。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "聲音創作的自主把關提醒",
+          "text": "模型內建的 SynthID 與防模仿措施屬於技術防護，並非商用版權背書。團隊應確實歸檔提示詞與原創素材，並依具體發布管道個別核實使用規範。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Project Glasswing 與 Mythos Preview：AI 找到漏洞後，真正的工作才開始",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-project-glasswing-20260407"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：Lyria 3 Pro",
+          "url": "https://blog.google/innovation-and-ai/technology/ai/lyria-3-pro/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Lyria 3 Pro Extends AI Music Creation: From Short Clips to Structured Compositions",
+      "description": "Analyzing structured long-audio composition with Lyria 3 Pro: using a community film festival soundtrack case study to explore workflows and review checkpoints across intros, verses, choruses, and voiceover clearance.",
+      "hero": {
+        "src": "/guides/ai-news-lyria-3-pro-20260325/hero-en.jpg",
+        "alt": "Original conceptual illustration of structuring music into sections, showing the context of this event.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Event date: 2026-03-25; verification date: 2026-09-14. On March 25, Google announced Lyria 3 Pro, stating it can generate music up to 3 minutes long and use prompts to structure intros, verses, choruses, and bridges."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same announcement extended to Google's creative and developer portals, with Vertex AI in public preview at the time; eligibility varies across products. Google stated that outputs embed SynthID and include safeguards to avoid impersonating existing artists; watermarking is not a commercial license or copyright guarantee. The following everyday and workplace scenarios are editorial examples designed for reader verification, not hands-on product testing by this publication."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Structural Planning and Live Screening Scenario Analysis"
+        },
+        {
+          "type": "paragraph",
+          "text": "In the practical context of organizing a community micro-film festival, walk-in background music shoulders the vital task of guiding residents into the screening venue. Before brainstorming a musical structure, the curatorial team must clearly define the total track length and the on-site situation corresponding to each time block. For instance, if the total length is set to two and a half to three minutes, the first 60 seconds can be a low-key, steady ambient soundscape allowing attendees to quietly find their seats; the middle 60 seconds can gradually enrich instrumental layering to elevate anticipation; and the final phase must quickly drop in volume to reserve space."
+        },
+        {
+          "type": "paragraph",
+          "text": "This sectional mindset is distinctly different from the logic of mainstream pop songs built around earworm hooks. An event venue demands functional background audio rather than an overbearing performance piece. If sectional timing is not explicitly specified in the prompt, randomly generated long audio often introduces intense rhythms at inopportune moments, interfering with pre-screening announcements. Therefore, before drafting section prompts, creators should outline a timeline checklist and precisely allocate seconds for the intro, development, and outro to ensure the generated output aligns with venue flow requirements."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Intro and Opening Ambience Volume Restraint"
+        },
+        {
+          "type": "paragraph",
+          "text": "The core of an entrance intro is creating a comfortable, non-intrusive listening space. In prompt settings for this stage, it is advisable to emphasize warm acoustic wooden instruments, soft sustained strings, or minimal piano notes, while avoiding the premature introduction of heavy kick drums or piercing synthesizers. Because attendees are still conversing and moving around when an event begins, an overly complex melody causes auditory fatigue. Creators should focus prompt instructions on timbral texture and spatial reverberation, making the intro sound expansive and calming to achieve a soothing guiding effect."
+        },
+        {
+          "type": "paragraph",
+          "text": "When reviewing the intro section by section, the primary inspection point is baseline volume and dynamic range. If sudden transient peaks occur right at the start, they will disrupt the welcoming atmosphere even if subsequent passages level out. At this stage, check whether the transition between the intro and succeeding musical phrases is too abrupt, watching for unnatural jumps in timbre and volume. If the intro feels overly monotonous, fine-tune the ambient texture in the prompt rather than adding percussion, keeping the opening sequence restrained and consistent in tone."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Section Role",
+            "Musical Mood & Instrumentation",
+            "On-Site Review Checkpoints"
+          ],
+          "rows": [
+            [
+              "Entrance Intro (0–60s)",
+              "Focus on acoustic instruments, sustained strings, or minimal piano notes to create an expansive, quiet sense of space.",
+              "Check that volume is steady and restrained, avoiding opening transient peaks that distract entering attendees."
+            ],
+            [
+              "Verse Development (60–120s)",
+              "Gradually introduce mid-range acoustic guitar and gentle basslines to enhance rhythmic flow and build anticipation.",
+              "Confirm instrumental layering depth, ensuring transitions are natural without sudden shifts in audio quality or frequency."
+            ],
+            [
+              "Chorus Build (120–150s)",
+              "Add light percussion or fuller chords moderately to elevate venue atmosphere to a focused, cohesive high point.",
+              "Examine frequency balance across tracks to ensure peak energy does not devolve into harsh or muddy noise."
+            ],
+            [
+              "Outro Fade (150–180s)",
+              "Strip away bass rhythm and main melody, returning to minimal ambient strings while rapidly reducing overall volume.",
+              "Clear mid-to-high frequency space for announcements, testing articulation and speech clarity against host voiceovers."
+            ]
+          ],
+          "caption": "Community film festival music: compare section roles and checks. Allocate seconds to match on-site flow, then listen section by section to check volume changes and speech clarity."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Mid-Track Emotional Build and Instrumental Layering Expansion"
+        },
+        {
+          "type": "paragraph",
+          "text": "Once attendees are largely seated and the music transitions to the mid-track verse and chorus, infusing moderate energy helps focus audience attention. Structurally, creators can instruct the system via prompts to introduce mid-range acoustic guitars, progressive basslines, or light shaker rhythms mid-track, gradually thickening the initially simple melodic line. The goal here is building anticipation for the upcoming screening, shifting the room's atmosphere from loose socializing into a focused, receptive state of mind."
+        },
+        {
+          "type": "paragraph",
+          "text": "When reviewing the midsection, listen to the phrases transitioning from verse to chorus, checking whether instruments suddenly drop out, volume jumps erratically, or the melody fails to connect with the previous passage. These are potential issues to inspect, not empirical findings on Lyria 3 Pro by this publication. If prompt adjustments alone do not meet event requirements, transitions, fade-outs, or timing can be edited in an audio editing tool rather than continuously regenerating the entire track."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-lyria-3-pro-20260325/diagram-1-en.svg",
+          "alt": "Structuring Music into Sections: Four Reading and Usage Priorities",
+          "width": 1600,
+          "height": 900,
+          "caption": "Define purpose: duration and venue; plan sections: mood and transitions; listen section-by-section: voiceover and sound balance; verify sources: licensing and watermarks.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Outro Tapering and Reserving Space for Live Announcements"
+        },
+        {
+          "type": "paragraph",
+          "text": "The final 30 to 40 seconds of the soundtrack serve as a crucial transition right before the event officially begins. Here, the music must methodically wind down from its mid-track peak, clearing ample frequency room for the host's opening remarks or safety announcements. In sectional prompt design, creators should explicitly specify an attenuated outro that strips out low-end percussion and mid-range lead instruments, leaving only faint ambient strings or fading single notes so spoken announcements do not compete with background music for clarity."
+        },
+        {
+          "type": "paragraph",
+          "text": "When reviewing the outro, simulate a host speaking into a handheld microphone for comparative listening. If overtone resonance in the background music remains too rich near the end, it can mask speech intelligibility and articulation even at lower overall volumes. Creators should check whether the outro has a clear conclusion or a smooth, controlled fade-out, avoiding abrupt cutoffs or reverb bursts in the final seconds. Only by preserving clear mid-to-high frequency space for dialogue can the soundtrack fulfill its functional role supporting the live event."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Preserving Original Assets and Understanding Generation Watermarks"
+        },
+        {
+          "type": "paragraph",
+          "text": "While completing sectional arrangement and audio adjustments, working teams must not neglect asset archiving. Any self-drafted voiceover copy, prompt drafts, and proprietary audio clips used for style reference should be cataloged and filed on a project-by-project basis. While modern audio tools like Lyria 3 Pro incorporate SynthID technology to watermark generated content and apply safeguards against imitating specific existing artists, such technical markers do not equate to copyright exemptions or commercial licensing guarantees."
+        },
+        {
+          "type": "paragraph",
+          "text": "Prior to public broadcast or promotional use, teams should verify current platform terms, utilized assets, and intended distribution channels. If aiming for a specific vibe, describe the tempo, instruments, and mood rather than targeting the replication of a particular singer's vocal style. Retaining prompts and output versions helps document the production workflow; however, neither these records nor generation watermarks alone prove that an asset is cleared for all commercial uses."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Self-Review Reminders for Audio Creation",
+          "text": "The model's built-in SynthID and anti-impersonation measures are technical safeguards, not commercial copyright endorsements. Teams should systematically archive prompts and original materials, verifying usage guidelines separately for each specific distribution channel."
+        },
+        {
+          "type": "link",
+          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Project Glasswing and Mythos Preview: After AI Finds Vulnerabilities, the Real Work Begins",
+          "url": "https://mokaair.com/en/life/ai-news-project-glasswing-20260407"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: Lyria 3 Pro",
+          "url": "https://blog.google/innovation-and-ai/technology/ai/lyria-3-pro/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Lyria 3 Proが広げるAI音楽制作：短い断片から構成ある楽曲へ",
+      "description": "Lyria 3 Proに代表される長尺オーディオの段落構成の考え方を解説。地域映画祭の劇伴事例を通じて、イントロ・Aメロ・サビ・アナウンス余白の生成ワークフローと検収ポイントを探ります。",
+      "hero": {
+        "src": "/guides/ai-news-lyria-3-pro-20260325/hero-ja.jpg",
+        "alt": "音楽を段落立てて構築するオリジナル概念イラスト。本記事の文脈を表現",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事象発生日：2026-03-25；本稿検証日：2026-09-14。3月25日、GoogleはLyria 3 Proを発表し、最長3分の音楽生成や、プロンプトによるイントロ、主歌（Aメロ）、副歌（サビ）、ブリッジの構成が可能であると告知しました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同発表はGoogleの制作・開発ポータルにも拡大され、Vertex AIでは当時パブリックプレビューとなっていました。各製品の利用資格は個別に確認する必要があります。Googleは出力にSynthIDが埋め込まれ、既存の歌手の模倣を避ける措置を講じているとしていますが、この識別標識は商用ライセンスや著作権の保証ではありません。以下の生活・業務シーンは編集部が設計した例であり、読者自身による検証のためのもので、当サイトによる製品の実測検証ではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "構成の設計と現場上映シーンの整理"
+        },
+        {
+          "type": "paragraph",
+          "text": "地域のマイクロ映画祭を企画・運営する実務現場において、入場時のBGMは来場者を上映スペースへと導く重要な役割を担います。キュレーションチームは音楽の構成を構想する前に、楽曲全体の長さと各時間帯に対応する現場の状況を明確に定義しておく必要があります。例えば、全体の長さを2分半から3分に設定する場合、最初の60秒は落ち着いた控えめな環境アンビエントにして観客が静かに着席できるようにし、中盤の60秒で楽器のレイヤーを徐々に増やしてイベントへの期待感を高め、終盤ではアナウンス用の余白を残すために速やかに音量を下げる必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "このような段落ごとの思考法は、サビで印象付ける一般的なポップスのロジックとは大きく異なります。イベント会場で求められるのは機能的な環境音であり、主客が逆転してしまうようなパフォーマンス曲ではありません。プロンプト内で各セクションの時間的順序を明確に指定しないと、ランダムに生成された長尺オーディオが不適切なタイミングで激しいリズムを刻み、上映前の説明アナウンスを妨げてしまうことがよくあります。そのため、制作者は段落ごとのプロンプトを書き始める前に、まずタイムラインを整理し、イントロ・展開・エンディングの秒数を正確に割り振ることで、生成された成果物が会場の動線要件に確実に合致するようにすべきです。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "イントロと立ち上がりの雰囲気に求められる音量の抑制"
+        },
+        {
+          "type": "paragraph",
+          "text": "入場イントロの核となるのは、圧迫感のない心地よいリスニング空間を作り出すことです。この段階のプロンプト設定では、温かみのある木管・アコースティック楽器、穏やかなストリングスのロングトーン、あるいはミニマルなピアノの単音を重視し、早い段階からアタックの強いバスドラムや耳障りなシンセサイザーを取り入れることは避けるのが賢明です。イベント開始直後は観客同士の会話や移動が続いているため、旋律が複雑すぎると聴覚的な疲労を引き起こします。制作者はプロンプトにおいて音色の質感やリバーブの広がりに焦点を当て、イントロが開放的で落ち着いた印象を与え、心を静める誘導効果を発揮できるように指定すべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "セクションごとにイントロを試聴する際、第一の検収ポイントとなるのが基礎音量とダイナミックレンジです。楽曲の冒頭に突発的なトランジェントのピークがあると、その後のパートが徐々に穏やかになったとしても、来場者を迎える柔らかな雰囲気が損なわれてしまいます。この時は、イントロと後続のフレーズのつなぎ目が不自然でないか、音色や音量に不自然な跳ね上がりがないかを確認します。もしイントロが単調すぎると感じた場合は、パーカッションを追加するのではなく、プロンプト内の背景環境の質感を微調整し、入場開始時の抑制された一貫したトーンを維持するようにします。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "段落の役割",
+            "音楽の情緒と楽器編成の推奨案",
+            "現場での検収ポイント"
+          ],
+          "rows": [
+            [
+              "入場イントロ（0〜60秒）",
+              "アコースティック楽器やロングトーンのストリングス、ミニマルなピアノ単音を中心に、開放的で静かな空間を演出。",
+              "音量が安定して抑制されているか確認し、冒頭のピークが来場者の着席を妨げないようにする。"
+            ],
+            [
+              "主歌の展開（60〜120秒）",
+              "中音域のアコースティックギターや穏やかなベースラインを段階的に加え、リズムの流れと期待感を向上。",
+              "楽器の重なりによるレイヤー感を確認し、セクションの遷移が自然で音質や周波数の急変がないこと。"
+            ],
+            [
+              "副歌の盛り上がり（120〜150秒）",
+              "軽快なパーカッションや厚みのあるコードを適度に加え、会場全体の雰囲気を集中と一体感のピークへ。",
+              "各トラックの周波数が濁りすぎていないか確認し、ピーク時のエネルギーが耳障りなノイズにならないこと。"
+            ],
+            [
+              "アウトロのフェードアウト（150〜180秒）",
+              "ベースリズムと主旋律を抜き、ミニマルなストリングスバッキングに戻して全体の音量を素早く収束。",
+              "中高域のアナウンス用空間を確保し、司会者のトークと照らし合わせて発音と音声の明瞭度をテスト。"
+            ]
+          ],
+          "caption": "地域映画祭劇伴のセクション別機能設計と検収ポイントの対比。制作者は現場の動線に合わせて秒数を配分し、各セクションの試聴で音量の起伏と音声の明瞭度を厳格に管理すべきです。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "中盤の感情の高まりと楽器レイヤーの拡張"
+        },
+        {
+          "type": "paragraph",
+          "text": "会場の観客が徐々に着席を終え、音楽が中盤の主歌（Aメロ）や副歌（サビ）に入る段階では、全体の注意を集中させるために適度な活力を注ぎ込む必要があります。段落構成において、制作者はプロンプトを通じて中盤に中音域のギター、段階的なベースライン、あるいは軽快なシェイカーのリズムを導入するよう指示し、当初のシンプルなメロディラインに厚みを持たせることができます。ここでの狙いは期待感を生み出すことであり、上映の開始が近いことを印象付け、会場の空気をざわついた会話から、一体感のある集中した鑑賞心理へと徐々にシフトさせることにあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "中盤を検収する際は、主歌から副歌へと移行する前後のフレーズを聴き、楽器が突然消えていないか、音量が乱高下していないか、旋律が前段ときちんとつながっているかを確認します。これらはチェックすべき潜在的な課題であり、当サイトによるLyria 3 Proの実測に基づく結論ではありません。もしプロンプトの調整だけでイベントの要件を満たせない場合は、楽曲全体を何度も再生成するのではなく、編集ツール内でつなぎ目やフェードアウト、長さの調整を行うことも可能です。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-lyria-3-pro-20260325/diagram-1-ja.svg",
+          "alt": "音楽を段落立てて構築する：4つの読解・活用ポイント",
+          "width": 1600,
+          "height": 900,
+          "caption": "用途の定義：時間と再生場所、段落の設計：感情と場面転換、段階的試聴：語りと音響バランス、出所の確認：ライセンスと明記。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "終盤のフェードダウンと現場アナウンス空間の確保"
+        },
+        {
+          "type": "paragraph",
+          "text": "BGMのラスト30〜40秒は、通常イベントが正式に始まる直前の重要な移行期にあたります。この段階では、音楽は中盤の高揚したムードから秩序立ててトーンダウンし、司会者のオープニングトークや安全上の注意事項のアナウンスのために周波数空間を完全に空ける必要があります。段落プロンプトの設計では、自発的に音量を抑えたアウトロへの移行を要求し、低周波のリズムや中周波のメインリード楽器を排除して、極めて静かな環境ストリングスやフェードアウトしていく単音フレーズのみを残すことで、アナウンス音声とBGMが注意を引き合ってメッセージが聞き取りにくくなる事態を防ぎます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "アウトロを検収する際は、司会者がハンドマイクで話している状況を想定して比較試聴を行う必要があります。もしBGMの倍音成分が終盤でも過剰に残っていると、全体の音量を下げたとしても、音声の明瞭さや言葉の聞き取りやすさが損なわれるおそれがあります。制作者はアウトロに明確な終止点があるか、あるいは綺麗に収束するフェードアウト効果があるかを確認し、最後の数秒で唐突に途切れたりリバーブが爆発したりしないように注意すべきです。中高音域の対話空間が明確に確保されて初めて、この劇伴は現場イベントをサポートする機能的基準を真に満たすことができます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "オリジナル素材の保管と生成物識別標識への理解"
+        },
+        {
+          "type": "paragraph",
+          "text": "段落の構成と音響の調整を完了すると同時に、制作チームは素材の出所のアーカイブ管理を決して怠ってはなりません。自身で執筆したアナウンス原稿、構想段階のプロンプトの下書き、そして参考スタイルとして用いた自前のオーディオクリップなどは、案件ごとに専用フォルダを作成して保存しておくべきです。Lyria 3 Proのような現代のオーディオツールには、生成された痕跡を識別するためのSynthID技術が組み込まれており、特定の既存歌手の模倣を回避する保護措置も講じられていますが、こうした技術的標識は著作権の免責や商用利用のライセンス保証を意味するものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般公開での再生やプロモーションでの使用の前には、現行のプラットフォーム利用規約、使用した素材、予定している配信方法を照合する必要があります。特定の雰囲気を演出したい場合は、特定歌手の歌声を再現すべき目標として指定するのではなく、リズム、楽器、感情などを言葉で描写します。プロンプトと出力バージョンを保管しておくことは、将来的な制作プロセスの説明に役立ちますが、これらの記録や生成識別標識だけで、作品があらゆる商用目的に適していると証明できるわけではありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "音声制作における自主管理のリマインダー",
+          "text": "モデルに組み込まれたSynthIDや模倣防止策は技術的な保護措置であり、商用著作権の裏付けではありません。チームはプロンプトとオリジナル素材を確実に保管し、具体的な配信チャネルごとに利用規約を個別に確認する必要があります。"
+        },
+        {
+          "type": "link",
+          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Project GlasswingとMythos Preview：AIが脆弱性を発見した後に始まる真の作業",
+          "url": "https://mokaair.com/ja/life/ai-news-project-glasswing-20260407"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：Lyria 3 Pro",
+          "url": "https://blog.google/innovation-and-ai/technology/ai/lyria-3-pro/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Lyria 3 Pro, AI 음악 창작 확장: 짧은 조각에서 구조를 갖춘 작품으로",
+      "description": "Lyria 3 Pro를 중심으로 긴 오디오의 단락 구성 방식을 분석하고, 지역 영화제 배경음악 사례를 통해 인트로, 벌스, 코러스, 안내 방송 공간을 아우르는 생성 워크플로와 검수 핵심 포인트를 살펴봅니다.",
+      "hero": {
+        "src": "/guides/ai-news-lyria-3-pro-20260325/hero-ko.jpg",
+        "alt": "음악을 단락으로 구성하는 독창적인 개념 일러스트, 본 사건의 활용 맥락 표현",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "사건 일자: 2026-03-25; 본문 확인 일자: 2026-09-14. 3월 25일 Google은 Lyria 3 Pro를 발표하며 최대 3분 길이의 음악을 생성하고, 프롬프트를 통해 인트로, 벌스, 코러스 및 브리지를 구성할 수 있다고 공지했습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "해당 발표는 Google의 창작 및 개발 엔트리포인트로 확장되었으며, 당시 Vertex AI에서는 public preview 단계였습니다. 제품별 접근 자격은 개별적으로 확인해야 합니다. Google은 출력물에 SynthID가 삽입되며 기존 가수를 모방하지 않도록 하는 조치가 적용된다고 밝혔습니다. 이러한 표시는 상업적 라이선스나 저작권 보증을 의미하지 않습니다. 다음의 일상 및 업무 시나리오는 편집진이 구성한 예시로 독자의 자체 검증을 위한 것이며, 본 사이트의 제품 실측 결과가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "구조 기획과 현장 상영 시나리오 정리"
+        },
+        {
+          "type": "paragraph",
+          "text": "지역 소규모 영화제를 기획하는 실무 현장에서 입장 음악은 관객을 상영 공간으로 안내하는 중요한 역할을 맡습니다. 큐레이션 팀은 음악 구조를 구상하기에 앞서 곡의 총 길이와 각 구간별 시간에 대응하는 현장 상황을 명확히 정의해야 합니다. 예를 들어 전체 길이를 2분 30초에서 3분으로 설정한다면, 첫 60초는 차분하고 절제된 앰비언스 사운드스케이프로 배치해 관객이 조용히 좌석을 찾도록 돕고, 중간 60초는 점진적으로 악기 편성을 풍성하게 만들어 현장의 기대감을 높이며, 마지막 단계에서는 볼륨을 신속히 낮춰 여유 공간을 확보해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이러한 단락 분할 사고는 코러스의 중독성에 집중하는 일반 대중가요의 문법과 완전히 다릅니다. 행사 현장에 필요한 것은 주객이 전도된 공연용 트랙이 아니라 기능적인 사운드 배경입니다. 프롬프트에서 단락별 시간대를 명확히 규정하지 않으면, 무작위로 생성된 긴 오디오는 부적절한 순간에 격렬한 비트를 드러내어 상영 전 안내 방송을 방해하기 쉽습니다. 따라서 창작자는 단락 프롬프트를 작성하기 전에 먼저 타임라인 목록을 작성하고 인트로, 전개, 마무리의 초 단위를 정밀하게 배분해야만 생성 결과물이 현장 동선 요구에 부합하도록 보장할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "인트로와 시작 분위기의 음량 절제"
+        },
+        {
+          "type": "paragraph",
+          "text": "입장 인트로의 핵심은 편안하면서도 위압적이지 않은 청취 공간을 조성하는 데 있습니다. 이 단계의 프롬프트 설정에서는 따뜻한 어쿠스틱 목관·현악 질감, 부드러운 서스테인 스트링, 혹은 미니멀한 피아노 단음 위주로 구성하는 것이 권장되며, 너무 이른 시점에 강한 킥 드럼이나 날카로운 전자 신시사이저가 등장하지 않도록 해야 합니다. 행사가 막 시작될 때는 관객들이 대화를 나누며 이동하므로 지나치게 복잡한 멜로디는 오히려 청각적 피로를 유발합니다. 창작자는 음색의 질감과 공간의 리버브 잔향에 프롬프트 초점을 맞추어 인트로가 넓고 안정감 있게 들리도록 함으로써 마음을 가라앉히는 유도 효과를 이끌어내야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "구간별로 인트로를 청취할 때 첫 번째 검수 포인트는 기본 음량과 다이내믹 레인지입니다. 오디오 시작 부분에서 갑작스러운 트랜지언트 피크가 발생하면 이후 구간이 차분해지더라도 환영을 위한 온화한 분위기는 이미 깨지고 맙니다. 이때 인트로와 이어지는 악구 사이의 연결부가 너무 투박하지 않은지 확인하고, 음색이나 음량에 부자연스러운 도약이 없는지 살펴야 합니다. 인트로가 너무 밋밋하다고 느껴진다면 타악기를 추가하기보다는 프롬프트 내 배경 앰비언스 질감을 미세 조정하여 입장 초반부의 절제되고 일관된 서사적 바탕을 유지하는 편이 바람직합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "단락 구분",
+            "음악적 분위기 및 악기 편성 제안",
+            "현장 검수 포인트"
+          ],
+          "rows": [
+            [
+              "입장 인트로(0-60초)",
+              "목관 질감, 롱톤 스트링, 미니멀 피아노 단음 위주로 탁 트이고 차분한 공간감 조성.",
+              "음량이 안정적이고 절제되었는지 확인, 초반 트랜지언트 피크의 관객 동선 방해 방지."
+            ],
+            [
+              "벌스 전개(60-120초)",
+              "미드 레인지 어쿠스틱 기타와 부드러운 베이스 라인을 점진적으로 추가해 리듬감과 기대감 고조.",
+              "악기 레이어의 층위 확인, 음질이나 주파수의 급변 없이 단락 전환이 자연스러운지 점검."
+            ],
+            [
+              "코러스 고조(120-150초)",
+              "경쾌한 타악기나 풍성한 코드를 적절히 더해 전체 분위기를 집중과 응집의 하이라이트로 이끎.",
+              "각 트랙의 주파수가 과도하게 뭉치지 않는지 살펴 고조된 에너지가 날카로운 소음이 되지 않도록 검토."
+            ],
+            [
+              "아웃트로 페이드아웃(150-180초)",
+              "베이스 리듬과 메인 멜로디를 거두고 미니멀 스트링 패드로 복귀하며 전체 음량을 신속히 감쇄.",
+              "중고음역 안내 방송 공간 확보, 사회자 멘트 테스트를 통해 딕션과 음성 명료도 대조 검증."
+            ]
+          ],
+          "caption": "지역 영화제 배경음악의 단락별 기능 기획과 검수 포인트 비교. 창작자는 현장 동선에 맞추어 초 단위를 배분하고 구간별 청취를 통해 음량 기복과 음성 명료도를 엄격히 관리해야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "중반 감정 고조와 악기 레이어 확장"
+        },
+        {
+          "type": "paragraph",
+          "text": "현장 관객의 착석이 마무리되어 음악이 중반 벌스와 코러스로 넘어가면, 장내의 주의를 모으기 위해 적절한 활력을 불어넣을 필요가 있습니다. 단락 구성 측면에서 창작자는 프롬프트를 통해 중음역 기타, 점진적인 베이스 라인, 혹은 가벼운 셰이커 리듬을 중반부에 도입하도록 지시하여 단순했던 멜로디 라인을 한층 두텁게 만들 수 있습니다. 여기서의 목표는 상영이 곧 시작된다는 기대감을 형성하여 현장의 느슨한 이동과 대화 분위기를 집중력 있는 관람 심리 상태로 서서히 전환하는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "중반부를 검수할 때는 벌스에서 코러스로 넘어가는 구간의 몇몇 프레이즈를 집중해 들으며 악기가 갑자기 사라지지 않는지, 음량이 튀지 않는지, 그리고 멜로디가 앞선 구간과 자연스럽게 이어지는지 확인해야 합니다. 이는 확인해야 할 잠재적 문제점이며 Lyria 3 Pro에 대한 본 사이트의 실측 결론이 아닙니다. 프롬프트 조정만으로 행사의 필요에 맞추기 어렵다면 전체 트랙을 계속 재생성할 필요 없이 편집 도구에서 구간 연결, 페이드아웃, 길이를 직접 다듬을 수도 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-lyria-3-pro-20260325/diagram-1-ko.svg",
+          "alt": "음악을 단락으로 구성하기: 네 가지 열람 및 활용 핵심",
+          "width": 1600,
+          "height": 900,
+          "caption": "용도 정의: 길이와 재생 상황, 단락 기획: 분위기와 전환, 구간별 청취: 멘트와 사운드 밸런스, 출처 확인: 라이선스와 표시.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "엔딩 감쇄와 현장 안내 방송 공간 확보"
+        },
+        {
+          "type": "paragraph",
+          "text": "배경음악의 마지막 30초에서 40초는 행사가 본격적으로 시작되기 직전의 중요한 전환기입니다. 이때 음악은 중반부의 고조된 감정에서 정돈된 방식으로 차분해져야 하며, 사회자의 오프닝 멘트나 안전 수칙 안내 방송을 위해 온전한 주파수 공간을 양보해야 합니다. 단락 프롬프트를 설계할 때는 저음역 리듬과 중음역 메인 악기를 걷어내고 아주 잔잔한 앰비언트 스트링이나 페이드아웃되는 단음 프레이즈만 남기도록 감쇄 아웃트로 진입을 능동적으로 요구해야 합니다. 이를 통해 육성 방송과 배경음악이 주의를 두고 경쟁하여 정보 전달이 흐려지는 상황을 방지할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아웃트로를 검수할 때는 사회자가 마이크를 잡고 말하는 상황을 시뮬레이션하여 대조 청취를 진행해야 합니다. 배경음악의 배음이 말미에서도 여전히 풍성하다면 전체 볼륨을 낮추더라도 음성의 명료도와 발음 식별을 가릴 수 있습니다. 창작자는 아웃트로에 명확한 종결 지점이 있는지, 혹은 고르게 수렴하는 페이드아웃 효과가 적용되었는지 점검해야 하며 마지막 몇 초에 갑작스럽게 끊기거나 리버브가 폭발하지 않도록 주의해야 합니다. 맑고 깨끗한 중고음역 대화 공간이 확보되어야 비로소 이 음악은 현장 행사를 실질적으로 뒷받침하는 기능적 기준을 충족하게 됩니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "오리지널 소재 보존과 생성 표시 인지"
+        },
+        {
+          "type": "paragraph",
+          "text": "단락 구성과 사운드 다듬기를 마치는 것과 더불어, 작업 팀은 소재 출처의 아카이빙 작업을 결코 소홀히 해서는 안 됩니다. 자체 작성한 방송 대본, 구상 단계의 프롬프트 초안, 참고 스타일로 활용한 자체 오디오 샘플은 전용 디렉터리를 구축하여 프로젝트별로 보관해야 합니다. Lyria 3 Pro와 같은 최신 오디오 도구에는 생성 흔적을 식별하는 SynthID 기술이 내장되어 있고 특정 기존 가수의 모방을 방지하는 보호 전략이 채택되어 있으나, 이러한 기술적 표시는 저작권 면책이나 상업적 라이선스 보증 획득을 의미하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공개 재생하거나 홍보에 활용하기 전에는 현재 플랫폼 약관, 사용된 소재, 예정된 배포 방식을 반드시 대조해야 합니다. 특정한 분위기를 원한다면 특정 가수의 음성을 복제 대상으로 삼지 말고 리듬, 악기, 분위기로 설명할 수 있습니다. 프롬프트와 출력 버전을 보존해 두면 향후 제작 과정을 설명하는 데 도움이 되며, 이러한 기록과 생성 표시만으로 작품이 모든 상업적 용도에 부합함을 단독으로 입증할 수는 없습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "사운드 창작의 자체 검증 안내",
+          "text": "모델에 내장된 SynthID 및 모방 방지 조치는 기술적 보호 장치일 뿐 상업적 저작권 보증이 아닙니다. 팀은 프롬프트와 오리지널 소재를 철저히 보관하고 구체적인 배포 채널별 사용 규정을 개별 확인해야 합니다."
+        },
+        {
+          "type": "link",
+          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Project Glasswing과 Mythos Preview: AI가 취약점을 찾은 뒤에야 진짜 작업이 시작된다",
+          "url": "https://mokaair.com/ko/life/ai-news-project-glasswing-20260407"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: Lyria 3 Pro",
+          "url": "https://blog.google/innovation-and-ai/technology/ai/lyria-3-pro/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Lyria 3 Pro 延长 AI 音乐创作：从短片段到有段落的作品",
+      "description": "解析以 Lyria 3 Pro 为代表的长音频段落编排思维，通过社区影展配乐案例，探讨前奏、主歌、副歌与口播空间的生成工作流及验收重点。",
+      "hero": {
+        "src": "/guides/ai-news-lyria-3-pro-20260325/hero-zh-cn.jpg",
+        "alt": "把音乐写成段落的原创概念插图，呈现本篇事件的使用脉络",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事件日期：2026-03-25；本文查核日期：2026-09-14。3 月 25 日 Google 发表 Lyria 3 Pro，公告可产生最长 3 分钟的音乐，并用提示安排前奏、主歌、副歌与桥段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同次公告扩展至 Google 的创作与开发入口，Vertex AI 当时为 public preview；各产品资格需分开看。Google 表示输出嵌入 SynthID，并采避免模仿既有歌手的措施；标记不是商用授权或版权保证。以下生活与工作情境为编辑设计的例子，供读者自行验证，并非本站产品实测。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "架构规划与现场播映情境梳理"
+        },
+        {
+          "type": "paragraph",
+          "text": "在筹办社区微型影展的实务情境中，入场配乐肩负着引导居民步入放映空间的重要任务。策展团队在发想音乐架构前，必须先明确界定全曲长度与每段时间对应的现场情境。举例来说，若将总长设定为两分半至三分钟，前六十秒可设定为低调沉稳的环境声景，让观众安静找寻座位；中间六十秒则逐渐丰富配器层次，提振现场参与期待；最后阶段则必须迅速降下音量，预留空间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这种分段思维与一般流行歌以副歌洗脑的逻辑截然不同。活动现场需要的是具备功能性的声音背景，而非喧宾夺主的表演曲目。若未在提示词中明确规范段落时序，随机生成的长音频往往会在不合适的时间点出现激烈节奏，干扰放映前的说明广播。因此，创作者在动笔撰写段落提示前，应先列出时间轴清单，精确分配前奏、发展与收尾的秒数，才能确保生成成品符合场地动线需求。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "前奏与起步氛围的音量克制"
+        },
+        {
+          "type": "paragraph",
+          "text": "入场前奏的核心在于营造舒适而不具侵略性的聆听空间。在此阶段的提示词设定上，建议着重于温暖的木质乐器、轻柔的弦乐长音或极简的钢琴单音，避免过早引入节奏强烈的大鼓或刺耳的电子合成器。由于活动刚开始时观众仍在交谈与移动，过于复杂的旋律反而会造成听觉疲劳。创作者应将提示重点放在音色的质地与空间残响，使前奏听起来开阔而安定，达到沉淀心灵的引导效果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "逐段试听前奏时，第一项验收重点是基础音量与动态范围。若音频一开头就出现突发性的瞬态峰值，即使后续段落渐渐平缓，也已经破坏了迎宾的温和氛围。此时可检查前奏与后续乐句的连接处是否过于生硬，观察音色音量是否有不自然的突跳。若发现前奏过于单调，应微调提示中的背景环境质感，而不是增加打击乐器，让入场开头维持克制且一致的叙事底调。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "段落分工",
+            "音乐情绪与配器建议",
+            "现场验收重点"
+          ],
+          "rows": [
+            [
+              "入场前奏（0-60秒）",
+              "以木质乐器、长音弦乐或极简钢琴单音为主，营造开阔且安静的空间感。",
+              "检查音量是否平稳克制，避免开场瞬态峰值干扰观众步入会场。"
+            ],
+            [
+              "主歌发展（60-120秒）",
+              "逐步加入中音木吉他与温和低音线条，提升节奏流动感与参与期待。",
+              "确认乐器叠加的层次感，段落转换需自然且无音质或频率突变。"
+            ],
+            [
+              "副歌推升（120-150秒）",
+              "适度加入轻巧打击乐或饱满和弦，将全场氛围推向专注凝聚的高点。",
+              "检视各音轨频率是否过于混浊，确保高潮能量不至转为刺耳杂讯。"
+            ],
+            [
+              "尾奏淡出（150-180秒）",
+              "抽离低音节奏与主旋律，回归极简弦乐衬底，迅速收敛整体音量。",
+              "预留中高频口播空间，对比主持人口白测试咬字与语音清晰度。"
+            ]
+          ],
+          "caption": "社区影展配乐之分段功能规划与验收重点对照。创作者应依现场动线分配秒数，并在逐段试听中严格把关音量起伏与语音清晰度。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "中段情绪推升与乐器层次扩展"
+        },
+        {
+          "type": "paragraph",
+          "text": "当现场观众逐渐就座完毕，音乐进入中段主歌与副歌时，便需要适度注入活力以凝聚全场注意力。在段落安排上，创作者可以通过提示词指示系统在中段引入中音吉他、渐进式的低音线条或轻巧的沙锤节奏，让原本单纯的旋律线逐渐厚实。此处的目的是产生期待感，象征放映即将展开，使现场空气从原本松散的走动交谈，慢慢转为凝聚且专注的观影心理状态。"
+        },
+        {
+          "type": "paragraph",
+          "text": "验收中段时，可以听主歌过渡到副歌附近的几个乐句，注意乐器是否突然消失、音量是否跳动，以及旋律是否和前段接得上。这些是需要检查的可能问题，不是本站对 Lyria 3 Pro 的实测结论。若只调整提示仍未符合活动需要，也可以在剪辑工具里处理接段、淡出或长度，不必一直重新生成整首曲目。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-lyria-3-pro-20260325/diagram-1-zh-cn.svg",
+          "alt": "把音乐写成段落：四项阅读与使用重点",
+          "width": 1600,
+          "height": 900,
+          "caption": "定义用途：时长与播放场合、规划段落：情绪与转场、逐段试听：口白与声音平衡、确认来源：授权与标示。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "结尾弱化与现场口播空间预留"
+        },
+        {
+          "type": "paragraph",
+          "text": "配乐最后的三十至四十秒通常是活动即将正式开始的关键过渡期。此时音乐必须从中段的高亢情绪有条不紊地降温，为主持人的开场口播或安全须知广播让出完整的频率空间。在段落提示设计上，应主动要求进入弱化尾奏，抽离低频节奏与中频主奏乐器，仅保留极弱的环境弦乐或淡出的单音乐句，避免人声广播与背景音乐互相争抢注意力，造成信息传递不清。"
+        },
+        {
+          "type": "paragraph",
+          "text": "验收尾奏时，应模拟主持人手持麦克风讲话的情境进行对比聆听。若背景音乐的泛音在尾段依然过于饱满，即使整体音量降低，仍可能遮蔽语音的清晰度与咬字识别。创作者应检视尾奏是否有明确的结束点，或是具备平整收敛的淡出效果，切忌在最后数秒突兀收煞或爆发残响。唯有留出清晰的中高频对白空间，这首配乐才能真正达到支持现场活动的功能标准。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "原创素材保存与生成标记认知"
+        },
+        {
+          "type": "paragraph",
+          "text": "在完成段落编排与声音修饰的同时，工作团队切不可忽视素材来源的归档工作。任何自行编写的口播文案、发想提示词草稿，以及作为参考风格的自有声音片段，都应建立专门的目录逐案存盘。虽然现代音频工具如 Lyria 3 Pro 内置了 SynthID 技术用于标识生成痕迹，并采取了避免模仿特定既有歌手的防护策略，但这类技术标记并不等于取得版权豁免或商业授权保证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公开播放或用于宣传前，应核对当前平台条款、所用素材与预定的发布方式。如果希望某种气氛，可以描述节奏、乐器与情绪，而不把特定歌手的声音当成必须复制的目标。保留提示和输出版本，有助于日后说明制作过程；这些记录与生成标记都不能单独证明作品适用于所有商业用途。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "声音创作的自主把关提醒",
+          "text": "模型内置的 SynthID 与防模仿措施属于技术防护，并非商用版权背书。团队应切实归档提示词与原创素材，并依具体发布渠道分别核实使用规范。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Project Glasswing 与 Mythos Preview：AI 找到漏洞后，真正的工作才开始",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-project-glasswing-20260407"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：Lyria 3 Pro",
+          "url": "https://blog.google/innovation-and-ai/technology/ai/lyria-3-pro/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

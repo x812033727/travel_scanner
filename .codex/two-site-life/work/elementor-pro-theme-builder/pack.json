@@ -1,0 +1,242 @@
+{
+  "slug": "elementor-pro-theme-builder",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Elementor Pro 要用在哪：頁首頁尾、範本與授權選擇",
+      "description": "當網站需要統一頁首頁尾與文章版型，Elementor Pro 的 Theme Builder 可以集中管理範本，但是否值得購買仍要看實際功能與授權。本文說明現行方案的核對方式、Pro 安裝啟用、動態文章內容與顯示條件，並提供範本衝突和沒有套用時的排查順序。也整理續約、更新與交接注意事項，避免把全站設計誤當成單頁排版。",
+      "hero": {
+        "src": "/guides/elementor-pro-theme-builder/hero.jpg",
+        "alt": "原創插圖以費用清單、範本文書與網站螢幕表示 Elementor Pro 的規劃流程。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "如果每次更改聯絡電話，都要打開十幾個頁面逐一修改，網站可能需要共用範本。Theme Builder 可以管理頁首、頁尾與文章等網站部位，讓同一套設計套用到指定內容。它解決的是重複維護問題，而非自動替網站補齊所有文章。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以工作室網站為例：一般頁面沿用一致導覽，活動頁有獨立頁首，文章使用共同版型。本文依 2026 年 9 月 14 日查閱的官方資料整理，不代替讀者購買方案，也沒有把功能文件寫成使用成效或實測推薦。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先確認需要的是共用範本"
+        },
+        {
+          "type": "paragraph",
+          "text": "單頁編輯負責某個頁面的文字、圖片與排列；Theme Builder 則建立可以套用多處的網站部位。修改文章範本，可能影響所有符合條件的文章。開始前先列出哪些區域應共用、哪些確實需要例外，避免替每一頁建立幾乎相同的範本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果 Astra 等佈景主題目前的頁首已經滿足需求，不必為了使用 Pro 再重做一套。若要依活動類型切換導覽，或讓文章統一顯示標題、作者與正文，才有明確的使用目的。將需求寫成結果，例如「活動頁不顯示一般服務選單」，較容易驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Theme Builder 的成果也不是可直接當傳統 WordPress 主題安裝的獨立主題套件。它依賴 Elementor 與網站環境，可透過對應工具匯出範本或搬移設定。規劃交接時，需要連同外掛、授權與素材依賴一起考慮。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "依功能與續約成本核對方案"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前官方 Pro 方案頁把 Theme Builder 列入 Essential，但同時限制部分動態內容能力；自訂欄位與自訂文章類型不在該方案內，彈出視窗、自訂程式與 CSS、電商功能也另有方案差異。不能把「有 Theme Builder」理解為所有進階用途都包含。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如只為一般文章設計共用版型，與要讀取案例自訂欄位、建立商品頁，所需功能不同。先列出必用元件、動態資料來源、表單紀錄需求與網站數，再逐格核對官方比較表。多站授權與單站方案的差異，也不只在第一眼看到的總價。"
+        },
+        {
+          "type": "paragraph",
+          "text": "查閱當下部分價格由動態介面顯示，因此本文不填入無法可靠擷取的固定金額。購買時確認年繳總額、續約標準價格、幣別及稅費，保存方案明細。若考慮包含其他服務的 One 方案，還要分辨編輯器功能與額度型服務，不把所有項目都當無上限。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "安裝 Pro 並連到正確帳號"
+        },
+        {
+          "type": "paragraph",
+          "text": "Elementor Pro 是免費 Elementor Core 的擴充外掛，Core 必須保持安裝與啟用。官方現行流程可在後台 Elementor、Editor、Quick Start 使用 Connect & Activate，確認登入帳號後選擇授權訂閱；也提供從帳號下載 Pro ZIP 再上傳外掛的方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手動安裝時，將官方帳號下載的 ZIP 放到新增外掛的上傳入口，不是佈景主題上傳。若出現缺少 style.css 的訊息，先確認是否誤裝到主題區。完成啟用後，再核對目前連結的網站、帳號與訂閱，尤其電腦曾登入其他客戶帳號時更要注意。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先在可回復的環境操作，保留原本頁首與頁尾設定。不要從來路不明的網站下載所謂解鎖版，也不要把共用帳號密碼貼進交接文件。文件記錄授權持有人與處理方式即可，登入資料應由合適的帳號管理方式保管。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立範本，讓內容維持動態"
+        },
+        {
+          "type": "paragraph",
+          "text": "從 Elementor 的 Theme Builder 入口選擇要建立的部位，例如 Header 或 Footer。不同版本可能仍將入口放在 Templates；先依部位找到對應範本，再開始編輯。替範本命名時包含用途，例如「一般頁首」與「活動頁首」，避免只有無法辨認的編號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文章範本應使用文章標題、特色圖片與 Post Content 等動態元件，讓每篇文章帶入自己的資料。若把某篇文章全文直接寫進範本，所有套用頁面都可能顯示相同文字。正文仍在文章本身維護，範本只決定如何呈現。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先選幾篇具有不同內容長度的文章預覽，包括沒有特色圖片、標題很長與內文有表格的情境。共用版型不能只在一篇短文章上成立。頁首頁尾也要一起檢查，主題相容性會影響部位替換，不能假設每套主題都能任意混搭。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "選定網站部位並建立具用途名稱的範本。",
+            "放入必要導覽或動態內容元件，避免寫死每篇文章的資料。",
+            "先在測試頁預覽不同內容，再設定窄範圍的顯示條件。",
+            "確認前台結果後，才將條件擴展到預定的文章或頁面。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "顯示條件要避免互相搶用"
+        },
+        {
+          "type": "paragraph",
+          "text": "發布網站部位範本時，使用 Add Condition 選擇 Include 或 Exclude，再指定整站、單篇、分類或其他支援範圍。一般頁首可包含整站並排除活動頁，活動頁首則只包含對應活動頁。先畫出兩者的集合關係，再設定，比不斷增加例外容易管理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若官方介面提示與另一個部位的條件衝突，先找出哪兩個範本同時涵蓋同一頁。不要靠建立先後順序猜哪個會生效。Theme Builder 可編輯條件並查看使用範圍；儲存後必須用前台網址確認，編輯器看見範本不代表它已套用到目標。"
+        },
+        {
+          "type": "paragraph",
+          "text": "看不到文章範本時，也檢查該文章的 Page Layout。官方文章範本說明要求使用 Default Template，Canvas 或其他非預設版型可能不會套用。若連範本清單都載不出來，再查帳號權限、REST API 與安全外掛限制，不要一開始就停用所有保護。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "維護範本也要管理授權與回復"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗收至少包含首頁、一般頁、活動頁、不同文章與搜尋或分類頁，確認頁首數量正確、正文存在、導覽可操作。只想更改一個部位時，也要測試與原主題另一部位的組合；官方特別提醒部分主題的頁首頁尾結構相依。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上線後保存範本匯出檔、顯示條件清單與完整網站備份。範本匯出不等於所有媒體、資料庫和外掛都已備妥。若改版異常，先恢復已確認的範本與條件，再檢查快取，避免同時改動全域樣式和多個頁面而難以定位。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方目前說明未續約會失去 Pro 更新與新增功能能力，既有 Pro 功能也可能只有有限存取；不能承諾到期後永遠完整可編輯。Core 持續更新而 Pro 停在舊版可能造成相容問題。將續約決策與更新責任寫進交接，網站才不會在下一次維護時失去支援。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/elementor-pro-theme-builder/diagram-1.svg",
+          "alt": "四格圖解呈現核對方案、建立動態範本、設定包含排除範圍與前台驗證。",
+          "width": 1600,
+          "height": 900,
+          "caption": "文章保存自己的內容，範本負責呈現，條件決定在哪裡套用。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "讀者需求",
+            "先核對的能力",
+            "驗收重點"
+          ],
+          "rows": [
+            [
+              "統一頁首與頁尾",
+              "Theme Builder 與主題相容性",
+              "指定頁面只有正確的一組導覽"
+            ],
+            [
+              "共同文章版型",
+              "動態標題、圖片與 Post Content",
+              "不同文章帶入不同正文"
+            ],
+            [
+              "案例自訂欄位",
+              "方案的動態資料支援",
+              "欄位值與缺資料情況"
+            ],
+            [
+              "活動頁例外",
+              "Include、Exclude 與顯示範圍",
+              "一般頁與活動頁不衝突"
+            ],
+            [
+              "長期維護",
+              "授權站數、續約與更新",
+              "持有人及回復方式明確"
+            ]
+          ],
+          "caption": "方案功能依 2026-09-14 官方頁面核對；購買時仍需確認當次明細。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先測一頁，再擴大套用",
+          "text": "共用範本的好處是一次維護多處，錯誤也會同樣擴散。先用窄範圍驗證動態內容、裝置與顯示條件，再擴展到全站，並保存可回復的原始設定。"
+        },
+        {
+          "type": "link",
+          "text": "先掌握 Elementor 容器與手機排版",
+          "url": "https://mokaair.com/zh-TW/life/elementor-first-page"
+        },
+        {
+          "type": "link",
+          "text": "比較 Astra 的主題設定與 Pro 功能",
+          "url": "https://mokaair.com/zh-TW/life/astra-theme-customization"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Elementor：Pro 方案功能",
+          "url": "https://elementor.com/pro/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：安裝與啟用 Pro",
+          "url": "https://elementor.com/help/installing-elementor-pro/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：Theme Builder",
+          "url": "https://elementor.com/help/the-elementor-theme-builder/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：網站部位顯示條件",
+          "url": "https://elementor.com/help/conditions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：文章範本與動態正文",
+          "url": "https://elementor.com/help/single-post-site-part/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：主題相容性",
+          "url": "https://elementor.com/help/considerations-for-theme-builder-compatibility/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：未續約的影響",
+          "url": "https://elementor.com/help/what-happens-to-my-site-if-i-cancel-elementor-pro/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

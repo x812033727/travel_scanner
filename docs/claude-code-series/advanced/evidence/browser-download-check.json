@@ -1,0 +1,123 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "tools/claude-code-series/advanced/playwright.config.mjs",
+      "--grep",
+      "preview download links"
+    ],
+    "configFile": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\tools\\claude-code-series\\advanced\\playwright.config.mjs",
+    "rootDir": "C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/docs/claude-code-series/advanced/evidence/browser-runs",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "claude-code-series.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\/browser-download-check.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "claude-code-series.spec.ts",
+      "file": "claude-code-series.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "preview download links stay local and serve the exact reviewed ZIP bytes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5379,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T12:30:31.832Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-1948348862de3f1de5b0",
+          "file": "claude-code-series.spec.ts",
+          "line": 205,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-14T12:30:30.955Z",
+    "duration": 22274.097999999998,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

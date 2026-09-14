@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">從描述與歌詞到一首歌 / From description and lyrics to a song</title>
+  <desc id="desc">抽象插圖：畫面左側有兩張白色卡片，上面一張用藍色橫條代表一段音樂描述，下面一張用綠色橫條與方括號代表一段帶段落標記的歌詞。兩張卡片各有一條曲線箭頭匯入畫面中央的圓形，圓裡是一組高低不一的直條，代表正在生成的聲音。圓形再往右接到一張橘色邊框的卡片，卡片裡是一段完成的波形，代表產出的音檔。底部有一行短標題「從描述與歌詞到一首歌」。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <!-- description card -->
+  <rect x="120" y="205" width="300" height="190" rx="26" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <rect x="162" y="252" width="216" height="16" rx="8" fill="#2F6F9F"/>
+  <rect x="162" y="292" width="168" height="16" rx="8" fill="#2F6F9F"/>
+  <rect x="162" y="332" width="196" height="16" rx="8" fill="#9CC2DC"/>
+
+  <!-- lyrics card -->
+  <rect x="120" y="470" width="300" height="190" rx="26" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <path d="M 186 512 H 166 V 566 H 186" fill="none" stroke="#0D6B68" stroke-width="9" stroke-linecap="round"/>
+  <path d="M 258 512 H 278 V 566 H 258" fill="none" stroke="#0D6B68" stroke-width="9" stroke-linecap="round"/>
+  <rect x="300" y="530" width="78" height="16" rx="8" fill="#2E7D5B"/>
+  <rect x="162" y="600" width="216" height="16" rx="8" fill="#2E7D5B"/>
+
+  <!-- generation core -->
+  <circle cx="800" cy="430" r="178" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <rect x="680" y="395" width="20" height="70" rx="10" fill="#2E7D5B"/>
+  <rect x="715" y="360" width="20" height="140" rx="10" fill="#0D6B68"/>
+  <rect x="750" y="325" width="20" height="210" rx="10" fill="#0D6B68"/>
+  <rect x="785" y="305" width="20" height="250" rx="10" fill="#D97A2B"/>
+  <rect x="820" y="330" width="20" height="200" rx="10" fill="#0D6B68"/>
+  <rect x="855" y="365" width="20" height="130" rx="10" fill="#0D6B68"/>
+  <rect x="890" y="390" width="20" height="80" rx="10" fill="#2E7D5B"/>
+
+  <!-- finished audio card -->
+  <rect x="1115" y="280" width="390" height="300" rx="30" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <rect x="1172" y="400" width="14" height="64" rx="7" fill="#D97A2B"/>
+  <rect x="1206" y="376" width="14" height="112" rx="7" fill="#D97A2B"/>
+  <rect x="1240" y="346" width="14" height="172" rx="7" fill="#0D6B68"/>
+  <rect x="1274" y="386" width="14" height="92" rx="7" fill="#D97A2B"/>
+  <rect x="1308" y="356" width="14" height="152" rx="7" fill="#0D6B68"/>
+  <rect x="1342" y="396" width="14" height="72" rx="7" fill="#D97A2B"/>
+  <rect x="1376" y="368" width="14" height="128" rx="7" fill="#0D6B68"/>
+  <rect x="1410" y="404" width="14" height="56" rx="7" fill="#D97A2B"/>
+  <rect x="1444" y="416" width="14" height="32" rx="7" fill="#2E7D5B"/>
+
+  <!-- flow -->
+  <path d="M 428 300 Q 545 300 600 375" fill="none" stroke="#5C6B6B" stroke-width="6" marker-end="url(#arrow)"/>
+  <path d="M 428 565 Q 545 565 600 485" fill="none" stroke="#5C6B6B" stroke-width="6" marker-end="url(#arrow)"/>
+  <path d="M 990 430 H 1098" fill="none" stroke="#5C6B6B" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <circle cx="520" cy="170" r="16" fill="#D97A2B"/>
+  <circle cx="1060" cy="700" r="20" fill="#2E7D5B"/>
+  <circle cx="240" cy="740" r="26" fill="#9CC2DC"/>
+
+  <text x="800" y="810" text-anchor="middle" font-size="54" font-weight="700" fill="#102A2B">從描述與歌詞到一首歌</text>
+</svg>

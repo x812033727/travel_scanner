@@ -1,0 +1,365 @@
+{
+  "slug": "codex-cloud-tasks-github",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Codex 雲端任務：連 GitHub、平行跑多個任務、開 PR",
+      "description": "ChatGPT 裡的 Codex 可以把工作交給雲端：連上 GitHub、替每個 repo 設一個容器環境，然後同時丟好幾個任務讓它在背景做，回來看摘要與 diff、直接開 PR。這篇依 OpenAI 官方說明整理哪些方案有雲端 Codex、GitHub 授權要勾哪些 repo、環境變數與密鑰的差別、代理階段預設沒有網路是什麼意思，以及為什麼合併前還是要把改動拉回本機跑一次測試。",
+      "hero": {
+        "src": "/guides/codex-cloud-tasks-github/hero.jpg",
+        "alt": "插圖：一朵雲裡有三張並排的任務卡，往下連到兩條匯流成一條的分支線與一個打勾的方框",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "讓 AI 寫程式最卡的通常不是它寫不出來，而是你得開著電腦看著它跑。ChatGPT 裡的 Codex 有雲端模式：連上 GitHub、替 repo 設好容器環境，之後每丟一個任務，OpenAI 那邊就開一個獨立容器把 repo 檢出下來做事，你可以同時丟好幾個，關掉分頁去忙別的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇走完一次：連 GitHub 要勾哪些 repo、相依套件與密鑰怎麼放、任務怎麼下、回來怎麼看 diff、什麼時候開 PR、什麼時候拉回本機再測。方案與預設值以官方說明頁為準。"
+        },
+        {
+          "type": "heading",
+          "text": "雲端 Codex 是什麼，哪些方案能用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 是 OpenAI 的寫程式代理（Agent），入口有 Codex CLI、編輯器擴充、桌面版與雲端。官方把在雲端跑的那一種叫「雲端聊天」，整段工作發生在 OpenAI 管理的隔離容器裡；桌面版開新聊天時可選 Local、Worktree 或 Cloud。早期分成問問題與寫程式兩種模式的說法，說明頁上已經沒有了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 說明中心寫 Codex 包含在各個 ChatGPT 方案，含 Free 與 Go。開發者說明頁的功能對照表列出 Plus、Pro、Business、Enterprise 與 Edu 都能用雲端 Codex，API Key 登入的沒有雲端功能；表上沒有 Free 與 Go 兩欄，這兩個方案能不能跑雲端任務以官網為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "官網標價：Free 每月 0 美元、Go 8 美元、Plus 20 美元、Pro 從 100 美元起；Business 需兩人以上，年繳每位每月 20 美元、月繳 25 美元。",
+            "本機訊息與雲端聊天共用同一份額度，可能還有每週上限。",
+            "雲端聊天在 ChatGPT 方案上用 GPT-5.6 Sol，可能比本機訊息更快吃掉額度。官方估計每五小時 Plus 約 10 到 100 則、Pro 5x 50 到 500 則本機訊息，這不是固定上限。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "和 Codex CLI 的差別是誰的機器在跑。CLI 用你電腦上已裝好的工具、看得到本機檔案，適合邊改邊跑起來看；雲端是描述完就可以離開，CLI 也能把雲端的結果拉回來。"
+        },
+        {
+          "type": "link",
+          "text": "Codex CLI 入門：在終端機裡讓 OpenAI 幫你改程式",
+          "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+        },
+        {
+          "type": "paragraph",
+          "text": "和 Anthropic 的 Claude Code 網頁版比，形狀很像：都是在瀏覽器把任務交出去、在雲端容器裡跑、回來看差異再開 PR。差別在生態，一邊綁 ChatGPT 帳號與 OpenAI 的模型，一邊綁 Claude 帳號。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code 網頁版教學",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-on-the-web"
+        },
+        {
+          "type": "link",
+          "text": "OpenAI Codex 是什麼：從 ChatGPT 裡的寫程式代理到 Codex CLI",
+          "url": "https://mokaair.com/zh-TW/life/codex-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+        },
+        {
+          "type": "heading",
+          "text": "連 GitHub：授權範圍與 Codex 看得到的 repo",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用 ChatGPT 帳號登入 Codex，照提示連 GitHub（也支援 GitLab，官方標示為 Beta），然後挑它能存取哪些 repo。這裡容易搞混：ChatGPT 裡另有一個 GitHub 連接器是唯讀的，只能讀程式回答問題；要產生、修改並推上 GitHub 的是 Codex。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "私有 repo 可以，前提是 GitHub App 裝在正確的帳號或組織底下，而且那個 repo 有被勾選核准。",
+            "組織的 repo 可能要管理員先核准這個 App。",
+            "存取範圍由 GitHub 控制，組織擁有者可以在已安裝的 App 設定裡改。",
+            "雲端 Codex 遵守來源系統本身的權限與保護設定，ChatGPT 工作區權限不會繞過。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "設定環境：容器、相依套件、變數與密鑰",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "接著替每個 repo 建一個環境，它決定 Codex 在雲端裝什麼、跑什麼。送出提示詞後的順序固定：建容器、把 repo 檢出到指定的分支或 commit、跑設定腳本、套用網路設定，最後代理才在終端機迴圈裡改程式與跑檢查。repo 裡有 AGENTS.md 就從那裡找測試指令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "預設容器映像叫 universal，常見語言與工具都預先裝好，設定裡可以把 Python、Node.js 等版本釘住。用 npm、pnpm、pip、poetry 的專案能自動安裝相依，複雜的就自己寫設定腳本。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "環境設定腳本範例（官方文件的寫法）",
+          "code": "# 安裝型別檢查工具\npip install pyright\n\n# 安裝專案相依\npoetry install --with test\npnpm install"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定腳本和代理跑在不同的 Bash session，腳本裡的 export 不會留到代理那段。環境變數整段聊天都在；密鑰不一樣，多一層加密、只有設定腳本拿得到，代理階段開始前就被移除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網路也分兩段：設定腳本那段有網路，你才裝得了套件；代理那段預設關閉。需要時逐個環境打開，並用網域允許清單收窄，起點有空白、一份常見相依套件網域的預設清單，或完全不限，也可以只允許 GET、HEAD 與 OPTIONS。"
+        },
+        {
+          "type": "paragraph",
+          "text": "容器狀態最多快取 12 小時，讓新聊天與追問跑快一點。改了設定腳本、環境變數或密鑰，快取會自動失效，狀態不相容時可以在環境頁面按 Reset cache。"
+        },
+        {
+          "type": "link",
+          "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-sandbox"
+        },
+        {
+          "type": "heading",
+          "text": "丟任務：一次開幾個、跑到一半能不能改",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "回到 Codex，選環境，把要的結果講清楚：差別在於寫「看一下登入」還是「修好登入逾期不會自動續期的問題，並補一個回歸測試」。送出後可以盯著任務記錄，也可以讓它在背景跑。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "任務提示詞範例：先講結果，再講限制與驗收",
+          "code": "修好 auth 模組的登入續期：使用者的憑證快到期時被使用會失敗。\n限制：不要改動對外的函式簽名，不要順手重構其他模組。\n驗收：補一個會重現這個情況的回歸測試，並跑過整個測試套件。\n完成後說明你改了哪些檔案、為什麼這樣改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "平行是雲端的重點：每個聊天有自己的上下文與結果，可以同時跑；官方提醒別讓兩個聊天改同一批檔案，不然你會拿到兩份打架的 diff。起點也不限於網頁，GitHub 的 PR、GitLab 與 Linear 的 issue、Slack 的討論串都可以。"
+        },
+        {
+          "type": "paragraph",
+          "text": "終端機也能操作雲端。官方指令表列了實驗性的 codex cloud，指定環境的 --env 必填，--attempts 可填 1 到 4，讓雲端對同一題跑幾次再挑。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "從終端機送出雲端任務、列出最近的聊天",
+          "code": "codex cloud --env ENV_ID \"修好 auth 模組的登入續期，並補一個回歸測試\"\ncodex cloud --env ENV_ID --attempts 4 \"同一題跑四次，我自己挑\"\ncodex cloud list --limit 20 --json"
+        },
+        {
+          "type": "paragraph",
+          "text": "跑到一半想改指令呢？官方的做法是在同一個聊天裡追問，桌面版、CLI 與編輯器擴充都寫明可在工作進行中送出後續訊息。雲端說明頁寫的是完成後看 diff 再追問；執行途中能不能插話改需求，文件沒有明說，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "看 diff、開 PR，然後回到本機再跑一次",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "任務結束時 Codex 會給你摘要和改過的檔案 diff，工作記錄也能展開看它跑了哪些指令。接下來兩條路：從雲端直接開 PR，或把改動拉回本機測完再收尾。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-cloud-tasks-github/diagram-1.svg",
+          "alt": "流程圖：從連 GitHub、設定環境、丟任務，經過平行的三個雲端聊天，到看 diff、開 PR 與本機驗證",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上而下看：1 連 GitHub、2 設定環境、3 丟任務，中間是平行跑的雲端聊天，接著 4 看 diff、5 開 PR、6 本機驗證；最下排是三個要記住的預設值。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "PR 開出來後，Codex 也可以回頭審自己的作品：在設定裡替該 repo 打開 Code review，之後在 PR 留言寫 review 指令，它會貼一則審查意見，官方寫明在 GitHub 上只標 P0 與 P1 等級的問題。審查準則可以寫在 AGENTS.md，但規則只是引導，不能取代測試與分支保護。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "在 GitHub 的 PR 留言裡叫 Codex 做事",
+          "code": "@codex review\n@codex review for issues in the database migration\n@codex fix the P1 issue\n@codex fix the CI failures"
+        },
+        {
+          "type": "paragraph",
+          "text": "什麼時候該拉回本機？只要改動碰到雲端容器和你的機器不一樣的地方就該拉：代理階段預設沒有網路，要連外的測試跑不起來，環境裡的版本也不保證一致。CLI 的 codex apply 可以把雲端聊天最新的 diff 套到本機工作樹。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "把雲端的 diff 套回本機再測一次",
+          "code": "codex apply TASK_ID\npnpm install\npnpm test"
+        },
+        {
+          "type": "table",
+          "header": [
+            "步驟",
+            "在哪裡操作",
+            "要注意什麼"
+          ],
+          "rows": [
+            [
+              "連 GitHub",
+              "Codex 網頁與 GitHub 的 App 設定",
+              "只勾這次要用的 repo，組織的要管理員核准"
+            ],
+            [
+              "設定環境",
+              "Codex 設定的環境頁",
+              "密鑰只有設定腳本讀得到，代理階段前會移除"
+            ],
+            [
+              "丟任務",
+              "Codex 網頁、GitHub、Slack 或終端機",
+              "兩個聊天不要改同一批檔案"
+            ],
+            [
+              "看 diff",
+              "那次雲端聊天的頁面",
+              "代理階段沒網路，連外的測試不會跑"
+            ],
+            [
+              "開 PR 與審查",
+              "雲端聊天或 PR 留言",
+              "GitHub 上的審查只標 P0 與 P1 問題"
+            ],
+            [
+              "本機驗證",
+              "你自己的電腦",
+              "用 codex apply 套用 diff，合併前跑測試"
+            ]
+          ],
+          "caption": "雲端 Codex 的操作位置與注意事項，依 OpenAI 官方說明整理，資料查證於 2026 年 9 月。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜Git、差異審查與 PR",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-git-review-pr"
+        },
+        {
+          "type": "heading",
+          "text": "資料與安全：密鑰、提示詞注入與最小授權",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "雲端 Codex 有一道界線：任務跑在隔離容器裡，碰不到你的主機或無關資料，密鑰只在設定腳本那段存在。但貼進提示詞的東西會帶到代理那段，所以金鑰、密碼與客戶資料都不要貼進任務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個風險來自打開代理網路存取之後。官方列出提示詞注入、程式或密鑰被外傳、下載到惡意或有漏洞的相依套件，以及引入有授權限制的內容。文件的例子是：你叫它修某個 GitHub issue，而 issue 描述裡藏了指令，要它跑一個把 commit 內容送到外部網址的腳本。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "密鑰不要貼進任務，授權只給這次要用的",
+          "text": "密鑰只有設定腳本讀得到，代理階段開始前就被移除；但你在提示詞裡打的字會帶到代理那段，貼進去就等於交出去。憑證放進密鑰欄位，提示詞裡只留「用環境裡那把金鑰」這種指涉。授權同理，先只勾這次要用的 repo。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的建議是只開真的需要的網域與 HTTP 方法，並看過代理的輸出與工作記錄。模型會犯錯，文件也寫著一律檢查答案與 diff。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex cloud（OpenAI 官方說明：連 GitHub、建環境、丟任務、開 PR 的流程）",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloud environments（OpenAI 官方說明：universal 映像、設定腳本、變數與密鑰、容器快取）",
+          "url": "https://learn.chatgpt.com/docs/environments/cloud-environment",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Agent internet access（OpenAI 官方說明：代理階段網路預設關閉、網域清單與 HTTP 方法）",
+          "url": "https://learn.chatgpt.com/docs/cloud/internet-access",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Review GitHub pull requests with Codex（OpenAI 官方說明：Code review 設定與 PR 留言指令）",
+          "url": "https://learn.chatgpt.com/docs/third-party/github",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Pricing（OpenAI 官方說明：方案價格、功能對照表與用量估計）",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Agent approvals & security（OpenAI 官方說明：雲端隔離容器與兩段式執行）",
+          "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex environments（OpenAI 官方說明：Local、Worktree 與 Cloud 三種執行位置）",
+          "url": "https://learn.chatgpt.com/docs/environments/modes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Glossary（OpenAI 官方說明：cloud chat、密鑰、容器快取等名詞定義）",
+          "url": "https://learn.chatgpt.com/docs/glossary",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Long-running work（OpenAI 官方說明：以追問調整進行中的工作、平行執行的注意事項）",
+          "url": "https://learn.chatgpt.com/docs/long-running-work",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Developer commands（OpenAI 官方指令表：codex cloud 與 codex apply）",
+          "url": "https://learn.chatgpt.com/docs/developer-commands",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Connecting GitHub to ChatGPT（OpenAI 說明中心：ChatGPT 的 GitHub 連接器是唯讀的）",
+          "url": "https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Using Codex with your ChatGPT plan（OpenAI 說明中心：Codex 包含在各方案，含 Free 與 Go）",
+          "url": "https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Admin rollout guide（OpenAI 官方說明：雲端 Codex 遵守來源系統的 repo 權限）",
+          "url": "https://learn.chatgpt.com/docs/enterprise/admin-setup",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

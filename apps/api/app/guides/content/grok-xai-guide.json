@@ -1,0 +1,351 @@
+{
+  "slug": "grok-xai-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Grok（xAI）怎麼用：三個入口、方案價格與資料訓練開關",
+      "description": "Grok 有三個入口：X 裡的 Grok、grok.com 網頁、iOS 與 Android App。X 入口走 X 的隱私政策與 X Premium 方案，網頁與 App 走 Grok 自家的帳號與訂閱，連資料訓練開關都分成兩處。這篇照官方定價頁、開發者文件與法務文件的原文，整理三個入口的差別、方案價格（含台灣定價）、目前的模型與上下文視窗、API 費率，以及退出訓練與刪除對話的路徑。",
+      "hero": {
+        "src": "/guides/grok-xai-guide/hero.jpg",
+        "alt": "插圖：三條不同顏色的路徑從左側三個入口匯進中央的對話框，對話框下方有一個開關符號",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Grok 有三個入口，但它們不是同一件事：在 X（前 Twitter）裡用的 Grok 由 X 的隱私政策與服務條款管轄，grok.com 網頁與手機 App 由 Grok 自家的政策管轄；兩邊付費方案不同，連「要不要拿你的內容去訓練模型」的開關也分在兩個設定頁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇只引官方頁面：定價頁、開發者文件、help.x.com 的 Grok 說明頁，以及隱私政策、服務條款與使用規範，查證日是 2026 年 9 月 14 日。順帶一提，官方頁面現在把公司名稱寫成 SpaceXAI LLC，本文說 xAI 時指同一家公司。"
+        },
+        {
+          "type": "heading",
+          "text": "三個入口，帳號與條款各走各的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "help.x.com 寫，Grok 在 X 的 iOS、Android 與網頁都能用，凡是 X 有上線的國家就有。開發者文件則寫，grok.com 與手機 App 是同一套服務，登入一次之後對話、設定與訂閱會跨平台同步。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "X 裡的 Grok：用 X 帳號，適用 X 隱私政策與服務條款；官方隱私政策自己寫明，透過 X 使用 Grok 不適用那一份。",
+            "grok.com 網頁：用 Grok 自己的帳號，也可以把 X 帳號連上去當登入方式，適用官方隱私政策與服務條款。",
+            "手機 App：和網頁同一個帳號、同一份訂閱；官方提醒訂閱綁在購買時用的登入方式上。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣可用性是當天實查的：本站環境可以正常開啟 grok.com；Apple 官方查詢介面在台灣區查得到「Grok - AI 助理」，標示免費、分級 17+、語言含中文；Google Play 台灣商店頁面也開得起來。能不能用台灣門號註冊、付款方式支援到哪裡，官方沒有逐國說明，以官網為準。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/grok-xai-guide/diagram-1.svg",
+          "alt": "三欄對照圖，分別列出 X 裡的 Grok、grok.com 網頁與手機 App 的帳號、適用條款、方案價格與資料開關位置",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左到右是三個入口；同一列往下看，就是同一件事在三個入口的不同答案。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "免費用到哪裡、付費方案多少錢",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方定價頁的個人方案排成三張卡片：Free 每月 $0、SuperGrok 每月 $30、SuperGrok Plus 每月 $100，幣別是美元。Free 只寫「在寬鬆的額度內免費認識 Grok」，沒有次數或字數，免費額度的實際數字以官網為準。同頁比較表另列 Lite、Heavy、Business 與 Enterprise，都沒有標價。"
+        },
+        {
+          "type": "paragraph",
+          "text": "額度算法官方說明頁寫得比較清楚：2026 年 6 月起改成一個每週共用的額度池，可以自由分配在對話、圖片影片、語音與 Build 上。用完不是硬停，可以加購點數、開自動加值或升級；用量與重置時間在設定的 Usage 分頁看。"
+        },
+        {
+          "type": "paragraph",
+          "text": "X 那邊是另一套。X Premium 分成 Basic、Premium、Premium+ 三層，help.x.com 寫 Premium 含「提高 Grok 使用額度」、Premium+ 含「更高的 Grok 額度」，Basic 沒提到 Grok。同頁附了逐國定價表，台灣欄位如下。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "入口",
+            "價格",
+            "官網列出的額度或功能"
+          ],
+          "rows": [
+            [
+              "Free",
+              "grok.com、App",
+              "$0 ／月",
+              "即時網路與 X 搜尋、語音模式、連接器"
+            ],
+            [
+              "SuperGrok",
+              "grok.com、App",
+              "$30 ／月",
+              "Grok 4.6、Grok Bot、更高額度、圖片與影片生成"
+            ],
+            [
+              "SuperGrok Plus",
+              "grok.com、App",
+              "$100 ／月",
+              "1080p 影片、額度顯著提高、尖峰優先"
+            ],
+            [
+              "Lite、Heavy、Business、Enterprise",
+              "grok.com、App",
+              "未標價",
+              "以官網為準；企業層另列不訓練與自訂留存"
+            ],
+            [
+              "X Premium Basic",
+              "X",
+              "NT$91.88 ／月",
+              "基本功能；未提 Grok 額度"
+            ],
+            [
+              "X Premium",
+              "X",
+              "NT$245 ／月",
+              "藍勾勾、減少廣告，提高 Grok 額度"
+            ],
+            [
+              "X Premium+",
+              "X",
+              "NT$1,309 ／月",
+              "Grok 額度更高、X 上無廣告"
+            ]
+          ],
+          "caption": "2026 年 9 月官方定價頁與 help.x.com 逐國定價表；X Premium 為網頁版月費，未計稅金與手續費。"
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "heading",
+          "text": "目前有哪些模型、上下文視窗多長",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者文件列出的文字模型有 grok-4.6、grok-4.5、grok-4.3、grok-4.20-0309 的 reasoning 與 non-reasoning 兩版、程式用的 grok-build-0.1，以及 grok-4.20-multi-agent-0309。上下文視窗：grok-4.6 與 grok-4.5 是 500k token，grok-4.3 與 grok-4.20 系列是 1M token，grok-build-0.1 是 256k token。同頁註明 grok-4.6 的知識截止日是 2026 年 2 月 1 日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "消費端比較表的模型那一列寫的是 Grok 4.6。至於介面上那顆多想幾步的按鈕現在叫什麼、DeepSearch 這類名稱還在不在，消費端說明頁沒有列，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方說明頁列出的功能是：對話、用 Grok Imagine 產生圖片與影片、語音免持對話、上傳檔案做分析與摘要，以及用連接器讓 Grok 讀你的信箱、檔案與行事曆。檔案上傳限制是單檔上限 150 MB，網頁版一次最多約 100 個檔案。"
+        },
+        {
+          "type": "heading",
+          "text": "API 怎麼計價",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "API 以每百萬 token 計價，同一個模型分長短兩段：提示詞達到 200k token 的請求，整筆都用比較貴的費率算。挑三個看：grok-4.6 在 200k 以下是輸入 $2.00、輸出 $6.00，快取過的輸入 $0.50；grok-4.3 是 $1.25 與 $2.50；grok-build-0.1 是 $1.00 與 $2.00。超過門檻後都翻倍。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "官方文件的最小呼叫範例（端點與模型名稱照文件原文）",
+          "code": "curl https://api.x.ai/v1/responses \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $XAI_API_KEY\" \\\n  -d '{\n    \"model\": \"grok-4.6\",\n    \"input\": \"用三句話說明什麼是上下文視窗\"\n}'"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖片、影片與語音另外計價：圖片每張 $0.02 起，影片每秒 $0.050 起，語音對語音每分鐘 $0.08。官方說明頁另寫明 API 點數不退款。"
+        },
+        {
+          "type": "heading",
+          "text": "資料會不會拿去訓練，開關在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先看 X 這一側。help.x.com 寫，X 可能把你的公開 X 資料，以及你和 Grok 的互動、輸入與結果分享給 xAI，用來訓練與微調 Grok 和其他生成式 AI 模型；公開 X 資料指公開貼文、貼文的互動與轉發等中繼資料、公開的 Spaces 與公開個人檔案。那一節標題用的字是「如何退出模型訓練」。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在 X 的設定裡選「隱私與安全」。",
+            "往下找到「資料分享與個人化」。",
+            "點進「Grok 與第三方協作者」。",
+            "在「資料分享」底下，取消勾選允許把公開資料與 Grok 互動用於訓練和微調的那一項。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "同一頁還有兩件事：「Grok 個人化」是獨立的開關，關訓練不等於關個人化；「刪除對話紀錄」可以一次刪掉全部對話，官方寫刪掉的對話會在 30 天內從系統移除。退出訓練後若還按了讚或倒讚回饋，那段對話仍可能被用來訓練。"
+        },
+        {
+          "type": "paragraph",
+          "text": "grok.com 與 App 是另一份政策。隱私政策（生效日 2026 年 8 月 24 日）寫明，透過 X 使用 Grok 適用的是 X 的政策；消費者服務條款（生效日 2026 年 9 月 1 日）寫，登入之後你可以選擇要不要讓官方用你的內容改進產品與訓練模型。設定路徑官方寫的是個人檔案、設定、Data Controls。"
+        },
+        {
+          "type": "paragraph",
+          "text": "留存時間兩份文件都寫了：打開 Private Chat 的對話不會進紀錄，並在 30 天內從系統刪除；你要求刪除的對話或整個帳號同樣是 30 天內刪除。隱私政策還有一句值得抄下來：不要把個人資料放進提示詞與輸入裡。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "兩個開關要分開關",
+          "text": "X 設定裡的「Grok 與第三方協作者」只管 X 這一側；grok.com 與手機 App 的訓練選項在 Grok 自己的 Data Controls 裡。關了一邊不等於兩邊都關，刪除對話紀錄也一樣分兩處。"
+        },
+        {
+          "type": "heading",
+          "text": "官方條款寫了哪些不能做",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用規範（生效日 2026 年 8 月 14 日）裡和一般使用者最有關的幾條：不得移除、竄改或繞過內容裡嵌的來源中繼資料與浮水印；不得對真實人物做去衣或裸化處理；不得欺騙性地冒充真人，或把人描繪成誹謗、錯誤的形象；不得用輸出做影響重大權益的自動化決策。服務條款另寫最低年齡 13 歲。"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖片生成有一條很具體：官方說明頁寫，Grok Imagine 產生的圖片與影片都會帶浮水印，沒有設定可以拿掉，理由是標示 AI 生成內容，且部分司法管轄區本來就要求標示。看到別人的影片時，也可以先找找有沒有這個訊號。"
+        },
+        {
+          "type": "link",
+          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+        },
+        {
+          "type": "link",
+          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後是準確度。help.x.com 的 Grok 說明頁自己寫著：這是早期版本，可能很有自信地提供事實上錯誤的資訊、摘要失準或漏掉脈絡，建議獨立查證收到的任何資訊，也請不要在對話裡提供個人資料或機密資訊。"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "link",
+          "text": "Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/perplexity-ai-search-guide"
+        },
+        {
+          "type": "link",
+          "text": "Mistral Vibe（原 Le Chat）：歐洲 AI 助手的方案、功能與資料存放",
+          "url": "https://mokaair.com/zh-TW/life/mistral-le-chat-guide"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Grok 方案比較與個人方案定價（官方定價頁：Free、SuperGrok、SuperGrok Plus 價格與方案比較表）",
+          "url": "https://x.ai/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Grok 模型與定價（官方開發者文件：模型清單、上下文視窗、每百萬 token 價格、知識截止日）",
+          "url": "https://docs.x.ai/developers/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "API 定價（官方開發者文件：文字、圖片、影片與語音各模型定價與長上下文級距）",
+          "url": "https://docs.x.ai/developers/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Grok 說明總覽（官方文件：三個入口、功能清單、方案與每週額度）",
+          "url": "https://docs.x.ai/grok/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Grok 網站與 App 常見問題（官方文件：每週額度池、加值點數、檔案上傳限制、浮水印、資料控制路徑）",
+          "url": "https://docs.x.ai/grok/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "關於 Grok（X 說明中心：資料如何使用、退出訓練與個人化、刪除對話、可用平台與國家）",
+          "url": "https://help.x.com/en/using-x/about-grok",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "關於 X Premium（X 說明中心：Basic、Premium、Premium+ 功能與逐國定價表，含台灣）",
+          "url": "https://help.x.com/en/using-x/x-premium",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "隱私政策（官方法務頁：適用範圍、蒐集項目、留存與刪除、Private Chat）",
+          "url": "https://x.ai/legal/privacy-policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "消費者服務條款（官方法務頁：最低年齡、內容授權、訓練選擇權）",
+          "url": "https://x.ai/legal/terms-of-service",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "使用規範 AUP（官方法務頁：浮水印與來源中繼資料、肖像、自動化決策等禁止事項）",
+          "url": "https://x.ai/legal/acceptable-use-policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "開發者文件總覽（官方：API 端點與最小呼叫範例）",
+          "url": "https://docs.x.ai/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Grok 網頁版首頁（官方：撰稿當天可開啟）",
+          "url": "https://grok.com/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Grok - AI 助理（Apple App Store 台灣區商品頁：上架狀態、價格、分級與語言）",
+          "url": "https://apps.apple.com/tw/app/id6670324846",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Grok - AI 助理（Google Play 台灣商店商品頁：開發者名稱、內容分級）",
+          "url": "https://play.google.com/store/apps/details?id=ai.x.grok",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
