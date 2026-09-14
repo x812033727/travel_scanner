@@ -1,4 +1,4 @@
-# 生活分享：AI 工具介紹與教學系列（249 篇總表）
+# 生活分享：AI 工具介紹與教學系列（260 篇總表）
 
 這份文件是「生活分享」（`kind: "life"`，`/{locale}/life/{slug}`）AI 系列的**編輯總表**：每一篇
 的 slug、標題、主題、配圖方式與合作連結在這裡定死，批次任務票的 `scope` 才能精確到檔案。
@@ -26,6 +26,8 @@ ChatGPT、Claude、Gemini、Codex、MiniMax 這些東西是什麼、怎麼開始
   「以官網為準」。「易變」欄打勾的篇要定期回查（`valid_until` 維持 null，life 文章不走到期邏輯）。
 - **主題：** 只用 life 詞彙（`ai`、`tutorial`、`software`、`gadgets`、`productivity`、`daily`、`misc`）；
   `destination_id` 一律 null。
+- **字尾關鍵字：** 「翻譯 AI」「簡報 AI」這類字尾型搜尋詞的對照、寫法與批次 12 的由來見
+  [`docs/ai-suffix-keywords.md`](ai-suffix-keywords.md)；已寫的篇只補 description 與導言，不改標題。
 
 ## 狀態怎麼看
 
@@ -44,7 +46,6 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 
 | 批次 | 主題 | 任務票 |
 | --- | --- | --- |
-
 | 01 | AI 入門與各工具總覽（先寫，之後每篇深入文都連回這 20 篇） | `2026-09-13-life-ai-batch-01` |
 | 02 | ChatGPT 教學 | `2026-09-13-life-ai-batch-02` |
 | 03 | Claude 教學 | `2026-09-13-life-ai-batch-03` |
@@ -56,6 +57,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 09 | 工作流、效率與自動化 | `2026-09-13-life-ai-batch-09` |
 | 10 | 比較、費用、資安與法律 | `2026-09-13-life-ai-batch-10` |
 | 11 | 生活應用、3C 與旅途中的 AI | `2026-09-13-life-ai-batch-11` |
+| 12 | 字尾關鍵字補位（11 篇，不是 20；`docs/ai-suffix-keywords.md`） | `2026-09-14-life-ai-batch-12-suffix-keywords` |
 
 工具與 brief：`2026-09-13-life-ai-series-tooling`；這份總表：`2026-09-13-life-ai-series-catalogue`。
 
@@ -402,3 +404,22 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 247 | `gemini-api-files-structured-output` | API 檔案與 JSON：結構化輸出及驗證 | ai, tutorial | 插 |  | ✓ |
 | 248 | `gemini-api-cost-errors-guide` | API 額度與錯誤：費用、重試與成本控制 | ai, tutorial | 插 |  | ✓ |
 | 249 | `gemini-api-document-assistant` | 完整實作：文件摘要與資料擷取工具 | ai, tutorial | 插 |  | ✓ |
+
+### 批次 12｜字尾關鍵字補位（11 篇）
+
+字尾型搜尋詞（「〇〇 AI」）哪裡都對不到文章的，排在這裡；對照表、寫法與四篇待拍板的敏感題見
+[`docs/ai-suffix-keywords.md`](ai-suffix-keywords.md)。第 250 篇是索引 hub，`featured: false`、`display_order: 100`，只連已寫的篇。
+
+| # | slug | 標題 | topics | 圖 | 合作 | 易變 |
+|---|---|---|---|---|---|---|
+| 250 | `ai-tools-by-search-term` | 〇〇 AI 怎麼找：從你會搜的字找到對的工具與教學 | ai, misc | 插 |  | ✓ |
+| 251 | `ai-image-to-text-ocr` | 圖片轉文字 AI：截圖、掃描件與手寫筆記變成可編輯文字 | ai, tutorial | 插 |  | ✓ |
+| 252 | `ai-taiwanese-hokkien-hakka-tools` | 台語 AI 與客語 AI：語音辨識、合成與翻譯工具有哪些、準不準 | ai, daily | 照 |  | ✓ |
+| 253 | `ai-line-sticker-creation` | 貼圖 AI：用 AI 做 LINE 貼圖的生成、去背、審核規則與版權 | ai, daily | 插 |  | ✓ |
+| 254 | `ai-interior-design-visualization` | 裝潢 AI：把房間照片變成設計提案，哪些不能靠 AI | ai, daily | 照 |  | ✓ |
+| 255 | `ai-id-photo-rules-taiwan` | 證件照 AI：AI 修圖或生成的證件照能不能用，護照與身分證規定 | ai, daily | 插 |  | ✓ |
+| 256 | `ai-naming-brainstorm-checks` | 取名 AI：品牌、公司與商品名的提示詞，以及預查與商標檢索 | ai, daily | 插 |  |  |
+| 257 | `ai-fortune-telling-apps-caution` | 算命 AI 在做什麼：生成式回答的原理、個資流向與付費陷阱 | ai, daily | 插 |  |  |
+| 258 | `ai-stock-research-boundaries` | 投資 AI 能幫什麼：整理財報與新聞、不能預測漲跌、金管會怎麼管 | ai, daily | 插 |  | ✓ |
+| 259 | `ai-legal-questions-boundaries` | 法律 AI：法律問題問 AI 能整理什麼、什麼要找律師 | ai, daily | 插 |  |  |
+| 260 | `ai-health-questions-boundaries` | 健康 AI：症狀整理、看診前準備與它不能取代的事 | ai, daily | 插 |  |  |
