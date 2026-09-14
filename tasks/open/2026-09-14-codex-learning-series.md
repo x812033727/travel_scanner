@@ -183,6 +183,8 @@ scope:
 
 有效規格見 docs/codex-learning/depth-plan.md 與 article-template.md。最新證據、精確測試範圍及剩餘關卡見 docs/codex-learning/progress.md。
 
+下一輪深入補強入口為 docs/codex-learning/deepening/README.md：十單元、60 篇逐篇規格及共同驗收表，含材料、操作、成功／失敗、還原、圖文需求和六組檢查。這是規劃交付，不改變 0/60 最終驗收與全部完成後才 PR／部署的條件。
+
 ## Why
 
 在生活分享建立可搜尋的五語 Codex 學習中心，整合安裝、平台、MD 規則、指令、日常開發及進階整合，讓每篇都有獨立材料、成果、排錯與雙向導覽。
