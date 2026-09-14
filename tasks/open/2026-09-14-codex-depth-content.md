@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-codex-depth-content
 title: Codex deep content and isolated learning components
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-unit-c-fc2e
-claimed_at: 2026-09-14T11:52:25Z
+owner:
+claimed_at:
 created_at: 2026-09-14T02:33:43Z
 completed_at:
 branch: codex/codex-learning-complete
@@ -159,10 +159,19 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [x] Deepen Unit A (01, 02, 33, 34, 06, 07) and the remaining Unit B drafts (05, 35, 36, 37, 14), label 58 existing code blocks, add two path examples, and verify isolated Windows/Node reference exercises.
 - [x] Deepen Unit C (38, 39, 40, 15, 41), label 15 existing code blocks, add six examples, and verify isolated Git/Node cases for complete diffs and incomplete handoffs.
 - [x] Deepen Unit D (09, 42, 43, 16, 44), label 32 existing blocks, add four examples and verify nested Markdown and 13 document/configuration reference cases.
-- [ ] Continue targeted depth review for the remaining 34 lessons, starting with Unit E (45, 22, 17, 08, 18); representative 11 already has a targeted record.
+- [x] Deepen Unit E (45, 22, 17, 08, 18), label 29 existing blocks, add six input/record examples and verify the 16-case reference suite (10 E-specific checks).
+- [ ] Continue targeted depth review for the remaining 29 lessons, starting with Unit F (13, 46, 47, 20, 19, 21).
 - [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
 - [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
 - [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
+
+## Unit E revision
+
+After b0bf7fa4, revised sessions, context, model selection, Plan and permission drafts in all five locales. Evidence: docs/codex-learning/evidence/unit-e-depth-review.json. Added a read-only fork/picker exercise with shared-file limits, post-compact fresh reads, fictional invalid-comparison cases, actual Power/model/effort controls, a revision-only Plan prompt and permission evidence records. Twenty-nine original code blocks labeled, six new blocks added; original code/images/source lists retained.
+
+The reference suite passes 16 checks (10 Unit E, 6 other existing cases); other checks do not count as new targeted lessons. Actual CLI help and official selected sections were inspected. No interactive fork/resume/compact, model run/comparison, OS sandbox, settings change or browser verification. Full integrity (60/300), 9 API, 9 compiler and five shared catalogues pass; audit stays 0 errors/26 warnings. Shared series_data/source metadata remain unchanged.
+
+Targeted coverage is now 31 unique lessons with 29 pending, next F: 13/46/47/20/19/21. All full-text five-language acceptance and final browser acceptance remain open (0/60). No partial PR, import, publication or deployment; the prior preview auto-review rejection remains unresolved.
 
 ## Unit D revision
 

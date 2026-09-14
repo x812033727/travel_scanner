@@ -250,3 +250,7 @@ Unit C 38/39/40/15/41 now has targeted five-language depth revisions, with local
 ## Latest Unit D checkpoint
 
 D 09/42/43/16/44 now has targeted five-language revisions and evidence in docs/codex-learning/evidence/unit-d-depth-review.json. Current coverage is 26 unique lessons, 34 pending (next E: 45/22/17/08/18). Thirteen document/configuration practice checks, nested Markdown AST cases, integrity 60/300, 9 API, 9 compiler, five shared catalogues and affected-tool Ruff pass; audit remains 0 errors/26 warnings. Existing copyable code, images, source metadata and shared series_data are preserved. No actual client configuration change or editor/product preview. All final acceptance remains open (0/60), including the preview-start restriction, and the all-complete-before-PR/deployment condition is unchanged.
+
+## Latest Unit E checkpoint
+
+E 45/22/17/08/18 now has targeted five-language revisions and evidence in docs/codex-learning/evidence/unit-e-depth-review.json. Current coverage is 31 unique lessons, 29 pending (next F: 13/46/47/20/19/21). The reference suite passes 16 checks (10 E-specific, six other existing cases); integrity 60/300, 9 API, 9 compiler and five shared catalogues pass. Audit remains 0 errors/26 warnings. No original code, images, source metadata or shared series_data changed. No actual interactive model/session/permissions or browser execution. Final acceptance remains 0/60, and all-complete-before-PR/deployment remains in force.

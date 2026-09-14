@@ -6,7 +6,7 @@
 
 本系列有一個總目錄與 60 篇獨立教學，每篇提供繁中、簡中、英文、日文、韓文，共 61 個內容包、305 份語言文件。路由為 `/{locale}/life/codex-learning-hub` 與既有 `/life/<slug>`。**沒有 push、PR、匯入、正式發布或部署**。使用者已授權全部完成且驗收後，再開 PR、合併與部署；完成前不提前交付部分 PR。
 
-已補強 A 至 D 單元的 21 篇，加上原五篇代表稿，共 **26 篇有定向補強，34 篇待逐篇核對**。最新 [D 審核紀錄](evidence/unit-d-depth-review.json)包含巢狀 Markdown、規則載入／遵循的區分、文件備份比對，以及設定退出碼與檢查器界線；[C 紀錄](evidence/unit-c-depth-review.json)保留手機及跨裝置驗證。下一單元為 E，全部仍待完整五語終審與最終頁面驗收。
+已補強 A 至 E 單元的 26 篇，加上原五篇代表稿，共 **31 篇有定向補強，29 篇待逐篇核對**。最新 [E 審核紀錄](evidence/unit-e-depth-review.json)包含 CLI 分岔、壓縮後交接、模型比較條件、計畫修訂與權限證據；[C](evidence/unit-c-depth-review.json)、[D 紀錄](evidence/unit-d-depth-review.json)保留手機、跨裝置、Markdown 及設定補強。下一單元為 F，全部仍待完整五語終審與最終頁面驗收。
 
 ## 內容與發布來源
 

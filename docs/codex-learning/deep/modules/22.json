@@ -51,12 +51,24 @@
     {
       "type": "code",
       "language": "text",
-      "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n"
+      "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n",
+      "label": [
+        "檔案內容：存入 LAB_STATE.txt",
+        "File content: save as LAB_STATE.txt",
+        "ファイル内容：LAB_STATE.txt に保存する",
+        "파일 내용: LAB_STATE.txt로 저장"
+      ]
     },
     {
       "type": "code",
       "language": "sh",
-      "code": "node --test core.test.mjs\n"
+      "code": "node --test core.test.mjs\n",
+      "label": [
+        "系統終端機：先核對本篇指定的練習目錄",
+        "System terminal: first verify the practice directory specified here",
+        "システム端末：先に本文で指定した練習ディレクトリを確認する",
+        "시스템 터미널: 먼저 본문에서 지정한 실습 폴더 확인"
+      ]
     },
     {
       "type": "p",
@@ -88,7 +100,13 @@
     {
       "type": "code",
       "language": "markdown",
-      "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n"
+      "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n",
+      "label": [
+        "交接範例：基準結果相符後才存入 handoff.md",
+        "Handoff example: save as handoff.md only after matching the baseline results",
+        "引き継ぎ例：基準の結果が一致してから handoff.md に保存する",
+        "인계 예시: 기준 결과가 일치한 뒤 handoff.md로 저장"
+      ]
     },
     {
       "type": "p",
@@ -129,7 +147,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n"
+      "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n",
+      "label": [
+        "自然語言提示詞：在本練習的 Codex 任務輸入",
+        "Natural-language prompt: enter in this practice Codex task",
+        "自然言語の依頼：この練習の Codex タスクに入力する",
+        "자연어 요청: 이 실습의 Codex 작업에 입력"
+      ]
     },
     {
       "type": "p",
@@ -165,6 +189,46 @@
         "| File | Stores | Update when |\n| --- | --- | --- |\n| AGENTS.md | Durable rules and commands | Working conventions change |\n| README.md | Entry point and startup | Usage changes |\n| Design document | Behavior, tradeoffs, constraints | A design decision is accepted |\n| handoff.md | Current evidence, blockers, next step | Pausing, handing off or validating |",
         "| 文書 | 保存するもの | 更新時 |\n| --- | --- | --- |\n| AGENTS.md | 長期ルールと命令 | 作業慣習の変更 |\n| README.md | 入口と起動方法 | 使い方の変更 |\n| 設計文書 | 挙動、判断、制約 | 設計決定の採用 |\n| handoff.md | 最新証拠、障害、次の操作 | 中断、引継ぎ、検証後 |",
         "| 문서 | 저장 내용 | 갱신 시점 |\n| --- | --- | --- |\n| AGENTS.md | 장기 규칙과 명령 | 작업 관행 변경 |\n| README.md | 진입점과 시작 방법 | 사용법 변경 |\n| 설계 문서 | 동작, 선택 이유, 제약 | 설계 결정 채택 |\n| handoff.md | 최신 증거, 장애, 다음 행동 | 중단, 인계, 검증 후 |"
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "壓縮之後做一次唯讀交接核對",
+        "Check the handoff read-only after compaction",
+        "圧縮後に読み取りだけで引き継ぎを照合する",
+        "압축 후 읽기 전용으로 인계 확인하기"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "/compact\n",
+      "label": [
+        "互動斜線指令：在 Codex CLI 內輸入",
+        "Interactive slash command: enter inside Codex CLI",
+        "対話スラッシュコマンド：Codex CLI 内で入力する",
+        "대화형 슬래시 명령: Codex CLI 안에서 입력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "只在需要整理的原 CLI 任務使用上面指令，待壓縮結束後送出下面要求；不為了練習另外灌入大量對話。合格回覆應保留只改 core.mjs 的原範圍、測試不可變，以及畫面未驗收的狀態。若摘要遺漏限制，依磁碟文件補回；不要為了讓摘要看起來一致而把 FIXED-2 改成 BROKEN-1。",
+        "Use the command only in the original CLI task when compaction is needed, then send the request below. Do not pad the chat for practice. The answer should preserve the core.mjs-only program scope, unchanged tests and pending browser checks. Recover omitted constraints from files; never change FIXED-2 back to BROKEN-1 merely to match a summary.",
+        "整理が必要な元の CLI タスクだけで使い、圧縮終了後に次の依頼を送ります。練習のために会話を水増ししません。core.mjs だけという変更範囲、テスト維持、画面未検証が残っているか確認します。抜けた制約は文書から補い、要約に合わせて FIXED-2 を BROKEN-1 に戻さないでください。",
+        "정리가 필요한 원래 CLI 작업에서만 사용하고 압축이 끝난 뒤 아래 요청을 보내세요. 실습을 위해 대화를 부풀리지 마세요. 코드 변경은 core.mjs만, 테스트 유지, 화면 미검증이라는 조건이 남아 있어야 합니다. 빠진 제약은 파일에서 복원하며 요약에 맞추려고 FIXED-2를 BROKEN-1로 바꾸지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "After compaction, read handoff.md and LAB_STATE.txt from disk. Restate the goal, allowed changes, preserved files, actual recorded checks and remaining work. Compare the summary with the files and identify conflicts or missing constraints. Do not edit files or rerun tests in this check. Label recorded evidence separately from checks performed in this turn.\n",
+      "label": [
+        "自然語言提示詞：在本練習的 Codex 任務輸入",
+        "Natural-language prompt: enter in this practice Codex task",
+        "自然言語の依頼：この練習の Codex タスクに入力する",
+        "자연어 요청: 이 실습의 Codex 작업에 입력"
       ]
     },
     {

@@ -99,7 +99,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "系統終端機：先核對本篇指定的練習目錄",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -122,7 +122,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
           "language": "text",
           "code": "Plan before implementation. In this codex-plan-lab, inspect index.html, app.js, core.mjs and core.test.mjs. Do not edit files yet.\nGoal: make All, Active and Completed filters correct.\nKeep the current UI, storage format and task ordering. Add no dependencies.\nReport the existing selector and event wiring, the failing behavior and the smallest implementation scope. Ask about unresolved behavior before proposing a plan.\nThe plan must name files, acceptance cases, test commands and a scoped restoration method. Separate observations from assumptions.\n"
         },
@@ -141,13 +141,28 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "參考計畫：供審閱，尚不是執行結果",
           "language": "markdown",
           "code": "# Filter plan\n1. Read the existing selector, event handler and tests. Confirm the start fixture's failing filter assertion.\n2. Edit only visibleTasks in core.mjs: active selects unfinished tasks; completed selects finished tasks; all keeps every task in order.\n3. Run node --test core.test.mjs. Target: all 3 tests pass without changing their assertions.\n4. Preview Read (completed) and Build (active). Expect All=Read,Build; Active=Build; Completed=Read. Empty lists stay empty.\nScope: no dependencies, storage migrations, UI redesign or deployment.\nRestore: copy only core.mjs from the preserved start fixture back into this lab. The known failing baseline should return.\n"
         },
         {
           "type": "paragraph",
           "text": "再補一個條件：「不能原地修改傳入陣列，請在計畫寫入驗證方式。」好的修訂會說明 filter 回傳新陣列且不更動任務物件；All 可以回傳原陣列，但不能排序或改值。若模型提出其他必要變更，先釐清理由再更新允許範圍，不要只回一個「好」卻期待它猜到你保留的限制。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "在實作前排除一份看似完整的錯誤計畫"
+        },
+        {
+          "type": "paragraph",
+          "text": "判讀例：計畫寫「重做篩選按鈕、安裝套件、修改測試讓結果通過」，步驟很多仍不符合本練習。既有按鈕與事件已存在，缺口是 visibleTasks；應先指出哪些步驟沒有程式證據，再要求下列修訂。修訂後重新對照原範圍與空清單、不改輸入等條件，通過這一步才交付實作。"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
+          "language": "text",
+          "code": "Revise the plan only; do not implement yet. Use the existing filter controls and event wiring. Limit program changes to visibleTasks in core.mjs, add no dependencies and preserve all test assertions. For each proposed change, cite the observed gap. Include empty input, stable order, no input mutation, actual test execution and separate browser checks. Mark unknown facts instead of assuming them.\n"
         },
         {
           "type": "heading",
@@ -160,13 +175,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
           "language": "text",
           "code": "Implement the reviewed filter plan now. Modify only visibleTasks in core.mjs. Preserve task order and do not mutate inputs. Keep tests and other files unchanged. Run node --test core.test.mjs, inspect the final diff and report actual results. If browser verification is unavailable, list the manual cases as NOT RUN. Do not publish or deploy this practice project.\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "參考函式：只對照 core.mjs 的 visibleTasks",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -359,7 +374,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "系统终端机：先核对本篇指定的练习目录",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -382,7 +397,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
           "language": "text",
           "code": "Plan before implementation. In this codex-plan-lab, inspect index.html, app.js, core.mjs and core.test.mjs. Do not edit files yet.\nGoal: make All, Active and Completed filters correct.\nKeep the current UI, storage format and task ordering. Add no dependencies.\nReport the existing selector and event wiring, the failing behavior and the smallest implementation scope. Ask about unresolved behavior before proposing a plan.\nThe plan must name files, acceptance cases, test commands and a scoped restoration method. Separate observations from assumptions.\n"
         },
@@ -401,13 +416,28 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "参考计划：供审阅，尚不是执行结果",
           "language": "markdown",
           "code": "# Filter plan\n1. Read the existing selector, event handler and tests. Confirm the start fixture's failing filter assertion.\n2. Edit only visibleTasks in core.mjs: active selects unfinished tasks; completed selects finished tasks; all keeps every task in order.\n3. Run node --test core.test.mjs. Target: all 3 tests pass without changing their assertions.\n4. Preview Read (completed) and Build (active). Expect All=Read,Build; Active=Build; Completed=Read. Empty lists stay empty.\nScope: no dependencies, storage migrations, UI redesign or deployment.\nRestore: copy only core.mjs from the preserved start fixture back into this lab. The known failing baseline should return.\n"
         },
         {
           "type": "paragraph",
           "text": "再补一个条件：「不能原地修改传入阵列，请在计划写入验证方式。」好的修订会说明 filter 回传新阵列且不更动任务物件；All 可以回传原阵列，但不能排序或改值。若模型提出其他必要变更，先厘清理由再更新允许范围，不要只回一个「好」却期待它猜到你保留的限制。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "在实作前排除一份看似完整的错误计划"
+        },
+        {
+          "type": "paragraph",
+          "text": "判读例：计划写「重做筛选按钮、安装套件、修改测试让结果通过」，步骤很多仍不符合本练习。既有按钮与事件已存在，缺口是 visibleTasks；应先指出哪些步骤没有程式证据，再要求下列修订。修订后重新对照原范围与空清单、不改输入等条件，通过这一步才交付实作。"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
+          "language": "text",
+          "code": "Revise the plan only; do not implement yet. Use the existing filter controls and event wiring. Limit program changes to visibleTasks in core.mjs, add no dependencies and preserve all test assertions. For each proposed change, cite the observed gap. Include empty input, stable order, no input mutation, actual test execution and separate browser checks. Mark unknown facts instead of assuming them.\n"
         },
         {
           "type": "heading",
@@ -420,13 +450,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
           "language": "text",
           "code": "Implement the reviewed filter plan now. Modify only visibleTasks in core.mjs. Preserve task order and do not mutate inputs. Keep tests and other files unchanged. Run node --test core.test.mjs, inspect the final diff and report actual results. If browser verification is unavailable, list the manual cases as NOT RUN. Do not publish or deploy this practice project.\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "参考函式：只对照 core.mjs 的 visibleTasks",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -619,7 +649,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "System terminal: first verify the practice directory specified here",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -642,7 +672,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in this practice Codex task",
           "language": "text",
           "code": "Plan before implementation. In this codex-plan-lab, inspect index.html, app.js, core.mjs and core.test.mjs. Do not edit files yet.\nGoal: make All, Active and Completed filters correct.\nKeep the current UI, storage format and task ordering. Add no dependencies.\nReport the existing selector and event wiring, the failing behavior and the smallest implementation scope. Ask about unresolved behavior before proposing a plan.\nThe plan must name files, acceptance cases, test commands and a scoped restoration method. Separate observations from assumptions.\n"
         },
@@ -661,13 +691,28 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Reference plan: for review, not an execution result",
           "language": "markdown",
           "code": "# Filter plan\n1. Read the existing selector, event handler and tests. Confirm the start fixture's failing filter assertion.\n2. Edit only visibleTasks in core.mjs: active selects unfinished tasks; completed selects finished tasks; all keeps every task in order.\n3. Run node --test core.test.mjs. Target: all 3 tests pass without changing their assertions.\n4. Preview Read (completed) and Build (active). Expect All=Read,Build; Active=Build; Completed=Read. Empty lists stay empty.\nScope: no dependencies, storage migrations, UI redesign or deployment.\nRestore: copy only core.mjs from the preserved start fixture back into this lab. The known failing baseline should return.\n"
         },
         {
           "type": "paragraph",
           "text": "Add: “Do not mutate the input array; include how to verify this.” The revision should explain that filter creates a new array without changing task objects. All may return the original array but must not reorder or alter it. Resolve any newly necessary edits and update the allowed scope explicitly rather than relying on an ambiguous “OK.”"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Reject a detailed but incorrect plan before implementation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Worked case: a plan proposes rebuilding filter buttons, installing a package and changing tests to pass. Detail does not make it suitable. The buttons and events already exist; visibleTasks is the gap. Identify steps unsupported by the code and request the revision below. Check scope, empty input and nonmutation again before implementation."
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: enter in this practice Codex task",
+          "language": "text",
+          "code": "Revise the plan only; do not implement yet. Use the existing filter controls and event wiring. Limit program changes to visibleTasks in core.mjs, add no dependencies and preserve all test assertions. For each proposed change, cite the observed gap. Include empty input, stable order, no input mutation, actual test execution and separate browser checks. Mark unknown facts instead of assuming them.\n"
         },
         {
           "type": "heading",
@@ -680,13 +725,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in this practice Codex task",
           "language": "text",
           "code": "Implement the reviewed filter plan now. Modify only visibleTasks in core.mjs. Preserve task order and do not mutate inputs. Keep tests and other files unchanged. Run node --test core.test.mjs, inspect the final diff and report actual results. If browser verification is unavailable, list the manual cases as NOT RUN. Do not publish or deploy this practice project.\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Reference function: compare only visibleTasks in core.mjs",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -875,7 +920,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "システム端末：先に本文で指定した練習ディレクトリを確認する",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -898,7 +943,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
           "language": "text",
           "code": "Plan before implementation. In this codex-plan-lab, inspect index.html, app.js, core.mjs and core.test.mjs. Do not edit files yet.\nGoal: make All, Active and Completed filters correct.\nKeep the current UI, storage format and task ordering. Add no dependencies.\nReport the existing selector and event wiring, the failing behavior and the smallest implementation scope. Ask about unresolved behavior before proposing a plan.\nThe plan must name files, acceptance cases, test commands and a scoped restoration method. Separate observations from assumptions.\n"
         },
@@ -917,13 +962,28 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "参考計画：レビュー用であり実行結果ではありません",
           "language": "markdown",
           "code": "# Filter plan\n1. Read the existing selector, event handler and tests. Confirm the start fixture's failing filter assertion.\n2. Edit only visibleTasks in core.mjs: active selects unfinished tasks; completed selects finished tasks; all keeps every task in order.\n3. Run node --test core.test.mjs. Target: all 3 tests pass without changing their assertions.\n4. Preview Read (completed) and Build (active). Expect All=Read,Build; Active=Build; Completed=Read. Empty lists stay empty.\nScope: no dependencies, storage migrations, UI redesign or deployment.\nRestore: copy only core.mjs from the preserved start fixture back into this lab. The known failing baseline should return.\n"
         },
         {
           "type": "paragraph",
           "text": "「入力配列をその場で変更せず、確認方法を計画に追加」と補足します。filter は新しい配列を作り、タスク自体を変更しません。All は元の配列を返してよいが並べ替え・値変更は禁止です。別の変更が必要なら理由と許可範囲を明示して更新します。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "詳しくても誤った計画は実装前に修正する"
+        },
+        {
+          "type": "paragraph",
+          "text": "例：ボタンの作り直し、パッケージ導入、テストを通るよう変更する計画は、詳しくても今回には不適切です。ボタンとイベントは既存で、不足は visibleTasks です。コードの根拠がない手順を示して次の修正を依頼し、範囲、空入力、非変更の条件を再確認してから実装へ進みます。"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
+          "language": "text",
+          "code": "Revise the plan only; do not implement yet. Use the existing filter controls and event wiring. Limit program changes to visibleTasks in core.mjs, add no dependencies and preserve all test assertions. For each proposed change, cite the observed gap. Include empty input, stable order, no input mutation, actual test execution and separate browser checks. Mark unknown facts instead of assuming them.\n"
         },
         {
           "type": "heading",
@@ -936,13 +996,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
           "language": "text",
           "code": "Implement the reviewed filter plan now. Modify only visibleTasks in core.mjs. Preserve task order and do not mutate inputs. Keep tests and other files unchanged. Run node --test core.test.mjs, inspect the final diff and report actual results. If browser verification is unavailable, list the manual cases as NOT RUN. Do not publish or deploy this practice project.\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "参考関数：core.mjs の visibleTasks だけと照合する",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -1131,7 +1191,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "시스템 터미널: 먼저 본문에서 지정한 실습 폴더 확인",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -1154,7 +1214,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
           "language": "text",
           "code": "Plan before implementation. In this codex-plan-lab, inspect index.html, app.js, core.mjs and core.test.mjs. Do not edit files yet.\nGoal: make All, Active and Completed filters correct.\nKeep the current UI, storage format and task ordering. Add no dependencies.\nReport the existing selector and event wiring, the failing behavior and the smallest implementation scope. Ask about unresolved behavior before proposing a plan.\nThe plan must name files, acceptance cases, test commands and a scoped restoration method. Separate observations from assumptions.\n"
         },
@@ -1173,13 +1233,28 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "참고 계획: 검토용이며 실행 결과가 아님",
           "language": "markdown",
           "code": "# Filter plan\n1. Read the existing selector, event handler and tests. Confirm the start fixture's failing filter assertion.\n2. Edit only visibleTasks in core.mjs: active selects unfinished tasks; completed selects finished tasks; all keeps every task in order.\n3. Run node --test core.test.mjs. Target: all 3 tests pass without changing their assertions.\n4. Preview Read (completed) and Build (active). Expect All=Read,Build; Active=Build; Completed=Read. Empty lists stay empty.\nScope: no dependencies, storage migrations, UI redesign or deployment.\nRestore: copy only core.mjs from the preserved start fixture back into this lab. The known failing baseline should return.\n"
         },
         {
           "type": "paragraph",
           "text": "‘입력 배열을 직접 바꾸지 말고 검증 방법을 계획에 추가’라고 보완합니다. filter는 새 배열을 만들고 작업 객체는 바꾸지 않습니다. All은 원래 배열을 반환할 수 있지만 정렬/값 변경은 안 됩니다. 추가 변경이 필요하면 이유와 허용 범위를 명시해 갱신합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "상세해도 잘못된 계획은 구현 전에 수정하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "사례: 필터 버튼 재작성, 패키지 설치, 통과하도록 테스트 변경을 제안한 계획은 상세해도 이번 실습에 맞지 않습니다. 버튼과 이벤트는 이미 있고 부족한 곳은 visibleTasks입니다. 코드 근거가 없는 단계를 짚고 아래 수정을 요청한 뒤 범위, 빈 입력, 입력 불변 조건을 다시 확인하고 구현합니다."
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
+          "language": "text",
+          "code": "Revise the plan only; do not implement yet. Use the existing filter controls and event wiring. Limit program changes to visibleTasks in core.mjs, add no dependencies and preserve all test assertions. For each proposed change, cite the observed gap. Include empty input, stable order, no input mutation, actual test execution and separate browser checks. Mark unknown facts instead of assuming them.\n"
         },
         {
           "type": "heading",
@@ -1192,13 +1267,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
           "language": "text",
           "code": "Implement the reviewed filter plan now. Modify only visibleTasks in core.mjs. Preserve task order and do not mutate inputs. Keep tests and other files unchanged. Run node --test core.test.mjs, inspect the final diff and report actual results. If browser verification is unavailable, list the manual cases as NOT RUN. Do not publish or deploy this practice project.\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "참고 함수: core.mjs의 visibleTasks만 비교",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },

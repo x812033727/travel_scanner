@@ -51,12 +51,24 @@
     {
       "type": "code",
       "language": "text",
-      "code": "/model\n"
+      "code": "/model\n",
+      "label": [
+        "互動斜線指令：在 Codex CLI 內輸入",
+        "Interactive slash command: enter inside Codex CLI",
+        "対話スラッシュコマンド：Codex CLI 内で入力する",
+        "대화형 슬래시 명령: Codex CLI 안에서 입력"
+      ]
     },
     {
       "type": "code",
       "language": "text",
-      "code": "/status\n"
+      "code": "/status\n",
+      "label": [
+        "互動斜線指令：在 Codex CLI 內輸入",
+        "Interactive slash command: enter inside Codex CLI",
+        "対話スラッシュコマンド：Codex CLI 内で入力する",
+        "대화형 슬래시 명령: Codex CLI 안에서 입력"
+      ]
     },
     {
       "type": "p",
@@ -88,7 +100,13 @@
     {
       "type": "code",
       "language": "javascript",
-      "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
+      "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n",
+      "label": [
+        "檔案內容：存入 sample.mjs",
+        "File content: save as sample.mjs",
+        "ファイル内容：sample.mjs に保存する",
+        "파일 내용: sample.mjs로 저장"
+      ]
     },
     {
       "type": "p",
@@ -102,7 +120,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
+      "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n",
+      "label": [
+        "自然語言提示詞：在本練習的 Codex 任務輸入",
+        "Natural-language prompt: enter in this practice Codex task",
+        "自然言語の依頼：この練習の Codex タスクに入力する",
+        "자연어 요청: 이 실습의 Codex 작업에 입력"
+      ]
     },
     {
       "type": "h2",
@@ -134,7 +158,13 @@
     {
       "type": "code",
       "language": "markdown",
-      "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
+      "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n",
+      "label": [
+        "比較表範本：存為 comparison.md，填實際結果",
+        "Comparison template: save as comparison.md and record actual results",
+        "比較表のひな型：comparison.md に保存し実際の結果を記入する",
+        "비교표 양식: comparison.md로 저장하고 실제 결과 작성"
+      ]
     },
     {
       "type": "p",
@@ -152,6 +182,33 @@
         "If both are wrong, first verify that they read sample.mjs and received the completed requirement instead of immediately selecting a costlier or slower option. Missing files, wrong directories and conflicting constraints invalidate the comparison. Correct them and start fresh tasks from the same baseline.",
         "両方誤答なら、先に sample.mjs の読取りと completed の指定を確認し、高価・低速な設定へ即座に移りません。ファイル不足、場所違い、制約矛盾を直し、同じ起点の新課題で再比較します。",
         "둘 다 틀리면 비싸거나 느린 설정부터 고르지 말고 sample.mjs 읽기와 completed 요구를 확인합니다. 누락 파일/경로 오류/제약 충돌을 고치고 같은 시작점의 새 작업으로 다시 비교합니다。"
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "先判斷結果能不能比較",
+        "Decide whether the results are comparable",
+        "結果を比較できるか先に判断する",
+        "결과를 비교할 수 있는지 먼저 판단하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "兩個虛構判讀例：甲花 20 秒且完整答對，乙花 8 秒卻說應回傳 Build；這題只能說乙較快但不合格，不能選它為本需求的較佳設定。另一組甲乙都答對，但乙用過上一輪的答案或檔案已被改好，起點不同，應標「比較無效」並以原樣新任務重做。這些時間只是例題，不是任何模型的實測。",
+        "Two fictional cases: A takes 20 seconds and answers correctly; B takes 8 seconds but says Build is required. B is faster but fails this task. If both answer correctly but B saw A's answer or an already-fixed file, mark the comparison invalid and retry from identical fresh inputs. These times are teaching examples, not model measurements.",
+        "架空例です。A は20秒で正答、B は8秒でも正解を Build としたなら、B は速くても不合格です。両方正答でも B が A の回答や修正済みファイルを見ていたら、開始条件が異なるので比較無効とし、同一の新規入力でやり直します。この時間は教材でありモデルの実測ではありません。",
+        "가상 사례입니다. A는 20초에 정확히 답하고 B는 8초지만 정답이 Build라고 했다면 B는 빠르지만 불합격입니다. 둘 다 맞아도 B가 A의 답이나 이미 수정한 파일을 보았다면 시작 조건이 달라 비교 무효로 기록하고 같은 새 입력으로 다시 하세요. 이 시간은 교육용 예시이며 모델 실측이 아닙니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "要比較推理深度時，先用 Advanced 或 CLI /model 確認真正模型與深度。只移動 Power 滑桿可能同時改變模型，不能只記「第幾格」就聲稱只改一個變因；若無法保持其餘設定相同，記成不同組合的試用，保留限制，不計算推理深度單獨帶來的差異。",
+        "For an effort comparison, verify the actual model and effort through Advanced or CLI /model. Moving Power can also change the model; a slider position alone does not establish one changed variable. If other settings cannot be held constant, record a trial of different combinations, not an isolated effort effect.",
+        "推論深度を比べるなら Advanced または CLI /model で実際のモデルと深度を確認します。Power はモデルも変え得るため、位置だけでは単一変数の変更と証明できません。他の設定を揃えられなければ異なる組合せの試用として制限を記録し、深度単独の効果とはしません。",
+        "추론 수준을 비교하려면 Advanced 또는 CLI /model에서 실제 모델과 수준을 확인하세요. Power를 움직이면 모델도 바뀔 수 있어 위치만으로 한 변수만 바뀌었다고 할 수 없습니다. 나머지 설정을 고정할 수 없으면 서로 다른 조합의 시험으로 기록하고 추론 수준만의 효과로 계산하지 마세요."
       ]
     },
     {

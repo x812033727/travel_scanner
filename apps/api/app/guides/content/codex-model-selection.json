@@ -74,13 +74,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "互動斜線指令：在 Codex CLI 內輸入",
           "language": "text",
           "code": "/model\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "互動斜線指令：在 Codex CLI 內輸入",
           "language": "text",
           "code": "/status\n"
         },
@@ -114,7 +114,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案內容：存入 sample.mjs",
           "language": "javascript",
           "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
         },
@@ -124,7 +124,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
           "language": "text",
           "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
         },
@@ -143,7 +143,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "比較表範本：存為 comparison.md，填實際結果",
           "language": "markdown",
           "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
         },
@@ -180,6 +180,19 @@
         {
           "type": "paragraph",
           "text": "若兩次都答錯，先確認它們是否讀到 sample.mjs、需求是否真的指定 completed，而不是立刻挑較貴或較慢的選項。缺少檔案、工作目錄錯誤及限制互相矛盾，都會讓比較失去意義；修正這些條件後，再以新任務重新建立相同起點。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先判斷結果能不能比較"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個虛構判讀例：甲花 20 秒且完整答對，乙花 8 秒卻說應回傳 Build；這題只能說乙較快但不合格，不能選它為本需求的較佳設定。另一組甲乙都答對，但乙用過上一輪的答案或檔案已被改好，起點不同，應標「比較無效」並以原樣新任務重做。這些時間只是例題，不是任何模型的實測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要比較推理深度時，先用 Advanced 或 CLI /model 確認真正模型與深度。只移動 Power 滑桿可能同時改變模型，不能只記「第幾格」就聲稱只改一個變因；若無法保持其餘設定相同，記成不同組合的試用，保留限制，不計算推理深度單獨帶來的差異。"
         },
         {
           "type": "heading",
@@ -360,13 +373,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "互动斜线指令：在 Codex CLI 内输入",
           "language": "text",
           "code": "/model\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "互动斜线指令：在 Codex CLI 内输入",
           "language": "text",
           "code": "/status\n"
         },
@@ -400,7 +413,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案内容：存入 sample.mjs",
           "language": "javascript",
           "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
         },
@@ -410,7 +423,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
           "language": "text",
           "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
         },
@@ -429,7 +442,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "比较表范本：存为 comparison.md，填实际结果",
           "language": "markdown",
           "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
         },
@@ -466,6 +479,19 @@
         {
           "type": "paragraph",
           "text": "若两次都答错，先确认它们是否读到 sample.mjs、需求是否真的指定 completed，而不是立刻挑较贵或较慢的选项。缺少档案、工作目录错误及限制互相矛盾，都会让比较失去意义；修正这些条件后，再以新任务重新建立相同起点。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先判断结果能不能比较"
+        },
+        {
+          "type": "paragraph",
+          "text": "两个虚构判读例：甲花 20 秒且完整答对，乙花 8 秒却说应回传 Build；这题只能说乙较快但不合格，不能选它为本需求的较佳设定。另一组甲乙都答对，但乙用过上一轮的答案或档案已被改好，起点不同，应标「比较无效」并以原样新任务重做。这些时间只是例题，不是任何模型的实测。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要比较推理深度时，先用 Advanced 或 CLI /model 确认真正模型与深度。只移动 Power 滑杆可能同时改变模型，不能只记「第几格」就声称只改一个变因；若无法保持其余设定相同，记成不同组合的试用，保留限制，不计算推理深度单独带来的差异。"
         },
         {
           "type": "heading",
@@ -646,13 +672,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Interactive slash command: enter inside Codex CLI",
           "language": "text",
           "code": "/model\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Interactive slash command: enter inside Codex CLI",
           "language": "text",
           "code": "/status\n"
         },
@@ -686,7 +712,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File content: save as sample.mjs",
           "language": "javascript",
           "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
         },
@@ -696,7 +722,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in this practice Codex task",
           "language": "text",
           "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
         },
@@ -715,7 +741,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Comparison template: save as comparison.md and record actual results",
           "language": "markdown",
           "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
         },
@@ -752,6 +778,19 @@
         {
           "type": "paragraph",
           "text": "If both are wrong, first verify that they read sample.mjs and received the completed requirement instead of immediately selecting a costlier or slower option. Missing files, wrong directories and conflicting constraints invalidate the comparison. Correct them and start fresh tasks from the same baseline."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Decide whether the results are comparable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Two fictional cases: A takes 20 seconds and answers correctly; B takes 8 seconds but says Build is required. B is faster but fails this task. If both answer correctly but B saw A's answer or an already-fixed file, mark the comparison invalid and retry from identical fresh inputs. These times are teaching examples, not model measurements."
+        },
+        {
+          "type": "paragraph",
+          "text": "For an effort comparison, verify the actual model and effort through Advanced or CLI /model. Moving Power can also change the model; a slider position alone does not establish one changed variable. If other settings cannot be held constant, record a trial of different combinations, not an isolated effort effect."
         },
         {
           "type": "heading",
@@ -932,13 +971,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "対話スラッシュコマンド：Codex CLI 内で入力する",
           "language": "text",
           "code": "/model\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "対話スラッシュコマンド：Codex CLI 内で入力する",
           "language": "text",
           "code": "/status\n"
         },
@@ -972,7 +1011,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル内容：sample.mjs に保存する",
           "language": "javascript",
           "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
         },
@@ -982,7 +1021,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
           "language": "text",
           "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
         },
@@ -1001,7 +1040,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "比較表のひな型：comparison.md に保存し実際の結果を記入する",
           "language": "markdown",
           "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
         },
@@ -1038,6 +1077,19 @@
         {
           "type": "paragraph",
           "text": "両方誤答なら、先に sample.mjs の読取りと completed の指定を確認し、高価・低速な設定へ即座に移りません。ファイル不足、場所違い、制約矛盾を直し、同じ起点の新課題で再比較します。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "結果を比較できるか先に判断する"
+        },
+        {
+          "type": "paragraph",
+          "text": "架空例です。A は20秒で正答、B は8秒でも正解を Build としたなら、B は速くても不合格です。両方正答でも B が A の回答や修正済みファイルを見ていたら、開始条件が異なるので比較無効とし、同一の新規入力でやり直します。この時間は教材でありモデルの実測ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "推論深度を比べるなら Advanced または CLI /model で実際のモデルと深度を確認します。Power はモデルも変え得るため、位置だけでは単一変数の変更と証明できません。他の設定を揃えられなければ異なる組合せの試用として制限を記録し、深度単独の効果とはしません。"
         },
         {
           "type": "heading",
@@ -1218,13 +1270,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "대화형 슬래시 명령: Codex CLI 안에서 입력",
           "language": "text",
           "code": "/model\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "대화형 슬래시 명령: Codex CLI 안에서 입력",
           "language": "text",
           "code": "/status\n"
         },
@@ -1258,7 +1310,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일 내용: sample.mjs로 저장",
           "language": "javascript",
           "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
         },
@@ -1268,7 +1320,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
           "language": "text",
           "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
         },
@@ -1287,7 +1339,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "비교표 양식: comparison.md로 저장하고 실제 결과 작성",
           "language": "markdown",
           "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
         },
@@ -1324,6 +1376,19 @@
         {
           "type": "paragraph",
           "text": "둘 다 틀리면 비싸거나 느린 설정부터 고르지 말고 sample.mjs 읽기와 completed 요구를 확인합니다. 누락 파일/경로 오류/제약 충돌을 고치고 같은 시작점의 새 작업으로 다시 비교합니다。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "결과를 비교할 수 있는지 먼저 판단하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "가상 사례입니다. A는 20초에 정확히 답하고 B는 8초지만 정답이 Build라고 했다면 B는 빠르지만 불합격입니다. 둘 다 맞아도 B가 A의 답이나 이미 수정한 파일을 보았다면 시작 조건이 달라 비교 무효로 기록하고 같은 새 입력으로 다시 하세요. 이 시간은 교육용 예시이며 모델 실측이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "추론 수준을 비교하려면 Advanced 또는 CLI /model에서 실제 모델과 수준을 확인하세요. Power를 움직이면 모델도 바뀔 수 있어 위치만으로 한 변수만 바뀌었다고 할 수 없습니다. 나머지 설정을 고정할 수 없으면 서로 다른 조합의 시험으로 기록하고 추론 수준만의 효과로 계산하지 마세요."
         },
         {
           "type": "heading",

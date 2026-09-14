@@ -84,13 +84,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案內容：存入 note.txt",
           "language": "text",
           "code": "PERMISSION-LAB\nRevision: 1\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案內容：存入 request.txt",
           "language": "text",
           "code": "Only note.txt may be changed during the authorized write exercise.\nTarget revision: 2\n"
         },
@@ -100,7 +100,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "系統終端機：先核對本篇指定的練習目錄",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only --ask-for-approval on-request\n"
         },
@@ -115,7 +115,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
           "language": "text",
           "code": "Read note.txt and request.txt in the current lab. Report the actual working directory and exact revision. Do not change files, access unrelated folders or use the network.\n"
         },
@@ -125,7 +125,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
           "language": "text",
           "code": "Try to change only note.txt from Revision: 1 to Revision: 2 using currently available permissions. Do not request broader access, disable protections or retry through another path. If the current sandbox prevents the write, report that and stop. This is a controlled permission exercise.\n"
         },
@@ -159,19 +159,34 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "系統終端機：先核對本篇指定的練習目錄",
           "language": "sh",
           "code": "codex --cd . --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
           "language": "text",
           "code": "Read note.txt and request.txt. Change only the revision line in note.txt from 1 to 2. Keep all other contents and files unchanged. No network or outside-workspace access is needed. After editing, read both files again and report the actual result.\n"
         },
         {
           "type": "paragraph",
           "text": "在編輯器再次核對兩個檔案，將變更前後、允許範圍、遇到的提示與實際結果寫入練習紀錄。範例在普通文字檔操作，不測試 .git、.agents、.codex 等受保護位置；工作區可寫不代表每個子路徑都可寫。要新增技能或專案設定時，依該功能的指引處理，不把它們改名搬家來規避保護。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "用證據分開拒絕、阻擋與寫入成功"
+        },
+        {
+          "type": "paragraph",
+          "text": "三種結果應分開：代理在呼叫工具前說不能寫，是未嘗試；工具執行回報限制且檔案不變，才有該次阻擋的證據；工具說成功而檔案仍是 1，則需查實際路徑和結果，不能填已完成。下表只記此次普通文字檔，不把一次結果推廣成整台電腦、所有工具或三種作業系統的保證。"
+        },
+        {
+          "type": "code",
+          "label": "私人權限觀察表：填入實際結果，不是命令",
+          "language": "text",
+          "code": "Requested action: [read / controlled write / scoped authorized write]\nObserved host and absolute file path: [actual values]\nPermission mode and approval policy: [observed / unavailable]\nTool attempt: [not attempted / command and actual result]\nApproval event: [none / allowed / denied / cancelled / automatic review result]\nBefore and after: [actual note.txt revision and request.txt comparison]\nConclusion: [what this evidence establishes and what remains unverified]\nRestoration: [actual result / not performed]\n"
         },
         {
           "type": "heading",
@@ -387,13 +402,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案内容：存入 note.txt",
           "language": "text",
           "code": "PERMISSION-LAB\nRevision: 1\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案内容：存入 request.txt",
           "language": "text",
           "code": "Only note.txt may be changed during the authorized write exercise.\nTarget revision: 2\n"
         },
@@ -403,7 +418,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "系统终端机：先核对本篇指定的练习目录",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only --ask-for-approval on-request\n"
         },
@@ -418,7 +433,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
           "language": "text",
           "code": "Read note.txt and request.txt in the current lab. Report the actual working directory and exact revision. Do not change files, access unrelated folders or use the network.\n"
         },
@@ -428,7 +443,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
           "language": "text",
           "code": "Try to change only note.txt from Revision: 1 to Revision: 2 using currently available permissions. Do not request broader access, disable protections or retry through another path. If the current sandbox prevents the write, report that and stop. This is a controlled permission exercise.\n"
         },
@@ -462,19 +477,34 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "系统终端机：先核对本篇指定的练习目录",
           "language": "sh",
           "code": "codex --cd . --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
           "language": "text",
           "code": "Read note.txt and request.txt. Change only the revision line in note.txt from 1 to 2. Keep all other contents and files unchanged. No network or outside-workspace access is needed. After editing, read both files again and report the actual result.\n"
         },
         {
           "type": "paragraph",
           "text": "在编辑器再次核对两个档案，将变更前后、允许范围、遇到的提示与实际结果写入练习纪录。范例在普通文字档操作，不测试 .git、.agents、.codex 等受保护位置；工作区可写不代表每个子路径都可写。要新增技能或专案设定时，依该功能的指引处理，不把它们改名搬家来规避保护。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "用证据分开拒绝、阻挡与写入成功"
+        },
+        {
+          "type": "paragraph",
+          "text": "三种结果应分开：代理在呼叫工具前说不能写，是未尝试；工具执行回报限制且档案不变，才有该次阻挡的证据；工具说成功而档案仍是 1，则需查实际路径和结果，不能填已完成。下表只记此次普通文字档，不把一次结果推广成整台电脑、所有工具或三种作业系统的保证。"
+        },
+        {
+          "type": "code",
+          "label": "私人权限观察表：填入实际结果，不是命令",
+          "language": "text",
+          "code": "Requested action: [read / controlled write / scoped authorized write]\nObserved host and absolute file path: [actual values]\nPermission mode and approval policy: [observed / unavailable]\nTool attempt: [not attempted / command and actual result]\nApproval event: [none / allowed / denied / cancelled / automatic review result]\nBefore and after: [actual note.txt revision and request.txt comparison]\nConclusion: [what this evidence establishes and what remains unverified]\nRestoration: [actual result / not performed]\n"
         },
         {
           "type": "heading",
@@ -690,13 +720,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File content: save as note.txt",
           "language": "text",
           "code": "PERMISSION-LAB\nRevision: 1\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File content: save as request.txt",
           "language": "text",
           "code": "Only note.txt may be changed during the authorized write exercise.\nTarget revision: 2\n"
         },
@@ -706,7 +736,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "System terminal: first verify the practice directory specified here",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only --ask-for-approval on-request\n"
         },
@@ -721,7 +751,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in this practice Codex task",
           "language": "text",
           "code": "Read note.txt and request.txt in the current lab. Report the actual working directory and exact revision. Do not change files, access unrelated folders or use the network.\n"
         },
@@ -731,7 +761,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in this practice Codex task",
           "language": "text",
           "code": "Try to change only note.txt from Revision: 1 to Revision: 2 using currently available permissions. Do not request broader access, disable protections or retry through another path. If the current sandbox prevents the write, report that and stop. This is a controlled permission exercise.\n"
         },
@@ -765,19 +795,34 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "System terminal: first verify the practice directory specified here",
           "language": "sh",
           "code": "codex --cd . --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in this practice Codex task",
           "language": "text",
           "code": "Read note.txt and request.txt. Change only the revision line in note.txt from 1 to 2. Keep all other contents and files unchanged. No network or outside-workspace access is needed. After editing, read both files again and report the actual result.\n"
         },
         {
           "type": "paragraph",
           "text": "Recheck both files in the editor and record before/after values, scope, prompts and actual outcome. This exercise uses ordinary files, not protected .git, .agents or .codex paths. Workspace write does not imply every child path is writable. Follow feature-specific setup for skills or configuration instead of relocating protected paths to evade restrictions."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Distinguish refusal, enforcement and successful writing"
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep three outcomes separate: refusal before a tool call is no attempt; an enforced restriction reported by the tool with an unchanged file is evidence for that blocked attempt; a success message with Revision: 1 still on disk requires checking the path and result. Record only this ordinary-file exercise, not a guarantee for every tool, host or OS."
+        },
+        {
+          "type": "code",
+          "label": "Private permission record: fill in actual results; not a command",
+          "language": "text",
+          "code": "Requested action: [read / controlled write / scoped authorized write]\nObserved host and absolute file path: [actual values]\nPermission mode and approval policy: [observed / unavailable]\nTool attempt: [not attempted / command and actual result]\nApproval event: [none / allowed / denied / cancelled / automatic review result]\nBefore and after: [actual note.txt revision and request.txt comparison]\nConclusion: [what this evidence establishes and what remains unverified]\nRestoration: [actual result / not performed]\n"
         },
         {
           "type": "heading",
@@ -989,13 +1034,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル内容：note.txt に保存する",
           "language": "text",
           "code": "PERMISSION-LAB\nRevision: 1\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル内容：request.txt に保存する",
           "language": "text",
           "code": "Only note.txt may be changed during the authorized write exercise.\nTarget revision: 2\n"
         },
@@ -1005,7 +1050,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "システム端末：先に本文で指定した練習ディレクトリを確認する",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only --ask-for-approval on-request\n"
         },
@@ -1020,7 +1065,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
           "language": "text",
           "code": "Read note.txt and request.txt in the current lab. Report the actual working directory and exact revision. Do not change files, access unrelated folders or use the network.\n"
         },
@@ -1030,7 +1075,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
           "language": "text",
           "code": "Try to change only note.txt from Revision: 1 to Revision: 2 using currently available permissions. Do not request broader access, disable protections or retry through another path. If the current sandbox prevents the write, report that and stop. This is a controlled permission exercise.\n"
         },
@@ -1064,19 +1109,34 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "システム端末：先に本文で指定した練習ディレクトリを確認する",
           "language": "sh",
           "code": "codex --cd . --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
           "language": "text",
           "code": "Read note.txt and request.txt. Change only the revision line in note.txt from 1 to 2. Keep all other contents and files unchanged. No network or outside-workspace access is needed. After editing, read both files again and report the actual result.\n"
         },
         {
           "type": "paragraph",
           "text": "エディターで両ファイルと前後値、範囲、承認、結果を記録します。.git、.agents、.codex などの保護場所は試しません。作業領域内の全パスが書けるとは限りません。技能や設定の指針に従い、保護回避の移動はしません。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "拒否、制限の適用、書き込み成功を分ける"
+        },
+        {
+          "type": "paragraph",
+          "text": "ツールを呼ぶ前に書けないと答えた場合は未試行、ツールが制限を報告してファイルも不変ならその試行の阻止証拠です。成功メッセージでもディスクが Revision: 1 のままなら場所と結果を調べ、完了と書きません。今回の普通ファイルの結果だけを記録し、全ツールや全 OS の保証へ広げません。"
+        },
+        {
+          "type": "code",
+          "label": "個人用権限記録：実際の結果を記入する。コマンドではありません",
+          "language": "text",
+          "code": "Requested action: [read / controlled write / scoped authorized write]\nObserved host and absolute file path: [actual values]\nPermission mode and approval policy: [observed / unavailable]\nTool attempt: [not attempted / command and actual result]\nApproval event: [none / allowed / denied / cancelled / automatic review result]\nBefore and after: [actual note.txt revision and request.txt comparison]\nConclusion: [what this evidence establishes and what remains unverified]\nRestoration: [actual result / not performed]\n"
         },
         {
           "type": "heading",
@@ -1288,13 +1348,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일 내용: note.txt로 저장",
           "language": "text",
           "code": "PERMISSION-LAB\nRevision: 1\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일 내용: request.txt로 저장",
           "language": "text",
           "code": "Only note.txt may be changed during the authorized write exercise.\nTarget revision: 2\n"
         },
@@ -1304,7 +1364,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "시스템 터미널: 먼저 본문에서 지정한 실습 폴더 확인",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only --ask-for-approval on-request\n"
         },
@@ -1319,7 +1379,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
           "language": "text",
           "code": "Read note.txt and request.txt in the current lab. Report the actual working directory and exact revision. Do not change files, access unrelated folders or use the network.\n"
         },
@@ -1329,7 +1389,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
           "language": "text",
           "code": "Try to change only note.txt from Revision: 1 to Revision: 2 using currently available permissions. Do not request broader access, disable protections or retry through another path. If the current sandbox prevents the write, report that and stop. This is a controlled permission exercise.\n"
         },
@@ -1363,19 +1423,34 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "시스템 터미널: 먼저 본문에서 지정한 실습 폴더 확인",
           "language": "sh",
           "code": "codex --cd . --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
           "language": "text",
           "code": "Read note.txt and request.txt. Change only the revision line in note.txt from 1 to 2. Keep all other contents and files unchanged. No network or outside-workspace access is needed. After editing, read both files again and report the actual result.\n"
         },
         {
           "type": "paragraph",
           "text": "편집기에서 두 파일과 전후 값/범위/승인/결과를 기록합니다. .git/.agents/.codex 같은 보호 경로는 시험하지 않습니다. 작업 공간 내 모든 경로를 쓸 수 있는 것은 아닙니다. 스킬/설정 안내를 따르고 보호 우회를 위해 이동하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "거절, 제한 적용, 쓰기 성공 구분하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "도구 호출 전에 못 쓴다고 답하면 미시도이며, 도구가 제한을 보고하고 파일도 그대로면 해당 시도가 차단된 근거입니다. 성공 메시지가 나와도 디스크가 Revision: 1이면 경로와 결과를 확인하고 완료로 기록하지 마세요. 이번 일반 파일 실습만 기록하며 모든 도구, 호스트, OS에 대한 보장으로 확대하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "개인 권한 기록: 실제 결과를 작성하며 명령으로 실행하지 않음",
+          "language": "text",
+          "code": "Requested action: [read / controlled write / scoped authorized write]\nObserved host and absolute file path: [actual values]\nPermission mode and approval policy: [observed / unavailable]\nTool attempt: [not attempted / command and actual result]\nApproval event: [none / allowed / denied / cancelled / automatic review result]\nBefore and after: [actual note.txt revision and request.txt comparison]\nConclusion: [what this evidence establishes and what remains unverified]\nRestoration: [actual result / not performed]\n"
         },
         {
           "type": "heading",

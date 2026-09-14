@@ -51,12 +51,24 @@
     {
       "type": "code",
       "language": "text",
-      "code": "SESSION-A\nRevision: 1\n"
+      "code": "SESSION-A\nRevision: 1\n",
+      "label": [
+        "檔案內容：存入 codex-session-a/note.txt",
+        "File content: save as codex-session-a/note.txt",
+        "ファイル内容：codex-session-a/note.txt に保存する",
+        "파일 내용: codex-session-a/note.txt로 저장"
+      ]
     },
     {
       "type": "code",
       "language": "text",
-      "code": "SESSION-B\nRevision: 100\n"
+      "code": "SESSION-B\nRevision: 100\n",
+      "label": [
+        "檔案內容：存入 codex-session-b/note.txt",
+        "File content: save as codex-session-b/note.txt",
+        "ファイル内容：codex-session-b/note.txt に保存する",
+        "파일 내용: codex-session-b/note.txt로 저장"
+      ]
     },
     {
       "type": "p",
@@ -70,12 +82,24 @@
     {
       "type": "code",
       "language": "sh",
-      "code": "codex --cd . --sandbox read-only\n"
+      "code": "codex --cd . --sandbox read-only\n",
+      "label": [
+        "系統終端機：先核對本篇指定的練習目錄",
+        "System terminal: first verify the practice directory specified here",
+        "システム端末：先に本文で指定した練習ディレクトリを確認する",
+        "시스템 터미널: 먼저 본문에서 지정한 실습 폴더 확인"
+      ]
     },
     {
       "type": "code",
       "language": "text",
-      "code": "Read note.txt from the current directory without changing files. Report the exact directory and both lines. This is a session-resume exercise. Do not search other folders or infer content from the filename.\n"
+      "code": "Read note.txt from the current directory without changing files. Report the exact directory and both lines. This is a session-resume exercise. Do not search other folders or infer content from the filename.\n",
+      "label": [
+        "自然語言提示詞：在本練習的 Codex 任務輸入",
+        "Natural-language prompt: enter in this practice Codex task",
+        "自然言語の依頼：この練習の Codex タスクに入力する",
+        "자연어 요청: 이 실습의 Codex 작업에 입력"
+      ]
     },
     {
       "type": "p",
@@ -107,12 +131,24 @@
     {
       "type": "code",
       "language": "sh",
-      "code": "codex resume\n"
+      "code": "codex resume\n",
+      "label": [
+        "系統終端機：先核對本篇指定的練習目錄",
+        "System terminal: first verify the practice directory specified here",
+        "システム端末：先に本文で指定した練習ディレクトリを確認する",
+        "시스템 터미널: 먼저 본문에서 지정한 실습 폴더 확인"
+      ]
     },
     {
       "type": "code",
       "language": "sh",
-      "code": "codex resume --all\n"
+      "code": "codex resume --all\n",
+      "label": [
+        "系統終端機：先核對本篇指定的練習目錄",
+        "System terminal: first verify the practice directory specified here",
+        "システム端末：先に本文で指定した練習ディレクトリを確認する",
+        "시스템 터미널: 먼저 본문에서 지정한 실습 폴더 확인"
+      ]
     },
     {
       "type": "p",
@@ -153,7 +189,13 @@
     {
       "type": "code",
       "language": "sh",
-      "code": "codex resume --last --sandbox read-only\n"
+      "code": "codex resume --last --sandbox read-only\n",
+      "label": [
+        "系統終端機：先核對本篇指定的練習目錄",
+        "System terminal: first verify the practice directory specified here",
+        "システム端末：先に本文で指定した練習ディレクトリを確認する",
+        "시스템 터미널: 먼저 본문에서 지정한 실습 폴더 확인"
+      ]
     },
     {
       "type": "p",
@@ -167,7 +209,62 @@
     {
       "type": "code",
       "language": "text",
-      "code": "Resume by reading note.txt from disk again now. Compare the current revision with the earlier conversation. Report the current directory, the file marker, and any difference. Do not restore an older value or edit any file.\n"
+      "code": "Resume by reading note.txt from disk again now. Compare the current revision with the earlier conversation. Report the current directory, the file marker, and any difference. Do not restore an older value or edit any file.\n",
+      "label": [
+        "自然語言提示詞：在本練習的 Codex 任務輸入",
+        "Natural-language prompt: enter in this practice Codex task",
+        "自然言語の依頼：この練習の Codex タスクに入力する",
+        "자연어 요청: 이 실습의 Codex 작업에 입력"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "延伸：分岔對話後，檔案仍須核對",
+        "Extension: verify files after forking a chat",
+        "応用：会話を分岐してもファイルは確認する",
+        "확장: 대화를 분기한 뒤에도 파일 확인하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "若要比較另一條思路，先退出目前 CLI，回 A 目錄執行下方 fork。從選擇清單核對原 A 任務與目錄，記錄分岔後的新任務 ID；這會建立另一段對話，不等於備份或隔離檔案。這次沒有 Git，也不使用 worktree，兩段對話可能操作相同資料夾，因此都只做唯讀。看不到 fork 時先查 codex fork --help 與本機版本，不把其他產品的功能名稱當命令。",
+        "To explore another approach, exit the CLI, return to A and run fork below. Select the original A session by its details and directory, then record the new session ID. This branches the conversation, not a file backup. This non-Git exercise uses no worktree; both chats may access the same folder, so keep both read-only. If unavailable, check codex fork --help and your version.",
+        "別の考え方を試すには CLI を終了して A に戻り、下の fork を実行します。元の A を内容と場所で選び、新しいセッション ID を記録します。会話の分岐はファイルのバックアップではありません。この Git なしの練習では worktree を使わず、同じフォルダーを参照し得るので双方を読み取り専用にします。使えなければ codex fork --help と版を確認してください。",
+        "다른 접근을 살펴보려면 CLI를 종료하고 A 폴더에서 아래 fork를 실행하세요. 원래 A 작업을 내용과 경로로 고른 뒤 새 세션 ID를 기록합니다. 대화 분기는 파일 백업이 아닙니다. Git이 없는 이번 실습은 worktree를 쓰지 않으며 두 대화가 같은 폴더를 볼 수 있으므로 모두 읽기 전용으로 유지하세요. 없다면 codex fork --help와 버전을 확인합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "codex fork --sandbox read-only\n",
+      "label": [
+        "系統終端機：先核對本篇指定的練習目錄",
+        "System terminal: first verify the practice directory specified here",
+        "システム端末：先に本文で指定した練習ディレクトリを確認する",
+        "시스템 터미널: 먼저 본문에서 지정한 실습 폴더 확인"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "This is a read-only alternative branch of the session exercise. Read note.txt from disk now and report its actual path, marker and revision. Describe one different way to verify the file without changing it. Do not assume that forking created a separate file copy or restored Revision: 1. Do not edit files.\n",
+      "label": [
+        "自然語言提示詞：在本練習的 Codex 任務輸入",
+        "Natural-language prompt: enter in this practice Codex task",
+        "自然言語の依頼：この練習の Codex タスクに入力する",
+        "자연어 요청: 이 실습의 Codex 작업에 입력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "分岔後仍應讀到目前 A 的 Revision: 2；原 A 對話保留，磁碟不應倒退。若新任務與 A 指向同一完整路徑，就記「對話分開、檔案共用」。完成後退出分岔，再從清單接續原 A，重新讀同一檔案確認；退出或刪除對話都不能當作檔案還原。[Worktree](article:codex-worktrees)篇才處理 Git 工作目錄隔離。",
+        "The fork should still read A's current Revision: 2 while the original conversation remains. If both sessions use the same absolute path, record separate chats with shared files. Exit the fork, select the original A session and read again. Closing or deleting a chat is not file restoration; [Worktrees](article:codex-worktrees) covers Git working-directory isolation.",
+        "分岐後も現在の A の Revision: 2 を読み、元の会話は残るのが期待です。完全パスが同じなら会話は別、ファイルは共有と記録します。分岐を終了し元の A を選び直して再読してください。会話の終了や削除はファイル復元ではありません。Git 作業場所の分離は [Worktree](article:codex-worktrees) で扱います。",
+        "분기에서도 A의 현재 Revision: 2를 읽고 원래 대화는 남아 있어야 합니다. 절대 경로가 같으면 대화는 별도지만 파일은 공유한다고 기록하세요. 분기를 종료하고 원래 A를 다시 선택해 읽습니다. 대화 종료나 삭제는 파일 복구가 아니며 Git 작업 폴더 격리는 [Worktree](article:codex-worktrees)에서 다룹니다."
+      ]
     },
     {
       "type": "h2",
