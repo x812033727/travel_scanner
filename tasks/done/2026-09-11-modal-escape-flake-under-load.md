@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-modal-escape-flake-under-load
 title: 整套測試在負載下，有守門的 Escape 偶爾不生效
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-14T09:07:42Z
 created_at: 2026-09-11T21:23:54Z
-completed_at:
+completed_at: 2026-09-14T09:30:39Z
 branch: claude/ship-passive-effect-gap-flake
 depends_on: []
 scope:
@@ -91,7 +91,8 @@ itinerary generation finishes」，在 CI 紅過兩次）是**同一個形狀**�
       「成因找到了」：五條確定性測試，修正前全紅、修正後全綠。
 - [x] 找到真正的成因，不是再一個沒有證據的假設。→ 第三個實例找到了，用焦點探針。
       → 2026-09-13：四個實例是同一個成因（default lane commit 的 passive effect 晚一個 scheduler task）。
-- [ ] 修好之後，連續三次整套 `npm run test:web` 都綠。→ 只修好三分之一，還不能宣告。
+- [x] 修好之後，連續三次整套 `npm run test:web` 都綠。→ 只修好三分之一，還不能宣告。
+      → **2026-09-14 做到了**：PR #493 的 CI 四輪全綠，另加本機一輪整套全綠，細節見文末「送出」。
 - [x] **不可以**用放寬斷言、加 `waitFor`、或 skip 來讓它變綠。→ 沒有這樣做。
 
 ## How to verify
@@ -505,4 +506,11 @@ React 19.2.8（`react-dom-client.development.js`）在 commit 結束時，只有
 
     還原後工作區是乾淨的。
   - `npm run lint:web`、`npm run typecheck:web`、`npm run check:i18n`、`node tools/tasks.mjs check` 全部 exit 0。
+- 整套測試（完成標準第三條）：
+  - 本機 `npm run test:web`：258 個檔、2809 個測試全過，474 s。
+  - PR #493 的 CI 跑了四輪，全部 success：
+    - `f156c7bb`：push run 34826585898、pull_request run 34826590920。
+    - `c76f672e`：push run 34826640099、pull_request run 34826645473，其中 `web` 分別跑了 15m23s 與 11m35s。
+
+    兩個 commit 只差票檔裡的一行字。
 - `trip-editor.test.tsx` 沒動。今天紅的那條靠修 `PlannerOverlay` 收掉，不靠改測試。
