@@ -1,0 +1,320 @@
+{
+  "slug": "gemini-privacy-activity-settings",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 115,
+  "locales": {
+    "zh-TW": {
+      "title": "活動記錄與隱私：查看、刪除與設定",
+      "description": "Gemini 的活動記錄、裝置權限與連結服務各有管理入口。這篇帶你檢視目前設定、找到指定對話，並理解關閉儲存或刪除紀錄後仍有哪些資料範圍。操作以個人 Google 帳號為主，依 2026 年 9 月 14 日官方文件整理，不會替你變更帳號或刪除資料。",
+      "hero": {
+        "src": "/guides/gemini-privacy-activity-settings/hero.jpg",
+        "alt": "活動設定與刪除範圍的原創插畫，以文件、裝置與流程等物件呼應查看、刪除與設定；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gemini 的活動記錄、裝置權限與連結服務各有管理入口。這篇帶你檢視目前設定、找到指定對話，並理解關閉儲存或刪除紀錄後仍有哪些資料範圍。操作以個人 Google 帳號為主，依 2026 年 9 月 14 日官方文件整理，不會替你變更帳號或刪除資料。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-privacy-activity-settings/diagram-1.svg",
+          "alt": "查看活動：辨認目前產品與帳號；調整設定：未來記錄另行控制；處理舊資料：分別檢查各服務",
+          "width": 1600,
+          "height": 900,
+          "caption": "活動設定與刪除範圍。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：先辨認要管理哪一種資料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先確認登入的是私人、公司還是學校帳號。公司與學校的活動保留可能由 Workspace 管理員控制，不能直接套用個人帳號教學。若有工作資料儲存要求，先確認組織規則，再決定哪些設定可以自行調整。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把需求分成三件事：檢視已儲存的對話、調整未來是否保留活動、處理某次已上傳或分享的資料。這些操作目的不同。刪除聊天不等於取消訂閱，也不會自動刪掉你匯出到 Drive 的檔案；付款管理請看"
+            },
+            {
+              "type": "link",
+              "text": "方案篇",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "，連線權限請看"
+            },
+            {
+              "type": "link",
+              "text": "Connected Apps",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "實作一：檢視目前活動與設定",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "在 Gemini 網頁確認帳號，開啟設定與說明中的活動記錄；也可前往 myactivity.google.com/product/gemini。",
+            "檢視「保留活動記錄」目前是開啟或關閉，以及是否有自動刪除設定。先記錄狀態，不必為了練習修改。",
+            "找一段你能辨認的非敏感練習對話，核對日期、提示詞與內容，確認這是正確帳號的資料。",
+            "若紀錄包含 Live，開啟詳細資料檢視對應的音訊、影片或螢幕分享標示；不要只看聊天標題。",
+            "依下方範本記下設定與想調整的目的，再決定是否進入下一步。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "個人設定檢查紀錄",
+          "code": "檢查日期：[填入]\n帳號型別：[個人／公司／學校]\n保留活動記錄：[開啟／關閉／由管理員控制]\n自動刪除設定：[依畫面填入]\n需要處理的資料：[指定對話或日期範圍，不貼敏感內容]\n已另外匯出的檔案或分享連結：[有／無／待確認]\n這次目的：[只檢視／調整未來儲存／刪除指定紀錄]\n操作後應再確認的位置：[填入]\n"
+        },
+        {
+          "type": "heading",
+          "text": "保留活動記錄與自動刪除",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方說明列出個人活動記錄預設十八個月自動刪除，可調整為三個月、三十六個月或不自動刪除；實際以你的帳號畫面為準。要變更時，閱讀預覽影響範圍，確認是否涉及既有資料，再完成選擇。期間設定不是備份方案，重要成果仍應自己儲存。"
+        },
+        {
+          "type": "paragraph",
+          "text": "關閉保留活動後，未來對話不會顯示在活動中；官方仍說明會為提供服務與安全等用途保留最多七十二小時。未提交回饋的情況下，關閉後的未來對話不用於改善 AI 模型；若主動提交回饋，相關內容有另外的使用方式。不能把關閉開關理解成完全不處理任何資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "暫時性對話也有自己的處理條件，並不等於所有資料立即消失。若只想做一次不需要長期儲存的練習，先閱讀該入口的說明再使用；不要用一般對話中的一句「不要記錄」代替產品設定。"
+        },
+        {
+          "type": "heading",
+          "text": "實作二：刪除指定紀錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先確認重要成果已另存，再到活動頁選取要刪除的單項或日期範圍。第一次處理時，優先選你能清楚辨認的練習對話，仔細閱讀確認畫面；不要為了熟悉介面就直接選不限時間。確認的帳號、期間與專案都正確後，才由自己完成刪除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成後重新檢視活動頁，確認指定專案已不在清單中，也確認沒有誤選其他資料。這只能證明可見活動的操作結果，不能宣稱所有服務、備份或已由他人取得的副本都已同步消失。官方另指出已由人工審查並與帳號分離的資料可能保留最長三年。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若你刪除的是曾匯出的報告，Google 檔案中的副本仍需另外管理。若曾建立公開分享連結，也要到分享管理檢視；接受者已儲存的副本不會因你刪除原對話而自動收回。先盤點資料去了哪裡，才知道後續還需要處理哪些位置。"
+        },
+        {
+          "type": "heading",
+          "text": "Live、裝置權限與其他服務",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "link",
+              "text": "Live",
+              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+            },
+            {
+              "type": "text",
+              "text": "可能包含轉錄、音訊與分享畫面。活動儲存和是否允許音訊／影片用於改善服務是不同設定，請逐項閱讀名稱與目前狀態。想停止當下輸入，使用 Live 的麥克風、相機及分享控制；事後刪除活動不會代替當下停止串流。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "手機的相機、麥克風、照片與位置權限由作業系統管理，Android 某些助理能力還透過 Google 應用程式提供。調整前確認會影響哪些功能；只想移除照片存取時，不必同時更改所有服務。"
+            },
+            {
+              "type": "link",
+              "text": "Android",
+              "url": "https://mokaair.com/zh-TW/life/gemini-on-android-assistant"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "iPhone／iPad",
+              "url": "https://mokaair.com/zh-TW/life/gemini-ios-app-guide"
+            },
+            {
+              "type": "text",
+              "text": "篇各自說明入口差異。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Gemini 活動設定不會自動改變其他 Google 服務的設定，也不會刪除那些服務儲存的資料。"
+            },
+            {
+              "type": "link",
+              "text": "Spark",
+              "url": "https://mokaair.com/zh-TW/life/gemini-spark-workflows-guide"
+            },
+            {
+              "type": "text",
+              "text": "的遠端瀏覽器與執行資料另有管理控制；"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+            },
+            {
+              "type": "text",
+              "text": "的來源與筆記也要到對應產品檢視。不要把一個開關當成整個 Google 帳號的全面資料設定。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "預期結果：留下可核對的狀態",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "完成本篇後，你應能說明自己是否保留活動、多久自動刪除，以及指定紀錄目前是否仍在活動頁。若沒有進行變更，紀錄「已檢視，維持原設定」也算完成檢查；重點是知道狀態，而不是一定要刪除某些內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建議用簡短筆記記錄變更日期、目的與操作位置，不需複製敏感聊天內容。日後發現某項連線功能不能用時，可以回頭比對設定是否曾調整。避免一口氣改多個開關，最後卻不知道是哪個變更影響工作流程。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「刪除對話後 Gemini 還提到相關內容？」先確認是否有其他對話、儲存指示、Gem 參考資料或連結服務仍提供相同資訊。要求它忘記某件事不一定能取代對應資料管理；先查清來源，再處理真正需要變更的設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「公司帳號看不到保留期間？」可能由管理員控制。記下帳號型別及畫面提示，向管理員詢問適用政策；不要改用個人帳號處理工作內容，只為了取得可自行調整的開關。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「關閉活動後某個功能不見了？」部分連線及功能需要保留活動開啟。先看官方列出的必要條件，再決定是否接受這項取捨；不要只因功能缺少就直接開啟所有設定，也不要把功能限制誤認成資料已全部刪除。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "Gems 自訂助手",
+              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Connected Apps",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini：查看、管理及刪除活動記錄",
+          "url": "https://support.google.com/gemini/answer/13278892?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini Apps Privacy Hub",
+          "url": "https://support.google.com/gemini/answer/13594961",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

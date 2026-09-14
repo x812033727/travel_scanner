@@ -1,0 +1,302 @@
+{
+  "slug": "gemini-cli-mcp-extensions",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 141,
+  "locales": {
+    "zh-TW": {
+      "title": "MCP 與 Extensions：安裝、驗證與停用",
+      "description": "MCP（模型上下文協定）讓 Gemini CLI 使用外部工具與資料；Extensions（擴充套件）則把工具設定、提示詞與其他資源包成可安裝的套件。本篇教你分辨兩者，完成安裝前檢查、檢視連線狀態、執行一個小型讀取測試，再停用不需要的能力。",
+      "hero": {
+        "src": "/guides/gemini-cli-mcp-extensions/hero.jpg",
+        "alt": "擴充套件到連線驗證的原創插畫，以文件、裝置與流程等物件呼應安裝、驗證與停用；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MCP（模型上下文協定）讓 Gemini CLI 使用外部工具與資料；Extensions（擴充套件）則把工具設定、提示詞與其他資源包成可安裝的套件。本篇教你分辨兩者，完成安裝前檢查、檢視連線狀態、執行一個小型讀取測試，再停用不需要的能力。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-mcp-extensions/diagram-1.svg",
+          "alt": "來源與安裝：確認套件需要的能力；MCP 連線：核對伺服器與工具；停用與重查：確認工具清單改變",
+          "width": 1600,
+          "height": 900,
+          "caption": "擴充套件到連線驗證。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：先決定需要哪一種能力",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "準備 Gemini CLI 0.59.0，先完成"
+            },
+            {
+              "type": "link",
+              "text": "認證設定",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "JSON 設定教學",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings"
+            },
+            {
+              "type": "text",
+              "text": "。若從 GitHub 安裝擴充套件，也要有 Git。本文依官方 MCP 與 Extensions 檔案整理；第三方服務的登入、帳號資格與實際工具結果，需在你的帳號中核對，不把「套件裝好了」當成「已成功讀取服務」。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "你若只想讀取本機專案的一個文字檔，先用"
+            },
+            {
+              "type": "link",
+              "text": "內建檔案引用",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+            },
+            {
+              "type": "text",
+              "text": "即可。需要連線特定資料庫或外部服務，再評估 MCP。若提供者已把完整設定包成擴充套件，沿用它的官方安裝檔案通常比較容易維護；但仍要知道套件可能包含程式、命令與掛鉤，不只是一段文字。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "先寫下你要測試的最小成果，例如「讀取我指定的測試日曆中一筆活動，回傳標題與時間」。這比「連上所有工作資料」容易核對。準備測試帳號或非敏感樣本，並確認哪些動作只是讀取、哪些會新增或修改外部資料。"
+        },
+        {
+          "type": "heading",
+          "text": "概念分清楚：安裝、探索、認證與呼叫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝表示檔案已下載或設定已寫入；探索表示 CLI 看得到工具名稱與引數；認證表示外部服務接受此身分；呼叫成功才表示某個具體動作完成。這四個階段可能分別失敗，排查時要指出卡在哪裡。擴充套件清單中有名字，不代表其中每個 MCP 伺服器都已連線。"
+        },
+        {
+          "type": "paragraph",
+          "text": "MCP 可以是 CLI 在本機啟動的程式，透過標準輸入輸出溝通，也可以連到遠端 HTTP 服務。設定欄位不同，不能把網站首頁當作 MCP 端點。使用提供者給的 transport、執行入口與認證方式，並儲存版本；不要從名稱相似就判定是官方套件。"
+        },
+        {
+          "type": "heading",
+          "text": "實作：安裝擴充套件並核對狀態",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下面採官方 Extensions 文件列出的 Workspace 範例。執行前先開啟套件來源，讀取它要求的權限、執行條件與目前提供的工具；若不是你要使用的服務，改選官方目錄中適合的套件，不必為了練習連線私人資料。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在終端機執行 gemini extensions list，記錄原先已有的套件。",
+            "執行下方安裝命令，閱讀安裝確認與設定要求，再決定是否繼續。",
+            "安裝完成後重新啟動 CLI，輸入 /extensions list，確認名稱與啟用狀態。",
+            "輸入 /mcp，檢視伺服器是否連線、探索到哪些工具，依提供者流程完成認證。",
+            "指定一筆測試資料進行讀取，檢視工具呼叫記錄，再到原服務核對回傳內容。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機命令",
+          "code": "gemini extensions list\ngemini extensions install https://github.com/gemini-cli-extensions/workspace\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Gemini CLI 內輸入",
+          "code": "/extensions list\n/mcp\n請先列出目前可用、能讀取日曆資料的工具與用途，不執行新增或修改。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期先看到套件，再看到它實際提供的工具。若清單沒有日曆讀取能力，不應要求模型猜一個工具名稱；回到套件檔案確認功能。完成讀取測試時，核對資料名稱、時區與時間，並確認工具記錄真有成功結果，不能只接受一句「已經幫你查到了」。"
+        },
+        {
+          "type": "heading",
+          "text": "手動 MCP 設定：理解每個欄位",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有擴充套件、但服務提供標準 MCP 連線資訊時，可在 settings.json 加入 mcpServers。下面是結構示例；server.py 是你已安裝並獨立確認能啟動的伺服器入口，不能只建立空檔案就期待它提供工具。請把路徑與工具名稱換成提供者檔案中的值，再驗證 JSON。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": ".gemini/settings.json：需替換路徑與工具名稱",
+          "code": "{\n  \"mcpServers\": {\n    \"lesson-service\": {\n      \"command\": \"python\",\n      \"args\": [\"C:/your-approved-server/server.py\"],\n      \"trust\": false,\n      \"includeTools\": [\"read_demo_record\"]\n    }\n  }\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "command 是執行檔，args 是獨立引數；Windows 路徑可採正斜線，避免反斜線跳脫錯誤。includeTools 用來縮小可見工具，名稱必須與服務實際提供的一致。trust 設為 false 保留工具確認行為；它不是外部帳號授權，不能取代服務本身的權限設定。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題與停用驗證",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「顯示斷線」先在相同環境確認伺服器入口能啟動，檢查 PATH、工作目錄與必要環境變數，再看 /mcp 的錯誤。遠端服務還要核對端點與認證有效性。不要把 API Key 直接貼進錯誤回報，保留錯誤碼與已遮蔽的欄位名稱即可。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「工具有出現，但呼叫被拒絕」可能是 CLI 工具核准、服務權限或帳號資料範圍不同。檢視是哪一層回傳拒絕，再以最小讀取操作重試。不要直接把全部工具標成信任，否則只是跳過確認，並沒有修正外部權限或資料不存在的問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「如何停用或移除」先用清單找到實際套件名稱，再執行下方命令；name-to-disable 是替換位置。workspace 範圍只針對目前工作區，user 範圍影響使用者層。操作後重新啟動並檢視 /extensions 與 /mcp，確認相關能力已不再啟用。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機命令：替換套件名稱",
+          "code": "gemini extensions disable name-to-disable --scope workspace\ngemini extensions list\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "停用本機套件不一定撤銷外部服務的 OAuth 授權；不再使用時，另外到服務的連線管理頁面檢查授權。準備重新啟用或更新前，先儲存可重跑的讀取案例。若擴充套件還帶有"
+            },
+            {
+              "type": "link",
+              "text": "技能",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "link",
+              "text": "Hooks",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks"
+            },
+            {
+              "type": "text",
+              "text": "，也應一起檢查，讓更新後的行為仍符合你的預期。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 權限",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Agent Skills",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini CLI：MCP 伺服器",
+          "url": "https://geminicli.com/docs/tools/mcp-server/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI：擴充套件",
+          "url": "https://geminicli.com/docs/extensions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI：擴充參考",
+          "url": "https://geminicli.com/docs/extensions/reference/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
