@@ -30,7 +30,7 @@
     "major_concept_errors": 0,
     "fabricated_experiments_found": 0,
     "source_gap_resolved": 1,
-    "remaining_editorial_notes": 2,
+    "remaining_editorial_notes": 1,
     "near_synonym_review": "RAG/Agentic RAG/GraphRAG、Embedding/語意/混合/重排、預訓練/微調/SFT/RLHF/DPO/LoRA、推理模型/推論時計算、Open Weights/Open Source 的文章重點有實質區分。重排篇僅有同篇截斷提醒重述。"
   },
   "articles": [
@@ -86,7 +86,7 @@
     },
     {
       "slug": "ai-term-hybrid-search",
-      "verdict": "pass_with_editorial_note",
+      "verdict": "pass_after_revision",
       "findings": [
         {
           "severity": "low",
@@ -96,9 +96,9 @@
         },
         {
           "severity": "low",
-          "status": "open",
+          "status": "fixed",
           "issue": "description 仍寫 RRF 用名次連線不同分數系統，建議以融合不同搜尋結果表達。",
-          "verification": "正文及 callout 已修，metadata 尚未修。"
+          "verification": "已重新讀取 staging description，現為用名次融合不同搜尋結果。"
         }
       ],
       "rationale": "RRF 以排名融合異尺度結果的機制正確，原候選邊界、去重、混合與重排分工清楚，無通用提升保證。"

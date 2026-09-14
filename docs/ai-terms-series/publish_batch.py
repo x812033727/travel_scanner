@@ -308,21 +308,27 @@ def persist(path: Path, value: dict) -> None:
             os.close(fd)
 
 
-async def snapshot(session: AsyncSession) -> dict:
+async def snapshot(session: AsyncSession, *, lock: bool = False) -> dict:
+    article_query = (
+        select(GuideArticle)
+        .where(GuideArticle.slug.in_(SLUGS))
+        .order_by(GuideArticle.id)
+    )
+    if lock:
+        article_query = article_query.with_for_update(nowait=True)
     articles = list(
-        await session.scalars(
-            select(GuideArticle)
-            .where(GuideArticle.slug.in_(SLUGS))
-            .execution_options(populate_existing=True)
-        )
+        await session.scalars(article_query.execution_options(populate_existing=True))
     )
     ids = [article.id for article in articles]
+    locale_query = (
+        select(GuideArticleLocale)
+        .where(GuideArticleLocale.article_id.in_(ids))
+        .order_by(GuideArticleLocale.id)
+    )
+    if lock:
+        locale_query = locale_query.with_for_update(nowait=True)
     locales = list(
-        await session.scalars(
-            select(GuideArticleLocale)
-            .where(GuideArticleLocale.article_id.in_(ids))
-            .execution_options(populate_existing=True)
-        )
+        await session.scalars(locale_query.execution_options(populate_existing=True))
     )
     topics = await _topics_for(session, ids)
     # Only current/published revisions are needed; never export document text.
@@ -675,7 +681,9 @@ async def execute_phase(
                     verify_bundle(args.manifest, args.manifest_sha256, args.public_dir)
                     if postgres:
                         await session.execute(text("SET LOCAL lock_timeout = '5s'"))
-                    before = await snapshot(session)
+                    # One existing publish commit releases these locks. This prevents an
+                    # editor withdrawing any of the 82 dependencies before index commit.
+                    before = await snapshot(session, lock=args.phase == "publish-index")
                     same_state(before, journal["expected"])
                     if args.phase == "publish-index":
                         require_public(
@@ -752,6 +760,9 @@ async def execute_phase(
                         "at": stamp(),
                         "status": "stopped",
                         "error_type": type(error).__name__,
+                        "reason": str(error)
+                        if isinstance(error, Refused)
+                        else type(error).__name__,
                     }
                 )
                 persist(journal_path, journal)

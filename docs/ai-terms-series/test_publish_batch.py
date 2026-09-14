@@ -18,8 +18,9 @@ import pytest
 from app.guides import admin_service
 from app.guides.content_pack import apply_import, load_packs, plan_import
 from app.guides.models import GuideArticle, GuideArticleLocale
-from app.guides.schemas import DraftWrite
-from sqlalchemy import select
+from app.guides.schemas import DraftWrite, PublishWrite
+from sqlalchemy import select, text
+from sqlalchemy.exc import DBAPIError
 from tests import test_guides as guides
 
 spec = importlib.util.spec_from_file_location(
@@ -33,8 +34,13 @@ actor = guides.actor
 
 
 @pytest.fixture
-def packs():
-    return {pack.slug: pack for pack in load_packs(slugs=set(driver.SLUGS))}
+def packs(tmp_path):
+    directory = tmp_path / "exact-83-packs"
+    directory.mkdir()
+    for slug in driver.SLUGS:
+        source = driver.default_directory() / (slug + ".json")
+        (directory / source.name).write_bytes(source.read_bytes())
+    return {pack.slug: pack for pack in load_packs(directory, slugs=set(driver.SLUGS))}
 
 
 async def seed_existing(database, actor, packs):
@@ -206,3 +212,81 @@ def test_hash_and_exact_scope_guards(packs, tmp_path, monkeypatch):
     path.write_text(json.dumps(manifest), encoding="utf-8")
     with pytest.raises(driver.Refused, match="exactly"):
         driver.verify_bundle(path, driver.sha(path.read_bytes()), public)
+
+
+async def test_postgresql_index_commit_blocks_concurrent_dependency_withdrawal(
+    database,
+    actor,
+    packs,
+    tmp_path,
+    monkeypatch,
+):
+    """A normal editor cannot withdraw a dependency between index guard and commit."""
+    db_engine = database.kw["bind"]
+    if db_engine.dialect.name != "postgresql":
+        pytest.skip("requires isolated PostgreSQL; SQLite does not prove row locking")
+    await seed_existing(database, actor, packs)
+    monkeypatch.setattr(driver, "verify_bundle", lambda *a: packs)
+
+    async def active(_session):
+        return actor
+
+    monkeypatch.setattr(driver, "active_actor", active)
+    journal = tmp_path / "journal.json"
+    for phase in ("dry-run", "drafts", "publish-articles"):
+        await driver.execute_phase(args(tmp_path, phase), packs, journal, db_engine)
+    staged = json.loads(journal.read_text())
+    dependency = driver.SLUGS[0]
+    before = staged["expected"][dependency]["locales"]["zh-TW"]
+    assert (
+        staged["expected"][driver.INDEX]["locales"]["zh-TW"]["published_version"]
+        is None
+    )
+    original_apply = driver.apply_import
+    blocked_attempts = []
+
+    async def race_before_index_commit(session, user, plan, *, publish):
+        assert publish and plan.articles[0].pack.slug == driver.INDEX
+        # The driver has read and locked every dependency, but has not committed
+        # the index yet. This separate ordinary editor deliberately uses READ COMMITTED.
+        async with database() as editor:
+            await editor.connection(
+                execution_options={"isolation_level": "READ COMMITTED"}
+            )
+            await editor.execute(text("SET LOCAL lock_timeout = '150ms'"))
+            article = await editor.scalar(
+                select(GuideArticle).where(GuideArticle.slug == dependency)
+            )
+            row = await editor.scalar(
+                select(GuideArticleLocale).where(
+                    GuideArticleLocale.article_id == article.id,
+                    GuideArticleLocale.locale == "zh-TW",
+                )
+            )
+            assert row.published_version == before["published_version"]
+            with pytest.raises(DBAPIError) as blocked:
+                await admin_service.unpublish_locale(
+                    editor,
+                    user,
+                    article.id,
+                    "zh-TW",
+                    PublishWrite(
+                        expected_version=row.version,
+                        confirmed=True,
+                        reason="Disposable test: concurrent dependency withdrawal",
+                    ),
+                )
+            # lock_not_available distinguishes real blocking from unrelated DB errors.
+            assert getattr(blocked.value.orig, "sqlstate", None) == "55P03"
+            blocked_attempts.append(True)
+        return await original_apply(session, user, plan, publish=publish)
+
+    monkeypatch.setattr(driver, "apply_import", race_before_index_commit)
+    await driver.execute_phase(
+        args(tmp_path, "publish-index"), packs, journal, db_engine
+    )
+    assert blocked_attempts == [True]
+    final = json.loads(journal.read_text())
+    assert final["done"]["publish-index"] == [driver.INDEX]
+    assert final["expected"][dependency]["locales"]["zh-TW"] == before
+    driver.require_public(final["expected"], packs, driver.SLUGS)
