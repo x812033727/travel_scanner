@@ -1,14 +1,14 @@
 ---
 id: 2026-09-13-life-ai-batch-03
 title: 生活分享 AI 系列批次 03：Claude 教學（20 篇）
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-13T23:49:45Z
 created_at: 2026-09-13T11:55:59Z
 completed_at:
-branch:
+branch: claude/festive-brown-6nsxfm
 depends_on:
   - 2026-09-13-life-ai-series-tooling
   - 2026-09-13-life-ai-series-catalogue
