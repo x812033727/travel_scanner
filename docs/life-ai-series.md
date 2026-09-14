@@ -405,11 +405,11 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 249 | `gemini-api-document-assistant` | 完整實作：文件摘要與資料擷取工具 | ai, tutorial | 插 |  | ✓ |
 
 
-## Gemini 深入教學第二階段（2026-09-14 規劃，尚未製作）
+## Gemini 深入教學第二階段（2026-09-15 本機製作完成，實測與發布待完成）
 
-本次使用者要求繼續規劃深入教學，新增 36 個編輯題目，總表由 249 項增至 285 項。**這是待製作清單，不代表已上線數量。** 現有 Gemini 01–50 保留，第二階段使用 51–86；以下總表編號 250–285 與系列篇號是不同用途。
+本次使用者要求的深入系列新增 36 個編輯題目，總表由 249 項增至 285 項。**36 篇原稿、內容包、72 張配圖與練習素材均已製作，尚未整套發布。** 現有 Gemini 01–50 保留，第二階段使用 51–86；以下總表編號 250–285 與系列篇號是不同用途。
 
-完整 [36 篇課綱、先修、練習包與驗收](gemini-series/advanced/README.md) 和 [規劃資料](gemini-series/advanced/curriculum.json) 已建立。仍只使用原 Gemini 總目錄；先完成第二階段可見性與建置支援，再做六個內容批次，36 篇全部完成後一起開放目錄。課綱檔不是網站 runtime catalogue，不可直接發布。
+完整 [36 篇課綱、先修、練習包與驗收](gemini-series/advanced/README.md)、[87 頁本機候選包](gemini-series/advanced/release/README.md) 和 [逐篇待驗成果](gemini-series/advanced/release/ACCEPTANCE.md) 已建立。網站的 50／86 篇可見性、搜尋、手機、無 JavaScript 與複製已完成本機整合驗證；33 篇仍需真實帳號、模型或裝置實測，當日價格與正式發布另行核對。正式 catalogue 保持 50 篇，候選包不可直接發布；全部驗收完成後一起開放深入目錄。
 
 本區擴充工程深度至有先修的 CLI 與 Python 專案；既有批次 04／08／09／10／11 的跨工具入門與比較仍照原分工，避免重複撰寫。新題目都使用原創封面與圖解，不新增合作連結；價格與額度集中更新第 02／49 篇。
 
