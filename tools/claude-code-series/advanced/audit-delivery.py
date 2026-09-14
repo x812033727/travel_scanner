@@ -30,6 +30,8 @@ final={};attempts=[]
 browser_reports=[('browser-tests.json',initial),('browser-search-recheck.json',retry),('browser-download-check.json',downloads)]
 if (E/'browser-main-retry.json').exists():
     browser_reports.append(('browser-main-retry.json',read('browser-main-retry.json')))
+if (E/'browser-lf-download.json').exists():
+    browser_reports.append(('browser-lf-download.json',read('browser-lf-download.json')))
 for filename,report in browser_reports:
     for spec in specs(report):
         status=spec['tests'][0]['results'][-1]['status']
@@ -47,6 +49,7 @@ model_source='live/claude-live-all.json' if (E/'live/claude-live-all.json').exis
 model_attempts=read(model_source)
 model_smokes_passed=all(case['passed'] for case in model_attempts['cases']) and len(model_attempts['cases'])==5
 real_operations=read('live/real-operations-summary.json') if (E/'live/real-operations-summary.json').exists() else {}
+release=read('live/release-state.json') if (E/'live/release-state.json').exists() else {}
 supplement=read('live/verification-summary.json') if (E/'live/verification-summary.json').exists() else {}
 full_web=supplement.get('web',{})
 postgres=supplement.get('api',{})
@@ -113,6 +116,10 @@ if real_operations.get('teams',{}).get('passed'):
     local[89]=real_operations['teams']['scope']+'; passed'
 if real_operations.get('schedule',{}).get('passed'):
     local[93]=real_operations['schedule']['scope']+'; passed, no remaining jobs'
+if real_operations.get('teams_feature',{}).get('passed'):
+    local[89]='actual two-teammate feature development, controlled blocked contract decision, scoped label update, 10 project tests, 3 independent assertions and browser interaction/mobile layout passed; source versions and LF equivalence recorded'
+if real_operations.get('headless_boundary',{}).get('passed'):
+    local[91]+='; actual one-turn CLI error_max_turns returned exit 1 and is_error=true'
 if real_operations.get('workflow_comparison',{}).get('passed'):
     local[95]='one actual observation per workflow with versions/models/time recorded; different model mix and coordination, no comparative advantage inferred'
 lesson_rows=[]
@@ -155,7 +162,8 @@ write('delivery-checks.json',{
   {'command':'node worktrees/demo.mjs','exit':0,'detail':'worktree-tests.json'},
  ],
  'manual_visual_review':['project-rules-workshop-code-360.png','structured-cli-pipeline-code-390.png','tdd-reference-390.png'],
- 'limitations':[*(['Claude CLI smoke checks not passed'] if not model_smokes_passed else []),*real_operations.get('pending',['Remaining real operations not reviewed']),*(['PostgreSQL integration not passed'] if not postgres.get('passed') else []),'Not merged, deployed, imported or published'],
+ 'release':release,
+ 'limitations':[*(['Claude CLI smoke checks not passed'] if not model_smokes_passed else []),*real_operations.get('pending',['Remaining real operations not reviewed']),*(['PostgreSQL integration not passed'] if not postgres.get('passed') else []),'Not deployed, imported or published' if release.get('pull_request',{}).get('merged') else 'Not merged, deployed, imported or published'],
  'environment_notes':['Shared browser installation was incomplete; matching Chromium installed in a dedicated temporary cache','Broad Vitest was restarted; reported guide tests come from the focused single-worker invocation','MCP test process startup/cleanup allowance increased to 20 seconds; protocol deadline remains 1500 ms'],
 })
 print(json.dumps({'status':'local-preview-ready','pages':97,'new_lessons':36,'archives':36,'browser_cases':9,'web_tests':web['numPassedTests']}))

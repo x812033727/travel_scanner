@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-14T14:42:44.976320+00:00",
+  "checked_at": "2026-09-14T14:59:04.173594+00:00",
   "status": "local-preview-ready",
   "scope": "36 new lessons and the combined 97-page local preview; not release approval",
   "content": {
@@ -258,8 +258,7 @@
       "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
       "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
       "Supported OS Bash sandbox; WSL setup could not complete",
-      "Merge/register the manual Actions workflow and run baseline; paid model job awaits dedicated ANTHROPIC_API_KEY",
-      "Additional product-specific failure and full Teams feature-integration exercises beyond the documented smoke scope"
+      "Merge/register the manual Actions workflow and run baseline; paid model job awaits dedicated ANTHROPIC_API_KEY"
     ],
     "cli_boundaries": {
       "passed": true,
@@ -426,6 +425,16 @@
         "linux_claude_present": false
       },
       "reason": "During dependency setup WSL became unresponsive, including a read-only process listing. Only the three owned Windows WSL client trees were stopped; Linux installation outcome is unconfirmed. No WSL shutdown or sandbox weakening was used."
+    },
+    "teams_feature": {
+      "passed": true,
+      "source": "team-feature-validation.json",
+      "scope": "Two named teammates, controlled block/decision, scoped feature and label changes, 10 project tests, 3 independent tests and real browser verification"
+    },
+    "headless_boundary": {
+      "passed": true,
+      "source": "headless-turn-limit.json",
+      "scope": "Real CLI max-turn error; do not parse an error result as an empty successful review"
     }
   },
   "claude_smoke_source": "live/claude-live-all.json",
@@ -487,12 +496,24 @@
     "structured-cli-pipeline-code-390.png",
     "tdd-reference-390.png"
   ],
+  "release": {
+    "pull_request": {
+      "base": "88c23881898fa62f10cdbc59b9a639f5841c8423",
+      "head": "aea866cb1c434267089e9735814f9cd57e06a0a2",
+      "merged": false,
+      "number": 501,
+      "state": "open",
+      "url": "https://github.com/x812033727/travel_scanner/pull/501"
+    },
+    "deployment": "not-performed",
+    "import": "not-performed",
+    "publication": "not-performed"
+  },
   "limitations": [
     "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
     "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
     "Supported OS Bash sandbox; WSL setup could not complete",
     "Merge/register the manual Actions workflow and run baseline; paid model job awaits dedicated ANTHROPIC_API_KEY",
-    "Additional product-specific failure and full Teams feature-integration exercises beyond the documented smoke scope",
     "Not merged, deployed, imported or published"
   ],
   "environment_notes": [

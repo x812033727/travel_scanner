@@ -11,6 +11,7 @@ slugs={e['number']:e['slug'] for e in manifest['entries']};slugs[0]=manifest['hu
 paths={ROOT/'apps/api/app/guides/series_data/claude-code.json',ROOT/'docs/claude-code-series/source-checks.json'}
 paths.add(ROOT/'.github/workflows/claude-tutorial-validation.yml')
 if (DOC/'evidence/live/capstone-result.zip').exists():paths.add(DOC/'evidence/live/capstone-result.zip')
+if (DOC/'evidence/live/team-feature-result.zip').exists():paths.add(DOC/'evidence/live/team-feature-result.zip')
 for number in owned:
     paths.add(ROOT/f'apps/api/app/guides/content/{slugs[number]}.json')
     paths.add(ROOT/f'docs/claude-code-series/lessons/{number:02d}.md')

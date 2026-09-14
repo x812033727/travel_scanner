@@ -123,6 +123,17 @@ readme=readme.replace('補驗：整站前端','較早來源快照的本機補驗
 if (DOC/'evidence/live/post-main-checks.json').exists():
     readme=readme.replace('## 驗證狀態\n','## 驗證狀態\n\n同步 main 後，Node.js 24.15.0 的建置、lint、i18n、型別、52 項工具測試、Ruff 與 mypy 通過；9 類瀏覽器案例重跑通過。相關前端共 73 項斷言通過：第一輪有工作程序逾時，缺少的 23 項以 forks 單獨補跑。API 本次 18 通過、12 項 PostgreSQL 跳過，完整資料庫紀錄屬較早快照。[目前檢查與失敗重試紀錄](evidence/live/post-main-checks.json)。\n')
 readme=readme.replace('需要 Node.js 22 以上與已安裝的網站依賴','需要符合儲存庫依賴的 Node.js 版本與已安裝的網站依賴（本次使用 24.15.0）')
+release_path=DOC/'evidence/live/release-state.json'
+if release_path.exists():
+    release=json.loads(release_path.read_text(encoding='utf-8'))
+    pr=release['pull_request']
+    state=f'[PR #{pr["number"]}]({pr["url"]})：'+('已合併' if pr['merged'] else '審查中')
+    readme=re.sub(r'\| 發布 \|[^\n]+',f'| 發布 | {state}；正式部署、資料庫匯入與公開發布未執行 |',readme)
+    actions=release.get('baseline_workflow')
+    if actions:
+        readme=re.sub(r'\| GitHub Actions \|[^\n]+',f'| GitHub Actions | [基礎工作流程]({actions["url"]})：{actions["conclusion"]}，run_model=false；模型 job 未執行，不能當作模型審查通過。詳見[執行與設定](github-actions-validation.md) |',readme)
+if live.get('teams_feature',{}).get('passed'):
+    readme=readme.replace('僅驗證所列範圍，未宣稱完整雙角色功能開發','另完成第 89 篇雙角色功能、阻塞回報、契約決策、文案變更及最終測試／瀏覽器驗收，見 [Teams 完整實作](evidence/live/team-feature-validation.json)')
 readme=readme.replace('Claude 帳號及外部環境的實測仍有待辦','部分裝置及外部環境實測仍有待辦')
 (DOC/'README.md').write_text(readme.replace('预覽','預覽'),encoding='utf-8')
 brief=DOC/'lesson-briefs.md'
@@ -189,6 +200,10 @@ if live.get('cli',{}).get('passed'):
     source_text=source_text.replace('仍缺 claude-lab 環境與 Anthropic CI 憑證','claude-lab 已建立並限制 main，仍缺 Anthropic CI 憑證')
     if live.get('extra_boundaries',{}).get('passed'):
         source_text+='\n補驗六項：規則衝突、Skill 資料材料選用／缺檔、Hook 執行失敗、真正 MCP 不可信輸出與無效參數。手動輸入斜線 Skill 會直接展開，不以缺少另一筆 Skill 工具呼叫判成失敗；判讀修正與原始結果均保留。\n'
+    if live.get('teams_feature',{}).get('passed'):
+        source_text=source_text.replace('完整 UI 團隊整合與 Bash sandbox 仍未通過','第 89 篇雙角色功能整合已另補測通過；Bash sandbox 仍未通過')
+    if live.get('headless_boundary',{}).get('passed'):
+        source_text+='\nCLI 自動更新後，另以 2.1.270 驗證一回合上限：真實 -p 執行退出 1，回傳 error_max_turns/is_error=true；保持錯誤結果，未當成空白成功。新舊版本的結果分開保存。\n'
     source_path.write_text(source_text,encoding='utf-8')
 text=base.read_text(encoding='utf-8')
 notice='> 第二階段已新增 36 篇，現在可預覽 97 頁；請見[深入教學交付目錄](advanced/README.md)。下列 60／61 篇與驗證數量保留第一階段的歷史紀錄。\n\n'

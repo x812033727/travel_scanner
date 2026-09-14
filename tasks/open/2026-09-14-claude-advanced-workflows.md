@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-claude-advanced-workflows
 title: Claude Code 進階：協作與自動化十篇
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-claude-completion

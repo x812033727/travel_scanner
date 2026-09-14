@@ -15,6 +15,7 @@ LAB=Path(__file__).parent/'lab'
 DEST=ROOT/'apps/web/public/tutorials/claude-code/advanced'
 PLAN=json.loads((ROOT/'docs/claude-code-series/advanced/curriculum.json').read_text(encoding='utf-8'))
 EXCLUDE={'node_modules','run-data','.git','__pycache__'}
+TEXT_SUFFIXES={'.md','.json','.js','.mjs','.css','.html','.txt','.yaml','.yml','.diff','.csv','.ps1','.sh','.svg'}
 
 def sources():
     result={}
@@ -30,7 +31,12 @@ def archive(path,members):
         for name,body in sorted(members.items()):
             info=zipfile.ZipInfo(name,(2026,9,14,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED
             info.external_attr=0o100644<<16
-            output.writestr(info,body.encode('utf-8') if isinstance(body,str) else body)
+            data=body.encode('utf-8') if isinstance(body,str) else body
+            # Git may check these sources out as CRLF on Windows. Canonical LF
+            # keeps the same reviewed text and ZIP bytes on Windows and Linux.
+            if Path(name).suffix in TEXT_SUFFIXES or Path(name).name in {'.gitignore','.gitattributes'}:
+                data=data.replace(b'\r\n',b'\n')
+            output.writestr(info,data)
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--only',nargs='*',type=int);args=parser.parse_args()

@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-claude-advanced-pilots
 title: Claude Code 進階：六篇完整試作
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-claude-completion

@@ -182,7 +182,9 @@ test('advanced TDD lesson reproduces the bug and the identical authored assertio
 test('all advanced archives contain the authored lesson and installed reference materials', () => {
   for (let number = 61; number <= 96; number++) temporaryExercise(directory => {
     extractArchive(`advanced/lesson-${number}`, directory);
-    assert.equal(readFileSync(path.join(directory, 'article.md'), 'utf8'), readFileSync(path.join(root, `docs/claude-code-series/lessons/${number}.md`), 'utf8'));
+    const article = readFileSync(path.join(directory, 'article.md'), 'utf8');
+    assert.doesNotMatch(article, /\r/u, 'downloaded articles use canonical LF on every platform');
+    assert.equal(article, readFileSync(path.join(root, `docs/claude-code-series/lessons/${number}.md`), 'utf8').replaceAll('\r\n', '\n'));
     assert.equal(JSON.parse(readFileSync(path.join(directory, 'lesson.json'), 'utf8')).number, number);
     for (const variant of ['starter', 'reference']) assert.ok(existsSync(path.join(directory, variant, 'package-lock.json')));
     if (number === 87) for (const role of ['data-reviewer', 'ui-reviewer']) assert.ok(existsSync(path.join(directory, 'reference/.claude/agents', `${role}.md`)));

@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-claude-advanced-integration
 title: Claude Code 進階：96 篇目錄與內容工具整合
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-claude-completion

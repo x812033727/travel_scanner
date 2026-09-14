@@ -23,11 +23,12 @@ scope:
 ## Definition of done
 
 - [x] 使用內建瀏覽器完成 CLI 重新授權，61、67、73、79、91 五個主流程全部通過
-- [ ] 補完五篇的 Claude 故障情境，不能用主流程通過代替
+- [x] 五篇各有實際故障／邊界案例（規則衝突、缺參數、Hook 失敗、MCP 失敗、CLI 回合上限），只宣稱所列情境
 - [x] 子目錄規則、Read 拒絕、Skill 缺參數／自動選用、Hook Write 拒絕、MCP 啟動失敗、只讀子代理七個案例通過
 - [x] 規則衝突、Skill 附屬材料／缺檔、Hook 故障、MCP 無效參數及不可信輸出
 - [x] 互動式 Teams：兩位具名隊友、任務分派、訊息回覆與後續訊息接續
-- [ ] 支援平台 Bash sandbox 與第 89 篇完整雙角色功能整合（已有讀檔／訊息實測）
+- [x] 第 89 篇完整雙角色功能整合、受控阻塞／決策、文案更新、10 項專案與 3 項獨立斷言、內建瀏覽器驗收
+- [ ] 支援平台 Bash sandbox
 - [ ] 第 81 篇取得測試 MCP HTTP／OAuth 服務，完成授權、操作、撤銷與恢復
 - [ ] 第 90 篇在真實手機與電腦完成接續、斷線、休眠及恢復測試
 - [ ] 第 92 篇在明確授權的測試儲存庫執行 GitHub Actions，保存 run URL、輸入與產物；不在正式儲存庫任意觸發
@@ -80,3 +81,7 @@ SDK runner v2 已改為串流輸入，真實 PTY 在首段輸出後送出 Ctrl+C
 目前外部阻塞：claude-lab 已建立並限制 main，但沒有 ANTHROPIC_API_KEY；真實手機未提供；真實遠端 MCP OAuth 服務未提供。Remote Control 本機已啟動，瀏覽器可見歷史，但要求 device_key_missing 的裝置重新驗證，Google 登入沒有跳轉，未送出遠端操作。WSL 設定期間連唯讀 process list 也無回應，僅停止本次 Windows WSL 客戶端，未 shutdown 共用 WSL；安裝結果未知，不算 sandbox 通過。
 
 主分支已同步至 8c83e90a，先前全套前端／PostgreSQL 證據保留為歷史快照；本次採用官方 SHA 驗證的 Node 24.15.0 更新依賴並重驗，CI／PR 狀態另記。正式部署、匯入和公開均未執行。
+
+2026-09-14 PR #501 已建立，完成 Teams 功能實作與 CLI error_max_turns 補驗，版本因自動更新為 2.1.270；較早 2.1.233 結果保留。Teams 同兩位角色依範圍修改，實際回報阻塞後更新未知 mode 契約及指定文案。10 項專案測試、3 項獨立斷言及內建瀏覽器功能／360px 畫面通過，工作階段和測試伺服器已停止；見 team-feature-validation.json。
+
+CI 找到 Windows 封裝 CRLF 與 Linux Git 原稿 LF 的差異；已修正產生器為文字 LF，保留二進位內容，重新製作 42 ZIP 並補回歸驗證。這是封裝一致性修正，真實 Teams 原始 starter 與新版 starter 經換行正規化完全一致。CI 尚待最終提交完成，不能把初版 web 失敗算通過。

@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-claude-code-advanced-curriculum
 title: Claude Code 深入教學第二階段：課程與驗收規劃
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-claude-completion
-claimed_at: 2026-09-14T14:22:53Z
+claimed_at: 2026-09-14T14:58:17Z
 created_at: 2026-09-14T11:02:28Z
 completed_at:
 branch: codex/claude-code-advanced-tutorials

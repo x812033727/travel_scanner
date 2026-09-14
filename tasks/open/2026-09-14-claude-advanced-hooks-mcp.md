@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-claude-advanced-hooks-mcp
 title: Claude Code 進階：Hooks 與 MCP 十篇
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-claude-completion

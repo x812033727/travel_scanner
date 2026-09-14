@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-claude-tutorial-ci-validation
 title: Claude tutorial GitHub Actions validation workflow
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: codex-claude-completion

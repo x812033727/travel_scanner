@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-claude-advanced-labs
 title: Claude Code 進階：六組材料與 36 份練習快照
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-claude-completion

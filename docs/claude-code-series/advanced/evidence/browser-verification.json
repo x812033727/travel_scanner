@@ -44,7 +44,7 @@
     {
       "title": "preview download links stay local and serve the exact reviewed ZIP bytes",
       "status": "passed",
-      "source": "browser-main-retry.json"
+      "source": "browser-lf-download.json"
     }
   ],
   "attempts": [
@@ -142,6 +142,11 @@
       "title": "preview download links stay local and serve the exact reviewed ZIP bytes",
       "status": "passed",
       "source": "browser-main-retry.json"
+    },
+    {
+      "title": "preview download links stay local and serve the exact reviewed ZIP bytes",
+      "status": "passed",
+      "source": "browser-lf-download.json"
     }
   ],
   "note": "Historical search alias correction retained. Post-main first attempt could not launch the old browser revision; matching Chromium was installed before rerunning. Device sizes are browser emulation, not real phones."
