@@ -1,11 +1,11 @@
 """Execute authored reference examples; never call a model or alter user settings."""
-from datetime import datetime, timezone
-from hashlib import sha256
 import json
-from pathlib import Path
 import re
 import subprocess
 import tempfile
+from datetime import datetime, timezone
+from hashlib import sha256
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 AUTHORS = ROOT / "docs/codex-learning/deep/modules"
@@ -21,7 +21,7 @@ def samples(number, language):
 def run(directory, args, expected_exit=0):
     if args[0] == "--test":
         args = ["--test-reporter=tap", *args]
-    result = subprocess.run(["node", *args], cwd=directory, capture_output=True, encoding="utf-8")
+    result = subprocess.run(["node", *args], cwd=directory, capture_output=True, encoding="utf-8", check=False)
     assert result.returncode == expected_exit, result.stdout + result.stderr
     return result.stdout
 
@@ -55,7 +55,7 @@ with tempfile.TemporaryDirectory(prefix="codex-session-plan-") as temp:
         lambda _: samples(8, "javascript")[0].rstrip("\n"),
         original,
         count=1,
-        flags=re.S,
+        flags=re.DOTALL,
     )
     assert count == 1
     (plan / "core.mjs").write_bytes(updated.encode("utf-8"))
@@ -107,15 +107,15 @@ assert.deepEqual(input.map(x=>x.title),['Read','Build']);
     sample = samples(17, "javascript")[0]
     (models / "sample.mjs").write_bytes(sample.encode())
     run(models, ["--input-type=module", "-e",
-        "import assert from 'node:assert/strict';import {completedTitles,sample} from './sample.mjs';"
+        ("import assert from 'node:assert/strict';import {completedTitles,sample} from './sample.mjs';"
         "const before=JSON.stringify(sample);assert.deepEqual(completedTitles(sample),['Build']);"
-        "assert.deepEqual(completedTitles([]),[]);assert.equal(JSON.stringify(sample),before);"])
+        "assert.deepEqual(completedTitles([]),[]);assert.equal(JSON.stringify(sample),before);")])
     checks.append("17: exact faulty sample returns Build; empty input and nonmutation verified")
     (models / "sample.mjs").write_bytes(sample.replace("!task.completed", "task.completed").encode())
     run(models, ["--input-type=module", "-e",
-        "import assert from 'node:assert/strict';import {completedTitles,sample} from './sample.mjs';"
+        ("import assert from 'node:assert/strict';import {completedTitles,sample} from './sample.mjs';"
         "const before=JSON.stringify(sample);assert.deepEqual(completedTitles(sample),['Read']);"
-        "assert.deepEqual(completedTitles([]),[]);assert.equal(JSON.stringify(sample),before);"])
+        "assert.deepEqual(completedTitles([]),[]);assert.equal(JSON.stringify(sample),before);")])
     checks.append("17: stated one-character repair returns Read and preserves empty/input behavior")
 
     sessions = lab / "sessions"
@@ -140,7 +140,7 @@ assert.deepEqual(input.map(x=>x.title),['Read','Build']);
 
     feature = lab / "feature"
     fixture(feature, "start")
-    feature_test, feature_fix = samples(47, "javascript")
+    feature_test, feature_fix, feature_negative = samples(47, "javascript")
     (feature / "filter.test.mjs").write_bytes(feature_test.encode())
     initial = hashes(feature)
     result = run(feature, ["--test", "core.test.mjs", "filter.test.mjs"], 1)
@@ -150,7 +150,7 @@ assert.deepEqual(input.map(x=>x.title),['Read','Build']);
     source_text = source_bytes.decode().replace("\r\n", "\n")
     fixed, count = re.subn(
         r"export function visibleTasks\(tasks, filter\) \{.*?\n\}",
-        lambda _: feature_fix.rstrip("\n"), source_text, count=1, flags=re.S,
+        lambda _: feature_fix.rstrip("\n"), source_text, count=1, flags=re.DOTALL,
     )
     assert count == 1
     (feature / "core.mjs").write_bytes(fixed.encode())
@@ -158,6 +158,18 @@ assert.deepEqual(input.map(x=>x.title),['Read','Build']);
     assert "# pass 6" in result and "# fail 0" in result
     assert [k for k, v in hashes(feature).items() if initial[k] != v] == ["core.mjs"]
     checks.append("47: literal repair passes all six tests including duplicate-title identity and frozen inputs")
+    fixed_bytes = (feature / "core.mjs").read_bytes()
+    correct_line = b'if (filter === "completed") return tasks.filter((task) => task.completed);'
+    assert fixed_bytes.count(correct_line) == 1
+    (feature / "core.mjs").write_bytes(fixed_bytes.replace(correct_line, feature_negative.strip().encode()))
+    result = run(feature, ["--test", "core.test.mjs", "filter.test.mjs"], 1)
+    assert "# pass 5" in result and "# fail 1" in result
+    assert "# pass 3" in run(feature, ["--test", "core.test.mjs"])
+    checks.append("47: authored title-deduplication defect loses ID c; added tests reject it while the original three still pass")
+    (feature / "core.mjs").write_bytes(fixed_bytes)
+    assert "# pass 6" in run(feature, ["--test", "core.test.mjs", "filter.test.mjs"])
+    assert [k for k, v in hashes(feature).items() if initial[k] != v] == ["core.mjs"]
+    checks.append("47: restore from the repaired copy recovers six passes without changing either test file")
     (feature / "core.mjs").write_bytes(source_bytes)
     assert hashes(feature) == initial
     assert "# fail 2" in run(feature, ["--test", "core.test.mjs", "filter.test.mjs"], 1)
@@ -166,17 +178,37 @@ assert.deepEqual(input.map(x=>x.title),['Read','Build']);
     codebase = lab / "codebase"
     fixture(codebase, "expected")
     original_hashes = hashes(codebase)
-    (codebase / "project-map.md").write_bytes(samples(46, "markdown")[0].encode())
+    (codebase / "project-map.md").write_bytes("\n".join(samples(46, "markdown")).encode())
     assert "# pass 3" in run(codebase, ["--test", "core.test.mjs"])
     assert all(hashes(codebase)[name] == digest for name, digest in original_hashes.items())
     checks.append("46: exact map is an added document; expected reference still passes three tests unchanged")
 
+    projects = lab / "projects"
+    projects.mkdir()
+    project_note, project_request, _, _, _, other_note, _ = samples(13, "text")
+    for name, note in [("codex-project-lab", project_note), ("codex-project-other", other_note)]:
+        (projects / name).mkdir()
+        (projects / name / "note.txt").write_bytes(note.encode())
+    first_note = projects / "codex-project-lab/note.txt"
+    other_path = projects / "codex-project-other/note.txt"
+    request_path = projects / "codex-project-lab/request.txt"
+    request_path.write_bytes(project_request.encode())
+    first_note.write_bytes(project_note.replace("Revision: 1", "Revision: 2").encode())
+    assert "PROJECT-LAB\nRevision: 2\nCurrent title: Small Steps" in first_note.read_text()
+    assert other_path.read_text() == "PROJECT-OTHER\nRevision: 100\nCurrent title: Other Steps\n"
+    assert request_path.read_text() == project_request
+    first_note.write_bytes(project_note.encode())
+    assert first_note.read_text() == project_note and other_path.read_text() == other_note
+    checks.append("13: exact same-filename project fixtures distinguish revisions 2 and 100; scoped restore preserves the other project")
+
     debugging = lab / "debugging"
     fixture(debugging, "broken")
-    repro, repaired_line = samples(20, "javascript")
+    repro, repaired_line, regression = samples(20, "javascript")
     (debugging / "repro.mjs").write_bytes(repro.encode())
+    (debugging / "regression.mjs").write_bytes(regression.encode())
     assert 'Completed IDs: ["b"]' in run(debugging, ["repro.mjs"], 1)
     assert "# pass 2" in run(debugging, ["--test", "core.test.mjs"], 1)
+    run(debugging, ["regression.mjs"], 1)
     before = hashes(debugging)
     source_bytes = (debugging / "core.mjs").read_bytes()
     source_text = source_bytes.decode().replace("\r\n", "\n")
@@ -188,11 +220,14 @@ assert.deepEqual(input.map(x=>x.title),['Read','Build']);
     output = run(debugging, ["repro.mjs"])
     assert 'Completed IDs: ["a"]' in output and "Reproduction passed." in output
     assert "# pass 3" in run(debugging, ["--test", "core.test.mjs"])
+    assert "Regression passed." in run(debugging, ["regression.mjs"])
     assert [k for k, v in hashes(debugging).items() if before[k] != v] == ["core.mjs"]
     checks.append("20: authored minimal repro fails with b and passes with a after only the stated repair")
+    checks.append("20: exact standalone regression fails before repair and passes uncompleting, empty-list and frozen-input checks after repair")
     (debugging / "core.mjs").write_bytes(source_bytes)
     assert hashes(debugging) == before
     assert 'Completed IDs: ["b"]' in run(debugging, ["repro.mjs"], 1)
+    run(debugging, ["regression.mjs"], 1)
     checks.append("20: scoped restoration reproduces the original bug with unchanged reproduction and tests")
 
 report = {
@@ -204,7 +239,7 @@ report = {
         "Permission commands checked structurally only; OS sandbox behavior requires separate evidence.",
         "Filter matrix is a function-level check; UI testing is separately recorded.",
     ],
-    "moduleHashes": {f"{i:02d}": sha256((AUTHORS / f"{i:02d}.json").read_bytes()).hexdigest() for i in [8, 17, 18, 20, 22, 45, 46, 47]},
+    "moduleHashes": {f"{i:02d}": sha256((AUTHORS / f"{i:02d}.json").read_bytes()).hexdigest() for i in [8, 13, 17, 18, 20, 22, 45, 46, 47]},
     "checks": checks,
 }
 (ROOT / "docs/codex-learning/evidence/session-plan-practice.json").write_text(

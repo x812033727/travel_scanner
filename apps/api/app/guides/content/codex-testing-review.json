@@ -74,7 +74,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "終端機：Review 分支與基準",
           "language": "sh",
           "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
         },
@@ -84,7 +84,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "終端機：觀察原測試的缺口",
           "language": "sh",
           "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
         },
@@ -94,8 +94,41 @@
           "text": "步驟 2：選對 Review 範圍"
         },
         {
-          "type": "paragraph",
-          "text": "桌面版開啟本 Git 專案，在 review 面板先看未暫存差異，再於輸入框輸入 /review，選 Review uncommitted changes。CLI 也在 Codex 互動輸入框使用 /review 並選未提交修改；不是把 /review 打在系統 shell。此處還沒 commit，所以只審某個已提交版本會漏掉剛剛的 reverse。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "桌面版開啟本 Git 專案，先在 Review 面板選 Unstaged，確認看到剛改的 core.mjs，再於 Codex 輸入框使用 /review，核對所選差異。CLI 則在互動輸入框使用 /review，選 Review uncommitted changes；不要把 /review 打在系統 shell。此處還沒 commit，只審某個已提交版本會漏掉 reverse。入口與範圍依"
+            },
+            {
+              "type": "link",
+              "text": "官方 Code review 文件",
+              "url": "https://learn.chatgpt.com/docs/code-review"
+            },
+            {
+              "type": "text",
+              "text": "核對。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "桌面版另有 Staged、Commit、Branch、Last turn，不能把 Last turn 當整個分支。CLI 的未提交審查包含已暫存、未暫存與未追蹤內容，範圍比單看 git diff 更廣。Review 面板也可能呈現你或其他任務留下的改動；多 repository 時先核對選取的庫。若同一檔案既有 staged 又有 unstaged，依"
+            },
+            {
+              "type": "article",
+              "text": "Git 篇的 MM 練習",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "分別查看，再說明這次要審哪部分。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -103,7 +136,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Codex 提示詞：唯讀 Review",
           "language": "text",
           "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
         },
@@ -122,13 +155,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "新增檔案：review.test.mjs",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "終端機：執行完整回歸",
           "language": "sh",
           "code": "node --test core.test.mjs review.test.mjs\n"
         },
@@ -147,13 +180,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "終端機：提交最終測試差異",
           "language": "sh",
           "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "文件範本：PR 標題與說明",
           "language": "markdown",
           "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
         },
@@ -163,13 +196,46 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "終端機範本：先替換遠端網址再推送",
           "language": "text",
           "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
         },
         {
           "type": "paragraph",
           "text": "在 GitHub 的 Pull requests 選 New pull request，base 選 main、compare 選 codex/review-lab，檢查 Files changed 只有測試，再貼上整理好的標題與說明，選 Create pull request；仍要討論可用 draft 狀態。沒有設定 CI 的練習庫不會憑空出現測試檢查，有 CI 時要核對它檢查的是目前 head。這一步可先停在 PR，合併與部署各自依專案流程處理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讓測試紀錄對應到最後版本"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成本機提交後，暫停其他會改這個練習庫的任務，逐行執行下列命令。前後 HEAD 應相同、status 應乾淨、分支應為 codex/review-lab、main...HEAD 應只有 review.test.mjs，測試應 5 過 0 敗且沒有跳過項目。把實際 SHA 和輸出附在交付紀錄。HEAD 相同但檔案還有修改時，測試其實包含未提交內容，不能把結果全算到那個 commit 上。"
+        },
+        {
+          "type": "code",
+          "label": "終端機：核對受測版本與最終差異",
+          "language": "sh",
+          "code": "git branch --show-current\ngit rev-parse HEAD\ngit status --short --untracked-files=all\ngit diff --name-only main...HEAD\nnode --test core.test.mjs review.test.mjs\ngit rev-parse HEAD\ngit status --short --untracked-files=all\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "依 "
+            },
+            {
+              "type": "link",
+              "text": "Git diff 官方說明",
+              "url": "https://git-scm.com/docs/git-diff"
+            },
+            {
+              "type": "text",
+              "text": "，main...HEAD 從兩者共同祖先比較到 HEAD；它不會把尚未提交的修改算進去。因此新增 review.test.mjs 但還沒 git add 時，普通 diff 可能空白，仍要看 status 並開檔審查。這裡使用本機 main；正式 PR 要核對實際 base、head 和該 head 的 CI。看到 skipped、cancelled 或測試尚未完成，都分開記錄，不以綠色圖示取代檢查範圍。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -322,7 +388,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "终端机：Review 分支与基准",
           "language": "sh",
           "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
         },
@@ -332,7 +398,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "终端机：观察原测试的缺口",
           "language": "sh",
           "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
         },
@@ -342,8 +408,41 @@
           "text": "步骤 2：选对 Review 范围"
         },
         {
-          "type": "paragraph",
-          "text": "桌面版开启本 Git 专案，在 review 面板先看未暂存差异，再于输入框输入 /review，选 Review uncommitted changes。CLI 也在 Codex 互动输入框使用 /review 并选未提交修改；不是把 /review 打在系统 shell。此处还没 commit，所以只审某个已提交版本会漏掉刚刚的 reverse。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "桌面版开启本 Git 专案，先在 Review 面板选 Unstaged，确认看到刚改的 core.mjs，再于 Codex 输入框使用 /review，核对所选差异。CLI 则在互动输入框使用 /review，选 Review uncommitted changes；不要把 /review 打在系统 shell。此处还没 commit，只审某个已提交版本会漏掉 reverse。入口与范围依"
+            },
+            {
+              "type": "link",
+              "text": "官方 Code review 文件",
+              "url": "https://learn.chatgpt.com/docs/code-review"
+            },
+            {
+              "type": "text",
+              "text": "核对。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "桌面版另有 Staged、Commit、Branch、Last turn，不能把 Last turn 当整个分支。CLI 的未提交审查包含已暂存、未暂存与未追踪内容，范围比单看 git diff 更广。Review 面板也可能呈现你或其他任务留下的改动；多 repository 时先核对选取的库。若同一档案既有 staged 又有 unstaged，依"
+            },
+            {
+              "type": "article",
+              "text": "Git 篇的 MM 练习",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "分别查看，再说明这次要审哪部分。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -351,7 +450,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Codex 提示词：唯读 Review",
           "language": "text",
           "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
         },
@@ -370,13 +469,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "新增档案：review.test.mjs",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "终端机：执行完整回归",
           "language": "sh",
           "code": "node --test core.test.mjs review.test.mjs\n"
         },
@@ -395,13 +494,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "终端机：提交最终测试差异",
           "language": "sh",
           "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "文件范本：PR 标题与说明",
           "language": "markdown",
           "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
         },
@@ -411,13 +510,46 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "终端机范本：先替换远端网址再推送",
           "language": "text",
           "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
         },
         {
           "type": "paragraph",
           "text": "在 GitHub 的 Pull requests 选 New pull request，base 选 main、compare 选 codex/review-lab，检查 Files changed 只有测试，再贴上整理好的标题与说明，选 Create pull request；仍要讨论可用 draft 状态。没有设定 CI 的练习库不会凭空出现测试检查，有 CI 时要核对它检查的是目前 head。这一步可先停在 PR，合并与部署各自依专案流程处理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "让测试纪录对应到最后版本"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成本机提交后，暂停其他会改这个练习库的任务，逐行执行下列命令。前后 HEAD 应相同、status 应干净、分支应为 codex/review-lab、main...HEAD 应只有 review.test.mjs，测试应 5 过 0 败且没有跳过项目。把实际 SHA 和输出附在交付纪录。HEAD 相同但档案还有修改时，测试其实包含未提交内容，不能把结果全算到那个 commit 上。"
+        },
+        {
+          "type": "code",
+          "label": "终端机：核对受测版本与最终差异",
+          "language": "sh",
+          "code": "git branch --show-current\ngit rev-parse HEAD\ngit status --short --untracked-files=all\ngit diff --name-only main...HEAD\nnode --test core.test.mjs review.test.mjs\ngit rev-parse HEAD\ngit status --short --untracked-files=all\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "依 "
+            },
+            {
+              "type": "link",
+              "text": "Git diff 官方说明",
+              "url": "https://git-scm.com/docs/git-diff"
+            },
+            {
+              "type": "text",
+              "text": "，main...HEAD 从两者共同祖先比较到 HEAD；它不会把尚未提交的修改算进去。因此新增 review.test.mjs 但还没 git add 时，普通 diff 可能空白，仍要看 status 并开档审查。这里使用本机 main；正式 PR 要核对实际 base、head 和该 head 的 CI。看到 skipped、cancelled 或测试尚未完成，都分开记录，不以绿色图示取代检查范围。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -570,7 +702,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Terminal: review branch and baseline",
           "language": "sh",
           "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
         },
@@ -580,7 +712,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Terminal: observe the original coverage gap",
           "language": "sh",
           "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
         },
@@ -590,8 +722,41 @@
           "text": "Step 2: Select the correct review scope"
         },
         {
-          "type": "paragraph",
-          "text": "In desktop, open this Git project and inspect unstaged changes in the review pane, then use /review → Review uncommitted changes. In CLI, use /review inside Codex and choose uncommitted changes, not in the system shell. Reviewing an older commit would miss the uncommitted reverse edit."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "In the desktop app, open this Git project and choose Unstaged in the Review pane. Confirm the edited core.mjs appears, then use /review in the Codex composer and check the selected diff. In the CLI interactive composer, use /review and choose Review uncommitted changes; do not enter it in the system shell. Nothing is committed yet, so reviewing a commit would miss reverse. See the "
+            },
+            {
+              "type": "link",
+              "text": "official Code review documentation",
+              "url": "https://learn.chatgpt.com/docs/code-review"
+            },
+            {
+              "type": "text",
+              "text": " for surfaces and scopes."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The app also offers Staged, Commit, Branch and Last turn; Last turn is not the whole branch. CLI uncommitted review includes staged, unstaged and untracked content, broader than git diff alone. The Review pane may include edits from you or other tasks; select the correct repository in a multi-repository project. For a file with staged and unstaged changes, inspect both using the "
+            },
+            {
+              "type": "article",
+              "text": "Git lesson's MM exercise",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": ", then specify which part to review."
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -599,7 +764,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Codex prompt: read-only review",
           "language": "text",
           "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
         },
@@ -618,13 +783,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "New file: review.test.mjs",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Terminal: run the full regression set",
           "language": "sh",
           "code": "node --test core.test.mjs review.test.mjs\n"
         },
@@ -643,13 +808,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Terminal: commit the final test changes",
           "language": "sh",
           "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Document template: PR title and description",
           "language": "markdown",
           "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
         },
@@ -659,13 +824,46 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Terminal template: replace the remote URL before pushing",
           "language": "text",
           "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
         },
         {
           "type": "paragraph",
           "text": "On GitHub choose Pull requests → New pull request, base main and compare codex/review-lab. Verify Files changed contains only the test, add the title/body and create the PR, using draft if discussion remains. CI appears only if configured; verify checks target the current head. Stop at PR creation and handle merge/deployment through the project's process."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Tie validation to the final version"
+        },
+        {
+          "type": "paragraph",
+          "text": "After the local commit, pause other tasks that could edit this lab and run these commands line by line. Expect the same HEAD before and after, a clean status, branch codex/review-lab, only review.test.mjs in main...HEAD, and five passing tests with none skipped. Attach the actual SHA and output to the delivery record. If HEAD matches but files are modified, the tests include uncommitted content and cannot be attributed solely to that commit."
+        },
+        {
+          "type": "code",
+          "label": "Terminal: verify the tested version and final diff",
+          "language": "sh",
+          "code": "git branch --show-current\ngit rev-parse HEAD\ngit status --short --untracked-files=all\ngit diff --name-only main...HEAD\nnode --test core.test.mjs review.test.mjs\ngit rev-parse HEAD\ngit status --short --untracked-files=all\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "As documented in "
+            },
+            {
+              "type": "link",
+              "text": "Git diff",
+              "url": "https://git-scm.com/docs/git-diff"
+            },
+            {
+              "type": "text",
+              "text": ", main...HEAD compares their common ancestor with HEAD and excludes uncommitted edits. Before git add, the new review.test.mjs may not appear in a plain diff; inspect status and read the file too. This lab uses local main. For a real PR, verify the actual base, head and CI for that head. Record skipped, cancelled and unfinished checks separately instead of relying on a green icon."
+            }
+          ]
         },
         {
           "type": "heading",
@@ -818,7 +1016,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ターミナル：Review 用ブランチと基準",
           "language": "sh",
           "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
         },
@@ -828,7 +1026,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ターミナル：既存テストの不足を確認",
           "language": "sh",
           "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
         },
@@ -838,8 +1036,41 @@
           "text": "手順2：正しい Review 範囲を選ぶ"
         },
         {
-          "type": "paragraph",
-          "text": "Git プロジェクトの未ステージ差分を見て、入力欄 /review で未コミット変更を選びます。CLI も Codex 内で選択し、シェルでは入力しません。既存 commit だけを見ても今回の reverse は含まれません。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "デスクトップアプリでこの Git プロジェクトを開き、Review パネルの Unstaged を選んで変更した core.mjs を確認してから、Codex の入力欄で /review を使い、対象差分を確認します。CLI は対話入力欄で /review を使い、Review uncommitted changes を選択します。システムのシェルには入力しません。まだコミットしていないため、特定コミットの審査では reverse を見落とします。入口と範囲は"
+            },
+            {
+              "type": "link",
+              "text": "公式 Code review 文書",
+              "url": "https://learn.chatgpt.com/docs/code-review"
+            },
+            {
+              "type": "text",
+              "text": "を参照してください。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "アプリには Staged、Commit、Branch、Last turn もあり、Last turn はブランチ全体ではありません。CLI の未コミット審査はステージ済み、未ステージ、未追跡を含み、git diff だけより広い範囲です。Review パネルには自分や別タスクの変更も表示されるため、複数 repository では対象を確認します。同じファイルに両方の変更がある場合は、"
+            },
+            {
+              "type": "article",
+              "text": "Git 篇の MM 練習",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "で別々に確認してから審査範囲を指定します。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -847,7 +1078,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Codex への依頼：読み取り専用 Review",
           "language": "text",
           "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
         },
@@ -866,13 +1097,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "新規ファイル：review.test.mjs",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ターミナル：回帰テスト一式を実行",
           "language": "sh",
           "code": "node --test core.test.mjs review.test.mjs\n"
         },
@@ -891,13 +1122,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ターミナル：最終テスト差分をコミット",
           "language": "sh",
           "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "文書テンプレート：PR のタイトルと説明",
           "language": "markdown",
           "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
         },
@@ -907,13 +1138,42 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ターミナル用テンプレート：リモート URL を置換してから push",
           "language": "text",
           "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
         },
         {
           "type": "paragraph",
           "text": "GitHub で New pull request、base main、compare codex/review-lab を選び、テストだけの差分と説明を確認して作成します。議論中なら draft を使います。CI は設定済みの場合だけで、現在 head の検査か確認します。merge と公開は別工程です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "検証記録を最終版に結び付ける"
+        },
+        {
+          "type": "paragraph",
+          "text": "ローカルコミット後、この練習庫を変更し得る別タスクを止め、次のコマンドを1行ずつ実行します。前後の HEAD は同じ、status はクリーン、ブランチは codex/review-lab、main...HEAD は review.test.mjs のみ、テストは5件通過でスキップなしが期待結果です。実際の SHA と出力を記録します。HEAD が同じでもファイルが変更されていれば、テストは未コミット内容を含むため、そのコミットだけの結果とは言えません。"
+        },
+        {
+          "type": "code",
+          "label": "ターミナル：テスト対象の版と最終差分を確認",
+          "language": "sh",
+          "code": "git branch --show-current\ngit rev-parse HEAD\ngit status --short --untracked-files=all\ngit diff --name-only main...HEAD\nnode --test core.test.mjs review.test.mjs\ngit rev-parse HEAD\ngit status --short --untracked-files=all\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "link",
+              "text": "Git diff 公式説明",
+              "url": "https://git-scm.com/docs/git-diff"
+            },
+            {
+              "type": "text",
+              "text": "のとおり、main...HEAD は共通祖先から HEAD までを比較し、未コミットの変更は含めません。review.test.mjs を新規作成しても git add 前は通常の diff に出ないため、status とファイル自体も確認します。この練習はローカル main を使用します。実際の PR は base、head、その head の CI を確認し、スキップ、中止、未完了を分けて記録します。緑のアイコンだけで確認範囲を判断しません。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1066,7 +1326,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "터미널: Review 브랜치와 기준",
           "language": "sh",
           "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
         },
@@ -1076,7 +1336,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "터미널: 기존 테스트의 빈틈 확인",
           "language": "sh",
           "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
         },
@@ -1086,8 +1346,41 @@
           "text": "2단계: 올바른 Review 범위 선택"
         },
         {
-          "type": "paragraph",
-          "text": "Git 프로젝트의 미스테이지 차이를 보고 입력창 /review에서 미커밋 변경을 고릅니다. CLI도 Codex 내부에서 고르며 셸에 입력하지 않습니다. 기존 commit만 보면 이번 reverse는 포함되지 않습니다."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "데스크톱 앱에서 이 Git 프로젝트를 열고 Review 패널의 Unstaged를 선택해 수정한 core.mjs가 보이는지 확인한 다음 Codex 입력창에서 /review를 사용하고 선택된 차이를 확인합니다. CLI에서는 대화형 입력창에 /review를 입력하고 Review uncommitted changes를 선택합니다. 시스템 셸에 입력하지 마세요. 아직 커밋하지 않았으므로 특정 커밋만 검토하면 reverse를 놓칩니다. 진입점과 범위는 "
+            },
+            {
+              "type": "link",
+              "text": "공식 Code review 문서",
+              "url": "https://learn.chatgpt.com/docs/code-review"
+            },
+            {
+              "type": "text",
+              "text": "를 참고합니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "앱에는 Staged, Commit, Branch, Last turn도 있으며 Last turn은 전체 브랜치가 아닙니다. CLI의 미커밋 검토는 스테이징, 미스테이징, 미추적 내용을 포함하므로 git diff만 보는 것보다 범위가 넓습니다. Review 패널에는 사용자나 다른 작업의 수정도 표시될 수 있으므로 여러 repository가 있으면 대상 저장소를 확인합니다. 같은 파일에 두 상태가 함께 있으면 "
+            },
+            {
+              "type": "article",
+              "text": "Git 안내의 MM 연습",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "처럼 각각 확인하고 검토할 부분을 지정합니다."
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -1095,7 +1388,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Codex 프롬프트: 읽기 전용 Review",
           "language": "text",
           "code": "Review the uncommitted change only. All must preserve task order and must not mutate the input array. Existing tests pass, so inspect their coverage rather than treating that as proof.\nFor each finding, state the file/line, trigger, concrete impact and a verification case. Do not edit, stage, commit or push during this review. If you find no issue, report what you examined and any uncertainty.\n"
         },
@@ -1114,13 +1407,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "새 파일: review.test.mjs",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "터미널: 전체 회귀 테스트 실행",
           "language": "sh",
           "code": "node --test core.test.mjs review.test.mjs\n"
         },
@@ -1139,13 +1432,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "터미널: 최종 테스트 차이 커밋",
           "language": "sh",
           "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "문서 템플릿: PR 제목 및 설명",
           "language": "markdown",
           "code": "Title: Add regression coverage for All filter ordering and input preservation\n\nThe existing filter tests cover Active and Completed but miss All ordering and input mutation. Add two focused cases so a reversing implementation is rejected. Production code is unchanged.\n\nValidation: node --test core.test.mjs review.test.mjs — 5 passed, if actually run.\nThe deliberate reverse variant fails both new tests.\nBrowser checks: NOT RUN in this test-only change unless separately verified.\nDeployment: not performed.\n"
         },
@@ -1155,13 +1448,42 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "터미널 템플릿: 원격 URL 교체 후 push",
           "language": "text",
           "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
         },
         {
           "type": "paragraph",
           "text": "GitHub New pull request에서 base main/compare codex/review-lab을 골라 테스트만의 차이/설명을 확인해 생성합니다. 논의 중이면 draft를 씁니다. CI는 설정했을 때만 있으며 현재 head 검사인지 봅니다. merge/공개는 별도 단계입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "검증 기록을 최종 버전에 연결"
+        },
+        {
+          "type": "paragraph",
+          "text": "로컬 커밋 후 이 연습 저장소를 수정할 수 있는 다른 작업을 멈추고 아래 명령을 한 줄씩 실행합니다. 전후 HEAD가 같고 status는 깨끗하며, 브랜치는 codex/review-lab, main...HEAD에는 review.test.mjs만 있어야 합니다. 테스트는 5개 통과에 건너뜀은 없어야 합니다. 실제 SHA와 출력을 인계 기록에 첨부하세요. HEAD가 같아도 파일이 수정됐다면 테스트에 미커밋 내용이 포함되므로 해당 커밋만의 결과로 볼 수 없습니다."
+        },
+        {
+          "type": "code",
+          "label": "터미널: 테스트 버전과 최종 차이 확인",
+          "language": "sh",
+          "code": "git branch --show-current\ngit rev-parse HEAD\ngit status --short --untracked-files=all\ngit diff --name-only main...HEAD\nnode --test core.test.mjs review.test.mjs\ngit rev-parse HEAD\ngit status --short --untracked-files=all\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "link",
+              "text": "Git diff 공식 설명",
+              "url": "https://git-scm.com/docs/git-diff"
+            },
+            {
+              "type": "text",
+              "text": "처럼 main...HEAD는 공통 조상부터 HEAD까지 비교하며 미커밋 수정은 포함하지 않습니다. review.test.mjs를 새로 만들어도 git add 전에는 일반 diff에 보이지 않을 수 있으므로 status와 파일 자체도 확인합니다. 이 연습은 로컬 main을 사용합니다. 실제 PR에서는 base, head, 해당 head의 CI를 확인하고 건너뜀, 취소, 미완료를 따로 기록합니다. 초록 아이콘만으로 검증 범위를 판단하지 않습니다."
+            }
+          ]
         },
         {
           "type": "heading",

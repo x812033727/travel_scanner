@@ -1,17 +1,19 @@
 """Run the authored Git lesson only in a fresh, isolated temporary repository."""
-from datetime import datetime, timezone
-from hashlib import sha256
 import json
 import os
-from pathlib import Path
 import shlex
 import subprocess
 import tempfile
+from datetime import datetime, timezone
+from hashlib import sha256
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "docs/codex-learning/deep/modules/19.json"
 module = json.loads(SOURCE.read_text(encoding="utf-8"))
 groups = [b["code"] for b in module["blocks"] if b["type"] == "code" and b["language"] == "sh"]
+staged_probe = next(group for group in groups if "git show :index.html" in group)
+groups.remove(staged_probe)
 comment = next(b["code"] for b in module["blocks"] if b["type"] == "code" and b["language"] == "css")
 assert len(groups) == 7
 checks = []
@@ -29,7 +31,7 @@ with tempfile.TemporaryDirectory(prefix="codex-git-lesson-") as directory:
     def command(line):
         args = shlex.split(line)
         assert args[0] == "git"
-        result = subprocess.run(args, cwd=lab, env=env, capture_output=True, encoding="utf-8")
+        result = subprocess.run(args, cwd=lab, env=env, capture_output=True, encoding="utf-8", check=False)
         assert result.returncode == 0, (line, result.stderr)
         executed.append(line)
         return result.stdout
@@ -61,10 +63,24 @@ with tempfile.TemporaryDirectory(prefix="codex-git-lesson-") as directory:
     assert command("git diff --cached --name-only").strip() == "index.html"
     assert command("git diff --name-only").strip() == "style.css"
     checks.append("Staging only index.html excludes and preserves the independent CSS note")
+    latest = b"Compare one useful step."
+    index.write_bytes(index.read_bytes().replace(new, latest))
+    for line in staged_probe.strip().splitlines():
+        command(line)
+    assert "MM index.html" in command("git status --short").splitlines()
+    assert new.decode() in command("git show :index.html")
+    assert latest.decode() not in command("git show :index.html")
+    assert latest.decode() in command("git diff -- index.html")
+    assert latest.decode() not in command("git diff --cached -- index.html")
+    checks.append("19: staged Plan and unstaged Compare coexist; MM and both authored diffs identify different snapshots")
+    command("git restore --worktree -- index.html")
+    assert new in index.read_bytes() and latest not in index.read_bytes()
+    index.write_bytes(index.read_bytes().replace(new, latest))
+    checks.append("19: worktree-only restore before unstaging uses Plan from the index, not the HEAD title")
     restore_lines = groups[4].strip().splitlines()
     command(restore_lines[0])
     assert not command("git diff --cached --name-only").strip()
-    assert new in index.read_bytes()
+    assert latest in index.read_bytes()
     checks.append("Unstage changes only the index and preserves the new title on disk")
     for line in restore_lines[1:]:
         command(line)
@@ -110,9 +126,10 @@ with tempfile.TemporaryDirectory(prefix="codex-review-lesson-") as directory:
 
     def node_tests(files, status, passed, failed):
         result = subprocess.run(["node", "--test-reporter=tap", "--test", *files],
-                                cwd=lab, capture_output=True, encoding="utf-8")
+                                cwd=lab, capture_output=True, encoding="utf-8", check=False)
         assert result.returncode == status, result.stdout + result.stderr
         assert f"# pass {passed}" in result.stdout and f"# fail {failed}" in result.stdout
+        assert "# skipped 0" in result.stdout and "# cancelled 0" in result.stdout
 
     node_tests(["core.test.mjs"], 0, 3, 0)
     checks.append("21: intentionally mutating All change still passes all three original tests")
@@ -131,6 +148,25 @@ with tempfile.TemporaryDirectory(prefix="codex-review-lesson-") as directory:
     assert not command("git status --short").strip()
     assert not command("git remote").strip()
     checks.append("21: final five tests pass and branch diff contains only new regression coverage")
+    validation_group = next(b["code"] for b in review_module["blocks"]
+                            if b["type"] == "code" and b["code"].startswith("git branch --show-current\ngit rev-parse HEAD"))
+    tested_head = command("git rev-parse HEAD").strip()
+    for line in validation_group.strip().splitlines():
+        if line.startswith("node "):
+            node_tests(["core.test.mjs", "review.test.mjs"], 0, 5, 0)
+        else:
+            command(line)
+    assert command("git rev-parse HEAD").strip() == tested_head
+    assert not command("git status --short --untracked-files=all").strip()
+    checks.append("21: exact final validation commands test a clean, unchanged HEAD with only review.test.mjs in the branch diff")
+    core.write_bytes(original_core.replace(target, b"  return tasks.reverse();"))
+    assert command("git rev-parse HEAD").strip() == tested_head
+    assert command("git status --short").strip() == "M core.mjs"
+    node_tests(["core.test.mjs", "review.test.mjs"], 1, 3, 2)
+    core.write_bytes(original_core)
+    node_tests(["core.test.mjs", "review.test.mjs"], 0, 5, 0)
+    assert not command("git status --short").strip()
+    checks.append("21: the same HEAD with an uncommitted reverse fails; scoped restoration recovers five passes and clean status")
 
 report = {
     "checkedAt": datetime.now(timezone.utc).isoformat(),

@@ -84,7 +84,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "終端機：原始測試",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -103,13 +103,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "新增檔案：filter.test.mjs",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "終端機：原始與新增測試",
           "language": "sh",
           "code": "node --test core.test.mjs filter.test.mjs\n"
         },
@@ -128,7 +128,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Codex 提示詞：實作篩選",
           "language": "text",
           "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
         },
@@ -138,7 +138,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "參考修正：core.mjs 的 visibleTasks",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -187,6 +187,29 @@
               "空"
             ]
           ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "反例驗證：全數計數與同名任務"
+        },
+        {
+          "type": "paragraph",
+          "text": "畫面練習中，Read、Build、Read 共三筆，第一和第三筆完成時，All／Active／Completed 的列數分別為 3／1／2，但三種畫面的計數都應是 1 active / 3 total。取消第一筆完成後，三種列數變成 3／2／1，計數都為 2 active / 3 total。app.js 用完整 tasks 計數；只通過核心篩選測試不能證明畫面計數正確，請另記實際結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "六項測試通過後，先把修好的 core.mjs 複製到練習資料夾外保存。在練習版只暫時把 Completed 分支替換成下面的錯誤寫法，再跑原兩個測試檔。它先按完成狀態篩選，再按 title 去重，會遺失 ID c；預期 5 過 1 敗。原三項測試單獨跑仍全過，因為其兩筆資料沒有同名。讀出失敗的實際 ID 後，立刻用剛才保存的修正版恢復 core.mjs，應回到 6 過 0 敗；測試檔保持不變。"
+        },
+        {
+          "type": "code",
+          "label": "故意錯誤：暫時替換 core.mjs 的 Completed 分支",
+          "language": "javascript",
+          "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed).filter((task, index, selected) => selected.findIndex((other) => other.title === task.title) === index);\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若反例沒有失敗，先確認有執行 filter.test.mjs、第三筆仍為不同 ID 的 Read，以及正在測試修改過的副本。若變成語法或找不到模組錯誤，先恢復檔案再核對替換位置；那不是成功抓到去重缺陷。這個反例只檢查測試覆蓋，不需要改 UI 或提交錯誤版本。"
         },
         {
           "type": "heading",
@@ -338,7 +361,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Terminal: original tests",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -357,13 +380,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "New file: filter.test.mjs",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Terminal: original and added tests",
           "language": "sh",
           "code": "node --test core.test.mjs filter.test.mjs\n"
         },
@@ -382,7 +405,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Codex prompt: implement filters",
           "language": "text",
           "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
         },
@@ -392,7 +415,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Reference repair: visibleTasks in core.mjs",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -441,6 +464,29 @@
               "Empty"
             ]
           ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Negative check: full counts and duplicate titles"
+        },
+        {
+          "type": "paragraph",
+          "text": "With Read, Build, Read and the first and third completed, All/Active/Completed display 3/1/2 rows, but all three views should show 1 active / 3 total. After unchecking the first task, the row counts become 3/2/1 and every view shows 2 active / 3 total. app.js counts the full tasks array. Passing core-filter tests does not prove the displayed count; record the actual UI result separately."
+        },
+        {
+          "type": "paragraph",
+          "text": "After all six tests pass, save the repaired core.mjs outside the practice folder. Temporarily replace only its Completed branch with the faulty line below and rerun both test files. It filters by completion, then deduplicates by title, losing ID c: expect five passes and one failure. The original three tests alone still pass because their two tasks have different titles. Read the actual failing IDs, then immediately restore core.mjs from the saved repaired copy; expect six passes and zero failures without changing tests."
+        },
+        {
+          "type": "code",
+          "label": "Deliberate defect: temporarily replace core.mjs Completed branch",
+          "language": "javascript",
+          "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed).filter((task, index, selected) => selected.findIndex((other) => other.title === task.title) === index);\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "If the negative check passes, confirm that filter.test.mjs ran, that the third task is still Read with a distinct ID, and that you tested the edited copy. For a syntax or missing-module error, restore the file and check the replacement location; that is not evidence of detecting deduplication. This exercise checks coverage and requires no UI change or commit of the faulty variant."
         },
         {
           "type": "heading",
@@ -592,7 +638,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ターミナル：既存テスト",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -611,13 +657,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "新規ファイル：filter.test.mjs",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ターミナル：既存・追加テスト",
           "language": "sh",
           "code": "node --test core.test.mjs filter.test.mjs\n"
         },
@@ -636,7 +682,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Codex への依頼：フィルターの実装",
           "language": "text",
           "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
         },
@@ -646,7 +692,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "参考修正：core.mjs の visibleTasks",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -695,6 +741,29 @@
               "空"
             ]
           ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "反例で確認：全体件数と同名タスク"
+        },
+        {
+          "type": "paragraph",
+          "text": "Read、Build、Read の3件で1件目と3件目を完了にすると、All／Active／Completed の表示行は 3／1／2 ですが、件数はすべて 1 active / 3 total です。1件目の完了を解除すると行数は 3／2／1、件数はすべて 2 active / 3 total になります。app.js は tasks 全体を数えます。コアのフィルターテスト通過だけでは画面の件数を証明できないため、実際の UI 結果を別に記録します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "6件通過後、修正済み core.mjs を練習フォルダーの外へコピーして保存します。Completed 分岐だけを次の誤った行に一時置換して、両テストファイルを実行します。完了で絞った後に title で重複排除するため ID c が失われ、5件通過・1件失敗となるはずです。元の3件だけなら、2つのタイトルが異なるため通過します。失敗時の ID を確認したら、保存した修正版で core.mjs を直ちに戻し、テストを変更せず6件通過・0件失敗を確認します。"
+        },
+        {
+          "type": "code",
+          "label": "意図的な欠陥：core.mjs の Completed 分岐を一時置換",
+          "language": "javascript",
+          "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed).filter((task, index, selected) => selected.findIndex((other) => other.title === task.title) === index);\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "反例が通過したら、filter.test.mjs を実行したか、3件目が異なる ID の Read のままか、変更したコピーをテストしたか確認します。構文やモジュール未検出のエラーならファイルを戻して置換位置を確認してください。それは重複排除の欠陥を検出した証拠ではありません。この練習はテスト範囲の確認であり、UI の変更や欠陥版のコミットは不要です。"
         },
         {
           "type": "heading",
@@ -846,7 +915,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "터미널: 기존 테스트",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -865,13 +934,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "새 파일: filter.test.mjs",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "터미널: 기존 및 추가 테스트",
           "language": "sh",
           "code": "node --test core.test.mjs filter.test.mjs\n"
         },
@@ -890,7 +959,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Codex 프롬프트: 필터 구현",
           "language": "text",
           "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
         },
@@ -900,7 +969,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "참고 수정: core.mjs의 visibleTasks",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -949,6 +1018,29 @@
               "비어 있음"
             ]
           ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "반례 확인: 전체 개수와 같은 제목의 작업"
+        },
+        {
+          "type": "paragraph",
+          "text": "Read, Build, Read 세 개 중 첫 번째와 세 번째를 완료하면 All/Active/Completed의 표시 행은 3/1/2지만 개수 표시는 모두 1 active / 3 total이어야 합니다. 첫 번째 완료를 취소하면 행은 3/2/1, 개수 표시는 모두 2 active / 3 total이 됩니다. app.js는 전체 tasks를 셉니다. 핵심 필터 테스트 통과만으로 화면 개수를 검증할 수 없으므로 실제 UI 결과를 별도로 기록합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "여섯 테스트가 통과하면 수정된 core.mjs를 연습 폴더 밖에 복사해 둡니다. Completed 분기만 아래 잘못된 행으로 임시 교체하고 두 테스트 파일을 실행합니다. 완료 상태로 필터링한 뒤 title로 중복을 제거하여 ID c가 사라지므로 5개 통과, 1개 실패가 예상됩니다. 원래 테스트 세 개만 실행하면 두 작업의 제목이 달라 여전히 통과합니다. 실패한 실제 ID를 확인한 뒤 저장한 수정본으로 core.mjs를 즉시 복원하면 테스트 파일을 바꾸지 않고 6개 통과, 0개 실패로 돌아와야 합니다."
+        },
+        {
+          "type": "code",
+          "label": "의도한 오류: core.mjs의 Completed 분기를 임시 교체",
+          "language": "javascript",
+          "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed).filter((task, index, selected) => selected.findIndex((other) => other.title === task.title) === index);\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "반례가 통과하면 filter.test.mjs가 실행됐는지, 세 번째 작업이 다른 ID의 Read인지, 수정한 복사본을 테스트했는지 확인합니다. 구문 또는 모듈 누락 오류라면 파일을 복원하고 교체 위치를 확인하세요. 이는 중복 제거 결함을 잡았다는 증거가 아닙니다. 이 연습은 테스트 범위를 확인하며 UI 수정이나 오류 버전 커밋은 필요하지 않습니다."
         },
         {
           "type": "heading",
@@ -1100,7 +1192,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "终端机：原始测试",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -1119,13 +1211,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "新增档案：filter.test.mjs",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "终端机：原始与新增测试",
           "language": "sh",
           "code": "node --test core.test.mjs filter.test.mjs\n"
         },
@@ -1144,7 +1236,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Codex 提示词：实作筛选",
           "language": "text",
           "code": "Implement the missing filters in this codex-feature-lab.\nRead index.html, app.js, core.mjs, core.test.mjs and filter.test.mjs first.\nModify only visibleTasks in core.mjs: all keeps every task, active returns unfinished tasks, completed returns finished tasks. Preserve original order, IDs and input data. Do not edit tests, add dependencies or change UI/storage.\nRun node --test core.test.mjs filter.test.mjs. Inspect the final diff and report actual results and any unperformed browser checks. Stop and explain if the requested scope cannot satisfy the tests. Do not publish or deploy.\n"
         },
@@ -1154,7 +1246,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "参考修正：core.mjs 的 visibleTasks",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
@@ -1203,6 +1295,29 @@
               "空"
             ]
           ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "反例验证：全数计数与同名任务"
+        },
+        {
+          "type": "paragraph",
+          "text": "画面练习中，Read、Build、Read 共三笔，第一和第三笔完成时，All／Active／Completed 的列数分别为 3／1／2，但三种画面的计数都应是 1 active / 3 total。取消第一笔完成后，三种列数变成 3／2／1，计数都为 2 active / 3 total。app.js 用完整 tasks 计数；只通过核心筛选测试不能证明画面计数正确，请另记实际结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "六项测试通过后，先把修好的 core.mjs 复制到练习资料夹外保存。在练习版只暂时把 Completed 分支替换成下面的错误写法，再跑原两个测试档。它先按完成状态筛选，再按 title 去重，会遗失 ID c；预期 5 过 1 败。原三项测试单独跑仍全过，因为其两笔资料没有同名。读出失败的实际 ID 后，立刻用刚才保存的修正版恢复 core.mjs，应回到 6 过 0 败；测试档保持不变。"
+        },
+        {
+          "type": "code",
+          "label": "故意错误：暂时替换 core.mjs 的 Completed 分支",
+          "language": "javascript",
+          "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed).filter((task, index, selected) => selected.findIndex((other) => other.title === task.title) === index);\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若反例没有失败，先确认有执行 filter.test.mjs、第三笔仍为不同 ID 的 Read，以及正在测试修改过的副本。若变成语法或找不到模组错误，先恢复档案再核对替换位置；那不是成功抓到去重缺陷。这个反例只检查测试覆盖，不需要改 UI 或提交错误版本。"
         },
         {
           "type": "heading",

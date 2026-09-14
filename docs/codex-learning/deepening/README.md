@@ -8,7 +8,7 @@
 
 [系列維護首頁](../README.md) · [完整課程及穩定 ID](../depth-plan.md) · [作者模板](../article-template.md) · [驗收表與六次檢查](review-checklist.md)
 
-已接續 A 至 E 單元補強，見 [A](../evidence/unit-a-depth-review.json)、[B](../evidence/unit-b-depth-review.json)、[C](../evidence/unit-c-depth-review.json)、[D](../evidence/unit-d-depth-review.json)、[E 審核紀錄](../evidence/unit-e-depth-review.json)。含原代表稿累計 31 篇完成定向補強，並非最終驗收通過；其餘 29 篇的規格仍列於下方，下一個補強單元為 F。
+已接續 A 至 F 單元補強，見 [A](../evidence/unit-a-depth-review.json)、[B](../evidence/unit-b-depth-review.json)、[C](../evidence/unit-c-depth-review.json)、[D](../evidence/unit-d-depth-review.json)、[E](../evidence/unit-e-depth-review.json)、[F 審核紀錄](../evidence/unit-f-depth-review.json)。含原代表稿累計 37 篇完成定向補強，並非最終驗收通過；其餘 23 篇的規格仍列於下方，下一個補強單元為 G。
 
 ## 怎麼找
 

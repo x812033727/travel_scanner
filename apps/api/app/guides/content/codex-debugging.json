@@ -70,7 +70,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "終端機：基準測試",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -84,7 +84,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "文件範本：Bug 報告",
           "language": "markdown",
           "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
         },
@@ -99,19 +99,28 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "新增檔案：repro.mjs",
           "language": "javascript",
           "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "終端機：最小重現",
           "language": "sh",
           "code": "node repro.mjs\n"
         },
         {
           "type": "paragraph",
           "text": "現在可以縮小調查：核心函式在沒有瀏覽器的情況下就已回傳錯誤，故障不需要快取或按鈕事件才能發生。這不能證明所有 UI 都正確，但足以先查核心 Completed 分支。請 Codex 用證據解釋「為什麼目前條件選中了未完成任務」，再談修正；不要以一次重新整理偶然正常當根因已找到。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先分辨程式失敗與環境失敗"
+        },
+        {
+          "type": "paragraph",
+          "text": "若 node repro.mjs 顯示 ERR_MODULE_NOT_FOUND，尚未執行到 Completed 斷言，先檢查目前資料夾與 core.mjs 的檔名；若是 SyntaxError，核對是否完整貼上程式。只有程式成功載入，印出 b，接著因期待 a 而失敗，才是此缺陷的重現。反過來，第一輪直接通過也不是你已修好：可能拿到 expected 副本，應回查材料來源。把命令、退出碼、實際輸出及副本位置一起留下，不只記「紅色」或「失敗」。"
         },
         {
           "type": "heading",
@@ -124,7 +133,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Codex 提示詞：限定修正範圍",
           "language": "text",
           "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
         },
@@ -134,7 +143,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "參考修正：Completed 分支",
           "language": "javascript",
           "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
         },
@@ -185,6 +194,46 @@
         {
           "type": "paragraph",
           "text": "最後看 core.mjs 的差異，確認沒有改 addTask、decodeTasks 或測試期待。若對方回報修好了卻沒顯示執行結果，要求命令、退出狀態及失敗摘要；不能執行時就記原因。兩個測試通過也不能取代真正畫面檢查，要由你或具備瀏覽器工具的代理完成，並標明平台與預覽網址。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "補驗取消完成與空清單"
+        },
+        {
+          "type": "paragraph",
+          "text": "原重現已通過後，另建 regression.mjs，貼上下面程式，再執行 node regression.mjs。它先驗證 Completed 的 a，取消 a 的完成狀態後驗證 Completed 為空、Active 保留 a／b，並檢查原輸入未被改動與三種空清單。預期印出 Regression passed，退出碼 0。它是獨立斷言程式，不會把原 node --test core.test.mjs 的測試數自動增加。"
+        },
+        {
+          "type": "code",
+          "label": "檔案：regression.mjs",
+          "language": "javascript",
+          "code": "import assert from \"node:assert/strict\";\nimport { toggleTask, visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n]);\nconst ids = (items, filter) => visibleTasks(items, filter).map((task) => task.id);\nassert.deepEqual(ids(tasks, \"completed\"), [\"a\"]);\nconst changed = toggleTask(tasks, \"a\");\nassert.deepEqual(ids(changed, \"completed\"), []);\nassert.deepEqual(ids(changed, \"active\"), [\"a\", \"b\"]);\nassert.deepEqual(ids(changed, \"all\"), [\"a\", \"b\"]);\nassert.deepEqual(tasks.map((task) => task.completed), [true, false]);\nfor (const filter of [\"all\", \"active\", \"completed\"]) {\n  assert.deepEqual(ids(Object.freeze([]), filter), []);\n}\nconsole.log(\"Regression passed.\");\n"
+        },
+        {
+          "type": "code",
+          "label": "終端機：執行邊界回歸",
+          "language": "sh",
+          "code": "node regression.mjs\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "原 broken/core.mjs 還原練習也保留 regression.mjs；它應再次以非零狀態失敗，與 repro.mjs 的 b 一致。若你另外更動測試、標籤或保存流程才讓結果轉綠，回到保存的原檔重新做單一修正，並在"
+            },
+            {
+              "type": "article",
+              "text": "交接紀錄",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "標示這次被捨棄的假設。完整回歸仍需實際畫面與重載檢查，未做就保留未執行。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -314,7 +363,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "终端机：基准测试",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -328,7 +377,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "文件范本：Bug 报告",
           "language": "markdown",
           "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
         },
@@ -343,19 +392,28 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "新增档案：repro.mjs",
           "language": "javascript",
           "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "终端机：最小重现",
           "language": "sh",
           "code": "node repro.mjs\n"
         },
         {
           "type": "paragraph",
           "text": "现在可以缩小调查：核心函式在没有浏览器的情况下就已回传错误，故障不需要快取或按钮事件才能发生。这不能证明所有 UI 都正确，但足以先查核心 Completed 分支。请 Codex 用证据解释「为什么目前条件选中了未完成任务」，再谈修正；不要以一次重新整理偶然正常当根因已找到。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先分辨程式失败与环境失败"
+        },
+        {
+          "type": "paragraph",
+          "text": "若 node repro.mjs 显示 ERR_MODULE_NOT_FOUND，尚未执行到 Completed 断言，先检查目前资料夹与 core.mjs 的档名；若是 SyntaxError，核对是否完整贴上程式。只有程式成功载入，印出 b，接著因期待 a 而失败，才是此缺陷的重现。反过来，第一轮直接通过也不是你已修好：可能拿到 expected 副本，应回查材料来源。把命令、退出码、实际输出及副本位置一起留下，不只记「红色」或「失败」。"
         },
         {
           "type": "heading",
@@ -368,7 +426,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Codex 提示词：限定修正范围",
           "language": "text",
           "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
         },
@@ -378,7 +436,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "参考修正：Completed 分支",
           "language": "javascript",
           "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
         },
@@ -429,6 +487,46 @@
         {
           "type": "paragraph",
           "text": "最后看 core.mjs 的差异，确认没有改 addTask、decodeTasks 或测试期待。若对方回报修好了却没显示执行结果，要求命令、退出状态及失败摘要；不能执行时就记原因。两个测试通过也不能取代真正画面检查，要由你或具备浏览器工具的代理完成，并标明平台与预览网址。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "补验取消完成与空清单"
+        },
+        {
+          "type": "paragraph",
+          "text": "原重现已通过后，另建 regression.mjs，贴上下面程式，再执行 node regression.mjs。它先验证 Completed 的 a，取消 a 的完成状态后验证 Completed 为空、Active 保留 a／b，并检查原输入未被改动与三种空清单。预期印出 Regression passed，退出码 0。它是独立断言程式，不会把原 node --test core.test.mjs 的测试数自动增加。"
+        },
+        {
+          "type": "code",
+          "label": "档案：regression.mjs",
+          "language": "javascript",
+          "code": "import assert from \"node:assert/strict\";\nimport { toggleTask, visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n]);\nconst ids = (items, filter) => visibleTasks(items, filter).map((task) => task.id);\nassert.deepEqual(ids(tasks, \"completed\"), [\"a\"]);\nconst changed = toggleTask(tasks, \"a\");\nassert.deepEqual(ids(changed, \"completed\"), []);\nassert.deepEqual(ids(changed, \"active\"), [\"a\", \"b\"]);\nassert.deepEqual(ids(changed, \"all\"), [\"a\", \"b\"]);\nassert.deepEqual(tasks.map((task) => task.completed), [true, false]);\nfor (const filter of [\"all\", \"active\", \"completed\"]) {\n  assert.deepEqual(ids(Object.freeze([]), filter), []);\n}\nconsole.log(\"Regression passed.\");\n"
+        },
+        {
+          "type": "code",
+          "label": "终端机：执行边界回归",
+          "language": "sh",
+          "code": "node regression.mjs\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "原 broken/core.mjs 还原练习也保留 regression.mjs；它应再次以非零状态失败，与 repro.mjs 的 b 一致。若你另外更动测试、标签或保存流程才让结果转绿，回到保存的原档重新做单一修正，并在"
+            },
+            {
+              "type": "article",
+              "text": "交接纪录",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "标示这次被舍弃的假设。完整回归仍需实际画面与重载检查，未做就保留未执行。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -558,7 +656,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Terminal: baseline tests",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -572,7 +670,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Document template: bug report",
           "language": "markdown",
           "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
         },
@@ -587,19 +685,28 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "New file: repro.mjs",
           "language": "javascript",
           "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Terminal: minimal reproduction",
           "language": "sh",
           "code": "node repro.mjs\n"
         },
         {
           "type": "paragraph",
           "text": "The core returns the wrong result without a browser, so cache and button events are unnecessary to reproduce this defect. That does not prove all UI is correct, but directs investigation to Completed. Ask Codex to explain why the predicate selects unfinished tasks before fixing it; a lucky reload is not a root-cause finding."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Separate a behavior failure from an environment failure"
+        },
+        {
+          "type": "paragraph",
+          "text": "If node repro.mjs reports ERR_MODULE_NOT_FOUND, it never reached the Completed assertion: check the current folder and core.mjs filename. For SyntaxError, check that you pasted the complete program. This bug is reproduced only when the program loads, prints b and fails because it expected a. A first-run pass does not mean you repaired it; you may have copied expected. Record the command, exit code, actual output and copy location instead of merely “red” or “failed”."
         },
         {
           "type": "heading",
@@ -612,7 +719,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Codex prompt: scoped repair",
           "language": "text",
           "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
         },
@@ -622,7 +729,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Reference repair: Completed branch",
           "language": "javascript",
           "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
         },
@@ -673,6 +780,46 @@
         {
           "type": "paragraph",
           "text": "Inspect core.mjs diff for unchanged addTask, decodeTasks and test expectations. Request commands, exit status and failure summaries if a “fixed” claim lacks evidence; record blockers when execution is unavailable. Passing commands do not replace UI checks by you or a browser-capable agent, with platform and preview URL recorded."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Check uncompleting a task and empty lists"
+        },
+        {
+          "type": "paragraph",
+          "text": "After the original reproduction passes, create regression.mjs with the program below and run node regression.mjs. It checks Completed ID a, uncompletes a, then expects empty Completed and Active IDs a/b. It also checks unchanged input and all three empty-list filters. Expect Regression passed and exit code 0. This is a standalone assertion program; it does not automatically increase the test count of node --test core.test.mjs."
+        },
+        {
+          "type": "code",
+          "label": "File: regression.mjs",
+          "language": "javascript",
+          "code": "import assert from \"node:assert/strict\";\nimport { toggleTask, visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n]);\nconst ids = (items, filter) => visibleTasks(items, filter).map((task) => task.id);\nassert.deepEqual(ids(tasks, \"completed\"), [\"a\"]);\nconst changed = toggleTask(tasks, \"a\");\nassert.deepEqual(ids(changed, \"completed\"), []);\nassert.deepEqual(ids(changed, \"active\"), [\"a\", \"b\"]);\nassert.deepEqual(ids(changed, \"all\"), [\"a\", \"b\"]);\nassert.deepEqual(tasks.map((task) => task.completed), [true, false]);\nfor (const filter of [\"all\", \"active\", \"completed\"]) {\n  assert.deepEqual(ids(Object.freeze([]), filter), []);\n}\nconsole.log(\"Regression passed.\");\n"
+        },
+        {
+          "type": "code",
+          "label": "Terminal: run boundary regression",
+          "language": "sh",
+          "code": "node regression.mjs\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Keep regression.mjs when restoring the original broken/core.mjs for the reset exercise. It should fail again with a nonzero exit, consistent with repro.mjs returning b. If you changed tests, labels or storage to get a green result, return to the saved originals and repeat the single repair; record the discarded hypothesis in the "
+            },
+            {
+              "type": "article",
+              "text": "handoff",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": ". Full regression still requires actual UI and reload checks; leave them unperformed until run."
+            }
+          ]
         },
         {
           "type": "heading",
@@ -802,7 +949,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ターミナル：基準テスト",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -816,7 +963,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "文書テンプレート：不具合報告",
           "language": "markdown",
           "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
         },
@@ -831,19 +978,28 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "新規ファイル：repro.mjs",
           "language": "javascript",
           "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ターミナル：最小再現",
           "language": "sh",
           "code": "node repro.mjs\n"
         },
         {
           "type": "paragraph",
           "text": "ブラウザーなしで誤答するため、この故障にキャッシュやボタンは不要です。全 UI 正常の証明ではありませんが Completed を先に調べる根拠です。未完了を選ぶ理由を説明させ、偶然の再読込成功を根因発見にしません。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "動作の失敗と環境の失敗を分ける"
+        },
+        {
+          "type": "paragraph",
+          "text": "node repro.mjs が ERR_MODULE_NOT_FOUND を返す場合、Completed の検証まで進んでいません。現在のフォルダーと core.mjs の名前を確認します。SyntaxError なら貼り付け漏れを調べます。読み込みに成功し、b を表示し、a を期待する検証で失敗したときに、この欠陥を再現できたと言えます。最初から通過しても修正済みとは限らず、expected をコピーした可能性があります。色や「失敗」だけでなく、コマンド、終了コード、実出力、コピーの場所を記録します。"
         },
         {
           "type": "heading",
@@ -856,7 +1012,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Codex への依頼：範囲を限定した修正",
           "language": "text",
           "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
         },
@@ -866,7 +1022,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "参考修正：Completed 分岐",
           "language": "javascript",
           "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
         },
@@ -917,6 +1073,46 @@
         {
           "type": "paragraph",
           "text": "差分で addTask、decodeTasks、期待値の不変を確認します。修正済み主張だけなら命令、終了状態、失敗要約を求め、実行不能は理由を残します。成功命令は画面確認の代わりでなく、環境と URL を付けて実施します。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "完了の解除と空のリストも確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "元の再現が通過したら、次の内容で regression.mjs を別途作り、node regression.mjs を実行します。Completed の a を確認し、a の完了を解除した後、Completed は空、Active は a／b になることを検証します。元入力の保持と3種類の空リストも確認し、Regression passed と終了コード 0 が期待結果です。独立した検証プログラムなので、node --test core.test.mjs のテスト件数は自動では増えません。"
+        },
+        {
+          "type": "code",
+          "label": "ファイル：regression.mjs",
+          "language": "javascript",
+          "code": "import assert from \"node:assert/strict\";\nimport { toggleTask, visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n]);\nconst ids = (items, filter) => visibleTasks(items, filter).map((task) => task.id);\nassert.deepEqual(ids(tasks, \"completed\"), [\"a\"]);\nconst changed = toggleTask(tasks, \"a\");\nassert.deepEqual(ids(changed, \"completed\"), []);\nassert.deepEqual(ids(changed, \"active\"), [\"a\", \"b\"]);\nassert.deepEqual(ids(changed, \"all\"), [\"a\", \"b\"]);\nassert.deepEqual(tasks.map((task) => task.completed), [true, false]);\nfor (const filter of [\"all\", \"active\", \"completed\"]) {\n  assert.deepEqual(ids(Object.freeze([]), filter), []);\n}\nconsole.log(\"Regression passed.\");\n"
+        },
+        {
+          "type": "code",
+          "label": "ターミナル：境界条件の回帰確認",
+          "language": "sh",
+          "code": "node regression.mjs\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "原版 broken/core.mjs に戻す練習でも regression.mjs は残します。repro.mjs の b と一致して、再び非ゼロで失敗するはずです。テスト、ラベル、保存処理も変更して通過させたなら、保存した原版から単一修正をやり直し、捨てた仮説を"
+            },
+            {
+              "type": "article",
+              "text": "引き継ぎ記録",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "に残します。完全な回帰確認には実画面と再読み込みの確認も必要で、未実施はそのまま記録します。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1046,7 +1242,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "터미널: 기준 테스트",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -1060,7 +1256,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "문서 템플릿: 버그 보고서",
           "language": "markdown",
           "code": "# Bug: Completed shows unfinished tasks\nEnvironment/date: fill from this run\nFixture: broken copied to codex-bug-lab\nSteps: reset practice data; add Read and Build; complete Read; select Completed.\nExpected: Read only.\nObserved: Build only, if reproduced.\nBaseline: node --test core.test.mjs; fill actual result.\nScope: keep UI, storage format, ordering and tests unchanged.\nRoot cause: not confirmed yet.\nUnperformed checks: list explicitly.\n"
         },
@@ -1075,19 +1271,28 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "새 파일: repro.mjs",
           "language": "javascript",
           "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "터미널: 최소 재현",
           "language": "sh",
           "code": "node repro.mjs\n"
         },
         {
           "type": "paragraph",
           "text": "브라우저 없이 틀리므로 이 결함 재현에 캐시/버튼은 필요 없습니다. 전체 UI 정상 증명은 아니지만 Completed부터 조사할 근거입니다. 미완료를 고르는 이유를 설명하게 하고 우연한 새로 고침 성공을 원인 발견으로 보지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "동작 실패와 환경 실패 구분"
+        },
+        {
+          "type": "paragraph",
+          "text": "node repro.mjs가 ERR_MODULE_NOT_FOUND를 표시하면 Completed 검증까지 도달하지 못한 상태입니다. 현재 폴더와 core.mjs 이름을 확인하세요. SyntaxError라면 코드를 빠짐없이 붙여 넣었는지 확인합니다. 프로그램이 로드되고 b를 출력한 뒤 a를 기대하는 검증에서 실패해야 이 결함이 재현된 것입니다. 첫 실행부터 통과해도 직접 고쳤다는 뜻은 아니며 expected를 복사했을 수 있습니다. 색이나 ‘실패’만 적지 말고 명령, 종료 코드, 실제 출력, 복사본 위치를 함께 남깁니다."
         },
         {
           "type": "heading",
@@ -1100,7 +1305,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Codex 프롬프트: 범위를 제한한 수정",
           "language": "text",
           "code": "Fix the reproduced Completed-filter bug in this codex-bug-lab.\nFirst read core.mjs, core.test.mjs and repro.mjs. Run node repro.mjs and node --test core.test.mjs to confirm the current failure.\nExplain the predicate error using the actual a/b IDs. Modify only the completed predicate in core.mjs and remove its obsolete deliberate-bug comment. Do not change tests, repro.mjs, active behavior, storage or UI.\nRerun both commands, inspect the final diff and report actual results. Browser checks must be marked NOT RUN unless actually performed. Do not publish or deploy.\n"
         },
@@ -1110,7 +1315,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "참고 수정: Completed 분기",
           "language": "javascript",
           "code": "if (filter === \"completed\") return tasks.filter((task) => task.completed);\n"
         },
@@ -1161,6 +1366,46 @@
         {
           "type": "paragraph",
           "text": "차이에서 addTask/decodeTasks/기댓값 불변을 확인합니다. 수정 주장뿐이면 명령/종료/실패 요약을 요청하고 실행 불가는 이유를 남깁니다. 명령 성공은 화면 확인 대신이 아니며 환경/URL과 함께 수행합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "완료 취소와 빈 목록 추가 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "원래 재현이 통과한 뒤 아래 내용으로 regression.mjs를 만들고 node regression.mjs를 실행합니다. Completed의 a를 확인하고 a의 완료를 취소한 다음 Completed는 빈 목록, Active는 a/b인지 검증합니다. 원래 입력이 바뀌지 않았는지와 세 필터의 빈 목록도 확인합니다. 예상 결과는 Regression passed와 종료 코드 0입니다. 독립 검증 프로그램이므로 node --test core.test.mjs의 테스트 개수가 자동으로 늘지는 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "파일: regression.mjs",
+          "language": "javascript",
+          "code": "import assert from \"node:assert/strict\";\nimport { toggleTask, visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n]);\nconst ids = (items, filter) => visibleTasks(items, filter).map((task) => task.id);\nassert.deepEqual(ids(tasks, \"completed\"), [\"a\"]);\nconst changed = toggleTask(tasks, \"a\");\nassert.deepEqual(ids(changed, \"completed\"), []);\nassert.deepEqual(ids(changed, \"active\"), [\"a\", \"b\"]);\nassert.deepEqual(ids(changed, \"all\"), [\"a\", \"b\"]);\nassert.deepEqual(tasks.map((task) => task.completed), [true, false]);\nfor (const filter of [\"all\", \"active\", \"completed\"]) {\n  assert.deepEqual(ids(Object.freeze([]), filter), []);\n}\nconsole.log(\"Regression passed.\");\n"
+        },
+        {
+          "type": "code",
+          "label": "터미널: 경계 회귀 확인",
+          "language": "sh",
+          "code": "node regression.mjs\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "원래 broken/core.mjs로 되돌리는 연습에서도 regression.mjs는 남깁니다. repro.mjs의 b와 일치하게 다시 0이 아닌 종료 코드로 실패해야 합니다. 테스트, 라벨, 저장 처리까지 바꿔 통과시켰다면 저장한 원본으로 돌아가 단일 수정부터 반복하고 "
+            },
+            {
+              "type": "article",
+              "text": "인계 기록",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "에 폐기한 가설을 남깁니다. 완전한 회귀 검증에는 실제 화면과 새로고침 확인도 필요하며 하지 않은 항목은 미실행으로 둡니다."
+            }
+          ]
         },
         {
           "type": "heading",

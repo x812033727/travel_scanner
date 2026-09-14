@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-codex-depth-content
 title: Codex deep content and isolated learning components
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-unit-f-fc2e
+claimed_at: 2026-09-14T12:20:08Z
 created_at: 2026-09-14T02:33:43Z
 completed_at:
 branch: codex/codex-learning-complete
@@ -160,10 +160,21 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [x] Deepen Unit C (38, 39, 40, 15, 41), label 15 existing code blocks, add six examples, and verify isolated Git/Node cases for complete diffs and incomplete handoffs.
 - [x] Deepen Unit D (09, 42, 43, 16, 44), label 32 existing blocks, add four examples and verify nested Markdown and 13 document/configuration reference cases.
 - [x] Deepen Unit E (45, 22, 17, 08, 18), label 29 existing blocks, add six input/record examples and verify the 16-case reference suite (10 E-specific checks).
-- [ ] Continue targeted depth review for the remaining 29 lessons, starting with Unit F (13, 46, 47, 20, 19, 21).
+- [x] Deepen Unit F (13, 46, 47, 20, 19, 21), label 38 existing blocks, add eight examples and verify 13 Git/review plus 20 reference checks (10 F-specific).
+- [ ] Continue targeted depth review for the remaining 23 lessons, starting with Unit G (48, 49, 24, 50, 51); lesson 23 already has representative-review evidence.
 - [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
 - [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
 - [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
+
+## Unit F revision
+
+After 9c474d68, revised 13/46/47/20/19/21 in four author languages and rebuilt the matching five-language packs. Added two-project/three-task identity, source-backed failure-path reading, a duplicate-title defect rejected by regression tests, uncompleting and empty-list checks, staged-versus-unstaged MM snapshots, and accurate Review/final-version scope. All 38 original code blocks retain exact contents and gain input labels; eight new blocks are shared across locales. Images and source metadata remain unchanged.
+
+Evidence is in docs/codex-learning/evidence/unit-f-depth-review.json. Thirteen Git/review checks and 20 reference checks pass; the latter contain 10 F-specific and 10 existing E checks. The faulty deduplication variant passes the original three tests but fails the new identity case; restoration recovers six passes. Staged Plan and unstaged Compare are independently verified, and an unchanged HEAD with dirty files is shown to invalidate old passing results. Isolated reference exercises do not establish product UI or model execution.
+
+Integrity 60/300, 9 API, 9 compiler, five shared catalogues and affected-tool Ruff pass. Audit is 0 errors/23 warnings; three earlier minimum-length advisories resolve through meaningful Japanese/Korean debugging and Korean Git explanations, without changing thresholds. A first evidence-hash assertion stopped on Windows CRLF versus the compiler's LF normalization; canonical-text comparison then passed. No shared series_data or deep source-list writes occurred.
+
+Targeted coverage is 37 unique lessons, 23 pending; next G: 48/49/24/50/51, with 23 already revised. Added/changed sections were compared across languages, not signed off as a full-text editorial review. All final acceptance remains open (0/60), including the preview-start restriction. No actual project/archive UI, model Review, GitHub push/PR or browser run. No partial PR, import, publication or deployment.
 
 ## Unit E revision
 

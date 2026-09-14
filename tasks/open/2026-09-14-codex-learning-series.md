@@ -254,3 +254,7 @@ D 09/42/43/16/44 now has targeted five-language revisions and evidence in docs/c
 ## Latest Unit E checkpoint
 
 E 45/22/17/08/18 now has targeted five-language revisions and evidence in docs/codex-learning/evidence/unit-e-depth-review.json. Current coverage is 31 unique lessons, 29 pending (next F: 13/46/47/20/19/21). The reference suite passes 16 checks (10 E-specific, six other existing cases); integrity 60/300, 9 API, 9 compiler and five shared catalogues pass. Audit remains 0 errors/26 warnings. No original code, images, source metadata or shared series_data changed. No actual interactive model/session/permissions or browser execution. Final acceptance remains 0/60, and all-complete-before-PR/deployment remains in force.
+
+## Latest Unit F checkpoint
+
+F 13/46/47/20/19/21 now has targeted five-language revisions and evidence in docs/codex-learning/evidence/unit-f-depth-review.json. Current coverage is 37 unique lessons, 23 pending (next G: 48/49/24/50/51; 23 was a representative). Thirteen Git/review and 20 reference checks (10 F, 10 E) pass; integrity 60/300, 9 API, 9 compiler, five shared catalogues and affected-tool Ruff pass. Audit is 0 errors/23 warnings, with three earlier minimum-length advisories resolved. Original code, images, source metadata and shared series_data remain unchanged. No actual task/archive UI, model Review, GitHub or browser execution. Final acceptance remains 0/60 and all-complete-before-PR/deployment remains in force.

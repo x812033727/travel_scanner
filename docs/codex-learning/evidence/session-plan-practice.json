@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-09-14T12:15:20.898966+00:00",
+  "checkedAt": "2026-09-14T12:32:42.867105+00:00",
   "environment": "Windows / Node v24.13.0",
   "method": "Execute exact authored fixtures and targeted reference changes in an isolated temporary directory.",
   "limitations": [
@@ -9,13 +9,14 @@
   ],
   "moduleHashes": {
     "08": "840f2e68d043699050d7481c3ef3dfb8b4e8a7bb1467f0099857cdfba108f460",
+    "13": "47c87eb7ab57b917cf2516ab71699c6a0966eff70655d6114d1e73b8d2170bdf",
     "17": "973ebd99f692da5dd9a444793cf6e7f905c3afc91ac1af9fed6849610e774d73",
     "18": "c3a6b242d27a855f5dd4a115534e18254f242fce03ab8f2dccd5630a5042b5d3",
-    "20": "637b9aa8be16c212b47b8052cf17a8cd9a1b2d67ab0f3432e7d7bce9ed2c2b29",
+    "20": "a5b7e15fb4d39b0633221bc11eb7f59e5dd9c4718b0b1a325e499229fb3fdc4d",
     "22": "3ab8cb331285cd06cc6debb1dde10bd5b53df5e4e54de9ab152934848a35f81b",
     "45": "e57156223c47f924c18c0bdefe4228dab91f3c82f56e432ee16f5d7e4ff5661b",
-    "46": "aa9d6f894bcd5bf4a8bf371abc0f752de4d32741845ab4ba4a176ad942275c39",
-    "47": "9f2ffc074db32480becd8b22090f2b50adb4b1b782bc0052fe6d11349db0dc23"
+    "46": "09f81a1dbbca2e5493f367fd5e605b23aee304ec392f3a092d07a7d7f5e140e0",
+    "47": "c45897bfc1fc22a4099dc2b07209c54c811af47445ce5692bcd8d002e460b749"
   },
   "checks": [
     "08: exact start fixture fails its filter test as expected",
@@ -30,9 +31,13 @@
     "18: literal scope markers and command modes checked; no OS sandbox execution claim",
     "47: exact added tests detect the start defect, four passes and two expected failures",
     "47: literal repair passes all six tests including duplicate-title identity and frozen inputs",
+    "47: authored title-deduplication defect loses ID c; added tests reject it while the original three still pass",
+    "47: restore from the repaired copy recovers six passes without changing either test file",
     "47: restoring only core.mjs preserves added tests and reproduces two failures",
     "46: exact map is an added document; expected reference still passes three tests unchanged",
+    "13: exact same-filename project fixtures distinguish revisions 2 and 100; scoped restore preserves the other project",
     "20: authored minimal repro fails with b and passes with a after only the stated repair",
+    "20: exact standalone regression fails before repair and passes uncompleting, empty-list and frozen-input checks after repair",
     "20: scoped restoration reproduces the original bug with unchanged reproduction and tests"
   ]
 }

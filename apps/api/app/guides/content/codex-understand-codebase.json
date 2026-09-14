@@ -73,7 +73,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "終端機：版本與基準測試",
           "language": "sh",
           "code": "node --version\nnode --test core.test.mjs\n"
         },
@@ -83,7 +83,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Codex 提示詞：唯讀專案導覽",
           "language": "text",
           "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
         },
@@ -178,13 +178,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Windows 終端機：本機預覽",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "macOS／Linux 終端機：本機預覽",
           "language": "sh",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -198,9 +198,28 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案：project-map.md",
           "language": "markdown",
           "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀懂失敗路徑：每個判斷都指出依據"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 app.js 找 submit 事件，再對照 core.mjs 的 addTask。只輸入空白時，trim 後長度為 0，addTask 會拋出 title-length；事件的 catch 顯示訊息並 return，因此這次不會執行後面的 persist、清空輸入或 render。這是閱讀程式得到的路徑，不能填成已親自按過按鈕。以相同方法追一次 localStorage 寫入失敗，確認它會設 storageAvailable 為 false，後續資料仍可在這個分頁暫存，卻不保證重載後保留。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再檢查兩個容易寫錯的導覽結論：「切換篩選會保存資料」與「三項測試通過就證明按鈕正常」。前者不符 filter 的 change 只呼叫 render；後者把核心函式測試擴張為 DOM 實測。將下面段落補進 project-map.md，並把尚未實測的欄位保留 NOT RUN。若找不到所引函式，先核對是否開了 expected 副本，再修正導覽，仍不更動五個程式檔。"
+        },
+        {
+          "type": "code",
+          "label": "附加到檔案：project-map.md",
+          "language": "markdown",
+          "code": "## Evidence and limits\n- Blank input: core.mjs/addTask throws; app.js/submit catches and returns before persist.\n- Filter change: app.js connects change to render; that handler does not persist.\n- Count: app.js/render counts all tasks, not only the displayed subset.\n- Storage failure: app.js/persist disables further writes after a failed setItem.\n- Automated baseline: node --test core.test.mjs; record actual exit and totals.\n- Browser submit/filter/reload checks: NOT RUN until performed.\n"
         },
         {
           "type": "heading",
@@ -327,7 +346,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Terminal: version and baseline tests",
           "language": "sh",
           "code": "node --version\nnode --test core.test.mjs\n"
         },
@@ -337,7 +356,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Codex prompt: read-only project map",
           "language": "text",
           "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
         },
@@ -432,13 +451,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Windows terminal: local preview",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "macOS/Linux terminal: local preview",
           "language": "sh",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -452,9 +471,28 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File: project-map.md",
           "language": "markdown",
           "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Trace failure paths and identify the evidence"
+        },
+        {
+          "type": "paragraph",
+          "text": "Find the submit handler in app.js and compare it with addTask in core.mjs. Whitespace trims to length zero, so addTask throws title-length; the handler's catch displays a message and returns, skipping persist, input clearing and render for that submission. This is a code-derived path, not evidence that you clicked the button. Similarly trace a failed localStorage write: storageAvailable becomes false, allowing temporary in-tab work without promising persistence after reload."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check two tempting but incorrect map claims: “Changing the filter saves data” and “Three passing tests prove the buttons work.” The filter's change listener only calls render, and core-function tests do not exercise the DOM. Append the section below to project-map.md, leaving unperformed checks as NOT RUN. If a cited function is missing, verify that you opened the expected copy, then correct the map while leaving the five source files unchanged."
+        },
+        {
+          "type": "code",
+          "label": "Append to file: project-map.md",
+          "language": "markdown",
+          "code": "## Evidence and limits\n- Blank input: core.mjs/addTask throws; app.js/submit catches and returns before persist.\n- Filter change: app.js connects change to render; that handler does not persist.\n- Count: app.js/render counts all tasks, not only the displayed subset.\n- Storage failure: app.js/persist disables further writes after a failed setItem.\n- Automated baseline: node --test core.test.mjs; record actual exit and totals.\n- Browser submit/filter/reload checks: NOT RUN until performed.\n"
         },
         {
           "type": "heading",
@@ -577,7 +615,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ターミナル：バージョンと基準テスト",
           "language": "sh",
           "code": "node --version\nnode --test core.test.mjs\n"
         },
@@ -587,7 +625,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Codex への依頼：読み取り専用のプロジェクト案内",
           "language": "text",
           "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
         },
@@ -682,13 +720,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Windows ターミナル：ローカルプレビュー",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "macOS／Linux ターミナル：ローカルプレビュー",
           "language": "sh",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -702,9 +740,28 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル：project-map.md",
           "language": "markdown",
           "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "失敗経路を読み、判断の根拠を示す"
+        },
+        {
+          "type": "paragraph",
+          "text": "app.js の submit ハンドラーと core.mjs の addTask を照合します。空白だけの入力は trim 後に長さ 0 となり、addTask が title-length を投げます。イベント側の catch がメッセージを表示して return するため、その送信では persist、入力のクリア、render に進みません。これはコードから判断した経路で、ボタンを実際に押した証拠ではありません。同様に localStorage の書き込み失敗を追い、storageAvailable が false になり、タブ内の一時作業は続けられても再読み込み後の保持は保証されないことを確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「フィルター変更でデータを保存する」「3件のテスト通過でボタンの正常動作が証明できる」という誤った説明も確認します。filter の change は render だけを呼び、コア関数のテストは DOM を操作しません。次の節を project-map.md に追記し、未実施は NOT RUN のままにします。引用した関数が見つからなければ expected のコピーを開いたか確認し、5つのプログラムファイルを変えずに導覧を修正します。"
+        },
+        {
+          "type": "code",
+          "label": "ファイルへ追記：project-map.md",
+          "language": "markdown",
+          "code": "## Evidence and limits\n- Blank input: core.mjs/addTask throws; app.js/submit catches and returns before persist.\n- Filter change: app.js connects change to render; that handler does not persist.\n- Count: app.js/render counts all tasks, not only the displayed subset.\n- Storage failure: app.js/persist disables further writes after a failed setItem.\n- Automated baseline: node --test core.test.mjs; record actual exit and totals.\n- Browser submit/filter/reload checks: NOT RUN until performed.\n"
         },
         {
           "type": "heading",
@@ -827,7 +884,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "터미널: 버전 및 기준 테스트",
           "language": "sh",
           "code": "node --version\nnode --test core.test.mjs\n"
         },
@@ -837,7 +894,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Codex 프롬프트: 읽기 전용 프로젝트 안내",
           "language": "text",
           "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
         },
@@ -932,13 +989,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Windows 터미널: 로컬 미리보기",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "macOS/Linux 터미널: 로컬 미리보기",
           "language": "sh",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -952,9 +1009,28 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일: project-map.md",
           "language": "markdown",
           "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "실패 경로를 읽고 판단 근거 밝히기"
+        },
+        {
+          "type": "paragraph",
+          "text": "app.js의 submit 처리기와 core.mjs의 addTask를 함께 읽습니다. 공백뿐인 입력은 trim 후 길이가 0이므로 addTask가 title-length를 던집니다. 이벤트의 catch가 메시지를 표시하고 return하므로 해당 제출은 persist, 입력 비우기, render까지 진행하지 않습니다. 이는 코드를 읽어 도출한 경로이지 버튼을 직접 누른 증거가 아닙니다. localStorage 쓰기 실패도 추적하세요. storageAvailable이 false가 되면 현재 탭에서 임시 작업은 계속되지만 새로고침 후 보존은 보장되지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "‘필터를 바꾸면 데이터를 저장한다’, ‘테스트 세 개가 통과하면 버튼도 정상이다’라는 잘못된 설명도 확인합니다. filter의 change는 render만 호출하며 핵심 함수 테스트는 DOM을 조작하지 않습니다. 아래 절을 project-map.md에 추가하고 미실행 항목은 NOT RUN으로 남깁니다. 인용한 함수를 찾을 수 없으면 expected 복사본을 열었는지 확인한 뒤 프로그램 파일 다섯 개를 건드리지 않고 안내 문서를 고칩니다."
+        },
+        {
+          "type": "code",
+          "label": "파일에 추가: project-map.md",
+          "language": "markdown",
+          "code": "## Evidence and limits\n- Blank input: core.mjs/addTask throws; app.js/submit catches and returns before persist.\n- Filter change: app.js connects change to render; that handler does not persist.\n- Count: app.js/render counts all tasks, not only the displayed subset.\n- Storage failure: app.js/persist disables further writes after a failed setItem.\n- Automated baseline: node --test core.test.mjs; record actual exit and totals.\n- Browser submit/filter/reload checks: NOT RUN until performed.\n"
         },
         {
           "type": "heading",
@@ -1081,7 +1157,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "终端机：版本与基准测试",
           "language": "sh",
           "code": "node --version\nnode --test core.test.mjs\n"
         },
@@ -1091,7 +1167,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Codex 提示词：唯读专案导览",
           "language": "text",
           "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
         },
@@ -1186,13 +1262,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Windows 终端机：本机预览",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "macOS／Linux 终端机：本机预览",
           "language": "sh",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -1206,9 +1282,28 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案：project-map.md",
           "language": "markdown",
           "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "读懂失败路径：每个判断都指出依据"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 app.js 找 submit 事件，再对照 core.mjs 的 addTask。只输入空白时，trim 后长度为 0，addTask 会抛出 title-length；事件的 catch 显示讯息并 return，因此这次不会执行后面的 persist、清空输入或 render。这是阅读程式得到的路径，不能填成已亲自按过按钮。以相同方法追一次 localStorage 写入失败，确认它会设 storageAvailable 为 false，后续资料仍可在这个分页暂存，却不保证重载后保留。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再检查两个容易写错的导览结论：「切换筛选会保存资料」与「三项测试通过就证明按钮正常」。前者不符 filter 的 change 只呼叫 render；后者把核心函式测试扩张为 DOM 实测。将下面段落补进 project-map.md，并把尚未实测的栏位保留 NOT RUN。若找不到所引函式，先核对是否开了 expected 副本，再修正导览，仍不更动五个程式档。"
+        },
+        {
+          "type": "code",
+          "label": "附加到档案：project-map.md",
+          "language": "markdown",
+          "code": "## Evidence and limits\n- Blank input: core.mjs/addTask throws; app.js/submit catches and returns before persist.\n- Filter change: app.js connects change to render; that handler does not persist.\n- Count: app.js/render counts all tasks, not only the displayed subset.\n- Storage failure: app.js/persist disables further writes after a failed setItem.\n- Automated baseline: node --test core.test.mjs; record actual exit and totals.\n- Browser submit/filter/reload checks: NOT RUN until performed.\n"
         },
         {
           "type": "heading",
