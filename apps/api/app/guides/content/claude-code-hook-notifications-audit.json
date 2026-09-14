@@ -1,0 +1,327 @@
+{
+  "slug": "claude-code-hook-notifications-audit",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 177,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜任務通知與事件紀錄：有用而不洗版",
+      "description": "產生可追查、去重且不含敏感內容的通知紀錄通知最有用的時刻是工作完成、失敗或需要處理，而不是每個工具動作都提醒一次。本篇把事件紀錄與結果通知分開，使用本機假接收器驗證去重、失敗與重送，並確認通知只保存必要欄位，不把私人內容塞進日誌。",
+      "hero": {
+        "src": "/guides/claude-code-hook-notifications-audit/hero.jpg",
+        "alt": "任務通知與事件紀錄：有用而不洗版：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "通知最有用的時刻是工作完成、失敗或需要處理，而不是每個工具動作都提醒一次。本篇把事件紀錄與結果通知分開，使用本機假接收器驗證去重、失敗與重送，並確認通知只保存必要欄位，不把私人內容塞進日誌。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hooks-recipes",
+              "text": "Hooks 實用案例"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hook-event-test-lab",
+              "text": "事件實驗"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-77.zip",
+              "text": "第 77 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，在 starter 操作。需要 Node.js 22 以上；本課通知測試不使用外部帳號。閱讀約 20 分鐘，實作約 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先決定哪些資訊值得記錄"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-hook-notifications-audit/diagram-1.svg",
+          "alt": "先決定哪些資訊值得記錄 → 先重播事件紀錄 → 使用本機假接收器測試通知",
+          "width": 1600,
+          "height": 900,
+          "caption": "先決定哪些資訊值得記錄 → 先重播事件紀錄 → 使用本機假接收器測試通知",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "事件紀錄回答「什麼時候、哪個工具發生了動作」，工作結果回答「驗收是否完成」，通知結果回答「接收端是否收到」。三者不能混成一個 success 欄位。發送成功不代表測試通過，工具完成也不代表整個需求已交付。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本課 audit.mjs 保存事件名稱、工具、工作階段識別及時間，寫入 run-data/events.jsonl。JSONL 是每一行一個 JSON 物件，適合逐筆追加。notification 則使用另一個資料夾，只接受 id 與 completed、failed 兩種狀態。兩份資料分開查看，更容易追查通知重送沒有改變工作結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工作階段識別也可能屬於不適合公開的操作資訊，保留在本機即可。分享截圖或範例時改用課程假 id；不要把整段 prompt、檔案內容、權杖或錯誤堆疊中的私人資料原封不動送到外部頻道。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先重播事件紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 fixtures/post-edit.json 執行 audit 重播，再開啟 run-data/events.jsonl 查看最後一行。重播器補入目前 cwd，腳本將日誌寫到本次練習專案。重播兩次會有兩筆事件，這是原始事件紀錄，不需要假裝只有一次工具動作。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：查看本機事件紀錄",
+          "code": "node hooks/replay.mjs audit fixtures/post-edit.json\nnode hooks/replay.mjs audit fixtures/post-edit.json\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "去重應用在你定義的通知事件，而不是把所有相同工具名稱的紀錄刪掉。兩次 Edit 可能處理不同檔案或來自不同任務，只因 tool_name 一樣就合併，會失去追查資訊。先決定事件識別方式，再說明哪些資料應保留。"
+        },
+        {
+          "type": "paragraph",
+          "text": "材料的測試會在 tool_input 放一段合成敏感文字，確認它沒有出現在 audit 日誌。這能驗證目前白名單欄位的實作，但不能證明所有未來新增欄位都安全。調整日誌格式時，將這類反例一併保留在測試中。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "使用本機假接收器測試通知"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇接收器是一個寫入本機檔案的函式，不是 Slack、Email 或作業系統通知。它讓你不需要外部服務就能測試事件契約與去重。實際串接外部服務時，還要另外處理認證、網路錯誤、速率限制與收件目的地。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "寫入 fixtures/notice.json：只使用假資料",
+          "code": "{\n  \"id\": \"lab-77-completed\",\n  \"status\": \"completed\",\n  \"privateNote\": \"合成敏感欄位，不應寫入通知\"\n}\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：第一次送達及第二次去重",
+          "code": "node automation/send-notice.mjs fixtures/notice.json\nnode automation/send-notice.mjs fixtures/notice.json\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次預期 delivered=true；第二次相同 id 與狀態預期 duplicate=true，且不重寫通知內容。開啟 run-data/notifications/lab-77-completed.json，應只有 id、status，沒有 privateNote。程式使用只在檔案不存在時建立的方式，讓同一個事件不被重複建立。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這個去重策略適用本機練習，不能直接保證跨多台機器或任意網路服務只送一次。外部服務的成功回覆遺失時，你可能不知道它是否收到；需要接收端支援冪等鍵或另外對帳。本篇先把可控範圍說清楚，之後再接"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-scheduled-workflow-reliability",
+              "text": "可靠排程"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "設計事件 id 與狀態轉換"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一任務可能先失敗、修復後成功，這是兩個值得區分的結果事件。不要把同一 id 的狀態改掉再重送，期待舊紀錄自動變成新結果。材料遇到相同 id、不同狀態會明確報錯，提醒你重新定義事件識別。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以使用任務編號、執行編號與結果類型組合，例如 todo-104-run-2-completed。它應穩定代表一次具體事件，不含私人標題或任意長文字。重試同一次發送保留相同 id，新的工作結果則使用新的 id，這樣去重才不會吃掉真正的新通知。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "寫入 fixtures/notice-failed.json：另一個結果事件",
+          "code": "{\"id\":\"lab-77-run-2-failed\",\"status\":\"failed\"}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "輸入格式不合法時應停止。例如含 ../ 的 id 不應被當成路徑，未知狀態不應直接寫進系統。通知函式限制 id 的字元及長度，再只複製允許欄位。這是程式驗證，不靠提示模型「請小心處理」來實現。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "故障練習：接收器無法寫入"
+        },
+        {
+          "type": "paragraph",
+          "text": "用編輯器在練習目錄建立 blocked-receiver.txt，再把它當成接收目錄傳入下方命令。因為該位置是檔案，無法建立通知資料夾，預期非零退出碼。這個故障不需要更改整個作業系統權限，也不會影響真正的收件服務。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：刻意使用不合法的接收位置",
+          "code": "node automation/send-notice.mjs fixtures/notice-failed.json blocked-receiver.txt\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留工作結果，將通知狀態記為發送失敗；不要把工作重新改成 failed，只因提醒沒送到。恢復正確接收目錄後，用相同事件 id 重送，預期成功；再重送一次，預期去重。這三個結果能驗證恢復流程，而不是只測正常情況。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若接入外部通知，重試應有限次、有間隔，而且保留最後錯誤。不要用失敗後立刻無限重送，否則可能把一次工作錯誤變成大量通知。對需要人處理的長期失敗，保存待送事件並明確回報，比持續佔用工作階段更容易維護。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "將通知接在已驗證的結果之後"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hook 的 Stop 事件本身不表示任務成功。要發完成通知，應先有可靠的工作結果，例如固定測試通過、成果檔驗證成功，或你的應用已寫入 completed 狀態。可以由工作流程在結果確認後呼叫 send-notice，再把兩個結果分開保存。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：安排結果與通知的順序",
+          "code": "先完成指定練習並保存實際測試結果。\n只有验收通過才把本次工作標為 completed。\n通知是另一個步驟；失敗時保留工作結果及待送事件。\n本課只使用本機接收器，不寄信、不呼叫外部 webhook。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若需要即時知道權限提示或其他事件，可以另外選擇相應 Hook，但每類通知都要定義用途。不要把每次 PostToolUse 都當成需要提醒讀者的事件。原始日誌可以完整一些，對人的通知則集中在需要行動的變化。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讓通知能回到對應的工作結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "通知只傳達某個工作狀態發生變化，真正的成果與錯誤應在本機紀錄中可查。為通知保留工作識別碼和狀態，讀者才能把它對回同一次執行。若缺少工作識別碼，多個同時進行的任務會產生難以辨認的訊息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "遇到通知寫入失敗，保存原任務結果並另記通知失敗，不把已完成的計算當成沒有執行。這個分離讓重送通知不必重新做整個任務，也更容易判斷哪些結果已被使用者查看。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "檢查日誌與完成判準"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "工作狀態",
+            "通知狀態"
+          ],
+          "rows": [
+            [
+              "工作通過、首次通知",
+              "completed",
+              "delivered"
+            ],
+            [
+              "同一事件重送",
+              "不變",
+              "duplicate"
+            ],
+            [
+              "接收器故障",
+              "保留實際結果",
+              "failed，等待重送"
+            ],
+            [
+              "同 id 改成另一狀態",
+              "先確認事件設計",
+              "拒絕，不覆寫"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "完成應有首次送達、重複事件、接收器失敗、恢復重送四種紀錄，且通知檔沒有多餘的敏感欄位。清理時先保存要交付的證據，只處理自己的 run-data；若想重新做去重實驗，使用新事件 id 或新的空練習目錄，不需刪掉全部歷史。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是新增 cancelled 狀態，先決定它是否值得通知，再一起更新契約、驗證與測試。不要只讓程式接受更多字串，卻沒有說明讀者收到後應做什麼。下一篇會把這些腳本放到中文路徑及不同換行環境，測試"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hook-portability-recovery",
+              "text": "可攜性與恢復"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hooks reference",
+          "url": "https://code.claude.com/docs/en/hooks",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

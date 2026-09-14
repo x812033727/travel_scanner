@@ -1,0 +1,307 @@
+{
+  "checked_at": "2026-09-14T13:48:48.543156+00:00",
+  "status": "local-preview-ready",
+  "scope": "36 new lessons and the combined 97-page local preview; not release approval",
+  "content": {
+    "pages": 97,
+    "new_lessons": 36,
+    "groups": 16,
+    "learning_paths": 12,
+    "errors": 0,
+    "warnings": 0,
+    "source": "content-validation.json"
+  },
+  "art": {
+    "rendered": 43,
+    "canvas": [
+      1600,
+      900
+    ],
+    "svgTextBoundsChecked": true
+  },
+  "downloads": {
+    "archives": 36,
+    "groups": 6,
+    "quick_checks": 81,
+    "pilot_archives": 6,
+    "tool_suite_tests_per_pilot": 21,
+    "sources": [
+      "downloads-quick-tests.json",
+      "downloads-tests.json"
+    ]
+  },
+  "browser": {
+    "latest_cases_passed": 9,
+    "source": "browser-verification.json",
+    "physically_tested_mobile_devices": false
+  },
+  "web_tests": {
+    "scope": "affected guide/series/editor/server helper suites",
+    "source": "web-focused-tests.json",
+    "numTotalTests": 73,
+    "numPassedTests": 73,
+    "numFailedTests": 0,
+    "numPendingTests": 0
+  },
+  "broad_web_suite": {
+    "environment": "Windows",
+    "source": "web-full.json",
+    "files": 258,
+    "tests": 2809,
+    "total_tests": 2809,
+    "failed": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  "postgresql_suite": {
+    "passed": true,
+    "tests": 164,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "postgresql_version": "17.11",
+    "source": "postgres-validation.json",
+    "test_report": "postgres-tests.xml",
+    "environment": "Windows; disposable PostgreSQL 17 and SQLite",
+    "server_stopped": true,
+    "remaining_test_schemas": 0
+  },
+  "supplementary_verification": "live/verification-summary.json",
+  "real_operations": {
+    "checked_at": "2026-09-14T13:48:45.945723+00:00",
+    "scope": "Supplementary actual Claude, browser cloud task and SDK smoke checks; not complete per-lesson failure coverage",
+    "cli": {
+      "passed": true,
+      "version": "2.1.233 (Claude Code)",
+      "lessons": [
+        61,
+        67,
+        73,
+        79,
+        91
+      ],
+      "source": "claude-live-all.json",
+      "hook_event_source": "hook-trigger.json"
+    },
+    "web": {
+      "passed": true,
+      "source": "browser-validation.json",
+      "result": {
+        "marker": "MOKAAIR-WEB-SMOKE-20260914",
+        "total": 3,
+        "completed": 1,
+        "pendingIds": [
+          "b",
+          "c"
+        ]
+      },
+      "repository_changes": false
+    },
+    "sdk": {
+      "passed": true,
+      "version": "0.3.270",
+      "cases": [
+        "authored-runner-query",
+        "authored-runner-same-session-resume",
+        "separate-streaming-input-abort-controller-probe"
+      ],
+      "sources": [
+        "sdk-query-resume.json",
+        "sdk-cancel.json",
+        "sdk-recovery.json"
+      ],
+      "limitations": [
+        "Physical Ctrl+C and recovery of an interrupted session remain untested; the startup recovery uses a fresh query"
+      ],
+      "sources_checked_on": "2026-09-14",
+      "official_source": "https://code.claude.com/docs/en/agent-sdk/streaming-vs-single-mode",
+      "recovery_passed": true,
+      "recovery_cases": [
+        "missing-session",
+        "incompatible-session",
+        "executable-startup-failure",
+        "fresh-query-after-startup-failure"
+      ]
+    },
+    "github_actions": {
+      "repository": "x812033727/travel_scanner",
+      "repository_secret_count": 0,
+      "environment_count": 0,
+      "required_example_environment": "claude-lab",
+      "required_example_secret": "ANTHROPIC_API_KEY",
+      "live_model_workflow_run": false,
+      "reason": "A monorepo workflow is prepared locally with manual opt-in model review. It is not merged or dispatched; the selected repository still needs the claude-lab environment and a dedicated Anthropic CI credential.",
+      "registered_claude_workflows": [],
+      "local_workflow_prepared": true,
+      "workflow_path": ".github/workflows/claude-tutorial-validation.yml",
+      "local_validation_source": "ci-workflow-validation.json"
+    },
+    "pending": [
+      "Other rule conflicts, Skill resource selection, Hook event failures and supported-OS Bash sandbox",
+      "Physical mobile reconnection, sleep and recovery",
+      "Real remote MCP HTTP/OAuth authorization and recovery",
+      "Merge the manual CI workflow and configure an Anthropic credential and claude-lab environment for the authorized travel_scanner Actions test",
+      "Product scheduling, physical SDK runner Ctrl+C and interrupted-session recovery",
+      "Actual Agent Teams and real workflow comparison"
+    ],
+    "cli_boundaries": {
+      "passed": true,
+      "source": "cli-boundaries.json",
+      "case_count": 7,
+      "cases": [
+        {
+          "name": "rules-child",
+          "lessons": [
+            62,
+            63
+          ],
+          "passed": true
+        },
+        {
+          "name": "skill-missing-argument",
+          "lessons": [
+            67,
+            68
+          ],
+          "passed": true
+        },
+        {
+          "name": "skill-automatic",
+          "lessons": [
+            70
+          ],
+          "passed": true
+        },
+        {
+          "name": "permission-denied",
+          "lessons": [
+            64
+          ],
+          "passed": true
+        },
+        {
+          "name": "hook-protected-write",
+          "lessons": [
+            73,
+            76
+          ],
+          "passed": true
+        },
+        {
+          "name": "mcp-startup-failure",
+          "lessons": [
+            79,
+            82
+          ],
+          "passed": true
+        },
+        {
+          "name": "readonly-subagent",
+          "lessons": [
+            87
+          ],
+          "passed": true
+        }
+      ],
+      "limits": [
+        "One readonly subagent with Haiku is not an Agent Teams or model comparison test",
+        "Read denial does not test Bash sandbox",
+        "MCP startup failure does not verify remote OAuth or all protocol errors"
+      ]
+    },
+    "capstone": {
+      "passed": true,
+      "lesson": 96,
+      "scope": "Actual model-authored local feature, independent assertions, browser workflow, specified failure and repair, fresh extracted replay; no physical phone or deployment",
+      "sources": [
+        "capstone-implementation.json",
+        "capstone-tests.json",
+        "capstone-browser.json",
+        "capstone-repair.json",
+        "capstone-clean-replay.json"
+      ],
+      "archive": "capstone-result.zip",
+      "archive_sha256": "87cdbe8031e2508274b917bb25f9c671e11924e347ea9f61b8fc6fcca16dba3f",
+      "project_tests": 9,
+      "independent_tests": 3,
+      "browser_cases": 10,
+      "verifier_corrections": [
+        "Handoff: mixed arrays retain valid items; malformed JSON/non-array returns empty. Added actual browser evidence and explicit server stop instructions."
+      ],
+      "test_server_stopped": true
+    }
+  },
+  "claude_smoke_source": "live/claude-live-all.json",
+  "commands_from_task_outputs": [
+    {
+      "command": "npm run build:web",
+      "exit": 0
+    },
+    {
+      "command": "npm run lint:web",
+      "exit": 0
+    },
+    {
+      "command": "npm run check:i18n",
+      "exit": 0,
+      "detail": "5 locales, 25 namespaces"
+    },
+    {
+      "command": "npm run typecheck:web",
+      "exit": 0
+    },
+    {
+      "command": "npm run test:tools",
+      "exit": 0,
+      "detail": "51 passed; tools-tests.txt"
+    },
+    {
+      "command": "uv run ruff check app/guides tests/test_guide_series.py",
+      "exit": 0
+    },
+    {
+      "command": "uv run mypy app",
+      "exit": 0,
+      "detail": "328 source files"
+    },
+    {
+      "command": "uv run pytest tests/test_guide_series.py tests/test_guides.py -q",
+      "exit": 0,
+      "detail": "Earlier run: 87 passed, 77 skipped; PostgreSQL integration disabled. See postgresql_suite for the supplementary run."
+    },
+    {
+      "command": "claude plugin validate ./plugin",
+      "exit": 0,
+      "detail": "local manifest validation, not a model call"
+    },
+    {
+      "command": "node hooks/timeout-demo.mjs",
+      "exit": 0,
+      "detail": "expectedTimeout=true, ETIMEDOUT, 339 ms; controlled local child"
+    },
+    {
+      "command": "node worktrees/demo.mjs",
+      "exit": 0,
+      "detail": "worktree-tests.json"
+    }
+  ],
+  "manual_visual_review": [
+    "project-rules-workshop-code-360.png",
+    "structured-cli-pipeline-code-390.png",
+    "tdd-reference-390.png"
+  ],
+  "limitations": [
+    "Other rule conflicts, Skill resource selection, Hook event failures and supported-OS Bash sandbox",
+    "Physical mobile reconnection, sleep and recovery",
+    "Real remote MCP HTTP/OAuth authorization and recovery",
+    "Merge the manual CI workflow and configure an Anthropic credential and claude-lab environment for the authorized travel_scanner Actions test",
+    "Product scheduling, physical SDK runner Ctrl+C and interrupted-session recovery",
+    "Actual Agent Teams and real workflow comparison",
+    "Not merged, deployed, imported or published"
+  ],
+  "environment_notes": [
+    "Shared browser installation was incomplete; matching Chromium installed in a dedicated temporary cache",
+    "Broad Vitest was restarted; reported guide tests come from the focused single-worker invocation",
+    "MCP test process startup/cleanup allowance increased to 20 seconds; protocol deadline remains 1500 ms"
+  ]
+}

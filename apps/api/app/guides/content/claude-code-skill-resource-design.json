@@ -1,0 +1,307 @@
+{
+  "slug": "claude-code-skill-resource-design",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 169,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜拆分大型 Skill 的範本、參考文件與腳本",
+      "description": "建立能按需讀取的技能目錄當 SKILL.md 越寫越長，真正的問題常是每次都讀進不需要的背景，卻找不到當前任務要用的檢查表。本篇把差異審查 Skill 拆成入口、資料邏輯參考、畫面參考、報告範本與參數程式，並用兩種 diff 驗證資料選擇是否合理。",
+      "hero": {
+        "src": "/guides/claude-code-skill-resource-design/hero.jpg",
+        "alt": "拆分大型 Skill 的範本、參考文件與腳本：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "當 SKILL.md 越寫越長，真正的問題常是每次都讀進不需要的背景，卻找不到當前任務要用的檢查表。本篇把差異審查 Skill 拆成入口、資料邏輯參考、畫面參考、報告範本與參數程式，並用兩種 diff 驗證資料選擇是否合理。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skill-sop-workshop",
+              "text": "Skill SOP"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skill-input-validation",
+              "text": "參數驗證"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-69.zip",
+              "text": "第 69 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，開啟 starter。需要 Node.js 22 以上與可使用的 Claude CLI；閱讀約 20 分鐘，實作約 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用讀者要做的決定切分文件"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-skill-resource-design/diagram-1.svg",
+          "alt": "用讀者要做的決定切分文件 → 寫一份短而完整的入口 → 替參考文件加入可操作的案例",
+          "width": 1600,
+          "height": 900,
+          "caption": "用讀者要做的決定切分文件 → 寫一份短而完整的入口 → 替參考文件加入可操作的案例",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "不要先按檔案長度平均切成第一部分、第二部分。先列出審查者需要做的決定：輸入是否合法、變更屬於資料或畫面、哪些參考有關、如何呈現有證據的發現。每個決定對應一個清楚的位置，才能在不讀全部材料時找到下一步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "入口只保留流程及停止條件；資料參考說明 id、同名項目與不修改原陣列；畫面參考說明 textContent、可存取名稱與顯示狀態；報告範本定義欄位；解析器負責可機械檢查的參數契約。把判斷條件寫在入口，讓使用者知道何時需要讀某份材料。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "編輯器：本篇 Skill 的目錄關係",
+          "code": "skills/review-change/\n  SKILL.md\n  references/\n    checklist.md\n    data.md\n    ui.md\n  templates/\n    report.md\nskills/parse-input.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "parse-input.mjs 保留在課程工具目錄，由讀者在終端機執行。本篇不把它偷偷變成讀取 Skill 時自動執行的命令。如果需要在流程內執行腳本，必須另外明列執行前提、工具權限與失敗處理，不能只在 Markdown 放一段 shell 就推定會自動運作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "寫一份短而完整的入口"
+        },
+        {
+          "type": "paragraph",
+          "text": "將材料中的 review-change 複製到 .claude/skills/review-change。先比較原始入口，再用下面段落改寫流程；保留原有 frontmatter。每一個參考連結使用相對 Skill 目錄的位置，不放作者電腦的絕對路徑。複製整個資料夾後，關係仍應成立。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 SKILL.md 的操作段落",
+          "code": "## 流程\n1. 確認參數指定的 diff 存在；缺少資訊時停止。\n2. 先讀 diff，判斷影響資料邏輯、畫面，或兩者皆有。\n3. 資料邏輯閱讀 references/data.md；畫面閱讀 references/ui.md。\n4. 只報告能連到實際變更、條件與影響的問題。\n5. 使用 templates/report.md 回報，區分已測與待測。\n\n不修改檔案，不提交或建立 PR。找不到已確認問題可以直接說明。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這份入口沒有把所有檢查點再複製一次，因為重複內容很容易在維護時分歧。另一方面，停止條件不能只藏在某份不一定會讀的參考檔；缺參數就停止是每次都需要的流程底線，因此仍留在入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果一個 diff 同時修改資料與畫面，就應讀兩份相關文件。按需載入不是硬性要求每次只能讀一份，而是讀取量應與任務相關。也不要以「少讀了一份」直接宣稱成本更低，實際用量還受到模型、重試及上下文影響，需要另外量測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "替參考文件加入可操作的案例"
+        },
+        {
+          "type": "paragraph",
+          "text": "data.md 不只寫「注意資料正確性」。寫出兩個同名項目、不同 id 的輸入，並說明切換 a 不能影響 b；列出未知 id 和空陣列；要求比較呼叫前後資料，確認沒有原地改動。這些內容會讓審查者能指出具體反例，而非回傳模糊建議。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ui.md 則用 render.diff 展示 textContent 變成 innerHTML 的差異。待辦標題是資料，即使包含角括號也應顯示成文字。參考文件應要求檢查輸入來源與實際渲染路徑，不能只要看到 innerHTML 這個字就一律判定可利用漏洞。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 references/data.md 的一個檢查案例",
+          "code": "# 資料邏輯審查\n輸入有兩筆同名待辦：a 未完成、b 已完成。\n切換 a 後，只有 a 的 completed 改變，b 維持原值。\n以 id 辨識，不以 title 辨識；原始輸入陣列及物件不得被原地修改。\n回報問題時列出變更行、實際條件與可重現的輸出差異。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "範例資料可以在參考檔裡，但不要塞進真實使用者資料或完整生產日誌。當引用某份規格時，記錄來源與適用版本。文件更新後，確認入口連結與測試案例仍一致；不能只更新文章說法，讓下載材料繼續指向舊檔名。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用兩種 diff 驗證讀取路徑"
+        },
+        {
+          "type": "paragraph",
+          "text": "在全新工作階段呼叫 /review-change fixtures/toggle.diff，觀察是否先讀差異，再取用 data.md。另開新階段呼叫 render.diff，觀察是否取用 ui.md。保存工具讀取路徑及最後報告，把「相關材料已讀取」與「問題判斷正確」分成兩個欄位。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：分別在新工作階段執行",
+          "code": "/review-change fixtures/toggle.diff\n\n/review-change fixtures/render.diff\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若模型一開始就讀完所有文件，檢查入口是否仍引用總表並要求「完整閱讀全部資料」。若只讀入口卻忽略參考，也要看分支條件是否太抽象。用一個對照案例修正一次，不要同時換模型、改目錄與重寫全部指令，否則看不出改善原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還需要測 clean.diff。它只改標題文字，沒有要求套用所有安全規範，更不應因為讀了 UI 檢查表就捏造一個缺陷。成功的參考設計會幫助判斷何時沒有問題，而不是讓每份報告都被迫填滿相同數量的警告。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "故障練習：漏檔與相對路徑"
+        },
+        {
+          "type": "paragraph",
+          "text": "把 references/data.md 暫時改名，再於新階段執行資料 diff 審查。預期流程應指出必要參考不存在，記錄限制或停止，不能假裝讀過。接著恢復檔名，使用相同輸入重試。這個實驗驗證入口與材料之間的依賴，不是在測 Node 套件安裝。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "另一個實驗是只複製 SKILL.md 到新專案，故意漏掉 templates 與 references。執行後應能說明缺少檔案。恢復完整資料夾再比較，便能證明交付單一 MD 不足以分發含附屬材料的 Skill。後續"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-plugin-team-distribution",
+              "text": "Plugin 打包"
+            },
+            {
+              "type": "text",
+              "text": "也要檢查同一種漏檔問題。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "相對路徑必須說明是相對 Skill 位置還是專案位置。參考文件通常相對 Skill 目錄，使用者傳入的 fixtures/toggle.diff 則相對本次練習專案。兩者剛好在同一個儲存庫，不代表可以混用。搬到 Plugin 後，這個差別尤其容易暴露。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "維護時檢查連結與實際用途"
+        },
+        {
+          "type": "paragraph",
+          "text": "新增 references/checklist.md 作為材料索引，每個條目附一句適用條件。索引不需要重複所有內容。若某份參考連續多種任務都沒有使用，先確認它是否沒有相關案例，再考慮刪除或合併，不要只看檔案大小就判定沒有價值。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "原因線索",
+            "修正"
+          ],
+          "rows": [
+            [
+              "每次都讀全部文件",
+              "入口沒有選擇條件",
+              "先分類差異再讀參考"
+            ],
+            [
+              "回報讀過不存在的檔案",
+              "缺少來源與失敗紀錄",
+              "要求列出實際讀取位置"
+            ],
+            [
+              "換專案後找不到範本",
+              "只複製入口或路徑基準錯誤",
+              "保留完整資料夾結構"
+            ],
+            [
+              "乾淨差異也出現固定警告",
+              "檢查表被當必填答案",
+              "要求條件及變更證據"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "在維護紀錄中，把參考檔更新與 Skill 入口更新一起審查。如果 data.md 改了 id 契約，原本 fixtures/toggle.diff 的預期答案也可能需要重新確認。不要在測試失敗時先改評分答案，而是回到真實資料契約判斷哪個版本正確。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成判準與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付可以整包複製的 Skill、資料與畫面兩份參考、報告範本、兩個讀取路徑紀錄及漏檔測試。每份參考都要有明確用途，沒有永久指向不存在文件的連結。成功不要求模型使用固定措辭，但必須能追查它依據哪些材料做判斷。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是新增一個同時改資料與畫面的 diff，先自己列出預期應讀的文件，再執行 Skill 比較。若結果需要多次追問才補齊，將必要的選擇規則補回入口。最後以"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skill-regression-testing",
+              "text": "回歸案例"
+            },
+            {
+              "type": "text",
+              "text": "保存這個混合情境，確保下次拆分文件時不會漏掉跨領域變更。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Extend Claude with skills",
+          "url": "https://code.claude.com/docs/en/skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Create plugins",
+          "url": "https://code.claude.com/docs/en/plugins",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

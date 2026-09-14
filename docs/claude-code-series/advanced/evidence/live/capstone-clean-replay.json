@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-09-14T13:46:48.378811+00:00",
+  "archive": "capstone-result.zip",
+  "archive_sha256": "87cdbe8031e2508274b917bb25f9c671e11924e347ea9f61b8fc6fcca16dba3f",
+  "files": [
+    "app.js",
+    "index.html",
+    "style.css",
+    "model.js",
+    "filter.js",
+    "server.mjs",
+    "tests/model.test.mjs",
+    "tests/filter.test.mjs",
+    "acceptance.md",
+    ".claude/CLAUDE.md",
+    "handoff.md",
+    "README.md",
+    "package.json",
+    "verification/capstone-acceptance.test.mjs"
+  ],
+  "fresh_directory": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-capstone-clean-aof07a3p",
+  "checks": [
+    {
+      "command": "node --test tests/model.test.mjs tests/filter.test.mjs",
+      "exit": 0,
+      "output": "✔ all 模式回傳完整來源資料且不修改原陣列 (1.7764ms)\n✔ active 模式只回傳未完成項目 (0.1404ms)\n✔ completed 模式只回傳已完成項目 (0.0878ms)\n✔ 未知 mode 回傳全部項目 (0.0836ms)\n✔ 同名待辦以 id 分別篩選 (1.2117ms)\n✔ 新增待辦會去除前後空白並保留既有資料 (1.7897ms)\n✔ 拒絕空白與過長內容 (0.0983ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.0958ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.088ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 155.164\n"
+    },
+    {
+      "command": "node --test verification/capstone-acceptance.test.mjs",
+      "exit": 0,
+      "output": "✔ three filters preserve full source and handle unknown mode (1.8889ms)\n✔ empty filters are valid for every mode (0.1012ms)\n✔ duplicate titles remain independent when toggling inside a filtered view (0.1497ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 125.003\n"
+    }
+  ],
+  "verifier_corrections": [
+    "Handoff: mixed arrays retain valid items; malformed JSON/non-array returns empty. Added actual browser evidence and explicit server stop instructions."
+  ],
+  "passed": true,
+  "physical_mobile": false,
+  "deployed": false
+}

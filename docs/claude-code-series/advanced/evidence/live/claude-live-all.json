@@ -1,0 +1,348 @@
+{
+  "checked_at": "2026-09-14T13:13:54.546842+00:00",
+  "cli_version": "2.1.233 (Claude Code)",
+  "os": "Windows",
+  "scope": "isolated synthetic exercise; no production data",
+  "cases": [
+    {
+      "lesson": 61,
+      "passed": true,
+      "returncode": 0,
+      "subtype": "success",
+      "result": "Rule marker: **MOKAAIR-LAB-61**\nCore verification command: `node --test tests/model.test.mjs`",
+      "structured_output": null,
+      "model_usage": {
+        "claude-haiku-4-5-20251001": {
+          "inputTokens": 537,
+          "outputTokens": 14,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 0,
+          "costUSD": 0.000607,
+          "contextWindow": 200000,
+          "maxOutputTokens": 32000,
+          "canonicalModel": "claude-haiku-4-5",
+          "provider": "firstParty"
+        },
+        "claude-opus-5[1m]": {
+          "inputTokens": 2,
+          "outputTokens": 45,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 3754,
+          "webSearchRequests": 0,
+          "costUSD": 0.038674999999999994,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 64000,
+          "canonicalModel": "claude-opus-5",
+          "provider": "firstParty"
+        }
+      },
+      "duration_seconds": 4.28,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 3754,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 45,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 3754,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 45,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 3754,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 3754
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "stderr_summary": ""
+    },
+    {
+      "lesson": 67,
+      "passed": true,
+      "returncode": 0,
+      "subtype": "success",
+      "result": "讀取的檔案：`fixtures/toggle.diff`、`model.js`、`tests/model.test.mjs`、技能範本。未修改任何檔案。\n\n# 審查結果\n\n**輸入檔案：** `fixtures/toggle.diff`（1 個 hunk，針對 `model.js` 的 `toggleTodo`）\n\n**檢查範圍：** 僅該 diff 所觸及的 `toggleTodo`；對照 `model.js:6-8` 現狀與 `tests/model.test.mjs:16-22` 的既有斷言做靜態推演。未審查 diff 以外的檔案。\n\n| 檔案與行號 | 重現條件 | 影響 | 證據 | 驗證狀態 |\n|---|---|---|---|---|\n| `fixtures/toggle.diff:6`（套用後對應 `model.js:7`）：`item.id !== id ? {...item, completed: !item.completed} : item` | 陣列中存在至少一個 id 不等於目標的項目時，呼叫 `toggleTodo(items, id)`。以既有測試資料重現：`toggleTodo([{id:'a',completed:false},{id:'b',completed:true}], 'a')` | 條件被反轉，切換作用在「除目標外的所有項目」：目標項目永不變更，其餘項目全被誤翻轉。以 id 辨認項目的規則失效，使用者點擊任一待辦會改動別筆資料。同名待辦並存時尤其難察覺 | 手動推演：`a` 因 `'a' !== 'a'` 為 false 而原樣返回（`completed` 仍為 `false`）；`b` 因 `'b' !== 'a'` 為 true 被翻成 `false`。這與 `tests/model.test.mjs:19` 的 `assert.equal(updated[0].completed, true)` 與 `:20` 的 `updated[1].completed === true` 直接衝突，兩者皆會失敗 | 未執行（靜態推演 + 既有測試斷言比對）。本技能僅允許 Read/Grep/Glob，無法執行 `node --test` |\n\n修正方向：condition 應維持 `item.id === id`，即 `model.js:7` 現狀。\n\n**補充觀察（非缺陷）：** diff 的 hunk 標頭為 `@@ -5,3 +5,3 @@`，但工作區 `model.js` 的 `toggleTodo` 實際位於第 6-8 行，存在一行偏移；一般 `git apply` 會以 offset 吸收，不影響上述結論。另，改動後對「未命中」項目仍做物件展開複製，不會原地修改傳入陣列——不變性規則本身未被破壞，問題純粹在條件反轉。\n\n**未執行的驗證：**\n- 未執行 `node --test tests/model.test.mjs`（技能限制為唯讀工具），因此「測試失敗」為推演結論而非實測輸出。\n- 未實際套用 diff 到工作區驗證 patch 是否乾淨套用。\n- 未檢查 UI 層（`textContent` 顯示規則）與 `addTodo` / `removeTodo`，因不在此 diff 範圍內。",
+      "structured_output": null,
+      "model_usage": {
+        "claude-opus-5[1m]": {
+          "inputTokens": 8,
+          "outputTokens": 2556,
+          "cacheReadInputTokens": 33330,
+          "cacheCreationInputTokens": 8078,
+          "webSearchRequests": 0,
+          "costUSD": 0.161385,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 64000,
+          "canonicalModel": "claude-opus-5",
+          "provider": "firstParty"
+        }
+      },
+      "duration_seconds": 42.12,
+      "usage": {
+        "input_tokens": 8,
+        "cache_creation_input_tokens": 8078,
+        "cache_read_input_tokens": 33330,
+        "output_tokens": 2556,
+        "output_tokens_details": {
+          "thinking_tokens": 958
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 8078,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 1916,
+            "cache_read_input_tokens": 10669,
+            "cache_creation_input_tokens": 832,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 832
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "stderr_summary": ""
+    },
+    {
+      "lesson": 73,
+      "passed": true,
+      "returncode": 0,
+      "subtype": "success",
+      "result": "`fixtures/tasks.json` 含 **3 筆項目**（id: `a`、`b`、`c`）。\n\n注意 `a` 與 `c` 標題同為「買牛奶」，符合專案規則中「同名待辦可並存、以 id 辨認」的設定。\n\n已執行的檢查：Read 讀取 `fixtures/tasks.json`（1 次）。\n未驗證項目：未執行 `node --test tests/model.test.mjs`，未讀取其他檔案，未修改任何檔案。",
+      "structured_output": null,
+      "model_usage": {
+        "claude-haiku-4-5-20251001": {
+          "inputTokens": 539,
+          "outputTokens": 15,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 0,
+          "costUSD": 0.000614,
+          "contextWindow": 200000,
+          "maxOutputTokens": 32000,
+          "canonicalModel": "claude-haiku-4-5",
+          "provider": "firstParty"
+        },
+        "claude-opus-5[1m]": {
+          "inputTokens": 4,
+          "outputTokens": 274,
+          "cacheReadInputTokens": 5897,
+          "cacheCreationInputTokens": 3676,
+          "webSearchRequests": 0,
+          "costUSD": 0.0465785,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 64000,
+          "canonicalModel": "claude-opus-5",
+          "provider": "firstParty"
+        }
+      },
+      "duration_seconds": 8.38,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 3676,
+        "cache_read_input_tokens": 5897,
+        "output_tokens": 274,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 3676,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 177,
+            "cache_read_input_tokens": 4650,
+            "cache_creation_input_tokens": 273,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 273
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "stderr_summary": ""
+    },
+    {
+      "lesson": 79,
+      "passed": true,
+      "returncode": 0,
+      "subtype": "success",
+      "result": "**執行的檢查:** `list_tasks(limit=2)`(offset 預設 0),未讀取任何檔案。\n\n**回傳 ID:** `a`(買牛奶,未完成)、`b`(整理桌面,已完成)\n\n**nextOffset:** `2`(非 null,表示還有資料;`total` 為 3)\n\n**未驗證項目:** 第三筆待辦內容未查詢(未呼叫 offset=2 的後續頁);未執行 `node --test tests/model.test.mjs`。",
+      "structured_output": null,
+      "model_usage": {
+        "claude-haiku-4-5-20251001": {
+          "inputTokens": 546,
+          "outputTokens": 18,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 0,
+          "costUSD": 0.0006360000000000001,
+          "contextWindow": 200000,
+          "maxOutputTokens": 32000,
+          "canonicalModel": "claude-haiku-4-5",
+          "provider": "firstParty"
+        },
+        "claude-opus-5[1m]": {
+          "inputTokens": 4,
+          "outputTokens": 236,
+          "cacheReadInputTokens": 4423,
+          "cacheCreationInputTokens": 4581,
+          "webSearchRequests": 0,
+          "costUSD": 0.053941499999999996,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 64000,
+          "canonicalModel": "claude-opus-5",
+          "provider": "firstParty"
+        }
+      },
+      "duration_seconds": 8.89,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 4581,
+        "cache_read_input_tokens": 4423,
+        "output_tokens": 236,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4581,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 176,
+            "cache_read_input_tokens": 4423,
+            "cache_creation_input_tokens": 158,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 158
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "stderr_summary": ""
+    },
+    {
+      "lesson": 91,
+      "passed": true,
+      "returncode": 0,
+      "subtype": "success",
+      "result": "{\"summary\":\"共 3 筆待辦事項，以 id 辨識：a「買牛奶」（未完成）、b「整理桌面」（已完成）、c「買牛奶」（未完成）。其中 a 與 c 標題相同但 id 不同，屬於合法的同名並存項目。完成 1 筆、未完成 2 筆，完成率約 33%。\",\"taskIds\":[\"a\",\"b\",\"c\"]}",
+      "structured_output": {
+        "summary": "共 3 筆待辦事項，以 id 辨識：a「買牛奶」（未完成）、b「整理桌面」（已完成）、c「買牛奶」（未完成）。其中 a 與 c 標題相同但 id 不同，屬於合法的同名並存項目。完成 1 筆、未完成 2 筆，完成率約 33%。",
+        "taskIds": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "model_usage": {
+        "claude-haiku-4-5-20251001": {
+          "inputTokens": 632,
+          "outputTokens": 18,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 0,
+          "costUSD": 0.000722,
+          "contextWindow": 200000,
+          "maxOutputTokens": 32000,
+          "canonicalModel": "claude-haiku-4-5",
+          "provider": "firstParty"
+        },
+        "claude-opus-5[1m]": {
+          "inputTokens": 2,
+          "outputTokens": 469,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 4320,
+          "webSearchRequests": 0,
+          "costUSD": 0.054935000000000005,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 64000,
+          "canonicalModel": "claude-opus-5",
+          "provider": "firstParty"
+        }
+      },
+      "duration_seconds": 9.01,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 4320,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 469,
+        "output_tokens_details": {
+          "thinking_tokens": 110
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 4320,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 469,
+            "cache_read_input_tokens": 0,
+            "cache_creation_input_tokens": 4320,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 4320
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "stderr_summary": ""
+    }
+  ]
+}

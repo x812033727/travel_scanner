@@ -1,0 +1,332 @@
+{
+  "slug": "claude-code-mcp-local-server-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 179,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜建立自己的唯讀 MCP 工具",
+      "description": "讓 Claude 查詢本機練習待辦資料本篇讓 Claude 讀取你自己提供的待辦資料。你會建立唯讀 MCP server，先用測試客戶端驗證工具清單與呼叫結果，再連進 Claude Code。完成不是畫面顯示 Connected，而是工具真的回傳指定資料、參數錯誤可以辨認，而且伺服器沒有修改原始檔案。",
+      "hero": {
+        "src": "/guides/claude-code-mcp-local-server-workshop/hero.jpg",
+        "alt": "建立自己的唯讀 MCP 工具：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "本篇讓 Claude 讀取你自己提供的待辦資料。你會建立唯讀 MCP server，先用測試客戶端驗證工具清單與呼叫結果，再連進 Claude Code。完成不是畫面顯示 Connected，而是工具真的回傳指定資料、參數錯誤可以辨認，而且伺服器沒有修改原始檔案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-servers",
+              "text": "MCP 入門"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-setup-troubleshooting",
+              "text": "連線排錯"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-79.zip",
+              "text": "第 79 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，切到 "
+            },
+            {
+              "type": "code",
+              "text": "starter"
+            },
+            {
+              "type": "text",
+              "text": "。需要 Node.js 22；Claude 實機步驟另需有效登入。閱讀約 20 分鐘、實作約 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先看資料與工具契約"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-mcp-local-server-workshop/diagram-1.svg",
+          "alt": "先看資料與工具契約 → 建立唯讀 server → 把業務邏輯獨立出來",
+          "width": 1600,
+          "height": 900,
+          "caption": "先看資料與工具契約 → 建立唯讀 server → 把業務邏輯獨立出來",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "本次假資料在 fixtures/tasks.json，共三筆待辦，其中兩筆同名但 id 不同。伺服器提供 list_tasks 與 get_task：前者是分頁清單，後者按 id 查詢單筆。將兩種操作分開，有助於讓呼叫者知道什麼時候該傳 offset，什麼時候只需要一個識別碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料檔刻意沒有登入資料、私人地址或正式服務連線。即使你接錯測試命令，也不會因此查到正式產品資料。等整條鏈都理解後，再把資料來源換成自己的受控服務；那會需要重新設計認證、授權與資料範圍，不只是替換一個網址。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：安裝已固定版本的練習依賴",
+          "code": "npm ci\nnpm run mcp:probe\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "材料鎖定官方 MCP v2 套件及 Zod 版本，lockfile 保存完整相依關係。不要把舊文章的 @modelcontextprotocol/sdk 匯入路徑與這一版的 @modelcontextprotocol/server 混在同一支程式。遇到找不到匯出時，先看 package.json 與實際安裝版本，再決定該讀哪一代文件。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立唯讀 server"
+        },
+        {
+          "type": "paragraph",
+          "text": "打開 mcp/server.mjs。McpServer 負責工具登記與協定處理，StdioServerTransport 則透過程序的標準輸入輸出交換訊息。這種連接方式由客戶端啟動本機子程序，不需要公開 HTTP 網址，也不表示資料已自動上傳到第三方資料庫。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "mcp/server.mjs：最小工具的核心寫法",
+          "code": "import { McpServer } from '@modelcontextprotocol/server';\nimport { StdioServerTransport } from '@modelcontextprotocol/server/stdio';\nimport { z } from 'zod';\nimport { listTasks } from './data.mjs';\n\nconst server = new McpServer({ name: 'mokaair-todo-lab', version: '1.0.0' });\nserver.registerTool('list_tasks', {\n  description: '唯讀查詢練習待辦；nextOffset=null 表示結束。',\n  inputSchema: z.object({\n    offset: z.number().int().min(0).default(0),\n    limit: z.number().int().min(1).max(20).default(2)\n  }),\n  annotations: { readOnlyHint: true }\n}, async args => ({\n  content: [{ type: 'text', text: JSON.stringify(listTasks(args)) }]\n}));\nawait server.connect(new StdioServerTransport());\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這段核心範例只登記清單工具；下載材料的完整版本另有 completed 篩選及 get_task，測試以完整版本為準。若你想從零重打程式，先讓單一工具通過，再把第二個工具加回去，不要同時修改資料格式、傳輸方式與工具名稱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "readOnlyHint 是描述工具用途的提示，真正的唯讀特性仍取決於程式。本範例沒有寫入資料檔的程式路徑，也沒有呼叫外部修改 API。若在工具內加入檔案寫入，光是保留這個提示不會自動把寫入禁止。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把業務邏輯獨立出來"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料邏輯放在 mcp/data.mjs，讓分頁規則能在沒有 Claude 的情況下驗證。offset 是篩選後清單的位置，limit 介於一到二十；下一頁位置超出資料時回傳 null。呼叫端不能只看 items 長度猜測還有沒有下一頁，因為最後一頁可能剛好滿額。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "呼叫 list_tasks({limit:2}) 的預期資料",
+          "code": "{\n  \"items\": [\n    { \"id\": \"a\", \"title\": \"買牛奶\", \"completed\": false },\n    { \"id\": \"b\", \"title\": \"整理桌面\", \"completed\": true }\n  ],\n  \"nextOffset\": 2,\n  \"total\": 3\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著以 offset=2 讀下一頁，應只剩 id=c，nextOffset 為 null。get_task 查不到資料時回傳 found=false；這與整個工具呼叫失敗不同。使用明確的結果結構，比回傳一句無法區分錯誤原因的「沒有資料」更容易讓後續程式處理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用真正的 MCP 客戶端確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "mcp/probe.mjs 使用官方 Client 和 StdioClientTransport，會啟動 server、列出工具，再呼叫 list_tasks。這一步已走過序列化與協定交換，強度高於只在程式中直接呼叫 listTasks 函式。看到 tools 內包含兩個名稱，還要讀 result 的實際內容是否與 fixture 一致。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：執行協定與邊界測試",
+          "code": "node --test tests/mcp.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試會驗證工具名稱、兩頁資料串接、未知 id，以及 limit=0 的錯誤結果。工具回傳 isError 時，外層協定連線仍可能正常；這代表應用層拒絕了輸入，不能把它判成網路已斷線。測試最後關閉客戶端，讓被啟動的程序正常結束。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你直接執行 node mcp/server.mjs 後畫面停住，這通常是伺服器正在等協定輸入。不要在 stdout 加一行「啟動成功」來排錯，因為 stdout 是 MCP 訊息通道。診斷可寫到 stderr，或由 probe 捕捉需要的結果；使用 Ctrl+C 結束你手動開啟的測試程序。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "接到 Claude Code"
+        },
+        {
+          "type": "paragraph",
+          "text": "在同一個 starter 目錄執行下面的命令。設定檔裡的 node 命令及 mcp/server.mjs 是給子程序使用，因此工作目錄必須正確。若要從別處啟動，改用你電腦上已核對的絕對路徑，不要照抄作者的家目錄。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：只載入本練習 MCP 設定",
+          "code": "claude --strict-mcp-config --mcp-config mcp/fixtures.mcp.json\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：完成一次真實呼叫",
+          "code": "請使用 todo-lab 的 list_tasks 工具，先以 limit=2 讀第一頁，\n再依 nextOffset 讀下一頁。列出三個 id、完成狀態與總筆數。\n不要修改資料，也不要讀取其他專案。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "請查看工具實際被呼叫的紀錄，而不是只看最終文字剛好列出 a、b、c。模型有可能從先前對話知道答案，或在你直接貼了資料後自行整理；那都不能證明 MCP 連線成功。必要時在下一次測試前修改一筆假資料，再建立新的工作階段核對。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "故障練習與定位順序"
+        },
+        {
+          "type": "paragraph",
+          "text": "先將設定裡的 server 路徑故意改錯，啟動應出現程序或連線錯誤；修復路徑後重跑 probe。第二個案例傳 limit=0，應得到輸入不合法，但同一客戶端之後仍能傳合法參數。第三個案例查不存在的 id，應得到 found=false，沒有把服務錯誤偽裝成找不到資料。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "優先檢查",
+            "可用證據"
+          ],
+          "rows": [
+            [
+              "程序起不來",
+              "node、工作目錄、安裝版本",
+              "子程序 stderr"
+            ],
+            [
+              "有工具但資料不對",
+              "fixture 與分頁參數",
+              "原始工具回傳"
+            ],
+            [
+              "Claude 沒呼叫",
+              "需求與工具描述是否明確",
+              "工具使用紀錄"
+            ],
+            [
+              "參數被拒絕",
+              "Schema 型別及範圍",
+              "isError 與錯誤文字"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "確認連線成功之後還要確認資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "工具清單能證明伺服器有回報工具名稱，無法單獨證明查詢結果符合契約。至少完成一次實際呼叫，檢查回傳的 a、b 兩筆資料、分頁位置與總數。若工具名稱正確但資料格式不同，先修正伺服器與用戶端對契約的理解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "關閉測試用戶端後確認子程序已退出。若每次重試都留下背景伺服器，後續錯誤可能來自舊程序或重複啟動，容易被誤認為 MCP 連線不穩。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成與下一步"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後記錄 Node、SDK、Claude 版本，保留 probe 結果、測試輸出與一次真實工具呼叫。用檔案雜湊或 Git diff 確認 fixture 沒有被修改。結束對話後確認沒有遺留由你手動啟動的 server；不要為了清理而終止所有 node 程序。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇的完成分兩層：本機協定測試通過，以及 Claude 確實使用工具。若後者因登入過期尚未完成，就保留為待測；正常的 probe 結果不會自動解決 Claude 的認證問題。這個分層也適用於日後連接真正服務。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是新增 completed=false 的查詢，確認總筆數及下一頁都根據篩選結果計算。接續"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-tool-contracts",
+              "text": "工具契約與分頁"
+            },
+            {
+              "type": "text",
+              "text": "可以擴充測試；需要遠端服務時，再閱讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-http-auth-workshop",
+              "text": "HTTP 認證"
+            },
+            {
+              "type": "text",
+              "text": "，不要直接把本機 stdio 範例當成可公開的 HTTP 服務。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Connect Claude Code to tools via MCP",
+          "url": "https://code.claude.com/docs/en/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Build an MCP server - Model Context Protocol",
+          "url": "https://modelcontextprotocol.io/docs/develop/build-server",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "or",
+          "url": "https://github.com/modelcontextprotocol/typescript-sdk",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

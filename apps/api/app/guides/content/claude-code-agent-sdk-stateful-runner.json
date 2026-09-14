@@ -1,0 +1,327 @@
+{
+  "slug": "claude-code-agent-sdk-stateful-runner",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 194,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜Agent SDK：保存狀態、取消與重新接續",
+      "description": "建立可中斷且可診斷的最小代理程式把 Claude 放進程式後，除了收到回答，還要知道程序何時開始、是否真的完成、取消後留下什麼，以及下次能否接續。本篇使用官方 TypeScript Agent SDK，建立帶狀態檔、事件紀錄與停止上限的最小 runner，只處理一個合成標記，不連外部業務系統。",
+      "hero": {
+        "src": "/guides/claude-code-agent-sdk-stateful-runner/hero.jpg",
+        "alt": "Agent SDK：保存狀態、取消與重新接續：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "把 Claude 放進程式後，除了收到回答，還要知道程序何時開始、是否真的完成、取消後留下什麼，以及下次能否接續。本篇使用官方 TypeScript Agent SDK，建立帶狀態檔、事件紀錄與停止上限的最小 runner，只處理一個合成標記，不連外部業務系統。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-agent-sdk",
+              "text": "Agent SDK 入門"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-context-handoff-workshop",
+              "text": "交接文件"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-structured-cli-pipeline",
+              "text": "結構化 CLI"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-94.zip",
+              "text": "第 94 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，開啟 starter。需要 Node.js 22 以上與 SDK 支援的有效認證；閱讀約 20 分鐘，實作約 75 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "固定依賴並確認啟動位置"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-agent-sdk-stateful-runner/diagram-1.svg",
+          "alt": "固定依賴並確認啟動位置 → 把狀態與會話識別分開保存 → 讀取事件串流，等到真正的結果",
+          "width": 1600,
+          "height": 900,
+          "caption": "固定依賴並確認啟動位置 → 把狀態與會話識別分開保存 → 讀取事件串流，等到真正的結果",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "材料將 SDK 放在 automation/sdk 的獨立 package.json，版本固定為本課核對的 0.3.270，並附 package-lock.json。先在該目錄執行 npm ci --ignore-scripts，再回 starter 根目錄啟動 runner。這樣程式依賴從自身位置解析，工作資料則保存到你指定的專案。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：安裝後回到 starter 執行",
+          "code": "cd automation/sdk\nnpm ci --ignore-scripts\ncd ../..\nnode automation/sdk/run.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要在 automation/sdk 裡執行完就把那裡的 run-data 誤認為專案根目錄產出。程式使用 process.cwd 作為本次工作目錄，這個選擇必須在文件與實際命令一致。若改用自己的 CLI 路徑，先確認有效，再透過 CLAUDE_BIN 指定，不照抄作者的使用者目錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "套件能安裝只代表程式材料準備好，沒有證明模型認證有效。遇到 OAuth 過期、方案或服務拒絕時，保存錯誤並先處理帳號，不能把依賴測試通過寫成 SDK 真實呼叫成功。本課製作時先遇到認證過期，重新登入後已完成首輪與接續；失敗嘗試仍保存在驗證紀錄。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把狀態與會話識別分開保存"
+        },
+        {
+          "type": "paragraph",
+          "text": "runner 建立 run-data/session.json，保存 schemaVersion、runner 與 SDK 版本、合成輸入、輸入雜湊、sessionId、時間和工作狀態。最初是 running，只有收到合法的最終結果才標 completed；錯誤與取消分別是 failed、cancelled。"
+        },
+        {
+          "type": "paragraph",
+          "text": "sessionId 是接續模型對話的識別，不是全部任務內容，也不是外部交易回滾憑證。只保存 id 而沒有輸入、版本和工作目錄，之後即使能連回對話，也難以判斷它對應哪一份程式與任務。本課保存的輸入是合成文字，不含私人資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "狀態先寫到同目錄暫存檔再重新命名，減少讀到半份 JSON 的機會。這份 runner 設計給一次本機練習，不支援多個程序同時共用同一個 session.json。需要並行時，每次執行應使用獨立目錄或額外的鎖與索引。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀取事件串流，等到真正的結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "SDK query 回傳事件串流，初始化事件可提供 session id，文字或工具事件則表示過程，result 才是最終結果來源。本課只要求回覆 MOKAAIR-SDK-94 標記，並檢查 result 的狀態和內容。看到第一段文字不能立即宣稱任務完成。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "SDK 操作骨架：在已安裝 SDK 的專案執行",
+          "code": "import {query} from '@anthropic-ai/claude-agent-sdk';\nconst controller=new AbortController();\nlet finish;\nconst finished=new Promise(resolve=>{finish=resolve;});\ncontroller.signal.addEventListener('abort',finish,{once:true});\nasync function* input(){\n  yield {type:'user',message:{role:'user',content:'回覆合成標記 MOKAAIR-SDK-94，不使用工具。'},parent_tool_use_id:null};\n  await finished;\n}\nconst stream=query({\n  prompt: input(),\n  options:{tools:[],settingSources:[],mcpServers:{},maxTurns:3,maxBudgetUsd:0.25,abortController:controller}\n});\ntry {\n  for await (const message of stream) {\n    if(message.type==='result'){console.log(message.subtype);finish();}\n  }\n} finally {finish();stream.close();}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "上方是展示事件處理的骨架，input() 的完整定義見材料中的 runner：async generator 先 yield 使用者訊息，再等待最終結果或取消後才結束。SDK 的單次字串輸入不支援相同的即時中斷；不能只把 AbortController 加到字串範例就宣稱取消可用。完整 runner 還有逾時、狀態保存、結果驗證與錯誤處理。不要只複製這幾行到正式排程就認為已有完整停止機制。材料使用 tools 空清單，不需要讓模型讀其他專案或執行命令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "events.jsonl 只記錄事件類型、子類型與時間，不保存所有訊息全文。這足以觀察初始化與結束順序，也避免習慣性把工具輸入或敏感內容留在日誌。若實際任務需要更多追查資料，先定義白名單欄位與保留期間。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "確認成功與認證失敗不混用"
+        },
+        {
+          "type": "paragraph",
+          "text": "成功判準不是 subtype 字串恰好等於 success。材料還確認 is_error 不是 true、內容包含預定標記，而且沒有已知認證失敗訊息。課程曾遇到外殼子類型看似成功，但內容其實表示 OAuth 過期，因此下游必須檢查實際結果。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：先測狀態判斷，不需模型帳號",
+          "code": "node --test tests/sdk-state.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這些測試使用合成事件，確認非最終訊息、錯誤狀態、空內容與認證失敗不會被當成完成。它們不模擬一個真實模型會話來冒充驗收。真正執行 run.mjs 成功後，還要讀 session.json，核對標記、session id 與最終狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用其他任務，應換成適合的成功條件，例如 JSON Schema 及業務欄位，不能沿用標記字串當通用完成判準。工具回傳合法資料也可能不足以完成使用者需求，最後仍要對照具體驗收。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "取消與時間上限"
+        },
+        {
+          "type": "paragraph",
+          "text": "完整 runner 使用 AbortController，六十秒上限到時取消；讀者按 Ctrl+C 也會觸發取消。catch 將狀態保存為 cancelled 或 failed，finally 清理計時器與訊號處理器。取消是停止本次呼叫，不是把已發生的檔案或外部操作撤回。"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試取消時，在專案終端機執行 node automation/sdk/run.mjs --cancel-demo。它以合成故事延長輸出；看到 Received first text output 後，在模型仍執行中按 Ctrl+C，再確認程序已結束、狀態為 cancelled。若任務太快完成，這輪只能算正常完成，不能說取消已測；重新設計可觀察的測試再做一次。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若程序被強制結束，可能來不及寫最後狀態。下次看到 running 時應核對程序是否還存在、事件最後時間與結果檔，不能直接當成仍在執行。這和"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-scheduled-workflow-reliability",
+              "text": "排程中斷"
+            },
+            {
+              "type": "text",
+              "text": "的判讀方式相同。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "使用保存的 session 接續"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次真實完成後，在同一工作目錄執行 --resume。runner 讀取既有 sessionId，第二次提示只請它回覆上次的標記，不在提示裡重新提供答案。若能正確回覆，保存新的結果與事件，作為同一會話接續的證據。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：完成首輪後再執行",
+          "code": "node automation/sdk/run.mjs --resume\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果沒有有效 session id，程式應停止，不默默建立新會話卻回報已接續。版本或帳號改變後，保存的 id 也可能無法使用；先記錄錯誤，再決定建立新會話並用交接文件補足背景。新建與接續都可以合理，但必須正確命名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "故障練習是備份 session.json，再移除 sessionId 或改成不相容 schemaVersion，執行 --resume 應明確拒絕。恢復備份後才進行真實接續，不嘗試猜測他人的 session id，也不將識別碼公開作為範例。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成判準與小練習"
+        },
+        {
+          "type": "table",
+          "header": [
+            "層次",
+            "需要的證據"
+          ],
+          "rows": [
+            [
+              "依賴與程式",
+              "鎖定版本、語法及狀態測試"
+            ],
+            [
+              "真實首輪",
+              "合法最終 result、標記、session id"
+            ],
+            [
+              "取消",
+              "程序結束與 cancelled 或明確錯誤"
+            ],
+            [
+              "接續",
+              "使用保存 id 的新結果與事件"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "交付 runner、狀態檔、事件紀錄、取消與接續結果。帳號受阻時，只能交付本機材料及待重驗紀錄，不把合成事件當成真實 SDK 成功。小練習是增加一個輸入版本欄位，在接續前比對需求是否相同，避免把不同任務誤接到舊會話；最後使用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-workflow-evaluation-cost",
+              "text": "品質與成本評估"
+            },
+            {
+              "type": "text",
+              "text": "整理整段流程的實際時間與用量。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Run Claude Code programmatically",
+          "url": "https://code.claude.com/docs/en/headless",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code GitHub Actions",
+          "url": "https://code.claude.com/docs/en/github-actions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Run prompts on a schedule",
+          "url": "https://code.claude.com/docs/en/scheduled-tasks",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Agent SDK overview",
+          "url": "https://code.claude.com/docs/en/agent-sdk/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Work with sessions",
+          "url": "https://code.claude.com/docs/en/agent-sdk/sessions",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

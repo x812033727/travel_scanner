@@ -1,0 +1,342 @@
+{
+  "slug": "claude-code-team-config-maintenance",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 166,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜把個人設定整理成團隊可維護的設定包",
+      "description": "建立共用範本、個人覆寫與更新檢查方式個人電腦能用的 Claude 設定，直接提交後不一定能讓同事順利啟動。本篇會整理共用規則、專案設定與個人覆寫，模擬一次設定升級和還原。交付內容是一份沒有私人路徑或金鑰、附有變更說明及檢查方式的設定包。",
+      "hero": {
+        "src": "/guides/claude-code-team-config-maintenance/hero.jpg",
+        "alt": "把個人設定整理成團隊可維護的設定包：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "個人電腦能用的 Claude 設定，直接提交後不一定能讓同事順利啟動。本篇會整理共用規則、專案設定與個人覆寫，模擬一次設定升級和還原。交付內容是一份沒有私人路徑或金鑰、附有變更說明及檢查方式的設定包。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-settings-json",
+              "text": "設定範圍"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-project-rules-workshop",
+              "text": "規則設計"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-monorepo-rules-workshop",
+              "text": "分層規則"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-66.zip",
+              "text": "第 66 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，開啟 starter。需要 Node.js 22 以上；驗證 Claude 採用設定時需要完成登入。閱讀約 20 分鐘，練習約 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分類，再決定哪些檔案進版本庫"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-team-config-maintenance/diagram-1.svg",
+          "alt": "先分類，再決定哪些檔案進版本庫 → 用小範本建立共同起點 → 在兩份乾淨資料夾套用",
+          "width": 1600,
+          "height": 900,
+          "caption": "先分類，再決定哪些檔案進版本庫 → 用小範本建立共同起點 → 在兩份乾淨資料夾套用",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "CLAUDE.md 描述專案知識與操作慣例，settings.json 控制支援的行為設定，settings.local.json 則適合保留本機差異。使用者層級與組織受管理設定還有不同的範圍。不要把所有檔案打包成一份，再期待每位同事覆蓋自己原有的設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇共用內容只有固定模型測試命令、假資料目錄的 Read 拒絕範例，以及專案規則。個人終端機路徑、私人 MCP 權杖、帳號登入狀態和工作階段紀錄不放進設定包。設定檔看似只是 JSON，也可能包含敏感環境變數，因此要逐欄檢查內容。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "類型",
+            "例子",
+            "維護方式"
+          ],
+          "rows": [
+            [
+              "共用知識",
+              "模型測試命令、id 契約",
+              "CLAUDE.md 與規則檔"
+            ],
+            [
+              "共同行為",
+              "支援的權限與 Hook 定義",
+              "專案 settings.json"
+            ],
+            [
+              "個人差異",
+              "本機工具路徑、偏好",
+              "不提交的本機設定"
+            ],
+            [
+              "管理政策",
+              "組織強制限制",
+              "依管理來源處理"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "settings.local.json 不提交只是預期；還要用 Git 檢查忽略是否有效。曾經提交過的檔案，即使後來寫入 .gitignore，也不會自動從歷史消失。若課程中只使用虛構內容，記錄這個案例即可；真實敏感資料外洩則需要依實際流程處理，不能以移除當前檔案宣稱已解決。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用小範本建立共同起點"
+        },
+        {
+          "type": "paragraph",
+          "text": "開啟 config/settings.shared.json，先確認每個欄位的用途，再複製到 .claude/settings.json。若原本存在設定，先保存可還原的副本，再逐欄合併。不要把這個課程範本當成完整的官方設定 Schema，它只選用了本次需要的少數欄位。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "寫入 .claude/settings.json：本課共用範本",
+          "code": "{\n  \"permissions\": {\n    \"allow\": [\"Bash(node --test tests/model.test.mjs)\"],\n    \"deny\": [\"Read(./private/**)\"]\n  }\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 CHANGELOG.md 記錄版本 1 的用途、適用 CLI 版本及你實際驗證的作業系統。版本號是這份設定包自己的版本，不是 Claude Code 版本。兩個版本都應記錄，否則同事無法判斷「升級後失效」指的是工具更新還是設定改動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著執行教材檢查器。它會檢查本課約定的頂層欄位及 permissions 清單型別，遇到不合規內容以非零退出碼結束。這只能發現本課規格內的錯誤，不保證整份設定一定符合未來所有官方版本；仍要以實際 CLI 的設定檢查與行為作最後確認。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：檢查正確與故障範本",
+          "code": "node config/check-config.mjs config/settings.shared.json\nnode config/check-config.mjs config/settings.bad.json\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "正確範本應成功；故障範本把 allow 寫成字串，並加入課程不接受的欄位，預期檢查失敗。這是刻意測試，不能為了讓畫面全綠而刪掉錯誤案例。如果錯誤設定也通過，代表檢查工具本身需要修正，而不是證明它已被 Claude 接受。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在兩份乾淨資料夾套用"
+        },
+        {
+          "type": "paragraph",
+          "text": "把 starter 解壓縮到兩個不同資料夾，稱為 reader-a 與 reader-b。兩者使用相同設定與程式，不使用你原本工作目錄裡的 node_modules 或未提交修改。先各跑模型測試，再各確認設定檢查結果。這一輪驗證檔案包是否完整、相對路徑是否正確。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個資料夾如果共用同一個作業系統帳號，仍會讀到同一份使用者設定；不能把它們稱為兩個完全獨立的 Claude 使用者環境。需要隔離使用者層級影響時，使用支援的設定來源選項建立明確條件，或在另一個實際帳號上測試，並把管理政策的影響保留在紀錄裡。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：只載入專案來源的 CLI 對照實驗",
+          "code": "claude --setting-sources project\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "啟動後查看 /status、/permissions 及相關設定來源。這個參數用於本篇控制變因，不代表能繞過組織受管理政策，也不會讓專案中的自然語言內容變成安全邊界。請記錄每份設定的來源，不要只截取一個看似正確的值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 reader-b 的本機設定加入一個你了解的偏好，重新啟動確認差異。把它與共同規則分開記錄，並用 git status --short 及 git check-ignore 檢查本機檔案沒有出現在預定提交中。不要把登入檔或目前 session 資料拿來模擬個人覆寫。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "升級時先看差異與適用條件"
+        },
+        {
+          "type": "paragraph",
+          "text": "模擬版本 2 要加入一個 Hook。先只在 reader-a 套用 config/hooks.settings.json，並把 hooks 目錄隨包附上。檢查命令引用的每個腳本是否存在、Node 是否能找到、執行目錄假設是否正確。只提交 settings.json，卻漏掉腳本，是團隊設定常見的失敗原因。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Hook 設定不要機械地替換整個檔案；保留原有 permissions，合併 hooks 欄位。先用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hook-event-test-lab",
+              "text": "Hook 事件實驗"
+            },
+            {
+              "type": "text",
+              "text": "的離線重播確認腳本可用，再在新 Claude 工作階段做真實觸發。離線重播通過是材料測試，不能直接當成 Claude 已載入 Hook 的證明。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "寫下版本 2 的前提、增加了哪些事件、如何停用，以及對其他作業系統的限制。若命令依賴 Bash，但同事使用原生 Windows，不能只寫「跨平台」。要嘛改成 Node 入口並實測，要嘛明列適用環境，附上未支援環境的處理方式。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "做一次真正的還原"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 reader-a 保存版本 2 的差異，再恢復版本 1 的 settings.json 與相關檔案。重新啟動，核對 Hook 不再由該設定觸發；如果 Hook 日誌仍存在，先分辨是歷史資料還是新事件，不能因為看到舊檔就認定還原失敗。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還原也需要交代資料邊界。停用 Hook 會停止後續動作，但不會自動撤銷之前寄出的通知或外部操作。本課的 audit 只寫本機 run-data，保留它作為證據即可。當設定包接入外部服務時，要另外規劃補救方式，不能承諾切回舊版本就能取消所有副作用。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "檢查重點",
+            "處理"
+          ],
+          "rows": [
+            [
+              "同事機器找不到腳本",
+              "包內檔案及相對路徑",
+              "附齊腳本、重新解壓縮驗證"
+            ],
+            [
+              "設定被管理政策覆蓋",
+              "設定來源與權限",
+              "記錄限制，由管理流程處理"
+            ],
+            [
+              "本機偏好意外被提交",
+              "Git 追蹤及忽略狀態",
+              "移出共用內容並檢查差異"
+            ],
+            [
+              "還原後仍看到舊日誌",
+              "事件時間與新階段",
+              "分辨歷史資料與新觸發"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成判準與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付設定範本、必要腳本、CHANGELOG.md、兩個資料夾的檢查紀錄，以及版本 2 回到版本 1 的還原證據。所有機器路徑應能由專案位置推導，任何需要帳號或人工授權的步驟都要明列，不能把你自己的登入狀態當成材料包的一部分。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是請同事只照 README 套用版本 1，故意不提供口頭提示。記錄對方第一個卡住的位置，將實際缺少的檔案或說明補上，再重做一次乾淨解壓縮。當共用範圍擴大到多個 Skills 與 Hooks，可接著整理成"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-plugin-team-distribution",
+              "text": "可版本管理的 Plugin"
+            },
+            {
+              "type": "text",
+              "text": "，並沿用本篇的升級和還原驗證方式。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "How Claude remembers your project",
+          "url": "https://code.claude.com/docs/en/memory",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configure permissions",
+          "url": "https://code.claude.com/docs/en/permissions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configure the sandboxed Bash tool",
+          "url": "https://code.claude.com/docs/en/sandboxing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,348 @@
+{
+  "slug": "claude-code-subagent-review-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 187,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜讓 Subagent 提出可核對的審查發現",
+      "description": "設計專責代理的範圍、工具及回報格式讓專責代理審查程式，可以分開檢查資料邏輯與畫面，但兩份回報不會自動變成兩次獨立驗證。本篇建立唯讀的 data-reviewer 與 ui-reviewer，要求每項發現都有位置、條件與影響，再由主工作階段重現、去重並駁回沒有依據的意見。",
+      "hero": {
+        "src": "/guides/claude-code-subagent-review-workshop/hero.jpg",
+        "alt": "讓 Subagent 提出可核對的審查發現：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "讓專責代理審查程式，可以分開檢查資料邏輯與畫面，但兩份回報不會自動變成兩次獨立驗證。本篇建立唯讀的 data-reviewer 與 ui-reviewer，要求每項發現都有位置、條件與影響，再由主工作階段重現、去重並駁回沒有依據的意見。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-subagents-guide",
+              "text": "Subagents 入門"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tdd-debugging-workshop",
+              "text": "紅綠除錯"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skill-regression-testing",
+              "text": "Skill 評分"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-87.zip",
+              "text": "第 87 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，開啟 starter。需要可使用 Subagents 的 Claude CLI 和 Node.js 22；閱讀約 20 分鐘，實作約 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先定義專責角色的輸入與責任"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-subagent-review-workshop/diagram-1.svg",
+          "alt": "先定義專責角色的輸入與責任 → 建立唯讀代理文件 → 提供兩個可獨立完成的審查任務",
+          "width": 1600,
+          "height": 900,
+          "caption": "先定義專責角色的輸入與責任 → 建立唯讀代理文件 → 提供兩個可獨立完成的審查任務",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "資料代理處理 model.js、filter.js、測試和 toggle.diff，查看 id、狀態切換與來源資料是否被修改；畫面代理處理 app.js、index.html、style.css 和 render.diff，追查輸入如何渲染及互動是否合理。兩者都只讀，不修改、不提交、不使用外部服務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先讓主工作階段列出待審差異與驗收條件，再交給角色。不要只說「幫我找問題」就讓每個代理重讀整個專案；那會增加重複閱讀，也可能讓兩者都只注意同一個明顯問題，卻漏掉另一個領域。"
+        },
+        {
+          "type": "paragraph",
+          "text": "材料的兩份 diff 是審查輸入，不代表已套用到目前程式。代理回報時應分清楚目前檔案與 diff 提議的變更，不能引用不存在於現場的錯誤行為當作已重現。需要驗證時，主工作階段在獨立副本套用最小變更再測試。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立唯讀代理文件"
+        },
+        {
+          "type": "paragraph",
+          "text": "把 agents/data-reviewer.md 和 agents/ui-reviewer.md 複製到 .claude/agents，確認完整檔名與位置。這些是 Claude 專責代理定義，不是 CLAUDE.md，也不會因為放在一般 agents 素材資料夾就自動載入。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 .claude/agents/data-reviewer.md",
+          "code": "---\nname: data-reviewer\ndescription: 唯讀審查待辦資料邏輯，回報有位置與重現條件的問題。\ntools: Read, Grep, Glob\n---\n\n只處理 model.js、filter.js、tests 與 fixtures/toggle.diff。\n不修改、不提交、不使用外部服務。\n每項發現列出檔案行號、觸發條件、影響與驗證狀態。\n沒有執行的測試列為待驗證；找不到問題可以明說。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這裡的 tools 限定代理可用工具，因此它不能實際執行測試或啟動瀏覽器。回報中的「未執行」是預期的誠實界線。若你希望它執行命令，需要另外擴充範圍與驗證；不能保留唯讀工具設定，卻要求它聲稱測試已通過。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在新的 Claude 工作階段使用 /agents 查看可用來源，確認兩個代理都能找到。若讀者使用的版本或組織政策不支援，保留文件及手動審查流程，將真正的代理啟動標為待測。文件語法通過不等於角色已實際運作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "提供兩個可獨立完成的審查任務"
+        },
+        {
+          "type": "paragraph",
+          "text": "主工作階段先指定各自的輸入與預期回報，不讓兩位代理同時改同一份檔案。本課只做閱讀，所以可以平行檢查；後續真正修正由主工作階段統一處理。這樣審查意見不會在驗證前就直接變成修改。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：請主工作階段分派審查",
+          "code": "請使用 data-reviewer 審查 fixtures/toggle.diff，核對 id 與狀態契約。\n請使用 ui-reviewer 審查 fixtures/render.diff，追查標題來源與 DOM 渲染。\n兩者只讀，分別回報位置、條件、影響、證據與未執行項目。\n不要讓角色自行修正、提交或建立 PR；收到結果後先由你核對。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "觀察實際代理啟動紀錄與完成回報，保存每個角色的輸入。不要只因主工作階段說「已請專家檢查」就當成真的建立兩個代理；若介面或日誌無法確認，記錄證據不足。也不要把你手動讀過的結論偽裝成代理獨立發現。"
+        },
+        {
+          "type": "paragraph",
+          "text": "角色之間可以需要相同的少量共同契約，例如 id 必須穩定，但不必複製全部對話。將必要背景寫清楚，避免代理因缺少需求而猜測。當任務邊界變動，重新提供更新後的範圍，不要求角色靠別的對話自行得知。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "主工作階段逐項核對"
+        },
+        {
+          "type": "paragraph",
+          "text": "收到發現後，先確認引用的檔案與行號存在，再看觸發條件是否能產生描述的影響。資料代理指出比較反轉時，用兩筆不同 id 的資料重現；畫面代理指出 innerHTML 風險時，追查不受信任文字是否真的進入該渲染位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只因兩位代理提出相同意見就加倍信心。它們可能引用同一段文字或受到相同提示影響。將重複發現合併成一項，保留各自證據來源；真正需要的是獨立可重現的條件，不是相同結論出現的次數。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 review-verification.md 的核對格式",
+          "code": "# 主工作階段核對\n發現識別：\n提出角色：\n檔案與行號：\n具體觸發條件：\n實際重現命令或瀏覽器步驟：\n結果：採納／駁回／待驗證\n理由及未完成項目：\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "駁回也要有理由。例如只是修改 h1 文案，卻被說成沒有驗證輸入的漏洞，主工作階段應指出沒有連到資料流的證據。不要把所有「可能」都變成正式缺陷清單，讓讀者承擔不必要的修正工作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "再做正常與資訊不足的對照"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 clean.diff 測試沒有已確認問題的情境。若要交給角色，先明確擴充該次讀取範圍，避免角色為了讀對照檔自行忽略其原定 scope。預期能說明沒有足夠證據支持缺陷，而不是一定要交出至少三個問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再提供缺少相關檔案的差異，觀察代理是否指出資訊不足。這個結果不應被當成能力差而扣分；在沒有資料時誠實停止，正是可維護流程需要的行為。主工作階段補上必要檔案後再重跑，確認新證據如何改變判斷。"
+        },
+        {
+          "type": "paragraph",
+          "text": "角色工具限制也會影響證據種類。只有 Read、Grep、Glob 的代理可以做靜態分析，不能用自己的敘述取代瀏覽器實測。由主工作階段或讀者執行實際驗證後，再把狀態從待測改成已確認。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "修正與最終驗收由整體流程負責"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "採納的問題依"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tdd-debugging-workshop",
+              "text": "紅綠除錯"
+            },
+            {
+              "type": "text",
+              "text": "建立失敗案例，再做最小修正。修正後重跑相關測試，必要時再請角色檢查差異，但不要把「角色完成」當成整套功能完成。最終仍要確認原需求及所有採納發現的狀態。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若多個角色都需要修改檔案，先使用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-worktree-integration-workshop",
+              "text": "Worktree 整合"
+            },
+            {
+              "type": "text",
+              "text": "或明確分配寫入範圍。唯讀審查容易並行，不代表有狀態的實作也能直接套相同模式。共用設定、暫存檔與埠號仍可能互相影響。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "回報情況",
+            "主工作階段處理"
+          ],
+          "rows": [
+            [
+              "有位置、條件及可重現結果",
+              "採納並連到修正驗證"
+            ],
+            [
+              "相同根因由多角色提出",
+              "去重，保存證據來源"
+            ],
+            [
+              "只有泛泛建議",
+              "要求具體依據或駁回"
+            ],
+            [
+              "缺少資料、未執行測試",
+              "保留待驗證，不假報完成"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "由主工作階段統一判斷衝突建議"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個審查代理可能對相同修改提出不同建議。主工作階段先找出各自引用的檔案與條件，再以需求和測試判斷，不用多數票決定程式是否正確。若其中一份建議超出指定範圍，記錄原因並忽略該項，保留可驗證的部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整合報告時去除重複發現，但不要刪掉不同觸發條件。例如相同一行程式可能同時造成資料遺失與顯示錯誤，兩項都需要各自的重現方式。最後交付一份含檔案位置、影響、修正建議和實測限制的清單，讓使用者能逐項處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "代理名稱出現在畫面上，只能證明建立了角色；需要查看它實際讀取的內容與回報，才能判斷分工是否發揮作用。本文的角色檔和假 diff 是可重現材料，實際多代理操作仍要在可用的 Claude 工作階段中完成。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成判準與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付兩份代理 MD、實際分派紀錄、各自報告與主工作階段核對表。每個採納發現都有獨立驗證，未執行項目保持清楚。若只有手動角色演練，文件應如實標示，不能寫成已通過真正 Subagent 整合。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是讓兩個角色收到同一份 diff，但給不同明確檢查範圍，再比較重複與互補之處。記錄總耗時與核對工作，而不只看角色數量。需要更多角色直接協調時，再進入"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-agent-teams-integration-lab",
+              "text": "Agent Teams 實驗"
+            },
+            {
+              "type": "text",
+              "text": "，比較額外協調是否值得。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Create custom subagents",
+          "url": "https://code.claude.com/docs/en/sub-agents",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Orchestrate teams of Claude Code sessions",
+          "url": "https://code.claude.com/docs/en/agent-teams",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue local sessions from any device with Remote Control",
+          "url": "https://code.claude.com/docs/en/remote-control",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

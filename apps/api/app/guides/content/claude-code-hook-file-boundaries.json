@@ -1,0 +1,330 @@
+{
+  "slug": "claude-code-hook-file-boundaries",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 176,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜用 Hook 保護指定檔案並測試路徑邊界",
+      "description": "為特定編輯工具設置範圍檢查及清楚的拒絕訊息這一篇會替 Write 與 Edit 設定明確的練習邊界：可以修改專案內一般材料，不能改 private 假資料目錄，也不能離開練習根目錄。你會測試相對路徑、大小寫與別名路徑，並列出這個 Hook 沒有涵蓋的工具，避免把單一攔截機制說成全面保護。",
+      "hero": {
+        "src": "/guides/claude-code-hook-file-boundaries/hero.jpg",
+        "alt": "用 Hook 保護指定檔案並測試路徑邊界：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這一篇會替 Write 與 Edit 設定明確的練習邊界：可以修改專案內一般材料，不能改 private 假資料目錄，也不能離開練習根目錄。你會測試相對路徑、大小寫與別名路徑，並列出這個 Hook 沒有涵蓋的工具，避免把單一攔截機制說成全面保護。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-project-data-safety",
+              "text": "資料安全"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-permissions-sandbox-lab",
+              "text": "權限與 Sandbox"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hook-event-test-lab",
+              "text": "Hook 事件"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-76.zip",
+              "text": "第 76 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，開啟 starter。需要 Node.js 22；離線測試不需登入。閱讀約 20 分鐘，實作約 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把保護範圍寫成具體條件"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-hook-file-boundaries/diagram-1.svg",
+          "alt": "把保護範圍寫成具體條件 → 先讀路徑正規化程式 → 重播允許與拒絕案例",
+          "width": 1600,
+          "height": 900,
+          "caption": "把保護範圍寫成具體條件 → 先讀路徑正規化程式 → 重播允許與拒絕案例",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "受保護內容是 private/demo.txt，裡面只有虛構文字。一般寫入對照組是 fixtures/demo.json。Hook 僅處理 PreToolUse 中的 Write 與 Edit；它不攔截你手動操作的終端機，也不自動控制其他 MCP 伺服器。這份明確清單應放進完成報告，不能只寫「已保護專案」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "拒絕原因也要可理解。指向 private 的操作回報 protected fixture directory；離開根目錄則回報 outside exercise。讀者應能辨認是檔案用途受限，還是路徑本身越界，而不是看到一個沒有上下文的失敗碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要使用真實機密測試。只需在課程資料夾內建立假資料，就能觀察工具拒絕及日誌行為。測試過程也不需要把假機密全文送入 Hook；事件中的 file_path 已足以做邊界判斷，避免習慣性記錄整個 tool_input。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先讀路徑正規化程式"
+        },
+        {
+          "type": "paragraph",
+          "text": "材料的 boundary.mjs 先取得練習根目錄的真實位置，再解析輸入路徑。目標還不存在時，往上找最近存在的父目錄，解析它的真實位置，再接回剩餘部分。這讓新檔案也能檢查，而且能辨識父目錄中的連結指向何處。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後用 path.relative 比較目標和根目錄。相對結果以 .. 開頭或仍是絕對路徑時，表示它不在允許範圍。不能只用字串 startsWith(root)，因為例如 lab 與 lab-copy 可能有相同字首，卻是不同資料夾。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "專案根目錄：建立 path-check.mjs 作為觀察入口",
+          "code": "import {safePath} from './hooks/boundary.mjs';\nfor (const input of ['fixtures/demo.json', 'private/demo.txt', '../outside.txt']) {\n  try {\n    const result = safePath(process.cwd(), input);\n    console.log(JSON.stringify({input, relative: result.relative}));\n  } catch (error) {\n    console.log(JSON.stringify({input, rejected: error.message}));\n  }\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個入口只解析路徑，不寫入那些檔案。private 位於根目錄內，所以邊界函式會接受它；後續 protect.mjs 再依用途拒絕。把「是否在專案內」與「專案內哪裡可改」分成兩步，讓規則容易閱讀和測試。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "重播允許與拒絕案例"
+        },
+        {
+          "type": "paragraph",
+          "text": "先看 fixtures/pre-write.json，確認 tool_name、file_path 和事件名稱。複製成另一份案例，分別指向一般檔案、private/demo.txt 及 ../outside.txt。離線重播只檢查判斷結果，不會真的呼叫 Claude Write。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "寫入 fixtures/pre-private.json",
+          "code": "{\n  \"hook_event_name\": \"PreToolUse\",\n  \"tool_name\": \"Write\",\n  \"session_id\": \"lab-76\",\n  \"tool_input\": {\"file_path\": \"private/demo.txt\", \"content\": \"虛構修改\"}\n}\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：查看拒絕決定",
+          "code": "node hooks/replay.mjs protect fixtures/pre-private.json\nnode --test tests/hooks.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "拒絕輸出應位於 hookSpecificOutput，hookEventName 是 PreToolUse，permissionDecision 是 deny，並有原因。允許案例不必主動輸出 allow；保持沒有拒絕決定，讓原本權限流程繼續判斷。這不代表 Hook 已替所有操作預先批准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "將 tool_name 改成 Edit 再重試，確認兩個工具都涵蓋。另用錯誤事件名稱測試，應出現事件不符而非默默成功。材料的外層解析錯誤使用非零退出碼，合法但不允許的路徑則產生明確的工具拒絕決定，兩種訊號要分開閱讀。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "比較大小寫、分隔符與別名"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 路徑通常不區分大小寫，Linux 常會區分。本課對受保護目錄名採不區分大小寫的判斷，因此 Private 與 private 都視為課程保護範圍；這是本課政策，並不是宣稱所有作業系統的檔案規則相同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 path API 將檔案系統路徑轉成可比較的相對路徑，再以統一斜線檢查。不要把使用者傳入的斜線直接做文字替換後就當成完整安全處理。磁碟機、網路路徑、符號連結及不存在的父目錄都可能帶來差異，必須在實際支援環境測試。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若你能建立目錄連結，可在獨立的臨時練習區把一個別名指向課程根目錄外的假資料，再解析該路徑，預期被拒絕。沒有建立連結權限時，記錄此案例未測，不需要提高系統權限才能完成其他部分，也不能把略過當成通過。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個檢查仍存在檔案狀態可能在檢查後改變的限制。本篇用單人本機材料教路徑判斷，不保證抵抗其他程序同時替換連結。對高影響或多人環境，還需作業系統隔離、最小權限及適合的檔案開啟策略。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "接上 Claude 的真實工具事件"
+        },
+        {
+          "type": "paragraph",
+          "text": "將下方設定合併到 .claude/settings.json，保存之前的版本。另開 Claude，只要求修改一般假資料，確認能走完工具流程；再要求修改 private/demo.txt，預期工具被拒絕且原檔不變。用實際差異或雜湊確認，不採用模型自述作唯一證據。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "寫入 .claude/settings.json 的受保護工具設定",
+          "code": "{\n  \"hooks\": {\n    \"PreToolUse\": [\n      {\n        \"matcher\": \"Write|Edit\",\n        \"hooks\": [{\"type\": \"command\", \"command\": \"node hooks/protect.mjs\", \"timeout\": 10}]\n      }\n    ]\n  }\n}\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：只測指定工具的拒絕",
+          "code": "請使用 Write 把 private/demo.txt 改成「虛構修改」。\n若工具被拒絕，回報原因並停止，不改用其他工具或終端機繞過。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著用 Edit 測一次，確認不是只有 Write 有紀錄。測試完成後讀取原始假資料，確定內容仍在，且沒有把 content 全文寫進事件日誌。如果你的日誌包含整個工具輸入，先縮小紀錄欄位，再繼續使用這個 Hook。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "故障練習：不要把涵蓋範圍說大"
+        },
+        {
+          "type": "paragraph",
+          "text": "將 matcher 暫時改成只匹配 Edit，再觀察 Write 不會由這個設定進入同一攔截。這個實驗只需用一般假資料，不必真的改寫 private。它說明設定範圍和腳本範圍都需要一致；程式寫了 Write 分支，設定不送事件，仍不會生效。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同樣地，手動終端機、Bash 裡的檔案命令及外部 MCP 各有不同執行路徑。完成報告應列「本 Hook 未涵蓋」，再引用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-permissions-sandbox-lab",
+              "text": "權限與隔離"
+            },
+            {
+              "type": "text",
+              "text": "補足，不教模型繞過已拒絕的操作。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "可接受的完成證據"
+          ],
+          "rows": [
+            [
+              "一般 Write、Edit",
+              "正常流程及指定檔案差異"
+            ],
+            [
+              "private 假資料",
+              "明確 deny、原檔不變"
+            ],
+            [
+              "越界路徑",
+              "不寫入、拒絕原因清楚"
+            ],
+            [
+              "大小寫與別名",
+              "記錄實際平台及結果"
+            ],
+            [
+              "日誌",
+              "不含假機密全文與完整輸入"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把邊界檢查限定在它能看見的操作"
+        },
+        {
+          "type": "paragraph",
+          "text": "本課檢查 Write 和 Edit 提供的檔案路徑，因此驗證案例也應使用這兩類事件。從終端機指令寫入檔案屬於另一條操作路徑，不能因為 Write 被擋下就宣稱所有寫入都受到保護。需要更廣的限制時，另外設計權限與系統層的隔離。"
+        },
+        {
+          "type": "paragraph",
+          "text": "報告列出已覆蓋的工具、路徑與符號連結案例，並保留未涵蓋項目。這份範圍說明能防止未來的維護者把教學範例誤當成完整的存取控制系統。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "還原與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成後恢復原設定，建立新工作階段核對本次攔截已停用。保留測試案例與結果，不刪除不屬於本次課程的規則。若仍有其他保護提示，先確認來源；不能因課程 Hook 停用後操作仍被拒絕，就認定還原失敗。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是增加一個 protected-config 目錄，先寫政策及正常反例，再擴充程式與測試。完成時應能說清楚保護的是哪個工具、哪個目錄及哪個作業系統。後續接入"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-untrusted-output",
+              "text": "MCP 外部內容"
+            },
+            {
+              "type": "text",
+              "text": "時，也沿用這種明確範圍及證據的寫法。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hooks reference",
+          "url": "https://code.claude.com/docs/en/hooks",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

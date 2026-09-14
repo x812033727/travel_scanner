@@ -1,0 +1,492 @@
+{
+  "slug": "claude-code-skill-sop-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 167,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜把一套工作 SOP 做成可重用 Skill",
+      "description": "將程式碼審查流程做成有輸入、輸出及停止條件的技能本篇把「檢查程式變更」做成可重複使用的 Skill。完成後，你可以指定一份 diff，得到有檔案位置、觸發條件與驗證狀態的審查報告。練習的核心是讓同一流程處理兩種不同變更，並且在沒有足夠證據時知道如何停下來。",
+      "hero": {
+        "src": "/guides/claude-code-skill-sop-workshop/hero.jpg",
+        "alt": "把一套工作 SOP 做成可重用 Skill：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "本篇把「檢查程式變更」做成可重複使用的 Skill。完成後，你可以指定一份 diff，得到有檔案位置、觸發條件與驗證狀態的審查報告。練習的核心是讓同一流程處理兩種不同變更，並且在沒有足夠證據時知道如何停下來。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skills-skill-md",
+              "text": "SKILL.md 入門"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skill-arguments-resources",
+              "text": "參數與材料"
+            },
+            {
+              "type": "text",
+              "text": "及 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-git-review-pr",
+              "text": "Git 差異審查"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-67.zip",
+              "text": "第 67 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，進入 "
+            },
+            {
+              "type": "code",
+              "text": "starter"
+            },
+            {
+              "type": "text",
+              "text": "。CLI 已安裝並登入；本機材料使用 Node.js 22。預估閱讀 20 分鐘、實作 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先手動完成一次審查"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-skill-sop-workshop/diagram-1.svg",
+          "alt": "先手動完成一次審查 → 定義輸入、產物與停止條件 → 建立可呼叫的技能",
+          "width": 1600,
+          "height": 900,
+          "caption": "先手動完成一次審查 → 定義輸入、產物與停止條件 → 建立可呼叫的技能",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "打開 "
+            },
+            {
+              "type": "code",
+              "text": "fixtures/toggle.diff"
+            },
+            {
+              "type": "text",
+              "text": "。這份變更把 id 相等改成不相等，看似只有一個符號，卻會切換其他待辦的完成狀態。先不要請 Claude 產生 Skill，自己寫出判斷：要有兩個不同 id 的項目、指定其中一個，修改後會改到另一個。這就是稍後評估自動流程的參考答案。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第二份 "
+            },
+            {
+              "type": "code",
+              "text": "fixtures/render.diff"
+            },
+            {
+              "type": "text",
+              "text": " 把 textContent 改成 innerHTML。它需要不同的重現資料，例如包含標籤的待辦標題。兩個案例的共通部分是讀取變更、定位行號、說明影響與列出待驗證事項；不同部分則是資料條件。把這個差異想清楚，才不會把第一個案例的答案硬寫進技能。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：確認材料與核心行為",
+          "code": "node --test tests/model.test.mjs\nnode skills/parse-input.mjs --file fixtures/toggle.diff\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個命令是本課程的輔助工具，不是 Claude Code 內建指令。它先確認指定檔案存在、位於練習目錄且副檔名為 diff。這不代表模型必然遵守審查規範，只是把容易檢查的輸入條件先交給程式處理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "定義輸入、產物與停止條件"
+        },
+        {
+          "type": "paragraph",
+          "text": "輸入固定是一份 diff 檔案，產物是審查報告；這一版不修改檔案，也不提交變更。若沒有參數，應要求提供檔案；若檔案只有標題而沒有程式變更，應說明無法判讀；若找不到真正影響，不要為了填表製造問題。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情況",
+            "Skill 應做的事",
+            "不應誤判成"
+          ],
+          "rows": [
+            [
+              "有可重現錯誤",
+              "指出位置與觸發條件",
+              "只是個人風格意見"
+            ],
+            [
+              "資訊不足",
+              "說明還缺哪份上下文",
+              "已確認無問題"
+            ],
+            [
+              "沒有參數",
+              "請讀者指定檔案",
+              "掃描所有專案"
+            ],
+            [
+              "沒有發現",
+              "說明檢查範圍與限制",
+              "已保證完全正確"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "停止條件會決定技能是否可控。沒有輸入時自行探索整台電腦，與先說明缺少檔案是完全不同的流程。把前置條件寫在操作之前，讀者才能在執行前知道這個 Skill 會做多少事。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立可呼叫的技能"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "將材料的 "
+            },
+            {
+              "type": "code",
+              "text": "skills/review-change"
+            },
+            {
+              "type": "text",
+              "text": " 複製到 "
+            },
+            {
+              "type": "code",
+              "text": "starter/.claude/skills/review-change"
+            },
+            {
+              "type": "text",
+              "text": "。這兩個位置用途不同：前者是教學素材，後者才是本專案載入 Skill 的位置。已存在同名技能時先比較內容，別直接覆蓋自己的版本。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：在 starter 執行可攜式複製",
+          "code": "node -e \"require('node:fs').mkdirSync('.claude/skills',{recursive:true});require('node:fs').cpSync('skills/review-change','.claude/skills/review-change',{recursive:true,errorOnExist:true,force:false})\"\n"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 .claude/skills/review-change/SKILL.md",
+          "code": "---\nname: review-change\ndescription: 審查指定 diff，尋找有證據的正確性問題。\ndisable-model-invocation: true\nallowed-tools: Read, Grep, Glob\n---\n\n輸入檔案：$ARGUMENTS。\n缺少檔案時請使用者補充，不自行選取其他專案。\n只讀取必要上下文；不修改、提交、上傳或建立 PR。\n以 templates/report.md 的欄位回報。\n每個發現包含檔案與行號、觸發條件、影響、證據及驗證狀態。\n無法確認時列入待驗證，不以猜測湊足發現數量。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這一版設定為手動呼叫，讓你確定何時執行審查。allowed-tools 描述的是呼叫時相關工具的允許方式，不應單靠這個欄位宣稱整個程序已被作業系統隔離。需要更嚴格的邊界時，仍要配合"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-permissions-sandbox-lab",
+              "text": "權限設定"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讓報告有固定欄位"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "打開 "
+            },
+            {
+              "type": "code",
+              "text": "templates/report.md"
+            },
+            {
+              "type": "text",
+              "text": "。把標題改成你習慣的風格可以，但保留觸發條件及驗證狀態。只有「有 bug」而沒有重現條件的報告，很難交給其他人處理；只有測試名稱而沒有是否真的跑過，也容易造成完成狀態誤判。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 .claude/skills/review-change/templates/report.md",
+          "code": "# 審查結果\n\n輸入檔案：\n檢查範圍：\n\n| 檔案與行號 | 觸發條件 | 影響 | 證據 | 驗證狀態 |\n|---|---|---|---|---|\n\n未執行的驗證：\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Skill 本文只指出何時讀取範本，不需要把所有大型規範都塞進同一段提示。材料中的 references/checklist.md 保存資料及畫面檢查要點，只有審查涉及相應主題時才讀取。如何組織更多參考資料，可接續"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skill-resource-design",
+              "text": "大型 Skill 拆分"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用兩份 diff 驗證可重用性"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在 "
+            },
+            {
+              "type": "code",
+              "text": "starter"
+            },
+            {
+              "type": "text",
+              "text": " 啟動一個新 Claude 對話，先呼叫第一份 diff，保存完整提示與回報。接著開新對話呼叫第二份，避免第一個答案洩漏成第二個案例的提示。斜線命令輸入在 Claude 對話框，不是在 PowerShell 直接執行。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：自訂 Skill 的兩次獨立練習",
+          "code": "/review-change fixtures/toggle.diff\n/review-change fixtures/render.diff\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "對第一個案例，檢查它是否指出相等比較被反轉，而不是泛稱需要更多測試。對第二個案例，檢查它是否把不可信標題當作資料，並說明 HTML 解讀的影響。如果報告引用了根本沒有修改的行，回到 diff 對照；行號看起來精確不代表內容正確。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "原始模型測試仍然通過並不矛盾，因為 fixtures 只是待審查的差異檔，尚未套用到 model.js。這正是本篇要練習的界線：讀到風險、重現風險與真正修正，是三件需要不同證據的事。要執行紅綠測試，另用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tdd-debugging-workshop",
+              "text": "除錯實作"
+            },
+            {
+              "type": "text",
+              "text": "的錯誤版材料。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "故障練習：刻意拿掉必要資訊"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一次只輸入 "
+            },
+            {
+              "type": "code",
+              "text": "/review-change"
+            },
+            {
+              "type": "text",
+              "text": "，預期應請你補檔案，而不是開始分析整個儲存庫。第二次給不存在的路徑，預期指出找不到檔案。第三次複製一份空 diff，預期沒有捏造變更內容。這些案例通常比正常案例更容易揭露流程沒有明確停止條件。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "如果 Skill 完全沒出現，先確認目錄層級及檔名，再從新的工作階段測試。若仍不正確，檢查是否有同名個人 Skill 或外掛名稱空間；不要同時新增多個副本猜哪個會生效。每次只變動一個位置，才能定位真正載入來源。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "常見原因",
+            "下一個核對動作"
+          ],
+          "rows": [
+            [
+              "找不到命令",
+              "還在素材 skills 目錄",
+              "確認 .claude/skills 下有 SKILL.md"
+            ],
+            [
+              "總是回答第一個案例",
+              "技能內硬寫答案或沿用舊上下文",
+              "新對話測另一份 diff"
+            ],
+            [
+              "寫入了檔案",
+              "流程範圍不清楚",
+              "檢查提示、工具與權限"
+            ],
+            [
+              "報告都說通過",
+              "沒有真正的驗收規則",
+              "加入已知錯誤與無法判斷案例"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把人工判斷留在流程中"
+        },
+        {
+          "type": "paragraph",
+          "text": "審查 Skill 可以固定檢查順序與回報格式，卻不能保證每次判斷都正確。報告指出錯誤時，先查看它引用的檔案與條件；沒有對應程式碼的結論，應退回要求補證據。報告沒有發現問題時，也只能描述本次檢查範圍，不寫成整個專案都沒有風險。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成第一輪後，選一個假陽性案例加入回歸材料，再修正流程中的判斷條件。這樣每次更新都有可比較的理由，避免只是因為某次文字看起來不夠漂亮而反覆改寫指示。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "保存版本與完成成果"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付時保存技能目錄、兩份輸入 diff、兩次報告，以及缺值測試結果。不要保存個人登入資訊或整段含私人程式碼的對話；練習材料已足以重現這次工作。若你調整描述或步驟，另外記一個版本號或 Git 提交，之後才有辦法比較。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成標準是兩份不同變更都能沿用同一流程，發現有可核對證據，資訊不足時不猜答案，而且沒有多做提交或外部操作。還未完成 Claude 登入的讀者，可先驗證目錄、輸入解析與範本，將真正 Skill 呼叫保留待測。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習是增加一份沒有錯誤的 diff，並調整技能讓它能坦白回報沒有確認問題。下一篇"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skill-input-validation",
+              "text": "參數驗證"
+            },
+            {
+              "type": "text",
+              "text": "會處理中文路徑、空值與特殊字元；當案例開始增加，再用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skill-regression-testing",
+              "text": "Skill 回歸測試"
+            },
+            {
+              "type": "text",
+              "text": "比較修改前後的品質。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Extend Claude with skills",
+          "url": "https://code.claude.com/docs/en/skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Create plugins",
+          "url": "https://code.claude.com/docs/en/plugins",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

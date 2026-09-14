@@ -1,0 +1,467 @@
+{
+  "slug": "claude-code-project-rules-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 161,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜替真實專案設計 CLAUDE.md",
+      "description": "把模糊、過期或重複的規則改成可操作的專案說明這一篇要做出的是一份能交給下一位同事使用的專案規則，而不是再認識一次 Markdown。你會拿到一份刻意過期的 CLAUDE.md，找出錯誤的測試命令與資料假設，重寫後用新的工作階段核對載入及實際行為。最後交付規則、取捨紀錄，以及三個前後比較案例。",
+      "hero": {
+        "src": "/guides/claude-code-project-rules-workshop/hero.jpg",
+        "alt": "替真實專案設計 CLAUDE.md：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這一篇要做出的是一份能交給下一位同事使用的專案規則，而不是再認識一次 Markdown。你會拿到一份刻意過期的 CLAUDE.md，找出錯誤的測試命令與資料假設，重寫後用新的工作階段核對載入及實際行為。最後交付規則、取捨紀錄，以及三個前後比較案例。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-claude-md-guide",
+              "text": "CLAUDE.md 入門"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-understand-codebase",
+              "text": "陌生專案閱讀"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-61.zip",
+              "text": "第 61 篇練習材料"
+            },
+            {
+              "type": "text",
+              "text": "，解壓縮後開啟 "
+            },
+            {
+              "type": "code",
+              "text": "starter"
+            },
+            {
+              "type": "text",
+              "text": "。本篇使用 Node.js 22 以上與已完成登入的 Claude Code；桌面讀者也可選取同一資料夾，執行命令時切到專案終端機。預估閱讀 20 分鐘、實作 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先查證專案，而不是先改規則"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-project-rules-workshop/diagram-1.svg",
+          "alt": "先查證專案，而不是先改規則 → 用取捨表決定資訊放哪裡 → 寫出最小但有用的規則",
+          "width": 1600,
+          "height": 900,
+          "caption": "先查證專案，而不是先改規則 → 用取捨表決定資訊放哪裡 → 寫出最小但有用的規則",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "材料中的 "
+            },
+            {
+              "type": "code",
+              "text": "model.js"
+            },
+            {
+              "type": "text",
+              "text": " 負責純資料操作，"
+            },
+            {
+              "type": "code",
+              "text": "app.js"
+            },
+            {
+              "type": "text",
+              "text": " 處理畫面。原始測試刻意用了兩個相同標題、不同 id 的項目，證明標題不能作為識別碼。請先手動執行下面的命令，把結果保存到自己的工作筆記；它是比較規則改寫前後的共同基準。沒有這一步，稍後遇到失敗時，你無法判斷問題原本就存在，還是新規則造成的。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：在 starter 目錄執行",
+          "code": "node --version\nnode --test tests/model.test.mjs\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "打開 "
+            },
+            {
+              "type": "code",
+              "text": "config/broken-CLAUDE.md"
+            },
+            {
+              "type": "text",
+              "text": "，逐行查證。"
+            },
+            {
+              "type": "code",
+              "text": "npm run test:old"
+            },
+            {
+              "type": "text",
+              "text": " 不在 package.json，依標題切換又與現有測試矛盾；「測試有問題先略過」沒有說明可以略過的條件；正式資料庫則根本不是這個無資料庫網站的需求。不要因為文字寫在規則檔就推定它比程式與測試更可靠。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "如果套用到真實專案，程式本身也可能有缺陷。此時先把矛盾記成待確認事項，例如產品規格說標題可重複，但資料表限制唯一。不要自行挑一邊當成真相，更不要同時把兩條互斥指引寫進新文件，期待模型自行調和。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用取捨表決定資訊放哪裡"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "常駐規則應保留跨任務都需要知道、又容易判斷錯誤的事。某個檔案今天要換成藍色按鈕，不需要常駐；每次修改資料模型都要確認不會原地改掉輸入，才值得留下。若一段內容包含六個可重複操作步驟，把它連到 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-skill-sop-workshop",
+              "text": "Skill 工作流程"
+            },
+            {
+              "type": "text",
+              "text": "較好；只有 API 目錄適用的要求，另放到"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-monorepo-rules-workshop",
+              "text": "分層規則"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "原始內容",
+            "決定",
+            "查證依據"
+          ],
+          "rows": [
+            [
+              "npm run test:old",
+              "改寫",
+              "package.json 沒有此命令"
+            ],
+            [
+              "依標題切換",
+              "改為 id",
+              "相同標題測試及既有 model.js"
+            ],
+            [
+              "讀者的資料庫密碼",
+              "移除",
+              "本練習不需要資料庫"
+            ],
+            [
+              "完整審查步驟",
+              "拆成 Skill",
+              "只在審查任務需要"
+            ],
+            [
+              "不原地修改輸入",
+              "保留",
+              "程式呼叫者依賴既有陣列"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在 "
+            },
+            {
+              "type": "code",
+              "text": "decisions.md"
+            },
+            {
+              "type": "text",
+              "text": " 另外記錄取捨。這份說明給維護者閱讀，不必全部匯入 Claude 的常駐上下文。它的價值是三個月後有人刪規則時，還知道當初為何寫下來。每個決定最好有檔名、重現條件或需求來源，不要只寫「這樣比較好」。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "寫出最小但有用的規則"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在 "
+            },
+            {
+              "type": "code",
+              "text": "starter/.claude/CLAUDE.md"
+            },
+            {
+              "type": "text",
+              "text": " 寫入下面內容。請先看現有檔案再編輯，避免把自己先前加的規範一併覆蓋。這份課程範本加了辨識標記，目的是排錯時確認讀到哪一份，並不是 Claude Code 的保留欄位或特殊語法。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 starter/.claude/CLAUDE.md",
+          "code": "# 待辦專案\n\n規則識別碼：MOKAAIR-LAB-61。\n\n- model.js 放資料操作，app.js 放 DOM 互動。\n- 用 id 辨認項目；同名待辦可以並存。\n- 不原地修改傳入陣列或項目。\n- 用 textContent 顯示使用者輸入的待辦標題。\n- 核心驗證：node --test tests/model.test.mjs。\n- 回報實際執行的檢查及未驗證項目。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "「不新增任何依賴」看似簡潔，卻可能讓後續 MCP 練習無法安裝必要 SDK。因此不要把一次任務的限制寫成永遠的專案規則。若團隊確實要求新依賴先評估，寫出評估的條件與交付物，例如用途、替代方案、維護成本與測試影響，會比含糊的「小心新增」更有幫助。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MD 是提供上下文的指引，不能阻止使用者或其他程式讀取檔案。遇到需要真正限制讀寫範圍的需求，應接續"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-permissions-sandbox-lab",
+              "text": "權限與 Sandbox 實驗"
+            },
+            {
+              "type": "text",
+              "text": "。把密碼檔名稱寫進「不要讀」清單，不能當作檔案已受到隔離。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從全新的工作階段確認載入"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "結束舊對話，再從 "
+            },
+            {
+              "type": "code",
+              "text": "starter"
+            },
+            {
+              "type": "text",
+              "text": " 啟動 Claude。先用 "
+            },
+            {
+              "type": "code",
+              "text": "/context"
+            },
+            {
+              "type": "text",
+              "text": " 查看目前載入資訊，核對 "
+            },
+            {
+              "type": "code",
+              "text": ".claude/CLAUDE.md"
+            },
+            {
+              "type": "text",
+              "text": " 的位置；接著問它專案的識別標記及核心驗證命令。把載入畫面、回覆與檔案版本一起記錄。只得到正確回答還不夠，因為你可能在前一段提示中已經把答案說出來。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 新對話：不要先貼入標記或答案",
+          "code": "請說明本專案的規則識別碼與核心驗證命令。\n接著只讀取 model.js 和 tests/model.test.mjs，指出同名待辦如何區分。\n不要修改檔案，不要使用外部服務。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若答案不對，先確認工作目錄與檔名，再查看是否讀到另一份根目錄 CLAUDE.md。不要立刻把規則加粗十次，也不要同時修改使用者記憶與專案規則，否則失去比較的控制條件。更完整的診斷方式見"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-rules-loading-diagnostics",
+              "text": "規則載入排錯"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用三個任務比較規則是否有幫助"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個案例只問驗證方法，觀察是否選用不存在的舊命令。第二個案例請它規劃新增待辦篩選，觀察是否保留 id 與原資料。第三個案例要求說明安全呈現標題的方法，觀察是否把使用者文字當 HTML。三個案例分別測命令、資料行為與畫面邊界，比只問「你理解規則嗎」更容易看出問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在每個新工作階段使用相同提示，分別套用過期版與修正版；保留每次輸入，不事後挑最漂亮的一次。比較內容包括是否載入、採用哪些假設、產生何種修改，以及檢查是否真的執行。若需要付費呼叫，先用這三個短案例，不必為簡單規則啟動長時間全專案分析。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "案例",
+            "修正版的可觀察結果",
+            "未達成時先查"
+          ],
+          "rows": [
+            [
+              "尋找測試",
+              "提出存在的核心命令",
+              "工作目錄及 package.json"
+            ],
+            [
+              "規劃篩選",
+              "不刪除原資料、不改用標題識別",
+              "互斥規則及舊記憶"
+            ],
+            [
+              "呈現標題",
+              "將文字當文字顯示",
+              "相關畫面程式與任務範圍"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把規則寫成另一個人能查核的句子"
+        },
+        {
+          "type": "paragraph",
+          "text": "「注意品質」沒有告訴讀者如何判斷品質。把它改成「修改 model.js 後執行四個模型測試，回報失敗名稱」，就有明確的檔案、動作與證據。團隊成員不需要猜作者的偏好，也能在審查時指出哪一項尚未完成。規則中若引用不存在的命令，先修正命令本身，再討論模型有沒有遵守。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付前讓另一個新工作階段只依這份規則描述工作流程，逐條比較它讀到的內容。這項觀察用來檢查可發現性，真正的測試執行仍需命令紀錄；兩者分開保存，後續才能判斷是規則未載入，還是已載入但操作沒有完成。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "故障練習與完成判準"
+        },
+        {
+          "type": "paragraph",
+          "text": "現在故意把規則中的測試檔名改成不存在的檔案，重新啟動一次對話，要求只執行核心驗證。預期會得到找不到檔案，而不是測試通過。修正檔名後用完全相同的命令重跑，才能證明你修的是規則裡的原因。若模型自行找到別的正確命令，也應把這個行為記下來；這表示它做了額外探索，不代表錯誤規則已經正確。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後保存三份產物：新的 CLAUDE.md、取捨紀錄、前後對照結果。完成標準是每條規則都能解釋用途，新對話能定位文件，核心測試命令確實可執行，故障案例修正後通過。未能執行 Claude 的讀者可以先完成文件與本機測試，但在驗收表將工作階段載入列為待驗證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把同一做法帶進自己的專案時，先挑一條曾經造成錯誤的規則改寫。等有一次完整的前後證據，再逐步整理其他內容。規則維護的單位是可驗證的行為改變，不是檔案行數；精簡後仍應保留團隊真正依賴的約定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小練習：新增一條符合你需求的規則，再設計一個正常案例及一個反例。交付時寫清楚為何需要這條規則、何時載入、如何判斷遵守，以及未來什麼情況下應刪除它。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "How Claude remembers your project",
+          "url": "https://code.claude.com/docs/en/memory",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configure permissions",
+          "url": "https://code.claude.com/docs/en/permissions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configure the sandboxed Bash tool",
+          "url": "https://code.claude.com/docs/en/sandboxing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

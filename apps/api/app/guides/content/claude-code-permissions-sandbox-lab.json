@@ -1,0 +1,317 @@
+{
+  "slug": "claude-code-permissions-sandbox-lab",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 164,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜權限與 Sandbox 邊界實驗",
+      "description": "用無害案例觀察允許、詢問、拒絕與執行隔離寫在 MD 裡的「不要讀取私人檔案」是指引，工具權限與執行隔離則是另外的機制。本篇用完全虛構的文字檔及本機服務，實際比較允許、詢問、拒絕與 Sandbox，最後產出一張有工具、路徑及作業系統欄位的行為矩陣。",
+      "hero": {
+        "src": "/guides/claude-code-permissions-sandbox-lab/hero.jpg",
+        "alt": "權限與 Sandbox 邊界實驗：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "寫在 MD 裡的「不要讀取私人檔案」是指引，工具權限與執行隔離則是另外的機制。本篇用完全虛構的文字檔及本機服務，實際比較允許、詢問、拒絕與 Sandbox，最後產出一張有工具、路徑及作業系統欄位的行為矩陣。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-permissions-plan-mode",
+              "text": "權限模式"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-settings-json",
+              "text": "設定檔"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-project-data-safety",
+              "text": "資料安全"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-64.zip",
+              "text": "第 64 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，開啟 starter。需要 Node.js 22 以上、已登入的 CLI。閱讀約 20 分鐘，實作約 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先確認這次測試的邊界"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-permissions-sandbox-lab/diagram-1.svg",
+          "alt": "先確認這次測試的邊界 → 建立最小權限設定 → 分三次測試允許、詢問與拒絕",
+          "width": 1600,
+          "height": 900,
+          "caption": "先確認這次測試的邊界 → 建立最小權限設定 → 分三次測試允許、詢問與拒絕",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "工具權限決定某項操作是否需要批准或應被拒絕；Sandbox 以支援的執行環境限制命令可接觸的檔案與網路；CLAUDE.md 提供工作指引。三者可能一起影響結果，但測試時要分開觀察。不能因為 Read 工具被拒絕，就直接宣稱所有命令、MCP 和外部服務都無法存取那份資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件查證時，Sandbox 支援 macOS、Linux 與 WSL2 等指定環境，原生 Windows 不在相同支援範圍。Windows 讀者可以完成權限部分，Sandbox 欄位填「此環境不適用」；若改用 WSL2，記錄 Linux 中的 CLI、檔案路徑與依賴，不要沿用 PowerShell 的執行結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "只在練習專案內建立 private/demo.txt，內容寫「虛構測試資料」。不要使用真實金鑰、帳單或帳號檔作為探測材料。另在 fixtures 放 public-note.txt，作為可以讀取的對照組。這兩份檔案已包含在下載材料中，內容沒有機密。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立最小權限設定"
+        },
+        {
+          "type": "paragraph",
+          "text": "先查看目前 .claude/settings.json 是否存在；若存在，另存到 config/settings.before-lab.json。沒有檔案時，在筆記寫「原先不存在」。將 config/settings.shared.json 的示例複製到 .claude/settings.json，使用編輯器合併必要欄位，避免覆蓋其他正在使用的練習設定。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "寫入練習專案的 .claude/settings.json",
+          "code": "{\n  \"permissions\": {\n    \"allow\": [\"Bash(node --test tests/model.test.mjs)\"],\n    \"deny\": [\"Read(./private/**)\"]\n  }\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這份設定刻意很窄：允許一個固定的模型測試命令，拒絕 Read 工具讀取 private 下的檔案。它沒有宣稱建立完整檔案防火牆，也沒有允許任意 Bash。自然語言請求與工具最終提交的命令可能不同，因此應檢查實際工具名稱及參數，不只看你輸入了什麼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另開 Claude 工作階段，使用 /permissions 檢查目前可見的規則與模式。若組織有受管理設定，專案檔不能任意覆寫它；在表格記錄這個前提。不要為了讓教材例子看似通過而切換成略過所有權限的模式，那樣會破壞本篇要觀察的條件。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "分三次測試允許、詢問與拒絕"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一輪請它只執行固定的模型測試。觀察是否直接執行、仍需其他授權或被更高層設定拒絕。規則符合但沒有直接通過時，先看當前模式和管理限制，再查命令是否多了前綴、改了路徑或被包成其他命令。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：每段分別執行並記錄結果",
+          "code": "只執行 node --test tests/model.test.mjs，回報退出碼及測試數。\n\n只使用 Read 工具讀取 fixtures/public-note.txt。\n\n只使用 Read 工具讀取 private/demo.txt。\n如果被拒絕，回報拒絕原因並停止，不改用其他工具繞過。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二輪是公開檔案，依你所處權限模式可能直接讀取或出現提示；教材不把「一定詢問」當成跨環境保證。需要特別觀察詢問時，可在 /permissions 建立對應工具的 ask 規則，確認畫面來源後重試，並把新增規則寫入紀錄。第三輪預期被 Read 拒絕，成功標準是有拒絕證據且沒有繞道讀取。"
+        },
+        {
+          "type": "paragraph",
+          "text": "你可以手動在自己的終端機開啟虛構檔案，確認檔案確實存在。這個動作只證明作業系統使用者仍能讀取，與 Claude 的特定工具被限制不矛盾。不要為了證明某條規則有效而刪掉目標檔；檔案不存在是另一種失敗，無法驗證存取政策。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在支援環境觀察 Sandbox"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 macOS、Linux 或 WSL2，先依官方文件準備必要工具，再於 Claude 使用 /sandbox 查看支援狀態並啟用。記錄畫面中的模式與網路政策。依安裝環境不同，Linux 可能需要 bubblewrap、socat 等依賴；由環境管理方式安裝，不把一組套件管理命令說成適用所有發行版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先執行工作目錄內的唯讀檢查，再測試寫入練習目錄；如果要比較界外寫入，另外建立一個專用的空白臨時目錄，先記錄其完整路徑，只放課程假資料。預期結果由目前 sandbox 的允許目錄與模式決定。觀察到拒絕時，保存錯誤類型及路徑，不需改用不受隔離的工具達成原操作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網路測試使用另一個終端機執行 node server.mjs，記下本機網址。該服務只用於這次練習；是否允許 localhost 連線仍要看目前政策。先手動確認服務正常，再由受測命令嘗試取得首頁。若連線失敗，區分服務未啟動、埠號錯誤、網路規則拒絕及 sandbox 相容性問題。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：啟動本機對照服務",
+          "code": "node server.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試完以啟動該服務的終端機按 Ctrl+C 停止，再確認同一網址已不回應。不要終止所有 Node 程序，因為其他網站或編輯器也可能正在使用 Node。這也讓你的報告包含完整的開始、驗證與停止流程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把不同工具的結果分開記錄"
+        },
+        {
+          "type": "table",
+          "header": [
+            "案例",
+            "工具與環境",
+            "預期",
+            "必須保存的證據"
+          ],
+          "rows": [
+            [
+              "固定測試命令",
+              "Bash；目前 CLI 模式",
+              "依規則執行",
+              "實際命令、退出碼"
+            ],
+            [
+              "私人假資料",
+              "Read；專案 deny",
+              "拒絕",
+              "工具名稱、拒絕訊息"
+            ],
+            [
+              "界外假資料寫入",
+              "Sandbox 內命令",
+              "依允許目錄判定",
+              "路徑、政策、實際結果"
+            ],
+            [
+              "本機服務",
+              "Sandbox 內網路",
+              "依網路政策判定",
+              "埠號、服務狀態、錯誤"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若一個 MCP 工具能讀到它自己伺服器上的資料，那不是在你的工作目錄執行同一個 Read。MCP 的授權及執行位置要另外分析，可接續"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-mcp-untrusted-output",
+              "text": "MCP 不受信任輸出"
+            },
+            {
+              "type": "text",
+              "text": "。同理，Hook 攔截特定事件也有自己的覆蓋範圍，不能直接當成作業系統隔離的替代品。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "最常見的誤判是：只看到模型說「沒有讀取」，沒有工具紀錄；測試的是不存在檔案；原本已被公司政策拒絕，卻歸功於剛新增的規則；原生 Windows 沒有 Sandbox，卻在表格填通過。這些情況都應退回未知或不適用，重新準備可判讀的案例。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "還原與完成判準"
+        },
+        {
+          "type": "paragraph",
+          "text": "若原本有 settings.json，檢查備份後恢復它；原本不存在時，只移除這次新增的檔案。重新啟動工作階段，在 /permissions 核對課程規則已不在作用範圍。Sandbox 的啟用狀態另由其介面還原，不能以刪除一個 JSON 檔推定所有執行偏好都已回復。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成本篇應有一張環境明確的矩陣、設定前後差異、至少一個工具拒絕案例，以及服務停止和設定恢復紀錄。小練習是新增一條只適用單一假資料檔的 ask 規則，比較它與整個目錄 deny 的結果；先查官方優先順序，再以實際工具紀錄核對，不用記憶猜答案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇材料中的假資料與測試可在本機驗證，跨作業系統的 Sandbox 結果必須分別實測。當你能清楚說出「哪個工具、在哪個環境、被哪層規則限制」，才適合把這份設定整理進"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-team-config-maintenance",
+              "text": "團隊設定包"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "How Claude remembers your project",
+          "url": "https://code.claude.com/docs/en/memory",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configure permissions",
+          "url": "https://code.claude.com/docs/en/permissions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configure the sandboxed Bash tool",
+          "url": "https://code.claude.com/docs/en/sandboxing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

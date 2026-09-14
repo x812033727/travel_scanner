@@ -146,7 +146,7 @@ def main():
     checks = {entry['url']: entry for entry in json.loads((ROOT / 'docs/claude-code-series/source-checks.json').read_text(encoding='utf-8'))}
     report = []
     hub = {'number': 0, 'slug': catalogue['hub'], 'title': 'Claude Code 完整教學目錄：從入門到自動化',
-           'outcome': '依平台、程度與功能找到需要的教學，從 60 篇文章與共用練習專案逐步完成操作。',
+           'outcome': f'依平台、程度與功能找到需要的教學，從 {len(catalogue["entries"])} 篇文章與共用練習專案逐步完成操作。',
            'sources': ['https://code.claude.com/docs/en/overview', 'https://code.claude.com/docs/en/platforms', 'https://code.claude.com/docs/en/commands'],
            'related': []}
     for entry in [hub, *catalogue['entries']]:

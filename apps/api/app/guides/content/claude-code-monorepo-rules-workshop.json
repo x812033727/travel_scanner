@@ -1,0 +1,308 @@
+{
+  "slug": "claude-code-monorepo-rules-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 162,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜Monorepo 的分層 MD 與路徑規則",
+      "description": "讓前端、API 與共用目錄使用適合的指引同一個儲存庫可以同時放網頁、API 與共用函式，但三個區域不必遵循完全相同的操作細節。本篇會建立一份規則適用矩陣，讓你能解釋每條規則的來源、載入條件與驗證方法，避免根目錄的 CLAUDE.md 隨專案成長而變成難以維護的長文件。",
+      "hero": {
+        "src": "/guides/claude-code-monorepo-rules-workshop/hero.jpg",
+        "alt": "Monorepo 的分層 MD 與路徑規則：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "同一個儲存庫可以同時放網頁、API 與共用函式，但三個區域不必遵循完全相同的操作細節。本篇會建立一份規則適用矩陣，讓你能解釋每條規則的來源、載入條件與驗證方法，避免根目錄的 CLAUDE.md 隨專案成長而變成難以維護的長文件。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-claude-md-scopes",
+              "text": "規則範圍"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-project-rules-workshop",
+              "text": "專案規則工作坊"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-62.zip",
+              "text": "第 62 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，開啟 starter。需要 Node.js 22 以上；觀察實際載入還需要可登入的 Claude Code。閱讀約 20 分鐘，練習約 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先把資料夾關係畫清楚"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-monorepo-rules-workshop/diagram-1.svg",
+          "alt": "先把資料夾關係畫清楚 → 把共同規則與路徑規則分開 → 用三個新工作階段觀察載入",
+          "width": 1600,
+          "height": 900,
+          "caption": "先把資料夾關係畫清楚 → 把共同規則與路徑規則分開 → 用三個新工作階段觀察載入",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "Monorepo 指的是把多個應用或套件放在同一個版本庫。材料裡的 apps/web、apps/api、packages/shared 是規則載入實驗用的三個小目錄，沒有額外安裝 Next.js 或啟動真實 API。待辦網站仍由根目錄的 HTML 與 JavaScript 運作。這個安排讓你能單獨驗證規則，而不必先處理三套建置工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "打開 apps/web/view.js、apps/api/tasks.js 與 packages/shared/ids.js，先各讀一次。前端函式處理顯示標籤，API 範例提供資料清單，共用函式檢查識別碼。共同底線是識別碼不能使用標題代替；鍵盤操作屬於前端；API 輸入與回應契約屬於後端。不要把後端的回應格式要求套到所有 Markdown 文件。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "編輯器：確認 starter 內的目錄",
+          "code": "apps/\n  web/view.js\n  api/tasks.js\npackages/\n  shared/ids.js\n.claude/\n  CLAUDE.md\nconfig/\n  rules.web.md\n  rules.api.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "先寫一張四欄矩陣：規則、存放位置、適用路徑、行為證據。共同規則的證據可以是相同標題測試；前端規則的證據可以是新增按鈕具有名稱且可用鍵盤操作。標記文字只能協助辨認來源，不能取代真正的成果檢查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把共同規則與路徑規則分開"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留 .claude/CLAUDE.md 的測試入口與資料模型底線。在 .claude 下建立 rules 目錄，把 config/rules.web.md 複製成 rules/web.md，把 rules.api.md 複製成 rules/api.md。此步驟是檔案複製，位置必須正確；不要只把檔案留在 config，再假設 Claude 會自動把教材資料夾當成規則來源。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "寫入 .claude/rules/web.md",
+          "code": "---\npaths:\n  - \"apps/web/**\"\n---\n\n# 前端規則\n本規則的實驗標記為 WEB-RULE-62。\n新增互動時提供鍵盤操作與可存取名稱。\n資料的識別碼不得以顯示標題取代。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "paths 使用 YAML 清單，每個模式保留引號。沒有 paths 的 rules 文件會作為一般規則載入；設定 paths 的文件則依符合路徑的檔案使用情境載入。它不是讓模型只准讀取那些路徑的白名單。若你需要限制工具讀寫，應另看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-permissions-sandbox-lab",
+              "text": "權限實驗"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "替 packages/shared 新增 shared.md，限定 packages/shared/**，內容只要求以穩定 id 辨識資料及保持純函式。先不要把 API、前端全文引用進根規則。讓專案的關係可理解，比把每份文件都強制塞進每次對話更有用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用三個新工作階段觀察載入"
+        },
+        {
+          "type": "paragraph",
+          "text": "先在 starter 根目錄啟動 Claude，檢查 /memory 顯示的記憶與規則來源，再請它只讀前端檔案。依版本可看到的載入提示及工具紀錄，記下實際觸發哪些規則。畫面沒有提供完整載入細節時，將那一欄標為無法直接觀察，不要請模型猜測後把答案當成系統紀錄。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：第一個新工作階段",
+          "code": "只讀取 apps/web/view.js，解釋這個函式的用途。\n指出本次需要遵守的前端規則，以及你觀察到的來源。\n不要修改檔案，也不要讀取其他兩個示範目錄。\n把系統顯示的載入證據與你自己的推論分開。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "結束後另開新工作階段，換成 apps/api/tasks.js；第三次改讀 packages/shared/ids.js。使用新階段，是為了避免前一次讀取前端所留下的上下文干擾後端案例。同一段對話已載入某份規則後，它仍可能留在上下文中，因此不能用後續回答證明先前的文件「從未載入」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再做一輪從 apps/web 目錄啟動的案例。先用終端機確認目前位置，再查閱上層規則與本地規則。工作目錄改變會影響你輸入的相對檔名，但不代表規則檔的所有模式和引用都改成相對那個終端機位置。引用其他文件時，以引用文件所在位置理解其相對關係，並用實際存在的檔案核對。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "故意放錯路徑，再修正"
+        },
+        {
+          "type": "paragraph",
+          "text": "把 web.md 的模式暫時改成 app/web/**，少掉一個 s。另開新階段，讀取 apps/web/view.js。預期路徑條件不符合，因此不能把這個案例判為正常載入。若模型仍提到可存取性，可能來自一般知識或其他常駐規則；這正是需要獨特標記與來源紀錄的原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著恢復 apps/web/**，重跑同一案例。比較修正前後的差異，應只涉及模式與由此造成的載入行為。如果你同時改描述、模型和工作目錄，就無法確定是哪個變因解決問題。把兩輪設定檔保存為具名副本，報告才能被另一位讀者重現。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個常見失誤是使用 Windows 反斜線寫 glob，或把磁碟機絕對路徑放進共用規則。教材統一使用專案相對路徑與斜線。含空格的本機工作目錄不需要硬編碼進規則；由專案位置推導即可。若使用符號連結或額外目錄，先另做最小案例，不要把一般目錄的觀察直接延伸到所有配置。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從載入證據走到行為證據"
+        },
+        {
+          "type": "paragraph",
+          "text": "載入正確後，請 Claude 為前端函式補一個呼叫範例，為 API 函式描述輸入與回應，為共用 id 函式列出空值案例。這輪仍可保持唯讀。逐項核對它是否把前端要求誤套到 API、是否漏掉共同的 id 規則，以及是否引用不存在的測試命令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "當某項規則沒有被遵守，先確認任務是否真的觸及規則描述的行為。例如只要求解釋純資料函式，不一定有機會展示鍵盤可存取性；不能因此判定前端規則失效。測試任務必須給規則一個可觀察的作用點，否則得到的只是難以解釋的回答差異。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "先查什麼",
+            "修正方向"
+          ],
+          "rows": [
+            [
+              "三區回答完全相同",
+              "根規則是否引用所有細節",
+              "保留共同底線，移出各區流程"
+            ],
+            [
+              "模式看似正確卻沒觸發",
+              "實際檔案路徑與大小寫",
+              "用最小檔案重現並修正模式"
+            ],
+            [
+              "換目錄後找不到引用",
+              "引用文件的相對位置",
+              "逐一開啟被引用檔案"
+            ],
+            [
+              "說出標記但沒有規則行為",
+              "是否已在提示詞提供答案",
+              "改成需要實際遵循的任務"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成判準與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付三份路徑規則、一份共同規則與至少三列實驗紀錄。每列包含工作目錄、全新階段、讀取檔案、可見載入證據、行為結果與限制。自評完成時，不能只寫「Claude 說有讀到」；也不必要求模型完整背誦規則，因為我們要驗證的是正確使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小練習是在 packages 下新增 docs 目錄，決定它應使用共同底線、共享程式規則或獨立文件規則。寫下選擇理由並加一個反例，例如文件描述 API 並不代表文件本身需要輸出 JSON。若新增一個目錄就必須重寫所有規則，回頭檢查分類是否太依賴當前檔案清單。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇的資料夾與範例可在本機檢查，Claude 的動態載入結果則需在你使用的版本與帳號上紀錄。後續若要把規則交給同事，接著完成"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-team-config-maintenance",
+              "text": "團隊設定維護"
+            },
+            {
+              "type": "text",
+              "text": "；若仍有矛盾，使用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-rules-loading-diagnostics",
+              "text": "規則診斷流程"
+            },
+            {
+              "type": "text",
+              "text": "逐一縮小問題。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "How Claude remembers your project",
+          "url": "https://code.claude.com/docs/en/memory",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configure permissions",
+          "url": "https://code.claude.com/docs/en/permissions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configure the sandboxed Bash tool",
+          "url": "https://code.claude.com/docs/en/sandboxing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
