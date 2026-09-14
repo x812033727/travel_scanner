@@ -1,0 +1,66 @@
+{
+  "checkedOn": "2026-09-14",
+  "platform": "Windows",
+  "node": "24.13.0",
+  "python": "3.13",
+  "runtimeArticles": 50,
+  "advancedArticlesProduced": 0,
+  "cloudModelCalls": 0,
+  "databaseImports": 0,
+  "checks": [
+    {
+      "name": "Gemini tooling tests",
+      "passed": 17
+    },
+    {
+      "name": "all tools tests",
+      "passed": 56
+    },
+    {
+      "name": "real compiler unittest",
+      "passed": 8
+    },
+    {
+      "name": "Ruff selected Python files",
+      "status": "passed"
+    },
+    {
+      "name": "first-phase content check",
+      "pages": 51,
+      "status": "passed"
+    },
+    {
+      "name": "task protocol",
+      "files": 425,
+      "status": "passed; pre-existing stale/overlap warnings"
+    }
+  ],
+  "renderSmoke": {
+    "kind": "synthetic temporary fixture",
+    "compiler": "passed with CHROMIUM_BIN pointing to Playwright headless shell",
+    "renderer": "Playwright Chromium 151.0.7922.34",
+    "desktop": [
+      1600,
+      900
+    ],
+    "mobile": [
+      360,
+      203
+    ],
+    "reviewedImages": [
+      "visual-review/synthetic-hero.png",
+      "visual-review/synthetic-diagram-1-mobile.png"
+    ],
+    "result": "Text visible, no clipping. Tests rendering only; these are not tutorial artwork or advanced article evidence.",
+    "pitfalls": [
+      "Full Chromium executable failed with WinError 14001 on this host; installed headless shell works.",
+      "Playwright addStyleTag hangs when JavaScript is disabled; static viewport-relative SVG styles avoid it.",
+      "Node 24 cpSync recursive URL fixture caused native fast-fail on this Windows path; fixture now copies only its two explicit assets."
+    ]
+  },
+  "pending": [
+    "36 advanced articles and their actual examples/artwork",
+    "shared frontend visibility and navigation integration",
+    "full review/freeze/dry-run/publication/browser/sitemap verification"
+  ]
+}
