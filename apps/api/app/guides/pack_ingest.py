@@ -349,6 +349,13 @@ def license_allowed(short_name: str) -> bool:
     return ALLOWED_LICENSE.match(_normalise_license(short_name)) is not None
 
 
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    """Stop urllib from following a redirect, so the caller can decide about the next hop."""
+
+    def redirect_request(self, *_: object, **__: object) -> None:
+        return None
+
+
 class UrllibTransport(httpx.BaseTransport):
     """httpx over the standard library's ``urllib``.
 
@@ -359,18 +366,39 @@ class UrllibTransport(httpx.BaseTransport):
     edge accepts. Only GET is needed here.
     """
 
+    #: ``urlopen`` is not an HTTP client: it also opens ``file:``, ``ftp:`` and ``data:``.
+    #: The URL it is handed is not always a constant of this module — ``fetch_image`` passes
+    #: whatever Commons returned as ``thumburl`` or ``url`` — so without this the set of
+    #: things it can open is "whatever Commons says" rather than "an HTTPS URL", and a
+    #: ``file:///…`` answer would be read off the operator's disk into an article image.
+    ALLOWED_SCHEMES = frozenset({"http", "https"})
+
+    #: Redirects are httpx's job, not urllib's. Left to itself ``urlopen`` follows them
+    #: internally, which means the hop never comes back through ``handle_request`` and the
+    #: check above sees only the first URL — and urllib's own redirect rule allows ``ftp:``
+    #: as well as http and https, so a redirect could still leave the two schemes this
+    #: transport is willing to speak. Handing the 3xx back to httpx (``commons_client`` sets
+    #: ``follow_redirects=True``) makes every hop re-enter this method and face the same check.
+    _OPENER = urllib.request.build_opener(_NoRedirect)
+
     def handle_request(self, request: httpx.Request) -> httpx.Response:
+        if request.url.scheme not in self.ALLOWED_SCHEMES:
+            # Raised rather than returned as a status: `_get` retries some of those, and this
+            # is not a condition a retry can improve.
+            raise PackIngestError(f"refusing a {request.url.scheme!r} URL: {request.url}")
         raw = urllib.request.Request(
             str(request.url),
             headers={key.decode(): value.decode() for key, value in request.headers.raw},
             method=request.method,
         )
         try:
-            with urllib.request.urlopen(raw, timeout=60) as answer:
+            with self._OPENER.open(raw, timeout=60) as answer:
                 return httpx.Response(
                     answer.status, headers=dict(answer.headers.items()), content=answer.read()
                 )
         except urllib.error.HTTPError as error:
+            # A 3xx arrives here too, now that urllib no longer follows it, and is returned
+            # with its Location intact for httpx to follow.
             return httpx.Response(
                 error.code, headers=dict(error.headers.items()), content=error.read()
             )
