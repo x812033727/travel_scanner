@@ -1,14 +1,14 @@
 ---
 id: 2026-09-14-life-finance-batch-02
 title: 生活分享財經系列批次 02：銀行、支付與信用（20 篇）
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-14T13:34:18Z
 created_at: 2026-09-14T11:45:48Z
 completed_at:
-branch:
+branch: claude/beautiful-fermat-0klj9k
 depends_on:
   - 2026-09-14-life-finance-series-catalogue
   - 2026-09-14-life-finance-topic
