@@ -35,6 +35,8 @@ if CONTENT_BASE != PREVIOUS:
         ('a9d5b40e7067b321ee886a817b1712aec44afc1b', 'b3f8a241af46259ca5070131452c7dc39a63a7a7'),
         # PR #496: reviewed XML/URL ingestion defenses and regressions; 14 checks passed.
         ('a9d5b40e7067b321ee886a817b1712aec44afc1b', '88c23881898fa62f10cdbc59b9a639f5841c8423'),
+        # PR #499: disjoint life guides, artwork and task records; 14 checks passed.
+        ('a9d5b40e7067b321ee886a817b1712aec44afc1b', 'f2567e51cc1ea0d0c3fc63005db21b2f44e5919c'),
     }
     assert (PREVIOUS, CONTENT_BASE) in reviewed_pairs, 'unreviewed integration baseline'
 '''+s[end:]
