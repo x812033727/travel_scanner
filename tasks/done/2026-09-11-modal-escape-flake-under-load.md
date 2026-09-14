@@ -1,14 +1,14 @@
 ---
 id: 2026-09-11-modal-escape-flake-under-load
 title: 整套測試在負載下，有守門的 Escape 偶爾不生效
-status: open
+status: done
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-14T09:07:42Z
 created_at: 2026-09-11T21:23:54Z
-completed_at:
-branch: claude/mokaair-website-access-k7xiku
+completed_at: 2026-09-14T09:30:39Z
+branch: claude/ship-passive-effect-gap-flake
 depends_on: []
 scope:
   - apps/web/lib/modal-sheet.ts
@@ -20,6 +20,7 @@ scope:
   - apps/web/components/route-mode-panel.test.tsx
   - apps/web/components/planner-overlay.tsx
   - apps/web/components/planner-overlay.test.tsx
+  - apps/web/lib/testing/commit-before-passive-effects.ts
 ---
 
 # 整套測試在負載下，有守門的 Escape 偶爾不生效
@@ -86,9 +87,12 @@ itinerary generation finishes」，在 CI 紅過兩次）是**同一個形狀**�
 ## Definition of done
 
 - [x] 能穩定重現。→ **第三個實例做到了**：`route-mode-panel` 的焦點被搶，已經有確定性的
-      回歸測試。另外兩個（Escape 沒生效）還是重現不了。
+      回歸測試。另外兩個（Escape 沒生效）還是重現不了。→ **2026-09-13 全部做到了**，見文末
+      「成因找到了」：五條確定性測試，修正前全紅、修正後全綠。
 - [x] 找到真正的成因，不是再一個沒有證據的假設。→ 第三個實例找到了，用焦點探針。
-- [ ] 修好之後，連續三次整套 `npm run test:web` 都綠。→ 只修好三分之一，還不能宣告。
+      → 2026-09-13：四個實例是同一個成因（default lane commit 的 passive effect 晚一個 scheduler task）。
+- [x] 修好之後，連續三次整套 `npm run test:web` 都綠。→ 只修好三分之一，還不能宣告。
+      → **2026-09-14 做到了**：PR #493 的 CI 四輪全綠，另加本機一輪整套全綠，細節見文末「送出」。
 - [x] **不可以**用放寬斷言、加 `waitFor`、或 skip 來讓它變綠。→ 沒有這樣做。
 
 ## How to verify
@@ -399,3 +403,114 @@ CI 對 **同一個 commit `cc6c0c59`** 跑了兩個 run（push 與 pull_request 
 輸出。既然現在知道 body 的鎖狀態是個有訊息量的訊號，值得把它加進 `waitFor` 失敗時的輸出裡
 （哪些層還在 `layers`、body 的 position/overflow、還有幾個 `role="dialog"`），比事後翻 DOM
 dump 有效率。
+
+## 成因找到了：passive effect 比 commit 晚一個 scheduler task（claude-opus-5, 2026-09-13）
+
+PR #447（只改合作按鈕表單的 `rel`，碰不到任何彈層）的 CI 對同一個 commit 跑兩次，`web` 各紅一條，
+正好是這張票的兩個老面孔。兩個 job 重跑都綠。
+
+- pull_request run `34738138625`／job `103673105004`：`trip-editor.test.tsx:312`，現場輸出
+  `dialogs in DOM: 0; assistant connected: false; assistant hidden by an ancestor: false; planner layers: 0; body position: (unset)`
+- push run `34738132288`／job `103673087931`：`route-mode-panel.test.tsx:96`（Google transit fallback），
+  `expected <body><div>…(1)</div></body> to be <section tabindex="-1" …(2)>…(1)</section>`
+
+### 機制
+
+React 19.2.8（`react-dom-client.development.js`）在 commit 結束時，只有 `pendingEffectsLanes & 3`
+（SyncHydration／Sync lane）才當場 `flushPendingEffects()`；其他 lane 的 passive effect 是
+`scheduleCallback(NormalPriority, flushPassiveEffects)`，另排一個 Scheduler task。Scheduler 在 Node 用
+`setImmediate`，一個 task 用完 5 ms 的 slice 就讓出。
+
+`fetch` 回來之後的 `setState` 在 `act` 外面、走 default lane。像 TripEditor 這種大元件，負載下 render
+超過 5 ms，於是 **DOM 已經 commit、`useEffect` 還沒跑**。RTL 的 `waitFor`／`findBy` 條件成立後只用
+`setTimeout(0)` 收尾，這個 timer 可以排在 Scheduler 下一個 `setImmediate` 前面，測試（或真實使用者的
+點擊）就剛好落在空檔裡。
+
+四個實例各自掉在空檔的哪裡：
+
+| 實例 | 空檔裡還沒發生的事 | 表現 |
+| --- | --- | --- |
+| `trip-editor.test.tsx:292/312` | `PlannerOverlay` 的 `onCloseRef.current = onClose`（passive）。`generateAIItinerary` 先 `await flushChanges()` 才 `setAction`：按鈕已 disabled，關閉 handler 還是 busy 之前的舊 closure | 按「關閉」把 AI 視窗關掉：dialog 0、layers 0、body 鎖解除 |
+| `trip-editor.test.tsx:197` | `PlannerOverlay` 註冊 layer 的 effect（passive）。還沒進 `layers`，`closeOverlay` 的 `isTopModalLayer` 為否 | 按「關閉」沒反應；一秒後 effect 跑了，body 鎖在 |
+| `travel-card-actions.test.tsx:64` | `useModalSheet` 掛 keydown listener 的 effect（passive）。sheet 由 resume 的請求打開 | Escape 沒有任何 listener 收到，sheet 還在 |
+| `route-mode-panel.test.tsx`（Google fallback） | 把焦點移到結果區的 effect（passive） | 焦點還在 `<body>` |
+
+「已經排除的」第 3 點只驗證了 `flushSync`（sync lane，React 會當場沖掉 passive effect）；「還沒查的方向」
+第三條留下的正是這條路。
+
+### 怎麼證明的（不是推論）
+
+`apps/web/lib/testing/commit-before-passive-effects.ts`：在 `act` 外面觸發更新（`IS_REACT_ACT_ENVIRONMENT`
+暫時設 false），`performance.now` 每讀一次 +3 ms，讓 Scheduler 在 commit 之後一定讓出，然後每個 macrotask
+檢查一次 DOM，commit 一到位就把控制權交回測試。空檔從此是確定的，和負載無關。
+
+五條回歸測試。**把三個原始檔換回 main 的版本跑，五條全紅；換回修正版，五條全綠**，兩個方向都實跑過：
+
+- `planner-overlay.test.tsx`：請求打開的 overlay 一出現就按「關閉」，會關；請求讓它 busy 之後按「關閉」，不會關
+- `modal-sheet.test.tsx`：請求打開的 sheet 一出現就按 Escape，會關；請求解除 saving 之後按 Escape，會關
+- `route-mode-panel.test.tsx`：畫出結果的那個 commit，焦點就在結果區
+
+紅燈訊息和 CI 的一致，route-mode-panel 那條一字不差。
+
+### 修法
+
+- `PlannerOverlay`：`onCloseRef` 的同步，以及註冊 layer／keydown／鎖捲動的 effect，改 `useLayoutEffect`，
+  和 DOM 同一個 commit。
+- `useModalSheet`：`closeRef` 的同步與主 effect 改 `useLayoutEffect`，**但「關閉後把焦點還給開啟者」留在
+  passive 階段**（layout cleanup 把 opener 放進 `returnFocusRef`，無 deps 的 `useEffect` cleanup 才 focus）。
+  原因：layout cleanup 跑在 mutation 階段，React 在同一個 commit 的 `resetAfterCommit` 會把焦點還原到
+  commit 前的元素；`/hotspots`、`/foods` 的篩選列關閉後元素還留在頁面上，那個還原會蓋掉我們的 focus。
+  第一版全改 layout 時，`gives focus back to whatever opened it` 就是這樣紅的。
+- `RouteModePanel`：移焦點到結果區的 effect 改 `useLayoutEffect`。#406 的「焦點已被讀者移走就不搶」守門
+  保留，因為請求還在路上時讀者仍可能移走焦點。
+
+`trip-editor.test.tsx` 那段「從來重現不了」的註解與現場輸出沒動：那個檔在 `2026-09-12-trip-partner-cta`
+的 scope 裡（#436 早已合併，票還掛 in-progress）。
+
+### 刻意沒做的
+
+- 全站還有別的「passive effect 同步 ref、給非同步 handler 讀」寫法，例如 `route-mode-panel.tsx` 的
+  `requestKeyRef`。沒有 flake 證據，這次不動；同一類的東西，下次有現場可以直接拿這個 helper 驗。
+- 本機跑 trip-editor 全檔：main 原始碼 35.9 s，修正版 37.4 s，在雜訊範圍內。有一次整批跑時
+  「keeps the itinerary first…」逾時 15 s，是那一輪機器負載讓整檔慢了約 2.3 倍（87 s），單獨跑 849 ms。
+
+## 送出：修正做完卻從沒推上去（claude-opus-5, 2026-09-14）
+
+上面的修正（`2bdd76c5`，分支 `claude/passive-effect-gap-flake`）只 commit 在本機 worktree
+`affiliate-marketing-config-97c4cb`。它沒有推上 GitHub，也沒有開 PR，所以 main 一直是舊寫法。
+這張票在 main 上也就一直顯示 `open`、沒有持有者。
+
+2026-09-14 它又讓一個無關的 PR 紅了一次。PR #491 只新增一個任務檔，commit `0a556280` 跑了兩輪：
+
+- CI run 34824040647（push）的 `web` 失敗在 `trip-editor.test.tsx:197`，測試是「opens editing from the stop
+  title and exposes move only through its dismissible More menu」。`openStopEditor` 等到對話框出現就按
+  「關閉」，`waitFor` 卻等不到對話框消失。
+- 同一個 commit 的 pull_request run 34824041998 全綠。
+
+形狀和前四個實例一樣：`PlannerOverlay` 還沒把自己註冊成最上層，那次點擊就被 `isTopModalLayer` 擋掉了。
+
+### 這次做了什麼
+
+- 分支 `claude/ship-passive-effect-gap-flake`：從 main `4ba38e81`（#490）cherry-pick `2bdd76c5`，沒有衝突。
+  修正的基準 `61fe8d83` 之後，main 沒有任何 commit 碰過那 8 個檔案，程式碼和 9/13 驗過的版本逐字相同。
+- 本機重驗（Windows、Node 24）：
+  - 修正版：`planner-overlay`、`modal-sheet`、`route-mode-panel`、`travel-card-actions`、`trip-editor`
+    五個檔、162 個測試全過。
+  - 只把 `planner-overlay.tsx`、`modal-sheet.ts`、`route-mode-panel.tsx` 換回 main 的版本時，五條回歸測試全紅，
+    其餘 82 條照常通過。紅的五條：
+    - 「moves focus to a finished route in the commit that draws it」
+    - 「closes from its own button as soon as a resolved request has drawn it」
+    - 「keeps the guard its buttons show once a resolved request has made it busy」
+    - 「answers Escape as soon as a resolved request has drawn it」
+    - 「closes by the guard it shows once a resolved request has lifted it」
+
+    還原後工作區是乾淨的。
+  - `npm run lint:web`、`npm run typecheck:web`、`npm run check:i18n`、`node tools/tasks.mjs check` 全部 exit 0。
+- 整套測試（完成標準第三條）：
+  - 本機 `npm run test:web`：258 個檔、2809 個測試全過，474 s。
+  - PR #493 的 CI 跑了四輪，全部 success：
+    - `f156c7bb`：push run 34826585898、pull_request run 34826590920。
+    - `c76f672e`：push run 34826640099、pull_request run 34826645473，其中 `web` 分別跑了 15m23s 與 11m35s。
+
+    兩個 commit 只差票檔裡的一行字。
+- `trip-editor.test.tsx` 沒動。今天紅的那條靠修 `PlannerOverlay` 收掉，不靠改測試。
