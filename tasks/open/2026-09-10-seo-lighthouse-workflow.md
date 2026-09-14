@@ -1,7 +1,7 @@
 ---
 id: 2026-09-10-seo-lighthouse-workflow
 title: Lighthouse SEO 與效能門檻 workflow
-status: in-progress
+status: review
 priority: P3
 area: ops
 owner: claude-opus-5
