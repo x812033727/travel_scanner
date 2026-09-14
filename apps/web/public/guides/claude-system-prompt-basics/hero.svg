@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">別在對話上方的一張指令便條 / A note of standing instructions pinned above the chat</title>
+  <desc id="desc">米色底的插圖。畫面上半部是一張白色的便條，四個角是圓的，微微傾斜，邊框是藍色；便條上畫著四條灰色的橫線，代表寫好的幾條規則，最後一條比較短。便條頂端中央別著一枚橘色的圖釘，圖釘中心是一個小圓點。便條下方是一個深青色邊、淡青色底的圓角對話泡泡，左下角有一個朝左下的尖角，泡泡中央寫著一行字「一段指令，穩定的角色」。畫面左右兩側各有幾個淡色小圓點與短線作為裝飾。整張圖的意思是：先把規則寫在便條上別好，之後每一次對話都照著它回答。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- decorative dots, left and right -->
+  <circle cx="150" cy="250" r="14" fill="#E3F0EF"/>
+  <circle cx="210" cy="330" r="9" fill="#D97A2B" opacity="0.45"/>
+  <circle cx="120" cy="430" r="10" fill="#E6F0F7"/>
+  <circle cx="1450" cy="260" r="12" fill="#E6F0F7"/>
+  <circle cx="1390" cy="350" r="9" fill="#2E7D5B" opacity="0.35"/>
+  <circle cx="1470" cy="440" r="15" fill="#E3F0EF"/>
+  <path d="M 130 560 L 250 560" stroke="#E3F0EF" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 1360 560 L 1480 560" stroke="#E6F0F7" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- the pinned note -->
+  <g transform="rotate(-3 800 310)">
+    <rect x="520" y="150" width="560" height="322" rx="20" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+    <path d="M 572 246 L 1028 246" stroke="#5C6B6B" stroke-width="12" stroke-linecap="round"/>
+    <path d="M 572 306 L 1028 306" stroke="#5C6B6B" stroke-width="12" stroke-linecap="round"/>
+    <path d="M 572 366 L 1028 366" stroke="#5C6B6B" stroke-width="12" stroke-linecap="round"/>
+    <path d="M 572 426 L 880 426" stroke="#B8B0A4" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <!-- the pin -->
+  <circle cx="800" cy="150" r="30" fill="#D97A2B"/>
+  <circle cx="800" cy="150" r="11" fill="#F7F1E8"/>
+
+  <!-- the chat bubble -->
+  <path d="M 470 520 h 660 a 44 44 0 0 1 44 44 v 162 a 44 44 0 0 1 -44 44 h -450 l -104 78 v -78 h -106 a 44 44 0 0 1 -44 -44 v -162 a 44 44 0 0 1 44 -44 z" fill="#E3F0EF" stroke="#0D6B68" stroke-width="7" stroke-linejoin="round"/>
+  <text x="800" y="668" text-anchor="middle" font-size="56" font-weight="700" fill="#102A2B">一段指令，穩定的角色</text>
+</svg>

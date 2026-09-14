@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">給 Claude 讀檔案的三步與四種檔案 / Upload, ask, verify: four kinds of files for Claude</title>
+  <desc id="desc">左半邊是三個步驟，由上往下用箭頭相連。第一步上傳：點輸入框旁的加號選 Add files or photos，或直接把檔案拖進對話；對話裡單檔最大 500 MB，每個對話最多 20 個檔案；PDF 在 100 頁以內會連頁面圖像一起讀，101 到 1000 頁只讀文字；專案裡的檔案單檔 30 MB，XLSX 要先開啟程式執行與檔案建立。第二步提問：先問結構，幾頁、幾條、幾個欄位，先不要解讀；再問細節，限定頁數或月份範圍；要出處，條次與頁碼、欄位與列號；找不到的就寫文件中未提及，不要推測。第三步驗證：PDF 抽頁對照，翻到它說的那一頁看原文在不在；試算表抽三筆手算，月合計、最大一筆、分類小計；報不出出處的數字一律不要用。右半邊是四種常見檔案各自的提示重點與驗證動作。保單、租約、合約 PDF：先列條次與標題，再要條次、頁碼與一句原文；抽兩條翻到原頁，看那句原文在不在。政府公文、申請須知：整理成對象、文件、期限、不適用四份清單；抽一頁對照，民國年自己加 1911 換算一次。銀行對帳單、報表 Excel：先問結構與金額單位，再問分組加總與列號；抽三筆手算，月合計、最大一筆、分類小計。掃描成圖片的 PDF：先要它逐字抄出金額與日期再回答；拿它抄出的清單逐項對原檔。右下註記：格式與上限依 2026 年 9 月的 Anthropic 官網。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">給 Claude 讀檔案：上傳、提問、驗證（2026 年 9 月依官網查證）</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Upload, ask, verify — and what to check for four kinds of everyday documents</text>
+
+  <!-- left column: the three steps -->
+  <text x="60" y="134" font-size="20" font-weight="700" fill="#102A2B">三步做完　Three steps</text>
+
+  <rect x="60" y="158" width="640" height="196" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="84" y="196" font-size="20" font-weight="700" fill="#0B4F4D">① 上傳</text>
+  <text x="84" y="232" font-size="16" fill="#102A2B">輸入框的「+」→ Add files or photos，或拖進對話</text>
+  <text x="84" y="264" font-size="16" fill="#102A2B">單檔 500 MB，每個對話最多 20 個檔案</text>
+  <text x="84" y="296" font-size="16" fill="#102A2B">PDF 100 頁以內連頁面圖像一起讀；101–1000 頁只讀文字</text>
+  <text x="84" y="328" font-size="16" fill="#102A2B">專案檔案單檔 30 MB；XLSX 要先開程式執行</text>
+
+  <path d="M 380 354 L 380 386" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="390" width="640" height="196" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="84" y="428" font-size="20" font-weight="700" fill="#1F4E73">② 提問</text>
+  <text x="84" y="464" font-size="16" fill="#102A2B">先問結構：幾頁、幾條、幾個欄位，先不要解讀</text>
+  <text x="84" y="496" font-size="16" fill="#102A2B">再問細節：限定頁數範圍或月份範圍</text>
+  <text x="84" y="528" font-size="16" fill="#102A2B">要出處：條次與頁碼、欄位與列號</text>
+  <text x="84" y="560" font-size="16" fill="#102A2B">找不到的就寫「文件中未提及」，不要推測</text>
+
+  <path d="M 380 586 L 380 618" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="622" width="640" height="182" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="84" y="660" font-size="20" font-weight="700" fill="#102A2B">③ 驗證</text>
+  <text x="84" y="696" font-size="16" fill="#102A2B">PDF 抽頁對照：翻到它說的那一頁，看原文在不在</text>
+  <text x="84" y="728" font-size="16" fill="#102A2B">試算表抽三筆手算：月合計、最大一筆、分類小計</text>
+  <text x="84" y="760" font-size="16" fill="#B8442D">報不出頁碼與欄位的數字，一律不要用</text>
+
+  <!-- right column: four kinds of files -->
+  <text x="740" y="134" font-size="20" font-weight="700" fill="#102A2B">四種檔案：提示重點與驗證動作　Four kinds of files</text>
+
+  <rect x="740" y="158" width="800" height="148" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="768" y="196" font-size="18" font-weight="700" fill="#0B4F4D">保單、租約、合約 PDF</text>
+  <text x="768" y="232" font-size="16" fill="#102A2B">提示：先列條次與標題，再要條次、頁碼與一句原文</text>
+  <text x="768" y="270" font-size="16" fill="#2E7D5B">驗證：抽兩條翻到原頁，看那句原文在不在</text>
+
+  <rect x="740" y="324" width="800" height="148" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="768" y="362" font-size="18" font-weight="700" fill="#1F4E73">政府公文、申請須知、說明書</text>
+  <text x="768" y="398" font-size="16" fill="#102A2B">提示：整理成對象、文件、期限、不適用四份清單</text>
+  <text x="768" y="436" font-size="16" fill="#2E7D5B">驗證：抽一頁對照；民國年自己加 1911 換算一次</text>
+
+  <rect x="740" y="490" width="800" height="148" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="768" y="528" font-size="18" font-weight="700" fill="#A6551A">銀行對帳單、收支表 Excel</text>
+  <text x="768" y="564" font-size="16" fill="#102A2B">提示：先問結構與金額單位，再問分組加總與列號</text>
+  <text x="768" y="602" font-size="16" fill="#2E7D5B">驗證：抽三筆手算，月合計、最大一筆、分類小計</text>
+
+  <rect x="740" y="656" width="800" height="148" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="768" y="694" font-size="18" font-weight="700" fill="#B8442D">掃描成圖片的 PDF</text>
+  <text x="768" y="730" font-size="16" fill="#102A2B">提示：先要它逐字抄出金額與日期，再回答問題</text>
+  <text x="768" y="768" font-size="16" fill="#2E7D5B">驗證：拿它抄出的清單逐項對原檔，看不清就寫無法辨識</text>
+
+  <text x="60" y="848" font-size="15" fill="#5C6B6B">格式、大小與頁數上限依 2026 年 9 月的 Anthropic 官網；掃描檔的辨識結果依原檔品質而異</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
