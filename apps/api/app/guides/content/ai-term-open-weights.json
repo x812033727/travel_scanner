@@ -1,0 +1,194 @@
+{
+  "slug": "ai-term-open-weights",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+      "description": "開放權重通常表示模型的已訓練參數可取得，讓使用者有機會自行部署或調整，但不等於訓練資料與程式都公開。本文用本機筆記摘要示範權重、架構、tokenizer 和推論程式的分工，區分下載、可修改、商業使用與完整開源，也解釋為什麼本機執行不自動保證隱私。讀完能檢查模型版本、授權文件、硬體需求和來源完整性。",
+      "hero": {
+        "src": "/guides/ai-term-open-weights/hero.jpg",
+        "alt": "可取得的權重矩陣與開啟的鎖相連，旁邊箭頭表示可帶入自己的執行環境",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "開放權重，英文 Open Weights，在常見用法中表示模型已訓練的權重可供取得，使用者有機會在自己的環境執行或調整。它描述的是模型元件的可取得程度，不是單一標準授權名稱。可下載、有沒有使用限制、能否分享修改版，以及是否公開訓練程式和資料資訊，都需要分開確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "權重是模型學得的參數，還要配合架構、設定與推論程式才能處理輸入。這篇以 Hugging Face 的模型下載與授權文件，以及 OSI 對開源 AI 的定義作對照，用虛構本機筆記摘要情境說明。讀者可以依序核對元件是否完整、目標環境能否執行，以及實際用途是否符合發布條件，再決定採用方式。"
+        },
+        {
+          "type": "heading",
+          "text": "下載到的通常不只一個檔案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一個可執行的語言模型組合可能包含權重、模型設定、tokenizer、對話模板及相關程式。權重決定學得的數值，tokenizer 決定文字如何轉成輸入單位，推論程式則執行計算。缺少相容元件，即使權重檔已下載，也可能無法載入或得到錯誤輸出。檔案格式與引擎支援需要按具體版本確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugging Face 官方文件示範從模型儲存庫取得檔案及特定版本。固定版本有助於重現，但只記住一個可變的儲存庫名稱仍可能在日後取得不同內容。對正式應用，應記錄權重與設定的版本、來源及必要的完整性資訊，並核對模型卡中的適用範圍。下載成功只是取得元件的證據，不等於已驗證模型可以勝任任務。"
+        },
+        {
+          "type": "heading",
+          "text": "開放權重和開源 AI 的差別",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型權重可取得，不代表建立它的訓練資料資訊、資料處理程式和訓練程式也全部可取得。依 OSI 的 Open Source AI Definition 1.0，開源 AI 還涉及使用、研究、修改與分享的自由，以及足以修改系統的資料資訊、程式碼和參數。這是 OSI 的具體定義，不能只憑供應商用了 open 一字就認定符合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "名稱還有一個容易混淆之處：OSI 文件中的「Open Source weights」仍要求相關資料資訊與程式，和一般討論用來描述權重可取得的「Open Weights」不一定相同。閱讀介紹時，應看作者是在談下載形式、授權自由，還是完整開源條件。把這些層次列開，比爭論單一標籤更容易形成實際決策。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-open-weights/diagram-1.svg",
+          "alt": "可下載權重需要相容架構設定、tokenizer與推論程式，另須核對授權和任務品質",
+          "width": 1600,
+          "height": 900,
+          "caption": "技術元件可用與使用條件合適，需要分開確認。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "示範：在本機摘要自己的筆記",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假設你想在個人電腦整理閱讀筆記，先找到提供權重的模型，再確認推論引擎、硬體及必要檔案相容。使用無敏感內容的測試筆記，檢查能否載入、是否遵守摘要要求、是否把原文未寫的內容加進去。預期結果是一份可核對的摘要，並能確認實際執行的是你選定的版本。這是教學情境，未下載或測量真實模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若模型太大，可考慮適合引擎的量化版本，但應另查量化來源、基礎版本與品質。附加的 LoRA 檔也通常需要指定基礎模型，不能把小型更新當成完整模型。這些檔案可能由不同釋出者提供，要核對來源關係，不能只因名字相似就假定它們屬於同一個經驗證組合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機執行也不自動等於資料永遠不離開電腦。應用可能另有更新、分析、外部工具或遠端模型功能，實際資料流要看執行設定。權重是否開放，只回答模型元件取得的一部分問題；隱私是否符合需求，還要確認程式、網路連線與檔案權限。不能用開放權重這個標籤替整個應用的資料政策背書。"
+        },
+        {
+          "type": "heading",
+          "text": "授權要看實際檔案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型儲存庫可能列出授權標籤，也可能附自訂條款。Hugging Face 文件說明模型卡可標示授權，但實際允許用途和義務仍需閱讀對應檔案。能存取下載連結，不代表所有商業、再散佈或衍生使用都毫無條件；也不能把某個發布者的條款推廣到其他同樣稱為開放權重的模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "授權與技術能力要分開判斷。例如條款可能允許修改，但你仍需要足夠的計算資源與相容工具；反過來，技術上能訓練附加參數，也不等於發布條件已經允許你的所有用途。若任務涉及實際部署或再發布，應核對精確版本的檔案，保留必要宣告與來源，而不是只引用別人的比較表。"
+        },
+        {
+          "type": "heading",
+          "text": "取得更多控制，也承擔更多維護",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自行部署可以讓你固定模型版本、調整環境與資料路徑，但也需要處理更新、效能、安全配置與評估。模型存在本機，不會自動得到雲端服務的工具、監控或持續修正。若模型卡列出的適用範圍與你的任務不同，應先做小型測試，尤其是繁體中文、長文件、否定句與未知資訊處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可重現也有層次。固定權重與推論設定有助於重做比較，但硬體、函式庫和取樣可能讓輸出不完全逐字相同。若希望重現訓練過程，則需要比權重更多的資料與程式資訊。不要把「可以重新載入同一個模型」說成「可以從頭重建同一訓練結果」，兩者要求不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般讀者可依序確認：哪些元件可取得、條款允許什麼、能否在目標裝置執行，以及任務表現是否合格。這樣即使不同發布者對開放的用語不一致，仍能用同一組問題比較。開放權重的價值在提供更多取得與控制模型的可能性；是否適合使用，仍由完整元件、權利條件和實際品質共同決定。當模型來源更新時，也要檢視變更的是權重、對話模板還是外部應用。一次小改動可能改變輸出格式或相容性，因此保留可回退版本及測試紀錄很重要。這是自行掌握模型後自然增加的維護責任，不能因檔案可自由下載就假定後續零成本。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "處理重點",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "權重可取得",
+              "可取得已訓練參數",
+              "不保證其他元件公開"
+            ],
+            [
+              "使用條款",
+              "規定允許用途與義務",
+              "需核對精確版本"
+            ],
+            [
+              "開源 AI 定義",
+              "檢查自由與修改所需元件",
+              "不只看下載連結"
+            ]
+          ],
+          "caption": "概念對照；來源查證於 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先列元件與權利，再看標籤",
+          "text": "把權重、程式、資料資訊和授權各自核對。下載成功不能替代相容性、用途與品質檢查。"
+        },
+        {
+          "type": "link",
+          "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+        },
+        {
+          "type": "link",
+          "text": "模型參數（Model Parameters）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+        },
+        {
+          "type": "link",
+          "text": "量化（Quantization）：用較少位元執行模型的取捨",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+        },
+        {
+          "type": "link",
+          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face：Downloading models",
+          "url": "https://huggingface.co/docs/hub/models-downloading",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：Licenses",
+          "url": "https://huggingface.co/docs/hub/repositories-licenses",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OSI：Open Source AI Definition 1.0",
+          "url": "https://opensource.org/ai/open-source-ai-definition",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

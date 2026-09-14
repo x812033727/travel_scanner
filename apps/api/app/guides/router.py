@@ -24,6 +24,7 @@ from app.guides.schemas import (
     Kind,
     PublicArticle,
     PublicList,
+    PublicSeries,
     PublishWrite,
     RestoreWrite,
     RevisionDetail,
@@ -32,8 +33,10 @@ from app.guides.schemas import (
     TopicList,
     VisibilityWrite,
 )
+from app.guides.series import public_series
 from app.i18n import Locale
 from app.infra import client_ip, enforce_named_rate_limit
+from app.problems import AppError
 
 Session = Annotated[AsyncSession, Depends(get_session)]
 public_router = APIRouter(prefix="/guides", tags=["travel guides"])
@@ -80,6 +83,20 @@ async def list_public_topics(
 async def public_sitemap(response: Response, session: Session) -> SitemapList:
     response.headers["Cache-Control"] = "no-store"
     return await service.sitemap_entries(session)
+
+
+@public_router.get("/series/{series_slug}", response_model=PublicSeries)
+async def get_public_series(
+    series_slug: str,
+    response: Response,
+    session: Session,
+    locale: Locale = "zh-TW",
+) -> PublicSeries:
+    response.headers["Cache-Control"] = "no-store"
+    result = await public_series(session, series_slug, locale)
+    if result is None:
+        raise AppError(404, "guide_article_unavailable", "暫時無法取得這篇文章，請稍後再試")
+    return result
 
 
 @public_router.get("/{kind}/{slug}", response_model=PublicArticle)

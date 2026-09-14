@@ -1,0 +1,293 @@
+{
+  "slug": "veo-video-generation-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 124,
+  "locales": {
+    "zh-TW": {
+      "title": "Veo 與 Google Flow：影片、分鏡與匯出",
+      "description": "這篇用「桌上一隻杯子，晨光慢慢移動」的短片，練習文字提示、素材參考、首尾影格、分鏡和匯出。學完可以從單一鏡頭開始，檢查連續性後再組成短片。本文保留 Veo 與 Flow 的既定篇名，同時說明 Gemini 影片入口目前使用的模型變化。",
+      "hero": {
+        "src": "/guides/veo-video-generation-guide/hero.jpg",
+        "alt": "三段分鏡的連續性的原創插畫，以文件、裝置與流程等物件呼應影片、分鏡與匯出；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這篇用「桌上一隻杯子，晨光慢慢移動」的短片，練習文字提示、素材參考、首尾影格、分鏡和匯出。學完可以從單一鏡頭開始，檢查連續性後再組成短片。本文保留 Veo 與 Flow 的既定篇名，同時說明 Gemini 影片入口目前使用的模型變化。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/veo-video-generation-guide/diagram-1.svg",
+          "alt": "全景：交代杯子與場景；近景：保持主體與光源；結尾：檢查接續並匯出",
+          "width": 1600,
+          "height": 900,
+          "caption": "三段分鏡的連續性。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：Veo、Gemini 與 Flow 的關係",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Veo 是影片模型系列；Google Flow 是管理素材、生成片段與安排場景的創作工具。Gemini 應用程式也能生成影片，但依 2026 年 9 月 14 日官方說明，目前該入口介紹的是 Gemini Omni。不要看到 Gemini 的影片按鈕，就把每次產出都記成 Veo。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Flow 官方模型表仍列 Veo 3.1 的不同版本，也有 Gemini Omni。支援的長度、素材方式和編輯功能隨模型改變，生成前先看選取項目。本篇以電腦網頁說明，沒有在付費帳號生成實際短片；提示詞與分鏡是可照做的練習設計。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "準備符合資格的帳號、可使用的生成額度，以及自己拍攝或有權使用的參考圖。Gemini 個人影片功能需相應 Google AI 方案且年滿十八歲，Workspace 另依授權；Flow 的地區與功能也要檢查。費用集中參閱"
+            },
+            {
+              "type": "link",
+              "text": "方案與點數",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "，先小量測試再投入長片。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "第一步：先寫一個能看懂的鏡頭",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不要一開始要求完整廣告、五個場景和多段對白。先固定主體、動作、環境、光線與鏡頭，描述同一段時間內發生的事情。這次的主體是杯子，變化是晨光，不需要同時讓桌面旋轉或杯子變形。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "單鏡頭影片提示詞",
+          "code": "橫式 16:9，單一連續鏡頭，不剪接。\n一隻沒有商標的奶油白陶瓷杯放在淺木桌上，杯子保持靜止。\n柔和晨光從左側窗戶照進來，光影緩慢移動。\n鏡頭固定，背景為簡單米色牆面，不加入人物、文字或其他杯子。\n如果產生音訊，只有輕微室內環境聲，不要旁白或音樂。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用 Gemini，從側邊欄選建立影片，填入提示詞，必要時加上圖片參考，再送出。生成期間可等它完成後再查看。檢查實際模型與產出資訊，並將這次紀錄為 Gemini 入口的結果；不能因本篇標題有 Veo 就改寫其模型名稱。"
+        },
+        {
+          "type": "heading",
+          "text": "第二步：在 Flow 選正確的生成類型",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "開啟 Google Flow，建立新的練習專案，命名為「晨光杯子」。",
+            "在提示列點選模型名稱，切換到 Video「影片」，確認目前不是圖片生成。",
+            "選擇可用的模型、畫面比例、長度和輸出數量，先以一個片段練習。",
+            "貼上單鏡頭提示詞，檢查本次需要的點數與設定後開始生成。",
+            "播放完成片段，確認主體穩定、沒有意外剪接或多出物件，再決定下一步。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "查證時 Flow 的 Veo 3.1 Fast、Lite 和 Quality 支援的功能不完全相同。例如素材參考、延長片段和影片轉影片並非每個版本都有；目前 Veo 3.1 Quality 未列素材參考支援。使用介面沒有的能力時應改選合適模型或方法，不能靠提示詞強行開啟。"
+        },
+        {
+          "type": "heading",
+          "text": "第三步：選擇素材參考或首尾影格",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Ingredients「素材參考」用來提供角色、物品或風格；Frames「影格」則指定片段開始或結束的畫面。想保持杯子外形，可加入已核對的"
+            },
+            {
+              "type": "link",
+              "text": "參考圖片",
+              "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+            },
+            {
+              "type": "text",
+              "text": "；想從桌面全景移到杯口特寫，則需先準備相容的開始與結束構圖。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Flow 的影片設定選 Ingredients，拖入或從專案選取素材，再在提示詞交代每份素材的用途。主體圖最好乾淨，若參考圖已有兩只杯子，文字卻只要一隻，就形成衝突。先解決素材本身的問題，通常比增加更多否定詞有效。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "首尾影格提示詞",
+          "code": "以附件的桌面全景作為開始畫面，以同一只杯子的近景作為結束畫面。\n鏡頭緩慢向前推進，全程只有同一只杯子，保持把手方向與材質。\n杯子不移動，不新增物品，不突然切換場景。\n兩張參考圖若主體外形不一致，先指出差異，讓我更換素材。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 Frames 時分別將圖放入開始與結束的位置，再檢查生成長度與模型支援。兩張圖差異太大時，模型可能以不自然變形接起來。預期驗收應包含中間過渡，而不是只確認第一格與最後一格符合。"
+        },
+        {
+          "type": "heading",
+          "text": "第四步：把片段組成三段分鏡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先在工作文件寫三段：桌面全景交代場景、杯口近景呈現材質、回到留白構圖作結。每段都使用同一份杯子參考，並記下比例和光源方向。生成後命名為鏡頭一、二、三，保留被採用版本，避免把不同版本交錯剪在一起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Flow 專案中，將選定片段透過更多選單加入場景，再到 Scenebuilder「場景編排」調整順序與前後裁切。先播放完整序列，檢查杯把方向、桌面顏色和光線是否突然改變。某一格很好看，不代表接在前一段後面合理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要沿用某個畫面時，可在影片暫停處儲存影格，再作為後續參考。這能提供具體視覺條件，但不能保證角色與物品完全一致。若要修改整段影片，先確認選取模型支援影片編輯，並記錄新的輸入和輸出版本。"
+        },
+        {
+          "type": "heading",
+          "text": "第五步：下載、試播與交付",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 的影片下方可從分享選單選下載影片；Flow 可下載完成片段或場景。先下載到自己的工作資料夾，實際打開檔案，核對解析度、比例、長度、音訊和播放順序。預覽能播不等於匯出檔一定正確，也不要把分享連結當成影片檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手機直式用途應從一開始選合適比例，再以手機全螢幕試播。文字太靠邊或主體被裁切時，先調整構圖；不要只靠最後縮放。紀錄表至少保留模型、生成日期、提示詞、參考素材、採用版本與實際消耗，方便估算下一支片的工作量。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「為什麼每次杯子都不一樣？」參考圖、模型及提示詞只能提供條件，生成仍可能改變細節。先用同一份乾淨素材，固定光源和角度，再逐段檢查，不要把全部鏡頭一起生成後才發現主體不一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「選了高品質卻不能用某功能？」模型品質名稱不代表功能全集。對照當下官方支援表和實際選單，選擇支援素材、影格或影片編輯的版本，並記錄是否切換了模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「可以保證沒有錯字或多餘聲音嗎？」不能。逐段聽音訊、逐字看文字，必要時在後製另加字幕與音軌。教學概念片也要核對，不應因不是商業作品就忽略誤導內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「沒有生成成功要一直按嗎？」先看錯誤與點數狀態，避免重複提交。區分格式不支援、資格限制和暫時服務問題，再調整一次重試；保存失敗紀錄有助於判斷成本。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "Gemini 圖片生成與修圖",
+              "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "免費與付費方案",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini 應用程式影片生成",
+          "url": "https://support.google.com/gemini/answer/16126339?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Flow 影片、素材與影格",
+          "url": "https://support.google.com/flow/answer/16353334?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Flow 模型與功能對照",
+          "url": "https://support.google.com/flow/answer/16352836?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Flow 場景編排與下載",
+          "url": "https://support.google.com/labs/answer/16935718?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

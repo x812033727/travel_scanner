@@ -1,0 +1,324 @@
+{
+  "slug": "gemini-api-ai-studio-first-call",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 147,
+  "locales": {
+    "zh-TW": {
+      "title": "AI Studio 與第一個 Gemini API 呼叫",
+      "description": "Google AI Studio 是試用模型與建立 Gemini API 金鑰的開發入口。本篇從一個簡單提示詞開始，帶你建立獨立專案環境，分別用 Python 與 JavaScript 呼叫 API。完成後，你會知道網頁試跑、程式執行與帳號用量各自在哪裡確認，不再把消費者版 Gemini 的操作直接套程式式。",
+      "hero": {
+        "src": "/guides/gemini-api-ai-studio-first-call/hero.jpg",
+        "alt": "API 第一次呼叫的原創插畫，以文件、裝置與流程等物件呼應建立金鑰、選擇模型並完成 Python 與 JavaScript 呼叫；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Google AI Studio 是試用模型與建立 Gemini API 金鑰的開發入口。本篇從一個簡單提示詞開始，帶你建立獨立專案環境，分別用 Python 與 JavaScript 呼叫 API。完成後，你會知道網頁試跑、程式執行與帳號用量各自在哪裡確認，不再把消費者版 Gemini 的操作直接套程式式。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-api-ai-studio-first-call/diagram-1.svg",
+          "alt": "金鑰與專案：從環境變數讀取；SDK 請求：指定模型與輸入；結果檢查：確認狀態與文字",
+          "width": 1600,
+          "height": 900,
+          "caption": "API 第一次呼叫。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：帳號、環境與驗證範圍",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "準備可使用 AI Studio 的 Google 帳號與一臺能執行 Python 的電腦；JavaScript 範例另需 Node.js。本系列主要用 Python，查證日的範例套件為 google-genai 2.23.0，JavaScript 使用 @google/genai 2.22.0。本機範例採語法與模擬服務驗證，尚未使用讀者的真實金鑰呼叫 Google；以下步驟提供完整連線驗收方式。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "link",
+              "text": "提示詞設計",
+              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "API 計費",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": "。Gemini 網頁訂閱、Google Workspace、CLI 的 Google 登入及 API 專案不是同一套計費入口。AI Studio 看得到某個模型，也不代表你的每個 API 專案都有相同額度；執行前確認金鑰屬於哪個專案，再檢視該專案的限制。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇跟隨當前官方快速入門的 Interactions API，使用 input 與 output_text。你可能在舊文章看到 models.generate_content、contents 與 response.text；那是另一條 API 介面，不要把兩者引數混在同一個呼叫中。既有程式要遷移時，先以官方遷移檔案逐項比對。"
+        },
+        {
+          "type": "heading",
+          "text": "第一步：在 AI Studio 試好同一題",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "開啟文末官方 AI Studio 入門連結，登入並確認目前帳號與專案。",
+            "建立提示詞，選擇目前可用的文字模型，輸入下方範例後執行。",
+            "檢視回覆是否真的列出三個欄位，並記錄選用模型的完整識別名稱。",
+            "到 API Keys（金鑰）頁面建立或選取金鑰，確認它所屬的專案。",
+            "若需要啟用計費，先閱讀方案與付款條件；本篇不要求為了第一個練習直接升級。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "AI Studio 提示詞",
+          "code": "請用繁體中文列出整理活動公告時應核對的三個欄位。\n每個欄位附一句用途說明，不假設任何特定活動已經公告。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期得到日期、地點、報名等可檢查欄位。答案可以有不同選擇，但應符合三項與用途說明的格式。把這題保留下來，稍後在程式裡使用相同方向的提示詞，便能把環境問題與題目難度分開。"
+        },
+        {
+          "type": "heading",
+          "text": "第二步：建立 Python 環境並設定金鑰",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在新的練習資料夾建立虛擬環境，避免套件版本影響其他專案。Windows 使用以下命令；macOS 或 Linux 可用 python3 建立環境，之後以 .venv/bin/python 執行。版本固定是為了重現本篇，升級前再查官方 SDK 更新與相容性。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell",
+          "code": "python -m venv .venv\n.venv/Scripts/python.exe -m pip install google-genai==2.23.0\n$env:GEMINI_API_KEY = Read-Host \"貼上 AI Studio 金鑰\" -MaskInput\n$env:GEMINI_MODEL = \"gemini-3.8-flash\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Read-Host 的 MaskInput 需要 PowerShell 7；其他環境請使用受控的秘密輸入方式設定變數。不要把金鑰寫程式式碼、截圖或提交到 Git。GEMINI_MODEL 只是本練習使用的模型識別字，若帳號不支援，改成 AI Studio 與官方模型清單共同確認可用的名稱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把下面存成 first.py，使用虛擬環境的 Python 執行。程式明確檢查狀態與文字，避免把尚未完成或空白輸出當作成功。store=False 關閉這次 Interaction 的伺服器狀態儲存，不等於所有資料處理政策都被關閉；資料條款仍需另外確認。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "first.py",
+          "code": "import os\nfrom google import genai\n\nmodel = os.environ.get(\"GEMINI_MODEL\", \"gemini-3.8-flash\")\nwith genai.Client(api_key=os.environ[\"GEMINI_API_KEY\"]) as client:\n    reply = client.interactions.create(\n        model=model,\n        input=\"請用繁體中文列出整理活動公告時應核對的三個欄位。\",\n        store=False,\n    )\n    if reply.status != \"completed\" or not reply.output_text:\n        raise RuntimeError(\"回覆尚未完成或沒有文字，請檢查回傳狀態。\")\n    print(reply.output_text)\n"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "PowerShell",
+          "code": ".venv/Scripts/python.exe first.py\n"
+        },
+        {
+          "type": "heading",
+          "text": "第三步：用 JavaScript 做相同呼叫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "JavaScript 範例在終端機由 Node.js 執行，檔案副檔名用 .mjs。不要把包含金鑰的範例直接放到公開網頁前端，因為瀏覽器下載到的程式與請求都能被使用者檢視。要做網站功能時，將 API 呼叫放在你控制的後端。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機命令",
+          "code": "npm install @google/genai@2.22.0\nnode first.mjs\n"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "first.mjs",
+          "code": "import { GoogleGenAI } from \"@google/genai\";\n\nif (!process.env.GEMINI_API_KEY) throw new Error(\"請先設定 GEMINI_API_KEY\");\nconst client = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });\nconst reply = await client.interactions.create({\n  model: process.env.GEMINI_MODEL || \"gemini-3.8-flash\",\n  input: \"請用繁體中文列出整理活動公告時應核對的三個欄位。\",\n  store: false,\n});\nif (reply.status !== \"completed\" || !reply.output_text) throw new Error(\"回覆未完成或沒有文字\");\nconsole.log(reply.output_text);\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "執行前沿用已設定的 GEMINI_API_KEY 與 GEMINI_MODEL。成功後在終端機看到文字，再到 AI Studio 的用量頁確認對應專案有這次活動。用量顯示可能有更新時間差，單次沒有立即出現時先核對專案與時間，避免反覆重跑造成額外用量。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題與下一步",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「找不到 google 或 genai 模組」先確認安裝套件與執行程式使用同一個 Python。使用 .venv 的完整執行路徑可減少環境混淆；不要把舊的 google-generativeai 套件範例直接當成 google-genai 的用法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「金鑰已貼上卻顯示未設定」環境變數通常隻影響目前終端機及它啟動的子程式。你若改從另一個編輯器視窗執行，需要在該環境提供變數。只檢查變數是否存在，不要為了除錯把完整金鑰印出來。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「回傳模型不存在或權限不足」確認完整模型名稱、API 路線、專案與帳號資格。模型的顯示名稱不一定等於程式識別字；也不能把 Gemini 網頁的模式名稱直接填進 model。保留錯誤碼，依"
+            },
+            {
+              "type": "link",
+              "text": "錯誤分類",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": "處理，不要無限重試。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一次成功後，記下 SDK 版本、模型、日期與使用的提示詞。接著閱讀"
+            },
+            {
+              "type": "link",
+              "text": "檔案輸入與結構化輸出",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+            },
+            {
+              "type": "text",
+              "text": "，把普通文字回覆改成可驗證的欄位；最後用"
+            },
+            {
+              "type": "link",
+              "text": "檔案助理實作",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-assistant"
+            },
+            {
+              "type": "text",
+              "text": "把輸入、驗證與儲存串成一個完整工具。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 認證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "API 檔案與 JSON",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google AI Studio 入門",
+          "url": "https://ai.google.dev/gemini-api/docs/ai-studio-quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini API：第一次呼叫",
+          "url": "https://ai.google.dev/gemini-api/docs/get-started",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Interactions API",
+          "url": "https://ai.google.dev/gemini-api/docs/interactions-overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Gen AI Python SDK",
+          "url": "https://github.com/googleapis/python-genai",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Gen AI JavaScript SDK",
+          "url": "https://github.com/googleapis/js-genai",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

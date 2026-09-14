@@ -1,0 +1,809 @@
+{
+  "version": "0.59.0",
+  "checkedOn": "2026-09-14T06:34:06.323Z",
+  "platform": "win32",
+  "method": "real BuiltinCommandLoader with optional user features enabled; command actions not executed",
+  "commands": [
+    {
+      "name": "about",
+      "aliases": [],
+      "description": "Show version info",
+      "subcommands": []
+    },
+    {
+      "name": "agents",
+      "aliases": [],
+      "description": "Manage agents",
+      "subcommands": [
+        {
+          "name": "list",
+          "aliases": [],
+          "description": "List available local and remote agents",
+          "subcommands": []
+        },
+        {
+          "name": "reload",
+          "aliases": [
+            "refresh"
+          ],
+          "description": "Reload the agent registry",
+          "subcommands": []
+        },
+        {
+          "name": "enable",
+          "aliases": [],
+          "description": "Enable a disabled agent",
+          "subcommands": []
+        },
+        {
+          "name": "disable",
+          "aliases": [],
+          "description": "Disable an enabled agent",
+          "subcommands": []
+        },
+        {
+          "name": "config",
+          "aliases": [],
+          "description": "Configure an agent",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "auth",
+      "aliases": [],
+      "description": "Manage authentication",
+      "subcommands": [
+        {
+          "name": "signin",
+          "aliases": [
+            "login"
+          ],
+          "description": "Sign in or change the authentication method",
+          "subcommands": []
+        },
+        {
+          "name": "signout",
+          "aliases": [
+            "logout"
+          ],
+          "description": "Sign out and clear all cached credentials",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "bug",
+      "aliases": [],
+      "description": "Submit a bug report",
+      "subcommands": []
+    },
+    {
+      "name": "bug-memory",
+      "aliases": [],
+      "description": "Capture a V8 heap snapshot to disk to attach to a bug report",
+      "subcommands": []
+    },
+    {
+      "name": "chat",
+      "aliases": [],
+      "description": "Browse auto-saved conversations and manage chat checkpoints",
+      "subcommands": [
+        {
+          "name": "list",
+          "aliases": [],
+          "description": "List saved manual conversation checkpoints",
+          "subcommands": []
+        },
+        {
+          "name": "save",
+          "aliases": [],
+          "description": "Save the current conversation as a checkpoint. Usage: /resume save <tag>",
+          "subcommands": []
+        },
+        {
+          "name": "resume",
+          "aliases": [
+            "load"
+          ],
+          "description": "Resume a conversation from a checkpoint. Usage: /resume resume <tag>",
+          "subcommands": []
+        },
+        {
+          "name": "delete",
+          "aliases": [],
+          "description": "Delete a conversation checkpoint. Usage: /resume delete <tag>",
+          "subcommands": []
+        },
+        {
+          "name": "share",
+          "aliases": [],
+          "description": "Share the current conversation to a markdown or json file. Usage: /resume share <file>",
+          "subcommands": []
+        },
+        {
+          "name": "checkpoints",
+          "aliases": [
+            "checkpoint"
+          ],
+          "description": "Compatibility command for nested checkpoint operations",
+          "subcommands": [
+            {
+              "name": "list",
+              "aliases": [],
+              "description": "List saved manual conversation checkpoints",
+              "subcommands": []
+            },
+            {
+              "name": "save",
+              "aliases": [],
+              "description": "Save the current conversation as a checkpoint. Usage: /resume save <tag>",
+              "subcommands": []
+            },
+            {
+              "name": "resume",
+              "aliases": [
+                "load"
+              ],
+              "description": "Resume a conversation from a checkpoint. Usage: /resume resume <tag>",
+              "subcommands": []
+            },
+            {
+              "name": "delete",
+              "aliases": [],
+              "description": "Delete a conversation checkpoint. Usage: /resume delete <tag>",
+              "subcommands": []
+            },
+            {
+              "name": "share",
+              "aliases": [],
+              "description": "Share the current conversation to a markdown or json file. Usage: /resume share <file>",
+              "subcommands": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear",
+      "aliases": [
+        "new"
+      ],
+      "description": "Clear the screen and start a new session",
+      "subcommands": []
+    },
+    {
+      "name": "commands",
+      "aliases": [],
+      "description": "Manage custom slash commands. Usage: /commands [list|reload]",
+      "subcommands": [
+        {
+          "name": "list",
+          "aliases": [],
+          "description": "List available custom command .toml files. Usage: /commands list",
+          "subcommands": []
+        },
+        {
+          "name": "reload",
+          "aliases": [
+            "refresh"
+          ],
+          "description": "Reload custom command definitions from .toml files. Usage: /commands reload",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "compress",
+      "aliases": [
+        "summarize",
+        "compact"
+      ],
+      "description": "Compresses the context by replacing it with a summary",
+      "subcommands": []
+    },
+    {
+      "name": "copy",
+      "aliases": [],
+      "description": "Copy the last result or code snippet to clipboard",
+      "subcommands": []
+    },
+    {
+      "name": "corgi",
+      "aliases": [],
+      "description": "Toggles corgi mode",
+      "subcommands": []
+    },
+    {
+      "name": "docs",
+      "aliases": [],
+      "description": "Open full Gemini CLI documentation in your browser",
+      "subcommands": []
+    },
+    {
+      "name": "export-session",
+      "aliases": [],
+      "description": "Export the current session to a JSON file",
+      "subcommands": []
+    },
+    {
+      "name": "directory",
+      "aliases": [
+        "dir"
+      ],
+      "description": "Manage workspace directories",
+      "subcommands": [
+        {
+          "name": "add",
+          "aliases": [],
+          "description": "Add directories to the workspace. Use comma to separate multiple paths",
+          "subcommands": []
+        },
+        {
+          "name": "show",
+          "aliases": [],
+          "description": "Show all directories in the workspace",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "editor",
+      "aliases": [],
+      "description": "Set external editor preference",
+      "subcommands": []
+    },
+    {
+      "name": "extensions",
+      "aliases": [],
+      "description": "Manage extensions",
+      "subcommands": [
+        {
+          "name": "list",
+          "aliases": [],
+          "description": "List active extensions",
+          "subcommands": []
+        },
+        {
+          "name": "update",
+          "aliases": [],
+          "description": "Update extensions. Usage: update <extension-names>|--all",
+          "subcommands": []
+        },
+        {
+          "name": "explore",
+          "aliases": [],
+          "description": "Open extensions page in your browser",
+          "subcommands": []
+        },
+        {
+          "name": "reload",
+          "aliases": [
+            "restart"
+          ],
+          "description": "Reload all extensions",
+          "subcommands": []
+        },
+        {
+          "name": "disable",
+          "aliases": [],
+          "description": "Disable an extension",
+          "subcommands": []
+        },
+        {
+          "name": "enable",
+          "aliases": [],
+          "description": "Enable an extension",
+          "subcommands": []
+        },
+        {
+          "name": "install",
+          "aliases": [],
+          "description": "Install an extension from a git repo or local path",
+          "subcommands": []
+        },
+        {
+          "name": "uninstall",
+          "aliases": [
+            "delete"
+          ],
+          "description": "Uninstall an extension",
+          "subcommands": []
+        },
+        {
+          "name": "link",
+          "aliases": [],
+          "description": "Link an extension from a local path",
+          "subcommands": []
+        },
+        {
+          "name": "config",
+          "aliases": [],
+          "description": "Configure extension settings",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "help",
+      "aliases": [],
+      "description": "For help on gemini-cli",
+      "subcommands": []
+    },
+    {
+      "name": "footer",
+      "aliases": [
+        "statusline"
+      ],
+      "description": "Configure which items appear in the footer (statusline)",
+      "subcommands": []
+    },
+    {
+      "name": "shortcuts",
+      "aliases": [],
+      "description": "Toggle the shortcuts panel above the input",
+      "subcommands": []
+    },
+    {
+      "name": "hooks",
+      "aliases": [],
+      "description": "Manage hooks",
+      "subcommands": [
+        {
+          "name": "panel",
+          "aliases": [
+            "list",
+            "show"
+          ],
+          "description": "Display all registered hooks with their status",
+          "subcommands": []
+        },
+        {
+          "name": "enable",
+          "aliases": [],
+          "description": "Enable a hook by name",
+          "subcommands": []
+        },
+        {
+          "name": "disable",
+          "aliases": [],
+          "description": "Disable a hook by name",
+          "subcommands": []
+        },
+        {
+          "name": "enable-all",
+          "aliases": [
+            "enableall"
+          ],
+          "description": "Enable all disabled hooks",
+          "subcommands": []
+        },
+        {
+          "name": "disable-all",
+          "aliases": [
+            "disableall"
+          ],
+          "description": "Disable all enabled hooks",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "rewind",
+      "aliases": [],
+      "description": "Jump back to a specific message and restart the conversation",
+      "subcommands": []
+    },
+    {
+      "name": "ide",
+      "aliases": [],
+      "description": "Manage IDE integration",
+      "subcommands": []
+    },
+    {
+      "name": "init",
+      "aliases": [],
+      "description": "Analyzes the project and creates a tailored GEMINI.md file",
+      "subcommands": []
+    },
+    {
+      "name": "mcp",
+      "aliases": [],
+      "description": "Manage configured Model Context Protocol (MCP) servers",
+      "subcommands": [
+        {
+          "name": "list",
+          "aliases": [
+            "ls",
+            "nodesc",
+            "nodescription"
+          ],
+          "description": "List configured MCP servers and tools",
+          "subcommands": []
+        },
+        {
+          "name": "desc",
+          "aliases": [
+            "description"
+          ],
+          "description": "List configured MCP servers and tools with descriptions",
+          "subcommands": []
+        },
+        {
+          "name": "schema",
+          "aliases": [],
+          "description": "List configured MCP servers and tools with descriptions and schemas",
+          "subcommands": []
+        },
+        {
+          "name": "auth",
+          "aliases": [],
+          "description": "Authenticate with an OAuth-enabled MCP server",
+          "subcommands": []
+        },
+        {
+          "name": "reload",
+          "aliases": [
+            "refresh"
+          ],
+          "description": "Reloads MCP servers",
+          "subcommands": []
+        },
+        {
+          "name": "enable",
+          "aliases": [],
+          "description": "Enable a disabled MCP server",
+          "subcommands": []
+        },
+        {
+          "name": "disable",
+          "aliases": [],
+          "description": "Disable an MCP server",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "memory",
+      "aliases": [],
+      "description": "Commands for interacting with memory",
+      "subcommands": [
+        {
+          "name": "show",
+          "aliases": [],
+          "description": "Show the current memory contents",
+          "subcommands": []
+        },
+        {
+          "name": "reload",
+          "aliases": [
+            "refresh"
+          ],
+          "description": "Reload the memory from the source",
+          "subcommands": []
+        },
+        {
+          "name": "list",
+          "aliases": [],
+          "description": "Lists the paths of the GEMINI.md files in use",
+          "subcommands": []
+        },
+        {
+          "name": "inbox",
+          "aliases": [],
+          "description": "Review skills extracted from past sessions and move them to global or project skills",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "model",
+      "aliases": [],
+      "description": "Manage model configuration",
+      "subcommands": [
+        {
+          "name": "manage",
+          "aliases": [],
+          "description": "Opens a dialog to configure the model",
+          "subcommands": []
+        },
+        {
+          "name": "set",
+          "aliases": [],
+          "description": "Set the model to use. Usage: /model set <model-name> [--persist]",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "permissions",
+      "aliases": [],
+      "description": "Manage folder trust settings and other permissions",
+      "subcommands": [
+        {
+          "name": "trust",
+          "aliases": [],
+          "description": "Manage folder trust settings. Usage: /permissions trust [<directory-path>]",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "plan",
+      "aliases": [],
+      "description": "Switch to Plan Mode and view current plan",
+      "subcommands": [
+        {
+          "name": "copy",
+          "aliases": [],
+          "description": "Copy the currently approved plan to your clipboard",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "policies",
+      "aliases": [],
+      "description": "Manage policies",
+      "subcommands": [
+        {
+          "name": "list",
+          "aliases": [],
+          "description": "List all active policies grouped by mode",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "privacy",
+      "aliases": [],
+      "description": "Display the privacy notice",
+      "subcommands": []
+    },
+    {
+      "name": "quit",
+      "aliases": [
+        "exit"
+      ],
+      "description": "Exit the cli",
+      "subcommands": []
+    },
+    {
+      "name": "restore",
+      "aliases": [],
+      "description": "Restore a tool call. This will reset the conversation and file history to the state it was in when the tool call was suggested",
+      "subcommands": []
+    },
+    {
+      "name": "resume",
+      "aliases": [],
+      "description": "Browse auto-saved conversations and manage chat checkpoints",
+      "subcommands": [
+        {
+          "name": "list",
+          "aliases": [],
+          "description": "List saved manual conversation checkpoints",
+          "subcommands": []
+        },
+        {
+          "name": "save",
+          "aliases": [],
+          "description": "Save the current conversation as a checkpoint. Usage: /resume save <tag>",
+          "subcommands": []
+        },
+        {
+          "name": "resume",
+          "aliases": [
+            "load"
+          ],
+          "description": "Resume a conversation from a checkpoint. Usage: /resume resume <tag>",
+          "subcommands": []
+        },
+        {
+          "name": "delete",
+          "aliases": [],
+          "description": "Delete a conversation checkpoint. Usage: /resume delete <tag>",
+          "subcommands": []
+        },
+        {
+          "name": "share",
+          "aliases": [],
+          "description": "Share the current conversation to a markdown or json file. Usage: /resume share <file>",
+          "subcommands": []
+        },
+        {
+          "name": "checkpoints",
+          "aliases": [
+            "checkpoint"
+          ],
+          "description": "Compatibility command for nested checkpoint operations",
+          "subcommands": [
+            {
+              "name": "list",
+              "aliases": [],
+              "description": "List saved manual conversation checkpoints",
+              "subcommands": []
+            },
+            {
+              "name": "save",
+              "aliases": [],
+              "description": "Save the current conversation as a checkpoint. Usage: /resume save <tag>",
+              "subcommands": []
+            },
+            {
+              "name": "resume",
+              "aliases": [
+                "load"
+              ],
+              "description": "Resume a conversation from a checkpoint. Usage: /resume resume <tag>",
+              "subcommands": []
+            },
+            {
+              "name": "delete",
+              "aliases": [],
+              "description": "Delete a conversation checkpoint. Usage: /resume delete <tag>",
+              "subcommands": []
+            },
+            {
+              "name": "share",
+              "aliases": [],
+              "description": "Share the current conversation to a markdown or json file. Usage: /resume share <file>",
+              "subcommands": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stats",
+      "aliases": [
+        "usage"
+      ],
+      "description": "Check session stats. Usage: /stats [session|model|tools]",
+      "subcommands": [
+        {
+          "name": "session",
+          "aliases": [],
+          "description": "Show session-specific usage statistics",
+          "subcommands": []
+        },
+        {
+          "name": "model",
+          "aliases": [],
+          "description": "Show model-specific usage statistics",
+          "subcommands": []
+        },
+        {
+          "name": "tools",
+          "aliases": [],
+          "description": "Show tool-specific usage statistics",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "theme",
+      "aliases": [],
+      "description": "Change the theme",
+      "subcommands": []
+    },
+    {
+      "name": "tools",
+      "aliases": [],
+      "description": "List available Gemini CLI tools. Use /tools desc to include descriptions.",
+      "subcommands": [
+        {
+          "name": "list",
+          "aliases": [],
+          "description": "List available Gemini CLI tools.",
+          "subcommands": []
+        },
+        {
+          "name": "desc",
+          "aliases": [
+            "descriptions"
+          ],
+          "description": "List available Gemini CLI tools with descriptions.",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "skills",
+      "aliases": [],
+      "description": "List, enable, disable, or reload Gemini CLI agent skills. Usage: /skills [list | disable <name> | enable <name> | reload]",
+      "subcommands": [
+        {
+          "name": "list",
+          "aliases": [],
+          "description": "List available agent skills. Usage: /skills list [nodesc] [all]",
+          "subcommands": []
+        },
+        {
+          "name": "link",
+          "aliases": [],
+          "description": "Link an agent skill from a local path. Usage: /skills link <path> [--scope user|workspace]",
+          "subcommands": []
+        },
+        {
+          "name": "disable",
+          "aliases": [],
+          "description": "Disable a skill by name. Usage: /skills disable <name>",
+          "subcommands": []
+        },
+        {
+          "name": "enable",
+          "aliases": [],
+          "description": "Enable a disabled skill by name. Usage: /skills enable <name>",
+          "subcommands": []
+        },
+        {
+          "name": "reload",
+          "aliases": [
+            "refresh"
+          ],
+          "description": "Reload the list of discovered skills. Usage: /skills reload",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "settings",
+      "aliases": [],
+      "description": "View and edit Gemini CLI settings",
+      "subcommands": []
+    },
+    {
+      "name": "gemma",
+      "aliases": [],
+      "description": "Check local Gemma model routing status",
+      "subcommands": []
+    },
+    {
+      "name": "tasks",
+      "aliases": [
+        "bg",
+        "background"
+      ],
+      "description": "Toggle background tasks view",
+      "subcommands": []
+    },
+    {
+      "name": "vim",
+      "aliases": [],
+      "description": "Toggle vim mode on/off",
+      "subcommands": []
+    },
+    {
+      "name": "setup-github",
+      "aliases": [],
+      "description": "Set up GitHub Actions",
+      "subcommands": []
+    },
+    {
+      "name": "terminal-setup",
+      "aliases": [],
+      "description": "Configure terminal keybindings for multiline input (VS Code, Cursor, Windsurf)",
+      "subcommands": []
+    },
+    {
+      "name": "voice",
+      "aliases": [],
+      "description": "Toggle voice dictation mode",
+      "subcommands": [
+        {
+          "name": "model",
+          "aliases": [],
+          "description": "Manage voice transcription models",
+          "subcommands": []
+        }
+      ]
+    },
+    {
+      "name": "upgrade",
+      "aliases": [],
+      "description": "Upgrade your Gemini Code Assist tier for higher limits",
+      "subcommands": []
+    }
+  ]
+}

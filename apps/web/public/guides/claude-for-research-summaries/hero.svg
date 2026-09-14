@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">被螢光標記過的一疊報告與一個問號泡泡 / A stack of bound reports with highlighter marks, and a question bubble</title>
+  <desc id="desc">插圖：米色底上，左半邊疊著三本裝訂好的報告，微微扇形錯開。最上面那本是白底深色框，左邊有一條深青色的裝訂邊，邊上有三個圓形的裝訂孔；紙面上是八條灰色的短線代表文字，其中三行被螢光筆劃過，兩條是橘色、一條是綠色，半透明地蓋在灰線上。報告底下有一道淡淡的橢圓陰影。右半邊浮著一個深青色的圓角對話泡泡，尾巴朝左下方指向那疊報告，泡泡裡是一個白色的問號，由一段彎鉤線條與下方一個白色圓點組成。背景另有三個淡藍與淡綠的圓形色塊當裝飾。畫面下方只有一行字：先問對問題，再回原文。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- soft background shapes -->
+  <circle cx="1255" cy="285" r="185" fill="#E6F0F7"/>
+  <circle cx="215" cy="205" r="115" fill="#E3F0EF"/>
+  <circle cx="1455" cy="655" r="92" fill="#E3F0EF"/>
+
+  <!-- ground shadow -->
+  <ellipse cx="600" cy="742" rx="365" ry="28" fill="#E3DDD2"/>
+
+  <!-- bottom report -->
+  <g transform="rotate(8 580 445)">
+    <rect x="330" y="230" width="500" height="430" rx="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="7"/>
+    <rect x="348" y="252" width="20" height="386" rx="10" fill="#5C6B6B"/>
+  </g>
+
+  <!-- middle report -->
+  <g transform="rotate(-5 580 445)">
+    <rect x="330" y="230" width="500" height="430" rx="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="7"/>
+    <rect x="348" y="252" width="20" height="386" rx="10" fill="#2F6F9F"/>
+  </g>
+
+  <!-- top report, with text lines and highlighter marks -->
+  <g transform="rotate(1 580 445)">
+    <rect x="330" y="230" width="500" height="430" rx="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="7"/>
+    <rect x="346" y="252" width="24" height="386" rx="12" fill="#0D6B68"/>
+    <circle cx="358" cy="320" r="8" fill="#F7F1E8"/>
+    <circle cx="358" cy="445" r="8" fill="#F7F1E8"/>
+    <circle cx="358" cy="570" r="8" fill="#F7F1E8"/>
+
+    <rect x="400" y="284" width="330" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="400" y="330" width="378" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="400" y="376" width="296" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="400" y="422" width="366" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="400" y="468" width="338" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="400" y="514" width="384" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="400" y="560" width="278" height="14" rx="7" fill="#5C6B6B"/>
+    <rect x="400" y="606" width="352" height="14" rx="7" fill="#5C6B6B"/>
+
+    <rect x="392" y="366" width="316" height="34" rx="6" fill="#D97A2B" fill-opacity="0.45"/>
+    <rect x="392" y="458" width="358" height="34" rx="6" fill="#2E7D5B" fill-opacity="0.38"/>
+    <rect x="392" y="550" width="298" height="34" rx="6" fill="#D97A2B" fill-opacity="0.45"/>
+  </g>
+
+  <!-- question bubble -->
+  <path d="M 1152 476 L 1068 562 L 1222 502 Z" fill="#0D6B68"/>
+  <rect x="1130" y="212" width="290" height="290" rx="48" fill="#0D6B68"/>
+  <path d="M 1225 322 C 1225 268, 1325 268, 1325 322 C 1325 366, 1275 366, 1275 404" fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="1275" cy="448" r="14" fill="#FFFFFF"/>
+
+  <!-- bubble trail -->
+  <circle cx="1050" cy="600" r="18" fill="#0D6B68"/>
+  <circle cx="1012" cy="636" r="10" fill="#0D6B68"/>
+
+  <text x="800" y="838" font-size="46" font-weight="700" fill="#102A2B" text-anchor="middle">先問對問題，再回原文</text>
+</svg>

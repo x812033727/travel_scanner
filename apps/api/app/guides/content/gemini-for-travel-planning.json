@@ -1,0 +1,327 @@
+{
+  "slug": "gemini-for-travel-planning",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 126,
+  "locales": {
+    "zh-TW": {
+      "title": "用 Gemini 規劃旅行：需求、資料與行程",
+      "description": "用 Gemini 排旅行，最容易出錯的地方是把「有趣的推薦」直接變成「今天走得完的行程」。本篇用臺北兩天一夜的規劃練習，從需求、資料、路線、預算到出發前核對走一遍。完成後會得到一份能修改、標清楚假設和待查資訊的行程草稿。",
+      "hero": {
+        "src": "/guides/gemini-for-travel-planning/hero.jpg",
+        "alt": "旅行從限制開始排的原創插畫，以文件、裝置與流程等物件呼應需求、資料與行程；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "用 Gemini 排旅行，最容易出錯的地方是把「有趣的推薦」直接變成「今天走得完的行程」。本篇用臺北兩天一夜的規劃練習，從需求、資料、路線、預算到出發前核對走一遍。完成後會得到一份能修改、標清楚假設和待查資訊的行程草稿。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-for-travel-planning/diagram-1.svg",
+          "alt": "固定條件：保留返程與休息；候選與路線：查日期、區域與交通；出發前核對：確認天氣及預約",
+          "width": 1600,
+          "height": 900,
+          "caption": "旅行從限制開始排。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：練習條件與資料界線",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇設定兩位成人搭大眾運輸，住宿以臺北車站附近為規劃起點，每天最多三個主要活動，偏好室內展覽和街區散步。實際日期由讀者填入，住宿尚未預訂；所有時間配置與預算是本文設計的示例，不是已由 Gemini 搜尋或完成預訂的結果。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2026 年 9 月 14 日已查閱 Gemini 搜尋與連線說明、臺北捷運官方查詢入口，以及中央氣象署臺北市預報頁。本文沒有宣稱取得未來出發日的即時票價、天氣或營業時間。學習前可先看"
+            },
+            {
+              "type": "link",
+              "text": "提示詞寫法",
+              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+            },
+            {
+              "type": "text",
+              "text": "和"
+            },
+            {
+              "type": "link",
+              "text": "搜尋來源判讀",
+              "url": "https://mokaair.com/zh-TW/life/google-ai-mode-search"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "先把一定要做、可以替換與尚未決定分開。已買票的演出、固定返程和同行者行動需求應保留在明顯位置；一般景點排序可以調整。不要把護照號碼、信用卡或完整訂位代碼貼入規劃對話，這些不是排行程需要的條件。"
+        },
+        {
+          "type": "heading",
+          "text": "第一步：讓 Gemini 先整理需求",
+          "level": 2
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "旅行需求提示詞",
+          "code": "請幫我規劃臺北兩天一夜，先整理需求並指出缺漏，不要直接排滿行程。\n日期：[填入年月日] 到 [填入年月日]，兩位成人，大眾運輸。\n住宿規劃起點：臺北車站附近，尚未訂房。\n每天最多三個主要活動，喜歡室內展覽、街區散步，不安排長距離登山。\n每天中午保留一小時用餐，下午至少半小時休息。\n第二天 17:00 前回到臺北車站，這個時間不能更改。\n請列出尚需我補充的預算、步行耐受度與必去地點。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "回答缺漏問題後，請它把確認條件整理成短清單，再開始查資料。若同行者最多連續步行二十分鐘，就明確寫入；「輕鬆行程」每個人的理解不同。需求清單可以保留在"
+            },
+            {
+              "type": "link",
+              "text": "Gems",
+              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+            },
+            {
+              "type": "text",
+              "text": "或單獨工作稿，但每次旅行日期仍需更新。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "第二步：建立候選點與來源清單",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先請它提出少量候選：一個展覽場館、一段市區街區散步、一個雨天備案。每個候選必須有正式名稱、地址或地圖位置、需查的營業與票務條件，以及官方來源。不要先收集三十個景點，再期待模型自動挑出合理路線。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "候選點查詢提示詞",
+          "code": "依剛才確認的需求，提出最多六個臺北候選活動。\n每項列名稱、所在區域、建議停留時間、適合原因、官方來源。\n營業時間、票價、休館日和預約規則要標示查詢日期與適用日期。\n來源無法開啟或沒有明確資訊時，填待確認，不用舊文章補成肯定答案。\n先不要訂房、買票、建立日曆或傳訊息。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "逐個打開來源核對。展覽場館的一般開館時間，可能和某次特展入場時段不同；餐廳有營業不代表不用候位。若只找到社羣貼文，保留發布日期和活動對象，不把某個週末限定內容當成每日可用。"
+        },
+        {
+          "type": "heading",
+          "text": "第三步：用區域和固定時間排草稿",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先在地圖確認候選點相對位置，把同區域安排在同一天，再計算轉乘和步行。以下是時間配置示例：第一天上午安排已確認開放的室內場館，中午用餐，下午選同區域散步，晚餐後自由活動；第二天上午另一項活動，午後提早往臺北車站方向返回。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "兩天時間骨架，並非已查證景點行程",
+          "code": "第一天 10:00–12:00：室內場館；12:00–13:00：午餐。\n第一天 13:00–14:00：移動與緩衝；14:00–15:30：街區散步。\n第一天 15:30–16:00：休息；之後依體力安排晚餐與自由時間。\n第二天 10:00–12:00：一項主要活動；12:00–13:00：午餐。\n第二天 13:00–15:00：近返程方向的彈性活動或雨天備案。\n第二天 15:00 起：保留移動、取行李與車站緩衝，17:00 前到站。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "將已核對的候選填入骨架，再請它檢查是否超過活動數、休息時間和返程限制。這裡的一小時移動區塊是規劃緩衝，不是查到的捷運行車時間。實際路線可到臺北捷運官網選起終站，查看路線、票價和車站資訊，再加上進出站與步行。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果有人問「為何不多放一個景點」，先看最後一段移動是否還有足夠餘裕。能在地圖上連成線不代表真的走得完，餐廳排隊、行李寄放和找入口都會用時間。行程品質可以用是否有清楚替換方案衡量，不必用景點數量衡量。"
+        },
+        {
+          "type": "heading",
+          "text": "第四步：把預算分成估算與實際價格",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先由自己設定預算上限，再列住宿、交通、餐食、門票和備用金。練習可假設兩人總預算六千元：住宿二千四百、餐食一千八百、交通六百、門票六百、備用六百。合計六千是人工加總示例，各項並非當日市場報價。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "找到可預訂商品後，把含稅價格、入住人數、日期、取消條件與付款幣別填入，再算總額。不要把每人價格當成兩人總價，也不要把「起」的最低價當成你選的日期一定有房。需要用試算表核對可看"
+            },
+            {
+              "type": "link",
+              "text": "Sheets 公式與驗算",
+              "url": "https://mokaair.com/zh-TW/life/gemini-for-google-sheets-formulas"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "第五步：加入雨天與臨時調整",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "出發前查看中央氣象署對應縣市及時段預報，遇到警特報則先調整行程。天氣頁需要互動顯示時，應打開實際頁面查看，不能只依搜尋摘要推論。雨天備案應核對是否開放、是否需要預約，以及從目前位置怎麼到達。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "局部調整提示詞",
+          "code": "第一天下午可能下雨，請只替換街區散步這一段。\n保留原住宿、午餐、休息與第二天返程時間，不重排整趟旅行。\n提出兩個已核對開放條件的室內選項，列出移動與預約待確認事項。\n先給變更前後對照，不直接修改任何已建立的日曆或訂位。\n"
+        },
+        {
+          "type": "heading",
+          "text": "預期成果與常見問題",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "最後應有需求清單、兩天草稿、來源與查證日期、估算／實價預算，以及雨天備案。將仍待確認的場館時段、票務或交通放在最前面，同行者一眼就知道哪些還沒完成。若要寫入日曆，另依"
+            },
+            {
+              "type": "link",
+              "text": "連線與事件核對",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "逐項確認。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "「AI 找不到店家資訊？」先核對正式名稱、地址和分店，找不到就換成有資料的候選或保留空檔。不要靠模型猜測營業時間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「行程過於緊湊怎麼改？」減少跨區活動，加入用餐與轉乘緩衝，請它列出必須刪掉哪一項才能符合固定時間，而不是把每個停留都壓縮十分鐘。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「可以請它直接買票嗎？」本篇只完成規劃。購票前需確認日期、乘客、金額、取消條件與正式網站，再決定是否提交；草稿、預訂頁和付款成功應分別確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「出發後還能使用嗎？」可以把已核對行程和重要地址另存離線版本，臨時改動時只給必要資訊。即時路況、天氣與店家狀態仍以當下官方或現場資訊為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "提示詞怎麼寫",
+              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Deep Research",
+              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini 搜尋與 Connected Apps",
+          "url": "https://support.google.com/gemini/answer/13695044?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋 AI 模式與來源查核",
+          "url": "https://support.google.com/websearch/answer/16011537?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "台北捷運路線、票價與車站查詢入口",
+          "url": "https://www.metro.taipei/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "中央氣象署台北市預報入口",
+          "url": "https://www.cwa.gov.tw/V8/C/W/County/County.html?CID=63",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

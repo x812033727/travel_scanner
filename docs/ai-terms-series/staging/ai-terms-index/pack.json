@@ -1,0 +1,648 @@
+{
+  "slug": "ai-terms-index",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+      "description": "想看懂 Loop Engineering、Harness Engineering、Context Engineering、RAG、MCP 與其他 AI 名詞，可以從這份總索引開始。依 2026 年 9 月查證範圍，把 81 個概念分成八組，每個詞連到白話專文，附依任務安排的閱讀路徑、容易混淆的層次，以及原始論文和官方定義的查核方式。",
+      "hero": {
+        "src": "/guides/ai-terms-index/hero.jpg",
+        "alt": "不同顏色的書本與索引卡排成一座小型知識書架，一條路徑從放大鏡通往打開的書，象徵依問題閱讀 AI 名詞",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "AI 的名詞常同時描述不同層次的事：有的是模型架構，有的是資料處理方法，有的是代理工作流程，也有的是安全與授權條件。本索引把 81 個概念分成八組，每個名稱都連到一篇完整的白話專文。你可以先選正在處理的問題，再沿相關連結閱讀，不必背完所有縮寫才開始使用 AI。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這份系列以 2026 年 9 月 14 日為首輪資料整理截止日，面向台灣的一般使用者。收錄範圍是本次查證過、具有獨立概念與具體使用情境的名詞；英文全名、常用縮寫與中文別名合併閱讀。AI 的用語仍在增加，因此這是一份有日期與範圍的導讀，不是宣稱已列盡全世界名詞的封閉字典。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每篇專文都會先說明名詞在解決什麼問題，再用假設案例展示輸入、處理過程與預期結果，最後提醒常見誤解和限制。案例中的成效沒有經過實測時，會直接標示為示例；不把原始論文的特定測試，轉寫成任何使用者都能得到的保證。文末來源可以幫你進一步核對定義與條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "已經熟悉聊天工具的讀者，可以先從 token、上下文視窗與幻覺開始；這幾個詞直接影響貼文件、反覆追問和判斷答案的方式。想讓 AI 幫忙完成多步工作，則先讀代理與工具，再看工程方法。順序不是程度排名，而是為了讓下一個名詞能回答你已經遇到的問題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從你想解決的問題開始"
+        },
+        {
+          "type": "table",
+          "header": [
+            "正在遇到的問題",
+            "建議先讀"
+          ],
+          "rows": [
+            [
+              "貼長文件、聊久後漏掉條件",
+              "token、上下文視窗、上下文壓縮"
+            ],
+            [
+              "讓 AI 自己接續完成工作",
+              "AI 代理、代理迴圈、Loop Engineering"
+            ],
+            [
+              "讓 AI 回答自己的文件",
+              "RAG、文件分塊、語意搜尋"
+            ],
+            [
+              "判斷答案與工具結果能否交付",
+              "評測、幻覺、人工介入"
+            ],
+            [
+              "看懂生成的影像與聲音",
+              "多模態、文生圖、語音辨識、語音合成"
+            ],
+            [
+              "下載模型或查內容來源",
+              "開放權重、開源 AI、內容憑證"
+            ]
+          ],
+          "caption": "依本系列 2026 年 9 月整理範圍安排的閱讀路徑。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-terms-index/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "alt": "四條閱讀路徑分別從理解模型、安排代理工作、閱讀文件及辨認媒體開始，每條路徑串起相關概念與查核問題",
+          "caption": "先挑一條與你目前任務有關的路徑，再沿專文中的連結補齊相鄰概念。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "模型與 AI 基礎"
+        },
+        {
+          "type": "paragraph",
+          "text": "這組回答「我正在使用的系統大致是什麼」。人工智慧是較廣的概念，機器學習與深度學習描述其中的重要方法；生成式 AI 關注內容產生，大型語言模型則是其中一類常見模型。Transformer、混合專家與模型參數進一步談組成方式。閱讀時先分清楚分類、架構與規模，避免把參數多、名字新或同一家公司的產品，直接當成所有任務都更好的證據。"
+        },
+        {
+          "type": "link",
+          "text": "人工智慧（Artificial Intelligence）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-artificial-intelligence"
+        },
+        {
+          "type": "link",
+          "text": "機器學習（Machine Learning）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-machine-learning"
+        },
+        {
+          "type": "link",
+          "text": "深度學習（Deep Learning）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-deep-learning"
+        },
+        {
+          "type": "link",
+          "text": "生成式 AI（Generative AI）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-generative-ai"
+        },
+        {
+          "type": "link",
+          "text": "大型語言模型（Large Language Model）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+        },
+        {
+          "type": "link",
+          "text": "基礎模型（Foundation Model）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-foundation-model"
+        },
+        {
+          "type": "link",
+          "text": "Transformer 架構（Transformer）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-transformer"
+        },
+        {
+          "type": "link",
+          "text": "混合專家模型（Mixture of Experts）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts"
+        },
+        {
+          "type": "link",
+          "text": "小型語言模型（Small Language Model）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-small-language-model"
+        },
+        {
+          "type": "link",
+          "text": "模型參數（Model Parameters）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "提示、token 與上下文"
+        },
+        {
+          "type": "paragraph",
+          "text": "這組把注意力放在模型這一次看得到什麼。token 是內容計量與表示的單位，上下文視窗是容量；系統提示詞、範例和外部資料則決定輸入內容。少樣本提示與上下文學習彼此相關，但不是把模型永久重新訓練。壓縮與記憶可能幫助長任務，也會帶來細節遺失或舊資訊重用的問題。先確認資料是否送進去，再檢查它是否真的被正確使用。"
+        },
+        {
+          "type": "link",
+          "text": "token（Token）是什麼：AI 如何計算文字長度",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+        },
+        {
+          "type": "link",
+          "text": "分詞（Tokenization）是什麼：文字進入模型前的切分",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-tokenization"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "link",
+          "text": "系統提示詞（System Prompt）是什麼：設定助理的工作規則",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-system-prompt"
+        },
+        {
+          "type": "link",
+          "text": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-few-shot-prompting"
+        },
+        {
+          "type": "link",
+          "text": "零樣本提示（Zero-shot Prompting）是什麼：先把任務說清楚",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-zero-shot-prompting"
+        },
+        {
+          "type": "link",
+          "text": "上下文學習（In-context Learning）是什麼：當場適應新規則",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-in-context-learning"
+        },
+        {
+          "type": "link",
+          "text": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-context-compaction"
+        },
+        {
+          "type": "link",
+          "text": "上下文品質衰退（Context Rot）是什麼：長文為何不一定更準",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-context-rot"
+        },
+        {
+          "type": "link",
+          "text": "代理記憶（Agent Memory）是什麼：保存、取回與更新資訊",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-memory"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "代理、工具與互通協定"
+        },
+        {
+          "type": "paragraph",
+          "text": "這組回答「AI 如何從產生文字走到採取行動」。代理迴圈描述觀察結果後再決定下一步，多代理、子代理與協調則處理工作分工。工具呼叫讓系統執行具體功能；MCP、A2A 和 Agent Skills 各自處理不同的連接或知識封裝問題，不是互相替換的縮寫。理解這些詞時，請同時想清楚誰有執行權限、誰保存進度，以及哪個結果能證明事情真的做完。"
+        },
+        {
+          "type": "link",
+          "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+        },
+        {
+          "type": "link",
+          "text": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-loop"
+        },
+        {
+          "type": "link",
+          "text": "多代理系統（Multi-agent System）是什麼：分工與協作的代價",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-multi-agent-system"
+        },
+        {
+          "type": "link",
+          "text": "子代理（Subagent）是什麼：把有邊界的工作交出去",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-subagent"
+        },
+        {
+          "type": "link",
+          "text": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-orchestration"
+        },
+        {
+          "type": "link",
+          "text": "ReAct 是什麼：讓推理與行動交替補足資訊",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-react-reasoning-acting"
+        },
+        {
+          "type": "link",
+          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+        },
+        {
+          "type": "link",
+          "text": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-model-context-protocol"
+        },
+        {
+          "type": "link",
+          "text": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-agent2agent-protocol"
+        },
+        {
+          "type": "link",
+          "text": "代理技能（Agent Skills）是什麼：可重用的工作方法包",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-skills"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "AI 工程方法與維運"
+        },
+        {
+          "type": "paragraph",
+          "text": "這組收錄 Loop Engineering 等工程方法。提示詞工程處理指令，上下文工程處理資訊配置，Harness Engineering 處理執行支架，Loop Engineering 則著重持續工作的啟動、驗收、記錄與停止。代理式工程、氛圍編碼、規格驅動開發及維運用語，也各自有不同切角。其中一些名稱仍在形成共識，專文會標明採用哪位作者或哪份官方文件的說法，不把一種實務包裝成唯一標準。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞工程（Prompt Engineering）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-engineering"
+        },
+        {
+          "type": "link",
+          "text": "上下文工程（Context Engineering）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-context-engineering"
+        },
+        {
+          "type": "link",
+          "text": "代理執行環境工程（Harness Engineering）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-harness-engineering"
+        },
+        {
+          "type": "link",
+          "text": "Loop Engineering 是什麼：讓 AI 持續工作，也知道何時停止",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-loop-engineering"
+        },
+        {
+          "type": "link",
+          "text": "代理式工程（Agentic Engineering）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-agentic-engineering"
+        },
+        {
+          "type": "link",
+          "text": "氛圍編碼（Vibe Coding）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-vibe-coding"
+        },
+        {
+          "type": "link",
+          "text": "規格驅動開發（Spec-driven Development）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-spec-driven-development"
+        },
+        {
+          "type": "link",
+          "text": "大型語言模型維運（LLMOps）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-llmops"
+        },
+        {
+          "type": "link",
+          "text": "代理系統維運（AgentOps）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-agentops"
+        },
+        {
+          "type": "link",
+          "text": "提示詞串接（Prompt Chaining）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-chaining"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "搜尋、文件與知識"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你想讓 AI 回答自己的文件，先讀這組。RAG 的重點是把檢索到的資料提供給生成流程；向量、語意搜尋、混合搜尋與重新排序，則幫助找出可能有用的片段。GraphRAG 與知識圖譜增加關係和群集的視角，但圖上的連線仍要有來源。不要把「找到相似內容」當成「找到正確答案」，也不要把有引用的文字當成已逐句查證。"
+        },
+        {
+          "type": "link",
+          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+        },
+        {
+          "type": "link",
+          "text": "代理式檢索增強生成（Agentic RAG）：何時需要再查一次",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-agentic-rag"
+        },
+        {
+          "type": "link",
+          "text": "圖譜檢索增強生成（GraphRAG）：從關係看懂整批文件",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-graph-rag"
+        },
+        {
+          "type": "link",
+          "text": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-embedding"
+        },
+        {
+          "type": "link",
+          "text": "向量資料庫（Vector Database）：相似內容怎麼存、怎麼找",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-vector-database"
+        },
+        {
+          "type": "link",
+          "text": "語意搜尋（Semantic Search）：用不同說法找到相關內容",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-semantic-search"
+        },
+        {
+          "type": "link",
+          "text": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-hybrid-search"
+        },
+        {
+          "type": "link",
+          "text": "重新排序（Reranking）：從找得到到把好答案排在前面",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-reranking"
+        },
+        {
+          "type": "link",
+          "text": "文件分塊（Chunking）：切多長，才不會把答案切斷",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-chunking"
+        },
+        {
+          "type": "link",
+          "text": "知識圖譜（Knowledge Graph）：把事物與關係說清楚",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-knowledge-graph"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "訓練、調整與推論資源"
+        },
+        {
+          "type": "paragraph",
+          "text": "這組把「改變模型」與「使用模型」分開。預訓練、微調、監督式微調和偏好最佳化談的是學習程序；LoRA、蒸餾與量化則有不同的調整或壓縮目的。推理模型、推論時計算與提示詞快取，會影響回答時如何花費資源。各詞不能只靠「更快、更省、更聰明」三句宣傳語理解，因為節省記憶體、降低延遲、改善任務品質，可能是不同且需要實測的目標。"
+        },
+        {
+          "type": "link",
+          "text": "預訓練（Pretraining）：模型的基礎能力從哪裡來",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-pretraining"
+        },
+        {
+          "type": "link",
+          "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning"
+        },
+        {
+          "type": "link",
+          "text": "監督式微調（SFT）：用好示範教模型完成任務",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-supervised-fine-tuning"
+        },
+        {
+          "type": "link",
+          "text": "人類回饋強化學習（RLHF）：把偏好變成訓練訊號",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-rlhf"
+        },
+        {
+          "type": "link",
+          "text": "直接偏好最佳化（DPO）：用回答比較直接調整模型",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-direct-preference-optimization"
+        },
+        {
+          "type": "link",
+          "text": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-lora"
+        },
+        {
+          "type": "link",
+          "text": "知識蒸餾（Knowledge Distillation）：讓學生模型學教師",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-knowledge-distillation"
+        },
+        {
+          "type": "link",
+          "text": "量化（Quantization）：用較少位元執行模型的取捨",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+        },
+        {
+          "type": "link",
+          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "link",
+          "text": "推論時計算（Test-time Compute）：把算力花在這一道題",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-test-time-compute"
+        },
+        {
+          "type": "link",
+          "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "評測、安全與人工介入"
+        },
+        {
+          "type": "paragraph",
+          "text": "這組用來判斷成果能否交付。評測與基準測試需要看題目、評分方式及適用範圍；讓語言模型擔任評審，也要檢查它的偏差。幻覺、提示詞注入與越獄提示有不同成因，不應全歸成 AI 不可靠。安全防護、沙盒、人工介入與紅隊測試則各自處理不同層面的風險。一次通過測試、加上一條警告或安排另一個代理，都不能取代對實際結果的核對。"
+        },
+        {
+          "type": "link",
+          "text": "模型與代理評測（Evals）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+        },
+        {
+          "type": "link",
+          "text": "基準測試（Benchmark）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-benchmark"
+        },
+        {
+          "type": "link",
+          "text": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-llm-as-a-judge"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "link",
+          "text": "提示詞注入（Prompt Injection）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+        },
+        {
+          "type": "link",
+          "text": "越獄提示（Jailbreak）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-jailbreak"
+        },
+        {
+          "type": "link",
+          "text": "安全防護機制（Guardrails）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails"
+        },
+        {
+          "type": "link",
+          "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-sandbox"
+        },
+        {
+          "type": "link",
+          "text": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-human-in-the-loop"
+        },
+        {
+          "type": "link",
+          "text": "紅隊測試（Red Teaming）：主動找出 AI 系統會怎樣失敗",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-red-teaming"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "影像、語音、開放模型與來源"
+        },
+        {
+          "type": "paragraph",
+          "text": "這組從文字走向其他媒體，也處理取得模型和追查內容的問題。多模態、擴散、文生圖與文生影片描述不同能力或方法；語音辨識與語音合成則是相反的資訊方向。深度偽造讓來源判斷更重要，但內容憑證主要記錄來源與修改歷程，不是對畫面所述事件做真偽裁判。同樣地，能下載權重不等於符合開源 AI 的完整條件，使用前仍要分清楚公開了哪些材料及其條款。"
+        },
+        {
+          "type": "link",
+          "text": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-multimodal-ai"
+        },
+        {
+          "type": "link",
+          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+        },
+        {
+          "type": "link",
+          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+        },
+        {
+          "type": "link",
+          "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+        },
+        {
+          "type": "link",
+          "text": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-automatic-speech-recognition"
+        },
+        {
+          "type": "link",
+          "text": "語音合成（TTS）是什麼：讓文字成為聽得懂、聽得對的聲音",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-speech"
+        },
+        {
+          "type": "link",
+          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "link",
+          "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+        },
+        {
+          "type": "link",
+          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把名詞用在真實問題上"
+        },
+        {
+          "type": "paragraph",
+          "text": "一個常見閱讀情境是「我上傳了辦法，AI 卻回答錯誤」。先看上下文視窗，確認資料是否完整送入；再看文件分塊與檢索，確認取回的片段是否適合問題；最後看幻覺與評測，檢查答案是否忠於證據。這樣可以把模糊的不滿，拆成輸入、檢索和生成三個可以檢查的環節，而不是立即認定需要換模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個情境是「我想讓 AI 每天替我整理公告」。讀代理迴圈可以理解一次任務如何往前走；讀工具呼叫可以理解它如何取得資料；再讀 Loop Engineering，就能思考隔天如何啟動、如何避開重複工作、如何保存進度。最後必須補上停止條件與人工介入，否則持續執行也可能只是持續累積同一種錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "看到模型排行榜時，可以先閱讀基準測試與評測，辨認它是在什麼題目、工具設定和評分方式下比較。若你的用途是整理台灣社團文件，榜單上的程式競賽表現可能不是最直接的證據。接著用幾份可以人工確認的範例建立自己的比較方式，比只記住某個名詞或分數更有幫助。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個索引也刻意把容易混淆的鄰近詞分開成篇。微調是大範圍，監督式微調是其中一種訓練方式；工具呼叫是一種執行機制，MCP 是互通規格；代理迴圈是一種運作機制，迴圈工程則討論如何設計持續工作的系統。它們並非彼此無關，只是單一短定義不足以說清楚差異，因此需要各自的例子與互相連結。"
+        },
+        {
+          "type": "paragraph",
+          "text": "查閱來源時，先看文件日期及討論層次。原始論文可能描述研究設定，官方產品文件可能只適用於特定實作，作者文章則可能是在提出新的觀點。看到不同定義，不一定代表其中一方錯誤；先比對說的是模型、工具、系統還是工程工作，再判斷是否可以套用到你的情境。重要的決策仍應回到當時可驗證的條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "你可以收藏總索引，遇到陌生名詞時直接使用瀏覽器頁內搜尋英文全名或中文名稱。只想快速回想一句定義，可以搭配原本的五十詞速查；想理解差異、判斷何時該用或避免哪種錯誤，就打開這裡的專文。學會用名詞提出更精確的問題，比把它們當成必須背熟的詞彙考卷更有價值。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "名詞幫你分辨問題，不能替成果背書",
+          "text": "「有代理」「用了 RAG」「支援多模態」都只說明系統具備某種設計或能力。資料是否正確、動作是否成功、內容是否適合公開，仍需要可以核對的證據。"
+        },
+        {
+          "type": "link",
+          "text": "AI 名詞速查：50 個常見詞彙一次搞懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-glossary-50-terms"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：Machine Learning Glossary",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic：Effective context engineering for AI agents",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Addy Osmani：Loop Engineering",
+          "url": "https://addyosmani.com/blog/loop-engineering/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "A2A Protocol：A2A and MCP",
+          "url": "https://a2a-protocol.org/latest/topics/a2a-and-mcp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lewis 等：Retrieval-Augmented Generation",
+          "url": "https://arxiv.org/abs/2005.11401",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic：Demystifying evals for AI agents",
+          "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open Source Initiative：Open Source AI Definition",
+          "url": "https://opensource.org/ai/open-source-ai-definition",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "C2PA：Content Credentials Explainer",
+          "url": "https://spec.c2pa.org/specifications/specifications/2.3/explainer/Explainer.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

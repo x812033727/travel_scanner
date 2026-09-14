@@ -1,4 +1,4 @@
-# 生活分享：AI 工具介紹與教學系列（220 篇總表）
+# 生活分享：AI 工具介紹與教學系列（249 篇總表）
 
 這份文件是「生活分享」（`kind: "life"`，`/{locale}/life/{slug}`）AI 系列的**編輯總表**：每一篇
 的 slug、標題、主題、配圖方式與合作連結在這裡定死，批次任務票的 `scope` 才能精確到檔案。
@@ -130,23 +130,23 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 |---|---|---|---|---|---|---|
 | 41 | `claude-plans-free-pro-max-2026` | Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得 | ai, software | 插 |  | ✓ |
 | 42 | `claude-projects-knowledge-base` | Claude Projects：把資料與指令放進專案，越用越懂你 | ai, tutorial | 插 |  |  |
-| 43 | `claude-artifacts-guide` | Claude Artifacts：在對話裡直接做出網頁、圖表與小工具 | ai, tutorial | 插 |  |  |
+| 43 | `claude-artifacts-guide` | Claude Artifacts 教學：不會寫程式也能在對話裡做出網頁、圖表與小工具 | ai, tutorial | 插 |  |  |
 | 44 | `claude-extended-thinking-guide` | Claude 延伸思考模式：什麼題目該開、怎麼看它的推理 | ai, tutorial | 插 |  | ✓ |
 | 45 | `claude-file-analysis-pdf-excel` | 給 Claude 讀 PDF 與試算表：摘要、比對與抓數字 | ai, tutorial | 插 |  |  |
-| 46 | `claude-writing-style-guide` | 用 Claude 寫作：設定風格、長文結構與潤稿 | ai, productivity | 插 |  |  |
+| 46 | `claude-writing-style-guide` | 用 Claude 寫作：設定風格、長文結構與潤稿，寫出像自己寫的中文 | ai, productivity | 插 |  |  |
 | 47 | `claude-for-translation-zh-tw` | 用 Claude 做中英日翻譯：語氣、專有名詞與術語表 | ai, productivity | 插 |  |  |
 | 48 | `claude-system-prompt-basics` | 系統提示詞入門：讓 Claude 穩定扮演一種角色 | ai, tutorial | 插 |  |  |
 | 49 | `claude-computer-use-explained` | Claude 操作電腦是怎麼回事：能力、限制與安全 | ai | 插 |  | ✓ |
 | 50 | `claude-mcp-explained` | MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫 | ai, tutorial | 插 |  |  |
 | 51 | `claude-desktop-mobile-app-setup` | Claude 桌面版與手機 App：安裝、快捷鍵與語音 | ai, software | 照 |  |  |
 | 52 | `claude-in-chrome-browser-agent` | Claude 在瀏覽器裡：Chrome 擴充功能替你操作網頁 | ai, tutorial | 插 |  | ✓ |
-| 53 | `claude-memory-and-privacy` | Claude 的記憶與隱私：什麼會被記住、怎麼清除 | ai, misc | 插 |  | ✓ |
-| 54 | `claude-vs-chatgpt-writing-test` | Claude 和 ChatGPT 寫作比一比：同一題目的實測 | ai | 插 |  | ✓ |
+| 53 | `claude-memory-and-privacy` | Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練 | ai, misc | 插 |  | ✓ |
+| 54 | `claude-vs-chatgpt-writing-test` | Claude 與 ChatGPT 寫作自測法：五道題、五個面向，結論自己測出來 | ai | 插 |  | ✓ |
 | 55 | `claude-for-research-summaries` | 用 Claude 讀論文與長報告：摘要、提問與批判 | ai, productivity | 插 |  |  |
 | 56 | `claude-skills-explained` | Claude Skills 是什麼：把重複流程包成可重用的技能 | ai, tutorial | 插 |  | ✓ |
 | 57 | `claude-api-first-call` | 第一次呼叫 Claude API：金鑰、費用與十行 Python | ai, tutorial | 插 |  | ✓ |
 | 58 | `claude-api-prompt-caching-cost` | Claude API 省錢：提示快取與批次處理怎麼用 | ai, tutorial | 插 |  | ✓ |
-| 59 | `claude-model-lineup-2026` | Claude 模型家族：Opus、Sonnet、Haiku 怎麼選 | ai | 插 |  | ✓ |
+| 59 | `claude-model-lineup-2026` | Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選 | ai | 插 |  | ✓ |
 | 60 | `claude-for-teachers-lesson-plans` | 老師用 Claude：出題、教案與批改回饋 | ai, productivity | 照 |  |  |
 
 ### 批次 04｜AI 寫程式：Claude Code、Codex、Gemini CLI、Cursor、Copilot
@@ -360,4 +360,44 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
   `ExitPlanMode` 後用 SendMessage 讓同一個代理接著執行，查證不用重做。被額度切斷的代理留下的 `pack.json` 可由新代理接手補圖。
   官網 403 的讀法（help center 網址加 `.json`、Wayback 快照、WebSearch 限定網域）已寫進 brief 第 5 節。代理在協調者 ingest 之後還會再改檔，
   收尾前用 `find -newer` 再對一次。總表標題以實際篇名為準（本批同步了 12 列），life→life 連結文字收完後統一。
+- 批次 03（2026-09-14，`tasks/done/2026-09-13-life-ai-batch-03.md`）：**指派的站內連結只能列已經寫完或同批會寫的 slug**——
+  本批列了批次 04／10／11 的篇名，八篇共 13 個連結指向不存在的文章，收尾時才由 `normalise_links.py` 的 missing target 抓到並移除。
+  撰稿代理會繼承 session 的 plan mode，開著時代理只寫計畫檔；`ExitPlanMode` 後用 SendMessage 讓同一個代理接著執行即可，查證不用重做。
+  總表標題以實際篇名為準（本批同步 5 列，其中「兩家寫作比一比」因為我們無法真的實測，改寫成讀者自測法）。
 - Commons 照片：工具的 User-Agent 要有聯絡信箱，而且請求要走 urllib（httpx 的連線被 Wikimedia 擋 403）；十個代理同時搜 Commons 會被 429，工具會退避重試。
+
+## Gemini 完整系列補充（2026-09-14）
+
+原批次 01 的入門篇、批次 04 的 CLI 入門及批次 05 的 Gemini 主題沿用原 slug；以下僅列新增項目，避免重複指派。完整篇序、五條路線及驗收程序以 [Gemini 系列維護說明](gemini-series/README.md) 和 `apps/web/lib/guide-series.json` 為準。發布以 51 頁整套驗收為單位，不按原批次單獨發布。
+
+| # | slug | 標題 | topics | 圖 | 合作 | 易變 |
+|---|---|---|---|---|---|---|
+| 221 | `gemini-guide` | Gemini 完整教學：電腦、手機、CLI 與 Google AI 應用 | ai, tutorial | 插 |  | ✓ |
+| 222 | `gemini-web-desktop-guide` | 電腦網頁版：Windows、檔案與瀏覽器捷徑 | ai, tutorial | 插 |  | ✓ |
+| 223 | `gemini-mac-app-guide` | Mac 桌面版：安裝、快捷鍵與視窗分享 | ai, tutorial | 插 |  | ✓ |
+| 224 | `gemini-ios-app-guide` | iPhone 與 iPad：安裝、語音與照片 | ai, tutorial | 插 |  | ✓ |
+| 225 | `gemini-prompt-writing-guide` | 提示詞怎麼寫：目標、背景與輸出格式 | ai, tutorial | 插 |  | ✓ |
+| 226 | `gemini-file-analysis-guide` | 讀 PDF、圖片與表格：摘要、比對與驗證 | ai, tutorial | 插 |  | ✓ |
+| 227 | `gemini-canvas-guide` | Canvas：編輯文章、簡報與製作小工具 | ai, tutorial | 插 |  | ✓ |
+| 228 | `gemini-spark-workflows-guide` | Gemini Spark：任務、排程與 Skills | ai, tutorial | 插 |  | ✓ |
+| 229 | `gemini-connected-apps-guide` | Connected Apps：Drive、日曆與地圖整合 | ai, tutorial | 插 |  | ✓ |
+| 230 | `gemini-cli-authentication` | CLI 認證：Google 帳號、API Key 與計費 | ai, tutorial | 插 |  | ✓ |
+| 231 | `gemini-cli-command-reference` | CLI 指令總表：語法、範例與深入教學 | ai, tutorial | 插 |  | ✓ |
+| 232 | `gemini-cli-files-and-shell` | CLI 檔案與命令：@、! 與路徑 | ai, tutorial | 插 |  | ✓ |
+| 233 | `gemini-cli-sessions-context` | CLI 對話管理：恢復、壓縮與匯出 | ai, tutorial | 插 |  | ✓ |
+| 234 | `gemini-cli-coding-workflow` | CLI 寫程式：理解、規劃、修改與測試 | ai, tutorial | 插 |  | ✓ |
+| 235 | `gemini-markdown-basics` | Markdown 基礎：建立 MD、標題與程式碼 | ai, tutorial | 插 |  | ✓ |
+| 236 | `gemini-cli-gemini-md` | GEMINI.md 入門：建立規則與 /init | ai, tutorial | 插 |  | ✓ |
+| 237 | `gemini-cli-memory-hierarchy` | GEMINI.md 進階：範圍、匯入與 /memory | ai, tutorial | 插 |  | ✓ |
+| 238 | `gemini-cli-settings` | settings.json：全域、專案與環境變數 | ai, tutorial | 插 |  | ✓ |
+| 239 | `gemini-cli-permissions-sandbox` | CLI 權限：忽略檔案、可信任資料夾與沙箱 | ai, tutorial | 插 |  | ✓ |
+| 240 | `gemini-cli-custom-commands` | 自訂斜線指令：TOML、參數與重新載入 | ai, tutorial | 插 |  | ✓ |
+| 241 | `gemini-cli-mcp-extensions` | MCP 與 Extensions：安裝、驗證與停用 | ai, tutorial | 插 |  | ✓ |
+| 242 | `gemini-cli-agent-skills` | Agent Skills：建立可重用的 SKILL.md | ai, tutorial | 插 |  | ✓ |
+| 243 | `gemini-cli-hooks` | Hooks：在指定事件執行檢查 | ai, tutorial | 插 |  | ✓ |
+| 244 | `gemini-cli-subagents` | Subagents：拆分任務與整合結果 | ai, tutorial | 插 |  | ✓ |
+| 245 | `gemini-cli-headless-automation` | Headless 模式：批次、JSON 與腳本 | ai, tutorial | 插 |  | ✓ |
+| 246 | `gemini-cli-troubleshooting` | CLI 疑難排解：登入、PATH 與設定失效 | ai, tutorial | 插 |  | ✓ |
+| 247 | `gemini-api-files-structured-output` | API 檔案與 JSON：結構化輸出及驗證 | ai, tutorial | 插 |  | ✓ |
+| 248 | `gemini-api-cost-errors-guide` | API 額度與錯誤：費用、重試與成本控制 | ai, tutorial | 插 |  | ✓ |
+| 249 | `gemini-api-document-assistant` | 完整實作：文件摘要與資料擷取工具 | ai, tutorial | 插 |  | ✓ |

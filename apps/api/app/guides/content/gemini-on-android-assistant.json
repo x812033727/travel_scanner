@@ -1,0 +1,316 @@
+{
+  "slug": "gemini-on-android-assistant",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 106,
+  "locales": {
+    "zh-TW": {
+      "title": "Android 版：安裝、助理設定與手機操作",
+      "description": "Android 版 Gemini 既能作為聊天應用程式，也能在支援的手機上成為主要數位助理。本篇先完成打字、語音與照片提問，再說明預設助理和畫面內容的設定。操作依官方文件整理；不同品牌的按鈕名稱與手勢可能不同，請以手機當下顯示為準。",
+      "hero": {
+        "src": "/guides/gemini-on-android-assistant/hero.jpg",
+        "alt": "Android 助理設定的原創插畫，以文件、裝置與流程等物件呼應安裝、助理設定與手機操作；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Android 版 Gemini 既能作為聊天應用程式，也能在支援的手機上成為主要數位助理。本篇先完成打字、語音與照片提問，再說明預設助理和畫面內容的設定。操作依官方文件整理；不同品牌的按鈕名稱與手勢可能不同，請以手機當下顯示為準。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-on-android-assistant/diagram-1.svg",
+          "alt": "確認裝置：檢查系統與帳號；選擇助理：設定預設數位助理；測試一次：分別試語音與照片",
+          "width": 1600,
+          "height": 900,
+          "caption": "Android 助理設定。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前：裝置、帳號與安裝",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方基本支援條件包含 Android 9 以上與至少 2 GB 記憶體；Android Go 不在一般 Gemini 應用程式支援範圍。Google Play 顯示的相容性及各功能條件也需要一起核對。部分手機已預載 Gemini，先找既有應用程式，不必重複安裝來源不明的版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Android Go 另有逐步推出的 Gemini Go，透過 Google 搜尋應用程式提供，官方列出至少 2 GB 記憶體。這是不同的輕量入口，請依 Gemini Go 官方說明及裝置畫面確認，不能直接套用下方一般 Gemini 應用程式的全部功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "從 Google Play 搜尋 Google Gemini，確認發布者為 Google，安裝或更新後開啟。登入可使用 Gemini 的帳號，再確認個人資料區顯示正確信箱。公司、學校或受監護帳號可能有額外限制；能聊天不代表所有語音助理或外部服務功能都能使用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先用文字問一句簡單問題，確認網路與帳號正常。價格與用量另看"
+            },
+            {
+              "type": "link",
+              "text": "方案篇",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "；本篇不用先購買方案，也不以付費狀態判斷是否成功安裝。家長要管理孩子的使用，應使用帳號的監護設定，而不是只把桌面圖示藏起來。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "先分清楚：應用程式與主要助理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "點圖示開啟 Gemini 是應用程式入口；長按電源鍵、主畫面鍵或角落手勢叫出的，是裝置的助理入口。要讓 Gemini 成為主要助理，官方流程要求 Google 應用程式設為預設數位助理，再於可用選項中選用 Gemini。部分手機出廠就已完成這項設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如需調整，在 Android「設定」找「應用程式」與「預設應用程式」，檢視數位助理專案是否為 Google，再依 Gemini 或 Google 的設定選擇數位助理。先記下原本的設定與啟動手勢，改完後測試一次；這是使用者自己的裝置選擇，並非完成一般文字對話的必要步驟。"
+        },
+        {
+          "type": "heading",
+          "text": "實作：用照片整理物品清單",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "準備一本筆記本、一支筆與一個水壺，在明亮桌面上拍一張照片，避免拍入姓名標籤或旁人的檔案。",
+            "開啟 Gemini，使用照片或新增附件入口，選擇剛才的照片；確認縮圖與要問的物品一致。",
+            "貼上下方提示詞，送出後核對物品數量，尤其是被遮住或只露出一角的物件。",
+            "在同一對話用麥克風補充「這是室內讀書會，不需要戶外裝備」，檢查辨識文字後再送出。",
+            "把最後清單貼到自己使用的筆記，重新勾選真的已準備好的物品。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "照片練習提示詞",
+          "code": "請使用繁體中文，只列出照片中清楚可辨識的物品與數量。\n看不清楚的地方請說明，不要猜品牌、容量或價格。\n這些物品是準備帶去室內讀書會的。\n請分成「照片已確認」與「可能還需要詢問」兩組，後者不要當成事實。\n"
+        },
+        {
+          "type": "heading",
+          "text": "預期結果：辨識與建議分開看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果照片完整拍到三件物品，回覆應辨認筆記本、筆與水壺，數量各一。這是根據練習安排的預期結果，不是實際拍攝測試紀錄。若模型說出保溫杯容量或特定筆款，但照片沒有足夠文字，應要求去掉未經確認的細節。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "拍照角度、反光與文字大小會影響結果。先補拍清楚的局部區域，再追問同一件事，比連續要求「仔細看」更有幫助。涉及公告數字或表格時，回到原始頁面核對；"
+            },
+            {
+              "type": "link",
+              "text": "圖片與檔案分析",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "會說明如何確認文字辨識，而不是只相信照片摘要。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "語音、喚醒與螢幕內容",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "麥克風按鈕是單次語音提示詞入口；Gemini Live 則用於持續交談。想練習對話節奏、鏡頭與分享螢幕，請看"
+            },
+            {
+              "type": "link",
+              "text": "Live 教學",
+              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+            },
+            {
+              "type": "text",
+              "text": "。一般語音先檢查地名、數字及專有名詞，辨識錯了就用鍵盤改正，不必一直大聲重複。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "如果要用「Ok Google」喚醒，檢視 Gemini 設定中的語音交談與 Voice Match 語音辨識選項。喚醒語句的支援條件和手動點麥克風不完全相同；沒有喚醒能力時，仍可先用按鈕完成提問。耳機、智慧手錶和家中音箱也可能有不同支援情況，手機切換助理不代表所有裝置同時改變。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在其他應用程式叫出 Gemini 時，符合條件的裝置可提供「提出有關這個畫面的問題」。使用前檢視螢幕內容設定，並確認目前頁面可以分享。畫面擷取與即時持續分享是不同方式，若內容已滑到另一段，先確認本次提供的是哪個畫面，避免對著舊截圖追問新內容。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢查習慣",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Android 的助理功能可能透過 Google 應用程式處理位置與其他能力，權限不一定只列在 Gemini 名稱下。調整前先閱讀該選項影響哪些服務；只想練習物品辨識，不需要主動加入精確位置。活動儲存及刪除方式則另看"
+            },
+            {
+              "type": "link",
+              "text": "隱私設定",
+              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果請 Gemini 建立提醒或操作其他服務，核對目的應用程式中的實際專案。回答「可以」與真正建立成功並不相同；時間、時區、重複頻率與通知都要看結果。"
+            },
+            {
+              "type": "link",
+              "text": "Connected Apps",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "說明如何確認連線狀態，適合在一般手機操作穩定後再學。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「長按電源鍵還是出現關機選單？」品牌與系統版本的手勢設定可能不同。先用 Gemini 圖示測試聊天，再到裝置的按鍵或助理設定檢視可選動作。不要把網路影片中的某個手勢當成所有 Android 手機的標準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「可以改回原本的助理嗎？」如果裝置及帳號仍提供該選項，可在 Gemini／Google 數位助理設定選回原本的服務，再測試啟動手勢。切換主要助理不會自動刪除先前的活動記錄；需要處理記錄時要另外操作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「照片按鈕無法選圖怎麼辦？」先看系統的照片存取權與照片是否已在裝置可讀取，再用一張小型公開練習圖測試。若是工作資料夾受管理限制，依管理規則處理；不要為了繞過選圖問題把整份私人相簿提供給其他服務。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "Gemini Live",
+              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Connected Apps",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Android 開始使用 Gemini",
+          "url": "https://support.google.com/gemini/answer/14554984?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Android 支援條件",
+          "url": "https://support.google.com/gemini/answer/14579026?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini Go 官方說明",
+          "url": "https://support.google.com/gemini/answer/17079170?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

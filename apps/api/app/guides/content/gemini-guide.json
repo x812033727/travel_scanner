@@ -1,0 +1,413 @@
+{
+  "slug": "gemini-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Gemini 完整教學：電腦、手機、CLI 與 Google AI 應用",
+      "description": "這裡整理 Gemini、Google AI 與開發工具的五十篇教學。可以按分類找功能、按自己的需求走學習路線，也可以搜尋「MD」「手機」「PDF」「/memory」等關鍵字。每篇都提供步驟、可複製範例、結果核對方式與延伸閱讀，不需要從第一篇一路讀到底。",
+      "hero": {
+        "src": "/guides/gemini-guide/hero.jpg",
+        "alt": "選一條路線開始的原創插畫，以文件、裝置與流程等物件呼應找到適合自己的教學與學習路線；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這裡整理 Gemini、Google AI 與開發工具的五十篇教學。可以按分類找功能、按自己的需求走學習路線，也可以搜尋「MD」「手機」「PDF」「/memory」等關鍵字。每篇都提供步驟、可複製範例、結果核對方式與延伸閱讀，不需要從第一篇一路讀到底。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-guide/diagram-1.svg",
+          "alt": "先看用途：依目標選擇一篇；完成練習：複製範例並核對；繼續學習：沿相關連結前進",
+          "width": 1600,
+          "height": 900,
+          "caption": "選一條路線開始。此為原創教學圖解，並非產品畫面或實測輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "第一次來，從哪裡開始",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完全沒用過 Gemini，先看"
+            },
+            {
+              "type": "link",
+              "text": "帳號與第一個對話",
+              "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "，再選自己常用的裝置。主要用電腦可讀"
+            },
+            {
+              "type": "link",
+              "text": "Windows 與網頁入口",
+              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "link",
+              "text": "Mac 應用程式",
+              "url": "https://mokaair.com/zh-TW/life/gemini-mac-app-guide"
+            },
+            {
+              "type": "text",
+              "text": "；主要用手機則讀"
+            },
+            {
+              "type": "link",
+              "text": "Android",
+              "url": "https://mokaair.com/zh-TW/life/gemini-on-android-assistant"
+            },
+            {
+              "type": "text",
+              "text": "或"
+            },
+            {
+              "type": "link",
+              "text": "iPhone／iPad",
+              "url": "https://mokaair.com/zh-TW/life/gemini-ios-app-guide"
+            },
+            {
+              "type": "text",
+              "text": "。入口和權限不同，請選符合自己裝置的那一篇。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想把工作資料整理好，可以從"
+            },
+            {
+              "type": "link",
+              "text": "提示詞",
+              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "檔案分析",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "和"
+            },
+            {
+              "type": "link",
+              "text": "Deep Research",
+              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+            },
+            {
+              "type": "text",
+              "text": "開始，再進入 Workspace 或"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+            },
+            {
+              "type": "text",
+              "text": "。先使用一小份可核對的練習資料，知道成功結果長什麼樣，再增加實際工作的資料量。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想學 MD 檔和命令列，先讀"
+            },
+            {
+              "type": "link",
+              "text": "CLI 安裝",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "認證方式",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+            },
+            {
+              "type": "text",
+              "text": "，接著看"
+            },
+            {
+              "type": "link",
+              "text": "Markdown 基礎",
+              "url": "https://mokaair.com/zh-TW/life/gemini-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "link",
+              "text": "記憶載入",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+            },
+            {
+              "type": "text",
+              "text": "。想開發自己的小工具，從"
+            },
+            {
+              "type": "link",
+              "text": "AI Studio 與 API 第一次呼叫",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+            },
+            {
+              "type": "text",
+              "text": "走到"
+            },
+            {
+              "type": "link",
+              "text": "文件摘要與擷取工具",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-assistant"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "如何使用分類、路線與搜尋",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下方目錄有八大分類，每篇顯示用途、難度、適用平台與閱讀時間。五條學習路線只是從同一批文章挑出適合順序，不會另外複製內容。第一次使用、手機、工作研究、CLI／MD 和 API 開發，都可從路線清單直接前往。"
+        },
+        {
+          "type": "paragraph",
+          "text": "搜尋會比對標題、用途和別名。例如 MD 可以找到 Markdown、GEMINI.md 與設定檔，手機可找到 Android 和 iOS，/memory 可找到上下文與記憶相關教學。篩選結果太少時，先清除分類或路線，再試較短的關鍵字。"
+        },
+        {
+          "type": "heading",
+          "text": "指令應該輸入在哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞是給 Gemini 的自然語言需求；CLI 斜線指令是在 Gemini CLI 互動介面使用；終端機命令則在 PowerShell 或 shell 輸入。看到程式碼區塊時，先看語言或檔名標籤，再複製到正確位置。需要替換的值都以範例說明標清楚。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完整查找請看"
+            },
+            {
+              "type": "link",
+              "text": "CLI 指令總表",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-command-reference"
+            },
+            {
+              "type": "text",
+              "text": "。GEMINI.md 提供工作指示，settings.json 管理程式設定，自訂斜線指令使用 TOML，三者不能互相代替。"
+            },
+            {
+              "type": "link",
+              "text": "Gems",
+              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+            },
+            {
+              "type": "text",
+              "text": "的指示在 Gemini 介面設定，也不能假設它會自動讀取本機專案檔案。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "每篇怎麼讀、如何回到這裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先看學習成果與準備條件，再照步驟完成一個範例。文中的具名連結會帶你到相關功能，文末有上一篇、下一篇與建議延伸閱讀。頁首和文末都能返回本總目錄；站內連結在同一分頁開啟，手機可以直接使用瀏覽器返回。"
+        },
+        {
+          "type": "paragraph",
+          "text": "範例輸出和真人實測會明確區分。介面操作多數依官方文件整理；CLI 技術篇記錄核對版本，API 篇區分語法、本機測試與真正遠端呼叫。不要把一段示例答案當成某個帳號已得到的實際結果，也不要把本機測試通過當成網路服務一定可用。"
+        },
+        {
+          "type": "heading",
+          "text": "更新、方案與查證",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本系列官方資料查證日為 2026 年 9 月 14 日。Google 產品可能依地區、年齡、語言、方案與帳號逐步開放；先看每篇的準備段落，再以當下介面與官方來源確認。方案價格集中在"
+            },
+            {
+              "type": "link",
+              "text": "方案與額度",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "，API 費用另看"
+            },
+            {
+              "type": "link",
+              "text": "API 成本與錯誤處理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本文沿用 NotebookLM 與 Veo 的既定教學網址，正文已說明部分官方文件改稱 Gemini Notebook，以及 Gemini 影片入口與 Flow 模型的差異。功能名稱更新不需要讓舊連結失效，讀者仍可從相同目錄找到對應說明。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查證與範例",
+          "text": "本文於 2026-09-14 對照官方文件整理。畫面操作依官方說明，非所有裝置均經實機測試；範例輸出是驗收目標，實際內容依資料而異。"
+        },
+        {
+          "type": "heading",
+          "text": "完成後的檢核",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "通過條件"
+          ],
+          "rows": [
+            [
+              "操作",
+              "能依正文重做一次，說明每一步使用的輸入。"
+            ],
+            [
+              "結果",
+              "能用原始資料或可重現測試核對輸出，而非只看語氣。"
+            ],
+            [
+              "延伸",
+              "知道下一篇教學解決的問題，以及什麼時候需要它。"
+            ]
+          ],
+          "caption": "完成實作後逐項確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著可以閱讀 "
+            },
+            {
+              "type": "link",
+              "text": "Gemini 新手入門",
+              "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Gemini CLI 安裝",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "AI Studio 與第一個 Gemini API 呼叫",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+            },
+            {
+              "type": "text",
+              "text": "，把本篇的操作接到下一個工作流程。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini 官方說明",
+          "url": "https://support.google.com/gemini/?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 官方文件",
+          "url": "https://geminicli.com/docs/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini API 官方入門",
+          "url": "https://ai.google.dev/gemini-api/docs/ai-studio-quickstart",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
