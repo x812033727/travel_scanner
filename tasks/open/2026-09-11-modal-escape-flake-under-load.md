@@ -5,10 +5,10 @@ status: in-progress
 priority: P1
 area: web
 owner: claude-opus-5
-claimed_at: 2026-09-13T04:52:59Z
+claimed_at: 2026-09-14T09:07:42Z
 created_at: 2026-09-11T21:23:54Z
 completed_at:
-branch: claude/passive-effect-gap-flake
+branch: claude/ship-passive-effect-gap-flake
 depends_on: []
 scope:
   - apps/web/lib/modal-sheet.ts
@@ -472,3 +472,37 @@ React 19.2.8（`react-dom-client.development.js`）在 commit 結束時，只有
   `requestKeyRef`。沒有 flake 證據，這次不動；同一類的東西，下次有現場可以直接拿這個 helper 驗。
 - 本機跑 trip-editor 全檔：main 原始碼 35.9 s，修正版 37.4 s，在雜訊範圍內。有一次整批跑時
   「keeps the itinerary first…」逾時 15 s，是那一輪機器負載讓整檔慢了約 2.3 倍（87 s），單獨跑 849 ms。
+
+## 送出：修正做完卻從沒推上去（claude-opus-5, 2026-09-14）
+
+上面的修正（`2bdd76c5`，分支 `claude/passive-effect-gap-flake`）只 commit 在本機 worktree
+`affiliate-marketing-config-97c4cb`。它沒有推上 GitHub，也沒有開 PR，所以 main 一直是舊寫法。
+這張票在 main 上也就一直顯示 `open`、沒有持有者。
+
+2026-09-14 它又讓一個無關的 PR 紅了一次。PR #491 只新增一個任務檔，commit `0a556280` 跑了兩輪：
+
+- CI run 34824040647（push）的 `web` 失敗在 `trip-editor.test.tsx:197`，測試是「opens editing from the stop
+  title and exposes move only through its dismissible More menu」。`openStopEditor` 等到對話框出現就按
+  「關閉」，`waitFor` 卻等不到對話框消失。
+- 同一個 commit 的 pull_request run 34824041998 全綠。
+
+形狀和前四個實例一樣：`PlannerOverlay` 還沒把自己註冊成最上層，那次點擊就被 `isTopModalLayer` 擋掉了。
+
+### 這次做了什麼
+
+- 分支 `claude/ship-passive-effect-gap-flake`：從 main `53bd1b8a` cherry-pick `2bdd76c5`，沒有衝突。
+  修正的基準 `61fe8d83` 之後，main 沒有任何 commit 碰過那 8 個檔案，程式碼和 9/13 驗過的版本逐字相同。
+- 本機重驗（Windows、Node 24）：
+  - 修正版：`planner-overlay`、`modal-sheet`、`route-mode-panel`、`travel-card-actions`、`trip-editor`
+    五個檔、162 個測試全過。
+  - 只把 `planner-overlay.tsx`、`modal-sheet.ts`、`route-mode-panel.tsx` 換回 main 的版本時，五條回歸測試全紅，
+    其餘 82 條照常通過。紅的五條：
+    - 「moves focus to a finished route in the commit that draws it」
+    - 「closes from its own button as soon as a resolved request has drawn it」
+    - 「keeps the guard its buttons show once a resolved request has made it busy」
+    - 「answers Escape as soon as a resolved request has drawn it」
+    - 「closes by the guard it shows once a resolved request has lifted it」
+
+    還原後工作區是乾淨的。
+  - `npm run lint:web`、`npm run typecheck:web`、`npm run check:i18n`、`node tools/tasks.mjs check` 全部 exit 0。
+- `trip-editor.test.tsx` 沒動。今天紅的那條靠修 `PlannerOverlay` 收掉，不靠改測試。
