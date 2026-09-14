@@ -1,0 +1,416 @@
+{
+  "slug": "claude-code-worktree-integration-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 188,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜雙 Worktree 實作與衝突整合",
+      "description": "隔離兩項功能，最後完成整合與回歸。兩個 Claude 工作階段同時編輯專案，最容易出現的問題是互相改到同一份檔案，或各自測試通過、整合後卻失敗。本篇用兩個 Worktree 分別處理篩選預設值與介面文字，故意製造一次小衝突，再完成整合、驗證與清理。你不需要先啟用 Agent Teams。",
+      "hero": {
+        "src": "/guides/claude-code-worktree-integration-workshop/hero.jpg",
+        "alt": "雙 Worktree 實作與衝突整合：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "兩個 Claude 工作階段同時編輯專案，最容易出現的問題是互相改到同一份檔案，或各自測試通過、整合後卻失敗。本篇用兩個 Worktree 分別處理篩選預設值與介面文字，故意製造一次小衝突，再完成整合、驗證與清理。你不需要先啟用 Agent Teams。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-git-review-pr",
+              "text": "Git 審查"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-worktrees-parallel",
+              "text": "Worktree 入門"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-context-handoff-workshop",
+              "text": "工作交接"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-88.zip",
+              "text": "第 88 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，使用全新解壓縮的 "
+            },
+            {
+              "type": "code",
+              "text": "starter"
+            },
+            {
+              "type": "text",
+              "text": "。需要 Git 與 Node.js 22；不要在包含其他未完成變更的日常專案直接照做。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼隔離檔案還不夠"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-worktree-integration-workshop/diagram-1.svg",
+          "alt": "為什麼隔離檔案還不夠 → 先跑一次完整的受控示範 → 手動建立共同基準",
+          "width": 1600,
+          "height": 900,
+          "caption": "為什麼隔離檔案還不夠 → 先跑一次完整的受控示範 → 手動建立共同基準",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "Worktree 讓同一 Git 儲存庫擁有不同工作目錄與分支，所以兩個工作階段可以各自編輯。但是 Git 外部的資源不會因此自動隔離：兩個網站仍可能爭用同一埠號，讀寫同一個資料庫，或將結果放入同一個暫存檔。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本練習不使用資料庫，兩邊若需要啟動網站，就各自指定不同 PORT；產物留在各自工作目錄。分工表應同時列出檔案範圍、服務埠號與交付方式，而不只是寫「一位做前端、一位做後端」。這樣最後整合時，才知道哪個成果屬於哪個任務。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作",
+            "檔案責任",
+            "產出",
+            "本機埠號示例"
+          ],
+          "rows": [
+            [
+              "filter",
+              "filter.js、view-mode.txt 的預設值",
+              "未完成篩選",
+              "4174"
+            ],
+            [
+              "labels",
+              "view-mode.txt 的顯示文字",
+              "所有待辦標籤",
+              "4175"
+            ],
+            [
+              "整合者",
+              "核對兩個分支與整合測試",
+              "可審查的完整版本",
+              "4173"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "兩份工作都涉及 view-mode.txt，是刻意安排的衝突案例。真實工作可以先切得更乾淨；但學會辨識重疊，比假設永遠不會衝突更實用。本篇也會讓你看見「檔案有衝突標記」與「需求有矛盾」並不總是同一件事。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先跑一次完整的受控示範"
+        },
+        {
+          "type": "paragraph",
+          "text": "材料提供的 demo 會在系統暫存目錄建立新的練習 Git 儲存庫，不使用你當前專案的分支。它只處理自己建立的目錄，過程不需要網路，也不建立 GitHub PR。跑完會印出 receipt.json 路徑，保留基準提交、合併提交與每一步命令結果。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：執行真正的 Git Worktree 示範",
+          "code": "node worktrees/demo.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "打開紀錄，確認 controlledConflict 為 true，兩個功能都保留，coreTests 有實際測試輸出。示範程式完成代表 Git 流程可重現，不代表 Claude 已替你實作兩項功能。後面的手動流程要由你自己完成；需要 Claude 時，再把每個工作目錄交給獨立工作階段。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手動建立共同基準"
+        },
+        {
+          "type": "paragraph",
+          "text": "另解壓一份乾淨材料，將這份 starter 當成主要工作目錄。先執行核心測試，再初始化新儲存庫並提交。提交身分使用你原本 Git 的設定；若沒有設定，先在這個練習儲存庫設定 user.name 與 user.email，不要修改所有專案的全域偏好。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：全新 starter 內建立練習基準",
+          "code": "node --test tests/model.test.mjs\ngit init --initial-branch=main\ngit add .\ngit commit -m \"Create worktree exercise baseline\"\ngit worktree add -b lab/filter ../filter main\ngit worktree add -b lab/labels ../labels main\ngit worktree list\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "確認 ../filter 與 ../labels 是你預期的新路徑，而且原本不存在重要檔案。"
+            },
+            {
+              "type": "code",
+              "text": "git worktree list"
+            },
+            {
+              "type": "text",
+              "text": " 應列出 main、lab/filter 與 lab/labels 對應的位置。若 Git 說分支已被其他工作目錄使用，先查清楚現有關係，不要為了通過命令任意加強制選項。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "分別完成兩項修改"
+        },
+        {
+          "type": "paragraph",
+          "text": "filter 工作新增 filterTasks 函式，並將 view-mode.txt 的 default 改為 active；labels 工作只改標籤。你可以手動修改，也可在各自工作目錄啟動 Claude，清楚交代範圍。不要讓第二個工作階段從第一個工作目錄啟動，否則對話分開了，實際檔案卻沒有分開。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "filter 工作目錄中的 Claude Code 對話框",
+          "code": "只處理本工作目錄的篩選需求。\n新增 filter.js 的 filterTasks(items, mode)，active 時回傳未完成項目，其他模式保留全部。\n把 view-mode.txt 的 default 改成 active，不改 label。\n保留原資料，執行相關測試，最後回報 diff；不要合併其他分支。\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "labels 工作目錄中的 Claude Code 對話框",
+          "code": "只把 view-mode.txt 的 label 改為「所有待辦」。\n不要修改 default、filter.js 或其他工作目錄。\n完成後回報變更，不自行合併。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "每一邊都應先審閱 diff 再提交。提交前看 "
+            },
+            {
+              "type": "code",
+              "text": "git status --short"
+            },
+            {
+              "type": "text",
+              "text": "，確認沒有把執行紀錄、node_modules 或另一項工作的內容混進去。分支上的測試通過，只說明該版本的結果；接下來仍需要在整合版本重驗。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "合併並理解衝突"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到主要 starter，先合併 filter，再合併 labels。受控示範的兩項修改位在相鄰的短文字區塊，Git 會要求處理衝突。你應讀取雙方意圖，保留 default=active 與 label=所有待辦，而不是盲目選取整個 ours 或 theirs。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "主要 starter 的終端機：合併前確認工作目錄乾淨",
+          "code": "git status --short\ngit merge lab/filter\ngit merge lab/labels\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "view-mode.txt：整合後應保留的兩項需求",
+          "code": "default=active\nlabel=所有待辦\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "移除衝突標記後，執行 "
+            },
+            {
+              "type": "code",
+              "text": "git diff --check"
+            },
+            {
+              "type": "text",
+              "text": " 檢查空白及殘留問題，再把已解決的檔案加入提交。若你看不懂衝突，先保存閱讀紀錄並使用 git merge --abort 回到合併前；這只用在目前正在進行的合併，不是一般任務的萬用還原方式。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "主要 starter 的終端機：完成這一次衝突解決",
+          "code": "git diff --check\ngit add view-mode.txt\ngit commit -m \"Preserve active filter and display label\"\nnode --test tests/model.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在整合版本驗收"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先確認 view-mode.txt 的兩個值，再檢查 filterTasks 是否保留原資料。若你已把功能接到畫面，還要在瀏覽器切換篩選；只測純函式，不能宣稱介面也完成。這一層驗證可參考"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tdd-debugging-workshop",
+              "text": "完整除錯流程"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "比較三個提交：共同基準、各自功能與最終整合。若最後少了其中一個需求，即使所有衝突標記都消失，仍然不算解決成功。相反地，有時 Git 自動合併沒有標記，兩項功能卻在邏輯上互相干擾，因此整合測試不能省略。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "整合前確認成果屬於哪一條分支"
+        },
+        {
+          "type": "paragraph",
+          "text": "每個 worktree 都有自己的工作目錄，但仍共享儲存庫的物件與部分設定。整合前先查看各自的分支、提交與未提交差異，避免把尚未保存的成果當成已可合併。若其中一個目錄還有未追蹤檔案，先判斷它是成果或暫存資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "衝突解決後使用最終檔案重新測試，不能只引用兩條分支合併前的綠燈。最後結果是第三種組合，可能產生單獨分支沒有出現的問題；本課的預設模式與標籤就需要同時保留並核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "解決衝突時在紀錄寫出保留兩方需求的理由，不只記錄 Git 命令成功。命令成功代表提交完成，功能是否正確仍以最後檔案的行為為準。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "清理與故障練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "清理前在每個工作目錄執行 git status，確認沒有未提交成果。只有已保存、已整合且工作目錄乾淨時，才從主要儲存庫移除對應 Worktree。移除工作目錄與刪除分支是兩件事，這裡先保留分支方便追查，不需要立即刪除歷史。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "主要 starter 的終端機：確認後移除兩個練習 Worktree",
+          "code": "git -C ../filter status --short\ngit -C ../labels status --short\ngit worktree remove ../filter\ngit worktree remove ../labels\ngit worktree list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "故障練習是在 filter 目錄加一個未提交檔，再嘗試移除 Worktree。預期 Git 阻止清理；請先保存或明確處理這個檔案，再重試。不要以強制刪除作為答案，因為這個阻擋正是在提醒你有成果尚未整理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成標準是兩個工作目錄曾經獨立運作、受控衝突有紀錄、整合保留雙方需求、測試在最終版本通過，最後沒有遺失未提交資料。小練習可再增加不同埠號的網站預覽，觀察停止其中一個服務是否影響另一個，確認你理解 Git 隔離與執行環境隔離的差別。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "需要把責任交給專責代理時，可接續"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-subagent-review-workshop",
+              "text": "Subagent 審查"
+            },
+            {
+              "type": "text",
+              "text": "；支援團隊功能的讀者再看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-agent-teams-integration-lab",
+              "text": "Agent Teams 整合"
+            },
+            {
+              "type": "text",
+              "text": "。先掌握可重現的 Git 流程，之後增加代理角色才有可靠的交付基礎。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Create custom subagents",
+          "url": "https://code.claude.com/docs/en/sub-agents",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Orchestrate teams of Claude Code sessions",
+          "url": "https://code.claude.com/docs/en/agent-teams",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue local sessions from any device with Remote Control",
+          "url": "https://code.claude.com/docs/en/remote-control",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

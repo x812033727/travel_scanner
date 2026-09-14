@@ -1,0 +1,645 @@
+{
+  "checked_at": "2026-09-14T15:35:49.569524+00:00",
+  "status": "local-preview-ready",
+  "scope": "36 new lessons and the combined 97-page local preview; not release approval",
+  "content": {
+    "pages": 97,
+    "new_lessons": 36,
+    "groups": 16,
+    "learning_paths": 12,
+    "errors": 0,
+    "warnings": 0,
+    "source": "content-validation.json"
+  },
+  "art": {
+    "rendered": 43,
+    "canvas": [
+      1600,
+      900
+    ],
+    "svgTextBoundsChecked": true
+  },
+  "downloads": {
+    "archives": 36,
+    "groups": 6,
+    "quick_checks": 81,
+    "pilot_archives": 6,
+    "tool_suite_tests_per_pilot": 21,
+    "sources": [
+      "downloads-quick-tests.json",
+      "downloads-tests.json"
+    ]
+  },
+  "browser": {
+    "latest_cases_passed": 9,
+    "source": "browser-verification.json",
+    "physically_tested_mobile_devices": false
+  },
+  "web_tests": {
+    "scope": "affected guide/series/editor/server helper suites; worker startup failure and successful isolated retry retained",
+    "source": "live/post-main-checks.json",
+    "numTotalTests": 73,
+    "numPassedTests": 73,
+    "numFailedTests": 0,
+    "numPendingTests": 0
+  },
+  "post_main_checks": {
+    "checked_at": "2026-09-14T14:42:06.596418+00:00",
+    "scope": "After merging origin/main 8c83e90a; current local checks, not CI or release approval",
+    "local_head": "95ff5c352c6eecd473b79d041db0e95c0c380c5d",
+    "node": "24.15.0 win-arm64",
+    "commands": [
+      {
+        "command": "npm ci --ignore-scripts",
+        "observed_exit": 0,
+        "log": "npm-ci-main-retry.log",
+        "sha256": "f6f15d1aa883cd25f4809b04dce736c86c54d2a7f17d6ccebf2b6b0b85561983"
+      },
+      {
+        "command": "npm run build:web",
+        "observed_exit": 0,
+        "log": "build-main.log",
+        "sha256": "86d962be1ebd34b30f0b8c9d152edafb0d47c06f3a8cff881de4a8e3c8f9b606"
+      },
+      {
+        "command": "npm run lint:web",
+        "observed_exit": 0,
+        "log": "lint-main.log",
+        "sha256": "1691e63702811d24116473d5455aac1c2ab71c7b1b01e83775dfd26390eabadf"
+      },
+      {
+        "command": "npm run check:i18n",
+        "observed_exit": 0,
+        "log": "i18n-main.log",
+        "sha256": "98a7fafb0390c2107b0d9017a632edeec62cf5c3632bfc53854bb4713025bc9b"
+      },
+      {
+        "command": "npm run typecheck:web",
+        "observed_exit": 0,
+        "log": "typecheck-main.log",
+        "sha256": "b6fcae8d29b65429823fc40a0fc269cab5ab76092b2cf5f26a8e1a8e540abf7d"
+      },
+      {
+        "command": "npm run test:tools",
+        "observed_exit": 0,
+        "log": "tools-main.log",
+        "sha256": "0900db23be30be6b37f552fcdf3e8fb80a65fadd88d4510eec5b8999a1ff9011"
+      },
+      {
+        "command": "npm run check:tasks",
+        "observed_exit": 0,
+        "log": "tasks-main.log",
+        "sha256": "b1c85ee58f6c4884a15891dda9d901bc3fa05195bb00275c7b8313c9cc057b89"
+      },
+      {
+        "command": "cd apps/api; uv run ruff check .",
+        "observed_exit": 0,
+        "log": "ruff-main.log",
+        "sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+      },
+      {
+        "command": "cd apps/api; uv run mypy app",
+        "observed_exit": 0,
+        "log": "mypy-main.log",
+        "sha256": "debe92002d7b740400f1e7c5597b2046bff22ef009bee03ad43704d14a448ab4"
+      },
+      {
+        "command": "cd apps/api; uv run pytest tests/test_guide_series.py",
+        "observed_exit": 0,
+        "log": "api-main-tests.log",
+        "sha256": "5330b9b54e133273478f976ae93c73bc01e52077438d93c08f9f65339f02be86"
+      }
+    ],
+    "affected_web_tests": {
+      "numTotalTests": 73,
+      "numPassedTests": 73,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "scope": "Union of four completed suites and the isolated missing server suite; not a successful single invocation",
+      "attempts": [
+        {
+          "source": "web-focused-main.json",
+          "exit": 1,
+          "reason": "worker startup timeout; JSON success alone is insufficient"
+        },
+        {
+          "source": "web-focused-main-retry.json",
+          "exit": 1,
+          "passed_tests": 50,
+          "reason": "guides.server worker startup timeout"
+        },
+        {
+          "source": "web-server-main.log",
+          "exit": 1,
+          "reason": "incorrect path to hoisted Vitest; no test executed"
+        },
+        {
+          "source": "web-server-main-retry.json",
+          "exit": 0,
+          "passed_tests": 23,
+          "pool": "forks"
+        }
+      ]
+    },
+    "api": {
+      "passed": 18,
+      "skipped": 12,
+      "source": "api-main-tests.xml",
+      "note": "PostgreSQL was not running in this local invocation. Historical 164-test run is separate; current CI supplies integration services."
+    },
+    "browser": {
+      "passed": 9,
+      "source": "../browser-main-retry.json",
+      "previous_attempt": "../browser-main.json",
+      "note": "First attempt lacked the matching Chromium revision after main updated Playwright; installed it before retry. Viewport emulation is not a physical phone."
+    },
+    "final_editorial_change": "Added a missing full stop between advanced outcome and lead text; regenerated only 61-96 packs and reran 97-page content validation with zero errors/warnings. No link, code, article body or ZIP change."
+  },
+  "broad_web_suite": {
+    "environment": "Windows",
+    "source": "web-full.json",
+    "files": 258,
+    "tests": 2809,
+    "total_tests": 2809,
+    "failed": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  "postgresql_suite": {
+    "passed": true,
+    "tests": 164,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "postgresql_version": "17.11",
+    "source": "postgres-validation.json",
+    "test_report": "postgres-tests.xml",
+    "environment": "Windows; disposable PostgreSQL 17 and SQLite",
+    "server_stopped": true,
+    "remaining_test_schemas": 0
+  },
+  "supplementary_verification": "live/verification-summary.json",
+  "real_operations": {
+    "checked_at": "2026-09-14T14:15:40.078727+00:00",
+    "scope": "Supplementary actual Claude, browser cloud task and SDK smoke checks; not complete per-lesson failure coverage",
+    "cli": {
+      "passed": true,
+      "version": "2.1.233 (Claude Code)",
+      "lessons": [
+        61,
+        67,
+        73,
+        79,
+        91
+      ],
+      "source": "claude-live-all.json",
+      "hook_event_source": "hook-trigger.json"
+    },
+    "web": {
+      "passed": true,
+      "source": "browser-validation.json",
+      "result": {
+        "marker": "MOKAAIR-WEB-SMOKE-20260914",
+        "total": 3,
+        "completed": 1,
+        "pendingIds": [
+          "b",
+          "c"
+        ]
+      },
+      "repository_changes": false
+    },
+    "sdk": {
+      "passed": true,
+      "version": "0.3.270",
+      "cases": [
+        "authored-runner-query",
+        "authored-runner-same-session-resume",
+        "separate-streaming-input-abort-controller-probe"
+      ],
+      "sources": [
+        "sdk-query-resume.json",
+        "sdk-cancel.json",
+        "sdk-recovery.json",
+        "sdk-terminal-recovery.json"
+      ],
+      "limitations": [
+        "Ctrl+C was sent through a real terminal PTY by the verifier, not a human keyboard. No network interruption or external side effect rollback is claimed."
+      ],
+      "sources_checked_on": "2026-09-14",
+      "official_source": "https://code.claude.com/docs/en/agent-sdk/streaming-vs-single-mode",
+      "recovery_passed": true,
+      "recovery_cases": [
+        "missing-session",
+        "incompatible-session",
+        "executable-startup-failure",
+        "fresh-query-after-startup-failure"
+      ],
+      "terminal_cancel_resume_passed": true,
+      "runner_driver_version": 2
+    },
+    "github_actions": {
+      "repository": "x812033727/travel_scanner",
+      "repository_secret_count": 0,
+      "environment_count": 1,
+      "required_example_environment": "claude-lab",
+      "required_example_secret": "ANTHROPIC_API_KEY",
+      "live_model_workflow_run": false,
+      "reason": "Actual baseline workflow passed; paid model review requires the user-managed ANTHROPIC_API_KEY in claude-lab.",
+      "registered_claude_workflows": [],
+      "local_workflow_prepared": true,
+      "workflow_path": ".github/workflows/claude-tutorial-validation.yml",
+      "local_validation_source": "ci-workflow-validation.json",
+      "environment_created": true,
+      "branch_policy": "main only",
+      "environment_secret_count": 0,
+      "workflow_merged": true,
+      "workflow_merge_commit": "3e7f377237f36215f0fb3bac63d02c344dbe60e6",
+      "baseline_workflow": {
+        "id": 34862981734,
+        "url": "https://github.com/x812033727/travel_scanner/actions/runs/34862981734",
+        "sha": "3e7f377237f36215f0fb3bac63d02c344dbe60e6",
+        "conclusion": "success",
+        "input": {
+          "run_model": false
+        },
+        "jobs": {
+          "baseline": "success",
+          "model-review": "skipped"
+        },
+        "scope": "Actual GitHub hosted baseline only; paid Claude model job skipped."
+      }
+    },
+    "pending": [
+      "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
+      "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
+      "Paid Actions model job awaits dedicated ANTHROPIC_API_KEY"
+    ],
+    "cli_boundaries": {
+      "passed": true,
+      "source": "cli-boundaries.json",
+      "case_count": 7,
+      "cases": [
+        {
+          "name": "rules-child",
+          "lessons": [
+            62,
+            63
+          ],
+          "passed": true
+        },
+        {
+          "name": "skill-missing-argument",
+          "lessons": [
+            67,
+            68
+          ],
+          "passed": true
+        },
+        {
+          "name": "skill-automatic",
+          "lessons": [
+            70
+          ],
+          "passed": true
+        },
+        {
+          "name": "permission-denied",
+          "lessons": [
+            64
+          ],
+          "passed": true
+        },
+        {
+          "name": "hook-protected-write",
+          "lessons": [
+            73,
+            76
+          ],
+          "passed": true
+        },
+        {
+          "name": "mcp-startup-failure",
+          "lessons": [
+            79,
+            82
+          ],
+          "passed": true
+        },
+        {
+          "name": "readonly-subagent",
+          "lessons": [
+            87
+          ],
+          "passed": true
+        }
+      ],
+      "limits": [
+        "One readonly subagent with Haiku is not an Agent Teams or model comparison test",
+        "Read denial does not test Bash sandbox",
+        "MCP startup failure does not verify remote OAuth or all protocol errors"
+      ]
+    },
+    "capstone": {
+      "passed": true,
+      "lesson": 96,
+      "scope": "Actual model-authored local feature, independent assertions, browser workflow, specified failure and repair, fresh extracted replay; no physical phone or deployment",
+      "sources": [
+        "capstone-implementation.json",
+        "capstone-tests.json",
+        "capstone-browser.json",
+        "capstone-repair.json",
+        "capstone-clean-replay.json"
+      ],
+      "archive": "capstone-result.zip",
+      "archive_sha256": "87cdbe8031e2508274b917bb25f9c671e11924e347ea9f61b8fc6fcca16dba3f",
+      "project_tests": 9,
+      "independent_tests": 3,
+      "browser_cases": 10,
+      "verifier_corrections": [
+        "Handoff: mixed arrays retain valid items; malformed JSON/non-array returns empty. Added actual browser evidence and explicit server stop instructions."
+      ],
+      "test_server_stopped": true
+    },
+    "extra_boundaries": {
+      "passed": true,
+      "source": "extra-boundaries.json",
+      "case_count": 6,
+      "cases": [
+        {
+          "name": "rules-conflict",
+          "lessons": [
+            61,
+            63
+          ]
+        },
+        {
+          "name": "skill-data-resources",
+          "lessons": [
+            69
+          ]
+        },
+        {
+          "name": "skill-missing-resource",
+          "lessons": [
+            69
+          ]
+        },
+        {
+          "name": "hook-command-failure",
+          "lessons": [
+            73,
+            78
+          ]
+        },
+        {
+          "name": "mcp-untrusted-output",
+          "lessons": [
+            83
+          ]
+        },
+        {
+          "name": "mcp-invalid-input",
+          "lessons": [
+            80,
+            82
+          ]
+        }
+      ]
+    },
+    "teams": {
+      "passed": true,
+      "source": "interactive-products.json",
+      "scope": "Two named in-process teammates, independent reads, task assignment, mailbox replies and a follow-up in the same teammate; not the full UI feature integration exercise"
+    },
+    "schedule": {
+      "passed": true,
+      "source": "interactive-products.json",
+      "scope": "Session CronCreate/CronList with a real one-shot trigger reading local synthetic data; not cloud/desktop scheduling, sleep recovery or the lesson job runner"
+    },
+    "workflow_comparison": {
+      "passed": true,
+      "source": "workflow-observations.json",
+      "scope": "Exploratory single observation of each workflow; not a performance benchmark"
+    },
+    "remote_control": {
+      "local_session_started": true,
+      "browser_history_visible": true,
+      "browser_command_sent": false,
+      "passed": false,
+      "session_stopped": true,
+      "session_url": "https://claude.ai/code/session_01AtAGQZpAd4QrtVs7P7ix5o",
+      "reason": "Browser required elevated device verification (device_key_missing). Google sign-in did not navigate in the in-app browser; no remote command or physical phone recovery is claimed."
+    },
+    "sandbox": {
+      "passed": true,
+      "environment": "WSL2 Ubuntu ARM64",
+      "cli_version": "2.1.270",
+      "source": "sandbox-validation.json",
+      "scope": "Actual inside read/write, denied read, outside readonly write and host-loopback isolation; no domain-allowlist or Unix-socket claim",
+      "preflight": {
+        "bubblewrap_present": true,
+        "socat_present": true,
+        "linux_claude_present": true,
+        "linux_claude_logged_in": true
+      }
+    },
+    "teams_feature": {
+      "passed": true,
+      "source": "team-feature-validation.json",
+      "scope": "Two named teammates, controlled block/decision, scoped feature and label changes, 10 project tests, 3 independent tests and real browser verification"
+    },
+    "headless_boundary": {
+      "passed": true,
+      "source": "headless-turn-limit.json",
+      "scope": "Real CLI max-turn error; do not parse an error result as an empty successful review"
+    },
+    "sandbox_history": {
+      "passed": false,
+      "environment": "WSL Ubuntu ARM64",
+      "preflight": {
+        "bubblewrap_present": true,
+        "socat_present": false,
+        "linux_claude_present": false
+      },
+      "reason": "During dependency setup WSL became unresponsive, including a read-only process listing. Only the three owned Windows WSL client trees were stopped; Linux installation outcome is unconfirmed. No WSL shutdown or sandbox weakening was used."
+    },
+    "remote_control_linux": {
+      "passed": false,
+      "source": "remote-control-linux.json",
+      "reason": "A fresh Linux CLI login and Remote Control connection succeeded; browser device verification still prevented the remote command. No remote execution, disconnect recovery or phone test is claimed."
+    }
+  },
+  "claude_smoke_source": "live/claude-live-all.json",
+  "historical_commands_before_main_sync": [
+    {
+      "command": "npm run build:web",
+      "exit": 0
+    },
+    {
+      "command": "npm run lint:web",
+      "exit": 0
+    },
+    {
+      "command": "npm run check:i18n",
+      "exit": 0,
+      "detail": "5 locales, 25 namespaces"
+    },
+    {
+      "command": "npm run typecheck:web",
+      "exit": 0
+    },
+    {
+      "command": "npm run test:tools",
+      "exit": 0,
+      "detail": "51 passed; tools-tests.txt"
+    },
+    {
+      "command": "uv run ruff check app/guides tests/test_guide_series.py",
+      "exit": 0
+    },
+    {
+      "command": "uv run mypy app",
+      "exit": 0,
+      "detail": "328 source files"
+    },
+    {
+      "command": "uv run pytest tests/test_guide_series.py tests/test_guides.py -q",
+      "exit": 0,
+      "detail": "Earlier run: 87 passed, 77 skipped; PostgreSQL integration disabled. See postgresql_suite for the supplementary run."
+    },
+    {
+      "command": "claude plugin validate ./plugin",
+      "exit": 0,
+      "detail": "local manifest validation, not a model call"
+    },
+    {
+      "command": "node hooks/timeout-demo.mjs",
+      "exit": 0,
+      "detail": "expectedTimeout=true, ETIMEDOUT, 339 ms; controlled local child"
+    },
+    {
+      "command": "node worktrees/demo.mjs",
+      "exit": 0,
+      "detail": "worktree-tests.json"
+    }
+  ],
+  "manual_visual_review": [
+    "project-rules-workshop-code-360.png",
+    "structured-cli-pipeline-code-390.png",
+    "tdd-reference-390.png"
+  ],
+  "release": {
+    "checked_at": "2026-09-14T15:34:53.868230+00:00",
+    "pull_request": {
+      "number": 501,
+      "url": "https://github.com/x812033727/travel_scanner/pull/501",
+      "state": "merged",
+      "merged": true,
+      "merged_at": "2026-09-14T15:33:48Z",
+      "head": "556efbcc85bdb6a329aea42b2b602b8a08b850fa",
+      "base": "96ee71d6e17d09d44c32c0939cacf378c9217055",
+      "merge_commit": "3e7f377237f36215f0fb3bac63d02c344dbe60e6"
+    },
+    "pre_merge_checks": [
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106738/job/104033235186",
+        "name": "full-stack-smoke",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106606/job/104033233688",
+        "name": "food-map-reservations",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106738/job/104033235211",
+        "name": "api",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106740/job/104033233923",
+        "name": "planner-browser",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106738/job/104033234946",
+        "name": "containers",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106773/job/104033234385",
+        "name": "discovery-browser",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106738/job/104033235251",
+        "name": "web",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100776/job/104033212819",
+        "name": "food-map-reservations",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100814/job/104033213379",
+        "name": "web",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100814/job/104033213500",
+        "name": "containers",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100814/job/104033213600",
+        "name": "api",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100892/job/104033213630",
+        "name": "discovery-browser",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100821/job/104033213366",
+        "name": "planner-browser",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100814/job/104033213192",
+        "name": "full-stack-smoke",
+        "state": "SUCCESS"
+      }
+    ],
+    "deployment": "not-performed",
+    "import": "not-performed",
+    "publication": "not-performed",
+    "baseline_workflow": {
+      "id": 34862981734,
+      "url": "https://github.com/x812033727/travel_scanner/actions/runs/34862981734",
+      "sha": "3e7f377237f36215f0fb3bac63d02c344dbe60e6",
+      "conclusion": "success",
+      "input": {
+        "run_model": false
+      },
+      "jobs": {
+        "baseline": "success",
+        "model-review": "skipped"
+      },
+      "scope": "Actual GitHub hosted baseline only; paid Claude model job skipped."
+    }
+  },
+  "limitations": [
+    "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
+    "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
+    "Paid Actions model job awaits dedicated ANTHROPIC_API_KEY",
+    "Not deployed, imported or published"
+  ],
+  "environment_notes": [
+    "Shared browser installation was incomplete; matching Chromium installed in a dedicated temporary cache",
+    "Broad Vitest was restarted; reported guide tests come from the focused single-worker invocation",
+    "MCP test process startup/cleanup allowance increased to 20 seconds; protocol deadline remains 1500 ms"
+  ]
+}

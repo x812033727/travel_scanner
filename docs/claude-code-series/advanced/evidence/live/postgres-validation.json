@@ -1,0 +1,89 @@
+{
+  "started_at": "2026-09-14T12:49:18.385754+00:00",
+  "source": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260491",
+  "scope": "disposable PostgreSQL, loopback only; guide and series integration tests",
+  "production_access": false,
+  "steps": [
+    {
+      "command": [
+        "<temporary-runtime>\\pgsql\\bin\\postgres.exe",
+        "--version"
+      ],
+      "exit": 0,
+      "log": null
+    },
+    {
+      "command": [
+        "<temporary-runtime>\\pgsql\\bin\\pg_ctl.exe",
+        "-D",
+        "<temporary-runtime>\\data",
+        "status"
+      ],
+      "exit": 0,
+      "log": "postgres-start.log"
+    },
+    {
+      "command": [
+        "<temporary-runtime>\\pgsql\\bin\\createdb.exe",
+        "claude_tutorial_tests"
+      ],
+      "exit": 0,
+      "log": null
+    },
+    {
+      "command": [
+        "C:\\Users\\x8120\\.local\\bin\\uv.EXE",
+        "run",
+        "pytest",
+        "tests/test_guide_series.py",
+        "tests/test_guides.py",
+        "-q",
+        "-r",
+        "fE",
+        "--junitxml",
+        "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scan\u3110\\docs\\claude-code-series\\advanced\\evidence\\live\\postgres-tests.xml"
+      ],
+      "exit": 0,
+      "log": "postgres-tests.log"
+    },
+    {
+      "command": [
+        "<temporary-runtime>\\pgsql\\bin\\psql.exe",
+        "-d",
+        "claude_tutorial_tests",
+        "-Atc",
+        "SELECT count(*) FROM pg_namespace WHERE nspname LIKE 'guides_test_%';"
+      ],
+      "exit": 0,
+      "log": null
+    },
+    {
+      "command": [
+        "<temporary-runtime>\\pgsql\\bin\\pg_ctl.exe",
+        "-D",
+        "<temporary-runtime>\\data",
+        "-m",
+        "fast",
+        "-w",
+        "stop"
+      ],
+      "exit": 0,
+      "log": "postgres-stop.log"
+    }
+  ],
+  "recovery": "Initial Windows pg_ctl capture pipe stayed open after successful server startup; resumed the same disposable cluster with file-based process output.",
+  "download": {
+    "url": "https://get.enterprisedb.com/postgresql/postgresql-17.11-3-windows-x64-binaries.zip",
+    "bytes": 341325378,
+    "sha256": "4b8db0930c38f6ef845db919551dedda3b6b845aeb0927b3d79a6e8e9e4537cf"
+  },
+  "version": "postgres (PostgreSQL) 17.11",
+  "port": 55089,
+  "test_seconds": 377.76,
+  "remaining_test_schemas": 0,
+  "passed": true,
+  "stopped": true,
+  "finished_at": "2026-09-14T12:55:53.500845+00:00",
+  "temporary_runtime_removed": false,
+  "cleanup_note": "Initial automatic cleanup encountered a Windows DLL lock after successful shutdown. Follow-up deletion of the verified disposable directory was rejected by automatic approval review (blocked by policy); remaining temporary files were preserved."
+}

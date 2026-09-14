@@ -1,0 +1,163 @@
+{
+  "passed": true,
+  "archives": [
+    {
+      "number": 61,
+      "sha256": "c44e456f61fed749bb717ba521c749dded4c0a3251da6f8b6e7ee7849bcd5f3b",
+      "checks": [
+        {
+          "variant": "starter",
+          "command": "node --test tests/model.test.mjs",
+          "exit": 0,
+          "expected_exit": 0,
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (1.6907ms)\n✔ 拒絕空白與過長內容 (0.0925ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1047ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.0841ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 128.1549\n"
+        },
+        {
+          "variant": "reference",
+          "command": "node --test tests/model.test.mjs",
+          "exit": 0,
+          "expected_exit": 0,
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (1.6979ms)\n✔ 拒絕空白與過長內容 (0.0937ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.0957ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.0841ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 141.4319\n"
+        },
+        {
+          "variant": "starter",
+          "command": "npm ci --ignore-scripts; node --test tests/*.test.mjs",
+          "exit": 0,
+          "output": "✔ result parser distinguishes valid data from errors, incomplete streams and malformed output (15.262ms)\n✔ repeating a job reuses result, changed input fails and failed attempts can recover (19.638ms)\n✔ evaluation includes failed cases, attempts and full time (1.9428ms)\n✔ CLI persists separate failed, recovered and reused attempts (623.7113ms)\n✔ CSV export quotes data and review artifact drops unknown fields and rejects invalid output (454.8667ms)\n✔ cancellation handler preserves attempt state without writing a completed job (397.7111ms)\n✔ course configuration rejects unsupported keys and wrong permission types (372.2407ms)\n✔ local auth fixture distinguishes missing token, wrong scope and accepted fake token (275.2602ms)\n✔ MCP fault clients fail closed for exit, invalid output and hung server (6107.8431ms)\n✔ guard rejects protected/outside writes and allows a normal fixture (746.0566ms)\n✔ formatter is scoped and idempotent and preserves JSON string whitespace (411.0973ms)\n✔ audit omits raw tool input and repeated Stop terminates (524.2731ms)\n✔ actual stdio MCP lists tools, paginates, rejects bad input and returns unknown id (588.2319ms)\n✔ 新增待辦會去除前後空白並保留既有資料 (2.1906ms)\n✔ 拒絕空白與過長內容 (0.1454ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1261ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1079ms)\n✔ legacy and refactored statistics preserve the characterized outputs (2.5271ms)\n✔ SDK state requires a final valid result and does not accept authentication failures (1.4174ms)\n✔ argument parsing covers missing, invalid, Unicode and literal shell symbols (8.7974ms)\n✔ skill score validates human observations and does not discard failed cases (0.5643ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 6993.8108\n"
+        }
+      ]
+    },
+    {
+      "number": 67,
+      "sha256": "faf5b385eeedfaac0d2774d7cff3fdc397102f1dd79935cdd8e8d7c6c9abe749",
+      "checks": [
+        {
+          "variant": "starter",
+          "command": "node --test tests/model.test.mjs",
+          "exit": 0,
+          "expected_exit": 0,
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.6173ms)\n✔ 拒絕空白與過長內容 (0.1436ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1402ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1275ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 320.4308\n"
+        },
+        {
+          "variant": "reference",
+          "command": "node --test tests/model.test.mjs",
+          "exit": 0,
+          "expected_exit": 0,
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.8225ms)\n✔ 拒絕空白與過長內容 (0.1597ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1436ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1834ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 235.6519\n"
+        },
+        {
+          "variant": "starter",
+          "command": "npm ci --ignore-scripts; node --test tests/*.test.mjs",
+          "exit": 0,
+          "output": "✔ result parser distinguishes valid data from errors, incomplete streams and malformed output (7.8169ms)\n✔ repeating a job reuses result, changed input fails and failed attempts can recover (11.4678ms)\n✔ evaluation includes failed cases, attempts and full time (1.3189ms)\n✔ CLI persists separate failed, recovered and reused attempts (1366.2672ms)\n✔ CSV export quotes data and review artifact drops unknown fields and rejects invalid output (442.4249ms)\n✔ cancellation handler preserves attempt state without writing a completed job (440.5107ms)\n✔ course configuration rejects unsupported keys and wrong permission types (1159.1513ms)\n✔ local auth fixture distinguishes missing token, wrong scope and accepted fake token (334.1181ms)\n✔ MCP fault clients fail closed for exit, invalid output and hung server (4076.0135ms)\n✔ guard rejects protected/outside writes and allows a normal fixture (1453.5695ms)\n✔ formatter is scoped and idempotent and preserves JSON string whitespace (394.8143ms)\n✔ audit omits raw tool input and repeated Stop terminates (514.2531ms)\n✔ actual stdio MCP lists tools, paginates, rejects bad input and returns unknown id (611.4104ms)\n✔ 新增待辦會去除前後空白並保留既有資料 (2.5614ms)\n✔ 拒絕空白與過長內容 (0.1365ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.137ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1232ms)\n✔ legacy and refactored statistics preserve the characterized outputs (2.7751ms)\n✔ SDK state requires a final valid result and does not accept authentication failures (1.877ms)\n✔ argument parsing covers missing, invalid, Unicode and literal shell symbols (26.2387ms)\n✔ skill score validates human observations and does not discard failed cases (0.6127ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 5939.0929\n"
+        }
+      ]
+    },
+    {
+      "number": 73,
+      "sha256": "3b14aacd906513e37a5f707499c81ef87e0e4edd067e1300e4c21d9e08dbbf81",
+      "checks": [
+        {
+          "variant": "starter",
+          "command": "node --test tests/model.test.mjs",
+          "exit": 0,
+          "expected_exit": 0,
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (1.9332ms)\n✔ 拒絕空白與過長內容 (0.0987ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1116ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.0965ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 147.2074\n"
+        },
+        {
+          "variant": "reference",
+          "command": "node --test tests/model.test.mjs",
+          "exit": 0,
+          "expected_exit": 0,
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.6362ms)\n✔ 拒絕空白與過長內容 (0.2516ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1083ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1005ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 156.4993\n"
+        },
+        {
+          "variant": "starter",
+          "command": "npm ci --ignore-scripts; node --test tests/*.test.mjs",
+          "exit": 0,
+          "output": "✔ result parser distinguishes valid data from errors, incomplete streams and malformed output (25.3125ms)\n✔ repeating a job reuses result, changed input fails and failed attempts can recover (8.483ms)\n✔ evaluation includes failed cases, attempts and full time (9.1295ms)\n✔ CLI persists separate failed, recovered and reused attempts (495.866ms)\n✔ CSV export quotes data and review artifact drops unknown fields and rejects invalid output (441.2641ms)\n✔ cancellation handler preserves attempt state without writing a completed job (407.0165ms)\n✔ course configuration rejects unsupported keys and wrong permission types (325.8122ms)\n✔ local auth fixture distinguishes missing token, wrong scope and accepted fake token (250.7002ms)\n✔ MCP fault clients fail closed for exit, invalid output and hung server (4233.2548ms)\n✔ guard rejects protected/outside writes and allows a normal fixture (672.4114ms)\n✔ formatter is scoped and idempotent and preserves JSON string whitespace (378.4072ms)\n✔ audit omits raw tool input and repeated Stop terminates (527.1976ms)\n✔ actual stdio MCP lists tools, paginates, rejects bad input and returns unknown id (523.8493ms)\n✔ 新增待辦會去除前後空白並保留既有資料 (2.0281ms)\n✔ 拒絕空白與過長內容 (0.1324ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1167ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1088ms)\n✔ legacy and refactored statistics preserve the characterized outputs (2.8213ms)\n✔ SDK state requires a final valid result and does not accept authentication failures (2.8598ms)\n✔ argument parsing covers missing, invalid, Unicode and literal shell symbols (6.7994ms)\n✔ skill score validates human observations and does not discard failed cases (0.4939ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 4992.7053\n"
+        }
+      ]
+    },
+    {
+      "number": 79,
+      "sha256": "008a236ade1f4c03148487020255990d0ff209e46172cfb8523f782b34dff443",
+      "checks": [
+        {
+          "variant": "starter",
+          "command": "node --test tests/model.test.mjs",
+          "exit": 0,
+          "expected_exit": 0,
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.61ms)\n✔ 拒絕空白與過長內容 (0.1504ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1394ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1255ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 219.9734\n"
+        },
+        {
+          "variant": "reference",
+          "command": "node --test tests/model.test.mjs",
+          "exit": 0,
+          "expected_exit": 0,
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.5372ms)\n✔ 拒絕空白與過長內容 (0.134ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1409ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1235ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 209.7236\n"
+        },
+        {
+          "variant": "starter",
+          "command": "npm ci --ignore-scripts; node --test tests/*.test.mjs",
+          "exit": 0,
+          "output": "✔ result parser distinguishes valid data from errors, incomplete streams and malformed output (11.9359ms)\n✔ repeating a job reuses result, changed input fails and failed attempts can recover (8.551ms)\n✔ evaluation includes failed cases, attempts and full time (0.9084ms)\n✔ CLI persists separate failed, recovered and reused attempts (517.7863ms)\n✔ CSV export quotes data and review artifact drops unknown fields and rejects invalid output (445.8629ms)\n✔ cancellation handler preserves attempt state without writing a completed job (397.423ms)\n✔ course configuration rejects unsupported keys and wrong permission types (319.2364ms)\n✔ local auth fixture distinguishes missing token, wrong scope and accepted fake token (252.3685ms)\n✔ MCP fault clients fail closed for exit, invalid output and hung server (4080.7306ms)\n✔ guard rejects protected/outside writes and allows a normal fixture (675.267ms)\n✔ formatter is scoped and idempotent and preserves JSON string whitespace (382.3387ms)\n✔ audit omits raw tool input and repeated Stop terminates (498.5438ms)\n✔ actual stdio MCP lists tools, paginates, rejects bad input and returns unknown id (504.7439ms)\n✔ 新增待辦會去除前後空白並保留既有資料 (2.0411ms)\n✔ 拒絕空白與過長內容 (0.1379ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.117ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1044ms)\n✔ legacy and refactored statistics preserve the characterized outputs (2.5596ms)\n✔ SDK state requires a final valid result and does not accept authentication failures (1.3411ms)\n✔ argument parsing covers missing, invalid, Unicode and literal shell symbols (8.1669ms)\n✔ skill score validates human observations and does not discard failed cases (0.5826ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 4843.7524\n"
+        }
+      ]
+    },
+    {
+      "number": 88,
+      "sha256": "8bf0d3f5fc8551aed8d2af0f663787ad4544d3efc48556ad8ffe70ff42530118",
+      "checks": [
+        {
+          "variant": "starter",
+          "command": "node --test tests/model.test.mjs",
+          "exit": 0,
+          "expected_exit": 0,
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.5191ms)\n✔ 拒絕空白與過長內容 (0.1203ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.114ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1016ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 179.215\n"
+        },
+        {
+          "variant": "reference",
+          "command": "node --test tests/model.test.mjs",
+          "exit": 0,
+          "expected_exit": 0,
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (2.1058ms)\n✔ 拒絕空白與過長內容 (0.1101ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1113ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.0981ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 159.4308\n"
+        },
+        {
+          "variant": "starter",
+          "command": "npm ci --ignore-scripts; node --test tests/*.test.mjs",
+          "exit": 0,
+          "output": "✔ result parser distinguishes valid data from errors, incomplete streams and malformed output (19.188ms)\n✔ repeating a job reuses result, changed input fails and failed attempts can recover (12.0826ms)\n✔ evaluation includes failed cases, attempts and full time (1.5295ms)\n✔ CLI persists separate failed, recovered and reused attempts (476.9283ms)\n✔ CSV export quotes data and review artifact drops unknown fields and rejects invalid output (421.8834ms)\n✔ cancellation handler preserves attempt state without writing a completed job (430.3661ms)\n✔ course configuration rejects unsupported keys and wrong permission types (314.8634ms)\n✔ local auth fixture distinguishes missing token, wrong scope and accepted fake token (257.5871ms)\n✔ MCP fault clients fail closed for exit, invalid output and hung server (4064.6426ms)\n✔ guard rejects protected/outside writes and allows a normal fixture (697.3658ms)\n✔ formatter is scoped and idempotent and preserves JSON string whitespace (377.9761ms)\n✔ audit omits raw tool input and repeated Stop terminates (470.7537ms)\n✔ actual stdio MCP lists tools, paginates, rejects bad input and returns unknown id (510.8634ms)\n✔ 新增待辦會去除前後空白並保留既有資料 (2.1963ms)\n✔ 拒絕空白與過長內容 (0.2131ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.1605ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.1157ms)\n✔ legacy and refactored statistics preserve the characterized outputs (2.145ms)\n✔ SDK state requires a final valid result and does not accept authentication failures (1.5134ms)\n✔ argument parsing covers missing, invalid, Unicode and literal shell symbols (8.4819ms)\n✔ skill score validates human observations and does not discard failed cases (1.1665ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 4828.9797\n"
+        }
+      ]
+    },
+    {
+      "number": 91,
+      "sha256": "54ca33e871c4b4aa9db5b2a9ab47af47c22785e525e2fb305618ed382b0d165d",
+      "checks": [
+        {
+          "variant": "starter",
+          "command": "node --test tests/model.test.mjs",
+          "exit": 0,
+          "expected_exit": 0,
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (1.9899ms)\n✔ 拒絕空白與過長內容 (0.1019ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.103ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.0901ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 166.0753\n"
+        },
+        {
+          "variant": "reference",
+          "command": "node --test tests/model.test.mjs",
+          "exit": 0,
+          "expected_exit": 0,
+          "output": "✔ 新增待辦會去除前後空白並保留既有資料 (1.929ms)\n✔ 拒絕空白與過長內容 (0.1151ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.131ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.0982ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 150.5924\n"
+        },
+        {
+          "variant": "starter",
+          "command": "npm ci --ignore-scripts; node --test tests/*.test.mjs",
+          "exit": 0,
+          "output": "✔ result parser distinguishes valid data from errors, incomplete streams and malformed output (9.4231ms)\n✔ repeating a job reuses result, changed input fails and failed attempts can recover (6.6412ms)\n✔ evaluation includes failed cases, attempts and full time (1.0687ms)\n✔ CLI persists separate failed, recovered and reused attempts (448.7539ms)\n✔ CSV export quotes data and review artifact drops unknown fields and rejects invalid output (394.6683ms)\n✔ cancellation handler preserves attempt state without writing a completed job (406.3437ms)\n✔ course configuration rejects unsupported keys and wrong permission types (270.1856ms)\n✔ local auth fixture distinguishes missing token, wrong scope and accepted fake token (224.3805ms)\n✔ MCP fault clients fail closed for exit, invalid output and hung server (4195.1835ms)\n✔ guard rejects protected/outside writes and allows a normal fixture (570.1732ms)\n✔ formatter is scoped and idempotent and preserves JSON string whitespace (367.6917ms)\n✔ audit omits raw tool input and repeated Stop terminates (491.4951ms)\n✔ actual stdio MCP lists tools, paginates, rejects bad input and returns unknown id (520.052ms)\n✔ 新增待辦會去除前後空白並保留既有資料 (1.7761ms)\n✔ 拒絕空白與過長內容 (0.1213ms)\n✔ 依照識別碼切換指定項目，不改動其他項目 (0.0951ms)\n✔ 刪除依識別碼進行，找不到項目時仍保留資料 (0.0877ms)\n✔ legacy and refactored statistics preserve the characterized outputs (2.1401ms)\n✔ SDK state requires a final valid result and does not accept authentication failures (1.1442ms)\n✔ argument parsing covers missing, invalid, Unicode and literal shell symbols (6.1248ms)\n✔ skill score validates human observations and does not discard failed cases (0.4374ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 4852.4685\n"
+        }
+      ]
+    }
+  ],
+  "platform": "nt",
+  "real_claude_operations": false
+}

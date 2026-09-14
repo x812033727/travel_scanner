@@ -1,0 +1,126 @@
+{
+  "started_at": "2026-09-14T13:32:42.926320+00:00",
+  "scope": "Actual CLI tool behavior in independent disposable exercises; no real secrets or business data",
+  "cli_version": "2.1.233 (Claude Code)",
+  "cases": [
+    {
+      "name": "readonly-subagent",
+      "lessons": [
+        87
+      ],
+      "exit": 0,
+      "passed": true,
+      "conditions": {
+        "actual_agent_call": true,
+        "finding": true
+      },
+      "result": "**Concrete Finding:**\n\nThe data-reviewer identified a **critical logic inversion** in fixtures/toggle.diff against model.js:\n\n**The Issue:** The diff inverts the ternary condition at line 6:\n- **Current (correct):** `item.id === id ? { ...item, completed: !item.completed } : item`\n- **Diff proposes:** `item.id !== id ? { ...item, completed: !item.completed } : item`\n\n**Impact:** This reverses which item gets toggled. Instead of toggling the target item, it would toggle all OTHER items and leave the target unchanged.\n\n**Test Failure:** The test \"依照識別碼切換指定項目，不改動其他項目\" (lines 16-22 of tests/model.test.mjs) expects item 'a' to toggle from `false` → `true`, but the inverted logic would leave it `false` and toggle item 'b' instead, causing assertion failure on line 19.",
+      "tool_calls": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01S4UqfcC2UXjYbxTinHb4e9",
+          "name": "Agent",
+          "input": {
+            "description": "Review toggle.diff fixture against model.js",
+            "subagent_type": "data-reviewer",
+            "prompt": "Review fixtures/toggle.diff against model.js to identify any logic inconsistencies or issues. Check whether the diff's operations (additions, deletions, modifications) align with how the model handles todo data. Report concrete findings with specific line numbers and reproducible conditions.",
+            "run_in_background": false
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01XByE2Z635PnqDciFU6p1tS",
+          "name": "Read",
+          "input": {
+            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-8a4fwl10\\fixtures\\toggle.diff"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_0112ZwQrqtxz6f6uNGc6ag8T",
+          "name": "Read",
+          "input": {
+            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-8a4fwl10\\model.js"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01Gmg8b3CaUYMeWJ5GyPhSUZ",
+          "name": "Read",
+          "input": {
+            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-8a4fwl10\\tests\\model.test.mjs"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_014nauUUTs5KURxrigDLCKiB",
+          "name": "Grep",
+          "input": {
+            "pattern": "toggleTodo",
+            "path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-8a4fwl10"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "tool_results": [
+        {
+          "tool_use_id": "toolu_01XByE2Z635PnqDciFU6p1tS",
+          "type": "tool_result",
+          "content": "1\t--- a/model.js\n2\t+++ b/model.js\n3\t@@ -5,3 +5,3 @@\n4\t export function toggleTodo(items, id) {\n5\t-  return items.map(item => item.id === id ? { ...item, completed: !item.completed } : item);\n6\t+  return items.map(item => item.id !== id ? { ...item, completed: !item.completed } : item);\n7\t }\n8\t"
+        },
+        {
+          "tool_use_id": "toolu_0112ZwQrqtxz6f6uNGc6ag8T",
+          "type": "tool_result",
+          "content": "1\texport function addTodo(items, title, id) {\n2\t  const cleaned = title.trim();\n3\t  if (!cleaned || cleaned.length > 100) return items;\n4\t  return [...items, { id, title: cleaned, completed: false }];\n5\t}\n6\texport function toggleTodo(items, id) {\n7\t  return items.map(item => item.id === id ? { ...item, completed: !item.completed } : item);\n8\t}\n9\texport function removeTodo(items, id) {\n10\t  return items.filter(item => item.id !== id);\n11\t}\n12\t"
+        },
+        {
+          "tool_use_id": "toolu_01Gmg8b3CaUYMeWJ5GyPhSUZ",
+          "type": "tool_result",
+          "content": "1\timport { test } from 'node:test';\n2\timport assert from 'node:assert/strict';\n3\timport { addTodo, toggleTodo, removeTodo } from '../model.js';\n4\t\n5\ttest('新增待辦會去除前後空白並保留既有資料', () => {\n6\t  const original = [{ id: 'a', title: '買早餐', completed: true }];\n7\t  const added = addTodo(original, '  讀書  ', 'b');\n8\t  assert.deepEqual(added, [...original, { id: 'b', title: '讀書', completed: false }]);\n9\t  assert.equal(original.length, 1);\n10\t});\n11\ttest('拒絕空白與過長內容', () => {\n12\t  const original = [];\n13\t  assert.equal(addTodo(original, '   ', 'a'), original);\n14\t  assert.equal(addTodo(original, '字'.repeat(101), 'a'), original);\n15\t});\n16\ttest('依照識別碼切換指定項目，不改動其他項目', () => {\n17\t  const original = [{ id: 'a', title: '相同標題', completed: false }, { id: 'b', title: '相同標題', completed: true }];\n18\t  const updated = toggleTodo(original, 'a');\n19\t  assert.equal(updated[0].completed, true);\n20\t  assert.equal(updated[1].completed, true);\n21\t  assert.equal(original[0].completed, false);\n22\t});\n23\ttest('刪除依識別碼進行，找不到項目時仍保留資料', () => {\n24\t  const original = [{ id: 'a', title: '測試', completed: false }];\n25\t  assert.deepEqual(removeTodo(original, 'missing'), original);\n26\t  assert.deepEqual(removeTodo(original, 'a'), []);\n27\t});\n28\t"
+        },
+        {
+          "tool_use_id": "toolu_014nauUUTs5KURxrigDLCKiB",
+          "type": "tool_result",
+          "content": "Found 4 files\ntests\\model.test.mjs\napp.js\nmodel.js\nfixtures\\toggle.diff"
+        },
+        {
+          "tool_use_id": "toolu_01S4UqfcC2UXjYbxTinHb4e9",
+          "type": "tool_result",
+          "content": [
+            {
+              "type": "text",
+              "text": "## Findings\n\n**File Path:** C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-8a4fwl10\\\n\n### Critical Logic Inversion Issue\n\n**File:** model.js, line 7 vs. fixtures/toggle.diff, line 6\n\n**Current Implementation (Correct):**\n```javascript\nreturn items.map(item => item.id === id ? { ...item, completed: !item.completed } : item);\n```\n\n**Diff Proposes (Incorrect):**\n```javascript\nreturn items.map(item => item.id !== id ? { ...item, completed: !item.completed } : item);\n```\n\n**Trigger Condition:** Calling `toggleTodo(items, id)` to toggle the completion status of a single item\n\n**The Logic Error:**\nThe diff inverts the ternary condition from `item.id === id` to `item.id !== id`. This reverses the intended behavior:\n\n- **Current logic:** Toggles the item that MATCHES the provided id, leaves others unchanged\n- **Diff's logic:** Would toggle all items that DON'T match the id, leaves the target item unchanged\n\n**Concrete Test Case (from tests/model.test.mjs, lines 16-22):**\n```\nInput: original = [\n  { id: 'a', title: '相同標題', completed: false },\n  { id: 'b', title: '相同標題', completed: true }\n]\nCall: toggleTodo(original, 'a')\n\nExpected behavior:\n- Item 'a': false → true (toggled) ✓\n- Item 'b': true → true (unchanged) ✓\n\nWith diff's logic, would produce:\n- Item 'a': false → false (unchanged) ✗\n- Item 'b': true → false (toggled) ✗\n```\n\n**Test Verification Status:** The test \"依照識別碼切換指定項目，不改動其他項目\" (lines 16-22) will FAIL if the diff is applied. The assertion on line 19 expects `updated[0].completed` to be `true`, but the inverted logic would leave it `false`."
+            },
+            {
+              "type": "text",
+              "text": "agentId: a2e4c973a70e4303e (use SendMessage with to: 'a2e4c973a70e4303e', summary: '<5-10 word recap>' to continue this agent)\n<usage>subagent_tokens: 6739\ntool_uses: 4\nduration_ms: 22528</usage>"
+            }
+          ]
+        }
+      ],
+      "seconds": 33.84,
+      "stderr": "",
+      "source_hashes": {
+        ".claude/CLAUDE.md": "f56947e7df725934fbbd237f16fbb7fcd610818e901ef76bb930ea7389cd2826",
+        "case-settings.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "test-mcp.json": "139f0a6d5883f3caadbca38e6cbcc1d39ffcbff19c43fc17f5d6163673021b5e"
+      },
+      "model_override": "haiku"
+    }
+  ],
+  "passed": true
+}

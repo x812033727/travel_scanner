@@ -1,0 +1,494 @@
+[
+  {
+    "type": "system",
+    "subtype": "init",
+    "cwd": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-qadurjtk",
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44",
+    "tools": [
+      "Read"
+    ],
+    "mcp_servers": [],
+    "model": "claude-haiku-4-5-20251001",
+    "permissionMode": "dontAsk",
+    "slash_commands": [
+      "deep-research",
+      "design",
+      "design-sync",
+      "dataviz",
+      "update-config",
+      "verify",
+      "debug",
+      "code-review",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "doctor",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "run-skill-generator",
+      "advisor",
+      "agents",
+      "auto-mode-setup",
+      "autocompact",
+      "clear",
+      "color",
+      "compact",
+      "config",
+      "output-style",
+      "context",
+      "effort",
+      "fast",
+      "heapdump",
+      "init",
+      "mcp",
+      "import",
+      "model",
+      "__remote-workflow",
+      "workflow-launch-exec",
+      "reload-plugins",
+      "reload-skills",
+      "rename",
+      "ultrareview",
+      "security-review",
+      "usage-credits",
+      "extra-usage",
+      "usage",
+      "insights",
+      "recap",
+      "skill-doctor",
+      "goal",
+      "design-consent",
+      "design-revoke",
+      "list-agents",
+      "team-onboarding"
+    ],
+    "terminal_slash_commands": [
+      "doctor",
+      "color",
+      "reload-plugins"
+    ],
+    "apiKeySource": "none",
+    "claude_code_version": "2.1.270",
+    "output_style": "default",
+    "agents": [
+      "claude",
+      "Explore",
+      "general-purpose",
+      "Plan",
+      "statusline-setup"
+    ],
+    "skills": [
+      "deep-research",
+      "design",
+      "design-sync",
+      "dataviz",
+      "update-config",
+      "verify",
+      "debug",
+      "code-review",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "doctor",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "run-skill-generator"
+    ],
+    "plugins": [],
+    "capabilities": [
+      "interrupt_receipt_v1",
+      "interrupt_cancel_queued_v1",
+      "msg_lifecycle_v1"
+    ],
+    "analytics_disabled": false,
+    "product_feedback_disabled": false,
+    "uuid": "5e346022-9ea4-407c-b8f3-63d2b5d3167e",
+    "memory_paths": {
+      "auto": "C:\\Users\\x8120\\.claude\\projects\\C--Users-x8120-AppData-Local-Temp-mokaair-extra-qadurjtk\\memory\\"
+    },
+    "messaging_socket_path": "\\\\.\\pipe\\LOCAL\\cc-msg-36edaf0f001255b847e0a46cdb474ad7",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "powershell_path": "C:\\Users\\x8120\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe"
+  },
+  {
+    "type": "rate_limit_event",
+    "rate_limit_info": {
+      "status": "allowed_warning",
+      "resetsAt": 1789772400,
+      "rateLimitType": "seven_day",
+      "utilization": 0.82,
+      "isUsingOverage": false,
+      "surpassedThreshold": 0.75,
+      "unifiedWindows": {
+        "five_hour": {
+          "utilization": 0.02,
+          "resetsAt": 1789409400
+        },
+        "seven_day": {
+          "utilization": 0.82,
+          "resetsAt": 1789772400
+        }
+      }
+    },
+    "uuid": "93fc6e7e-f9f0-435b-8160-dd2950ec2672",
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44"
+  },
+  {
+    "type": "system",
+    "subtype": "thinking_tokens",
+    "estimated_tokens": 50,
+    "estimated_tokens_delta": 50,
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44",
+    "uuid": "1eac2d8c-531e-4a3d-a919-1190abebebec"
+  },
+  {
+    "type": "system",
+    "subtype": "thinking_tokens",
+    "estimated_tokens": 127,
+    "estimated_tokens_delta": 77,
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44",
+    "uuid": "7f940b60-e38e-4089-b90b-e7b63307eaee"
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-haiku-4-5-20251001",
+      "id": "msg_011Cf3TgbdbddEZXG966u3qL",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EvUDCrIBCBEYAipAPr433XwUVpGlLBHXAgg73IwFfeGLsULoxS4tfmSXyM3brIZcPH18qnM57NzjcO/tOpX9+V0QRuXj7NoNAFk0lzIZY2xhdWRlLWhhaWt1LTQtNS0yMDI1MTAwMTgAQgh0aGlua2luZ1okYzdkNWY1ZmUtZDNmMC00ZGYzLTg3OWUtMmU1MDBhNDc2YzhmchDn2QGJasstnIZea+yi1g2+iAEBqAHo/p/VBrABAhIMelKZppxF1DjGeEDOGgyV0YEF2Z8mYq8XeNwiMFejUfABi6tljTBSBqUaMBK0t14dYg9GX+05nAQZCAS2PByrkFf7gqjrc8q6iKGiPCrvAeujtdCFhPNbLfj0yShTgbgWQFqo1F8nkSMS6q0/kd+g7jbHanCBWp91kuTSJ8kELcrhf/HbfaF/zQJ8t49iiQNQfZ/bDwgOnOpiru6Mf+dJWIpiynbZz+66vjEp96+FzS6K2xrUx3kTUHwZdhW3q5A2KfURLaobr7gwylFwhZ9dRJ0vZTcmP2Dwfla10EhUK/TY8Lbm1mJGuC/It4LnI9L8q5JBlwUdL11IYZ4st39ndFBipHZFnPEh7I1GfJbh4xMUmNpNYL2LAdfMsM8qrSLj7K0e3Uu3XBNsUFG0R2QV6yVL/+rhwZot7fNhrihzGAE="
+        }
+      ],
+      "container": null,
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 10,
+        "cache_creation_input_tokens": 8225,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 8225
+        },
+        "output_tokens": 1,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "diagnostics": null,
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44",
+    "uuid": "8ff82f6d-5b84-4e1e-b477-870a5b87b2b3",
+    "timestamp": "2026-09-14T14:06:27.791Z",
+    "request_id": "req_011Cf3Tgb7qEoZZYBWbm7HuX"
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-haiku-4-5-20251001",
+      "id": "msg_011Cf3TgbdbddEZXG966u3qL",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01WsTN5yUW9oR6gazcmqBu96",
+          "name": "Read",
+          "input": {
+            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-qadurjtk\\probe.txt"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "container": null,
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 10,
+        "cache_creation_input_tokens": 8225,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 8225
+        },
+        "output_tokens": 1,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "diagnostics": null,
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44",
+    "uuid": "5b81078f-90b3-4e50-a6d9-f69d4c32cadb",
+    "timestamp": "2026-09-14T14:06:28.202Z",
+    "request_id": "req_011Cf3Tgb7qEoZZYBWbm7HuX",
+    "wire_tool_inputs": {
+      "toolu_01WsTN5yUW9oR6gazcmqBu96": {
+        "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-qadurjtk\\probe.txt"
+      }
+    }
+  },
+  {
+    "type": "system",
+    "subtype": "hook_started",
+    "hook_id": "c499ae07-2300-4997-a6b2-376a283fb380",
+    "hook_name": "PreToolUse:Read",
+    "hook_event": "PreToolUse",
+    "uuid": "bdc5a7ae-9f60-43da-9bf2-158bf6ec1a70",
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44"
+  },
+  {
+    "type": "system",
+    "subtype": "hook_response",
+    "hook_id": "c499ae07-2300-4997-a6b2-376a283fb380",
+    "hook_name": "PreToolUse:Read",
+    "hook_event": "PreToolUse",
+    "output": "MOKAAIR-HOOK-INJECTED-FAILURE\n",
+    "stdout": "",
+    "stderr": "MOKAAIR-HOOK-INJECTED-FAILURE\n",
+    "exit_code": 2,
+    "outcome": "error",
+    "uuid": "99b8272b-07e7-4f5a-988e-5f4262ed72fd",
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "type": "tool_result",
+          "content": "PreToolUse:Read hook error: [node broken-hook.mjs]: MOKAAIR-HOOK-INJECTED-FAILURE\n",
+          "is_error": true,
+          "tool_use_id": "toolu_01WsTN5yUW9oR6gazcmqBu96"
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44",
+    "uuid": "1b55c181-31d8-4d48-9229-f14bf13b4335",
+    "timestamp": "2026-09-14T14:06:28.458Z",
+    "tool_use_result": "Error: PreToolUse:Read hook error: [node broken-hook.mjs]: MOKAAIR-HOOK-INJECTED-FAILURE\n",
+    "tool_result_meta": [
+      {
+        "id": "toolu_01WsTN5yUW9oR6gazcmqBu96",
+        "non_execution_kind": "permission-rule"
+      }
+    ]
+  },
+  {
+    "type": "system",
+    "subtype": "thinking_tokens",
+    "estimated_tokens": 50,
+    "estimated_tokens_delta": 50,
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44",
+    "uuid": "68ff207e-db4f-4830-92cf-55c42c14514a"
+  },
+  {
+    "type": "system",
+    "subtype": "thinking_tokens",
+    "estimated_tokens": 132,
+    "estimated_tokens_delta": 82,
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44",
+    "uuid": "63308ee4-6cc6-4af5-9ce1-14f58adf6f15"
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-haiku-4-5-20251001",
+      "id": "msg_011Cf3TgkcqiY4qep2k5fUKa",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EosECrIBCBEYAipA241XRYEAFw7Xo7zJ/gRO9A3M/X1lC2gLC3hDCOD2pLdybQbISHEooq9SwZzGXDORIcSHjGehYfGp7t2f5V2QiTIZY2xhdWRlLWhhaWt1LTQtNS0yMDI1MTAwMTgAQgh0aGlua2luZ1okYzdkNWY1ZmUtZDNmMC00ZGYzLTg3OWUtMmU1MDBhNDc2YzhmchDn2QGJasstnIZea+yi1g2+iAEBqAHq/p/VBrABAhIMpKmChEDDUcNbqD3rGgztmiV2oV1J3gj3mLsiMIN5PN7+WjTGapDLVHtGFPCqJHQRX7aguGA9bCDNAL+bCWQE8iwyBbTAfx2OPMj9DyqFAkxabIdFiTIBqufs01K+WC7L0M5e8DDig0TqNLLr8e23TbaY+pLJKc4ASV9tGLT5Ae4GZzsdWe1CS7fWUDW4D/ZrrIVFPfEFzGmKk6BSqaRexZFq5u138wN+HUHWU0YmvIChrJ4qW1VH3wKDDRz9xkp4HUcArm0okEd47JwvYDYDW4RRx1EqI6TnpT6Bc5JwJkkD6WCV9880CjhPtQPUK1aSvVs+Ib1/IEO5kc2d6wPHxeYmepAgzF9IRCgmdSyxO4nVYr02/ZQvzHdNx0JAyMQXXoPiGRsTm+zrHCfxXgSl9t8BcvsKcyxOJVtTJkjUSLeuVJhehIw3JSQBMUTkss4d3/0DMRgB"
+        }
+      ],
+      "container": null,
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 8,
+        "cache_creation_input_tokens": 272,
+        "cache_read_input_tokens": 8225,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 272
+        },
+        "output_tokens": 2,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "diagnostics": null,
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44",
+    "uuid": "8b5b39ee-f8cc-4fde-9eed-23680d6ca42a",
+    "timestamp": "2026-09-14T14:06:29.924Z",
+    "request_id": "req_011Cf3Tgk6L7SLhEkmYUvpZ9"
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-haiku-4-5-20251001",
+      "id": "msg_011Cf3TgkcqiY4qep2k5fUKa",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "The Read attempt was refused with the hook diagnostic:\n\n```\n[node broken-hook.mjs]: MOKAAIR-HOOK-INJECTED-FAILURE\n```\n\nStopping as instructed."
+        }
+      ],
+      "container": null,
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 8,
+        "cache_creation_input_tokens": 272,
+        "cache_read_input_tokens": 8225,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 272
+        },
+        "output_tokens": 2,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "diagnostics": null,
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44",
+    "uuid": "a7df2e9c-cc51-417f-a9ae-39243d989096",
+    "timestamp": "2026-09-14T14:06:30.335Z",
+    "request_id": "req_011Cf3Tgk6L7SLhEkmYUvpZ9"
+  },
+  {
+    "duration_api_ms": 4903,
+    "stop_reason": "end_turn",
+    "session_id": "5368072f-4302-44bd-b5c6-a3ef46679b44",
+    "total_cost_usd": 0.020126499999999995,
+    "usage": {
+      "input_tokens": 18,
+      "cache_creation_input_tokens": 8497,
+      "cache_read_input_tokens": 8225,
+      "output_tokens": 263,
+      "output_tokens_details": {
+        "thinking_tokens": 126
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 8497,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 8,
+          "output_tokens": 121,
+          "cache_read_input_tokens": 8225,
+          "cache_creation_input_tokens": 272,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 272
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "modelUsage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 935,
+        "outputTokens": 275,
+        "cacheReadInputTokens": 8225,
+        "cacheCreationInputTokens": 8497,
+        "webSearchRequests": 0,
+        "costUSD": 0.020126499999999995,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 126,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [
+      {
+        "tool_name": "Read",
+        "tool_use_id": "toolu_01WsTN5yUW9oR6gazcmqBu96",
+        "tool_input": {
+          "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-qadurjtk\\probe.txt"
+        }
+      }
+    ],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "is_error": false,
+    "num_turns": 2,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "The Read attempt was refused with the hook diagnostic:\n\n```\n[node broken-hook.mjs]: MOKAAIR-HOOK-INJECTED-FAILURE\n```\n\nStopping as instructed.",
+    "ttft_ms": 1580,
+    "type": "result",
+    "duration_ms": 4157,
+    "uuid": "e7f3c801-9698-4a36-81e9-fed9576e01d7",
+    "ttft_stream_ms": 902,
+    "time_to_request_ms": 47,
+    "first_content_frame_ms": 1115,
+    "queued_turn_count": 0,
+    "result_index": 0
+  }
+]
