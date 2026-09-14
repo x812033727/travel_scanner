@@ -72,8 +72,21 @@
           "code": "Terminal practice: this is lesson one.\n"
         },
         {
-          "type": "paragraph",
-          "text": "目錄應是下面的形狀。Windows 記事本要避免 note.txt.txt，macOS 編輯器要避免 RTF；Linux 檔名大小寫保持一致。檔名含空白並沒有錯，正好用來練習引號。教學中的灰色範例區只有命令與內容；不要把 PS C:>、$ 等提示字元也加進輸入。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "目錄應是下面的形狀。Windows 記事本要避免 note.txt.txt，macOS 編輯器要避免 RTF；Linux 檔名大小寫保持一致。檔名含空白並沒有錯，正好用來練習引號。教學中的灰色範例區只有命令與內容；不要把 "
+            },
+            {
+              "type": "code",
+              "text": "PS C:\\>"
+            },
+            {
+              "type": "text",
+              "text": "、$ 等提示字元也加進輸入。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -196,7 +209,7 @@
             },
             {
               "type": "text",
-              "text": "繼續，不需要在本篇臨時改許可權。代理應找到 lesson one/note.txt，讀到英文句子並回報工作位置；若位置不同，先檢查入口是否建立了工作副本，再判斷是否選錯目錄。"
+              "text": "繼續，不需要在本篇臨時改權限。代理應找到 lesson one/note.txt，讀到英文句子並回報工作位置；若位置不同，先檢查入口是否建立了工作副本，再判斷是否選錯目錄。"
             }
           ]
         },
@@ -228,7 +241,7 @@
             },
             {
               "type": "link",
-              "text": "Microsoft Set-Location 檔案",
+              "text": "Microsoft Set-Location 文件",
               "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location"
             },
             {
@@ -237,7 +250,7 @@
             },
             {
               "type": "link",
-              "text": "CLI 官方檔案",
+              "text": "CLI 官方文件",
               "url": "https://learn.chatgpt.com/docs/codex/cli"
             },
             {
@@ -402,8 +415,21 @@
           "code": "Terminal practice: this is lesson one.\n"
         },
         {
-          "type": "paragraph",
-          "text": "The folder should have the structure below. Avoid note.txt.txt in Windows and RTF in macOS; preserve case on Linux. A space in a folder name is valid and useful for practising quotation. Code blocks contain the commands or content to use; do not prepend prompt markers such as PS C:> or $."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The folder should have the structure below. Avoid note.txt.txt in Windows and RTF in macOS; preserve case on Linux. A space in a folder name is valid and useful for practising quotation. Code blocks contain the commands or content to use; do not prepend prompt markers such as "
+            },
+            {
+              "type": "code",
+              "text": "PS C:\\>"
+            },
+            {
+              "type": "text",
+              "text": " or $."
+            }
+          ]
         },
         {
           "type": "code",
@@ -732,8 +758,21 @@
           "code": "Terminal practice: this is lesson one.\n"
         },
         {
-          "type": "paragraph",
-          "text": "構造は次のとおりです。Windows では note.txt.txt、macOS では RTF を避け、Linux では大文字小文字を保ちます。名前の空白は正しく、引用符の練習に使えます。コード欄には入力する命令や内容だけがあり、PS C:> や $ のプロンプト記号を付け足さないでください。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "構造は次のとおりです。Windows では note.txt.txt、macOS では RTF を避け、Linux では大文字小文字を保ちます。名前の空白は正しく、引用符の練習に使えます。コード欄には入力する命令や内容だけがあり、"
+            },
+            {
+              "type": "code",
+              "text": "PS C:\\>"
+            },
+            {
+              "type": "text",
+              "text": " や $ のプロンプト記号を付け足さないでください。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -768,11 +807,11 @@
         },
         {
           "type": "paragraph",
-          "text": "練習の親フォルダーを確認したら、空白のある子へ移動して読み、親に戻ります。次の命令はファイルを変更しません。途中で英文が表示され、最後は codex-terminal-lab に戻るのが期待値です。最後の一行だけで全体成功とせず、途中のエラーがあれば止めて確認してください。"
+          "text": "練習ルートを確認したら、空白のある子へ移動して読み、親に戻ります。次の命令はファイルを変更しません。途中で英文が表示され、最後は codex-terminal-lab に戻るのが期待値です。最後の一行だけで全体成功とせず、途中のエラーがあれば止めて確認してください。"
         },
         {
           "type": "code",
-          "label": "PowerShell：練習の親フォルダーから移動、読み取り、復帰",
+          "label": "PowerShell：練習ルートから移動、読み取り、復帰",
           "language": "powershell",
           "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
         },
@@ -803,11 +842,11 @@
         },
         {
           "type": "paragraph",
-          "text": "lesson one が見えたら次を実行します。同じ文を読めて元の親に戻るのが期待値です。途中で失敗したら直してから一行ずつ進みます。macOS と Linux の基本手順は共通でも、大文字小文字の扱いはファイルシステムによるため、完全に同じ名前を使いましょう。"
+          "text": "lesson one が見えたら次を実行します。同じ文を読めて元の練習ルートに戻るのが期待値です。途中で失敗したら直してから一行ずつ進みます。macOS と Linux の基本手順は共通でも、大文字小文字の扱いはファイルシステムによるため、完全に同じ名前を使いましょう。"
         },
         {
           "type": "code",
-          "label": "macOS／Linux 端末：練習の親フォルダーから移動、読み取り、復帰",
+          "label": "macOS／Linux 端末：練習ルートから移動、読み取り、復帰",
           "language": "bash",
           "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
         },
@@ -818,7 +857,7 @@
         },
         {
           "type": "paragraph",
-          "text": "練習の親で存在しない missing-folder へ移動します。PowerShell は Set-Location -LiteralPath '.\\missing-folder'、macOS/Linux は cd 'missing-folder' です。パス不存在のエラーが出て現在地は変わらないはずです。文言は言語や版で異なります。失敗した移動ではフォルダーは作られず、cd の失敗を確認せず編集へ進んではいけないことが分かります。"
+          "text": "練習ルートで存在しない missing-folder へ移動します。PowerShell は Set-Location -LiteralPath '.\\missing-folder'、macOS/Linux は cd 'missing-folder' です。パス不存在のエラーが出て現在地は変わらないはずです。文言は言語や版で異なります。失敗した移動ではフォルダーは作られず、cd の失敗を確認せず編集へ進んではいけないことが分かります。"
         },
         {
           "type": "heading",
@@ -827,7 +866,7 @@
         },
         {
           "type": "paragraph",
-          "text": "現在地が codex-terminal-lab の親フォルダーで、note.txt は lesson one の中だけにあることを確認します。自分の OS のブロックを使ってください。一行目は note.txt が見つからないエラー、二行目は正しいサブフォルダーを指定して Terminal practice: this is lesson one. を読む想定です。読み取り失敗で lesson one に移動することはありません。エラーを隠すために親にも note.txt を作らないでください。読み取りだけなので元ファイルは変わりません。"
+          "text": "現在地が練習ルートの codex-terminal-lab で、note.txt は lesson one の中だけにあることを確認します。自分の OS のブロックを使ってください。一行目は note.txt が見つからないエラー、二行目は正しいサブフォルダーを指定して Terminal practice: this is lesson one. を読む想定です。読み取り失敗で lesson one に移動することはありません。エラーを隠すために練習ルートにも note.txt を作らないでください。読み取りだけなので元ファイルは変わりません。"
         },
         {
           "type": "code",
@@ -846,7 +885,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "CLI 導入済みなら確認した親フォルダーで codex を実行し、次の読み取り依頼を送ります。未導入なら "
+              "text": "CLI 導入済みなら確認した練習ルートで codex を実行し、次の読み取り依頼を送ります。未導入なら "
             },
             {
               "type": "article",
@@ -877,7 +916,7 @@
         },
         {
           "type": "paragraph",
-          "text": "元ファイルは変更していないため、端末を閉じるか練習場所を離れれば終了です。実行中のプログラムは通常 Ctrl+C で中断できますが、書き込み済みデータの復元にはなりません。lesson two/note.txt に別の文を作り、親から二つを読み分けてください。パスとファイル、空白、失敗後の場所を理解できれば合格です。図の 1、2、3 は場所の確認、読み取り、検証です。"
+          "text": "元ファイルは変更していないため、端末を閉じるか練習場所を離れれば終了です。実行中のプログラムは通常 Ctrl+C で中断できますが、書き込み済みデータの復元にはなりません。lesson two/note.txt に別の文を作り、練習ルートから二つを読み分けてください。パスとファイル、空白、失敗後の場所を理解できれば合格です。図の 1、2、3 は場所の確認、読み取り、検証です。"
         },
         {
           "type": "rich_paragraph",
@@ -1062,8 +1101,21 @@
           "code": "Terminal practice: this is lesson one.\n"
         },
         {
-          "type": "paragraph",
-          "text": "아래와 같은 구조여야 합니다. Windows에서는 note.txt.txt, macOS에서는 RTF 저장을 피하고 Linux에서는 대소문자를 유지하세요. 폴더 이름의 공백은 잘못이 아니며 따옴표 연습에 사용합니다. 코드 영역에는 입력할 명령이나 내용만 있으므로 PS C:>나 $ 같은 프롬프트 표시를 추가하지 마세요."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "아래와 같은 구조여야 합니다. Windows에서는 note.txt.txt, macOS에서는 RTF 저장을 피하고 Linux에서는 대소문자를 유지하세요. 폴더 이름의 공백은 잘못이 아니며 따옴표 연습에 사용합니다. 코드 영역에는 입력할 명령이나 내용만 있으므로 "
+            },
+            {
+              "type": "code",
+              "text": "PS C:\\>"
+            },
+            {
+              "type": "text",
+              "text": "나 $ 같은 프롬프트 표시를 추가하지 마세요."
+            }
+          ]
         },
         {
           "type": "code",
@@ -1392,8 +1444,21 @@
           "code": "Terminal practice: this is lesson one.\n"
         },
         {
-          "type": "paragraph",
-          "text": "目录应是下面的形状。Windows 记事本要避免 note.txt.txt，macOS 编辑器要避免 RTF；Linux 档名大小写保持一致。档名含空白并没有错，正好用来练习引号。教学中的灰色范例区只有命令与内容；不要把 PS C:>、$ 等提示字元也加进输入。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "目录应是下面的形状。Windows 记事本要避免 note.txt.txt，macOS 编辑器要避免 RTF；Linux 档名大小写保持一致。档名含空白并没有错，正好用来练习引号。教学中的灰色范例区只有命令与内容；不要把 "
+            },
+            {
+              "type": "code",
+              "text": "PS C:\\>"
+            },
+            {
+              "type": "text",
+              "text": "、$ 等提示字元也加进输入。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -1516,7 +1581,7 @@
             },
             {
               "type": "text",
-              "text": "继续，不需要在本篇临时改许可权。代理应找到 lesson one/note.txt，读到英文句子并回报工作位置；若位置不同，先检查入口是否建立了工作副本，再判断是否选错目录。"
+              "text": "继续，不需要在本篇临时改权限。代理应找到 lesson one/note.txt，读到英文句子并回报工作位置；若位置不同，先检查入口是否建立了工作副本，再判断是否选错目录。"
             }
           ]
         },
@@ -1548,7 +1613,7 @@
             },
             {
               "type": "link",
-              "text": "Microsoft Set-Location 档案",
+              "text": "Microsoft Set-Location 文件",
               "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location"
             },
             {
@@ -1557,7 +1622,7 @@
             },
             {
               "type": "link",
-              "text": "CLI 官方档案",
+              "text": "CLI 官方文件",
               "url": "https://learn.chatgpt.com/docs/codex/cli"
             },
             {

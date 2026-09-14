@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-claude-code-tutorial-center
 title: Claude Code 教學中心：60 篇系列、導覽與可複製範例
-status: review
+status: done
 priority: P2
 area: web
 owner: codex-claude-tutorials
 claimed_at: 2026-09-14T05:17:19Z
 created_at: 2026-09-14T01:51:28Z
-completed_at:
+completed_at: 2026-09-14T13:32:38Z
 branch: codex/claude-code-tutorial-center
 depends_on: []
 scope:

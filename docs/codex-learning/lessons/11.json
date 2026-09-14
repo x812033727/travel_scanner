@@ -10,7 +10,7 @@
   },
   "text": {
     "zh-TW": [
-      "Codex 有終端機命令、互動介面的斜線指令、鍵盤快捷鍵與自然語言需求四種操作。先知道要把內容輸入在哪裡，才不會在 shell 輸入 /plan，或把 codex --help 當成要代理修改程式的要求。",
+      "分清楚終端機命令與啟動參數、互動斜線指令、鍵盤快捷鍵及自然語言需求。先確認輸入位置：/plan 要輸入 Codex 互動介面，codex --help 則在作業系統的終端機執行。",
       "開啟 CLI 並記下 codex --version。斜線選單會隨版本與目前狀態變動，本篇是使用方法與常用入口；完整支援清單以已安裝版本的 / 選單與官方文件為準。",
       [
         "尚未進入 Codex 時，在 shell 執行下方 --help 命令。主命令看整體功能，子命令 --help 看該功能的旗標與參數。旗標後的值有空格時需要正確引號。",
@@ -23,7 +23,7 @@
       "請解釋目前專案，不修改檔案。完成後列出你檢查了哪些檔案，以及還有哪些資訊不足。"
     ],
     "en": [
-      "Codex has shell commands, interactive slash commands, keyboard shortcuts and natural-language requests. Identify the input surface first: /plan belongs in the interactive client, while codex --help belongs in the operating-system shell.",
+      "Distinguish shell commands and launch flags, interactive slash commands, keyboard shortcuts and natural-language requests. Check the input location: /plan belongs in the Codex interactive client; codex --help runs in the operating-system terminal.",
       "Record codex --version. Slash menus vary with release and current state. This tutorial explains common entry points; the installed client's / menu and official reference define actual support.",
       [
         "Before entering Codex, run the --help commands below in your shell. Main help lists capabilities; subcommand help lists flags and arguments. Quote argument values containing spaces.",
@@ -36,7 +36,7 @@
       "Explain this project without editing files. List the files inspected and any information still missing."
     ],
     "ja": [
-      "操作にはシェルコマンド、対話画面のスラッシュコマンド、ショートカット、自然文の依頼があります。/plan は対話画面、codex --help は OS の端末に入力します。",
+      "シェルコマンドと起動時のフラグ、対話画面のスラッシュコマンド、キーボード操作、自然文の依頼を区別します。/plan は Codex の対話画面、codex --help は OS の端末に入力します。",
       "codex --version を記録します。選択肢はバージョンや実行状態で変わるため、導入済みの / メニューと公式参照を確認します。",
       [
         "Codex 起動前に下の --help を実行します。主コマンドは全体、サブコマンドは個別の引数を表示します。空白のある値は引用符で囲みます。",
@@ -49,7 +49,7 @@
       "ファイルを変更せずプロジェクトを説明してください。調べたファイルと不足している情報を示してください。"
     ],
     "ko": [
-      "조작은 셸 명령, 대화형 슬래시 명령, 키보드 단축키와 자연어 요청으로 구분됩니다. /plan은 대화형 화면에, codex --help는 운영체제 셸에 입력합니다.",
+      "셸 명령과 실행 옵션, 대화형 슬래시 명령, 키보드 단축키, 자연어 요청을 구분합니다. /plan은 Codex 대화형 화면에 입력하고 codex --help는 운영체제 터미널에서 실행합니다.",
       "codex --version을 기록합니다. 메뉴는 버전과 실행 상태에 따라 달라지므로 설치된 클라이언트의 / 메뉴와 공식 참조를 확인하세요.",
       [
         "Codex를 열기 전에 아래 --help 명령을 실행합니다. 주 명령은 전체 기능, 하위 명령은 개별 인자를 보여 줍니다. 공백이 있는 값은 따옴표로 감쌉니다.",

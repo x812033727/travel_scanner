@@ -80,10 +80,10 @@
     {
       "type": "p",
       "text": [
-        "目錄應是下面的形狀。Windows 記事本要避免 note.txt.txt，macOS 編輯器要避免 RTF；Linux 檔名大小寫保持一致。檔名含空白並沒有錯，正好用來練習引號。教學中的灰色範例區只有命令與內容；不要把 PS C:\\>、$ 等提示字元也加進輸入。",
-        "The folder should have the structure below. Avoid note.txt.txt in Windows and RTF in macOS; preserve case on Linux. A space in a folder name is valid and useful for practising quotation. Code blocks contain the commands or content to use; do not prepend prompt markers such as PS C:\\> or $.",
-        "構造は次のとおりです。Windows では note.txt.txt、macOS では RTF を避け、Linux では大文字小文字を保ちます。名前の空白は正しく、引用符の練習に使えます。コード欄には入力する命令や内容だけがあり、PS C:\\> や $ のプロンプト記号を付け足さないでください。",
-        "아래와 같은 구조여야 합니다. Windows에서는 note.txt.txt, macOS에서는 RTF 저장을 피하고 Linux에서는 대소문자를 유지하세요. 폴더 이름의 공백은 잘못이 아니며 따옴표 연습에 사용합니다. 코드 영역에는 입력할 명령이나 내용만 있으므로 PS C:\\>나 $ 같은 프롬프트 표시를 추가하지 마세요."
+        "目錄應是下面的形狀。Windows 記事本要避免 note.txt.txt，macOS 編輯器要避免 RTF；Linux 檔名大小寫保持一致。檔名含空白並沒有錯，正好用來練習引號。教學中的灰色範例區只有命令與內容；不要把 `PS C:\\>`、$ 等提示字元也加進輸入。",
+        "The folder should have the structure below. Avoid note.txt.txt in Windows and RTF in macOS; preserve case on Linux. A space in a folder name is valid and useful for practising quotation. Code blocks contain the commands or content to use; do not prepend prompt markers such as `PS C:\\>` or $.",
+        "構造は次のとおりです。Windows では note.txt.txt、macOS では RTF を避け、Linux では大文字小文字を保ちます。名前の空白は正しく、引用符の練習に使えます。コード欄には入力する命令や内容だけがあり、`PS C:\\>` や $ のプロンプト記号を付け足さないでください。",
+        "아래와 같은 구조여야 합니다. Windows에서는 note.txt.txt, macOS에서는 RTF 저장을 피하고 Linux에서는 대소문자를 유지하세요. 폴더 이름의 공백은 잘못이 아니며 따옴표 연습에 사용합니다. 코드 영역에는 입력할 명령이나 내용만 있으므로 `PS C:\\>`나 $ 같은 프롬프트 표시를 추가하지 마세요."
       ]
     },
     {
@@ -151,7 +151,7 @@
       "text": [
         "確認位於實際練習根目錄後，移入含空白的子目錄並讀檔，再退回上一層。下方整組命令沒有修改檔案；預期中間顯示完整英文句子，最後位置回到 codex-terminal-lab。不要只看輸出最後一行就判定全部成功；任一步有錯誤都先停下核對。",
         "Once you are at the actual practice root, enter the child folder containing a space, read the file, then return to the parent. These commands do not change files. Expect the full English sentence, followed by a location back at codex-terminal-lab. Do not judge the whole sequence solely by its last line; stop and inspect any intermediate error.",
-        "練習の親フォルダーを確認したら、空白のある子へ移動して読み、親に戻ります。次の命令はファイルを変更しません。途中で英文が表示され、最後は codex-terminal-lab に戻るのが期待値です。最後の一行だけで全体成功とせず、途中のエラーがあれば止めて確認してください。",
+        "練習ルートを確認したら、空白のある子へ移動して読み、親に戻ります。次の命令はファイルを変更しません。途中で英文が表示され、最後は codex-terminal-lab に戻るのが期待値です。最後の一行だけで全体成功とせず、途中のエラーがあれば止めて確認してください。",
         "실제 실습 루트에 있는지 확인한 뒤 공백이 있는 하위 폴더로 이동해 파일을 읽고 상위 폴더로 돌아옵니다. 아래 명령은 파일을 바꾸지 않습니다. 중간에 영어 문장 전체가 나오고 마지막 위치가 codex-terminal-lab이어야 합니다. 마지막 줄만 보고 전체 성공으로 판단하지 말고 중간 오류가 있으면 멈춰 확인하세요."
       ]
     },
@@ -162,7 +162,7 @@
       "label": [
         "PowerShell：從練習根目錄進入、讀取，再返回",
         "PowerShell: from the practice root, enter, read and return",
-        "PowerShell：練習の親フォルダーから移動、読み取り、復帰",
+        "PowerShell：練習ルートから移動、読み取り、復帰",
         "PowerShell: 실습 루트에서 이동, 읽기, 복귀"
       ]
     },
@@ -220,7 +220,7 @@
       "text": [
         "看到 lesson one 後執行下一組；預期讀出同一句話並回到原來根目錄。若某一步失敗，先修正再逐行繼續，不把前一個錯誤帶進下一步。macOS 與 Linux 的基本步驟相同，但檔案名稱的大小寫行為可能依檔案系統設定不同；養成完全匹配名稱的習慣，就不用依賴寬鬆比對。",
         "After locating lesson one, run the next sequence. Expect the same sentence and a return to the original root. If a step fails, correct it before continuing line by line. The basic procedure is the same on macOS and Linux, but case sensitivity can depend on the filesystem. Match names exactly rather than relying on permissive matching.",
-        "lesson one が見えたら次を実行します。同じ文を読めて元の親に戻るのが期待値です。途中で失敗したら直してから一行ずつ進みます。macOS と Linux の基本手順は共通でも、大文字小文字の扱いはファイルシステムによるため、完全に同じ名前を使いましょう。",
+        "lesson one が見えたら次を実行します。同じ文を読めて元の練習ルートに戻るのが期待値です。途中で失敗したら直してから一行ずつ進みます。macOS と Linux の基本手順は共通でも、大文字小文字の扱いはファイルシステムによるため、完全に同じ名前を使いましょう。",
         "lesson one을 확인하면 다음 순서로 실행합니다. 같은 문장을 읽고 원래 루트로 돌아와야 합니다. 실패한 단계가 있으면 고친 후 한 줄씩 진행하세요. macOS와 Linux의 기본 절차는 같지만 대소문자 구분은 파일 시스템에 따라 다를 수 있습니다. 느슨한 일치에 기대지 말고 정확한 이름을 사용합니다."
       ]
     },
@@ -231,7 +231,7 @@
       "label": [
         "macOS／Linux 終端機：從練習根目錄進入、讀取，再返回",
         "macOS/Linux terminal: from the practice root, enter, read and return",
-        "macOS／Linux 端末：練習の親フォルダーから移動、読み取り、復帰",
+        "macOS／Linux 端末：練習ルートから移動、読み取り、復帰",
         "macOS/Linux 터미널: 실습 루트에서 이동, 읽기, 복귀"
       ]
     },
@@ -249,7 +249,7 @@
       "text": [
         "在練習根目錄嘗試移入不存在的 missing-folder。PowerShell 用 Set-Location -LiteralPath '.\\missing-folder'；macOS／Linux 用 cd 'missing-folder'。預期有找不到路徑的錯誤，查位置時仍在原處。錯誤文字依語言與版本不同，不要求逐字一致。這證明失敗的移動不會自動建立資料夾，也提醒你不能在 cd 失敗後照常執行修改命令。",
         "At the practice root, try a nonexistent missing-folder: use Set-Location -LiteralPath '.\\missing-folder' in PowerShell or cd 'missing-folder' on macOS/Linux. Expect a missing-path error and an unchanged location. Error wording varies by language and version. This demonstrates that a failed navigation does not create a folder, and why editing commands should not follow an unchecked cd failure.",
-        "練習の親で存在しない missing-folder へ移動します。PowerShell は Set-Location -LiteralPath '.\\missing-folder'、macOS/Linux は cd 'missing-folder' です。パス不存在のエラーが出て現在地は変わらないはずです。文言は言語や版で異なります。失敗した移動ではフォルダーは作られず、cd の失敗を確認せず編集へ進んではいけないことが分かります。",
+        "練習ルートで存在しない missing-folder へ移動します。PowerShell は Set-Location -LiteralPath '.\\missing-folder'、macOS/Linux は cd 'missing-folder' です。パス不存在のエラーが出て現在地は変わらないはずです。文言は言語や版で異なります。失敗した移動ではフォルダーは作られず、cd の失敗を確認せず編集へ進んではいけないことが分かります。",
         "실습 루트에서 없는 missing-folder로 이동해 봅니다. PowerShell은 Set-Location -LiteralPath '.\\missing-folder', macOS/Linux는 cd 'missing-folder'를 사용합니다. 경로를 찾을 수 없다는 오류가 나오고 현재 위치는 그대로여야 합니다. 오류 문구는 언어와 버전에 따라 다릅니다. 이동 실패가 폴더를 만들지는 않으며 cd 실패를 확인하지 않고 수정 명령을 실행하면 안 된다는 점을 확인합니다."
       ]
     },
@@ -267,7 +267,7 @@
       "text": [
         "先確認目前在 codex-terminal-lab 根目錄，且 note.txt 只放在 lesson one 裡。依自己的平台執行下面第一行，預期出現找不到 note.txt 的錯誤；第二行指定正確的子資料夾，應讀到 Terminal practice: this is lesson one.。第一行失敗不會自動進入 lesson one，也不應靠建立另一份根目錄 note.txt 讓錯誤消失。這個練習只讀取資料，原檔內容應保持不變。",
         "First confirm that you are at the codex-terminal-lab root and that note.txt exists only inside lesson one. Use the block for your platform: the first line should report that note.txt is missing, while the second supplies the correct subfolder and should read Terminal practice: this is lesson one. The failed read does not move you into lesson one. Do not create another note.txt at the root to hide the error. These commands only read data and should leave the original file unchanged.",
-        "現在地が codex-terminal-lab の親フォルダーで、note.txt は lesson one の中だけにあることを確認します。自分の OS のブロックを使ってください。一行目は note.txt が見つからないエラー、二行目は正しいサブフォルダーを指定して Terminal practice: this is lesson one. を読む想定です。読み取り失敗で lesson one に移動することはありません。エラーを隠すために親にも note.txt を作らないでください。読み取りだけなので元ファイルは変わりません。",
+        "現在地が練習ルートの codex-terminal-lab で、note.txt は lesson one の中だけにあることを確認します。自分の OS のブロックを使ってください。一行目は note.txt が見つからないエラー、二行目は正しいサブフォルダーを指定して Terminal practice: this is lesson one. を読む想定です。読み取り失敗で lesson one に移動することはありません。エラーを隠すために練習ルートにも note.txt を作らないでください。読み取りだけなので元ファイルは変わりません。",
         "현재 위치가 codex-terminal-lab 루트이고 note.txt가 lesson one 안에만 있는지 확인하세요. 자신의 플랫폼에 맞는 블록을 사용합니다. 첫 줄은 note.txt를 찾을 수 없다는 오류가 나고 둘째 줄은 올바른 하위 폴더를 지정하여 Terminal practice: this is lesson one.을 읽어야 합니다. 읽기 실패로 lesson one에 자동 이동하지 않습니다. 오류를 숨기려고 루트에 note.txt를 하나 더 만들지 마세요. 읽기만 하므로 원본 내용은 그대로여야 합니다."
       ]
     },
@@ -296,9 +296,9 @@
     {
       "type": "p",
       "text": [
-        "已安裝 CLI 才在確認過的練習根目錄執行 codex，並送出下方唯讀要求。未安裝者到 [CLI 入門](article:codex-cli-getting-started)繼續，不需要在本篇臨時改許可權。代理應找到 lesson one/note.txt，讀到英文句子並回報工作位置；若位置不同，先檢查入口是否建立了工作副本，再判斷是否選錯目錄。",
+        "已安裝 CLI 才在確認過的練習根目錄執行 codex，並送出下方唯讀要求。未安裝者到 [CLI 入門](article:codex-cli-getting-started)繼續，不需要在本篇臨時改權限。代理應找到 lesson one/note.txt，讀到英文句子並回報工作位置；若位置不同，先檢查入口是否建立了工作副本，再判斷是否選錯目錄。",
         "If CLI is installed, run codex at the verified practice root and send the read-only request below. Otherwise continue to [CLI setup](article:codex-cli-getting-started); do not change permissions just for this lesson. The agent should find lesson one/note.txt, read the sentence and report location. If the path differs, check whether the interface created a working copy before concluding the wrong folder was selected.",
-        "CLI 導入済みなら確認した親フォルダーで codex を実行し、次の読み取り依頼を送ります。未導入なら [CLI 入門](article:codex-cli-getting-started)に進み、この授業だけのために権限を変更しないでください。lesson one/note.txt と英文、作業場所が示されるはずです。パスが違えば、まず作業コピーが作られたかを調べてから誤選択を判断します。",
+        "CLI 導入済みなら確認した練習ルートで codex を実行し、次の読み取り依頼を送ります。未導入なら [CLI 入門](article:codex-cli-getting-started)に進み、この授業だけのために権限を変更しないでください。lesson one/note.txt と英文、作業場所が示されるはずです。パスが違えば、まず作業コピーが作られたかを調べてから誤選択を判断します。",
         "CLI가 설치되어 있으면 확인한 실습 루트에서 codex를 실행하고 아래 읽기 요청을 보냅니다. 설치 전이라면 [CLI 설정](article:codex-cli-getting-started)으로 이어 가며 이번 실습 때문에 권한을 변경하지 않습니다. 에이전트는 lesson one/note.txt와 영어 문장을 찾아 작업 위치를 보고해야 합니다. 경로가 다르면 잘못된 폴더라고 판단하기 전에 작업 복사본이 만들어졌는지 확인하세요."
       ]
     },
@@ -336,14 +336,14 @@
       "text": [
         "本篇沒有改動原始檔，結束時關閉終端機或離開練習目錄即可。正在執行的程式通常可用 Ctrl+C 中斷，但中斷不等於還原已寫入資料。再自行建立 lesson two/note.txt，寫不同句子，從根目錄分別讀取兩份內容。能分清路徑與檔案、正確處理空白、辨認失敗後的位置，就完成練習；圖中 1、2、3 是定位、讀取、驗證。",
         "No source file was changed, so close the terminal or leave the folder when finished. Ctrl+C commonly interrupts a running program, but interruption does not restore data already written. Independently create lesson two/note.txt with a different sentence and read both files from the root. You pass when you can distinguish paths from files, handle spaces and identify the location after failure. Diagram steps 1, 2 and 3 mean locate, read and verify.",
-        "元ファイルは変更していないため、端末を閉じるか練習場所を離れれば終了です。実行中のプログラムは通常 Ctrl+C で中断できますが、書き込み済みデータの復元にはなりません。lesson two/note.txt に別の文を作り、親から二つを読み分けてください。パスとファイル、空白、失敗後の場所を理解できれば合格です。図の 1、2、3 は場所の確認、読み取り、検証です。",
+        "元ファイルは変更していないため、端末を閉じるか練習場所を離れれば終了です。実行中のプログラムは通常 Ctrl+C で中断できますが、書き込み済みデータの復元にはなりません。lesson two/note.txt に別の文を作り、練習ルートから二つを読み分けてください。パスとファイル、空白、失敗後の場所を理解できれば合格です。図の 1、2、3 は場所の確認、読み取り、検証です。",
         "원본을 수정하지 않았으므로 터미널을 닫거나 실습 폴더에서 나오면 됩니다. 실행 중인 프로그램은 보통 Ctrl+C로 중단하지만 이미 쓴 데이터가 복원되지는 않습니다. lesson two/note.txt에 다른 문장을 만들고 루트에서 두 파일을 각각 읽어 보세요. 경로와 파일을 구분하고 공백을 처리하며 실패 후 위치를 알면 통과입니다. 그림의 1, 2, 3은 위치 확인, 읽기, 검증입니다."
       ]
     },
     {
       "type": "p",
       "text": [
-        "PowerShell 路徑語義依[Microsoft Set-Location 檔案](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location)核對；Codex 啟動依 [CLI 官方檔案](https://learn.chatgpt.com/docs/codex/cli)，查證日 2026-09-14。Windows 命令另外以獨立練習資料夾檢查；macOS／Linux 段落為通用殼層操作說明，不冒充該平臺實機截圖。接著可讀 [Markdown](article:codex-markdown-basics)與 [AGENTS.md](article:codex-agents-md)。",
+        "PowerShell 路徑語義依[Microsoft Set-Location 文件](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location)核對；Codex 啟動依 [CLI 官方文件](https://learn.chatgpt.com/docs/codex/cli)，查證日 2026-09-14。Windows 命令另外以獨立練習資料夾檢查；macOS／Linux 段落為通用殼層操作說明，不冒充該平臺實機截圖。接著可讀 [Markdown](article:codex-markdown-basics)與 [AGENTS.md](article:codex-agents-md)。",
         "PowerShell path semantics were checked against [Microsoft Set-Location documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location), and Codex startup against [official CLI documentation](https://learn.chatgpt.com/docs/codex/cli), on 2026-09-14. Windows commands are also checked in an isolated exercise folder. The macOS/Linux sections describe common shell operations and are not presented as device screenshots. Continue with [Markdown](article:codex-markdown-basics) and [AGENTS.md](article:codex-agents-md).",
         "PowerShell のパスは [Microsoft Set-Location 文書](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location)、起動は [Codex CLI 文書](https://learn.chatgpt.com/docs/codex/cli)で 2026-09-14 に確認しました。Windows 命令は独立した練習フォルダーでも確認します。macOS/Linux は一般的なシェル操作の説明で、実機画像と称していません。次は [Markdown](article:codex-markdown-basics)と [AGENTS.md](article:codex-agents-md)です。",
         "PowerShell 경로는 [Microsoft Set-Location 문서](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location), Codex 시작은 [공식 CLI 문서](https://learn.chatgpt.com/docs/codex/cli)로 2026-09-14에 확인했습니다. Windows 명령은 격리된 실습 폴더에서도 확인합니다. macOS/Linux 부분은 일반 셸 작업 설명이며 실제 기기 화면으로 제시하지 않습니다. 다음으로 [Markdown](article:codex-markdown-basics)과 [AGENTS.md](article:codex-agents-md)를 읽습니다."

@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-codex-depth-content
 title: Codex deep content and isolated learning components
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-fulltext-fc2e
+claimed_at: 2026-09-14T13:33:00Z
 created_at: 2026-09-14T02:33:43Z
 completed_at:
 branch: codex/codex-learning-complete
@@ -16,6 +16,11 @@ scope:
   - apps/web/lib/codex-learning
   - apps/web/components/codex-learning
   - apps/api/tests/test_codex_learning.py
+  - apps/api/app/guides/series_data/codex-zh-TW.json
+  - apps/api/app/guides/series_data/codex-zh-CN.json
+  - apps/api/app/guides/series_data/codex-en.json
+  - apps/api/app/guides/series_data/codex-ja.json
+  - apps/api/app/guides/series_data/codex-ko.json
   - tasks/open/2026-09-14-codex-learning-series.md
   - apps/api/app/guides/content/codex-beginner-guide.json
   - apps/web/public/guides/codex-beginner-guide
@@ -168,6 +173,18 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
 - [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
 - [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
+
+## Full-text review checkpoint
+
+Fully read all five locales, metadata and captions for representatives 03/10/04/11/23 and checkpoint-1 lessons 01/02/33/34/06. Eight lessons now pass editorial review; 03 and 06 require changes. Fifty lessons remain unread in this full-text pass. Evidence: docs/codex-learning/evidence/full-text-representatives.json and full-text-checkpoint-1.json. Final acceptance stays 0/60; product and page evidence remain separate.
+
+Corrected Japanese CLI terminology, Korean Skills wording, Chinese platform/source labels, Japanese practice-root instructions, and the Markdown-escaped PowerShell prompt. Updated obsolete descriptions for 06/11 in legacy metadata source, current manifest, packs and five API projections. Code, source targets and images are preserved. Six new Windows path-reference checks, nine compiler tests, nine API tests and nine frontend learning/publication tests pass. The six English length advisories have explicit editorial rationales; 15 hub advisories remain pending.
+
+The holder of task 01a09d8e-a18a-76a1-9952-b525f0210831 explicitly handed over the five Codex-only series_data files. Verified PR 485 merged at 35a2d258b51d2a1ac9aff91dc5f7ed5a8df823ec, archived the obsolete local Claude review task and claimed five exact projection paths without force. Only 06/11 outcome fields change in these projections; no other worktree or shared code was edited.
+
+Automatic approval review rejected the attempted lesson 03 author edits (reset prerequisite and Korean extraction wording) and lesson 06 module edits (reset prerequisite and sample wording), returning only blocked by policy. Both scripts were rejected before execution; do not retry these edits through another route. Lesson 06 metadata was a separate later finding and was corrected successfully. The earlier preview-start rejection also remains unresolved. Keep all three blocked-action records; do not claim final acceptance or create a partial PR.
+
+Next in the scheduled first checkpoint: 07, 05, 35, 36, 37. Continue independent full-text and source review; complete the pending edits only after the relevant restriction is resolved. Update hashes and affected checks after further changes. Release this task if stopping.
 
 ## Final review schedule and intake
 
