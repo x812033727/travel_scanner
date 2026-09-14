@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-claude-tutorial-ci-validation
 title: Claude tutorial GitHub Actions validation workflow
-status: review
+status: open
 priority: P2
 area: tools
-owner: codex-claude-completion
-claimed_at: 2026-09-14T13:54:40Z
+owner:
+claimed_at:
 created_at: 2026-09-14T13:29:33Z
 completed_at:
 branch: codex/claude-code-advanced-tutorials
@@ -25,7 +25,8 @@ scope:
 - [x] 提供手動入口，預設只測合成資料；模型審查需另選 run_model。
 - [x] 鎖定預設分支的 dispatch SHA、contents:read、claude-lab 與固定 action SHA；輸出只保存驗證後 JSON artifact。
 - [x] 本機 workflow 解析與防護測試通過。
-- [ ] 合併後取得 GitHub Actions baseline 與實際模型執行紀錄；沒有憑證時保持待辦。
+- [x] 合併後實際 GitHub Actions baseline 成功，保存 run URL、SHA、輸入與 job 結論。
+- [ ] 實際付費模型執行與 review artifact；claude-lab 尚無 ANTHROPIC_API_KEY，保持待辦。
 
 ## Steps
 
@@ -38,6 +39,9 @@ scope:
 `node --test tools/claude-code-series.test.mjs`；在 lab 執行 `node --test tests/model.test.mjs tests/automation.test.mjs tests/sdk-state.test.mjs`。合併後在 Actions → Claude tutorial validation → Run workflow 先保持 run_model=false；claude-lab 加入 ANTHROPIC_API_KEY 後再選 true，核對 review artifact。
 
 ## Notes
+
+2026-09-14 最新：workflow 隨 PR #501 合併至 3e7f377237f36215f0fb3bac63d02c344dbe60e6。實際 https://github.com/x812033727/travel_scanner/actions/runs/34862981734 成功，baseline=success、model-review=skipped，run_model=false。付費模型 job 尚未執行；沒有轉移本機 OAuth 憑證，待使用者在 claude-lab 設定專用金鑰後接續。以下首輪預檢為歷史。
+
 
 2026-09-14：GitHub 唯讀盤點顯示 repository secrets=0、environments=0、registered Claude workflows=[]。本機 CLI OAuth 重新授權成功不等於 GitHub CI 有憑證，沒有複製帳號憑證到 GitHub。此 workflow 尚未合併、安裝或 dispatch；不含部署、資料庫匯入與公開發布。
 

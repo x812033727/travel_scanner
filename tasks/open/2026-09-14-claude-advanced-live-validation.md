@@ -31,7 +31,8 @@ scope:
 - [x] 支援平台 Bash sandbox：WSL2 的指定檔案與主機 loopback 案例（不宣稱所有網域或 Unix socket）
 - [ ] 第 81 篇取得測試 MCP HTTP／OAuth 服務，完成授權、操作、撤銷與恢復
 - [ ] 第 90 篇在真實手機與電腦完成接續、斷線、休眠及恢復測試
-- [ ] 第 92 篇在明確授權的測試儲存庫執行 GitHub Actions，保存 run URL、輸入與產物；不在正式儲存庫任意觸發
+- [x] 第 92 篇在使用者指定的 travel_scanner 執行手動 baseline，保存 run URL／SHA／run_model=false／job 結論
+- [ ] 第 92 篇實際付費模型 job 與 review artifact（需要 claude-lab 的 ANTHROPIC_API_KEY）
 - [x] 第 93 篇完成產品一次性排程；第 94 篇修正 runner 串流輸入後，實際終端機 Ctrl+C 與中斷 session 恢復
 - [x] 第 94 篇原 runner 補測缺少／無效狀態、啟動失敗與全新 query 恢復
 - [x] 第 94 篇原 SDK runner 的 query、同 session resume 通過；另建串流輸入探針實測 AbortController 取消
@@ -49,6 +50,9 @@ scope:
 新的實機紀錄保存到本任務 scope 的 evidence/live/，包含版本、OS、材料 SHA、實際輸入／結果、退出碼、停止方式與未驗證項目，不保存憑證。若需要修改正文或程式，另認領對應窄範圍任務。
 
 ## Notes
+
+目前狀態（2026-09-14 15:34 UTC）：PR #501 已合併，14 個 CI 工作全部成功。主線手動 run 34862981734 的 baseline 成功、model-review skipped。Linux Web：258 檔／2,809 項與 497 項瀏覽器測試；API：4,182 passed／16 skipped。最新待辦只保留實體手機／Remote Control 裝置驗證、真實遠端 MCP OAuth、付費 CI 模型 job 與正式發布前來源複查。新版 Linux Remote Control 再次成功連線，但瀏覽器仍要求裝置驗證；沒有送出遠端命令，工作階段正常退出。正式部署、匯入與公開未執行。以下按時間保留歷史，不以舊阻塞取代本段狀態。
+
 
 - 已通過：97 頁內容檢查、36 包共 81 個命令檢查、六篇各 21 個工具測試、9 類瀏覽器驗收、73 個相關前端測試、51 個工具測試，build/lint/typecheck/i18n/Ruff/mypy。
 - API：87 passed / 77 skipped；跳過的是尚未啟用隔離 PostgreSQL 的案例。整站 258 檔前端測試曾啟動，為收尾已停止，未得到完整結果；不能引用為整站通過。

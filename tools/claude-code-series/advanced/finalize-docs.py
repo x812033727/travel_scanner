@@ -138,6 +138,8 @@ readme=readme.replace('Claude 帳號及外部環境的實測仍有待辦','部�
 if live.get('sandbox',{}).get('passed'):
     readme=readme.replace('、Bash sandbox 與 Actions','與 Actions')
     readme=readme.replace('| 外部環境 |','| Bash sandbox | WSL2／CLI 2.1.270：專案內讀寫、指定路徑讀取拒絕、專案外寫入拒絕、主機 loopback 隔離通過；HTTP 在主機前後皆可連線。[紀錄](evidence/live/sandbox-validation.json)。未驗證所有網域規則或 Unix socket |\n| 外部環境 |')
+if (DOC/'evidence/live/final-ci-summary.json').exists():
+    readme=readme.replace('## 驗證狀態\n','## 驗證狀態\n\n**PR 合併前的最終 CI：** 14 個工作全部成功。Linux Web 為 258 檔／2,809 項測試，另有 497 項瀏覽器測試；API 為 4,182 通過／16 跳過，Ruff、mypy 及必要整站檢查通過。[CI 紀錄與適用提交](evidence/live/final-ci-summary.json)。下列本機與歷史結果分別保留。\n')
 (DOC/'README.md').write_text(readme.replace('预覽','預覽'),encoding='utf-8')
 brief=DOC/'lesson-briefs.md'
 text=brief.read_text(encoding='utf-8')
@@ -210,6 +212,8 @@ if live.get('cli',{}).get('passed'):
     if live.get('sandbox',{}).get('passed'):
         source_text=source_text.replace('Bash sandbox 仍未通過','WSL2 Bash sandbox 的指定檔案及主機 loopback 案例已通過')
         source_text+='\n沙箱补驗（2026-09-14）：使用官方 Linux CLI 2.1.270、bubblewrap 與 socat，保留 failIfUnavailable／禁止沙箱外重試。實際 Bash 顯示 Permission denied 與 Read-only file system，外部檔案保持原樣。HTTP 主機前後控制均成功，沙箱內 Connection refused；不採信模型自行歸因為網域代理，也不宣稱 Unix socket 或所有外連規則通過。原始工具結果見 sandbox-events.json。\n'.replace('补驗','補驗')
+    if release_path.exists() and release.get('pull_request',{}).get('merged'):
+        source_text+='\n合併後狀態：PR #501 已合併，適用提交與 14 個成功 CI 工作見 evidence/live/release-state.json。手動 GitHub Actions baseline 成功，model-review 依 run_model=false 跳過；付費模型審查、真實手機與遠端 MCP OAuth 尚未完成。先前「待合併／未遠端執行」敘述為歷史紀錄。\n'
     source_path.write_text(source_text,encoding='utf-8')
 text=base.read_text(encoding='utf-8')
 notice='> 第二階段已新增 36 篇，現在可預覽 97 頁；請見[深入教學交付目錄](advanced/README.md)。下列 60／61 篇與驗證數量保留第一階段的歷史紀錄。\n\n'

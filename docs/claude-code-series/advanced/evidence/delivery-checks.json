@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-14T15:16:16.588561+00:00",
+  "checked_at": "2026-09-14T15:35:49.569524+00:00",
   "status": "local-preview-ready",
   "scope": "36 new lessons and the combined 97-page local preview; not release approval",
   "content": {
@@ -245,19 +245,35 @@
       "required_example_environment": "claude-lab",
       "required_example_secret": "ANTHROPIC_API_KEY",
       "live_model_workflow_run": false,
-      "reason": "Dedicated claude-lab environment exists with a main-only branch policy. Manual workflow awaits merge and baseline dispatch; the model job requires the user to add ANTHROPIC_API_KEY.",
+      "reason": "Actual baseline workflow passed; paid model review requires the user-managed ANTHROPIC_API_KEY in claude-lab.",
       "registered_claude_workflows": [],
       "local_workflow_prepared": true,
       "workflow_path": ".github/workflows/claude-tutorial-validation.yml",
       "local_validation_source": "ci-workflow-validation.json",
       "environment_created": true,
       "branch_policy": "main only",
-      "environment_secret_count": 0
+      "environment_secret_count": 0,
+      "workflow_merged": true,
+      "workflow_merge_commit": "3e7f377237f36215f0fb3bac63d02c344dbe60e6",
+      "baseline_workflow": {
+        "id": 34862981734,
+        "url": "https://github.com/x812033727/travel_scanner/actions/runs/34862981734",
+        "sha": "3e7f377237f36215f0fb3bac63d02c344dbe60e6",
+        "conclusion": "success",
+        "input": {
+          "run_model": false
+        },
+        "jobs": {
+          "baseline": "success",
+          "model-review": "skipped"
+        },
+        "scope": "Actual GitHub hosted baseline only; paid Claude model job skipped."
+      }
     },
     "pending": [
       "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
       "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
-      "Merge/register the manual Actions workflow and run baseline; paid model job awaits dedicated ANTHROPIC_API_KEY"
+      "Paid Actions model job awaits dedicated ANTHROPIC_API_KEY"
     ],
     "cli_boundaries": {
       "passed": true,
@@ -447,6 +463,11 @@
         "linux_claude_present": false
       },
       "reason": "During dependency setup WSL became unresponsive, including a read-only process listing. Only the three owned Windows WSL client trees were stopped; Linux installation outcome is unconfirmed. No WSL shutdown or sandbox weakening was used."
+    },
+    "remote_control_linux": {
+      "passed": false,
+      "source": "remote-control-linux.json",
+      "reason": "A fresh Linux CLI login and Remote Control connection succeeded; browser device verification still prevented the remote command. No remote execution, disconnect recovery or phone test is claimed."
     }
   },
   "claude_smoke_source": "live/claude-live-all.json",
@@ -509,24 +530,112 @@
     "tdd-reference-390.png"
   ],
   "release": {
+    "checked_at": "2026-09-14T15:34:53.868230+00:00",
     "pull_request": {
-      "base": "f2567e51cc1ea0d0c3fc63005db21b2f44e5919c",
-      "head": "b16e017459ac7071aee70a1177115f7cbc537528",
-      "merged": false,
       "number": 501,
-      "state": "open",
       "url": "https://github.com/x812033727/travel_scanner/pull/501",
-      "observation": "Remote PR before the sandbox evidence commit; current GitHub state is authoritative."
+      "state": "merged",
+      "merged": true,
+      "merged_at": "2026-09-14T15:33:48Z",
+      "head": "556efbcc85bdb6a329aea42b2b602b8a08b850fa",
+      "base": "96ee71d6e17d09d44c32c0939cacf378c9217055",
+      "merge_commit": "3e7f377237f36215f0fb3bac63d02c344dbe60e6"
     },
+    "pre_merge_checks": [
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106738/job/104033235186",
+        "name": "full-stack-smoke",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106606/job/104033233688",
+        "name": "food-map-reservations",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106738/job/104033235211",
+        "name": "api",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106740/job/104033233923",
+        "name": "planner-browser",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106738/job/104033234946",
+        "name": "containers",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106773/job/104033234385",
+        "name": "discovery-browser",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861106738/job/104033235251",
+        "name": "web",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100776/job/104033212819",
+        "name": "food-map-reservations",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100814/job/104033213379",
+        "name": "web",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100814/job/104033213500",
+        "name": "containers",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100814/job/104033213600",
+        "name": "api",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100892/job/104033213630",
+        "name": "discovery-browser",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100821/job/104033213366",
+        "name": "planner-browser",
+        "state": "SUCCESS"
+      },
+      {
+        "link": "https://github.com/x812033727/travel_scanner/actions/runs/34861100814/job/104033213192",
+        "name": "full-stack-smoke",
+        "state": "SUCCESS"
+      }
+    ],
     "deployment": "not-performed",
     "import": "not-performed",
-    "publication": "not-performed"
+    "publication": "not-performed",
+    "baseline_workflow": {
+      "id": 34862981734,
+      "url": "https://github.com/x812033727/travel_scanner/actions/runs/34862981734",
+      "sha": "3e7f377237f36215f0fb3bac63d02c344dbe60e6",
+      "conclusion": "success",
+      "input": {
+        "run_model": false
+      },
+      "jobs": {
+        "baseline": "success",
+        "model-review": "skipped"
+      },
+      "scope": "Actual GitHub hosted baseline only; paid Claude model job skipped."
+    }
   },
   "limitations": [
     "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
     "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
-    "Merge/register the manual Actions workflow and run baseline; paid model job awaits dedicated ANTHROPIC_API_KEY",
-    "Not merged, deployed, imported or published"
+    "Paid Actions model job awaits dedicated ANTHROPIC_API_KEY",
+    "Not deployed, imported or published"
   ],
   "environment_notes": [
     "Shared browser installation was incomplete; matching Chromium installed in a dedicated temporary cache",

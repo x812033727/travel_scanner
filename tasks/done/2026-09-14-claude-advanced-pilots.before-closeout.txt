@@ -1,0 +1,61 @@
+---
+id: 2026-09-14-claude-advanced-pilots
+title: Claude Code 進階：六篇完整試作
+status: review
+priority: P2
+area: docs
+owner: codex-claude-completion
+claimed_at: 2026-09-14T13:54:27Z
+created_at: 2026-09-14T11:12:46Z
+completed_at:
+branch: codex/claude-code-advanced-tutorials
+depends_on: []
+scope:
+  - docs/claude-code-series/lessons/61.md
+  - apps/api/app/guides/content/claude-code-project-rules-workshop.json
+  - apps/web/public/guides/claude-code-project-rules-workshop
+  - docs/claude-code-series/lessons/67.md
+  - apps/api/app/guides/content/claude-code-skill-sop-workshop.json
+  - apps/web/public/guides/claude-code-skill-sop-workshop
+  - docs/claude-code-series/lessons/73.md
+  - apps/api/app/guides/content/claude-code-hook-event-test-lab.json
+  - apps/web/public/guides/claude-code-hook-event-test-lab
+  - docs/claude-code-series/lessons/79.md
+  - apps/api/app/guides/content/claude-code-mcp-local-server-workshop.json
+  - apps/web/public/guides/claude-code-mcp-local-server-workshop
+  - docs/claude-code-series/lessons/88.md
+  - apps/api/app/guides/content/claude-code-worktree-integration-workshop.json
+  - apps/web/public/guides/claude-code-worktree-integration-workshop
+  - docs/claude-code-series/lessons/91.md
+  - apps/api/app/guides/content/claude-code-structured-cli-pipeline.json
+  - apps/web/public/guides/claude-code-structured-cli-pipeline
+---
+
+# Claude Code 進階：六篇完整試作
+
+## Why
+
+以 61、67、73、79、88、91 六篇驗證深入教材格式與可執行範例。
+
+## Definition of done
+
+- [x] 六篇完整正文已撰寫
+- [x] 核對字數、來源、程式碼與下載材料
+- [x] 在可用環境記錄真實操作，將登入受阻項目獨立標記
+
+## How to verify
+
+產生六篇內容包、執行內容與材料測試；實機紀錄在 advanced/evidence/claude-live-all.json
+
+## Notes
+
+2026-09-14 合併結案：本任務實作已隨 PR #501 合併，merge SHA 3e7f377237f36215f0fb3bac63d02c344dbe60e6。合併前最終提交的 14 個 CI 工作全部成功；主線手動 Actions baseline 成功（run 34862981734，model-review skipped）。WSL2 沙箱、完整 Teams 與 SDK 已有指定案例實測。未完成的實體手機、遠端 MCP OAuth 及付費 CI 模型測試保留在 live-validation／ci-validation 任務；正式部署、匯入與公開未執行。以下舊測試數量與阻塞狀態均保留為歷史。
+
+
+2026-09-14：使用者已授權開始第二階段實作。只進行本機教材與預覽，不匯入正式資料庫或發布。Claude CLI 2.1.233 的實際驗證遇到 OAuth 過期；已請使用者重新登入，持續完成獨立材料。
+
+2026-09-14 本機交付：36 篇正文、96 篇系列與 97 頁預覽；內容錯誤／警告皆 0，36 ZIP 共 81 項檢查，六篇試作各 21 個工具測試，9 類瀏覽器案例、73 個相關前端測試通過。API 87 通過／77 PostgreSQL 案例跳過；工具全套 51 通過，最終系列重驗 11 通過。build、lint、typecheck、i18n、Ruff 與 mypy 通過。
+
+驗證紀錄：docs/claude-code-series/advanced/evidence/delivery-checks.json；完整目錄：docs/claude-code-series/advanced/README.md。Claude CLI 2.1.233 五次主流程嘗試因 OAuth 到期失敗；真實手機、遠端 OAuth、Teams、外部 CI、排程和 SDK 呼叫未完成，後續見 claude-advanced-live-validation 任務。
+
+本批尚未開 PR／合併、部署、匯入或公開。完成本機成果後 release，保留 open 待審查；不使用代表合併完成的 done。原先第一階段任務封存變更與 .codex/ 均保持原狀。

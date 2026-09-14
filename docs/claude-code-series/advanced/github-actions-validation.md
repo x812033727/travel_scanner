@@ -2,15 +2,17 @@
 
 [回深入教學目錄](README.md) · [第 92 篇](../lessons/92.md) · [驗證紀錄](evidence/live/ci-workflow-validation.json)
 
-使用者指定的測試儲存庫為 [x812033727/travel_scanner](https://github.com/x812033727/travel_scanner)。本批提供 [Claude tutorial validation](../../../.github/workflows/claude-tutorial-validation.yml)，配合 monorepo 內的練習檔路徑。它目前只在工作分支，尚未合併或在 GitHub 執行。下載包中的 review.yml 仍供獨立練習專案使用。
+使用者指定的測試儲存庫為 [x812033727/travel_scanner](https://github.com/x812033727/travel_scanner)。本批提供 [Claude tutorial validation](../../../.github/workflows/claude-tutorial-validation.yml)，配合 monorepo 內的練習檔路徑。它已隨 [PR #501](https://github.com/x812033727/travel_scanner/pull/501) 合併，並在 GitHub 主分支實際執行。下載包中的 review.yml 仍供獨立練習專案使用。
 
 ## 現在已確認什麼
 
-本機系列測試 12 項與 workflow 使用的基礎測試 8 項全部通過，包含 YAML 解析、手動觸發、分支限制、唯讀權限、固定 Action 提交及 JSON 輸出路徑。這些結果不等於 GitHub runner 已執行成功。
+[實際 run 34862981734](https://github.com/x812033727/travel_scanner/actions/runs/34862981734) 使用合併提交 `3e7f377237f36215f0fb3bac63d02c344dbe60e6`，`run_model=false`；baseline 成功、model-review 跳過。這不代表付費模型審查或 review artifact 已完成。[完整紀錄](evidence/live/github-actions-baseline.json)。
+
+本機系列測試 12 項與 workflow 使用的基礎測試 8 項全部通過，包含 YAML 解析、手動觸發、分支限制、唯讀權限、固定 Action 提交及 JSON 輸出路徑。上述是本機結果；另有實際 GitHub runner 的成功紀錄如下。
 
 2026-09-14 首輪預檢查得 secrets 與 environments 均為 0；後續已建立 claude-lab 並限制 main 分支。最新環境 secrets 仍為 0。本機 Claude CLI 登入已恢復；GitHub Actions 仍需自己的 CI 憑證。
 
-## 合併後的操作
+## 重複驗證的操作
 
 1. 在 GitHub 的儲存庫 **Actions → Claude tutorial validation → Run workflow**，選擇預設分支，保持 `run_model=false`。工作會固定讀取這次 dispatch 的提交，執行待辦模型、自動化與 SDK 狀態測試。成功判準是 baseline 綠燈，model-review 顯示 skipped。
 2. 在儲存庫 **Settings → Environments** 建立 `claude-lab`，將部署分支限制為預設分支；若方案支援且需要人工放行，可加入 required reviewers。這裡的 environment 是驗證工作的控制點，workflow 沒有部署步驟。
