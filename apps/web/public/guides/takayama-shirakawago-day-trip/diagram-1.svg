@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">名古屋 → 高山 → 白川郷 → 金沢 交通路線圖 / Nagoya, Takayama, Shirakawa-go and Kanazawa by JR and bus</title>
+  <desc id="desc">名古屋到高山有兩種：JR 特急ひだ（實線，約 140 分，普通車指定席特急券 2,730 日圓另加乘車券）與高速巴士（虛線，約 2 小時 45 分，3,600 日圓、網路預約 3,300 日圓，每天 12 班，全席預約）。名古屋另有岐阜巴士直達白川郷（虛線，約 2 小時 42 分，依出發日 3,600 到 4,700 日圓，預約優先）。高山到白川郷只有濃飛等公司的白川郷線巴士（虛線，約 50 分，2,800 日圓，全班預約制，高山發首班 7:20，白川郷回高山末班 17:30），同一條線續開金沢，白川郷到金沢約 1 小時 20 分、2,800 日圓。白川郷巴士總站附近有展望台接駁巴士，單程 300 日圓。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="84" font-size="40" font-weight="700" fill="#102A2B">名古屋 → 高山 → 白川郷 → 金沢　交通路線圖</text>
+  <text x="80" y="124" font-size="22" fill="#5C6B6B">Nagoya → Takayama → Shirakawa-go → Kanazawa · 2026 年 9 月查證，車程為概略值，以官網時刻表為準</text>
+
+  <!-- Gifu Bus direct: Nagoya -> Shirakawa-go (highway bus, dashed coral) -->
+  <path d="M 220 540 C 220 260, 700 210, 1160 346" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <!-- JR Hida: Nagoya -> Takayama (solid teal) -->
+  <line x1="370" y1="600" x2="800" y2="600" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- Highway bus: Nagoya -> Takayama (dashed coral) -->
+  <path d="M 370 628 C 500 745, 680 745, 806 618" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <!-- Shirakawa-go line bus: Takayama -> Shirakawa-go -> Kanazawa (dashed mocha) -->
+  <line x1="836" y1="586" x2="1164" y2="362" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <line x1="1196" y1="338" x2="1454" y2="176" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+
+  <!-- Nagoya -->
+  <rect x="70" y="540" width="300" height="120" rx="24" fill="#0D6B68"/>
+  <text x="220" y="592" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">名古屋 Nagoya</text>
+  <text x="220" y="630" font-size="17" fill="#E6F2F1" text-anchor="middle">名鉄バスセンター・JR 名古屋駅</text>
+
+  <!-- Takayama -->
+  <circle cx="820" cy="600" r="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <text x="852" y="650" font-size="28" font-weight="700" fill="#102A2B">高山 Takayama</text>
+  <text x="852" y="680" font-size="18" fill="#5C6B6B">高山濃飛バスセンター・JR 高山駅</text>
+
+  <!-- Shirakawa-go -->
+  <circle cx="1180" cy="350" r="18" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+  <text x="1196" y="400" font-size="28" font-weight="700" fill="#102A2B">白川郷 Shirakawa-go</text>
+  <text x="1196" y="430" font-size="18" fill="#5C6B6B">白川郷バスターミナル・展望台接駁 300 日圓</text>
+
+  <!-- Kanazawa -->
+  <circle cx="1470" cy="166" r="18" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
+  <text x="1470" y="124" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">金沢 Kanazawa</text>
+
+  <!-- Route labels -->
+  <text x="410" y="546" font-size="24" font-weight="700" fill="#0D6B68">JR 特急ひだ Hida · 約 140 分</text>
+  <text x="410" y="576" font-size="18" fill="#5C6B6B">普通車指定席特急券 2,730 日圓＋乘車券</text>
+
+  <text x="420" y="772" font-size="24" font-weight="700" fill="#B8442D">高速バス Highway Bus · 約 2 小時 45 分</text>
+  <text x="420" y="802" font-size="18" fill="#5C6B6B">3,600 日圓（網路預約 3,300）· 每天 12 班 · 全席預約</text>
+
+  <text x="440" y="204" font-size="22" font-weight="700" fill="#B8442D">岐阜バス 名古屋–白川郷直達 · 約 2 小時 42 分</text>
+  <text x="440" y="234" font-size="18" fill="#5C6B6B">3,600〜4,700 日圓（依出發日）· 預約優先</text>
+
+  <text x="990" y="562" font-size="22" font-weight="700" fill="#6B4A3A">濃飛バス Nohi Bus · 約 50 分 · 2,800 日圓</text>
+  <text x="990" y="592" font-size="18" fill="#5C6B6B">全班預約制 · 高山発首班 7:20 · 白川郷発末班 17:30</text>
+
+  <text x="1300" y="308" font-size="18" font-weight="700" fill="#6B4A3A">巴士 約 1 小時 20 分</text>
+  <text x="1300" y="334" font-size="18" fill="#5C6B6B">2,800 日圓 · 預約制</text>
+
+  <!-- Legend -->
+  <line x1="80" y1="852" x2="140" y2="852" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <text x="152" y="859" font-size="20" fill="#102A2B">JR 特急 JR Limited Express</text>
+  <line x1="500" y1="852" x2="560" y2="852" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <text x="572" y="859" font-size="20" fill="#102A2B">高速巴士 Highway bus（名古屋發）</text>
+  <line x1="930" y1="852" x2="990" y2="852" stroke="#6B4A3A" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+  <text x="1002" y="859" font-size="20" fill="#102A2B">白川郷線巴士 Shirakawa-go line</text>
+  <text x="1560" y="886" font-size="16" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

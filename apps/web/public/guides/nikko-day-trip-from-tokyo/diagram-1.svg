@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">淺草到日光一日路線圖 / Asakusa to Nikko day trip route</title>
+  <desc id="desc">左邊是淺草搭東武特急 SPACIA X 約 1 小時 50 分到東武日光駅，運賃 1,400 日圓加特急料金 1,940 日圓；中間的世界遺產區用世界遺產巡迴巴士串起神橋、東照宮、二荒山神社、輪王寺，各自標出門票；右邊是巴士上いろは坂約 50 分、1,250 日圓到中禪寺溫泉，再步行到華嚴瀑布與中禪寺湖遊覽船；下方註明中禪寺溫泉往東武日光駅的末班巴士 20:02。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="72" font-size="40" font-weight="700" fill="#102A2B">浅草 → 東武日光 → 東照宮 → 中禅寺湖　一日路線</text>
+  <text x="60" y="112" font-size="22" fill="#5C6B6B">Asakusa → Nikko day trip · 成人票價，2026 年 9 月查證，以官網為準 · 實線鐵路、虛線巴士</text>
+
+  <!-- NIKKO PASS note -->
+  <rect x="60" y="150" width="700" height="96" rx="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="84" y="188" font-size="20" font-weight="700" fill="#0D6B68">NIKKO PASS：世界遺産エリア 2 日券 3,000 日圓・全區 4 日券 8,000 日圓</text>
+  <text x="84" y="222" font-size="19" fill="#5C6B6B">含淺草 ⇄ 下今市來回運賃與範圍內東武巴士，特急券另外買</text>
+
+  <!-- Rail: Asakusa -> Tobu-Nikko -->
+  <line x1="260" y1="615" x2="470" y2="615" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <text x="365" y="500" font-size="22" font-weight="700" fill="#0D6B68" text-anchor="middle">SPACIA X 約 1 小時 50 分</text>
+  <text x="365" y="532" font-size="19" fill="#5C6B6B" text-anchor="middle">運賃 1,400 ＋ 特急料金 1,940 日圓（けごん 1,650）</text>
+  <text x="365" y="705" font-size="18" fill="#5C6B6B" text-anchor="middle">全車指定席・特急券 1 個月前開賣</text>
+  <rect x="60" y="560" width="200" height="110" rx="22" fill="#0D6B68"/>
+  <text x="160" y="607" font-size="32" font-weight="700" fill="#FFFFFF" text-anchor="middle">浅草</text>
+  <text x="160" y="642" font-size="20" fill="#E6F2F1" text-anchor="middle">Asakusa</text>
+  <rect x="470" y="560" width="200" height="110" rx="22" fill="#6B4A3A"/>
+  <text x="570" y="607" font-size="32" font-weight="700" fill="#FFFFFF" text-anchor="middle">東武日光</text>
+  <text x="570" y="642" font-size="20" fill="#F1E8E2" text-anchor="middle">Tobu-Nikko Sta.</text>
+
+  <!-- World heritage area -->
+  <rect x="730" y="420" width="470" height="320" rx="26" fill="#FFFFFF" fill-opacity="0.55" stroke="#2E7D5B" stroke-width="3"/>
+  <text x="752" y="454" font-size="22" font-weight="700" fill="#2E7D5B">世界遺産エリア World Heritage area</text>
+  <text x="752" y="482" font-size="18" fill="#5C6B6B">世界遺産めぐりバス 1 日手形 600 日圓</text>
+  <text x="752" y="508" font-size="18" fill="#5C6B6B">東武日光駅 → 表参道 約 8 分</text>
+  <path d="M 670 615 L 1200 615" stroke="#B8442D" stroke-width="9" stroke-dasharray="20 14" fill="none" stroke-linecap="round"/>
+  <g fill="#FFFFFF" stroke="#B8442D" stroke-width="6">
+    <circle cx="790" cy="615" r="14"/>
+    <circle cx="905" cy="615" r="14"/>
+    <circle cx="1020" cy="615" r="14"/>
+    <circle cx="1120" cy="615" r="14"/>
+  </g>
+  <text x="790" y="662" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">神橋 Shinkyo</text>
+  <text x="790" y="688" font-size="18" fill="#5C6B6B" text-anchor="middle">渡橋 300 日圓</text>
+  <text x="905" y="556" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">東照宮 Toshogu</text>
+  <text x="905" y="582" font-size="18" fill="#5C6B6B" text-anchor="middle">拝観 1,600 日圓</text>
+  <text x="1020" y="662" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">二荒山神社 Futarasan</text>
+  <text x="1020" y="688" font-size="18" fill="#5C6B6B" text-anchor="middle">神苑 300 日圓</text>
+  <text x="1120" y="556" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">輪王寺 Rinnoji</text>
+  <text x="1120" y="582" font-size="18" fill="#5C6B6B" text-anchor="middle">大猷院 550 日圓</text>
+
+  <!-- Bus up Irohazaka to Chuzenji -->
+  <path d="M 1200 615 C 1310 615, 1260 330, 1330 330" stroke="#6B4A3A" stroke-width="9" stroke-dasharray="20 14" fill="none" stroke-linecap="round"/>
+  <text x="1262" y="372" font-size="22" font-weight="700" fill="#6B4A3A" text-anchor="end">いろは坂 Irohazaka</text>
+  <text x="1262" y="400" font-size="18" fill="#5C6B6B" text-anchor="end">48 個彎・平時上山約 20 分</text>
+  <text x="1290" y="590" font-size="18" fill="#6B4A3A" font-weight="700">巴士約 50 分・1,250 日圓</text>
+
+  <!-- Okunikko -->
+  <text x="1180" y="200" font-size="22" font-weight="700" fill="#2E7D5B">奥日光 Okunikko</text>
+  <circle cx="1330" cy="330" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="7"/>
+  <text x="1300" y="322" font-size="22" font-weight="700" fill="#102A2B" text-anchor="end">中禅寺温泉 Chuzenji Onsen</text>
+  <line x1="1344" y1="322" x2="1486" y2="250" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="3 9" stroke-linecap="round"/>
+  <line x1="1344" y1="338" x2="1486" y2="392" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="3 9" stroke-linecap="round"/>
+  <circle cx="1500" cy="240" r="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <text x="1500" y="190" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">中禅寺湖 遊覧船</text>
+  <text x="1500" y="218" font-size="18" fill="#5C6B6B" text-anchor="middle">一周 約 55 分</text>
+  <circle cx="1500" cy="400" r="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <text x="1500" y="446" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">華厳滝 Kegon</text>
+  <text x="1500" y="472" font-size="18" fill="#5C6B6B" text-anchor="middle">電梯往返 600 日圓</text>
+  <text x="1500" y="498" font-size="18" fill="#5C6B6B" text-anchor="middle">巴士站徒歩約 5 分</text>
+
+  <!-- Last bus -->
+  <text x="730" y="800" font-size="18" font-weight="700" fill="#B8442D">末班巴士：中禅寺温泉 20:02 発 → 東武日光駅 20:38 着（2026 年 4 月〜11 月時刻表，以官網為準）</text>
+
+  <!-- Legend -->
+  <g font-size="19" fill="#102A2B">
+    <line x1="60" y1="860" x2="120" y2="860" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="132" y="867">東武鉄道 Tobu Railway</text>
+    <line x1="390" y1="860" x2="450" y2="860" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="462" y="867">世界遺産めぐりバス World Heritage bus</text>
+    <line x1="880" y1="860" x2="940" y2="860" stroke="#6B4A3A" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="952" y="867">中禅寺温泉・湯元温泉線巴士 Bus</text>
+    <text x="1340" y="867" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+  </g>
+</svg>

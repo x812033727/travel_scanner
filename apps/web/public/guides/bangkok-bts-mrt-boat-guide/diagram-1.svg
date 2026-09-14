@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans Thai','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">曼谷市區交通骨幹示意圖：BTS 兩線、MRT 藍線、機場快線、金線與昭披耶河船 / Bangkok rail and river backbone</title>
+  <desc id="desc">示意圖，不照比例。昭披耶河由上而下流過畫面左側，河上的船停靠 Phra Arthit（考山路）、Tha Chang（大皇宮）、Rajinee（臥佛寺）、Ratchawong（唐人街）、ICONSIAM 與 Sathorn 碼頭。BTS Sukhumvit 線從 Mo Chit 往南經 Phaya Thai 到 Siam，再往東經 Asok 到 On Nut，往東是延伸段；BTS Silom 線從 National Stadium 經 Siam、Sala Daeng 到 Saphan Taksin，過河到 Krung Thon Buri 轉金線往 Charoen Nakhon（ICONSIAM）。MRT 藍線從 Tao Poon（轉紫線）經 Bang Sue（3 號出口往中央車站）、Chatuchak Park（與 BTS Mo Chit 轉乘）、Phetchaburi（與機場快線 Makkasan 轉乘）、Sukhumvit（與 BTS Asok 轉乘）、Si Lom（與 BTS Sala Daeng 轉乘），再經唐人街 Wat Mangkon 到舊城 Sanam Chai。機場快線 ARL 從 Phaya Thai 經 Makkasan 到蘇凡納布機場。灰色虛線是步行轉乘：Sanam Chai 到 Rajinee 碼頭、Wat Mangkon 到 Ratchawong 碼頭、Saphan Taksin 到 Sathorn 碼頭。右下角票價：BTS 核心段 17 到 47 泰銖、MRT 藍線 17 到 44 泰銖、藍旗觀光船單程 40 泰銖一日 150 泰銖、橘旗快船 18 泰銖只剩平日尖峰；BTS 與 MRT 分開收費，轉乘要出站。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="62" font-size="32" font-weight="700" fill="#102A2B">曼谷市區交通骨幹：BTS、MRT 藍線、機場快線與昭披耶河船</text>
+  <text x="60" y="98" font-size="18" fill="#5C6B6B">Bangkok rail and river backbone · 白底粗框圓點＝轉乘站 · 票價 2026 年 9 月依官網查證</text>
+
+  <!-- legend -->
+  <g font-size="16" fill="#102A2B">
+    <rect x="1190" y="34" width="380" height="236" rx="16" fill="#FFFFFF" fill-opacity="0.7" stroke="#C9C2B8" stroke-width="1"/>
+    <line x1="1210" y1="62" x2="1262" y2="62" stroke="#2E7D5B" stroke-width="10" stroke-linecap="round"/>
+    <text x="1276" y="68">BTS สุขุมวิท Sukhumvit 線</text>
+    <line x1="1210" y1="90" x2="1262" y2="90" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="1276" y="96">BTS สีลม Silom 線</text>
+    <line x1="1210" y1="118" x2="1262" y2="118" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+    <text x="1276" y="124">MRT 藍線 Blue Line</text>
+    <line x1="1210" y1="146" x2="1262" y2="146" stroke="#B8442D" stroke-width="10" stroke-linecap="round"/>
+    <text x="1276" y="152">ARL 機場快線 Airport Rail Link</text>
+    <line x1="1210" y1="174" x2="1262" y2="174" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/>
+    <text x="1276" y="180">BTS 金線 Gold Line</text>
+    <line x1="1210" y1="202" x2="1262" y2="202" stroke="#7E57C2" stroke-width="6" stroke-dasharray="14 10"/>
+    <text x="1276" y="208">昭披耶河船 Chao Phraya boats</text>
+    <line x1="1210" y1="230" x2="1262" y2="230" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="6 6"/>
+    <text x="1276" y="236">步行轉乘 walk transfer</text>
+  </g>
+
+  <!-- river -->
+  <path d="M 300 140 C 290 300, 380 380, 360 520 C 345 640, 380 730, 450 890" fill="none" stroke="#CFE0EA" stroke-width="60" stroke-linecap="round"/>
+  <text x="60" y="150" font-size="16" font-weight="700" fill="#2F6F9F">แม่น้ำเจ้าพระยา</text>
+  <text x="60" y="172" font-size="15" fill="#2F6F9F">Chao Phraya River</text>
+  <path d="M 301.5 207.1 C 314.5 325.4, 377.0 401.0, 360.0 520.0 C 351.0 592.0, 360.0 653.2, 383.8 725.2" fill="none" stroke="#7E57C2" stroke-width="6" stroke-dasharray="14 10"/>
+
+  <!-- walk transfers -->
+  <g stroke="#5C6B6B" stroke-width="3" stroke-dasharray="6 6" fill="none">
+    <line x1="507" y1="474" x2="365" y2="411"/>
+    <line x1="586" y1="562" x2="368" y2="588"/>
+    <line x1="506" y1="756" x2="395" y2="728"/>
+  </g>
+
+  <!-- rail lines -->
+  <path d="M 700 520 L 820 520 L 940 640 L 820 760 L 240 760" fill="none" stroke="#0D6B68" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 300 760 L 300 690" fill="none" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 490 240 L 1030 240 Q 1100 240 1100 310 L 1100 580 Q 1100 640 1040 640 L 680 640 L 520 480 L 480 480" fill="none" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 820 430 L 1440 430" fill="none" stroke="#B8442D" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 820 176 L 820 520 L 1530 520" fill="none" stroke="#2E7D5B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- piers -->
+  <g fill="#FFFFFF" stroke="#7E57C2" stroke-width="4">
+    <circle cx="301.5" cy="207.1" r="9"/>
+    <circle cx="319.3" cy="291.8" r="9"/>
+    <circle cx="354" cy="406.4" r="9"/>
+    <circle cx="356.9" cy="589.2" r="9"/>
+    <circle cx="370.4" cy="679.7" r="9"/>
+    <circle cx="383.8" cy="725.2" r="9"/>
+  </g>
+  <g text-anchor="end">
+    <text x="258" y="204" font-size="17" font-weight="700" fill="#102A2B">พระอาทิตย์ Phra Arthit</text>
+    <text x="258" y="226" font-size="15" fill="#5C6B6B">考山路 Khao San</text>
+    <text x="276" y="289" font-size="17" font-weight="700" fill="#102A2B">ท่าช้าง Tha Chang</text>
+    <text x="276" y="311" font-size="15" fill="#5C6B6B">大皇宮 Grand Palace</text>
+    <text x="311" y="403" font-size="17" font-weight="700" fill="#102A2B">ราชินี Rajinee</text>
+    <text x="311" y="425" font-size="15" fill="#5C6B6B">臥佛寺 Wat Pho</text>
+    <text x="314" y="586" font-size="17" font-weight="700" fill="#102A2B">ราชวงศ์ Ratchawong</text>
+    <text x="314" y="608" font-size="15" fill="#5C6B6B">唐人街 Chinatown</text>
+    <text x="282" y="686" font-size="17" font-weight="700" fill="#102A2B">เจริญนคร Charoen Nakhon</text>
+    <text x="282" y="708" font-size="15" fill="#5C6B6B">ICONSIAM · 金線</text>
+    <text x="286" y="794" font-size="17" font-weight="700" fill="#102A2B">กรุงธนบุรี Krung Thon Buri</text>
+    <text x="286" y="816" font-size="15" fill="#5C6B6B">轉金線 Gold Line</text>
+  </g>
+  <text x="424" y="716" font-size="17" font-weight="700" fill="#102A2B">สาทร Sathorn 碼頭</text>
+
+  <!-- stations: interchanges -->
+  <g fill="#FFFFFF" stroke="#102A2B" stroke-width="5">
+    <circle cx="540" cy="240" r="15"/>
+    <circle cx="660" cy="240" r="15"/>
+    <circle cx="820" cy="240" r="15"/>
+    <circle cx="820" cy="430" r="15"/>
+    <circle cx="820" cy="520" r="15"/>
+    <circle cx="1100" cy="430" r="15"/>
+    <circle cx="1100" cy="520" r="15"/>
+    <circle cx="940" cy="640" r="15"/>
+    <circle cx="520" cy="760" r="15"/>
+    <circle cx="300" cy="760" r="15"/>
+  </g>
+  <!-- stations: regular -->
+  <circle cx="1440" cy="520" r="10" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5"/>
+  <circle cx="1440" cy="430" r="10" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
+  <circle cx="600" cy="560" r="10" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
+  <circle cx="520" cy="480" r="10" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
+  <circle cx="300" cy="690" r="10" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="5"/>
+
+  <!-- station labels -->
+  <g fill="#102A2B">
+    <text x="540" y="212" font-size="17" font-weight="700" text-anchor="middle">เตาปูน Tao Poon 轉紫線</text>
+    <text x="660" y="274" font-size="17" font-weight="700" text-anchor="middle">บางซื่อ Bang Sue</text>
+    <text x="660" y="296" font-size="15" fill="#5C6B6B" text-anchor="middle">3 號出口 → 中央車站</text>
+
+    <text x="842" y="198" font-size="17" font-weight="700">หมอชิต Mo Chit</text>
+    <text x="842" y="220" font-size="15" fill="#5C6B6B">MRT สวนจตุจักร Chatuchak Park</text>
+
+    <text x="842" y="392" font-size="17" font-weight="700">พญาไท Phaya Thai</text>
+    <text x="842" y="414" font-size="15" fill="#5C6B6B">轉機場快線 ARL</text>
+
+    <text x="1122" y="392" font-size="17" font-weight="700">มักกะสัน Makkasan</text>
+    <text x="1122" y="414" font-size="15" fill="#5C6B6B">MRT เพชรบุรี Phetchaburi</text>
+    <text x="1460" y="425" font-size="16" font-weight="700">สุวรรณภูมิ BKK</text>
+    <text x="1460" y="447" font-size="15" fill="#5C6B6B">蘇凡納布機場</text>
+
+    <text x="800" y="502" font-size="20" font-weight="700" text-anchor="end">สยาม Siam 暹羅</text>
+
+    <text x="1122" y="478" font-size="17" font-weight="700">อโศก Asok 阿索克</text>
+    <text x="1122" y="500" font-size="15" fill="#5C6B6B">MRT สุขุมวิท Sukhumvit</text>
+
+    <text x="1440" y="552" font-size="17" font-weight="700" text-anchor="middle">อ่อนนุช On Nut</text>
+    <text x="1440" y="574" font-size="15" fill="#5C6B6B" text-anchor="middle">往東是延伸段</text>
+
+    <text x="535" y="430" font-size="17" font-weight="700">สนามไชย Sanam Chai</text>
+    <text x="535" y="452" font-size="15" fill="#5C6B6B">臥佛寺步行可到</text>
+
+    <text x="618" y="548" font-size="17" font-weight="700">วัดมังกร Wat Mangkon</text>
+    <text x="636" y="572" font-size="15" fill="#5C6B6B">唐人街 Yaowarat</text>
+
+    <text x="962" y="672" font-size="17" font-weight="700">ศาลาแดง Sala Daeng</text>
+    <text x="962" y="694" font-size="15" fill="#5C6B6B">MRT สีลม Si Lom</text>
+
+    <text x="540" y="794" font-size="17" font-weight="700">สะพานตากสิน Saphan Taksin</text>
+    <text x="540" y="816" font-size="15" fill="#5C6B6B">走到 Sathorn 碼頭上船</text>
+  </g>
+
+  <!-- fares -->
+  <g fill="#102A2B">
+    <rect x="1190" y="640" width="380" height="190" rx="16" fill="#FFFFFF" fill-opacity="0.75" stroke="#C9C2B8" stroke-width="1"/>
+    <text x="1210" y="672" font-size="17" font-weight="700">成人單程票價 · 2026 年 9 月查證</text>
+    <text x="1210" y="702" font-size="16">BTS 核心段 17–47 泰銖</text>
+    <text x="1210" y="730" font-size="16">MRT 藍線 17–44 泰銖</text>
+    <text x="1210" y="758" font-size="16">藍旗觀光船 單程 40、一日 150 泰銖</text>
+    <text x="1210" y="786" font-size="16">橘旗快船 18 泰銖（只剩平日尖峰）</text>
+    <text x="1210" y="814" font-size="15" fill="#5C6B6B">BTS 與 MRT 分開收費，轉乘要出站</text>
+  </g>
+
+  <text x="1400" y="874" font-size="16" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
