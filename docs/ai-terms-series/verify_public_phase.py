@@ -23,7 +23,10 @@ import time
 import urllib.error
 import urllib.request
 from datetime import UTC, datetime
+from html import unescape
+from html.parser import HTMLParser
 from pathlib import Path, PurePosixPath
+from urllib.parse import unquote
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -297,10 +300,152 @@ class AnonymousReader:
         return self.fetch(path, 200)
 
 
+class HiddenPage(HTMLParser):
+    """Inspect the unavailable screen without treating its shared site shell as content."""
+
+    def __init__(self):
+        super().__init__()
+        self.canonical = []
+        self.noindex = False
+        self.main_count = 0
+        self.in_main = False
+        self.status_messages = 0
+        self.content_markers = []
+        self.links = []
+        self.text = []
+
+    def handle_starttag(self, tag, attrs):
+        attributes = dict(attrs)
+        if tag == "link" and attributes.get("rel") == "canonical":
+            self.canonical.append(attributes.get("href"))
+        if tag == "meta" and attributes.get("name", "").lower() == "robots":
+            tokens = re.split(r"[\s,]+", attributes.get("content", "").lower())
+            self.noindex = self.noindex or "noindex" in tokens
+        if tag == "main":
+            self.main_count += 1
+            self.in_main = True
+        if self.in_main:
+            if tag == "p" and attributes.get("role") == "status":
+                self.status_messages += 1
+            if tag in {
+                "article",
+                "figure",
+                "img",
+                "table",
+                "pre",
+                "blockquote",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                "aside",
+                "details",
+                "iframe",
+                "video",
+                "audio",
+            }:
+                self.content_markers.append(tag)
+            if tag == "a":
+                self.links.append(attributes.get("href"))
+
+    def handle_endtag(self, tag):
+        if tag == "main":
+            self.in_main = False
+
+    def handle_data(self, data):
+        self.text.append(data)
+
+
+def compact_text(value):
+    return re.sub(r"\s+", "", unescape(value))
+
+
 def hidden_article(slug, reader):
-    reader.fetch("/api/travel/guides/life/" + slug + "?locale=zh-TW", 404)
-    reader.fetch("/zh-TW/life/" + slug, 404)
-    return {"slug": slug, "api_status": 404, "html_status": 404, "status": "pass"}
+    # public_article returns an unpublished envelope, not a 404. The web renderer
+    # likewise returns a 200 unavailable screen with a canonical URL and noindex.
+    payload, _, _ = reader.fetch(
+        "/api/travel/guides/life/" + slug + "?locale=zh-TW", 200
+    )
+    result = json.loads(payload)
+    require(
+        isinstance(result, dict)
+        and result.get("slug") == slug
+        and result.get("kind") == "life"
+        and result.get("locale") == LOCALE
+        and result.get("status") == "unpublished"
+        and "document" in result
+        and result["document"] is None,
+        f"{slug}: API is not an unpublished empty document",
+    )
+    locales = result.get("published_locales")
+    require(
+        isinstance(locales, list)
+        and all(isinstance(value, str) for value in locales)
+        and LOCALE not in locales,
+        f"{slug}: API advertises a published zh-TW locale",
+    )
+    require(
+        result.get("article_links") == []
+        and result.get("partner_links") == []
+        and result.get("series") is None,
+        f"{slug}: API exposes article or partner content",
+    )
+
+    path = "/zh-TW/life/" + slug
+    raw, _, url = reader.fetch(path, 200)
+    html = raw.decode("utf-8")
+    page = HiddenPage()
+    page.feed(html)
+    page.close()
+    canonical = reader.base + path
+    require(page.canonical == [canonical], f"{slug}: hidden canonical differs")
+    require(page.noindex, f"{slug}: hidden page lacks robots noindex")
+    require(
+        page.main_count == 1 and page.status_messages == 1 and not page.content_markers,
+        f"{slug}: HTML is not the unpublished placeholder",
+    )
+    allowed_links = {"/zh-TW/life"} | {f"/{locale}/life/{slug}" for locale in locales}
+    require(
+        "/zh-TW/life" in page.links
+        and all(link in allowed_links for link in page.links),
+        f"{slug}: hidden page exposes content or partner links",
+    )
+
+    # Check source-specific text even outside <article>, including metadata and
+    # serialized Next.js payloads. Shared unavailable copy is not a draft sentinel.
+    pack = json.loads((ROOT / (PACK_PREFIX + slug + ".json")).read_bytes())
+    document = pack["locales"][LOCALE]
+    sentinels = [document["title"], document["description"], document["hero"]["src"]]
+    sentinels.extend(
+        block["text"][:80]
+        for block in document["blocks"]
+        if block["type"] == "paragraph" and len(block["text"]) >= 32
+    )
+    wire_text = (
+        re.sub(r"\\u([0-9a-fA-F]{4})", lambda match: chr(int(match[1], 16)), html)
+        .replace("\\/", "/")
+        .replace('\\"', '"')
+    )
+    haystacks = [compact_text("".join(page.text)), compact_text(unquote(wire_text))]
+    require(
+        not any(
+            compact_text(value) in text for value in sentinels for text in haystacks
+        ),
+        f"{slug}: hidden HTML exposes reviewed draft content",
+    )
+    return {
+        "slug": slug,
+        "url": url,
+        "canonical": canonical,
+        "api_status": 200,
+        "html_status": 200,
+        "api_unpublished": True,
+        "body_hidden": True,
+        "content_links_hidden": True,
+        "noindex": True,
+        "status": "pass",
+    }
 
 
 def preserved_article(slug, pin, reader, public):

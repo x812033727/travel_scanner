@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-ai-terms-series
 title: AI terms editorial catalogue and full-series publication
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-ai-terms
 claimed_at: 2026-09-14T05:26:14Z
 created_at: 2026-09-14T05:18:30Z
-completed_at:
+completed_at: 2026-09-14T07:44:05Z
 branch: codex/ai-terms-series
 depends_on: []
 scope:
@@ -191,7 +191,7 @@ Publish a researched Traditional Chinese AI terminology series on Mokaair, one c
 - [x] Every article has 1800–3000 characters of original running prose, verified primary sources, a hero, a concept diagram, a table, and relevant internal links.
 - [x] ai-terms-index and the existing 50-term quick reference connect the complete series.
 - [x] Content/schema/import/publication checks and individual visual review pass.
-- [ ] Full series published together through exact-slug import; public pages, images, canonical and sitemap verified; index published last.
+- [x] Full series published together through exact-slug import; public pages, images, canonical and sitemap verified; index published last.
 
 ## Steps
 
@@ -199,13 +199,28 @@ Publish a researched Traditional Chinese AI terminology series on Mokaair, one c
 - [x] User explicitly approved three parallel article authors. Each writes distinct staging directories; root integrates and reviews.
 - [x] Write and review all articles and evidence.
 - [x] Ingest, render, validate and test the complete series.
-- [ ] Deliver reviewed release, exact-scope draft import, full publication and public verification.
+- [x] Deliver reviewed release, exact-scope draft import, full publication and public verification.
 
 ## How to verify
 
 `apps/api/.venv/Scripts/python.exe docs/ai-terms-series/verify.py` is the completeness and structural gate; add `--database` after ingestion for disposable SQLite publication checks. Run existing guides content-pack tests and task checks, plus applicable web build. Never publish from a partial validation report.
 
 ## Notes
+
+Completed 2026-09-14: merged PR #486 release 3b8df68c693eb81ccde7793a2f89d71999dbb2c2
+passed exact-head CI 34815324935 and was deployed with verified predeployment and
+prepublication backups. Exact 83-slug dry-run, draft import and staged visibility
+checks passed. Published 82 articles, verified their content/assets while the index
+stayed hidden, then published the index at 2026-09-14T15:36:30+08:00. All 83 public
+articles, 166 assets and 83 sitemap URLs match the reviewed release. Actual Chrome
+checks passed 166/166 viewports, and 32 representative live PNGs were visually
+inspected. Isolated PostgreSQL validation passed all four cases, including the
+index-lock race, with test infrastructure cleaned up. Sanitized publication.json
+records published_and_verified with 77 new, 6 updated, 81 concepts, 0 exclusions.
+Index: https://mokaair.com/zh-TW/life/ai-terms-index
+Article list: docs/ai-terms-series/ARTICLES.md. Historical notes below retain their
+original preparation-time state; VALIDATION.md records resolved deployment and
+taxonomy preflight differences. Search-engine indexing was not measured.
 
 Initial base a4ee0f50770334051c7e2618a2138617875a1b40, branch codex/ai-terms-series. origin/main advanced to 24af1490 while planning. Live 2026-09-14 public baseline: 40 life articles, 190 guide sitemap entries; five matching concept URLs will be revised. Authorized SSH profile hostinger2 reaches existing production; containers initially run a4ee0f5. No production content writes yet.
 

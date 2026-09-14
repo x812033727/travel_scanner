@@ -18,13 +18,14 @@ const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
 const relative = file => path.relative(here, file).replaceAll("\\", "/");
 const args = process.argv.slice(2);
 
-if (args.length !== 1 || !["--plan", "--run", "--help"].includes(args[0])) {
-  console.error("Choose exactly one of --plan, --run, --help.");
+if (args.length !== 1 || !["--plan", "--run", "--resume", "--help"].includes(args[0])) {
+  console.error("Choose exactly one of --plan, --run, --resume, --help.");
   process.exitCode = 2;
 } else if (args[0] === "--help") {
   console.log("Read-only shared ContentBlocks regression checks.\n" +
     "--plan: inspect local sources and print exact scope; no network, browser, or output files.\n" +
     "--run: after deployment, visit the two fixed articles and one shared legal page at 375/1440px.\n" +
+    "--resume: preserve passed checks with identical source evidence and rerun only incomplete checks.\n" +
     "Uses fresh headless Chrome; blocks non-GET/HEAD, prefetch and out-of-scope navigation.\n" +
     "Stops on HTTP 403/429, the request cap or the five-minute deadline; no retries.\n" +
     "Report: docs/ai-terms-series/table-live-regression.json\n" +
@@ -117,9 +118,23 @@ async function main(mode) {
     browserVersion: null, attemptedRequests: 0, blockedNonReadRequests: 0,
     blockedPrefetchRequests: 0, blockedNavigations: 0, fatalError: null, results: [],
   };
+  if (mode === "--resume") {
+    const previousBytes = await fs.readFile(reportPath);
+    const previous = JSON.parse(previousBytes);
+    if (previous.status !== "failed" || previous.fatalError ||
+        JSON.stringify(previous.sourceEvidence) !== JSON.stringify(scope.sourceEvidence) ||
+        JSON.stringify(previous.pages) !== JSON.stringify(scope.pages) ||
+        previous.origin !== origin) throw new Error("Resume requires an incomplete run with identical scope and no fatal stop.");
+    await fs.writeFile(path.join(screenshotDir, "previous-report.json"), previousBytes);
+    report.startedAt = previous.startedAt;
+    report.resumedAt = startedAt;
+    report.previousAttempt = { sha256: sha256(previousBytes), report: relative(path.join(screenshotDir, "previous-report.json")), finishedAt: previous.finishedAt, summary: previous.summary };
+    report.results = previous.results.filter(result => result.status === "passed");
+  }
   async function save() {
-    await fs.writeFile(reportPath + ".tmp", JSON.stringify(report, null, 2) + "\n", "utf8");
-    await fs.rename(reportPath + ".tmp", reportPath);
+    // This is a replaceable QA checkpoint, not the publication journal. Windows
+    // preview/indexing handles can deny rename-overwrite of an existing report.
+    await fs.writeFile(reportPath, JSON.stringify(report, null, 2) + "\n", "utf8");
   }
   await save();
   let browser;
@@ -168,6 +183,7 @@ async function main(mode) {
     for (const target of scope.pages) {
       for (const viewport of viewports) {
         if (report.fatalError) break;
+        if (report.results.some(result => result.slug === target.slug && result.viewport === viewport.name && result.status === "passed")) continue;
         const result = {
           slug: target.slug, kind: target.kind, viewport: viewport.name, width: viewport.width, height: viewport.height,
           url: target.url, checkedAt: new Date().toISOString(), status: "failed", failures: [], screenshots: [],
@@ -312,7 +328,7 @@ async function inspect(page, target, viewport, result) {
 async function capture(page, target, viewport, result, directory) {
   async function screenshot(suffix) {
     const file = path.join(directory, target.slug + "-" + viewport.name + "-" + suffix + ".png");
-    const bytes = await page.screenshot({ path: file, animations: "disabled" });
+    const bytes = await page.screenshot({ path: file, animations: "disabled", timeout: 45_000 });
     result.screenshots.push({ path: relative(file), sha256: sha256(bytes) });
   }
   await page.evaluate(() => scrollTo(0, 0));

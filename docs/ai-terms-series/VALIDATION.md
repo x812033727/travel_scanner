@@ -20,9 +20,19 @@
 - 相關網頁測試：90 passed。工具測試：39 passed。網頁建置、ESLint、5 語系翻譯鍵檢查與任務格式檢查通過。
 - 整合主分支後修正 tools/workflow-pins.test.mjs 的 Windows file URL 路徑解析；使用 fileURLToPath，沒有改動 Actions 的固定版本。
 
-## 發布邊界
+## 正式發布
 
-這份文件記錄準備與驗收，並不代表文章已公開。正式動作依序為：精確版本與 CI 核對、備份、部署、83 slug／zh-TW dry-run、匯入草稿、發布 82 篇、最後發布索引、逐頁公開驗證。每篇提交都有持久紀錄；失敗時保留已完成結果，依 journal 核對後續跑，不能把整批描述成原子交易。
+正式部署版本為 `3b8df68c693eb81ccde7793a2f89d71999dbb2c2`，精確 SHA 的主分支 CI [34815324935](https://github.com/x812033727/travel_scanner/actions/runs/34815324935) 全部通過。2026-09-14 07:23:04 UTC 啟用固定映像，部署前與發布前備份皆完成並通過 pg_restore 目錄檢查；沒有宣稱完成還原演練。
+
+83 slug／zh-TW dry-run 通過後，完整匯入 83 篇草稿。匿名 HTTP 實測確認 77 篇新文沒有公開正文，6 篇更新仍保留原公開版本。既有隱藏頁的實際契約是 HTTP 200、API status=unpublished、無 document，以及 noindex 的不可讀頁面，不能只看 HTTP 狀態判斷是否公開。
+
+82 篇文章公開後，先核對全部正文與 166 個圖片檔案，再於 2026-09-14 15:36:30（台灣時間）最後發布索引。完成後的公開驗證已核對 83 頁的正文雜湊、canonical、索引指令、索引回連、166 個圖片位元組與 83 個 sitemap 網址。每篇提交都有持久紀錄，這批不是原子交易。
+
+手機表格修正已部署。實際 Chrome 對曼谷交通、AI 模型分級及共用法律頁的 375/1440px 共六項檢查通過，表格與法律頁截圖經實際視覺複核。曾有 Windows 報告覆寫鎖及單張截圖逾時；覆寫檢查點改用直接寫入，截圖等待延長，僅補跑未完成案例並保留原始失敗紀錄。這不改變伺服器發布 journal 的原子寫入與 fsync。
+
+全系列實際 Chrome 檢查完成：83 頁、166 個 375/1440px 視窗全部 passed，0 failed、0 not run。六篇代表頁的 24 張正式截圖，加上表格回歸的 8 張截圖，均實際開圖檢視並記錄 SHA256，詳見 live-visual-review.json。export_publication.py 已核對備份、發布順序、83 篇最終版本與正文雜湊、草稿及索引隱藏階段、公開 HTTP、瀏覽器與 PostgreSQL 證據，產出 status=published_and_verified 的 publication.json。
+
+發布前兩項差異已處理並保留紀錄：另一流程先部署相同來源版本但不同映像，因此先核對環境、資料庫與 Redis 未變、保存原始狀態及回退映像，再完成本次備份與固定映像啟用；既有速查的 ai／misc 標籤則透過原管理服務更正為 ai／tutorial，正文與 locale 版本未因這項分類修正而變動。分類修正後重新 dry-run，通過後才匯入草稿。主分支期間新增的新聞收據及第六批攻略規劃均為文件變更，本次沒有把它們描述成新的程式部署。
 
 release_host.py 與 publish_host.py 使用既有主機鎖、Compose 設定、內容模型及匯入服務，沒有新增公開 API、資料表或區塊型別。正式結果以 publication.json、public-verification.json 與 live-browser-check.json 為準。搜尋引擎實際收錄不由 sitemap 或 robots 指令推定。
 

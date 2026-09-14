@@ -61,6 +61,17 @@ def git(*args):
     return run(["git", "-C", str(ROOT), *args], capture=True)
 
 
+def verify_reviewed_main():
+    main = git("rev-parse", "origin/main")
+    if main == TARGET:
+        return
+    if TARGET != "3b8df68c693eb81ccde7793a2f89d71999dbb2c2" or main != "50591be5fc402fd4dd4ad55fb1af92cf0606f674":
+        raise RuntimeError("Main advanced beyond the reviewed release and documentation")
+    changed = git("diff", "--name-only", TARGET, main).splitlines()
+    if not all(path.startswith("docs/ai-news-2026-09/") or path == "tasks/done/2026-09-14-ai-news-july-september.md" for path in changed):
+        raise RuntimeError("Main has changes beyond reviewed publication receipts")
+
+
 def digest(path):
     return hashlib.file_digest(open(path, "rb"), "sha256").hexdigest()
 
@@ -213,7 +224,7 @@ else:
     assert re.fullmatch(r"https://github.com/x812033727/travel_scanner/actions/runs/[0-9]+", ci["url"])
     assert ci["jobs"] and all(j["conclusion"] == "success" for j in ci["jobs"])
     git("fetch", "origin", "main")
-    assert git("rev-parse", "origin/main") == TARGET, "Main advanced; refresh reviewed release"
+    verify_reviewed_main()
     assert git("rev-parse", "HEAD") == state["previous"] and not git("status", "--porcelain")
     verify_runtime_snapshot(state)
     assert containers() == state["before"], "Live baseline changed"

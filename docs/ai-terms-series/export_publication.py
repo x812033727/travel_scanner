@@ -437,7 +437,12 @@ def phase_proofs(args, reports, slugs, updated, documents, assets, pins, times):
         require(
             all(
                 row.get("status") == "pass"
-                and row.get("api_status") == row.get("html_status") == 404
+                and row.get("api_status") == row.get("html_status") == 200
+                and row.get("api_unpublished") is True
+                and row.get("body_hidden") is True
+                and row.get("content_links_hidden") is True
+                and row.get("noindex") is True
+                and row.get("canonical") == BASE + "/zh-TW/life/" + row["slug"]
                 for row in hidden.values()
             ),
             name + ": hidden article proof differs",
