@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">第一次呼叫 Claude API：六個步驟與三個必要參數 / Six steps to your first Claude API call and the three required parameters</title>
+  <desc id="desc">左半邊由上而下是六個步驟，每一步用箭頭接到下一步。第一步開帳號：到 Claude Console（platform.claude.com）註冊，建立自己的組織。第二步儲值：Settings 到 Billing 按 Buy credits，預付點數，一年到期。第三步設每月上限：Billing 的 Spend limits 按 Adjust limit，Start 級距每月 500 美元。第四步建立金鑰：Settings 到 API keys 按 Create key，選有效期 3 小時到 30 天或 Never。第五步放進環境變數：export ANTHROPIC_API_KEY，不寫進程式、不提交進 git。第六步跑起來：pip install anthropic，執行十行 Python，印出回覆。右半邊是一次請求裡的三個必要參數。model 是模型 id，照官網原封不動複製，例如 claude-opus-5，打錯會拿到 404 not_found_error。max_tokens 是這次回覆最多產生幾個 token，官方範例用 1000，太小會被截斷，回應的 stop_reason 會顯示 max_tokens。messages 是對話內容，每則有 role 與 content，role 是 user 或 assistant，Messages API 無狀態，每次都要送整段歷史。右下角另註明金鑰不是參數：官方 SDK 會自己讀環境變數 ANTHROPIC_API_KEY，所以程式裡看不到金鑰。步驟、介面名稱與數字依 2026 年 9 月的 Anthropic 官方文件與 Claude 說明中心。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">第一次呼叫 Claude API：六個步驟與三個必要參數</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From a Console account to your first call, and what every request must carry</text>
+
+  <!-- left column: the six steps -->
+  <text x="60" y="134" font-size="20" font-weight="700" fill="#102A2B">從開帳號到第一次成功呼叫　Six steps</text>
+
+  <rect x="60" y="150" width="860" height="100" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="90" y="188" font-size="18" font-weight="700" fill="#0B4F4D">① 開帳號</text>
+  <text x="90" y="220" font-size="16" fill="#102A2B">到 Claude Console（platform.claude.com）註冊，建立自己的組織</text>
+  <path d="M 490 252 L 490 262" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="266" width="860" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="90" y="304" font-size="18" font-weight="700" fill="#0B4F4D">② 儲值</text>
+  <text x="90" y="336" font-size="16" fill="#102A2B">Settings → Billing → Buy credits：預付點數，自購買日起一年到期</text>
+  <path d="M 490 368 L 490 378" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="382" width="860" height="100" rx="14" fill="#FFF3EC" stroke="#D97A2B" stroke-width="4"/>
+  <text x="90" y="420" font-size="18" font-weight="700" fill="#A85B18">③ 設每月上限</text>
+  <text x="90" y="452" font-size="16" fill="#102A2B">Billing → Spend limits → Adjust limit（Start 級距每月 500 美元）</text>
+  <path d="M 490 484 L 490 494" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="498" width="860" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="90" y="536" font-size="18" font-weight="700" fill="#1F4E73">④ 建立金鑰</text>
+  <text x="90" y="568" font-size="16" fill="#102A2B">Settings → API keys → Create key，選有效期 3 小時到 30 天或 Never</text>
+  <path d="M 490 600 L 490 610" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="614" width="860" height="100" rx="14" fill="#FDECE8" stroke="#B8442D" stroke-width="4"/>
+  <text x="90" y="652" font-size="18" font-weight="700" fill="#8F3322">⑤ 放進環境變數</text>
+  <text x="90" y="684" font-size="16" fill="#102A2B">export ANTHROPIC_API_KEY　　不寫進程式、不提交進 git</text>
+  <path d="M 490 716 L 490 726" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="730" width="860" height="100" rx="14" fill="#E9F5EF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="90" y="768" font-size="18" font-weight="700" fill="#245E45">⑥ 跑起來</text>
+  <text x="90" y="800" font-size="16" fill="#102A2B">pip install anthropic，執行十行 Python，印出回覆</text>
+
+  <!-- right column: the three required parameters -->
+  <text x="980" y="134" font-size="20" font-weight="700" fill="#102A2B">一次請求的三個必要參數</text>
+
+  <rect x="980" y="150" width="560" height="174" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1010" y="190" font-size="20" font-weight="700" fill="#0B4F4D">model　模型 id</text>
+  <text x="1010" y="226" font-size="16" fill="#102A2B">照官網原封不動複製，例如</text>
+  <text x="1010" y="258" font-size="16" fill="#0B4F4D">claude-opus-5</text>
+  <text x="1010" y="294" font-size="15" fill="#B8442D">打錯會拿到 404 not_found_error</text>
+
+  <rect x="980" y="344" width="560" height="174" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1010" y="384" font-size="20" font-weight="700" fill="#1F4E73">max_tokens　回覆長度上限</text>
+  <text x="1010" y="420" font-size="16" fill="#102A2B">這次回覆最多產生幾個 token</text>
+  <text x="1010" y="452" font-size="16" fill="#1F4E73">官方範例用 1000</text>
+  <text x="1010" y="488" font-size="15" fill="#B8442D">太小會被截斷：stop_reason 顯示 max_tokens</text>
+
+  <rect x="980" y="538" width="560" height="174" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="1010" y="578" font-size="20" font-weight="700" fill="#102A2B">messages　對話內容</text>
+  <text x="1010" y="614" font-size="16" fill="#102A2B">每一則有 role 與 content</text>
+  <text x="1010" y="646" font-size="16" fill="#102A2B">role 是 user 或 assistant</text>
+  <text x="1010" y="682" font-size="15" fill="#5C6B6B">API 無狀態，每次要送整段歷史</text>
+
+  <rect x="980" y="732" width="560" height="98" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1010" y="770" font-size="18" font-weight="700" fill="#0B4F4D">金鑰不是參數</text>
+  <text x="1010" y="802" font-size="16" fill="#102A2B">SDK 自己讀環境變數，程式裡看不到金鑰</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
