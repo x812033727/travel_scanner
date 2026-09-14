@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一輪代理任務的 token 從哪裡來 / Where the tokens in one agent turn come from</title>
+  <desc id="desc">左半邊把一次代理請求拆成四層：系統提示詞與工具定義、專案上下文、先前每一輪的對話與工具結果、這一輪的新訊息；前三層每一輪都一樣，是提示詞快取能省下來的部分。右半邊用三根長條顯示輸入量怎麼隨輪數長大：第 1 輪 30,000 個 token、第 2 輪 32,000 個、第 40 輪 108,000 個；每輪新增 2,000 個 token，40 輪的輸入合計 2,760,000 個。下半部比較兩條計價路徑：訂閱制付固定月費，額度以每五小時區間或每月 credits 計，官網不把額度換算成 token；API 按每百萬 token 計價，輸入與輸出分開，命中快取的輸入以 0.1 倍計算。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">一輪代理任務的 token 從哪裡來</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Where the tokens in one agent turn come from</text>
+
+  <text x="60" y="146" font-size="20" font-weight="700" fill="#102A2B">每一次請求都重送整包</text>
+
+  <rect x="60" y="172" width="680" height="80" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="400" y="220" font-size="18" fill="#102A2B" text-anchor="middle">系統提示詞與工具定義</text>
+
+  <rect x="60" y="264" width="680" height="80" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="400" y="312" font-size="18" fill="#102A2B" text-anchor="middle">專案上下文：規則檔與已讀進去的檔案</text>
+
+  <rect x="60" y="356" width="680" height="80" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="400" y="404" font-size="18" fill="#102A2B" text-anchor="middle">先前每一輪的對話與工具結果</text>
+
+  <rect x="60" y="448" width="680" height="80" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="400" y="496" font-size="18" fill="#102A2B" text-anchor="middle">這一輪的新訊息</text>
+
+  <text x="60" y="558" font-size="17" fill="#5C6B6B">前三層每一輪都一樣，是提示詞快取能省下來的部分</text>
+
+  <text x="790" y="146" font-size="20" font-weight="700" fill="#102A2B">輸入量怎麼隨輪數長大</text>
+
+  <text x="790" y="226" font-size="17" fill="#5C6B6B">第 1 輪</text>
+  <rect x="900" y="190" width="117" height="56" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1037" y="226" font-size="17" fill="#102A2B">30,000 token</text>
+
+  <text x="790" y="316" font-size="17" fill="#5C6B6B">第 2 輪</text>
+  <rect x="900" y="280" width="124" height="56" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1044" y="316" font-size="17" fill="#102A2B">32,000 token</text>
+
+  <text x="790" y="406" font-size="17" fill="#5C6B6B">第 40 輪</text>
+  <rect x="900" y="370" width="420" height="56" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1340" y="406" font-size="17" fill="#102A2B">108,000 token</text>
+
+  <rect x="790" y="462" width="750" height="76" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1165" y="507" font-size="18" fill="#102A2B" text-anchor="middle">每輪新增 2,000 個 token，40 輪合計 2,760,000 個</text>
+
+  <text x="800" y="598" font-size="18" fill="#5C6B6B" text-anchor="middle">同一批 token，兩種算法</text>
+
+  <rect x="60" y="618" width="720" height="196" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="420" y="672" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">訂閱制</text>
+  <text x="420" y="716" font-size="17" fill="#102A2B" text-anchor="middle">付固定月費，換一段時間區間的額度</text>
+  <text x="420" y="752" font-size="17" fill="#102A2B" text-anchor="middle">單位是每五小時區間或每月 credits</text>
+  <text x="420" y="788" font-size="17" fill="#5C6B6B" text-anchor="middle">官網不把額度換算成 token</text>
+
+  <rect x="820" y="618" width="720" height="196" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1180" y="672" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">API 計費</text>
+  <text x="1180" y="716" font-size="17" fill="#102A2B" text-anchor="middle">按每百萬 token 計價，用多少算多少</text>
+  <text x="1180" y="752" font-size="17" fill="#102A2B" text-anchor="middle">輸入與輸出分開，輸出比較貴</text>
+  <text x="1180" y="788" font-size="17" fill="#5C6B6B" text-anchor="middle">命中快取的輸入以 0.1 倍計算</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

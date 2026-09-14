@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">從資料夾到網域 / From folder to domain</title>
+  <desc id="desc">一張用幾何形狀畫的插圖。左邊是一個藍邊的資料夾，裡面有三條代表檔案的橫條。一支箭頭指向中間一台綠邊的伺服器方塊，方塊裡有三層機架與亮著的指示燈。第二支箭頭指向右邊，右邊是一個代表網域的圓形地球，上面有經線與緯線，地球右下角疊著一把橘色的鎖頭，表示連線已經加密。下方有一行標題文字：從資料夾到網域。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- folder on your own computer -->
+  <rect x="180" y="268" width="150" height="46" rx="14" fill="#2F6F9F"/>
+  <rect x="180" y="300" width="290" height="212" rx="20" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="7"/>
+  <rect x="216" y="348" width="218" height="22" rx="11" fill="#E6F0F7"/>
+  <rect x="216" y="392" width="218" height="22" rx="11" fill="#E6F0F7"/>
+  <rect x="216" y="436" width="140" height="22" rx="11" fill="#E6F0F7"/>
+
+  <line x1="500" y1="406" x2="620" y2="406" stroke="#5C6B6B" stroke-width="7" marker-end="url(#arrow)"/>
+
+  <!-- the server -->
+  <rect x="660" y="278" width="280" height="256" rx="20" fill="#FFFFFF" stroke="#0D6B68" stroke-width="7"/>
+  <rect x="694" y="314" width="212" height="52" rx="12" fill="#E3F0EF"/>
+  <rect x="694" y="380" width="212" height="52" rx="12" fill="#E3F0EF"/>
+  <rect x="694" y="446" width="212" height="52" rx="12" fill="#E3F0EF"/>
+  <circle cx="874" cy="340" r="11" fill="#2E7D5B"/>
+  <circle cx="874" cy="406" r="11" fill="#2E7D5B"/>
+  <circle cx="874" cy="472" r="11" fill="#D97A2B"/>
+
+  <line x1="970" y1="406" x2="1090" y2="406" stroke="#5C6B6B" stroke-width="7" marker-end="url(#arrow)"/>
+
+  <!-- the domain, and the padlock in front of it -->
+  <circle cx="1250" cy="380" r="124" fill="#E3F0EF" stroke="#0D6B68" stroke-width="7"/>
+  <ellipse cx="1250" cy="380" rx="58" ry="124" fill="none" stroke="#0D6B68" stroke-width="5"/>
+  <line x1="1126" y1="380" x2="1374" y2="380" stroke="#0D6B68" stroke-width="5"/>
+  <path d="M 1146 316 H 1354" stroke="#0D6B68" stroke-width="5" fill="none"/>
+  <path d="M 1146 444 H 1354" stroke="#0D6B68" stroke-width="5" fill="none"/>
+
+  <path d="M 1366 462 v -28 a 38 38 0 0 1 76 0 v 28" fill="none" stroke="#D97A2B" stroke-width="14" stroke-linecap="round"/>
+  <rect x="1332" y="458" width="144" height="120" rx="22" fill="#FFFFFF" stroke="#D97A2B" stroke-width="7"/>
+  <circle cx="1404" cy="508" r="15" fill="#D97A2B"/>
+  <rect x="1396" y="516" width="16" height="34" rx="8" fill="#D97A2B"/>
+
+  <text x="800" y="736" font-size="54" font-weight="700" fill="#102A2B" text-anchor="middle">從資料夾到網域</text>
+</svg>

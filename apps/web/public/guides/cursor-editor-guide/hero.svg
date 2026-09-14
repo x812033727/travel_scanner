@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Cursor 的三種用法意象 / Three ways to use an AI code editor</title>
+  <desc id="desc">一張幾何插圖。左邊是一塊白色圓角面板，裡面排著幾條粗細不一的彩色橫條代表程式碼，其中一條是灰色虛線外框，代表還沒被接受的補全建議，旁邊有一條紅色的游標。右上是一個綠框對話框，裡面有兩條短橫條，代表在側邊欄問問題。右下是三張並排的橘框小卡片，上方一條橘線分岔連到每一張卡片，代表代理一次改動多個檔案。畫面上方寫著一個編輯器，三種用法。</desc>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="800" y="152" font-size="52" font-weight="700" fill="#102A2B" text-anchor="middle">一個編輯器，三種用法</text>
+
+  <!-- left: the editing surface, with one dashed ghost suggestion -->
+  <rect x="110" y="225" width="700" height="500" rx="30" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <rect x="170" y="285" width="440" height="28" rx="14" fill="#2F6F9F"/>
+  <rect x="170" y="345" width="300" height="28" rx="14" fill="#0D6B68"/>
+  <rect x="170" y="405" width="500" height="28" rx="14" fill="#A8C9DF"/>
+  <rect x="170" y="465" width="380" height="28" rx="14" fill="none" stroke="#5C6B6B" stroke-width="4" stroke-dasharray="16 10"/>
+  <rect x="150" y="459" width="10" height="40" rx="4" fill="#B8442D"/>
+  <rect x="170" y="525" width="260" height="28" rx="14" fill="#0D6B68"/>
+  <rect x="170" y="585" width="420" height="28" rx="14" fill="#A8C9DF"/>
+
+  <!-- right top: the question you ask in the side panel -->
+  <path d="M 910 225 H 1460 A 30 30 0 0 1 1490 255 V 420 A 30 30 0 0 1 1460 450 H 1000 L 925 505 L 925 450 H 910 A 30 30 0 0 1 880 420 V 255 A 30 30 0 0 1 910 225 Z" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8" stroke-linejoin="round"/>
+  <rect x="930" y="295" width="420" height="24" rx="12" fill="#7FB3B1"/>
+  <rect x="930" y="350" width="300" height="24" rx="12" fill="#7FB3B1"/>
+
+  <!-- right bottom: one task fanning out to several files -->
+  <path d="M 975 535 H 1375" fill="none" stroke="#D97A2B" stroke-width="6"/>
+  <path d="M 975 535 V 565" fill="none" stroke="#D97A2B" stroke-width="6"/>
+  <path d="M 1175 535 V 565" fill="none" stroke="#D97A2B" stroke-width="6"/>
+  <path d="M 1375 535 V 565" fill="none" stroke="#D97A2B" stroke-width="6"/>
+
+  <rect x="890" y="565" width="170" height="190" rx="22" fill="#FFFFFF" stroke="#D97A2B" stroke-width="8"/>
+  <rect x="918" y="605" width="114" height="18" rx="9" fill="#F0C79B"/>
+  <rect x="918" y="640" width="80" height="18" rx="9" fill="#F0C79B"/>
+  <rect x="918" y="675" width="100" height="18" rx="9" fill="#F0C79B"/>
+
+  <rect x="1090" y="565" width="170" height="190" rx="22" fill="#FFFFFF" stroke="#D97A2B" stroke-width="8"/>
+  <rect x="1118" y="605" width="100" height="18" rx="9" fill="#F0C79B"/>
+  <rect x="1118" y="640" width="114" height="18" rx="9" fill="#F0C79B"/>
+  <rect x="1118" y="675" width="76" height="18" rx="9" fill="#F0C79B"/>
+
+  <rect x="1290" y="565" width="170" height="190" rx="22" fill="#FFFFFF" stroke="#D97A2B" stroke-width="8"/>
+  <rect x="1318" y="605" width="86" height="18" rx="9" fill="#F0C79B"/>
+  <rect x="1318" y="640" width="114" height="18" rx="9" fill="#F0C79B"/>
+  <rect x="1318" y="675" width="96" height="18" rx="9" fill="#F0C79B"/>
+</svg>
