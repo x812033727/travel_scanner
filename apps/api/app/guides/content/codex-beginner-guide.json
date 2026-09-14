@@ -51,11 +51,11 @@
         },
         {
           "type": "paragraph",
-          "text": "Codex 是能在取得相應工具與許可權後讀檔、修改及執行命令的代理。模型負責推理；任務儲存這次需求與對話；工作環境決定實際能接觸哪些檔案和工具。換一個更強的模型，不會讓選錯資料夾的任務突然找到你的專案。後續每次求助，都先記下入口、工作目錄和可用工具。"
+          "text": "Codex 是能在取得相應工具與權限後讀檔、修改及執行命令的代理。模型負責推理；任務儲存這次需求與對話；工作環境決定實際能接觸哪些檔案和工具。換一個更強的模型，不會讓選錯資料夾的任務突然找到你的專案。後續每次求助，都先記下入口、工作目錄和可用工具。"
         },
         {
           "type": "paragraph",
-          "text": "「與 ChatGPT 有什麼不同」不能只用應用程式名稱判斷：官方桌面檔案現在以 ChatGPT 桌面應用程式說明 Codex 工作。實際差別要看當前對話是否連到專案、是否能執行工具，以及成果是回答文字還是落在檔案中。一般聊天也可能有工具；Codex 也可能因環境限制只能分析。請看這一次任務的能力，不要只看圖示或舊截圖。"
+          "text": "「與 ChatGPT 有什麼不同」不能只用應用程式名稱判斷：官方桌面文件現在以 ChatGPT 桌面應用程式說明 Codex 工作。實際差別要看當前對話是否連到專案、是否能執行工具，以及成果是回答文字還是落在檔案中。一般聊天也可能有工具；Codex 也可能因環境限制只能分析。請看這一次任務的能力，不要只看圖示或舊截圖。"
         },
         {
           "type": "rich_paragraph",
@@ -73,6 +73,44 @@
             {
               "type": "text",
               "text": "；本篇採用桌面版或 CLI 的本機資料夾，讓檔案結果最容易確認。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先判斷：這個需求需要什麼能力？"
+        },
+        {
+          "type": "paragraph",
+          "text": "先不執行任務，判斷三個情境。① 你貼上十行文字，請它說明意思。② 你要求把電腦中的 packing.txt 改好，關閉對話後也能打開檔案看到結果。③ 你希望它在已設定的 GitHub 儲存庫環境中修改程式，供你稍後檢查差異。各情境需要的是讀取提供的文字、存取本機檔案，還是存取指定的遠端環境？"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "答案依序是：① 提供的文字已足夠，不必存取你的整個資料夾。② 必須選對本機資料夾，且工具確實有讀寫能力；回覆一段新文字不代表檔案已修改。③ 必須先設定並選對遠端儲存庫與環境；本機尚未提交的檔案不能當成它已讀到的內容。第二種可接著看"
+            },
+            {
+              "type": "article",
+              "text": "桌面入門",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "，第三種看"
+            },
+            {
+              "type": "article",
+              "text": "雲端任務",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "。這是需求判讀練習，不要求你現在開通三種入口。"
             }
           ]
         },
@@ -120,17 +158,17 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案內容：貼入 README.md",
           "language": "markdown",
           "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
         },
         {
           "type": "paragraph",
-          "text": "檔案二：codex-orientation/packing.txt。每個專案各佔一行，最後一行後可以有換行。"
+          "text": "檔案二：codex-orientation/packing.txt。每個物品各占一行，最後一行後可以有換行。"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案內容：貼入 packing.txt",
           "language": "text",
           "code": "Notebook\nBottle\nUmbrella\n"
         },
@@ -145,7 +183,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：貼入 Codex 任務輸入區",
           "language": "text",
           "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
         },
@@ -156,11 +194,11 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "第二步：只修改一個可檢查的專案"
+          "text": "第二步：只修改一個可檢查的項目"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：貼入同一個 Codex 任務",
           "language": "text",
           "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
         },
@@ -169,11 +207,11 @@
           "inlines": [
             {
               "type": "text",
-              "text": "接受相關檔案修改要求後，重新開啟 packing.txt。預期三行依序是 Notebook、Bottle、Raincoat；README.md 完全相同，沒有新套件或多餘檔案。若工具要求超出這個資料夾的授權，先看原因並縮小任務。本例不需要全面存取電腦。關於許可權的實際控制，另見"
+              "text": "接受相關檔案修改要求後，重新開啟 packing.txt。預期三行依序是 Notebook、Bottle、Raincoat；README.md 完全相同，沒有新套件或多餘檔案。若工具要求超出這個資料夾的授權，先看原因並縮小任務。本例不需要全面存取電腦。關於權限的實際控制，另見"
             },
             {
               "type": "article",
-              "text": "許可權與沙盒",
+              "text": "權限與沙盒",
               "kind": "life",
               "slug": "codex-permissions"
             },
@@ -258,7 +296,7 @@
             },
             {
               "type": "link",
-              "text": "桌面官方檔案",
+              "text": "桌面官方文件",
               "url": "https://learn.chatgpt.com/docs/app"
             },
             {
@@ -267,7 +305,7 @@
             },
             {
               "type": "link",
-              "text": "CLI 官方檔案",
+              "text": "CLI 官方文件",
               "url": "https://learn.chatgpt.com/docs/codex/cli"
             },
             {
@@ -386,11 +424,11 @@
         },
         {
           "type": "paragraph",
-          "text": "Codex 是能在取得相应工具与许可权后读档、修改及执行命令的代理。模型负责推理；任务储存这次需求与对话；工作环境决定实际能接触哪些档案和工具。换一个更强的模型，不会让选错资料夹的任务突然找到你的专案。后续每次求助，都先记下入口、工作目录和可用工具。"
+          "text": "Codex 是能在取得相应工具与权限后读档、修改及执行命令的代理。模型负责推理；任务储存这次需求与对话；工作环境决定实际能接触哪些档案和工具。换一个更强的模型，不会让选错资料夹的任务突然找到你的专案。后续每次求助，都先记下入口、工作目录和可用工具。"
         },
         {
           "type": "paragraph",
-          "text": "「与 ChatGPT 有什么不同」不能只用应用程式名称判断：官方桌面档案现在以 ChatGPT 桌面应用程式说明 Codex 工作。实际差别要看当前对话是否连到专案、是否能执行工具，以及成果是回答文字还是落在档案中。一般聊天也可能有工具；Codex 也可能因环境限制只能分析。请看这一次任务的能力，不要只看图示或旧截图。"
+          "text": "「与 ChatGPT 有什么不同」不能只用应用程式名称判断：官方桌面文件现在以 ChatGPT 桌面应用程式说明 Codex 工作。实际差别要看当前对话是否连到专案、是否能执行工具，以及成果是回答文字还是落在档案中。一般聊天也可能有工具；Codex 也可能因环境限制只能分析。请看这一次任务的能力，不要只看图示或旧截图。"
         },
         {
           "type": "rich_paragraph",
@@ -408,6 +446,44 @@
             {
               "type": "text",
               "text": "；本篇采用桌面版或 CLI 的本机资料夹，让档案结果最容易确认。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先判断：这个需求需要什么能力？"
+        },
+        {
+          "type": "paragraph",
+          "text": "先不执行任务，判断三个情境。① 你贴上十行文字，请它说明意思。② 你要求把电脑中的 packing.txt 改好，关闭对话后也能打开档案看到结果。③ 你希望它在已设定的 GitHub 储存库环境中修改程式，供你稍后检查差异。各情境需要的是读取提供的文字、存取本机档案，还是存取指定的远端环境？"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "答案依序是：① 提供的文字已足够，不必存取你的整个资料夹。② 必须选对本机资料夹，且工具确实有读写能力；回复一段新文字不代表档案已修改。③ 必须先设定并选对远端储存库与环境；本机尚未提交的档案不能当成它已读到的内容。第二种可接著看"
+            },
+            {
+              "type": "article",
+              "text": "桌面入门",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "，第三种看"
+            },
+            {
+              "type": "article",
+              "text": "云端任务",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "。这是需求判读练习，不要求你现在开通三种入口。"
             }
           ]
         },
@@ -455,17 +531,17 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案内容：贴入 README.md",
           "language": "markdown",
           "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
         },
         {
           "type": "paragraph",
-          "text": "档案二：codex-orientation/packing.txt。每个专案各占一行，最后一行后可以有换行。"
+          "text": "档案二：codex-orientation/packing.txt。每个物品各占一行，最后一行后可以有换行。"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案内容：贴入 packing.txt",
           "language": "text",
           "code": "Notebook\nBottle\nUmbrella\n"
         },
@@ -480,7 +556,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：贴入 Codex 任务输入区",
           "language": "text",
           "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
         },
@@ -491,11 +567,11 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "第二步：只修改一个可检查的专案"
+          "text": "第二步：只修改一个可检查的项目"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：贴入同一个 Codex 任务",
           "language": "text",
           "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
         },
@@ -504,11 +580,11 @@
           "inlines": [
             {
               "type": "text",
-              "text": "接受相关档案修改要求后，重新开启 packing.txt。预期三行依序是 Notebook、Bottle、Raincoat；README.md 完全相同，没有新套件或多余档案。若工具要求超出这个资料夹的授权，先看原因并缩小任务。本例不需要全面存取电脑。关于许可权的实际控制，另见"
+              "text": "接受相关档案修改要求后，重新开启 packing.txt。预期三行依序是 Notebook、Bottle、Raincoat；README.md 完全相同，没有新套件或多余档案。若工具要求超出这个资料夹的授权，先看原因并缩小任务。本例不需要全面存取电脑。关于权限的实际控制，另见"
             },
             {
               "type": "article",
-              "text": "许可权与沙盒",
+              "text": "权限与沙盒",
               "kind": "life",
               "slug": "codex-permissions"
             },
@@ -593,7 +669,7 @@
             },
             {
               "type": "link",
-              "text": "桌面官方档案",
+              "text": "桌面官方文件",
               "url": "https://learn.chatgpt.com/docs/app"
             },
             {
@@ -602,7 +678,7 @@
             },
             {
               "type": "link",
-              "text": "CLI 官方档案",
+              "text": "CLI 官方文件",
               "url": "https://learn.chatgpt.com/docs/codex/cli"
             },
             {
@@ -748,6 +824,44 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "First decide: what capabilities does the request need?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Without running a task, classify three scenarios. ① You paste ten lines and ask for an explanation. ② You want packing.txt on your computer changed so that you can open the result after closing the conversation. ③ You want changes in a configured GitHub repository environment for a later diff review. Which requires reading supplied text, local file access or access to a specific remote environment?"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The answers are: ① The supplied text is sufficient; access to your whole folder is unnecessary. ② Select the correct local folder and confirm that tools can read and write it; a reply containing revised text is not evidence that the file changed. ③ Configure and select the remote repository and environment; do not assume it has read uncommitted local files. Continue with "
+            },
+            {
+              "type": "article",
+              "text": "desktop basics",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": " for the second case or "
+            },
+            {
+              "type": "article",
+              "text": "cloud tasks",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": " for the third. This exercise does not require setting up all three interfaces."
+            }
+          ]
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "Prepare an independent practice folder"
         },
@@ -790,7 +904,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File content: paste into README.md",
           "language": "markdown",
           "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
         },
@@ -800,7 +914,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File content: paste into packing.txt",
           "language": "text",
           "code": "Notebook\nBottle\nUmbrella\n"
         },
@@ -815,7 +929,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: paste into the Codex task input",
           "language": "text",
           "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
         },
@@ -830,7 +944,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: paste into the same Codex task",
           "language": "text",
           "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
         },
@@ -1083,6 +1197,44 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "まず判断：依頼に必要な機能は何ですか"
+        },
+        {
+          "type": "paragraph",
+          "text": "タスクを実行せずに三つの場面を分類します。① 貼り付けた十行の説明を求める。② パソコンの packing.txt を変更し、会話を閉じた後もファイルで結果を確認したい。③ 設定済みの GitHub リポジトリ環境で変更を行い、後から差分を確認したい。それぞれ必要なのは、提供された文章の読解、ローカルファイルへのアクセス、特定の遠隔環境へのアクセスのどれでしょうか。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "答えは順に、① 提供した文章だけで足り、フォルダー全体へのアクセスは不要。② 正しいローカルフォルダーを選び、ツールが読み書きできることを確認する。修正文が返るだけではファイル変更の証拠にならない。③ 遠隔リポジトリと環境を設定して選び、未コミットのローカルファイルを読んだとは決めつけない、です。② は"
+            },
+            {
+              "type": "article",
+              "text": "デスクトップ入門",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "、③ は"
+            },
+            {
+              "type": "article",
+              "text": "クラウドタスク",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "へ進めます。今ここで全入口を設定する必要はありません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "独立した練習フォルダーを用意する"
         },
@@ -1125,7 +1277,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル内容：README.md に貼り付ける",
           "language": "markdown",
           "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
         },
@@ -1135,7 +1287,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル内容：packing.txt に貼り付ける",
           "language": "text",
           "code": "Notebook\nBottle\nUmbrella\n"
         },
@@ -1150,7 +1302,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：Codex タスクの入力欄に貼り付ける",
           "language": "text",
           "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
         },
@@ -1165,7 +1317,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：同じ Codex タスクに貼り付ける",
           "language": "text",
           "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
         },
@@ -1418,6 +1570,44 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "먼저 판단하기: 요청에 어떤 기능이 필요한가요"
+        },
+        {
+          "type": "paragraph",
+          "text": "작업을 실행하지 않고 세 상황을 구분해 보세요. ① 열 줄을 붙여 넣고 설명을 요청합니다. ② 컴퓨터의 packing.txt를 수정하여 대화를 닫은 뒤에도 파일에서 결과를 확인하고 싶습니다. ③ 설정된 GitHub 저장소 환경에서 수정한 뒤 나중에 차이를 검토하고 싶습니다. 각 상황에는 제공한 텍스트 읽기, 로컬 파일 접근, 지정한 원격 환경 접근 중 무엇이 필요한가요?"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "정답은 다음과 같습니다. ① 제공한 텍스트만으로 충분하며 폴더 전체에 접근할 필요는 없습니다. ② 올바른 로컬 폴더를 선택하고 도구가 읽고 쓸 수 있는지 확인해야 합니다. 수정된 글을 답변으로 받았다는 사실만으로 파일이 바뀌었다고 볼 수는 없습니다. ③ 원격 저장소와 환경을 설정하고 선택해야 하며 커밋하지 않은 로컬 파일을 읽었다고 가정하면 안 됩니다. 두 번째는 "
+            },
+            {
+              "type": "article",
+              "text": "데스크톱 입문",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": ", 세 번째는 "
+            },
+            {
+              "type": "article",
+              "text": "클라우드 작업",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "으로 이어집니다. 지금 세 방식을 모두 설정할 필요는 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "독립된 실습 폴더 준비하기"
         },
@@ -1460,7 +1650,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일 내용: README.md에 붙여 넣기",
           "language": "markdown",
           "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
         },
@@ -1470,7 +1660,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일 내용: packing.txt에 붙여 넣기",
           "language": "text",
           "code": "Notebook\nBottle\nUmbrella\n"
         },
@@ -1485,7 +1675,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: Codex 작업 입력란에 붙여 넣기",
           "language": "text",
           "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
         },
@@ -1500,7 +1690,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 같은 Codex 작업에 붙여 넣기",
           "language": "text",
           "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
         },

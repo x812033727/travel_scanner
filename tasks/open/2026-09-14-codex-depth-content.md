@@ -156,9 +156,21 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [x] Run a targeted Japanese terminology review across the series and correct 26 affected lessons without changing copyable code or link targets.
 - [x] Visually inspect six existing 390/1280px practice screenshots and provide accurate five-language alternative text and dimension captions.
 - [x] Deepen five representative drafts with independent comparison, host identification, rule-condition checks, CLI input/resume details and skill missing-material recovery; compile matching five-language packs and record the exact targeted review scope.
+- [x] Deepen Unit A (01, 02, 33, 34, 06, 07) and the remaining Unit B drafts (05, 35, 36, 37, 14), label 58 existing code blocks, add two path examples, and verify isolated Windows/Node reference exercises.
+- [ ] Continue targeted depth review for the remaining 44 lessons, starting with Unit C (38, 39, 40, 15, 41); representative 04 already has a targeted record.
 - [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
 - [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
 - [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
+
+## Unit A and B revision
+
+After a80bc077, revised eleven modules and their five-language packs. Unit A adds capability and usage exercises, relative-path recovery, precise input labels, and independent reference copies. Unit B adds Windows support prerequisites and a script-block guard for new folders, a macOS missing-file exercise, WSL distribution selection, saved-session/file distinctions, and explicit IDE selection/file attachment plus saved-file checks.
+
+Evidence: docs/codex-learning/evidence/unit-a-depth-review.json and unit-b-depth-review.json. Windows path checks passed; a second execution of the Windows creation block failed as intended without overwriting its file. The exact IDE reference function produces 2 pass/1 fail -> 3 pass/0 fail -> restored 2 pass/1 fail with original tests unchanged. First-project data tests also pass with an intentionally wrong heading, so they do not establish visual correctness. All fixture originals remained unchanged. No install/auth changes, model request, IDE UI, Remote, preview or screenshot execution.
+
+Final scope inspection found that the compiler projected the added IDE source into five API series_data files held by the active Claude tutorial task. Reverted only those generated additions and kept the source as an explicit link in the IDE article body. The five projections and existing source metadata remain unchanged; do not claim the other task has released that shared scope.
+
+Series integrity passed for 60 lessons/300 documents, with 9 API and 9 compiler tests. Audit remains 0 errors/26 warnings after Unit B; the one new advisory is Unit A account-usage English length. Five-language new/changed sections are aligned, including generated Simplified Chinese; no full-text editorial acceptance is claimed. There are now 16 unique lessons with targeted depth revisions and 44 others pending. Final acceptance remains 0/60. Earlier sections below preserve their own historical counts.
 
 ## Representative depth revision
 

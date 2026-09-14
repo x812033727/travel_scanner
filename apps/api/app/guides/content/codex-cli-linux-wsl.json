@@ -41,7 +41,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在 Linux 或 Windows 的 WSL2 中安裝 Codex CLI，分辨主機、發行版與檔案位置，完成標記檔唯讀驗證及更新。閱讀約 12 分鐘，操作約 30 分鐘；初次安裝 WSL、重開機與下載另計。本篇依 2026-09-14 官方檔案查證，未在 Linux／WSL 實機執行，也沒有使用 Windows 畫面冒充 Linux 截圖。"
+          "text": "在 Linux 或 Windows 的 WSL2 中安裝 Codex CLI，分辨主機、發行版與檔案位置，完成標記檔唯讀驗證及更新。閱讀約 12 分鐘，操作約 30 分鐘；初次安裝 WSL、重開機與下載另計。本篇依 2026-09-14 官方文件查證，未在 Linux／WSL 實機執行，也沒有使用 Windows 畫面冒充 Linux 截圖。"
         },
         {
           "type": "rich_paragraph",
@@ -73,23 +73,27 @@
         },
         {
           "type": "paragraph",
-          "text": "在 Windows PowerShell 執行下面的查詢，先看是否已有發行版，以及 VERSION 欄是否為 2。這不是 Linux shell 命令。已有 WSL2 就保留它，不重灌、不刪除發行版。官方現行 Codex Linux 沙盒不支援 WSL1；若現有專案還在 WSL1，先備份並依 Microsoft 檔案規劃轉換，不要對唯一的工作副本直接試改。"
+          "text": "在 Windows PowerShell 執行下面的查詢，先看是否已有發行版，以及 VERSION 欄是否為 2。這不是 Linux shell 命令。已有 WSL2 就保留它，不重灌、不刪除發行版。官方現行 Codex Linux 沙盒不支援 WSL1；若現有專案還在 WSL1，先備份並依 Microsoft 文件規劃轉換，不要對唯一的工作副本直接試改。"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Windows PowerShell：只查詢已安裝的 WSL 發行版",
           "language": "powershell",
           "code": "wsl --list --verbose\n"
         },
         {
           "type": "paragraph",
-          "text": "沒有安裝 WSL 的讀者，先確認電腦政策允許啟用虛擬化與 WSL，再按 Microsoft 檔案在系統管理員 PowerShell 執行 wsl --install，依提示重開機與建立 Linux 使用者。這是安裝作業系統環境，不是只下載一個 npm 套件；需要安排中斷其他工作的時間。公司電腦依管理政策處理，不另教繞過限制。"
+          "text": "沒有安裝 WSL 的讀者，先確認電腦政策允許啟用虛擬化與 WSL，再按 Microsoft 文件在系統管理員 PowerShell 執行 wsl --install，依提示重開機與建立 Linux 使用者。這是安裝作業系統環境，不是只下載一個 npm 套件；需要安排中斷其他工作的時間。公司電腦依管理政策處理，不另教繞過限制。"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "管理員 PowerShell：僅限尚未安裝且已決定使用 WSL",
           "language": "powershell",
           "code": "wsl --install\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "有多個發行版時，可在 PowerShell 使用 wsl --distribution 加上清單中的完整名稱，例如把自己的名稱放在引號內。先選對發行版再安裝；不要在發行版 A 查到 codex，就跳到發行版 B 宣稱已可使用。完成本篇後若切回 PowerShell，必須重新辨識命令來源，不把 Linux 的安裝或檔案雜湊紀錄套到 Windows。"
         },
         {
           "type": "paragraph",
@@ -102,9 +106,9 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Linux／WSL shell：辨識系統、位置與命令來源",
           "language": "bash",
-          "code": "uname -s\npwd\nprintf '%s\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
+          "code": "uname -s\npwd\nprintf '%s\\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
         },
         {
           "type": "paragraph",
@@ -116,19 +120,19 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Linux／WSL shell：官方獨立安裝路線",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Linux／WSL shell：安裝後在新視窗查來源與版本",
           "language": "bash",
           "code": "command -v codex\ncodex --version\ncodex --help\n"
         },
         {
           "type": "paragraph",
-          "text": "安裝輸出、實際路徑和版本三者要能對上。curl、sh 或系統工具本身不存在時，先依你的 Linux 發行版檔案準備工具；不要照抄另一個發行版的套件管理指令。CLI 能啟動仍不代表專案依賴或 Linux 沙盒已正常；後面的實際讀檔會檢查第二層。"
+          "text": "安裝輸出、實際路徑和版本三者要能對上。curl、sh 或系統工具本身不存在時，先依你的 Linux 發行版文件準備工具；不要照抄另一個發行版的套件管理指令。CLI 能啟動仍不代表專案依賴或 Linux 沙盒已正常；後面的實際讀檔會檢查第二層。"
         },
         {
           "type": "heading",
@@ -141,9 +145,9 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Linux／WSL shell：整段建立全新練習資料夾",
           "language": "bash",
-          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
+          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
         },
         {
           "type": "paragraph",
@@ -151,7 +155,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Linux／WSL shell：建立成功後進入、讀取與核對",
           "language": "bash",
           "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
         },
@@ -162,7 +166,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Linux／WSL shell：每行完成後才執行下一行",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -172,7 +176,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在 Linux 的 Codex CLI 輸入",
           "language": "text",
           "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
         },
@@ -220,7 +224,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "如果 Linux 工具專案放在 /mnt/c 而操作很慢，先用新的 Linux 家目錄練習副本比較，不要直接移動或刪除唯一原稿。需要從 Windows 檔案總管檢視 WSL，可用官方檔案說明的 "
+              "text": "如果 Linux 工具專案放在 /mnt/c 而操作很慢，先用新的 Linux 家目錄練習副本比較，不要直接移動或刪除唯一原稿。需要從 Windows 檔案總管檢視 WSL，可用官方文件說明的 "
             },
             {
               "type": "code",
@@ -241,11 +245,11 @@
           "inlines": [
             {
               "type": "text",
-              "text": "shell 能讀、Codex 不能讀時，記錄沙盒啟動或許可權錯誤，先確認 WSL2 與發行版環境，依"
+              "text": "shell 能讀、Codex 不能讀時，記錄沙盒啟動或權限錯誤，先確認 WSL2 與發行版環境，依"
             },
             {
               "type": "article",
-              "text": "許可權教學",
+              "text": "權限教學",
               "kind": "life",
               "slug": "codex-permissions"
             },
@@ -406,7 +410,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Windows PowerShell: inspect installed WSL distributions only",
           "language": "powershell",
           "code": "wsl --list --verbose\n"
         },
@@ -416,9 +420,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Administrator PowerShell: only if WSL is absent and you chose to install it",
           "language": "powershell",
           "code": "wsl --install\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "With several distributions, use wsl --distribution followed by the full name shown in your list, quoted as needed, from PowerShell. Select the distribution before installing. Finding codex in distribution A does not establish its availability in B. If you later return to PowerShell, inspect command resolution again rather than applying Linux installation or file-hash records to Windows."
         },
         {
           "type": "paragraph",
@@ -431,9 +439,9 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Linux/WSL shell: identify system, location and command sources",
           "language": "bash",
-          "code": "uname -s\npwd\nprintf '%s\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
+          "code": "uname -s\npwd\nprintf '%s\\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
         },
         {
           "type": "paragraph",
@@ -445,13 +453,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Linux/WSL shell: official standalone installation route",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Linux/WSL shell: verify source and version in a new window after installation",
           "language": "bash",
           "code": "command -v codex\ncodex --version\ncodex --help\n"
         },
@@ -470,9 +478,9 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Linux/WSL shell: run the whole block to create a new practice folder",
           "language": "bash",
-          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
+          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
         },
         {
           "type": "paragraph",
@@ -480,7 +488,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Linux/WSL shell: enter, read and verify after successful creation",
           "language": "bash",
           "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
         },
@@ -491,7 +499,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Linux/WSL shell: finish each line before running the next",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -501,7 +509,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter inside Codex CLI on Linux",
           "language": "text",
           "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
         },
@@ -735,7 +743,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Windows PowerShell：導入済み WSL ディストリビューションを確認する",
           "language": "powershell",
           "code": "wsl --list --verbose\n"
         },
@@ -745,9 +753,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "管理者 PowerShell：WSL が未導入で、導入すると決めた場合のみ",
           "language": "powershell",
           "code": "wsl --install\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "複数のディストリビューションがある場合は、PowerShell で wsl --distribution の後に一覧にある完全な名前を必要に応じて引用符付きで指定します。導入前に対象を選んでください。A で codex が見つかっても B で利用できる証拠にはなりません。後で PowerShell に戻ったらコマンドの解決先を確認し直し、Linux の導入やハッシュ記録を Windows に当てはめないでください。"
         },
         {
           "type": "paragraph",
@@ -760,9 +772,9 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Linux／WSL シェル：システム、場所、コマンド候補を確認する",
           "language": "bash",
-          "code": "uname -s\npwd\nprintf '%s\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
+          "code": "uname -s\npwd\nprintf '%s\\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
         },
         {
           "type": "paragraph",
@@ -774,13 +786,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Linux／WSL シェル：公式の独立インストーラーで導入する",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Linux／WSL シェル：導入後の新しい端末で場所と版を確認する",
           "language": "bash",
           "code": "command -v codex\ncodex --version\ncodex --help\n"
         },
@@ -799,9 +811,9 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Linux／WSL シェル：ブロック全体で新しい練習フォルダーを作る",
           "language": "bash",
-          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
+          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
         },
         {
           "type": "paragraph",
@@ -809,7 +821,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Linux／WSL シェル：作成成功後に移動、読み取り、照合する",
           "language": "bash",
           "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
         },
@@ -820,7 +832,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Linux／WSL シェル：一行が完了してから次を実行する",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -830,7 +842,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：Linux 側の Codex CLI に入力する",
           "language": "text",
           "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
         },
@@ -1064,7 +1076,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Windows PowerShell: 설치된 WSL 배포판만 조회",
           "language": "powershell",
           "code": "wsl --list --verbose\n"
         },
@@ -1074,9 +1086,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "관리자 PowerShell: WSL이 없고 설치를 결정한 경우에만 실행",
           "language": "powershell",
           "code": "wsl --install\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "배포판이 여러 개라면 PowerShell에서 wsl --distribution 뒤에 목록의 전체 이름을 필요에 따라 따옴표로 넣습니다. 설치 전에 배포판을 선택하세요. A에서 codex를 찾았다고 B에서도 사용할 수 있다는 뜻은 아닙니다. 이후 PowerShell로 돌아오면 명령을 찾는 위치를 다시 확인하고 Linux 설치나 파일 해시 기록을 Windows에 그대로 적용하지 마세요."
         },
         {
           "type": "paragraph",
@@ -1089,9 +1105,9 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Linux/WSL 셸: 시스템, 위치, 명령 출처 확인",
           "language": "bash",
-          "code": "uname -s\npwd\nprintf '%s\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
+          "code": "uname -s\npwd\nprintf '%s\\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
         },
         {
           "type": "paragraph",
@@ -1103,13 +1119,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Linux/WSL 셸: 공식 독립 설치 경로",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Linux/WSL 셸: 설치 후 새 창에서 출처와 버전 확인",
           "language": "bash",
           "code": "command -v codex\ncodex --version\ncodex --help\n"
         },
@@ -1128,9 +1144,9 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Linux/WSL 셸: 블록 전체로 새 실습 폴더 만들기",
           "language": "bash",
-          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
+          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
         },
         {
           "type": "paragraph",
@@ -1138,7 +1154,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Linux/WSL 셸: 생성 성공 후 이동, 읽기, 확인",
           "language": "bash",
           "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
         },
@@ -1149,7 +1165,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Linux/WSL 셸: 한 줄이 완료된 후 다음 줄 실행",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -1159,7 +1175,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: Linux의 Codex CLI 안에 입력",
           "language": "text",
           "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
         },
@@ -1357,7 +1373,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在 Linux 或 Windows 的 WSL2 中安装 Codex CLI，分辨主机、发行版与档案位置，完成标记档唯读验证及更新。阅读约 12 分钟，操作约 30 分钟；初次安装 WSL、重开机与下载另计。本篇依 2026-09-14 官方档案查证，未在 Linux／WSL 实机执行，也没有使用 Windows 画面冒充 Linux 截图。"
+          "text": "在 Linux 或 Windows 的 WSL2 中安装 Codex CLI，分辨主机、发行版与档案位置，完成标记档唯读验证及更新。阅读约 12 分钟，操作约 30 分钟；初次安装 WSL、重开机与下载另计。本篇依 2026-09-14 官方文件查证，未在 Linux／WSL 实机执行，也没有使用 Windows 画面冒充 Linux 截图。"
         },
         {
           "type": "rich_paragraph",
@@ -1389,23 +1405,27 @@
         },
         {
           "type": "paragraph",
-          "text": "在 Windows PowerShell 执行下面的查询，先看是否已有发行版，以及 VERSION 栏是否为 2。这不是 Linux shell 命令。已有 WSL2 就保留它，不重灌、不删除发行版。官方现行 Codex Linux 沙盒不支援 WSL1；若现有专案还在 WSL1，先备份并依 Microsoft 档案规划转换，不要对唯一的工作副本直接试改。"
+          "text": "在 Windows PowerShell 执行下面的查询，先看是否已有发行版，以及 VERSION 栏是否为 2。这不是 Linux shell 命令。已有 WSL2 就保留它，不重灌、不删除发行版。官方现行 Codex Linux 沙盒不支援 WSL1；若现有专案还在 WSL1，先备份并依 Microsoft 文件规划转换，不要对唯一的工作副本直接试改。"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Windows PowerShell：只查询已安装的 WSL 发行版",
           "language": "powershell",
           "code": "wsl --list --verbose\n"
         },
         {
           "type": "paragraph",
-          "text": "没有安装 WSL 的读者，先确认电脑政策允许启用虚拟化与 WSL，再按 Microsoft 档案在系统管理员 PowerShell 执行 wsl --install，依提示重开机与建立 Linux 使用者。这是安装作业系统环境，不是只下载一个 npm 套件；需要安排中断其他工作的时间。公司电脑依管理政策处理，不另教绕过限制。"
+          "text": "没有安装 WSL 的读者，先确认电脑政策允许启用虚拟化与 WSL，再按 Microsoft 文件在系统管理员 PowerShell 执行 wsl --install，依提示重开机与建立 Linux 使用者。这是安装作业系统环境，不是只下载一个 npm 套件；需要安排中断其他工作的时间。公司电脑依管理政策处理，不另教绕过限制。"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "管理员 PowerShell：仅限尚未安装且已决定使用 WSL",
           "language": "powershell",
           "code": "wsl --install\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "有多个发行版时，可在 PowerShell 使用 wsl --distribution 加上清单中的完整名称，例如把自己的名称放在引号内。先选对发行版再安装；不要在发行版 A 查到 codex，就跳到发行版 B 宣称已可使用。完成本篇后若切回 PowerShell，必须重新辨识命令来源，不把 Linux 的安装或档案杂凑纪录套到 Windows。"
         },
         {
           "type": "paragraph",
@@ -1418,9 +1438,9 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Linux／WSL shell：辨识系统、位置与命令来源",
           "language": "bash",
-          "code": "uname -s\npwd\nprintf '%s\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
+          "code": "uname -s\npwd\nprintf '%s\\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
         },
         {
           "type": "paragraph",
@@ -1432,19 +1452,19 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Linux／WSL shell：官方独立安装路线",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Linux／WSL shell：安装后在新视窗查来源与版本",
           "language": "bash",
           "code": "command -v codex\ncodex --version\ncodex --help\n"
         },
         {
           "type": "paragraph",
-          "text": "安装输出、实际路径和版本三者要能对上。curl、sh 或系统工具本身不存在时，先依你的 Linux 发行版档案准备工具；不要照抄另一个发行版的套件管理指令。CLI 能启动仍不代表专案依赖或 Linux 沙盒已正常；后面的实际读档会检查第二层。"
+          "text": "安装输出、实际路径和版本三者要能对上。curl、sh 或系统工具本身不存在时，先依你的 Linux 发行版文件准备工具；不要照抄另一个发行版的套件管理指令。CLI 能启动仍不代表专案依赖或 Linux 沙盒已正常；后面的实际读档会检查第二层。"
         },
         {
           "type": "heading",
@@ -1457,9 +1477,9 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Linux／WSL shell：整段建立全新练习资料夹",
           "language": "bash",
-          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
+          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
         },
         {
           "type": "paragraph",
@@ -1467,7 +1487,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Linux／WSL shell：建立成功后进入、读取与核对",
           "language": "bash",
           "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
         },
@@ -1478,7 +1498,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Linux／WSL shell：每行完成后才执行下一行",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -1488,7 +1508,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在 Linux 的 Codex CLI 输入",
           "language": "text",
           "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
         },
@@ -1536,7 +1556,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "如果 Linux 工具专案放在 /mnt/c 而操作很慢，先用新的 Linux 家目录练习副本比较，不要直接移动或删除唯一原稿。需要从 Windows 档案总管检视 WSL，可用官方档案说明的 "
+              "text": "如果 Linux 工具专案放在 /mnt/c 而操作很慢，先用新的 Linux 家目录练习副本比较，不要直接移动或删除唯一原稿。需要从 Windows 档案总管检视 WSL，可用官方文件说明的 "
             },
             {
               "type": "code",
@@ -1557,11 +1577,11 @@
           "inlines": [
             {
               "type": "text",
-              "text": "shell 能读、Codex 不能读时，记录沙盒启动或许可权错误，先确认 WSL2 与发行版环境，依"
+              "text": "shell 能读、Codex 不能读时，记录沙盒启动或权限错误，先确认 WSL2 与发行版环境，依"
             },
             {
               "type": "article",
-              "text": "许可权教学",
+              "text": "权限教学",
               "kind": "life",
               "slug": "codex-permissions"
             },

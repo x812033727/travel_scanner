@@ -41,7 +41,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在 macOS Terminal 完成 CLI 安裝、查詢實際執行檔、登入、定位與唯讀驗證，最後能用原管道更新。閱讀約 12 分鐘，操作約 25 分鐘，下載時間另計。本篇依 2026-09-14 官方 CLI 與登入檔案查證，沒有 macOS 實機安裝或 Codex 介面截圖；所有步驟仍完整列出，供你在自己的 Mac 核對。"
+          "text": "在 macOS Terminal 完成 CLI 安裝、查詢實際執行檔、登入、定位與唯讀驗證，最後能用原管道更新。閱讀約 12 分鐘，操作約 25 分鐘，下載時間另計。本篇依 2026-09-14 官方 CLI 與登入文件查證，沒有 macOS 實機安裝或 Codex 介面截圖；所有步驟仍完整列出，供你在自己的 Mac 核對。"
         },
         {
           "type": "paragraph",
@@ -54,7 +54,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "macOS Terminal：查命令解析來源",
           "language": "bash",
           "code": "command -v codex\ntype -a codex\n"
         },
@@ -73,7 +73,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "macOS Terminal：官方獨立安裝路線",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
@@ -92,7 +92,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "macOS Terminal：Homebrew 替代路線，先查版本",
           "language": "bash",
           "code": "brew --version\nbrew install --cask codex\n"
         },
@@ -115,7 +115,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "macOS Terminal：在練習資料夾讀檔與比較雜湊",
           "language": "bash",
           "code": "pwd\nls\ncat note.txt\nshasum -a 256 note.txt note.original.txt\n"
         },
@@ -130,7 +130,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "macOS Terminal：每行完成後才執行下一行",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -155,7 +155,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在 Codex CLI 輸入",
           "language": "text",
           "code": "Inspect note.txt and note.original.txt in the current folder. Report the current directory, exact content of each file, and whether they match. Do not edit files or use external services. If the folder or files are wrong, stop and report the mismatch.\n"
         },
@@ -168,7 +168,7 @@
             },
             {
               "type": "article",
-              "text": "許可權",
+              "text": "權限",
               "kind": "life",
               "slug": "codex-permissions"
             },
@@ -177,6 +177,15 @@
               "text": "；這是不同執行範圍，不是檔案突然消失。"
             }
           ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "補做一次缺檔與恢復練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "先 /exit，再用 Finder 把練習副本的 note.original.txt 暫改名為 note.reference.txt；已有後者時先停止，避免覆蓋。重新啟動唯讀 Codex，送出同一個讀檔提示詞。預期它能讀 note.txt，卻明確回報 note.original.txt 不存在，不能憑另一份內容宣稱兩份已比對。結束後退出，把檔名恢復成 note.original.txt，再以 cat、ls、shasum 重驗；兩份檔案應回到原來的相同雜湊。這一步只改練習檔名，不更動登入或 shell 設定。"
         },
         {
           "type": "heading",
@@ -223,7 +232,7 @@
         },
         {
           "type": "paragraph",
-          "text": "先退出工作階段並儲存摘要，更新完成才重新啟動。若更新後版本沒變，先用 type -a 查重複來源。若已能顯示 help，卻無法登入，安裝通常已過第一關，應記錄瀏覽器回呼、帳號或網路錯誤；若只在特定資料夾失敗，則比較該資料夾的存取許可權與目前位置。把不同層級的問題分開，才能知道下一個修正會驗證什麼。"
+          "text": "先退出工作階段並儲存摘要，更新完成才重新啟動。若更新後版本沒變，先用 type -a 查重複來源。若已能顯示 help，卻無法登入，安裝通常已過第一關，應記錄瀏覽器回呼、帳號或網路錯誤；若只在特定資料夾失敗，則比較該資料夾的存取權限與目前位置。把不同層級的問題分開，才能知道下一個修正會驗證什麼。"
         },
         {
           "type": "rich_paragraph",
@@ -352,7 +361,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "macOS Terminal: inspect command resolution",
           "language": "bash",
           "code": "command -v codex\ntype -a codex\n"
         },
@@ -371,7 +380,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "macOS Terminal: official standalone installation route",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
@@ -390,7 +399,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "macOS Terminal: alternative Homebrew route; check its version first",
           "language": "bash",
           "code": "brew --version\nbrew install --cask codex\n"
         },
@@ -413,7 +422,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "macOS Terminal: read and compare hashes in the practice folder",
           "language": "bash",
           "code": "pwd\nls\ncat note.txt\nshasum -a 256 note.txt note.original.txt\n"
         },
@@ -428,7 +437,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "macOS Terminal: finish each line before running the next",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -453,7 +462,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter inside Codex CLI",
           "language": "text",
           "code": "Inspect note.txt and note.original.txt in the current folder. Report the current directory, exact content of each file, and whether they match. Do not edit files or use external services. If the folder or files are wrong, stop and report the mismatch.\n"
         },
@@ -475,6 +484,15 @@
               "text": ". Different execution boundaries can explain this without the file disappearing."
             }
           ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Practice one missing-file case and recovery"
+        },
+        {
+          "type": "paragraph",
+          "text": "Exit first, then use Finder to temporarily rename the practice copy's note.original.txt to note.reference.txt; stop if the latter already exists to avoid overwriting it. Restart read-only Codex and send the same read prompt. Expect it to read note.txt but explicitly report note.original.txt missing, not claim that two files match from one file's contents. Exit, restore the original filename, and repeat cat, ls and shasum. Both hashes should return to their original identical values. This exercise changes a practice filename, not authentication or shell configuration."
         },
         {
           "type": "heading",
@@ -650,7 +668,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "macOS Terminal：コマンドの解決先を確認する",
           "language": "bash",
           "code": "command -v codex\ntype -a codex\n"
         },
@@ -669,7 +687,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "macOS Terminal：公式の独立インストーラーで導入する",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
@@ -688,7 +706,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "macOS Terminal：Homebrew の代替経路。先に版を確認する",
           "language": "bash",
           "code": "brew --version\nbrew install --cask codex\n"
         },
@@ -711,7 +729,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "macOS Terminal：練習フォルダーで読み取りとハッシュ比較を行う",
           "language": "bash",
           "code": "pwd\nls\ncat note.txt\nshasum -a 256 note.txt note.original.txt\n"
         },
@@ -726,7 +744,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "macOS Terminal：一行が完了してから次を実行する",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -751,7 +769,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：Codex CLI 内に入力する",
           "language": "text",
           "code": "Inspect note.txt and note.original.txt in the current folder. Report the current directory, exact content of each file, and whether they match. Do not edit files or use external services. If the folder or files are wrong, stop and report the mismatch.\n"
         },
@@ -773,6 +791,15 @@
               "text": "を確認します。実行範囲の違いであり、消失とは限りません。"
             }
           ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "ファイル不足と復元も一度試す"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず /exit で終了し、Finder で練習コピーの note.original.txt を一時的に note.reference.txt に変更します。後者が既にあれば上書きを避けて停止します。読み取り専用の Codex を再起動し、同じ依頼を送ります。note.txt は読めても note.original.txt はないと明示し、一つの内容だけで二つが一致すると言わないことを確認します。終了後に元の名前へ戻し、cat、ls、shasum を再実行します。二つのハッシュは元の同じ値に戻るはずです。認証やシェル設定は変更しません。"
         },
         {
           "type": "heading",
@@ -944,7 +971,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "macOS Terminal: 명령을 찾는 위치 확인",
           "language": "bash",
           "code": "command -v codex\ntype -a codex\n"
         },
@@ -963,7 +990,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "macOS Terminal: 공식 독립 설치 경로",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
@@ -982,7 +1009,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "macOS Terminal: Homebrew 대체 경로, 버전 먼저 확인",
           "language": "bash",
           "code": "brew --version\nbrew install --cask codex\n"
         },
@@ -1005,7 +1032,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "macOS Terminal: 실습 폴더에서 읽기와 해시 비교",
           "language": "bash",
           "code": "pwd\nls\ncat note.txt\nshasum -a 256 note.txt note.original.txt\n"
         },
@@ -1020,7 +1047,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "macOS Terminal: 한 줄이 완료된 후 다음 줄 실행",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -1045,7 +1072,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: Codex CLI 안에 입력",
           "language": "text",
           "code": "Inspect note.txt and note.original.txt in the current folder. Report the current directory, exact content of each file, and whether they match. Do not edit files or use external services. If the folder or files are wrong, stop and report the mismatch.\n"
         },
@@ -1067,6 +1094,15 @@
               "text": "을 확인하세요. 실행 경계의 차이로 설명할 수 있으며 파일이 사라진 것은 아닐 수 있습니다."
             }
           ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "파일 누락과 복구도 한 번 연습하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 /exit로 종료하고 Finder에서 실습 사본의 note.original.txt를 잠시 note.reference.txt로 바꿉니다. 후자가 이미 있으면 덮어쓰지 말고 중단하세요. 읽기 전용 Codex를 다시 시작해 같은 읽기 요청을 보냅니다. note.txt는 읽되 note.original.txt는 없다고 명시해야 하며 한 파일만 읽고 두 파일이 같다고 주장하면 안 됩니다. 종료 후 원래 파일명으로 복원하고 cat, ls, shasum을 다시 실행합니다. 두 해시는 원래의 같은 값으로 돌아와야 합니다. 실습 파일명만 바꾸며 로그인이나 셸 설정은 수정하지 않습니다."
         },
         {
           "type": "heading",
@@ -1225,7 +1261,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在 macOS Terminal 完成 CLI 安装、查询实际执行档、登入、定位与唯读验证，最后能用原管道更新。阅读约 12 分钟，操作约 25 分钟，下载时间另计。本篇依 2026-09-14 官方 CLI 与登入档案查证，没有 macOS 实机安装或 Codex 介面截图；所有步骤仍完整列出，供你在自己的 Mac 核对。"
+          "text": "在 macOS Terminal 完成 CLI 安装、查询实际执行档、登入、定位与唯读验证，最后能用原管道更新。阅读约 12 分钟，操作约 25 分钟，下载时间另计。本篇依 2026-09-14 官方 CLI 与登入文件查证，没有 macOS 实机安装或 Codex 介面截图；所有步骤仍完整列出，供你在自己的 Mac 核对。"
         },
         {
           "type": "paragraph",
@@ -1238,7 +1274,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "macOS Terminal：查命令解析来源",
           "language": "bash",
           "code": "command -v codex\ntype -a codex\n"
         },
@@ -1257,7 +1293,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "macOS Terminal：官方独立安装路线",
           "language": "bash",
           "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
         },
@@ -1276,7 +1312,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "macOS Terminal：Homebrew 替代路线，先查版本",
           "language": "bash",
           "code": "brew --version\nbrew install --cask codex\n"
         },
@@ -1299,7 +1335,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "macOS Terminal：在练习资料夹读档与比较杂凑",
           "language": "bash",
           "code": "pwd\nls\ncat note.txt\nshasum -a 256 note.txt note.original.txt\n"
         },
@@ -1314,7 +1350,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "macOS Terminal：每行完成后才执行下一行",
           "language": "bash",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -1339,7 +1375,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在 Codex CLI 输入",
           "language": "text",
           "code": "Inspect note.txt and note.original.txt in the current folder. Report the current directory, exact content of each file, and whether they match. Do not edit files or use external services. If the folder or files are wrong, stop and report the mismatch.\n"
         },
@@ -1352,7 +1388,7 @@
             },
             {
               "type": "article",
-              "text": "许可权",
+              "text": "权限",
               "kind": "life",
               "slug": "codex-permissions"
             },
@@ -1361,6 +1397,15 @@
               "text": "；这是不同执行范围，不是档案突然消失。"
             }
           ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "补做一次缺档与恢复练习"
+        },
+        {
+          "type": "paragraph",
+          "text": "先 /exit，再用 Finder 把练习副本的 note.original.txt 暂改名为 note.reference.txt；已有后者时先停止，避免覆盖。重新启动唯读 Codex，送出同一个读档提示词。预期它能读 note.txt，却明确回报 note.original.txt 不存在，不能凭另一份内容宣称两份已比对。结束后退出，把档名恢复成 note.original.txt，再以 cat、ls、shasum 重验；两份档案应回到原来的相同杂凑。这一步只改练习档名，不更动登入或 shell 设定。"
         },
         {
           "type": "heading",
@@ -1407,7 +1452,7 @@
         },
         {
           "type": "paragraph",
-          "text": "先退出工作阶段并储存摘要，更新完成才重新启动。若更新后版本没变，先用 type -a 查重复来源。若已能显示 help，却无法登入，安装通常已过第一关，应记录浏览器回呼、帐号或网路错误；若只在特定资料夹失败，则比较该资料夹的存取许可权与目前位置。把不同层级的问题分开，才能知道下一个修正会验证什么。"
+          "text": "先退出工作阶段并储存摘要，更新完成才重新启动。若更新后版本没变，先用 type -a 查重复来源。若已能显示 help，却无法登入，安装通常已过第一关，应记录浏览器回呼、帐号或网路错误；若只在特定资料夹失败，则比较该资料夹的存取权限与目前位置。把不同层级的问题分开，才能知道下一个修正会验证什么。"
         },
         {
           "type": "rich_paragraph",

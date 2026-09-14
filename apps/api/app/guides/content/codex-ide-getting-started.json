@@ -124,7 +124,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "IDE 整合終端機：在 codex-ide-lab 執行",
           "language": "text",
           "code": "node --test core.test.mjs\n"
         },
@@ -134,12 +134,26 @@
           "text": "步驟二：把選取範圍帶入 Codex"
         },
         {
-          "type": "paragraph",
-          "text": "打開 core.mjs，選取 visibleTasks 整個函式，從命令面板找到 Add to Codex Thread，把選取範圍加入目前任務；名稱或可用命令以該版擴充套件選單為準。再開 core.test.mjs，讓測試也在上下文中。送出前查看輸入框的附件或檔案標記，確認是 core.mjs 和測試，不是只選到了相似名稱的另一份檔案。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "打開 core.mjs，選取 visibleTasks 整個函式，再用命令面板中「加入目前 Codex 任務」的動作附上選取範圍；"
+            },
+            {
+              "type": "link",
+              "text": "官方命令識別碼",
+              "url": "https://learn.chatgpt.com/docs/developer-commands?surface=ide"
+            },
+            {
+              "type": "text",
+              "text": "為 chatgpt.addToThread。接著開 core.test.mjs，用加入整個檔案的命令 chatgpt.addFileToThread 附上測試。畫面名稱依語言與版本而異，可到鍵盤快捷鍵設定搜尋識別碼以確認對應命令；識別碼不是終端機指令。不要只因檔案開在分頁，就認定它已附上。送出前核對輸入框的檔名、範圍與附件，排除同名的另一份副本。"
+            }
+          ]
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在已附上函式與測試的 Codex 任務輸入",
           "language": "text",
           "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
         },
@@ -154,7 +168,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在同一個 Codex 任務要求修正",
           "language": "text",
           "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
         },
@@ -164,13 +178,22 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "參考成果：對照 core.mjs 的 visibleTasks，不是啟動命令",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
         {
           "type": "paragraph",
           "text": "這段是參考成果，用來比對，不是要求你先貼上再宣稱 Codex 修好了。原故障註解若仍說 predicate 錯誤，應在同一函式清理失效註解，避免留下誤導。除此之外不需要改版面、安裝依賴或新增後端。三個測試群組全部通過是必要條件，實際 diff 是否符合範圍也要一起判斷。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "畫面顯示已改，測試卻仍失敗時"
+        },
+        {
+          "type": "paragraph",
+          "text": "先儲存檔案，再看整合終端機的工作目錄。編輯器中尚未儲存的文字，與終端機測試讀取的硬碟檔案可能不同；另一份同名副本也可能讓你看對了畫面卻測錯了檔案。核對 core.mjs 的完整路徑、儲存狀態與測試目錄後，再跑原測試。如果三者都正確仍失敗，把完整錯誤與目前差異交給 Codex，不要改測試預期或重裝擴充套件。選取／附加內容是提供上下文，儲存與實際執行則需要各自確認。"
         },
         {
           "type": "heading",
@@ -437,7 +460,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "IDE 整合终端机：在 codex-ide-lab 执行",
           "language": "text",
           "code": "node --test core.test.mjs\n"
         },
@@ -447,12 +470,26 @@
           "text": "步骤二：把选取范围带入 Codex"
         },
         {
-          "type": "paragraph",
-          "text": "打开 core.mjs，选取 visibleTasks 整个函式，从命令面板找到 Add to Codex Thread，把选取范围加入目前任务；名称或可用命令以该版扩充套件选单为准。再开 core.test.mjs，让测试也在上下文中。送出前查看输入框的附件或档案标记，确认是 core.mjs 和测试，不是只选到了相似名称的另一份档案。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "打开 core.mjs，选取 visibleTasks 整个函式，再用命令面板中「加入目前 Codex 任务」的动作附上选取范围；"
+            },
+            {
+              "type": "link",
+              "text": "官方命令识别码",
+              "url": "https://learn.chatgpt.com/docs/developer-commands?surface=ide"
+            },
+            {
+              "type": "text",
+              "text": "为 chatgpt.addToThread。接著开 core.test.mjs，用加入整个档案的命令 chatgpt.addFileToThread 附上测试。画面名称依语言与版本而异，可到键盘快捷键设定搜寻识别码以确认对应命令；识别码不是终端机指令。不要只因档案开在分页，就认定它已附上。送出前核对输入框的档名、范围与附件，排除同名的另一份副本。"
+            }
+          ]
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在已附上函式与测试的 Codex 任务输入",
           "language": "text",
           "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
         },
@@ -467,7 +504,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在同一个 Codex 任务要求修正",
           "language": "text",
           "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
         },
@@ -477,13 +514,22 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "参考成果：对照 core.mjs 的 visibleTasks，不是启动命令",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
         {
           "type": "paragraph",
           "text": "这段是参考成果，用来比对，不是要求你先贴上再宣称 Codex 修好了。原故障注解若仍说 predicate 错误，应在同一函式清理失效注解，避免留下误导。除此之外不需要改版面、安装依赖或新增后端。三个测试群组全部通过是必要条件，实际 diff 是否符合范围也要一起判断。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "画面显示已改，测试却仍失败时"
+        },
+        {
+          "type": "paragraph",
+          "text": "先储存档案，再看整合终端机的工作目录。编辑器中尚未储存的文字，与终端机测试读取的硬碟档案可能不同；另一份同名副本也可能让你看对了画面却测错了档案。核对 core.mjs 的完整路径、储存状态与测试目录后，再跑原测试。如果三者都正确仍失败，把完整错误与目前差异交给 Codex，不要改测试预期或重装扩充套件。选取／附加内容是提供上下文，储存与实际执行则需要各自确认。"
         },
         {
           "type": "heading",
@@ -750,7 +796,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "IDE integrated terminal: run in codex-ide-lab",
           "language": "text",
           "code": "node --test core.test.mjs\n"
         },
@@ -760,12 +806,26 @@
           "text": "Step 2: add the selection to Codex"
         },
         {
-          "type": "paragraph",
-          "text": "Open core.mjs, select the whole visibleTasks function and use Add to Codex Thread from the command palette to attach the selection, checking the actual command available in your extension version. Open core.test.mjs as test context too. Inspect file/selection indicators before sending to confirm the intended files rather than a similarly named copy."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Open core.mjs and select the entire visibleTasks function. Attach the selection using the Command Palette action for adding it to the current Codex chat; its "
+            },
+            {
+              "type": "link",
+              "text": "official command ID",
+              "url": "https://learn.chatgpt.com/docs/developer-commands?surface=ide"
+            },
+            {
+              "type": "text",
+              "text": " is chatgpt.addToThread. Open core.test.mjs and attach the whole file with chatgpt.addFileToThread. Display names vary by language and version; search the ID in Keyboard Shortcuts to identify the corresponding command. These IDs are not terminal commands. An open editor tab alone does not establish attachment. Before sending, check filenames, ranges and attachment indicators to exclude similarly named copies."
+            }
+          ]
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in the Codex task with function and test attached",
           "language": "text",
           "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
         },
@@ -780,7 +840,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: request the fix in the same Codex task",
           "language": "text",
           "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
         },
@@ -790,13 +850,22 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Reference result: compare visibleTasks in core.mjs; not a launch command",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
         {
           "type": "paragraph",
           "text": "This is the reference result for comparison, not code to paste before claiming Codex fixed the bug. Remove the obsolete deliberate-bug comment in that function if it remains misleading. Layout changes, new dependencies and a backend are unnecessary. All three test groups passing is necessary, and the actual diff must also meet the requested scope."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "When the editor shows the fix but tests still fail"
+        },
+        {
+          "type": "paragraph",
+          "text": "Save the file first, then inspect the integrated terminal's working directory. Unsaved editor text can differ from the on-disk file read by tests; a similarly named copy can also mean you are viewing the right fix while testing the wrong file. Verify core.mjs's full path, saved state and test directory, then rerun the original tests. If all three are correct and failure remains, give Codex the full error and current diff rather than changing expected results or reinstalling the extension. Attaching context, saving files and executing tests each need their own check."
         },
         {
           "type": "heading",
@@ -1059,7 +1128,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "IDE の統合端末：codex-ide-lab で実行する",
           "language": "text",
           "code": "node --test core.test.mjs\n"
         },
@@ -1069,12 +1138,26 @@
           "text": "手順2：選択箇所を Codex に渡す"
         },
         {
-          "type": "paragraph",
-          "text": "core.mjs の visibleTasks 全体を選び、コマンドパレットの Add to Codex Thread で現在のタスクへ追加します。実際の版で使える命令を確認してください。core.test.mjs も開き、送信前にファイルや選択の表示で目的の二つか確認します。同名の別コピーと取り違えないようにします。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "core.mjs の visibleTasks 全体を選び、コマンドパレットの現在の Codex チャットへ追加する操作で添付します。"
+            },
+            {
+              "type": "link",
+              "text": "公式コマンド ID",
+              "url": "https://learn.chatgpt.com/docs/developer-commands?surface=ide"
+            },
+            {
+              "type": "text",
+              "text": " は chatgpt.addToThread です。次に core.test.mjs を開き、chatgpt.addFileToThread でファイル全体を添付します。表示名は言語や版で異なるため、キーボードショートカット設定で ID を検索して対応するコマンドを確認できます。ID は端末コマンドではありません。タブを開いただけで添付済みと判断せず、送信前に名前、範囲、添付表示を確認し、同名の別コピーを除外します。"
+            }
+          ]
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：関数とテストを添付した Codex タスクに入力する",
           "language": "text",
           "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
         },
@@ -1089,7 +1172,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：同じ Codex タスクで修正を求める",
           "language": "text",
           "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
         },
@@ -1099,13 +1182,22 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "参考結果：core.mjs の visibleTasks と比較する。起動コマンドではありません",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
         {
           "type": "paragraph",
           "text": "これは比較用の参考結果で、先に貼ってから Codex が直したと扱うものではありません。同じ関数の意図的な誤りを示す古いコメントが残れば整理します。画面変更や依存追加、バックエンドは不要です。三組の成功に加え、実際の差分が範囲内かも判断します。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "画面では直っているのにテストが失敗する場合"
+        },
+        {
+          "type": "paragraph",
+          "text": "先にファイルを保存し、統合端末の作業ディレクトリを確認します。未保存の編集内容はテストが読むディスク上のファイルと異なることがあり、同名の別コピーを表示している場合もあります。core.mjs の完全なパス、保存状態、テスト場所を確かめてから元のテストを再実行します。三つとも正しくても失敗するなら、エラー全文と現在の差分を Codex に渡します。期待値の変更や拡張の再導入はしません。文脈の添付、保存、実行はそれぞれ確認が必要です。"
         },
         {
           "type": "heading",
@@ -1368,7 +1460,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "IDE 통합 터미널: codex-ide-lab에서 실행",
           "language": "text",
           "code": "node --test core.test.mjs\n"
         },
@@ -1378,12 +1470,26 @@
           "text": "2단계: 선택 영역을 Codex에 전달하기"
         },
         {
-          "type": "paragraph",
-          "text": "core.mjs의 visibleTasks 전체를 선택하고 명령 팔레트의 Add to Codex Thread로 현재 작업에 추가합니다. 실제 확장 버전에 제공되는 명령을 확인하세요. core.test.mjs도 열고 전송 전 파일/선택 표시가 의도한 두 파일인지 확인합니다. 비슷한 이름의 다른 사본과 혼동하지 마세요."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "core.mjs에서 visibleTasks 전체를 선택하고 명령 팔레트의 현재 Codex 대화에 추가하는 동작으로 첨부합니다. "
+            },
+            {
+              "type": "link",
+              "text": "공식 명령 ID",
+              "url": "https://learn.chatgpt.com/docs/developer-commands?surface=ide"
+            },
+            {
+              "type": "text",
+              "text": "는 chatgpt.addToThread입니다. 다음으로 core.test.mjs를 열고 chatgpt.addFileToThread로 파일 전체를 첨부하세요. 표시 이름은 언어와 버전에 따라 다르므로 키보드 바로 가기 설정에서 ID를 검색해 해당 명령을 확인할 수 있습니다. ID는 터미널 명령이 아닙니다. 편집기 탭이 열렸다는 사실만으로 첨부되었다고 판단하지 말고 전송 전에 파일명, 범위, 첨부 표시를 확인하여 같은 이름의 다른 사본을 제외하세요."
+            }
+          ]
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 함수와 테스트를 첨부한 Codex 작업에 입력",
           "language": "text",
           "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
         },
@@ -1398,7 +1504,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 같은 Codex 작업에서 수정 요청",
           "language": "text",
           "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
         },
@@ -1408,13 +1514,22 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "참조 결과: core.mjs의 visibleTasks와 비교하며 실행 명령이 아님",
           "language": "javascript",
           "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
         },
         {
           "type": "paragraph",
           "text": "비교용 참조 결과이지 먼저 붙여 넣고 Codex가 고쳤다고 주장하는 코드가 아닙니다. 같은 함수에 의도된 오류라는 오래된 주석이 남으면 정리합니다. 화면 변경, 의존성 추가, 백엔드는 필요 없습니다. 세 그룹 통과뿐 아니라 실제 diff가 요청 범위인지도 판단합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "편집기에서는 수정되었는데 테스트는 계속 실패할 때"
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 파일을 저장한 뒤 통합 터미널의 작업 디렉터리를 확인합니다. 저장하지 않은 편집기 텍스트는 테스트가 읽는 디스크 파일과 다를 수 있고, 같은 이름의 다른 사본 때문에 올바른 수정을 보면서 엉뚱한 파일을 테스트할 수도 있습니다. core.mjs의 전체 경로, 저장 상태, 테스트 디렉터리를 확인한 뒤 원래 테스트를 다시 실행하세요. 셋 다 맞는데 실패하면 전체 오류와 현재 diff를 Codex에 전달하며 기대값을 바꾸거나 확장을 다시 설치하지 않습니다. 문맥 첨부, 파일 저장, 테스트 실행은 각각 확인해야 합니다."
         },
         {
           "type": "heading",

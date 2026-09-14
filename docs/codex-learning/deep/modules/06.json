@@ -15,7 +15,7 @@
     {
       "type": "note",
       "text": [
-        "你會把一個可下載的待辦網站放進獨立資料夾，啟動本機預覽，請 Codex 完成兩個明確的畫面修改，再自行驗證功能與修改範圍。閱讀約 12 分鐘，操作約 30 分鐘。成果只在自己的電腦預覽；網站能開啟、測試透過與正式上線是不同階段。",
+        "你會把一個可下載的待辦網站放進獨立資料夾，啟動本機預覽，請 Codex 完成兩個明確的畫面修改，再自行驗證功能與修改範圍。閱讀約 12 分鐘，操作約 30 分鐘。成果只在自己的電腦預覽；網站能開啟、測試通過與正式上線是不同階段。",
         "Download a todo website into an independent folder, start a local preview, ask Codex for two precise visual edits and independently verify behavior and scope. Allow 12 minutes to read and 30 to practise. The result is a local preview; opening a page, passing tests and publishing a website are separate stages.",
         "ダウンロードできる ToDo サイトを独立フォルダーに置き、ローカル表示を起動します。Codex に二つの明確な画面変更を頼み、機能と変更範囲を自分で確認します。読む時間は約 12 分、操作は約 30 分です。成果は自分のコンピューターでの表示であり、ページが開くこと、テスト成功、公開は別段階です。",
         "다운로드한 할 일 사이트를 독립 폴더에 두고 로컬 미리보기를 실행한 뒤 Codex에 명확한 화면 수정 두 개를 요청하고 기능과 범위를 직접 검증합니다. 읽기 약 12분, 실습 약 30분입니다. 결과는 로컬 미리보기이며 페이지 열기, 테스트 통과, 실제 공개는 서로 다른 단계입니다."
@@ -69,7 +69,7 @@
     {
       "type": "p",
       "text": [
-        "在副本根目錄執行核心測試，應有三個測試透過、零失敗。這是「修改前」的證據；如果現在已失敗，先核對是否誤用了 start 或 broken，或缺少檔案。不要在壞掉的基礎上要求 Codex 同時改畫面和修所有錯誤，否則無法判斷哪個結果來自哪項需求。",
+        "在副本根目錄執行核心測試，應有三個測試通過、零失敗。這是「修改前」的證據；如果現在已失敗，先核對是否誤用了 start 或 broken，或缺少檔案。不要在壞掉的基礎上要求 Codex 同時改畫面和修所有錯誤，否則無法判斷哪個結果來自哪項需求。",
         "Run the core tests at the copy's root. Expect three passing tests and zero failures. This is evidence from before the edit. If tests already fail, check whether you copied start or broken or omitted a file. Do not ask for visual edits and every unrelated fix on a broken baseline; that obscures which result belongs to which request.",
         "コピー直下で基本テストを実行し、三件成功・失敗ゼロを確認します。これは変更前の証拠です。すでに失敗するなら start や broken をコピーしていないか、ファイル不足がないか確認します。壊れた状態で画面変更と全不具合修正を同時に頼むと、どの依頼がどの結果を生んだか分からなくなります。",
         "복사본 루트에서 핵심 테스트를 실행해 3개 통과, 0개 실패를 확인합니다. 이는 수정 전 증거입니다. 이미 실패하면 start나 broken을 복사했거나 파일이 빠졌는지 확인하세요. 잘못된 기준 상태에서 화면 수정과 모든 오류 수정을 동시에 요청하면 어떤 요구가 어떤 결과를 만들었는지 판단하기 어렵습니다."
@@ -78,7 +78,13 @@
     {
       "type": "code",
       "language": "shell",
-      "code": "node --test core.test.mjs"
+      "code": "node --test core.test.mjs",
+      "label": [
+        "終端機命令：在 codex-first-site 資料夾執行",
+        "Terminal command: run in the codex-first-site folder",
+        "端末コマンド：codex-first-site フォルダーで実行する",
+        "터미널 명령: codex-first-site 폴더에서 실행"
+      ]
     },
     {
       "type": "p",
@@ -92,7 +98,13 @@
     {
       "type": "code",
       "language": "powershell",
-      "code": "py -m http.server 4173 --bind 127.0.0.1"
+      "code": "py -m http.server 4173 --bind 127.0.0.1",
+      "label": [
+        "Windows PowerShell：在練習資料夾啟動本機預覽",
+        "Windows PowerShell: start a local preview in the practice folder",
+        "Windows PowerShell：練習フォルダーでローカルプレビューを起動する",
+        "Windows PowerShell: 실습 폴더에서 로컬 미리보기 시작"
+      ]
     },
     {
       "type": "p",
@@ -106,7 +118,13 @@
     {
       "type": "code",
       "language": "bash",
-      "code": "python3 -m http.server 4173 --bind 127.0.0.1"
+      "code": "python3 -m http.server 4173 --bind 127.0.0.1",
+      "label": [
+        "macOS／Linux 終端機：在練習資料夾啟動本機預覽",
+        "macOS/Linux terminal: start a local preview in the practice folder",
+        "macOS／Linux 端末：練習フォルダーでローカルプレビューを起動する",
+        "macOS/Linux 터미널: 실습 폴더에서 로컬 미리보기 시작"
+      ]
     },
     {
       "type": "p",
@@ -138,12 +156,18 @@
     {
       "type": "code",
       "language": "text",
-      "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run."
+      "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.",
+      "label": [
+        "自然語言提示詞：貼入練習專案的 Codex 任務",
+        "Natural-language prompt: paste into the practice project's Codex task",
+        "自然言語の依頼：練習プロジェクトの Codex タスクに貼り付ける",
+        "자연어 요청: 실습 프로젝트의 Codex 작업에 붙여 넣기"
+      ]
     },
     {
       "type": "p",
       "text": [
-        "理想的差異只有 index.html 的 h1 文字與 style.css 的背景色；不是整份 HTML 被重建，也不是資料程式被換成另一套框架。Codex 若說沒有瀏覽器工具，應把畫面檢查列為未執行，你仍可自行完成。不要要求它為了證明透過而猜測畫面，或把沒有錯誤訊息當成視覺驗收。",
+        "理想的差異只有 index.html 的 h1 文字與 style.css 的背景色；不是整份 HTML 被重建，也不是資料程式被換成另一套框架。Codex 若說沒有瀏覽器工具，應把畫面檢查列為未執行，你仍可自行完成。不要要求它為了聲稱檢查通過而猜測畫面，或把沒有錯誤訊息當成視覺驗收。",
         "The intended diff changes only the h1 in index.html and background color in style.css, not a wholesale HTML rewrite or a different data framework. If Codex lacks browser tools, it should mark visual checks as not run so that you can perform them. Do not invite guessed screenshots or treat absence of error messages as visual acceptance.",
         "期待する差分は index.html の h1 と style.css の背景だけです。HTML 全体の作り直しや別フレームワークへの置換ではありません。ブラウザーツールがなければ画面検証を未実施と報告させ、自分で行います。推測画像を求めたり、エラーが出ないだけで画面合格としたりしないでください。",
         "의도한 차이는 index.html의 h1과 style.css의 배경색뿐입니다. HTML 전체를 다시 만들거나 데이터 코드를 다른 프레임워크로 바꾸는 것이 아닙니다. Codex에 브라우저 도구가 없으면 화면 검사를 미실행으로 적고 직접 확인하세요. 화면을 추측하게 하거나 오류 메시지가 없다는 이유로 시각 검증을 통과 처리하지 않습니다."
@@ -161,7 +185,7 @@
     {
       "type": "p",
       "text": [
-        "重新讀取兩個檔案，核對指定字串與色碼；再次執行核心測試並保留透過結果。瀏覽器重新整理後看標題、背景與原來的 Read、Build。縮到約 390px 再看一次，頁面不應出現整頁橫向捲動；放大到 1280px 檢查內容寬度。窄視窗驗證響應式版面，不代表真的測過 iPhone 或 Android。",
+        "重新讀取兩個檔案，核對指定字串與色碼；再次執行核心測試並保留測試結果。瀏覽器重新整理後看標題、背景與原來的 Read、Build。縮到約 390px 再看一次，頁面不應出現整頁橫向捲動；放大到 1280px 檢查內容寬度。窄視窗驗證響應式版面，不代表真的測過 iPhone 或 Android。",
         "Reopen the two files and verify the requested text and color. Run core tests again and retain the result. Refresh the browser to check heading, background and the existing Read and Build items. At about 390px, the full page should not scroll horizontally; at 1280px, inspect content width. A narrow viewport checks responsive layout, not physical iPhone or Android behavior.",
         "二つのファイルで指定の文字と色を確認し、再テストの結果を残します。ブラウザーを再読込して見出し、背景、以前の Read と Build を見ます。約 390px でページ全体が横スクロールせず、1280px でも幅が適切か確認します。狭い表示の確認はレスポンシブ検証で、iPhone や Android の実機試験ではありません。",
         "두 파일을 다시 열어 문구와 색상 코드를 확인하고 핵심 테스트를 다시 실행해 결과를 남깁니다. 브라우저를 새로고침해 제목, 배경, 기존 Read와 Build를 확인하세요. 약 390px에서는 페이지 전체에 가로 스크롤이 없어야 하고 1280px에서는 내용 폭을 확인합니다. 좁은 화면 검사는 반응형 배치 검증이지 iPhone이나 Android 실기기 테스트가 아닙니다."
@@ -179,7 +203,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "<img src=x>"
+      "code": "<img src=x>",
+      "label": [
+        "網頁輸入值：貼入待辦輸入框，再新增",
+        "Page input: paste into the todo field, then add",
+        "画面の入力値：ToDo 入力欄に貼り付けて追加する",
+        "웹페이지 입력값: 할 일 입력란에 붙여 넣고 추가"
+      ]
     },
     {
       "type": "h2",
@@ -220,7 +250,7 @@
     {
       "type": "p",
       "text": [
-        "自主練習只改主標題成自己的另一句英文，仍保留所有功能並重做正常與空值案例。你能交付修改前後差異、實際測試結果、兩種寬度的觀察及未執行專案，就完成這一篇。接著讀[需求描述](article:codex-prompting)、[專案規則](article:codex-agents-md)與[測試及審查](article:codex-testing-review)，把這次流程變成每次都能重複的工作習慣。",
+        "自主練習只改主標題成自己的另一句英文，仍保留所有功能並重做正常與空值案例。你能交付修改前後差異、實際測試結果、兩種寬度的觀察及未執行項目，就完成這一篇。接著讀[需求描述](article:codex-prompting)、[專案規則](article:codex-agents-md)與[測試及審查](article:codex-testing-review)，把這次流程變成每次都能重複的工作習慣。",
         "For independent practice, change only the heading to another English sentence, preserve all behavior and repeat normal and empty-input cases. Finish by delivering the actual diff, test results, observations at both widths and checks not run. Continue with [writing requests](article:codex-prompting), [project instructions](article:codex-agents-md) and [testing and review](article:codex-testing-review) to make the process repeatable.",
         "追加練習は主見出しを別の英文に変えるだけにして、正常系と空入力を再確認します。実際の差分、テスト結果、二つの幅の観察、未実施項目を提出できれば完了です。[依頼の書き方](article:codex-prompting)、[プロジェクト規則](article:codex-agents-md)、[テストとレビュー](article:codex-testing-review)で繰り返せる習慣にします。",
         "추가 연습으로 주 제목만 다른 영어 문장으로 바꾸고 모든 기능을 보존한 채 정상 입력과 빈 입력을 다시 확인합니다. 실제 차이, 테스트 결과, 두 화면 폭의 관찰, 미실행 항목을 제출하면 완료입니다. [요청 작성](article:codex-prompting), [프로젝트 규칙](article:codex-agents-md), [테스트와 검토](article:codex-testing-review)로 반복 가능한 작업 습관을 만듭니다."
@@ -229,10 +259,28 @@
     {
       "type": "p",
       "text": [
-        "材料是本系列原創、可公開分享的虛構練習網站。參考版核心與瀏覽器行為已在 Windows／Edge 驗證；其他 OS 的啟動說明未冒充實機測試。Codex 入口依 2026-09-14 的[官方快速開始](https://learn.chatgpt.com/docs/quickstart)與 [CLI 檔案](https://learn.chatgpt.com/docs/codex/cli)查證。影象只表示練習成果，不是 Codex 的產品介面。",
+        "材料是本系列原創、可公開分享的虛構練習網站。參考版核心與瀏覽器行為已在 Windows／Edge 驗證；其他 OS 的啟動說明未冒充實機測試。Codex 入口依 2026-09-14 的[官方快速開始](https://learn.chatgpt.com/docs/quickstart)與 [CLI 檔案](https://learn.chatgpt.com/docs/codex/cli)查證。圖片只表示練習成果，不是 Codex 的產品介面。",
         "The materials are an original, shareable fictional website. Reference core and browser behavior were verified on Windows/Edge; other OS startup instructions are not claimed as hands-on tests. Codex entry points were checked on 2026-09-14 against the [official quickstart](https://learn.chatgpt.com/docs/quickstart) and [CLI documentation](https://learn.chatgpt.com/docs/codex/cli). Images illustrate exercise results, not Codex product UI.",
         "教材はこのシリーズ独自の公開共有可能な架空サイトです。参考版の基本動作とブラウザー動作は Windows/Edge で検証し、他 OS の起動説明を実機試験と称していません。入口は 2026-09-14 の[公式クイックスタート](https://learn.chatgpt.com/docs/quickstart)と [CLI 文書](https://learn.chatgpt.com/docs/codex/cli)で確認しました。画像は練習成果で Codex UI ではありません。",
         "자료는 이 시리즈가 직접 만든 공개 공유 가능한 가상 사이트입니다. 참고 버전의 핵심 및 브라우저 동작은 Windows/Edge에서 확인했으며 다른 OS의 시작 안내를 직접 테스트했다고 주장하지 않습니다. Codex 진입점은 2026-09-14의 [공식 빠른 시작](https://learn.chatgpt.com/docs/quickstart)과 [CLI 문서](https://learn.chatgpt.com/docs/codex/cli)로 확인했습니다. 이미지는 실습 결과이며 Codex 제품 화면이 아닙니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "把「預期」與「實際檢查」分開記錄",
+        "Record expectations separately from actual checks",
+        "期待値と実際の確認結果を分けて記録する",
+        "예상 결과와 실제 검사를 나누어 기록하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "下表是驗收時的預期對照，不是你這次執行的通過紀錄。每次另記四項：實際修改的檔案；測試執行目錄與通過／失敗數；390px 與 1280px 各自的實際畫面結果；尚未完成的操作。即使核心測試 3 項全通過，主標題或背景仍可能改錯，因為這組測試檢查待辦資料邏輯。若無法開啟預覽，畫面欄填「未執行」並保留待驗收項目，不要用原始碼中的顏色值代替畫面結果。",
+        "The table below lists expected acceptance results, not a record of your run. Separately record four things: files actually changed; the test working directory and pass/fail counts; actual visual results at 390px and 1280px; and unfinished checks. All three core tests can pass while the heading or background is wrong because these tests cover todo data logic. If preview is unavailable, mark visual checks as not run and leave them pending; a color value in source code is not a visual result.",
+        "次の表は受け入れ時の期待値であり、今回の実行が合格した記録ではありません。実際に変えたファイル、テスト実行場所と成功／失敗数、390px と 1280px それぞれの画面結果、未完了の確認を別に記録します。この三つのテストは ToDo のデータ処理を検証するため、全成功でも見出しや背景が違う場合があります。プレビューできなければ画面確認は未実施として残し、ソース中の色指定を画面結果の代わりにしません。",
+        "아래 표는 예상 인수 결과이며 이번 실행의 통과 기록이 아닙니다. 실제 변경 파일, 테스트 실행 디렉터리와 통과/실패 수, 390px와 1280px 각각의 실제 화면 결과, 미완료 검사를 따로 기록하세요. 세 핵심 테스트는 할 일 데이터 로직을 검사하므로 모두 통과해도 제목이나 배경이 틀릴 수 있습니다. 미리보기를 열 수 없으면 화면 검사를 미실행으로 남기고 소스의 색상 값을 화면 결과로 대신하지 마세요."
       ]
     },
     {

@@ -31,7 +31,7 @@
     {
       "type": "p",
       "text": [
-        "使用 ChatGPT 登入與使用 API 金鑰登入，是兩條不同的存取方式。前者依帳號方案及工作區許可權，後者依 API 組織的計費與限制；同一個電子郵件不會把兩者的額度自動合併。不要因為訂閱有效就假定 API 帳單為零，也不要因為 API 有餘額就推論所有 ChatGPT 雲端功能可用。官方驗證檔案說明雲端 Codex 需要 ChatGPT 登入。",
+        "使用 ChatGPT 登入與使用 API 金鑰登入，是兩條不同的存取方式。前者依帳號方案及工作區權限，後者依 API 組織的計費與限制；同一個電子郵件不會把兩者的額度自動合併。不要因為訂閱有效就假定 API 帳單為零，也不要因為 API 有餘額就推論所有 ChatGPT 雲端功能可用。官方認證文件說明雲端 Codex 需要 ChatGPT 登入。",
         "ChatGPT sign-in and API-key sign-in are separate access methods. The first follows the account plan and workspace permissions; the second follows API organization billing and limits. Sharing an email address does not combine their allowances. An active subscription does not imply a zero API bill, and an API balance does not establish access to every ChatGPT cloud feature. Official authentication documentation requires ChatGPT sign-in for cloud Codex.",
         "ChatGPT サインインと API キーによるサインインは別のアクセス方法です。前者はアカウントのプランとワークスペース権限、後者は API 組織の課金と制限に従います。同じメールアドレスでも利用枠は自動統合されません。有効なサブスクリプションが API 請求ゼロを意味するわけでも、API 残高が全クラウド機能へのアクセスを保証するわけでもありません。公式認証文書ではクラウド Codex に ChatGPT サインインが必要とされています。",
         "ChatGPT 로그인과 API 키 로그인은 별도의 접근 방식입니다. 전자는 계정 요금제와 워크스페이스 권한을, 후자는 API 조직의 과금과 제한을 따릅니다. 이메일 주소가 같다고 한도가 합쳐지지 않습니다. 구독 중이어도 API 요금이 무료라는 뜻은 아니고 API 잔액이 있어도 모든 ChatGPT 클라우드 기능을 쓸 수 있는 것은 아닙니다. 공식 인증 문서에 따르면 클라우드 Codex는 ChatGPT 로그인이 필요합니다."
@@ -76,7 +76,13 @@
     {
       "type": "code",
       "language": "shell",
-      "code": "codex login status"
+      "code": "codex login status",
+      "label": [
+        "終端機命令：查詢 CLI 登入狀態",
+        "Terminal command: inspect CLI sign-in status",
+        "端末コマンド：CLI の認証状態を確認する",
+        "터미널 명령: CLI 로그인 상태 확인"
+      ]
     },
     {
       "type": "p",
@@ -108,7 +114,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "/status"
+      "code": "/status",
+      "label": [
+        "互動斜線指令：在已啟動的 Codex CLI 輸入",
+        "Interactive slash command: enter inside a running Codex CLI",
+        "対話用スラッシュコマンド：起動済みの Codex CLI に入力する",
+        "대화형 슬래시 명령: 실행 중인 Codex CLI에 입력"
+      ]
     },
     {
       "type": "p",
@@ -117,6 +129,42 @@
         "Read the label before interpreting percentages. In a fictional example, 30% used means 70% remains; if the display already says 30% remaining, do not invert it again. Missing or loading values are unknown, not zero. Different windows may have different reset times. One countdown does not establish that every limit has reset, and a later refresh is not a separate allowance.",
         "割合は「使用済み」か「残り」かを先に確認します。架空例で使用済み 30% なら残りは 70% ですが、最初から残り 30% と表示されていれば再計算して逆にしません。未表示や読み込み中は不明でありゼロではありません。期間ごとにリセット時刻が異なる場合があり、一つのカウントダウンから全制限の解除を判断しないでください。更新時刻の違う画面も別枠ではありません。",
         "백분율을 읽기 전에 사용량인지 잔여량인지 확인합니다. 가상 예시로 30% 사용했다면 70%가 남지만 이미 30% 남았다고 표시되면 다시 뒤집어 계산하지 마세요. 값이 없거나 로딩 중이면 0이 아니라 알 수 없음입니다. 기간마다 초기화 시간이 다를 수 있으므로 하나의 남은 시간으로 모든 제한이 풀렸다고 판단하지 않습니다. 나중에 갱신된 화면도 별도의 한도가 아닙니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "判讀練習：同樣是 30%，意思可能相反",
+        "Reading exercise: 30% can mean different things",
+        "読み取り練習：同じ 30% でも意味が違います",
+        "해석 실습: 같은 30%도 뜻이 다를 수 있어요"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "以下為虛構紀錄，不代表你的帳號或任何方案承諾。A：個人工作區、同一個額度區間、標籤「已使用」、數值 30%。B：另一個工作區、標籤「剩餘」、數值 30%，重置時間未顯示。請先回答兩筆各剩多少、能否推算 B 的重置時間，以及 API 儀表板有餘額能否證明 A 的訂閱額度可用。",
+        "These are fictional records, not your account data or a plan promise. A: personal workspace, one allowance window, metric “used,” value 30%. B: a different workspace, metric “remaining,” value 30%, reset time absent. Determine the remaining amount in each record, whether B's reset time can be inferred, and whether an API dashboard balance proves A has subscription allowance.",
+        "以下は架空の記録で、あなたのアカウント情報やプランの保証ではありません。A：個人ワークスペース、ある利用期間、表示は「使用済み」30%。B：別のワークスペース、表示は「残り」30%、リセット時刻は表示なし。それぞれの残量、B のリセット時刻を推定できるか、API の残高で A のサブスクリプション利用枠を確認できるかを考えます。",
+        "다음은 가상 기록이며 실제 계정 정보나 요금제 보장이 아닙니다. A: 개인 워크스페이스의 한 사용 기간, 지표는 ‘사용’, 값은 30%. B: 다른 워크스페이스, 지표는 ‘남음’, 값은 30%이며 초기화 시간은 표시되지 않습니다. 각각 얼마나 남았는지, B의 초기화 시간을 추정할 수 있는지, API 대시보드의 잔액으로 A의 구독 한도를 확인할 수 있는지 판단하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "答案：A 剩餘 70%，B 剩餘 30%；B 的重置時間只能記「未知」。兩筆來自不同工作區，不能相加成一個餘額，也不能互相覆蓋。API 餘額不能證明 ChatGPT 訂閱額度。若連數值或標籤都沒顯示，同樣記「未知」，不要填零。回到實際用量頁時，先核對來源、工作區、區間與時區，再記錄畫面當下顯示的值。",
+        "Answers: A has 70% remaining and B has 30%; B's reset time is unknown. Different workspaces must not be added into one balance or used to overwrite each other. An API balance does not establish ChatGPT subscription allowance. If a value or metric label is absent, record unknown rather than zero. On the actual usage page, check the source, workspace, window and timezone before recording the displayed value.",
+        "答え：A の残量は 70%、B は 30%、B のリセット時刻は不明です。別ワークスペースの値を合算したり、一方で他方を上書きしたりしません。API の残高は ChatGPT サブスクリプションの利用枠を示しません。数値や指標名がない場合もゼロではなく不明と記録します。実際のページでは出典、ワークスペース、期間、タイムゾーンを確認してから表示値を記録します。",
+        "정답: A는 70%, B는 30%가 남았으며 B의 초기화 시간은 알 수 없습니다. 다른 워크스페이스의 값을 하나의 잔액으로 더하거나 서로 덮어쓰면 안 됩니다. API 잔액으로 ChatGPT 구독 한도를 확인할 수 없습니다. 값이나 지표명이 없을 때도 0 대신 모름으로 기록하세요. 실제 사용량 페이지에서는 출처, 워크스페이스, 기간, 시간대를 확인한 뒤 표시된 값을 기록합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "維護提醒：官方目前說明 ChatGPT Work 與 Codex 共用用量，因此其他 Work 任務也可能影響同一帳號的可用額度。以[官方用量說明](https://learn.chatgpt.com/docs/pricing)及自己的用量頁為準；不能只憑這次提示詞的長短估算還能做幾個任務。",
+        "Maintenance note: current documentation states that ChatGPT Work and Codex share usage, so other Work tasks can affect the same account's allowance. Consult the [official usage explanation](https://learn.chatgpt.com/docs/pricing) and your usage page; prompt length alone cannot tell you how many tasks remain.",
+        "更新時の確認点：現在の公式文書では ChatGPT Work と Codex は使用量を共有するため、他の Work タスクも同じアカウントの利用枠に影響し得ます。[公式の使用量説明](https://learn.chatgpt.com/docs/pricing)と自分の使用量ページを確認してください。依頼文の長さだけでは残りタスク数を算出できません。",
+        "유지 관리 참고: 현재 공식 문서에 따르면 ChatGPT Work와 Codex는 사용량을 공유하므로 다른 Work 작업도 같은 계정의 한도에 영향을 줄 수 있습니다. [공식 사용량 설명](https://learn.chatgpt.com/docs/pricing)과 자신의 사용량 페이지를 기준으로 삼으세요. 요청문 길이만으로 남은 작업 수를 계산할 수는 없습니다."
       ]
     },
     {
@@ -140,7 +188,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "Checked at: YYYY-MM-DD HH:mm timezone\nInterface and version: desktop / CLI / browser\nAuthentication: ChatGPT / API / unknown\nWorkspace category: personal / managed / unknown\nUsage source: Codex dashboard / Platform Usage\nWindow label: copied without private identifiers\nMetric meaning: used / remaining / unknown\nDisplayed value: value / unknown\nReset time and timezone: value / unknown\nFeature or error being checked: short description\nNext step: verify account / wait / ask workspace admin"
+      "code": "Checked at: YYYY-MM-DD HH:mm timezone\nInterface and version: desktop / CLI / browser\nAuthentication: ChatGPT / API / unknown\nWorkspace category: personal / managed / unknown\nUsage source: Codex dashboard / Platform Usage\nWindow label: copied without private identifiers\nMetric meaning: used / remaining / unknown\nDisplayed value: value / unknown\nReset time and timezone: value / unknown\nFeature or error being checked: short description\nNext step: verify account / wait / ask workspace admin",
+      "label": [
+        "私人筆記範本：填寫欄位，不是指令",
+        "Private note template: fill in fields; this is not a command",
+        "個人用メモ：項目を記入する。コマンドではありません",
+        "개인 메모 양식: 필드를 작성하며 명령으로 실행하지 않음"
+      ]
     },
     {
       "type": "p",
@@ -181,7 +235,7 @@
     {
       "type": "p",
       "text": [
-        "本例沒有修改計費設定，結束時關閉用量頁即可。若你真的要登出 CLI，在終端機執行 codex logout；這會清除相應的儲存驗證，不會退費或復原已修改的程式。官方檔案指出 CLI 與 IDE 可共用登入快取，因此在其中一處登出可能讓另一處也需要重新登入。不要為了讓教學截圖乾淨而重置真實帳號資料。",
+        "本例沒有修改計費設定，結束時關閉用量頁即可。若你真的要登出 CLI，在終端機執行 codex logout；這會清除相應的已儲存的登入憑證，不會退費或復原已修改的程式。官方文件指出 CLI 與 IDE 可共用登入快取，因此在其中一處登出可能讓另一處也需要重新登入。不要為了讓教學截圖乾淨而重置真實帳號資料。",
         "This exercise changes no billing settings, so close the usage page when finished. If you actually want to sign out of CLI, run codex logout in the terminal. It clears the relevant stored authentication, not charges or file changes. Official documentation notes that CLI and IDE can share cached sign-in, so signing out in one may require signing in again in the other. Do not reset real account data merely to obtain a tidy tutorial screenshot.",
         "本実習では課金設定を変更していないため、使用量ページを閉じれば終了です。本当に CLI からログアウトする場合だけ端末で codex logout を実行します。保存された認証を消す操作で、返金やファイル復元ではありません。公式文書によると CLI と IDE は認証キャッシュを共有するため、一方のログアウトで他方にも再ログインが必要になる場合があります。画像をきれいにするために実アカウントをリセットしないでください。",
         "이 실습은 결제 설정을 바꾸지 않으므로 사용량 페이지를 닫으면 끝납니다. 실제로 CLI에서 로그아웃하려면 터미널에서 codex logout을 실행합니다. 저장된 인증을 지우는 동작이며 환불이나 파일 복원이 아닙니다. 공식 문서에 따르면 CLI와 IDE는 로그인 캐시를 공유할 수 있어 한쪽에서 로그아웃하면 다른 쪽도 다시 로그인해야 할 수 있습니다. 튜토리얼 화면을 깔끔하게 만들려고 실제 계정 데이터를 초기화하지 마세요."

@@ -221,6 +221,12 @@ scope:
 
 指令與資料流見 docs/codex-learning/README.md。evidence/series-integrity.json 僅為靜態完整性，各篇 previewAccepted 均為 false；既有瀏覽器報告保存自己的範圍，不冒充最新全套通過。
 
+## Latest content deepening
+
+The scoped content task continued from a80bc077 through eleven A/B lessons (01, 02, 33, 34, 06, 07, 05, 35, 36, 37, 14). Added worked scenarios, usage interpretation, input locations, guarded Windows folder creation, missing-file recovery and explicit IDE context attachment. Details and exact hashes are in docs/codex-learning/evidence/unit-a-depth-review.json and unit-b-depth-review.json. Windows/Node reference checks passed within their stated scope; no product UI, installation, login or browser operation was performed.
+
+Current targeted depth coverage is 16 unique lessons including the earlier five representatives; 44 remain to review, starting with Unit C. All full-text final acceptance remains open. Latest series integrity, 9 API content and 9 compiler tests pass; content audit is 0 errors/26 warnings. The larger check counts above are historical evidence with their original scope. This is still a local draft branch, without a partial PR or deployment.
+
 ## Remaining blockers
 
 1. 整合後的歷史 39 篇瀏覽器檢查在 572 項後，韓文 IDE 桌面頁等待程式碼逾時。depth-browser-shared-integration.json 保持 failed。

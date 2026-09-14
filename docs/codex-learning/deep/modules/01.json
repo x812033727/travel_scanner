@@ -31,7 +31,7 @@
     {
       "type": "p",
       "text": [
-        "Codex 是能在取得相應工具與許可權後讀檔、修改及執行命令的代理。模型負責推理；任務儲存這次需求與對話；工作環境決定實際能接觸哪些檔案和工具。換一個更強的模型，不會讓選錯資料夾的任務突然找到你的專案。後續每次求助，都先記下入口、工作目錄和可用工具。",
+        "Codex 是能在取得相應工具與權限後讀檔、修改及執行命令的代理。模型負責推理；任務儲存這次需求與對話；工作環境決定實際能接觸哪些檔案和工具。換一個更強的模型，不會讓選錯資料夾的任務突然找到你的專案。後續每次求助，都先記下入口、工作目錄和可用工具。",
         "Codex is an agent that can read files, make changes and run commands when the appropriate tools and permissions are available. The model supplies reasoning; the task holds the request and conversation; the environment determines accessible files and tools. A more capable model will not correct a task pointed at the wrong folder. When asking for help, identify the interface, working directory and available tools first.",
         "Codex は、必要なツールと権限があればファイルを読み、変更し、コマンドを実行できるエージェントです。モデルは推論、タスクは依頼と会話、環境は利用できるファイルとツールを担います。高性能なモデルに変えても、間違ったフォルダーを選んだ問題は直りません。質問するときは入口、作業場所、使えるツールを先に整理しましょう。",
         "Codex는 필요한 도구와 권한이 주어지면 파일을 읽고 수정하며 명령을 실행하는 에이전트입니다. 모델은 추론을, 작업은 요청과 대화 기록을, 환경은 접근 가능한 파일과 도구를 담당합니다. 더 강력한 모델을 선택해도 잘못 연 폴더가 자동으로 바뀌지는 않습니다. 도움을 요청할 때는 사용 화면, 작업 경로, 이용 가능한 도구부터 확인하세요."
@@ -40,7 +40,7 @@
     {
       "type": "p",
       "text": [
-        "「與 ChatGPT 有什麼不同」不能只用應用程式名稱判斷：官方桌面檔案現在以 ChatGPT 桌面應用程式說明 Codex 工作。實際差別要看當前對話是否連到專案、是否能執行工具，以及成果是回答文字還是落在檔案中。一般聊天也可能有工具；Codex 也可能因環境限制只能分析。請看這一次任務的能力，不要只看圖示或舊截圖。",
+        "「與 ChatGPT 有什麼不同」不能只用應用程式名稱判斷：官方桌面文件現在以 ChatGPT 桌面應用程式說明 Codex 工作。實際差別要看當前對話是否連到專案、是否能執行工具，以及成果是回答文字還是落在檔案中。一般聊天也可能有工具；Codex 也可能因環境限制只能分析。請看這一次任務的能力，不要只看圖示或舊截圖。",
         "The distinction from ChatGPT is not simply the application name: current desktop documentation describes Codex work inside the ChatGPT desktop app. Check whether this conversation has a project, can use tools and produces actual file changes or only an answer. A general chat may also have tools; a constrained Codex environment may only support analysis. Judge the capabilities of this particular task rather than its icon or an old screenshot.",
         "ChatGPT との違いをアプリ名だけで判断しないでください。現在の公式デスクトップ文書では、ChatGPT デスクトップアプリ内の Codex 作業が説明されています。プロジェクトに接続しているか、ツールを使えるか、結果が文章だけか実ファイルの変更かを見ます。通常のチャットにツールがある場合も、Codex が分析だけに制限される場合もあります。古い画像やアイコンより、今のタスクの能力を確認します。",
         "ChatGPT와의 차이를 앱 이름만으로 판단하면 안 됩니다. 현재 공식 데스크톱 문서는 ChatGPT 데스크톱 앱에서의 Codex 작업을 설명합니다. 현재 대화에 프로젝트가 연결되어 있는지, 도구를 실행할 수 있는지, 결과가 답변인지 실제 파일 변경인지 확인하세요. 일반 채팅에도 도구가 있을 수 있고 Codex도 분석만 가능한 환경일 수 있습니다. 오래된 아이콘보다 이번 작업의 실제 기능을 기준으로 판단합니다."
@@ -53,6 +53,33 @@
         "Local work uses a folder on the selected computer; cloud work uses a separately configured environment. Identical project names do not automatically synchronize uncommitted files. Mobile remote work also needs a reachable host. See [choosing a platform](article:codex-platforms-guide) to compare workflows. This lesson uses a local folder in desktop or CLI so that you can readily inspect the result.",
         "ローカル作業は選択したコンピューターのフォルダー、クラウド作業は別に設定した環境を使います。同名のプロジェクトでも未コミットのファイルが自動同期するとは限りません。スマートフォンのリモート作業には接続可能なホストも必要です。[入口の選び方](article:codex-platforms-guide)で比較できます。今回は成果を直接確認しやすいローカルのデスクトップか CLI を使います。",
         "로컬 작업은 선택한 컴퓨터의 폴더를, 클라우드 작업은 별도로 구성한 환경을 사용합니다. 프로젝트 이름이 같아도 커밋하지 않은 파일까지 자동 동기화되지는 않습니다. 휴대전화 원격 작업에는 연결 가능한 호스트도 필요합니다. 방식 비교는 [플랫폼 선택](article:codex-platforms-guide)을 참고하세요. 이번에는 결과를 쉽게 확인할 수 있도록 데스크톱 또는 CLI의 로컬 폴더를 사용합니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "先判斷：這個需求需要什麼能力？",
+        "First decide: what capabilities does the request need?",
+        "まず判断：依頼に必要な機能は何ですか",
+        "먼저 판단하기: 요청에 어떤 기능이 필요한가요"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先不執行任務，判斷三個情境。① 你貼上十行文字，請它說明意思。② 你要求把電腦中的 packing.txt 改好，關閉對話後也能打開檔案看到結果。③ 你希望它在已設定的 GitHub 儲存庫環境中修改程式，供你稍後檢查差異。各情境需要的是讀取提供的文字、存取本機檔案，還是存取指定的遠端環境？",
+        "Without running a task, classify three scenarios. ① You paste ten lines and ask for an explanation. ② You want packing.txt on your computer changed so that you can open the result after closing the conversation. ③ You want changes in a configured GitHub repository environment for a later diff review. Which requires reading supplied text, local file access or access to a specific remote environment?",
+        "タスクを実行せずに三つの場面を分類します。① 貼り付けた十行の説明を求める。② パソコンの packing.txt を変更し、会話を閉じた後もファイルで結果を確認したい。③ 設定済みの GitHub リポジトリ環境で変更を行い、後から差分を確認したい。それぞれ必要なのは、提供された文章の読解、ローカルファイルへのアクセス、特定の遠隔環境へのアクセスのどれでしょうか。",
+        "작업을 실행하지 않고 세 상황을 구분해 보세요. ① 열 줄을 붙여 넣고 설명을 요청합니다. ② 컴퓨터의 packing.txt를 수정하여 대화를 닫은 뒤에도 파일에서 결과를 확인하고 싶습니다. ③ 설정된 GitHub 저장소 환경에서 수정한 뒤 나중에 차이를 검토하고 싶습니다. 각 상황에는 제공한 텍스트 읽기, 로컬 파일 접근, 지정한 원격 환경 접근 중 무엇이 필요한가요?"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "答案依序是：① 提供的文字已足夠，不必存取你的整個資料夾。② 必須選對本機資料夾，且工具確實有讀寫能力；回覆一段新文字不代表檔案已修改。③ 必須先設定並選對遠端儲存庫與環境；本機尚未提交的檔案不能當成它已讀到的內容。第二種可接著看[桌面入門](article:codex-desktop-getting-started)，第三種看[雲端任務](article:codex-cloud-tasks-github)。這是需求判讀練習，不要求你現在開通三種入口。",
+        "The answers are: ① The supplied text is sufficient; access to your whole folder is unnecessary. ② Select the correct local folder and confirm that tools can read and write it; a reply containing revised text is not evidence that the file changed. ③ Configure and select the remote repository and environment; do not assume it has read uncommitted local files. Continue with [desktop basics](article:codex-desktop-getting-started) for the second case or [cloud tasks](article:codex-cloud-tasks-github) for the third. This exercise does not require setting up all three interfaces.",
+        "答えは順に、① 提供した文章だけで足り、フォルダー全体へのアクセスは不要。② 正しいローカルフォルダーを選び、ツールが読み書きできることを確認する。修正文が返るだけではファイル変更の証拠にならない。③ 遠隔リポジトリと環境を設定して選び、未コミットのローカルファイルを読んだとは決めつけない、です。② は[デスクトップ入門](article:codex-desktop-getting-started)、③ は[クラウドタスク](article:codex-cloud-tasks-github)へ進めます。今ここで全入口を設定する必要はありません。",
+        "정답은 다음과 같습니다. ① 제공한 텍스트만으로 충분하며 폴더 전체에 접근할 필요는 없습니다. ② 올바른 로컬 폴더를 선택하고 도구가 읽고 쓸 수 있는지 확인해야 합니다. 수정된 글을 답변으로 받았다는 사실만으로 파일이 바뀌었다고 볼 수는 없습니다. ③ 원격 저장소와 환경을 설정하고 선택해야 하며 커밋하지 않은 로컬 파일을 읽었다고 가정하면 안 됩니다. 두 번째는 [데스크톱 입문](article:codex-desktop-getting-started), 세 번째는 [클라우드 작업](article:codex-cloud-tasks-github)으로 이어집니다. 지금 세 방식을 모두 설정할 필요는 없습니다."
       ]
     },
     {
@@ -94,12 +121,18 @@
     {
       "type": "code",
       "language": "markdown",
-      "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required."
+      "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.",
+      "label": [
+        "檔案內容：貼入 README.md",
+        "File content: paste into README.md",
+        "ファイル内容：README.md に貼り付ける",
+        "파일 내용: README.md에 붙여 넣기"
+      ]
     },
     {
       "type": "p",
       "text": [
-        "檔案二：codex-orientation/packing.txt。每個專案各佔一行，最後一行後可以有換行。",
+        "檔案二：codex-orientation/packing.txt。每個物品各占一行，最後一行後可以有換行。",
         "File two: codex-orientation/packing.txt. Put each item on its own line; a final newline is fine.",
         "二つ目は codex-orientation/packing.txt。各項目を一行ずつ書き、末尾に改行があっても構いません。",
         "둘째 파일은 codex-orientation/packing.txt입니다. 항목마다 한 줄씩 쓰며 마지막 줄 뒤에 줄바꿈이 있어도 됩니다."
@@ -108,7 +141,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "Notebook\nBottle\nUmbrella"
+      "code": "Notebook\nBottle\nUmbrella",
+      "label": [
+        "檔案內容：貼入 packing.txt",
+        "File content: paste into packing.txt",
+        "ファイル内容：packing.txt に貼り付ける",
+        "파일 내용: packing.txt에 붙여 넣기"
+      ]
     },
     {
       "type": "h2",
@@ -131,7 +170,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing."
+      "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.",
+      "label": [
+        "自然語言提示詞：貼入 Codex 任務輸入區",
+        "Natural-language prompt: paste into the Codex task input",
+        "自然言語の依頼：Codex タスクの入力欄に貼り付ける",
+        "자연어 요청: Codex 작업 입력란에 붙여 넣기"
+      ]
     },
     {
       "type": "p",
@@ -145,7 +190,7 @@
     {
       "type": "h2",
       "text": [
-        "第二步：只修改一個可檢查的專案",
+        "第二步：只修改一個可檢查的項目",
         "Step 2: request one checkable edit",
         "手順 2：確認できる変更を一つ依頼する",
         "2단계: 확인 가능한 변경 하나 요청하기"
@@ -154,12 +199,18 @@
     {
       "type": "code",
       "language": "text",
-      "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed."
+      "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.",
+      "label": [
+        "自然語言提示詞：貼入同一個 Codex 任務",
+        "Natural-language prompt: paste into the same Codex task",
+        "自然言語の依頼：同じ Codex タスクに貼り付ける",
+        "자연어 요청: 같은 Codex 작업에 붙여 넣기"
+      ]
     },
     {
       "type": "p",
       "text": [
-        "接受相關檔案修改要求後，重新開啟 packing.txt。預期三行依序是 Notebook、Bottle、Raincoat；README.md 完全相同，沒有新套件或多餘檔案。若工具要求超出這個資料夾的授權，先看原因並縮小任務。本例不需要全面存取電腦。關於許可權的實際控制，另見[許可權與沙盒](article:codex-permissions)。",
+        "接受相關檔案修改要求後，重新開啟 packing.txt。預期三行依序是 Notebook、Bottle、Raincoat；README.md 完全相同，沒有新套件或多餘檔案。若工具要求超出這個資料夾的授權，先看原因並縮小任務。本例不需要全面存取電腦。關於權限的實際控制，另見[權限與沙盒](article:codex-permissions)。",
         "After allowing the relevant file edit, reopen packing.txt. The three lines should be Notebook, Bottle and Raincoat, with README.md unchanged and no packages or extra files. If a tool asks for access outside this folder, inspect the reason and narrow the task. This exercise does not need unrestricted access to the computer. See [permissions and sandboxing](article:codex-permissions) for the actual controls.",
         "必要なファイル変更を許可した後、packing.txt を開き直します。Notebook、Bottle、Raincoat の三行になり、README.md は同じで、パッケージや余分なファイルが増えていないことを確認します。フォルダー外の権限を求められたら理由を読み、範囲を絞ってください。この実習にコンピューター全体へのアクセスは不要です。制御方法は[権限とサンドボックス](article:codex-permissions)を参照してください。",
         "해당 파일 수정을 허용한 뒤 packing.txt를 다시 엽니다. Notebook, Bottle, Raincoat의 세 줄이어야 하며 README.md는 그대로이고 추가 패키지나 파일이 없어야 합니다. 도구가 폴더 밖의 접근 권한을 요구하면 이유를 확인하고 범위를 좁히세요. 이 실습에는 컴퓨터 전체 접근이 필요 없습니다. 실제 제어 방법은 [권한과 샌드박스](article:codex-permissions)를 참고합니다."
@@ -222,7 +273,7 @@
     {
       "type": "p",
       "text": [
-        "入口與產品名稱依 2026-09-14 的[桌面官方檔案](https://learn.chatgpt.com/docs/app)及 [CLI 官方檔案](https://learn.chatgpt.com/docs/codex/cli)核對。這是原創文字檔練習；可用工具與實際回覆依讀者環境而異。跨平臺編輯步驟未冒充三個作業系統的實機 Codex 測試。",
+        "入口與產品名稱依 2026-09-14 的[桌面官方文件](https://learn.chatgpt.com/docs/app)及 [CLI 官方文件](https://learn.chatgpt.com/docs/codex/cli)核對。這是原創文字檔練習；可用工具與實際回覆依讀者環境而異。跨平臺編輯步驟未冒充三個作業系統的實機 Codex 測試。",
         "Interface and product terminology were checked against the [desktop documentation](https://learn.chatgpt.com/docs/app) and [CLI documentation](https://learn.chatgpt.com/docs/codex/cli) on 2026-09-14. This is an original text-file exercise; available tools and responses depend on your environment. The platform editing instructions are not presented as hands-on Codex tests on all three operating systems.",
         "入口と製品名は 2026-09-14 の[デスクトップ公式文書](https://learn.chatgpt.com/docs/app)と [CLI 公式文書](https://learn.chatgpt.com/docs/codex/cli)で確認しました。教材は独自のテキストファイル練習で、ツールや応答は環境により異なります。各 OS の編集手順を三つの OS での Codex 実機試験と称してはいません。",
         "화면 및 제품 명칭은 2026-09-14의 [공식 데스크톱 문서](https://learn.chatgpt.com/docs/app)와 [CLI 문서](https://learn.chatgpt.com/docs/codex/cli)로 확인했습니다. 직접 만든 텍스트 파일 실습이며 도구와 답변은 환경마다 다릅니다. 운영체제별 편집 안내를 세 운영체제에서 Codex를 직접 테스트한 결과로 제시하지 않습니다."

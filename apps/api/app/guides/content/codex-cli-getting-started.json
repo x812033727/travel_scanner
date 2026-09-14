@@ -83,7 +83,7 @@
             },
             {
               "type": "text",
-              "text": "。可以啟動程式不代表帳號有可用額度；登入成功也不代表已取得目標資料夾許可權。"
+              "text": "。可以啟動程式不代表帳號有可用額度；登入成功也不代表已取得目標資料夾權限。"
             }
           ]
         },
@@ -153,13 +153,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "系統終端機：查版本與說明，尚未啟動任務",
           "language": "text",
           "code": "codex --version\ncodex --help\n"
         },
         {
           "type": "paragraph",
-          "text": "這兩行貼在系統終端機，預期顯示版本及使用說明後回到提示符號，尚未開始模型任務。找不到 codex 就停在安裝排錯，先不要登入。實際查得的版本可能比文章新；以本機 help 和官方檔案核對旗標，不要求安裝本文驗證時的預覽版。"
+          "text": "這兩行貼在系統終端機，預期顯示版本及使用說明後回到提示符號，尚未開始模型任務。找不到 codex 就停在安裝排錯，先不要登入。實際查得的版本可能比文章新；以本機 help 和官方文件核對旗標，不要求安裝本文驗證時的預覽版。"
         },
         {
           "type": "heading",
@@ -172,7 +172,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案內容：貼入 greeting.txt，另存原始副本",
           "language": "text",
           "code": "Hello, traveler.\nLesson marker: CLI-START-01\n"
         },
@@ -187,7 +187,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "系統終端機：每行完成後才執行下一行",
           "language": "text",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -197,17 +197,17 @@
         },
         {
           "type": "paragraph",
-          "text": "進入 Codex 輸入框後才執行下面的 /status。檢視目前目錄、模型及許可權資訊，欄位依版本而異。不要把它貼回 PowerShell，也不要把「read-only」理解成完全沒有網路或所有外部工具都被禁用；它設定的是沙盒範圍，外部工具仍受各自授權控制。本練習只使用本機文字檔。"
+          "text": "進入 Codex 輸入框後才執行下面的 /status。檢視目前目錄、模型及權限資訊，欄位依版本而異。不要把它貼回 PowerShell，也不要把「read-only」理解成完全沒有網路或所有外部工具都被禁用；它設定的是沙盒範圍，外部工具仍受各自授權控制。本練習只使用本機文字檔。"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "互動斜線指令：在 Codex CLI 輸入區執行",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在唯讀 Codex 工作階段輸入",
           "language": "text",
           "code": "Read greeting.txt in the current folder. Report the working directory and both lines exactly. Do not edit files, use external services, or infer missing content. If the file is missing, stop and report that.\n"
         },
@@ -220,7 +220,7 @@
             },
             {
               "type": "article",
-              "text": "許可權教學",
+              "text": "權限教學",
               "kind": "life",
               "slug": "codex-permissions"
             },
@@ -241,13 +241,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "系統終端機：退出 Codex 後啟動寫入工作階段",
           "language": "text",
           "code": "codex --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在寫入工作階段輸入",
           "language": "text",
           "code": "In greeting.txt, replace only the first line with: Hello, Codex learner.\nPreserve the lesson marker and greeting.original.txt. Do not create other project files.\nRead the file after editing and report the exact before/after change.\n"
         },
@@ -270,9 +270,28 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "系統終端機：在練習目錄開啟接續選單",
           "language": "text",
           "code": "codex resume\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接續後先做一個狀態判讀：對話若記著「已把第一行改好」，但你剛從備份還原 greeting.txt，Codex 應重新讀檔後說明目前是 Hello, traveler.。請明確要求「只讀取並比較，不要再次套用上次修改」。新任務、退出與接續是管理對話的動作；真正的恢復仍靠你核對與還原檔案。需要分岔或跨目錄查找時，再看"
+            },
+            {
+              "type": "article",
+              "text": "工作階段教學",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -434,7 +453,7 @@
             },
             {
               "type": "text",
-              "text": "。可以启动程式不代表帐号有可用额度；登入成功也不代表已取得目标资料夹许可权。"
+              "text": "。可以启动程式不代表帐号有可用额度；登入成功也不代表已取得目标资料夹权限。"
             }
           ]
         },
@@ -504,13 +523,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "系统终端机：查版本与说明，尚未启动任务",
           "language": "text",
           "code": "codex --version\ncodex --help\n"
         },
         {
           "type": "paragraph",
-          "text": "这两行贴在系统终端机，预期显示版本及使用说明后回到提示符号，尚未开始模型任务。找不到 codex 就停在安装排错，先不要登入。实际查得的版本可能比文章新；以本机 help 和官方档案核对旗标，不要求安装本文验证时的预览版。"
+          "text": "这两行贴在系统终端机，预期显示版本及使用说明后回到提示符号，尚未开始模型任务。找不到 codex 就停在安装排错，先不要登入。实际查得的版本可能比文章新；以本机 help 和官方文件核对旗标，不要求安装本文验证时的预览版。"
         },
         {
           "type": "heading",
@@ -523,7 +542,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案内容：贴入 greeting.txt，另存原始副本",
           "language": "text",
           "code": "Hello, traveler.\nLesson marker: CLI-START-01\n"
         },
@@ -538,7 +557,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "系统终端机：每行完成后才执行下一行",
           "language": "text",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -548,17 +567,17 @@
         },
         {
           "type": "paragraph",
-          "text": "进入 Codex 输入框后才执行下面的 /status。检视目前目录、模型及许可权资讯，栏位依版本而异。不要把它贴回 PowerShell，也不要把「read-only」理解成完全没有网路或所有外部工具都被禁用；它设定的是沙盒范围，外部工具仍受各自授权控制。本练习只使用本机文字档。"
+          "text": "进入 Codex 输入框后才执行下面的 /status。检视目前目录、模型及权限资讯，栏位依版本而异。不要把它贴回 PowerShell，也不要把「read-only」理解成完全没有网路或所有外部工具都被禁用；它设定的是沙盒范围，外部工具仍受各自授权控制。本练习只使用本机文字档。"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "互动斜线指令：在 Codex CLI 输入区执行",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在唯读 Codex 工作阶段输入",
           "language": "text",
           "code": "Read greeting.txt in the current folder. Report the working directory and both lines exactly. Do not edit files, use external services, or infer missing content. If the file is missing, stop and report that.\n"
         },
@@ -571,7 +590,7 @@
             },
             {
               "type": "article",
-              "text": "许可权教学",
+              "text": "权限教学",
               "kind": "life",
               "slug": "codex-permissions"
             },
@@ -592,13 +611,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "系统终端机：退出 Codex 后启动写入工作阶段",
           "language": "text",
           "code": "codex --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在写入工作阶段输入",
           "language": "text",
           "code": "In greeting.txt, replace only the first line with: Hello, Codex learner.\nPreserve the lesson marker and greeting.original.txt. Do not create other project files.\nRead the file after editing and report the exact before/after change.\n"
         },
@@ -621,9 +640,28 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "系统终端机：在练习目录开启接续选单",
           "language": "text",
           "code": "codex resume\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接续后先做一个状态判读：对话若记著「已把第一行改好」，但你刚从备份还原 greeting.txt，Codex 应重新读档后说明目前是 Hello, traveler.。请明确要求「只读取并比较，不要再次套用上次修改」。新任务、退出与接续是管理对话的动作；真正的恢复仍靠你核对与还原档案。需要分岔或跨目录查找时，再看"
+            },
+            {
+              "type": "article",
+              "text": "工作阶段教学",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -855,7 +893,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "System terminal: inspect version and help without starting a task",
           "language": "text",
           "code": "codex --version\ncodex --help\n"
         },
@@ -874,7 +912,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File content: paste into greeting.txt and save an original copy",
           "language": "text",
           "code": "Hello, traveler.\nLesson marker: CLI-START-01\n"
         },
@@ -889,7 +927,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "System terminal: finish each line before running the next",
           "language": "text",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -903,13 +941,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Interactive slash command: enter in the Codex CLI composer",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in the read-only Codex session",
           "language": "text",
           "code": "Read greeting.txt in the current folder. Report the working directory and both lines exactly. Do not edit files, use external services, or infer missing content. If the file is missing, stop and report that.\n"
         },
@@ -943,13 +981,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "System terminal: exit Codex first, then start a writable session",
           "language": "text",
           "code": "codex --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in the writable session",
           "language": "text",
           "code": "In greeting.txt, replace only the first line with: Hello, Codex learner.\nPreserve the lesson marker and greeting.original.txt. Do not create other project files.\nRead the file after editing and report the exact before/after change.\n"
         },
@@ -972,9 +1010,28 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "System terminal: open the resume picker in the practice directory",
           "language": "text",
           "code": "codex resume\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "After resuming, check state: if the conversation remembers the edited first line but you restored greeting.txt from the backup, Codex should reread it and report Hello, traveler. Explicitly request reading and comparison only, without reapplying the earlier edit. New chats, exit and resume manage conversations; restoring files still requires a separate file operation and check. See "
+            },
+            {
+              "type": "article",
+              "text": "sessions",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": " for forking or looking across directories."
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -1206,7 +1263,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "OS の端末：タスクを始めずに版とヘルプを確認する",
           "language": "text",
           "code": "codex --version\ncodex --help\n"
         },
@@ -1225,7 +1282,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル内容：greeting.txt に貼り付け、原本コピーを保存する",
           "language": "text",
           "code": "Hello, traveler.\nLesson marker: CLI-START-01\n"
         },
@@ -1240,7 +1297,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "OS の端末：一行が完了してから次を実行する",
           "language": "text",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -1254,13 +1311,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "対話用スラッシュコマンド：Codex CLI の入力欄で実行する",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：読み取り専用の Codex セッションに入力する",
           "language": "text",
           "code": "Read greeting.txt in the current folder. Report the working directory and both lines exactly. Do not edit files, use external services, or infer missing content. If the file is missing, stop and report that.\n"
         },
@@ -1294,13 +1351,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "OS の端末：Codex 終了後に書き込み可能なセッションを起動する",
           "language": "text",
           "code": "codex --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：書き込み可能なセッションに入力する",
           "language": "text",
           "code": "In greeting.txt, replace only the first line with: Hello, Codex learner.\nPreserve the lesson marker and greeting.original.txt. Do not create other project files.\nRead the file after editing and report the exact before/after change.\n"
         },
@@ -1323,9 +1380,28 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "OS の端末：練習ディレクトリで再開一覧を開く",
           "language": "text",
           "code": "codex resume\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "再開後は状態を確認します。会話に一行目の変更が記録されていても、greeting.txt をバックアップから戻したなら、再読込した結果は Hello, traveler. のはずです。「読み取りと比較だけを行い、以前の変更を再適用しない」と明示してください。新規会話、終了、再開は会話の管理で、ファイル復元は別途操作して確認します。分岐や別ディレクトリの検索は"
+            },
+            {
+              "type": "article",
+              "text": "セッション",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "へ進みます。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -1557,7 +1633,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "시스템 터미널: 작업을 시작하지 않고 버전과 도움말 확인",
           "language": "text",
           "code": "codex --version\ncodex --help\n"
         },
@@ -1576,7 +1652,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일 내용: greeting.txt에 붙여 넣고 원본 사본 저장",
           "language": "text",
           "code": "Hello, traveler.\nLesson marker: CLI-START-01\n"
         },
@@ -1591,7 +1667,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "시스템 터미널: 한 줄이 완료된 후 다음 줄 실행",
           "language": "text",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -1605,13 +1681,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "대화형 슬래시 명령: Codex CLI 입력란에서 실행",
           "language": "text",
           "code": "/status\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 읽기 전용 Codex 세션에 입력",
           "language": "text",
           "code": "Read greeting.txt in the current folder. Report the working directory and both lines exactly. Do not edit files, use external services, or infer missing content. If the file is missing, stop and report that.\n"
         },
@@ -1645,13 +1721,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "시스템 터미널: Codex 종료 후 쓰기 가능한 세션 시작",
           "language": "text",
           "code": "codex --sandbox workspace-write --ask-for-approval on-request\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 쓰기 가능한 세션에 입력",
           "language": "text",
           "code": "In greeting.txt, replace only the first line with: Hello, Codex learner.\nPreserve the lesson marker and greeting.original.txt. Do not create other project files.\nRead the file after editing and report the exact before/after change.\n"
         },
@@ -1674,9 +1750,28 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "시스템 터미널: 실습 디렉터리에서 재개 목록 열기",
           "language": "text",
           "code": "codex resume\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "재개 후 상태를 확인하세요. 대화에는 첫 줄을 고쳤다고 남아 있어도 greeting.txt를 백업으로 복원했다면 다시 읽은 결과는 Hello, traveler.여야 합니다. 이전 수정을 다시 적용하지 말고 읽기와 비교만 하라고 명시하세요. 새 대화, 종료, 재개는 대화를 관리하며 파일 복구에는 별도 작업과 확인이 필요합니다. 분기나 다른 디렉터리 검색은 "
+            },
+            {
+              "type": "article",
+              "text": "세션",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "을 참고하세요."
+            }
+          ]
         },
         {
           "type": "paragraph",

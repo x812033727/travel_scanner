@@ -42,7 +42,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "你會把一個可下載的待辦網站放進獨立資料夾，啟動本機預覽，請 Codex 完成兩個明確的畫面修改，再自行驗證功能與修改範圍。閱讀約 12 分鐘，操作約 30 分鐘。成果只在自己的電腦預覽；網站能開啟、測試透過與正式上線是不同階段。"
+          "text": "你會把一個可下載的待辦網站放進獨立資料夾，啟動本機預覽，請 Codex 完成兩個明確的畫面修改，再自行驗證功能與修改範圍。閱讀約 12 分鐘，操作約 30 分鐘。成果只在自己的電腦預覽；網站能開啟、測試通過與正式上線是不同階段。"
         },
         {
           "type": "heading",
@@ -97,11 +97,11 @@
         },
         {
           "type": "paragraph",
-          "text": "在副本根目錄執行核心測試，應有三個測試透過、零失敗。這是「修改前」的證據；如果現在已失敗，先核對是否誤用了 start 或 broken，或缺少檔案。不要在壞掉的基礎上要求 Codex 同時改畫面和修所有錯誤，否則無法判斷哪個結果來自哪項需求。"
+          "text": "在副本根目錄執行核心測試，應有三個測試通過、零失敗。這是「修改前」的證據；如果現在已失敗，先核對是否誤用了 start 或 broken，或缺少檔案。不要在壞掉的基礎上要求 Codex 同時改畫面和修所有錯誤，否則無法判斷哪個結果來自哪項需求。"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "終端機命令：在 codex-first-site 資料夾執行",
           "language": "shell",
           "code": "node --test core.test.mjs\n"
         },
@@ -111,7 +111,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Windows PowerShell：在練習資料夾啟動本機預覽",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -121,7 +121,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "macOS／Linux 終端機：在練習資料夾啟動本機預覽",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -140,13 +140,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：貼入練習專案的 Codex 任務",
           "language": "text",
           "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
         },
         {
           "type": "paragraph",
-          "text": "理想的差異只有 index.html 的 h1 文字與 style.css 的背景色；不是整份 HTML 被重建，也不是資料程式被換成另一套框架。Codex 若說沒有瀏覽器工具，應把畫面檢查列為未執行，你仍可自行完成。不要要求它為了證明透過而猜測畫面，或把沒有錯誤訊息當成視覺驗收。"
+          "text": "理想的差異只有 index.html 的 h1 文字與 style.css 的背景色；不是整份 HTML 被重建，也不是資料程式被換成另一套框架。Codex 若說沒有瀏覽器工具，應把畫面檢查列為未執行，你仍可自行完成。不要要求它為了聲稱檢查通過而猜測畫面，或把沒有錯誤訊息當成視覺驗收。"
         },
         {
           "type": "heading",
@@ -155,7 +155,7 @@
         },
         {
           "type": "paragraph",
-          "text": "重新讀取兩個檔案，核對指定字串與色碼；再次執行核心測試並保留透過結果。瀏覽器重新整理後看標題、背景與原來的 Read、Build。縮到約 390px 再看一次，頁面不應出現整頁橫向捲動；放大到 1280px 檢查內容寬度。窄視窗驗證響應式版面，不代表真的測過 iPhone 或 Android。"
+          "text": "重新讀取兩個檔案，核對指定字串與色碼；再次執行核心測試並保留測試結果。瀏覽器重新整理後看標題、背景與原來的 Read、Build。縮到約 390px 再看一次，頁面不應出現整頁橫向捲動；放大到 1280px 檢查內容寬度。窄視窗驗證響應式版面，不代表真的測過 iPhone 或 Android。"
         },
         {
           "type": "paragraph",
@@ -163,7 +163,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "網頁輸入值：貼入待辦輸入框，再新增",
           "language": "text",
           "code": "<img src=x>\n"
         },
@@ -190,7 +190,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "自主練習只改主標題成自己的另一句英文，仍保留所有功能並重做正常與空值案例。你能交付修改前後差異、實際測試結果、兩種寬度的觀察及未執行專案，就完成這一篇。接著讀"
+              "text": "自主練習只改主標題成自己的另一句英文，仍保留所有功能並重做正常與空值案例。你能交付修改前後差異、實際測試結果、兩種寬度的觀察及未執行項目，就完成這一篇。接著讀"
             },
             {
               "type": "article",
@@ -247,9 +247,18 @@
             },
             {
               "type": "text",
-              "text": "查證。影象只表示練習成果，不是 Codex 的產品介面。"
+              "text": "查證。圖片只表示練習成果，不是 Codex 的產品介面。"
             }
           ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "把「預期」與「實際檢查」分開記錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "下表是驗收時的預期對照，不是你這次執行的通過紀錄。每次另記四項：實際修改的檔案；測試執行目錄與通過／失敗數；390px 與 1280px 各自的實際畫面結果；尚未完成的操作。即使核心測試 3 項全通過，主標題或背景仍可能改錯，因為這組測試檢查待辦資料邏輯。若無法開啟預覽，畫面欄填「未執行」並保留待驗收項目，不要用原始碼中的顏色值代替畫面結果。"
         },
         {
           "type": "table",
@@ -401,7 +410,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "你会把一个可下载的待办网站放进独立资料夹，启动本机预览，请 Codex 完成两个明确的画面修改，再自行验证功能与修改范围。阅读约 12 分钟，操作约 30 分钟。成果只在自己的电脑预览；网站能开启、测试透过与正式上线是不同阶段。"
+          "text": "你会把一个可下载的待办网站放进独立资料夹，启动本机预览，请 Codex 完成两个明确的画面修改，再自行验证功能与修改范围。阅读约 12 分钟，操作约 30 分钟。成果只在自己的电脑预览；网站能开启、测试通过与正式上线是不同阶段。"
         },
         {
           "type": "heading",
@@ -456,11 +465,11 @@
         },
         {
           "type": "paragraph",
-          "text": "在副本根目录执行核心测试，应有三个测试透过、零失败。这是「修改前」的证据；如果现在已失败，先核对是否误用了 start 或 broken，或缺少档案。不要在坏掉的基础上要求 Codex 同时改画面和修所有错误，否则无法判断哪个结果来自哪项需求。"
+          "text": "在副本根目录执行核心测试，应有三个测试通过、零失败。这是「修改前」的证据；如果现在已失败，先核对是否误用了 start 或 broken，或缺少档案。不要在坏掉的基础上要求 Codex 同时改画面和修所有错误，否则无法判断哪个结果来自哪项需求。"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "终端机命令：在 codex-first-site 资料夹执行",
           "language": "shell",
           "code": "node --test core.test.mjs\n"
         },
@@ -470,7 +479,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Windows PowerShell：在练习资料夹启动本机预览",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -480,7 +489,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "macOS／Linux 终端机：在练习资料夹启动本机预览",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -499,13 +508,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：贴入练习专案的 Codex 任务",
           "language": "text",
           "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
         },
         {
           "type": "paragraph",
-          "text": "理想的差异只有 index.html 的 h1 文字与 style.css 的背景色；不是整份 HTML 被重建，也不是资料程式被换成另一套框架。Codex 若说没有浏览器工具，应把画面检查列为未执行，你仍可自行完成。不要要求它为了证明透过而猜测画面，或把没有错误讯息当成视觉验收。"
+          "text": "理想的差异只有 index.html 的 h1 文字与 style.css 的背景色；不是整份 HTML 被重建，也不是资料程式被换成另一套框架。Codex 若说没有浏览器工具，应把画面检查列为未执行，你仍可自行完成。不要要求它为了声称检查通过而猜测画面，或把没有错误讯息当成视觉验收。"
         },
         {
           "type": "heading",
@@ -514,7 +523,7 @@
         },
         {
           "type": "paragraph",
-          "text": "重新读取两个档案，核对指定字串与色码；再次执行核心测试并保留透过结果。浏览器重新整理后看标题、背景与原来的 Read、Build。缩到约 390px 再看一次，页面不应出现整页横向卷动；放大到 1280px 检查内容宽度。窄视窗验证响应式版面，不代表真的测过 iPhone 或 Android。"
+          "text": "重新读取两个档案，核对指定字串与色码；再次执行核心测试并保留测试结果。浏览器重新整理后看标题、背景与原来的 Read、Build。缩到约 390px 再看一次，页面不应出现整页横向卷动；放大到 1280px 检查内容宽度。窄视窗验证响应式版面，不代表真的测过 iPhone 或 Android。"
         },
         {
           "type": "paragraph",
@@ -522,7 +531,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "网页输入值：贴入待办输入框，再新增",
           "language": "text",
           "code": "<img src=x>\n"
         },
@@ -549,7 +558,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "自主练习只改主标题成自己的另一句英文，仍保留所有功能并重做正常与空值案例。你能交付修改前后差异、实际测试结果、两种宽度的观察及未执行专案，就完成这一篇。接著读"
+              "text": "自主练习只改主标题成自己的另一句英文，仍保留所有功能并重做正常与空值案例。你能交付修改前后差异、实际测试结果、两种宽度的观察及未执行项目，就完成这一篇。接著读"
             },
             {
               "type": "article",
@@ -606,9 +615,18 @@
             },
             {
               "type": "text",
-              "text": "查证。影象只表示练习成果，不是 Codex 的产品介面。"
+              "text": "查证。图片只表示练习成果，不是 Codex 的产品介面。"
             }
           ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "把「预期」与「实际检查」分开记录"
+        },
+        {
+          "type": "paragraph",
+          "text": "下表是验收时的预期对照，不是你这次执行的通过纪录。每次另记四项：实际修改的档案；测试执行目录与通过／失败数；390px 与 1280px 各自的实际画面结果；尚未完成的操作。即使核心测试 3 项全通过，主标题或背景仍可能改错，因为这组测试检查待办资料逻辑。若无法开启预览，画面栏填「未执行」并保留待验收项目，不要用原始码中的颜色值代替画面结果。"
         },
         {
           "type": "table",
@@ -819,7 +837,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Terminal command: run in the codex-first-site folder",
           "language": "shell",
           "code": "node --test core.test.mjs\n"
         },
@@ -829,7 +847,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Windows PowerShell: start a local preview in the practice folder",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -839,7 +857,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "macOS/Linux terminal: start a local preview in the practice folder",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -858,7 +876,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: paste into the practice project's Codex task",
           "language": "text",
           "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
         },
@@ -881,7 +899,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Page input: paste into the todo field, then add",
           "language": "text",
           "code": "<img src=x>\n"
         },
@@ -968,6 +986,15 @@
               "text": ". Images illustrate exercise results, not Codex product UI."
             }
           ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Record expectations separately from actual checks"
+        },
+        {
+          "type": "paragraph",
+          "text": "The table below lists expected acceptance results, not a record of your run. Separately record four things: files actually changed; the test working directory and pass/fail counts; actual visual results at 390px and 1280px; and unfinished checks. All three core tests can pass while the heading or background is wrong because these tests cover todo data logic. If preview is unavailable, mark visual checks as not run and leave them pending; a color value in source code is not a visual result."
         },
         {
           "type": "table",
@@ -1174,7 +1201,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "端末コマンド：codex-first-site フォルダーで実行する",
           "language": "shell",
           "code": "node --test core.test.mjs\n"
         },
@@ -1184,7 +1211,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Windows PowerShell：練習フォルダーでローカルプレビューを起動する",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -1194,7 +1221,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "macOS／Linux 端末：練習フォルダーでローカルプレビューを起動する",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -1213,7 +1240,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：練習プロジェクトの Codex タスクに貼り付ける",
           "language": "text",
           "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
         },
@@ -1236,7 +1263,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "画面の入力値：ToDo 入力欄に貼り付けて追加する",
           "language": "text",
           "code": "<img src=x>\n"
         },
@@ -1323,6 +1350,15 @@
               "text": "で確認しました。画像は練習成果で Codex UI ではありません。"
             }
           ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "期待値と実際の確認結果を分けて記録する"
+        },
+        {
+          "type": "paragraph",
+          "text": "次の表は受け入れ時の期待値であり、今回の実行が合格した記録ではありません。実際に変えたファイル、テスト実行場所と成功／失敗数、390px と 1280px それぞれの画面結果、未完了の確認を別に記録します。この三つのテストは ToDo のデータ処理を検証するため、全成功でも見出しや背景が違う場合があります。プレビューできなければ画面確認は未実施として残し、ソース中の色指定を画面結果の代わりにしません。"
         },
         {
           "type": "table",
@@ -1529,7 +1565,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "터미널 명령: codex-first-site 폴더에서 실행",
           "language": "shell",
           "code": "node --test core.test.mjs\n"
         },
@@ -1539,7 +1575,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Windows PowerShell: 실습 폴더에서 로컬 미리보기 시작",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -1549,7 +1585,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "macOS/Linux 터미널: 실습 폴더에서 로컬 미리보기 시작",
           "language": "bash",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
@@ -1568,7 +1604,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 실습 프로젝트의 Codex 작업에 붙여 넣기",
           "language": "text",
           "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
         },
@@ -1591,7 +1627,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "웹페이지 입력값: 할 일 입력란에 붙여 넣고 추가",
           "language": "text",
           "code": "<img src=x>\n"
         },
@@ -1678,6 +1714,15 @@
               "text": "로 확인했습니다. 이미지는 실습 결과이며 Codex 제품 화면이 아닙니다."
             }
           ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "예상 결과와 실제 검사를 나누어 기록하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "아래 표는 예상 인수 결과이며 이번 실행의 통과 기록이 아닙니다. 실제 변경 파일, 테스트 실행 디렉터리와 통과/실패 수, 390px와 1280px 각각의 실제 화면 결과, 미완료 검사를 따로 기록하세요. 세 핵심 테스트는 할 일 데이터 로직을 검사하므로 모두 통과해도 제목이나 배경이 틀릴 수 있습니다. 미리보기를 열 수 없으면 화면 검사를 미실행으로 남기고 소스의 색상 값을 화면 결과로 대신하지 마세요."
         },
         {
           "type": "table",

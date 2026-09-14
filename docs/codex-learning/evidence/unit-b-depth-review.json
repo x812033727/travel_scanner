@@ -1,0 +1,385 @@
+{
+  "checked_on": "2026-09-14",
+  "scope": "Targeted Unit B depth revisions: five full Traditional Chinese drafts read; new/changed sections compared across author languages and generated Simplified Chinese. This is not full-text final editorial sign-off or IDE/product execution.",
+  "base_commit": "a80bc077bad6db11c804f35eef801a87edc8aa42",
+  "lessons": [
+    {
+      "id": 5,
+      "slug": "codex-cli-getting-started",
+      "source_hashes": {
+        "zh-TW": "4fff9e44d1f8654b440a5fafe0a3f16642f6e4fe8dec87f048cb389236236884",
+        "en": "9a3945966dd41220aa255b1bbd18799c4dddd5ae723c177c2fd5fe158c5d05b8",
+        "ja": "535639cb4775f546b445d0c98b68316d0e5c36badfb638b77268e1de90cad74d",
+        "ko": "ffaf3066fb0f32c1661b7b399644c058d58ab5b9750cf9de41b1fa15fccfd275",
+        "zh-CN": "5fc14e6dd604e72f07a1c99a135096937553c2f977dcf29c49e301bde2268475"
+      },
+      "pack_hash": "06ee23474a441809b2149afa3a1aea677822c5aa5b9b4eed0a64d4e251179712",
+      "code_blocks": {
+        "zh-TW": {
+          "before": 8,
+          "after": 8
+        },
+        "zh-CN": {
+          "before": 8,
+          "after": 8
+        },
+        "en": {
+          "before": 8,
+          "after": 8
+        },
+        "ja": {
+          "before": 8,
+          "after": 8
+        },
+        "ko": {
+          "before": 8,
+          "after": 8
+        }
+      },
+      "code_changes": [],
+      "existing_images_unchanged": true,
+      "sources_change": "unchanged",
+      "zh_tw_prose_characters": 2522
+    },
+    {
+      "id": 35,
+      "slug": "codex-cli-windows",
+      "source_hashes": {
+        "zh-TW": "633101a560fbac332ef1a3c6218645ddf6a10f3264d51a0b55e3bc0ecc910524",
+        "en": "6e57ce2d7c05e42a86ffa3adcd39260fb7c465bf38fcdd9bbe063144353ea3ef",
+        "ja": "58e575a92a93a1098d67dd5dfe9a2550bf5caa7cc24707dc8ff08c48b9a57e02",
+        "ko": "9d39b6811874bcdb2fa3d9bf0a56a8f5218a9bf51062734a62a2690bf1cded8f",
+        "zh-CN": "9146532c599c1559510c6a47e54bf81837d018b4bc29043c012aa839fbdeb5e4"
+      },
+      "pack_hash": "c96710e01008d4b28fe5e08feb60c7fd1772cafb4981e7941092c7250b66a422",
+      "code_blocks": {
+        "zh-TW": {
+          "before": 7,
+          "after": 7
+        },
+        "en": {
+          "before": 7,
+          "after": 7
+        },
+        "ja": {
+          "before": 7,
+          "after": 7
+        },
+        "ko": {
+          "before": 7,
+          "after": 7
+        },
+        "zh-CN": {
+          "before": 7,
+          "after": 7
+        }
+      },
+      "code_changes": [
+        {
+          "index": 3,
+          "before": "$cliLab = Join-Path (Get-Location) 'codex windows lab'\nif (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\nNew-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\nSet-Location -LiteralPath $cliLab\nSet-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath 'note.txt'\n",
+          "after": "& {\n  $cliLab = Join-Path (Get-Location) 'codex windows lab'\n  if (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\n  New-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\n  Set-Location -LiteralPath $cliLab -ErrorAction Stop\n  Set-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8 -ErrorAction Stop\n  Get-Location\n  Get-ChildItem\n  Get-Content -LiteralPath 'note.txt'\n}\n"
+        }
+      ],
+      "existing_images_unchanged": true,
+      "sources_change": "unchanged",
+      "zh_tw_prose_characters": 2364
+    },
+    {
+      "id": 36,
+      "slug": "codex-cli-macos",
+      "source_hashes": {
+        "zh-TW": "376f217716ce8039b49f138a19c0267d450c03b1bf51f8e193e1c6535ecbd5fe",
+        "en": "6332a8a91d53443747a4e8d067a72f115f9fad0846813b8dc73767be5d564ffe",
+        "ja": "108d35adb6d8a0011391c125af007174485dcced40dbde124d1d8dd38ba5280f",
+        "ko": "43c98ee7fc305904f2efa9ad1ac9a1349f6b254f5e4375ec64ee4d60dc6bd838",
+        "zh-CN": "4ddfaea8be0b30ddb50525f6b0f0e5b85864b53cda0b05d0b5d301da627ebdb0"
+      },
+      "pack_hash": "c2ec9901122bcd9771835938bd7b1018f9f24fc09eea7c5fc2b00e391c5aa094",
+      "code_blocks": {
+        "zh-TW": {
+          "before": 6,
+          "after": 6
+        },
+        "en": {
+          "before": 6,
+          "after": 6
+        },
+        "ja": {
+          "before": 6,
+          "after": 6
+        },
+        "ko": {
+          "before": 6,
+          "after": 6
+        },
+        "zh-CN": {
+          "before": 6,
+          "after": 6
+        }
+      },
+      "code_changes": [],
+      "existing_images_unchanged": true,
+      "sources_change": "unchanged",
+      "zh_tw_prose_characters": 2834
+    },
+    {
+      "id": 37,
+      "slug": "codex-cli-linux-wsl",
+      "source_hashes": {
+        "zh-TW": "d2d9a8455747f0306668a88a08c5e0aa331b064f85a7ace2db21c54e43191076",
+        "en": "9fc75013fe556bd021b2f7c671d9efb0b5a76509870d9e3e6d38ef74e52d6c11",
+        "ja": "9aadf6774c97147f55bf146d29bbfd1ca702f23225c59bafa3cd859844f312ef",
+        "ko": "7f4627308bcb161b714914aead82a68b53e18da352973e2dd730ba9dbd4cd5f9",
+        "zh-CN": "face7d57d2c4358fa7618a64b82b4b47f7bb45962ec5658d770a68cf1e2cf16b"
+      },
+      "pack_hash": "3486b238a4a95ea75c8101be5d936aee5595531826dee002ed8b89a1996eacc3",
+      "code_blocks": {
+        "zh-TW": {
+          "before": 9,
+          "after": 9
+        },
+        "en": {
+          "before": 9,
+          "after": 9
+        },
+        "ja": {
+          "before": 9,
+          "after": 9
+        },
+        "ko": {
+          "before": 9,
+          "after": 9
+        },
+        "zh-CN": {
+          "before": 9,
+          "after": 9
+        }
+      },
+      "code_changes": [
+        {
+          "index": 2,
+          "before": "uname -s\npwd\nprintf '%s\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n",
+          "after": "uname -s\npwd\nprintf '%s\\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
+        },
+        {
+          "index": 5,
+          "before": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n",
+          "after": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
+        }
+      ],
+      "existing_images_unchanged": true,
+      "sources_change": "unchanged",
+      "zh_tw_prose_characters": 2901
+    },
+    {
+      "id": 14,
+      "slug": "codex-ide-getting-started",
+      "source_hashes": {
+        "zh-TW": "0bb20de3e025e65c120e6ed295834228dd43e86a118358a8b77d01232a2a7efd",
+        "en": "b7b78ff0279492a572364e501e35ef9f1eddbbb77ae23685a3321ff8576ca2e8",
+        "ja": "484d86e024606d8a6ed8f2869d14f337e0d40faff3998ce788f1c93fe4ca5066",
+        "ko": "03c69af9cf5028a10dab8deef81beee23c8e5caff140f960e8fe917ef38a194c",
+        "zh-CN": "121a898fd43e52db0cbe20b635bf91160aef22d206fe24c8cbca4335862c092f"
+      },
+      "pack_hash": "9c1d9b34af4e49bac46f4b9d67cfc89a073eb506a1114bc4899f47030bf5f0ed",
+      "code_blocks": {
+        "zh-TW": {
+          "before": 4,
+          "after": 4
+        },
+        "zh-CN": {
+          "before": 4,
+          "after": 4
+        },
+        "en": {
+          "before": 4,
+          "after": 4
+        },
+        "ja": {
+          "before": 4,
+          "after": 4
+        },
+        "ko": {
+          "before": 4,
+          "after": 4
+        }
+      },
+      "code_changes": [],
+      "existing_images_unchanged": true,
+      "sources_change": "unchanged",
+      "zh_tw_prose_characters": 2834,
+      "new_inline_source": "https://learn.chatgpt.com/docs/developer-commands?surface=ide"
+    }
+  ],
+  "changes": {
+    "5": "Labeled shell commands, slash command, file content and prompts separately; added rereading the current file after resume.",
+    "14": "Explicitly attach selected function and entire test file using verified command identifiers; distinguish unsaved editor text and on-disk test input.",
+    "35": "Added documented Windows support and sandbox prerequisites; wrapped fixture creation in one guarded PowerShell block with terminating create/change/write errors; corrected PATH-entry terminology.",
+    "36": "Added a missing-original-file case with Finder rename/recovery instructions and explicit unknown comparison outcome.",
+    "37": "Added distribution selection before entering Linux; normalized printf format strings to visible backslash-n; clarified input surfaces."
+  },
+  "code_labels": {
+    "existing_blocks_labeled": 34,
+    "locales": 5
+  },
+  "official_document_bodies_reviewed": [
+    {
+      "url": "https://learn.chatgpt.com/docs/codex/cli.md",
+      "sha256": "4592869a38de248eef8c623816032bc34787c7797fcf7a64e41d860da83d1a5e",
+      "body_characters": 6650
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox.md",
+      "sha256": "294f0c8de1d2201ba562ccb88367a21bce2f2472f65f4dc8486b7c0b2e3f3efc",
+      "body_characters": 11206
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/windows/wsl.md",
+      "sha256": "116d5d9f02c5435fe8a6da1889e758833ef17b952ff44b541e0d076e3d666ac6",
+      "body_characters": 3392
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/codex/ide.md",
+      "sha256": "bbecaad17ae60f9e3ca79ef1e1323da89b71d9f46150aeba25fb0fb84ca5fa63",
+      "body_characters": 4404
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/developer-commands.md?surface=ide",
+      "sha256": "e462f3c7246edfcb6a8a23116cb2e2e56e5741d985010aed7afb6617c516fe24",
+      "body_characters": 4875
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/auth.md",
+      "sha256": "1203cb8b22c421c0af9125dd2b70c475993028468d8f5359ad91ad2c40075677",
+      "body_characters": 15908
+    }
+  ],
+  "practice": {
+    "platform": "Windows",
+    "node": "v24.13.0",
+    "model_executed": false,
+    "installation_changed": false,
+    "auth_changed": false,
+    "ide_ui_executed": false,
+    "macos_linux_executed": false,
+    "browser_executed": false,
+    "checks": [
+      {
+        "name": "exact Windows creation block in space-containing path",
+        "exit": 0,
+        "marker_read": true,
+        "files": [
+          "note.txt"
+        ]
+      },
+      {
+        "name": "rerun with existing folder stops before any overwrite",
+        "exit": 1,
+        "expected_error_observed": true,
+        "files_unchanged": true
+      },
+      {
+        "name": "broken reference has the intended filter failure",
+        "command": "node --test core.test.mjs",
+        "exit": 1,
+        "passed": 2,
+        "failed": 1,
+        "output_sha256": "d3fd412d01e20b20585b2af0338ad4f6673247432b87e2094c081079a9b8fe05"
+      },
+      {
+        "name": "exact authored reference function fixes the failure with tests unchanged",
+        "command": "node --test core.test.mjs",
+        "exit": 0,
+        "passed": 3,
+        "failed": 0,
+        "output_sha256": "3f91d6cb160bd56d4ff89aeb26aca83ec1b147db5338252b5e94c9e4cb1d971f"
+      },
+      {
+        "name": "restore broken core.mjs brings back the same failure",
+        "command": "node --test core.test.mjs",
+        "exit": 1,
+        "passed": 2,
+        "failed": 1,
+        "output_sha256": "8675783614b1ca8c5aaa6749ab3cf2b5eb85b3b8b78fb853ebbba7a89f349046"
+      }
+    ],
+    "immutable_fixture_hashes": {
+      "broken": {
+        "app.js": "a247b129bd7abba01ec851b43867d9317531cc69857c55c0a13b4bea0b137159",
+        "core.mjs": "31aadb24a2d1326a968d4f9f6078c54990ef1418eba51e14c6aee8d50eed8c2e",
+        "core.test.mjs": "2bf82633d42280359db3d6dc8e7d629914fd227738366d13d5bd35441ec57fb5",
+        "index.html": "04b3e5a4a063d642057e874d0e55119644684b913c184211d3f35580326d01d0",
+        "style.css": "689a6ffd664c00ac708d2f04e3c1375474802efe0a92119a548e395f99f9dbe5"
+      },
+      "expected": {
+        "app.js": "001e6fc55774b50732e6878bb336d1d4346e4d4f49739f659d570cfab5e1cf3c",
+        "core.mjs": "15bc1b245cb17815b58799dc4e7b32f666300046007690ef56c2e20e7e989753",
+        "core.test.mjs": "111187cc469b5d2bf551126d72b8584589f97ac7bab6816f899502c6b498ebc1",
+        "index.html": "5740079d2988294ef077375172d2b34845f5798d465c03dcea9f18d2c4e64a07",
+        "style.css": "8fa375135810ed68890ee1bae3a331cf78690dafcd8ef8d8e711df80e115327c"
+      }
+    },
+    "cli_checks": [
+      {
+        "command": "codex --version",
+        "exit": 0,
+        "stdout_sha256": "9b9b141cf0f2cdfc904a52a9a29d18f3056fd2769c3dcc86d650738f78a775de",
+        "version": "codex-cli 0.154.0-alpha.6.2"
+      },
+      {
+        "command": "codex login --help",
+        "exit": 0,
+        "stdout_sha256": "06ef70370c92189627bf3d969c6b304506f5b161f8f751496a02668d2103771f",
+        "version": null
+      },
+      {
+        "command": "codex resume --help",
+        "exit": 0,
+        "stdout_sha256": "47edbbf1ed9891ba489fc0dbf3b9811b8f90fc1f6852484e7c065398f9bc0797",
+        "version": null
+      }
+    ]
+  },
+  "validation": {
+    "series_integrity": {
+      "lessons": 60,
+      "locale_documents": 300,
+      "result": "passed"
+    },
+    "api_content_tests": {
+      "passed": 9
+    },
+    "compiler_tests": {
+      "passed": 9
+    },
+    "content_audit": {
+      "errors": 0,
+      "warnings": 26,
+      "note": "No additional Unit B warnings. The one warning added since a80bc077 is account-usage English length in Unit A; existing editorial advisories remain."
+    },
+    "unit_a_hashes_still_match": true
+  },
+  "final_acceptance": {
+    "targeted_depth_revised_lessons_total": 16,
+    "other_lessons_pending_targeted_review": 44,
+    "next_unit": "C: 38, 39, 40, 15, 41; representative 04 already targeted",
+    "accepted_lessons": 0,
+    "full_editorial_accepted": false,
+    "preview_accepted": false,
+    "blocker": "Automatic approval review rejected preview startup, including loopback-only retry: blocked by policy; no specific reason. No alternate startup/rendering route attempted."
+  },
+  "publication": {
+    "pushed": false,
+    "pr": false,
+    "merged": false,
+    "imported": false,
+    "published": false,
+    "deployed": false
+  },
+  "scope_boundary": {
+    "api_series_projections": "unchanged from base",
+    "reason": "Shared series_data scope is held by the active Claude tutorial task. Removed only this turn's generated additions; kept official IDE command source as an article-body link.",
+    "checked_no_projection_diff": true
+  }
+}

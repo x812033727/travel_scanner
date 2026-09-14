@@ -67,7 +67,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案內容：貼入 lesson one/note.txt",
           "language": "text",
           "code": "Terminal practice: this is lesson one.\n"
         },
@@ -77,7 +77,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "資料夾結構示意：用來核對，不是指令",
           "language": "text",
           "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
         },
@@ -88,11 +88,11 @@
         },
         {
           "type": "paragraph",
-          "text": "從開始選單開啟 PowerShell，或在檔案總管的 codex-terminal-lab 資料夾中選擇「在終端機開啟」。若終端機開的是命令提示字元，改開 PowerShell；本段的 Get-Location 並非 cmd.exe 指令。先執行下一組唯讀命令，確認目前位置與直接子專案。沒有看到 lesson one 時先別往下讀檔，回檔案總管核對真正所在路徑。"
+          "text": "從開始選單開啟 PowerShell，或在檔案總管的 codex-terminal-lab 資料夾中選擇「在終端機開啟」。若終端機開的是命令提示字元，改開 PowerShell；本段的 Get-Location 並非 cmd.exe 指令。先執行下一組唯讀命令，確認目前位置與直下檔案與資料夾。沒有看到 lesson one 時先別往下讀檔，回檔案總管核對真正所在路徑。"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "PowerShell：確認目前位置與檔案",
           "language": "powershell",
           "code": "Get-Location\nGet-ChildItem -Name\n"
         },
@@ -102,7 +102,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "PowerShell：先換成自己的完整路徑，再執行",
           "language": "powershell",
           "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
         },
@@ -112,7 +112,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "PowerShell：從練習根目錄進入、讀取，再返回",
           "language": "powershell",
           "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
         },
@@ -123,21 +123,21 @@
         },
         {
           "type": "paragraph",
-          "text": "macOS 從 Spotlight 開啟 Terminal，Linux 從應用程式選單開啟終端機；也可使用檔案管理員提供的在資料夾開啟終端機功能。macOS 常見 zsh、Linux 常見 Bash，本段只用兩者都能理解的基本命令。先執行 pwd 與 ls -a，前者回報目前路徑，後者包括隱藏專案。不要把 macOS 的 /Users 路徑當成 Linux 一定存在的 /home 路徑。"
+          "text": "macOS 從 Spotlight 開啟 Terminal，Linux 從應用程式選單開啟終端機；也可使用檔案管理員提供的在資料夾開啟終端機功能。macOS 常見 zsh、Linux 常見 Bash，本段只用兩者都能理解的基本命令。先執行 pwd 與 ls -a，前者回報目前路徑，後者包括隱藏檔案與資料夾。不要把 macOS 的 /Users 路徑當成 Linux 一定存在的 /home 路徑。"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "macOS／Linux 終端機：確認目前位置與檔案",
           "language": "bash",
           "code": "pwd\nls -a\n"
         },
         {
           "type": "paragraph",
-          "text": "手動移動時，在 cd 後輸入一個空白，再貼上用引號包住的實際資料夾絕對路徑；下面只是替換示例。也可將資料夾拖入端末，但要檢查終端機是否已自動處理空白，避免再加一層錯誤引號。若把家目錄寫成 $HOME，使用雙引號才會展開變數；本篇先直接使用完整路徑，少混入一種語法。"
+          "text": "手動移動時，在 cd 後輸入一個空白，再貼上用引號包住的實際資料夾絕對路徑；下面只是替換示例。也可將資料夾拖入終端機，但要檢查終端機是否已自動處理空白，避免再加一層錯誤引號。若把家目錄寫成 $HOME，使用雙引號才會展開變數；本篇先直接使用完整路徑，少混入一種語法。"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "macOS／Linux 終端機：先換成自己的完整路徑",
           "language": "bash",
           "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
         },
@@ -147,7 +147,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "macOS／Linux 終端機：從練習根目錄進入、讀取，再返回",
           "language": "bash",
           "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
         },
@@ -159,6 +159,27 @@
         {
           "type": "paragraph",
           "text": "在練習根目錄嘗試移入不存在的 missing-folder。PowerShell 用 Set-Location -LiteralPath '.\\missing-folder'；macOS／Linux 用 cd 'missing-folder'。預期有找不到路徑的錯誤，查位置時仍在原處。錯誤文字依語言與版本不同，不要求逐字一致。這證明失敗的移動不會自動建立資料夾，也提醒你不能在 cd 失敗後照常執行修改命令。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "故意讀錯位置，再修正相對路徑"
+        },
+        {
+          "type": "paragraph",
+          "text": "先確認目前在 codex-terminal-lab 根目錄，且 note.txt 只放在 lesson one 裡。依自己的平台執行下面第一行，預期出現找不到 note.txt 的錯誤；第二行指定正確的子資料夾，應讀到 Terminal practice: this is lesson one.。第一行失敗不會自動進入 lesson one，也不應靠建立另一份根目錄 note.txt 讓錯誤消失。這個練習只讀取資料，原檔內容應保持不變。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：第一行預期失敗，第二行修正路徑",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath '.\\note.txt'\nGet-Content -LiteralPath '.\\lesson one\\note.txt'\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux 終端機：第一行預期失敗，第二行修正路徑",
+          "language": "bash",
+          "code": "cat note.txt\ncat 'lesson one/note.txt'\n"
         },
         {
           "type": "rich_paragraph",
@@ -181,7 +202,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：啟動 Codex 後輸入",
           "language": "text",
           "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
         },
@@ -196,7 +217,7 @@
         },
         {
           "type": "paragraph",
-          "text": "本篇沒有改動原始檔，結束時關閉終端機或離開練習目錄即可。正在執行的程式通常可用 Ctrl+C 中斷，但中斷不等於還原已寫入資料。再自行建立 lesson two/note.txt，寫不同句子，從根目錄分別讀取兩份內容。能分清路徑與檔案、正確處理空白、辨認失敗後的位置，就透過練習；圖中 1、2、3 是定位、讀取、驗證。"
+          "text": "本篇沒有改動原始檔，結束時關閉終端機或離開練習目錄即可。正在執行的程式通常可用 Ctrl+C 中斷，但中斷不等於還原已寫入資料。再自行建立 lesson two/note.txt，寫不同句子，從根目錄分別讀取兩份內容。能分清路徑與檔案、正確處理空白、辨認失敗後的位置，就完成練習；圖中 1、2、3 是定位、讀取、驗證。"
         },
         {
           "type": "rich_paragraph",
@@ -376,7 +397,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File content: paste into lesson one/note.txt",
           "language": "text",
           "code": "Terminal practice: this is lesson one.\n"
         },
@@ -386,7 +407,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Folder structure: a reference, not a command",
           "language": "text",
           "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
         },
@@ -401,7 +422,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "PowerShell: inspect the current location and files",
           "language": "powershell",
           "code": "Get-Location\nGet-ChildItem -Name\n"
         },
@@ -411,7 +432,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "PowerShell: replace the example with your full path first",
           "language": "powershell",
           "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
         },
@@ -421,7 +442,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "PowerShell: from the practice root, enter, read and return",
           "language": "powershell",
           "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
         },
@@ -436,7 +457,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "macOS/Linux terminal: inspect the current location and files",
           "language": "bash",
           "code": "pwd\nls -a\n"
         },
@@ -446,7 +467,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "macOS/Linux terminal: replace with your full path first",
           "language": "bash",
           "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
         },
@@ -456,7 +477,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "macOS/Linux terminal: from the practice root, enter, read and return",
           "language": "bash",
           "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
         },
@@ -468,6 +489,27 @@
         {
           "type": "paragraph",
           "text": "At the practice root, try a nonexistent missing-folder: use Set-Location -LiteralPath '.\\missing-folder' in PowerShell or cd 'missing-folder' on macOS/Linux. Expect a missing-path error and an unchanged location. Error wording varies by language and version. This demonstrates that a failed navigation does not create a folder, and why editing commands should not follow an unchecked cd failure."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Read from the wrong location, then fix the relative path"
+        },
+        {
+          "type": "paragraph",
+          "text": "First confirm that you are at the codex-terminal-lab root and that note.txt exists only inside lesson one. Use the block for your platform: the first line should report that note.txt is missing, while the second supplies the correct subfolder and should read Terminal practice: this is lesson one. The failed read does not move you into lesson one. Do not create another note.txt at the root to hide the error. These commands only read data and should leave the original file unchanged."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: expected failure on line 1, corrected path on line 2",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath '.\\note.txt'\nGet-Content -LiteralPath '.\\lesson one\\note.txt'\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS/Linux terminal: expected failure on line 1, corrected path on line 2",
+          "language": "bash",
+          "code": "cat note.txt\ncat 'lesson one/note.txt'\n"
         },
         {
           "type": "rich_paragraph",
@@ -490,7 +532,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter after starting Codex",
           "language": "text",
           "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
         },
@@ -685,7 +727,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル内容：lesson one/note.txt に貼り付ける",
           "language": "text",
           "code": "Terminal practice: this is lesson one.\n"
         },
@@ -695,7 +737,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "フォルダー構成：照合用であり、コマンドではありません",
           "language": "text",
           "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
         },
@@ -710,7 +752,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "PowerShell：現在地とファイルを確認する",
           "language": "powershell",
           "code": "Get-Location\nGet-ChildItem -Name\n"
         },
@@ -720,7 +762,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "PowerShell：自分の絶対パスに置き換えてから実行する",
           "language": "powershell",
           "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
         },
@@ -730,7 +772,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "PowerShell：練習の親フォルダーから移動、読み取り、復帰",
           "language": "powershell",
           "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
         },
@@ -745,7 +787,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "macOS／Linux 端末：現在地とファイルを確認する",
           "language": "bash",
           "code": "pwd\nls -a\n"
         },
@@ -755,7 +797,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "macOS／Linux 端末：先に自分の絶対パスに置き換える",
           "language": "bash",
           "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
         },
@@ -765,7 +807,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "macOS／Linux 端末：練習の親フォルダーから移動、読み取り、復帰",
           "language": "bash",
           "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
         },
@@ -777,6 +819,27 @@
         {
           "type": "paragraph",
           "text": "練習の親で存在しない missing-folder へ移動します。PowerShell は Set-Location -LiteralPath '.\\missing-folder'、macOS/Linux は cd 'missing-folder' です。パス不存在のエラーが出て現在地は変わらないはずです。文言は言語や版で異なります。失敗した移動ではフォルダーは作られず、cd の失敗を確認せず編集へ進んではいけないことが分かります。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "違う場所から読み、相対パスを直す"
+        },
+        {
+          "type": "paragraph",
+          "text": "現在地が codex-terminal-lab の親フォルダーで、note.txt は lesson one の中だけにあることを確認します。自分の OS のブロックを使ってください。一行目は note.txt が見つからないエラー、二行目は正しいサブフォルダーを指定して Terminal practice: this is lesson one. を読む想定です。読み取り失敗で lesson one に移動することはありません。エラーを隠すために親にも note.txt を作らないでください。読み取りだけなので元ファイルは変わりません。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：一行目は失敗を想定、二行目でパスを修正",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath '.\\note.txt'\nGet-Content -LiteralPath '.\\lesson one\\note.txt'\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux 端末：一行目は失敗を想定、二行目でパスを修正",
+          "language": "bash",
+          "code": "cat note.txt\ncat 'lesson one/note.txt'\n"
         },
         {
           "type": "rich_paragraph",
@@ -799,7 +862,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：Codex の起動後に入力する",
           "language": "text",
           "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
         },
@@ -814,7 +877,7 @@
         },
         {
           "type": "paragraph",
-          "text": "元ファイルは変更していないため、端末を閉じるか練習場所を離れれば終了です。実行中のプログラムは通常 Ctrl+C で中断できますが、書き込み済みデータの復元にはなりません。lesson two/note.txt に別の文を作り、親から二つを読み分けてください。パスとファイル、空白、失敗後の場所を理解できれば合格です。図の 1、2、3 は定位、読み取り、検証です。"
+          "text": "元ファイルは変更していないため、端末を閉じるか練習場所を離れれば終了です。実行中のプログラムは通常 Ctrl+C で中断できますが、書き込み済みデータの復元にはなりません。lesson two/note.txt に別の文を作り、親から二つを読み分けてください。パスとファイル、空白、失敗後の場所を理解できれば合格です。図の 1、2、3 は場所の確認、読み取り、検証です。"
         },
         {
           "type": "rich_paragraph",
@@ -994,7 +1057,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일 내용: lesson one/note.txt에 붙여 넣기",
           "language": "text",
           "code": "Terminal practice: this is lesson one.\n"
         },
@@ -1004,7 +1067,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "폴더 구조: 확인용이며 명령이 아님",
           "language": "text",
           "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
         },
@@ -1019,7 +1082,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "PowerShell: 현재 위치와 파일 확인",
           "language": "powershell",
           "code": "Get-Location\nGet-ChildItem -Name\n"
         },
@@ -1029,7 +1092,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "PowerShell: 자신의 전체 경로로 바꾼 뒤 실행",
           "language": "powershell",
           "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
         },
@@ -1039,7 +1102,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "PowerShell: 실습 루트에서 이동, 읽기, 복귀",
           "language": "powershell",
           "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
         },
@@ -1054,7 +1117,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "macOS/Linux 터미널: 현재 위치와 파일 확인",
           "language": "bash",
           "code": "pwd\nls -a\n"
         },
@@ -1064,7 +1127,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "macOS/Linux 터미널: 자신의 전체 경로로 먼저 바꾸기",
           "language": "bash",
           "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
         },
@@ -1074,7 +1137,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "macOS/Linux 터미널: 실습 루트에서 이동, 읽기, 복귀",
           "language": "bash",
           "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
         },
@@ -1086,6 +1149,27 @@
         {
           "type": "paragraph",
           "text": "실습 루트에서 없는 missing-folder로 이동해 봅니다. PowerShell은 Set-Location -LiteralPath '.\\missing-folder', macOS/Linux는 cd 'missing-folder'를 사용합니다. 경로를 찾을 수 없다는 오류가 나오고 현재 위치는 그대로여야 합니다. 오류 문구는 언어와 버전에 따라 다릅니다. 이동 실패가 폴더를 만들지는 않으며 cd 실패를 확인하지 않고 수정 명령을 실행하면 안 된다는 점을 확인합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "잘못된 위치에서 읽은 뒤 상대 경로 고치기"
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 위치가 codex-terminal-lab 루트이고 note.txt가 lesson one 안에만 있는지 확인하세요. 자신의 플랫폼에 맞는 블록을 사용합니다. 첫 줄은 note.txt를 찾을 수 없다는 오류가 나고 둘째 줄은 올바른 하위 폴더를 지정하여 Terminal practice: this is lesson one.을 읽어야 합니다. 읽기 실패로 lesson one에 자동 이동하지 않습니다. 오류를 숨기려고 루트에 note.txt를 하나 더 만들지 마세요. 읽기만 하므로 원본 내용은 그대로여야 합니다."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: 첫 줄은 예상 실패, 둘째 줄에서 경로 수정",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath '.\\note.txt'\nGet-Content -LiteralPath '.\\lesson one\\note.txt'\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS/Linux 터미널: 첫 줄은 예상 실패, 둘째 줄에서 경로 수정",
+          "language": "bash",
+          "code": "cat note.txt\ncat 'lesson one/note.txt'\n"
         },
         {
           "type": "rich_paragraph",
@@ -1108,7 +1192,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: Codex를 시작한 뒤 입력",
           "language": "text",
           "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
         },
@@ -1303,7 +1387,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案内容：贴入 lesson one/note.txt",
           "language": "text",
           "code": "Terminal practice: this is lesson one.\n"
         },
@@ -1313,7 +1397,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "资料夹结构示意：用来核对，不是指令",
           "language": "text",
           "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
         },
@@ -1324,11 +1408,11 @@
         },
         {
           "type": "paragraph",
-          "text": "从开始选单开启 PowerShell，或在档案总管的 codex-terminal-lab 资料夹中选择「在终端机开启」。若终端机开的是命令提示字元，改开 PowerShell；本段的 Get-Location 并非 cmd.exe 指令。先执行下一组唯读命令，确认目前位置与直接子专案。没有看到 lesson one 时先别往下读档，回档案总管核对真正所在路径。"
+          "text": "从开始选单开启 PowerShell，或在档案总管的 codex-terminal-lab 资料夹中选择「在终端机开启」。若终端机开的是命令提示字元，改开 PowerShell；本段的 Get-Location 并非 cmd.exe 指令。先执行下一组唯读命令，确认目前位置与直下档案与资料夹。没有看到 lesson one 时先别往下读档，回档案总管核对真正所在路径。"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "PowerShell：确认目前位置与档案",
           "language": "powershell",
           "code": "Get-Location\nGet-ChildItem -Name\n"
         },
@@ -1338,7 +1422,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "PowerShell：先换成自己的完整路径，再执行",
           "language": "powershell",
           "code": "Set-Location -LiteralPath 'C:\\Users\\YOUR_NAME\\Documents\\codex-terminal-lab'\nGet-Location\nGet-ChildItem -Name\n"
         },
@@ -1348,7 +1432,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "PowerShell：从练习根目录进入、读取，再返回",
           "language": "powershell",
           "code": "Set-Location -LiteralPath '.\\lesson one'\nGet-Content -LiteralPath '.\\note.txt'\nSet-Location -LiteralPath '..'\nGet-Location\n"
         },
@@ -1359,21 +1443,21 @@
         },
         {
           "type": "paragraph",
-          "text": "macOS 从 Spotlight 开启 Terminal，Linux 从应用程式选单开启终端机；也可使用档案管理员提供的在资料夹开启终端机功能。macOS 常见 zsh、Linux 常见 Bash，本段只用两者都能理解的基本命令。先执行 pwd 与 ls -a，前者回报目前路径，后者包括隐藏专案。不要把 macOS 的 /Users 路径当成 Linux 一定存在的 /home 路径。"
+          "text": "macOS 从 Spotlight 开启 Terminal，Linux 从应用程式选单开启终端机；也可使用档案管理员提供的在资料夹开启终端机功能。macOS 常见 zsh、Linux 常见 Bash，本段只用两者都能理解的基本命令。先执行 pwd 与 ls -a，前者回报目前路径，后者包括隐藏档案与资料夹。不要把 macOS 的 /Users 路径当成 Linux 一定存在的 /home 路径。"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "macOS／Linux 终端机：确认目前位置与档案",
           "language": "bash",
           "code": "pwd\nls -a\n"
         },
         {
           "type": "paragraph",
-          "text": "手动移动时，在 cd 后输入一个空白，再贴上用引号包住的实际资料夹绝对路径；下面只是替换示例。也可将资料夹拖入端末，但要检查终端机是否已自动处理空白，避免再加一层错误引号。若把家目录写成 $HOME，使用双引号才会展开变数；本篇先直接使用完整路径，少混入一种语法。"
+          "text": "手动移动时，在 cd 后输入一个空白，再贴上用引号包住的实际资料夹绝对路径；下面只是替换示例。也可将资料夹拖入终端机，但要检查终端机是否已自动处理空白，避免再加一层错误引号。若把家目录写成 $HOME，使用双引号才会展开变数；本篇先直接使用完整路径，少混入一种语法。"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "macOS／Linux 终端机：先换成自己的完整路径",
           "language": "bash",
           "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
         },
@@ -1383,7 +1467,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "macOS／Linux 终端机：从练习根目录进入、读取，再返回",
           "language": "bash",
           "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
         },
@@ -1395,6 +1479,27 @@
         {
           "type": "paragraph",
           "text": "在练习根目录尝试移入不存在的 missing-folder。PowerShell 用 Set-Location -LiteralPath '.\\missing-folder'；macOS／Linux 用 cd 'missing-folder'。预期有找不到路径的错误，查位置时仍在原处。错误文字依语言与版本不同，不要求逐字一致。这证明失败的移动不会自动建立资料夹，也提醒你不能在 cd 失败后照常执行修改命令。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "故意读错位置，再修正相对路径"
+        },
+        {
+          "type": "paragraph",
+          "text": "先确认目前在 codex-terminal-lab 根目录，且 note.txt 只放在 lesson one 里。依自己的平台执行下面第一行，预期出现找不到 note.txt 的错误；第二行指定正确的子资料夹，应读到 Terminal practice: this is lesson one.。第一行失败不会自动进入 lesson one，也不应靠建立另一份根目录 note.txt 让错误消失。这个练习只读取资料，原档内容应保持不变。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：第一行预期失败，第二行修正路径",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath '.\\note.txt'\nGet-Content -LiteralPath '.\\lesson one\\note.txt'\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux 终端机：第一行预期失败，第二行修正路径",
+          "language": "bash",
+          "code": "cat note.txt\ncat 'lesson one/note.txt'\n"
         },
         {
           "type": "rich_paragraph",
@@ -1417,7 +1522,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：启动 Codex 后输入",
           "language": "text",
           "code": "Read lesson one/note.txt and report the current working directory.\nDo not modify any files. If the file is missing, report the actual error.\n"
         },
@@ -1432,7 +1537,7 @@
         },
         {
           "type": "paragraph",
-          "text": "本篇没有改动原始档，结束时关闭终端机或离开练习目录即可。正在执行的程式通常可用 Ctrl+C 中断，但中断不等于还原已写入资料。再自行建立 lesson two/note.txt，写不同句子，从根目录分别读取两份内容。能分清路径与档案、正确处理空白、辨认失败后的位置，就透过练习；图中 1、2、3 是定位、读取、验证。"
+          "text": "本篇没有改动原始档，结束时关闭终端机或离开练习目录即可。正在执行的程式通常可用 Ctrl+C 中断，但中断不等于还原已写入资料。再自行建立 lesson two/note.txt，写不同句子，从根目录分别读取两份内容。能分清路径与档案、正确处理空白、辨认失败后的位置，就完成练习；图中 1、2、3 是定位、读取、验证。"
         },
         {
           "type": "rich_paragraph",

@@ -69,7 +69,7 @@
     {
       "type": "p",
       "text": [
-        "平常會在終端機行動資料夾、執行測試，或準備把工作接到指令碼，就選 [CLI](article:codex-cli-getting-started)。Windows 原生與 WSL 是不同環境，工具安裝、家目錄與路徑要分別確認；macOS 與 Linux 也不能把使用者路徑直接互貼。還不熟終端機，可先讀[路徑與終端機](article:codex-terminal-paths)，這比一次學兩種殼層更容易找到錯誤。",
+        "平常會在在終端機切換資料夾、執行測試，或準備把工作接到指令碼，就選 [CLI](article:codex-cli-getting-started)。Windows 原生與 WSL 是不同環境，工具安裝、家目錄與路徑要分別確認；macOS 與 Linux 也不能把使用者路徑直接互貼。還不熟終端機，可先讀[路徑與終端機](article:codex-terminal-paths)，這比一次學兩種殼層更容易找到錯誤。",
         "Choose [CLI](article:codex-cli-getting-started) if you already navigate folders and run tests in a terminal, or intend to connect work to scripts. Native Windows and WSL are different environments with separate installations, home directories and paths. User paths are not interchangeable between macOS and Linux either. If terminals are unfamiliar, begin with [terminal paths](article:codex-terminal-paths) rather than learning two shells at once.",
         "端末でフォルダー移動やテストを行う、またはスクリプトに接続したいなら [CLI](article:codex-cli-getting-started)を選びます。Windows ネイティブと WSL は別環境なのでインストール、ホーム、パスを分けて確認します。macOS と Linux のユーザーパスもそのまま流用しません。端末に不慣れなら[パスと端末](article:codex-terminal-paths)を先に読み、二つのシェルを同時に覚える負担を減らします。",
         "터미널에서 폴더를 이동하거나 테스트를 실행하고 스크립트와 연결하려면 [CLI](article:codex-cli-getting-started)를 선택하세요. Windows 네이티브와 WSL은 설치, 홈 디렉터리, 경로가 다른 환경입니다. macOS와 Linux의 사용자 경로도 그대로 바꿔 쓸 수는 없습니다. 터미널이 낯설면 두 셸을 한꺼번에 배우기보다 [터미널과 경로](article:codex-terminal-paths)부터 익힙니다."
@@ -105,7 +105,7 @@
     {
       "type": "p",
       "text": [
-        "外出時追蹤或接續電腦工作，可以考慮[手機 Remote](article:codex-mobile-guide)。官方檔案列出 iOS、Android 控制可用的 macOS 或 Windows 桌面主機；主機需要保持可連線，配對與工作區許可權也要成立。手機不是把 npm、專案與本機瀏覽器搬到自己儲存空間。若電腦關機或離線，先恢復主機，不要改成在手機終端機亂裝套件來修復連線。",
+        "外出時追蹤或接續電腦工作，可以考慮[手機 Remote](article:codex-mobile-guide)。官方文件列出 iOS、Android 控制可用的 macOS 或 Windows 桌面主機；主機需要保持可連線，配對與工作區權限也要成立。手機不是把 npm、專案與本機瀏覽器搬到自己儲存空間。若電腦關機或離線，先恢復主機，不要改成在手機終端機亂裝套件來修復連線。",
         "Consider [mobile Remote](article:codex-mobile-guide) to follow or continue computer work while away. Documentation describes iOS and Android controlling available macOS or Windows desktop hosts, with host connectivity, pairing and workspace permission required. This does not move npm, the project and its local browser into phone storage. If the host is off or offline, restore its availability rather than installing packages in a phone terminal to fix the connection.",
         "外出先でコンピューターの作業を追跡・継続するなら[モバイル Remote](article:codex-mobile-guide)を検討します。公式文書では iOS と Android から利用可能な macOS または Windows のデスクトップホストを操作します。ホストの接続、ペアリング、ワークスペース権限が必要です。npm、プロジェクト、ローカルブラウザーを電話へ移す機能ではありません。ホストが停止・オフラインなら接続を復旧し、電話にパッケージを入れて直そうとしないでください。",
         "외출 중 컴퓨터 작업을 확인하거나 이어 가려면 [모바일 Remote](article:codex-mobile-guide)를 고려합니다. 공식 문서는 iOS와 Android에서 사용 가능한 macOS 또는 Windows 데스크톱 호스트를 제어하는 방식을 설명하며 호스트 연결, 페어링, 워크스페이스 권한이 필요합니다. npm, 프로젝트, 로컬 브라우저가 휴대전화 저장소로 옮겨지는 것은 아닙니다. 호스트가 꺼졌거나 오프라인이면 호스트를 복구하고 휴대전화 터미널에 패키지를 설치해 연결을 고치려 하지 마세요."
@@ -132,7 +132,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings."
+      "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.",
+      "label": [
+        "自然語言提示詞：在選定環境的 Codex 任務輸入",
+        "Natural-language prompt: enter in a Codex task in the selected environment",
+        "自然言語の依頼：選択した環境の Codex タスクに入力する",
+        "자연어 요청: 선택한 환경의 Codex 작업에 입력"
+      ]
     },
     {
       "type": "p",
@@ -150,6 +156,24 @@
         "Boundary exercise: change the local marker to local-copy-B without committing it. An existing cloud copy may still read A, demonstrating different file versions rather than a model forgetting. A phone controlling the same host and folder should observe that host's current file. Reporting the source and marker is more useful than simply asking whether something is latest.",
         "境界の練習ではローカルだけを local-copy-B に変え、コミットしません。既存クラウドコピーで A が読めても、それは版の違いを示す証拠で、モデルが忘れたとは限りません。同じホストとフォルダーを操作する電話では、そのホストの現ファイルを基準にします。「最新ですか」より出典と目印を毎回報告する方が確実です。",
         "경계 사례로 로컬 표식만 local-copy-B로 바꾸고 커밋하지 않습니다. 기존 클라우드 복사본에서 A를 읽는다면 이는 모델이 잊은 것이 아니라 버전 차이의 증거일 수 있습니다. 동일 호스트와 폴더를 제어하는 휴대전화는 호스트의 현재 파일을 기준으로 해야 합니다. 최신인지 묻기보다 출처와 표식을 매번 보고하게 하면 판단하기 쉽습니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "只有一台電腦時，怎麼完成這個練習？",
+        "How to finish with only one computer",
+        "パソコン一台だけで練習するには",
+        "컴퓨터가 한 대뿐이라면 어떻게 완료하나요"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "若尚未設定雲端或 Remote，完成所選本機入口的讀取測試就足夠，不必為這一課新增帳號連線。想練習分辨副本，可另外建立兩個互不包含的資料夾 copy-a、copy-b，各放一份 location.txt；只把 copy-b 的標記改為 local-copy-B，再分別開啟兩個資料夾執行上面的唯讀提示詞。預期 A 讀到 local-copy-A，B 讀到 local-copy-B；先看工作目錄，再比對標記。這只驗證本機有兩份不同檔案，不能當成雲端同步或手機連線已成功的證據。",
+        "If cloud or Remote is not configured, complete the read check through your chosen local interface; no new account connection is needed for this lesson. To compare copies, create two separate sibling folders, copy-a and copy-b, with location.txt in each. Change only copy-b's marker to local-copy-B, then open each folder and run the read-only prompt above. Expect local-copy-A from A and local-copy-B from B; inspect the working directory before the marker. This demonstrates two distinct local files, not successful cloud synchronization or a phone connection.",
+        "クラウドや Remote が未設定なら、選んだローカル入口で読み取り確認を終えれば十分です。この授業のために新しいアカウント接続は不要です。コピーの区別を練習するなら、入れ子にせず同じ親に copy-a と copy-b を作り、両方に location.txt を置きます。copy-b だけ local-copy-B に変え、各フォルダーを開いて上の読み取り依頼を実行します。A は local-copy-A、B は local-copy-B が期待値です。目印より先に作業ディレクトリを確認します。これはローカルの二つのファイルを区別する練習であり、クラウド同期や電話接続の成功証拠にはなりません。",
+        "클라우드나 Remote를 설정하지 않았다면 선택한 로컬 화면에서 읽기 검사를 마치는 것으로 충분하며 이 수업을 위해 계정을 새로 연결할 필요는 없습니다. 복사본을 구분하려면 서로 포함되지 않는 형제 폴더 copy-a와 copy-b를 만들고 각각 location.txt를 넣으세요. copy-b의 표식만 local-copy-B로 바꾼 뒤 각 폴더를 열어 위의 읽기 전용 요청을 실행합니다. A에서는 local-copy-A, B에서는 local-copy-B가 예상됩니다. 표식보다 작업 디렉터리를 먼저 확인하세요. 이는 서로 다른 로컬 파일을 구분하는 실습일 뿐 클라우드 동기화나 휴대전화 연결의 성공 증거는 아닙니다."
       ]
     },
     {

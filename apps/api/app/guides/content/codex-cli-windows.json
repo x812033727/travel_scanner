@@ -41,7 +41,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在 Windows 原生 PowerShell 安裝 Codex CLI、確認實際執行的程式、登入並讀取一個含空格路徑的練習檔。閱讀約 12 分鐘，操作約 25 分鐘，下載時間另計。以下安裝與沙盒步驟依 2026-09-14 官方檔案查證；本機驗證僅涵蓋版本、help 與檔案操作，沒有重灌使用者的 CLI 或變更電腦政策。"
+          "text": "在 Windows 原生 PowerShell 安裝 Codex CLI、確認實際執行的程式、登入並讀取一個含空格路徑的練習檔。閱讀約 12 分鐘，操作約 25 分鐘，下載時間另計。以下安裝與沙盒步驟依 2026-09-14 官方文件查證；本機驗證僅涵蓋版本、help 與檔案操作，沒有重灌使用者的 CLI 或變更電腦政策。"
         },
         {
           "type": "rich_paragraph",
@@ -73,6 +73,24 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "安裝前用 Windows 的 winver 畫面確認版本。官方目前建議 Windows 11；近期且完整更新的 Windows 10 屬盡力支援，並要求現代主控台能力，不能把所有舊版 Windows 都視為同等支援。原生沙盒另有 winget 與管理員核准設定等前提，詳細條件見"
+            },
+            {
+              "type": "link",
+              "text": "Windows 官方沙盒文件",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "。先區分「CLI 安裝完成」和「沙盒設定完成」，出錯時記錄停在哪一步。"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "步驟一：開對 PowerShell，選定安裝管道"
@@ -83,7 +101,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "PowerShell：查詢所有命令來源與版本",
           "language": "powershell",
           "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
         },
@@ -93,7 +111,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "PowerShell：只在選擇官方獨立安裝時執行",
           "language": "powershell",
           "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
         },
@@ -112,7 +130,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "PowerShell：npm 替代路線，逐行確認成功",
           "language": "powershell",
           "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
         },
@@ -123,13 +141,13 @@
         },
         {
           "type": "paragraph",
-          "text": "選一個不在正式專案內、可寫入的新練習目錄。下列命令建立 codex windows lab；如果已存在就停止並保留原內容，請換一個新的資料夾名稱。New-Item 和 Set-Content 只用於這次新資料夾。接著切進資料夾，列檔並讀取 note.txt；路徑加引號，LiteralPath 避免把路徑字元當成萬用字元。"
+          "text": "選一個不在正式專案內、可寫入的位置。包含 & { 與最後 } 的整段一起貼上，建立全新的 codex windows lab；這樣存在檢查失敗時會停止整個區塊。若已有同名資料夾，保留內容並另取新名稱，不要跳過檢查繼續執行寫檔行。成功後會切進新資料夾，列檔並讀取 note.txt；引號保留空格，LiteralPath 避免把路徑字元當成萬用字元。"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "PowerShell：整段貼上，在目前位置建立全新練習資料夾",
           "language": "powershell",
-          "code": "$cliLab = Join-Path (Get-Location) 'codex windows lab'\nif (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\nNew-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\nSet-Location -LiteralPath $cliLab\nSet-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath 'note.txt'\n"
+          "code": "& {\n  $cliLab = Join-Path (Get-Location) 'codex windows lab'\n  if (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\n  New-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\n  Set-Location -LiteralPath $cliLab -ErrorAction Stop\n  Set-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8 -ErrorAction Stop\n  Get-Location\n  Get-ChildItem\n  Get-Content -LiteralPath 'note.txt'\n}\n"
         },
         {
           "type": "paragraph",
@@ -137,7 +155,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "PowerShell：在練習資料夾計算檔案雜湊",
           "language": "powershell",
           "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
         },
@@ -152,7 +170,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "PowerShell：逐行登入、確認狀態，再啟動 Codex",
           "language": "powershell",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -165,7 +183,7 @@
             },
             {
               "type": "article",
-              "text": "許可權與沙盒",
+              "text": "權限與沙盒",
               "kind": "life",
               "slug": "codex-permissions"
             },
@@ -177,7 +195,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在 Codex CLI 輸入",
           "language": "text",
           "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
         },
@@ -221,7 +239,7 @@
         },
         {
           "type": "paragraph",
-          "text": "PATH 是 shell 搜尋程式的目錄清單，不是專案清單。先對照安裝輸出與 Get-Command Source；需要手動修改時，在 Windows 搜尋「編輯帳戶的環境變數」，編輯使用者 Path，新增已確認的安裝資料夾，保留現有專案，儲存後開新終端機。不要把整段 PATH 替換成教學範例，也不要新增來路不明的下載資料夾。"
+          "text": "PATH 是 shell 搜尋程式的目錄清單，不是專案清單。先對照安裝輸出與 Get-Command Source；需要手動修改時，在 Windows 搜尋「編輯帳戶的環境變數」，編輯使用者 Path，新增已確認的安裝資料夾，保留現有項目，儲存後開新終端機。不要把整段 PATH 替換成教學範例，也不要新增來路不明的下載資料夾。"
         },
         {
           "type": "heading",
@@ -369,6 +387,24 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Before installation, check your Windows version with winver. Current documentation recommends Windows 11 and provides best-effort support for recent, fully updated Windows 10 with modern console support; older versions are not equally supported. Native sandbox setup has additional prerequisites including winget and administrator-approved setup; consult the "
+            },
+            {
+              "type": "link",
+              "text": "official Windows sandbox documentation",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+            },
+            {
+              "type": "text",
+              "text": ". Treat CLI installation and sandbox setup as separate stages, and record which stage failed."
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "Step 1: open PowerShell and choose a channel"
@@ -379,7 +415,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "PowerShell: inspect command sources and version",
           "language": "powershell",
           "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
         },
@@ -389,7 +425,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "PowerShell: run only when choosing the official standalone installer",
           "language": "powershell",
           "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
         },
@@ -408,7 +444,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "PowerShell: alternative npm route; verify each line succeeds",
           "language": "powershell",
           "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
         },
@@ -419,13 +455,13 @@
         },
         {
           "type": "paragraph",
-          "text": "Choose a writable location outside production projects. These commands create codex windows lab and stop if it already exists so prior work is preserved; choose a new name in that case. New-Item and Set-Content target only this new folder. Enter it, list files and read note.txt. Quotes preserve spaces, and LiteralPath prevents wildcard interpretation."
+          "text": "Choose a writable location outside production projects. Paste the whole block, including & { and the final }, to create a new codex windows lab; a failed existence check then stops the block. If that name already exists, preserve its contents and choose a new name rather than skipping the check and running the write lines. On success, the commands enter the new folder, list files and read note.txt. Quotes preserve spaces; LiteralPath avoids wildcard interpretation."
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "PowerShell: paste the whole block to create a new practice folder here",
           "language": "powershell",
-          "code": "$cliLab = Join-Path (Get-Location) 'codex windows lab'\nif (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\nNew-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\nSet-Location -LiteralPath $cliLab\nSet-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath 'note.txt'\n"
+          "code": "& {\n  $cliLab = Join-Path (Get-Location) 'codex windows lab'\n  if (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\n  New-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\n  Set-Location -LiteralPath $cliLab -ErrorAction Stop\n  Set-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8 -ErrorAction Stop\n  Get-Location\n  Get-ChildItem\n  Get-Content -LiteralPath 'note.txt'\n}\n"
         },
         {
           "type": "paragraph",
@@ -433,7 +469,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "PowerShell: hash the file in the practice folder",
           "language": "powershell",
           "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
         },
@@ -448,7 +484,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "PowerShell: sign in, check status, then start Codex one line at a time",
           "language": "powershell",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -473,7 +509,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter inside Codex CLI",
           "language": "text",
           "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
         },
@@ -665,6 +701,24 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "導入前に winver で Windows の版を確認します。現在の公式推奨は Windows 11 で、新しいコンソール機能を備えた更新済み Windows 10 はベストエフォート対応です。古い版も同等に対応しているとは考えないでください。ネイティブサンドボックスには winget や管理者承認の設定など追加条件があり、"
+            },
+            {
+              "type": "link",
+              "text": "公式 Windows サンドボックス文書",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "で確認します。CLI 導入とサンドボックス設定を分け、失敗した段階を記録します。"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "手順1：PowerShell と導入経路を選ぶ"
@@ -675,7 +729,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "PowerShell：コマンドの候補と版を確認する",
           "language": "powershell",
           "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
         },
@@ -685,7 +739,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "PowerShell：公式の独立インストーラーを選ぶ場合に実行する",
           "language": "powershell",
           "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
         },
@@ -704,7 +758,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "PowerShell：npm の代替経路。各行の成功を確認する",
           "language": "powershell",
           "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
         },
@@ -715,13 +769,13 @@
         },
         {
           "type": "paragraph",
-          "text": "本番プロジェクト外の書き込み可能な場所を選びます。次は codex windows lab を新規作成し、既存なら停止して内容を保護します。その場合は新しい名前を選んでください。New-Item と Set-Content はこの新規フォルダーだけを対象にします。移動して一覧と note.txt を読みます。引用符で空白を保ち、LiteralPath でワイルドカード解釈を避けます。"
+          "text": "本番プロジェクト外の書き込み可能な場所を選びます。& { から最後の } まで全体を貼り付け、新しい codex windows lab を作ります。存在確認で失敗すればブロック全体が停止します。同名フォルダーがあれば内容を残して別名を選び、確認を飛ばして書き込み行だけ実行しないでください。成功すると新しい場所へ移動して一覧と note.txt を読みます。引用符は空白を保ち、LiteralPath はワイルドカード解釈を避けます。"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "PowerShell：全体を貼り付け、現在地に新しい練習フォルダーを作る",
           "language": "powershell",
-          "code": "$cliLab = Join-Path (Get-Location) 'codex windows lab'\nif (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\nNew-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\nSet-Location -LiteralPath $cliLab\nSet-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath 'note.txt'\n"
+          "code": "& {\n  $cliLab = Join-Path (Get-Location) 'codex windows lab'\n  if (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\n  New-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\n  Set-Location -LiteralPath $cliLab -ErrorAction Stop\n  Set-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8 -ErrorAction Stop\n  Get-Location\n  Get-ChildItem\n  Get-Content -LiteralPath 'note.txt'\n}\n"
         },
         {
           "type": "paragraph",
@@ -729,7 +783,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "PowerShell：練習フォルダーでファイルのハッシュを計算する",
           "language": "powershell",
           "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
         },
@@ -744,7 +798,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "PowerShell：一行ずつ認証、状態確認、Codex の起動を行う",
           "language": "powershell",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -769,7 +823,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：Codex CLI 内に入力する",
           "language": "text",
           "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
         },
@@ -961,6 +1015,24 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "설치 전에 winver로 Windows 버전을 확인하세요. 현재 공식 문서는 Windows 11을 권장하며 최신 콘솔 기능을 갖추고 업데이트된 Windows 10은 가능한 범위에서만 지원합니다. 오래된 버전까지 같은 수준으로 지원된다고 판단하지 마세요. 기본 샌드박스 설정에는 winget과 관리자 승인 등 추가 조건이 있으므로 "
+            },
+            {
+              "type": "link",
+              "text": "공식 Windows 샌드박스 문서",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "를 확인합니다. CLI 설치와 샌드박스 설정을 별도 단계로 나누고 어느 단계에서 실패했는지 기록하세요."
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "1단계: PowerShell과 설치 경로 선택하기"
@@ -971,7 +1043,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "PowerShell: 명령 출처와 버전 확인",
           "language": "powershell",
           "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
         },
@@ -981,7 +1053,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "PowerShell: 공식 독립 설치 프로그램을 선택한 경우에만 실행",
           "language": "powershell",
           "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
         },
@@ -1000,7 +1072,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "PowerShell: npm 대체 경로, 각 줄의 성공 확인",
           "language": "powershell",
           "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
         },
@@ -1011,13 +1083,13 @@
         },
         {
           "type": "paragraph",
-          "text": "실제 프로젝트 밖의 쓰기 가능한 위치를 선택합니다. 명령은 codex windows lab을 만들되 이미 있으면 멈춰 기존 작업을 보존하므로 그때는 새 이름을 선택하세요. New-Item과 Set-Content는 새 폴더만 대상으로 합니다. 이동 후 목록과 note.txt를 읽습니다. 따옴표는 공백을 보존하고 LiteralPath는 와일드카드 해석을 막습니다."
+          "text": "실제 프로젝트 밖의 쓰기 가능한 위치를 고릅니다. & {부터 마지막 }까지 블록 전체를 붙여 넣어 새 codex windows lab을 만드세요. 존재 확인에 실패하면 블록이 중단됩니다. 같은 이름이 이미 있으면 내용을 보존하고 새 이름을 선택하며 확인을 건너뛰고 쓰기 줄만 실행하지 않습니다. 성공하면 새 폴더로 이동해 목록과 note.txt를 읽습니다. 따옴표는 공백을 보존하고 LiteralPath는 와일드카드 해석을 막습니다."
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "PowerShell: 블록 전체를 붙여 넣어 현재 위치에 새 실습 폴더 만들기",
           "language": "powershell",
-          "code": "$cliLab = Join-Path (Get-Location) 'codex windows lab'\nif (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\nNew-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\nSet-Location -LiteralPath $cliLab\nSet-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath 'note.txt'\n"
+          "code": "& {\n  $cliLab = Join-Path (Get-Location) 'codex windows lab'\n  if (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\n  New-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\n  Set-Location -LiteralPath $cliLab -ErrorAction Stop\n  Set-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8 -ErrorAction Stop\n  Get-Location\n  Get-ChildItem\n  Get-Content -LiteralPath 'note.txt'\n}\n"
         },
         {
           "type": "paragraph",
@@ -1025,7 +1097,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "PowerShell: 실습 폴더에서 파일 해시 계산",
           "language": "powershell",
           "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
         },
@@ -1040,7 +1112,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "PowerShell: 로그인, 상태 확인, Codex 시작을 한 줄씩 실행",
           "language": "powershell",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -1065,7 +1137,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: Codex CLI 안에 입력",
           "language": "text",
           "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
         },
@@ -1225,7 +1297,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在 Windows 原生 PowerShell 安装 Codex CLI、确认实际执行的程式、登入并读取一个含空格路径的练习档。阅读约 12 分钟，操作约 25 分钟，下载时间另计。以下安装与沙盒步骤依 2026-09-14 官方档案查证；本机验证仅涵盖版本、help 与档案操作，没有重灌使用者的 CLI 或变更电脑政策。"
+          "text": "在 Windows 原生 PowerShell 安装 Codex CLI、确认实际执行的程式、登入并读取一个含空格路径的练习档。阅读约 12 分钟，操作约 25 分钟，下载时间另计。以下安装与沙盒步骤依 2026-09-14 官方文件查证；本机验证仅涵盖版本、help 与档案操作，没有重灌使用者的 CLI 或变更电脑政策。"
         },
         {
           "type": "rich_paragraph",
@@ -1257,6 +1329,24 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "安装前用 Windows 的 winver 画面确认版本。官方目前建议 Windows 11；近期且完整更新的 Windows 10 属尽力支援，并要求现代主控台能力，不能把所有旧版 Windows 都视为同等支援。原生沙盒另有 winget 与管理员核准设定等前提，详细条件见"
+            },
+            {
+              "type": "link",
+              "text": "Windows 官方沙盒文件",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "。先区分「CLI 安装完成」和「沙盒设定完成」，出错时记录停在哪一步。"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "步骤一：开对 PowerShell，选定安装管道"
@@ -1267,7 +1357,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "PowerShell：查询所有命令来源与版本",
           "language": "powershell",
           "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
         },
@@ -1277,7 +1367,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "PowerShell：只在选择官方独立安装时执行",
           "language": "powershell",
           "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
         },
@@ -1296,7 +1386,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "PowerShell：npm 替代路线，逐行确认成功",
           "language": "powershell",
           "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
         },
@@ -1307,13 +1397,13 @@
         },
         {
           "type": "paragraph",
-          "text": "选一个不在正式专案内、可写入的新练习目录。下列命令建立 codex windows lab；如果已存在就停止并保留原内容，请换一个新的资料夹名称。New-Item 和 Set-Content 只用于这次新资料夹。接著切进资料夹，列档并读取 note.txt；路径加引号，LiteralPath 避免把路径字元当成万用字元。"
+          "text": "选一个不在正式专案内、可写入的位置。包含 & { 与最后 } 的整段一起贴上，建立全新的 codex windows lab；这样存在检查失败时会停止整个区块。若已有同名资料夹，保留内容并另取新名称，不要跳过检查继续执行写档行。成功后会切进新资料夹，列档并读取 note.txt；引号保留空格，LiteralPath 避免把路径字元当成万用字元。"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "PowerShell：整段贴上，在目前位置建立全新练习资料夹",
           "language": "powershell",
-          "code": "$cliLab = Join-Path (Get-Location) 'codex windows lab'\nif (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\nNew-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\nSet-Location -LiteralPath $cliLab\nSet-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath 'note.txt'\n"
+          "code": "& {\n  $cliLab = Join-Path (Get-Location) 'codex windows lab'\n  if (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\n  New-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\n  Set-Location -LiteralPath $cliLab -ErrorAction Stop\n  Set-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8 -ErrorAction Stop\n  Get-Location\n  Get-ChildItem\n  Get-Content -LiteralPath 'note.txt'\n}\n"
         },
         {
           "type": "paragraph",
@@ -1321,7 +1411,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "PowerShell：在练习资料夹计算档案杂凑",
           "language": "powershell",
           "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
         },
@@ -1336,7 +1426,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "PowerShell：逐行登入、确认状态，再启动 Codex",
           "language": "powershell",
           "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
         },
@@ -1349,7 +1439,7 @@
             },
             {
               "type": "article",
-              "text": "许可权与沙盒",
+              "text": "权限与沙盒",
               "kind": "life",
               "slug": "codex-permissions"
             },
@@ -1361,7 +1451,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在 Codex CLI 输入",
           "language": "text",
           "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
         },
@@ -1405,7 +1495,7 @@
         },
         {
           "type": "paragraph",
-          "text": "PATH 是 shell 搜寻程式的目录清单，不是专案清单。先对照安装输出与 Get-Command Source；需要手动修改时，在 Windows 搜寻「编辑帐户的环境变数」，编辑使用者 Path，新增已确认的安装资料夹，保留现有专案，储存后开新终端机。不要把整段 PATH 替换成教学范例，也不要新增来路不明的下载资料夹。"
+          "text": "PATH 是 shell 搜寻程式的目录清单，不是专案清单。先对照安装输出与 Get-Command Source；需要手动修改时，在 Windows 搜寻「编辑帐户的环境变数」，编辑使用者 Path，新增已确认的安装资料夹，保留现有项目，储存后开新终端机。不要把整段 PATH 替换成教学范例，也不要新增来路不明的下载资料夹。"
         },
         {
           "type": "heading",

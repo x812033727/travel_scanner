@@ -87,7 +87,7 @@
     {
       "type": "p",
       "text": [
-        "下方是本篇完整提示詞，輸入到已選定 codex-prompt-lab 的 Codex 任務，而不是作業系統終端機。它明確指出一個 HTML 檔案與兩個字串變更，保留可及性標籤、事件繫結與資料格式，最後要求實際檢查。New task 保持不變是為了保留表單的可見標籤，不是要把所有文字強行改成同一個詞。",
+        "下方是本篇完整提示詞，輸入到已選定 codex-prompt-lab 的 Codex 任務，而不是作業系統終端機。它明確指出一個 HTML 檔案與兩個字串變更，保留無障礙標籤、事件繫結與資料格式，最後要求實際檢查。New task 保持不變是為了保留表單的可見標籤，不是要把所有文字強行改成同一個詞。",
         "Send the complete prompt below to the Codex task for codex-prompt-lab, not the operating-system shell. It names one HTML file and two string changes, preserves accessibility labels, event bindings and data format, and requests actual checks. New task remains the visible field label; not every piece of text should be forced into the same wording.",
         "次を codex-prompt-lab の Codex タスクへ送り、OS のシェルには入力しません。一つの HTML と二つの文字変更を指定し、ラベル、イベント、データ形式を維持して実際の確認を求めます。New task は見える入力ラベルとして残し、すべての文言を同じ語に変えるわけではありません。",
         "아래 전체 요청을 codex-prompt-lab의 Codex 작업에 보내며 운영체제 셸에 입력하지 않습니다. HTML 파일 하나와 문자열 변경 두 개를 지정하고 접근성 레이블, 이벤트 연결, 데이터 형식을 보존하며 실제 검사를 요청합니다. New task는 보이는 입력 레이블로 남기는 것이며 모든 문구를 같은 단어로 바꾸는 것이 아닙니다."
@@ -96,7 +96,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence."
+      "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence.",
+      "label": [
+        "自然語言提示詞：貼入練習專案的 Codex 任務",
+        "Natural-language prompt: paste into the practice project's Codex task",
+        "自然言語の依頼：練習プロジェクトの Codex タスクに貼り付ける",
+        "자연어 요청: 실습 프로젝트의 Codex 작업에 붙여 넣기"
+      ]
     },
     {
       "type": "p",
@@ -128,7 +134,7 @@
     {
       "type": "p",
       "text": [
-        "在 http 預覽新增 Read，勾選完成，Completed 應只顯示已完成專案，重新整理後保留。空白輸入不能增加專案；Tab 焦點仍可到達輸入與提交按鈕。這些行為應與修改前一致。若只有文字改對、按鈕不能提交，表示驗收失敗，下一輪要指出實際現象，而不是籠統說「不好用」。",
+        "在 http 預覽新增 Read，勾選完成，Completed 應只顯示已完成項目，重新整理後保留。空白輸入不能新增項目；Tab 焦點仍可到達輸入與提交按鈕。這些行為應與修改前一致。若只有文字改對、按鈕不能提交，表示驗收失敗，下一輪要指出實際現象，而不是籠統說「不好用」。",
         "In the HTTP preview, add Read, complete it, check the Completed filter and refresh to verify persistence. Whitespace must not add an item, and Tab must still reach the input and submit button. These behaviors should match the baseline. Correct wording with a broken submit button fails acceptance; describe the actual symptom in the next request instead of saying only “it is bad.”",
         "HTTP 表示で Read を追加・完了し、Completed と再読込後の保存を確認します。空白では追加されず、Tab で入力と送信に移れることも変更前と同じであるべきです。文言が正しくても送信不能なら不合格で、次の依頼では「使いにくい」だけでなく実際の症状を説明します。",
         "HTTP 미리보기에서 Read를 추가하고 완료한 뒤 Completed 필터와 새로고침 후 저장 상태를 확인합니다. 공백으로 항목이 늘어나면 안 되고 Tab으로 입력창과 제출 버튼에 도달해야 합니다. 수정 전과 같은 동작이어야 합니다. 문구만 맞고 제출이 안 되면 검증 실패이므로 다음 요청에는 ‘별로야’가 아니라 실제 증상을 적습니다."
@@ -155,7 +161,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "The button text is correct; preserve that change.\nAfter saving and refreshing, the placeholder still reads \"Read the project README\".\nExpected placeholder: \"Plan one small step\".\nInspect index.html and correct only the remaining placeholder mismatch.\nReport the relevant diff and any verification you can actually perform."
+      "code": "The button text is correct; preserve that change.\nAfter saving and refreshing, the placeholder still reads \"Read the project README\".\nExpected placeholder: \"Plan one small step\".\nInspect index.html and correct only the remaining placeholder mismatch.\nReport the relevant diff and any verification you can actually perform.",
+      "label": [
+        "後續提示詞：只在按鈕正確、placeholder 仍錯誤時使用",
+        "Follow-up prompt: use only if the button is correct and the placeholder is still wrong",
+        "追加の依頼：ボタンが正しく placeholder だけが違う場合に使用する",
+        "후속 요청: 버튼은 맞고 placeholder만 여전히 틀릴 때 사용"
+      ]
     },
     {
       "type": "p",
@@ -178,7 +190,7 @@
     {
       "type": "p",
       "text": [
-        "改太多：檢查需求是否用了「全面最佳化」「順便全部整理」等擴張範圍的字句，改為列出指定檔案與保留專案，再逐項還原無關差異。一直問問題：補足真正影響決策的條件，普通字型或檔名選擇可授權它依既有風格決定。回答看似完成卻沒證據：要求列出實際命令結果與未執行專案，不要求它換句話說「已完成」。",
+        "改太多：檢查需求是否用了「全面最佳化」「順便全部整理」等擴張範圍的字句，改為列出指定檔案與保留項目，再逐項還原無關差異。一直問問題：補足真正影響決策的條件，普通字型或檔名選擇可授權它依既有風格決定。回答看似完成卻沒證據：要求列出實際命令結果與未執行項目，不要求它換句話說「已完成」。",
         "Too many edits: remove scope-expanding phrases such as “optimize everything,” name the permitted files and preserved behavior, then restore unrelated changes individually. Endless questions: answer conditions that affect the decision and allow routine font or filename choices to follow the existing style. Completion without evidence: request actual command results and checks not run, not another paraphrase of “done.”",
         "変更が多すぎれば「全面最適化」などを取り除き、指定ファイルと維持項目を示して無関係な差分だけ戻します。質問が続く場合は判断に影響する条件を答え、通常の字体や名前は既存スタイルに任せます。完了に証拠がなければ「完了」の言い換えではなく、実際の命令結果と未実施項目を求めます。",
         "수정이 너무 많다면 ‘전부 최적화’ 같은 범위 확장 표현을 빼고 허용 파일과 보존 동작을 명시한 뒤 무관한 변경만 각각 되돌립니다. 질문이 계속되면 판단에 영향을 주는 조건을 보완하고 일반 글꼴이나 이름은 기존 스타일을 따르도록 맡깁니다. 완료 주장에 근거가 없으면 ‘완료’의 다른 표현 대신 실제 명령 결과와 미실행 항목을 요청합니다."
@@ -205,10 +217,10 @@
     {
       "type": "p",
       "text": [
-        "把本篇目標改成「只把按鈕改為 Create task，placeholder 保留原文」，自行寫出新提示詞。驗收要明確指出 index.html 唯一改動的字串，並重做新增、空值與重新整理。結束後用保留的 expected 原版恢復 index.html，其他檔案不需替換；Python 伺服器用 Ctrl+C 停止。關閉 Codex 對話不會自動撤銷本次改字。",
-        "Write a new prompt for “Change only the button to Create task and retain the original placeholder.” Acceptance should identify the sole changed string in index.html and repeat adding, empty-input and refresh checks. Restore index.html from the retained expected original afterward; no other files need replacement. Stop Python with Ctrl+C. Closing the Codex conversation does not undo the wording change.",
-        "目標を「ボタンだけ Create task にし、placeholder は原文のまま」に変えて自分で依頼を書きます。index.html の唯一の変更文字を示し、追加、空入力、再読込を検証します。終了後は expected 原本から index.html だけを戻し、Python は Ctrl+C で止めます。Codex の会話を閉じても文言変更は元に戻りません。",
-        "‘버튼만 Create task로 바꾸고 placeholder는 원문을 유지한다’는 새 요청을 직접 작성하세요. index.html에서 바뀐 문자열 하나를 명시하고 추가, 빈 입력, 새로고침을 다시 확인합니다. 종료 후 expected 원본으로 index.html만 복원하고 Python은 Ctrl+C로 중단합니다. Codex 대화를 닫아도 문구 수정은 취소되지 않습니다."
+        "延伸練習請從另一份全新的 expected 副本開始，先確認按鈕是 Add task、placeholder 是 Read the project README；不要接著使用剛才已改過的副本。自行寫提示詞：只把按鈕改為 Create task，保留這份副本的原始 placeholder。驗收要指出 index.html 唯一改動的字串，並重做新增、空值與重新整理。結束後用保留的 expected 原版恢復各練習副本的 index.html，其他檔案不需替換；Python 伺服器用 Ctrl+C 停止。關閉 Codex 對話不會自動撤銷改字。",
+        "Start the extra exercise from another fresh expected copy. Confirm that the button says Add task and the placeholder says Read the project README; do not continue in the copy you just edited. Write a prompt that changes only the button to Create task and preserves this copy's original placeholder. Identify the single changed string in index.html and repeat the add, empty-input and refresh checks. Afterward, restore index.html in each practice copy from the retained expected original; other files need no replacement. Stop Python with Ctrl+C. Closing a Codex conversation does not undo file changes.",
+        "追加練習は expected の新しいコピーから始めます。ボタンが Add task、placeholder が Read the project README であることを確認し、直前に変更したコピーは使いません。ボタンだけを Create task にし、このコピーの元の placeholder を保つ依頼を自分で書きます。index.html の変更文字列が一つだけであることを確認し、追加、空入力、再読み込みを再検証します。終了後は保存した expected 原本から各練習コピーの index.html を戻します。他のファイルは交換不要です。Python は Ctrl+C で停止します。Codex の会話を閉じてもファイル変更は戻りません。",
+        "추가 실습은 expected의 새 복사본에서 시작하세요. 버튼이 Add task이고 placeholder가 Read the project README인지 확인하며 방금 수정한 복사본을 이어서 사용하지 않습니다. 버튼만 Create task로 바꾸고 이 복사본의 원래 placeholder를 유지하는 요청을 직접 작성하세요. index.html에서 바뀐 문자열이 하나인지 확인하고 추가, 빈 입력, 새로고침 검사를 반복합니다. 마친 뒤 보관한 expected 원본으로 각 실습 복사본의 index.html을 복원하며 다른 파일은 바꿀 필요가 없습니다. Python은 Ctrl+C로 중단합니다. Codex 대화를 닫아도 파일 변경은 취소되지 않습니다."
       ]
     },
     {

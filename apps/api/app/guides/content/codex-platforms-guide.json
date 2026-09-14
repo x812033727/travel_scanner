@@ -116,7 +116,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "平常會在終端機行動資料夾、執行測試，或準備把工作接到指令碼，就選 "
+              "text": "平常會在在終端機切換資料夾、執行測試，或準備把工作接到指令碼，就選 "
             },
             {
               "type": "article",
@@ -198,7 +198,7 @@
             },
             {
               "type": "text",
-              "text": "。官方檔案列出 iOS、Android 控制可用的 macOS 或 Windows 桌面主機；主機需要保持可連線，配對與工作區許可權也要成立。手機不是把 npm、專案與本機瀏覽器搬到自己儲存空間。若電腦關機或離線，先恢復主機，不要改成在手機終端機亂裝套件來修復連線。"
+              "text": "。官方文件列出 iOS、Android 控制可用的 macOS 或 Windows 桌面主機；主機需要保持可連線，配對與工作區權限也要成立。手機不是把 npm、專案與本機瀏覽器搬到自己儲存空間。若電腦關機或離線，先恢復主機，不要改成在手機終端機亂裝套件來修復連線。"
             }
           ]
         },
@@ -213,7 +213,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在選定環境的 Codex 任務輸入",
           "language": "text",
           "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
         },
@@ -224,6 +224,15 @@
         {
           "type": "paragraph",
           "text": "邊界練習：只在本機把標記改成 local-copy-B，但不要提交。詢問既有雲端副本時，它仍可能讀到 A；這正是不同版本的可觀察證據，不是模型忘記。手機連到同一主機且同一資料夾則應以主機目前檔案為準。每次都報出來源與標記，比問「是不是最新」更容易判斷。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "只有一台電腦時，怎麼完成這個練習？"
+        },
+        {
+          "type": "paragraph",
+          "text": "若尚未設定雲端或 Remote，完成所選本機入口的讀取測試就足夠，不必為這一課新增帳號連線。想練習分辨副本，可另外建立兩個互不包含的資料夾 copy-a、copy-b，各放一份 location.txt；只把 copy-b 的標記改為 local-copy-B，再分別開啟兩個資料夾執行上面的唯讀提示詞。預期 A 讀到 local-copy-A，B 讀到 local-copy-B；先看工作目錄，再比對標記。這只驗證本機有兩份不同檔案，不能當成雲端同步或手機連線已成功的證據。"
         },
         {
           "type": "heading",
@@ -579,7 +588,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in a Codex task in the selected environment",
           "language": "text",
           "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
         },
@@ -590,6 +599,15 @@
         {
           "type": "paragraph",
           "text": "Boundary exercise: change the local marker to local-copy-B without committing it. An existing cloud copy may still read A, demonstrating different file versions rather than a model forgetting. A phone controlling the same host and folder should observe that host's current file. Reporting the source and marker is more useful than simply asking whether something is latest."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "How to finish with only one computer"
+        },
+        {
+          "type": "paragraph",
+          "text": "If cloud or Remote is not configured, complete the read check through your chosen local interface; no new account connection is needed for this lesson. To compare copies, create two separate sibling folders, copy-a and copy-b, with location.txt in each. Change only copy-b's marker to local-copy-B, then open each folder and run the read-only prompt above. Expect local-copy-A from A and local-copy-B from B; inspect the working directory before the marker. This demonstrates two distinct local files, not successful cloud synchronization or a phone connection."
         },
         {
           "type": "heading",
@@ -945,7 +963,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：選択した環境の Codex タスクに入力する",
           "language": "text",
           "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
         },
@@ -956,6 +974,15 @@
         {
           "type": "paragraph",
           "text": "境界の練習ではローカルだけを local-copy-B に変え、コミットしません。既存クラウドコピーで A が読めても、それは版の違いを示す証拠で、モデルが忘れたとは限りません。同じホストとフォルダーを操作する電話では、そのホストの現ファイルを基準にします。「最新ですか」より出典と目印を毎回報告する方が確実です。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "パソコン一台だけで練習するには"
+        },
+        {
+          "type": "paragraph",
+          "text": "クラウドや Remote が未設定なら、選んだローカル入口で読み取り確認を終えれば十分です。この授業のために新しいアカウント接続は不要です。コピーの区別を練習するなら、入れ子にせず同じ親に copy-a と copy-b を作り、両方に location.txt を置きます。copy-b だけ local-copy-B に変え、各フォルダーを開いて上の読み取り依頼を実行します。A は local-copy-A、B は local-copy-B が期待値です。目印より先に作業ディレクトリを確認します。これはローカルの二つのファイルを区別する練習であり、クラウド同期や電話接続の成功証拠にはなりません。"
         },
         {
           "type": "heading",
@@ -1311,7 +1338,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 선택한 환경의 Codex 작업에 입력",
           "language": "text",
           "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
         },
@@ -1322,6 +1349,15 @@
         {
           "type": "paragraph",
           "text": "경계 사례로 로컬 표식만 local-copy-B로 바꾸고 커밋하지 않습니다. 기존 클라우드 복사본에서 A를 읽는다면 이는 모델이 잊은 것이 아니라 버전 차이의 증거일 수 있습니다. 동일 호스트와 폴더를 제어하는 휴대전화는 호스트의 현재 파일을 기준으로 해야 합니다. 최신인지 묻기보다 출처와 표식을 매번 보고하게 하면 판단하기 쉽습니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "컴퓨터가 한 대뿐이라면 어떻게 완료하나요"
+        },
+        {
+          "type": "paragraph",
+          "text": "클라우드나 Remote를 설정하지 않았다면 선택한 로컬 화면에서 읽기 검사를 마치는 것으로 충분하며 이 수업을 위해 계정을 새로 연결할 필요는 없습니다. 복사본을 구분하려면 서로 포함되지 않는 형제 폴더 copy-a와 copy-b를 만들고 각각 location.txt를 넣으세요. copy-b의 표식만 local-copy-B로 바꾼 뒤 각 폴더를 열어 위의 읽기 전용 요청을 실행합니다. A에서는 local-copy-A, B에서는 local-copy-B가 예상됩니다. 표식보다 작업 디렉터리를 먼저 확인하세요. 이는 서로 다른 로컬 파일을 구분하는 실습일 뿐 클라우드 동기화나 휴대전화 연결의 성공 증거는 아닙니다."
         },
         {
           "type": "heading",
@@ -1580,7 +1616,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "平常会在终端机行动资料夹、执行测试，或准备把工作接到指令码，就选 "
+              "text": "平常会在在终端机切换资料夹、执行测试，或准备把工作接到指令码，就选 "
             },
             {
               "type": "article",
@@ -1662,7 +1698,7 @@
             },
             {
               "type": "text",
-              "text": "。官方档案列出 iOS、Android 控制可用的 macOS 或 Windows 桌面主机；主机需要保持可连线，配对与工作区许可权也要成立。手机不是把 npm、专案与本机浏览器搬到自己储存空间。若电脑关机或离线，先恢复主机，不要改成在手机终端机乱装套件来修复连线。"
+              "text": "。官方文件列出 iOS、Android 控制可用的 macOS 或 Windows 桌面主机；主机需要保持可连线，配对与工作区权限也要成立。手机不是把 npm、专案与本机浏览器搬到自己储存空间。若电脑关机或离线，先恢复主机，不要改成在手机终端机乱装套件来修复连线。"
             }
           ]
         },
@@ -1677,7 +1713,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在选定环境的 Codex 任务输入",
           "language": "text",
           "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
         },
@@ -1688,6 +1724,15 @@
         {
           "type": "paragraph",
           "text": "边界练习：只在本机把标记改成 local-copy-B，但不要提交。询问既有云端副本时，它仍可能读到 A；这正是不同版本的可观察证据，不是模型忘记。手机连到同一主机且同一资料夹则应以主机目前档案为准。每次都报出来源与标记，比问「是不是最新」更容易判断。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "只有一台电脑时，怎么完成这个练习？"
+        },
+        {
+          "type": "paragraph",
+          "text": "若尚未设定云端或 Remote，完成所选本机入口的读取测试就足够，不必为这一课新增帐号连线。想练习分辨副本，可另外建立两个互不包含的资料夹 copy-a、copy-b，各放一份 location.txt；只把 copy-b 的标记改为 local-copy-B，再分别开启两个资料夹执行上面的唯读提示词。预期 A 读到 local-copy-A，B 读到 local-copy-B；先看工作目录，再比对标记。这只验证本机有两份不同档案，不能当成云端同步或手机连线已成功的证据。"
         },
         {
           "type": "heading",

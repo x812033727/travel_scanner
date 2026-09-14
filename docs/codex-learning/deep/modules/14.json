@@ -96,7 +96,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "node --test core.test.mjs\n"
+      "code": "node --test core.test.mjs\n",
+      "label": [
+        "IDE 整合終端機：在 codex-ide-lab 執行",
+        "IDE integrated terminal: run in codex-ide-lab",
+        "IDE の統合端末：codex-ide-lab で実行する",
+        "IDE 통합 터미널: codex-ide-lab에서 실행"
+      ]
     },
     {
       "type": "h2",
@@ -110,16 +116,22 @@
     {
       "type": "p",
       "text": [
-        "打開 core.mjs，選取 visibleTasks 整個函式，從命令面板找到 Add to Codex Thread，把選取範圍加入目前任務；名稱或可用命令以該版擴充套件選單為準。再開 core.test.mjs，讓測試也在上下文中。送出前查看輸入框的附件或檔案標記，確認是 core.mjs 和測試，不是只選到了相似名稱的另一份檔案。",
-        "Open core.mjs, select the whole visibleTasks function and use Add to Codex Thread from the command palette to attach the selection, checking the actual command available in your extension version. Open core.test.mjs as test context too. Inspect file/selection indicators before sending to confirm the intended files rather than a similarly named copy.",
-        "core.mjs の visibleTasks 全体を選び、コマンドパレットの Add to Codex Thread で現在のタスクへ追加します。実際の版で使える命令を確認してください。core.test.mjs も開き、送信前にファイルや選択の表示で目的の二つか確認します。同名の別コピーと取り違えないようにします。",
-        "core.mjs의 visibleTasks 전체를 선택하고 명령 팔레트의 Add to Codex Thread로 현재 작업에 추가합니다. 실제 확장 버전에 제공되는 명령을 확인하세요. core.test.mjs도 열고 전송 전 파일/선택 표시가 의도한 두 파일인지 확인합니다. 비슷한 이름의 다른 사본과 혼동하지 마세요."
+        "打開 core.mjs，選取 visibleTasks 整個函式，再用命令面板中「加入目前 Codex 任務」的動作附上選取範圍；[官方命令識別碼](https://learn.chatgpt.com/docs/developer-commands?surface=ide)為 chatgpt.addToThread。接著開 core.test.mjs，用加入整個檔案的命令 chatgpt.addFileToThread 附上測試。畫面名稱依語言與版本而異，可到鍵盤快捷鍵設定搜尋識別碼以確認對應命令；識別碼不是終端機指令。不要只因檔案開在分頁，就認定它已附上。送出前核對輸入框的檔名、範圍與附件，排除同名的另一份副本。",
+        "Open core.mjs and select the entire visibleTasks function. Attach the selection using the Command Palette action for adding it to the current Codex chat; its [official command ID](https://learn.chatgpt.com/docs/developer-commands?surface=ide) is chatgpt.addToThread. Open core.test.mjs and attach the whole file with chatgpt.addFileToThread. Display names vary by language and version; search the ID in Keyboard Shortcuts to identify the corresponding command. These IDs are not terminal commands. An open editor tab alone does not establish attachment. Before sending, check filenames, ranges and attachment indicators to exclude similarly named copies.",
+        "core.mjs の visibleTasks 全体を選び、コマンドパレットの現在の Codex チャットへ追加する操作で添付します。[公式コマンド ID](https://learn.chatgpt.com/docs/developer-commands?surface=ide) は chatgpt.addToThread です。次に core.test.mjs を開き、chatgpt.addFileToThread でファイル全体を添付します。表示名は言語や版で異なるため、キーボードショートカット設定で ID を検索して対応するコマンドを確認できます。ID は端末コマンドではありません。タブを開いただけで添付済みと判断せず、送信前に名前、範囲、添付表示を確認し、同名の別コピーを除外します。",
+        "core.mjs에서 visibleTasks 전체를 선택하고 명령 팔레트의 현재 Codex 대화에 추가하는 동작으로 첨부합니다. [공식 명령 ID](https://learn.chatgpt.com/docs/developer-commands?surface=ide)는 chatgpt.addToThread입니다. 다음으로 core.test.mjs를 열고 chatgpt.addFileToThread로 파일 전체를 첨부하세요. 표시 이름은 언어와 버전에 따라 다르므로 키보드 바로 가기 설정에서 ID를 검색해 해당 명령을 확인할 수 있습니다. ID는 터미널 명령이 아닙니다. 편집기 탭이 열렸다는 사실만으로 첨부되었다고 판단하지 말고 전송 전에 파일명, 범위, 첨부 표시를 확인하여 같은 이름의 다른 사본을 제외하세요."
       ]
     },
     {
       "type": "code",
       "language": "text",
-      "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n"
+      "code": "Explain the selected visibleTasks function in core.mjs and the failing filter assertion in core.test.mjs. Do not edit yet. Identify which tasks should appear for All, Active and Completed, and quote the predicate that causes the mismatch. Confirm the working folder before answering.\n",
+      "label": [
+        "自然語言提示詞：在已附上函式與測試的 Codex 任務輸入",
+        "Natural-language prompt: enter in the Codex task with function and test attached",
+        "自然言語の依頼：関数とテストを添付した Codex タスクに入力する",
+        "자연어 요청: 함수와 테스트를 첨부한 Codex 작업에 입력"
+      ]
     },
     {
       "type": "p",
@@ -142,7 +154,13 @@
     {
       "type": "code",
       "language": "text",
-      "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n"
+      "code": "Fix only the Completed filter in core.mjs so completed tasks appear. Keep the public function signatures and existing tests unchanged. Preserve All and Active behavior, task order, and input arrays. Run node --test core.test.mjs and report the actual result. Show the final diff and any remaining limitation.\n",
+      "label": [
+        "自然語言提示詞：在同一個 Codex 任務要求修正",
+        "Natural-language prompt: request the fix in the same Codex task",
+        "自然言語の依頼：同じ Codex タスクで修正を求める",
+        "자연어 요청: 같은 Codex 작업에서 수정 요청"
+      ]
     },
     {
       "type": "p",
@@ -156,7 +174,13 @@
     {
       "type": "code",
       "language": "javascript",
-      "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n"
+      "code": "export function visibleTasks(tasks, filter) {\n  if (filter === \"active\") return tasks.filter((task) => !task.completed);\n  if (filter === \"completed\") return tasks.filter((task) => task.completed);\n  return tasks;\n}\n",
+      "label": [
+        "參考成果：對照 core.mjs 的 visibleTasks，不是啟動命令",
+        "Reference result: compare visibleTasks in core.mjs; not a launch command",
+        "参考結果：core.mjs の visibleTasks と比較する。起動コマンドではありません",
+        "참조 결과: core.mjs의 visibleTasks와 비교하며 실행 명령이 아님"
+      ]
     },
     {
       "type": "p",
@@ -165,6 +189,24 @@
         "This is the reference result for comparison, not code to paste before claiming Codex fixed the bug. Remove the obsolete deliberate-bug comment in that function if it remains misleading. Layout changes, new dependencies and a backend are unnecessary. All three test groups passing is necessary, and the actual diff must also meet the requested scope.",
         "これは比較用の参考結果で、先に貼ってから Codex が直したと扱うものではありません。同じ関数の意図的な誤りを示す古いコメントが残れば整理します。画面変更や依存追加、バックエンドは不要です。三組の成功に加え、実際の差分が範囲内かも判断します。",
         "비교용 참조 결과이지 먼저 붙여 넣고 Codex가 고쳤다고 주장하는 코드가 아닙니다. 같은 함수에 의도된 오류라는 오래된 주석이 남으면 정리합니다. 화면 변경, 의존성 추가, 백엔드는 필요 없습니다. 세 그룹 통과뿐 아니라 실제 diff가 요청 범위인지도 판단합니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "畫面顯示已改，測試卻仍失敗時",
+        "When the editor shows the fix but tests still fail",
+        "画面では直っているのにテストが失敗する場合",
+        "편집기에서는 수정되었는데 테스트는 계속 실패할 때"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先儲存檔案，再看整合終端機的工作目錄。編輯器中尚未儲存的文字，與終端機測試讀取的硬碟檔案可能不同；另一份同名副本也可能讓你看對了畫面卻測錯了檔案。核對 core.mjs 的完整路徑、儲存狀態與測試目錄後，再跑原測試。如果三者都正確仍失敗，把完整錯誤與目前差異交給 Codex，不要改測試預期或重裝擴充套件。選取／附加內容是提供上下文，儲存與實際執行則需要各自確認。",
+        "Save the file first, then inspect the integrated terminal's working directory. Unsaved editor text can differ from the on-disk file read by tests; a similarly named copy can also mean you are viewing the right fix while testing the wrong file. Verify core.mjs's full path, saved state and test directory, then rerun the original tests. If all three are correct and failure remains, give Codex the full error and current diff rather than changing expected results or reinstalling the extension. Attaching context, saving files and executing tests each need their own check.",
+        "先にファイルを保存し、統合端末の作業ディレクトリを確認します。未保存の編集内容はテストが読むディスク上のファイルと異なることがあり、同名の別コピーを表示している場合もあります。core.mjs の完全なパス、保存状態、テスト場所を確かめてから元のテストを再実行します。三つとも正しくても失敗するなら、エラー全文と現在の差分を Codex に渡します。期待値の変更や拡張の再導入はしません。文脈の添付、保存、実行はそれぞれ確認が必要です。",
+        "먼저 파일을 저장한 뒤 통합 터미널의 작업 디렉터리를 확인합니다. 저장하지 않은 편집기 텍스트는 테스트가 읽는 디스크 파일과 다를 수 있고, 같은 이름의 다른 사본 때문에 올바른 수정을 보면서 엉뚱한 파일을 테스트할 수도 있습니다. core.mjs의 전체 경로, 저장 상태, 테스트 디렉터리를 확인한 뒤 원래 테스트를 다시 실행하세요. 셋 다 맞는데 실패하면 전체 오류와 현재 diff를 Codex에 전달하며 기대값을 바꾸거나 확장을 다시 설치하지 않습니다. 문맥 첨부, 파일 저장, 테스트 실행은 각각 확인해야 합니다."
       ]
     },
     {
