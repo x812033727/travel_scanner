@@ -27,7 +27,7 @@ export function PetRequirementFields({ value, onChange }: { value: PetRequiremen
   </div><div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">{checks.map((key) => <label key={key} className="flex min-h-11 items-center gap-2 text-sm"><input type="checkbox" checked={value[key]} onChange={(e) => onChange({ ...value, [key]: e.target.checked })} />{t(`requirements.${key}`)}</label>)}</div></fieldset>;
 }
 
-export function PetDirectory() {
+export function PetDirectory({ initial }: { initial?: Page<PetPlace> }) {
   const t = useTranslations("community");
   const locale = useLocale();
   const { flags, me } = useCommunity();
@@ -40,9 +40,11 @@ export function PetDirectory() {
   const [query, setQuery] = useState("");
   const [suggest, setSuggest] = useState(false);
   const [extra, setExtra] = useState<PetPlace[]>([]);
-  const [cursor, setCursor] = useState<string | number | null>();
+  // Seeded alongside the rows, so a server-rendered first page offers "load more" straight
+  // away rather than only once the client's own copy of the same page lands.
+  const [cursor, setCursor] = useState<string | number | null | undefined>(initial?.next_cursor);
   const [error, setError] = useState<unknown>();
-  const places = useResource<Page<PetPlace>>(`/pet-friendly/places?${query}`);
+  const places = useResource<Page<PetPlace>>(`/pet-friendly/places?${query}`, api, initial);
   const [loaded, setLoaded] = useState(places.data);
   if (loaded !== places.data) { setLoaded(places.data); setExtra([]); setCursor(places.data?.next_cursor); }
   function submit(e: FormEvent) {
@@ -86,12 +88,12 @@ export function Rules({ rules }: { rules: PetRule[] }) {
   </dl>{rule.notes && <p className="mt-4 whitespace-pre-wrap break-words text-sm leading-6">{rule.notes}</p>}</section>)}</div>;
 }
 
-export function PetDetails({ id }: { id: string }) {
+export function PetDetails({ id, initial }: { id: string; initial?: PetPlace }) {
   const t = useTranslations("community");
   const locale = useLocale();
   const { flags, me } = useCommunity();
   const visibility = useSiteVisibility();
-  const place = useResource<PetPlace>(`/pet-friendly/places/${id}`);
+  const place = useResource<PetPlace>(`/pet-friendly/places/${id}`, api, initial);
   const [report, setReport] = useState(false);
   const [add, setAdd] = useState(false);
   if (place.error) return <ErrorNotice error={place.error} />;
