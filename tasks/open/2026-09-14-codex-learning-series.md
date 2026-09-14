@@ -246,3 +246,7 @@ Claude Code 的 PR #485 已唯讀核對合併；未修改對方 1cff 工作目�
 ## Latest Unit C checkpoint
 
 Unit C 38/39/40/15/41 now has targeted five-language depth revisions, with local Git/Node reference evidence in docs/codex-learning/evidence/unit-c-depth-review.json. Current coverage is 21 unique lessons, 39 pending (next D: 09/42/43/16/44). Integrity 60/300, 9 API, 9 compiler and five shared catalogue checks pass; audit is 0 errors/26 warnings. No shared series_data edits. Full final acceptance remains 0/60, including the unresolved preview-start restriction; no product Remote/cloud/Handoff execution or new screenshots. The user’s all-complete-before-PR/deployment condition remains in force.
+
+## Latest Unit D checkpoint
+
+D 09/42/43/16/44 now has targeted five-language revisions and evidence in docs/codex-learning/evidence/unit-d-depth-review.json. Current coverage is 26 unique lessons, 34 pending (next E: 45/22/17/08/18). Thirteen document/configuration practice checks, nested Markdown AST cases, integrity 60/300, 9 API, 9 compiler, five shared catalogues and affected-tool Ruff pass; audit remains 0 errors/26 warnings. Existing copyable code, images, source metadata and shared series_data are preserved. No actual client configuration change or editor/product preview. All final acceptance remains open (0/60), including the preview-start restriction, and the all-complete-before-PR/deployment condition is unchanged.

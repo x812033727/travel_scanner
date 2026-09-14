@@ -58,7 +58,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Python 檔案內容：完整存入 check_config.py",
           "language": "python",
           "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
         },
@@ -68,7 +68,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "TOML 檔案內容：存入 good.toml",
           "language": "toml",
           "code": "web_search = \"disabled\"\n"
         },
@@ -78,15 +78,24 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "Windows PowerShell：在樣本資料夾執行",
           "language": "powershell",
           "code": "py -3 check_config.py good.toml\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "macOS／Linux 終端機：在樣本資料夾執行",
           "language": "sh",
           "code": "python3 check_config.py good.toml\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先用退出碼確認你看到的是哪次結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次執行後，立即在同一個終端機查看退出碼：Windows PowerShell 用 $LASTEXITCODE，macOS／Linux 用 echo $?。中間不要再跑另一個程式，否則讀到的是後一個命令的結果。good.toml 預期為 0，四份未修的故障樣本各為 1；將每份另存為 fixed-quote.toml、fixed-duplicate.toml、fixed-scope.toml、fixed-value.toml 再修正，四份修正版都應為 0，原始故障檔保留。"
         },
         {
           "type": "heading",
@@ -99,7 +108,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "故障樣本：另存 broken-quote.toml，不是正式設定",
           "language": "toml",
           "code": "web_search = \"disabled\n"
         },
@@ -109,7 +118,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "故障樣本：另存 broken-duplicate.toml",
           "language": "toml",
           "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
         },
@@ -119,7 +128,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "故障樣本：另存 broken-scope.toml",
           "language": "toml",
           "code": "[features]\nweb_search = \"disabled\"\n"
         },
@@ -129,9 +138,24 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "故障樣本：另存 broken-value.toml",
           "language": "toml",
           "code": "web_search = \"off\"\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "PASS 沒有涵蓋哪些內容"
+        },
+        {
+          "type": "paragraph",
+          "text": "再看一個檢查器的界線：下列樣本同樣會顯示 PASS，因為 web_search 符合本篇檢查，extra_practice_key 並未被檢查。將它另存 limits.toml 只供離線測試，不放進 .codex。這不代表 Codex 接受額外鍵，也不代表完整 schema 已通過；你要能在紀錄中指出本程式根本沒有驗證的部分。"
+        },
+        {
+          "type": "code",
+          "label": "離線邊界樣本：limits.toml，不是 Codex 設定範本",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\nextra_practice_key = \"not checked by this exercise\"\n"
         },
         {
           "type": "heading",
@@ -205,7 +229,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "私人排錯筆記：填入結果，不是在終端機執行",
           "language": "text",
           "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
         },
@@ -315,7 +339,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Python file content: save the complete check_config.py",
           "language": "python",
           "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
         },
@@ -325,7 +349,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "TOML file content: save as good.toml",
           "language": "toml",
           "code": "web_search = \"disabled\"\n"
         },
@@ -335,15 +359,24 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Windows PowerShell: run in the sample folder",
           "language": "powershell",
           "code": "py -3 check_config.py good.toml\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "macOS/Linux terminal: run in the sample folder",
           "language": "sh",
           "code": "python3 check_config.py good.toml\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Use the exit code to identify the result"
+        },
+        {
+          "type": "paragraph",
+          "text": "Immediately after each run, inspect its exit code in the same terminal: $LASTEXITCODE in Windows PowerShell, echo $? on macOS/Linux. Do not run another program first. Expect 0 for good.toml and 1 for each of the four original faults. Save repaired copies as fixed-quote.toml, fixed-duplicate.toml, fixed-scope.toml and fixed-value.toml; expect 0 for each while preserving the faulty originals."
         },
         {
           "type": "heading",
@@ -356,7 +389,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Fault sample: save separately as broken-quote.toml; not live configuration",
           "language": "toml",
           "code": "web_search = \"disabled\n"
         },
@@ -366,7 +399,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Fault sample: save separately as broken-duplicate.toml",
           "language": "toml",
           "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
         },
@@ -376,7 +409,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Fault sample: save separately as broken-scope.toml",
           "language": "toml",
           "code": "[features]\nweb_search = \"disabled\"\n"
         },
@@ -386,9 +419,24 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Fault sample: save separately as broken-value.toml",
           "language": "toml",
           "code": "web_search = \"off\"\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "What PASS does not cover"
+        },
+        {
+          "type": "paragraph",
+          "text": "One boundary case: the sample below also prints PASS because web_search passes this exercise and extra_practice_key is not checked. Save it as limits.toml for offline testing only, outside .codex. This does not establish that Codex accepts the extra key or that its full schema passes. Identify the unchecked part in your record."
+        },
+        {
+          "type": "code",
+          "label": "Offline boundary sample: limits.toml, not a Codex configuration template",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\nextra_practice_key = \"not checked by this exercise\"\n"
         },
         {
           "type": "heading",
@@ -462,7 +510,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Private troubleshooting note: fill in results; do not run in a terminal",
           "language": "text",
           "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
         },
@@ -572,7 +620,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Python ファイル内容：全文を check_config.py に保存する",
           "language": "python",
           "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
         },
@@ -582,7 +630,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "TOML ファイル内容：good.toml に保存する",
           "language": "toml",
           "code": "web_search = \"disabled\"\n"
         },
@@ -592,15 +640,24 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "Windows PowerShell：サンプルフォルダーで実行する",
           "language": "powershell",
           "code": "py -3 check_config.py good.toml\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "macOS／Linux 端末：サンプルフォルダーで実行する",
           "language": "sh",
           "code": "python3 check_config.py good.toml\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "終了コードで今回の結果を確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "実行直後に同じ端末で終了コードを確認します。Windows PowerShell は $LASTEXITCODE、macOS／Linux は echo $? です。間に別のプログラムを動かさないでください。good.toml は 0、四つの未修正例は各 1 が期待値です。fixed-quote.toml、fixed-duplicate.toml、fixed-scope.toml、fixed-value.toml に別保存して直し、各 0 を確認します。元の故障例は残します。"
         },
         {
           "type": "heading",
@@ -613,7 +670,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "故障サンプル：broken-quote.toml として別保存する。本番設定ではありません",
           "language": "toml",
           "code": "web_search = \"disabled\n"
         },
@@ -623,7 +680,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "故障サンプル：broken-duplicate.toml として別保存する",
           "language": "toml",
           "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
         },
@@ -633,7 +690,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "故障サンプル：broken-scope.toml として別保存する",
           "language": "toml",
           "code": "[features]\nweb_search = \"disabled\"\n"
         },
@@ -643,9 +700,24 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "故障サンプル：broken-value.toml として別保存する",
           "language": "toml",
           "code": "web_search = \"off\"\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "PASS が確認していないこと"
+        },
+        {
+          "type": "paragraph",
+          "text": "検査器の境界例です。次も web_search が条件を満たし、extra_practice_key は検査されないため PASS になります。limits.toml として .codex の外に保存し、オフライン検査だけに使います。Codex が追加キーを受理する証明でも完全なスキーマ検証でもありません。未検査の部分を記録してください。"
+        },
+        {
+          "type": "code",
+          "label": "オフライン境界サンプル：limits.toml。Codex 設定のひな型ではありません",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\nextra_practice_key = \"not checked by this exercise\"\n"
         },
         {
           "type": "heading",
@@ -715,7 +787,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "個人用の診断メモ：結果を記入する。端末では実行しません",
           "language": "text",
           "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
         },
@@ -825,7 +897,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Python 파일 내용: 전체를 check_config.py로 저장",
           "language": "python",
           "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
         },
@@ -835,7 +907,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "TOML 파일 내용: good.toml로 저장",
           "language": "toml",
           "code": "web_search = \"disabled\"\n"
         },
@@ -845,15 +917,24 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "Windows PowerShell: 샘플 폴더에서 실행",
           "language": "powershell",
           "code": "py -3 check_config.py good.toml\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "macOS/Linux 터미널: 샘플 폴더에서 실행",
           "language": "sh",
           "code": "python3 check_config.py good.toml\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "종료 코드로 이번 결과 확인하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "실행 직후 같은 터미널에서 종료 코드를 확인하세요. Windows PowerShell은 $LASTEXITCODE, macOS/Linux는 echo $?를 사용합니다. 중간에 다른 프로그램을 실행하지 마세요. good.toml은 0, 수정 전 오류 네 개는 각각 1이 예상됩니다. fixed-quote.toml, fixed-duplicate.toml, fixed-scope.toml, fixed-value.toml로 따로 저장해 고치면 각각 0이어야 하며 원본 오류 파일은 보존합니다."
         },
         {
           "type": "heading",
@@ -866,7 +947,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "오류 샘플: broken-quote.toml로 별도 저장하며 실제 설정에 사용하지 않음",
           "language": "toml",
           "code": "web_search = \"disabled\n"
         },
@@ -876,7 +957,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "오류 샘플: broken-duplicate.toml로 별도 저장",
           "language": "toml",
           "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
         },
@@ -886,7 +967,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "오류 샘플: broken-scope.toml로 별도 저장",
           "language": "toml",
           "code": "[features]\nweb_search = \"disabled\"\n"
         },
@@ -896,9 +977,24 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "오류 샘플: broken-value.toml로 별도 저장",
           "language": "toml",
           "code": "web_search = \"off\"\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "PASS가 확인하지 않은 것"
+        },
+        {
+          "type": "paragraph",
+          "text": "검사기의 경계 사례입니다. 아래도 web_search 조건을 만족하고 extra_practice_key는 검사하지 않으므로 PASS가 나옵니다. .codex 밖에 limits.toml로 저장해 오프라인 검사에만 사용하세요. Codex가 추가 키를 허용하거나 전체 스키마 검증을 통과한다는 뜻은 아닙니다. 검사하지 않은 부분을 기록하세요."
+        },
+        {
+          "type": "code",
+          "label": "오프라인 경계 샘플: limits.toml이며 Codex 설정 양식이 아님",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\nextra_practice_key = \"not checked by this exercise\"\n"
         },
         {
           "type": "heading",
@@ -968,7 +1064,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "개인 진단 메모: 결과를 작성하며 터미널에서 실행하지 않음",
           "language": "text",
           "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
         },
@@ -1078,7 +1174,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Python 档案内容：完整存入 check_config.py",
           "language": "python",
           "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
         },
@@ -1088,7 +1184,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "TOML 档案内容：存入 good.toml",
           "language": "toml",
           "code": "web_search = \"disabled\"\n"
         },
@@ -1098,15 +1194,24 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "Windows PowerShell：在样本资料夹执行",
           "language": "powershell",
           "code": "py -3 check_config.py good.toml\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "macOS／Linux 终端机：在样本资料夹执行",
           "language": "sh",
           "code": "python3 check_config.py good.toml\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先用退出码确认你看到的是哪次结果"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次执行后，立即在同一个终端机查看退出码：Windows PowerShell 用 $LASTEXITCODE，macOS／Linux 用 echo $?。中间不要再跑另一个程式，否则读到的是后一个命令的结果。good.toml 预期为 0，四份未修的故障样本各为 1；将每份另存为 fixed-quote.toml、fixed-duplicate.toml、fixed-scope.toml、fixed-value.toml 再修正，四份修正版都应为 0，原始故障档保留。"
         },
         {
           "type": "heading",
@@ -1119,7 +1224,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "故障样本：另存 broken-quote.toml，不是正式设定",
           "language": "toml",
           "code": "web_search = \"disabled\n"
         },
@@ -1129,7 +1234,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "故障样本：另存 broken-duplicate.toml",
           "language": "toml",
           "code": "web_search = \"disabled\"\nweb_search = \"live\"\n"
         },
@@ -1139,7 +1244,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "故障样本：另存 broken-scope.toml",
           "language": "toml",
           "code": "[features]\nweb_search = \"disabled\"\n"
         },
@@ -1149,9 +1254,24 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "故障样本：另存 broken-value.toml",
           "language": "toml",
           "code": "web_search = \"off\"\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "PASS 没有涵盖哪些内容"
+        },
+        {
+          "type": "paragraph",
+          "text": "再看一个检查器的界线：下列样本同样会显示 PASS，因为 web_search 符合本篇检查，extra_practice_key 并未被检查。将它另存 limits.toml 只供离线测试，不放进 .codex。这不代表 Codex 接受额外键，也不代表完整 schema 已通过；你要能在纪录中指出本程式根本没有验证的部分。"
+        },
+        {
+          "type": "code",
+          "label": "离线边界样本：limits.toml，不是 Codex 设定范本",
+          "language": "toml",
+          "code": "web_search = \"disabled\"\nextra_practice_key = \"not checked by this exercise\"\n"
         },
         {
           "type": "heading",
@@ -1225,7 +1345,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "私人排错笔记：填入结果，不是在终端机执行",
           "language": "text",
           "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
         },

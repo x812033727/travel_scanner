@@ -109,7 +109,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案內容：存入 note.txt",
           "language": "text",
           "code": "CONFIG-LAB-01\n"
         },
@@ -119,13 +119,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "互動斜線指令：在 Codex CLI 內輸入",
           "language": "text",
           "code": "/debug-config\n"
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "互動斜線指令：在 Codex CLI 內輸入",
           "language": "text",
           "code": "/status\n"
         },
@@ -144,7 +144,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "TOML 檔案內容：新的專案 .codex/config.toml",
           "language": "toml",
           "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
         },
@@ -167,7 +167,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在此練習專案的新 CLI 輸入",
           "language": "text",
           "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
         },
@@ -192,6 +192,15 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "同一句「沒有搜尋」，可能代表三種情況"
+        },
+        {
+          "type": "paragraph",
+          "text": "判讀例題：甲只有看到 config.toml 寫 disabled；乙另有診斷顯示該專案層因未信任而略過；丙看到該層已啟用且有效值為 disabled。三者這次都沒有搜尋。甲的有效值仍未知；乙要先解決載入來源，不能稱此專案檔已生效；丙才有這個設定的診斷證據，仍不能推論所有網路工具都被封鎖。記錄「檔案內容／層是否載入／有效值／本次行為」四欄，缺證據的欄位留未確認。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "步驟 4：還原並留下短紀錄"
         },
@@ -201,7 +210,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "私人驗證筆記：填入實際觀察，不是指令",
           "language": "text",
           "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
         },
@@ -387,7 +396,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案内容：存入 note.txt",
           "language": "text",
           "code": "CONFIG-LAB-01\n"
         },
@@ -397,13 +406,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "互动斜线指令：在 Codex CLI 内输入",
           "language": "text",
           "code": "/debug-config\n"
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "互动斜线指令：在 Codex CLI 内输入",
           "language": "text",
           "code": "/status\n"
         },
@@ -422,7 +431,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "TOML 档案内容：新的专案 .codex/config.toml",
           "language": "toml",
           "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
         },
@@ -445,7 +454,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在此练习专案的新 CLI 输入",
           "language": "text",
           "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
         },
@@ -470,6 +479,15 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "同一句「没有搜寻」，可能代表三种情况"
+        },
+        {
+          "type": "paragraph",
+          "text": "判读例题：甲只有看到 config.toml 写 disabled；乙另有诊断显示该专案层因未信任而略过；丙看到该层已启用且有效值为 disabled。三者这次都没有搜寻。甲的有效值仍未知；乙要先解决载入来源，不能称此专案档已生效；丙才有这个设定的诊断证据，仍不能推论所有网路工具都被封锁。记录「档案内容／层是否载入／有效值／本次行为」四栏，缺证据的栏位留未确认。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "步骤 4：还原并留下短纪录"
         },
@@ -479,7 +497,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "私人验证笔记：填入实际观察，不是指令",
           "language": "text",
           "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
         },
@@ -665,7 +683,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File content: save as note.txt",
           "language": "text",
           "code": "CONFIG-LAB-01\n"
         },
@@ -675,13 +693,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Interactive slash command: enter inside Codex CLI",
           "language": "text",
           "code": "/debug-config\n"
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Interactive slash command: enter inside Codex CLI",
           "language": "text",
           "code": "/status\n"
         },
@@ -700,7 +718,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "TOML file content: new project .codex/config.toml",
           "language": "toml",
           "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
         },
@@ -723,7 +741,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in a new CLI session for this project",
           "language": "text",
           "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
         },
@@ -748,6 +766,15 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "Three meanings behind “no search occurred”"
+        },
+        {
+          "type": "paragraph",
+          "text": "Worked case: A only sees disabled in the file; B also sees the project layer skipped as untrusted; C sees it enabled and the effective value disabled. None searched. A's effective value is unknown. B has a loading issue, not an applied project setting. C has diagnostic evidence for this setting, not proof that all network tools are blocked. Record file content, loaded state, effective value and task behavior separately; leave unsupported fields unverified."
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "Step 4: Restore and record the result"
         },
@@ -757,7 +784,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Private verification note: record observations; not a command",
           "language": "text",
           "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
         },
@@ -943,7 +970,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル内容：note.txt に保存する",
           "language": "text",
           "code": "CONFIG-LAB-01\n"
         },
@@ -953,13 +980,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "対話スラッシュコマンド：Codex CLI 内で入力する",
           "language": "text",
           "code": "/debug-config\n"
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "対話スラッシュコマンド：Codex CLI 内で入力する",
           "language": "text",
           "code": "/status\n"
         },
@@ -978,7 +1005,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "TOML ファイル内容：新しいプロジェクトの .codex/config.toml",
           "language": "toml",
           "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
         },
@@ -1001,7 +1028,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：この練習プロジェクトの新しい CLI に入力する",
           "language": "text",
           "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
         },
@@ -1026,6 +1053,15 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "「検索しなかった」には三つの状態があります"
+        },
+        {
+          "type": "paragraph",
+          "text": "例：A はファイルの disabled だけを確認、B は未信頼のためプロジェクト層が省略された診断も確認、C は層が有効で実効値が disabled と確認しました。全員が検索しなくても A の実効値は未知、B は読み込みの問題、C はこの設定の診断証拠がある状態です。C でも全通信が遮断されたとは言えません。内容、読み込み状態、実効値、今回の動作を別欄に記録し、不明は未確認にします。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "手順4：復元して結果を記録"
         },
@@ -1035,7 +1071,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "個人用の検証メモ：実際の観察を記入する。コマンドではありません",
           "language": "text",
           "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
         },
@@ -1221,7 +1257,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일 내용: note.txt로 저장",
           "language": "text",
           "code": "CONFIG-LAB-01\n"
         },
@@ -1231,13 +1267,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "대화형 슬래시 명령: Codex CLI 안에서 입력",
           "language": "text",
           "code": "/debug-config\n"
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "대화형 슬래시 명령: Codex CLI 안에서 입력",
           "language": "text",
           "code": "/status\n"
         },
@@ -1256,7 +1292,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "TOML 파일 내용: 새 프로젝트 .codex/config.toml",
           "language": "toml",
           "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
         },
@@ -1279,7 +1315,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 이 실습 프로젝트의 새 CLI에 입력",
           "language": "text",
           "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
         },
@@ -1304,6 +1340,15 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "검색하지 않았다는 관찰이 뜻하는 세 가지 상태"
+        },
+        {
+          "type": "paragraph",
+          "text": "사례: A는 파일의 disabled만 보았고, B는 신뢰되지 않아 프로젝트 계층을 건너뛰었다는 진단도 보았으며, C는 계층 활성화와 실제 적용 값 disabled를 확인했습니다. 셋 다 검색하지 않았어도 A의 적용 값은 미상, B는 로드 문제, C는 해당 설정의 진단 근거가 있는 상태입니다. C도 모든 네트워크 도구가 차단되었다고 할 수는 없습니다. 파일 내용, 로드 상태, 적용 값, 이번 동작을 따로 기록하고 근거가 없는 칸은 미확인으로 남기세요."
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "4단계: 복원 및 결과 기록"
         },
@@ -1313,7 +1358,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "개인 검증 메모: 실제 관찰을 작성하며 명령으로 실행하지 않음",
           "language": "text",
           "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n"
         },

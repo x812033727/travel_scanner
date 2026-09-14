@@ -158,10 +158,19 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [x] Deepen five representative drafts with independent comparison, host identification, rule-condition checks, CLI input/resume details and skill missing-material recovery; compile matching five-language packs and record the exact targeted review scope.
 - [x] Deepen Unit A (01, 02, 33, 34, 06, 07) and the remaining Unit B drafts (05, 35, 36, 37, 14), label 58 existing code blocks, add two path examples, and verify isolated Windows/Node reference exercises.
 - [x] Deepen Unit C (38, 39, 40, 15, 41), label 15 existing code blocks, add six examples, and verify isolated Git/Node cases for complete diffs and incomplete handoffs.
-- [ ] Continue targeted depth review for the remaining 39 lessons, starting with Unit D (09, 42, 43, 16, 44); representative 10 already has a targeted record.
+- [x] Deepen Unit D (09, 42, 43, 16, 44), label 32 existing blocks, add four examples and verify nested Markdown and 13 document/configuration reference cases.
+- [ ] Continue targeted depth review for the remaining 34 lessons, starting with Unit E (45, 22, 17, 08, 18); representative 11 already has a targeted record.
 - [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
 - [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
 - [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
+
+## Unit D revision
+
+After cf4929f6, revised five MD/rules/configuration drafts and all locale packs. Evidence: docs/codex-learning/evidence/unit-d-depth-review.json. Added nested Markdown with a short-closing-fence failure/repair, a five-case rule-discovery/compliance record, external document backups and actual-result handoff fields, three setting-evidence cases and an unchecked-key parser boundary. Thirty-two original code blocks now have labels and four new blocks were added; original copyable content remains intact.
+
+Thirteen exact document/configuration practice checks pass; four original faults return 1, fixed copies return 0 and the unchecked extra key demonstrates the narrow scope. Mistune AST checks preserve literal inner fences, reproduce and repair the short closing fence. The original macOS preview shortcut is retained after actual current VS Code page review; no editor preview execution. Prior rule-discovery sample hashes still match, without claiming a new diagnostic or model run.
+
+Latest integrity (60/300), API (9), compiler (9), shared catalogues (5), and affected-tool Ruff pass; audit stays 0 errors/26 warnings. Source metadata and shared series_data are unchanged. Targeted coverage is 26 unique lessons, 34 pending; next E: 45/22/17/08/18. Full five-language final acceptance and browser acceptance remain open (0/60). No partial PR, import, publication or deployment.
 
 ## Unit C revision
 

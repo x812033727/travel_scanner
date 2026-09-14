@@ -115,7 +115,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案內容：根目錄 AGENTS.md",
           "language": "markdown",
           "code": "# Small Steps working instructions\n\n- Before analyzing or changing filters, read docs/filters.md.\n- When resuming work, read docs/handoff.md and verify its claims against current files.\n- Preserve the task data format, localStorage key, existing tests and unrelated behavior.\n- Use node --test core.test.mjs for core behavior checks.\n- Do not add dependencies or network requests for this exercise.\n- Record actual test results separately from hypotheses and checks not run.\n- Update docs/handoff.md only within the scope authorized by the current task.\n"
         },
@@ -140,7 +140,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案內容：根目錄 README.md",
           "language": "markdown",
           "code": "# Small Steps documentation lab\n\nA local todo app using fictional practice data.\n\n## File map\n\n- index.html: page structure and filter controls.\n- style.css: presentation and focus styles.\n- app.js: browser events and storage integration.\n- core.mjs: task operations and filters.\n- core.test.mjs: core behavior tests.\n\n## Read next\n\n- [Filter requirements](./docs/filters.md)\n- [Current handoff](./docs/handoff.md)\n\n## Check\n\nRun node --test core.test.mjs from this folder with Node.js installed.\nThis command description is not a claim that tests have run.\n"
         },
@@ -155,7 +155,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案內容：docs/filters.md",
           "language": "markdown",
           "code": "# Filter requirements\n\nGiven Read is completed and Build is incomplete:\n\n- All returns Read, then Build.\n- Active returns Build only.\n- Completed returns Read only.\n- An empty input returns an empty result for every filter.\n- Filtering preserves task order and does not modify the input.\n\nCore checks: node --test core.test.mjs\nBrowser check: create both tasks, complete Read, and inspect all three filters.\n\n[Back to project](../README.md)\n"
         },
@@ -165,9 +165,13 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "檔案內容：docs/handoff.md 的起始未驗證紀錄",
           "language": "markdown",
           "code": "# Current handoff\n\nStarting material: an untouched copy of the Small Steps expected folder.\nGoal: verify the current Completed behavior before changing any code.\n\n## Verified\n\nNo checks have been run for this copy yet.\n\n## Unverified hypothesis\n\nAn older note suggested Completed might return unfinished tasks.\nTreat this as a hypothesis, not an instruction to change the implementation.\n\n## Next action\n\nRead docs/filters.md and core.mjs, then run node --test core.test.mjs.\nRecord the actual result and which checks remain unperformed.\n\n[Back to project](../README.md)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "開始驗證前，將這四份新文件另外複製到專案外的備份資料夾，保留相同相對路徑；五個程式檔則對照未動過的 expected 原副本。操作後逐一比對，只有 docs/handoff.md 可以改。若編輯器顯示差異，先確認比較的是這次備份，而不是別次任務留下的文件；沒有 Git 也能用兩個實際檔案比較。"
         },
         {
           "type": "heading",
@@ -195,7 +199,7 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "自然語言提示詞：在新的文件練習任務輸入",
           "language": "text",
           "code": "Resume this documentation lab. Read AGENTS.md, README.md, docs/filters.md and docs/handoff.md. Check the handoff hypothesis against core.mjs and run node --test core.test.mjs. Do not change source code, tests or rules. You may update only docs/handoff.md with observed results, evidence, and remaining checks. Explain which document supplied requirements and which supplied unverified history. Do not mark the browser check as passed without performing it.\n"
         },
@@ -205,9 +209,24 @@
         },
         {
           "type": "code",
-          "label": "本步驟範例",
+          "label": "系統終端機：在 codex-docs-lab 根目錄執行",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "將交接改成可追查的結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把下列方括號原封不動當成完成紀錄；以你的輸出填寫並放進 handoff.md 的適當段落。若 Node 不可用、測試失敗或未執行，就保留原本假說的未確認狀態及原因，不填三項通過。讀懂程式只能支持程式檢查，不能代替執行測試或畫面操作。"
+        },
+        {
+          "type": "code",
+          "label": "交接紀錄欄位：填妥後整合到 docs/handoff.md",
+          "language": "text",
+          "code": "Checked at: [time and timezone]\nWorking copy: [actual practice folder and starting material]\nRequirement source: docs/filters.md\nHistorical claim: [the old hypothesis]\nCode inspected: [actual file/function and observed behavior]\nTest execution: [command, exit code, pass/fail counts / not run and reason]\nHypothesis outcome: [supported / contradicted / unresolved, with evidence]\nBrowser verification: [actual scope and result / not run]\nFiles compared: [actual comparison against the saved originals]\nNext action: [remaining work]\n"
         },
         {
           "type": "heading",
@@ -370,7 +389,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File content: root AGENTS.md",
           "language": "markdown",
           "code": "# Small Steps working instructions\n\n- Before analyzing or changing filters, read docs/filters.md.\n- When resuming work, read docs/handoff.md and verify its claims against current files.\n- Preserve the task data format, localStorage key, existing tests and unrelated behavior.\n- Use node --test core.test.mjs for core behavior checks.\n- Do not add dependencies or network requests for this exercise.\n- Record actual test results separately from hypotheses and checks not run.\n- Update docs/handoff.md only within the scope authorized by the current task.\n"
         },
@@ -395,7 +414,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File content: root README.md",
           "language": "markdown",
           "code": "# Small Steps documentation lab\n\nA local todo app using fictional practice data.\n\n## File map\n\n- index.html: page structure and filter controls.\n- style.css: presentation and focus styles.\n- app.js: browser events and storage integration.\n- core.mjs: task operations and filters.\n- core.test.mjs: core behavior tests.\n\n## Read next\n\n- [Filter requirements](./docs/filters.md)\n- [Current handoff](./docs/handoff.md)\n\n## Check\n\nRun node --test core.test.mjs from this folder with Node.js installed.\nThis command description is not a claim that tests have run.\n"
         },
@@ -410,7 +429,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File content: docs/filters.md",
           "language": "markdown",
           "code": "# Filter requirements\n\nGiven Read is completed and Build is incomplete:\n\n- All returns Read, then Build.\n- Active returns Build only.\n- Completed returns Read only.\n- An empty input returns an empty result for every filter.\n- Filtering preserves task order and does not modify the input.\n\nCore checks: node --test core.test.mjs\nBrowser check: create both tasks, complete Read, and inspect all three filters.\n\n[Back to project](../README.md)\n"
         },
@@ -420,9 +439,13 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "File content: initial unverified docs/handoff.md",
           "language": "markdown",
           "code": "# Current handoff\n\nStarting material: an untouched copy of the Small Steps expected folder.\nGoal: verify the current Completed behavior before changing any code.\n\n## Verified\n\nNo checks have been run for this copy yet.\n\n## Unverified hypothesis\n\nAn older note suggested Completed might return unfinished tasks.\nTreat this as a hypothesis, not an instruction to change the implementation.\n\n## Next action\n\nRead docs/filters.md and core.mjs, then run node --test core.test.mjs.\nRecord the actual result and which checks remain unperformed.\n\n[Back to project](../README.md)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Before verification, copy these four new documents to a backup folder outside the project, preserving their relative paths. Compare the five source files with the untouched expected copy. Afterwards, only docs/handoff.md may differ. Make sure any editor comparison uses this backup, not an older task's files; Git is not required to compare two real files."
         },
         {
           "type": "heading",
@@ -450,7 +473,7 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "Natural-language prompt: enter in a new documentation-lab task",
           "language": "text",
           "code": "Resume this documentation lab. Read AGENTS.md, README.md, docs/filters.md and docs/handoff.md. Check the handoff hypothesis against core.mjs and run node --test core.test.mjs. Do not change source code, tests or rules. You may update only docs/handoff.md with observed results, evidence, and remaining checks. Explain which document supplied requirements and which supplied unverified history. Do not mark the browser check as passed without performing it.\n"
         },
@@ -460,9 +483,24 @@
         },
         {
           "type": "code",
-          "label": "Example for this step",
+          "label": "System terminal: run in the codex-docs-lab root",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Make the handoff traceable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Fill the fields below from your output in the appropriate handoff.md sections; unresolved brackets are not a completion record. If Node is unavailable, tests fail or no run occurs, keep the hypothesis unresolved with the reason. Reading code supports code inspection, not a claim of executed tests or browser use."
+        },
+        {
+          "type": "code",
+          "label": "Handoff fields: complete and integrate into docs/handoff.md",
+          "language": "text",
+          "code": "Checked at: [time and timezone]\nWorking copy: [actual practice folder and starting material]\nRequirement source: docs/filters.md\nHistorical claim: [the old hypothesis]\nCode inspected: [actual file/function and observed behavior]\nTest execution: [command, exit code, pass/fail counts / not run and reason]\nHypothesis outcome: [supported / contradicted / unresolved, with evidence]\nBrowser verification: [actual scope and result / not run]\nFiles compared: [actual comparison against the saved originals]\nNext action: [remaining work]\n"
         },
         {
           "type": "heading",
@@ -621,7 +659,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル内容：ルートの AGENTS.md",
           "language": "markdown",
           "code": "# Small Steps working instructions\n\n- Before analyzing or changing filters, read docs/filters.md.\n- When resuming work, read docs/handoff.md and verify its claims against current files.\n- Preserve the task data format, localStorage key, existing tests and unrelated behavior.\n- Use node --test core.test.mjs for core behavior checks.\n- Do not add dependencies or network requests for this exercise.\n- Record actual test results separately from hypotheses and checks not run.\n- Update docs/handoff.md only within the scope authorized by the current task.\n"
         },
@@ -646,7 +684,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル内容：ルートの README.md",
           "language": "markdown",
           "code": "# Small Steps documentation lab\n\nA local todo app using fictional practice data.\n\n## File map\n\n- index.html: page structure and filter controls.\n- style.css: presentation and focus styles.\n- app.js: browser events and storage integration.\n- core.mjs: task operations and filters.\n- core.test.mjs: core behavior tests.\n\n## Read next\n\n- [Filter requirements](./docs/filters.md)\n- [Current handoff](./docs/handoff.md)\n\n## Check\n\nRun node --test core.test.mjs from this folder with Node.js installed.\nThis command description is not a claim that tests have run.\n"
         },
@@ -661,7 +699,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル内容：docs/filters.md",
           "language": "markdown",
           "code": "# Filter requirements\n\nGiven Read is completed and Build is incomplete:\n\n- All returns Read, then Build.\n- Active returns Build only.\n- Completed returns Read only.\n- An empty input returns an empty result for every filter.\n- Filtering preserves task order and does not modify the input.\n\nCore checks: node --test core.test.mjs\nBrowser check: create both tasks, complete Read, and inspect all three filters.\n\n[Back to project](../README.md)\n"
         },
@@ -671,9 +709,13 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "ファイル内容：未検証の初期 docs/handoff.md",
           "language": "markdown",
           "code": "# Current handoff\n\nStarting material: an untouched copy of the Small Steps expected folder.\nGoal: verify the current Completed behavior before changing any code.\n\n## Verified\n\nNo checks have been run for this copy yet.\n\n## Unverified hypothesis\n\nAn older note suggested Completed might return unfinished tasks.\nTreat this as a hypothesis, not an instruction to change the implementation.\n\n## Next action\n\nRead docs/filters.md and core.mjs, then run node --test core.test.mjs.\nRecord the actual result and which checks remain unperformed.\n\n[Back to project](../README.md)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "検証前に四つの新文書をプロジェクト外へ相対パスを保ってコピーし、五つのソースは未変更の expected 原本と比較します。操作後に変わってよいのは docs/handoff.md だけです。エディターの比較元が別タスクの古い文書でなく今回のバックアップか確認してください。実ファイル二つの比較に Git は必須ではありません。"
         },
         {
           "type": "heading",
@@ -701,7 +743,7 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "自然言語の依頼：新しい文書練習タスクに入力する",
           "language": "text",
           "code": "Resume this documentation lab. Read AGENTS.md, README.md, docs/filters.md and docs/handoff.md. Check the handoff hypothesis against core.mjs and run node --test core.test.mjs. Do not change source code, tests or rules. You may update only docs/handoff.md with observed results, evidence, and remaining checks. Explain which document supplied requirements and which supplied unverified history. Do not mark the browser check as passed without performing it.\n"
         },
@@ -711,9 +753,24 @@
         },
         {
           "type": "code",
-          "label": "この手順の例",
+          "label": "システム端末：codex-docs-lab のルートで実行する",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "追跡できる結果を引き継ぐ"
+        },
+        {
+          "type": "paragraph",
+          "text": "角括弧は実際の出力で埋め、handoff.md の適切な節に記録します。未記入のひな型は完了記録ではありません。Node がない、テスト失敗、未実行の場合は理由とともに仮説を未確認のまま残します。コードを読んだことはテスト実行や画面操作の証拠にはなりません。"
+        },
+        {
+          "type": "code",
+          "label": "引き継ぎ欄：記入して docs/handoff.md に組み込む",
+          "language": "text",
+          "code": "Checked at: [time and timezone]\nWorking copy: [actual practice folder and starting material]\nRequirement source: docs/filters.md\nHistorical claim: [the old hypothesis]\nCode inspected: [actual file/function and observed behavior]\nTest execution: [command, exit code, pass/fail counts / not run and reason]\nHypothesis outcome: [supported / contradicted / unresolved, with evidence]\nBrowser verification: [actual scope and result / not run]\nFiles compared: [actual comparison against the saved originals]\nNext action: [remaining work]\n"
         },
         {
           "type": "heading",
@@ -872,7 +929,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일 내용: 루트 AGENTS.md",
           "language": "markdown",
           "code": "# Small Steps working instructions\n\n- Before analyzing or changing filters, read docs/filters.md.\n- When resuming work, read docs/handoff.md and verify its claims against current files.\n- Preserve the task data format, localStorage key, existing tests and unrelated behavior.\n- Use node --test core.test.mjs for core behavior checks.\n- Do not add dependencies or network requests for this exercise.\n- Record actual test results separately from hypotheses and checks not run.\n- Update docs/handoff.md only within the scope authorized by the current task.\n"
         },
@@ -897,7 +954,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일 내용: 루트 README.md",
           "language": "markdown",
           "code": "# Small Steps documentation lab\n\nA local todo app using fictional practice data.\n\n## File map\n\n- index.html: page structure and filter controls.\n- style.css: presentation and focus styles.\n- app.js: browser events and storage integration.\n- core.mjs: task operations and filters.\n- core.test.mjs: core behavior tests.\n\n## Read next\n\n- [Filter requirements](./docs/filters.md)\n- [Current handoff](./docs/handoff.md)\n\n## Check\n\nRun node --test core.test.mjs from this folder with Node.js installed.\nThis command description is not a claim that tests have run.\n"
         },
@@ -912,7 +969,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일 내용: docs/filters.md",
           "language": "markdown",
           "code": "# Filter requirements\n\nGiven Read is completed and Build is incomplete:\n\n- All returns Read, then Build.\n- Active returns Build only.\n- Completed returns Read only.\n- An empty input returns an empty result for every filter.\n- Filtering preserves task order and does not modify the input.\n\nCore checks: node --test core.test.mjs\nBrowser check: create both tasks, complete Read, and inspect all three filters.\n\n[Back to project](../README.md)\n"
         },
@@ -922,9 +979,13 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "파일 내용: 아직 검증하지 않은 초기 docs/handoff.md",
           "language": "markdown",
           "code": "# Current handoff\n\nStarting material: an untouched copy of the Small Steps expected folder.\nGoal: verify the current Completed behavior before changing any code.\n\n## Verified\n\nNo checks have been run for this copy yet.\n\n## Unverified hypothesis\n\nAn older note suggested Completed might return unfinished tasks.\nTreat this as a hypothesis, not an instruction to change the implementation.\n\n## Next action\n\nRead docs/filters.md and core.mjs, then run node --test core.test.mjs.\nRecord the actual result and which checks remain unperformed.\n\n[Back to project](../README.md)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "검증 전에 새 문서 네 개를 상대 경로를 유지하며 프로젝트 밖에 백업하세요. 소스 다섯 개는 수정하지 않은 expected 원본과 비교합니다. 작업 후 달라도 되는 파일은 docs/handoff.md뿐입니다. 편집기 비교 대상이 이전 작업 파일이 아니라 이번 백업인지 확인하세요. 실제 파일 두 개를 비교하는 데 Git이 필수는 아닙니다."
         },
         {
           "type": "heading",
@@ -952,7 +1013,7 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "자연어 요청: 새 문서 실습 작업에 입력",
           "language": "text",
           "code": "Resume this documentation lab. Read AGENTS.md, README.md, docs/filters.md and docs/handoff.md. Check the handoff hypothesis against core.mjs and run node --test core.test.mjs. Do not change source code, tests or rules. You may update only docs/handoff.md with observed results, evidence, and remaining checks. Explain which document supplied requirements and which supplied unverified history. Do not mark the browser check as passed without performing it.\n"
         },
@@ -962,9 +1023,24 @@
         },
         {
           "type": "code",
-          "label": "이 단계의 예제",
+          "label": "시스템 터미널: codex-docs-lab 루트에서 실행",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "추적 가능한 결과로 인계하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "대괄호는 실제 출력으로 채워 handoff.md의 알맞은 절에 기록하세요. 빈 양식은 완료 기록이 아닙니다. Node를 쓸 수 없거나 테스트가 실패하거나 실행하지 않았다면 이유와 함께 가설을 미확인으로 남기세요. 코드 읽기는 코드 점검만 뒷받침하며 테스트 실행이나 화면 조작을 증명하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "인계 기록 항목: 작성한 뒤 docs/handoff.md에 반영",
+          "language": "text",
+          "code": "Checked at: [time and timezone]\nWorking copy: [actual practice folder and starting material]\nRequirement source: docs/filters.md\nHistorical claim: [the old hypothesis]\nCode inspected: [actual file/function and observed behavior]\nTest execution: [command, exit code, pass/fail counts / not run and reason]\nHypothesis outcome: [supported / contradicted / unresolved, with evidence]\nBrowser verification: [actual scope and result / not run]\nFiles compared: [actual comparison against the saved originals]\nNext action: [remaining work]\n"
         },
         {
           "type": "heading",
@@ -1127,7 +1203,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案内容：根目录 AGENTS.md",
           "language": "markdown",
           "code": "# Small Steps working instructions\n\n- Before analyzing or changing filters, read docs/filters.md.\n- When resuming work, read docs/handoff.md and verify its claims against current files.\n- Preserve the task data format, localStorage key, existing tests and unrelated behavior.\n- Use node --test core.test.mjs for core behavior checks.\n- Do not add dependencies or network requests for this exercise.\n- Record actual test results separately from hypotheses and checks not run.\n- Update docs/handoff.md only within the scope authorized by the current task.\n"
         },
@@ -1152,7 +1228,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案内容：根目录 README.md",
           "language": "markdown",
           "code": "# Small Steps documentation lab\n\nA local todo app using fictional practice data.\n\n## File map\n\n- index.html: page structure and filter controls.\n- style.css: presentation and focus styles.\n- app.js: browser events and storage integration.\n- core.mjs: task operations and filters.\n- core.test.mjs: core behavior tests.\n\n## Read next\n\n- [Filter requirements](./docs/filters.md)\n- [Current handoff](./docs/handoff.md)\n\n## Check\n\nRun node --test core.test.mjs from this folder with Node.js installed.\nThis command description is not a claim that tests have run.\n"
         },
@@ -1167,7 +1243,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案内容：docs/filters.md",
           "language": "markdown",
           "code": "# Filter requirements\n\nGiven Read is completed and Build is incomplete:\n\n- All returns Read, then Build.\n- Active returns Build only.\n- Completed returns Read only.\n- An empty input returns an empty result for every filter.\n- Filtering preserves task order and does not modify the input.\n\nCore checks: node --test core.test.mjs\nBrowser check: create both tasks, complete Read, and inspect all three filters.\n\n[Back to project](../README.md)\n"
         },
@@ -1177,9 +1253,13 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "档案内容：docs/handoff.md 的起始未验证纪录",
           "language": "markdown",
           "code": "# Current handoff\n\nStarting material: an untouched copy of the Small Steps expected folder.\nGoal: verify the current Completed behavior before changing any code.\n\n## Verified\n\nNo checks have been run for this copy yet.\n\n## Unverified hypothesis\n\nAn older note suggested Completed might return unfinished tasks.\nTreat this as a hypothesis, not an instruction to change the implementation.\n\n## Next action\n\nRead docs/filters.md and core.mjs, then run node --test core.test.mjs.\nRecord the actual result and which checks remain unperformed.\n\n[Back to project](../README.md)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "开始验证前，将这四份新文件另外复制到专案外的备份资料夹，保留相同相对路径；五个程式档则对照未动过的 expected 原副本。操作后逐一比对，只有 docs/handoff.md 可以改。若编辑器显示差异，先确认比较的是这次备份，而不是别次任务留下的文件；没有 Git 也能用两个实际档案比较。"
         },
         {
           "type": "heading",
@@ -1207,7 +1287,7 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "自然语言提示词：在新的文件练习任务输入",
           "language": "text",
           "code": "Resume this documentation lab. Read AGENTS.md, README.md, docs/filters.md and docs/handoff.md. Check the handoff hypothesis against core.mjs and run node --test core.test.mjs. Do not change source code, tests or rules. You may update only docs/handoff.md with observed results, evidence, and remaining checks. Explain which document supplied requirements and which supplied unverified history. Do not mark the browser check as passed without performing it.\n"
         },
@@ -1217,9 +1297,24 @@
         },
         {
           "type": "code",
-          "label": "本步骤示例",
+          "label": "系统终端机：在 codex-docs-lab 根目录执行",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "将交接改成可追查的结果"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把下列方括号原封不动当成完成纪录；以你的输出填写并放进 handoff.md 的适当段落。若 Node 不可用、测试失败或未执行，就保留原本假说的未确认状态及原因，不填三项通过。读懂程式只能支持程式检查，不能代替执行测试或画面操作。"
+        },
+        {
+          "type": "code",
+          "label": "交接纪录栏位：填妥后整合到 docs/handoff.md",
+          "language": "text",
+          "code": "Checked at: [time and timezone]\nWorking copy: [actual practice folder and starting material]\nRequirement source: docs/filters.md\nHistorical claim: [the old hypothesis]\nCode inspected: [actual file/function and observed behavior]\nTest execution: [command, exit code, pass/fail counts / not run and reason]\nHypothesis outcome: [supported / contradicted / unresolved, with evidence]\nBrowser verification: [actual scope and result / not run]\nFiles compared: [actual comparison against the saved originals]\nNext action: [remaining work]\n"
         },
         {
           "type": "heading",

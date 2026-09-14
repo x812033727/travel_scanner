@@ -15,10 +15,10 @@
     {
       "type": "note",
       "text": [
-        "用三次新 CLI 工作階段比較根目錄、子目錄與 override 規則，找出為什麼某條 AGENTS.md 沒有生效。閱讀約 12 分鐘，操作約 25 分鐘。先完成 CLI 與 AGENTS.md 入門；需要 Git、文字編輯器及可用的 Codex 登入。Windows、macOS、Linux 的規則檔內容相同，終端機路徑操作依系統分開。",
-        "Compare root, nested and override instructions in three fresh CLI sessions to diagnose an apparently ignored AGENTS.md. Allow 12 minutes to read and 25 to practice. Complete CLI and AGENTS.md basics first; have Git, a text editor and working Codex authentication. Rule files are identical across Windows, macOS and Linux; directory commands differ by shell.",
-        "三つの新規 CLI セッションでルート、子ディレクトリ、override を比べ、規則が効かない理由を切り分けます。読む時間12分、操作25分程度です。CLI と AGENTS.md の基礎、Git、エディター、Codex 認証が前提です。規則の内容は各 OS 共通で、場所を確認するコマンドだけ異なります。",
-        "새 CLI 세션 세 개에서 루트, 하위 폴더, override를 비교해 규칙이 적용되지 않는 이유를 구분합니다. 읽기 12분, 실습 25분입니다. CLI/AGENTS.md 기초, Git, 편집기, Codex 인증이 필요합니다. 규칙 내용은 세 OS가 같고 경로 확인 명령은 셸에 따라 다릅니다."
+        "用新 CLI 工作階段比較根目錄、子目錄、override、空 override 與改名還原五種情況，找出為什麼某條 AGENTS.md 沒有生效。閱讀約 12 分鐘，操作約 25 分鐘。先完成 CLI 與 AGENTS.md 入門；需要 Git、文字編輯器及可用的 Codex 登入。Windows、macOS、Linux 的規則檔內容相同，終端機路徑操作依系統分開。",
+        "Use fresh CLI sessions to compare five cases: root, nested rules, override, empty override and renamed restoration. Allow 12 minutes to read and 25 to practice. Complete CLI and AGENTS.md basics first; have Git, a text editor and working Codex authentication. Rule files are identical across Windows, macOS and Linux; directory commands differ by shell.",
+        "新しい CLI セッションでルート、子ディレクトリ、override、空の override、改名後の復元という五つの状態を比べ、規則が効かない理由を切り分けます。読む時間12分、操作25分程度です。CLI と AGENTS.md の基礎、Git、エディター、Codex 認証が前提です。規則の内容は各 OS 共通で、場所を確認するコマンドだけ異なります。",
+        "새 CLI 세션에서 루트, 하위 규칙, override, 빈 override, 이름 변경 후 복구의 다섯 상태를 비교합니다. 읽기 12분, 실습 25분입니다. CLI/AGENTS.md 기초, Git, 편집기, Codex 인증이 필요합니다. 규칙 내용은 세 OS가 같고 경로 확인 명령은 셸에 따라 다릅니다."
       ]
     },
     {
@@ -78,7 +78,13 @@
     {
       "type": "code",
       "language": "sh",
-      "code": "git init\ngit rev-parse --show-toplevel\n"
+      "code": "git init\ngit rev-parse --show-toplevel\n",
+      "label": [
+        "系統終端機：確認位於新的規則練習根目錄後執行",
+        "System terminal: run after confirming the new rules-lab root",
+        "システム端末：新しいルール練習のルートを確認して実行する",
+        "시스템 터미널: 새 규칙 실습 루트를 확인한 뒤 실행"
+      ]
     },
     {
       "type": "p",
@@ -92,7 +98,13 @@
     {
       "type": "code",
       "language": "markdown",
-      "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n"
+      "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n",
+      "label": [
+        "檔案內容：根目錄 AGENTS.md",
+        "File content: root AGENTS.md",
+        "ファイル内容：ルートの AGENTS.md",
+        "파일 내용: 루트 AGENTS.md"
+      ]
     },
     {
       "type": "p",
@@ -106,12 +118,24 @@
     {
       "type": "code",
       "language": "markdown",
-      "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n"
+      "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n",
+      "label": [
+        "檔案內容：ui/AGENTS.md",
+        "File content: ui/AGENTS.md",
+        "ファイル内容：ui/AGENTS.md",
+        "파일 내용: ui/AGENTS.md"
+      ]
     },
     {
       "type": "code",
       "language": "markdown",
-      "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n"
+      "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n",
+      "label": [
+        "檔案內容：data/README.md",
+        "File content: data/README.md",
+        "ファイル内容：data/README.md",
+        "파일 내용: data/README.md"
+      ]
     },
     {
       "type": "h2",
@@ -134,17 +158,35 @@
     {
       "type": "code",
       "language": "sh",
-      "code": "codex --cd . --sandbox read-only\n"
+      "code": "codex --cd . --sandbox read-only\n",
+      "label": [
+        "系統終端機：從實驗室根目錄啟動新的 CLI",
+        "System terminal: start a new CLI session from the lab root",
+        "システム端末：練習ルートから新しい CLI セッションを起動する",
+        "시스템 터미널: 실습 루트에서 새 CLI 세션 시작"
+      ]
     },
     {
       "type": "code",
       "language": "text",
-      "code": "Without changing files, report the current working directory and the project instruction sources already available to this session. Follow the active response-format instructions. Do not search unrelated sibling folders just to collect more rules. Distinguish known loaded instructions from files you have not inspected.\n"
+      "code": "Without changing files, report the current working directory and the project instruction sources already available to this session. Follow the active response-format instructions. Do not search unrelated sibling folders just to collect more rules. Distinguish known loaded instructions from files you have not inspected.\n",
+      "label": [
+        "自然語言提示詞：在新 CLI 工作階段輸入",
+        "Natural-language prompt: enter in the new CLI session",
+        "自然言語の依頼：新しい CLI セッションに入力する",
+        "자연어 요청: 새 CLI 세션에 입력"
+      ]
     },
     {
       "type": "code",
       "language": "sh",
-      "code": "codex --cd ui --sandbox read-only\n"
+      "code": "codex --cd ui --sandbox read-only\n",
+      "label": [
+        "系統終端機：退出上一個 CLI 後，從根目錄執行",
+        "System terminal: after exiting the previous CLI, run from the root",
+        "システム端末：前の CLI を終了してルートから実行する",
+        "시스템 터미널: 이전 CLI를 종료한 뒤 루트에서 실행"
+      ]
     },
     {
       "type": "p",
@@ -176,7 +218,13 @@
     {
       "type": "code",
       "language": "markdown",
-      "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n"
+      "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n",
+      "label": [
+        "檔案內容：ui/AGENTS.override.md",
+        "File content: ui/AGENTS.override.md",
+        "ファイル内容：ui/AGENTS.override.md",
+        "파일 내용: ui/AGENTS.override.md"
+      ]
     },
     {
       "type": "p",
@@ -185,6 +233,35 @@
         "For a boundary case, back up the override, empty it, save and start fresh, then record the actual discovery. Local diagnostic inputs from codex-cli 0.154.0-alpha.6.2 contain no override body but also do not load same-level AGENTS.md; root instructions remain. Do not rely on an empty file to disable an override. Rename it to override.saved.md, outside the configured fallback list, then start fresh and verify UI-LAB, UI-BASE and KEEP-DATA. Keep global files and the settings directory intact.",
         "境界確認ではバックアップして override を空にし、新規起動の結果を記録します。ローカル codex-cli 0.154.0-alpha.6.2 の診断入力は空の本文を含まず、同層 AGENTS.md も読まず、根の規則だけでした。空ファイルを確実な無効化方法とせず、代替名にない override.saved.md へ改名して新規起動し、UI-LAB、UI-BASE、KEEP-DATA を確認します。グローバルや設定全体は削除しません。",
         "경계 확인은 override를 백업 후 비우고 새 시작의 실제 결과를 기록합니다. 이 컴퓨터의 codex-cli 0.154.0-alpha.6.2 진단 입력에는 빈 본문도 같은 층 AGENTS.md도 없고 루트 규칙만 남았습니다. 빈 파일을 확실한 비활성화로 믿지 말고 대체명 목록에 없는 override.saved.md로 바꾼 뒤 새로 시작해 UI-LAB, UI-BASE, KEEP-DATA를 확인합니다. 전역 파일/전체 설정은 삭제하지 않습니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "用一張觀察表分開載入與遵循",
+        "Separate discovery from compliance in one record",
+        "読み込みと遵守を一つの記録で区別する",
+        "하나의 기록에서 로드와 준수 구분하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "每次新啟動都填下面欄位，分別記 ROOT-LAB、UI-LAB、UI-OVERRIDE、空 override 與改名還原。不要把期望值先寫進「實際回覆」。例如診斷輸入包含 ui override，但回覆沒有 OVERRIDE-ACTIVE，只能說來源已出現在輸入、回覆格式未通過；不能因此說檔案沒載入，也不能把模型自述當成診斷輸入證據。私人的完整輸入可能含其他規則，只保存本練習需要的摘要。",
+        "Fill in the fields for each fresh start: root, UI, override, empty override and renamed restoration. Keep expectations out of the observed-answer field. If diagnostic input contains the UI override but the answer omits OVERRIDE-ACTIVE, discovery is evidenced but response compliance failed. That does not prove a missing file; a model's claim is not diagnostic-input evidence either. Retain only a practice summary of private input that may contain other rules.",
+        "ルート、UI、override、空の override、改名後の各新規起動で記録します。実際の回答欄に期待値を先に書かないでください。診断入力に UI override があっても回答に OVERRIDE-ACTIVE がなければ、入力への含有は確認できても形式遵守は不合格です。未読み込みとは断定できず、モデルの自述も診断入力の証拠にはなりません。私的な入力には他の規則も含み得るため練習部分の要約だけ残します。",
+        "루트, UI, override, 빈 override, 이름을 바꾼 복구 상태마다 새로 시작해 기록하세요. 실제 답변 칸에 기대값을 미리 적지 마세요. 진단 입력에 UI override가 있지만 답변에 OVERRIDE-ACTIVE가 없다면 입력 포함은 확인했으나 형식 준수는 실패한 것입니다. 파일 미로드로 단정할 수 없으며 모델의 자기 설명도 진단 입력의 증거가 아닙니다. 개인 입력에는 다른 규칙이 포함될 수 있으므로 실습에 필요한 요약만 남깁니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Case: [root / UI / override / empty override / renamed restoration]\nCLI version and start directory: [actual values]\nNew session: [yes / no / unverified]\nInstruction-file state: [paths, nonempty/empty/renamed]\nExpected markers: [prediction]\nInstruction-source evidence: [observed input/log / model statement only / unavailable]\nActual answer markers: [observed values / no model run]\nConclusion: [discovery verified? response verified? remaining uncertainty]\n",
+      "label": [
+        "私人觀察表：每次啟動填一份，不是 CLI 指令",
+        "Private observation record: one per start; not a CLI command",
+        "個人用観察表：起動ごとに一つ記入する。CLI コマンドではありません",
+        "개인 관찰표: 시작할 때마다 작성하며 CLI 명령으로 실행하지 않음"
       ]
     },
     {

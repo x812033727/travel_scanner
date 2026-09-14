@@ -1,10 +1,10 @@
 """Verify the literal documentation and TOML teaching samples, without model calls."""
-from datetime import datetime, timezone
-from hashlib import sha256
 import json
-from pathlib import Path
 import subprocess
 import sys
+from datetime import datetime, timezone
+from hashlib import sha256
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 deep = ROOT / "docs/codex-learning/deep/modules"
@@ -45,9 +45,10 @@ configlab = practice / "configuration"
 save(configlab / "check_config.py", samples(44, "python")[0])
 filenames = ["good.toml", "broken-quote.toml", "broken-duplicate.toml", "broken-scope.toml", "broken-value.toml"]
 cases = samples(44, "toml")
-for index, (name, content) in enumerate(zip(filenames, cases, strict=True)):
+assert len(cases) == 6, "Review new or reordered TOML teaching samples"
+for index, (name, content) in enumerate(zip(filenames, cases[:5], strict=True)):
     save(configlab / name, content)
-    result = subprocess.run([sys.executable, "check_config.py", name], cwd=configlab, capture_output=True, encoding="utf-8")
+    result = subprocess.run([sys.executable, "check_config.py", name], cwd=configlab, capture_output=True, encoding="utf-8", check=False)
     assert result.returncode == (0 if index == 0 else 1), (name, result.returncode)
     checks.append(f"Lesson 44: {name} {'passes' if index == 0 else 'fails as expected'}")
 repairs = [
@@ -57,13 +58,17 @@ repairs = [
     cases[4].replace('"off"', '"disabled"'),
 ]
 for name, content in zip(filenames[1:], repairs, strict=True):
-    repaired = name.replace("broken-", "repaired-")
+    repaired = name.replace("broken-", "fixed-")
     save(configlab / repaired, content)
-    result = subprocess.run([sys.executable, "check_config.py", repaired], cwd=configlab, capture_output=True, encoding="utf-8")
+    result = subprocess.run([sys.executable, "check_config.py", repaired], cwd=configlab, capture_output=True, encoding="utf-8", check=False)
     assert result.returncode == 0, repaired
     checks.append(f"Lesson 44: {repaired} passes after its targeted correction")
+save(configlab / "limits.toml", cases[5])
+result = subprocess.run([sys.executable, "check_config.py", "limits.toml"], cwd=configlab, capture_output=True, encoding="utf-8", check=False)
+assert result.returncode == 0 and "Codex loading is not verified" in result.stdout
+checks.append("Lesson 44: extra unchecked key still passes; narrow parser does not establish full schema or client loading")
 save(configlab / "lesson-16.toml", samples(16, "toml")[0])
-result = subprocess.run([sys.executable, "check_config.py", "lesson-16.toml"], cwd=configlab, capture_output=True, encoding="utf-8")
+result = subprocess.run([sys.executable, "check_config.py", "lesson-16.toml"], cwd=configlab, capture_output=True, encoding="utf-8", check=False)
 assert result.returncode == 0
 checks.append("Lesson 16: exact authored setting passes the narrow offline checker")
 report = {
