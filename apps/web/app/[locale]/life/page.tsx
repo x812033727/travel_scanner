@@ -9,7 +9,8 @@ import type { Locale } from "@/i18n/routing";
 import { guideHref, guideListHref } from "@/lib/guides";
 import { getGuideList, getGuideTopics, getGuideArticle, hubIsEmpty } from "@/lib/guides.server";
 import { seriesCopy } from "@/lib/guide-series-copy";
-import { geminiSeries, seriesHref } from "@/lib/gemini-series";
+import { getGeminiHubReference, getVisibleGeminiSeries, filterGeminiArticleLinks } from "@/lib/gemini-series.server";
+import { visibleGeminiHref } from "@/lib/gemini-series-projection";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 
 type Params = { locale: Locale };
@@ -49,7 +50,7 @@ export default async function LifeHubPage(
   { params, searchParams }: { params: Promise<Params>; searchParams: Promise<Search> },
 ) {
   const [{ locale }, search] = await Promise.all([params, searchParams]);
-  const [list, topics, t, nav] = await Promise.all([
+  const [rawList, topics, t, nav] = await Promise.all([
     listFor(locale, search),
     getGuideTopics(locale, "life"),
     getTranslations({ locale, namespace: "common" }),
@@ -61,7 +62,10 @@ export default async function LifeHubPage(
   };
   const listing = guideListHref("life", search.topic);
   const tutorialHub = await getGuideArticle("life", "claude-code-tutorials", locale);
-  const geminiHub = locale === geminiSeries.locale ? await getGuideArticle("life", geminiSeries.hubSlug, locale) : null;
+  const geminiReference = getGeminiHubReference(locale);
+  const geminiHub = geminiReference ? await getGuideArticle("life", geminiReference.slug, locale) : null;
+  const geminiSeries = getVisibleGeminiSeries({ locale, hubPublished: geminiHub?.status === "published" && Boolean(geminiHub.document) });
+  const list = { ...rawList, articles: geminiReference ? filterGeminiArticleLinks(rawList.articles, geminiSeries) : rawList.articles };
   const tutorialCopy = seriesCopy(locale);
   const next = `${listing}${listing.includes("?") ? "&" : "?"}cursor=`;
 
@@ -81,9 +85,9 @@ export default async function LifeHubPage(
         <h1 className="text-4xl font-bold tracking-tight">{t("guides.lifeHubTitle")}</h1>
         <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{t("guides.lifeHubIntro")}</p>
 
-        {geminiHub?.status === "published" && geminiHub.document ? <aside className="mt-6 rounded-2xl border border-[var(--teal)] bg-[var(--paper)] p-5">
-          <a href={seriesHref(geminiSeries.hubSlug)} className="text-xl font-semibold text-[var(--teal)] underline">{geminiSeries.title}</a>
-          <p className="mt-2 leading-7">{t("geminiSeries.entry")}</p>
+        {geminiSeries ? <aside className="mt-6 rounded-2xl border border-[var(--teal)] bg-[var(--paper)] p-5">
+          <a href={visibleGeminiHref(geminiSeries, geminiSeries.hubSlug)} className="text-xl font-semibold text-[var(--teal)] underline">{geminiSeries.title}</a>
+          <p className="mt-2 leading-7">{t("geminiSeries.entry", { count: geminiSeries.articles.length })}</p>
         </aside> : null}
 
         <GuideFilters

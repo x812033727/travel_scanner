@@ -15,7 +15,7 @@ async function resolve(params: Promise<Params>) {
 }
 
 export async function generateMetadata(
-  { params }: { params: Promise<Params> }, parent?: ResolvingMetadata,
+  { params }: { params: Promise<Params> }, parent: ResolvingMetadata,
 ): Promise<Metadata> {
   // The layout's social defaults are handed through so an article with a hero can replace
   // only the image; Next replaces a whole top-level key, never merges inside it.

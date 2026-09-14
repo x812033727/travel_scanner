@@ -57,3 +57,5 @@ npm run typecheck:web、npm run check:i18n、npm run lint:web、npm run check:ta
 初版測試 fixture 的 Vite library 未替換 process.env.NODE_ENV，造成無法 hydration；已在測試器固定 production，並等待實際 useEffect 就緒，不再以靜態 HTML 當互動通過。修正測試器的學習路線 selector 與 Windows 剪貼簿換行預期後重跑六種情境全部通過；這些不是修改產品以迎合測試。
 
 尚未接到 GuideArticle／article-page／life 首頁，沒有正式 Next routing／RSC 或公開站 E2E 證據。詳見 docs/gemini-series/advanced/platform/visible-ui/README.md。共用接線的權限確認已提出，使用者尚未回覆時不變更別人任務。未改 50 篇 catalogue、環境開關、資料庫、發布／部署或 sitemap。本票本機完成，尚未合併，交回 open。
+
+2026-09-15 更新（台灣時間）：使用者已回答繼續，核對已合併 PR #485 並封存舊票後，主 platform 任務完成共用接線；上述「尚未接線／待確認」是早期紀錄，已解除。實際 Next 50／86 狀態各 10 項瀏覽器流程全過，160 項相關單元與整合測試、production build、型別、i18n、lint 全過。新截圖、初次 loopback ECONNRESET 摘要與重跑收據在 `docs/gemini-series/advanced/platform/next-integration/`。正式清單仍為 50 篇，沒有公開新篇；本票本機完成待合併，維持 open。

@@ -2,7 +2,7 @@
 
 本工具支援課綱 51–86 的六個批次：`work`、`research`、`creative`、`md`、`automation`、`api`。目前網站正式清單仍是原本 50 篇；草稿建置不會改動它，也不會連線匯入資料庫。
 
-共用頁面的深入篩選、伺服器端公開開關、文章導覽仍由 [platform 待辦](../../../../tasks/open/2026-09-14-gemini-advanced-platform.md) 負責。本工具完成不代表 36 篇已完成或可以公開。
+共用頁面的深入篩選、伺服器端可見性開關與文章導覽已由 platform 任務接入，見 [實際 Next 整合](next-integration/README.md)。本工具與 UI 完成不代表 36 篇已通過真實雲端驗收或已公開。
 
 ## 作者檔案
 
@@ -91,7 +91,7 @@ node tools/gemini-series.mjs check --draft --track md
 
 ## 完整發布清單
 
-`catalogue-contract.json` 固定保留 86 個篇號／slug、八個分類及十一條路線。`draftCatalogue()` 只在作者工具內組合原清單與課綱。正式整合仍需在 platform 任務完成伺服器公開開關後，將正確資料寫入原系列清單。
+`catalogue-contract.json` 固定保留 86 個篇號／slug、八個分類及十一條路線。`draftCatalogue()` 只在作者工具內組合原清單與課綱。伺服器可見性開關已接入；正式 catalogue 的 36 篇資料整合仍由 release 任務在內容驗收後一次處理。
 
 全套 87 頁完成、例子實測與配圖審閱通過後才執行：
 

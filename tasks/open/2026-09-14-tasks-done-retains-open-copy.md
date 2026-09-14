@@ -41,3 +41,5 @@ scope:
 ## Notes
 
 原事件在 2026-09-14T11:15:48Z。已確認 done 檔 ID/status 正確後，只手動移除該張 open 副本，保留完整已完成檔案。48 個工具測試先前全過，因此根因仍待查；本票不聲稱已重現一般 Node 或 Windows 的缺陷。
+
+2026-09-14 約 15:34Z 再次觀察：使用者允許封存已合併 PR #485 的 `2026-09-14-claude-code-tutorial-center`。已核對 PR 狀態 MERGED、merge commit `35a2d258b51d2a1ac9aff91dc5f7ed5a8df823ec` 是目前 HEAD 的祖先；`tasks done` 回報完成後，原 open 檔仍在，導致下一張平台票 claim 拒絕。比對兩份 frontmatter 以下正文相同後，以 PowerShell `Remove-Item -LiteralPath` 只移除該確切 open 副本，`Test-Path` 回 false，隨後 claim 成功。沒有因此修改 tasks 工具或宣稱一般 Windows 都會重現；刪除成功後需重新讀取核對的調查留在本票，避免另建同題任務。

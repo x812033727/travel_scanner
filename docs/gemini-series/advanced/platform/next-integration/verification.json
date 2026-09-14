@@ -1,0 +1,47 @@
+{
+  "verifiedAt": "2026-09-14T16:05:19.985Z",
+  "scope": "Local Next production build and fixture API, not a production deployment",
+  "formalArticles": 50,
+  "formalCatalogueSha256": "1f6afed7f3bf7f05a407b8d5af4647938cf6d91df6b42a381a904b1f6d697bb2",
+  "fixtureArticles": 86,
+  "fixturePacks": 87,
+  "sourceFilesVerified": 893,
+  "contentPacksVerified": 87,
+  "unit": {
+    "files": 13,
+    "tests": 160
+  },
+  "browser": {
+    "base": {
+      "startTime": "2026-09-14T15:53:49.375Z",
+      "duration": 348744.50399999996,
+      "expected": 10,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "advanced": {
+      "startTime": "2026-09-14T16:00:48.212Z",
+      "duration": 254299.329,
+      "expected": 10,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "articleVisitsInSuccessfulRuns": 272
+  },
+  "checks": {
+    "nextBuild": "passed",
+    "typescript": "passed",
+    "eslint": "passed",
+    "i18n": "5 locales, 25 namespaces passed",
+    "seriesTools": "17 passed",
+    "draftPacks": "87 passed"
+  },
+  "limits": [
+    "Google account/model/billing/media acceptance is separate and pending",
+    "No production catalogue, environment, deployment or database changes",
+    "Base run uses the initial proxy; advanced rerun adds GET-only ECONNRESET retry. Runner hashes retained.",
+    "The final mobile case logged four disposed prefetch responses; all assertions passed, with no failed or retried test."
+  ]
+}

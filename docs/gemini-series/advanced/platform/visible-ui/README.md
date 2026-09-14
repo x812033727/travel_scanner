@@ -1,6 +1,6 @@
 # Gemini 可見目錄與導覽元件
 
-這份交付完成接收可見資料的 UI，尚未接入正式文章頁。正式目錄 JSON 仍只有 50 篇；本票沒有部署、公開新篇章或修改另一個任務持有的 guides 元件。
+這份交付完成接收可見資料的 UI，後續 platform 任務已接入正式文章頁。正式目錄 JSON 仍只有 50 篇，尚未部署或公開新篇章。本目錄保留獨立 SSR 的早期驗證；實際 Next 路由、RSC 與 API 整合紀錄見 [next-integration](../next-integration/README.md)。
 
 ## 使用方式
 
@@ -34,9 +34,9 @@ node docs/gemini-series/advanced/platform/visible-ui/verify-browser.mjs
 
 測試器使用既有 Vite／React SSR、Playwright 與 Tailwind；只啟動 127.0.0.1 臨時伺服器，結束後關閉。fixture、client、server、.build 都在此驗證目錄；實際產品沒有新增測試 API 或查詢參數開關。`.build` 與暫存失敗紀錄不提交。
 
-## 接線仍由原 platform 任務完成
+## 原 platform 任務接線
 
-PR #485 已合併，但 `2026-09-14-claude-code-tutorial-center` 仍處於別人持有的 review；修正該任務狀態需依已提出的確認處理。原任務可認領後：
+使用者已允許修正已合併 PR #485 的任務狀態。核對合併狀態及本分支包含 merge commit 後，已封存舊任務、認領原 platform 票並接入以下流程：
 
 1. article-page 核對 hub 已發布，產生一次 getVisibleGeminiSeries，將 nullable visible 傳給 GuideArticle。
 2. GuideArticle 的 Gemini 區域改用本票元件；停止從 gemini-series.ts 直接或間接匯入未過濾 JSON。原 series-index／navigation 可保留為薄 wrapper 或移除重複實作。

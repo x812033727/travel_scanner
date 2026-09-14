@@ -41,6 +41,8 @@ const summary = (slug: string, title: string) => ({
   published_at: "2026-09-02T00:00:00Z", valid_until: null, featured: false,
 });
 
+const emptyParent = Promise.resolve({}) as ResolvingMetadata;
+
 const params = (over: Record<string, string> = {}) =>
   Promise.resolve({ locale: "zh-TW" as const, kind: "howto", slug: "narita-to-tokyo", ...over });
 
@@ -78,7 +80,7 @@ describe("a published article", () => {
   });
 
   it("declares only the locales that are genuinely published", async () => {
-    const metadata = await generateMetadata({ params: params() });
+    const metadata = await generateMetadata({ params: params() }, emptyParent);
     expect(metadata.title).toBe("成田機場到東京車站怎麼走");
     expect(Object.keys(metadata.alternates!.languages!).sort()).toEqual(["ja", "zh-TW"]);
     expect(metadata.robots).toBeUndefined();
@@ -86,7 +88,7 @@ describe("a published article", () => {
 
   it("offers x-default only when the English version exists", async () => {
     mocks.article.mockResolvedValue({ ...published, published_locales: ["zh-TW", "en"] });
-    const metadata = await generateMetadata({ params: params() });
+    const metadata = await generateMetadata({ params: params() }, emptyParent);
     expect(metadata.alternates!.languages!["x-default"]).toContain("/en/guides/howto/narita-to-tokyo");
   });
 
@@ -137,8 +139,8 @@ describe("an article with a hero", () => {
     expect(metadata.twitter).toEqual({ card: "summary_large_image", images: ["/guides/narita-to-tokyo/hero.jpg"] });
   });
 
-  it("still builds the card when no parent metadata is handed in", async () => {
-    const metadata = await generateMetadata({ params: params() });
+  it("still builds the card when the parent metadata is empty", async () => {
+    const metadata = await generateMetadata({ params: params() }, emptyParent);
     expect(metadata.openGraph).toMatchObject({ type: "article", images: [{ url: "/guides/narita-to-tokyo/hero.jpg" }] });
   });
 
@@ -196,7 +198,7 @@ describe("an expired notice", () => {
 
   it("stays indexable, because withdrawing the URL would break existing links", async () => {
     mocks.article.mockResolvedValue(expired);
-    const metadata = await generateMetadata({ params: params({ kind: "intel" }) });
+    const metadata = await generateMetadata({ params: params({ kind: "intel" }) }, emptyParent);
     expect(metadata.robots).toBeUndefined();
   });
 });
@@ -215,7 +217,7 @@ describe("a locale the article was never written in", () => {
 
   it("is never indexed, so an empty page cannot outrank the real one", async () => {
     mocks.article.mockResolvedValue(untranslated);
-    const metadata = await generateMetadata({ params: params({ locale: "ko" }) });
+    const metadata = await generateMetadata({ params: params({ locale: "ko" }) }, emptyParent);
     expect(metadata.robots).toEqual({ index: false });
     expect(metadata.alternates!.languages).toBeUndefined();
   });
@@ -232,6 +234,6 @@ describe("a backend fault", () => {
 
   it("keeps the broken page out of the index", async () => {
     mocks.article.mockResolvedValue(broken);
-    expect((await generateMetadata({ params: params() })).robots).toEqual({ index: false });
+    expect((await generateMetadata({ params: params() }, emptyParent)).robots).toEqual({ index: false });
   });
 });

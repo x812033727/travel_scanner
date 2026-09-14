@@ -49,3 +49,5 @@ scope:
 2026-09-14 本機交付完成：可見清單與原Gemini系列相關測試36項通過；完整前端260檔／2834項通過（523.91秒），typecheck／i18n五語系／lint／tasks通過。87份Gemini草稿內容包的字數、圖片與全部連結檢查通過；六批作者收據1001個檔案雜湊核對沒有變動。原50篇catalogue、全部內容包、其他任務元件沒有修改。沒有PR／合併／部署／匯入／發布。
 
 交接見 docs/gemini-series/advanced/platform/visible-projection.md。主平台票仍需在共用元件可認領後接線，移除client原catalogue匯入，並跑真正50/86頁面與無JS E2E；本票測試不能視為該整合已通過。本票先釋出為本機完成待整合狀態。
+
+2026-09-15 更新（台灣時間）：使用者允許封存已合併的 Claude 共用元件票後，主平台票已完成正式文章／目錄／生活頁接線。Next production build、160 項相關測試及 50／86 兩狀態各 10 項實際瀏覽器測試通過，包含 HTML、RSC、正文與 client bundle 不洩漏隱藏 slug。新的收據見 `docs/gemini-series/advanced/platform/next-integration/verification.json`；原正式 50 篇 catalogue 未變，沒有部署或發布。本票及主平台票均為本機完成尚未合併，保留 open。

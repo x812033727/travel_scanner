@@ -1,6 +1,6 @@
 # 深入篇伺服器可見清單
 
-這份交付提供可測試的資料邊界，尚未接到正式目錄或文章元件。原 `guide-series.json` 仍是50篇；六批36篇作者交付已存在，但真實雲端驗收、共用介面整合與發布仍有待辦。
+這份交付提供伺服器資料邊界，現已接到正式文章、目錄、導航與生活分享元件。原 `guide-series.json` 仍是50篇；六批36篇作者交付已存在，真實雲端驗收與發布仍有待辦。[實際 Next 整合及驗證](next-integration/README.md) 記錄目前接線；下方早期測試結果保留為歷史證據。
 
 ## 入口與資料流
 
@@ -26,11 +26,11 @@ const visible = getVisibleGeminiSeries({
 
 每篇可見資料包含stage、編輯track與動手時間labMinutes。UI可以顯示全部／基礎／深入，並將閱讀minutes與動手時間分開，不將模型等待時間當成閱讀時間。
 
-## 共用元件接線仍待完成
+## 共用元件接線
 
-原平台任務認領被 `2026-09-14-claude-code-tutorial-center` 的 active/review scope 拒絕，因其覆蓋整個 `apps/web/components/guides` 及生活分享頁。本票沒有強制認領、不修改對方檔案，也沒有在別的資料夾複製一套正式元件繞過協作規則。
+早期原平台任務認領被 `2026-09-14-claude-code-tutorial-center` 的 active/review scope 拒絕。後續使用者已允許修正任務狀態；核對 PR #485 已合併且其 merge commit 是本分支祖先後封存該票，原平台票已正式認領並完成以下接線。
 
-接手原平台任務時應依序：
+接線與驗證項目：
 
 1. `article-page.tsx` 重用已查到的hub發布狀態，產生一次visible props；傳給文章、目錄與導航。
 2. `series-index.tsx` 只收visible，不再從gemini-series匯入原catalogue。用純投影helper搜尋／路線／階段。初始SSR輸出完整可見分類；沒有JavaScript仍可瀏覽全部連結。
@@ -56,4 +56,4 @@ npm run check:tasks
 
 單元測試從真實原50篇與課綱合成完整86篇，對照既有frozen身份清單，驗證雙狀態、缺篇、重複身分、偽造stage、未知track、序列化不洩漏、所有前後篇與關鍵字。server-only測試中由Vitest對應Next自帶empty marker；正式Next仍保有框架的client/server邊界。
 
-2026-09-14 結果：相關36項通過；完整前端260檔、2834項全通過（523.91秒）。型別、五語系鍵值、ESLint、任務檢查均通過，任務工具僅回報其他既有scope／逾期警告。全部87份草稿包檢查通過，六批共1001個已記錄檔案雜湊核對一致。本票沒有正式Next頁面的50/86新介面E2E；共用接線受認領範圍限制，不能把資料測試寫成已上線功能。
+2026-09-14 早期投影階段：相關36項通過；完整前端260檔、2834項全通過（523.91秒）。型別、五語系鍵值、ESLint、任務檢查均通過，任務工具僅回報其他既有scope／逾期警告。當時全部87份草稿包檢查通過，六批共1001個已記錄檔案雜湊核對一致。該批結果尚未涵蓋共用接線；後續實際 Next 頁面 50／86 驗證結果見 [next-integration](next-integration/README.md)，不可將歷史資料測試當作發布證明。

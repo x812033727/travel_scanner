@@ -1,0 +1,3933 @@
+{
+  "preparedAt": "2026-09-14T15:41:45.390Z",
+  "workspace": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873",
+  "web": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web",
+  "originalCatalogueSha256": "1f6afed7f3bf7f05a407b8d5af4647938cf6d91df6b42a381a904b1f6d697bb2",
+  "fixtureArticles": 86,
+  "sourceFiles": [
+    {
+      "path": "apps/web/components/guides/gemini-page.test.tsx",
+      "sha256": "a95c67f02cf5987360407568eae0939faf36ad17b650c7428f052a0d1d405a59"
+    },
+    {
+      "path": "apps/web/lib/gemini-series-content.test.ts",
+      "sha256": "91dcc1bba52475bfb9d865237a56b26f069a40b40ed602b58ce62b5a5637b2b3"
+    },
+    {
+      "path": "apps/web/lib/gemini-series-content.ts",
+      "sha256": "d50d4c5817691e07816283b01492f515ddd90567ead9b38254dc16022fe3147d"
+    },
+    {
+      "path": "apps/web/AGENTS.md",
+      "sha256": "63f2c50380ed6303237cce215ce27af1d620d094c215e28d1b1538a3c070e3bb"
+    },
+    {
+      "path": "apps/web/CLAUDE.md",
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49"
+    },
+    {
+      "path": "apps/web/Dockerfile",
+      "sha256": "ee87981ec015046d0d831b0df4c00601a2b6a770679c063dc5b06766b9379ad9"
+    },
+    {
+      "path": "apps/web/app/(ads-public)/[locale]/error.tsx",
+      "sha256": "7292a3c158685b5ffe181cbd95faecbfa0cc8859ed61312137a9ab2f21d00301"
+    },
+    {
+      "path": "apps/web/app/(ads-public)/[locale]/guides/[kind]/[slug]/page.test.tsx",
+      "sha256": "7e005e6423374c720808c11941e8ee12fe841749f113d905e5283abace312b0d"
+    },
+    {
+      "path": "apps/web/app/(ads-public)/[locale]/guides/[kind]/[slug]/page.tsx",
+      "sha256": "990610881fe0127205dcf98efbb59e153466a5204c95f5ea1f22fc5985f37491"
+    },
+    {
+      "path": "apps/web/app/(ads-public)/[locale]/layout.test.tsx",
+      "sha256": "6c367b9b0139c6708130255444b18ce1ffe5d72055db27a736bb2b7233581cd4"
+    },
+    {
+      "path": "apps/web/app/(ads-public)/[locale]/layout.tsx",
+      "sha256": "c75ad850428ebf32510fa7c6921ba0ee22197f5f883e151702433257290ee09f"
+    },
+    {
+      "path": "apps/web/app/(ads-public)/[locale]/life/[slug]/page.test.tsx",
+      "sha256": "97dbdff058e6456fae2d513a4fa7c6ab99659d2904dec7de0bb7bc19df10b043"
+    },
+    {
+      "path": "apps/web/app/(ads-public)/[locale]/life/[slug]/page.tsx",
+      "sha256": "f0ed3c74eb965aa694a5f33ea1cd6bb0f23be47cb4bf9f44588dae9986084ce2"
+    },
+    {
+      "path": "apps/web/app/(ads-public)/[locale]/not-found.tsx",
+      "sha256": "706b027ddd28f66c95d39c22b7d82e79257caa10c18a644778bf6d6ff23a60f4"
+    },
+    {
+      "path": "apps/web/app/(stay22-public)/[locale]/destinations/[destinationId]/services/page.tsx",
+      "sha256": "df8f4a7a4ba5e718f17e2820ff7cff7689da268cc16fe6908b2ac088526d742d"
+    },
+    {
+      "path": "apps/web/app/(stay22-public)/[locale]/layout.test.tsx",
+      "sha256": "b51a3cf9ec67aeaa2f83a1007a1908b05ec369f80bae5c84fbf64ff90fb3101b"
+    },
+    {
+      "path": "apps/web/app/(stay22-public)/[locale]/layout.tsx",
+      "sha256": "a97ea3d8ecce77b7c9d338a72ce2275224d555a44acc43f3f0ed4c3bb90c159e"
+    },
+    {
+      "path": "apps/web/app/[locale]/[...rest]/page.tsx",
+      "sha256": "42cf3a75a8271c2988ebd40c0a3e60762a360ddb599264c6f28a9a8a1a270405"
+    },
+    {
+      "path": "apps/web/app/[locale]/about/page.tsx",
+      "sha256": "b2fd6a3fcdd1a6f0731a733bcb63a119b8e91dae85118433f99ee8edaf9c03b8"
+    },
+    {
+      "path": "apps/web/app/[locale]/account/confirm/page.tsx",
+      "sha256": "3b912d7c213a9ad6ded18966c24888abd40c53932ebdfec3fc9f7e5413783313"
+    },
+    {
+      "path": "apps/web/app/[locale]/account/page.tsx",
+      "sha256": "40dcc1ee62669da4a4ac56b7e8125c927af1014209302b078a421a47bb1d3113"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/analytics/page.tsx",
+      "sha256": "d714b97e47c6b4e85021e99c83106a643f6f054026cab3eb1b6defa80f4a39ea"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/audit/page.tsx",
+      "sha256": "bf4d337ca6742a915af9c0b1d722399bfec5366c49bbb34ec16820ccb52adb15"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/catalog-review/page.tsx",
+      "sha256": "9e3f58c49493c8d4b994eb5f78dde11a5d18d40998ead660b2f90d83c93b2ea2"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/community/page.tsx",
+      "sha256": "9d6a0a2f85e908ae4d871265e1065318220480734e1d5dc8b96e43fc2a007105"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/database/page.tsx",
+      "sha256": "644c7e3584e426cf79b6bc9d11f123a44ca3e17d77d3eefe3dec7853d3fc1025"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/deployments/page.tsx",
+      "sha256": "447c376886f81d15aac7f6f6dd68ee832c0771f2abf09e4268115356e1d0db3f"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/error.tsx",
+      "sha256": "08479f266cdae52d6da3650394b5f52b7cf44da9d2a5463f80b4899fb1704b13"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/foods/page.tsx",
+      "sha256": "95f51e3777c74c801bb3837289f099371505dbb68a75f026f583ec2b1e170103"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/guides/page.tsx",
+      "sha256": "20b77b31f7144f02a480c7da7ae000f782f5cca84edc03a1d227a7b1c3fee5ee"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/hotels/page.tsx",
+      "sha256": "117da0d0623da7985a44fabaa5908c03371f02c9c2f6253000c6b0877d7e520f"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/hotspots/page.tsx",
+      "sha256": "2bd8e5093fda377573b56c8d0a95f4dc16eb9786f18e336c68fbe7a2d2b64fba"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/layout-settings/page.tsx",
+      "sha256": "825c350c97e499e3521522b5b81cecd827ed403398735ed7fea72ed98e63264d"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/layout.tsx",
+      "sha256": "e8d16324f97bc8fb93e7331be220e375d8bcd88d0e1aa2ae61489f2bcc71e3fa"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/page.tsx",
+      "sha256": "063b133944e2136ccb4d658c5ca4e75a57f46f08d6e37ff9f642e0fb69ef804a"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/partners/page.tsx",
+      "sha256": "f6702404a20c2e410f35295f7085722705d563bfa99ebc1de0a18d5aa8152f15"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/pet-friendly/page.tsx",
+      "sha256": "ddee2ec592636362ccf2f0cd5cfdc1e821a58ed5ad0378aa824f0baa66051c01"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/settings/page.tsx",
+      "sha256": "1079e9767604677bca71bc1145032e9baae5ed8906b264e0fbd1024fac693bcc"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/site-pages/page.tsx",
+      "sha256": "871ecbd6afb8f0e3791c7db112872c3396fa131eef0f9179e43105c46843926f"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/system-settings/page.tsx",
+      "sha256": "de456f3427593bf8192884ed9d83b2e81e1cc64131d7a99ce83fa87e026e8bc3"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/travel-services/page.tsx",
+      "sha256": "313e96d1fec0c849b10b26ca5170f97c59812642932b2cc6c38bf6c10520f280"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/ui-text/page.test.tsx",
+      "sha256": "3dacc887d2be672e92686c41c8e62aa44d1b57acf3cd4a6ca866fd7b6e0ceb36"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/ui-text/page.tsx",
+      "sha256": "afd8f520308a095d9902c4ff31e39dc7c44b0dd6ff2c49d2f317a070deafebe6"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/usage-settings/page.tsx",
+      "sha256": "8d6804a30891488f5c48a6139b609d1d8afba9539a498063319f360ff85907cb"
+    },
+    {
+      "path": "apps/web/app/[locale]/admin/users/page.tsx",
+      "sha256": "b2e326b861545c06e43ba025c83a10b8605ed318a23a33d954bf4d1e1ad0364d"
+    },
+    {
+      "path": "apps/web/app/[locale]/alerts/layout.tsx",
+      "sha256": "d9f7ad31f7e4dee3b6ef127099a2490470105885ad62543ba7c3eabf2a5f477b"
+    },
+    {
+      "path": "apps/web/app/[locale]/alerts/page.tsx",
+      "sha256": "705878fab42d702d8594ffd15a09e25e1f8e45d5a32fdb85895d14940440ba09"
+    },
+    {
+      "path": "apps/web/app/[locale]/community/collections/page.tsx",
+      "sha256": "98e4cdf6881dec9d8503cf775a83757b46a5882492af8e6c9bf3b68f5be77b75"
+    },
+    {
+      "path": "apps/web/app/[locale]/community/drafts/page.tsx",
+      "sha256": "bda2a11f67a8625e27620d8558598253012ab1eee452fcfdc02bf6639566483c"
+    },
+    {
+      "path": "apps/web/app/[locale]/community/layout.tsx",
+      "sha256": "c37cecb44e64602d4460cf8a66a390f9680f0c5b67f0f0608afb17a0b7cfd97d"
+    },
+    {
+      "path": "apps/web/app/[locale]/community/messages/page.tsx",
+      "sha256": "188adf71d9f9c1fc17b8426960a12b981e8ec1fb54b940ccf72942de05f40ae6"
+    },
+    {
+      "path": "apps/web/app/[locale]/community/new/page.tsx",
+      "sha256": "35037ff34c0c1b1a58cb26f4d30078ffb54e88cfe786d42352e588ecfa70b3ec"
+    },
+    {
+      "path": "apps/web/app/[locale]/community/page.tsx",
+      "sha256": "23723b7e812a629b360a5100b247dce81cae1de87d7b5ca63aa5720bb4c102cf"
+    },
+    {
+      "path": "apps/web/app/[locale]/community/posts/[id]/edit/page.tsx",
+      "sha256": "ebb5e852e13dc62807a4de998ad8254d8a2bf3588752ac6c49a7e594dabce883"
+    },
+    {
+      "path": "apps/web/app/[locale]/community/posts/[id]/page.tsx",
+      "sha256": "7924c4d376358b489436d9ae8e4ca933b22d92ac9f4f9db622ee2237a83fb412"
+    },
+    {
+      "path": "apps/web/app/[locale]/community/profiles/[handle]/page.tsx",
+      "sha256": "a77d327a8b90fb0c4afe01d3fd0f5e551db8960d8f48b8a84632c6f0ee4cf70d"
+    },
+    {
+      "path": "apps/web/app/[locale]/community/search/page.tsx",
+      "sha256": "031c41d0f81ec1aa23f78cd4cba8ca896e95b0518f426b27a56ab042d055a014"
+    },
+    {
+      "path": "apps/web/app/[locale]/community/settings/page.tsx",
+      "sha256": "f087f2c838d6883df43f33888ba07f23dc41ffe083b06838d8ed1211e956bc25"
+    },
+    {
+      "path": "apps/web/app/[locale]/contact/page.tsx",
+      "sha256": "f07447e47c46d88c79171d6c92ba79dee29c0733217c473bddbb3aa51a4bdefa"
+    },
+    {
+      "path": "apps/web/app/[locale]/destinations/[destinationId]/page.test.tsx",
+      "sha256": "56be6bdcfe45940fe150cabb6f7fef50b68d8e46c0c8b40dca88534cd623a47f"
+    },
+    {
+      "path": "apps/web/app/[locale]/destinations/[destinationId]/page.tsx",
+      "sha256": "9709226d798840cbc1ae5916ae0da68113c4744f98accdbbadc1098c8284de9d"
+    },
+    {
+      "path": "apps/web/app/[locale]/destinations/page.tsx",
+      "sha256": "125c55ef0061544b344495beb8ea6bd94fb1ec1927a12a3054a2851b4d9b448e"
+    },
+    {
+      "path": "apps/web/app/[locale]/error.tsx",
+      "sha256": "bf8160219827417fba9c0d15f64eec4f6f7ab4ae45ad00e69f8ce9c23269775d"
+    },
+    {
+      "path": "apps/web/app/[locale]/explore/collections/page.tsx",
+      "sha256": "d0be9f889a4bafe64de37706cc89effc9afd04796ff4937d636d30710328f0c8"
+    },
+    {
+      "path": "apps/web/app/[locale]/explore/page.tsx",
+      "sha256": "d2e9f903eb846b657ae88ee1239a13ba6afa02f321c5599fd42ca691603d0173"
+    },
+    {
+      "path": "apps/web/app/[locale]/flights/status/layout.tsx",
+      "sha256": "38f633bf64a30af31751a2b7f909bf7e24856a88d7360772809c3c07af965966"
+    },
+    {
+      "path": "apps/web/app/[locale]/flights/status/page.tsx",
+      "sha256": "5c066d39c6470ddd6636422d62020c77a0a99035f4b78c3673e9e6e0dab504fa"
+    },
+    {
+      "path": "apps/web/app/[locale]/foods/page.test.tsx",
+      "sha256": "29d877026320458a7682a828d57dc15c66e34abb9a6539ea73ec46a7fb7fc92d"
+    },
+    {
+      "path": "apps/web/app/[locale]/foods/page.tsx",
+      "sha256": "681ddd9ece07e743f3cbc5f21769a1615360875761c869ed95043cb4aacc2053"
+    },
+    {
+      "path": "apps/web/app/[locale]/forgot-password/page.tsx",
+      "sha256": "0f8dc7d1c08b865a8818e58d92afe8a898f0a5ff139dde2e37e1a4d7833d60c5"
+    },
+    {
+      "path": "apps/web/app/[locale]/guides/[kind]/page.test.tsx",
+      "sha256": "0fef20733d1482dbc6589b20f576cbb50604706d93a5cc44e51047326e279ea7"
+    },
+    {
+      "path": "apps/web/app/[locale]/guides/[kind]/page.tsx",
+      "sha256": "dbe9e7b445bb8fc55264c40966181e3f1ff96322f9be2092f8200e410581b34f"
+    },
+    {
+      "path": "apps/web/app/[locale]/guides/page.test.tsx",
+      "sha256": "1c1207c4f66208e4bf44ed597f891f2999a1cedb80b4a57a3e299d2cd86de2da"
+    },
+    {
+      "path": "apps/web/app/[locale]/guides/page.tsx",
+      "sha256": "9be5b781f8c9d5671092f49d0f77cded02eb637f736bec01210ddda1fc92986e"
+    },
+    {
+      "path": "apps/web/app/[locale]/hotels/[productId]/page.tsx",
+      "sha256": "b8681cab3899b1182bec7865badfec9905f8289b22ff438496d76874ea6c8476"
+    },
+    {
+      "path": "apps/web/app/[locale]/hotspots/layout.tsx",
+      "sha256": "585695ab1d13c1e1f21469ba0d52ff04e44bc05f3730670e5e938c035cac02e1"
+    },
+    {
+      "path": "apps/web/app/[locale]/hotspots/page.tsx",
+      "sha256": "436acf7191f55b399d2a075161c659549d7817ea9dcbd139cd25e9e00e3dce01"
+    },
+    {
+      "path": "apps/web/app/[locale]/labs/airlines/layout.tsx",
+      "sha256": "030bb4cc2c5e8edc1ef017264a58fbb72ad6f72decb89c000c01209699a8acb8"
+    },
+    {
+      "path": "apps/web/app/[locale]/labs/airlines/page.tsx",
+      "sha256": "71e5e4accc69b84d62cfb3d59c115de4e3d9d6df808db1760f6d5d986698b6aa"
+    },
+    {
+      "path": "apps/web/app/[locale]/layout.test.tsx",
+      "sha256": "738e7a7b6785e990362cc34fba933683efe52f1404ef7fd819072e6dd7dcc577"
+    },
+    {
+      "path": "apps/web/app/[locale]/layout.tsx",
+      "sha256": "d3d07ad7ad2d19365dd1d7daa5540b720f60e2ac86302ade3c627a1369ee70fa"
+    },
+    {
+      "path": "apps/web/app/[locale]/life/page.test.tsx",
+      "sha256": "b56a91bca8338f3e1bc553190112d8ba353fe6cce13fb582e7b60f3384df5f76"
+    },
+    {
+      "path": "apps/web/app/[locale]/life/page.tsx",
+      "sha256": "8dcc5638b60d1507b0d23f318838933c96cb408c335609f89219550c92da40ae"
+    },
+    {
+      "path": "apps/web/app/[locale]/line/link/page.tsx",
+      "sha256": "7e33ec124c8723322c3c4ea1524e0f95618cd888fba8a1ddbea4e1d34fb98201"
+    },
+    {
+      "path": "apps/web/app/[locale]/login/page.test.tsx",
+      "sha256": "c3aec30731c95f1b47f3ba22cc9313187ba96f304dfb4e1596cf4782f4f400f6"
+    },
+    {
+      "path": "apps/web/app/[locale]/login/page.tsx",
+      "sha256": "94d50600778aba0b1093b97082ef4a22fcaded1567667338045f50555d4b963d"
+    },
+    {
+      "path": "apps/web/app/[locale]/metadata.test.ts",
+      "sha256": "b65c0e788a6cb2ca45abb9d54626d1a5c582a016305235e63fd66b05f677d5e2"
+    },
+    {
+      "path": "apps/web/app/[locale]/my/page.tsx",
+      "sha256": "fb3ba4ac479c1c4d4c970608dea68ed61137e1e085312987b3dcf8a28b7fb3f0"
+    },
+    {
+      "path": "apps/web/app/[locale]/not-found.tsx",
+      "sha256": "9efda0032c62c9fa77bfc8697e8fbf8d97a4cf7a2428615790b6dd3654ff38ef"
+    },
+    {
+      "path": "apps/web/app/[locale]/out/guides/[guideId]/route.test.ts",
+      "sha256": "ed43099079165957ce96e0e3b2622908455a3a2984d317332678f9c8545c4af1"
+    },
+    {
+      "path": "apps/web/app/[locale]/out/guides/[guideId]/route.ts",
+      "sha256": "b8b1d6230d8c56ebb3e6921b7c3ff0758ff9dcda9d28eb351cd6eaa9c5921d4f"
+    },
+    {
+      "path": "apps/web/app/[locale]/out/hotspots/[hotspotId]/source/route.test.ts",
+      "sha256": "3e3cdd4b88f40cea3268f27ef12d03e933d9778ebbf4a40332bc4a0bee907398"
+    },
+    {
+      "path": "apps/web/app/[locale]/out/hotspots/[hotspotId]/source/route.ts",
+      "sha256": "bac243ca4d7a8afd749396f8e627ba5e143fb20faf46a0d1a12871798b7463e9"
+    },
+    {
+      "path": "apps/web/app/[locale]/page.seo.test.tsx",
+      "sha256": "c4986118d2e2d31e7336a823de9bd585ef6ed428d84d159463cfc5ac2f442448"
+    },
+    {
+      "path": "apps/web/app/[locale]/page.test.tsx",
+      "sha256": "357c46a2a8ff2d492d8a5c401170e532aed4e07578aa8dc1304489ac2cafc3c1"
+    },
+    {
+      "path": "apps/web/app/[locale]/page.tsx",
+      "sha256": "1eb66d787d07642453d596583a34b9ed3e33f92a934fdb27b44d03ed3a7a16e2"
+    },
+    {
+      "path": "apps/web/app/[locale]/pet-friendly/[id]/page.tsx",
+      "sha256": "8cb01125e5c97558a4dfe6c9754d51fa583b9b5472ee916d02b1f4b21821a215"
+    },
+    {
+      "path": "apps/web/app/[locale]/pet-friendly/layout.tsx",
+      "sha256": "c37cecb44e64602d4460cf8a66a390f9680f0c5b67f0f0608afb17a0b7cfd97d"
+    },
+    {
+      "path": "apps/web/app/[locale]/pet-friendly/page.tsx",
+      "sha256": "289edfa83bbcb35c8371942d0a20ef6581b93e60ba6af219d35dcdee0bfc005f"
+    },
+    {
+      "path": "apps/web/app/[locale]/pricing/layout.tsx",
+      "sha256": "962058a1e74b0213849e40ef3345236eb93c66ff92a72f183932e893fa64220a"
+    },
+    {
+      "path": "apps/web/app/[locale]/pricing/page.test.tsx",
+      "sha256": "f99726f801ac2da35074c774827543ad009e8e20a1754c56176a831d7781cdad"
+    },
+    {
+      "path": "apps/web/app/[locale]/pricing/page.tsx",
+      "sha256": "fc1341f409cbb5247db3cdb00f0e96efa2ceed8ebc9d99c2bdaa52f9347f6513"
+    },
+    {
+      "path": "apps/web/app/[locale]/privacy/page.tsx",
+      "sha256": "635745f2719bcf241d331b835a158d5befd1b93401937f39f6437b8cf0128235"
+    },
+    {
+      "path": "apps/web/app/[locale]/register/page.test.tsx",
+      "sha256": "58bcf94b5c3c0494e04ed4b1dc5d527990002d3d65dde575a77b7dbbdc36a113"
+    },
+    {
+      "path": "apps/web/app/[locale]/register/page.tsx",
+      "sha256": "3b7a553bffa4a966c9725e1006e7befa166657cd7f1213d41505b58a05f6f169"
+    },
+    {
+      "path": "apps/web/app/[locale]/robots-directives.test.ts",
+      "sha256": "278e43bf43fc4077280fed501facffc0083a22b09fd3bc3d2080d559a768c6cd"
+    },
+    {
+      "path": "apps/web/app/[locale]/search/new/page.tsx",
+      "sha256": "07a7cf1d0b79ea50a667308c44875b863bf84cbb999fc210b846336709b78af1"
+    },
+    {
+      "path": "apps/web/app/[locale]/search/page.tsx",
+      "sha256": "63e293a437b79cf538b1807888bc92a699a3d002a8b564d5623c2ef720ffa820"
+    },
+    {
+      "path": "apps/web/app/[locale]/share-target/page.tsx",
+      "sha256": "f1cecf0ddc4a16a8fd44540c1a73e52bb53eefb2b493fb8515d27b227a4c6609"
+    },
+    {
+      "path": "apps/web/app/[locale]/share/[token]/page.tsx",
+      "sha256": "0190710fddec2799df0a7b49f4ecf4fcc13f9f0778940fd10f998c6604725e08"
+    },
+    {
+      "path": "apps/web/app/[locale]/terms/page.tsx",
+      "sha256": "b283d88e1bb391fd2c59465f258075172afbb847892925c6946a24c4bbf1c17a"
+    },
+    {
+      "path": "apps/web/app/[locale]/trips/[id]/page.tsx",
+      "sha256": "36cc75468240a480abbb259df8982f6b82e0c108291fa05db86eebe66221ad99"
+    },
+    {
+      "path": "apps/web/app/[locale]/trips/[id]/print/page.tsx",
+      "sha256": "4799c5760c52902cf30630c78b4b6ee36461ea9a5d2980162518463c4d321a89"
+    },
+    {
+      "path": "apps/web/app/[locale]/trips/layout.tsx",
+      "sha256": "5b0e0ed0f9376144229f53058623b83360579eebac8b9039e8b9b32b1d56c3ab"
+    },
+    {
+      "path": "apps/web/app/[locale]/trips/new/page.tsx",
+      "sha256": "4933c14eb48b048383668aeca81ffe45b0a3e4fcf10a52e9d9b2286b84f8f11f"
+    },
+    {
+      "path": "apps/web/app/[locale]/trips/page.tsx",
+      "sha256": "4b888e095819563d56a2c639187a29040110bb7eb9c20339f64c21cf0045b59f"
+    },
+    {
+      "path": "apps/web/app/api/auth/oauth/[provider]/callback/route.ts",
+      "sha256": "a9a768fa0a5f62603dd72941fb513d850aa052e19fc8631bb9c45eb7fa1c47c9"
+    },
+    {
+      "path": "apps/web/app/api/auth/oauth/[provider]/start/route.test.ts",
+      "sha256": "7cb9f31b0377486e058039856407f746e134ff58a1d902db5a8fa1dc53e615a7"
+    },
+    {
+      "path": "apps/web/app/api/auth/oauth/[provider]/start/route.ts",
+      "sha256": "728ef904b9cb0b0476527c9c576cfc6d797aa1af13cc16deafe4c425a388af3e"
+    },
+    {
+      "path": "apps/web/app/api/auth/oauth/_shared.test.ts",
+      "sha256": "19f35b62e89f717e8e51c8f19ae8e13751168078bb2b597cec0fbcb2f4f53e30"
+    },
+    {
+      "path": "apps/web/app/api/auth/oauth/_shared.ts",
+      "sha256": "4b5ed50e825159fa8c8bd05d414205fe247a74fc4a31da5de102b361c539ae4b"
+    },
+    {
+      "path": "apps/web/app/api/line/webhook/route.test.ts",
+      "sha256": "254539ad614b7aa54d843b7215991222900a14d76b89cd43d0792c572ed3d823"
+    },
+    {
+      "path": "apps/web/app/api/line/webhook/route.ts",
+      "sha256": "5098e5dde3daf3ef5223694a0565f2e8400661a07c1577bee9a63864273e89c1"
+    },
+    {
+      "path": "apps/web/app/api/travel/[...path]/discovery.test.ts",
+      "sha256": "e6c1de9de4496ac95474e2649a88151162d3660df3d8827c8215f09339e60ab6"
+    },
+    {
+      "path": "apps/web/app/api/travel/[...path]/hotel-clickout.test.ts",
+      "sha256": "17a239dda2884e7cd52eb8cfaa7f2877cf99cdb036a106119be47094e39fce90"
+    },
+    {
+      "path": "apps/web/app/api/travel/[...path]/proxy-context.ts",
+      "sha256": "8ecca213282664ba005de0219c04a957706caf79a929e8fa999e1b361adb6821"
+    },
+    {
+      "path": "apps/web/app/api/travel/[...path]/proxy-security.test.ts",
+      "sha256": "d34bd0041398c0102ff89c074f36ac531f8a2a3c7244a2f1c7d2d692c82640ad"
+    },
+    {
+      "path": "apps/web/app/api/travel/[...path]/proxy-security.ts",
+      "sha256": "844169dbf0ec93271d75068a167c976ae91d1adebb6de377e5235cdffe1f989f"
+    },
+    {
+      "path": "apps/web/app/api/travel/[...path]/request-id.ts",
+      "sha256": "ac2d7345c9143e185db1125d6a36da9153cc6817e91a99ab9644ddac9127c327"
+    },
+    {
+      "path": "apps/web/app/api/travel/[...path]/route.test.ts",
+      "sha256": "fdfc437e3f884eb67942e00831d59076abea5522d6ce38d639596d977eb4563b"
+    },
+    {
+      "path": "apps/web/app/api/travel/[...path]/route.ts",
+      "sha256": "37367623d79e8f067c2c56f49ac2774baabe8f1ff263698d24c08ff77e7f18d7"
+    },
+    {
+      "path": "apps/web/app/apple-icon.png",
+      "sha256": "ec1b75249435c11a08fe66f1bea6bbc6bb5b4c33622e7b38c5d3abbfa8da42fe"
+    },
+    {
+      "path": "apps/web/app/favicon.ico",
+      "sha256": "046cb193199586308eefeb958cc4e192147116cdf9ae5b167c04f8c5d3008a0d"
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "sha256": "47d991b588240fb68e1fcb5758a9fbe27931d4be2ba6cb0f3778b1336cc02966"
+    },
+    {
+      "path": "apps/web/app/icon.svg",
+      "sha256": "66307b3f4d4de0914b85f4aee4ea5cbe65d970d4b5b5fccd88b0e3b3c21f5b38"
+    },
+    {
+      "path": "apps/web/app/manifest.ts",
+      "sha256": "5d9d6ad2aaa1ba8239b487bd3d7f5bcd34de7c5042a370b9fd701384ba44802e"
+    },
+    {
+      "path": "apps/web/app/robots.test.ts",
+      "sha256": "4ebfa77e15633555870f8b2498c4414c5109b258bfcc857cd6cb2d2c5d20d89b"
+    },
+    {
+      "path": "apps/web/app/robots.ts",
+      "sha256": "930ae10cee5227bb659de82382c6026861bd5cb69fc5b8dacf2469c2e72ac7f0"
+    },
+    {
+      "path": "apps/web/app/sitemap.test.ts",
+      "sha256": "26e7b79823ba869c00ef4c01b980ef2d4244c7fc2c37db4ee96f5465394fb459"
+    },
+    {
+      "path": "apps/web/app/sitemap.ts",
+      "sha256": "e42e039ad91eccf5508474e56ff787292441e13b7199c3b40d730b75de192b61"
+    },
+    {
+      "path": "apps/web/branding.test.ts",
+      "sha256": "d23c68b5cf5e94dbb259cffcc24957f6247c77c7872032b474454a3269d28ef8"
+    },
+    {
+      "path": "apps/web/components/account-list-i18n.test.tsx",
+      "sha256": "6b88e25ac801eb356a790ea8b389875b3b8de67f24336d780e1bfacaab5da01b"
+    },
+    {
+      "path": "apps/web/components/account-list.test.tsx",
+      "sha256": "3877536fe68c839c95b590fa5c7eb67c73370a640a0ced7a5d2c0fb08023dd96"
+    },
+    {
+      "path": "apps/web/components/account-list.tsx",
+      "sha256": "fcd7cd1b302417d2d23534695a52597d9bd4f464f01f7d2e9449161f47e1967a"
+    },
+    {
+      "path": "apps/web/components/account-panel.test.tsx",
+      "sha256": "3877e7d0511138cf79446ba7cee9ae7f4228707778a1e2cd1e86844c47bc6431"
+    },
+    {
+      "path": "apps/web/components/account-panel.tsx",
+      "sha256": "14d2294cbe5d8c70ef117df1af6451de7ecebbed99fda648f63be3e1b75ca5dc"
+    },
+    {
+      "path": "apps/web/components/account-saved-items.test.tsx",
+      "sha256": "a9331459807d31bc194e6dbfe2ab0a8ebd94e95e434e2dfa68d064b568574e45"
+    },
+    {
+      "path": "apps/web/components/account-saved-items.tsx",
+      "sha256": "d05298bb7f3b87ec97704a2f78d21d1c21ef2c369c5f02432e567e374e68bec2"
+    },
+    {
+      "path": "apps/web/components/admin-access-state.tsx",
+      "sha256": "9801d446f13eb405b6fbf74ea6bec71a5f037a15e3b0c0436b04624e3c2c8cf9"
+    },
+    {
+      "path": "apps/web/components/admin-action-guard.tsx",
+      "sha256": "2b30b8c0c72f50334953bc9d596a1e6a5a2dd2da328c5a94db553339211cf6ec"
+    },
+    {
+      "path": "apps/web/components/admin-analytics-panel.test.tsx",
+      "sha256": "724583937cc2513a4ad46a94e1e870b5024405e1debb1bf481c02c87abeb5485"
+    },
+    {
+      "path": "apps/web/components/admin-analytics-panel.tsx",
+      "sha256": "d3c9633c908579f752aa1b04c6f650cf5205406cd34f65e2a29194f2b3541747"
+    },
+    {
+      "path": "apps/web/components/admin-audit-panel.test.tsx",
+      "sha256": "1e52dcaa37c14f48e3e2ad6757b5e01e5121c03a7931fabdfefbb4fb19cb33f0"
+    },
+    {
+      "path": "apps/web/components/admin-audit-panel.tsx",
+      "sha256": "7614817ff807eab320535d25cba43acccef793bdf82d198d707967f3a3acc5b2"
+    },
+    {
+      "path": "apps/web/components/admin-catalog-review-panel.test.tsx",
+      "sha256": "50680d01424e1416cd8aa8942349bbbcaba52ed787b446836df8ae0fcfbd52be"
+    },
+    {
+      "path": "apps/web/components/admin-catalog-review-panel.tsx",
+      "sha256": "85d14d017e15cdc348d9c9d43b3fd31e9bae12060aa903c01df9e522594383d1"
+    },
+    {
+      "path": "apps/web/components/admin-dashboard.test.tsx",
+      "sha256": "895e23bc0faa65ef0ce318c720e5261a6215a45bfc6c20e019a52f764fb6343d"
+    },
+    {
+      "path": "apps/web/components/admin-dashboard.tsx",
+      "sha256": "6206eba7b6a385853c8a8bf6f552d07fe74f10bd42fa9f3ff7013bc7249f8d28"
+    },
+    {
+      "path": "apps/web/components/admin-database-panel.test.tsx",
+      "sha256": "048d597b32831fcec947badd28a6b0dbafc71baf5a211174ead164555492995f"
+    },
+    {
+      "path": "apps/web/components/admin-database-panel.tsx",
+      "sha256": "ce1e048cccdf509f51a31767caf624e734bcbeb50867e9573f78784d3bc5c296"
+    },
+    {
+      "path": "apps/web/components/admin-deployments-panel.test.tsx",
+      "sha256": "2bb3a319c195ecdd78c7134fc6547a47242f5adb254d29ba61b768d65a7e82aa"
+    },
+    {
+      "path": "apps/web/components/admin-deployments-panel.tsx",
+      "sha256": "3822cc9b28d03f97e89eaaedf6564128fcc84d78216d2d9d6a0855bf37da4306"
+    },
+    {
+      "path": "apps/web/components/admin-domain-workspace.tsx",
+      "sha256": "405e27510990af76e02bb72aaae9d13bd78c0f60fc76623662c3fd46b7518db2"
+    },
+    {
+      "path": "apps/web/components/admin-domain-workspaces.test.tsx",
+      "sha256": "2c63aa2568a0978dc229f2357e542d248d2f1f341eaef40b18f9ea607d6a0332"
+    },
+    {
+      "path": "apps/web/components/admin-filter-pills.tsx",
+      "sha256": "f143a91c3c2ebc86a1a021591f1d8a35ad78144322b5f5e64d3d1a4c8c924def"
+    },
+    {
+      "path": "apps/web/components/admin-food-merchants-panel.test.tsx",
+      "sha256": "ebecace7639fbf3628adba099bec2b57eaa05ab6acf1c7131f14d2a7c6ce8760"
+    },
+    {
+      "path": "apps/web/components/admin-food-merchants-panel.tsx",
+      "sha256": "ebd1a70e2cfd5370a98248a9598baf432d94524a2a511f609225d89956817221"
+    },
+    {
+      "path": "apps/web/components/admin-food-taxonomy-panel.test.tsx",
+      "sha256": "90959daa7e0a885b8f1fa781603586cb09aa42f124060bf674a5e82b3e14993a"
+    },
+    {
+      "path": "apps/web/components/admin-food-taxonomy-panel.tsx",
+      "sha256": "068230640093b3d08e99668682599bd229ce631e7e225e191cf6cdde07dbab4e"
+    },
+    {
+      "path": "apps/web/components/admin-foods-panel.test.tsx",
+      "sha256": "135b5aa2b37000cfc8d58e4da9b0e4e23968875e5cdade3533bbd29b6732c503"
+    },
+    {
+      "path": "apps/web/components/admin-foods-panel.tsx",
+      "sha256": "727e484704f10b1166ca620e1687abbcbcdd071c91eb385888c1d767d9fbcaca"
+    },
+    {
+      "path": "apps/web/components/admin-foods-workspace.test.tsx",
+      "sha256": "7cc4b4f4b66c62d92baed926fab607cf9d1aa1d8c9c6fa2ad71d745d7a514cd8"
+    },
+    {
+      "path": "apps/web/components/admin-foods-workspace.tsx",
+      "sha256": "1a4a3b7f84c0b00ad33298e6b403e7ac85ab27fd02e1fbd725d1c99f3aeb0b3c"
+    },
+    {
+      "path": "apps/web/components/admin-guides-list.test.tsx",
+      "sha256": "f1e2263f5e09f4d83f4303fe3f577a6cddefd2a459086b2c5f797536bf024e85"
+    },
+    {
+      "path": "apps/web/components/admin-guides-list.tsx",
+      "sha256": "3c622ebf81fb14c7ed08b10128d2a45e4d49b259e63a34dee5aa440897c25e9a"
+    },
+    {
+      "path": "apps/web/components/admin-guides-panel.test.tsx",
+      "sha256": "f7b7355cf70f5d0ea693a603dd867dc07e2f9c4c83555da72c0419006e1f690f"
+    },
+    {
+      "path": "apps/web/components/admin-guides-panel.tsx",
+      "sha256": "a2e5538af65c89fbaa3a688a8753445260ebd5e613630d4195cb6631a2f81513"
+    },
+    {
+      "path": "apps/web/components/admin-hotspot-guides-panel.test.tsx",
+      "sha256": "1175d1687e1d7c3d31d9682b6811c88069003fe05eeb18ebbfea16d0db27aefb"
+    },
+    {
+      "path": "apps/web/components/admin-hotspot-guides-panel.tsx",
+      "sha256": "b689b0854325b9b4a945d7d537efe14efbfb4d97fb5154ef262ebdb5db3dd771"
+    },
+    {
+      "path": "apps/web/components/admin-hotspot-intro-generator.test.tsx",
+      "sha256": "2a77e4381108f8109ac608aae395e4bdb35de6e1774d20ee329b080228c04e8d"
+    },
+    {
+      "path": "apps/web/components/admin-hotspot-intro-generator.tsx",
+      "sha256": "28d9e20b9aaf543a5ffb0712195643b1a0dc62b0a7b0acd18049b092b580c5e8"
+    },
+    {
+      "path": "apps/web/components/admin-hotspot-intros-panel.test.tsx",
+      "sha256": "4be3aedb9433ee25c01e8e59fa4a25b70555e37edb276bc5f3046fb70e374753"
+    },
+    {
+      "path": "apps/web/components/admin-hotspot-intros-panel.tsx",
+      "sha256": "7c9826752dbc8394aac01a0aa1c1f6e5e963a9e522a8942237fc91039a1808ae"
+    },
+    {
+      "path": "apps/web/components/admin-hotspot-places-panel.test.tsx",
+      "sha256": "1de7c1cf4ae3d07fb2ce161b9d2d62a8451088c3fcd50fe2c96a3e109201c050"
+    },
+    {
+      "path": "apps/web/components/admin-hotspot-places-panel.tsx",
+      "sha256": "ab484bc7a9935ee22385d2b4fd9b692421d374b9a8c3c579bba097399f28d149"
+    },
+    {
+      "path": "apps/web/components/admin-hotspot-theme-editor.tsx",
+      "sha256": "9984d21861decb2d1a5ea76f7f518b8d955184aeb495999ed25bf627028c65fd"
+    },
+    {
+      "path": "apps/web/components/admin-hotspot-themes-panel.test.tsx",
+      "sha256": "e95cf5b03b92521ee55d12aa37048ef0f63815fe621393f8c5e452574be73576"
+    },
+    {
+      "path": "apps/web/components/admin-hotspot-themes-panel.tsx",
+      "sha256": "738fb8c6656971e3945ff18633dfb4c33f8d9f19cf836277bee61ccbe15873a7"
+    },
+    {
+      "path": "apps/web/components/admin-hotspots-panel.test.tsx",
+      "sha256": "bfe3119cd32088ddfc1d05e68bc165420f02fb6b4d3549f10dd05f83d88297e7"
+    },
+    {
+      "path": "apps/web/components/admin-hotspots-panel.tsx",
+      "sha256": "d69c6072d46d23d0611fbd19a4200768371a3b5161081d2247903805d67428ec"
+    },
+    {
+      "path": "apps/web/components/admin-hotspots-workspace.test.tsx",
+      "sha256": "e0ec6d2ac94b65687e2bd73ad8af29c1ce2243f3cb380387454d37a0ae639f47"
+    },
+    {
+      "path": "apps/web/components/admin-hotspots-workspace.tsx",
+      "sha256": "195cd02262656f969646be9b39141622e5982c53a68777e8f12e7307701a8d7f"
+    },
+    {
+      "path": "apps/web/components/admin-map-identities-panel.test.tsx",
+      "sha256": "fd7e7f9a9ccd61b88ce230a92dd8252d5d031ed87dcc823b8e6603bafa39e912"
+    },
+    {
+      "path": "apps/web/components/admin-map-identities-panel.tsx",
+      "sha256": "6e1c7ad4351fd9268b4bf146af3ff2b2e46f9bdc2e406fc7db5ef3ce66dca63a"
+    },
+    {
+      "path": "apps/web/components/admin-merchant-coordinate-queue.test.tsx",
+      "sha256": "3031b03281d6f128addbe8208ab2e46e8ee4591ad219e2f6305670d09d46682c"
+    },
+    {
+      "path": "apps/web/components/admin-merchant-coordinate-queue.tsx",
+      "sha256": "ec3cac9a822e9b16f41b17edde05f8d83caf2092033aa840bc705b68fe0c6440"
+    },
+    {
+      "path": "apps/web/components/admin-merchant-platform-editor.test.tsx",
+      "sha256": "8223cd0706f01d26d5b3d868d58473aad8e5ac53ee4899da700ee315c64515de"
+    },
+    {
+      "path": "apps/web/components/admin-merchant-platform-editor.tsx",
+      "sha256": "7620e32b3165734efe496a52008911f3d31e64a7f2df9e964465ad9038812068"
+    },
+    {
+      "path": "apps/web/components/admin-merchant-styles.test.tsx",
+      "sha256": "9c033dd7b37567d7d701108b7ae78163d60a00c2fd40644a07872ac87de1962b"
+    },
+    {
+      "path": "apps/web/components/admin-merchant-styles.tsx",
+      "sha256": "7872f09244f7a51d7a205d49e0e866d56e1edf674787cefa9a87743f568877de"
+    },
+    {
+      "path": "apps/web/components/admin-nav.test.tsx",
+      "sha256": "f1694caed06dcdc5c52bc3de2145b5b41d1483a641ccc0ebab69b4c6be484916"
+    },
+    {
+      "path": "apps/web/components/admin-nav.tsx",
+      "sha256": "916131574d38540115b76dc270816b6cc9b0cc6df081e0733891368df60ba34c"
+    },
+    {
+      "path": "apps/web/components/admin-operations-provider.tsx",
+      "sha256": "d590048d01f8858bb8944d76415a00de3aef682b82a2070ba44dde3eaeb86a57"
+    },
+    {
+      "path": "apps/web/components/admin-partial-payload.test.tsx",
+      "sha256": "649a18480d8fa957c8208701a43736424571bfec457ed0525f046f77aad6135c"
+    },
+    {
+      "path": "apps/web/components/admin-responsive-tables.test.ts",
+      "sha256": "f014e0f4a291a787cb968e6d3c89381d32d7c137dea1da026e3b55ceb6387be0"
+    },
+    {
+      "path": "apps/web/components/admin-restaurant-scans-panel.test.tsx",
+      "sha256": "0f8a3ac896ebec10055fba3286f639446d66e4ef70d18fbaadcafb4654e5cb95"
+    },
+    {
+      "path": "apps/web/components/admin-restaurant-scans-panel.tsx",
+      "sha256": "16f09565cf6bc873ab1357e79ab88e1c2bc0b8a54b5aa37de2bbf9cc83a9f94a"
+    },
+    {
+      "path": "apps/web/components/admin-restaurant-sources-panel.test.tsx",
+      "sha256": "86c535592cbfa3a93fc79f44df5a95695ee0f3cd7a1bc48938da370e5a228350"
+    },
+    {
+      "path": "apps/web/components/admin-restaurant-sources-panel.tsx",
+      "sha256": "2317811ca6dcc585f72ea661cbb8462daef62732eac003171de0b6c302eb2f1d"
+    },
+    {
+      "path": "apps/web/components/admin-settings-panel.test.tsx",
+      "sha256": "8be4ed95b0fe5bd051dcfd2c064b2d7ee2e02e81bd4ff7a4e9272f10e41ab5b7"
+    },
+    {
+      "path": "apps/web/components/admin-settings-panel.tsx",
+      "sha256": "880f16319932663a7ae8abc81da857a26b8f633f5f3ff41041119f93be78ba7f"
+    },
+    {
+      "path": "apps/web/components/admin-shell.tsx",
+      "sha256": "c541c74cd5f259fd818714ad5b7e91b119f957c68f827a6ad6837d907ec07d93"
+    },
+    {
+      "path": "apps/web/components/admin-site-pages-panel.test.tsx",
+      "sha256": "5f3d9a55e22f80d5b5201ecceb56c47156672d017da352391627d75579cfcc01"
+    },
+    {
+      "path": "apps/web/components/admin-site-pages-panel.tsx",
+      "sha256": "216c249fe4524acf1632b8d1f11c088eb6adf5716f1e9674e6f06748dad0e58d"
+    },
+    {
+      "path": "apps/web/components/admin-tabs.test.tsx",
+      "sha256": "bbed0662a9907c2bf31a45d4c8946be6abf88415cef777265da071b8cd956745"
+    },
+    {
+      "path": "apps/web/components/admin-tabs.tsx",
+      "sha256": "c8d2aff90b8c676626c179d3df14e136caf4a50070d16fea42faf6ac9bb1a62e"
+    },
+    {
+      "path": "apps/web/components/admin-ui-text-panel.test.tsx",
+      "sha256": "a0eb42b58e162c05e9058eee46ff009fec6ce2090aa8cf3f1e8ff3b3d1bfc4e9"
+    },
+    {
+      "path": "apps/web/components/admin-ui-text-panel.tsx",
+      "sha256": "26715aa477bd9fcfda88b702314ad096b4e9ae6464e4b14fcc5bfcdf71d9def0"
+    },
+    {
+      "path": "apps/web/components/admin-ui.test.tsx",
+      "sha256": "49b5085b91a3726fcab0efae8fcd1ccd4b69e3c91c5e417bf21667c9aa1e26b5"
+    },
+    {
+      "path": "apps/web/components/admin-ui.tsx",
+      "sha256": "9d66cf6b6f2213b2416b92d97ff6cde748e809edc0199816a658577c03ea4530"
+    },
+    {
+      "path": "apps/web/components/admin-usage-settings-panel.test.tsx",
+      "sha256": "d8bac540eccd2e3996e0904629ee75afab6e2a42b3a8cf5fb2a0b7643cdc5b57"
+    },
+    {
+      "path": "apps/web/components/admin-usage-settings-panel.tsx",
+      "sha256": "ce6476b9747ebd0c5fc8fe6edd785545aa2b3cb2ca660bfd9de6f2af72ab1ff1"
+    },
+    {
+      "path": "apps/web/components/admin-users-panel.test.tsx",
+      "sha256": "34ff33dbac4da6935c0ede3fdd646c3c3a8bc6370fb1db8c6209f3dc06b9c8ea"
+    },
+    {
+      "path": "apps/web/components/admin-users-panel.tsx",
+      "sha256": "ad88f9d79bfdc026b4ed6f9f3038b36802741c623d4bfc1c776920c9f6b7c5b0"
+    },
+    {
+      "path": "apps/web/components/ads/adsense-loader.tsx",
+      "sha256": "e211bc2a0d8134359b98465567eba722034e7ab5fbbb214ac7faca9f1414408b"
+    },
+    {
+      "path": "apps/web/components/ads/anchor-ad-offset.test.tsx",
+      "sha256": "e4d0e5f20602ba31db21dcc59dd4ceafac85c4cb8b8ac12b2886b4cc290cfde3"
+    },
+    {
+      "path": "apps/web/components/ads/anchor-ad-offset.tsx",
+      "sha256": "87c1893467dbd898757a53275116f3d2b1fafaf1a34c00b30a5cab3d792a6343"
+    },
+    {
+      "path": "apps/web/components/ads/article-ad-slot.test.tsx",
+      "sha256": "a020711261606e238d0f898f674ad0a7630b3526f87b51a4fa7238c1809c2ed8"
+    },
+    {
+      "path": "apps/web/components/ads/article-ad-slot.tsx",
+      "sha256": "338e032379bfcc03d4a4f3d7732a952efe8b5a2097890d3187436aae5c877d3e"
+    },
+    {
+      "path": "apps/web/components/affiliate-partner-options.test.tsx",
+      "sha256": "13c4e23fb600fe1611726ffa675c97061de5f0a21beb889c960434252482b71c"
+    },
+    {
+      "path": "apps/web/components/affiliate-partner-options.tsx",
+      "sha256": "57efe361d17f7e5a4bd5e10a128c1c6b2735a7ae176181f47d2558b2ea19f679"
+    },
+    {
+      "path": "apps/web/components/airbnb-search-panel.test.tsx",
+      "sha256": "fef6e5bf376e0931b14030d04661db2d63cdec3cedf626c789ff95a2408e4af4"
+    },
+    {
+      "path": "apps/web/components/airbnb-search-panel.tsx",
+      "sha256": "91dff0017e768c60c05186271c100276dfb52af38521767d2fc98bd2c27429cd"
+    },
+    {
+      "path": "apps/web/components/airline-fare-lab.test.tsx",
+      "sha256": "505ae9f54f7a48ad03d900df45335508a35d0273fee71ad6f8b618cb73263322"
+    },
+    {
+      "path": "apps/web/components/airline-fare-lab.tsx",
+      "sha256": "6205abfd938faf8201ff78aadbd819641c14be8c3ece853a8e1463f01698c7ca"
+    },
+    {
+      "path": "apps/web/components/analytics-provider.test.tsx",
+      "sha256": "30c37405fab9e7b8358e2b5b6dd1bbef999bb1e5d9c9f3bdc04fdca3b0bb330c"
+    },
+    {
+      "path": "apps/web/components/analytics-provider.tsx",
+      "sha256": "f3d47ad79a779065ad683a58899fe1431f1599dedbcf2f040604f8a01ae4d8c5"
+    },
+    {
+      "path": "apps/web/components/app-bottom-nav.test.tsx",
+      "sha256": "859454b8ae87e3859051db54b8fe8345ee4f7eef7e295d5e64b5a92e0870bc13"
+    },
+    {
+      "path": "apps/web/components/app-bottom-nav.tsx",
+      "sha256": "ad79016eb836e5deaf0a853c818d155fab08cec5b585ff947149d1fcbc33fb11"
+    },
+    {
+      "path": "apps/web/components/auth-form.test.tsx",
+      "sha256": "61437e4e685098c2bf43c7dfdbc1fa405b7cf6916821b7016c66ad991488f99e"
+    },
+    {
+      "path": "apps/web/components/auth-form.tsx",
+      "sha256": "a6f6e74779f2c3da2984cd6e6a299c767785e62520047e0e2b69d84b1ff95735"
+    },
+    {
+      "path": "apps/web/components/back-to-back-fare-search.tsx",
+      "sha256": "feb22cc31de3d3ed1447fe234de61e3fc6133711424aeae6e1f351dcc26cb7f2"
+    },
+    {
+      "path": "apps/web/components/budget-breakdown.test.tsx",
+      "sha256": "9ca2c5455c9380fe1a2c4d24946dda2bf568d71a2402009c89917021136d886f"
+    },
+    {
+      "path": "apps/web/components/budget-breakdown.tsx",
+      "sha256": "de1400a309472fda587d792b9d8df0864d23541ca0b629ea7458ef2566bee97c"
+    },
+    {
+      "path": "apps/web/components/chip-row.tsx",
+      "sha256": "6c468c52972843e7aef240da0ef3ca8972ac5838b0b04fab0335a1c4ba90e172"
+    },
+    {
+      "path": "apps/web/components/community/accounts.test.tsx",
+      "sha256": "030890948d375ea494c9f3433332df0d13273ea31d6b6f6755c7fb85a96654a4"
+    },
+    {
+      "path": "apps/web/components/community/accounts.tsx",
+      "sha256": "838ad68248ff03c42dbfee6901e5cbd8c7d6b64017adec7b35449a35c9976f00"
+    },
+    {
+      "path": "apps/web/components/community/admin.tsx",
+      "sha256": "f4614c8b60f9d0bbb7d91baf3fbd762dc27ff5e48c77b9d4c98c5a55ca5d02e3"
+    },
+    {
+      "path": "apps/web/components/community/collections.tsx",
+      "sha256": "14268cf605f718c5b3741f755cf7bb1ec6add3239f78641bd0926bdf440f80bd"
+    },
+    {
+      "path": "apps/web/components/community/community.test.tsx",
+      "sha256": "bdd42a4e68fec4a39d07d051a8c28ca641c3ecf73d1eaf7c446362a95e1acf5a"
+    },
+    {
+      "path": "apps/web/components/community/creator-invitations.tsx",
+      "sha256": "edd24165e025bc91b13d7b6959f58e5a17a9736a1de24872e966e4ad8fc3db04"
+    },
+    {
+      "path": "apps/web/components/community/discovery-social.test.tsx",
+      "sha256": "5b8fa46b314da756d9e77b68178740b07b466385aeddba2c5748d77ab652b1b4"
+    },
+    {
+      "path": "apps/web/components/community/editor.tsx",
+      "sha256": "194677399902d1c12c0867619be4573d8c97d4c8df5181f03b00796ce4a16bfa"
+    },
+    {
+      "path": "apps/web/components/community/explore.tsx",
+      "sha256": "d5096155698194f28e4af0c8c2b33f8da57ae6127420e632154aaf6e3b3c3e7d"
+    },
+    {
+      "path": "apps/web/components/community/feed.tsx",
+      "sha256": "9000e150386219b43824131ac8b687721b198a585aee96d0d509ee281aeceb75"
+    },
+    {
+      "path": "apps/web/components/community/home.tsx",
+      "sha256": "7564fed582961f3cfc27a1ac5d55ee10afa8e7e33cee87787d34bb1324195004"
+    },
+    {
+      "path": "apps/web/components/community/media.test.tsx",
+      "sha256": "43eafec7df672caa14eb15a2f6ad7e714f9862f8b8358a6baa776dabcff53b6a"
+    },
+    {
+      "path": "apps/web/components/community/messages.tsx",
+      "sha256": "c0208cb9189562ed09e3cb37ea37cf84152d388be82b53d9967e0644f9198515"
+    },
+    {
+      "path": "apps/web/components/community/page.tsx",
+      "sha256": "5bcf3c430b0587ff72da925d0b2175670f5ac531534ce49a601455f379f8b2aa"
+    },
+    {
+      "path": "apps/web/components/community/pet-admin.tsx",
+      "sha256": "7747d4be68b210425931127cce12d5b41aa10729a322d2e55662dad516758b0b"
+    },
+    {
+      "path": "apps/web/components/community/pet-rules-editor.tsx",
+      "sha256": "625c92978595ace0380fa7245791e03eac5fb491aa8c7a1c993b36a20fc9de0e"
+    },
+    {
+      "path": "apps/web/components/community/pets.tsx",
+      "sha256": "88a352aeba0a8d889bece6a9ef0302c4e49496784fb27cec9b0cb341d62e31f4"
+    },
+    {
+      "path": "apps/web/components/community/places.test.tsx",
+      "sha256": "c082a78e871166ad7d6aaa0dbcbba4b26b646f9c44b707aa5885563305748ea2"
+    },
+    {
+      "path": "apps/web/components/community/places.tsx",
+      "sha256": "1faf0bb253b7f78ca77c057f589e6f284f3f58fed91a2d198c229d587e0f5a1e"
+    },
+    {
+      "path": "apps/web/components/community/post.tsx",
+      "sha256": "bf8e0c2942e580434a9e1f43bea888b51348f5995635559512158315bd3796b1"
+    },
+    {
+      "path": "apps/web/components/community/profile.tsx",
+      "sha256": "f00bf478366d8239efd7ba9011977646679c34baf2749340af44d40b22875ce3"
+    },
+    {
+      "path": "apps/web/components/community/provider.test.tsx",
+      "sha256": "1ef46872ab3a4e25e7d050ac677a55c496a797e5f05d42b84194a8b05d6dfc6e"
+    },
+    {
+      "path": "apps/web/components/community/provider.tsx",
+      "sha256": "411051cb8d27f2d562b192dac3e5da9239e33d217a5f42b96a6a408010d55f58"
+    },
+    {
+      "path": "apps/web/components/community/session.test.tsx",
+      "sha256": "ee5a2d6dfbe4ce7bfd2085f37ac1f46ffd17f7cf3c2b8076a9c4d9a5155245b1"
+    },
+    {
+      "path": "apps/web/components/community/shell.tsx",
+      "sha256": "4f8c4ea2c1477da1f201c5ab416874823cdd077301c71096c3a00c3a486c766a"
+    },
+    {
+      "path": "apps/web/components/community/travel-tools.test.tsx",
+      "sha256": "4ee0231ed8d6d409953096855561a79d0032a99712c95e373e0a7569d7c2cb53"
+    },
+    {
+      "path": "apps/web/components/community/ui.test.tsx",
+      "sha256": "a48fb3fd987bbb5379a3a53ed93ba2c0ac8132c17053cbe208f4e8e2eb99de98"
+    },
+    {
+      "path": "apps/web/components/community/ui.tsx",
+      "sha256": "87d05996eca261c0691eb2f1cc31d5500eeafb9bd5e9a89b39104f68f8c80d59"
+    },
+    {
+      "path": "apps/web/components/community/upload.tsx",
+      "sha256": "3c37f51be8a12f73473d24d7bac7f493767ce0d00c34393d4b7eb94e29709aca"
+    },
+    {
+      "path": "apps/web/components/community/use-resource.ts",
+      "sha256": "2a53eb951e753eee727ff92d93c513f964b300b3abd4edffe2e00a73719327c3"
+    },
+    {
+      "path": "apps/web/components/content-blocks.test.tsx",
+      "sha256": "e53dd70a87048c7e41aee33788bb875e68ba35f31fc2df0a162fb3c2d2d82aee"
+    },
+    {
+      "path": "apps/web/components/content-blocks.tsx",
+      "sha256": "74830fd54796d409030a76bf0ce6f40fb69b13c3de7bb6359af1b34b322fc7a2"
+    },
+    {
+      "path": "apps/web/components/currency-switcher.test.tsx",
+      "sha256": "58cf3d89b9bd36edbbb41fc7758c26d1f34b7e360f2897442146d4ff98278217"
+    },
+    {
+      "path": "apps/web/components/currency-switcher.tsx",
+      "sha256": "e4bc01a14e0b0b675dfd6bce035e7639fd1eeaf729efa87fd3546ecda4f86e98"
+    },
+    {
+      "path": "apps/web/components/date-range-picker.test.tsx",
+      "sha256": "7bee732be246807ee158c534c5c802b789690e3b05abce0a24d70368ba0a172b"
+    },
+    {
+      "path": "apps/web/components/date-range-picker.tsx",
+      "sha256": "89a67a5b325b26847f5c65c75a76f31e84542c2ebc6b2e7930e1ae34ff9d75a5"
+    },
+    {
+      "path": "apps/web/components/day-health-strip.test.tsx",
+      "sha256": "b7c7cfff1b508b268c95e88f431b6671020292a9c26896c2059ed8db655ffc9b"
+    },
+    {
+      "path": "apps/web/components/day-health-strip.tsx",
+      "sha256": "624ceafcd1b44f0e934c8ddda9041f1d9f2e1a0168a21d68dd17132cc8c065e2"
+    },
+    {
+      "path": "apps/web/components/destination-affiliate-options.test.tsx",
+      "sha256": "7dc9081a1f4bda4ba4c748dc888a1ad2d7c27def2c259c45f79e32f76efdd98c"
+    },
+    {
+      "path": "apps/web/components/destination-affiliate-options.tsx",
+      "sha256": "de8b4c5b4d3933b7d699be508242bed20a4897a2c0ba7165b9c224ed5c1d7032"
+    },
+    {
+      "path": "apps/web/components/destination-guide.test.tsx",
+      "sha256": "7f1096605ae13657fd88370d51653f4f3586016c8eef03a5e1564d671c775133"
+    },
+    {
+      "path": "apps/web/components/destination-guide.tsx",
+      "sha256": "96b0d0c0d996c455ba2280cf2153e8b89fa00b311d1e6ee76c7c84470e1ba38b"
+    },
+    {
+      "path": "apps/web/components/discovery-navigation.test.tsx",
+      "sha256": "e3c8b8fa8ee51385b8d3c89c7c879e44d1002982ce3a5cbdaeb8f47232da80fb"
+    },
+    {
+      "path": "apps/web/components/discovery/card-details.test.tsx",
+      "sha256": "a5f76e8241e0478bc3c545564c4123ea02f7586c0d5c842c3373c1328130a98d"
+    },
+    {
+      "path": "apps/web/components/discovery/card.tsx",
+      "sha256": "45325141a64b2d4f1173b88bfa97af094d5d556412ff5ac4201d594be9731a99"
+    },
+    {
+      "path": "apps/web/components/discovery/collections.tsx",
+      "sha256": "b145da62033c359815633f2861026e0e2da755cd22a4d24907615aa94b3a0e33"
+    },
+    {
+      "path": "apps/web/components/discovery/detail-drawer.test.tsx",
+      "sha256": "97c68abc2039a8099122fc87f451cbfc916e0a8abfbd8431ee371a134083197c"
+    },
+    {
+      "path": "apps/web/components/discovery/detail-drawer.tsx",
+      "sha256": "dad755cee4da122709c9bda2343848655220138008dfe083821b541c4082658c"
+    },
+    {
+      "path": "apps/web/components/discovery/discovery.module.css",
+      "sha256": "cf5eb6868ba1c605b66b9fe6bf41e4ec7db9ece2a767dc6016a61ca6f266d815"
+    },
+    {
+      "path": "apps/web/components/discovery/discovery.test.tsx",
+      "sha256": "437fe9c13c790e11a3177127d69e00dc85805d26b9d9418682b2e1211b5023c8"
+    },
+    {
+      "path": "apps/web/components/discovery/explore-ssr.test.tsx",
+      "sha256": "109d4df19c2c041d318fc7e92697f7dc026fb2aa1653915571506d888b625c39"
+    },
+    {
+      "path": "apps/web/components/discovery/explorer.tsx",
+      "sha256": "110c18aa328e8c6c15849a48f1fdc7b818fd9e6d6b8f01af9304f7b480e0e41d"
+    },
+    {
+      "path": "apps/web/components/discovery/frontend-flow.test.tsx",
+      "sha256": "9f15133aacfdfeff08af3edbb15ff144fece1116a7ce8541c59efaae8c99c3fb"
+    },
+    {
+      "path": "apps/web/components/discovery/home-gate.test.tsx",
+      "sha256": "76195eebb7689dddb8a56e87a293bad9baa0a5d62cfc1f70f5fb0cc7b2793516"
+    },
+    {
+      "path": "apps/web/components/discovery/preferences.test.tsx",
+      "sha256": "90fa2a0a3f67a6a380c50345c0d6889d8d39e75b768095e285b5979736a40208"
+    },
+    {
+      "path": "apps/web/components/discovery/preferences.tsx",
+      "sha256": "cd2201a2991191f23d8718b8ee6e0fadef9a3c7388b5fb66dd4ec2ab43d445f3"
+    },
+    {
+      "path": "apps/web/components/discovery/saved-content-action.tsx",
+      "sha256": "c7a0f8cde5c0ada450fa74c92a03c43d8ab64d3f547c3b921e1d66309ad7600d"
+    },
+    {
+      "path": "apps/web/components/discovery/search-suggestions.test.tsx",
+      "sha256": "c6cf6699ef3888bdd487b294083f9fb064b6d90b71f6e9820819000de8181c16"
+    },
+    {
+      "path": "apps/web/components/discovery/status.test.tsx",
+      "sha256": "13ad0fb23d6fcf1c532664ea118203ea699d001e7d3a3353ad7d2de2dc0e38ff"
+    },
+    {
+      "path": "apps/web/components/discovery/video.tsx",
+      "sha256": "2ed433f26fbdcfd9110846b2ca7c5f833f201ad51a89d8a0f2267b70ceaffe9f"
+    },
+    {
+      "path": "apps/web/components/editable-itinerary-timeline.tsx",
+      "sha256": "b02bdf66ba1b42d611a37d52ec2db2576ffffff34a046bea14e85329cee59a82"
+    },
+    {
+      "path": "apps/web/components/explore-switch.test.tsx",
+      "sha256": "33b7d9856381f758f3a4fdc6e561de0a701b1e84b5ecd5f8aabb0cb88a0bc698"
+    },
+    {
+      "path": "apps/web/components/explore-switch.tsx",
+      "sha256": "4c2ef9858c963a78ae260281dee4212fc5afa93a82adce6547b4220a71f62f8f"
+    },
+    {
+      "path": "apps/web/components/flight-anchor-card.test.tsx",
+      "sha256": "e284c2b59ccafb3eb19d52e3e2931c945f6df0982bd37ecc2b59611a579e8496"
+    },
+    {
+      "path": "apps/web/components/flight-anchor-card.tsx",
+      "sha256": "8dd3061ddcb1a084775a9c606ffa9bf842f8061c6b338289b2300c6bb1434be6"
+    },
+    {
+      "path": "apps/web/components/flight-date-options.test.tsx",
+      "sha256": "5205700fa2aee158fdee718314f00fbc405fb4ab56da8b3e3337696a2b34f328"
+    },
+    {
+      "path": "apps/web/components/flight-date-options.tsx",
+      "sha256": "b3226fd40149045cac238999484f05ec18f07e9f800afa4e421629a772bc2762"
+    },
+    {
+      "path": "apps/web/components/flight-offer-card.test.tsx",
+      "sha256": "5aa26437b60f98945224a974de1198fb4a9dc3e264f4c84a07b38c61163938ce"
+    },
+    {
+      "path": "apps/web/components/flight-offer-card.tsx",
+      "sha256": "ee09d28026d0d3d1983123733e2766c849a17e8a342543b13d6cc37e2f5dde7f"
+    },
+    {
+      "path": "apps/web/components/flight-status-search.test.tsx",
+      "sha256": "91fc775d9e53bacb0083d2fd2a9d8bded0666040d8b6d4a67316f9c53a795254"
+    },
+    {
+      "path": "apps/web/components/flight-status-search.tsx",
+      "sha256": "f286a39e3b4a9a7b1225401a8eeabfb63f2fcee989248436b3382e0d141a9177"
+    },
+    {
+      "path": "apps/web/components/food-browser-seed.test.tsx",
+      "sha256": "3dd6ad4d1a66eb615f6cc9cea5f7b35d29afcc247682508f500ab12852905a57"
+    },
+    {
+      "path": "apps/web/components/food-browser.test.tsx",
+      "sha256": "c1154007ef97ad021241ce8407258156c35698a65836576e657d3b6f64f2af2a"
+    },
+    {
+      "path": "apps/web/components/food-browser.tsx",
+      "sha256": "f9aef7b75a3a0c5534669001df8495993adbd8aa4ab639d8a6238b1b836d94a6"
+    },
+    {
+      "path": "apps/web/components/food-city-picker.tsx",
+      "sha256": "0557748b988d298c4dd6f2bad278973c616f2ec4df9f65b70a95f31c297f7bd0"
+    },
+    {
+      "path": "apps/web/components/food-dish-card.test.tsx",
+      "sha256": "827cbb2613123487493a376d6a41ce734cdee5354720fa70442c6cc20427124c"
+    },
+    {
+      "path": "apps/web/components/food-dish-card.tsx",
+      "sha256": "da5e26e86aae570178df8a6c9d3e10d87d30325ca0e748bd915fb7175c91ea01"
+    },
+    {
+      "path": "apps/web/components/food-dishes-section.tsx",
+      "sha256": "a09fa5ca84d67f00e8fe73d711771d4f44b7934758ea9f9412c9dce23d268260"
+    },
+    {
+      "path": "apps/web/components/food-filter-chips.tsx",
+      "sha256": "db5845de704f91143880dd14a3d743770387b60bc954e5d588724bed3c2f64c7"
+    },
+    {
+      "path": "apps/web/components/food-merchant-card.test.tsx",
+      "sha256": "96973bf732f38e6e2befa90618d759cda976c99e6f34708be39513788ba1c3d4"
+    },
+    {
+      "path": "apps/web/components/food-merchant-card.tsx",
+      "sha256": "bf139f8db5c3e5485bc31301bc788612322e085d9a37f6e1a401e9db9b4d06e7"
+    },
+    {
+      "path": "apps/web/components/frontend-plan-action.test.tsx",
+      "sha256": "bb75f46d86b294c08fe82bc8148eccf7d37346c94035cadfcafd05692b2fa8ee"
+    },
+    {
+      "path": "apps/web/components/gemini-series/directory.tsx",
+      "sha256": "faf627037964ee0009e0e973bb02e86f6727de8ba87693260b518dfae978bf8a"
+    },
+    {
+      "path": "apps/web/components/gemini-series/fixture.test-data.ts",
+      "sha256": "31838b09c35f389568debf73d6bb4de0a393d5282fd616ceedf57c9ad2b94ed2"
+    },
+    {
+      "path": "apps/web/components/gemini-series/navigation.tsx",
+      "sha256": "2ad4788b3f1c9c9393371ace7a6da9ae92dc1cf6c726f16f8b047e0e3e2b34bc"
+    },
+    {
+      "path": "apps/web/components/gemini-series/visible-ui.test.tsx",
+      "sha256": "42f7d09ce322eda032b5d2d2aa2dcf6f9a9b53ee1aa961924fa6c867e6a28996"
+    },
+    {
+      "path": "apps/web/components/guide-code-block.tsx",
+      "sha256": "884e74d824783c54a4f6755ef9daf6016140eaf75a8dc4988e2cac9df935de5c"
+    },
+    {
+      "path": "apps/web/components/guide-rich-editor.test.tsx",
+      "sha256": "e3d744ff30326ec460450a7e3b60dcc4e19bf777be1e070fbbb9ca6c5ebbb5f1"
+    },
+    {
+      "path": "apps/web/components/guide-rich-editor.tsx",
+      "sha256": "56996dbdc26d567f60740da0059d416b8c7b7429824115efe8b877fc601680e7"
+    },
+    {
+      "path": "apps/web/components/guides-navigation.test.tsx",
+      "sha256": "07ca5da173eeecc5785a0cdb661f3d73d45b277154d07135c16f66babec3930c"
+    },
+    {
+      "path": "apps/web/components/guides/article-page.tsx",
+      "sha256": "68224a986f4a95be093bf30ae803c9bdf6d70b14f4d83deb4e8897fe5ddd614f"
+    },
+    {
+      "path": "apps/web/components/guides/article.test.tsx",
+      "sha256": "4d81d888fd2211c90cf2d41d42cb9cc887b953c12740342cc35339d1a2fe8198"
+    },
+    {
+      "path": "apps/web/components/guides/article.tsx",
+      "sha256": "e47de8fad7ea2f15f21ed1d396df597cfde78552eb48b465bc3b12942482fdd9"
+    },
+    {
+      "path": "apps/web/components/guides/card.tsx",
+      "sha256": "589d9a7df505ac7dc2562274ac91ef329c22da4170c5b0dc8028a45c5aa712ed"
+    },
+    {
+      "path": "apps/web/components/guides/filters.tsx",
+      "sha256": "dea33458407add6b468e84b8b2f7ae004c209657b80f38802bc22ea4111b188a"
+    },
+    {
+      "path": "apps/web/components/guides/gemini-series-navigation.tsx",
+      "sha256": "f9490b285cbd89e05d9e34684e1486c3de2b49b83926662973c712eb7c5c00df"
+    },
+    {
+      "path": "apps/web/components/guides/guide-image.test.tsx",
+      "sha256": "e623cd484681e1abcfa3ece53912b238fe90b77d6f08db23c90a92bbb059b09a"
+    },
+    {
+      "path": "apps/web/components/guides/guide-image.tsx",
+      "sha256": "2b3a9eaa3092c8f57406f2b5d2763f79e82766e643ac62c472957c6d10958996"
+    },
+    {
+      "path": "apps/web/components/guides/partner-link.test.tsx",
+      "sha256": "89f03fd86f1459eb99cb375ffc890080c6229a24cd186e040018a8b79a15bf31"
+    },
+    {
+      "path": "apps/web/components/guides/partner-link.tsx",
+      "sha256": "6f3ef16b989e35c148721aa73471faa5f4b279701e41f7f97d9ac6e967b44bec"
+    },
+    {
+      "path": "apps/web/components/guides/series-hub.tsx",
+      "sha256": "5548dad36d39d6ccdee63f36f26f830d61eba21fc2b09665a07755d813b8c6b1"
+    },
+    {
+      "path": "apps/web/components/guides/series-index.tsx",
+      "sha256": "d4e81a41cc0de4ee6ff0037f977dba56625279caa479a5f535123dcf7ce10c57"
+    },
+    {
+      "path": "apps/web/components/guides/series-navigation.tsx",
+      "sha256": "78860aaa462ceb17063d0573906174b2095813e2a10812f8af41fdc609b7c283"
+    },
+    {
+      "path": "apps/web/components/guides/series.test.tsx",
+      "sha256": "ddd3e53a73c10795bbe4ac3f6d0a27a197132ac29c4ad5504f0a2f51065cd125"
+    },
+    {
+      "path": "apps/web/components/guides/travel-crosslinks.tsx",
+      "sha256": "9a16e58c84ae5dee0f9b3491e1ed65791a49ed8fefe73e3fcddc88ffb6275ac7"
+    },
+    {
+      "path": "apps/web/components/header-auth.test.tsx",
+      "sha256": "1da947ec9c565680221ccd1881dbc93d6ea57070f8826506acb57f4c73f2b5b8"
+    },
+    {
+      "path": "apps/web/components/header-auth.tsx",
+      "sha256": "ba93734c973bad793ffefc923929f3ec71ace17bf31d99c09713889a2ee8720a"
+    },
+    {
+      "path": "apps/web/components/header-session-identity.test.tsx",
+      "sha256": "4cd3455c9f8c93d383bdc6ecb69e720502d2af36688fb870267bd56f21e20081"
+    },
+    {
+      "path": "apps/web/components/header-session-locale.test.tsx",
+      "sha256": "8b0d7b75598ee887a4cbf6e433bfd38b8147bf47e0f1c22458f3e2e121e72184"
+    },
+    {
+      "path": "apps/web/components/header-session.tsx",
+      "sha256": "26edc922d088b99a86268e605f138379a54c996b9498398899917845188d0c99"
+    },
+    {
+      "path": "apps/web/components/hotel-offer-card.test.tsx",
+      "sha256": "aa267fc31cf79cb8d45cc4a6fd10511d89671156c328dc4bae7aeed58da2c8f5"
+    },
+    {
+      "path": "apps/web/components/hotel-offer-card.tsx",
+      "sha256": "dabef83f5fb0f03227f522b2ac323af180b34304a0ce129294762d5beedc5c4f"
+    },
+    {
+      "path": "apps/web/components/hotspot-explorer.test.tsx",
+      "sha256": "0f3ae746ee085c18c4486ff200601e468a5452491879c732929f4c22cca5a4bf"
+    },
+    {
+      "path": "apps/web/components/hotspot-explorer.tsx",
+      "sha256": "c83c0dd429c478c475a937b6bb5274b10306eba082a058550c6bded8d746d107"
+    },
+    {
+      "path": "apps/web/components/hotspot-intro.test.tsx",
+      "sha256": "101ebd8a20f25a608830f3d3a2c309d6620184ec5286c60686a20521e6319ae0"
+    },
+    {
+      "path": "apps/web/components/hotspot-intro.tsx",
+      "sha256": "e669a2c31c2a11941c54c1ab65790116a32f73514aa840c28e36d9b4d133ab88"
+    },
+    {
+      "path": "apps/web/components/hotspot-restaurants-panel.test.tsx",
+      "sha256": "ac5dbf4ec0ff74322dc6c395ee876e32f80d0ebab3f6cac195ece8a059ac9340"
+    },
+    {
+      "path": "apps/web/components/hotspot-restaurants-panel.tsx",
+      "sha256": "ba67a74474aa7279fdb221f83edba3d543715ddd105125e31ea8d01d2c71f336"
+    },
+    {
+      "path": "apps/web/components/hotspot-theme-chips.tsx",
+      "sha256": "313ada4066c0e31e28f2a1036e3ae896bab2ba46f909054c25ddd84de85656f2"
+    },
+    {
+      "path": "apps/web/components/itinerary-diff.test.tsx",
+      "sha256": "36eb90ad05e3430485fab5ad456d410d6e6f32827671024ae4d75f5975f9b994"
+    },
+    {
+      "path": "apps/web/components/itinerary-diff.tsx",
+      "sha256": "790bc4b6388cc5810f8e6ba221d83db9cb0589c78f01721eede0170e76ca0dd0"
+    },
+    {
+      "path": "apps/web/components/itinerary-place-browser.test.tsx",
+      "sha256": "d616d45f796900b2548a102db52680b272a04ef7269254e2e02f2f42e95f0a87"
+    },
+    {
+      "path": "apps/web/components/itinerary-place-browser.tsx",
+      "sha256": "8e91f0ccd330ed03ef2d9cf52248e1279608455a2d5b12f65c6c4cfacc4c0a72"
+    },
+    {
+      "path": "apps/web/components/itinerary-timeline.test.tsx",
+      "sha256": "fedd63b040d5f111e25ceee7057d1688ef83cf827075ad50aab2273889fb0abf"
+    },
+    {
+      "path": "apps/web/components/itinerary-timeline.tsx",
+      "sha256": "e9790db9b9529cbe7098f8342c48c6f75466b122bf7fad28801b7c3938f5a443"
+    },
+    {
+      "path": "apps/web/components/language-switcher.test.tsx",
+      "sha256": "d6b494be0d62f2d3e2904f58ba84fa2b9221f9f5c98fb5e65f10c96cb821d0ce"
+    },
+    {
+      "path": "apps/web/components/language-switcher.tsx",
+      "sha256": "d6100ba89a011a76b55dd23c063208f9920facc3978039a75f08d3892ae39c06"
+    },
+    {
+      "path": "apps/web/components/legacy-ui-localizer.tsx",
+      "sha256": "8eaf84a95606b0aa05111aa27444504dc539a38b28f9d4f38a314d7e8295fc0e"
+    },
+    {
+      "path": "apps/web/components/line-connection-panel.test.tsx",
+      "sha256": "e335a4c805122eb69cd1f0c13c38413cce71d18645841930317523037cd9d68b"
+    },
+    {
+      "path": "apps/web/components/line-connection-panel.tsx",
+      "sha256": "42eabc250e0a43a72679dcf5deab4278ab2397655b16a2212c51fcd9d7b70627"
+    },
+    {
+      "path": "apps/web/components/line-link-panel.test.tsx",
+      "sha256": "5ddbd312b2558299ed5c43bb3040bdb5aeac106e002f54aa2260b53ec9cf25ba"
+    },
+    {
+      "path": "apps/web/components/line-link-panel.tsx",
+      "sha256": "e77c7d4d7ed30bc51be4b7ce5c76474eb198bb5bc4f719a6c866e99623a6f101"
+    },
+    {
+      "path": "apps/web/components/live-back-to-back-search.test.tsx",
+      "sha256": "19f5b9d062e234aa7b96536b09dad52a17975025072fa0d8f04a42974bd6cde5"
+    },
+    {
+      "path": "apps/web/components/live-back-to-back-search.tsx",
+      "sha256": "3581d0aae648a7d11cffcf4c3611fe43293417996248ebf319bd1379cf32727b"
+    },
+    {
+      "path": "apps/web/components/merchant-external-links.test.tsx",
+      "sha256": "616920beee0cbaa425c5cc83f89d8dd50a5bc46273abbd7851a6810706ec5a21"
+    },
+    {
+      "path": "apps/web/components/merchant-external-links.tsx",
+      "sha256": "4b055d2dd59ad968820d391d3dd8799e0a9fc7496e7af8e64245e1a479f64cfe"
+    },
+    {
+      "path": "apps/web/components/mobile-nav.test.tsx",
+      "sha256": "c571bb2e1c4fa0a889949ddf290a73bd0845ad90144f6c0454e263d461420f35"
+    },
+    {
+      "path": "apps/web/components/mobile-nav.tsx",
+      "sha256": "459da115b2e0bee729fa67ae9858103ee759a6f253c2152441b403d2384c297b"
+    },
+    {
+      "path": "apps/web/components/mokaair-logo.test.tsx",
+      "sha256": "7e8a41f9f6e44d19e3b96b8ad95288b5cbce3b4e50c9959600b3a8c712bcc039"
+    },
+    {
+      "path": "apps/web/components/mokaair-logo.tsx",
+      "sha256": "5c3bbc2793b38b022c70050cbb3718b8901d35725a876101b4da09bc8db52e21"
+    },
+    {
+      "path": "apps/web/components/new-trip-auth-gate.test.tsx",
+      "sha256": "dee40dd46044562a08914c90b6cc751dcd1191a0689475cd916809a7821c91f2"
+    },
+    {
+      "path": "apps/web/components/new-trip-auth-gate.tsx",
+      "sha256": "147494ad555fe979572684e718a648960b3a833f8cde1a828e7513da1769d45c"
+    },
+    {
+      "path": "apps/web/components/new-trip-form.test.tsx",
+      "sha256": "47d151d40d9482f05ca9618eddba69e821c9749dd629a3609d13a12afaf837c7"
+    },
+    {
+      "path": "apps/web/components/new-trip-form.tsx",
+      "sha256": "4ce432a48487c61bc9a10eb181e61f531d0269b4ed3d780841c2eab24f12d53a"
+    },
+    {
+      "path": "apps/web/components/offer-cards-i18n.test.tsx",
+      "sha256": "c00bb42fe5a3cf3eb588010fba920f9d0100e502afb7cb9343c5cdbfbce7a52f"
+    },
+    {
+      "path": "apps/web/components/offline-trip-cache.test.tsx",
+      "sha256": "83578d6be14692705c8d566f2d264acadb543cec43fe93009b9c1c43e69779ae"
+    },
+    {
+      "path": "apps/web/components/offline-trip-cache.tsx",
+      "sha256": "1dbd3176a0ec32b618da3e57b7251f6b814fef45bc3e95e301a611dc86c0a2b4"
+    },
+    {
+      "path": "apps/web/components/palette-switcher.test.tsx",
+      "sha256": "13fbfbf5896fc47f506ccccc83b3711ca2884fa9328e25c8260ca77d2de9da79"
+    },
+    {
+      "path": "apps/web/components/palette-switcher.tsx",
+      "sha256": "b5f216d48d2503deec1dd222fc67840fb5d129c9256cb66a0e7346855f1743bb"
+    },
+    {
+      "path": "apps/web/components/place-picker.test.tsx",
+      "sha256": "f8ee7f520450859c22771a54f72a5a5eb7d14cfa6a7c77952099b1b092228d96"
+    },
+    {
+      "path": "apps/web/components/place-picker.tsx",
+      "sha256": "62ea3ca1f72c7a658af7473484a02130e9f41f78417eb0ba8337699e2aaf84cb"
+    },
+    {
+      "path": "apps/web/components/planner-overlay.test.tsx",
+      "sha256": "a8f2678767c6d0a88790a2e29d8634bef32b10e48f579ee905c5e5f243d375f3"
+    },
+    {
+      "path": "apps/web/components/planner-overlay.tsx",
+      "sha256": "0f9bf0f3be4924de99258a2344c26b8d62b04bbd7c35c9d36b0f0394f97b73f5"
+    },
+    {
+      "path": "apps/web/components/planner/calm-copy.ts",
+      "sha256": "35ab8758eddbcfd62d04fd4546e2eed16c81c5a5cba6679f4e72500e73113e83"
+    },
+    {
+      "path": "apps/web/components/planner/calm-edit-copy.ts",
+      "sha256": "8d6e5dbc1192221e2219a46d0aea7ece347dc637152c528187d0c21f4b80d1ae"
+    },
+    {
+      "path": "apps/web/components/planner/day-timeline-copy.ts",
+      "sha256": "aa1f52fa2826b83a25c5c18d1d14cfd861ad320489fb5a6c4a09b9d6edf03d49"
+    },
+    {
+      "path": "apps/web/components/planner/departure-time-field.tsx",
+      "sha256": "debcf4297cc50f150684cca0e8d20a8a50fcefdcc63796454c845be16701189c"
+    },
+    {
+      "path": "apps/web/components/planner/draft-note-field.test.tsx",
+      "sha256": "631583fa22fc7458eba15b719ae75b484f80cf205ce1eb88ec16628de6e0e715"
+    },
+    {
+      "path": "apps/web/components/planner/draft-note-field.tsx",
+      "sha256": "fe03abe5d492bdb6fdd6ac547d7927932ee2fb3e2e9109d83d862d9b51f70a3a"
+    },
+    {
+      "path": "apps/web/components/planner/new-trip-copy.ts",
+      "sha256": "3bcff0ebb717a812ae2aece2270c11d94905ca1814f88c7e415a7d9186da1804"
+    },
+    {
+      "path": "apps/web/components/planner/new-trip-fields.tsx",
+      "sha256": "e908af0c9f1e19b053531dfc9e01da6d7a5023fd9c18a3edc5933c7193e6c29a"
+    },
+    {
+      "path": "apps/web/components/planner/optional-stop.test.tsx",
+      "sha256": "d12d11a1ef73088e949d481cb5fa1ac1cc39164adfc22551a03b30d4de1c1d16"
+    },
+    {
+      "path": "apps/web/components/planner/optional-stop.tsx",
+      "sha256": "695ceee6e3883a6a91273a66217ee0b3995a9f696287b5c3810244163553224b"
+    },
+    {
+      "path": "apps/web/components/planner/overlay-copy.ts",
+      "sha256": "72ea662da4503ee66b26fb7b64cffc333d2f7186e0f60b9b28a6fd52d645f2d0"
+    },
+    {
+      "path": "apps/web/components/planner/preferences.test.tsx",
+      "sha256": "ec6e4fa9fd113e96a0a4e850efaff3de3c1a1f093f27f1c9ee1a2bf72ba594d1"
+    },
+    {
+      "path": "apps/web/components/planner/preferences.tsx",
+      "sha256": "f66acd9f9cc23c55cdbd6960ee585ef1d01fadaf764a205bbb0de53f4fece1dc"
+    },
+    {
+      "path": "apps/web/components/planner/route-panel.module.css",
+      "sha256": "3ef929437e76ee0f669307f804a248e08b87788cbd8ba315481b271bb7f3f0de"
+    },
+    {
+      "path": "apps/web/components/planner/stop-actions.test.tsx",
+      "sha256": "96a2f8dc8d0b473a166f1636695f2fa038cd94518135d25b8710c3d05bbe4ee8"
+    },
+    {
+      "path": "apps/web/components/planner/stop-actions.tsx",
+      "sha256": "47b13d3b2ff9bda343f6f39bd0a15b78be995312d4cb4776e7e9740c070402c5"
+    },
+    {
+      "path": "apps/web/components/planner/stop-tone.module.css",
+      "sha256": "5e39423769cb0d1dcbad1b2759cb90db92cf29e4837ad2b0080734df6841c7cb"
+    },
+    {
+      "path": "apps/web/components/planner/stop-tone.ts",
+      "sha256": "410b909400c82bd95421d38fff6ccbeb8e6879a2488973877d1032eb1a5c7dfe"
+    },
+    {
+      "path": "apps/web/components/planner/tool-sections.test.tsx",
+      "sha256": "95bb902d90b58824f13e836d8c16fdb8fe80418cd01da718cab35e26825a7ffe"
+    },
+    {
+      "path": "apps/web/components/planner/tool-sections.tsx",
+      "sha256": "b83ddd570d9e87ab841fc71b51c77201846d5c7f6adf8ac6cf30980211a39338"
+    },
+    {
+      "path": "apps/web/components/price-alert-button.test.tsx",
+      "sha256": "287b70986b7a02b47b9661b7277240b81cc2fcecb3f16a46a98ceb4c94f032ae"
+    },
+    {
+      "path": "apps/web/components/price-alert-button.tsx",
+      "sha256": "a57b2dcc40d8426e8e119fd08ad6b060b023efe3f4c31abe2546e7538ee1050f"
+    },
+    {
+      "path": "apps/web/components/public-feature-gate.test.tsx",
+      "sha256": "688dc00e04f060621434f50eeb4323562b73aa67483c17f26f251a6c93259889"
+    },
+    {
+      "path": "apps/web/components/public-feature-gate.tsx",
+      "sha256": "50d6813da4113036a13584611a914edf386bef74cd6e2a023b62ee5a18ae0ba2"
+    },
+    {
+      "path": "apps/web/components/route-map.test.tsx",
+      "sha256": "ba9392359743560eaa7888399d53e1bdbd4ca674c86539964bf9c5984d70490f"
+    },
+    {
+      "path": "apps/web/components/route-map.tsx",
+      "sha256": "f70b7d3440219af0b4b62ceca931a7523ef0c39e831eee0408de9aae81f2bda6"
+    },
+    {
+      "path": "apps/web/components/route-mode-panel.test.tsx",
+      "sha256": "9eafaa519a05d2c5cf7a57be8feabf73625772e05f41ea668556f751dc301016"
+    },
+    {
+      "path": "apps/web/components/route-mode-panel.tsx",
+      "sha256": "3bba048150195480ce52284ee1df48d01171db96625f4c78d510ee25857ec551"
+    },
+    {
+      "path": "apps/web/components/route-segment-card.test.tsx",
+      "sha256": "2ad8bb0aea78f7231510277f19da255284f4bbf0f3f71df1d4e7c1a9ab445a7c"
+    },
+    {
+      "path": "apps/web/components/route-segment-card.tsx",
+      "sha256": "608f531372a86f46c53ed4a812c5c86bd3b2a64d3272b6bae5e1dcf697aaba48"
+    },
+    {
+      "path": "apps/web/components/route-timeline-link.test.tsx",
+      "sha256": "6f99ae809c8ce160457a4bdc6f360e5d83909c71126a83db4d7e2729cb366267"
+    },
+    {
+      "path": "apps/web/components/route-timeline-link.tsx",
+      "sha256": "4cfdc697dd0d0d925d54edd06628aa64e244fda195534a4f0987f5f45b41e4ef"
+    },
+    {
+      "path": "apps/web/components/saved-items-provider.test.tsx",
+      "sha256": "83f05350c3624f7231c61ffdebbe5d526b50904dcd4bd1e25c60865bb6e67193"
+    },
+    {
+      "path": "apps/web/components/saved-items-provider.tsx",
+      "sha256": "7c60f04cddcdba1ba714b7ccb44f953058669b9f218000ad651f1eeada14c928"
+    },
+    {
+      "path": "apps/web/components/search-criteria-editor.test.tsx",
+      "sha256": "43ab80942a034cb24b313d8d39cf2e8271a5592abe9a04268a2f03eb4a220c93"
+    },
+    {
+      "path": "apps/web/components/search-criteria-editor.tsx",
+      "sha256": "95198388e538087fef9313f40e41d3b27135571f70817eba37bc303baa88560c"
+    },
+    {
+      "path": "apps/web/components/search-experience.test.tsx",
+      "sha256": "bd413c9be6cae77d8fe8c82f061e895635d050210cf11af7f681931f60ea105f"
+    },
+    {
+      "path": "apps/web/components/search-experience.tsx",
+      "sha256": "6c5824a27aec80f5d5e7bb477bbdd23faad710ff02173c13f02e96f91c9f1976"
+    },
+    {
+      "path": "apps/web/components/search-workbench.test.tsx",
+      "sha256": "07b74d4671462acd02c64b34c1620144084f2dadb22623a6fa9c1e70570be278"
+    },
+    {
+      "path": "apps/web/components/search-workbench.tsx",
+      "sha256": "c5f078b2c2682db3b72081b43d4f715f778f885c64639ef70a96b9f0a405a8e6"
+    },
+    {
+      "path": "apps/web/components/session-providers.test.tsx",
+      "sha256": "64025be82e95878fd746101a6c7152b15be829167a2ee95fe18b800ee5811c44"
+    },
+    {
+      "path": "apps/web/components/share-target-view.test.tsx",
+      "sha256": "e07e5b42355eb756f0675e12b13d483f0ea66f2d99b0bad295d35dd7d6dab850"
+    },
+    {
+      "path": "apps/web/components/share-target-view.tsx",
+      "sha256": "fafd7c41ae20d766963e3893d3a856b92099a1da462886def36c8a07852fa203"
+    },
+    {
+      "path": "apps/web/components/shared-trip-view.test.tsx",
+      "sha256": "80760c80128e44ecdbd22c37f3c5b9e0cf3e4681d81c9e5aebb19b03b98778ab"
+    },
+    {
+      "path": "apps/web/components/shared-trip-view.tsx",
+      "sha256": "683214ff4b147eafaaa3681eee6b6663a7088b0c7cd490503a62081ff7bfa18b"
+    },
+    {
+      "path": "apps/web/components/site-footer.test.tsx",
+      "sha256": "8e78cca07deab6656855713493d3ee43103e6c1df70bfbf6232448268b90de5d"
+    },
+    {
+      "path": "apps/web/components/site-footer.tsx",
+      "sha256": "4e1917459df2e0ec8d32b954ef2cdcb5894be329111b022fdf09cce8c42fe24d"
+    },
+    {
+      "path": "apps/web/components/site-header.test.tsx",
+      "sha256": "d1d85fb2d0f930b38d3973f567ae92caf8294e9ba279ccc43c5e017eeb754c50"
+    },
+    {
+      "path": "apps/web/components/site-header.tsx",
+      "sha256": "8dca76cb3934a702ee65c941e83ec13054c562da6a300d4a4656f856a5ef098c"
+    },
+    {
+      "path": "apps/web/components/site-information-page.test.tsx",
+      "sha256": "5295b9b02ca79f9de12a63f8c5368ed94051de2eb9d216a00b3772f6121bcb02"
+    },
+    {
+      "path": "apps/web/components/site-information-page.tsx",
+      "sha256": "6087a900c637fd6605b872bc5b529a2c631896263ccebc934eda9a60a91152df"
+    },
+    {
+      "path": "apps/web/components/site-navigation.test.tsx",
+      "sha256": "5bf0f7b07655684fbd0dd3c32db15ad6ba11fc6bce6d2f59117f10bdf70c9c2e"
+    },
+    {
+      "path": "apps/web/components/site-navigation.tsx",
+      "sha256": "7abde38fcd0bd4d2f1ddb18d15199c03c59ffa62bd53c01ce0880b9f1476a44d"
+    },
+    {
+      "path": "apps/web/components/site-page-content.test.tsx",
+      "sha256": "514c9c17a23cdf62fdf1e0af07f24b2daf6e6ac41a4e264f31ab2bd3ca9dd725"
+    },
+    {
+      "path": "apps/web/components/site-page-content.tsx",
+      "sha256": "f5bd7071568dd89c19f7d436ee4eabf31844b29268e1a767eb8ecdba9bdabe11"
+    },
+    {
+      "path": "apps/web/components/site-visibility-provider.tsx",
+      "sha256": "ac4a0bc312d72b118cfc45976376d536c19ef2f3874a1e596e562e4d57aabbc9"
+    },
+    {
+      "path": "apps/web/components/social-login-buttons.test.tsx",
+      "sha256": "ed01aa06127255c5369d920b9309399e9fc677ee3148fae059bfc51fef780974"
+    },
+    {
+      "path": "apps/web/components/social-login-buttons.tsx",
+      "sha256": "a0f0ff45cd421aa0740bb70c211b29db09bad7307283cb169cc2cad99c6a2d9a"
+    },
+    {
+      "path": "apps/web/components/stay-area-flow.test.tsx",
+      "sha256": "00950a7451259a18f5d997c990654b6ef23b0cd57fbe3fb998abbd1f0fa632c4"
+    },
+    {
+      "path": "apps/web/components/stay-area-flow.tsx",
+      "sha256": "21743bf34fd9156505066a71fcfa28ade2efdb3407c391e536587c932134cc03"
+    },
+    {
+      "path": "apps/web/components/stay22-map-panel.test.tsx",
+      "sha256": "1b886a3285de017d194e761cba2bc415258000475807c07f4be37cd49acfe403"
+    },
+    {
+      "path": "apps/web/components/stay22-map-panel.tsx",
+      "sha256": "5742de18d51988f5a9504dcb6ed7c5ad8936a0ad94a2408997b344e6a5167266"
+    },
+    {
+      "path": "apps/web/components/stay22-script.test.tsx",
+      "sha256": "4fb6830f3b9906cc060ffa03238b1d3ea1db4abfe797766dc29eec318213022d"
+    },
+    {
+      "path": "apps/web/components/stay22-script.tsx",
+      "sha256": "a57abb9a14e63f1601a2dd76fa7271744fba8a787ec62456ad162b6e4719ed18"
+    },
+    {
+      "path": "apps/web/components/structured-data.test.tsx",
+      "sha256": "dc1fb07ec47048df548f23e864000cb85441fc60f27adf8707dccc96b5c43f2c"
+    },
+    {
+      "path": "apps/web/components/structured-data.tsx",
+      "sha256": "cb749929d06eb1e1a7ed385b75839c953b76b4256cde29c5212882eb140c3ae2"
+    },
+    {
+      "path": "apps/web/components/system-itinerary-card.test.tsx",
+      "sha256": "0452da0a1ca6bfd17677866c72b2eef2fa351e0691e5a86e4e244cd52901f7ad"
+    },
+    {
+      "path": "apps/web/components/system-itinerary-card.tsx",
+      "sha256": "16e93e04f9ed94c9d11a7a5296b7b201ec7e1eabe7b05587f4b82b57d2dd7528"
+    },
+    {
+      "path": "apps/web/components/text-size-switcher.test.tsx",
+      "sha256": "32ec5f24421da3764e114853d691afa137bfb604224296ebc8e2d4bff6c69ee5"
+    },
+    {
+      "path": "apps/web/components/text-size-switcher.tsx",
+      "sha256": "cb9255126a209ae7eb28a602beec6d116a632433ff4c4d8722c76cd88276232c"
+    },
+    {
+      "path": "apps/web/components/theme-provider.tsx",
+      "sha256": "ebe258afb1df695493f4348daad434b7275ac3a74d0573d7060848fbfddb817b"
+    },
+    {
+      "path": "apps/web/components/theme-switcher.test.tsx",
+      "sha256": "b2ac2c83b97f4dc67c8b71ee90addb02ca8ad0ea0b73d79a119893e7c07e4da3"
+    },
+    {
+      "path": "apps/web/components/theme-switcher.tsx",
+      "sha256": "81a7811f19cec5ffd17490bf93fb7185b5856de509ed6074c03184ca2b0f7de0"
+    },
+    {
+      "path": "apps/web/components/today-view.test.tsx",
+      "sha256": "60ec823ce4c9633fce4a652a6caa67cb69531f8c9764a4511265a98c78b35bc5"
+    },
+    {
+      "path": "apps/web/components/today-view.tsx",
+      "sha256": "fe11c71761de16bfc626c6602946459605a7e05f34f8af79f1b2ccfb3b4d97d1"
+    },
+    {
+      "path": "apps/web/components/travel-card-actions.test.tsx",
+      "sha256": "a623b71dc1d028d0be7b0ca83752b36dc4535855b53cac0a83d4a7bf757ed05f"
+    },
+    {
+      "path": "apps/web/components/travel-card-actions.tsx",
+      "sha256": "ac56cc21fb649abe5bf1f8e3381cb8a153d5788555f85bc4c609b031b3bafa9d"
+    },
+    {
+      "path": "apps/web/components/travel-services/admin.test.tsx",
+      "sha256": "259e3b5b1c9e9e6222cfac3e77311742823bbe6b016b8b2ebff56f1c6ced917d"
+    },
+    {
+      "path": "apps/web/components/travel-services/admin.tsx",
+      "sha256": "49cd9abc4b6a0b848b3bada7e4589d46fcee5442f0e668725aade0dee5110e18"
+    },
+    {
+      "path": "apps/web/components/travel-services/booking-panel.test.tsx",
+      "sha256": "bf530ae8575de6e4b2fe3062d4a3c028dfa543216425dd80aad078907f3dc3b0"
+    },
+    {
+      "path": "apps/web/components/travel-services/booking-panel.tsx",
+      "sha256": "24f55c6256618e9009f2a06ddf62c8f9a75a4de502b1fc3c1b0a97ca50167091"
+    },
+    {
+      "path": "apps/web/components/travel-services/catalog.test.tsx",
+      "sha256": "079a2d134288075ec774e0ff0c2c54f1671ac22eb6fa045d59b8f18ea6e605e0"
+    },
+    {
+      "path": "apps/web/components/travel-services/catalog.tsx",
+      "sha256": "28fd578d7488f46c7c89114d089f539e5d6435b2cdb8dfd7f2cebeb93a2b90b0"
+    },
+    {
+      "path": "apps/web/components/travel-services/destination-services-page.tsx",
+      "sha256": "cc2fec04f8e9e7e86f2a557d7245970476aba8f239573a5835b6cd9c3fd2f1ba"
+    },
+    {
+      "path": "apps/web/components/travel-services/hotel-admin.test.tsx",
+      "sha256": "1ad88e71f96230eb7c221399b1bb165910f6ee06d82d1f75bb62ced956061e8c"
+    },
+    {
+      "path": "apps/web/components/travel-services/hotel-booking-page.test.tsx",
+      "sha256": "1294e5574d0e80d449b50f1085c3bdf3bd13438b84843740ee02a6f02a099861"
+    },
+    {
+      "path": "apps/web/components/travel-services/hotel-booking-page.tsx",
+      "sha256": "0bea07ce84a725e8eb031e5c56c56ebcadcf9f3c9e57becd5bb43af5d38e9c36"
+    },
+    {
+      "path": "apps/web/components/travel-services/hotel-operation-fields.test.tsx",
+      "sha256": "2fe7fc0f21e42d6be099aa477984d71f67ce595d74deac182f12509c839a88ed"
+    },
+    {
+      "path": "apps/web/components/travel-services/hotel-operation-fields.tsx",
+      "sha256": "81832f91722c1372ddd1bab7bdaf3dc8220605271b2e6dbac6e041ef0e807f14"
+    },
+    {
+      "path": "apps/web/components/travel-services/hotel-options-admin.tsx",
+      "sha256": "444ba0c8c4b50dd6cdbb844d15df01fe73ce66f6a84cebc2920ea68d18cd9163"
+    },
+    {
+      "path": "apps/web/components/travel-services/hotel-quotes.test.tsx",
+      "sha256": "771a324c6f7d3b6685eede1a1a36aa11391b8caf2792a1a57875e172a3d928de"
+    },
+    {
+      "path": "apps/web/components/travel-services/hotel-quotes.tsx",
+      "sha256": "8e439c1befee8ff95dde19c292afbdc97f38c094749641dde982848105d43487"
+    },
+    {
+      "path": "apps/web/components/travel-services/options.ts",
+      "sha256": "16d3d1725fb8088561210882fc49c3035906c120ece11a3f443417cb8a83e380"
+    },
+    {
+      "path": "apps/web/components/travel-services/quote-policies.tsx",
+      "sha256": "e31a59c860bdd049b52fd52d151fc582be9bb05708849e2adef0a45cfb46b896"
+    },
+    {
+      "path": "apps/web/components/travel-services/stay22-admin.test.tsx",
+      "sha256": "a69f0614651fc8a9f5b98c80388b7803c2686d2ef33ab8e27388c43d6d62b6a9"
+    },
+    {
+      "path": "apps/web/components/travel-services/stay22-admin.tsx",
+      "sha256": "a8fa1992d391b8f1a246bc32d0c66ebffd63075337e6b55f9431029bb64568d3"
+    },
+    {
+      "path": "apps/web/components/travel-services/stay22-public-hotels.test.tsx",
+      "sha256": "10730c67919ca94d0e38a6181f99ba85638ee29b88f30e980826796e4151d063"
+    },
+    {
+      "path": "apps/web/components/travel-services/stay22-public-hotels.tsx",
+      "sha256": "2fddb2d3b652bd0431a03eb432b37f3696581ff65ae9d1800656cdb9c84a2ebe"
+    },
+    {
+      "path": "apps/web/components/travelpayouts-drive.test.tsx",
+      "sha256": "c5dc2233ab323fb8280e6808204e423b27157dd2d58c4805069e89502c1c2a6e"
+    },
+    {
+      "path": "apps/web/components/travelpayouts-drive.tsx",
+      "sha256": "e3adbd67e185437412130cbfa079a1e0b6326e88f768674a5bf0956c547e80d1"
+    },
+    {
+      "path": "apps/web/components/trip-cost-panel.test.tsx",
+      "sha256": "ad01da0feff274cdb161a45b58507d08ce44ee48c8d155587559c818db5f7444"
+    },
+    {
+      "path": "apps/web/components/trip-cost-panel.tsx",
+      "sha256": "57224fc39e94bc8d8b427ff479d388b52cadfe00820592d0a783c5ec194e630f"
+    },
+    {
+      "path": "apps/web/components/trip-day-partner-offers.test.tsx",
+      "sha256": "e9adf8895d1f329f11999a6f2679a72bc73efb4a66556da69d65bc546a7877ba"
+    },
+    {
+      "path": "apps/web/components/trip-day-partner-offers.tsx",
+      "sha256": "b1c52ddcb083b0c9af202fb9a469a5b295569dd88185a7705a978034301bb7be"
+    },
+    {
+      "path": "apps/web/components/trip-editor.test.tsx",
+      "sha256": "41713dbba0600d6fec6197f222c41cab1ff7af640613e42d6625b945f57f5c35"
+    },
+    {
+      "path": "apps/web/components/trip-editor.tsx",
+      "sha256": "803659f59bdb16387c687be18a8d999b47ddebdb02232094a9cdf9eeb3683e0d"
+    },
+    {
+      "path": "apps/web/components/trip-inbox-panel.test.tsx",
+      "sha256": "d72e664e7079ae6d96d104ea500ccd0d4dca2a0bb6f626ce96a5fc5456a8a36b"
+    },
+    {
+      "path": "apps/web/components/trip-inbox-panel.tsx",
+      "sha256": "2f2b2b246a1a80710c5cc6c48fe76e51d46cbd9a20a04d25138bfd44f4919153"
+    },
+    {
+      "path": "apps/web/components/trip-map-identity-editor.test.tsx",
+      "sha256": "590d656bcd9ee287e549b63b2685639ff0a587806bd9da2f2cc375055ff6dda7"
+    },
+    {
+      "path": "apps/web/components/trip-map-identity-editor.tsx",
+      "sha256": "bb0111b7db2fc4dae33559f1962682cdf9607a2d41535e089fc51889f72dd202"
+    },
+    {
+      "path": "apps/web/components/trip-meta-editor.test.tsx",
+      "sha256": "d55395b45bdee7030b88b7c462b8ce20920479746302ca128c640d3ebb49b266"
+    },
+    {
+      "path": "apps/web/components/trip-meta-editor.tsx",
+      "sha256": "6b65a086c0bf1f633cf2eca780a7039c631e07bce640efb85a2f1b25dc8b4960"
+    },
+    {
+      "path": "apps/web/components/trip-note-field.test.tsx",
+      "sha256": "da8b911c5c6c9a9d8fc33ea9b1dc8badbefea9cd30c7871a5c1eacb52cdb614f"
+    },
+    {
+      "path": "apps/web/components/trip-note-field.tsx",
+      "sha256": "f9aed71f70abbac3399e4938fd95fd9b3fcb32cba2f84cf211bfa0981b723888"
+    },
+    {
+      "path": "apps/web/components/trip-price-watch.test.tsx",
+      "sha256": "e54be6d4f4591010cff739e6268d0d2f14c9072606f92936bd8eda68d803cd1d"
+    },
+    {
+      "path": "apps/web/components/trip-price-watch.tsx",
+      "sha256": "618d1e632592b238b0069a5c0140a512ac0db2355a525c5bb3c1a8e9191a8135"
+    },
+    {
+      "path": "apps/web/components/trip-print-view.test.tsx",
+      "sha256": "bf6fd7d258e366ed43ef19738a6ac8f0f95fba49ba014e57716adaf98c42a496"
+    },
+    {
+      "path": "apps/web/components/trip-print-view.tsx",
+      "sha256": "cbf95d26040b4aff057e93275e88da8a3b60ffcd87bd8e4cf104e863391d8a8a"
+    },
+    {
+      "path": "apps/web/components/trip-weather-panel.test.tsx",
+      "sha256": "b38b23c140b34876c1ea66cb54dd3978c560806bea030d98564c0b6ee3dbd383"
+    },
+    {
+      "path": "apps/web/components/trip-weather-panel.tsx",
+      "sha256": "05e985cdd933553ecefb0f2c93b808805600fa0ef7ec18406e9cbe4038c9ac96"
+    },
+    {
+      "path": "apps/web/components/usage-catalog-provider.test.tsx",
+      "sha256": "2f0e563069669ac95a777bd1a85dbcdeef231c6fd42a4c8f4fea11b833724aa2"
+    },
+    {
+      "path": "apps/web/components/usage-catalog-provider.tsx",
+      "sha256": "6dd674ea6b1427ace7630a35db63b514ec31d84b837632784b1c6198423f2eb6"
+    },
+    {
+      "path": "apps/web/components/usage-insufficient-notice.test.tsx",
+      "sha256": "fd53cc19063f1f5ec309b104f1414c466c2c2bbc9ab5e229e5feab88d6029bdf"
+    },
+    {
+      "path": "apps/web/components/usage-insufficient-notice.tsx",
+      "sha256": "c7035ef07c7193c8a81c54bdef2466d583c0fa7e3779a07296d761d33b9c7fd3"
+    },
+    {
+      "path": "apps/web/e2e/admin-analytics.spec.ts",
+      "sha256": "2fbf321a397cf4420e18bb1b43ddf6cb10da7f8dec90f6e97678e7f2d4f18bc6"
+    },
+    {
+      "path": "apps/web/e2e/admin-domains-full-stack.spec.ts",
+      "sha256": "b2aac5ad6f112b7e13968b215f663bc43951defe9077ff54ae17ad970827998d"
+    },
+    {
+      "path": "apps/web/e2e/admin-domains.spec.ts",
+      "sha256": "29edb2a8881bba0c6372d05331074c2980cbf308bf2d49f1a0e0dd985a71aa64"
+    },
+    {
+      "path": "apps/web/e2e/admin-hotspot-ai-search.spec.ts",
+      "sha256": "b8db356562fca4abd61a4742459f058bdb4dfc9059b29481e71ffa3cc8d73716"
+    },
+    {
+      "path": "apps/web/e2e/admin-operations-full-stack.spec.ts",
+      "sha256": "f82c40e63e00a6706d9a5f5107b9d9ccc34d05c3def1334ba498d2300e5110bb"
+    },
+    {
+      "path": "apps/web/e2e/admin-operations.spec.ts",
+      "sha256": "b4d44b0122b1743208b74a6b49cb38a2f34d3499846112a9ef5444945729591a"
+    },
+    {
+      "path": "apps/web/e2e/claude-code-series.spec.ts",
+      "sha256": "25c243023101f8fb69515a5b30f296013183751314ffe09c4c6bf7e63202c120"
+    },
+    {
+      "path": "apps/web/e2e/community.spec.ts",
+      "sha256": "b671c068a7008000865be256cc805a9579067074669808bdc0a74907072c8e5b"
+    },
+    {
+      "path": "apps/web/e2e/csp.spec.ts",
+      "sha256": "d2e2abc241545c511c8450a0e0eac0b110f3c43779282d597a6a2a1656abd5b3"
+    },
+    {
+      "path": "apps/web/e2e/deployments.spec.ts",
+      "sha256": "45acb865330f5de2a4b870fce4b18ef6054710191688def10da3abd7b5130825"
+    },
+    {
+      "path": "apps/web/e2e/discovery-card-details.spec.ts",
+      "sha256": "59b9996358990c5ba75ab9f6acfcd864747084ababf4d029c539c5e912867c10"
+    },
+    {
+      "path": "apps/web/e2e/discovery-full-stack.spec.ts",
+      "sha256": "b0cf51f1d448fa987b92caf0ab05f167323ed8afa273fcf168b15c19375171d5"
+    },
+    {
+      "path": "apps/web/e2e/discovery.spec.ts",
+      "sha256": "25015b3281196893e3c86a9dd0fdce88312557a54bf3a32b9657ca1a877b68c0"
+    },
+    {
+      "path": "apps/web/e2e/fixtures/claude-code-series.ts",
+      "sha256": "ee7fd446079116c366ba7ccab661a9c304667ccd5a0b8c6637ab0cddfdccf53e"
+    },
+    {
+      "path": "apps/web/e2e/fixtures/itinerary-editor.ts",
+      "sha256": "0ac9a7f26d2d460363730939c9a9cea3e0bd7f171065beaf985c15e449bb66ff"
+    },
+    {
+      "path": "apps/web/e2e/flight-status.spec.ts",
+      "sha256": "2bb692b0a2b9bd4f8b68a9b4d23b7de7529ba07544e2eddd2bd5899b73111f49"
+    },
+    {
+      "path": "apps/web/e2e/food-map-reservations.spec.ts",
+      "sha256": "302ff64ec4b65e2a6b2935eff03b1e1520ba064c377b21a8b9a5d79d0f0e7aee"
+    },
+    {
+      "path": "apps/web/e2e/food-reservation-platforms.spec.ts",
+      "sha256": "7a88acef516fc51f30e22bb84ca0d648d366dcdeedbbd0e1c49cecd59fd95aeb"
+    },
+    {
+      "path": "apps/web/e2e/frontend-flow-full-stack.spec.ts",
+      "sha256": "a9a71f69db1c9b2f0df1e0128c91845a1d8b07911e864c7e5e2f5e3a8279f3a8"
+    },
+    {
+      "path": "apps/web/e2e/frontend-flow.spec.ts",
+      "sha256": "5bc040ffca075b0f26508fb5126d12e0c09ec31236f2255f19de4744c732a261"
+    },
+    {
+      "path": "apps/web/e2e/full-stack.spec.ts",
+      "sha256": "18cfe8196665857adfc990d92d8b82d19a4dca750ba49f18e4aeada475aece9b"
+    },
+    {
+      "path": "apps/web/e2e/gemini-series.spec.ts",
+      "sha256": "91fdb47c460e979d53d9497fd130ce88d10da76072055a024c27db72a1151eda"
+    },
+    {
+      "path": "apps/web/e2e/guides-adsense.spec.ts",
+      "sha256": "681225c8d728eee576a9e1b0a939c1d40ad328027766bad382e5d0c5d3367f26"
+    },
+    {
+      "path": "apps/web/e2e/hotspot-guides.spec.ts",
+      "sha256": "1f6cc8dc53fbafeb125d44d0803edd2000d6f66781a786cfbb9d2f1f3c226097"
+    },
+    {
+      "path": "apps/web/e2e/hotspot-review-editor.spec.ts",
+      "sha256": "ada9e447601055bae573f0c17dd1da93b8f76dcda85d70c9f29a74f3f17aeb14"
+    },
+    {
+      "path": "apps/web/e2e/korea-dual-maps.spec.ts",
+      "sha256": "b21279cf0020f7a52d5bcefff8f9fdc5ba6aa83ba6b53b603bbae9ea6c9e8bb1"
+    },
+    {
+      "path": "apps/web/e2e/merchant-styles.spec.ts",
+      "sha256": "d295cc159c1ad31fb97317fdf804e89b80d0e78c6ecd9eece376c21345e6d562"
+    },
+    {
+      "path": "apps/web/e2e/navigation.spec.ts",
+      "sha256": "2f02b0b591c508b482b20561ccbc4c8a83e57ae0ba040a0b6562886b0ac09bd7"
+    },
+    {
+      "path": "apps/web/e2e/planner-calm.spec.ts",
+      "sha256": "cffb8564882b6cec9e9e7f342235965e57abc7cc4b1ade167a6787746a5abe0b"
+    },
+    {
+      "path": "apps/web/e2e/planner-premium.spec.ts",
+      "sha256": "33bd93b306c72fdc6f2affb98db7a95224dcda702643f6dfac65550cc5e745ae"
+    },
+    {
+      "path": "apps/web/e2e/planner-route-tones.spec.ts",
+      "sha256": "d1dc2ffc8e3eaf0dce57f85700e551e0b848973442f75dd02ef53e6a6718b951"
+    },
+    {
+      "path": "apps/web/e2e/readability.spec.ts",
+      "sha256": "6767e40804ba58d4896cd54ea76e44e8444b742d7c2a3eac164606663c3b475f"
+    },
+    {
+      "path": "apps/web/e2e/seo.spec.ts",
+      "sha256": "cb3b274753018fc816a5fdec34f567eb90863207d2b159fe1ab42ae8187b73ab"
+    },
+    {
+      "path": "apps/web/e2e/session.ts",
+      "sha256": "5805aaa0b982da7e765e4725ec19d39aa6d8c87692f9140c16cf4b5445da4fa2"
+    },
+    {
+      "path": "apps/web/e2e/signed-out.spec.ts",
+      "sha256": "a952ffde268039b8bb3c1a0d23fb9693b542297e80b8c62874661d7430aba631"
+    },
+    {
+      "path": "apps/web/e2e/site-experience.spec.ts",
+      "sha256": "7b3fbd452d2f25888fd0d15c914de111b2d74cd1efa822ad04e7974fcd566572"
+    },
+    {
+      "path": "apps/web/e2e/site-pages.spec.ts",
+      "sha256": "3c74b61b0a278ec2a7506a2d9ebb4019a39bf525b99ea0e1487e6f0cbcac48e7"
+    },
+    {
+      "path": "apps/web/e2e/stay22-allez.spec.ts",
+      "sha256": "4d8255e1d2a6d0604eb4bae5b2eec7891b40b240b7749df4c1587858816750e5"
+    },
+    {
+      "path": "apps/web/e2e/stay22-maps.spec.ts",
+      "sha256": "bd38dddb6b62afd754c22c57f77b172e35a87f483bef5b413530d2d28384135a"
+    },
+    {
+      "path": "apps/web/e2e/stay22-script.spec.ts",
+      "sha256": "6c145deed3d8f4adbe372842dd3cc1974e24a4e49ea40530f06a71f512138a1b"
+    },
+    {
+      "path": "apps/web/e2e/travel-services.spec.ts",
+      "sha256": "a6d24d5379109463f82677b2fe936bb8860a0320883c2f90d4e11b4c9df3531a"
+    },
+    {
+      "path": "apps/web/e2e/trip-stay-areas.spec.ts",
+      "sha256": "a33bf06e7a173e7a28bbf0939c7ad24efe27c382de83537bffe071267efbbb65"
+    },
+    {
+      "path": "apps/web/eslint.config.mjs",
+      "sha256": "3dc9d72774fe7256458f7207506a62c7a230955086b70e88af8b84814e5e2f44"
+    },
+    {
+      "path": "apps/web/i18n/navigation.ts",
+      "sha256": "e2c5ff22e5a6831fe84e0830ffeb5ba1c5b8ce4a8bcabffba846f67283d01276"
+    },
+    {
+      "path": "apps/web/i18n/request.ts",
+      "sha256": "95dc2abd61112c8caef881a59be8bbd7b0f5b40b3d6ea6aed559c7e1ba532b36"
+    },
+    {
+      "path": "apps/web/i18n/routing.test.ts",
+      "sha256": "c797c3e1cfa0a7307ae1bcd4d67a09f87d488462aaf7553ca08124d49722acd9"
+    },
+    {
+      "path": "apps/web/i18n/routing.ts",
+      "sha256": "a02af0638cc58af48d7efe1944b3d5f1a393930cd5a8c549e3ecedde106e8916"
+    },
+    {
+      "path": "apps/web/lib/admin-audit-copy.ts",
+      "sha256": "29f5b014cbe1f7f9516121c4e37a88871716cf49d9521f726bbc9d866ec20847"
+    },
+    {
+      "path": "apps/web/lib/admin-bootstrap.server.ts",
+      "sha256": "145db05c58cd760b16d2a089aae428901568a4273308ee0408e8063108e0c7ca"
+    },
+    {
+      "path": "apps/web/lib/admin-catalog-budget-copy.test.ts",
+      "sha256": "b23ec074c1c0dcd8ab2206535eea2fe91fcbf01922b8a12ae6a715256eb0e35a"
+    },
+    {
+      "path": "apps/web/lib/admin-catalog-budget-copy.ts",
+      "sha256": "3125323101ab2c9303844b85cb2f637e9d4e7f96d6219d0df1d17fd190261952"
+    },
+    {
+      "path": "apps/web/lib/admin-catalog-copy.ts",
+      "sha256": "d0471809cf6665ae5a0f531a494d00db75d3cd4ee0b21de54d7ce3219e516c9d"
+    },
+    {
+      "path": "apps/web/lib/admin-database-copy.ts",
+      "sha256": "3f5ae29eeb0ec348bad9cfe12d5173863e039ce2ecd721c8720ded60e3224c8f"
+    },
+    {
+      "path": "apps/web/lib/admin-domains-copy.ts",
+      "sha256": "dc29cd8eaf8eb4e9444f291afbb5f5843bbbcc33237d0ff6c3d2de2a6d3343e3"
+    },
+    {
+      "path": "apps/web/lib/admin-domains-messages/en.json",
+      "sha256": "76119180331a333025267696005fb323fe551b0337d0aa3ef769a89c8cbfda0f"
+    },
+    {
+      "path": "apps/web/lib/admin-domains-messages/ja.json",
+      "sha256": "3c02fb4bc51b95ca9bcde5b1a6b0f0b705eab94f241546de395884f54d773bbb"
+    },
+    {
+      "path": "apps/web/lib/admin-domains-messages/ko.json",
+      "sha256": "fbe43cb31dbfed4fdccf5f0eda114757f373700c381897940eb6a39c1f70eaee"
+    },
+    {
+      "path": "apps/web/lib/admin-domains-messages/zh-CN.json",
+      "sha256": "35baf6a9d1c4bfd58e30c5fbc6e7781fb2c706315ee3bcbf6b3ebee687e30ee9"
+    },
+    {
+      "path": "apps/web/lib/admin-domains-messages/zh-TW.json",
+      "sha256": "0947409d1fc05cde7aa61c9b6b429644a2e52c381b31a6c8229c91153aa1b8f6"
+    },
+    {
+      "path": "apps/web/lib/admin-hotels-copy.ts",
+      "sha256": "8dbedd74bab52a8a79a81c87628fc0ffc9812b1c8dff8b41c05aa55fe130c397"
+    },
+    {
+      "path": "apps/web/lib/admin-operations-copy.ts",
+      "sha256": "10d1b9d67c753b83052f42625eb2182a39dd562d96447fb4b43bb9917f8bd081"
+    },
+    {
+      "path": "apps/web/lib/admin-operations.test.ts",
+      "sha256": "9be1dbee41983dbd862172185db4548991d66e9d59e80717934c7c7f517a866f"
+    },
+    {
+      "path": "apps/web/lib/admin-operations.ts",
+      "sha256": "33e5dee039a14d09817722a1f05ead46f56a5f458d4729fea0bbf638143a57be"
+    },
+    {
+      "path": "apps/web/lib/admin-review-copy.ts",
+      "sha256": "2c3747afcec53fa8589ba943a471b4abfb7be7a88250ad3db0e3db2edf76597d"
+    },
+    {
+      "path": "apps/web/lib/admin-settings-copy.ts",
+      "sha256": "6e1000d08b67c37c84fd26780a3cc06fbb01909b0bea97b3daca3e458d134728"
+    },
+    {
+      "path": "apps/web/lib/admin-settings-ownership.test.ts",
+      "sha256": "a8b0dc3ad4655164c8cddb1a0cd2f6815346a3ad1df9243637e41320318b2f63"
+    },
+    {
+      "path": "apps/web/lib/admin-settings-ownership.ts",
+      "sha256": "5a749fc8a1cdcf1a524179c9e0cbecb14587da4845631e571bd37703a1d68ad7"
+    },
+    {
+      "path": "apps/web/lib/admin-users-copy.ts",
+      "sha256": "f6faa044a56e969a56d927e61d2cbbf43478a32ef366325a6d3e2f7d97f34cc6"
+    },
+    {
+      "path": "apps/web/lib/admin-workspace-navigation.test.ts",
+      "sha256": "f496e2efbab0b1f954f8f166c16a1beec607d677a838a3eef7cdc97b5e03d36b"
+    },
+    {
+      "path": "apps/web/lib/admin-workspace-navigation.ts",
+      "sha256": "38c293f9ff8b0bdec2fac491f20b8e6f95c122e9556a00ceffcd795024e44405"
+    },
+    {
+      "path": "apps/web/lib/adsense-config.test.ts",
+      "sha256": "7716e95ab57357b3ed0b376e363496b484407a572b465ff36cc48a49b7d22769"
+    },
+    {
+      "path": "apps/web/lib/adsense-config.ts",
+      "sha256": "c47312a4f7bc0137c2730433d6dfc3bb0f64fce3c2cb2f24019926d7eb8a5a90"
+    },
+    {
+      "path": "apps/web/lib/adsense.server.test.ts",
+      "sha256": "b7278bb887c736e4111d43962489fcf5606d310f868b183348adc8b093a57fd0"
+    },
+    {
+      "path": "apps/web/lib/adsense.server.ts",
+      "sha256": "e155a6c6251833d71d6f7c0112529fccdfd79353d89bcc4b380cd33ce94b4dc7"
+    },
+    {
+      "path": "apps/web/lib/adsense.test.ts",
+      "sha256": "58d8f860bf47a08e1b4177832ea462f94a896d2021e8ef033987a421e16298a1"
+    },
+    {
+      "path": "apps/web/lib/adsense.ts",
+      "sha256": "b29971e57681e8eb30b442e611fe4938b5bd7ed2f8ec11a53fb32e98106d2d9e"
+    },
+    {
+      "path": "apps/web/lib/analytics.ts",
+      "sha256": "c27fd0ea8dc6561473c90c6342452f7409f36f4f48c97fc04c3f4fc206a9d90c"
+    },
+    {
+      "path": "apps/web/lib/api.test.ts",
+      "sha256": "051bac99eafa963aa15e99bc21872d917ee23d5342805b36e3849f1f222fa98e"
+    },
+    {
+      "path": "apps/web/lib/api.ts",
+      "sha256": "1607c656101b57f1beae36f83d8cad93e0d7b6ab8870a297134688198eba6f94"
+    },
+    {
+      "path": "apps/web/lib/calendar.test.ts",
+      "sha256": "88334a5f1af6f458ea475dad9613b96368fbfa8d4ee53890f946bb7a6b6bcc95"
+    },
+    {
+      "path": "apps/web/lib/calendar.ts",
+      "sha256": "9f511d084ff307c5173dd5b3d627ccdb9506aae51ead830ee980620cc97b04b2"
+    },
+    {
+      "path": "apps/web/lib/client-address.test.ts",
+      "sha256": "02401062f08f0a220bfa61b09e65849928d1c70758a14fdbc61fdc2a67552475"
+    },
+    {
+      "path": "apps/web/lib/client-address.ts",
+      "sha256": "dba874dac7cfcf2c4275f1e1249aac80612a4986cbad77e8a66155c919bc763a"
+    },
+    {
+      "path": "apps/web/lib/community/error-messages.ts",
+      "sha256": "950863c1b58d024511bef8903d18bc4f6c8b85a4b342b732dbc4d8f8a2e6fc6e"
+    },
+    {
+      "path": "apps/web/lib/community/server.ts",
+      "sha256": "44512a2b1fa07936f4d77b62077a22785c1a7b7dbf08de85943180191fe6c14e"
+    },
+    {
+      "path": "apps/web/lib/community/types.ts",
+      "sha256": "360def4b2cc1c8a36dce76422ba3722d9e307f46d1018c1dfb224dc4479c4f6d"
+    },
+    {
+      "path": "apps/web/lib/content-blocks.ts",
+      "sha256": "75c66a81925d12b9c3bddd63d8a9901da57d50558413066dc54d3ddeb966dc33"
+    },
+    {
+      "path": "apps/web/lib/csp.test.ts",
+      "sha256": "e8368507562343794daa9974e91052d62b555d8bd3655aae48f51bf95a704e11"
+    },
+    {
+      "path": "apps/web/lib/csp.ts",
+      "sha256": "c907179d798ba65050ddf9932ad137ed0b989a5ab1f24772c66528d3eb674aa3"
+    },
+    {
+      "path": "apps/web/lib/currency.test.ts",
+      "sha256": "90d88ea93d270b64a620e44798bcf0aefaba563e877ce26dfeb311367f17f7ca"
+    },
+    {
+      "path": "apps/web/lib/currency.ts",
+      "sha256": "02fcb03b5736da7694159c2e89ef956107c3f25ae368b847b0710b01716be599"
+    },
+    {
+      "path": "apps/web/lib/destinations-copy.test.ts",
+      "sha256": "c4b09073adabcc04f975f34318860a81cfbcdc7d869bffc9f16852b76071469c"
+    },
+    {
+      "path": "apps/web/lib/destinations-copy.ts",
+      "sha256": "ecda4349b1b16f9a68759216db9e12f94fbea36ec828b5f35ab457785b73a27f"
+    },
+    {
+      "path": "apps/web/lib/destinations.server.test.ts",
+      "sha256": "98d5706357739042eb06b6f6f17f44268f73a97e7de1ae4765cba9455b2b0115"
+    },
+    {
+      "path": "apps/web/lib/destinations.server.ts",
+      "sha256": "5c9aaa313ca2b8bb2d88f417e9353e550fd12a3c426ff827b6f55b6a30bf2f3b"
+    },
+    {
+      "path": "apps/web/lib/destinations.ts",
+      "sha256": "d35bac39259756202d6fdeca003c04f302f0430891e0745fc4ac4ebec05e7538"
+    },
+    {
+      "path": "apps/web/lib/discovery-copy.ts",
+      "sha256": "eb8b2d9967082fbfe1c6bdcace522beffd520dc1c49009f8ef557696722d4e8f"
+    },
+    {
+      "path": "apps/web/lib/discovery-status.server.test.ts",
+      "sha256": "c02ecf542ff323b850775094f07abad857e0609e3beb1a438b9f6189c9cd5c46"
+    },
+    {
+      "path": "apps/web/lib/discovery-status.server.ts",
+      "sha256": "fd837ac17299f1bdb0ad6173204b08ada628f6919a05c07d15d12fb36817b245"
+    },
+    {
+      "path": "apps/web/lib/discovery.server.test.ts",
+      "sha256": "03bd36e24feeb1159fc7521241068f28e9c729eaa574dfdf0bb28a34394879b4"
+    },
+    {
+      "path": "apps/web/lib/discovery.server.ts",
+      "sha256": "c03d904c870b3b1b98578cb076eee003e729db51b1e98b5a365096239c0c0c08"
+    },
+    {
+      "path": "apps/web/lib/discovery.ts",
+      "sha256": "8a43c56a17d84bdada9e25fbeee1c04c1504a2990660643c0e8e786712b6d6b8"
+    },
+    {
+      "path": "apps/web/lib/foods.server.test.ts",
+      "sha256": "0f48714461213bd0c1e17b7741624877615f4a3aece2e4c32fdee76077f73b2d"
+    },
+    {
+      "path": "apps/web/lib/foods.server.ts",
+      "sha256": "a4594bb631f98ad57e26820803d47643b9fd33d39001319026625d375f57938c"
+    },
+    {
+      "path": "apps/web/lib/foods.test.ts",
+      "sha256": "4ae897334f4c955eff4297d479b3ff5b6629bfa72afb25a217da6d1165a3cbf4"
+    },
+    {
+      "path": "apps/web/lib/foods.ts",
+      "sha256": "7acc487a918086e0a586ece6d61223c1f3187de9e56f481c0b5fc543c0844ea5"
+    },
+    {
+      "path": "apps/web/lib/frontend-flow-copy.ts",
+      "sha256": "a5295125e5a5ab2173bfcb2670cc821acbda18fa65356db0f2f9dd3704dd7288"
+    },
+    {
+      "path": "apps/web/lib/frontend-flow.test.ts",
+      "sha256": "4ed47abd92f915804ec8c91b2fc4b325068d684f54e24737d2343835830c1d96"
+    },
+    {
+      "path": "apps/web/lib/frontend-flow.ts",
+      "sha256": "b805523cdd4acc6e4e56dc148c53db4fb4e00c6f1bf3f9cc8da5664c5aafb056"
+    },
+    {
+      "path": "apps/web/lib/frontend-navigation.ts",
+      "sha256": "c3b58f6cc4cf0949fac8de5ecec5d3b937d2534a78dc4a6b38d27ace805333c2"
+    },
+    {
+      "path": "apps/web/lib/gemini-series-copy.ts",
+      "sha256": "54a50b92d6650146c2d0583acae3db10eec7d5cc0793a0209ca6157b05500a39"
+    },
+    {
+      "path": "apps/web/lib/gemini-series-projection.test.ts",
+      "sha256": "fa4aea54def324034304db89ef9e63453c894f6547f36d59167f9722a1783f08"
+    },
+    {
+      "path": "apps/web/lib/gemini-series-projection.ts",
+      "sha256": "9cb4abe79dd748e82bd7e7de677398ad182b4130cbd39f4690ea21d14cae9b7e"
+    },
+    {
+      "path": "apps/web/lib/gemini-series.server.test.ts",
+      "sha256": "1c8b779bb33434482bb625486f853fb00221c66c7b6f16d0c077b3d12f899860"
+    },
+    {
+      "path": "apps/web/lib/gemini-series.server.ts",
+      "sha256": "d0b586f9db7bf55b3eb09a0395a797bd41eee1d00d8cd8f5d06ca4fec70640df"
+    },
+    {
+      "path": "apps/web/lib/gemini-series.ts",
+      "sha256": "07fe99789c2bda0659aa8cb4099d805478311dd8dd6ffcd1d31c2af8b1c273ef"
+    },
+    {
+      "path": "apps/web/lib/guide-affiliate.test.ts",
+      "sha256": "f407700cfa476f5f7ae4ea10ee988d7637a9ea293d35dce4b7dd36f0812849aa"
+    },
+    {
+      "path": "apps/web/lib/guide-affiliate.ts",
+      "sha256": "dddccc7f4a06d2a34e82ee222f45f4498e82a7cf260a2b167b4cf286f5c1a561"
+    },
+    {
+      "path": "apps/web/lib/guide-series-copy.ts",
+      "sha256": "97b069306220f4375674c923458ac9c1f4afef76fa9f25c6e051ca193c367372"
+    },
+    {
+      "path": "apps/web/lib/guide-series.json",
+      "sha256": "1f6afed7f3bf7f05a407b8d5af4647938cf6d91df6b42a381a904b1f6d697bb2"
+    },
+    {
+      "path": "apps/web/lib/guide-series.test.ts",
+      "sha256": "b8ecd5aff09930f26ae1581a70345ce6851dba43e12cf9f7daa7ce6a65642e3d"
+    },
+    {
+      "path": "apps/web/lib/guide-series.ts",
+      "sha256": "85916760f4e056c2430546d5489c1453f37a78ebfd4cdbac610b5c930a57a79e"
+    },
+    {
+      "path": "apps/web/lib/guides-admin.ts",
+      "sha256": "3ed03852e53656e25364ae05a5304f5c4e9d7e78b5c433c7bcaeadaf1851fdd3"
+    },
+    {
+      "path": "apps/web/lib/guides.server.test.ts",
+      "sha256": "82db20c94f1c92afbde6b3b5ddca3bfa0d91d24c40475e00bfe6e68e79ee1570"
+    },
+    {
+      "path": "apps/web/lib/guides.server.ts",
+      "sha256": "eacbb3209473729d25b17d9140c0bd2e444cd695a438db5f034cf89eb926599d"
+    },
+    {
+      "path": "apps/web/lib/guides.test.ts",
+      "sha256": "a57dd8a4c8ba1c4ecb00b7fda816be78874117c17b599fa950d1dda37dd52f3c"
+    },
+    {
+      "path": "apps/web/lib/guides.ts",
+      "sha256": "ed8f6ca8b3a19e303332db6b84c008901bfa72be16aba7bdc9ff58947176d9bb"
+    },
+    {
+      "path": "apps/web/lib/holidays.ts",
+      "sha256": "13851f0786c7bd61e6ad3ed0ec7a9ef295b6f065f1ccba7d3737cd5e63fb29ce"
+    },
+    {
+      "path": "apps/web/lib/hotel-booking-placement.ts",
+      "sha256": "8ccfe3a0b8c33fbf80a32ef780224588651f769796d50909209e8e81a8ea8867"
+    },
+    {
+      "path": "apps/web/lib/hotel-clickout-error.test.ts",
+      "sha256": "27d8874df956121619c3c483934609c08928430150c4a2546bd5e7895f29eb64"
+    },
+    {
+      "path": "apps/web/lib/hotel-clickout-error.ts",
+      "sha256": "95e3906977244e1af8675d08af037d82f66571f8682dccef77cbdc4c00938bfd"
+    },
+    {
+      "path": "apps/web/lib/hotel-operation-rules.test.ts",
+      "sha256": "391f7152bcb3eb0bf8d76062e9b87a8ee197ed7a4ac16e364e38d61f80386669"
+    },
+    {
+      "path": "apps/web/lib/hotel-operation-rules.ts",
+      "sha256": "e0ed7ea6f895af73f5fc8e5e64aa337830a47221a75b1274eefc93faf0bf786c"
+    },
+    {
+      "path": "apps/web/lib/hotspot-categories.ts",
+      "sha256": "896f2379fcbcdda7ffd73d640fc202e5c58f01bd039f11367b35693d63e5f264"
+    },
+    {
+      "path": "apps/web/lib/hotspot-review-copy.ts",
+      "sha256": "b91dd8df9a47dca7406b02ff9a045b34cc570c5bd1f4eaa045da9294da599b30"
+    },
+    {
+      "path": "apps/web/lib/hotspot-themes.test.ts",
+      "sha256": "b16e297cca975d637271bbc9cb5d1706d8e5d78cf4e4697eafd30449bf683ca6"
+    },
+    {
+      "path": "apps/web/lib/hotspot-themes.ts",
+      "sha256": "60f132804b3e9ea32bd7d8f14d03740db16a3b670b502e408624f42b6c215868"
+    },
+    {
+      "path": "apps/web/lib/hotspots.server.test.ts",
+      "sha256": "9e75c15e4ed3f641e6323d6c7cf1913de5ba1b5cf87324795da2331c65e184e8"
+    },
+    {
+      "path": "apps/web/lib/hotspots.server.ts",
+      "sha256": "5dbd7c34f8a1531eae4bae1f5f8fda5a851c0bda34e191fb39891cfbcb24076e"
+    },
+    {
+      "path": "apps/web/lib/itinerary-copy.ts",
+      "sha256": "273b64bc5d4a9db1c0fbd8a5d4c7918d5cdffe6a8df594001f45e63efc9b2bdb"
+    },
+    {
+      "path": "apps/web/lib/itinerary-messages/en.json",
+      "sha256": "0c0aa5d64593b8dfa009e89087714ed580962b6551b7efa00e2822955126aeb6"
+    },
+    {
+      "path": "apps/web/lib/itinerary-messages/ja.json",
+      "sha256": "83edc413afa1bb81acfc395a0bc66751afcfbb437f3954014576f6669002ce2b"
+    },
+    {
+      "path": "apps/web/lib/itinerary-messages/ko.json",
+      "sha256": "64cb8a2a6484c46594f195e2e397946090e0768c2ae380284eaa123fee13ecc8"
+    },
+    {
+      "path": "apps/web/lib/itinerary-messages/zh-CN.json",
+      "sha256": "a53e5c31888576eb412819e4efce0b2a15bacc90019c1f3b2de5e5dc878359c4"
+    },
+    {
+      "path": "apps/web/lib/itinerary-messages/zh-TW.json",
+      "sha256": "fa9a11ac766c4aaa2a27b23fe1820980e4b83d00a0078106d343e921dceabae0"
+    },
+    {
+      "path": "apps/web/lib/itinerary-order.test.ts",
+      "sha256": "f1560ec52ebc4fbbfdf00bdde819b16a0d258d64119d3c41a62c23244d74b28b"
+    },
+    {
+      "path": "apps/web/lib/itinerary-order.ts",
+      "sha256": "05791584788bd88669124ae4363e4c6d84bfaa30f0f7cf9cc652a17641a20812"
+    },
+    {
+      "path": "apps/web/lib/klook-affiliate-copy.ts",
+      "sha256": "0ae6510120b7339ba4321019b183ec688c23fe74277d3e80c45d21772e97db1a"
+    },
+    {
+      "path": "apps/web/lib/locale-format.test.ts",
+      "sha256": "35fc4186dde1d3a88121e7ff9e635d73300889d4616c94b8eb4705258cf95b4e"
+    },
+    {
+      "path": "apps/web/lib/locale-format.ts",
+      "sha256": "ee391b30469e87d9a240de754e6ad76b5dcd03ee26511085808edd783b876813"
+    },
+    {
+      "path": "apps/web/lib/map-identities.ts",
+      "sha256": "829f0ab36847c6932484e2b4d4c2df47e01049571866fb288200bc713ffc9cfc"
+    },
+    {
+      "path": "apps/web/lib/map-identity-copy.ts",
+      "sha256": "9d23724a2c92a8d4187bc98c28a2ccb983edc14ce6c5317459313300bd410a21"
+    },
+    {
+      "path": "apps/web/lib/modal-sheet.test.tsx",
+      "sha256": "947a453db50c2dd72e88dc5541d3d0ef15e834b0540f94fc5f61ba872ca1183c"
+    },
+    {
+      "path": "apps/web/lib/modal-sheet.ts",
+      "sha256": "6d4e1256e0082a74a3ebfc2394ce08e6f06e8c6ed4cc52f9118a496d7e1cd0cb"
+    },
+    {
+      "path": "apps/web/lib/nav-links.ts",
+      "sha256": "c47b9de556d67953d4b17c85d5e6b67a16ca4721040171f0bf233d86ac3d3bd2"
+    },
+    {
+      "path": "apps/web/lib/naver-map.ts",
+      "sha256": "d2c99226b162b8896e16cf7c493a57754cb2c23ed4aebc2f8fda906ce124dc82"
+    },
+    {
+      "path": "apps/web/lib/navigation-guard.test.tsx",
+      "sha256": "046c263338d3f877e026a8b00aaea2c30dba04596402a752b6866deef1e72a08"
+    },
+    {
+      "path": "apps/web/lib/navigation-guard.ts",
+      "sha256": "df55ebbf318d13564ef41496e89d6091e481a615a9aa173e36281ad019dfcdfa"
+    },
+    {
+      "path": "apps/web/lib/navigation-history.test.ts",
+      "sha256": "b102c799cd1be22af8bb12e4fc14be379622b534eaca7b7a348a7b8d8107dd7c"
+    },
+    {
+      "path": "apps/web/lib/navigation-history.ts",
+      "sha256": "b04ffdf6986fcb1b2f8b7650ed3953fc3dcd0455d9e23dd4fd5f8a91aa2b4b61"
+    },
+    {
+      "path": "apps/web/lib/navigation.test.ts",
+      "sha256": "2d1fe8f29b428cebeff238c7620b5fd111fb8f4d013e37012d7c5370a1cad82e"
+    },
+    {
+      "path": "apps/web/lib/navigation.ts",
+      "sha256": "b964eb5c3a55c36c4c6b19d2d24f0c0d137475518e822bf7b991a840018f35df"
+    },
+    {
+      "path": "apps/web/lib/planner-copy.test.ts",
+      "sha256": "1894b901efad27a64d0029931ae386409f92ebec565c24d422064c43ab8bcbc9"
+    },
+    {
+      "path": "apps/web/lib/planner-copy.ts",
+      "sha256": "2cfb02e0a93f36cebabaa700bb92a425faab70d13ed4051735d00909dbb6ae43"
+    },
+    {
+      "path": "apps/web/lib/public-server-fetch.test.ts",
+      "sha256": "26e5e8423f89d8dd0029378c8517e1d98867f48fb22c54a312eb98c28fe6236b"
+    },
+    {
+      "path": "apps/web/lib/public-server-fetch.ts",
+      "sha256": "33e2554ba7a01578f700cff99e838d1ad812e5caa312b99785a670b9e9c4fb1d"
+    },
+    {
+      "path": "apps/web/lib/registration.test.ts",
+      "sha256": "60565aa1179c3e8e6b9724e1ea2ed1a5f21da24bf5b419b94655eaf83107b84c"
+    },
+    {
+      "path": "apps/web/lib/registration.ts",
+      "sha256": "58c30c00736b2efa8f38b414508432c36205f5917d2141f1b00b383addd81eb6"
+    },
+    {
+      "path": "apps/web/lib/request-body.test.ts",
+      "sha256": "1296cf53ecbac30a35a3467b4dfba713a388280fdb4740b42534b2abc03e57e3"
+    },
+    {
+      "path": "apps/web/lib/request-body.ts",
+      "sha256": "28dbeeb9dbbac6c2dff9a218fcc741c08fe73b82e2e705925042de03c414d505"
+    },
+    {
+      "path": "apps/web/lib/reservation-platforms.test.ts",
+      "sha256": "9e11935d8a2c30595e0da01124981b8c1cf00c00fe39b2d6b4529edd7762539d"
+    },
+    {
+      "path": "apps/web/lib/reservation-platforms.ts",
+      "sha256": "b82f2ab94d0acc6b6a922672082eae3be8308a87dd3e94acc07c5344e96aba29"
+    },
+    {
+      "path": "apps/web/lib/saved-items.test.ts",
+      "sha256": "5aa41cc768914e2928aa3b931597f3c2c520a564ae73766e2ad04ce59c64b104"
+    },
+    {
+      "path": "apps/web/lib/saved-items.ts",
+      "sha256": "f25f75e5370b18e0ecc70a5174557f5ab9cd2f55a35aee9de6af45c737846952"
+    },
+    {
+      "path": "apps/web/lib/seo.test.ts",
+      "sha256": "e2e150b900adbd32654b76520712af94b4c239a11331cabd7fb891c1aed6c164"
+    },
+    {
+      "path": "apps/web/lib/seo.ts",
+      "sha256": "773dc2080a9aa74fa490b4f16bed3d2bdf5869c83fa838e6c1e850b573fa437b"
+    },
+    {
+      "path": "apps/web/lib/site-features.ts",
+      "sha256": "69d5627a0289aced4ec4fd00f4a97d5291fc38af3df804a95a382c6d639c3890"
+    },
+    {
+      "path": "apps/web/lib/site-pages.server.test.ts",
+      "sha256": "444386ecf17e3921dc921af91316c31a7fea018857e171becdbf0a1074b37bf4"
+    },
+    {
+      "path": "apps/web/lib/site-pages.server.ts",
+      "sha256": "f98aedf119cc14c1547ac6987ffd33947eb2a75269f46cf7e291fd635608afb7"
+    },
+    {
+      "path": "apps/web/lib/site-pages.ts",
+      "sha256": "cee39b691e8b1699ce56786162ff0765de7d8616b6cbbf3bec99cdc2c49f82b1"
+    },
+    {
+      "path": "apps/web/lib/site-visibility.server.test.ts",
+      "sha256": "c30eaad9f347a0143a2e5f5709458cca557b5891d90f7d5e98c7c0dded11db2b"
+    },
+    {
+      "path": "apps/web/lib/site-visibility.server.ts",
+      "sha256": "19e845188eb301aa6f3ba3521487baddf26365a5d7f0417724f43a4e3bb5601a"
+    },
+    {
+      "path": "apps/web/lib/stay22-allez-copy.test.ts",
+      "sha256": "097126e65da7b35d655d148760f8782e3fc3b889dc5b607e196dd34cf3d6021c"
+    },
+    {
+      "path": "apps/web/lib/stay22-allez-copy.ts",
+      "sha256": "a26a4d22e758d94f7393aac1c8f7b0f0af56480616e061e8a470e76ecd20f797"
+    },
+    {
+      "path": "apps/web/lib/stay22-allez-messages/en.json",
+      "sha256": "0bad8386ff93f564f98185b62eafae9830aa00513ecb9ddd996fde9d3c884c9a"
+    },
+    {
+      "path": "apps/web/lib/stay22-allez-messages/ja.json",
+      "sha256": "0d0015d34ba6cc959047d18bfa110656d8eea4c19109873a122deff1ed8b1732"
+    },
+    {
+      "path": "apps/web/lib/stay22-allez-messages/ko.json",
+      "sha256": "48fb4ccb4584b715705ee4363276edb58d7e968f9cbc2b6d9d7780f0f614ff00"
+    },
+    {
+      "path": "apps/web/lib/stay22-allez-messages/zh-CN.json",
+      "sha256": "d96c4660062ceec83f4640f781934dbde00234832f7695bcc583e5dddfecad7a"
+    },
+    {
+      "path": "apps/web/lib/stay22-allez-messages/zh-TW.json",
+      "sha256": "85fab30f4db5ee64f8f00a8d85a1785c412542b7f0e5a84ae404d3ffdefd0f4d"
+    },
+    {
+      "path": "apps/web/lib/stay22-booking-context.tsx",
+      "sha256": "ab998d89bb11394e4edb486860da6fa22815a12bd3e6cd2d0048f273a3654df1"
+    },
+    {
+      "path": "apps/web/lib/stay22-copy.ts",
+      "sha256": "910edc572f1e892a4fb921a3e259eeb4acc8366f6ee0ba8d3e2b7c737211beeb"
+    },
+    {
+      "path": "apps/web/lib/stay22-messages/en.json",
+      "sha256": "fae9447bcfe74d9cff7d2713f46baa60225082b611ba200b770f6547241144bc"
+    },
+    {
+      "path": "apps/web/lib/stay22-messages/ja.json",
+      "sha256": "173b82db0b6fc373762651831728b43596b630dac4a29dad29507e2da04511dd"
+    },
+    {
+      "path": "apps/web/lib/stay22-messages/ko.json",
+      "sha256": "6a6a363fe09ae2a768b1b575e7017280927a6ba4a36209842633ef6fbd05978d"
+    },
+    {
+      "path": "apps/web/lib/stay22-messages/zh-CN.json",
+      "sha256": "fb159753042ae5608da76557a5f7af1e4b19cec641c2146f73bf8eedbf24ebf2"
+    },
+    {
+      "path": "apps/web/lib/stay22-messages/zh-TW.json",
+      "sha256": "4911d49198a0c523300e68e1aaf20e81f52aaa71323b8ce81bc6ad748ffee69f"
+    },
+    {
+      "path": "apps/web/lib/stay22-script-copy.ts",
+      "sha256": "ea6538cf10b1bd86517c7c8ca306d4a16a7904e7575ffac12eb691e8a62c5412"
+    },
+    {
+      "path": "apps/web/lib/stay22-script.server.test.ts",
+      "sha256": "0c5ed5dae6a2815f0c1eee358cb7499628fe74db73bf5d3946c16990fd1020a4"
+    },
+    {
+      "path": "apps/web/lib/stay22-script.server.ts",
+      "sha256": "936ffd1e8b7bb3f899a830956e9d3cf1724622af92eb26ba0b32a2779ab3d410"
+    },
+    {
+      "path": "apps/web/lib/stay22-script.test.ts",
+      "sha256": "b29a743110321b8fe58c5810560e8de87370ce1f01247240ebd98a7b601d98f0"
+    },
+    {
+      "path": "apps/web/lib/stay22-script.ts",
+      "sha256": "6af3453c9d03d6c5b7792cb04d2f02b9bd524e88002f8708222a71b37b4a62d1"
+    },
+    {
+      "path": "apps/web/lib/stay22.test.ts",
+      "sha256": "b9e8f23ccd6a04a69fbb4cb96d62679f32403a7d0da35f58cdce967ca9feaf76"
+    },
+    {
+      "path": "apps/web/lib/stay22.ts",
+      "sha256": "6e8d8427a4c25d814e334d868b4d97102c3243fa17b5a051a3af31e955e9260f"
+    },
+    {
+      "path": "apps/web/lib/structured-data.test.ts",
+      "sha256": "62c58b6d9fb523f24e835d286a4d5b696594fe6481e2edd58c15d906b9911c7c"
+    },
+    {
+      "path": "apps/web/lib/structured-data.ts",
+      "sha256": "f7145685144f639905e27da5268b942b669a77c2742ade87f58e433ab1b84217"
+    },
+    {
+      "path": "apps/web/lib/testing/commit-before-passive-effects.ts",
+      "sha256": "70a3abe670b9945b80d32cf9027d730280dd7eb78e0c9669743ccc86ce5a273f"
+    },
+    {
+      "path": "apps/web/lib/text-size.ts",
+      "sha256": "4300eb01d1d6b671159eff1a7ae70bf1f9b064228b7937700e1800d013f5423f"
+    },
+    {
+      "path": "apps/web/lib/theme.test.ts",
+      "sha256": "d25ec378be89de1ce425cb43144d6a8e889af3bb30e1556440483f6a83ad21e0"
+    },
+    {
+      "path": "apps/web/lib/theme.ts",
+      "sha256": "9a5983718a2bf51ad4f217fdef80bd47032813afd827133cd0199e1b561a8c46"
+    },
+    {
+      "path": "apps/web/lib/travel-service-discovery.test.ts",
+      "sha256": "39aca606fae60c59fb4acfa8e43fe2073cb82cb8e64c1beaa6a438a870217b5c"
+    },
+    {
+      "path": "apps/web/lib/travel-service-discovery.ts",
+      "sha256": "22dc355e02eb68bc7709d5e60ed4cdcab754378b63895feee44444d59aa6ac90"
+    },
+    {
+      "path": "apps/web/lib/travelpayouts-drive.ts",
+      "sha256": "9532170aff8fbfab106cd2013fa77a1647f2b92417cbe792c031bf8bbde040c1"
+    },
+    {
+      "path": "apps/web/lib/trip-partner-offers.test.ts",
+      "sha256": "13735f8cd1cb38938aa8986cefe450e965f87818a9dde6c08e907747b9ef4fac"
+    },
+    {
+      "path": "apps/web/lib/trip-partner-offers.ts",
+      "sha256": "47e02965ad74dbec08b75e2d7e533ff7d98e70eab687d531faa0ef87459ec5fa"
+    },
+    {
+      "path": "apps/web/lib/trip-status.test.ts",
+      "sha256": "b5d9a553b409a607124a6e6ce52ee4037305e7224ed27860d179bdeb4fa07e22"
+    },
+    {
+      "path": "apps/web/lib/trip-types.test.ts",
+      "sha256": "ee18f7d1fe376f05f708bb9782927152d9a071de5988d8de651ebdfd48cdfe26"
+    },
+    {
+      "path": "apps/web/lib/trip-types.ts",
+      "sha256": "099b5afb799605baa0e14787d509180ef6893d529adc335dc6e0cd4d66a47e69"
+    },
+    {
+      "path": "apps/web/lib/ui-text.server.test.ts",
+      "sha256": "5776faf3f7cae00cabe9addb65cb544457adafa24fd24aa203dc3b894a72a179"
+    },
+    {
+      "path": "apps/web/lib/ui-text.server.ts",
+      "sha256": "0100a7fff808eb9f1dd8a82c6fc93cf703ade34471f0755d93d23bb54f0a2d9f"
+    },
+    {
+      "path": "apps/web/lib/ui-text.test.ts",
+      "sha256": "bf07d6cd27cf53ec9f2120ef3ca19d936190cf0de334be3cd448beb5a8660b41"
+    },
+    {
+      "path": "apps/web/lib/ui-text.ts",
+      "sha256": "3c03a8da61a70ec2732e31aa9423aef02f291b549a22fbf8e21d6ab980f7551e"
+    },
+    {
+      "path": "apps/web/lib/usage-catalog-e2e-fixture.test.ts",
+      "sha256": "6d3482a57f0d0dd80e5c72584455b5a8300af460fce931677f84aa6446564bee"
+    },
+    {
+      "path": "apps/web/lib/usage-catalog.server.test.ts",
+      "sha256": "8a887ec2310cf859209dea73fd1bfac8b11ee184eedcbc47a5bd211ee7ae6c13"
+    },
+    {
+      "path": "apps/web/lib/usage-catalog.server.ts",
+      "sha256": "a4504893eac4d8cc7d88e2a229970bf389842f8c4cf1072b2a56237650ca124e"
+    },
+    {
+      "path": "apps/web/lib/usage-catalog.test.ts",
+      "sha256": "bf0e6c44f39297944c3d8ffb3370b0bf8d1bba3a9e7c825e8e2e9550113792f5"
+    },
+    {
+      "path": "apps/web/lib/usage-catalog.ts",
+      "sha256": "46008b7df2d3d582b7b147117f4f0c28defd9b8c0b578e9b79965336b2cb646f"
+    },
+    {
+      "path": "apps/web/lib/use-client-search.ts",
+      "sha256": "0164bcd107f222718f9e9cb4ff8527125b5b86f5589f3f84bc33a58597d661e8"
+    },
+    {
+      "path": "apps/web/lib/use-shared-anchor.ts",
+      "sha256": "68a0882a6abc78f41bf1981c38d2f4d2ed77f17cf16b502c079207ee48b66850"
+    },
+    {
+      "path": "apps/web/lib/warnings.test.ts",
+      "sha256": "2af14182782a70f2e7fe4924020e0036f280cc783b54574f717f2f95967c7352"
+    },
+    {
+      "path": "apps/web/lib/warnings.ts",
+      "sha256": "0c714d59aa9d143f18925093908f6a65198cfeefcf59eec88bd221c8ced56fa8"
+    },
+    {
+      "path": "apps/web/messages/en/account.json",
+      "sha256": "962c00bbef4df417ce9ad4e19e597ac53b282cd337e27f3abeb263c37a55c8c7"
+    },
+    {
+      "path": "apps/web/messages/en/admin.json",
+      "sha256": "f38c7e830cd462ff047ac395e12586dfa51c9266d6ea7cd807652354d1b553a9"
+    },
+    {
+      "path": "apps/web/messages/en/alerts.json",
+      "sha256": "404086e37f960c438b018a3a258fe42f438fc94ed5c6fb2d49607dee4f355814"
+    },
+    {
+      "path": "apps/web/messages/en/auth.json",
+      "sha256": "c0e8c5c723d38fed2d2034c06ff57c7141f7f47dcb677ebf71a5483b12335fcd"
+    },
+    {
+      "path": "apps/web/messages/en/availability.json",
+      "sha256": "234b4bd0d511119225b53a3adab862cc5b0cbe7247599c5b461e471e399721d3"
+    },
+    {
+      "path": "apps/web/messages/en/catalogReview.json",
+      "sha256": "43d07a156b166f25a01ca4d712f7f98bf8fc2730fe7b229502f21a1778ef158a"
+    },
+    {
+      "path": "apps/web/messages/en/common.json",
+      "sha256": "f41eb0ac9822d2784f5fd91b3a11c4c69fc63ed51f7f85fa0e4edb32874b94da"
+    },
+    {
+      "path": "apps/web/messages/en/community.json",
+      "sha256": "e3ec8e1d3337779e692baa2e5fb5794d526ab99ae5275924da58da82e80bf6bf"
+    },
+    {
+      "path": "apps/web/messages/en/errors.json",
+      "sha256": "639d4ab7bdf612b5d8ec5cfa5cc588656a968ac35f31c8962ee4106d7dae3f6f"
+    },
+    {
+      "path": "apps/web/messages/en/foodAdmin.json",
+      "sha256": "b741d26b87d062acdda52e2c952f2e8ad70b7c777c084fac309a93eed1db9b2d"
+    },
+    {
+      "path": "apps/web/messages/en/foods.json",
+      "sha256": "4c206e9f838c25144bb64b83c6a418a8e2ecd1cbbf8599b645acfffcaff67f16"
+    },
+    {
+      "path": "apps/web/messages/en/hotspotAdmin.json",
+      "sha256": "51c82741b11b6e6dee481c59fdc01e1d26803fef4035e498a0776a4eee80c80a"
+    },
+    {
+      "path": "apps/web/messages/en/hotspotThemes.json",
+      "sha256": "89041480e08c39dcf9990984a8a85c2aca4b8fd7c9faa92f065e4f4a52f96b04"
+    },
+    {
+      "path": "apps/web/messages/en/hotspots.json",
+      "sha256": "1bf1748e178cfd54584842473d5c4f6221dd15fed0c78eee871762f52612c5d9"
+    },
+    {
+      "path": "apps/web/messages/en/legacy.json",
+      "sha256": "09fb048704d347bdcddc3c39dbe62d4d6b18a2ac01b72476308c781be9705595"
+    },
+    {
+      "path": "apps/web/messages/en/metadata.json",
+      "sha256": "19d124ee5a345f8078cb5f110583790eee8ac0e34b589349990d088836a8d467"
+    },
+    {
+      "path": "apps/web/messages/en/navigation.json",
+      "sha256": "42611c84a4855cdf3b4a2132650dfb0c9769aa8d10e4c7dcec840c7d04354703"
+    },
+    {
+      "path": "apps/web/messages/en/newTrip.json",
+      "sha256": "5ea2c0d00973d1df5b8ebd4c2bb184e3fef97f7dcf18b7b986ed9a1eb3d8de79"
+    },
+    {
+      "path": "apps/web/messages/en/pricing.json",
+      "sha256": "744330403810c73f3f5a4df9c04c69cc9701f880dc0037468bc0a6be165eb059"
+    },
+    {
+      "path": "apps/web/messages/en/restaurants.json",
+      "sha256": "48260dae14579c9d71cd81c18c7649206c4176b8104a2ea2f77d09ae9b6ce054"
+    },
+    {
+      "path": "apps/web/messages/en/search.json",
+      "sha256": "7d84a32292d785c13fab593a07285b4047ee7620f8b895097d4dbf691a4072ee"
+    },
+    {
+      "path": "apps/web/messages/en/stayAreas.json",
+      "sha256": "2243d9c7c4e756348bc571307d0e89387ece30717dee25391e0dc30fd0741e0b"
+    },
+    {
+      "path": "apps/web/messages/en/travelServices.json",
+      "sha256": "f9ae2d26a284035c442498f5e5299bcc6a818d033cd9660879ea834609dc9118"
+    },
+    {
+      "path": "apps/web/messages/en/trips.json",
+      "sha256": "e2cc71786ce82eb2b5c8558b30dc6539993e90ae60e58853583b660d6a6442f3"
+    },
+    {
+      "path": "apps/web/messages/en/usage.json",
+      "sha256": "0de8cd92a58c66cbc23d83b3a080e86fadc4ad24722fb129f556311db5593598"
+    },
+    {
+      "path": "apps/web/messages/ja/account.json",
+      "sha256": "7492efeee7c2b62899fa0f3d400b6ee2403b9b52957889de343351d5e2031c77"
+    },
+    {
+      "path": "apps/web/messages/ja/admin.json",
+      "sha256": "a508eec471bea1012d4863da836bae6d8317995c6a9f0c285dd462de86205868"
+    },
+    {
+      "path": "apps/web/messages/ja/alerts.json",
+      "sha256": "0b14fbcc8da7ce00f720c746a95756339e9ff6b78f97feb0536d4cb3b6f8f536"
+    },
+    {
+      "path": "apps/web/messages/ja/auth.json",
+      "sha256": "c0a3c649a6317941c63150e0154b9919442bf8c43f9a22be95024e4b5f06bd86"
+    },
+    {
+      "path": "apps/web/messages/ja/availability.json",
+      "sha256": "6b5040eb258da4f166719f9dedef73315f3a0937ece5bb7b40a18e12c38d9220"
+    },
+    {
+      "path": "apps/web/messages/ja/catalogReview.json",
+      "sha256": "0f90e72174c2f5cfb0d2490f9f3281eafd0a4051b234c218cd0775553b18fffa"
+    },
+    {
+      "path": "apps/web/messages/ja/common.json",
+      "sha256": "74178b923b9c00fd65910b3448cb10a0949039a36a16705473bc0687d96bd114"
+    },
+    {
+      "path": "apps/web/messages/ja/community.json",
+      "sha256": "61f0dbef5c8de2c68a7fd907960f8d70f3670ffbf2edd25fa66c97a95f614191"
+    },
+    {
+      "path": "apps/web/messages/ja/errors.json",
+      "sha256": "879f890420b2eac207712e13201d985de9fe37f54005fd8c0b36213b83ef56b6"
+    },
+    {
+      "path": "apps/web/messages/ja/foodAdmin.json",
+      "sha256": "651ca4921139e2dd960417696c0691f8bb8aa0490ea1e5aaecfb388c35ac21c4"
+    },
+    {
+      "path": "apps/web/messages/ja/foods.json",
+      "sha256": "76321eaa3b3b3b37719a41dcbfa5a18dc88a1a70c3ee4d297bccf7f969ca8e22"
+    },
+    {
+      "path": "apps/web/messages/ja/hotspotAdmin.json",
+      "sha256": "4af526ed6a5a1c0d60b9cd85135461909bf02a1b8778b370ccb9882c96730e28"
+    },
+    {
+      "path": "apps/web/messages/ja/hotspotThemes.json",
+      "sha256": "8eafb80608b9050d6594b68ec9332efdca1238a31786378cb6bbda7e4914c0af"
+    },
+    {
+      "path": "apps/web/messages/ja/hotspots.json",
+      "sha256": "49b467e87222dc0267f2d494058ccfed0c19ab4dd79027c1c6bb6439cbe1612a"
+    },
+    {
+      "path": "apps/web/messages/ja/legacy.json",
+      "sha256": "ab30126663975a08ed8f933bd5b2e5cb03eac928c7a3d9062df89c0646394c1e"
+    },
+    {
+      "path": "apps/web/messages/ja/metadata.json",
+      "sha256": "bd168fd5ee93462a79155c0d8e314ea341920dae388e790f80720f0e5820b305"
+    },
+    {
+      "path": "apps/web/messages/ja/navigation.json",
+      "sha256": "143723ca8be4d313c14a6554d74014207ef88b94df9481fe275b8f227f7c7651"
+    },
+    {
+      "path": "apps/web/messages/ja/newTrip.json",
+      "sha256": "96e08738229080c04a1b8226f840ea443a01d0b937f7e709781add6c9a69880d"
+    },
+    {
+      "path": "apps/web/messages/ja/pricing.json",
+      "sha256": "0b3a5bb73aca35395d981e5ec9c3373341cc27b0e898af8d8edc542b811ff12b"
+    },
+    {
+      "path": "apps/web/messages/ja/restaurants.json",
+      "sha256": "1eefa3507dfe63d99167b69a55e6e5ce058d69350d31a4bcc106e2de0512129f"
+    },
+    {
+      "path": "apps/web/messages/ja/search.json",
+      "sha256": "a8217173e2b393e19424e206f3e2db49aa77b8ffbee4752d30c7929699b7fca1"
+    },
+    {
+      "path": "apps/web/messages/ja/stayAreas.json",
+      "sha256": "434eaa7ffd5b8196436be27b55c4d44b022915dae186100fba21911220720831"
+    },
+    {
+      "path": "apps/web/messages/ja/travelServices.json",
+      "sha256": "222ef19cb355bbfaf2b057898053e74e75187326d06c7780ef44c841ffd4f25b"
+    },
+    {
+      "path": "apps/web/messages/ja/trips.json",
+      "sha256": "36a50832afa7dc45358d924f5b434b66d925ae8db2d32a3cdcdb18fa6c28673c"
+    },
+    {
+      "path": "apps/web/messages/ja/usage.json",
+      "sha256": "075d415af99cef4911ace5a48d838f7dc7b1c1c334f6a8119b9aa60ead1cf1d1"
+    },
+    {
+      "path": "apps/web/messages/ko/account.json",
+      "sha256": "b3190d8fbcd3e5fcd8889eb1197ac239858dddcb5d77693a5941caf9e311c4b6"
+    },
+    {
+      "path": "apps/web/messages/ko/admin.json",
+      "sha256": "8af5dacfc947d21bdbb41153591f496f5e67a5b28c2b555c6b423e3e2631f8fc"
+    },
+    {
+      "path": "apps/web/messages/ko/alerts.json",
+      "sha256": "b9c929546dffa2b256e72ce69f33e2aa86e1afbd66b1a1116b9fb1c57179d58a"
+    },
+    {
+      "path": "apps/web/messages/ko/auth.json",
+      "sha256": "41ed47cdd655859c614273cd59d3513291e5ae671e496866df0eae2a440cbeeb"
+    },
+    {
+      "path": "apps/web/messages/ko/availability.json",
+      "sha256": "35d5c0a190d390b88a077fc0525a65ab732aee2feb7404339e03277d5c560372"
+    },
+    {
+      "path": "apps/web/messages/ko/catalogReview.json",
+      "sha256": "aca337387f03cb1a93cad1db9198a3d62c8bb501f14cb1da92b8250e250cda3d"
+    },
+    {
+      "path": "apps/web/messages/ko/common.json",
+      "sha256": "f74ec899b32a7d66da708871519b04a877d58775f1584504d3782f56516183fe"
+    },
+    {
+      "path": "apps/web/messages/ko/community.json",
+      "sha256": "1f1c86be5f5467dd80a636eb14cc54154dcb18b0d106efac29c1caae90914793"
+    },
+    {
+      "path": "apps/web/messages/ko/errors.json",
+      "sha256": "db84f3f32df786dbfd1871de0adf872360789051778df0a6765ec0b8586d9d0f"
+    },
+    {
+      "path": "apps/web/messages/ko/foodAdmin.json",
+      "sha256": "4adf4fd72a5abb1d8495ba6fbd7229eb922dccec5f6ac2bb3157d55772dbf9bf"
+    },
+    {
+      "path": "apps/web/messages/ko/foods.json",
+      "sha256": "4875d034b9069f49e825ee2f905ee263ee4cdbf34c1e2d25198c98cc2154a7a8"
+    },
+    {
+      "path": "apps/web/messages/ko/hotspotAdmin.json",
+      "sha256": "d4ec1194b7297cdf28799b5b735f367fa647bda7ac17f555de42fa2a18d8dd29"
+    },
+    {
+      "path": "apps/web/messages/ko/hotspotThemes.json",
+      "sha256": "38034c3112a289b5740ee203096af2131cc36a67d23ecb885eb4b12bfa51d9a1"
+    },
+    {
+      "path": "apps/web/messages/ko/hotspots.json",
+      "sha256": "830588aa0bbe34d8c887930ea485e6f59293caaddbe328ded74d0381dcec83e2"
+    },
+    {
+      "path": "apps/web/messages/ko/legacy.json",
+      "sha256": "a54fa8fa871c54b9b3b2345a14ab6bdb45c14da3a53904088e4a21e38960c076"
+    },
+    {
+      "path": "apps/web/messages/ko/metadata.json",
+      "sha256": "b8c41625d4f56376514a9d8f64fc39a5617348578b50454306a05ee69ec146a1"
+    },
+    {
+      "path": "apps/web/messages/ko/navigation.json",
+      "sha256": "e4cce54c7098a56e44d9d409f01a3b37f47e65eab50e68d823256849ead6247d"
+    },
+    {
+      "path": "apps/web/messages/ko/newTrip.json",
+      "sha256": "979542efafe937bf0a335ae9e7fbb67eb55295294be42de6a75e15a94728c061"
+    },
+    {
+      "path": "apps/web/messages/ko/pricing.json",
+      "sha256": "c71e4760c854de55648f3e88f18aed0936bf76c80520bbdb975f2abd07008498"
+    },
+    {
+      "path": "apps/web/messages/ko/restaurants.json",
+      "sha256": "f7a18c4fd118bc94c36259e1b840ba292d5ee6417a5611bb8140c070333437d9"
+    },
+    {
+      "path": "apps/web/messages/ko/search.json",
+      "sha256": "a83eef4995d7f00e0eceb92d1a2e57e7de1191c105e08519c483d049cb8343a6"
+    },
+    {
+      "path": "apps/web/messages/ko/stayAreas.json",
+      "sha256": "183bea844350e3c957c2a1b631322c3cc88f6273bf69023fe40934a804408fc8"
+    },
+    {
+      "path": "apps/web/messages/ko/travelServices.json",
+      "sha256": "eb0129018691ffe23789019272df7ffe0fa237e51539682f00de6614ccfd777d"
+    },
+    {
+      "path": "apps/web/messages/ko/trips.json",
+      "sha256": "c5f75092c72a2603a1782a9cbeee331f0e37a1a65cfb38f9504c488cd2df4abe"
+    },
+    {
+      "path": "apps/web/messages/ko/usage.json",
+      "sha256": "b2d5877db4bcb0403188627b0fb9f63b304f6c48c858963f48e221241a9c7c96"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/account.json",
+      "sha256": "00af42e629d626326f6576318e1fab2a283147aa4978900f5aea7995a5115005"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/admin.json",
+      "sha256": "643c386e97508be932567569a55f0ba80e933426045d54df02561600a3d66b6d"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/alerts.json",
+      "sha256": "931ae2d97706aa2b772a087fdf7494b4da541b575ea8efccba83b29ca1f60f2b"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/auth.json",
+      "sha256": "110f00ced2cc3f9b7f195ca7d3c241398a676bf9497380fb225fda93b7428415"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/availability.json",
+      "sha256": "6b96d7f3601e1b576570876b9f159a47f7024979a3d622ecbaffbece8c3b90ae"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/catalogReview.json",
+      "sha256": "bd34c1956895c08eb9e2ea0e5469372531ce89cfbffdc10b21b9f11e11bffc93"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/common.json",
+      "sha256": "ecc9e16a1bde19d1c853c3354aef586b2f5a36b321d18d1b084e999527e7832b"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/community.json",
+      "sha256": "d36b40291b724e3412dc31611b789a48c17312e03a7c4b992838b0390eef063d"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/errors.json",
+      "sha256": "479f366cf2c7e601736bd583e33514ad708f4bca8022da0de3e9a37f40287e8e"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/foodAdmin.json",
+      "sha256": "99eadb9847da9afd6e3f1dee3c6c05dfd0edd15a26626b5165d29250b78ff031"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/foods.json",
+      "sha256": "06d236adec84cba5e0acf7000b3541e9c4e7775751789f6b4b4ac16fc4bb10ed"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/hotspotAdmin.json",
+      "sha256": "86467a4e1c66a76c6b631fda84180c97865608826d0cfeccbc41bd323a9e196e"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/hotspotThemes.json",
+      "sha256": "ab93f85a6e574e9775ec1805357a266e8634c348f78730a0a29e909d2a363aec"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/hotspots.json",
+      "sha256": "d57c292aa0c1098bb0f1a410b97d5e6d0c29afccdf0a8a2358b3fe5e07e47a7a"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/legacy.json",
+      "sha256": "4b628243804c3cb6fc7add2e4002207b4329462c21027bea5cae9e2e4ff8f304"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/metadata.json",
+      "sha256": "ec91d5df4ca89211c7b13e22375aed48d801332876035caacc493f8726232972"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/navigation.json",
+      "sha256": "e29118fcabd0486f868baccd75041526ef7316b5ce4ee407bce566b765531cce"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/newTrip.json",
+      "sha256": "39abe8483ae14c572d386c4d0d5fbeadb99fc2b999e3088b9a8f9cbe2b9c918d"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/pricing.json",
+      "sha256": "7f2ac916dbf1b2dd4a405e5d2d8612956152b0cf558a3d545d4435d2e1fb5903"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/restaurants.json",
+      "sha256": "e969f78252a3c74497cbe00ac20aa87222c9ba2c1a10eeee74c8ca34068a40cc"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/search.json",
+      "sha256": "d412db2e4870cbb8ad7c25e04f02a25162c3497b61c0dd43e0819a9ccb770c1a"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/stayAreas.json",
+      "sha256": "a642a5c282a61e14e0c558a000b18df03dff6aa6ded1a892c546b2282c350e18"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/travelServices.json",
+      "sha256": "4cc85699f9d6e3c36844bb6c579dd798184729b45dd7be63cd4d0a4a7f2391a7"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/trips.json",
+      "sha256": "f3a2a3ec70cc5255ad87df0ab0265489aa189368a3574729fd87cad5dc1ff421"
+    },
+    {
+      "path": "apps/web/messages/zh-CN/usage.json",
+      "sha256": "038885f77779986f165bf70900589eb95b897d033f364b5d8ff0aea09ad4c28f"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/account.json",
+      "sha256": "d8b72c4c8943fdb6293606816482b181d8487c7d3d94b4e7d6c9c13402cf024e"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/admin.json",
+      "sha256": "3097a7f0f43bafec42d2eaae2d8a02d37523fd55a9e5b5d4dd2ee413972c1116"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/alerts.json",
+      "sha256": "465ef5481e8e673c3f36f7c2a32dc4222fde4bef61e9b64404279ac26d062c51"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/auth.json",
+      "sha256": "580ac4229d4c39fc61ae78cefb3fa91199ac68959408b8afbccbe989ae02abb2"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/availability.json",
+      "sha256": "96ff06782c90f31bfa8c2282290f0362c42c346e19abe8d49e0b4f5448eaa5c2"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/catalogReview.json",
+      "sha256": "0fd372ca2319587796754f6a7f97d89994ad193d0839e6034a792c7bbadf9bca"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/common.json",
+      "sha256": "da3847848da8310fab99eba5a15b18a3d3af2e1cb9ffb3b0f4df5629edd1b03d"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/community.json",
+      "sha256": "fc04c263956b30ffb2db01a6b422e7e164fcc0f8ff2a76d3e8b6e4cbba0a4798"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/errors.json",
+      "sha256": "7c616c42b0232d5a0a13920999b3593ada8e7d44031699db74887b6e1d1ede74"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/foodAdmin.json",
+      "sha256": "aa2c00f222a772bf0996ed5e96b2197c6ff3ba1eced618e6e5dc79b2b9593c47"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/foods.json",
+      "sha256": "721e53fa4199fc85ae7935f6a177e7f0d623a379b6096921b53ec26d7d2d1ccb"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/hotspotAdmin.json",
+      "sha256": "da40556b76e8308b771e2288ac140430e5f6b2624e4a334ad10e19a4129f1151"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/hotspotThemes.json",
+      "sha256": "3accaf1ca840ea9775213956d20b111a0a1e9096c49c7f8a6d08f8d3900cfed1"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/hotspots.json",
+      "sha256": "7f5c97bbacfd201ddfec4d6cf7912f7f1b1a661b5d8071060ae9a8eb6b8deb87"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/legacy.json",
+      "sha256": "5a21222450424fb0503bac68cebaf1bb4a6e20482075590fda08c9048bb8a9e9"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/metadata.json",
+      "sha256": "613782dbd499162bb86261c46d059195655c837ebce0f7645042bcbb66ec4f40"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/navigation.json",
+      "sha256": "d9dcbd79da4d6414151e376bbea058c6e53b60328408dc5de058b40b3e90c1a0"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/newTrip.json",
+      "sha256": "5c1e05361d87fd0951cad4c60110873a676a50fa2d25449c93971f53d035770a"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/pricing.json",
+      "sha256": "66ec6b562bc4cb11258ddc531a2b27980f24416598844bde23022cf305d80a7c"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/restaurants.json",
+      "sha256": "2207542094e4f783c65a92581ee7f02fb66433755aa0b22c3b12bdf3e72ced63"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/search.json",
+      "sha256": "a52fa0eca51c2ccd1d90e2e179b2e48b4f6136ff596531b71f17d7244d50ccc2"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/stayAreas.json",
+      "sha256": "f89eff58a5fc2f464e2900cb493358862cbc07e418f50449d2d2a6c5fdb60977"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/travelServices.json",
+      "sha256": "471c63759618e72f232f3ed19563f96f869ef662658c0a787efaaf83fb9eef7b"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/trips.json",
+      "sha256": "53da05bff1a811674762417c1ff091d512919b956427b2aa5ac3f3faa51e8e96"
+    },
+    {
+      "path": "apps/web/messages/zh-TW/usage.json",
+      "sha256": "05fd32d965800b23f3977fdc177dc7acf139d7fc9476e91776554a7ad3abd78f"
+    },
+    {
+      "path": "apps/web/next-env.d.ts",
+      "sha256": "1862ac4bbbc5192d4bf562161df66ea547ed3e67173100656ab606ae9797db2b"
+    },
+    {
+      "path": "apps/web/next.config.ts",
+      "sha256": "d0f321a78be5a5714be006b2a1fb866232e9b5154b6240a90e8fee7fd21ed518"
+    },
+    {
+      "path": "apps/web/package.json",
+      "sha256": "0f604d97b8eb0d7d9ee2d9ec8ea6409530b4e1c7a1b6fe2f1506191d7b0896a7"
+    },
+    {
+      "path": "apps/web/playwright.config.ts",
+      "sha256": "6dacb79ee71bccc4f923e8b4704613d91bc09b74e6f4d8789bfda75130ccd683"
+    },
+    {
+      "path": "apps/web/playwright.frontend-flow.config.ts",
+      "sha256": "f26a66c8bc538f43ae69db86a7ae4e3e84da1d1d604f44cfcda7a507bf7fdc51"
+    },
+    {
+      "path": "apps/web/postcss.config.mjs",
+      "sha256": "e876747cec05454b000df921b6633a0aebaa3b6186e352da15eb069b5eb379e3"
+    },
+    {
+      "path": "apps/web/proxy.ts",
+      "sha256": "618f42ebb069e15fdc55b83f44ae3e3cea7675b6c99bd1e8443c2c2bca6e1b04"
+    },
+    {
+      "path": "apps/web/tsconfig.json",
+      "sha256": "9c73cf280ef044e5b2557572af01310c7bb24a714ec22d1a7bdb85e6f152cb0b"
+    },
+    {
+      "path": "apps/web/types/google-maps.d.ts",
+      "sha256": "2fe00cd614421669cc401f00903b65409d24a76f807bee685b3aea18bc227cee"
+    },
+    {
+      "path": "apps/web/types/naver-maps.d.ts",
+      "sha256": "c7f407383a43269b42d81f55f4f8ec5806c3f8234b7e06c7ad1cab223869f57f"
+    },
+    {
+      "path": "apps/web/vitest.config.ts",
+      "sha256": "0bc8b88c6e1ce7a3093bbebe2d38fa5f748aa99d3ac7e25174b9df69b86dbf8c"
+    },
+    {
+      "path": "apps/web/vitest.setup.tsx",
+      "sha256": "1ba3b58fe0e5ef4bb164b42ed25b5843f6158c67eb3333eaa65a420dba5b1454"
+    },
+    {
+      "path": "package.json",
+      "sha256": "48c73eb1d569afc2ea1cbb30a8a5f20717564c01cafeb638d904f625d559ffbc"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "8d579e5bec8b85c2e2c111f49aefb75e509664455292b6a587e9581b5f5f17a9"
+    },
+    {
+      "path": "docs/gemini-series/advanced/curriculum.json",
+      "sha256": "548ce80974d4e3913d5a3591b247540ec54cec91677b920f7614ad626dcb8b8c"
+    },
+    {
+      "path": "docs/gemini-series/advanced/platform/catalogue-contract.json",
+      "sha256": "d3f5eb85620a835a1d39f2afe3ebbd126fb14e23ea9f5d0f69dad5bbbe5768fc"
+    }
+  ],
+  "refreshedAt": "2026-09-14T16:00:46.746Z",
+  "fixtureCatalogueSha256": "737cb72485352f723cc77cd937c26a6757bff762949dca4946627543ba9ac660",
+  "contentPacks": [
+    {
+      "path": "apps/api/app/guides/content/gemini-guide.json",
+      "sha256": "8f1f87ef92fbc56058a9cddf627f3b3164fb353971bb155a1f0d3137120d4c41"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-beginner-guide.json",
+      "sha256": "50c06b1df00637e404ad45224d2c4cea5c51fcacdeec6b899cff083b610fda58"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-plans-ai-pro-ultra-2026.json",
+      "sha256": "84aff65d1f7fe1c81aa3d68b7227cef850d4fbaa9934d5b90982bd3d5986e853"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-model-lineup-flash-pro.json",
+      "sha256": "a4f326ed19efe0cdd21e58fdcd8b777c831fb2f7f2ff0e0587c506d895b89903"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-web-desktop-guide.json",
+      "sha256": "d42700afd8ae1e52d7dc2212f716e2997634a78a8c089437adbeeb9cb4fa1244"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-mac-app-guide.json",
+      "sha256": "c9c4da99e43abbe0848ff34f98d24b826e14bbc66a4824ef16951970fe2b8839"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-on-android-assistant.json",
+      "sha256": "9a1d6c3942ece3c9760abbb8bd45ece4e9dd2090ce30e4326815a9a3beb5eb10"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-ios-app-guide.json",
+      "sha256": "e90be5e069c85b8a50018165f15eca7105c224f47eb7d9dce4aec7189c7a400c"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-in-chrome-guide.json",
+      "sha256": "d0da91398deb1390a7bd5fde5e713a385577e7a9b47f97d7b526d42feda5f239"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-prompt-writing-guide.json",
+      "sha256": "c84205fe2d39545ed4b7c8747be84b960b205efbe1612d87c62d6fbe23c3f3ff"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-file-analysis-guide.json",
+      "sha256": "88d00c8e43eae72e2a5ae5d93d82e96433dbd5732488ae7b733bd14ba99489d5"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-gems-custom-assistants.json",
+      "sha256": "08a2fb0f9178fc05488eeb96f22f1d886c82890f01067fe5efbf602126e263f5"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-canvas-guide.json",
+      "sha256": "4abc4e66d52f676c4af3004cbad8e1214595195e3903838da3ddee1d86ba4107"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-deep-research-guide.json",
+      "sha256": "d189003ea79b1f5918c04b6f45ed69486ef77a611d79993f45f48efb5c4d0504"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-live-voice-camera.json",
+      "sha256": "f0d988bb8b9142e57149ef62d7c292c8bbf9c3ed41eda891354196817f696076"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-privacy-activity-settings.json",
+      "sha256": "df1d25af7936b15c24407575fe63c01c6133902900e3370e3228d2a1be5bf476"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-spark-workflows-guide.json",
+      "sha256": "d46078008d12de90a77b1fcd0dd9837695d1df85ced391b16af348d8ed1d85b5"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-in-gmail-docs-sheets.json",
+      "sha256": "5b344fb856885d5028e2e45eaf8e9a563b163f122c5df9242d58b94f090e1fb0"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-for-google-sheets-formulas.json",
+      "sha256": "8381c21a38616d69d301480ee2ef7e7af55711452fe3251c2ba54ef0ac91d9ae"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-connected-apps-guide.json",
+      "sha256": "aecfb57659f9691c96d7571f89fceb61a86eb8b85e25153681b7293971217df3"
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-guide.json",
+      "sha256": "93637d8dfdc8e642ce42155903604ffe33b0cf93843e9dae10514b1353a9912f"
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-for-study-notes.json",
+      "sha256": "0909a9ff367fc92dd502ba3abda6087f4ebe8a337ace1a2b43abf060eef1ed37"
+    },
+    {
+      "path": "apps/api/app/guides/content/google-ai-mode-search.json",
+      "sha256": "380508b01c79e7579fb48a23b2b6655ca23a3d6d876793afd2a9441a5dd8e139"
+    },
+    {
+      "path": "apps/api/app/guides/content/nano-banana-image-editing.json",
+      "sha256": "c90c69765436d6cb81a94d310d5640fd33213f75802393bde189d126a999dbe8"
+    },
+    {
+      "path": "apps/api/app/guides/content/veo-video-generation-guide.json",
+      "sha256": "06fe438cdbcd769a8aaf8799b55db8dcf180d50cd99d07351a3cadf4633635ef"
+    },
+    {
+      "path": "apps/api/app/guides/content/google-workspace-ai-for-small-business.json",
+      "sha256": "593c1e7b491dc0641d7acd5d6f3df53062964ef735abb5a8d1af175d87b88d8f"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-for-travel-planning.json",
+      "sha256": "8ba73826891fbae6a07fedef2b2ef867bd83e232eac18597078a4a1c0f75d688"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-vs-chatgpt-vs-claude-daily.json",
+      "sha256": "afc06d407c399e5dee7b1f4e82f3746fbe1f9032709eb5a8000d438fd5e1edc8"
+    },
+    {
+      "path": "apps/api/app/guides/content/google-ai-overviews-for-site-owners.json",
+      "sha256": "66301afe3f77981cd8ebf62d14a21e1900d65bec1433e955527554c09a67a556"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-getting-started.json",
+      "sha256": "f19d49d5140a43baae39d3811a962ef116f5f05f2e4c93dd9ca014c04b163eed"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-authentication.json",
+      "sha256": "6f4155411980202975ba7e0de3ff5060f0dbf9f9e526be1a73b0e30f822cd591"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-command-reference.json",
+      "sha256": "878c962adb9de9dc2aeafb7482f5eec450716bf8a8fd73af8ce4f9123542a3a0"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-files-and-shell.json",
+      "sha256": "ae67f6e2e7d1919b8c68b65cea9637a1697c881e4e164e26872f96c46358a205"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-sessions-context.json",
+      "sha256": "45f66972d6c9b80200fb5475e188d0e611012db99457fd4380dcc7f0805f0a4e"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-coding-workflow.json",
+      "sha256": "b63dad057a83ed84cc018c4e88a9263fb6a3535d7463c141927053bd0803c51d"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-markdown-basics.json",
+      "sha256": "0a342063d289f3844d4049de252688585e056db64ad8cab0860bc20d3450c326"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-gemini-md.json",
+      "sha256": "ae6b20da0835f42c788430f68934d3fb54b7b013061a43ce25b362a9d4d85bd8"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-memory-hierarchy.json",
+      "sha256": "4495031be9f2022b204b50cfa3e8c8233170065bf5c934a21ea7d11ab9b03e5a"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-settings.json",
+      "sha256": "e74a2cd7196218419ba5bc33876c1c29d05d9aa5590b05b7b752e2ca9ceab4f5"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-permissions-sandbox.json",
+      "sha256": "f4aee0c92d750c9d2f900126c34b4a6de557d832ce15a0730f78b02779785ffe"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-custom-commands.json",
+      "sha256": "88da30d2288e46d7d57b04e56ea40d22a3771f09c2b4f4dc82e886a67538d904"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-mcp-extensions.json",
+      "sha256": "ee77a6f0139a4650d8bad6b06954c446af4b43cd815f5530d19a46b7a2e33fe9"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-agent-skills.json",
+      "sha256": "7e363a632dfe7bf68c9ec1e664890a3953854b8ef596ddbaaefdf77e7c17c3df"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-hooks.json",
+      "sha256": "39c7c70ded5f5e77b5e3e8248ab48fa601030f16f7ff3fcc2492ac702840f5e5"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-subagents.json",
+      "sha256": "774fa6f189266f3a7f555a06f75b70bbd8d96569f7639ac767bb8d22b832afd6"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-headless-automation.json",
+      "sha256": "014e06d6a694e4549a24205d2130b065679c4aef619ab6c7a5aeee7d9c5f66a8"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-troubleshooting.json",
+      "sha256": "3e0801091f721fba80e2a2b30b0b31700bdc12a6aba0d2951011f15c39e31acc"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-ai-studio-first-call.json",
+      "sha256": "9e83450de0928fb414564b20adfb5e63925100c0ac71051efe99d04be6acb645"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-files-structured-output.json",
+      "sha256": "a0089fda27c7fb8ff0bb2c8dcd0adfd7ea4802f7f59155061db62b9d2459b594"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-cost-errors-guide.json",
+      "sha256": "8b200c24d07a466300da91407463dded96925df663fe36f9f98cd7c301179e2b"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-document-assistant.json",
+      "sha256": "550b463e02fcd565816d4b071a70e9a07f2b79a2a04c53f77340652e442cf004"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-prompt-evaluation-workshop.json",
+      "sha256": "cb59bfbefb3468dad05190d09f811d682532ff72f2a6c759aa51808b18b21976"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-gems-support-playbook.json",
+      "sha256": "ea52a284f40efeeb49aa21aa72beb2498aa3ea118e8113b91b8977f762a4d1e4"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-canvas-budget-calculator.json",
+      "sha256": "0bf30d560a2a5fde364bd373d351ee2ea09bdab3113d48447ed7bb9d14e21176"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-workspace-meeting-handoff.json",
+      "sha256": "102e5376081f25f96b50801eaa5aa96a80ed7a1b96dc30327c61b94076a12e4a"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-mobile-field-notes.json",
+      "sha256": "d851b199e87d1dc6aa0680ddb61e511b85d08ef195afc62e34d911f6480ce0ad"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-spark-weekly-digest.json",
+      "sha256": "bfa3d2f0fb265dd1a0de38b3a8acf3c8341b7aff67df3b49c444a665c5250f65"
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-source-versioning.json",
+      "sha256": "b670e39c5797d797619ec31fa10c8e2efc015c18b52e17bb2c789b7874157676"
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-conflicting-sources.json",
+      "sha256": "dfcada4f9ce7447eec1ab93d8f3806b545c67e5fd3d37499e8ed7894cb40f218"
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-study-retrieval-practice.json",
+      "sha256": "1630f5889a1a9d8bbc56d2d8875c26025eba5f38c0a14ed199aff68a244a92a8"
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-paper-comparison-matrix.json",
+      "sha256": "e63eeff80f47a15d59e44404a2009f4ccbc43ab97d013570f548c6fdfc78aeb6"
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-multiformat-lesson-pack.json",
+      "sha256": "d1349290585f2a9d0692e7b24ac5dfc563d61e237f61dd89abb82ec2e41308c9"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-research-report-workshop.json",
+      "sha256": "48db1684d41e3e3735a0d3c0007e3aa6a318ab6fc92027ece39af3fbb5a697eb"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-image-consistent-series.json",
+      "sha256": "1f7ff4bf8f91f6e824f7a136bd3e1c96a7d44c33addc02d5798e00822d0d1f90"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-image-editing-debugging.json",
+      "sha256": "34d80f1ca6dcb08488bb68343c57fedc57ea55d40406a4f06170a8ede786dee6"
+    },
+    {
+      "path": "apps/api/app/guides/content/google-flow-storyboard-workshop.json",
+      "sha256": "5e26c2381d26872aa944ae93407d829085ef5a3368c0d9a587f3514c3c5d1bcd"
+    },
+    {
+      "path": "apps/api/app/guides/content/google-flow-shot-continuity.json",
+      "sha256": "430bd29247e9d19676a7bda3fe20730d233d3aab2c146614b69a6d18e1f6d0e7"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-sheets-data-audit-dashboard.json",
+      "sha256": "05b7d4d0289c676a0b1c17a3007da839cb6fe0815e49c098466493c5b4b1f4b1"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-content-production-handoff.json",
+      "sha256": "b6f1b9dcb337a2bf8a11c988db7484fd455266c8948d744a44fe4cad722698fc"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-memory-scope-lab.json",
+      "sha256": "454ca63f58be3ce70c01c0f96869d16fdd262175bb0b4ea167caf7c6d2a7db57"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-modular-project-rules.json",
+      "sha256": "cdf2e2fc4f850d9321c9ff36365871128366807ff274214e8e48013a36717af1"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-settings-debug-lab.json",
+      "sha256": "d0f945d385dc49a5c8b2d444a991334ab0d07e64f24784ef46625d1b73591054"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-custom-command-library.json",
+      "sha256": "7a6308c00b62b7400eca1890b21fea9d404d2e14ab61d7bd0ddcb9da4cf2b7e2"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-skill-extension-package.json",
+      "sha256": "0df547dfaec92ba088731f0cb2e68ca9d7702c86ab6eb62e8cfc9ca338197696"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-large-project-context.json",
+      "sha256": "d0a486a73b93446ad3ee9e3e1992b7df55cf3acb4956dfc09605a89b36f70ada"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-mcp-server-workshop.json",
+      "sha256": "14b1f0b1d10a9476f30a82c461b2cb1a45c9379643c187dd29be21912997bcab"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-hooks-quality-gates.json",
+      "sha256": "9d077f8157d7dc326588a2ec8bcb83e47fc5451a35ca13902dfb243ce6dcf529"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-subagent-review-workflow.json",
+      "sha256": "efb50ffc6f46411efad757832bd0c7e1d93f1d5fd7401fc794bf48054653c2ea"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-resumable-batch-pipeline.json",
+      "sha256": "256ba671bc607ada88ab840b93c2bdedf30b77b846bce6b9842130e44c98481d"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-github-actions-artifacts.json",
+      "sha256": "375bf273865a4c3910b411d02543e921a4396ed0d4a8de0e399d8fe1ebdc1c8a"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-docs-maintenance-project.json",
+      "sha256": "925d59bfbdae1d5fe3c81f6d70b9308deb25d9d6a8e52a325bb3c08e8066c35f"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-function-calling-workshop.json",
+      "sha256": "c3454da2d57980f6f1890abcedf6e514a081bafab6d3bce6785c412a17312c17"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-search-grounding-citations.json",
+      "sha256": "a69b16a2cbcd5d97ce982071b54f7fa30069c4fdd3cd464b65e077774c65b2cd"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-file-search-rag-project.json",
+      "sha256": "fb7fc160ab889b49e3f909239777a5b29f283833d0be822545ccb67f8abf57e8"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-context-cache-experiment.json",
+      "sha256": "db4146bbb42cc1edc2a2087b4fcb90689fcfc0c0c9c38c1d663a6525089c9c74"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-batch-recovery.json",
+      "sha256": "c0756c0d7a28856702c9c5c70d3f0db7709a4d38c3eaf3dea8538d7bffc87b28"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-document-service-capstone.json",
+      "sha256": "d240889c50620297f9a477d8618c2b1afa18a800bba5e84edec895a3c7d06bdd"
+    }
+  ]
+}
