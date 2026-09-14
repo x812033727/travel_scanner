@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-claude-code-tutorial-center
 title: Claude Code 教學中心：60 篇系列、導覽與可複製範例
-status: in-progress
+status: review
 priority: P2
 area: web
 owner: codex-claude-tutorials
@@ -225,3 +225,6 @@ scope:
 - 本機已完成，尚未建立 PR／合併。後續接手應先審閱本分支與 review-bundle.zip；部署、匯入、發布需要各自接續授權，不能把本機 preview 視為公開完成。
 
 - 交付 ZIP 已實際開啟驗證：338 個項目、337 個 SHA-256 全部一致，含 61 份內容、61 份 Markdown、61 張封面、61 張圖解與 3 份練習下載包；約 10.4 MB。整包 SHA-256：16077c1eb9682070e6af00cd682c85d63a3f7969eb02c80469da49de67993d6f。
+
+- 2026-09-14 使用者授權開 PR 並合併。已建立 PR #485：https://github.com/x812033727/travel_scanner/pull/485；整合 main 24af1490，兩個呈現元件保留 GuideImage 與系列功能的 imports。相關 API 重驗 23 passed／13 skipped，ruff 全 API 與 mypy app 328 個檔案通過；其餘檢查以 PR CI 及後續紀錄為準。
+- main 新帶入的三十篇文章任務仍以 review 狀態認領整個 content／public/guides 目錄，造成任務檢查範圍警告；其實際 #468 變更已在 main，本系列 61 個精確 slug 與其新增文章不同，未修改該批次檔案。
