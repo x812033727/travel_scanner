@@ -216,6 +216,49 @@
         {
           "type": "heading",
           "level": 2,
+          "text": "判讀練習：相同「讀不到」的三種原因"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "以下是虛構的排錯紀錄，供沒有外部帳號的讀者練習；不是 Google Drive 的實測結果或固定錯誤碼規則。先依已知證據選一個下一步，再對照解答，不把尚未執行的處理填成成功。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "案例",
+            "已知證據",
+            "先保留的未知"
+          ],
+          "rows": [
+            [
+              "A",
+              "在桌面 Installed 看得到套件；失敗發生於同台機器的 IDE，沒有工具呼叫",
+              "支援入口的新任務是否可用"
+            ],
+            [
+              "B",
+              "新任務有工具；服務回覆拒絕存取；同一外部帳號在原站也打不開指定文件",
+              "這個帳號是否應有文件權限"
+            ],
+            [
+              "C",
+              "原站已保存 Revision 3；工具確有呼叫卻回 Revision 2；來源連結待核對",
+              "是否讀到副本，或服務更新尚未反映"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A 先改在桌面版或 CLI 的新任務核對，因為 IDE 不支援 Plugins；還不能宣稱連線成功。B 先核對目標網址、帳號及文件分享對象，自己有權限時才修正練習文件的存取；重新安裝不會替帳號取得文件權限。C 先比較工具來源與指定網址，再記錄重新讀取的時間與版本；沒有依據就不能直接判定是模型記憶或快取。每例修正後都要回到同一份文件重測，不把整個帳號改成公開。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若三例都只有代理自然語言說「成功」，沒有可核對的工具結果，最後一欄統一保留「實際讀取未確認」。反過來，工具已清楚回報拒絕時，應記「已呼叫但失敗」，不能寫「工具未載入」。用這兩句話校正事故紀錄，就能把下一步交給正確的入口或服務維護者。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
           "text": "常見問題與恢復方式"
         },
         {
@@ -368,7 +411,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Record the date, OS, surface, version, full plugin name, source, sign-in method and failing step. Use the same record on Windows, macOS and Linux. Check the CLI version in a terminal and the desktop version in app information or its update screen. Desktop availability does not establish installation in the CLI on the same computer; record local and remote hosts separately. Enter your actual version rather than copying this article's research date."
+          "text": "Record date, OS, surface, version, plugin name/source, sign-in method and failing step. Use this format on Windows/macOS/Linux. Check CLI version in a terminal and desktop version in app information or updates. Record local and remote hosts separately: desktop installation does not prove CLI installation. Use actual versions, not the article's date."
         },
         {
           "type": "code",
@@ -384,7 +427,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Keep a shareable error message with email addresses, private document identifiers, tokens and cookies redacted. Authentication URLs may contain one-time codes and should not be copied into tutorials or support notes. Error type, time and reproduction steps are usually enough; use the provider's support process for server records. Change one condition at a time so a successful retest can be attributed to the account, new session or permission change."
+          "text": "Redact emails, private document IDs, tokens and cookies from shared errors. Never include authentication URLs containing one-time codes. Retain error type, time and reproduction; use provider support for server logs. Change one condition per retest to distinguish account, session and permission effects."
         },
         {
           "type": "heading",
@@ -433,7 +476,7 @@
         },
         {
           "type": "paragraph",
-          "text": "This is a diagnostic order, not a guaranteed error-code mapping. A 401 often concerns authentication and a 403 often concerns denied access, but interpret the provider's response. Missing files, denied access and changed sharing may produce similar messages. For a 429 or temporary outage, record any retry guidance and later retry the same small document instead of repeatedly sending large requests. Do not make an entire drive public to make a read succeed."
+          "text": "These are diagnostic steps, not guaranteed code mappings. Interpret provider responses: 401 often concerns authentication, 403 access, while missing files or changed sharing may produce similar errors. For 429/outages, follow returned retry guidance and retry the same small document later. Do not flood requests or make the drive public."
         },
         {
           "type": "heading",
@@ -442,7 +485,7 @@
         },
         {
           "type": "paragraph",
-          "text": "On desktop, open Plugins and inspect Installed and the plugin details. In the CLI, start codex, enter /plugins and check the current marketplace and installed entry; Space toggles an installed plugin. Test a new task after installation or re-enabling because an existing task may retain its earlier capabilities. Preserve the old task's results without deleting it or clearing the entire Codex configuration folder."
+          "text": "On desktop inspect Plugins, Installed and details. In CLI, start codex, enter /plugins, check marketplace and entry; Space toggles an installed plugin. After installing or enabling, test a fresh task because old tasks may retain earlier capabilities. Keep their results; do not delete tasks or clear Codex configuration."
         },
         {
           "type": "code",
@@ -455,7 +498,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "The IDE extension does not support Plugins, so a missing menu is not proof of a broken installation; test desktop or CLI. Chat/Work on iOS and Android can use plugins available on that surface, and Desktop only plugins cannot run on mobile. Linux desktop preview and individual plugins may have additional requirements. Record an unsupported surface rather than repeatedly reinstalling. See "
+              "text": "Plugins are unsupported in IDE; test desktop or CLI. iOS/Android Chat/Work only use available plugins; Desktop only cannot run on mobile. Linux preview and individual plugins may impose conditions. Record unsupported surfaces instead of reinstalling. See "
             },
             {
               "type": "article",
@@ -476,7 +519,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Open the practice document on the provider's own site using the same external account as the plugin and check the title and Revision. Access in a browser logged into another account does not prove access for the plugin's account. Correct a mismatch through the provided reconnection flow, then request the same URL in a fresh task. If only that document is denied, check its sharing with the owner; grant only the necessary account access to your own practice file."
+          "text": "Open the source document with the plugin's external account and verify title/Revision. Another browser account's access proves nothing about this account. For a mismatch, use reconnection and retry the same URL in a fresh task. For document-specific denial, check sharing with its owner; grant only necessary access to your practice file."
         },
         {
           "type": "rich_paragraph",
@@ -510,11 +553,54 @@
         },
         {
           "type": "paragraph",
-          "text": "Replace the angle-bracket placeholder with your practice document URL and select the plugin or capability using the supported picker. Inspect tool activity rather than only the sentence 'I read it.' Compare the returned title, source, current Revision, Document marker and counts with the provider's original. If no tool ran, check capability availability. If a tool returned a denial, preserve that error instead of allowing an answer reconstructed from earlier conversation."
+          "text": "Replace the placeholder URL and select the plugin/capability. Inspect actual tool activity; compare title, source, Revision, marker and counts against the original. No tool call means checking availability; a denied call means preserving that error, not reconstructing an answer from old conversation."
         },
         {
           "type": "paragraph",
-          "text": "Next, manually change the document's Revision and one verifiable count on the provider site without telling Codex the new count. Run the same prompt in another fresh task. If the result is stale, check for a copied-document URL, unsaved edits and a supported refresh or reread option, then record the delay. A correct second answer establishes this case, not a repair for every document and surface."
+          "text": "Manually change Revision and one count at the source without telling Codex the value. Use the same prompt in a fresh task. If stale, check copied URLs, saved edits and supported reread options; record delay. A correct retry verifies only this document and surface."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Diagnosis exercise: three different read failures"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "These are fictional incident records for readers without an external account. They are not Google Drive test results or universal error-code rules. Choose one next step from the evidence, then compare with the answers; do not mark an unperformed repair successful."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Case",
+            "Known evidence",
+            "Still unknown"
+          ],
+          "rows": [
+            [
+              "A",
+              "Desktop Installed lists the bundle; failure occurs in the IDE on the same machine with no tool call",
+              "Whether a new task in a supported surface works"
+            ],
+            [
+              "B",
+              "A new task has the tool; the service denies access; the same external account cannot open the document on the source site",
+              "Whether this account should have document access"
+            ],
+            [
+              "C",
+              "The source site saved Revision 3; an actual tool call returns Revision 2; the source link is not yet checked",
+              "Whether it read a copy or an update has not propagated"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A: try a fresh desktop/CLI task; IDE lacks plugin support and connection success is unknown. B: check URL, account and sharing; change only authorized practice access. Reinstalling grants no document rights. C: compare source URLs, then record reread time/revision; do not guess memory or caching. Retest the same private document."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the only evidence is the agent saying “success”, leave actual reading unconfirmed. Conversely, a tool that returned a denial was called and failed; do not label it “not loaded”. Using these distinctions in the incident record helps the next person inspect the correct surface or service."
         },
         {
           "type": "heading",
@@ -530,7 +616,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Use the incident record to restore the single condition you changed: enable a paused plugin, reconnect the intended practice account or restore the document's access. If a fresh task still fails after reconnection, provide the maintainer with the surface, plugin source, redacted error, one attempted fix, expected and actual result. Avoid endless reinstalls. Continue with "
+              "text": "Restore the one changed condition: enable the plugin, reconnect the intended account or restore practice access. If a fresh task still fails, give the maintainer surface, plugin source, redacted error, attempted change and expected/actual results. Avoid repeated reinstalls. Use "
             },
             {
               "type": "article",
@@ -540,7 +626,7 @@
             },
             {
               "type": "text",
-              "text": " for server configuration, keeping plugin-directory issues separate from custom-server files."
+              "text": " for server configuration, distinct from plugin-directory issues."
             }
           ]
         },
@@ -551,7 +637,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Completion means a reproducible record: original failure, identified layer, one change, a fresh tool result for the same document, no tool writes to the original, and the practice connection's retained or revoked state. Without a tool result, record a surface restriction or pending authentication rather than success. Product operations here are documented from official sources, not claimed as tested on your account, OAuth flow or physical phone; article-rendering tests do not prove a plugin connection."
+          "text": "Keep original failure, identified layer, one change, fresh same-document result, input preservation and retained/revoked connection state. Without a tool result, report a surface limitation or pending authentication. These operations are documented, not tested on your account, OAuth flow or physical phone; article rendering does not prove connectivity."
         },
         {
           "type": "rich_paragraph",
@@ -818,6 +904,49 @@
         {
           "type": "paragraph",
           "text": "原サイトで Revision と確認可能な件数を手動変更し、新件数は Codex に教えません。同じ要求を別の新規タスクで実行します。古ければコピー URL、未保存、再取得手段を確認し、遅延を記録します。二回目の正解はこのケースの証拠であり、全入口・全文書の修復とはしません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "判読練習：「読めない」を3つに分ける"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "以下は外部アカウントがなくても練習できる架空の障害記録です。Google Drive の実測結果や普遍的なエラーコード規則ではありません。証拠から次の1手を選び、解答と比べます。未実施の処置を成功と記録しません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "例",
+            "分かっている証拠",
+            "まだ不明なこと"
+          ],
+          "rows": [
+            [
+              "A",
+              "デスクトップの Installed にあるが、同じ端末の IDE で失敗しツール呼び出しなし",
+              "対応入口の新規タスクで使えるか"
+            ],
+            [
+              "B",
+              "新規タスクにツールがあり、サービスはアクセス拒否。同じ外部アカウントで原サイトも開けない",
+              "このアカウントに閲覧権があるべきか"
+            ],
+            [
+              "C",
+              "原サイトは Revision 3 を保存済み。実際のツール呼び出しは Revision 2 を返し、出典リンクは未確認",
+              "別コピーか、更新がまだ反映されていないか"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A は Plugins 非対応の IDE ではなく、デスクトップか CLI の新規タスクで確認します。接続成功はまだ未確認です。B は URL、アカウント、共有先を確認し、権限がある場合だけ練習文書のアクセスを修正します。再インストールでは閲覧権を得られません。C は返された出典と指定 URL を比べ、再取得の時刻と版を記録します。根拠なくモデルの記憶やキャッシュと断定しません。各変更後は同じ文書を再確認し、アカウント全体を公開しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "エージェントが自然言語で「成功」と言うだけなら、実際の読み取りは未確認にします。反対にツールが拒否を返した場合は「呼び出したが失敗」であり、「未ロード」ではありません。この区別を障害記録に反映すると、次の担当者が正しい入口やサービスを調査できます。"
         },
         {
           "type": "heading",
@@ -1121,6 +1250,49 @@
         {
           "type": "heading",
           "level": 2,
+          "text": "판독 연습: 읽기 실패의 세 가지 경우"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "외부 계정이 없는 독자도 연습할 수 있는 가상 장애 기록입니다. Google Drive 실측 결과나 보편적인 오류 코드 규칙이 아닙니다. 증거로 다음 한 단계를 고른 뒤 해설과 비교하고, 실행하지 않은 수정을 성공으로 기록하지 않습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "사례",
+            "확인된 증거",
+            "아직 모르는 점"
+          ],
+          "rows": [
+            [
+              "A",
+              "데스크톱 Installed에는 있지만 같은 기기의 IDE에서 실패하며 도구 호출이 없음",
+              "지원되는 화면의 새 작업에서 가능한지"
+            ],
+            [
+              "B",
+              "새 작업에 도구가 있지만 서비스가 접근을 거부하고 같은 외부 계정으로 원본 사이트도 열 수 없음",
+              "이 계정에 문서 접근 권한이 있어야 하는지"
+            ],
+            [
+              "C",
+              "원본 사이트는 Revision 3을 저장했지만 실제 도구 호출은 Revision 2를 반환하며 출처 링크는 미확인",
+              "복사본을 읽었거나 갱신이 반영되지 않은 것인지"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A는 Plugins를 지원하지 않는 IDE 대신 데스크톱이나 CLI의 새 작업에서 확인합니다. 연결 성공은 아직 미확인입니다. B는 URL, 계정, 공유 대상을 확인하고 권한이 있을 때만 연습 문서 접근을 수정합니다. 재설치가 문서 권한을 부여하지는 않습니다. C는 반환된 출처와 지정 URL을 비교한 뒤 재조회 시각과 버전을 기록합니다. 근거 없이 모델 기억이나 캐시로 단정하지 않습니다. 매번 같은 문서로 재검사하며 계정 전체를 공개하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "에이전트가 말로 ‘성공’이라고 한 것뿐이면 실제 읽기는 미확인으로 둡니다. 반대로 도구가 거부를 반환했다면 ‘호출했지만 실패’이지 ‘로드 안 됨’이 아닙니다. 이 구분을 장애 기록에 반영하면 다음 담당자가 올바른 화면이나 서비스를 점검할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
           "text": "자주 발생하는 문제와 복구"
         },
         {
@@ -1416,6 +1588,49 @@
         {
           "type": "paragraph",
           "text": "接著在服务原站手动把教材 Revision 改成新的值，并同步修改一个可核对的数量；不要把新数量告诉 Codex。再以同一提示词开新任务，确认结果是否更新。若仍回传旧内容，检查网址是否指向副本、服务保存是否完成、工具是否提供重新读取方式，并记录延迟。不能仅因第二次答案正确，就声称所有文件与所有入口都已修复。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "判读练习：相同「读不到」的三种原因"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "以下是虚构的排错纪录，供没有外部帐号的读者练习；不是 Google Drive 的实测结果或固定错误码规则。先依已知证据选一个下一步，再对照解答，不把尚未执行的处理填成成功。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "案例",
+            "已知证据",
+            "先保留的未知"
+          ],
+          "rows": [
+            [
+              "A",
+              "在桌面 Installed 看得到套件；失败发生于同台机器的 IDE，没有工具呼叫",
+              "支援入口的新任务是否可用"
+            ],
+            [
+              "B",
+              "新任务有工具；服务回复拒绝存取；同一外部帐号在原站也打不开指定文件",
+              "这个帐号是否应有文件权限"
+            ],
+            [
+              "C",
+              "原站已保存 Revision 3；工具确有呼叫却回 Revision 2；来源连结待核对",
+              "是否读到副本，或服务更新尚未反映"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A 先改在桌面版或 CLI 的新任务核对，因为 IDE 不支援 Plugins；还不能宣称连线成功。B 先核对目标网址、帐号及文件分享对象，自己有权限时才修正练习文件的存取；重新安装不会替帐号取得文件权限。C 先比较工具来源与指定网址，再记录重新读取的时间与版本；没有依据就不能直接判定是模型记忆或快取。每例修正后都要回到同一份文件重测，不把整个帐号改成公开。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若三例都只有代理自然语言说「成功」，没有可核对的工具结果，最后一栏统一保留「实际读取未确认」。反过来，工具已清楚回报拒绝时，应记「已呼叫但失败」，不能写「工具未载入」。用这两句话校正事故纪录，就能把下一步交给正确的入口或服务维护者。"
         },
         {
           "type": "heading",

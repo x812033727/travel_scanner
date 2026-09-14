@@ -1,15 +1,16 @@
 """Verify the exact published skill files without installing a skill or calling a model."""
 import hashlib
 import json
-from pathlib import Path
 import subprocess
 import tempfile
-from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
+from pathlib import Path
+from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parents[2]
 MODULES = ROOT / "docs/codex-learning/deep/modules"
 resource = json.loads((MODULES / "48.json").read_text(encoding="utf-8"))
 testing = json.loads((MODULES / "49.json").read_text(encoding="utf-8"))
+templates = json.loads((MODULES / "51.json").read_text(encoding="utf-8"))
 
 
 def sample(module, label):
@@ -26,10 +27,11 @@ files = {
 }
 report = {"environment": "Windows / Node.js " + subprocess.check_output(["node", "--version"], text=True).strip(),
           "scope": "Exact reference files, no installed skill, no Codex model or automatic invocation",
-          "moduleHashes": {str(i): hashlib.sha256((MODULES / f"{i}.json").read_bytes()).hexdigest() for i in [48, 49]}, "checks": []}
+          "moduleHashes": {str(i): hashlib.sha256((MODULES / f"{i}.json").read_bytes()).hexdigest() for i in [48, 49, 51]}, "checks": []}
 with tempfile.TemporaryDirectory(prefix="codex-skill-reference-") as temporary:
     root = Path(temporary).resolve()
     assert root.parent == Path(tempfile.gettempdir()).resolve()
+    assert root.name.startswith("codex-skill-reference-")
     for name, body in files.items():
         target = root / name
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -37,7 +39,7 @@ with tempfile.TemporaryDirectory(prefix="codex-skill-reference-") as temporary:
     script = root / ".agents/skills/todo-summary/scripts/count-tasks.mjs"
 
     def execute(args, expected):
-        result = subprocess.run(["node", *args], cwd=root, capture_output=True, text=True, encoding="utf-8", timeout=60)
+        result = subprocess.run(["node", *args], cwd=root, capture_output=True, text=True, encoding="utf-8", timeout=60, check=False)
         assert result.returncode == expected, result.stdout + result.stderr
         return result
 
@@ -67,6 +69,45 @@ with tempfile.TemporaryDirectory(prefix="codex-skill-reference-") as temporary:
     for relative in re.findall(r"\]\(([^)]+)\)", files[".agents/skills/todo-summary/SKILL.md"]):
         assert (skill_root / relative).is_file()
     report["checks"].append("All three SKILL.md resource references resolve to the exact authored files")
+    wrong_cwd = subprocess.run(
+        ["node", "scripts/count-tasks.mjs", "data/tasks.json"],
+        cwd=skill_root, capture_output=True, text=True, encoding="utf-8", timeout=60, check=False,
+    )
+    assert wrong_cwd.returncode == 1 and "ENOENT" in wrong_cwd.stderr
+    assert wrong_cwd.stdout == ""
+    assert (skill_root / "../../..").resolve() == root
+    result = execute([str(script), "data/tasks.json"], 0)
+    assert json.loads(result.stdout) == {"total": 3, "active": 1, "completed": 2}
+    report["checks"].append("48: exact wrong-cwd example finds the script but rejects the input path; returning to the lab root restores 3/1/2")
+    next_input = sample(resource, "data/tasks-next.json")
+    next_path = root / "data/tasks-next.json"
+    next_path.write_text(next_input, encoding="utf-8", newline="\n")
+    result = execute([str(script), "data/tasks-next.json"], 0)
+    assert json.loads(result.stdout) == {"total": 2, "active": 2, "completed": 0}
+    result = execute([str(script), "data/tasks.json"], 0)
+    assert json.loads(result.stdout) == {"total": 3, "active": 1, "completed": 2}
+    assert next_path.read_bytes() == next_input.encode()
+    assert all((root / name).read_bytes() == body for name, body in initial.items())
+    report["checks"].append("48: second exact input returns 2/2/0, original still returns 3/1/2; both files and all original resources remain unchanged")
+
+    adapted = sample(templates, "任務副本：adapted-task.md")
+    for fixture, status, passes, failures in [("expected", 0, 3, 0), ("broken", 1, 2, 1)]:
+        example = root / ("template-" + fixture)
+        example.mkdir()
+        for source in (ROOT / "docs/codex-learning/practice" / fixture).iterdir():
+            if source.is_file():
+                (example / source.name).write_bytes(source.read_bytes())
+        before = {p.name: p.read_bytes() for p in example.iterdir()}
+        assert len(before) == 5 and "package.json" not in before
+        (example / "adapted-task.md").write_text(adapted, encoding="utf-8", newline="\n")
+        result = subprocess.run(
+            ["node", "--test-reporter=tap", "--test", "core.test.mjs"],
+            cwd=example, capture_output=True, text=True, encoding="utf-8", timeout=60, check=False,
+        )
+        assert result.returncode == status
+        assert f"# pass {passes}" in result.stdout and f"# fail {failures}" in result.stdout
+        assert all((example / name).read_bytes() == body for name, body in before.items())
+        report["checks"].append(f"51: exact adapted task command on {fixture} returns {passes} passes/{failures} failures with all five source files unchanged")
 
 # A deterministic archive is a practice artifact, not an installation operation.
 archive_path = ROOT / "apps/web/public/guides/codex-skill-resources/todo-summary-practice.zip"

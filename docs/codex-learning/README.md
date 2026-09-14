@@ -6,7 +6,7 @@
 
 本系列有一個總目錄與 60 篇獨立教學，每篇提供繁中、簡中、英文、日文、韓文，共 61 個內容包、305 份語言文件。路由為 `/{locale}/life/codex-learning-hub` 與既有 `/life/<slug>`。**沒有 push、PR、匯入、正式發布或部署**。使用者已授權全部完成且驗收後，再開 PR、合併與部署；完成前不提前交付部分 PR。
 
-已補強 A 至 F 單元的 32 篇，加上原五篇代表稿，共 **37 篇有定向補強，23 篇待逐篇核對**。最新 [F 審核紀錄](evidence/unit-f-depth-review.json)包含雙專案三任務、程式失敗路徑、同名任務去重反例、取消完成回歸、Git 暫存快照及 Review／受測版本；[E](evidence/unit-e-depth-review.json)、[C](evidence/unit-c-depth-review.json)、[D 紀錄](evidence/unit-d-depth-review.json)保留先前補強。下一單元為 G，全部仍待完整五語終審與最終頁面驗收。
+已補強 A 至 G 單元的 37 篇，加上原五篇代表稿，共 **42 篇有定向補強，18 篇待逐篇核對**。最新 [G 審核紀錄](evidence/unit-g-depth-review.json)包含技能相對路徑、雙輸入統計、明確選用政策、插件分層證據、排錯例題及範本修正；[F](evidence/unit-f-depth-review.json)、[E](evidence/unit-e-depth-review.json)、[C](evidence/unit-c-depth-review.json)、[D 紀錄](evidence/unit-d-depth-review.json)保留先前補強。下一單元為 H，全部仍待完整五語終審與最終頁面驗收。
 
 ## 內容與發布來源
 

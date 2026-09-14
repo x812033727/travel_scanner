@@ -120,10 +120,10 @@
     {
       "type": "p",
       "text": [
-        "尖括號內容是待填欄位，不是直接貼給終端機的語法。以[修 Bug](article:codex-debugging)練習為例，寫出「同名但 ID 不同的兩筆任務」，比只寫「統計怪怪的」更容易重現。Actual 欄只記看見的結果；原因尚未確定就不要預填成「資料庫壞了」。沒有錯誤訊息可以寫 none observed，並補畫面行為與步驟，不能自行編造堆疊追蹤。",
-        "Angle-bracket text marks fields to fill, not terminal syntax. In the [Bug exercise](article:codex-debugging), 'two tasks with the same title but different IDs' is more reproducible than 'the count is odd.' Actual contains observations, not an unverified diagnosis such as a broken database. If no error appeared, write none observed and describe the behavior and steps rather than inventing a stack trace.",
-        "山括弧は記入欄であり端末構文ではありません。[修正実習](article:codex-debugging)なら「同名で ID が異なる二件」が「集計が変」より再現できます。Actual は観測だけを書き、未確定の原因を断定しません。エラーがなければ none observed と動作を記し、架空のトレースを作りません。",
-        "꺾쇠 안은 채울 항목이며 터미널 문법이 아닙니다. [버그 실습](article:codex-debugging)에서는 통계가 이상하다는 말보다 제목은 같고 ID가 다른 두 작업이라는 설명이 재현에 유리합니다. Actual에는 관찰만 적고 확인하지 않은 원인을 단정하지 마세요. 오류가 없으면 none observed와 동작을 적고 스택 추적을 만들어 내지 않습니다."
+        "尖括號內容是待填欄位，不是直接貼給終端機的語法。以[修 Bug](article:codex-debugging)練習為例，寫出「broken 副本，新增 Read 與 Build，只完成 Read，Completed 卻顯示 Build」，才能重現同一個錯誤。Actual 欄只記自己看到的結果；尚未操作就填 NOT RUN，不抄範例當實測。原因未確定時不預填「資料庫壞了」；沒有錯誤訊息可寫 none observed，再補畫面行為與步驟。",
+        "Angle-bracket text marks fields to fill, not terminal syntax. For the [bug exercise](article:codex-debugging), specify the broken copy, adding Read and Build, completing only Read, and Completed incorrectly showing Build. Actual contains your own observations; use NOT RUN if unperformed instead of treating the example as a test. Do not prefill an unconfirmed database diagnosis. If no error message appeared, write none observed and describe the behavior and steps.",
+        "山括弧は記入欄であり、ターミナルの構文ではありません。[不具合の練習](article:codex-debugging)なら「broken のコピーで Read と Build を追加し、Read だけ完了にすると、Completed に Build が出る」と書きます。Actual は自分の観測だけとし、未実施なら NOT RUN にして例を実測扱いしません。未確定のデータベース故障を原因に書かず、エラー表示がなければ none observed と動作・手順を記録します。",
+        "꺾쇠 안은 채울 항목이며 터미널 문법이 아닙니다. [버그 연습](article:codex-debugging)은 ‘broken 복사본에 Read와 Build를 추가하고 Read만 완료했는데 Completed에 Build가 나옴’처럼 적습니다. Actual에는 직접 관찰한 내용만 적고 미실행이면 NOT RUN으로 두어 예시를 실측처럼 쓰지 않습니다. 확인하지 않은 데이터베이스 고장을 원인으로 단정하지 말고 오류 메시지가 없으면 none observed와 동작 및 단계를 적습니다."
       ]
     },
     {
@@ -231,6 +231,44 @@
         "Fill configured, authentication, capability and actual invocation separately. Use not required for inapplicable authentication and not checked for unverified fields. A configuration file does not prove a working connection, and prefilled true values make a report misleading. With [Plugins](article:codex-plugins) or [MCP](article:codex-mcp), record only the tested surface and host; an identically named server elsewhere can have different settings.",
         "設定、認証、能力、実呼出しを別記します。不要な認証は not required、未確認は not checked とします。設定ファイルだけで接続成功とせず true を予記しません。[Plugins](article:codex-plugins) や [MCP](article:codex-mcp) は今回の入口とホストを記録し、他機の同名設定を同一視しません。",
         "설정·인증·기능·실제 호출을 따로 채웁니다. 불필요한 인증은 not required, 미확인은 not checked로 적으세요. 설정 파일만으로 연결 성공을 판단하거나 true를 미리 넣지 않습니다. [Plugins](article:codex-plugins)나 [MCP](article:codex-mcp)는 이번 진입점과 호스트만 기록하며 다른 PC의 같은 이름 설정을 동일하게 보지 않습니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "把互相衝突的範本改成一個任務",
+        "Turn a contradictory template into one task",
+        "矛盾するテンプレートを1つの依頼へ直す",
+        "서로 충돌하는 템플릿을 하나의 작업으로 고치기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "判讀這段錯誤需求：「只讀審查 expected，但順便修好並提交；用 npm test 驗證，回報三項全過」。它同時要求只讀與改檔、在沒有 package.json 的教材套用錯誤命令，還預填未執行的結果。這次選擇先做唯讀確認，把下方完整版本另存為練習根目錄的 adapted-task.md，保留六份原始空白範本。",
+        "Consider this faulty request: “Review expected read-only, but also fix and commit it; run npm test and report three passes.” It mixes reading with editing, applies a command to a fixture without package.json, and preassigns an unobserved result. Choose a read-only check for this run and save the complete version below as adapted-task.md in the practice root, preserving the six original templates.",
+        "誤った依頼「expected を読み取り専用で審査し、ついでに修正してコミット。npm test で3件通過と報告」を考えます。読み取りと変更が矛盾し、package.json のない教材へ不適切なコマンドを指定し、未実施の結果も決めています。今回は読み取り専用の確認を選び、次の完全な依頼を練習ルートの adapted-task.md に保存します。元の6つのテンプレートは保持します。",
+        "잘못된 요청인 ‘expected를 읽기 전용으로 검토하면서 수정하고 커밋도 해줘. npm test로 세 개 통과했다고 보고해’를 봅니다. 읽기와 수정이 충돌하고 package.json이 없는 자료에 잘못된 명령을 지정하며 관찰하지 않은 결과를 미리 정합니다. 이번에는 읽기 전용 확인을 선택하고 아래 완성 요청을 연습 루트의 adapted-task.md로 저장합니다. 원래 템플릿 여섯 개는 보존합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "# Read-only practice check\nGoal: Verify the existing Active-filter behavior in this expected copy.\nConfirm the absolute working directory and the five expected source files first.\nRead core.mjs and core.test.mjs; explain the filter condition and test coverage.\nRun node --test core.test.mjs and report the actual exit code, passes and failures.\nDo not edit, stage, commit, push or deploy anything in this task.\nBrowser behavior: NOT RUN unless actually checked; core tests do not prove it.\nIf required files are missing, report the paths and stop before guessing commands.\nDelivery: observed evidence, unverified behavior and the next smallest step.\n",
+      "label": [
+        "任務副本：adapted-task.md",
+        "Task copy: adapted-task.md",
+        "タスク用コピー：adapted-task.md",
+        "작업 사본: adapted-task.md"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "用乾淨 expected 副本執行時，核心測試的參考結果為 3 過 0 敗；你仍要填本次輸出，所有程式檔保持不變。若拿到 broken 副本，應如實回報 2 過 1 敗及起點不同，先修正路徑或另立修復任務，不因範本說 expected 就忽略實際故障。這正是[官方提示詞建議](https://learn.chatgpt.com/docs/prompting)中目標、背景、邊界與可使用成果在本教材的具體運用。",
+        "A clean expected copy has a reference result of three passes and zero failures; still record your current output and leave source files unchanged. A broken copy should instead be reported as two passes and one failure with a different starting state. Correct the path or create a separate repair task instead of ignoring the failure because the template said expected. This applies the [official prompting guidance](https://learn.chatgpt.com/docs/prompting) on goals, context, boundaries and usable outcomes to this fixture.",
+        "クリーンな expected の参考結果は3件通過・0件失敗ですが、今回の出力を記録し、ソースは変更しません。broken を開いたなら2件通過・1件失敗と開始状態の違いを報告し、パスを直すか別の修正タスクを作ります。テンプレートに expected とあるだけで失敗を無視しません。これは[公式の依頼方法](https://learn.chatgpt.com/docs/prompting)にある目標、背景、境界、使える成果を教材へ適用した例です。",
+        "깨끗한 expected 복사본의 참고 결과는 3개 통과, 0개 실패지만 현재 출력을 기록하고 소스 파일은 그대로 둡니다. broken을 열었다면 2개 통과, 1개 실패와 시작 상태가 다름을 보고하고 경로를 고치거나 별도 수정 작업을 만듭니다. 템플릿에 expected라고 적혔다고 실제 실패를 무시하지 않습니다. 이는 목표, 배경, 경계, 사용할 결과를 다루는 [공식 프롬프트 안내](https://learn.chatgpt.com/docs/prompting)를 이 자료에 적용한 예입니다."
       ]
     },
     {

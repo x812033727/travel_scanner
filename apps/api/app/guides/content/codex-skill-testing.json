@@ -199,6 +199,43 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "只允許明確選用的對照練習"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在這份獨立的 todo-summary 技能中建立 agents/openai.yaml，使用下面設定。若已有此檔，先保存副本並只合併 policy 欄位，保留原 interface 與 dependencies。依"
+            },
+            {
+              "type": "link",
+              "text": "官方技能文件",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": "，allow_implicit_invocation 為 false 時不依提示自動選用，但明確提及技能仍可使用。它控制選用方式，不是沙盒，也不會授予工具權限。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "agents/openai.yaml：合併片段",
+          "language": "yaml",
+          "code": "policy:\n  allow_implicit_invocation: false\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存後用兩個新任務重測：「統計 data/tasks-next.json 的待辦數量」不手動選技能；另一個則明確選 todo-summary 並指定同一檔案。前者不應自動選到這份技能，後者應仍可選用；兩者分別記錄實際讀取與工具活動。前者即使以普通檔案工具自行算對，也不能寫成技能已觸發。若更新未反映，重新啟動 Codex 後再測，仍保留未確認欄位。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個比較需要在支援的實際入口執行；YAML 可解析或八項 Node 測試通過，都不能代替選用政策驗證。結束時只移除自己本次新建的 openai.yaml，或從備份恢復原檔，再開新任務確認原設定。若只想保留明確選用，就保留 false，並在驗收紀錄寫下這個決定及檔案位置。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "步驟 5：記錄、修正，再測一次"
         },
@@ -333,7 +370,7 @@
         },
         {
           "type": "paragraph",
-          "text": "'All tests pass' has two scopes here. The eight automated tests check the program's behavior on specified inputs. Skill acceptance additionally observes selection, file reads, tool records and replies. Record them separately so Node.js success never becomes a claim that Codex activated the skill correctly. No specific model is required; record your actual surface and available settings."
+          "text": "Eight automated tests check the program's specified inputs. Skill acceptance separately checks selection, file reads, tool records and replies; Node.js success does not prove activation. No specific model is required: record your actual surface and available settings."
         },
         {
           "type": "heading",
@@ -469,6 +506,43 @@
         {
           "type": "paragraph",
           "text": "Use the desktop Skills entry or @ picker; in CLI/IDE use /skills or $. Implicit selection depends on description and context, so non-selection does not by itself establish an installation failure. First verify explicit selection, then inspect whether description names the use case and exclusions. Do not broaden it to all tasks, which would load this workflow for unrelated work."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Compare explicit-only invocation"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Create agents/openai.yaml in this isolated todo-summary skill with the setting below. If it exists, save a copy and merge only the policy field, preserving interface and dependencies. The "
+            },
+            {
+              "type": "link",
+              "text": "official skill documentation",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": " says false disables implicit invocation while explicit mentions still work. This controls invocation, not sandboxing or tool permissions."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "agents/openai.yaml: merge fragment",
+          "language": "yaml",
+          "code": "policy:\n  allow_implicit_invocation: false\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use two fresh tasks with data/tasks-next.json: one requests counts without selecting a skill; the other explicitly selects todo-summary. Expect no implicit invocation in the first and explicit use in the second. Record reads and tool activity: correct counts from ordinary file tools do not prove skill use. If unchanged, restart Codex and retest; retain unconfirmed fields."
+        },
+        {
+          "type": "paragraph",
+          "text": "Verify this policy on a supported surface; parsed YAML or eight passing Node tests cannot prove it. Afterwards remove only this exercise's new openai.yaml, or restore its backup, then check a fresh task. To retain explicit-only use, keep false and record the decision and path."
         },
         {
           "type": "heading",
@@ -745,6 +819,43 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "明示的な呼び出しだけを許す比較練習"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "独立した todo-summary スキル内に、次の設定で agents/openai.yaml を作ります。既存ならコピーを保存し、interface と dependencies を保ったまま policy だけを統合します。"
+            },
+            {
+              "type": "link",
+              "text": "公式スキル文書",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": "では false にすると暗黙の呼び出しを無効にし、明示的な指定は引き続き使えるとしています。これは呼び出し方の制御であり、サンドボックスやツール権限の付与ではありません。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "agents/openai.yaml：統合用の断片",
+          "language": "yaml",
+          "code": "policy:\n  allow_implicit_invocation: false\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存後、data/tasks-next.json を使う新規タスクを2つ作ります。一方はスキルを選ばず件数を依頼し、もう一方は todo-summary を明示的に指定します。前者はこのスキルを暗黙に選ばず、後者は利用できるはずです。読み取りとツール活動を別々に記録します。通常のファイルツールで正しく計算できても、スキルを呼び出した証拠ではありません。更新が反映されなければ Codex を再起動して再確認し、未確認欄は残します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この比較は対応する製品の実際の入口で実施する必要があります。YAML の解析成功や Node の8件通過では呼び出し方を検証できません。終了時は今回新規作成した openai.yaml だけを削除するか、元のファイルをバックアップから復元し、新規タスクで元設定を確認します。明示的な指定だけにしたいなら false を残し、決定とファイル位置を記録します。"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "手順5：記録、修正、再検証"
         },
@@ -1018,6 +1129,43 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "명시적 호출만 허용하는 비교 연습"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 독립 todo-summary 스킬에 아래 설정으로 agents/openai.yaml을 만듭니다. 이미 있다면 복사본을 저장하고 interface와 dependencies를 보존하면서 policy만 병합합니다. "
+            },
+            {
+              "type": "link",
+              "text": "공식 스킬 문서",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": "에 따르면 false는 암시적 호출을 막지만 명시적 언급은 계속 허용합니다. 호출 방식의 설정이지 샌드박스나 도구 권한 부여가 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "agents/openai.yaml: 병합할 조각",
+          "language": "yaml",
+          "code": "policy:\n  allow_implicit_invocation: false\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "저장 후 data/tasks-next.json을 대상으로 새 작업 두 개를 만듭니다. 하나는 스킬 선택 없이 개수만 요청하고, 다른 하나는 todo-summary를 명시적으로 선택합니다. 전자는 이 스킬을 자동 선택하지 않아야 하고 후자는 사용할 수 있어야 합니다. 파일 읽기와 도구 활동을 각각 기록하세요. 일반 파일 도구로 숫자를 맞혔다고 스킬 호출의 증거가 되는 것은 아닙니다. 갱신이 반영되지 않으면 Codex를 재시작해 재검사하고 미확인 항목은 남깁니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 비교는 지원되는 실제 제품에서 실행해야 합니다. YAML 파싱 성공이나 Node 테스트 8개 통과로 호출 정책을 검증할 수는 없습니다. 마칠 때 이번에 새로 만든 openai.yaml만 제거하거나 기존 파일을 백업에서 복원하고 새 작업에서 원래 설정을 확인합니다. 명시적 호출만 원하면 false를 유지하고 그 결정과 파일 경로를 기록합니다."
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "5단계: 기록, 수정, 재검증"
         },
@@ -1288,6 +1436,43 @@
         {
           "type": "paragraph",
           "text": "桌面版透过 Skills 入口或 @ 选择；CLI／IDE 透过 /skills 或 $。自动选择依描述与上下文判断，没有选到不一定表示安装失败；先确认明确选取案例是否成功，再看 description 是否包含真正的用途与排除条件。不要把描述扩大成「所有任务都使用」，那会让不相关工作也载入这个技能。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "只允许明确选用的对照练习"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在这份独立的 todo-summary 技能中建立 agents/openai.yaml，使用下面设定。若已有此档，先保存副本并只合并 policy 栏位，保留原 interface 与 dependencies。依"
+            },
+            {
+              "type": "link",
+              "text": "官方技能文件",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": "，allow_implicit_invocation 为 false 时不依提示自动选用，但明确提及技能仍可使用。它控制选用方式，不是沙盒，也不会授予工具权限。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "agents/openai.yaml：合并片段",
+          "language": "yaml",
+          "code": "policy:\n  allow_implicit_invocation: false\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存后用两个新任务重测：「统计 data/tasks-next.json 的待办数量」不手动选技能；另一个则明确选 todo-summary 并指定同一档案。前者不应自动选到这份技能，后者应仍可选用；两者分别记录实际读取与工具活动。前者即使以普通档案工具自行算对，也不能写成技能已触发。若更新未反映，重新启动 Codex 后再测，仍保留未确认栏位。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这个比较需要在支援的实际入口执行；YAML 可解析或八项 Node 测试通过，都不能代替选用政策验证。结束时只移除自己本次新建的 openai.yaml，或从备份恢复原档，再开新任务确认原设定。若只想保留明确选用，就保留 false，并在验收纪录写下这个决定及档案位置。"
         },
         {
           "type": "heading",

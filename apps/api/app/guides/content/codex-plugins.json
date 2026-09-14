@@ -238,6 +238,39 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "加入未曾告訴模型的辨識值"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成兩次固定數字比對後，在原服務把 Revision 改成 3，再自行想一個新的無敏感資訊代號，取代 Document marker 的範例值；數量維持第二輪的 3／1／2。代號只寫在文件，先不要貼進 Codex 的對話。建立新任務，仍使用前面的文件網址及讀取要求。應由真實工具結果取得你自訂的代號，才可將這一輪記成「新內容讀取已核對」。只回覆本篇範例代號或第二輪舊版本都不通過。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把下面欄位填入自己的筆記；私人文件網址留在自己的紀錄，公開求助用代稱。Installed 只填套件狀態，Connected 只填連線狀態，Fresh read 要另外引用讀取時間、來源與辨識值。移除插件後，即使看不到技能，也不能據此把 Connected 自動改成 false；依"
+            },
+            {
+              "type": "link",
+              "text": "官方插件文件",
+              "url": "https://learn.chatgpt.com/docs/plugins"
+            },
+            {
+              "type": "text",
+              "text": "核對獨立 MCP 連線，必要時再處理本次練習建立的授權。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "個人紀錄：plugin-read-verification.md",
+          "language": "markdown",
+          "code": "# Plugin read verification\nSurface / host / date:\nPlugin ID and source:\nPractice document alias:\nInstalled: <observed state>\nConnected: <observed state or unconfirmed>\nTool available in this new task: <evidence>\nFresh read time and source: <tool evidence or NOT RUN>\nRevision and private practice marker: <actual result, do not copy the tutorial value>\nSource unchanged by the tool: <verification>\nBundle removed: <observed or NOT RUN>\nSeparate connection disconnected: <observed or NOT RUN>\n"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "步驟 5：停用、移除與斷開連線"
         },
@@ -531,6 +564,39 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "加入未曾告诉模型的辨识值"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成两次固定数字比对后，在原服务把 Revision 改成 3，再自行想一个新的无敏感资讯代号，取代 Document marker 的范例值；数量维持第二轮的 3／1／2。代号只写在文件，先不要贴进 Codex 的对话。建立新任务，仍使用前面的文件网址及读取要求。应由真实工具结果取得你自订的代号，才可将这一轮记成「新内容读取已核对」。只回复本篇范例代号或第二轮旧版本都不通过。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把下面栏位填入自己的笔记；私人文件网址留在自己的纪录，公开求助用代称。Installed 只填套件状态，Connected 只填连线状态，Fresh read 要另外引用读取时间、来源与辨识值。移除插件后，即使看不到技能，也不能据此把 Connected 自动改成 false；依"
+            },
+            {
+              "type": "link",
+              "text": "官方插件文件",
+              "url": "https://learn.chatgpt.com/docs/plugins"
+            },
+            {
+              "type": "text",
+              "text": "核对独立 MCP 连线，必要时再处理本次练习建立的授权。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "个人纪录：plugin-read-verification.md",
+          "language": "markdown",
+          "code": "# Plugin read verification\nSurface / host / date:\nPlugin ID and source:\nPractice document alias:\nInstalled: <observed state>\nConnected: <observed state or unconfirmed>\nTool available in this new task: <evidence>\nFresh read time and source: <tool evidence or NOT RUN>\nRevision and private practice marker: <actual result, do not copy the tutorial value>\nSource unchanged by the tool: <verification>\nBundle removed: <observed or NOT RUN>\nSeparate connection disconnected: <observed or NOT RUN>\n"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "步骤 5：停用、移除与断开连线"
         },
@@ -650,7 +716,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Plugins distribute capabilities and can bundle "
+              "text": "Plugins bundle "
             },
             {
               "type": "article",
@@ -670,7 +736,7 @@
             },
             {
               "type": "text",
-              "text": " and supporting components. Skills describe a workflow; MCP tools read or operate services. Installation does not establish service authentication or immediate availability of every tool. Separating these states helps diagnose an installed plugin that cannot read a document."
+              "text": " and supporting components. Skills describe workflows; MCP tools access services. Installation, service authentication and tool availability are separate states: an installed plugin may still be unable to read a document."
             }
           ]
         },
@@ -684,7 +750,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Open Plugins on desktop and inspect the available OpenAI, workspace, Personal or Installed categories. On Windows, macOS and Linux, check the desktop version and plugin-specific requirements; verify actual availability in a Linux preview's local directory. A public description page does not establish executable support in the current environment. See "
+              "text": "Open Plugins and inspect the OpenAI, workspace, Personal and Installed categories shown. On Windows/macOS/Linux, check app version and plugin requirements; confirm Linux-preview availability locally. A public listing does not prove support. See "
             },
             {
               "type": "article",
@@ -694,13 +760,13 @@
             },
             {
               "type": "text",
-              "text": " if you need a desktop entry point."
+              "text": " for desktop setup."
             }
           ]
         },
         {
           "type": "paragraph",
-          "text": "In a terminal on any of the three operating systems, enter your practice folder, start codex, then type /plugins inside its interactive session. codex is a shell command; /plugins is an interactive slash command, so perform them separately. The IDE extension currently does not support Plugins. Use a supported desktop or CLI surface instead of expecting the CLI menu inside the editor."
+          "text": "On Windows/macOS/Linux, enter your practice folder in a terminal, run codex, then enter /plugins inside Codex. The first is a shell command, the second an interactive command. Plugins are unsupported in the IDE extension; use desktop or CLI."
         },
         {
           "type": "code",
@@ -824,12 +890,45 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "Add a marker the model has not been told"
+        },
+        {
+          "type": "paragraph",
+          "text": "After the two fixed-count checks, change Revision to 3 in the source service and replace Document marker with a new non-sensitive marker of your own; keep the second round's counts at 3/1/2. Put the marker only in the document, not in the Codex prompt. Start a new task with the same document URL and earlier read request. Count this round as verified only when a real tool result supplies your new marker. Repeating the article's marker or the previous revision does not pass."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Fill the record below in your own notes; keep private URLs private and use aliases in public reports. Installed records the bundle, Connected the service connection, and Fresh read needs its own read time, source and marker evidence. After uninstalling, a missing skill does not automatically make Connected false. Check separately connected MCP integrations using the "
+            },
+            {
+              "type": "link",
+              "text": "official plugin documentation",
+              "url": "https://learn.chatgpt.com/docs/plugins"
+            },
+            {
+              "type": "text",
+              "text": ", then handle only the authorization created for this exercise if needed."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Personal record: plugin-read-verification.md",
+          "language": "markdown",
+          "code": "# Plugin read verification\nSurface / host / date:\nPlugin ID and source:\nPractice document alias:\nInstalled: <observed state>\nConnected: <observed state or unconfirmed>\nTool available in this new task: <evidence>\nFresh read time and source: <tool evidence or NOT RUN>\nRevision and private practice marker: <actual result, do not copy the tutorial value>\nSource unchanged by the tool: <verification>\nBundle removed: <observed or NOT RUN>\nSeparate connection disconnected: <observed or NOT RUN>\n"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "Step 5: Disable, uninstall and disconnect"
         },
         {
           "type": "paragraph",
-          "text": "In CLI /plugins, use Space on an installed entry to toggle it when supported; use Uninstall plugin in details to remove it. On desktop/web, open installed plugin details for the uninstall action. Workspace or default plugins may be administrator-controlled. Record that restriction rather than deleting application caches or installation folders."
+          "text": "In CLI /plugins, Space toggles an installed entry; Uninstall plugin in details removes it. On desktop/web, open installed plugin details for that action. Workspace/default plugins may be administrator-controlled. Record restrictions; do not delete app caches or installation folders."
         },
         {
           "type": "paragraph",
@@ -1114,6 +1213,39 @@
         {
           "type": "paragraph",
           "text": "旧数値なら再取得と実際の版を求めます。接続切れ、別アカウント、更新遅延はエラーとして残し、新結果を作りません。新規タスクで旧文脈も分離できます。最後に元サービスでエージェントによる変更、共有、移動がないか確認し、自分の改版とエージェントの読取りを区別します。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "モデルに伝えていない識別値を加える"
+        },
+        {
+          "type": "paragraph",
+          "text": "固定数値で2回比較した後、元サービスで Revision を 3 にし、Document marker を自分で考えた機密性のない新しい値に置き換えます。件数は2回目の 3／1／2 を維持します。値は文書だけに書き、Codex の依頼には含めません。同じ URL と読み取り依頼で新規タスクを作り、実際のツール結果が新しい値を返した場合に、この回の新内容を確認済みとします。記事の例や前の版を返すだけでは通過しません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "次の欄を自分の記録に記入し、非公開 URL は手元に保管して公開時は別名にします。Installed はパッケージ、Connected は接続の状態、Fresh read は取得時刻、出典、識別値の証拠を別々に記録します。アンインストール後にスキルが見えなくても Connected を自動で false にしません。"
+            },
+            {
+              "type": "link",
+              "text": "公式プラグイン文書",
+              "url": "https://learn.chatgpt.com/docs/plugins"
+            },
+            {
+              "type": "text",
+              "text": "に従い独立した MCP 接続を確認し、必要なら今回の練習で作成した認可だけを扱います。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "個人記録：plugin-read-verification.md",
+          "language": "markdown",
+          "code": "# Plugin read verification\nSurface / host / date:\nPlugin ID and source:\nPractice document alias:\nInstalled: <observed state>\nConnected: <observed state or unconfirmed>\nTool available in this new task: <evidence>\nFresh read time and source: <tool evidence or NOT RUN>\nRevision and private practice marker: <actual result, do not copy the tutorial value>\nSource unchanged by the tool: <verification>\nBundle removed: <observed or NOT RUN>\nSeparate connection disconnected: <observed or NOT RUN>\n"
         },
         {
           "type": "heading",
@@ -1407,6 +1539,39 @@
         {
           "type": "paragraph",
           "text": "이전 개수를 반환하면 출처를 새로 읽고 실제 버전을 제시하도록 요청하세요. 연결 만료, 다른 계정, 갱신 지연은 오류로 기록하고 새 결과를 꾸미지 않습니다. 새 작업으로 이전 문맥을 분리할 수도 있습니다. 마지막으로 원래 서비스에서 에이전트가 수정, 공유, 이동하지 않았는지 확인하고 수동 개정과 도구 읽기를 구분하세요."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "모델에게 알려주지 않은 식별값 추가"
+        },
+        {
+          "type": "paragraph",
+          "text": "고정 숫자로 두 번 비교한 뒤 원본 서비스에서 Revision을 3으로 바꾸고 Document marker를 직접 정한 민감하지 않은 새 값으로 교체합니다. 개수는 두 번째의 3/1/2를 유지합니다. 식별값은 문서에만 적고 Codex 요청에는 넣지 않습니다. 같은 URL과 앞의 읽기 요청으로 새 작업을 만들고 실제 도구 결과가 새 값을 가져와야 이번 새 내용 확인을 통과한 것으로 기록합니다. 기사의 예시 값이나 이전 버전만 반환하면 통과가 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "아래 항목을 개인 기록에 작성하고 비공개 URL은 보관하되 공개 보고에는 별칭을 씁니다. Installed는 패키지, Connected는 서비스 연결 상태이며 Fresh read에는 읽은 시각, 출처, 식별값의 별도 증거가 필요합니다. 제거 후 스킬이 보이지 않아도 Connected를 자동으로 false로 바꾸지 않습니다. "
+            },
+            {
+              "type": "link",
+              "text": "공식 플러그인 문서",
+              "url": "https://learn.chatgpt.com/docs/plugins"
+            },
+            {
+              "type": "text",
+              "text": "를 따라 별도 MCP 연결을 확인하고 필요하다면 이번 연습에서 만든 권한만 처리합니다."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "개인 기록: plugin-read-verification.md",
+          "language": "markdown",
+          "code": "# Plugin read verification\nSurface / host / date:\nPlugin ID and source:\nPractice document alias:\nInstalled: <observed state>\nConnected: <observed state or unconfirmed>\nTool available in this new task: <evidence>\nFresh read time and source: <tool evidence or NOT RUN>\nRevision and private practice marker: <actual result, do not copy the tutorial value>\nSource unchanged by the tool: <verification>\nBundle removed: <observed or NOT RUN>\nSeparate connection disconnected: <observed or NOT RUN>\n"
         },
         {
           "type": "heading",

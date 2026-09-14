@@ -216,6 +216,46 @@
       ]
     },
     {
+      "type": "h3",
+      "text": [
+        "路徑反例：找到腳本，卻讀錯輸入位置",
+        "Path counterexample: the script exists but the input is elsewhere",
+        "パスの反例：スクリプトはあるのに入力が見つからない",
+        "경로 반례: 스크립트는 있지만 입력 위치가 다름"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先確定目前位於 codex-skill-lab，且技能資料夾內沒有另一份 data/tasks.json，再逐行執行下面兩行。第一行移到技能根目錄；第二行能找到 scripts/count-tasks.mjs，但會在錯誤位置找 data/tasks.json，預期 ENOENT、退出 1，沒有成功 JSON。立即讀取退出碼後，用最後一行回到練習根目錄，再重跑前面的完整命令，應恢復 3／1／2。不要把 SKILL.md 的相對連結基準套到腳本的輸入參數。",
+        "Start in codex-skill-lab; confirm no data/tasks.json exists inside the skill folder. Run the first two lines separately: the script is found, but its input path is wrong. Expect ENOENT, exit 1 and no success JSON. Read the exit code immediately; use the final line to return to the practice root, then rerun the earlier full command for 3/1/2. SKILL.md links and input arguments use different path bases.",
+        "codex-skill-lab にいること、スキル内に別の data/tasks.json がないことを確認し、最初の2行を順に実行します。スキルのルートへ移動すると scripts/count-tasks.mjs は見つかりますが、data/tasks.json を誤った場所で探すため ENOENT、終了 1、成功 JSON なしが期待結果です。直後に終了コードを確認し、最後の行で練習ルートへ戻り、前の完全なコマンドを再実行すると 3／1／2 に戻ります。SKILL.md のリンクとスクリプトの入力引数は、相対パスの基準が異なります。",
+        "codex-skill-lab에 있는지, 스킬 폴더 안에 별도 data/tasks.json이 없는지 확인한 뒤 아래 첫 두 줄을 하나씩 실행합니다. 스킬 루트로 이동하면 scripts/count-tasks.mjs는 찾지만 data/tasks.json을 잘못된 위치에서 찾으므로 ENOENT, 종료 1, 성공 JSON 없음이 예상됩니다. 종료 코드를 즉시 읽은 다음 마지막 줄로 연습 루트에 돌아와 앞의 전체 명령을 다시 실행하면 3/1/2로 복구됩니다. SKILL.md 링크와 스크립트 입력 인수는 상대 경로의 기준이 다릅니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "cd .agents/skills/todo-summary\nnode scripts/count-tasks.mjs data/tasks.json\n",
+      "label": [
+        "終端機：刻意從錯誤目錄執行",
+        "Terminal: deliberately run from the wrong directory",
+        "ターミナル：意図的に誤ったディレクトリから実行",
+        "터미널: 의도적으로 잘못된 디렉터리에서 실행"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "cd ../../..\n",
+      "label": [
+        "讀取失敗退出碼後：回到練習根目錄",
+        "After recording the failed exit: return to the practice root",
+        "失敗の終了コードを記録後：練習ルートへ戻る",
+        "실패 종료 코드 기록 후: 연습 루트로 돌아가기"
+      ]
+    },
+    {
       "type": "h2",
       "text": [
         "步驟 4：把資源接回 SKILL.md",
@@ -289,6 +329,46 @@
         "Verify that it read the contract and script, actually ran the command, obtained 3/1/2 and explained its input-preservation check. Saying it used the skill is insufficient; without execution evidence, mark execution unconfirmed. The report need not become a file: compare the reply directly with your manual terminal result.",
         "仕様とスクリプトの読取り、実行記録、3／1／2、入力保持の確認方法を点検します。「スキルを使用した」だけでは不足し、実行記録がなければ未確認とします。報告はファイル化せず、返信を手動実行結果と比較できます。",
         "규격과 스크립트를 읽었는지, 실제 실행 기록이 있는지, 3/1/2인지, 원본 보존 확인 방법을 설명했는지 검사합니다. 스킬을 사용했다는 말만으로는 부족하며 실행 기록이 없으면 미확인으로 기록하세요. 보고서를 파일로 만들 필요 없이 응답과 직접 실행 결과를 비교하면 됩니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "換一份輸入，確認報告不是沿用舊數字",
+        "Change the input and check for reused counts",
+        "入力を変え、以前の数値を流用していないか確認する",
+        "입력을 바꾸고 이전 숫자를 재사용하는지 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "保留 tasks.json，另存下面內容為 data/tasks-next.json。從練習根目錄手動執行下方命令，預期 total 2、active 2、completed 0。再開新任務，把前面的技能需求只改成此新路徑；不要附上預期數字。新報告必須引用新路徑及新工具輸出，不能沿用 3／1／2。回頭再執行舊路徑，應仍是 3／1／2，才能同時確認兩份輸入沒有被覆寫。",
+        "Keep tasks.json; save the following as data/tasks-next.json. From the practice root, run the command for expected total 2, active 2, completed 0. In a fresh task, change only the earlier skill request's input path and omit expected counts. Require the new path and tool output. Rerun the old path for 3/1/2 and verify neither input was overwritten.",
+        "tasks.json を残し、次の内容を data/tasks-next.json として保存します。練習ルートで下のコマンドを実行すると、total 2、active 2、completed 0 が期待結果です。新しいタスクでは先のスキル依頼の入力パスだけを変更し、期待数値は伝えません。新しいパスとツール出力を使い、3／1／2 を流用しないことを確認します。旧パスでも再実行し、3／1／2 のままで、どちらの入力も上書きされていないことを確かめます。",
+        "tasks.json은 보존하고 아래 내용을 data/tasks-next.json으로 저장합니다. 연습 루트에서 아래 명령을 실행하면 total 2, active 2, completed 0이 예상됩니다. 새 작업에서 앞의 스킬 요청은 입력 경로만 바꾸고 예상 숫자는 알려주지 않습니다. 새 보고서는 새 경로와 도구 출력을 제시해야 하며 3/1/2를 재사용하면 안 됩니다. 이전 경로로 다시 실행해 3/1/2인지 확인하면 두 입력이 덮어써지지 않았는지도 확인할 수 있습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "code": "[\n  {\"id\":\"next-a\",\"title\":\"Plan\",\"completed\":false},\n  {\"id\":\"next-b\",\"title\":\"Check\",\"completed\":false}\n]\n",
+      "label": [
+        "data/tasks-next.json",
+        "data/tasks-next.json",
+        "data/tasks-next.json",
+        "data/tasks-next.json"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "node .agents/skills/todo-summary/scripts/count-tasks.mjs data/tasks-next.json\n",
+      "label": [
+        "終端機：第二份輸入",
+        "Terminal: second input",
+        "ターミナル：2つ目の入力",
+        "터미널: 두 번째 입력"
       ]
     },
     {

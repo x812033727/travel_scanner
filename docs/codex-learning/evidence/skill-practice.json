@@ -2,8 +2,9 @@
   "environment": "Windows / Node.js v24.13.0",
   "scope": "Exact reference files, no installed skill, no Codex model or automatic invocation",
   "moduleHashes": {
-    "48": "cac49f6dabef96a9afd3bd67b630a6402ab7a49d7260329efabba53fe57850fe",
-    "49": "b14c9d1bbf33fd48a5a2f87c9f12d6ff561a38d233282c2c304b8fbf95686754"
+    "48": "44c02cec1ecdb8ea43ab71f775f0f1a80e6871eb067b439e85c3468834360d94",
+    "49": "73a8c2a6cbe5df9976321b781983c58669b6d1d635e42d24a66ff5d2eaa1c1c0",
+    "51": "a586e11b3f943f7891d5fa82e54bfefca01a1410c21870d1aaf144246dd0f1c7"
   },
   "checks": [
     "Literal lesson 48 command: total 3, active 1, completed 2; exit 0",
@@ -11,6 +12,10 @@
     "Exact title-deduplication fault: seven passes, one meaningful regression failure",
     "Restored checker: eight passes; all six source files byte-for-byte preserved",
     "All three SKILL.md resource references resolve to the exact authored files",
+    "48: exact wrong-cwd example finds the script but rejects the input path; returning to the lab root restores 3/1/2",
+    "48: second exact input returns 2/2/0, original still returns 3/1/2; both files and all original resources remain unchanged",
+    "51: exact adapted task command on expected returns 3 passes/0 failures with all five source files unchanged",
+    "51: exact adapted task command on broken returns 2 passes/1 failures with all five source files unchanged",
     "Download ZIP contains the six exact files at documented practice paths"
   ],
   "archiveHash": "709eb834c2c66d3190a495f48bc73b329e46545cb2a34dad3d145852ca1ab2b6"

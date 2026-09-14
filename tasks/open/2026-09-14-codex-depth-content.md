@@ -161,10 +161,21 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [x] Deepen Unit D (09, 42, 43, 16, 44), label 32 existing blocks, add four examples and verify nested Markdown and 13 document/configuration reference cases.
 - [x] Deepen Unit E (45, 22, 17, 08, 18), label 29 existing blocks, add six input/record examples and verify the 16-case reference suite (10 E-specific checks).
 - [x] Deepen Unit F (13, 46, 47, 20, 19, 21), label 38 existing blocks, add eight examples and verify 13 Git/review plus 20 reference checks (10 F-specific).
-- [ ] Continue targeted depth review for the remaining 23 lessons, starting with Unit G (48, 49, 24, 50, 51); lesson 23 already has representative-review evidence.
+- [x] Deepen Unit G (48, 49, 24, 50, 51), preserve 28 original code blocks, add seven examples and verify ten skill/template reference checks; lesson 23 retains representative evidence.
+- [ ] Continue targeted depth review for the remaining 18 lessons, starting with Unit H (25, 52, 27, 28, 53, 54).
 - [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
 - [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
 - [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
+
+## Unit G revision
+
+After e191e927, revised 48/49/24/50/51 in four author languages and five compiled locales. Added wrong-directory recovery, a second input, explicit-only invocation policy with scoped restoration, independent plugin source markers, three fictional diagnostic cases and an adapted read-only request. Corrected the old Bug-template example to the actual broken Completed-filter scenario. All 28 original code blocks, sources, images and the six-file base ZIP remain unchanged; seven new code blocks have labels.
+
+docs/codex-learning/evidence/unit-g-depth-review.json records ten Windows Node reference checks, including wrong-cwd failure/recovery, distinct 3/1/2 versus 2/2/0 inputs, eight baseline skill tests, the seven-pass/one-failure deliberate defect and restoration, and expected/broken template commands with preserved source bytes. No skill installation/invocation, policy behavior, plugin/OAuth/service operation or browser run occurred. New policy and plugin cases remain documented exercises, not product-test results.
+
+Integrity 60/300, 9 API, 9 compiler, five shared catalogues and affected-tool Ruff pass. The first expanded English pass produced four extra length advisories; repeated wording was condensed while preserving requirements and recovery steps. Final audit returns to 0 errors/23 warnings, without threshold changes. No shared series_data/source-list edits.
+
+Targeted coverage is 42 unique lessons with 18 pending; next H: 25/52/27/28/53/54. All full-text five-language and final browser acceptance remain open (0/60). No partial PR, import, publication or deployment.
 
 ## Unit F revision
 

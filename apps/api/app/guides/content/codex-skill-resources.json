@@ -197,6 +197,27 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "路徑反例：找到腳本，卻讀錯輸入位置"
+        },
+        {
+          "type": "paragraph",
+          "text": "先確定目前位於 codex-skill-lab，且技能資料夾內沒有另一份 data/tasks.json，再逐行執行下面兩行。第一行移到技能根目錄；第二行能找到 scripts/count-tasks.mjs，但會在錯誤位置找 data/tasks.json，預期 ENOENT、退出 1，沒有成功 JSON。立即讀取退出碼後，用最後一行回到練習根目錄，再重跑前面的完整命令，應恢復 3／1／2。不要把 SKILL.md 的相對連結基準套到腳本的輸入參數。"
+        },
+        {
+          "type": "code",
+          "label": "終端機：刻意從錯誤目錄執行",
+          "language": "sh",
+          "code": "cd .agents/skills/todo-summary\nnode scripts/count-tasks.mjs data/tasks.json\n"
+        },
+        {
+          "type": "code",
+          "label": "讀取失敗退出碼後：回到練習根目錄",
+          "language": "sh",
+          "code": "cd ../../..\n"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "步驟 4：把資源接回 SKILL.md"
         },
@@ -232,6 +253,27 @@
         {
           "type": "paragraph",
           "text": "驗收時逐項看它是否讀取規格與腳本、是否真的執行指定命令、是否得到 3／1／2，以及是否說清楚輸入未變的確認方式。只回覆「已使用技能」還不夠；若沒有工具執行紀錄，就把執行狀態記為未確認。這份報告不需要寫入檔案，你可以直接將對話中的結果與剛才手動執行的輸出比較。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "換一份輸入，確認報告不是沿用舊數字"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留 tasks.json，另存下面內容為 data/tasks-next.json。從練習根目錄手動執行下方命令，預期 total 2、active 2、completed 0。再開新任務，把前面的技能需求只改成此新路徑；不要附上預期數字。新報告必須引用新路徑及新工具輸出，不能沿用 3／1／2。回頭再執行舊路徑，應仍是 3／1／2，才能同時確認兩份輸入沒有被覆寫。"
+        },
+        {
+          "type": "code",
+          "label": "data/tasks-next.json",
+          "language": "json",
+          "code": "[\n  {\"id\":\"next-a\",\"title\":\"Plan\",\"completed\":false},\n  {\"id\":\"next-b\",\"title\":\"Check\",\"completed\":false}\n]\n"
+        },
+        {
+          "type": "code",
+          "label": "終端機：第二份輸入",
+          "language": "sh",
+          "code": "node .agents/skills/todo-summary/scripts/count-tasks.mjs data/tasks-next.json\n"
         },
         {
           "type": "heading",
@@ -486,6 +528,27 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "Path counterexample: the script exists but the input is elsewhere"
+        },
+        {
+          "type": "paragraph",
+          "text": "Start in codex-skill-lab; confirm no data/tasks.json exists inside the skill folder. Run the first two lines separately: the script is found, but its input path is wrong. Expect ENOENT, exit 1 and no success JSON. Read the exit code immediately; use the final line to return to the practice root, then rerun the earlier full command for 3/1/2. SKILL.md links and input arguments use different path bases."
+        },
+        {
+          "type": "code",
+          "label": "Terminal: deliberately run from the wrong directory",
+          "language": "sh",
+          "code": "cd .agents/skills/todo-summary\nnode scripts/count-tasks.mjs data/tasks.json\n"
+        },
+        {
+          "type": "code",
+          "label": "After recording the failed exit: return to the practice root",
+          "language": "sh",
+          "code": "cd ../../..\n"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "Step 4: Connect the resources in SKILL.md"
         },
@@ -521,6 +584,27 @@
         {
           "type": "paragraph",
           "text": "Verify that it read the contract and script, actually ran the command, obtained 3/1/2 and explained its input-preservation check. Saying it used the skill is insufficient; without execution evidence, mark execution unconfirmed. The report need not become a file: compare the reply directly with your manual terminal result."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Change the input and check for reused counts"
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep tasks.json; save the following as data/tasks-next.json. From the practice root, run the command for expected total 2, active 2, completed 0. In a fresh task, change only the earlier skill request's input path and omit expected counts. Require the new path and tool output. Rerun the old path for 3/1/2 and verify neither input was overwritten."
+        },
+        {
+          "type": "code",
+          "label": "data/tasks-next.json",
+          "language": "json",
+          "code": "[\n  {\"id\":\"next-a\",\"title\":\"Plan\",\"completed\":false},\n  {\"id\":\"next-b\",\"title\":\"Check\",\"completed\":false}\n]\n"
+        },
+        {
+          "type": "code",
+          "label": "Terminal: second input",
+          "language": "sh",
+          "code": "node .agents/skills/todo-summary/scripts/count-tasks.mjs data/tasks-next.json\n"
         },
         {
           "type": "heading",
@@ -771,6 +855,27 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "パスの反例：スクリプトはあるのに入力が見つからない"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-skill-lab にいること、スキル内に別の data/tasks.json がないことを確認し、最初の2行を順に実行します。スキルのルートへ移動すると scripts/count-tasks.mjs は見つかりますが、data/tasks.json を誤った場所で探すため ENOENT、終了 1、成功 JSON なしが期待結果です。直後に終了コードを確認し、最後の行で練習ルートへ戻り、前の完全なコマンドを再実行すると 3／1／2 に戻ります。SKILL.md のリンクとスクリプトの入力引数は、相対パスの基準が異なります。"
+        },
+        {
+          "type": "code",
+          "label": "ターミナル：意図的に誤ったディレクトリから実行",
+          "language": "sh",
+          "code": "cd .agents/skills/todo-summary\nnode scripts/count-tasks.mjs data/tasks.json\n"
+        },
+        {
+          "type": "code",
+          "label": "失敗の終了コードを記録後：練習ルートへ戻る",
+          "language": "sh",
+          "code": "cd ../../..\n"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "手順4：SKILL.md からリソースを参照"
         },
@@ -806,6 +911,27 @@
         {
           "type": "paragraph",
           "text": "仕様とスクリプトの読取り、実行記録、3／1／2、入力保持の確認方法を点検します。「スキルを使用した」だけでは不足し、実行記録がなければ未確認とします。報告はファイル化せず、返信を手動実行結果と比較できます。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "入力を変え、以前の数値を流用していないか確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "tasks.json を残し、次の内容を data/tasks-next.json として保存します。練習ルートで下のコマンドを実行すると、total 2、active 2、completed 0 が期待結果です。新しいタスクでは先のスキル依頼の入力パスだけを変更し、期待数値は伝えません。新しいパスとツール出力を使い、3／1／2 を流用しないことを確認します。旧パスでも再実行し、3／1／2 のままで、どちらの入力も上書きされていないことを確かめます。"
+        },
+        {
+          "type": "code",
+          "label": "data/tasks-next.json",
+          "language": "json",
+          "code": "[\n  {\"id\":\"next-a\",\"title\":\"Plan\",\"completed\":false},\n  {\"id\":\"next-b\",\"title\":\"Check\",\"completed\":false}\n]\n"
+        },
+        {
+          "type": "code",
+          "label": "ターミナル：2つ目の入力",
+          "language": "sh",
+          "code": "node .agents/skills/todo-summary/scripts/count-tasks.mjs data/tasks-next.json\n"
         },
         {
           "type": "heading",
@@ -1056,6 +1182,27 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "경로 반례: 스크립트는 있지만 입력 위치가 다름"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-skill-lab에 있는지, 스킬 폴더 안에 별도 data/tasks.json이 없는지 확인한 뒤 아래 첫 두 줄을 하나씩 실행합니다. 스킬 루트로 이동하면 scripts/count-tasks.mjs는 찾지만 data/tasks.json을 잘못된 위치에서 찾으므로 ENOENT, 종료 1, 성공 JSON 없음이 예상됩니다. 종료 코드를 즉시 읽은 다음 마지막 줄로 연습 루트에 돌아와 앞의 전체 명령을 다시 실행하면 3/1/2로 복구됩니다. SKILL.md 링크와 스크립트 입력 인수는 상대 경로의 기준이 다릅니다."
+        },
+        {
+          "type": "code",
+          "label": "터미널: 의도적으로 잘못된 디렉터리에서 실행",
+          "language": "sh",
+          "code": "cd .agents/skills/todo-summary\nnode scripts/count-tasks.mjs data/tasks.json\n"
+        },
+        {
+          "type": "code",
+          "label": "실패 종료 코드 기록 후: 연습 루트로 돌아가기",
+          "language": "sh",
+          "code": "cd ../../..\n"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "4단계: SKILL.md에서 자원 연결"
         },
@@ -1091,6 +1238,27 @@
         {
           "type": "paragraph",
           "text": "규격과 스크립트를 읽었는지, 실제 실행 기록이 있는지, 3/1/2인지, 원본 보존 확인 방법을 설명했는지 검사합니다. 스킬을 사용했다는 말만으로는 부족하며 실행 기록이 없으면 미확인으로 기록하세요. 보고서를 파일로 만들 필요 없이 응답과 직접 실행 결과를 비교하면 됩니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "입력을 바꾸고 이전 숫자를 재사용하는지 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "tasks.json은 보존하고 아래 내용을 data/tasks-next.json으로 저장합니다. 연습 루트에서 아래 명령을 실행하면 total 2, active 2, completed 0이 예상됩니다. 새 작업에서 앞의 스킬 요청은 입력 경로만 바꾸고 예상 숫자는 알려주지 않습니다. 새 보고서는 새 경로와 도구 출력을 제시해야 하며 3/1/2를 재사용하면 안 됩니다. 이전 경로로 다시 실행해 3/1/2인지 확인하면 두 입력이 덮어써지지 않았는지도 확인할 수 있습니다."
+        },
+        {
+          "type": "code",
+          "label": "data/tasks-next.json",
+          "language": "json",
+          "code": "[\n  {\"id\":\"next-a\",\"title\":\"Plan\",\"completed\":false},\n  {\"id\":\"next-b\",\"title\":\"Check\",\"completed\":false}\n]\n"
+        },
+        {
+          "type": "code",
+          "label": "터미널: 두 번째 입력",
+          "language": "sh",
+          "code": "node .agents/skills/todo-summary/scripts/count-tasks.mjs data/tasks-next.json\n"
         },
         {
           "type": "heading",
@@ -1345,6 +1513,27 @@
         },
         {
           "type": "heading",
+          "level": 3,
+          "text": "路径反例：找到脚本，却读错输入位置"
+        },
+        {
+          "type": "paragraph",
+          "text": "先确定目前位于 codex-skill-lab，且技能资料夹内没有另一份 data/tasks.json，再逐行执行下面两行。第一行移到技能根目录；第二行能找到 scripts/count-tasks.mjs，但会在错误位置找 data/tasks.json，预期 ENOENT、退出 1，没有成功 JSON。立即读取退出码后，用最后一行回到练习根目录，再重跑前面的完整命令，应恢复 3／1／2。不要把 SKILL.md 的相对连结基准套到脚本的输入参数。"
+        },
+        {
+          "type": "code",
+          "label": "终端机：刻意从错误目录执行",
+          "language": "sh",
+          "code": "cd .agents/skills/todo-summary\nnode scripts/count-tasks.mjs data/tasks.json\n"
+        },
+        {
+          "type": "code",
+          "label": "读取失败退出码后：回到练习根目录",
+          "language": "sh",
+          "code": "cd ../../..\n"
+        },
+        {
+          "type": "heading",
           "level": 2,
           "text": "步骤 4：把资源接回 SKILL.md"
         },
@@ -1380,6 +1569,27 @@
         {
           "type": "paragraph",
           "text": "验收时逐项看它是否读取规格与脚本、是否真的执行指定命令、是否得到 3／1／2，以及是否说清楚输入未变的确认方式。只回复「已使用技能」还不够；若没有工具执行纪录，就把执行状态记为未确认。这份报告不需要写入档案，你可以直接将对话中的结果与刚才手动执行的输出比较。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "换一份输入，确认报告不是沿用旧数字"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留 tasks.json，另存下面内容为 data/tasks-next.json。从练习根目录手动执行下方命令，预期 total 2、active 2、completed 0。再开新任务，把前面的技能需求只改成此新路径；不要附上预期数字。新报告必须引用新路径及新工具输出，不能沿用 3／1／2。回头再执行旧路径，应仍是 3／1／2，才能同时确认两份输入没有被覆写。"
+        },
+        {
+          "type": "code",
+          "label": "data/tasks-next.json",
+          "language": "json",
+          "code": "[\n  {\"id\":\"next-a\",\"title\":\"Plan\",\"completed\":false},\n  {\"id\":\"next-b\",\"title\":\"Check\",\"completed\":false}\n]\n"
+        },
+        {
+          "type": "code",
+          "label": "终端机：第二份输入",
+          "language": "sh",
+          "code": "node .agents/skills/todo-summary/scripts/count-tasks.mjs data/tasks-next.json\n"
         },
         {
           "type": "heading",
