@@ -1,0 +1,317 @@
+{
+  "slug": "gemini-prompt-evaluation-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 151,
+  "locales": {
+    "zh-TW": {
+      "title": "提示詞改寫實驗：用固定題庫找出有效的修改",
+      "description": "提示詞改得更長，不代表回答一定更可靠。本篇用十筆固定客服資料，比較只差一條規則的兩個提示詞，留下可重做的題庫、原始回答與人工評分。完成後你能說明修改改善了哪類錯誤，也能指出哪些題目仍需要人工核對。",
+      "hero": {
+        "src": "/guides/gemini-prompt-evaluation-workshop/hero.jpg",
+        "alt": "提示詞改寫：用題庫比較教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "提示詞改得更長，不代表回答一定更可靠。本篇用十筆固定客服資料，比較只差一條規則的兩個提示詞，留下可重做的題庫、原始回答與人工評分。完成後你能說明修改改善了哪類錯誤，也能指出哪些題目仍需要人工核對。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-prompt-evaluation-workshop/diagram-1.svg",
+          "alt": "固定：十題與量尺：先寫預期判斷；分開：A 與 B 新對話：保存二十份回答；評分：四項各零至二分：每次扣分附原因；決定：逐題看改善退步：缺資料不算勝出",
+          "width": 1600,
+          "height": 900,
+          "caption": "一次只改一條規則。檢查程式已測；模型回答待驗。這是原創概念圖，不是介面截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "學完成果與準備",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成 "
+            },
+            {
+              "type": "link",
+              "text": "提示詞寫作入門",
+              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+            },
+            {
+              "type": "text",
+              "text": "，並理解 "
+            },
+            {
+              "type": "link",
+              "text": "檔案分析與來源核對",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "。準備可用的 Gemini 帳號、試算表與文字編輯器；這個練習不需要 API 金鑰。方案與用量請查 "
+            },
+            {
+              "type": "link",
+              "text": "方案說明",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "，不要把介面的模型選單名稱當成永遠不變的版本編號。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "下載練習包後進入 51 資料夾。cases.csv 包含十種情境：一般請求、缺日期、日期矛盾、責任未定、否定、更正數量、相對日期、條件句、資料內指令與兩項工作。所有人物及信件都是作者合成。expected_points 是評分參考，不能一起貼給模型，否則會洩漏答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文操作依 2026-09-14 官方提示詞文件整理；本機評分檢查程式已用 Windows、Python 3.13.15 驗證。尚未取得二十份真實模型回答，因此下載表格保留 not_run，沒有宣稱 B 比 A 好。你應把自己的日期、畫面模型名稱與實際結果填回紀錄，再作比較。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "評分項目",
+            "核對問題"
+          ],
+          "rows": [
+            [
+              "正確性",
+              "有沒有原文沒說的承諾？"
+            ],
+            [
+              "完整性",
+              "是否保留每項工作？"
+            ],
+            [
+              "格式",
+              "四欄是否可逐列對照？"
+            ],
+            [
+              "不確定性",
+              "未知與條件是否保留？"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "評分表中的空白不是零分。未執行題目先保留 not_run，等原始回答與理由齊全後才能比較總分。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：把問題與評分標準固定",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先讀十題，確認每題要保留的事實。以 C02 為例，客戶詢問能否更換，客服只答應詢問倉庫；可確認的是問題與負責人，不能增加回覆日期，也不能把「詢問」變成「明天補寄」。先寫這些判斷，避免看見流暢的回答後才降低標準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "rubric.csv 將評分分成正確性、完整性、格式與不確定性，各零至二分。正確性查有無捏造，完整性查主要工作是否漏掉，格式查四欄是否能逐項對照，不確定性查未知、衝突和條件是否保留。每題最高八分，每個版本十題最高八十分；這是本篇設計的練習量尺，不是 Google 的模型排名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "填寫 run-environment.md，記錄帳號類型、模型顯示名稱、提示詞版本、語言、個人化或連接服務條件。若不能關閉某個條件，就如實記錄並在同一輪保持一致。遇到模型自動切換、額度中斷或檔案讀取失敗，先標異常，不能把它與正常回答混成同一輪結果。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：每次只修改一項規則",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下 A 與 B 保持任務、欄位、輸入資料相同；B 只增加處理未知與承諾的規則。這叫 A/B 比較，也就是固定其他條件，只比較指定差異。不要同時更換模型、加入範例又變更輸出格式，否則無法判斷改善來自哪個因素。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "prompts-v1-v2.md",
+          "code": "# 提示詞 A/B：僅改不確定性規則\n\n## A：基準版本\n請根據下面客服資料整理「需求、負責人、日期、待確認」四欄，用繁體中文表格輸出。只處理這筆資料。\n[貼上 cases.csv 的一筆 input，不貼參考答案]\n\n## B：只增加一項規則\n請根據下面客服資料整理「需求、負責人、日期、待確認」四欄，用繁體中文表格輸出。只處理這筆資料。\n資料沒寫或互相矛盾時，保留未知或衝突；希望、條件句和客戶附註不能改成已確認的承諾。\n[貼上同一筆 input，不貼參考答案]\n\n使用新對話分開測試。先固定設定，再依 C01 A/B、C02 B/A 交替順序操作，保留原始回答。這是作者實驗設計，不是已測出 B 勝出的結論。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Gemini 開新對話，貼 A 和 C01 的 input 欄，送出後將完整回答存成 raw/C01-A.txt。再開新對話用 B 測同一題，存成 raw/C01-B.txt。第二題改成先 B 後 A，依題號交替順序；每次都使用新對話，不在原對話追問「再試一次」，以免前一份答案成為額外提示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留表格外的說明、拒答與錯誤訊息，不能只留下回答中表現最好的一段。若介面沒有匯出按鈕，直接複製文字存檔即可；不必假設每個平台提供相同操作。碰到中斷，記錄時間與原因，之後另開一輪補測，不悄悄替換原來較差的輸出。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：人工評分，保留扣分證據",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "完成一對答案後，將檔名填入 ratings-template.csv 的 raw_file，路徑相對於 raw 目錄。讀原文再給四項分數，evidence 寫下原始回答中的具體句子與扣分原因，status 改為 complete。先遮住 A/B 標籤再評分，可以減少期待新版本勝出的偏見；有人協助時可各自評分後討論分歧。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作者編寫的錯誤示例是「王先生需要更換筆袋，小雨明天補寄」。它多出「明天」及「補寄」，即使語句自然，正確性與不確定性仍有問題。較合適的示例是「詢問能否更換；小雨；日期未提供；待詢問倉庫」。這組文字僅示範判斷方式，不是真實 Gemini 輸出，也不能填進實測欄當成回答。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若電腦已有 Python，可在 51 資料夾執行下列命令。評分檔先另存為 ratings.csv，原範本保留。沒有 Python 也能人工核對二十列；程式是完整性檢查的輔助，不是評分者。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "終端機：檢查你填好的紀錄",
+          "code": "python score.py cases.csv ratings.csv raw\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "成功時 required 與 completed 都是二十，totals 才顯示兩版本總分。只要缺一題、分數超出零至二、原始檔不存在或沒有評分理由，程式就以非零退出碼停止。semanticQualityApproved 永遠是 false，提醒你檔案齊全不等於內容已獲專家認可。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：做故障練習，再決定是否採用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "複製評分表，故意刪掉 C03-B 或把 raw_file 改成不存在的檔名，再執行檢查。預期看到缺列或缺原始輸出的原因，而不是仍得到一個看似完整的總分。修正時找回當次原始資料；若根本沒有測過，就回復 not_run，安排補測，不以複製其他題答案填滿。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較時先看每題差異，再看總分。假設 B 在缺日期題保留未知，卻在雙工作題遺漏一項，你應留下改善與退步兩邊的證據。十題只能代表這份題庫；不要據此宣稱所有客服問題都會更準。修改後另存 B2，重新測相同題庫，並補入幾題未參與修改的新案例，檢查是否只迎合了舊答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後交付資料來源、A/B 提示詞、環境紀錄、二十份回答、評分理由與採用決定。若回答尚缺，就在結論寫「本輪未完成」，並列缺哪幾題。這樣下一位同事能接著做，而不是只能相信一張沒有來源的分數截圖。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "每次回答不同，要一直按重新生成嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只保留最好的一次。若要研究穩定性，事先規定每題每版跑幾次，全部保存並分輪計分。增加次數也會增加時間與用量；先完成一輪，再決定是否值得擴大。"
+        },
+        {
+          "type": "heading",
+          "text": "可以讓另一個 AI 自動評分嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "可以作為第二意見，但仍需原文、量尺與人工抽查。評分模型也可能漏看條件句；自動分數與人工分數應分欄保存，不能直接覆蓋人工疑義。"
+        },
+        {
+          "type": "heading",
+          "text": "B 總分較高，就能投入實際客服嗎？",
+          "level": 3
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "還要檢查嚴重錯誤是否消失、未知問題是否轉人工，以及真實資料是否涵蓋題庫外情境。下一篇 "
+            },
+            {
+              "type": "link",
+              "text": "Gems 客服知識助手",
+              "url": "https://mokaair.com/zh-TW/life/gemini-gems-support-playbook"
+            },
+            {
+              "type": "text",
+              "text": " 會把固定規則與版本手冊結合，再測更新後是否退步。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "提示詞怎麼寫：目標、背景與輸出格式",
+              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "讀 PDF、圖片與表格：摘要、比對與驗證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Gems 客服知識助手：資料更新、拒答與回歸測試",
+              "url": "https://mokaair.com/zh-TW/life/gemini-gems-support-playbook"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 51 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-prompt-evaluation-workshop/lesson-51.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組工作練習與本機檢查程式",
+          "url": "https://mokaair.com/guides/gemini-prompt-evaluation-workshop/work-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 官方提示詞寫作建議",
+          "url": "https://support.google.com/docs/answer/15013615?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

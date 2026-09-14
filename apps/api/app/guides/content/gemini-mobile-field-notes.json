@@ -1,0 +1,357 @@
+{
+  "slug": "gemini-mobile-field-notes",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 155,
+  "locales": {
+    "zh-TW": {
+      "title": "手機現場筆記：Gemini Live、照片與回到電腦整理",
+      "description": "手機現場筆記的價值，是把當下看見的細節保存成之後能核對的資料。本篇結合照片、Gemini Live 即時對話與電腦整理，製作一份帶原圖位置、未知區域及修正紀錄的觀察清單。你會練習要求模型描述證據，並在看不清楚時留下待補拍項目。",
+      "hero": {
+        "src": "/guides/gemini-mobile-field-notes/hero.jpg",
+        "alt": "手機筆記：看見與推測教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "手機現場筆記的價值，是把當下看見的細節保存成之後能核對的資料。本篇結合照片、Gemini Live 即時對話與電腦整理，製作一份帶原圖位置、未知區域及修正紀錄的觀察清單。你會練習要求模型描述證據，並在看不清楚時留下待補拍項目。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-mobile-field-notes/diagram-1.svg",
+          "alt": "原圖：保留來源與日期：位置可回頭核對；鏡頭：Android 與 iOS：各自操作與紀錄；未知：遮擋與模糊：指出需要補拍處；交接：原圖 ＋ 修正表：電腦再次核對",
+          "width": 1600,
+          "height": 900,
+          "caption": "照片、Live 與人工觀察分開。照片與授權已查；手機實機待驗。這是原創概念圖，不是介面截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "學完成果與準備",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀 "
+            },
+            {
+              "type": "link",
+              "text": "Android 使用方法",
+              "url": "https://mokaair.com/zh-TW/life/gemini-on-android-assistant"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "iPhone 與 iPad 入口",
+              "url": "https://mokaair.com/zh-TW/life/gemini-ios-app-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Gemini Live 操作",
+              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+            },
+            {
+              "type": "text",
+              "text": " 及 "
+            },
+            {
+              "type": "link",
+              "text": "圖片分析核對",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "。準備 Gemini 手機應用程式、相機權限及自己有權拍攝的無個資物品；Android 與 iPhone 的按鈕、權限與助理入口分開確認，不共用一份操作成功紀錄。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇於 2026-09-14 查閱官方 Android、iOS Live 說明。Live 即時對話使用手機應用程式，不能把電腦網頁聊天當成相同入口；帳號年齡、地區及受管理帳號條件依官方可用性確認。本文未完成兩種手機實機操作，步驟是文件整理，練習照片也不等於真實鏡頭分享。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下載包提供一張「圓珠筆零件」照片：作者 Pokéfan95，來源日期 2015-09-18，Wikimedia Commons 的 CC0 1.0 素材。檔案保留原始位元組，授權與來源在 photo-license.json。它是靜態參考資料，不是作者今天拍攝，也不能當成讀者所在現場。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：先建立可核對的靜態筆記",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在本機開啟照片，先不用 AI，寫下自己能直接看見的事物。原圖左邊有透明帶夾的外形與黑色零件，中間上方有長透明管狀物，下方有細長筆芯樣物，右側另有黑色小件。這些是作者對圖像的視覺描述，不保證每個零件的精確名稱、材質或品牌。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要因為檔名寫圓珠筆，就推論它的售價、型號、墨水容量或組裝後是否能使用。照片背景有反光及線條，也不能直接算成物件。先在 field-notes.md 填原始檔名、來源日期與授權，再列「看見」「看不清楚」「需人工確認」，讓後來的人能分辨事實與推測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "將照片加入 Gemini 新對話，貼上以下提示詞。保留它的完整回答，再逐項回到原圖核對。手機上傳圖片與 Live 鏡頭是兩種輸入方式，這一步仍是靜態照片分析，不因為在手機操作就稱作即時實測。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "observation-prompt.txt",
+          "code": "請將這張照片整理成可核對的觀察。分成『直接看見』『看不清楚』『需人工確認』。每項指出畫面位置，不猜型號、價格或看不到的標籤。這是一張參考照片，不是我的即時鏡頭；不要把拍攝時間當成現在。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "作者預期的合格示例是「畫面中央偏上有一根透明長管；照片不足以確認材質」。不合格示例是「這是某品牌的防漏筆，售價三十元」。前者有位置與限制，後者加入圖中沒有的資訊。把這類差異寫進修正紀錄，別只憑回答是否符合自己的猜測評分。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：分平台練習 Live 鏡頭",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Android 先更新 Gemini 與相關 Google 應用程式，開啟 Gemini 手機介面，依畫面進入 Live；官方亦列出在應用程式中向左滑動的方式。開始後使用相機按鈕，依系統要求允許相機權限。先對準自己的單一物品，口頭要求只描述畫面位置、顏色與輪廓。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先問「你現在能清楚看到哪一部分」，再移動物品或換角度。每次只改一個因素，例如距離或光線，便於判斷改善來源。要暫停或結束時使用 Live 畫面的 Hold／End，也就是暫停與結束控制；完成後確認相機分享已停止，再切換其他私人畫面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "iPhone 或 iPad 則開啟 Gemini iOS 應用程式，從底部 Live 控制或應用程式內手勢進入，再點相機並確認 iOS 權限。不要照抄 Android 助理的啟動方式，或假設系統預設助理已被替換。若沒有相機選項，先記錄帳號、版本與實際畫面，不把照片上傳冒充鏡頭分享。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩種平台各自記錄裝置、作業系統、應用版本、日期、語言、輸入方式與停止操作。螢幕分享會涵蓋畫面內容，這個物品練習優先使用相機即可；真的需要螢幕分享時，先切到要討論的無個資畫面，再啟動並確認停止。不要假定背景通知一定不會出現在分享中。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：把口頭回答轉為可追查筆記",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "結束 Live 後，依應用程式提供的對話紀錄查看文字。口語轉寫可能省略停頓、認錯專有名詞，先核對文字是否與你實際說的相同，再評估模型回答。記錄轉寫錯誤與觀察錯誤時分開標註，否則可能把聽錯問題誤判成看錯物件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到電腦時，使用同一帳號檢查是否能看到相關對話；若帳號、記錄設定或功能限制導致看不到，就將必要文字與自己保存的原圖手動帶回。不要聲稱所有 Live 錄影都會自動完整同步，也不要假設對話文字能取代原圖證據。保持原始資料不變，另外建立整理版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用四欄表整理：結論、原圖位置或人工觀察、信心與限制、需要補拍什麼。例如「右側黑色小件」可附原圖右側位置；「精確型號」則標未知，補拍有標籤的一面。沒有得到證據的格子可以留待確認，不需要每欄都填得肯定。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若把現場資訊交給同事，附上照片檔名與原始來源，再寫你的人工補充。不能將模型說法直接改成「現場已確認」。需要形成工作待辦時，可沿用 "
+            },
+            {
+              "type": "link",
+              "text": "附來源的交接表",
+              "url": "https://mokaair.com/zh-TW/life/gemini-workspace-meeting-handoff"
+            },
+            {
+              "type": "text",
+              "text": "，把補拍、核對標籤及確認尺寸各列一件事，明確指派實際負責人。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "資料",
+            "能確認的事情",
+            "仍待驗證"
+          ],
+          "rows": [
+            [
+              "Commons 照片",
+              "圖中位置與外形",
+              "型號、材質、可否使用"
+            ],
+            [
+              "Android Live",
+              "需實際手機對話紀錄",
+              "本文未執行"
+            ],
+            [
+              "iPhone Live",
+              "需獨立裝置紀錄",
+              "本文未執行"
+            ],
+            [
+              "電腦接續",
+              "需同帳號查看或人工交接",
+              "本文未執行"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "畫面看不清楚時，補拍比要求模型更肯定有效。筆記保留未知，才知道下一步要找哪份證據。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：用看不清楚的情境測試",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "拿自己的物品做一次遮擋練習：保持其他條件相同，用紙遮住標籤或其中一個部件，再詢問相同問題。預期回答指出看不到的區域與需要補拍的位置；如果仍很肯定地說出品牌或完整數量，要求指出畫面證據，並把無法支持的部分改列未知。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修正方式應是補拍與重新核對，而不是直接在提示詞寫入你想要的答案。移開遮擋後再拍一次，保留前後兩張檔名與回答；這樣才能分辨模型是因新證據修正，還是只是迎合你的提示。不要把含他人資料的現場照片放進公開教材下載包。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成時交付原圖、對話文字、人工觀察表、修正原因，以及 Android／iPhone／電腦接續各自的狀態。只有實際操作的平台才填完成；沒測的仍寫 not_run。本文已檢視下載照片與授權，尚未做上述手機、語音及電腦接續驗收。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "模型很確定，為什麼還要寫未知？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "語氣不是證據。尺寸、材質、品牌或物件背面可能無法從當前畫面判斷；應要求位置、可見特徵與查證方式，再以實物或標示確認。"
+        },
+        {
+          "type": "heading",
+          "text": "可以讓 Live 使用我的 Gem 客服規則嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "不要直接假設 Gems 設定會套用到 Live。依當日官方功能條件，兩者不能視為同一個助手入口；需要固定規則時，仍要在目前對話清楚說明並核對效果。"
+        },
+        {
+          "type": "heading",
+          "text": "現場筆記如何定期整理？",
+          "level": 3
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先確認資料完整與分享範圍，再規劃整理工作。若想練習固定來源的定期資訊整理，可以接著做 "
+            },
+            {
+              "type": "link",
+              "text": "Spark 每週摘要",
+              "url": "https://mokaair.com/zh-TW/life/gemini-spark-weekly-digest"
+            },
+            {
+              "type": "text",
+              "text": "；照片分析完成不代表已建立任何排程。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "Gemini Live：語音、鏡頭與螢幕分享",
+              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "讀 PDF、圖片與表格：摘要、比對與驗證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Spark 每週資訊摘要：設定排程、檢查結果與停止任務",
+              "url": "https://mokaair.com/zh-TW/life/gemini-spark-weekly-digest"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 55 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-mobile-field-notes/lesson-55.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組工作練習與本機檢查程式",
+          "url": "https://mokaair.com/guides/gemini-mobile-field-notes/work-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Android Gemini Live",
+          "url": "https://support.google.com/gemini/answer/15274899?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "iPhone 與 iPad Gemini Live",
+          "url": "https://support.google.com/gemini/answer/15274899?co=GENIE.Platform%3DiOS&hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Commons 原始照片與 CC0 授權",
+          "url": "https://commons.wikimedia.org/wiki/File:Parts_of_a_ballpoint_pen.jpg",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
