@@ -240,13 +240,13 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 130 | `gpt-oss-openai-open-weights` | OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪 | ai | 插 |  | ✓ |
 | 131 | `gemma-google-open-models` | Gemma：Google 的開源模型怎麼用 | ai | 插 |  | ✓ |
 | 132 | `qwen-local-deployment` | 本機跑 Qwen：中文表現與設定 | ai, tutorial | 插 |  | ✓ |
-| 133 | `whisper-local-transcription` | 用 Whisper 本機轉錄逐字稿：會議與訪談 | ai, tutorial | 照 |  |  |
+| 133 | `whisper-local-transcription` | 用 Whisper 本機轉錄逐字稿：會議與訪談的離線做法 | ai, tutorial | 照 |  |  |
 | 134 | `stable-diffusion-comfyui-setup` | 本機跑 Stable Diffusion 與 Flux：ComfyUI 入門 | ai, tutorial | 插 |  | ✓ |
-| 135 | `local-ai-on-mac-mini` | Mac mini 當家用 AI 伺服器 | ai, gadgets | 照 |  | ✓ |
+| 135 | `local-ai-on-mac-mini` | Mac mini 當家用 AI 伺服器：統一記憶體、售價與區網設定 | ai, gadgets | 照 |  | ✓ |
 | 136 | `local-ai-gpu-buying-guide` | 為 AI 選顯示卡：顯示記憶體優先與預算配置 | gadgets, ai | 照 |  | ✓ |
 | 137 | `huggingface-guide` | Hugging Face 入門：找模型、看授權、下載 | ai, tutorial | 插 |  |  |
 | 138 | `self-host-ai-on-vps` | 在 VPS 上自架 AI 服務：Ollama＋Open WebUI | tutorial, software | 插 | H |  |
-| 139 | `local-vs-cloud-ai-cost` | 本機 vs 雲端 AI 成本試算 | ai, software | 插 |  | ✓ |
+| 139 | `local-vs-cloud-ai-cost` | 本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算 | ai, software | 插 |  | ✓ |
 | 140 | `openrouter-multi-model-api` | OpenRouter：一把金鑰用遍各家模型 | ai, tutorial | 插 |  | ✓ |
 
 ### 批次 08｜圖片、影片、音樂生成
@@ -366,6 +366,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
   總表標題以實際篇名為準（本批同步 5 列，其中「兩家寫作比一比」因為我們無法真的實測，改寫成讀者自測法）。
 - 批次 04（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-04.md`）：教學文很需要 `code` 區塊（指令、設定檔、範例提示詞），撰稿補充要明寫可用；連結文字直接取目標文章標題（同批會寫的篇用指派給的標題，收完後再統一一次）；無法實測的「比較」題改寫成操作步驟比較與讀者自測法。官方文件會搬家（Codex 文件轉到 learn.chatgpt.com），sources 記實際生效的網址。合作連結沒有聯盟網址就不放，總表的 H 標記只是允許。
 - 批次 06（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-06.md`）：中國系與其他家的產品名、模型版本、授權與方案半年內幾乎全換過（Le Chat→Vibe、Qwen Chat→Qwen Studio、MiniMax Agent→Mavis、Copilot Pro 停售），指派裡的「例如」只能當起點，寫手照當天官網寫、審稿再用 curl／Hugging Face API／iTunes lookup 逐篇複核；台灣可用性用 App Store／Google Play 官方查詢，查不到就寫查不到；政府禁令只引公告原文並限定公務機關；x.ai、help.x.com、perplexity.ai、volcengine 對機房 IP 回 403，寫手改讀 .md 版文件、說明中心的 Intercom 網址或 Wayback 快照並在 notes 記讀法。一波七個 Opus 代理會撞帳號的五小時額度，撞到就等重置再重跑。
+- 批次 07（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-07.md`）：本機與開源模型的授權要逐版本用 Hugging Face API 的 license 標籤與 LICENSE 原文核對，不能用家族名稱推論（Gemma 4 是 Apache 2.0 但 Gemma 3 仍是 Gemma Terms；FLUX.2 klein 4B 可商用但 9B 非商用；Qwen 只有 Flash-Next 是自訂授權；SDXL Turbo 的 HF 標籤與 LICENSE 檔不一致）。官方文件自己也會前後不一致（Ollama 預設上下文、Open WebUI 向量庫數、Whisper turbo 參數），正文擇一並註明出處。openai.com 與 help.openai.com 對本環境 403，Wayback 的 `id_` 原始快照要 `--compressed`；amd.com 要 `--http1.1` 加瀏覽器 UA；developer.apple.com 走 `tutorials/data/...json`；apple.com/tw 售價在 JSON-LD。硬體與價格只抄官網當天數字、不做效能推估；sitemap 已到 926/1,000 列。
 - Commons 照片：工具的 User-Agent 要有聯絡信箱，而且請求要走 urllib（httpx 的連線被 Wikimedia 擋 403）；十個代理同時搜 Commons 會被 429，工具會退避重試。
 
 ## Gemini 完整系列補充（2026-09-14）
