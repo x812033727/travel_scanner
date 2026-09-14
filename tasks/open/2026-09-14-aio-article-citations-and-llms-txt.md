@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-aio-article-citations-and-llms-txt
 title: AIO: article graph carries its dated sources, and an llms.txt
-status: in-progress
+status: review
 priority: P2
 area: web
 owner: claude-opus-5-aio
