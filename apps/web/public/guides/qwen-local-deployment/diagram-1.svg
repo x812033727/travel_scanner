@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">本機跑 Qwen 的四個步驟 / Four steps to run Qwen locally</title>
+  <desc id="desc">一張四步流程圖。第一步選版本：在 Ollama 標籤頁看檔案大小，qwen3.5:9b 是 6.6GB，每個標籤都標 256K 上下文。第二步拉取：ollama pull qwen3.5:9b、ollama run qwen3.5:9b，再用 ollama ps 確認模型載在 GPU 還是 CPU。第三步設定繁體中文：把台灣用語規則寫進 Modelfile 的 SYSTEM，再用 ollama create qwen-zhtw 建成自訂模型。第四步開始對話：用 --think=false 關掉思考，用 /set parameter num_ctx 64000 把上下文視窗開大。圖下方說明為什麼需要第三步：模型卡只寫支援 201 種語言與方言，沒有保證繁體輸出。最下方兩個提醒：授權方面 Qwen3.5、Qwen3.6 與 Qwen3.8-27B 標 Apache 2.0，Qwen3.8-Flash-Next 是 Qwen Community License 1.0；舊寫法方面，把 /nothink 打進提示詞沒有作用，要用 Ollama 的介面指令。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">本機跑 Qwen：從選版本到繁體中文對話</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Running Qwen locally: pick a tag, pull, set Traditional Chinese, then chat</text>
+
+  <!-- step 1 -->
+  <rect x="60" y="180" width="310" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="215" y="220" text-anchor="middle" font-size="20" font-weight="700" fill="#0D6B68">第一步　選版本</text>
+  <line x1="90" y1="238" x2="340" y2="238" stroke="#0D6B68" stroke-width="2"/>
+  <text x="215" y="274" text-anchor="middle" font-size="16" fill="#102A2B">在 Ollama 標籤頁看大小</text>
+  <text x="215" y="304" text-anchor="middle" font-size="16" fill="#102A2B">qwen3.5:9b 是 6.6GB</text>
+  <text x="215" y="334" text-anchor="middle" font-size="16" fill="#5C6B6B">標籤都標 256K 上下文</text>
+
+  <line x1="378" y1="280" x2="442" y2="280" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 2 -->
+  <rect x="450" y="180" width="310" height="200" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="605" y="220" text-anchor="middle" font-size="20" font-weight="700" fill="#0D6B68">第二步　拉取</text>
+  <line x1="480" y1="238" x2="730" y2="238" stroke="#0D6B68" stroke-width="2"/>
+  <text x="605" y="274" text-anchor="middle" font-size="16" fill="#102A2B">ollama pull qwen3.5:9b</text>
+  <text x="605" y="304" text-anchor="middle" font-size="16" fill="#102A2B">ollama run qwen3.5:9b</text>
+  <text x="605" y="334" text-anchor="middle" font-size="16" fill="#5C6B6B">ollama ps 看 GPU 或 CPU</text>
+
+  <line x1="768" y1="280" x2="832" y2="280" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 3 -->
+  <rect x="840" y="180" width="310" height="200" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="995" y="220" text-anchor="middle" font-size="20" font-weight="700" fill="#2F6F9F">第三步　設定繁中</text>
+  <line x1="870" y1="238" x2="1120" y2="238" stroke="#2F6F9F" stroke-width="2"/>
+  <text x="995" y="274" text-anchor="middle" font-size="16" fill="#102A2B">Modelfile 寫 SYSTEM</text>
+  <text x="995" y="304" text-anchor="middle" font-size="16" fill="#102A2B">要求台灣繁體中文用語</text>
+  <text x="995" y="334" text-anchor="middle" font-size="16" fill="#5C6B6B">ollama create qwen-zhtw</text>
+
+  <line x1="1158" y1="280" x2="1222" y2="280" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- step 4 -->
+  <rect x="1230" y="180" width="310" height="200" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1385" y="220" text-anchor="middle" font-size="20" font-weight="700" fill="#2E7D5B">第四步　開始對話</text>
+  <line x1="1260" y1="238" x2="1510" y2="238" stroke="#2E7D5B" stroke-width="2"/>
+  <text x="1385" y="274" text-anchor="middle" font-size="16" fill="#102A2B">--think=false 關思考</text>
+  <text x="1385" y="304" text-anchor="middle" font-size="15" fill="#102A2B">/set parameter num_ctx 64000</text>
+  <text x="1385" y="334" text-anchor="middle" font-size="16" fill="#5C6B6B">把上下文視窗開大</text>
+
+  <!-- why step 3 -->
+  <rect x="60" y="430" width="1480" height="110" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="90" y="470" font-size="20" font-weight="700" fill="#D97A2B">第三步為什麼不能省</text>
+  <text x="90" y="506" font-size="17" fill="#102A2B">模型卡只寫支援 201 種語言與方言，沒有一句保證輸出繁體；台灣用語要自己在系統提示詞裡指定。</text>
+
+  <!-- licence -->
+  <rect x="60" y="580" width="720" height="160" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="90" y="620" font-size="20" font-weight="700" fill="#0D6B68">下載前先看授權</text>
+  <text x="90" y="658" font-size="17" fill="#102A2B">Qwen3.5、Qwen3.6、Qwen3.8-27B</text>
+  <text x="90" y="686" font-size="17" fill="#102A2B">模型卡標 Apache 2.0，商用沒有門檻。</text>
+  <text x="90" y="716" font-size="17" fill="#5C6B6B">Qwen3.8-Flash-Next 用 Qwen Community License 1.0。</text>
+
+  <!-- pitfall -->
+  <rect x="820" y="580" width="720" height="160" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="850" y="620" font-size="20" font-weight="700" fill="#B8442D">舊教學的寫法會失效</text>
+  <text x="850" y="658" font-size="17" fill="#102A2B">把 /nothink 打進提示詞沒有作用，</text>
+  <text x="850" y="686" font-size="17" fill="#102A2B">模型卡寫明這一代不支援軟開關。</text>
+  <text x="850" y="716" font-size="17" fill="#5C6B6B">改用 --think=false 或 /set nothink。</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,413 @@
+{
+  "slug": "lm-studio-getting-started",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "LM Studio 入門：圖形介面跑本機模型",
+      "description": "LM Studio 是一套桌面軟體，不用打指令就能在自己的電腦下載並執行開放權重模型。本文照官方文件整理系統需求、在 Discover 分頁搜尋與下載 GGUF 或 MLX 模型、對話時的上下文視窗與 GPU offload 設定、把本機伺服器開在埠 1234 的 OpenAI 相容端點，以及使用條款對個人與內部商業用途的說法。",
+      "hero": {
+        "src": "/guides/lm-studio-getting-started/hero.jpg",
+        "alt": "自繪插圖：一個圓角視窗分成三欄，左欄是下載中的檔案、中間是對話框、右欄是一個接出線路的埠，底下有一條把三者串起來的線。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想在自己的電腦跑 AI 模型，又不想碰終端機，LM Studio 是最接近「裝好就能用」的一條路：一套桌面軟體，在同一個視窗裡搜尋、下載模型、對話，也能把模型開成本機 API 伺服器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照官方文件走完一輪：對照系統需求、下載第一個模型、調整上下文視窗與 GPU offload，最後把本機伺服器打開讓別的程式呼叫。介面位置以官網當天版本為準。"
+        },
+        {
+          "type": "heading",
+          "text": "LM Studio 是什麼：App、llmster 與 lms 三件套",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件的說法是讓你「在本機執行 Llama、DeepSeek、Qwen、Phi 等大型語言模型」，支援 macOS、Windows 與 Linux。官方把自家工具拆成三個，名字很像但角色不同："
+        },
+        {
+          "type": "list",
+          "items": [
+            "LM Studio（桌面 App）：圖形介面，能搜尋下載模型、對話、上傳文件對話、設定參數、跑本機伺服器、接 MCP 伺服器，文件說這是最容易的起點。",
+            "llmster（無介面的背景服務）：不必裝桌面 App，文件舉的場景是 Linux 伺服器、沒有螢幕的 GPU 機器、CI 流程。",
+            "lms（命令列工具）：兩者都能指揮，隨 App 或 llmster 一起裝好；文件寫下指令時 LM Studio 沒開著會自動啟動。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "先對照官方系統需求",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這份需求講的是軟體跑不跑得動，不是模型跑不跑得動。官方文件目前列的是："
+        },
+        {
+          "type": "list",
+          "items": [
+            "macOS：晶片需 Apple Silicon（文件寫 M1／M2／M3／M4），系統需 macOS 14.0 或更新，建議 16GB 以上記憶體（RAM）；8GB 的 Mac 文件寫仍有機會使用，但要挑小模型，且不支援 Intel 版 Mac。",
+            "Windows：x64 與 ARM（文件點名 Snapdragon X Elite）都支援；x64 需 CPU 支援 AVX2，建議至少 16GB 記憶體、4GB 專用顯示記憶體（VRAM）。",
+            "Linux：x64 與 ARM64 都支援，以 AppImage 發布，需要 Ubuntu 20.04 或更新，比 22 更新的版本文件說測試不足。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "官方沒有給「幾 B 的模型對應幾 GB 記憶體」的對照表，模型要多少記憶體得看檔案大小與上下文視窗。"
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "heading",
+          "text": "下載與安裝：下載頁有兩個東西",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "查證當天的下載頁放了兩個入口：LM Studio Bionic（描述是「為開放模型打造的代理（Agent）」），以及 LM Studio 本身（「含對話介面與可程式化的 API」）。這篇談後者，下載頁當天對 Windows 顯示的版本是 0.4.24。沒有螢幕的機器改裝 llmster。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "安裝 llmster（官網下載頁的 Mac 與 Linux 指令）",
+          "code": "curl -fsSL https://lmstudio.ai/install.sh | bash"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "安裝 llmster（官網下載頁的 Windows 指令）",
+          "code": "irm https://lmstudio.ai/install.ps1 | iex"
+        },
+        {
+          "type": "heading",
+          "text": "找模型並下載：Discover 分頁接 Hugging Face",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "App 內建模型下載器，官方文件寫它「讓你從 Hugging Face 下載任何支援的模型」。到 Discover 分頁可以用關鍵字搜尋（文件舉例 llama、gemma），也可以貼上 user/model 字串或完整網址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個模型底下常會冒出 Q3_K_S、Q_8 之類好幾個選項。官方文件說這些是同一個模型的複本，只是保真度不同，Q 代表「量化」，把檔案壓小、換取一部分品質。文件的建議只有一句：機器夠力就選 4-bit 或以上。"
+        },
+        {
+          "type": "link",
+          "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+        },
+        {
+          "type": "link",
+          "text": "量化（Quantization）：用較少位元執行模型的取捨",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+        },
+        {
+          "type": "paragraph",
+          "text": "格式上，官網的模型目錄頁把模型分成 GGUF 與 MLX 兩種篩選，首頁則寫執行環境底層是 MLX 與 llama.cpp。別處抓好的 GGUF 檔可用 lms import 匯入（文件標示為實驗性），模型預設放在 ~/.lmstudio/models 底下。"
+        },
+        {
+          "type": "link",
+          "text": "Hugging Face 入門：找模型、看授權、下載",
+          "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+        },
+        {
+          "type": "heading",
+          "text": "對話與參數：上下文視窗、GPU offload",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型抓好後到 Chat 分頁，打開模型載入器選一個模型，載入前可先改參數。官方文件對「載入模型」的定義是：配置記憶體來放模型權重與其他參數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想固定某個模型的設定，文件說到 My Models 分頁按齒輪圖示編輯預設參數，列的三個理由是：設定 GPU offload 比例、設定上下文視窗大小、要不要用 Flash Attention。"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到這些選項通常是模式問題。文件說介面分成 User 與 Developer：User 只顯示對話介面、其他自動設定；Developer 開放可調的載入與推論參數，在 Settings 開啟。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對話裡也能附檔案。官方文件寫可以附 .docx、.pdf、.txt：內容塞得進上下文視窗時整份放進對話，太長時改用檢索增強生成（RAG）。官方提醒這招時好時壞，查詢時把預期會出現在原文的名詞寫進去比較準。"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "heading",
+          "text": "本機伺服器：埠 1234 與 OpenAI 相容端點",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件說可以從 Developer 分頁把本機模型開成 API 伺服器，只開在 localhost 或開放給區域網路都行，做法是打開 Start server 開關。也可以走終端機："
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 lms 下載模型、載入並啟動本機伺服器（官方文件範例）",
+          "code": "lms get openai/gpt-oss-20b\nlms load openai/gpt-oss-20b\nlms server start"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件寫伺服器啟動後監聽在 localhost 的埠 1234。OpenAI 相容端點在 v1 底下，文件列了 /v1/models、/v1/responses、/v1/chat/completions、/v1/embeddings 與 /v1/completions。現有的 OpenAI 客戶端程式可以沿用，只要把 base URL 換掉。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 curl 呼叫本機的 OpenAI 相容端點（官方文件範例）",
+          "code": "curl http://localhost:1234/v1/chat/completions \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"model\": \"use the model identifier from LM Studio here\",\n    \"messages\": [{\"role\": \"user\", \"content\": \"Say this is a test\"}],\n    \"temperature\": 0.7\n  }'"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "把 OpenAI 的 Python 客戶端指向本機（官方文件範例）",
+          "code": "from openai import OpenAI\n\nclient = OpenAI(\n    base_url=\"http://localhost:1234/v1\"\n)\n# ... the rest of your code ..."
+        },
+        {
+          "type": "paragraph",
+          "text": "埠與範圍都能改。文件寫 lms server start 可以帶 --port 指定埠（範例是 --port 3000）、--cors 開啟跨來源支援、--bind 指定綁定位址，預設 127.0.0.1 只聽 localhost，改成 0.0.0.0 會聽所有介面，官方在後兩個旗標旁都放了警告。"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗證預設是關的。官方文件寫 LM Studio 預設不要求 API 請求附帶驗證；要改成只接受有效權杖，得在 Server Settings 打開開關，需要 LM Studio 0.4.0 或更新版本。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/lm-studio-getting-started/diagram-1.svg",
+          "alt": "三個抽象方塊分別代表 LM Studio 的下載模型、對話與本機伺服器畫面，箭頭標出哪一段需要網路、哪一段留在本機。",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左到右看：只有搜尋與下載模型那一段需要網路，載入模型之後的對話與本機伺服器都在你的電腦裡跑，伺服器監聽在埠 1234。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "功能",
+            "在哪裡",
+            "備註"
+          ],
+          "rows": [
+            [
+              "搜尋與下載模型",
+              "Discover 分頁",
+              "來源是 Hugging Face"
+            ],
+            [
+              "匯入已下載的 GGUF",
+              "終端機的 lms import",
+              "文件標示為實驗性功能"
+            ],
+            [
+              "GPU offload 與上下文視窗",
+              "My Models 分頁的齒輪圖示",
+              "同處可設 Flash Attention"
+            ],
+            [
+              "開本機伺服器",
+              "Developer 分頁的 Start server",
+              "或用 lms server start"
+            ],
+            [
+              "切換執行環境版本",
+              "終端機的 lms runtime",
+              "可列出、下載與更新"
+            ]
+          ],
+          "caption": "介面位置照 lmstudio.ai 官方文件，2026 年 9 月查證；版本更新後位置可能改變，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "隱私與離線：官方文件怎麼寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的「離線運作」頁講得很直接：一般情況下 LM Studio 不需要網路就能運作，包含與模型對話、與文件對話、跑本機伺服器。文件逐項寫：用已下載的模型時，你輸入的東西不會離開裝置；做 RAG 時文件留在你的機器上；伺服器的請求也留在本機。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要連網的操作文件也列了：搜尋模型、下載新模型、內建目錄顯示統計、下載執行環境、檢查更新。想完全離線，就先把模型抓好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "隱私權政策則寫 LM Studio「處理盡可能少的資訊，而且可以完全在裝置上離線運作」，除了雲端服務外不處理 App 裡的對話或文件內容。"
+        },
+        {
+          "type": "link",
+          "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+        },
+        {
+          "type": "heading",
+          "text": "授權與和 Ollama 的差別",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LM Studio 桌面版走的是自家使用條款，不是開源授權；查證當天條款頁的版本日期是 2026 年 8 月 23 日，立約公司是 Element Labs, Inc.。條文給的是「非專屬、不可轉讓」的授權，供你「個人與／或內部商業用途」使用，並禁止再授權、散布、當成軟體即服務對外提供與還原工程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以「能不能商用」沒有一句話的答案：授權範圍是個人與內部商業用途，外部散布與軟體即服務在限制項目裡，放進公司流程前請讀條款原文與官網企業方案頁，以官網為準。命令列工具 lms 則單純，文件寫它採 MIT 授權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "和 Ollama 相比，官方文件撐得住的差別有三點：介面上 LM Studio 本身就是圖形介面；格式上官網目錄用 GGUF 與 MLX 兩種篩選；授權上 Ollama 的 LICENSE 是 MIT，LM Studio 則是自家條款。速度與相容性官方沒有比較，這篇不猜。"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "App 的授權和模型的授權是兩回事",
+          "text": "LM Studio 的使用條款把你下載的模型歸類為「第三方 AI 模型」，寫明這些產品是依你和第三方供應商之間的授權協議提供給你，你要自行確保使用方式合法。所以要看兩份文件：App 能怎麼用看 LM Studio 的條款，模型能不能商用看模型自己的授權。"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        }
+      ],
+      "sources": [
+        {
+          "title": "LM Studio 官方首頁（產品說明與底層執行環境）",
+          "url": "https://lmstudio.ai/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 下載頁（版本、AppImage 與 llmster 安裝指令）",
+          "url": "https://lmstudio.ai/download",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：系統需求",
+          "url": "https://lmstudio.ai/docs/app/system-requirements",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：開始使用",
+          "url": "https://lmstudio.ai/docs/app/basics",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：下載模型",
+          "url": "https://lmstudio.ai/docs/app/basics/download-model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：App、llmster 與 lms 的差別",
+          "url": "https://lmstudio.ai/docs/app/basics/lmstudio-vs-llmster-vs-lms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：與文件對話（RAG）",
+          "url": "https://lmstudio.ai/docs/app/basics/rag",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：離線運作",
+          "url": "https://lmstudio.ai/docs/app/offline",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：每個模型的預設載入參數",
+          "url": "https://lmstudio.ai/docs/app/advanced/per-model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：匯入模型",
+          "url": "https://lmstudio.ai/docs/app/advanced/import-model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：User 與 Developer 模式",
+          "url": "https://lmstudio.ai/docs/app/user-interface/modes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：lms 命令列工具",
+          "url": "https://lmstudio.ai/docs/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：lms server start 的旗標",
+          "url": "https://lmstudio.ai/docs/cli/serve/server-start",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：本機 LLM API 伺服器",
+          "url": "https://lmstudio.ai/docs/developer/core/server",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：API 權杖與驗證",
+          "url": "https://lmstudio.ai/docs/developer/core/authentication",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：OpenAI 相容端點",
+          "url": "https://lmstudio.ai/docs/developer/openai-compat",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 模型目錄（GGUF 與 MLX 格式篩選）",
+          "url": "https://lmstudio.ai/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 桌面版使用條款（2026 年 8 月 23 日版）",
+          "url": "https://lmstudio.ai/terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 隱私權政策",
+          "url": "https://lmstudio.ai/privacy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 的 LICENSE 檔（GitHub，MIT 授權）",
+          "url": "https://github.com/ollama/ollama/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

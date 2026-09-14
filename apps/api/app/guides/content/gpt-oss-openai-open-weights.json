@@ -1,0 +1,364 @@
+{
+  "slug": "gpt-oss-openai-open-weights",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪",
+      "description": "gpt-oss 有 120b 與 20b 兩個版本，授權 Apache 2.0，官方寫 120b 要單張 80GB GPU、20b 要 16GB 記憶體，上下文視窗 128k。這篇照 OpenAI 公告、Hugging Face 模型卡與 Ollama 文件，整理版本與規格、能在哪些軟體跑、推理力道與 harmony 怎麼設定，以及和 ChatGPT 的差別與授權允許的事。",
+      "hero": {
+        "src": "/guides/gpt-oss-openai-open-weights/hero.jpg",
+        "alt": "插圖：一個裝著模型權重的方塊，箭頭指向右邊一台螢幕，表示權重下載到自己的機器上執行。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "gpt-oss 是 OpenAI 開放下載的開放權重模型，分成 gpt-oss-120b 與 gpt-oss-20b 兩個版本，授權 Apache 2.0，可以裝在自己的電腦或伺服器上跑；OpenAI 說明中心寫得很直接，它不透過 OpenAI API 提供，也不會出現在 ChatGPT 裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照 OpenAI 公告與開放模型頁、Hugging Face 的模型卡與授權檔、GitHub 專案說明與 Ollama 文件，整理版本與規格、能在哪些軟體跑、官方寫的硬體需求與推理力道設定，以及和 ChatGPT 差在哪。"
+        },
+        {
+          "type": "heading",
+          "text": "gpt-oss 是什麼：OpenAI 開放下載的是權重",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在公告裡寫明，gpt-oss 是繼 GPT-2 之後自家第一批開放權重的語言模型（Whisper 與 CLIP 這類模型更早就開放過）。兩個版本都是混合專家架構，每個 token 只啟用一部分參數，所以總參數量大、實際算的參數量小很多。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "gpt-oss-120b：117B 總參數，每個 token 活躍 5.1B，36 層，128 個專家、每個 token 取 4 個。",
+            "gpt-oss-20b：21B 總參數，每個 token 活躍 3.6B，24 層，32 個專家、每個 token 取 4 個。",
+            "兩個版本都原生支援到 128k 的上下文視窗。",
+            "訓練資料以英文純文字為主，說明中心把它們列為純文字（text-only）推理模型。",
+            "授權 Apache 2.0，模型庫另附一份 USAGE_POLICY 檔。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugging Face 的 openai 組織頁顯示，這兩個版本都在 2025 年 8 月 4 日上架；同一個組織在 2025 年 9 月 18 日另外上架了 gpt-oss-safeguard-120b 與 gpt-oss-safeguard-20b，授權一樣是 Apache 2.0。說明中心把 safeguard 標為研究預覽，它從 gpt-oss 微調而來、架構沒改，用途是照你寫的安全政策分類內容；一般聊天與代理（Agent）建議還是用原本的 gpt-oss。"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "link",
+          "text": "混合專家模型（Mixture of Experts）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts"
+        },
+        {
+          "type": "heading",
+          "text": "能在哪裡跑：官方點名的執行環境",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "權重放在 Hugging Face 上，模型卡同時給了 Transformers、vLLM、Ollama 與 LM Studio 幾種執行方式；GitHub 專案另有 PyTorch、Triton 與 Apple Metal 參考實作，官方註明那是教學用途，不預期拿去正式環境跑。想先在自己的電腦試，模型卡直接給 Ollama 指令。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 Ollama 下載並執行 gpt-oss（官方模型卡的指令）",
+          "code": "ollama pull gpt-oss:20b\nollama run gpt-oss:20b\n\nollama pull gpt-oss:120b\nollama run gpt-oss:120b"
+        },
+        {
+          "type": "paragraph",
+          "text": "用 LM Studio 的話，模型卡給的是 lms 指令，抓回本機後再從圖形介面開對話。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 LM Studio 的指令列下載 gpt-oss-20b",
+          "code": "lms get openai/gpt-oss-20b"
+        },
+        {
+          "type": "paragraph",
+          "text": "不想自己準備硬體，OpenAI 公告列出上線前就合作的部署平台：Azure、Hugging Face、vLLM、Ollama、llama.cpp、LM Studio、AWS、Fireworks、Together AI、Baseten、Databricks、Vercel、Cloudflare 與 OpenRouter，硬體端點名 NVIDIA、AMD、Cerebras 與 Groq。公告也寫到微軟用 ONNX Runtime 把 gpt-oss-20b 帶上 Windows。名單以外的供應商以官網目前頁面為準。"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "LM Studio 入門：圖形介面跑本機模型",
+          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "硬體需求：官方只寫了兩個數字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "公告與模型卡對硬體只給兩句話：gpt-oss-120b 能在單張 80GB 的 GPU 上跑，官方舉例 NVIDIA H100 或 AMD MI300X；gpt-oss-20b 在 16GB 記憶體裡就能執行。靠的是 MXFP4 量化，混合專家的權重在後訓練階段就量化成每個參數 4.25 bits，而這部分佔總參數量九成以上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的 Cookbook 在 Ollama 那篇說得再具體些：gpt-oss-20b 最好有 16GB 以上的顯示記憶體或統一記憶體，gpt-oss-120b 最好有 60GB 以上。Ollama 模型庫頁顯示 gpt-oss:20b 下載大小 14GB、gpt-oss:120b 是 65GB，上下文視窗都標 128K。更細的機型對照以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "heading",
+          "text": "推理力道與 harmony：跑起來之後的兩個設定",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "gpt-oss 是推理模型，官方給了三段推理力道：low、medium、high，在系統訊息裡用一句話切換，公告說這是延遲與表現之間的取捨。官方對話模板顯示，沒指定時預設是 medium。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "在系統訊息裡設定推理力道（官方模型卡的寫法）",
+          "code": "Reasoning: high"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Ollama 上設定方式不同：文件寫 gpt-oss 要在 think 欄位放 low、medium 或 high，傳 true 或 false 會被忽略，而且思考軌跡沒辦法完全關掉。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "在 Ollama 的本機 API 指定推理力道",
+          "code": "curl http://localhost:11434/api/chat -d '{\n  \"model\": \"gpt-oss:20b\",\n  \"messages\": [{\"role\": \"user\", \"content\": \"Hello!\"}],\n  \"think\": \"high\",\n  \"stream\": false\n}'"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一件事是 harmony 回應格式：官方說兩個模型都用 harmony 訓練，不照這個格式用就不會正常運作；它把回應拆成 analysis、commentary、final 三個頻道，只有 final 是給使用者看的。官方文件也寫明，透過 Ollama 這類推論方案使用時格式由工具處理。"
+        },
+        {
+          "type": "link",
+          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "heading",
+          "text": "和 ChatGPT 差在哪：只看官方文件寫出來的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最關鍵的一條寫在說明中心的常見問題：這些模型不在 OpenAI API 上提供，也不會出現在 ChatGPT 裡。你在 ChatGPT 用到的搜尋、記憶、圖片、語音是那個產品的功能，不是模型檔案帶著的；下載回來的是一個純文字的推理模型。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "不在 ChatGPT、也不在 OpenAI API：說明中心直接寫「No」，API 計價與速率限制不適用。",
+            "純文字：官方把 gpt-oss 列為 text-only 的推理模型，支援哪些功能看執行環境文件。",
+            "知識截止在 2024 年 6 月：官方對話模板把 Knowledge cutoff 寫成 2024-06，模型自己不會上網查。",
+            "想要多模態、內建工具與平台整合，公告直接建議改用 API 平台上的模型。",
+            "支援是自助的：說明中心寫 OpenAI 不為自架或第三方託管的部署提供除錯協助。",
+            "資料留在你這邊：除非你主動分享或用託管夥伴，OpenAI 不會收到或處理你送給模型的資料。",
+            "費用自己算：權重免費，運算、儲存與第三方託管的費用由你負擔。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "image",
+          "src": "/guides/gpt-oss-openai-open-weights/diagram-1.svg",
+          "alt": "三欄對照圖，左到右是 ChatGPT、OpenAI API 平台與開放權重 gpt-oss，各自列出取得方式、功能與誰負責機器。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：前兩條路的模型與機器都由 OpenAI 代管，第三條把權重交到你手上，規格與費用也一起換手。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+        },
+        {
+          "type": "heading",
+          "text": "授權允許什麼：Apache 2.0 加一份很短的使用政策",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型庫裡的 LICENSE 檔就是標準的 Apache License 2.0：可以商用、可以修改、可以再散布，條文裡沒有月活躍使用者上限或營收門檻，也沒有 copyleft 的傳染性要求。旁邊另附一份 USAGE_POLICY，全文只有兩句，大意是希望工具被安全、負責任而且民主地使用，並且你同意遵守所有適用法律。"
+        },
+        {
+          "type": "paragraph",
+          "text": "微調也允許：說明中心寫你可以用開源工具與自己的機器微調，但 OpenAI 的 API 不提供這兩個模型的微調服務。官方也公布了自己測的成績，開放模型頁列出 gpt-oss-120b 的 MMLU 是 90.0、gpt-oss-20b 是 85.3，旁邊對照 o3 與 o4-mini。這些是官方自報的數字。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "版本",
+            "參數與官方寫的需求",
+            "授權",
+            "怎麼跑"
+          ],
+          "rows": [
+            [
+              "gpt-oss-120b",
+              "117B 總參數、活躍 5.1B；單張 80GB GPU",
+              "Apache 2.0 加使用政策",
+              "Ollama、vLLM、Transformers"
+            ],
+            [
+              "gpt-oss-20b",
+              "21B 總參數、活躍 3.6B；16GB 記憶體",
+              "Apache 2.0 加使用政策",
+              "Ollama、LM Studio"
+            ],
+            [
+              "gpt-oss-safeguard-120b",
+              "117B 總參數、約 5.1B 活躍；單張 80GB GPU",
+              "Apache 2.0",
+              "與 gpt-oss 同一套模板"
+            ],
+            [
+              "gpt-oss-safeguard-20b",
+              "21B 總參數、約 3.6B 活躍；16GB 顯示記憶體",
+              "Apache 2.0",
+              "同上，用於政策分類"
+            ]
+          ],
+          "caption": "四個版本的規格、授權與執行方式，查證於 2026 年 9 月；數字引自 OpenAI 公告、Hugging Face 模型卡與 OpenAI 說明中心。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "思考過程不要直接貼給使用者",
+          "text": "OpenAI 公告寫明他們沒有對 gpt-oss 的思考鏈做直接監督，那段文字可能含有幻覺或有害內容，也可能包含模型被要求不要放進最終回答的資訊，官方因此要求開發者不要把思考鏈直接顯示給使用者。harmony 裡只有 final 頻道是給使用者看的，而 Ollama 上的思考軌跡關不掉，做成對外產品就得自己過濾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同樣能下載的模型，各家授權差很多，選之前先把授權原文和硬體需求放在一起看。"
+        },
+        {
+          "type": "link",
+          "text": "Llama 模型家族：授權與版本",
+          "url": "https://mokaair.com/zh-TW/life/llama-models-explained"
+        },
+        {
+          "type": "link",
+          "text": "Gemma：Google 的開源模型怎麼用",
+          "url": "https://mokaair.com/zh-TW/life/gemma-google-open-models"
+        },
+        {
+          "type": "link",
+          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 公告：Introducing gpt-oss（參數、層數、專家數、128k 上下文、三段推理力道、80GB 與 16GB、合作平台名單）",
+          "url": "https://openai.com/index/introducing-gpt-oss/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 開放模型頁 Open models by OpenAI（gpt-oss 與 gpt-oss-safeguard 版本、Apache 2.0、官方自報的 MMLU 等評測表）",
+          "url": "https://openai.com/open-models/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心：OpenAI open-weight models (gpt-oss)（不在 API 與 ChatGPT、純文字、自助支援、資料處理、微調、費用）",
+          "url": "https://help.openai.com/en/articles/11870455-openai-open-weight-models-gpt-oss",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型卡 openai/gpt-oss-120b（117B 與 5.1B、80GB GPU、MXFP4、推理力道、Ollama 與 LM Studio 指令）",
+          "url": "https://huggingface.co/openai/gpt-oss-120b",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型卡 openai/gpt-oss-20b（21B 與 3.6B、16GB 記憶體、harmony 格式）",
+          "url": "https://huggingface.co/openai/gpt-oss-20b",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 檔案 openai/gpt-oss-120b/LICENSE（Apache License 2.0 原文）",
+          "url": "https://huggingface.co/openai/gpt-oss-120b/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 檔案 openai/gpt-oss-120b/USAGE_POLICY（使用政策全文兩句）",
+          "url": "https://huggingface.co/openai/gpt-oss-120b/blob/main/USAGE_POLICY",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 檔案 openai/gpt-oss-120b/chat_template.jinja（Knowledge cutoff 2024-06、預設 reasoning_effort 為 medium）",
+          "url": "https://huggingface.co/openai/gpt-oss-120b/blob/main/chat_template.jinja",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face API：openai 組織的模型清單（gpt-oss 與 gpt-oss-safeguard 的建立日期與授權標籤）",
+          "url": "https://huggingface.co/api/models?author=openai",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型卡 openai/gpt-oss-safeguard-20b（從 gpt-oss 微調、21B 與 3.6B、16GB 顯示記憶體、Apache 2.0）",
+          "url": "https://huggingface.co/openai/gpt-oss-safeguard-20b",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub openai/gpt-oss README（參考實作用途、Ollama 與 LM Studio 指令、harmony 與工具說明）",
+          "url": "https://github.com/openai/gpt-oss",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫 gpt-oss 頁（14GB 與 65GB 下載大小、128K 上下文、cloud 標籤、MXFP4 每個參數 4.25 bits）",
+          "url": "https://ollama.com/library/gpt-oss",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：Thinking（gpt-oss 的 think 只接受 low、medium、high，思考軌跡不能完全關掉）",
+          "url": "https://docs.ollama.com/capabilities/thinking",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Cookbook：How to run gpt-oss locally with Ollama（20b 建議 16GB 以上、120b 建議 60GB 以上）",
+          "url": "https://developers.openai.com/cookbook/articles/gpt-oss/run-locally-ollama",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Cookbook：OpenAI harmony response format（不用 harmony 就不會正常運作、analysis 與 commentary 與 final 三個頻道、推論工具會代為處理）",
+          "url": "https://developers.openai.com/cookbook/articles/openai-harmony",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 模型卡頁 gpt-oss-120b & gpt-oss-20b Model Card（Apache 2.0 加 gpt-oss 使用政策、純文字、Responses API 相容）",
+          "url": "https://openai.com/index/gpt-oss-model-card/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

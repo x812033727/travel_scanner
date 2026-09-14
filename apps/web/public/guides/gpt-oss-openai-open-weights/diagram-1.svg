@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">gpt-oss 在 OpenAI 產品線的位置 / Where gpt-oss sits in OpenAI's line-up</title>
+<desc id="desc">三欄對照。左欄 ChatGPT：網頁與 App 登入就用，搜尋、記憶、圖片、語音由產品提供，模型與機器由 OpenAI 代管，裡面沒有 gpt-oss。中欄 OpenAI API 平台：開發者用程式呼叫，有多模態與內建工具，依用量計費，模型與機器一樣由 OpenAI 代管，也沒有 gpt-oss。右欄開放權重 gpt-oss：gpt-oss-120b 與 gpt-oss-20b 兩個版本，授權 Apache 2.0、權重免費下載，上下文視窗 128K，120b 要單張 80GB GPU、20b 要 16GB 記憶體，在自己的機器上執行，純文字，不在 ChatGPT 與 API 裡。下方一行結論：前兩條路的模型與機器由 OpenAI 代管，你付訂閱費或用量費；第三條把權重交到你手上，可以商用與微調，機器與費用也歸你。</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+</marker>
+</defs>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">gpt-oss 在 OpenAI 產品線的位置</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">ChatGPT / API platform / open weights — three ways to reach an OpenAI model</text>
+
+<rect x="60" y="120" width="460" height="64" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="290" y="162" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">ChatGPT（聊天產品）</text>
+<rect x="60" y="200" width="460" height="400" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="90" y="252" font-size="19" fill="#102A2B">・網頁與 App，登入就能用</text>
+<text x="90" y="310" font-size="19" fill="#102A2B">・搜尋、記憶、圖片、語音</text>
+<text x="112" y="344" font-size="19" fill="#102A2B">由產品提供</text>
+<text x="90" y="404" font-size="19" fill="#102A2B">・模型與機器由 OpenAI 代管</text>
+<text x="90" y="462" font-size="19" fill="#102A2B">・付的是訂閱費</text>
+<text x="90" y="540" font-size="19" fill="#B8442D">・裡面沒有 gpt-oss</text>
+
+<rect x="570" y="120" width="460" height="64" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="800" y="162" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">OpenAI API 平台</text>
+<rect x="570" y="200" width="460" height="400" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="600" y="252" font-size="19" fill="#102A2B">・開發者用程式呼叫</text>
+<text x="600" y="310" font-size="19" fill="#102A2B">・多模態與內建工具</text>
+<text x="600" y="368" font-size="19" fill="#102A2B">・依用量計費</text>
+<text x="600" y="426" font-size="19" fill="#102A2B">・模型與機器由 OpenAI 代管</text>
+<text x="600" y="540" font-size="19" fill="#B8442D">・不提供 gpt-oss</text>
+
+<rect x="1080" y="120" width="460" height="64" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="1310" y="162" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">開放權重 gpt-oss</text>
+<rect x="1080" y="200" width="460" height="400" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="1110" y="248" font-size="19" fill="#102A2B">・gpt-oss-120b 與 gpt-oss-20b</text>
+<text x="1110" y="292" font-size="19" fill="#102A2B">・Apache 2.0，權重免費下載</text>
+<text x="1110" y="336" font-size="19" fill="#102A2B">・上下文視窗 128K，純文字</text>
+<text x="1110" y="380" font-size="19" fill="#102A2B">・120b 要單張 80GB GPU</text>
+<text x="1110" y="424" font-size="19" fill="#102A2B">・20b 要 16GB 記憶體</text>
+<text x="1110" y="468" font-size="19" fill="#2E7D5B">・在自己的機器上執行</text>
+<text x="1110" y="520" font-size="19" fill="#B8442D">・不在 ChatGPT 與 API 裡</text>
+<text x="1110" y="564" font-size="19" fill="#D97A2B">・機器與費用由你負責</text>
+
+<line x1="290" y1="620" x2="290" y2="678" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<line x1="800" y1="620" x2="800" y2="678" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<line x1="1310" y1="620" x2="1310" y2="678" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+<rect x="60" y="690" width="1480" height="130" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="800" y="742" font-size="22" fill="#102A2B" text-anchor="middle">前兩條路的模型與機器由 OpenAI 代管，你付的是訂閱費或用量費</text>
+<text x="800" y="786" font-size="22" fill="#102A2B" text-anchor="middle">第三條把權重交到你手上：可以商用、可以微調，機器與費用也歸你</text>
+
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

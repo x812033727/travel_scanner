@@ -1,0 +1,365 @@
+{
+  "slug": "local-llm-hardware-requirements",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "gadgets"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+      "description": "官方文件沒有「幾 B 的模型要幾 GB 記憶體」的對照表，所以這篇只給算法：用 Ollama、llama.cpp、LM Studio 的官方需求，加上模型庫當天的檔案大小與 Apple、NVIDIA 規格頁的數字，算出模型權重與上下文視窗各佔多少記憶體，再對照一般筆電、獨立顯示卡桌機、Apple Silicon Mac 三種配置各能跑到哪一級。",
+      "hero": {
+        "src": "/guides/local-llm-hardware-requirements/hero.jpg",
+        "alt": "插圖：一個模型檔案方塊分別落進顯示記憶體、系統記憶體與統一記憶體三個容器，容器大小不同",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "「我的電腦跑不跑得動本機模型」不是一個玄學問題，而是一道可以自己算的加法：模型檔案有多大，就是記憶體需求的下限；上下文視窗開多長，要再加一份；兩者相加如果塞得進顯示記憶體（VRAM），模型就整個跑在顯示卡上，速度最快；只塞得進系統記憶體（RAM），就會退成 CPU 或混合模式，慢但仍然會動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "麻煩的是，Ollama、llama.cpp、LM Studio 三家的官方文件都沒有提供「幾 B 的模型要幾 GB 記憶體」的對照表，官網只給系統需求與各自的預設規則，模型檔案大小則要到模型庫或模型卡上一個一個看。所以這篇不編一張猜出來的對照表，只交給你算法，加上當天在官方頁面上查得到的數字：怎麼查檔案大小、量化位元數怎麼把同一個模型變成三種尺寸、上下文視窗要多算多少、顯示記憶體與 Apple 統一記憶體差在哪，最後對照一般筆電、獨立顯示卡桌機、Apple Silicon Mac 三種配置。"
+        },
+        {
+          "type": "heading",
+          "text": "第一步：把模型檔案大小當成下限",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最容易被忽略的一件事是，模型的檔案大小本來就寫在官方頁面上，不需要推算。Ollama 模型庫的每個標籤旁邊都直接標出大小與上下文視窗長度，以 2026 年 9 月 14 日查到的數字為例：gemma3:4b 是 3.3GB、gemma3:12b 是 8.1GB、gemma3:27b 是 17GB；qwen3:8b 是 5.2GB、qwen3:14b 是 9.3GB、qwen3:32b 是 20GB；gpt-oss:20b 是 14GB、gpt-oss:120b 是 65GB。這些數字是權重本身的重量，執行時要整份搬進記憶體，所以是下限，不是答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下限與實際需求差多少，官方也留了線索。Ollama 模型庫的 gpt-oss 說明頁寫，把混合專家（MoE）權重量化成 MXFP4 格式、每個參數 4.25 位元之後，「較小的模型可以在只有 16GB 記憶體的系統上執行，較大的模型則能裝進單張 80GB 的 GPU」。對照檔案大小就很清楚：14GB 的檔案配 16GB 記憶體、65GB 的檔案配單張 80GB 顯示記憶體，官方自己留的餘裕大約兩成。Hugging Face 上 openai 組織的 gpt-oss-20b 模型卡寫的是同一件事，說這個模型可以「在 16GB 記憶體內執行」。這種「模型卡直接寫需求」的情況並不多，遇不到的時候就只能從檔案大小往上推。"
+        },
+        {
+          "type": "link",
+          "text": "模型參數（Model Parameters）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+        },
+        {
+          "type": "heading",
+          "text": "量化位元數：同一個模型的三種尺寸",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "量化（Quantization）是用比較少的位元存放權重，檔案會變小、需要的記憶體跟著變小，代價是品質有損失。同一個模型會同時提供好幾種量化版本，看 Ollama 模型庫的標籤頁最直觀，以下是 2026 年 9 月 14 日的實際大小："
+        },
+        {
+          "type": "list",
+          "items": [
+            "gemma3 4B：q4_K_M 3.3GB、q8_0 5.0GB、fp16 8.6GB",
+            "gemma3 12B：q4_K_M 8.1GB、q8_0 13GB、fp16 24GB",
+            "gemma3 27B：q4_K_M 17GB、q8_0 30GB、fp16 55GB"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "規律很好記：四位元版本大約是 16 位元版本的三分之一，八位元版本大約是一半。llama.cpp 的 README 列出它支援 1.5、2、3、4、5、6、8 位元的整數量化，用途寫得很白：加快推論並降低記憶體用量。LM Studio 的文件則給了選哪一個的一句話建議：如果機器跑得動，就選四位元或更高的選項。換句話說，決定要不要買更多記憶體之前，先試試看降一階量化，成本是零。"
+        },
+        {
+          "type": "link",
+          "text": "量化（Quantization）：用較少位元執行模型的取捨",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+        },
+        {
+          "type": "link",
+          "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+        },
+        {
+          "type": "heading",
+          "text": "上下文視窗要另外算一份記憶體",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "權重之外，上下文視窗也要佔一份記憶體，而且是會隨著你把對話拉長而變大的那一份。Ollama 的文件直說：設定較長的上下文長度會增加執行模型所需的記憶體，調高之前要先確認顯示記憶體夠用。它的預設上下文是 4096 個 token，而且會依照顯示記憶體自動分級："
+        },
+        {
+          "type": "list",
+          "items": [
+            "顯示記憶體低於 24 GiB：預設 4k 上下文",
+            "24 至 48 GiB：預設 32k 上下文",
+            "48 GiB 以上：預設 256k 上下文"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "這張分級表其實就是官方願意給的「配置對能力」提示：24 GiB 是一道明顯的門檻。同一頁還建議，網頁搜尋、代理（Agent）與寫程式工具這類需要長上下文的任務，至少要設到 64000 個 token。要改的話，在啟動服務時加環境變數即可。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "啟動 Ollama 時把預設上下文設成 64000 個 token",
+          "code": "OLLAMA_CONTEXT_LENGTH=64000 ollama serve"
+        },
+        {
+          "type": "paragraph",
+          "text": "上下文吃掉的那份記憶體叫 K/V 快取，Ollama 文件也給了壓縮它的官方倍率：預設型別是 f16，改成 q8_0 大約使用 f16 一半的記憶體、精度損失非常小，改成 q4_0 大約使用四分之一、在長上下文時比較看得出差別。另外要注意並行請求：文件的例子是 2K 上下文配 4 個並行請求，結果等於 8K 上下文與相應的記憶體配置，所以如果你打算把本機模型接給全家人或多個工具用，記憶體要再往上抓。"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "heading",
+          "text": "顯示記憶體、系統記憶體與統一記憶體",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "算出總需求之後，下一個問題是這份記憶體從哪裡來。Ollama 的作法是：載入模型時先評估需要的顯示記憶體，如果模型能完整放進任何一張顯示卡，就載到那張卡上；放不下才分散到多張，再放不下就分一部分給系統記憶體。結果可以直接查，PROCESSOR 欄會顯示 100% GPU、100% CPU，或像 48%/52% CPU/GPU 這種各佔一半的狀態。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "查目前載入的模型跑在哪裡",
+          "code": "ollama ps"
+        },
+        {
+          "type": "paragraph",
+          "text": "llama.cpp 的說法一樣直接：它支援 CPU 與 GPU 混合推論，用來部分加速比顯示記憶體總量更大的模型；多 GPU 文件則寫，模型放不進顯示記憶體時，模型的一部分就得跑在相對比較慢的系統記憶體上。也就是說，記憶體不夠通常不是「跑不起來」，而是「變慢」——除非連系統記憶體都裝不下。"
+        },
+        {
+          "type": "paragraph",
+          "text": "消費級顯示卡的上限就寫在規格頁上。NVIDIA 官方比較頁 2026 年 9 月 14 日列的 GeForce RTX 50 系列標準記憶體配置是：RTX 5090 32GB、RTX 5080 與 RTX 5070 Ti 各 16GB、RTX 5070 12GB、RTX 5060 Ti 16GB 或 8GB、RTX 5060 8GB、RTX 5050 8GB；上一代的 RTX 4090 是 24GB。也就是說，在單張消費級顯示卡上，8GB 到 32GB 就是整個可用範圍，插再多系統記憶體也不會變成顯示記憶體。至於顯示卡本身認不認得，Ollama 的需求是 NVIDIA 運算能力（compute capability）5.0 以上、驅動程式 550 以上，5.0 到 6.2 的舊卡要 570 以上；RTX 50 系列的運算能力是 12.0。AMD 這邊是 Linux 需要 ROCm v7 驅動、Windows 需要 ROCm v7 或 HIP7 相容的驅動堆疊，Windows 支援清單比 Linux 短，另外還有 Vulkan 可以補上一部分顯示卡。"
+        },
+        {
+          "type": "link",
+          "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
+          "url": "https://mokaair.com/zh-TW/life/local-ai-gpu-buying-guide"
+        },
+        {
+          "type": "heading",
+          "text": "Apple Silicon 的統一記憶體是同一份",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple Silicon 的 CPU 與 GPU 共用同一份統一記憶體，所以沒有「顯示記憶體只有 8GB」這種天花板：你買了多少記憶體，模型大致上就能用到多少（扣掉系統本身要用的）。以 2026 年 9 月 14 日 Apple 台灣官網的規格頁來看，目前 Mac 的統一記憶體從 16GB 起跳：MacBook Air 與 Mac mini 入門機型是 16GB、可選配 24GB 或 32GB，Mac mini 的 M5 Pro 機型可到 64GB；MacBook Pro 從 16GB 一路到 128GB；Mac Studio 則是 M5 Max 36GB 起、最高 128GB，M5 Ultra 96GB 起、可選配 256GB 或 512GB。"
+        },
+        {
+          "type": "paragraph",
+          "text": "代價是頻寬有分級，而本機模型的速度很吃記憶體頻寬。Apple 規格頁寫的是：M6 為 153GB/s 或 170GB/s、M5 Pro 307GB/s、M5 Max 460GB/s 或 614GB/s、M5 Ultra 1.2TB/s；作為對照，NVIDIA 規格頁上 RTX 5090 的記憶體頻寬是 1792 GB/sec。軟體端兩邊都支援：Ollama 透過 Metal API 在 Apple 裝置上做 GPU 加速，llama.cpp 則把 Apple Silicon 列為一等公民。入門門檻要注意：Ollama 的 macOS 需求是 macOS Sonoma（14）以上、Apple M 系列（CPU 與 GPU 都支援）或 x86（只有 CPU）；LM Studio 明寫只支援 Apple Silicon，目前不支援 Intel 版 Mac。Apple 自己公布的測試條件也可以當參考：2026 年 7 月用配備 512GB 統一記憶體的 M5 Ultra Mac Studio，以 32K token 的提示詞跑 720 億參數的密集模型。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/local-llm-hardware-requirements/diagram-1.svg",
+          "alt": "決策圖：從模型檔案大小算出記憶體需求，再判斷跑在顯示記憶體、系統記憶體還是要換更小的量化",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：先查檔案大小，加上餘裕與上下文，再拿總需求去比對顯示記憶體與系統記憶體。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "Mac mini 當家用 AI 伺服器：統一記憶體、售價與區網設定",
+          "url": "https://mokaair.com/zh-TW/life/local-ai-on-mac-mini"
+        },
+        {
+          "type": "heading",
+          "text": "三種典型配置各能跑到哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把上面的規則套回真實機器，就是下面這張表。要強調的是，「能跑什麼」那一欄只抄官方文件與模型卡寫過的話，沒有官方數字的地方就留白，因為同樣的顯示記憶體配不同的量化、不同的上下文長度，結果會差很多。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "配置類型",
+            "關鍵規格（官方頁面）",
+            "官方文件說能跑什麼"
+          ],
+          "rows": [
+            [
+              "一般筆電（無獨立顯示卡）",
+              "LM Studio 建議至少 16GB 系統記憶體；x64 需要 AVX2 指令集；Windows 10 22H2 以上",
+              "LM Studio 寫 8GB 的 Mac 仍可使用，但要限於較小的模型與適中的上下文；模型只能跑在系統記憶體"
+            ],
+            [
+              "有獨立顯示卡的桌機",
+              "NVIDIA 運算能力 5.0 以上、驅動 550 以上；RTX 50 系列顯示記憶體 8GB 至 32GB",
+              "LM Studio 建議至少 4GB 專用顯示記憶體；Ollama 在顯示記憶體低於 24 GiB 時預設 4k 上下文，24 至 48 GiB 給 32k"
+            ],
+            [
+              "Apple Silicon Mac",
+              "macOS 14 以上、Apple M 系列；統一記憶體 16GB 至 512GB",
+              "Ollama 透過 Metal 加速；gpt-oss 的 20B 版官方寫 16GB 記憶體可執行；Apple 測試用 512GB 的 M5 Ultra 跑 720 億參數模型"
+            ]
+          ],
+          "caption": "規格與需求查證於 2026 年 9 月，全部取自官方文件與規格頁。"
+        },
+        {
+          "type": "heading",
+          "text": "CPU 也跑得動，只是慢很多",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果模型塞不進顯示記憶體，退回 CPU 會慢到什麼程度？llama.cpp 官方的效能排查文件給了一組同機對照：一台配 A6000（48GB 顯示記憶體）、7 個實體核心、32GB 系統記憶體的機器，跑 30B 的四位元量化模型，只用 CPU 時是每秒 1.7 個 token，把層數丟上顯示卡之後是每秒 9.1 個 token。同一台機器、同一個模型，差距在五倍上下——而且這還是在顯示記憶體很充裕的前提下。Ollama 的文件也給了同方向的建議：為了最佳效能，盡量用模型的最大上下文長度，並避免把模型卸載到 CPU。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以買硬體的順序其實很清楚：先確定你想跑的模型檔案多大，再確定要開多長的上下文視窗，兩者相加之後去找「一次裝得下」的顯示記憶體或統一記憶體；裝不下就先降量化、縮上下文，真的還是不夠，才是換硬體的時候。至於預算怎麼分配、哪些需求其實用雲端服務更划算，這是另一個題目，在按下結帳之前值得先把需求寫下來。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "只看檔案大小買機器，通常會差一截",
+          "text": "官方自己留的餘裕就是證據：gpt-oss 的 20B 版檔案是 14GB，官方寫的需求是 16GB 記憶體；120B 版檔案是 65GB，官方寫的是單張 80GB 的 GPU。加上上下文視窗要的那一份，把預算抓在「檔案大小再加兩成，上下文開多長再往上加」比較安全。不確定的時候，先用小模型與預設 4096 個 token 的上下文試跑，用 ollama ps 看 PROCESSOR 欄是不是 100% GPU，再決定要不要動硬體。"
+        },
+        {
+          "type": "link",
+          "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+        },
+        {
+          "type": "link",
+          "text": "買新 3C 前先寫需求：從真實問題、相容性到維修與退場成本",
+          "url": "https://mokaair.com/zh-TW/life/gadget-purchase-needs-checklist"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後提醒一件事：官方頁面上的檔案大小與規格會隨著版本更新而變動，上面所有數字都是 2026 年 9 月 14 日當天查到的。真要下單之前，請以你查看當天的官網與模型庫頁面為準，尤其是模型標籤的大小與 Mac 的記憶體選配範圍，這兩項改得最勤。"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ollama 文件：硬體支援（GPU 與驅動需求）",
+          "url": "https://docs.ollama.com/gpu",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 文件：上下文長度（依顯示記憶體的預設分級）",
+          "url": "https://docs.ollama.com/context-length",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 文件：常見問題（記憶體、K/V 快取、並行請求）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 文件：Windows 安裝需求",
+          "url": "https://docs.ollama.com/windows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 文件：macOS 安裝需求",
+          "url": "https://docs.ollama.com/macos",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：gemma3 標籤與檔案大小",
+          "url": "https://ollama.com/library/gemma3/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：qwen3 標籤與檔案大小",
+          "url": "https://ollama.com/library/qwen3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：gpt-oss 標籤、MXFP4 與記憶體需求",
+          "url": "https://ollama.com/library/gpt-oss",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "llama.cpp README（量化位元數與 CPU/GPU 混合推論）",
+          "url": "https://github.com/ggml-org/llama.cpp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "llama.cpp 文件：多 GPU 使用（顯示記憶體放不下時的行為）",
+          "url": "https://github.com/ggml-org/llama.cpp/blob/master/docs/multi-gpu.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "llama.cpp 文件：token 生成效能排查（CPU 與 GPU 對照）",
+          "url": "https://github.com/ggml-org/llama.cpp/blob/master/docs/development/token_generation_performance_tips.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 文件：系統需求",
+          "url": "https://lmstudio.ai/docs/app/system-requirements",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 文件：下載模型（量化選項建議）",
+          "url": "https://lmstudio.ai/docs/app/basics/download-model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：openai/gpt-oss-20b 模型卡",
+          "url": "https://huggingface.co/openai/gpt-oss-20b",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 台灣：Mac mini 技術規格（統一記憶體與頻寬）",
+          "url": "https://www.apple.com/tw/mac-mini/specs/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 台灣：Mac Studio 技術規格（統一記憶體與頻寬）",
+          "url": "https://www.apple.com/tw/mac-studio/specs/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 台灣：MacBook Air 技術規格（統一記憶體）",
+          "url": "https://www.apple.com/tw/macbook-air/specs/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 台灣：MacBook Pro 技術規格（統一記憶體）",
+          "url": "https://www.apple.com/tw/macbook-pro/specs/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 台灣：Mac Studio 產品頁（本機模型測試條件註腳）",
+          "url": "https://www.apple.com/tw/mac-studio/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NVIDIA：GeForce 顯示卡規格比較（記憶體配置與頻寬）",
+          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

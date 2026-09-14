@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">把模型放進自己的電腦 / Open-weight models running on your own computer</title>
+  <desc id="desc">一張幾何插圖。左邊是四條由長到短、顏色不同的圓角長條，像一排由大到小的模型檔案；一個箭頭把它們帶到中間一台簡化的電腦，螢幕是淡綠色的方塊，下面有底座；再一個箭頭指向右邊一個深綠色的對話框，對話框裡寫著繁體中文四個字。整體意思是：把可下載的模型放進自己的電腦，再設定成用繁體中文回答。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <g transform="translate(0,46)">
+
+  <!-- size ladder: downloadable model files, big to small -->
+  <rect x="120" y="250" width="380" height="64" rx="18" fill="#0D6B68"/>
+  <rect x="120" y="344" width="300" height="64" rx="18" fill="#2E7D5B"/>
+  <rect x="120" y="438" width="215" height="64" rx="18" fill="#2F6F9F"/>
+  <rect x="120" y="532" width="140" height="64" rx="18" fill="#D97A2B"/>
+
+  <!-- arrow: files into the machine -->
+  <path d="M 545 423 L 600 423" stroke="#5C6B6B" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 585 396 L 625 423 L 585 450 z" fill="#5C6B6B"/>
+
+  <!-- the computer -->
+  <rect x="660" y="300" width="330" height="236" rx="24" fill="#FFFFFF" stroke="#102A2B" stroke-width="10"/>
+  <rect x="700" y="340" width="250" height="156" rx="12" fill="#E3F0EF"/>
+  <rect x="770" y="536" width="110" height="46" fill="#102A2B"/>
+  <rect x="690" y="576" width="270" height="22" rx="11" fill="#102A2B"/>
+  <circle cx="762" cy="400" r="18" fill="#0D6B68"/>
+  <rect x="800" y="386" width="118" height="26" rx="13" fill="#0D6B68" opacity="0.45"/>
+  <rect x="736" y="446" width="182" height="26" rx="13" fill="#2F6F9F" opacity="0.45"/>
+
+  <!-- arrow: machine to answer -->
+  <path d="M 1010 423 L 1065 423" stroke="#5C6B6B" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 1050 396 L 1090 423 L 1050 450 z" fill="#5C6B6B"/>
+
+  <!-- the answer, in Traditional Chinese -->
+  <rect x="1110" y="286" width="400" height="248" rx="36" fill="#0D6B68"/>
+  <path d="M 1160 534 L 1160 606 L 1226 534 z" fill="#0D6B68"/>
+  <text x="1310" y="432" text-anchor="middle" font-size="76" font-weight="700" fill="#F7F1E8">繁體中文</text>
+
+  <!-- quiet accents -->
+  <circle cx="1470" cy="660" r="22" fill="#D97A2B" opacity="0.5"/>
+  <circle cx="1394" cy="704" r="13" fill="#2E7D5B" opacity="0.5"/>
+  <rect x="120" y="676" width="380" height="14" rx="7" fill="#102A2B" opacity="0.14"/>
+  <rect x="120" y="714" width="240" height="14" rx="7" fill="#102A2B" opacity="0.14"/>
+  </g>
+</svg>

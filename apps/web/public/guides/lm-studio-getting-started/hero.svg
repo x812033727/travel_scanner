@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">在自己的電腦裡跑模型 / Running a model on your own computer</title>
+  <desc id="desc">一張幾何插圖。畫面中央是一個白色圓角方塊，底下有支架與底座，代表一台電腦。方塊裡並排三個圓形圖示：左邊是往下的箭頭與托盤，代表把模型下載下來；中間是一個對話框，代表和模型對話；右邊是一個插座形狀，兩根接腳往右伸出，代表本機的 API 埠。三個圓形之間用灰色箭頭串起來。左上角有一朵藍色的雲，用一條虛線連到第一個圓形，代表只有下載模型那一段需要網路。畫面下方有一行字：模型跑在自己的電腦裡。</desc>
+  <defs>
+    <marker id="flow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+    <marker id="net" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#2F6F9F"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- the network, drawn as one solid cloud -->
+  <g fill="#2F6F9F">
+    <circle cx="250" cy="140" r="42"/>
+    <circle cx="305" cy="112" r="54"/>
+    <circle cx="360" cy="142" r="40"/>
+    <rect x="208" y="140" width="196" height="48" rx="24"/>
+  </g>
+  <!-- the computer -->
+  <rect x="200" y="240" width="1200" height="440" rx="36" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <rect x="700" y="680" width="200" height="28" rx="10" fill="#0D6B68"/>
+  <rect x="590" y="708" width="420" height="24" rx="12" fill="#102A2B"/>
+
+  <!-- only the download leg touches the network -->
+  <path d="M 306 196 C 306 288 368 302 422 326" fill="none" stroke="#2F6F9F" stroke-width="7" stroke-dasharray="18 14" stroke-linecap="round" marker-end="url(#net)"/>
+
+  <!-- 1. download -->
+  <circle cx="440" cy="460" r="118" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="8"/>
+  <rect x="428" y="392" width="24" height="78" fill="#2F6F9F"/>
+  <path d="M 396 462 L 484 462 L 440 518 Z" fill="#2F6F9F"/>
+  <rect x="386" y="534" width="108" height="16" rx="8" fill="#2F6F9F"/>
+
+  <!-- 2. chat -->
+  <circle cx="800" cy="460" r="118" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+  <path d="M 744 400 H 856 A 22 22 0 0 1 878 422 V 482 A 22 22 0 0 1 856 504 H 802 L 762 546 V 504 H 744 A 22 22 0 0 1 722 482 V 422 A 22 22 0 0 1 744 400 Z" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="748" y="428" width="104" height="13" rx="6" fill="#0D6B68"/>
+  <rect x="748" y="458" width="72" height="13" rx="6" fill="#5C6B6B"/>
+
+  <!-- 3. local port -->
+  <circle cx="1160" cy="460" r="118" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+  <rect x="1076" y="404" width="100" height="112" rx="18" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <rect x="1098" y="428" width="44" height="16" rx="8" fill="#D97A2B"/>
+  <rect x="1098" y="476" width="44" height="16" rx="8" fill="#D97A2B"/>
+  <rect x="1176" y="428" width="66" height="16" rx="8" fill="#D97A2B"/>
+  <rect x="1176" y="476" width="66" height="16" rx="8" fill="#D97A2B"/>
+
+  <!-- flow between the three -->
+  <line x1="570" y1="460" x2="672" y2="460" stroke="#5C6B6B" stroke-width="9" marker-end="url(#flow)"/>
+  <line x1="930" y1="460" x2="1032" y2="460" stroke="#5C6B6B" stroke-width="9" marker-end="url(#flow)"/>
+
+  <text x="800" y="822" text-anchor="middle" font-size="54" font-weight="bold" fill="#102A2B">模型跑在自己的電腦裡</text>
+</svg>
