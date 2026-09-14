@@ -1,7 +1,7 @@
 ---
 id: 2026-09-10-seo-open-content-pages
 title: 讓 pet-friendly 與社群內容頁先 SSR 再開放索引
-status: in-progress
+status: review
 priority: P2
 area: web
 owner: claude-opus-5
