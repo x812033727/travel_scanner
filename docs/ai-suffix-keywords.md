@@ -76,14 +76,14 @@ PY
 | Email AI | 寫信 AI | 寫商務信 | `chatgpt-for-email-writing`；`ai-email-management` | 已寫 | 補描述 |  |  |
 | Excel AI | 公式 AI | 寫 Excel 公式與巨集 | `chatgpt-for-excel-formulas` | 已寫 | 補描述 |  |  |
 | 試算表 AI | Sheets AI | 在 Google Sheets 裡用 AI | `gemini-for-google-sheets-formulas`；`ai-spreadsheet-automation` | 已寫 | 補描述 |  |  |
-| Word AI | Office AI、Windows AI | Office 裡的 Copilot | `microsoft-copilot-windows-office` | 待批次 06 | 帶入 |  |  |
+| Office AI | Word AI、Windows AI | Office 裡的 Copilot | `microsoft-copilot-windows-office` | 已寫 | 補描述 |  |  |
 | PDF AI | 讀 PDF AI | 讓 AI 讀 PDF、抓數字 | `ai-pdf-tools-summarize-translate`；備 `chatgpt-file-upload-analysis`、`claude-file-analysis-pdf-excel` | 待批次 09 | 帶入（備選已補描述） |  |  |
 | 論文 AI | 摘要 AI、讀論文 AI | 讀論文與長報告 | `claude-for-research-summaries` | 已寫 | 補描述 |  |  |
 | 研究 AI | 報告 AI | 做一份附引用的研究 | `chatgpt-deep-research-guide`；`gemini-deep-research-guide` | 已寫 | 補描述 |  |  |
 | 筆記 AI | 整理筆記 AI | 把資料整理成筆記 | `ai-note-taking-workflow`；備 `notebooklm-guide` | 待批次 09 | 帶入（備選已補描述） |  |  |
 | 讀書 AI | 家教 AI、複習 AI | 用 AI 讀書複習 | `notebooklm-for-study-notes` | 已寫 | 補描述 |  |  |
 | 會議記錄 AI | 會議 AI | 會議轉錄與摘要 | `ai-meeting-notes-tools` | 待批次 09 | 帶入 |  |  |
-| 逐字稿 AI | 錄音轉文字 AI | 錄音變文字 | `transcription-desktop-tools`；`whisper-local-transcription` | 已寫（系列外） | 補描述 |  |  |
+| 逐字稿 AI | 錄音轉文字 AI | 錄音變文字 | `transcription-desktop-tools`；`whisper-local-transcription` | 已寫（系列外） | 補描述（兩篇） |  |  |
 | 語音轉文字 AI | 聽打 AI | 了解語音辨識在做什麼 | `ai-term-automatic-speech-recognition` | 已寫（系列外） | 補描述 |  |  |
 | 字幕 AI | 上字幕 AI | 替影片上字幕與翻譯 | `ai-video-subtitles-translation` | 待批次 08 | 帶入 |  |  |
 | 學英文 AI | 英文 AI、口說 AI | 用 AI 練英文 | `chatgpt-for-english-learning`；`chatgpt-voice-mode-guide`；`ai-language-learning-apps` | 已寫 | 補描述 |  |  |
@@ -105,9 +105,9 @@ PY
 | 影片生成 AI | 文字生影片 AI | 了解影片生成在做什麼 | `ai-term-text-to-video` | 已寫（系列外） | 補描述 |  |  |
 | 動畫 AI | 動漫 AI | 生成動畫風格圖 | `ai-art-prompt-styles-reference` | 待批次 08 | 帶入 |  |  |
 | 虛擬主播 AI | 數位人 AI | 做虛擬主播影片 | `ai-avatar-video-tools` | 待批次 08 | 帶入 |  |  |
-| 配音 AI | 文字轉語音 AI | 把文字變成聲音 | `minimax-speech-tts-guide`；備 `ai-term-text-to-speech` | 待批次 06 | 帶入（備選已補描述） |  |  |
+| 配音 AI | 文字轉語音 AI | 把文字變成聲音 | `minimax-speech-tts-guide`；備 `ai-term-text-to-speech` | 已寫 | 補描述（兩篇） |  |  |
 | 翻唱 AI | 聲音克隆 AI | 複製聲音 | `ai-voice-cloning-elevenlabs` | 待批次 08 | 帶入 |  |  |
-| 作曲 AI | 音樂 AI、做歌 AI | 生成音樂 | `suno-music-generation-guide`；`minimax-music-generation` | 待批次 08 | 帶入 |  |  |
+| 作曲 AI | 音樂 AI、做歌 AI | 生成音樂 | `suno-music-generation-guide`；備 `minimax-music-generation` | 待批次 08 | 帶入（備選已補描述） |  |  |
 | 3D AI | 3D 模型 AI | 生成 3D 模型 | `ai-3d-model-generation` | 待批次 08 | 帶入 |  |  |
 | 換臉 AI | 深偽 AI | 辨識與防範換臉 | `ai-term-deepfake`；`ai-scams-deepfake-taiwan` | 已寫（系列外） | 補描述 |  |  |
 | 設計 AI | UI AI | 用 AI 做介面設計 | `ai-design-prompt-workflow` | 已寫（系列外） | 補描述 |  |  |
@@ -141,10 +141,10 @@ PY
 | 耳機 AI | 翻譯耳機 AI | 即時翻譯耳機 | `ai-earbuds-live-translation` | 待批次 11 | 帶入 |  |  |
 | 電腦 AI | 筆電 AI、AI PC | 買 AI 電腦 | `ai-pc-npu-copilot-plus`；`ai-mac-vs-windows` | 待批次 11 | 帶入 |  |  |
 | 平板 AI | 筆記平板 AI | 平板加 AI 筆記 | `ai-tablet-note-taking` | 待批次 11 | 帶入 |  |  |
-| 顯卡 AI | 顯示卡 AI | 為 AI 選顯卡 | `local-ai-gpu-buying-guide` | 待批次 07 | 帶入 |  |  |
-| 本機 AI | 離線 AI、自架 AI | 在自己電腦跑 AI | `local-llm-why-and-when`；`ollama-getting-started`；`self-host-ai-on-vps` | 待批次 07 | 帶入 |  |  |
+| 顯卡 AI | 顯示卡 AI | 為 AI 選顯卡 | `local-ai-gpu-buying-guide` | 已寫 | 補描述 |  |  |
+| 本機 AI | 離線 AI、自架 AI | 在自己電腦跑 AI | `local-llm-why-and-when`；`ollama-getting-started`；`self-host-ai-on-vps` | 已寫 | 補描述（三篇，自架篇用「自架 AI」） |  |  |
 | 智慧家庭 AI | 語音助理 AI | 家裡的語音助理 | `ai-smart-home-assistants` | 待批次 11 | 帶入 |  |  |
-| LINE AI | LINE 翻譯 AI | LINE 裡的 AI | `line-ai-features-taiwan` | 待批次 06 | 帶入 |  |  |
+| LINE AI | LINE 翻譯 AI | LINE 裡的 AI | `line-ai-features-taiwan` | 已寫 | 補描述 |  |  |
 
 ### 人群、比較、安全
 
@@ -158,14 +158,14 @@ PY
 | 偵測 AI | AI 偵測 | 辨識 AI 生成內容 | `ai-detection-tools-reliability` | 待批次 10 | 帶入 |  |  |
 | 詐騙 AI | 假聲音 AI | 防 AI 詐騙 | `ai-scams-deepfake-taiwan`；備 `ai-for-seniors-first-steps` | 待批次 10 | 帶入 |  |  |
 | 台灣 AI | 繁中 AI | 台灣本土模型 | `ai-taiwan-local-models-taide` | 待批次 10 | 帶入 |  |  |
-| 中國 AI | 中國系 AI | 中國系模型比較 | `chinese-ai-models-comparison` | 待批次 06 | 帶入 |  |  |
+| 中國 AI | 中國系 AI | 中國系模型比較 | `chinese-ai-models-comparison` | 已寫 | 補描述 |  |  |
 | 小店 AI | 店家 AI | 小店用 AI | `ai-for-small-business-taiwan` | 待批次 09 | 帶入 |  |  |
 | 小公司 AI | 企業 AI、公司 AI | 公司買哪個方案 | `chatgpt-team-for-small-business`；`google-workspace-ai-for-small-business` | 已寫 | 補描述 |  |  |
 | YouTube AI | 影片創作 AI | YouTuber 工作流 | `ai-for-youtube-creators` | 待批次 09 | 帶入 |  |  |
 | 社群 AI | 貼文 AI、IG AI | 做社群貼文 | `ai-for-social-media-content` | 待批次 09 | 帶入 |  |  |
 | 免費 AI | 免費 AI 工具 | 免費版夠不夠用 | `ai-free-vs-paid-plans-2026` | 已寫 | 補描述 |  |  |
 | 聊天 AI | 對話 AI | 第一次用聊天式 AI | `chatgpt-beginner-guide` | 已寫 | 補描述 |  |  |
-| 搜尋 AI | AI 搜尋引擎 | 用 AI 搜尋 | `perplexity-ai-search-guide`；備 `google-ai-mode-search`、`chatgpt-search-vs-google` | 待批次 06 | 帶入（備選已補描述） |  |  |
+| 搜尋 AI | AI 搜尋引擎 | 用 AI 搜尋 | `perplexity-ai-search-guide`；備 `google-ai-mode-search`、`chatgpt-search-vs-google` | 已寫 | 補描述（三篇） |  |  |
 | 瀏覽器 AI | Chrome AI | 瀏覽器裡的 AI | `ai-browsers-guide`；備 `claude-in-chrome-browser-agent`、`gemini-in-chrome-guide` | 待批次 09 | 帶入（備選已補描述） |  |  |
 | 語音 AI | 講話 AI | 用講的跟 AI 對話 | `gemini-live-voice-camera` | 已寫 | 補描述 |  |  |
 | 版權 AI | 著作權 AI | AI 生成內容的版權 | `ai-image-copyright-taiwan`；`ai-and-copyright-law-taiwan` | 待批次 08 | 帶入 |  |  |
@@ -215,5 +215,5 @@ npm run test:tools
 
 ## 經驗記錄
 
-- 2026-09-14：總表建立，49 篇已寫落點補了描述與導言（`tasks/open/2026-09-14-ai-suffix-keywords-backfill.md`）。
-  沒有搜尋量資料；Search Console 匯出日期待記。
+- 2026-09-14：總表建立，61 篇已寫落點補了描述與導言（`tasks/open/2026-09-14-ai-suffix-keywords-backfill.md`）；
+  其中 12 篇是批次 06、07 在同一天併入 main 後補的。沒有搜尋量資料；Search Console 匯出日期待記。

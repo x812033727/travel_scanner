@@ -36,7 +36,7 @@ scope:
 
 - [x] 寫總表與批次 12 名單。
 - [x] 改 `docs/life-ai-series.md` 與 brief。
-- [x] 立票：`2026-09-14-ai-suffix-keywords-backfill`（49 篇補強）、`2026-09-14-life-ai-batch-12-suffix-keywords`（新文章）、`2026-09-14-sitemap-split-before-1000-rows`（886 列已過警戒線）。
+- [x] 立票：`2026-09-14-ai-suffix-keywords-backfill`（61 篇補強）、`2026-09-14-life-ai-batch-12-suffix-keywords`（新文章）、`2026-09-14-sitemap-split-before-1000-rows`（926 列已過警戒線）。
 
 ## How to verify
 
@@ -45,7 +45,7 @@ npm run check:tasks
 cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue ../../docs/life-ai-series.md
 ```
 
-lint 基準（改前，exit 0）：120 `catalogue_missing_pack`、`sitemap_budget` 886。改後應是 131 個 `catalogue_missing_pack`，其餘不變。
+lint 基準（改前，exit 0）：120 `catalogue_missing_pack`、`sitemap_budget` 886；同日批次 06、07 併入 main 後基準變成 80 與 926。改後應是 91 個 `catalogue_missing_pack`，其餘不變。
 
 ## Notes
 
@@ -58,5 +58,5 @@ lint 基準（改前，exit 0）：120 `catalogue_missing_pack`、`sitemap_budge
 - `docs/ai-suffix-keywords.md`：五組共 90 個字尾詞對到 slug，狀態四種（已寫／已寫（系列外）／待批次 NN／批次 12），
   含資料來源聲明、寫法規則、檢查腳本、批次 12 名單與不做的詞。
 - `docs/life-ai-series.md` 260 篇、批次 12 表（250–260）與第 12 列；brief 第 4 節加字尾詞規則。
-- `guides-pack lint --catalogue`：`catalogue_missing_pack` 從 120 變 131，沒有 error。
+- `guides-pack lint --catalogue`：`catalogue_missing_pack` 從 80（批次 06、07 併入後）變 91，沒有 error。
 - 立了 `2026-09-14-ai-suffix-keywords-backfill`（本次一起做完）、`2026-09-14-life-ai-batch-12-suffix-keywords`、`2026-09-14-sitemap-split-before-1000-rows`。

@@ -88,4 +88,4 @@ npm run check:tasks
 ## Notes
 
 - 8–11 四篇寫的時候依 `seo-trust-sensitive-topics` 的作者、來源與界線要求；金管會、衛福部、司法院等官方頁為主要來源。
-- sitemap 現在 886 列，這批加 11 列；批次 10、11 落地時會超過 1,000，見 `2026-09-14-sitemap-split-before-1000-rows`。
+- sitemap 現在 926 列，這批加 11 列；批次 11 落地時會超過 1,000，見 `2026-09-14-sitemap-split-before-1000-rows`。

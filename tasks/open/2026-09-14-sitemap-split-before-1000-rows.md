@@ -1,6 +1,6 @@
 ---
 id: 2026-09-14-sitemap-split-before-1000-rows
-title: sitemap 拆成 sitemap index：886 列已過 800 警戒線
+title: sitemap 拆成 sitemap index：926 列已過 800 警戒線
 status: open
 priority: P2
 area: web
@@ -29,15 +29,15 @@ scope:
   - docs/travel-guides.md
 ---
 
-# sitemap 拆成 sitemap index：886 列已過 800 警戒線
+# sitemap 拆成 sitemap index：926 列已過 800 警戒線
 
 ## Why
 
-`guides-pack lint` 現在算到 886 個 (article, locale) 列，早就過了 `SITEMAP_WARN_ROWS = 800`
+`guides-pack lint` 現在算到 926 個 (article, locale) 列，早就過了 `SITEMAP_WARN_ROWS = 800`
 （`apps/api/app/guides/pack_ingest.py`）的警戒線；兩個專區共用一個 1,000 列的 sitemap（`SITEMAP_LIMIT`
 在 `apps/api/app/guides/service.py`、`SITEMAP_GUIDE_ENTRY_LIMIT` 在 `apps/web/lib/guides.server.ts`），新的先進、
-舊的被擠出，被擠出的文章仍可索引但不再被 sitemap 宣告、也沒有 `lastmod`。生活分享 AI 系列批次 06–11 還有 120 篇、
-批次 12 有 11 篇要進來，886＋131 會在批次 10、11 落地時超過 1,000。
+舊的被擠出，被擠出的文章仍可索引但不再被 sitemap 宣告、也沒有 `lastmod`。生活分享 AI 系列批次 08–11 還有 80 篇、
+批次 12 有 11 篇要進來，926＋91 會在批次 11 落地時超過 1,000。
 
 `GET /guides/sitemap`（`apps/api/app/guides/router.py`）沒有分頁參數，所以不能只在 web 端拆；`docs/seo.md`
 寫的「No sitemap index is needed」與 `docs/travel-guides.md` 的「Still open」都要一起改。
