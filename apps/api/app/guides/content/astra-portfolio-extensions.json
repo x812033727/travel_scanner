@@ -1,0 +1,249 @@
+{
+  "slug": "astra-portfolio-extensions",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Astra 作品集與 Elementor 擴充：挑出真正需要的功能",
+      "description": "用 Astra 建作品集時，先整理案例內容，再決定是否需要 WP Portfolio 或 Elementor 擴充。本文以接案者展示品牌、網站與影像作品為例，說明案例分類、縮圖與詳細頁安排、作品集短代碼、元件相容性檢查，以及移除外掛前的替換流程。也提供可重複的效能比較方法，避免因為功能數量多就安裝整套工具，或把示範版型誤當實際客戶成果。",
+      "hero": {
+        "src": "/guides/astra-portfolio-extensions/hero.jpg",
+        "alt": "原創插圖以作品資料夾、內容文件與展示螢幕說明作品集製作順序。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "作品集的工作，是讓訪客理解你做過什麼、負責哪一部分，以及是否適合下一個合作。把二十張圖排成漂亮網格，若沒有專案背景與自己的貢獻，仍然難以協助客戶判斷。選工具之前，先把每件作品說清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設你有品牌設計、網站與短片三類案例，Astra 可以提供全站外觀，作品展示則可由一般頁面、WP Portfolio 或 Elementor 的相關元件負責。以下依官方資料整理不同做法與維護步驟，不宣稱哪款外掛在所有網站上最快。"
+        },
+        {
+          "type": "heading",
+          "text": "先建立案例資料，再決定展示效果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每件案例先記錄名稱、年份、需求、你的角色、交付內容、可公開素材與延伸連結。成效數字需有可說明的依據；團隊專案要交代自己負責的部分。練習作品與版型展示可以存在，但應清楚標示，不能與真實客戶委託混在一起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分類依客戶會怎麼找你來設計，例如品牌、網站、影像，而非只有自己懂的檔案代碼。作品不多時，三個分類已可能足夠；不要為每件作品建立只有一筆的篩選項目。再安排最能代表目前服務方向的案例，過時內容可移到較後方。"
+        },
+        {
+          "type": "paragraph",
+          "text": "縮圖負責快速辨認，詳細頁則說明問題與解法。相同專案的五張圖片不一定要拆成五個作品，否則訪客會把照片數量誤認為案例數。每件作品保留穩定的詳細頁連結，日後更換展示網格時仍能讓既有分享連結持續使用。"
+        },
+        {
+          "type": "heading",
+          "text": "選擇作品集工具的責任範圍",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "只有少量案例時，一般頁面的圖片、標題與連結就能建立清楚入口。需要依多個分類篩選、大量維護作品或不同媒體類型時，才評估專門工具。Astra 佈景主題本身與 WP Portfolio 外掛不是同一項產品，也不能把舊套裝內容視為今天必定包含的授權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Portfolio 官方文件列出網站、圖片、影片與單頁等作品類型，透過分類與展示設定組織內容。Astra 官方的方案調整文章則說明 WP Portfolio 已不再包含於該次更新後的套裝中；這不等同宣布產品停止運作，購買前仍應查詢現在的獨立授權與更新狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若網站已大量使用 Elementor，可先看既有元件是否能完成需求，再評估 Ultimate Addons for Elementor 等擴充。不要因為缺一種作品篩選效果，就同時裝兩套大型擴充包；先列出實際使用的元件與替代方案，減少相互覆蓋樣式的機會。"
+        },
+        {
+          "type": "heading",
+          "text": "以 WP Portfolio 建立圖片案例入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用已安裝並有適當授權的 WP Portfolio 時，新增作品、填入標題，選擇 Image 類型，再指定縮圖與 Portfolio Image。官方文件區分兩張圖的用途：前者出現在清單，後者於開啟作品時顯示。選圖時要確認裁切不會遮住主要設計。"
+        },
+        {
+          "type": "paragraph",
+          "text": "為作品指派分類或標籤後，可在展示頁的短代碼區塊放入 [wp_portfolio]。需要限制範圍時，依官方屬性設定類別 ID、欄數、搜尋或每次載入數量；類別 ID 是後台實際值，不應直接複製教學中的範例數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一次建立三件不同類型的測試案例，再檢查篩選、搜尋與點開行為。若顯示沒有項目，先確認發布狀態、分類條件與展示設定是否互相限制。官方也提供區塊整合方式，是否採用應配合現有編輯器，無須只為改展示入口再加入另一套頁面工具。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "選三件已確認可公開的作品，補齊標題、角色與說明。",
+            "建立作品資料並配置縮圖、主要素材與分類。",
+            "在草稿展示頁加入對應短代碼或支援的展示元件。",
+            "測試所有分類與空搜尋結果，再檢查作品連結是否到達正確內容。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "擴充相容性要看整個使用組合",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "列出 WordPress、Astra、Elementor、Elementor Pro 與擴充外掛的版本，以及用了哪些元件。相容標示只能說明供應商宣告或測試的範圍，無法保證你站上的快取、其他外掛與自訂樣式都沒有問題。更新先在測試站確認核心案例頁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "特別測試手機觸控、鍵盤焦點、篩選後的排列與燈箱關閉。只在滑鼠移到圖片上才出現的說明，手機使用者可能看不到；作品名稱與開啟按鈕應有清楚可辨的呈現。影片也需要檢查是否必須登入外部平台，以及失效時是否保留文字說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若更新後出問題，記錄哪個頁面、元件與版本開始異常，再逐項縮小範圍。不要直接在正式站停用所有擴充來找原因，因為頁首頁尾或表單也可能依賴同一套工具。測試完成後保存結果，下一次更新就有可重複使用的檢查清單。"
+        },
+        {
+          "type": "heading",
+          "text": "用量測決定效能調整",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Elementor 官方說明原生元件的專屬資源會依使用情況載入；第三方擴充則有各自的方式。因此不能單憑安裝元件數量推算網站速度。UAE 提供個別開關，可關閉確認未使用的元件，但實際前台改善仍需測量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前 Elementor 的 Element Manager 可掃描元件使用情況，再依清單停用。官方提醒停用已用來建立網站的元件會讓功能失效，甚至破壞頁面；「停用所有未使用項目」也不只作用於當前篩選結果。操作前先掃描，並保留原本設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較前後表現時，使用相同網址、裝置與網路條件，多做幾次檢查，同時記錄圖片傳輸量與互動是否正常。把大尺寸縮圖換成合理尺寸，可能比增加另一套最佳化外掛更有幫助。不要為追求單次分數，關掉作品篩選所必需的腳本。"
+        },
+        {
+          "type": "heading",
+          "text": "移除外掛前先安排內容去處",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "決定簡化工具時，先找出使用該擴充的所有頁面、範本與展示區，逐一改成替代元件。案例文字、圖片原檔與詳細頁網址要另外保存，不能假設停用後會自動轉成一般區塊。短代碼依賴外掛處理，移除後可能只剩文字或空白。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在測試站停用後，檢查作品列表、各案例、導覽與聯絡入口。確認新展示方式完整，再規劃正式站變更與備份。停用和刪除也不同，資料是否保留由各外掛決定；完成內容轉移及回復準備之前，不要急著清除資料庫中的相關項目。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/astra-portfolio-extensions/diagram-1.svg",
+          "alt": "四格圖解呈現案例資料、分類入口、相容測試與移除前轉移內容。",
+          "width": 1600,
+          "height": 900,
+          "caption": "外掛可以更換，案例內容、來源與訪客可用的連結應持續保留。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求",
+            "可先考慮的方式",
+            "要承擔的維護"
+          ],
+          "rows": [
+            [
+              "少量精選案例",
+              "一般圖片與文字頁面",
+              "手動整理順序與連結"
+            ],
+            [
+              "多類型、可篩選案例",
+              "WP Portfolio 等作品集工具",
+              "分類、授權與資料轉移"
+            ],
+            [
+              "既有 Elementor 網站加效果",
+              "現有元件或單一合適擴充",
+              "元件相依性與版本相容"
+            ],
+            [
+              "縮減工具數量",
+              "逐頁替換後停用",
+              "保存案例內容並全面驗證"
+            ]
+          ],
+          "caption": "依展示需求選工具，不以外掛數量或展示效果判定作品品質。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "展示案例要能獨立成立",
+          "text": "把真實案例的文字、素材來源與穩定網址保存好。即使未來更換作品集外掛，訪客仍應能理解你的工作，而不是只看到失效的短代碼或沒有說明的圖片。"
+        },
+        {
+          "type": "link",
+          "text": "設定 Astra 的全域外觀與導覽",
+          "url": "https://mokaair.com/zh-TW/life/astra-theme-customization"
+        },
+        {
+          "type": "link",
+          "text": "選擇適合維護者的頁面建構器",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-page-builder-choice"
+        }
+      ],
+      "sources": [
+        {
+          "title": "WP Portfolio：功能與作品類型",
+          "url": "https://wpportfolio.net/docs/getting-started-with-wp-portfolio/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Portfolio：建立圖片作品集",
+          "url": "https://wpportfolio.net/docs/how-to-create-image-gallery/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Portfolio：短代碼屬性",
+          "url": "https://wpportfolio.net/docs/wp-portfolio-shortcode-and-attributes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Portfolio：區塊整合",
+          "url": "https://wpportfolio.net/docs/wp-portfolio-block-guide/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Astra：套裝內容調整",
+          "url": "https://wpastra.com/updates/astra-new-pricing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UAE：元件開關",
+          "url": "https://ultimateelementor.com/docs/enable-disable-widgets-in-uae/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：元件管理員",
+          "url": "https://elementor.com/help/element-manager/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：未使用元件與資源載入",
+          "url": "https://elementor.com/help/is-performance-degraded-by-widgets-fonts-or-icons-when-they-arent-in-use/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

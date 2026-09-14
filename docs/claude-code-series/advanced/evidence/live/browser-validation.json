@@ -1,0 +1,62 @@
+{
+  "checked_on": "2026-09-14",
+  "browser": "Codex in-app browser",
+  "authentication": {
+    "cli_reauthentication": "passed",
+    "cli_auth_status": {
+      "loggedIn": true,
+      "authMethod": "claude.ai",
+      "apiProvider": "firstParty"
+    },
+    "credentials_saved_in_evidence": false
+  },
+  "web_task": {
+    "passed": true,
+    "repository": "x812033727/travel_scanner",
+    "repository_selected_by_user": true,
+    "title": "Mokaair 合成資料計算驗證",
+    "url": "https://claude.ai/code/session_0173NdJRPEHxvHcqaM1BSyyK",
+    "execution_location": "Claude Code cloud session",
+    "node_version": "22.22.2",
+    "input": [
+      {
+        "id": "a",
+        "done": true
+      },
+      {
+        "id": "b",
+        "done": false
+      },
+      {
+        "id": "c",
+        "done": false
+      }
+    ],
+    "observed_tool": "Bash",
+    "observed_operation": "Write a Node.js script under the session scratchpad and execute it; inspect the expanded tool output",
+    "actual_tool_output": {
+      "marker": "MOKAAIR-WEB-SMOKE-20260914",
+      "total": 3,
+      "completed": 1,
+      "pendingIds": [
+        "b",
+        "c"
+      ]
+    },
+    "changes_panel": "No changes to show",
+    "platform_session_branch": "claude/mokaair-synthetic-data-calc-fldomd",
+    "matching_remote_branch_found": false,
+    "matching_pull_requests": [],
+    "physical_mobile_test": false
+  },
+  "github_actions_preflight": {
+    "repository": "x812033727/travel_scanner",
+    "repository_secret_count": 0,
+    "environment_count": 0,
+    "required_example_environment": "claude-lab",
+    "required_example_secret": "ANTHROPIC_API_KEY",
+    "live_model_workflow_run": false,
+    "reason": "The authored workflow remains a local teaching fixture; the selected repository has no registered Claude workflow, protected claude-lab environment or repository Anthropic credential. Local login credentials were not copied to GitHub.",
+    "registered_claude_workflows": []
+  }
+}

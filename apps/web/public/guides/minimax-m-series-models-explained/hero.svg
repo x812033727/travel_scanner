@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">開放權重與 API 兩條路 / Open weights and API, two ways to use a model</title>
+  <desc id="desc">插圖：畫面左邊是一個方形的模型方塊，裡面疊著幾條代表權重檔的橫條。方塊右側分出兩條粗線：上面那條往右上通到一朵雲，代表透過官方 API 呼叫；下面那條往右下通到一台螢幕與底座組成的主機，代表把權重下載到自己的機器上執行。畫面左下方寫著「開放權重與 API」一行字。整張圖用米色底、墨綠與藍色的幾何形狀，沒有任何品牌標誌或介面截圖。</desc>
+  <defs>
+    <marker id="tipBlue" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#2F6F9F"/>
+    </marker>
+    <marker id="tipTeal" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <circle cx="1440" cy="118" r="86" fill="#E3F0EF"/>
+  <circle cx="132" cy="146" r="58" fill="#E6F0F7"/>
+  <circle cx="742" cy="812" r="42" fill="#E3F0EF"/>
+
+  <rect x="200" y="310" width="300" height="300" rx="34" fill="#E3F0EF" stroke="#0D6B68" stroke-width="10"/>
+  <rect x="250" y="356" width="200" height="26" rx="13" fill="#0D6B68"/>
+  <rect x="250" y="402" width="150" height="26" rx="13" fill="#2E7D5B"/>
+  <rect x="250" y="448" width="200" height="26" rx="13" fill="#0D6B68"/>
+  <rect x="250" y="494" width="120" height="26" rx="13" fill="#2E7D5B"/>
+
+  <path d="M 520 400 C 690 400 760 262 1010 262" fill="none" stroke="#2F6F9F" stroke-width="12" stroke-linecap="round" marker-end="url(#tipBlue)"/>
+  <path d="M 520 520 C 690 520 760 620 1020 620" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round" marker-end="url(#tipTeal)"/>
+
+  <g fill="#2F6F9F">
+    <circle cx="1130" cy="268" r="52"/>
+    <circle cx="1205" cy="232" r="74"/>
+    <circle cx="1284" cy="270" r="50"/>
+    <rect x="1078" y="268" width="256" height="58" rx="29"/>
+  </g>
+  <circle cx="1160" cy="262" r="12" fill="#FFFFFF"/>
+  <circle cx="1206" cy="262" r="12" fill="#FFFFFF"/>
+  <circle cx="1252" cy="262" r="12" fill="#FFFFFF"/>
+
+  <rect x="1080" y="540" width="252" height="170" rx="22" fill="#0D6B68"/>
+  <rect x="1108" y="568" width="196" height="114" rx="12" fill="#FFFFFF"/>
+  <rect x="1130" y="596" width="120" height="13" rx="6" fill="#0D6B68"/>
+  <rect x="1130" y="624" width="152" height="13" rx="6" fill="#2E7D5B"/>
+  <rect x="1130" y="652" width="86" height="13" rx="6" fill="#0D6B68"/>
+  <rect x="1176" y="710" width="60" height="28" fill="#0D6B68"/>
+  <rect x="1126" y="738" width="160" height="20" rx="10" fill="#0D6B68"/>
+
+  <text x="350" y="760" text-anchor="middle" font-size="56" font-weight="bold" fill="#102A2B">開放權重與 API</text>
+</svg>

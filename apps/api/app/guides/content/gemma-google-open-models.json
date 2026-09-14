@@ -1,0 +1,422 @@
+{
+  "slug": "gemma-google-open-models",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Gemma：Google 的開源模型怎麼用",
+      "description": "Gemma 是 Google DeepMind 釋出、權重可以下載回自己電腦跑的模型家族。這篇照 2026 年 9 月 14 日的官方頁面整理 Gemma 4 的五種尺寸與 128K／256K 上下文視窗、Gemma 3 與 3n 的規模，並說明授權為什麼要分版本看：Gemma 4 是 OSI 核可的 Apache 2.0，Gemma 3／3n 仍是 Gemma Terms of Use 加禁止用途政策，並附 Ollama 的拉取指令。",
+      "hero": {
+        "src": "/guides/gemma-google-open-models/hero.jpg",
+        "alt": "插圖：一個打開的權重檔案盒子，一條箭頭下載到筆電，另一條連到雲端圖形。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gemma 是 Google DeepMind 釋出的開放權重模型家族：權重檔案可以直接下載，放到自己的筆電或伺服器上離線執行。到 2026 年 9 月 14 日為止，官方文件把授權分成兩套——2026 年 4 月 2 日發表的 Gemma 4 採用 Apache 2.0，是 Open Source Initiative 核可清單上的開源授權；在那之前的 Gemma 3 與 Gemma 3n 仍然適用 Google 自訂的 Gemma Terms of Use，而且綁著一份禁止用途政策。同一個家族講「開源」成不成立，要看你下載的是哪一版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇會帶你看完當天官網列出的版本與尺寸、各自的上下文視窗與官方寫的語言支援、兩套授權原文裡真正會影響你的那幾條，還有三條把模型跑起來的路線：用 Ollama 拉到本機、在 Google AI Studio 直接試，或透過 Gemini API 呼叫。第一節先把 Gemma 和 Gemini 的關係講清楚。"
+        },
+        {
+          "type": "heading",
+          "text": "Gemma 是可以下載的權重，Gemini 是雲端服務",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 只能透過 Google 的網站、應用程式或 API 使用，權重留在 Google 那邊；Gemma 給的是權重檔案本身，你下載回來、用 Ollama 或 LM Studio 這類軟體載入，就能離線對話，資料不必離開自己的機器。Google DeepMind 的模型頁把兩者分成不同類別列出：Gemini 掛在一般模型下，Gemma 掛在「Open models」下，介紹詞是「我們最有能力的開放模型」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩邊的血緣是同一條。Gemma 3 的模型卡寫 Gemma 是「用打造 Gemini 模型的同一套研究與技術」建成的輕量開放模型；Gemma 4 的發表公告則寫它建立在與 Gemini 3 相同的世界級研究與技術之上，並說 Gemma 與 Gemini 是互補的一組工具，一邊開放、一邊專有。差別不在能力從哪裡來，而在你手上拿到的是一個服務，還是一包檔案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要先把兩個詞分開：能下載權重不等於開源。這條界線在系列裡有兩篇專門講，"
+            },
+            {
+              "type": "link",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "談的是拿到權重之後還要確認什麼，"
+            },
+            {
+              "type": "link",
+              "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+            },
+            {
+              "type": "text",
+              "text": "談的是要公開到什麼程度才算完整的開源。Gemma 正好是同一家公司兩代給出兩種答案的例子。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemma-google-open-models/diagram-1.svg",
+          "alt": "結構圖：同一套研究與技術分成 Gemini 雲端服務與 Gemma 開放權重兩條路，Gemma 下面再分成兩種授權。",
+          "width": 1600,
+          "height": 900,
+          "caption": "從上往下看：同一套研究分成 Gemini 與 Gemma 兩條路，Gemma 這條再依版本分成 Apache 2.0 與 Gemma Terms of Use 兩種授權。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "Gemini 模型怎麼選：速度、能力與情境",
+          "url": "https://mokaair.com/zh-TW/life/gemini-model-lineup-flash-pro"
+        },
+        {
+          "type": "heading",
+          "text": "當天官網列出的版本與規模",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemma 4 在 2026 年 4 月 2 日發表，公告當天列出四種尺寸：E2B、E4B、26B 混合專家（Mixture of Experts，MoE）與 31B 稠密模型；2026 年 6 月 3 日再加入 12B。官方文件現在把 Gemma 4 寫成五種尺寸，整個家族都能讀文字與影像、輸出文字，E2B、E4B 與 12B 另外原生支援音訊輸入。模型卡列的參數與上下文視窗如下。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "E2B：有效參數 2.3B（連嵌入表算是 5.1B），上下文視窗 128K token",
+            "E4B：有效參數 4.5B（連嵌入表算是 8B），上下文視窗 128K token",
+            "12B：11.95B 參數，256K token；模型卡叫它 Unified，把影像與音訊直接投影進語言模型，沒有另外的編碼器",
+            "26B A4B：總參數 25.2B，每次執行只啟用 3.8B，256K token",
+            "31B：30.7B 參數，256K token"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "上一代還留在官網上。Gemma 3 的模型卡列出 270M、1B、4B、12B、27B 五種尺寸，4B、12B、27B 的輸入上下文是 128K token，1B 與 270M 是 32K token；Gemma 3n 走的是另一條路線，只有 E2B 與 E4B 兩種有效尺寸，上下文 32K token，但輸入可以同時是文字、影像、影片與音訊。三代的模型卡都寫訓練資料涵蓋超過 140 種語言。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這些「同時讀圖、聲音與文字」的說法，指的就是"
+            },
+            {
+              "type": "link",
+              "text": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-multimodal-ai"
+            },
+            {
+              "type": "text",
+              "text": "講的那件事；差別只在 Gemma 把這個能力做成可以下載的檔案。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "版本",
+            "規模與上下文",
+            "授權",
+            "怎麼跑"
+          ],
+          "rows": [
+            [
+              "Gemma 4 E2B／E4B",
+              "有效參數 2.3B／4.5B，128K token",
+              "Apache 2.0",
+              "ollama pull gemma4:e2b 或 gemma4:e4b"
+            ],
+            [
+              "Gemma 4 12B",
+              "11.95B 參數，256K token",
+              "Apache 2.0",
+              "ollama pull gemma4:12b；LM Studio"
+            ],
+            [
+              "Gemma 4 26B A4B",
+              "總 25.2B、啟用 3.8B，256K token",
+              "Apache 2.0",
+              "ollama pull gemma4:26b；AI Studio、Gemini API"
+            ],
+            [
+              "Gemma 4 31B",
+              "30.7B 參數，256K token",
+              "Apache 2.0",
+              "ollama pull gemma4:31b；AI Studio、Gemini API"
+            ],
+            [
+              "Gemma 3（270M 至 27B）",
+              "4B／12B／27B 為 128K token，1B／270M 為 32K token",
+              "Gemma Terms of Use",
+              "ollama pull gemma3:4b 等；Hugging Face 需先取得存取權"
+            ],
+            [
+              "Gemma 3n E2B／E4B",
+              "有效參數 2B／4B，32K token",
+              "Gemma Terms of Use",
+              "ollama pull gemma3n:e4b；Hugging Face 需先取得存取權"
+            ]
+          ],
+          "caption": "依 ai.google.dev 模型卡、Hugging Face 授權標籤與 Ollama 模型庫整理，查證日 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "heading",
+          "text": "授權要按版本分開看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemma 4 的 Hugging Face 模型卡最上面就寫著 license 是 apache-2.0，授權連結指向 ai.google.dev 上的 Gemma 4 授權頁，而那一頁的內容就是 Apache License 2.0 全文，沒有再附加 Google 的額外條件。Open Source Initiative 的核可授權清單裡有「Apache License, Version 2.0」，所以這一代講「開源」是站得住的；官方公告自己也用了「開源授權」這個說法，並強調可商業使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemma 3 與 Gemma 3n 不一樣。它們在 Hugging Face 的 license 標籤是 gemma，對應 Gemma Terms of Use。那份條款最後修訂日期是 2026 年 4 月 1 日，附錄逐一列出適用型號，包含 Gemma 1、1.1、2、3、3n，以及 PaliGemma、CodeGemma、ShieldGemma、EmbeddingGemma、T5Gemma、TranslateGemma 這些變體——名單上沒有 Gemma 4，條款開頭也直接寫明 Gemma 4 的條件請看另一頁。這是自訂授權，不在 OSI 的核可清單上，照系列的用法要叫開放權重，不叫開源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemma Terms of Use 原文裡真正會影響你的條款有這幾條。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "可以使用、修改、再散布，也可以商用，條款全文沒有以月活躍使用者數或營收設下的門檻",
+            "再散布時要附上條款副本，把使用限制寫成下游也受約束的條文，改過的檔案要標明已修改",
+            "除了以服務形式提供之外，散布時要附一份 NOTICE 檔，寫明 Gemma 依 ai.google.dev/gemma/terms 的條款提供",
+            "不得用於禁止用途政策列出的用途，該政策最後修訂日期是 2024 年 2 月 21 日，已併入條款成為一部分",
+            "禁止用途涵蓋非法活動、詐騙與釣魚、騷擾與仇恨內容、未經同意的追蹤或蒐集個資、冒充他人、無照執業與色情內容",
+            "Google 保留在認定違約時遠端限制使用的權利；模型產生的輸出 Google 不主張權利，但責任在使用者身上"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一個實務差別。Gemma 3 與 3n 在 Hugging Face 上是受管制倉庫，要先登入並取得存取權才能下載檔案：查證當天直接抓 Gemma 3 的模型卡原文會被擋下來，抓 Gemma 4 的則可以直接讀到。想跳過申請這一步，用 Ollama 的官方標籤是最省事的路線。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "同一個家族，兩代授權不同",
+          "text": "要把模型放進商用產品之前，先看你下載的那個倉庫上寫的 license 標籤，再讀它指向的授權頁，不要用「Gemma 都是 Apache 2.0」或「Gemma 都要簽條款」一句話帶過。禁止用途政策只綁在寫著 Gemma Terms of Use 的版本上；Gemma 4 的授權頁是純粹的 Apache License 2.0，沒有引用那份政策。"
+        },
+        {
+          "type": "link",
+          "text": "Llama 模型家族：授權與版本",
+          "url": "https://mokaair.com/zh-TW/life/llama-models-explained"
+        },
+        {
+          "type": "link",
+          "text": "OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/gpt-oss-openai-open-weights"
+        },
+        {
+          "type": "heading",
+          "text": "在哪裡跑：Ollama、AI Studio 與其他路線",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最短的路是 Ollama。Google 的官方整合文件直接給了指令：裝好 Ollama 之後，用 pull 下載模型，用 run 開始對話。文件說 Gemma 4 在 Ollama 上有 E2B、E4B、26B、31B 四個尺寸標籤。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 Ollama 下載並執行 Gemma 4（官方文件寫法）",
+          "code": "ollama pull gemma4\nollama run gemma4 \"roses are red\""
+        },
+        {
+          "type": "paragraph",
+          "text": "要指定尺寸就在冒號後面加標籤。Ollama 官方模型庫當天列出的下載大小與上下文視窗是：gemma4:e2b 為 7.2GB、128K；gemma4:e4b 為 9.6GB、128K，也是預設的 gemma4:latest；gemma4:12b 為 7.6GB、256K；gemma4:26b 為 19GB、256K；gemma4:31b 為 20GB、256K。上一代的 gemma3:4b 是 3.3GB、128K，gemma3:12b 是 8.1GB，gemma3:27b 是 17GB；gemma3n:e2b 是 5.6GB、32K，gemma3n:e4b 是 7.5GB、32K。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "指定尺寸與上一代的標籤",
+          "code": "ollama pull gemma4:e2b\nollama pull gemma4:31b\nollama pull gemma3:4b\nollama pull gemma3n:e4b"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemma 4 讀得懂圖片，指令裡把圖片路徑接在提示詞後面就行，這是官方文件給的範例寫法。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "把圖片交給 Gemma 4（官方文件範例）",
+          "code": "ollama run gemma4 \"caption this image /Users/$USER/Desktop/surprise.png\""
+        },
+        {
+          "type": "paragraph",
+          "text": "不想先裝軟體，可以在 Google AI Studio 直接開一個對話試。Gemini API 的定價頁把 Free 方案列成「免費的輸入與輸出 token」加「可使用 Google AI Studio」，同一欄也寫著免費層的內容會被用來改善 Google 的產品，付費層才寫明不會。要用程式呼叫的話，官方文件說 Gemini API 目前支援 gemma-4-31b-it 與 gemma-4-26b-a4b-it 兩個型號，API 金鑰同樣在 AI Studio 取得。除此之外，官方頁面點名的執行環境還有 LM Studio、Keras、llama.cpp、MLX、Kaggle，以及 Google Cloud 的 Vertex AI。介面步驟以官網當天版本為準。"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "AI Studio 與第一個 Gemini API 呼叫",
+          "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+        },
+        {
+          "type": "heading",
+          "text": "硬體與語言：官方寫了什麼、沒寫什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型卡本身沒有列硬體需求表，官方公告只給了兩個數字。Gemma 4 的發表公告寫 26B 與 31B 未量化的 bfloat16 權重可以放進單張 80GB 的 NVIDIA H100；Gemma 4 12B 的公告寫它只要 16GB 顯示記憶體或統一記憶體就能在筆電上跑，文中也寫成 16GB 記憶體的消費級筆電。其他尺寸官方沒有給明確數字。Ollama 列的下載大小是量化後的檔案體積，不等於執行時要的記憶體，實際需求以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "語言支援也只能照官方寫的講。Gemma 4 的模型卡寫訓練資料涵蓋超過 140 種語言，並列出「35 種以上語言的開箱支援」；Gemma 3 與 3n 的模型卡同樣寫超過 140 種語言。但這三份文件都沒有逐一列出是哪些語言，也沒有針對繁體中文的單獨評測數字，官方唯一提到中文的地方，是 Gemma 4 模型卡評測表底下那行「不含中文」的註腳，標在兩項音訊評測上。所以中文寫出來像不像樣，只能自己拿題目試，官方說法以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "heading",
+          "text": "要不要選 Gemma",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你的需求是離線、資料不外流，或想把模型調整成自己領域的樣子，Gemma 4 是目前門檻最低的一條路：授權單純、尺寸從手機級到工作站級都有，Ollama 一行指令就能開始；官方公告把它形容成你能在自己硬體上跑的最有能力的模型家族。如果你只是想問問題、整理文件，不打算準備硬體，那走 Gemini 的雲端服務會省事得多。兩者不是二選一，官方公告本來就把它們定位成互補的組合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後提醒一件事：模型會產生錯誤或不當內容，這一點 Google 在 Gemma 頁面底部自己也寫明了，並要你不要拿模型的輸出當醫療、法律或財務建議。在本機跑少了雲端服務的內容過濾，這個責任反而更完整地落在你身上。"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 新手入門：帳號、介面與第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemma 模型總覽（Google DeepMind 官方頁面，ai.google.dev/gemma 導向此頁）",
+          "url": "https://deepmind.google/models/gemma/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemma 4 模型總覽（Google 官方文件）",
+          "url": "https://ai.google.dev/gemma/docs/core",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemma 4 模型卡（Google 官方文件）",
+          "url": "https://ai.google.dev/gemma/docs/core/model_card_4",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemma 3 模型卡（Google 官方文件）",
+          "url": "https://ai.google.dev/gemma/docs/core/model_card_3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemma 3n 模型卡（Google 官方文件）",
+          "url": "https://ai.google.dev/gemma/docs/gemma-3n/model_card",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemma Terms of Use（Google 官方授權條款，含適用型號附錄）",
+          "url": "https://ai.google.dev/gemma/terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemma 4 授權頁：Apache License 2.0（Google 官方）",
+          "url": "https://ai.google.dev/gemma/docs/gemma_4_license",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemma Prohibited Use Policy（Google 官方禁止用途政策）",
+          "url": "https://ai.google.dev/gemma/prohibited_use_policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemma 4 發表公告（Google 官方部落格，2026 年 4 月 2 日）",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemma 4 12B 發表公告（Google 官方部落格，2026 年 6 月 3 日）",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12B/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Run Gemma with Ollama（Google 官方整合文件）",
+          "url": "https://ai.google.dev/gemma/docs/integrations/ollama",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Run Gemma with the Gemini API（Google 官方文件）",
+          "url": "https://ai.google.dev/gemma/docs/core/gemma_on_gemini_api",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini Developer API 定價頁（Google 官方，Free 方案內容）",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方模型庫：gemma4",
+          "url": "https://ollama.com/library/gemma4",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方模型庫：gemma3 標籤頁",
+          "url": "https://ollama.com/library/gemma3/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方模型庫：gemma3n 標籤頁",
+          "url": "https://ollama.com/library/gemma3n/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型卡：google/gemma-4-31B-it（授權欄位與模型說明）",
+          "url": "https://huggingface.co/google/gemma-4-31B-it",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型 API：google/gemma-4-31B-it（license 標籤）",
+          "url": "https://huggingface.co/api/models/google/gemma-4-31B-it",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型 API：google/gemma-3-27b-it（license 標籤與受管制狀態）",
+          "url": "https://huggingface.co/api/models/google/gemma-3-27b-it",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OSI Approved Licenses（Open Source Initiative 核可授權清單）",
+          "url": "https://opensource.org/licenses",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

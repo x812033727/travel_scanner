@@ -1,0 +1,394 @@
+{
+  "slug": "ollama-with-code-editors",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "把本機模型接到編輯器：Continue、Cursor 與 Ollama",
+      "description": "Continue 的官方文件有完整的 Ollama 設定，改一個 config.yaml 就能讓本機模型負責聊天、補全與嵌入三個角色；Cursor 的說明頁只列五家雲端金鑰、沒有自訂端點，而且自備金鑰只對聊天模型有效，Tab 補全仍走內建模型。這篇照官方文件寫設定檔、Ollama 端的 11434 埠與上下文長度、程式模型怎麼挑，以及代理模式的限制。",
+      "hero": {
+        "src": "/guides/ollama-with-code-editors/hero.jpg",
+        "alt": "插圖：一台螢幕形狀的方框，用一條線連到旁邊的晶片，晶片再分出三條線接到三顆圓，全部框在同一個虛線框裡。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想讓 AI 幫你寫程式又不想把整份原始碼送上雲端，答案是把編輯器接到自己電腦上的模型；照官方文件當天的說法，Continue 的擴充有完整的 Ollama 設定，改一個 config.yaml 就能讓本機模型負責補全與聊天，而 Cursor 的說明頁只列了五家雲端供應商的金鑰、沒有任何自訂端點的寫法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇會帶你做完四件事：在 VS Code 或 JetBrains 裝好 Continue、把聊天、補全、嵌入三個模型角色寫進設定檔、在 Ollama 端把連線位址與上下文長度設對，最後看懂哪些編輯器的官方文件真的寫了 Ollama、以及本機模型在代理模式上被文件明白點出的限制。"
+        },
+        {
+          "type": "heading",
+          "text": "補全、聊天、代理：先分清楚三種用法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Continue 官方文件把功能分成四項：代理（Agent）模式一起處理開發任務、聊天（Chat）模式問問題與解釋程式碼、編輯（Edit）模式不離開檔案就改一段程式、自動補全（Autocomplete）在你打字時給行內建議。這四項不是同一個模型都能做好，官方也沒有這樣建議。"
+        },
+        {
+          "type": "paragraph",
+          "text": "補全用的是另一種模型。官方文件寫得很直接：補全模型是用一種叫 fill-in-the-middle（FIM）的格式訓練的，把游標前後的程式碼餵給它、要它補中間那段，因為任務很專一，所以「即使是 3B 參數的模型也能表現不錯」，反過來說，聊天模型雖然大，「即使下很多提示詞通常也表現不好」。同一份文件還補了一句：目前最先進的補全模型「都不超過 10b 參數，再往上加也不會明顯變好」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "代理模式的門檻則在工具呼叫。Continue 的模型推薦頁在「Local Models」那一段直接寫：這些模型只要顯示記憶體夠就能在自己的電腦上跑，但是「有限的工具呼叫與推理能力，會讓代理模式用起來很吃力」。這句話是本機方案跟雲端方案最大的落差，先記著，後面的限制那一節還會用到。"
+        },
+        {
+          "type": "link",
+          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+        },
+        {
+          "type": "heading",
+          "text": "Continue：裝擴充，然後改一個設定檔",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Continue 是 VS Code 與 JetBrains 的開放原始碼擴充。VS Code 這邊照官方文件是三步：在 Visual Studio Marketplace 的 Continue 頁面按 Install，會跳回 VS Code 再按一次 Install，圖示出現在左側欄之後，文件建議把它拖到右側欄比較好用。JetBrains 這邊是用 Ctrl 加 Alt 加 S 打開 Settings，進 Plugins 找到 Continue 再按 Install。介面以官網當天版本為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "裝完之後所有設定都在一個檔案裡。官方文件寫設定檔的位置：macOS 與 Linux 在使用者家目錄的 .continue 資料夾底下的 config.yaml，Windows 在 %USERPROFILE% 底下的同一個路徑。要打開它，先用 cmd 或 ctrl 加 L（VS Code）、cmd 或 ctrl 加 J（JetBrains）叫出聊天側欄，點輸入框上方的設定選單，滑到那一組設定按齒輪。文件說存檔之後 Continue 會自動重新載入，不用重開編輯器。"
+        },
+        {
+          "type": "code",
+          "language": "yaml",
+          "label": "~/.continue/config.yaml：一次寫好三個角色",
+          "code": "name: My Config\nversion: 0.0.1\nschema: v1\nmodels:\n  - name: Qwen3 Coder 30B\n    provider: ollama\n    model: qwen3-coder:30b\n    apiBase: http://localhost:11434\n    roles:\n      - chat\n      - edit\n  - name: Qwen2.5-Coder 1.5B\n    provider: ollama\n    model: qwen2.5-coder:1.5b\n    roles:\n      - autocomplete\n  - name: Nomic Embed\n    provider: ollama\n    model: nomic-embed-text\n    roles:\n      - embed"
+        },
+        {
+          "type": "paragraph",
+          "text": "三個欄位要對：provider 固定填 ollama，model 要跟 ollama list 印出來的名稱一字不差，apiBase 只有在 Ollama 跑在別台機器時才需要改成那台的位址。另外，Continue 舊的 config.json 格式在官方文件上已經標成 Deprecated（已淘汰），新寫的設定用 YAML 就好。"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "三個模型角色：chat、autocomplete、embed",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Continue 的模型說明頁把角色列成六種：chat（聊天）、edit（編輯）、apply（套用）、autocomplete（自動補全）、embed（嵌入）、rerank（重新排序），在設定檔裡就是 roles 這個欄位。對本機模型來說，真正要自己指派的是下面三個。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "chat 與 edit：挑程式模型。Ollama 模型庫當天的程式模型頁裡，qwen3-coder 有 30b 與 480b 兩種標籤，30b 的下載大小 19GB、上下文視窗 256K，480b 則是 290GB，一般家用電腦不用考慮；撐不住 30b 的話，同一個模型庫的 qwen2.5-coder 有 14b（9.0GB）與 32b（20GB）可以退而求其次。",
+            "autocomplete：挑小的補全模型。Continue 的推薦表格把開放模型欄寫成 QwenCoder2.5 的 1.5B 與 7B，對應 Ollama 模型庫的 qwen2.5-coder，1.5b 下載大小 986MB、7b 是 4.7GB，上下文視窗都是 32K；嫌太大還有 0.5b（398MB）與 3b（1.9GB）。",
+            "embed：給程式碼庫檢索用。官方文件寫「如果想在本機產生嵌入向量，我們建議搭配 Ollama 使用 nomic-embed-text」，這個模型在模型庫上是 274MB、上下文視窗 2K。要注意文件同時寫了：VS Code 內建一個叫 transformers.js 的嵌入模型，但是 JetBrains 目前沒有內建的嵌入器。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "先把三個模型拉下來",
+          "code": "ollama pull qwen3-coder:30b\nollama pull qwen2.5-coder:1.5b\nollama pull nomic-embed-text\n\nollama list"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件特別提醒標籤要拉完整：直接打 ollama pull deepseek-r1 拉到的是 :latest，跟設定檔裡寫的 :32b 不是同一包，接著就會看到「404 model not found, try pulling it first」。設定檔寫什麼標籤，就拉什麼標籤。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ollama-with-code-editors/diagram-1.svg",
+          "alt": "圖解：編輯器裡的擴充把請求送到本機 Ollama 的 11434 埠，再分給聊天、補全、嵌入三個模型。",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左看到右：你在編輯器裡的動作經過擴充，變成送往本機 11434 埠的請求，再依角色交給不同的模型；整條路徑都在自己的電腦上。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Ollama 端要開的設定",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "編輯器那邊設好之後，剩下的都在 Ollama。官方文件要確認的其實只有三件事。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "服務有在跑：Continue 的疑難排解那一節寫，先用 curl 打 localhost 的 11434 埠，回「Ollama is running」就代表通了；Ollama 官方文件裡 Zed、JetBrains、Roo Code 那幾頁要你填的 Host URL，也都是同一個位址。",
+            "上下文長度要調大：官方的上下文長度說明頁寫，預設值是依顯示記憶體分級的，小於 24 GiB 給 4k、24 到 48 GiB 給 32k、48 GiB 以上給 256k；同一頁接著寫「網頁搜尋、代理、程式工具這類需要大量上下文的工作，應該設到至少 64000 個 token」。",
+            "跑在別台機器才要開對外：官方常見問答寫，Ollama 預設只綁在 127.0.0.1 的 11434 埠，要讓區域網路的另一台電腦連進來，得把 OLLAMA_HOST 設成 0.0.0.0 加同一個埠，再重啟服務。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "調上下文長度、開對外連線、確認有沒有跑在顯示卡上",
+          "code": "# 方法一：啟動服務時指定\nOLLAMA_CONTEXT_LENGTH=64000 ollama serve\n\n# 方法二（macOS 以應用程式執行時）：設好環境變數再重開 Ollama\nlaunchctl setenv OLLAMA_HOST \"0.0.0.0:11434\"\n\n# 看模型載在哪裡：PROCESSOR 欄要是 100% GPU\nollama ps"
+        },
+        {
+          "type": "paragraph",
+          "text": "反過來也有調太大的問題。Continue 的 Ollama 供應商頁寫，Continue 設的預設上下文長度可能比其他 Ollama 工具高，所以同一個模型在別的地方跑得動、在編輯器裡卻跳出「Model requires more system memory」；文件給的解法是在那個模型底下加 defaultCompletionOptions 的 contextLength 把它調小，或者換小一號的模型。"
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "link",
+          "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+        },
+        {
+          "type": "heading",
+          "text": "Cursor 能不能接本機模型：照官方說明",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "很多人想把 Ollama 接到 Cursor，這裡照 cursor.com 的說明頁原文回答。那一頁叫「Bring your own API key」（自備 API 金鑰），步驟是打開 Cursor Settings 進 Models，找到供應商、貼上金鑰、按 Save。可以填的供應商頁面上列了五家：OpenAI、Anthropic、Google、Azure OpenAI、AWS Bedrock。整頁沒有自訂 base URL、OpenAI 相容端點或本機模型的任何說明，所以照當天的官方文件，接 Ollama 這件事在 Cursor 上沒有官方寫法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "就算你填的是雲端金鑰，那一頁也寫死了兩條限制。第一條是功能範圍：「Custom API keys only work with chat models. Tab completion continues using Cursor's built-in models.」翻成中文就是自備金鑰只對聊天模型有效，Tab 補全還是走 Cursor 自己的模型。第二條是資料路徑：金鑰不會存在 Cursor 的伺服器上，但是每一次請求都會帶著金鑰送到後端，因為「所有請求都會經過 Cursor 的伺服器做最後的提示詞組裝」；同一頁還寫，用自備金鑰的時候 Cursor 的 Zero Data Retention 政策不適用，資料處理改看你選的那家供應商的隱私政策。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "自備金鑰不等於資料不出門",
+          "text": "把隱私當成理由的話，兩條路差很多：Continue 加 Ollama 的請求是從你的編輯器直接打到本機的 11434 埠，官方文件給的設定值就是 localhost，沒有第三方在中間；而 Cursor 的自備金鑰照官方說明仍然會經過 Cursor 的伺服器組裝提示詞，而且不再受 Zero Data Retention 政策保護。要的是「程式碼不離開這台電腦」，就不要把自備金鑰當成替代方案。"
+        },
+        {
+          "type": "link",
+          "text": "Cursor 編輯器入門：Tab 補全、Chat 與代理模式",
+          "url": "https://mokaair.com/zh-TW/life/cursor-editor-guide"
+        },
+        {
+          "type": "heading",
+          "text": "官方文件真的寫了 Ollama 的編輯器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "除了 Continue，Ollama 自己的文件也有一個整合（Integrations）區，裡面點名了幾個編輯器，每一頁都寫了設定步驟與前提。下面這張表只收官方文件寫過的，沒寫的就不列。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "編輯器",
+            "官方文件怎麼接",
+            "官方文件說的限制"
+          ],
+          "rows": [
+            [
+              "VS Code（Ollama 官方擴充）",
+              "裝 Marketplace 上的 Ollama 擴充，開 Chat 在模型選單的 Ollama 區段挑模型，預設讀 127.0.0.1 的 11434 埠",
+              "需要 VS Code 1.127 或更新版本；文件建議 Ollama 0.17.6 以上；本機模型要把上下文設到至少 64k"
+            ],
+            [
+              "VS Code 與 JetBrains（Continue）",
+              "在 config.yaml 的 models 底下把 provider 填 ollama，再指派 chat、autocomplete、embed 角色",
+              "JetBrains 沒有內建的嵌入模型；文件寫本機模型工具呼叫能力有限，代理模式會很吃力"
+            ],
+            [
+              "JetBrains 內建的 AI 功能",
+              "側欄聊天圖示選 Set up Local Models，在 Third Party AI Providers 選 Ollama，Host URL 填 localhost 的 11434 埠",
+              "文件寫要有 JetBrains AI 訂閱才能用"
+            ],
+            [
+              "Zed",
+              "右下角星號圖示按 Configure，在 LLM Providers 選 Ollama，確認 Host URL 是 localhost 的 11434 埠再按 Connect",
+              "文件只寫到連線與選模型，沒有列補全或代理的額外條件"
+            ],
+            [
+              "Xcode",
+              "Settings 裡選 Locally Hosted，輸入埠 11434 按 Add，再從左上角星號圖示的選單挑模型",
+              "文件寫要先設定好 Apple Intelligence，Xcode 版本要 v26.0"
+            ],
+            [
+              "Roo Code（VS Code 擴充）",
+              "在 Provider Settings 把 API Provider 設成 Ollama，填 Model ID，遠端才改 Base URL",
+              "文件寫程式工作要把 Context Window 設到至少 32K token"
+            ]
+          ],
+          "caption": "整理自 docs.ollama.com 的整合頁與 docs.continue.dev，2026 年 9 月查證；介面以官網當天版本為準。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+        },
+        {
+          "type": "heading",
+          "text": "會踩到的限制與常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本機方案最誠實的講法是：補全與聊天這兩件事很堪用，代理那一段官方文件自己就先打了預防針。下面幾條都寫在文件上。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "代理模式跑不動：Continue 的模型頁寫本機模型的工具呼叫與推理能力有限，代理模式會很吃力。Ollama 指南那頁給的補救是在模型底下加 capabilities 的 tool_use，但同一頁也寫了「已知問題」：有些模型即使設了、宣稱支援，實際的工具支援還是跟標示的不一樣。",
+            "別拿旗艦模型做補全：官方的補全常見問答直接說，最好的商用模型沒有用 FIM 格式訓練，補全反而不好用；另外會思考的推理模型也不建議，因為產出比較慢、不適合需要速度的場景。",
+            "Cursor 的 Tab 換不掉：照官方說明，自備金鑰只對聊天模型有效，Tab 補全一定走 Cursor 內建的模型。",
+            "上下文比雲端短：Ollama 的預設值依顯示記憶體從 4k 起跳，程式工作官方建議至少 64000 個 token，Roo Code 的整合頁則寫至少 32K；調大很吃記憶體，文件也提醒要先確認顯示記憶體夠。",
+            "補全沒反應：官方的排查順序是先確認「Enable Tab Autocomplete」有勾（JetBrains 在 Settings 的 Tools 底下找 Continue），再確認模型真的拉下來了，然後把其他補全來源關掉避免互相干擾。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一件跟錢有關的事值得順帶一提：本機模型不按 token 計費，電腦跑起來就沒有帳單，但這個好處要拿品質和速度去換。真的要比，先把雲端那邊的計費方式看懂再決定哪些工作留在本機。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先把補全跑起來，再想代理",
+          "text": "如果只想花十分鐘看到效果，順序是：拉 qwen2.5-coder:1.5b（986MB），在 config.yaml 裡給它一個 autocomplete 角色，存檔，回編輯器打幾行程式碼看有沒有灰字建議。這一段最不吃硬體也最容易成功，聊天與嵌入的模型可以之後再加；代理模式留到最後再試，官方文件已經先說了本機模型在那一塊很吃力。"
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        },
+        {
+          "type": "link",
+          "text": "GitHub Copilot 入門：VS Code 裡的補全、Chat 與代理",
+          "url": "https://mokaair.com/zh-TW/life/github-copilot-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Continue 官方文件首頁：What is Continue？（支援的編輯器與四項功能）",
+          "url": "https://docs.continue.dev/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue 官方文件：Install（VS Code 與 JetBrains 安裝步驟）",
+          "url": "https://docs.continue.dev/ide-extensions/install",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue 官方文件：How to Understand Configuration（設定檔位置與快速鍵）",
+          "url": "https://docs.continue.dev/guides/understanding-configs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue 官方文件：Ollama 供應商設定（provider、apiBase 與 contextLength 排錯）",
+          "url": "https://docs.continue.dev/customize/model-providers/top-level/ollama",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue 官方文件：Using Ollama with Continue（設定方式、標籤與疑難排解）",
+          "url": "https://docs.continue.dev/guides/ollama-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue 官方文件：Models（模型角色、推薦模型與本機模型的代理限制）",
+          "url": "https://docs.continue.dev/customize/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue 官方文件：Autocomplete Role（fill-in-the-middle 格式說明）",
+          "url": "https://docs.continue.dev/customize/model-roles/autocomplete",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue 官方文件：Autocomplete 深入設定（Ollama 補全設定與排查步驟）",
+          "url": "https://docs.continue.dev/customize/deep-dives/autocomplete",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue 官方文件：Embed Role（本機嵌入建議與 JetBrains 沒有內建嵌入器）",
+          "url": "https://docs.continue.dev/customize/model-roles/embeddings",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor 說明：Bring your own API key（支援的供應商與自備金鑰的限制）",
+          "url": "https://cursor.com/help/models-and-usage/api-keys",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方文件：Context length（預設值分級與 64000 token 建議）",
+          "url": "https://docs.ollama.com/context-length",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方文件：FAQ（OLLAMA_HOST 與各系統的環境變數設法）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方文件：VS Code 整合（擴充版本需求與上下文設定）",
+          "url": "https://docs.ollama.com/integrations/vscode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方文件：JetBrains 整合（需要 JetBrains AI 訂閱）",
+          "url": "https://docs.ollama.com/integrations/jetbrains",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方文件：Zed 整合（LLM Providers 設定步驟）",
+          "url": "https://docs.ollama.com/integrations/zed",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方文件：Xcode 整合（Apple Intelligence 與版本需求）",
+          "url": "https://docs.ollama.com/integrations/xcode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方文件：Roo Code 整合（Base URL 與上下文視窗建議）",
+          "url": "https://docs.ollama.com/integrations/roo-code",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：qwen3-coder 標籤頁（標籤、下載大小與上下文視窗）",
+          "url": "https://ollama.com/library/qwen3-coder/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：qwen2.5-coder 標籤頁（標籤、下載大小與上下文視窗）",
+          "url": "https://ollama.com/library/qwen2.5-coder/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：nomic-embed-text 標籤頁（下載大小與上下文視窗）",
+          "url": "https://ollama.com/library/nomic-embed-text/tags",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

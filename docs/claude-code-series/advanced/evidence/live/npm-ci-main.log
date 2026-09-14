@@ -1,0 +1,24 @@
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'jsdom@30.0.1',
+npm warn EBADENGINE   required: { node: '^22.22.2 || ^24.15.0 || >=26.0.0' },
+npm warn EBADENGINE   current: { node: 'v24.13.0', npm: '11.6.2' }
+npm warn EBADENGINE }
+npm error code EPERM
+npm error syscall unlink
+npm error path C:\Users\x8120\.codex\worktrees\1cff\travel_scanㄐ\node_modules\@swc\core-win32-arm64-msvc\swc.win32-arm64-msvc.node
+npm error errno -4048
+npm error [Error: EPERM: operation not permitted, unlink 'C:\Users\x8120\.codex\worktrees\1cff\travel_scanㄐ\node_modules\@swc\core-win32-arm64-msvc\swc.win32-arm64-msvc.node'] {
+npm error   errno: -4048,
+npm error   code: 'EPERM',
+npm error   syscall: 'unlink',
+npm error   path: 'C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\node_modules\\@swc\\core-win32-arm64-msvc\\swc.win32-arm64-msvc.node'
+npm error }
+npm error
+npm error The operation was rejected by your operating system.
+npm error It's possible that the file was already in use (by a text editor or antivirus),
+npm error or that you lack permissions to access it.
+npm error
+npm error If you believe this might be a permissions issue, please double-check the
+npm error permissions of the file and its containing directories, or try running
+npm error the command again as root/Administrator.
+npm error A complete log of this run can be found in: C:\Users\x8120\AppData\Local\npm-cache\_logs\2026-09-14T14_11_26_006Z-debug-0.log

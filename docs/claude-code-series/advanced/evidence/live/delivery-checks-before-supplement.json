@@ -1,0 +1,119 @@
+{
+  "checked_at": "2026-09-14T12:33:12.651969+00:00",
+  "status": "local-preview-ready",
+  "scope": "36 new lessons and the combined 97-page local preview; not release approval",
+  "content": {
+    "pages": 97,
+    "new_lessons": 36,
+    "groups": 16,
+    "learning_paths": 12,
+    "errors": 0,
+    "warnings": 0,
+    "source": "content-validation.json"
+  },
+  "art": {
+    "rendered": 43,
+    "canvas": [
+      1600,
+      900
+    ],
+    "svgTextBoundsChecked": true
+  },
+  "downloads": {
+    "archives": 36,
+    "groups": 6,
+    "quick_checks": 81,
+    "pilot_archives": 6,
+    "tool_suite_tests_per_pilot": 21,
+    "sources": [
+      "downloads-quick-tests.json",
+      "downloads-tests.json"
+    ]
+  },
+  "browser": {
+    "latest_cases_passed": 9,
+    "source": "browser-verification.json",
+    "physically_tested_mobile_devices": false
+  },
+  "web_tests": {
+    "scope": "affected guide/series/editor/server helper suites",
+    "source": "web-focused-tests.json",
+    "numTotalTests": 73,
+    "numPassedTests": 73,
+    "numFailedTests": 0,
+    "numPendingTests": 0
+  },
+  "broad_web_suite": {
+    "status": "not-completed",
+    "note": "Optional whole-site suite; no success claimed. Relevant 73 tests passed separately."
+  },
+  "commands_from_task_outputs": [
+    {
+      "command": "npm run build:web",
+      "exit": 0
+    },
+    {
+      "command": "npm run lint:web",
+      "exit": 0
+    },
+    {
+      "command": "npm run check:i18n",
+      "exit": 0,
+      "detail": "5 locales, 25 namespaces"
+    },
+    {
+      "command": "npm run typecheck:web",
+      "exit": 0
+    },
+    {
+      "command": "npm run test:tools",
+      "exit": 0,
+      "detail": "51 passed; tools-tests.txt"
+    },
+    {
+      "command": "uv run ruff check app/guides tests/test_guide_series.py",
+      "exit": 0
+    },
+    {
+      "command": "uv run mypy app",
+      "exit": 0,
+      "detail": "328 source files"
+    },
+    {
+      "command": "uv run pytest tests/test_guide_series.py tests/test_guides.py -q",
+      "exit": 0,
+      "detail": "87 passed, 77 skipped; PostgreSQL integration disabled"
+    },
+    {
+      "command": "claude plugin validate ./plugin",
+      "exit": 0,
+      "detail": "local manifest validation, not a model call"
+    },
+    {
+      "command": "node hooks/timeout-demo.mjs",
+      "exit": 0,
+      "detail": "expectedTimeout=true, ETIMEDOUT, 339 ms; controlled local child"
+    },
+    {
+      "command": "node worktrees/demo.mjs",
+      "exit": 0,
+      "detail": "worktree-tests.json"
+    }
+  ],
+  "manual_visual_review": [
+    "project-rules-workshop-code-360.png",
+    "structured-cli-pipeline-code-390.png",
+    "tdd-reference-390.png"
+  ],
+  "limitations": [
+    "Claude CLI five pilot attempts blocked by expired OAuth",
+    "Real mobile, remote OAuth, Agent Teams, external CI, scheduling and SDK model calls pending",
+    "PostgreSQL integration not run",
+    "Not merged, deployed, imported or published"
+  ],
+  "environment_notes": [
+    "Shared browser installation was incomplete; matching Chromium installed in a dedicated temporary cache",
+    "Broad Vitest was restarted; reported guide tests come from the focused single-worker invocation",
+    "MCP test process startup/cleanup allowance increased to 20 seconds; protocol deadline remains 1500 ms"
+  ]
+}

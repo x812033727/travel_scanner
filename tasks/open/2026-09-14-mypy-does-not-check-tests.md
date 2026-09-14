@@ -78,3 +78,27 @@ cd apps/api && uv run mypy app && uv run mypy tests && uv run pytest -q
   ever exercised in CI — is not something to fix here. It is a reason to weight this task
   higher: type checking is the only pre-push signal that covers those files at all.
 - Filed 2026-09-14 while getting #472 to green.
+
+## Blocked, and a measurement for whoever picks this up
+
+**2026-09-14, blocked on `2026-09-14-article-image-ci` (`codex-image-ci`)**, which is active
+and also covers `.github/workflows/ci.yml`. `npm run tasks -- claim` refuses this task for
+that reason and the refusal is correct — the CI step this task has to add lands in the same
+file that task is editing. Nothing here needs to change first; claim it once that one is done.
+
+While checking, one measurement worth recording because it changes the shape of the work:
+
+```
+$ uv run mypy tests
+tests/test_guides.py: error: Source file found twice under different module names:
+                             "test_guides" and "tests.test_guides"
+tests/test_admin_operations_migration.py:10: error: ... [import-untyped]
+Found 2 errors in 2 files (errors prevented further checking)
+```
+
+It does not get as far as type errors. The duplicate-module error is a layout problem —
+`tests/` has no `__init__.py` and mypy resolves the same file under two module names — so
+step one is `explicit_package_bases` plus `mypy_path`, or an `__init__.py`, before any count
+of real errors means anything. The "9 pre-existing errors" figure quoted above came from
+checking `test_integration_postgres_redis.py` on its own, which sidesteps the collision.
+

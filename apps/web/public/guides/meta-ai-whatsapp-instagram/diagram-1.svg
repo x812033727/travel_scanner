@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">訊息的兩條路：加密聊天與 Meta AI 對話 / Two paths: an encrypted chat and a chat with Meta AI</title>
+  <desc id="desc">左右兩欄的資料路徑圖。左欄是你和朋友的個人聊天：訊息從你的手機送到 WhatsApp 與 Meta 的伺服器，伺服器只負責轉送、讀不到內容，再送到朋友的手機；端對端加密讓聊天室以外的人，包含 WhatsApp 與 Meta，都看不到。右欄是你和 Meta AI 的對話：訊息從你的手機送到 Meta 的 AI 服務，這個服務讀得到你送出的提示詞與訊息，再把回覆送回聊天室；只有提及 @Meta AI 或你分享的訊息會送出，Meta 可能用這些內容改善 AI 品質。底部說明：在群組裡提及 @Meta AI 時，Instagram 與 Messenger 的說明頁寫，過去 30 天的訊息會分享給 Meta AI，讓它給出有上下文的回答；要限制的話，個人聊天可以開進階聊天隱私，群組管理員可以把 Meta AI 移出群組。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">訊息的兩條路：加密聊天與 Meta AI 對話</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Two paths: an end-to-end encrypted chat vs. a chat with Meta AI</text>
+
+  <rect x="60" y="112" width="720" height="512" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="420" y="158" font-size="22" font-weight="700" fill="#2E7D5B" text-anchor="middle">你和朋友的個人聊天</text>
+
+  <rect x="150" y="186" width="540" height="72" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="420" y="230" font-size="19" fill="#102A2B" text-anchor="middle">你的手機</text>
+  <line x1="420" y1="262" x2="420" y2="296" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="150" y="302" width="540" height="104" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="420" y="342" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">WhatsApp 與 Meta 的伺服器</text>
+  <text x="420" y="376" font-size="17" fill="#5C6B6B" text-anchor="middle">只負責轉送，讀不到內容</text>
+  <line x1="420" y1="410" x2="420" y2="444" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="150" y="450" width="540" height="72" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="420" y="494" font-size="19" fill="#102A2B" text-anchor="middle">朋友的手機</text>
+
+  <text x="420" y="556" font-size="17" fill="#5C6B6B" text-anchor="middle">端對端加密：聊天室以外的人，</text>
+  <text x="420" y="586" font-size="17" fill="#5C6B6B" text-anchor="middle">包含 WhatsApp 與 Meta 都看不到</text>
+
+  <rect x="820" y="112" width="720" height="512" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1180" y="158" font-size="22" font-weight="700" fill="#2F6F9F" text-anchor="middle">你和 Meta AI 的對話</text>
+
+  <rect x="910" y="186" width="540" height="72" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1180" y="230" font-size="19" fill="#102A2B" text-anchor="middle">你的手機</text>
+  <line x1="1180" y1="262" x2="1180" y2="296" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="910" y="302" width="540" height="104" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1180" y="342" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">Meta 的 AI 服務</text>
+  <text x="1180" y="376" font-size="17" fill="#5C6B6B" text-anchor="middle">讀得到你送出的提示詞與訊息</text>
+  <line x1="1180" y1="410" x2="1180" y2="444" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="910" y="450" width="540" height="72" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1180" y="494" font-size="19" fill="#102A2B" text-anchor="middle">回覆送回聊天室</text>
+
+  <text x="1180" y="556" font-size="17" fill="#5C6B6B" text-anchor="middle">只有提及 @Meta AI 或你分享的訊息會送出，</text>
+  <text x="1180" y="586" font-size="17" fill="#5C6B6B" text-anchor="middle">Meta 可能用這些內容改善 AI 品質</text>
+
+  <rect x="60" y="648" width="1480" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="100" y="696" font-size="20" font-weight="700" fill="#102A2B">在群組裡提及 @Meta AI 時</text>
+  <text x="100" y="732" font-size="17" fill="#102A2B">Instagram 與 Messenger 的說明頁寫：過去 30 天的訊息會分享給 Meta AI，讓它給出有上下文的回答。</text>
+  <text x="100" y="766" font-size="17" fill="#102A2B">要限制：個人聊天可以開進階聊天隱私，群組管理員可以把 Meta AI 移出群組。</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

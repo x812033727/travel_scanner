@@ -6,7 +6,9 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const manifest = JSON.parse(await readFile(path.join(root, 'apps/api/app/guides/series_data/claude-code.json'), 'utf8'));
-const slugs = [...manifest.entries.map(entry => entry.slug), manifest.hub];
+const args = process.argv.slice(2);
+const selected = args.includes('--only') ? new Set(args[args.indexOf('--only') + 1].split(',').map(Number)) : null;
+const slugs = [...manifest.entries.filter(entry => !selected || selected.has(entry.number)).map(entry => entry.slug), ...(!selected || selected.has(0) ? [manifest.hub] : [])];
 const browser = await chromium.launch({ headless: true });
 try {
   const page = await browser.newPage({ viewport: { width: 1600, height: 900 }, deviceScaleFactor: 1 });
@@ -29,7 +31,7 @@ try {
     }
     count++;
   }
-  const evidence = path.join(root, 'docs/claude-code-series/evidence');
+  const evidence = args.includes('--evidence') ? path.resolve(args[args.indexOf('--evidence') + 1]) : path.join(root, 'docs/claude-code-series/evidence');
   await mkdir(evidence, { recursive: true });
   await writeFile(path.join(evidence, 'art-validation.json'), JSON.stringify({ rendered: count, canvas: [1600, 900], svgTextBoundsChecked: true }, null, 2) + '\n');
   process.stdout.write(`Rendered and checked ${count} covers and diagrams.\n`);

@@ -1,0 +1,392 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-node-mhs7rw81\\node-v24.15.0-win-arm64\\node.exe",
+      "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=tools/claude-code-series/advanced/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\tools\\claude-code-series\\advanced\\playwright.config.mjs",
+    "rootDir": "C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/docs/claude-code-series/advanced/evidence/browser-runs",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "claude-code-series.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\/browser-main-retry.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "claude-code-series.spec.ts",
+      "file": "claude-code-series.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "directory server-renders all catalogue links without JavaScript",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4381,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:38:36.639Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-a7ed5b62e9d802ef3427",
+          "file": "claude-code-series.spec.ts",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "search aliases, combined filters, URL reload and browser back",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14172,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:38:42.449Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-fca031b87a3fd10cfb03",
+          "file": "claude-code-series.spec.ts",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "all catalogue pages render and every internal reference has a valid target",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 89700,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:38:56.635Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-68da962c606e66ee6aa7",
+          "file": "claude-code-series.spec.ts",
+          "line": 75,
+          "column": 1
+        },
+        {
+          "title": "360 and 390px articles retain TOC, readable tables and contained code",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25146,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:40:26.353Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-7940ce4fda1c1c19f3c5",
+          "file": "claude-code-series.spec.ts",
+          "line": 97,
+          "column": 1
+        },
+        {
+          "title": "downloaded complete lab supports filtering, persistence, safe text and corrupted storage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2435,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:40:51.517Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-6428b2f31a6607ba3352",
+          "file": "claude-code-series.spec.ts",
+          "line": 115,
+          "column": 1
+        },
+        {
+          "title": "downloaded TDD starter reproduces the wrong checkbox and reference fixes the same interaction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2183,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:40:53.968Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-643a6a0c97c1cf9d8ec4",
+          "file": "claude-code-series.spec.ts",
+          "line": 144,
+          "column": 1
+        },
+        {
+          "title": "copy preserves raw input, indentation and text through the native clipboard",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11760,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:40:56.162Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-8406e3e27f71d0551194",
+          "file": "claude-code-series.spec.ts",
+          "line": 165,
+          "column": 1
+        },
+        {
+          "title": "fixed life entry, unavailable directory retry and missing locale",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4619,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:41:07.935Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-911b7f32951493e55e4a",
+          "file": "claude-code-series.spec.ts",
+          "line": 191,
+          "column": 1
+        },
+        {
+          "title": "preview download links stay local and serve the exact reviewed ZIP bytes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3347,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T14:41:12.568Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edf8a0dadae1a2657e52-1948348862de3f1de5b0",
+          "file": "claude-code-series.spec.ts",
+          "line": 205,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-14T14:38:36.109Z",
+    "duration": 160165.78399999999,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

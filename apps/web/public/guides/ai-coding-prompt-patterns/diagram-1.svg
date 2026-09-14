@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">程式代理的三段式提示 / Plan, implement, verify</title>
+  <desc id="desc">由左至右三個方塊。第一段規劃：你要給目標、背景、限制、完成條件與相關檔案和專案規則檔，你要檢查計畫有沒有指到對的檔案、有沒有漏掉限制、範圍會不會太大。計畫確認後進入第二段實作：你要給已確認的計畫、這一步只做一件事、建置與測試指令，你要檢查有沒有動到範圍外的檔案、它有沒有自己跑過測試、每一步能不能單獨回退。改完一步後進入第三段驗證：你要給逐條列出的完成條件，並要求它貼出實際指令與完整輸出，你要檢查 diff 有沒有逐檔看過、測試輸出是不是真的、每條條件是否都對得上。驗證沒過時有兩條回圈：測試沒過就退回實作那一段修，需求或方向錯了就退回規劃那一段重來。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#5C6B6B"/>
+    </marker>
+    <marker id="arrowback" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#B8442D"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">程式代理的三段式提示</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Plan, implement, verify: prompting a coding agent</text>
+
+  <!-- Stage 1 -->
+  <rect x="60" y="150" width="420" height="450" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="116" cy="208" r="28" fill="#0D6B68"/>
+  <text x="116" y="218" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="160" y="220" font-size="28" font-weight="700" fill="#0D6B68">規劃</text>
+  <line x1="84" y1="258" x2="456" y2="258" stroke="#0D6B68" stroke-width="2"/>
+  <text x="84" y="296" font-size="18" font-weight="700" fill="#0D6B68">你要給什麼</text>
+  <text x="84" y="332" font-size="16" fill="#102A2B">・目標、背景、限制</text>
+  <text x="84" y="366" font-size="16" fill="#102A2B">・完成條件</text>
+  <text x="84" y="400" font-size="16" fill="#102A2B">・相關檔案與專案規則檔</text>
+  <text x="84" y="452" font-size="18" font-weight="700" fill="#0D6B68">你要檢查什麼</text>
+  <text x="84" y="488" font-size="16" fill="#5C6B6B">・計畫指到對的檔案</text>
+  <text x="84" y="522" font-size="16" fill="#5C6B6B">・沒有漏掉限制</text>
+  <text x="84" y="556" font-size="16" fill="#5C6B6B">・範圍沒有太大</text>
+
+  <!-- Stage 2 -->
+  <rect x="590" y="150" width="420" height="450" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="646" cy="208" r="28" fill="#2F6F9F"/>
+  <text x="646" y="218" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="690" y="220" font-size="28" font-weight="700" fill="#2F6F9F">實作</text>
+  <line x1="614" y1="258" x2="986" y2="258" stroke="#2F6F9F" stroke-width="2"/>
+  <text x="614" y="296" font-size="18" font-weight="700" fill="#2F6F9F">你要給什麼</text>
+  <text x="614" y="332" font-size="16" fill="#102A2B">・已確認的計畫</text>
+  <text x="614" y="366" font-size="16" fill="#102A2B">・這一步只做一件事</text>
+  <text x="614" y="400" font-size="16" fill="#102A2B">・建置與測試指令</text>
+  <text x="614" y="452" font-size="18" font-weight="700" fill="#2F6F9F">你要檢查什麼</text>
+  <text x="614" y="488" font-size="16" fill="#5C6B6B">・沒動到範圍外的檔案</text>
+  <text x="614" y="522" font-size="16" fill="#5C6B6B">・它自己跑過測試</text>
+  <text x="614" y="556" font-size="16" fill="#5C6B6B">・每步都能單獨回退</text>
+
+  <!-- Stage 3 -->
+  <rect x="1120" y="150" width="420" height="450" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <circle cx="1176" cy="208" r="28" fill="#2E7D5B"/>
+  <text x="1176" y="218" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="1220" y="220" font-size="28" font-weight="700" fill="#2E7D5B">驗證</text>
+  <line x1="1144" y1="258" x2="1516" y2="258" stroke="#2E7D5B" stroke-width="2"/>
+  <text x="1144" y="296" font-size="18" font-weight="700" fill="#2E7D5B">你要給什麼</text>
+  <text x="1144" y="332" font-size="16" fill="#102A2B">・完成條件逐條列出</text>
+  <text x="1144" y="366" font-size="16" fill="#102A2B">・要它貼實際指令</text>
+  <text x="1144" y="400" font-size="16" fill="#102A2B">・要它貼完整輸出</text>
+  <text x="1144" y="452" font-size="18" font-weight="700" fill="#2E7D5B">你要檢查什麼</text>
+  <text x="1144" y="488" font-size="16" fill="#5C6B6B">・diff 逐檔看過</text>
+  <text x="1144" y="522" font-size="16" fill="#5C6B6B">・測試輸出是真的</text>
+  <text x="1144" y="556" font-size="16" fill="#5C6B6B">・每條條件都對上</text>
+
+  <!-- Forward arrows -->
+  <text x="534" y="348" font-size="16" fill="#5C6B6B" text-anchor="middle">計畫確認</text>
+  <line x1="486" y1="375" x2="580" y2="375" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="1064" y="348" font-size="16" fill="#5C6B6B" text-anchor="middle">改完一步</text>
+  <line x1="1016" y1="375" x2="1110" y2="375" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- Loop back to implement -->
+  <path d="M 1330 600 L 1330 682 L 806 682 L 806 612" fill="none" stroke="#B8442D" stroke-width="4" marker-end="url(#arrowback)"/>
+  <text x="1068" y="716" font-size="16" fill="#B8442D" text-anchor="middle">測試沒過，退回實作那一段</text>
+
+  <!-- Loop back to plan -->
+  <path d="M 1400 600 L 1400 786 L 276 786 L 276 612" fill="none" stroke="#B8442D" stroke-width="4" stroke-dasharray="10 8" marker-end="url(#arrowback)"/>
+  <text x="838" y="820" font-size="16" fill="#B8442D" text-anchor="middle">需求或方向錯了，退回規劃那一段</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

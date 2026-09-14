@@ -1,0 +1,242 @@
+{
+  "slug": "search-crawlers-explained",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "搜尋爬蟲與 AI 爬蟲：網站管理者該怎麼辨識與管理",
+      "description": "搜尋爬蟲與 AI 取頁工具用途不同，網站管理者需要先辨識來源，再選擇控制方式。本文整理 Googlebot、Google-Extended、OAI-SearchBot、GPTBot 與 ChatGPT-User 的差別，說明 robots.txt、noindex 和登入保護各能處理什麼問題，並提供存取紀錄核對及變更驗收步驟，避免為了阻擋訓練用途而誤擋搜尋或公開內容。",
+      "hero": {
+        "src": "/guides/search-crawlers-explained/hero.jpg",
+        "alt": "原創伺服器、文件與盾牌插圖，呈現爬蟲取頁、管理規則及來源驗證。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在網站紀錄看到一串帶有 Bot 的名稱，不能立刻判斷它在做搜尋索引、模型訓練，還是替使用者打開網址。連名稱本身都可能被其他程式偽裝，必須配合官方用途與實際請求紀錄來看。"
+        },
+        {
+          "type": "paragraph",
+          "text": "管理爬蟲前，先定義你希望公開哪些內容、希望在哪些服務被找到，以及哪些資料只有登入者能讀。用途、身分和權限分開確認，才不會用一條大範圍封鎖規則，把原本需要的搜尋入口也一起關掉。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分辨抓取、索引與使用者取頁"
+        },
+        {
+          "type": "paragraph",
+          "text": "抓取是向網站取得資料，索引是進一步分析與整理，搜尋呈現又是後續選擇結果的階段。Google 說明並非每個被抓取的頁面都會建立索引，也不保證符合條件就一定呈現。因此，紀錄中出現成功回應，不能當成文章已收錄的證據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有些工具會主動探索網址，有些則因使用者貼上連結或提出問題才取頁。兩者對 robots.txt 的處理可能不同。為自己的網站整理服務清單，逐一查看官方文件，不把所有來自 AI 產品的請求一律稱為訓練爬蟲。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如一個公開的修繕教學站，希望讀者在搜尋中找到文章，但不希望內容用於某供應商的訓練。這個需求可以拆成搜尋與訓練兩份設定；如果是會員帳務明細，問題則是存取權限，應先確認未登入者不能讀取。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀懂 Google 與 OpenAI 的用途差別"
+        },
+        {
+          "type": "paragraph",
+          "text": "Googlebot 參與 Google 搜尋檢索。Google-Extended 則是 robots.txt 的產品控制符記，用來表達官方文件列明的 Gemini 訓練與相關 grounding 用途偏好；它沒有獨立的 HTTP User-Agent，控制它不會改變網站在 Google 搜尋的收錄或作為排名訊號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 官方將 OAI-SearchBot 用於搜尋，GPTBot 用於可能供基礎模型訓練的內容抓取，兩者可獨立設定。若目標是保留搜尋資格、限制訓練用途，應分別處理相應符記；允許搜尋仍不是保證會出現在回答中的承諾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT-User 用於部分使用者發起的操作，不是自動探索全網的爬蟲；官方說明這類動作可能不適用 robots.txt，搜尋退出則應透過 OAI-SearchBot 管理。這也表示封鎖名稱相似的某個工具，不一定達成你真正想要的結果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "將 robots.txt、noindex 與保護措施分工"
+        },
+        {
+          "type": "paragraph",
+          "text": "robots.txt 主要表達抓取規則，需要對方支援並遵循，不能強制所有程式停止取頁。它也不是密碼保護。不要把私人檔案路徑寫入規則後就認為安全，因為其他人仍可能直接開啟可公開存取的網址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想讓公開頁面不被 Google 編入索引，可使用適合的 noindex 中繼標記或回應標頭，並讓 Google 能抓取頁面讀到該指令。如果同時用 robots.txt 擋住，Google 可能看不到 noindex；被擋抓取的網址也可能因外部連結而仍出現在搜尋中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要限制會員資料、草稿或管理功能時，應使用登入驗證與權限控制。先用未登入瀏覽器驗證是否讀不到，再確認不同帳號能否跨看資料。這類測試回答的是誰能存取，不應以搜尋結果有沒有出現作為唯一驗收。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從存取紀錄核對請求身分與影響"
+        },
+        {
+          "type": "paragraph",
+          "text": "向主機或網站維護者取得適當範圍的存取紀錄，先看時間、來源 IP、User-Agent、路徑、回應碼和回應時間。記錄是否集中在相同目錄、是否大量碰到錯誤，以及是否伴隨一般使用者變慢，避免只憑請求數量判斷有害。"
+        },
+        {
+          "type": "paragraph",
+          "text": "User-Agent 是自我宣告的字串，不能單靠它放行整個服務。Google 提供公開 IP 範圍與 DNS 驗證方式；手動檢查時，先反向解析 IP，確認是官方規定的網域，再正向解析回同一 IP，不能只看到網域字樣就通過。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 官方爬蟲頁也連到各工具的 IP 清單。使用 CDN 或反向代理時，請維護者確認哪個欄位才是可信任的來源資訊，再與目前官方清單比對。紀錄分析只保留必要資料，對外分享範例時遮蔽帳號、憑證及私人查詢內容。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "修改前寫出允許與限制的具體範圍"
+        },
+        {
+          "type": "paragraph",
+          "text": "先建立一張政策表：哪些服務可以抓取公開文章、哪些用途不接受、哪些目錄根本不應公開。把管理者的決定翻成規則前，保存目前設定，確認規則由網站程式、SEO 外掛、主機還是 CDN 產生，避免改了實體檔案卻被另一層覆蓋。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若決定限制 GPTBot，就檢查是否有對應的獨立 User-agent 群組及 Disallow 路徑；若還希望保留搜尋，另外檢查 OAI-SearchBot 和一般搜尋爬蟲的規則。不要把所有未知工具都改成同一條全站封鎖，也不要覆蓋原本必要的其他設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網站防火牆和 robots.txt 是不同層次。即使文字規則允許，防火牆仍可能回傳拒絕或驗證頁。調整後從外部取得實際回應，比對目標工具與一般訪客看到的內容；若要建立放行規則，限定用途、路徑與可驗證身分，保留回復方式。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "列出公開範圍、搜尋需求與供應商用途偏好。",
+            "查閱目前官方符記、規則行為及來源驗證方法。",
+            "保存既有設定，逐項修改必要群組或存取政策。",
+            "檢查外部回應、登入權限和後續紀錄，確認結果符合目標。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用證據確認變更，而不是立刻看排名"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則更新後，先確認實際 robots.txt 和頁面回應正確，再查看新的存取紀錄。各工具可能有快取與更新延遲，不應剛儲存就期待所有請求立刻消失；同樣也不能因為某一筆仍出現，就直接判定所有供應商都忽略規則。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對 Google 搜尋的收錄情形，使用 Search Console 的網址檢查與相關報表；對伺服器負載，觀察請求量、錯誤率和回應時間。這兩組證據用途不同，爬蟲減少不代表自然搜尋一定變好，文章被抓取也不代表已有實際讀者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存變更日期、原因、官方文件和驗收結果，之後供應商新增工具或網站更換 CDN 時再複查。若只是想降低負載，先找出造成問題的請求模式；若想處理用途偏好，就確認對應規則，讓每個改動都能回答一個清楚的管理問題。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/search-crawlers-explained/diagram-1.svg",
+          "alt": "四個方框分別為用途分類、來源身分驗證、抓取索引權限控制，以及回應紀錄和收錄狀態驗收。",
+          "width": 1600,
+          "height": 900,
+          "caption": "抓取規則表達偏好；私人內容仍需真正的存取控制。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "名稱／工具",
+            "主要用途或範圍",
+            "管理時注意"
+          ],
+          "rows": [
+            [
+              "Googlebot",
+              "Google 搜尋檢索",
+              "抓取不等於索引或排名"
+            ],
+            [
+              "Google-Extended",
+              "官方列明的 Gemini 相關用途控制",
+              "是產品符記，非獨立 HTTP User-Agent"
+            ],
+            [
+              "OAI-SearchBot",
+              "ChatGPT 搜尋",
+              "與 GPTBot 設定獨立"
+            ],
+            [
+              "GPTBot",
+              "可能供模型訓練的內容抓取",
+              "限制它不等同退出搜尋"
+            ],
+            [
+              "ChatGPT-User",
+              "部分使用者發起的取頁操作",
+              "robots.txt 可能不適用"
+            ],
+            [
+              "noindex",
+              "支援者的索引控制",
+              "須能讀到指令；不能取代登入"
+            ]
+          ],
+          "caption": "用途依 2026-09-14 官方文件整理，供應商新增或變更工具時需重新核對。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先問希望改變什麼結果",
+          "text": "降低抓取負載、限制特定用途、移除搜尋結果和保護私人內容，需要不同方法。先選定目標，再用適合的設定與證據驗收，避免僅因工具名稱帶有 AI 或 Bot 就做過度寬廣的變更。"
+        },
+        {
+          "type": "link",
+          "text": "先了解 SEO 的學習與驗收順序",
+          "url": "https://mokaair.com/zh-TW/life/seo-learning-roadmap"
+        },
+        {
+          "type": "link",
+          "text": "保護 WordPress 網站與帳號",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-security-basics"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 搜尋運作方式",
+          "url": "https://developers.google.com/search/docs/fundamentals/how-search-works?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google robots.txt 簡介",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google noindex 使用方式",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/block-indexing?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 檢索器與 Google-Extended",
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "驗證 Google 要求來源",
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 爬蟲官方說明",
+          "url": "https://developers.openai.com/api/docs/bots",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

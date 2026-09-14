@@ -1,0 +1,258 @@
+{
+  "slug": "wordpress-booking-system",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 預約系統：時段、確認信與取消規則",
+      "description": "WordPress 預約系統需要同時處理服務時間、人員容量、通知與取消。本文整理 Amelia、Bookly 和 WooCommerce Bookings 的評估方向，示範如何設定營業時段、緩衝時間及例外休假，再以一般顧客身分驗收確認信、改期與退款流程，協助台灣工作室避免時段重疊，也讓顧客知道何時才算正式預約成功。",
+      "hero": {
+        "src": "/guides/wordpress-booking-system/hero.jpg",
+        "alt": "原創螢幕、文件與盾牌插圖，代表預約入口、班表紀錄與時段核對。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "攝影諮詢、手作體驗或一對一教學，表面上都是選日期和時間，實際限制卻不同。有的需要等老師確認，有的必須湊足人數，有的服務結束還要清場；只把行事曆放到網站上，無法自動解決這些問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立預約系統前，先把平常用電話確認的規則寫清楚。外掛的工作是依規則顯示可預約時段、留下紀錄和寄送通知；店內也要知道遇到取消、付款失敗與臨時停業時如何處理。"
+        },
+        {
+          "type": "heading",
+          "text": "先定義預約的是人、名額還是資源",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以單人攝影諮詢為例，每次 45 分鐘，之後保留 15 分鐘整理，一位老師同時只能接待一組。手作體驗則可能是一個時段容納六人；若兩位老師共用一間教室，還需要把教室視為限制，不能只看老師各自有空。"
+        },
+        {
+          "type": "paragraph",
+          "text": "為每項服務列出長度、緩衝、最少與最多人數、負責人、地點和需要的器材。再說明是整組包場，還是不同顧客可以加入同一時段。這些資料能協助你判斷外掛的容量與資源功能是否符合需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外列出最早能預約的提前時間、最多能看到幾個月後，以及取消與改期截止點。若今天下午無法臨時安排人員，就不要讓系統顯示一小時後可立即預約。線上規則應與電話、櫃檯和社群私訊的受理方式一致。"
+        },
+        {
+          "type": "heading",
+          "text": "按工作流比較外掛及付費範圍",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Amelia 以服務、人員與預約管理為主要架構，適合拿來評估工作室的時段需求。Bookly 也提供預約與行事曆整合，但 Google Calendar 同步有不同模式，完整雙向同步需要對應方案或附加元件，不能看到「支援 Google」就認為能力完全相同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若已經用 WooCommerce 管理商品與付款，可評估 WooCommerce Bookings。它的需確認預約流程，是先提出需求、經確認後再提供付款連結；這與顧客按下按鈕就直接付款並完成預約不同，確認前後的文字和通知要跟著調整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先查三件必需功能在候選方案是否存在：多人或資源容量、需要的金流，以及取消改期的顧客入口。免費版能展示基本表單，不代表已包含所有實際營運功能。將授權、通知通道費用和維護列入預算，再縮小到一套進行試作。"
+        },
+        {
+          "type": "heading",
+          "text": "用 Amelia 示範設定日常與例外時段",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先在 WordPress 設定正確城市時區，例如台北，再確認是否要依顧客時區顯示。跨國線上諮詢應在預約頁和確認信標明時間基準；實體服務則讓顧客清楚知道是到店所在地時間，避免同一場服務出現兩種理解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立服務、指定人員與工作時間，設定服務長度和必要緩衝。Amelia 的時段步進會限制可使用的時間單位；想用 45 分鐘服務加 15 分鐘緩衝時，應選可支援這些數值的步進，再檢查顧客實際看到的起始時間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "休假和特殊工作日要分別處理。Amelia 的特殊日可覆蓋一般工作時間，休假日仍優先阻擋預約。安排補班時先查看是否同時存在休假設定；臨時換地點則核對指定人員在該地點的服務與可用時間，不只改頁面上的地址文字。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "設定網站時區，建立服務、人員與地點。",
+            "填入服務長度、緩衝、容量及一般工作時段。",
+            "新增休假與特殊日，核對例外日期的優先結果。",
+            "用顧客帳號檢查可選時段，逐筆對照紙上的班表。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "分清楚送出需求、確認和付款通知",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "預約建立後，頁面與信件應直接說明目前狀態。需要人工確認時寫清楚回覆方式與等待時間；立即成立的服務則提供日期、時區、地點、服務內容和到場準備。不要讓待確認信的主旨寫成「預約成功」，使顧客提早安排交通。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Amelia 的通知分為事件觸發與排程通知。建立、改期或取消可能立即觸發通知，前一天提醒則需要排程機制持續運作。測試時應真的等到指定提醒時間，確認網站排程有執行；收到一次立即確認信，不能證明隔天提醒也會送達。"
+        },
+        {
+          "type": "paragraph",
+          "text": "將顧客和員工的通知分別驗收。顧客需要操作入口，員工需要服務資訊與待辦事項，內部備註不應誤寄出去。電話號碼、姓名及其他欄位只蒐集服務所需，付款失敗時也應明確說明是否仍保留時段以及下一步。"
+        },
+        {
+          "type": "heading",
+          "text": "驗收容量、行事曆同步與改期",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用兩個一般顧客帳號選擇同一時段，依序完成預約，觀察剩餘名額是否正確。Amelia 有允許待確認預約超出最大容量的設定，也有管理員可跨越限制的權限；如果店內不接受超收，需確認這些選項與日常作業一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用外部行事曆，確認同步方向、哪些忙碌事件會擋住時段，以及更新有沒有延遲。Bookly 文件特別提醒全天事件若標成空閒，可能不會達到預期阻擋效果。請用一筆新增、改期和刪除事件測試，別只看到行事曆出現一筆預約就結案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "顧客改期後，檢查新時段已保留、舊時段是否釋出，以及通知中的日期與地點是否更新。對一次購買多次服務、多人預約或部分參加者取消的情況，另外測試，避免一次操作把整組尚未取消的預約都清掉。"
+        },
+        {
+          "type": "heading",
+          "text": "把取消與退款做成可追蹤的收尾",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "預約頁先提供可理解的取消、改期、遲到與未到場處理方式，說明聯絡管道和適用時間。實際政策需符合服務性質及適用規定，不能以外掛限制按鈕的設定，取代對消費者權益的判斷。"
+        },
+        {
+          "type": "paragraph",
+          "text": "取消預約後，要分別確認時段、訂單與款項。即使畫面顯示已取消，仍需核對金流是否退款、退了多少及有沒有失敗；採人工轉帳時更需要記錄處理人和結果。退款完成後也要確認通知內容沒有仍要求顧客到場。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正式開放前演練臨時停業：找出受影響預約、安排逐筆聯絡與改期、更新班表並留下處理紀錄。平日則定期檢查下一週行程、未確認需求和通知失敗項目，讓線上預約真正減少來回確認，而不只是多了一個需要人盯的表單。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-booking-system/diagram-1.svg",
+          "alt": "四個步驟依序為定義服務規則、確認預約與付款、通知並維持班表同步、處理改期取消與退款。",
+          "width": 1600,
+          "height": 900,
+          "caption": "完成預約、通知已寄與款項已退，分別留下結果。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "測試情境",
+            "預期能回答"
+          ],
+          "rows": [
+            [
+              "時間與緩衝",
+              "連續預約兩場",
+              "是否保留整理時間"
+            ],
+            [
+              "容量與資源",
+              "兩人搶同一時段",
+              "能否避免超收或重疊"
+            ],
+            [
+              "確認與付款",
+              "待確認後才付費",
+              "何時成立、何時收款"
+            ],
+            [
+              "通知與同步",
+              "改期並等待提醒",
+              "是否全部顯示新時間"
+            ],
+            [
+              "取消與退款",
+              "取消已付款預約",
+              "時段和款項各如何處理"
+            ]
+          ],
+          "caption": "以一般顧客流程驗收，管理員可用的額外權限另作檢查。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "電話預約也要進入同一份班表",
+          "text": "櫃檯或私訊接受的預約應及時補入系統，並核對是否通知顧客。若線上和人工預約各用一份班表，即使外掛本身正確，也可能因資訊不同步而重複接單。"
+        },
+        {
+          "type": "link",
+          "text": "檢查 WordPress 郵件寄送",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-smtp-delivery"
+        },
+        {
+          "type": "link",
+          "text": "規劃網站的聯絡表單",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-contact-forms"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Amelia 服務時間與容量",
+          "url": "https://wpamelia.com/documentation/pricing-duration/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 一般設定與時區",
+          "url": "https://wpamelia.com/documentation/general-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 特殊工作日",
+          "url": "https://wpamelia.com/documentation/special-days/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 預約容量與狀態",
+          "url": "https://wpamelia.com/documentation/appointment-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 建立預約與管理員權限",
+          "url": "https://wpamelia.com/documentation/creating-appointments/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 通知運作方式",
+          "url": "https://wpamelia.com/documentation/notifications-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bookly Google Calendar 同步",
+          "url": "https://support.booking-wp-plugin.com/hc/en-us/articles/203572552-Google-Calendar-Sync",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WooCommerce Bookings 確認與管理",
+          "url": "https://woocommerce.com/document/introduction-to-woocommerce-bookings/managing-woocommerce-bookings/all-bookings/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

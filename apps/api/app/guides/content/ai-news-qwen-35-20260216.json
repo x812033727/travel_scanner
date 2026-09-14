@@ -1,0 +1,924 @@
+{
+  "slug": "ai-news-qwen-35-20260216",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 125,
+  "locales": {
+    "zh-TW": {
+      "title": "Qwen3.5 開放權重：可下載模型，與能在自己電腦運作差在哪？",
+      "description": "回顧 2026-02-16 發布的 Qwen3.5-397B-A17B 開放權重模型，釐清開放權重、硬體負擔與雲端託管差異，提供中小企業務實評估指引。",
+      "hero": {
+        "src": "/guides/ai-news-qwen-35-20260216/hero.jpg",
+        "alt": "開放權重的四道門的原創概念插圖，呈現本篇事件的使用脈絡",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事件日期：2026-02-16；本文查核日期：2026-09-14。官方儲存庫 News 記載 2026 年 2 月 16 日發布首個 Qwen3.5 開放權重模型 Qwen3.5-397B-A17B。雲端 Plus 的版本日期 2 月 15 日不能當成這個開放模型的發布日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方模型卡列總參數 397B、啟用 17B，為含視覺編碼器的混合架構，授權標示 Apache-2.0。官方同時區別自行部署權重與 Alibaba Cloud 的託管 Qwen3.5-Plus；後者有不同服務功能與上下文設定。啟用參數不等於整個模型檔案或記憶體需求，自行部署仍需硬體、軟體、維運及授權條件核對。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "混合專家架構下的參數與記憶體迷思"
+        },
+        {
+          "type": "paragraph",
+          "text": "這款模型採用了稀疏混合專家技術，也就是模型總體擁有多達 397B 的龐大參數，但在每一次處理文本與視覺輸入時，僅會動態調用其中約 17B 的啟用參數。這種設計能有效提升推論時的運算效率，讓每次前向傳播的計算量大幅降低。然而，啟用參數的計算規模絕對不能拿來當作電腦硬體規格的唯一參考基準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完整權重仍需要足夠的儲存空間，執行時則可能依框架與設定分配到顯示記憶體、主記憶體或其他卸載方式。不能一概說全部權重必須在開機時放入同一塊記憶體，也不能說記憶體不足一定造成系統崩潰。實際可否載入、速度是否可接受，要連同精度、量化、上下文長度和硬體配置一起評估。"
+        },
+        {
+          "type": "paragraph",
+          "text": "因此，企業在規劃地端人工智慧策略時，千萬不能看到「啟用 17B」就誤以為這只是一般輕量模型。官方文件未載明統一的終端硬體最低需求，正是因為企業級部署涉及框架最佳化、量化設定以及記憶體排程。對於未經架構規劃的團隊來說，盲目下載動輒數百 GB 的原始模型檔案，往往只會造成儲存空間的耗盡與頻寬的徒勞浪費。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從可下載到可啟動的真實技術門檻"
+        },
+        {
+          "type": "paragraph",
+          "text": "開放權重的一大優點是讓所有人都能在公開儲存庫取得檔案，但取得檔案與真正成功啟動服務之間，存在著相當嚴苛的工程門檻。模型卡雖然標示採用 Apache-2.0 授權，保障了權重取得與修改的法規彈性，但授權合法並不代表系統就能隨插即用。從底層驅動程式、張量並行運算函式庫到模型服務引擎，每一項環節都需要高度專業的系統調校。"
+        },
+        {
+          "type": "paragraph",
+          "text": "除了龐大的核心大型語言模型架構之外，該模型還內建了視覺編碼器，這代表推論管線必須同時處理圖像特徵擷取與跨模態張量對齊。當團隊嘗試在本地端組合多張運算卡進行分散式推論時，節點之間的通訊延遲、驅動程式版本相容性，以及推論框架對多模態混合專家架構的支援成熟度，都會直接決定系統是否能順利開機並穩定輸出文字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "缺乏相關維護經驗的團隊，可以先列出預期任務與資料限制，再請技術夥伴評估是否適合自建。這裡不預估一定需要幾週或幾個月，也不建議先買硬體再找用途。先用少量資料確認載入、回答與輸出格式，再逐步測試較長內容及多人使用，能讓費用和維護需求更容易估算。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "評估階段",
+            "核心技術條件與資源考量",
+            "企業決策與驗收關鍵"
+          ],
+          "rows": [
+            [
+              "可下載",
+              "依官方檔案清單與所選精度確認下載、儲存空間與頻寬",
+              "確認官方版本紀錄與 Apache-2.0 授權範圍是否相容業務用途"
+            ],
+            [
+              "可啟動",
+              "依框架、量化與卸載配置驗證載入，不以 17B 啟用參數估算全部需求",
+              "推論引擎成功初始化，完成基礎多模態範例前向傳播且無記憶體溢出"
+            ],
+            [
+              "可用",
+              "針對內部非公開圖紙與特規文件進行問答，比對雲端託管與地端表現",
+              "以二十至三十組內部典型樣本檢驗問答正確度與多模態辨識精準度"
+            ],
+            [
+              "可維運",
+              "承擔伺服器電力、散熱、備援機制以及專業系統工程師維護成本",
+              "建立服務離線容錯計畫、資安邊界管理與長期總體擁有成本分析機制"
+            ]
+          ],
+          "caption": "企業評估大型開放權重多模態模型導入可行性的四個關鍵階段"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "內部產品圖與規格問答的務實工作流"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設有一家在地零售小店，累積了數千張內部非公開的商品結構圖與繁複的規格說明書，希望建立一套能讓店員快速查詢庫存與料號特性的智慧助理。面對這類實際業務場景，經營者首先面臨的抉擇，就是該直接採用外部雲端託管的 API 進行概念驗證，還是尋找外部技術夥伴協助建置小規模的本地推論系統。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若資料允許交由雲端處理，可以使用公開、去除敏感內容或特製的示例，測試託管服務的問答方式。尚未確認資料規則時，不要先把非公開圖紙送上雲端再決定是否保密。Qwen3.5-Plus 與這個開放權重模型也不是相同服務；雲端測試能幫助釐清需求，不能直接替代對預定自建模型的驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果圖紙必須留在內部，則從一開始就應以符合資料規則的環境處理。可以委託技術夥伴用已獲授權的小樣本，評估本機模型或其他合適方案，再檢查回答正確性、查詢時間與資源需求。重點是先決定資料能去哪裡，再選測試入口；不要為了試用方便，把機密內容送入尚未確認的外部服務。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-qwen-35-20260216/diagram-1.svg",
+          "alt": "開放權重的四道門：四項閱讀與使用重點",
+          "width": 1600,
+          "height": 900,
+          "caption": "確認授權：查看官方版本、估算資源：完整模型需求、測試任務：用自己的樣本、維護服務：成本與資料治理。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "託管服務與自建基礎設施的長遠取捨"
+        },
+        {
+          "type": "paragraph",
+          "text": "託管服務可以減少自行管理伺服器的工作，但仍需確認計價、地區、資料保存及服務承諾。開放權重則讓團隊有更多部署選擇，也要承擔相應的維護工作。比較時，可以用同一組合格輸出要求估算費用，並分別記下需要的工程支援、備份與故障處理，不能只看模型檔案是否免費下載。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自行部署可以讓資料處理位置更符合內部安排，但不會自動取得完整隱私或安全保證。存取權限、記錄檔、備份、外部連線及維護流程都需要管理。除了硬體成本，也應記錄電力、維修與人員時間，再依使用量比較是否合理；這些支出可能很重要，但不能預先斷言一定高於或低於雲端服務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "服務中斷的處理方式也應列入比較。自建系統需要有人負責故障排查；託管服務則要看供應商實際的合約與服務說明，不能假設每個入口都保證自動容錯或特定可用率。對小店來說，保留原始規格文件及人工查詢方式，能在任何工具暫時無法使用時，仍讓店員繼續回答基本問題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開放權重的授權邊界與資料治理現實"
+        },
+        {
+          "type": "paragraph",
+          "text": "在探討開源技術時，許多人容易將「開放權重」誤認為「完全開源透明」。雖然 Qwen3.5-397B-A17B 在儲存庫中標示了寬鬆的 Apache-2.0 軟體授權，允許商業使用與客製化修改，但這並不意味著該模型的完整原始訓練資料、資料清洗管線以及詳細配比對外公開。使用者能掌控的是模型參數本身，而不是生成這些參數的所有歷史原料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同時，開放權重也不等於在所有衍生情境下都能無條件自由發揮。企業將這類大型模型整合至自家的商品推薦或客戶服務流程時，依然必須建立完善的資料治理規範。這包含檢核模型輸出內容的合規性、防止幻覺導致不實交易承諾，以及確認輸入給模型的敏感客戶資料是否符合在地個資保護法規，這些治理責任完全落在部署者身上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "綜合來看，掌握開放權重確實讓技術團隊擺脫了對特定雲端單一廠商的完全依賴，賦予了探索深層客製化與離線運行的可能性。然而，唯有清楚理解從下載檔案、組裝環境、驗證任務到長久維運的層層挑戰，企業才能在光鮮亮麗的技術標題背後，做出最符合經營效益與資訊安全的理性決策。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "技術導入備忘",
+          "text": "啟用參數不等於完整載入需求。先確認資料可否送往外部，再選擇合適測試環境；託管 Plus 的結果不能直接當作開放權重部署的驗收證據。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.1 Pro 發布：複雜問題如何轉成可驗證的答案？",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-31-pro-20260219"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Qwen：官方儲存庫發布紀錄",
+          "url": "https://github.com/QwenLM/Qwen3.8",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen：Qwen3.5-397B-A17B 官方模型卡",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Qwen3.5 Open Weights: What Is the Difference Between a Downloadable Model and Running It on Your Own PC?",
+      "description": "Reviewing the Qwen3.5-397B-A17B open-weight model released on 2026-02-16 to clarify differences between open weights, hardware demands, and cloud hosting, offering practical evaluation guidance for SMEs.",
+      "hero": {
+        "src": "/guides/ai-news-qwen-35-20260216/hero-en.jpg",
+        "alt": "Original conceptual illustration of the Four Gates of Open Weights depicting the usage context of the covered event",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Event date: 2026-02-16; article verification date: 2026-09-14. The official repository News notes the release of the first Qwen3.5 open-weight model, Qwen3.5-397B-A17B, on February 16, 2026. The cloud Plus version date of February 15 cannot be treated as the release date for this open model."
+        },
+        {
+          "type": "paragraph",
+          "text": "The official model card lists total parameters of 397B and activated parameters of 17B, featuring a hybrid architecture that includes a vision encoder, with an Apache-2.0 license label. The official documentation also distinguishes self-deploying the weights from Alibaba Cloud's hosted Qwen3.5-Plus; the latter features different service capabilities and context settings. Activated parameters do not equal the entire model file or memory requirements; self-deployment still requires checking hardware, software, operations, and licensing terms. The daily life and workplace scenarios below are editor-designed examples provided for readers to verify on their own, not actual product tests by this site."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Parameters and Memory Myths Under a Mixture-of-Experts Architecture"
+        },
+        {
+          "type": "paragraph",
+          "text": "This model adopts sparse Mixture-of-Experts technology, meaning that while the overall model possesses a massive 397B total parameters, it dynamically invokes only about 17B activated parameters each time it processes text and visual inputs. This design effectively boosts computational efficiency during inference, significantly reducing the compute load for each forward pass. However, the computational scale of activated parameters must never be taken as the sole reference benchmark for computer hardware specifications."
+        },
+        {
+          "type": "paragraph",
+          "text": "The complete weights still require sufficient storage space, and during execution they may be allocated to VRAM, system RAM, or other offloading methods depending on the framework and configuration. One cannot make a blanket statement that all weights must fit into the same memory pool upon boot, nor can one claim that insufficient memory will inevitably cause a system crash. Whether it can actually be loaded and whether the speed is acceptable must be evaluated alongside precision, quantization, context length, and hardware configuration."
+        },
+        {
+          "type": "paragraph",
+          "text": "Therefore, when planning on-premises artificial intelligence strategies, enterprises must never mistake this for an ordinary lightweight model simply upon seeing \"17B activated.\" Official documentation does not provide unified minimum terminal hardware requirements precisely because enterprise deployments involve framework optimization, quantization settings, and memory scheduling. For teams without prior architectural planning, blindly downloading raw model files spanning hundreds of gigabytes often leads only to depleted storage space and wasted bandwidth."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Real Technical Threshold from Downloadable to Bootable"
+        },
+        {
+          "type": "paragraph",
+          "text": "A major advantage of open weights is allowing anyone to obtain the files from public repositories, but a rather demanding engineering hurdle lies between obtaining the files and actually launching the service successfully. Although the model card indicates an Apache-2.0 license—safeguarding regulatory flexibility for weight acquisition and modification—a legal license does not mean the system is plug-and-play. From low-level drivers and tensor parallelism libraries to model serving engines, every single link requires highly specialized system tuning."
+        },
+        {
+          "type": "paragraph",
+          "text": "Beyond its massive core large language model architecture, the model also incorporates a built-in vision encoder, meaning the inference pipeline must simultaneously handle image feature extraction and cross-modal tensor alignment. When teams attempt to combine multiple compute cards locally for distributed inference, inter-node communication latency, driver version compatibility, and the inference framework's maturity in supporting multimodal Mixture-of-Experts architectures will directly determine whether the system can boot smoothly and output text stably."
+        },
+        {
+          "type": "paragraph",
+          "text": "Teams lacking relevant maintenance experience can first list their expected tasks and data constraints, and then ask a technical partner to evaluate whether self-building is appropriate. We do not predict that it will necessarily take a set number of weeks or months, nor do we recommend buying hardware first and looking for use cases later. Using a small sample of data first to verify loading, answers, and output formats, and then gradually testing longer content and multi-user access, makes costs and maintenance requirements much easier to estimate."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Evaluation Stage",
+            "Core Technical Conditions & Resource Considerations",
+            "Key Enterprise Decisions & Acceptance Criteria"
+          ],
+          "rows": [
+            [
+              "Downloadable",
+              "Verify download, storage space, and bandwidth according to the official file manifest and selected precision",
+              "Confirm whether official version release notes and the Apache-2.0 license scope are compatible with business uses"
+            ],
+            [
+              "Bootable",
+              "Validate loading based on framework, quantization, and offload configs; do not estimate all needs using 17B activated params",
+              "Inference engine initializes successfully and completes baseline multimodal forward pass without out-of-memory errors"
+            ],
+            [
+              "Usable",
+              "Perform Q&A on internal non-public schematics and proprietary spec sheets; compare cloud-hosted vs. on-premises performance",
+              "Verify Q&A accuracy and multimodal recognition precision using 20 to 30 internal typical sample sets"
+            ],
+            [
+              "Maintainable",
+              "Bear server power, cooling, redundancy mechanisms, and specialized systems engineer maintenance costs",
+              "Establish service offline fault-tolerance plans, security perimeter management, and long-term TCO analysis mechanisms"
+            ]
+          ],
+          "caption": "Four Key Stages for Enterprises Evaluating Feasibility of Adopting Large Open-Weight Multimodal Models"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "A Pragmatic Workflow for Internal Product Schematics and Specification Q&A"
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose a local retail shop has accumulated thousands of internal, non-public product structure diagrams and complex specification sheets, and hopes to build an intelligent assistant that enables shop clerks to quickly look up inventory and part characteristics. Faced with this kind of real-world business scenario, the operator's first dilemma is whether to directly use an external cloud-hosted API for proof of concept, or to seek an external technical partner to assist in building a small-scale local inference system."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the data is permitted to be processed in the cloud, one can use public, sanitized, or specially crafted examples to test the hosted service's Q&A approach. Before data policies are confirmed, do not upload non-public diagrams to the cloud first and only then decide whether to keep them confidential. Qwen3.5-Plus and this open-weight model are also not the same service; cloud testing can help clarify requirements, but cannot directly substitute for the acceptance testing of the model intended for self-hosted deployment."
+        },
+        {
+          "type": "paragraph",
+          "text": "If schematics must remain internal, they should be handled from the very beginning in an environment compliant with data governance rules. You can commission technical partners to evaluate the local model or other suitable solutions using an authorized small sample, and then check answer correctness, query times, and resource requirements. The key is to first determine where data is allowed to go before choosing testing portals; do not send confidential content to unconfirmed external services simply for the sake of testing convenience."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-qwen-35-20260216/diagram-1-en.svg",
+          "alt": "The Four Gates of Open Weights: Four reading and usage priorities",
+          "width": 1600,
+          "height": 900,
+          "caption": "Check Licensing: inspect official version; Estimate Resources: full model requirements; Test Tasks: use your own samples; Maintain Service: costs and data governance.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Long-Term Trade-Offs Between Hosted Services and Self-Built Infrastructure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hosted services can reduce the burden of managing servers on your own, but pricing, regions, data retention, and service commitments still need verification. Open weights give teams more deployment choices, while also requiring them to shoulder corresponding maintenance responsibilities. When comparing, one can estimate expenses based on the same set of qualified output requirements, and separately log needed engineering support, backups, and troubleshooting, rather than merely checking whether the model file is free to download."
+        },
+        {
+          "type": "paragraph",
+          "text": "Self-deployment can align the location of data processing more closely with internal arrangements, but it does not automatically grant complete privacy or security assurances. Access permissions, logs, backups, external connections, and maintenance procedures all require management. Beyond hardware costs, power, maintenance, and personnel hours should also be logged, and then evaluated for reasonableness based on usage volume; these expenditures may be substantial, but one cannot assert beforehand that they will definitely be higher or lower than cloud services."
+        },
+        {
+          "type": "paragraph",
+          "text": "Methods for handling service disruptions should also be included in the comparison. Self-built systems require personnel responsible for troubleshooting; hosted services depend on the provider's actual contract and service terms, and one cannot assume that every portal guarantees automatic failover or a specific uptime. For a small shop, keeping original specification documents and manual lookup methods allows staff to continue answering basic questions whenever any tool is temporarily unavailable."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Licensing Boundaries of Open Weights and Data Governance Realities"
+        },
+        {
+          "type": "paragraph",
+          "text": "When discussing open-source technology, many easily mistake \"open weights\" for \"complete open-source transparency.\" Although Qwen3.5-397B-A17B is labeled with a permissive Apache-2.0 software license in the repository, permitting commercial use and custom modifications, this does not mean that the model's complete raw training data, data cleaning pipelines, and detailed mixing ratios are made publicly available. What users can control are the model parameters themselves, not all the historical raw ingredients that produced those parameters."
+        },
+        {
+          "type": "paragraph",
+          "text": "At the same time, open weights do not mean one has unconditional freedom in all derivative scenarios. When enterprises integrate such large models into their own product recommendations or customer service workflows, they must still establish comprehensive data governance standards. This includes auditing model output compliance, preventing hallucinations from causing false commercial commitments, and verifying that sensitive customer data fed to the model complies with local personal data protection regulations—governance responsibilities that rest entirely upon the deployer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Taken together, mastering open weights indeed frees technical teams from total dependence on a single cloud vendor, granting the possibility of exploring deep customization and offline operation. However, only by clearly understanding the sequential challenges from downloading files, assembling environments, and validating tasks to long-term operations can enterprises make rational decisions behind glamorous technical headlines that best align with operational efficiency and information security."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Technical Adoption Memo",
+          "text": "Activated parameters do not equal full loading requirements. First confirm whether data can be sent externally before choosing an appropriate testing environment; hosted Plus results cannot serve directly as acceptance evidence for open-weight deployments."
+        },
+        {
+          "type": "link",
+          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.1 Pro Released: Turning Complex Questions into Verifiable Answers",
+          "url": "https://mokaair.com/en/life/ai-news-gemini-31-pro-20260219"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Qwen: Official Repository Release Notes",
+          "url": "https://github.com/QwenLM/Qwen3.8",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen: Qwen3.5-397B-A17B Official Model Card",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Qwen3.5オープンウェイト：DL可能モデルと手元PCでの動作の違い",
+      "description": "2026-02-16公開のオープンウェイトモデルQwen3.5-397B-A17Bを振り返り、オープンウェイト、ハードウェア負荷、クラウドホスティングの違いを整理。中小企業向けの実践的な評価指針を解説します。",
+      "hero": {
+        "src": "/guides/ai-news-qwen-35-20260216/hero-ja.jpg",
+        "alt": "本件の利用文脈を表現した「オープンウェイトの4つの関門」のオリジナルコンセプト挿絵",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事象発生日：2026-02-16；本文検証日：2026-09-14。公式リポジトリのNewsには、2026年2月16日に初のQwen3.5オープンウェイトモデルであるQwen3.5-397B-A17Bがリリースされたと記録されています。クラウド版Plusのリリース日である2月15日を、このオープンモデルの公開日と同一視することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式モデルカードには、総パラメータ数397B、アクティブパラメータ数17Bと記載されており、ビジョンエンコーダーを含むハイブリッドアーキテクチャで、ライセンスはApache-2.0と明記されています。公式は自前でのウェイトデプロイと、Alibaba CloudがホストするQwen3.5-Plusを明確に区別しています。後者には異なるサービス機能とコンテキスト長の設定があります。アクティブパラメータはモデル全体のファイルサイズやメモリ要件を意味するものではなく、自前デプロイには依然としてハードウェア、ソフトウェア、運用保守、ライセンス条件の確認が必要です。以下の日常および業務シナリオは読者の検証用に編集部が設計した例であり、当サイトによる製品の実機テストではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Mixture-of-Expertsアーキテクチャにおけるパラメータとメモリの誤解"
+        },
+        {
+          "type": "paragraph",
+          "text": "このモデルはスパースMixture-of-Experts（MoE）技術を採用しています。つまり、モデル全体としては397Bもの膨大なパラメータを保持していますが、テキストや視覚的入力を1回処理するごとに動的に呼び出されるのは、そのうちの約17Bのアクティブパラメータのみです。この設計は推論時の計算効率を効果的に向上させ、フォワードパスごとの計算量を大幅に削減します。しかしながら、アクティブパラメータの計算規模を、PCハードウェア仕様を検討するための唯一の基準にしては決してなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完全なウェイトを保持するには相応のストレージ容量が必要であり、実行時にはフレームワークや設定に応じてVRAM、メインメモリ、あるいはその他のオフロード方式へと割り振られる場合があります。起動時にすべてのウェイトを単一のメモリに配置しなければならないと一概には言えず、またメモリ不足が必ず即座のシステムクラッシュを引き起こすとも言い切れません。実際にロードできるか、速度が実用レベルに達するかは、精度、量子化、コンテキスト長、そしてハードウェア構成を総合して評価する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "そのため、企業がオンプレミスAI戦略を計画する際、「アクティブ17B」という数字だけを見て一般的な軽量モデルにすぎないと誤解してはなりません。公式ドキュメントに統一された端末ハードウェアの最小要件が記載されていないのは、エンタープライズ規模のデプロイがフレームワークの最適化、量子化設定、メモリのスケジューリングに大きく左右されるためです。アーキテクチャ設計を行っていないチームが、数百GBにも及ぶ生のモデルファイルを盲目的にダウンロードしても、ストレージ容量の枯渇と帯域の無駄遣いに終わることが多々あります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「ダウンロード可能」から「起動可能」への真の技術的ハードル"
+        },
+        {
+          "type": "paragraph",
+          "text": "オープンウェイトの大きな利点は、公開リポジトリから誰でもファイルを取得できる点にありますが、ファイルの取得とサービスの起動成功の間には極めて厳しいエンジニアリングの壁が存在します。モデルカードにはApache-2.0ライセンスが明記され、ウェイトの取得や改変における法的な柔軟性が保障されているものの、ライセンス上の適法性はシステムがプラグアンドプレイで動くことを意味しません。低レイヤーのドライバやテンソル並列計算ライブラリから、モデルサービングエンジンに至るまで、すべての工程で高度に専門的なシステムチューニングが求められます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "巨大な中核LLMアーキテクチャに加え、本モデルにはビジョンエンコーダーが組み込まれており、推論パイプラインは画像の特徴抽出とモーダル間のテンソルアライメントを同時に処理しなければなりません。チームがローカル環境で複数のアクセラレータカードを組み合わせて分散推論を試みる場合、ノード間の通信遅延、ドライバのバージョン互換性、さらにはマルチモーダルMoEアーキテクチャに対する推論フレームワークのサポート成熟度が、システムが正常に起動し安定してテキストを出力できるかを直接左右します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "運用保守の経験が乏しいチームは、まず想定されるタスクとデータ制約を整理したうえで、自前構築が適しているかを技術パートナーに評価してもらうとよいでしょう。ここでは完了までに何週間、何ヶ月かかるといった予断は下しませんし、用途を決める前にハードウェアを先行購入することもお勧めしません。まずは少量のデータでロード、応答、出力形式を確認し、その後に長文コンテンツや複数人での同時利用を段階的にテストすることで、費用や保守要件の見積もりが容易になります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "評価フェーズ",
+            "中核となる技術要件とリソースの検討",
+            "企業の意思決定と検収の要点"
+          ],
+          "rows": [
+            [
+              "ダウンロード可能",
+              "公式ファイル一覧と選択した精度に基づき、ダウンロード、ストレージ容量、帯域幅を確認",
+              "公式の更新履歴とApache-2.0ライセンスの適用範囲が自社の事業用途に合致するか確認"
+            ],
+            [
+              "起動可能",
+              "フレームワーク、量子化、オフロード設定に基づきロードを検証。17Bのアクティブ値のみで全体を試算しない",
+              "推論エンジンが正常に初期化され、基本的なマルチモーダルサンプルのフォワードパスがOOMなしで完了"
+            ],
+            [
+              "利用可能",
+              "社内の非公開図面や独自仕様書を用いたQAを実施し、クラウドホスティングとオンプレミスの性能を比較",
+              "社内の代表的なサンプル20〜30組を用いて、質問応答の正解率とマルチモーダル認識精度を検証"
+            ],
+            [
+              "運用保守可能",
+              "サーバーの電力、排熱、冗長化メカニズム、および専門のシステムエンジニアによる保守コストを負担",
+              "サービスのオフライン耐障害計画、セキュリティ境界管理、長期的なTCO（総所有コスト）分析の仕組みを構築"
+            ]
+          ],
+          "caption": "企業が大規模オープンウェイトマルチモーダルモデルの導入可能性を評価する4つの主要フェーズ"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "社内製品図面と仕様QAの実践的ワークフロー"
+        },
+        {
+          "type": "paragraph",
+          "text": "数千枚におよぶ社外非公開の製品構造図や複雑な仕様説明書を蓄積しており、店員が在庫や品番の特性を迅速に照会できるスマートアシスタントの構築を目指す、地域に根差した小売店を想定してみましょう。このような実際のビジネスシナリオにおいて、経営者が最初に直面する選択は、外部クラウドホスティングのAPIを直接採用してPoC（概念実証）を行うか、それとも外部技術パートナーに協力を仰ぎ、小規模なローカル推論システムを構築するかという点です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "データをクラウド上で処理することが許容されるのであれば、公開情報、機密情報をマスキングしたデータ、あるいは専用に作成したサンプルを用いて、ホスティングサービスの応答精度をテストできます。データ取り扱いルールが未確定の段階で、非公開の図面をクラウドへアップロードしてから機密扱いにすべきか判断するような進め方は避けてください。Qwen3.5-Plusとこのオープンウェイトモデルは同一のサービスではありません。クラウドでのテストは要件の整理には役立ちますが、自前構築予定のモデルに対する受け入れ検証の代わりには直接なりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "図面を社内にとどめる必要がある場合は、当初からデータ規則に適合した環境で取り扱うべきです。技術パートナーに委託し、利用許諾済みの少量のサンプルを用いてローカルモデルやその他の適切な代替案を評価したうえで、回答の正確性、クエリ時間、リソース要件を検証します。重要なのは、データが持ち出し可能か否かを先に確定させてからテスト環境を選ぶことであり、検証の手軽さだけを理由に、確認の取れていない外部サービスへ機密データを投入してはなりません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-qwen-35-20260216/diagram-1-ja.svg",
+          "alt": "オープンウェイトの4つの関門：読解と活用の4大重要ポイント",
+          "width": 1600,
+          "height": 900,
+          "caption": "ライセンス確認：公式版を把握、リソース試算：全モデル要件、タスク検証：独自サンプル使用、サービス保守：コストと統治。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "マネージドサービスと自前インフラの長期的なトレードオフ"
+        },
+        {
+          "type": "paragraph",
+          "text": "ホスティングサービスを利用すれば自前でサーバーを管理する負担を軽減できますが、料金体系、展開リージョン、データ保持ポリシー、サービス品質保証（SLA）などの確認が依然として必要です。一方、オープンウェイトモデルはチームにより多様なデプロイの選択肢をもたらす反面、相応の保守運用責任も伴います。両者を比較する際は、同一の合格基準となる出力条件をもとに費用を試算し、必要となる技術サポート、バックアップ、障害対応を個別に洗い出す必要があり、単にモデルファイルが無料でダウンロードできるか否かだけで判断してはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自前でデプロイすればデータ処理の物理的な所在地を社内規定に適合させやすくなりますが、それだけで完全なプライバシーやセキュリティが自動的に保証されるわけではありません。アクセス権限、監査ログ、バックアップ、外部接続、保守プロセスのすべてを適切に管理する必要があります。ハードウェアコストに加え、電力消費、メンテナンス、人的工数も記録し、利用量に応じて妥当性を検証すべきです。これらの支出は重要ですが、クラウドサービスと比べて必ず割高、あるいは割安になるとあらかじめ断定することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サービス停止時の対応方法も比較項目に含めるべきです。自社構築システムでは誰かがトラブルシューティングの責任を負う必要があります。ホスティングサービスの場合はベンダーの実際の契約やサービス仕様書を確認する必要があり、すべてのエンドポイントが自動フェイルオーバーや特定の可用性を保証していると思い込んではいけません。小規模店舗にとって、元となる仕様書文書や手動での検索手段を残しておくことは、ツールが一時的に利用できなくなった際にも、店員が基本的な問い合わせに答え続けるための防壁となります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "オープンウェイトのライセンス境界とデータガバナンスの実態"
+        },
+        {
+          "type": "paragraph",
+          "text": "オープンソース技術を議論する際、「オープンウェイト」を「完全なオープンソースと透明性」と混同しがちです。Qwen3.5-397B-A17Bはリポジトリ上で寛容なApache-2.0ソフトウェアライセンスを掲げており、商用利用やカスタマイズが許可されていますが、これはモデルの完全な生トレーニングデータ、データクリーニングのパイプライン、詳細な配合比率までが一般公開されていることを意味するものではありません。利用者が手中に収めているのはモデルパラメータそのものであり、それらのパラメータを生み出したすべての歴史的原料ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同時に、オープンウェイトであることは、あらゆる派生シナリオにおいて無条件に自由な運用ができることを意味しません。企業がこの種の大規模モデルを自社の商品レコメンドやカスタマーサポートの業務フローに組み込む際には、盤石なデータガバナンス規範を策定する必要があります。これにはモデルの出力内容のコンプライアンス検証、ハルシネーションによる虚偽の取引確約の防止、さらにはモデルに入力される機微な顧客データが各地域の個人情報保護法規に適合しているかの確認が含まれ、これらのガバナンス責任は完全にデプロイ側が負うことになります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "総じて言えば、オープンウェイトを手中におさめることは、技術チームが特定の単一クラウドベンダーへの完全な依存から脱却し、深層のカスタマイズやオフライン運用の可能性を探求する自由をもたらします。しかし、ファイルのダウンロード、環境構築、タスク検証、そして長期運用保守に至る重層的な課題を正しく認識してこそ、企業は華やかな技術的見出しの裏にある、経営効率と情報セキュリティに最も合致した合理的な意思決定を下すことができるのです。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "技術導入メモ",
+          "text": "アクティブパラメータ数は全ロード要件と同義ではありません。データ外部送信の可否を確認した上で適切なテスト環境を選択してください。ホスト版Plusの結果をオープンウェイト導入の受入証拠に流用することはできません。"
+        },
+        {
+          "type": "link",
+          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.1 Pro発表：複雑な問題を検証可能な回答へ変換する方法",
+          "url": "https://mokaair.com/ja/life/ai-news-gemini-31-pro-20260219"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Qwen：公式リポジトリ リリースノート",
+          "url": "https://github.com/QwenLM/Qwen3.8",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen：Qwen3.5-397B-A17B 公式モデルカード",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Qwen3.5 오픈 가중치: 다운로드 가능한 모델과 내 컴퓨터 구동의 차이는?",
+      "description": "2026-02-16 공개된 Qwen3.5-397B-A17B 오픈 가중치 모델을 돌아보며 오픈 가중치, 하드웨어 부담, 클라우드 호스팅의 차이를 명확히 짚고 중소기업을 위한 실무 평가 지침을 제공합니다.",
+      "hero": {
+        "src": "/guides/ai-news-qwen-35-20260216/hero-ko.jpg",
+        "alt": "오픈 가중치의 네 가지 관문을 나타낸 오리지널 콘셉트 삽화, 본 사건의 활용 맥락을 제시",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "사건 일자: 2026-02-16; 본문 검증 일자: 2026-09-14. 공식 저장소 News에는 2026년 2월 16일 첫 Qwen3.5 오픈 가중치 모델인 Qwen3.5-397B-A17B가 출시되었다고 기록되어 있습니다. 클라우드 Plus 버전 일자인 2월 15일을 이 오픈 모델의 출시일로 보아서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 모델 카드에는 총 파라미터 397B, 활성 17B로 기재되어 있으며, 비전 인코더를 포함한 하이브리드 아키텍처에 라이선스는 Apache-2.0으로 표시되어 있습니다. 공식 측은 자체 가중치 배포와 Alibaba Cloud의 호스팅 Qwen3.5-Plus를 동시에 구분하고 있으며, 후자는 서로 다른 서비스 기능과 컨텍스트 설정을 갖습니다. 활성 파라미터가 전체 모델 파일 크기나 메모리 요구사항과 일치하지 않으므로, 자체 배포에는 여전히 하드웨어, 소프트웨어, 운영 관리 및 라이선스 조건 확인이 필요합니다. 아래의 일상 및 업무 시나리오는 독자의 직접 검증을 돕기 위해 에디터가 설계한 예시이며, 본 사이트의 제품 실측 데이터가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "혼합 전문가 아키텍처에서의 파라미터와 메모리 미신"
+        },
+        {
+          "type": "paragraph",
+          "text": "이 모델은 희소 혼합 전문가(Sparse Mixture of Experts) 기술을 채택하여 전체적으로 397B에 달하는 방대한 파라미터를 보유하지만, 텍스트와 시각 입력을 처리할 때마다 그중 약 17B의 활성 파라미터만 동적으로 호출합니다. 이러한 설계는 추론 시 연산 효율을 효과적으로 높여 매 포워드 패스(forward pass)의 계산량을 크게 줄여 줍니다. 그러나 활성 파라미터의 계산 규모를 컴퓨터 하드웨어 사양의 유일한 참고 기준으로 삼아서는 절대 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "전체 가중치를 보관하려면 여전히 충분한 저장 공간이 필요하며, 실행 시에는 프레임워크와 설정에 따라 비디오 메모리(VRAM), 시스템 메모리, 또는 기타 오프로딩 방식으로 분배될 수 있습니다. 모든 가중치를 부팅 시 단일 메모리에 반드시 적재해야 한다고 일률적으로 말할 수도 없고, 메모리가 부족하다고 해서 반드시 시스템 충돌이 일어난다고 단정할 수도 없습니다. 실제로 로드 가능한지, 속도가 수용 가능한 수준인지는 정밀도, 양자화, 컨텍스트 길이, 하드웨어 구성을 함께 종합해 평가해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "따라서 기업이 온프레미스 AI 전략을 세울 때 '활성 17B'라는 표기만 보고 일반적인 경량 모델에 불과하다고 착각해서는 안 됩니다. 공식 문서에 단일한 최종 하드웨어 최소 요구사항이 명시되지 않은 것은 기업급 배포가 프레임워크 최적화, 양자화 설정, 메모리 스케줄링 등과 밀접하게 연관되어 있기 때문입니다. 아키텍처 설계가 부재한 팀이 수백 GB에 달하는 원본 모델 파일을 무턱대고 다운로드하면 저장 공간 고갈과 무의미한 대역폭 낭비만 초래하기 십상입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "다운로드 가능에서 구동 성공까지의 현실적인 기술 장벽"
+        },
+        {
+          "type": "paragraph",
+          "text": "오픈 가중치의 큰 장점은 누구나 공개 저장소에서 파일을 받을 수 있다는 점이지만, 파일을 확보하는 것과 실제 서비스를 성공적으로 구동하는 것 사이에는 매우 까다로운 엔지니어링 장벽이 존재합니다. 모델 카드에 Apache-2.0 라이선스가 명시되어 있어 가중치 획득 및 수정에 관한 법적 유연성은 보장되지만, 라이선스 준수가 곧 플러그 앤 플레이(plug-and-play) 시스템을 의미하지는 않습니다. 저수준 드라이버부터 텐서 병렬 연산 라이브러리, 모델 서빙 엔진에 이르기까지 모든 단계에서 고도의 전문적인 시스템 튜닝이 요구됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "거대한 핵심 대규모 언어 모델 아키텍처 외에도 이 모델에는 비전 인코더가 내장되어 있어 추론 파이프라인이 이미지 특징 추출과 교차 모달 텐서 정렬을 동시에 처리해야 합니다. 로컬 환경에서 여러 대의 연산 카드를 조합해 분산 추론을 시도할 때 노드 간 통신 지연, 드라이버 버전 호환성, 그리고 멀티모달 혼합 전문가 아키텍처에 대한 추론 프레임워크의 지원 성숙도가 시스템의 원활한 부팅 및 안정적인 텍스트 출력 여부를 직접 좌우합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "관련 유지관리 경험이 부족한 팀은 예상 작업과 데이터 제약 사항을 먼저 정리한 뒤, 기술 파트너에게 자체 구축 적합성을 평가해 달라고 요청할 수 있습니다. 본문에서는 작업 기간이 몇 주 혹은 몇 달이 걸릴지 단정하지 않으며, 용도를 확정하기 전에 하드웨어부터 구매하는 방식도 권장하지 않습니다. 소량의 데이터로 로드, 답변, 출력 형식을 먼저 확인한 다음 점진적으로 긴 콘텐트와 다중 사용자 환경을 테스트하면 비용과 유지보수 요구량을 훨씬 쉽게 산정할 수 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "평가 단계",
+            "핵심 기술 조건 및 자원 고려사항",
+            "기업 의사결정 및 검수 핵심"
+          ],
+          "rows": [
+            [
+              "다운로드 가능",
+              "공식 파일 목록 및 선택 정밀도 기준으로 다운로드, 저장 공간, 대역폭 확인",
+              "공식 릴리스 노트와 Apache-2.0 라이선스 범위의 비즈니스 용도 부합 여부 확인"
+            ],
+            [
+              "구동 가능",
+              "프레임워크, 양자화, 오프로딩 설정을 바탕으로 로드 검증(17B 활성 파라미터만으로 전체 요구량 추산 금지)",
+              "추론 엔진 초기화 성공, OOM 없이 기본 멀티모달 예시 포워드 패스 완료"
+            ],
+            [
+              "사용 가능",
+              "내부 비공개 도면 및 특수 규격 문서 질의응답을 진행하고 클라우드 호스팅과 로컬 성능 대조",
+              "내부 대표 샘플 20~30세트로 질의응답 정확도와 멀티모달 인식 정밀도 검증"
+            ],
+            [
+              "운영 관리 가능",
+              "서버 전력, 방열, 이중화 메커니즘 및 전문 시스템 엔지니어 유지보수 비용 감당",
+              "서비스 오프라인 내결함성 계획, 보안 경계 관리, 장기 총소유비용(TCO) 분석 메커니즘 수립"
+            ]
+          ],
+          "caption": "기업이 대규모 오픈 가중치 멀티모달 모델 도입 타당성을 평가하는 4대 핵심 단계"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "사내 제품 도면 및 규격 질의응답을 위한 실무 워크플로"
+        },
+        {
+          "type": "paragraph",
+          "text": "수천 장의 사내 비공개 상품 구조도와 복잡한 규격 설명서를 축적한 한 로컬 소매점이 매장 직원이 재고와 부품 번호 특성을 빠르게 조회할 수 있는 스마트 어시스턴트를 구축하고자 한다고 가정해 보겠습니다. 이러한 실제 비즈니스 시나리오에서 운영자는 외부 클라우드 호스팅 API를 직접 활용해 개념 검증(PoC)을 진행할지, 아니면 외부 기술 파트너의 지원을 받아 소규모 로컬 추론 시스템을 구축할지 먼저 선택해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "데이터의 클라우드 처리가 허용된다면 공개 데이터, 민감 정보를 제거한 데이터 또는 특수 제작된 샘플을 사용해 호스팅 서비스의 질의응답 방식을 테스트할 수 있습니다. 데이터 규정이 확정되지 않은 상태에서 비공개 도면을 무턱대고 클라우드에 먼저 올린 후 기밀 유지 여부를 결정해서는 안 됩니다. Qwen3.5-Plus와 이 오픈 가중치 모델은 동일한 서비스가 아닙니다. 클라우드 테스트는 요구사항을 파악하는 데 도움을 주지만, 자체 구축 예정인 모델의 검수를 직접 대체할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도면이 반드시 내부에 보관되어야 한다면 처음부터 데이터 규정을 준수하는 환경에서 처리해야 합니다. 승인된 소량의 샘플을 기술 파트너에게 위탁하여 로컬 모델이나 기타 적합한 대안을 평가한 뒤, 답변 정확도, 조회 시간, 자원 요구량을 점검할 수 있습니다. 핵심은 데이터가 이동할 수 있는 범위를 먼저 결정한 다음 테스트 진입점을 선택하는 것입니다. 테스트 편의성만을 위해 확인되지 않은 외부 서비스에 기밀 콘텐트를 업로드해서는 안 됩니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-qwen-35-20260216/diagram-1-ko.svg",
+          "alt": "오픈 가중치의 네 가지 관문: 네 가지 확인 및 활용 핵심",
+          "width": 1600,
+          "height": 900,
+          "caption": "라이선스 확인: 공식 버전 확인, 자원 산정: 전체 모델 요구량, 작업 테스트: 자체 샘플 활용, 서비스 유지관리: 비용 및 데이터 거버넌스.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "호스팅 서비스와 자체 인프라 구축의 장기적 득실"
+        },
+        {
+          "type": "paragraph",
+          "text": "호스팅 서비스를 활용하면 자체 서버 관리 부담을 덜 수 있지만, 요금제, 지역, 데이터 보존 정책 및 서비스 보증을 확인해야 합니다. 반면 오픈 가중치는 팀에 더 다양한 배포 옵션을 제공하지만 그에 상응하는 유지보수 책임을 안겨 줍니다. 두 방식을 비교할 때는 동일한 합격 수준의 산출물 요건을 바탕으로 비용을 추산하고, 필요한 엔지니어링 지원, 백업, 장애 대응 방안을 각각 기록해야 하며, 모델 파일의 무료 다운로드 여부만을 따져서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "자체 배포를 진행하면 데이터 처리 위치를 내부 규정에 맞게 통제할 수 있지만, 완전한 개인정보 보호나 보안이 저절로 보장되는 것은 아닙니다. 접근 권한, 로그, 백업, 외부 연결, 유지보수 프로세스를 모두 관리해야 합니다. 하드웨어 비용 외에도 전력, 수리, 인력 투입 시간을 기록하고 사용량에 맞춰 합리성을 따져야 합니다. 이러한 지출은 매우 중요할 수 있지만, 클라우드 서비스보다 무조건 높다거나 낮다고 사전에 단언할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "서비스 중단 시의 대처 방식 역시 비교 항목에 포함되어야 합니다. 자체 구축 시스템에서는 장애 원인을 규명하고 해결할 담당자가 필요하며, 호스팅 서비스의 경우에는 공급업체의 실제 계약서와 서비스 수준 설명을 검토해야 하므로 모든 진입점이 자동 내결함성이나 특정 가용성을 보장한다고 가정해서는 안 됩니다. 소규모 매장의 관점에서는 원본 규격 문서와 수동 조회 방식을 계속 유지하는 것이, 어떠한 도구가 일시적으로 중단되더라도 직원이 기본 질의에 계속 응답할 수 있는 안전장치가 됩니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "오픈 가중치의 라이선스 경계와 데이터 거버넌스의 현실"
+        },
+        {
+          "type": "paragraph",
+          "text": "오픈소스 기술을 논할 때 많은 이들이 '오픈 가중치'를 '완전한 오픈소스 투명성'과 혼동하곤 합니다. Qwen3.5-397B-A17B 저장소에 상업적 이용과 맞춤 수정을 허용하는 관대한 Apache-2.0 소프트웨어 라이선스가 명시되어 있긴 하지만, 이것이 모델의 전체 원본 학습 데이터, 데이터 정제 파이프라인 및 상세 배합 비율까지 외부에 공개되었음을 뜻하지는 않습니다. 사용자가 통제할 수 있는 대상은 모델 파라미터 자체이며, 이러한 파라미터를 생성한 모든 과거 원재료가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "또한 오픈 가중치가 모든 파생 시나리오에서 무조건적인 자유로운 활용을 보장하는 것도 아닙니다. 기업이 이러한 대형 모델을 자체 상품 추천이나 고객 응대 프로세스에 통합할 때는 철저한 데이터 거버넌스 규범을 수립해야 합니다. 여기에는 모델 출력의 규제 준수 여부 검토, 환각으로 인한 허위 거래 약속 방지, 모델에 입력되는 민감한 고객 데이터가 현지 개인정보 보호 법규에 부합하는지 확인하는 작업이 포함되며, 이러한 거버넌스 책임은 온전히 배포 주체에게 귀속됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "종합해 볼 때, 오픈 가중치를 확보하는 것은 기술팀이 특정 단일 클라우드 벤더에 완전히 종속되지 않고 심층적인 커스터마이징과 오프라인 구동 가능성을 탐색할 기회를 제공합니다. 그러나 파일 다운로드부터 환경 구축, 작업 검증, 장기 유지보수에 이르는 단계별 난제를 명확히 이해해야만 화려한 기술 헤드라인 이면에서 비즈니스 효율과 정보 보안에 가장 부합하는 이성적인 결정을 내릴 수 있습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "기술 도입 메모",
+          "text": "활성 파라미터가 전체 로드 요구사항과 일치하지는 않습니다. 데이터의 외부 전송 가능 여부를 먼저 확인한 뒤 적절한 테스트 환경을 선택하십시오. 호스팅 Plus의 결과를 오픈 가중치 배포의 직접적인 검수 근거로 삼아서는 안 됩니다."
+        },
+        {
+          "type": "link",
+          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.1 Pro 발표: 복잡한 문제를 검증 가능한 답변으로 바꾸는 법",
+          "url": "https://mokaair.com/ko/life/ai-news-gemini-31-pro-20260219"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Qwen: 공식 저장소 릴리스 기록",
+          "url": "https://github.com/QwenLM/Qwen3.8",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen: Qwen3.5-397B-A17B 공식 모델 카드",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Qwen3.5 开放权重：可下载模型，与能在自己电脑运行差在哪？",
+      "description": "回顾 2026-02-16 发布的 Qwen3.5-397B-A17B 开放权重模型，厘清开放权重、硬件负担与云端托管差异，提供中小企业务实评估指引。",
+      "hero": {
+        "src": "/guides/ai-news-qwen-35-20260216/hero-zh-cn.jpg",
+        "alt": "开放权重的四道门的原创概念插图，呈现本篇事件的使用脉络",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事件日期：2026-02-16；本文查核日期：2026-09-14。官方仓库 News 记载 2026 年 2 月 16 日发布首个 Qwen3.5 开放权重模型 Qwen3.5-397B-A17B。云端 Plus 的版本日期 2 月 15 日不能当作这个开放模型的发布日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方模型卡列总参数 397B、激活 17B，为含视觉编码器的混合架构，许可证标示 Apache-2.0。官方同时区别自行部署权重与 Alibaba Cloud 的托管 Qwen3.5-Plus；后者有不同服务功能与上下文设定。激活参数不等于整个模型文件或内存需求，自行部署仍需硬件、软件、运维及许可条件核对。以下生活与工作情境为编辑设计的例子，供读者自行验证，并非本站产品实测。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "混合专家架构下的参数与内存迷思"
+        },
+        {
+          "type": "paragraph",
+          "text": "这款模型采用了稀疏混合专家技术，也就是模型总体拥有多达 397B 的庞大参数，但在每一次处理文本与视觉输入时，仅会动态调用其中约 17B 的激活参数。这种设计能有效提升推理时的运算效率，让每次前向传播的计算量大幅降低。然而，激活参数的计算规模绝对不能拿来当作电脑硬件规格的唯一参考基准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完整权重仍需要足够的存储空间，运行时则可能依框架与设置分配到显存、主内存或其他卸载方式。不能一概而论说全部权重必须在开机时放入同一块内存，也不能说内存不足一定会导致系统崩溃。实际能否加载、速度是否可接受，要连同精度、量化、上下文长度和硬件配置一起评估。"
+        },
+        {
+          "type": "paragraph",
+          "text": "因此，企业在规划本地人工智能策略时，千万不能看到“激活 17B”就误以为这只是一般轻量模型。官方文档未载明统一的终端硬件最低需求，正是因为企业级部署涉及框架优化、量化设置以及内存调度。对于未经架构规划的团队来说，盲目下载动辄数百 GB 的原始模型文件，往往只会造成存储空间的耗尽与带宽的徒劳浪费。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "从可下载到可启动的真实技术门槛"
+        },
+        {
+          "type": "paragraph",
+          "text": "开放权重的一大优点是让所有人都能在公开仓库获取文件，但获取文件与真正成功启动服务之间，存在着相当严苛的工程门槛。模型卡虽然标示采用 Apache-2.0 许可证，保障了权重获取与修改的合规灵活性，但许可合法并不代表系统就能即插即用。从底层驱动程序、张量并行运算函数库到模型服务引擎，每一个环节都需要高度专业的系统调优。"
+        },
+        {
+          "type": "paragraph",
+          "text": "除了庞大的核心大语言模型架构之外，该模型还内置了视觉编码器，这代表推理管线必须同时处理图像特征提取与跨模态张量对齐。当团队尝试在本地组合多张计算卡进行分布式推理时，节点之间的通信延迟、驱动程序版本兼容性，以及推理框架对多模态混合专家架构的支持成熟度，都会直接决定系统能否顺利开机并稳定输出文本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "缺乏相关维护经验的团队，可以先列出预期任务与数据限制，再请技术伙伴评估是否适合自建。这里不预估一定需要几周或几个月，也不建议先买硬件再找用途。先用少量数据确认加载、回答与输出格式，再逐步测试较长内容及多人使用，能让费用和维护需求更容易估算。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "评估阶段",
+            "核心技术条件与资源考量",
+            "企业决策与验收关键"
+          ],
+          "rows": [
+            [
+              "可下载",
+              "依官方文件清单与所选精度确认下载、存储空间与带宽",
+              "确认官方版本记录与 Apache-2.0 许可范围是否兼容业务用途"
+            ],
+            [
+              "可启动",
+              "依框架、量化与卸载配置验证加载，不以 17B 激活参数估算全部需求",
+              "推理引擎成功初始化，完成基础多模态示例前向传播且无内存溢出"
+            ],
+            [
+              "可用",
+              "针对内部非公开图纸与特规文件进行问答，比对云端托管与本地表现",
+              "以二十至三十组内部典型样本检验问答正确度与多模态识别精准度"
+            ],
+            [
+              "可运维",
+              "承担服务器电力、散热、冗余备份机制以及专业系统工程师维护成本",
+              "建立服务离线容错计划、网络安全边界管理与长期总体拥有成本分析机制"
+            ]
+          ],
+          "caption": "企业评估大型开放权重多模态模型引入可行性的四个关键阶段"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "内部产品图与规格问答的务实工作流"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设有一家本地零售小店，积累了数千张内部非公开的商品结构图与繁复的规格说明书，希望建立一套能让店员快速查询库存与料号特性的智能助理。面对这类实际业务场景，经营者首先面临的抉择，就是该直接采用外部云端托管的 API 进行概念验证，还是寻找外部技术伙伴协助构建小规模的本地推理系统。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若数据允许交由云端处理，可以使用公开、去除敏感内容或特制的示例，测试托管服务的问答方式。尚未确认数据规则时，不要先把非公开图纸送上云端再决定是否保密。Qwen3.5-Plus 与这个开放权重模型也不是相同服务；云端测试能帮助厘清需求，不能直接替代对预定自建模型的验收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果图纸必须留在内部，则从一开始就应在符合数据规则的环境中处理。可以委托技术伙伴用已获授权的小样本，评估本地模型或其他合适方案，再检查回答正确性、查询时间与资源需求。重点是先决定数据能去哪里，再选测试入口；不要为了试用方便，把机密内容送入尚未确认的外部服务。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-qwen-35-20260216/diagram-1-zh-cn.svg",
+          "alt": "开放权重的四道门：四项阅读与使用重点",
+          "width": 1600,
+          "height": 900,
+          "caption": "确认许可：查看官方版本、估算资源：完整模型需求、测试任务：用自己的样本、维护服务：成本与数据治理。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "托管服务与自建基础设施的长远取舍"
+        },
+        {
+          "type": "paragraph",
+          "text": "托管服务可以减少自行管理服务器的工作，但仍需确认计价、地区、数据留存及服务承诺。开放权重则让团队有更多部署选择，也要承担相应的维护工作。比较时，可以用同一组合格输出要求估算费用，并分别记下需要的工程支持、备份与故障处理，不能只看模型文件是否免费下载。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自行部署可以让数据处理位置更符合内部安排，但不会自动获得完整隐私或安全保证。访问权限、日志、备份、外部连接及维护流程都需要管理。除了硬件成本，也应记录电力、维保与人员时间，再依使用量比较是否合理；这些支出可能很重要，但不能预先断言一定高于或低于云端服务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "服务中断的处理方式也应列入比较。自建系统需要有人负责排查故障；托管服务则要看供应商实际的合同与服务说明，不能假设每个入口都保证自动容错或特定可用率。对小店来说，保留原始规格文件及人工查询方式，能在任何工具暂时无法使用时，仍让店员继续回答基本问题。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开放权重的许可边界与数据治理现实"
+        },
+        {
+          "type": "paragraph",
+          "text": "在探讨开源技术时，许多人容易将“开放权重”误认为“完全开源透明”。虽然 Qwen3.5-397B-A17B 在代码仓库中标示了宽松的 Apache-2.0 软件许可，允许商业使用与定制修改，但这并不意味着该模型的完整原始训练数据、数据清洗管线以及详细配比对外公开。使用者能掌控的是模型参数本身，而不是生成这些参数的所有历史原料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同时，开放权重也不等于在所有衍生场景下都能无条件自由发挥。企业将这类大型模型整合至自家的商品推荐或客户服务流程时，依然必须建立完善的数据治理规范。这包含审核模型输出内容的合规性、防止幻觉导致不实交易承诺，以及确认输入给模型的敏感客户数据是否符合当地个人信息保护法规，这些治理责任完全落在部署者身上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "综合来看，掌握开放权重确实让技术团队摆脱了对特定云端单一厂商的完全依赖，赋予了探索深度定制与离线运行的可能性。然而，唯有清楚理解从下载文件、搭建环境、验证任务到长久运维的层层挑战，企业才能在光鲜亮丽的技术标题背后，做出最符合经营效益与信息安全的理性决策。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "技术引入备忘",
+          "text": "激活参数不等于完整加载需求。先确认数据能否送往外部，再选择合适测试环境；托管 Plus 的结果不能直接当作开放权重部署的验收证据。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 3.1 Pro 发布：复杂问题如何转为可验证的答案？",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-31-pro-20260219"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Qwen：官方仓库发布记录",
+          "url": "https://github.com/QwenLM/Qwen3.8",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen：Qwen3.5-397B-A17B 官方模型卡",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

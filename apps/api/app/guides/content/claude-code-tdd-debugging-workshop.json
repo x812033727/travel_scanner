@@ -1,0 +1,326 @@
+{
+  "slug": "claude-code-tdd-debugging-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 185,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜真正走完一次重現、失敗測試與修正",
+      "description": "定位跨資料層及介面層的待辦狀態錯誤。點了第一筆待辦，卻改到另一筆，這種問題不能只靠一句「請修好」驗證。本篇從瀏覽器重現開始，寫出修正前會失敗的行為測試，再讓 Claude 做最小修改。最後保留同一個測試由紅轉綠的紀錄，以及相鄰情境沒有退步的證據。",
+      "hero": {
+        "src": "/guides/claude-code-tdd-debugging-workshop/hero.jpg",
+        "alt": "真正走完一次重現、失敗測試與修正：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "點了第一筆待辦，卻改到另一筆，這種問題不能只靠一句「請修好」驗證。本篇從瀏覽器重現開始，寫出修正前會失敗的行為測試，再讓 Claude 做最小修改。最後保留同一個測試由紅轉綠的紀錄，以及相鄰情境沒有退步的證據。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-debug-and-test",
+              "text": "除錯與補測試"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-build-todo-app",
+              "text": "待辦完整實作"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-85.zip",
+              "text": "第 85 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，務必使用 starter。它刻意含錯誤，核心測試預期失敗；reference 才是修正參考。需要 Node.js 22，閱讀約 20 分鐘，實作約 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先用最少輸入重現使用者問題"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-tdd-debugging-workshop/diagram-1.svg",
+          "alt": "先用最少輸入重現使用者問題 → 用真正的資料函式建立失敗測試 → 把完整重現交給 Claude",
+          "width": 1600,
+          "height": 900,
+          "caption": "先用最少輸入重現使用者問題 → 用真正的資料函式建立失敗測試 → 把完整重現交給 Claude",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "在 starter 執行 node server.mjs，開啟終端機顯示的本機網址。新增兩筆相同標題的待辦，依序點第一筆的完成控制。觀察被點的項目是否改變、另一筆是否被影響，再保存操作順序及實際畫面。不要只截一張最後畫面，因為它無法說明哪個動作造成錯誤。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：啟動故障練習網站",
+          "code": "node server.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若瀏覽器保留前次 localStorage，先使用新的測試瀏覽器情境，或只清除此本機課程網站的資料。不要清除整個瀏覽器的所有網站儲存。重現資料應固定為兩筆同名、不同 id，避免每次使用不同初始內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記錄預期與實際：預期只有指定 id 的 completed 翻轉，實際卻改到其他項目。標題相同不是錯誤原因，而是幫助檢查程式是否依穩定 id 辨識。接著停止本次服務，回到資料層縮小重現，避免一開始就重寫 UI。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用真正的資料函式建立失敗測試"
+        },
+        {
+          "type": "paragraph",
+          "text": "先執行原有四個模型測試，確認指定案例失敗。再建立更清楚的兩筆同名資料測試，直接匯入 model.js 的 toggleTodo。不要 mock 掉正在調查的函式，再讓假實作回傳你希望的答案；那樣測試即使通過，也沒有檢查真正錯誤。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "寫入 tests/toggle-regression.test.mjs",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport {toggleTodo} from '../model.js';\ntest('只切換指定 id 並保留其他同名項目',()=>{\n  const items=[\n    {id:'a',title:'相同標題',completed:false},\n    {id:'b',title:'相同標題',completed:true}\n  ];\n  const before=structuredClone(items);\n  const result=toggleTodo(items,'a');\n  assert.deepEqual(result.map(x=>[x.id,x.completed]),[['a',true],['b',true]]);\n  assert.deepEqual(items,before);\n});\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：先保存修正前的失敗結果",
+          "code": "node --test tests/toggle-regression.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期此時非零退出，斷言顯示實際資料與預期不同。這是測試成功捕捉故障，不是要求你先把 expected 改成錯誤輸出來讓它變綠。保存命令、退出碼與關鍵差異，稍後使用完全相同的測試再跑一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試描述行為，不需要把程式裡的比較式原封不動複製到斷言。使用固定輸入與外部可觀察結果，才可能在實作換一種寫法時仍提供保護。原始陣列不變也是契約，因此一併檢查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把完整重現交給 Claude"
+        },
+        {
+          "type": "paragraph",
+          "text": "提供瀏覽器步驟、失敗測試與允許修改的檔案。請 Claude 先讀取根因，再提出最小修改，不同時加新功能或重構。你已經有可以重現的失敗，這時不需要長篇猜測或要求它一次改完整個網站。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：有證據的除錯任務",
+          "code": "點選第一筆同名待辦時，另一筆也受到影響。\ntests/toggle-regression.test.mjs 已在修正前失敗。\n請讀取 model.js 和相關測試，指出具體根因，做最小修正。\n保留測試的預期行為，不刪測試、不改成符合錯誤輸出。\n修正後執行同一測試與原有模型測試，回報實際結果。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "本課故障是 toggleTodo 的 id 比較被反轉。修正應讓指定 id 符合時才翻轉 completed，其他項目保留。審查差異時確認沒有順便改標題、儲存格式或 UI 控制；若需要其他修改，先用新的證據說明原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把模型解釋當成唯一根因證據。最重要的是同一輸入、同一斷言在修正後通過，而且改動與行為有直接關係。若它提出大量改寫卻無法說明哪一行修正了問題，先縮小變更再驗證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "保存綠燈與相鄰回歸案例"
+        },
+        {
+          "type": "paragraph",
+          "text": "執行新測試與原有核心測試，預期全部通過。再增加未知 id 的案例，確認找不到項目時不會翻轉任何資料；也檢查空陣列。這些情境與原錯誤相鄰，可以防止最小修正只對特定 a、b 資料硬編碼。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：修正後使用同一條命令",
+          "code": "node --test tests/toggle-regression.test.mjs tests/model.test.mjs\n"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "寫入 tests/toggle-missing.test.mjs",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport {toggleTodo} from '../model.js';\ntest('未知 id 與空陣列保持資料不變',()=>{\n  const items=[{id:'a',title:'A',completed:false}];\n  assert.deepEqual(toggleTodo(items,'missing'),items);\n  assert.deepEqual(toggleTodo([],'missing'),[]);\n});\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果原有測試仍失敗，先查看是否同一根因或另一個問題，不使用跳過測試掩蓋結果。若發現既有測試和正式需求矛盾，將矛盾明列並查證；不能因為測試有名字就推定它永遠代表正確規格。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "回到瀏覽器核對完整路徑"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新啟動服務，使用與第一輪相同的兩筆同名資料與點擊順序。確認第一筆正確切換，第二筆保持原狀，切回與刪除操作也正常。資料測試通過代表資料函式符合案例，但 UI 可能仍綁到錯誤 id，因此瀏覽器重驗不可省略。"
+        },
+        {
+          "type": "paragraph",
+          "text": "紀錄視窗寬度與操作方式。若使用手機寬度，確認控制項可點擊、狀態可辨認且沒有水平撐寬。這裡只驗證你實際測過的畫面，不把一個桌面截圖寫成所有裝置已驗收。測試結束後停止本次服務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Git 差異確認修正與測試都被保存，輸出檔沒有包含無關私人內容。你可以保留紅燈與綠燈的文字紀錄，不需保留每次重跑的完整大檔。重點是讓另一位讀者能辨認修正前後使用相同測試。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用三層證據避免修錯位置"
+        },
+        {
+          "type": "paragraph",
+          "text": "除錯時保留三層證據：使用者動作、資料函式結果、程式差異。第一層說明誰受到影響，第二層把問題縮小到固定輸入，第三層解釋修正如何改變結果。如果只有第三層的一行比較式，別人可能不知道原來的錯誤何時發生；如果只有畫面，則難以確認修正是處理根因還是隱藏症狀。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在本課中，把第一筆資料命名為 a，第二筆命名為 b，保存修正前後的 completed 值。點擊 a 之後，應只改變 a。接著點擊 b，再核對同樣的條件。這樣比只測第一筆更能揭露硬編碼或索引綁定的問題，也能讓測試報告與瀏覽器操作使用一致的語言。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若新測試在故障版本就通過，先停下來檢查匯入路徑、測試是否真的執行，以及資料是否足以觸發錯誤。常見原因是執行到 reference、測試檔沒有被命令包含，或只用一筆資料看不到另一筆遭修改。不要直接進入修正，否則失去紅燈證據後，就無法確認測試是否有保護力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付時用一句話描述根因與行為，例如「id 比較相反，導致非目標項目被切換；現在只更新指定 id」。這個描述要能由差異和測試共同支持。若仍有其他未重現問題，另外列為待調查，不把它們一起標成已修復。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外測試連續點同一筆兩次，完成狀態應回到起點，其他項目保持原樣。這個案例檢查的是翻轉操作的連續使用，不是只確認第一次點擊。若資料函式通過而畫面不變，查看是否仍使用舊狀態渲染；若畫面正確但重新整理後錯誤，則轉向儲存與載入流程，不再反覆修改已通過的比較式。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "故障練習：拆穿沒有保護力的測試"
+        },
+        {
+          "type": "paragraph",
+          "text": "把測試暫時改成只確認 result 是陣列，再對故障版本執行。它很可能通過，但沒有驗證哪筆資料被改動。恢復完整斷言，應再次捕捉錯誤。這個比較說明測試數量不等於測試品質，關鍵是斷言是否連到使用者行為。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個反例是把 toggleTodo 換成測試中的假函式，直接回傳預期資料。這測到的是你寫的假答案，不是正式程式。理解後立即恢復真正匯入，不把示範性的弱測試留在交付成果中。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "證據",
+            "能證明的事",
+            "不能取代"
+          ],
+          "rows": [
+            [
+              "瀏覽器重現",
+              "使用者路徑確實有問題",
+              "根因定位"
+            ],
+            [
+              "修正前失敗測試",
+              "案例能捕捉故障",
+              "修正已完成"
+            ],
+            [
+              "同一測試轉綠",
+              "最小修正符合案例",
+              "未涵蓋情境"
+            ],
+            [
+              "瀏覽器重新操作",
+              "UI 與資料串接正常",
+              "所有平台完整驗證"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成判準是重現步驟、紅綠紀錄、最小差異、相鄰案例與瀏覽器重驗都對得上。小練習是把同一份流程用在未知 id 的問題，先寫失敗條件再修正。接下來可練習"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-legacy-refactoring-workshop",
+              "text": "舊專案重構"
+            },
+            {
+              "type": "text",
+              "text": "，學會在保持既有行為的前提下整理程式。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Create custom subagents",
+          "url": "https://code.claude.com/docs/en/sub-agents",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Orchestrate teams of Claude Code sessions",
+          "url": "https://code.claude.com/docs/en/agent-teams",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Continue local sessions from any device with Remote Control",
+          "url": "https://code.claude.com/docs/en/remote-control",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">Perplexity 一次查詢的五個步驟 / How one Perplexity query runs</title>
+<desc id="desc">流程圖由左至右分成五張卡片：步驟一你提問，輸入問題也可以附上檔案；步驟二搜尋網路，跨網頁、學術、財經或你的檔案做多次搜尋；步驟三讀取來源，打開找到的網頁並綜合數十個來源；步驟四標上引用，每段結論配一個可點的原始連結；步驟五給你答案，可以接著追問，它記得前面脈絡。圖的下半部比較三種模式在第二、三步投入的力氣：Search 是預設模式，一般問題秒級回覆，來源較少、深度有限；Pro Search 做多次搜尋，來源約三倍，可以自己挑模型，內建可執行程式碼的環境；Deep Research 讀上百個來源，約四到五分鐘出一份報告，不能自己指定模型。最下方提醒驗證引用的三個動作：點開編號、在原頁用頁內搜尋找同一個數字、找不到就換來源。</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M0 1 L11 6 L0 11 z" fill="#5C6B6B"/>
+</marker>
+</defs>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<text x="50" y="52" font-size="30" font-weight="bold" fill="#102A2B">Perplexity 一次查詢的五個步驟</text>
+<text x="50" y="84" font-size="18" fill="#5C6B6B">How one Perplexity query runs</text>
+
+<rect x="50" y="130" width="260" height="240" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="180" y="172" text-anchor="middle" font-size="16" fill="#5C6B6B">步驟一</text>
+<text x="180" y="212" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">你提問</text>
+<text x="180" y="256" text-anchor="middle" font-size="16" fill="#102A2B">輸入問題</text>
+<text x="180" y="284" text-anchor="middle" font-size="16" fill="#102A2B">也可以附上檔案</text>
+
+<rect x="360" y="130" width="260" height="240" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="490" y="172" text-anchor="middle" font-size="16" fill="#5C6B6B">步驟二</text>
+<text x="490" y="212" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">搜尋網路</text>
+<text x="490" y="256" text-anchor="middle" font-size="16" fill="#102A2B">跨網頁、學術</text>
+<text x="490" y="284" text-anchor="middle" font-size="16" fill="#102A2B">財經或你的檔案</text>
+<text x="490" y="312" text-anchor="middle" font-size="16" fill="#102A2B">做多次搜尋</text>
+
+<rect x="670" y="130" width="260" height="240" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="800" y="172" text-anchor="middle" font-size="16" fill="#5C6B6B">步驟三</text>
+<text x="800" y="212" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">讀取來源</text>
+<text x="800" y="256" text-anchor="middle" font-size="16" fill="#102A2B">打開找到的網頁</text>
+<text x="800" y="284" text-anchor="middle" font-size="16" fill="#102A2B">綜合數十個來源</text>
+
+<rect x="980" y="130" width="260" height="240" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="1110" y="172" text-anchor="middle" font-size="16" fill="#5C6B6B">步驟四</text>
+<text x="1110" y="212" text-anchor="middle" font-size="22" font-weight="bold" fill="#0D6B68">標上引用</text>
+<text x="1110" y="256" text-anchor="middle" font-size="16" fill="#102A2B">每段結論配一個</text>
+<text x="1110" y="284" text-anchor="middle" font-size="16" fill="#102A2B">可點的原始連結</text>
+
+<rect x="1290" y="130" width="260" height="240" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+<text x="1420" y="172" text-anchor="middle" font-size="16" fill="#5C6B6B">步驟五</text>
+<text x="1420" y="212" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">給你答案</text>
+<text x="1420" y="256" text-anchor="middle" font-size="16" fill="#102A2B">可以接著追問</text>
+<text x="1420" y="284" text-anchor="middle" font-size="16" fill="#102A2B">它記得前面脈絡</text>
+
+<line x1="316" y1="250" x2="350" y2="250" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<line x1="626" y1="250" x2="660" y2="250" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<line x1="936" y1="250" x2="970" y2="250" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<line x1="1246" y1="250" x2="1280" y2="250" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+<text x="50" y="425" font-size="20" font-weight="bold" fill="#102A2B">模式決定第二、三步花多少力氣</text>
+
+<rect x="50" y="450" width="480" height="200" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+<text x="80" y="497" font-size="22" font-weight="bold" fill="#102A2B">Search（預設）</text>
+<text x="80" y="540" font-size="17" fill="#102A2B">一般問題，秒級回覆</text>
+<text x="80" y="570" font-size="17" fill="#102A2B">來源較少，深度有限</text>
+<text x="80" y="600" font-size="17" fill="#5C6B6B">免費版也用得到</text>
+
+<rect x="560" y="450" width="480" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="590" y="497" font-size="22" font-weight="bold" fill="#0D6B68">Pro Search</text>
+<text x="590" y="540" font-size="17" fill="#102A2B">多次搜尋，來源約三倍</text>
+<text x="590" y="570" font-size="17" fill="#102A2B">可以自己挑模型</text>
+<text x="590" y="600" font-size="17" fill="#102A2B">內建可執行程式碼的環境</text>
+
+<rect x="1070" y="450" width="480" height="200" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="1100" y="497" font-size="22" font-weight="bold" fill="#2F6F9F">Deep Research</text>
+<text x="1100" y="540" font-size="17" fill="#102A2B">讀上百個來源</text>
+<text x="1100" y="570" font-size="17" fill="#102A2B">約四到五分鐘出一份報告</text>
+<text x="1100" y="600" font-size="17" fill="#102A2B">不能自己指定模型</text>
+
+<rect x="50" y="690" width="1500" height="110" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="80" y="736" font-size="20" font-weight="bold" fill="#B8442D">驗證引用的三個動作</text>
+<text x="80" y="772" font-size="17" fill="#102A2B">點開編號 → 在原頁用頁內搜尋找同一個數字 → 找不到就換來源</text>
+
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

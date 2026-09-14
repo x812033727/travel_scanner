@@ -1,0 +1,197 @@
+{
+  "slug": "namecheap-domain-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Namecheap 網域設定：註冊後如何連到網站與信箱",
+      "description": "在 Namecheap 買好網域後，還要確認 DNS 由誰管理，才能正確連接網站與信箱。本文依官方文件說明 Nameservers、Advanced DNS 與 Mail Settings 的分工，整理更換名稱伺服器及保留原 DNS 的兩條路線，並提供設定前清單、逐項驗證方法與故障回報資料。適合網域、主機和郵件分別向不同供應商購買的人，也能協助你避免為了讓網站上線而誤刪原本的郵件紀錄。",
+      "hero": {
+        "src": "/guides/namecheap-domain-setup/hero.jpg",
+        "alt": "網域文件、DNS 伺服器與網站畫面相連的原創示意。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Namecheap 可以是購買網域的地方，但不一定是目前管理 DNS 紀錄的地方。登入後找不到新增紀錄按鈕，未必是帳號故障；先看這個網域使用哪一組名稱伺服器，再到真正負責解析的服務修改。找對位置，比反覆新增同一筆資料更重要。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依官方公開文件整理操作，沒有代替你登入帳號，也沒有宣稱實際測試特定主機。以下以網域留在 Namecheap、網站放在另一家主機、信箱另有供應商的情境說明。所有 IP、目標名稱與驗證值，都應向自己的服務商取得，不能直接抄別人的範例。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在 Domain List 確認你要管理的網域"
+        },
+        {
+          "type": "paragraph",
+          "text": "自行開啟官方網站登入，進入 Domain List，找到完整網域後選擇 Manage。先核對拼法與後綴，再查看到期、續約和聯絡資料。若由朋友或廠商代辦，請先釐清註冊人與管理權限，不要為了繼續設定就共用對方的主要帳號；使用服務允許的授權方式或完成正式交接。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開始修改前，記錄現有 Nameservers，以及網站、信箱和其他驗證使用的紀錄。可以使用匯出功能，或保存可清楚閱讀的清單；不要把密碼、付款資料及驗證密鑰一起放進公開文件。若你不確定某筆 TXT 的用途，先查原服務，再決定是否保留，避免把仍在使用的驗證設定當成垃圾刪掉。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先選擇要更換 DNS，還是只改紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果主機商要求你使用它的名稱伺服器，便是在 Nameservers 設定採用指定的 DNS 代管服務。Namecheap 文件提供 Custom DNS 作為輸入第三方名稱伺服器的方式。這會改變後續應到哪裡管理紀錄，因此要先在新服務確認網站、郵件和必要驗證資料都已安排妥當。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一條路是保留目前 DNS，依主機商提供的資訊建立網站紀錄。兩種方式都可能連接網站，但管理位置及搬移工作不同。若現有郵件運作正常，而你只想換網站，先詢問主機商能否只調整相關紀錄，通常比較容易界定這次變更的範圍；是否適用仍需以服務條件判斷。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "使用 Advanced DNS 時確認適用條件"
+        },
+        {
+          "type": "paragraph",
+          "text": "依 Namecheap 說明，網域使用 BasicDNS、PremiumDNS 或 FreeDNS 時，才是在其 Advanced DNS 管理對應 Host Records。使用第三方名稱伺服器，或使用 Namecheap 的主機名稱伺服器時，紀錄應在相應的 DNS 或主機管理介面處理。沒有新增按鈕時，請先回頭確認這一點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立紀錄時逐欄核對 Type、Host、Value 與 TTL。A 紀錄的值是 IPv4 位址，CNAME 則指向另一個主機名稱；主機商要求根網域與 www 分別設定時，兩者都要處理。Host 欄位的寫法依介面規則填寫，不要把完整網址的 https 開頭或頁面路徑一起當成 DNS 名稱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新網域可能原先有停放頁或轉址紀錄。遇到衝突時，先確認它是否就是這次要替換的項目，再移除或更新；不要把所有紀錄清空後重新猜測。尤其同一名稱的別名與其他紀錄有相容限制，若不確定供應商要求，將完整紀錄類型交給支援人員核對。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "郵件要依收信服務的資料設定"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mail Settings 與網站紀錄的用途不同。以 Microsoft 365 的官方指引為例，它會要求完成網域驗證，再依管理中心提供的資料設定 MX 等紀錄；在 Namecheap 使用自訂郵件紀錄時，文件指定選擇 Custom MX。你的目標值應取自自己的租用帳戶，不能照抄教學圖片中的值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "MX 決定郵件投遞方向，但單有 MX 不代表信箱已建立，也不代表寄信驗證已完整。請依郵件商要求處理 SPF、DKIM 或其他紀錄，並先確認舊信箱的搬移安排。若目前已有 SPF 設定，應整合實際寄信來源及官方要求，不要看到另一份教學就額外新增一份互相衝突的設定。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "向網站與郵件供應商分別索取需要的紀錄，標示用途、名稱、類型、值及優先順序。",
+            "確認目前 DNS 管理位置，保存原設定；若要換名稱伺服器，先準備新區域的完整紀錄。",
+            "逐項填入並儲存，對照原需求檢查，避免同一次操作順手刪除無關項目。",
+            "查詢網站與郵件紀錄，再實際測試開站、外部寄入及對外寄送；把結果寫入異動紀錄。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "驗證時把 DNS 與網站狀態分開看"
+        },
+        {
+          "type": "paragraph",
+          "text": "儲存成功只代表介面接受了設定。解析還可能受既有快取影響，各網路看到更新的時間未必相同。請記錄修改時間、原 TTL 及查詢結果，不要連續切換名稱伺服器試運氣。官方文件提供的是一般時間說明，不能保證每一位訪客都會在同一分鐘看見新值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果解析已指向預期位置，但畫面仍是錯誤頁，下一步要檢查主機是否已加入這個網域、網站程式是否就緒，以及 HTTPS 憑證是否涵蓋該名稱。若網站正常但收不到信，則查看郵件紀錄、信箱建立狀態及郵件商錯誤訊息。這樣分層檢查，能避免把所有問題都歸因於 DNS 還沒更新。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "留下客服能判讀的回報資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "請提供受影響的網域、發生時間與時區、預期行為、目前名稱伺服器，以及查詢到的紀錄類型和值。截圖可遮住帳號、帳務及無關資訊。描述「根網域可以開啟，www 顯示憑證錯誤」，會比只寫「網站壞了」更容易讓對方找到正確處理範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成後保留一份最終設定與責任清單，下次新增子網域或更換信箱時就有起點。管理表只需放必要資料，不必每次都重新整理整個帳戶。若這次曾更改 DNS 代管服務，也請更新交接文件，讓下一位維護者知道應到哪裡修改，避免改到已不生效的舊介面。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/namecheap-domain-setup/diagram-1.svg",
+          "alt": "先盤點現況，再選擇更換名稱伺服器或修改現有紀錄，最後分別驗證網站與信箱。",
+          "width": 1600,
+          "height": 900,
+          "caption": "設定已儲存後，仍要驗證真正的網站與信箱。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求",
+            "主要位置",
+            "先確認"
+          ],
+          "rows": [
+            [
+              "改由另一家管理 DNS",
+              "Nameservers",
+              "新服務已備妥全部必要紀錄"
+            ],
+            [
+              "在 Namecheap 改網站紀錄",
+              "Advanced DNS",
+              "目前使用適用的 Namecheap DNS"
+            ],
+            [
+              "改用指定收信服務",
+              "有效 DNS 的 MX 等設定",
+              "信箱及搬移安排已就緒"
+            ],
+            [
+              "網站解析正確仍無法開啟",
+              "主機與憑證管理",
+              "網域綁定、程式和 HTTPS"
+            ]
+          ],
+          "caption": "以當前名稱伺服器判定真正生效的管理位置。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "更換名稱伺服器前先保留郵件資料",
+          "text": "網站與信箱可以使用不同供應商。移動 DNS 管理位置時，必須一併檢查 MX、寄信驗證及其他服務紀錄，不能只複製網站的 A 紀錄。"
+        },
+        {
+          "type": "link",
+          "text": "買網域前先做的功課：名稱、持有人與續約管理",
+          "url": "https://mokaair.com/zh-TW/life/domain-registration-guide"
+        },
+        {
+          "type": "link",
+          "text": "DNS 設定怎麼查：從 A、CNAME 到郵件紀錄",
+          "url": "https://mokaair.com/zh-TW/life/dns-records-troubleshooting"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Namecheap：連接網域與主機",
+          "url": "https://www.namecheap.com/support/knowledgebase/article/9837/46/how-to-connect-a-domain-to-a-server-or-hosting/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Namecheap：Host Records 可管理的條件",
+          "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/323/2214/why-cant-i-modify-email-domain-redirect-and-host-records-in-my-namecheap-account/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft：在 Namecheap 連接 Microsoft 365 DNS",
+          "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/dns/create-dns-records-at-namecheap?view=o365-worldwide",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

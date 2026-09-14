@@ -1,0 +1,2323 @@
+{
+  "schema_version": 1,
+  "status": "authored-local-preview",
+  "locale": "zh-TW",
+  "series_slug": "claude-code",
+  "existing_hub": "claude-code-tutorials",
+  "baseline_count": 60,
+  "proposed_total": 96,
+  "groups": [
+    {
+      "id": "K",
+      "title": "專案規則與工作上下文",
+      "lab": "config-lab",
+      "source_ids": [
+        "memory",
+        "permissions",
+        "sandbox",
+        "best"
+      ]
+    },
+    {
+      "id": "L",
+      "title": "Skills 工程化與共用外掛",
+      "lab": "skill-kit",
+      "source_ids": [
+        "skills",
+        "plugins"
+      ]
+    },
+    {
+      "id": "M",
+      "title": "Hooks 事件、檢查與故障處理",
+      "lab": "hook-lab",
+      "source_ids": [
+        "hooks"
+      ]
+    },
+    {
+      "id": "N",
+      "title": "MCP 工具開發與串接",
+      "lab": "mcp-lab",
+      "source_ids": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "O",
+      "title": "開發驗證、多代理與跨裝置",
+      "lab": "todo-workbench",
+      "source_ids": [
+        "best",
+        "subagents",
+        "teams",
+        "remote"
+      ]
+    },
+    {
+      "id": "P",
+      "title": "可追蹤、可恢復的自動化",
+      "lab": "automation-lab",
+      "source_ids": [
+        "headless",
+        "actions",
+        "schedule",
+        "sdk"
+      ]
+    }
+  ],
+  "paths": [
+    {
+      "id": "advanced-md",
+      "title": "MD 與專案規則",
+      "entry_numbers": [
+        20,
+        21,
+        22,
+        24
+      ],
+      "numbers": [
+        61,
+        62,
+        63,
+        65,
+        66
+      ]
+    },
+    {
+      "id": "advanced-skills",
+      "title": "Skills 與自訂指令",
+      "entry_numbers": [
+        38,
+        39,
+        40
+      ],
+      "numbers": [
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ]
+    },
+    {
+      "id": "advanced-hooks",
+      "title": "Hooks 與檢查流程",
+      "entry_numbers": [
+        34,
+        41,
+        42
+      ],
+      "numbers": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78
+      ]
+    },
+    {
+      "id": "advanced-mcp",
+      "title": "自建 MCP 工具",
+      "entry_numbers": [
+        43,
+        44,
+        57
+      ],
+      "numbers": [
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ]
+    },
+    {
+      "id": "advanced-development",
+      "title": "完整開發與協作",
+      "entry_numbers": [
+        34,
+        35,
+        46,
+        47
+      ],
+      "numbers": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        96
+      ]
+    },
+    {
+      "id": "advanced-mobile",
+      "title": "桌面與手機接續",
+      "entry_numbers": [
+        16,
+        17,
+        18,
+        27,
+        28
+      ],
+      "numbers": [
+        65,
+        90
+      ]
+    },
+    {
+      "id": "advanced-automation",
+      "title": "CLI 與可靠自動化",
+      "entry_numbers": [
+        51,
+        52,
+        53,
+        54
+      ],
+      "numbers": [
+        91,
+        92,
+        93,
+        94,
+        95,
+        96
+      ]
+    }
+  ],
+  "pilot_numbers": [
+    61,
+    67,
+    73,
+    79,
+    88,
+    91
+  ],
+  "entries": [
+    {
+      "number": 61,
+      "slug": "claude-code-project-rules-workshop",
+      "title": "替真實專案設計 CLAUDE.md",
+      "outcome": "把模糊、過期或重複的規則改成可操作的專案說明",
+      "prerequisite_numbers": [
+        20,
+        22,
+        32
+      ],
+      "related_numbers": [
+        62,
+        63,
+        67
+      ],
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "CLAUDE.md",
+        "MD",
+        "專案規範",
+        "規則重構"
+      ],
+      "deliverable": "CLAUDE.md、規則取捨表、三組前後對照",
+      "steps": [
+        "盤點錯誤規則與真正的建置入口",
+        "區分常駐規則、按需規則及工作流程",
+        "改寫最小規則並啟動全新對話",
+        "用三種任務比對改寫前後行為"
+      ],
+      "acceptance": "新對話能找到正確測試命令；錯誤規則已移除；對照紀錄含實際行為",
+      "failure_lab": "把模型聲稱讀過檔案當成載入證明；教讀者找實際載入資訊與執行紀錄",
+      "group": "K",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "config-lab",
+      "source_ids": [
+        "memory",
+        "permissions",
+        "sandbox",
+        "best"
+      ],
+      "prerequisites": [
+        "claude-code-claude-md-guide",
+        "claude-code-rules-and-imports",
+        "claude-code-understand-codebase"
+      ],
+      "related": [
+        "claude-code-monorepo-rules-workshop",
+        "claude-code-rules-loading-diagnostics",
+        "claude-code-skill-sop-workshop"
+      ]
+    },
+    {
+      "number": 62,
+      "slug": "claude-code-monorepo-rules-workshop",
+      "title": "Monorepo 的分層 MD 與路徑規則",
+      "outcome": "讓前端、API 與共用目錄使用適合的指引",
+      "prerequisite_numbers": [
+        21,
+        22,
+        61
+      ],
+      "related_numbers": [
+        63,
+        66,
+        88
+      ],
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "monorepo",
+        "子目錄",
+        "paths",
+        "rules"
+      ],
+      "deliverable": "三目錄練習專案與規則適用矩陣",
+      "steps": [
+        "畫出 apps/web、apps/api、packages 關係",
+        "為三區設定不同規則及共同底線",
+        "從不同工作目錄啟動並讀取不同檔案",
+        "查證按需載入與不適用規則"
+      ],
+      "acceptance": "三種讀檔案例各有載入證據；沒有把所有子目錄內容一次塞入根規則",
+      "failure_lab": "相對路徑以錯誤目錄解讀；逐個確認引用檔案的基準位置",
+      "group": "K",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "config-lab",
+      "source_ids": [
+        "memory",
+        "permissions",
+        "sandbox",
+        "best"
+      ],
+      "prerequisites": [
+        "claude-code-claude-md-scopes",
+        "claude-code-rules-and-imports",
+        "claude-code-project-rules-workshop"
+      ],
+      "related": [
+        "claude-code-rules-loading-diagnostics",
+        "claude-code-team-config-maintenance",
+        "claude-code-worktree-integration-workshop"
+      ]
+    },
+    {
+      "number": 63,
+      "slug": "claude-code-rules-loading-diagnostics",
+      "title": "Claude 沒照 MD 做：找出載入與規則衝突",
+      "outcome": "分辨沒有載入、規則矛盾、資料過期與任務描述不足",
+      "prerequisite_numbers": [
+        23,
+        24,
+        61
+      ],
+      "related_numbers": [
+        62,
+        65,
+        66
+      ],
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "不生效",
+        "/memory",
+        "/context",
+        "規則衝突",
+        "MD 不生效"
+      ],
+      "deliverable": "故障診斷表與四個最小重現案例",
+      "steps": [
+        "建立錯誤檔名、矛盾規則、舊記憶及錯路徑案例",
+        "一次只改一個變因",
+        "用新的工作階段驗證",
+        "保存根因與修正證據"
+      ],
+      "acceptance": "四個案例都能指出具體原因；修正後可重現結果，不能只寫重啟看看",
+      "failure_lab": "反覆增加強調文字掩蓋衝突；先刪除互斥指令再重測",
+      "group": "K",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "config-lab",
+      "source_ids": [
+        "memory",
+        "permissions",
+        "sandbox",
+        "best"
+      ],
+      "prerequisites": [
+        "claude-code-auto-memory",
+        "claude-code-settings-json",
+        "claude-code-project-rules-workshop"
+      ],
+      "related": [
+        "claude-code-monorepo-rules-workshop",
+        "claude-code-context-handoff-workshop",
+        "claude-code-team-config-maintenance"
+      ]
+    },
+    {
+      "number": 64,
+      "slug": "claude-code-permissions-sandbox-lab",
+      "title": "權限與 Sandbox 邊界實驗",
+      "outcome": "用無害案例觀察允許、詢問、拒絕與執行隔離",
+      "prerequisite_numbers": [
+        24,
+        30,
+        57
+      ],
+      "related_numbers": [
+        76,
+        83,
+        92
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "權限",
+        "sandbox",
+        "allow",
+        "deny",
+        "WSL2"
+      ],
+      "deliverable": "行為矩陣、測試目錄與設定還原檔",
+      "steps": [
+        "建立隔離練習資料與最小權限",
+        "分別測試規則判斷及支援環境的 sandbox",
+        "比較合法路徑、界外路徑與本機測試服務",
+        "還原設定並記錄限制"
+      ],
+      "acceptance": "每個案例記錄預期及實際結果；Windows 原生與 WSL2 分開，不把 MD 當存取控制",
+      "failure_lab": "某個工具路徑未受設定約束；標明適用工具與 OS，不承諾全面封鎖",
+      "group": "K",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "config-lab",
+      "source_ids": [
+        "memory",
+        "permissions",
+        "sandbox",
+        "best"
+      ],
+      "prerequisites": [
+        "claude-code-settings-json",
+        "claude-code-permissions-plan-mode",
+        "claude-code-project-data-safety"
+      ],
+      "related": [
+        "claude-code-hook-file-boundaries",
+        "claude-code-mcp-untrusted-output",
+        "claude-code-github-actions-review-workshop"
+      ]
+    },
+    {
+      "number": 65,
+      "slug": "claude-code-context-handoff-workshop",
+      "title": "長任務的上下文整理與交接文件",
+      "outcome": "讓新的工作階段依檔案接手，而不依賴原對話",
+      "prerequisite_numbers": [
+        27,
+        28,
+        32
+      ],
+      "related_numbers": [
+        63,
+        90,
+        94
+      ],
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "/compact",
+        "交接",
+        "上下文",
+        "handoff"
+      ],
+      "deliverable": "handoff.md、決策紀錄、未完成工作清單",
+      "steps": [
+        "建立跨三回合的功能任務",
+        "將事實、假設、已測與待測分開保存",
+        "比較整理前後並建立新工作階段",
+        "只提供交接檔請接手者完成下一步"
+      ],
+      "acceptance": "新階段能指出版本、工作範圍與下一步；不重做已完成項目；未驗證事項明列",
+      "failure_lab": "把 compact 摘要當永久規格；以版本控管的任務及決策檔補足",
+      "group": "K",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "config-lab",
+      "source_ids": [
+        "memory",
+        "permissions",
+        "sandbox",
+        "best"
+      ],
+      "prerequisites": [
+        "claude-code-sessions-resume",
+        "claude-code-context-compact-clear",
+        "claude-code-understand-codebase"
+      ],
+      "related": [
+        "claude-code-rules-loading-diagnostics",
+        "claude-code-cross-device-recovery-workshop",
+        "claude-code-agent-sdk-stateful-runner"
+      ]
+    },
+    {
+      "number": 66,
+      "slug": "claude-code-team-config-maintenance",
+      "title": "把個人設定整理成團隊可維護的設定包",
+      "outcome": "建立共用範本、個人覆寫與更新檢查方式",
+      "prerequisite_numbers": [
+        24,
+        61,
+        62
+      ],
+      "related_numbers": [
+        63,
+        72,
+        95
+      ],
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "settings.json",
+        "團隊設定",
+        "設定更新",
+        "版本漂移"
+      ],
+      "deliverable": "設定範本、變更紀錄與相容性檢查表",
+      "steps": [
+        "分類可共用設定與個人機器資料",
+        "建立兩位讀者的乾淨設定環境",
+        "模擬設定升級與不相容欄位",
+        "驗證回復及文件更新"
+      ],
+      "acceptance": "乾淨環境可套用；沒有金鑰或個人絕對路徑；升級與回復各有一次紀錄",
+      "failure_lab": "把組織管理政策當成專案設定可覆寫；分開標示管理權限條件",
+      "group": "K",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "config-lab",
+      "source_ids": [
+        "memory",
+        "permissions",
+        "sandbox",
+        "best"
+      ],
+      "prerequisites": [
+        "claude-code-settings-json",
+        "claude-code-project-rules-workshop",
+        "claude-code-monorepo-rules-workshop"
+      ],
+      "related": [
+        "claude-code-rules-loading-diagnostics",
+        "claude-code-plugin-team-distribution",
+        "claude-code-workflow-evaluation-cost"
+      ]
+    },
+    {
+      "number": 67,
+      "slug": "claude-code-skill-sop-workshop",
+      "title": "把一套工作 SOP 做成可重用 Skill",
+      "outcome": "將程式碼審查流程做成有輸入、輸出及停止條件的技能",
+      "prerequisite_numbers": [
+        38,
+        39,
+        35
+      ],
+      "related_numbers": [
+        68,
+        70,
+        71
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "SKILL.md",
+        "SOP",
+        "/review-change",
+        "自訂指令"
+      ],
+      "deliverable": "review-change/SKILL.md 與標準審查報告",
+      "steps": [
+        "先手動完成一次小範圍審查",
+        "抽出必要步驟及證據欄位",
+        "以兩份不同 diff 試跑 Skill",
+        "比對步驟是否可重用並刪除任務硬編碼"
+      ],
+      "acceptance": "兩個案例都產生檔案位置、影響與驗證狀態；不自動提交或合併",
+      "failure_lab": "只把長提示詞改檔名；補齊輸入不完整時的處理與明確交付",
+      "group": "L",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "skill-kit",
+      "source_ids": [
+        "skills",
+        "plugins"
+      ],
+      "prerequisites": [
+        "claude-code-skills-skill-md",
+        "claude-code-skill-arguments-resources",
+        "claude-code-git-review-pr"
+      ],
+      "related": [
+        "claude-code-skill-input-validation",
+        "claude-code-skill-invocation-control",
+        "claude-code-skill-regression-testing"
+      ]
+    },
+    {
+      "number": 68,
+      "slug": "claude-code-skill-input-validation",
+      "title": "Skill 參數驗證：缺值、錯誤與危險字元",
+      "outcome": "讓技能接收可預期的參數並安全交給輔助程式",
+      "prerequisite_numbers": [
+        39,
+        67
+      ],
+      "related_numbers": [
+        69,
+        71,
+        91
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "$ARGUMENTS",
+        "參數",
+        "引號",
+        "空白路徑"
+      ],
+      "deliverable": "參數解析器與至少八組輸入案例",
+      "steps": [
+        "定義輸入欄位及限制",
+        "測試缺值、空白、中文路徑及特殊符號",
+        "由輔助程式驗證而非直接拼接 shell",
+        "輸出可辨識的錯誤與修正方式"
+      ],
+      "acceptance": "所有案例有預期結果；錯誤輸入不執行主工作；合法中文路徑可處理",
+      "failure_lab": "把插值當驗證；用引數陣列或標準輸入傳遞資料",
+      "group": "L",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "skill-kit",
+      "source_ids": [
+        "skills",
+        "plugins"
+      ],
+      "prerequisites": [
+        "claude-code-skill-arguments-resources",
+        "claude-code-skill-sop-workshop"
+      ],
+      "related": [
+        "claude-code-skill-resource-design",
+        "claude-code-skill-regression-testing",
+        "claude-code-structured-cli-pipeline"
+      ]
+    },
+    {
+      "number": 69,
+      "slug": "claude-code-skill-resource-design",
+      "title": "拆分大型 Skill 的範本、參考文件與腳本",
+      "outcome": "建立能按需讀取的技能目錄",
+      "prerequisite_numbers": [
+        39,
+        67
+      ],
+      "related_numbers": [
+        68,
+        70,
+        72
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Skill 範本",
+        "resources",
+        "template",
+        "按需讀取"
+      ],
+      "deliverable": "SKILL.md、references、templates、scripts 的範例結構",
+      "steps": [
+        "把混在主檔的三類材料分開",
+        "寫明何時讀取哪些參考",
+        "讓腳本輸出短而可核對的摘要",
+        "用小任務與完整任務比對讀取紀錄"
+      ],
+      "acceptance": "簡單任務不必載入全部參考；必要範本沒有缺漏；相對路徑可移植",
+      "failure_lab": "移檔後連結失效；從乾淨目錄實際檢查每個引用",
+      "group": "L",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "skill-kit",
+      "source_ids": [
+        "skills",
+        "plugins"
+      ],
+      "prerequisites": [
+        "claude-code-skill-arguments-resources",
+        "claude-code-skill-sop-workshop"
+      ],
+      "related": [
+        "claude-code-skill-input-validation",
+        "claude-code-skill-invocation-control",
+        "claude-code-plugin-team-distribution"
+      ]
+    },
+    {
+      "number": 70,
+      "slug": "claude-code-skill-invocation-control",
+      "title": "Skill 何時啟動：手動呼叫與自動選用",
+      "outcome": "用正反例評估描述與呼叫設定",
+      "prerequisite_numbers": [
+        38,
+        40,
+        67
+      ],
+      "related_numbers": [
+        69,
+        71,
+        93
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "disable-model-invocation",
+        "user-invocable",
+        "自動觸發",
+        "description"
+      ],
+      "deliverable": "觸發評估表與兩種呼叫範例",
+      "steps": [
+        "列出應觸發及不應觸發的任務",
+        "設定手動工作流程與背景知識用途",
+        "在全新工作階段重複觀察",
+        "檢查不同執行入口的限制"
+      ],
+      "acceptance": "每種案例都有實際觀察；能解釋手動與自動入口差異；不以一次成功宣稱必定觸發",
+      "failure_lab": "把不可手動選取誤認成 Claude 不能使用；依欄位語意及實測分辨",
+      "group": "L",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "skill-kit",
+      "source_ids": [
+        "skills",
+        "plugins"
+      ],
+      "prerequisites": [
+        "claude-code-skills-skill-md",
+        "claude-code-custom-commands",
+        "claude-code-skill-sop-workshop"
+      ],
+      "related": [
+        "claude-code-skill-resource-design",
+        "claude-code-skill-regression-testing",
+        "claude-code-scheduled-workflow-reliability"
+      ]
+    },
+    {
+      "number": 71,
+      "slug": "claude-code-skill-regression-testing",
+      "title": "替 Skills 建立回歸案例與評分表",
+      "outcome": "讓 Skill 修改後有可比較的品質紀錄",
+      "prerequisite_numbers": [
+        34,
+        67,
+        68
+      ],
+      "related_numbers": [
+        70,
+        72,
+        95
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Skill 測試",
+        "eval",
+        "回歸",
+        "評分"
+      ],
+      "deliverable": "案例資料集、驗收規則及版本比較報告",
+      "steps": [
+        "固定正常、缺資訊與誤觸發案例",
+        "區分可程式檢查與人工判讀項目",
+        "同條件比較兩版 Skill",
+        "記錄模型、版本、重試與失敗樣本"
+      ],
+      "acceptance": "報告包含成功率分母、樣本與失敗原因；不能用模型自評取代外部驗收",
+      "failure_lab": "只挑成功案例或精確比對整段文字；用結構與行為判準",
+      "group": "L",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "skill-kit",
+      "source_ids": [
+        "skills",
+        "plugins"
+      ],
+      "prerequisites": [
+        "claude-code-debug-and-test",
+        "claude-code-skill-sop-workshop",
+        "claude-code-skill-input-validation"
+      ],
+      "related": [
+        "claude-code-skill-invocation-control",
+        "claude-code-plugin-team-distribution",
+        "claude-code-workflow-evaluation-cost"
+      ]
+    },
+    {
+      "number": 72,
+      "slug": "claude-code-plugin-team-distribution",
+      "title": "把 Skills 與 Hooks 包成可版本管理的 Plugin",
+      "outcome": "讓同伴安裝、升級與回退同一套工作流程",
+      "prerequisite_numbers": [
+        45,
+        66,
+        67
+      ],
+      "related_numbers": [
+        69,
+        71,
+        78
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "plugin",
+        "外掛封裝",
+        "版本",
+        "團隊安裝"
+      ],
+      "deliverable": "本機 plugin 包、版本紀錄與遷移說明",
+      "steps": [
+        "整理外掛目錄與必要宣告",
+        "在乾淨測試環境安裝",
+        "發布本機第二版並演練設定遷移",
+        "回退並確認命名與資源路徑"
+      ],
+      "acceptance": "安裝、升級、移除、回退皆有記錄；使用者自有設定保留",
+      "failure_lab": "名稱空間改變導致既有呼叫失效；提供可查證的遷移對照",
+      "group": "L",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "skill-kit",
+      "source_ids": [
+        "skills",
+        "plugins"
+      ],
+      "prerequisites": [
+        "claude-code-plugins-guide",
+        "claude-code-team-config-maintenance",
+        "claude-code-skill-sop-workshop"
+      ],
+      "related": [
+        "claude-code-skill-resource-design",
+        "claude-code-skill-regression-testing",
+        "claude-code-hook-portability-recovery"
+      ]
+    },
+    {
+      "number": 73,
+      "slug": "claude-code-hook-event-test-lab",
+      "title": "讀懂 Hook 事件：輸入、輸出與退出碼",
+      "outcome": "建立可重播事件的本機測試工具",
+      "prerequisite_numbers": [
+        41,
+        42
+      ],
+      "related_numbers": [
+        74,
+        75,
+        78
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "hooks",
+        "stdin",
+        "JSON",
+        "exit code"
+      ],
+      "deliverable": "事件 fixtures、runner 與四類結果紀錄",
+      "steps": [
+        "保存各事件的最小輸入",
+        "解析 JSON 並只讀必要欄位",
+        "分別輸出正常、拒絕、錯誤與診斷結果",
+        "比較人工重播與 Claude 真正觸發"
+      ],
+      "acceptance": "腳本重播與真實觸發分開標記；輸出通道與事件語意吻合",
+      "failure_lab": "對所有事件使用同一回傳格式；按當前官方事件定義逐一確認",
+      "group": "M",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "hook-lab",
+      "source_ids": [
+        "hooks"
+      ],
+      "prerequisites": [
+        "claude-code-hooks-getting-started",
+        "claude-code-hooks-recipes"
+      ],
+      "related": [
+        "claude-code-hook-scoped-formatting",
+        "claude-code-hook-quality-gates",
+        "claude-code-hook-portability-recovery"
+      ]
+    },
+    {
+      "number": 74,
+      "slug": "claude-code-hook-scoped-formatting",
+      "title": "只處理變更檔案的格式化 Hook",
+      "outcome": "限制格式化範圍並避免事件重複執行",
+      "prerequisite_numbers": [
+        34,
+        73
+      ],
+      "related_numbers": [
+        75,
+        78,
+        85
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "PostToolUse",
+        "格式化",
+        "matcher",
+        "去重"
+      ],
+      "deliverable": "檔案選擇器、格式化器與呼叫紀錄",
+      "steps": [
+        "先驗證格式化命令本身",
+        "從事件提取及正規化目標路徑",
+        "略過不相關檔案並處理重複事件",
+        "模擬格式工具不存在與非零退出"
+      ],
+      "acceptance": "只修改指定類型檔案；第二次執行不產生額外變更；失敗可追蹤",
+      "failure_lab": "每次修改都重跑全專案；以範圍及呼叫次數證明沒有擴大工作",
+      "group": "M",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "hook-lab",
+      "source_ids": [
+        "hooks"
+      ],
+      "prerequisites": [
+        "claude-code-debug-and-test",
+        "claude-code-hook-event-test-lab"
+      ],
+      "related": [
+        "claude-code-hook-quality-gates",
+        "claude-code-hook-portability-recovery",
+        "claude-code-tdd-debugging-workshop"
+      ]
+    },
+    {
+      "number": 75,
+      "slug": "claude-code-hook-quality-gates",
+      "title": "建立可停止的品質檢查 Hook",
+      "outcome": "讓完成檢查能指出失敗並有清楚的退出機制",
+      "prerequisite_numbers": [
+        34,
+        73
+      ],
+      "related_numbers": [
+        74,
+        78,
+        91
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Stop hook",
+        "品質檢查",
+        "stop_hook_active",
+        "測試失敗"
+      ],
+      "deliverable": "一次性驗證腳本、Stop 設定與失敗紀錄",
+      "steps": [
+        "定義要檢查的真正成果",
+        "測試失敗、修正、成功的完整流程",
+        "限制重試與重複 Stop 觸發",
+        "停用 Hook 並說明 CI 的獨立角色"
+      ],
+      "acceptance": "刻意失敗被檢出；修正後可正常結束；不可修復情況能退出並留下原因",
+      "failure_lab": "無限要求再測一次；使用明確停止條件，不把 Hook 當不可繞過的 CI",
+      "group": "M",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "hook-lab",
+      "source_ids": [
+        "hooks"
+      ],
+      "prerequisites": [
+        "claude-code-debug-and-test",
+        "claude-code-hook-event-test-lab"
+      ],
+      "related": [
+        "claude-code-hook-scoped-formatting",
+        "claude-code-hook-portability-recovery",
+        "claude-code-structured-cli-pipeline"
+      ]
+    },
+    {
+      "number": 76,
+      "slug": "claude-code-hook-file-boundaries",
+      "title": "用 Hook 保護指定檔案並測試路徑邊界",
+      "outcome": "為特定編輯工具設置範圍檢查及清楚的拒絕訊息",
+      "prerequisite_numbers": [
+        57,
+        64,
+        73
+      ],
+      "related_numbers": [
+        78,
+        83,
+        92
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "PreToolUse",
+        "路徑",
+        "機密檔案",
+        "保護"
+      ],
+      "deliverable": "邊界檢查器、假機密檔與路徑案例表",
+      "steps": [
+        "定義受保護的練習目錄",
+        "正規化相對路徑與大小寫",
+        "測試正常、越界及別名路徑",
+        "記錄未涵蓋工具並搭配權限機制"
+      ],
+      "acceptance": "列出的工具案例結果正確；拒絕訊息能說明原因；假機密內容未進入 log",
+      "failure_lab": "把單一 Edit Hook 說成所有 shell 寫入都受保護；如實列出覆蓋範圍",
+      "group": "M",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "hook-lab",
+      "source_ids": [
+        "hooks"
+      ],
+      "prerequisites": [
+        "claude-code-project-data-safety",
+        "claude-code-permissions-sandbox-lab",
+        "claude-code-hook-event-test-lab"
+      ],
+      "related": [
+        "claude-code-hook-portability-recovery",
+        "claude-code-mcp-untrusted-output",
+        "claude-code-github-actions-review-workshop"
+      ]
+    },
+    {
+      "number": 77,
+      "slug": "claude-code-hook-notifications-audit",
+      "title": "任務通知與事件紀錄：有用而不洗版",
+      "outcome": "產生可追查、去重且不含敏感內容的通知紀錄",
+      "prerequisite_numbers": [
+        42,
+        73
+      ],
+      "related_numbers": [
+        75,
+        78,
+        93
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "通知",
+        "JSONL",
+        "審計",
+        "session_id"
+      ],
+      "deliverable": "本機通知接收器、JSONL 紀錄與清理指引",
+      "steps": [
+        "決定哪些狀態值得記錄",
+        "加入任務識別碼與結果欄位",
+        "使用本機假接收器測重送與重複",
+        "模擬接收器失效並確認主要工作行為"
+      ],
+      "acceptance": "同一事件不重複提醒；log 不保存金鑰或完整私人內容；錯誤與主要結果可分辨",
+      "failure_lab": "把通知成功當工作成功；分開保存執行結果與通知結果",
+      "group": "M",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "hook-lab",
+      "source_ids": [
+        "hooks"
+      ],
+      "prerequisites": [
+        "claude-code-hooks-recipes",
+        "claude-code-hook-event-test-lab"
+      ],
+      "related": [
+        "claude-code-hook-quality-gates",
+        "claude-code-hook-portability-recovery",
+        "claude-code-scheduled-workflow-reliability"
+      ]
+    },
+    {
+      "number": 78,
+      "slug": "claude-code-hook-portability-recovery",
+      "title": "跨平台 Hooks：中文路徑、逾時與遞迴排錯",
+      "outcome": "把 Hook 做成可測試、可停用、可移植的工具",
+      "prerequisite_numbers": [
+        73,
+        74,
+        75
+      ],
+      "related_numbers": [
+        72,
+        76,
+        77
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "PowerShell",
+        "Bash",
+        "CRLF",
+        "timeout",
+        "Hook 排錯",
+        "Hook timeout"
+      ],
+      "deliverable": "跨平台測試矩陣與停用／還原手冊",
+      "steps": [
+        "測含空白與中文的專案路徑",
+        "檢查 LF、CRLF、編碼及 shell 選擇",
+        "注入慢速、失敗與重複事件",
+        "驗證停用設定後的正常工作"
+      ],
+      "acceptance": "實際測過的平台各有輸出；其他平台標待測；故障不形成持續執行的子程序",
+      "failure_lab": "只在開發者機器成功；於支援的乾淨環境重播相同 fixtures",
+      "group": "M",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "hook-lab",
+      "source_ids": [
+        "hooks"
+      ],
+      "prerequisites": [
+        "claude-code-hook-event-test-lab",
+        "claude-code-hook-scoped-formatting",
+        "claude-code-hook-quality-gates"
+      ],
+      "related": [
+        "claude-code-plugin-team-distribution",
+        "claude-code-hook-file-boundaries",
+        "claude-code-hook-notifications-audit"
+      ]
+    },
+    {
+      "number": 79,
+      "slug": "claude-code-mcp-local-server-workshop",
+      "title": "建立自己的唯讀 MCP 工具",
+      "outcome": "讓 Claude 查詢本機練習待辦資料",
+      "prerequisite_numbers": [
+        43,
+        44
+      ],
+      "related_numbers": [
+        80,
+        82,
+        83
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "MCP 開發",
+        "stdio",
+        "唯讀",
+        "自訂工具",
+        "list_tasks",
+        "get_task"
+      ],
+      "deliverable": "最小 MCP server、假待辦資料與連線紀錄",
+      "steps": [
+        "選擇並固定官方 SDK 版本",
+        "先以測試客戶端列工具及直接呼叫",
+        "接入 Claude Code 的本機設定",
+        "完成查詢並正常關閉程序"
+      ],
+      "acceptance": "直接呼叫及 Claude 真實呼叫都回傳指定假資料；資料檔沒有被改寫",
+      "failure_lab": "只看到 Connected 就算成功；必須有一筆可核對工具結果",
+      "group": "N",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "mcp-lab",
+      "source_ids": [
+        "mcp"
+      ],
+      "prerequisites": [
+        "claude-code-mcp-servers",
+        "claude-code-mcp-setup-troubleshooting"
+      ],
+      "related": [
+        "claude-code-mcp-tool-contracts",
+        "claude-code-mcp-failure-contract-tests",
+        "claude-code-mcp-untrusted-output"
+      ]
+    },
+    {
+      "number": 80,
+      "slug": "claude-code-mcp-tool-contracts",
+      "title": "設計 MCP 工具名稱、輸入 Schema 與分頁",
+      "outcome": "讓模型能選對工具，也能正確處理空值與大量結果",
+      "prerequisite_numbers": [
+        79
+      ],
+      "related_numbers": [
+        81,
+        82,
+        91
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "inputSchema",
+        "分頁",
+        "工具描述",
+        "空結果",
+        "list_tasks",
+        "get_task"
+      ],
+      "deliverable": "list_tasks、get_task 契約與邊界測試",
+      "steps": [
+        "區分清單及單筆查詢用途",
+        "定義必要欄位及無效輸入行為",
+        "加入分頁上限和空結果",
+        "用自然語言任務觀察工具選擇"
+      ],
+      "acceptance": "空清單、未知 ID、無效參數及多頁結果均有測試；無靜默截斷",
+      "failure_lab": "回傳大量全文擠滿上下文；提供摘要及明確下一頁資訊",
+      "group": "N",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "mcp-lab",
+      "source_ids": [
+        "mcp"
+      ],
+      "prerequisites": [
+        "claude-code-mcp-local-server-workshop"
+      ],
+      "related": [
+        "claude-code-mcp-http-auth-workshop",
+        "claude-code-mcp-failure-contract-tests",
+        "claude-code-structured-cli-pipeline"
+      ]
+    },
+    {
+      "number": 81,
+      "slug": "claude-code-mcp-http-auth-workshop",
+      "title": "遠端 MCP 登入、授權範圍與重新認證",
+      "outcome": "在測試服務演練連線與權限故障",
+      "prerequisite_numbers": [
+        44,
+        57,
+        79
+      ],
+      "related_numbers": [
+        80,
+        82,
+        83
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "HTTP MCP",
+        "OAuth",
+        "401",
+        "403",
+        "scope",
+        "MCP OAuth"
+      ],
+      "deliverable": "測試服務設定、授權檢查表與撤銷紀錄",
+      "steps": [
+        "區分傳輸方式與認證機制",
+        "接入受控測試服務並確認最小權限",
+        "演練憑證過期及權限不足",
+        "撤銷登入並重查存取"
+      ],
+      "acceptance": "授權前、授權後、撤銷後結果不同且可解釋；不得把 mock 認證當真實 OAuth 完成",
+      "failure_lab": "將 401、403 及網路錯誤混成同一問題；依階段定位",
+      "group": "N",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 75,
+      "lab": "mcp-lab",
+      "source_ids": [
+        "mcp"
+      ],
+      "prerequisites": [
+        "claude-code-mcp-setup-troubleshooting",
+        "claude-code-project-data-safety",
+        "claude-code-mcp-local-server-workshop"
+      ],
+      "related": [
+        "claude-code-mcp-tool-contracts",
+        "claude-code-mcp-failure-contract-tests",
+        "claude-code-mcp-untrusted-output"
+      ]
+    },
+    {
+      "number": 82,
+      "slug": "claude-code-mcp-failure-contract-tests",
+      "title": "MCP 排錯實驗室：斷線、逾時與格式錯誤",
+      "outcome": "用固定故障重現診斷及復原流程",
+      "prerequisite_numbers": [
+        79,
+        80
+      ],
+      "related_numbers": [
+        81,
+        83,
+        94
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "MCP 排錯",
+        "timeout",
+        "斷線",
+        "契約測試"
+      ],
+      "deliverable": "故障注入器、契約測試與排錯決策表",
+      "steps": [
+        "建立成功連線基準",
+        "依序注入進程退出、逾時及錯誤回應",
+        "記錄客戶端及 server 診斷",
+        "修正後重跑相同操作"
+      ],
+      "acceptance": "每種症狀有原因及修復證據；重新連線後沒有重複程序或錯用舊結果",
+      "failure_lab": "一律重裝全部工具；用最小直接呼叫縮小故障位置",
+      "group": "N",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "mcp-lab",
+      "source_ids": [
+        "mcp"
+      ],
+      "prerequisites": [
+        "claude-code-mcp-local-server-workshop",
+        "claude-code-mcp-tool-contracts"
+      ],
+      "related": [
+        "claude-code-mcp-http-auth-workshop",
+        "claude-code-mcp-untrusted-output",
+        "claude-code-agent-sdk-stateful-runner"
+      ]
+    },
+    {
+      "number": 83,
+      "slug": "claude-code-mcp-untrusted-output",
+      "title": "MCP 回傳含有指令時：資料與操作權限分開",
+      "outcome": "以無害的對抗案例測試工具資料處理",
+      "prerequisite_numbers": [
+        57,
+        64,
+        79
+      ],
+      "related_numbers": [
+        76,
+        81,
+        84
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "prompt injection",
+        "提示注入",
+        "工具回傳",
+        "不可信資料"
+      ],
+      "deliverable": "合成外部內容、預期行為與觀察紀錄",
+      "steps": [
+        "建立含假冒操作指示的工具資料",
+        "設置無害標記檔觀察是否越界",
+        "在最小權限下執行讀取任務",
+        "比對預期與實際行為並保存失敗案例"
+      ],
+      "acceptance": "資料來源可追查；越界要求不被當使用者授權；若失敗如實記錄，修正邊界後再驗證",
+      "failure_lab": "用一句提示宣稱解決所有注入；保留工具權限及隔離層的限制",
+      "group": "N",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "mcp-lab",
+      "source_ids": [
+        "mcp"
+      ],
+      "prerequisites": [
+        "claude-code-project-data-safety",
+        "claude-code-permissions-sandbox-lab",
+        "claude-code-mcp-local-server-workshop"
+      ],
+      "related": [
+        "claude-code-hook-file-boundaries",
+        "claude-code-mcp-http-auth-workshop",
+        "claude-code-issue-to-draft-pr-workshop"
+      ]
+    },
+    {
+      "number": 84,
+      "slug": "claude-code-issue-to-draft-pr-workshop",
+      "title": "從 Issue 到變更草稿：串起工具與程式碼",
+      "outcome": "完成需求讀取、計畫、測試與 PR 說明稿",
+      "prerequisite_numbers": [
+        35,
+        67,
+        79
+      ],
+      "related_numbers": [
+        83,
+        85,
+        92
+      ],
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "issue",
+        "GitHub MCP",
+        "PR 草稿",
+        "工作流"
+      ],
+      "deliverable": "假 Issue、功能 diff、測試結果與 PR-body.md",
+      "steps": [
+        "先讀本機 fixture Issue",
+        "整理驗收條件並定位程式",
+        "用既有 CLI 或 MCP 取得需要的資訊",
+        "實作後輸出草稿與證據"
+      ],
+      "acceptance": "Issue 條件均對應檔案及測試；主練習在本機可完成；選修測試 repo 才建立真正 draft PR",
+      "failure_lab": "把可用 MCP 強套所有步驟；在工具比較中說明何時 CLI 已足夠",
+      "group": "N",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "mcp-lab",
+      "source_ids": [
+        "mcp"
+      ],
+      "prerequisites": [
+        "claude-code-git-review-pr",
+        "claude-code-skill-sop-workshop",
+        "claude-code-mcp-local-server-workshop"
+      ],
+      "related": [
+        "claude-code-mcp-untrusted-output",
+        "claude-code-tdd-debugging-workshop",
+        "claude-code-github-actions-review-workshop"
+      ]
+    },
+    {
+      "number": 85,
+      "slug": "claude-code-tdd-debugging-workshop",
+      "title": "真正走完一次重現、失敗測試與修正",
+      "outcome": "定位跨資料層及介面層的待辦狀態錯誤",
+      "prerequisite_numbers": [
+        34,
+        55
+      ],
+      "related_numbers": [
+        86,
+        87,
+        91
+      ],
+      "platforms": [
+        "cli",
+        "desktop",
+        "ide"
+      ],
+      "aliases": [
+        "TDD",
+        "debug",
+        "失敗測試",
+        "驗證"
+      ],
+      "deliverable": "可重現案例、紅綠測試紀錄與最小修正",
+      "steps": [
+        "先在瀏覽器重現並保存輸入",
+        "建立修正前必敗的行為測試",
+        "定位根因後做最小修改",
+        "驗證主要路徑及一個相鄰回歸案例"
+      ],
+      "acceptance": "同一測試修正前失敗、修正後通過；沒有移除驗收條件以通過",
+      "failure_lab": "測試只重述實作或 mock 掉錯誤；以使用者可見行為作斷言",
+      "group": "O",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "todo-workbench",
+      "source_ids": [
+        "best",
+        "subagents",
+        "teams",
+        "remote"
+      ],
+      "prerequisites": [
+        "claude-code-debug-and-test",
+        "claude-code-build-todo-app"
+      ],
+      "related": [
+        "claude-code-legacy-refactoring-workshop",
+        "claude-code-subagent-review-workshop",
+        "claude-code-structured-cli-pipeline"
+      ]
+    },
+    {
+      "number": 86,
+      "slug": "claude-code-legacy-refactoring-workshop",
+      "title": "接手缺測試舊專案：先留住行為再重構",
+      "outcome": "用小步變更拆出可測試模組",
+      "prerequisite_numbers": [
+        56,
+        85
+      ],
+      "related_numbers": [
+        62,
+        87,
+        88
+      ],
+      "platforms": [
+        "cli",
+        "desktop",
+        "ide"
+      ],
+      "aliases": [
+        "legacy",
+        "重構",
+        "characterization",
+        "舊專案"
+      ],
+      "deliverable": "既有行為案例、三個小 diff 與回復點",
+      "steps": [
+        "盤點目前行為與已知缺陷",
+        "建立關鍵行為基準",
+        "逐步抽離資料存取與畫面邏輯",
+        "逐步測試並核對預期保持的行為"
+      ],
+      "acceptance": "每一步可獨立說明及回復；已知缺陷不被誤寫成理想規格",
+      "failure_lab": "混合重構與新功能使失敗難定位；拆開提交及驗收",
+      "group": "O",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "todo-workbench",
+      "source_ids": [
+        "best",
+        "subagents",
+        "teams",
+        "remote"
+      ],
+      "prerequisites": [
+        "claude-code-maintain-existing-project",
+        "claude-code-tdd-debugging-workshop"
+      ],
+      "related": [
+        "claude-code-monorepo-rules-workshop",
+        "claude-code-subagent-review-workshop",
+        "claude-code-worktree-integration-workshop"
+      ]
+    },
+    {
+      "number": 87,
+      "slug": "claude-code-subagent-review-workshop",
+      "title": "讓 Subagent 提出可核對的審查發現",
+      "outcome": "設計專責代理的範圍、工具及回報格式",
+      "prerequisite_numbers": [
+        46,
+        85
+      ],
+      "related_numbers": [
+        71,
+        88,
+        89
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "subagent",
+        "審查",
+        "reviewer",
+        "代理 MD"
+      ],
+      "deliverable": "專責代理 MD、審查報告與主代理核對表",
+      "steps": [
+        "分出正確性與介面兩種讀取任務",
+        "設定必要工具及固定報告欄位",
+        "交付有檔案位置的發現",
+        "由主代理重現、去重及駁回誤報"
+      ],
+      "acceptance": "每個採納發現有獨立證據；未驗證項目明列；角色完成不等於整體驗收完成",
+      "failure_lab": "把兩份同樣的意見當兩次獨立測試；追查各自使用的證據",
+      "group": "O",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "todo-workbench",
+      "source_ids": [
+        "best",
+        "subagents",
+        "teams",
+        "remote"
+      ],
+      "prerequisites": [
+        "claude-code-subagents-guide",
+        "claude-code-tdd-debugging-workshop"
+      ],
+      "related": [
+        "claude-code-skill-regression-testing",
+        "claude-code-worktree-integration-workshop",
+        "claude-code-agent-teams-integration-lab"
+      ]
+    },
+    {
+      "number": 88,
+      "slug": "claude-code-worktree-integration-workshop",
+      "title": "雙 Worktree 實作與衝突整合",
+      "outcome": "隔離兩項功能，最後完成整合與回歸",
+      "prerequisite_numbers": [
+        35,
+        47,
+        65
+      ],
+      "related_numbers": [
+        86,
+        87,
+        89
+      ],
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "worktree",
+        "合併衝突",
+        "平行開發",
+        "port",
+        "worktree 衝突"
+      ],
+      "deliverable": "兩個工作目錄、獨立埠號與整合檢查表",
+      "steps": [
+        "拆分可獨立工作的兩個功能",
+        "建立 worktree 並分配埠號及暫存檔",
+        "完成後製造並解決小型受控衝突",
+        "在整合分支重跑驗收並清理"
+      ],
+      "acceptance": "兩邊不改到同一工作目錄；保留雙方需求；未提交資料不在清理時遺失",
+      "failure_lab": "以為隔離 Git 就隔離資料庫或服務；檢查共用資源與相依",
+      "group": "O",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "todo-workbench",
+      "source_ids": [
+        "best",
+        "subagents",
+        "teams",
+        "remote"
+      ],
+      "prerequisites": [
+        "claude-code-git-review-pr",
+        "claude-code-worktrees-parallel",
+        "claude-code-context-handoff-workshop"
+      ],
+      "related": [
+        "claude-code-legacy-refactoring-workshop",
+        "claude-code-subagent-review-workshop",
+        "claude-code-agent-teams-integration-lab"
+      ]
+    },
+    {
+      "number": 89,
+      "slug": "claude-code-agent-teams-integration-lab",
+      "title": "Agent Teams 的分工、阻塞與成果整合",
+      "outcome": "比較單代理、專責代理與團隊協作成本",
+      "prerequisite_numbers": [
+        48,
+        87,
+        88
+      ],
+      "related_numbers": [
+        65,
+        90,
+        95
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Agent Teams",
+        "teammate",
+        "實驗功能",
+        "協作"
+      ],
+      "deliverable": "小型團隊任務表、成本紀錄與整合成果",
+      "steps": [
+        "先測同一小任務的單代理基準",
+        "分派兩個互不覆蓋的責任",
+        "模擬一位卡住與需求變動",
+        "整合測試並正常結束角色"
+      ],
+      "acceptance": "支援版本才實測團隊功能；不支援時交付 worktree 替代版，明確標示未實測 Teams",
+      "failure_lab": "新增角色卻沒縮短工作；比較整合時間、錯誤與用量，不能只看並行數",
+      "group": "O",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 75,
+      "lab": "todo-workbench",
+      "source_ids": [
+        "best",
+        "subagents",
+        "teams",
+        "remote"
+      ],
+      "prerequisites": [
+        "claude-code-agent-teams",
+        "claude-code-subagent-review-workshop",
+        "claude-code-worktree-integration-workshop"
+      ],
+      "related": [
+        "claude-code-context-handoff-workshop",
+        "claude-code-cross-device-recovery-workshop",
+        "claude-code-workflow-evaluation-cost"
+      ]
+    },
+    {
+      "number": 90,
+      "slug": "claude-code-cross-device-recovery-workshop",
+      "title": "桌面到手機：離線、中斷與返回工作現場",
+      "outcome": "確認執行位置，練習接續及故障後的核對",
+      "prerequisite_numbers": [
+        16,
+        17,
+        18,
+        65
+      ],
+      "related_numbers": [
+        27,
+        88,
+        93
+      ],
+      "platforms": [
+        "cli",
+        "desktop",
+        "mobile",
+        "web"
+      ],
+      "aliases": [
+        "手機",
+        "Remote Control",
+        "Dispatch",
+        "跨裝置",
+        "離線",
+        "手機中斷"
+      ],
+      "deliverable": "裝置／執行位置圖與三種中斷紀錄",
+      "steps": [
+        "選一種帳號可用入口建立基準",
+        "查看手機補充指示與電腦執行結果",
+        "分別測手機離線、主機睡眠或程序退出",
+        "返回時核對 session、工作目錄及未提交變更"
+      ],
+      "acceptance": "選定入口有一次真實裝置接續；其他入口標未測；雲端與本機檔案流向可分辨",
+      "failure_lab": "把手機畫面仍在當成本機任務仍運行；以主機程序與實際產出確認",
+      "group": "O",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 75,
+      "lab": "todo-workbench",
+      "source_ids": [
+        "best",
+        "subagents",
+        "teams",
+        "remote"
+      ],
+      "prerequisites": [
+        "claude-code-remote-control",
+        "claude-code-desktop-dispatch",
+        "claude-code-cross-device-workflow",
+        "claude-code-context-handoff-workshop"
+      ],
+      "related": [
+        "claude-code-sessions-resume",
+        "claude-code-worktree-integration-workshop",
+        "claude-code-scheduled-workflow-reliability"
+      ]
+    },
+    {
+      "number": 91,
+      "slug": "claude-code-structured-cli-pipeline",
+      "title": "把 claude -p 接進有驗證的 JSON 流程",
+      "outcome": "處理合法結果、錯誤、逾時與不完整輸出",
+      "prerequisite_numbers": [
+        51,
+        34
+      ],
+      "related_numbers": [
+        68,
+        82,
+        94
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "claude -p",
+        "JSON Schema",
+        "stream-json",
+        "結構化輸出",
+        "--json-schema",
+        "--output-format",
+        "structured_output"
+      ],
+      "deliverable": "輸入 fixtures、Schema、runner 與錯誤結果",
+      "steps": [
+        "定義可機器驗證的輸出契約",
+        "分開 CLI 回傳外殼與業務資料",
+        "解析一般 JSON 及串流事件",
+        "處理逾時與不合法結果並決定退出碼"
+      ],
+      "acceptance": "合成及真實呼叫分開記錄；錯誤不會被當成空成功資料；引號與換行保留",
+      "failure_lab": "只檢查 JSON 能 parse；仍要驗證欄位、型別與業務條件",
+      "group": "P",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "automation-lab",
+      "source_ids": [
+        "headless",
+        "actions",
+        "schedule",
+        "sdk"
+      ],
+      "prerequisites": [
+        "claude-code-headless-json",
+        "claude-code-debug-and-test"
+      ],
+      "related": [
+        "claude-code-skill-input-validation",
+        "claude-code-mcp-failure-contract-tests",
+        "claude-code-agent-sdk-stateful-runner"
+      ]
+    },
+    {
+      "number": 92,
+      "slug": "claude-code-github-actions-review-workshop",
+      "title": "CI 審查助手：權限、fork 與結果附件",
+      "outcome": "在測試儲存庫跑一次可審閱的工作流程",
+      "prerequisite_numbers": [
+        53,
+        57,
+        91
+      ],
+      "related_numbers": [
+        64,
+        84,
+        93
+      ],
+      "platforms": [
+        "cli",
+        "web"
+      ],
+      "aliases": [
+        "GitHub Actions",
+        "CI",
+        "fork PR",
+        "artifact"
+      ],
+      "deliverable": "workflow、最小權限表與審查 artifact",
+      "steps": [
+        "先建立沒有模型呼叫的基準 workflow",
+        "加入測試帳號的受控呼叫",
+        "處理外部 PR、機密與不可信內容",
+        "下載結果並驗證取消及失敗流程"
+      ],
+      "acceptance": "測試儲存庫有實際 run；外部 PR 不取得秘密；結果以附件交付且不自動合併",
+      "failure_lab": "只貼 YAML 就宣稱 CI 完成；保存 run、來源提交與所用 action 版本",
+      "group": "P",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 75,
+      "lab": "automation-lab",
+      "source_ids": [
+        "headless",
+        "actions",
+        "schedule",
+        "sdk"
+      ],
+      "prerequisites": [
+        "claude-code-github-actions",
+        "claude-code-project-data-safety",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "related": [
+        "claude-code-permissions-sandbox-lab",
+        "claude-code-issue-to-draft-pr-workshop",
+        "claude-code-scheduled-workflow-reliability"
+      ]
+    },
+    {
+      "number": 93,
+      "slug": "claude-code-scheduled-workflow-reliability",
+      "title": "排程失敗怎麼辦：重複執行、漏跑與停止",
+      "outcome": "為一次排程建立可追查且不重複寫入的工作",
+      "prerequisite_numbers": [
+        52,
+        77,
+        91
+      ],
+      "related_numbers": [
+        70,
+        90,
+        94
+      ],
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "排程",
+        "idempotency",
+        "去重",
+        "重試",
+        "漏跑"
+      ],
+      "deliverable": "run-state.json、識別碼設計與故障演練",
+      "steps": [
+        "先將工作做成可手動重跑",
+        "選定一個支援入口及執行主機",
+        "注入重複觸發與程序中斷",
+        "驗證取消、補跑與重複結果處理"
+      ],
+      "acceptance": "同一工作識別碼不重複產生最終成果；能從紀錄辨別未跑、失敗與成功",
+      "failure_lab": "把所有入口的排程能力混用；在每個範例標明持久性與主機條件",
+      "group": "P",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "automation-lab",
+      "source_ids": [
+        "headless",
+        "actions",
+        "schedule",
+        "sdk"
+      ],
+      "prerequisites": [
+        "claude-code-scheduled-tasks",
+        "claude-code-hook-notifications-audit",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "related": [
+        "claude-code-skill-invocation-control",
+        "claude-code-cross-device-recovery-workshop",
+        "claude-code-agent-sdk-stateful-runner"
+      ]
+    },
+    {
+      "number": 94,
+      "slug": "claude-code-agent-sdk-stateful-runner",
+      "title": "Agent SDK：保存狀態、取消與重新接續",
+      "outcome": "建立可中斷且可診斷的最小代理程式",
+      "prerequisite_numbers": [
+        54,
+        65,
+        91
+      ],
+      "related_numbers": [
+        82,
+        93,
+        95
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Agent SDK",
+        "resume",
+        "取消",
+        "state machine"
+      ],
+      "deliverable": "最小 runner、狀態檔、事件紀錄與恢復測試",
+      "steps": [
+        "選定一種官方語言 SDK 並固定版本",
+        "管理開始、執行、失敗與完成狀態",
+        "測試取消與重新啟動",
+        "分辨 session 接續與外部副作用還原"
+      ],
+      "acceptance": "取消後不殘留工作程序；恢復可辨識既有成果；不把 session ID 當通用交易回滾",
+      "failure_lab": "只存 ID 卻沒存輸入與版本；保存必要的重現上下文",
+      "group": "P",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 75,
+      "lab": "automation-lab",
+      "source_ids": [
+        "headless",
+        "actions",
+        "schedule",
+        "sdk"
+      ],
+      "prerequisites": [
+        "claude-code-agent-sdk",
+        "claude-code-context-handoff-workshop",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "related": [
+        "claude-code-mcp-failure-contract-tests",
+        "claude-code-scheduled-workflow-reliability",
+        "claude-code-workflow-evaluation-cost"
+      ]
+    },
+    {
+      "number": 95,
+      "slug": "claude-code-workflow-evaluation-cost",
+      "title": "比較流程品質、用量與執行時間",
+      "outcome": "以同一資料集比較兩種工作方法",
+      "prerequisite_numbers": [
+        58,
+        71,
+        91
+      ],
+      "related_numbers": [
+        89,
+        94,
+        96
+      ],
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "成本",
+        "用量",
+        "benchmark",
+        "評估",
+        "效能"
+      ],
+      "deliverable": "固定案例集、原始數據 CSV 與比較報告",
+      "steps": [
+        "先定義正確率及可接受品質",
+        "固定任務、模型版本與計量方式",
+        "比較單代理、多代理或兩種上下文策略",
+        "分析失敗重試與總時間"
+      ],
+      "acceptance": "報告有樣本數、原始紀錄與未計入項目；價格注明來源及日期；不做保證省費的結論",
+      "failure_lab": "只算成功那次呼叫；把重試、等待與人工整合時間也列入",
+      "group": "P",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 45,
+      "lab": "automation-lab",
+      "source_ids": [
+        "headless",
+        "actions",
+        "schedule",
+        "sdk"
+      ],
+      "prerequisites": [
+        "claude-code-usage-cost-optimization",
+        "claude-code-skill-regression-testing",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "related": [
+        "claude-code-agent-teams-integration-lab",
+        "claude-code-agent-sdk-stateful-runner",
+        "claude-code-advanced-capstone"
+      ]
+    },
+    {
+      "number": 96,
+      "slug": "claude-code-advanced-capstone",
+      "title": "期末實作：可維護的待辦專案工作流程",
+      "outcome": "整合規則、技能、工具及驗證，交付一次完整變更",
+      "prerequisite_numbers": [
+        55,
+        61,
+        67,
+        73,
+        79,
+        85,
+        91
+      ],
+      "related_numbers": [
+        88,
+        94,
+        95
+      ],
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "完整實作",
+        "capstone",
+        "待辦專案",
+        "驗收"
+      ],
+      "deliverable": "需求單、設定包、功能 diff、故障紀錄與交付報告",
+      "steps": [
+        "抽取一張待辦功能需求",
+        "依問題選用規則、Skill、Hook 或 MCP",
+        "實作後處理一個指定故障",
+        "整合測試並交付可供審查的版本"
+      ],
+      "acceptance": "完整驗收表均有證據；能從乾淨下載材料重現；不強制為了湊功能使用所有工具",
+      "failure_lab": "工具很多卻無法說明用途；每項工具都對應實際需求與可測成果",
+      "group": "P",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 30,
+      "practice_minutes": 180,
+      "lab": "automation-lab",
+      "source_ids": [
+        "headless",
+        "actions",
+        "schedule",
+        "sdk"
+      ],
+      "prerequisites": [
+        "claude-code-build-todo-app",
+        "claude-code-project-rules-workshop",
+        "claude-code-skill-sop-workshop",
+        "claude-code-hook-event-test-lab",
+        "claude-code-mcp-local-server-workshop",
+        "claude-code-tdd-debugging-workshop",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "related": [
+        "claude-code-worktree-integration-workshop",
+        "claude-code-agent-sdk-stateful-runner",
+        "claude-code-workflow-evaluation-cost"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "best",
+      "title": "Best practices for Claude Code",
+      "url": "https://code.claude.com/docs/en/best-practices",
+      "use": "驗證成果、上下文及開發流程",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "memory",
+      "title": "How Claude remembers your project",
+      "url": "https://code.claude.com/docs/en/memory",
+      "use": "MD 載入、規則作用範圍、記憶與 AGENTS.md 引用",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "permissions",
+      "title": "Configure permissions",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "use": "權限模式、規則與管理設定",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "sandbox",
+      "title": "Configure the sandboxed Bash tool",
+      "url": "https://code.claude.com/docs/en/sandboxing",
+      "use": "支援 OS 與工具隔離邊界",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "skills",
+      "title": "Extend Claude with skills",
+      "url": "https://code.claude.com/docs/en/skills",
+      "use": "呼叫方式、參數、資源及欄位語意",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "plugins",
+      "title": "Create plugins",
+      "url": "https://code.claude.com/docs/en/plugins",
+      "use": "外掛封裝及測試流程",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "hooks",
+      "title": "Hooks reference",
+      "url": "https://code.claude.com/docs/en/hooks",
+      "use": "事件輸入、輸出、退出碼與 Stop 循環",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "mcp",
+      "title": "Connect Claude Code to tools via MCP",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "use": "stdio、HTTP、認證及工具連線",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "subagents",
+      "title": "Create custom subagents",
+      "url": "https://code.claude.com/docs/en/sub-agents",
+      "use": "代理定義與工具範圍",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "teams",
+      "title": "Orchestrate teams of Claude Code sessions",
+      "url": "https://code.claude.com/docs/en/agent-teams",
+      "use": "實驗狀態與團隊限制",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "remote",
+      "title": "Continue local sessions from any device with Remote Control",
+      "url": "https://code.claude.com/docs/en/remote-control",
+      "use": "工作實際執行位置及接續條件",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "headless",
+      "title": "Run Claude Code programmatically",
+      "url": "https://code.claude.com/docs/en/headless",
+      "use": "結構化輸出與 CLI 執行",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "actions",
+      "title": "Claude Code GitHub Actions",
+      "url": "https://code.claude.com/docs/en/github-actions",
+      "use": "CI 整合入口與權限",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "schedule",
+      "title": "Run prompts on a schedule",
+      "url": "https://code.claude.com/docs/en/scheduled-tasks",
+      "use": "排程入口的執行及持久性條件",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    },
+    {
+      "id": "sdk",
+      "title": "Agent SDK overview",
+      "url": "https://code.claude.com/docs/en/agent-sdk/overview",
+      "use": "SDK 能力與後续研究入口",
+      "checked_at": "2026-09-14",
+      "verification": "official_document_review",
+      "live_execution": false
+    }
+  ]
+}

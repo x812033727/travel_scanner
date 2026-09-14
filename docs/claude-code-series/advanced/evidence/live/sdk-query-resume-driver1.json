@@ -1,0 +1,49 @@
+{
+  "checked_at": "2026-09-14T13:15:21.718676+00:00",
+  "scope": "Lesson 94 query and resume in a disposable directory using only a synthetic marker",
+  "sdk_version": "0.3.270",
+  "source_sha256": "048ece5600973a08b4488a7dcb2ef78145ba4c183e6a71794c7815988c347057",
+  "runs": [
+    {
+      "case": "query",
+      "exit": 0,
+      "passed": true,
+      "state": {
+        "schemaVersion": 1,
+        "driverVersion": 1,
+        "sdkVersion": "0.3.270",
+        "status": "completed",
+        "sessionId": "f8b18411-7b4b-44f0-a174-aaded3942f31",
+        "input": "The synthetic project marker is MOKAAIR-SDK-94. Acknowledge it briefly. Do not use tools.",
+        "inputSha256": "ae63d6f292457deb5f1be4828caf6e2d429ebe6bcb8c46313a9ca94f1b68dc21",
+        "startedAt": "2026-09-14T13:15:22.030Z",
+        "updatedAt": "2026-09-14T13:15:25.775Z",
+        "result": "Acknowledged — synthetic project marker MOKAAIR-SDK-94. No tools used.",
+        "subtype": "success"
+      },
+      "stderr": ""
+    },
+    {
+      "case": "resume",
+      "exit": 0,
+      "passed": true,
+      "state": {
+        "schemaVersion": 1,
+        "driverVersion": 1,
+        "sdkVersion": "0.3.270",
+        "status": "completed",
+        "sessionId": "f8b18411-7b4b-44f0-a174-aaded3942f31",
+        "input": "Reply with the project marker from our last exchange.",
+        "inputSha256": "cd571db38764f8bdba06727f51e1adb840599b2bf45d7c7f724a99367a6123d6",
+        "startedAt": "2026-09-14T13:15:26.705Z",
+        "updatedAt": "2026-09-14T13:15:30.126Z",
+        "result": "MOKAAIR-SDK-94",
+        "subtype": "success"
+      },
+      "stderr": ""
+    }
+  ],
+  "passed": true,
+  "finished_at": "2026-09-14T13:15:30.748388+00:00",
+  "temporary_directory": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-sdk-live-chcin930"
+}

@@ -1,0 +1,402 @@
+{
+  "slug": "qwen-alibaba-models-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
+      "description": "阿里巴巴的通義千問 Qwen 一邊把權重放上 Hugging Face 讓人下載，一邊經營叫 Qwen Studio（原 Qwen Chat）的網頁與 App。這篇用 2026 年 9 月查證的官方頁面，說清楚家族成員、模型卡上的參數規模與上下文視窗、Apache 2.0 與兩份 Qwen 授權差在哪、台灣能不能註冊，以及國際站 Qwen Cloud 與中國站阿里雲百煉的 API 價格。",
+      "hero": {
+        "src": "/guides/qwen-alibaba-models-guide/hero.jpg",
+        "alt": "插圖：上方一個圓角方塊裡疊著三條粗線代表模型權重，四條線往下連到文字、圖片、聲音、程式四個方塊，每個方塊下方的箭頭都指向同一條粗橫條",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Qwen（通義千問）是阿里巴巴做的一整套 AI 模型。和多數線上服務最大的差別是，大部分版本的權重可以下載回自己的電腦跑；但家族裡也有只能呼叫 API 的版本，授權還分三種。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你查清楚三件事：哪些版本下載得到、授權允許你做什麼、資料流到哪裡，順便看台灣怎麼註冊、API 多少錢。來源全是官方頁面，查證日期是 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "heading",
+          "text": "先弄清楚名字與官方入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "中文譯名是通義千問，英文與模型檔名一律寫 Qwen。名字在 2026 年換過：chat.qwen.ai 的頁面標題現在是 Qwen Studio，官網說它讓使用者和開發者用同一個入口存取 Qwen 的開源與自家模型，舊文章寫的 Qwen Chat 就是這個網址。舊部落格 qwenlm.github.io 停在 2025 年 9 月，打開會公告新站在 qwen.ai 並轉址。"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "heading",
+          "text": "家族有哪些成員",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "查證當天 Hugging Face 上 Qwen 官方組織列出 465 個模型檔案庫。本文用站上名詞篇的「開放權重」，有些文章寫成「開源權重」，指同一件事。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "文字與多模態：Qwen3.8-2.4T-A95B、Qwen3.8-27B、Qwen3.8-Flash-Next，都下載得到。",
+            "程式：Qwen3-Coder-Next，模型卡寫它給程式代理與本機開發用。",
+            "圖片：Qwen-Image-2512 生成、Qwen-Image-Edit-2511 編輯。",
+            "語音：Qwen3-ASR 辨識、Qwen3-TTS 合成。",
+            "檢索：Qwen3-Embedding 轉向量、Qwen3-Reranker 重新排序。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "但官方 API 市集上還有在 Hugging Face 找不到權重的版本，例如 Qwen-Image-3.0-Pro 與 Wan3.0-Video，只能呼叫 API。看到新聞說 Qwen 又開源，要回模型卡確認你要用的那個是不是。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/qwen-alibaba-models-guide/diagram-1.svg",
+          "alt": "Qwen 家族地圖：左邊是可下載的開放權重模型，依文字、程式、圖片、語音分成四類；右邊是只有 API 的版本與三種授權",
+          "width": 1600,
+          "height": 900,
+          "caption": "左半邊是下載得到權重的，右半邊是只能呼叫 API 的；右下角提醒授權有三種，以模型卡寫的為準。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-multimodal-ai"
+        },
+        {
+          "type": "heading",
+          "text": "模型卡上的三個數字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個是參數規模。Qwen3.8-2.4T-A95B 的模型卡寫總參數 2.4T、啟用 95B；Qwen3.8-27B 是 270 億的密集模型，沒有啟用參數；Qwen3.8-Flash-Next 寫 125B 總參數、6B 啟用，另加 51B 的 n-gram 嵌入；Qwen3-Coder-Next 是 80B、3B 啟用。只啟用一部分的架構叫混合專家。"
+        },
+        {
+          "type": "link",
+          "text": "混合專家模型（Mixture of Experts）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個是上下文視窗。前面三個都寫原生 262,144 個 token，延伸上限是 Qwen3.8-2.4T-A95B 的 1,010,000 與另外兩個的 1,000,000；Qwen3-Coder-Next 只寫原生 262,144。"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三個是授權條款名稱。Hugging Face 的模型 API 會把建立日期與授權標籤回傳，一行指令就能核對。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 Hugging Face 的模型 API 核對授權與建立日期",
+          "code": "curl -s https://huggingface.co/api/models/Qwen/Qwen3.8-27B\ncurl -s https://huggingface.co/api/models/Qwen/Qwen3.8-2.4T-A95B\n\ncurl -s https://huggingface.co/Qwen/Qwen3.8-Flash-Next/raw/main/LICENSE"
+        },
+        {
+          "type": "heading",
+          "text": "能不能商用：三種授權",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Apache 2.0 最寬鬆，Qwen3.8-27B、Qwen3-Coder-Next、Qwen-Image-2512、Qwen3-ASR 與 Qwen3-TTS 都標這一個，商用沒有額外門檻。另外兩種是 Qwen 自己寫的：Qwen3.8-2.4T-A95B 用 Qwen3.8-Max License，Qwen3.8-Flash-Next 用 Qwen Community License 1.0，開頭都允許修改、散布與微調，但各加了條件。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "兩份都寫：產品每月活躍使用者超過 100,000,000 人或每月營收超過 20,000,000 美元，要在介面標出模型名稱。",
+            "Qwen3.8-Max License：做模型即服務或 AI 辦公助手生意、十二個月合計營收超過 50,000,000 美元，商用前要另外取得授權。",
+            "Qwen Community License 1.0：同一條沒有營收門檻，做這兩類生意就要另外取得授權。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+        },
+        {
+          "type": "heading",
+          "text": "Qwen Studio 在台灣怎麼用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版在 chat.qwen.ai，查證當天連得上，GitHub 的 Qwen3.8 說明寫它免費使用、對所有人開放。註冊走電子郵件加密碼並收啟用信；隱私政策另外寫可能提供用第三方社群帳號登入，舉例 Google 和 GitHub。手機門號註冊官網沒寫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "App Store 台灣區有上架，免費、分級 17+、需要 iOS 16 以上，開發者是 NTH POWER GLOBAL TECH SINGAPORE PTE. LTD，當天版本 2.10.0；Google Play 台灣區的開發者顯示 Alibaba Cloud，寫 500 萬次以上下載。"
+        },
+        {
+          "type": "paragraph",
+          "text": "介面列的功能有聯網搜尋、深度研究、圖片生成、影片生成、Web Dev、Artifacts、語音對話、視訊對話、思考模式與檔案上傳。付費有升級 Plus 的入口，價格與開放地區要登入才看得到，台灣能不能訂閱以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        },
+        {
+          "type": "heading",
+          "text": "API 在哪裡買：國際站與中國站分開算",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "國際站叫 Qwen Cloud，營運主體寫 Intelligent Cloud Computing (Singapore) Private Limited，模型市集頁寫新用戶有 7,000 萬個以上免費 token。每百萬 token：qwen3.8-max 輸入 2 美元、輸出 6 美元，qwen3.8-flash 輸入 0.15 美元、輸出 0.47 美元。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "Qwen Cloud 的 OpenAI 相容呼叫（範例取自官方模型頁）",
+          "code": "from openai import OpenAI\nimport os\n\nclient = OpenAI(\n    api_key=os.getenv(\"DASHSCOPE_API_KEY\"),\n    base_url=\"https://dashscope-intl.aliyuncs.com/compatible-mode/v1\",\n)\n\ncompletion = client.chat.completions.create(\n    model=\"qwen3.8-max\",\n    messages=[{\"role\": \"user\", \"content\": \"Who are you\"}],\n)\nprint(completion.choices[0].message.content)"
+        },
+        {
+          "type": "paragraph",
+          "text": "中國站是阿里雲百煉，以人民幣計：華北 2（北京）的 qwen3.8-max 輸入 12 元、輸出 36 元，qwen3.8-flash 輸入 0.8 元、輸出 2.7 元，各附 100 萬 token 免費額度、有效期 90 天，其他地域沒有。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Qwen Cloud 另有訂閱制 Token Plan，方案叫 Lite、Standard、Pro，寫比按量付費便宜約四成，金額以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "隱私政策寫的資料流向",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "政策開頭寫 qwen.ai 上的服務由 Alibaba Cloud (Singapore) Private Limited 提供。跨境那段的原文是：個人資料可能被移出、並在你所在的司法管轄區之外處理，例如交給海外的集團公司或第三方；集團中位於新加坡與中國大陸的特定實體被給予有限遠端存取權，以提供某些重要功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訓練用途寫在官網的訓練資料摘要：有些情況下會使用使用者提供的資料，包括與服務的互動，來改善服務；使用者可以選擇讓內容不用於訓練，方式是向他們提出請求。也就是退出要用申請的，不是一個開關。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留期限沒有給固定天數，只寫取決於個資性質、蒐集處理原因與法律要求。介面上能調的是臨時對話與記憶。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "link",
+          "text": "使用中國系 AI App 前的資安檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "自己跑，或跟別家比",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開放權重可以完全在自己的電腦上跑。Qwen3.8 的說明列了 transformers、llama.cpp、MLX 與 Unsloth，Qwen3-Coder-Next 的模型卡也點名 Ollama，做法和本站的 Ollama 教學一樣。"
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        },
+        {
+          "type": "link",
+          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+        },
+        {
+          "type": "link",
+          "text": "Kimi（月之暗面）：長文件與 K 系列模型",
+          "url": "https://mokaair.com/zh-TW/life/kimi-moonshot-guide"
+        },
+        {
+          "type": "table",
+          "header": [
+            "模型或產品",
+            "規模與上下文",
+            "授權或方案",
+            "用途"
+          ],
+          "rows": [
+            [
+              "Qwen3.8-2.4T-A95B",
+              "2.4T 總參數、95B 啟用，原生 262,144",
+              "Qwen3.8-Max License",
+              "開放權重旗艦"
+            ],
+            [
+              "Qwen3.8-27B",
+              "270 億密集參數",
+              "Apache 2.0",
+              "開放權重，可讀圖片"
+            ],
+            [
+              "Qwen3.8-Flash-Next",
+              "125B 總參數、6B 啟用",
+              "Qwen Community License 1.0",
+              "開放權重，新架構"
+            ],
+            [
+              "Qwen3-Coder-Next",
+              "80B 總參數、3B 啟用",
+              "Apache 2.0",
+              "開放權重，程式代理"
+            ],
+            [
+              "Qwen-Image-3.0-Pro、Wan3.0-Video",
+              "沒有開放權重",
+              "只有 API",
+              "圖片與影片生成"
+            ],
+            [
+              "qwen3.8-max（API）",
+              "上下文 1M",
+              "輸入 2 美元、輸出 6 美元",
+              "Qwen Cloud"
+            ]
+          ],
+          "caption": "資料取自官方模型卡與定價頁，查證 2026 年 9 月"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "看到開源兩字，還是要打開模型卡",
+          "text": "Qwen 家族三種授權混著用：Qwen3.8-27B 與 Qwen3-Coder-Next 是 Apache 2.0，Qwen3.8-2.4T-A95B 是 Qwen3.8-Max License，Qwen3.8-Flash-Next 是 Qwen Community License 1.0，後兩者對大規模商用另有條件。決定前先看模型卡的 license 欄位。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Qwen 官方網站首頁（產品入口與 App 下載設定）",
+          "url": "https://qwen.ai/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen Studio 官方網頁（頁面標題與服務說明）",
+          "url": "https://chat.qwen.ai/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen 舊官方部落格（頁面公告已搬到 qwen.ai）",
+          "url": "https://qwenlm.github.io/blog/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen 隱私政策（服務提供者、跨境傳輸與保留期限）",
+          "url": "https://qwen.ai/privacypolicy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen 訓練資料摘要（訓練資料來源與退出訓練的方式）",
+          "url": "https://qwen.ai/training-data-summary",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face Qwen 官方組織頁（模型檔案庫清單）",
+          "url": "https://huggingface.co/Qwen",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen3.8-2.4T-A95B 模型卡（參數規模與上下文長度）",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen3.8-Max License 授權原文",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen3.8-27B 模型卡（密集模型規格與視覺語言能力）",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen3.8-Flash-Next 模型卡（總參數與啟用參數）",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen Community License 1.0 授權原文",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen3-Coder-Next 模型卡（規格、上下文與本機工具）",
+          "url": "https://huggingface.co/Qwen/Qwen3-Coder-Next",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub QwenLM Qwen3.8 說明（版本沿革、免費說明與本機部署）",
+          "url": "https://github.com/QwenLM/Qwen3.8",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen Cloud 模型市集（模型分類與新用戶免費 token）",
+          "url": "https://www.qwencloud.com/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen Cloud qwen3.8-max 模型頁（每百萬 token 定價與上下文）",
+          "url": "https://www.qwencloud.com/models/qwen3.8-max",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen Cloud qwen3.8-flash 模型頁（每百萬 token 定價）",
+          "url": "https://www.qwencloud.com/models/qwen3.8-flash",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen Cloud Token Plan 訂閱頁（方案名稱與折扣說明）",
+          "url": "https://www.qwencloud.com/pricing/token-plan",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "阿里雲百煉 模型調用價格（人民幣定價與免費額度）",
+          "url": "https://help.aliyun.com/zh/model-studio/billing-for-model-studio",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "App Store 台灣區 Qwen Studio 頁面（售價、分級與版本）",
+          "url": "https://apps.apple.com/tw/app/id6743778442",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Play 台灣區 Qwen Studio 頁面（開發者與更新日期）",
+          "url": "https://play.google.com/store/apps/details?id=ai.qwenlm.chat.android",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

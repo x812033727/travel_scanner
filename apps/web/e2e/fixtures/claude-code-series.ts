@@ -8,7 +8,7 @@ import { inflateRawSync } from "node:zlib";
 
 const root = new URL("../../../", import.meta.url);
 const read = (path: string) => JSON.parse(readFileSync(new URL(path, root), "utf8"));
-type Inline = { type: string; slug?: string; kind?: string; text?: string };
+type Inline = { type: string; slug?: string; kind?: string; text?: string; url?: string };
 type Block = { type: string; text?: string; code?: string; inlines?: Inline[] };
 type Pack = { slug: string; locales: { "zh-TW": { title: string; description: string; hero: unknown; sources: unknown[]; blocks: Block[] } } };
 export const catalogue = read("api/app/guides/series_data/claude-code.json") as {
@@ -25,8 +25,8 @@ const entries = catalogue.entries.map(entry => ({
 }));
 export const hubPath = `/zh-TW/life/${catalogue.hub}`;
 
-export async function startPracticePreview() {
-  const archive = readFileSync(new URL("web/public/tutorials/claude-code/complete.zip", root));
+export async function startPracticePreview(archiveName = "complete", prefix = "complete") {
+  const archive = readFileSync(new URL(`web/public/tutorials/claude-code/${archiveName}.zip`, root));
   const files = new Map<string, Buffer>();
   let offset = 0;
   while (archive.readUInt32LE(offset) === 0x04034b50) {
@@ -34,7 +34,7 @@ export async function startPracticePreview() {
     const length = archive.readUInt16LE(offset + 26);
     const start = offset + 30 + length + archive.readUInt16LE(offset + 28);
     const name = archive.subarray(offset + 30, offset + 30 + length).toString("utf8");
-    files.set(name.replace(/^complete\//, "/"), inflateRawSync(archive.subarray(start, start + size)));
+    if (name.startsWith(prefix + "/")) files.set("/" + name.slice(prefix.length + 1), inflateRawSync(archive.subarray(start, start + size)));
     offset = start + size;
   }
   const server = createServer((req, res) => {
@@ -69,7 +69,11 @@ export async function startSeriesPreview() {
       result = { slug, kind: "life", locale, status: visible ? "published" : "unpublished", destination_id: null, destination_label: null,
         topics: [{ slug: "ai", label: "AI" }, { slug: "tutorial", label: "教學" }], valid_until: null, expired: false,
         published_locales: pack ? ["zh-TW"] : [],
-        document: visible ? { ...pack.locales["zh-TW"], version: 1, published_at: "2026-09-14T00:00:00Z", modified_at: null } : null,
+        document: visible ? { ...pack.locales["zh-TW"],
+          // Serve not-yet-published downloads from this local preview, preserving source packs.
+          blocks: pack.locales["zh-TW"].blocks.map(block => block.inlines ? { ...block, inlines: block.inlines.map(inline => inline.type === "link" && inline.url?.startsWith("https://mokaair.com/tutorials/claude-code/")
+            ? { ...inline, url: origin + new URL(inline.url).pathname } : inline) } : block),
+          version: 1, published_at: "2026-09-14T00:00:00Z", modified_at: null } : null,
         article_links: visible ? Array.from(new Set(pack.locales["zh-TW"].blocks.flatMap(b => b.inlines?.filter(i => i.type === "article" && i.kind === "life" && packs.has(i.slug!)).map(i => i.slug!) ?? []))).map(reference) : [],
         series: visible ? { slug: catalogue.slug, hub: reference(catalogue.hub), current: index < 0 ? null : entries[index],
           previous: index > 0 ? reference(entries[index - 1].slug) : null,
