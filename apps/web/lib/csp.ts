@@ -1,11 +1,25 @@
 /**
  * Content Security Policy helpers.
  *
- * `CSP_BASELINE` is enforced on every response from `next.config.ts`: it only contains directives
- * that cannot break a page (no plugins, no framing, no foreign <base>, form posts limited to this
- * site and HTTPS partners). The strict policy below is delivered as Report-Only from `proxy.ts`
- * so that violations show up in the browser console without breaking maps or analytics; switch it
- * to `Content-Security-Policy` once the console stays clean in production.
+ * Three policies, and which one is enforced is the whole point of this file.
+ *
+ * `CSP_BASELINE` is enforced from `next.config.ts` on every response, including the ones
+ * `proxy.ts` never sees — its matcher skips `/api`, `/_next` and anything with a file
+ * extension. It carries only directives that cannot break a page, and nothing about scripts.
+ *
+ * `buildEnforcedContentSecurityPolicy` is enforced from `proxy.ts` on every document. It is
+ * the half that decides whether a script runs at all: the nonce, `'strict-dynamic'`, and the
+ * four baseline directives. Enforcing it is what stops an injected `<script>` or an
+ * `onerror=` attribute, and it is safe to enforce because every script on the site either
+ * carries the request nonce or is injected by one that does — see the evidence in
+ * `e2e/csp.spec.ts`.
+ *
+ * `buildStrictContentSecurityPolicy` is the full policy and stays Report-Only, because the
+ * resource directives are not yet proven. `connect-src` in particular names no Google Maps
+ * host, so enforcing it today would break the map the first time a real browser key is
+ * present — which no local run can reproduce, because the mock API serves no map keys.
+ * Promote the rest only after production reports come back empty; the directives are
+ * already being evaluated in every visitor's browser, so that evidence is free to collect.
  */
 export const CSP_BASELINE =
   "frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https:";
@@ -38,15 +52,61 @@ export function createNonce(): string {
  * scoped this narrowly instead of being applied site-wide or to every article: with
  * advertising off — today, and the default — every response keeps the policy it has now.
  */
+type PolicyOptions = { nonce: string; production: boolean; adsense?: boolean };
+
+/**
+ * Who may start a script chain. Shared so the enforced policy and the Report-Only one can
+ * never disagree about it: a script the browser refuses under one and allows under the other
+ * would make every report meaningless.
+ *
+ * The host entries are a fallback for browsers without `'strict-dynamic'` (Safari below
+ * 15.4), which ignore the keyword and fall back to the list. Browsers that do support it
+ * ignore the hosts entirely, so the entries cost nothing there — but while the policy was
+ * only reporting, a missing host was invisible, and under enforcement it is a map that does
+ * not draw. `maps.googleapis.com` (`components/route-map.tsx`) and `scripts.stay22.com`
+ * (`components/stay22-script.tsx`) are both injected at runtime and were both absent.
+ */
+function scriptSources({ nonce, production, adsense = false }: PolicyOptions): string[] {
+  return [
+    "'self'",
+    `'nonce-${nonce}'`,
+    "'strict-dynamic'",
+    "https://www.googletagmanager.com",
+    "https://oapi.map.naver.com",
+    "https://maps.googleapis.com",
+    "https://scripts.stay22.com",
+    "https://emrldtp.cc",
+    ...(production && !adsense ? [] : ["'unsafe-eval'"]),
+    ...(adsense ? ["https:"] : []),
+  ];
+}
+
+/**
+ * The enforced policy: script execution plus the four directives `CSP_BASELINE` already
+ * carries. Deliberately no `default-src` — that would restrict connections, styles and fonts,
+ * which is the half this does not yet claim to have verified.
+ *
+ * Enforcing this is not free of consequence for an article page carrying ads: `scriptSources`
+ * widens to `'unsafe-eval' https:` there, which is close to no script restriction at all.
+ * That is the same trade Google's own guidance forces (see `buildStrictContentSecurityPolicy`),
+ * and it is now a real one rather than a reported one — the two article routes with
+ * advertising switched on are the only documents on the site without script protection.
+ */
+export function buildEnforcedContentSecurityPolicy(options: PolicyOptions): string {
+  return [
+    `script-src ${scriptSources(options).join(" ")}`,
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self' https:",
+    "frame-ancestors 'none'",
+  ].join("; ");
+}
+
 export function buildStrictContentSecurityPolicy({
   nonce,
   production,
   adsense = false,
-}: {
-  nonce: string;
-  production: boolean;
-  adsense?: boolean;
-}): string {
+}: PolicyOptions): string {
   const mediaSources: string[] = [];
   try {
     const value = process.env.COMMUNITY_MEDIA_ORIGIN?.trim();
@@ -60,21 +120,9 @@ export function buildStrictContentSecurityPolicy({
       }
     }
   } catch { /* Invalid configuration never broadens policy. */ }
-  const scriptSources = [
-    "'self'",
-    `'nonce-${nonce}'`,
-    "'strict-dynamic'",
-    // GA4 tag and the NAVER Maps loader are added by next/script; the host entries keep browsers
-    // without 'strict-dynamic' support working.
-    "https://www.googletagmanager.com",
-    "https://oapi.map.naver.com",
-    "https://emrldtp.cc",
-    ...(production && !adsense ? [] : ["'unsafe-eval'"]),
-    ...(adsense ? ["https:"] : []),
-  ];
   const directives = [
     "default-src 'self'",
-    `script-src ${scriptSources.join(" ")}`,
+    `script-src ${scriptSources({ nonce, production, adsense }).join(" ")}`,
     // Tailwind output is a stylesheet, but React inline styles and the map SDKs need inline CSS.
     "style-src 'self' 'unsafe-inline'",
     // Provider photos and hotspot thumbnails come from arbitrary HTTPS hosts.

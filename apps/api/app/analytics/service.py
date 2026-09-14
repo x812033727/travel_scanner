@@ -98,8 +98,14 @@ def normalize_path(raw: str) -> str | None:
     return normalized[:128] or "/"
 
 
-def _digest(secret: str, purpose: str, value: str) -> str:
-    return hmac.new(secret.encode(), f"{purpose}:{value}".encode(), hashlib.sha256).hexdigest()
+def _digest(key: bytes, purpose: str, value: str) -> str:
+    """Pseudonymise one identity under the analytics key.
+
+    Takes the key rather than reading it, so every call site is visibly using the same one:
+    a caller that reached for ``app_secret_key`` instead is what this module is recovering
+    from, and it would be invisible again if the key were looked up in here.
+    """
+    return hmac.new(key, f"{purpose}:{value}".encode(), hashlib.sha256).hexdigest()
 
 
 def _utm(value: str | None) -> str | None:
@@ -215,8 +221,9 @@ async def ingest_events(
         if re.fullmatch(r"[A-Z]{2}", raw_country) and raw_country not in {"XX", "T1"}:
             country = raw_country
     today = now.astimezone(TAIPEI).date().isoformat()
-    session_hash = _digest(settings.app_secret_key, "analytics-session", str(payload.session_id))
-    visitor_hash = _digest(settings.app_secret_key, "analytics-day", f"{today}|{ip}|{ua}")
+    analytics_key = settings.analytics_hash_key
+    session_hash = _digest(analytics_key, "analytics-session", str(payload.session_id))
+    visitor_hash = _digest(analytics_key, "analytics-day", f"{today}|{ip}|{ua}")
     values: list[dict[str, Any]] = []
     for item in payload.events:
         if item.name in SERVER_OWNED_EVENTS:
@@ -376,9 +383,10 @@ async def record_event(
                 if user_id
                 else ("analytics-server-ip", f"{today}|{context.client_ip or 'unknown'}")
             )
-            session_hash = _digest(settings.app_secret_key, identity[0], identity[1])
+            analytics_key = settings.analytics_hash_key
+            session_hash = _digest(analytics_key, identity[0], identity[1])
             visitor_hash = _digest(
-                settings.app_secret_key,
+                analytics_key,
                 "analytics-day",
                 f"{today}|{context.client_ip or 'unknown'}|{user_agent}",
             )

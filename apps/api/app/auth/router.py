@@ -15,6 +15,7 @@ from app.auth.oauth import (
     revoke_identity,
     start_oauth,
 )
+from app.auth.passwords import reject_weak_password
 from app.auth.schemas import (
     AuthIdentityResponse,
     ChangePasswordRequest,
@@ -123,6 +124,10 @@ async def register(
             "admin_email_reserved",
             "這個 Email 已保留給系統管理員，請由主機管理員以 CLI 建立帳號",
         )
+    # Before the existence lookup: it is a local check, so a refusable password costs no
+    # database round trip, and a weak one is refused the same way whether or not the address
+    # is already taken.
+    reject_weak_password(payload.password, email=str(payload.email))
     if await find_user_by_email(session, str(payload.email)):
         raise AppError(409, "email_exists", "這個 Email 已經註冊")
     user = User(
@@ -250,6 +255,7 @@ async def change_password(
         raise AppError(409, "password_not_set", "這個帳號尚未設定密碼")
     if not verify_password(payload.current_password, user.password_hash):
         raise AppError(401, "invalid_credentials", "目前密碼不正確")
+    reject_weak_password(payload.new_password, email=user.email)
     user.password_hash = hash_password(payload.new_password)
     user.auth_version = (user.auth_version or 1) + 1
     await session.commit()

@@ -105,10 +105,17 @@ measuring happens server-side'.」（`analytics/context.py:39-41`）
 
 - 路徑會正規化：UUID 與長 token 換成 `:id`，而且 `/admin`、`/api`、`/health`、`/ready`
   底下的事件**整筆丟掉**（`service.py:83-98`）。
-- `session_hash` 與 `visitor_day_hash` 是用 `APP_SECRET_KEY` 當金鑰的 **HMAC-SHA256**
-  （`service.py:100-101,216-217`），不是單純雜湊。原始 IP 只當 HMAC 輸入，**從不儲存**，
-  而且 `visitor_day_hash` 按台北日期輪替。
-  *附帶影響*：換掉 `APP_SECRET_KEY` 會讓這兩個雜湊斷開連續性，而同一把金鑰也在簽 session JWT。
+- `session_hash` 與 `visitor_day_hash` 是 **HMAC-SHA256**（`service.py:101-108`），不是單純
+  雜湊。原始 IP 只當 HMAC 輸入，**從不儲存**，而且 `visitor_day_hash` 按台北日期輪替。
+  金鑰是 `Settings.analytics_hash_key`（`config.py`），由 `SETTINGS_ENCRYPTION_KEY` 以固定
+  標籤 `mokaair:analytics-hash-key:v1` 做一次 HMAC 派生而來，**不是** `APP_SECRET_KEY` 本身，
+  也不是 `SETTINGS_ENCRYPTION_KEY` 本身——拿到分析資料表的人不會同時拿到能簽 token 或解密
+  供應商金鑰的值。
+  *可以輪替什麼*：換 `APP_SECRET_KEY`（簽 session JWT 的那把）**不影響**這兩個雜湊，所以
+  緊急輪替簽章金鑰不再需要拿統計連續性去換。要重新 key 這些雜湊，得換
+  `SETTINGS_ENCRYPTION_KEY`，那是一個獨立而且刻意的決定。
+  在非正式環境 `SETTINGS_ENCRYPTION_KEY` 可以不設，這時會退回 `APP_SECRET_KEY`；正式環境
+  `validate_deployment_security` 要求它必須存在、至少 32 字元，且與 `APP_SECRET_KEY` 不同。
 - 事件屬性只收 bool、int，與符合 `[a-z][a-z0-9_]{0,31}` 的字串，最多 6 個 key
   （`service.py:277-296`）。註解值得直接引用：「a truncated identifier is still an
   identifier, and a UUID is only 'a short string' until you notice it names someone.」

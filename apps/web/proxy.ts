@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 import { routing } from "./i18n/routing";
 import { adsenseRequestGate } from "./lib/adsense";
 import { fetchAdsenseConfig } from "./lib/adsense-config";
-import { buildStrictContentSecurityPolicy, createNonce } from "./lib/csp";
+import { buildEnforcedContentSecurityPolicy, buildStrictContentSecurityPolicy, createNonce } from "./lib/csp";
 
 const handleLocale = createMiddleware(routing);
 
@@ -26,21 +26,25 @@ export default async function proxy(request: NextRequest) {
     gpc: request.headers.get("sec-gpc"),
     pathname: request.nextUrl.pathname,
   }) !== null && (await fetchAdsenseConfig()).enabled;
-  const policy = buildStrictContentSecurityPolicy({
-    nonce,
-    production: process.env.NODE_ENV === "production",
-    adsense,
-  });
+  const options = { nonce, production: process.env.NODE_ENV === "production", adsense };
+  // Two policies per document. The script half is enforced; the resource half only reports.
+  // `lib/csp.ts` explains why the split exists and what has to be true before it closes.
+  const enforced = buildEnforcedContentSecurityPolicy(options);
+  const reported = buildStrictContentSecurityPolicy(options);
   // next-intl copies the incoming request headers into NextResponse.next({ request }), so the
   // renderer sees this header, applies the nonce to Next.js' own inline scripts, and the layout can
-  // read the nonce for the theme bootstrap script.
-  request.headers.set("content-security-policy-report-only", policy);
+  // read the nonce for the theme bootstrap script. Next reads `content-security-policy` first and
+  // only falls back to the report-only name, so the enforced policy has to be the one set here:
+  // both carry the same nonce, but a reader of this file should not have to know about the
+  // fallback to believe the nonce arrives.
+  request.headers.set("content-security-policy", enforced);
   request.headers.set("x-nonce", nonce);
   // Nested server layouts use this trusted request header to retain the exact
   // in-app destination when an unauthenticated administrator is sent to login.
   request.headers.set("x-travel-pathname", `${request.nextUrl.pathname}${request.nextUrl.search}`);
   const response = handleLocale(request);
-  response.headers.set("Content-Security-Policy-Report-Only", policy);
+  response.headers.set("Content-Security-Policy", enforced);
+  response.headers.set("Content-Security-Policy-Report-Only", reported);
   return response;
 }
 
