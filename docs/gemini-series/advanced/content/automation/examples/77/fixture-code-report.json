@@ -1,0 +1,13 @@
+{
+  "agent": "authored-code-fixture",
+  "status": "complete",
+  "findings": [
+    {
+      "file": "src/limit.mjs",
+      "line": 1,
+      "quote": "export const limit = (n) => Math.min(10, n);",
+      "check": "lower-bound",
+      "recommendation": "Add a lower bound of zero."
+    }
+  ]
+}

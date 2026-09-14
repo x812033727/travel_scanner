@@ -1,0 +1,999 @@
+{
+  "checkedAt": "2026-09-14T12:39:31.655793+00:00",
+  "status": "authoring-review-not-release",
+  "publishable": false,
+  "scope": "automation track 75-80 only",
+  "baselineCommit": "243fa08da05e886384e6b6360b7d2d8ef2dba258",
+  "preservation": {
+    "runtimeArticles": 50,
+    "originalContentPacksUnchanged": 51,
+    "priorMdDraftsUnchanged": 6,
+    "catalogueSha256": "1f6afed7f3bf7f05a407b8d5af4647938cf6d91df6b42a381a904b1f6d697bb2"
+  },
+  "environment": {
+    "platform": "Windows",
+    "node": "24.19.0",
+    "cli": "0.59.0",
+    "python": "3.13.15",
+    "mcpPythonSdk": "2.2.0"
+  },
+  "checks": [
+    {
+      "name": "selected catalogue, content, assets and internal links",
+      "passed": 6
+    },
+    {
+      "name": "selected guide pack lint",
+      "passed": 6
+    },
+    {
+      "name": "previous MD drafts check",
+      "passed": 6
+    },
+    {
+      "name": "original hub and basic articles check",
+      "passed": 51
+    },
+    {
+      "name": "related API tests",
+      "passed": 38,
+      "skipped": 8,
+      "skipReason": "isolated PostgreSQL integration services unavailable"
+    },
+    {
+      "name": "CLI modules and local MCP",
+      "observations": 28
+    },
+    {
+      "name": "Python authored fixtures",
+      "passed": 23
+    },
+    {
+      "name": "ZIP CRC, source bytes, extract and rerun",
+      "packages": 7,
+      "passed": true
+    },
+    {
+      "name": "individual artwork visual inspection",
+      "artworks": 12,
+      "previews": 24
+    },
+    {
+      "name": "Python Ruff and syntax, Node syntax, JSON/TOML parsing",
+      "passed": true
+    }
+  ],
+  "pending": [
+    "interactive /mcp disable and model tool selection",
+    "full model-to-tool hook flow",
+    "actual subagent responses and concurrency",
+    "real headless model calls",
+    "GitHub hosted workflow execution",
+    "actual model document-maintenance proposals",
+    "macOS and Linux real-environment checks",
+    "remaining advanced batches and shared UI integration",
+    "database publication, public browser and sitemap verification"
+  ],
+  "files": [
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-docs-maintenance-project.json",
+      "bytes": 18650,
+      "sha256": "925d59bfbdae1d5fe3c81f6d70b9308deb25d9d6a8e52a325bb3c08e8066c35f"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-github-actions-artifacts.json",
+      "bytes": 17995,
+      "sha256": "375bf273865a4c3910b411d02543e921a4396ed0d4a8de0e399d8fe1ebdc1c8a"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-hooks-quality-gates.json",
+      "bytes": 18357,
+      "sha256": "9d077f8157d7dc326588a2ec8bcb83e47fc5451a35ca13902dfb243ce6dcf529"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-mcp-server-workshop.json",
+      "bytes": 16999,
+      "sha256": "14b1f0b1d10a9476f30a82c461b2cb1a45c9379643c187dd29be21912997bcab"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-resumable-batch-pipeline.json",
+      "bytes": 16810,
+      "sha256": "256ba671bc607ada88ab840b93c2bdedf30b77b846bce6b9842130e44c98481d"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-cli-subagent-review-workflow.json",
+      "bytes": 17437,
+      "sha256": "efb50ffc6f46411efad757832bd0c7e1d93f1d5fd7401fc794bf48054653c2ea"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-docs-maintenance-project/automation-verification.zip",
+      "bytes": 44558,
+      "sha256": "d8142dd941d9707cb0b82f89c43a9183e5f9cd401e1717eb6f216b37e05603de"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-docs-maintenance-project/diagram-1.svg",
+      "bytes": 2272,
+      "sha256": "89e22c01183a2ab9f16fb872fd021c03e7cdd06edefb5f19d9babc69a57a6f3e"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-docs-maintenance-project/hero.jpg",
+      "bytes": 100931,
+      "sha256": "d9be6ece1a3a90388409033403e8228caa603e2ce567a3d665404661c0279b23"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-docs-maintenance-project/hero.svg",
+      "bytes": 1631,
+      "sha256": "b0dd242c5903d7684f8dc8e0b9187dd664daafaa212487a08f16ad38bcfbb09f"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-docs-maintenance-project/lesson-80.zip",
+      "bytes": 7215,
+      "sha256": "c7fc91725e236c32a4a6058a7c33e2d2470b0d183523330ffd47b8ed1b90065e"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-github-actions-artifacts/automation-verification.zip",
+      "bytes": 44558,
+      "sha256": "d8142dd941d9707cb0b82f89c43a9183e5f9cd401e1717eb6f216b37e05603de"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-github-actions-artifacts/diagram-1.svg",
+      "bytes": 2281,
+      "sha256": "ab4d069ca37b5d5fc8b45ecefb0c9692fcf2285516b05cbe9355f3ed796b83b5"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-github-actions-artifacts/hero.jpg",
+      "bytes": 93828,
+      "sha256": "d70638c0e6d7220d29d6d0bd8354cbaef284eae9d83ed5907580488853c2cc22"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-github-actions-artifacts/hero.svg",
+      "bytes": 1619,
+      "sha256": "f78d82020c3ea2b2ce7c9882135186f57c418a9c927d591128ae1c70b32f4f44"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-github-actions-artifacts/lesson-79.zip",
+      "bytes": 7226,
+      "sha256": "d69b4c10d6f301bd886260fa0c8a990ee7608f97ec76f947a62cc17b74257c2b"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-hooks-quality-gates/automation-verification.zip",
+      "bytes": 44558,
+      "sha256": "d8142dd941d9707cb0b82f89c43a9183e5f9cd401e1717eb6f216b37e05603de"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-hooks-quality-gates/diagram-1.svg",
+      "bytes": 2282,
+      "sha256": "e06f5ade3a19b56363355b27165a304f80cab36e74142a79d74f000392d42555"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-hooks-quality-gates/hero.jpg",
+      "bytes": 93555,
+      "sha256": "5300dbd7a05fee86f9948f62ccb73be172108e206c457782082480fac31f8676"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-hooks-quality-gates/hero.svg",
+      "bytes": 1617,
+      "sha256": "e45f0d833bcd72fa635c9d2b46d8f6fc5784406a03e95f589ab22ac6e9b4c34b"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-hooks-quality-gates/lesson-76.zip",
+      "bytes": 2608,
+      "sha256": "7f37510df5696c5f4f1f3fc7ed0febb9bd304007f3a50613ff5545e2d6e5215e"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-mcp-server-workshop/automation-verification.zip",
+      "bytes": 44558,
+      "sha256": "d8142dd941d9707cb0b82f89c43a9183e5f9cd401e1717eb6f216b37e05603de"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-mcp-server-workshop/diagram-1.svg",
+      "bytes": 2315,
+      "sha256": "6642eaf3948928f83adcd1b94a555e896705a0d544e3663658c9cd0462d226af"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-mcp-server-workshop/hero.jpg",
+      "bytes": 98566,
+      "sha256": "deea6e1ba23365f4a2fff7f048d79508980afa56578d133786efefe9e6cb816b"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-mcp-server-workshop/hero.svg",
+      "bytes": 1621,
+      "sha256": "f142f89b8fe659885df2d31e158ad40fb49e87a92d9094039ccd2ab3c79e02b3"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-mcp-server-workshop/lesson-75.zip",
+      "bytes": 2528,
+      "sha256": "ca09902fce5494538ca72bc57a77660af729f32c4c99082ad8005666be99068e"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-resumable-batch-pipeline/automation-verification.zip",
+      "bytes": 44558,
+      "sha256": "d8142dd941d9707cb0b82f89c43a9183e5f9cd401e1717eb6f216b37e05603de"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-resumable-batch-pipeline/diagram-1.svg",
+      "bytes": 2289,
+      "sha256": "9dc02771879bd005885e6184253488d0b45ab1a3128f9fcd092a930f7b380b77"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-resumable-batch-pipeline/hero.jpg",
+      "bytes": 100713,
+      "sha256": "399c5e003cd3b67455a98da1283d9e99e17d78f83a4416f93bdaa349e75d9550"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-resumable-batch-pipeline/hero.svg",
+      "bytes": 1637,
+      "sha256": "a22cf6d5376b77294333d7e3f532412ecc2b54fd79a06b00ef33a18eb241dfd4"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-resumable-batch-pipeline/lesson-78.zip",
+      "bytes": 9823,
+      "sha256": "c74cb7b54903a3011948cf588695a822a5eba4d8961d3def7cea1736e7cafad0"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-subagent-review-workflow/automation-verification.zip",
+      "bytes": 44558,
+      "sha256": "d8142dd941d9707cb0b82f89c43a9183e5f9cd401e1717eb6f216b37e05603de"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-subagent-review-workflow/diagram-1.svg",
+      "bytes": 2276,
+      "sha256": "17183d098f0146e5e7bac885442313009c532385a676d2ca2797db204663caa1"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-subagent-review-workflow/hero.jpg",
+      "bytes": 96658,
+      "sha256": "f47489110ca3096f49464b8fe5f91ff5620171cdc687d440e7f5e3f7db78eaa3"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-subagent-review-workflow/hero.svg",
+      "bytes": 1631,
+      "sha256": "3c15e64c759699cfa43896e3d0c1fa4c8ec5072e3c3afa3f0dcaf1e7ac93f7cf"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-cli-subagent-review-workflow/lesson-77.zip",
+      "bytes": 4986,
+      "sha256": "c049c3afc254c7d0ceacd7f57b20de0f8bf2a835cc30858ab090b578113fcbcc"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/75/diagram-1.svg",
+      "bytes": 2315,
+      "sha256": "6642eaf3948928f83adcd1b94a555e896705a0d544e3663658c9cd0462d226af"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/75/hero.jpg",
+      "bytes": 98566,
+      "sha256": "deea6e1ba23365f4a2fff7f048d79508980afa56578d133786efefe9e6cb816b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/75/hero.svg",
+      "bytes": 1621,
+      "sha256": "f142f89b8fe659885df2d31e158ad40fb49e87a92d9094039ccd2ab3c79e02b3"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/75/lesson.md",
+      "bytes": 7266,
+      "sha256": "2bc8e46122409b6c2e11bede228fd3c5d81c21449bd1858fbec23e47994a6169"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/75/meta.json",
+      "bytes": 1283,
+      "sha256": "1d697bdf71f2e1508469ab699fbd7b5754060667a8a09ca575a5301de013dc6a"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/76/diagram-1.svg",
+      "bytes": 2282,
+      "sha256": "e06f5ade3a19b56363355b27165a304f80cab36e74142a79d74f000392d42555"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/76/hero.jpg",
+      "bytes": 93555,
+      "sha256": "5300dbd7a05fee86f9948f62ccb73be172108e206c457782082480fac31f8676"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/76/hero.svg",
+      "bytes": 1617,
+      "sha256": "e45f0d833bcd72fa635c9d2b46d8f6fc5784406a03e95f589ab22ac6e9b4c34b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/76/lesson.md",
+      "bytes": 7917,
+      "sha256": "872bbb666911f165979fbf00b5bd31891d9ee3bb55bfaf177ce164336dc5b564"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/76/meta.json",
+      "bytes": 1095,
+      "sha256": "9610de251b672e06841e04100010d6beb7c859d556c9b7f0f3df96740aeeff06"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/77/diagram-1.svg",
+      "bytes": 2276,
+      "sha256": "17183d098f0146e5e7bac885442313009c532385a676d2ca2797db204663caa1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/77/hero.jpg",
+      "bytes": 96658,
+      "sha256": "f47489110ca3096f49464b8fe5f91ff5620171cdc687d440e7f5e3f7db78eaa3"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/77/hero.svg",
+      "bytes": 1631,
+      "sha256": "3c15e64c759699cfa43896e3d0c1fa4c8ec5072e3c3afa3f0dcaf1e7ac93f7cf"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/77/lesson.md",
+      "bytes": 7728,
+      "sha256": "7cfd1e2e85807bd255d7bde7e6133605d4411aa85e7a90cb4bb4a429c84d53d0"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/77/meta.json",
+      "bytes": 1117,
+      "sha256": "deca4c5a2cff24ebf319bb21d7885012821810840ef684ae2c8dc161f714d1d5"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/78/diagram-1.svg",
+      "bytes": 2289,
+      "sha256": "9dc02771879bd005885e6184253488d0b45ab1a3128f9fcd092a930f7b380b77"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/78/hero.jpg",
+      "bytes": 100713,
+      "sha256": "399c5e003cd3b67455a98da1283d9e99e17d78f83a4416f93bdaa349e75d9550"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/78/hero.svg",
+      "bytes": 1637,
+      "sha256": "a22cf6d5376b77294333d7e3f532412ecc2b54fd79a06b00ef33a18eb241dfd4"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/78/lesson.md",
+      "bytes": 7927,
+      "sha256": "bc827dfc4f9dd95cf7ffff79cbb95bf1e1c452e07b510440300095790704a437"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/78/meta.json",
+      "bytes": 1124,
+      "sha256": "d9525733aa3bb576e0d678f5eb7cdb05a5dd097d8ff0ad4db93eab89a0ac07ae"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/79/diagram-1.svg",
+      "bytes": 2281,
+      "sha256": "ab4d069ca37b5d5fc8b45ecefb0c9692fcf2285516b05cbe9355f3ed796b83b5"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/79/hero.jpg",
+      "bytes": 93828,
+      "sha256": "d70638c0e6d7220d29d6d0bd8354cbaef284eae9d83ed5907580488853c2cc22"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/79/hero.svg",
+      "bytes": 1619,
+      "sha256": "f78d82020c3ea2b2ce7c9882135186f57c418a9c927d591128ae1c70b32f4f44"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/79/lesson.md",
+      "bytes": 7396,
+      "sha256": "7975ab964f2d93f72559cb183467e269269880c3d9b27fa17068259b04453c9f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/79/meta.json",
+      "bytes": 1333,
+      "sha256": "14413af558df2d1e6e416f6f300f547d6436a90eb97d43c282af498b36ef48de"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/80/diagram-1.svg",
+      "bytes": 2272,
+      "sha256": "89e22c01183a2ab9f16fb872fd021c03e7cdd06edefb5f19d9babc69a57a6f3e"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/80/hero.jpg",
+      "bytes": 100931,
+      "sha256": "d9be6ece1a3a90388409033403e8228caa603e2ce567a3d665404661c0279b23"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/80/hero.svg",
+      "bytes": 1631,
+      "sha256": "b0dd242c5903d7684f8dc8e0b9187dd664daafaa212487a08f16ad38bcfbb09f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/80/lesson.md",
+      "bytes": 8576,
+      "sha256": "445a06ccae63200278e7a43621e0ed69f61a494b3f7f4b0b3bb0a662ebfba53c"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/80/meta.json",
+      "bytes": 1244,
+      "sha256": "9cf8d8999e656d35c51f86d7f216760085b38268eaf681a4cd556a13782ed271"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/build-art.py",
+      "bytes": 7672,
+      "sha256": "e36a01cb256f5de0f1f5b80e616ec8b403151f73ddb504685f226c95c8aaf04a"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/build-data.py",
+      "bytes": 5326,
+      "sha256": "917f1864f47c3698626c12616f6e3e2fae720d61add3bac6e825771defaf70c9"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/75/LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/75/products.csv",
+      "bytes": 125,
+      "sha256": "7dbd18bc4c35b41421f3e4c213c9ef54706fabb9999790ba0f6f4688f72e1cc9"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/75/README.md",
+      "bytes": 476,
+      "sha256": "f073b758ffb5e5c1defca0852c7262e04f83f11cf9d325cff71c1e1989203d77"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/75/requirements.txt",
+      "bytes": 11,
+      "sha256": "01c771571873832ab0a9b1814fe45ca6d3b8cae24425c2c60102663ea5e11b70"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/75/server.py",
+      "bytes": 860,
+      "sha256": "cb2c5978e099cdff5499d5223499e0cb84be7513a477c13d0769ceba4ac06ca5"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/75/settings.example.json",
+      "bytes": 262,
+      "sha256": "0162f9cd5adc977f47093d6edf8986d27dda602a3a49a2e3ae73a8b50038f02f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/76/docs/example.md",
+      "bytes": 72,
+      "sha256": "d85599d14d65a65ded387214bfe32b24f9f917f23865b0004fc7b5dcfb06e953"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/76/LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/76/quality-gate.mjs",
+      "bytes": 1724,
+      "sha256": "1a4026e22006456a5204e57554a742d1476f27c140173ace3fabeda0574c7bd1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/76/README.md",
+      "bytes": 476,
+      "sha256": "e276a178ce0a5730c17b743e9a3ac4d679a38bb6ea85ce940bbe6182f6e72da6"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/76/settings.example.json",
+      "bytes": 205,
+      "sha256": "0b7f5f958090f3e6f38596b8ab33b5ca94ca083c8cf3b8c65617ab8838b390c6"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/77/fixture-code-report.json",
+      "bytes": 290,
+      "sha256": "39006a2e293d17897f57971d028b4f7c5b186e4e291084056982c5104ef584df"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/77/fixture-docs-report.json",
+      "bytes": 317,
+      "sha256": "ed32fef089c03a9cb74782d557e3dafd9531c975227738a4a76d9f45bd321163"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/77/LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/77/merge_reviews.py",
+      "bytes": 2358,
+      "sha256": "751052ae97a310befe079bc6a2cb99e6cab22eaec34aafb95f0ddb7056194534"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/77/README.md",
+      "bytes": 476,
+      "sha256": "fa55588143891648b04138fabddd8df35734dc00f26cf2fc5c32136b3e7309bb"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/77/report-contract.json",
+      "bytes": 252,
+      "sha256": "da2b5f94967dcc9cb09a176e8cd33cc6edfaecd1b76cea4b0b6fc95baffd2759"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/77/review-project/.gemini/agents/code-reviewer.md",
+      "bytes": 592,
+      "sha256": "ceaa4d23b914c984d0a8f0d6a46e657c0e57adc6c07ceb218284a5ba6a7dc667"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/77/review-project/.gemini/agents/docs-reviewer.md",
+      "bytes": 580,
+      "sha256": "51663abaa173da2a301960d23e0afc271b3e8aa3be477822b9c8b96a36e667c0"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/77/review-project/docs/limits.md",
+      "bytes": 58,
+      "sha256": "7ca0ee0db8274372a349eb9465d5308db79d5d96a161dab153484cc5a2b6ecda"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/77/review-project/src/limit.mjs",
+      "bytes": 45,
+      "sha256": "c74585eceeb370ea02d638c6826f21c5e23a9d77b1976024778e430e796e9914"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc01.md",
+      "bytes": 113,
+      "sha256": "8662d103d5b08397fcdc7aac1950becedeb23cf07da625e9923d75f9cec95e25"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc02.md",
+      "bytes": 113,
+      "sha256": "3a36252aa51d0e0a48874a8fba463905a25df0952c4c8f16f1a8c40eb18b239a"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc03.md",
+      "bytes": 113,
+      "sha256": "d4aa9bd1040095b2a35e9b50532302cff8192e1feb38e71c7ad41fff00d55d1f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc04.md",
+      "bytes": 113,
+      "sha256": "c96420861fd1bb91b468900ff12e2e3ee788a845c386a17a61920c67cfd8ac81"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc05.md",
+      "bytes": 114,
+      "sha256": "adedccf287bcd7d2776f12819f47312b97d5f740418e35cff97b044eff01570c"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc06.md",
+      "bytes": 114,
+      "sha256": "7d244bd6f78373f0f7112b52d1e0fc02bc64228ec2183cb0c85777ba49aa7a42"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc07.md",
+      "bytes": 114,
+      "sha256": "665a3c133fbe900ac502248f983ca2d757eeb4e2251008ee7abb241284cd90e1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc08.md",
+      "bytes": 114,
+      "sha256": "2d83e74231839f355cf042271b39c3d5841186421cd2259d6fd65ab352e9ac6a"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc09.md",
+      "bytes": 114,
+      "sha256": "5d1bce1b6dd832407d0111d2be58569a10cd18b7e1e950de5f9d3546bd970501"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc10.md",
+      "bytes": 115,
+      "sha256": "4cc625613d4cc54d8f8bf11829ff6bd3fc8d5b670caccfe68f96792a26fe176a"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc11.md",
+      "bytes": 115,
+      "sha256": "5f10b483bd0aec52c95a0566d775cbe56ed4a4205b371ad72f7b22c50eeb2181"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc12.md",
+      "bytes": 115,
+      "sha256": "d6d9ea811c6a82d2b2239434d5b579fe00ffd285197af2835cae6755ae1baed8"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc13.md",
+      "bytes": 115,
+      "sha256": "ce819ce78c993b33002323819ec05028876db715ef4ba752b51920ab9f4670f2"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc14.md",
+      "bytes": 115,
+      "sha256": "dbcc018efc650659ff40317bb3aee14acce5a88301855ccb824cf5a5d677c3ab"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc15.md",
+      "bytes": 115,
+      "sha256": "58f340617a567c29e0d2b01d71b74d82568ae3557caa16386f2a1cb43993fcd6"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc16.md",
+      "bytes": 115,
+      "sha256": "e704b10b98030a18b3bcf5e7bab303b08ef19bee0ca052906507fd6cc7c43d3a"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc17.md",
+      "bytes": 115,
+      "sha256": "ac2cedfd331b455b8b2e4d8c8a136ec093b5182e96e4bc4330b75e12ce93b728"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc18.md",
+      "bytes": 115,
+      "sha256": "35b78385448d832eebf59a93f04fce49c3235930076ebb77a644b08f574325da"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc19.md",
+      "bytes": 115,
+      "sha256": "3bd22abbb570acc794748810bbcc9bbc88a6925f0eefbd8c5002fca8cfe8087b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/documents/doc20.md",
+      "bytes": 115,
+      "sha256": "2dcfbf5793c3fd5835eb8b416a6db578fbacdbb43649767d9c538a4d481b8a33"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/live-config.example.json",
+      "bytes": 151,
+      "sha256": "d1b4a50ea190b13c80a71c6290a3c0e91a4495a2329e47baecd269a32984af20"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/no-tools.toml",
+      "bytes": 57,
+      "sha256": "bbe90ffc3d0e278d68f49a79d0b897430a08c3e41bd303fae96b56deabb072c5"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/pipeline.py",
+      "bytes": 9232,
+      "sha256": "d755a164faafcc3d04493fb8e0f86969056eb83836392d0bfb789f35df3b44a4"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/78/README.md",
+      "bytes": 476,
+      "sha256": "3ab21fdf0494239ca9fd6c769988be1cd286e84956a624cfd83666d66f04789b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/79/docs/doc01.md",
+      "bytes": 113,
+      "sha256": "8662d103d5b08397fcdc7aac1950becedeb23cf07da625e9923d75f9cec95e25"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/79/docs/doc02.md",
+      "bytes": 113,
+      "sha256": "3a36252aa51d0e0a48874a8fba463905a25df0952c4c8f16f1a8c40eb18b239a"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/79/LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/79/no-tools.toml",
+      "bytes": 57,
+      "sha256": "bbe90ffc3d0e278d68f49a79d0b897430a08c3e41bd303fae96b56deabb072c5"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/79/pipeline.py",
+      "bytes": 9232,
+      "sha256": "d755a164faafcc3d04493fb8e0f86969056eb83836392d0bfb789f35df3b44a4"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/79/README.md",
+      "bytes": 476,
+      "sha256": "a926807ad5daa48c8ec814b796d0f09995b5ab6f06e7e8741fc402920d1d6b94"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/79/review.yml",
+      "bytes": 2041,
+      "sha256": "ab20f604be323875349fbbd0e1b13f8aeb30d80390f731dd085d5c3cce266967"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/79/runner.py",
+      "bytes": 1736,
+      "sha256": "d15d2cbfa1c864e57db4fbffc81c251f11317e50cbff99d3a0a6e1d79ce863eb"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/bad-proposals.json",
+      "bytes": 208,
+      "sha256": "c71e6068563f2ca43cb354527123d818cb4f50ac11c98e50144d66fc9d305145"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/docs-plan.toml",
+      "bytes": 364,
+      "sha256": "3a7cdfa0f9ed275028d5b57692c0c64dd12b7a0582e531485247679e14b152fe"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/documents/doc01.md",
+      "bytes": 172,
+      "sha256": "6bacfdfa163937fe7e9d8c7234699cb06127ff24329860a43bbb53ca5785ecfe"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/documents/doc02.md",
+      "bytes": 172,
+      "sha256": "94438d4f8aeb30c84aad3ad8774a1609f2161df2d83bd2885f5004fd076746a8"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/documents/doc03.md",
+      "bytes": 174,
+      "sha256": "e14cf0f06d8e016e410c0b2853894745a9131157cf4d46f7f9efc39706581d6c"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/documents/doc04.md",
+      "bytes": 172,
+      "sha256": "cb79ffe638868b1c3a44c2edce148fee36d156026739f8d51190b07f1972f1ca"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/documents/doc05.md",
+      "bytes": 172,
+      "sha256": "c917b36ee11bd4695df6f0b949b5970c66d61f979690de6562501e958434dc69"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/documents/doc06.md",
+      "bytes": 172,
+      "sha256": "c3c543972539c977b9aab1a197ab9aba65bf2a9f59ce010404ce34ce3bd73685"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/documents/doc07.md",
+      "bytes": 172,
+      "sha256": "ffdb429a5ce76c98a70ff1a3f3659c87744ac26d22361366028251dea6e8a825"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/documents/doc08.md",
+      "bytes": 172,
+      "sha256": "3bb100958c3fef2f9e8a3c0b883aca37d70baa1ba02a9fb11e51905b0dc0632b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/documents/doc09.md",
+      "bytes": 172,
+      "sha256": "02ddd146258ba176976b745c3c28133caff681a9545c8f6fa2ec97536a35521e"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/documents/doc10.md",
+      "bytes": 173,
+      "sha256": "5c690a5c0c64bb29fd7a07151125c69652839d0d3013832c5b12f3eae50f6e90"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/prepare_review.py",
+      "bytes": 4454,
+      "sha256": "893df9ba517e19550bd7493abfca54853f0c8213f7d62721f589cdc0f02e58c4"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/README.md",
+      "bytes": 476,
+      "sha256": "a6ebb3e519dde4d1d4fe2bf99e3200f22fa00eb4968efba0b30398578a0c1d95"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/reference-proposals.json",
+      "bytes": 205,
+      "sha256": "f88015dd8700293d34bd2d3030640e8ca05c134f47f6b967a8e42dcfc4758caf"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/80/run-log.md",
+      "bytes": 177,
+      "sha256": "2ea7c39c9d930154c26a2955f1f1c06479ef1490c8ffd5a3e8610c9139dc44be"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/automation-verification.zip",
+      "bytes": 44558,
+      "sha256": "d8142dd941d9707cb0b82f89c43a9183e5f9cd401e1717eb6f216b37e05603de"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/lesson-75.zip",
+      "bytes": 2528,
+      "sha256": "ca09902fce5494538ca72bc57a77660af729f32c4c99082ad8005666be99068e"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/lesson-76.zip",
+      "bytes": 2608,
+      "sha256": "7f37510df5696c5f4f1f3fc7ed0febb9bd304007f3a50613ff5545e2d6e5215e"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/lesson-77.zip",
+      "bytes": 4986,
+      "sha256": "c049c3afc254c7d0ceacd7f57b20de0f8bf2a835cc30858ab090b578113fcbcc"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/lesson-78.zip",
+      "bytes": 9823,
+      "sha256": "c74cb7b54903a3011948cf588695a822a5eba4d8961d3def7cea1736e7cafad0"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/lesson-79.zip",
+      "bytes": 7226,
+      "sha256": "d69b4c10d6f301bd886260fa0c8a990ee7608f97ec76f947a62cc17b74257c2b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/examples/lesson-80.zip",
+      "bytes": 7215,
+      "sha256": "c7fc91725e236c32a4a6058a7c33e2d2470b0d183523330ffd47b8ed1b90065e"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/README.md",
+      "bytes": 5241,
+      "sha256": "5388d40c2d5f8a72a489b8059499b984f8ce28906c39263fc280b4b7ebf23325"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/sources.json",
+      "bytes": 2340,
+      "sha256": "b7606991fa22aa8d48f210d85ce9eb28f5444f3bf506f1c37df050219dd0dcaf"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/action-pins.json",
+      "bytes": 1146,
+      "sha256": "0d9c1f3db33bd7c9d77fbf90d1c2347965eb55e6a564aaeb3c575877cf9c3f17"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/art-verification.json",
+      "bytes": 2692,
+      "sha256": "34439a2c87f7a3b8d1aef671591068ca92afb09ecb91e6a935a28084d3bdcb6b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/build.json",
+      "bytes": 1308,
+      "sha256": "b4fbae51e7b3429f06d61b5ef7ff9eb7434a10206e336b0ebc54ff301b0609f3"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/delivery.json",
+      "bytes": 8794,
+      "sha256": "8482abdd7ba18fa39273e1bffef95daed4c12f5eb60448662e7d61104b7b35f6"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/fixtures.json",
+      "bytes": 239,
+      "sha256": "100a28f635f279b5e62b2fe1d067f39e920b2e113ad8ba08c6fa5ad0778d2b68"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/local-cli.json",
+      "bytes": 6132,
+      "sha256": "7b929e1afb748eaccfe7490403a932d004a2e904eb4919af145d41615aeb2622"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/local-limitations.json",
+      "bytes": 1501,
+      "sha256": "bd5590504b427e03716adee6281d9293341188a35919cae4a87fd19259f89894"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/README.md",
+      "bytes": 2036,
+      "sha256": "f075eff9bb7f028a741f1c78e3157bbc58caa19d2eef36ca70fc009064df6af2"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-docs-maintenance-project/diagram-1-mobile.png",
+      "bytes": 25841,
+      "sha256": "187c54a71dbc743adc933a000110476fe16309f9d68503fd1f1ca6c6d8f667ce"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-docs-maintenance-project/diagram-1.png",
+      "bytes": 128003,
+      "sha256": "d0f84c994c07ecedf56616101e22276174efc29caa1986633f91048bb27f050d"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-docs-maintenance-project/hero-mobile.png",
+      "bytes": 16798,
+      "sha256": "056cfc567033c365506ef99ed80f84a1a8e9c4e0e1f0879fa406cac3520bc2fd"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-docs-maintenance-project/hero.png",
+      "bytes": 81327,
+      "sha256": "9b11150fc209413ae1763c3f40427c9c99686e7729b521e53d07a3b2f317bfe3"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-github-actions-artifacts/diagram-1-mobile.png",
+      "bytes": 26975,
+      "sha256": "e3e9c1513bd8bb7e536a0aa6938d5fcb3fcb04902ac68578c296270a5d335aa7"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-github-actions-artifacts/diagram-1.png",
+      "bytes": 139177,
+      "sha256": "251db6afc8db244a74c5c3188da192440d11c958f6aeef2af66a7fb7e806f362"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-github-actions-artifacts/hero-mobile.png",
+      "bytes": 15282,
+      "sha256": "bcd6dbb56c1849508ccf60ad093ce4aee17edd8c5f66d1a800e1f576b0f94b99"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-github-actions-artifacts/hero.png",
+      "bytes": 72288,
+      "sha256": "b39fe776225c1b278dbbb349a34c732b1b01601cf90549e765228296871c1141"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-hooks-quality-gates/diagram-1-mobile.png",
+      "bytes": 26776,
+      "sha256": "604e459a14d1eb048a91616d1f64c3424b49cc3425296db025220c5728d180b7"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-hooks-quality-gates/diagram-1.png",
+      "bytes": 136384,
+      "sha256": "58ec0f07f3081091a861ba0d1408136b8b200209efe7a6723b13c626af478590"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-hooks-quality-gates/hero-mobile.png",
+      "bytes": 15045,
+      "sha256": "558f4560e42b9bfdf874a8ba904932e67fe3ae5dbeea943bf409fc7e2f99b3ac"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-hooks-quality-gates/hero.png",
+      "bytes": 73341,
+      "sha256": "ba23e65d79166fe60524be8551a7ef061005cf0e825d623d9bc11fef07c47c91"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-mcp-server-workshop/diagram-1-mobile.png",
+      "bytes": 28597,
+      "sha256": "e8c4389f9a8c8e6f3ee5f252a906a4159216fca393e0a219fe2f4d6b73782b69"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-mcp-server-workshop/diagram-1.png",
+      "bytes": 147139,
+      "sha256": "f4c5c063ddd1f594382576b10fc9a92f075b04aa32975da8efc5fec1090b05b1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-mcp-server-workshop/hero-mobile.png",
+      "bytes": 16711,
+      "sha256": "c3cf40b6f0b8eec9032b32af472595b166504e779704bfa349b7564d5c4a1661"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-mcp-server-workshop/hero.png",
+      "bytes": 82741,
+      "sha256": "70e95e3ac21f5f19cf448ae5f4f5d6c8e49f619b6f3e1b61104001fd07b32ab3"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-resumable-batch-pipeline/diagram-1-mobile.png",
+      "bytes": 26730,
+      "sha256": "9600b4012e6786dcc355c6aabc6a848a6cf0a0625a8414c311e54d8cc8285f0f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-resumable-batch-pipeline/diagram-1.png",
+      "bytes": 130361,
+      "sha256": "b7977ff5d857704021901f112cf9dce0bff5adea43700f921e39efafae90ab7a"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-resumable-batch-pipeline/hero-mobile.png",
+      "bytes": 16940,
+      "sha256": "31a1b08e41cc00bcb704a8eb5f05abd67da90f118d84d71201d2d9af5c641c63"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-resumable-batch-pipeline/hero.png",
+      "bytes": 83410,
+      "sha256": "3adcf7a55ddd58f2086d993a1e26a40e38e939a154b20569f7a09c0560879c0c"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-subagent-review-workflow/diagram-1-mobile.png",
+      "bytes": 26501,
+      "sha256": "47b9c4dc93f7387848bf20bf8d93d16c7b35cd4a20a47012b3775ede4ed939bc"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-subagent-review-workflow/diagram-1.png",
+      "bytes": 132353,
+      "sha256": "6209cca7da13dbd5afaa2a80c0588a460b69fff9063e9916de424fe8c79f8f79"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-subagent-review-workflow/hero-mobile.png",
+      "bytes": 15865,
+      "sha256": "5185e93f909f4800c331732d0ae328a659d4f67fe8cbdc8fc9e6b2dbc2730376"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/renders/gemini-cli-subagent-review-workflow/hero.png",
+      "bytes": 74590,
+      "sha256": "49b2c09276b99a69a6815150834ca606f43485376b3251eb06b749917bee64a6"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/test_exercises.py",
+      "bytes": 11104,
+      "sha256": "5990acd36a2b51fb7b6f22702722defa9373a82a4bc57502c566736e8396fef4"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verification/visual-review.json",
+      "bytes": 12197,
+      "sha256": "1ea7119d79cf5a8fdb188524ca6f4a2ec19b390294f5359200d0b9428473c0ca"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verify-cli.mjs",
+      "bytes": 10395,
+      "sha256": "4d7f5862ab2bb24bdc783ab91dafcc085f59eb61f292adf8e08e4a7d2df99bcd"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/automation/verify-delivery.py",
+      "bytes": 3333,
+      "sha256": "969edb71cde716469bd01b827c32ab4bc0dfb06b18951868ccc6816b9c6baf83"
+    }
+  ]
+}
