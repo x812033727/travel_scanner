@@ -165,7 +165,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 70 | `cursor-editor-guide` | Cursor 編輯器入門：Tab 補全、Chat 與代理模式 | ai, software | 插 |  | ✓ |
 | 71 | `github-copilot-guide` | GitHub Copilot 入門：VS Code 裡的補全、Chat 與代理 | ai, software | 插 |  | ✓ |
 | 72 | `vibe-coding-first-website` | Vibe coding：不會寫程式也能做出第一個網站 | ai, tutorial | 插 | H |  |
-| 73 | `ai-coding-agents-compared` | AI 寫程式代理實測比較：同一個需求三個工具怎麼做 | ai | 插 |  | ✓ |
+| 73 | `ai-coding-agents-compared` | AI 寫程式代理操作步驟比較：同一個需求在三個工具怎麼做 | ai | 插 |  | ✓ |
 | 74 | `deploy-ai-built-site-to-vps` | 把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定 | tutorial, software | 插 | H |  |
 | 75 | `ai-coding-git-basics` | 用 AI 寫程式前該懂的 Git：分支、提交與還原 | tutorial, software | 插 |  |  |
 | 76 | `ai-code-review-safety` | AI 寫的程式能信嗎：審查、測試與安全檢查清單 | ai, tutorial | 插 |  |  |
@@ -364,6 +364,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
   本批列了批次 04／10／11 的篇名，八篇共 13 個連結指向不存在的文章，收尾時才由 `normalise_links.py` 的 missing target 抓到並移除。
   撰稿代理會繼承 session 的 plan mode，開著時代理只寫計畫檔；`ExitPlanMode` 後用 SendMessage 讓同一個代理接著執行即可，查證不用重做。
   總表標題以實際篇名為準（本批同步 5 列，其中「兩家寫作比一比」因為我們無法真的實測，改寫成讀者自測法）。
+- 批次 04（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-04.md`）：教學文很需要 `code` 區塊（指令、設定檔、範例提示詞），撰稿補充要明寫可用；連結文字直接取目標文章標題（同批會寫的篇用指派給的標題，收完後再統一一次）；無法實測的「比較」題改寫成操作步驟比較與讀者自測法。官方文件會搬家（Codex 文件轉到 learn.chatgpt.com），sources 記實際生效的網址。合作連結沒有聯盟網址就不放，總表的 H 標記只是允許。
 - Commons 照片：工具的 User-Agent 要有聯絡信箱，而且請求要走 urllib（httpx 的連線被 Wikimedia 擋 403）；十個代理同時搜 Commons 會被 429，工具會退避重試。
 
 ## Gemini 完整系列補充（2026-09-14）
