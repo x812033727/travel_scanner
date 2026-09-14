@@ -1,15 +1,208 @@
 """Tutorial blocks remain inert, and the series is a complete navigable content pack."""
 
 import json
+import subprocess
+import sys
+from hashlib import sha256
 from pathlib import Path
+from shutil import copyfile
+from zipfile import ZipFile
 
 import pytest
 from pydantic import ValidationError
+from sqlalchemy import func, select
 
-from app.guides.content_pack import ArticlePack
+from app.guides.content_pack import ArticlePack, apply_import, load_packs, plan_import
+from app.guides.models import GuideArticle, GuideArticleLocale, GuideArticleRevision
 from app.guides.schemas import GuideDocument
+from app.models import AdminAuditLog
+from tests import test_guides as guides
 
 ROOT = Path(__file__).resolve().parents[3]
+database = guides.database
+actor = guides.actor
+
+
+def test_practice_download_contains_current_exercise_files_and_manifest():
+    practice = ROOT / "docs/codex-learning/practice"
+    sources = {
+        path.relative_to(practice).as_posix(): path
+        for path in practice.rglob("*")
+        if path.is_file() and path.suffix in {".html", ".css", ".js", ".mjs", ".md"}
+    }
+    with ZipFile(ROOT / "apps/web/public/guides/codex-first-project/todo-practice.zip") as archive:
+        expected_names = {f"codex-practice/{name}" for name in sources}
+        assert set(archive.namelist()) == expected_names
+        assert archive.namelist() == sorted(expected_names)
+        assert archive.testzip() is None
+        for name, path in sources.items():
+            # Git stores these text files as LF; the downloaded bytes must also
+            # be LF even when an authoring tool wrote CRLF in the checkout.
+            expected = path.read_bytes().replace(b"\r\n", b"\n")
+            assert archive.read(f"codex-practice/{name}") == expected
+    manifest = json.loads((practice / "manifest.json").read_text(encoding="utf-8"))
+    expected_hashes = {
+        name: sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+        for name, path in sources.items()
+    }
+    assert manifest == expected_hashes
+
+
+@pytest.mark.parametrize("line_ending", [b"\n", b"\r\n"], ids=["lf", "crlf"])
+def test_practice_packaging_is_reproducible_across_checkouts(tmp_path, line_ending):
+    practice = ROOT / "docs/codex-learning/practice"
+    source = tmp_path / "source"
+    before = {}
+    for path in practice.rglob("*"):
+        if not path.is_file() or path.suffix not in {".html", ".css", ".js", ".mjs", ".md"}:
+            continue
+        target = source / path.relative_to(practice)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        content = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\n", line_ending)
+        target.write_bytes(content)
+        before[target] = content
+    archive = tmp_path / "practice.zip"
+    manifest = tmp_path / "manifest.json"
+    subprocess.run(
+        [sys.executable, str(ROOT / "tools/codex-learning/practice_archive.py"),
+         "--source", str(source), "--archive", str(archive), "--manifest", str(manifest)],
+        check=True, capture_output=True, text=True,
+    )
+    assert archive.read_bytes() == (
+        ROOT / "apps/web/public/guides/codex-first-project/todo-practice.zip"
+    ).read_bytes()
+    assert manifest.read_bytes() == (practice / "manifest.json").read_bytes()
+    assert all(path.read_bytes() == content for path, content in before.items())
+
+
+@pytest.mark.parametrize("database", ["sqlite"], indirect=True)
+async def test_complete_series_import_preserves_identity_and_publication(database, actor, tmp_path):
+    """Exercise all real packs in temporary SQLite, never the configured database."""
+    catalog = json.loads(
+        (ROOT / "apps/web/lib/codex-learning/catalog.json").read_text(encoding="utf-8")
+    )
+    slugs = {row["slug"] for row in catalog} | {"codex-learning-hub"}
+    directory = tmp_path / "codex-only"
+    directory.mkdir()
+    for slug in slugs:
+        copyfile(ROOT / f"apps/api/app/guides/content/{slug}.json", directory / f"{slug}.json")
+    packs = load_packs(directory)
+    assert len(packs) == 61 and sum(len(pack.locales) for pack in packs) == 305
+
+    # These three routes already existed before the expanded series. A new draft
+    # must keep their identities and leave the old public revision available.
+    existing = {"codex-beginner-guide", "codex-cli-getting-started", "codex-cloud-tasks-github"}
+    seeds = []
+    for pack in packs:
+        if pack.slug in existing:
+            seed = pack.model_copy(deep=True)
+            seed.locales = {"zh-TW": seed.locales["zh-TW"]}
+            seed.locales["zh-TW"].title = f"Existing {pack.slug}"
+            seeds.append(seed)
+    seeds.append(
+        ArticlePack(
+            slug="unrelated-local-article",
+            kind="life",
+            topics=["ai"],
+            locales={
+                "en": GuideDocument.model_validate(guides.document(title="Unrelated fixture"))
+            },
+        )
+    )
+
+    async def counts(session):
+        return tuple(
+            [
+                await session.scalar(select(func.count()).select_from(model))
+                for model in [GuideArticle, GuideArticleLocale, GuideArticleRevision, AdminAuditLog]
+            ]
+        )
+
+    async with database() as session:
+        seeded = await apply_import(session, actor, await plan_import(session, seeds), publish=True)
+        assert seeded.failed is None and len(seeded.published) == 4
+        identities = dict((await session.execute(select(GuideArticle.slug, GuideArticle.id))).all())
+        control = (
+            await session.execute(
+                select(
+                    GuideArticleLocale.id,
+                    GuideArticleLocale.version,
+                    GuideArticleLocale.published_version,
+                    GuideArticleLocale.draft_json,
+                ).where(GuideArticleLocale.article_id == identities["unrelated-local-article"])
+            )
+        ).one()
+        before_plan = await counts(session)
+        plan = await plan_import(session, packs)
+        assert await counts(session) == before_plan
+        drafted = await apply_import(session, actor, plan, publish=False)
+        assert drafted.failed is None and drafted.published == []
+        assert len(drafted.created) == 302 and len(drafted.updated) == 3
+        assert (await counts(session))[:2] == (62, 306)
+
+    async with guides.client(guides.make_app(database)) as api:
+        for slug in existing:
+            response = await api.get(f"/guides/life/{slug}", params={"locale": "zh-TW"})
+            assert response.json()["document"]["title"] == f"Existing {slug}"
+        for locale in ["zh-TW", "zh-CN", "en", "ja", "ko"]:
+            response = await api.get("/guides/life/codex-learning-hub", params={"locale": locale})
+            assert response.json()["status"] == "unpublished"
+            assert response.json()["document"] is None
+            assert (
+                await api.get("/guides/series/codex", params={"locale": locale})
+            ).status_code == 404
+
+    # Publishing is simulated only inside the isolated test database. A second
+    # identical import must neither duplicate articles nor append revisions.
+    async with database() as session:
+        published = await apply_import(
+            session, actor, await plan_import(session, packs), publish=True
+        )
+        assert published.failed is None and len(published.published) == 305
+        assert len(published.unchanged) == 305
+        before_repeat = await counts(session)
+        repeated = await apply_import(
+            session, actor, await plan_import(session, packs), publish=True
+        )
+        assert repeated.failed is None and len(repeated.unchanged) == 305
+        assert repeated.created == repeated.updated == repeated.published == []
+        assert await counts(session) == before_repeat
+        final_ids = dict((await session.execute(select(GuideArticle.slug, GuideArticle.id))).all())
+        assert all(final_ids[slug] == id_ for slug, id_ in identities.items())
+        assert (
+            await session.execute(
+                select(
+                    GuideArticleLocale.id,
+                    GuideArticleLocale.version,
+                    GuideArticleLocale.published_version,
+                    GuideArticleLocale.draft_json,
+                ).where(GuideArticleLocale.article_id == identities["unrelated-local-article"])
+            )
+        ).one() == control
+
+    async with guides.client(guides.make_app(database)) as api:
+        for locale in ["zh-TW", "zh-CN", "en", "ja", "ko"]:
+            directory_response = await api.get("/guides/series/codex", params={"locale": locale})
+            assert directory_response.status_code == 200
+            assert {entry["slug"] for entry in directory_response.json()["entries"]} == (
+                slugs - {"codex-learning-hub"}
+            )
+            for pack in packs:
+                response = await api.get(f"/guides/life/{pack.slug}", params={"locale": locale})
+                assert response.status_code == 200
+                body = response.json()
+                assert body["status"] == "published"
+                assert set(body["published_locales"]) == set(pack.locales)
+                assert body["document"]["title"] == pack.locales[locale].title
+                assert [
+                    (block["language"], block["code"])
+                    for block in body["document"]["blocks"]
+                    if block["type"] == "code"
+                ] == [
+                    (block.language, block.code)
+                    for block in pack.locales[locale].blocks
+                    if block.type == "code"
+                ]
 
 
 def document(block):

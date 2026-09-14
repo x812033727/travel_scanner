@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-codex-depth-content
 title: Codex deep content and isolated learning components
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-final-validation-fc2e
+claimed_at: 2026-09-14T16:12:32Z
 created_at: 2026-09-14T02:33:43Z
 completed_at:
 branch: codex/codex-learning-complete
@@ -346,3 +346,24 @@ Preview commands and full implementation history are in docs/codex-learning/READ
 - Also opened all eight distinct existing practice PNGs. Their visible headings, focus outlines, filters and counts match the captions, with no visible private account information or clipped controls. This was file inspection only; capture platform/date remain the original recorded metadata, and screenshots cannot prove hidden task IDs or current article layout.
 - The existing modal task was claimed separately to investigate the release-check failure. It now has three deterministic commit-boundary regressions and a bounded PlannerOverlay fix; 33 focused tests, all 75 unchanged trip-editor tests, TypeScript and ESLint pass. The first complete-suite attempt was interrupted after 19 minutes 34 seconds with no per-file result and low observed available memory; runs 2/3 did not start. This is incomplete full-suite validation, not a passed suite or failed assertion. See docs/codex-learning/evidence/planner-modal-registration-review.json and the raw run/log directory. The wider modal investigation remains open.
 - Prior article/hub edit and preview restrictions remain. No partial PR, import, publication or deployment.
+
+## Whole-series import validation — 2026-09-15
+
+- Added an integration case in tests/test_codex_learning.py using the explicit temporary SQLite fixture and in-process ASGI client. Copies exactly the catalogue's 60 packs plus the hub into an isolated directory, then exercises the existing importer against all 305 localized documents.
+- Three fictional older published versions use the existing beginner/CLI/cloud slugs; their article identities and public titles survive a draft-only import. A separate unrelated fixture locale remains unchanged. Planning changes no row counts, and the hub and series remain unavailable in all five locales until test-only publication.
+- After publication inside the disposable fixture, all 305 detail responses preserve localized titles, five-language availability and exact code language/content. All five series endpoints expose the correct 60 lesson slugs. Repeating the import changes no article, locale, revision or audit counts.
+- Evidence: docs/codex-learning/evidence/complete-series-import-validation.json, including exact pack and test hashes. The API/content file has 10 passing tests (49.55 seconds), with Ruff passing. No configured PostgreSQL, external HTTP, staging/production import or actual publication was used. Editorial/product/browser acceptance remains separate.
+- Retrying the incomplete frontend validation with verbose live logs; component and frontend-test source remains at 24c5662a. The separately tested practice ZIP was refreshed during the second run. The prior interrupted run remains recorded and is not counted as passed.
+
+## Download bundle parity — 2026-09-15
+
+- Audited all four downloadable ZIPs. The main todo-practice.zip still had 17 files while the existing packaging source now selects 28: it omitted nine documentation/handoff files and two Markdown files. All 17 existing members still matched their sources; the other three archives also matched their exact source files/code blocks and passed CRC checks.
+- Added an archive/manifest parity test that failed on the 11 missing members. Rebuilt the main ZIP from existing files and updated practice/manifest.json; all 17 original members remain byte-identical and no practice source or intentional start/broken variant was regenerated.
+- After repair, all 11 API/content/download tests pass (79.31 seconds), with Ruff passing. Evidence: docs/codex-learning/evidence/download-bundle-validation.json; complete-series-import-validation.json now references the final test source. This is local artifact verification, not a production download or permission to publish the pending lessons.
+
+## Download packaging across checkouts — 2026-09-15
+
+- Further review found Windows-generated CRLF sources while Git stores LF. The initial raw-byte parity check was insufficient for a clean checkout. Three stronger checks failed on the initial repair: canonical source parity and packaging from temporary LF/CRLF trees.
+- Added tools/codex-learning/practice_archive.py to package existing sources without regenerating any exercise variant. It uses LF bytes, POSIX filename ordering, fixed ZIP timestamps/Unix metadata, and a matching manifest. The legacy prepare-practice.py now shares this packager; it was not executed. README documents which command preserves existing exercise sources.
+- The final ZIP contains 28 members identical to their Git HEAD file contents. All 17 original exercise files retain their content; ten now use LF instead of CRLF. No practice source was edited. Both simulated checkout styles produce identical ZIP and manifest bytes and preserve every temporary source byte.
+- Final API/content/download validation: 13 passed in 73.05 seconds; affected Python Ruff and 412-task checks pass. Evidence files were updated with the final test/archive/packager hashes and retain the intermediate results. LF/CRLF tests ran on Windows, not native Linux/macOS.

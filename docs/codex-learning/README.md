@@ -51,6 +51,8 @@ apps/api/.venv/Scripts/python.exe tools/codex-learning/check-sources.py
 
 待辦網站材料為 `/guides/codex-first-project/todo-practice.zip`；CSV 材料為 `/guides/codex-csv-workshop/contacts-practice.zip`。CSV 五檔含基本與 Unicode 輸入、整理程式、三項測試及五語使用說明，由 check-workshop-practice.py 產生可重現的 ZIP。
 
+只重打包現有待辦練習材料時，執行 `apps/api/.venv/Scripts/python.exe tools/codex-learning/practice_archive.py`。這個工具不改寫練習來源，會以固定檔案排序、時間及 LF 換行更新 ZIP 與 `practice/manifest.json`；Windows 的 CRLF checkout 也會得到相同內容。`prepare-practice.py` 會重新產生 start／broken 變體，僅更新下載包時應使用前述打包工具。
+
 ```powershell
 apps/api/.venv/Scripts/python.exe tools/codex-learning/check-session-plan-practice.py
 apps/api/.venv/Scripts/python.exe tools/codex-learning/check-git-practice.py
