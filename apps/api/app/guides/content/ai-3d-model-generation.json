@@ -1,0 +1,368 @@
+{
+  "slug": "ai-3d-model-generation",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 生成 3D 模型入門：從文字或圖片到能列印的檔案",
+      "description": "用文字或一張圖生出 3D 網格與貼圖不難，難的是能不能下載、能不能商用、能不能拿去印。這篇整理 Meshy、Tripo、Hyper3D Rodin 的官方方案與扣點，TripoSR 與 Hunyuan3D 2.1 的授權原文，以及輸出格式、匯入 Blender 與送進切片軟體前要先修好的事。",
+      "hero": {
+        "src": "/guides/ai-3d-model-generation/hero.jpg",
+        "alt": "插圖：一段文字與一張照片匯入一個立方體輪廓，再分岔出檔案與列印兩條路徑。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "用一段文字或一張照片生成 3D 模型，現在多半是幾分鐘內就跑完的事；真正會卡住的是後面三關：免費層到底能不能把檔案下載下來、輸出格式對不對得上你要用的軟體，還有授權條款准不准你拿去賣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇用 Meshy、Tripo、Hyper3D Rodin 三個線上工具與 TripoSR、Hunyuan3D 2.1 兩個開源模型的官方頁面，說明它們吃什麼輸入、吐出什麼檔案、一次生成扣多少點、免費層的實際限制，以及匯入 Blender 或送進切片軟體前要先修掉哪些問題。價格與規格都是 2026 年 9 月 14 日在各家官網查到的，官網沒寫的就標成以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "AI 生成 3D 模型實際上產出什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這類工具的輸出通常分三層：網格（mesh）是模型的幾何形狀；貼圖（texture）現在多半是 PBR 材質，把基礎色、金屬度、粗糙度分開存；再往上是骨架與動作，讓角色能綁骨動起來。輸入端則有文字提示詞、單張圖片與多視角圖片三種，Meshy 與 Tripo 的官方文件三種都列了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "版本差別各家官方文件寫得很清楚。Meshy 的說明中心把現役模型分成三個：Meshy 7（官方寫 2026 年 8 月推出）主打產出與提示詞或參考圖的對齊最準，但不支援文字轉 3D；Meshy 6（2026 年 1 月）主打生出封閉（watertight）且拓樸乾淨的網格；Meshy 6 Lite 是同架構的輕量版，官方寫草稿約 8 秒，同一篇也寫 Meshy 5 已在 2026 年 8 月停用。Tripo 的 API 文件則在影像轉模型頁寫，想要乾淨的低面數結構就選 P1-20260311，想要寫實質感則建議用 H3。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "重新網格（Remesh）與四邊面重拓樸（quad）：把 AI 生出來的三角網格重新整理過",
+            "貼圖重生成（Retexture）與貼圖品質選項：Meshy 分 2K/4K 與 8K，Tripo 分 standard 與 detailed",
+            "自動綁骨與動作：Meshy 的 Smart-Rig 與文字轉動作、Tripo 的 Rig 與 Retarget",
+            "切件與列印修復：Meshy 的 Split、Auto-split 與 Printability Repair"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "輸入是一張圖還是好幾張圖也有差。Meshy 的方案比較表把多視角圖片轉 3D 列為付費方案才有的功能，模型比較表也把多視角放在 Meshy 7 這一欄；Tripo 則把多視角轉模型獨立成一種任務，用 P1 含貼圖同樣扣 50 點。貼圖品質也是分級收費：Meshy 的貼圖階段 2K/4K 扣 10 點、8K 扣 15 點，Tripo 的 texture_quality 設成 detailed 在 H2 與 H3 會多扣 10 點，官方文件也寫 P1 是單一價、這類加購不另計。"
+        },
+        {
+          "type": "link",
+          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+        },
+        {
+          "type": "heading",
+          "text": "線上工具的方案、點數與免費層",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Meshy 的說明中心把個人方案列成四層：Free 是 $0、Pro $20、Premium $40、Ultra $100，每月點數分別是 100、1,000、3,000、8,000；團隊用的 Studio 方案是每席每月 $70、5,500 點共用池。官方定價頁另外寫新用戶首月五折、年繳打八折，點數每月重置且不累積。"
+        },
+        {
+          "type": "paragraph",
+          "text": "扣點在所有方案都一樣：模型階段 Meshy 7 扣 25 點、Meshy 6 扣 20 點、Meshy 6 Lite 扣 10 點；貼圖 2K/4K 是 10 點、8K 是 15 點；列印修復 10 點、多色列印的 AI 最佳化 16 點、自動綁骨 0 點、文字轉動作 3 點。真正要注意的是下載：官方說明寫免費方案每月只有 10 次下載額度，而且只限 Meshy 6 Lite 生成的模型，用 Meshy 6 或 Meshy 7 生的要升級才能下載，免費方案也沒有 API。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Tripo 的網頁訂閱方案頁在這次查證時擋住了讀取，方案與價格以官網為準；能公開查到的是 API 文件的點數表：$1.00 換 100 點，影像轉模型用 P1 含貼圖 50 點、不含貼圖 40 點，H2 與 H3 的影像轉模型含貼圖 30 點，文字轉模型 H2 與 H3 不含貼圖 10 點，綁骨 25 點、動作重定向每段 10 點、格式轉換 5 點；文件也寫新帳號有 300 點免費額度、期限兩週。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hyper3D 的定價頁把 Rodin 的 Free 方案寫成先看結果再確認扣點，工作區只放得下 10 個私有資產，另外可直接買點數、每點 $1.5；Creator 月繳 $30、年繳折算每月 $24（當下付 $288），頁面估約 60 個模型；Business 月繳 $120、年繳每月 $96（當下付 $1,152），估約 416 個模型並含完整 API。定價頁的問答寫付費方案才有比較完整的匯出與使用權限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三家都有 API，但門檻不一樣：Meshy 的 API 從 Pro 起才有，免費方案只能用網頁版；Tripo 的 API 是先儲值再用，文件寫查詢任務時會回一個 consumed_credit 欄位，可以拿來對帳；Hyper3D 把完整 API 放在 Business，定價頁寫前三個級距是每分鐘 120 次請求、更高的級距 240 次。只做幾個模型的人可以略過這段，但如果打算一次生成幾十個道具，這會決定你要買哪一層。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "輸入",
+            "輸出格式",
+            "方案與授權"
+          ],
+          "rows": [
+            [
+              "Meshy",
+              "文字、單張圖、多視角圖",
+              "FBX、OBJ、USDZ、GLB、STL、BLEND（文字與圖片轉 3D 的下載格式）",
+              "Free $0、Pro $20、Premium $40、Ultra $100 每月；免費層產出為 CC BY 4.0，付費可設為私有"
+            ],
+            [
+              "Tripo",
+              "文字、單張圖、多視角圖",
+              "原生 GLB，可轉 GLTF、USDZ、FBX、OBJ、STL、3MF",
+              "API $1.00 換 100 點、新帳號 300 點兩週；網頁訂閱方案以官網為準"
+            ],
+            [
+              "Hyper3D Rodin",
+              "文字、單張圖、多張圖",
+              "官網列出 Blender、Unity、Unreal、Godot、Maya、3ds Max、ComfyUI 外掛，可下載格式以官網為準",
+              "Free $0、Creator $30、Business $120 每月；條款寫不限制 Rodin 產出的使用"
+            ],
+            [
+              "TripoSR（開源）",
+              "單張圖",
+              "在自己的電腦上輸出",
+              "MIT 授權，含原始碼與預訓練權重"
+            ],
+            [
+              "Hunyuan3D 2.1（開源）",
+              "圖片",
+              "在自己的電腦上輸出",
+              "騰訊混元 3D 2.1 社群授權，適用區域不含歐盟、英國與南韓"
+            ]
+          ],
+          "caption": "三個線上工具與兩個開源模型的官方規格對照，價格與條款查證於 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "免費不等於能下載，也不等於免標註",
+          "text": "三家的免費層各有各的閘門：Meshy 免費方案每月 100 點可以生成，但下載只給 Meshy 6 Lite 的 10 次，而且產出授權是 CC BY 4.0，商用時要標註 Meshy；Hyper3D 的免費方案是先看結果再扣點、工作區限 10 個私有資產；Tripo 的 API 有 300 點、兩週的免費額度。交件給客戶前，先確認手上這個檔案是用哪個方案、哪個模型生出來的。"
+        },
+        {
+          "type": "link",
+          "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-tools-overview-2026"
+        },
+        {
+          "type": "heading",
+          "text": "輸出格式怎麼選，以及匯進 Blender",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "格式決定你能帶走什麼。Tripo 的轉檔文件寫得最細：API 原生輸出是 GLB，可以再轉成 GLTF、USDZ、FBX、OBJ、STL、3MF，其中 OBJ 與 STL 不支援已綁骨架的模型，3MF 同樣不支援綁骨、而且只匯出幾何；選 STL 時貼圖不會保留，GLTF 與 STL 都不存四邊面，就算開了 quad 重拓樸，結果仍會以三角面存下來。Meshy 的說明則建議 GLB 給 Unity 與網頁、FBX 給 Unreal 與需要骨架動畫的流程、OBJ 當通用備案（貼圖另存成 MTL 檔）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Blender 手冊的 glTF 2.0 頁寫這個匯入匯出外掛預設就啟用，選單在 File ‣ Import/Export ‣ glTF 2.0 (.glb, .gltf)，支援網格、材質（Principled BSDF）、貼圖、相機、燈光與動畫（關鍵影格、形狀鍵與蒙皮）；要留意的是匯出 glTF 時，四邊面與 n 邊面會自動轉成三角面。glTF 的核心材質走 metal/rough 的 PBR 流程，包含基礎色、金屬度、粗糙度、烘焙環境光遮蔽、法線貼圖與自發光六個通道，這也是為什麼從生成工具帶出來的貼圖多半是這幾張。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "Tripo 轉檔任務的參數（欄位名稱照官方文件）",
+          "code": "{\n  \"type\": \"convert_model\",\n  \"format\": \"STL\",\n  \"original_model_task_id\": \"前一個生成任務的 task_id\",\n  \"quad\": true,\n  \"face_limit\": 10000,\n  \"flatten_bottom\": true,\n  \"texture_size\": 2048\n}"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-3d-model-generation/diagram-1.svg",
+          "alt": "流程圖：輸入、生成網格與貼圖、後處理、匯出格式，之後分成匯入 Blender 或送進切片軟體，最下方列出免費層的限制。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左至右看：每一格寫的是這個階段要決定的事與官方文件的數字，最底下那條是免費層的三個閘門。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "想在自己的電腦上跑：TripoSR 與 Hunyuan3D 2.1",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "TripoSR 的 GitHub 說明寫它由 Tripo AI 與 Stability AI 合作開發，從單張圖片重建 3D，官方寫在 NVIDIA A100 上不到 0.5 秒就能產出一個模型，並且以 MIT 授權釋出原始碼、預訓練權重與線上示範。專案本身是命令列工具，指定一張圖與輸出資料夾就會跑。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "TripoSR 的單張圖推論指令（官方 README 的範例）",
+          "code": "python run.py examples/chair.png --output-dir output/"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hunyuan3D 2.1 的 Hugging Face 模型卡把授權標成 tencent-hunyuan-community，連到 GitHub 上的授權原文。那份授權寫得很明白：適用區域（Territory）是全世界但排除歐盟、英國與南韓，在版本發布日（授權開頭標的是 2025 年 6 月 13 日）當時，前一個日曆月的月活躍使用者超過 100 萬的公司必須另外向騰訊申請授權，而且不得拿它的產出去改進其他 AI 模型。官方 README 寫形狀生成要 10 GB 顯示記憶體、貼圖生成 21 GB、兩者一起 29 GB，測試環境是 Python 3.10 與 PyTorch 2.5.1+cu124，並提供一個可以本機架起來的 Gradio 介面。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "Hunyuan3D 2.1 官方 README 的 Gradio 啟動指令",
+          "code": "python3 gradio_app.py \\\n  --model_path tencent/Hunyuan3D-2.1 \\\n  --subfolder hunyuan3d-dit-v2-1 \\\n  --texgen_model_path tencent/Hunyuan3D-2.1 \\\n  --low_vram_mode"
+        },
+        {
+          "type": "link",
+          "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
+          "url": "https://mokaair.com/zh-TW/life/local-ai-gpu-buying-guide"
+        },
+        {
+          "type": "link",
+          "text": "本機跑 Stable Diffusion 與 Flux：ComfyUI 入門",
+          "url": "https://mokaair.com/zh-TW/life/stable-diffusion-comfyui-setup"
+        },
+        {
+          "type": "link",
+          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+        },
+        {
+          "type": "heading",
+          "text": "要拿去 3D 列印的話",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "切片軟體要的是封閉的網格。Meshy 的說明文章把 watertight 定義成沒有破洞、縫隙或重疊面，每一條邊剛好被兩個多邊形共用，像個裝得住水的容器；AI 生成模型常見的毛病是開放邊、非流形邊、法線朝內，還有沒接在主體上的浮空碎片。官方建議先在 Meshy 裡用 Remesh 重建拓樸再匯出；提示詞也有影響，寫「玻璃罐」這種帶透明或中空的描述容易生出要修的網格，改成「陶瓷罐」會單純很多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "格式上，Meshy 的切片軟體指南寫 STL 只有幾何、沒有顏色；3MF 會保留顏色與多部件資訊，Bambu Studio、OrcaSlicer 與 PrusaSlicer 都能直接讀 3MF 的顏色資料；Cura 對 3MF 顏色的支援在不同版本比較不一致，官方建議改用 STL 再到 Cura 裡自己指定擠出頭。尺寸要在 Meshy 裡先改好再匯出，不要等到切片軟體才縮放。Tripo 的轉檔頁列的是 flatten_bottom（預設關閉，壓平深度預設 0.01）與 pivot_to_center_bottom，兩個都是為了讓模型站得穩；要讓尺寸直接對上真實世界則是生成階段的事，官方的影像轉模型頁寫 auto_size 會自動把模型縮放成以公尺為單位的真實尺寸，預設關閉，而且只能用在有貼圖的模型。Blender 手冊的 STL 頁也寫這個格式常用於載入 3D 列印軟體。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在生成工具裡先跑一次重新網格或列印修復（Meshy 的 Printability Repair 扣 10 點）",
+            "匯出前把實際尺寸調好，不要留給切片軟體縮放",
+            "單色列印用 STL，多色列印改用 3MF",
+            "切片軟體報錯就回 Blender，用 Mesh ‣ Clean Up ‣ Fill Holes 與 Merge by Distance 補洞",
+            "確認底面夠平、懸空面不要太多，再送出去印"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "限制、拓樸與商用權",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 生成的網格不會自動符合遊戲或動畫的規矩。Meshy 的遊戲資產文章給的三角面預算是：手機背景道具 100 到 500、手機主角 1,000 到 3,000、PC 與主機的場景道具 500 到 5,000、主角 10,000 到 50,000、VR 與 AR 的互動物件 500 到 2,000，並建議匯出時勾 Quad Mesh，之後到 Blender 用 Decimate 修改器減面。Tripo 這邊是用參數控制：生成時 face_limit 範圍是 48 到 20000，不設就自動判斷；轉檔時 face_limit 預設 10000，開 quad 重拓樸多扣 5 點，還有 force_symmetry 可以強制左右對稱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "授權要一家一家看。Meshy 的服務條款第 3.2 節寫免費方案的產出所有權在 Meshy（原文是 Provider owns all right, title, and interest），使用者拿到的是 CC BY 4.0 授權，可以商用但要標註；把模型發到社群頁則等同用 CC0 釋出。付費方案可以把內容設為私有，官方定價頁的問答寫付費方案「you own the assets created through our platform」。Hyper3D 的條款寫 Rodin 的產出「we will not limit your use of such Output」，但同一段也寫明不保證產出可以受著作權保護，網站並要求使用者年滿 18 歲。開源那邊，TripoSR 是 MIT，Hunyuan3D 2.1 則是有地區與規模限制的社群授權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "至於台灣能不能用，各家官方方案頁都沒有列出服務的支援地區清單，以官網為準；Meshy 的定價頁問答有寫接受主要信用卡與 Cash App Pay、Apple Pay、Link、iDEAL。商用前建議把提示詞、參考圖與方案狀態一起留檔，萬一要證明流程時才找得到。"
+        },
+        {
+          "type": "link",
+          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Meshy 定價頁（官方）",
+          "url": "https://www.meshy.ai/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meshy 說明中心：Which Meshy Plan Is Right for You（官方說明）",
+          "url": "https://help.meshy.ai/en/articles/12062933-which-meshy-plan-is-right-for-you-free-vs-pro-vs-premium-vs-ultra",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meshy 說明中心：What Is Included on the Free Plan（官方說明）",
+          "url": "https://help.meshy.ai/en/articles/15696428-what-is-included-on-the-free-plan",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meshy 說明中心：How Many Credits Does Each Generation Task Cost（官方說明）",
+          "url": "https://help.meshy.ai/en/articles/10000507-how-many-credits-does-each-generation-task-cost",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meshy 說明中心：Meshy 7 vs Meshy 6 vs Meshy 6 Lite（官方說明）",
+          "url": "https://help.meshy.ai/en/articles/15697060-meshy-7-vs-meshy-6-vs-meshy-6-lite-which-ai-model-should-you-use",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meshy 說明中心：Best Meshy Export Formats for 3D Slicers（官方說明）",
+          "url": "https://help.meshy.ai/en/articles/16103068-best-meshy-export-formats-for-3d-slicers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meshy 說明中心：How to Fix Meshy Models That Fail in a 3D Slicer（官方說明）",
+          "url": "https://help.meshy.ai/en/articles/15724169-how-to-fix-meshy-models-that-fail-in-a-3d-slicer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meshy 說明中心：How to Make Meshy Models Game-Ready（官方說明）",
+          "url": "https://help.meshy.ai/en/articles/15723950-how-to-make-meshy-models-game-ready",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meshy Terms of Service（官方條款）",
+          "url": "https://www.meshy.ai/terms-of-use",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Tripo API 文件：Pricing（官方文件）",
+          "url": "https://docs.tripo3d.ai/get-started/pricing.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Tripo API 文件：Conversion（官方文件）",
+          "url": "https://docs.tripo3d.ai/export/conversion.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Tripo API 文件：Image to model P1-20260311（官方文件）",
+          "url": "https://docs.tripo3d.ai/model-generation/image-to-model-p1-20260311.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hyper3D 定價頁（官方）",
+          "url": "https://hyper3d.ai/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hyper3D 使用條款（官方）",
+          "url": "https://hyper3d.ai/legal/terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型卡：tencent/Hunyuan3D-2.1（官方模型卡）",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2.1",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Tencent Hunyuan 3D 2.1 Community License Agreement（授權原文）",
+          "url": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hunyuan3D 2.1 GitHub README（官方專案說明）",
+          "url": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TripoSR GitHub README 與 LICENSE（官方專案說明）",
+          "url": "https://github.com/VAST-AI-Research/TripoSR",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Blender 手冊：glTF 2.0 匯入匯出（官方手冊）",
+          "url": "https://docs.blender.org/manual/en/latest/addons/scene_gltf2.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Blender 手冊：STL 匯入匯出（官方手冊）",
+          "url": "https://docs.blender.org/manual/en/latest/files/import_export/stl.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

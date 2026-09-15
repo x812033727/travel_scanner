@@ -1,0 +1,418 @@
+{
+  "slug": "midjourney-prompt-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Midjourney 提示詞：風格、比例、參考圖",
+      "description": "照官方說明文件整理 Midjourney 的提示詞寫法：主體、媒材、環境、光線、色彩、情緒、構圖七個面向怎麼分配，參數為什麼一定放在最後，比例、風格化、參考圖與排除項各自的定義與數值範圍，以及雙冒號權重在哪些版本還能用。文中附可直接貼上的範例提示詞，效果描述一律照官方文件，沒有實測出圖。",
+      "hero": {
+        "src": "/guides/midjourney-prompt-guide/hero.jpg",
+        "alt": "原創幾何插畫：左邊一張卡片上有幾條彩色橫條代表一句提示詞，箭頭指向右邊直幅、方形與橫幅三個畫框與一排色票。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Midjourney 的提示詞不是越長越好。官方 Prompt Basics 直接寫著：短而簡單的提示詞通常效果最好，長清單或一連串指令反而會干擾生成。決定成品的是你有沒有把在意的面向講清楚，以及參數放對位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照官方文件整理提示詞的結構、參數的格式規則、比例與風格化的數值範圍、三種參考圖的差別，以及排除項與權重。撰稿當天無法實際出圖，效果描述一律照官方文件，實際結果以你帳號當下的版本為準。"
+        },
+        {
+          "type": "heading",
+          "text": "提示詞的骨架：官方列出的七個面向",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方說提示詞可以只有一個字甚至一個 emoji，短提示會讓 Midjourney 用預設風格補滿空白。官方把值得檢查的細節整理成七個面向。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "主體（Subject）：人物、動物、角色或物件。",
+            "媒材（Medium）：照片、繪畫、插畫或雕塑。",
+            "環境（Environment）：室內、戶外、水下或城市。",
+            "光線（Lighting）：柔光、環境光、陰天或棚燈。",
+            "色彩（Color）：鮮豔、低飽和、單色或粉彩。",
+            "情緒（Mood）：俏皮、平靜、陰鬱或有活力。",
+            "構圖（Composition）：肖像、大頭照、特寫或鳥瞰。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "官方另外給兩個選字建議：用更精確的同義詞，與其寫 big 不如挑 huge；數量講明白，cats 改成 three cats 或 flock of birds。還有一條常被忘記的規則是描述你要的、不要描述你不要的。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "官方文件對照的兩種寫法",
+          "code": "（官方標為不佳）Show me a picture of lots of blooming California poppies, make them bright, vibrant orange, and draw them in an illustrated style with colored pencils\n\n（官方標為較佳）Colored pencil illustration of bright orange California poppies"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "照七個面向補完的提示詞",
+          "code": "colored pencil illustration of three California poppies, soft morning light, close-up --ar 16:9 --s 250 --no text\n\nwatercolor painting of a quiet harbour at dusk, muted blue and amber, calm mood, wide shot --ar 3:2"
+        },
+        {
+          "type": "image",
+          "src": "/guides/midjourney-prompt-guide/diagram-1.svg",
+          "alt": "把一段提示詞拆成媒材、主體、光線、構圖與參數五段，並列出參數的格式規則與版本差異。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右照提示詞的順序讀：描述先寫完，參數才接在最後面。此為原創教學圖解，不是產品畫面。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "參數怎麼放：三條格式規則",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "參數是加在提示詞後面的開關。官方 Parameter List 把用法濃縮成三條：一律放在描述文字最後面；提示詞和兩個破折號之間留一個空格；參數裡不要用逗號、句號或其他標點。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "官方列出的四種錯誤參數寫法",
+          "code": "vibrant California poppies--ar 2:3        破折號前沒有空格\nvibrant California poppies - - ar 2:3     兩個破折號中間多了空格\nvibrant California poppies --ar 2:3,      參數裡用了標點\nvibrant California --ar 2:3 poppies       描述文字寫在參數後面"
+        },
+        {
+          "type": "paragraph",
+          "text": "版本也是格式的一部分。官方 Version 頁寫著目前預設版本是 V8.2，2026 年 7 月 24 日起成為預設；V8.1 則在 2026 年 4 月 14 日推出。"
+        },
+        {
+          "type": "link",
+          "text": "Midjourney 入門：網頁版、參數與訂閱",
+          "url": "https://mokaair.com/zh-TW/life/midjourney-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "比例、風格化與變化量：四個常用旋鈕",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "比例參數是 --ar 或 --aspect。圖預設是正方形的 1:1，第一個數字大是橫幅、第二個大是直幅。--ar 不能有小數，1.39 比 1 要寫成 139:100；想比照素材就把尺寸填進去，1920x1080 寫成 --ar 1920:1080 會化簡為 16:9。官方相容表列出 V6、V7、V8.1 與 V8.2 的最大比例都是 14:1，HD 圖片是 4:1。"
+        },
+        {
+          "type": "paragraph",
+          "text": "風格化參數 --stylize 或 --s 像一支滑桿：數值低貼著提示詞走，數值高更有藝術味也更可能偏離細節，預設 100，最新版本可設 0 到 1000。想更貼近文字可加 --raw 關掉自動附加的風格。另外兩個旋鈕管變化量：--chaos 或 --c 預設 0、範圍 0 到 100，越高四張圖差越多；--weird 或 --w 預設 0、最高 3000，官方標明是實驗性功能。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "調比例與風格化的四組提示詞",
+          "code": "flat vector poster of a mountain trail, bold shapes, limited palette --ar 2:3 --s 50\n\nflat vector poster of a mountain trail, bold shapes, limited palette --ar 2:3 --s 750\n\nproduct photo of a ceramic mug on a linen cloth, soft window light --ar 1:1 --raw\n\nstorybook illustration of a fox in a snowy forest --ar 16:9 --c 40 --w 250"
+        },
+        {
+          "type": "table",
+          "header": [
+            "參數",
+            "做什麼",
+            "範圍或預設"
+          ],
+          "rows": [
+            [
+              "--ar 或 --aspect",
+              "設定寬高比",
+              "預設 1:1，不寫小數；最大 14:1、HD 4:1"
+            ],
+            [
+              "--stylize 或 --s",
+              "自動的藝術感",
+              "預設 100，可設 0 到 1000"
+            ],
+            [
+              "--chaos 或 --c",
+              "四張圖的差異",
+              "預設 0，可設 0 到 100"
+            ],
+            [
+              "--weird 或 --w",
+              "實驗性的變化",
+              "預設 0，最高 3000"
+            ],
+            [
+              "--raw",
+              "關掉預設風格",
+              "無數值；5.1 版以後"
+            ],
+            [
+              "--no",
+              "排除不要的元素",
+              "無數值；等同權重 -0.5"
+            ],
+            [
+              "--iw",
+              "圖片提示的影響力",
+              "預設 1；V8.1 與 V7 為 0 到 3，Niji 7 為 0 到 2"
+            ],
+            [
+              "--sref 與 --sw",
+              "套用風格參考",
+              "--sw 預設 100，可設 0 到 1000"
+            ],
+            [
+              "--oref 與 --ow",
+              "帶入參考圖的人或物",
+              "--ow 預設 100，可設 1 到 1000；僅 V7"
+            ],
+            [
+              "--edit",
+              "改圖或帶入四張參考圖",
+              "無數值；V8.1 與 V8.2"
+            ],
+            [
+              "--seed",
+              "固定起始雜訊",
+              "0 到 4294967295；V8.X 約 99% 相同"
+            ],
+            [
+              "--q 或 --quality",
+              "生成花的 GPU 時間",
+              "V7 預設 1，可設 2 或 4；V8.1、V8.2 不支援"
+            ]
+          ],
+          "caption": "Midjourney 常用參數的官方定義與數值，2026 年 9 月 14 日查自官方說明文件。"
+        },
+        {
+          "type": "link",
+          "text": "AI 繪圖風格提示參考：50 種風格描述",
+          "url": "https://mokaair.com/zh-TW/life/ai-art-prompt-styles-reference"
+        },
+        {
+          "type": "heading",
+          "text": "參考圖：圖片提示、風格參考與 Edit 模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最基礎的參考圖用法是圖片提示（Image Prompts）：Midjourney 把圖裡的核心元素當靈感，不是照抄。用法有三種，一張圖加文字、兩張以上不加文字、多張圖再加文字；關鍵是文字要寫最後想看到什麼，不是寫請把參考圖改成什麼。Discord 版把圖片網址放在文字最前面，檔名限 png、gif、webp、jpg 或 jpeg。影響力用 --iw 調整，預設 1，V8.1 與 V7 是 0 到 3，Niji 7 是 0 到 2；官方只列出這三個版本的範圍，其他版本以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "風格參考（Style Reference）走另一條路：--sref 只抓整體視覺調性，像顏色、媒材、質感和光線，不複製參考圖裡的物件或人物。強度用 --sw 控制，可設 0 到 1000、預設 100。也可以直接填風格代碼，寫 --sref random 會隨機挑一組、送出後固定下來。官方的最佳實務三句話：文字保持簡單、避免和參考圖打架的風格字、描述內容而不是下指令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想把某個人或某個物件帶進新圖，現在的官方作法是 Edit 模型：V8.1 與 V8.2 可用，Discord 版寫成 --edit 加圖片網址，一次最多四張參考圖，官方寫明它取代了 Omni Reference 與 Character Reference。它會自動沿用第一張參考圖的比例，要改就另外寫 --ar，也是官方明講可以下指令句的地方。V7 才有的 Omni Reference 用 --oref，強度 --ow 可設 1 到 1000、預設 100，官方建議留在 400 以下。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "三種參考圖的提示詞寫法（Discord）",
+          "code": "（圖片提示）圖片網址 detailed portrait of a golden retriever, studio light --iw 2\n\n（風格參考）ballpoint pen sketch of a bunny in a meadow --sref 風格圖網址 --sw 400\n\n（Edit 模型）a boy meeting a monster in the wilderness --edit 第一張圖網址 第二張圖網址 --ar 16:9"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
+          "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+        },
+        {
+          "type": "heading",
+          "text": "說不要：--no 與多重提示的權重",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "--no 是官方指定的排除清單，寫在提示詞最後，多項用逗號分隔。官方提醒審核系統會把 --no 後面每個字分開讀，--no modern clothing 會被讀成不要 modern 和不要 clothing，可能誤觸警告；改成在正文寫出你要的服裝類型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "多重提示用雙冒號把概念切開。官方舉例 space ship 得到科幻太空船，space:: ship 則是分別想太空和船再合成。雙冒號左邊不留空格、右邊留一個空格。權重寫在雙冒號後面，space::2 ship 代表太空的重要性是船的兩倍，沒寫預設是 1；可以用負數，但所有權重加起來必須是正數，改成 -2 會直接報錯。官方說 --no 等同 -0.5 的權重。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這裡有個坑：官方 Multi-Prompts 頁列出支援的版本到 6.1 為止，Version 頁的相容表則把多重提示標成 V6 可用、V7 與 V8.1、V8.2 不可用。在目前預設的 V8.2 要排除元素，用 --no。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "排除與加權的提示詞",
+          "code": "still life gouache painting --no fruit, apple, pear\n\nvibrant tulip fields --no red\n\nspace:: ship --v 6\n\nstill life painting:: fruit::-0.5 --v 6"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "參數不是每個版本都有",
+          "text": "官方相容表把多重提示、--oref 與 --q 都標成 V8.1、V8.2 不支援，照抄來的提示詞沒反應時，先看自己在哪個版本，再看參數是不是放在最後、有沒有多打標點。"
+        },
+        {
+          "type": "heading",
+          "text": "常見錯誤與可重複的實驗",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件裡標為不佳的寫法，大致是這幾類。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "寫成指令句或長清單：改成短而清楚的描述片語。",
+            "用否定詞描述畫面：寫沒有蛋糕，蛋糕還是可能出現。",
+            "數量含糊：cats 改成 three cats 或 flock of birds。",
+            "對參考圖下指令：改成描述最終想看到的畫面。",
+            "參數格式出錯：少空格、參數後面又接描述、參數裡加逗號。",
+            "版本沒對上：雙冒號權重、--oref 與 --q 在預設版本用不了。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "想在圖上放字不算錯誤，但有講究。官方說 6 版以後可以把文字放進英文的雙引號裡，單引號或撇號不算；用標準拉丁字母、短句成功率最高，提示詞裡加上 with the words、text 或 written 會有幫助。文字歪掉時官方建議改用 Raw 或把風格化值調低。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後是把提示詞變成實驗。排列組合提示用大括號列出選項、逗號分隔，一次跑出多組提示詞；官方寫 Basic 最多 4 組、Standard 最多 10 組、Pro 與 Mega 最多 40 組，只能在 Fast 與 Turbo 模式使用。想做對照實驗用 --seed，填 0 到 4294967295 的整數固定起始雜訊；官方提醒 seed 在 V8.X 只能做到約 99% 相同。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "在圖上放字與一次試多種版本",
+          "code": "a cartoon drawing of a manual with the words \"read the docs\" in big text on the pages --raw\n\na {red, green, yellow} bird on a pier --ar 3:2\n\nminimalist travel poster of a lighthouse --ar {1:1, 2:3, 16:9}"
+        },
+        {
+          "type": "link",
+          "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-tools-overview-2026"
+        },
+        {
+          "type": "link",
+          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+        },
+        {
+          "type": "link",
+          "text": "提示詞工程（Prompt Engineering）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-engineering"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prompt Basics（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32023408776205-Prompt-Basics",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Art of Prompting（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32835253061645-Art-of-Prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Parameter List（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Aspect Ratio（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/31894244298125-Aspect-Ratio",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Stylize（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32196176868109-Stylize",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Raw（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32634113811853-Raw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chaos / Variety（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32099348346765-Chaos-Variety",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Weird（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32390120435085-Weird",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Image Prompts（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32040250122381-Image-Prompts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Style Reference（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32180011136653-Style-Reference",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Omni Reference（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/36285124473997-Omni-Reference",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Edit Model（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/48495453462797-Edit-Model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Multi-Prompts & Weights（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32658968492557-Multi-Prompts-Weights",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "No（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32173351982093-No",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Version（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32199405667853-Version",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Text Generation（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32502277092109-Text-Generation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Permutations（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32761322355597-Permutations",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Seeds（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32604356340877-Seeds",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Quality（Midjourney 官方說明文件）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32176522101773-Quality",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

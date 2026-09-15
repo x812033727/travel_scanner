@@ -1,0 +1,381 @@
+{
+  "slug": "sora-video-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Sora 影片生成教學：官方已停止服務，先匯出再挑替代工具",
+      "description": "2026 年 9 月 14 日查證：Sora 的網站與 App 已在 2026 年 4 月 26 日停止，Videos API 也排定 2026 年 9 月 24 日關閉，官方棄用表沒有填建議替代。這篇照 OpenAI 官方說明整理三件事：怎麼在官方匯出頁把作品拿回來、官方留下的長度與解析度規格怎麼當成挑下一個工具的尺，以及浮水印與內容憑證的官方查驗範圍到哪裡。",
+      "hero": {
+        "src": "/guides/sora-video-guide/hero.jpg",
+        "alt": "幾何插畫：一條由方格組成的影片時間軸走到盡頭，末端轉為向下的箭頭落入收納盒，旁邊有一枚標示徽章。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想學怎麼用 Sora 生第一支影片的話，先看今天的官方公告：OpenAI 說明中心寫著 Sora 的網站與 App 已在 2026 年 4 月 26 日停止，開發者用的 Videos API 也排定 2026 年 9 月 24 日關閉。所以這篇不教怎麼下提示詞，而是把剩下的時間花在三件事：匯出作品、抄下官方規格、把標示習慣帶到下一個工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會知道官方匯出頁在哪裡、匯出後資料會被怎麼處理、官方留下的長度與解析度上限、哪些內容被明文擋下，以及內容憑證查驗工具收哪些格式。以下數字都是 2026 年 9 月 14 日在官方頁面讀到的，官網之後改版就以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "Sora 現在的狀態：兩個日期，一欄空白的建議替代",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的停止服務說明只有兩句是日期：Sora 的網站與 App 已於 2026 年 4 月 26 日停止，Sora API 將於 2026 年 9 月 24 日停止。開發者文件的棄用頁攤開細節：Videos API、sora-2 與 sora-2-pro 兩個別名，加上三個日期版快照，共六列全部在該日從 API 移除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "那張表最值得看的是最後一欄。其他被淘汰的模型都填了建議替代，Sora 這六列全是空的，官方沒有指定接手的模型。模型頁上 Sora 2 與 Sora 2 Pro 都掛著 Legacy 標記，底下的快照標成 Deprecated。"
+        },
+        {
+          "type": "paragraph",
+          "text": "消費端看到的是同一件事。說明中心原本那批 Sora 文章現在打開都顯示頁面不存在，只剩停止服務說明還在。ChatGPT Plus、Pro、Go 的官方說明頁列的是圖片生成、檔案上傳、語音對話這些功能，沒有一項是影片生成；Plus 月費仍寫 20 美元。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/sora-video-guide/diagram-1.svg",
+          "alt": "四步流程圖：確認兩個停止日期、到官方頁面匯出、抄下官方規格、換工具並保留標示習慣。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：先確認兩個官方日期，再把作品匯出，接著抄下官方規格當成挑工具的尺，最後把標示習慣帶走。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "第一件事：到官方匯出頁把作品拿回來",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方說明只給一個位址和一個動作：到 Sora 網域下的 sunset 匯出頁按 Export，檔案好了會寄電子郵件通知。這是停止服務說明裡唯一提到的取回方式。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "官方頁面位址（抄自 OpenAI 說明中心與開發者文件）",
+          "code": "匯出你的 Sora 內容：sora.chatgpt.com/sunset\n查驗內容憑證的網頁工具：openai.com/verify"
+        },
+        {
+          "type": "list",
+          "items": [
+            "用當初生成影片的那個 OpenAI 帳號登入，打開官方說明給的 sunset 匯出頁。",
+            "按下 Export 之後不必守著頁面，官方寫的是檔案好了會寄信通知。",
+            "收到信就立刻下載存進自己的硬碟或雲端，別把信裡的連結當長期保管。",
+            "逐支打開播放一次，確認畫面與聲音都在。",
+            "把還記得的提示詞、比例與長度寫進同一個資料夾的純文字檔，換工具時很有用。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "資料的下場官方也寫了：Sora 停止之後，若還安排了最後的匯出期間，等那段期間過去，OpenAI 會永久刪除與你使用 Sora 相關的資料，而且是「如果有」最後期間才會先寄信。已經購買的 ChatGPT 或 Sora 點數，官方說仍可選擇用在 Codex。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "匯出這件事沒有補考",
+          "text": "官方白紙黑字寫著，最後的匯出期間過去之後會永久刪除與 Sora 使用相關的資料。把匯出排進今天的待辦，不要排進下個月；下載完先播一次，確認檔案真的能用。"
+        },
+        {
+          "type": "heading",
+          "text": "官方留下的規格：長度、解析度與每秒價格",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "即使你不寫程式，這一節還是值得看：它是唯一一份由官方背書的 Sora 規格，拿去量下一個工具剛好。Videos API 文件寫著 sora-2 與 sora-2-pro 都支援 16 秒與 20 秒的生成；要 1920x1080 或 1080x1920 的 1080p 輸出必須用 sora-2-pro，且長片與 1080p 比 720p、480p 明顯久。"
+        },
+        {
+          "type": "paragraph",
+          "text": "編輯這一側有兩個端點。延長（extensions）接著已完成的影片往下生，每次最多加 20 秒、最多延長 6 次、總長上限 120 秒，而且只收來源影片與提示詞。修改（edits）是對既有影片做定點調整，官方明講原本的 remix 端點正在淘汰，新的整合要改用 edits。"
+        },
+        {
+          "type": "paragraph",
+          "text": "參考圖（input_reference）只影響單次生成的開頭畫面；角色（characters）是上傳一段短片當可重複使用的素材，官方建議 2 到 4 秒、16:9 或 9:16。含人類外貌的角色上傳預設封鎖。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "管道與模型",
+            "當天狀態",
+            "解析度與長度",
+            "價格"
+          ],
+          "rows": [
+            [
+              "Sora 網站與 App",
+              "2026 年 4 月 26 日停止",
+              "說明頁已下架",
+              "不屬於任何方案"
+            ],
+            [
+              "sora-2",
+              "2026 年 9 月 24 日移除",
+              "1280x720，16 或 20 秒",
+              "每秒 0.10 美元"
+            ],
+            [
+              "sora-2-pro",
+              "2026 年 9 月 24 日移除",
+              "最高 1920x1080，16 或 20 秒",
+              "每秒 0.30 到 0.70 美元"
+            ],
+            [
+              "延長 extensions",
+              "隨 API 關閉",
+              "每次 20 秒，6 次共 120 秒",
+              "依模型每秒單價"
+            ],
+            [
+              "內容憑證查驗工具",
+              "仍可使用",
+              "只收圖片與音訊",
+              "以官網為準"
+            ]
+          ],
+          "caption": "查證日 2026 年 9 月 14 日；價格為 OpenAI 官方模型頁列出的美元每秒單價，規格與方案以官網當天頁面為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "價格按秒計，解析度愈高愈貴：sora-2-pro 在 1792x1024 是每秒 0.50 美元。2026 年 9 月 24 日之後這些只是歷史紀錄，但拿來對照別家的計費仍是一把好用的尺。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "拿這張表對照還在營運的工具："
+            },
+            {
+              "type": "link",
+              "text": "Veo 與 Google Flow：影片、分鏡與匯出",
+              "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+            },
+            {
+              "type": "text",
+              "text": "，中文介面看 "
+            },
+            {
+              "type": "link",
+              "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+              "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+            },
+            {
+              "type": "text",
+              "text": "，想橫向比較就看 "
+            },
+            {
+              "type": "link",
+              "text": "AI 影片工具比較：Veo、Sora、海螺、Kling 的方案與規格",
+              "url": "https://mokaair.com/zh-TW/life/ai-video-tools-compared"
+            },
+            {
+              "type": "text",
+              "text": "；原理看 "
+            },
+            {
+              "type": "link",
+              "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "提示詞的寫法可以整包帶走",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方在 Videos API 文件給的提示詞原則只有一句：描述鏡位、主體、動作、場景與光線。這五件事不綁任何一家模型，換到別的影片工具照樣成立，比背某個工具的專屬關鍵字有用。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "單鏡頭提示詞：鏡位、主體、動作、場景、光線",
+          "code": "鏡位：中景，攝影機緩慢向右橫移\n主體：一只白色陶杯，杯口冒著細細的熱氣\n動作：熱氣被風吹散，光線慢慢移過桌面\n場景：靠窗的木桌，窗外是清晨的街道\n光線：晨光斜射，柔和陰影，淺景深"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方對修改的建議是一次只做一個明確的改動：改得小，原本的構圖、連續性與主體一致性才保得住，一次塞三個要求通常換來整段重畫。這個習慣在哪個工具上都省時間。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "延長與修改：一次只改一件事",
+          "code": "延長：接著同一個鏡頭，攝影機繼續往右移，帶到窗外的街景。\n修改：把整體色調換成偏藍的冷色，構圖與主體都不要動。"
+        },
+        {
+          "type": "heading",
+          "text": "內容規範：官方明文會被擋下的東西",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Videos API 文件有一節直接叫 Guardrails and restrictions，列的是會讓生成直接失敗的條件，不是模糊的建議。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "只接受適合 18 歲以下觀眾的內容；文件註明未來會提供解除這項限制的設定。",
+            "有著作權的角色與有著作權的音樂會被拒絕。",
+            "真實人物不能生成，公眾人物也一樣。",
+            "上傳的角色素材若描繪人類外貌，預設封鎖，要另外洽談資格。",
+            "輸入的參考圖片裡有人臉，目前會被拒絕。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "共同點是別人的臉、別人的角色、別人的音樂。換到任何一家工具之前先讀它同一節的說明，寫法不同但被擋的東西高度重疊。完整條款以 OpenAI 官方使用政策頁為準，本文查證當天無法讀取該頁，只引用讀得到的官方開發者文件。"
+        },
+        {
+          "type": "heading",
+          "text": "浮水印與內容憑證：查驗工具收什麼、不收什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 現在的內容憑證檢查（Content Provenance）找兩種訊號：C2PA 內容憑證（Content Credentials）是寫進圖片的簽章後設資料，含簽發者與是否由 AI 生成；SynthID 則是直接嵌在媒體本身的浮水印，圖片與音訊都適用。官方另有網頁版查驗工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "限制寫得很清楚：支援圖片的 PNG、JPEG、WebP 與音訊的 MP3、Opus、AAC、FLAC、WAV、PCM，單檔上限 50 MiB。清單裡沒有影片，所以剛匯出回來的那支影片檔，用這個工具驗不了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "結果也容易誤讀。官方寫著 not_detected 只代表沒找到它支援的訊號，不代表不是 AI 生成：後設資料可能在轉檔時被清掉、浮水印可能衰減、也可能來自別家的模型。"
+        },
+        {
+          "type": "link",
+          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+        },
+        {
+          "type": "link",
+          "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「台灣是不是被鎖區？」不是。ChatGPT 的官方支援地區清單上有台灣。Sora 打不開是服務停掉，不是地區問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「訂閱還在扣款，能不能退？」官方把這題導到一般的 ChatGPT 退款說明，並補一句：已經買的點數還能選擇用在 Codex。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「官方有推薦替代品嗎？」沒有，棄用表裡那六列的建議替代欄全是空的，換什麼工具是你自己的選擇。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「ChatGPT 裡面還能生影片嗎？」查證當天，Plus、Pro、Go 的官方說明頁列出的功能裡沒有影片生成，Plus 寫的是圖片生成。之後會不會加回來，以官網的方案說明頁為準。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+        },
+        {
+          "type": "paragraph",
+          "text": "「已經下載的舊影片還能用嗎？」檔案在你手上，但公開發布是另一件事：著作權與各平台的 AI 內容標示規範各有寫法，上傳前先看平台當下怎麼要求。"
+        },
+        {
+          "type": "link",
+          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 說明中心：Sora 停止服務說明（匯出、資料刪除與 API 關閉日期）",
+          "url": "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 開發者文件：棄用清單（Videos API 與 Sora 2 模型的關閉日期）",
+          "url": "https://developers.openai.com/api/docs/deprecations",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 開發者文件：Video generation with Sora（長度、解析度、延長、修改與內容限制）",
+          "url": "https://developers.openai.com/api/docs/guides/video-generation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 開發者文件：Sora 2 模型頁（每秒價格與支援尺寸）",
+          "url": "https://developers.openai.com/api/docs/models/sora-2",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 開發者文件：Sora 2 Pro 模型頁（每秒價格與支援尺寸）",
+          "url": "https://developers.openai.com/api/docs/models/sora-2-pro",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 開發者文件：Content provenance（C2PA 與 SynthID 的查驗範圍與格式限制）",
+          "url": "https://developers.openai.com/api/docs/guides/content-provenance",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心：What is ChatGPT Plus?（月費與功能清單）",
+          "url": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心：About ChatGPT Pro tiers（Pro 方案內容）",
+          "url": "https://help.openai.com/en/articles/9793128-what-is-chatgpt-pro",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心：What is ChatGPT Go?（功能清單與供應地區）",
+          "url": "https://help.openai.com/en/articles/11989085-what-is-chatgpt-go",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心：ChatGPT Supported Countries（支援地區清單）",
+          "url": "https://help.openai.com/en/articles/7947663-chatgpt-supported-countries",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心：Using Credits for Flexible Usage in ChatGPT（點數用途與效期）",
+          "url": "https://help.openai.com/en/articles/12642688-using-credits-for-flexible-usage-in-chatgpt-freegopluspro-sora",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

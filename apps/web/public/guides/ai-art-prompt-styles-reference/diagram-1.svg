@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">提示詞的五個欄位 / Five slots of an image prompt</title>
+  <desc id="desc">一段圖片提示詞可以拆成五個依序書寫的欄位。最上面是一段完整的英文範例提示詞。往下第一欄是主體，寫人、物件或地點，並寫出可數的數量。第二欄是風格，水彩、版畫、等距 3D、印象派、35mm 底片這類詞都放這裡，本文整理的 50 條風格詞就是這一欄的內容。第三欄是光線與色彩，例如黃金時刻逆光、陰天散射、霓虹、低飽和、雙色調。第四欄是構圖與鏡頭，例如特寫、鳥瞰、低角度、廣角、微距，決定看見多少以及從哪裡看。第五欄是參數，例如比例、風格化與參考圖，一律放在描述文字最後，破折號前留一個空格。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L12 6 L0 12 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">提示詞的五個欄位：風格詞寫在第 2 欄</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Five slots of an image prompt: subject, style, light, framing, parameters</text>
+
+  <rect x="60" y="104" width="1480" height="92" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="84" y="136" font-size="17" fill="#5C6B6B">一段完整的提示詞</text>
+  <text x="84" y="172" font-size="21" fill="#102A2B">watercolor painting of three fishing boats in a harbour at dawn, backlit, low-angle wide shot --ar 3:2</text>
+
+  <line x1="800" y1="198" x2="800" y2="232" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <circle cx="92" cy="292" r="26" fill="#0D6B68"/>
+  <text x="92" y="301" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <rect x="130" y="240" width="1410" height="105" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="158" y="284" font-size="22" font-weight="700" fill="#102A2B">主體 Subject</text>
+  <text x="158" y="320" font-size="17" fill="#5C6B6B">三艘漁船、一只陶杯、老屋門口　寫得出數量就寫數量，不要只寫複數</text>
+
+  <circle cx="92" cy="417" r="26" fill="#2F6F9F"/>
+  <text x="92" y="426" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <rect x="130" y="365" width="1410" height="105" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="158" y="409" font-size="22" font-weight="700" fill="#102A2B">風格 Style</text>
+  <text x="158" y="445" font-size="17" fill="#5C6B6B">水彩、版畫、等距 3D、印象派、35mm 底片　本文整理的 50 條風格詞都放這一欄</text>
+
+  <circle cx="92" cy="542" r="26" fill="#D97A2B"/>
+  <text x="92" y="551" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <rect x="130" y="490" width="1410" height="105" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="158" y="534" font-size="22" font-weight="700" fill="#102A2B">光線與色彩 Lighting and color</text>
+  <text x="158" y="570" font-size="17" fill="#5C6B6B">黃金時刻逆光、陰天散射、霓虹、低飽和、雙色調　換一種光就是另一張圖</text>
+
+  <circle cx="92" cy="667" r="26" fill="#2E7D5B"/>
+  <text x="92" y="676" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <rect x="130" y="615" width="1410" height="105" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="158" y="659" font-size="22" font-weight="700" fill="#102A2B">構圖與鏡頭 Framing and lens</text>
+  <text x="158" y="695" font-size="17" fill="#5C6B6B">特寫、鳥瞰、低角度、廣角、微距　決定看見多少，以及從哪裡看</text>
+
+  <circle cx="92" cy="792" r="26" fill="#102A2B"/>
+  <text x="92" y="801" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+  <rect x="130" y="740" width="1410" height="105" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="158" y="784" font-size="22" font-weight="700" fill="#102A2B">參數 Parameters</text>
+  <text x="158" y="820" font-size="17" fill="#5C6B6B">比例、風格化、參考圖　一律放在描述文字最後，破折號前留一個空格</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
