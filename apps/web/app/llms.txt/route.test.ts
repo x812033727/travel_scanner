@@ -27,6 +27,10 @@ vi.mock("next-intl/server", () => ({
 vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: vi.fn() }));
 vi.mock("@/lib/discovery-status.server", () => ({ getDiscoveryStatus: vi.fn() }));
 vi.mock("@/lib/destinations.server", () => ({ getDestinations: vi.fn() }));
+// `SITEMAP_ROUTES` comes from `app/sitemap.ts`, which imports the community module, and that one
+// starts with `import "server-only"` -- a package only Next's own build resolves. Nothing here
+// calls it, but Vite still has to resolve the import; app/sitemap.test.ts mocks it the same way.
+vi.mock("@/lib/community/server", () => ({ getCommunityState: vi.fn() }));
 
 const summary = (id: string, city: string, reason: string) => ({
   id, city, reason,
