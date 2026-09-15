@@ -1,0 +1,432 @@
+{
+  "slug": "ai-prompt-library-personal",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "productivity",
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "建立自己的提示詞庫：固定欄位、放在哪裡、怎麼管版本",
+      "description": "重複的任務值得把提示詞存起來。這篇先拆解一則提示詞的六個固定欄位，再照 2026 年 9 月 15 日的官方頁面比較八種存放處：ChatGPT 自訂指令與 Projects、Claude Skills、Gemini Gems、Raycast Snippets、Espanso、Notion 與 Obsidian 範本，各要什麼方案、能不能共用、有沒有版本記錄，另附五段可直接抄的範本。",
+      "hero": {
+        "src": "/guides/ai-prompt-library-personal/hero.jpg",
+        "alt": "抽象插圖：一疊帶有欄位橫線的卡片，經由箭頭分流到對話框、資料夾與鍵盤按鍵三種容器",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "同一個任務每次都重打一次提示詞，結果時好時壞。這篇的結論是：把你真的會重複用的那幾則寫成有固定欄位的範本，存進一個你每天都會打開的地方，比多記幾個技巧有用。提示詞庫不是蒐集一百則網路上的萬用句，是把自己已經問順的五到十則固定下來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接下來會先說一則提示詞該有哪些固定欄位，再照 2026 年 9 月 15 日當天的官方說明頁，比較八種存放處各需要什麼方案、能不能分享給別人、有沒有版本記錄，最後給五段可以直接貼進去的範本，以及一份不該寫進提示詞庫的清單。讀完你可以在一個下午把自己的提示詞庫建起來。"
+        },
+        {
+          "type": "heading",
+          "text": "為什麼值得把提示詞存起來",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "會想建提示詞庫，通常是因為同一件事做了第三次。第一次花二十分鐘把要求講清楚，第二次憑印象重打，第三次結果突然變差，你卻想不起來第一次到底多寫了哪一句。存下來要解決的就是這件事：讓表現好的那一版可以原封不動再跑一次。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "重複的任務：每週的週報、每次的會議記錄整理、固定格式的產品說明，輸入換了但要求沒換。",
+            "固定的格式：要三個重點、要表格、要台灣用語、要標出處，這些條件每次都得重講一遍。",
+            "團隊共用：同一個部門用同一則提示詞，產出的東西才會看起來像同一個單位做的。",
+            "可以改進：存下來才有「上一版」可以比，不然你永遠不知道這次比較好是因為改了寫法，還是只是運氣。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞庫要小才會用。先從這個月真的做過三次以上的任務挑起，五到十則就夠一個人用很久；一開始就想把所有情境寫完，最後通常一則都不會打開。"
+        },
+        {
+          "type": "heading",
+          "text": "一則提示詞的六個固定欄位",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一則能重複用的提示詞，和聊天視窗裡隨手打的一句話，差別在欄位。把下面六個欄位當成表格的欄位名，每則都填滿，你才有辦法在三個月後看懂自己當初在要求什麼。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "用途：一句話說這則在什麼情況下用，例如「把會議逐字稿整理成待辦」。這句同時決定它以後好不好搜尋。",
+            "角色：要模型站在什麼位置回答，例如「你是負責這個專案的專案經理」。角色寫得具體，語氣和取捨才會穩定。",
+            "輸入：你每次會貼進去什麼，以及它的格式。逐字稿、網址，還是一段試算表？先寫清楚，並在範本裡用一個明顯的佔位符標出來。",
+            "輸出格式：要幾個段落、要不要表格、欄位叫什麼、長度上限多少。這一欄寫得越死，回來的東西越好用。",
+            "範例：給一組「這樣的輸入應該產生這樣的輸出」。這是整則裡最花時間、也最值得寫的一欄。",
+            "版本與日期：這次改了什麼、哪一天改的。沒有這一欄，提示詞庫過三個月就會變成一堆看起來差不多、又不知道哪則才是最新的檔案。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "六個欄位裡，範例通常最有效。要模型照一種格式做，與其用形容詞描述那個格式，不如直接給它一組看得到的輸入與輸出，讓它照著模仿。"
+        },
+        {
+          "type": "link",
+          "text": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-few-shot-prompting"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-prompt-library-personal/diagram-1.svg",
+          "alt": "圖解：左邊是一張提示詞範本卡的六個欄位，右邊是各家官網的字數上限、命名三段式與不該寫進去的東西",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊由上往下看六個欄位怎麼填，右邊三個框分別是各家官網寫明的長度上限、檔名怎麼取，以及不能寫進提示詞庫的四類內容。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "如果「把問題問清楚」這一步還在摸索，先把單則提示詞寫好再談收納，順序會順很多。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "放在哪裡：AI 工具內建、文字展開、筆記工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "存放處沒有唯一解，差別只在三件事：需不需要付費、能不能分享給別人、改過的版本留不留得住。下面照 2026 年 9 月 15 日當天的官方說明頁與定價頁分成三類。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先看 ChatGPT。自訂指令（Custom Instructions）是帳號層級、套用到所有對話的長期設定，官方說明頁寫免費版與 Go 最多存 1,500 個字元，Plus、Pro、Business、Enterprise 與教育方案最多 5,000 個字元，網頁、桌面、iOS 與 Android 都有，位置在設定裡的「個人化」。Projects 則是每個專案自己一套指示，官方寫專案指示只在該專案裡生效，而且會覆蓋全域的自訂指令；專案數量不限，能上傳的檔案數依方案不同，免費版每個專案 5 個、Go 與 Plus 25 個、教育版、Pro、Business 與 Enterprise 40 個，而且一次最多同時上傳 10 個。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+        },
+        {
+          "type": "paragraph",
+          "text": "以前常被拿來當提示詞庫的自製 GPT 要特別注意。官方說明頁現在寫個人帳號（免費版、Go、Plus、Pro）已經不能新建或發布 GPT，既有的還能用、符合方案與權限的還能編輯，Business、Enterprise 與教育版工作區則依工作區設定決定；官方建議把流程改搬到 Plugins，並寫明受影響的 Enterprise 工作區預定 2026 年 12 月 11 日退場，遷移流程預定 2026 年 9 月 17 日開始。要長期存放提示詞，先別把家安在這裡。"
+        },
+        {
+          "type": "link",
+          "text": "自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代）",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-gpts-build"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 的個人化說明頁列了三層：帳號層級的「Instructions for Claude」、專案層級的 Project instructions，以及 Skills。專案所有使用者都能建，免費帳號最多五個；付費方案在專案知識接近上限時會自動啟用檢索（官方稱 RAG），容量最多擴大到十倍。三層裡最接近提示詞庫的是 Skills：官方說明它是一個資料夾，裡面至少要有一個 skill.md，開頭的 YAML 要填 name（最多 64 個字元）與 description（最多 200 個字元），整個資料夾打包成 ZIP 上傳；Free、Pro、Max、Team 與 Enterprise 都能用，但要先開啟程式碼執行與檔案建立。分享只在 Team 與 Enterprise 方案，而且分享出去是唯讀，你之後更新，對方下次使用時會自動拿到新版。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Skills 是什麼：把重複流程包成可重用的技能",
+          "url": "https://mokaair.com/zh-TW/life/claude-skills-explained"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 的對應物是 Gems。官方說明頁寫只要登入就能建，用個人 Google 帳號需年滿 13 歲；在網頁版建好之後會出現在行動版與 Google Workspace 的 Gemini 側邊欄，還可以在「Knowledge」區掛上檔案。分享做得比另外兩家細：可以指定 Viewer 或 Editor、可以設存取到期日、可以轉移擁有者，分享出去的 Gem 會存進你的 Google 雲端硬碟。官方也明寫，任何有存取權的人都看得到 Gem 的指示與你上傳的檔案。另外，帳號層級的「Instructions for Gemini」只支援個人 Google 帳號，工作、學校與受監護帳號不能用，而且官方註明這項設定在 Gems 裡不適用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二類是文字展開工具，適合「不管在哪個輸入框，兩秒把整段提示詞貼出來」的人。Raycast 的 Snippets 在免費方案裡就有，官方手冊寫單則 Snippet 的文字上限是 65,000 個字元，可以設關鍵字自動展開、用標籤分類，也能用一個 JSON 檔匯入匯出，欄位是 name、text 與 keyword。要跨裝置同步得升級，定價頁把 Cloud Sync 列在 Pro 才有，個人 Pro 每月 10 美元、年繳 96 美元；團隊免費方案能共用 Snippets 但上限 30 則，團隊 Pro 每位使用者每月 15 美元、年繳每位 144 美元才不限。把提示詞變成一按就跑的 AI Commands，官方手冊標示為 Pro 專屬。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一類的開源選擇是 Espanso。官方倉庫寫它以 GPL-3.0 授權，支援 Windows、macOS 與 Linux，軟體本身免費。它的設定就是 YAML 檔，預設放在 espanso 資料夾底下的 config/default.yml 與 match/base.yml，一則展開就是 trigger 加 replace 兩行；因為是純文字檔，官方文件直接建議用 Git 或雲端硬碟同步到別台電腦。要版本記錄的話這是最省事的一種，版本記錄交給 Git。"
+        },
+        {
+          "type": "code",
+          "language": "yaml",
+          "label": "把一則提示詞存成 Espanso 展開（放進 match/base.yml）",
+          "code": "- trigger: \":週報\"\n  replace: |\n    用途：把一週的零散記錄整理成主管看得懂的週報\n    角色：你是我的幕僚，讀者是我的直屬主管\n    輸入：本週完成、沒完成、下週預計\n    輸出格式：三個重點、風險最多三項、下週三件事\n    範例：重點寫成「A 功能上線」而不是「持續推動 A 功能」\n    版本：v1 2026-09"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三類是筆記工具，適合提示詞需要附說明、附範例、附使用記錄的人。Notion 的資料庫範本可以建無限多個，但官方常見問題明寫範本只在建立它的那個資料庫裡可用，換一個資料庫就要重建；範本可以設成每日、每週、每月或每年重複，巢狀最多三層，而且不能巢狀在每日重複的範本底下。版本記錄看方案，官方方案頁的頁面歷史是免費版 7 天、Plus 30 天、Business 90 天、Enterprise 不限；價格部分，方案頁預設顯示年繳，Free 每位成員每月 0 美元、Plus 10 美元、Business 20 美元，並標示年繳最多可省 20%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Obsidian 走本機路線。官方說明頁寫 Templates 是核心外掛，先在設定裡指定範本資料夾，之後用「Insert template」把範本插進目前這則筆記；範本裡可以用 {{title}}、{{date}}（預設格式 YYYY-MM-DD）與 {{time}}（預設格式 HH:mm）三個變數。Obsidian 本身免費、不需註冊；要跨裝置同步與版本歷史得加購 Sync，官方定價頁寫年繳時每位使用者每月 4 美元、月繳 5 美元，功能列表裡就包含版本歷史與共用 vault 協作。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
+          "url": "https://mokaair.com/zh-TW/life/ai-note-taking-workflow"
+        },
+        {
+          "type": "table",
+          "header": [
+            "存放處",
+            "適合什麼",
+            "方案（官網當天）",
+            "共用與版本記錄"
+          ],
+          "rows": [
+            [
+              "ChatGPT 自訂指令",
+              "所有對話都要遵守的長期偏好",
+              "全方案都有；免費版與 Go 上限 1,500 字元，Plus、Pro、Business、Enterprise 與教育版 5,000 字元",
+              "不能單獨分享；官方寫更新只影響之後的對話，沒有版本清單"
+            ],
+            [
+              "ChatGPT Projects",
+              "一個專案專用的指示加參考檔案",
+              "免費與付費方案都能用，專案數不限；每個專案檔案數免費版 5、Go 與 Plus 25、教育版與 Pro 等 40",
+              "專案可以分享給別人；官方未列版本記錄"
+            ],
+            [
+              "Claude Skills",
+              "有步驟、要重複執行的流程",
+              "Free、Pro、Max、Team、Enterprise 都能用，需先開啟程式碼執行與檔案建立",
+              "分享只在 Team 與 Enterprise，且為唯讀；你更新後對方下次使用自動拿到新版"
+            ],
+            [
+              "Gemini Gems",
+              "一個角色一套指示，另外掛知識檔案",
+              "登入就能建，個人 Google 帳號需年滿 13 歲",
+              "可指定 Viewer 或 Editor、設到期日、轉移擁有者；Gem 存進 Google 雲端硬碟"
+            ],
+            [
+              "Raycast Snippets",
+              "在任何輸入框兩秒貼出整段提示詞",
+              "免費方案就有，單則上限 65,000 字元；Cloud Sync 需 Pro，每月 10 美元或年繳 96 美元",
+              "團隊免費方案共用上限 30 則，團隊 Pro 不限；官方未列版本記錄"
+            ],
+            [
+              "Espanso",
+              "跨 Windows、macOS、Linux 的純文字展開",
+              "開源免費，GPL-3.0 授權",
+              "設定是 YAML 檔，官方文件建議用 Git 或雲端硬碟同步，版本記錄交給 Git"
+            ],
+            [
+              "Notion 資料庫範本",
+              "提示詞要附說明、標籤與使用記錄",
+              "方案頁預設年繳：Free 0 美元、Plus 每位成員每月 10 美元、Business 20 美元",
+              "工作區成員共用；頁面歷史免費版 7 天、Plus 30 天、Business 90 天、Enterprise 不限"
+            ],
+            [
+              "Obsidian 範本",
+              "想把提示詞留在自己電腦上的純文字檔",
+              "軟體本身免費；Sync 年繳每位使用者每月 4 美元、月繳 5 美元",
+              "Sync 提供版本歷史與共用 vault 協作"
+            ]
+          ],
+          "caption": "八種存放處的方案、共用方式與版本記錄，數字照 2026 年 9 月 15 日各家官方說明頁與定價頁。"
+        },
+        {
+          "type": "heading",
+          "text": "五段可以直接抄的範本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下面五段照前面的六個欄位寫，角括號包起來的是你每次要換掉的地方。整段貼進聊天視窗、存成一則 Snippet、包成一個 Skill 或寫進一則 Gem 的指示都可以。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範本一：把長文或逐字稿壓成摘要",
+          "code": "用途：把一篇長文或逐字稿壓成可以直接轉貼的摘要\n角色：你是我的研究助理，讀者是沒有時間讀原文的同事\n輸入：<在這裡貼上全文或逐字稿>\n輸出格式：\n  1. 一句話結論，四十個字以內\n  2. 三到五個重點，每點一行，開頭放名詞\n  3. 原文沒有明講、但我應該追問的兩個問題\n  4. 每個重點後面標出它出自原文哪一段\n範例：\n  輸入：一份專案會議逐字稿\n  輸出：結論「本季改版延後兩週」；重點「延後原因：金流串接未過測試（第三段）」\n限制：原文沒寫的不要補，查不到就寫「原文未提及」\n版本：v1 2026-09"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範本二：把稿子改成台灣讀者順眼的中文",
+          "code": "用途：把中國大陸用語或機器翻譯腔的稿子，改成台灣讀者順眼的中文\n角色：你是台灣的中文編輯，稿子要給一般讀者看\n輸入：<在這裡貼上原稿>\n輸出格式：\n  1. 改寫後的全文\n  2. 改字對照表：原詞、改成什麼、為什麼\n範例：\n  視頻改成影片；質量改成品質；用戶改成使用者；數據改成資料；軟件改成軟體\n限制：只改用詞與語序，不要增刪事實；人名、產品名與專有名詞維持原樣\n版本：v2 2026-09，這版多要了一張改字對照表"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範本三：把一週的零散記錄整理成週報",
+          "code": "用途：把一週的零散記錄整理成主管看得懂的週報\n角色：你是我的幕僚，讀者是我的直屬主管，他只想知道進度與風險\n輸入：\n  本週完成：<條列>\n  沒完成：<條列，附卡住的原因>\n  下週預計：<條列>\n輸出格式：\n  1. 三個重點，每點一行，先寫結果再寫做法\n  2. 風險與需要主管決定的事，最多三項\n  3. 下週三件事，每件註明完成的標準\n範例：\n  重點寫成「A 功能上線，轉換率待下週資料」，不要寫成「持續推動 A 功能」\n限制：沒給的資料不要推測，不確定的地方寫「待確認」\n版本：v1 2026-09"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範本四：翻譯技術文件並鎖住術語",
+          "code": "用途：翻譯技術文件，並讓固定術語在整份文件裡一致\n角色：你是技術文件譯者，讀者是台灣的工程師\n輸入：\n  術語表：prompt 譯成提示詞；context window 譯成上下文視窗；token 不翻譯\n  原文：<在這裡貼上原文>\n輸出格式：\n  1. 譯文\n  2. 術語表以外新出現的專有名詞清單，附你建議的譯法\n範例：\n  原文 increase the context window，譯成「加大上下文視窗」\n限制：術語表裡有的一律照表；不確定的保留原文並用括號標註\n版本：v1 2026-09"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範本五：把規定變成可以打勾的檢查清單",
+          "code": "用途：把一段規定或流程文字，變成可以逐項打勾的檢查清單\n角色：你是流程稽核人員，清單要給第一次做這件事的人用\n輸入：<在這裡貼上規定、作業流程或官方說明>\n輸出格式：\n  1. 檢查清單，每項一行，動詞開頭，可以用是或否回答\n  2. 每項後面標出它出自原文哪一句\n  3. 原文沒有規定、但實務上常漏的項目，另外列成「補充」\n範例：\n  「確認發票抬頭與統一編號一致（出自第三條）」\n限制：不要把建議寫成規定；原文沒寫的一律放在「補充」區\n版本：v1 2026-09"
+        },
+        {
+          "type": "paragraph",
+          "text": "這五段刻意沒有放任何真實姓名、電話、公司內部代號或金鑰，你自己貼進去之前也不要補上，原因寫在下一節。"
+        },
+        {
+          "type": "heading",
+          "text": "命名、版本，與不該放進提示詞庫的東西",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "檔名或標題用「用途、輸出物、日期」三段式，例如「週報整理｜輸出三個重點｜2026-09」。用途放最前面，是因為你之後多半會用「我要做什麼」去搜尋，而不是用「我當初叫它什麼」。同一個任務如果有兩種寫法各有優點，兩則都留著，在用途欄寫清楚什麼情況用哪一則。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改版的時候不要直接覆蓋。把舊的那一版留著，在版本欄寫一行「這次改了什麼、為什麼」，等新版連續幾次都比較好再刪掉舊的。能自動幫你留的只有幾種：Notion 的頁面歷史、Obsidian Sync 的版本歷史，以及放在 Git 裡的純文字檔；其他存放處官方都沒有版本清單，只能靠你自己在版本欄寫。"
+        },
+        {
+          "type": "link",
+          "text": "AI 週回顧與目標管理範本：固定輸入、固定輸出，還能讓它自動跑",
+          "url": "https://mokaair.com/zh-TW/life/ai-weekly-review-templates"
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞庫的性質是會被貼來貼去、會被分享、會被別人看見，所以有些東西不能寫進去。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "個資：客戶姓名、電話、地址、身分證字號、病歷。範本裡用「客戶代稱」這種佔位符，真的要用的時候才貼，而且只貼必要的那幾欄。",
+            "金鑰與密碼：API 金鑰、後台密碼、內部管理網址。",
+            "還沒公開的內部資料：合約金額、未發布的產品名稱、人事決定。",
+            "別人的著作全文：整本書、整份付費報告的內文。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "這不只是保守的建議。Gemini 的官方說明頁直接寫，任何有存取權的人都能看到 Gem 的指示與你上傳的檔案；Claude 在說明用錄製方式建立技能時也明寫，錄製過程不要輸入密碼或機密、不要讓螢幕出現敏感資訊或私人對話。分享功能越方便，寫進去之前越要先想一下這則以後可能被誰打開。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "分享出去之前先把佔位符檢查一遍",
+          "text": "最常見的意外不是被駭，是把上次真的用過的那份資料留在範本裡就分享出去了。分享前把所有角括號佔位符看過一次，確認裡面是「在這裡貼上原稿」這種說明，而不是上一個客戶的姓名或金額。Claude 的 Skills 分享出去後你一更新、對方下次就自動拿到新版，Gemini 的 Gem 分享後指示與檔案都看得到，貼錯的內容會跟著傳出去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後一件事：提示詞庫是活的。每次用完覺得輸出不對，順手回去改那一則，不要另開一個新對話重講一次，不然這個庫永遠停在第一版。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT Custom Instructions（OpenAI 官方說明中心，自訂指令字數上限與適用方案）",
+          "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Projects in ChatGPT（OpenAI 官方說明中心，專案指示與各方案檔案上限）",
+          "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Creating and editing GPTs（OpenAI 官方說明中心，誰還能建立 GPT 與退場時程）",
+          "url": "https://help.openai.com/en/articles/8554397-creating-a-gpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Understanding Claude's personalization features（Anthropic 官方說明中心）",
+          "url": "https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "What are projects?（Anthropic 官方說明中心，免費帳號專案數與 RAG 擴充）",
+          "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Use skills in Claude（Anthropic 官方說明中心，方案、啟用條件與分享規則）",
+          "url": "https://support.claude.com/en/articles/12512180-use-skills-in-claude",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "How to create custom skills（Anthropic 官方說明中心，skill.md 欄位長度上限與打包方式）",
+          "url": "https://support.claude.com/en/articles/12512198-how-to-create-custom-skills",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Use Gems in Gemini Apps（Google 官方說明中心，Gems 建立與使用條件）",
+          "url": "https://support.google.com/gemini/answer/15146780",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Share a Gem from Gemini Apps（Google 官方說明中心，存取層級、到期日與雲端硬碟）",
+          "url": "https://support.google.com/gemini/answer/16504957",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Customize Gemini's responses with your instructions（Google 官方說明中心）",
+          "url": "https://support.google.com/gemini/answer/16598625",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Snippets（Raycast 官方手冊，字數上限、關鍵字展開與匯入格式）",
+          "url": "https://manual.raycast.com/snippets",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Commands（Raycast 官方手冊，標示為 Pro 專屬）",
+          "url": "https://manual.raycast.com/ai/ai-commands",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Raycast Pricing（Raycast 官方定價頁，個人與團隊方案、Cloud Sync 與共用 Snippets 上限）",
+          "url": "https://www.raycast.com/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Matches Basics（Espanso 官方文件，trigger 與 replace 語法）",
+          "url": "https://espanso.org/docs/matches/basics/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Configuration Basics（Espanso 官方文件，設定檔位置與同步方式）",
+          "url": "https://espanso.org/docs/configuration/basics/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "espanso/espanso LICENSE（GitHub 官方倉庫的 GPL-3.0 授權原文）",
+          "url": "https://github.com/espanso/espanso/blob/dev/LICENSE",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Database templates in Notion（Notion 官方說明中心，範本範圍、重複與巢狀限制）",
+          "url": "https://www.notion.com/help/database-templates",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Notion Pricing（Notion 官方方案頁，各方案價格與頁面歷史保留天數）",
+          "url": "https://www.notion.com/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Templates（Obsidian 官方說明，核心外掛設定與範本變數）",
+          "url": "https://obsidian.md/help/Plugins/Templates",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Pricing（Obsidian 官方定價頁，Sync 價格與版本歷史）",
+          "url": "https://obsidian.md/pricing",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

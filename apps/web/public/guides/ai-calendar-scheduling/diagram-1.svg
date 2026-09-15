@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">週一早上的排程流程 / Weekly AI scheduling workflow</title>
+  <desc id="desc">四個步驟由左到右排列。第一步收集任務：把這週要做的事集中成一份清單，來源是任務軟體、筆記，或寄給自己的一封信。第二步 AI 排區塊：請助理或自動排程工具把清單放進空檔，Reclaim 免費的 Lite 方案只有 1 週排程範圍。第三步衝突處理：排不進去的當場決定延後、縮短或改期，Outlook 的自動改期只處理個人行程與一對一會議。第四步回顧：看哪些區塊真的被用掉、哪些每次被吃掉，Gemini 排程動作同時最多 10 個、ChatGPT Plus 的排程任務 5 個。第四步之後回到第一步，把回顧發現的誤判帶進新的一輪。最後提醒：AI 只負責把清單放進空檔，排不排得下、要不要改期，最後仍然由你確認。方案與上限以 2026 年 9 月 15 日各產品官網當天頁面為準。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">週一早上的排程流程：收集、排區塊、處理衝突、回顧</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Weekly AI scheduling workflow</text>
+
+  <!-- step 1 -->
+  <rect x="70" y="140" width="320" height="250" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="230" y="182" font-size="16" fill="#5C6B6B" text-anchor="middle">第一步</text>
+  <text x="230" y="224" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">收集任務</text>
+  <text x="230" y="274" font-size="17" fill="#102A2B" text-anchor="middle">把這週要做的事集中</text>
+  <text x="230" y="306" font-size="17" fill="#102A2B" text-anchor="middle">成一份清單</text>
+
+  <!-- step 2 -->
+  <rect x="450" y="140" width="320" height="250" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="610" y="182" font-size="16" fill="#5C6B6B" text-anchor="middle">第二步</text>
+  <text x="610" y="224" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">AI 排區塊</text>
+  <text x="610" y="274" font-size="17" fill="#102A2B" text-anchor="middle">請助理或自動排程</text>
+  <text x="610" y="306" font-size="17" fill="#102A2B" text-anchor="middle">工具把清單放進空檔</text>
+
+  <!-- step 3 -->
+  <rect x="830" y="140" width="320" height="250" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="990" y="182" font-size="16" fill="#5C6B6B" text-anchor="middle">第三步</text>
+  <text x="990" y="224" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">衝突處理</text>
+  <text x="990" y="274" font-size="17" fill="#102A2B" text-anchor="middle">排不進去的當場決定</text>
+  <text x="990" y="306" font-size="17" fill="#102A2B" text-anchor="middle">延後、縮短或改期</text>
+
+  <!-- step 4 -->
+  <rect x="1210" y="140" width="320" height="250" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1370" y="182" font-size="16" fill="#5C6B6B" text-anchor="middle">第四步</text>
+  <text x="1370" y="224" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">回顧</text>
+  <text x="1370" y="274" font-size="17" fill="#102A2B" text-anchor="middle">看哪些區塊真的被用掉</text>
+  <text x="1370" y="306" font-size="17" fill="#102A2B" text-anchor="middle">哪些每次都被吃掉</text>
+
+  <!-- arrows between steps -->
+  <line x1="398" y1="265" x2="442" y2="265" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="778" y1="265" x2="822" y2="265" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1158" y1="265" x2="1202" y2="265" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- drop lines to tool boxes -->
+  <line x1="230" y1="392" x2="230" y2="428" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="610" y1="392" x2="610" y2="428" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="990" y1="392" x2="990" y2="428" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1370" y1="392" x2="1370" y2="428" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- tool boxes -->
+  <rect x="70" y="440" width="320" height="140" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="230" y="488" font-size="16" fill="#5C6B6B" text-anchor="middle">任務軟體、筆記，或</text>
+  <text x="230" y="520" font-size="16" fill="#5C6B6B" text-anchor="middle">寄給自己的一封信</text>
+
+  <rect x="450" y="440" width="320" height="140" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="610" y="488" font-size="16" fill="#5C6B6B" text-anchor="middle">Reclaim 免費的 Lite</text>
+  <text x="610" y="520" font-size="16" fill="#5C6B6B" text-anchor="middle">只有 1 週排程範圍</text>
+
+  <rect x="830" y="440" width="320" height="140" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="990" y="488" font-size="16" fill="#5C6B6B" text-anchor="middle">Outlook 的自動改期</text>
+  <text x="990" y="520" font-size="16" fill="#5C6B6B" text-anchor="middle">只處理一對一會議</text>
+
+  <rect x="1210" y="440" width="320" height="140" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="1370" y="488" font-size="16" fill="#5C6B6B" text-anchor="middle">Gemini 排程動作 10 個</text>
+  <text x="1370" y="520" font-size="16" fill="#5C6B6B" text-anchor="middle">ChatGPT Plus 5 個</text>
+
+  <!-- loop back -->
+  <path d="M 1370 582 L 1370 668 L 230 668 L 230 596" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="520" y="646" width="560" height="44" rx="14" fill="#F7F1E8"/>
+  <text x="800" y="676" font-size="18" fill="#5C6B6B" text-anchor="middle">下週一回到第一步，把回顧發現的誤判帶進新一輪</text>
+
+  <!-- footer note -->
+  <rect x="70" y="726" width="1460" height="110" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="800" y="772" font-size="18" fill="#102A2B" text-anchor="middle">AI 只負責把清單放進空檔；排不排得下、要不要改期，最後仍然由你確認</text>
+  <text x="800" y="806" font-size="16" fill="#5C6B6B" text-anchor="middle">方案與上限以 2026 年 9 月 15 日各產品官網當天頁面為準</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

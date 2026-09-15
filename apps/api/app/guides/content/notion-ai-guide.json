@@ -1,0 +1,358 @@
+{
+  "slug": "notion-ai-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "productivity",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Notion AI 入門：哪個方案才有、能做什麼、資料怎麼處理",
+      "description": "Notion AI 目前只完整包含在 Business 與 Enterprise 方案，免費版與 Plus 只給少量體驗回覆。這篇照 2026 年 9 月 15 日的 Notion 官方頁整理四個方案的月費（年繳與月繳都寫）、Notion AI 能做的四類事、官方連接器清單、AI 會議記錄的語言與每日上限，以及官網對資料訓練與保留期限的原文說法，最後附三段可以直接貼的提示詞。",
+      "hero": {
+        "src": "/guides/notion-ai-guide/hero.jpg",
+        "alt": "插圖：左邊一張還沒寫完的頁面，經過中間的圓形節點，分出清單、表格與勾選摘要三張卡片",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "結論先講：照 Notion 官方說明中心的寫法，Notion AI 只在 Business 與 Enterprise 方案完整提供，免費版與 Plus 只拿到少量體驗回覆（官方用語 complimentary AI responses），用完就會跳出升級訊息。官方定價頁以美元標價：Business 年繳每位成員每月 US$20、月繳 US$24；Plus 年繳 US$10、月繳 US$12；Enterprise 寫的是 Custom pricing，要聯絡業務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇會把四件事弄清楚：Notion AI 這個名字底下包含哪些功能、哪個方案才拿得到、第一次使用要按哪裡，以及官網對「會不會拿你的資料訓練模型」怎麼寫。本篇不做實測也不打分數，能力與限制都照官方說明頁；介面以官網當天版本為準，畫面跟文章不同時以你眼前的為準。"
+        },
+        {
+          "type": "heading",
+          "text": "Notion AI 是一個名字，底下有六種功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方把 Notion AI 描述成「內建在工作區裡的隊友」：它不是一個獨立的聊天視窗，而是散在頁面、資料庫、搜尋與會議記錄裡的一組功能。名字先對起來，比較不會買錯方案。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Notion Agent：官方說會替你做事的代理（Agent），讀工作區與已連接的應用程式，直接建立或修改頁面與資料庫；權限跟你本人一樣。",
+            "Enterprise Search：一次搜尋工作區、已連接的應用程式與網路，回答附引用來源。",
+            "Research Mode：官方標示 Beta，對開放式題目做深入分析並產出報告。",
+            "AI Meeting Notes：官方標示 Beta，轉錄會議、整理摘要與待辦，逐字稿可回頭點引用。",
+            "AI 區塊與行內 AI：在頁面裡改寫、縮短、換語氣、產生大綱或草稿，AI 區塊可重複產生。",
+            "資料庫的 Autofill 與公式：自動把摘要、關鍵字填進欄位，也能幫忙寫或修公式。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "另外兩個常被問到的：頁面選單裡的 Translate 可以整頁翻譯；圖片生成官方標示 Beta，寫明每位使用者每 24 小時最多 10 次生成或編輯、每 30 天最多 30 次，且只在 Business 與 Enterprise 方案。"
+        },
+        {
+          "type": "heading",
+          "text": "哪個方案才有：四個方案與月費",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方定價頁預設顯示年繳價，頁面上寫著年繳最多省 20%，切到月繳數字會變大。繁體中文版看到的一樣是美元價，官網沒有列新台幣定價，也沒有「單買 Notion AI」這個選項。"
+        },
+        {
+          "type": "paragraph",
+          "text": "試用有兩種。免費版與 Plus 的體驗回覆，官方沒有公布次數，只寫用完會看到必須升級到 Business 或 Enterprise 的訊息，而且每按一次重試都算一次。另一種是 Business 方案 30 天試用，官方寫明只開放給使用公司網域、且不在 Business 或 Enterprise 方案的新團隊；若已填付款資料，到期會自動續訂。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "月費（美元，每位成員）",
+            "有沒有 Notion AI",
+            "官網寫的限制"
+          ],
+          "rows": [
+            [
+              "免費 Free",
+              "US$0",
+              "只有體驗回覆，次數未公布",
+              "單檔上傳 5 MB、版本記錄 7 天、外部訪客 10 位、圖表 1 個"
+            ],
+            [
+              "Plus",
+              "年繳 US$10；月繳 US$12",
+              "只有體驗回覆，次數未公布",
+              "版本記錄 30 天、檔案上傳不限、只能連基本連結"
+            ],
+            [
+              "Business",
+              "年繳 US$20；月繳 US$24",
+              "有：Agent、AI Meeting Notes、Enterprise Search、Research Mode",
+              "版本記錄 90 天；AI 有用量額度，超過會暫停到六小時窗或帳單週期重置"
+            ],
+            [
+              "Enterprise",
+              "Custom pricing，要聯絡業務",
+              "有，另加 LLM 供應商零資料保留",
+              "另有 SCIM、稽核紀錄、網域管理"
+            ]
+          ],
+          "caption": "方案與價格照 Notion 官方定價頁 2026 年 9 月 15 日查證；月費為每位成員每月。"
+        },
+        {
+          "type": "heading",
+          "text": "能做的四類事，以及官方連接器清單",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一類是寫作與翻譯。在頁面選取文字或按空白鍵叫出行內 AI，請它加摘要、修文法、改長短、換語氣或列大綱；用斜線指令放一個 AI 區塊，設定裡可以指定它優先參考哪些頁面。整頁翻譯走頁面右上角的三點選單，選 Translate。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二類是資料庫裡的 AI。官方說它可以幫你建立資料庫，連檢視、屬性與跨資料庫關聯一起建好，再用 Autofill 把每一列的摘要、關鍵字填進欄位，也能寫或修公式。這一類最省時間，也最需要抽查，因為它填的是整欄而不是一格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三類是跨工作區的搜尋與問答。官方寫得很明確：要把第三方應用程式連到 Notion AI，必須在 Business 或 Enterprise 方案，只有 Notion Mail 例外。設定連接器要工作區擁有者身分，你在那個應用程式裡也要有管理權限。官網目前列出的連接器如下。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "聊天：Slack、Microsoft Teams",
+            "知識庫：Google Drive、Microsoft SharePoint 與 OneDrive",
+            "專案：Jira、GitHub、Linear",
+            "電子郵件與行事曆：Gmail、Microsoft Outlook、Google Calendar",
+            "Notion 自家：Notion Mail、Notion Calendar，這兩個所有方案都能連"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "官方也寫了三個容易誤會的時間：初次連接依內容量最久要 72 小時才索引完；之後新增的內容最多要 3 小時才會出現在搜尋結果；連接器一般只讀得到設定日往前一年的資料。剛連好就問不到上個月的討論，多半只是還沒索引完。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第四類是會議記錄與代理。AI Meeting Notes 要 Business 或 Enterprise 方案，桌面版要 4.7.0 以上、macOS 要 13 以上；在頁面用斜線指令 meet 建立區塊，按 Start transcribing 開始，官方特別寫著按下去等於確認在場所有人都同意錄音與轉錄。官方問答列出支援 16 種語言（English、Chinese、Spanish、French、German、Japanese、Korean、Portuguese、Russian、Thai、Vietnamese、Danish、Finnish、Norwegian、Dutch、Swedish），只寫 Chinese、沒有分繁簡，講者標記目前只有英文。每人每天上限 10 小時，要產生摘要至少要 300 個字元的逐字稿。"
+        },
+        {
+          "type": "link",
+          "text": "AI 會議記錄工具怎麼挑：Otter、Google Meet、Teams、Zoom 與 Notion",
+          "url": "https://mokaair.com/zh-TW/life/ai-meeting-notes-tools"
+        },
+        {
+          "type": "link",
+          "text": "會議筆記怎麼寫才有人接手：把決定、負責人與下一步留下來",
+          "url": "https://mokaair.com/zh-TW/life/meeting-notes-action-template"
+        },
+        {
+          "type": "paragraph",
+          "text": "Notion Agent 之外還有兩個要花額度的東西。官方定價頁寫 Custom Agents 可免費試用，之後是每 1,000 點月度額度 US$10；Workers 標示 Beta、現在免費試用，10 月 15 日開始計入額度。額度官方價是月繳每 1,000 點 US$10、年繳每 1,000 點 US$13。高階模型也吃額度，預設關閉，要工作區擁有者先在設定裡逐一打開。模型選單官方列出 Claude Fable 5（限 Business 與 Enterprise）、Claude Sonnet 5、最新的 GPT 模型、Gemini 與 Grok。"
+        },
+        {
+          "type": "heading",
+          "text": "第一次使用：從空白頁到一份能用的草稿",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下步驟照官方說明頁描述整理，介面以官網當天版本為準。重點是順序：先自己寫，再叫 AI，最後才把它接到別的應用程式。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "先自己寫。開一頁，把已知的重點、待辦與連結貼上去；官方的用量建議也是一次把目標、成功長相與格式講清楚。",
+            "叫出 AI。點畫面下方的 Agent 開聊天，或選取文字、按空白鍵叫出行內 AI；快速鍵官方預設是 shift 加 cmd 或 ctrl 加 J。",
+            "指定它看哪裡。用 @ 指定頁面或人，或選 All sources 挑來源；已連接的 MCP 伺服器也在這個清單裡。範圍愈窄，引用愈準。",
+            "收尾。產生或修改後可以接受、捨棄或重試，官方註明每按一次重試都算一次新的 AI 回覆；確認過再自己補上出處與判斷。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞一：把散落的筆記整理成會議記錄",
+          "code": "把這一頁的內容整理成會議記錄，分成三段：決定了什麼、誰負責什麼（附期限）、還沒決定的問題。\n只用這一頁裡有的內容，沒寫到的就標「未提及」，不要補你自己的推測。\n最後列出三個你認為資訊不足、需要我補充的地方。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞二：讓資料庫的摘要欄位長得一樣",
+          "code": "這個資料庫的每一列都是一則客戶回饋。請在摘要欄位填兩句話：\n第一句寫他遇到的問題，第二句寫他希望的結果。\n超過兩句就刪到兩句，不要出現形容詞式的評價，也不要改動其他欄位。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞三：整頁翻譯前先固定術語",
+          "code": "把這一頁翻成英文，下列術語保留原文不翻：Notion AI、Autofill、Enterprise Search。\n表格與清單的結構要保留，標題層級不要合併。\n翻完在最後列出三個你不確定的詞，並說明你為什麼那樣翻。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/notion-ai-guide/diagram-1.svg",
+          "alt": "四步流程圖：先自己寫、叫出 AI、轉成資料庫、問與追，下方是方案門檻與權限提醒",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看：一頁 Notion 從空白到完成的四步，最下面兩條是方案門檻與權限提醒。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "資料與隱私：官網原文怎麼寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這一段最該照原文抄。官方的 Notion AI 安全與隱私說明頁寫：By default, Notion and its AI Subprocessors do not use Customer Data to train any models，也就是預設不拿你的客戶資料訓練任何模型，同頁還寫明與子處理者有合約禁止他們這樣做。官方定價頁的問答多一句條件：除非你自己選擇同意分享資料。合起來讀是預設不訓練，但設定裡有一個你可以自己打開的分享開關。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留期限分兩種：Enterprise 方案預設由 LLM 供應商採零資料保留；非 Enterprise 方案，供應商保留客戶資料最多 30 天後刪除。向量表示（embedding）在頁面或工作區刪除後 60 天內刪除，頁面本身刪掉後 30 天內還救得回來。官方也寫出供應商包含 Anthropic 與 OpenAI。權限方面官方寫得很白：你沒有存取權的內容不會出現在給你的回答裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定都在同一個地方。工作區擁有者在任何方案都能到設定裡的 Notion AI 分頁調整：是否把資料分享給 Notion 改善 AI、連接器、是否允許 AI 搜尋網路、讀取外部網站前要不要先確認；會議錄音儲存與逐字稿刪除排程也在這頁。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "連接器與代理：先給讀取，再談自動化",
+          "text": "Notion Agent 能代替你在 Slack 找人、搜尋頻道、發訊息與回覆討論串，也能透過 MCP 伺服器碰其他應用程式，權限跟你本人一樣。所以兩件事要先做。權限最小化：先只連真的需要搜尋的應用程式，能唯讀就唯讀，在測試頁面或測試頻道跑過再開給全公司，並定期回頭看它做過什麼。提示詞注入：代理讀進來的網頁、郵件或票務內容都可能藏著寫給它看的指令，讓它做你沒要求的事，因此會寫入或會對外發送的動作都要保留人工確認這一關。"
+        },
+        {
+          "type": "link",
+          "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
+          "url": "https://mokaair.com/zh-TW/life/mcp-servers-for-everyone"
+        },
+        {
+          "type": "heading",
+          "text": "適合誰、不適合誰",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "適合：文件、專案與會議記錄本來就在 Notion 的團隊；AI 的價值來自它讀得到你的工作區。",
+            "適合：願意付 Business 方案的小團隊；沒有單買 AI 的選項，算錢要用每位成員每月 US$20 乘人數。",
+            "適合：需要逐字稿、摘要與待辦留在同一個工作區的人。",
+            "不適合：只想要一個聊天機器人的人；同樣預算訂單一 AI 助理，模型選擇與檔案上限更直接。",
+            "不適合：資料必須留在自己機器上的人；Notion 是雲端服務，內容會送到 AI 子處理者處理。",
+            "不適合：要把繁體中文品質寫進驗收標準的人；官網沒有列出 AI 回覆的語言清單。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "介面語言是另一回事：官方說明頁列出 Notion 介面支援 22 種語言，含 Chinese (traditional)，在設定的偏好設定裡切換。介面是繁體中文，不等於 AI 回覆的繁體中文品質有保證，官網把這兩件事分開寫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後是自己驗證的方法。本文不能登入實測，建議你在 30 天試用期內這樣測：拿一份真實文件，同一段提示詞分別交給行內 AI 與 Notion Agent，比較它有沒有引用到正確的頁面；再錄一段五分鐘的中文會議丟進 AI Meeting Notes，看人名、數字與專有名詞錯在哪裡。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
+          "url": "https://mokaair.com/zh-TW/life/ai-note-taking-workflow"
+        },
+        {
+          "type": "link",
+          "text": "Obsidian＋AI 打造第二大腦：外掛、程式代理與 MCP 三種接法",
+          "url": "https://mokaair.com/zh-TW/life/ai-second-brain-obsidian"
+        },
+        {
+          "type": "link",
+          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Notion Pricing Plans: Free, Plus, Business, & Enterprise（官方定價頁）",
+          "url": "https://www.notion.com/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "What is Notion AI? FAQs（官方說明中心）",
+          "url": "https://www.notion.com/help/notion-ai-faqs",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Notion AI Connectors overview（官方說明中心）",
+          "url": "https://www.notion.com/help/notion-ai-connectors",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Notion AI security & privacy practices（官方說明中心）",
+          "url": "https://www.notion.com/help/notion-ai-security-practices",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Complimentary AI responses（官方說明中心）",
+          "url": "https://www.notion.com/help/complimentary-ai-responses",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Paid plan trials（官方說明中心）",
+          "url": "https://www.notion.com/help/paid-plan-trials",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Meeting Notes（官方說明中心）",
+          "url": "https://www.notion.com/help/ai-meeting-notes",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Notion Agent（官方說明中心）",
+          "url": "https://www.notion.com/help/notion-agent",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Manage your usage allowance for Notion AI（官方說明中心）",
+          "url": "https://www.notion.com/help/manage-your-usage-allowance-for-notion-ai",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Manage AI models and member credit spend（官方說明中心）",
+          "url": "https://www.notion.com/help/manage-ai-models-and-member-credit-spend",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "What are Notion credits?（官方說明中心）",
+          "url": "https://www.notion.com/help/what-are-notion-credits",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Change your language in Notion（官方說明中心）",
+          "url": "https://www.notion.com/help/change-your-language",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Notion AI（官方產品頁）",
+          "url": "https://www.notion.com/product/ai",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

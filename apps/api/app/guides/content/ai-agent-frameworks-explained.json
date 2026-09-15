@@ -1,0 +1,573 @@
+{
+  "slug": "ai-agent-frameworks-explained",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Agent 框架入門：OpenAI Agents SDK、Claude Agent SDK、LangGraph",
+      "description": "代理框架幫你寫掉代理迴圈、工具呼叫、記憶與追蹤這些重複的程式。本文照 2026 年 9 月 15 日的官方文件與官方倉庫，整理 OpenAI Agents SDK、Claude Agent SDK 與 LangGraph 的語言、授權、安裝指令與核心名詞，附三段官方最小範例，也帶到 Google ADK 與 Microsoft Agent Framework，並談怎麼選、評測與提示詞注入怎麼防。",
+      "hero": {
+        "src": "/guides/ai-agent-frameworks-explained/hero.jpg",
+        "alt": "一個環狀箭頭串起對話框、六角形與齒輪，下方三個圓角方塊代表三套代理框架。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "代理（Agent）框架幫你寫掉同一段重複的程式：讓模型判斷下一步、真的去呼叫工具、把結果送回模型、再判斷要不要繼續。這篇整理會一點 Python 就能上手的三套框架 OpenAI Agents SDK、Claude Agent SDK 與 LangGraph，結論很短：三套本身都是免費的開源函式庫，錢花在模型 API，差別在你要不要自己把流程畫成圖、以及綁不綁定某一家的模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會知道三套各用什麼語言、授權寫什麼、安裝指令怎麼下、官方最小範例長什麼樣，核心名詞各自叫什麼，文末也帶到 Google ADK 與 Microsoft Agent Framework。名稱、版本與授權都照 2026 年 9 月 15 日的官方文件與官方倉庫；本文沒有執行任何程式碼，範例照官方原文引用，跑得順不順請你自己驗。"
+        },
+        {
+          "type": "heading",
+          "text": "框架幫你做掉的六件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先看代理迴圈長什麼樣。Claude 官方文件把它拆成五步：模型收到提示詞，連同系統提示詞、工具定義與對話紀錄一起進去；模型判斷要回話還是呼叫工具；SDK 執行被要求的工具，把結果送回模型；中間兩步反覆跑，每跑完一圈算一個回合（turn）；直到模型給出沒有任何工具呼叫的回覆，迴圈才結束。自己刻一次不難，難的是後面那些：重試、逾時、上下文視窗塞爆要壓縮、工具權限、成本上限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三套框架的介面差很多，但包起來的東西高度重疊，大致是這六件事："
+        },
+        {
+          "type": "list",
+          "items": [
+            "迴圈本身：模型判斷、呼叫工具、收結果、再判斷，直到任務結束或碰到上限",
+            "工具：把一個函式變成模型看得懂的工具定義，或直接接上 MCP 伺服器",
+            "分工：把一段工作交給另一個代理，或讓主代理把專才當成工具呼叫",
+            "記憶：同一個對話跨多次執行，還記得前面講過什麼",
+            "追蹤：看得到每一步呼叫了哪個工具、用掉多少 token",
+            "護欄與權限：在輸入、輸出或工具呼叫上加檢查，不通過就擋下來"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "所以「要不要用框架」不是非黑即白。OpenAI 的文件就直說：想自己掌握迴圈、工具派送與狀態，流程又短，那直接呼叫 Responses API 就好；要交給執行環境管回合、工具執行、護欄、交接或 session，才輪到 Agents SDK。迴圈的細節可以看 "
+            },
+            {
+              "type": "link",
+              "text": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-agent-loop"
+            },
+            {
+              "type": "text",
+              "text": "，代理和一般問答差在哪則看 "
+            },
+            {
+              "type": "link",
+              "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+              "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-agent-frameworks-explained/diagram-1.svg",
+          "alt": "左邊是代理迴圈的環狀流程，右邊三欄列出三套框架對同一件事的名詞。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊看迴圈怎麼轉，右邊把同一格對照著看，就知道三套框架在講同一件事。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "先把三套裝起來",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三套都是 Python 套件，官方倉庫標的最低 Python 版本都是 3.10；OpenAI 與 Anthropic 兩套另外有 TypeScript 版，LangGraph 另外有 JavaScript 版。安裝指令照官方文件原文："
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "三套框架的官方安裝指令（照官方文件原文）",
+          "code": "# OpenAI Agents SDK\npip install openai-agents\n\n# Claude Agent SDK\npip install claude-agent-sdk\n\n# LangGraph\npip install -U langgraph"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "金鑰各用各的環境變數：OpenAI Agents SDK 讀 OPENAI_API_KEY，Claude Agent SDK 讀 ANTHROPIC_API_KEY。Claude 的文件特別提醒，SDK 只從執行程序的環境讀金鑰，不會自動載入 .env 檔。沒申請過金鑰的話，可以先看 "
+            },
+            {
+              "type": "link",
+              "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
+              "url": "https://mokaair.com/zh-TW/life/claude-api-first-call"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "OpenAI Agents SDK：代理、交接、護欄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的說法是用很少的抽象層、很輕量的套件來寫代理應用，前身是實驗性質的 Swarm。基本元件只有三個：Agents（給了指示與工具的模型）、Agents as tools 與 Handoffs（把工作交給別的代理）、Guardrails（驗證輸入與輸出）。往上再加 Sessions（跨回合的記憶層）、Tracing（內建追蹤）、function tools（把 Python 函式自動轉成工具定義）、MCP 伺服器工具呼叫，以及 human in the loop。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方首頁的 hello world 扣掉註解只有四行，Runner 就是那個負責跑迴圈的東西："
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "OpenAI Agents SDK 官方首頁的 hello world 範例",
+          "code": "from agents import Agent, Runner\n\nagent = Agent(name=\"Assistant\", instructions=\"You are a helpful assistant\")\n\nresult = Runner.run_sync(agent, \"Write a haiku about recursion in programming.\")\nprint(result.final_output)\n\n# Code within the code,\n# Functions calling themselves,\n# Infinite loop's dance."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "護欄分三種，官方文件叫 input guardrails、output guardrails 與 tool guardrails；文件舉的例子是用便宜又快的模型先擋掉惡意用法，省下貴模型的錢。MCP 支援四種接法：讓 Responses API 代為呼叫的 HostedMCPTool、自己連的 Streamable HTTP、HTTP with SSE，以及 stdio。倉庫授權是 MIT，pyproject.toml 標的版本是 0.22.2。MCP 是什麼可以看 "
+            },
+            {
+              "type": "link",
+              "text": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": "，交接與分工則看 "
+            },
+            {
+              "type": "link",
+              "text": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-agent-orchestration"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Claude Agent SDK：把 Claude Code 的迴圈變成函式庫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這一套的定位最直白。官方文件說它給你的是跑 Claude Code 的那一套工具、代理迴圈與上下文管理，只是變成 Python 與 TypeScript 的函式庫；想用別的語言驅動同一個迴圈，文件的建議是把 CLI 當子程序跑，帶 -p 與 --output-format json。兩種語言的套件都內建 Claude Code 的原生執行檔，多數情況不用另外裝。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件列出可以在 SDK 裡用的能力：內建工具（讀寫檔案、執行指令、搜尋網路）、hooks（在代理生命週期的關鍵點插自己的程式）、子代理、MCP、權限（哪些工具自動跑、哪些要核准）、sessions（跨次對話保留脈絡，可續接或分岔），以及會從專案的 .claude/ 與使用者家目錄自動載入的 skills、commands 與 memory。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方快速上手的範例是一個會自己找出 bug 並修好的代理，重點在 options 那兩行：allowed_tools 先批准 Read、Edit、Glob 三個工具，permission_mode 設成 acceptEdits 才會自動套用檔案修改。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "Claude Agent SDK 官方快速上手的 Python 範例",
+          "code": "import asyncio\nfrom claude_agent_sdk import query, ClaudeAgentOptions, AssistantMessage, ResultMessage\n\n\nasync def main():\n    # Agentic loop: streams messages as Claude works\n    async for message in query(\n        prompt=\"Review utils.py for bugs that would cause crashes. Fix any issues you find.\",\n        options=ClaudeAgentOptions(\n            allowed_tools=[\"Read\", \"Edit\", \"Glob\"],  # Auto-approve these tools\n            permission_mode=\"acceptEdits\",  # Auto-approve file edits\n        ),\n    ):\n        # Print human-readable output\n        if isinstance(message, AssistantMessage):\n            for block in message.content:\n                if hasattr(block, \"text\"):\n                    print(block.text)  # Claude's reasoning\n                elif hasattr(block, \"name\"):\n                    print(f\"Tool: {block.name}\")  # Tool being called\n        elif isinstance(message, ResultMessage):\n            print(f\"Done: {message.subtype}\")  # Final result\n\n\nasyncio.run(main())"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "迴圈的上限也在這裡設：max_turns 只算有工具呼叫的回合，max_budget_usd 照花費設上限；官方建議正式環境預設就設一個預算，否則迴圈會一直跑到模型自己覺得做完為止。授權要看兩層：倉庫的 LICENSE 是 MIT，pyproject.toml 標的版本是 0.2.152，但文件的授權一節寫的是「Claude Agent SDK 的使用受 Anthropic 商業服務條款規範」，個別元件另有 LICENSE 的除外。這一套站上有兩篇專文："
+            },
+            {
+              "type": "link",
+              "text": "Claude Agent SDK 入門",
+              "url": "https://mokaair.com/zh-TW/life/claude-code-agent-sdk"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "Claude Code｜Agent SDK：保存狀態、取消與重新接續",
+              "url": "https://mokaair.com/zh-TW/life/claude-code-agent-sdk-stateful-runner"
+            },
+            {
+              "type": "text",
+              "text": "；子代理的邊界怎麼切，可以看"
+            },
+            {
+              "type": "link",
+              "text": "子代理（Subagent）是什麼：把有邊界的工作交出去",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-subagent"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "LangGraph：流程畫成圖，狀態存成檢查點",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LangGraph 的官方定位是低階的協調框架與執行環境，用來跑長時間、有狀態的代理。你把流程畫成一張圖：節點（node）是一段工作，邊是流向，狀態（state）在節點之間傳遞。官方特別強調同一張圖裡可以混搭寫死的步驟與交給模型判斷的步驟：要可預測、可稽核的地方就寫死，要彈性的地方才交給模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方首頁的 hello world 用一個假的模型函式，把圖的骨架露出來："
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "LangGraph 官方文件首頁的 hello world 範例",
+          "code": "from langgraph.graph import StateGraph, MessagesState, START, END\n\ndef mock_llm(state: MessagesState):\n    return {\"messages\": [{\"role\": \"ai\", \"content\": \"hello world\"}]}\n\ngraph = StateGraph(MessagesState)\ngraph.add_node(mock_llm)\ngraph.add_edge(START, \"mock_llm\")\ngraph.add_edge(\"mock_llm\", END)\ngraph = graph.compile()\n\ngraph.invoke({\"messages\": [{\"role\": \"user\", \"content\": \"hi!\"}]})"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "記憶分兩層：checkpointer 把一條對話（thread）的狀態存成檢查點，屬於短期、單一對話內的記憶，人在迴圈裡、時光回溯與故障續跑都靠它；store 則是跨對話的長期記憶。官方的疑難排解也點名，InMemorySaver 把檢查點放在記憶體，程序一重啟就全沒了，正式環境要換成會落地的 checkpointer，並且定期清掉太舊的檢查點。這一層在講什麼，可以對照 "
+            },
+            {
+              "type": "link",
+              "text": "代理記憶（Agent Memory）是什麼：保存、取回與更新資訊",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-agent-memory"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "和同一家其他產品的關係，官方文件說得很清楚：LangChain 是代理框架，提供模型與工具的抽象與整合；LangGraph 是協調用的執行環境；LangSmith 是追蹤、評測、提示詞與部署的平台；Deep Agents 則是蓋在 LangGraph 上的 harness。文件也寫明不用 LangChain 也能用 LangGraph。倉庫授權是 MIT，libs/langgraph 的 pyproject.toml 標 1.2.11。另外，舊網址 langchain-ai.github.io 的 LangGraph 文件已經搬家，現在轉到 docs.langchain.com。harness 這個詞，站上有 "
+            },
+            {
+              "type": "link",
+              "text": "代理執行環境工程（Harness Engineering）是什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-harness-engineering"
+            },
+            {
+              "type": "text",
+              "text": " 解釋。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "框架",
+            "語言",
+            "核心概念（官方名稱）",
+            "授權與版本"
+          ],
+          "rows": [
+            [
+              "OpenAI Agents SDK",
+              "Python、TypeScript",
+              "Agents、Handoffs、Guardrails、Sessions、Tracing",
+              "MIT；Python 套件 0.22.2"
+            ],
+            [
+              "Claude Agent SDK",
+              "Python、TypeScript",
+              "Tools、Permissions、Hooks、Subagents、Sessions、MCP",
+              "倉庫 MIT，文件寫使用受 Anthropic 商業服務條款規範；Python 套件 0.2.152"
+            ],
+            [
+              "LangGraph",
+              "Python、JavaScript",
+              "StateGraph、Node、Edge、State、Checkpointer、Store",
+              "MIT；libs/langgraph 1.2.11"
+            ],
+            [
+              "Google ADK",
+              "Python、TypeScript、Go、Java、Kotlin",
+              "Agents、Graph Workflows、Multi-Agent Workflows",
+              "Apache License 2.0；官網標 ADK 2.0"
+            ],
+            [
+              "Microsoft Agent Framework",
+              ".NET、Python、Go（公開預覽）",
+              "Agents、Harness Agent、Workflows、Integrations",
+              "MIT；套件版本以官網為準"
+            ]
+          ],
+          "caption": "五套框架的語言、核心名詞與授權，查證於 2026 年 9 月，版本取自各官方倉庫 main 分支。"
+        },
+        {
+          "type": "heading",
+          "text": "還有兩套：Google ADK 與 Microsoft Agent Framework",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 的 Agent Development Kit（ADK）官網現在掛在 adk.dev，舊的 google.github.io/adk-docs 會轉過去。官網標的是 ADK 2.0，支援 Python、TypeScript、Go、Java 與 Kotlin 五種語言，adk-python 倉庫的授權是 Apache License 2.0，各語言套件的版本以官網為準。文件裡有 A2A 的 quickstart，也就是代理之間互相交辦任務的那個協定，站上有 "
+            },
+            {
+              "type": "link",
+              "text": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-agent2agent-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 可以看。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft Agent Framework 的文件在 Microsoft Learn 上，官方說它是 Semantic Kernel 與 AutoGen 的直接接班，由同兩個團隊做；四大區塊是 Agents、Harness Agent、Workflows 與 Integrations。Python 裝的是 agent-framework 套件，Go 版官方標公開預覽，宣告式代理、RAG、CodeAct 與 functional workflows 還沒有，倉庫授權是 MIT。文件也給了一條判準：能用一個函式解決的事就寫函式，不要動用 AI 代理。"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼選，以及錢花在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "費用先講清楚：這幾套框架本身是免費的開源函式庫，裝下來不用錢；花錢的是模型 API，照你用掉的 token 計費，追蹤、評測或託管平台則各有方案，價格以官網為準。所以估成本要盯的是迴圈跑了幾個回合、每個回合往上下文視窗塞了多少東西，不是框架本身。"
+        },
+        {
+          "type": "paragraph",
+          "text": "選哪一套，先問三個問題："
+        },
+        {
+          "type": "list",
+          "items": [
+            "模型綁哪一家？三套都不是只能接一家：OpenAI Agents SDK 有 LiteLLM 這類第三方轉接；Claude Agent SDK 可以用環境變數切到 Amazon Bedrock、Google Cloud 的 Agent Platform 或 Microsoft Foundry；LangGraph 本來就不綁模型，官方也寫明不用 LangChain 也能用。",
+            "流程要不要畫成圖？要固定步驟、要分支、要跑很久還能從中斷的地方續接，LangGraph 的圖與檢查點就是為這個設計的；只是一個代理配幾個工具，OpenAI Agents SDK 的 Agent 加 Runner 最短。",
+            "代理要不要碰你的檔案和終端機？要的話 Claude Agent SDK 的內建工具、權限模式與 hooks 是現成的，因為它本來就是 Claude Code 的那一套。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "三套都可以往多代理走，但代價是一樣的：多一個代理就多一份上下文、多一次交接可能傳丟訊息。要不要拆，可以先看 "
+            },
+            {
+              "type": "link",
+              "text": "多代理系統（Multi-agent System）是什麼：分工與協作的代價",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-multi-agent-system"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "不想寫程式的話，框架不是唯一的路：把 MCP 伺服器接到現成的 AI 助理、用 n8n 這類工作流軟體拉節點，或做一個接 AI 的 LINE 客服機器人，也能做到類似的事。"
+        },
+        {
+          "type": "link",
+          "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
+          "url": "https://mokaair.com/zh-TW/life/mcp-servers-for-everyone"
+        },
+        {
+          "type": "link",
+          "text": "n8n 入門：用 AI 節點做自動化工作流",
+          "url": "https://mokaair.com/zh-TW/life/n8n-ai-automation-guide"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 做客服機器人：LINE 官方帳號接 AI",
+          "url": "https://mokaair.com/zh-TW/life/ai-customer-service-line-bot"
+        },
+        {
+          "type": "heading",
+          "text": "評測與安全：代理能碰到什麼，先想清楚",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "代理會自己決定下一步，所以「跑起來了」不等於「做對了」。三家官方文件的方向一致：先用追蹤看每一步呼叫了什麼，再用評測把行為變成可以打分的東西。OpenAI 的代理安全頁面把 trace grading 與 evals 一起寫進建議清單，LangSmith 的定位裡就包含評測，Claude Agent SDK 則有 OpenTelemetry 的觀測文件。評測怎麼設計，站上有 "
+            },
+            {
+              "type": "link",
+              "text": "模型與代理評測（Evals）是什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "；上線後怎麼顧，可以看 "
+            },
+            {
+              "type": "link",
+              "text": "代理系統維運（AgentOps）是什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-agentops"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "安全的第一個坑是提示詞注入。OpenAI 的說法是：不受信任的文字或資料進到系統，裡面藏的惡意內容試圖蓋掉原本給模型的指示，可能被用來把私人資料經由後續的工具呼叫外流。Anthropic 的部署指南舉的例子更具體：如果一個倉庫的說明檔裡寫了奇怪的指示，Claude Code 可能會把它們當成任務的一部分執行。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩邊的解法方向也一致，都是把代理能碰到的東西縮到最小：檔案系統只掛需要的目錄、能唯讀就唯讀；網路只放行特定網域；金鑰不要直接交給代理，改用代理伺服器在請求裡注入；敏感操作一律要人核准。OpenAI 那邊多兩條：不要把不受信任的變數塞進 developer 訊息，以及用結構化輸出限制資料流動，不要留自由發揮的欄位。MCP 的文件也寫了：只連你信任的伺服器，用最小權限的憑證，token 放在授權欄位或標頭，不要放在網址裡。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "先用測試帳號跑，再把權限放大",
+          "text": "代理拿到的權限，就是它被騙時能造成的最大傷害。第一次讓它碰自己的檔案、信箱或資料庫，先開唯讀、先用測試帳號、先設回合上限與預算上限，把追蹤打開看它每一步做了什麼，確認穩定再一項一項放開。Anthropic 的部署指南也提醒，這些措施是縱深防禦，不是保證：模型仍可能出錯或被騙。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Agents SDK（官方文件首頁：基本元件、安裝與 hello world）",
+          "url": "https://openai.github.io/openai-agents-python/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Guardrails（OpenAI Agents SDK 官方文件）",
+          "url": "https://openai.github.io/openai-agents-python/guardrails/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Model context protocol (MCP)（OpenAI Agents SDK 官方文件）",
+          "url": "https://openai.github.io/openai-agents-python/mcp/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Agents（OpenAI 官方 API 指南：Agents SDK 與 Responses API 的取捨）",
+          "url": "https://developers.openai.com/api/docs/guides/agents",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Safety in building agents（OpenAI 官方文件：提示詞注入與緩解做法）",
+          "url": "https://developers.openai.com/api/docs/guides/agent-builder-safety",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "openai/openai-agents-python LICENSE（官方倉庫）",
+          "url": "https://github.com/openai/openai-agents-python/blob/main/LICENSE",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "openai/openai-agents-python pyproject.toml（官方倉庫：版本與 Python 需求）",
+          "url": "https://github.com/openai/openai-agents-python/blob/main/pyproject.toml",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Agent SDK overview（Claude 官方文件：能力清單與授權條款）",
+          "url": "https://code.claude.com/docs/en/agent-sdk/overview",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Agent SDK Quickstart（Claude 官方文件：安裝與 Python 範例）",
+          "url": "https://code.claude.com/docs/en/agent-sdk/quickstart",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "How the agent loop works（Claude 官方文件：迴圈五步與回合上限）",
+          "url": "https://code.claude.com/docs/en/agent-sdk/agent-loop",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Securely deploying AI agents（Claude 官方文件：提示詞注入與最小權限）",
+          "url": "https://code.claude.com/docs/en/agent-sdk/secure-deployment",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "anthropics/claude-agent-sdk-python LICENSE（官方倉庫）",
+          "url": "https://github.com/anthropics/claude-agent-sdk-python/blob/main/LICENSE",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "anthropics/claude-agent-sdk-python pyproject.toml（官方倉庫：版本與 Python 需求）",
+          "url": "https://github.com/anthropics/claude-agent-sdk-python/blob/main/pyproject.toml",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "LangGraph overview（LangChain 官方文件：定位、安裝與 hello world）",
+          "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Persistence（LangGraph 官方文件：checkpointer 與 store）",
+          "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "langchain-ai/langgraph libs/langgraph/pyproject.toml（官方倉庫：授權與版本）",
+          "url": "https://github.com/langchain-ai/langgraph/blob/main/libs/langgraph/pyproject.toml",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Agent Development Kit（Google 官方文件：語言支援與 ADK 2.0）",
+          "url": "https://adk.dev/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "google/adk-python LICENSE（官方倉庫）",
+          "url": "https://github.com/google/adk-python/blob/main/LICENSE",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Microsoft Agent Framework Overview（Microsoft Learn 官方文件）",
+          "url": "https://learn.microsoft.com/en-us/agent-framework/overview/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "microsoft/agent-framework LICENSE（官方倉庫）",
+          "url": "https://github.com/microsoft/agent-framework/blob/main/LICENSE",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}
