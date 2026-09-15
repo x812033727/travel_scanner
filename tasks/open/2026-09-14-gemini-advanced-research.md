@@ -45,7 +45,7 @@ scope:
 
 ## Steps
 
-- [ ] 57 `notebooklm-source-versioning`：NotebookLM 資料版本管理：來源清單、更新與過期內容。成果：建立能追蹤資料版本的專題筆記本。
+- [x] 57 `notebooklm-source-versioning`：NotebookLM 資料版本管理：來源清單、更新與過期內容。成果：建立能追蹤資料版本的專題筆記本。
 - [ ] 58 `notebooklm-conflicting-sources`：NotebookLM 引用查核：矛盾資料、缺證據與未知答案。成果：用證據矩陣辨識資料支持、矛盾及未回答的問題。
 - [ ] 59 `notebooklm-study-retrieval-practice`：NotebookLM 備考實作：題庫、錯題分類與間隔複習。成果：由兩章教材製作可檢查答案的複習流程。
 - [ ] 60 `notebooklm-paper-comparison-matrix`：NotebookLM 比較多篇研究：研究問題、方法與限制矩陣。成果：產出區分研究設計與結論強度的比較表。
@@ -73,7 +73,7 @@ scope:
 - [x] 六份單篇 ZIP 與一份整合 ZIP，原創教材、參考矩陣／題庫、三份 CC BY 4.0 原始論文、政府授權 JSON 快照、作者報告與標準函式庫檢查器。
 - [x] 22 項 fixture 測試通過，解壓整合包再跑 22 項通過；ZIP CRC／來源 bytes 一致。九張論文相關頁面已檢視。
 - [x] 六篇 pack lint、內容／連結檢查、Ruff、tasks 通過；先前 18 篇與原 51 頁檢查通過。相關 API 測試 38 passed／8 skipped，跳過需獨立 PostgreSQL 的分支；SQLite 已驗。
-- [ ] 57 Drive 與上傳各 v1/v2 真實同步、引用、回答與舊產出重做紀錄。
+- [x] 57 Drive 與上傳各 v1/v2 真實同步、引用、回答與舊產出重做紀錄。
 - [ ] 58 真實模型五列證據矩陣、引用點擊、未知回答及故障修正。
 - [ ] 59 Studio 題庫、實際十二題作答與間隔重測，不把預排日期當完成。
 - [ ] 60 模型論文矩陣、逐欄引用與錯誤跨指標排名修正。
@@ -81,3 +81,20 @@ scope:
 - [ ] 62 真實研究計畫、模型報告、Notebook 引用與更正。作者公開資料報告及 1800 筆快照計算已完成。
 
 交付索引與凍結雜湊見 docs/gemini-series/advanced/content/research/README.md、verification/authoring-review.json。瀏覽器 User unavailable；零模型呼叫、零媒體生成、未發布。原 DoD 的完整練習成果與最終交付仍未勾選，需完成以上真實操作後才可交給 release。此次只提交作者批次並 release 認領，不將任務標 done。
+
+
+## 2026-09-15 第 57 篇實測與修訂交付
+
+使用者決定「手機先跳過」，實體裝置測試仍保留 work 票，不列為通過。本輪改做桌面研究流程；個人 Google AI Pro，API 零次、額外支出 NT$0。
+
+- [x] 第 57 篇兩個獨立筆記本：上傳／Drive 各 v1 與 v2，四輪名額為 24→30，CAP 引用點擊核對。
+- [x] 五份其他來源兩邊逐份比對，共十四份來源檢視；第五題同時選取兩版，辨識替代關係並排除 54 人。
+- [x] 四份新舊筆記保存，更新後舊筆記仍 24 人，新筆記 30 人。Drive 舊引用預覽保留 v1，當前來源面板顯示 v2，分開記錄。
+- [x] Drive 首次匯入失敗，更多→重新匯入後成功；同一份 Doc 改 v2，手動同步後原文與回答一致。沒有把此結果標為定期自動同步延遲已驗。
+- [x] 重開後五份回答校驗值一致。上傳版舊來源重新勾選，已再取消並在教學提醒每次開始前檢查來源。
+- [x] 保存自動來源指南的無根據「法律效力」補述與回答 Markdown 標題層級誤差，不把局部名額通過當作全部語意通過。
+- [x] 證據位於 research/verification/live-20260915/57；瀏覽器擷取 FNV、凍結雜湊、Google 文件兩版匯出、來源正規化比對通過。原研究作者 176 個檔案原樣保存。
+- [x] research/revisions/20260915 提供第 57 篇 2,777 字完整修訂稿、隔離內容包與新版練習 ZIP；23 個來源檔案通過解壓檢查，ArticlePack／pack lint／正文與章節連結通過。
+- [ ] 58–62 真實操作仍照前述清單接續。整套 release 整合、公開頁面與 sitemap 驗證未做。
+
+私人筆記本及 Doc 連結在 verification/live-20260915/private/57-links.json（gitignored）；保留兩個筆記本和 Doc 為使用者成果，分享權限未改。原作者原稿與 runtime pack 不覆寫，發布時應採用新 revision 收據。所有原創配圖沿用並更新圖說，沒有新增未驗圖片。第 57 篇手動同步已驗，失去存取權、定期自動同步等待、手機與額外 Studio 媒體沒有實測。
