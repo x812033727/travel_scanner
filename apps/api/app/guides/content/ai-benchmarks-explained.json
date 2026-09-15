@@ -1,0 +1,410 @@
+{
+  "slug": "ai-benchmarks-explained",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "模型跑分怎麼看：LMArena、SWE-bench 與三個陷阱",
+      "description": "跑分不是成績單，是某一套題目在某一組跑法下得到的一個數字。本文照 2026 年 9 月 15 日的官方頁面，拆開 Arena（原 LMArena）的人類盲測投票怎麼變成分數、SWE-bench 怎麼用五百題真實 GitHub issue 算修復率，以及 GPQA、MMLU-Pro、AIME 這些題庫官方怎麼定義，再談題目外洩、廠商自報的測試條件、榜單更新三個陷阱，最後給一套自己出題的驗收法。",
+      "hero": {
+        "src": "/guides/ai-benchmarks-explained/hero.jpg",
+        "alt": "一面白色排行榜面板上有四條長短不一的彩色橫條，右邊一個大放大鏡罩住其中三條短橫條。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "跑分不是成績單，是某一套題目在某一組跑法下得到的一個數字。這篇回答的是：那些到處被引用的「某模型拿下第一」怎麼算出來、你該不該信、又該怎麼用。結論先講：跑分只能告訴你「在這套題目、這個跑法下誰比較高」，換一套題目或換一個跑法，順序就可能不一樣。有用的讀法是找到跟你任務最像的那一欄，確認數字的條件，再自己出題驗一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會知道三件事：Arena（原本的 LMArena）的人類盲測投票怎麼變成分數、SWE-bench 怎麼把真實的 GitHub issue 變成可以打勾的題目、還有 GPQA 與 AIME 這類題庫官方怎麼定義。接著是三個最常踩的陷阱，最後是一張把任務對到榜單的圖，和一套自己出五題驗收的作法。方法描述與日期都來自 2026 年 9 月 15 日各官方頁面當天的內容；本文沒有執行任何評測，也不寫任何模型當天的名次，因為名次每天都在動。"
+        },
+        {
+          "type": "heading",
+          "text": "跑分是什麼、誰在出題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一個跑分要成立，得先有三樣東西：一組題目、一個判對錯的規則、一個統一的跑法。題目可能是選擇題，可能是一個壞掉的程式庫，也可能是「隨便你問」。判對錯可能是比對標準答案、跑單元測試，或是請人投票。跑法則包含能不能用工具、能試幾次、想多久、用哪一版的外框程式。三樣裡少寫一樣，數字就沒辦法跟別人的放在一起比。"
+        },
+        {
+          "type": "paragraph",
+          "text": "出題的人大致分三種，可信程度不一樣，混在同一張表上比通常就是誤讀的開始。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "榜單機構自己出題、自己統一跑：環境與跑法由榜單決定，官方頁面會寫清楚方法與版本，Arena 與 SWE-bench 屬於這種",
+            "各家模型公司自報：數字寫在自家的 system card 或 model card 裡，跑法自己決定，條件常藏在圖表底下的小字",
+            "開放平台彙整：由模型作者上傳自己的結果，平台彙整成該題庫的排行榜，並標示有沒有經過驗證"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "基準測試（Benchmark）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-benchmark"
+        },
+        {
+          "type": "heading",
+          "text": "LMArena：投票怎麼變成分數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先講名字。查證當天，LMArena 原本的網域會以 301 永久轉址到 Arena 的新網域，頁尾署名 Arena Intelligence，所以下面統一叫它 Arena；很多文章仍沿用 LMArena，指的是同一個榜。玩法官方寫得很白：你輸入提示詞，系統給你兩個匿名模型的回答，你挑一個比較合用的，投完票才揭曉是哪兩個模型。官方說明頁另外寫，自 2024 年 3 月起也幫各家測試尚未公開的模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "票怎麼變成分數？官方常見問題寫的是 Bradley-Terry 評分系統，一個用來處理成對比較的統計模型；官方自己說它和西洋棋用的 Elo 很像，選它是因為成對比較上很成熟、算得快，也容易再加進其他特徵。分數旁邊的正負號是 95% 信賴區間；官方 2025 年 12 月 18 日發表的 Arena-Rank 套件說明裡寫，信賴區間改用封閉解計算，比舊版快三十倍以上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有兩件事會讓你誤讀這個分數。第一，版面會影響人類的偏好。官方 2024 年 8 月 29 日發表的風格控制文章，把回答長度、Markdown 標題數、粗體數與清單數這四個特徵加進迴歸，排名確實動了；但同一篇的限制段落寫得很老實，這仍是觀察性分析，可能有沒被觀察到的干擾因子。第二，2026 年 7 月 30 日上線的 AutoEval：人類票還沒夠時，官方會用一個學人類偏好的獎勵模型自動投票先給分，榜上標成 AutoEval，等人票夠了才更新；看到這個標籤，你看的就不是純人類投票的結果。"
+        },
+        {
+          "type": "link",
+          "text": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-llm-as-a-judge"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有幾條規則值得記住。官方常見問題寫明，只有在模型還匿名時投的票才算進正式排名，揭曉身分之後投的不算；並排比較與直接對話模式的票也不進公開榜。榜單政策頁（2026 年 9 月 1 日最後更新）寫，廠商可以在公開前用代號測試多個版本，但必須提供給榜單至少 30 天的模型使用權，並書面確認公開版與測試版相同；公開後累積足夠新票之前，分數標成暫定。"
+        },
+        {
+          "type": "heading",
+          "text": "SWE-bench：真實 issue 的修復率",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "SWE-bench 的題目不是選擇題，是真的壞掉的程式。官方文件寫的任務是：給定一個程式庫與一個 issue，語言模型要產生一個能解決該問題的修補檔。判對錯完全機械化，把修補檔套進真實的程式庫，在 Docker 容器裡跑該專案自己的測試，測試轉綠才算解決，所以這個榜不容易被文筆影響。"
+        },
+        {
+          "type": "paragraph",
+          "text": "榜單上的分數只有一個欄位叫 % Resolved，官方圖例寫的是解決的題目占全部題目的百分比。原始題庫是十二個 Python 專案的 2,294 題；最常被引用的 Verified 是人工篩過的 500 題子集，官方頁面寫它是與 OpenAI 合作做出來的，由人工逐題檢查問題描述是否清楚、測試修補是否正確、在現有資訊下是否解得出來。官方另有 Lite 300 題、Multilingual 300 題與 Multimodal 480 題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同樣是那 500 題，還分兩種看法。完整榜放的是各式各樣的系統，從最陽春的模型迴圈到多次重跑再挑一份交出去的都有；Bash Only 榜則把所有模型放進同一個極簡環境，官方寫的是用 mini-SWE-agent，沒有工具、沒有特殊外框。要比模型本身看後者，要比整套產品看前者。官方也提醒 mini-SWE-agent 1.x 與 2.x 的結果不一定可比，因為 2.x 改用工具呼叫執行動作，也不再設定溫度參數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "榜上還有一個打勾標記值得認得，官方圖例寫的是由 SWE-bench 團隊執行或直接查核過的結果；沒有打勾的就是投稿者自己跑的。投稿規則要求把預測檔、每題的執行紀錄與推理軌跡放在公開倉庫裡。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-benchmarks-explained/diagram-1.svg",
+          "alt": "三欄對照圖，左欄是五種常見任務，中欄是對應的榜單，右欄是看那個數字之前要先確認的條件。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：先找到你的任務那一列，再看中欄該查哪個榜，最後照右欄的條件核對數字。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "知識與推理題庫：名字與定義",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "除了上面兩個榜，各家發表模型時最常列的是一串題庫名字。這裡只寫官方頁面怎麼定義它們，不引第三方彙整站的說法。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "GPQA：官方說明寫，這是由生物、物理、化學等領域的博士級專家出的高難度知識題，設計成外行人很難、專家相對容易，並用權限控管限制取得，以降低資料汙染的風險",
+            "MMLU-Pro：官方說明寫它是 MMLU 的改良版，選項從 4 個增加到 10 個、需要推理的題目變多；因為原本的 MMLU 有雜訊題，且隨著模型變強與資料汙染增加，難度一直在下降",
+            "AIME：官方評測設定檔的範例把它寫成美國高中數學邀請賽，題目每年出一次，所以常看到後面接年份",
+            "HLE：官方設定檔寫它是橫跨數十個學科、2,500 題的多模態題庫，由全球領域專家出題，形式是選擇題與簡答題"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugging Face 也把這些分數的來歷寫清楚了：模型作者把結果以檔案放進自己的模型庫，平台依中繼資料給標記，跑在官方環境、帶有效驗證憑證的標成已驗證，以 Pull Request 投稿、還沒合併的標成社群提供。官方文件直接寫，如果分數有爭議，模型作者可以把 Pull Request 關掉讓分數消失；文件最上面還掛著「這是進行中的功能」的警告。"
+        },
+        {
+          "type": "link",
+          "text": "模型與代理評測（Evals）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+        },
+        {
+          "type": "heading",
+          "text": "三個陷阱",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "陷阱一是題目外洩與過擬合。題庫大多公開，公開就可能被寫進訓練資料，分數於是變成背答案。榜單方也在防：GPQA 用權限控管限制取得，Google DeepMind 的評測方法頁寫，跑需要搜尋的評測時會加一份黑名單，擋掉可能含有評測數字的網站。SWE-bench 官方 2025 年 11 月 19 日的文章更直接，他們寫了一支腳本，把標準答案與投稿的修補檔去掉註解後逐段比對，量出各榜的逐字命中率約在 2% 到 7% 之間，並宣布往後超過 20% 的投稿就要求說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "陷阱二是廠商自報數字的測試條件。同一個題庫，工具給不給、跑幾次取平均、讓它想多久，數字可以差很多。Google DeepMind 在 2026 年 2 月發表的 Gemini 3.1 Pro 評測方法頁寫得很細：所有分數是 pass@1，單次嘗試的設定不允許多數投票與平行的測試期運算；小題庫會跑多次取平均降低變異，SWE-bench Verified 平均 10 次；他們自己的外框只有 bash、檔案操作與送出三種工具。同一頁還寫，非 Gemini 模型的數字取自各家自報，預設取可得的最高思考設定。Anthropic 在 2026 年 7 月 24 日 Claude Opus 5 的發表頁上，圖表註腳也寫明是內部跑的、用哪個外框、每題取 5 次的平均分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "陷阱三是榜單更新的速度不一樣，方法本身也會變。查證當天，Arena 的榜單更新紀錄最新一筆是 2026 年 9 月 14 日，幾乎每天都有模型加入；SWE-bench 官方榜單資料裡，最新一筆投稿是 2026 年 2 月 26 日。同一句「這是最新排名」，在兩個榜上的意思完全不同。方法也一直在動：Arena 在 2026 年 8 月 14 日改了代理榜，加上任務分類與成本欄。所以看跑分時，先看頁面上的日期與版本號，再看數字。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "三段官方方法頁原文：票怎麼算分、怎麼算解決、一個數字帶了哪些條件",
+          "code": "[Arena FAQ - How is my feedback used to rank AI models?]\nYour votes directly shape the model rankings through the Bradley-Terry rating\nsystem, a statistical model originally developed for paired comparison experiments.\nNote: Only votes made while the models are anonymous count toward official rankings.\n\n[SWE-bench - Official Leaderboards]\nEach entry reports % Resolved, the percentage of task instances solved.\nRun performed or directly checked by the SWE-bench team.\n\n[Gemini 3.1 Pro Model Evaluation - Approach, Methodology & Results, February 2026]\nAll Gemini scores are pass@1 except where otherwise noted. \"Single attempt\" settings\nallow no majority voting or parallel test-time compute. To reduce variance, we average\nover multiple trials for smaller benchmarks. All the results for non-Gemini models are\nsourced from providers' self reported numbers unless mentioned otherwise below."
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "換個跑法就不是同一個數字，不能直接相減",
+          "text": "同樣寫著 SWE-bench Verified，官方 Bash Only 榜是統一的極簡環境、單次嘗試；廠商自報可能是自家外框、平均 10 次；完整榜上還有多次重跑再挑一份交出去的系統。看到兩個數字想比較，先確認是同一個子集、同一個外框、同樣的嘗試次數，三個對不上就不要相減。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "榜單",
+            "測什麼",
+            "怎麼算分",
+            "官方寫的限制"
+          ],
+          "rows": [
+            [
+              "Arena 文字榜",
+              "兩個匿名模型同題對打，由人投票",
+              "Bradley-Terry 迴歸，附 95% 信賴區間",
+              "只有匿名時投的票算進正式排名"
+            ],
+            [
+              "Arena 風格控制榜",
+              "同上，但把版面因素抽掉",
+              "迴歸再加長度與 Markdown 三項共四個特徵",
+              "官方寫這仍是觀察性分析，可能有未觀察到的干擾因子"
+            ],
+            [
+              "Arena AutoEval 分數",
+              "人類票還不夠時的暫時分數",
+              "用學人類偏好的獎勵模型自動投票，再與人票合併",
+              "榜上標成 AutoEval，等人票夠了才更新"
+            ],
+            [
+              "Arena 代理榜",
+              "多步驟的真實任務",
+              "同樣是投票分數，另外標出任務成本",
+              "2026 年 8 月 14 日才改成依任務分類"
+            ],
+            [
+              "SWE-bench Verified",
+              "500 題真實 GitHub issue 的修補",
+              "% Resolved，測試轉綠的題目比例",
+              "人工篩過，確認題目講清楚且解得出來"
+            ],
+            [
+              "SWE-bench Bash Only",
+              "同樣 500 題，統一極簡環境",
+              "同上，全部用 mini-SWE-agent 跑",
+              "1.x 與 2.x 版本的結果不一定可比"
+            ],
+            [
+              "SWE-bench 原始題庫",
+              "十二個 Python 專案的 2,294 題",
+              "同上",
+              "另有 Lite、Multilingual、Multimodal 子集"
+            ],
+            [
+              "Hugging Face 模型卡評測結果",
+              "各家自己貼上的題庫分數",
+              "由模型庫裡的評測結果檔彙整成榜",
+              "分已驗證與社群提供；文件標示為進行中的功能"
+            ]
+          ],
+          "caption": "各榜的方法與限制以 2026 年 9 月 15 日各官方頁面當天內容為準，本表不列任何模型的名次或分數。"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼用：三步讀法加五題自測",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把上面收斂成三個動作，看到任何跑分都照這三步走一次。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "先對任務：寫程式看 SWE-bench 的 Bash Only 榜，多步驟任務看 Arena 的代理榜，日常問答與寫作看 Arena 文字榜裡跟你最像的子分類，長文件看長上下文題庫。總榜第一名跟你的任務多半沒什麼關係",
+            "再對條件：確認是同一個子集、同一個外框、同樣的嘗試次數與思考設定；這些通常在圖表底下的小字裡，找不到條件的數字就當它不存在",
+            "最後對日期：記下榜單的更新日期與版本號，下次再看時先確認日期有沒有動"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "第三步之後才是真正決定你怎麼選的事：自己出五題。挑你每週真的會做的工作，五題涵蓋最常見與最麻煩的情況，兩個候選各跑一次，用同一份提示詞與同一份資料。你評的不是「哪個比較聰明」，而是「哪個少讓我改一次」；你的資料、格式要求與容錯標準，沒有一個題庫測得到。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "五題自測的題目表、記錄表與評分原則，兩個候選各跑一次",
+          "code": "【題目表｜先寫死，兩邊用同一份】\n1. <你每週一定會做的事，例如：把這封客戶信改成三段的回覆>\n2. <最常見的情況>\n3. <最麻煩的情況，例如資料不齊或前後矛盾>\n4. <你最怕它亂編的情況，例如問一個沒有答案的問題>\n5. <長一點的，例如一份十頁文件的重點整理>\n\n【記錄表｜每題一列】\n題號 | 模型 | 一次過關 | 我改了幾處 | 有沒有編造 | 花了幾分鐘\n\n【評分只問三件事】\n- 少讓我改一次的那個贏\n- 遇到資料不足時，會回頭問我的，贏過自己填一個的\n- 同一題再跑一次，結果差很多的扣分"
+        },
+        {
+          "type": "paragraph",
+          "text": "自測時順手記一件事：它有沒有把不確定的內容講得很肯定。"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "paragraph",
+          "text": "跑分是篩選工具，不是決策工具。它幫你把候選名單從十個縮到三個，剩下的靠你自己那五題。看到漂亮的數字，先問三個問題：哪個子集、什麼跑法、哪一天的榜。三個都答得出來，那個數字才值得放進你的判斷。"
+        },
+        {
+          "type": "link",
+          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        },
+        {
+          "type": "link",
+          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "link",
+          "text": "AI 能與不能：2026 年的誠實盤點",
+          "url": "https://mokaair.com/zh-TW/life/ai-hype-vs-reality-2026"
+        },
+        {
+          "type": "link",
+          "text": "開源 vs 閉源模型：對使用者的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-open-vs-closed-models"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 模型大事記：1 月到 9 月 15 日的官方發布時間軸",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-release-timeline-2026"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Arena：How It Works（battle 模式給兩個匿名模型、投票後揭曉身分；自 2024 年 3 月起測試已公開與未公開模型）",
+          "url": "https://arena.ai/how-it-works",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Arena：FAQ（Bradley-Terry 評分系統、與 Elo 的關係、只有匿名時的票算進正式排名、並排與直接模式不計入榜）",
+          "url": "https://arena.ai/faq",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Arena：Leaderboard Policy（2024 年 3 月 2 日發表、2026 年 9 月 1 日更新；公開前測試多個版本、至少 30 天模型使用權、暫定分數、下架規則）",
+          "url": "https://arena.ai/blog/policy",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Arena：Leaderboard Changelog（最新一筆為 2026 年 9 月 14 日，幾乎每日新增模型）",
+          "url": "https://arena.ai/company/leaderboard-changelog",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Arena：Does Style Matter?（2024 年 8 月 29 日發表、2025 年 6 月 13 日更新；控制長度與三項 Markdown 特徵；限制段落寫明仍是觀察性分析）",
+          "url": "https://arena.ai/blog/style-control",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Arena：Arena-Rank 開源排名方法（2025 年 12 月 18 日發表、2026 年 2 月 21 日更新；封閉解信賴區間、比舊版快三十倍以上）",
+          "url": "https://arena.ai/blog/arena-rank",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Arena：Introducing AutoEval to the Arena leaderboards（2026 年 7 月 30 日發表、8 月 12 日更新；獎勵模型自動投票、榜上標示 AutoEval）",
+          "url": "https://arena.ai/blog/autoeval-scores",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Arena：Agent Leaderboard Improvements: Categories & Task Cost（2026 年 8 月 14 日；代理榜加上任務分類與成本）",
+          "url": "https://arena.ai/blog/agent-categories-and-cost",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "SWE-bench 官方排行榜首頁（% Resolved 定義、打勾代表由官方執行或查核、各子集題數與最新投稿日期）",
+          "url": "https://www.swebench.com/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "SWE-bench Verified 排行榜頁（500 題人工篩選子集、與 OpenAI 合作、Bash Only 用 mini-SWE-agent、1.x 與 2.x 不一定可比）",
+          "url": "https://www.swebench.com/verified.html",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "SWE-bench 官方文件：總覽（給定程式庫與 issue，模型要產生解決問題的修補檔；Docker 評測環境）",
+          "url": "https://www.swebench.com/SWE-bench/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "SWE-bench 官方文件：資料集指南（各子集的題數與用途說明）",
+          "url": "https://www.swebench.com/SWE-bench/guides/datasets/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "SWE-bench 官方文件：評測指南（套用修補檔後跑專案自己的測試，測試通過才算解決）",
+          "url": "https://www.swebench.com/SWE-bench/guides/evaluation/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "SWE-bench 官方部落格：Detecting cheating in submissions（2025 年 11 月 19 日；逐字比對腳本、各榜命中率約 2% 到 7%、超過 20% 要求說明）",
+          "url": "https://www.swebench.com/post-20251119-cheating.html",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "SWE-bench 官方投稿說明頁（投稿走官方實驗倉庫，需附預測檔、執行紀錄與推理軌跡）",
+          "url": "https://www.swebench.com/submit.html",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google DeepMind：Gemini 3.1 Pro Model Evaluation（2026 年 2 月；pass@1、單次嘗試定義、小題庫取多次平均、SWE-bench Verified 平均 10 次、非 Gemini 數字取自各家自報）",
+          "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-1_pro_model_evaluation.pdf",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic：Introducing Claude Opus 5（2026 年 7 月 24 日；圖表註腳寫明內部執行、使用的外框與後端、每題取 5 次平均）",
+          "url": "https://www.anthropic.com/news/claude-opus-5",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方文件：Evaluation Results（模型庫評測結果檔、已驗證與社群提供的標記、爭議時作者可關閉；標示為進行中的功能）",
+          "url": "https://huggingface.co/docs/hub/eval-results",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方文件：Open LLM Leaderboard About（GPQA 與 MMLU-Pro 的官方定義、六個題庫與可自行重跑的指令）",
+          "url": "https://huggingface.co/docs/leaderboards/open_llm_leaderboard/about",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

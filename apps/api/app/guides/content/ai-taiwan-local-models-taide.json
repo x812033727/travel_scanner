@@ -1,0 +1,494 @@
+{
+  "slug": "ai-taiwan-local-models-taide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "台灣的本土模型：TAIDE 與繁中表現",
+      "description": "TAIDE 是國科會 2023 年初推動的可信任生成式 AI 發展先期計畫，釋出的是可以下載回自己電腦的模型權重，不是聊天網站。這篇照 2026 年 9 月 15 日的 taide.tw、國科會新聞稿與 Hugging Face 官方模型卡，整理官網列出的 9 個版本、參數與基礎模型，兩份 TAIDE 授權條款的限制，從同意條款到本機執行的流程，以及官方公布的評測題目與評分方法。",
+      "hero": {
+        "src": "/guides/ai-taiwan-local-models-taide/hero.jpg",
+        "alt": "一個分層的綠色方塊經由一把橘色的鎖連到一台藍框筆記型電腦，下方一行字寫著下載回自己的電腦。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "TAIDE 不是一個打開網頁就能聊天的服務，它是國科會的計畫，產出的是可以下載回自己電腦、自己部署的模型權重。國科會 2024 年 4 月 15 日的新聞稿寫著，計畫自 2023 年初推動，全名是可信任生成式 AI 發展先期計畫（Trustworthy AI Dialogue Engine），當天釋出的 TAIDE-LX-7B 建立在 Meta Llama-2-7B 上，額外擴充了繁體中文字元與字詞。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇按官方頁面走一遍：現在有哪些版本、參數與基礎模型是什麼、兩份授權條款寫了哪些限制、從同意條款到在自己電腦跑起來要做哪幾步，還有繁中表現官方是用什麼題目、什麼方法評的。以 2026 年 9 月 15 日的 taide.tw、國科會網站與 Hugging Face 官方模型卡當天頁面為準，這裡不做實測，也不排名次。"
+        },
+        {
+          "type": "heading",
+          "text": "TAIDE 是什麼：國科會的計畫，模型由國研院授權",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的定位每一張模型卡開頭都寫了同一段：TAIDE 計畫致力於開發符合台灣語言和文化特性的生成式人工智慧對話引擎模型，同時建構可信任的人工智慧環境，避免對外國技術的依賴。網站由財團法人國家實驗研究院經營，指導單位是國科會，模型的授權方也是國研院。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「可信任」有具體所指。國科會 2024 年 4 月 15 日的新聞稿寫，訓練所使用的文本資料皆以合法取得授權之文本數據進行訓練；模型卡的訓練資料一節逐項列出來源，像司法院裁判書、中央社中文新聞、立法院公報、教育部成語典與法規資料庫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "時間軸也在官網上。2023 年 4 月 27 日計畫啟動。國科會 2024 年 5 月 3 日的新聞稿寫，一年下來開發出基於 Llama2 的 TAIDE LX-7B（可商用版本）與 LX-13B（學研用版本），釋出不到半個月已有超過 6,000 人次下載；Meta 4 月 19 日釋出 Llama 3 後，團隊僅以 4 天時間完成 Alpha1 版本。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "權重可以下載、授權條款卻自己寫一份，這和標準的開源授權不一樣，判斷方式看 "
+            },
+            {
+              "type": "link",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "，兩類模型對使用者的差別看 "
+            },
+            {
+              "type": "link",
+              "text": "開源 vs 閉源模型：對使用者的差別",
+              "url": "https://mokaair.com/zh-TW/life/ai-open-vs-closed-models"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "官網現在列出的版本、參數與基礎模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官網「TAIDE模型」頁的版本下載表當天只顯示最新一筆：Embeddinggemma-GTAIDE-300m-2605，釋出日期 2026.06.12，下方兩個按鈕連到 Hugging Face 的 taide 組織頁與 GitHub。首頁的「歷屆模型比較表」把 9 個版本列在一起，這 9 個在組織頁上都找得到，組織頁另有幾個未列入比較表、以代號命名的倉庫。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "TAIDE-LX-7B（2024 年 4 月 15 日）：以 LLaMA2-7b 為基礎、只做繁體中文持續預訓練。模型卡寫參數量 7B、最大內容長度 4K、繁中訓練資料 41.44B token，額外擴充 24720 個中文字元與字詞，並提醒這版沒有經過微調和偏好對齊，可能產生不安全的輸出。",
+            "Llama3-TAIDE-LX-8B-Chat-Alpha1（2024 年 4 月 29 日）：參數量 8B、最大內容長度 8K、繁中訓練資料 43B token。",
+            "Llama-3.1-TAIDE-LX-8B-Chat（2025 年 2 月 11 日）：以 Llama 3.1-8B 為基礎，參數量 8.5B、最大內容長度 131,584、繁中訓練資料 45B token，特色欄寫正體中文的解碼速度快 20%。",
+            "Gemma-3-TAIDE-12b-Chat（2025 年 8 月 22 日）與 Gemma-3-TAIDE-12b-Chat-2602（2026 年 2 月 13 日）：都以 Gemma-3-12b-pt 為基礎，參數量 12.4B、最大上下文長度 128K。2602 版寫繁中訓練資料 22B token、訓練硬體 NVIDIA H200、訓練時數 1,520 GPU Hours，並多了一段以高品質台灣資料做的中期訓練。",
+            "Embeddinggemma-GTAIDE-300m-2605（2026 年 6 月 12 日）：不是聊天模型，是嵌入模型，以 google/embeddinggemma-300m 為基礎、用正體中文法規資料微調。模型卡寫最大序列長度 2048 token、輸出 768 維，用途是公務人員回覆民眾陳情時加速搜尋法規。",
+            "兩個 4 bit 量化版：TAIDE-LX-7B-Chat-4bit 與 Llama3-TAIDE-LX-8B-Chat-Alpha1-4bit。模型卡寫量化主要是提供便利性，可能會影響效能與更多不可預期的問題。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "table",
+          "header": [
+            "模型",
+            "參數",
+            "基礎模型",
+            "授權"
+          ],
+          "rows": [
+            [
+              "TAIDE-LX-7B",
+              "7B",
+              "LLaMA2-7b",
+              "TAIDE L 類（Llama3-TAIDE 模型授權條款）"
+            ],
+            [
+              "TAIDE-LX-7B-Chat",
+              "7B",
+              "TAIDE-LX-7B",
+              "TAIDE L 類（Llama3-TAIDE 模型授權條款）"
+            ],
+            [
+              "TAIDE-LX-7B-Chat-4bit",
+              "7B 的 4 bit 量化",
+              "TAIDE-LX-7B-Chat",
+              "TAIDE L 類（Llama3-TAIDE 模型授權條款）"
+            ],
+            [
+              "Llama3-TAIDE-LX-8B-Chat-Alpha1",
+              "8B",
+              "LLaMA3-8b",
+              "TAIDE L 類（Llama3-TAIDE 模型授權條款）"
+            ],
+            [
+              "Llama3-TAIDE-LX-8B-Chat-Alpha1-4bit",
+              "8B 的 4 bit 量化",
+              "Llama3-TAIDE-LX-8B-Chat-Alpha1",
+              "TAIDE L 類（Llama3-TAIDE 模型授權條款）"
+            ],
+            [
+              "Llama-3.1-TAIDE-LX-8B-Chat",
+              "8.5B",
+              "Llama 3.1-8B",
+              "TAIDE L 類（Llama3-TAIDE 模型授權條款）"
+            ],
+            [
+              "Gemma-3-TAIDE-12b-Chat",
+              "12.4B",
+              "Gemma-3-12b-pt",
+              "TAIDE G 類（Gemma-TAIDE 模型授權條款）"
+            ],
+            [
+              "Gemma-3-TAIDE-12b-Chat-2602",
+              "12.4B",
+              "Gemma-3-12b-pt",
+              "TAIDE G 類（Gemma-TAIDE 模型授權條款）"
+            ],
+            [
+              "Embeddinggemma-GTAIDE-300m-2605",
+              "300m 級嵌入模型",
+              "google/embeddinggemma-300m",
+              "TAIDE G 類（Gemma-TAIDE 模型授權條款）"
+            ]
+          ],
+          "caption": "版本、參數、基礎模型取自 Hugging Face 官方模型卡，授權歸屬取自 taide.tw「TAIDE模型」頁的適用清單，查證於 2026 年 9 月。"
+        },
+        {
+          "type": "heading",
+          "text": "授權有兩份：TAIDE L 類與 TAIDE G 類",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "授權條款不是照抄 Llama 或 Gemma，是國研院自己寫的兩份中文條款，全文就放在官網「TAIDE模型」頁上。頁面最後的補充把適用範圍寫得很清楚：Llama3-TAIDE 模型社群授權條款適用於 TAIDE-LX-7B、TAIDE-LX-7B-Chat、TAIDE-LX-7B-Chat-4bit、Llama3-TAIDE-LX-8B-Chat-Alpha1、Llama3-TAIDE-LX-8B-Chat-Alpha1-4bit、Llama-3.1-TAIDE-LX-8B-Chat；Gemma-TAIDE 模型社群授權條款適用於 Gemma-3-TAIDE-12b-Chat、Gemma-3-TAIDE-12b-Chat-2602、Embeddinggemma-GTAIDE-300m-2605。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩份的骨架一樣，差別在上游。第二條第 2 款要你另外同意基礎模型那一方的規範：L 類寫 Meta 的 Llama3 社群授權與可接受使用政策，G 類寫 Gemma Terms of Use 與 Gemma Prohibited Use Policy。下面是 L 類的原文節錄，G 類對應條文只差在模型名稱。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Llama3-TAIDE 模型授權條款第二條節錄（照 taide.tw 原文）",
+          "code": "二、授權同意與使用限制\n1.在合乎本授權條款的前提下，國研院特此授予您一個【非專屬性、全球性、不可轉讓的、不可再授權的、無償的】授權同意。\n4.您得依法對於衍生模型享有相關權利，但您必須滿足以下的條件，若有違反，您依本授權條款下所取得的授權同意即行終止；\n(1) 您不得出於任何軍事或非法目的使用、重製、修改、變更或建置與 TAIDE L 類模型相關的全部或部分衍生模型；\n(2) 您因為修改、變更 TAIDE L 類模型所得到的衍生模型，必須以顯著的方式說明或指出修改的內容，且上述修改不得違反本授權條款下的授權限制條件；\n(4) 如果您將您的衍生模型向您的使用者或接收者為重製、公開口述、公開播送、公開演出、公開傳輸、公開展示、改作、編輯、散布及出租等行為，您應向您的使用者或接收者提供本授權條款之副本，並促其遵守本授權條款的所有規範；\n(6) 您僅得於國研院或國研院授權的網站上取用 TAIDE L 類模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "G 類另外多兩件事：散布衍生模型要附帶「Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms」這段文字，並標示模型源自國研院 TAIDE G 類模型及其官方網址。兩份的第七條都寫，衍生模型拿去提供使用授權或參加排名比賽，要顯著標識它是基於 TAIDE 模型的衍生作品。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "條款還有一句值得留意：你對模型的使用行為不得違反中華民國法令或其他國家、國際組織適用法律，括號裡直接點名歐盟人工智慧法案。這部法案和台灣的規定各管到什麼，站上有 "
+            },
+            {
+              "type": "link",
+              "text": "歐盟 AI 法案與台灣 AI 基本法：對使用者的影響",
+              "url": "https://mokaair.com/zh-TW/life/ai-regulation-eu-act-taiwan"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "能不能商用？兩份條款沒有設使用者規模門檻，也沒有寫禁止商業使用，但條款本身並未出現「商用」兩個字。用這兩個字的是新聞稿：國科會 2024 年 5 月 3 日寫 LX-7B 是可商用版本、LX-13B 是學研用版本。真要商用，條款全文與上游的 Llama、Gemma 條款都得自己讀過；條款寫明準據法是中華民國法律、管轄法院是智慧財產及商業法院，英文譯本僅供參考。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "模型只能從官方管道拿",
+          "text": "兩份授權條款的第二條第 4 款都有同一句：您僅得於國研院或國研院授權的網站上取用 TAIDE 模型。Hugging Face 上找得到不少第三方轉傳或重新量化的 TAIDE 檔案，那些不是條款寫的取得管道；要用就回 taide.tw 的「TAIDE模型」頁，或 Hugging Face 上的 taide 官方組織頁。"
+        },
+        {
+          "type": "heading",
+          "text": "從同意條款到在自己的電腦上跑",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "取得路線只有一條：官網的「TAIDE模型」頁把你導到 Hugging Face 的 taide 組織頁，再從那裡下載。所有公開釋出的 TAIDE 倉庫都設了存取限制，頁面上的中文標題是「您需要先同意授權條款才能使用此模型」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要填什麼，倉庫設定裡看得到：姓名（Name）、生日（Date of birth）、國家（Country）、所屬單位（Affiliation）4 個欄位，加一個勾選框，按鈕寫「送出（Submit）」，表單上方另外附了社群授權同意書與個人資料蒐集告知聲明兩份文件的連結。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這種倉庫在 Hugging Face 叫 gated model。官方文件寫，想用就必須先申請存取，也就是得先登入一個 Hugging Face 使用者帳號，而且申請只能從瀏覽器操作；核准分自動與人工兩種，自動核准的話會立刻取得檔案存取權，TAIDE 這 9 個公開版本設的就是自動核准。帳號怎麼開，站上有 "
+            },
+            {
+              "type": "link",
+              "text": "Hugging Face 入門：找模型、看授權、下載",
+              "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "同意之後要把檔案抓下來，還得讓你的電腦帶著身分。Hugging Face 官方文件寫，要從受管制的模型下載檔案，你必須通過驗證；在終端機登入的指令只有一行。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "在這台機器登入 Hugging Face（官方文件原文）",
+          "code": "hf auth login"
+        },
+        {
+          "type": "paragraph",
+          "text": "接下來看檔案格式。Gemma-3-TAIDE-12b-Chat-2602、Llama-3.1-TAIDE-LX-8B-Chat 這些倉庫裡是 safetensors 分片，模型卡的快速開始給了 transformers 與 vLLM 兩段程式；兩個 4 bit 倉庫裡則各只有一個 .gguf 檔案。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "Gemma-3-TAIDE-12b-Chat-2602 官方模型卡的 transformers 快速開始",
+          "code": "import torch\nfrom transformers import AutoTokenizer, AutoModelForCausalLM\n\nmodel_id = \"taide/Gemma-3-TAIDE-12b-Chat-2602\"\n\n# Load model and tokenizer\ntokenizer = AutoTokenizer.from_pretrained(model_id)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_id,\n    device_map=\"auto\",\n    torch_dtype=torch.bfloat16\n)\n\n# Prepare conversation content\nmessages = [\n    {\"role\": \"system\", \"content\": \"你是一個來自台灣的AI助理，你的名字是 TAIDE，樂於以台灣人的立場幫助使用者，會用正體中文回答問題。\"},\n    {\"role\": \"user\", \"content\": \"請推薦三個台灣的旅遊景點。\"},\n]\n\n# Convert to input format\ninput_ids = tokenizer.apply_chat_template(\n    messages,\n    add_generation_prompt=True,\n    return_tensors=\"pt\"\n).to(model.device)\n\n# Generate response\noutputs = model.generate(\n    input_ids,\n    max_new_tokens=2048,\n    do_sample=True,\n    temperature=0.1,\n    top_p=0.9,\n)"
+        },
+        {
+          "type": "paragraph",
+          "text": "舊的 TAIDE-LX-7B-Chat 有個額外要求：模型卡寫 tokenizer 必須設成 slow mode，提示詞用的是 Llama 2 那套格式。Gemma 兩版就沒有，模型卡寫支援標準的 chat template。"
+        },
+        {
+          "type": "paragraph",
+          "text": ".gguf 是 llama.cpp 這一系工具吃的格式。模型頁右上角的「Use this model」把可用的本機工具列了出來，llama.cpp、LM Studio、Jan、Ollama 都在清單上。要注意的是，Ollama 自己的官方模型庫當天沒有 TAIDE 項目，所以這條路是從 Hugging Face 拉檔案，不是從 Ollama 的模型庫拉。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "TAIDE-LX-7B-Chat-4bit 模型頁 Use this model 列出的本機指令（原文照抄）",
+          "code": "# llama.cpp（模型頁 Use this model 的 llama.cpp 區塊）\nllama serve -hf taide/TAIDE-LX-7B-Chat-4bit:Q4_K_M\nllama cli -hf taide/TAIDE-LX-7B-Chat-4bit:Q4_K_M\n\n# Ollama（模型頁 Use this model 的 Ollama 區塊）\nollama run hf.co/taide/TAIDE-LX-7B-Chat-4bit:Q4_K_M"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-taiwan-local-models-taide/diagram-1.svg",
+          "alt": "從官網讀授權條款、在 Hugging Face 同意表單、終端機登入、下載檔案到本機執行的五步流程圖，最後一步分成 safetensors 與 gguf 兩條路。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看：前四步是取得授權與檔案，第五步依檔案格式分成兩條路，下排灰字是官方頁面上寫的細節。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "圖形介面與終端機兩條路，站上各有一篇從安裝開始的專文；12.4B 這種規模跑不跑得動，先把硬體那篇看完再決定下載哪一個版本。"
+        },
+        {
+          "type": "link",
+          "text": "LM Studio 入門：圖形介面跑本機模型",
+          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "heading",
+          "text": "繁中表現：官方用哪些題目、哪一種評分",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公布的評測有三套，題目與方法都寫在模型卡上。下面只轉述官方寫的內容，沒有做任何自行測試，也不排名次。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "taide-bench：官網寫五大任務共 500 題，內容是中翻英、英翻中、自動摘要、文章撰寫與信件撰寫，評分方法寫用 ChatGPT-4 進行評分。Gemma-3-TAIDE-12b-Chat 的模型卡改寫成 gpt-4o 評分，並附註因為更換評測 judge prompt，舊版本的分數不能直接並排比較。評測資料與評分程式都公開。",
+            "TMMLU+：Gemma 兩版用的是這一套，評測資料寫 STEM、Humanities、Social Sciences、Other，共 66 個子類別、20,118 題，評分程式寫 lm-evaluation-harness。模型卡另外把台灣地理、台灣用語、閩南語三個台灣相關指標單獨列表。",
+            "CLongEval：Llama-3.1-TAIDE-LX-8B-Chat 的長文評測，模型卡寫它涵蓋長篇故事問答、對話記憶、關鍵段落檢索等七種任務，共 7,267 筆測試資料，依上下文視窗長度分成三個子集，並註明是以 OpenCC 轉成繁體中文後評測。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "看分數之前先讀模型卡的免責聲明：語言模型受設計架構限制、資料難免有偏誤，任何回應不代表 TAIDE 立場，使用前需要額外加入安全防護機制，回應也可能包含不正確的資訊。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要判斷夠不夠用，實際的做法是拿你真正要做的事去跑：把手上十到二十份真實的信件或摘要需求整理成一份固定題目，在不同版本上各跑一次，自己看輸出，而不是看別人的平均分。TAIDE-LX-7B 的模型卡也寫它適合會進一步微調的使用情境，這件事怎麼做可以看 "
+            },
+            {
+              "type": "link",
+              "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "誰適合用，還有哪些台灣的模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方講得最明確的是公部門。國科會「行政院及所屬機關（構）使用生成式AI參考指引」的常見問答有一題直接問到 TAIDE，答覆寫著：這個引擎的建置是希望提供一個能讓政府或業者繼續發展其專屬內部應用系統或加值服務的生成式 AI 基礎模型，未來機關若導入 TAIDE 進行加值應用，應用原則亦適用本指引。同一份問答也寫，指引雖非屬法律，不具強制性亦無明定罰則。"
+        },
+        {
+          "type": "paragraph",
+          "text": "教育與產業的案例寫在國科會 2024 年 5 月 3 日的新聞稿裡：中興大學的農業知識檢索系統「神農TAIDE」、臺南大學導入中小學台語教學的對話機器人、高雄大學的 Kuwa GenAI OS 預載 TAIDE 讓使用者在地端使用、教育部的競賽報告檢查系統等。"
+        },
+        {
+          "type": "paragraph",
+          "text": "共通點是都得自己部署。官方沒有提供 TAIDE 的雲端聊天網站或付費 API，你拿到的是權重檔案，跑在哪台機器、資料留在哪裡由你決定；反過來說，維運、更新與安全防護也全在你身上。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "台灣還有別的官方模型頁。聯發科研究團隊在 Hugging Face 的 MediaTek-Research 組織頁釋出 Breeze 系列，Llama-Breeze2-8B-Instruct 的模型卡寫它建立在 LLaMA 3.2 上、有 3B 與 8B 兩種規模、加了視覺與函式呼叫能力，授權標示 llama3.2；更早的 Breeze-7B-Instruct-v1_0 寫建立在 Mistral-7B 上，授權標示 apache-2.0。TAIDE 的上游家族也有一篇："
+            },
+            {
+              "type": "link",
+              "text": "Llama 模型家族：授權與版本",
+              "url": "https://mokaair.com/zh-TW/life/llama-models-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "TAIDE 官方網站首頁（重點研發與活動歷程、歷屆模型比較表；taide.tw 於當天 302 轉址至此）",
+          "url": "https://taide.stpi.niar.org.tw/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "TAIDE 官方網站「TAIDE模型」頁（Llama3-TAIDE 與 Gemma-TAIDE 兩份授權條款全文、適用模型清單、模型版本下載、五大任務 benchmark、TAIDE 合作模式）",
+          "url": "https://taide.stpi.niar.org.tw/public/download-model",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "國科會新聞資料：國科會今釋出TAIDE-LX-7B模型 提供產學研以臺灣文化的大型語言模型導入生成式AI（2024 年 4 月 15 日）",
+          "url": "https://www.nstc.gov.tw/folksonomy/detail/d5a157bf-5aca-4ecf-83ce-012f351fd341?l=CH",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "國科會新聞資料：TAIDE一年有成 公私協力共同推進具臺灣特色之大型語言模型（2024 年 5 月 3 日；LX-7B 可商用版本、LX-13B 學研用版本、應用案例）",
+          "url": "https://www.nstc.gov.tw/folksonomy/detail/dd2d9d72-8f7b-44dd-976c-438d5ce683af?l=CH",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "國科會：行政院及所屬機關（構）使用生成式AI參考指引 常見問答（含 TAIDE 是否適用本指引一題）",
+          "url": "https://www.nstc.gov.tw/folksonomy/qaList/ebe76b54-32d1-4ae7-8fe3-42fe12202111?l=ch",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face：taide 官方組織頁（公開釋出的模型清單）",
+          "url": "https://huggingface.co/taide",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方模型卡：taide/TAIDE-LX-7B（LLaMA2-7b、7B、4K、41.44B token、24720 個中文字元字詞）",
+          "url": "https://huggingface.co/taide/TAIDE-LX-7B",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方模型卡：taide/TAIDE-LX-7B-Chat（taide-bench 評測、tokenizer slow mode、授權與免責聲明）",
+          "url": "https://huggingface.co/taide/TAIDE-LX-7B-Chat",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方模型卡：taide/TAIDE-LX-7B-Chat-4bit（gguf 檔案、Use this model 的本機工具指令、授權表單欄位）",
+          "url": "https://huggingface.co/taide/TAIDE-LX-7B-Chat-4bit",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方模型卡：taide/Llama3-TAIDE-LX-8B-Chat-Alpha1（8B、8K、43B token、2336 H100 GPU Hours）",
+          "url": "https://huggingface.co/taide/Llama3-TAIDE-LX-8B-Chat-Alpha1",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方模型卡：taide/Llama3-TAIDE-LX-8B-Chat-Alpha1-4bit（gguf 檔名）",
+          "url": "https://huggingface.co/taide/Llama3-TAIDE-LX-8B-Chat-Alpha1-4bit",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方模型卡：taide/Llama-3.1-TAIDE-LX-8B-Chat（8.5B、131,584、45B token、CLongEval 長文評測）",
+          "url": "https://huggingface.co/taide/Llama-3.1-TAIDE-LX-8B-Chat",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方模型卡：taide/Gemma-3-TAIDE-12b-Chat（12.4B、128K、46B token、TMMLU+ 與 taide-bench）",
+          "url": "https://huggingface.co/taide/Gemma-3-TAIDE-12b-Chat",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方模型卡：taide/Gemma-3-TAIDE-12b-Chat-2602（gemma-3-12b-pt、12.4B、128K、22B token、H200、1,520 GPU Hours、transformers 與 vLLM 範例）",
+          "url": "https://huggingface.co/taide/Gemma-3-TAIDE-12b-Chat-2602",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方模型卡：taide/embeddinggemma-GTAIDE-300m-2605（embeddinggemma-300m、2048 token、768 維、142.88 MB）",
+          "url": "https://huggingface.co/taide/embeddinggemma-GTAIDE-300m-2605",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方文件：Gated models（申請流程、必須登入帳號、自動核准、下載需通過驗證與 hf auth login）",
+          "url": "https://huggingface.co/docs/hub/models-gated",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方文件：Use Ollama with any GGUF Model on Hugging Face Hub（ollama run hf.co 格式、預設 Q4_K_M）",
+          "url": "https://huggingface.co/docs/hub/ollama",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Ollama 官方模型庫（當天沒有 TAIDE 項目）",
+          "url": "https://ollama.com/library",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方模型卡：MediaTek-Research/Llama-Breeze2-8B-Instruct（LLaMA 3.2、3B 與 8B、視覺與函式呼叫、授權 llama3.2）",
+          "url": "https://huggingface.co/MediaTek-Research/Llama-Breeze2-8B-Instruct",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方模型卡：MediaTek-Research/Breeze-7B-Instruct-v1_0（Mistral-7B、擴充 30,000 個繁中 token、授權 apache-2.0）",
+          "url": "https://huggingface.co/MediaTek-Research/Breeze-7B-Instruct-v1_0",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

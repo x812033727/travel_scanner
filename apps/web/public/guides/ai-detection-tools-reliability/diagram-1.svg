@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">拿到一份內容，能不能下判斷 / From a piece of content to a defensible call</title>
+  <desc id="desc">流程圖分成兩條路。左邊起點是拿到一份內容，先分清楚是文字還是圖片影片聲音。上排是文字：跑偵測工具，輸出的是機率不是事實；官方寫的限制包括少於 300 字不出報告、生成後改寫過就測不出、支援語言沒有中文，以及 OpenAI 自家分類器只有 26% 命中、9% 誤判並在 2023 年下架。下排是圖片、影片、聲音：查 SynthID 浮水印與內容憑證；官方寫的限制包括 Gemini 只認得 Google AI 的標記、沒查到標記不等於不是 AI、內容太簡單或改動太小驗不出、內容憑證只記歷程不判真假。兩條路最後都匯到同一個結論：可能，不是證據，只能當成開啟對話的訊號；真正能下判斷的是過程證據，包括草稿與文件版本紀錄、研究筆記與大綱、當面說明或現場寫作。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">拿到一份內容，能不能下判斷</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From a piece of content to a defensible call</text>
+
+  <!-- start -->
+  <rect x="60" y="390" width="230" height="120" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="175" y="440" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">拿到一份內容</text>
+  <text x="175" y="472" font-size="16" fill="#5C6B6B" text-anchor="middle">先分清楚是哪一種</text>
+
+  <!-- upper path: text -->
+  <rect x="340" y="170" width="360" height="130" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="520" y="218" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">文字：跑偵測工具</text>
+  <text x="520" y="252" font-size="17" fill="#5C6B6B" text-anchor="middle">輸出的是機率，不是事實</text>
+
+  <rect x="750" y="140" width="360" height="210" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="775" y="180" font-size="18" font-weight="bold" fill="#102A2B">官方寫的限制</text>
+  <text x="775" y="214" font-size="16" fill="#102A2B">・少於 300 字不出報告</text>
+  <text x="775" y="242" font-size="16" fill="#102A2B">・生成後改寫過就測不出</text>
+  <text x="775" y="270" font-size="16" fill="#102A2B">・支援語言沒有中文</text>
+  <text x="775" y="298" font-size="16" fill="#102A2B">・OpenAI 自家分類器 26% 命中、</text>
+  <text x="775" y="324" font-size="16" fill="#102A2B">　9% 誤判，2023 年下架</text>
+
+  <!-- lower path: media -->
+  <rect x="340" y="560" width="360" height="130" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="520" y="608" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">圖片、影片、聲音：查標記</text>
+  <text x="520" y="642" font-size="17" fill="#5C6B6B" text-anchor="middle">SynthID 浮水印與內容憑證</text>
+
+  <rect x="750" y="530" width="360" height="190" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="775" y="570" font-size="18" font-weight="bold" fill="#102A2B">官方寫的限制</text>
+  <text x="775" y="604" font-size="16" fill="#102A2B">・Gemini 只認得 Google AI 的標記</text>
+  <text x="775" y="632" font-size="16" fill="#102A2B">・沒查到標記不等於不是 AI</text>
+  <text x="775" y="660" font-size="16" fill="#102A2B">・內容太簡單、改動太小驗不出</text>
+  <text x="775" y="688" font-size="16" fill="#102A2B">・內容憑證只記歷程，不判真假</text>
+
+  <!-- conclusion -->
+  <rect x="1160" y="320" width="380" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1350" y="368" font-size="19" fill="#5C6B6B" text-anchor="middle">兩條路都只走到這裡</text>
+  <text x="1350" y="410" font-size="28" font-weight="bold" fill="#B8442D" text-anchor="middle">可能，不是證據</text>
+  <text x="1350" y="444" font-size="17" fill="#102A2B" text-anchor="middle">只能當成開啟對話的訊號</text>
+
+  <rect x="1160" y="545" width="380" height="200" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1350" y="590" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">能下判斷的是過程證據</text>
+  <text x="1185" y="632" font-size="17" fill="#102A2B">・草稿與文件版本紀錄</text>
+  <text x="1185" y="666" font-size="17" fill="#102A2B">・研究筆記與大綱</text>
+  <text x="1185" y="700" font-size="17" fill="#102A2B">・當面說明或現場寫作</text>
+
+  <!-- arrows -->
+  <polyline points="290,450 325,450 325,235 336,235" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <polyline points="290,450 325,450 325,625 336,625" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="700" y1="235" x2="746" y2="235" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="700" y1="625" x2="746" y2="625" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <polyline points="1110,245 1135,245 1135,370 1156,370" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <polyline points="1110,620 1135,620 1135,430 1156,430" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1350" y1="470" x2="1350" y2="541" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

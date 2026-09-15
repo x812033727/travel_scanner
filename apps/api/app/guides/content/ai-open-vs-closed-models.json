@@ -1,0 +1,504 @@
+{
+  "slug": "ai-open-vs-closed-models",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "開源 vs 閉源模型：對使用者的差別",
+      "description": "日常講的「開源模型」多半是開放權重：權重檔能下載，但不一定符合 OSI 的開源 AI 定義。這篇用當天官方檔案原文比五件事：能不能離線自架、資料去哪裡、授權能不能商用（Llama 4、Gemma 4、Qwen、gpt-oss、DeepSeek 各是哪一份）、模型退場與支援期限、費用結構，最後給決策表與自測方法。",
+      "hero": {
+        "src": "/guides/ai-open-vs-closed-models/hero.jpg",
+        "alt": "左邊一個打開的方框裡露出幾何色塊並連到一台筆電，右邊一個封閉的圓角方框連到雲端形狀，中間是一條分岔的路徑。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "「開源模型」和「閉源模型」在日常討論裡常被當成品質標籤，但這兩個詞真正回答的是另一個問題：模型的檔案在誰手上、條款由誰寫。對一般使用者來說，這個差別會落在五件具體的事上：能不能離線與自架、資料去哪裡、授權允許你拿去做什麼、模型會不會退場、費用怎麼算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇不比誰比較聰明，也不做排名，只把當天官方檔案裡寫出來的條款抄下來對照：OSI 的開源 AI 定義、五個開放權重模型家族的授權原文，以及三家閉源 API 的資料使用與保留條款，最後給一張決策表與一套你自己就能做的測試方法。本環境不能登入、不能實測，所有內容以 2026 年 9 月 15 日當天的官方頁面與授權檔為準。"
+        },
+        {
+          "type": "heading",
+          "text": "先分清楚：開放權重不等於開源 AI",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Open Source Initiative（OSI）的 Open Source AI Definition，官網頁面上標的版本是 1.0。它把開源 AI 寫成一組自由的清單：使用（Use）、研究（Study）、修改（Modify）、分享（Share），並且明講行使這些自由的前提，是拿得到修改系統時的偏好形式，原文寫的是 preferred form to make modifications。這份定義列了三個必備元件：資料資訊（Data Information）、程式（Code）與參數（Parameters）。換句話說，權重檔可以下載，並不自動符合這份定義。名詞本身站上已經各有一篇："
+            },
+            {
+              "type": "link",
+              "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+            },
+            {
+              "type": "text",
+              "text": "把三個元件逐項拆開，"
+            },
+            {
+              "type": "link",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "則講下載之後還要確認什麼，這篇不重複，只往下談對使用者的實際差別。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "日常講的「開源模型」，多半指的是第三項參數可以下載，也就是開放權重。這篇後面統一用「開放權重模型」稱呼權重檔可以下載的那一類，用「閉源 API」稱呼只能透過網路端點或應用程式使用的那一類。要注意的是，同一家公司常常兩邊都做：OpenAI 有 API 上的 GPT 系列，也有可以下載的 gpt-oss；Google 有 Gemini API，也有可以下載的 Gemma。所以分界線不是「哪一家」，是「哪一個模型、哪一個版本」。"
+        },
+        {
+          "type": "heading",
+          "text": "差別一：能不能離線與自架",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開放權重模型的檔案放在公開的模型倉庫上，下載後由你自己的機器載入，官方模型卡通常會直接寫需要什麼硬體。gpt-oss 的模型卡說，權重經過 MXFP4 量化之後，gpt-oss-120b 可以跑在單張 80GB 的 GPU 上，gpt-oss-20b 則能在 16GB 記憶體之內執行；Gemma 4 的模型卡把家族的五個尺寸 E2B、E4B、12B、26B A4B 與 31B，對應到從手機、邊緣裝置到消費級顯示卡與工作站的部署情境。這些是官方寫的部署條件，不是效能保證。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "真的要動手，站上有三篇可以接著看："
+            },
+            {
+              "type": "link",
+              "text": "Hugging Face 入門：找模型、看授權、下載",
+              "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+            },
+            {
+              "type": "text",
+              "text": "講怎麼找模型與看授權，"
+            },
+            {
+              "type": "link",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "講在 Windows 與 Mac 上跑起第一個模型，"
+            },
+            {
+              "type": "link",
+              "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+              "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+            },
+            {
+              "type": "text",
+              "text": "則算什麼情況值得自己扛硬體。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "閉源那邊沒有這個選項。你拿到的是一個網路端點或一個應用程式：斷網就不能用，服務端換了模型你也跟著換。換來的是你不必準備顯示卡、不必自己更新，也不必處理量化、對話模板這些細節。兩邊的取捨從這一步就分岔了。"
+        },
+        {
+          "type": "heading",
+          "text": "差別二：資料去哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自己載入權重來跑的時候，輸入的文字是在你的機器上被處理的。但不要把「本機模型」直接當成「資料不出門」：你用的那個應用程式可能另外連網更新、可能有雲端同步、也可能同時接了遠端模型。資料實際走去哪裡，看的是整個應用程式的設定，不是權重檔的授權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "閉源 API 這邊就得讀條款，而三家都寫得很具體。要看的其實只有兩件事：預設會不會拿你的內容去訓練，以及會保留多久。下面是當天三家官方頁面上的原文。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "閉源 API 的訓練與保留聲明原文（三家官方頁面）",
+          "code": "OpenAI — Data controls in the OpenAI platform\n\"Your data is your data. As of March 1, 2023, data sent to the OpenAI API is not\nused to train or improve OpenAI models (unless you explicitly opt in to share\ndata with us).\"\n\"By default, abuse monitoring logs are generated for all API feature usage and\nretained for up to 30 days, unless longer retention is required by law, or is\nreasonably necessary to protect our services or any third party from harm.\"\n\nAnthropic — Is my data used for model training?（商用產品）與 How long do you store my organization's data?\n\"By default, we will not use your inputs or outputs from our commercial products\n(e.g. Claude for Work, Anthropic API, Claude Gov, etc.) to train our models.\"\n\"For Anthropic API users, we automatically delete inputs and outputs on our\nbackend within 30 days of receipt or generation, except: ...\"\n\nGoogle — Gemini API Additional Terms of Service\nUnpaid Services: \"Google uses the content you submit to the Services and any\ngenerated responses to provide, improve, and develop Google products and\nservices and machine learning technologies\" / \"Do not submit sensitive,\nconfidential, or personal information to the Unpaid Services.\"\nPaid Services: \"Google doesn't use your prompts (including associated system\ninstructions, cached content, and files such as images, videos, or documents) or\nresponses to improve our products\""
+        },
+        {
+          "type": "paragraph",
+          "text": "把三段放在一起看，界線就出來了：付費與商用的通道，三家都寫預設不用於訓練，但都會為了濫用監控保留一段時間，OpenAI 與 Anthropic 寫的都是 30 天。免費與個人的通道則相反，OpenAI 的說明中心寫個人服務可能拿內容去訓練模型，Google 的 Gemini API 條款更直接叫你不要把敏感、機密或個人資訊送進免費服務。Anthropic 的消費版另有一頁，寫的是你選擇同意、或對話被安全審查標記時才會被使用。"
+        },
+        {
+          "type": "heading",
+          "text": "差別三：授權允許你拿去做什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開放權重模型的授權不是同一份，差距也不小，今天查到的情況大致分成兩類。第一類是通用的開源授權，條件只有保留授權與著作權聲明。gpt-oss 的倉庫放的是 Apache License 2.0，模型卡把它描述成寬鬆授權，寫的是不帶 copyleft 限制與專利風險，適合實驗、客製與商業部署；Gemma 4 的模型卡授權欄標的是 Apache 2.0，連過去就是 Apache 授權全文頁；DeepSeek-V4.1-Flash 的說明寫倉庫與模型權重都採 MIT 授權；Qwen3.8-27B 的倉庫也放 Apache License 2.0。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Apache License 2.0 與 MIT License 的授權條文原文",
+          "code": "Apache License 2.0 — openai/gpt-oss-120b 的 LICENSE、google/gemma-4-12B-it 的 license_link\n\"2. Grant of Copyright License. ... each Contributor hereby grants to You a\nperpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable\ncopyright license to reproduce, prepare Derivative Works of, publicly display,\npublicly perform, sublicense, and distribute the Work and such Derivative Works\nin Source or Object form.\"\n\"4. Redistribution. ... (a) You must give any other recipients of the Work or\nDerivative Works a copy of this License; and (b) You must cause any modified\nfiles to carry prominent notices stating that You changed the files\"\n\nMIT License — deepseek-ai/DeepSeek-V4.1-Flash 的 LICENSE\n\"Permission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software\""
+        },
+        {
+          "type": "paragraph",
+          "text": "第二類是自訂的社群授權，允許商用但附條件。Llama 4 用的是 Llama 4 Community License Agreement，檔案標的生效日是 2025 年 4 月 5 日。它要求你散布時附上授權本文、在網站或介面上顯著標示「Built with Llama」，拿它的輸出去訓練另一個模型時，那個模型的名字要以「Llama」開頭；另外還有一條規模門檻。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Llama 4 Community License Agreement 的散布與商用條款原文",
+          "code": "LLAMA 4 COMMUNITY LICENSE AGREEMENT — meta-llama/Llama-4-Scout-17B-16E-Instruct 的 LICENSE\nLlama 4 Version Effective Date: April 5, 2025\n\n1.b.i \"If you distribute or make available the Llama Materials (or any\nderivative works thereof), or a product or service (including another AI model)\nthat contains any of them, you shall (A) provide a copy of this Agreement with\nany such Llama Materials; and (B) prominently display \"Built with Llama\" on a\nrelated website, user interface, blogpost, about page, or product documentation.\nIf you use the Llama Materials or any outputs or results of the Llama Materials\nto create, train, fine tune, or otherwise improve an AI model, which is\ndistributed or made available, you shall also include \"Llama\" at the beginning\nof any such AI model name.\"\n\n2. \"Additional Commercial Terms. If, on the Llama 4 version release date, the\nmonthly active users of the products or services made available by or for\nLicensee, or Licensee's affiliates, is greater than 700 million monthly active\nusers in the preceding calendar month, you must request a license from Meta,\nwhich Meta may grant to you in its sole discretion, and you are not authorized\nto exercise any of the rights under this Agreement unless or until Meta\notherwise expressly grants you such rights.\""
+        },
+        {
+          "type": "paragraph",
+          "text": "Qwen 要按型號分開看。Qwen3.8-27B 掛的是 Apache License 2.0；旗艦的 Qwen3.8-2.4T-A95B 附的是 Qwen3.8-Max License，Qwen3.8-Flash-Next 附的則是 Qwen Community License 1.0。兩份自訂授權的第一條一樣：產品的月活躍使用者超過 1 億、或月營收超過 2,000 萬美元時，要在介面上顯著標示模型名稱。差別在第二條，做模型即服務或 AI 工作助理生意的人要另外取得授權，Max 那份給了連續 12 個月營收 5,000 萬美元的門檻，社群授權那份沒有寫門檻。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Qwen 兩份授權的商用條件原文",
+          "code": "第 1 條（兩份授權文字相同）\n\"If the Software (or any derivative works thereof) is Used for any of the\nlicensee's commercial products or services that have more than 100,000,000\nmonthly active users or US$ 20,000,000 (or equivalent in other currencies)\nmonthly revenue, respective model name must be prominently displayed on the user\ninterface of such product or service\"\n\nQwen3.8-Max License — Qwen/Qwen3.8-2.4T-A95B 的 LICENSE，第 2 條\n\"If the licensee or any of its affiliates conducts a Model as a Service or AI\nWork Assistant business, and the aggregate revenue of the licensee and its\naffiliates exceeds US$50,000,000 (or the equivalent amount in any other\ncurrencies) during any consecutive twelve (12) months, the licensee shall obtain\na separate license from Qwen before Using the Software or its derivative works\nfor any commercial purpose.\"\n\nQwen Community License 1.0 — Qwen/Qwen3.8-Flash-Next 的 LICENSE，第 2 條\n\"If the licensee or any of its affiliates conducts a Model as a Service or AI\nWork Assistant business, the licensee shall obtain a separate license from Qwen\nbefore Using the Software or its derivative works for any commercial purpose.\""
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "每個家族的版本與用法，站上各有一篇："
+            },
+            {
+              "type": "link",
+              "text": "Llama 模型家族：授權與版本",
+              "url": "https://mokaair.com/zh-TW/life/llama-models-explained"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Gemma：Google 的開源模型怎麼用",
+              "url": "https://mokaair.com/zh-TW/life/gemma-google-open-models"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪",
+              "url": "https://mokaair.com/zh-TW/life/gpt-oss-openai-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
+              "url": "https://mokaair.com/zh-TW/life/qwen-alibaba-models-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
+              "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "。歐洲的選項可以看"
+            },
+            {
+              "type": "link",
+              "text": "Mistral Vibe（原 Le Chat）：歐洲 AI 助手的方案、功能與資料存放",
+              "url": "https://mokaair.com/zh-TW/life/mistral-le-chat-guide"
+            },
+            {
+              "type": "text",
+              "text": "，繁體中文的在地模型則看"
+            },
+            {
+              "type": "link",
+              "text": "台灣的本土模型：TAIDE 與繁中表現",
+              "url": "https://mokaair.com/zh-TW/life/ai-taiwan-local-models-taide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "授權按版本看，不要照別人的比較表",
+          "text": "同一個家族換一代就可能換授權：Gemma 3 的倉庫標的是 Gemma 授權、下載前要先按同意，Gemma 4 的模型卡標的是 Apache 2.0、倉庫沒有設同意關卡；Qwen 同一代裡也有 Apache 2.0 與兩份自訂授權並存。要拿去做產品之前，打開你真正要用的那個版本的倉庫，讀那個資料夾裡的 LICENSE 檔，不要引用別人整理的表格。另外，授權管的是模型檔案能不能用、怎麼散布，模型產出的內容歸誰是另一套規則。"
+        },
+        {
+          "type": "link",
+          "text": "AI 與著作權：台灣法規與判決整理",
+          "url": "https://mokaair.com/zh-TW/life/ai-and-copyright-law-taiwan"
+        },
+        {
+          "type": "heading",
+          "text": "差別四：更新、退場與支援",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "閉源 API 的模型會退場，而且三家都把規則寫進文件。OpenAI 的退場頁寫，除非安全或法遵需要更快的時程，一般可用的模型至少提前 6 個月通知，特定用途的變體至少 3 個月，名字裡有 preview 的預覽模型可能只有兩週。Anthropic 的模型退場頁寫，公開發布的模型在退役前至少提前 60 天通知，退役之後對該模型的請求就會失敗。Gemini 的退場頁則說，模型一旦 shutdown 就是完全關掉、端點不再提供，表上列的是最早可能關閉的日期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 那一頁還寫了一段少見的自述：退役會讓重視特定模型的使用者必須遷移、讓研究者失去比較的對象，該公司說已經承諾長期保存模型權重。這對你的意義很直接：用閉源 API，你要替自己留一張遷移時間表；用開放權重，檔案留在硬碟裡就能繼續載入，但也沒有人幫你修漏洞、沒有人幫你換更好的版本，維護落在你身上。"
+        },
+        {
+          "type": "heading",
+          "text": "差別五：費用怎麼算",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "閉源 API 的費用按用量算，主要看每百萬 token 的單價與訂閱月費，各家的數字在"
+            },
+            {
+              "type": "link",
+              "text": "API 價格比較：每百萬 token 各家多少",
+              "url": "https://mokaair.com/zh-TW/life/ai-api-pricing-comparison-2026"
+            },
+            {
+              "type": "text",
+              "text": "有整理。開放權重模型沒有按次收費，換成硬體、電力與你自己的時間；划不划算，"
+            },
+            {
+              "type": "link",
+              "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+              "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+            },
+            {
+              "type": "text",
+              "text": "那篇算得比較細。中間還有第三條路：把開放權重模型放到別人的雲端上跑。這時候費用是那家雲端的，資料條款也回到那家的條款，不是模型授權說了算——這也是很多人會誤會的地方，開放權重不等於自架，自架才等於資料留在自己手上。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-open-vs-closed-models/diagram-1.svg",
+          "alt": "決策樹：從資料能不能外流開始，依序問商用、版本壽命與硬體，分到自架、託管與閉源 API 三種做法。",
+          "width": 1600,
+          "height": 900,
+          "caption": "從最上面那一題往下走，先答資料能不能離開你的電腦，再答要不要商用，最後才比費用。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "你的情況該看哪一欄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把上面五件事併成一張表。這張表不排名，只是把同一個問題的兩個答案放在一起，讓你對著自己的情況挑欄位。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "面向",
+            "開放權重模型",
+            "閉源 API"
+          ],
+          "rows": [
+            [
+              "權重檔",
+              "可以下載，留在你的硬碟",
+              "官方只提供網路端點或應用程式"
+            ],
+            [
+              "離線使用",
+              "載入後可離線；硬體與設定自己準備",
+              "需要網路，服務端更新你跟著更新"
+            ],
+            [
+              "資料流向",
+              "看你跑在哪台機器、用哪個應用程式",
+              "看該家的資料使用與保留條款"
+            ],
+            [
+              "商用條件",
+              "按 LICENSE 檔分：Apache 2.0、MIT，或附條件的社群授權",
+              "按服務條款與使用政策，通常不看你的規模"
+            ],
+            [
+              "版本壽命",
+              "檔案留著就能繼續載入",
+              "公告退場日之後端點關閉，請求會失敗"
+            ],
+            [
+              "更新與修補",
+              "自己換版本、自己維護",
+              "服務端更新，你不必動"
+            ],
+            [
+              "費用結構",
+              "硬體、電力與時間，沒有按次計費",
+              "按 token 用量或訂閱月費"
+            ],
+            [
+              "適合的情況",
+              "資料不能外流、要固定版本、要改模型",
+              "要最新能力、不想管硬體與維運"
+            ]
+          ],
+          "caption": "開放權重模型與閉源 API 的八個面向，查證於 2026 年 9 月各官方授權檔與條款頁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表看完還是拿不定主意，就用下面這套方法自己測一次，不用相信任何人的評分。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "先寫下你最常做的三件事，各做成一段固定的提示詞，兩邊之後都用同一份，不要臨場改字。",
+            "兩邊各跑一次同樣的三段，重點看繁體中文的用字、專有名詞會不會跑掉、長文件會不會漏掉段落。",
+            "把要送進去的內容分成可以外流與不能外流兩堆；不能外流的那一堆，決定了你是不是非自架不可。",
+            "打開你真正要用的那個版本的 LICENSE 檔，搜尋 commercial、redistribute、monthly active users 這幾個字，看門檻寫在哪裡。",
+            "到各家的模型退場頁，查你打算用的那個模型有沒有已公告的關閉日期，記進行事曆。",
+            "最後才算錢：閉源那邊估每月的 token 量，自架那邊估硬體攤提與電費，兩個數字擺在一起再決定。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "最後提醒一句：開放或閉源不決定品質，也不直接決定安不安全。它決定的是誰握著檔案、誰寫條款、出事的時候誰能改。把這五件事對著自己的情況答一遍，答案通常會自己浮出來，而且很可能是兩邊各用一點。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "The Open Source AI Definition – 1.0（Open Source Initiative 官方定義頁）",
+          "url": "https://opensource.org/ai/open-source-ai-definition",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Llama 4 Scout 17B 16E Instruct（Meta 官方模型卡，內含 Llama 4 Community License Agreement 全文）",
+          "url": "https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Download Llama（Meta 官方下載頁，llama.com/llama-downloads 轉址後的網址）",
+          "url": "https://developer.meta.com/ai/llama-downloads/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemma 4 12B Unified instruction-tuned（Google DeepMind 官方模型卡，授權欄與尺寸說明）",
+          "url": "https://huggingface.co/google/gemma-4-12B-it",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Apache License 2.0（Gemma 模型卡 license_link 指向的 Google 官方授權全文頁）",
+          "url": "https://ai.google.dev/gemma/apache_2",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "gpt-oss-120b（OpenAI 官方模型卡：Apache 2.0、MXFP4 量化與硬體需求）",
+          "url": "https://huggingface.co/openai/gpt-oss-120b",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "gpt-oss-120b USAGE_POLICY（OpenAI 官方使用政策檔）",
+          "url": "https://huggingface.co/openai/gpt-oss-120b/blob/main/USAGE_POLICY",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Qwen3.8-27B（Qwen 官方倉庫，授權為 Apache License 2.0）",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Qwen3.8-Max License（Qwen/Qwen3.8-2.4T-A95B 官方 LICENSE 檔）",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B/blob/main/LICENSE",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Qwen Community License 1.0（Qwen/Qwen3.8-Flash-Next 官方 LICENSE 檔）",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/blob/main/LICENSE",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek-V4.1-Flash（DeepSeek 官方模型卡與 MIT License 檔）",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "How your data is used to improve model performance（OpenAI 官方說明中心）",
+          "url": "https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Data controls in the OpenAI platform（OpenAI 官方開發者文件：訓練與濫用監控保留）",
+          "url": "https://developers.openai.com/api/docs/guides/your-data",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Deprecations（OpenAI 官方開發者文件：模型退場通知期）",
+          "url": "https://developers.openai.com/api/docs/deprecations",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Is my data used for model training?（Anthropic 官方隱私中心，商用產品）",
+          "url": "https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "How long do you store my organization's data?（Anthropic 官方隱私中心，保留期限）",
+          "url": "https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Is my data used for model training?（Anthropic 官方隱私中心，消費版產品）",
+          "url": "https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Model deprecations（Anthropic 官方平台文件：退役通知期與權重保存承諾）",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini API Additional Terms of Service（Google 官方條款：免費與付費層的資料使用）",
+          "url": "https://ai.google.dev/gemini-api/terms",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini deprecations（Google 官方文件：模型關閉日期與端點停用）",
+          "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

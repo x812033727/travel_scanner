@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">TAIDE 從申請到本機執行 / From access request to running TAIDE locally</title>
+  <desc id="desc">流程分成五步。第一步讀授權條款：到官網的「TAIDE模型」頁讀 L 類與 G 類兩份全文，條款禁止軍事與非法用途，散布衍生模型要附上條款副本。第二步同意存取條款：到 Hugging Face 的 taide 組織頁選版本，表單有 4 個欄位加一個勾選框，核准方式是自動，同意後立即可以下載。第三步登入這台機器：在終端機執行 hf auth login，官方文件寫受管制模型要先通過驗證才能下載檔案。第四步下載模型檔：官網列出的 9 個公開版本任選一個，拿到的是 safetensors 分片或 .gguf 單檔。第五步本機執行分兩條路：safetensors 分片，例如 12.4B 的 Gemma 版，模型卡的快速開始給了 transformers 與 vLLM 兩段程式，舊的 7B 版模型卡寫 tokenizer 要設成 slow mode；.gguf 單檔是兩個 4 bit 量化版，模型頁的 Use this model 列出 llama.cpp、LM Studio、Jan 與 Ollama，而 Ollama 官方模型庫當天沒有 TAIDE 項目。最後提醒：授權條款寫您僅得於國研院或國研院授權的網站上取用 TAIDE 模型。內容以 2026 年 9 月 15 日官方頁面為準。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">TAIDE 從申請到本機執行：四步拿到檔案，第五步分兩條路</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From access request to running TAIDE locally</text>
+
+  <!-- step 1 -->
+  <rect x="70" y="130" width="320" height="230" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="230" y="172" font-size="16" fill="#5C6B6B" text-anchor="middle">第一步</text>
+  <text x="230" y="214" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">讀授權條款</text>
+  <text x="230" y="266" font-size="17" fill="#102A2B" text-anchor="middle">官網「TAIDE模型」頁</text>
+  <text x="230" y="300" font-size="17" fill="#102A2B" text-anchor="middle">L 類與 G 類兩份全文</text>
+
+  <!-- step 2 -->
+  <rect x="450" y="130" width="320" height="230" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="610" y="172" font-size="16" fill="#5C6B6B" text-anchor="middle">第二步</text>
+  <text x="610" y="214" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">同意存取條款</text>
+  <text x="610" y="266" font-size="17" fill="#102A2B" text-anchor="middle">Hugging Face 上的</text>
+  <text x="610" y="300" font-size="17" fill="#102A2B" text-anchor="middle">taide 組織頁選版本</text>
+
+  <!-- step 3 -->
+  <rect x="830" y="130" width="320" height="230" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="990" y="172" font-size="16" fill="#5C6B6B" text-anchor="middle">第三步</text>
+  <text x="990" y="214" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">登入這台機器</text>
+  <text x="990" y="266" font-size="17" fill="#102A2B" text-anchor="middle">在終端機執行</text>
+  <text x="990" y="300" font-size="17" fill="#102A2B" text-anchor="middle">hf auth login</text>
+
+  <!-- step 4 -->
+  <rect x="1210" y="130" width="320" height="230" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1370" y="172" font-size="16" fill="#5C6B6B" text-anchor="middle">第四步</text>
+  <text x="1370" y="214" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">下載模型檔</text>
+  <text x="1370" y="266" font-size="17" fill="#102A2B" text-anchor="middle">官網列出的 9 個</text>
+  <text x="1370" y="300" font-size="17" fill="#102A2B" text-anchor="middle">公開版本任選一個</text>
+
+  <line x1="398" y1="245" x2="442" y2="245" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="778" y1="245" x2="822" y2="245" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1158" y1="245" x2="1202" y2="245" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <line x1="230" y1="362" x2="230" y2="390" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="610" y1="362" x2="610" y2="390" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="990" y1="362" x2="990" y2="390" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1370" y1="362" x2="1370" y2="390" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="70" y="400" width="320" height="120" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="230" y="444" font-size="16" fill="#5C6B6B" text-anchor="middle">禁止軍事與非法用途</text>
+  <text x="230" y="478" font-size="16" fill="#5C6B6B" text-anchor="middle">散布要附條款副本</text>
+
+  <rect x="450" y="400" width="320" height="120" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="610" y="444" font-size="16" fill="#5C6B6B" text-anchor="middle">表單 4 個欄位加勾選</text>
+  <text x="610" y="478" font-size="16" fill="#5C6B6B" text-anchor="middle">自動核准，立即可下載</text>
+
+  <rect x="830" y="400" width="320" height="120" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="990" y="444" font-size="16" fill="#5C6B6B" text-anchor="middle">官方文件寫要先</text>
+  <text x="990" y="478" font-size="16" fill="#5C6B6B" text-anchor="middle">通過驗證才能下載</text>
+
+  <rect x="1210" y="400" width="320" height="120" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="1370" y="444" font-size="16" fill="#5C6B6B" text-anchor="middle">safetensors 分片</text>
+  <text x="1370" y="478" font-size="16" fill="#5C6B6B" text-anchor="middle">或 .gguf 單檔</text>
+
+  <line x1="70" y1="552" x2="1530" y2="552" stroke="#5C6B6B" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="70" y="594" font-size="22" font-weight="bold" fill="#102A2B">第五步　本機執行：看你下載到哪一種檔案</text>
+
+  <rect x="70" y="614" width="700" height="190" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="420" y="660" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">safetensors 分片（例如 12.4B 的 Gemma 版）</text>
+  <text x="420" y="706" font-size="17" fill="#102A2B" text-anchor="middle">模型卡的快速開始給了 transformers 與 vLLM 兩段程式</text>
+  <text x="420" y="742" font-size="17" fill="#102A2B" text-anchor="middle">舊的 7B 版模型卡寫 tokenizer 要設成 slow mode</text>
+  <text x="420" y="778" font-size="17" fill="#5C6B6B" text-anchor="middle">記憶體與顯示記憶體先算過再下載</text>
+
+  <rect x="830" y="614" width="700" height="190" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1180" y="660" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">.gguf 單檔（兩個 4 bit 量化版）</text>
+  <text x="1180" y="706" font-size="17" fill="#102A2B" text-anchor="middle">模型頁 Use this model 列出 llama.cpp、LM Studio、</text>
+  <text x="1180" y="742" font-size="17" fill="#102A2B" text-anchor="middle">Jan 與 Ollama 的指令</text>
+  <text x="1180" y="778" font-size="17" fill="#5C6B6B" text-anchor="middle">Ollama 官方模型庫當天沒有 TAIDE 項目</text>
+
+  <text x="70" y="845" font-size="17" fill="#B8442D">授權條款寫：您僅得於國研院或國研院授權的網站上取用 TAIDE 模型</text>
+  <text x="1540" y="875" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
