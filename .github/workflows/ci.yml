@@ -21,8 +21,19 @@ jobs:
         image: redis:7.4-alpine
         ports: ["6379:6379"]
     defaults: { run: { working-directory: apps/api } }
+    env:
+      # Named once so the pull and the run cannot name different tags.
+      MINIO_IMAGE: quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # `docker run` pulls a missing image exactly once. A single 502, 504, connection reset or
+      # token timeout from quay.io or auth.docker.io failed a job seven times in four jobs
+      # (this one, containers, full-stack-smoke, travel-discovery) while a sibling job pulled
+      # the same image seconds apart. The script retries transient failures (see its header);
+      # the runs below use --pull=never so they cannot quietly pull without it.
+      # $GITHUB_WORKSPACE because this job's steps default to apps/api.
+      - name: Pull container images
+        run: bash "$GITHUB_WORKSPACE/tools/ci/pull-images.sh" "$MINIO_IMAGE"
       - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
         with: { python-version: "3.13" }
       - run: uv sync --frozen
@@ -51,9 +62,9 @@ jobs:
       - run: uv run alembic upgrade head
       - name: Start private S3 integration companion
         run: |
-          docker run -d --name community-test-storage -p 127.0.0.1:9000:9000 \
+          docker run --pull=never -d --name community-test-storage -p 127.0.0.1:9000:9000 \
             -e MINIO_ROOT_USER=community-test -e MINIO_ROOT_PASSWORD=community-test-only-password \
-            quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z server /data
+            "$MINIO_IMAGE" server /data
           for attempt in {1..30}; do
             if curl --fail --silent http://127.0.0.1:9000/minio/health/live >/dev/null; then exit 0; fi
             sleep 1
@@ -96,27 +107,38 @@ jobs:
         # Serve the build from the step above instead of a dev server that compiles
         # each page on first visit; see playwright.config.ts.
         env: { PLAYWRIGHT_SERVE_BUILD: "true" }
+      # Only when something failed or the job timed out (which GitHub reports as cancelled):
+      # that is when the traces get read. Every push runs this workflow for both the push and
+      # the pull_request event, so uploading on success stored about 280 MB per passing commit.
+      # By 2026-09-14 the repository held 122.7 GB of unexpired artifacts, and PR #497's
+      # required web job went red on "Failed to FinalizeArtifact: ... (403) Forbidden" after
+      # every test had passed.
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        if: always()
+        if: failure() || cancelled()
         with:
           name: site-experience-browser-results
           path: apps/web/test-results
           retention-days: 7
   containers:
     runs-on: ubuntu-latest
+    env:
+      NGINX_IMAGE: nginx:1.28-alpine
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # Retried pull, then --pull=never below; see the api job and tools/ci/pull-images.sh.
+      - name: Pull container images
+        run: bash "$GITHUB_WORKSPACE/tools/ci/pull-images.sh" "$NGINX_IMAGE"
       - run: cp .env.example .env
       - run: docker compose config
       - run: docker compose build api worker
       - name: Validate reverse proxy config
         # Host nginx is deployed separately: check syntax and the real request behavior.
         run: |
-          docker run --rm -v "$PWD/ops/nginx:/etc/nginx/ops:ro" nginx:1.28-alpine \
+          docker run --pull=never --rm -v "$PWD/ops/nginx:/etc/nginx/ops:ro" "$NGINX_IMAGE" \
             nginx -t -c /etc/nginx/ops/ci-validate.conf
       - name: Verify article images do not consume page rate limits
         run: |
-          docker run --rm -v "$PWD:/workspace:ro" -w /workspace nginx:1.28-alpine \
+          docker run --pull=never --rm -v "$PWD:/workspace:ro" -w /workspace "$NGINX_IMAGE" \
             sh -c 'apk add --no-cache python3 && python3 tools/test-guide-image-rate-limit.py /usr/sbin/nginx'
       - name: Validate production release Compose
         run: docker compose -f docker-compose.prod.yml config --quiet
@@ -190,8 +212,15 @@ jobs:
       COMMUNITY_SMTP_PORT: "1025"
       COMMUNITY_SMTP_STARTTLS: "false"
       COMMUNITY_MAIL_FROM: Mokaair CI <accounts@example.test>
+      MINIO_IMAGE: quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z
+      MAILPIT_IMAGE: axllent/mailpit:latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # Retried pull, then --pull=never below; see the api job and tools/ci/pull-images.sh.
+      # Early, so a registry outage fails here by name, before the build and before any
+      # background process starts.
+      - name: Pull container images
+        run: bash "$GITHUB_WORKSPACE/tools/ci/pull-images.sh" "$MINIO_IMAGE" "$MAILPIT_IMAGE"
       - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
         with: { python-version: "3.13" }
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -216,15 +245,20 @@ jobs:
           setsid uv run python -m app.worker > /tmp/travel-worker.log 2>&1 &
           echo $! > "$RUNNER_TEMP/travel-worker.pid"
           cd ../..
+          # The web start script (apps/web/package.json) carries --keepAliveTimeout 65000, the
+          # same as KEEP_ALIVE_TIMEOUT in docker-compose.prod.yml. Playwright's APIRequestContext
+          # reuses keep-alive sockets with no idle timeout of its own, and Next's default close
+          # (5 s, plus Node's 1 s buffer) raced the ~6 s gaps in community.spec.ts
+          # registerAndVerify, which came back as `read ECONNRESET`.
           setsid npm run start --workspace @travel-scanner/web -- --port 3000 > /tmp/travel-web.log 2>&1 &
           echo $! > "$RUNNER_TEMP/travel-web.pid"
       - name: Start community test services and bootstrap test administrator
         run: |
-          docker run -d --name community-browser-storage -p 127.0.0.1:9000:9000 \
+          docker run --pull=never -d --name community-browser-storage -p 127.0.0.1:9000:9000 \
             -e MINIO_ROOT_USER=community-test -e MINIO_ROOT_PASSWORD=community-test-only-password \
             -e MINIO_API_CORS_ALLOW_ORIGIN=http://localhost:3000 \
-            quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z server /data
-          docker run -d --name community-browser-mail -p 127.0.0.1:1025:1025 -p 127.0.0.1:8025:8025 axllent/mailpit:latest
+            "$MINIO_IMAGE" server /data
+          docker run --pull=never -d --name community-browser-mail -p 127.0.0.1:1025:1025 -p 127.0.0.1:8025:8025 "$MAILPIT_IMAGE"
           ready=false
           for attempt in {1..30}; do
             if curl --fail --silent http://127.0.0.1:9000/minio/health/live >/dev/null && curl --fail --silent http://127.0.0.1:8025/livez >/dev/null; then ready=true; break; fi
@@ -272,15 +306,18 @@ jobs:
         run: npx playwright test e2e/admin-operations-full-stack.spec.ts --workers=1
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true", ADMIN_OPERATIONS_E2E: "1" }
+      # Only on failure or timeout, for the storage reason given at the web job's upload.
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        if: always()
+        if: failure() || cancelled()
         with:
           name: community-browser-results
           path: apps/web/test-results
           retention-days: 7
+      # The logs do not exist when the job failed before the stack started (a registry outage
+      # in "Pull container images"); that must not add a second, misleading red step.
       - name: Show service logs on failure
         if: failure()
-        run: cat /tmp/travel-agent.log /tmp/travel-api.log /tmp/travel-worker.log /tmp/travel-web.log
+        run: cat /tmp/travel-agent.log /tmp/travel-api.log /tmp/travel-worker.log /tmp/travel-web.log 2>/dev/null || true
       - name: Stop application processes
         if: always()
         run: |

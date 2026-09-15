@@ -1,14 +1,14 @@
 ---
 id: 2026-09-12-community-smoke-econnreset-stays-unexplained-after
 title: Community smoke ECONNRESET stays unexplained after the metric race was fixed
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-15T06:35:01Z
 created_at: 2026-09-12T06:10:42Z
-completed_at:
-branch:
+completed_at: 2026-09-15T07:00:31Z
+branch: claude/ci-flake-fixes
 depends_on: []
 scope:
   - apps/web/e2e/community.spec.ts
@@ -64,3 +64,19 @@ uq_community_metric 的日誌噪音混在裡面。不要把失敗 job 重跑當�
 另外已經排除的：savepoint 那條路徑不會讓連線失效。asyncpg 的 `_handle_exception`
 （`dialects/postgresql/asyncpg.py:781-784`）只在 `is_closed()` 時丟掉交易，而 UniqueViolation
 的 `is_disconnect` 回 False——沒有 pool 驅逐、沒有 ECONNRESET。
+
+## Closed into 2026-09-15-ci-recurring-flakes (2026-09-15, claude-opus-5)
+
+**The reset is explained, and it is neither the metric race nor Next's manifest.** Playwright's
+APIRequestContext keeps one keep-alive `http.Agent` per context with no client idle timeout and
+`maxRetries` 0. CI ran `next start` with Node's default idle close (`Keep-Alive: timeout=5`,
+socket destroyed after about 6 s). `registerAndVerify` uses `page.request` twice, POST
+/auth/register and then GET /community/me at `community.spec.ts:34`, with 5-8 s of browser-only
+steps in between. So the GET is the first reuse of a pooled socket right at the server's close,
+and the peer answers with RST before any response. In all four failures from 2026-09-13/14 the
+call log has request headers and no `← status` line. It reproduced locally against a plain Node
+server with the default timeout. Production already avoids this with `KEEP_ALIVE_TIMEOUT=65000`.
+
+Fix: `apps/web/package.json` `start` is now `next start --keepAliveTimeout 65000`, which every CI
+`npm run start` inherits. No retry was added and the spec was not changed. The
+ten-consecutive-clean-runs check carries over to 2026-09-15-ci-recurring-flakes.
