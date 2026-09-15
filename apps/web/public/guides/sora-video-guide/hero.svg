@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">從影片捲片到收納盒的插畫 / From filmstrip to archive box</title>
+  <desc id="desc">幾何插畫。左側是一條白底的影片捲片，上下各有一排方形齒孔，裡面排著三格畫面；一個橘色箭頭指向右邊打開的收納盒，象徵把作品匯出保存。下排左邊是一枚綠色圓形勾選徽章，代表把內容標示的習慣保留下來；右邊是一張被畫上叉的日曆，代表服務已經停止。畫面下方有一行字：先匯出，再換工具。整張圖沒有任何產品介面、標誌或人物。</desc>
+  <defs>
+    <marker id="heroarrow" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#D97A2B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- filmstrip -->
+  <rect x="120" y="180" width="620" height="220" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <rect x="150" y="198" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="216" y="198" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="282" y="198" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="348" y="198" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="414" y="198" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="480" y="198" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="546" y="198" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="612" y="198" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="678" y="198" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="150" y="362" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="216" y="362" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="282" y="362" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="348" y="362" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="414" y="362" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="480" y="362" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="546" y="362" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="612" y="362" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="678" y="362" width="28" height="20" rx="4" fill="#0D6B68"/>
+  <rect x="156" y="240" width="176" height="100" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="352" y="240" width="176" height="100" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="548" y="240" width="158" height="100" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+
+  <!-- arrow into the archive box -->
+  <line x1="772" y1="290" x2="884" y2="290" stroke="#D97A2B" stroke-width="10" marker-end="url(#heroarrow)"/>
+
+  <!-- open archive box -->
+  <rect x="920" y="176" width="440" height="62" rx="14" fill="#D97A2B"/>
+  <rect x="952" y="238" width="376" height="224" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <rect x="1090" y="296" width="100" height="18" rx="9" fill="#D97A2B"/>
+  <rect x="1000" y="372" width="280" height="14" rx="7" fill="#E6F0F7"/>
+  <rect x="1000" y="404" width="200" height="14" rx="7" fill="#E6F0F7"/>
+
+  <!-- provenance badge -->
+  <circle cx="330" cy="650" r="104" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="6"/>
+  <polyline points="278,650 316,692 386,608" fill="none" stroke="#2E7D5B" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- closed-service marker -->
+  <rect x="1150" y="556" width="210" height="196" rx="18" fill="#FFFFFF" stroke="#B8442D" stroke-width="6"/>
+  <rect x="1190" y="536" width="22" height="44" rx="11" fill="#B8442D"/>
+  <rect x="1298" y="536" width="22" height="44" rx="11" fill="#B8442D"/>
+  <line x1="1156" y1="614" x2="1354" y2="614" stroke="#B8442D" stroke-width="6"/>
+  <line x1="1206" y1="652" x2="1304" y2="720" stroke="#B8442D" stroke-width="14" stroke-linecap="round"/>
+  <line x1="1304" y1="652" x2="1206" y2="720" stroke="#B8442D" stroke-width="14" stroke-linecap="round"/>
+
+  <!-- one short line of type -->
+  <text x="500" y="668" font-size="56" font-weight="700" fill="#102A2B">先匯出，再換工具</text>
+  <rect x="500" y="714" width="452" height="12" rx="6" fill="#0D6B68"/>
+</svg>

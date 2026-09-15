@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">挑去背與放大工具的三個問題 / Choosing a background remover or upscaler</title>
+  <desc id="desc">由上往下的決策流程圖。第一個問題是用途：個人使用時免費層就夠，remove.bg 網站最高 0.25 MP；要商用時免費層多半禁止，得訂閱或買點數。第二個問題是隱私：圖片不方便上傳雲端就用本機的 Upscayl，授權是 AGPL-3.0，需要支援 Vulkan 的顯示卡；可以上傳就用雲端服務，Photoroom 免費帳號每月 100 張匯出。第三個問題是預算：零星幾張買點數包，remove.bg 3 張 3 美元；每月固定量就訂閱，40 張 9 美元起。最後提醒決定之前先確認輸出上限：remove.bg 完整輸出 50 MP、Photoroom 網頁免費最長邊 2000 px、Upscayl 預設模型 4 倍。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="48" y="52" font-size="30" font-weight="bold" fill="#102A2B">挑去背與放大工具的三個問題</text>
+  <text x="48" y="84" font-size="18" fill="#5C6B6B">Choosing a background remover or upscaler: purpose, privacy, budget</text>
+
+  <!-- row 1 -->
+  <rect x="60" y="150" width="420" height="160" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="270" y="212" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">1　用途</text>
+  <text x="270" y="252" font-size="18" fill="#5C6B6B" text-anchor="middle">這張圖會拿去做生意嗎？</text>
+  <line x1="484" y1="185" x2="546" y2="185" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="484" y1="275" x2="546" y2="275" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="556" y="150" width="984" height="70" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="586" y="192" font-size="19" fill="#102A2B">個人使用：免費層就夠，remove.bg 網站最高 0.25 MP</text>
+  <rect x="556" y="240" width="984" height="70" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="586" y="282" font-size="19" fill="#102A2B">要商用：免費層多半禁止，得改訂閱或買點數</text>
+
+  <line x1="270" y1="314" x2="270" y2="346" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- row 2 -->
+  <rect x="60" y="350" width="420" height="160" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="270" y="412" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">2　隱私</text>
+  <text x="270" y="452" font-size="18" fill="#5C6B6B" text-anchor="middle">圖片可以上傳雲端嗎？</text>
+  <line x1="484" y1="385" x2="546" y2="385" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="484" y1="475" x2="546" y2="475" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="556" y="350" width="984" height="70" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="586" y="392" font-size="19" fill="#102A2B">不方便上傳：本機的 Upscayl，AGPL-3.0，需 Vulkan 顯示卡</text>
+  <rect x="556" y="440" width="984" height="70" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="586" y="482" font-size="19" fill="#102A2B">可以上傳：雲端工具，Photoroom 免費每月 100 張匯出</text>
+
+  <line x1="270" y1="514" x2="270" y2="546" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- row 3 -->
+  <rect x="60" y="550" width="420" height="160" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="270" y="612" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">3　預算</text>
+  <text x="270" y="652" font-size="18" fill="#5C6B6B" text-anchor="middle">一個月要處理幾張？</text>
+  <line x1="484" y1="585" x2="546" y2="585" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="484" y1="675" x2="546" y2="675" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="556" y="550" width="984" height="70" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="586" y="592" font-size="19" fill="#102A2B">零星幾張：買點數包，remove.bg 3 張 3 美元</text>
+  <rect x="556" y="640" width="984" height="70" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="586" y="682" font-size="19" fill="#102A2B">每月固定量：訂閱，remove.bg 40 張 9 美元起</text>
+
+  <!-- footer note -->
+  <rect x="60" y="746" width="1480" height="96" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="90" y="786" font-size="20" font-weight="bold" fill="#B8442D">決定之前先確認輸出上限</text>
+  <text x="90" y="820" font-size="18" fill="#102A2B">remove.bg 完整輸出 50 MP ｜ Photoroom 網頁免費最長邊 2000 px ｜ Upscayl 預設模型 4 倍</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

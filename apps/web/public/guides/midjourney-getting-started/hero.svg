@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">從一句話到四張圖 / From one sentence to four images</title>
+  <desc id="desc">米色底的幾何插圖。左邊一個白底深綠色邊的圓角輸入框，框裡有兩條灰色短線代表打好的文字，右端有一個深綠色圓形送出鈕。一支箭頭指向中間由四個圓角方塊排成的兩排兩列，代表一次生成的四張預覽圖，其中右上角那一格用藍色粗邊框標示為被選中的那一張。另一支箭頭從那一格指向右邊一個放大的方形畫框，框裡用橘色圓形與兩個綠色三角形組成抽象的風景。畫框下方是一支向下的箭頭與一個托盤形狀，代表把圖片下載存檔。左上角寫著「從一句話到四張圖」。</desc>
+  <defs>
+    <marker id="heroArrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="120" y="196" font-size="48" font-weight="700" fill="#102A2B">從一句話到四張圖</text>
+
+  <!-- prompt bar -->
+  <rect x="120" y="420" width="460" height="120" rx="60" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <rect x="172" y="452" width="250" height="14" rx="7" fill="#5C6B6B"/>
+  <rect x="172" y="494" width="180" height="14" rx="7" fill="#5C6B6B"/>
+  <circle cx="520" cy="480" r="30" fill="#0D6B68"/>
+
+  <line x1="612" y1="480" x2="686" y2="480" stroke="#0D6B68" stroke-width="10" marker-end="url(#heroArrow)"/>
+
+  <!-- the four previews -->
+  <rect x="720" y="300" width="170" height="170" rx="20" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <rect x="910" y="300" width="170" height="170" rx="20" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="10"/>
+  <rect x="720" y="490" width="170" height="170" rx="20" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <rect x="910" y="490" width="170" height="170" rx="20" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+
+  <line x1="1100" y1="385" x2="1176" y2="385" stroke="#0D6B68" stroke-width="10" marker-end="url(#heroArrow)"/>
+
+  <!-- the chosen image, enlarged -->
+  <rect x="1200" y="245" width="280" height="280" rx="24" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+  <circle cx="1278" cy="322" r="30" fill="#D97A2B"/>
+  <path d="M 1228 488 L 1310 376 L 1392 488 Z" fill="#2E7D5B"/>
+  <path d="M 1326 488 L 1386 410 L 1446 488 Z" fill="#0D6B68"/>
+
+  <!-- download -->
+  <line x1="1340" y1="566" x2="1340" y2="648" stroke="#0D6B68" stroke-width="10" marker-end="url(#heroArrow)"/>
+  <path d="M 1252 642 L 1252 702 L 1428 702 L 1428 642" fill="none" stroke="#0D6B68" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
