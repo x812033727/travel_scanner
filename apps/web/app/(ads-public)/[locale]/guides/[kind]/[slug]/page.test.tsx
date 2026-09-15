@@ -147,10 +147,77 @@ describe("an article with a hero", () => {
   it("claims the image and the correction date in the structured data", async () => {
     const { container } = render(await GuideArticlePage({ params: params() }));
     const article = jsonLd(container).find((graph) => graph["@type"] === "Article")!;
-    expect(article.image).toBe("http://localhost:3000/guides/narita-to-tokyo/hero.jpg");
+    // An ImageObject rather than a bare URL, so the dimensions the hero already carries are
+    // not thrown away between the page and the graph.
+    expect(article.image).toEqual({
+      "@type": "ImageObject",
+      url: "http://localhost:3000/guides/narita-to-tokyo/hero.jpg",
+      width: 1600,
+      height: 900,
+    });
     expect(article.dateModified).toBe("2026-09-12T09:00:00Z");
     expect(article.datePublished).toBe("2026-09-01T00:00:00Z");
     expect(screen.getByRole("img", { name: hero.alt })).toBeTruthy();
+  });
+});
+
+describe("what the article graph tells an answer engine", () => {
+  it("cites the sources the page lists, and dates its own review from them", async () => {
+    const { container } = render(await GuideArticlePage({ params: params() }));
+    const article = jsonLd(container).find((graph) => graph["@type"] === "Article")!;
+    // The same source the body renders as a link, further up this file.
+    expect(article.citation).toEqual([
+      { "@type": "CreativeWork", name: "京成電鐵時刻表", url: "https://www.keisei.co.jp/" },
+    ]);
+    expect(article.mainEntityOfPage).toMatchObject({
+      "@type": "WebPage",
+      "@id": "http://localhost:3000/zh-TW/guides/howto/narita-to-tokyo",
+      lastReviewed: "2026-09-01",
+    });
+  });
+
+  it("never cites a source the page itself refused to draw", async () => {
+    mocks.article.mockResolvedValue({
+      ...published,
+      document: { ...document, sources: [
+        { title: "京成電鐵時刻表", url: "https://www.keisei.co.jp/", checked_on: "2026-09-01" },
+        { title: "壞掉的來源", url: "javascript:alert(1)", checked_on: "2026-09-02" },
+      ] },
+    });
+    const { container } = render(await GuideArticlePage({ params: params() }));
+    const article = jsonLd(container).find((graph) => graph["@type"] === "Article")!;
+    expect(screen.queryByRole("link", { name: "壞掉的來源" })).toBeNull();
+    expect(article.citation).toHaveLength(1);
+    // The rejected source takes its checked_on with it: the page never showed that date either.
+    expect((article.mainEntityOfPage as Record<string, unknown>).lastReviewed).toBe("2026-09-01");
+  });
+
+  it("names the section, the topics and the destination the page shows", async () => {
+    const { container } = render(await GuideArticlePage({ params: params() }));
+    const article = jsonLd(container).find((graph) => graph["@type"] === "Article")!;
+    expect(article.articleSection).toBe("旅遊攻略");
+    expect(article.keywords).toBe("交通");
+    expect(article.about).toEqual({
+      "@type": "TouristDestination", name: "東京", url: "http://localhost:3000/zh-TW/destinations/tokyo",
+    });
+    // The same figure the page prints as "閱讀時間約 1 分鐘".
+    expect(article.timeRequired).toBe("PT1M");
+    expect(article.isAccessibleForFree).toBe(true);
+  });
+
+  it("says nothing about a destination with no page behind it", async () => {
+    mocks.article.mockResolvedValue({ ...published, destination_id: "atlantis", destination_label: "亞特蘭提斯" });
+    const { container } = render(await GuideArticlePage({ params: params() }));
+    const article = jsonLd(container).find((graph) => graph["@type"] === "Article")!;
+    expect(article.about).toBeUndefined();
+  });
+
+  it("does not publish an intel notice's expiry, which the page deliberately withholds", async () => {
+    mocks.article.mockResolvedValue({ ...published, kind: "intel", valid_until: "2026-12-15" });
+    const { container } = render(await GuideArticlePage({ params: params({ kind: "intel" }) }));
+    const article = jsonLd(container).find((graph) => graph["@type"] === "Article")!;
+    // schema.org reads `expires` as "stop serving this", and the notice keeps its URL on purpose.
+    expect(article.expires).toBeUndefined();
   });
 });
 
