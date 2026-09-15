@@ -1,0 +1,346 @@
+{
+  "slug": "gemini-workspace-meeting-handoff",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 154,
+  "locales": {
+    "zh-TW": {
+      "title": "Gmail 到 Docs、Sheets：把會議信件整理成可交接的待辦",
+      "description": "一串會議信件可能同時包含新決議、舊日期與尚未指派的工作。本篇用五封合成信件，把資料整理成 Google Docs 交接說明與 Google Sheets 待辦表。你會保留原始來源、辨識真正更正與未確認提議，讓接手的人知道哪些能執行、哪些仍需詢問。",
+      "hero": {
+        "src": "/guides/gemini-workspace-meeting-handoff/hero.jpg",
+        "alt": "會議信件：交接有依據教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "一串會議信件可能同時包含新決議、舊日期與尚未指派的工作。本篇用五封合成信件，把資料整理成 Google Docs 交接說明與 Google Sheets 待辦表。你會保留原始來源、辨識真正更正與未確認提議，讓接手的人知道哪些能執行、哪些仍需詢問。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-workspace-meeting-handoff/diagram-1.svg",
+          "alt": "來源：先編 M1 到 M5：日期時區要清楚；更正：十組 → 十二組：保留兩封來源；衝突：兩個日期未定：不能自行選一天；交接：文件 ＋ 待辦表：未指派人員留空",
+          "width": 1600,
+          "height": 900,
+          "caption": "五封合成信保留更正與未知。Gmail／Docs／Sheets 貼入流程已測，接收者權限未驗。原創概念圖，非介面截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "學完成果與準備",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先了解 "
+            },
+            {
+              "type": "link",
+              "text": "Gmail 與文件中的 Gemini",
+              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Sheets 整理資料",
+              "url": "https://mokaair.com/zh-TW/life/gemini-for-google-sheets-formulas"
+            },
+            {
+              "type": "text",
+              "text": " 及 "
+            },
+            {
+              "type": "link",
+              "text": "Connected Apps 連接服務",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "。Gemini Apps 內連接 Gmail、Drive，與 Gmail、Docs、Sheets 自己的側邊面板是不同入口；帳號方案、管理設定與可執行動作可能不同，不能假設某個入口可以直接改寫所有服務。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "下載包的 54 資料夾有 mail-samples.md、原始 JSON、參考 CSV 與交接範本。先用這五封作者合成信件練習，不需要讀取你的信箱，也沒有真實收件人。正式工作時先界定日期範圍及會議主題，確認資料可供這項工作使用，再挑必要信件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇於 2026-09-15 使用 Windows Chrome、個人 Google Pro，完成 Gmail 側邊欄貼入合成信、建立 Docs／Sheets 及修正，共四次 Gemini 生成、兩份成品。沒有擷取真實郵件；後端模型版本未公開可核對。來源核對限本人帳號，沒有寄信、分享或測試收件者存取。API 呼叫與額外花費均為零。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：建立來源清單與時間基準",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "打開五封信件，先看 M1 至 M5 的寄送時間與內容。M1 提議九月二十日交流會；M4 後來提到也許改九月二十一日，但沒有確認替代。M3 的十組樣品則在 M5 被明確更正成十二組。兩組看似都有新舊值，判斷卻不同：前者保留衝突，後者採用已確認更正並保留歷程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把時區固定為 Asia/Taipei，也就是台灣使用的時間。若來源只有日期，就維持日期；有下午五點的期限，才記成包含時刻的完整值。不要替沒有時間的「九月十九日」補成下午五點，也不要把「明天」換成你今天看到文章的日期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在真實 Gmail 練習時，可先依主旨、寄件人和日期搜尋，逐封開啟確認是否屬於同一議題，再給來源編號。若使用 Gemini 的 Connected Apps，從設定的連接服務區檢查帳號與連接狀態，輸入時用 @ 選擇可用服務；畫面顯示的可用動作才是本次操作範圍。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：產出帶來源的待辦候選",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本次先在 Gmail 搜尋專用測試標記，確認沒有結果，再從右上角「向 Gemini 提問」貼入五封合成信與下列要求。這一步測的是側邊欄處理貼入文字，不能宣稱已測真實郵件摘要。第一份候選的未知負責人寫成「（留空）」；它是文字，還需在試算表檢查實際空值。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞：五封信件整理",
+          "code": "只根據 M1 到 M5 整理待辦，不寄信、不建立行事曆事件。\n欄位：工作、負責人、期限、狀態、來源編號、支持判斷的原文。\n狀態限：已確認、日期衝突、負責人待定。\n有明確更正才採新值；只是提議就保留兩邊，不替同事承諾。\n未指派的人留空；每個日期保留來源精度與 Asia/Taipei 時區。\n另列需要人工追問的問題，不把追問自行寫成結論。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "作者參考答案有四筆：T01 場地日期保留兩個候選；T02 阿晴於九月十八日下午五點交印刷稿；T03 小安於九月十九日交十二組樣品；T04 九月十九日前完成報名表，但負責人空白。每筆都保留 M 編號及原文，沒有用寄件人身分自動填負責人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "候選不一定要與參考答案逐字相同，但事實、責任與不確定性必須一致。把「小安曾回信」寫成「小安負責報名表」就沒有來源支持。若模型漏掉尚未指派的工作，也要補回，不能只整理有負責人的項目讓表格顯得整齊。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作",
+            "參考狀態",
+            "來源"
+          ],
+          "rows": [
+            [
+              "場地日期",
+              "兩個候選，待確認",
+              "M1、M4"
+            ],
+            [
+              "印刷稿",
+              "阿晴負責，期限含時刻",
+              "M2"
+            ],
+            [
+              "十二組樣品",
+              "小安確認更正",
+              "M3、M5"
+            ],
+            [
+              "報名表",
+              "期限已知，負責人空白",
+              "M4"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "引用原文存在，只能證明文字出處。是否足以支持工作、日期與承諾，仍要人工逐列核對。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：拆成 Docs 說明與 Sheets 表格",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在同一 Gmail 側邊欄請 Gemini 把候選建立成 Google 文件，分已確認、待確認與來源清單。本次文件含四筆工作、兩個追問與五份來源全文和時間；未知負責人卻變成灰色 Person 人員佔位晶片。它不是已指派的真人，也不是合適的未知欄位表示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Docs 自己的「向 Gemini 提問」貼入下列修正。Gemini 回覆已完成時仍顯示接受／拒絕預覽；檢視後按「接受」，等待儲存，再重開確認。此次純文字核對只有 Person 改為「尚未指派」，來源與其他內容保持一致。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Docs 修正提示詞",
+          "code": "只把報名表負責人的 Person 人員佔位晶片改成純文字「尚未指派」。\n不要指定任何人；其他文字、來源與日期保持不變。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到同一 Gmail 側邊欄要求建立 Google 試算表，第一列放六個欄位，一列一件工作，未指派者保留真正空白。本次 A1:F5 含四筆待辦；選 B5，值與公式列都空白。只看到空白畫面仍不夠，因為公式也可能顯示空字串。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 D1「狀態」篩選取消已確認，保留日期衝突與負責人待定，畫面應顯示四筆中的兩筆：場地與報名表。再選取全部三個狀態、按確定、等待儲存並重載。本次重載後 A1:F7 與首次擷取文字完全一致；七段引文都可在相應原信找到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留狀態與來源欄，不要為了版面好看刪除。正式交接若需連結，先用接手者權限確認能打開；你能存取信件，不代表整個團隊都能讀。沒有權限時可提供經確認可分享的摘錄，並寫明資料保管人，而不是擴大共享整個信箱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "熟悉 Python 的讀者可用以下命令檢查參考 CSV。程式會比對來源存在、引文確實出現在來源、未指派人員仍留空，以及日期衝突仍保留兩個候選。它不會開啟 Google 服務，也不會自動判斷一句引文是否足以支持整個工作描述。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "終端機：54 資料夾",
+          "code": "python check_handoff.py mail-samples.json action-items.csv\n"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：抓出假確認，再交付",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "做兩個故障練習。第一個把 T01 改為已確認，卻保留兩個日期，檢查程式應指出未解決狀態；第二個把 T04 負責人填成「模型指定」，也應被拒絕。另試把 M2 引文改成「已寄出」，因原信沒有這句，應報出缺少或捏造證據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本次三個故障均被檢查器拒絕；另把場地寫成已確認九月二十一日、採單一期限但保留真引文，腳本卻通過。M4 只是可能改期，M5 仍待確認，所以 AI 初查判語意不成立。下載包保留此漏檢：來源存在與推論成立必須分開檢查，最後仍須由負責人核准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存來源、原始回答、首版 Docs、修正後文字、Sheets 實際 TSV 與故障紀錄。candidate-normalized.csv 是 Codex 把候選轉成檢查器欄位的衍生資料，不是模型原始 CSV。首版成功匯出 Markdown；修正後下載逾時，改以重開後介面全選複製核對，沒有宣稱完整排版一致。兩份成品目前僅本人可讀，正式交接前仍須測接收者權限。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "最新一封信是不是永遠優先？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "只有它明確更正或確認同一件事時才適用。新信也可能只是詢問或提案，應依語意判讀；不確定時保留候選與追問，不以時間先後替代決策。"
+        },
+        {
+          "type": "heading",
+          "text": "帳號沒有 Gmail 連接或 Sheets 面板怎麼辦？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "先用合成資料複製貼上完成整理，並查帳號與管理員可用性。不要把缺少按鈕當成資料錯誤，也不要改用其他帳號混入私人與工作內容。"
+        },
+        {
+          "type": "heading",
+          "text": "現場口頭資訊如何加入？",
+          "level": 3
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "新增具日期的觀察來源，分清錄音文字、照片與人工補充，再讓決議人確認。下一篇 "
+            },
+            {
+              "type": "link",
+              "text": "手機現場筆記",
+              "url": "https://mokaair.com/zh-TW/life/gemini-mobile-field-notes"
+            },
+            {
+              "type": "text",
+              "text": " 會示範如何把看見的事物與模型推測分開保存。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "Google Sheets：公式、整理與資料核對",
+              "url": "https://mokaair.com/zh-TW/life/gemini-for-google-sheets-formulas"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Connected Apps：Drive、日曆與地圖整合",
+              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "手機現場筆記：Gemini Live、照片與回到電腦整理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-mobile-field-notes"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 54 篇練習與真實實測增補",
+          "url": "https://mokaair.com/guides/gemini-workspace-meeting-handoff/lesson-54-live-20260915.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組工作練習與本機檢查程式",
+          "url": "https://mokaair.com/guides/gemini-workspace-meeting-handoff/work-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gemini 連接應用程式",
+          "url": "https://support.google.com/gemini/answer/13695044?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sheets 中的 Gemini",
+          "url": "https://support.google.com/docs/answer/14356410?hl=en",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gmail 中建立文件與試算表",
+          "url": "https://support.google.com/mail/answer/14355636?hl=en",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

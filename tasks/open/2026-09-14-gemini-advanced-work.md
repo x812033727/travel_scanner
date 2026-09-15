@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-gemini-advanced-work
 title: Gemini 深入教學 51–56：日常與工作流程
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: codex-gemini-live
+claimed_at: 2026-09-15T03:58:21Z
 created_at: 2026-09-14T11:10:41Z
 completed_at:
 branch: codex/gemini-advanced-platform
@@ -146,3 +146,15 @@ authoring-review.json 凍結作者交付位元組；publishable=false。正式 g
 - [ ] 51 人工評分、55 實體手機、56 真正排程與停止、共享系列整合和公開驗證依原待辦接續。
 
 入口：`docs/gemini-series/advanced/content/work/verification/live-20260915/54/README.md`。本輪僅追加實測證據與任務進度；API 呼叫 0、額外購買 0、額外花費 NT$0。沒有寄信、建立日曆事件、修改分享設定、push、PR、部署、匯入或公開發布。私人雲端網址留在 git 忽略的本機暫存，追蹤證據只保留雜湊；原作者檔案、內容包及歷史收據未變。不要重跑已有四輪，也不要重建同名成品。
+
+## 2026-09-15 續：52–54 實測文章與練習包整合
+
+- [x] 新版完整原稿、三個可匯入 pack 與三份 ZIP 位於 `docs/gemini-series/advanced/content/work/revisions/20260915/`，正文 2,556／2,420／2,612 字，保留原二級標題與章節定位。
+- [x] 52 納入原指示兩輪與第三輪能力界線、36 份回歸、2 份預覽和品質限制；53 納入四輪生成、1 分誤差、BigInt 與 35 項限定觀察；54 納入真實貼入流程、Person 修正／接受、空值、篩選及語意漏檢。
+- [x] 新 ZIP 的 50／35／28 個來源檔案及解壓後驗證器通過，CRC、成員路徑與個資掃描通過；六張既有概念圖沿用，圖說更新驗證狀態。
+- [x] 既有編譯器 schema／字數、三篇 pack lint、資產與站內連結檢查通過。隔離檢查最初缺 51／55 參考包，補入未修改的參考副本後通過。重建腳本以 API Ruff 設定修正檢查通過。
+- [x] 新收據凍結修訂原稿及隔離輸出，154 個歷史作者 hash 不變；沒有修改正式 pack、共享候選或公開頁。
+- [ ] 共享 release 需審查並採用三個新版 pack 與完整資產後重建候選；上述本票 52／53／54 的「新版原稿／包／ZIP 整合」已完成，剩餘項目是共享整合與各篇未驗範圍，不能重做已完成的文字整合。
+- [ ] 51 人工評分、52 品質／語意核准、53 未驗裝置與無障礙範圍、54 真實收件匣與接收者可讀性仍未完成。55 正詢問實體裝置，56 已進入既有 Spark 帳號進行手動公開來源摘要，後續結果另記。
+
+此次只沿用原配圖，不新增虛構介面圖；新版 ZIP 清楚區分原練習與實測輸出。相同 slug 的發布資產必須和 pack 一起採用，不可只更換 JSON 漏掉新版 ZIP。沒有 API 呼叫、額外購買、push、PR、部署或匯入。
