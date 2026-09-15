@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">LLMO 的兩類主張：哪一邊拿得到證據 / Two kinds of LLMO claims</title>
+  <desc id="desc">一張兩欄對照圖。最上方是一句 LLMO 主張，先問它要影響哪一邊，往下分成左右兩條路。左邊是檢索當下：模型在回答時產生查詢、讀網頁、再組答案；外部看得到回答附的引用清單，以及自己伺服器記錄的爬蟲請求；稽核結果是部分可以，因為看得到來源，但官方寫明不保證版位。右邊是訓練當下：內容在下一次訓練時被讀進權重；外部沒有可查詢的清單，只有類別層級摘要與一個截止日；稽核結果是不行，因為拿不到訓練資料清單，也拿不到前後兩份權重。最下方一條橫幅提醒 LLMOps 是另一個詞，不在這兩條路上，它是你自己那套模型應用的維運工作，包含資料、實驗、評估、部署、監測與回饋。圖的最後註明本圖只說明證據拿不拿得到，不代表任何成效承諾。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">LLMO 的兩類主張：哪一邊拿得到證據</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Retrieval-time claims can be observed; training-time claims cannot be audited from outside</text>
+
+  <rect x="600" y="104" width="400" height="62" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="143" font-size="22" font-weight="bold" text-anchor="middle" fill="#102A2B">先問這句主張要影響哪一邊</text>
+
+  <path d="M 700 170 L 425 200" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 900 170 L 1175 200" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="80" y="206" width="690" height="62" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="425" y="233" font-size="24" font-weight="bold" text-anchor="middle" fill="#0D6B68">檢索當下</text>
+  <text x="425" y="258" font-size="17" text-anchor="middle" fill="#5C6B6B">模型回答這一題時才去查網路</text>
+
+  <rect x="830" y="206" width="690" height="62" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1175" y="233" font-size="24" font-weight="bold" text-anchor="middle" fill="#B8442D">訓練當下</text>
+  <text x="1175" y="258" font-size="17" text-anchor="middle" fill="#5C6B6B">內容進到模型權重裡</text>
+
+  <rect x="80" y="284" width="690" height="88" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="425" y="316" font-size="17" text-anchor="middle" fill="#5C6B6B">發生什麼</text>
+  <text x="425" y="348" font-size="20" text-anchor="middle" fill="#102A2B">模型產生查詢、讀網頁、再組答案</text>
+
+  <rect x="830" y="284" width="690" height="88" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1175" y="316" font-size="17" text-anchor="middle" fill="#5C6B6B">發生什麼</text>
+  <text x="1175" y="348" font-size="20" text-anchor="middle" fill="#102A2B">內容在下一次訓練時被讀進權重</text>
+
+  <rect x="80" y="388" width="690" height="96" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="425" y="418" font-size="17" text-anchor="middle" fill="#5C6B6B">外部看得到什麼</text>
+  <text x="425" y="448" font-size="20" text-anchor="middle" fill="#102A2B">回答附的引用清單</text>
+  <text x="425" y="474" font-size="20" text-anchor="middle" fill="#102A2B">自己伺服器記錄的爬蟲請求</text>
+
+  <rect x="830" y="388" width="690" height="96" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1175" y="418" font-size="17" text-anchor="middle" fill="#5C6B6B">外部看得到什麼</text>
+  <text x="1175" y="448" font-size="20" text-anchor="middle" fill="#B8442D">沒有可查詢的清單</text>
+  <text x="1175" y="474" font-size="20" text-anchor="middle" fill="#102A2B">只有類別層級摘要與一個截止日</text>
+
+  <rect x="80" y="500" width="690" height="104" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="425" y="532" font-size="17" text-anchor="middle" fill="#5C6B6B">能不能稽核</text>
+  <text x="425" y="562" font-size="20" text-anchor="middle" fill="#2E7D5B">部分可以：看得到來源</text>
+  <text x="425" y="590" font-size="20" text-anchor="middle" fill="#102A2B">但官方寫明不保證版位</text>
+
+  <rect x="830" y="500" width="690" height="104" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1175" y="532" font-size="17" text-anchor="middle" fill="#5C6B6B">能不能稽核</text>
+  <text x="1175" y="562" font-size="20" text-anchor="middle" fill="#B8442D">不行：拿不到訓練資料清單</text>
+  <text x="1175" y="590" font-size="20" text-anchor="middle" fill="#102A2B">也拿不到前後兩份權重</text>
+
+  <rect x="80" y="636" width="1440" height="106" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="682" font-size="22" font-weight="bold" text-anchor="middle" fill="#102A2B">LLMOps 是另一個詞，不在這兩條路上</text>
+  <text x="800" y="716" font-size="18" text-anchor="middle" fill="#5C6B6B">它是你自己那套模型應用的維運：資料、實驗、評估、部署、監測與回饋</text>
+
+  <text x="800" y="790" font-size="18" text-anchor="middle" fill="#5C6B6B">本圖只說明證據拿不拿得到，不代表任何成效承諾</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

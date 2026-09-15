@@ -1,0 +1,18 @@
+{
+  "slug": "ai-search-terms-index",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "role": "series index; summarises the ten articles rather than making new factual claims",
+  "sources": [
+    {"url": "https://arxiv.org/abs/2311.09735", "title": "GEO: Generative Engine Optimization（原始論文 arXiv 摘要頁）", "access": "sourced from ai-search-geo, web open 2026-09-14", "claims": ["GEO 出自 2023 年的一篇論文", "論文有自己的查詢集與指標"]},
+    {"url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide", "title": "Optimizing your website for generative AI features on Google Search", "access": "sourced from ai-search-geo and ai-search-aio, web open 2026-09-14", "claims": ["Google 文件提到 AEO 與 GEO", "Google 說為生成式 AI 最佳化仍然是 SEO", "查證的官方文件裡沒有 AIO 這個縮寫"]},
+    {"url": "https://developers.google.com/search/docs/appearance/ai-features", "title": "AI features and your website", "access": "sourced from ai-search-geo and ai-search-generated-answers, web open 2026-09-14", "claims": ["官方說沒有額外的最佳化要求"]},
+    {"url": "https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf", "title": "General Guidelines（搜尋品質評分指南原文）", "access": "sourced from ai-search-eeat, web open 2026-09-14", "claims": ["E-E-A-T 出自寫給人類評分者的指南"]},
+    {"url": "https://llmstxt.org/", "title": "llms.txt 提案原文", "access": "sourced from ai-search-llms-txt, web open 2026-09-14", "claims": ["llms.txt 是社群提案"]},
+    {"url": "https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers", "title": "Google 常見爬蟲", "access": "sourced from ai-search-llmo and ai-search-llms-txt, web open 2026-09-14", "claims": ["訓練、檢索、索引對應不同的 user-agent"]},
+    {"url": "https://developers.google.com/search/updates", "title": "Google 搜尋中心說明文件更新紀錄", "access": "sourced from ai-search-structured-data and ai-search-llms-txt, web open 2026-09-14", "claims": ["功能會被收掉：FAQ 複合式搜尋結果的淘汰紀錄"]},
+    {"url": "https://support.google.com/websearch/answer/16011537", "title": "Google 搜尋說明中心：AI 模式", "access": "sourced from ai-search-generated-answers and ai-search-measuring-citations, web open 2026-09-14", "claims": ["AI 模式的官方產品說明"]}
+  ],
+  "running_text_characters": 2013,
+  "notes": "索引本身不提出新的事實主張，sources 是十篇的錨點來源，由各篇撰稿代理於 2026-09-14 當天讀取；notes.md 逐筆標出由哪一篇查證。正文日期原用中文數字，與其他九篇不一致且會讓落款的 2026 在正文找不到對應字串，已改為阿拉伯數字。"
+}

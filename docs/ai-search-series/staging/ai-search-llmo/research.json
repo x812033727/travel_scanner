@@ -1,0 +1,150 @@
+{
+  "slug": "ai-search-llmo",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "title": "Anthropic：Models overview（訓練資料截止日與可靠知識截止日）",
+      "access": "WebFetch；docs.claude.com 的原網址回 302，改讀 platform.claude.com 的同一頁",
+      "claims": [
+        "官方把 Reliable knowledge cutoff 定義為模型知識最完整可靠的日期，Training data cutoff 是更廣的訓練資料範圍，兩者是不同欄位",
+        "Claude Opus 5 的可靠知識截止日與訓練資料截止日都是 2026 年 5 月",
+        "Claude Haiku 4.5 的可靠知識截止日是 2025 年 2 月、訓練資料截止日是 2025 年 7 月"
+      ]
+    },
+    {
+      "url": "https://www.anthropic.com/transparency",
+      "title": "Anthropic：Transparency Hub（訓練資料的類別層級描述）",
+      "access": "WebFetch 直接讀取",
+      "claims": [
+        "訓練資料以類別層級描述（公開網路資訊、公開與非公開資料集、其他模型生成的合成資料），沒有逐站清單"
+      ]
+    },
+    {
+      "url": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler",
+      "title": "Anthropic Support：Anthropic 的爬蟲與站方阻擋方式（ClaudeBot、Claude-User、Claude-SearchBot）",
+      "access": "WebFetch 直接讀取",
+      "claims": [
+        "ClaudeBot 收集可能用於訓練的內容、Claude-User 回答個別使用者提問、Claude-SearchBot 改善搜尋結果品質"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models",
+      "title": "OpenAI：Models（各模型的知識截止日）",
+      "access": "WebFetch 直接讀取",
+      "claims": [
+        "GPT-6 Astra 的 knowledge cutoff 是 2026 年 4 月 30 日"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/bots",
+      "title": "OpenAI：Bots（GPTBot、OAI-SearchBot、ChatGPT-User 的用途）",
+      "access": "WebFetch；platform.openai.com/docs/bots 回 301，改讀 developers.openai.com 的同一份文件",
+      "claims": [
+        "GPTBot 抓取可能用於訓練生成式 AI 基礎模型的內容",
+        "OAI-SearchBot 用於在 ChatGPT 的搜尋功能中呈現網站，不用於訓練",
+        "ChatGPT-User 是使用者提問時才訪問網頁"
+      ]
+    },
+    {
+      "url": "https://help.openai.com/en/articles/9237897-chatgpt-search",
+      "title": "OpenAI Help Center：Searching the web with ChatGPT（引用、排序與不保證版位）",
+      "access": "WebFetch，網址後加 .json 讀取",
+      "claims": [
+        "回答可能附上引用，可點開來源",
+        "ChatGPT 以多項因素排序搜尋結果，且不保證版位",
+        "搜尋結果與引用可能不完整、過時或錯誤"
+      ]
+    },
+    {
+      "url": "https://help.openai.com/en/articles/12627856-publishers-and-developers-faq",
+      "title": "OpenAI Help Center：Publishers and Developers FAQ（爬蟲與收錄）",
+      "access": "WebFetch，網址後加 .json 讀取",
+      "claims": [
+        "擋 OAI-SearchBot 會使內容不出現在 ChatGPT 搜尋結果；擋 GPTBot 才是排除訓練"
+      ]
+    },
+    {
+      "url": "https://cdn.openai.com/pdf/gpt-6-astra-eu-ai-act-public-summary-of-training-content.pdf",
+      "title": "OpenAI：GPT-6 Astra 依歐盟 AI 法規公布的訓練內容公開摘要",
+      "access": "WebFetch 讀取 PDF",
+      "claims": [
+        "依歐盟 AI 法規公布的訓練內容摘要只分到公開資料集、第三方私有資料集、線上抓取資料與合成資料這種類別層級"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/google-search",
+      "title": "Google AI for Developers：Grounding with Google Search（接地流程與引用）",
+      "access": "WebFetch 讀取同一份文件的 .md.txt 純文字版",
+      "claims": [
+        "接地流程：模型判斷是否需要搜尋、自動產生查詢並執行、整合結果後回答",
+        "回傳內容包含帶引用的註記與實際跑過的查詢",
+        "接地讓模型能引用超出知識截止日的可查證來源"
+      ]
+    },
+    {
+      "url": "https://deepmind.google/models/model-cards/gemini-3-8-flash/",
+      "title": "Google DeepMind：Gemini 3.8 Flash 模型卡（知識截止日與領域差異）",
+      "access": "WebFetch 直接讀取",
+      "claims": [
+        "Gemini 3.8 Flash 的知識截止日是 2026 年 3 月，但部分領域的知識仍停在 2025 年 1 月"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "title": "Google 搜尋中心：生成式 AI 功能最佳化指引（官方文件）",
+      "access": "WebFetch 直接讀取",
+      "claims": [
+        "在網路各處尋求不真實的『提及』並沒有看起來那麼有用，核心排名系統著重高品質內容",
+        "不需要為了 AI 另外產生機器可讀檔案或標記，也不需要為生成式搜尋改用特定寫法",
+        "該頁提到 AEO 與 GEO，沒有提到 LLMO"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "title": "Google 搜尋中心：AI features and your website（預覽控制項與沒有額外要求）",
+      "access": "WebFetch 直接讀取",
+      "claims": [
+        "出現在 AI 摘要或 AI 模式沒有額外要求，也不需要其他特殊最佳化"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers",
+      "title": "Google 搜尋中心：Google 常見爬蟲（Google-Extended 的用途與界線）",
+      "access": "WebFetch 直接讀取",
+      "claims": [
+        "Google-Extended 控制內容是否用於訓練未來的 Gemini 模型與 grounding",
+        "Google-Extended 不影響網站在 Google 搜尋的收錄，也不是排名訊號"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/mlops-in-openai/",
+      "title": "Microsoft Learn：LLMOps - Operational management of LLMs",
+      "access": "WebFetch 直接讀取",
+      "claims": [
+        "LLMOps 是管理 LLM 應用從開發、部署到維護整段流程的一組工具與流程",
+        "階段為資料整理、實驗、評估、驗證與部署、推論、監測、回饋與資料收集"
+      ]
+    },
+    {
+      "url": "https://91app.com/blog/what-is-llmo/",
+      "title": "91APP 部落格：LLMO 破解生成式搜尋引擎推薦密碼（該公司的行銷內容，作為用詞佐證）",
+      "access": "WebFetch 直接讀取（行銷內容，僅作為用詞佐證）",
+      "claims": [
+        "行銷內容：把 LLMO 定義成 Large Language Model Optimization（大型語言模型最佳化）",
+        "行銷內容：稱維基百科是 ChatGPT、Gemini、Claude 等模型的重要訓練資料來源之一"
+      ]
+    },
+    {
+      "url": "https://www.awoo.ai/zh-hant/blog/llmo-for-content-seo-how-to-face/",
+      "title": "awoo 部落格：LLMO 對內容 SEO 帶來的挑戰（該公司的行銷內容，作為用詞佐證）",
+      "access": "WebFetch 直接讀取（行銷內容，僅作為用詞佐證）",
+      "claims": [
+        "行銷內容：把 LLMO 定義成讓內容在大型語言模型與 AI 驅動結果中取得更高的可見度與曝光機會"
+      ]
+    }
+  ],
+  "running_text_characters": 2998,
+  "notes": "正文以工具的 _body_length 算法實際數出 2998 字（段落、rich_paragraph、清單、表格格子、callout 標題與內文，去除空白；不含標題、圖說與來源），落在 1,800–3,000 區間內。自驗指令：cd apps/api && uv run python -m app.guides.pack_cli ingest --from ../../docs/ai-search-series/staging --slug ai-search-llmo --dry-run，輸出只有 dry run: nothing written，exit 0，沒有 error 也沒有 warning。分級標註：Microsoft、OpenAI、Anthropic、Google 的文件為第一級（官方文件說明的機制）；91APP 與 awoo 為第三級（廠商自己的行銷內容），正文已寫明是誰說的，且只用來佐證「確實有人這樣用這個詞」。本文沒有採用任何第二級（業界普遍做法但無官方確認）的斷言。定義有爭議處（LLMO 是否包含讓內容進入訓練資料）兩邊來源都收錄，正文寫明採用官方文件那一邊。查不到而改寫的項目：沒有任何引擎或模型廠商用 LLMO 命名過自己的功能（官方網域搜尋查不到，正文只敘述查不到的事實，不斷言從無此用法）；沒有廠商公布可查詢的訓練資料清單或成員查詢介面（正文照寫只有類別層級描述）；Gemini 各型號的 knowledge cutoff 不在 ai.google.dev 的 models 總表上，本文只引 DeepMind 模型卡明列的 Gemini 3.8 Flash，其餘型號以官方文件為準。同頁另列的 GPT-5.6 三個版本截止日（2026-02-16）已查證但為控制長度未寫入正文。本文沒有引用任何成效倍數或前後對照數字；91APP 該頁的訪客價值與轉換率倍數刻意未採用，因為沒有一手來源。"
+}

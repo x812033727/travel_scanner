@@ -1,0 +1,316 @@
+{
+  "slug": "ai-search-eeat",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "E-E-A-T 是什麼：品質評分指南裡的概念，不是可以設定的排名訊號",
+      "description": "E-E-A-T 出自 Google 寫給人工搜尋品質評分者的《General Guidelines》，而評分者不會改變任何一頁的排名。這篇說明那份文件是寫給誰看的、評分者實際記錄什麼、四個字母在指南裡各自怎麼定義、Experience 是哪一次改版加的，並拆解作者簡介頁、專家掛名與外部連結這三種常見的過度解讀。",
+      "hero": {
+        "src": "/guides/ai-search-eeat/hero.jpg",
+        "alt": "原創插畫：一份攤開的文件旁有一支評分滑桿，右邊是一個空白的分數框，表示沒有可以宣告的欄位。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "E-E-A-T 不是網站上可以設定的欄位，也不是分數。它出自 Google 寫給人工品質評分者的《General Guidelines》，本文查證日 2026 年 9 月 14 日取得的版本，封面日期 2025 年 9 月 11 日，E-E-A-T 在第 3.4 節。文件第 0.1 節自己寫明：任何一筆評分都不會直接影響某頁在搜尋結果裡的呈現，也不會讓它上移或下移。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完這篇，你看到一篇談 E-E-A-T 的文章時應該能分辨：哪些說法來自官方文件說明的機制、哪些是業界慣例但官方未確認、哪些是賣服務的公司自己的行銷主張。這篇只講出處與邊界，並處理三種常見的過度解讀。"
+        },
+        {
+          "type": "heading",
+          "text": "這個詞出自哪一份文件，那份文件寫給誰看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "《General Guidelines》中文通常譯為搜尋品質評分指南，查證日的版本全文 182 頁，頁尾標示 Copyright 2025。讀者是受雇於外部廠商、替 Google 做評分的人，不是網站經營者；每句話都在教他們怎麼完成評分任務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件公開，拿來讀沒有錯，錯的是把它當成排名規格書。第 0.1 節說得很直白：拿評分去決定結果在頁面上的位置並不可行，人類不可能逐一評完公開網路上的每一頁；評分的用途是量測搜尋引擎的成效，並提供好壞結果的範例來改進它。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "HTTP 成功、可被抓取、已被索引、出現在結果裡是四件不同的事，這幾個詞見"
+            },
+            {
+              "type": "article",
+              "text": "SEO 是什麼",
+              "kind": "life",
+              "slug": "ai-search-seo"
+            },
+            {
+              "type": "text",
+              "text": "，本文不重複。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "品質評分者做什麼、不做什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 在 2023 年 11 月發布的評分指南總覽寫，它與大約 16,000 名外部評分者合作，任務分兩種：Page Quality 看一頁達成它自己目的的程度，Needs Met 看一則結果對某個搜尋有多大用處。同一份文件寫明，沒有任何單一評分或評分者會直接影響一頁或一站的排名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Page Quality 交出的是一支滑桿上的整體評分：Lowest、Low、Medium、High、Highest，中間可選 Low+、Medium+ 這類半級。表上沒有一格叫 E-E-A-T，也沒有一格填 Trust 的分數。它的角色是評分者形成整體判斷時要一併考慮的事項，不是輸出欄位。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "評分者會做的：依指南對一組樣本查詢的結果評分並寫下理由。",
+            "評分者會做的：查網站與創作者的公開名聲，看獨立評論、報導怎麼說。",
+            "評分者不會做的：更動任何一頁的排名、索引狀態或收錄。",
+            "評分者不會做的：替網站算一個 E-E-A-T 分數存進資料庫。",
+            "官方寫的用途：把評分彙總起來量測與改進排名系統，不是拿它排序。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-search-eeat/diagram-1.svg",
+          "alt": "三層對照：官方文件說明的機制、官方文件裡沒有的東西、常見的行銷主張",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：左欄是官方文件寫明的流程，中欄是那份文件裡不存在的東西，右欄是行銷內容常見的說法。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "四個字母在指南裡各自指什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "指南第 3.4 節寫得很清楚：位在家族中心、最重要的一員是 Trust（信任）。Experience、Expertise、Authoritativeness 是支持 Trust 判斷的概念，不是各自獨立的評分項。同一節還有一句常被漏掉的話：一頁只要因為任何理由而不可信，它的 E-E-A-T 就是低的——指南舉的例子是金融詐騙，再有經驗也一樣。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "字母",
+            "指南第 3.4 節的定義",
+            "常見的過度解讀"
+          ],
+          "rows": [
+            [
+              "Experience（經驗）",
+              "創作者對這題目有沒有第一手或生活經驗，例如真的用過那產品",
+              "讀成要寫得像親身體驗，於是補虛構心得"
+            ],
+            [
+              "Expertise（專業）",
+              "創作者有沒有必要的知識或技能；不同題目需要的程度不同",
+              "讀成一定要有證照，於是硬掛資歷"
+            ],
+            [
+              "Authoritativeness（權威）",
+              "是否被視為該題目的首選來源；多數題目沒有唯一來源",
+              "讀成連結越多越權威，於是換連結或買連結"
+            ],
+            [
+              "Trust（信任）",
+              "頁面是否準確、誠實、安全、可靠；其他三個支持它",
+              "讀成第三方工具量得出來的信任分數"
+            ]
+          ],
+          "caption": "依 2026 年 9 月查證的指南版本整理；右欄是本文觀察到的說法，非指南內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個 E 是後來才加的。Google Search Central 部落格在 2022 年 12 月 15 日發表〈E-A-T gets an extra E for Experience〉，那次改版把 Experience 加進原本的 E-A-T。指南現行版本的附錄二只列 2023 年 9 月到 2025 年 9 月的改版摘要，2022 年那次已不在表上，要確認時間點得回去看那則公告。"
+        },
+        {
+          "type": "heading",
+          "text": "沒有分數、沒有欄位，也沒有可以宣告它的標記",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Search Central 關於實用內容的官方說明頁，查證時標示最後更新為 2025 年 12 月 10 日，上面寫著：E-E-A-T 本身不是一個特定的排名因素，但用一組能辨識出具備良好 E-E-A-T 的內容的因素是有用的。同一頁也寫，評分者無法控制頁面怎麼排，評分者的資料不會直接用在排名演算法裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外兩份官方文件從反面佐證。Google 的排名系統指南列出 BERT、MUM、RankBrain、PageRank 等等，沒有一個系統叫 E-E-A-T；但它自陳只列比較知名的幾個，不是完整清單，能證明的是官方沒有公布這樣一個系統，不是內部一定沒有相關訊號。結構化資料功能總覽列出 Article、Product 等型別，也沒有哪一種能宣告經驗、專業或信任。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Article 結構化資料確實有 author 屬性，但它讓頁面有資格取得特定呈現方式，不是宣告品質。標記能換到什麼、換不到什麼，"
+            },
+            {
+              "type": "article",
+              "text": "結構化資料與 Schema.org 那篇",
+              "kind": "life",
+              "slug": "ai-search-structured-data"
+            },
+            {
+              "type": "text",
+              "text": "寫得比較完整。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "看到「E-E-A-T 分數」時先問三個問題",
+          "text": "第一，誰算的：Google 沒有公布任何 E-E-A-T 分數，它一定是某家工具自己定義的指標。第二，計算方式有沒有寫出來：沒寫出來就無法複查，換一家工具也無法對照。第三，因果關係有沒有一手來源：把「分數提高了」和「排名改變」接起來，需要的證據遠多於一份自家報表。這不是說工具沒用，而是它量到的是自己定義的東西，不是 Google 的內部狀態。"
+        },
+        {
+          "type": "heading",
+          "text": "三種常見的過度解讀",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這三種說法的共同結構是：拿一份寫給評分者看的文件反推出一份可以照做的清單，再把清單上的動作和排名結果接起來。前半段有文件可查，後半段沒有。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "「加一頁作者簡介就能提升 E-E-A-T」：指南確實要評分者去看關於我們與作者介紹頁，但第 5.6 節寫明，判斷要根據主要內容本身、名聲調查與可查證的資歷，不能只憑自稱是專家；自我介紹誇大或輕微誤導時該給 Low。寫清楚誰寫的是官方建議的做法，說它會改變排名則沒有文件支持。",
+            "「請一位專家掛名」：第 4.5.1 節把責任歸屬資訊不足或造假列為 Lowest 的理由之一；第 4.6.4 節定義網站名聲濫用，指第三方內容主要因為宿主站既有的排名訊號而被刊登。掛一個沒有實際參與的名字，碰到的是這兩條。",
+            "「多連幾個外部權威網站」：名聲調查看的是獨立來源怎麼說這個網站，不是它自己連出去幾條，方向相反。反過來，Google 的垃圾內容政策（查證時標示最後更新為 2026 年 8 月 28 日）把買賣連結、過度的連結交換、低品質目錄連結列為連結濫發。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同樣的推論也出現在別的名詞上：借走一份文件的名字，丟掉它原本的適用範圍。"
+            },
+            {
+              "type": "article",
+              "text": "GEO 那篇",
+              "kind": "life",
+              "slug": "ai-search-geo"
+            },
+            {
+              "type": "text",
+              "text": "談的是論文定義被業界借用後的落差。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "三級判斷：讀到一篇談 E-E-A-T 的文章時怎麼分",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "官方文件說明的機制：能指到指南節次或 Search Central 的某句話，連過去看得到。",
+            "業界普遍做法但官方沒有確認：例如文章要掛作者與更新日期。官方建議讓讀者看得出是誰寫的，但沒有文件說這會讓排名改變。",
+            "賣服務的公司自己的行銷主張：要寫明是誰說的，和前兩級分開。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "舉兩個例子，都是賣 SEO 服務的公司自己的行銷內容，引用只為證明確實有人這樣用這個詞。恆遠數位科技 2026 年 4 月 6 日的文章，標題把 E-E-A-T 稱為 Google 最重視的排名因素，內文卻寫嚴格來說它不是可以直接量測的排名因子。Whoops SEO 的文章寫它不是獨立演算法也不是可直接量測的分數，接著主張它對排名的影響間接、緩慢但長期累積非常實質。前半句對得回官方文件，後半句是各自公司的推論，不該一起當成事實讀。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "各詞的出處與分歧點整理在"
+            },
+            {
+              "type": "article",
+              "text": "名詞總索引",
+              "kind": "life",
+              "slug": "ai-search-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "。本文的結論可以濃縮成一句：E-E-A-T 是一份人工評分文件裡的詞彙，站外沒有對應的旋鈕。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "General Guidelines（Google 搜尋品質評分指南原文 PDF，封面日期 2025 年 9 月 11 日）",
+          "url": "https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Quality Rater Guidelines: An Overview（Google 官方說明文件，2023 年 11 月）",
+          "url": "https://services.google.com/fh/files/misc/hsw-sqrg.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Creating helpful, reliable, people-first content（Google Search Central 官方文件）",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Our latest update to the quality rater guidelines: E-A-T gets an extra E for Experience（官方公告）",
+          "url": "https://developers.google.com/search/blog/2022/12/google-raters-guidelines-e-e-a-t",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "A guide to Google Search ranking systems（官方排名系統清單）",
+          "url": "https://developers.google.com/search/docs/appearance/ranking-systems-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Structured data markup that Google Search supports（官方結構化資料功能總覽）",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/search-gallery",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Article structured data（官方文件，含 author 屬性說明）",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/article",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Spam policies for Google web search（官方垃圾內容政策，含連結濫發）",
+          "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "恆遠數位科技：E-E-A-T 是什麼（SEO 服務業者的行銷內容，僅作為用詞佐證）",
+          "url": "https://foreverwebs.com/blog/eeat-google-ranking-guide-2026",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Whoops SEO：什麼是 E-E-A-T（SEO 服務業者的行銷內容，僅作為用詞佐證）",
+          "url": "https://seo.whoops.com.tw/what-is-eeat/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

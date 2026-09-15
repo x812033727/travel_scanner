@@ -1,0 +1,310 @@
+{
+  "slug": "ai-search-geo",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "GEO（生成引擎最佳化）是什麼：論文定義與行銷業用法的落差",
+      "description": "GEO 出自 2024 年 KDD 的一篇論文，論文帶著自己的查詢集與兩個曝光指標，行銷業沿用了名字卻多半沒有沿用指標。這篇整理論文原本怎麼定義 GEO、它的數字在什麼設定下才成立，以及業界把這個詞用成了什麼；並列出 Google 官方文件、原始論文與廠商行銷內容三方對「GEO 算不算 SEO」的不同說法。",
+      "hero": {
+        "src": "/guides/ai-search-geo/hero.jpg",
+        "alt": "插圖：一份文件延伸出一條有刻度的量尺與一條沒有刻度的虛線，分別通往一個生成回答的框與一片留白。",
+        "width": 1,
+        "height": 1
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "GEO 是 generative engine optimization 的縮寫，中文通常譯成生成引擎最佳化。它不是行銷業造出來的，出自一篇學術論文；論文提出這個名字時，同時提出一組自己定義的曝光指標和一個固定的查詢集。行銷業沿用了名字，多半沒有沿用那組指標——這篇要講的就是這個落差。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "讀完這篇，你應該可以分辨眼前這份 GEO 資料用的是論文還是行銷的定義、數字從哪裡來，以及哪些部分從網站外面根本量不到。先說清楚立場：不論論文的方法還是業界的做法，本站都沒有做過實測，這篇不承諾任何排名、索引、引用或流量結果。系列名詞對照放在"
+            },
+            {
+              "type": "article",
+              "text": "搜尋最佳化名詞總表",
+              "kind": "life",
+              "slug": "ai-search-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "GEO 這個詞從哪裡來"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個詞的出處可以指名。論文題目就叫 GEO: Generative Engine Optimization，第一作者是 Pranjal Aggarwal；2023 年 11 月先公開在 arXiv，會議版本收錄在 KDD 2024 論文集，ACM 數位圖書館記為 2024 年 8 月 24 日出版、開放取用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "出處為什麼重要？這組縮寫裡 AEO、LLMO、AIO 大多找不到可指認的第一次定義，GEO 找得到；有出處就表示它原本有明確的定義與量測方式，你也就能回頭對照手上這份資料有沒有沿用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "論文說的生成引擎與 GEO 是什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "論文把生成引擎（generative engine）定義為把傳統搜尋引擎和生成模型組合起來的系統：先檢索，再由語言模型綜合多個來源產生一段附引用的回答。這是論文自己下的定義，不是任何一家引擎的官方說法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在這個框架下，GEO 指的是創作者用來提高自己的內容在生成引擎回答中曝光度的黑箱最佳化方法。定義裡有兩個容易被略過的限制：操作對象是創作者自己網站上的文字，不是引擎；它是黑箱的，因為引擎不公開怎麼挑來源與排序。論文寫的目標是曝光度，不是排名。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "論文自己的量尺：查詢集與兩個曝光指標"
+        },
+        {
+          "type": "paragraph",
+          "text": "論文同時發表了 GEO-Bench 評測集：10,000 筆查詢，切成 8,000、1,000、1,000 三份當訓練、驗證與測試；查詢來自九個既有資料集與模型生成的查詢，標註涵蓋 25 個領域。每筆查詢只取搜尋結果的前 5 個來源當作可被引用的網頁，論文說這是受限於上下文視窗長度與成本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "指標有兩個。Position-Adjusted Word Count（位置加權字數）把回答裡屬於某個來源的句子字數加總，再依句子位置做指數加權，越前面權重越高。Subjective Impression（主觀印象）由七個子項組成：相關性、影響力、獨特性、位置顯著度、份量感、點擊意願、多樣性，論文用 GPT-3.5 當評分模型打這七項。兩個都是論文自己定義的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "實驗設定也要一起讀：回答由 gpt3.5-turbo 產生，每題在 temperature 0.7 下抽樣 5 個回答以降低波動，另外在 Perplexity.ai 這個實際上線的生成引擎上做過驗證。摘要那句最多可以把曝光度提高 40%，成立範圍就是這一整組設定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼論文的數字不能直接搬到你的網站"
+        },
+        {
+          "type": "paragraph",
+          "text": "把那個 40% 當成通則，是這個名詞最常見的誤用。至少有四個理由："
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "指標是論文自己定義的。位置加權字數與主觀印象都不是任何搜尋引擎公布的東西，沒有引擎說過它用這兩個指標決定誰被引用。",
+            "生成引擎是論文自己組的。主要實驗跑在 gpt3.5-turbo 上，你今天面對的是別的模型、別的檢索流程。",
+            "查詢集是固定的。那 10,000 筆查詢不是你的讀者會打的字；論文自己也寫了方法的效果在各領域之間有差異。",
+            "論文的限制章節自己講了：這些方法可能需要隨著生成引擎演進而調整，查詢的樣貌也會隨時間改變。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "還有一層更外面的限制：檢索當下發生什麼，多少還能從伺服器紀錄和引擎的報表看到一點；訓練當下發生什麼，網站經營者在外面無法驗證。那一部分整理在"
+            },
+            {
+              "type": "article",
+              "text": "LLMO 是什麼",
+              "kind": "life",
+              "slug": "ai-search-llmo"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-search-geo/diagram-1.svg",
+          "alt": "三欄對照圖：左欄是論文定義與它的量尺，中欄是業界沿用的說法，右欄是從網站外面測不到的部分。",
+          "width": 1,
+          "height": 1,
+          "caption": "這張圖從左讀到右：論文定義了什麼、業界沿用了哪一半、哪些東西不論誰主張都測不到。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "業界怎麼用這個詞，和論文差在哪"
+        },
+        {
+          "type": "paragraph",
+          "text": "把行銷公司的 GEO 說明和論文並排看，最明顯的差別是指標不見了。論文的兩個指標有算式、有查詢集、有可重複的設定；常見的 GEO 說明改談被提及、被引用、AI 能見度，這些詞各家自己定義、自己計算，沒有共同的量尺。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "另一個差別是範圍：論文講的是自己網站文字的內容端改寫，業界的 GEO 服務常把品牌提及、社群討論一起算進去。這也是 GEO 和 "
+            },
+            {
+              "type": "article",
+              "text": "AEO",
+              "kind": "life",
+              "slug": "ai-search-aeo"
+            },
+            {
+              "type": "text",
+              "text": " 會被混用的原因之一。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "流通中的說法",
+            "誰這樣主張",
+            "屬於哪一級的依據"
+          ],
+          "rows": [
+            [
+              "GEO 是針對生成引擎的新方法，傳統 SEO 做法不直接適用",
+              "GEO 原始論文",
+              "一手學術文獻，結論限於論文自己的設定"
+            ],
+            [
+              "為生成式 AI 搜尋做最佳化就是為搜尋體驗做最佳化，仍然是 SEO",
+              "Google Search Central 官方文件",
+              "搜尋引擎官方文件說明的立場"
+            ],
+            [
+              "GEO 不取代 SEO，而是補足 SEO",
+              "Semrush 官方部落格",
+              "廠商的行銷內容，該頁同時推銷自家付費工具"
+            ],
+            [
+              "SEO 讓你被點擊，GEO 讓你被引述；AEO 是上位詞",
+              "HubSpot 官方部落格",
+              "廠商的行銷內容"
+            ]
+          ],
+          "caption": "三種說法同時流通，本表於 2026 年 9 月查證；這裡只記錄誰這樣主張，不代表本站判定誰對。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "上位、子集，還是改名：三種說法各是誰在說"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一種說法來自 Google 自己的開發者文件。那份講生成式 AI 功能最佳化的文件有一小節直接處理這兩個縮寫：AEO 與 GEO 都被用來描述專門提升 AI 搜尋曝光的工作，但從 Google 搜尋的角度，為生成式 AI 搜尋做最佳化就是為搜尋體驗做最佳化，因此仍然是 SEO；同一頁也要讀者拿第三方的 AEO 或 GEO 建議對照官方指引。這是官方文件說明的立場，該頁標示的最後更新日是 2026-07-10。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二種來自論文本身：傳統 SEO 的做法不能直接套到生成引擎上，所以需要新方法。這是一手學術文獻的主張，範圍限於它自己的實驗設定。第三種來自廠商的行銷內容：Semrush 的部落格寫 GEO 不取代 SEO 而是補足它；HubSpot 的部落格把 AEO 當成上位詞、GEO 放在底下。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文不替他們裁決誰對，因為三方講的不是同一件事：Google 講它自己的系統從哪裡取材，論文講一組可量測的內容改寫，行銷公司講一種服務怎麼分類。你要做的是先看清楚對方用哪一種定義。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "哪些 GEO 建議其實是舊的內容品質建議"
+        },
+        {
+          "type": "paragraph",
+          "text": "論文測了九種改寫方法：引用來源、加入引述、加入統計數字、流暢度優化、關鍵字堆砌、權威語氣、獨特用詞、專業術語、易讀化。把名字換掉之後，大半就是編輯台原本就有的建議：把話寫清楚、標出資料從哪來、必要時給得出數字。唯一一個典型的舊 SEO 技巧關鍵字堆砌，在論文的設定裡表現最差，論文寫它對生成引擎的回答幾乎沒有改善。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的文件講同一件事用的是另一套話：要出現在 AI 摘要或 AI 模式裡沒有額外要求，也不需要新增機器可讀檔案、AI 文字檔或標記，頁面要能被索引、能顯示摘要，其餘回到內容本身。這是官方文件說明的機制。兩邊的交集不需要任何新縮寫。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎麼判讀一份 GEO 提案"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下面五個問題可以把對話拉回證據上。生成式答案怎麼被組出來，另外整理在"
+            },
+            {
+              "type": "article",
+              "text": "生成式答案",
+              "kind": "life",
+              "slug": "ai-search-generated-answers"
+            },
+            {
+              "type": "text",
+              "text": "，這篇不重複。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "問定義的出處：有指名那篇論文嗎，還是只給了一個自訂說法？",
+            "問指標怎麼算：是論文的位置加權字數與主觀印象，還是廠商自己的 AI 能見度分數？後者誰定義、誰計算、能不能重現？",
+            "問量的是哪個引擎、哪一天、哪一組問題：這三項一換結果就不同，沒有標明的數字無法對照。",
+            "看它有沒有保證結果：Google 的第三方 SEO 指引寫著使用某個服務或工具並不保證排名成功，也寫第三方工具拿不到 Google 內部的排名資料。這是官方文件說明。",
+            "看扣掉名詞之後還剩什麼：若剩下的是寫清楚、標來源、定期更新，那是內容品質建議，換個縮寫不會變成新技術。"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "數字要連著設定一起讀",
+          "text": "看到「GEO 可以提升 40% 曝光」這種句子，先還原成完整版：那是該論文在它自己的 10,000 筆查詢集、自己定義的兩個指標、以 gpt3.5-turbo 組成的生成引擎上量到的上限值。換成別的引擎、別的題目、別的網站，這個數字沒有被驗證過。本站沒有做過 GEO 實測，也不承諾任何排名、索引、引用或流量結果。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "GEO: Generative Engine Optimization（論文 arXiv 摘要頁）",
+          "url": "https://arxiv.org/abs/2311.09735",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GEO: Generative Engine Optimization（論文全文 HTML 版，含 GEO-Bench 與指標定義）",
+          "url": "https://arxiv.org/html/2311.09735v3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GEO: Generative Engine Optimization（KDD 2024 論文集頁面）",
+          "url": "https://dl.acm.org/doi/10.1145/3637528.3671900",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Optimizing your website for generative AI features on Google Search（Google Search Central 官方文件）",
+          "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AI features and your website（Google Search Central 官方文件）",
+          "url": "https://developers.google.com/search/docs/appearance/ai-features",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Search's guidance on using third-party SEO tools, services, and advice（Google Search Central 官方文件）",
+          "url": "https://developers.google.com/search/docs/fundamentals/third-party-seo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Generative Engine Optimization (GEO): A Practical Guide（Semrush 官方部落格，該公司的行銷內容）",
+          "url": "https://www.semrush.com/blog/generative-engine-optimization/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Generative engine optimization: What we know so far about generative SEO（HubSpot 官方部落格，該公司的行銷內容）",
+          "url": "https://blog.hubspot.com/marketing/generative-engine-optimization",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
