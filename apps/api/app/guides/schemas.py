@@ -588,6 +588,28 @@ class PublicList(BaseModel):
     next_cursor: str | None = None
 
 
+class GuideSearchHit(PublicSummary):
+    """A result card: the summary plus the passage the match was found in."""
+
+    # A passage of the body around the first matched term, or the description when the
+    # match sits in the title or the aliases only. Plain text; the web marks the terms.
+    snippet: str
+    # The terms the query was parsed into, folded, so the web can highlight them.
+    matched: list[str]
+
+
+class GuideSearchResult(BaseModel):
+    query: str
+    total: int
+    offset: int
+    limit: int
+    results: list[GuideSearchHit]
+    # The article whose alias or title *is* the query, shown above the ranked list and
+    # left out of it.
+    best_match: PublicSummary | None = None
+    next_offset: int | None = None
+
+
 class PublicPartnerLink(BaseModel):
     """One partner link the reader may see, resolved against the registry at read time.
 

@@ -23,6 +23,7 @@ from sqlalchemy import (
     Index,
     Integer,
     String,
+    Text,
     UniqueConstraint,
 )
 from sqlalchemy.orm import Mapped, mapped_column
@@ -179,3 +180,82 @@ class GuideArticleTopic(Base):
     topic_id: Mapped[UUID] = mapped_column(
         ForeignKey("guide_topics.id", ondelete="CASCADE"), index=True
     )
+
+
+class GuideSearchEntry(Base):
+    """One published translation, flattened for the reader's search box.
+
+    The article's text lives in a block document inside an append-only revision row; a
+    search cannot LIKE its way through JSON, and it must never see a draft. So publication
+    writes one row here per (article, locale) and withdrawal deletes it, in the same
+    transaction as the pointer move (``admin_service._write_revision``). Nothing else about
+    the article is copied: kind, destination, topics, validity and the hidden switch stay
+    on ``guide_articles`` and are joined at query time, so hiding or expiring an article
+    takes it out of the results without touching this table.
+
+    The ``*_norm`` columns are NFKC-folded and casefolded once at write time so the query
+    can compare with a plain ``LIKE`` on both PostgreSQL and SQLite: ``ILIKE`` does not exist
+    on the latter and its ``lower()`` only folds ASCII. ``search_text`` is the concatenation
+    the match runs on; the PostgreSQL trigram index over it is created by migration 0077,
+    not declared here, because ``pg_trgm`` is an extension a fresh ``0001`` cannot assume.
+    """
+
+    __tablename__ = "guide_search_entries"
+    __table_args__ = (
+        UniqueConstraint("article_id", "locale", name="uq_guide_search_entry_locale"),
+        CheckConstraint(LOCALE_CHECK, name="ck_guide_search_entry_locale"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    article_id: Mapped[UUID] = mapped_column(
+        ForeignKey("guide_articles.id", ondelete="CASCADE"), index=True
+    )
+    locale: Mapped[str] = mapped_column(String(16), index=True)
+    # The published version the row was built from; ``guide_article_locales.published_version``
+    # must agree, or the row is stale and the query leaves it out.
+    revision_version: Mapped[int] = mapped_column(Integer)
+    title: Mapped[str] = mapped_column(String(200))
+    description: Mapped[str] = mapped_column(String(500))
+    title_norm: Mapped[str] = mapped_column(String(200))
+    description_norm: Mapped[str] = mapped_column(String(500))
+    headings_norm: Mapped[str] = mapped_column(Text)
+    aliases_norm: Mapped[str] = mapped_column(Text)
+    # The body as readable text (NFKC, whitespace folded, case kept) for the snippet.
+    body_text: Mapped[str] = mapped_column(Text)
+    search_text: Mapped[str] = mapped_column(Text)
+    hero_json: Mapped[dict[str, Any] | None] = mapped_column(
+        JSON(none_as_null=True), nullable=True
+    )
+    published_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    indexed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class GuideArticleAlias(Base):
+    """Another name a reader may type for an article, in one language.
+
+    ``term`` aliases come from the AI glossary (``ML`` for the machine-learning article),
+    ``series`` ones from a course catalogue's keyword hints, ``keyword`` from an editor's
+    suffix list and ``editor`` from the admin panel. A name only one published article in
+    the language carries is that article's exact match and heads the results; a name
+    several share is a ranking hint and nothing more. Uniqueness is therefore per article,
+    not per language: two lessons may both answer to ``powershell``.
+    """
+
+    __tablename__ = "guide_article_aliases"
+    __table_args__ = (
+        UniqueConstraint("article_id", "locale", "alias_norm", name="uq_guide_article_alias"),
+        CheckConstraint(LOCALE_CHECK, name="ck_guide_article_alias_locale"),
+        CheckConstraint(
+            "source IN ('term', 'keyword', 'series', 'editor')",
+            name="ck_guide_article_alias_source",
+        ),
+        Index("ix_guide_article_aliases_lookup", "locale", "alias_norm"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    article_id: Mapped[UUID] = mapped_column(
+        ForeignKey("guide_articles.id", ondelete="CASCADE"), index=True
+    )
+    locale: Mapped[str] = mapped_column(String(16))
+    alias: Mapped[str] = mapped_column(String(120))
+    alias_norm: Mapped[str] = mapped_column(String(120))
+    source: Mapped[str] = mapped_column(String(16))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)

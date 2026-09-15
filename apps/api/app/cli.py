@@ -35,6 +35,7 @@ from app.foods.service import seed_food_catalog
 from app.foods.trend_import import DEFAULT_FILE as TREND_MERCHANTS_FILE
 from app.foods.trend_import import backfill_english_names, import_trend_merchants
 from app.guides.content_pack import ContentPackError, apply_import, load_packs, plan_import
+from app.guides.search_cli import reindex_guide_search, seed_guide_aliases
 from app.holidays.refresh import HolidaySourceError
 from app.holidays.refresh import refresh as refresh_holidays
 from app.hotspots.candidate_cli import import_candidates
@@ -928,6 +929,29 @@ def main() -> None:
     guides_import.add_argument(
         "--dry-run", action="store_true", help="Validate and print the plan without writing"
     )
+    guides_reindex = subparsers.add_parser(
+        "guides-search-reindex",
+        help=(
+            "Rebuild the article search index from the published revisions. Run once after "
+            "migration 0077 and after any bulk publish that bypassed the admin write path."
+        ),
+    )
+    guides_reindex.add_argument(
+        "--dry-run", action="store_true", help="Report what would change without writing"
+    )
+    guides_aliases = subparsers.add_parser(
+        "guides-aliases-seed",
+        help=(
+            "Seed article aliases from the AI glossary alias list and the series catalogues; "
+            "only rows that do not exist yet are added"
+        ),
+    )
+    guides_aliases.add_argument(
+        "--terms-file", help="Path to aliases.json (defaults to docs/ai-terms-series/aliases.json)"
+    )
+    guides_aliases.add_argument(
+        "--dry-run", action="store_true", help="Report what would be inserted without writing"
+    )
     guide_review = subparsers.add_parser(
         "review-pending-guides",
         help=(
@@ -1022,6 +1046,17 @@ def main() -> None:
         print(json.dumps(outcome, ensure_ascii=False, indent=2))
         if outcome.get("failed"):
             raise SystemExit(1)
+    elif args.command == "guides-search-reindex":
+        outcome = asyncio.run(reindex_guide_search(dry_run=args.dry_run))
+        print(json.dumps(outcome, ensure_ascii=False, indent=2))
+    elif args.command == "guides-aliases-seed":
+        outcome = asyncio.run(
+            seed_guide_aliases(
+                terms_file=Path(args.terms_file) if args.terms_file else None,
+                dry_run=args.dry_run,
+            )
+        )
+        print(json.dumps(outcome, ensure_ascii=False, indent=2))
     elif args.command == "create-admin":
         asyncio.run(create_admin(args.email, _read_password(args.password_stdin)))
     elif args.command == "verify-airline-crawlers":

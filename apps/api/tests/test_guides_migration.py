@@ -38,6 +38,8 @@ GUIDE_TABLES = (
     "guide_article_locales",
     "guide_article_revisions",
     "guide_article_topics",
+    "guide_search_entries",
+    "guide_article_aliases",
 )
 
 
@@ -626,3 +628,59 @@ def test_0076_adds_the_hierarchy_and_its_rollback_spares_the_earlier_vocabulary(
             # The rebuild kept the table's other indexes.
             names = {index["name"] for index in sa.inspect(connection).get_indexes("guide_topics")}
             assert "ix_guide_topics_active_order" in names
+
+
+@pytest.mark.parametrize("fresh_metadata", [False, True])
+def test_0077_creates_the_search_tables_once_and_its_rollback_drops_only_them(
+    monkeypatch, fresh_metadata
+):
+    """0077 on both shapes: a database 0076 upgraded, and a fresh one where 0001 already
+    built both tables from the models. Either way the tables exist afterwards with the
+    constraints the service relies on, a re-run is a no-op, and the rollback drops
+    exactly the two tables while the article tables stay.
+    """
+    from app.guides.models import GuideArticleAlias, GuideSearchEntry
+
+    module = migration("0077_guide_search_and_aliases")
+    monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
+    engine = sa.create_engine("sqlite://")
+    with engine.begin() as connection:
+        tables = [
+            User.__table__,
+            GuideTopic.__table__,
+            GuideArticle.__table__,
+            GuideArticleLocale.__table__,
+            GuideArticleRevision.__table__,
+        ]
+        if fresh_metadata:
+            tables += [GuideSearchEntry.__table__, GuideArticleAlias.__table__]
+        Base.metadata.create_all(connection, tables=tables)
+        plant_history(connection)
+        with Operations.context(MigrationContext.configure(connection)):
+            module.upgrade()
+            names = set(sa.inspect(connection).get_table_names())
+            assert {"guide_search_entries", "guide_article_aliases"} <= names
+            unique = {
+                constraint["name"]
+                for constraint in sa.inspect(connection).get_unique_constraints(
+                    "guide_article_aliases"
+                )
+            }
+            assert "uq_guide_article_alias" in unique
+            indexes = {
+                index["name"]
+                for index in sa.inspect(connection).get_indexes("guide_article_aliases")
+            }
+            assert "ix_guide_article_aliases_lookup" in indexes
+            # The migration builds no rows: the index is filled by publication and the
+            # reindex command, never by a schema change.
+            assert connection.scalar(sa.select(sa.func.count()).select_from(GuideSearchEntry)) == 0
+
+            module.upgrade()  # a re-run finds the tables and does nothing
+
+            module.downgrade()
+            names = set(sa.inspect(connection).get_table_names())
+            assert not names & {"guide_search_entries", "guide_article_aliases"}
+            assert {"guide_articles", "guide_article_locales", "guide_article_revisions"} <= names
+            assert connection.scalar(sa.select(sa.func.count()).select_from(GuideArticle)) == 1
+    engine.dispose()

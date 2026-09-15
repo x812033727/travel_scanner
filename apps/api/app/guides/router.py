@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.affiliates.content_links import CONTENT_PARTNERS
 from app.auth.service import AdminUser
 from app.db import get_session
-from app.guides import admin_service, service, taxonomy
+from app.guides import admin_service, search, service, taxonomy
 from app.guides.publication import ArticleStatus
 from app.guides.schemas import (
     ArticleCreate,
@@ -22,6 +22,7 @@ from app.guides.schemas import (
     DestinationFacetList,
     DraftWrite,
     GuideDocument,
+    GuideSearchResult,
     Kind,
     PublicArticle,
     PublicList,
@@ -38,7 +39,12 @@ from app.guides.schemas import (
 )
 from app.guides.series import public_series, public_series_index
 from app.i18n import Locale
-from app.infra import client_ip, enforce_named_rate_limit
+from app.infra import (
+    client_ip,
+    enforce_named_rate_limit,
+    over_named_rate_limit,
+    record_rate_limit_hit,
+)
 from app.problems import AppError
 
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -70,6 +76,50 @@ async def list_public(
         topic=topic,
         cursor=cursor,
         limit=limit,
+    )
+
+
+# A reader's search box, not an editor's: 120 queries a minute per address is far more
+# than a person types and far less than a scraper wants. The limiter fails open on
+# purpose (``over_named_rate_limit``): a search that goes dark because Redis blinked is
+# the worse outcome, and the hit is recorded so a threshold can be judged before it bites.
+SEARCH_RATE_LIMIT = 120
+SEARCH_RATE_WINDOW_SECONDS = 60
+
+
+@public_router.get("/search", response_model=GuideSearchResult)
+async def search_public(
+    request: Request,
+    response: Response,
+    session: Session,
+    q: str = Query(min_length=1, max_length=search.MAX_QUERY_LENGTH),
+    locale: Locale = "zh-TW",
+    kind: Kind | None = None,
+    section: Section | None = None,
+    destination: str | None = Query(default=None, max_length=64),
+    country: str | None = Query(default=None, max_length=32),
+    topic: str | None = Query(default=None, max_length=64),
+    limit: int = Query(default=10, ge=1, le=search.MAX_LIMIT),
+    offset: int = Query(default=0, ge=0, le=search.MAX_OFFSET),
+) -> GuideSearchResult:
+    response.headers["Cache-Control"] = "no-store"
+    ip = client_ip(request)
+    if await over_named_rate_limit(
+        "guide-search", ip, limit=SEARCH_RATE_LIMIT, window_seconds=SEARCH_RATE_WINDOW_SECONDS
+    ):
+        await record_rate_limit_hit("guide-search", ip)
+        raise AppError(429, "rate_limit_exceeded", "請求過於頻繁，請稍後再試")
+    return await search.search(
+        session,
+        locale,
+        q=q,
+        kind=kind,
+        section=section,
+        destination=destination,
+        country=country,
+        topic=topic,
+        limit=limit,
+        offset=offset,
     )
 
 

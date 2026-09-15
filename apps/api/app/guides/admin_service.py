@@ -21,6 +21,7 @@ from app.admin.schemas import AdminAuditView
 from app.affiliates.content_links import affiliate_marker, partner_link_problem
 from app.db import escape_like
 from app.destinations.catalog import destination_for_id
+from app.guides import search
 from app.guides.models import (
     GuideArticle,
     GuideArticleLocale,
@@ -333,6 +334,19 @@ async def _write_revision(
         )
         if changed is None:
             raise AppError(409, "guide_version_conflict", "這篇文章已被更新，請重新載入後再操作")
+        # The search index moves with the published pointer, in the same transaction: a
+        # reader can never find a withdrawn translation or miss a published one.
+        if action == "published":
+            await search.index_locale(
+                session,
+                article.id,
+                row.locale,
+                document,
+                version=new_version,
+                published_at=values["published_at"],
+            )
+        elif action == "unpublished":
+            await search.drop_locale(session, article.id, row.locale)
         session.add(
             GuideArticleRevision(
                 id=revision_id,

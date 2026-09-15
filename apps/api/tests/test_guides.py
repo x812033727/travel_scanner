@@ -25,9 +25,11 @@ from app.config import get_settings
 from app.db import Base, get_session
 from app.guides.models import (
     GuideArticle,
+    GuideArticleAlias,
     GuideArticleLocale,
     GuideArticleRevision,
     GuideArticleTopic,
+    GuideSearchEntry,
     GuideTopic,
 )
 from app.guides.publication import today
@@ -43,6 +45,9 @@ TABLES = [
     GuideArticleLocale.__table__,
     GuideArticleRevision.__table__,
     GuideArticleTopic.__table__,
+    # Publication writes the search row and withdrawal deletes it (tests/test_guides_search.py).
+    GuideSearchEntry.__table__,
+    GuideArticleAlias.__table__,
     AdminAuditLog.__table__,
     # Partner-link clicks are counted here (tests/test_guide_partner_links.py).
     AffiliateClick.__table__,
@@ -1005,8 +1010,14 @@ async def test_an_admin_without_content_capability_cannot_write(database, actor)
 
 async def test_public_reads_never_require_an_account(database) -> None:
     async with client(make_app(database)) as api:
-        for path in ("/guides", "/guides/topics", "/guides/sitemap", "/guides/sitemap/summary"):
-            response = await api.get(path, params={"locale": "zh-TW"})
+        for path, params in (
+            ("/guides", {}),
+            ("/guides/topics", {}),
+            ("/guides/sitemap", {}),
+            ("/guides/sitemap/summary", {}),
+            ("/guides/search", {"q": "東京"}),
+        ):
+            response = await api.get(path, params={"locale": "zh-TW", **params})
             assert response.status_code == 200
             assert response.headers["Cache-Control"] == "no-store"
 

@@ -1712,22 +1712,27 @@ _GUIDE_ERRORS: dict[Locale, dict[str, str]] = {
     "zh-TW": {
         "guide_article_unavailable": "暫時無法取得這篇文章，請稍後再試",
         "guide_cursor_invalid": "這頁文章清單已失效，請重新瀏覽",
+        "guide_search_query_invalid": "請輸入要搜尋的字詞",
     },
     "zh-CN": {
         "guide_article_unavailable": "暂时无法获取这篇文章，请稍后重试",
         "guide_cursor_invalid": "这页文章列表已失效，请重新浏览",
+        "guide_search_query_invalid": "请输入要搜索的字词",
     },
     "en": {
         "guide_article_unavailable": "This guide is temporarily unavailable; try again later",
         "guide_cursor_invalid": "This page of guides is no longer valid; browse again",
+        "guide_search_query_invalid": "Enter a word or phrase to search for",
     },
     "ja": {
         "guide_article_unavailable": "この記事を取得できません。しばらくしてから再試行してください",
         "guide_cursor_invalid": "この記事一覧ページは無効です。最初から表示し直してください",
+        "guide_search_query_invalid": "検索する語句を入力してください",
     },
     "ko": {
         "guide_article_unavailable": "이 글을 가져올 수 없습니다. 잠시 후 다시 시도해 주세요",
         "guide_cursor_invalid": "유효하지 않은 목록 페이지입니다. 다시 둘러봐 주세요",
+        "guide_search_query_invalid": "검색할 단어나 문구를 입력해 주세요",
     },
 }
 for _guide_locale, _guide_errors in _GUIDE_ERRORS.items():
