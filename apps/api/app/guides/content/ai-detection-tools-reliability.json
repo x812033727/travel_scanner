@@ -1,0 +1,384 @@
+{
+  "slug": "ai-detection-tools-reliability",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 偵測工具準不準：官方自己寫的限制與誤判",
+      "description": "AI 偵測工具準不準？這篇不評分也不做實測，只把 GPTZero、Turnitin、OpenAI、SynthID 與 C2PA 官方頁面當天寫的用途、自報準確率與限制原文整理成一張對照表：誤判、300 字門檻、1% 到 19% 只標星號、改寫後失效、支援語言沒有中文，以及 OpenAI 自己把文字分類器下架的公告。最後給學校與公司該怎麼用的官方建議，和一套用自己舊文章測誤判的方法。",
+      "hero": {
+        "src": "/guides/ai-detection-tools-reliability/hero.jpg",
+        "alt": "一份文件上疊著一個放大鏡圓圈，圈內的線條變成虛線，右邊一個半圓儀表的指針停在中間，代表判斷停在不確定。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "AI 偵測工具準不準，最誠實的答案寫在各家官方頁面上：GPTZero 寫「結果不應用來處罰學生」，Turnitin 寫 AI 寫作報告是「用來開啟一段對話，不是結束一段對話」，OpenAI 的教育工作者說明頁被問到偵測器有沒有用時，第一句回答是「就我們的經驗而言，沒有」。廠商自報的準確率很高，但同一批頁面也把誤判、改寫後失效、非英文較弱寫得很清楚：偵測結果只能當成要不要問一句的訊號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把文字偵測與圖片影片偵測分開講，抄出各家官方自己寫的用途與限制，附一張對照表，再給一套自測法：拿自己在生成式 AI 普及前寫的舊文章去測，看會不會被標成 AI。本文沒有登入或實測任何工具，也不引用第三方評測。"
+        },
+        {
+          "type": "heading",
+          "text": "兩種偵測完全不同：一種是猜，一種是查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一種是文字偵測。GPTZero 的常見問題頁自己解釋過原理：偵測器找的是比較可能由機器寫出來的模式，最常看 perplexity（是不是過於好預測）、burstiness（句長與風格的變化幅度）與整體風格。文字本身沒有內建標記，所以這是統計上的猜測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二種是圖片、影片與聲音的偵測，查的是檔案裡有沒有標記：Google 的 SynthID 隱形浮水印，或 C2PA 規範的內容憑證。有標記時你知道某個工具處理過這個檔案，沒查到時你只知道沒查到。Google 的驗證說明頁寫得很直白：沒有偵測到 SynthID 浮水印，代表這不是 Google 的 AI 做的或改的，但仍然可能是其他 AI 系統做的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把兩種混在一起就會出現最常見的誤用：拿一個機率當判決，或拿查不到浮水印當清白證明。官方都沒有這樣主張過。"
+        },
+        {
+          "type": "heading",
+          "text": "文字偵測：把各家官方自己寫的限制讀完",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "GPTZero 在官方頁面自報的數字是：整體準確率 99%；在 RAID 基準上偵測出 95.7% 的 AI 文字、同時把 1% 的人寫文字誤標為 AI；人機混寫的文件準確率 96.5%。這些都是廠商自報，本文不查證也不評分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一頁的限制段落寫的是另一回事：永遠存在把 AI 判成人、把人判成 AI 的邊緣案例；送進去的文字愈多愈準，文件層級比段落層級準、段落又比句子準；訓練資料大多是成年人寫的英文散文；模型並未被訓練來辨識生成之後經過大幅修改的文字；有時會把高度程式化的文字標成 AI。針對英語非母語者的誤判率則被反覆訓練到 1%。官方列出完整支援的語言是英文、德文、葡萄牙文、法文與西班牙文，並註明偵測在英文散文最強，沒有中文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Turnitin 把用途寫成協助教育工作者、出版者與研究者辨識繳交的作品裡，是否用過 ChatGPT 這類 AI 寫作工具、文字改寫器，或被稱為 humanizer 的規避工具。自報數字是：誤判率低於 1%；一份被判定超過 20% 可能是 AI 生成的文件，誤判風險低於 1%；英語學習者的近 2,000 份樣本上誤判率 0.014，母語者 0.013。官方檔案需求是至少 300 字的長篇散文、不超過 30,000 字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "限制同樣寫在官方頁面上。判定落在 1% 到 19% 時，報告只顯示一個星號、不給百分比也不標句子，官方說這是為了避免低信心的結果引發不必要的對話。檔案需求頁列的支援語言是英文、西班牙文與日文，部落格另外宣布已擴充到阿拉伯文，同樣沒有中文，中文作業能不能跑以官網為準。改寫與規避工具的偵測只支援英文提交。更新說明頁也寫，模型更新不會回溯重算舊報告，要重新提交才會拿到新分數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 是唯一一家自己把工具收掉的。官方頁面記載，AI Text Classifier 在英文的 challenge set 上只正確標出 26% 的 AI 文字，同時把 9% 的人寫文字誤標為 AI。官方列的限制包括：不應作為主要決策工具；低於 1,000 個字元的短文非常不可靠；有時人寫的文字會被錯誤而且有信心地標成 AI；只建議用於英文，對程式碼不可靠；AI 寫的文字可以被編輯來規避。同一頁最上方現在掛著一行公告：自 2023 年 7 月 20 日起，這個分類器因為準確率太低而下架。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 今天的教育工作者說明頁講得更直接：他們的研究並未顯示偵測器夠可靠，理由是教育工作者可能因此對學生做出有長期後果的判斷。官方舉的例子是他們自己訓練偵測器時，它把莎士比亞的文字與美國獨立宣言標成 AI 生成；也有跡象顯示，這類工具會對把英文當第二語言學習的學生，以及寫作特別公式化或簡潔的學生造成不成比例的影響。同一頁還提醒：把文章貼給 ChatGPT 問這是不是 AI 寫的沒有意義，那種回答是隨機的。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "偵測什麼",
+            "官方寫的限制"
+          ],
+          "rows": [
+            [
+              "GPTZero（文字）",
+              "文字是不是大型語言模型寫的，給文件、句子與字詞層級的判斷",
+              "結果不應用來處罰學生；文件層級比段落、句子層級準；訓練資料以成年人寫的英文散文為主；未被訓練來辨識生成後大幅修改過的文字；有時把高度程式化的文字標成 AI"
+            ],
+            [
+              "Turnitin AI 寫作偵測",
+              "學生或研究者繳交的長篇散文裡，有多少比例可能是 AI 生成或被 AI 改寫",
+              "至少 300 字、不超過 30,000 字；官方檔案需求頁列英文、西班牙文、日文，部落格另宣布阿拉伯文；1% 到 19% 只標星號不給分數；分數不應成為誠信決定的唯一依據；改寫與規避偵測只支援英文"
+            ],
+            [
+              "OpenAI AI Text Classifier（已下架）",
+              "文字是不是 AI 寫的",
+              "官方頁寫不應作為主要決策工具；低於 1,000 個字元很不可靠；只建議用於英文，對程式碼不可靠；AI 文字可以編輯來規避；2023 年 7 月 20 日官方以準確率太低為由下架"
+            ],
+            [
+              "SynthID（在 Gemini 裡驗證）",
+              "Google 生成式 AI 產品產出或編輯過的圖片、影片、聲音與文字裡的隱形浮水印",
+              "Gemini 目前只認得 Google AI 工具建立的內容；沒驗到浮水印不代表不是其他 AI 做的；內容太簡單或編輯幅度太小會判不出來；文字浮水印在事實型回答較弱，徹底改寫或翻譯後信心分數大幅下降"
+            ],
+            [
+              "內容憑證（C2PA）",
+              "檔案的來源與編輯歷程，由每一個處理過的軟體簽章",
+              "記錄的是歷程不是真假，Google 說明頁寫它不會告訴你檔案一定是 AI 生成；憑證可能被移除，要靠 durable credentials 這類機制才找得回來；Gemini 只接受 2.2 版以後、在 C2PA 合規產品清單上的憑證"
+            ]
+          ],
+          "caption": "依 2026 年 9 月 15 日各家官方頁面整理；準確率數字都是廠商自報，本表只轉述官方寫的用途與限制。"
+        },
+        {
+          "type": "heading",
+          "text": "圖片、影片與聲音：查的是標記，不是像不像 AI",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google DeepMind 的官方頁面把 SynthID 說成浮水印工具：把看不見的數位浮水印直接嵌進 AI 生成的圖片、聲音、文字或影片，人看不出來，但可以被 SynthID 的技術偵測到。圖片與影片的浮水印在設計上要能撐過裁切、加濾鏡、改影格率與失真壓縮。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的查法是把檔案上傳到 Gemini 直接問。說明頁列的限制很具體：雖然其他公司開始採用 SynthID 浮水印，Gemini 目前只認得 Google AI 工具建立的內容；驗不出來的常見原因有兩種，一是內容太簡單、沒有足夠細節可以加浮水印，二是編輯幅度太小。額度是每 24 小時大約各 10 次圖片、影片與聲音檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文字浮水印是另一回事。Google 給開發者的 SynthID Text 文件寫明偵測是機率性的，會輸出有浮水印、沒有浮水印、不確定三種狀態；浮水印在事實型回答上比較不容易加進去，而當一段 AI 文字被徹底改寫或翻譯成另一種語言時，信心分數會大幅下降。官方還把偵測器的公開程度交給模型業者決定：可以完全不公開、只透過 API 提供，或公開。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "內容憑證走的是另一條路：不猜像不像 AI，而是記錄誰做的、經過哪些軟體、改過什麼。C2PA 的官方常見問題寫，憑證是可被密碼學驗證、防竄改的資料結構，但也承認憑證可能被移除，所以才有靠隱形浮水印找回憑證的機制。Google 的說明頁則直接列出內容憑證不做什麼：它不會告訴你一個檔案一定是 AI 生成的。這兩件事站上各有專篇，"
+            },
+            {
+              "type": "link",
+              "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
+              "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+            },
+            {
+              "type": "text",
+              "text": " 講各家怎麼標、怎麼查，"
+            },
+            {
+              "type": "link",
+              "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+            },
+            {
+              "type": "text",
+              "text": " 講憑證能證明什麼、不能證明什麼，這裡就不重複。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "學校與公司該怎麼用：照官方頁面自己的建議",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三家官方的立場一致。Turnitin 寫得最完整：他們不對不當行為做判定，只提供資料讓教育工作者依照學術與機構政策做決定；既然誤判率不是零，老師就必須加上專業判斷。官方給的三個提醒是：事前先把誤判的可能性想好並講給學生聽；假設學生出於善意；公開誠實地談。"
+        },
+        {
+          "type": "paragraph",
+          "text": "碰到高分數時，官方建議的順序是：先下載完整報告，跟其他線索放在一起看；不論工具給出什麼分數，沒有真正談過就不該指控學生；請學生拿出研究筆記、版本紀錄或早期草稿；跟過去的作品比對風格與用字；調查完仍無法得到明確結論時，不指控也不處罰。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPTZero 寫的是同一套：把偵測當成開啟對話的訊號，看長期模式而不是單一次結果，並請學生拿出寫作過程的痕跡，例如編輯紀錄顯示文字是分好幾次敲出來的。OpenAI 則建議請學生分享自己與 ChatGPT 的對話連結，讓老師看得到提問品質與思考過程。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "把偵測分數寫進規則時，先寫清楚它只是啟動對話的門檻、不是處分依據，並公告給被評量的人。",
+            "同一份文字換工具、換月份都可能得到不同分數，不要拿隔了一段時間的兩份報告互相佐證。",
+            "先確認語言在官方支援清單裡；中文不在任何一家列出的語言中，分數怎麼解讀以官網為準。",
+            "要求提出偵測結果的一方交代：哪個工具、哪一天跑的、門檻多少、報告原檔在哪。",
+            "把過程證據制度化，例如專案一開始就收一份現場寫的短文當比對樣本。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "學生端該怎麼標示、怎麼留紀錄，站上另外寫在 "
+            },
+            {
+              "type": "link",
+              "text": "學生怎麼用 AI 不踩線：學習、整理筆記與學術誠信",
+              "url": "https://mokaair.com/zh-TW/life/ai-for-students-honest-use"
+            },
+            {
+              "type": "text",
+              "text": "；老師端把作業改成難以用 AI 一次生成的形式，可以參考 "
+            },
+            {
+              "type": "link",
+              "text": "老師用 Claude：出題、教案與批改回饋",
+              "url": "https://mokaair.com/zh-TW/life/claude-for-teachers-lesson-plans"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-detection-tools-reliability/diagram-1.svg",
+          "alt": "流程圖：從拿到一份內容開始，分成文字與圖片影片兩條路，各自檢查官方列出的限制，最後都停在同一個結論。",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左邊開始往右讀：文字走上排、圖片影片走下排，兩條路最後都停在同一個結論框。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "讀者自測法：拿自己的舊文章去測誤判",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方寫的誤判率是在他們自己的資料集上量出來的，跟你的文字像不像沒有關係。想知道自己的文字會落在哪裡，最實際的方法是拿確定自己寫的舊文章跑一次。這不是評測，只是讓你先知道工具怎麼看你平常的文字。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "找三到五篇確定是自己在生成式 AI 普及前寫的長文，每篇至少 300 字；短文在各家官方頁面都被列為不可靠。",
+            "同一段文字準備三個版本：原文、只改標點與分段、請 AI 潤稿過，分開測。",
+            "每次把工具、日期、字數、語言、分數與工具給的敘述抄進紀錄表。",
+            "隔一到兩週用同一份文字再測一次，官方寫模型會更新且不回溯舊報告，分數本來就會變。",
+            "看兩件事：人寫的原文有沒有被標成 AI，以及 AI 寫的版本被改寫之後分數掉多少。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "自測紀錄表：每跑一次抄一行，貼進試算表也可以",
+          "code": "日期\t工具\t文章編號\t版本\t語言\t字數\t分數\t工具給的敘述\n2026-09-15\tA\t舊文1\t原文\t中文\t980\t\t\n2026-09-15\tA\t舊文1\t只改標點\t中文\t980\t\t\n2026-09-15\tA\t舊文1\tAI 潤稿\t中文\t1020\t\t\n2026-09-15\tB\t舊文1\t原文\t英文\t760\t\t\n版本欄固定三種：原文／只改標點／AI 潤稿；同一篇隔兩週再抄一輪"
+        },
+        {
+          "type": "paragraph",
+          "text": "注意兩件事。第一，不要上傳含個人資料、公司機密或別人作品的文字：GPTZero 的官方常見問題寫，他們不儲存透過 API 送進去的文件，但從網站儀表板送出的輸入會被保存並用來改進服務。第二，官方寫未登入時單次掃描上限是 10,000 個字元，註冊免費帳號後可以到 150,000 個字元；額度以官網當天頁面為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "被標記時，先要求對方說清楚",
+          "text": "偵測結果不是證據，這句話是各家官方自己寫的：Turnitin 寫分數不應成為任何誠信決定的唯一依據；GPTZero 寫結果不應用來處罰學生；OpenAI 寫他們的研究顯示偵測器不夠可靠。被標記時請拿出過程證據，草稿、版本紀錄、研究筆記、當面說明都算，同時要求對方交代哪個工具、哪一天跑的、門檻多少，以及那份文字符不符合官方列出的字數與語言條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後補一個常被混淆的方向：偵測工具回答的是這段文字是誰寫的，不是對不對，內容有沒有編造是另一套查證流程。"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "paragraph",
+          "text": "什麼時候要主動標示 AI 內容、深偽詐騙怎麼防，以及 AI 到底能做到什麼，站上也各有專篇。"
+        },
+        {
+          "type": "link",
+          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+        },
+        {
+          "type": "link",
+          "text": "AI 詐騙與 Deepfake：台灣案例與防範",
+          "url": "https://mokaair.com/zh-TW/life/ai-scams-deepfake-taiwan"
+        },
+        {
+          "type": "link",
+          "text": "AI 能與不能：2026 年的誠實盤點",
+          "url": "https://mokaair.com/zh-TW/life/ai-hype-vs-reality-2026"
+        }
+      ],
+      "sources": [
+        {
+          "title": "GPTZero 官方網站（首頁常見問題含準確率與限制自述）",
+          "url": "https://gptzero.me/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GPTZero 常見問題（分類器限制、資料處理與 API 說明）",
+          "url": "https://gptzero.me/faq",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GPTZero 教育工作者頁（給老師的建議與限制說明）",
+          "url": "https://gptzero.me/educators",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Turnitin AI 寫作偵測方案頁（用途與英語學習者誤判率）",
+          "url": "https://www.turnitin.com/solutions/topics/ai-writing/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Turnitin 官方部落格：Understanding false positives within our AI writing detection capabilities",
+          "url": "https://www.turnitin.com/blog/understanding-false-positives-within-our-ai-writing-detection-capabilities",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Turnitin 官方部落格：AI writing detection: What academic leaders need to know",
+          "url": "https://www.turnitin.com/blog/ai-writing-detection-what-academic-leaders-need-to-know",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Turnitin 官方部落格：How Turnitin is simplifying AI detection for educators and publishers",
+          "url": "https://www.turnitin.com/blog/how-turnitin-is-simplifying-ai-detection-for-educators-and-publishers",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Turnitin Guides：File requirements for an AI writing report（官方檔案需求）",
+          "url": "https://guides.turnitin.com/hc/en-us/articles/28234943089933-File-requirements-for-an-AI-writing-report",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Turnitin Guides：AI writing detection model（官方模型更新說明）",
+          "url": "https://guides.turnitin.com/hc/en-us/articles/28294949544717-AI-writing-detection-model",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI：New AI classifier for indicating AI-written text（含下架公告）",
+          "url": "https://openai.com/index/new-ai-classifier-for-indicating-ai-written-text/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：How can educators respond to students presenting AI-generated content as their own?",
+          "url": "https://help.openai.com/en/articles/8313351-how-can-educators-respond-to-students-presenting-ai-generated-content-as-their-own",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google DeepMind：SynthID 官方頁",
+          "url": "https://deepmind.google/models/synthid/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google 說明中心：Verify AI-generated images, videos, and audio（Gemini 驗證與限制）",
+          "url": "https://support.google.com/gemini/answer/16722517",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google AI for Developers：SynthID Text（浮水印與偵測的官方限制）",
+          "url": "https://ai.google.dev/responsible/docs/safeguards/synthid",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "C2PA 官方網站",
+          "url": "https://c2pa.org/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "C2PA 官方常見問題（憑證被移除與 durable credentials）",
+          "url": "https://c2pa.org/faqs/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Content Credentials 官方網站",
+          "url": "https://contentcredentials.org/",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

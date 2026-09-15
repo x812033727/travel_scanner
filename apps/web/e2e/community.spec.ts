@@ -139,8 +139,10 @@ test("verified members publish reviewed private images, fork safely and exchange
     await expect(reader.getByRole("log").getByText(`Message ${suffix}`, { exact: true })).toBeVisible();
     await reader.screenshot({ path: info.outputPath("community-conversation.png"), fullPage: true });
     expect(await reader.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
-    // Cut the reader's real network connection while the other member writes.
-    // Reconnection must catch up through durable events without a page reload.
+    // Take the reader offline while the other member writes, then bring it back. setOffline
+    // does not cut an EventSource that is already open: the events still arrive, but the
+    // refreshes they trigger fail, so this checks the catch-up that runs once the browser is
+    // back online, without a page reload, not a Last-Event-ID replay after a reconnect.
     await readerContext.setOffline(true);
     const missed = [`Offline first ${suffix}`, `Offline second ${suffix}`];
     for (const [index, body] of missed.entries()) {

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">帳號端與金鑰端的檢查清單 / Account and API key checklist</title>
+  <desc id="desc">兩欄檢查清單。左欄是帳號端，四項：開第二個驗證步驟，位置在 ChatGPT 設定的安全性分頁與 Google 的登入方式，可選驗證器 App、推播、通行密鑰或簡訊六位數；先改密碼再開驗證，因為開驗證不會踢掉已登入的裝置，登出全部最多要三十分鐘；清掉不認得的裝置，Claude 網頁工作階段長度二十八天，Google 從你的裝置逐一登出；留一條退路，Google 備用碼一組八位數，進階帳號安全的救援金鑰要等四十八小時。右欄是金鑰端，四項：建立時就選到期時間，Claude 可選三小時到三十天或永不到期，OpenAI 建議設到期日並固定輪替；金鑰只放環境變數不進版控，變數名稱是 OPENAI_API_KEY 與 ANTHROPIC_API_KEY，點 env 檔一定要寫進點 gitignore；設用量上限與警示，OpenAI 專案預設帶百分之百門檻警示，Claude 在帳務頁設支出上限，Google 設帳單快訊；外洩時先建新金鑰再刪舊的，新金鑰確認可用之後才停用舊的，公開倉庫被掃到會被官方自動停用。下方橫條寫著兩條線的交會點：登入 Claude 靠 Google 帳號或電子郵件連結，那個信箱被攻破，帳號與金鑰一起失守。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">兩條防線：帳號端與金鑰端的檢查清單</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Account security and API key hygiene checklist</text>
+
+  <rect x="60" y="110" width="730" height="622" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="85" y="152" font-size="22" font-weight="bold" fill="#0D6B68">帳號端：擋住別人登進來</text>
+
+  <rect x="85" y="175" width="680" height="126" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="110" y="215" font-size="20" font-weight="bold" fill="#102A2B">開第二個驗證步驟</text>
+  <text x="110" y="249" font-size="17" fill="#5C6B6B">ChatGPT 在設定的安全性分頁，Google 在登入方式</text>
+  <text x="110" y="279" font-size="17" fill="#5C6B6B">驗證器 App、推播、通行密鑰、簡訊 6 位數</text>
+
+  <rect x="85" y="311" width="680" height="126" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="110" y="351" font-size="20" font-weight="bold" fill="#102A2B">先改密碼，再開驗證</text>
+  <text x="110" y="385" font-size="17" fill="#5C6B6B">開了驗證不會踢掉已經登入的裝置</text>
+  <text x="110" y="415" font-size="17" fill="#5C6B6B">登出全部裝置最多要 30 分鐘才生效</text>
+
+  <rect x="85" y="447" width="680" height="126" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="110" y="487" font-size="20" font-weight="bold" fill="#102A2B">清掉不認得的裝置</text>
+  <text x="110" y="521" font-size="17" fill="#5C6B6B">Claude 網頁工作階段長度 28 天</text>
+  <text x="110" y="551" font-size="17" fill="#5C6B6B">Google 從「你的裝置」逐一登出</text>
+
+  <rect x="85" y="583" width="680" height="126" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="110" y="623" font-size="20" font-weight="bold" fill="#102A2B">留一條進得去的退路</text>
+  <text x="110" y="657" font-size="17" fill="#5C6B6B">Google 備用碼一組 8 位數，印出來收好</text>
+  <text x="110" y="687" font-size="17" fill="#5C6B6B">進階帳號安全的救援金鑰要等 48 小時</text>
+
+  <rect x="810" y="110" width="730" height="622" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="835" y="152" font-size="22" font-weight="bold" fill="#2F6F9F">金鑰端：拿到了也用不久</text>
+
+  <rect x="835" y="175" width="680" height="126" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="860" y="215" font-size="20" font-weight="bold" fill="#102A2B">建立時就選到期時間</text>
+  <text x="860" y="249" font-size="17" fill="#5C6B6B">Claude 可選 3 小時到 30 天，或永不到期</text>
+  <text x="860" y="279" font-size="17" fill="#5C6B6B">OpenAI 建議設到期日並固定輪替</text>
+
+  <rect x="835" y="311" width="680" height="126" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="860" y="351" font-size="20" font-weight="bold" fill="#102A2B">只放環境變數，不進版控</text>
+  <text x="860" y="385" font-size="17" fill="#5C6B6B">OPENAI_API_KEY、ANTHROPIC_API_KEY</text>
+  <text x="860" y="415" font-size="17" fill="#5C6B6B">.env 一定要寫進 .gitignore</text>
+
+  <rect x="835" y="447" width="680" height="126" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="860" y="487" font-size="20" font-weight="bold" fill="#102A2B">設用量上限與警示</text>
+  <text x="860" y="521" font-size="17" fill="#5C6B6B">OpenAI 專案預設帶一個 100% 門檻警示</text>
+  <text x="860" y="551" font-size="17" fill="#5C6B6B">Claude 在帳務頁設上限，Google 設帳單快訊</text>
+
+  <rect x="835" y="583" width="680" height="126" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="860" y="623" font-size="20" font-weight="bold" fill="#B8442D">外洩：先建新，再刪舊</text>
+  <text x="860" y="657" font-size="17" fill="#5C6B6B">新金鑰確認可用之後，才停用或刪除舊的</text>
+  <text x="860" y="687" font-size="17" fill="#5C6B6B">公開倉庫被掃到，官方會自動停用金鑰</text>
+
+  <line x1="425" y1="738" x2="620" y2="766" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1175" y1="738" x2="980" y2="766" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="770" width="1480" height="96" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="800" y="809" font-size="20" font-weight="bold" fill="#D97A2B" text-anchor="middle">兩條線的交會點</text>
+  <text x="800" y="841" font-size="17" fill="#102A2B" text-anchor="middle">登入 Claude 靠 Google 帳號或電子郵件連結，那個信箱被攻破，帳號與金鑰一起失守</text>
+
+  <text x="1540" y="888" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

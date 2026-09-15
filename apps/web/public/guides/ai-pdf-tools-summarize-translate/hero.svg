@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一份文件分出三條路 / One document, three paths</title>
+  <desc id="desc">抽象插圖。左邊是一疊文件頁面，最上面那頁畫著幾條代表文字的橫線。從文件分出三條曲線往右，分別通向三個圓角方塊：第一個是縮短的橫線，代表摘要；第二個是兩個重疊的對話框，代表翻譯成另一種語言；第三個是帶問號的對話框，代表問答。文件下方另有一條曲線通向一把閉合的鎖，代表不能外傳、只在本機處理的檔案。畫面用深綠、藍與橘三種顏色，底色是米色，沒有任何產品標誌或介面。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- stacked document pages -->
+  <rect x="196" y="300" width="250" height="330" rx="18" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="5" transform="rotate(-7 321 465)"/>
+  <rect x="216" y="286" width="250" height="330" rx="18" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5" transform="rotate(-3 341 451)"/>
+  <rect x="240" y="272" width="250" height="330" rx="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <rect x="276" y="318" width="178" height="16" rx="8" fill="#0D6B68"/>
+  <rect x="276" y="356" width="140" height="12" rx="6" fill="#9FB3B3"/>
+  <rect x="276" y="388" width="178" height="12" rx="6" fill="#9FB3B3"/>
+  <rect x="276" y="420" width="120" height="12" rx="6" fill="#9FB3B3"/>
+  <rect x="276" y="452" width="178" height="12" rx="6" fill="#9FB3B3"/>
+  <rect x="276" y="484" width="96" height="12" rx="6" fill="#9FB3B3"/>
+  <rect x="276" y="516" width="150" height="12" rx="6" fill="#9FB3B3"/>
+
+  <!-- three paths out of the document -->
+  <path d="M 500 360 C 700 330, 790 250, 990 250" fill="none" stroke="#0D6B68" stroke-width="7" stroke-linecap="round"/>
+  <path d="M 500 434 C 720 434, 780 434, 990 434" fill="none" stroke="#2F6F9F" stroke-width="7" stroke-linecap="round"/>
+  <path d="M 500 508 C 700 540, 790 618, 990 618" fill="none" stroke="#D97A2B" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- summary card -->
+  <rect x="996" y="168" width="330" height="164" rx="20" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <rect x="1036" y="210" width="210" height="14" rx="7" fill="#0D6B68"/>
+  <rect x="1036" y="244" width="250" height="12" rx="6" fill="#7FA9A7"/>
+  <rect x="1036" y="276" width="160" height="12" rx="6" fill="#7FA9A7"/>
+
+  <!-- translation: two overlapping speech bubbles -->
+  <path d="M 1016 356 h 210 a 20 20 0 0 1 20 20 v 92 a 20 20 0 0 1 -20 20 h -128 l -44 40 v -40 h -38 a 20 20 0 0 1 -20 -20 v -92 a 20 20 0 0 1 20 -20 z" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <rect x="1150" y="396" width="216" height="132" rx="20" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="6"/>
+  <path d="M 1196 446 h 124 M 1196 484 h 84" fill="none" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- question bubble -->
+  <path d="M 1038 560 h 246 a 22 22 0 0 1 22 22 v 84 a 22 22 0 0 1 -22 22 h -176 l -52 44 v -44 h -18 a 22 22 0 0 1 -22 -22 v -84 a 22 22 0 0 1 22 -22 z" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <path d="M 1130 592 a 34 34 0 0 1 56 26 c 0 20 -26 20 -26 34" fill="none" stroke="#D97A2B" stroke-width="13" stroke-linecap="round"/>
+  <circle cx="1160" cy="670" r="9" fill="#D97A2B"/>
+
+  <!-- local-only path to a closed padlock -->
+  <path d="M 366 630 C 366 730, 430 776, 540 776" fill="none" stroke="#2E7D5B" stroke-width="7" stroke-linecap="round" stroke-dasharray="20 18"/>
+  <path d="M 594 748 v -34 a 42 42 0 0 1 84 0 v 34" fill="none" stroke="#2E7D5B" stroke-width="12" stroke-linecap="round"/>
+  <rect x="564" y="748" width="144" height="104" rx="18" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="7"/>
+  <circle cx="636" cy="792" r="13" fill="#2E7D5B"/>
+  <rect x="629" y="798" width="14" height="28" rx="7" fill="#2E7D5B"/>
+
+  <text x="800" y="120" font-size="52" font-weight="bold" fill="#102A2B" text-anchor="middle">一份 PDF，三條路</text>
+</svg>

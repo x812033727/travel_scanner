@@ -1,0 +1,538 @@
+{
+  "slug": "ai-account-security-2fa-api-keys",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "保護你的 AI 帳號：兩步驟驗證與金鑰外洩",
+      "description": "AI 帳號的防線有兩條：登入這一端靠兩步驟驗證與登入中的裝置清單，程式那一端靠 API 金鑰的到期、用量上限與撤銷。這篇照 ChatGPT、Claude、Gemini（Google 帳號）三家當天的官方說明頁，寫清楚各支援哪些驗證方式、設定在哪一層選單、上限設在哪裡、外洩之後官方要你照什麼順序處理，另附環境變數與 .gitignore 的官方原文範例。",
+      "hero": {
+        "src": "/guides/ai-account-security-2fa-api-keys/hero.jpg",
+        "alt": "兩圈虛線防線圍著中央的圓盤與鑰匙孔，右邊是一串代表金鑰的藍色圓點，被兩道紅色斜線切斷，斷線後是虛線框的殘段",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "帳號被盜和 API 金鑰外洩是兩件事。前者是別人拿到登入憑證，走進你的對話與檔案；後者是別人拿到一串能直接呼叫模型的字串，用量記在你的帳單上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇分兩條線寫：帳號端看 ChatGPT、Claude 與 Gemini（Google 帳號）支援哪些驗證方式、設定在哪一層選單、怎麼查登入中的裝置；金鑰端看到期、用量上限與撤銷。全部照三家 2026 年 9 月 15 日當天的官方頁面，本環境不能登入也不實測，畫面文字以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "兩條防線：登入這一端，金鑰那一端",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一層是登入，對話、檔案、記憶與分享連結都綁在這裡；第二層是 API 金鑰，給程式用的憑證，拿到的人不必知道密碼，也不會觸發登入通知。"
+        },
+        {
+          "type": "paragraph",
+          "text": "顧法不同：登入那層靠第二個驗證步驟加上定期清掉不認得的裝置，金鑰那層靠不把字串寫進程式碼與提示詞、建立時設好到期與上限、外洩就撤銷重建。三家用詞也不同：OpenAI 叫多因素驗證，Google 叫兩步驟驗證，Claude 則連密碼都沒有。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "帳號端另有兩個破口：分享出去的連結與模型讀到的外部文字，見 "
+            },
+            {
+              "type": "link",
+              "text": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
+              "url": "https://mokaair.com/zh-TW/life/chatgpt-shared-links-privacy"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "提示詞注入是什麼：使用者該懂的攻擊",
+              "url": "https://mokaair.com/zh-TW/life/ai-prompt-injection-explained"
+            },
+            {
+              "type": "text",
+              "text": "，隱私開關看 "
+            },
+            {
+              "type": "link",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "ChatGPT：多因素驗證、通行密鑰與進階帳號安全",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 說明頁寫明，多因素驗證一開就套用到所有 OpenAI 服務，含 ChatGPT 與 API 平台。可選方式有四種：驗證器 App 的一次性代碼（頁面舉 Google Authenticator 與 Authy 為例）、推播通知、簡訊或 WhatsApp 的 6 位數代碼，以及通行密鑰（passkey）；看得到哪幾種，官方寫的是依裝置、國家與帳號層級而不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定位置：ChatGPT 設定的安全性分頁，在多因素驗證底下選要啟用的方式，通行密鑰在同一頁的 Passkeys 區塊點新增；啟用多種時官方寫明預設用最安全的那一個。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個最常漏掉的細節。第一，開啟驗證不會把其他裝置踢掉：官方寫明懷疑密碼外流就要先重設密碼再開驗證，並把使用中的工作階段全部登出，最多可能要 30 分鐘才生效。第二，多因素驗證目前不能由工作區或組織層級強制要求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再上一層是進階帳號安全，個人帳號的選用設定。啟用前要備妥至少兩個安全登入方式、其中一個能跨裝置用（通行密鑰或 FIDO 相容硬體金鑰），並存好救援金鑰；開啟後密碼、簡訊登入碼與電子郵件帳號救援全部關閉。救援金鑰每組只能用一次，用掉後官方寫明要等 48 小時才解鎖，全丟可能就永久失去帳號。"
+        },
+        {
+          "type": "heading",
+          "text": "Claude：沒有密碼的帳號，守住信箱與登入中的裝置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方常見問題直接寫著：目前無法為 Claude 帳號設定專屬密碼。登入只有兩條路，用 Google 帳號，或收一封電子郵件登入連結信，在別台裝置點連結時會產生驗證碼要回原機輸入。API 後台 Console 一樣不能設密碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以第二道關卡不在 Claude，而在你用來登入的 Google 帳號或信箱：那個信箱沒開兩步驟驗證，Claude 就等於沒開。截稿當天說明中心的帳號管理分類共 15 篇，沒有一篇在講 Claude 自己的兩步驟驗證，日後有無新增以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 提供的是工作階段管理。點左下角頭像進設定、切到帳戶，往下捲到使用中的工作階段，會列出裝置與瀏覽器、依 IP 推估的位置與最後使用時間；不認得的點三點選單選終止，要一次登出全部就在同一區塊按登出。官方寫明這選項在 iOS 與 Android 的 App 上沒有。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方數字：claude.ai 的網頁工作階段長度 28 天，只要頁面上有動作，每小時會自動往後延成 28 天。登入過 Claude Code 的話，授權 token 要在設定的 Claude Code 分頁另外刪掉。"
+        },
+        {
+          "type": "heading",
+          "text": "Gemini 與 Google 帳號：兩步驟驗證、通行密鑰與裝置清單",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 用的就是你的 Google 帳號。開啟位置：進 Google 帳戶選安全性與登入，在「你登入 Google 的方式」底下選開啟兩步驟驗證；公司或學校發的帳號可能看不到，官方要你找管理員。官方頁列的第二步驟如下。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Google 提示：不用通行密鑰時官方最推薦的一種，推播到已登入的 Android 手機，或裝了 Gmail、Google 相簿、YouTube、Google App 並登入的 iPhone，通知會顯示裝置與地點。",
+            "通行密鑰與硬體安全金鑰：官方寫明這兩種對釣魚的防護最好。",
+            "驗證碼 App：沒網路或訊號時，用 Google Authenticator 這類產生一次性驗證碼的 App。",
+            "簡訊或語音的 6 位數驗證碼：官方同頁註明可能被以電話號碼為目標的手法破解。",
+            "QR code：某些情況要求用手機掃電腦上的 QR code 驗證號碼。",
+            "備用碼：列印或下載一組 8 位數備用碼收好；加入進階保護計畫的帳號不能下載。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個時間差：新增兩步驟驗證的電話號碼後，官方寫最多可能要 7 天 Google 才會信任它，新建的通行密鑰同樣可能等 7 天；判定可疑時會先停用並通知你，你有 30 天確認，逾期刪除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通行密鑰建在 Google 帳戶的登入選項頁，點建立再解鎖裝置即可。官方列的需求是電腦 Windows 10、macOS Ventura 或 ChromeOS 109 以上，手機 Android 9 或 iOS 16 以上，瀏覽器 Chrome 109、Safari 16、Edge 109、Firefox 122 以上。最該記住官方那句：只在自己擁有、自己使用的裝置上建立，因為建立後即使登出，能解鎖那台裝置的人都進得去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "裝置清單在安全性與登入頁，點「你的裝置」再選管理所有裝置，列出目前或最近幾週登入過的裝置與工作階段。官方說換瀏覽器、重新驗證身分或用無痕視窗登入各會開一個工作階段，不確定就全部登出。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-account-security-2fa-api-keys/diagram-1.svg",
+          "alt": "帳號端與金鑰端兩條防線的檢查清單圖，左欄是四項登入檢查，右欄是四項金鑰檢查，下方橫條寫出兩條線重疊的地方",
+          "width": 1600,
+          "height": 900,
+          "caption": "左欄由上而下是登入這一端的四項檢查，右欄是金鑰那一端的四項；下方橫條是兩者唯一重疊的地方，登入 Claude 用的 Google 帳號或信箱。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "網銀的「裝置綁定加一次性密碼」是同一個邏輯，見 "
+            },
+            {
+              "type": "link",
+              "text": "網銀與帳戶安全：裝置綁定、OTP 與常見詐騙手法",
+              "url": "https://mokaair.com/zh-TW/life/online-banking-security"
+            },
+            {
+              "type": "text",
+              "text": "；公司帳號另看 "
+            },
+            {
+              "type": "link",
+              "text": "公司裡用 AI 的規範：資料外流與合規",
+              "url": "https://mokaair.com/zh-TW/life/ai-at-work-policy-checklist"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "金鑰端：建立、設上限、外洩就撤銷",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "金鑰都建在各自的開發者後台，重點是建立當下就把到期與範圍設好。OpenAI 把「建立時設到期日並建立輪替流程」列為第二條做法：舊金鑰到期前先建新的、換過去、確認能用再撤銷舊的。同一頁另外兩條：不要把金鑰部署到瀏覽器或行動 App，請求一律經過自己的後端；也不要提交進版本控制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Console 在設定的 API keys 頁點建立，命名、選到期時間，連結帳號設成你自己或一個服務帳戶（共用與自動化用）。到期選項官方寫得很明確：3 小時、1 天、7 天、30 天、自訂，或永不到期；到期只能在建立時決定。快到期時 Anthropic 會寄信給建立者，效期至少 14 天的提前 7 天、至少 7 天的提前 1 天。過期後請求回 401。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google AI Studio 正在換世代。官方文件寫明新建的金鑰一律是授權金鑰，綁在 Google Cloud 服務帳戶上，預設只能用在 Gemini API；舊的標準金鑰沒加限制現已被直接拒絕，2026 年 9 月起則拒絕所有標準金鑰。另從 2026 年 5 月 7 日起，長期未使用的未設限金鑰會被封鎖。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "金鑰怎麼申請、帳單怎麼看，見 "
+            },
+            {
+              "type": "link",
+              "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
+              "url": "https://mokaair.com/zh-TW/life/claude-api-first-call"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "API 額度與錯誤：費用、重試與成本控制",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "用量上限三家差很多。OpenAI 分組織層與專案層，兩層都能設每月上限，並分成只通知不擋的支出警示，與會讓請求直接失敗的硬上限。專案路徑是組織設定裡點進專案再選 Limits，可改每月支出上限、通知門檻與可用模型，預設帶一個 100% 門檻的警示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Console 的路徑是設定裡的帳務頁，在支出上限區塊點調整上限，值不能超過所在層級的月上限；官方文件列的是 Start 層 500 美元、Build 層 1,000 美元、Scale 層 200,000 美元。碰到自己設的上限，請求會回 HTTP 400。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 給的不是硬性支出上限，而是在 Google Cloud Console 設定帳單快訊，用量或費用暴衝時通知你，再替金鑰加來源限制：到憑證頁選專案與金鑰，在應用程式限制底下選 IP 位址並填允許範圍。只用 Gemini API 的話，也可在 AI Studio 把未設限的金鑰改成只限這個 API。"
+        },
+        {
+          "type": "paragraph",
+          "text": "金鑰不要寫進程式碼，也不要貼進提示詞或聊天視窗。三家做法一致：放進環境變數讓 SDK 自己讀。變數名稱都指定好了，OpenAI 是 OPENAI_API_KEY，Anthropic 是 ANTHROPIC_API_KEY，Gemini 是 GEMINI_API_KEY 或 GOOGLE_API_KEY，兩個都設時以後者為準。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "三家官方文件的環境變數設定指令（照官方頁原文，金鑰部分用佔位字串）",
+          "code": "# OpenAI：Windows 的命令提示字元（help.openai.com）\nsetx OPENAI_API_KEY \"<yourkey>\"\n\n# OpenAI：macOS 與 Linux 的 zsh（help.openai.com）\necho \"export OPENAI_API_KEY='yourkey'\" >> ~/.zshrc\nsource ~/.zshrc\n\n# Anthropic：platform.claude.com 的 CLI 說明\nexport ANTHROPIC_API_KEY=sk-ant-api03-...\n\n# Gemini：ai.google.dev，寫進 ~/.bashrc 或 ~/.zshrc\nexport GEMINI_API_KEY=<YOUR_API_KEY_HERE>\nsource ~/.zshrc"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機用 .env 檔的話，Anthropic 說明中心寫得很直接：一定要把 .env 加進版控的忽略清單，Git 就是 .gitignore，否則等於把機密公開發布；雲端環境改用加密的密鑰儲存。要讓同事知道需要哪些變數，就放一份只有變數名稱與佔位字串的範例檔。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "把金鑰檔案排除在版本控制之外：.gitignore 與可以安全進版控的範例檔",
+          "code": "# .gitignore\n.env\n.env.local\n.env.*.local\n!.env.example\nsecrets/\n*.pem\n\n# .env.example：只有變數名稱與佔位字串，不放真的金鑰\nOPENAI_API_KEY=sk-...\nANTHROPIC_API_KEY=sk-ant-api03-...\nGEMINI_API_KEY=your-api-key-here"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "Claude 官方文件的呼叫範例：金鑰從環境變數讀，不寫進指令裡",
+          "code": "curl https://api.anthropic.com/v1/messages \\\n  -H \"x-api-key: $ANTHROPIC_API_KEY\" \\\n  -H \"anthropic-version: 2023-06-01\" \\\n  -H \"content-type: application/json\" \\\n  -d '{\n    \"model\": \"claude-opus-5\",\n    \"max_tokens\": 1024,\n    \"messages\": [{\"role\": \"user\", \"content\": \"Hello, Claude\"}]\n  }'"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "ChatGPT",
+            "Claude",
+            "Gemini／Google"
+          ],
+          "rows": [
+            [
+              "第二步驟的官方名稱",
+              "多因素驗證（MFA）",
+              "官網未提供帳號層設定",
+              "兩步驟驗證（2SV）"
+            ],
+            [
+              "驗證器 App",
+              "支援一次性代碼",
+              "由 Google 帳號或信箱決定",
+              "支援一次性驗證碼"
+            ],
+            [
+              "通行密鑰 passkey",
+              "支援，也可當驗證方式",
+              "由 Google 帳號或信箱決定",
+              "支援，登入時跳過第二步驟"
+            ],
+            [
+              "簡訊驗證碼",
+              "簡訊或 WhatsApp 6 位數",
+              "由 Google 帳號或信箱決定",
+              "簡訊或語音 6 位數"
+            ],
+            [
+              "硬體安全金鑰",
+              "支援 FIDO 相容金鑰",
+              "由 Google 帳號或信箱決定",
+              "支援 FIDO2 金鑰"
+            ],
+            [
+              "第二步驟設定位置",
+              "設定的安全性分頁",
+              "無；改設信箱或 Google 帳號",
+              "安全性與登入的登入方式"
+            ],
+            [
+              "登入中的裝置",
+              "安全性分頁的工作階段",
+              "帳戶分頁的工作階段",
+              "安全性與登入的你的裝置"
+            ],
+            [
+              "金鑰建立位置",
+              "API 平台的金鑰頁",
+              "Console 設定的 API keys 頁",
+              "AI Studio 的金鑰頁"
+            ],
+            [
+              "金鑰到期選項",
+              "建立時可設到期日",
+              "3 小時／1 天／7 天／30 天／自訂／永不",
+              "官網未列到期選項，以官網為準"
+            ],
+            [
+              "用量上限位置",
+              "組織與專案的 Limits",
+              "Console 帳務頁的支出上限",
+              "Cloud Console 的帳單快訊"
+            ],
+            [
+              "撤銷方式",
+              "金鑰頁刪除並輪替",
+              "金鑰頁停用或刪除",
+              "Cloud Console 停用或刪除"
+            ]
+          ],
+          "caption": "各家設定位置、支援方式與上限，以 2026 年 9 月 15 日官方說明頁與 API 文件當天內容為準；畫面文字會隨版本調整。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "把金鑰貼進第三方工具，等於把後台交給對方",
+          "text": "Anthropic 說明中心寫得很直接：把 API 金鑰上傳到第三方工具或平台，網頁版開發環境、雲端商、CI/CD 平台都算，就是把 Console 帳號的存取權交給那個工具的開發者。同一頁提到 Anthropic 與 GitHub 合作，公開倉庫被掃到金鑰會自動停用並寄信通知；OpenAI 也寫明偵測到金鑰出現在公開網路或 App 商店會立刻停用。"
+        },
+        {
+          "type": "heading",
+          "text": "帳號被盜或金鑰外洩，照官方順序處理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三家都給了順序，照順序做比亂改設定有效。OpenAI 列的是：先刪掉 API 金鑰，再聯絡支援，接著檢查帳號上有沒有不熟悉的活動，最後登出所有工作階段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的順序寫在「保護遭駭或被盜用的 Google 帳戶」頁，分三步：先登入帳號，登不進去走帳號救援頁；接著在最近安全性事件面板逐項檢查，不是自己做的就選不是我，再到裝置清單找不認得的裝置；最後才開啟兩步驟驗證。官方同頁還多列兩件事：帳號裡存過銀行卡或護照資料的要聯絡銀行或主管機關，以及先移除電腦上的惡意軟體，不然改完密碼還是會再被拿走。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 沒有密碼可改，官方的動作集中在工作階段：把不認得的那一筆終止，或用帳戶區塊的登出一次清掉所有裝置；真正要改的是那個 Google 帳號或信箱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "金鑰外洩的順序不一樣，重點是先建新的再刪舊的，Google 的清單寫得最完整。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "先建新金鑰：在 Google AI Studio 或 Cloud Console 產生一支替代金鑰。",
+            "更新應用程式：把程式與部署設定改成用新金鑰，重新部署後確認能跑。",
+            "再停用或刪除舊金鑰：官方提醒新金鑰完全生效前不要刪舊的。",
+            "稽核用量：到 Cloud Console 檢查帳單記錄與 API 用量，找出未授權的使用。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 強調立刻：登入 Console 進 API keys 頁，點金鑰右邊的三點選單選刪除，再建一支新的存進密鑰管理系統。官方文件註明停用可逆、刪除永久。"
+        },
+        {
+          "type": "paragraph",
+          "text": "處理完把對話記錄也清一遍，被看過的東西不會因為改密碼就消失。另外，官方在兩步驟驗證頁寫得很清楚：驗證碼不要給任何人。"
+        },
+        {
+          "type": "link",
+          "text": "匯出與刪除你的 AI 對話記錄",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-history-export-delete"
+        },
+        {
+          "type": "link",
+          "text": "AI 詐騙與 Deepfake：台灣案例與防範",
+          "url": "https://mokaair.com/zh-TW/life/ai-scams-deepfake-taiwan"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "網站後台也是同一套邏輯，可接著看 "
+            },
+            {
+              "type": "link",
+              "text": "WordPress 安全維護：帳號、更新與防護外掛的分工",
+              "url": "https://mokaair.com/zh-TW/life/wordpress-security-basics"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 說明中心：Enabling or disabling multi-factor authentication (MFA)（四種驗證方式、設定位置、開啟後不會登出其他裝置、登出所有裝置最多 30 分鐘、無法由工作區強制）",
+          "url": "https://help.openai.com/en/articles/7967234-enabling-or-disabling-multi-factor-authentication-mfa",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Passkeys to secure your OpenAI account（通行密鑰的建立位置與管理、可當登入或第二步驟、同步與裝置限制）",
+          "url": "https://help.openai.com/en/articles/20001039-passkeys-to-secure-your-openai-account",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：How can I keep my OpenAI accounts secure?（環境變數、第三方工具風險、支出門檻、公開外洩自動停用、遭入侵的處理順序、登出所有工作階段）",
+          "url": "https://help.openai.com/en/articles/8304786-how-can-i-keep-my-openai-accounts-secure",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Advanced Account Security（至少兩個安全登入方式、救援金鑰一次性、48 小時解鎖、啟用後關閉密碼與簡訊登入）",
+          "url": "https://help.openai.com/en/articles/20001221-advanced-account-security",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Best Practices for API Key Safety（到期日與輪替流程、不要部署在使用者端、不要提交進版控、OPENAI_API_KEY 環境變數設定指令、金鑰管理服務）",
+          "url": "https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Managing projects in the API platform（專案 Limits 的每月支出上限、通知門檻、預設 100% 警示、誰能設定）",
+          "url": "https://help.openai.com/en/articles/9186755-managing-projects-in-the-api-platform",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Troubleshooting API usage and spend limits（支出警示只通知、硬上限會擋下請求、組織與專案兩層、變更與執行非即時）",
+          "url": "https://help.openai.com/en/articles/6614457-troubleshooting-api-usage-and-spend-limits",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Log in to your Claude account（只有 Google 登入與電子郵件登入連結、跨裝置驗證碼、無法設定專屬密碼）",
+          "url": "https://support.claude.com/en/articles/13189465-log-in-to-your-claude-account",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Log in to your Console account（Console 同樣不能設定專屬密碼）",
+          "url": "https://support.claude.com/en/articles/13371040-log-in-to-your-console-account",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Managing your active sessions（裝置與瀏覽器、位置、最後使用時間、目前工作階段徽章、三點選單終止）",
+          "url": "https://support.claude.com/en/articles/13124001-managing-your-active-sessions",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：How do I log out of all active sessions?（登出全部的路徑、網頁工作階段 28 天、行動 App 沒有此選項、Claude Code token 另外刪除）",
+          "url": "https://support.claude.com/en/articles/10310342-how-do-i-log-out-of-all-active-sessions",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Account management 分類（截稿當天共 15 篇，無 Claude 帳號兩步驟驗證專文）",
+          "url": "https://support.claude.com/en/collections/9811145-account-management",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：API Key Best Practices: Keeping Your Keys Safe and Secure（第三方工具風險、.env 要進 .gitignore、定期輪替、GitHub 秘密掃描合作自動停用、懷疑外洩就刪除金鑰）",
+          "url": "https://support.claude.com/en/articles/9767949-api-key-best-practices-keeping-your-keys-safe-and-secure",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude Platform 文件：Authentication（建立金鑰的位置與連結帳號、到期選項 3 小時／1 天／7 天／30 天／自訂／永不、到期不可更改、到期前通知、停用與刪除的差別、401 錯誤、ANTHROPIC_API_KEY 與 curl 範例）",
+          "url": "https://platform.claude.com/docs/en/manage-claude/authentication",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude Platform 文件：Rate limits（Start 500 美元、Build 1,000 美元、Scale 200,000 美元的月支出上限，帳務頁設定自訂上限的步驟與 HTTP 400 訊息）",
+          "url": "https://platform.claude.com/docs/en/api/rate-limits",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google 帳戶說明：Turn on 2-Step Verification（開啟位置、Google 提示、通行密鑰與安全金鑰、驗證碼 App、簡訊或語音 6 位數、QR code、8 位數備用碼、新號碼 7 天與可疑號碼 30 天、驗證碼不要給任何人）",
+          "url": "https://support.google.com/accounts/answer/185839",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google 帳戶說明：Sign in with a passkey instead of a password（系統與瀏覽器需求、建立位置與步驟、只在自有裝置建立、通行密鑰跳過第二步驟、新通行密鑰 7 天與可疑密鑰 30 天）",
+          "url": "https://support.google.com/accounts/answer/13548313",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google AI for Developers：Using Gemini API keys（授權金鑰與標準金鑰、2026 年 9 月起拒絕標準金鑰、2026 年 5 月 7 日起封鎖未使用的未設限金鑰、GEMINI_API_KEY 與 GOOGLE_API_KEY、帳單快訊、來源限制、外洩處理清單）",
+          "url": "https://ai.google.dev/gemini-api/docs/api-key",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google 帳戶說明：See devices with account access（裝置清單位置、什麼是工作階段、登出不認得的裝置）",
+          "url": "https://support.google.com/accounts/answer/3067630",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google 帳戶說明：Secure a hacked or compromised Google Account（三步驟處理順序、檢查安全性事件與裝置、開啟兩步驟驗證、聯絡銀行或主管機關、移除惡意軟體）",
+          "url": "https://support.google.com/accounts/answer/6294825",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

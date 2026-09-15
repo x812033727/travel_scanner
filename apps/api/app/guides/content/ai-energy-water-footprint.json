@@ -1,0 +1,433 @@
+{
+  "slug": "ai-energy-water-footprint",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 的用電與用水：一次對話的成本",
+      "description": "一次 AI 文字對話要用多少電、多少水？目前只有 Google 與 Mistral 公布自己量出來的一手數字，OpenAI 官方頁寫明尚未公布。這篇把每個數字的出處、年份與量測邊界攤開，附 IEA 的資料中心總用電、台電與能源署查得到與查不到的部分，以及你能少用多少。",
+      "hero": {
+        "src": "/guides/ai-energy-water-footprint/hero.jpg",
+        "alt": "一個圓角對話框連到一排伺服器機櫃，機櫃旁有一個電力符號與五顆水滴，底下是一條從大到小的刻度線",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "「一次 AI 對話要用多少電、多少水」，目前只有兩家公司公布自己量出來的一手數字：Google 說一次 Gemini 文字提示的中位數是 0.24 瓦時電、0.26 毫升水，Mistral 說 Le Chat 一次 400 token 的回應是 1.14 公克二氧化碳當量、45 毫升水。兩組數字差很多，不是誰說謊，而是量法不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把各家官方公布的數字、年份與量測方法一項一項攤開，告訴你看到這種數字時該先問什麼；再把 IEA 官方報告的資料中心總用電放進來，解釋「每次很小」和「總量很大」為什麼可以同時成立。台灣有的資料寫清楚，沒有的也寫清楚。"
+        },
+        {
+          "type": "heading",
+          "text": "一次文字對話：目前只有兩家公布一手數字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 在 2025 年 8 月的技術報告與 Google Cloud 部落格公布同一組數字：以 2025 年 5 月的資料算，一次 Gemini Apps 文字提示的中位數用掉 0.24 瓦時電、排放 0.03 公克二氧化碳當量、消耗 0.26 毫升水。官方自己給了兩個生活尺度：看電視不到 9 秒（報告註明假設一台現代電視每小時吃 100 瓦時），以及 5 滴水（假設一滴 0.05 毫升）。這兩個類比是官方寫在報告裡的，不是換算出來的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份報告還給了一個更值得看的對照。只算 AI 加速器在運算的那段電，數字是 0.10 瓦時、0.12 毫升；把主機的 CPU 與記憶體、為了備援而閒置的機器、以及資料中心本身的冷卻與配電都算進去，才是 0.24 瓦時。拆開來是加速器 0.14、CPU 與記憶體 0.06、閒置機器 0.02、資料中心開銷 0.02 瓦時。同一件事，邊界畫在哪裡，答案差 2.4 倍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mistral 的數字來自 2025 年 7 月公布的生命週期分析，與 Carbone 4 及法國生態轉型署（ADEME）合作，另由 Resilio 與 Hubblo 兩家機構外部審閱。它公布兩組：訓練 Mistral Large 2 到 2025 年 1 月、上線 18 個月為止，累計 20.4 千噸二氧化碳當量、281,000 立方公尺水、660 公斤銻當量；使用端則是 AI 助理 Le Chat 一次 400 token 的回應（不含使用者自己的裝置）排放 1.14 公克二氧化碳當量、消耗 45 毫升水。Mistral 沒有公布每次回應的瓦時，所以這組和 Google 那組不能直接相減。Le Chat 在官網現在叫 Mistral Vibe。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 到今天沒有公布自己量出來的每次查詢用電或用水。它的官方教育網站 OpenAI Academy 有一篇〈Environmental Impact of AI〉（2025 年 8 月 22 日發布、2026 年 6 月 9 日更新），內容引用第三方 Epoch AI 對 GPT-4o 典型查詢約 0.3 瓦時的估算，並直接寫明自家模型的能耗基準「尚未公布」。想引用 ChatGPT 的每次用電，目前只引得到別人的估算，不是官方量測。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-energy-water-footprint/diagram-1.svg",
+          "alt": "左邊列出一次 Gemini 文字提示的用電、碳與用水，中間拆解四段能耗來源，右邊是官方給的電視與水滴類比，下方是一年前的對照與 Mistral 的另一組數字",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：先看數字，再看它是怎麼拆出來的，最後才看類比；底下那排提醒你不同來源的量法不一樣。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "讀這種數字之前，先看四件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一是測量邊界。上面 0.10 與 0.24 的差距就是邊界造成的，Google 自己寫，窄邊界那組同時也挑了效率最好的機房，屬於樂觀情境。第二是中位數還是平均數。Google 用每天的中位數，理由寫在報告裡：少數 token 特別長、機器使用率特別低的提示會把平均拉高，中位數才代表典型使用者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三是同一個縮寫、不同的定義。用水效率（WUE）就是例子：Google 用的是 ISO Category 2 的耗水量，也就是取水量減去回流量，2023 與 2024 年都是每度電 1.15 公升；Microsoft 官方頁的 WUE 定義是「加濕與冷卻用水除以 IT 設備用電」，2025 會計年度全球是每度電 0.27 公升，同一頁的全球 PUE 是 1.17。Google 的機隊平均 PUE 則是 1.09。0.27 比 1.15 小，不代表誰的機房比較省水，而是兩邊算的不是同一件事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第四是有沒有第三方驗證。Google 在技術報告與年度環境報告的註腳都寫明，這組數字未經獨立第三方驗證；Mistral 的研究則寫明依 AFNOR 的 Frugal AI 方法，並符合 GHG Protocol 產品標準與 ISO 14040／44，另經外部審閱。這不是誰比較可信的問題，是你引用時要一起講出來的條件。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "來源",
+            "數字",
+            "單位與範圍",
+            "年份"
+          ],
+          "rows": [
+            [
+              "Google Gemini Apps 文字提示（中位數，完整邊界）",
+              "0.24",
+              "瓦時／次，電",
+              "2025 年 5 月資料"
+            ],
+            [
+              "Google Gemini Apps 文字提示（中位數，完整邊界）",
+              "0.26",
+              "毫升／次，耗水",
+              "2025 年 5 月資料"
+            ],
+            [
+              "Google Gemini Apps 文字提示（中位數，完整邊界）",
+              "0.03",
+              "公克二氧化碳當量／次",
+              "2025 年 5 月資料"
+            ],
+            [
+              "Google Gemini Apps 文字提示（窄邊界，只算加速器）",
+              "0.10 與 0.12",
+              "瓦時與毫升，每次",
+              "2025 年 5 月資料"
+            ],
+            [
+              "Google 同一個中位數，一年前",
+              "7.92 與 1.32",
+              "瓦時與公克二氧化碳當量，每次",
+              "2024 年 5 月資料"
+            ],
+            [
+              "Mistral Le Chat 400 token 回應（不含使用者裝置）",
+              "1.14",
+              "公克二氧化碳當量／次",
+              "統計至 2025 年 1 月"
+            ],
+            [
+              "Mistral Le Chat 400 token 回應（不含使用者裝置）",
+              "45",
+              "毫升／次，耗水",
+              "統計至 2025 年 1 月"
+            ],
+            [
+              "Mistral Large 2 訓練加 18 個月使用，累計",
+              "20.4",
+              "千噸二氧化碳當量",
+              "統計至 2025 年 1 月"
+            ],
+            [
+              "Mistral Large 2 訓練加 18 個月使用，累計",
+              "281,000",
+              "立方公尺水",
+              "統計至 2025 年 1 月"
+            ],
+            [
+              "OpenAI 自家每次查詢的用電與用水",
+              "未公布",
+              "官方頁寫明能耗基準尚未公布",
+              "2026 年 6 月 9 日更新"
+            ],
+            [
+              "IEA 全球資料中心用電",
+              "415",
+              "太瓦時／年，約占全球 1.5%",
+              "2024 年"
+            ],
+            [
+              "IEA 全球資料中心用電",
+              "485",
+              "太瓦時／年",
+              "2025 年"
+            ],
+            [
+              "IEA 全球資料中心用電，預估",
+              "950",
+              "太瓦時／年，約占全球 3%",
+              "2030 年"
+            ],
+            [
+              "Google 用水效率 WUE（ISO Category 2 耗水）",
+              "1.15",
+              "公升／度電",
+              "2023 與 2024 年"
+            ],
+            [
+              "Microsoft 用水效率 WUE（加濕與冷卻）",
+              "0.27",
+              "公升／度電，全球",
+              "2025 會計年度"
+            ],
+            [
+              "Google 機隊平均 PUE",
+              "1.09",
+              "倍，1 代表零開銷",
+              "2025 年"
+            ],
+            [
+              "Microsoft 全球 PUE",
+              "1.17",
+              "倍，1 代表零開銷",
+              "2025 會計年度"
+            ],
+            [
+              "台灣每次 AI 對話的用電或用水",
+              "沒有官方數字",
+              "台電與能源署官網皆未公布",
+              "2026 年 9 月 15 日查"
+            ]
+          ],
+          "caption": "以 2026 年 9 月 15 日查各官方頁與報告原文為準。量測邊界、統計口徑與年份都不同，同一欄的數字不能直接相減或排名。"
+        },
+        {
+          "type": "heading",
+          "text": "「每次很小」和「總量很大」可以同時成立",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "IEA 在 2026 年 4 月 16 日發布的《Key Questions on Energy and AI》寫得很直接：以單一任務算，AI 的能源效率正以能源史上前所未見的速度改善，近幾年每項 AI 任務的能耗每年至少下降一個數量級；簡單的文字查詢現在用的電，通常比同一段時間開著電視還少。報告還算過，如果把全世界的傳統網路搜尋都換成簡單的 AI 文字查詢，一年不到 4 太瓦時，不到今天資料中心總用電的 1%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "但同一份報告的另一半是：2025 年全球資料中心用電成長 17%，AI 資料中心成長 50%，而全球總用電只成長 3%。資料中心用電從 2025 年的 485 太瓦時，預估到 2030 年約成長到 950 太瓦時，屆時約占全球用電的 3%。IEA 前一份《Energy and AI》（2025 年 4 月）給的則是 2024 年 415 太瓦時、約占 1.5%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "差別在用法。IEA 明講，影片生成、推理模型與代理任務每次查詢可能比簡單的文字生成多耗數百到數千倍的能源。所以 0.24 瓦時是「中位數的文字提示」的成本，不是你叫 AI 跑半小時代理任務的成本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "供應端的數字也說明同一件事。Google 2026 年版環境報告寫，2025 年全公司總用電 43,586,600 千度，約 43.6 太瓦時；全球耗水 10,869 百萬加侖，其中資料中心 10,523 百萬加侖；淡水消耗一年成長 37%。同一年，每次提示的能耗比前一年少了 33 倍，從 2024 年 5 月的 7.92 瓦時降到 2025 年 5 月的 0.24 瓦時，碳足跡少了 44 倍，從 1.32 降到 0.03 公克。每次更省，總量還是往上走。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "自己換算的兩條算式，假設寫在算式上面",
+          "code": "【假設一】用 Google 公布的 2025 年 5 月中位數：一次文字提示 0.24 Wh、0.26 mL。\n         只適用「中位數的文字提示」，不適用推理模型、影片生成或代理任務。\n\n1,000 次文字提示的電：0.24 Wh x 1,000 = 240 Wh = 0.24 度\n1,000 次文字提示的水：0.26 mL x 1,000 = 260 mL\n\n【假設二】把 IEA 的全球資料中心用電，除以經濟部能源署的台灣全年電力消費。\n         兩個數字來自不同機構、不同統計口徑，只能當量級參考，不是官方類比。\n\n2025 年全球資料中心 485 TWh / 台灣民國 114 年 2,830 億度（283 TWh）= 約 1.7 倍\n2030 年預估 950 TWh / 283 TWh = 約 3.4 倍"
+        },
+        {
+          "type": "heading",
+          "text": "台灣有什麼、沒有什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣官方沒有公布每次 AI 對話的用電或用水，也沒有把資料中心從其他用電中單獨拆出來的公開統計。查得到的是管理措施：台電官網的「AI資料中心用電 各國配套一次看」專頁（2026 年 8 月 19 日更新）寫明，因北部電源長期不足，自 2023 年 9 月起暫緩北部地區 5 百萬瓦以上的 IDC 用電申請，並說明一般企業的 AI 運算與科研用電通常不超過 5 百萬瓦；同頁也寫台電將配合經濟部能源管理法的 3 項子法，研訂供電裕度緊澀區資料中心的核供要點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "全國用電的分母倒是查得到。經濟部能源署「能源消費概況（民國114年）」頁（2026 年 7 月 1 日更新）寫，民國 114 年台灣電力消費總量 2,830 億度，工業部門 1,573 億度占 55.6%、住宅部門 537 億度占 19.0%、服務業部門 499 億度占 17.6%。把 IEA 的全球數字放進這個分母是上面那段自己做的換算，不是官方比較。"
+        },
+        {
+          "type": "heading",
+          "text": "你能少用多少，官方自己說了",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Mistral 在同一篇報告的使用者建議寫了三件事：培養 AI 素養，用比較省的方式提問；依需求挑模型大小，不要一律用最大的；把查詢合併起來，減少沒必要的運算。它同時給了一個經驗法則：影響大致與模型大小成比例，大 10 倍的模型在產生同樣多 token 時，影響大約也大一個數量級。這和 IEA 說不同用法差數百到數千倍，是同一個方向的提醒。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "先選小模型：同一家通常有旗艦、中階、輕量三層，輕量夠用就不要開旗艦。",
+            "少重複：一次把條件講清楚，比連續改五次省，也比較快拿到你要的答案。",
+            "分清楚用法：文字問答、推理模型、影片生成、代理任務不是同一個量級。",
+            "本機跑不一定比較省：電變成你自己付，硬體還要攤提，這筆帳要分開算。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「挑對模型大小」在站上有三篇可以接著看："
+            },
+            {
+              "type": "link",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+            },
+            {
+              "type": "text",
+              "text": "說明分層怎麼看，"
+            },
+            {
+              "type": "link",
+              "text": "小型語言模型（Small Language Model）是什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-small-language-model"
+            },
+            {
+              "type": "text",
+              "text": "解釋小模型能做什麼，"
+            },
+            {
+              "type": "link",
+              "text": "量化（Quantization）：用較少位元執行模型的取捨",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+            },
+            {
+              "type": "text",
+              "text": "則是同一個模型變小的另一條路。模型大小本身怎麼算，看"
+            },
+            {
+              "type": "link",
+              "text": "模型參數（Model Parameters）是什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把工作搬回自己的電腦，用電就從資料中心移到你家的電表，這是取捨不是節能："
+            },
+            {
+              "type": "link",
+              "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+              "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+            },
+            {
+              "type": "text",
+              "text": "講什麼情況值得，"
+            },
+            {
+              "type": "link",
+              "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+              "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+            },
+            {
+              "type": "text",
+              "text": "把硬體攤提、功耗與台電電價放進同一條算式，這篇不重複那邊的試算。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "最後兩篇補上這篇沒寫的兩半：用量本身怎麼估，以及這一年被講得太滿的說法各自站不站得住腳。"
+        },
+        {
+          "type": "link",
+          "text": "token 計算與費用估算：官方計數工具、一次對話的算式與費用上限",
+          "url": "https://mokaair.com/zh-TW/life/ai-token-cost-estimation"
+        },
+        {
+          "type": "link",
+          "text": "AI 能與不能：2026 年的誠實盤點",
+          "url": "https://mokaair.com/zh-TW/life/ai-hype-vs-reality-2026"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "別把 0.24 瓦時套到所有 AI 用法",
+          "text": "這個數字只代表 Google 一家、Gemini Apps、文字提示、2025 年 5 月、中位數、完整邊界這六個條件同時成立時的結果，官方也註明未經獨立第三方驗證、不代表未來表現。換成別家模型、換成推理或影片生成、換成代理任務，量級就不一樣，IEA 寫的是可能差數百到數千倍。引用時把條件一起講，比引用數字本身重要。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Cloud Blog：How much energy does Google's AI use? We did the math（2025 年 8 月 21 日；中位數 Gemini 文字提示 0.24 Wh、0.03 gCO2e、0.26 mL；窄邊界 0.10 Wh、0.12 mL；機隊平均 PUE 1.09）",
+          "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google 技術報告 PDF：Measuring the environmental impact of delivering AI at Google Scale（能耗拆解 0.14／0.06／0.02／0.02 Wh；WUE Category 2 為 1.15 L/kWh；電視 9 秒與 5 滴水的類比與假設）",
+          "url": "https://services.google.com/fh/files/misc/measuring_the_environmental_impact_of_delivering_ai_at_google_scale.pdf",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google 官方部落格：Our approach to energy innovation and AI's environmental footprint（2025 年 8 月 21 日；33 倍與 44 倍的 12 個月改善）",
+          "url": "https://blog.google/company-news/outreach-and-initiatives/sustainability/google-ai-energy-efficiency/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google 2026 Environmental Report PDF（2025 年總用電 43,586,600 MWh、耗水 10,869 百萬加侖、資料中心 10,523 百萬加侖、淡水消耗年增 37%；2024 年 5 月 7.92 Wh 與 1.32 gCO2e 基準；2025 年 PUE 1.09）",
+          "url": "https://sustainability.google/files/google-2026-environmental-report.pdf",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google Sustainability：Our 2026 Environmental Report 概要頁（補水 78%、165 個專案、7.7 billion gallons）",
+          "url": "https://sustainability.google/google-2026-environmental-report/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Mistral AI：Our contribution to a global environmental standard for AI（2025 年 7 月 22 日；Large 2 訓練 20.4 ktCO2e、281,000 m3 水；Le Chat 400 token 回應 1.14 gCO2e、45 mL；AFNOR Frugal AI 方法）",
+          "url": "https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Mistral 產品頁：Mistral Vibe (formerly Le Chat)（Le Chat 已更名為 Vibe）",
+          "url": "https://mistral.ai/products/vibe/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI Academy：Environmental Impact of AI（2025 年 8 月 22 日發布、2026 年 6 月 9 日更新；引 Epoch AI 約 0.3 Wh；官方寫明自家能耗基準尚未公布）",
+          "url": "https://academy.openai.com/public/clubs/higher-education-05x4z/resources/environmental-impact-of-ai",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "IEA：Key Questions on Energy and AI 執行摘要（IEA 2026；資料中心 2025 年 485 TWh、2030 年約 950 TWh 約占 3%；2025 年成長 17%、AI 資料中心 50%、全球用電 3%；影片、推理與代理任務高出數百至數千倍）",
+          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "IEA 新聞稿：Data centre electricity use surged in 2025（2026 年 4 月 16 日發布 Key Questions on Energy and AI）",
+          "url": "https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "IEA：Energy and AI 執行摘要（IEA 2025；2024 年資料中心 415 TWh、約占全球 1.5%）",
+          "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Microsoft Datacenters：Measuring energy and water efficiency for Microsoft datacenters（FY25 全球 PUE 1.17、WUE 0.27 L/kWh；WUE 定義為加濕與冷卻用水除以 IT 設備用電）",
+          "url": "https://datacenters.microsoft.com/sustainability/efficiency/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "台灣電力公司：AI資料中心用電 各國配套一次看（2026 年 8 月 19 日更新；2023 年 9 月起暫緩北部 5MW 以上 IDC 用電申請；配合能源管理法 3 項子法）",
+          "url": "https://www.taipower.com.tw/topic/2026_aidces/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "經濟部能源署：能源消費概況（民國114年）（2026 年 7 月 1 日更新；電力消費 2,830 億度，工業 1,573 億度、住宅 537 億度、服務業 499 億度）",
+          "url": "https://www.moeaea.gov.tw/ECW/populace/content/Content.aspx?menu_id=14436",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

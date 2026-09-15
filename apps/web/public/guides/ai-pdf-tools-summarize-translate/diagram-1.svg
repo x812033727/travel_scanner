@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">PDF 交給 AI 之前：先選對路 / Choosing an AI tool for a PDF</title>
+  <desc id="desc">一張決策樹。最上面的問題是「你要這份 PDF 做什麼」，往下分成四條路。第一條是讀懂一兩份文件，工具是 ChatGPT、Claude 或 Gemini，官網上限是免費 ChatGPT 每天 3 個檔案、Claude 的 PDF 上限 1000 頁、Gemini 單檔 100 MB。第二條是對照很多份文件，工具是 Gemini Notebook，官網上限是免費每本 50 則來源、每則來源 50 萬字、每人 100 本筆記本。第三條是整份翻譯並留住版面，工具是 Google 翻譯與 DeepL 的文件翻譯，官網上限是 Google 翻譯 10 MB、PDF 限 300 頁以內、DeepL 免費 5 MB。第四條是檔案已經在 Acrobat 裡，工具是 Acrobat 的 AI 助理，官網上限是檔案小於 100 MB、最多 600 頁、支援的檔案語言不含中文。最下面一條橫幅寫四條路共同的坑：掃描檔與圖片型 PDF 只會被擷取數位文字、圖片會被丟掉，翻譯也不會動到圖片裡的字；不能外傳的檔案要用本機模型，不要上傳到雲端。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">PDF 交給 AI 之前：先選對路</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Choosing an AI tool for a PDF, by what you actually need</text>
+
+  <rect x="520" y="112" width="560" height="72" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="157" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">你要這份 PDF 做什麼？</text>
+
+  <path d="M 800 184 L 800 212 L 242 212 L 242 236" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 800 184 L 800 212 L 614 212 L 614 236" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 800 184 L 800 212 L 986 212 L 986 236" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 800 184 L 800 212 L 1358 212 L 1358 236" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="72" y="240" width="340" height="72" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="242" y="285" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">讀懂一兩份文件</text>
+  <rect x="444" y="240" width="340" height="72" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="614" y="285" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">對照很多份文件</text>
+  <rect x="816" y="240" width="340" height="72" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="986" y="285" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">整份翻譯留版面</text>
+  <rect x="1188" y="240" width="340" height="72" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1358" y="285" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">檔案已經在 Acrobat 裡</text>
+
+  <path d="M 242 312 L 242 340" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 614 312 L 614 340" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 986 312 L 986 340" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 1358 312 L 1358 340" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="72" y="344" width="340" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="242" y="381" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">ChatGPT · Claude</text>
+  <text x="242" y="412" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">Gemini</text>
+  <rect x="444" y="344" width="340" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="614" y="381" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">Gemini Notebook</text>
+  <text x="614" y="412" font-size="17" fill="#5C6B6B" text-anchor="middle">原 NotebookLM</text>
+  <rect x="816" y="344" width="340" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="986" y="381" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">Google 翻譯 · DeepL</text>
+  <text x="986" y="412" font-size="17" fill="#5C6B6B" text-anchor="middle">文件／檔案翻譯</text>
+  <rect x="1188" y="344" width="340" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1358" y="381" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">Acrobat AI 助理</text>
+  <text x="1358" y="412" font-size="17" fill="#5C6B6B" text-anchor="middle">AI Assistant</text>
+
+  <path d="M 242 440 L 242 468" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 614 440 L 614 468" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 986 440 L 986 468" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 1358 440 L 1358 468" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="72" y="472" width="340" height="152" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="242" y="508" font-size="17" font-weight="bold" fill="#2F6F9F" text-anchor="middle">官網寫的上限</text>
+  <text x="242" y="546" font-size="17" fill="#102A2B" text-anchor="middle">免費 ChatGPT：每天 3 個檔案</text>
+  <text x="242" y="578" font-size="17" fill="#102A2B" text-anchor="middle">Claude：PDF 上限 1000 頁</text>
+  <text x="242" y="610" font-size="17" fill="#102A2B" text-anchor="middle">Gemini：單檔 100 MB</text>
+
+  <rect x="444" y="472" width="340" height="152" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="614" y="508" font-size="17" font-weight="bold" fill="#2F6F9F" text-anchor="middle">官網寫的上限</text>
+  <text x="614" y="546" font-size="17" fill="#102A2B" text-anchor="middle">免費：每本 50 則來源</text>
+  <text x="614" y="578" font-size="17" fill="#102A2B" text-anchor="middle">每則來源 50 萬字</text>
+  <text x="614" y="610" font-size="17" fill="#102A2B" text-anchor="middle">每人 100 本筆記本</text>
+
+  <rect x="816" y="472" width="340" height="152" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="986" y="508" font-size="17" font-weight="bold" fill="#2F6F9F" text-anchor="middle">官網寫的上限</text>
+  <text x="986" y="546" font-size="17" fill="#102A2B" text-anchor="middle">Google 翻譯：10 MB</text>
+  <text x="986" y="578" font-size="17" fill="#102A2B" text-anchor="middle">PDF 限 300 頁以內</text>
+  <text x="986" y="610" font-size="17" fill="#102A2B" text-anchor="middle">DeepL 免費：5 MB</text>
+
+  <rect x="1188" y="472" width="340" height="152" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1358" y="508" font-size="17" font-weight="bold" fill="#2F6F9F" text-anchor="middle">官網寫的上限</text>
+  <text x="1358" y="546" font-size="17" fill="#102A2B" text-anchor="middle">檔案小於 100 MB</text>
+  <text x="1358" y="578" font-size="17" fill="#102A2B" text-anchor="middle">最多 600 頁</text>
+  <text x="1358" y="610" font-size="17" fill="#102A2B" text-anchor="middle">檔案語言不含中文</text>
+
+  <rect x="72" y="664" width="1456" height="142" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="104" y="706" font-size="20" font-weight="bold" fill="#B8442D">四條路都會遇到的坑</text>
+  <text x="104" y="744" font-size="18" fill="#102A2B">掃描檔與圖片型 PDF：官方文件寫的是只擷取數位文字、圖片會被丟掉，翻譯也不會動到圖片裡的字</text>
+  <text x="104" y="780" font-size="18" fill="#102A2B">不能外傳的檔案（健檢報告、未簽的合約）用本機模型，不要上傳到雲端</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

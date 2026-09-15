@@ -1,0 +1,478 @@
+{
+  "slug": "ai-chat-history-export-delete",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "匯出與刪除你的 AI 對話記錄",
+      "description": "匯出只是拿一份副本，刪除才會讓資料排進刪除流程，而且各家官網都寫刪掉就救不回來。這篇依 2026 年 9 月各家官方說明頁，整理 ChatGPT、Claude、Gemini 加上 Grok 與 DeepSeek 的匯出入口、等待時間、下載連結期限、單則與全部刪除的位置、刪除後的保留期、暫時對話與無痕對話留多久、記憶要另外清的部分，以及帳號刪除的流程與後果。",
+      "hero": {
+        "src": "/guides/ai-chat-history-export-delete/hero.jpg",
+        "alt": "左邊一個打開的方盒往外送出一疊文件，中間一條虛線走向一個圓形的刪除標記，右邊是一個畫著時間刻度的圓，下方有三個大小不同的圓點",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "匯出和刪除是兩件事：匯出只是把對話抄一份給你，刪除才會讓資料排進對方的刪除流程，而且不是按下去就消失。ChatGPT、Claude 與 Gemini 的官方說明頁都寫了各自的等待時間與保留期，順序弄反就要不回來，OpenAI 的匯出說明頁把這句話講得最白：匯出檔還原不了已經刪掉的對話。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把三家加上 Grok 與 DeepSeek 的官方步驟排成同一個流程：先匯出、打開檢查，再刪除，最後看官網寫的保留期。內容照 2026 年 9 月 15 日各家官方說明頁與隱私中心，涵蓋匯出入口與格式、連結多久失效、單則與全部刪除的位置、刪除後留多久、暫時對話與無痕對話的保留期，以及帳號刪除的流程與後果。訓練開關與隱私設定另有專篇，這裡只做匯出與刪除。"
+        },
+        {
+          "type": "heading",
+          "text": "先匯出、再刪除，順序反了就要不回來",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三家對「刪除」的描述幾乎一樣：畫面上立刻消失，後端再排一段時間才真的清掉。OpenAI 寫刪掉的對話會在 30 天內從系統永久移除，除非已經去識別化並與你的帳號脫鉤，或基於安全與法律義務必須留著；Anthropic 的隱私中心寫刪除對話會立刻從記錄移除、30 天內從後端儲存系統刪除。兩家也都補了同一句：刪掉就救不回來，介面、應用程式介面與客服都要不到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以順序只有一種。OpenAI 的匯出說明頁要你打開下載回來的壓縮檔核對，並且明講匯出不能還原已經刪掉的對話；Anthropic 的刪帳號說明頁也寫，想留資料就先匯出再刪。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在設定裡送出匯出申請，等電子郵件或簡訊通知",
+            "收到連結立刻下載，三家的連結都有期限，過期要重跑",
+            "打開壓縮檔核對，確認要留的對話真的在裡面",
+            "回到介面刪除單則對話，或用一次刪除全部的入口",
+            "另外處理記憶、分享連結與連結過的應用程式",
+            "最後才考慮刪帳號，並記得先處理訂閱"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-chat-history-export-delete/diagram-1.svg",
+          "alt": "上方三個步驟方塊：先匯出、再刪除、看保留期；下方三欄分別列出 ChatGPT、Claude、Gemini 的等待時間、連結期限、刪除後保留期與暫時對話保留期",
+          "width": 1600,
+          "height": 900,
+          "caption": "上面照著三步走，下面對到你在用的那一欄，就知道要等多久、連結什麼時候過期、刪完之後還會留多久。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "ChatGPT：匯出最久等 7 天，連結 24 小時過期",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "匯出走設定裡的資料控制（Data controls），在「匯出資料」下按匯出，再到確認畫面按確認匯出；登不進帳號時，官網另外給了隱私入口（Privacy Portal）這條路，選消費者版 ChatGPT 帳號再選下載我的資料。介面以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官網寫匯出最久要 7 天才寄到，通知走電子郵件或簡訊；信裡的下載連結在你收到後 24 小時失效，而且要用送出申請的同一個帳號登入才下載得到。下載回來是一個壓縮檔，官網只寫裡面有對話記錄與其他相關的帳號資料，沒有列出檔名，實際檔案清單以官網為準。匯出開放給 Free、Go、Plus、Pro 與符合資格的 Edu 工作區，Business、Enterprise 與 Healthcare 工作區沒有自助匯出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "刪除單則對話：在側邊欄把游標移到對話標題上，按旁邊的三個點選刪除並確認。設定的資料控制裡另外有一次封存或刪除全部對話的入口，官網提醒這會套用到專案裡的對話。刪掉的對話立刻從畫面消失，30 天內從系統永久移除。封存不等於刪除，官網寫封存的對話照一般保留規則留著。"
+        },
+        {
+          "type": "paragraph",
+          "text": "暫時對話（Temporary Chat）在新對話右上角那顆藥丸狀的按鈕，官網寫暫時對話 30 天後從系統刪除，不進對話記錄，也不會產生新的記憶。記憶要另外清：設定的個人化裡有記憶摘要，三個點選單可以刪除記憶並關閉記憶，官網寫這不會刪掉過去的對話，而且記憶重新打開後可能從還留著的舊對話重新長出來。要讓某件事真的消失，官網要你把出現過它的來源全部刪掉。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "記憶與自訂指令的細節可以看 "
+            },
+            {
+              "type": "link",
+              "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+              "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+            },
+            {
+              "type": "text",
+              "text": "；已經分享出去的對話是另一條路，刪掉原始對話不代表連結失效，那部分看 "
+            },
+            {
+              "type": "link",
+              "text": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
+              "url": "https://mokaair.com/zh-TW/life/chatgpt-shared-links-privacy"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "刪帳號在設定的帳號頁，按刪除帳號後要輸入帳號的電子郵件或電話號碼，再打上 DELETE 才能送出。官網寫刪帳號是永久的，之後會在 30 天內刪除你的資料，法律要求或允許的少量資料可能留久一點；同一個電子郵件要等 30 天後才能重新註冊。走 App Store 或 Google Play 付費的人要先取消那邊的訂閱，官網寫刪帳號不會取消 Apple 的訂閱。"
+        },
+        {
+          "type": "heading",
+          "text": "Claude：Settings 的 Privacy 匯出，刪除後 30 天",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "個人帳號的匯出只在網頁版或桌面版做得到：點左下角你的名字縮寫，選 Settings，切到 Privacy，按 Export data；官網寫 iOS 與 Android 跑不了匯出。匯出內容是對話資料加上帳號的使用者資料，Free、Pro、Max 都有；Team 與 Enterprise 只有組織的 Primary Owner 能匯出。介面以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官網寫產生匯出檔會有一點延遲，處理完把下載連結寄到帳號綁的電子郵件，連結在寄出後 24 小時失效，要登入同一個帳號才下載得到，過期就把流程再跑一次拿新連結。匯出檔的副檔名與內部結構官網沒有寫，以官網為準。官網另外明講匯出的資料不能匯進另一個個人帳號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "刪除單則對話：在左側清單或 Chats and tasks 裡把游標移到對話上，按右邊的三點選 Delete，再按一次 Delete 確認。同一個畫面按 Select 可以勾選多則，或按 Select all 一次全選再刪。官網寫刪掉的對話立刻從對話記錄移除、30 天內從後端系統刪除；專案與帳號資訊不會跟著走，要你自己刪或刪帳號才會一起清掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "無痕對話（Incognito chat）在專案以外的新對話右上角，是一個幽靈圖示，開啟後畫面會有黑色外框與標示。官網寫無痕對話不進對話記錄、不進記憶、不會被拿去改進模型，但預設仍保留 30 天，Enterprise 可以設更長；關掉之後打不開，也不能轉成一般對話。記憶要另外處理：新版在 Settings 的 Memory，舊版在 Capabilities；官方文件給的備份做法是請 Claude 把記憶原樣寫出來，再貼到自己的檔案裡。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "官方說明頁給的兩句提示詞（照原文抄，用來把記憶原樣叫出來）",
+          "code": "Claude（Anthropic 官方說明頁的匯出記憶提示詞）\nWrite out your memories of me verbatim, exactly as they appear in your memory.\n\nGemini（Google 官方說明頁的確認提示詞）\nDid you use any info from past chats?"
+        },
+        {
+          "type": "paragraph",
+          "text": "刪帳號前先處理訂閱：Pro 或 Max 要先在帳單設定取消，等這一期結束、訂閱失效之後再刪。刪除在 Settings 的 Account 頁，按 Delete account 照提示走完。官網寫刪帳號是永久的，對話、專案與帳號資訊都拿不回來，想留就先匯出；透過第三方服務用 Claude 的人要找那個服務刪。另外，允許用你的對話改進 Claude 的人要注意，去識別化的資料最長會留 5 年。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
+          "url": "https://mokaair.com/zh-TW/life/claude-memory-and-privacy"
+        },
+        {
+          "type": "heading",
+          "text": "Gemini：匯出走 Takeout，刪除走活動記錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 沒有自己的匯出按鈕，官網要你走 Google Takeout。到 takeout.google.com，用跟 Gemini 同一個帳號登入，先取消全選；勾「Gemini」拿的是 Gems，要拿對話、生成的媒體與上傳的檔案，得勾「我的活動」再進去取消全選、只勾「Gemini Apps」。官網開頭就提醒：下載活動記錄不會把它從 Google 的伺服器刪掉，那是另一件事。介面以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "封存格式可以選 .zip 或 .tgz，官網說 zip 幾乎每台電腦都打得開，tgz 在 Windows 可能要另外裝軟體。取得方式除了寄下載連結，也可以直接送到雲端硬碟、Dropbox、OneDrive 或 Box；寄信的那條路，連結有效 7 天。等待時間看資料量，官網寫幾小時到幾天都有可能，多數人當天就拿到連結。"
+        },
+        {
+          "type": "paragraph",
+          "text": "刪除走活動記錄：在 gemini.google.com 點設定與說明裡的活動，或直接開 myactivity.google.com 的 Gemini 頁。上面可以刪全部、最近一小時、最近一天、自訂範圍、某一天，或單獨刪一筆。側邊欄的對話按三點刪除時，官網寫活動記錄裡對應的那一筆也會一起刪。自動刪除預設是 18 個月，可以改成 3 或 36 個月，也可以選不自動刪除，這一格值得先看一眼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個最容易漏掉的地方都寫在官方的隱私中心。第一，暫時對話以及關掉「保留活動」之後的對話，仍會跟著帳號留 72 小時，官網寫這是為了回應你、處理意見與應付系統故障，只是不會出現在活動記錄裡。第二，被人工審閱過的對話與相關資料，官網寫刪活動記錄不會一起刪，會在與 Google 帳號脫鉤的狀態下最長保留 3 年。記憶（在設定的 Personal Intelligence 裡）沒有逐條刪除的入口，官網的做法是把含有那件事的對話全部刪掉，若那件事來自連結的應用程式還要一起斷開。"
+        },
+        {
+          "type": "link",
+          "text": "活動記錄與隱私：查看、刪除與設定",
+          "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "ChatGPT",
+            "Claude",
+            "Gemini"
+          ],
+          "rows": [
+            [
+              "匯出入口",
+              "設定 → 資料控制 → 匯出資料",
+              "Settings → Privacy → Export data",
+              "takeout.google.com 勾 Gemini 與 Gemini Apps"
+            ],
+            [
+              "能不能在手機做",
+              "官網未特別限制",
+              "只有網頁版與桌面版",
+              "網頁版操作，Takeout 為主"
+            ],
+            [
+              "等待時間",
+              "官網寫最久 7 天",
+              "官網寫有一點延遲，未寫天數",
+              "幾小時到幾天，多數人當天"
+            ],
+            [
+              "下載連結期限",
+              "收到後 24 小時",
+              "寄出後 24 小時",
+              "寄信連結 7 天"
+            ],
+            [
+              "匯出檔格式",
+              "壓縮檔，內含對話記錄與帳號資料",
+              "官網未寫，以官網為準",
+              ".zip 或 .tgz"
+            ],
+            [
+              "刪單則對話",
+              "對話旁三點 → 刪除",
+              "對話旁三點 → Delete",
+              "對話旁三點 → 刪除，活動記錄同步"
+            ],
+            [
+              "一次刪全部",
+              "設定 → 資料控制 → 刪除所有對話",
+              "Chats and tasks → Select all → Delete",
+              "活動頁 → 刪除 → 不限時間"
+            ],
+            [
+              "刪除後保留期",
+              "30 天內從系統永久移除",
+              "30 天內從後端系統刪除",
+              "立刻開始移除，官網未給天數"
+            ],
+            [
+              "自動刪除設定",
+              "官網沒有這個設定",
+              "官網沒有這個設定",
+              "預設 18 個月，可改 3 或 36 個月"
+            ],
+            [
+              "暫時或無痕對話",
+              "暫時對話 30 天後刪除",
+              "無痕對話預設保留 30 天",
+              "暫時對話保留 72 小時"
+            ],
+            [
+              "記憶怎麼清",
+              "設定 → 個人化 → 記憶，要另外刪",
+              "Settings → Memory，要另外改",
+              "刪掉含該資訊的所有對話"
+            ],
+            [
+              "刪帳號後",
+              "30 天內刪除資料，不可復原",
+              "永久，對話與專案拿不回來",
+              "以 Google 帳號的說明為準"
+            ]
+          ],
+          "caption": "依 2026 年 9 月各家官方說明頁與隱私中心整理，介面與名稱以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "Grok 與 DeepSeek：官網寫得比較少",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "xAI 的官方說明文件寫，上傳的檔案與產出的內容可以在 grok.com 的檔案頁刪掉，其他資料控制在個人資料的設定裡，有一個 Data Controls 分頁。刪帳號照 xAI 帳號頁的步驟走，官網寫 30 天內重新登入並確認還原就能救回帳號。刪掉的對話與檔案，官網只寫會在「標準保留期間」內從系統移除，沒有給天數；自助匯出的做法在官方文件裡查不到，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeek 的隱私政策（頁面標的最後更新日是 2026 年 2 月 10 日）寫得更概略：你可以在設定裡管理對話記錄，也可以複製或刪除對話記錄；刪除帳號之後不能重新啟用，也拿不回帳號裡的任何內容與個人資料。保留期沒有給天數，原文的說法是提供服務用的個人資料「只要你還有帳號就會留著」。要行使權利要寄信到官網的隱私信箱。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這兩家的方案、入口與資料流向另有專篇："
+            },
+            {
+              "type": "link",
+              "text": "Grok（xAI）怎麼用：三個入口、方案價格與資料訓練開關",
+              "url": "https://mokaair.com/zh-TW/life/grok-xai-guide"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+              "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "按下刪除之前，先跑一遍這張清單",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "會出事的通常不是刪不掉，而是以為刪乾淨了。對話刪了，記憶還在；對話刪了，分享出去的連結還活著；對話刪了，連結的應用程式下次又把同一份資料餵回來。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "刪除前的核對清單（依各家官方說明頁整理）",
+          "code": "[ ] 匯出檔已經下載，而且打開看過，要留的對話都在\n[ ] 下載連結還沒過期（ChatGPT 與 Claude 24 小時、Google Takeout 7 天）\n[ ] 記憶另外看過並清掉，不是只刪對話\n[ ] 分享出去的連結另外撤掉\n[ ] 連結的應用程式另外斷開\n[ ] 手機 App Store 或 Google Play 的訂閱已經取消\n[ ] 公司或學校帳號改問管理員，自助刪除多半不開放"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "刪除不是一鍵完成，也不能反悔",
+          "text": "三家的官方說明頁都寫刪掉的對話救不回來，所以要留的東西必須在按下刪除之前就下載好。另外有三件事不會跟著對話一起消失：記憶要在各自的設定裡另外刪，分享出去的公開連結要另外撤，連結過的應用程式要另外斷開。Gemini 還有一項：被人工審閱過的對話，刪活動記錄不會一起刪，最長留 3 年。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一件事：公司或學校發的帳號多半沒有自助匯出與自助刪除，OpenAI 的 Business 與 Enterprise 工作區、Claude 的 Team 與 Enterprise、用工作或學校帳號登入的 Gemini 都是管理員說了算。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "訓練開關、暫時對話與隱私設定的完整版在 "
+            },
+            {
+              "type": "link",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+            },
+            {
+              "type": "text",
+              "text": "；公司帳號的規範看 "
+            },
+            {
+              "type": "link",
+              "text": "公司裡用 AI 的規範：資料外流與合規",
+              "url": "https://mokaair.com/zh-TW/life/ai-at-work-policy-checklist"
+            },
+            {
+              "type": "text",
+              "text": "；換帳號前的安全設定看 "
+            },
+            {
+              "type": "link",
+              "text": "保護你的 AI 帳號：兩步驟驗證與金鑰外洩",
+              "url": "https://mokaair.com/zh-TW/life/ai-account-security-2fa-api-keys"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 說明中心：Exporting your ChatGPT history and data（設定的 Data controls 送出匯出；最久 7 天寄到；下載連結 24 小時失效；壓縮檔含對話記錄；Business、Enterprise、Healthcare 工作區沒有自助匯出）",
+          "url": "https://help.openai.com/en/articles/7260999-exporting-your-chatgpt-history-and-data",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：How to Delete and Archive Chats in ChatGPT（三點選單刪除；30 天內永久移除；封存不等於刪除；一次刪全部會套用到專案裡的對話）",
+          "url": "https://help.openai.com/en/articles/8809935-how-to-delete-and-archive-chats-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Chat and File Retention Policies in ChatGPT（對話保存到你手動刪除；刪除後 30 天內永久刪除；暫時對話 30 天內自動刪除）",
+          "url": "https://help.openai.com/en/articles/8983778-chat-and-file-retention-policies-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Temporary Chat FAQ（暫時對話不進記錄、不建立記憶、不用於訓練；安全用途最多留 30 天；右上角藥丸狀按鈕開啟）",
+          "url": "https://help.openai.com/en/articles/8914046-temporary-chat-faq",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Deleting your ChatGPT account（設定的 Account 頁輸入 DELETE；刪除後 30 天內刪除資料；同一電子郵件 30 天後可重新註冊；Apple 訂閱要另外取消）",
+          "url": "https://help.openai.com/en/articles/6378407-how-to-delete-your-account",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Memory FAQ（記憶摘要在 Settings 的 Personalization；刪除記憶並關閉記憶不會刪掉過去對話；要徹底刪除須清掉所有來源）",
+          "url": "https://help.openai.com/en/articles/8590148-memory-faq",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Data Controls FAQ（登入後才有匯出與刪除帳號選項；暫時對話 30 天後從系統刪除）",
+          "url": "https://help.openai.com/en/articles/7730893-data-controls-faq",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Export your Claude data（Free、Pro、Max 可用；Settings 的 Privacy 按 Export data；只在網頁版與桌面版；下載連結 24 小時失效；不能匯進另一個個人帳號）",
+          "url": "https://support.claude.com/en/articles/9450526-export-your-claude-data",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Delete or rename a conversation（三點選 Delete；Select 與 Select all 可多選；刪除後立刻從記錄移除、30 天內從後端系統刪除）",
+          "url": "https://support.claude.com/en/articles/8230524-delete-or-rename-a-conversation",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Delete your Claude account（刪除為永久；先取消 Pro 或 Max 訂閱並等這一期結束；想留資料先匯出；Settings 的 Account 頁刪除）",
+          "url": "https://support.claude.com/en/articles/9028421-delete-your-claude-account",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Use incognito chats（不進對話記錄與記憶、不用於訓練；預設保留 30 天，Enterprise 可自訂；幽靈圖示開啟；關掉後不能復原）",
+          "url": "https://support.claude.com/en/articles/12260368-use-incognito-chats",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Import and export your memory from Claude（Settings 的 Memory 或 Capabilities；官方給的匯出記憶提示詞原文）",
+          "url": "https://support.claude.com/en/articles/12123587-import-and-export-your-memory-from-claude",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 隱私中心：How long do you store my data?（刪除對話立刻從記錄移除、30 天內從後端儲存系統刪除；允許改進模型時去識別化資料最長 5 年）",
+          "url": "https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 隱私中心：Deleting Claude accounts（付費帳號先取消訂閱再刪；刪除後拿不回已存對話；透過第三方服務使用者要找該服務刪除）",
+          "url": "https://privacy.claude.com/en/articles/10023660-deleting-claude-accounts",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini 說明中心：Download your Gemini Apps data（takeout.google.com 勾 Gemini 與 My Activity 裡的 Gemini Apps；.zip 或 .tgz；寄信連結有效 7 天；幾小時到幾天，多數人當天）",
+          "url": "https://support.google.com/gemini/answer/16920332",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini 說明中心：Manage & delete your activity in Gemini Apps（活動頁刪全部、最近一小時或一天、自訂範圍、單一筆；自動刪除預設 18 個月，可改 3 或 36 個月；關閉保留活動後仍留 72 小時）",
+          "url": "https://support.google.com/gemini/answer/13278892",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini 說明中心：Gemini Apps Privacy Hub（2026 年 8 月 10 日更新；暫時對話與關閉保留活動的對話保留 72 小時；人工審閱過的對話與相關資料與帳號脫鉤後最長保留 3 年）",
+          "url": "https://support.google.com/gemini/answer/13594961",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini 說明中心：Get personalization with memory of your past Gemini chats（記憶開關在 Personal Intelligence；要刪掉 Gemini 記得的事得刪掉所有含該資訊的對話，並斷開連結的應用程式）",
+          "url": "https://support.google.com/gemini/answer/16598469",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "xAI 官方說明文件：FAQ - Grok Website / Apps（grok.com 檔案頁刪除內容；Profile 的 Settings 裡有 Data Controls；刪除的對話與檔案在標準保留期間內移除；帳號刪除後 30 天內重新登入可還原）",
+          "url": "https://docs.x.ai/grok/faq",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek 隱私政策（Last Update: Feb 10, 2026；可在設定複製或刪除對話記錄；刪除帳號後不能重新啟用也拿不回內容；提供服務的個人資料留到帳號不存在為止）",
+          "url": "https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,507 @@
+{
+  "slug": "ai-hype-vs-reality-2026",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 能與不能：2026 年的誠實盤點",
+      "description": "這篇不引媒體、不做預測，只抄各家 system card、model card 與官方文件裡自己寫下的限制，分成今天做得到、要人盯著、還做不到三欄：Claude Opus 5 系統卡承認幻覺比前一版多、OpenAI 寫信心不等於可靠、Gemini 說它會把不正確的事呈現得像事實。附官方原文出處、任務對照表，以及一套用五個任務替自己的工作盤點一次的方法。查證日為 2026 年 9 月 15 日。",
+      "hero": {
+        "src": "/guides/ai-hype-vs-reality-2026/hero.jpg",
+        "alt": "三欄式的抽象插圖，左欄實心圓點排列整齊，中欄圓點帶著一圈虛線外框，右欄只有空心輪廓，下方一條線把三欄串起來。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年談 AI 最好查的一份資料，是各家自己寫的那一份。模型發表時附的 system card 與 model card、API 文件裡直接叫 Limitations 的章節、說明中心對幻覺與記憶的白話說明，都由廠商自己署名，裡面同時寫著做得到什麼、哪裡會出錯、哪些事它還不行。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把 2026 年 9 月 15 日查到的官方原文分成今天做得到、要人盯著、還做不到三欄，每條都附出處，再拿三句最常聽到的宣稱對照官方用字，最後給你一套用五個任務替自己的工作盤一次的方法。全文不引媒體與意見文章、不排名、不預測，也沒有任何一項是實測的。"
+        },
+        {
+          "type": "heading",
+          "text": "這份盤點只抄官方自己寫的字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "來源只取四類。理由很單純：這些文件由廠商自己署名，寫下的限制對自己不利，所以通常寫得保守而精確。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "system card 與 model card：發表當天公布的安全與能力報告，寫評測名稱、自報分數與已知限制。",
+            "開發者文件：API 文件常有一節直接叫 Limitations，逐條寫模型會在哪裡出錯。",
+            "說明中心：寫給一般使用者的文章，用白話講「它可能講錯」與「你該怎麼查」。",
+            "模型規格頁：上下文視窗、輸出上限、輸入模態、知識截止日這類可核對的數字。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這些文件裡的分數該怎麼讀，站上有一篇專門談："
+            },
+            {
+              "type": "link",
+              "text": "模型跑分怎麼看：LMArena、SWE-bench 與三個陷阱",
+              "url": "https://mokaair.com/zh-TW/life/ai-benchmarks-explained"
+            },
+            {
+              "type": "text",
+              "text": "；2026 年到目前為止有哪些模型發表過，可以看 "
+            },
+            {
+              "type": "link",
+              "text": "2026 年 AI 模型大事記：1 月到 9 月 15 日的官方發布時間軸",
+              "url": "https://mokaair.com/zh-TW/life/ai-model-release-timeline-2026"
+            },
+            {
+              "type": "text",
+              "text": "。本文只取其中的限制與規格，不比高下。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "今天做得到：官方寫得出數字的那一欄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先看規格。OpenAI 的模型頁寫 GPT-6 Astra 的上下文視窗是 1,050,000 個 token、最大輸入 922,000 個、單次最多輸出 128,000 個，輸入只收文字與圖片、輸出只有文字，知識截止日是 2026 年 4 月 30 日。Anthropic 的文件寫 Claude Opus 5 等模型是 100 萬 token 上下文視窗、單次最多 128k 輸出，一個請求最多放 600 張圖片或 PDF 頁數。Gemini 3.8 Flash 模型卡寫輸入收文字、圖片、音訊與影片，上下文視窗最高 100 萬 token、輸出 64K token。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再看官方自報的評測。Claude Opus 5 系統卡的能力總表列著 SWE-bench Pro 79.2、OSWorld 2.0 70.6、BrowseComp 90.8。這些是 Anthropic 自己跑的分數、自己選的題庫，不是第三方複驗，也不該拿去跨廠牌比大小。但同一張表看得出一件事：連官方自己列的數字都停在七成到九成之間，沒有一項滿分。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "上下文視窗塞得下，不等於它真的都讀進去了。這兩件事的差別，站上有專文："
+            },
+            {
+              "type": "link",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "要人盯著：幻覺、假完成與別人塞進來的指令",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三家用各自的字寫下同一件事：模型會把不確定的事講得很確定。Claude Opus 5 系統卡的摘要直接寫，他們發現「出乎意料地多的案例中，模型很有把握地說出一個它其實不確定的答案」，而且「這個模型在事實類主張上的幻覺比 Opus 4.8 略多，儘管整體上更準確」。在 AA-Omniscience 這個 41 個主題、不給網路搜尋的閉卷測驗上，官方寫 Opus 5 的淨分是 0.49，準確率比 Opus 4.8 高 11%，幻覺率也高 6%。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "OpenAI 說明中心〈Does ChatGPT tell the truth?〉的原文（2026 年 9 月 15 日查）",
+          "code": "ChatGPT is designed to provide useful responses based on patterns in data it\nwas trained on. But like any language model, it can produce incorrect or\nmisleading outputs. Sometimes, it might sound confident—even when it's wrong.\nThis phenomenon is often referred to as a hallucination: when the model\nproduces responses that are not factually accurate, such as:\n\n  Incorrect definitions, dates, or facts\n  Fabricated quotes, studies, citations or references to non-existent sources\n  Overconfident answers to ambiguous or complex questions\n\nChatGPT doesn't know everything\nWhile our latest models are highly capable, they do have limitations:\n\n  Knowledge cutoff: The models are trained on data up to a certain point and\n  responses do not incorporate information about events beyond that, unless\n  tools are used.\n  Confidence isn't reliability: The model may express high confidence even in\n  incorrect answers.\n  Lack of access: The model may not be able to obtain relevant information\n  from a given website due to technical issues, paywalls or preferences set\n  via robots.txt."
+        },
+        {
+          "type": "paragraph",
+          "text": "這段的中文重點是：ChatGPT 依訓練資料裡的模式給出有用的回答，但和任何語言模型一樣可能產生不正確或誤導的輸出，有時它聽起來很有把握，即使它是錯的。官方把「信心不等於可靠」單獨列成一條限制。Google 的說明頁更直白：Gemini 會產生幻覺、把不正確的資訊呈現得像事實，官方還特別舉例，連它自己怎麼運作、怎麼被訓練、怎麼引用來源，它都可能講錯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二件要盯的是「它說做完了」。Claude Opus 5 系統卡的自動行為稽核列了一個指標叫 false completion claims，定義是「宣稱任務已完成、成功或已驗證，但其實並沒有」；同一組還有 input hallucination，指「對檔案內容、工具輸出或先前使用者訊息產生幻覺或重大誤述」。這兩條指標存在本身就是官方承認：代理說的那句「已完成」不能當成完成的證據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三件是別人塞進內容裡的指令。GPT-6 Astra 系統卡寫，在 Gray Swan 的 1,810 題攻擊題庫上，每個情境試 15 次的估計攻擊成功率是 8.5%，前一代 GPT-5.6 Sol 是 27.0%。Claude 的電腦操作文件也寫著：在某些情況下，模型會照著內容裡找到的指令做，即使那些指令和你的指示衝突。數字在降，但沒有一家寫零。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把一段流暢的回答拆成可以逐條查的主張，站上有專文："
+            },
+            {
+              "type": "link",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+            },
+            {
+              "type": "text",
+              "text": "；想反過來用工具偵測一段文字是不是 AI 寫的，先看 "
+            },
+            {
+              "type": "link",
+              "text": "AI 偵測工具準不準：官方自己寫的限制與誤判",
+              "url": "https://mokaair.com/zh-TW/life/ai-detection-tools-reliability"
+            },
+            {
+              "type": "text",
+              "text": "，那篇整理了偵測工具官方自己寫的誤判率。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-hype-vs-reality-2026/diagram-1.svg",
+          "alt": "三欄對照圖，左欄今天做得到、中欄要人盯著、右欄還做不到，各列三條官方寫下的事實，底部是自測的三個判讀問題。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：左欄是官方寫得出規格的事，中欄是官方承認會錯、需要有人核對的事，右欄是官方自己說還不行的事。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "還做不到：整件事做完、視覺、語音與記憶",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最容易被誇大的一項，是從頭到尾把一件工作做完。Claude Opus 5 系統卡的能力總表裡，測「模型能不能把商業任務從開始做到結束」的 AutomationBench，Opus 5 是 26.0，Opus 4.8 是 17.0。同一張表上其他評測動輒七、八十分，落差就在「整件事做完」這幾個字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份系統卡還有一句更直接的話。Anthropic 在評估自動化研發風險、說明門檻沒有被跨過時寫道：他們發表前已經大量把這個模型用在自己的研究與工程工作上，而它「看起來還不接近可以取代我們的研究科學家與研究工程師，尤其是比較資深的那些」。這句的用途是風險評估，卻也是對「AI 會取代工程師」最直接的官方回答。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "OpenAI 開發者文件 Images and vision 的 Limitations 原文（節錄，2026 年 9 月 15 日查）",
+          "code": "Limitations\n\nVision models can make mistakes. Account for these limitations when designing\nyour application:\n\n- Medical images: The model is not suitable for interpreting specialized\n  medical images like CT scans and shouldn't be used for medical advice.\n- Non-English: The model may not perform optimally when handling images with\n  text of non-Latin alphabets, such as Japanese or Korean.\n- Small text: Enlarge text within the image to improve readability.\n- Rotation: The model may misinterpret rotated or upside-down text and images.\n- Visual elements: The model may struggle to understand graphs or text where\n  colors or styles—like solid, dashed, or dotted lines—vary.\n- Spatial reasoning: The model struggles with tasks requiring precise spatial\n  localization, such as identifying chess positions.\n- Accuracy: The model may generate incorrect descriptions or captions in\n  certain scenarios.\n- Image shape: The model struggles with panoramic and fisheye images.\n- Counting: The model may give approximate counts for objects in images."
+        },
+        {
+          "type": "paragraph",
+          "text": "中文重點：醫療影像不適用、也不該拿來當醫療建議；非拉丁字母的文字表現可能不佳；小字要放大；旋轉或顛倒的圖可能判讀錯；圖表裡實線、虛線、點線的差別可能看不懂；需要精確空間定位的任務會吃力；全景與魚眼照片會出錯；數東西可能只給概數。Google 的文件另外寫了硬上限：一個請求最多 3,600 張圖片；影片方面，免費層每天最多上傳 8 小時的 YouTube 影片，Gemini 2.5 以後每個請求最多 10 部，且只能是公開影片。"
+        },
+        {
+          "type": "paragraph",
+          "text": "語音也有官方版的限制。Gemini 3.5 Audio 的模型卡寫，即時翻譯的聲音可能不一致：長時間停頓之後聲音會變，多人快速交談時可能卡在同一個聲音；語言偵測遇到非母語口音、相近的語言或快速切換語言時會有困難；它設計上會濾掉背景雜訊，但官方寫明不保證所有背景聲音都能被忽略。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記憶是誤解最深的一項。OpenAI 的記憶常見問題寫得很清楚：記憶摘要「應該會涵蓋最重要的細節，但不會包含 ChatGPT 依你的對話所記得的全部內容」；要完全刪掉它可能知道的某件事，你得刪掉那件事出現過的每一個來源，包括過去的對話、封存的對話、檔案、記憶摘要，還要中斷可能含有該資訊的連接應用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "知識截止日是另一個常被忽略的硬邊界。Gemini 3.8 Flash 的模型卡寫，它的知識截止日是 2026 年 3 月，但「使用者在某些領域可以得到較新的資訊，在其他領域則可能發現模型的知識只到 2025 年 1 月」；Gemini 3 Pro 的模型卡寫的截止日就是 2025 年 1 月。長文件也一樣，Google 的長上下文文件寫得很誠實：模型在單一目標的檢索上表現很好，單一查詢可以做到約 99%，但要同時找出多個目標時準確率就不一樣，表現會依上下文有很大差異。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "代理到底和一般問答差在哪，站上有專文："
+            },
+            {
+              "type": "link",
+              "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+              "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "；讓模型直接操作電腦畫面是怎麼回事、官方畫了哪些界線，看 "
+            },
+            {
+              "type": "link",
+              "text": "Claude 操作電腦是怎麼回事：能力、限制與安全",
+              "url": "https://mokaair.com/zh-TW/life/claude-computer-use-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "任務",
+            "今天能到哪（廠商自報）",
+            "官方寫下的限制"
+          ],
+          "rows": [
+            [
+              "讀一份長文件",
+              "三家旗艦都標 100 萬 token 級的上下文視窗",
+              "Google 長上下文文件寫：單一查詢約 99%，多個目標時準確率下降"
+            ],
+            [
+              "把一件商業任務做完",
+              "Claude Opus 5 系統卡的 AutomationBench 為 26.0",
+              "同表 Opus 4.8 為 17.0；官方未公布一般使用者手上的成功率"
+            ],
+            [
+              "操作電腦或瀏覽器",
+              "Claude Opus 5 系統卡的 OSWorld 2.0 為 70.6",
+              "Claude 文件寫座標與工具選擇可能出錯，試算表複雜操作可能要試很多次"
+            ],
+            [
+              "看圖片與圖表",
+              "GPT-6 Astra 收文字與圖片輸入",
+              "OpenAI 文件列出醫療影像、小字、旋轉、虛實線、空間定位、數量等限制"
+            ],
+            [
+              "即時語音翻譯",
+              "Gemini 3.5 Live Translate 官方定位為低延遲即時翻譯",
+              "官方寫聲音可能不一致、語言偵測會失準、背景雜訊不保證濾乾淨"
+            ],
+            [
+              "記住你講過的話",
+              "ChatGPT 記憶會自動從對話累積",
+              "官方寫記憶摘要不含全部內容，要刪乾淨得逐一刪掉每個來源"
+            ]
+          ],
+          "caption": "2026 年 9 月 15 日查各家官網。「今天能到哪」全部是廠商自報的數字或官方定位，不是實測結果，也不是跨廠牌排名。"
+        },
+        {
+          "type": "heading",
+          "text": "三句常聽到的話，對照官方原文",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "「它會取代工程師」：Anthropic 在 Claude Opus 5 系統卡寫，模型看起來還不接近可以取代他們的研究科學家與研究工程師，尤其是比較資深的那些。",
+            "「它不會出錯」：Google 說明頁寫 Gemini 會產生幻覺、把不正確的資訊呈現得像事實；OpenAI 說明頁把「信心不等於可靠」列成一條限制。",
+            "「它能記住一切」：OpenAI 記憶常見問題寫記憶摘要不會包含全部內容，來源也不一定呈現每一個影響回答的因素；模型卡則各自寫著知識截止日，那天之後的事它本來就不知道。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude 平台文件 computer use 的 Limitations 與安全注意事項原文（節錄，2026 年 9 月 15 日查）",
+          "code": "Limitations\n\nLatency: The current computer use latency for human-AI interactions might be\ntoo slow compared to regular human-directed computer actions.\n\nComputer vision accuracy and reliability: Claude might make mistakes or\nhallucinate when outputting specific coordinates while generating actions.\n\nTool selection accuracy and reliability: Claude might make mistakes or\nhallucinate when selecting tools while generating actions or take unexpected\nactions to solve problems. Additionally, reliability might be lower when\ninteracting with niche applications or multiple applications at once.\n\nSpreadsheet interaction: Complex spreadsheet operations might still require\nmultiple attempts.\n\nSecurity considerations\nIn some circumstances, Claude will follow commands found in content even when\nthey conflict with your instructions.\nAlways carefully review and verify Claude's computer use actions and logs. Do\nnot use Claude for tasks requiring perfect precision or sensitive user\ninformation without human oversight."
+        },
+        {
+          "type": "paragraph",
+          "text": "最後一句值得單獨抄下來：不要把需要完美精確度、或涉及敏感使用者資訊的任務，在沒有人監督的情況下交給模型。這不是評論者的意見，是官方文件自己的用字。OpenAI 的電腦操作文件寫的四條做法方向一致：限制環境、把畫面上的內容當成不可信、有後果的動作要使用者確認、設步驟與花費上限並核對真正的結果，而不是只看模型最後那句話。"
+        },
+        {
+          "type": "paragraph",
+          "text": "順帶更新一件會影響你怎麼讀舊教學的事：OpenAI 說明中心今天寫著，ChatGPT 的代理模式已不再提供，長時間、多步驟的任務與成品交付請改用 ChatGPT Work。站上那篇代理模式教學寫的是它還在時的操作，當成歷史紀錄讀就好。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-agent-mode-guide"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型「多想幾步」到底改變了什麼、又沒改變什麼，看 "
+            },
+            {
+              "type": "link",
+              "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+            },
+            {
+              "type": "text",
+              "text": "；想先弄清楚現在市面上有哪些工具，看 "
+            },
+            {
+              "type": "link",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "官方數字是自報，不是保證",
+          "text": "這篇引的每一個分數都是廠商自己跑的。GPT-6 Astra 系統卡在幻覺那一節就先聲明：那批題目是特意挑出來容易出錯的案例，絕對錯誤率預期遠高於生產環境的真實錯誤率，不應被當成生產環境觀察到的幻覺率。同一份文件在對齊那一節也寫：沒有觀察到失敗，不等於在各種情境下都可靠。"
+        },
+        {
+          "type": "heading",
+          "text": "用五個任務，自己盤一次",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "別人的評測分數決定不了你的工作能不能交出去。方法很簡單：挑五個你本來就會做、而且看得出錯的任務各跑一次，只記三件事——有沒有做完、錯在哪一步、你花多久才發現那個錯。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "五個任務的自測表（自行填寫，不是任何一家的官方表格）",
+          "code": "任務              | 我自己花多久 | AI 花多久 | 做完了嗎 | 錯在哪一步 | 我多久發現\n----------------- | ------------ | --------- | -------- | ---------- | ----------\n1 查一個事實      |              |           |          |            |\n2 讀一份長文件    |              |           |          |            |\n3 改一段程式      |              |           |          |            |\n4 整理一份表格    |              |           |          |            |\n5 走完一個流程    |              |           |          |            |\n\n判讀方式\n- 做完了嗎全是「是」，而且是用證據判定的  -> 今天做得到\n- 有錯，但你五分鐘內就看得出來            -> 要人盯著\n- 有錯，你得整件重做一次才發現            -> 還做不到"
+        },
+        {
+          "type": "list",
+          "items": [
+            "避開你不熟的領域。你看不出錯的題目測不出任何東西，只會讓你更相信它。",
+            "同一個任務至少跑兩次。各家文件都把已知限制寫成「可能」而不是「一定」，一次成功不代表穩定。",
+            "「做完了嗎」要用證據判定：檔案真的改了、信真的寄出去了、數字真的對得起來，不要接受模型自己說的「已完成」。",
+            "記下你多久發現錯誤。這個數字決定它該放在哪一欄：你很快發現就是要人盯著，要重做一次才發現就是還做不到。",
+            "每次模型改版重跑一次。各家模型卡把知識截止日與已知限制寫在版本裡，版本一換就要重填。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "名詞卡住可以先翻 "
+            },
+            {
+              "type": "link",
+              "text": "AI 名詞速查：50 個常見詞彙一次搞懂",
+              "url": "https://mokaair.com/zh-TW/life/ai-glossary-50-terms"
+            },
+            {
+              "type": "text",
+              "text": "；跑這五個任務要花掉多少電和水，另一篇照官方永續報告算過："
+            },
+            {
+              "type": "link",
+              "text": "AI 的用電與用水：一次對話的成本",
+              "url": "https://mokaair.com/zh-TW/life/ai-energy-water-footprint"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude Opus 5 System Card（Anthropic 官方系統卡 PDF，幻覺、對齊與能力評測）",
+          "url": "https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Introducing Claude Opus 5（Anthropic 官方發表頁）",
+          "url": "https://www.anthropic.com/news/claude-opus-5",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Computer use tool（Claude 平台官方文件，含 Limitations 與安全注意事項）",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Context windows（Claude 平台官方文件，各模型上下文視窗與輸出上限）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GPT-6 Astra System Card（OpenAI Deployment Safety Hub 官方系統卡）",
+          "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Does ChatGPT tell the truth?（OpenAI 官方說明中心）",
+          "url": "https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Memory FAQ（OpenAI 官方說明中心，記憶摘要與刪除範圍）",
+          "url": "https://help.openai.com/en/articles/8590148-memory-faq",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "ChatGPT agent（OpenAI 官方說明中心，代理模式已不再提供）",
+          "url": "https://help.openai.com/en/articles/11752874-chatgpt-agent",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Images and vision（OpenAI 官方開發者文件，視覺 Limitations）",
+          "url": "https://developers.openai.com/api/docs/guides/images-vision",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GPT-6 Astra（OpenAI 官方模型頁：上下文視窗、輸出上限、知識截止日）",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Computer use（OpenAI 官方開發者文件，Run safely 四條做法）",
+          "url": "https://developers.openai.com/api/docs/guides/tools-computer-use",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini 3.8 Flash model card（Google DeepMind 官方模型卡，已知限制與知識截止日）",
+          "url": "https://deepmind.google/models/model-cards/gemini-3-8-flash/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini 3 Pro Model Card（Google DeepMind 官方模型卡 PDF）",
+          "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Model-Card.pdf",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini 3.5 Audio model card（Google DeepMind 官方模型卡，即時翻譯與轉錄的已知限制）",
+          "url": "https://deepmind.google/models/model-cards/gemini-3-5-audio/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Long context（Gemini API 官方文件，長上下文的限制）",
+          "url": "https://ai.google.dev/gemini-api/docs/long-context",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Image understanding（Gemini API 官方文件，每次請求圖片上限）",
+          "url": "https://ai.google.dev/gemini-api/docs/image-understanding",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Video understanding（Gemini API 官方文件，影片上傳限制）",
+          "url": "https://ai.google.dev/gemini-api/docs/video-understanding",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Learn about responses from Gemini Apps（Google 官方說明頁，幻覺說明）",
+          "url": "https://support.google.com/gemini/answer/16279220",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Use Gemini Apps（Google 官方說明頁，使用前的提醒）",
+          "url": "https://support.google.com/gemini/answer/13275745",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Using GPT-6 Astra（OpenAI 官方開發者指南，模型行為與提示建議）",
+          "url": "https://developers.openai.com/api/docs/guides/latest-model",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

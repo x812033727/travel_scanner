@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一次文字對話用掉多少 / Energy and water per AI text prompt</title>
+  <desc id="desc">左欄是 Google 公布的一次 Gemini Apps 文字提示中位數，2025 年 5 月資料、完整邊界：用電 0.24 瓦時、碳排 0.03 公克二氧化碳當量、耗水 0.26 毫升。中欄把 0.24 瓦時拆成 AI 加速器 0.14、CPU 與記憶體 0.06、閒置機器 0.02、資料中心開銷 0.02 瓦時，並註明只算加速器的窄邊界是 0.10 瓦時與 0.12 毫升，兩者差 2.4 倍。右欄是報告原文給的生活尺度：看電視不到 9 秒，假設電視每小時 100 瓦時；以及 5 滴水，假設一滴 0.05 毫升。下方左邊是一年前的同一個中位數，2024 年 5 月為 7.92 瓦時與 1.32 公克，到 2025 年 5 月能耗降 33 倍、碳足跡降 44 倍；下方右邊是 Mistral 的另一組數字，Le Chat 一次 400 token 回應為 1.14 公克與 45 毫升水，量法不同不能和左邊相減。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">一次文字對話用掉多少：官方數字與官方類比</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Energy and water per AI text prompt — first-party figures</text>
+
+  <!-- Card A -->
+  <rect x="60" y="120" width="470" height="480" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="295" y="165" font-size="20" font-weight="bold" fill="#0D6B68" text-anchor="middle">一次 Gemini 文字提示</text>
+  <text x="295" y="193" font-size="16" fill="#5C6B6B" text-anchor="middle">中位數・2025 年 5 月・完整邊界</text>
+
+  <rect x="90" y="220" width="410" height="110" rx="14" fill="#E3F0EF"/>
+  <text x="115" y="281" font-size="18" fill="#5C6B6B">用電</text>
+  <text x="475" y="286" font-size="32" font-weight="bold" fill="#102A2B" text-anchor="end">0.24 瓦時</text>
+
+  <rect x="90" y="345" width="410" height="110" rx="14" fill="#E3F0EF"/>
+  <text x="115" y="406" font-size="18" fill="#5C6B6B">碳排（二氧化碳當量）</text>
+  <text x="475" y="411" font-size="32" font-weight="bold" fill="#102A2B" text-anchor="end">0.03 公克</text>
+
+  <rect x="90" y="470" width="410" height="110" rx="14" fill="#E3F0EF"/>
+  <text x="115" y="531" font-size="18" fill="#5C6B6B">耗水</text>
+  <text x="475" y="536" font-size="32" font-weight="bold" fill="#102A2B" text-anchor="end">0.26 毫升</text>
+
+  <!-- Card B -->
+  <rect x="565" y="120" width="470" height="480" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="165" font-size="20" font-weight="bold" fill="#2F6F9F" text-anchor="middle">0.24 瓦時怎麼組成</text>
+  <text x="800" y="193" font-size="16" fill="#5C6B6B" text-anchor="middle">四段加起來才是完整邊界</text>
+
+  <rect x="595" y="218" width="410" height="64" rx="14" fill="#E6F0F7"/>
+  <text x="620" y="256" font-size="18" fill="#102A2B">AI 加速器</text>
+  <text x="980" y="259" font-size="26" font-weight="bold" fill="#2F6F9F" text-anchor="end">0.14 瓦時</text>
+
+  <rect x="595" y="290" width="410" height="64" rx="14" fill="#E6F0F7"/>
+  <text x="620" y="328" font-size="18" fill="#102A2B">CPU 與記憶體</text>
+  <text x="980" y="331" font-size="26" font-weight="bold" fill="#2F6F9F" text-anchor="end">0.06 瓦時</text>
+
+  <rect x="595" y="362" width="410" height="64" rx="14" fill="#E6F0F7"/>
+  <text x="620" y="400" font-size="18" fill="#102A2B">閒置備援機器</text>
+  <text x="980" y="403" font-size="26" font-weight="bold" fill="#2F6F9F" text-anchor="end">0.02 瓦時</text>
+
+  <rect x="595" y="434" width="410" height="64" rx="14" fill="#E6F0F7"/>
+  <text x="620" y="472" font-size="18" fill="#102A2B">資料中心開銷</text>
+  <text x="980" y="475" font-size="26" font-weight="bold" fill="#2F6F9F" text-anchor="end">0.02 瓦時</text>
+
+  <text x="800" y="538" font-size="16" fill="#5C6B6B" text-anchor="middle">窄邊界只算加速器：0.10 瓦時、0.12 毫升</text>
+  <text x="800" y="568" font-size="16" fill="#B8442D" text-anchor="middle">同一件事，兩種邊界差 2.4 倍</text>
+
+  <!-- Card C -->
+  <rect x="1070" y="120" width="470" height="480" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1305" y="165" font-size="20" font-weight="bold" fill="#D97A2B" text-anchor="middle">官方自己給的尺度</text>
+  <text x="1305" y="193" font-size="16" fill="#5C6B6B" text-anchor="middle">報告原文的類比，不是換算</text>
+
+  <rect x="1100" y="220" width="410" height="150" rx="14" fill="#F7F1E8"/>
+  <rect x="1128" y="258" width="104" height="66" rx="10" fill="none" stroke="#D97A2B" stroke-width="4"/>
+  <line x1="1180" y1="324" x2="1180" y2="340" stroke="#D97A2B" stroke-width="4"/>
+  <line x1="1152" y1="340" x2="1208" y2="340" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1262" y="288" font-size="22" font-weight="bold" fill="#102A2B">看電視不到 9 秒</text>
+  <text x="1262" y="320" font-size="16" fill="#5C6B6B">假設電視每小時 100 瓦時</text>
+
+  <rect x="1100" y="395" width="410" height="150" rx="14" fill="#F7F1E8"/>
+  <circle cx="1138" cy="470" r="11" fill="#2F6F9F"/>
+  <circle cx="1166" cy="470" r="11" fill="#2F6F9F"/>
+  <circle cx="1194" cy="470" r="11" fill="#2F6F9F"/>
+  <circle cx="1222" cy="470" r="11" fill="#2F6F9F"/>
+  <circle cx="1250" cy="470" r="11" fill="#2F6F9F"/>
+  <text x="1290" y="463" font-size="22" font-weight="bold" fill="#102A2B">5 滴水</text>
+  <text x="1290" y="495" font-size="16" fill="#5C6B6B">假設一滴 0.05 毫升</text>
+
+  <text x="1305" y="578" font-size="16" fill="#5C6B6B" text-anchor="middle">水指的是耗水量，不是取水量</text>
+
+  <!-- arrow from card A to bottom band -->
+  <line x1="295" y1="600" x2="295" y2="626" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- bottom band -->
+  <rect x="60" y="642" width="720" height="168" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="92" y="686" font-size="18" font-weight="bold" fill="#0D6B68">一年前的同一個中位數</text>
+  <text x="92" y="728" font-size="17" fill="#102A2B">2024 年 5 月：7.92 瓦時、1.32 公克</text>
+  <text x="92" y="768" font-size="17" fill="#102A2B">到 2025 年 5 月：能耗降 33 倍、碳足跡降 44 倍</text>
+
+  <rect x="820" y="642" width="720" height="168" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="852" y="686" font-size="18" font-weight="bold" fill="#B8442D">另一家的數字，量法不同</text>
+  <text x="852" y="728" font-size="17" fill="#102A2B">Mistral Le Chat 一次 400 token 回應</text>
+  <text x="852" y="768" font-size="17" fill="#102A2B">1.14 公克、45 毫升水，不能和左邊相減</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

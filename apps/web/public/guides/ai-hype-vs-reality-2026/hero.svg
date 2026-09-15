@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 能與不能：三欄盤點的意象 / An honest inventory in three columns</title>
+  <desc id="desc">抽象幾何插圖。畫面分成三組同樣大小的圓點方陣，由左到右代表一篇文章的三個欄位。左邊一組是九個填滿的深綠圓點，整齊而確定，下方有一條同色的粗橫條。中間一組是填滿與空心交錯的橘色圓點，外圈圍著一圈虛線，下方是橘色粗橫條。右邊一組全部是空心的磚紅色圓圈，只有輪廓沒有填色，下方是磚紅色粗橫條。三組下面有一條由左往右的細線與箭頭，表示愈往右，官方寫下的限制愈硬。畫面上方只有一行字：AI 能與不能。整張圖沒有任何品牌標誌、介面或人物。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="800" y="215" font-size="72" font-weight="bold" fill="#102A2B" text-anchor="middle">AI 能與不能</text>
+
+  <!-- group 1: solid -->
+  <circle cx="270" cy="430" r="32" fill="#0D6B68"/>
+  <circle cx="360" cy="430" r="32" fill="#0D6B68"/>
+  <circle cx="450" cy="430" r="32" fill="#0D6B68"/>
+  <circle cx="270" cy="520" r="32" fill="#0D6B68"/>
+  <circle cx="360" cy="520" r="32" fill="#0D6B68"/>
+  <circle cx="450" cy="520" r="32" fill="#0D6B68"/>
+  <circle cx="270" cy="610" r="32" fill="#0D6B68"/>
+  <circle cx="360" cy="610" r="32" fill="#0D6B68"/>
+  <circle cx="450" cy="610" r="32" fill="#0D6B68"/>
+  <rect x="235" y="738" width="250" height="20" rx="10" fill="#0D6B68"/>
+
+  <!-- group 2: mixed, ringed -->
+  <circle cx="800" cy="520" r="195" fill="none" stroke="#D97A2B" stroke-width="5" stroke-dasharray="20 18"/>
+  <circle cx="710" cy="430" r="32" fill="#D97A2B"/>
+  <circle cx="800" cy="430" r="30" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <circle cx="890" cy="430" r="32" fill="#D97A2B"/>
+  <circle cx="710" cy="520" r="30" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <circle cx="800" cy="520" r="32" fill="#D97A2B"/>
+  <circle cx="890" cy="520" r="30" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <circle cx="710" cy="610" r="32" fill="#D97A2B"/>
+  <circle cx="800" cy="610" r="30" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <circle cx="890" cy="610" r="32" fill="#D97A2B"/>
+  <rect x="675" y="738" width="250" height="20" rx="10" fill="#D97A2B"/>
+
+  <!-- group 3: hollow only -->
+  <circle cx="1150" cy="430" r="29" fill="none" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="1240" cy="430" r="29" fill="none" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="1330" cy="430" r="29" fill="none" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="1150" cy="520" r="29" fill="none" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="1240" cy="520" r="29" fill="none" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="1330" cy="520" r="29" fill="none" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="1150" cy="610" r="29" fill="none" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="1240" cy="610" r="29" fill="none" stroke="#B8442D" stroke-width="6"/>
+  <circle cx="1330" cy="610" r="29" fill="none" stroke="#B8442D" stroke-width="6"/>
+  <rect x="1115" y="738" width="250" height="20" rx="10" fill="#B8442D"/>
+
+  <line x1="200" y1="805" x2="1400" y2="805" stroke="#5C6B6B" stroke-width="5" marker-end="url(#arrow)"/>
+</svg>

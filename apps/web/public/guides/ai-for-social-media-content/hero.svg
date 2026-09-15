@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一週貼文，一次排完 / A week of posts, scheduled in one sitting</title>
+  <desc id="desc">幾何插圖。左邊三個圓角對話框上下排開，框內各有幾條橫線代表寫好的文案，三個框分別是白底、淺綠底與淺藍底。一支箭頭把三個對話框帶到畫面中央的一張日曆卡片：卡片上緣是深綠色標題帶，帶上跨著兩個圓環，卡片內是四乘四的方格，其中三格填成深綠色，代表已經排好時間的貼文。另一支箭頭從日曆通往右邊的白色成效卡片，卡片內是一條向右上走的折線與五個圓點，下方有一條灰色基準線。成效卡片下面是一個淺綠色圓形徽章，裡面是一個綠色勾號，代表發佈前人工確認過。畫面上方只有一行字：一週貼文，一次排完。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="800" y="170" font-size="56" font-weight="bold" fill="#102A2B" text-anchor="middle">一週貼文，一次排完</text>
+
+  <!-- three speech bubbles: the drafts -->
+  <rect x="140" y="280" width="300" height="130" rx="28" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <path d="M 180 408 L 172 440 L 224 408 z" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="176" y="312" width="210" height="14" rx="7" fill="#0D6B68"/>
+  <rect x="176" y="342" width="170" height="14" rx="7" fill="#5C6B6B"/>
+  <rect x="176" y="372" width="120" height="14" rx="7" fill="#5C6B6B"/>
+
+  <rect x="190" y="450" width="300" height="130" rx="28" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <path d="M 230 578 L 222 610 L 274 578 z" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="226" y="482" width="210" height="14" rx="7" fill="#0D6B68"/>
+  <rect x="226" y="512" width="150" height="14" rx="7" fill="#5C6B6B"/>
+  <rect x="226" y="542" width="185" height="14" rx="7" fill="#5C6B6B"/>
+
+  <rect x="140" y="620" width="300" height="130" rx="28" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="6"/>
+  <rect x="176" y="652" width="185" height="14" rx="7" fill="#2F6F9F"/>
+  <rect x="176" y="682" width="210" height="14" rx="7" fill="#5C6B6B"/>
+  <rect x="176" y="712" width="140" height="14" rx="7" fill="#5C6B6B"/>
+
+  <path d="M 512 512 L 596 512" stroke="#5C6B6B" stroke-width="8" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- calendar card: the schedule -->
+  <rect x="620" y="300" width="360" height="400" rx="24" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <path d="M 620 324 A 24 24 0 0 1 644 300 L 956 300 A 24 24 0 0 1 980 324 L 980 372 L 620 372 z" fill="#0D6B68"/>
+  <circle cx="704" cy="300" r="15" fill="#F7F1E8" stroke="#0D6B68" stroke-width="6"/>
+  <circle cx="896" cy="300" r="15" fill="#F7F1E8" stroke="#0D6B68" stroke-width="6"/>
+
+  <rect x="650" y="408" width="60" height="50" rx="10" fill="#E3F0EF"/>
+  <rect x="730" y="408" width="60" height="50" rx="10" fill="#0D6B68"/>
+  <rect x="810" y="408" width="60" height="50" rx="10" fill="#E3F0EF"/>
+  <rect x="890" y="408" width="60" height="50" rx="10" fill="#E3F0EF"/>
+
+  <rect x="650" y="476" width="60" height="50" rx="10" fill="#E3F0EF"/>
+  <rect x="730" y="476" width="60" height="50" rx="10" fill="#E3F0EF"/>
+  <rect x="810" y="476" width="60" height="50" rx="10" fill="#D97A2B"/>
+  <rect x="890" y="476" width="60" height="50" rx="10" fill="#E3F0EF"/>
+
+  <rect x="650" y="544" width="60" height="50" rx="10" fill="#0D6B68"/>
+  <rect x="730" y="544" width="60" height="50" rx="10" fill="#E3F0EF"/>
+  <rect x="810" y="544" width="60" height="50" rx="10" fill="#E3F0EF"/>
+  <rect x="890" y="544" width="60" height="50" rx="10" fill="#E3F0EF"/>
+
+  <rect x="650" y="612" width="60" height="50" rx="10" fill="#E3F0EF"/>
+  <rect x="730" y="612" width="60" height="50" rx="10" fill="#E3F0EF"/>
+  <rect x="810" y="612" width="60" height="50" rx="10" fill="#E3F0EF"/>
+  <rect x="890" y="612" width="60" height="50" rx="10" fill="#0D6B68"/>
+
+  <path d="M 1004 450 L 1104 450" stroke="#5C6B6B" stroke-width="8" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- results card: the review -->
+  <rect x="1130" y="330" width="330" height="250" rx="24" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <path d="M 1166 552 L 1424 552" stroke="#5C6B6B" stroke-width="5" fill="none"/>
+  <polyline points="1170,516 1234,470 1298,486 1362,406 1420,372" fill="none" stroke="#2F6F9F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1170" cy="516" r="10" fill="#2F6F9F"/>
+  <circle cx="1234" cy="470" r="10" fill="#2F6F9F"/>
+  <circle cx="1298" cy="486" r="10" fill="#2F6F9F"/>
+  <circle cx="1362" cy="406" r="10" fill="#2F6F9F"/>
+  <circle cx="1420" cy="372" r="10" fill="#2F6F9F"/>
+
+  <circle cx="1295" cy="682" r="62" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="6"/>
+  <path d="M 1263 684 L 1287 708 L 1330 658" fill="none" stroke="#2E7D5B" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,458 @@
+{
+  "slug": "ai-token-cost-estimation",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "token 計算與費用估算：官方計數工具、一次對話的算式與費用上限",
+      "description": "費用估算只有三個數字：輸入 token、輸出 token、每百萬 token 單價。這篇抄下 OpenAI、Anthropic、Google 官網當天寫的 token 與字元比例原文，給出 tiktoken、輸入 token 計數 API 與 countTokens 的官方範例，畫出一次對話裡系統提示詞與歷史怎麼累加，再用客服、翻譯一本書、每天摘要新聞三個情境把算式與假設寫出來，最後是三家設費用上限的位置。",
+      "hero": {
+        "src": "/guides/ai-token-cost-estimation/hero.jpg",
+        "alt": "三張由小到大疊起來的圓角卡片，一條虛線箭頭指向右邊的半圓量表與一條實心的圓角橫條",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "估一筆 AI 的 API 費用只需要三個數字：輸入 token、輸出 token，以及該模型每百萬 token 的單價。難的從來不是乘法，是知道一次對話到底把多少 token 送了出去。系統提示詞每一輪都重送、歷史對話每一輪都變長，帳單就是這樣長出來的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇不重講 token 的原理，直接給可以照做的三件事：官方計數工具的原文範例與自測步驟、一次對話的 token 組成，以及客服機器人、翻譯一本書、每天摘要新聞三個情境從假設到結果的完整算式。文中所有單價都是 2026 年 9 月 15 日各家官網當天的價格，照官網幣別（美元）不換算；本環境不能登入也不能實測，算式全部由假設推出，你要換成自己量到的數字。"
+        },
+        {
+          "type": "heading",
+          "text": "先講比例：官方只保證英文",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "token 是模型處理文字的計量單位，一段話進模型之前會先被切成一串 token，這件事的細節在 "
+            },
+            {
+              "type": "link",
+              "text": "token（Token）是什麼：AI 如何計算文字長度",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "分詞（Tokenization）是什麼：文字進入模型前的切分",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-tokenization"
+            },
+            {
+              "type": "text",
+              "text": " 兩篇，這裡只要記住一句：計價算的是 token，不是字數。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "官方寫得出來的比例只有英文。OpenAI 說明中心的「Understanding and counting tokens」列了三個粗估值：一個 token 大約是 4 個字元、大約是四分之三個英文單字，100 個 token 大約是 75 個英文單字，緊接著就寫明這些是估計不是精確計數，其他語言的字元、單字與 token 之間的關係可能不同。Anthropic 的術語表寫 Claude 的一個 token 大約代表 3.5 個英文字元，同樣附註確切數字會隨語言而變。Google 的 Gemini 文件寫一個 token 大約等於 4 個字元、100 個 token 大約等於 60 到 80 個英文單字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "中文沒有官方比例。三家官網當天都沒有給中文的字元對 token 比例，所以這篇不自創數字，也不建議抄網路上流傳的比例；正確作法是拿你真正會送出去的那段文字丟進官方計數工具量一次。程式碼同理，縮排、括號、變數名稱都會影響切分結果，唯一可靠的是實際數過。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一個常被忽略的變數：同一段文字換個模型，token 數會變。Anthropic 的 token 計數文件寫明，Claude 4.7 以後的模型與 Claude Mythos Preview 換了新的分詞器，同一段輸入產生的 token 數比舊模型多約 30%，確切幅度看內容而定，並建議直接對著你打算用的模型重數，不要沿用舊模型量到的數字。"
+        },
+        {
+          "type": "heading",
+          "text": "三個官方計數工具，照文件原文抄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先分清楚兩件事：本機分詞器只能數純文字，計數 API 才數得到整包請求。OpenAI 的計數文件把這點寫得很直白，tiktoken 這類本機工具只適用純文字，圖片與檔案不支援，工具與結構描述（schema）加上去的 token 也很難在本機算，而且模型本身的行為會改變分詞結果。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "tiktoken 官方倉庫 README 的範例，只適用純文字",
+          "code": "import tiktoken\nenc = tiktoken.get_encoding(\"o200k_base\")\nassert enc.decode(enc.encode(\"hello world\")) == \"hello world\"\n\n# To get the tokeniser corresponding to a specific model in the OpenAI API:\nenc = tiktoken.encoding_for_model(\"gpt-4o\")"
+        },
+        {
+          "type": "paragraph",
+          "text": "要數整包請求，OpenAI 給的是輸入 token 計數端點，路徑是 POST /v1/responses/input_tokens。它吃的格式跟 Responses API 一樣，文字、訊息、圖片、檔案、工具、對話都可以直接丟進去，回傳的 input_tokens 就是模型實際會收到的數量，而且包含訊息角色與邊界這類表示請求結構用的格式 token，那些是在本機怎麼數都數不到的。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "OpenAI 輸入 token 計數 API 的官方 Python 範例",
+          "code": "from openai import OpenAI\n\nclient = OpenAI()\n\nresponse = client.responses.input_tokens.count(\n    model=\"gpt-6-astra\", input=\"Tell me a joke.\"\n)\nprint(response.input_tokens)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 這邊叫 token 計數（Token counting），端點是 POST /v1/messages/count_tokens，同樣吃跟建立訊息一樣的結構，系統提示詞、工具、圖片與 PDF 都算得進去，文件上的基本範例回的是 input_tokens 等於 14。兩個官方註記要記住：這個數字是估計值，實際建立訊息時用掉的輸入 token 可能有小幅差異；另外計數結果可能包含 Anthropic 為了系統最佳化自動加上的 token，官方寫明那些不向你收費，帳單只反映你自己的內容。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "Anthropic token 計數 API 的官方 cURL 範例",
+          "code": "curl https://api.anthropic.com/v1/messages/count_tokens \\\n  -H \"x-api-key: $ANTHROPIC_API_KEY\" \\\n  -H \"content-type: application/json\" \\\n  -H \"anthropic-version: 2023-06-01\" \\\n  -d '{\n    \"model\": \"claude-opus-5\",\n    \"system\": \"You are a scientist\",\n    \"messages\": [{\n      \"role\": \"user\",\n      \"content\": \"Hello, Claude\"\n    }]\n  }'"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的 Gemini 是 count_tokens，REST 端點寫成模型名稱後面接冒號加 countTokens。官方說明它只回傳輸入的 token 總數，建議在送出前先呼叫一次確認請求大小。想看輸出與其他項目要改讀回應上的 usage，官方列的欄位有 total_input_tokens、total_output_tokens、total_thought_tokens、total_cached_tokens、total_tool_use_tokens 與 total_tokens。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "Google Gemini count_tokens 的官方 REST 範例",
+          "code": "# Specifies the API revision to avoid breaking changes when they become default\ncurl -X POST \\\n  \"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:countTokens\" \\\n  -H \"x-goog-api-key: $GEMINI_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"contents\": [{\"parts\": [{\"text\": \"The quick brown fox.\"}]}]}'"
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有金鑰也可以先量：OpenAI 的說明中心與文件都指向官網的 Tokenizer 工具，貼上文字就會顯示切分結果。自測固定三步。第一步，把真正會送出去的那段文字原封不動貼進去，標點、換行與空白都不要改，官方明講同一個詞加上前導空格或改變大小寫，編碼方式就可能不同。第二步，同一段文字在你打算用的模型上再量一次。第三步，把數字填進試算表，之後只要改用量，費用就會自己跟著算。"
+        },
+        {
+          "type": "heading",
+          "text": "一次對話送出去的是四段東西",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "API 的每一次請求都是獨立的。OpenAI 的對話狀態文件寫明每一次文字生成請求都是獨立且無狀態的，要做多輪對話就得把先前的訊息一起當參數送進去。Anthropic 的上下文視窗文件把範圍列得更清楚：系統提示詞、messages 裡的每一則訊息（含工具結果、圖片與文件）以及你的工具定義，全部都算進這一次請求；每一輪的輸入包含所有先前的對話歷史加上這一輪的新訊息，而這一輪的輸出會變成下一輪輸入的一部分。容量本身怎麼看，可以對照 "
+            },
+            {
+              "type": "link",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "用一個具體的例子看會很清楚。假設系統提示詞 2,000 個 token，使用者每次提問 100 個 token，模型每次回答 300 個 token，一通對話問三輪。第 1 輪的輸入是 2,000 加 100，等於 2,100；第 2 輪多了第 1 輪的 100 與 300，歷史 400，輸入變成 2,500；第 3 輪歷史累積到 800，輸入變成 2,900。三輪加起來輸入 7,500 個 token、輸出 900 個 token。使用者實際打出來的字只有 300 個 token，帳單上的輸入卻是它的二十五倍。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-token-cost-estimation/diagram-1.svg",
+          "alt": "三輪對話的 token 堆疊圖，每輪都重送系統提示詞並疊上愈來愈長的歷史，右側標出輸入與輸出的合計",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右是同一通對話的三輪。每一根柱子由下往上是系統提示詞、歷史、本輪提問，右邊灰框是該輪的輸出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "費用算式，單價一律是每百萬 token 的官網價",
+          "code": "單次請求費用 = 輸入 token ÷ 1,000,000 × 輸入單價\n             + 輸出 token ÷ 1,000,000 × 輸出單價\n\n一通多輪對話的輸入總量（系統提示詞每輪重送、歷史累加）：\n第 n 輪輸入 = 系統提示詞 + 前 n-1 輪的提問與回答 + 本輪提問\n\n有快取時，輸入端拆成三段分別計價：\n輸入端費用 = 快取寫入 token ÷ 1,000,000 × 寫入單價\n           + 快取命中 token ÷ 1,000,000 × 命中單價\n           + 其餘輸入 token ÷ 1,000,000 × 輸入單價"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "重複的那一段前綴可以不用重算，這就是提示快取存在的理由。OpenAI 的提示快取文件寫快取的輸入 token 最多可折 90%，預設就對支援的模型開啟，GPT-5.6 以後的模型可快取前綴最短是 1,024 個 token。Anthropic 的定價頁寫快取讀取是基礎輸入價的 0.1 倍，並直接給出回本條件：5 分鐘快取的寫入是 1.25 倍，讀一次就回本；1 小時快取的寫入是 2 倍，要讀兩次。Google 的定價頁把 Context caching 列在付費層，除了較低的輸入價還另外收每百萬 token 每小時的儲存費。三家的機制差異與實際省法，站上有 "
+            },
+            {
+              "type": "link",
+              "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "Claude API 省錢：提示快取與批次處理怎麼用",
+              "url": "https://mokaair.com/zh-TW/life/claude-api-prompt-caching-cost"
+            },
+            {
+              "type": "text",
+              "text": " 兩篇。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "三個情境，把假設寫出來自己算一遍",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下三個情境的 token 數全部是假設，不是實測；單價是 2026 年 9 月 15 日各家官網當天的價格。要套到自己身上，先把假設換成你用計數工具量到的數字，再把單價換成你實際會用的那個型號。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "客服機器人：系統提示詞 2,000 個 token 每輪重送，使用者每次提問 100 個 token、模型每次回答 300 個 token，一通三輪，每天 500 通。單價用 Claude Sonnet 5 官網的每百萬 token 輸入 2 美元、輸出 10 美元，快取命中 0.20 美元、5 分鐘快取寫入 2.50 美元。",
+            "翻譯一本書：一本 10 萬個英文單字的書，照 OpenAI 寫的 100 個 token 約 75 個英文單字換算，內文約 13.4 萬個 token；切成 100 批送，每批加一段 500 個 token 的翻譯指示，輸入合計約 18.4 萬個 token。輸出假設與內文的 token 數相同，這個 1 比 1 是假設不是官方數字，中文那一端要自己量。單價用 gemini-3.8-flash 官網 2026 年 12 月 31 日前的輸入 0.75 美元、輸出 3.75 美元。",
+            "每天摘要新聞：每天 30 篇，每篇內文 1,200 個 token，各配一段 300 個 token 的摘要指示、產出 200 個 token；最後再做一份總表，輸入 6,300 個 token、輸出 500 個 token。單價用 gpt-5.6-terra 官網短上下文的輸入 2 美元、輸出 12 美元。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "每天輸入（百萬 token）",
+            "每天輸出（百萬 token）",
+            "算式與結果（美元）"
+          ],
+          "rows": [
+            [
+              "客服機器人，不用快取",
+              "3.75",
+              "0.45",
+              "3.75 × 2 + 0.45 × 10 = 12.00"
+            ],
+            [
+              "客服機器人，系統提示詞走快取",
+              "3.75（寫入 1.0、命中 2.0）",
+              "0.45",
+              "1.0 × 2.5 + 2.0 × 0.2 + 0.75 × 2 + 0.45 × 10 = 8.90"
+            ],
+            [
+              "翻譯一本 10 萬字英文書，一次性",
+              "0.184",
+              "0.134",
+              "0.184 × 0.75 + 0.134 × 3.75 = 0.64"
+            ],
+            [
+              "同上改走批次 API 的五折價",
+              "0.184",
+              "0.134",
+              "0.64 ÷ 2 = 0.32"
+            ],
+            [
+              "每天摘要 30 篇新聞",
+              "0.0513",
+              "0.0065",
+              "0.0513 × 2 + 0.0065 × 12 = 0.18"
+            ]
+          ],
+          "caption": "單價為 2026 年 9 月 15 日各家官網當天價，照官網幣別未換算；token 數為本文假設，非實測。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "三個情境放在一起會看到一件事：一次性的大批文字其實不貴，貴的是每天重複跑的對話。翻譯一本 10 萬字的書花不到 1 美元，走批次 API 再打對折；但同一段系統提示詞每天被重送 1,500 次的客服，一個月就是 360 美元，把它放進快取之後降到 267 美元，省下的 93 美元全部來自那段重複的前綴。各家當天的每百萬 token 價可以對照 "
+            },
+            {
+              "type": "link",
+              "text": "API 價格比較：每百萬 token 各家多少",
+              "url": "https://mokaair.com/zh-TW/life/ai-api-pricing-comparison-2026"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+        },
+        {
+          "type": "link",
+          "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+          "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+        },
+        {
+          "type": "heading",
+          "text": "費用上限與警示，三家設在哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "警示與硬上限是兩件事，先分清楚再設。OpenAI 的支出上限文件把兩者列成一張表：支出警示（Spend alert）只發通知、API 流量照跑；硬性支出上限（Hard spend limit）會讓受影響的請求回 429 錯誤。設定位置在組織的 Limits 頁或專案的 Limits 頁，在 Spend 區塊選 Edit spend limit、填 Monthly spend limit，再打開 Enforce a hard limit 才會真的擋下來。官方也提醒執行不是即時的，記錄到的支出可能略微超過你設的金額。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 分成方案上限與自訂上限。官方的速率限制文件列出各用量層級的每月支出上限：Start 是 500 美元、Build 是 1,000 美元、Scale 是 200,000 美元，Custom 層級沒有每月上限。碰到上限時 API 會暫停到下個月第一天世界協調時間 00:00，回的是 HTTP 429、錯誤碼 enforced_spend_limit_reached，而且沒有 retry-after 標頭，重試不會通。要自己設更低的值，走 Claude Console 的 Settings 裡的 Billing 頁，在 Spend limits 區塊點 Adjust limit，值不能超過所屬層級的上限。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 這邊是 Cloud Billing 的預算與快訊。官方文件寫明第一次建立預算時的預設快訊門檻是預算金額的 50%、90% 與 100%，以實際支出計算，百分比與規則都可以自己改。同一頁也放了最重要的那句警告：只有快訊的預算不會自動為 Google Cloud 或 Google Maps Platform 的用量或支出設上限，快訊只是讓你知道趨勢，不會阻止服務被使用或計費。官方的建議是把預算金額設得比可用資金低，並在有支援的服務上考慮改用支出上限預算，該功能頁面標示為預覽。Gemini 這一側的錯誤碼與重試，站上有 "
+            },
+            {
+              "type": "link",
+              "text": "API 額度與錯誤：費用、重試與成本控制",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": " 可以看。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "看用量的地方要先開好權限。OpenAI 的用量儀表板要組織擁有者或有該權限的人才打得開，資料以世界協調時間顯示，Playground 用掉的 token 一樣算進帳。Anthropic 則在 Claude Console 的 Usage 頁看用量與快取命中率。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "用字元數除以 4 估出來的數字，不能拿來當帳單依據",
+          "text": "OpenAI 的計數文件明講，本機分詞器只適用純文字，圖片與檔案不支援、字元數除以 4 這種估法不準，工具與結構描述加上去的 token 也難以在本機算；計數 API 的結果則會包含訊息角色與邊界這類格式 token。輸出端還有一個坑：官方寫明回報的輸出 token 包含模型生成的全部 token，不只是你看得到的文字，某些模型會產生用來分隔回應通道與工具呼叫的格式 token，所以就算 reasoning_tokens 顯示 0，輸出數字仍可能比可見文字多。推理模型的思考 token 也算輸出，Anthropic 的文件寫明思考 token 在產生時就以輸出 token 計費。要估費用就用計數 API，不要用字元數推。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "估完費用不代表估完成本。訂閱與 API 之間怎麼選可以看 "
+            },
+            {
+              "type": "link",
+              "text": "只能訂一個的話訂哪個：ChatGPT、Claude、Gemini",
+              "url": "https://mokaair.com/zh-TW/life/ai-subscription-which-to-pay-2026"
+            },
+            {
+              "type": "text",
+              "text": "；同一批 token 在機房那一端的代價則寫在 "
+            },
+            {
+              "type": "link",
+              "text": "AI 的用電與用水：一次對話的成本",
+              "url": "https://mokaair.com/zh-TW/life/ai-energy-water-footprint"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 說明中心 Understanding and counting tokens（1 token 約 4 個字元、約四分之三個英文單字、100 tokens 約 75 個英文單字；指向 Tokenizer 與 tiktoken；輸入、輸出、快取與推理 token 的分類）",
+          "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API 文件 Counting tokens（輸入 token 計數端點 POST /v1/responses/input_tokens、本機分詞器的四項限制、輸出 token 含不可見的格式 token）",
+          "url": "https://developers.openai.com/api/docs/guides/token-counting",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "tiktoken 官方倉庫 README（get_encoding 與 encoding_for_model 的官方範例）",
+          "url": "https://github.com/openai/tiktoken",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API 文件 Conversation state（每一次文字生成請求都是獨立且無狀態，多輪對話要把先前訊息一起送）",
+          "url": "https://developers.openai.com/api/docs/guides/conversation-state",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API 文件 Prompt caching（快取輸入最多折 90%、預設開啟、GPT-5.6 以後可快取前綴最短 1,024 token）",
+          "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API 文件 Spend limits（支出警示與硬性支出上限的差別、組織與專案的設定步驟、429 與執行非即時）",
+          "url": "https://developers.openai.com/api/docs/guides/spend-limits",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心 Troubleshooting API usage and spend limits（四種計費相關錯誤碼與對應處理）",
+          "url": "https://help.openai.com/en/articles/6614457-troubleshooting-api-usage-and-spend-limits",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心 Managing projects in the API platform（專案 Limits 裡的 Monthly spend limit、Notification threshold 與預設 100% 警示）",
+          "url": "https://help.openai.com/en/articles/9186755-managing-projects-in-the-api-platform",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心 Reviewing API usage and costs（用量儀表板權限、資料以世界協調時間顯示、Playground 的 token 計入用量）",
+          "url": "https://help.openai.com/en/articles/10478918-api-usage-dashboard",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API 定價頁（gpt-5.6-terra 短上下文每百萬 token 輸入 2.00 美元、輸出 12.00 美元）",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 文件 Token counting（count_tokens 端點、基本範例回 input_tokens 14、數字為估計值、系統自動加的 token 不收費、Claude 4.7 以後新分詞器約多 30%）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/token-counting",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic API 參考 Count tokens in a Message（POST /v1/messages/count_tokens 的參數與回應）",
+          "url": "https://platform.claude.com/docs/en/api/messages/count_tokens",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 術語表 Tokens（Claude 的一個 token 大約代表 3.5 個英文字元，確切數字隨語言而變）",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 文件 Context windows（系統提示詞、每一則訊息與工具定義都算進請求；每輪輸入含全部歷史；思考 token 產生時以輸出 token 計費）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 定價頁（Claude Sonnet 5 每百萬 token 輸入 2 美元、輸出 10 美元、快取命中 0.20 美元、5 分鐘快取寫入 2.50 美元；快取回本條件）",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 文件 Rate limits（Start 500 美元、Build 1,000 美元、Scale 200,000 美元的每月支出上限；enforced_spend_limit_reached；Console 的 Billing 設自訂上限）",
+          "url": "https://platform.claude.com/docs/en/api/rate-limits",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google Gemini API 文件 Understand and count tokens（一個 token 約等於 4 個字元、100 tokens 約 60 到 80 個英文單字；count_tokens 與 usage 欄位；countTokens 的 REST 範例）",
+          "url": "https://ai.google.dev/gemini-api/docs/tokens",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google Gemini API 定價頁（gemini-3.8-flash 2026 年 12 月 31 日前每百萬 token 輸入 0.75 美元、輸出 3.75 美元；付費層含 Context caching 與批次 API 五折）",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google Cloud Billing 文件 Create, edit, or delete budgets and budget alerts（預設快訊門檻 50%、90%、100%；只有快訊的預算不會自動為用量或支出設上限）",
+          "url": "https://docs.cloud.google.com/billing/docs/how-to/budgets",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

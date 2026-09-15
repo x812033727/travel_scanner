@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">先匯出、再刪除、最後看保留期 / Export, delete, then check the retention window</title>
+  <desc id="desc">上排三個步驟：先匯出，拿到副本並打開檢查過再刪；再刪除，畫面上立刻消失且救不回來；最後看保留期，後端還要再等一段時間。下排三欄是三家官方說明頁寫的數字。ChatGPT：匯出最久等 7 天，下載連結收到後 24 小時失效，刪除後 30 天內從系統移除，暫時對話 30 天後刪除，記憶要在個人化設定裡另外刪。Claude：匯出等待時間官網未寫天數，下載連結寄出後 24 小時失效，刪除後 30 天內從後端系統刪除，無痕對話預設保留 30 天，允許用對話改進模型時去識別化資料最長留 5 年。Gemini：走 Google Takeout，多數人當天拿到連結，寄信的下載連結有效 7 天，活動記錄自動刪除預設 18 個月，暫時對話保留 72 小時，被人工審閱過的對話最長留 3 年。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">先匯出、再刪除，最後看保留期</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Export, delete, then check the retention window</text>
+
+  <rect x="60" y="115" width="440" height="110" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="280" y="162" font-size="23" font-weight="700" fill="#102A2B" text-anchor="middle">先匯出</text>
+  <text x="280" y="198" font-size="17" fill="#5C6B6B" text-anchor="middle">拿到副本，打開檢查過再刪</text>
+
+  <line x1="508" y1="170" x2="568" y2="170" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="580" y="115" width="440" height="110" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="800" y="162" font-size="23" font-weight="700" fill="#102A2B" text-anchor="middle">再刪除</text>
+  <text x="800" y="198" font-size="17" fill="#5C6B6B" text-anchor="middle">畫面上立刻消失，救不回來</text>
+
+  <line x1="1028" y1="170" x2="1088" y2="170" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1100" y="115" width="440" height="110" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1320" y="162" font-size="23" font-weight="700" fill="#102A2B" text-anchor="middle">看保留期</text>
+  <text x="1320" y="198" font-size="17" fill="#5C6B6B" text-anchor="middle">後端還要再等一段時間</text>
+
+  <rect x="60" y="265" width="440" height="520" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="64" y="269" width="432" height="58" rx="10" fill="#E3F0EF"/>
+  <text x="280" y="308" font-size="26" font-weight="700" fill="#0D6B68" text-anchor="middle">ChatGPT</text>
+  <text x="280" y="374" font-size="16" fill="#5C6B6B" text-anchor="middle">匯出等多久</text>
+  <text x="280" y="406" font-size="21" fill="#102A2B" text-anchor="middle">最久 7 天</text>
+  <text x="280" y="462" font-size="16" fill="#5C6B6B" text-anchor="middle">下載連結</text>
+  <text x="280" y="494" font-size="21" fill="#102A2B" text-anchor="middle">收到後 24 小時</text>
+  <text x="280" y="550" font-size="16" fill="#5C6B6B" text-anchor="middle">刪除後</text>
+  <text x="280" y="582" font-size="21" fill="#102A2B" text-anchor="middle">30 天內從系統移除</text>
+  <text x="280" y="638" font-size="16" fill="#5C6B6B" text-anchor="middle">暫時對話</text>
+  <text x="280" y="670" font-size="21" fill="#102A2B" text-anchor="middle">30 天後刪除</text>
+  <line x1="90" y1="706" x2="470" y2="706" stroke="#E3F0EF" stroke-width="3"/>
+  <text x="280" y="744" font-size="16" fill="#5C6B6B" text-anchor="middle">記憶要在個人化設定裡另外刪</text>
+
+  <rect x="580" y="265" width="440" height="520" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <rect x="584" y="269" width="432" height="58" rx="10" fill="#E6F0F7"/>
+  <text x="800" y="308" font-size="26" font-weight="700" fill="#2F6F9F" text-anchor="middle">Claude</text>
+  <text x="800" y="374" font-size="16" fill="#5C6B6B" text-anchor="middle">匯出等多久</text>
+  <text x="800" y="406" font-size="21" fill="#102A2B" text-anchor="middle">官網未寫天數</text>
+  <text x="800" y="462" font-size="16" fill="#5C6B6B" text-anchor="middle">下載連結</text>
+  <text x="800" y="494" font-size="21" fill="#102A2B" text-anchor="middle">寄出後 24 小時</text>
+  <text x="800" y="550" font-size="16" fill="#5C6B6B" text-anchor="middle">刪除後</text>
+  <text x="800" y="582" font-size="21" fill="#102A2B" text-anchor="middle">30 天內從後端刪除</text>
+  <text x="800" y="638" font-size="16" fill="#5C6B6B" text-anchor="middle">無痕對話</text>
+  <text x="800" y="670" font-size="21" fill="#102A2B" text-anchor="middle">預設保留 30 天</text>
+  <line x1="610" y1="706" x2="990" y2="706" stroke="#E6F0F7" stroke-width="3"/>
+  <text x="800" y="744" font-size="16" fill="#5C6B6B" text-anchor="middle">允許改進模型：去識別化留 5 年</text>
+
+  <rect x="1100" y="265" width="440" height="520" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <rect x="1104" y="269" width="432" height="58" rx="10" fill="#F6E7D6"/>
+  <text x="1320" y="308" font-size="26" font-weight="700" fill="#B8442D" text-anchor="middle">Gemini</text>
+  <text x="1320" y="374" font-size="16" fill="#5C6B6B" text-anchor="middle">匯出等多久</text>
+  <text x="1320" y="406" font-size="21" fill="#102A2B" text-anchor="middle">多數人當天拿到</text>
+  <text x="1320" y="462" font-size="16" fill="#5C6B6B" text-anchor="middle">下載連結</text>
+  <text x="1320" y="494" font-size="21" fill="#102A2B" text-anchor="middle">寄信連結 7 天</text>
+  <text x="1320" y="550" font-size="16" fill="#5C6B6B" text-anchor="middle">自動刪除</text>
+  <text x="1320" y="582" font-size="21" fill="#102A2B" text-anchor="middle">預設 18 個月</text>
+  <text x="1320" y="638" font-size="16" fill="#5C6B6B" text-anchor="middle">暫時對話</text>
+  <text x="1320" y="670" font-size="21" fill="#102A2B" text-anchor="middle">保留 72 小時</text>
+  <line x1="1130" y1="706" x2="1510" y2="706" stroke="#F6E7D6" stroke-width="3"/>
+  <text x="1320" y="744" font-size="16" fill="#5C6B6B" text-anchor="middle">人工審閱過的對話最長留 3 年</text>
+
+  <text x="60" y="830" font-size="17" fill="#5C6B6B">數字照各家官方說明頁與隱私中心，介面與名稱以官網為準。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
