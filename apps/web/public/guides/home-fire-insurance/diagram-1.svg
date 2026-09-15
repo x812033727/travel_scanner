@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一張住宅火險保單的組成 / What a residential fire policy covers</title>
+  <desc id="desc">圖分成三層。第一層是建築物本體，以重置成本投保，保額參考臺灣地區住宅類建築造價參考表；住宅地震基本保險只保這一層，不包括動產及裝潢。右側註明這一層就是房貸行庫要求投保的部分，抵押權附加條款約定火災事故的保險金優先清償抵押權人。第二層是裝潢與建築物內動產，動產自動納入承保，但保險金額只有建築物保險金額的百分之三十、上限新臺幣八十萬元，並按折舊後的實際價值賠付，裝潢修復費用須先投保建築物內動產才會啟動。右側註明不足的部分要自己加保，擴大地震保險附加條款可以承保部分損失與建築物內動產。第三層是責任與其他基本項目，包括住宅第三人責任基本保險、住宅玻璃保險與住宅颱風及洪水災害補償保險，隨主保單基本承保，不必另外加保。圖下方一行提醒：房貸行庫要的是擔保品，所以保額算的是建築物重置成本，裝潢與動產不在那筆金額裡。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">一張住宅火險保單的組成</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">What a residential fire policy in Taiwan actually covers</text>
+
+  <!-- layer one: the building -->
+  <rect x="60" y="130" width="930" height="170" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="85" y="152" width="104" height="42" rx="10" fill="#0D6B68"/>
+  <text x="137" y="180" font-size="20" fill="#FFFFFF" text-anchor="middle">第一層</text>
+  <text x="209" y="181" font-size="20" font-weight="700" fill="#102A2B">建築物本體</text>
+  <text x="90" y="232" font-size="17" fill="#102A2B">以重置成本投保，保額參考臺灣地區住宅類建築造價參考表</text>
+  <text x="90" y="266" font-size="17" fill="#5C6B6B">住宅地震基本保險只保這一層：建築物本體，不含動產及裝潢</text>
+
+  <rect x="1030" y="130" width="510" height="170" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1060" y="192" font-size="20" font-weight="700" fill="#0D6B68">房貸行庫要求的是這一層</text>
+  <text x="1060" y="230" font-size="17" fill="#102A2B">抵押權附加條款約定火災事故</text>
+  <text x="1060" y="260" font-size="17" fill="#102A2B">的保險金優先清償抵押權人</text>
+  <line x1="990" y1="215" x2="1024" y2="215" stroke="#5C6B6B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <!-- layer two: fit-out and contents -->
+  <rect x="60" y="320" width="930" height="170" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <rect x="85" y="342" width="104" height="42" rx="10" fill="#D97A2B"/>
+  <text x="137" y="370" font-size="20" fill="#FFFFFF" text-anchor="middle">第二層</text>
+  <text x="209" y="371" font-size="20" font-weight="700" fill="#102A2B">裝潢與建築物內動產</text>
+  <text x="90" y="422" font-size="17" fill="#102A2B">動產自動納入承保，但保險金額只有建築物保險金額的百分之三十，上限新臺幣八十萬元</text>
+  <text x="90" y="456" font-size="17" fill="#5C6B6B">按折舊後的實際價值賠付；裝潢修復費用須先投保建築物內動產才啟動</text>
+
+  <rect x="1030" y="320" width="510" height="170" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1060" y="382" font-size="20" font-weight="700" fill="#D97A2B">不足的部分要自己加保</text>
+  <text x="1060" y="420" font-size="17" fill="#102A2B">擴大地震保險附加條款可保</text>
+  <text x="1060" y="450" font-size="17" fill="#102A2B">部分損失與建築物內動產</text>
+  <line x1="990" y1="405" x2="1024" y2="405" stroke="#5C6B6B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <!-- layer three: liability and the other basic covers -->
+  <rect x="60" y="510" width="930" height="170" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <rect x="85" y="532" width="104" height="42" rx="10" fill="#2F6F9F"/>
+  <text x="137" y="560" font-size="20" fill="#FFFFFF" text-anchor="middle">第三層</text>
+  <text x="209" y="561" font-size="20" font-weight="700" fill="#102A2B">責任與其他基本項目</text>
+  <text x="90" y="612" font-size="17" fill="#102A2B">住宅第三人責任基本保險、住宅玻璃保險、住宅颱風及洪水災害補償保險</text>
+  <text x="90" y="646" font-size="17" fill="#5C6B6B">隨主保單基本承保，保險金額與自負額由條款訂定</text>
+
+  <rect x="1030" y="510" width="510" height="170" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1060" y="572" font-size="20" font-weight="700" fill="#2F6F9F">隨主保單基本承保</text>
+  <text x="1060" y="610" font-size="17" fill="#102A2B">不必另外加保，但保險金額</text>
+  <text x="1060" y="640" font-size="17" fill="#102A2B">與自負額由條款訂定</text>
+  <line x1="990" y1="595" x2="1024" y2="595" stroke="#5C6B6B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <!-- the takeaway -->
+  <rect x="60" y="712" width="1480" height="100" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="800" y="769" font-size="20" fill="#102A2B" text-anchor="middle">房貸行庫要的是擔保品，所以保額算的是建築物重置成本；裝潢與動產不在那筆金額裡</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
