@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">外幣的兩個價格 / Two prices for the same currency</title>
+<desc id="desc">圖分成上下兩層。上層是外匯存款帳戶裡的外幣，型態只有活期或定期，不得以支票存款辦理，與新臺幣帳戶之間往返時適用即期匯率：結購走即期賣出，結售走即期買入。下層是手上的外幣現鈔，因為銀行要處理保管、運送、真偽辨識與庫存，適用的是現金匯率。上下兩層之間有兩個箭頭，向下是提領現鈔、向上是存入現鈔，中間標示每一趟都要付一次兩種匯率的差額，並多訂有最低收費。圖的右側兩格是提領現鈔的限制：用外幣提款機提領以每人每日一萬美元或等值外幣為限，並與當日新臺幣現鈔提領合併計算；臨櫃提領要看幣別、面額與庫存，冷門幣別或大面額通常要事先預約。左下角提醒同幣別在帳戶裡進出不經結匯，換成新臺幣達五十萬元等值以上才要填申報書。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+<marker id="arrowo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D97A2B"/></marker>
+</defs>
+
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">外幣的兩個價格：帳上的與手上的</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">Spot rate and cash rate: the same currency, two forms, two prices</text>
+
+<path d="M318 268 H552" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<path d="M552 332 H318" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<path d="M620 392 V548" fill="none" stroke="#D97A2B" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrowo)"/>
+<path d="M1050 548 V392" fill="none" stroke="#D97A2B" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrowo)"/>
+
+<text x="435" y="248" text-anchor="middle" font-size="17" fill="#5C6B6B">結購：即期賣出</text>
+<text x="435" y="364" text-anchor="middle" font-size="17" fill="#5C6B6B">結售：即期買入</text>
+
+<rect x="60" y="230" width="250" height="140" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="185" y="290" text-anchor="middle" font-size="17" fill="#5C6B6B">你的新臺幣</text>
+<text x="185" y="332" text-anchor="middle" font-size="26" font-weight="700" fill="#102A2B">新臺幣帳戶</text>
+
+<rect x="560" y="180" width="520" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="820" y="226" text-anchor="middle" font-size="17" fill="#5C6B6B">帳上的外幣</text>
+<text x="820" y="268" text-anchor="middle" font-size="28" font-weight="700" fill="#102A2B">外匯存款帳戶</text>
+<text x="820" y="308" text-anchor="middle" font-size="18" fill="#5C6B6B">活期或定期，不得以支票存款辦理</text>
+<text x="820" y="348" text-anchor="middle" font-size="22" font-weight="700" fill="#0D6B68">適用即期匯率</text>
+
+<rect x="560" y="560" width="520" height="200" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="820" y="606" text-anchor="middle" font-size="17" fill="#5C6B6B">手上的外幣</text>
+<text x="820" y="648" text-anchor="middle" font-size="28" font-weight="700" fill="#102A2B">外幣現鈔</text>
+<text x="820" y="688" text-anchor="middle" font-size="18" fill="#5C6B6B">保管、運送、真偽辨識與庫存</text>
+<text x="820" y="728" text-anchor="middle" font-size="22" font-weight="700" fill="#D97A2B">適用現金匯率</text>
+
+<text x="596" y="452" text-anchor="end" font-size="18" fill="#102A2B">提領現鈔</text>
+<text x="596" y="486" text-anchor="end" font-size="17" fill="#5C6B6B">付即期與現金賣出的差額</text>
+<text x="1104" y="452" font-size="18" fill="#102A2B">存入現鈔</text>
+<text x="1104" y="486" font-size="17" fill="#5C6B6B">付即期與現金買入的差額</text>
+
+<rect x="690" y="402" width="320" height="142" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+<text x="850" y="446" text-anchor="middle" font-size="17" fill="#5C6B6B">現鈔與帳戶之間</text>
+<text x="850" y="486" text-anchor="middle" font-size="20" font-weight="700" fill="#B8442D">每一趟都要付一次差額</text>
+<text x="850" y="522" text-anchor="middle" font-size="17" fill="#5C6B6B">並多訂有最低收費</text>
+
+<rect x="1140" y="180" width="400" height="200" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="1340" y="226" text-anchor="middle" font-size="17" fill="#5C6B6B">用外幣提款機領</text>
+<text x="1340" y="270" text-anchor="middle" font-size="24" font-weight="700" fill="#102A2B">每人每日一萬美元</text>
+<text x="1340" y="308" text-anchor="middle" font-size="18" fill="#5C6B6B">或等值外幣為限</text>
+<text x="1340" y="346" text-anchor="middle" font-size="17" fill="#5C6B6B">與當日新臺幣提領合併計算</text>
+
+<rect x="1140" y="560" width="400" height="200" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="1340" y="606" text-anchor="middle" font-size="17" fill="#5C6B6B">臨櫃提領現鈔要看</text>
+<text x="1340" y="650" text-anchor="middle" font-size="24" font-weight="700" fill="#102A2B">幣別、面額與庫存</text>
+<text x="1340" y="690" text-anchor="middle" font-size="18" fill="#5C6B6B">冷門幣別或大面額</text>
+<text x="1340" y="728" text-anchor="middle" font-size="18" fill="#5C6B6B">通常要事先預約</text>
+
+<rect x="60" y="560" width="440" height="200" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+<text x="280" y="606" text-anchor="middle" font-size="17" fill="#5C6B6B">同幣別在帳戶裡進出</text>
+<text x="280" y="650" text-anchor="middle" font-size="24" font-weight="700" fill="#2E7D5B">不經結匯</text>
+<text x="280" y="690" text-anchor="middle" font-size="17" fill="#5C6B6B">換成新臺幣達五十萬元等值</text>
+<text x="280" y="726" text-anchor="middle" font-size="17" fill="#5C6B6B">以上才要填申報書</text>
+
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
