@@ -55,6 +55,15 @@ scope:
 
 站主已知悉並決定先寫批次 03。**批次 04 開工前這張票必須先解決。**
 
+### 2026-09-15 批次 03 落地後：986 列，headroom 14
+
+二十篇已全部落地在 `claude/beautiful-fermat-0klj9k`，`pack_cli lint` 自己回報的
+`sitemap_budget` 警告實測為 **986 (article, locale) 列**，與上面推算的一致。
+內容包 792 個（740 個單語系、32 個五語系、20 個四語系）。
+
+**headroom 只剩 14 列，已經放不下任何一批 20 篇。** 財經批次 04 與 AI 系列下一批
+不管哪一邊先動都會超過 `SITEMAP_LIMIT`。
+
 這張票目前認領不了：`depends_on` 的 `2026-09-14-claude-code-tutorial-center` 與
 `2026-09-14-pack-ingest-urlopen-scheme` 都還是 `status: review`，而且兩張都佔著
 `apps/api/app/guides/pack_ingest.py` 的 scope。要動這張票得先讓那兩張合併或認領過期。
