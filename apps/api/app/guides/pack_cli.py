@@ -7,6 +7,8 @@ the task board; ``guides-import`` (the deploy-time import) stays there.
         [--dry-run] [--no-render]
     uv run python -m app.guides.pack_cli lint [--kind life] [--slug s]... \\
         [--render-dir <dir>] [--catalogue <md>]
+    uv run python -m app.guides.pack_cli retopic [--kind life] [--prefix p]... [--slug s]... \\
+        [--apply]
 """
 
 from __future__ import annotations
@@ -16,6 +18,7 @@ import sys
 from pathlib import Path
 from typing import cast
 
+from app.guides import retopic
 from app.guides.content_pack import default_directory
 from app.guides.pack_ingest import (
     PackIngestError,
@@ -61,9 +64,35 @@ def main(argv: list[str] | None = None) -> int:
         "--warnings", action="store_true", help="Exit 1 on warnings too, not only errors"
     )
 
+    retopic_parser = commands.add_parser(
+        "retopic", help="Propose two-level topics for packs from their slugs and series"
+    )
+    retopic_parser.add_argument("--kind", choices=("intel", "howto", "life"), default="life")
+    retopic_parser.add_argument("--prefix", action="append", default=[])
+    retopic_parser.add_argument("--slug", action="append")
+    retopic_parser.add_argument(
+        "--apply", action="store_true", help="Rewrite the topics of the changed packs"
+    )
+    retopic_parser.add_argument("--dry-run", action="store_true", help="The default: print only")
+
     args = parser.parse_args(argv)
     content_dir = args.content_dir or default_directory()
     public_dir = args.public_dir or default_public_dir()
+
+    if args.command == "retopic":
+        rows = retopic.proposals(
+            content_dir,
+            kind=cast(Kind, args.kind),
+            prefixes=tuple(args.prefix),
+            slugs=set(args.slug) if args.slug else None,
+        )
+        print(retopic.render_table(rows))
+        if args.apply and not args.dry_run:
+            for path in retopic.apply(rows, content_dir):
+                print(f"wrote {path}")
+        else:
+            print("dry run: nothing written")
+        return 0
 
     if args.command == "ingest":
         try:
