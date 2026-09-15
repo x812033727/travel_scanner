@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 vi.mock("./guide-series.json", async () => {
   const base = (await vi.importActual<{ default: typeof import("./guide-series.json") }>("./guide-series.json")).default;
-  const plan = (await import("../../../docs/gemini-series/advanced/curriculum.json")).default;
+  const plan = (await import("./gemini-series-docs.test-data")).loadGeminiCurriculum();
   return { default: { ...base,
     articles: [...base.articles, ...plan.articles.map(article => ({ ...article, stage: 2, minutes: article.estimatedReadingMinutes, labMinutes: article.estimatedLabMinutes }))],
     paths: [...base.paths, ...plan.routes.map(route => ({ ...route, stage: 2, description: route.title }))],

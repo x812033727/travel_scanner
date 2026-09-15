@@ -10,7 +10,7 @@ import { siteUrl } from "@/lib/seo";
 const mocks = vi.hoisted(() => ({ article: vi.fn(), list: vi.fn() }));
 vi.mock("@/lib/guide-series.json", async () => {
   const base = (await vi.importActual<{ default: typeof import("@/lib/guide-series.json") }>("@/lib/guide-series.json")).default;
-  const plan = (await import("../../../../docs/gemini-series/advanced/curriculum.json")).default;
+  const plan = (await import("@/lib/gemini-series-docs.test-data")).loadGeminiCurriculum();
   return { default: { ...base, articles: [...base.articles, ...plan.articles.map(article => ({ ...article, stage: 2, minutes: article.estimatedReadingMinutes, labMinutes: article.estimatedLabMinutes }))],
     paths: [...base.paths, ...plan.routes.map(route => ({ ...route, stage: 2, description: route.title }))] } };
 });

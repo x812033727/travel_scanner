@@ -1,7 +1,9 @@
 /** Test fixture only. Production components never import this file. */
 import base from "@/lib/guide-series.json";
-import curriculum from "../../../../docs/gemini-series/advanced/curriculum.json";
+import { loadGeminiCurriculum } from "@/lib/gemini-series-docs.test-data";
 import { projectGeminiSeries, type GeminiCatalogue } from "@/lib/gemini-series-projection";
+
+const curriculum = loadGeminiCurriculum();
 
 export function fixtureCatalogue(): GeminiCatalogue {
   return {

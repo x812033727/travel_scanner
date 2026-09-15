@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
 import base from "./guide-series.json";
-import curriculum from "../../../docs/gemini-series/advanced/curriculum.json";
-import contract from "../../../docs/gemini-series/advanced/platform/catalogue-contract.json";
+import { loadGeminiCatalogueContract, loadGeminiCurriculum } from "./gemini-series-docs.test-data";
 import { filterVisibleGeminiLessons, projectGeminiSeries, visibleGeminiHref, visibleGeminiMember, visibleGeminiNavigation, type GeminiCatalogue } from "./gemini-series-projection";
+
+const curriculum = loadGeminiCurriculum();
+const contract = loadGeminiCatalogueContract();
 
 function full(): GeminiCatalogue {
   return {
