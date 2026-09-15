@@ -1,0 +1,62 @@
+{
+  "id": 3,
+  "sources": [
+    "app",
+    "windows/windows-app",
+    "linux/linux-app"
+  ],
+  "text": {
+    "zh-TW": [
+      "桌面版把任務、檔案、終端機與修改結果放在同一個工作空間。目前官方下載文件使用 ChatGPT desktop app 名稱，進入後可選 Codex。這裡提供三種系統的安裝主線；Linux 屬預覽版，不能把其支援範圍推廣到所有發行版。",
+      "建立 codex-practice 練習資料夾，確認作業系統與處理器架構。安裝檔從本文官方來源進入下載，不使用搜尋廣告的第三方安裝器。以下跨平台步驟依官方文件查證，未宣稱在每個系統實測。",
+      [
+        "Windows：開啟官方 Windows 下載頁取得安裝程式，依畫面安裝並從開始功能表開啟。登入後選 Codex，加入 codex-practice 資料夾。原生沙盒的設定若要求系統授權，先確認用途；整合終端機可選適合專案的 PowerShell。",
+        "macOS：從官方桌面頁取得適用安裝檔，確認硬體要求，開啟映像檔並依安裝畫面完成。從應用程式開啟、登入，選 Codex 並開啟練習資料夾。首次檔案存取提示只授予這次練習需要的範圍。",
+        "Linux：官方預覽支援 Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44 的 x64 與 ARM64。用 uname -m 查看架構；Ubuntu／Debian 下載對應 .deb，以 sudo apt install ./檔名.deb 安裝；Fedora 用 sudo dnf install ./檔名.rpm。安裝後從應用程式選單開啟 ChatGPT。",
+        "三平台共同：登入相同工作區，建立 Codex 任務，請它列出目前資料夾。接著要求建立一份練習 README.md，從檔案檢視器開啟，確認內容及修改範圍。更新應用程式後再核對設定，不把介面位置當永久不變。"
+      ],
+      "你能從桌面應用程式開啟指定資料夾，建立任務並找到實際輸出檔案。記錄系統、版本與工作目錄，以便問題排除。",
+      "安裝失敗先確認系統與架構相容性。Linux 預覽未列出的發行版不能視為已支援；可另讀 CLI 篇確認替代方式。開錯資料夾時先停止修改、重新選取正確專案。",
+      "只在 codex-practice 內建立 README.md，寫入練習目的與目前工作目錄。不要安裝套件，也不要修改其他資料夾。"
+    ],
+    "en": [
+      "The desktop workspace combines tasks, files, terminals and change review. Current official downloads use the name ChatGPT desktop app; choose Codex inside it. Follow the separate installation path for your system. Linux is a preview with a specific support list, not a promise of compatibility with every distribution.",
+      "Create a codex-practice folder and identify your operating system and CPU architecture. Follow the official download links in the sources rather than third-party installers. These cross-platform instructions are documentation-verified, not a claim of hands-on testing on every system.",
+      [
+        "Windows: use the official Windows download page, run the installer and open the app from Start. Sign in, choose Codex and add the practice folder. Review any native sandbox setup request; select PowerShell in the integrated terminal when appropriate.",
+        "macOS: download the supported installer from the official desktop page and check hardware requirements. Open the disk image, follow its installation instructions and launch the app from Applications. Sign in, choose Codex and open the practice folder; grant only the file access needed.",
+        "Linux: the preview lists Ubuntu 24.04/26.04 LTS, Debian 13 and Fedora 43/44, on x64 or ARM64. Check uname -m. Download the matching .deb for Ubuntu/Debian and install with sudo apt install ./filename.deb; on Fedora use sudo dnf install ./filename.rpm. Launch ChatGPT from the applications menu.",
+        "On every system, confirm the workspace and create a Codex task. Ask it to report the folder before creating a practice README.md. Open the output and review the changed files. Recheck settings after upgrades because interface locations can change."
+      ],
+      "You can open the intended folder, run a desktop task and locate its real output. Keep the OS, app version and working directory in your verification notes.",
+      "For installation failures, check OS and CPU compatibility first. Unlisted Linux distributions are not confirmed supported; consult the CLI tutorial for alternatives. Stop edits before correcting a wrong project selection.",
+      "Create README.md only in codex-practice, describing the exercise and current working directory. Do not install packages or change other folders."
+    ],
+    "ja": [
+      "デスクトップではタスク、ファイル、端末、差分を一つの画面で扱えます。現在の公式配布名は ChatGPT desktop app で、その中から Codex を選びます。Linux はプレビューであり、すべてのディストリビューションを保証するものではありません。",
+      "codex-practice フォルダーを作成し、OS と CPU の種類を確認します。出典の公式ダウンロードを使います。以下は公式文書で確認した手順で、全 OS での実機検証を意味しません。",
+      [
+        "Windows：公式 Windows ページからインストーラーを取得し、案内に従って導入します。スタートから開いてログインし、Codex と練習フォルダーを選びます。サンドボックスの設定要求を確認し、必要に応じて統合端末を PowerShell にします。",
+        "macOS：公式デスクトップページでハードウェア条件を確認してダウンロードします。ディスクイメージを開き、案内に従って導入後、アプリケーションから起動します。ログインして Codex と練習フォルダーを選び、必要なファイルアクセスだけを許可します。",
+        "Linux：プレビューの対象は Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44 の x64・ARM64 です。uname -m で確認し、Ubuntu／Debian では対応 .deb を sudo apt install ./ファイル名.deb、Fedora では .rpm を sudo dnf install ./ファイル名.rpm で導入します。アプリ一覧から ChatGPT を開きます。",
+        "共通：ワークスペースを確認して Codex タスクを作り、作業フォルダーを報告させます。その後 README.md を作成し、ファイルを開いて変更を確認します。更新後は設定位置を再確認します。"
+      ],
+      "指定フォルダーでタスクを開始し、実際の出力を開ければ完了です。OS、アプリのバージョン、作業場所を記録します。",
+      "導入できなければ OS と CPU の対応を確認します。記載のない Linux 環境は対応済みと扱いません。フォルダーを間違えたら変更を止めて選び直します。",
+      "codex-practice の中だけに README.md を作り、練習の目的と作業ディレクトリを書いてください。パッケージ導入や他のフォルダーの変更は禁止です。"
+    ],
+    "ko": [
+      "데스크톱 작업 공간은 작업, 파일, 터미널과 변경 검토를 모아 보여 줍니다. 현재 공식 배포 이름은 ChatGPT desktop app이며 앱 안에서 Codex를 선택합니다. Linux는 지원 목록이 정해진 미리보기 버전입니다.",
+      "codex-practice 폴더를 만들고 OS와 CPU 아키텍처를 확인하세요. 출처에 있는 공식 다운로드를 이용합니다. 아래는 공식 문서 확인 절차이며 모든 OS에서 직접 시험했다는 뜻은 아닙니다.",
+      [
+        "Windows: 공식 Windows 페이지에서 설치 프로그램을 받아 설치하고 시작 메뉴에서 실행합니다. 로그인한 뒤 Codex와 연습 폴더를 선택합니다. 네이티브 샌드박스 설정 요청을 확인하고 필요하면 통합 터미널로 PowerShell을 선택합니다.",
+        "macOS: 공식 데스크톱 페이지에서 하드웨어 요구 조건을 확인하고 설치 파일을 받습니다. 디스크 이미지를 열어 안내에 따라 설치한 뒤 응용 프로그램에서 실행합니다. 로그인하고 Codex와 연습 폴더를 선택하며 필요한 파일 접근만 허용합니다.",
+        "Linux: 미리보기 지원 대상은 Ubuntu 24.04/26.04 LTS, Debian 13, Fedora 43/44의 x64 및 ARM64입니다. uname -m으로 확인하세요. Ubuntu/Debian은 해당 .deb를 sudo apt install ./파일명.deb로, Fedora는 .rpm을 sudo dnf install ./파일명.rpm으로 설치합니다. 앱 메뉴에서 ChatGPT를 엽니다.",
+        "공통: 워크스페이스를 확인하고 Codex 작업을 만듭니다. 폴더 위치를 먼저 보고하도록 한 뒤 README.md를 만들게 합니다. 실제 파일과 변경 목록을 확인하고 앱 업데이트 후에는 설정 위치를 다시 확인합니다."
+      ],
+      "지정한 폴더에서 작업을 시작하고 실제 결과 파일을 열 수 있으면 완료입니다. OS, 앱 버전과 작업 경로를 기록하세요.",
+      "설치 실패 시 OS와 CPU 지원 여부부터 확인합니다. 목록에 없는 Linux 환경은 지원이 확인된 것으로 취급하지 않습니다. 폴더를 잘못 선택했다면 편집을 중지하고 다시 선택하세요.",
+      "codex-practice 안에만 README.md를 만들고 연습 목적과 작업 디렉터리를 기록하세요. 패키지를 설치하거나 다른 폴더를 수정하지 마세요."
+    ]
+  }
+}

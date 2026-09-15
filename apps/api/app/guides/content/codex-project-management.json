@@ -1,0 +1,1699 @@
+{
+  "slug": "codex-project-management",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 113,
+  "locales": {
+    "zh-TW": {
+      "title": "桌面版任務與專案管理",
+      "description": "把同一件事的追問留在同一任務，把獨立成果分成不同任務，能減少上下文混亂。專案負責定位相關檔案，任務負責一次具體工作；建立很多任務不會自動讓檔案彼此隔離，隔離需要 worktree 等機制。",
+      "hero": {
+        "src": "/guides/codex-project-management/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在一個本機專案管理兩個不同成果的任務，練習命名、切換、釘選、封存及恢復，並證明任務列表不等於檔案隔離。閱讀約 12 分鐘，操作約 20 分鐘。使用已登入的桌面版與文字編輯器；三種桌面平台使用相同練習，介面依官方文件查證，沒有冒充各 OS 的實機操作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "article",
+              "text": "桌面版入門",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。專案組織共同檔案與多個任務；任務保存自己要完成的成果及對話。這次用「清點教材」與「提出修改方案」兩個名字，避免每個都叫「繼續」。ChatGPT 專案與連接電腦資料夾的本機專案不同；要讀本機檔案，先確認所選的是連接到練習資料夾的專案。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：加入練習資料夾"
+        },
+        {
+          "type": "paragraph",
+          "text": "用文字編輯器建立 codex-project-lab，放入 note.txt 與 request.txt，分別貼上以下兩段。依桌面入門步驟加入本機專案，再打開專案選單的 Edit project 核對資料夾。這次只連接這一個資料夾，不把整個使用者目錄加入；將其設為主要資料夾後，建立任務前再次看實際路徑。"
+        },
+        {
+          "type": "code",
+          "label": "檔案：note.txt",
+          "language": "text",
+          "code": "PROJECT-LAB\nRevision: 1\nCurrent title: Small Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "檔案：request.txt",
+          "language": "text",
+          "code": "Propose the title Daily Steps.\nDo not edit note.txt until the proposal is reviewed.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "主要資料夾決定新任務起點及一些專案設定的自動探索；其他附加資料夾也可能可讀寫，但不是隔離副本。此練習沒有 Git，也不建立 worktree，方便你清楚看到兩個任務共用同一份檔案。實際程式專案要並行修改時，另依"
+            },
+            {
+              "type": "article",
+              "text": "worktree 教學",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "建立隔離，不靠任務數量判斷是否安全。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：建立兩個成果不同的任務"
+        },
+        {
+          "type": "paragraph",
+          "text": "從這個專案開第一個新任務，送出下面的清點要求。回覆後看它是否真的指出兩個檔案、PROJECT-LAB 與 Revision: 1，再將任務改名為「PROJECT-LAB — 清點教材」。利用任務選單的重新命名功能，保留共同標記與成果詞，之後只記得 PROJECT-LAB 也能搜尋。此任務只讀，不需要新增文件。"
+        },
+        {
+          "type": "code",
+          "label": "Codex 提示詞：清點教材",
+          "language": "text",
+          "code": "Inventory this practice folder. Read note.txt and request.txt. Report their filenames, the lab marker, revision and current title. Do not edit files or search other directories. This task's outcome is a verified inventory only.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "再從同一專案建立第二個新任務，使用下面的方案要求，改名為「PROJECT-LAB — 標題方案」。預期指出 Small Steps 改成 Daily Steps，只需 note.txt 的標題行；文件已要求先審閱，所以還不應改檔。切回第一個任務時，應仍看到它自己的清點對話，而不是兩段訊息混成同一份聊天。"
+        },
+        {
+          "type": "code",
+          "label": "Codex 提示詞：提出方案",
+          "language": "text",
+          "code": "Read note.txt and request.txt. Propose the smallest title change that satisfies the request. Identify exactly which line would change and how to verify it. Do not implement yet; this task's outcome is a reviewable proposal.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：切換任務時重新讀檔"
+        },
+        {
+          "type": "paragraph",
+          "text": "現在模擬你在任務之間處理了其他事：用編輯器只把 note.txt 的 Revision 改成 2，標題仍是 Small Steps，request.txt 也不動。回到「清點教材」任務，送出下列要求。它的舊對話是 1，但新讀取應是 2。接著到「標題方案」也要求重讀版本；兩個任務都應從同一資料夾看見 2。"
+        },
+        {
+          "type": "code",
+          "label": "Codex 提示詞：重新讀檔",
+          "language": "text",
+          "code": "Read note.txt from disk again now. Compare its current revision with this task's earlier record. Report the actual directory, current revision and unchanged title. Do not repair the mismatch by restoring old contents.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這個差異是刻意設計的驗收，不是叫模型把數字改回去。同一專案的兩個任務可以共用檔案，卻各有歷史對話；釘選、改名與切換都不會建立第二份磁碟。若其中一個仍是 1，先核對路徑、主機與是否真的重新讀取，再看它是否在另一個工作樹。接續長任務時用"
+            },
+            {
+              "type": "article",
+              "text": "交接文件",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "保存這種版本差異。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：釘選、尋找與封存恢復"
+        },
+        {
+          "type": "paragraph",
+          "text": "把目前常用的「標題方案」任務釘選，確認它在側欄容易找；再開其他任務後回來核對，它的對話及檔案內容都不應因釘選改變。要找清點任務時，使用側欄 Search chats 搜尋 PROJECT-LAB，再用完整標題分辨。不同版本的搜尋快捷鍵可能不同，本篇直接使用可見入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成清點後，從該任務選單選 Archive，只封存「清點教材」，不要誤選整個專案的 Archive chats。接著到 Settings 的 Archived chats 找回它並恢復，再確認原對話存在、note.txt 仍是 2。封存用來整理列表，不表示已完成程式驗收，也不是檔案備份或清理硬碟的方法。本練習不需要 Delete。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸練習：同名任務放在不同專案"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 codex-project-lab 旁建立獨立資料夾 codex-project-other，只放下面的 note.txt。將它加入另一個本機專案，不是第一個專案的附加資料夾。在新專案開第三個任務，也命名「PROJECT-LAB — 清點教材」，送出後面的唯讀要求。相同標題不能證明兩個任務使用同一份檔案。"
+        },
+        {
+          "type": "code",
+          "label": "檔案：codex-project-other/note.txt",
+          "language": "text",
+          "code": "PROJECT-OTHER\nRevision: 100\nCurrent title: Other Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "Codex 提示詞：核對同名任務",
+          "language": "text",
+          "code": "Read only this project's note.txt from disk. Report the absolute path, marker, revision and current title. Do not infer content from this task's title, another task or another project. Do not edit or search outside this project.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三個任務應讀到 PROJECT-OTHER／100／Other Steps，前兩個仍是 PROJECT-LAB／2／Small Steps。用紙或筆記記下三列「任務成果、所屬專案、絕對路徑、最新讀檔結果、進行／封存狀態」。若看到 2，就先查第三個任務是否建在錯誤專案，不修改任何檔案去配合預期。確認後把它改名為「PROJECT-OTHER — 清點教材」；只封存或恢復你指定的那一列。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "本篇的封存與檔案保留實驗限定一般本機資料夾。官方 worktree 文件另說明：受 Codex 管理的 worktree 可能因封存或清理政策被移除，重新開啟時可出現快照恢復選項；永久 worktree 的規則不同。涉及 worktree 時，先核對類型、未提交內容及備份，再依隔離工作教學處理，不把此處的本機結果推廣到所有環境。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "link",
+              "text": "官方 worktree 文件",
+              "url": "https://learn.chatgpt.com/docs/environments/git-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "隔離工作教學",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "操作",
+            "會改變什麼",
+            "本練習如何驗證"
+          ],
+          "rows": [
+            [
+              "重新命名",
+              "任務顯示名稱",
+              "用標記及成果搜尋"
+            ],
+            [
+              "釘選",
+              "側欄位置",
+              "回到同一段對話"
+            ],
+            [
+              "封存／恢復",
+              "列表中的可見狀態",
+              "恢復後仍可讀原對話"
+            ],
+            [
+              "重新讀檔",
+              "取得目前磁碟證據",
+              "兩任務都看到 Revision: 2"
+            ],
+            [
+              "編輯主要資料夾",
+              "新任務預設起點",
+              "重新核對實際路徑"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "什麼時候續接、另開或停止"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個標題修改還在補條件，就回到原方案任務續接，保留先前決策；要獨立做另一個成果，例如整理測試紀錄，就建立新任務並明確指出要讀哪些檔案。新任務不應被假設已經看過前一個聊天中的口頭限制。把「不可改測試」這類共同規則放入專案 AGENTS.md，把本次版本與尚未完成的檢查放交接文件，再在新要求引用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工作仍在執行時，先用目前任務可見的停止控制中斷，確認不再產生新修改，再整理或封存；停止與封存是不同操作。如果已經寫入 note.txt，停止不會自動撤銷，因此要讀檔與檢查差異。要更換專案主要資料夾時，先記錄舊位置，再從新任務核對起點；不要推論現有任務已被搬過去，也不要把附加資料夾當作主資料夾的備份。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與整理習慣"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到任務先確認是否在其他專案、另一台主機或已封存，再用標記搜尋；不要重新建立十個同名任務。發現兩個任務都想改同一檔案，就先讓其中一個停在唯讀檢查，明確指定由另一個完成修改，之後前者再審查結果。若需要真正同時改不同功能，進入 worktree 與整合教學。"
+        },
+        {
+          "type": "paragraph",
+          "text": "專案變大時，任務名稱加入目標與範圍，例如「篩選器：完成 Completed」或「文件：補啟動步驟」。每個任務結束留下改了什麼、如何驗證、還剩什麼；未完成工作可以存在任務清單文件，不只留在一段很久以前的聊天。這樣下次切換不用重新解釋整個專案，也不會把封存當作沒有待辦。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "驗收時保存兩個專案、三個任務的狀態表，前兩個任務的 Revision: 2 重新讀取、第三個的 Revision: 100，以及指定任務的封存恢復結果。最後只把 codex-project-lab/note.txt 的 Revision 手動還原為 1，確認標題仍是 Small Steps；另一個專案保持 100／Other Steps。取消本練習的釘選，不必刪專案或檔案。圖中 1 是建立專案範圍，2 是分成果管理任務，3 是重新核對與整理。下一篇開始"
+            },
+            {
+              "type": "article",
+              "text": "閱讀既有程式",
+              "kind": "life",
+              "slug": "codex-understand-codebase"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-project-management/diagram-1.svg",
+          "alt": "13. 桌面版任務與專案管理 — 實作順序示意圖，非產品介面截圖。 Project → Task → Handoff",
+          "width": 1600,
+          "height": 900,
+          "caption": "13. 桌面版任務與專案管理 — 實作順序示意圖，非產品介面截圖。 Project → Task → Handoff",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Local projects and task organization",
+          "url": "https://learn.chatgpt.com/docs/projects",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Instruction discovery",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "桌面版任务与项目管理",
+      "description": "把同一件事的追问留在同一任务，把独立成果分成不同任务，能减少上下文混乱。专案负责定位相关档案，任务负责一次具体工作；建立很多任务不会自动让档案彼此隔离，隔离需要 worktree 等机制。",
+      "hero": {
+        "src": "/guides/codex-project-management/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在一个本机专案管理两个不同成果的任务，练习命名、切换、钉选、封存及恢复，并证明任务列表不等于档案隔离。阅读约 12 分钟，操作约 20 分钟。使用已登入的桌面版与文字编辑器；三种桌面平台使用相同练习，介面依官方文件查证，没有冒充各 OS 的实机操作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "article",
+              "text": "桌面版入门",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。专案组织共同档案与多个任务；任务保存自己要完成的成果及对话。这次用「清点教材」与「提出修改方案」两个名字，避免每个都叫「继续」。ChatGPT 专案与连接电脑资料夹的本机专案不同；要读本机档案，先确认所选的是连接到练习资料夹的专案。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：加入练习资料夹"
+        },
+        {
+          "type": "paragraph",
+          "text": "用文字编辑器建立 codex-project-lab，放入 note.txt 与 request.txt，分别贴上以下两段。依桌面入门步骤加入本机专案，再打开专案选单的 Edit project 核对资料夹。这次只连接这一个资料夹，不把整个使用者目录加入；将其设为主要资料夹后，建立任务前再次看实际路径。"
+        },
+        {
+          "type": "code",
+          "label": "档案：note.txt",
+          "language": "text",
+          "code": "PROJECT-LAB\nRevision: 1\nCurrent title: Small Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "档案：request.txt",
+          "language": "text",
+          "code": "Propose the title Daily Steps.\nDo not edit note.txt until the proposal is reviewed.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "主要资料夹决定新任务起点及一些专案设定的自动探索；其他附加资料夹也可能可读写，但不是隔离副本。此练习没有 Git，也不建立 worktree，方便你清楚看到两个任务共用同一份档案。实际程式专案要并行修改时，另依"
+            },
+            {
+              "type": "article",
+              "text": "worktree 教学",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "建立隔离，不靠任务数量判断是否安全。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：建立两个成果不同的任务"
+        },
+        {
+          "type": "paragraph",
+          "text": "从这个专案开第一个新任务，送出下面的清点要求。回复后看它是否真的指出两个档案、PROJECT-LAB 与 Revision: 1，再将任务改名为「PROJECT-LAB — 清点教材」。利用任务选单的重新命名功能，保留共同标记与成果词，之后只记得 PROJECT-LAB 也能搜寻。此任务只读，不需要新增文件。"
+        },
+        {
+          "type": "code",
+          "label": "Codex 提示词：清点教材",
+          "language": "text",
+          "code": "Inventory this practice folder. Read note.txt and request.txt. Report their filenames, the lab marker, revision and current title. Do not edit files or search other directories. This task's outcome is a verified inventory only.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "再从同一专案建立第二个新任务，使用下面的方案要求，改名为「PROJECT-LAB — 标题方案」。预期指出 Small Steps 改成 Daily Steps，只需 note.txt 的标题行；文件已要求先审阅，所以还不应改档。切回第一个任务时，应仍看到它自己的清点对话，而不是两段讯息混成同一份聊天。"
+        },
+        {
+          "type": "code",
+          "label": "Codex 提示词：提出方案",
+          "language": "text",
+          "code": "Read note.txt and request.txt. Propose the smallest title change that satisfies the request. Identify exactly which line would change and how to verify it. Do not implement yet; this task's outcome is a reviewable proposal.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：切换任务时重新读档"
+        },
+        {
+          "type": "paragraph",
+          "text": "现在模拟你在任务之间处理了其他事：用编辑器只把 note.txt 的 Revision 改成 2，标题仍是 Small Steps，request.txt 也不动。回到「清点教材」任务，送出下列要求。它的旧对话是 1，但新读取应是 2。接著到「标题方案」也要求重读版本；两个任务都应从同一资料夹看见 2。"
+        },
+        {
+          "type": "code",
+          "label": "Codex 提示词：重新读档",
+          "language": "text",
+          "code": "Read note.txt from disk again now. Compare its current revision with this task's earlier record. Report the actual directory, current revision and unchanged title. Do not repair the mismatch by restoring old contents.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "这个差异是刻意设计的验收，不是叫模型把数字改回去。同一专案的两个任务可以共用档案，却各有历史对话；钉选、改名与切换都不会建立第二份磁碟。若其中一个仍是 1，先核对路径、主机与是否真的重新读取，再看它是否在另一个工作树。接续长任务时用"
+            },
+            {
+              "type": "article",
+              "text": "交接文件",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "保存这种版本差异。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：钉选、寻找与封存恢复"
+        },
+        {
+          "type": "paragraph",
+          "text": "把目前常用的「标题方案」任务钉选，确认它在侧栏容易找；再开其他任务后回来核对，它的对话及档案内容都不应因钉选改变。要找清点任务时，使用侧栏 Search chats 搜寻 PROJECT-LAB，再用完整标题分辨。不同版本的搜寻快捷键可能不同，本篇直接使用可见入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成清点后，从该任务选单选 Archive，只封存「清点教材」，不要误选整个专案的 Archive chats。接著到 Settings 的 Archived chats 找回它并恢复，再确认原对话存在、note.txt 仍是 2。封存用来整理列表，不表示已完成程式验收，也不是档案备份或清理硬碟的方法。本练习不需要 Delete。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "延伸练习：同名任务放在不同专案"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 codex-project-lab 旁建立独立资料夹 codex-project-other，只放下面的 note.txt。将它加入另一个本机专案，不是第一个专案的附加资料夹。在新专案开第三个任务，也命名「PROJECT-LAB — 清点教材」，送出后面的唯读要求。相同标题不能证明两个任务使用同一份档案。"
+        },
+        {
+          "type": "code",
+          "label": "档案：codex-project-other/note.txt",
+          "language": "text",
+          "code": "PROJECT-OTHER\nRevision: 100\nCurrent title: Other Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "Codex 提示词：核对同名任务",
+          "language": "text",
+          "code": "Read only this project's note.txt from disk. Report the absolute path, marker, revision and current title. Do not infer content from this task's title, another task or another project. Do not edit or search outside this project.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三个任务应读到 PROJECT-OTHER／100／Other Steps，前两个仍是 PROJECT-LAB／2／Small Steps。用纸或笔记记下三列「任务成果、所属专案、绝对路径、最新读档结果、进行／封存状态」。若看到 2，就先查第三个任务是否建在错误专案，不修改任何档案去配合预期。确认后把它改名为「PROJECT-OTHER — 清点教材」；只封存或恢复你指定的那一列。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "本篇的封存与档案保留实验限定一般本机资料夹。官方 worktree 文件另说明：受 Codex 管理的 worktree 可能因封存或清理政策被移除，重新开启时可出现快照恢复选项；永久 worktree 的规则不同。涉及 worktree 时，先核对类型、未提交内容及备份，再依隔离工作教学处理，不把此处的本机结果推广到所有环境。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "link",
+              "text": "官方 worktree 文件",
+              "url": "https://learn.chatgpt.com/docs/environments/git-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "隔离工作教学",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "操作",
+            "会改变什么",
+            "本练习如何验证"
+          ],
+          "rows": [
+            [
+              "重新命名",
+              "任务显示名称",
+              "用标记及成果搜寻"
+            ],
+            [
+              "钉选",
+              "侧栏位置",
+              "回到同一段对话"
+            ],
+            [
+              "封存／恢复",
+              "列表中的可见状态",
+              "恢复后仍可读原对话"
+            ],
+            [
+              "重新读档",
+              "取得目前磁碟证据",
+              "两任务都看到 Revision: 2"
+            ],
+            [
+              "编辑主要资料夹",
+              "新任务预设起点",
+              "重新核对实际路径"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "什么时候续接、另开或停止"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一个标题修改还在补条件，就回到原方案任务续接，保留先前决策；要独立做另一个成果，例如整理测试纪录，就建立新任务并明确指出要读哪些档案。新任务不应被假设已经看过前一个聊天中的口头限制。把「不可改测试」这类共同规则放入专案 AGENTS.md，把本次版本与尚未完成的检查放交接文件，再在新要求引用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工作仍在执行时，先用目前任务可见的停止控制中断，确认不再产生新修改，再整理或封存；停止与封存是不同操作。如果已经写入 note.txt，停止不会自动撤销，因此要读档与检查差异。要更换专案主要资料夹时，先记录旧位置，再从新任务核对起点；不要推论现有任务已被搬过去，也不要把附加资料夹当作主资料夹的备份。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题与整理习惯"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到任务先确认是否在其他专案、另一台主机或已封存，再用标记搜寻；不要重新建立十个同名任务。发现两个任务都想改同一档案，就先让其中一个停在唯读检查，明确指定由另一个完成修改，之后前者再审查结果。若需要真正同时改不同功能，进入 worktree 与整合教学。"
+        },
+        {
+          "type": "paragraph",
+          "text": "专案变大时，任务名称加入目标与范围，例如「筛选器：完成 Completed」或「文件：补启动步骤」。每个任务结束留下改了什么、如何验证、还剩什么；未完成工作可以存在任务清单文件，不只留在一段很久以前的聊天。这样下次切换不用重新解释整个专案，也不会把封存当作没有待办。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "验收时保存两个专案、三个任务的状态表，前两个任务的 Revision: 2 重新读取、第三个的 Revision: 100，以及指定任务的封存恢复结果。最后只把 codex-project-lab/note.txt 的 Revision 手动还原为 1，确认标题仍是 Small Steps；另一个专案保持 100／Other Steps。取消本练习的钉选，不必删专案或档案。图中 1 是建立专案范围，2 是分成果管理任务，3 是重新核对与整理。下一篇开始"
+            },
+            {
+              "type": "article",
+              "text": "阅读既有程式",
+              "kind": "life",
+              "slug": "codex-understand-codebase"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-project-management/diagram-1.svg",
+          "alt": "13. 桌面版任务与项目管理 — 实作顺序示意图，非产品介面截图。 Project → Task → Handoff",
+          "width": 1600,
+          "height": 900,
+          "caption": "13. 桌面版任务与项目管理 — 实作顺序示意图，非产品介面截图。 Project → Task → Handoff",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Local projects and task organization",
+          "url": "https://learn.chatgpt.com/docs/projects",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Instruction discovery",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Manage desktop tasks and projects",
+      "description": "Keep follow-ups about one outcome in the same task and separate independent outcomes into different tasks. Projects identify files; tasks track assignments. Multiple tasks do not automatically isolate files: use worktrees when isolation is needed.",
+      "hero": {
+        "src": "/guides/codex-project-management/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Manage two distinct outcomes in one local project: name, switch, pin, archive and restore tasks, while verifying that separate list entries do not isolate files. Allow 12 minutes to read and 20 to practice. Use authenticated desktop and a text editor. The same lab applies to all desktop platforms; controls are documentation-checked, not claimed tested on every OS."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Complete "
+            },
+            {
+              "type": "article",
+              "text": "desktop basics",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": ". A project organizes shared files and tasks; each task has its own outcome and conversation. Use “Inventory the lab” and “Propose the edit” rather than naming everything “continue.” A ChatGPT project differs from a local project linked to a computer folder; verify that this exercise uses the latter."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Attach the practice folder"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create codex-project-lab with separate note.txt and request.txt samples below. Add it as a local project using desktop basics, then verify folders in the project's Edit project menu. Attach only this lab, not your entire user directory. Use it as the primary folder and check the actual path before starting a task."
+        },
+        {
+          "type": "code",
+          "label": "File: note.txt",
+          "language": "text",
+          "code": "PROJECT-LAB\nRevision: 1\nCurrent title: Small Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "File: request.txt",
+          "language": "text",
+          "code": "Propose the title Daily Steps.\nDo not edit note.txt until the proposal is reviewed.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The primary folder sets the starting location and default discovery for some project settings. Additional folders may also be readable/writable; they are not isolated copies. This lab has no Git or worktree, making shared files explicit. For concurrent code edits, use "
+            },
+            {
+              "type": "article",
+              "text": "worktrees",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " rather than assuming separate task entries are isolation."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Create two tasks with distinct outcomes"
+        },
+        {
+          "type": "paragraph",
+          "text": "Start the first task in this project and send the inventory prompt. Verify both files, PROJECT-LAB and revision 1, then rename it “PROJECT-LAB — Inventory.” Use the task menu to retain a shared marker plus outcome, making it searchable even when you remember only PROJECT-LAB. This task is read-only and needs no new document."
+        },
+        {
+          "type": "code",
+          "label": "Codex prompt: inventory",
+          "language": "text",
+          "code": "Inventory this practice folder. Read note.txt and request.txt. Report their filenames, the lab marker, revision and current title. Do not edit files or search other directories. This task's outcome is a verified inventory only.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create another new task in the same project with the proposal prompt and name it “PROJECT-LAB — Title proposal.” Expect Small Steps to Daily Steps and only note.txt's title line as the proposed edit, without implementation yet. Switching back to Inventory should retain that task's conversation rather than merging both transcripts."
+        },
+        {
+          "type": "code",
+          "label": "Codex prompt: propose a change",
+          "language": "text",
+          "code": "Read note.txt and request.txt. Propose the smallest title change that satisfies the request. Identify exactly which line would change and how to verify it. Do not implement yet; this task's outcome is a reviewable proposal.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Reread files when switching tasks"
+        },
+        {
+          "type": "paragraph",
+          "text": "Simulate work between tasks: manually change only note.txt's Revision to 2, leaving the title Small Steps and request.txt unchanged. In Inventory, send the fresh-read request. Old conversation says 1 while disk now says 2. Ask the proposal task to reread too; both should observe 2 in the same folder."
+        },
+        {
+          "type": "code",
+          "label": "Codex prompt: read files again",
+          "language": "text",
+          "code": "Read note.txt from disk again now. Compare its current revision with this task's earlier record. Report the actual directory, current revision and unchanged title. Do not repair the mismatch by restoring old contents.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The mismatch is intentional, not a request to revert it. Tasks can share files while retaining separate conversations; pinning, renaming and switching do not create another disk copy. If one still says 1, verify path, host and fresh reading, then possible worktree differences. Preserve such revision changes in a "
+            },
+            {
+              "type": "article",
+              "text": "handoff",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": " for long work."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Pin, find, archive and restore"
+        },
+        {
+          "type": "paragraph",
+          "text": "Pin the frequently used Title proposal task and check that it remains easy to find after opening another task. Pinning should not change its transcript or files. Use sidebar Search chats for PROJECT-LAB, then distinguish by full title. Use the visible search entry because shortcuts vary by version."
+        },
+        {
+          "type": "paragraph",
+          "text": "Archive only the Inventory task through its menu after finishing it; avoid the project's bulk Archive chats action. Restore it from Settings → Archived chats and verify its transcript and note.txt revision 2 remain. Archiving organizes lists; it is not feature acceptance, backup or disk cleanup. Delete is unnecessary here."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Extension: the same task name in different projects"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a separate codex-project-other folder beside codex-project-lab with only the note.txt below. Add it as another local project, not as an extra folder in the first project. Start a third task there, also named “PROJECT-LAB — Inventory”, and send the read-only request below. Matching titles do not prove that tasks use the same files."
+        },
+        {
+          "type": "code",
+          "label": "File: codex-project-other/note.txt",
+          "language": "text",
+          "code": "PROJECT-OTHER\nRevision: 100\nCurrent title: Other Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "Codex prompt: verify the same-name task",
+          "language": "text",
+          "code": "Read only this project's note.txt from disk. Report the absolute path, marker, revision and current title. Do not infer content from this task's title, another task or another project. Do not edit or search outside this project.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The third task should read PROJECT-OTHER / 100 / Other Steps; the first two still use PROJECT-LAB / 2 / Small Steps. Record three rows with outcome, project, absolute path, latest file reading and active/archived state. If the third reports 2, check whether it was created in the wrong project; do not edit files to match the expected result. Then rename it “PROJECT-OTHER — Inventory” and archive or restore only the intended row."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "This archive/file-preservation exercise uses ordinary local folders. The official worktree documentation explains that Codex-managed worktrees may be removed after archiving or under cleanup rules, with snapshot restoration offered when reopened; permanent worktrees differ. For worktrees, check the type, uncommitted content and backup, then follow the worktree lesson. Do not generalize this local result to every environment."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "link",
+              "text": "official worktree documentation",
+              "url": "https://learn.chatgpt.com/docs/environments/git-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "worktree lesson",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "Action",
+            "Changes",
+            "Verification"
+          ],
+          "rows": [
+            [
+              "Rename",
+              "Displayed title",
+              "Find marker plus outcome"
+            ],
+            [
+              "Pin",
+              "Sidebar position",
+              "Return to same conversation"
+            ],
+            [
+              "Archive/restore",
+              "List visibility",
+              "Original conversation remains"
+            ],
+            [
+              "Reread",
+              "Current disk evidence",
+              "Both see Revision: 2"
+            ],
+            [
+              "Change primary folder",
+              "New task starting location",
+              "Recheck actual path"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "When to resume, start fresh or stop"
+        },
+        {
+          "type": "paragraph",
+          "text": "Continue the existing proposal when refining that same title change. Start a fresh task for a distinct outcome such as organizing test evidence, naming the files to read. Do not assume it has read verbal constraints from another conversation. Put durable rules such as unchanged tests in project AGENTS.md, current revisions and pending checks in a handoff, and reference them explicitly."
+        },
+        {
+          "type": "paragraph",
+          "text": "For running work, first use its visible stop control, verify no more edits are produced, then organize or archive. Stop and archive are distinct. Existing edits are not automatically undone, so reread and inspect changes. Before changing the primary folder, record the old path and verify the new starting location in a fresh task; do not assume existing tasks moved or attached folders are backups."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting and organizational habits"
+        },
+        {
+          "type": "paragraph",
+          "text": "For a missing task, check another project, host or archive, then search its marker; do not create many duplicates. If both tasks want to edit the same file, keep one read-only while the other makes the change, then let the first review. For genuinely concurrent features, use the worktree and integration lessons."
+        },
+        {
+          "type": "paragraph",
+          "text": "As work grows, name tasks by outcome and scope, such as “Filters: complete Completed” or “Docs: startup steps.” End each with changes, verification and remaining work. Keep unfinished work in a task-list document as well as chat, so switching does not require retelling the whole project or equating archived with nothing pending."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Keep the three-task state table across two projects, fresh revision-2 reads from the first two tasks, revision 100 from the third, and the selected task's archive/restore result. Restore only codex-project-lab/note.txt to revision 1 and verify Small Steps; the other project stays at 100 / Other Steps. Unpin this exercise; no project or file deletion is needed. Diagram 1 sets scope, 2 separates outcomes, and 3 rechecks and organizes. Continue with "
+            },
+            {
+              "type": "article",
+              "text": "understanding existing code",
+              "kind": "life",
+              "slug": "codex-understand-codebase"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-project-management/diagram-1.svg",
+          "alt": "13. Manage desktop tasks and projects — Workflow illustration, not a product screenshot. Project → Task → Handoff",
+          "width": 1600,
+          "height": 900,
+          "caption": "13. Manage desktop tasks and projects — Workflow illustration, not a product screenshot. Project → Task → Handoff",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Local projects and task organization",
+          "url": "https://learn.chatgpt.com/docs/projects",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Instruction discovery",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "デスクトップのタスクとプロジェクト管理",
+      "description": "同じ成果への追加依頼は同じタスクで続け、独立した成果は別にします。プロジェクトはファイルの位置、タスクは依頼を整理します。複数タスクだけではファイルは分離されません。",
+      "hero": {
+        "src": "/guides/codex-project-management/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "一つのローカルプロジェクトで二つの成果の課題を管理し、名前、切替、固定、アーカイブ、復元を練習します。一覧が別でもファイルは分離されないことを確認します。読む時間12分、操作20分。認証済みデスクトップとエディターを使い、各 OS の操作は公式資料で確認した内容で、各 OS の実機で検証したものではありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "デスクトップ基礎",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "が前提です。プロジェクトは共有ファイルと課題を整理し、課題は個別成果と会話を持ちます。「教材一覧」「変更案」のように名付けます。ChatGPT プロジェクトとローカルフォルダー接続は異なり、今回は後者を確認します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：教材フォルダーを接続"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-project-lab に次の別々の note.txt、request.txt を作ります。基礎手順でローカルプロジェクトへ追加し、Edit project で場所を確認します。ユーザー全体ではなく教材一つだけ接続し、主要フォルダーと実パスを確認して課題を作ります。"
+        },
+        {
+          "type": "code",
+          "label": "ファイル：note.txt",
+          "language": "text",
+          "code": "PROJECT-LAB\nRevision: 1\nCurrent title: Small Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "ファイル：request.txt",
+          "language": "text",
+          "code": "Propose the title Daily Steps.\nDo not edit note.txt until the proposal is reviewed.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "主要フォルダーが起点と設定探索に使われ、追加場所も読書き可能な場合があります。分離コピーではありません。本教材は Git/worktree なしで共有を確認します。同時編集には"
+            },
+            {
+              "type": "article",
+              "text": "worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "を使い、課題数で隔離を判断しません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：成果の異なる課題を二つ作る"
+        },
+        {
+          "type": "paragraph",
+          "text": "最初の課題で一覧依頼を送り、2ファイル、印、版1を確認して「PROJECT-LAB — 教材一覧」と改名します。メニューで共通印と成果を残せば、印だけでも探せます。読取りのみで新文書は不要です。"
+        },
+        {
+          "type": "code",
+          "label": "Codex への依頼：教材の確認",
+          "language": "text",
+          "code": "Inventory this practice folder. Read note.txt and request.txt. Report their filenames, the lab marker, revision and current title. Do not edit files or search other directories. This task's outcome is a verified inventory only.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じプロジェクトで次の提案課題を作り「PROJECT-LAB — タイトル案」とします。Small Steps を Daily Steps にする note.txt 一行の提案で、まだ編集しません。一覧課題へ戻るとその会話が残り、二つの履歴が混ざらないことを確認します。"
+        },
+        {
+          "type": "code",
+          "label": "Codex への依頼：変更案の作成",
+          "language": "text",
+          "code": "Read note.txt and request.txt. Propose the smallest title change that satisfies the request. Identify exactly which line would change and how to verify it. Do not implement yet; this task's outcome is a reviewable proposal.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：課題切替時にファイルを再読"
+        },
+        {
+          "type": "paragraph",
+          "text": "課題間に別作業をした想定で、note.txt の版だけ2へ変更し、タイトルと request.txt はそのままにします。一覧で再読依頼を送り、古い会話の1と最新2を確認します。提案側にも再読させ、同じ場所の2を見るか確認します。"
+        },
+        {
+          "type": "code",
+          "label": "Codex への依頼：ファイルの再読込",
+          "language": "text",
+          "code": "Read note.txt from disk again now. Compare its current revision with this task's earlier record. Report the actual directory, current revision and unchanged title. Do not repair the mismatch by restoring old contents.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "不一致は意図的で、元へ戻す依頼ではありません。ファイル共有と会話分離は両立し、固定や改名でコピーは作られません。一方が1なら場所、ホスト、再読、別 worktree を確認します。長作業は"
+            },
+            {
+              "type": "article",
+              "text": "引継ぎ",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "に版差を残します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：固定、検索、アーカイブと復元"
+        },
+        {
+          "type": "paragraph",
+          "text": "よく使うタイトル案を固定し、別課題を開いた後も見つかるか確認します。会話やファイルは変わりません。側欄 Search chats で PROJECT-LAB を検索して完全名で区別します。版による近道キー差を避けて表示入口を使います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一覧課題だけメニューで Archive にし、プロジェクト全体の Archive chats を選ばないよう確認します。Settings の Archived chats から復元し、会話と版2を確認します。整理操作であり、機能の受け入れ確認、バックアップ、ディスク整理ではありません。Delete は不要です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "発展練習：別プロジェクトに同名のタスクを作る"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-project-lab の隣に独立した codex-project-other フォルダーを作り、次の note.txt だけを保存します。最初のプロジェクトの追加フォルダーではなく、別のローカルプロジェクトとして登録します。そこで3番目のタスクを開き、同じ「PROJECT-LAB — 教材一覧」と命名して、後述の読み取り専用の依頼を送ります。同名でも同じファイルを使うとは限りません。"
+        },
+        {
+          "type": "code",
+          "label": "ファイル：codex-project-other/note.txt",
+          "language": "text",
+          "code": "PROJECT-OTHER\nRevision: 100\nCurrent title: Other Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "Codex への依頼：同名タスクを確認",
+          "language": "text",
+          "code": "Read only this project's note.txt from disk. Report the absolute path, marker, revision and current title. Do not infer content from this task's title, another task or another project. Do not edit or search outside this project.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "3番目は PROJECT-OTHER／100／Other Steps、最初の2つは PROJECT-LAB／2／Small Steps を読むはずです。「成果、所属プロジェクト、絶対パス、最新の読み取り結果、進行中／アーカイブ」を3行で記録します。3番目が 2 を返したら、作成先のプロジェクトを確認し、期待値に合わせてファイルを書き換えないでください。その後「PROJECT-OTHER — 教材一覧」に改名し、指定した1行だけをアーカイブまたは復元します。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "このアーカイブとファイル保持の練習は通常のローカルフォルダーが対象です。公式 worktree 文書では、Codex 管理の worktree はアーカイブや整理規則で削除され、再度開くとスナップショットの復元が案内される場合があると説明しています。恒久的な worktree は扱いが異なります。種類、未コミットの内容、バックアップを確認し、worktree のチュートリアルに従ってください。このローカルの結果を全環境に一般化しません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "link",
+              "text": "公式 worktree 文書",
+              "url": "https://learn.chatgpt.com/docs/environments/git-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "worktree のチュートリアル",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "操作",
+            "変わるもの",
+            "確認"
+          ],
+          "rows": [
+            [
+              "改名",
+              "表示名",
+              "印と成果で検索"
+            ],
+            [
+              "固定",
+              "サイドバー内の位置",
+              "同じ会話に戻る"
+            ],
+            [
+              "アーカイブ/復元",
+              "一覧の表示状態",
+              "元会話が残る"
+            ],
+            [
+              "再読",
+              "最新ディスク証拠",
+              "両方が版2"
+            ],
+            [
+              "主要フォルダー変更",
+              "新課題の起点",
+              "実パス再確認"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "再開・新規・停止の使い分け"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じタイトル変更の条件追加は元課題へ戻り、テスト記録整理など別成果は読取対象を示して新規にします。他会話の口頭制約を既読と仮定しません。テスト不変更など共通規則は AGENTS.md、版と残確認は引継ぎに置き、新依頼で参照します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実行中なら表示される停止操作を先に使い、追加変更が止まったか確認して整理します。停止とアーカイブは別で、書込み済みは戻らないため再読します。主要場所の変更は旧パスを記録して新課題で確認し、既存課題の移動や追加場所をバックアップと仮定しません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "問題の対処と整理の習慣"
+        },
+        {
+          "type": "paragraph",
+          "text": "見つからなければ別プロジェクト、ホスト、アーカイブ、印検索を確認し、同名を大量作成しません。両方が同じファイルを変えようとするなら一方を読取りに止め、他方の変更後に確認させます。同時機能開発は worktree と統合へ進みます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "大きくなったら「フィルター：Completed 完成」「文書：起動手順」のように成果と範囲を付けます。変更、検証、残作業を残し、未完了は会話だけでなく一覧文書へ保存します。切替ごとの全説明や、アーカイブを未完了なしとする誤解を避けます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2つのプロジェクトにある3タスクの状態表、最初の2タスクによる版2の再読込、3番目の版100、指定タスクのアーカイブと復元結果を保存します。codex-project-lab/note.txt だけを手動で版1に戻し、Small Steps を確認します。別プロジェクトは 100／Other Steps のままにします。練習のピン留めを解除し、プロジェクトやファイルは削除しません。図1は範囲、2は成果別タスク、3は再確認と整理です。次は"
+            },
+            {
+              "type": "article",
+              "text": "既存コードを読む",
+              "kind": "life",
+              "slug": "codex-understand-codebase"
+            },
+            {
+              "type": "text",
+              "text": "に進みます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-project-management/diagram-1.svg",
+          "alt": "13. デスクトップのタスクとプロジェクト管理 — 作業の流れを表す図です。製品画面の画像ではありません。 Project → Task → Handoff",
+          "width": 1600,
+          "height": 900,
+          "caption": "13. デスクトップのタスクとプロジェクト管理 — 作業の流れを表す図です。製品画面の画像ではありません。 Project → Task → Handoff",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Local projects and task organization",
+          "url": "https://learn.chatgpt.com/docs/projects",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Instruction discovery",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "데스크톱 작업과 프로젝트 관리",
+      "description": "같은 결과를 위한 후속 요청은 같은 작업에서 이어 가고 독립적인 결과는 분리합니다. 프로젝트는 파일 위치를, 작업은 요청을 정리합니다. 여러 작업이 자동으로 파일을 격리하지는 않습니다.",
+      "hero": {
+        "src": "/guides/codex-project-management/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "한 로컬 프로젝트에서 두 결과의 작업을 관리하며 이름, 전환, 고정, 보관, 복원을 연습합니다. 목록이 별개여도 파일은 격리되지 않음을 확인합니다. 읽기 12분, 실습 20분입니다. 로그인한 데스크톱과 편집기를 쓰며 OS별 조작은 공식 확인으로 전체 실측은 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "데스크톱 기초",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "가 전제입니다. 프로젝트는 공유 파일/작업을 정리하고 작업은 개별 결과/대화를 가집니다. ‘실습 목록’, ‘변경안’처럼 이름을 붙입니다. ChatGPT 프로젝트와 로컬 폴더 연결은 다르며 이번에는 후자인지 확인합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 실습 폴더 연결"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-project-lab에 다음 별도 note.txt/request.txt를 만듭니다. 기초 절차로 로컬 프로젝트에 추가하고 Edit project에서 경로를 확인합니다. 사용자 전체가 아닌 실습 하나만 연결하고 기본 폴더/실제 경로를 확인해 작업을 만듭니다."
+        },
+        {
+          "type": "code",
+          "label": "파일: note.txt",
+          "language": "text",
+          "code": "PROJECT-LAB\nRevision: 1\nCurrent title: Small Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "파일: request.txt",
+          "language": "text",
+          "code": "Propose the title Daily Steps.\nDo not edit note.txt until the proposal is reviewed.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "기본 폴더는 시작점/설정 탐색에 쓰이고 추가 폴더도 읽고 쓸 수 있습니다. 격리 사본은 아닙니다. 실습은 Git/worktree 없이 공유를 확인합니다. 동시 편집에는 "
+            },
+            {
+              "type": "article",
+              "text": "worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "를 사용하고 작업 개수로 격리를 판단하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 결과가 다른 작업 두 개 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 작업에 목록 요청을 보내 두 파일/표식/버전 1을 확인하고 ‘PROJECT-LAB — 실습 목록’으로 이름을 바꿉니다. 메뉴로 공통 표식/결과를 남기면 표식만 기억해도 찾습니다. 읽기만 하며 새 문서는 필요 없습니다."
+        },
+        {
+          "type": "code",
+          "label": "Codex 프롬프트: 자료 확인",
+          "language": "text",
+          "code": "Inventory this practice folder. Read note.txt and request.txt. Report their filenames, the lab marker, revision and current title. Do not edit files or search other directories. This task's outcome is a verified inventory only.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 프로젝트에서 다음 제안 작업을 만들고 ‘PROJECT-LAB — 제목안’으로 이름을 정합니다. Small Steps를 Daily Steps로 바꾸는 note.txt 한 줄 제안이며 아직 편집하지 않습니다. 목록 작업으로 돌아오면 그 대화가 남고 두 기록이 섞이지 않아야 합니다."
+        },
+        {
+          "type": "code",
+          "label": "Codex 프롬프트: 변경안 제안",
+          "language": "text",
+          "code": "Read note.txt and request.txt. Propose the smallest title change that satisfies the request. Identify exactly which line would change and how to verify it. Do not implement yet; this task's outcome is a reviewable proposal.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 작업 전환 시 파일 다시 읽기"
+        },
+        {
+          "type": "paragraph",
+          "text": "작업 사이 다른 일을 했다고 가정해 note.txt 버전만 2로 바꾸고 제목/request.txt는 둡니다. 목록에서 새 읽기를 요청해 이전 대화의 1과 현재 2를 확인합니다. 제안 작업에도 다시 읽게 하여 같은 폴더의 2를 보는지 확인합니다."
+        },
+        {
+          "type": "code",
+          "label": "Codex 프롬프트: 파일 다시 읽기",
+          "language": "text",
+          "code": "Read note.txt from disk again now. Compare its current revision with this task's earlier record. Report the actual directory, current revision and unchanged title. Do not repair the mismatch by restoring old contents.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "불일치는 의도적이며 복원 요청이 아닙니다. 파일 공유와 대화 분리는 함께 가능하고 고정/이름 변경이 사본을 만들지 않습니다. 한쪽이 1이면 경로/호스트/새 읽기/다른 worktree를 확인합니다. 긴 작업은 "
+            },
+            {
+              "type": "article",
+              "text": "인계",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "에 버전 차이를 남깁니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 고정, 검색, 보관과 복원"
+        },
+        {
+          "type": "paragraph",
+          "text": "자주 쓰는 제목안을 고정하고 다른 작업 뒤에도 찾기 쉬운지 확인합니다. 대화/파일은 바뀌지 않습니다. 사이드바 Search chats에서 PROJECT-LAB을 검색해 전체 이름으로 구분합니다. 버전별 단축키 차이를 피해 보이는 진입점을 씁니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "목록 작업만 메뉴 Archive로 보관하고 프로젝트 전체 Archive chats를 피합니다. Settings의 Archived chats에서 복원해 대화와 버전 2를 확인합니다. 목록 정리이며 기능 검수/백업/디스크 정리가 아닙니다. Delete는 필요 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "확장 연습: 다른 프로젝트에 같은 이름의 작업 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-project-lab 옆에 별도 codex-project-other 폴더를 만들고 아래 note.txt만 저장합니다. 첫 프로젝트의 추가 폴더가 아니라 다른 로컬 프로젝트로 등록합니다. 세 번째 작업을 열어 똑같이 ‘PROJECT-LAB — 실습 목록’으로 이름을 지정하고 아래 읽기 전용 요청을 보냅니다. 이름이 같다고 같은 파일을 사용하는 것은 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "파일: codex-project-other/note.txt",
+          "language": "text",
+          "code": "PROJECT-OTHER\nRevision: 100\nCurrent title: Other Steps\n"
+        },
+        {
+          "type": "code",
+          "label": "Codex 프롬프트: 같은 이름의 작업 확인",
+          "language": "text",
+          "code": "Read only this project's note.txt from disk. Report the absolute path, marker, revision and current title. Do not infer content from this task's title, another task or another project. Do not edit or search outside this project.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "세 번째는 PROJECT-OTHER / 100 / Other Steps, 앞의 두 작업은 PROJECT-LAB / 2 / Small Steps를 읽어야 합니다. 결과물, 프로젝트, 절대 경로, 최신 파일 확인 결과, 진행/보관 상태를 세 행으로 기록합니다. 세 번째에서 2가 나오면 잘못된 프로젝트에 작업을 만들었는지 확인하며, 기대값에 맞추려고 파일을 수정하지 않습니다. 확인 후 ‘PROJECT-OTHER — 실습 목록’으로 이름을 바꾸고 지정한 행만 보관하거나 복원합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "이 보관 및 파일 보존 실험은 일반 로컬 폴더를 대상으로 합니다. 공식 worktree 문서에 따르면 Codex 관리 worktree는 보관이나 정리 정책에 따라 삭제될 수 있고, 다시 열 때 스냅샷 복원 옵션이 제공될 수 있습니다. 영구 worktree는 규칙이 다릅니다. 종류, 미커밋 내용, 백업을 확인하고 worktree 안내를 따르세요. 여기의 로컬 결과를 모든 환경에 적용하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "link",
+              "text": "공식 worktree 문서",
+              "url": "https://learn.chatgpt.com/docs/environments/git-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "worktree 안내",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "조작",
+            "바뀌는 것",
+            "검증"
+          ],
+          "rows": [
+            [
+              "이름 변경",
+              "표시 제목",
+              "표식/결과로 검색"
+            ],
+            [
+              "고정",
+              "사이드바 위치",
+              "같은 대화로 돌아오기"
+            ],
+            [
+              "보관/복원",
+              "목록 표시 상태",
+              "원래 대화 유지"
+            ],
+            [
+              "다시 읽기",
+              "최신 디스크 증거",
+              "둘 다 버전 2"
+            ],
+            [
+              "기본 폴더 변경",
+              "새 작업 시작점",
+              "실제 경로 재확인"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "재개, 새 시작, 중단 구분"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 제목 변경의 조건 보완은 원래 작업으로 돌아가고 테스트 기록 정리 같은 다른 결과는 읽을 파일을 지정해 새로 만듭니다. 다른 대화의 구두 제약을 읽었다고 가정하지 않습니다. 테스트 불변 같은 공통 규칙은 AGENTS.md, 버전/미확인은 인계에 두고 새 요청에서 참조합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실행 중이면 표시된 중단 조작을 먼저 쓰고 추가 편집이 멈췄는지 확인해 정리합니다. 중단/보관은 다르며 이미 쓴 것은 복원되지 않아 다시 읽습니다. 기본 경로 변경은 이전 위치를 기록하고 새 작업으로 확인하며 기존 작업 이동/추가 폴더 백업을 가정하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결과 정리 습관"
+        },
+        {
+          "type": "paragraph",
+          "text": "없으면 다른 프로젝트/호스트/보관/표식 검색을 확인하고 같은 이름을 여러 개 만들지 않습니다. 둘 다 같은 파일을 바꾸려면 하나를 읽기로 두고 다른 수정 뒤 검토하게 합니다. 실제 동시 기능 개발은 worktree/통합으로 진행합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "커지면 ‘필터: Completed 완성’, ‘문서: 시작 절차’처럼 결과/범위를 넣습니다. 변경/검증/남은 작업을 남기고 미완료는 대화뿐 아니라 목록 문서에도 저장합니다. 전환마다 전체를 다시 설명하거나 보관을 미완료 없음으로 오해하지 않게 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "두 프로젝트의 세 작업 상태표, 앞의 두 작업이 다시 읽은 버전 2, 세 번째 작업의 버전 100, 지정 작업의 보관 및 복원 결과를 저장합니다. codex-project-lab/note.txt만 수동으로 버전 1로 돌리고 Small Steps를 확인합니다. 다른 프로젝트는 100 / Other Steps로 유지합니다. 연습의 고정을 해제하되 프로젝트나 파일을 삭제할 필요는 없습니다. 그림 1은 범위, 2는 결과별 작업, 3은 재확인과 정리입니다. 다음은 "
+            },
+            {
+              "type": "article",
+              "text": "기존 코드 읽기",
+              "kind": "life",
+              "slug": "codex-understand-codebase"
+            },
+            {
+              "type": "text",
+              "text": "입니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-project-management/diagram-1.svg",
+          "alt": "13. 데스크톱 작업과 프로젝트 관리 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Project → Task → Handoff",
+          "width": 1600,
+          "height": 900,
+          "caption": "13. 데스크톱 작업과 프로젝트 관리 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Project → Task → Handoff",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Local projects and task organization",
+          "url": "https://learn.chatgpt.com/docs/projects",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Instruction discovery",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-09-14T15:03:22.484749+00:00",
+  "status": "passed",
+  "checks": [
+    "The deterministic CSV ZIP contains the exact article input, reference program, tests and Unicode fixture",
+    "CLI counts/output are correct; repeated output and same-input targets fail while preserving bytes",
+    "Quoted Unicode is preserved; missing/extra columns, reversed headers and malformed quoting produce no output",
+    "An invalid first row does not reserve its email; exact later valid output and 1/1/1 counts are verified while prior files remain unchanged",
+    "All three CSV tests pass, detect deliberately removed overwrite protection, then pass after restoration",
+    "Maintenance starts with 3 passing tests, exposes 3 missing-helper failures, then passes all 6 with only the planned code changes",
+    "Miswiring to shown leaves all six core tests green; direct data evaluation demonstrates the 0/1 versus 1/2 difference without claiming browser execution",
+    "The new tests catch incorrect active counts; targeted restoration returns all five original files and 3 passing tests",
+    "The path drill's missing and explicit-relative paths match its declared fixture",
+    "The exact PowerShell cmdlet-status exercise yields False then True and preserves the marker; POSIX shell execution remains untested",
+    "A fresh isolated Git repository ignores the fictional env file without tracking or changing it; no model resistance or read-denial claim",
+    "Both efficiency reference copies reproduce the same 2-pass/1-failure baseline without edits; no usage or model-time measurements"
+  ],
+  "environment": "Windows; local Python and Node; isolated fictional files; explicit reference edits",
+  "authorHashes": {
+    "12": "1e50611646ba0eadbf6bdf689daba80b38c9a49fbfdd7be967a45d459b71d04b",
+    "31": "30a5f4e9cf3bf1bb09afc6653a11b991459a8f5bf563f8ba3e010b9cadb1bb93",
+    "32": "5b94ba98b5070e0b47be3d92be811aaa7d1b67f2f5b3216add8027336d1e6052",
+    "58": "83a830f4a2061b229885d3f82def0fdba3892def2da5ca44c8ad7bcff63e9402",
+    "59": "78b39dfbca9314ef39cfa61b7715ef531c656fe1c87f869d3d1509bd1e41e8fa",
+    "60": "65fae5343d42a013fd481094f1189ac1de599bcd03d9162f3040377fc32d22f9"
+  },
+  "archiveHash": "e0f76ff8a5838df4837d413189d014377fa179ed2a9dbb767be184ce61748fc3",
+  "notTested": [
+    "Generated model implementations",
+    "Actual Codex prompt-injection response",
+    "Live usage comparison",
+    "Post-refactor browser behavior",
+    "macOS/Linux execution",
+    "Publication or deployment"
+  ]
+}

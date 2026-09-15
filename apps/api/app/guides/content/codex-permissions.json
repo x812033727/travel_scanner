@@ -1,0 +1,1594 @@
+{
+  "slug": "codex-permissions",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 118,
+  "locales": {
+    "zh-TW": {
+      "title": "權限、沙盒、網路與金鑰",
+      "description": "沙盒決定工具技術上能碰哪些檔案或網路，授權政策決定什麼時候需要詢問。兩層設定不能混為一談：不顯示詢問不代表動作一定被允許，能讀檔也不代表可以寫入所有地方。",
+      "hero": {
+        "src": "/guides/codex-permissions/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "辨認 Codex 的檔案範圍、核准政策與網路能力，用虛構文字檔練習一次唯讀工作及一次允許的修改。閱讀約 14 分鐘，操作約 20 分鐘。需要已登入 CLI 和文字編輯器；桌面讀者可對照權限控制與工作位置。Windows、macOS、Linux 採同一實驗，底層隔離方式依平台不同。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "article",
+              "text": "CLI 入門",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "text": "設定檔",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "。你的自然語言要求表達想做什麼，沙盒限制工具技術上能做什麼，核准政策決定哪些操作需要再確認。三者要一起看；「不用問我」不等於工作區突然能寫任何地方，唯讀也不表示完全不能執行讀取命令。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：建立最小權限練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "在編輯器建立 codex-permissions-lab，新增 note.txt 與 request.txt，分別放以下兩段。它們只是虛構標記，不需要 API 金鑰、登入檔或正式專案。開整合終端機，用 PowerShell 的 Get-Location 或 macOS／Linux 的 pwd 確認末端是此資料夾，避免用錯目前目錄來判斷沙盒。"
+        },
+        {
+          "type": "code",
+          "label": "檔案內容：存入 note.txt",
+          "language": "text",
+          "code": "PERMISSION-LAB\nRevision: 1\n"
+        },
+        {
+          "type": "code",
+          "label": "檔案內容：存入 request.txt",
+          "language": "text",
+          "code": "Only note.txt may be changed during the authorized write exercise.\nTarget revision: 2\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存原始 note.txt 內容以便還原。在該目錄執行下面的 CLI 啟動命令，它只設定這次工作階段，不把整個帳號的預設改掉。進入後看 /status，必要時查看 /permissions 顯示的模式；如果你的組織強制其他限制，保留錯誤訊息摘要並依管理規則處理，不試著繞過。"
+        },
+        {
+          "type": "code",
+          "label": "系統終端機：先核對本篇指定的練習目錄",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only --ask-for-approval on-request\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：先讀取，再辨認寫入限制"
+        },
+        {
+          "type": "paragraph",
+          "text": "送出下列唯讀要求，預期讀到 PERMISSION-LAB、Revision: 1 與 request.txt 的指定範圍。已允許的讀取不一定每次跳出確認，這符合 on-request 的用途。核對回覆的實際目錄與編輯器內容；若它只重述提示詞而未讀檔，不算完成讀取驗證。"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
+          "language": "text",
+          "code": "Read note.txt and request.txt in the current lab. Report the actual working directory and exact revision. Do not change files, access unrelated folders or use the network.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著送出下一段，它要求嘗試教材寫入但不升級權限。預期在目前限制下無法完成修改，可能回報受限或出現核准要求；若出現提示，這次選擇拒絕或取消，再用編輯器確認 note.txt 仍是 1。單靠模型說「不能寫」只證明它的回覆，不足以證明作業系統真的阻擋過命令，請分開記錄。"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
+          "language": "text",
+          "code": "Try to change only note.txt from Revision: 1 to Revision: 2 using currently available permissions. Do not request broader access, disable protections or retry through another path. If the current sandbox prevents the write, report that and stop. This is a controlled permission exercise.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果檔案意外變成 2，先停止這次測試，檢查實際啟動旗標、模式以及是否曾核准擴大權限；不要直接下結論說唯讀沙盒失效。用編輯器手動還原成 1，保存與設定相關的最小證據。桌面任務可能在不同主機或 worktree，務必看"
+            },
+            {
+              "type": "article",
+              "text": "工作位置",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "，不要比較錯份檔案。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：授予本次需要的工作區寫入"
+        },
+        {
+          "type": "paragraph",
+          "text": "用 /exit 回到系統終端機，確認仍在本練習，再用下列命令開新工作階段。這次允許工作區寫入，送出再下一段明確要求。預期 note.txt 變成 Revision: 2，第一行與 request.txt 不變。這個例子不需要網路或工作區外寫入，若要求其他能力，先看具體命令為何需要。"
+        },
+        {
+          "type": "code",
+          "label": "系統終端機：先核對本篇指定的練習目錄",
+          "language": "sh",
+          "code": "codex --cd . --sandbox workspace-write --ask-for-approval on-request\n"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
+          "language": "text",
+          "code": "Read note.txt and request.txt. Change only the revision line in note.txt from 1 to 2. Keep all other contents and files unchanged. No network or outside-workspace access is needed. After editing, read both files again and report the actual result.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在編輯器再次核對兩個檔案，將變更前後、允許範圍、遇到的提示與實際結果寫入練習紀錄。範例在普通文字檔操作，不測試 .git、.agents、.codex 等受保護位置；工作區可寫不代表每個子路徑都可寫。要新增技能或專案設定時，依該功能的指引處理，不把它們改名搬家來規避保護。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "用證據分開拒絕、阻擋與寫入成功"
+        },
+        {
+          "type": "paragraph",
+          "text": "三種結果應分開：代理在呼叫工具前說不能寫，是未嘗試；工具執行回報限制且檔案不變，才有該次阻擋的證據；工具說成功而檔案仍是 1，則需查實際路徑和結果，不能填已完成。下表只記此次普通文字檔，不把一次結果推廣成整台電腦、所有工具或三種作業系統的保證。"
+        },
+        {
+          "type": "code",
+          "label": "私人權限觀察表：填入實際結果，不是命令",
+          "language": "text",
+          "code": "Requested action: [read / controlled write / scoped authorized write]\nObserved host and absolute file path: [actual values]\nPermission mode and approval policy: [observed / unavailable]\nTool attempt: [not attempted / command and actual result]\nApproval event: [none / allowed / denied / cancelled / automatic review result]\nBefore and after: [actual note.txt revision and request.txt comparison]\nConclusion: [what this evidence establishes and what remains unverified]\nRestoration: [actual result / not performed]\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "網路、金鑰與核准不是同一件事"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "內建網頁搜尋、shell 命令連網、"
+            },
+            {
+              "type": "article",
+              "text": "MCP 工具",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": "與帳號連接可能各有自己的設定。關掉 web_search 不能據此宣稱所有工具都離線；可以開網頁也不能證明 npm install 能連到套件站。先確認哪個工具、哪個主機、哪個網域出錯，再處理那一層。這個教材全程不需要外部連線來完成檔案修改。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "遇到核准視窗，閱讀將執行的動作與目標路徑：讀取教材、安裝已選套件、寫入外部服務的影響不同。允許一次操作不代表以後所有操作都已同意。若環境使用自動審查，記下其判定與原因，不能把沒有人工視窗當作沒有審查。never 表示不要求互動核准，並不自動移除沙盒，受限動作仍可能失敗。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要金鑰的工具，透過該工具正式登入或指定的秘密設定入口處理；本篇不要求貼到提示詞、AGENTS.md、Git 或截圖。只檢查「是否設定」與工具回傳的認證狀態，不輸出整個環境變數清單。若已把真實金鑰公開，先在發行服務撤銷及重新產生，再移除暴露副本；僅刪除聊天文字不能讓舊金鑰失效。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見故障與還原驗收"
+        },
+        {
+          "type": "table",
+          "header": [
+            "現象",
+            "先確認",
+            "下一步"
+          ],
+          "rows": [
+            [
+              "不能改 note.txt",
+              "實際目錄與 sandbox",
+              "在正確練習啟動需要的模式"
+            ],
+            [
+              "一直要求額外權限",
+              "命令的路徑與副作用",
+              "縮小操作或核准確實需要的部分"
+            ],
+            [
+              "連線失敗",
+              "工具、網域、主機及認證",
+              "修正對應連線，保留錯誤"
+            ],
+            [
+              "讀得到但寫不到設定資料夾",
+              "是否受保護位置",
+              "使用功能正式設定流程"
+            ],
+            [
+              "舊設定無法啟動",
+              "已停用的 approval_policy 值",
+              "依官方文件遷移並驗證"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方文件已將 approval_policy = \"untrusted\" 列為停用設定；不要照舊文章直接複製。它與 projects 區段的 trust_level 是不同設定，不能全部搜尋取代。"
+            },
+            {
+              "type": "article",
+              "text": "設定排錯",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "會協助你找出實際來源，先備份要修改的那一項，再依目前文件選擇相容政策。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "完成時應能解釋兩次啟動差異，提供 note.txt 從 1 到 2 的實際結果，以及 request.txt 未變的核對。退出寫入工作階段，手動把 note.txt 還原為 1，之後新任務再看目前權限；退出不會還原檔案。圖中 1 是確認範圍，2 是執行觀察，3 是核對還原。本篇平台沙盒行為依官方文件查證，未宣稱三種作業系統皆已實測，也未執行讀者的核准流程。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-permissions/diagram-1.svg",
+          "alt": "18. 權限、沙盒、網路與金鑰 — 實作順序示意圖，非產品介面截圖。 Request → Permission → Action",
+          "width": 1600,
+          "height": 900,
+          "caption": "18. 權限、沙盒、網路與金鑰 — 實作順序示意圖，非產品介面截圖。 Request → Permission → Action",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Agent approvals and security",
+          "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sandboxing",
+          "url": "https://learn.chatgpt.com/docs/sandboxing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI permissions",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "权限、沙箱、网络与密钥",
+      "description": "沙盒决定工具技术上能碰哪些档案或网路，授权政策决定什么时候需要询问。两层设定不能混为一谈：不显示询问不代表动作一定被允许，能读档也不代表可以写入所有地方。",
+      "hero": {
+        "src": "/guides/codex-permissions/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "辨认 Codex 的档案范围、核准政策与网路能力，用虚构文字档练习一次唯读工作及一次允许的修改。阅读约 14 分钟，操作约 20 分钟。需要已登入 CLI 和文字编辑器；桌面读者可对照权限控制与工作位置。Windows、macOS、Linux 采同一实验，底层隔离方式依平台不同。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成"
+            },
+            {
+              "type": "article",
+              "text": "CLI 入门",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "text": "设定档",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "。你的自然语言要求表达想做什么，沙盒限制工具技术上能做什么，核准政策决定哪些操作需要再确认。三者要一起看；「不用问我」不等于工作区突然能写任何地方，唯读也不表示完全不能执行读取命令。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：建立最小权限练习"
+        },
+        {
+          "type": "paragraph",
+          "text": "在编辑器建立 codex-permissions-lab，新增 note.txt 与 request.txt，分别放以下两段。它们只是虚构标记，不需要 API 金钥、登入档或正式专案。开整合终端机，用 PowerShell 的 Get-Location 或 macOS／Linux 的 pwd 确认末端是此资料夹，避免用错目前目录来判断沙盒。"
+        },
+        {
+          "type": "code",
+          "label": "档案内容：存入 note.txt",
+          "language": "text",
+          "code": "PERMISSION-LAB\nRevision: 1\n"
+        },
+        {
+          "type": "code",
+          "label": "档案内容：存入 request.txt",
+          "language": "text",
+          "code": "Only note.txt may be changed during the authorized write exercise.\nTarget revision: 2\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存原始 note.txt 内容以便还原。在该目录执行下面的 CLI 启动命令，它只设定这次工作阶段，不把整个帐号的预设改掉。进入后看 /status，必要时查看 /permissions 显示的模式；如果你的组织强制其他限制，保留错误讯息摘要并依管理规则处理，不试著绕过。"
+        },
+        {
+          "type": "code",
+          "label": "系统终端机：先核对本篇指定的练习目录",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only --ask-for-approval on-request\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：先读取，再辨认写入限制"
+        },
+        {
+          "type": "paragraph",
+          "text": "送出下列唯读要求，预期读到 PERMISSION-LAB、Revision: 1 与 request.txt 的指定范围。已允许的读取不一定每次跳出确认，这符合 on-request 的用途。核对回复的实际目录与编辑器内容；若它只重述提示词而未读档，不算完成读取验证。"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
+          "language": "text",
+          "code": "Read note.txt and request.txt in the current lab. Report the actual working directory and exact revision. Do not change files, access unrelated folders or use the network.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著送出下一段，它要求尝试教材写入但不升级权限。预期在目前限制下无法完成修改，可能回报受限或出现核准要求；若出现提示，这次选择拒绝或取消，再用编辑器确认 note.txt 仍是 1。单靠模型说「不能写」只证明它的回复，不足以证明作业系统真的阻挡过命令，请分开记录。"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
+          "language": "text",
+          "code": "Try to change only note.txt from Revision: 1 to Revision: 2 using currently available permissions. Do not request broader access, disable protections or retry through another path. If the current sandbox prevents the write, report that and stop. This is a controlled permission exercise.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果档案意外变成 2，先停止这次测试，检查实际启动旗标、模式以及是否曾核准扩大权限；不要直接下结论说唯读沙盒失效。用编辑器手动还原成 1，保存与设定相关的最小证据。桌面任务可能在不同主机或 worktree，务必看"
+            },
+            {
+              "type": "article",
+              "text": "工作位置",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "，不要比较错份档案。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：授予本次需要的工作区写入"
+        },
+        {
+          "type": "paragraph",
+          "text": "用 /exit 回到系统终端机，确认仍在本练习，再用下列命令开新工作阶段。这次允许工作区写入，送出再下一段明确要求。预期 note.txt 变成 Revision: 2，第一行与 request.txt 不变。这个例子不需要网路或工作区外写入，若要求其他能力，先看具体命令为何需要。"
+        },
+        {
+          "type": "code",
+          "label": "系统终端机：先核对本篇指定的练习目录",
+          "language": "sh",
+          "code": "codex --cd . --sandbox workspace-write --ask-for-approval on-request\n"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
+          "language": "text",
+          "code": "Read note.txt and request.txt. Change only the revision line in note.txt from 1 to 2. Keep all other contents and files unchanged. No network or outside-workspace access is needed. After editing, read both files again and report the actual result.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在编辑器再次核对两个档案，将变更前后、允许范围、遇到的提示与实际结果写入练习纪录。范例在普通文字档操作，不测试 .git、.agents、.codex 等受保护位置；工作区可写不代表每个子路径都可写。要新增技能或专案设定时，依该功能的指引处理，不把它们改名搬家来规避保护。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "用证据分开拒绝、阻挡与写入成功"
+        },
+        {
+          "type": "paragraph",
+          "text": "三种结果应分开：代理在呼叫工具前说不能写，是未尝试；工具执行回报限制且档案不变，才有该次阻挡的证据；工具说成功而档案仍是 1，则需查实际路径和结果，不能填已完成。下表只记此次普通文字档，不把一次结果推广成整台电脑、所有工具或三种作业系统的保证。"
+        },
+        {
+          "type": "code",
+          "label": "私人权限观察表：填入实际结果，不是命令",
+          "language": "text",
+          "code": "Requested action: [read / controlled write / scoped authorized write]\nObserved host and absolute file path: [actual values]\nPermission mode and approval policy: [observed / unavailable]\nTool attempt: [not attempted / command and actual result]\nApproval event: [none / allowed / denied / cancelled / automatic review result]\nBefore and after: [actual note.txt revision and request.txt comparison]\nConclusion: [what this evidence establishes and what remains unverified]\nRestoration: [actual result / not performed]\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "网路、金钥与核准不是同一件事"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "内建网页搜寻、shell 命令连网、"
+            },
+            {
+              "type": "article",
+              "text": "MCP 工具",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": "与帐号连接可能各有自己的设定。关掉 web_search 不能据此宣称所有工具都离线；可以开网页也不能证明 npm install 能连到套件站。先确认哪个工具、哪个主机、哪个网域出错，再处理那一层。这个教材全程不需要外部连线来完成档案修改。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "遇到核准视窗，阅读将执行的动作与目标路径：读取教材、安装已选套件、写入外部服务的影响不同。允许一次操作不代表以后所有操作都已同意。若环境使用自动审查，记下其判定与原因，不能把没有人工视窗当作没有审查。never 表示不要求互动核准，并不自动移除沙盒，受限动作仍可能失败。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要金钥的工具，透过该工具正式登入或指定的秘密设定入口处理；本篇不要求贴到提示词、AGENTS.md、Git 或截图。只检查「是否设定」与工具回传的认证状态，不输出整个环境变数清单。若已把真实金钥公开，先在发行服务撤销及重新产生，再移除暴露副本；仅删除聊天文字不能让旧金钥失效。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见故障与还原验收"
+        },
+        {
+          "type": "table",
+          "header": [
+            "现象",
+            "先确认",
+            "下一步"
+          ],
+          "rows": [
+            [
+              "不能改 note.txt",
+              "实际目录与 sandbox",
+              "在正确练习启动需要的模式"
+            ],
+            [
+              "一直要求额外权限",
+              "命令的路径与副作用",
+              "缩小操作或核准确实需要的部分"
+            ],
+            [
+              "连线失败",
+              "工具、网域、主机及认证",
+              "修正对应连线，保留错误"
+            ],
+            [
+              "读得到但写不到设定资料夹",
+              "是否受保护位置",
+              "使用功能正式设定流程"
+            ],
+            [
+              "旧设定无法启动",
+              "已停用的 approval_policy 值",
+              "依官方文件迁移并验证"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方文件已将 approval_policy = \"untrusted\" 列为停用设定；不要照旧文章直接复制。它与 projects 区段的 trust_level 是不同设定，不能全部搜寻取代。"
+            },
+            {
+              "type": "article",
+              "text": "设定排错",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "会协助你找出实际来源，先备份要修改的那一项，再依目前文件选择相容政策。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "完成时应能解释两次启动差异，提供 note.txt 从 1 到 2 的实际结果，以及 request.txt 未变的核对。退出写入工作阶段，手动把 note.txt 还原为 1，之后新任务再看目前权限；退出不会还原档案。图中 1 是确认范围，2 是执行观察，3 是核对还原。本篇平台沙盒行为依官方文件查证，未宣称三种作业系统皆已实测，也未执行读者的核准流程。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-permissions/diagram-1.svg",
+          "alt": "18. 权限、沙箱、网络与密钥 — 实作顺序示意图，非产品介面截图。 Request → Permission → Action",
+          "width": 1600,
+          "height": 900,
+          "caption": "18. 权限、沙箱、网络与密钥 — 实作顺序示意图，非产品介面截图。 Request → Permission → Action",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Agent approvals and security",
+          "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sandboxing",
+          "url": "https://learn.chatgpt.com/docs/sandboxing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI permissions",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Permissions, sandbox, network and keys",
+      "description": "Sandbox rules define technical access to files and networks; approval policy determines when the agent asks before acting. No prompt does not guarantee permission, and read access does not imply write access everywhere.",
+      "hero": {
+        "src": "/guides/codex-permissions/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Identify file scope, approval policy and network capability, then practice a read-only task and an allowed edit on fictional text. Allow 14 minutes to read and 20 to practice. Use authenticated CLI and a text editor; desktop readers can compare permission controls and location. The experiment is shared across Windows, macOS and Linux, with different OS isolation implementations."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Complete "
+            },
+            {
+              "type": "article",
+              "text": "CLI basics",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "article",
+              "text": "configuration",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": ". Your request expresses intent, the sandbox limits technical capability and approval policy determines when further confirmation is required. Read them together: no prompts does not imply unrestricted writes, and read-only can still execute read operations."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Create a minimal permission lab"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create codex-permissions-lab with note.txt and request.txt containing the separate samples below. These are fictional markers; no API keys, authentication files or production project are needed. In the integrated terminal, use PowerShell Get-Location or macOS/Linux pwd to confirm this folder before assessing the sandbox."
+        },
+        {
+          "type": "code",
+          "label": "File content: save as note.txt",
+          "language": "text",
+          "code": "PERMISSION-LAB\nRevision: 1\n"
+        },
+        {
+          "type": "code",
+          "label": "File content: save as request.txt",
+          "language": "text",
+          "code": "Only note.txt may be changed during the authorized write exercise.\nTarget revision: 2\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Preserve original note.txt for restoration. Launch CLI with the command below for this session without changing account-wide defaults. Inspect /status and, if needed, the mode shown by /permissions. If your organization enforces different restrictions, retain the error summary and follow those rules instead of bypassing them."
+        },
+        {
+          "type": "code",
+          "label": "System terminal: first verify the practice directory specified here",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only --ask-for-approval on-request\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Read first, then inspect write restrictions"
+        },
+        {
+          "type": "paragraph",
+          "text": "Send the read-only request below. Expect PERMISSION-LAB, Revision: 1 and request.txt's scope. Allowed reads need not prompt every time under on-request. Compare the actual reported directory and editor contents. Merely repeating the prompt without reading is not a successful check."
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: enter in this practice Codex task",
+          "language": "text",
+          "code": "Read note.txt and request.txt in the current lab. Report the actual working directory and exact revision. Do not change files, access unrelated folders or use the network.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Next request the lab edit without escalation. Under these restrictions, expect no completed write: a limitation report or approval request may appear. Deny or cancel any prompt for this exercise, then verify note.txt remains 1 in your editor. A model saying it cannot write is not proof that an OS command was actually denied; record those separately."
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: enter in this practice Codex task",
+          "language": "text",
+          "code": "Try to change only note.txt from Revision: 1 to Revision: 2 using currently available permissions. Do not request broader access, disable protections or retry through another path. If the current sandbox prevents the write, report that and stop. This is a controlled permission exercise.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "If the file unexpectedly becomes 2, stop and inspect actual launch flags, mode and any approval that widened access before declaring sandbox failure. Restore 1 manually and retain minimal relevant evidence. A desktop task may use another host or worktree; check "
+            },
+            {
+              "type": "article",
+              "text": "execution location",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": " before comparing files."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Allow the required workspace edit"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use /exit to return to the shell, confirm the lab and launch a new session below. This permits workspace writes. Send the explicit edit request, expecting note.txt revision 2 with its first line and request.txt unchanged. No network or outside-workspace write is needed; inspect the reason for any additional request."
+        },
+        {
+          "type": "code",
+          "label": "System terminal: first verify the practice directory specified here",
+          "language": "sh",
+          "code": "codex --cd . --sandbox workspace-write --ask-for-approval on-request\n"
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: enter in this practice Codex task",
+          "language": "text",
+          "code": "Read note.txt and request.txt. Change only the revision line in note.txt from 1 to 2. Keep all other contents and files unchanged. No network or outside-workspace access is needed. After editing, read both files again and report the actual result.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Recheck both files in the editor and record before/after values, scope, prompts and actual outcome. This exercise uses ordinary files, not protected .git, .agents or .codex paths. Workspace write does not imply every child path is writable. Follow feature-specific setup for skills or configuration instead of relocating protected paths to evade restrictions."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Distinguish refusal, enforcement and successful writing"
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep three outcomes separate: refusal before a tool call is no attempt; an enforced restriction reported by the tool with an unchanged file is evidence for that blocked attempt; a success message with Revision: 1 still on disk requires checking the path and result. Record only this ordinary-file exercise, not a guarantee for every tool, host or OS."
+        },
+        {
+          "type": "code",
+          "label": "Private permission record: fill in actual results; not a command",
+          "language": "text",
+          "code": "Requested action: [read / controlled write / scoped authorized write]\nObserved host and absolute file path: [actual values]\nPermission mode and approval policy: [observed / unavailable]\nTool attempt: [not attempted / command and actual result]\nApproval event: [none / allowed / denied / cancelled / automatic review result]\nBefore and after: [actual note.txt revision and request.txt comparison]\nConclusion: [what this evidence establishes and what remains unverified]\nRestoration: [actual result / not performed]\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Network, credentials and approval are distinct"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Built-in search, shell networking, "
+            },
+            {
+              "type": "article",
+              "text": "MCP tools",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " and account connections can have separate controls. Disabling web_search does not prove every tool is offline; opening a page does not prove npm install can reach a package registry. Identify the failing tool, host and domain before changing that layer. The lab file operations require no external connections."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Read the requested action and target path: reading a fixture, installing a chosen dependency and writing to an external service differ. One approval is not universal consent. If automatic review is active, record its decision and reason; no human dialog does not mean no review. never disables interactive approval requests, not the sandbox, so restricted actions may still fail."
+        },
+        {
+          "type": "paragraph",
+          "text": "For credentialed tools, use their official sign-in or secret configuration mechanism. Do not put keys in prompts, AGENTS.md, Git or screenshots. Check presence and authentication status without dumping all environment variables. If a real key was exposed, revoke and replace it at the issuing service, then remove exposed copies; deleting chat text alone does not invalidate the key."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Common failures, restoration and acceptance"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Symptom",
+            "Inspect first",
+            "Next step"
+          ],
+          "rows": [
+            [
+              "Cannot edit note.txt",
+              "Actual directory and sandbox",
+              "Launch required mode in correct lab"
+            ],
+            [
+              "Repeated access requests",
+              "Paths and side effects",
+              "Narrow operation or approve required scope"
+            ],
+            [
+              "Connection failure",
+              "Tool, domain, host, authentication",
+              "Fix that connection and retain error"
+            ],
+            [
+              "Configuration path readable, not writable",
+              "Protected path",
+              "Use official feature setup"
+            ],
+            [
+              "Old config prevents startup",
+              "Retired approval_policy value",
+              "Migrate using official guidance"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Official guidance retires approval_policy = \"untrusted\". Do not copy it from older tutorials. It differs from trust_level in projects; do not globally replace both. Use "
+            },
+            {
+              "type": "article",
+              "text": "configuration troubleshooting",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": " to identify the source, preserve the specific setting and choose a supported policy from current guidance."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Finish by explaining the two launches, recording the real revision 1-to-2 result and confirming request.txt is unchanged. Exit the write session, manually restore note.txt to 1 and inspect permissions in future tasks; exit does not undo files. Diagram 1 establishes scope, 2 observes execution, 3 verifies restoration. Platform sandbox behavior is documentation-checked, not claimed tested on all three OSes or executed for the reader."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-permissions/diagram-1.svg",
+          "alt": "18. Permissions, sandbox, network and keys — Workflow illustration, not a product screenshot. Request → Permission → Action",
+          "width": 1600,
+          "height": 900,
+          "caption": "18. Permissions, sandbox, network and keys — Workflow illustration, not a product screenshot. Request → Permission → Action",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Agent approvals and security",
+          "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sandboxing",
+          "url": "https://learn.chatgpt.com/docs/sandboxing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI permissions",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "権限・サンドボックス・ネットワーク・キー",
+      "description": "サンドボックスは技術的なアクセス範囲、承認設定は確認するタイミングを制御します。確認が出ないことと無制限に操作できることは同じではありません。",
+      "hero": {
+        "src": "/guides/codex-permissions/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "ファイル範囲、承認方針、通信能力を区別し、架空テキストで読取りと許可編集を試します。読む時間14分、操作20分です。認証済み CLI とエディターを使い、デスクトップでは権限操作と場所を対照できます。3 OS 共通の実験で、内部隔離方式は異なります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CLI 基礎",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "と"
+            },
+            {
+              "type": "article",
+              "text": "設定",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "が前提です。依頼は意図、サンドボックスは技術的範囲、承認方針は追加確認条件を表します。「聞かない」は全場所への書込みではなく、読取り専用でも読取り命令は実行できます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：小さな権限教材を作る"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-permissions-lab に note.txt と request.txt を作り、次の別々の例を入れます。架空の印だけで鍵、認証、本番は不要です。統合端末で Windows PowerShell は Get-Location、macOS／Linux は pwd を使って場所を確認し、現在地違いを権限判定と混同しません。"
+        },
+        {
+          "type": "code",
+          "label": "ファイル内容：note.txt に保存する",
+          "language": "text",
+          "code": "PERMISSION-LAB\nRevision: 1\n"
+        },
+        {
+          "type": "code",
+          "label": "ファイル内容：request.txt に保存する",
+          "language": "text",
+          "code": "Only note.txt may be changed during the authorized write exercise.\nTarget revision: 2\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "note.txt の原文を残し、次の命令で今回だけの設定を使います。全体既定は変えません。/status と必要なら /permissions を確認します。組織制約で異なる場合はエラー要約を残し、管理ルールに従います。回避はしません。"
+        },
+        {
+          "type": "code",
+          "label": "システム端末：先に本文で指定した練習ディレクトリを確認する",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only --ask-for-approval on-request\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：読み取り後に書込み制限を確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "次の読取り依頼で印、Revision: 1、request.txt の範囲を確認します。on-request では許可済み読取りごとの承認は必須ではありません。実パスとエディター内容を比較し、依頼を繰り返すだけなら読取り検証には数えません。"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
+          "language": "text",
+          "code": "Read note.txt and request.txt in the current lab. Report the actual working directory and exact revision. Do not change files, access unrelated folders or use the network.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "次は昇格なしの教材編集を依頼します。制限の報告または承認要求があり、書込みは完了しないはずです。承認が出たら今回は拒否・取消し、エディターで1のまま確認します。モデルの「書けない」と OS が命令を拒否した証拠は別に記録します。"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
+          "language": "text",
+          "code": "Try to change only note.txt from Revision: 1 to Revision: 2 using currently available permissions. Do not request broader access, disable protections or retry through another path. If the current sandbox prevents the write, report that and stop. This is a controlled permission exercise.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "予期せず2になったら停止し、起動引数、実モード、アクセス拡大承認を確認してから判断します。手動で1へ戻し最小証拠を残します。デスクトップは別ホストや worktree の場合があるため、"
+            },
+            {
+              "type": "article",
+              "text": "実行場所",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "を確認します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：必要な作業領域編集を許可"
+        },
+        {
+          "type": "paragraph",
+          "text": "/exit でシェルへ戻り、場所を確認して次の新セッションを起動します。作業領域の書込みを許可し、次を依頼します。note.txt の版だけ2、先頭行と request.txt は不変です。通信や外部編集は不要なので、追加要求があれば命令と理由を確認します。"
+        },
+        {
+          "type": "code",
+          "label": "システム端末：先に本文で指定した練習ディレクトリを確認する",
+          "language": "sh",
+          "code": "codex --cd . --sandbox workspace-write --ask-for-approval on-request\n"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
+          "language": "text",
+          "code": "Read note.txt and request.txt. Change only the revision line in note.txt from 1 to 2. Keep all other contents and files unchanged. No network or outside-workspace access is needed. After editing, read both files again and report the actual result.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "エディターで両ファイルと前後値、範囲、承認、結果を記録します。.git、.agents、.codex などの保護場所は試しません。作業領域内の全パスが書けるとは限りません。技能や設定の指針に従い、保護回避の移動はしません。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "拒否、制限の適用、書き込み成功を分ける"
+        },
+        {
+          "type": "paragraph",
+          "text": "ツールを呼ぶ前に書けないと答えた場合は未試行、ツールが制限を報告してファイルも不変ならその試行の阻止証拠です。成功メッセージでもディスクが Revision: 1 のままなら場所と結果を調べ、完了と書きません。今回の普通ファイルの結果だけを記録し、全ツールや全 OS の保証へ広げません。"
+        },
+        {
+          "type": "code",
+          "label": "個人用権限記録：実際の結果を記入する。コマンドではありません",
+          "language": "text",
+          "code": "Requested action: [read / controlled write / scoped authorized write]\nObserved host and absolute file path: [actual values]\nPermission mode and approval policy: [observed / unavailable]\nTool attempt: [not attempted / command and actual result]\nApproval event: [none / allowed / denied / cancelled / automatic review result]\nBefore and after: [actual note.txt revision and request.txt comparison]\nConclusion: [what this evidence establishes and what remains unverified]\nRestoration: [actual result / not performed]\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "通信、資格情報、承認を区別する"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "内蔵検索、シェル通信、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": "、アカウント接続は別制御の場合があります。web_search 無効で全道具のオフラインを断言せず、ページ閲覧で npm 通信成功も保証しません。道具・ホスト・ドメインを特定して対処します。教材編集自体に外部通信は不要です。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "承認では動作と対象を読み、教材読取り、依存追加、外部書込みを区別します。一回の承認は全面同意ではありません。自動審査なら判定と理由を記録します。人工画面がないことは審査なしを意味しません。never は対話承認を止め、隔離を解除しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "鍵が必要なら正式ログインや秘密設定を使い、依頼、AGENTS.md、Git、画像へ入れません。設定有無と認証状態を確認し、全環境変数は出しません。公開した実鍵は発行元で取消・再発行し、露出コピーを削除します。会話削除だけでは失効しません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "よくある故障、復元と受入"
+        },
+        {
+          "type": "table",
+          "header": [
+            "現象",
+            "先に確認",
+            "次の操作"
+          ],
+          "rows": [
+            [
+              "note.txt 編集不可",
+              "実パスと隔離",
+              "正しい教材で必要モード起動"
+            ],
+            [
+              "追加権限の繰り返し",
+              "パスと副作用",
+              "操作縮小または必要範囲承認"
+            ],
+            [
+              "通信失敗",
+              "道具、ドメイン、ホスト、認証",
+              "対象接続を修正しエラー保持"
+            ],
+            [
+              "設定が読めても書けない",
+              "保護パス",
+              "正式設定手順を利用"
+            ],
+            [
+              "古い設定で起動不可",
+              "廃止 approval_policy 値",
+              "公式手順で移行"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "公式資料では approval_policy = \"untrusted\" は廃止です。projects の trust_level とは別なので一括置換しません。"
+            },
+            {
+              "type": "article",
+              "text": "設定切り分け",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "で出所を特定し、対象を保存して対応方針へ移行します。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "二つの起動の違い、実際の1→2、request.txt 不変で完了です。終了後 note.txt を手動で1へ戻し、次回権限も確認します。終了はファイル復元ではありません。図1は範囲、2は実行観察、3は復元確認です。各 OS 挙動は公式資料確認で、全 OS 実測や読者の承認実行は主張しません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-permissions/diagram-1.svg",
+          "alt": "18. 権限・サンドボックス・ネットワーク・キー — 作業の流れを表す図です。製品画面の画像ではありません。 Request → Permission → Action",
+          "width": 1600,
+          "height": 900,
+          "caption": "18. 権限・サンドボックス・ネットワーク・キー — 作業の流れを表す図です。製品画面の画像ではありません。 Request → Permission → Action",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Agent approvals and security",
+          "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sandboxing",
+          "url": "https://learn.chatgpt.com/docs/sandboxing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI permissions",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "권한, 샌드박스, 네트워크와 키",
+      "description": "샌드박스는 기술적인 접근 범위를, 승인 정책은 질문 시점을 제어합니다. 질문이 없다는 것과 무제한 실행이 가능하다는 것은 다릅니다.",
+      "hero": {
+        "src": "/guides/codex-permissions/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "파일 범위, 승인 정책, 네트워크 기능을 구분하고 가상 텍스트로 읽기/허용 편집을 연습합니다. 읽기 14분, 실습 20분입니다. 로그인한 CLI와 편집기를 사용하며 데스크톱은 권한 조작/위치를 대조할 수 있습니다. 세 OS의 실험은 같고 내부 격리 방식은 다릅니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CLI 기초",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "와 "
+            },
+            {
+              "type": "article",
+              "text": "설정",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "이 전제입니다. 요청은 의도, 샌드박스는 기술 범위, 승인 정책은 추가 확인 조건입니다. ‘묻지 않기’가 모든 경로 쓰기를 뜻하지 않고 읽기 전용도 읽기 명령을 실행할 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 최소 권한 실습 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-permissions-lab에 note.txt와 request.txt를 만들고 다음 별도 예시를 넣습니다. 가상 표식뿐이며 키/인증/실제 프로젝트는 필요 없습니다. 통합 터미널에서 Windows PowerShell은 Get-Location, macOS/Linux는 pwd로 경로를 확인해 잘못된 현재 위치를 권한 문제와 혼동하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "파일 내용: note.txt로 저장",
+          "language": "text",
+          "code": "PERMISSION-LAB\nRevision: 1\n"
+        },
+        {
+          "type": "code",
+          "label": "파일 내용: request.txt로 저장",
+          "language": "text",
+          "code": "Only note.txt may be changed during the authorized write exercise.\nTarget revision: 2\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "note.txt 원문을 남기고 다음 명령으로 이번 세션만 설정합니다. 전체 기본값은 바꾸지 않습니다. /status와 필요하면 /permissions를 확인합니다. 조직 제한이 다르면 오류 요약을 남겨 관리 규칙을 따르고 우회하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "시스템 터미널: 먼저 본문에서 지정한 실습 폴더 확인",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only --ask-for-approval on-request\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 먼저 읽고 쓰기 제한 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "다음 읽기 요청으로 표식, Revision: 1, request.txt 범위를 확인합니다. on-request에서 허용된 읽기마다 승인이 필요한 것은 아닙니다. 실제 경로와 편집기 내용을 비교하고 요청만 반복하면 읽기 검증으로 세지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
+          "language": "text",
+          "code": "Read note.txt and request.txt in the current lab. Report the actual working directory and exact revision. Do not change files, access unrelated folders or use the network.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "다음은 권한 상승 없이 실습 편집을 요청합니다. 제한 설명이나 승인 요청이 나오며 쓰기는 완료되지 않아야 합니다. 요청이 뜨면 이번에는 거부/취소하고 편집기에서 1인지 봅니다. 모델의 ‘못 쓴다’와 OS가 명령을 차단한 증거는 별도로 기록합니다."
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
+          "language": "text",
+          "code": "Try to change only note.txt from Revision: 1 to Revision: 2 using currently available permissions. Do not request broader access, disable protections or retry through another path. If the current sandbox prevents the write, report that and stop. This is a controlled permission exercise.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "예상 밖으로 2가 되면 멈춰 실제 인수/모드/접근 확장 승인을 확인한 뒤 판단합니다. 수동으로 1을 복원하고 최소 증거를 남깁니다. 데스크톱은 다른 호스트/worktree일 수 있으므로 "
+            },
+            {
+              "type": "article",
+              "text": "실행 위치",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            },
+            {
+              "type": "text",
+              "text": "를 확인합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 필요한 작업 공간 편집 허용"
+        },
+        {
+          "type": "paragraph",
+          "text": "/exit로 셸에 돌아와 위치를 확인하고 다음 새 세션을 시작합니다. 작업 공간 쓰기를 허용해 다음을 요청합니다. note.txt 버전만 2이며 첫 줄/request.txt는 불변입니다. 네트워크/외부 쓰기는 필요 없어 추가 요청이면 명령과 이유를 봅니다."
+        },
+        {
+          "type": "code",
+          "label": "시스템 터미널: 먼저 본문에서 지정한 실습 폴더 확인",
+          "language": "sh",
+          "code": "codex --cd . --sandbox workspace-write --ask-for-approval on-request\n"
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
+          "language": "text",
+          "code": "Read note.txt and request.txt. Change only the revision line in note.txt from 1 to 2. Keep all other contents and files unchanged. No network or outside-workspace access is needed. After editing, read both files again and report the actual result.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "편집기에서 두 파일과 전후 값/범위/승인/결과를 기록합니다. .git/.agents/.codex 같은 보호 경로는 시험하지 않습니다. 작업 공간 내 모든 경로를 쓸 수 있는 것은 아닙니다. 스킬/설정 안내를 따르고 보호 우회를 위해 이동하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "거절, 제한 적용, 쓰기 성공 구분하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "도구 호출 전에 못 쓴다고 답하면 미시도이며, 도구가 제한을 보고하고 파일도 그대로면 해당 시도가 차단된 근거입니다. 성공 메시지가 나와도 디스크가 Revision: 1이면 경로와 결과를 확인하고 완료로 기록하지 마세요. 이번 일반 파일 실습만 기록하며 모든 도구, 호스트, OS에 대한 보장으로 확대하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "개인 권한 기록: 실제 결과를 작성하며 명령으로 실행하지 않음",
+          "language": "text",
+          "code": "Requested action: [read / controlled write / scoped authorized write]\nObserved host and absolute file path: [actual values]\nPermission mode and approval policy: [observed / unavailable]\nTool attempt: [not attempted / command and actual result]\nApproval event: [none / allowed / denied / cancelled / automatic review result]\nBefore and after: [actual note.txt revision and request.txt comparison]\nConclusion: [what this evidence establishes and what remains unverified]\nRestoration: [actual result / not performed]\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "네트워크, 자격 증명, 승인 구분"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "내장 검색, 셸 통신, "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": ", 계정 연결은 별도 제어일 수 있습니다. web_search 비활성으로 모든 도구 오프라인을 단정하지 말고 페이지 열기로 npm 통신 성공도 보장하지 않습니다. 도구/호스트/도메인을 찾아 해결합니다. 실습 편집 자체에는 외부 통신이 필요 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "승인에서 동작/대상을 읽고 실습 읽기, 의존성 설치, 외부 쓰기를 구분합니다. 한 번 승인은 전체 동의가 아닙니다. 자동 검토라면 판정/이유를 기록합니다. 사람 창이 없다고 검토가 없는 것은 아닙니다. never는 대화 승인을 끄며 격리를 없애지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "키가 필요하면 공식 로그인/비밀 설정을 사용하고 요청/AGENTS.md/Git/이미지에 넣지 않습니다. 설정 유무와 인증 상태만 보고 전체 환경 변수는 출력하지 않습니다. 공개된 실제 키는 발급 서비스에서 폐기/재발급하고 노출 사본을 제거합니다. 대화 삭제만으로 무효화되지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "자주 생기는 오류, 복원과 검수"
+        },
+        {
+          "type": "table",
+          "header": [
+            "현상",
+            "먼저 확인",
+            "다음 행동"
+          ],
+          "rows": [
+            [
+              "note.txt 편집 불가",
+              "실제 경로/격리",
+              "올바른 실습에서 필요한 모드 시작"
+            ],
+            [
+              "반복 추가 권한",
+              "경로/부작용",
+              "작업 축소 또는 필요한 범위 승인"
+            ],
+            [
+              "연결 실패",
+              "도구/도메인/호스트/인증",
+              "해당 연결 수정 후 오류 보존"
+            ],
+            [
+              "설정 읽기만 가능",
+              "보호 경로",
+              "공식 설정 절차 사용"
+            ],
+            [
+              "이전 설정으로 시작 불가",
+              "폐지된 approval_policy 값",
+              "공식 안내로 이전"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "공식 안내에서 approval_policy = \"untrusted\"는 폐지되었습니다. projects의 trust_level과 다르므로 일괄 치환하지 않습니다. "
+            },
+            {
+              "type": "article",
+              "text": "설정 해결",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "로 출처를 찾고 해당 항목을 보존한 뒤 지원 정책으로 이전합니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "두 시작의 차이, 실제 1→2, request.txt 불변이 완료 조건입니다. 종료 후 note.txt를 수동으로 1로 복원하고 다음 권한도 확인합니다. 종료는 파일 복원이 아닙니다. 그림 1은 범위, 2는 실행 관찰, 3은 복원 확인입니다. 각 OS 동작은 공식 문서 확인이며 전체 OS 실측/독자 승인 실행을 주장하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-permissions/diagram-1.svg",
+          "alt": "18. 권한, 샌드박스, 네트워크와 키 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Request → Permission → Action",
+          "width": 1600,
+          "height": 900,
+          "caption": "18. 권한, 샌드박스, 네트워크와 키 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Request → Permission → Action",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Agent approvals and security",
+          "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sandboxing",
+          "url": "https://learn.chatgpt.com/docs/sandboxing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI permissions",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-14T14:49:25.957060+00:00",
+  "status": "passed",
+  "environment": "Windows; temporary repository; isolated Git configuration",
+  "gitVersion": "git version 2.55.0.windows.4",
+  "checks": [
+    "A new repository contains only the committed fictional lesson file",
+    "The sibling worktree begins with an identical tracked file on its own branch",
+    "Editing the secondary marker leaves the primary file and index unchanged",
+    "Git refuses to check out the already-used main branch without moving either checkout",
+    "Ordinary removal refuses a dirty worktree and preserves the uncommitted marker",
+    "The feature commit retains the expected diff without merging into main",
+    "Removing the clean checkout preserves main and the committed feature branch; no remote exists"
+  ],
+  "authorHash": "0994d7c0e579818a53540c09ddb20deeb709f51e679a2c8a2600196754bf99a5",
+  "notTested": [
+    "Codex-managed worktree creation or Handoff",
+    "macOS/Linux execution",
+    "mobile Remote",
+    "deployment or merge into the website repository"
+  ]
+}

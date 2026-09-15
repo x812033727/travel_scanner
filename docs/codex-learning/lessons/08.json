@@ -1,0 +1,65 @@
+{
+  "id": 8,
+  "sources": [
+    "developer-commands",
+    "prompting"
+  ],
+  "code": {
+    "language": "text",
+    "code": "/plan"
+  },
+  "text": {
+    "zh-TW": [
+      "Plan 模式適合還需要決定範圍或做法的工作。它幫你把需求整理成可實作的計畫，但計畫本身不是已完成的程式。使用時先定義要討論的問題，再檢查計畫是否包含輸入、輸出、限制與驗證。",
+      "準備前一篇的四部分需求。這次練習把介紹卡改成三張卡片，但暫時不動檔案。CLI 範例中的 /plan 是互動介面指令；桌面版使用當前介面提供的規劃選項。",
+      [
+        "在 CLI 互動介面輸入 /plan，或選桌面版的 Plan 模式。執行中的 CLI 工作可能暫時不能切換，等它可接收新操作後再做。",
+        "描述希望新增的功能，請 Codex 先讀現有檔案並提出問題。回答會改變使用者行為或範圍的問題，不必自己猜程式內部結構。",
+        "讀計畫：是否保留已有卡片？手機每列幾張？資料寫在哪裡？怎麼確認成功？用一個輸入例子檢查是否缺少步驟。",
+        "在計畫內修正不符合的地方。準備好實作時，依客戶端提供的方式離開 Plan 模式，再明確要求按計畫修改與測試。不要只在規劃模式寫『快做』便假定會改檔。"
+      ],
+      "產出一份另一位實作者能照著完成的計畫，並清楚記錄目前是規劃完成還是已開始實作。",
+      "如果計畫一直擴大，重述第一版的邊界與必要項目。沒有實際檔案差異時就不能宣稱功能完成；驗收要等實作與測試後進行。",
+      "請先規劃：把單張介紹卡改成三張，保留原內容，手機一列一張，寬螢幕最多三張。不改檔案；提出必要問題、修改範圍與驗收方式。"
+    ],
+    "en": [
+      "Plan mode is useful when scope or approach still needs decisions. It produces an implementation plan, not finished code. Define the questions to resolve and check that the plan includes inputs, outputs, constraints and verification.",
+      "Bring your four-part task request. Plan a change from one profile card to three without editing yet. /plan is an interactive CLI command; in desktop use the planning option exposed by the current interface.",
+      [
+        "Enter /plan in the interactive CLI or select Plan in desktop. CLI may not allow switching while a task is actively running; wait until the control is available.",
+        "Describe the desired behavior and ask Codex to inspect existing files before raising questions. Answer questions about scope and behavior rather than guessing internal code structure.",
+        "Check whether the plan preserves the original card, defines the mobile layout, identifies the data location and explains acceptance tests. Walk through one example input.",
+        "Revise the plan where necessary. To implement, leave Plan mode through the client's mode control and explicitly request changes and tests. A forceful message inside planning mode is not evidence of edits."
+      ],
+      "You have a plan another implementer can follow and a clear record of whether work is only planned or has begun.",
+      "If scope keeps growing, restate the first-version boundary. No file diff means no implemented feature; acceptance follows implementation and checks.",
+      "Plan only: turn the single profile card into three, preserve its content, use one column on mobile and at most three on wide screens. Do not edit files. Identify decisions, affected areas and acceptance checks."
+    ],
+    "ja": [
+      "Plan モードは範囲や方法を決める段階に向いています。成果は実装計画であり、完成したコードではありません。入力、出力、制約、検証方法が含まれるかを確認します。",
+      "前の四項目の依頼を用意し、一枚のカードを三枚にする計画を立てます。/plan は対話型 CLI のコマンドです。デスクトップでは現在の計画モードの操作を使います。",
+      [
+        "CLI で /plan を入力するか、デスクトップで Plan を選びます。CLI が実行中なら切り替え可能になるまで待ちます。",
+        "希望する動作を説明し、既存ファイルを読んでから質問するよう依頼します。範囲や動作に関わる質問へ回答します。",
+        "既存カードの保持、スマートフォンの列数、データの置き場所、確認方法を計画で確認します。一つの入力例を当てはめて抜けを探します。",
+        "計画を修正し、実装時はクライアントの操作で Plan を終了して、変更とテストを明示的に依頼します。計画中に強く命令しただけで編集済みとは判断しません。"
+      ],
+      "他の実装者が進められる計画と、計画のみか実装開始済みかの区別が残れば完了です。",
+      "範囲が広がり続けたら初版の境界を伝え直します。差分のない段階では機能完成としません。",
+      "計画だけを立ててください。一枚のカードを三枚にし、内容を維持します。スマートフォンは一列、広い画面は最大三列です。ファイルは変更せず、必要な判断と検証を示してください。"
+    ],
+    "ko": [
+      "Plan 모드는 범위와 접근법을 결정할 때 유용합니다. 결과물은 구현 계획이며 완성된 코드는 아닙니다. 입력, 출력, 제한과 검증 방법이 포함되었는지 확인합니다.",
+      "앞 글의 네 부분 요청을 준비하고 카드 한 장을 세 장으로 바꾸는 계획을 세웁니다. /plan은 대화형 CLI 명령이고 데스크톱에서는 현재 제공되는 계획 모드 조작을 사용합니다.",
+      [
+        "CLI에서 /plan을 입력하거나 데스크톱에서 Plan을 선택합니다. CLI 작업 실행 중에는 전환이 안 될 수 있으므로 사용 가능할 때까지 기다립니다.",
+        "원하는 동작을 설명하고 기존 파일을 읽은 뒤 질문하도록 요청합니다. 범위와 사용자 동작에 관한 질문에 답합니다.",
+        "기존 카드 보존, 모바일 열 수, 데이터 위치와 검증 방법을 확인합니다. 입력 예시 하나를 대입해 빠진 단계를 찾습니다.",
+        "계획을 수정한 뒤 구현할 때는 클라이언트에서 Plan 모드를 종료하고 변경과 테스트를 명확하게 요청합니다. 계획 모드에서 강하게 명령한 것만으로 편집되었다고 판단하지 않습니다."
+      ],
+      "다른 구현자가 따라갈 계획과 계획 완료인지 구현 시작인지의 구분이 남으면 완료입니다.",
+      "범위가 계속 커지면 첫 버전의 경계를 다시 설명하세요. 파일 차이가 없는 단계에서는 기능 완성으로 표시하지 않습니다.",
+      "계획만 세우세요. 카드 한 장을 세 장으로 바꾸되 내용을 유지합니다. 모바일은 한 열, 넓은 화면은 최대 세 열입니다. 파일을 수정하지 말고 필요한 결정과 검증 방법을 제시하세요."
+    ]
+  }
+}

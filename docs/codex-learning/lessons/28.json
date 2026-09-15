@@ -1,0 +1,60 @@
+{
+  "id": 28,
+  "sources": [
+    "agent-configuration/subagents"
+  ],
+  "text": {
+    "zh-TW": [
+      "子代理適合把能獨立完成的工作分開處理，再由主要任務整合結果。分工會增加模型與工具用量；若工作互相依賴、都要改同一段程式，平行處理反而可能產生衝突。",
+      "先把目標拆成兩個唯讀檢查：一個檢查文字內容，一個檢查頁面結構。為每項指定輸入、範圍與交付格式，主要任務保留最後判斷。",
+      [
+        "在支援的 Codex 介面明確要求使用子代理，交代每個子任務的邊界。不要只說『多找幾個人』而没有具体成果。",
+        "第一個代理只讀 README 與文字，第二個只讀 HTML 結構。兩者都不要改檔；這能先練習如何整合證據，避免並行寫入。",
+        "查看子代理的進度與結果。CLI 可依官方 /agent 操作切換檢查；其他介面使用其顯示的代理狀態，不假定所有入口相同。",
+        "主代理核對每個發現的檔案、原因與影響，處理互相矛盾的結論，再決定是否需要修改。若未來要平行實作，先分離檔案責任或 worktree。"
+      ],
+      "最後得到一份去重、經核對的結果，能追溯每項結論的證據；不是把子代理報告直接拼在一起。",
+      "代理數量多不保證更快。當結果依賴另一項未完成工作，改成順序執行；發現兩者碰同一檔案時先停止衝突的修改。",
+      "請使用兩個子代理做唯讀檢查：A 檢查 README 與頁面文字一致性，B 檢查 HTML 結構。各回報檔案與證據，由主代理整合，不修改檔案。"
+    ],
+    "en": [
+      "Subagents suit independent work that can be reviewed and combined by the main task. They consume additional model and tool usage. Parallel tasks with mutual dependencies or overlapping edits can create more conflict than speed.",
+      "Split the exercise into two read-only checks: content consistency and HTML structure. Give each input, boundaries and an output format, retaining final judgment in the main task.",
+      [
+        "Explicitly request subagents in a supported Codex client and define concrete deliverables rather than merely asking for more agents.",
+        "Assign one agent README/text consistency and another HTML structure. For the first exercise, prohibit edits so you can practice evidence integration without concurrent writes.",
+        "Inspect activity and results. CLI provides documented /agent controls; other clients expose their own activity surfaces.",
+        "The main agent checks files, reasons and impacts, resolves conflicting conclusions and decides on justified fixes. For parallel implementation later, separate file ownership or use worktrees."
+      ],
+      "The final report is checked, deduplicated and traceable to evidence rather than a concatenation of subagent messages.",
+      "More agents do not guarantee speed. Sequence dependent tasks and stop conflicting edits when two agents touch the same files.",
+      "Use two read-only subagents: A checks README against page wording; B checks HTML structure. Each reports files and evidence. The main agent integrates findings without editing files."
+    ],
+    "ja": [
+      "サブエージェントは独立した調査を分担し、主担当が統合する仕組みです。利用量が増え、依存や編集の重複があると競合します。",
+      "文章の整合性と HTML 構造の二つの読み取り調査に分けます。",
+      [
+        "サブエージェントの利用と、それぞれの入力、範囲、成果を明示します。",
+        "一方は README と文章、他方は構造だけを読み、編集を禁止します。",
+        "進捗と結果を確認します。CLI は /agent、他の画面は対応する操作を使います。",
+        "主担当が証拠と矛盾を確認して重複を除きます。並行実装にはファイル責任や worktree を分けます。"
+      ],
+      "根拠へたどれる統合結果が得られれば完了です。",
+      "依存する仕事は順番に進め、競合する編集を止めます。",
+      "二つの読み取り専用サブエージェントを使い、A は文章整合性、B は HTML 構造を確認してください。主担当が根拠を統合し、編集は行いません。"
+    ],
+    "ko": [
+      "하위 에이전트는 독립 조사를 나누고 주 작업이 통합하는 방식입니다. 사용량이 늘며 의존성과 편집 중복이 있으면 충돌합니다.",
+      "문구 일관성과 HTML 구조를 읽기 전용 조사 두 개로 나눕니다.",
+      [
+        "하위 에이전트 사용과 각 입력, 범위 및 결과물을 명시합니다.",
+        "한쪽은 README와 문구, 다른 쪽은 구조만 읽고 편집은 금지합니다.",
+        "진행과 결과를 확인합니다. CLI는 /agent, 다른 화면은 해당 조작을 사용합니다.",
+        "주 작업이 증거와 모순을 확인하고 중복을 제거합니다. 병렬 구현에는 파일 책임이나 worktree를 나눕니다."
+      ],
+      "근거를 추적할 수 있는 통합 결과가 나오면 완료입니다.",
+      "의존 작업은 순서대로 진행하고 충돌 편집을 중지하세요.",
+      "읽기 전용 하위 에이전트 두 개를 사용하세요. A는 문구 일관성, B는 HTML 구조를 확인하고 주 작업이 근거를 통합합니다. 편집하지 마세요."
+    ]
+  }
+}

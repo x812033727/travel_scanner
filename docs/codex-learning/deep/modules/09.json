@@ -1,0 +1,294 @@
+{
+  "id": 9,
+  "readingMinutes": 10,
+  "operationMinutes": 20,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與開始之前",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "建立 README.md 與 notes.md，使用標題、清單、連結、引用及程式碼區塊，把兩篇文件互相連起來，再請 Codex 依檔案回答。閱讀約 10 分鐘，操作約 20 分鐘。Windows、macOS、Linux 都可用純文字編輯器；本文用 VS Code 展示相同操作，不需要先安裝網站套件或把文件發布上網。",
+        "Create README.md and notes.md using headings, lists, links, quotes and code blocks, link them together and ask Codex to answer from the files. Allow 10 minutes to read and 20 minutes to practice. Any plain-text editor works on Windows, macOS or Linux; this walkthrough uses VS Code. No website packages or publication are needed.",
+        "README.md と notes.md に見出し、一覧、リンク、引用、コードを使い、相互に結んで Codex に読ませます。読む時間約10分、操作約20分です。各 OS のテキストエディターででき、ここでは VS Code を使います。サイト用パッケージや公開は不要です。",
+        "README.md와 notes.md에 제목, 목록, 링크, 인용, 코드 블록을 쓰고 서로 연결한 뒤 Codex가 파일을 읽어 답하게 합니다. 읽기 약 10분, 실습 약 20분입니다. 세 OS의 일반 텍스트 편집기를 쓸 수 있으며 여기서는 VS Code를 사용합니다. 웹사이트 패키지나 공개는 필요 없습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Markdown 是純文字的排版語法，.md 是常見副檔名。檔案本身可以用一般編輯器讀寫，預覽工具才把井字、星號和括號呈現成標題、清單與連結。把一個 Word 文件改名成 .md 不會轉換格式；同樣地，寫進程式碼區塊的命令也不會因為開啟預覽就執行。先認識文字與顯示的差別，才知道該修改哪裡。",
+        "Markdown is a plain-text formatting syntax, commonly saved with .md. Editors read and write the text; preview tools render its hashes, stars and brackets as structure. Renaming a Word document to .md does not convert it. Opening a preview also does not execute commands in code blocks. Distinguish source text from presentation before editing.",
+        "Markdown はプレーンテキストの書式で、.md が一般的な拡張子です。編集する文字を、プレビューが見出しや一覧、リンクへ表示します。Word を改名しても変換されず、コード内の命令もプレビューで実行されません。元の文字と表示を区別して編集します。",
+        "Markdown은 일반 텍스트 서식 문법이며 .md는 흔한 확장자입니다. 편집기는 문자를 다루고 미리 보기가 이를 제목, 목록, 링크로 표시합니다. Word 이름만 바꿔도 변환되지 않고 코드 명령도 미리 보기로 실행되지 않습니다. 원문과 표시를 구분해 편집합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟一：建立真正的純文字檔",
+        "Step 1: create plain-text files",
+        "手順1：プレーンテキストを作る",
+        "1단계: 일반 텍스트 파일 만들기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在新的 codex-md-lab 資料夾開啟 VS Code，從檔案總管新增 README.md 與 notes.md。Windows、macOS、Linux 都使用相同檔名與大小寫，不要存成 README.md.txt。使用其他編輯器也可以，但要選純文字與 UTF-8；如果編輯器自動加 .txt，存檔後回檔案清單核對完整名稱。這次只用新資料夾，不覆寫正式專案既有 README。",
+        "Open a new codex-md-lab folder in VS Code and create README.md and notes.md in Explorer. Keep exact names and capitalization on all OSes, avoiding README.md.txt. Other editors are fine if they save plain text as UTF-8; check the full filename if .txt is added automatically. Use a new folder rather than overwrite a production README.",
+        "新しい codex-md-lab を VS Code で開き、Explorer に README.md と notes.md を作ります。全 OS で大文字小文字も合わせ、README.md.txt にしません。他のエディターなら UTF-8 のプレーンテキストで保存し、拡張子の自動追加を確認します。本番 README を上書きせず新規フォルダーを使います。",
+        "새 codex-md-lab을 VS Code로 열고 Explorer에서 README.md와 notes.md를 만듭니다. OS에 관계없이 대소문자를 맞추고 README.md.txt가 되지 않게 합니다. 다른 편집기는 UTF-8 일반 텍스트로 저장하고 확장자 자동 추가를 확인하세요. 실제 README를 덮지 않고 새 폴더를 사용합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "將下面整段複製到 README.md，再儲存。外面顯示的程式碼框只是本網站讓你複製的容器，不必另外把它的外框加進文件；內容裡那三個反引號則是練習檔的一部分，必須保留。共同範例固定用英文檔名與文字，讓五語讀者可以對照同一份成果。",
+        "Copy the complete sample into README.md and save. This website's outer code frame is a display container, not another wrapper to type. The triple backticks inside the sample are part of the file and must remain. Shared English sample text and filenames let all five language versions compare the same result.",
+        "例全体を README.md にコピーして保存します。サイト外側のコード枠は表示用で追加しませんが、例に含まれる三つのバッククォートはファイルの一部として残します。英語の共通例と名前を使い、五言語で同じ成果を比較します。",
+        "예제 전체를 README.md에 복사해 저장합니다. 웹사이트 바깥 코드 틀은 표시용이라 추가하지 않지만 예제 안의 백틱 세 개는 파일 내용이므로 유지합니다. 다섯 언어가 같은 결과를 비교하도록 영어 예제와 파일명을 공통 사용합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "# Small Steps notebook\n\n## Purpose\n\nKeep a short record of this practice project.\n\n## Working steps\n\n1. Read the request.\n2. Make one focused change.\n3. Verify the result.\n\n- Keep original files.\n- Record checks that have not run.\n\n[Open task notes](./notes.md)\n\n## Example command\n\n```sh\nnode --version\n```\n\n> This command is an example, not a record of execution.\n",
+      "label": [
+        "檔案內容：完整存入 README.md",
+        "File content: save the complete text as README.md",
+        "ファイル内容：全文を README.md に保存する",
+        "파일 내용: 전체를 README.md로 저장"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "接著在 notes.md 放入下一段並儲存。兩份文件放同一層，README 的 ./notes.md 表示從 README 所在資料夾找到 notes.md；notes 的 ./README.md 則回到原文件。這就是小型目錄與分篇互相連結的起點，不需要資料庫，也不需要先做網頁路由。",
+        "Save the next sample in notes.md at the same folder level. ./notes.md resolves relative to README's folder, and ./README.md points back from the notes. This creates a small index-and-article relationship without a database or website routing.",
+        "次を同じ階層の notes.md に保存します。./notes.md は README の場所から探し、./README.md で戻ります。データベースやサイトのルーティングなしで、小さな目次と分篇の関係を作れます。",
+        "다음 예제를 같은 위치의 notes.md에 저장합니다. ./notes.md는 README 폴더 기준이며 ./README.md로 돌아갑니다. 데이터베이스나 웹 라우팅 없이 작은 목차와 개별 문서 관계를 만듭니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "# Task notes\n\n[Back to the notebook](./README.md)\n\n## Accepted result\n\n- **Completed** shows only finished tasks.\n- `Read` is the sample task title.\n- Empty titles must be rejected.\n\n## Pending checks\n\nThe browser check has not run yet.\n",
+      "label": [
+        "檔案內容：完整存入 notes.md",
+        "File content: save the complete text as notes.md",
+        "ファイル内容：全文を notes.md に保存する",
+        "파일 내용: 전체를 notes.md로 저장"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟二：看懂六種常用語法",
+        "Step 2: understand six common forms",
+        "手順2：六つの基本表現を理解する",
+        "2단계: 여섯 가지 기본 문법 이해하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "`#` 後面有空格，表示主要標題；`##` 是下一層。這份筆記只有一個主標題，讓閱讀者先知道文件用途，再看段落。把所有句子都寫成大標題會失去結構，不是越醒目越好。標題文字改了以後，若其他地方有連到該章節，也要一起檢查；章節網址的產生方式可能因預覽工具而異。",
+        "A hash followed by a space marks a main heading; two hashes mark the next level. Use one main title here and organize sections beneath it. Making every sentence a large heading loses structure. After renaming headings, check any links to them; generated heading anchors can vary by renderer.",
+        "`#` と空白は主見出し、## は次の階層です。この筆記は主題一つの下に節を置きます。全てを大見出しにすると構造を失います。見出しを改名したら関連リンクも確認します。見出しアンカーは表示ツールで異なる場合があります。",
+        "`#` 뒤 공백은 주 제목, ##는 다음 계층입니다. 여기서는 주 제목 하나 아래 절을 구성합니다. 모든 문장을 큰 제목으로 만들면 구조가 사라집니다. 제목을 바꾼 뒤 해당 링크도 확인하며 앵커 생성은 렌더러마다 다를 수 있습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "編號清單適合步驟，減號清單適合彼此並列的條件。段落之間保留空白行，讓原始碼和預覽都容易閱讀。**Completed** 的兩組星號表示強調，單反引號包住 Read 表示行內程式文字；這些符號只改變呈現，不會讓 Codex 自動給該詞更高權限。引用符號 > 則用來區分說明或摘錄，不是「已經證實」的標章。",
+        "Numbered lists suit steps; dash lists suit parallel conditions. Blank lines separate paragraphs in source and preview. Double stars emphasize Completed, and single backticks mark inline code such as Read. Formatting does not grant a word special authority in Codex. A > quote distinguishes a note or excerpt, not verified evidence.",
+        "番号一覧は手順、ハイフン一覧は並列条件向きです。段落間に空行を置きます。二重星印は強調、単一バッククォートは Read などのコード表示ですが、Codex の権限を高めません。> は注記や引用の区別で、検証済みの印ではありません。",
+        "번호 목록은 단계, 하이픈 목록은 병렬 조건에 맞습니다. 문단 사이에 빈 줄을 둡니다. 별표 두 개는 강조, 백틱 하나는 Read 같은 인라인 코드 표시이며 Codex 권한을 높이지 않습니다. >는 메모나 인용 구분이지 검증 완료 표식이 아닙니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "連結用方括號寫讀者看到的名稱，圓括號放目的地。本例用相對檔案路徑，外部網站則用完整 https 網址。不要把自己的 C:\\Users 路徑寫成全站讀者都能開的連結，也不要把不存在的 notes.md 當成已完成文件。文字名稱可以不同，但目標路徑必須精確，尤其在區分大小寫的系統上。",
+        "Links put the visible label in brackets and the destination in parentheses. This example uses relative file paths; websites use complete HTTPS URLs. Your private C:\\Users path is not a shareable destination for everyone, and a nonexistent notes.md is not a completed document. Labels can differ, but target names and case must be exact.",
+        "リンクは角括弧に表示名、丸括弧に行き先を置きます。例は相対ファイル、サイトは完全な HTTPS URL です。自分の C:\\Users は全読者が使えるリンクではなく、ない notes.md は完成文書ではありません。表示名と違ってもよいですが、行き先と大文字小文字は正確にします。",
+        "링크는 대괄호에 표시명, 괄호에 목적지를 둡니다. 예제는 상대 파일 경로, 사이트는 완전한 HTTPS URL입니다. 개인 C:\\Users 경로는 모두가 열 수 있는 링크가 아니며 없는 notes.md는 완성 문서가 아닙니다. 표시명은 달라도 대상 경로와 대소문자는 정확해야 합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "程式碼區塊以相同組數的反引號開啟和結束，開頭的 sh 是語言標籤，幫助預覽顯示語法。node --version 必須保持在區塊內，底下的引用說明則在區塊外。若忘了結尾，之後整篇可能都變成等寬文字；修正的是少掉的分隔線，不是重裝 Markdown。檔案名稱或命令要保留半形符號，不要把反引號換成一般引號。",
+        "Fenced code has opening and closing backtick fences; sh labels the language for rendering. Keep node --version inside and the quote below outside. A missing closing fence can render the rest as code. Restore the delimiter rather than reinstalling anything. Preserve ASCII command characters and backticks instead of replacing them with ordinary quotes.",
+        "コードは開始と終了のバッククォートで囲み、sh は表示用の言語名です。命令は内側、注記は外側に置きます。終了がなければ残りもコードになり得るので、再導入でなく区切りを戻します。半角文字を保ち、バッククォートを普通の引用符に置き換えません。",
+        "코드는 시작/끝 백틱으로 감싸고 sh는 표시용 언어명입니다. 명령은 안, 아래 인용은 밖에 둡니다. 끝 구분자가 없으면 뒤가 모두 코드처럼 보일 수 있으므로 재설치 대신 구분자를 복구합니다. 반각 문자를 유지하고 백틱을 일반 따옴표로 바꾸지 않습니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "把 Markdown 程式碼框當成範例展示",
+        "Show a Markdown fence as an example",
+        "Markdown のコードフェンス自体を見せる",
+        "Markdown 코드 울타리 자체를 예제로 보여 주기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 notes.md 最後新增下列完整片段並儲存。這次外層四個反引號也是要存入檔案的內容；它把內層三個反引號當成普通文字展示。與前面直接呈現命令不同，讀者在預覽裡應看得見開頭的三個反引號及 sh，還有結尾的三個反引號，而最後一句仍是框外段落。這是[GitHub 官方說明](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks)所示的巢狀寫法。",
+        "Append the complete fragment below to notes.md and save. Its outer four backticks are file content too: they display the inner three-backtick fence literally. In the preview, the three-backtick opening with sh and the three-backtick closing should remain visible, followed by a paragraph outside the block. This nesting follows [GitHub's documentation](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks).",
+        "次の断片全体を notes.md の末尾に追加して保存します。外側の四つのバッククォートも保存する内容で、内側の三つを文字として表示します。プレビューでは開始の三つのバッククォートと sh、終端の三つのバッククォートが見え、その後の一文は枠の外に出ます。[GitHub 公式文書](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks)で説明されている入れ子の書き方です。",
+        "아래 조각 전체를 notes.md 끝에 추가하고 저장하세요. 바깥쪽 네 개의 백틱도 파일에 넣는 내용이며 안쪽 세 개의 백틱을 문자로 표시합니다. 미리보기에서 시작하는 백틱 세 개와 sh, 닫는 백틱 세 개가 보이고 마지막 문장은 코드 밖에 있어야 합니다. [GitHub 공식 문서](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks)의 중첩 작성법입니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "## Show the Markdown source\n\n````markdown\n```sh\nnode --version\n```\n````\n\nThis paragraph is outside the example.\n",
+      "label": [
+        "檔案片段：加到 notes.md，保留片段內所有反引號",
+        "File fragment: append to notes.md, retaining all backticks inside it",
+        "ファイル断片：内部のバッククォートをすべて保ち notes.md に追加する",
+        "파일 조각: 내부 백틱을 모두 유지하여 notes.md에 추가"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "若最後一句仍被包在程式碼框裡，先數外層結尾是否確實有四個反引號；三個不能結束四個開頭的框。只修結尾並重新預覽。要取消這項延伸練習，移除剛追加的整個章節，原有兩份文件與雙向連結保留。",
+        "If the final paragraph remains inside the block, check that the outer closing fence has four backticks; three cannot close a four-backtick opening. Fix only that ending and preview again. To undo this extension, remove the added section while keeping both original documents and their links.",
+        "最後の文まで枠内に入る場合は、外側の終端が四つのバッククォートか数えます。三つでは四つの開始を閉じられません。終端だけ直して再確認してください。この追加練習を戻すときは追加した節だけを取り除き、元の二文書と相互リンクは残します。",
+        "마지막 문장까지 코드 안에 있으면 바깥쪽 닫는 백틱이 네 개인지 세어 보세요. 세 개로는 네 개짜리 시작을 닫을 수 없습니다. 끝부분만 고쳐 다시 확인하세요. 추가 실습을 되돌릴 때는 추가한 절만 지우고 원래 두 문서와 양방향 링크는 남깁니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟三：預覽、點連結與故障練習",
+        "Step 3: preview, follow links and test a failure",
+        "手順3：プレビュー、リンク、失敗の練習",
+        "3단계: 미리 보기, 링크, 실패 실습"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 VS Code 打開 README.md，使用命令面板的 Markdown: Open Preview；也可用 Windows／Linux 的 Ctrl＋Shift＋V，macOS 的 Command＋Shift＋V。原始碼與預覽是同一個檔案的兩種視圖，不是兩份獨立內容。先存檔，再確認主標題、工作步驟、兩項條件與命令區塊都有正確呈現。",
+        "Open README.md in VS Code and run Markdown: Open Preview, or Ctrl+Shift+V on Windows/Linux and Command+Shift+V on macOS. Source and preview are two views of one file. Save first, then check the main title, steps, two conditions and code block.",
+        "VS Code で README.md を開き Markdown: Open Preview、または Windows / Linux の Ctrl+Shift+V、macOS の Command+Shift+V を使います。元とプレビューは同じファイルの二つの表示です。保存して主題、手順、二条件、コードを確認します。",
+        "VS Code에서 README.md를 열고 Markdown: Open Preview 또는 Windows/Linux의 Ctrl+Shift+V, macOS의 Command+Shift+V를 씁니다. 원문과 미리 보기는 같은 파일의 두 보기입니다. 저장 후 주 제목, 단계, 두 조건, 코드 블록을 확인합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "快捷鍵可能被個人設定或擴充套件改過。若沒有開啟預覽，從命令面板查找 Markdown: Open Preview，查看該命令在本機顯示的按鍵或直接執行；不要改用另一個快捷鍵表猜測。未親自操作的作業系統仍標為依官方文件查證。",
+        "Personal settings or extensions may remap shortcuts. If preview does not open, find Markdown: Open Preview in the Command Palette and inspect its local binding or run it directly. Do not guess from a different shortcut chart; platforms not personally used remain documented, not tested.",
+        "個人設定や拡張機能でキーが変わることがあります。開かない場合はコマンドパレットで Markdown: Open Preview を探し、表示された割り当てを確認するか直接実行します。別の一覧から推測せず、未操作の OS は公式文書による確認として扱います。",
+        "개인 설정이나 확장 기능이 단축키를 바꿀 수 있습니다. 열리지 않으면 명령 팔레트에서 Markdown: Open Preview를 찾아 현재 키를 확인하거나 직접 실행하세요. 다른 단축키 표로 추측하지 않으며 직접 조작하지 않은 OS는 공식 문서로 확인한 것으로 기록합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在預覽點 Open task notes，確認開啟的是同資料夾 notes.md，再從 Back to the notebook 回來。若工具在新編輯分頁開文件，重新對該檔開預覽即可；不要只看標題相同就當連結正確。接著故意將 README 的目的地改成 ./missing.md，存檔並點一次，預期無法找到目標；把路徑改回 ./notes.md 後再確認雙向都能走通。",
+        "Follow Open task notes to the same-folder notes.md and return with Back to the notebook. If the tool opens an editor tab, open preview for that file. Matching titles alone are insufficient. Change README's destination to ./missing.md, save and try it to observe the missing target, then restore ./notes.md and verify both directions.",
+        "Open task notes で同じフォルダーの notes.md を開き、戻るリンクを確認します。編集タブになればそのファイルをプレビューします。同じ題名だけで判断しません。次に行き先を ./missing.md にして失敗を確認し、./notes.md へ戻して双方向を再確認します。",
+        "Open task notes로 같은 폴더의 notes.md를 열고 돌아오는 링크를 확인합니다. 편집 탭으로 열리면 그 파일을 미리 보기 합니다. 제목이 같다는 이유만으로 판단하지 않습니다. 목적지를 ./missing.md로 바꿔 실패를 확인한 뒤 ./notes.md로 복구해 양방향을 확인합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "如果想多練一次，先複製 README.md 作為備份，只刪除命令區塊的結尾反引號，觀察後面的引用如何被包含進去，再把分隔線補回並比對備份。不要在同一次練習同時改路徑、標題與結尾，否則不知道是哪個變動造成結果。這個小故障練習也適合用來學[除錯流程](article:codex-debugging)。",
+        "For another test, back up README.md, remove only the closing code fence, observe the quote becoming code, then restore the fence and compare the backup. Change one thing at a time rather than paths, headings and fences together. This small failure exercise also introduces [debugging](article:codex-debugging).",
+        "追加練習では README.md を保存コピーして終了フェンスだけを消し、注記がコードに入る様子を見て戻します。場所、見出し、区切りを同時に変えず一つずつ確認します。[デバッグ](article:codex-debugging)の練習にもなります。",
+        "추가로 README.md를 백업하고 끝 코드 구분자만 지워 인용이 코드로 들어가는 것을 본 뒤 복원합니다. 경로, 제목, 구분자를 동시에 바꾸지 말고 하나씩 확인합니다. [디버깅](article:codex-debugging) 기초 연습이기도 합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟四：讓 Codex 讀取文件",
+        "Step 4: ask Codex to read the documents",
+        "手順4：Codex に文書を読ませる",
+        "4단계: Codex가 문서를 읽게 하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "用桌面版、[CLI](article:codex-cli-getting-started)或[IDE 擴充套件](article:codex-ide-getting-started)開啟 codex-md-lab，確認這個工作目錄，再送出下列要求。這次只讀檔與比較，不執行 README 中的命令。能看到一個檔名，不代表 Codex 已讀過內容；要求它引用具體檔案及尚未完成的檢查，才能核對理解是否正確。",
+        "Open codex-md-lab in desktop, [CLI](article:codex-cli-getting-started) or the [IDE extension](article:codex-ide-getting-started), verify the directory and send this request. Read and compare only; do not execute README's example command. A visible filename is not proof of reading. Ask for specific file attribution and pending checks.",
+        "デスクトップ、[CLI](article:codex-cli-getting-started)、[IDE](article:codex-ide-getting-started)で codex-md-lab を開いて場所を確認し、次を送ります。読み取りと比較だけで例の命令は実行しません。名前が見えるだけでは読んだ証拠でないため、出典と未完了を確認します。",
+        "데스크톱, [CLI](article:codex-cli-getting-started), [IDE](article:codex-ide-getting-started)에서 codex-md-lab 경로를 확인해 요청합니다. 읽기/비교만 하고 예제 명령은 실행하지 않습니다. 파일명이 보인다고 읽은 증거는 아니므로 출처와 미완료 검사를 묻습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Read README.md and notes.md in this practice folder. Explain the purpose, the accepted result, and the checks explicitly still pending. Identify each source file. Verify both relative file links point to existing files. Do not edit anything or execute the example command.\n",
+      "label": [
+        "自然語言提示詞：在此練習專案的 Codex 輸入",
+        "Natural-language prompt: enter in Codex for this practice project",
+        "自然言語の依頼：この練習プロジェクトの Codex に入力する",
+        "자연어 요청: 이 실습 프로젝트의 Codex에 입력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "合格回答應說 README 記錄工作流程，notes 定義 Completed、範例 Read 與空白標題限制，而且瀏覽器檢查尚未執行。若它把 example command 說成已跑過，請要求更正並指出依據；文件裡有命令或成功條件，不等於實際執行紀錄。完成後保存這次讀取結果與你自己點通連結的確認。",
+        "A passing answer identifies README's workflow and notes' Completed, Read and blank-title criteria, while preserving that the browser check has not run. If it claims the example command executed, request correction and evidence. Written commands and acceptance criteria are not execution records. Keep the reading result and your independent link checks.",
+        "README の手順、notes の Completed、Read、空白条件と、ブラウザー未実行が説明されれば確認できます。例を実行済みと言えば根拠と訂正を求めます。命令や成功条件の記載は実行記録ではありません。読み取り結果と独立したリンク確認を残します。",
+        "README 흐름, notes의 Completed/Read/공백 조건, 브라우저 미실행을 설명해야 합니다. 예제를 실행했다고 하면 근거와 수정을 요구하세요. 명령이나 성공 조건의 기록이 실행 기록은 아닙니다. 읽기 결과와 독립적인 링크 확인을 남깁니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "一般 .md 與 AGENTS.md 的差別",
+        "Ordinary .md files and AGENTS.md",
+        "通常の .md と AGENTS.md の違い",
+        "일반 .md와 AGENTS.md의 차이"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 檔案 | 本次用途 | 如何使用 |\n| --- | --- | --- |\n| README.md | 說明專案與入口 | 主動開啟或要求讀取 |\n| notes.md | 記錄驗收與待辦 | 任務中明確引用 |\n| AGENTS.md | Codex 專案指示 | 依官方檔名、目錄及載入規則 |\n| SKILL.md | 技能說明與觸發資訊 | 依技能結構建立，不能只改副檔名 |",
+        "| File | Purpose here | How it is used |\n| --- | --- | --- |\n| README.md | Project explanation and entry | Open or explicitly request it |\n| notes.md | Acceptance and pending checks | Reference it in the task |\n| AGENTS.md | Codex project instructions | Follow documented naming, scope and loading |\n| SKILL.md | Skill instructions and triggering | Follow skill structure, not just an extension change |",
+        "| ファイル | 用途 | 使い方 |\n| --- | --- | --- |\n| README.md | 説明と入口 | 開くか読ませる |\n| notes.md | 検証と残作業 | 課題で明示 |\n| AGENTS.md | プロジェクト指示 | 名前、範囲、読込規則に従う |\n| SKILL.md | 技能と起動情報 | 拡張子変更だけでなく構造に従う |",
+        "| 파일 | 용도 | 사용법 |\n| --- | --- | --- |\n| README.md | 프로젝트 설명과 입구 | 열거나 읽도록 요청 |\n| notes.md | 검증과 미완료 | 작업에서 명시 |\n| AGENTS.md | 프로젝트 지침 | 이름, 범위, 로드 규칙 따르기 |\n| SKILL.md | 스킬과 실행 정보 | 확장자 변경만이 아닌 구조 따르기 |"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "本次沒有建立 AGENTS.md，因此不能聲稱 Codex 已自動載入這份規則。接著依[AGENTS.md 專篇](article:codex-agents-md)設定作用範圍與驗證，技能則看[SKILL.md](article:codex-skills)。Markdown 負責讓文件可讀，特定工具如何發現和使用檔案，是另一層規則。這個區分也能避免將別人的專案筆記直接當成你的操作指令。",
+        "This exercise creates no AGENTS.md, so it does not establish automatic rule loading. Continue to [AGENTS.md](article:codex-agents-md) for scope and validation, or [SKILL.md](article:codex-skills) for skills. Markdown makes text readable; tool-specific discovery and use are separate rules. This also avoids treating someone else's project notes as your own instructions.",
+        "今回は AGENTS.md を作っていないので自動読込の確認ではありません。[AGENTS.md](article:codex-agents-md)で範囲と検証、[SKILL.md](article:codex-skills)で技能を学びます。Markdown の読みやすさと、ツールが発見して使う規則は別です。他者の筆記を自分への操作指示と混同しません。",
+        "이번에는 AGENTS.md를 만들지 않아 자동 규칙 로드를 검증한 것이 아닙니다. [AGENTS.md](article:codex-agents-md)에서 범위/검증, [SKILL.md](article:codex-skills)에서 스킬을 배웁니다. Markdown 가독성과 도구의 파일 발견/사용 규칙은 별개입니다. 다른 사람 메모를 자신의 실행 지침과 혼동하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "完成時應有兩個真實 .md 檔、雙向可用連結、正確的程式碼區塊、修復過的一次缺檔或缺結尾故障，以及 Codex 能分開辨認已寫條件與未跑檢查的結果。預覽可能因工具樣式不同而有字型與間距差異，重點是結構、內容和目的地一致。本文查證 VS Code 官方預覽與連結文件；範例內容是原創，網站編譯與複製會另外核對內外層程式碼分隔，避免多語轉換改動樣本。",
+        "Finish with two real .md files, bidirectional links, correct code formatting, a repaired missing-link or fence failure, and an answer that distinguishes written criteria from unrun checks. Fonts and spacing may vary; structure, content and destinations should agree. VS Code preview/link behavior is documentation-checked. The original samples also receive compiler/copy checks for nested fences and unchanged code across languages.",
+        "二つの実ファイル、双方向リンク、コード表示、欠落の修復、条件と未実行を区別する返答を残します。字形や余白が違っても構造、内容、行き先が一致すればよく、VS Code の表示とリンクは公式資料で確認しました。独自例は入れ子フェンスと多言語でのコード保持をコンパイル・コピーでも検証します。",
+        "실제 파일 두 개, 양방향 링크, 코드 표시, 누락 오류 복구, 조건과 미실행을 구분한 응답을 남깁니다. 글꼴/간격이 달라도 구조, 내용, 목적지는 같아야 합니다. VS Code 표시/링크는 공식 문서로 확인했고 원본 예제의 중첩 구분자와 다국어 코드 보존도 컴파일/복사로 검증합니다."
+      ]
+    }
+  ]
+}

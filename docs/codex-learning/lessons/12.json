@@ -1,0 +1,67 @@
+{
+  "id": 12,
+  "sources": [
+    "windows/windows-app",
+    "auth",
+    "remote-connections",
+    "codex/cli"
+  ],
+  "code": {
+    "language": "shell",
+    "code": "codex --version\ncodex login status\ncodex --help"
+  },
+  "text": {
+    "zh-TW": [
+      "排除問題先判斷發生在哪一層：找不到程式是安裝或 PATH；進不了帳號是登入；讀不到檔案是目錄或權限；結果不對則可能是需求或專案程式。一次改一個條件，才能知道是哪個修正有效。",
+      "記錄作業系統、Codex 版本、使用入口、工作目錄與錯誤原文。只保留必要資訊，不附 API key、Cookie、auth.json 或私人檔案內容。",
+      [
+        "找不到 codex：重開終端機。Windows 用 Get-Command codex，macOS／Linux 用 command -v codex，確認安裝位置在 PATH。不要一開始就重裝整個系統或刪除設定資料夾。",
+        "登入問題：執行 codex login status，核對瀏覽器認證是否完成、工作區是否正確，以及代理環境的網路。只有確認要重新登入時才執行官方登出／登入流程。",
+        "找不到檔案：請代理只回報工作目錄，對照檔案管理員。WSL、本機、worktree 與雲端可能各有不同路徑；先選對專案，再判斷是否真的是讀取權限不足。",
+        "工作卡住或測試失敗：閱讀最後一條命令的錯誤。缺相依套件先確認專案安裝步驟；權限拒絕就檢視需要的動作與範圍。手機 Remote 離線要先查主機睡眠與連線。每次修正後重跑同一個最小步驟。"
+      ],
+      "使用原本失敗的步驟重試並通過，記下實際修正與仍未驗證的環境。若無法解決，也能提供可重現且沒有秘密的問題報告。",
+      "不要用『全部權限開啟』當通用修法，也不要無差別刪除快取與工作區。若問題屬於服務中斷，反覆修改本機檔案無法解決；保留診斷後再依服務狀態重試。",
+      "請協助診斷以下錯誤。先只讀取版本、工作目錄與必要設定名稱，提出一個最小驗證步驟。不要顯示秘密，也不要自行重設或刪除資料。"
+    ],
+    "en": [
+      "Start by locating the failing layer. A missing executable suggests installation or PATH; a rejected account suggests authentication; missing files suggest location or permissions; an incorrect result may involve the request or project code. Change one condition at a time.",
+      "Record OS, Codex version, interface, working directory and exact error. Exclude API keys, cookies, auth.json and private document contents.",
+      [
+        "For 'codex not found', reopen the terminal. Use Get-Command codex on Windows or command -v codex on macOS/Linux and check PATH. Do not begin by deleting the configuration directory.",
+        "For authentication, run codex login status and verify the browser flow, workspace and network in the execution environment. Use the documented sign-out/sign-in flow only when reauthentication is the intended fix.",
+        "For missing files, request the working directory and compare it with the file manager. WSL, local, worktree and cloud paths can differ; fix project selection before assuming access is denied.",
+        "For a stalled task or failing test, read the last command's error. Check project setup before installing dependencies. Inspect the exact requested access after permission denial. For Remote, check whether the host is asleep or offline. Repeat the same minimal step after each fix."
+      ],
+      "The originally failing step passes after a specific change, with untested environments recorded. If unresolved, you have a reproducible report without secrets.",
+      "Full access is not a universal fix. Avoid deleting caches or workspaces indiscriminately. During a service incident, changing local files repeatedly will not restore the service.",
+      "Diagnose the error below. First inspect only version, working directory and necessary setting names. Propose one minimal check. Do not expose secrets, reset configuration or delete data."
+    ],
+    "ja": [
+      "まず失敗する層を見分けます。コマンド不在は導入や PATH、ログイン失敗は認証、ファイル不在は場所や権限、結果の誤りは依頼やコードを調べます。一度に一つだけ条件を変えます。",
+      "OS、バージョン、画面、作業場所、エラー原文を記録します。キー、Cookie、auth.json、私的な文書内容は含めません。",
+      [
+        "コマンド不在なら端末を開き直し、Windows は Get-Command codex、macOS・Linux は command -v codex と PATH を確認します。設定フォルダーの削除から始めません。",
+        "認証は codex login status、ブラウザーの完了、ワークスペース、ネットワークを確認します。再認証が必要と分かった場合に公式のログアウト手順を使います。",
+        "ファイル不在なら作業場所を報告させ、ファイル管理と比較します。WSL、ローカル、worktree、クラウドは別の場所になり得ます。",
+        "停止やテスト失敗では最後のコマンドのエラーを読みます。依存関係はプロジェクトの導入手順を先に確認し、権限拒否は必要な範囲を調べます。Remote はスリープと通信を確認し、同じ最小手順を再試行します。"
+      ],
+      "最初の失敗を再現する手順が通り、変更内容と未検証環境が残れば完了です。",
+      "全権限付与や一括削除を万能な修正と考えません。サービス障害ではローカルの編集を繰り返しても解決しません。",
+      "次のエラーを診断してください。まずバージョン、作業場所、必要な設定名だけを確認し、一つの最小確認手順を提案してください。秘密の表示や削除、リセットはしないでください。"
+    ],
+    "ko": [
+      "먼저 실패한 계층을 구분합니다. 명령을 못 찾으면 설치나 PATH, 로그인 거부는 인증, 파일 누락은 위치나 권한, 결과 오류는 요청이나 코드를 확인합니다. 한 번에 조건 하나만 바꾸세요.",
+      "OS, 버전, 인터페이스, 작업 경로와 오류 원문을 기록합니다. 키, 쿠키, auth.json과 개인 문서 내용은 제외합니다.",
+      [
+        "명령을 못 찾으면 터미널을 다시 열고 Windows는 Get-Command codex, macOS/Linux는 command -v codex와 PATH를 확인합니다. 설정 폴더 삭제부터 시작하지 않습니다.",
+        "인증은 codex login status, 브라우저 절차 완료, 워크스페이스와 네트워크를 확인합니다. 재인증이 필요하다고 판단했을 때 공식 로그아웃 절차를 사용합니다.",
+        "파일이 없으면 작업 경로를 보고하게 하고 파일 관리자와 비교합니다. WSL, 로컬, worktree와 클라우드는 서로 다른 경로일 수 있습니다.",
+        "멈춤이나 테스트 실패는 마지막 명령 오류를 읽습니다. 의존성은 프로젝트 설치 절차부터 확인하고 권한 거부는 필요한 범위를 점검합니다. Remote는 호스트 절전과 연결을 확인합니다. 수정 후 같은 최소 단계를 다시 실행합니다."
+      ],
+      "처음 실패한 단계가 통과하고 실제 수정과 미검증 환경을 기록하면 완료입니다.",
+      "전체 권한 부여나 일괄 삭제를 만능 해결책으로 쓰지 마세요. 서비스 장애에는 로컬 파일을 반복 수정해도 소용없습니다.",
+      "아래 오류를 진단하세요. 버전, 작업 경로와 필요한 설정 이름만 먼저 확인하고 최소 검증 단계 하나를 제안하세요. 비밀 표시, 초기화나 삭제는 하지 마세요."
+    ]
+  }
+}

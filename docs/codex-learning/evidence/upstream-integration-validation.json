@@ -1,0 +1,119 @@
+{
+  "checked_on": "2026-09-15",
+  "integration_commit": "be815096ecc481e5626a8075cbf6e168c9cf912b",
+  "main_parent": "3d1df9cc2a0334c1e4045ffc488187283f982975",
+  "codex_parent": "15619d5f",
+  "scope": "Local main-branch integration and validation; not a new editorial checkpoint, final browser acceptance, CI or publication.",
+  "decisions": [
+    "Adopt the six upstream modal/result component and test files. Only two occurrences of the Close label in PlannerOverlay comments use English so the staged i18n heuristic does not flag them as new display text.",
+    "Keep the complete five-language Codex CLI/cloud packs and matching hero/diagram assets at their original slugs; no duplicate lessons.",
+    "Keep the union of shared code language labels, including toml, sh, shell and csv; select Claude by its series identifier and assert its current 96 entries/16 groups/12 paths.",
+    "Align the Codex code-block regression with the established shared API LF-normalization contract. Markup, indentation and terminal newline remain exact; the shared rich-block tests also verify this behavior.",
+    "Use the publication UTC clock for expired fixtures, avoiding local-date failures after midnight in Asia/Taipei.",
+    "Adopt upstream completed modal and AI-batch task records; keep independent earlier diagnostics under their original evidence files."
+  ],
+  "content_preservation": {
+    "packs_identical_raw_sha256": 61,
+    "manifest_reference": "complete-series-import-validation.json#pack_manifest",
+    "serialization_note": "Git checkout changed the two selected JSON files from CRLF to LF. Restoring only their original serialization newlines reproduced the exact pre-merge hashes; JSON document values did not change.",
+    "practice_archive_sha256": "6f13bcf6b2c69cda46a01ca4097b1abaf679a39b73369beeacc2c1241c0233ff"
+  },
+  "environment": {
+    "node": "24.15.0 win-arm64, reused an existing local runtime",
+    "dependencies": "npm ci --ignore-scripts --no-audit --no-fund using the merged lockfile; no global installation",
+    "react": "19.3.0",
+    "vitest": "5.0.0",
+    "jsdom": "30.0.1",
+    "python_dependencies": "uv --frozen using the merged lockfile"
+  },
+  "checks": [
+    {
+      "name": "Frontend ESLint",
+      "result": "passed"
+    },
+    {
+      "name": "Frontend TypeScript",
+      "result": "passed"
+    },
+    {
+      "name": "i18n",
+      "result": "passed",
+      "locales": 5,
+      "namespaces": 25
+    },
+    {
+      "name": "Repository tools",
+      "result": "passed",
+      "tests": 52,
+      "duration_seconds": 25.741
+    },
+    {
+      "name": "Affected guides Python Ruff",
+      "result": "passed"
+    },
+    {
+      "name": "mypy app",
+      "result": "passed",
+      "source_files": 328
+    },
+    {
+      "name": "API/Codex/series/rich-block tests",
+      "result": "passed",
+      "passed": 46,
+      "skipped_postgresql": 19,
+      "duration_seconds": 112.05,
+      "command": "RUN_INTEGRATION_TESTS=0 uv run --frozen pytest tests/test_codex_learning.py tests/test_guide_series.py tests/test_guide_rich_blocks.py -q"
+    },
+    {
+      "name": "60-lesson five-language compilation check",
+      "result": "passed"
+    },
+    {
+      "name": "Authored links, code, images and sources",
+      "result": "passed",
+      "lessons": 60,
+      "locale_documents": 300,
+      "evidence": "series-integrity.json"
+    },
+    {
+      "name": "Task consistency",
+      "result": "passed",
+      "task_files": 451
+    },
+    {
+      "name": "Complete frontend suite",
+      "result": "passed",
+      "log": "frontend-validation-20260915/post-main-full.log",
+      "files": 261,
+      "tests": 2829,
+      "duration_seconds": 735.38,
+      "exit_code": 0,
+      "run_record": "frontend-validation-20260915/post-main-full.json",
+      "log_archive": "frontend-validation-20260915/post-main-full.log.gz",
+      "raw_log_sha256": "6dd2444160dfe60c76255672fe64f95d5ef3d67c4048de58b688b02281d2b721",
+      "gzip_sha256": "26723989bff73dbe6a3be6f3dbcb1b5e7232b09def22d0bb7d0ff0b421ecf926",
+      "react_act_warning_lines": 117
+    }
+  ],
+  "resolved_check_failures": [
+    "Initial post-merge API run: 3 failed / 35 passed / 17 PostgreSQL skips in 92.29s. One contradicted the shared code newline contract and two fixtures used local rather than publication UTC dates.",
+    "The staged i18n check first flagged the inherited Chinese Close text in comments; English-only comments resolved it without changing visible copy or runtime behavior.",
+    "The completion command left identical task bodies in open and done. Removed only the obsolete open copy after verifying the archived body; the final check validates 451 tasks. The underlying tool issue is already tracked in 2026-09-14-investigate-windows-task-archive-leftover-open."
+  ],
+  "manual_source_hash_format": "SHA-256 of UTF-8 source with CRLF normalized to LF, matching Git text storage. The current test_codex_learning.py checkout has mixed newlines (raw SHA-256 653364a42e250cd56717a2a0e53e0fc40743bf97e15c8f082bf0d777542854f2); its LF hash matches the recorded source and Git reports no code diff.",
+  "manual_source_hashes": {
+    "apps/api/app/guides/schemas.py": "c554c27589a643eaf6a01d558d5046dddca50ba4b08703e7f4835264f1a2e86b",
+    "apps/api/tests/test_codex_learning.py": "b10bfaf831a472a54332e69f9df807e270ce8c5fca2dd4177ba73d2fd5ec0d81",
+    "apps/api/tests/test_guide_series.py": "9fc1c0f9a8ff8f6ab2817ef7780dd1c5d6bc215bd0852f65b20097cb953c0fc5",
+    "apps/web/lib/content-blocks.ts": "0917801d33b45305f8696ee72169af3f4dd0e4fc0003edd814df583e9afb3c32",
+    "apps/web/components/planner-overlay.tsx": "78ffbec574ad628d43f3cc6e4ac42baec4f7c71e3aad7219aa6dfe40dfb39361"
+  },
+  "limits": [
+    "Earlier API/modal evidence describes its named pre-merge source, not this new source or dependency set.",
+    "PostgreSQL integration tests were explicitly disabled; SQLite results are not PostgreSQL proof.",
+    "Existing upstream raw logs and intentional CSV/help whitespace were retained; no blanket whitespace rewrite was performed.",
+    "Article/hub edit and final-preview auto-review restrictions remain; no rejected operation was retried, and no PR/import/publication/deployment occurred.",
+    "The completed full suite validates be815096 locally; it is one integration run, not three consecutive final runs or a remote CI result."
+  ],
+  "validation_completed_at": "2026-09-14T17:17:47.0097788+00:00"
+}

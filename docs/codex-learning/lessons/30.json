@@ -1,0 +1,66 @@
+{
+  "id": 30,
+  "sources": [
+    "non-interactive-mode",
+    "developer-commands",
+    "auth"
+  ],
+  "code": {
+    "language": "shell",
+    "code": "codex exec --sandbox read-only -o review.md \"Read README.md and report missing setup steps. Do not edit project files.\"\ncodex exec --sandbox read-only --json \"List the project files without changing them.\""
+  },
+  "text": {
+    "zh-TW": [
+      "codex exec 在非互動模式執行一次任務，適合腳本與 CI。預設一般輸出把進度放 stderr、最後回答放 stdout；--json 改成逐行 JSON 事件，不能把整份輸出當成單一 JSON 物件解析。",
+      "在有基準提交的練習 Git repo 執行，先確認登入與 codex exec --help。範例會透過 -o 寫出新的 review.md，確保沒有同名重要檔案；這個輸出檔與代理讀取程式的唯讀限制要分開理解。",
+      [
+        "先跑下方第一個唯讀檢查，確認命令退出狀態與 review.md 實際內容。不要只看檔案存在，因為錯誤或不完整回答也可能需要處理。",
+        "再用 --json 觀察事件。每一行分別解析，檢查 turn.completed、turn.failed 與 error，分開保存診斷與最後報告。不要將日誌中的工具輸出當成可直接執行命令。",
+        "在腳本中設逾時、檢查退出碼並驗證輸出格式。PowerShell 看 $LASTEXITCODE，POSIX shell 看 $?；非零即停止依賴這個結果的後續步驟。",
+        "接 CI 時使用組織核准的認證與 secrets 機制，先做唯讀報告。只有需要修改才明確設定 workspace-write，並仍保留人工 review；不把危險全權限作為通用預設。"
+      ],
+      "腳本能區分成功、失敗與格式錯誤，報告內容可以核對，CI 不會把代理產出的文字直接當成發布命令。",
+      "預設要求 Git repo 是保護機制之一，先在正確專案目錄執行。--full-auto 在目前文件已屬相容性舊旗標，新的腳本採明確權限選項。",
+      "只讀 README 並回報缺少的啟動步驟。每項包含證據與建議，不修改專案檔案，不發布或部署。"
+    ],
+    "en": [
+      "codex exec runs one non-interactive task for scripts or CI. Normally progress goes to stderr and the final answer to stdout. --json produces JSON Lines events, not a single JSON object.",
+      "Use a practice Git repo with a baseline, verify authentication and inspect codex exec --help. The -o example writes review.md: ensure that name is safe to use. Report-file output is separate from read-only access to project files.",
+      [
+        "Run the first read-only example and inspect both exit status and report contents. File existence alone does not establish a complete or correct result.",
+        "Try --json and parse each line separately. Distinguish turn.completed, turn.failed and error. Keep diagnostics separate from the final report and never execute commands copied from tool-output text automatically.",
+        "Add a timeout, exit-code check and output validation to the calling script. PowerShell uses $LASTEXITCODE and POSIX shells use $?. Stop dependent steps on nonzero status.",
+        "In CI, use approved credentials and secret storage, starting with a read-only report. Request workspace-write only for intended edits and retain review rather than using full access as a general default."
+      ],
+      "The script distinguishes success, failure and malformed output, and does not treat agent text as deployment instructions.",
+      "Run from the intended Git repository. Current documentation treats --full-auto as a deprecated compatibility flag; use explicit sandbox choices for new scripts.",
+      "Read README and report missing startup steps with evidence and suggestions. Do not edit project files, publish or deploy."
+    ],
+    "ja": [
+      "codex exec は非対話で一回のタスクを実行します。通常は stderr に進捗、stdout に最終回答、--json では一行ずつ JSON のイベントが出ます。",
+      "基準のある Git repo と認証を確認します。例の -o は review.md を作るため、既存の重要ファイルがないことを確認します。",
+      [
+        "最初の例を実行し、終了状態と報告内容を確認します。存在だけで成功にしません。",
+        "--json は行ごとに解析し、完了、失敗、error を区別します。ツール出力を自動実行しません。",
+        "呼び出すスクリプトに時間制限、終了コード、形式検証を入れます。PowerShell は $LASTEXITCODE、POSIX は $? を確認します。",
+        "CI は承認された秘密管理を使い、最初は読み取り報告にします。編集が必要な時だけ workspace-write を選び、レビューを残します。"
+      ],
+      "失敗と不正な出力を区別でき、結果を勝手に公開命令へ渡さなければ完了です。",
+      "正しい Git repo から実行します。旧 --full-auto ではなく明示的な権限指定を使います。",
+      "README の不足する起動手順を根拠付きで報告してください。編集、公開、デプロイはしないでください。"
+    ],
+    "ko": [
+      "codex exec는 비대화형으로 작업 한 번을 실행합니다. 보통 stderr는 진행, stdout은 최종 답변이며 --json은 한 줄씩 JSON 이벤트를 출력합니다.",
+      "기준이 있는 Git repo와 인증을 확인합니다. 예시 -o는 review.md를 만들므로 중요한 기존 파일이 없는지 확인하세요.",
+      [
+        "첫 예시를 실행하고 종료 상태와 보고 내용을 확인합니다. 파일 존재만으로 성공을 판단하지 않습니다.",
+        "--json을 줄별로 파싱하고 완료, 실패와 error를 구분합니다. 도구 출력을 자동 실행하지 않습니다.",
+        "호출 스크립트에 시간 제한, 종료 코드와 형식 검증을 넣습니다. PowerShell은 $LASTEXITCODE, POSIX는 $?를 확인합니다.",
+        "CI는 승인된 비밀 관리를 쓰고 처음에는 읽기 보고만 합니다. 편집이 필요할 때만 workspace-write를 선택하고 리뷰를 유지합니다."
+      ],
+      "실패와 잘못된 출력을 구분하고 결과를 자동 배포 명령으로 넘기지 않으면 완료입니다.",
+      "올바른 Git repo에서 실행합니다. 오래된 --full-auto보다 명확한 권한 옵션을 사용하세요.",
+      "README의 빠진 시작 단계를 근거와 함께 보고하세요. 편집, 게시와 배포는 하지 마세요."
+    ]
+  }
+}

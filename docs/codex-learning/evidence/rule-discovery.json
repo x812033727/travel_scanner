@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-09-14T05:59:31.374052+00:00",
+  "environment": "Windows / codex-cli 0.154.0-alpha.6.2",
+  "method": "Real codex debug prompt-input; no model call or output-following claim; private prompt content discarded",
+  "checks": [
+    {
+      "case": "root",
+      "markers": {
+        "ROOT-LAB": true,
+        "KEEP-DATA": true,
+        "UI-BASE": false,
+        "UI-OVERRIDE": false,
+        "OVERRIDE-ACTIVE": false,
+        "DATA-NOTE": false
+      }
+    },
+    {
+      "case": "ui",
+      "markers": {
+        "ROOT-LAB": true,
+        "KEEP-DATA": true,
+        "UI-BASE": true,
+        "UI-OVERRIDE": false,
+        "OVERRIDE-ACTIVE": false,
+        "DATA-NOTE": false
+      }
+    },
+    {
+      "case": "nonempty override",
+      "markers": {
+        "ROOT-LAB": true,
+        "KEEP-DATA": true,
+        "UI-BASE": false,
+        "UI-OVERRIDE": true,
+        "OVERRIDE-ACTIVE": true,
+        "DATA-NOTE": false
+      }
+    },
+    {
+      "case": "empty override does not load ui base in this build",
+      "markers": {
+        "ROOT-LAB": true,
+        "KEEP-DATA": true,
+        "UI-BASE": false,
+        "UI-OVERRIDE": false,
+        "OVERRIDE-ACTIVE": false,
+        "DATA-NOTE": false
+      }
+    },
+    {
+      "case": "renamed override restores ui base",
+      "markers": {
+        "ROOT-LAB": true,
+        "KEEP-DATA": true,
+        "UI-BASE": true,
+        "UI-OVERRIDE": false,
+        "OVERRIDE-ACTIVE": false,
+        "DATA-NOTE": false
+      }
+    }
+  ],
+  "sourceHashes": [
+    "7f29fa8fc87782060dd8c7006d6b6ade8209ea793e209d874bc8b835cf6da303",
+    "efdfe1817493fab92537e8548da8356b27e49e0ef64cfc25e47931af866c1121",
+    "b85201fe2f490f4c0be0330d6e8958b0ab423a969f0c4cb89e4969f1dac8d99a",
+    "9673496fecbc808a185b2bccc61ddff557b162c57ff94ae5053fcbd3b6570d6e"
+  ]
+}

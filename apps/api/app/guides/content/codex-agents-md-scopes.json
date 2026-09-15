@@ -1,0 +1,1457 @@
+{
+  "slug": "codex-agents-md-scopes",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 121,
+  "locales": {
+    "zh-TW": {
+      "title": "AGENTS.md 層級與覆寫驗證",
+      "description": "用根目錄與子目錄案例追蹤規則來源、衝突與 override，確認實際選入的文件。",
+      "hero": {
+        "src": "/guides/codex-agents-md-scopes/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "用新 CLI 工作階段比較根目錄、子目錄、override、空 override 與改名還原五種情況，找出為什麼某條 AGENTS.md 沒有生效。閱讀約 12 分鐘，操作約 25 分鐘。先完成 CLI 與 AGENTS.md 入門；需要 Git、文字編輯器及可用的 Codex 登入。Windows、macOS、Linux 的規則檔內容相同，終端機路徑操作依系統分開。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " 保存對工作的指示，"
+            },
+            {
+              "type": "article",
+              "text": "config.toml",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": " 保存應用設定；兩者不是同一個覆寫機制。這次用回覆標記與必須保留的共同要求觀察規則，不提高沙盒權限，也不要求模型執行未知命令。能複述某個檔案，仍不等於它在啟動時自動載入，所以要同時看實際回覆行為與工作目錄。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先看載入順序"
+        },
+        {
+          "type": "paragraph",
+          "text": "全域規則預設位於使用者目錄的 .codex；若已有 CODEX_HOME，則以其指向位置為準。專案規則從辨識到的根目錄往目前工作目錄走，不會一次遍歷所有兄弟資料夾。每一層依檔名優先檢查 AGENTS.override.md，再找 AGENTS.md，最後才是已設定的備援檔名；同層最多取一份。較深層的指示可覆寫前面衝突項目，沒有衝突的共同要求仍保留。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "會選的專案規則",
+            "不應自行推定"
+          ],
+          "rows": [
+            [
+              "從根目錄啟動",
+              "根目錄規則",
+              "所有子目錄都已載入"
+            ],
+            [
+              "從 ui 啟動",
+              "根目錄，再到 ui",
+              "ui 可以取消平台強制政策"
+            ],
+            [
+              "ui 有非空 override",
+              "根目錄，再到 ui override",
+              "同層 AGENTS.md 也會合併"
+            ],
+            [
+              "修改規則後沿用舊工作階段",
+              "可能仍有先前上下文",
+              "存檔就代表新規則已載入"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟一：建立獨立規則實驗室"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自己的練習位置建立新的 codex-rules-lab，裡面再建 ui 與 data 子資料夾。先不要建立 override。用編輯器開啟這個新資料夾，在整合終端機確認位置：PowerShell 用 Get-Location，macOS／Linux 用 pwd。確認沒有同名既有專案後，在這個新資料夾執行下列 Git 初始化；它只用來讓練習有明確專案根目錄，不需要提交或連接遠端。"
+        },
+        {
+          "type": "code",
+          "label": "系統終端機：確認位於新的規則練習根目錄後執行",
+          "language": "sh",
+          "code": "git init\ngit rev-parse --show-toplevel\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在根目錄新增 AGENTS.md，貼入第一份完整內容。ROOT-LAB 是方便觀察的回覆前綴，KEEP-DATA 則是各子目錄都應保留的共同要求。這些標記只服務練習，正式規則應改寫成實際測試、資料保留與交付要求。"
+        },
+        {
+          "type": "code",
+          "label": "檔案內容：根目錄 AGENTS.md",
+          "language": "markdown",
+          "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 ui/AGENTS.md 放第二份完整內容，在 data/README.md 放下面的資料說明。README 刻意不是 AGENTS 檔，沒有另外設定備援檔名時，不應只因為同為 Markdown 就加入啟動指示。先檢查每份檔名大小寫與副檔名，避免 Windows 編輯器默默補上 .txt。"
+        },
+        {
+          "type": "code",
+          "label": "檔案內容：ui/AGENTS.md",
+          "language": "markdown",
+          "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n"
+        },
+        {
+          "type": "code",
+          "label": "檔案內容：data/README.md",
+          "language": "markdown",
+          "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟二：從兩個目錄各啟動一次"
+        },
+        {
+          "type": "paragraph",
+          "text": "在實驗室根目錄的系統終端機先執行第一個啟動命令；它把這次 CLI 限制為唯讀。進入 Codex 後送出下方自然語言要求，不另外貼規則內容或指定應有前綴。預期回覆從 ROOT-LAB 開始並包含 KEEP-DATA。再用 /exit 回到系統終端機，不要用 resume 接續剛才任務，改執行第二個命令從 ui 開全新工作階段。"
+        },
+        {
+          "type": "code",
+          "label": "系統終端機：從實驗室根目錄啟動新的 CLI",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only\n"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：在新 CLI 工作階段輸入",
+          "language": "text",
+          "code": "Without changing files, report the current working directory and the project instruction sources already available to this session. Follow the active response-format instructions. Do not search unrelated sibling folders just to collect more rules. Distinguish known loaded instructions from files you have not inspected.\n"
+        },
+        {
+          "type": "code",
+          "label": "系統終端機：退出上一個 CLI 後，從根目錄執行",
+          "language": "sh",
+          "code": "codex --cd ui --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 ui 工作階段送出完全相同要求。預期前綴改成 UI-LAB，仍有 KEEP-DATA，並增加 UI-BASE。這代表子目錄覆寫前綴，根目錄不衝突的要求仍在。若它只能在你要求手動讀檔後才說出規則，請把「手動讀到」和「啟動已載入」分開記錄；模型自述不是載入日誌，不要把不確定的狀態標成成功。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟三：加入同層 override 再比較"
+        },
+        {
+          "type": "paragraph",
+          "text": "退出 ui 工作階段，保留 ui/AGENTS.md，再新增 ui/AGENTS.override.md，內容如下。回實驗室根目錄，重新執行 codex --cd ui --sandbox read-only，送出同一個要求。預期 UI-OVERRIDE 與 KEEP-DATA，這次不應因同層 AGENTS.md 而加入 UI-BASE。override 取代的是同一層候選，不是把根目錄與所有全域要求全部清空。"
+        },
+        {
+          "type": "code",
+          "label": "檔案內容：ui/AGENTS.override.md",
+          "language": "markdown",
+          "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "多做一個邊界檢查：保留 override 備份後清空、儲存並開新工作階段，記錄實際載入結果。本機 codex-cli 0.154.0-alpha.6.2 的診斷輸入顯示，空 override 不提供內容，但也沒有接著載入同層 AGENTS.md，只留下根目錄規則；不要把空檔當作可靠的停用方法。要恢復 ui 規則，將 override 改名為不在備援清單內的 override.saved.md，再開全新工作階段確認 UI-LAB、UI-BASE、KEEP-DATA。不要刪除全域檔或整個設定目錄。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "用一張觀察表分開載入與遵循"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次新啟動都填下面欄位，分別記 ROOT-LAB、UI-LAB、UI-OVERRIDE、空 override 與改名還原。不要把期望值先寫進「實際回覆」。例如診斷輸入包含 ui override，但回覆沒有 OVERRIDE-ACTIVE，只能說來源已出現在輸入、回覆格式未通過；不能因此說檔案沒載入，也不能把模型自述當成診斷輸入證據。私人的完整輸入可能含其他規則，只保存本練習需要的摘要。"
+        },
+        {
+          "type": "code",
+          "label": "私人觀察表：每次啟動填一份，不是 CLI 指令",
+          "language": "text",
+          "code": "Case: [root / UI / override / empty override / renamed restoration]\nCLI version and start directory: [actual values]\nNew session: [yes / no / unverified]\nInstruction-file state: [paths, nonempty/empty/renamed]\nExpected markers: [prediction]\nInstruction-source evidence: [observed input/log / model statement only / unavailable]\nActual answer markers: [observed values / no model run]\nConclusion: [discovery verified? response verified? remaining uncertainty]\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "失效排查與完成判準"
+        },
+        {
+          "type": "paragraph",
+          "text": "完全沒出現標記時，確認真正副檔名、非空內容、Git 根目錄與 --cd 位置；總是顯示舊標記時，確認已退出並新啟動，不是 resume 舊上下文；只有某段消失時，找同層 override、全域偏好或更高優先級的環境指示。不能把較深 AGENTS.md 當作越過組織政策、工具權限或使用者要求的通行證。若有衝突，先說明來源，再調整自己可控制的規則。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "文件很長時還要考慮合計大小上限，官方預設是 32 KiB，計算的是位元組，不是中文字數。先保留必要規則，把長設計和範例移到普通文件並在需要時明確讀取；不要以為切成大量兄弟目錄就會自動載入全部內容。備援檔名和上限屬設定項，留到"
+            },
+            {
+              "type": "article",
+              "text": "設定教學",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "處理，改完同樣要重啟驗證。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成時保存根目錄、ui、override、空 override、改名還原五種情況的啟動位置、檔案狀態與實際標記。共同的 KEEP-DATA 應持續保留，移除 override 後可回到原 ui 行為。上述本機證據使用 debug prompt-input 檢查真正組成的輸入，沒有送出模型請求，也未聲稱模型一定遵從。官方來源與實際版本差異都要記錄；回覆行為需由新工作階段另行驗證。接著看"
+            },
+            {
+              "type": "article",
+              "text": "規則與文件分工",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "，把容易膨脹的 AGENTS.md 改成可維護的入口。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-agents-md-scopes/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Custom instructions with AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "AGENTS.md scopes and overrides",
+      "description": "Trace root and nested instructions, conflicts and overrides, and verify which files were selected.",
+      "hero": {
+        "src": "/guides/codex-agents-md-scopes/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Use fresh CLI sessions to compare five cases: root, nested rules, override, empty override and renamed restoration. Allow 12 minutes to read and 25 to practice. Complete CLI and AGENTS.md basics first; have Git, a text editor and working Codex authentication. Rule files are identical across Windows, macOS and Linux; directory commands differ by shell."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " holds work instructions; "
+            },
+            {
+              "type": "article",
+              "text": "config.toml",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": " holds application settings with a different precedence mechanism. Observe reply markers and an inherited requirement without changing sandbox permissions or running unknown commands. Being able to quote a file does not prove startup discovery; compare behavior and working directory too."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Understand the discovery order"
+        },
+        {
+          "type": "paragraph",
+          "text": "Global guidance normally lives in the user's .codex directory, or the existing CODEX_HOME location. Project discovery walks from the recognized root to the current directory, not through all sibling folders. Each level checks AGENTS.override.md before AGENTS.md, then configured fallback names, taking at most one file. Deeper guidance overrides conflicting earlier items while compatible requirements remain."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Situation",
+            "Project files selected",
+            "Do not assume"
+          ],
+          "rows": [
+            [
+              "Start at root",
+              "Root instructions",
+              "Every descendant was loaded"
+            ],
+            [
+              "Start in ui",
+              "Root, then ui",
+              "ui can cancel enforced policy"
+            ],
+            [
+              "Nonempty ui override exists",
+              "Root, then ui override",
+              "Same-level AGENTS.md also merges"
+            ],
+            [
+              "Edit rules in an old session",
+              "Earlier context may remain",
+              "Saving proves a new load"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Create an isolated rule lab"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a new codex-rules-lab with ui and data subfolders, initially without an override. Open it in your editor and verify the terminal location with Get-Location in PowerShell or pwd on macOS/Linux. After confirming this is a new lab, initialize Git below to define its project root. No commit or remote connection is required."
+        },
+        {
+          "type": "code",
+          "label": "System terminal: run after confirming the new rules-lab root",
+          "language": "sh",
+          "code": "git init\ngit rev-parse --show-toplevel\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create root AGENTS.md with the complete sample below. ROOT-LAB is an observable reply prefix; KEEP-DATA is a compatible requirement retained across subdirectories. These markers serve the experiment. Real rules should express actual tests, data preservation and delivery requirements."
+        },
+        {
+          "type": "code",
+          "label": "File content: root AGENTS.md",
+          "language": "markdown",
+          "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Put the second sample in ui/AGENTS.md and the data note in data/README.md. README is deliberately not an AGENTS file; without an applicable fallback-name configuration, Markdown alone does not make it startup guidance. Check exact capitalization and extensions, including accidental .txt suffixes."
+        },
+        {
+          "type": "code",
+          "label": "File content: ui/AGENTS.md",
+          "language": "markdown",
+          "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n"
+        },
+        {
+          "type": "code",
+          "label": "File content: data/README.md",
+          "language": "markdown",
+          "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Start once from each directory"
+        },
+        {
+          "type": "paragraph",
+          "text": "From the lab-root terminal, run the first read-only CLI launch. Inside Codex, send the natural-language prompt below without pasting rules or prescribing a prefix. Expect ROOT-LAB and KEEP-DATA. Use /exit to return to the shell, then start a fresh ui session with the second launch command, rather than resuming the earlier task."
+        },
+        {
+          "type": "code",
+          "label": "System terminal: start a new CLI session from the lab root",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only\n"
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: enter in the new CLI session",
+          "language": "text",
+          "code": "Without changing files, report the current working directory and the project instruction sources already available to this session. Follow the active response-format instructions. Do not search unrelated sibling folders just to collect more rules. Distinguish known loaded instructions from files you have not inspected.\n"
+        },
+        {
+          "type": "code",
+          "label": "System terminal: after exiting the previous CLI, run from the root",
+          "language": "sh",
+          "code": "codex --cd ui --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Send the identical request in ui. Expect UI-LAB, KEEP-DATA and UI-BASE: the nested prefix overrides the root prefix while compatible root instructions remain. If the model can report rules only after being asked to read them manually, distinguish that from startup discovery. A model's self-report is not a loading log; retain uncertainty where evidence is insufficient."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Add a same-level override and compare"
+        },
+        {
+          "type": "paragraph",
+          "text": "Exit ui, retain ui/AGENTS.md and add ui/AGENTS.override.md below. From the lab root, relaunch codex --cd ui --sandbox read-only and send the same request. Expect UI-OVERRIDE and KEEP-DATA, without UI-BASE inherited from the replaced same-level file. The override replaces that level's candidate, not every root or global instruction."
+        },
+        {
+          "type": "code",
+          "label": "File content: ui/AGENTS.override.md",
+          "language": "markdown",
+          "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "For a boundary case, back up the override, empty it, save and start fresh, then record the actual discovery. Local diagnostic inputs from codex-cli 0.154.0-alpha.6.2 contain no override body but also do not load same-level AGENTS.md; root instructions remain. Do not rely on an empty file to disable an override. Rename it to override.saved.md, outside the configured fallback list, then start fresh and verify UI-LAB, UI-BASE and KEEP-DATA. Keep global files and the settings directory intact."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Separate discovery from compliance in one record"
+        },
+        {
+          "type": "paragraph",
+          "text": "Fill in the fields for each fresh start: root, UI, override, empty override and renamed restoration. Keep expectations out of the observed-answer field. If diagnostic input contains the UI override but the answer omits OVERRIDE-ACTIVE, discovery is evidenced but response compliance failed. That does not prove a missing file; a model's claim is not diagnostic-input evidence either. Retain only a practice summary of private input that may contain other rules."
+        },
+        {
+          "type": "code",
+          "label": "Private observation record: one per start; not a CLI command",
+          "language": "text",
+          "code": "Case: [root / UI / override / empty override / renamed restoration]\nCLI version and start directory: [actual values]\nNew session: [yes / no / unverified]\nInstruction-file state: [paths, nonempty/empty/renamed]\nExpected markers: [prediction]\nInstruction-source evidence: [observed input/log / model statement only / unavailable]\nActual answer markers: [observed values / no model run]\nConclusion: [discovery verified? response verified? remaining uncertainty]\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Diagnose failures and confirm completion"
+        },
+        {
+          "type": "paragraph",
+          "text": "For missing markers, check actual extensions, nonempty content, Git root and --cd. For stale markers, confirm a fresh launch rather than resume. For one missing requirement, inspect same-level overrides, global preferences and higher-priority environment instructions. A deeper AGENTS.md does not bypass organization policy, tool permissions or user requests. Identify the conflicting source before changing rules you control."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Long guidance may hit the documented 32 KiB default combined limit, measured in bytes rather than characters. Keep essential rules and move long designs/examples into ordinary documents read when needed. Splitting content among sibling directories does not automatically load it all. Fallback names and the limit are settings covered in "
+            },
+            {
+              "type": "article",
+              "text": "configuration",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": ", with restart verification after changes."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Retain launch directory, file state and observed markers for root, ui, override, empty-override and renamed-override cases. KEEP-DATA should remain, and removing the override should restore ui behavior. Local evidence uses debug prompt-input to inspect actual constructed inputs without a model request or compliance claim. Record documented and version-specific behavior; verify response behavior separately in fresh sessions. Continue with "
+            },
+            {
+              "type": "article",
+              "text": "rules and context files",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": " to keep AGENTS.md maintainable."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-agents-md-scopes/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Custom instructions with AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "AGENTS.md の階層と優先規則",
+      "description": "ルートと子フォルダーの指示、衝突、override を追い、選択された文書を確認します。",
+      "hero": {
+        "src": "/guides/codex-agents-md-scopes/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "新しい CLI セッションでルート、子ディレクトリ、override、空の override、改名後の復元という五つの状態を比べ、規則が効かない理由を切り分けます。読む時間12分、操作25分程度です。CLI と AGENTS.md の基礎、Git、エディター、Codex 認証が前提です。規則の内容は各 OS 共通で、場所を確認するコマンドだけ異なります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " は作業指示、"
+            },
+            {
+              "type": "article",
+              "text": "config.toml",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": " は別の優先順位を持つアプリ設定です。権限を増やさず、返答の印と共通要件を観察します。ファイルを引用できても起動時に読まれた証明にはならず、動作と作業場所も確認します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "読込み順を理解する"
+        },
+        {
+          "type": "paragraph",
+          "text": "グローバルは通常ユーザーの .codex、CODEX_HOME があればその場所です。プロジェクトは認識したルートから現在地までを辿り、兄弟フォルダー全体は探索しません。各層で AGENTS.override.md、AGENTS.md、設定済み代替名の順に最大一つを選びます。深い層は衝突項目を上書きし、両立する要件は残ります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "状況",
+            "選択する規則",
+            "仮定しないこと"
+          ],
+          "rows": [
+            [
+              "ルート起動",
+              "ルート",
+              "全子フォルダーを読んだ"
+            ],
+            [
+              "ui 起動",
+              "ルート、ui",
+              "強制ポリシーを無効化できる"
+            ],
+            [
+              "ui に非空 override",
+              "ルート、ui override",
+              "同層 AGENTS.md も結合する"
+            ],
+            [
+              "旧セッションで編集",
+              "以前の文脈が残る場合がある",
+              "保存したので再読済み"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：独立した規則の実験を作る"
+        },
+        {
+          "type": "paragraph",
+          "text": "新しい codex-rules-lab に ui と data を作り、override はまだ置きません。エディターで開き、PowerShell は Get-Location、macOS / Linux は pwd で新規教材の場所を確認します。次の Git 初期化でルートを明確にし、コミットやリモート接続は不要です。"
+        },
+        {
+          "type": "code",
+          "label": "システム端末：新しいルール練習のルートを確認して実行する",
+          "language": "sh",
+          "code": "git init\ngit rev-parse --show-toplevel\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "ルート AGENTS.md に次の全文を保存します。ROOT-LAB は観察用の接頭辞、KEEP-DATA は下位でも残す共通要件です。教材の印なので、本番では実際のテスト、データ保持、交付要件に置き換えます。"
+        },
+        {
+          "type": "code",
+          "label": "ファイル内容：ルートの AGENTS.md",
+          "language": "markdown",
+          "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "二つ目を ui/AGENTS.md、資料メモを data/README.md に保存します。README は意図的に AGENTS ではなく、該当する代替名設定がなければ Markdown だけを理由に起動指示にはなりません。大文字小文字と .txt の混入を確認します。"
+        },
+        {
+          "type": "code",
+          "label": "ファイル内容：ui/AGENTS.md",
+          "language": "markdown",
+          "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n"
+        },
+        {
+          "type": "code",
+          "label": "ファイル内容：data/README.md",
+          "language": "markdown",
+          "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：二つの場所から起動する"
+        },
+        {
+          "type": "paragraph",
+          "text": "教材ルートで最初の読み取り専用起動コマンドを実行し、Codex へ次の依頼を送ります。規則の全文や期待接頭辞は貼りません。ROOT-LAB と KEEP-DATA を期待します。/exit でシェルに戻り、resume せず二つ目のコマンドで ui の新規セッションを作ります。"
+        },
+        {
+          "type": "code",
+          "label": "システム端末：練習ルートから新しい CLI セッションを起動する",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only\n"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：新しい CLI セッションに入力する",
+          "language": "text",
+          "code": "Without changing files, report the current working directory and the project instruction sources already available to this session. Follow the active response-format instructions. Do not search unrelated sibling folders just to collect more rules. Distinguish known loaded instructions from files you have not inspected.\n"
+        },
+        {
+          "type": "code",
+          "label": "システム端末：前の CLI を終了してルートから実行する",
+          "language": "sh",
+          "code": "codex --cd ui --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "ui でも同じ依頼を送り、UI-LAB、KEEP-DATA、UI-BASE を確認します。接頭辞は下位が上書きし、両立する根の要件は残ります。手動読み取りを依頼して初めて説明できたなら、起動時の発見と分けて記録します。モデルの自己申告は読込みログではなく、不十分な証拠を成功扱いしません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：同じ層の override と比較"
+        },
+        {
+          "type": "paragraph",
+          "text": "ui を終了し、AGENTS.md を残して次の AGENTS.override.md を同層に追加します。教材ルートから同じ ui 起動コマンドと依頼を使います。UI-OVERRIDE と KEEP-DATA が期待値で、置き換えられた同層からの UI-BASE は入りません。override はその層の候補を替え、根やグローバルすべてを消すものではありません。"
+        },
+        {
+          "type": "code",
+          "label": "ファイル内容：ui/AGENTS.override.md",
+          "language": "markdown",
+          "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "境界確認ではバックアップして override を空にし、新規起動の結果を記録します。ローカル codex-cli 0.154.0-alpha.6.2 の診断入力は空の本文を含まず、同層 AGENTS.md も読まず、根の規則だけでした。空ファイルを確実な無効化方法とせず、代替名にない override.saved.md へ改名して新規起動し、UI-LAB、UI-BASE、KEEP-DATA を確認します。グローバルや設定全体は削除しません。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "読み込みと遵守を一つの記録で区別する"
+        },
+        {
+          "type": "paragraph",
+          "text": "ルート、UI、override、空の override、改名後の各新規起動で記録します。実際の回答欄に期待値を先に書かないでください。診断入力に UI override があっても回答に OVERRIDE-ACTIVE がなければ、入力への含有は確認できても形式遵守は不合格です。未読み込みとは断定できず、モデルの自述も診断入力の証拠にはなりません。私的な入力には他の規則も含み得るため練習部分の要約だけ残します。"
+        },
+        {
+          "type": "code",
+          "label": "個人用観察表：起動ごとに一つ記入する。CLI コマンドではありません",
+          "language": "text",
+          "code": "Case: [root / UI / override / empty override / renamed restoration]\nCLI version and start directory: [actual values]\nNew session: [yes / no / unverified]\nInstruction-file state: [paths, nonempty/empty/renamed]\nExpected markers: [prediction]\nInstruction-source evidence: [observed input/log / model statement only / unavailable]\nActual answer markers: [observed values / no model run]\nConclusion: [discovery verified? response verified? remaining uncertainty]\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "失敗の切り分けと完了条件"
+        },
+        {
+          "type": "paragraph",
+          "text": "印がなければ拡張子、空でない内容、Git ルート、--cd を確認します。古い印なら resume ではなく新規起動か、部分欠落なら同層 override、グローバル、上位指示を調べます。深い AGENTS.md は組織規則、権限、ユーザー依頼を越える許可ではありません。衝突源を特定して変更可能な指示を直します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "長い指示は既定の合計32 KiBに達する場合があり、文字数ではなくバイト数です。必要規則を残し、長い設計や例は普通の文書として必要時に読みます。兄弟フォルダーに分割しても全部自動読込みにはなりません。代替名や上限は"
+            },
+            {
+              "type": "article",
+              "text": "設定",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "で扱い、変更後に再起動検証します。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ルート、ui、override、空 override、改名復元の起動場所、ファイル状態、実際の印を残します。KEEP-DATA を維持し、override を外すと ui に戻ることを確認します。ローカルは debug prompt-input の実入力を確認し、モデル要求や遵守の主張はしていません。仕様と版の違いを記録し、返答動作は新規セッションで別途確認します。"
+            },
+            {
+              "type": "article",
+              "text": "規則と文書の分担",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "へ進めます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-agents-md-scopes/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Custom instructions with AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "AGENTS.md 범위와 우선 규칙",
+      "description": "루트와 하위 폴더의 지침, 충돌, override를 추적해 선택된 문서를 확인합니다.",
+      "hero": {
+        "src": "/guides/codex-agents-md-scopes/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "새 CLI 세션에서 루트, 하위 규칙, override, 빈 override, 이름 변경 후 복구의 다섯 상태를 비교합니다. 읽기 12분, 실습 25분입니다. CLI/AGENTS.md 기초, Git, 편집기, Codex 인증이 필요합니다. 규칙 내용은 세 OS가 같고 경로 확인 명령은 셸에 따라 다릅니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "는 작업 지침, "
+            },
+            {
+              "type": "article",
+              "text": "config.toml",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "은 다른 우선순위의 앱 설정입니다. 권한을 넓히지 않고 응답 표식과 공통 요구를 관찰합니다. 파일을 인용할 수 있다는 것만으로 시작 시 발견된 증거는 아니므로 동작과 작업 경로도 확인합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "로드 순서 이해"
+        },
+        {
+          "type": "paragraph",
+          "text": "전역은 기본 사용자 .codex 또는 기존 CODEX_HOME 위치입니다. 프로젝트는 인식된 루트에서 현재 경로까지 탐색하며 모든 형제 폴더를 훑지 않습니다. 각 층에서 AGENTS.override.md, AGENTS.md, 설정된 대체명 순으로 최대 하나를 선택합니다. 깊은 층은 충돌 항목을 덮어쓰고 양립하는 요구는 유지합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "상황",
+            "선택하는 규칙",
+            "가정하면 안 되는 것"
+          ],
+          "rows": [
+            [
+              "루트 시작",
+              "루트 규칙",
+              "모든 하위 폴더 로드"
+            ],
+            [
+              "ui 시작",
+              "루트 다음 ui",
+              "강제 정책 취소 가능"
+            ],
+            [
+              "ui에 비어 있지 않은 override",
+              "루트 다음 ui override",
+              "같은 층 AGENTS.md도 합침"
+            ],
+            [
+              "이전 세션에서 편집",
+              "이전 문맥이 남을 수 있음",
+              "저장하면 새로 로드됨"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 독립 규칙 실습 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "새 codex-rules-lab에 ui와 data를 만들고 override는 아직 두지 않습니다. 편집기로 열고 PowerShell의 Get-Location 또는 macOS/Linux의 pwd로 새 실습 경로를 확인합니다. 다음 Git 초기화로 루트를 명확히 하며 커밋이나 원격 연결은 필요 없습니다."
+        },
+        {
+          "type": "code",
+          "label": "시스템 터미널: 새 규칙 실습 루트를 확인한 뒤 실행",
+          "language": "sh",
+          "code": "git init\ngit rev-parse --show-toplevel\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "루트 AGENTS.md에 다음 전체 내용을 저장합니다. ROOT-LAB은 관찰할 응답 접두사, KEEP-DATA는 하위에도 유지할 공통 요구입니다. 실험용 표식이므로 실제 규칙은 테스트, 자료 보존, 인계 요구로 바꿉니다."
+        },
+        {
+          "type": "code",
+          "label": "파일 내용: 루트 AGENTS.md",
+          "language": "markdown",
+          "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "둘째 내용은 ui/AGENTS.md, 자료 메모는 data/README.md에 저장합니다. README는 의도적으로 AGENTS가 아니며 해당 대체명 설정이 없으면 Markdown이라는 이유만으로 시작 지침이 되지 않습니다. 대소문자와 잘못 붙은 .txt를 확인합니다."
+        },
+        {
+          "type": "code",
+          "label": "파일 내용: ui/AGENTS.md",
+          "language": "markdown",
+          "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n"
+        },
+        {
+          "type": "code",
+          "label": "파일 내용: data/README.md",
+          "language": "markdown",
+          "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 두 경로에서 각각 시작"
+        },
+        {
+          "type": "paragraph",
+          "text": "실습 루트에서 첫 읽기 전용 실행 명령을 쓰고 Codex에 다음 요청을 보냅니다. 규칙 전문이나 예상 접두사는 붙이지 않습니다. ROOT-LAB과 KEEP-DATA가 예상됩니다. /exit로 셸에 돌아와 resume 대신 둘째 명령으로 ui 새 세션을 시작합니다."
+        },
+        {
+          "type": "code",
+          "label": "시스템 터미널: 실습 루트에서 새 CLI 세션 시작",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only\n"
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: 새 CLI 세션에 입력",
+          "language": "text",
+          "code": "Without changing files, report the current working directory and the project instruction sources already available to this session. Follow the active response-format instructions. Do not search unrelated sibling folders just to collect more rules. Distinguish known loaded instructions from files you have not inspected.\n"
+        },
+        {
+          "type": "code",
+          "label": "시스템 터미널: 이전 CLI를 종료한 뒤 루트에서 실행",
+          "language": "sh",
+          "code": "codex --cd ui --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "ui에서도 같은 요청을 보내 UI-LAB, KEEP-DATA, UI-BASE를 확인합니다. 접두사는 하위가 덮어쓰고 양립하는 루트 요구는 남습니다. 수동 읽기를 요청한 뒤에야 설명하면 시작 시 발견과 구분해 기록합니다. 모델 자기 보고는 로드 로그가 아니며 부족한 증거를 성공 처리하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 같은 층 override 추가 및 비교"
+        },
+        {
+          "type": "paragraph",
+          "text": "ui를 종료하고 AGENTS.md를 남긴 채 같은 층에 다음 AGENTS.override.md를 추가합니다. 실습 루트에서 같은 ui 실행 명령/요청을 사용합니다. UI-OVERRIDE와 KEEP-DATA가 예상되며 대체된 같은 층 파일의 UI-BASE는 들어오지 않아야 합니다. override는 해당 층 후보를 바꾸며 루트/전역 전체를 지우지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "파일 내용: ui/AGENTS.override.md",
+          "language": "markdown",
+          "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "경계 확인은 override를 백업 후 비우고 새 시작의 실제 결과를 기록합니다. 이 컴퓨터의 codex-cli 0.154.0-alpha.6.2 진단 입력에는 빈 본문도 같은 층 AGENTS.md도 없고 루트 규칙만 남았습니다. 빈 파일을 확실한 비활성화로 믿지 말고 대체명 목록에 없는 override.saved.md로 바꾼 뒤 새로 시작해 UI-LAB, UI-BASE, KEEP-DATA를 확인합니다. 전역 파일/전체 설정은 삭제하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "하나의 기록에서 로드와 준수 구분하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "루트, UI, override, 빈 override, 이름을 바꾼 복구 상태마다 새로 시작해 기록하세요. 실제 답변 칸에 기대값을 미리 적지 마세요. 진단 입력에 UI override가 있지만 답변에 OVERRIDE-ACTIVE가 없다면 입력 포함은 확인했으나 형식 준수는 실패한 것입니다. 파일 미로드로 단정할 수 없으며 모델의 자기 설명도 진단 입력의 증거가 아닙니다. 개인 입력에는 다른 규칙이 포함될 수 있으므로 실습에 필요한 요약만 남깁니다."
+        },
+        {
+          "type": "code",
+          "label": "개인 관찰표: 시작할 때마다 작성하며 CLI 명령으로 실행하지 않음",
+          "language": "text",
+          "code": "Case: [root / UI / override / empty override / renamed restoration]\nCLI version and start directory: [actual values]\nNew session: [yes / no / unverified]\nInstruction-file state: [paths, nonempty/empty/renamed]\nExpected markers: [prediction]\nInstruction-source evidence: [observed input/log / model statement only / unavailable]\nActual answer markers: [observed values / no model run]\nConclusion: [discovery verified? response verified? remaining uncertainty]\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "실패 진단과 완료 기준"
+        },
+        {
+          "type": "paragraph",
+          "text": "표식 누락은 확장자/내용/Git 루트/--cd, 오래된 표식은 resume가 아닌 새 시작 여부, 일부 누락은 같은 층 override/전역/상위 지침을 확인합니다. 깊은 AGENTS.md가 조직 정책, 도구 권한, 사용자 요청을 넘는 허가는 아닙니다. 충돌 출처를 찾고 자신이 관리할 수 있는 규칙을 수정합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "긴 지침은 기본 합계 32 KiB 제한에 걸릴 수 있으며 문자 수가 아닌 바이트입니다. 핵심 규칙을 남기고 긴 설계/예시는 필요할 때 읽는 일반 문서로 옮깁니다. 형제 폴더로 나눠도 모두 자동 로드되지는 않습니다. 대체명/한도는 "
+            },
+            {
+              "type": "article",
+              "text": "설정",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "에서 다루며 변경 후 재시작 검증합니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "루트/ui/override/빈 override/개명 복원의 시작 경로, 파일 상태, 실제 표식을 남깁니다. KEEP-DATA를 유지하고 override 제거 후 ui로 돌아가는지 확인합니다. 로컬은 debug prompt-input의 실제 입력을 확인했으며 모델 요청/준수 주장은 없습니다. 사양과 버전 차이를 기록하고 응답 동작은 새 세션에서 별도로 확인합니다. "
+            },
+            {
+              "type": "article",
+              "text": "규칙과 문서 분담",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "으로 이어 갑니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-agents-md-scopes/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Custom instructions with AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "AGENTS.md 层级与覆写验证",
+      "description": "用根目录与子目录案例追踪规则来源、冲突与 override，确认实际选入的文件。",
+      "hero": {
+        "src": "/guides/codex-agents-md-scopes/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "用新 CLI 工作阶段比较根目录、子目录、override、空 override 与改名还原五种情况，找出为什么某条 AGENTS.md 没有生效。阅读约 12 分钟，操作约 25 分钟。先完成 CLI 与 AGENTS.md 入门；需要 Git、文字编辑器及可用的 Codex 登入。Windows、macOS、Linux 的规则档内容相同，终端机路径操作依系统分开。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " 保存对工作的指示，"
+            },
+            {
+              "type": "article",
+              "text": "config.toml",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": " 保存应用设定；两者不是同一个覆写机制。这次用回复标记与必须保留的共同要求观察规则，不提高沙盒权限，也不要求模型执行未知命令。能复述某个档案，仍不等于它在启动时自动载入，所以要同时看实际回复行为与工作目录。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先看载入顺序"
+        },
+        {
+          "type": "paragraph",
+          "text": "全域规则预设位于使用者目录的 .codex；若已有 CODEX_HOME，则以其指向位置为准。专案规则从辨识到的根目录往目前工作目录走，不会一次遍历所有兄弟资料夹。每一层依档名优先检查 AGENTS.override.md，再找 AGENTS.md，最后才是已设定的备援档名；同层最多取一份。较深层的指示可覆写前面冲突项目，没有冲突的共同要求仍保留。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "会选的专案规则",
+            "不应自行推定"
+          ],
+          "rows": [
+            [
+              "从根目录启动",
+              "根目录规则",
+              "所有子目录都已载入"
+            ],
+            [
+              "从 ui 启动",
+              "根目录，再到 ui",
+              "ui 可以取消平台强制政策"
+            ],
+            [
+              "ui 有非空 override",
+              "根目录，再到 ui override",
+              "同层 AGENTS.md 也会合并"
+            ],
+            [
+              "修改规则后沿用旧工作阶段",
+              "可能仍有先前上下文",
+              "存档就代表新规则已载入"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤一：建立独立规则实验室"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自己的练习位置建立新的 codex-rules-lab，里面再建 ui 与 data 子资料夹。先不要建立 override。用编辑器开启这个新资料夹，在整合终端机确认位置：PowerShell 用 Get-Location，macOS／Linux 用 pwd。确认没有同名既有专案后，在这个新资料夹执行下列 Git 初始化；它只用来让练习有明确专案根目录，不需要提交或连接远端。"
+        },
+        {
+          "type": "code",
+          "label": "系统终端机：确认位于新的规则练习根目录后执行",
+          "language": "sh",
+          "code": "git init\ngit rev-parse --show-toplevel\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在根目录新增 AGENTS.md，贴入第一份完整内容。ROOT-LAB 是方便观察的回复前缀，KEEP-DATA 则是各子目录都应保留的共同要求。这些标记只服务练习，正式规则应改写成实际测试、资料保留与交付要求。"
+        },
+        {
+          "type": "code",
+          "label": "档案内容：根目录 AGENTS.md",
+          "language": "markdown",
+          "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 ui/AGENTS.md 放第二份完整内容，在 data/README.md 放下面的资料说明。README 刻意不是 AGENTS 档，没有另外设定备援档名时，不应只因为同为 Markdown 就加入启动指示。先检查每份档名大小写与副档名，避免 Windows 编辑器默默补上 .txt。"
+        },
+        {
+          "type": "code",
+          "label": "档案内容：ui/AGENTS.md",
+          "language": "markdown",
+          "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n"
+        },
+        {
+          "type": "code",
+          "label": "档案内容：data/README.md",
+          "language": "markdown",
+          "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤二：从两个目录各启动一次"
+        },
+        {
+          "type": "paragraph",
+          "text": "在实验室根目录的系统终端机先执行第一个启动命令；它把这次 CLI 限制为唯读。进入 Codex 后送出下方自然语言要求，不另外贴规则内容或指定应有前缀。预期回复从 ROOT-LAB 开始并包含 KEEP-DATA。再用 /exit 回到系统终端机，不要用 resume 接续刚才任务，改执行第二个命令从 ui 开全新工作阶段。"
+        },
+        {
+          "type": "code",
+          "label": "系统终端机：从实验室根目录启动新的 CLI",
+          "language": "sh",
+          "code": "codex --cd . --sandbox read-only\n"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：在新 CLI 工作阶段输入",
+          "language": "text",
+          "code": "Without changing files, report the current working directory and the project instruction sources already available to this session. Follow the active response-format instructions. Do not search unrelated sibling folders just to collect more rules. Distinguish known loaded instructions from files you have not inspected.\n"
+        },
+        {
+          "type": "code",
+          "label": "系统终端机：退出上一个 CLI 后，从根目录执行",
+          "language": "sh",
+          "code": "codex --cd ui --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 ui 工作阶段送出完全相同要求。预期前缀改成 UI-LAB，仍有 KEEP-DATA，并增加 UI-BASE。这代表子目录覆写前缀，根目录不冲突的要求仍在。若它只能在你要求手动读档后才说出规则，请把「手动读到」和「启动已载入」分开记录；模型自述不是载入日志，不要把不确定的状态标成成功。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤三：加入同层 override 再比较"
+        },
+        {
+          "type": "paragraph",
+          "text": "退出 ui 工作阶段，保留 ui/AGENTS.md，再新增 ui/AGENTS.override.md，内容如下。回实验室根目录，重新执行 codex --cd ui --sandbox read-only，送出同一个要求。预期 UI-OVERRIDE 与 KEEP-DATA，这次不应因同层 AGENTS.md 而加入 UI-BASE。override 取代的是同一层候选，不是把根目录与所有全域要求全部清空。"
+        },
+        {
+          "type": "code",
+          "label": "档案内容：ui/AGENTS.override.md",
+          "language": "markdown",
+          "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "多做一个边界检查：保留 override 备份后清空、储存并开新工作阶段，记录实际载入结果。本机 codex-cli 0.154.0-alpha.6.2 的诊断输入显示，空 override 不提供内容，但也没有接著载入同层 AGENTS.md，只留下根目录规则；不要把空档当作可靠的停用方法。要恢复 ui 规则，将 override 改名为不在备援清单内的 override.saved.md，再开全新工作阶段确认 UI-LAB、UI-BASE、KEEP-DATA。不要删除全域档或整个设定目录。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "用一张观察表分开载入与遵循"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次新启动都填下面栏位，分别记 ROOT-LAB、UI-LAB、UI-OVERRIDE、空 override 与改名还原。不要把期望值先写进「实际回复」。例如诊断输入包含 ui override，但回复没有 OVERRIDE-ACTIVE，只能说来源已出现在输入、回复格式未通过；不能因此说档案没载入，也不能把模型自述当成诊断输入证据。私人的完整输入可能含其他规则，只保存本练习需要的摘要。"
+        },
+        {
+          "type": "code",
+          "label": "私人观察表：每次启动填一份，不是 CLI 指令",
+          "language": "text",
+          "code": "Case: [root / UI / override / empty override / renamed restoration]\nCLI version and start directory: [actual values]\nNew session: [yes / no / unverified]\nInstruction-file state: [paths, nonempty/empty/renamed]\nExpected markers: [prediction]\nInstruction-source evidence: [observed input/log / model statement only / unavailable]\nActual answer markers: [observed values / no model run]\nConclusion: [discovery verified? response verified? remaining uncertainty]\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "失效排查与完成判准"
+        },
+        {
+          "type": "paragraph",
+          "text": "完全没出现标记时，确认真正副档名、非空内容、Git 根目录与 --cd 位置；总是显示旧标记时，确认已退出并新启动，不是 resume 旧上下文；只有某段消失时，找同层 override、全域偏好或更高优先级的环境指示。不能把较深 AGENTS.md 当作越过组织政策、工具权限或使用者要求的通行证。若有冲突，先说明来源，再调整自己可控制的规则。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "文件很长时还要考虑合计大小上限，官方预设是 32 KiB，计算的是位元组，不是中文字数。先保留必要规则，把长设计和范例移到普通文件并在需要时明确读取；不要以为切成大量兄弟目录就会自动载入全部内容。备援档名和上限属设定项，留到"
+            },
+            {
+              "type": "article",
+              "text": "设定教学",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "处理，改完同样要重启验证。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成时保存根目录、ui、override、空 override、改名还原五种情况的启动位置、档案状态与实际标记。共同的 KEEP-DATA 应持续保留，移除 override 后可回到原 ui 行为。上述本机证据使用 debug prompt-input 检查真正组成的输入，没有送出模型请求，也未声称模型一定遵从。官方来源与实际版本差异都要记录；回复行为需由新工作阶段另行验证。接著看"
+            },
+            {
+              "type": "article",
+              "text": "规则与文件分工",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "，把容易膨胀的 AGENTS.md 改成可维护的入口。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-agents-md-scopes/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Custom instructions with AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

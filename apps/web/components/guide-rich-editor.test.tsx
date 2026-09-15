@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { renderToString } from "react-dom/server";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { GuideRichEditor } from "./guide-rich-editor";
 import { ContentBlocks } from "./content-blocks";
+import { GuideCodeBlock } from "./guide-code-block";
 import type { CodeBlock, RichParagraphBlock } from "@/lib/content-blocks";
 
 function Editor({ initial }: { initial: CodeBlock | RichParagraphBlock }) {
@@ -14,6 +16,13 @@ function Editor({ initial }: { initial: CodeBlock | RichParagraphBlock }) {
 }
 
 describe("guide rich editing and shared preview", () => {
+  it("keeps server-rendered copy buttons disabled until event handlers are ready", () => {
+    const block = { type: "code" as const, label: "Command", language: "bash" as const, code: "git status\n" };
+    const html = renderToString(<GuideCodeBlock block={block} />);
+    expect(html).toMatch(/<button[^>]*disabled=""/);
+    render(<GuideCodeBlock block={block} />);
+    expect((screen.getByRole("button", { name: "Copy" }) as HTMLButtonElement).disabled).toBe(false);
+  });
   it("edits raw code without converting markup or whitespace", () => {
     render(<Editor initial={{ type: "code", language: "html", label: "index.html", code: "before" }} />);
     const code = '<p title="a&b">\n\tText <script>not executed</script>\n</p>\n';

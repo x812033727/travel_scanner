@@ -1,0 +1,61 @@
+{
+  "id": 13,
+  "sources": [
+    "projects",
+    "app"
+  ],
+  "text": {
+    "zh-TW": [
+      "把同一件事的追問留在同一任務，把獨立成果分成不同任務，能減少上下文混亂。專案負責定位相關檔案，任務負責一次具體工作；建立很多任務不會自動讓檔案彼此隔離，隔離需要 worktree 等機制。",
+      "先準備已完成的介紹卡與一份待辦。把待辦分成『調整卡片外觀』和『補充使用說明』兩項，確認兩者是否會改同一檔案。",
+      [
+        "在桌面版加入練習資料夾，給專案容易辨認的名稱。開啟任務前核對專案位置，避免同名資料夾被選錯。",
+        "建立一個目標明確的任務，例如『改善卡片手機留白』。同一目標的更正留在這個任務內，將期待結果與目前問題接續補充。",
+        "要做獨立工作時再開新任務。若兩個工作共用檔案，先完成一個，或選 worktree 隔離；不要讓兩個任務同時覆寫 index.html。",
+        "結果驗證後改成能辨認成果的名稱，將不再需要的任務封存。封存前留下摘要、修改檔案與未完成項目；封存任務不等同刪除專案檔案或 Git 提交。"
+      ],
+      "側欄能清楚辨識每項工作，回到任務可找到決策與成果。另一個人不用讀完整聊天就知道下一步。",
+      "專案名稱不是檔案路径，移動檔案後要重新確認位置。新任務不一定帶入舊任務所有背景，因此把必要交接寫進文件並在新任務引用。",
+      "先整理這項任務的目標、已完成修改、驗證結果與未完成事項，形成一份短交接。不要新增其他功能。"
+    ],
+    "en": [
+      "Keep follow-ups about one outcome in the same task and separate independent outcomes into different tasks. Projects identify files; tasks track assignments. Multiple tasks do not automatically isolate files: use worktrees when isolation is needed.",
+      "Use the profile-card project and a short backlog. Separate layout changes from usage documentation and identify whether both touch the same file.",
+      [
+        "Add the practice folder in desktop and give the project a recognizable name. Verify its actual path before starting a task.",
+        "Create a task with a concrete outcome, such as improving mobile padding. Continue corrections and decisions about that outcome in the same task.",
+        "Start a new task for independent work. If two tasks edit the same file, sequence them or use separate worktrees; do not run competing edits to index.html.",
+        "After verification, rename the task around its outcome and archive it when no longer needed. Leave changed files, checks and remaining work in a handoff. Archiving a task does not delete project files or Git commits."
+      ],
+      "The sidebar clearly identifies work, and a returning reader can find decisions, results and the next action without replaying the whole chat.",
+      "A project name is not a filesystem path. Recheck it after moving files. A new task may not inherit all old context, so reference a concise handoff document.",
+      "Summarize this task's goal, completed changes, verification and remaining work as a short handoff. Do not add features."
+    ],
+    "ja": [
+      "同じ成果への追加依頼は同じタスクで続け、独立した成果は別にします。プロジェクトはファイルの位置、タスクは依頼を整理します。複数タスクだけではファイルは分離されません。",
+      "紹介カードの外観変更と使い方の追記を分け、同じファイルを変更するか確認します。",
+      [
+        "練習フォルダーを登録して分かる名前を付け、実際のパスを確認します。",
+        "『モバイルの余白を改善』など具体的なタスクを作り、修正や判断は同じ会話で続けます。",
+        "独立作業は新しいタスクにします。同じファイルを触る場合は順番に進めるか worktree で分離します。",
+        "検証後は成果が分かる名前にし、不要なタスクをアーカイブします。変更、確認、残件を引き継ぎます。アーカイブはファイルやコミットの削除ではありません。"
+      ],
+      "どのタスクが何をしたか分かり、次の作業を短い引き継ぎから再開できれば完了です。",
+      "名前だけで場所を判断しません。新規タスクには必要な引き継ぎ文書を明示します。",
+      "目的、完了した変更、検証、残件を短くまとめてください。機能は追加しないでください。"
+    ],
+    "ko": [
+      "같은 결과를 위한 후속 요청은 같은 작업에서 이어 가고 독립적인 결과는 분리합니다. 프로젝트는 파일 위치를, 작업은 요청을 정리합니다. 여러 작업이 자동으로 파일을 격리하지는 않습니다.",
+      "카드 디자인 변경과 사용 설명 추가를 나누고 같은 파일을 수정하는지 확인합니다.",
+      [
+        "연습 폴더를 등록하고 알아보기 쉬운 이름을 붙인 뒤 실제 경로를 확인합니다.",
+        "'모바일 여백 개선'처럼 구체적인 작업을 만들고 수정과 결정은 같은 대화에서 이어 갑니다.",
+        "독립 작업은 새로 만듭니다. 같은 파일을 건드리면 순서대로 진행하거나 worktree로 분리합니다.",
+        "검증 후 결과를 알 수 있는 이름으로 바꾸고 필요 없는 작업은 보관합니다. 변경, 검증과 남은 일을 기록합니다. 보관은 파일이나 커밋 삭제가 아닙니다."
+      ],
+      "각 작업이 무엇을 했는지 알 수 있고 짧은 인계로 다음 작업을 시작할 수 있으면 완료입니다.",
+      "이름만으로 파일 위치를 판단하지 마세요. 새 작업에는 필요한 인계 문서를 명시합니다.",
+      "목표, 완료한 변경, 검증과 남은 일을 짧게 정리하세요. 기능은 추가하지 마세요."
+    ]
+  }
+}

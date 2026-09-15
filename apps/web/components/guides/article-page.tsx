@@ -2,6 +2,9 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { SeriesHub } from "./series-hub";
+import { LearningHub } from "@/components/codex-learning/hub";
+import { HUB_SLUG, learningEntries } from "@/lib/codex-learning";
+import { depthCopy } from "@/lib/codex-learning/units";
 import { seriesCopy } from "@/lib/guide-series-copy";
 import { getGeminiHubReference, getVisibleGeminiSeries, isGeminiSeriesPage, projectGeminiArticle } from "@/lib/gemini-series.server";
 import { GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
@@ -247,11 +250,14 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const hero = state.document.hero;
   const copy = seriesCopy(locale);
   labels.blocks.code = copy;
-  const isHub = Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
-  const series = isHub && state.series ? await getGuideSeries(state.series.slug, locale) : null;
+  const isCodexHub = kind === "life" && slug === HUB_SLUG;
+  const isHub = isCodexHub || Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
+  const series = isHub ? await getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : null;
   if (state.series?.current) trail.push({ name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) });
   const headings = guideHeadings(state.document.blocks);
-  const seriesDirectory = isHub ? series ? <SeriesHub series={series} />
+  const seriesDirectory = isCodexHub
+    ? <LearningHub locale={locale} entries={learningEntries(locale, series?.entries ?? [])} available={Boolean(series)} />
+    : isHub ? series ? <SeriesHub series={series} />
     : <div role="alert"><p>{copy.unavailable}</p><a href={`/${locale}${guideHref(kind, slug)}`} className="inline-flex min-h-11 items-center underline">{copy.retry}</a></div> : null;
 
   return (
@@ -301,7 +307,8 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
           geminiSeries={geminiSeries}
           state={{ ...state, document: state.document }}
           related={related}
-          readingTime={t("guides.readingTime", { minutes: readingMinutes(state.document) })}
+          readingTime={t("guides.readingTime", { minutes: state.series?.current?.minutes ?? readingMinutes(state.document) })
+            + (state.series?.current?.operation_minutes ? ` · ${depthCopy(locale).practice} ${state.series.current.operation_minutes} ${copy.minutes}` : "")}
           labels={labels}
           adsense={adsense}
           seriesHub={seriesDirectory}

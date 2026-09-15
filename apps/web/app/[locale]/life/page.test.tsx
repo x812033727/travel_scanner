@@ -7,13 +7,13 @@ import LifeHubPage, { generateMetadata } from "./page";
  * vocabulary, and its own filtered-view robots rule.
  */
 
-const mocks = vi.hoisted(() => ({ list: vi.fn(), topics: vi.fn() }));
+const mocks = vi.hoisted(() => ({ list: vi.fn(), topics: vi.fn(), article: vi.fn() }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 // Only the two reads are stubbed: `hubIsEmpty` stays the real rule, so a test that fakes
 // an empty listing is exercising the indexing decision rather than restating it.
 vi.mock("@/lib/guides.server", async (original) => ({
   ...await original<typeof import("@/lib/guides.server")>(),
-  getGuideList: mocks.list, getGuideTopics: mocks.topics,
+  getGuideList: mocks.list, getGuideTopics: mocks.topics, getGuideArticle: mocks.article,
 }));
 
 const summary = {
@@ -28,6 +28,7 @@ const search = (over: Record<string, string> = {}) => Promise.resolve({ ...over 
 
 beforeEach(() => {
   vi.clearAllMocks();
+  mocks.article.mockResolvedValue({ status: "unpublished", document: null });
   mocks.list.mockResolvedValue({ articles: [summary], next_cursor: null, available: true });
   mocks.topics.mockResolvedValue([{ slug: "ai", label: "AI 工具", section: "life" }]);
 });

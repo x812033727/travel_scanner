@@ -1,0 +1,3222 @@
+{
+  "slug": "codex-troubleshooting",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 112,
+  "locales": {
+    "zh-TW": {
+      "title": "新手問題排除",
+      "description": "排除問題先判斷發生在哪一層：找不到程式是安裝或 PATH；進不了帳號是登入；讀不到檔案是目錄或權限；結果不對則可能是需求或專案程式。一次改一個條件，才能知道是哪個修正有效。",
+      "hero": {
+        "src": "/guides/codex-troubleshooting/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與使用方式"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "從可觀察的症狀找到最小檢查，再進入對應深入篇，不從頭重裝全部工具。閱讀約 15 分鐘；下方路徑演練約 20 分鐘，實際故障處理另計。Windows、macOS、Linux 及手機各有自己的入口，先確認錯誤發生在哪裡。這篇提供可自行完成的診斷起點，也可作為整套 Codex 教學的排錯索引。"
+        },
+        {
+          "type": "paragraph",
+          "text": "示意圖的 01 是記錄症狀，02 是依表選一個最小檢查，03 是修正原因後重做原操作。不是遇到錯誤就立即重試；先保留輸入、狀態及原本可用的環境，再縮小問題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：記錄現象與最後成功的動作"
+        },
+        {
+          "type": "paragraph",
+          "text": "先記錄時間、平台、應用程式／CLI 版本、目前資料夾、完整命令或操作、預期結果及錯誤原文。只分享和問題有關的訊息，遮蔽帳號、私有路徑與金鑰。若是安裝成功後才找不到指令，保留安裝結果；若是另一個任務仍在跑，保留任務名稱與主機。不要把錯誤截成只剩紅字，因為上一行命令與工作目錄通常決定下一步。"
+        },
+        {
+          "type": "code",
+          "label": "issue-notes.md 範本",
+          "language": "markdown",
+          "code": "# Troubleshooting record\n- Time and timezone:\n- Surface: desktop / CLI / IDE / mobile / web\n- OS and app or CLI version:\n- Working folder or execution host (redacted if shared):\n- Exact command or UI action:\n- Expected result:\n- Actual error and exit status:\n- Last successful action:\n- One change attempted:\n- Result after that change:\n- Files or settings to restore:\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "安裝、登入與平台入口"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "先做的小檢查",
+            "詳細操作"
+          ],
+          "rows": [
+            [
+              "codex 找不到或不是內外部命令",
+              "關閉舊終端機再開，查可執行檔位置",
+              "CLI 安裝"
+            ],
+            [
+              "PowerShell 阻擋腳本",
+              "記下被阻擋的檔名與執行方式",
+              "Windows CLI"
+            ],
+            [
+              "macOS／Linux 安裝位置不同",
+              "分辨 shell、PATH 及實際執行檔",
+              "macOS、Linux／WSL"
+            ],
+            [
+              "登入後還是未授權",
+              "同一終端機看 codex login status",
+              "帳號與額度"
+            ],
+            [
+              "找不到桌面或手機的某按鈕",
+              "記錄版本、帳號、工作空間與入口",
+              "平台選擇"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "codex 找不到或不是內外部命令: "
+            },
+            {
+              "type": "article",
+              "text": "CLI 安裝",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "PowerShell 阻擋腳本: "
+            },
+            {
+              "type": "article",
+              "text": "Windows CLI",
+              "kind": "life",
+              "slug": "codex-cli-windows"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "macOS／Linux 安裝位置不同: "
+            },
+            {
+              "type": "article",
+              "text": "macOS",
+              "kind": "life",
+              "slug": "codex-cli-macos"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Linux／WSL",
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "登入後還是未授權: "
+            },
+            {
+              "type": "article",
+              "text": "帳號與額度",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "找不到桌面或手機的某按鈕: "
+            },
+            {
+              "type": "article",
+              "text": "平台選擇",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "同一台電腦上的 Windows、WSL、容器與遠端主機不一定共用登入或設定；先確認出錯的是哪個環境。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 可以用 Get-Command codex 看找到的是哪個執行檔；macOS／Linux 用 command -v codex。看到多個安裝來源時先記錄，不立刻刪除舊版或更改全機安全政策。登入問題先分辨 ChatGPT 登入、API key 與組織限制；額度耗盡不會因重裝而增加。服務可能異常時查看官方狀態頁，對照你的錯誤時間與服務項目，不把網站整體正常視為自己的網路與權限都正常。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "工作目錄、MD 與設定"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "先確認",
+            "深入篇"
+          ],
+          "rows": [
+            [
+              "改了程式但頁面沒變",
+              "正確資料夾、服務網址、檔案版本",
+              "路徑、瀏覽器"
+            ],
+            [
+              "AGENTS.md 好像沒作用",
+              "真正檔名、所在層級、任務工作根目錄",
+              "規則層級"
+            ],
+            [
+              "把 README 當成永久規則",
+              "區分入口規則與任務資料",
+              "文件分工"
+            ],
+            [
+              "config.toml 解析失敗",
+              "最後改動、引號、重複 table、有效設定位置",
+              "設定排錯"
+            ],
+            [
+              "續接後沿用舊結論",
+              "核對現有檔案與版本，不只讀交接文字",
+              "工作階段、交接"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "改了程式但頁面沒變: "
+            },
+            {
+              "type": "article",
+              "text": "路徑",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "瀏覽器",
+              "kind": "life",
+              "slug": "codex-browser-images"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AGENTS.md 好像沒作用: "
+            },
+            {
+              "type": "article",
+              "text": "規則層級",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把 README 當成永久規則: "
+            },
+            {
+              "type": "article",
+              "text": "文件分工",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "config.toml 解析失敗: "
+            },
+            {
+              "type": "article",
+              "text": "設定排錯",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "續接後沿用舊結論: "
+            },
+            {
+              "type": "article",
+              "text": "工作階段",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "交接",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "一次只改一個條件。設定恢復正常後保留必要改動，移走你自己加的診斷標記，不能把整份設定覆蓋成網路上的範本。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "可重現演練：找到真正的資料夾"
+        },
+        {
+          "type": "paragraph",
+          "text": "在檔案管理員建立全新的 path-trouble，裡面有 project 與 other 兩個空白資料夾。只在 project 裡建立 marker.md，內容為下方一行。先從 other 開終端機，故意嘗試讀 marker.md；這會重現檔案找不到，不需要 Codex 也不會動到正式專案。接著查目前目錄與檔案清單，再用明確相對路徑讀到 marker，最後 cd 進 project 並重做原讀檔命令。"
+        },
+        {
+          "type": "code",
+          "label": "project/marker.md",
+          "language": "markdown",
+          "code": "# Correct folder: PATH-PRACTICE-1\n"
+        },
+        {
+          "type": "code",
+          "label": "Windows：從 other 資料夾開始",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath .\\marker.md\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath ..\\project\\marker.md\nSet-Location -LiteralPath ..\\project\nGet-Content -LiteralPath .\\marker.md\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux：從 other 開始",
+          "language": "sh",
+          "code": "cat ./marker.md\npwd\nls\ncat ../project/marker.md\ncd ../project\ncat ./marker.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個讀檔失敗，後面兩次應顯示相同 PATH-PRACTICE-1；marker 內容未改，修正的是操作位置。完成後回到原本工作目錄，練習資料可保留，不需要遞迴刪除。若套用到 Codex，先請它回報目前根目錄及指定檔案是否存在，再決定是否開錯專案。不要把桌面同名任務、另一個 worktree 或手機看到的舊內容當成同一資料夾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果需要記錄成功狀態，PowerShell 的 Get-Content 是 cmdlet，應立即保存 $?；$LASTEXITCODE 主要用於 codex、node 等原生程式。前面的路徑練習結束後，終端機應在 project，以下先讀不存在的 other/marker.md，再讀真正的 marker。PowerShell 預期依序 False、True；shell 則先非零、後 0。不要等其他命令跑完才讀狀態。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：目前在 project",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath ..\\other\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\nGet-Content -LiteralPath .\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux shell：目前在 project",
+          "language": "sh",
+          "code": "cat ../other/marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\ncat ./marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自動變數的精確定義見 "
+            },
+            {
+              "type": "link",
+              "text": "PowerShell 官方文件",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables"
+            },
+            {
+              "type": "text",
+              "text": "。兩次讀檔都不改 marker；若檔案內容改了，另記為未預期修改並先找原因。這樣交接時能把「路徑錯誤已修正」和「檔案原文保持」分開核對。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "工具、遠端與自動化"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症狀",
+            "先查哪一層",
+            "深入篇"
+          ],
+          "rows": [
+            [
+              "Skill 出現但做錯",
+              "有沒有選中、指示與資源是否相符",
+              "技能驗收"
+            ],
+            [
+              "Plugin 已安裝但無法查資料",
+              "入口支援、啟用、連線帳號與來源權限",
+              "插件排錯"
+            ],
+            [
+              "MCP 設定存在但工具不可用",
+              "程序／URL、握手、工具清單、授權",
+              "MCP 排錯"
+            ],
+            [
+              "手機讀到舊版本",
+              "主機連線、任務、檔案標記與 Handoff",
+              "遠端設定、跨裝置"
+            ],
+            [
+              "子代理說完成卻有衝突",
+              "修改責任與可重現證據",
+              "代理品質、平行整合"
+            ],
+            [
+              "排程逾時或重複",
+              "保存設定與活動 run 分開確認",
+              "自動化恢復"
+            ],
+            [
+              "JSON 有答案但程序失敗",
+              "退出碼、事件與最後資料各自驗證",
+              "JSON／JSONL"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Skill 出現但做錯: "
+            },
+            {
+              "type": "article",
+              "text": "技能驗收",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Plugin 已安裝但無法查資料: "
+            },
+            {
+              "type": "article",
+              "text": "插件排錯",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MCP 設定存在但工具不可用: "
+            },
+            {
+              "type": "article",
+              "text": "MCP 排錯",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "手機讀到舊版本: "
+            },
+            {
+              "type": "article",
+              "text": "遠端設定",
+              "kind": "life",
+              "slug": "codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "跨裝置",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "子代理說完成卻有衝突: "
+            },
+            {
+              "type": "article",
+              "text": "代理品質",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "平行整合",
+              "kind": "life",
+              "slug": "codex-parallel-integration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "排程逾時或重複: "
+            },
+            {
+              "type": "article",
+              "text": "自動化恢復",
+              "kind": "life",
+              "slug": "codex-automation-recovery"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "JSON 有答案但程序失敗: "
+            },
+            {
+              "type": "article",
+              "text": "JSON／JSONL",
+              "kind": "life",
+              "slug": "codex-json-output"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "依症狀只處理相關層，例如已安裝插件與來源帳號有權讀取是不同狀態。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成排錯與恢復工作"
+        },
+        {
+          "type": "paragraph",
+          "text": "修正後重做原本會失敗的操作，再加一個相鄰案例確認沒有破壞既有行為。例如修 Completed 後也測 Active；修改 config 後確認先前正常的設定還在；重連 MCP 後真的讀一份虛構文件，而非只看綠色連線圖示。把問題、原因、單一修正與驗證寫回 issue-notes.md，需要交給別人時提供最小可重現輸入及已試過的步驟。問題未解決就寫未解決，保留可用狀態與下一個要查的證據。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "最後撤回自己加入的測試標記與暫時設定，保留必要修正、備份及錯誤紀錄。不要藉排錯一次清空所有設定、刪除工作階段或公開敏感內容。這個索引不要求照表從頭做完；從自己的症狀選一列即可，讀完專篇可由篇首或篇尾回到"
+            },
+            {
+              "type": "article",
+              "text": "教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            },
+            {
+              "type": "text",
+              "text": "，再用功能名、指令或 MD 檔名搜尋下一步。各平台未提供的功能應記為不支援或尚未開放，與安裝故障分開處理。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-troubleshooting/diagram-1.svg",
+          "alt": "12. 新手問題排除 — 實作順序示意圖，非產品介面截圖。 Symptom → One check → Retry",
+          "width": 1600,
+          "height": 900,
+          "caption": "12. 新手問題排除 — 實作順序示意圖，非產品介面截圖。 Symptom → One check → Retry",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI command reference",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI status",
+          "url": "https://status.openai.com/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "新手问题排查",
+      "description": "排除问题先判断发生在哪一层：找不到程式是安装或 PATH；进不了帐号是登入；读不到档案是目录或权限；结果不对则可能是需求或专案程式。一次改一个条件，才能知道是哪个修正有效。",
+      "hero": {
+        "src": "/guides/codex-troubleshooting/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与使用方式"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "从可观察的症状找到最小检查，再进入对应深入篇，不从头重装全部工具。阅读约 15 分钟；下方路径演练约 20 分钟，实际故障处理另计。Windows、macOS、Linux 及手机各有自己的入口，先确认错误发生在哪里。这篇提供可自行完成的诊断起点，也可作为整套 Codex 教学的排错索引。"
+        },
+        {
+          "type": "paragraph",
+          "text": "示意图的 01 是记录症状，02 是依表选一个最小检查，03 是修正原因后重做原操作。不是遇到错误就立即重试；先保留输入、状态及原本可用的环境，再缩小问题。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：记录现象与最后成功的动作"
+        },
+        {
+          "type": "paragraph",
+          "text": "先记录时间、平台、应用程式／CLI 版本、目前资料夹、完整命令或操作、预期结果及错误原文。只分享和问题有关的讯息，遮蔽帐号、私有路径与金钥。若是安装成功后才找不到指令，保留安装结果；若是另一个任务仍在跑，保留任务名称与主机。不要把错误截成只剩红字，因为上一行命令与工作目录通常决定下一步。"
+        },
+        {
+          "type": "code",
+          "label": "issue-notes.md 范本",
+          "language": "markdown",
+          "code": "# Troubleshooting record\n- Time and timezone:\n- Surface: desktop / CLI / IDE / mobile / web\n- OS and app or CLI version:\n- Working folder or execution host (redacted if shared):\n- Exact command or UI action:\n- Expected result:\n- Actual error and exit status:\n- Last successful action:\n- One change attempted:\n- Result after that change:\n- Files or settings to restore:\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "安装、登入与平台入口"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症状",
+            "先做的小检查",
+            "详细操作"
+          ],
+          "rows": [
+            [
+              "codex 找不到或不是内外部命令",
+              "关闭旧终端机再开，查可执行档位置",
+              "CLI 安装"
+            ],
+            [
+              "PowerShell 阻挡脚本",
+              "记下被阻挡的档名与执行方式",
+              "Windows CLI"
+            ],
+            [
+              "macOS／Linux 安装位置不同",
+              "分辨 shell、PATH 及实际执行档",
+              "macOS、Linux／WSL"
+            ],
+            [
+              "登入后还是未授权",
+              "同一终端机看 codex login status",
+              "帐号与额度"
+            ],
+            [
+              "找不到桌面或手机的某按钮",
+              "记录版本、帐号、工作空间与入口",
+              "平台选择"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "codex 找不到或不是内外部命令: "
+            },
+            {
+              "type": "article",
+              "text": "CLI 安装",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "PowerShell 阻挡脚本: "
+            },
+            {
+              "type": "article",
+              "text": "Windows CLI",
+              "kind": "life",
+              "slug": "codex-cli-windows"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "macOS／Linux 安装位置不同: "
+            },
+            {
+              "type": "article",
+              "text": "macOS",
+              "kind": "life",
+              "slug": "codex-cli-macos"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Linux／WSL",
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "登入后还是未授权: "
+            },
+            {
+              "type": "article",
+              "text": "帐号与额度",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "找不到桌面或手机的某按钮: "
+            },
+            {
+              "type": "article",
+              "text": "平台选择",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "同一台电脑上的 Windows、WSL、容器与远端主机不一定共用登入或设定；先确认出错的是哪个环境。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 可以用 Get-Command codex 看找到的是哪个执行档；macOS／Linux 用 command -v codex。看到多个安装来源时先记录，不立刻删除旧版或更改全机安全政策。登入问题先分辨 ChatGPT 登入、API key 与组织限制；额度耗尽不会因重装而增加。服务可能异常时查看官方状态页，对照你的错误时间与服务项目，不把网站整体正常视为自己的网路与权限都正常。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "工作目录、MD 与设定"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症状",
+            "先确认",
+            "深入篇"
+          ],
+          "rows": [
+            [
+              "改了程式但页面没变",
+              "正确资料夹、服务网址、档案版本",
+              "路径、浏览器"
+            ],
+            [
+              "AGENTS.md 好像没作用",
+              "真正档名、所在层级、任务工作根目录",
+              "规则层级"
+            ],
+            [
+              "把 README 当成永久规则",
+              "区分入口规则与任务资料",
+              "文件分工"
+            ],
+            [
+              "config.toml 解析失败",
+              "最后改动、引号、重复 table、有效设定位置",
+              "设定排错"
+            ],
+            [
+              "续接后沿用旧结论",
+              "核对现有档案与版本，不只读交接文字",
+              "工作阶段、交接"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "改了程式但页面没变: "
+            },
+            {
+              "type": "article",
+              "text": "路径",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "浏览器",
+              "kind": "life",
+              "slug": "codex-browser-images"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AGENTS.md 好像没作用: "
+            },
+            {
+              "type": "article",
+              "text": "规则层级",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把 README 当成永久规则: "
+            },
+            {
+              "type": "article",
+              "text": "文件分工",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "config.toml 解析失败: "
+            },
+            {
+              "type": "article",
+              "text": "设定排错",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "续接后沿用旧结论: "
+            },
+            {
+              "type": "article",
+              "text": "工作阶段",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "交接",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "一次只改一个条件。设定恢复正常后保留必要改动，移走你自己加的诊断标记，不能把整份设定覆盖成网路上的范本。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "可重现演练：找到真正的资料夹"
+        },
+        {
+          "type": "paragraph",
+          "text": "在档案管理员建立全新的 path-trouble，里面有 project 与 other 两个空白资料夹。只在 project 里建立 marker.md，内容为下方一行。先从 other 开终端机，故意尝试读 marker.md；这会重现档案找不到，不需要 Codex 也不会动到正式专案。接著查目前目录与档案清单，再用明确相对路径读到 marker，最后 cd 进 project 并重做原读档命令。"
+        },
+        {
+          "type": "code",
+          "label": "project/marker.md",
+          "language": "markdown",
+          "code": "# Correct folder: PATH-PRACTICE-1\n"
+        },
+        {
+          "type": "code",
+          "label": "Windows：从 other 资料夹开始",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath .\\marker.md\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath ..\\project\\marker.md\nSet-Location -LiteralPath ..\\project\nGet-Content -LiteralPath .\\marker.md\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux：从 other 开始",
+          "language": "sh",
+          "code": "cat ./marker.md\npwd\nls\ncat ../project/marker.md\ncd ../project\ncat ./marker.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一个读档失败，后面两次应显示相同 PATH-PRACTICE-1；marker 内容未改，修正的是操作位置。完成后回到原本工作目录，练习资料可保留，不需要递回删除。若套用到 Codex，先请它回报目前根目录及指定档案是否存在，再决定是否开错专案。不要把桌面同名任务、另一个 worktree 或手机看到的旧内容当成同一资料夹。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果需要记录成功状态，PowerShell 的 Get-Content 是 cmdlet，应立即保存 $?；$LASTEXITCODE 主要用于 codex、node 等原生程式。前面的路径练习结束后，终端机应在 project，以下先读不存在的 other/marker.md，再读真正的 marker。PowerShell 预期依序 False、True；shell 则先非零、后 0。不要等其他命令跑完才读状态。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：目前在 project",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath ..\\other\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\nGet-Content -LiteralPath .\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux shell：目前在 project",
+          "language": "sh",
+          "code": "cat ../other/marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\ncat ./marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自动变数的精确定义见 "
+            },
+            {
+              "type": "link",
+              "text": "PowerShell 官方文件",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables"
+            },
+            {
+              "type": "text",
+              "text": "。两次读档都不改 marker；若档案内容改了，另记为未预期修改并先找原因。这样交接时能把「路径错误已修正」和「档案原文保持」分开核对。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "工具、远端与自动化"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症状",
+            "先查哪一层",
+            "深入篇"
+          ],
+          "rows": [
+            [
+              "Skill 出现但做错",
+              "有没有选中、指示与资源是否相符",
+              "技能验收"
+            ],
+            [
+              "Plugin 已安装但无法查资料",
+              "入口支援、启用、连线帐号与来源权限",
+              "插件排错"
+            ],
+            [
+              "MCP 设定存在但工具不可用",
+              "程序／URL、握手、工具清单、授权",
+              "MCP 排错"
+            ],
+            [
+              "手机读到旧版本",
+              "主机连线、任务、档案标记与 Handoff",
+              "远端设定、跨装置"
+            ],
+            [
+              "子代理说完成却有冲突",
+              "修改责任与可重现证据",
+              "代理品质、平行整合"
+            ],
+            [
+              "排程逾时或重复",
+              "保存设定与活动 run 分开确认",
+              "自动化恢复"
+            ],
+            [
+              "JSON 有答案但程序失败",
+              "退出码、事件与最后资料各自验证",
+              "JSON／JSONL"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Skill 出现但做错: "
+            },
+            {
+              "type": "article",
+              "text": "技能验收",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Plugin 已安装但无法查资料: "
+            },
+            {
+              "type": "article",
+              "text": "插件排错",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MCP 设定存在但工具不可用: "
+            },
+            {
+              "type": "article",
+              "text": "MCP 排错",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "手机读到旧版本: "
+            },
+            {
+              "type": "article",
+              "text": "远端设定",
+              "kind": "life",
+              "slug": "codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "跨装置",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "子代理说完成却有冲突: "
+            },
+            {
+              "type": "article",
+              "text": "代理品质",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "平行整合",
+              "kind": "life",
+              "slug": "codex-parallel-integration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "排程逾时或重复: "
+            },
+            {
+              "type": "article",
+              "text": "自动化恢复",
+              "kind": "life",
+              "slug": "codex-automation-recovery"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "JSON 有答案但程序失败: "
+            },
+            {
+              "type": "article",
+              "text": "JSON／JSONL",
+              "kind": "life",
+              "slug": "codex-json-output"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "依症状只处理相关层，例如已安装插件与来源帐号有权读取是不同状态。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成排错与恢复工作"
+        },
+        {
+          "type": "paragraph",
+          "text": "修正后重做原本会失败的操作，再加一个相邻案例确认没有破坏既有行为。例如修 Completed 后也测 Active；修改 config 后确认先前正常的设定还在；重连 MCP 后真的读一份虚构文件，而非只看绿色连线图示。把问题、原因、单一修正与验证写回 issue-notes.md，需要交给别人时提供最小可重现输入及已试过的步骤。问题未解决就写未解决，保留可用状态与下一个要查的证据。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "最后撤回自己加入的测试标记与暂时设定，保留必要修正、备份及错误纪录。不要藉排错一次清空所有设定、删除工作阶段或公开敏感内容。这个索引不要求照表从头做完；从自己的症状选一列即可，读完专篇可由篇首或篇尾回到"
+            },
+            {
+              "type": "article",
+              "text": "教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            },
+            {
+              "type": "text",
+              "text": "，再用功能名、指令或 MD 档名搜寻下一步。各平台未提供的功能应记为不支援或尚未开放，与安装故障分开处理。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-troubleshooting/diagram-1.svg",
+          "alt": "12. 新手问题排查 — 实作顺序示意图，非产品介面截图。 Symptom → One check → Retry",
+          "width": 1600,
+          "height": 900,
+          "caption": "12. 新手问题排查 — 实作顺序示意图，非产品介面截图。 Symptom → One check → Retry",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI command reference",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI status",
+          "url": "https://status.openai.com/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Troubleshooting for beginners",
+      "description": "Start by locating the failing layer. A missing executable suggests installation or PATH; a rejected account suggests authentication; missing files suggest location or permissions; an incorrect result may involve the request or project code. Change one condition at a time.",
+      "hero": {
+        "src": "/guides/codex-troubleshooting/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and how to use this guide"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Start with an observable symptom, perform a minimal check and follow the relevant in-depth lesson instead of reinstalling every tool. Allow 15 minutes to read and 20 for the path drill; real incident work varies. Windows, macOS, Linux and mobile have distinct surfaces, so identify where the error occurs first. This provides independent diagnostic starting points and an index to the full series."
+        },
+        {
+          "type": "paragraph",
+          "text": "The diagram maps 01 to recording symptoms, 02 to one minimal check and 03 to repeating the original action after correcting the cause. Do not retry immediately on every error: retain input, state and the working environment before narrowing the problem."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "First: Record the symptom and last successful action"
+        },
+        {
+          "type": "paragraph",
+          "text": "Record time, platform, app/CLI version, current folder, exact command/action, expected result and original error. Share relevant details with accounts, private paths and credentials redacted. Preserve installation output if a command is missing afterward, or task/host identity if another run is active. Do not crop an error to red text alone: the preceding command and working directory often determine the next step."
+        },
+        {
+          "type": "code",
+          "label": "issue-notes.md template",
+          "language": "markdown",
+          "code": "# Troubleshooting record\n- Time and timezone:\n- Surface: desktop / CLI / IDE / mobile / web\n- OS and app or CLI version:\n- Working folder or execution host (redacted if shared):\n- Exact command or UI action:\n- Expected result:\n- Actual error and exit status:\n- Last successful action:\n- One change attempted:\n- Result after that change:\n- Files or settings to restore:\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Installation, login and platform surfaces"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Symptom",
+            "Small first check",
+            "Detailed guide"
+          ],
+          "rows": [
+            [
+              "codex not found",
+              "Reopen the terminal and locate the executable",
+              "CLI setup"
+            ],
+            [
+              "PowerShell blocks a script",
+              "Record the blocked filename and invocation",
+              "Windows CLI"
+            ],
+            [
+              "Different macOS/Linux install paths",
+              "Identify shell, PATH and executable",
+              "macOS, Linux/WSL"
+            ],
+            [
+              "Unauthorized after login",
+              "Run codex login status in that terminal",
+              "Account/usage"
+            ],
+            [
+              "Missing desktop/mobile control",
+              "Record version, account, workspace and surface",
+              "Platform selection"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "codex not found: "
+            },
+            {
+              "type": "article",
+              "text": "CLI setup",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "PowerShell blocks a script: "
+            },
+            {
+              "type": "article",
+              "text": "Windows CLI",
+              "kind": "life",
+              "slug": "codex-cli-windows"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Different macOS/Linux install paths: "
+            },
+            {
+              "type": "article",
+              "text": "macOS",
+              "kind": "life",
+              "slug": "codex-cli-macos"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Linux/WSL",
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Unauthorized after login: "
+            },
+            {
+              "type": "article",
+              "text": "Account/usage",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Missing desktop/mobile control: "
+            },
+            {
+              "type": "article",
+              "text": "Platform selection",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows, WSL, containers and remote hosts need not share login/configuration even on one computer. Identify the failing environment."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use Get-Command codex on Windows or command -v codex on macOS/Linux to locate the executable. Record multiple installations before deleting versions or changing machine-wide security policy. Distinguish ChatGPT authentication, API keys and organization restrictions; reinstalling does not replenish quota. For possible service incidents, compare the official status page with your timestamp and affected service. Overall service health does not prove your network and permissions work."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Folders, MD files and configuration"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Symptom",
+            "First check",
+            "In-depth lesson"
+          ],
+          "rows": [
+            [
+              "Edits do not appear",
+              "Folder, served URL and file version",
+              "Paths, Browser"
+            ],
+            [
+              "AGENTS.md seems ignored",
+              "Filename, hierarchy and task root",
+              "Rule scopes"
+            ],
+            [
+              "README treated as permanent rules",
+              "Distinguish instruction entry points and task data",
+              "Document roles"
+            ],
+            [
+              "config.toml parse failure",
+              "Last edit, quotes, duplicate tables and active path",
+              "Config troubleshooting"
+            ],
+            [
+              "Resume repeats stale conclusions",
+              "Inspect current files/revision, not just notes",
+              "Sessions, Handoff"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Edits do not appear: "
+            },
+            {
+              "type": "article",
+              "text": "Paths",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Browser",
+              "kind": "life",
+              "slug": "codex-browser-images"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AGENTS.md seems ignored: "
+            },
+            {
+              "type": "article",
+              "text": "Rule scopes",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "README treated as permanent rules: "
+            },
+            {
+              "type": "article",
+              "text": "Document roles",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "config.toml parse failure: "
+            },
+            {
+              "type": "article",
+              "text": "Config troubleshooting",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Resume repeats stale conclusions: "
+            },
+            {
+              "type": "article",
+              "text": "Sessions",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Handoff",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Change one condition at a time. After recovery, keep necessary changes and remove your diagnostic markers rather than replacing the full config with an online template."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Reproducible drill: find the correct folder"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a new path-trouble folder with empty project and other subfolders. Put marker.md only in project with the line below. Open a terminal in other and deliberately try reading marker.md to reproduce a missing file without Codex or production changes. Inspect the current directory and file list, read the marker through an explicit relative path, then cd into project and repeat the original read command."
+        },
+        {
+          "type": "code",
+          "label": "project/marker.md",
+          "language": "markdown",
+          "code": "# Correct folder: PATH-PRACTICE-1\n"
+        },
+        {
+          "type": "code",
+          "label": "Windows: start in other",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath .\\marker.md\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath ..\\project\\marker.md\nSet-Location -LiteralPath ..\\project\nGet-Content -LiteralPath .\\marker.md\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux: start in other",
+          "language": "sh",
+          "code": "cat ./marker.md\npwd\nls\ncat ../project/marker.md\ncd ../project\ncat ./marker.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The first read fails; the next two show the same PATH-PRACTICE-1. You corrected location, not file contents. Return to your original working folder afterward and retain the fixture without recursive deletion. In Codex, first ask for its working root and whether a specified file exists before deciding that the wrong project is open. Same-named desktop tasks, another worktree or old phone content are not proof of the same folder."
+        },
+        {
+          "type": "paragraph",
+          "text": "For Get-Content, a PowerShell cmdlet, save $? immediately; $LASTEXITCODE is primarily for native programs such as codex or node. After the path exercise you should be in project. The blocks below read missing other/marker.md, then the real marker. Expect False then True in PowerShell, or nonzero then 0 in the shell. Do not wait until other commands replace the status."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell: currently in project",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath ..\\other\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\nGet-Content -LiteralPath .\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS/Linux shell: currently in project",
+          "language": "sh",
+          "code": "cat ../other/marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\ncat ./marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "See "
+            },
+            {
+              "type": "link",
+              "text": "PowerShell's automatic variables",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables"
+            },
+            {
+              "type": "text",
+              "text": " for exact definitions. Neither read changes the marker. Investigate unexpected edits separately, so the handoff distinguishes corrected paths from preserved file contents."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Tools, remote work and automation"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Symptom",
+            "Layer to inspect",
+            "In-depth lesson"
+          ],
+          "rows": [
+            [
+              "Skill visible but behaves wrongly",
+              "Selection, instructions and resources",
+              "Skill acceptance"
+            ],
+            [
+              "Installed plugin cannot read data",
+              "Surface support, enablement, account and source permission",
+              "Plugin troubleshooting"
+            ],
+            [
+              "MCP configured but tools unavailable",
+              "Process/URL, handshake, tool list and authorization",
+              "MCP troubleshooting"
+            ],
+            [
+              "Phone shows stale data",
+              "Host, task, file marker and Handoff",
+              "Remote setup, Cross-device"
+            ],
+            [
+              "Agent reports done but results conflict",
+              "Ownership and reproducible evidence",
+              "Agent quality, Integration"
+            ],
+            [
+              "Schedule times out or duplicates",
+              "Saved configuration versus active run",
+              "Automation recovery"
+            ],
+            [
+              "JSON answer despite failed process",
+              "Exit status, events and final data",
+              "JSON/JSONL"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Skill visible but behaves wrongly: "
+            },
+            {
+              "type": "article",
+              "text": "Skill acceptance",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Installed plugin cannot read data: "
+            },
+            {
+              "type": "article",
+              "text": "Plugin troubleshooting",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MCP configured but tools unavailable: "
+            },
+            {
+              "type": "article",
+              "text": "MCP troubleshooting",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Phone shows stale data: "
+            },
+            {
+              "type": "article",
+              "text": "Remote setup",
+              "kind": "life",
+              "slug": "codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Cross-device",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Agent reports done but results conflict: "
+            },
+            {
+              "type": "article",
+              "text": "Agent quality",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Integration",
+              "kind": "life",
+              "slug": "codex-parallel-integration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Schedule times out or duplicates: "
+            },
+            {
+              "type": "article",
+              "text": "Automation recovery",
+              "kind": "life",
+              "slug": "codex-automation-recovery"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "JSON answer despite failed process: "
+            },
+            {
+              "type": "article",
+              "text": "JSON/JSONL",
+              "kind": "life",
+              "slug": "codex-json-output"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Address the relevant layer: plugin installation and source-account access are distinct states."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Close the incident and resume work"
+        },
+        {
+          "type": "paragraph",
+          "text": "Repeat the originally failing action after fixing it, then test a nearby behavior: check Active after fixing Completed, preserve earlier working configuration after a config edit, or actually read a fictional document after reconnecting MCP rather than trusting a green icon. Record symptom, cause, one correction and verification in issue-notes.md. For handoff, provide minimal input and attempted steps. If unresolved, say so and preserve a usable state plus the next evidence to collect."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Remove your temporary markers/settings while keeping the necessary fix, backups and records. Troubleshooting is not a reason to clear all configuration, delete sessions or expose sensitive content. You do not need to execute this index from top to bottom: choose the row matching your symptom. Return to the "
+            },
+            {
+              "type": "article",
+              "text": "Learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            },
+            {
+              "type": "text",
+              "text": " from the top/bottom of any lesson and search a feature, command or MD filename. Record unavailable platform features separately from installation failures."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-troubleshooting/diagram-1.svg",
+          "alt": "12. Troubleshooting for beginners — Workflow illustration, not a product screenshot. Symptom → One check → Retry",
+          "width": 1600,
+          "height": 900,
+          "caption": "12. Troubleshooting for beginners — Workflow illustration, not a product screenshot. Symptom → One check → Retry",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI command reference",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI status",
+          "url": "https://status.openai.com/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "初心者のトラブルシューティング",
+      "description": "まず失敗する層を見分けます。コマンド不在は導入や PATH、ログイン失敗は認証、ファイル不在は場所や権限、結果の誤りは依頼やコードを調べます。一度に一つだけ条件を変えます。",
+      "hero": {
+        "src": "/guides/codex-troubleshooting/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と使い方"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "観測できる症状から最小確認を行い、全ツールの再導入ではなく対応する詳しい解説へ進みます。読む時間15分、パス実習20分で実障害対応は別です。各 OS・携帯の入口を区別し、どこで発生したか確認します。自力で始められる診断と全系列のトラブルシューティング索引です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "図の01は症状記録、02は最小確認1つ、03は原因修正後の元操作の再実行です。毎回すぐ再試行せず、入力・状態・利用可能環境を保存して問題を絞ります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "最初に：症状と最後の成功操作を記録"
+        },
+        {
+          "type": "paragraph",
+          "text": "時刻・プラットフォーム・版・現在場所・正確な命令／操作・期待・エラー原文を記録します。関係情報だけを共有しアカウント・私有パス・鍵を遮蔽します。導入後に命令がなければ導入結果、別 run が動けばタスク名・ホストを残します。赤字だけに切り取らず、直前の命令と場所を含めます。次の判断を左右するためです。"
+        },
+        {
+          "type": "code",
+          "label": "issue-notes.md 雛形",
+          "language": "markdown",
+          "code": "# Troubleshooting record\n- Time and timezone:\n- Surface: desktop / CLI / IDE / mobile / web\n- OS and app or CLI version:\n- Working folder or execution host (redacted if shared):\n- Exact command or UI action:\n- Expected result:\n- Actual error and exit status:\n- Last successful action:\n- One change attempted:\n- Result after that change:\n- Files or settings to restore:\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "導入・ログイン・プラットフォーム入口"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症状",
+            "最小確認",
+            "詳細"
+          ],
+          "rows": [
+            [
+              "codex がない",
+              "端末を開き直し実行ファイルを探す",
+              "CLI 導入"
+            ],
+            [
+              "PowerShell が阻止",
+              "ファイル名と起動方法を記録",
+              "Windows CLI"
+            ],
+            [
+              "macOS／Linux の導入場所違い",
+              "shell・PATH・実行ファイルを識別",
+              "macOS、Linux／WSL"
+            ],
+            [
+              "ログイン後も無権限",
+              "同じ端末の codex login status",
+              "アカウント・利用量"
+            ],
+            [
+              "デスクトップ・携帯の操作がない",
+              "版・アカウント・ワークスペース・入口を記録",
+              "プラットフォーム選択"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "codex がない: "
+            },
+            {
+              "type": "article",
+              "text": "CLI 導入",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "PowerShell が阻止: "
+            },
+            {
+              "type": "article",
+              "text": "Windows CLI",
+              "kind": "life",
+              "slug": "codex-cli-windows"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "macOS／Linux の導入場所違い: "
+            },
+            {
+              "type": "article",
+              "text": "macOS",
+              "kind": "life",
+              "slug": "codex-cli-macos"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Linux／WSL",
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ログイン後も無権限: "
+            },
+            {
+              "type": "article",
+              "text": "アカウント・利用量",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "デスクトップ・携帯の操作がない: "
+            },
+            {
+              "type": "article",
+              "text": "プラットフォーム選択",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ PC の Windows・WSL・コンテナー・遠隔も認証や設定を共有するとは限らず、失敗環境を識別します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows は Get-Command codex、macOS／Linux は command -v codex で実行ファイルを確認します。複数導入は記録し、直ちに版削除やシステム全体のセキュリティ方針を変えません。ChatGPT 認証・API 鍵・組織制限を分け、再導入で利用枠は増えません。サービス異常は公式ステータスページを時刻・項目と照合し、全体正常でも自分のネットワーク・権限正常とは断定しません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "作業場所・MD・設定"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症状",
+            "最初の確認",
+            "詳しい解説"
+          ],
+          "rows": [
+            [
+              "編集が画面に出ない",
+              "場所・提供 URL・版",
+              "パス、ブラウザー"
+            ],
+            [
+              "AGENTS.md が効かない",
+              "名・階層・作業根",
+              "規則範囲"
+            ],
+            [
+              "README を永久規則扱い",
+              "指示入口とタスク資料を分ける",
+              "文書役割"
+            ],
+            [
+              "TOML 解析失敗",
+              "最終編集・引用符・table 重複・有効場所",
+              "設定トラブルシューティング"
+            ],
+            [
+              "再開で古い結論",
+              "記録だけでなく現ファイル・版",
+              "セッション、引き継ぎ"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "編集が画面に出ない: "
+            },
+            {
+              "type": "article",
+              "text": "パス",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "ブラウザー",
+              "kind": "life",
+              "slug": "codex-browser-images"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AGENTS.md が効かない: "
+            },
+            {
+              "type": "article",
+              "text": "規則範囲",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "README を永久規則扱い: "
+            },
+            {
+              "type": "article",
+              "text": "文書役割",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "TOML 解析失敗: "
+            },
+            {
+              "type": "article",
+              "text": "設定トラブルシューティング",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "再開で古い結論: "
+            },
+            {
+              "type": "article",
+              "text": "セッション",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "引き継ぎ",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "1条件ずつ変え、復旧後は必要変更を残して自分の診断識別マーカーを除き、全設定をインターネット上の雛形で上書きしません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "再現実習：正しいフォルダーを見つける"
+        },
+        {
+          "type": "paragraph",
+          "text": "新規 path-trouble に空 project・other を作り、project だけに下記 marker.md を置きます。other から端末を開き、わざと marker.md を読んでファイル欠如を再現します。Codex や正式変更は不要です。現在地・一覧を調べ、明確な相対パスで読み、project に cd して元の読取を再実行します。"
+        },
+        {
+          "type": "code",
+          "label": "project/marker.md",
+          "language": "markdown",
+          "code": "# Correct folder: PATH-PRACTICE-1\n"
+        },
+        {
+          "type": "code",
+          "label": "Windows：other から開始",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath .\\marker.md\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath ..\\project\\marker.md\nSet-Location -LiteralPath ..\\project\nGet-Content -LiteralPath .\\marker.md\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux：other から開始",
+          "language": "sh",
+          "code": "cat ./marker.md\npwd\nls\ncat ../project/marker.md\ncd ../project\ncat ./marker.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "最初は失敗、後2回は同じ PATH-PRACTICE-1 で、内容ではなく操作場所を修正したと分かります。元場所に戻り教材は残せばよく、再帰削除は不要です。Codex でも先に根ディレクトリ・指定ファイルの存在を報告させてプロジェクト違いを判断します。同名タスク・別 worktree・携帯の古い内容は同じディレクトリの証拠ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "PowerShell の Get-Content は cmdlet なので $? を直後に保存します。$LASTEXITCODE は主に codex や node などの外部実行ファイル用です。経路演習後の project から、下では不在の other/marker.md と本物を順に読みます。PowerShell は False、True、shell は非ゼロ、0 を期待します。他の命令で状態を上書きする前に保存します。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：現在 project 内",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath ..\\other\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\nGet-Content -LiteralPath .\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux shell：現在 project 内",
+          "language": "sh",
+          "code": "cat ../other/marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\ncat ./marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "正確な定義は "
+            },
+            {
+              "type": "link",
+              "text": "PowerShell 自動変数",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables"
+            },
+            {
+              "type": "text",
+              "text": "を参照します。二回の読取りは marker を変更しません。予期しない編集は別途調べ、経路修正と原文保持を引継ぎで分けます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "ツール・遠隔・自動化"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症状",
+            "調べる層",
+            "詳しい解説"
+          ],
+          "rows": [
+            [
+              "Skill 可視だが誤動作",
+              "選択・指示・リソース",
+              "スキル検証"
+            ],
+            [
+              "導入 Plugin が読めない",
+              "入口・有効化・アカウント・出典権限",
+              "プラグイントラブルシューティング"
+            ],
+            [
+              "MCP 設定済みでツールなし",
+              "プロセス／URL・ハンドシェイク・一覧・認証",
+              "MCP トラブルシューティング"
+            ],
+            [
+              "携帯の旧資料",
+              "ホスト・タスク・識別マーカー・Handoff",
+              "遠隔設定、デバイス間の引き継ぎ"
+            ],
+            [
+              "エージェント完了報告と結果衝突",
+              "責任・再現証拠",
+              "品質、統合"
+            ],
+            [
+              "予約タイムアウト・重複",
+              "保存設定と活動 run",
+              "復旧"
+            ],
+            [
+              "JSON 回答あり・プロセス失敗",
+              "終了・イベント・最終資料",
+              "JSON／JSONL"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Skill 可視だが誤動作: "
+            },
+            {
+              "type": "article",
+              "text": "スキル検証",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "導入 Plugin が読めない: "
+            },
+            {
+              "type": "article",
+              "text": "プラグイントラブルシューティング",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MCP 設定済みでツールなし: "
+            },
+            {
+              "type": "article",
+              "text": "MCP トラブルシューティング",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "携帯の旧資料: "
+            },
+            {
+              "type": "article",
+              "text": "遠隔設定",
+              "kind": "life",
+              "slug": "codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "デバイス間の引き継ぎ",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "エージェント完了報告と結果衝突: "
+            },
+            {
+              "type": "article",
+              "text": "品質",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "統合",
+              "kind": "life",
+              "slug": "codex-parallel-integration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "予約タイムアウト・重複: "
+            },
+            {
+              "type": "article",
+              "text": "復旧",
+              "kind": "life",
+              "slug": "codex-automation-recovery"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "JSON 回答あり・プロセス失敗: "
+            },
+            {
+              "type": "article",
+              "text": "JSON／JSONL",
+              "kind": "life",
+              "slug": "codex-json-output"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "症状に関わる層を扱い、プラグイン導入と出典アカウントの読取権限を分けます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "トラブルシューティングを終えて作業に戻る"
+        },
+        {
+          "type": "paragraph",
+          "text": "修正後に元失敗操作と隣接挙動を検証します。Completed 修正後は Active、設定変更後は以前の正常項目、MCP 再接続後は緑アイコンだけでなく架空文書の実読取です。症状・原因・単一修正・検証を issue-notes.md に記録し、引き継ぎは最小入力と試行手順を渡します。未解決ならそう記し、利用可能状態と次に取る証拠を残します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自分の暫定識別マーカー・設定を戻し、必要修正・バックアップ・記録を保持します。トラブルシューティングを理由に全設定消去・セッション削除・機密公開はしません。索引を最初から全実施する必要はなく症状の1行を選びます。各編の上下から"
+            },
+            {
+              "type": "article",
+              "text": "学習目次",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            },
+            {
+              "type": "text",
+              "text": "へ戻り、機能・命令・MD 名で次を探せます。プラットフォームの非対応・未開放は導入障害と分けます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-troubleshooting/diagram-1.svg",
+          "alt": "12. 初心者のトラブルシューティング — 作業の流れを表す図です。製品画面の画像ではありません。 Symptom → One check → Retry",
+          "width": 1600,
+          "height": 900,
+          "caption": "12. 初心者のトラブルシューティング — 作業の流れを表す図です。製品画面の画像ではありません。 Symptom → One check → Retry",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI command reference",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI status",
+          "url": "https://status.openai.com/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "입문자를 위한 문제 해결",
+      "description": "먼저 실패한 계층을 구분합니다. 명령을 못 찾으면 설치나 PATH, 로그인 거부는 인증, 파일 누락은 위치나 권한, 결과 오류는 요청이나 코드를 확인합니다. 한 번에 조건 하나만 바꾸세요.",
+      "hero": {
+        "src": "/guides/codex-troubleshooting/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 사용법"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "관측 증상에서 최소 확인을 하고 모든 도구 재설치 대신 해당 심화 편으로 이동합니다. 읽기 15분, 경로 실습 20분이며 실제 장애 처리는 별도입니다. OS·모바일 진입점을 구분해 어디서 발생했는지 먼저 확인하세요. 독립 진단 시작점이자 전체 시리즈 문제 해결 색인입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도식의 01은 증상 기록, 02는 최소 확인 하나, 03은 원인 수정 후 원래 동작 반복입니다. 오류마다 바로 재시도하지 말고 입력·상태·사용 가능한 환경을 보존한 뒤 문제를 좁힙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "먼저: 증상과 마지막 성공 동작 기록"
+        },
+        {
+          "type": "paragraph",
+          "text": "시간·플랫폼·버전·현재 폴더·정확한 명령/동작·예상·오류 원문을 기록합니다. 관련 정보만 공유하고 계정·비공개 경로·키를 가리세요. 설치 후 명령이 없으면 설치 결과, 다른 run이 활동하면 작업 이름·호스트를 보존합니다. 빨간 글씨만 잘라내지 말고 직전 명령·위치를 포함해야 다음 판단에 도움이 됩니다."
+        },
+        {
+          "type": "code",
+          "label": "issue-notes.md 서식",
+          "language": "markdown",
+          "code": "# Troubleshooting record\n- Time and timezone:\n- Surface: desktop / CLI / IDE / mobile / web\n- OS and app or CLI version:\n- Working folder or execution host (redacted if shared):\n- Exact command or UI action:\n- Expected result:\n- Actual error and exit status:\n- Last successful action:\n- One change attempted:\n- Result after that change:\n- Files or settings to restore:\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "설치·로그인·플랫폼 진입점"
+        },
+        {
+          "type": "table",
+          "header": [
+            "증상",
+            "최소 확인",
+            "상세"
+          ],
+          "rows": [
+            [
+              "codex 없음",
+              "터미널 재열기·실행 파일 위치",
+              "CLI 설치"
+            ],
+            [
+              "PowerShell 차단",
+              "차단 파일명·호출법 기록",
+              "Windows CLI"
+            ],
+            [
+              "macOS/Linux 설치 위치 다름",
+              "shell·PATH·실행 파일 구분",
+              "macOS, Linux/WSL"
+            ],
+            [
+              "로그인 후 권한 없음",
+              "같은 터미널의 codex login status",
+              "계정·사용량"
+            ],
+            [
+              "데스크톱·모바일 조작 없음",
+              "버전·계정·워크스페이스·진입점 기록",
+              "플랫폼 선택"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "codex 없음: "
+            },
+            {
+              "type": "article",
+              "text": "CLI 설치",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "PowerShell 차단: "
+            },
+            {
+              "type": "article",
+              "text": "Windows CLI",
+              "kind": "life",
+              "slug": "codex-cli-windows"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "macOS/Linux 설치 위치 다름: "
+            },
+            {
+              "type": "article",
+              "text": "macOS",
+              "kind": "life",
+              "slug": "codex-cli-macos"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Linux/WSL",
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "로그인 후 권한 없음: "
+            },
+            {
+              "type": "article",
+              "text": "계정·사용량",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "데스크톱·모바일 조작 없음: "
+            },
+            {
+              "type": "article",
+              "text": "플랫폼 선택",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 PC의 Windows·WSL·컨테이너·원격도 인증·설정을 공유하지 않을 수 있으므로 실패 환경을 식별합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows는 Get-Command codex, macOS/Linux는 command -v codex로 실행 파일을 확인합니다. 여러 설치는 기록하고 바로 버전을 지우거나 전체 보안 정책을 바꾸지 않습니다. ChatGPT 인증·API 키·조직 제한을 구분하며 재설치는 한도를 늘리지 않습니다. 서비스 장애는 공식 상태 페이지의 시간·대상을 비교하고 전체 정상이어도 자신의 네트워크·권한 정상으로 단정하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "작업 폴더·MD·설정"
+        },
+        {
+          "type": "table",
+          "header": [
+            "증상",
+            "첫 확인",
+            "심화 편"
+          ],
+          "rows": [
+            [
+              "수정이 화면에 없음",
+              "폴더·제공 URL·버전",
+              "경로, 브라우저"
+            ],
+            [
+              "AGENTS.md 적용 안 됨",
+              "이름·계층·작업 루트",
+              "규칙 범위"
+            ],
+            [
+              "README를 영구 규칙으로 취급",
+              "지시 진입점·작업 자료 구분",
+              "문서 역할"
+            ],
+            [
+              "TOML 해석 실패",
+              "최근 수정·따옴표·table 중복·실제 위치",
+              "설정 문제"
+            ],
+            [
+              "재개 후 오래된 결론",
+              "기록뿐 아니라 현재 파일·버전",
+              "세션, 인계"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "수정이 화면에 없음: "
+            },
+            {
+              "type": "article",
+              "text": "경로",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "브라우저",
+              "kind": "life",
+              "slug": "codex-browser-images"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AGENTS.md 적용 안 됨: "
+            },
+            {
+              "type": "article",
+              "text": "규칙 범위",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "README를 영구 규칙으로 취급: "
+            },
+            {
+              "type": "article",
+              "text": "문서 역할",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "TOML 해석 실패: "
+            },
+            {
+              "type": "article",
+              "text": "설정 문제",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "재개 후 오래된 결론: "
+            },
+            {
+              "type": "article",
+              "text": "세션",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "인계",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "한 조건씩 바꾸고 복구 후 필요한 변경은 유지하며 자신의 진단 표시만 제거하세요. 전체 설정을 인터넷 서식으로 덮어쓰지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "재현 실습: 올바른 폴더 찾기"
+        },
+        {
+          "type": "paragraph",
+          "text": "새 path-trouble에 빈 project·other를 만들고 project에만 아래 marker.md를 둡니다. other에서 터미널을 열어 일부러 marker.md를 읽어 파일 누락을 재현하세요. Codex·운영 변경은 필요 없습니다. 현재 위치·목록을 확인하고 명시한 상대 경로로 읽은 뒤 project로 cd해 원래 읽기를 반복합니다."
+        },
+        {
+          "type": "code",
+          "label": "project/marker.md",
+          "language": "markdown",
+          "code": "# Correct folder: PATH-PRACTICE-1\n"
+        },
+        {
+          "type": "code",
+          "label": "Windows: other에서 시작",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath .\\marker.md\nGet-Location\nGet-ChildItem\nGet-Content -LiteralPath ..\\project\\marker.md\nSet-Location -LiteralPath ..\\project\nGet-Content -LiteralPath .\\marker.md\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux: other에서 시작",
+          "language": "sh",
+          "code": "cat ./marker.md\npwd\nls\ncat ../project/marker.md\ncd ../project\ncat ./marker.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "처음은 실패하고 뒤 두 번은 같은 PATH-PRACTICE-1이며 내용을 고친 것이 아니라 위치를 고쳤음을 확인합니다. 원래 위치로 돌아가고 자료는 보관하며 재귀 삭제는 필요 없습니다. Codex에서도 작업 루트·지정 파일 존재부터 확인해 잘못 연 프로젝트인지 판단하세요. 같은 이름 작업·다른 worktree·휴대전화의 오래된 내용이 같은 폴더의 증거는 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "PowerShell cmdlet인 Get-Content는 $?를 즉시 저장합니다. $LASTEXITCODE는 주로 codex·node 같은 네이티브 프로그램용입니다. 경로 실습을 마치면 project에 있어야 하며 아래는 없는 other/marker.md, 실제 marker 순서로 읽습니다. PowerShell은 False·True, shell은 0이 아닌 값·0이 나와야 합니다. 다른 명령이 상태를 덮기 전에 저장하세요."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell: 현재 project",
+          "language": "powershell",
+          "code": "Get-Content -LiteralPath ..\\other\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\nGet-Content -LiteralPath .\\marker.md\n$practiceReadOk = $?\n$practiceReadOk\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS/Linux shell: 현재 project",
+          "language": "sh",
+          "code": "cat ../other/marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\ncat ./marker.md\npractice_read_exit=$?\nprintf '%s\\n' \"$practice_read_exit\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "정확한 정의는 "
+            },
+            {
+              "type": "link",
+              "text": "PowerShell 자동 변수",
+              "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하세요. 두 읽기는 marker를 바꾸지 않습니다. 예상 밖 편집은 별도로 조사해 경로 수정과 파일 원문 보존을 나누어 인계합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "도구·원격·자동화"
+        },
+        {
+          "type": "table",
+          "header": [
+            "증상",
+            "확인 계층",
+            "심화 편"
+          ],
+          "rows": [
+            [
+              "Skill은 보이나 오동작",
+              "선택·지시·자료",
+              "기술 검증"
+            ],
+            [
+              "설치 Plugin 읽기 실패",
+              "진입점·활성·계정·원본 권한",
+              "플러그인 문제"
+            ],
+            [
+              "MCP 설정 있지만 도구 없음",
+              "프로세스/URL·연결·목록·인증",
+              "MCP 문제"
+            ],
+            [
+              "휴대전화 오래된 자료",
+              "호스트·작업·표식·Handoff",
+              "원격 설정, 장치 이동"
+            ],
+            [
+              "에이전트 완료 주장·충돌",
+              "책임·재현 증거",
+              "품질, 통합"
+            ],
+            [
+              "예약 시간 초과·중복",
+              "저장 설정·활동 run",
+              "자동화 복구"
+            ],
+            [
+              "JSON 답변·프로세스 실패",
+              "종료·이벤트·최종 자료",
+              "JSON/JSONL"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Skill은 보이나 오동작: "
+            },
+            {
+              "type": "article",
+              "text": "기술 검증",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "설치 Plugin 읽기 실패: "
+            },
+            {
+              "type": "article",
+              "text": "플러그인 문제",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MCP 설정 있지만 도구 없음: "
+            },
+            {
+              "type": "article",
+              "text": "MCP 문제",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "휴대전화 오래된 자료: "
+            },
+            {
+              "type": "article",
+              "text": "원격 설정",
+              "kind": "life",
+              "slug": "codex-remote-setup"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "장치 이동",
+              "kind": "life",
+              "slug": "codex-cross-device-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "에이전트 완료 주장·충돌: "
+            },
+            {
+              "type": "article",
+              "text": "품질",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "통합",
+              "kind": "life",
+              "slug": "codex-parallel-integration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "예약 시간 초과·중복: "
+            },
+            {
+              "type": "article",
+              "text": "자동화 복구",
+              "kind": "life",
+              "slug": "codex-automation-recovery"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "JSON 답변·프로세스 실패: "
+            },
+            {
+              "type": "article",
+              "text": "JSON/JSONL",
+              "kind": "life",
+              "slug": "codex-json-output"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "증상 관련 계층만 처리하며 플러그인 설치와 원본 계정 읽기 권한은 구분합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결을 마치고 작업 복귀"
+        },
+        {
+          "type": "paragraph",
+          "text": "수정 후 원래 실패 동작과 인접 동작을 검증합니다. Completed 수정 후 Active, 설정 수정 후 이전 정상 항목, MCP 재연결 후 초록 아이콘뿐 아니라 가상 문서 실제 읽기입니다. 증상·원인·단일 수정·검증을 issue-notes.md에 적고 인계에는 최소 입력·시도 절차를 제공합니다. 미해결이면 그대로 기록하고 사용 가능한 상태·다음 증거를 보존하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "자신의 임시 표식·설정을 되돌리고 필요한 수정·백업·기록은 유지합니다. 문제 해결을 이유로 전체 설정 삭제·세션 제거·민감 내용 공개를 하지 않습니다. 색인을 처음부터 모두 수행하지 말고 증상에 맞는 한 행을 고르세요. 각 편 위아래에서 "
+            },
+            {
+              "type": "article",
+              "text": "학습 목차",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            },
+            {
+              "type": "text",
+              "text": "로 돌아가 기능·명령·MD 이름으로 다음을 찾습니다. 플랫폼 미지원·미개방은 설치 장애와 구분합니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-troubleshooting/diagram-1.svg",
+          "alt": "12. 입문자를 위한 문제 해결 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Symptom → One check → Retry",
+          "width": 1600,
+          "height": 900,
+          "caption": "12. 입문자를 위한 문제 해결 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Symptom → One check → Retry",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI command reference",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI status",
+          "url": "https://status.openai.com/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

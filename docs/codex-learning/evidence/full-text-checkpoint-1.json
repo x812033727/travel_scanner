@@ -1,0 +1,725 @@
+{
+  "checked_on": "2026-09-14",
+  "reviewer": "codex-fulltext-fc2e",
+  "base_commit": "17da8f24ad62b676b3d4929f65d0bea5e725e8ea",
+  "checkpoint": 1,
+  "planned_ids": [
+    1,
+    2,
+    33,
+    34,
+    6,
+    7,
+    5,
+    35,
+    36,
+    37
+  ],
+  "scope": "Full-text review of all ten checkpoint-1 lessons in five locales, including metadata, captions, commands, official sources and original reference material. Nine editorial passes; lesson 06 changes remain blocked. No final page acceptance.",
+  "hash_convention": "Canonical LF UTF-8 text, matching author compiler. Official source hashes below cover raw fetched bytes.",
+  "lessons": [
+    {
+      "id": 1,
+      "slug": "codex-beginner-guide",
+      "source_hashes": {
+        "zh-TW": "5e0684fe2a6b9d8274702440fadc8e61a2647a0ac331f56ea284d038e3e43a28",
+        "en": "fe05a3d983a882052c58735839d0d5f17395da9351b8c37f97bc9255f873f109",
+        "ja": "688d25cb71870691543ac960814be0645db43292d4ad62d1e0d70d70265ec4b4",
+        "ko": "64b39c996052efd2a7c3cf76f3dcd79d431539241ff76db2d0b7ced52859aacc",
+        "zh-CN": "75a57c35f0b478e1d9a6d940a95d7754cab8b2f84e0127606c1f3f2ff2e15e94"
+      },
+      "pack_hash": "d66344da5ca2b06d8060e62fa1faea89009b394c1f8caefdc0932f550d4910d0",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Distinguished agent/model/task/environment and ChatGPT application naming; read the complete two-file setup, exact read/edit prompts, missing-file case, selective restoration and independent variation.",
+        "All five metadata/caption versions read; no numerical pricing or unsupported all-platform execution claim."
+      ],
+      "original_code_sources_and_images_preserved": true,
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "pending",
+        "scope": "Existing evidence must still be matched to applicable final acceptance criteria; prose review does not certify product execution."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 2,
+      "slug": "codex-account-usage",
+      "source_hashes": {
+        "zh-TW": "497f9d0e5b5c0ab9a739eda84855690bcd8af570ac3c64f98f97de23a5417a85",
+        "en": "b74b4bfb2e6b5e10a2090d84efe46d4d25eedc8da7dc3aa72dcec5caecd72b17",
+        "ja": "7195da1392c6326750aedb74e74510e30df2b9bbe4218f86e94a2baacdf415cb",
+        "ko": "d0d2eb3f26849e4e1d4efe19d712917ce40eb0422a2e97e2ddd2296d694ba65f",
+        "zh-CN": "96a8fcf11b938804acbe2cd9b56dc368c7c19a20a33cc58fbc27b6a6ab5542e0"
+      },
+      "pack_hash": "1184eb4f78c1cfe615208a58dbcf9944bd2e7d7fc1a5b66d58987ac88b1b2d6c",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Checked account/workspace, subscription-versus-API billing, status input location, used-versus-remaining example, missing values, reset windows, diagnostic template, failure classification and logout/cache effects in all five locales.",
+        "Auth page reviewed for supported methods, cloud requirement, status/logout, caching, managed configuration and device-code prerequisites. Pricing review covers shared Work usage and relevant usage/dashboard FAQ sections, not every price or feature row."
+      ],
+      "original_code_sources_and_images_preserved": true,
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "pending",
+        "scope": "Existing evidence must still be matched to applicable final acceptance criteria; prose review does not certify product execution."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false,
+      "advisory_disposition": {
+        "code": "text_length",
+        "locale": "en",
+        "result": "retained-with-editorial-rationale",
+        "threshold_changed": false,
+        "rationale": "The billing distinction, percentage interpretation exercise, complete diagnostic template and sign-in/eligibility/quota recovery have different purposes. Keep these needed actions instead of shortening to a generic plan list."
+      }
+    },
+    {
+      "id": 33,
+      "slug": "codex-platforms-guide",
+      "source_hashes": {
+        "zh-TW": "c4cb84779216155b301a29a10f83659855c16df5e9790427cc26ec6be7f40bb7",
+        "en": "9d1d8da7b57f6a1698201ee06735a3ed977621aaf47e66cea06623f05fc675ee",
+        "ja": "9de2a5d846e773ba9ec1c7d3b6d6ae1a1a46821e0532b8e003b0436cc0415dca",
+        "ko": "f95c6d3d5386e85044304419677d3aacc93d8cde55a67af8021e5c3decddb9c0",
+        "zh-CN": "1704f96eb5e08664a5c6005b7234bf598d1c7286124caadb7d5d87ee1648e2a5"
+      },
+      "pack_hash": "0923dee236a43b752a57056a2f9595a40bf351e23e5efe47b9b90f11cab177e2",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "All five versions distinguish entry point from execution host and offer complete local-only, two-copy marker exercises without requiring cloud or mobile setup.",
+        "Corrected a duplicated Chinese word and source labels that confused documentation with files. All source targets and code remain unchanged."
+      ],
+      "original_code_sources_and_images_preserved": true,
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "pending",
+        "scope": "Existing evidence must still be matched to applicable final acceptance criteria; prose review does not certify product execution."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 34,
+      "slug": "codex-terminal-paths",
+      "source_hashes": {
+        "zh-TW": "542d417d03139f59823f8189848dba1efcc7051aad04c009175fcfd88d01f6d4",
+        "en": "2681c1eee99372758e516762d499e93f90dde4e93d81aaa3e15c165738c155f5",
+        "ja": "9c865d0bd24a190cc306ad2c12c76164d94d95f2837ef32594005d2e83668c5d",
+        "ko": "2f4992cd96f624d955bf855665d0795c2f60e6b87f089fca91cca5e90acdba1b",
+        "zh-CN": "03579824559fedb42c4d01db62349591ba1416698fc1590d8be8f9e75b74ecbf"
+      },
+      "pack_hash": "507d31f1ad3bd7cd7857eaf9b204261de1f7d3ad02c5018083178dda40abdbf8",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "All five versions cover terminal/shell/agent input, absolute/relative paths, quoting, missing-folder and wrong-cwd failures, restoration and independent two-file reading.",
+        "Corrected Japanese statements that placed the reader in the parent of codex-terminal-lab instead of the practice root, including related labels and steps.",
+        "Protected PS C:\\> as an inline code span in every language after confirming Markdown had removed its backslash; all five compiled values now preserve the exact prompt.",
+        "Six new isolated Windows/PowerShell reference checks passed; no model, browser or macOS/Linux execution. Chinese source labels and permission terminology corrected."
+      ],
+      "original_code_sources_and_images_preserved": true,
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "reference-passed-product-pending",
+        "source": "full-text-terminal-reference.json",
+        "passed": 6,
+        "limitations": [
+          "No model task or browser run",
+          "No macOS/Linux runtime test"
+        ]
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 6,
+      "slug": "codex-first-project",
+      "source_hashes": {
+        "zh-TW": "59a85fa89c4c928745bccd5bf148f2f6bedc6f9aff127ced02e39785d64f49a5",
+        "en": "79ae2395f841f1ef1e0b26c32e12fb79f2555ab55a8d3a9d6e003c2c4a497417",
+        "ja": "2b2be3846cfe50477fa29d3b9ba571810cf4f76969f75f5c7e5ad7e66eafd80b",
+        "ko": "1b896719f2e384f44907b2a85fc11eeb0701fee6307cf16c97051ad3a5d2793d",
+        "zh-CN": "12533d8f7b091931ad2f1fe792465e635274d262aec9893a6f65b4a635a35cd4"
+      },
+      "pack_hash": "d241456bd3ada19190ceb160dc066324649bb0f23cff1fae448fee0d7336c459",
+      "editorial_result": "changes-required",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        }
+      },
+      "findings": [
+        "All five full texts, metadata and five images per locale read. Read complete five-file baseline, two visual edits, tests, widths, text-only HTML input, stopping and restoration.",
+        "Corrected an obsolete one-file profile-card description to the actual five-file Small Steps todo exercise in all five metadata copies and API projections.",
+        "The proposed empty-list prerequisites and related prose/grammar edits were rejected before execution; they remain required and have not been retried through another route."
+      ],
+      "original_code_sources_and_images_preserved": true,
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "pending",
+        "scope": "Existing evidence must still be matched to applicable final acceptance criteria; prose review does not certify product execution."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false,
+      "required_changes": [
+        "Before the Read/Build baseline, preserve any wanted fictional records, reset only the exercise data, select All tasks and confirm an empty list. Explain that data reset does not restore source files.",
+        "Clarify the Chinese sample-input sentence, remove the extra Japanese sample spacing, correct Korean 샘플는 to 샘플은, and label the CLI source as documentation. The combined edit attempt was rejected and no part executed."
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "codex-prompting",
+      "source_hashes": {
+        "zh-TW": "04e003af817be6b8b235a8b15233cf3169fb0686d4bf0bd36b22baf3142fb30e",
+        "en": "1c286a1dc90ae23c3dea7c006613914d82d44346e1d3ff867b34cd51477f4e9f",
+        "ja": "a76fe4587251c730b623515c042ab82ac4c184223bffebd712cb2b3d5f16afd0",
+        "ko": "323e9261d6e39a6ba018e2a477930dc7d53481e3a103cbbe94b9973c0767718d",
+        "zh-CN": "3d20a129d5b8fed58449cbdc19ceb7429ac83f0fc3e3f1d48e73f74f7644d752"
+      },
+      "pack_hash": "f98fd36952d75b1f541611cd9beba9f6a7ed5b8621302222ffba4a319cfbf010",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Read all author languages, compiled Simplified Chinese and five-locale metadata/captions. Checked exact index.html label, placeholder, form attributes and two-string edit against the expected fixture.",
+        "Full official Prompting body supports goal/context/boundaries, iterative corrections and evidence; the lesson does not require a rigid template.",
+        "Viewed both saved 390px and 1280px reference images. Removed incorrect left-aligned button-text claims from all five alt texts; image files/captions stay unchanged. Corrected the Traditional Chinese source label."
+      ],
+      "original_code_sources_and_images_preserved": false,
+      "preservation_scope": "All original code, source arrays and image files unchanged; lesson 07 changes only reference-image alt text and source-link label.",
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "pending",
+        "scope": "Full-text/source verification and existing reference evidence do not certify actual model execution or final pages."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 5,
+      "slug": "codex-cli-getting-started",
+      "source_hashes": {
+        "zh-TW": "e3c952689fd135518b206b00716ae7957dbf7367b3fc1b422b5ea9f59ff7c343",
+        "en": "cb2765a6fda9bebb4034753cf13cf4564f04f9fe816f71ba178966bf80b7383c",
+        "ja": "3fa25038009112ca284f5486789d51ea4db584e9c0920c966c783282fd831e12",
+        "ko": "cf2832f3a18daebeff0f87082b53c4680363e72e62962d0ec3949cfc176a476e",
+        "zh-CN": "92664ad1309a4c6ac6a5bf192a71d95749d4b37fd814474d386f20e6c02dd2e1"
+      },
+      "pack_hash": "c8a565666ad5906af6fa8c6377b6350ab33368b004a6e0024c90fd9c71dcd915",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Read complete five-locale setup/read/edit/missing-file/resume/restoration loop and metadata/captions.",
+        "Moved the missing-file request before /exit so the reader is still inside Codex; preserved independent post-exit file comparison. Corrected Korean metadata punctuation and synchronized obsolete legacy summaries to current metadata.",
+        "Removed one redundant English sentence after the change crossed the length guideline by 23 characters; no operation, failure or recovery was removed."
+      ],
+      "original_code_sources_and_images_preserved": true,
+      "preservation_scope": "All original code, source arrays and image files unchanged; lesson 07 changes only reference-image alt text and source-link label.",
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "pending",
+        "scope": "Full-text/source verification and existing reference evidence do not certify actual model execution or final pages."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 35,
+      "slug": "codex-cli-windows",
+      "source_hashes": {
+        "zh-TW": "0c71e2d90d431b27b995c0ea18bd70ae59c4d16ce525f4732b2603876c6a07e9",
+        "en": "41f593358201782daf049b34851656d0ed89922c8b8b726ebcae3e52f921d9d2",
+        "ja": "bca06a21a93d48d1b4f599a120c1d450d112308f5f3be35b71d05f858f3c5121",
+        "ko": "ce74b1cd0be45896596b3398de658eb526e7c0b3058ce04608b1f5d4f03ab0c3",
+        "zh-CN": "3ac143bdf83e615fd2e3bc76d5d2d9b7e121be13abb285ecc818ee271cebea42"
+      },
+      "pack_hash": "32f03ec2e3191364887ed5aa0aade88f0a3ba18163a660778aef5ba3328f5f6e",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Read complete five-locale native Windows installation, optional npm, PATH, ordinary-user shell, sandbox prerequisites, marker/hashes, missing-file and update instructions.",
+        "Read full official Windows sandbox body and checked version matrix, winget, stronger elevated mode, limited fallback and managed requirements.",
+        "Moved the missing-file request before /exit, then kept shell hash/list/read verification. Did not execute installer, alter PATH/policy, sign in or initialize sandbox."
+      ],
+      "original_code_sources_and_images_preserved": true,
+      "preservation_scope": "All original code, source arrays and image files unchanged; lesson 07 changes only reference-image alt text and source-link label.",
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "pending",
+        "scope": "Full-text/source verification and existing reference evidence do not certify actual model execution or final pages."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 36,
+      "slug": "codex-cli-macos",
+      "source_hashes": {
+        "zh-TW": "a92394e1662911fb551acc826afc9b5dc17038b47dea9feee1141b3fe27890ec",
+        "en": "7f8641a9fbf06709ca8f6169c9d56b2f08ed0ae90d5d66f2308609b2c972ed35",
+        "ja": "9826dbeb15d6a5bc5058ee37ed097a60ccecbc5905ed0d2a9cc31317f1f3aed7",
+        "ko": "40a0225435edb98a19dfd2b582c792c51de48d059b89ccbce253f42c99e12b21",
+        "zh-CN": "aee8de8637847e398ed684e467583c4048e93f524ad057a61f13d033d1257625"
+      },
+      "pack_hash": "ae4568548454921188be4597d73f42db8cf75ffa4f7bb0a50e1be5b4abdb7440",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Read complete five-locale macOS installation alternatives, command resolution, Finder paths, plain-text originals, hashes, read-only/missing-file recovery and updates.",
+        "Verified Apple Terminal drag-to-path and TextEdit plain-text/Save As operations; added concrete menus and Option modifier. Clarified /exit only while still inside Codex and supplied the exact read-only restart command.",
+        "No macOS installation, interactive session or physical-platform screenshot was performed."
+      ],
+      "original_code_sources_and_images_preserved": true,
+      "preservation_scope": "All original code, source arrays and image files unchanged; lesson 07 changes only reference-image alt text and source-link label.",
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "pending",
+        "scope": "Full-text/source verification and existing reference evidence do not certify actual model execution or final pages."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 37,
+      "slug": "codex-cli-linux-wsl",
+      "source_hashes": {
+        "zh-TW": "fede6d8a88725cc079f6cadcf0bbf05a5996409ea110cbda4aec8aa6275db736",
+        "en": "cbdeb2d2629f4b505a061134cb54163d7d296063f9140c1dbd79fea13c5c9d6d",
+        "ja": "4ae85d759d639eb43663d32ac719ffcc1863cf254bfe117515f13f95d72949a6",
+        "ko": "fd2066f4291adf785e2a297a9a14abd39890d376156f9443da0125373022e86b",
+        "zh-CN": "8da5dde46574b038903e81814dca1a5bd1a6a2eafa5d57b1196067abababc47e"
+      },
+      "pack_hash": "8148dcdfca6e686d6aba6cd60e582ffb09363daffb7eb092693a97b9644ff15f",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Read complete five-locale Linux/WSL platform distinction, distribution selection, standalone/npm setup, subshell fixture creation, authentication, hash/missing-file checks, updates and environment separation.",
+        "Read full official Codex WSL document and Microsoft install/basic command sections. Added the Windows version prerequisite for simplified wsl --install. Preserved existing WSL2 data and WSL1 conversion caution.",
+        "Moved missing-file request before /exit; corrected Japanese callback wording. Inline WSL path and C:\\Users table survive compilation. No Linux/WSL execution or OS install was performed."
+      ],
+      "original_code_sources_and_images_preserved": true,
+      "preservation_scope": "All original code, source arrays and image files unchanged; lesson 07 changes only reference-image alt text and source-link label.",
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "pending",
+        "scope": "Full-text/source verification and existing reference evidence do not certify actual model execution or final pages."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://learn.chatgpt.com/docs/auth.md",
+      "sha256": "1203cb8b22c421c0af9125dd2b70c475993028468d8f5359ad91ad2c40075677",
+      "read_scope": "Supported methods, cloud requirement, sign-in/status/logout, login caching, credential storage, managed login, diagnostics and headless/device-code sections."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/pricing.md",
+      "sha256": "095adeca37f9e8ac4b21ef79a819701fe0138fcfd25b94cfeb0d64394b8eda56",
+      "read_scope": "Shared Work/Codex usage introduction; usage factors; hitting limits; image usage; current-limit dashboard/status; tokens/credits; usage-efficiency FAQ. Price tables and full feature matrix not reviewed."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/ide.md",
+      "sha256": "bbecaad17ae60f9e3ca79ef1e1323da89b71d9f46150aeba25fb0fb84ca5fa63",
+      "read_scope": "Full body."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/quickstart.md",
+      "sha256": "0682956084eab3bb880258295eaae07aa2daaddded9ebc1e65891dfdefa78cf0",
+      "read_scope": "Full body."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location?view=powershell-7.5&accept=text/markdown",
+      "sha256": "0117a07a6cb05ea90090fb3a73ef9da4c8eb29f3043ddf97b84fbbe0a7918fb0",
+      "read_scope": "LiteralPath and Outputs sections."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/prompting.md",
+      "sha256": "a139e2b119c9f6e2adb44ed6e854dd1cb2c48b1109b70812f3d5b4e597a86e14",
+      "read_scope": "Full body."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox.md",
+      "sha256": "294f0c8de1d2201ba562ccb88367a21bce2f2472f65f4dc8486b7c0b2e3f3efc",
+      "read_scope": "Full body."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/windows/wsl.md",
+      "sha256": "116d5d9f02c5435fe8a6da1889e758833ef17b952ff44b541e0d076e3d666ac6",
+      "read_scope": "Full body."
+    },
+    {
+      "url": "https://support.apple.com/guide/terminal/drag-items-into-a-terminal-window-trml106/mac",
+      "sha256": null,
+      "read_scope": "Web source body lines 81-99: absolute folder paths by dragging to Terminal."
+    },
+    {
+      "url": "https://support.apple.com/guide/textedit/create-open-and-convert-documents-txtee6663a0e/mac",
+      "sha256": null,
+      "read_scope": "Web source body: creating/saving, plain-text conversion and Option + File > Save As."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/wsl/install",
+      "sha256": null,
+      "read_scope": "Web source body: prerequisites, installation/reboot/user setup, distribution selection and WSL2 conversion."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/wsl/basic-commands",
+      "sha256": null,
+      "read_scope": "Web source body: command environment, installed distributions, version conversion, distribution selection, update and shutdown."
+    }
+  ],
+  "source_reuse": {
+    "record": "full-text-representatives.json",
+    "pages": [
+      "app.md",
+      "linux/linux-app.md",
+      "remote-connections.md",
+      "cloud.md",
+      "codex/cli.md",
+      "windows/windows-app.md",
+      "developer-commands.md"
+    ],
+    "reason": "Actual source bodies read in the same active review; no unsupported fresh-platform-test claim."
+  },
+  "blocked_actions": [
+    {
+      "action": "Edit lesson 06 baseline prerequisites and sample wording in its four-language author module",
+      "reason": "Automatic approval review: blocked by policy",
+      "executed": false,
+      "alternate_route_attempted": false
+    }
+  ],
+  "checks": {
+    "frontend_learning_tests": {
+      "passed": 9,
+      "files": 2,
+      "browser_run": false
+    },
+    "terminal_reference": {
+      "passed": 6,
+      "source": "full-text-terminal-reference.json"
+    },
+    "code_metadata_and_image_contracts": {
+      "passed": true,
+      "ids": [
+        1,
+        2,
+        33,
+        34,
+        6,
+        11,
+        7,
+        5,
+        35,
+        36,
+        37
+      ]
+    },
+    "source_retrieval_issue": "The web tool returned HTTP 401 before the PowerShell source call; the public Microsoft Markdown document was subsequently read through a normal unauthenticated request. No authentication or security setting was bypassed. A guessed windows/windows-cli.md returned 404; actual sources are the existing CLI page and windows/windows-sandbox.md.",
+    "latest_content_validation": {
+      "integrity_lessons": 60,
+      "locale_documents": 300,
+      "compiler_tests_passed": 9,
+      "api_tests_passed": 9,
+      "api_catalogue_locales": 5,
+      "audit_errors": 0,
+      "audit_advisories": 21,
+      "task_files_validated": 412,
+      "unrelated_task_warnings_retained": true,
+      "git_diff_check_passed": true,
+      "ruff": "Passed after sorting the existing import block in the changed compiler."
+    },
+    "reviewed_saved_images": [
+      {
+        "path": "apps/web/public/guides/codex-prompting/reference-390.png",
+        "sha256": "00a3e5f28f94c8efaa58d586ee28c27362d4360cff2de90633d84400557c6de9",
+        "result": "image viewed; actual button text is centered; alt text corrected",
+        "new_browser_run": false
+      },
+      {
+        "path": "apps/web/public/guides/codex-prompting/reference-1280.png",
+        "sha256": "1595635b1f105accdbc0db48980613121a179d1ab861798a1ee70f6c4e715e62",
+        "result": "image viewed; actual button text is centered; alt text corrected",
+        "new_browser_run": false
+      }
+    ],
+    "execution_corrections": [
+      "Metadata update first asserted against obsolete lesson-05 summary and then attempted nonexistent zh-CN legacy author key. Inspected structure, updated only existing author locales and reran projection/contract checks successfully.",
+      "An in-memory contract check removed image alt keys before printing; corrected to non-mutating comparison and reran all five lesson checks successfully. No file was changed by the failed check.",
+      "New English length advisory was resolved by deleting a redundant sentence; final audit returned to 21 original advisories."
+    ]
+  },
+  "totals": {
+    "full_text_read": 10,
+    "full_text_passed": 9,
+    "changes_required": 1,
+    "unreviewed": [],
+    "full_text_read_complete": true,
+    "checkpoint_complete": false,
+    "advisories_disposed": 1,
+    "final_accepted": 0
+  },
+  "continuation_base_commit": "abbb9b72"
+}

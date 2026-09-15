@@ -47,6 +47,8 @@ class Lesson(StrictModel):
     aliases: list[str]
     prerequisites: list[str] = Field(default_factory=list)
     related: list[str] = Field(default_factory=list, max_length=3)
+    reading_minutes: int | None = Field(default=None, ge=1, le=120)
+    operation_minutes: int | None = Field(default=None, ge=1, le=240)
 
 
 class Catalogue(StrictModel):
@@ -56,6 +58,7 @@ class Catalogue(StrictModel):
     groups: list[SeriesGroup]
     paths: list[SeriesPath]
     entries: list[Lesson]
+    navigation_by_group: bool = False
 
     @model_validator(mode="after")
     def consistent(self) -> Catalogue:
@@ -85,12 +88,13 @@ def catalogues() -> tuple[Catalogue, ...]:
     )
 
 
-def catalogue_for_article(slug: str) -> Catalogue | None:
+def catalogue_for_article(slug: str, locale: Locale) -> Catalogue | None:
     return next(
         (
             item
             for item in catalogues()
-            if slug == item.hub or any(entry.slug == slug for entry in item.entries)
+            if item.locale == locale
+            and (slug == item.hub or any(entry.slug == slug for entry in item.entries))
         ),
         None,
     )
@@ -182,7 +186,8 @@ async def public_series(
                 platforms=item.platforms,
                 aliases=item.aliases,
                 description=document.description,
-                minutes=max(1, math.ceil(len(text) / 450)),
+                minutes=item.reading_minutes or max(1, math.ceil(len(text) / 450)),
+                operation_minutes=item.operation_minutes,
             )
         )
     return PublicSeries(
@@ -205,7 +210,7 @@ async def article_navigation(
     slug: str,
     locale: Locale,
 ) -> SeriesNavigation | None:
-    catalogue = catalogue_for_article(slug) if kind == "life" else None
+    catalogue = catalogue_for_article(slug, locale) if kind == "life" else None
     if catalogue is None:
         return None
     series = await public_series(session, catalogue.slug, locale)
@@ -217,17 +222,21 @@ async def article_navigation(
         entry.slug: ArticleReference(kind=entry.kind, slug=entry.slug, title=entry.title)
         for entry in series.entries
     }
-    for index, entry in enumerate(series.entries):
+    current_group = next((entry.group for entry in catalogue.entries if entry.slug == slug), None)
+    route = [
+        entry
+        for entry in series.entries
+        if not catalogue.navigation_by_group or entry.group == current_group
+    ]
+    for index, entry in enumerate(route):
         if entry.slug == slug:
             lesson = next(item for item in catalogue.entries if item.slug == slug)
             return SeriesNavigation(
                 slug=series.slug,
                 hub=series.hub,
                 current=entry,
-                previous=visible[series.entries[index - 1].slug] if index else None,
-                next=visible[series.entries[index + 1].slug]
-                if index + 1 < len(series.entries)
-                else None,
+                previous=visible[route[index - 1].slug] if index else None,
+                next=visible[route[index + 1].slug] if index + 1 < len(route) else None,
                 prerequisites=[visible[s] for s in lesson.prerequisites if s in visible],
                 related=[visible[s] for s in lesson.related if s in visible],
             )

@@ -1,0 +1,312 @@
+{
+  "checked_on": "2026-09-14",
+  "scope": "Targeted Unit D revision: five full Traditional Chinese drafts read; new and changed author-language sections and generated Simplified Chinese compared. No full-text final editorial or product UI acceptance.",
+  "base_commit": "cf4929f6806615f9f90267f68ef67a7e04e71bbf",
+  "changes": {
+    "9": "Labeled file contents and prompt; added literal four/three-backtick nesting, a short-closing-fence failure and restoration, plus local Command Palette binding checks. The original macOS shortcut agrees with the current VS Code Markdown page and was retained.",
+    "16": "Three worked evidence levels: file content only, untrusted skipped layer, enabled layer with effective value; non-use of search alone does not establish any of them.",
+    "42": "Aligned introduction with five cases; separates expected markers, diagnostic source evidence, observed answer and compliance.",
+    "43": "Save four document originals outside the project; compare unchanged source material separately; fill handoff only from observed evidence, retaining unresolved and unperformed work.",
+    "44": "Label fault samples and interpreter surfaces, preserve originals in fixed-* repairs, read immediate exit codes and demonstrate an extra key outside this narrow checker's coverage."
+  },
+  "code_labels": {
+    "existing_blocks_labeled": 32,
+    "added_blocks": 4,
+    "locales": 5,
+    "original_copyable_code_changed": false
+  },
+  "official_documents_reviewed": [
+    {
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md.md",
+      "sha256": "9d1f87a2d1cb55b4782b95abe710692b35b9659789c2db31a22c7074a3383e8e",
+      "body_characters": 9145,
+      "review_scope": "Full body"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/config-file/config-basic.md",
+      "sha256": "7fc85ae0b8f8ae1483fca0cf8972ccc6ee6b923c9e156b0c2965c52ecb5941e0",
+      "body_characters": 11673,
+      "review_scope": "Full body"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/developer-commands.md?surface=cli",
+      "sha256": "082a3798f6447ef73cf56200dfdbe41a2d53744fcd1aca7b47d6a347d001e173",
+      "body_characters": 48966,
+      "review_scope": "Selected /debug-config section: ordering, enabled state and policy diagnostics"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference.md",
+      "sha256": "60f5567c787e50f805e7d8b30ae153a1712ae20625c3624372f4b566c88284cb",
+      "body_characters": 112471,
+      "review_scope": "Selected exact web_search entry and project_doc_max_bytes/project_doc_fallback_filenames entries"
+    }
+  ],
+  "additional_primary_sources": [
+    {
+      "url": "https://code.visualstudio.com/docs/languages/markdown",
+      "review_scope": "Markdown preview and Command Palette, local key binding fallback; current page confirms Command+Shift+V on macOS."
+    },
+    {
+      "url": "https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks",
+      "review_scope": "Fenced blocks: quadruple outer fence displays triple inner fence. Added as body link; shared source metadata unchanged."
+    }
+  ],
+  "markdown_check": {
+    "parser": "mistune 3.1.3",
+    "scope": "AST parsing only; no HTML rendering or preview workaround",
+    "nested_fence_literal_content_preserved": true,
+    "trailing_paragraph_outside_block": true,
+    "short_closing_fence_reproduces_failure": true,
+    "repair_restores_ast": true,
+    "compiled_explanation_retains_prose_in_all_five_locales": true
+  },
+  "practice": {
+    "report": "docs/codex-learning/evidence/docs-config-practice.json",
+    "passed": 13,
+    "platform": "Windows",
+    "python": "3.14.6",
+    "model_executed": false,
+    "editor_preview_executed": false,
+    "client_configuration_changed": false,
+    "client_effective_setting_verified": false,
+    "macos_linux_executed": false,
+    "scope": "Exact authored Python, TOML and documentation reference files. Reference Node tests pass; five source files retain their original hashes. The four faulty samples return 1, four fixed copies return 0, and the unchecked-extra-key sample passes with the explicit loading disclaimer.",
+    "report_sha256": "d44a42558a9108a48d13650d6a208b499f4cb4838739b4e27f498219d53cc621"
+  },
+  "validation": {
+    "series_integrity": {
+      "lessons": 60,
+      "locale_documents": 300,
+      "result": "passed"
+    },
+    "api_content_tests": {
+      "passed": 9
+    },
+    "compiler_tests": {
+      "passed": 9
+    },
+    "content_audit": {
+      "errors": 0,
+      "warnings": 26,
+      "note": "Unchanged versus Unit C; no relaxed validators."
+    },
+    "tool_ruff": "passed after sorting imports and explicitly handling expected subprocess failures",
+    "shared_catalogues": "Five API catalogues match the manifest."
+  },
+  "final_acceptance": {
+    "targeted_depth_revised_lessons_total": 26,
+    "other_lessons_pending_targeted_review": 34,
+    "next_unit": "E: 45, 22, 17, 08, 18; representative 11 already targeted",
+    "accepted_lessons": 0,
+    "full_editorial_accepted": false,
+    "preview_accepted": false,
+    "blocker": "Automatic approval review rejected preview startup, including loopback-only retry: blocked by policy; no specific reason. No alternative preview/rendering startup attempted."
+  },
+  "publication": {
+    "pushed": false,
+    "pr": false,
+    "merged": false,
+    "imported": false,
+    "published": false,
+    "deployed": false
+  },
+  "lessons": [
+    {
+      "id": 9,
+      "slug": "codex-markdown-basics",
+      "source_hashes": {
+        "zh-TW": "fba95fc25b9544b2714e8cfc98b8f1b9874e89e26988304b03dcf3652e790703",
+        "en": "08ace87fde7b070bad85bfadaa84799ab90729fb03f139d5e0ce139dc33e30f1",
+        "ja": "11c1a90bc9cbedcd6b0435027646f2f850771fba8dd8ba20e10496d731270bcd",
+        "ko": "39b90ce01e63c5eb9e43dee5971d26acdd6b6f9d0d5de5ca495d394bbf108744",
+        "zh-CN": "024a6fb352634d3f3673e8e090c7e0f1fd4420922ca63584c2a9ffe282e2df46"
+      },
+      "pack_hash": "eab2729787cabe6f8f7b2f40f8d3ab7f4f98f843cebbce701e35d435b04d43c2",
+      "zh_tw_prose_characters": 2753,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 3,
+          "after": 4
+        },
+        "zh-CN": {
+          "before": 3,
+          "after": 4
+        },
+        "en": {
+          "before": 3,
+          "after": 4
+        },
+        "ja": {
+          "before": 3,
+          "after": 4
+        },
+        "ko": {
+          "before": 3,
+          "after": 4
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 42,
+      "slug": "codex-agents-md-scopes",
+      "source_hashes": {
+        "zh-TW": "73c9659a616618bb501f2000a141b034ef37ff21d39666ee28c39c6f96daad1f",
+        "en": "3c4c152b9b4b0eea400810bb492f3cf59518aca31011260ad2dd363defb31c0d",
+        "ja": "c8fb338336efaf311065710ebbdd7e9a019080aa78ed58e573be895ccf54c45d",
+        "ko": "b38b6886c8140ecef7cd6ce2c7486a698051f3819043d3279930e8f87c1ca493",
+        "zh-CN": "7b115e7c7578e3f857cb5e607006b7bd97eaf08758928ed5701d3167ffa34388"
+      },
+      "pack_hash": "06ca7c2dca166ada43a2c75ef230a1ec7e68e0e7cde72fbd6db112ce7527961e",
+      "zh_tw_prose_characters": 2453,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 8,
+          "after": 9
+        },
+        "en": {
+          "before": 8,
+          "after": 9
+        },
+        "ja": {
+          "before": 8,
+          "after": 9
+        },
+        "ko": {
+          "before": 8,
+          "after": 9
+        },
+        "zh-CN": {
+          "before": 8,
+          "after": 9
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 43,
+      "slug": "codex-rules-and-context-files",
+      "source_hashes": {
+        "zh-TW": "58d5c41c510308763f1dcef8cc821786705b461ebf84c19f105f2a8e2f2d5e3d",
+        "en": "cfc2c9f060ab42115fb45fd8a40c3c711a4e03edcd64508f41e8509cc682112d",
+        "ja": "a21891ae1824536d93d5b21280609aa0c9998b7d43c1d67f0b798adaba89f958",
+        "ko": "67ac84385488883c22f76cc9fe80d90ea5d3fe83b4b4e2c96069a9b42b48dbe4",
+        "zh-CN": "0d4265de824ff3a882039f014355be3d818b4bb68b8ad01216977f077f46df6e"
+      },
+      "pack_hash": "bb6119a8f0c4d8aae2cdb5712dfdd9ade7aed46d64602ca40be32e3a8f511f85",
+      "zh_tw_prose_characters": 2324,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 6,
+          "after": 7
+        },
+        "en": {
+          "before": 6,
+          "after": 7
+        },
+        "ja": {
+          "before": 6,
+          "after": 7
+        },
+        "ko": {
+          "before": 6,
+          "after": 7
+        },
+        "zh-CN": {
+          "before": 6,
+          "after": 7
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 16,
+      "slug": "codex-config-toml",
+      "source_hashes": {
+        "zh-TW": "0289455b1c34ee035b68fcc0655be1ba7cc5fd4c2d3d960f5558ffaa674ca982",
+        "en": "d1e407dc87756b258f196be014857a63a3753405e49dfe017022a9949827798a",
+        "ja": "43d9d0087e19124abdd8f12737574a731e1de6aaaed7806b21f9f498e5327402",
+        "ko": "f3824c2f196c471db96ffe6ca94c2c778726fcde0c275eef30ea40545ff6c8e1",
+        "zh-CN": "14c10a2d3a9d6dd04501775b15ce140fb91a76b6d6aa02e6da2efd2206898ccc"
+      },
+      "pack_hash": "0b4438ef7437a13c59e788f834238266ec38a198f4db4712961490ba019a0c7d",
+      "zh_tw_prose_characters": 2470,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 6,
+          "after": 6
+        },
+        "zh-CN": {
+          "before": 6,
+          "after": 6
+        },
+        "en": {
+          "before": 6,
+          "after": 6
+        },
+        "ja": {
+          "before": 6,
+          "after": 6
+        },
+        "ko": {
+          "before": 6,
+          "after": 6
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 44,
+      "slug": "codex-config-troubleshooting",
+      "source_hashes": {
+        "zh-TW": "c7d26dc8cd1bb1eeeff5ad516155502e4eacee7290da9f12e8911d19de3109b5",
+        "en": "90e5f4c9438762fe9d962b3e7a264065c53a721b7b228bfd1005a2250975b3e2",
+        "ja": "3f3cbf95ddd31fc9c33763c3725966513511f11fbca4ff5f7c87f9b5ed163032",
+        "ko": "4bf4993a4aa5493dd5721fe37233f6c3c48a97766621a2eff5d92b726758bc61",
+        "zh-CN": "ba917f1fd7b6c5a4688a1399447d4c8e7ac0b65ef797cfe24e54d913da9b4517"
+      },
+      "pack_hash": "bbe59182568f47a2f5ad51f9fb073b713a8167c331dd3d86defe7f04721cd452",
+      "zh_tw_prose_characters": 2403,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 9,
+          "after": 10
+        },
+        "en": {
+          "before": 9,
+          "after": 10
+        },
+        "ja": {
+          "before": 9,
+          "after": 10
+        },
+        "ko": {
+          "before": 9,
+          "after": 10
+        },
+        "zh-CN": {
+          "before": 9,
+          "after": 10
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true
+    }
+  ],
+  "prior_rule_discovery": {
+    "report": "docs/codex-learning/evidence/rule-discovery.json",
+    "original_four_rule_samples_hashes_match": true,
+    "rerun_this_revision": false,
+    "meaning": "Prior local diagnostic input evidence remains specific to CLI 0.154.0-alpha.6.2; no model compliance claim."
+  },
+  "shared_scope_unchanged": true
+}

@@ -1,0 +1,162 @@
+{
+  "checked_on": "2026-09-15",
+  "method": "Read-only inspection of the user-requested Claude task and its current local artifacts. No task message, source edit, preview command, model run or external action was sent to that task.",
+  "thread": {
+    "id": "01a09d8e-a18a-76a1-9952-b525f0210831",
+    "title": "規劃 Claude Code 教學目錄"
+  },
+  "claude_snapshot": {
+    "lessons": 96,
+    "hub_pages": 1,
+    "advanced_lessons": 36,
+    "independent_advanced_archives": 36,
+    "bundle_archives": 6,
+    "sources": {
+      "docs/claude-code-series/advanced/README.md": "3005077e4f7f8519eaa23cf6bfc694e0f1d363436fc1e37b76eb9da84363a00e",
+      "docs/claude-code-series/advanced/evidence/lesson-verification.json": "373cc4942be327f48c1c963f6d74e02c3b3db5970c01eb13728104c89356828b",
+      "docs/claude-code-series/advanced/evidence/live/final-ci-summary.json": "13f812714352bcdee563ada9ba6675da6add4598fc191579b538ee837fc9288e"
+    },
+    "verification_note": "Its recorded CI, device, sandbox, OAuth and model-run evidence applies only to that series and the named revisions; no results are transferred to Codex."
+  },
+  "codex_scope": {
+    "lessons": 60,
+    "hub_pages": 1,
+    "locales": [
+      "zh-TW",
+      "zh-CN",
+      "en",
+      "ja",
+      "ko"
+    ],
+    "policy": "Retain stable IDs and URLs. Align educational depth, prerequisites, reproducible exercises, failure/recovery, sources and navigation; do not inflate counts or invent product parity."
+  },
+  "mapping": [
+    {
+      "claude_lessons": "61-66",
+      "theme": "Project rules, permissions, settings and handoff",
+      "codex_ids": [
+        10,
+        42,
+        43,
+        16,
+        44,
+        18,
+        22
+      ],
+      "relationship": "Related goals within the existing curriculum; keep AGENTS.md and config.toml semantics distinct."
+    },
+    {
+      "claude_lessons": "67-72",
+      "theme": "Skills, supporting resources, quality checks and plugins",
+      "codex_ids": [
+        23,
+        48,
+        49,
+        24,
+        50
+      ],
+      "relationship": "Related goals; do not copy invocation parameters or plugin layout between products."
+    },
+    {
+      "claude_lessons": "73-78",
+      "theme": "Hook events, quality checks, notifications and boundaries",
+      "codex_ids": [
+        21,
+        30,
+        55,
+        56,
+        57,
+        59
+      ],
+      "relationship": "Only the workflow goals overlap. The current Codex curriculum does not claim an equivalent Hooks event API."
+    },
+    {
+      "claude_lessons": "79-84",
+      "theme": "Custom MCP tools, schemas, pagination, authorization and untrusted output",
+      "codex_ids": [
+        25,
+        52,
+        59,
+        8,
+        21
+      ],
+      "relationship": "Connection, troubleshooting and data handling overlap. Custom MCP server development/pagination is not covered as a dedicated Codex lesson."
+    },
+    {
+      "claude_lessons": "85-89",
+      "theme": "Bug reproduction, legacy projects, worktrees and collaboration",
+      "codex_ids": [
+        20,
+        58,
+        28,
+        53,
+        27,
+        54
+      ],
+      "relationship": "Related deliverables; Codex subagents and worktrees must not be described as Claude Agent Teams."
+    },
+    {
+      "claude_lessons": "90",
+      "theme": "Device interruption and resuming work",
+      "codex_ids": [
+        4,
+        38,
+        39,
+        40,
+        41,
+        45
+      ],
+      "relationship": "Related goals; actual device and host evidence remain separate."
+    },
+    {
+      "claude_lessons": "91-93",
+      "theme": "Structured output, CI and automation recovery",
+      "codex_ids": [
+        30,
+        55,
+        56,
+        29,
+        57
+      ],
+      "relationship": "Related goals; preserve the verified Codex command and scheduler interfaces."
+    },
+    {
+      "claude_lessons": "94",
+      "theme": "Agent SDK cancellation and session resume",
+      "codex_ids": [
+        45,
+        30,
+        55,
+        57
+      ],
+      "relationship": "Session and process recovery overlap; a dedicated Agent SDK tutorial is not part of the current 60-lesson scope."
+    },
+    {
+      "claude_lessons": "95-96",
+      "theme": "Comparable measurements and capstone delivery",
+      "codex_ids": [
+        17,
+        60,
+        31,
+        32,
+        21
+      ],
+      "relationship": "Related acceptance goals; the CSV capstone remains an additional Codex learning path."
+    }
+  ],
+  "current_acceptance_expectations": [
+    "Every lesson identifies the exact starting files or complete inline input, expected output, failure case and stopping/reset procedure.",
+    "A downloadable file must match its source and remain reproducible across text line endings; an archive is not proof of a real product operation.",
+    "Separate content/schema checks, local exercise checks, real Codex operations, final browser checks and publication.",
+    "Keep five-language inputs and code consistent, with native product limitations explicitly preserved."
+  ],
+  "not_added_to_current_release": [
+    "Dedicated custom MCP-server development and pagination",
+    "Dedicated Agent SDK programming course",
+    "Claude-specific Hooks and Agent Teams interfaces"
+  ],
+  "limits": [
+    "This is a curriculum comparison, not a new editorial checkpoint or a declaration that pending Codex lessons passed.",
+    "The second-stage Claude expansion does not change the existing Codex publication gates or authorize partial PR/deployment."
+  ]
+}

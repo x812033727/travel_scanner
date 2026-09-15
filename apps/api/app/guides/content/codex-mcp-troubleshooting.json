@@ -1,0 +1,1432 @@
+{
+  "slug": "codex-mcp-troubleshooting",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 144,
+  "locales": {
+    "zh-TW": {
+      "title": "MCP 連線診斷與故障復原",
+      "description": "從程序、傳輸、認證與工具清單分層檢查，保留錯誤證據並驗證最小可用操作。",
+      "hero": {
+        "src": "/guides/codex-mcp-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "把「MCP 不能用」拆成設定、啟動、認證、工具可見與執行五個可觀察狀態。閱讀約 15 分鐘、操作約 20 分鐘。先完成 MCP 入門，沿用 codexLearningDocs 練習項目；若之前已移除，依前篇重新新增。所有故障演練只針對這個項目，不更改正在供其他工作使用的服務。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "MCP 入門",
+              "kind": "life",
+              "slug": "codex-mcp"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：先查設定，別急著改逾時"
+        },
+        {
+          "type": "code",
+          "label": "Windows、macOS、Linux 終端機：唯讀檢查",
+          "language": "sh",
+          "code": "codex --version\ncodex mcp get codexLearningDocs\ncodex mcp list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認輸出中的名稱、enabled、傳輸方式與 URL，並記下本機還是遠端主機、CLI 或桌面入口，以及最後一次重新啟動的時間。若 get 找不到名稱，回到實際 config.toml；拼字、使用者層與專案層，以及自訂 CODEX_HOME 都要逐項核對。桌面、CLI、IDE 只有在同一 Codex 主機下才共用設定，Windows 原生與 WSL 的家目錄也不能當成同一個位置。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "設定檔解析失敗時，先處理行號附近的引號、重複表格或錯誤類型，再談網路。用"
+            },
+            {
+              "type": "article",
+              "text": "設定篇",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "的方法保存自己的修改前副本，只修改練習區段；不要把整份設定貼上公開求助。若檔案能解析但名稱仍不見，檢查可信任專案的載入與當前工作目錄，並確認編輯器保存的是實際檔案，不是另一份備份。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "可觀察狀態",
+            "證據",
+            "下一步"
+          ],
+          "rows": [
+            [
+              "已保存設定",
+              "get 顯示正確項目",
+              "檢查啟動與連線"
+            ],
+            [
+              "已初始化",
+              "客戶端顯示伺服器已連接",
+              "查看工具"
+            ],
+            [
+              "已認證",
+              "需要登入的服務完成登入",
+              "核對資料權限"
+            ],
+            [
+              "工具可見",
+              "新任務能看到目標工具",
+              "呼叫小型唯讀範例"
+            ],
+            [
+              "執行成功",
+              "工具回傳可核對資料",
+              "比對來源及未改動範圍"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "公開文件服務沒有認證要求時，該欄填「不需要」，不是漏做登入。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：重現工具被停用的情況"
+        },
+        {
+          "type": "paragraph",
+          "text": "先用前篇的唯讀問題取得一次正常結果，保存原設定後，在既有練習區段加上 enabled = false。桌面按 MCP 設定中的 Restart，IDE 重新啟動擴充套件，CLI 結束後開新工作階段。不要只在舊對話重新問一句，因為它仍可能引用已讀過的內容。這個練習刻意讓伺服器不可用，不代表遠端官方服務真的壞了。"
+        },
+        {
+          "type": "code",
+          "label": "以此替換自己的練習區段，不再附加同名表格",
+          "language": "toml",
+          "code": "[mcp_servers.codexLearningDocs]\nurl = \"https://developers.openai.com/mcp\"\nenabled = false\n"
+        },
+        {
+          "type": "code",
+          "label": "新 Codex CLI 互動工作階段：檢查可用工具",
+          "language": "text",
+          "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "/mcp 這段只在 CLI 互動畫面使用。桌面版和 IDE 以 MCP servers 設定確認停用，重新啟動後在新任務檢查工具活動。記錄「客戶端未提供工具」即可，不必為了重現命令而改用其他入口；跨入口測試要另記主機與設定位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期新工作階段不再提供這個已停用伺服器的工具。此時即使 get 仍列出它，也符合預期：設定存在與工具可用是不同狀態。把 enabled 改回 true 或移除這次加入的 false，重新啟動後重做查詢並核對官方原文。保存「正常 → 停用 → 恢復」三個結果，不能只保存最後成功畫面，否則看不出故障演練是否真的生效。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：區分 STDIO 啟動與 HTTP 連線"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你使用其他 STDIO 伺服器，先看 command、args 與 cwd。Windows 用 Get-Command 查啟動程式，macOS、Linux 用 command -v；這只證明目前終端機找得到程式，不保證從桌面啟動的程序 PATH 完全一樣。相對路徑會受工作目錄影響，檔案不存在先修正路徑；需要 Node.js 的伺服器則核對 Node 版本。不要為檔名打錯直接拉長啟動逾時。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：僅適用需要 Node 的 STDIO 伺服器",
+          "language": "powershell",
+          "code": "Get-Command node\nnode --version\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux 終端機：僅適用需要 Node 的 STDIO 伺服器",
+          "language": "sh",
+          "code": "command -v node\nnode --version\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "STDIO 伺服器把標準輸入輸出當協定通道，額外印出歡迎文字或除錯資料可能干擾連線。若你維護該伺服器，依其官方實作把一般紀錄寫到 stderr；若只是使用者，記錄啟動錯誤交給提供者，不要隨意改第三方套件內容。手動啟動後等待輸入而沒有文字，不必然是當機；看到程序活著也不等於 MCP 已成功初始化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "HTTP 則先核對完整協定、主機、路徑，例如本篇必須是官方 /mcp 端點。瀏覽器能開網站首頁，只能證明部分網路可達，不能證明 MCP 請求、代理設定與驗證都成功。TLS 錯誤應檢查系統時間、公司代理與憑證信任設定；先向環境維護者確認，不把關閉憑證驗證當成教學預設。暫時連不上時保留時間與遮蔽後錯誤再重試。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：認證、工具篩選與逾時"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要 OAuth 的服務可以在客戶端按 Authenticate，或先查 codex mcp login --help 再以自己的伺服器名稱登入。要用哪個帳號、哪些權限，以及回呼網址都依提供者規格；若需要預先註冊 client ID，就註冊 Codex 顯示的完整回呼網址，不能猜固定埠或把 localhost 和 127.0.0.1 任意互換。公開 Docs MCP 不用這項登入練習。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "認證已完成但看不到某個工具時，查看 enabled_tools、disabled_tools 與插件本身的工具政策。允許清單不會創造伺服器沒有提供的能力；同名工具同時列在兩份清單時，停用清單在允許清單之後套用。先用目前工具目錄取得真正名稱，不要猜成 search 或 read。插件提供的伺服器另有插件層設定，使用者設定不負責改寫它的啟動命令，詳見 "
+            },
+            {
+              "type": "article",
+              "text": "Plugins 排除問題",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "啟動逾時與工具執行逾時是不同階段：startup_timeout_sec 只處理初始化等待，tool_timeout_sec 處理單次工具。先確認程式、網址、認證都對，再用較小的唯讀請求判斷是否只是工作太大；只有確定是合理等待不足才調整那個伺服器的值並重測。optional startup grace 與 required 也會影響啟動時的行為，新手不必把所有伺服器改成 required；無法啟動的重要服務應保留錯誤並停止依賴它的工作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "收尾：可交接的故障紀錄"
+        },
+        {
+          "type": "code",
+          "label": "mcp-recovery.md",
+          "language": "markdown",
+          "code": "# MCP recovery record\nSurface / OS / client version:\nHost and effective config location (redacted):\nServer name / transport:\nFailure layer:\nOriginal error (without secrets):\nSingle change:\nNew-session tool visibility:\nRead-only request and verified source:\nNormal / disabled / restored results:\nUnrelated settings preserved:\nRemaining limitation and next action:\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果練習改壞設定，先恢復本次練習區段，重新讀取確認；不要在其他任務同時寫設定時整檔還原。結束後按前篇移除自己新增的 codexLearningDocs 即可。OAuth 服務的 logout 用於清除該服務的已存認證，remove 用於移除設定；是否還有外部授權，要到提供者的帳號頁確認。兩者都不能撤銷已經寫進外部系統的資料，涉及寫入要依原服務自己的復原流程處理。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成標準是能解釋哪一層失敗、提供一次可重現的停用與恢復，以及新的唯讀工具證據；只看到程序、設定檔或正確答案都不夠。尚未取得連線時保留「未完成工具驗證」，不用把未測環境填成正常。本篇產品流程依官方文件查證，本機設定與直接 MCP 協定驗證另存紀錄；macOS、Linux、IDE、OAuth 與實體手機未因這些測試而自動取得實測標記。下一步進入 "
+            },
+            {
+              "type": "article",
+              "text": "Worktree 隔離",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Model Context Protocol",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Docs MCP",
+          "url": "https://developers.openai.com/learn/docs-mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "MCP connection diagnosis and recovery",
+      "description": "Inspect process, transport, authentication and tool discovery, preserve errors and verify a minimal operation.",
+      "hero": {
+        "src": "/guides/codex-mcp-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Separate 'MCP does not work' into configuration, startup, authentication, tool visibility and execution. Allow 15 minutes to read and 20 to practice. Complete MCP setup and reuse codexLearningDocs, recreating it through that lesson if removed. Run failure exercises only on this practice entry, preserving services used by other work."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "MCP setup",
+              "kind": "life",
+              "slug": "codex-mcp"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Inspect configuration before changing timeouts"
+        },
+        {
+          "type": "code",
+          "label": "Windows, macOS or Linux terminal: read-only inspection",
+          "language": "sh",
+          "code": "codex --version\ncodex mcp get codexLearningDocs\ncodex mcp list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the name, enabled state, transport and URL. Record whether this is a local or remote host, CLI or desktop, and the last restart. If get cannot find the name, inspect the actual config.toml, spelling, user/project scope and custom CODEX_HOME. Desktop, CLI and IDE share settings only on the same Codex host; native Windows and WSL home directories are not interchangeable."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "For a parse error, fix quotes, duplicate tables or incorrect value types near the reported line before investigating networking. Preserve a before-copy as described in "
+            },
+            {
+              "type": "article",
+              "text": "Configuration",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": " and edit only the practice section, keeping the full settings private. If parsing succeeds but the entry is missing, check trusted-project loading, working directory and whether the editor saved the actual file rather than a backup."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "Observed state",
+            "Evidence",
+            "Next step"
+          ],
+          "rows": [
+            [
+              "Saved",
+              "get shows the correct entry",
+              "Check startup and connection"
+            ],
+            [
+              "Initialized",
+              "Client reports connected server",
+              "Inspect tools"
+            ],
+            [
+              "Authenticated",
+              "Required service login completed",
+              "Check data access"
+            ],
+            [
+              "Visible tools",
+              "New task sees the target tool",
+              "Run a small read-only example"
+            ],
+            [
+              "Executed",
+              "Tool returns verifiable data",
+              "Compare source and preserved scope"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Mark authentication not required for a public server that needs none; it is not a skipped login."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Reproduce a disabled tool catalog"
+        },
+        {
+          "type": "paragraph",
+          "text": "Obtain a normal read with the previous lesson's question, save the configuration, then add enabled = false to the existing practice section. Use Restart in desktop MCP settings, restart the IDE extension, or open a fresh CLI session. Merely asking again in the old conversation can reuse earlier content. This exercise deliberately disables your entry; it does not indicate a remote service outage."
+        },
+        {
+          "type": "code",
+          "label": "Replace your practice section; do not append a duplicate table",
+          "language": "toml",
+          "code": "[mcp_servers.codexLearningDocs]\nurl = \"https://developers.openai.com/mcp\"\nenabled = false\n"
+        },
+        {
+          "type": "code",
+          "label": "Fresh interactive Codex CLI session: inspect tools",
+          "language": "text",
+          "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The /mcp block is for interactive CLI. In desktop or IDE, confirm disabling in MCP servers settings, restart and inspect tool activity in a new task. Record that the client did not expose the tool; switching surfaces is unnecessary. If you compare surfaces, record each host and configuration location."
+        },
+        {
+          "type": "paragraph",
+          "text": "The new session should not expose tools from the disabled server, even though get still lists its configuration. Set enabled to true or remove the added false value, restart, then query and verify the official source again. Preserve all three states—normal, disabled and restored—because a final success screenshot alone does not demonstrate that the failure exercise took effect."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Separate STDIO startup and HTTP connection"
+        },
+        {
+          "type": "paragraph",
+          "text": "For another STDIO server, inspect command, args and cwd first. Use Get-Command on Windows or command -v on macOS/Linux. This proves the current terminal resolves the program, not that a desktop-launched process inherits the same PATH. Relative paths depend on the working directory; fix missing paths first and check Node versions for servers that require Node.js. A misspelled filename is not repaired by a longer startup timeout."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell: for Node-based STDIO servers only",
+          "language": "powershell",
+          "code": "Get-Command node\nnode --version\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS/Linux terminal: for Node-based STDIO servers only",
+          "language": "sh",
+          "code": "command -v node\nnode --version\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "STDIO uses standard input/output for protocol messages, so extra greeting or debug output can interfere. If you maintain the server, follow its official implementation and direct ordinary logs to stderr. Otherwise, report startup evidence to the provider rather than editing third-party package internals. A manually started process waiting silently for input is not necessarily hung, and a live process does not prove MCP initialization."
+        },
+        {
+          "type": "paragraph",
+          "text": "For HTTP, check scheme, host and full path, including the official /mcp endpoint here. A browser opening the homepage proves only partial reachability, not a successful MCP request, proxy setup or authentication. For TLS errors, inspect system time, organizational proxy and certificate trust with the environment maintainer; disabling certificate checks is not the default repair. Record time and a redacted error before retrying a temporary failure."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Authentication, tool filters and timeouts"
+        },
+        {
+          "type": "paragraph",
+          "text": "For an OAuth service, choose Authenticate or inspect codex mcp login --help before logging in with your server name. Account, scopes and callback requirements depend on the provider. If a preregistered client ID is required, register the complete callback displayed by Codex rather than guessing a port or swapping localhost and 127.0.0.1. This login exercise does not apply to the public Docs MCP."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "When authentication succeeds but a tool is missing, inspect enabled_tools, disabled_tools and plugin policy. An allow list cannot create a capability the server does not offer, and the deny list applies after the allow list. Get real tool names from the current catalog rather than guessing search or read. Plugin-provided servers have plugin-scoped settings; user configuration does not replace their launch commands. See "
+            },
+            {
+              "type": "article",
+              "text": "Plugin troubleshooting",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Startup and tool timeouts apply to different stages: startup_timeout_sec covers initialization and tool_timeout_sec covers an invocation. Verify program, URL and authentication, then try a smaller read to distinguish oversized work. Adjust one server's timeout only when normal work demonstrably needs more time and retest. Optional startup grace and required also affect startup behavior; making every server required is unnecessary. Preserve failures and stop dependent work when an essential service is unavailable."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Finish with a reproducible incident record"
+        },
+        {
+          "type": "code",
+          "label": "mcp-recovery.md",
+          "language": "markdown",
+          "code": "# MCP recovery record\nSurface / OS / client version:\nHost and effective config location (redacted):\nServer name / transport:\nFailure layer:\nOriginal error (without secrets):\nSingle change:\nNew-session tool visibility:\nRead-only request and verified source:\nNormal / disabled / restored results:\nUnrelated settings preserved:\nRemaining limitation and next action:\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "If the exercise breaks configuration, restore its section and recheck instead of replacing the whole file while another task may be editing it. Remove your added codexLearningDocs as in the previous lesson. For OAuth services, logout clears saved authentication and remove deletes configuration; inspect the provider account for remaining grants. Neither reverses data already written to an external system, which needs that provider's recovery process."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Completion means identifying the failing layer, reproducing disable/restore and obtaining fresh read-only tool evidence. A process, file or correct answer alone is insufficient. If connection remains unavailable, mark tool verification incomplete. Product steps follow official documentation, with local configuration and direct MCP checks recorded separately; those do not establish macOS, Linux, IDE, OAuth or physical-phone testing. Continue to "
+            },
+            {
+              "type": "article",
+              "text": "Worktree isolation",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Model Context Protocol",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Docs MCP",
+          "url": "https://developers.openai.com/learn/docs-mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "MCP 接続の診断と復旧",
+      "description": "プロセス、通信、認証、ツール一覧を順に調べ、エラーを残して最小操作を確認します。",
+      "hero": {
+        "src": "/guides/codex-mcp-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "「MCP が使えない」を設定、起動、認証、ツール可視性、実行の五状態に分けます。読む時間15分、実習20分。入門の codexLearningDocs を使い、削除済みなら前記事で再追加します。障害演習はこの項目だけに限り、他作業用のサービスを変更しません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "入門",
+              "kind": "life",
+              "slug": "codex-mcp"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：制限時間より先に設定を確認"
+        },
+        {
+          "type": "code",
+          "label": "各 OS の端末：読取り確認",
+          "language": "sh",
+          "code": "codex --version\ncodex mcp get codexLearningDocs\ncodex mcp list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "名前、有効状態、方式、URL と、ローカル・遠隔、CLI・デスクトップ、最終再起動時刻を記録します。get が見つけなければ実ファイル、綴り、利用者・プロジェクト層、独自 CODEX_HOME を確認します。同一ホストだけが設定共有の対象で、Windows と WSL のホームも同じ場所とは扱いません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "解析エラーは表示行付近の引用符、重複表、値の型から直し、その後でネットを調べます。"
+            },
+            {
+              "type": "article",
+              "text": "設定",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "に従いコピーを保存して実習区画だけ編集し、全設定を公開しません。名前がまだなければ信頼済みプロジェクトの読込み、現在地、保存先がコピーでないかを確認します。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "状態",
+            "証拠",
+            "次の行動"
+          ],
+          "rows": [
+            [
+              "保存済み",
+              "get の正しい項目",
+              "起動と接続"
+            ],
+            [
+              "初期化済み",
+              "接続済み表示",
+              "ツール確認"
+            ],
+            [
+              "認証済み",
+              "必要なログイン完了",
+              "データ権限"
+            ],
+            [
+              "ツール可視",
+              "新タスクに対象あり",
+              "小さな読取り"
+            ],
+            [
+              "実行成功",
+              "検証可能な応答",
+              "原本と保全照合"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "認証不要の公開サービスは不要と記録し、ログイン忘れとは扱いません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：無効化状態を再現"
+        },
+        {
+          "type": "paragraph",
+          "text": "前記事の読取りで正常結果を得て設定を保存後、既存実習区画に enabled = false を加えます。デスクトップの Restart、IDE 拡張再起動、CLI 新規セッションを使います。旧会話への再質問は過去情報を再利用し得ます。意図したローカル無効化であり公式側の障害ではありません。"
+        },
+        {
+          "type": "code",
+          "label": "実習区画を置換：同名表を追記しない",
+          "language": "toml",
+          "code": "[mcp_servers.codexLearningDocs]\nurl = \"https://developers.openai.com/mcp\"\nenabled = false\n"
+        },
+        {
+          "type": "code",
+          "label": "新しい Codex CLI 対話セッション：ツール確認",
+          "language": "text",
+          "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "/mcp は CLI 対話画面用です。デスクトップと IDE は MCP servers 設定で無効化を確認し、再起動後の新規タスクで活動を見ます。「クライアントがツールを提供しなかった」と記録すればよく、命令再現のため入口を変える必要はありません。比較する場合は主機と設定場所を別記します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新セッションでは無効サーバーのツールが提供されないはずです。get に設定が残るのは正常です。true または追加した false の除去で戻し、再起動・再取得・原文照合します。正常、無効、復元を全て残し、最後の成功画面だけで演習成立としません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：STDIO 起動と HTTP 接続を分ける"
+        },
+        {
+          "type": "paragraph",
+          "text": "別の STDIO サーバーでは command、args、cwd を先に見ます。Windows の Get-Command、他 OS の command -v は現在の端末の解決だけを証明し、デスクトップ起動の PATH 一致は保証しません。相対パス、不存在、必要な Node 版を先に確認し、誤記のため起動時間を延ばしません。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：Node 型 STDIO のみ",
+          "language": "powershell",
+          "code": "Get-Command node\nnode --version\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux 端末：Node 型 STDIO のみ",
+          "language": "sh",
+          "code": "command -v node\nnode --version\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "STDIO は標準入出力を協定に使うため挨拶やデバッグ出力が干渉し得ます。保守者なら公式実装に従い一般ログを stderr に出し、利用者なら第三者内部を書き換えず証拠を報告します。入力待ちの無表示は停止とは限らず、生存プロセスだけで初期化成功ともいえません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "HTTP は協定、ホスト、全パスを確認し、今回は公式 /mcp を使います。ホームページを開けても MCP、プロキシ、認証の成功証明ではありません。TLS は時刻、組織プロキシ、証明書信頼を管理者と確認し、検証無効化を既定修正にしません。一時失敗は時刻と伏せたエラーを残して再試行します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：認証・ツール選別・時間制限"
+        },
+        {
+          "type": "paragraph",
+          "text": "OAuth サービスは Authenticate または login の help を確認して対象名で認証します。アカウント、範囲、回呼は提供元の要件に従います。事前登録 ID が必要なら Codex が表示する完全 URL を登録し、ポート推測や localhost と 127.0.0.1 の置換をしません。公開 Docs MCP では不要です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "認証済みでも欠けるツールは enabled_tools、disabled_tools、插件方針を見ます。許可一覧は存在しない能力を作らず、拒否一覧は許可後に適用されます。search や read と推測せず現在の実名を確認します。插件由来の起動命令は利用者設定で置換しません。"
+            },
+            {
+              "type": "article",
+              "text": "Plugins 障害対応",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "を参照します。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "startup_timeout_sec は初期化、tool_timeout_sec は一回の実行です。程序、URL、認証を確認後、小さな読取りで過大要求かを調べ、正常処理に時間が必要な場合だけ対象値を変えて再試験します。grace と required も起動に影響しますが全て必須にする必要はありません。不可欠なサービス不在なら依存作業を止めます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "最後に引継ぎ可能な記録を残す"
+        },
+        {
+          "type": "code",
+          "label": "mcp-recovery.md",
+          "language": "markdown",
+          "code": "# MCP recovery record\nSurface / OS / client version:\nHost and effective config location (redacted):\nServer name / transport:\nFailure layer:\nOriginal error (without secrets):\nSingle change:\nNew-session tool visibility:\nRead-only request and verified source:\nNormal / disabled / restored results:\nUnrelated settings preserved:\nRemaining limitation and next action:\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定を壊したら実習区画を戻して確認し、他作業中に全体を復元しません。終了は自分の追加項目を前記事通り除去します。OAuth の logout は保存認証、remove は設定を除き、外部の認可は提供者アカウントで確認します。外部へ既に書いたデータはどちらでも戻らず、そのサービスの復旧手順を使います。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "失敗層を説明し、無効化・復元を再現し、新しい読取り証拠を得ることが完了条件です。プロセス、ファイル、正答だけでは不十分で、未接続ならツール未検証と残します。公式確認、ローカル設定、直接協定試験を分け、他 OS、IDE、OAuth、電話の実測とはしません。次は "
+            },
+            {
+              "type": "article",
+              "text": "Worktree 分離",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "です。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Model Context Protocol",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Docs MCP",
+          "url": "https://developers.openai.com/learn/docs-mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "MCP 연결 진단과 복구",
+      "description": "프로세스, 전송, 인증, 도구 목록을 차례로 확인하고 오류를 보존해 최소 동작을 검증합니다.",
+      "hero": {
+        "src": "/guides/codex-mcp-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "MCP가 작동하지 않는다는 문제를 설정·시작·인증·도구 표시·실행으로 나눕니다. 읽기 15분, 실습 20분입니다. 입문의 codexLearningDocs를 사용하고 삭제했다면 이전 절차로 다시 추가하세요. 오류 실습은 이 항목만 대상으로 하며 다른 작업의 서비스를 보존합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "입문",
+              "kind": "life",
+              "slug": "codex-mcp"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 시간 제한보다 설정 먼저 확인"
+        },
+        {
+          "type": "code",
+          "label": "각 OS 터미널: 읽기 전용 확인",
+          "language": "sh",
+          "code": "codex --version\ncodex mcp get codexLearningDocs\ncodex mcp list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "이름·활성 상태·방식·URL과 로컬/원격, CLI/데스크톱, 마지막 재시작을 기록합니다. get에서 이름을 찾지 못하면 실제 파일, 철자, 사용자/프로젝트 계층, 사용자 지정 CODEX_HOME을 확인하세요. 같은 호스트에서만 설정을 공유하며 Windows와 WSL 홈도 같은 위치가 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "구문 오류는 표시된 줄의 따옴표·중복 표·값 형식을 먼저 수정한 뒤 네트워크를 봅니다. "
+            },
+            {
+              "type": "article",
+              "text": "설정",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "에 따라 사본을 보존하고 연습 구간만 편집하며 전체 설정은 공개하지 않습니다. 이름이 없으면 신뢰 프로젝트 로드, 현재 폴더, 백업이 아닌 실제 파일 저장을 확인하세요."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "상태",
+            "증거",
+            "다음 단계"
+          ],
+          "rows": [
+            [
+              "저장됨",
+              "get에 올바른 항목",
+              "시작과 연결 확인"
+            ],
+            [
+              "초기화됨",
+              "연결됨 표시",
+              "도구 확인"
+            ],
+            [
+              "인증됨",
+              "필요한 로그인 완료",
+              "데이터 권한 확인"
+            ],
+            [
+              "도구 표시",
+              "새 작업에 대상 있음",
+              "작은 읽기 예제"
+            ],
+            [
+              "실행 성공",
+              "검증 가능한 응답",
+              "원본과 보존 범위 확인"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "인증 없는 공개 서비스는 불필요로 적으며 로그인을 빠뜨린 것이 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 비활성 상태 재현"
+        },
+        {
+          "type": "paragraph",
+          "text": "이전 글의 읽기 요청으로 정상 결과를 얻고 설정을 보존한 뒤 기존 연습 구간에 enabled = false를 추가합니다. 데스크톱 Restart, IDE 확장 재시작, CLI 새 세션을 사용하세요. 이전 대화에서 재질문하면 과거 내용을 쓸 수 있습니다. 의도적 로컬 비활성화이며 공식 서비스 장애가 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "연습 구간 교체: 같은 표를 추가하지 않기",
+          "language": "toml",
+          "code": "[mcp_servers.codexLearningDocs]\nurl = \"https://developers.openai.com/mcp\"\nenabled = false\n"
+        },
+        {
+          "type": "code",
+          "label": "새 Codex CLI 대화 세션: 도구 확인",
+          "language": "text",
+          "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "/mcp는 CLI 대화 화면용입니다. 데스크톱과 IDE는 MCP servers 설정에서 비활성화를 확인하고 재시작 후 새 작업의 도구 활동을 봅니다. 클라이언트가 도구를 제공하지 않았다고 기록하면 되며 명령 재현을 위해 화면을 바꿀 필요는 없습니다. 화면을 비교한다면 각각의 호스트와 설정 위치를 적으세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "새 세션에는 비활성 서버 도구가 없어야 하며 get에 설정이 남는 것은 정상입니다. true로 바꾸거나 추가한 false를 제거하고 재시작·재조회·원문 확인을 하세요. 정상·비활성·복원 세 상태를 모두 남겨야 하며 마지막 성공 화면만으로 오류 실습이 됐다고 할 수 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: STDIO 시작과 HTTP 연결 구분"
+        },
+        {
+          "type": "paragraph",
+          "text": "다른 STDIO 서버는 command·args·cwd부터 봅니다. Windows Get-Command와 macOS/Linux command -v는 현재 터미널의 경로 확인이며 데스크톱 프로세스 PATH 일치를 보장하지 않습니다. 상대 경로·파일 없음·필요한 Node 버전을 먼저 확인하고 파일명 오타 때문에 시작 제한을 늘리지 마세요."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell: Node 기반 STDIO에만 해당",
+          "language": "powershell",
+          "code": "Get-Command node\nnode --version\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS/Linux 터미널: Node 기반 STDIO에만 해당",
+          "language": "sh",
+          "code": "command -v node\nnode --version\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "STDIO는 표준 입출력을 프로토콜 통로로 쓰므로 환영 문구나 디버그 출력이 방해할 수 있습니다. 관리자는 공식 구현에 따라 일반 로그를 stderr로 보내고 사용자는 외부 패키지 내부를 임의 수정하지 말고 증거를 보고하세요. 조용한 입력 대기는 멈춤이 아닐 수 있고 프로세스 생존도 초기화 성공을 증명하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "HTTP는 스킴·호스트·전체 경로를 확인하며 이번에는 공식 /mcp입니다. 첫 페이지가 열려도 MCP 요청·프록시·인증 성공을 증명하지 않습니다. TLS는 시간·조직 프록시·인증서 신뢰를 관리자와 확인하고 검증 해제를 기본 해결로 쓰지 않습니다. 일시 실패는 시각과 가린 오류를 남긴 후 재시도하세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 인증·도구 필터·시간 제한"
+        },
+        {
+          "type": "paragraph",
+          "text": "OAuth 서비스는 Authenticate 또는 login help를 확인한 뒤 대상 이름으로 인증합니다. 계정·범위·콜백은 제공자 요건을 따르세요. 사전 client ID 등록이 필요하면 Codex가 표시한 전체 URL을 쓰고 포트를 추측하거나 localhost와 127.0.0.1을 바꾸지 않습니다. 공개 Docs MCP에는 필요 없는 절차입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "인증 후 도구가 없으면 enabled_tools·disabled_tools·플러그인 정책을 확인합니다. 허용 목록은 서버에 없는 기능을 만들지 않으며 거부 목록이 나중에 적용됩니다. search나 read를 추측하지 말고 실제 도구 이름을 확인하세요. 플러그인 서버의 실행 명령은 사용자 설정으로 대체하지 않습니다. "
+            },
+            {
+              "type": "article",
+              "text": "Plugins 문제 해결",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "을 참고하세요."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "startup_timeout_sec는 초기화, tool_timeout_sec는 한 호출입니다. 프로그램·URL·인증을 확인하고 작은 읽기로 요청이 큰지 구분한 뒤 정상 작업에 더 필요할 때 해당 서버 값만 바꿔 재시험하세요. grace와 required도 시작에 영향을 주지만 모두 필수로 만들 필요는 없습니다. 필수 서비스가 없으면 오류를 보존하고 의존 작업을 멈춥니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "마무리: 인계 가능한 오류 기록"
+        },
+        {
+          "type": "code",
+          "label": "mcp-recovery.md",
+          "language": "markdown",
+          "code": "# MCP recovery record\nSurface / OS / client version:\nHost and effective config location (redacted):\nServer name / transport:\nFailure layer:\nOriginal error (without secrets):\nSingle change:\nNew-session tool visibility:\nRead-only request and verified source:\nNormal / disabled / restored results:\nUnrelated settings preserved:\nRemaining limitation and next action:\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "설정을 망가뜨리면 연습 구간을 복구해 확인하고 다른 작업 중 전체 파일을 되돌리지 않습니다. 끝나면 이전 글처럼 추가 항목만 제거하세요. OAuth logout은 저장 인증, remove는 설정을 지우며 남은 외부 승인은 제공자 계정에서 확인합니다. 이미 외부에 쓴 데이터는 둘 다 되돌리지 못하므로 서비스 복구 절차를 사용합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "실패 계층 설명·비활성화와 복원 재현·새 읽기 도구 증거가 완료 기준입니다. 프로세스·파일·정답만으로는 부족하며 미연결이면 도구 미검증으로 남깁니다. 공식 문서와 로컬 설정·직접 프로토콜 시험을 구분하고 다른 OS·IDE·OAuth·휴대폰 실측으로 보지 않습니다. 다음은 "
+            },
+            {
+              "type": "article",
+              "text": "Worktree 분리",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "입니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Model Context Protocol",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Docs MCP",
+          "url": "https://developers.openai.com/learn/docs-mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "MCP 连线诊断与故障复原",
+      "description": "从程序、传输、认证与工具清单分层检查，保留错误证据并验证最小可用操作。",
+      "hero": {
+        "src": "/guides/codex-mcp-troubleshooting/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "把「MCP 不能用」拆成设定、启动、认证、工具可见与执行五个可观察状态。阅读约 15 分钟、操作约 20 分钟。先完成 MCP 入门，沿用 codexLearningDocs 练习项目；若之前已移除，依前篇重新新增。所有故障演练只针对这个项目，不更改正在供其他工作使用的服务。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "MCP 入门",
+              "kind": "life",
+              "slug": "codex-mcp"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：先查设定，别急著改逾时"
+        },
+        {
+          "type": "code",
+          "label": "Windows、macOS、Linux 终端机：唯读检查",
+          "language": "sh",
+          "code": "codex --version\ncodex mcp get codexLearningDocs\ncodex mcp list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "确认输出中的名称、enabled、传输方式与 URL，并记下本机还是远端主机、CLI 或桌面入口，以及最后一次重新启动的时间。若 get 找不到名称，回到实际 config.toml；拼字、使用者层与专案层，以及自订 CODEX_HOME 都要逐项核对。桌面、CLI、IDE 只有在同一 Codex 主机下才共用设定，Windows 原生与 WSL 的家目录也不能当成同一个位置。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "设定档解析失败时，先处理行号附近的引号、重复表格或错误类型，再谈网路。用"
+            },
+            {
+              "type": "article",
+              "text": "设定篇",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "的方法保存自己的修改前副本，只修改练习区段；不要把整份设定贴上公开求助。若档案能解析但名称仍不见，检查可信任专案的载入与当前工作目录，并确认编辑器保存的是实际档案，不是另一份备份。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "可观察状态",
+            "证据",
+            "下一步"
+          ],
+          "rows": [
+            [
+              "已保存设定",
+              "get 显示正确项目",
+              "检查启动与连线"
+            ],
+            [
+              "已初始化",
+              "客户端显示伺服器已连接",
+              "查看工具"
+            ],
+            [
+              "已认证",
+              "需要登入的服务完成登入",
+              "核对资料权限"
+            ],
+            [
+              "工具可见",
+              "新任务能看到目标工具",
+              "呼叫小型唯读范例"
+            ],
+            [
+              "执行成功",
+              "工具回传可核对资料",
+              "比对来源及未改动范围"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "公开文件服务没有认证要求时，该栏填「不需要」，不是漏做登入。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：重现工具被停用的情况"
+        },
+        {
+          "type": "paragraph",
+          "text": "先用前篇的唯读问题取得一次正常结果，保存原设定后，在既有练习区段加上 enabled = false。桌面按 MCP 设定中的 Restart，IDE 重新启动扩充套件，CLI 结束后开新工作阶段。不要只在旧对话重新问一句，因为它仍可能引用已读过的内容。这个练习刻意让伺服器不可用，不代表远端官方服务真的坏了。"
+        },
+        {
+          "type": "code",
+          "label": "以此替换自己的练习区段，不再附加同名表格",
+          "language": "toml",
+          "code": "[mcp_servers.codexLearningDocs]\nurl = \"https://developers.openai.com/mcp\"\nenabled = false\n"
+        },
+        {
+          "type": "code",
+          "label": "新 Codex CLI 互动工作阶段：检查可用工具",
+          "language": "text",
+          "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "/mcp 这段只在 CLI 互动画面使用。桌面版和 IDE 以 MCP servers 设定确认停用，重新启动后在新任务检查工具活动。记录「客户端未提供工具」即可，不必为了重现命令而改用其他入口；跨入口测试要另记主机与设定位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期新工作阶段不再提供这个已停用伺服器的工具。此时即使 get 仍列出它，也符合预期：设定存在与工具可用是不同状态。把 enabled 改回 true 或移除这次加入的 false，重新启动后重做查询并核对官方原文。保存「正常 → 停用 → 恢复」三个结果，不能只保存最后成功画面，否则看不出故障演练是否真的生效。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：区分 STDIO 启动与 HTTP 连线"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你使用其他 STDIO 伺服器，先看 command、args 与 cwd。Windows 用 Get-Command 查启动程式，macOS、Linux 用 command -v；这只证明目前终端机找得到程式，不保证从桌面启动的程序 PATH 完全一样。相对路径会受工作目录影响，档案不存在先修正路径；需要 Node.js 的伺服器则核对 Node 版本。不要为档名打错直接拉长启动逾时。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：仅适用需要 Node 的 STDIO 伺服器",
+          "language": "powershell",
+          "code": "Get-Command node\nnode --version\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux 终端机：仅适用需要 Node 的 STDIO 伺服器",
+          "language": "sh",
+          "code": "command -v node\nnode --version\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "STDIO 伺服器把标准输入输出当协定通道，额外印出欢迎文字或除错资料可能干扰连线。若你维护该伺服器，依其官方实作把一般纪录写到 stderr；若只是使用者，记录启动错误交给提供者，不要随意改第三方套件内容。手动启动后等待输入而没有文字，不必然是当机；看到程序活著也不等于 MCP 已成功初始化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "HTTP 则先核对完整协定、主机、路径，例如本篇必须是官方 /mcp 端点。浏览器能开网站首页，只能证明部分网路可达，不能证明 MCP 请求、代理设定与验证都成功。TLS 错误应检查系统时间、公司代理与凭证信任设定；先向环境维护者确认，不把关闭凭证验证当成教学预设。暂时连不上时保留时间与遮蔽后错误再重试。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：认证、工具筛选与逾时"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要 OAuth 的服务可以在客户端按 Authenticate，或先查 codex mcp login --help 再以自己的伺服器名称登入。要用哪个帐号、哪些权限，以及回呼网址都依提供者规格；若需要预先注册 client ID，就注册 Codex 显示的完整回呼网址，不能猜固定埠或把 localhost 和 127.0.0.1 任意互换。公开 Docs MCP 不用这项登入练习。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "认证已完成但看不到某个工具时，查看 enabled_tools、disabled_tools 与插件本身的工具政策。允许清单不会创造伺服器没有提供的能力；同名工具同时列在两份清单时，停用清单在允许清单之后套用。先用目前工具目录取得真正名称，不要猜成 search 或 read。插件提供的伺服器另有插件层设定，使用者设定不负责改写它的启动命令，详见 "
+            },
+            {
+              "type": "article",
+              "text": "Plugins 排除问题",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "启动逾时与工具执行逾时是不同阶段：startup_timeout_sec 只处理初始化等待，tool_timeout_sec 处理单次工具。先确认程式、网址、认证都对，再用较小的唯读请求判断是否只是工作太大；只有确定是合理等待不足才调整那个伺服器的值并重测。optional startup grace 与 required 也会影响启动时的行为，新手不必把所有伺服器改成 required；无法启动的重要服务应保留错误并停止依赖它的工作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "收尾：可交接的故障纪录"
+        },
+        {
+          "type": "code",
+          "label": "mcp-recovery.md",
+          "language": "markdown",
+          "code": "# MCP recovery record\nSurface / OS / client version:\nHost and effective config location (redacted):\nServer name / transport:\nFailure layer:\nOriginal error (without secrets):\nSingle change:\nNew-session tool visibility:\nRead-only request and verified source:\nNormal / disabled / restored results:\nUnrelated settings preserved:\nRemaining limitation and next action:\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果练习改坏设定，先恢复本次练习区段，重新读取确认；不要在其他任务同时写设定时整档还原。结束后按前篇移除自己新增的 codexLearningDocs 即可。OAuth 服务的 logout 用于清除该服务的已存认证，remove 用于移除设定；是否还有外部授权，要到提供者的帐号页确认。两者都不能撤销已经写进外部系统的资料，涉及写入要依原服务自己的复原流程处理。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成标准是能解释哪一层失败、提供一次可重现的停用与恢复，以及新的唯读工具证据；只看到程序、设定档或正确答案都不够。尚未取得连线时保留「未完成工具验证」，不用把未测环境填成正常。本篇产品流程依官方文件查证，本机设定与直接 MCP 协定验证另存纪录；macOS、Linux、IDE、OAuth 与实体手机未因这些测试而自动取得实测标记。下一步进入 "
+            },
+            {
+              "type": "article",
+              "text": "Worktree 隔离",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp-troubleshooting/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Model Context Protocol",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Docs MCP",
+          "url": "https://developers.openai.com/learn/docs-mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

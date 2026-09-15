@@ -1,0 +1,383 @@
+{
+  "checked_on": "2026-09-14",
+  "scope": "Targeted Unit I revision: six full Traditional Chinese drafts read; changed paragraphs and examples compared across four author languages and compiled Simplified Chinese. Not final full-text editorial acceptance.",
+  "changes": {
+    "26": "Added a read-only DevTools measurement, missing-header handling, two-viewport recording and limits of overflow checks; syntax only tested.",
+    "29": "Added complete Revision 2 source and a collision-safe missing-file exercise after pausing and checking active runs.",
+    "30": "Protected the macOS/Linux backup filename and distinguished old output from the invalid-argument attempt.",
+    "55": "Added an exact valid-shaped but factually wrong answer: verify-only passes, manual fixture comparison rejects; documented event/final and input-verification limits.",
+    "56": "Replaced the moving-v1 claim with a reviewed-commit statement, corrected its YAML comment and added a pending-run replacement scenario.",
+    "57": "Clarified Python direct-child timeout behavior versus descendants, remote work and already-sent requests."
+  },
+  "code_blocks": {
+    "original_blocks": 30,
+    "unchanged_original_blocks": 29,
+    "modified_original_blocks": 1,
+    "modification": "Only the Codex Action YAML comment changes from v1 to reviewed commit; all executable values retain the pinned SHA.",
+    "added_blocks": 3,
+    "locales": 5,
+    "all_blocks_have_labels": true
+  },
+  "official_documents_reviewed": [
+    {
+      "url": "https://learn.chatgpt.com/docs/browser.md",
+      "sha256": "89700c3ef4a60717c75a792568b6801c61e9d326c5d7beab1ab2628a391c3423",
+      "body_characters": 15823,
+      "review_scope": "Actual desktop Browser availability/profile, annotations, scoped work and developer-mode sections; web-only remainder not part of review."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/automations.md",
+      "sha256": "74f337fa46f682d6b1d22c523f2c6e6a866acbb3eab6a9a69c1513e3ce81109b",
+      "body_characters": 18004,
+      "review_scope": "Actual local/web availability, schedule management, same-chat context, testing and permission sections; unrelated skill examples not reviewed."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode.md",
+      "sha256": "cd4a99999324ff8a1c73e08a767126cea7c5db0bc977adc5f44eee0285b41fd8",
+      "body_characters": 15063,
+      "review_scope": "Actual basic usage, stderr/stdout, JSONL, schema, auth and Git requirement sections; unrelated advanced examples not reviewed."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/github-action.md",
+      "sha256": "3c3a244ef87fffb064114e388f4c7827b3ddc55b712f5aec50f2719a3cf1bc6a",
+      "body_characters": 7266,
+      "review_scope": "Full actual body: prerequisites, inputs, privilege layers, output data, separate job and troubleshooting."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex-action/86365089eb2b84e0a8fb0717b304f8bdcb13b20e/action.yml",
+      "sha256": "448852e9e59565440bf25174b54bbf661bd66102be295af2e526fa09eaaf3bd7",
+      "body_characters": 16776,
+      "review_scope": "Pinned action inputs, runner restrictions, output declaration and privilege/auth setup; executable pin retained."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex-action/86365089eb2b84e0a8fb0717b304f8bdcb13b20e/docs/security.md",
+      "sha256": "06d1039180fc0a40515f23b68bb980c30c5430116389e904d57500a47694aa05",
+      "body_characters": 7227,
+      "review_scope": "Pinned security guidance on trust, permission profiles, secret handling and separate post-Codex job."
+    },
+    {
+      "url": "https://docs.python.org/3/library/subprocess.html#subprocess.run",
+      "review_scope": "Actual timeout kill-and-wait, process-creation delay, check and argument-array behavior."
+    },
+    {
+      "url": "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency",
+      "review_scope": "Actual default pending replacement, cancel-in-progress and optional queue semantics; lesson example uses default queue."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle",
+      "review_scope": "Actual read-only resolved style values and return semantics."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollWidth",
+      "review_scope": "Actual width/overflow and clientWidth comparison definition."
+    }
+  ],
+  "action_tag_observations": {
+    "checked_on": "2026-09-14",
+    "codex_v1": "f367b1e9572fd064ea71ef925ca24ee0f01080af",
+    "retained_reviewed_codex_commit": "86365089eb2b84e0a8fb0717b304f8bdcb13b20e",
+    "checkout_v5": "fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+    "upload_artifact_v4": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+    "method": "Read-only git ls-remote for each public tag; pinned action.yml/security body reviewed."
+  },
+  "practice": {
+    "report": "docs/codex-learning/evidence/exec-reference.json",
+    "checks_total": 14,
+    "scope": "Exact local Python wrapper/validator and CI script using explicit synthetic events and mocked model process. Real CLI help and invalid-flag parsing only; browser measurement syntax only.",
+    "model_invoked": false,
+    "github_workflow_triggered": false,
+    "schedule_created": false,
+    "actual_timeout_induced": false,
+    "browser_executed": false,
+    "other_os_executed": false,
+    "report_sha256": "af043cc267669e91e3175d85b0e5903045ca0de713941b4014ceb2e1677a781e",
+    "environment": "Windows; temporary fictional files; mocked Codex process; exact local Python validator",
+    "cli_probe": {
+      "version": "codex-cli 0.154.0-alpha.6.2",
+      "helpSha256": "0e82cfde0122715250e93dc65866caa956b2ac5b9d0b20ec4ad4f9e81486509e",
+      "invalidFlagExit": 2,
+      "oldReportPreserved": true,
+      "modelInvoked": false
+    }
+  },
+  "validation": {
+    "series_integrity": {
+      "lessons": 60,
+      "locale_documents": 300,
+      "result": "passed"
+    },
+    "api_content_tests": {
+      "passed": 9
+    },
+    "compiler_tests": {
+      "passed": 9
+    },
+    "affected_tool_ruff": "passed",
+    "shared_catalogues": "Five API catalogues match the shared manifest",
+    "content_audit": {
+      "errors": 0,
+      "warnings": 21,
+      "note": "The first edit accidentally removed the CI file-role table; audit caught five no_table errors. Restored the existing four-language table and rebuilt; final audit passes with the same 21 advisories."
+    },
+    "relative_file_links": {
+      "checked": 1122,
+      "result": "passed",
+      "scope": "README/progress/deepening relative file targets; anchors separate."
+    },
+    "task_check": {
+      "files": 412,
+      "result": "passed",
+      "existing_unrelated_warnings": "retained"
+    },
+    "diff_whitespace": "passed"
+  },
+  "final_acceptance": {
+    "targeted_depth_revised_lessons_total": 54,
+    "other_lessons_pending_targeted_review": 6,
+    "next_unit": "J: 31, 32, 58, 59, 60, 12",
+    "accepted_lessons": 0,
+    "full_editorial_accepted": false,
+    "preview_accepted": false,
+    "blocker": "Automatic approval review rejected preview startup, including loopback-only retry: blocked by policy; no specific reason. No alternative startup/rendering route attempted."
+  },
+  "publication": {
+    "pushed": false,
+    "pr": false,
+    "merged": false,
+    "imported": false,
+    "published": false,
+    "deployed": false
+  },
+  "base_commit": "78477de659e81e044ea6f7f8d48e27bd8574a74d",
+  "hash_convention": "Compiler-compatible UTF-8 text with LF endings for source/pack/report hashes; reference author/source hashes use file bytes.",
+  "lessons": [
+    {
+      "id": 26,
+      "slug": "codex-browser-images",
+      "source_hashes": {
+        "zh-TW": "13218453d3b199134ce63ae14baf533698829c924ebaf2f6d544828343f5cca8",
+        "en": "a79e530380c9b6729d6b3cd9246f9e6f6d4bc0e5d4fe0470306ae4ec98b37bb5",
+        "ja": "e2fea20e7469daf4e1fdc19ef6dce9a9d487b6adf66e0ff944cf5656c807b290",
+        "ko": "8e22dbd1f423c043187a8d5c3c6e629041e6038802327c1e61b0d672ea18f4b3",
+        "zh-CN": "38e2ed7287b14461e701ee868bbef903fa67f35aad69c06bec2c8363cbd2c5b9"
+      },
+      "pack_hash": "74afa1016e9723200a83173ea11ba9f1fd4b7594876952b8cbb9278cbb95ce46",
+      "zh_tw_prose_characters": 2565,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 6,
+          "after": 7
+        },
+        "zh-CN": {
+          "before": 6,
+          "after": 7
+        },
+        "en": {
+          "before": 6,
+          "after": 7
+        },
+        "ja": {
+          "before": 6,
+          "after": 7
+        },
+        "ko": {
+          "before": 6,
+          "after": 7
+        }
+      },
+      "original_code_retained_in_order_except_documented_comment": true,
+      "existing_images_and_tables_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 29,
+      "slug": "codex-automations",
+      "source_hashes": {
+        "zh-TW": "6f1af992b03c3281c7b9ac2ebc293f8feb869165df911835fa46795f2ec3cd65",
+        "en": "615bb6c793cf606726f03702e1427ba0ec23e4709ff076d15541fafb16b123c2",
+        "ja": "6cb60c335fdb50e1e39269baa22d3899914dccad4681a5a952535dfb1e755758",
+        "ko": "c3ebf6d7ed39ea5d5095a09e2d987c2f82e9c996d09e1c2d396c58c48bcfbde7",
+        "zh-CN": "dd2d3a674db9689adf4bc8a0b591de2539fbea13b7843ef669599b25df3dafdd"
+      },
+      "pack_hash": "ac6c067a32137f203b9fc78c02ab26f27074e03493328ee759104a470864b858",
+      "zh_tw_prose_characters": 2006,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 5,
+          "after": 6
+        },
+        "zh-CN": {
+          "before": 5,
+          "after": 6
+        },
+        "en": {
+          "before": 5,
+          "after": 6
+        },
+        "ja": {
+          "before": 5,
+          "after": 6
+        },
+        "ko": {
+          "before": 5,
+          "after": 6
+        }
+      },
+      "original_code_retained_in_order_except_documented_comment": true,
+      "existing_images_and_tables_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 30,
+      "slug": "codex-exec-scripting",
+      "source_hashes": {
+        "zh-TW": "925cecd7dcd3139e0c47cc683f4d053e072fb7612f1a93423efbafe73b981a91",
+        "en": "384c40cbcb315e0baf07452f34deddc420f404aa949c1403ae6d065779356201",
+        "ja": "73640a99bf7ca07bc3856eaea0c928070074affd6386439ed804e4e73ba5948c",
+        "ko": "eda95422c98982817520e4e347612c8dbbc2c336e1e6f2fc1408907a222ef6e2",
+        "zh-CN": "70dfa538d2cc5bf67a46355e9bcb2b03bd8c9cb99e493ae560fa6b6f031f6d35"
+      },
+      "pack_hash": "02590250d2010fe830d05bebfc17824aede2c612c84a87cf1d0d6cedc1ca7f04",
+      "zh_tw_prose_characters": 2004,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 6,
+          "after": 6
+        },
+        "zh-CN": {
+          "before": 6,
+          "after": 6
+        },
+        "en": {
+          "before": 6,
+          "after": 6
+        },
+        "ja": {
+          "before": 6,
+          "after": 6
+        },
+        "ko": {
+          "before": 6,
+          "after": 6
+        }
+      },
+      "original_code_retained_in_order_except_documented_comment": true,
+      "existing_images_and_tables_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 55,
+      "slug": "codex-json-output",
+      "source_hashes": {
+        "zh-TW": "4bd00790d2a281cf4dfbec0678f94ec020491d579102d07e784ac9105c43c6ec",
+        "en": "336bb66ebe09153a4fc196babb9d133a3eaa5235480207661b49f69fb8daf797",
+        "ja": "a6b075facdda987ed4677f88b7f7572cb0b279f9842aecdb92b3acf1819a5572",
+        "ko": "6b0d48bc52e4d9cf4996622d1562faa175201ebf8a6aef83f913f46726fa0437",
+        "zh-CN": "3a1f1c88c58abe8f6f4a37a06f5c4484c6aa38ec2c154356ed8542f27e391d6a"
+      },
+      "pack_hash": "948d1b2e6b54e0a40ce92263c75633f8e927e52e82ddec1bc5c7a7b1b40f30c6",
+      "zh_tw_prose_characters": 2358,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 6,
+          "after": 7
+        },
+        "en": {
+          "before": 6,
+          "after": 7
+        },
+        "ja": {
+          "before": 6,
+          "after": 7
+        },
+        "ko": {
+          "before": 6,
+          "after": 7
+        },
+        "zh-CN": {
+          "before": 6,
+          "after": 7
+        }
+      },
+      "original_code_retained_in_order_except_documented_comment": true,
+      "existing_images_and_tables_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 56,
+      "slug": "codex-ci-workflows",
+      "source_hashes": {
+        "zh-TW": "b2e3f3987e87dce6e157b811527f7ce9677704f4066546915bf6e353a50c3274",
+        "en": "22bfdf279a5e4a48285c9e3a7a749b99ab1398aef44523ec23daef9dbd8d67f1",
+        "ja": "4f6f38be033f2c6dfe9467577f8ab0ba1c74078fe9637c27cb1ae0e4f015ae9a",
+        "ko": "3fa6d561f73d30377a32d7d665232a4e4665cbc7e5c5436d7106427dee9c4e80",
+        "zh-CN": "0dd580350bc8a46b7a8f43aafda847cbc78a19a0ce5a37f1d28335b700c2f2c1"
+      },
+      "pack_hash": "a5ebf86a0826a0a364fc629e46bed32a152bed8186e1627d72b9550cf760b61d",
+      "zh_tw_prose_characters": 2618,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 3,
+          "after": 3
+        },
+        "en": {
+          "before": 3,
+          "after": 3
+        },
+        "ja": {
+          "before": 3,
+          "after": 3
+        },
+        "ko": {
+          "before": 3,
+          "after": 3
+        },
+        "zh-CN": {
+          "before": 3,
+          "after": 3
+        }
+      },
+      "original_code_retained_in_order_except_documented_comment": true,
+      "existing_images_and_tables_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 57,
+      "slug": "codex-automation-recovery",
+      "source_hashes": {
+        "zh-TW": "cf9434fd0d3deb142834d2f4bd393ff7de4743b0ad6c421d4483036d2de4a923",
+        "en": "52dc8c25a6048390e61514c8b2cabeba3dfc7c88012ce7b821427fd0c8f17033",
+        "ja": "aef2b5f7ee2bbe68d62cd3437cc912286fe60ae243156e8c3a638a9eab0a2ac5",
+        "ko": "cda59e0c6e48eba71e1c227d388c12fe34cf2d33223efa83794fddde6e3f62f4",
+        "zh-CN": "c4fd1d28e56dc94a8e2eb6129e7f1727c430fd9a23bad891263b0577cd3c928d"
+      },
+      "pack_hash": "bd472da6bfb9cfdf8596a9fbbac3450f4ca91ce6d7530a713f940a138cda3bbd",
+      "zh_tw_prose_characters": 2037,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 4,
+          "after": 4
+        },
+        "en": {
+          "before": 4,
+          "after": 4
+        },
+        "ja": {
+          "before": 4,
+          "after": 4
+        },
+        "ko": {
+          "before": 4,
+          "after": 4
+        },
+        "zh-CN": {
+          "before": 4,
+          "after": 4
+        }
+      },
+      "original_code_retained_in_order_except_documented_comment": true,
+      "existing_images_and_tables_unchanged": true,
+      "source_lists_unchanged": true
+    }
+  ]
+}

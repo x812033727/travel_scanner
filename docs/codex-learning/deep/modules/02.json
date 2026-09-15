@@ -1,0 +1,284 @@
+{
+  "id": 2,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "讀完能做到什麼",
+        "What you will be able to do",
+        "このレッスンの到達点",
+        "이 강의의 목표"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "你會確認目前使用的登入方式與工作區，找到對應的用量頁，並用一張不含私人識別資訊的紀錄區分「登入失敗、功能未開放、額度用完」。閱讀約 10 分鐘，操作約 15 分鐘。本篇不需要購買方案、儲值或兌換重置；讀取自己的帳號狀態即可。",
+        "Confirm your sign-in method and workspace, find the corresponding usage page, and record enough non-identifying information to distinguish sign-in failure, unavailable features and exhausted allowance. Allow 10 minutes to read and 15 to practise. You do not need to purchase a plan, add funds or redeem a reset; simply inspect your account state.",
+        "サインイン方法とワークスペースを確認し、対応する使用量ページを見つけます。個人を特定しない記録で、ログイン失敗、機能の利用不可、利用枠の消費を区別できるようになります。読む時間は約 10 分、操作は約 15 分です。プラン購入、入金、リセットの使用は不要で、自分の状態を確認するだけです。",
+        "로그인 방식과 워크스페이스를 확인하고 해당 사용량 화면을 찾습니다. 개인 식별 정보 없이 로그인 실패, 기능 미지원, 사용 한도 소진을 구분하는 기록을 작성합니다. 읽기 약 10분, 실습 약 15분입니다. 요금제 구매, 충전, 초기화 사용은 필요 없으며 계정 상태만 확인합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "先分清兩種計費來源",
+        "Separate the two billing sources",
+        "二つの課金元を区別する",
+        "두 가지 과금 방식 구분하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "使用 ChatGPT 登入與使用 API 金鑰登入，是兩條不同的存取方式。前者依帳號方案及工作區權限，後者依 API 組織的計費與限制；同一個電子郵件不會把兩者的額度自動合併。不要因為訂閱有效就假定 API 帳單為零，也不要因為 API 有餘額就推論所有 ChatGPT 雲端功能可用。官方認證文件說明雲端 Codex 需要 ChatGPT 登入。",
+        "ChatGPT sign-in and API-key sign-in are separate access methods. The first follows the account plan and workspace permissions; the second follows API organization billing and limits. Sharing an email address does not combine their allowances. An active subscription does not imply a zero API bill, and an API balance does not establish access to every ChatGPT cloud feature. Official authentication documentation requires ChatGPT sign-in for cloud Codex.",
+        "ChatGPT サインインと API キーによるサインインは別のアクセス方法です。前者はアカウントのプランとワークスペース権限、後者は API 組織の課金と制限に従います。同じメールアドレスでも利用枠は自動統合されません。有効なサブスクリプションが API 請求ゼロを意味するわけでも、API 残高が全クラウド機能へのアクセスを保証するわけでもありません。公式認証文書ではクラウド Codex に ChatGPT サインインが必要とされています。",
+        "ChatGPT 로그인과 API 키 로그인은 별도의 접근 방식입니다. 전자는 계정 요금제와 워크스페이스 권한을, 후자는 API 조직의 과금과 제한을 따릅니다. 이메일 주소가 같다고 한도가 합쳐지지 않습니다. 구독 중이어도 API 요금이 무료라는 뜻은 아니고 API 잔액이 있어도 모든 ChatGPT 클라우드 기능을 쓸 수 있는 것은 아닙니다. 공식 인증 문서에 따르면 클라우드 Codex는 ChatGPT 로그인이 필요합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "本系列把價格與可用模型的查詢入口集中在這篇及[模型選擇](article:codex-model-selection)，其他教學不重複寫死金額或每日次數。購買前看官方方案頁與自己帳號的實際顯示，包括幣別、稅項、月繳或年繳、席位及工作區條件。使用者畫面沒顯示的方案或選項，不應因教學出現過就假設能購買或使用。",
+        "This series centralizes pointers to prices here and model availability in [model selection](article:codex-model-selection), instead of repeating fixed prices or daily counts in every lesson. Before purchasing, check the official plan page and your account display, including currency, tax, monthly or annual billing, seats and workspace conditions. A plan or option mentioned in a tutorial is not evidence that your account can purchase or use it.",
+        "価格の確認先は本記事、モデルの確認先は[モデル選択](article:codex-model-selection)にまとめ、各記事で固定価格や一日当たりの回数を繰り返しません。購入前には公式プランページと自分の表示で、通貨、税、月払いか年払いか、席数、ワークスペース条件を確認します。記事に出てきたプランや選択肢が、自分にも購入・利用可能とは限りません。",
+        "가격 확인 경로는 이 글에, 모델 가용성은 [모델 선택](article:codex-model-selection)에 모아 다른 강의에서 고정 가격이나 일일 횟수를 반복하지 않습니다. 구매 전 공식 요금제 페이지와 본인 계정에서 통화, 세금, 월간·연간 결제, 좌석 수, 워크스페이스 조건을 확인하세요. 튜토리얼에 언급된 요금제나 옵션이 자신의 계정에서도 구매 또는 사용 가능하다는 뜻은 아닙니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "第一步：確認帳號與工作區",
+        "Step 1: confirm account and workspace",
+        "手順 1：アカウントとワークスペースの確認",
+        "1단계: 계정과 워크스페이스 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在桌面版開啟個人選單，檢視目前帳號與工作區。如果你同時有個人與公司工作區，先切到這次要使用的那一個，再看方案和功能。瀏覽器的頭像與桌面程式可能不是同一個登入；切換瀏覽器帳號不代表程式已切換。手機先確認自己使用的登入，再到同一個工作區的用量頁，避免比較不同帳號的數字。",
+        "Open the profile menu in desktop and inspect the current account and workspace. If you have personal and company workspaces, select the one intended for this exercise before checking its plan and features. Your browser and desktop app may use different sign-ins; changing the browser account does not prove that the app changed. On a phone, confirm the sign-in and open usage for the same workspace so that you do not compare different accounts.",
+        "デスクトップのプロフィールメニューで現在のアカウントとワークスペースを確認します。個人用と会社用があれば、今回使う方を選んでからプランや機能を見ます。ブラウザーとアプリのログインは一致しない場合があり、ブラウザー側を切り替えただけではアプリ側の変更を確認できません。スマートフォンでもログインを確認し、同じワークスペースの使用量を開いて別アカウントの数字を比較しないようにします。",
+        "데스크톱의 프로필 메뉴에서 현재 계정과 워크스페이스를 확인합니다. 개인용과 회사용이 모두 있으면 이번 실습에 쓸 공간을 선택한 다음 요금제와 기능을 확인하세요. 브라우저와 앱이 서로 다른 계정일 수 있으며 브라우저 계정 변경만으로 앱이 바뀌었다고 볼 수 없습니다. 휴대전화에서도 로그인과 워크스페이스를 맞춰 다른 계정의 사용량을 비교하지 않도록 합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "CLI 使用者在作業系統的終端機輸入下方命令，Windows PowerShell、macOS Terminal、Linux 終端機用法相同。這是終端機命令，不是貼在 Codex 對話裡。它用來看驗證狀態；尚未安裝或找不到 codex 時，先回 [CLI 安裝](article:codex-cli-getting-started)，不要把找不到命令當成帳號失效。",
+        "CLI users run the following in the operating-system terminal; the command is the same in PowerShell, macOS Terminal and a Linux terminal. It is a shell command, not a message to Codex. It checks authentication state. If codex is missing, return to [CLI installation](article:codex-cli-getting-started); a missing executable does not establish an account problem.",
+        "CLI 利用者は OS の端末で次を入力します。PowerShell、macOS Terminal、Linux で同じコマンドです。Codex へのメッセージではなくシェルコマンドで、認証状態を確認します。codex が見つからなければ [CLI 導入](article:codex-cli-getting-started)に戻り、実行ファイルの不足をアカウント不良と混同しないでください。",
+        "CLI 사용자는 운영체제 터미널에서 아래 명령을 입력합니다. PowerShell, macOS Terminal, Linux에서 명령은 같습니다. Codex 대화에 붙이는 요청이 아니라 인증 상태를 확인하는 셸 명령입니다. codex를 찾지 못하면 [CLI 설치](article:codex-cli-getting-started)를 확인하세요. 실행 파일이 없다는 것이 계정 오류를 의미하지는 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "shell",
+      "code": "codex login status",
+      "label": [
+        "終端機命令：查詢 CLI 登入狀態",
+        "Terminal command: inspect CLI sign-in status",
+        "端末コマンド：CLI の認証状態を確認する",
+        "터미널 명령: CLI 로그인 상태 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "只記錄它指出的驗證方式與是否已登入，不要複製整份登入快取、Cookie 或金鑰。命令若顯示尚未登入，才執行 codex login 並完成瀏覽器流程；已正常登入時不需要為了跟課程再登出一次。登入方式被組織管理時，依工作區管理員設定處理，反覆覆寫本機設定不會解除組織限制。",
+        "Record only the reported method and signed-in state, not login caches, cookies or keys. Run codex login and complete the browser flow only if you are signed out; a working login does not need to be cleared for this lesson. If your organization manages authentication, follow its administrator settings. Repeated local configuration changes do not remove organization restrictions.",
+        "記録するのは認証方法とログイン状態だけで、認証キャッシュ、Cookie、キーはコピーしません。未ログインの場合だけ codex login でブラウザーフローを完了してください。授業のために正常なログインを解除する必要はありません。組織が認証を管理している場合は管理者設定に従います。ローカル設定を何度書き換えても組織の制限は解除できません。",
+        "인증 방식과 로그인 여부만 기록하고 로그인 캐시, 쿠키, 키는 복사하지 않습니다. 로그아웃 상태일 때만 codex login을 실행해 브라우저 인증을 완료하세요. 이미 로그인되어 있으면 실습을 위해 일부러 로그아웃할 필요가 없습니다. 조직이 인증을 관리한다면 관리자 설정을 따릅니다. 로컬 설정을 반복 수정해도 조직 제한이 해제되지는 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "第二步：開啟正確的用量來源",
+        "Step 2: open the appropriate usage source",
+        "手順 2：対応する使用量を開く",
+        "2단계: 알맞은 사용량 화면 열기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "ChatGPT 登入者使用官方[Codex 用量頁](https://chatgpt.com/codex/settings/usage)。開啟後先核對帳號與工作區，再讀取頁面列出的各個額度區間、剩餘值及重置時間。CLI 的互動階段可輸入 /status 檢視當前狀態；斜線指令是在 codex 啟動後的輸入區，不是在 PowerShell。API 登入者則到自己 Platform 組織的 Usage 與 Billing 核對；ChatGPT 用量頁不能代替 API 帳單。",
+        "For ChatGPT sign-in, open the official [Codex usage page](https://chatgpt.com/codex/settings/usage). Confirm the account and workspace before reading the displayed windows, remaining allowance and reset times. In an interactive CLI session, /status shows current status; enter it after starting codex, not in PowerShell. For API-key access, check Usage and Billing in the corresponding Platform organization. ChatGPT usage does not replace an API bill.",
+        "ChatGPT サインインでは公式の [Codex 使用量ページ](https://chatgpt.com/codex/settings/usage)を開きます。アカウントとワークスペースを確認してから、表示された各期間、残量、リセット時刻を読みます。CLI の対話中は /status で状態を見られますが、入力先は codex 起動後の欄であり PowerShell ではありません。API キー利用者は対応する Platform 組織の Usage と Billing を確認します。ChatGPT の使用量は API 請求の代わりにはなりません。",
+        "ChatGPT 로그인이라면 공식 [Codex 사용량 페이지](https://chatgpt.com/codex/settings/usage)를 엽니다. 계정과 워크스페이스를 확인한 다음 표시된 기간별 한도, 잔여량, 초기화 시간을 읽습니다. CLI 대화 중에는 /status로 상태를 볼 수 있지만 PowerShell이 아니라 codex를 시작한 뒤 입력해야 합니다. API 키 사용자는 해당 Platform 조직의 Usage와 Billing을 확인합니다. ChatGPT 사용량 화면은 API 청구서를 대신하지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "/status",
+      "label": [
+        "互動斜線指令：在已啟動的 Codex CLI 輸入",
+        "Interactive slash command: enter inside a running Codex CLI",
+        "対話用スラッシュコマンド：起動済みの Codex CLI に入力する",
+        "대화형 슬래시 명령: 실행 중인 Codex CLI에 입력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "讀百分比前先看標籤是「已使用」還是「剩餘」。假設示例顯示已使用 30%，其餘是 70%；若畫面本來寫剩餘 30%，就不能再反轉一次。沒有數值或正在載入時記為未知，不要當成零。不同期間有各自的重置時間，不可拿其中一個倒數推論全部限制已解除，也不可把較晚更新的頁面當成另一份額度。",
+        "Read the label before interpreting percentages. In a fictional example, 30% used means 70% remains; if the display already says 30% remaining, do not invert it again. Missing or loading values are unknown, not zero. Different windows may have different reset times. One countdown does not establish that every limit has reset, and a later refresh is not a separate allowance.",
+        "割合は「使用済み」か「残り」かを先に確認します。架空例で使用済み 30% なら残りは 70% ですが、最初から残り 30% と表示されていれば再計算して逆にしません。未表示や読み込み中は不明でありゼロではありません。期間ごとにリセット時刻が異なる場合があり、一つのカウントダウンから全制限の解除を判断しないでください。更新時刻の違う画面も別枠ではありません。",
+        "백분율을 읽기 전에 사용량인지 잔여량인지 확인합니다. 가상 예시로 30% 사용했다면 70%가 남지만 이미 30% 남았다고 표시되면 다시 뒤집어 계산하지 마세요. 값이 없거나 로딩 중이면 0이 아니라 알 수 없음입니다. 기간마다 초기화 시간이 다를 수 있으므로 하나의 남은 시간으로 모든 제한이 풀렸다고 판단하지 않습니다. 나중에 갱신된 화면도 별도의 한도가 아닙니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "判讀練習：同樣是 30%，意思可能相反",
+        "Reading exercise: 30% can mean different things",
+        "読み取り練習：同じ 30% でも意味が違います",
+        "해석 실습: 같은 30%도 뜻이 다를 수 있어요"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "以下為虛構紀錄，不代表你的帳號或任何方案承諾。A：個人工作區、同一個額度區間、標籤「已使用」、數值 30%。B：另一個工作區、標籤「剩餘」、數值 30%，重置時間未顯示。請先回答兩筆各剩多少、能否推算 B 的重置時間，以及 API 儀表板有餘額能否證明 A 的訂閱額度可用。",
+        "These are fictional records, not your account data or a plan promise. A: personal workspace, one allowance window, metric “used,” value 30%. B: a different workspace, metric “remaining,” value 30%, reset time absent. Determine the remaining amount in each record, whether B's reset time can be inferred, and whether an API dashboard balance proves A has subscription allowance.",
+        "以下は架空の記録で、あなたのアカウント情報やプランの保証ではありません。A：個人ワークスペース、ある利用期間、表示は「使用済み」30%。B：別のワークスペース、表示は「残り」30%、リセット時刻は表示なし。それぞれの残量、B のリセット時刻を推定できるか、API の残高で A のサブスクリプション利用枠を確認できるかを考えます。",
+        "다음은 가상 기록이며 실제 계정 정보나 요금제 보장이 아닙니다. A: 개인 워크스페이스의 한 사용 기간, 지표는 ‘사용’, 값은 30%. B: 다른 워크스페이스, 지표는 ‘남음’, 값은 30%이며 초기화 시간은 표시되지 않습니다. 각각 얼마나 남았는지, B의 초기화 시간을 추정할 수 있는지, API 대시보드의 잔액으로 A의 구독 한도를 확인할 수 있는지 판단하세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "答案：A 剩餘 70%，B 剩餘 30%；B 的重置時間只能記「未知」。兩筆來自不同工作區，不能相加成一個餘額，也不能互相覆蓋。API 餘額不能證明 ChatGPT 訂閱額度。若連數值或標籤都沒顯示，同樣記「未知」，不要填零。回到實際用量頁時，先核對來源、工作區、區間與時區，再記錄畫面當下顯示的值。",
+        "Answers: A has 70% remaining and B has 30%; B's reset time is unknown. Different workspaces must not be added into one balance or used to overwrite each other. An API balance does not establish ChatGPT subscription allowance. If a value or metric label is absent, record unknown rather than zero. On the actual usage page, check the source, workspace, window and timezone before recording the displayed value.",
+        "答え：A の残量は 70%、B は 30%、B のリセット時刻は不明です。別ワークスペースの値を合算したり、一方で他方を上書きしたりしません。API の残高は ChatGPT サブスクリプションの利用枠を示しません。数値や指標名がない場合もゼロではなく不明と記録します。実際のページでは出典、ワークスペース、期間、タイムゾーンを確認してから表示値を記録します。",
+        "정답: A는 70%, B는 30%가 남았으며 B의 초기화 시간은 알 수 없습니다. 다른 워크스페이스의 값을 하나의 잔액으로 더하거나 서로 덮어쓰면 안 됩니다. API 잔액으로 ChatGPT 구독 한도를 확인할 수 없습니다. 값이나 지표명이 없을 때도 0 대신 모름으로 기록하세요. 실제 사용량 페이지에서는 출처, 워크스페이스, 기간, 시간대를 확인한 뒤 표시된 값을 기록합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "維護提醒：官方目前說明 ChatGPT Work 與 Codex 共用用量，因此其他 Work 任務也可能影響同一帳號的可用額度。以[官方用量說明](https://learn.chatgpt.com/docs/pricing)及自己的用量頁為準；不能只憑這次提示詞的長短估算還能做幾個任務。",
+        "Maintenance note: current documentation states that ChatGPT Work and Codex share usage, so other Work tasks can affect the same account's allowance. Consult the [official usage explanation](https://learn.chatgpt.com/docs/pricing) and your usage page; prompt length alone cannot tell you how many tasks remain.",
+        "更新時の確認点：現在の公式文書では ChatGPT Work と Codex は使用量を共有するため、他の Work タスクも同じアカウントの利用枠に影響し得ます。[公式の使用量説明](https://learn.chatgpt.com/docs/pricing)と自分の使用量ページを確認してください。依頼文の長さだけでは残りタスク数を算出できません。",
+        "유지 관리 참고: 현재 공식 문서에 따르면 ChatGPT Work와 Codex는 사용량을 공유하므로 다른 Work 작업도 같은 계정의 한도에 영향을 줄 수 있습니다. [공식 사용량 설명](https://learn.chatgpt.com/docs/pricing)과 자신의 사용량 페이지를 기준으로 삼으세요. 요청문 길이만으로 남은 작업 수를 계산할 수는 없습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "第三步：建立一份可分享的檢查紀錄",
+        "Step 3: make a shareable diagnostic note",
+        "手順 3：共有できる確認記録を作る",
+        "3단계: 공유 가능한 확인 기록 작성하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在自己的筆記中複製下面範本，手動填入畫面可確認的資訊。這是紀錄格式，不是設定檔，不需要放到專案根目錄，也不要填寫帳號電子郵件、公司名稱或任何金鑰。時間保留時區，例如 Asia/Taipei，讓後續比較不會把 UTC 與本地時間混在一起；看不到的欄位填 unknown。",
+        "Copy this template into a personal note and fill it only with information you can verify on screen. It is a record, not configuration; it need not be placed in the project root. Exclude your email, company name and all keys. Include the time zone, such as Asia/Taipei, to avoid mixing UTC and local times. Use unknown for unavailable fields.",
+        "次の書式を個人用のメモにコピーし、画面で確認できた内容だけ記入します。設定ファイルではないためプロジェクト直下に置く必要はありません。メール、会社名、キーは書かないでください。UTC と現地時刻を混同しないよう Asia/Taipei などのタイムゾーンを残し、確認できない欄は unknown とします。",
+        "아래 양식을 개인 메모에 복사하고 화면에서 확인한 정보만 채웁니다. 설정 파일이 아니라 기록이므로 프로젝트 루트에 둘 필요가 없습니다. 이메일, 회사명, 키는 제외하세요. UTC와 현지 시각을 혼동하지 않도록 Asia/Taipei 같은 시간대를 기록하고 확인할 수 없는 항목은 unknown으로 씁니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Checked at: YYYY-MM-DD HH:mm timezone\nInterface and version: desktop / CLI / browser\nAuthentication: ChatGPT / API / unknown\nWorkspace category: personal / managed / unknown\nUsage source: Codex dashboard / Platform Usage\nWindow label: copied without private identifiers\nMetric meaning: used / remaining / unknown\nDisplayed value: value / unknown\nReset time and timezone: value / unknown\nFeature or error being checked: short description\nNext step: verify account / wait / ask workspace admin",
+      "label": [
+        "私人筆記範本：填寫欄位，不是指令",
+        "Private note template: fill in fields; this is not a command",
+        "個人用メモ：項目を記入する。コマンドではありません",
+        "개인 메모 양식: 필드를 작성하며 명령으로 실행하지 않음"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "用一個不用修改檔案的小任務驗證登入，例如請它說明目前練習資料夾有哪些檔案。成功表示這個入口當下可執行該任務，不代表所有模型、雲端功能或外部服務也都可用。若不想消耗用量，只完成狀態檢查即可，並將任務驗證寫成未執行。不要為了測試上限而持續傳送大任務直到額度歸零。",
+        "Optionally validate sign-in with a small read-only task, such as listing your practice folder. Success establishes that this interface can perform that task now, not that every model, cloud feature or external service is available. To avoid consuming allowance, stop at the status check and record task verification as not run. Do not test a limit by repeatedly sending large tasks until it is exhausted.",
+        "必要なら練習フォルダーの一覧など小さな読み取りタスクでログインを確認します。成功しても、現在の入口でその作業ができると確認しただけで、全モデル、クラウド機能、外部サービスの利用を保証しません。利用枠を使いたくなければ状態確認で止め、タスク検証は未実施と記録します。上限確認のために大きなタスクを連投して使い切らないでください。",
+        "원한다면 실습 폴더 목록을 읽는 작은 작업으로 로그인을 확인합니다. 성공해도 현재 화면에서 그 작업이 가능하다는 뜻이지 모든 모델, 클라우드 기능, 외부 서비스를 사용할 수 있다는 뜻은 아닙니다. 한도를 쓰고 싶지 않다면 상태 확인까지만 하고 작업 검증은 미실행으로 기록하세요. 큰 작업을 반복해 한도를 소진시키는 방식으로 제한을 시험하지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "常見問題、停止與復原",
+        "Troubleshooting, stopping and recovery",
+        "問題の切り分けと終了",
+        "문제 구분, 중단과 복구"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "瀏覽器已登入但 CLI 顯示未登入：先看是否完成回到 CLI 的驗證流程、是否在同一個系統環境，以及是否用了不同 CODEX_HOME。WSL 與 Windows 的家目錄並非同一個。記錄錯誤後重新執行正常登入；不要把 auth.json 上傳給別人排查。沒有瀏覽器的環境可查官方裝置碼流程及工作區是否允許，不要自行停用憑證驗證。",
+        "Browser signed in but CLI signed out: check whether the browser flow completed back to CLI, whether you are in the same system environment and whether CODEX_HOME differs. WSL and Windows have different home directories. Record the error and retry normal sign-in; do not upload auth.json for troubleshooting. For headless environments, consult the documented device-code flow and workspace permission rather than disabling certificate validation.",
+        "ブラウザーはログイン済みなのに CLI が未認証なら、ブラウザーフローが CLI に戻って完了したか、同じシステム環境か、CODEX_HOME が異ならないかを確認します。WSL と Windows のホームは別です。エラーを記録して通常ログインをやり直し、auth.json を他人に渡さないでください。ブラウザーのない環境では公式のデバイスコード手順とワークスペースの許可を確認し、証明書検証を無効化しないでください。",
+        "브라우저는 로그인되어 있지만 CLI는 아니라면 인증 과정이 CLI로 돌아와 완료됐는지, 같은 운영 환경인지, CODEX_HOME이 다른지 확인합니다. WSL과 Windows의 홈 폴더는 다릅니다. 오류를 기록하고 정상 로그인 절차를 다시 시도하되 auth.json을 문제 해결용으로 공유하지 마세요. 브라우저 없는 환경은 공식 장치 코드 절차와 워크스페이스 허용 여부를 확인하고 인증서 검증을 끄지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "已登入卻沒有某項功能：依序核對入口、版本、工作區角色與方案支援，這不一定是額度問題。顯示用量限制：記下限制名稱與重置時間，先儲存交接紀錄並等待，或自行評估帳號提供的其他選項。登入錯誤、功能資格與用量限制應分開處理；重灌程式不會替帳號增加額度。",
+        "Signed in but a feature is missing: check interface, version, workspace role and plan support in that order; allowance may not be the issue. For a usage-limit message, record the named limit and reset time, save a handoff note and wait, or independently assess the options your account offers. Treat authentication, feature eligibility and usage limits separately. Reinstalling the app does not add account allowance.",
+        "ログイン後に機能がなければ、入口、バージョン、ワークスペースの役割、プラン対応の順に確認します。利用枠の問題とは限りません。使用制限が表示されたら、その名称とリセット時刻を記録し、引き継ぎを保存して待つか、アカウントで提示される選択肢を検討します。認証、利用資格、使用制限は別問題で、再インストールしても利用枠は増えません。",
+        "로그인했는데 기능이 없다면 사용 화면, 버전, 워크스페이스 역할, 요금제 지원 순으로 확인합니다. 반드시 한도 문제인 것은 아닙니다. 사용 제한 메시지가 뜨면 제한 이름과 초기화 시간을 기록하고 인수인계 메모를 저장해 기다리거나 계정에 제시된 선택지를 직접 검토합니다. 인증, 기능 자격, 사용 제한은 별개이며 재설치로 한도가 늘어나지는 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "本例沒有修改計費設定，結束時關閉用量頁即可。若你真的要登出 CLI，在終端機執行 codex logout；這會清除相應的已儲存的登入憑證，不會退費或復原已修改的程式。官方文件指出 CLI 與 IDE 可共用登入快取，因此在其中一處登出可能讓另一處也需要重新登入。不要為了讓教學截圖乾淨而重置真實帳號資料。",
+        "This exercise changes no billing settings, so close the usage page when finished. If you actually want to sign out of CLI, run codex logout in the terminal. It clears the relevant stored authentication, not charges or file changes. Official documentation notes that CLI and IDE can share cached sign-in, so signing out in one may require signing in again in the other. Do not reset real account data merely to obtain a tidy tutorial screenshot.",
+        "本実習では課金設定を変更していないため、使用量ページを閉じれば終了です。本当に CLI からログアウトする場合だけ端末で codex logout を実行します。保存された認証を消す操作で、返金やファイル復元ではありません。公式文書によると CLI と IDE は認証キャッシュを共有するため、一方のログアウトで他方にも再ログインが必要になる場合があります。画像をきれいにするために実アカウントをリセットしないでください。",
+        "이 실습은 결제 설정을 바꾸지 않으므로 사용량 페이지를 닫으면 끝납니다. 실제로 CLI에서 로그아웃하려면 터미널에서 codex logout을 실행합니다. 저장된 인증을 지우는 동작이며 환불이나 파일 복원이 아닙니다. 공식 문서에 따르면 CLI와 IDE는 로그인 캐시를 공유할 수 있어 한쪽에서 로그아웃하면 다른 쪽도 다시 로그인해야 할 수 있습니다. 튜토리얼 화면을 깔끔하게 만들려고 실제 계정 데이터를 초기화하지 마세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "完成判準與下一步",
+        "Completion criteria and next steps",
+        "完了条件と次の学習",
+        "완료 기준과 다음 단계"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "小練習是將兩張不同時間的紀錄比對：確認同一帳號型別、同一用量來源、相同區間及時區後，才比較剩餘值。如果任何一項未知，先補證據而不是猜差額。你能指出該看哪個計費來源，並將登入、資格與額度三種問題分開，就完成本篇。接著閱讀[CLI 常用指令](article:codex-commands)、[上下文交接](article:codex-context-handoff)或[有效使用額度](article:codex-usage-efficiency)。",
+        "For a small exercise, compare notes made at two times. Confirm the account category, usage source, window and time zone match before comparing remaining values. If any field is unknown, obtain evidence rather than guessing the difference. You are finished when you know which billing source applies and can separate sign-in, eligibility and allowance issues. Continue with [CLI commands](article:codex-commands), [context handoff](article:codex-context-handoff) or [using allowance effectively](article:codex-usage-efficiency).",
+        "追加練習では異なる時刻の記録を比較します。アカウント区分、使用量の出典、期間、タイムゾーンが同じと確認してから残量を比べます。不明な項目があれば差を推測せず証拠を補います。対応する課金元を示し、認証・利用資格・利用枠を区別できれば完了です。次は [CLI コマンド](article:codex-commands)、[コンテキストの引き継ぎ](article:codex-context-handoff)、[利用枠の活用](article:codex-usage-efficiency)に進めます。",
+        "추가 연습으로 서로 다른 시각에 만든 기록 두 개를 비교하세요. 계정 분류, 사용량 출처, 기간, 시간대가 같은지 확인한 뒤 잔여량을 비교합니다. 모르는 항목이 있으면 차이를 추측하지 말고 근거부터 확보하세요. 어떤 과금 출처를 봐야 하는지 알고 인증, 자격, 한도 문제를 구분하면 완료입니다. 다음으로 [CLI 명령](article:codex-commands), [문맥 인수인계](article:codex-context-handoff), [효율적인 한도 사용](article:codex-usage-efficiency)을 읽습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "查證日 2026-09-14，來源為[官方驗證說明](https://learn.chatgpt.com/docs/auth)與[官方用量、方案說明](https://learn.chatgpt.com/docs/pricing#where-can-i-see-my-current-usage-limits)。帳號狀態與價格會變動，以登入後畫面為準。本篇範本使用虛構欄位，沒有公開任何人的帳號截圖，也未聲稱完成付費交易測試。",
+        "Checked on 2026-09-14 against [official authentication guidance](https://learn.chatgpt.com/docs/auth) and [usage and plan documentation](https://learn.chatgpt.com/docs/pricing#where-can-i-see-my-current-usage-limits). Account state and prices change; inspect your signed-in display. The template uses fictional fields, publishes no account screenshots and makes no claim that paid transactions were tested.",
+        "確認日は 2026-09-14。出典は[公式認証ガイド](https://learn.chatgpt.com/docs/auth)と[使用量・プラン文書](https://learn.chatgpt.com/docs/pricing#where-can-i-see-my-current-usage-limits)です。状態や価格は変わるためログイン後の表示を確認してください。書式は架空の項目で、個人のアカウント画像や有料取引の試験結果を公開していません。",
+        "2026-09-14에 [공식 인증 안내](https://learn.chatgpt.com/docs/auth)와 [사용량 및 요금제 문서](https://learn.chatgpt.com/docs/pricing#where-can-i-see-my-current-usage-limits)로 확인했습니다. 계정 상태와 가격은 바뀌므로 로그인 후 표시를 확인하세요. 양식은 가상 필드를 사용하며 개인 계정 화면을 공개하거나 결제 거래를 테스트했다고 주장하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "purpose": "comparison",
+      "text": [
+        "| 現象 | 先確認 | 不能直接推論 |\n| --- | --- | --- |\n| 無法登入 | 登入方式與工作區 | 需要加值 |\n| 缺少功能 | 入口、版本、資格 | 額度為零 |\n| 額度限制 | 用量來源與重置時間 | 重新安裝就會恢復 |",
+        "| Symptom | First check | Do not infer |\n| --- | --- | --- |\n| Cannot sign in | Method and workspace | A purchase is required |\n| Feature missing | Interface, version, eligibility | Allowance is zero |\n| Usage limited | Usage source and reset time | Reinstallation restores it |",
+        "| 症状 | 先に確認 | 推測しないこと |\n| --- | --- | --- |\n| 認証できない | 方法とワークスペース | 購入が必要 |\n| 機能がない | 入口、版、資格 | 利用枠がゼロ |\n| 使用制限 | 出典とリセット時刻 | 再導入で回復 |",
+        "| 증상 | 먼저 확인 | 단정하지 않을 것 |\n| --- | --- | --- |\n| 로그인 실패 | 방식과 워크스페이스 | 충전 필요 |\n| 기능 없음 | 화면, 버전, 자격 | 한도 0 |\n| 사용 제한 | 사용량 출처와 초기화 시간 | 재설치로 복원 |"
+      ]
+    }
+  ],
+  "operationMinutes": 15,
+  "readingMinutes": 10
+}

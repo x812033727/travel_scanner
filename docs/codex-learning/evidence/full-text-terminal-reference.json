@@ -1,0 +1,17 @@
+{
+  "environment": "Windows / PowerShell 7.6.5",
+  "checked_on": "2026-09-14",
+  "checks": [
+    "Reading note.txt at the practice root fails because the file exists only in the child",
+    "Correct relative child path reads the exact expected sentence",
+    "Failed and successful reads leave the working directory at the practice root",
+    "Quoted child navigation and parent return preserve the intended root",
+    "Missing directory is rejected without changing location",
+    "No root file or missing directory created; source file hash unchanged"
+  ],
+  "reference_only": true,
+  "passed": 6,
+  "model_execution": false,
+  "fixture": "C:\\Users\\x8120\\AppData\\Local\\Temp\\codex-fulltext-paths-0a287d5b2f004afa9887fcc6ac361257",
+  "other_operating_systems_tested": false
+}

@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-09-14T04:29:36.5746527Z",
+  "environment": "Windows / PowerShell 7.6.5",
+  "checks": [
+    "Quoted path containing spaces reads the exact UTF-8 sample",
+    "Parent navigation returns to the practice root without moving files",
+    "Missing destination fails and preserves the working location",
+    "All navigation operations preserve the original file and do not create the missing folder"
+  ],
+  "limitations": [
+    "Shell exercise only; no Codex model task or macOS/Linux runtime was tested"
+  ]
+}

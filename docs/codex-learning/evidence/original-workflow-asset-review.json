@@ -1,0 +1,604 @@
+{
+  "checked_on": "2026-09-14",
+  "reviewer": "codex-modal-validation-fc2e",
+  "base_commit": "cfc5a6e8f1595ede78ee93fa004e1e4aad223b13",
+  "scope": "Original hero/flow diagrams and existing practice screenshot assets only; no new site or product UI acceptance.",
+  "method": "Opened all 34 distinct pre-change hero JPEGs with view_image, covering the hub and all 60 lesson heroes. Opened the changed shared hero after rendering. The 28 affected SVGs and JPEGs are byte-identical within their respective groups.",
+  "observations": [
+    "The first 32 lesson heroes have visible labels and numbered cards. The hub is an original route illustration.",
+    "Lessons 33-60 share one original numbered workflow design. Its first arrowhead ended inside the middle card and was hidden.",
+    "Moved the first arrow tip to the middle card boundary and the second arrow shaft start to the middle card's right boundary in both the generator and the 28 existing SVGs.",
+    "Rendered only the 28 affected JPEG heroes with the existing Sharp dependency, quality 86. Both arrowheads are visible in the inspected updated hero."
+  ],
+  "source_hashes": {
+    "tools/codex-learning/build-depth.py": "7dc51dc1cc8146b22f6ebd9716bb901763cfdf67b65c6c52c39c95239dfa6cef"
+  },
+  "hash_convention": "Source hashes use LF-normalized UTF-8; image hashes use raw bytes.",
+  "reviewed_hero_groups_before": [
+    {
+      "ids": [
+        1
+      ],
+      "path": "apps/web/public/guides/codex-beginner-guide/hero.jpg",
+      "sha256_before": "730236dd664204013caf4893eb93391aa707db286a0b71260aef542ab1b26660"
+    },
+    {
+      "ids": [
+        2
+      ],
+      "path": "apps/web/public/guides/codex-account-usage/hero.jpg",
+      "sha256_before": "e1b271101d993b33ff1b7f92c228d3ae2f6b9fb3d778f07a934b0c865b843994"
+    },
+    {
+      "ids": [
+        3
+      ],
+      "path": "apps/web/public/guides/codex-desktop-getting-started/hero.jpg",
+      "sha256_before": "f527803709f83ebc38c4d38636c2866d44138017945a86b666b0a0e0d0883b7b"
+    },
+    {
+      "ids": [
+        4
+      ],
+      "path": "apps/web/public/guides/codex-mobile-guide/hero.jpg",
+      "sha256_before": "6ccc1fb3b36a8ef01eac42808c558dac65994bf5003ab7a2ca09db34fa0d5550"
+    },
+    {
+      "ids": [
+        5
+      ],
+      "path": "apps/web/public/guides/codex-cli-getting-started/hero.jpg",
+      "sha256_before": "ab812e9def9493a3ef9c5a4431ba8d6908ac8b3f6641935a720a5c2c487410d7"
+    },
+    {
+      "ids": [
+        6
+      ],
+      "path": "apps/web/public/guides/codex-first-project/hero.jpg",
+      "sha256_before": "c6ff7c653eb1ce8c432b3652a1dc7339b361390dbe09a36d1c089cb59639061f"
+    },
+    {
+      "ids": [
+        7
+      ],
+      "path": "apps/web/public/guides/codex-prompting/hero.jpg",
+      "sha256_before": "b2721b556c759ce848f91d42c4e276ec75a6bc0628e86825c24a3f2bf76717f0"
+    },
+    {
+      "ids": [
+        8
+      ],
+      "path": "apps/web/public/guides/codex-plan-mode/hero.jpg",
+      "sha256_before": "84188480f5e0b2278afd10cc23a711cfbdd41ab2b71d0fa72a7be5a46fac21d1"
+    },
+    {
+      "ids": [
+        9
+      ],
+      "path": "apps/web/public/guides/codex-markdown-basics/hero.jpg",
+      "sha256_before": "d9eff04a2dc74d15107956738a769ac737c47f1c73e5a9416579b8e972dd35f9"
+    },
+    {
+      "ids": [
+        10
+      ],
+      "path": "apps/web/public/guides/codex-agents-md/hero.jpg",
+      "sha256_before": "b47ede74304ef6b205ff073e67c8dd9c20b1ef497e8d9bbad6c0c7d56a4bcd6c"
+    },
+    {
+      "ids": [
+        11
+      ],
+      "path": "apps/web/public/guides/codex-commands/hero.jpg",
+      "sha256_before": "6b1019bcf29d35270fcb41f0440466e32de30be1920363d9324a2b2edadf0c60"
+    },
+    {
+      "ids": [
+        12
+      ],
+      "path": "apps/web/public/guides/codex-troubleshooting/hero.jpg",
+      "sha256_before": "84bac74f4e9c044620860e70bbb11c1fcabffb46cf0d2ad3d683993a24859183"
+    },
+    {
+      "ids": [
+        13
+      ],
+      "path": "apps/web/public/guides/codex-project-management/hero.jpg",
+      "sha256_before": "cb904de603440ab51aa10d10e60ec64444769e3c3204f60a4a198ff97b467bb4"
+    },
+    {
+      "ids": [
+        14
+      ],
+      "path": "apps/web/public/guides/codex-ide-getting-started/hero.jpg",
+      "sha256_before": "b167e552c874abbbae019ddffd40a578f366c015dbdd8e02f272cba58aee4e17"
+    },
+    {
+      "ids": [
+        15
+      ],
+      "path": "apps/web/public/guides/codex-cloud-tasks-github/hero.jpg",
+      "sha256_before": "cc018cece9dc8d58ed69e501f0fdbcbf7eba5ad3b7c6834a7b0f81cd596627e9"
+    },
+    {
+      "ids": [
+        16
+      ],
+      "path": "apps/web/public/guides/codex-config-toml/hero.jpg",
+      "sha256_before": "72017b663e8c7e1cb3eafd88dcd9b1d000eaff7dee5bb94acf6526258c4567ad"
+    },
+    {
+      "ids": [
+        17
+      ],
+      "path": "apps/web/public/guides/codex-model-selection/hero.jpg",
+      "sha256_before": "e4061af7350f57e47ff2f385042a35f4380a0c7f779d4481ec7667a26a7546f4"
+    },
+    {
+      "ids": [
+        18
+      ],
+      "path": "apps/web/public/guides/codex-permissions/hero.jpg",
+      "sha256_before": "2e4253f92f8eb7988c7e87bba5eb10128eca5a0d50bce37dfd71b9c63a3c7931"
+    },
+    {
+      "ids": [
+        19
+      ],
+      "path": "apps/web/public/guides/codex-git-basics/hero.jpg",
+      "sha256_before": "fa5d0062c34550bb81a193173fc155ad65c42b59bf6213d88d4b62aa2f61c73e"
+    },
+    {
+      "ids": [
+        20
+      ],
+      "path": "apps/web/public/guides/codex-debugging/hero.jpg",
+      "sha256_before": "af71f18a5eb26167e373fa4a2c9fd7bef80c0c72d33d6b52eee7135893ab88af"
+    },
+    {
+      "ids": [
+        21
+      ],
+      "path": "apps/web/public/guides/codex-testing-review/hero.jpg",
+      "sha256_before": "845b7f8d7a239e078907dbe3a35f715fc27c9bc3af4caa2211e53ba99c15e754"
+    },
+    {
+      "ids": [
+        22
+      ],
+      "path": "apps/web/public/guides/codex-context-handoff/hero.jpg",
+      "sha256_before": "22bd0995f43228d21dbbdfa5b075a55b7d4118e4b0e891e743941f53d66c2fdd"
+    },
+    {
+      "ids": [
+        23
+      ],
+      "path": "apps/web/public/guides/codex-skills/hero.jpg",
+      "sha256_before": "01afd980665ffce9d53f547f6219a9b329b0a7e283221a13807e088d151403bc"
+    },
+    {
+      "ids": [
+        24
+      ],
+      "path": "apps/web/public/guides/codex-plugins/hero.jpg",
+      "sha256_before": "ca7e98a2a3b138e8fd342ab7d143bdf9e35b834c4230854844563e2e0b5bc295"
+    },
+    {
+      "ids": [
+        25
+      ],
+      "path": "apps/web/public/guides/codex-mcp/hero.jpg",
+      "sha256_before": "2b8153fdd63baf6855d2cc119e2e0d9caabfcc0e0412e4b0e89dbd53ad845a3b"
+    },
+    {
+      "ids": [
+        26
+      ],
+      "path": "apps/web/public/guides/codex-browser-images/hero.jpg",
+      "sha256_before": "d3c062a5890a091e446ac6904f85d9810b3a92c43e4dc7300bb09b712dad27da"
+    },
+    {
+      "ids": [
+        27
+      ],
+      "path": "apps/web/public/guides/codex-worktrees/hero.jpg",
+      "sha256_before": "a5156272914409d4c416e3c70e9b244ab281efa83e64d1362ce6209de426dd08"
+    },
+    {
+      "ids": [
+        28
+      ],
+      "path": "apps/web/public/guides/codex-subagents/hero.jpg",
+      "sha256_before": "268d1e34ed499b63f5ea745fd20fd7215f90fecaf8064e7adc8e649df1cee50b"
+    },
+    {
+      "ids": [
+        29
+      ],
+      "path": "apps/web/public/guides/codex-automations/hero.jpg",
+      "sha256_before": "ec1c4d15f894e0ccaca0e727bfb779d345f9d1cf2f87bcde53be54556a75ce57"
+    },
+    {
+      "ids": [
+        30
+      ],
+      "path": "apps/web/public/guides/codex-exec-scripting/hero.jpg",
+      "sha256_before": "a318690e5e7caf1b451600b26229fd8cc643a9c327414af957ad1af09b6a7305"
+    },
+    {
+      "ids": [
+        31
+      ],
+      "path": "apps/web/public/guides/codex-website-workshop/hero.jpg",
+      "sha256_before": "f396b0735aee34ee2ac2b962679c854e6367b25e695d0828a98f4874bf64a7af"
+    },
+    {
+      "ids": [
+        32
+      ],
+      "path": "apps/web/public/guides/codex-csv-workshop/hero.jpg",
+      "sha256_before": "e11d12e0a0a352fb3976f36f6e9a2efcd46b43b10da5db01c3271ca44bb320bc"
+    },
+    {
+      "ids": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "path": "apps/web/public/guides/codex-platforms-guide/hero.jpg",
+      "sha256_before": "137f0590b74e4c773157da055fd3bf121522d8c20bbd5b5b80ed4d7beb9695e3"
+    },
+    {
+      "ids": [
+        0
+      ],
+      "path": "apps/web/public/guides/codex-learning-hub/hero.jpg",
+      "sha256_before": "4eaacbbb9a19939aa8253cf5b28c5f20f47c2a86d6067361b4cd8e32ea948939"
+    }
+  ],
+  "affected_assets": [
+    {
+      "id": 33,
+      "slug": "codex-platforms-guide",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 34,
+      "slug": "codex-terminal-paths",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 35,
+      "slug": "codex-cli-windows",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 36,
+      "slug": "codex-cli-macos",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 37,
+      "slug": "codex-cli-linux-wsl",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 38,
+      "slug": "codex-mobile-ios",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 39,
+      "slug": "codex-mobile-android",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 40,
+      "slug": "codex-remote-setup",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 41,
+      "slug": "codex-cross-device-workflow",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 42,
+      "slug": "codex-agents-md-scopes",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 43,
+      "slug": "codex-rules-and-context-files",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 44,
+      "slug": "codex-config-troubleshooting",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 45,
+      "slug": "codex-sessions-resume",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 46,
+      "slug": "codex-understand-codebase",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 47,
+      "slug": "codex-implement-feature",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 48,
+      "slug": "codex-skill-resources",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 49,
+      "slug": "codex-skill-testing",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 50,
+      "slug": "codex-plugin-troubleshooting",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 51,
+      "slug": "codex-templates-cheatsheet",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 52,
+      "slug": "codex-mcp-troubleshooting",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 53,
+      "slug": "codex-subagent-quality",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 54,
+      "slug": "codex-parallel-integration",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 55,
+      "slug": "codex-json-output",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 56,
+      "slug": "codex-ci-workflows",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 57,
+      "slug": "codex-automation-recovery",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 58,
+      "slug": "codex-maintain-existing-project",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 59,
+      "slug": "codex-project-data-safety",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    },
+    {
+      "id": 60,
+      "slug": "codex-usage-efficiency",
+      "svg_sha256": "0eea65be16037aa6f2c534b472155f9d03290e6a0e4c4ad0ba0634399c5f7fdf",
+      "hero_sha256": "a4459fa94a7043c73926ee52a0cecae4668bec3d919e067cab82cf95df30b9ea"
+    }
+  ],
+  "validation": {
+    "compiler_and_catalogue_tests": {
+      "result": "passed",
+      "tests": 10,
+      "command": "uv run --with mistune==3.1.3 --with opencc-python-reimplemented==0.1.7 python -m unittest discover -s tools/codex-learning -p 'test_*.py'"
+    },
+    "affected_jpeg_metadata": {"result": "passed", "files": 28, "width": 1600, "height": 900, "decoder": "Sharp"},
+    "affected_svg_xml": {
+      "result": "passed",
+      "files": 28,
+      "view_box": "0 0 1600 900"
+    },
+    "identical_affected_assets": {
+      "svg_groups": 1,
+      "jpeg_groups": 1
+    },
+    "affected_locale_metadata": {
+      "result": "passed",
+      "documents": 140,
+      "checks": [
+        "Hero alternative text is present",
+        "Hero attribution names Mokaair",
+        "Diagram alternative text and caption are present"
+      ]
+    },
+    "article_packs_modified": false,
+    "locale_text_modified": false,
+    "product_screenshot_claim": false,
+    "browser_acceptance": false
+  },
+  "existing_practice_screenshot_inspection": {
+  "method": "Viewed all eight distinct existing PNGs referenced by English lesson image blocks. No screenshots were captured or regenerated in this review.",
+  "result": "No visible clipping or private account information found in these eight assets; stated headings, focus outlines, task/filter states and counts match their visible content.",
+  "items": [
+    {
+      "path": "apps/web/public/guides/codex-first-project/todo-390.png",
+      "sha256": "b06a36736f4ca0a9820baa64d4efd6bea206484aa91df5381a31eb28e38b2194",
+      "refs": [
+        {
+          "id": 3,
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 390px is a responsive viewport, not a physical phone. This is not the Codex desktop interface."
+        },
+        {
+          "id": 6,
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 390px is a responsive viewport, not a physical phone. This is not the Codex desktop interface."
+        },
+        {
+          "id": 26,
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 390px is a responsive viewport, not a physical phone. This is not the Codex desktop interface."
+        },
+        {
+          "id": 31,
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 390px is a responsive viewport, not a physical phone. This is not the Codex desktop interface."
+        }
+      ]
+    },
+    {
+      "path": "apps/web/public/guides/codex-first-project/todo-1280.png",
+      "sha256": "dfede091d73aaf1c1b94588313deb5d8bcf46ade3561877586b0803c62935cd8",
+      "refs": [
+        {
+          "id": 3,
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 1280px is a responsive viewport, not a physical phone. This is not the Codex desktop interface."
+        },
+        {
+          "id": 6,
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 1280px is a responsive viewport, not a physical phone. This is not the Codex desktop interface."
+        },
+        {
+          "id": 26,
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 1280px is a responsive viewport, not a physical phone. This is not the Codex desktop interface."
+        },
+        {
+          "id": 31,
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 1280px is a responsive viewport, not a physical phone. This is not the Codex desktop interface."
+        }
+      ]
+    },
+    {
+      "path": "apps/web/public/guides/codex-first-project/reference-390.png",
+      "sha256": "9fb1b3af66d55100472f76b88b3c891b0205204a70a8bcff3c34d059906c8e9b",
+      "refs": [
+        {
+          "id": 6,
+          "caption": "Reference edits applied to the practice files; actual Windows / Edge 153.0.4234.32 screenshot, 2026-09-14. Orange outline: keyboard focus. Fictional data in a 390px responsive viewport, not a physical phone. Not Codex UI or proof of model execution."
+        }
+      ]
+    },
+    {
+      "path": "apps/web/public/guides/codex-first-project/reference-1280.png",
+      "sha256": "1312a83bbd6aa86125b7f2d3d6e09da54aebd0913854aae142e3475e92101097",
+      "refs": [
+        {
+          "id": 6,
+          "caption": "Reference edits applied to the practice files; actual Windows / Edge 153.0.4234.32 screenshot, 2026-09-14. Orange outline: keyboard focus. Fictional data in a 1280px responsive viewport, not a physical phone. Not Codex UI or proof of model execution."
+        }
+      ]
+    },
+    {
+      "path": "apps/web/public/guides/codex-prompting/reference-390.png",
+      "sha256": "00a3e5f28f94c8efaa58d586ee28c27362d4360cff2de90633d84400557c6de9",
+      "refs": [
+        {
+          "id": 7,
+          "caption": "Reference edits applied to the practice files; actual Windows / Edge 153.0.4234.32 screenshot, 2026-09-14. Orange outline: keyboard focus. Fictional data in a 390px responsive viewport, not a physical phone. Not Codex UI or proof of model execution."
+        }
+      ]
+    },
+    {
+      "path": "apps/web/public/guides/codex-prompting/reference-1280.png",
+      "sha256": "1595635b1f105accdbc0db48980613121a179d1ab861798a1ee70f6c4e715e62",
+      "refs": [
+        {
+          "id": 7,
+          "caption": "Reference edits applied to the practice files; actual Windows / Edge 153.0.4234.32 screenshot, 2026-09-14. Orange outline: keyboard focus. Fictional data in a 1280px responsive viewport, not a physical phone. Not Codex UI or proof of model execution."
+        }
+      ]
+    },
+    {
+      "path": "apps/web/public/guides/codex-implement-feature/reference-390.png",
+      "sha256": "7c06d6e09bbbbba8e8b5da3eb34a69fd8325f0f560ad9611d6f467934174921e",
+      "refs": [
+        {
+          "id": 47,
+          "caption": "Actual reference repair: Completed retains two Read tasks with distinct IDs; the count remains 1 active / 3 total. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data, responsive viewport rather than a physical phone. This is the practice website, not Codex UI or evidence of model execution."
+        }
+      ]
+    },
+    {
+      "path": "apps/web/public/guides/codex-implement-feature/reference-1280.png",
+      "sha256": "69b502586523d28b8605a2c13c071319c017b93cc86da5ccd7edc67bb30c5cb8",
+      "refs": [
+        {
+          "id": 47,
+          "caption": "Actual reference repair: Completed retains two Read tasks with distinct IDs; the count remains 1 active / 3 total. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data, responsive viewport rather than a physical phone. This is the practice website, not Codex UI or evidence of model execution."
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Capture platform/version/date are existing caption metadata, not a new live product measurement.",
+    "Distinct task IDs are not visible in the feature screenshot; its two rows and 1 active / 3 total are visible. The IDs rely on the earlier fixture evidence.",
+    "The images show a fictional practice website. They are not Codex product UI screenshots or current article-page acceptance."
+  ]
+},
+  "limitations": [
+    "This asset inspection does not establish mobile page layout, copy-button behavior, navigation or Codex product UI correctness.",
+    "The generic advanced artwork remains a concept diagram. Existing captions identify it as original artwork, not a product screenshot.",
+    "The previous article and hub editorial blockers remain; this records a separate visual defect and its repair."
+  ]
+}

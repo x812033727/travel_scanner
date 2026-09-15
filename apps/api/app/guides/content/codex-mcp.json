@@ -1,0 +1,1567 @@
+{
+  "slug": "codex-mcp",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 125,
+  "locales": {
+    "zh-TW": {
+      "title": "MCP 設定與連線排除",
+      "description": "MCP 讓 Codex 使用外部工具與資料。STDIO 伺服器通常由本機命令啟動；HTTP 伺服器透過 URL 連線。設定檔寫入成功只代表設定存在，還需要確認服務啟動、驗證通過與工具回應。",
+      "hero": {
+        "src": "/guides/codex-mcp/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "接上 OpenAI 的唯讀文件 MCP，查一個問題、開啟原文核對，再停用或移除自己的練習項目。閱讀約 15 分鐘、操作約 20 分鐘。需要能上網的 Codex 桌面版、CLI 或 IDE；CLI 路線先完成安裝篇。本篇不用私有文件、付費服務金鑰或第三方 npm 伺服器套件。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "安裝篇",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MCP 是讓客戶端呼叫工具與取得上下文的協定。伺服器提供哪些能力，取決於該伺服器；接上文件服務不會自動取得你的 GitHub 或本機瀏覽器。OpenAI Docs MCP 提供文件搜尋與原文內容，不會代你呼叫 OpenAI API。本篇用它練習讀取驗收；日後換成會寫入資料的服務，仍須重新檢查工具與"
+            },
+            {
+              "type": "article",
+              "text": "權限範圍",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：選擇傳輸方式與設定位置"
+        },
+        {
+          "type": "table",
+          "header": [
+            "類型",
+            "你要提供的資料",
+            "執行位置"
+          ],
+          "rows": [
+            [
+              "STDIO",
+              "啟動程式與參數",
+              "Codex 主機啟動本機程序"
+            ],
+            [
+              "Streamable HTTP",
+              "MCP 服務網址",
+              "透過網路連到服務"
+            ],
+            [
+              "插件提供的 MCP",
+              "插件安裝與必要連線",
+              "依插件與入口提供"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇只做 Streamable HTTP。一般網站首頁不等於 MCP 網址，必須使用服務官方列出的端點；也不能把 STDIO 的 command 貼到 URL 欄。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一 Codex 主機的桌面版、CLI、IDE 共用 MCP 設定。預設使用者設定為 ~/.codex/config.toml；Windows 通常在使用者資料夾下的 .codex，macOS、Linux 同樣在自己的家目錄。若已設定自訂 CODEX_HOME，請依實際位置確認。可信任專案也能用 .codex/config.toml；本篇沿用使用者層設定，不在不明來源專案內調整。位置判斷見 "
+            },
+            {
+              "type": "article",
+              "text": "config.toml",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：先檢查既有項目，再新增"
+        },
+        {
+          "type": "code",
+          "label": "終端機：查看已設定伺服器",
+          "language": "sh",
+          "code": "codex mcp list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Windows PowerShell、macOS 終端機或 Linux 終端機執行上面的命令。這是管理命令，不需先進入 codex 對話。檢查是否已有 codexLearningDocs；若有同名項目，先看詳情，不要覆寫。已有相同官方網址的可用項目也能直接使用其現有名稱，並在驗收紀錄寫明「沿用既有設定」，收尾時保留它。列表可能含私人服務網址，不要直接公開整份輸出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若確定要新增，先在編輯器開啟實際使用者 config.toml，將現有檔案另存一份有日期且不覆蓋舊檔的備份。檔案原本不存在就記錄此狀態，不必自行建立空設定。只做這次單一變更，保存前後差異；備份可能含敏感值，放在自己的本機資料夾，不加入 Git。完成練習時優先移除新增的單一區段，避免用舊備份覆蓋其他任務剛加入的設定。"
+        },
+        {
+          "type": "code",
+          "label": "三種系統的終端機：新增並檢查練習項目",
+          "language": "sh",
+          "code": "codex mcp add codexLearningDocs --url https://developers.openai.com/mcp\ncodex mcp get codexLearningDocs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期 get 顯示名稱、HTTP 傳輸與完全相同的官方網址。這時只能勾選「設定保存成功」，尚未證明伺服器可達、工具列出或查詢成功。實際工具數量會改變，不抄教材中的固定數字；管理命令回傳零也不能作為讀取證據。若命令不存在，先用 codex mcp --help 確認版本與可用命令，再回到 CLI 更新說明。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "桌面與 IDE 的相同步驟"
+        },
+        {
+          "type": "paragraph",
+          "text": "不使用 CLI 時，桌面版到 Settings → MCP servers → Add server；輸入 codexLearningDocs，選 Streamable HTTP，貼上同一官方網址後保存，再按 Restart。IDE 從齒輪選 MCP servers → Add server，欄位相同，保存後按 Restart extension。Windows、macOS、Linux 使用其實際可用客戶端完成相同步驟；Linux 預覽或版本中沒有這個入口時可改用 CLI，不把缺少 UI 按鈕誤判為服務故障。"
+        },
+        {
+          "type": "code",
+          "label": "config.toml 中應有的區段：核對用，勿重複加入",
+          "language": "toml",
+          "code": "[mcp_servers.codexLearningDocs]\nurl = \"https://developers.openai.com/mcp\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "上面是同一設定的檔案表示，CLI、UI、手動編輯三條路選一條即可。不要先用命令新增又把相同 TOML 表格貼一次，重複表格可能使設定無法解析。若要手動編輯，只合併該區段後重新啟動客戶端。ChatGPT 網頁與手機不讀取你電腦的本機 config.toml；網頁的外部能力走 "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "，不能因本機成功就宣稱手機也已設定。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：確認工具並查詢原文"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 互動輸入框：查看連線，非終端機命令",
+          "language": "text",
+          "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI 在新的互動工作階段輸入 /mcp，查看練習伺服器與當下工具。桌面版和 IDE 則回到前述 MCP servers 設定頁確認狀態，再開新任務觀察實際工具活動；不要假定各入口都有 /mcp。若要求認證，先核對公開端點。其他 OAuth 服務可能需要 Authenticate 或 codex mcp login 名稱，本篇公開文件服務不需任意填入 API key。"
+        },
+        {
+          "type": "code",
+          "label": "新任務提示詞：透過 MCP 查證規則",
+          "language": "text",
+          "code": "Use the codexLearningDocs MCP tools to find the official AGENTS.md instructions.\nRead the relevant page and explain global versus project rules in three bullets.\nInclude the source URL and the section you checked.\nIf the MCP tools are unavailable, report that limitation instead of answering from memory.\nDo not edit files or call paid APIs.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果沿用既有伺服器，先把提示詞中的名稱替換成那個名稱。觀察至少一次搜尋或讀取工具的活動，再打開回覆的官方來源，確認段落確實支持全域與專案規則的說明。模型回覆格式可能不同，驗收重點是工具證據、網址與內容一致，不是一定三句或固定工具名稱。回答雖然正確但沒有經過 MCP，應記為一般回答，這次連線練習仍未完成。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：停用、重測與移除"
+        },
+        {
+          "type": "paragraph",
+          "text": "失敗對照只改自己新增的項目：在原區段加入 enabled = false，或使用停用控制，保存並重新啟動。CLI 在新工作階段用 /mcp；桌面和 IDE 依前述設定頁與新任務核對，確認不再提供該項工具。舊對話文字不算新讀取。恢復時把 enabled 改回 true 或移除自己加的 false，再重新啟動並重做讀取。"
+        },
+        {
+          "type": "code",
+          "label": "終端機：只移除本次新增的項目，再核對列表",
+          "language": "sh",
+          "code": "codex mcp remove codexLearningDocs\ncodex mcp list\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "移除後新任務應不再列出這個新增項目；這不會移除其他伺服器、刪除文件或撤銷別的 OAuth 授權。如果原先只是沿用既有項目，跳過移除並保留原狀。本篇若未變更設定，收尾紀錄就寫未變更。對有登入的其他服務，remove 與 logout 的目的不同，請依 "
+            },
+            {
+              "type": "article",
+              "text": "MCP 排除問題",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": " 核對，而不是一口氣清空所有連線。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與完成判準"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到伺服器時先查設定層級、名稱、enabled 與是否重新啟動；出現 TOML 解析錯誤時看重複表格與引號，不要重置整檔；設定正確但連不上時核對完整 URL、目前主機網路與服務狀態，再保存遮蔽後錯誤。工具回覆沒有來源，則重問讀取原文並核對連結，不把模糊答案當通過。這四類問題分別有不同證據，全部改成放寬權限通常不能解釋原因。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "驗收至少記錄實際客戶端版本、設定保存、一次帶來源的工具結果，以及自己新增項目的停用或移除結果。Windows 的獨立設定測試與公開服務協定測試可另外記錄，但不等同於桌面 UI、macOS、Linux 或你的模型任務已實測；無法操作的入口依官方文件查證。接續用"
+            },
+            {
+              "type": "article",
+              "text": "連線檢查範本",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": "保存結果，遇到問題再進下一篇。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp/diagram-1.svg",
+          "alt": "25. MCP 設定與連線排除 — 實作順序示意圖，非產品介面截圖。 Configuration → Handshake → Tool result",
+          "width": 1600,
+          "height": 900,
+          "caption": "25. MCP 設定與連線排除 — 實作順序示意圖，非產品介面截圖。 Configuration → Handshake → Tool result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Model Context Protocol",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Docs MCP",
+          "url": "https://developers.openai.com/learn/docs-mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "MCP 配置与连接排查",
+      "description": "MCP 让 Codex 使用外部工具与资料。STDIO 伺服器通常由本机命令启动；HTTP 伺服器透过 URL 连线。设定档写入成功只代表设定存在，还需要确认服务启动、验证通过与工具回应。",
+      "hero": {
+        "src": "/guides/codex-mcp/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "接上 OpenAI 的唯读文件 MCP，查一个问题、开启原文核对，再停用或移除自己的练习项目。阅读约 15 分钟、操作约 20 分钟。需要能上网的 Codex 桌面版、CLI 或 IDE；CLI 路线先完成安装篇。本篇不用私有文件、付费服务金钥或第三方 npm 伺服器套件。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "安装篇",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MCP 是让客户端呼叫工具与取得上下文的协定。伺服器提供哪些能力，取决于该伺服器；接上文件服务不会自动取得你的 GitHub 或本机浏览器。OpenAI Docs MCP 提供文件搜寻与原文内容，不会代你呼叫 OpenAI API。本篇用它练习读取验收；日后换成会写入资料的服务，仍须重新检查工具与"
+            },
+            {
+              "type": "article",
+              "text": "权限范围",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：选择传输方式与设定位置"
+        },
+        {
+          "type": "table",
+          "header": [
+            "类型",
+            "你要提供的资料",
+            "执行位置"
+          ],
+          "rows": [
+            [
+              "STDIO",
+              "启动程式与参数",
+              "Codex 主机启动本机程序"
+            ],
+            [
+              "Streamable HTTP",
+              "MCP 服务网址",
+              "透过网路连到服务"
+            ],
+            [
+              "插件提供的 MCP",
+              "插件安装与必要连线",
+              "依插件与入口提供"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇只做 Streamable HTTP。一般网站首页不等于 MCP 网址，必须使用服务官方列出的端点；也不能把 STDIO 的 command 贴到 URL 栏。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一 Codex 主机的桌面版、CLI、IDE 共用 MCP 设定。预设使用者设定为 ~/.codex/config.toml；Windows 通常在使用者资料夹下的 .codex，macOS、Linux 同样在自己的家目录。若已设定自订 CODEX_HOME，请依实际位置确认。可信任专案也能用 .codex/config.toml；本篇沿用使用者层设定，不在不明来源专案内调整。位置判断见 "
+            },
+            {
+              "type": "article",
+              "text": "config.toml",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：先检查既有项目，再新增"
+        },
+        {
+          "type": "code",
+          "label": "终端机：查看已设定伺服器",
+          "language": "sh",
+          "code": "codex mcp list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Windows PowerShell、macOS 终端机或 Linux 终端机执行上面的命令。这是管理命令，不需先进入 codex 对话。检查是否已有 codexLearningDocs；若有同名项目，先看详情，不要覆写。已有相同官方网址的可用项目也能直接使用其现有名称，并在验收纪录写明「沿用既有设定」，收尾时保留它。列表可能含私人服务网址，不要直接公开整份输出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若确定要新增，先在编辑器开启实际使用者 config.toml，将现有档案另存一份有日期且不覆盖旧档的备份。档案原本不存在就记录此状态，不必自行建立空设定。只做这次单一变更，保存前后差异；备份可能含敏感值，放在自己的本机资料夹，不加入 Git。完成练习时优先移除新增的单一区段，避免用旧备份覆盖其他任务刚加入的设定。"
+        },
+        {
+          "type": "code",
+          "label": "三种系统的终端机：新增并检查练习项目",
+          "language": "sh",
+          "code": "codex mcp add codexLearningDocs --url https://developers.openai.com/mcp\ncodex mcp get codexLearningDocs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期 get 显示名称、HTTP 传输与完全相同的官方网址。这时只能勾选「设定保存成功」，尚未证明伺服器可达、工具列出或查询成功。实际工具数量会改变，不抄教材中的固定数字；管理命令回传零也不能作为读取证据。若命令不存在，先用 codex mcp --help 确认版本与可用命令，再回到 CLI 更新说明。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "桌面与 IDE 的相同步骤"
+        },
+        {
+          "type": "paragraph",
+          "text": "不使用 CLI 时，桌面版到 Settings → MCP servers → Add server；输入 codexLearningDocs，选 Streamable HTTP，贴上同一官方网址后保存，再按 Restart。IDE 从齿轮选 MCP servers → Add server，栏位相同，保存后按 Restart extension。Windows、macOS、Linux 使用其实际可用客户端完成相同步骤；Linux 预览或版本中没有这个入口时可改用 CLI，不把缺少 UI 按钮误判为服务故障。"
+        },
+        {
+          "type": "code",
+          "label": "config.toml 中应有的区段：核对用，勿重复加入",
+          "language": "toml",
+          "code": "[mcp_servers.codexLearningDocs]\nurl = \"https://developers.openai.com/mcp\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "上面是同一设定的档案表示，CLI、UI、手动编辑三条路选一条即可。不要先用命令新增又把相同 TOML 表格贴一次，重复表格可能使设定无法解析。若要手动编辑，只合并该区段后重新启动客户端。ChatGPT 网页与手机不读取你电脑的本机 config.toml；网页的外部能力走 "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "，不能因本机成功就宣称手机也已设定。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：确认工具并查询原文"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 互动输入框：查看连线，非终端机命令",
+          "language": "text",
+          "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI 在新的互动工作阶段输入 /mcp，查看练习伺服器与当下工具。桌面版和 IDE 则回到前述 MCP servers 设定页确认状态，再开新任务观察实际工具活动；不要假定各入口都有 /mcp。若要求认证，先核对公开端点。其他 OAuth 服务可能需要 Authenticate 或 codex mcp login 名称，本篇公开文件服务不需任意填入 API key。"
+        },
+        {
+          "type": "code",
+          "label": "新任务提示词：透过 MCP 查证规则",
+          "language": "text",
+          "code": "Use the codexLearningDocs MCP tools to find the official AGENTS.md instructions.\nRead the relevant page and explain global versus project rules in three bullets.\nInclude the source URL and the section you checked.\nIf the MCP tools are unavailable, report that limitation instead of answering from memory.\nDo not edit files or call paid APIs.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果沿用既有伺服器，先把提示词中的名称替换成那个名称。观察至少一次搜寻或读取工具的活动，再打开回复的官方来源，确认段落确实支持全域与专案规则的说明。模型回复格式可能不同，验收重点是工具证据、网址与内容一致，不是一定三句或固定工具名称。回答虽然正确但没有经过 MCP，应记为一般回答，这次连线练习仍未完成。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：停用、重测与移除"
+        },
+        {
+          "type": "paragraph",
+          "text": "失败对照只改自己新增的项目：在原区段加入 enabled = false，或使用停用控制，保存并重新启动。CLI 在新工作阶段用 /mcp；桌面和 IDE 依前述设定页与新任务核对，确认不再提供该项工具。旧对话文字不算新读取。恢复时把 enabled 改回 true 或移除自己加的 false，再重新启动并重做读取。"
+        },
+        {
+          "type": "code",
+          "label": "终端机：只移除本次新增的项目，再核对列表",
+          "language": "sh",
+          "code": "codex mcp remove codexLearningDocs\ncodex mcp list\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "移除后新任务应不再列出这个新增项目；这不会移除其他伺服器、删除文件或撤销别的 OAuth 授权。如果原先只是沿用既有项目，跳过移除并保留原状。本篇若未变更设定，收尾纪录就写未变更。对有登入的其他服务，remove 与 logout 的目的不同，请依 "
+            },
+            {
+              "type": "article",
+              "text": "MCP 排除问题",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": " 核对，而不是一口气清空所有连线。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题与完成判准"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到伺服器时先查设定层级、名称、enabled 与是否重新启动；出现 TOML 解析错误时看重复表格与引号，不要重置整档；设定正确但连不上时核对完整 URL、目前主机网路与服务状态，再保存遮蔽后错误。工具回复没有来源，则重问读取原文并核对连结，不把模糊答案当通过。这四类问题分别有不同证据，全部改成放宽权限通常不能解释原因。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "验收至少记录实际客户端版本、设定保存、一次带来源的工具结果，以及自己新增项目的停用或移除结果。Windows 的独立设定测试与公开服务协定测试可另外记录，但不等同于桌面 UI、macOS、Linux 或你的模型任务已实测；无法操作的入口依官方文件查证。接续用"
+            },
+            {
+              "type": "article",
+              "text": "连线检查范本",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": "保存结果，遇到问题再进下一篇。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp/diagram-1.svg",
+          "alt": "25. MCP 配置与连接排查 — 实作顺序示意图，非产品介面截图。 Configuration → Handshake → Tool result",
+          "width": 1600,
+          "height": 900,
+          "caption": "25. MCP 配置与连接排查 — 实作顺序示意图，非产品介面截图。 Configuration → Handshake → Tool result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Model Context Protocol",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Docs MCP",
+          "url": "https://developers.openai.com/learn/docs-mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "MCP setup and connection checks",
+      "description": "MCP connects Codex to tools and data. STDIO servers usually start as local processes; HTTP servers use a URL. Saving configuration only proves it exists: verify startup, authentication and an actual tool response.",
+      "hero": {
+        "src": "/guides/codex-mcp/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Connect OpenAI's read-only documentation MCP, investigate one question, verify the source, then disable or remove your practice entry. Allow 15 minutes to read and 20 to practice. Use an online Codex desktop, CLI or IDE client; CLI readers should complete Installation. This exercise needs no private documents, paid-service keys or third-party npm server package."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "Installation",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MCP lets clients invoke tools and receive context. Capabilities depend on the server: connecting documentation does not grant GitHub or local browser access. OpenAI Docs MCP searches and retrieves documentation without calling the OpenAI API on your behalf. Use it to practice retrieval acceptance; a later service that writes data needs its own tool and "
+            },
+            {
+              "type": "article",
+              "text": "Permission",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": " review."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Choose transport and configuration location"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Type",
+            "Required information",
+            "Execution location"
+          ],
+          "rows": [
+            [
+              "STDIO",
+              "Program and arguments",
+              "Local process started by the Codex host"
+            ],
+            [
+              "Streamable HTTP",
+              "MCP endpoint URL",
+              "Network connection to the service"
+            ],
+            [
+              "Plugin-provided MCP",
+              "Plugin installation and required connection",
+              "Depends on plugin and surface"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This exercise uses only Streamable HTTP. A website homepage is not necessarily its MCP endpoint; use the provider's documented address, and do not paste a STDIO command into a URL field."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Desktop, CLI and IDE clients on the same Codex host share MCP configuration. The default user file is ~/.codex/config.toml: .codex under the user directory on Windows and the home directory on macOS/Linux. Honor an existing custom CODEX_HOME. Trusted projects can also use .codex/config.toml; this exercise uses the user configuration instead of editing an unfamiliar project. See "
+            },
+            {
+              "type": "article",
+              "text": "config.toml",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Inspect existing entries before adding"
+        },
+        {
+          "type": "code",
+          "label": "Terminal: list configured servers",
+          "language": "sh",
+          "code": "codex mcp list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Run the command in Windows PowerShell, macOS Terminal or a Linux terminal, outside the interactive codex session. Check for codexLearningDocs before adding it; inspect a same-name entry instead of overwriting it. You may reuse an existing working entry for the same official endpoint, recording that fact and preserving it during cleanup. Lists can contain private service URLs, so avoid publishing the entire output."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before adding, open the actual user config.toml in an editor and save a dated backup without replacing an older backup. If it does not exist, record that state without creating an empty file. Make one change and preserve the diff. Backups may contain sensitive values; keep them locally outside Git. At cleanup, remove only the new entry rather than overwriting settings another task may have added since the backup."
+        },
+        {
+          "type": "code",
+          "label": "Terminal on all three systems: add and inspect the practice entry",
+          "language": "sh",
+          "code": "codex mcp add codexLearningDocs --url https://developers.openai.com/mcp\ncodex mcp get codexLearningDocs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect get to show the name, HTTP transport and exact official URL. This proves only that configuration was saved, not reachability, tool discovery or a successful query. Tool counts can change; do not copy a fixed count from a tutorial. A zero exit from a management command is not retrieval evidence. If a command is absent, inspect codex mcp --help and the CLI update instructions."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Equivalent desktop and IDE steps"
+        },
+        {
+          "type": "paragraph",
+          "text": "Without CLI, open Settings → MCP servers → Add server on desktop, enter codexLearningDocs, select Streamable HTTP, paste the same endpoint, save and choose Restart. In the IDE gear menu choose MCP servers → Add server with the same fields, save and Restart extension. Follow the equivalent steps in your available Windows, macOS or Linux client. If a Linux preview or version lacks this UI, use CLI without treating the missing button as a service failure."
+        },
+        {
+          "type": "code",
+          "label": "Expected config.toml section: inspect, do not add twice",
+          "language": "toml",
+          "code": "[mcp_servers.codexLearningDocs]\nurl = \"https://developers.openai.com/mcp\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The snippet represents the same configuration: choose CLI, UI or manual editing, not all three. Adding through CLI and pasting the same TOML table again can create an invalid duplicate table. For manual editing, merge only that section and restart the client. ChatGPT web and mobile do not read your computer's local config.toml; hosted capabilities use "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": ". Local success does not configure the phone."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Inspect tools and retrieve a source"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI composer: inspect connections, not a shell command",
+          "language": "text",
+          "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "In a fresh interactive CLI session, use /mcp to inspect the server and tools. In desktop or IDE, check the MCP servers settings described above, then observe tool activity in a new task; do not assume every surface has /mcp. If authentication is requested, verify the public endpoint first. Other OAuth services may require Authenticate or codex mcp login with their name; do not add an arbitrary API key for this public service."
+        },
+        {
+          "type": "code",
+          "label": "New-task prompt: verify rules through MCP",
+          "language": "text",
+          "code": "Use the codexLearningDocs MCP tools to find the official AGENTS.md instructions.\nRead the relevant page and explain global versus project rules in three bullets.\nInclude the source URL and the section you checked.\nIf the MCP tools are unavailable, report that limitation instead of answering from memory.\nDo not edit files or call paid APIs.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "If reusing a server, replace the name in the prompt. Observe a search or retrieval tool activity and open the cited official page to verify that the section supports the explanation. Response wording can vary; acceptance concerns tool evidence, URL and content, not fixed wording or tool names. A correct answer without MCP is a general answer and does not complete this connection exercise."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Disable, retest and remove"
+        },
+        {
+          "type": "paragraph",
+          "text": "For the negative case, disable only your new entry with enabled = false or the client control, save and restart. In a fresh CLI session use /mcp; in desktop or IDE use the settings and new-task checks above. Confirm its tools are unavailable. Old conversation text is not fresh retrieval. Restore enabled to true or remove your added false value, restart and repeat the read."
+        },
+        {
+          "type": "code",
+          "label": "Terminal: remove only this exercise's new entry and inspect the list",
+          "language": "sh",
+          "code": "codex mcp remove codexLearningDocs\ncodex mcp list\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "After removal, a fresh task should no longer list the new entry. This does not remove other servers, delete documents or revoke unrelated OAuth grants. Skip removal for a reused entry. If configuration was never changed, record that. For authenticated services, remove and logout serve different purposes; check "
+            },
+            {
+              "type": "article",
+              "text": "MCP troubleshooting",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": " instead of clearing every connection."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Failures and completion criteria"
+        },
+        {
+          "type": "paragraph",
+          "text": "For a missing server, check configuration scope, name, enabled state and restart. For TOML parse errors, inspect duplicate tables and quotes without resetting the whole file. If configuration is correct but connection fails, verify the full URL, host network and service state, preserving a redacted error. If an answer lacks a source, request and verify the page. These four failures have different evidence; broadly relaxing permissions rarely explains them."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Record the actual client version, saved configuration, one sourced tool result and disable/removal of your added entry. Windows isolated-configuration and public-service protocol tests may be recorded separately, but do not establish desktop UI, macOS, Linux or your model-task execution. Unoperated surfaces are documented from official sources. Save results with the "
+            },
+            {
+              "type": "article",
+              "text": "Connection template",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": " and continue to troubleshooting when needed."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp/diagram-1.svg",
+          "alt": "25. MCP setup and connection checks — Workflow illustration, not a product screenshot. Configuration → Handshake → Tool result",
+          "width": 1600,
+          "height": 900,
+          "caption": "25. MCP setup and connection checks — Workflow illustration, not a product screenshot. Configuration → Handshake → Tool result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Model Context Protocol",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Docs MCP",
+          "url": "https://developers.openai.com/learn/docs-mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "MCP の設定と接続確認",
+      "description": "MCP は外部ツールと接続します。STDIO はローカル命令、HTTP は URL を使います。設定保存だけでなく起動、認証、応答を確認します。",
+      "hero": {
+        "src": "/guides/codex-mcp/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "OpenAI の読取り専用文書 MCP を接続し、一問を調査、原文を照合し、実習項目を無効化・削除します。読む時間15分、実習20分。ネット接続したデスクトップ、CLI、IDE を使い、CLI は導入を先に済ませます。非公開文書、有料サービス鍵、第三者 npm サーバーは使いません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "導入",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MCP はツール実行と文脈取得の協定です。能力はサーバー次第で、文書接続から GitHub やローカルブラウザーへの権限は生まれません。Docs MCP は文書検索・取得を行い、利用者の代わりに OpenAI API を実行しません。後で書込みサービスへ替える場合は"
+            },
+            {
+              "type": "article",
+              "text": "権限範囲",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "を再確認します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：接続方式と設定場所を選ぶ"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "必要情報",
+            "実行場所"
+          ],
+          "rows": [
+            [
+              "STDIO",
+              "程序と引数",
+              "Codex ホストがローカルプロセスを起動"
+            ],
+            [
+              "Streamable HTTP",
+              "MCP 端点 URL",
+              "ネット経由のサービス"
+            ],
+            [
+              "プラグイン由来",
+              "導入と必要な接続",
+              "個別の提供条件による"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "今回は Streamable HTTP のみです。一般のホームページは MCP 端点とは限らず、公式の端点を使います。STDIO 命令を URL 欄へ貼りません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同じ Codex ホストのデスクトップ、CLI、IDE は設定を共有します。既定は ~/.codex/config.toml で、Windows の利用者フォルダー、macOS・Linux のホーム下の .codex にあります。既存の独自 CODEX_HOME があればその場所を確認します。信頼済みプロジェクト設定もありますが、今回は利用者層を使います。"
+            },
+            {
+              "type": "article",
+              "text": "config.toml",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "で場所を確認できます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：既存項目を確認してから追加"
+        },
+        {
+          "type": "code",
+          "label": "端末：設定済みサーバー一覧",
+          "language": "sh",
+          "code": "codex mcp list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows PowerShell、macOS・Linux の端末で実行し、codex 対話には先に入りません。codexLearningDocs があれば詳細を確認し上書きしません。同じ公式 URL の既存項目を使う場合は名称をそのまま用い、再利用と記録して終了時も残します。一覧に非公開 URL が含まれることがあるため全出力を公開しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "追加前に実際の利用者 config.toml を開き、以前のコピーを上書きせず日付付きで保存します。存在しなければその状態を記録し空ファイルは不要です。一変更の前後差分を残し、機密を含み得るコピーは Git 外のローカルで保持します。復旧は追加区画だけを除き、他作業の新設定を古いコピーで上書きしません。"
+        },
+        {
+          "type": "code",
+          "label": "3 OS の端末：実習項目を追加・確認",
+          "language": "sh",
+          "code": "codex mcp add codexLearningDocs --url https://developers.openai.com/mcp\ncodex mcp get codexLearningDocs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "get で名前、HTTP、公式 URL が一致することを確認します。証明できるのは保存のみで、到達、列挙、問い合わせ成功ではありません。ツール数は変わるので固定数を写さず、管理命令の終了0も読取り証拠にはしません。命令がなければ codex mcp --help と更新手順を確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "デスクトップと IDE の同等手順"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI を使わない場合はデスクトップの Settings → MCP servers → Add server で名称、Streamable HTTP、同じ URL を入力して保存し Restart します。IDE の歯車から同じ欄を設定し Restart extension します。各 OS の利用可能なクライアントで行い、Linux プレビューなどで UI がなければ CLI を使います。ボタン不在はサービス障害とは限りません。"
+        },
+        {
+          "type": "code",
+          "label": "config.toml の確認用区画：二重追加しない",
+          "language": "toml",
+          "code": "[mcp_servers.codexLearningDocs]\nurl = \"https://developers.openai.com/mcp\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "これは同じ設定のファイル表現で、CLI、UI、直接編集の一つを選びます。命令追加後に同じ表を貼ると重複エラーになり得ます。直接編集は区画のみ統合して再起動します。Web・携帯は PC のローカル設定を読まず、ホスト側能力は "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": " を使うため、ローカル成功を携帯設定済みとはしません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：ツールを確認して原文を取得"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 対話欄：端末命令ではない",
+          "language": "text",
+          "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI では新しい対話セッションの /mcp でサーバーとツールを確認します。デスクトップと IDE は前述の MCP servers 設定で状態を見て、新規タスクの実際のツール活動を確認します。全入口に /mcp があるとは限りません。認証要求時は公開端点を照合します。他の OAuth サービスでは Authenticate や codex mcp login が必要でも、本篇の公開サービスに任意の API key を入れません。"
+        },
+        {
+          "type": "code",
+          "label": "新規タスク：MCP で規則を確認",
+          "language": "text",
+          "code": "Use the codexLearningDocs MCP tools to find the official AGENTS.md instructions.\nRead the relevant page and explain global versus project rules in three bullets.\nInclude the source URL and the section you checked.\nIf the MCP tools are unavailable, report that limitation instead of answering from memory.\nDo not edit files or call paid APIs.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "再利用なら要求内の名前を置き換えます。検索・取得の活動を観察し、公式ページを開いて説明を支える区画を確認します。文章形式やツール名の固定ではなく、証拠、URL、内容の一致を検証します。MCP を使わない正解は一般回答で、この接続実習の完了ではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：無効化・再試験・削除"
+        },
+        {
+          "type": "paragraph",
+          "text": "失敗対照は自分が追加した項目だけを enabled = false または無効化操作で保存・再起動します。CLI は新セッションの /mcp、デスクトップと IDE は前述の設定と新規タスクで利用不可を確認します。旧会話は新取得ではありません。true または追加した false の除去で戻し、再起動して再取得します。"
+        },
+        {
+          "type": "code",
+          "label": "端末：今回の追加項目だけ削除して一覧を確認",
+          "language": "sh",
+          "code": "codex mcp remove codexLearningDocs\ncodex mcp list\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "削除後は新規タスクに今回の項目が出ないことを確認します。他サーバー、文書、別 OAuth の失効は行いません。再利用項目なら削除を省略し、未変更ならそう記録します。認証ありサービスの remove と logout は別目的なので "
+            },
+            {
+              "type": "article",
+              "text": "MCP 障害対応",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "で確認します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "問題と完了条件"
+        },
+        {
+          "type": "paragraph",
+          "text": "見えない場合は階層、名前、有効状態、再起動を確認します。TOML エラーは重複表と引用符を見て全体を初期化しません。接続失敗は URL、ホストネット、サービス状態と伏せたエラーを残します。出典なしは原文取得を再要求します。四種類の原因を全て権限緩和で扱いません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "実版、設定保存、出典付きツール結果、追加項目の無効化・削除を記録します。Windows の隔離設定試験と公開協定試験は別記できても、デスクトップ UI、macOS、Linux、利用者のモデル実行を証明しません。未操作環境は公式確認と明示し、"
+            },
+            {
+              "type": "article",
+              "text": "接続雛形",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": "へ残します。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp/diagram-1.svg",
+          "alt": "25. MCP の設定と接続確認 — 作業の流れを表す図です。製品画面の画像ではありません。 Configuration → Handshake → Tool result",
+          "width": 1600,
+          "height": 900,
+          "caption": "25. MCP の設定と接続確認 — 作業の流れを表す図です。製品画面の画像ではありません。 Configuration → Handshake → Tool result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Model Context Protocol",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Docs MCP",
+          "url": "https://developers.openai.com/learn/docs-mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "MCP 설정과 연결 확인",
+      "description": "MCP는 외부 도구를 연결합니다. STDIO는 로컬 명령, HTTP는 URL을 사용합니다. 설정 저장뿐 아니라 시작, 인증과 응답을 확인해야 합니다.",
+      "hero": {
+        "src": "/guides/codex-mcp/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "OpenAI 읽기 전용 문서 MCP를 연결해 질문 하나를 조사하고 원문을 확인한 뒤 연습 항목을 끄거나 제거합니다. 읽기 15분, 실습 20분입니다. 인터넷에 연결된 데스크톱·CLI·IDE를 사용하며 CLI는 설치를 먼저 마치세요. 비공개 문서·유료 서비스 키·외부 npm 서버 패키지는 필요하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "설치",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MCP는 도구 호출과 맥락 수신을 위한 프로토콜입니다. 기능은 서버에 따라 다르며 문서 연결이 GitHub나 로컬 브라우저 접근을 주지는 않습니다. Docs MCP는 문서를 검색·조회하며 대신 OpenAI API를 호출하지 않습니다. 이후 쓰기 서비스로 바꾸면 도구와 "
+            },
+            {
+              "type": "article",
+              "text": "권한 범위",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "를 다시 검토하세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 연결 방식과 설정 위치 선택"
+        },
+        {
+          "type": "table",
+          "header": [
+            "방식",
+            "필요 정보",
+            "실행 위치"
+          ],
+          "rows": [
+            [
+              "STDIO",
+              "프로그램과 인수",
+              "Codex 호스트가 로컬 프로세스 시작"
+            ],
+            [
+              "Streamable HTTP",
+              "MCP 주소",
+              "네트워크로 서비스 접속"
+            ],
+            [
+              "플러그인 제공 MCP",
+              "설치와 필요한 연결",
+              "플러그인과 진입점에 따름"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "이번에는 Streamable HTTP만 사용합니다. 웹사이트 첫 페이지가 MCP 주소는 아니므로 공식 주소를 사용하고 STDIO 명령을 URL 칸에 넣지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "같은 Codex 호스트의 데스크톱·CLI·IDE는 설정을 공유합니다. 기본은 ~/.codex/config.toml로 Windows 사용자 폴더와 macOS·Linux 홈의 .codex 아래입니다. 기존 사용자 지정 CODEX_HOME이 있으면 실제 위치를 확인하세요. 신뢰한 프로젝트 설정도 있지만 이번에는 사용자 설정을 씁니다. 위치는 "
+            },
+            {
+              "type": "article",
+              "text": "config.toml",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "을 참고하세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 기존 항목 확인 후 추가"
+        },
+        {
+          "type": "code",
+          "label": "터미널: 설정된 서버 목록",
+          "language": "sh",
+          "code": "codex mcp list\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows PowerShell, macOS 또는 Linux 터미널에서 실행하며 codex 대화 안에 들어갈 필요는 없습니다. codexLearningDocs가 있으면 덮어쓰지 말고 상세 정보를 확인하세요. 같은 공식 URL의 기존 항목은 이름을 그대로 사용하고 재사용으로 기록하며 정리할 때 보존합니다. 목록에 비공개 URL이 있을 수 있으니 전체 출력을 공개하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "추가 전 실제 사용자 config.toml을 열고 이전 백업을 덮어쓰지 않는 날짜 사본을 저장합니다. 파일이 없으면 그 상태만 기록하세요. 한 변경의 전후 차이를 남기고 민감값이 있을 수 있는 백업은 Git 밖 로컬에 둡니다. 정리 시 새 항목만 제거하여 다른 작업이 추가한 설정을 과거 백업으로 덮어쓰지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "세 OS 터미널: 연습 항목 추가 및 확인",
+          "language": "sh",
+          "code": "codex mcp add codexLearningDocs --url https://developers.openai.com/mcp\ncodex mcp get codexLearningDocs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "get에서 이름·HTTP·정확한 공식 URL을 확인합니다. 이는 설정 저장만 증명하며 연결·도구 목록·질의 성공은 아닙니다. 도구 수는 달라질 수 있으므로 고정 수치를 복사하지 않고 관리 명령 종료 0도 읽기 증거로 보지 않습니다. 명령이 없으면 codex mcp --help와 업데이트 절차를 확인하세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "데스크톱과 IDE의 같은 절차"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI 대신 데스크톱 Settings → MCP servers → Add server에서 이름, Streamable HTTP, 같은 URL을 입력하고 저장 후 Restart합니다. IDE 톱니바퀴의 같은 메뉴에서 저장 후 Restart extension을 선택하세요. 각 OS에서 사용 가능한 클라이언트를 쓰며 Linux 미리 보기 등에 UI가 없으면 CLI를 사용합니다. 버튼 없음은 서비스 장애가 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "config.toml 확인 구간: 중복 추가 금지",
+          "language": "toml",
+          "code": "[mcp_servers.codexLearningDocs]\nurl = \"https://developers.openai.com/mcp\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "같은 설정의 파일 표현이므로 CLI·UI·직접 편집 중 하나만 선택하세요. 명령 추가 후 같은 TOML 표를 붙이면 중복 오류가 날 수 있습니다. 직접 편집은 그 구간만 합치고 재시작합니다. 웹과 모바일은 PC의 로컬 설정을 읽지 않으며 호스팅 기능은 "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "를 쓰므로 로컬 성공이 휴대폰 설정 완료는 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 도구 확인과 원문 조회"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 대화 입력창: 셸 명령 아님",
+          "language": "text",
+          "code": "/mcp\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI의 새 대화 세션에서 /mcp로 서버와 도구를 확인합니다. 데스크톱과 IDE는 앞서 설명한 MCP servers 설정에서 상태를 확인한 뒤 새 작업의 실제 도구 활동을 봅니다. 모든 화면에 /mcp가 있다고 가정하지 마세요. 인증을 요구하면 공개 주소부터 확인합니다. 다른 OAuth 서비스에는 Authenticate나 codex mcp login이 필요할 수 있지만 이 공개 서비스에 임의의 API key를 넣지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "새 작업: MCP로 규칙 확인",
+          "language": "text",
+          "code": "Use the codexLearningDocs MCP tools to find the official AGENTS.md instructions.\nRead the relevant page and explain global versus project rules in three bullets.\nInclude the source URL and the section you checked.\nIf the MCP tools are unavailable, report that limitation instead of answering from memory.\nDo not edit files or call paid APIs.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 서버를 쓰면 요청의 이름을 바꾸세요. 검색 또는 읽기 활동을 관찰하고 공식 출처를 열어 설명을 뒷받침하는 부분을 확인합니다. 고정 문장이나 도구 이름 대신 증거·URL·내용의 일치를 검증합니다. MCP를 쓰지 않은 정답은 일반 답변이며 이번 연결 연습 완료는 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 비활성화·재시험·제거"
+        },
+        {
+          "type": "paragraph",
+          "text": "실패 대조는 자신이 추가한 항목만 enabled = false 또는 비활성화 기능으로 바꾸고 저장·재시작합니다. 새 CLI 세션은 /mcp, 데스크톱과 IDE는 앞서 설명한 설정과 새 작업에서 도구 사용 불가를 확인합니다. 이전 대화는 새 조회가 아닙니다. true로 복구하거나 추가한 false를 제거하고 재시작·재조회합니다."
+        },
+        {
+          "type": "code",
+          "label": "터미널: 이번에 추가한 항목만 제거 후 목록 확인",
+          "language": "sh",
+          "code": "codex mcp remove codexLearningDocs\ncodex mcp list\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "제거 후 새 작업에 추가 항목이 없는지 확인합니다. 다른 서버나 문서를 지우거나 별도 OAuth를 취소하지는 않습니다. 재사용 항목은 제거를 생략하고 미변경이면 그대로 기록하세요. 인증 서비스의 remove와 logout은 목적이 다르므로 "
+            },
+            {
+              "type": "article",
+              "text": "MCP 문제 해결",
+              "kind": "life",
+              "slug": "codex-mcp-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "을 참고합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제와 완료 기준"
+        },
+        {
+          "type": "paragraph",
+          "text": "서버 없음은 설정 계층·이름·활성 상태·재시작을 확인합니다. TOML 오류는 중복 표와 따옴표를 보고 전체 초기화하지 마세요. 연결 실패는 URL·호스트 네트워크·서비스 상태와 가린 오류를 기록합니다. 출처가 없으면 원문 조회를 재요청합니다. 서로 다른 네 오류를 전부 권한 완화로 처리하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "실제 버전·설정 저장·출처 있는 도구 결과·추가 항목 비활성화 또는 제거를 기록합니다. Windows 격리 설정 시험과 공개 프로토콜 시험은 별도 증거이며 데스크톱 UI·macOS·Linux·사용자 모델 실행을 증명하지 않습니다. 미실행 진입점은 공식 문서 확인으로 표시하고 "
+            },
+            {
+              "type": "article",
+              "text": "연결 템플릿",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": "에 남깁니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mcp/diagram-1.svg",
+          "alt": "25. MCP 설정과 연결 확인 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Configuration → Handshake → Tool result",
+          "width": 1600,
+          "height": 900,
+          "caption": "25. MCP 설정과 연결 확인 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Configuration → Handshake → Tool result",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Model Context Protocol",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Docs MCP",
+          "url": "https://developers.openai.com/learn/docs-mcp",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

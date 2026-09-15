@@ -1,0 +1,62 @@
+{
+  "id": 4,
+  "sources": [
+    "remote",
+    "remote-connections",
+    "cloud"
+  ],
+  "text": {
+    "zh-TW": [
+      "手機可以透過 ChatGPT 的 Remote 檢視與引導連線電腦上的 Codex 任務。官方文件列出 iOS 與 Android 客戶端，支援的 Remote 主機為 Mac 或 Windows；功能可能分批開放。不要將此解釋為把完整開發環境安裝到手機，或假定 Linux 可當 Remote 主機。",
+      "準備最新版手機與桌面應用程式，兩端登入同一帳號與工作區；主機保持開機、清醒且連網。組織可能需要管理員啟用 Remote Control，並要求 MFA、SSO 或通行金鑰。以下為文件查證，沒有宣稱手機實測。",
+      [
+        "先在 Mac 或 Windows 桌面版打開 Settings → Connections → Control this Mac or PC，選 Set up 或 Add，完成驗證並顯示配對 QR code。不能只在 CLI 或 IDE 完成初次手機配對。",
+        "iPhone：更新 ChatGPT，使用手機掃描主機 QR code，確認開啟官方 ChatGPT 並選對帳號／工作區。完成要求的驗證後，從 Remote 選取主機與練習專案。",
+        "Android：更新 ChatGPT，用手機掃描同一類主機配對碼，完成登入與工作區確認。在 Remote 清單確認主機上線，再選專案或既有任務。每支手機需與要控制的主機分別配對。",
+        "先送出『只回報目前工作目錄』確認連對主機，再追問一個小問題。若有執行授權，閱讀命令及目標路徑後才操作。任務完成後在手機查看摘要、diff 與測試結果，必要時回到電腦檢查。"
+      ],
+      "手機能看到正確主機與任務，並收到其回覆。桌面上的檔案結果應與手機摘要一致。出門前實際測試一次連線與通知。",
+      "沒有 Remote 時先更新兩端、核對帳號及管理員政策。主機離線先查睡眠與網路。QR code 過期重新由主機產生，不公開分享。雲端任務是另一種遠端環境，並非這台主機的鏡像。",
+      "請只回報正在使用的主機和工作目錄，不要修改檔案。我正在手機上確認 Remote 是否連到正確的練習專案。"
+    ],
+    "en": [
+      "Remote in the ChatGPT mobile app lets you guide Codex work on a connected computer. Official documentation lists iOS and Android clients, with Mac or Windows hosts, subject to rollout. This does not install a full development environment on the phone, and does not establish Linux host support.",
+      "Update both apps and sign in to the same account and workspace. Keep the host awake, online and running the desktop app. An organization may require Remote Control permission, MFA, SSO or a passkey. These steps are documentation-verified, not a mobile device test.",
+      [
+        "On the Mac or Windows host, open Settings → Connections → Control this Mac or PC, choose Set up or Add and complete verification to display a pairing QR code. Initial mobile pairing cannot be done only from CLI or IDE.",
+        "iPhone: update ChatGPT, scan the host QR code and confirm that the official app opens with the intended account and workspace. Finish verification, open Remote and choose the host and practice project.",
+        "Android: update ChatGPT, scan the host pairing code and confirm the account and workspace. Check that the host is online in Remote before choosing a project or task. Pair each phone separately with each host it will control.",
+        "First ask for the working directory without changes to confirm the host. Read requested commands and paths before approving actions. Review the summary, diff and test output on mobile; return to the computer for checks that need its screen."
+      ],
+      "The phone shows the intended host and receives a task response. Files on the desktop match the mobile summary. Test connectivity and notifications before relying on it away from your desk.",
+      "If Remote is missing, check both app versions, account and admin policy. An offline host may be asleep or disconnected. Regenerate expired pairing codes on the host and never share them publicly. Cloud tasks use a separate environment, not a mirror of this host.",
+      "Report the host and working directory only. Do not edit files. I am checking from my phone that Remote is connected to the correct practice project."
+    ],
+    "ja": [
+      "ChatGPT モバイルアプリの Remote では、接続したコンピューター上の Codex タスクを操作できます。公式文書は iOS・Android と Mac・Windows ホストを案内していますが、提供状況は段階的です。スマートフォンに開発環境一式を入れる機能ではなく、Linux ホスト対応を意味しません。",
+      "両方のアプリを更新し、同じアカウントとワークスペースでログインします。ホストは起動・オンライン・スリープ解除を保ちます。組織の許可や追加認証が必要な場合があります。以下は文書確認の手順です。",
+      [
+        "Mac または Windows の Settings → Connections → Control this Mac or PC で Set up または Add を選び、認証して QR コードを表示します。初回のスマートフォン設定は CLI や IDE だけでは行えません。",
+        "iPhone：更新した ChatGPT でホストの QR コードを読み、公式アプリと正しいアカウント・ワークスペースを確認します。認証後 Remote からホストと練習プロジェクトを選びます。",
+        "Android：ChatGPT を更新してホストのコードを読み、アカウントとワークスペースを確認します。Remote でオンライン状態を確かめ、プロジェクトか既存タスクを開きます。端末とホストごとにペアリングします。",
+        "最初は作業場所だけを報告させます。実行許可の要求ではコマンドと対象パスを読みます。完了後に要約、差分、テストを確認し、必要ならコンピューターでも確認します。"
+      ],
+      "正しいホストの応答がスマートフォンに表示され、ファイルと要約が一致すれば完了です。外出前に接続と通知を試します。",
+      "Remote がなければバージョン、アカウント、管理者設定を確認します。オフラインならスリープと通信を調べます。期限切れ QR コードはホストで再発行し、公開しません。",
+      "ホスト名と作業ディレクトリだけを報告してください。ファイルは変更しないでください。スマートフォンから正しい練習プロジェクトへの接続を確認しています。"
+    ],
+    "ko": [
+      "ChatGPT 모바일 앱의 Remote로 연결된 컴퓨터의 Codex 작업을 확인하고 지시할 수 있습니다. 공식 문서는 iOS와 Android 클라이언트, Mac과 Windows 호스트를 안내하며 순차 제공될 수 있습니다. 휴대폰에 전체 개발 환경을 설치하거나 Linux 호스트 지원을 보장하는 기능은 아닙니다.",
+      "두 앱을 업데이트하고 같은 계정과 워크스페이스로 로그인합니다. 호스트를 켜 두고 절전 상태가 아닌 온라인 상태로 유지하세요. 조직 권한과 추가 인증이 필요할 수 있습니다. 아래는 문서 확인 절차입니다.",
+      [
+        "Mac 또는 Windows에서 Settings → Connections → Control this Mac or PC를 열고 Set up 또는 Add를 선택합니다. 인증을 마쳐 QR 코드를 표시합니다. 최초 모바일 연결은 CLI나 IDE만으로 설정할 수 없습니다.",
+        "iPhone: ChatGPT를 업데이트하고 호스트 QR 코드를 스캔합니다. 공식 앱에서 올바른 계정과 워크스페이스를 확인하고 인증을 마친 뒤 Remote에서 호스트와 연습 프로젝트를 선택합니다.",
+        "Android: ChatGPT를 업데이트하고 호스트 연결 코드를 스캔합니다. 계정과 워크스페이스를 확인하고 Remote에서 호스트가 온라인인지 본 뒤 프로젝트나 기존 작업을 엽니다. 휴대폰과 호스트 조합별로 연결해야 합니다.",
+        "처음에는 작업 경로만 보고하도록 요청합니다. 실행 승인을 요청하면 명령과 대상 경로를 읽으세요. 완료 후 요약, diff와 테스트 결과를 확인하고 필요한 검사는 컴퓨터에서 진행합니다."
+      ],
+      "휴대폰이 올바른 호스트의 응답을 받고 파일 결과와 요약이 일치하면 완료입니다. 외출 전 연결과 알림을 시험하세요.",
+      "Remote가 없으면 앱 버전, 계정과 관리자 정책을 확인하세요. 오프라인이면 절전과 네트워크를 점검합니다. 만료된 QR 코드는 호스트에서 다시 만들고 공개하지 않습니다.",
+      "호스트와 작업 디렉터리만 보고하세요. 파일을 수정하지 마세요. 휴대폰에서 올바른 연습 프로젝트에 연결되었는지 확인하고 있습니다."
+    ]
+  }
+}

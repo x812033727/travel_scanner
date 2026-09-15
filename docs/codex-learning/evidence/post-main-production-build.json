@@ -1,0 +1,57 @@
+{
+  "checked_on": "2026-09-15",
+  "recorded_at": "2026-09-15T00:16:35.104401+00:00",
+  "source_commit": "20ffb50a2ad58272b2395be69d6cfdb1d165d9df",
+  "command": "npm run build:web",
+  "node_version": "24.15.0 win-arm64",
+  "next_version": "16.3.4",
+  "telemetry_disabled_for_process": true,
+  "exit_code": 0,
+  "compile_seconds": 25.1,
+  "typescript_seconds": 29.0,
+  "static_pages": 293,
+  "build_id": "nofowOFGZjJv7F2l71CGR",
+  "compiled_routes": [
+    {
+      "manifest_key": "/[locale]/life/page",
+      "compiled_file": "app/[locale]/life/page.js",
+      "exists": true
+    },
+    {
+      "manifest_key": "/(ads-public)/[locale]/life/[slug]/page",
+      "compiled_file": "app/(ads-public)/[locale]/life/[slug]/page.js",
+      "exists": true
+    },
+    {
+      "manifest_key": "/[locale]/admin/guides/page",
+      "compiled_file": "app/[locale]/admin/guides/page.js",
+      "exists": true
+    },
+    {
+      "manifest_key": "/sitemap.xml/route",
+      "compiled_file": "app/sitemap.xml/route.js",
+      "exists": true
+    }
+  ],
+  "standalone_server_exists": true,
+  "log_archive": "post-main-production-build.log.gz",
+  "raw_log_sha256": "73088ab347702df9a3818efac0c9ee09d1f02b18fea4e20029cc03826765e65d",
+  "gzip_sha256": "ad7d9afb4c0f90430059bc0c6e26e51c65f37ab619a06a4c7d0a922ea00be8d8",
+  "postgresql_probe": {
+    "tools_found_on_path": [],
+    "tools_checked": [
+      "docker",
+      "psql",
+      "pg_ctl"
+    ],
+    "localhost_5432_reachable": false,
+    "services_started": false,
+    "tests_executed": false
+  },
+  "limits": [
+    "Build artifacts were not started or browser-tested.",
+    "293 static pages are whole-site build output, not 305 localized tutorial-page acceptances.",
+    "The article route uses the upstream (ads-public) route group; its public URL remains /{locale}/life/{slug}.",
+    "No application source was changed, no denied operation retried, and no PR/publication/deployment performed."
+  ]
+}

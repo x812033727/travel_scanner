@@ -1,0 +1,1421 @@
+{
+  "slug": "codex-exec-scripting",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 130,
+  "locales": {
+    "zh-TW": {
+      "title": "codex exec 與腳本整合",
+      "description": "codex exec 在非互動模式執行一次任務，適合腳本與 CI。預設一般輸出把進度放 stderr、最後回答放 stdout；--json 改成逐行 JSON 事件，不能把整份輸出當成單一 JSON 物件解析。",
+      "hero": {
+        "src": "/guides/codex-exec-scripting/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "完成一次讀取虛構清單的非互動工作，分別保存答案、診斷與退出狀態。閱讀約 15 分鐘、操作約 20 分鐘，模型等待另計。先完成 CLI 安裝與登入，準備 Git 與自己的空白資料夾。這篇會實際送出一次 Codex 請求並使用目前登入方式的額度；只查看 help 與故意使用無效旗標的步驟不需要模型回答。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "CLI 安裝與登入",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：認識執行入口"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex exec 是終端機命令，不是桌面聊天的斜線指令。Windows 在 PowerShell 執行；macOS 的 Terminal 與 Linux 的終端機執行相同 CLI。若用 WSL，就在 WSL 裡安裝與登入後執行，不能把 Windows 的登入狀態視為已同步。桌面與 IDE 可開終端機執行；手機畫面上的對話不是這個本機程序，必須有能執行 CLI 的電腦或受控遠端環境。各系統先執行以下兩行，確認本機版本提供本文旗標，再繼續。"
+        },
+        {
+          "type": "code",
+          "label": "查看 CLI 版本與 exec 說明",
+          "language": "sh",
+          "code": "codex --version\ncodex exec --help\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "介面",
+            "本篇內容",
+            "用法"
+          ],
+          "rows": [
+            [
+              "終端機",
+              "codex exec",
+              "啟動一次非互動工作"
+            ],
+            [
+              "提示詞參數",
+              "Read tasks.md…",
+              "告訴代理工作目標"
+            ],
+            [
+              "stdout",
+              "最後答案",
+              "可存成文字檔"
+            ],
+            [
+              "stderr",
+              "過程與診斷",
+              "有文字不等於失敗"
+            ],
+            [
+              "退出狀態",
+              "整數",
+              "0 代表程序成功結束，仍需驗證答案"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "JSON／JSONL",
+              "kind": "life",
+              "slug": "codex-json-output"
+            },
+            {
+              "type": "text",
+              "text": " 篇會切換 stdout 的格式；此處先保持普通文字。不要以診斷檔是否空白、回答是否寫著 Done，替代退出狀態與內容檢查。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：建立獨立輸入"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自己的練習位置建立全新的 exec-lab 資料夾，再以編輯器開啟它。若同名資料夾已有資料，改用另一個空白名稱。新增 UTF-8 的 tasks.md，內容完整如下。不要使用正式專案、私有日誌或整個使用者目錄；一份小而可人工核對的清單就能練習輸入與輸出。接著在這個資料夾的終端機初始化 Git；本文不需要提交、遠端或 GitHub 帳號。"
+        },
+        {
+          "type": "code",
+          "label": "exec-lab/tasks.md",
+          "language": "markdown",
+          "code": "# Practice tasks\nRevision: exec-practice-1\n\n- [x] Read the guide\n- [ ] Create a practice file\n- [ ] Verify the result\n"
+        },
+        {
+          "type": "code",
+          "label": "在 exec-lab 內執行，各平台相同",
+          "language": "sh",
+          "code": "git init\ngit status --short\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "預期看到 tasks.md 是未追蹤檔案。Git 初始化只是滿足 CLI 工作目錄檢查，沒有把檔案上傳。先人工記下版本 exec-practice-1、總數 3、完成 1、未完成 2。不要把這些答案直接寫進下一步提示詞，才能檢查它是否真的讀到資料。若目前資料夾有其他檔案，先用"
+            },
+            {
+              "type": "article",
+              "text": "路徑教學",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "確認自己位於哪裡。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：保存輸出並立刻記下退出狀態"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下兩組選自己系統的一組，執行前確認 report-01.md、stdout-01.txt、stderr-01.log 不存在；macOS／Linux 也要確認 tasks-before.md 尚不存在；第二次練習改用 02，避免把舊答案誤認為新成功。唯讀沙盒限制代理的修改權限，shell 重新導向與 -o 仍會寫出指定報告，這正是本篇要保存的產物。--ephemeral 不保留工作階段檔，仍不代表不會使用帳號額度或不會產生這三份檔案。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "$practiceBefore = (Get-FileHash -LiteralPath tasks.md -Algorithm SHA256).Hash\ncodex exec --sandbox read-only --ephemeral -o report-01.md 'Read tasks.md. Report its revision and the total, completed and pending checkbox counts. Do not edit input files or use external tools.' 1> stdout-01.txt 2> stderr-01.log\n$practiceExit = $LASTEXITCODE\n$practiceExit\nGet-Content -LiteralPath report-01.md\n$practiceBefore -eq (Get-FileHash -LiteralPath tasks.md -Algorithm SHA256).Hash\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux shell",
+          "language": "sh",
+          "code": "cp tasks.md tasks-before.md\ncodex exec --sandbox read-only --ephemeral -o report-01.md 'Read tasks.md. Report its revision and the total, completed and pending checkbox counts. Do not edit input files or use external tools.' > stdout-01.txt 2> stderr-01.log\npractice_exit=$?\nprintf '%s\\n' \"$practice_exit\"\ncat report-01.md\ncmp tasks-before.md tasks.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞中的 external tools 指外部服務；Codex 可以用本機讀檔工具讀取 tasks.md。退出狀態要在下一個原生命令之前保存，否則可能變成另一條命令的狀態。成功時檢查三件事：狀態為 0、報告含正確版本與 3／1／2、原始檔相同。PowerShell 最後一行應為 True；macOS／Linux 的 cmp 無輸出且退出 0 表示相同。若報告語言或句型不同，只要數值和依據正確就接受，不要求逐字一樣。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：確認失敗不會被當成答案"
+        },
+        {
+          "type": "code",
+          "label": "各平台的無效參數練習",
+          "language": "sh",
+          "code": "codex exec --sandbox invalid 'Read tasks.md'\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這一行應在解析參數時被拒絕，不會取得新的模型答案。PowerShell 緊接著輸入 $LASTEXITCODE；macOS／Linux 緊接著輸入 echo $?，應為非 0。此時上一輪的 report-01.md 可能仍存在，但不能拿來宣稱本輪成功。修正為 read-only 後若要重跑，用新的輸出檔名並重新記錄狀態。不要為了消除錯誤改成略過權限或沙盒；參數錯誤、登入錯誤、額度不足與輸入不存在應分別處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "將結果記成兩列：第一次唯讀工作填實際輸出檔名、退出碼與計數；無效旗標那列填「參數解析失敗，未產生新答案」。查看舊 report-01.md 的內容仍在，只能證明舊檔保留，不能填入第二列的成功欄。若第一輪尚未真的呼叫模型，就留為未執行，仍可獨立完成無效旗標練習。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題、還原與下一步"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "找不到 codex 時回到安裝篇查 PATH，不在這裡反覆登入。出現 Git 工作目錄錯誤就確認 exec-lab 及 git status，不直接略過檢查。登入或用量錯誤先用 codex login status 查看登入狀態，再依"
+            },
+            {
+              "type": "article",
+              "text": "帳號與額度",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "查對應入口；不要公開診斷裡的憑證、使用者路徑或私人提示詞。若要求互動授權導致無法繼續，先回互動模式確認必要權限，再決定如何縮小非互動工作的範圍。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "最後保留本輪退出狀態與核對結果，重新開啟 tasks.md 確認內容。若要清理，用檔案管理員逐一選取自己建立的 report、stdout、stderr，以及 macOS／Linux 的 tasks-before.md；不要刪除整個專案目錄或使用清除全部未追蹤檔的指令。你已完成一次可核對的唯讀執行；下一篇把同樣任務改成有欄位驗證的結構化輸出，之後才接入 "
+            },
+            {
+              "type": "article",
+              "text": "CI",
+              "kind": "life",
+              "slug": "codex-ci-workflows"
+            },
+            {
+              "type": "text",
+              "text": "。本文旗標依官方文件及列出的 CLI help 核對；不把參考腳本通過當作每個讀者帳號已成功執行模型。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-exec-scripting/diagram-1.svg",
+          "alt": "30. codex exec 與腳本整合 — 實作順序示意圖，非產品介面截圖。 Prompt → codex exec → JSONL / report",
+          "width": 1600,
+          "height": 900,
+          "caption": "30. codex exec 與腳本整合 — 實作順序示意圖，非產品介面截圖。 Prompt → codex exec → JSONL / report",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex non-interactive mode",
+          "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI command reference",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "codex exec 与脚本集成",
+      "description": "codex exec 在非互动模式执行一次任务，适合脚本与 CI。预设一般输出把进度放 stderr、最后回答放 stdout；--json 改成逐行 JSON 事件，不能把整份输出当成单一 JSON 物件解析。",
+      "hero": {
+        "src": "/guides/codex-exec-scripting/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "完成一次读取虚构清单的非互动工作，分别保存答案、诊断与退出状态。阅读约 15 分钟、操作约 20 分钟，模型等待另计。先完成 CLI 安装与登入，准备 Git 与自己的空白资料夹。这篇会实际送出一次 Codex 请求并使用目前登入方式的额度；只查看 help 与故意使用无效旗标的步骤不需要模型回答。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "CLI 安装与登入",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：认识执行入口"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex exec 是终端机命令，不是桌面聊天的斜线指令。Windows 在 PowerShell 执行；macOS 的 Terminal 与 Linux 的终端机执行相同 CLI。若用 WSL，就在 WSL 里安装与登入后执行，不能把 Windows 的登入状态视为已同步。桌面与 IDE 可开终端机执行；手机画面上的对话不是这个本机程序，必须有能执行 CLI 的电脑或受控远端环境。各系统先执行以下两行，确认本机版本提供本文旗标，再继续。"
+        },
+        {
+          "type": "code",
+          "label": "查看 CLI 版本与 exec 说明",
+          "language": "sh",
+          "code": "codex --version\ncodex exec --help\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "介面",
+            "本篇内容",
+            "用法"
+          ],
+          "rows": [
+            [
+              "终端机",
+              "codex exec",
+              "启动一次非互动工作"
+            ],
+            [
+              "提示词参数",
+              "Read tasks.md…",
+              "告诉代理工作目标"
+            ],
+            [
+              "stdout",
+              "最后答案",
+              "可存成文字档"
+            ],
+            [
+              "stderr",
+              "过程与诊断",
+              "有文字不等于失败"
+            ],
+            [
+              "退出状态",
+              "整数",
+              "0 代表程序成功结束，仍需验证答案"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "JSON／JSONL",
+              "kind": "life",
+              "slug": "codex-json-output"
+            },
+            {
+              "type": "text",
+              "text": " 篇会切换 stdout 的格式；此处先保持普通文字。不要以诊断档是否空白、回答是否写著 Done，替代退出状态与内容检查。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：建立独立输入"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自己的练习位置建立全新的 exec-lab 资料夹，再以编辑器开启它。若同名资料夹已有资料，改用另一个空白名称。新增 UTF-8 的 tasks.md，内容完整如下。不要使用正式专案、私有日志或整个使用者目录；一份小而可人工核对的清单就能练习输入与输出。接著在这个资料夹的终端机初始化 Git；本文不需要提交、远端或 GitHub 帐号。"
+        },
+        {
+          "type": "code",
+          "label": "exec-lab/tasks.md",
+          "language": "markdown",
+          "code": "# Practice tasks\nRevision: exec-practice-1\n\n- [x] Read the guide\n- [ ] Create a practice file\n- [ ] Verify the result\n"
+        },
+        {
+          "type": "code",
+          "label": "在 exec-lab 内执行，各平台相同",
+          "language": "sh",
+          "code": "git init\ngit status --short\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "预期看到 tasks.md 是未追踪档案。Git 初始化只是满足 CLI 工作目录检查，没有把档案上传。先人工记下版本 exec-practice-1、总数 3、完成 1、未完成 2。不要把这些答案直接写进下一步提示词，才能检查它是否真的读到资料。若目前资料夹有其他档案，先用"
+            },
+            {
+              "type": "article",
+              "text": "路径教学",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "确认自己位于哪里。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：保存输出并立刻记下退出状态"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下两组选自己系统的一组，执行前确认 report-01.md、stdout-01.txt、stderr-01.log 不存在；macOS／Linux 也要确认 tasks-before.md 尚不存在；第二次练习改用 02，避免把旧答案误认为新成功。唯读沙盒限制代理的修改权限，shell 重新导向与 -o 仍会写出指定报告，这正是本篇要保存的产物。--ephemeral 不保留工作阶段档，仍不代表不会使用帐号额度或不会产生这三份档案。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "$practiceBefore = (Get-FileHash -LiteralPath tasks.md -Algorithm SHA256).Hash\ncodex exec --sandbox read-only --ephemeral -o report-01.md 'Read tasks.md. Report its revision and the total, completed and pending checkbox counts. Do not edit input files or use external tools.' 1> stdout-01.txt 2> stderr-01.log\n$practiceExit = $LASTEXITCODE\n$practiceExit\nGet-Content -LiteralPath report-01.md\n$practiceBefore -eq (Get-FileHash -LiteralPath tasks.md -Algorithm SHA256).Hash\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux shell",
+          "language": "sh",
+          "code": "cp tasks.md tasks-before.md\ncodex exec --sandbox read-only --ephemeral -o report-01.md 'Read tasks.md. Report its revision and the total, completed and pending checkbox counts. Do not edit input files or use external tools.' > stdout-01.txt 2> stderr-01.log\npractice_exit=$?\nprintf '%s\\n' \"$practice_exit\"\ncat report-01.md\ncmp tasks-before.md tasks.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "提示词中的 external tools 指外部服务；Codex 可以用本机读档工具读取 tasks.md。退出状态要在下一个原生命令之前保存，否则可能变成另一条命令的状态。成功时检查三件事：状态为 0、报告含正确版本与 3／1／2、原始档相同。PowerShell 最后一行应为 True；macOS／Linux 的 cmp 无输出且退出 0 表示相同。若报告语言或句型不同，只要数值和依据正确就接受，不要求逐字一样。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：确认失败不会被当成答案"
+        },
+        {
+          "type": "code",
+          "label": "各平台的无效参数练习",
+          "language": "sh",
+          "code": "codex exec --sandbox invalid 'Read tasks.md'\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "这一行应在解析参数时被拒绝，不会取得新的模型答案。PowerShell 紧接著输入 $LASTEXITCODE；macOS／Linux 紧接著输入 echo $?，应为非 0。此时上一轮的 report-01.md 可能仍存在，但不能拿来宣称本轮成功。修正为 read-only 后若要重跑，用新的输出档名并重新记录状态。不要为了消除错误改成略过权限或沙盒；参数错误、登入错误、额度不足与输入不存在应分别处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "将结果记成两列：第一次唯读工作填实际输出档名、退出码与计数；无效旗标那列填「参数解析失败，未产生新答案」。查看旧 report-01.md 的内容仍在，只能证明旧档保留，不能填入第二列的成功栏。若第一轮尚未真的呼叫模型，就留为未执行，仍可独立完成无效旗标练习。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题、还原与下一步"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "找不到 codex 时回到安装篇查 PATH，不在这里反复登入。出现 Git 工作目录错误就确认 exec-lab 及 git status，不直接略过检查。登入或用量错误先用 codex login status 查看登入状态，再依"
+            },
+            {
+              "type": "article",
+              "text": "帐号与额度",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "查对应入口；不要公开诊断里的凭证、使用者路径或私人提示词。若要求互动授权导致无法继续，先回互动模式确认必要权限，再决定如何缩小非互动工作的范围。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "最后保留本轮退出状态与核对结果，重新开启 tasks.md 确认内容。若要清理，用档案管理员逐一选取自己建立的 report、stdout、stderr，以及 macOS／Linux 的 tasks-before.md；不要删除整个专案目录或使用清除全部未追踪档的指令。你已完成一次可核对的唯读执行；下一篇把同样任务改成有栏位验证的结构化输出，之后才接入 "
+            },
+            {
+              "type": "article",
+              "text": "CI",
+              "kind": "life",
+              "slug": "codex-ci-workflows"
+            },
+            {
+              "type": "text",
+              "text": "。本文旗标依官方文件及列出的 CLI help 核对；不把参考脚本通过当作每个读者帐号已成功执行模型。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-exec-scripting/diagram-1.svg",
+          "alt": "30. codex exec 与脚本集成 — 实作顺序示意图，非产品介面截图。 Prompt → codex exec → JSONL / report",
+          "width": 1600,
+          "height": 900,
+          "caption": "30. codex exec 与脚本集成 — 实作顺序示意图，非产品介面截图。 Prompt → codex exec → JSONL / report",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex non-interactive mode",
+          "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI command reference",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "codex exec and scripts",
+      "description": "codex exec runs one non-interactive task for scripts or CI. Normally progress goes to stderr and the final answer to stdout. --json produces JSON Lines events, not a single JSON object.",
+      "hero": {
+        "src": "/guides/codex-exec-scripting/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Complete a non-interactive read of a fictional list, saving the answer, diagnostics and exit status separately. Allow 15 minutes to read and 20 to practice, plus model waiting time. Complete CLI installation and login, and prepare Git and your own empty folder. The exercise sends one real Codex request using the quota of your current authentication method; help and the deliberately invalid flag do not need a model response."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "CLI installation and login",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Identify the execution surface"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex exec is a terminal command, not a desktop chat slash command. Use PowerShell on Windows, Terminal on macOS, or a Linux terminal. In WSL, install and authenticate inside WSL; do not assume Windows login has synchronized. Desktop and IDE terminals can host the CLI. A phone conversation is not this local process: a computer or controlled remote environment must run it. On every OS, run the following two commands and confirm your installed version supports the flags before continuing."
+        },
+        {
+          "type": "code",
+          "label": "Inspect CLI version and exec help",
+          "language": "sh",
+          "code": "codex --version\ncodex exec --help\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Surface",
+            "This exercise",
+            "Use"
+          ],
+          "rows": [
+            [
+              "Terminal",
+              "codex exec",
+              "Start one non-interactive run"
+            ],
+            [
+              "Prompt argument",
+              "Read tasks.md…",
+              "State the agent's objective"
+            ],
+            [
+              "stdout",
+              "Final answer",
+              "Save as text"
+            ],
+            [
+              "stderr",
+              "Progress and diagnostics",
+              "Text does not itself mean failure"
+            ],
+            [
+              "Exit status",
+              "Integer",
+              "0 means process success; validate the answer too"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The "
+            },
+            {
+              "type": "article",
+              "text": "JSON/JSONL",
+              "kind": "life",
+              "slug": "codex-json-output"
+            },
+            {
+              "type": "text",
+              "text": " lesson changes stdout's format; keep plain text here. Neither an empty diagnostic file nor an answer saying Done replaces exit-status and content checks."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Create an isolated input"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a new exec-lab folder in your practice area and open it in an editor. If that name already contains files, choose another empty folder. Add UTF-8 tasks.md exactly as below. Avoid a production project, private logs or your whole user directory: a small list that you can check by hand is enough. Initialize Git in that folder's terminal. No commit, remote or GitHub account is required."
+        },
+        {
+          "type": "code",
+          "label": "exec-lab/tasks.md",
+          "language": "markdown",
+          "code": "# Practice tasks\nRevision: exec-practice-1\n\n- [x] Read the guide\n- [ ] Create a practice file\n- [ ] Verify the result\n"
+        },
+        {
+          "type": "code",
+          "label": "Run inside exec-lab on every platform",
+          "language": "sh",
+          "code": "git init\ngit status --short\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Expect tasks.md to be untracked. Git initialization satisfies the CLI's working-directory check and uploads nothing. Privately note revision exec-practice-1, total 3, completed 1, pending 2. Do not include these answers in the next prompt, so the result can demonstrate reading the input. If other files appear, use "
+            },
+            {
+              "type": "article",
+              "text": "Terminal paths",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": " to verify your location."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Save output and immediately capture the exit status"
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose the command set for your OS. Confirm report-01.md, stdout-01.txt and stderr-01.log (and tasks-before.md on macOS/Linux) do not exist first; use 02 for a second attempt to avoid mistaking an old answer for new success. The read-only sandbox limits agent edits; shell redirection and -o still write the specified reports. --ephemeral avoids persisted session files, but does not mean zero account usage or the absence of these three output files."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "$practiceBefore = (Get-FileHash -LiteralPath tasks.md -Algorithm SHA256).Hash\ncodex exec --sandbox read-only --ephemeral -o report-01.md 'Read tasks.md. Report its revision and the total, completed and pending checkbox counts. Do not edit input files or use external tools.' 1> stdout-01.txt 2> stderr-01.log\n$practiceExit = $LASTEXITCODE\n$practiceExit\nGet-Content -LiteralPath report-01.md\n$practiceBefore -eq (Get-FileHash -LiteralPath tasks.md -Algorithm SHA256).Hash\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux shell",
+          "language": "sh",
+          "code": "cp tasks.md tasks-before.md\ncodex exec --sandbox read-only --ephemeral -o report-01.md 'Read tasks.md. Report its revision and the total, completed and pending checkbox counts. Do not edit input files or use external tools.' > stdout-01.txt 2> stderr-01.log\npractice_exit=$?\nprintf '%s\\n' \"$practice_exit\"\ncat report-01.md\ncmp tasks-before.md tasks.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "External tools in the prompt means external services; Codex can use local file-reading tools for tasks.md. Capture exit status before the next native command replaces it. Success requires status 0, the correct revision and 3/1/2 counts, and unchanged input. PowerShell's last line should be True; on macOS/Linux, cmp produces no output and exits 0 when files match. Accept different response wording or language if the values and evidence are correct."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Ensure a failure is not accepted as an answer"
+        },
+        {
+          "type": "code",
+          "label": "Invalid-argument exercise on every platform",
+          "language": "sh",
+          "code": "codex exec --sandbox invalid 'Read tasks.md'\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "This should be rejected during argument parsing, without a new model answer. Immediately inspect $LASTEXITCODE in PowerShell or echo $? on macOS/Linux; expect nonzero. The previous report-01.md can still exist and does not prove this run succeeded. To retry with read-only, use new output names and capture status again. Do not bypass permissions or sandboxing to hide errors: invalid arguments, authentication failures, exhausted quota and missing input need different fixes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep two result rows: the read-only run's actual filenames, exit status and counts; then the invalid-flag attempt marked argument parsing failed, no new answer. An existing report-01.md proves only that the earlier file remains. If the model run was not performed, leave it unexecuted; the invalid-flag exercise can still be done independently."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting, cleanup and next steps"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "If codex is missing, check PATH in the installation lesson rather than repeatedly logging in. For Git-directory errors, check exec-lab and git status before considering any override. For authentication or quota errors, inspect codex login status and the relevant "
+            },
+            {
+              "type": "article",
+              "text": "Account and usage",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": " surface. Do not publish credentials, user paths or private prompts from diagnostics. If interactive approval is required, investigate the needed permission interactively, then narrow the non-interactive task as appropriate."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Keep this run's exit status and verification result, then reopen tasks.md. For cleanup, individually select your report, stdout, stderr and, on macOS/Linux, tasks-before.md in the file manager. Do not delete the project or clear every untracked file. You now have a verifiable read-only run. Next add structured-output validation, then move to "
+            },
+            {
+              "type": "article",
+              "text": "CI",
+              "kind": "life",
+              "slug": "codex-ci-workflows"
+            },
+            {
+              "type": "text",
+              "text": ". Flags are checked against official documentation and CLI help; passing reference-script checks does not prove a model run succeeded for every reader's account."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-exec-scripting/diagram-1.svg",
+          "alt": "30. codex exec and scripts — Workflow illustration, not a product screenshot. Prompt → codex exec → JSONL / report",
+          "width": 1600,
+          "height": 900,
+          "caption": "30. codex exec and scripts — Workflow illustration, not a product screenshot. Prompt → codex exec → JSONL / report",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex non-interactive mode",
+          "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI command reference",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "codex exec とスクリプト連携",
+      "description": "codex exec は非対話で一回のタスクを実行します。通常は stderr に進捗、stdout に最終回答、--json では一行ずつ JSON のイベントが出ます。",
+      "hero": {
+        "src": "/guides/codex-exec-scripting/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "架空の一覧を非対話で読み、回答・診断・終了状態を別々に保存します。読む時間15分、実習20分にモデル待機時間が加わります。CLI の導入とログインを済ませ、Git と自分の空フォルダーを用意します。本実習では現在の認証方式の利用枠を使う Codex 要求を1回送信します。help と意図的に無効なフラグを使う手順ではモデルの回答は不要です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "CLI の導入とログイン",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：実行する入口を確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex exec は端末コマンドで、デスクトップ会話のスラッシュコマンドではありません。Windows は PowerShell、macOS は Terminal、Linux は端末を使います。WSL では内部で導入・認証し、Windows のログインが同期済みとは考えません。デスクトップや IDE の端末でも実行できます。携帯の会話はこのローカルプロセスではなく、CLI を実行できる PC または管理された遠隔環境が必要です。各 OS で次の2行を実行し、実版がフラグに対応するか確認します。"
+        },
+        {
+          "type": "code",
+          "label": "CLI 版と exec の説明を確認",
+          "language": "sh",
+          "code": "codex --version\ncodex exec --help\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "入口",
+            "本実習",
+            "用途"
+          ],
+          "rows": [
+            [
+              "端末",
+              "codex exec",
+              "非対話処理を1回開始"
+            ],
+            [
+              "依頼引数",
+              "Read tasks.md…",
+              "エージェントに目的を指定"
+            ],
+            [
+              "stdout",
+              "最終回答",
+              "テキストとして保存"
+            ],
+            [
+              "stderr",
+              "進行・診断",
+              "文字があるだけで失敗とは限らない"
+            ],
+            [
+              "終了状態",
+              "整数",
+              "0 は正常終了だが回答の検証も必要"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "JSON／JSONL",
+              "kind": "life",
+              "slug": "codex-json-output"
+            },
+            {
+              "type": "text",
+              "text": "編で stdout の形式を変えます。ここでは普通の文字列を使い、診断が空か、回答に Done とあるかだけで成功を決めません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：独立した入力を用意する"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習場所に新しい exec-lab を作り、エディターで開きます。同名の場所に既存データがあれば別の空フォルダーを選びます。UTF-8 の tasks.md に下記を保存します。正式プロジェクト、非公開ログ、利用者ディレクトリ全体は使わず、手で検算できる小さな一覧で十分です。そのフォルダーの端末で Git を初期化します。コミット、リモート、GitHub アカウントは不要です。"
+        },
+        {
+          "type": "code",
+          "label": "exec-lab/tasks.md",
+          "language": "markdown",
+          "code": "# Practice tasks\nRevision: exec-practice-1\n\n- [x] Read the guide\n- [ ] Create a practice file\n- [ ] Verify the result\n"
+        },
+        {
+          "type": "code",
+          "label": "全 OS で exec-lab 内から実行",
+          "language": "sh",
+          "code": "git init\ngit status --short\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "tasks.md が未追跡と表示されるはずです。初期化は CLI の作業場所確認を満たすだけで、アップロードしません。版 exec-practice-1、総数3、完了1、未完了2を手元に控えます。次の依頼には答えを書かず、入力を読んだ結果か確認します。他のファイルが見える場合は"
+            },
+            {
+              "type": "article",
+              "text": "パスの説明",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "で現在地を調べます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：出力を保存し、直後に終了状態を記録する"
+        },
+        {
+          "type": "paragraph",
+          "text": "自分の OS の組を選びます。report-01.md、stdout-01.txt、stderr-01.log（macOS／Linux は tasks-before.md も） が未作成か確認し、再実習では02に変えて古い回答との混同を避けます。読み取り専用サンドボックスはエージェントの編集を制限しますが、shell のリダイレクトと -o は指定した報告を書きます。--ephemeral はセッション保存を省くだけで、利用枠を消費しない、またはこの3ファイルを作らないという意味ではありません。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "$practiceBefore = (Get-FileHash -LiteralPath tasks.md -Algorithm SHA256).Hash\ncodex exec --sandbox read-only --ephemeral -o report-01.md 'Read tasks.md. Report its revision and the total, completed and pending checkbox counts. Do not edit input files or use external tools.' 1> stdout-01.txt 2> stderr-01.log\n$practiceExit = $LASTEXITCODE\n$practiceExit\nGet-Content -LiteralPath report-01.md\n$practiceBefore -eq (Get-FileHash -LiteralPath tasks.md -Algorithm SHA256).Hash\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux shell",
+          "language": "sh",
+          "code": "cp tasks.md tasks-before.md\ncodex exec --sandbox read-only --ephemeral -o report-01.md 'Read tasks.md. Report its revision and the total, completed and pending checkbox counts. Do not edit input files or use external tools.' > stdout-01.txt 2> stderr-01.log\npractice_exit=$?\nprintf '%s\\n' \"$practice_exit\"\ncat report-01.md\ncmp tasks-before.md tasks.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "依頼中の external tools は外部サービスを指し、ローカルの読取りツールで tasks.md を読めます。次の外部コマンドに上書きされる前に終了状態を保存します。成功条件は0終了、正しい版と3／1／2、入力の不変です。PowerShell の最後は True、macOS／Linux の cmp は一致なら無出力で0終了です。回答の言語・表現が違っても値と根拠が正しければ合格です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：失敗を回答として採用しない"
+        },
+        {
+          "type": "code",
+          "label": "全 OS の無効引数実習",
+          "language": "sh",
+          "code": "codex exec --sandbox invalid 'Read tasks.md'\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "引数解析で拒否され、新しいモデル回答は出ないはずです。直後に PowerShell は $LASTEXITCODE、macOS／Linux は echo $? を確認し、0以外を期待します。前回の report-01.md が残っていても今回の成功証拠にはなりません。read-only に直して再実行するなら新しい出力名で状態を保存します。権限やサンドボックスを迂回してエラーを隠さず、引数・認証・利用枠・入力欠如を分けて修正します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "結果は二行で記録します。読取り実行は実際の出力名・終了値・件数、無効フラグは「引数解析失敗、新回答なし」とします。report-01.md が残ることは旧ファイルの保存だけを示します。モデルを未実行ならその欄を未実行とし、無効フラグだけ独立して試せます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "問題の切り分け・復元・次の学習"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "codex が見つからなければ導入編で PATH を調べ、ログインを繰り返しません。Git 場所エラーでは exec-lab と git status を確認し、すぐチェックを省略しません。認証・利用枠エラーは codex login status と"
+            },
+            {
+              "type": "article",
+              "text": "アカウント・利用量",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "の入口で調べます。診断中の資格情報、利用者パス、非公開依頼は公開しません。対話承認が必要なら対話モードで必要な権限を確認し、非対話処理の範囲を小さくします。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "今回の終了状態と検算結果を保存し、tasks.md を再確認します。片付けるなら自分が作った report、stdout、stderr と macOS／Linux の tasks-before.md だけをファイル管理画面で選びます。プロジェクト全体や未追跡ファイル全部を消しません。これで検証可能な読み取り専用処理を終え、次は構造化出力の検証、その後 "
+            },
+            {
+              "type": "article",
+              "text": "CI",
+              "kind": "life",
+              "slug": "codex-ci-workflows"
+            },
+            {
+              "type": "text",
+              "text": "へ進みます。フラグは公式文書と CLI help で確認しており、参考スクリプトの合格が各利用者のモデル実行成功を意味するわけではありません。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-exec-scripting/diagram-1.svg",
+          "alt": "30. codex exec とスクリプト連携 — 作業の流れを表す図です。製品画面の画像ではありません。 Prompt → codex exec → JSONL / report",
+          "width": 1600,
+          "height": 900,
+          "caption": "30. codex exec とスクリプト連携 — 作業の流れを表す図です。製品画面の画像ではありません。 Prompt → codex exec → JSONL / report",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex non-interactive mode",
+          "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI command reference",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "codex exec와 스크립트 연동",
+      "description": "codex exec는 비대화형으로 작업 한 번을 실행합니다. 보통 stderr는 진행, stdout은 최종 답변이며 --json은 한 줄씩 JSON 이벤트를 출력합니다.",
+      "hero": {
+        "src": "/guides/codex-exec-scripting/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "가상 목록을 비대화형으로 읽고 답변·진단·종료 상태를 따로 저장합니다. 읽기 15분, 실습 20분에 모델 대기 시간이 추가됩니다. CLI 설치와 로그인을 마치고 Git과 자신의 빈 폴더를 준비하세요. 실습은 현재 인증 방식의 사용량을 쓰는 Codex 요청을 한 번 보냅니다. help와 일부러 잘못된 플래그를 쓰는 단계는 모델 응답이 필요 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "CLI 설치와 로그인",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 실행 진입점 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex exec는 터미널 명령이며 데스크톱 대화의 슬래시 명령이 아닙니다. Windows는 PowerShell, macOS는 Terminal, Linux는 터미널을 사용합니다. WSL에서는 내부에 설치·인증하며 Windows 로그인이 동기화됐다고 가정하지 마세요. 데스크톱·IDE 터미널에서도 CLI를 실행할 수 있습니다. 휴대전화 대화는 이 로컬 프로세스가 아니므로 CLI를 실행할 컴퓨터나 관리되는 원격 환경이 필요합니다. 모든 OS에서 다음 두 줄로 실제 버전의 플래그 지원을 확인하세요."
+        },
+        {
+          "type": "code",
+          "label": "CLI 버전과 exec 도움말 확인",
+          "language": "sh",
+          "code": "codex --version\ncodex exec --help\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "진입점",
+            "실습 내용",
+            "용도"
+          ],
+          "rows": [
+            [
+              "터미널",
+              "codex exec",
+              "비대화형 실행 한 번 시작"
+            ],
+            [
+              "요청 인수",
+              "Read tasks.md…",
+              "에이전트 목표 지정"
+            ],
+            [
+              "stdout",
+              "최종 답변",
+              "텍스트로 저장"
+            ],
+            [
+              "stderr",
+              "진행·진단",
+              "글이 있다고 실패는 아님"
+            ],
+            [
+              "종료 상태",
+              "정수",
+              "0은 정상 종료이며 답변 검증도 필요"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "JSON/JSONL",
+              "kind": "life",
+              "slug": "codex-json-output"
+            },
+            {
+              "type": "text",
+              "text": " 편에서 stdout 형식을 바꿉니다. 여기서는 일반 텍스트를 쓰며 진단 파일이 비었거나 Done이라는 답변만으로 성공을 판단하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 독립 입력 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "연습 위치에 새 exec-lab 폴더를 만들어 편집기로 여세요. 같은 이름에 기존 파일이 있으면 다른 빈 폴더를 고릅니다. UTF-8 tasks.md에 아래 내용을 저장하세요. 운영 프로젝트·비공개 로그·사용자 폴더 전체 대신 손으로 검산할 작은 목록이면 충분합니다. 해당 폴더의 터미널에서 Git을 초기화하며 커밋·원격 저장소·GitHub 계정은 필요 없습니다."
+        },
+        {
+          "type": "code",
+          "label": "exec-lab/tasks.md",
+          "language": "markdown",
+          "code": "# Practice tasks\nRevision: exec-practice-1\n\n- [x] Read the guide\n- [ ] Create a practice file\n- [ ] Verify the result\n"
+        },
+        {
+          "type": "code",
+          "label": "모든 OS에서 exec-lab 안에서 실행",
+          "language": "sh",
+          "code": "git init\ngit status --short\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "tasks.md가 추적되지 않은 파일로 보여야 합니다. Git 초기화는 CLI 작업 위치 확인을 만족할 뿐 업로드하지 않습니다. 버전 exec-practice-1, 전체 3, 완료 1, 미완료 2를 따로 기록하세요. 다음 요청에 답을 넣지 않아야 실제 입력을 읽었는지 확인할 수 있습니다. 다른 파일이 보이면 "
+            },
+            {
+              "type": "article",
+              "text": "경로 설명",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "으로 위치를 확인하세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 출력 저장 후 즉시 종료 상태 기록"
+        },
+        {
+          "type": "paragraph",
+          "text": "OS에 맞는 명령 묶음을 고르세요. report-01.md, stdout-01.txt, stderr-01.log(macOS/Linux는 tasks-before.md도)가 없는지 확인하고 두 번째 시도는 02로 바꿔 오래된 답변을 새 성공으로 오인하지 않게 합니다. 읽기 전용 샌드박스는 에이전트 수정을 제한하지만 shell 리디렉션과 -o는 지정 보고서를 씁니다. --ephemeral은 세션 저장을 생략할 뿐 사용량이 없거나 이 세 파일을 만들지 않는다는 뜻은 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "$practiceBefore = (Get-FileHash -LiteralPath tasks.md -Algorithm SHA256).Hash\ncodex exec --sandbox read-only --ephemeral -o report-01.md 'Read tasks.md. Report its revision and the total, completed and pending checkbox counts. Do not edit input files or use external tools.' 1> stdout-01.txt 2> stderr-01.log\n$practiceExit = $LASTEXITCODE\n$practiceExit\nGet-Content -LiteralPath report-01.md\n$practiceBefore -eq (Get-FileHash -LiteralPath tasks.md -Algorithm SHA256).Hash\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux shell",
+          "language": "sh",
+          "code": "cp tasks.md tasks-before.md\ncodex exec --sandbox read-only --ephemeral -o report-01.md 'Read tasks.md. Report its revision and the total, completed and pending checkbox counts. Do not edit input files or use external tools.' > stdout-01.txt 2> stderr-01.log\npractice_exit=$?\nprintf '%s\\n' \"$practice_exit\"\ncat report-01.md\ncmp tasks-before.md tasks.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "요청의 external tools는 외부 서비스를 뜻하며 로컬 파일 읽기 도구는 사용할 수 있습니다. 다음 외부 명령이 상태를 바꾸기 전에 종료 상태를 저장하세요. 성공 조건은 종료 0, 올바른 버전과 3/1/2, 입력 불변입니다. PowerShell 마지막 줄은 True여야 하며 macOS/Linux의 cmp는 같으면 출력 없이 0으로 종료합니다. 답변 언어·표현이 달라도 수치와 근거가 맞으면 통과입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 실패를 답변으로 채택하지 않기"
+        },
+        {
+          "type": "code",
+          "label": "모든 OS의 잘못된 인수 실습",
+          "language": "sh",
+          "code": "codex exec --sandbox invalid 'Read tasks.md'\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "인수 해석 단계에서 거부되어 새 모델 답변이 없어야 합니다. 직후 PowerShell은 $LASTEXITCODE, macOS/Linux는 echo $?로 0이 아닌지 확인합니다. 이전 report-01.md가 남아도 이번 실행 성공 증거가 아닙니다. read-only로 수정해 재시도하려면 새 출력 이름과 종료 상태를 기록하세요. 오류를 없애려고 권한·샌드박스를 우회하지 말고 인수·인증·사용량·입력 누락을 구분해 고칩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "결과를 두 줄로 기록합니다. 읽기 실행에는 실제 파일명·종료 상태·개수를 적고 잘못된 플래그 시도에는 인수 해석 실패, 새 답변 없음을 적으세요. report-01.md가 남아 있다는 것은 이전 파일 보존만 증명합니다. 모델을 실행하지 않았다면 미실행으로 남기고 잘못된 플래그만 독립적으로 시험할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결·복원·다음 단계"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "codex를 찾지 못하면 설치 편에서 PATH를 확인하고 로그인을 반복하지 않습니다. Git 위치 오류는 exec-lab과 git status를 확인하며 바로 검사를 생략하지 않습니다. 인증·사용량 오류는 codex login status와 "
+            },
+            {
+              "type": "article",
+              "text": "계정·사용량",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "의 해당 화면에서 확인하세요. 진단의 자격 증명·사용자 경로·비공개 요청을 공개하지 마세요. 대화형 승인이 필요하면 대화 모드에서 필요한 권한을 확인한 뒤 비대화형 작업 범위를 줄입니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이번 종료 상태와 검증 결과를 보관하고 tasks.md를 다시 확인하세요. 정리는 자신이 만든 report·stdout·stderr와 macOS/Linux의 tasks-before.md만 파일 관리 화면에서 개별 선택합니다. 프로젝트 전체나 모든 미추적 파일을 지우지 마세요. 검증 가능한 읽기 전용 실행을 마쳤으니 다음에는 구조화 출력 검증, 이후 "
+            },
+            {
+              "type": "article",
+              "text": "CI",
+              "kind": "life",
+              "slug": "codex-ci-workflows"
+            },
+            {
+              "type": "text",
+              "text": "로 진행합니다. 플래그는 공식 문서와 CLI help로 확인했으며 참고 스크립트 통과가 모든 독자의 모델 실행 성공을 뜻하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-exec-scripting/diagram-1.svg",
+          "alt": "30. codex exec와 스크립트 연동 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Prompt → codex exec → JSONL / report",
+          "width": 1600,
+          "height": 900,
+          "caption": "30. codex exec와 스크립트 연동 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Prompt → codex exec → JSONL / report",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex non-interactive mode",
+          "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI command reference",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

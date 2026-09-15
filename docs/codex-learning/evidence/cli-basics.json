@@ -1,0 +1,17 @@
+{
+  "environment": "Windows / PowerShell 7.6.5 / codex-cli 0.154.0-alpha.6.2",
+  "checkedAt": "2026-09-14T05:17:48.1138151Z",
+  "checks": [
+    "Exact authored PowerShell sample creates the expected marker in a path containing spaces",
+    "Independent readback preserves SHA-256 and file count",
+    "Missing-file read fails without creating a file",
+    "Rerunning the authored setup refuses an existing folder and preserves prior bytes",
+    "Deterministic one-line reference edit preserves marker and independent original",
+    "Restoration returns exact original bytes",
+    "Installed Windows CLI version and login/resume help are readable without a model task"
+  ],
+  "limitations": [
+    "No installer, login, model request, sandbox setup, macOS or Linux/WSL runtime was executed",
+    "The edit is a deterministic reference transformation, not a Codex-generated result"
+  ]
+}

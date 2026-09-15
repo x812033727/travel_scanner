@@ -1,0 +1,65 @@
+{
+  "id": 19,
+  "sources": [
+    "code-review",
+    "environments/git-worktrees"
+  ],
+  "code": {
+    "language": "shell",
+    "code": "git status --short\ngit switch -c practice/profile-card\ngit diff -- index.html\ngit add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit commit -m \"Improve practice card layout\""
+  },
+  "text": {
+    "zh-TW": [
+      "Git 保存檔案版本，分支承接一組修改，diff 顯示差異。Codex 可以協助操作，但你仍要確認修改屬於這次任務。聊天紀錄與 Git 歷史不同，恢復舊對話不會自動還原檔案。",
+      "使用有基準提交的練習程式庫。若資料夾還不是 Git repo，先另建練習 repo 並提交初始檔案。已有未提交內容時先辨認來源，不要清掉它來取得乾淨畫面。",
+      [
+        "執行 git status --short 看起點，再用新分支承接練習。如果分支已存在，換一個明確的新名稱，不覆寫原分支。",
+        "請 Codex 只修改 index.html 的指定外觀。完成後讀 git diff -- index.html，確認新增、刪除與空白變更都符合要求。",
+        "只 stage 要交付的檔案。git diff --cached --name-only 確認清單，接著讀 staged diff，避免把別人的修改或秘密一併提交。",
+        "確認後建立 commit。要撤銷已提交的練習變更，可先用 git log 找對 commit，再評估 git revert；未提交內容的 git restore 會丟棄修改，必須先備份並確認只處理選定檔案。"
+      ],
+      "分支上有一個範圍清楚的提交，檔案清單與驗證結果一致。你能指出如何保留與撤回這次變更。",
+      "不要使用 git reset --hard 或 git clean 當日常整理。restore、revert 與 resume 是不同操作；不知道目前狀態時先只讀 status、log 與 diff。",
+      "只調整 index.html 的手機留白。保留現有其他修改，完成後顯示本次 diff 與測試結果，不要自動提交或清除工作區。"
+    ],
+    "en": [
+      "Git stores file history, branches organize changes and diffs show what changed. Codex can help, but you must verify that the changes belong to the task. Restoring an old conversation does not restore Git files.",
+      "Use a practice repository with a baseline commit. If it is not a repository yet, create a separate practice repo and commit initial files. Identify existing uncommitted work rather than deleting it for a clean status.",
+      [
+        "Run git status --short before creating a new practice branch. If the name already exists, choose another explicit name instead of overwriting it.",
+        "Ask Codex to modify only the specified layout in index.html. Read git diff -- index.html, including deletions and whitespace changes.",
+        "Stage only intended files. Check git diff --cached --name-only, then read the staged diff to exclude unrelated work and secrets.",
+        "Commit after review. For a committed change, identify the exact commit before considering git revert. git restore on uncommitted files discards changes: back up and confirm the selected path first."
+      ],
+      "One clearly scoped commit matches the file list and verification. You understand how to retain or reverse that change.",
+      "Do not use git reset --hard or git clean as routine tidying. Restore, revert and conversation resume are different operations; inspect status, log and diff when uncertain.",
+      "Change only mobile padding in index.html. Preserve other work and report the diff and checks. Do not commit automatically or clean the workspace."
+    ],
+    "ja": [
+      "Git は履歴、ブランチは変更のまとまり、diff は差分を扱います。会話の再開ではファイルは復元されません。",
+      "基準コミットのある練習用リポジトリを用意し、既存の未コミット変更を消さずに確認します。",
+      [
+        "status を確認して新規ブランチを作ります。名前が既存なら別名にします。",
+        "index.html の指定部分だけを依頼し、diff で削除や空白も確認します。",
+        "対象だけを stage し、cached のファイル一覧と差分を読みます。",
+        "確認後に commit します。revert は対象コミットを確認して使います。未コミットへの restore は変更を捨てるため、先に保存と対象確認を行います。"
+      ],
+      "検証と一致する範囲のコミットができれば完了です。",
+      "reset --hard や clean を日常の片付けに使いません。不明なら status、log、diff を読みます。",
+      "index.html のモバイル余白だけを変え、他の変更は残してください。差分と検証を示し、自動コミットや削除はしないでください。"
+    ],
+    "ko": [
+      "Git은 파일 이력, 브랜치는 변경 묶음, diff는 차이를 관리합니다. 대화를 재개한다고 파일이 복원되지는 않습니다.",
+      "기준 커밋이 있는 연습 저장소를 준비하고 기존 미커밋 변경을 삭제하지 말고 확인합니다.",
+      [
+        "status를 확인하고 새 브랜치를 만듭니다. 이름이 이미 있으면 다른 이름을 씁니다.",
+        "index.html의 지정 부분만 요청하고 diff에서 삭제와 공백도 확인합니다.",
+        "대상만 stage하고 cached 파일 목록과 diff를 읽습니다.",
+        "검토 후 commit합니다. revert는 정확한 커밋을 확인하고 사용합니다. 미커밋 restore는 변경을 버리므로 먼저 백업과 경로를 확인합니다."
+      ],
+      "검증과 일치하는 범위의 커밋이 생기면 완료입니다.",
+      "reset --hard나 clean을 일상 정리에 쓰지 마세요. 모르면 status, log와 diff를 먼저 읽습니다.",
+      "index.html의 모바일 여백만 변경하고 다른 작업은 보존하세요. diff와 검증 결과를 보고하고 자동 커밋이나 삭제는 하지 마세요."
+    ]
+  }
+}

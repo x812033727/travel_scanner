@@ -1,0 +1,65 @@
+{
+  "id": 21,
+  "sources": [
+    "code-review",
+    "developer-commands"
+  ],
+  "code": {
+    "language": "text",
+    "code": "/review"
+  },
+  "text": {
+    "zh-TW": [
+      "測試確認程式在指定條件的行為，Code Review 檢查變更是否有遺漏或風險，PR 則讓人查看並討論要合併的差異。三者互補；通過測試不等於審查通過，開 PR 也不是已合併。",
+      "先有範圍明確的修改與完成條件。讀專案 README 和 AGENTS.md，找出真的存在的驗證命令，不把別的專案測試指令直接套用。",
+      [
+        "先跑與改動相關的測試，記錄命令、結果與環境。失敗時分辨是既有問題、環境缺少工具，還是這次改壞；不要把未執行寫成通過。",
+        "在 CLI 使用 /review，選要審查的未提交內容、commit 或基準分支。對照範圍，避免讓它看錯版本。",
+        "逐項判斷發現是否有可重現影響，再修正必要問題。讓驗證覆蓋真正的失敗情境，不為了湊數加入只重複實作的測試。",
+        "準備 PR 時說明具體問題、改後行為與驗證限制。核對 base、head 與檔案清單；CI 成功後仍需依團隊流程審查，不直接自動合併。"
+      ],
+      "得到可審查的差異、明確測試證據與沒有誇大狀態的 PR 說明。",
+      "審查意見也是需要核對的分析。若沒有行號、觸發條件或影響，要求補證據；如果更改了提交，之前的 CI 不能直接代表新版本。",
+      "審查目前差異，優先找會造成錯誤行為的問題。每項提供觸發條件、檔案位置與原因。不要修改檔案，最後列出未驗證的假設。"
+    ],
+    "en": [
+      "Tests check behavior under specified conditions, review examines the change for defects and a PR presents proposed integration. They complement each other: tests passing does not establish review approval, and an open PR is not a merge.",
+      "Start with a scoped change and acceptance criteria. Read README and AGENTS.md for commands that actually exist in this project.",
+      [
+        "Run relevant checks and record command, result and environment. Distinguish pre-existing failures, missing tools and introduced regressions. Never label an unrun test as passed.",
+        "Use /review in CLI and choose uncommitted changes, a commit or a base branch. Confirm the exact review target.",
+        "Evaluate each finding for reproducible impact and fix justified issues. Add tests for the real failure instead of mirroring implementation for a higher count.",
+        "Describe the concrete problem, resulting behavior and validation limits in the PR. Verify base, head and files. Follow the review process even after CI passes."
+      ],
+      "You have reviewable changes, precise test evidence and a PR description that does not overstate its state.",
+      "Review findings also need evidence. Ask for triggers and locations when unclear. CI for an older commit does not establish checks for a changed head.",
+      "Review the current diff for behavioral defects. Give triggers, file locations and reasons for each finding. Do not edit files; list unverified assumptions."
+    ],
+    "ja": [
+      "テストは条件下の動作、レビューは変更の問題、PR は統合候補を扱います。テスト成功、承認、マージは別の状態です。",
+      "範囲と合格条件を決め、README と AGENTS.md から実在する検証命令を確認します。",
+      [
+        "関連検証を実行し、命令、結果、環境を記録します。既存失敗、環境不足、新しい不具合を区別します。",
+        "/review で未コミット、コミット、基準ブランチから正しい対象を選びます。",
+        "各指摘の影響を再現して必要な修正を行い、実際の失敗をテストします。",
+        "PR に問題、修正後の動作、検証限界を書き、base、head、ファイルを確認します。CI 後も審査手順を守ります。"
+      ],
+      "差分、証拠、状態を正確に説明した PR が用意できれば完了です。",
+      "レビューにも根拠が必要です。古いコミットの CI を新しい変更の検証として使いません。",
+      "現在の差分を読み、動作不良の条件、位置、理由を示してください。編集せず未検証の前提を列挙してください。"
+    ],
+    "ko": [
+      "테스트는 조건별 동작, 리뷰는 변경의 결함, PR은 통합 제안을 다룹니다. 테스트 통과, 승인과 병합은 별도 상태입니다.",
+      "범위와 완료 기준을 정하고 README와 AGENTS.md에서 실제 검증 명령을 확인합니다.",
+      [
+        "관련 검증을 실행하고 명령, 결과와 환경을 기록합니다. 기존 실패, 환경 부족과 새 결함을 구분합니다.",
+        "/review에서 미커밋, 커밋 또는 기준 브랜치 중 정확한 대상을 선택합니다.",
+        "각 지적의 영향을 재현하고 필요한 수정과 실제 실패 테스트를 추가합니다.",
+        "PR에 문제, 수정 후 동작과 검증 한계를 적고 base, head와 파일을 확인합니다. CI 이후에도 리뷰 절차를 따릅니다."
+      ],
+      "diff, 증거와 상태를 정확하게 설명한 PR이 준비되면 완료입니다.",
+      "리뷰에도 근거가 필요합니다. 이전 커밋의 CI를 새 변경의 검증으로 쓰지 마세요.",
+      "현재 diff를 검토하고 동작 오류의 조건, 위치와 이유를 제시하세요. 편집하지 말고 검증하지 못한 가정을 나열하세요."
+    ]
+  }
+}

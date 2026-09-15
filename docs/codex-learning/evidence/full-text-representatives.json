@@ -1,0 +1,497 @@
+{
+  "checked_on": "2026-09-14",
+  "base_commit": "17da8f24ad62b676b3d4929f65d0bea5e725e8ea",
+  "scope": "Full-text editorial review of five representative lessons, including all author prose and compiled Simplified Chinese, plus five-locale metadata and image captions. Product execution and final page acceptance are separate.",
+  "hash_convention": "UTF-8 text with canonical LF, matching the author compiler; official source hashes cover retrieved UTF-8 bodies.",
+  "lessons": [
+    {
+      "id": 3,
+      "slug": "codex-desktop-getting-started",
+      "source_hashes": {
+        "zh-TW": "69d8c907a6c590297c2e9e06b64c4a4037a18f1d7e8e03ce46937b9602d3358b",
+        "en": "1719e908517d2bde0a19989f8c88ccb75b088c9a8301d5036e0a3b6c17c36614",
+        "ja": "5357737f032e283ee1219becfb9cef26da96d03e012926b0611244f336a1d869",
+        "ko": "e35d96cda059235dbe1dbfd88149723fc14a1cfc154ce65585691559ce10866d",
+        "zh-CN": "866e8ffa13ec6e3ee4874a642f04ff8a925e2489ebfdfdaa08bb7a91d3aaff3b"
+      },
+      "pack_hash": "93bfae662c3f9591af4e60c2692da2aaa725b93d0eb764018de8a44d4dfe7554",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        }
+      },
+      "editorial_result": "changes-required",
+      "findings": [
+        "All five locales: installer and workspace steps, baseline comparison, expected todo states, troubleshooting, sources and image captions read.",
+        "Windows package ID, macOS installation and Linux preview package/support distinctions checked against current official pages."
+      ],
+      "required_changes": [
+        "Reset the existing exercise data and select All tasks before expecting only Read and Build; otherwise persisted tasks or a retained filter invalidate the stated starting point.",
+        "Korean extraction instruction says uncompressed files where files not extracted is intended."
+      ],
+      "code_source_and_image_contracts": "unchanged and verified in all five locales against base commit",
+      "advisory_disposition": {
+        "code": "text_length",
+        "locale": "en",
+        "result": "retained-with-editorial-rationale",
+        "rationale": "Keep platform-specific installation, baseline comparison, five-file inspection, failure/recovery and validation steps. These are separate reader actions, not repetitive padding.",
+        "threshold_changed": false
+      },
+      "product_evidence": {
+        "result": "pending",
+        "gaps": [
+          "Actual desktop selection, project/task creation and change inspection need product evidence.",
+          "Existing reference website captures do not demonstrate Codex product operation."
+        ]
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 10,
+      "slug": "codex-agents-md",
+      "source_hashes": {
+        "zh-TW": "ca4821744ab7b24ee03027f4f1ece53060128600f8f07c790d8c90215609816d",
+        "en": "2351b105ab8c9bb85de66b51b1f221bf385cd7549d55d23f2008e76abc89edad",
+        "ja": "1ae59565ed942ae2bd6208ffca12cf44e5f15ff9ae30ba6ccb661f9b50b98bcc",
+        "ko": "6b87a2a28462dc116ee4a66e669e078b12d9fb3cc433de635c4c17876b4daead",
+        "zh-CN": "388451a0fabf12304e498a6f10b316bf6a4263c80a3be0ced951d5812b37412d"
+      },
+      "pack_hash": "06e4cde21df3d0661a600dfecc78bd8e65b23d66627ff730f5381add0c3a3ddd",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "editorial_result": "passed",
+      "findings": [
+        "All five locales: global/project discovery, override priority, directory scope, Windows extension handling, complete rule file, conditional HTML/JS checks and restoration read.",
+        "Official discovery uses first non-empty global override/AGENTS file; project search proceeds from the identified root to cwd, with the documented default size limit.",
+        "The exercise distinguishes discovery from compliance and identifies browser checks as not run when unavailable."
+      ],
+      "required_changes": [],
+      "code_source_and_image_contracts": "unchanged and verified in all five locales against base commit",
+      "advisory_disposition": {
+        "code": "text_length",
+        "locale": "en",
+        "result": "retained-with-editorial-rationale",
+        "rationale": "Keep the complete AGENTS.md, three-OS creation steps, root-discovery explanation, conditional tests and selective restoration.",
+        "threshold_changed": false
+      },
+      "product_evidence": {
+        "result": "pending",
+        "gaps": [
+          "Actual rule discovery and adherence in a Codex task, including the two file-type conditions, still need product evidence."
+        ]
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 4,
+      "slug": "codex-mobile-guide",
+      "source_hashes": {
+        "zh-TW": "d0b3ba02eb4e201a9362dcd586cd405dd4bbdceefa20968abc7b5e4bd75c49eb",
+        "en": "9a9f46701869989c3928a0faf0949999d1b437fe8e54cbaa63c862d9d01fb5b6",
+        "ja": "60c536600c66bd1c5344f10cec890566a60d60994d9106c471f208d83913daf1",
+        "ko": "85507ab46f15d9ca96c34f49b362a900f2a15090f4f31765a1a84ba042d89788",
+        "zh-CN": "9c77297c13701b6465b5c0e862b2fb69a14f19bebbc56ec3b0d26036d16bbd7a"
+      },
+      "pack_hash": "89bac89b41c556e07393c4926f31373850f7d055c6f5591952e1da66b2012d7c",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "editorial_result": "passed",
+      "findings": [
+        "All five locales: iOS/Android clients, desktop pairing prerequisites, same account and workspace, host marker, read-only evidence, sleep/disconnection, cloud distinction and unlinking read.",
+        "Official Remote documentation confirms desktop-first pairing and the supported host/client distinctions; no physical device test is claimed.",
+        "Prompt omits the custom host marker so the returned value can be compared with actual tool and host-path evidence."
+      ],
+      "required_changes": [],
+      "code_source_and_image_contracts": "unchanged and verified in all five locales against base commit",
+      "advisory_disposition": {
+        "code": "text_length",
+        "locale": "en",
+        "result": "retained-with-editorial-rationale",
+        "rationale": "Keep both mobile entry paths, host setup, hidden-answer host identification, read-only checks, local/cloud/loopback distinctions and recovery.",
+        "threshold_changed": false
+      },
+      "product_evidence": {
+        "result": "pending",
+        "gaps": [
+          "Physical iOS/Android pairing, correct-host observation and disconnection/recovery remain untested."
+        ]
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 11,
+      "slug": "codex-commands",
+      "source_hashes": {
+        "zh-TW": "823bcd089204b19cee4d4d0ed7d565de07c055f28be0f288de5452fe7735004c",
+        "en": "3cea626dbe555388527527b1db089cba35ef24868d19e842aa138ae11fa1b4cc",
+        "ja": "b1325b4fa47ee2afde42b239fa13f5a2026175c47a68cad0f22b1105e4c7bc96",
+        "ko": "3c8b97c6d4bbe9f4ae225f8f51e4050ceba497b2f0cf89939b191b649e7a9568",
+        "zh-CN": "cd4ab514889790e96f5c1d3ba72a4d2814a7edb41491ab942abc0b615535ca78"
+      },
+      "pack_hash": "03ad0a8a65e8fddb748b363c0f3512186796a6725ac3ecf90be1104f75dfd92c",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "editorial_result": "passed",
+      "findings": [
+        "All five locales: shell/flag/slash/keyboard/prompt distinctions, help, read-only request, Plan, exit/resume cwd, diagnostics, sources and image captions read.",
+        "Windows CLI version, main help and resume help match the tutorial. Interactive slash behavior remains official-document verification.",
+        "Replaced the remaining Chinese term in Japanese with natural Japanese flag terminology.",
+        "SVG source contains 01 Shell, 02 Interactive / and 03 Result; those numbers are discussed in prose. This is source inspection, not visual browser acceptance.",
+        "Updated all five descriptions in legacy metadata authoring, manifest, content pack and dedicated API projections after scope handoff; descriptions explicitly include launch flags."
+      ],
+      "required_changes": [],
+      "code_source_and_image_contracts": "unchanged and verified in all five locales against base commit",
+      "advisory_disposition": {
+        "code": "text_length",
+        "locale": "en",
+        "result": "retained-with-editorial-rationale",
+        "rationale": "Keep five input contexts, complete help/Plan/resume sequence, working-directory precedence, stop/exit distinctions and error recovery.",
+        "threshold_changed": false
+      },
+      "product_evidence": {
+        "result": "pending",
+        "gaps": [
+          "Actual interactive CLI slash-command, resume-picker and Plan evidence remain pending."
+        ]
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false,
+      "resolved_changes": [
+        "Chinese catalog and pack descriptions still enumerate four kinds of operation, while the body separates flags as the fifth input type. Synchronize the metadata after ownership of Codex series projections is coordinated."
+      ]
+    },
+    {
+      "id": 23,
+      "slug": "codex-skills",
+      "source_hashes": {
+        "zh-TW": "dc29a31fd13f032c4d99ff93225bd8e20667c2f1145adb56a259e44cbcc49df0",
+        "en": "93505bf0fb0297d6cecfd987c5589bf7305ca30acf94783b5a59801c38bfa25e",
+        "ja": "3707db8e555900334790569161a2c0ba8f98bbdb1f1ba644ca340468f1b745af",
+        "ko": "44b37219d1f34cd1753f14f500a3fc18a77e61f5e1029e718f7df53712e511b3",
+        "zh-CN": "1419ef21fef94aa83e04917ff517a6c410bee06c560fce41eea7e388786cbd7a"
+      },
+      "pack_hash": "17cf588865823ab05eefb017b20dcebb4ee546b5e6f66ecec39b39cd54ce9ed3",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "editorial_result": "passed",
+      "findings": [
+        "All five locales: frontmatter, project skill path, progressive loading, explicit invocation, duplicate names, expected/broken/incomplete cases, missing browser, disabling and restoration read.",
+        "Korean deterministic-processing explanation clarified without altering the copyable skill.",
+        "The download SKILL.md exactly matches the article code block. Reference tests produce three passes for expected, two passes and one deliberate failure for broken. These do not demonstrate actual skill invocation."
+      ],
+      "required_changes": [],
+      "code_source_and_image_contracts": "unchanged and verified in all five locales against base commit",
+      "advisory_disposition": {
+        "code": "text_length",
+        "locale": "en",
+        "result": "retained-with-editorial-rationale",
+        "rationale": "Keep the complete reusable skill, exact folder tree, success/failure/missing-material distinctions, explicit selection and non-destructive disabling.",
+        "threshold_changed": false
+      },
+      "product_evidence": {
+        "result": "pending",
+        "gaps": [
+          "Actual discovery, explicit selection, normal/failure/missing-material behavior and disabling still require Codex skill operation evidence."
+        ]
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://learn.chatgpt.com/docs/app.md",
+      "sha256": "b7476f090d8f000298eb111d08736bd5ec031bfba2d18f4371bc526c25efcf2b",
+      "read_scope": "full body"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/windows/windows-app.md",
+      "sha256": "5bbae21f535849b2ab51ec9472d43e2f1ade4f954b3d5241bcec4674e7761ad7",
+      "read_scope": "full body"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/linux/linux-app.md",
+      "sha256": "9e1dd4e053306eedbb3e3b69a56bb19dcfe2701daf51d2a43f1bb4bb767c7e3d",
+      "read_scope": "full body"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md.md",
+      "sha256": "9d1f87a2d1cb55b4782b95abe710692b35b9659789c2db31a22c7074a3383e8e",
+      "read_scope": "full body"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/remote-connections.md",
+      "sha256": "56337f1d1ae34b3cd91db9bcb3fad282b00cb2a1eba9332793adec0b67868b82",
+      "read_scope": "full body"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/developer-commands.md",
+      "sha256": "118db8171f800613d254710d76f5765bb520c7de8c1d18e8e02a72c1e406abf3",
+      "read_scope": "selected CLI sections: resume/fork and cwd; interactive shortcuts; built-in slash table; model, plan, skills, copy, status, statusline. Not a full-page review."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/build-skills.md",
+      "sha256": "d15791562748e64a53dfec534b8558aa522e732cec0fdedcf7257fa4ef486a20",
+      "read_scope": "full body"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/config-file/config-basic.md",
+      "sha256": "7fc85ae0b8f8ae1483fca0cf8972ccc6ee6b923c9e156b0c2965c52ecb5941e0",
+      "read_scope": "full body"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/codex/cli.md",
+      "sha256": "4592869a38de248eef8c623816032bc34787c7797fcf7a64e41d860da83d1a5e",
+      "read_scope": "full body"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/cloud.md",
+      "sha256": "a91151b55ae491b364b6792dd8cb19acde34ffb54d97abfa3011685117be1f69",
+      "read_scope": "full body"
+    }
+  ],
+  "checks": {
+    "compiler_unit_tests": {
+      "passed": 9
+    },
+    "api_content_tests": {
+      "passed": 9
+    },
+    "series_integrity": {
+      "lessons": 60,
+      "locale_documents": 300,
+      "passed": true
+    },
+    "shared_catalogue_check": {
+      "passed": true,
+      "locales": 5,
+      "files_changed": true,
+      "change_scope": "Only outcome text for lessons 06 and 11 in each of five Codex projections; equality check confirms all other fields unchanged."
+    },
+    "editorial_audit": {
+      "errors": 0,
+      "warnings": 21,
+      "thresholds_changed": false
+    },
+    "reference_expected_tests": {
+      "exit_code": 0,
+      "passed": 3,
+      "failed": 0
+    },
+    "reference_broken_tests": {
+      "exit_code": 1,
+      "passed": 2,
+      "failed": 1,
+      "expected_failure": true
+    },
+    "cli_help": {
+      "version": "codex-cli 0.154.0-alpha.6.2",
+      "commands": [
+        "codex --version",
+        "codex --help",
+        "codex resume --help"
+      ],
+      "exit_code": 0,
+      "interactive_or_model_execution": false
+    },
+    "initial_series_check": {
+      "passed": false,
+      "reason": "Used API environment without mistune; reran with pinned authoring dependencies successfully."
+    },
+    "initial_source_fetch": {
+      "passed": false,
+      "reason": "slash-commands.md returned 404; CLI commands were verified in developer-commands.md instead."
+    },
+    "frontend_learning_tests": {
+      "passed": 9,
+      "files": 2,
+      "browser_run": false
+    },
+    "latest_content_validation": {
+      "integrity_lessons": 60,
+      "locale_documents": 300,
+      "compiler_tests_passed": 9,
+      "api_tests_passed": 9,
+      "api_catalogue_locales": 5,
+      "audit_errors": 0,
+      "audit_advisories": 21,
+      "task_files_validated": 412,
+      "unrelated_task_warnings_retained": true,
+      "git_diff_check_passed": true
+    }
+  },
+  "blocked_actions": [
+    {
+      "action": "Edit lesson 03 reset prerequisites and Korean extraction wording using a PowerShell-invoked Python script",
+      "reason": "Automatic approval review: blocked by policy",
+      "executed": false,
+      "retry_by_another_route": false,
+      "required_changes_applied": false
+    },
+    {
+      "action": "Start final Next.js preview, including earlier loopback-only retry",
+      "reason": "Earlier automatic approval review: blocked by policy",
+      "restriction_resolved": false,
+      "alternate_startup_or_rendering_attempted": false
+    }
+  ],
+  "totals": {
+    "full_text_read_lessons": 5,
+    "full_text_passed_lessons": 4,
+    "changes_required_lessons": 1,
+    "advisories_disposed": 5,
+    "final_accepted_lessons": 0,
+    "total_lessons": 60,
+    "hub_review": "pending"
+  },
+  "release": {
+    "push": false,
+    "pr": false,
+    "merge": false,
+    "import": false,
+    "publication": false,
+    "deployment": false
+  },
+  "scope_handoff": {
+    "source_thread": "01a09d8e-a18a-76a1-9952-b525f0210831",
+    "title": "規劃 Claude Code 教學目錄",
+    "checked_on": "2026-09-14",
+    "granted_paths": [
+      "apps/api/app/guides/series_data/codex-zh-TW.json",
+      "apps/api/app/guides/series_data/codex-zh-CN.json",
+      "apps/api/app/guides/series_data/codex-en.json",
+      "apps/api/app/guides/series_data/codex-ja.json",
+      "apps/api/app/guides/series_data/codex-ko.json"
+    ],
+    "evidence": "Existing holder explicitly released the five Codex-only projections. PR 485 was independently verified merged at 35a2d258b51d2a1ac9aff91dc5f7ed5a8df823ec; the obsolete local review task was archived and the five exact paths claimed. No force claim was used.",
+    "other_worktree_files_changed": false,
+    "shared_code_structures_changed": false,
+    "local_obsolete_task_archived": true
+  },
+  "reviewer": "codex-fulltext-fc2e"
+}

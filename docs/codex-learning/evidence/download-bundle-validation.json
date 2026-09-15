@@ -1,0 +1,164 @@
+{
+  "checked_on": "2026-09-15",
+  "reviewer": "codex-final-validation-fc2e",
+  "base_commit": "24c5662aacb4a06f619c65acb88f350ada861f40",
+  "scope": "Local downloadable practice archives and their source-byte parity. No archive was installed, published remotely or used to start a browser server.",
+  "finding": {
+    "archive": "apps/web/public/guides/codex-first-project/todo-practice.zip",
+    "before_sha256": "a6cb1c75fc988f6370e1c995a6a28529413ead3f2c5ea089c2a544a26f463c72",
+    "existing_files": 17,
+    "missing_files": [
+      "codex-practice/documentation/AGENTS.md",
+      "codex-practice/documentation/README.md",
+      "codex-practice/documentation/app.js",
+      "codex-practice/documentation/core.mjs",
+      "codex-practice/documentation/core.test.mjs",
+      "codex-practice/documentation/docs/filters.md",
+      "codex-practice/documentation/docs/handoff.md",
+      "codex-practice/documentation/index.html",
+      "codex-practice/documentation/style.css",
+      "codex-practice/markdown/README.md",
+      "codex-practice/markdown/notes.md"
+    ],
+    "explanation": "The existing packaging source selects 28 current exercise files, but the archive and manifest still covered only the original 17. Existing archive members matched their current sources."
+  },
+  "fix": {
+    "path": "apps/web/public/guides/codex-first-project/todo-practice.zip",
+    "sha256": "6f13bcf6b2c69cda46a01ca4097b1abaf679a39b73369beeacc2c1241c0233ff",
+    "files": 28,
+    "original_files_preserved_after_lf_normalization": 17,
+    "original_files_byte_identical": 7,
+    "original_files_with_only_line_endings_changed": [
+      "codex-practice/broken/app.js",
+      "codex-practice/broken/core.mjs",
+      "codex-practice/broken/core.test.mjs",
+      "codex-practice/broken/index.html",
+      "codex-practice/broken/style.css",
+      "codex-practice/start/app.js",
+      "codex-practice/start/core.mjs",
+      "codex-practice/start/core.test.mjs",
+      "codex-practice/start/index.html",
+      "codex-practice/start/style.css"
+    ],
+    "added": [
+      "documentation/AGENTS.md",
+      "documentation/app.js",
+      "documentation/core.mjs",
+      "documentation/core.test.mjs",
+      "documentation/docs/filters.md",
+      "documentation/docs/handoff.md",
+      "documentation/index.html",
+      "documentation/README.md",
+      "documentation/style.css",
+      "markdown/notes.md",
+      "markdown/README.md"
+    ],
+    "source_files_unchanged": true,
+    "all_archive_members_match_git_head": 28,
+    "manifest_sha256": "820ffdef98ec1c26413bf4ccb44cdf96f0b143a884394f480d5e6bc1b40abbb9",
+    "packager": "tools/codex-learning/practice_archive.py",
+    "reproducibility": "LF text bytes, POSIX filename sorting, fixed ZIP timestamp and Unix file metadata; compression level 9."
+  },
+  "other_archives": [
+    {
+      "path": "apps/web/public/guides/codex-skills/todo-acceptance.zip",
+      "files": 1,
+      "sha256": "d5223b3efcbdf3463448cc920babc4160bc68ecce3384419fa85a03f5840e71c",
+      "source_bytes_match": true,
+      "crc_ok": true
+    },
+    {
+      "path": "apps/web/public/guides/codex-skill-resources/todo-summary-practice.zip",
+      "files": 6,
+      "sha256": "709eb834c2c66d3190a495f48bc73b329e46545cb2a34dad3d145852ca1ab2b6",
+      "source_bytes_match": true,
+      "crc_ok": true
+    },
+    {
+      "path": "apps/web/public/guides/codex-csv-workshop/contacts-practice.zip",
+      "files": 5,
+      "sha256": "e0f76ff8a5838df4837d413189d014377fa179ed2a9dbb767be184ce61748fc3",
+      "source_bytes_match": true,
+      "crc_ok": true
+    }
+  ],
+  "checks": [
+    {
+      "command": "uv run pytest tests/test_codex_learning.py -q -k practice_download",
+      "phase": "before repair",
+      "result": "failed as expected",
+      "failed": 1,
+      "deselected": 10,
+      "duration_seconds": 3.2
+    },
+    {
+      "command": "uv run pytest tests/test_codex_learning.py -q",
+      "phase": "after repair",
+      "result": "passed",
+      "tests": 11,
+      "duration_seconds": 79.31
+    },
+    {
+      "command": "uv run ruff check tests/test_codex_learning.py",
+      "result": "passed"
+    },
+    {
+      "command": "uv run pytest tests/test_codex_learning.py -q -k \"practice_download or practice_packaging\"",
+      "phase": "before canonical LF packaging",
+      "result": "failed as expected",
+      "failed": 3,
+      "deselected": 10,
+      "duration_seconds": 3.69
+    },
+    {
+      "command": "uv run pytest tests/test_codex_learning.py -q",
+      "phase": "after canonical LF packaging",
+      "result": "passed",
+      "tests": 13,
+      "duration_seconds": 73.05
+    },
+    {
+      "command": "uv run ruff check tests/test_codex_learning.py ../../tools/codex-learning/practice_archive.py ../../tools/codex-learning/prepare-practice.py",
+      "result": "passed"
+    },
+    {
+      "phase": "Checkout portability",
+      "result": "Temporary LF and CRLF source trees both produce exact committed ZIP/manifest bytes, without modifying any input file."
+    },
+    {
+      "phase": "Git contents",
+      "result": "All 28 archive members equal their Git HEAD file bytes; all 17 original members differ at most by CRLF-to-LF normalization."
+    }
+  ],
+  "test_file": "apps/api/tests/test_codex_learning.py",
+  "test_sha256": "1b1767ac05bca1c4ea3589e3b3c17265601db88c4b64c70d9a1eff4675b4be0b",
+  "hash_convention": "LF-normalized UTF-8 for the test; raw bytes for archives and manifest.",
+  "limits": [
+    "Only file types selected by the existing packaging script are covered by the main practice ZIP; this does not claim it contains every internal review fixture.",
+    "Only the standalone packager was executed. Existing start/broken/expected sources were not regenerated or edited. The legacy generator now calls the same packager.",
+    "CRC and source equality do not establish a browser download from production or editorial correctness of the remaining lessons.",
+    "LF/CRLF portability is simulated locally on Windows; this is not an executed Linux or macOS run."
+  ],
+  "initial_local_repair": {
+    "path": "apps/web/public/guides/codex-first-project/todo-practice.zip",
+    "sha256": "18e40a2c3229b13f9e6f3ffc65934c955f8220b2a5538d771c1b1ac69a674046",
+    "files": 28,
+    "original_files_preserved": 17,
+    "added": [
+      "documentation/AGENTS.md",
+      "documentation/app.js",
+      "documentation/core.mjs",
+      "documentation/core.test.mjs",
+      "documentation/docs/filters.md",
+      "documentation/docs/handoff.md",
+      "documentation/index.html",
+      "documentation/README.md",
+      "documentation/style.css",
+      "markdown/notes.md",
+      "markdown/README.md"
+    ],
+    "source_files_unchanged": true,
+    "manifest_sha256": "07c04224847dddf2d4b592405ca6001420d20fdef4ab959b0c6c12ec24d751ac"
+  },
+  "packager_sha256": "f4cae932b89b2c3c72e1a2a7b2f9300e55f5f6e3b2c964909520971fc646ca2d"
+}

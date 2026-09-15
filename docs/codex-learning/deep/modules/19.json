@@ -1,0 +1,306 @@
+{
+  "id": 19,
+  "readingMinutes": 15,
+  "operationMinutes": 30,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與準備",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "在獨立 Git 練習庫建立分支、看懂差異，只暫存與提交指定檔案，再分別練習未提交還原和已提交撤回。閱讀約 15 分鐘，操作約 30 分鐘。需要 Git 2.28 以上、編輯器及 expected 教材；三種 OS 的 Git 命令相同。本篇只建立本機歷史，不需要 GitHub、遠端帳號或推送。",
+        "In an isolated Git lab, create a branch, inspect diffs, stage/commit only selected files, restore uncommitted changes and revert a commit. Allow 15 minutes to read and 30 to practice. Use Git 2.28 or later, an editor and the expected fixture. Git commands are shared across OSes. This creates local history only; no GitHub, remote account or push is needed.",
+        "独立 Git 教材でブランチ、差分、指定ファイルのステージと commit、未確定復元、commit 撤回を練習します。読む時間15分、操作30分。Git 2.28 以降、エディター、expected 教材を使います。3 OS 共通で、ローカル履歴だけを作り GitHub や push は不要です。",
+        "독립 Git 실습에서 브랜치/차이/지정 파일 스테이지·commit/미커밋 복원/commit 취소를 연습합니다. 읽기 15분, 실습 30분입니다. Git 2.28 이상, 편집기, expected 실습을 씁니다. 세 OS 공통이며 로컬 기록만 만들고 GitHub/push는 필요 없습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先熟悉[終端機路徑](article:codex-terminal-paths)。工作目錄是目前磁碟內容，暫存區是下一次 commit 要包含的內容，commit 是已記錄的版本；三者可能不同。分支指向一條版本線，不會自動複製所有未提交檔案。要同時在多份目錄工作，另看[worktree](article:codex-worktrees)，不要把建立分支當作完成備份。",
+        "Know [terminal paths](article:codex-terminal-paths). The working tree is current files, the index is the next commit's staged content, and commits record versions; these can differ. A branch identifies a history line, not an automatic copy of uncommitted files. For separate directories, use [worktrees](article:codex-worktrees); creating a branch is not a backup.",
+        "[端末パス](article:codex-terminal-paths)を確認します。作業ツリー、次の commit 用 index、記録版は別状態です。ブランチは履歴の線で、未コミットのコピーではありません。別場所は[worktree](article:codex-worktrees)を使い、ブランチを保存完了としません。",
+        "[터미널 경로](article:codex-terminal-paths)를 확인합니다. 작업 트리, 다음 commit용 index, 기록 버전은 별개입니다. 브랜치는 기록 줄이며 미커밋 사본이 아닙니다. 별도 경로는 [worktree](article:codex-worktrees)를 쓰고 브랜치를 백업 완료로 보지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：建立獨立基準",
+        "Step 1: Create an isolated baseline",
+        "手順1：独立した基準を作る",
+        "1단계: 독립 기준 만들기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在不屬於其他專案的新資料夾 codex-git-lab 放入 expected 的五個檔案。用編輯器開該資料夾與終端機，PowerShell 用 Get-Location、macOS／Linux 用 pwd 核對位置，再跑 git --version。若系統找不到 git，先依平台的 Git 官方安裝說明完成，重開終端機；不要在原本工作庫執行接下來的初始化。",
+        "Place the five expected files in new codex-git-lab outside any other project. Open its editor terminal, verify the path with Get-Location in Windows PowerShell or pwd on macOS/Linux, then run git --version. If Git is missing, use its official platform installation guidance and reopen the terminal. Do not initialize your existing work repository for this exercise.",
+        "他プロジェクト外の codex-git-lab に expected 5ファイルを置き、Windows PowerShell は Get-Location、macOS／Linux は pwd で現在地を確認し、git --version を実行します。なければ公式 OS 別導入を行い端末を開き直します。既存仕事用リポジトリでこの初期化をしません。",
+        "다른 프로젝트 밖 codex-git-lab에 expected 다섯 파일을 두고 Windows PowerShell은 Get-Location, macOS/Linux는 pwd로 현재 경로를 확인하고 git --version을 실행합니다. 없으면 공식 OS 설치 후 터미널을 다시 엽니다. 기존 작업 저장소에서 이 초기화를 하지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git init -b main\ngit config user.name \"Practice Learner\"\ngit config user.email \"learner@example.invalid\"\ngit add index.html style.css app.js core.mjs core.test.mjs\ngit diff --cached --name-only\ngit commit -m \"Add practice baseline\"\ngit status --short\n",
+      "label": [
+        "終端機：獨立 Git 基準",
+        "Terminal: isolated Git baseline",
+        "ターミナル：独立した Git 基準",
+        "터미널: 독립 Git 기준"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "逐行執行，不略過中間檢查。初次暫存應恰好是五檔，提交後 status 應無變更。姓名與保留網域信箱只寫在這個練習庫的本機設定，不是 GitHub 登入，也沒有 --global。若 commit 遇到你既有的簽章或 hooks 要求，先依自己的設定完成或暫停記錄原因，不改全域政策來追求成功畫面。",
+        "Run line by line. Initial staging should contain exactly five files and status should be clean after committing. Identity values are local to this practice repository, not GitHub login or global configuration. If existing signing/hooks requirements prevent a commit, follow your setup or record the blocker instead of changing global policy.",
+        "逐行実行し、最初の5ファイルと commit 後の無変更を確認します。名前と予約ドメインは教材内設定で、GitHub 認証や global ではありません。署名・hooks の既存要件があれば従うか障害を記録し、全体方針を変更しません。",
+        "줄별 실행해 처음 다섯 파일과 commit 후 무변경을 확인합니다. 이름/예약 도메인은 실습 내 설정이며 GitHub 인증/global이 아닙니다. 기존 서명/hooks 요구면 따르거나 장애를 기록하고 전체 정책을 바꾸지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：在分支上做兩個可辨認修改",
+        "Step 2: Make two distinguishable changes on a branch",
+        "手順2：ブランチで区別できる二変更",
+        "2단계: 브랜치에서 구별할 두 변경"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git switch -c codex/title-lab\ngit branch --show-current\n",
+      "label": [
+        "終端機：建立分支",
+        "Terminal: create a branch",
+        "ターミナル：ブランチ作成",
+        "터미널: 브랜치 생성"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "確認分支是 codex/title-lab。用編輯器在 index.html 只把 h1 的 Make room for one small task. 改成 Plan one useful step.。另外在 style.css 最尾端加下面的註解，模擬另一份尚未提交的工作。這次要交付的是標題，CSS 註解必須保留在工作目錄但不能混入標題提交；兩個改動都是教材，無正式資料。",
+        "Verify codex/title-lab. In index.html change only the h1 text Make room for one small task. to Plan one useful step. Append the comment below to style.css to represent separate uncommitted work. The title is the deliverable; preserve the CSS note without including it in the title commit. Both edits are fictional practice.",
+        "codex/title-lab を確認後、index.html の h1 にある Make room for one small task. だけを Plan one useful step. にし、CSS 末尾へ次のコメントを加えて別の未確定作業を模します。成果はタイトルで、CSS は保持しつつタイトル commit に混ぜません。両方とも教材です。",
+        "codex/title-lab을 확인한 뒤 index.html의 h1 문구 Make room for one small task.만 Plan one useful step.으로 바꾸고 CSS 끝에 다음 주석으로 별도 미커밋 작업을 흉내 냅니다. 결과는 제목이며 CSS는 보존하되 제목 commit에 섞지 않습니다. 둘 다 실습입니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": "/* KEEP-MY-NOTE */\n",
+      "label": [
+        "附加到檔案：style.css",
+        "Append to file: style.css",
+        "ファイルへ追記：style.css",
+        "파일에 추가: style.css"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git status --short\ngit diff -- index.html style.css\n",
+      "label": [
+        "終端機：檢查差異",
+        "Terminal: inspect the diff",
+        "ターミナル：差分確認",
+        "터미널: 차이 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "diff 的減號是舊行，加號是新行，周圍未改內容提供定位。檢查 index.html 是否只改 h1，style.css 是否只多註解，不能只看「2 files changed」。如果請 Codex 說明，使用下列唯讀要求，讓它辨認現有工作及本次範圍；不要一開始就叫它提交所有差異。",
+        "Minus lines are old, plus lines new, with surrounding context. Check the exact h1 and CSS comment instead of only “2 files changed.” Use the read-only prompt below for Codex to identify existing work and intended scope before any commit request.",
+        "差分の旧行・新行と周辺を見て、h1 と CSS コメントだけか確認します。ファイル数だけで判断しません。次の読取り依頼で既存作業と対象を特定し、全差分 commit は求めません。",
+        "차이의 이전/새 줄과 주변을 보고 h1/CSS 주석만인지 확인합니다. 파일 수만으로 판단하지 않습니다. 다음 읽기 요청으로 기존 작업/대상을 식별하며 전체 차이 commit은 요청하지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Inspect this lab's current branch, status and diff without editing, staging or committing. The intended change is only the h1 title in index.html. The KEEP-MY-NOTE comment in style.css represents separate work and must be preserved. Explain what belongs in the title commit and what must stay outside it.\n",
+      "label": [
+        "Codex 提示詞：唯讀核對範圍",
+        "Codex prompt: read-only scope check",
+        "Codex への依頼：範囲の読み取り専用確認",
+        "Codex 프롬프트: 읽기 전용 범위 확인"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：只暫存一檔，再練習還原",
+        "Step 3: Stage one file, then practice restoration",
+        "手順3：一ファイルをステージして復元を試す",
+        "3단계: 한 파일 스테이지 후 복원 연습"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit diff -- style.css\n",
+      "label": [
+        "終端機：限定暫存",
+        "Terminal: stage only the intended file",
+        "ターミナル：対象ファイルだけをステージ",
+        "터미널: 지정 파일만 스테이징"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "現在再做一次同檔案的差異比較：不要重新 git add，用編輯器只把已暫存的 Plan one useful step. 改成 Compare one useful step.。執行下面四行，觀察工作目錄、暫存區與 HEAD 的不同版本。",
+        "Now compare two versions of the same file. Without running git add again, change only the staged title Plan one useful step. to Compare one useful step. in the editor. Run the four lines below to distinguish the working tree, index and HEAD.",
+        "同じファイルの2つの版を比較します。git add を再実行せず、エディターでステージ済みの Plan one useful step. だけを Compare one useful step. に変更します。次の4行で作業ツリー、インデックス、HEAD の違いを確認します。",
+        "이제 같은 파일의 두 버전을 비교합니다. git add를 다시 실행하지 말고 편집기에서 스테이징한 Plan one useful step.만 Compare one useful step.으로 바꿉니다. 아래 네 줄로 작업 트리, 인덱스, HEAD의 차이를 확인합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git status --short\ngit diff --cached -- index.html\ngit diff -- index.html\ngit show :index.html\n",
+      "label": [
+        "終端機：同檔案的暫存與未暫存差異",
+        "Terminal: staged and unstaged versions of one file",
+        "ターミナル：同じファイルのステージ済み・未ステージ差分",
+        "터미널: 같은 파일의 스테이징 및 미스테이징 차이"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "status 應有 MM index.html 和未暫存的 style.css。這裡不是衝突；依 [Git status 官方說明](https://git-scm.com/docs/git-status)，第一欄 M 代表暫存區相對 HEAD 有改動，第二欄 M 代表工作目錄又相對暫存區有改動。cached diff 應是 Make → Plan，普通 diff 應是 Plan → Compare；show :index.html 讀到的是暫存版 Plan。若此時一般提交，Compare 不會自動跟進。",
+        "Expect MM index.html and unstaged style.css. This is not a conflict. In this case, the first M means the index differs from HEAD; the second means the working tree differs from the index, as explained in [Git status](https://git-scm.com/docs/git-status). The cached diff should show Make → Plan, the plain diff Plan → Compare, and show :index.html the staged Plan version. An ordinary commit now would not automatically include Compare.",
+        "status は MM index.html と未ステージの style.css を示すはずです。これは競合ではありません。[Git status 公式説明](https://git-scm.com/docs/git-status)に従うと、この場合は1列目の M が HEAD に対するインデックスの変更、2列目がインデックスに対する作業ツリーの変更です。cached diff は Make → Plan、通常の diff は Plan → Compare、show :index.html はステージ済みの Plan を示します。この時点の通常のコミットに Compare は自動で入りません。",
+        "status에는 MM index.html과 미스테이징 style.css가 나와야 합니다. 이는 충돌이 아닙니다. [Git status 공식 설명](https://git-scm.com/docs/git-status)에 따르면 이 경우 첫 M은 HEAD 대비 인덱스 변경, 두 번째 M은 인덱스 대비 작업 트리 변경입니다. cached diff는 Make → Plan, 일반 diff는 Plan → Compare이고 show :index.html은 스테이징된 Plan을 읽습니다. 지금 일반 커밋을 해도 Compare가 자동으로 포함되지는 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "接著按原順序執行兩種 restore。第一行只移出暫存，Compare 仍在編輯器與磁碟；第二行會把 index.html 回復到此時暫存區中的基準舊標題。若略過第一行就做 worktree restore，來源仍是暫存的 Plan，結果會不同。[Git restore 官方說明](https://git-scm.com/docs/git-restore)列出這個預設來源差異。執行前確認要丟棄的是這個練習標題；CSS 必須保留。",
+        "Next run the two restore commands in their original order. The first only unstages, leaving Compare on disk. The second restores index.html from the index, now containing the baseline title. If you skip the first command, worktree restore instead uses the still-staged Plan version. [Git restore](https://git-scm.com/docs/git-restore) documents these default sources. Confirm that you intend to discard this practice title; CSS must remain untouched.",
+        "続いて元の順序で2種類の restore を実行します。1行目はステージ解除だけなので Compare はディスクに残ります。2行目は、基準の旧タイトルに戻ったインデックスから index.html を復元します。1行目を飛ばすと、worktree restore の復元元はステージ済みの Plan のままです。[Git restore 公式説明](https://git-scm.com/docs/git-restore)にこの既定の復元元の違いがあります。破棄する対象が練習用タイトルであることを確認し、CSS は保持します。",
+        "이어서 두 restore 명령을 원래 순서대로 실행합니다. 첫 줄은 스테이징만 해제하므로 디스크에 Compare가 남습니다. 둘째 줄은 이제 원래 제목이 들어 있는 인덱스에서 index.html을 복원합니다. 첫 줄을 건너뛰면 worktree restore는 스테이징된 Plan을 복원하므로 결과가 다릅니다. [Git restore 공식 설명](https://git-scm.com/docs/git-restore)에 이 기본 원본 차이가 나옵니다. 버릴 대상이 연습용 제목인지 확인하고 CSS는 보존합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git restore --staged -- index.html\ngit restore --worktree -- index.html\ngit status --short\ngit diff -- style.css\n",
+      "label": [
+        "終端機：先移出暫存，再還原",
+        "Terminal: unstage, then restore",
+        "ターミナル：ステージ解除後に復元",
+        "터미널: 스테이징 해제 후 복원"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "此時 status 應只剩 style.css，h1 回到 Make room for one small task.，註解仍在。這是本篇最重要的保留檢查：撤銷自己的修改，不等於把別人的工作一起清乾淨。如果只執行 restore --staged，它並不刪除工作目錄內容；相反地 restore --worktree 會覆寫指定檔案，不能只看到 restore 一詞就把兩者當同義。",
+        "Now only style.css should be modified, h1 restored and the note preserved. Undoing your change must not clear separate work. restore --staged does not discard the working-file edit; restore --worktree overwrites the specified file from its restore source. They are not interchangeable.",
+        "CSS だけ変更、h1 復元、コメント保持を確認します。自分の取消しで別作業を消しません。--staged は実ファイル編集を捨てず、--worktree は指定ファイルを復元元で上書きするため別物です。",
+        "CSS만 변경/h1 복원/주석 보존을 확인합니다. 자기 취소로 별도 작업을 지우지 않습니다. --staged는 실제 편집을 버리지 않고 --worktree는 지정 파일을 복원 원본으로 덮으므로 다릅니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 4：提交指定修改，再保留歷史撤回",
+        "Step 4: Commit the scoped edit and revert with history",
+        "手順4：限定 commit と履歴を残す撤回",
+        "4단계: 제한 commit과 기록을 남긴 취소"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "重新用編輯器把 h1 改成 Plan one useful step.，再次只暫存 index.html 並檢查 cached diff。下面提交只應包含標題，style.css 註解繼續留在工作目錄。用 show 的檔名清單確認真正提交了什麼，不把終端機顯示成功當作範圍一定正確。",
+        "Reapply Plan one useful step. in the editor, stage only index.html and inspect cached diff again. The commit below should contain only the title while CSS remains uncommitted. Verify committed paths with show; command success alone does not prove correct scope.",
+        "タイトルを再変更して index.html だけステージし差分確認します。commit はタイトルだけ、CSS は未確定のままです。show で実際の対象を確認し、成功終了だけで範囲正解としません。",
+        "제목을 다시 바꾸고 index.html만 스테이지해 차이를 봅니다. commit은 제목만, CSS는 미커밋으로 둡니다. show로 실제 대상을 확인하며 명령 성공만으로 범위가 맞다고 보지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git add index.html\ngit diff --cached --name-only\ngit diff --cached -- index.html\ngit commit -m \"Update practice title\"\ngit show --format=short --name-only HEAD\ngit status --short\n",
+      "label": [
+        "終端機：核對並提交標題",
+        "Terminal: verify and commit the title",
+        "ターミナル：タイトルの確認とコミット",
+        "터미널: 제목 확인 및 커밋"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "撤回已提交修改前先處理工作目錄。本教材只有自己加的 CSS 註解：確認內容已保留核對後，現在明確決定結束這個保留練習，用下列第一行只丟棄它。status 必須乾淨，再檢查最新提交確實是 Update practice title，才對 HEAD 執行 revert。正式工作若仍有其他修改，不照搬這個清理步驟，先保存或另行處理。",
+        "Before reverting, resolve working-tree changes. Here the only remaining change is your fictional CSS note. After verifying its preservation, explicitly finish that exercise and discard only it with the first command below. Require clean status and confirm HEAD is Update practice title before reverting HEAD. Do not apply this cleanup to real work with unrelated changes.",
+        "撤回前に作業ツリーを確認します。残る教材 CSS コメントの保持を検証後、今回は明示的にその練習を終えて最初の命令でそのファイルだけ戻します。無変更と HEAD のタイトル commit を確認してから revert します。実作業の別の変更には流用しません。",
+        "취소 전 작업 트리를 확인합니다. 남은 실습 CSS 주석 보존을 검증한 뒤 이번에는 명시적으로 연습을 끝내 첫 명령으로 그 파일만 되돌립니다. 무변경과 HEAD 제목 commit을 확인해 revert합니다. 실제 별도 변경에는 그대로 적용하지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "git restore --worktree -- style.css\ngit status --short\ngit log -1 --oneline\ngit revert --no-edit HEAD\ngit log -3 --oneline\ngit status --short\n",
+      "label": [
+        "終端機：結束註解練習並撤回提交",
+        "Terminal: finish the note exercise and revert the commit",
+        "ターミナル：メモ練習を終え、コミットを取り消す",
+        "터미널: 메모 연습 종료 및 커밋 되돌리기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "revert 會新增撤回提交，保留原本標題修改的歷史。預期 h1 回舊值，log 仍看得到基準、標題修改與撤回三筆，工作目錄乾淨。若出現衝突，先讀提示與實際狀態，不連按強制選項；只想取消這次未完成的 revert，可依 Git 指引使用 git revert --abort，之後重新檢查檔案。",
+        "revert adds a reversing commit while preserving the original title commit. Expect original h1, three history entries and clean status. On conflict, inspect actual state instead of forcing options. To cancel an unfinished revert, use Git's git revert --abort workflow and recheck files.",
+        "revert は元変更を残して逆向き commit を追加します。旧 h1、3履歴、無変更が期待です。衝突は状態を読み、強制選択をしません。未完了 revert の取消しは git revert --abort の手順で行い再確認します。",
+        "revert는 원래 변경을 남기고 반대 commit을 추가합니다. 이전 h1/기록3개/무변경을 기대합니다. 충돌이면 상태를 읽고 강제 선택하지 않습니다. 미완료 revert 취소는 git revert --abort 절차로 하고 재확인합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "命令對照、常見問題與驗收",
+        "Command comparison, troubleshooting and acceptance",
+        "命令比較、対処と受入",
+        "명령 비교, 문제 해결과 검수"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 目的 | 命令 | 核對點 |\n| --- | --- | --- |\n| 看尚未暫存內容 | git diff | 工作目錄與暫存差異 |\n| 看將提交內容 | git diff --cached | 暫存與 HEAD 差異 |\n| 移出暫存 | git restore --staged -- index.html | 編輯仍在 |\n| 丟棄指定未提交修改 | git restore --worktree -- index.html | 先確認來源與路徑 |\n| 撤回已提交修改 | git revert --no-edit HEAD | 新增歷史，先確認目標及乾淨狀態 |",
+        "| Goal | Command | Check |\n| --- | --- | --- |\n| Inspect unstaged content | git diff | Working tree versus index |\n| Inspect next commit | git diff --cached | Index versus HEAD |\n| Unstage | git restore --staged -- index.html | Edit remains |\n| Discard selected uncommitted edit | git restore --worktree -- index.html | Verify source and path first |\n| Reverse a commit | git revert --no-edit HEAD | New history; verify target and clean state |",
+        "| 目的 | 命令 | 確認 |\n| --- | --- | --- |\n| 未ステージを見る | git diff | 作業ツリーと index |\n| 次の commit を見る | git diff --cached | index と HEAD |\n| ステージ解除 | git restore --staged -- index.html | 編集は残る |\n| 指定未確定変更を捨てる | git restore --worktree -- index.html | 元とパスを先に確認 |\n| commit 撤回 | git revert --no-edit HEAD | 対象と無変更を確認、履歴追加 |",
+        "| 목적 | 명령 | 확인 |\n| --- | --- | --- |\n| 미스테이지 보기 | git diff | 작업 트리/index |\n| 다음 commit 보기 | git diff --cached | index/HEAD |\n| 스테이지 해제 | git restore --staged -- index.html | 편집 유지 |\n| 지정 미커밋 변경 버리기 | git restore --worktree -- index.html | 원본/경로 먼저 확인 |\n| commit 취소 | git revert --no-edit HEAD | 대상/무변경 확인, 기록 추가 |"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "找不到分支先看是否在對的 repository；status 多出意外檔案就先查看，不使用 git add . 把它們一起帶進去。若同一檔案混有自己的與原有修改，整檔暫存會一起提交，應先讀懂每段差異再分段處理。這次驗收要能證明 CSS 在標題提交中被排除、兩種 restore 效果不同、revert 保留歷史。圖中 1 是辨認狀態，2 是限定提交，3 是驗證還原；下一步看[測試、Review 與 PR](article:codex-testing-review)。",
+        "For a missing branch, verify the repository. Inspect unexpected files instead of staging every file at once. If one file mixes edits, whole-file staging includes all of them; review hunks before selective handling. Acceptance proves CSS exclusion, distinct restore effects and preserved revert history. Diagram 1 identifies state, 2 scopes commits, 3 verifies restoration. Continue to [testing, review and PR](article:codex-testing-review).",
+        "分岐不在は repository を確認し、不意なファイルを add . でまとめません。一ファイルに変更が混ざると全体ステージに全て入るため、各差分を理解して処理します。CSS 除外、二つの restore、revert 履歴が受入条件です。図1状態、2限定確定、3復元確認。次は[テストと PR](article:codex-testing-review)です。",
+        "브랜치가 없으면 repository를 확인하고 예상 밖 파일을 add .로 묶지 않습니다. 한 파일에 변경이 섞이면 전체 스테이지에 모두 들어가므로 각 차이를 이해해 처리합니다. CSS 제외/두 restore/revert 기록이 검수 조건입니다. 그림1상태,2제한확정,3복원확인. 다음은 [테스트와 PR](article:codex-testing-review)입니다."
+      ]
+    }
+  ]
+}

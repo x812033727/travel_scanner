@@ -1,0 +1,2129 @@
+{
+  "slug": "codex-agents-md",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 110,
+  "locales": {
+    "zh-TW": {
+      "title": "AGENTS.md 專案規則",
+      "description": "AGENTS.md 是讓 Codex 在開始工作前取得專案規則的檔案。全域規則、專案根目錄與工作目錄路徑中的子目錄規則會形成一條指令鏈；同一層有 AGENTS.override.md 時優先讀取它。規則愈具體愈容易遵循，仍需要驗證實際載入。",
+      "hero": {
+        "src": "/guides/codex-agents-md/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀完能做到什麼"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你將在 Small Steps 待辦網站加入一份真正可用的 AGENTS.md，讓 Codex 知道可以修改哪些檔案、如何檢查，以及交付時應回報什麼。最後用一次小修改確認規則與實際工作一致。適合已能建立任務的初學者；閱讀約 12 分鐘，操作約 20 分鐘。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "規則文件適合保存每次都要重說的專案要求，例如測試命令與資料保留方式。它不是密碼保險箱，也不會替你開啟網路或提高檔案權限。需要調整授權時，另看"
+            },
+            {
+              "type": "article",
+              "text": "權限與沙盒",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "；不要期待一句「允許所有操作」就改變執行環境。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下載"
+            },
+            {
+              "type": "link",
+              "text": "待辦網站練習材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "，解壓縮後複製 expected 資料夾，將副本命名為 codex-practice。這一篇使用功能完整的參考版，避免把尚未完成的篩選功能誤當成規則問題。資料皆為虛構；先不要放入私人專案或更動全域規則。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "副本根目錄應直接看得到 index.html、style.css、app.js、core.mjs、core.test.mjs。準備可執行的 Codex 桌面版或 CLI；測試使用 Node.js，本機預覽使用 Python 3。若只是建立規則檔案，可以先完成前半部，再回"
+            },
+            {
+              "type": "article",
+              "text": "第一個練習專案",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "補上工具。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "最少必要概念：規則從哪裡來"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 會組合全域與專案指引。全域位置預設在使用者目錄下的 .codex；設定 CODEX_HOME 時則以該位置為準。專案部分從根目錄沿路走到目前工作目錄，較接近工作位置的規則可以細化前面的要求。它不會因為某個子資料夾存在，就把所有子目錄的規則一次讀入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個目錄優先選擇 AGENTS.override.md，再找 AGENTS.md，再考慮已設定的替代檔名；不是把同層這些檔案全部相加。一般 README.md 適合向人解釋專案，不會只因為是 Markdown 就自動變成規則。預設專案指引合計大小上限為 32 KiB；先移走重複說明與大型範例，比直接增加上限更容易維護。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇只新增練習專案的 AGENTS.md。全域偏好會影響其他專案，等你確定哪些要求真的通用，再參考"
+            },
+            {
+              "type": "article",
+              "text": "config.toml 設定",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "及官方文件處理。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方規則發現流程找不到專案根目錄時，只檢查目前目錄；所以本例必須從 codex-practice 根目錄開始，不能從它的任意子資料夾啟動後假定會往上找到規則。已有儲存庫的根目錄與子目錄比較見"
+            },
+            {
+              "type": "article",
+              "text": "規則層級",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": "。需要拆分長文件時看"
+            },
+            {
+              "type": "article",
+              "text": "規則與參考資料分工",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：確認位置與檔名"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 在檔案總管開啟 codex-practice，顯示副檔名，使用文字編輯器新增 AGENTS.md。確認它沒有變成 AGENTS.md.txt。若用 PowerShell，在資料夾空白處開啟終端機後輸入下方命令；結果應列出五個練習檔案。看到 expected 的上一層時，先進入正確目錄再繼續。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell；目前位置應為 codex-practice",
+          "language": "powershell",
+          "code": "Get-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS 在 Finder 選取練習資料夾後開啟終端機，或在 Terminal 使用 cd 加上拖入的資料夾路徑。Linux 在檔案管理員使用「在終端機開啟」。兩者都用下面的命令確認位置，再以純文字編輯器建立同名檔案；大小寫保持一致，避免 Linux 找不到規則。"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux 終端機；目前位置應為 codex-practice",
+          "language": "bash",
+          "code": "pwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果目錄已經有 AGENTS.md，先讀取並保留原文，只合併本次需要的條目。練習副本應沒有該檔案；不要為了照抄步驟而覆蓋另一個專案的規則。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：寫入一份完整規則"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是完整檔案，不需要另外安裝套件。範例使用英文以便五語文章共用同一份內容；你也可以用自己熟悉的語言寫規則。真正重要的是命令存在、範圍具體，以及讀者能確認要求是否完成。"
+        },
+        {
+          "type": "code",
+          "label": "寫入 codex-practice/AGENTS.md；完整檔案內容",
+          "language": "markdown",
+          "code": "# Small Steps practice instructions\n\n- Work only inside this practice folder.\n- Keep the existing task data format and localStorage key unchanged.\n- Do not add packages or external network requests for this exercise.\n- Run `node --test core.test.mjs` after changing JavaScript.\n- After changing HTML or CSS, check the page at 390px and 1280px widths.\n- Preserve visible keyboard focus and accessible form labels.\n- In the final response, list changed files, checks run, and checks not run.\n- Say why a check could not be run; do not report it as passed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把「品質要好」當成唯一要求。這份範例把品質轉成可觀察項目：測試命令、兩個畫面寬度、鍵盤焦點與明確交付紀錄。也不要貼入 npm test：本材料沒有 package.json，使用不存在的命令只會讓後續每次任務都卡住。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：重新開始並驗證載入"
+        },
+        {
+          "type": "paragraph",
+          "text": "儲存後，從練習資料夾開啟一個新的 Codex 工作階段。桌面版選擇這個專案並建立新任務；CLI 則離開舊互動階段，在該資料夾重新執行 codex。指引在工作階段建立時讀取，不要只在原對話修改檔案後猜測它已重新載入。"
+        },
+        {
+          "type": "code",
+          "label": "貼到新的 Codex 任務或 CLI 對話；第一輪只讀取",
+          "language": "text",
+          "code": "List the AGENTS.md or AGENTS.override.md files loaded for this task.\nSummarize the rules that apply to this practice folder.\nDo not modify any files. If you cannot establish a source, say so.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期能指出練習資料夾的 AGENTS.md，摘要測試、畫面與交付要求。回答只是第一個線索，還要開啟檔案核對實際內容。若它只複述你的提示詞、沒有正確路徑，先處理工作目錄與檔名問題，再做修改。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第四步：用小修改檢查行為"
+        },
+        {
+          "type": "code",
+          "label": "貼到同一個已核對規則的 Codex 任務",
+          "language": "text",
+          "code": "In index.html, change the main heading to \"Small steps, clear progress.\"\nKeep the todo behavior, stored data, and other visible text unchanged.\nFollow the project instructions. Show the changed file and report the checks.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期差異主要是 index.html 的標題文字。啟動預覽：Windows 執行 py -m http.server 4173 --bind 127.0.0.1；macOS／Linux 執行 python3 -m http.server 4173 --bind 127.0.0.1。瀏覽器開啟 http://127.0.0.1:4173，確認標題、兩個寬度與 Tab 焦點，再新增 Read 並完成它。瀏覽器未提供給 Codex 時，你可以自行檢查，並讓它明列未執行的檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正常案例是修改範圍正確、既有資料仍在、交付紀錄符合規則。邊界案例是在無瀏覽器環境中要求檢查：合格回應應說明限制及待手動確認項目，不能捏造截圖或通過結果。這也說明規則是工作指引，仍需要人或工具核對證據。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "把規則逐條對到證據"
+        },
+        {
+          "type": "table",
+          "header": [
+            "本次情況",
+            "規則要求",
+            "可以核對的證據"
+          ],
+          "rows": [
+            [
+              "只改 HTML 標題",
+              "畫面寬度、焦點、交付紀錄",
+              "指定文字與實際畫面；未執行項目明列"
+            ],
+            [
+              "改動 JavaScript",
+              "執行既有資料測試",
+              "實際命令、退出狀態與測試數量"
+            ],
+            [
+              "工具不可用",
+              "回報原因，不寫成通過",
+              "原始錯誤及 NOT RUN；沒有捏造結果"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本次只改 HTML，沒有觸發「改 JavaScript 後測試」的條件，不能因此認定 Codex 漏做。若要確認測試命令可用，可另外送出下列唯讀要求；expected 副本應是 3 個通過、0 個失敗。這只驗證命令與回報，不代表已實測所有規則分支。"
+        },
+        {
+          "type": "code",
+          "label": "同一個 Codex 任務；額外檢查測試命令",
+          "language": "text",
+          "code": "Run node --test core.test.mjs from this practice folder without editing any files.\nReport the working folder, command, exit status, and test counts.\nIf the command cannot run, quote the error and mark the check NOT RUN.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與還原"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到規則時，依序檢查目前專案、真正副檔名、檔案是否為空，以及同層是否存在 override。Windows 能讀到不代表大小寫不同的名稱在 Linux 也會生效。修正後開新工作階段重試。"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則彼此矛盾時，先查來源層級，尤其是較深目錄或全域 override。把「全站統一」與「此資料夾例外」寫清楚；不要新增更多互相否定的句子。深層規則的逐層追蹤會在後續專篇展開，本篇先保持單一專案檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 沒有執行測試時，先看這次是否真的改了 JavaScript，再確認 node --version 可用及 core.test.mjs 位於工作目錄。缺少執行環境與規則沒載入是兩種不同問題；要求它回報實際錯誤，不要用「應該通過」代替結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停止預覽用 Ctrl+C。還原標題時只恢復本次文字修改；若 AGENTS.md 是本篇新建，可將它移出練習資料夾保存。若修改的是原有規則，恢復自己的條目即可。移除規則不會撤銷它先前造成的檔案修改，新的規則狀態也要在新工作階段驗證。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "範圍",
+            "位置",
+            "本篇的處理"
+          ],
+          "rows": [
+            [
+              "全域",
+              "CODEX_HOME，預設為使用者的 .codex",
+              "先保留原設定"
+            ],
+            [
+              "專案",
+              "codex-practice/AGENTS.md",
+              "新增並用新工作階段驗證"
+            ],
+            [
+              "同層替代",
+              "AGENTS.override.md",
+              "檢查是否優先選入"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小練習與來源"
+        },
+        {
+          "type": "paragraph",
+          "text": "追加一條「最終回覆先列出待手動確認事項」，再開新工作階段做一次不同標題的小修改。完成判準是能找到來源、差異僅含指定標題，而且交付順序符合新要求。練完移除新增條目，觀察下一個新工作階段的差異。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "查證日為 2026-09-14；規則發現與大小限制依 "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md 官方文件",
+              "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+            },
+            {
+              "type": "text",
+              "text": "查證。練習網站與資料操作測試已在 Windows／Edge 驗證；本文未將 macOS、Linux 或 Codex 規則載入宣稱為本機實測。接著可讀"
+            },
+            {
+              "type": "article",
+              "text": "Markdown 入門",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "工作交接",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-agents-md/diagram-1.svg",
+          "alt": "10. AGENTS.md 專案規則 — 實作順序示意圖，非產品介面截圖。 Global → Project → Working directory",
+          "width": 1600,
+          "height": 900,
+          "caption": "10. AGENTS.md 專案規則 — 實作順序示意圖，非產品介面截圖。 Global → Project → Working directory",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "AGENTS.md instructions",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configuration basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "AGENTS.md 项目规则",
+      "description": "AGENTS.md 是让 Codex 在开始工作前取得专案规则的档案。全域规则、专案根目录与工作目录路径中的子目录规则会形成一条指令链；同一层有 AGENTS.override.md 时优先读取它。规则愈具体愈容易遵循，仍需要验证实际载入。",
+      "hero": {
+        "src": "/guides/codex-agents-md/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "读完能做到什么"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你将在 Small Steps 待办网站加入一份真正可用的 AGENTS.md，让 Codex 知道可以修改哪些档案、如何检查，以及交付时应回报什么。最后用一次小修改确认规则与实际工作一致。适合已能建立任务的初学者；阅读约 12 分钟，操作约 20 分钟。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "规则文件适合保存每次都要重说的专案要求，例如测试命令与资料保留方式。它不是密码保险箱，也不会替你开启网路或提高档案权限。需要调整授权时，另看"
+            },
+            {
+              "type": "article",
+              "text": "权限与沙盒",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "；不要期待一句「允许所有操作」就改变执行环境。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下载"
+            },
+            {
+              "type": "link",
+              "text": "待办网站练习材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "，解压缩后复制 expected 资料夹，将副本命名为 codex-practice。这一篇使用功能完整的参考版，避免把尚未完成的筛选功能误当成规则问题。资料皆为虚构；先不要放入私人专案或更动全域规则。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "副本根目录应直接看得到 index.html、style.css、app.js、core.mjs、core.test.mjs。准备可执行的 Codex 桌面版或 CLI；测试使用 Node.js，本机预览使用 Python 3。若只是建立规则档案，可以先完成前半部，再回"
+            },
+            {
+              "type": "article",
+              "text": "第一个练习专案",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "补上工具。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "最少必要概念：规则从哪里来"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 会组合全域与专案指引。全域位置预设在使用者目录下的 .codex；设定 CODEX_HOME 时则以该位置为准。专案部分从根目录沿路走到目前工作目录，较接近工作位置的规则可以细化前面的要求。它不会因为某个子资料夹存在，就把所有子目录的规则一次读入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一个目录优先选择 AGENTS.override.md，再找 AGENTS.md，再考虑已设定的替代档名；不是把同层这些档案全部相加。一般 README.md 适合向人解释专案，不会只因为是 Markdown 就自动变成规则。预设专案指引合计大小上限为 32 KiB；先移走重复说明与大型范例，比直接增加上限更容易维护。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇只新增练习专案的 AGENTS.md。全域偏好会影响其他专案，等你确定哪些要求真的通用，再参考"
+            },
+            {
+              "type": "article",
+              "text": "config.toml 设定",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "及官方文件处理。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方规则发现流程找不到专案根目录时，只检查目前目录；所以本例必须从 codex-practice 根目录开始，不能从它的任意子资料夹启动后假定会往上找到规则。已有储存库的根目录与子目录比较见"
+            },
+            {
+              "type": "article",
+              "text": "规则层级",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": "。需要拆分长文件时看"
+            },
+            {
+              "type": "article",
+              "text": "规则与参考资料分工",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：确认位置与档名"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 在档案总管开启 codex-practice，显示副档名，使用文字编辑器新增 AGENTS.md。确认它没有变成 AGENTS.md.txt。若用 PowerShell，在资料夹空白处开启终端机后输入下方命令；结果应列出五个练习档案。看到 expected 的上一层时，先进入正确目录再继续。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell；目前位置应为 codex-practice",
+          "language": "powershell",
+          "code": "Get-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS 在 Finder 选取练习资料夹后开启终端机，或在 Terminal 使用 cd 加上拖入的资料夹路径。Linux 在档案管理员使用「在终端机开启」。两者都用下面的命令确认位置，再以纯文字编辑器建立同名档案；大小写保持一致，避免 Linux 找不到规则。"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux 终端机；目前位置应为 codex-practice",
+          "language": "bash",
+          "code": "pwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果目录已经有 AGENTS.md，先读取并保留原文，只合并本次需要的条目。练习副本应没有该档案；不要为了照抄步骤而覆盖另一个专案的规则。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：写入一份完整规则"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是完整档案，不需要另外安装套件。范例使用英文以便五语文章共用同一份内容；你也可以用自己熟悉的语言写规则。真正重要的是命令存在、范围具体，以及读者能确认要求是否完成。"
+        },
+        {
+          "type": "code",
+          "label": "写入 codex-practice/AGENTS.md；完整档案内容",
+          "language": "markdown",
+          "code": "# Small Steps practice instructions\n\n- Work only inside this practice folder.\n- Keep the existing task data format and localStorage key unchanged.\n- Do not add packages or external network requests for this exercise.\n- Run `node --test core.test.mjs` after changing JavaScript.\n- After changing HTML or CSS, check the page at 390px and 1280px widths.\n- Preserve visible keyboard focus and accessible form labels.\n- In the final response, list changed files, checks run, and checks not run.\n- Say why a check could not be run; do not report it as passed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把「品质要好」当成唯一要求。这份范例把品质转成可观察项目：测试命令、两个画面宽度、键盘焦点与明确交付纪录。也不要贴入 npm test：本材料没有 package.json，使用不存在的命令只会让后续每次任务都卡住。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：重新开始并验证载入"
+        },
+        {
+          "type": "paragraph",
+          "text": "储存后，从练习资料夹开启一个新的 Codex 工作阶段。桌面版选择这个专案并建立新任务；CLI 则离开旧互动阶段，在该资料夹重新执行 codex。指引在工作阶段建立时读取，不要只在原对话修改档案后猜测它已重新载入。"
+        },
+        {
+          "type": "code",
+          "label": "贴到新的 Codex 任务或 CLI 对话；第一轮只读取",
+          "language": "text",
+          "code": "List the AGENTS.md or AGENTS.override.md files loaded for this task.\nSummarize the rules that apply to this practice folder.\nDo not modify any files. If you cannot establish a source, say so.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期能指出练习资料夹的 AGENTS.md，摘要测试、画面与交付要求。回答只是第一个线索，还要开启档案核对实际内容。若它只复述你的提示词、没有正确路径，先处理工作目录与档名问题，再做修改。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第四步：用小修改检查行为"
+        },
+        {
+          "type": "code",
+          "label": "贴到同一个已核对规则的 Codex 任务",
+          "language": "text",
+          "code": "In index.html, change the main heading to \"Small steps, clear progress.\"\nKeep the todo behavior, stored data, and other visible text unchanged.\nFollow the project instructions. Show the changed file and report the checks.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期差异主要是 index.html 的标题文字。启动预览：Windows 执行 py -m http.server 4173 --bind 127.0.0.1；macOS／Linux 执行 python3 -m http.server 4173 --bind 127.0.0.1。浏览器开启 http://127.0.0.1:4173，确认标题、两个宽度与 Tab 焦点，再新增 Read 并完成它。浏览器未提供给 Codex 时，你可以自行检查，并让它明列未执行的检查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正常案例是修改范围正确、既有资料仍在、交付纪录符合规则。边界案例是在无浏览器环境中要求检查：合格回应应说明限制及待手动确认项目，不能捏造截图或通过结果。这也说明规则是工作指引，仍需要人或工具核对证据。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "把规则逐条对到证据"
+        },
+        {
+          "type": "table",
+          "header": [
+            "本次情况",
+            "规则要求",
+            "可以核对的证据"
+          ],
+          "rows": [
+            [
+              "只改 HTML 标题",
+              "画面宽度、焦点、交付纪录",
+              "指定文字与实际画面；未执行项目明列"
+            ],
+            [
+              "改动 JavaScript",
+              "执行既有资料测试",
+              "实际命令、退出状态与测试数量"
+            ],
+            [
+              "工具不可用",
+              "回报原因，不写成通过",
+              "原始错误及 NOT RUN；没有捏造结果"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本次只改 HTML，没有触发「改 JavaScript 后测试」的条件，不能因此认定 Codex 漏做。若要确认测试命令可用，可另外送出下列唯读要求；expected 副本应是 3 个通过、0 个失败。这只验证命令与回报，不代表已实测所有规则分支。"
+        },
+        {
+          "type": "code",
+          "label": "同一个 Codex 任务；额外检查测试命令",
+          "language": "text",
+          "code": "Run node --test core.test.mjs from this practice folder without editing any files.\nReport the working folder, command, exit status, and test counts.\nIf the command cannot run, quote the error and mark the check NOT RUN.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题与还原"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到规则时，依序检查目前专案、真正副档名、档案是否为空，以及同层是否存在 override。Windows 能读到不代表大小写不同的名称在 Linux 也会生效。修正后开新工作阶段重试。"
+        },
+        {
+          "type": "paragraph",
+          "text": "规则彼此矛盾时，先查来源层级，尤其是较深目录或全域 override。把「全站统一」与「此资料夹例外」写清楚；不要新增更多互相否定的句子。深层规则的逐层追踪会在后续专篇展开，本篇先保持单一专案档案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 没有执行测试时，先看这次是否真的改了 JavaScript，再确认 node --version 可用及 core.test.mjs 位于工作目录。缺少执行环境与规则没载入是两种不同问题；要求它回报实际错误，不要用「应该通过」代替结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停止预览用 Ctrl+C。还原标题时只恢复本次文字修改；若 AGENTS.md 是本篇新建，可将它移出练习资料夹保存。若修改的是原有规则，恢复自己的条目即可。移除规则不会撤销它先前造成的档案修改，新的规则状态也要在新工作阶段验证。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "范围",
+            "位置",
+            "本篇的处理"
+          ],
+          "rows": [
+            [
+              "全域",
+              "CODEX_HOME，预设为使用者的 .codex",
+              "先保留原设定"
+            ],
+            [
+              "专案",
+              "codex-practice/AGENTS.md",
+              "新增并用新工作阶段验证"
+            ],
+            [
+              "同层替代",
+              "AGENTS.override.md",
+              "检查是否优先选入"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小练习与来源"
+        },
+        {
+          "type": "paragraph",
+          "text": "追加一条「最终回复先列出待手动确认事项」，再开新工作阶段做一次不同标题的小修改。完成判准是能找到来源、差异仅含指定标题，而且交付顺序符合新要求。练完移除新增条目，观察下一个新工作阶段的差异。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "查证日为 2026-09-14；规则发现与大小限制依 "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md 官方文件",
+              "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+            },
+            {
+              "type": "text",
+              "text": "查证。练习网站与资料操作测试已在 Windows／Edge 验证；本文未将 macOS、Linux 或 Codex 规则载入宣称为本机实测。接著可读"
+            },
+            {
+              "type": "article",
+              "text": "Markdown 入门",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "工作交接",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-agents-md/diagram-1.svg",
+          "alt": "10. AGENTS.md 项目规则 — 实作顺序示意图，非产品介面截图。 Global → Project → Working directory",
+          "width": 1600,
+          "height": 900,
+          "caption": "10. AGENTS.md 项目规则 — 实作顺序示意图，非产品介面截图。 Global → Project → Working directory",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "AGENTS.md instructions",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configuration basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Project instructions with AGENTS.md",
+      "description": "AGENTS.md supplies project instructions before Codex starts work. Global guidance and files along the project-root-to-working-directory path form an instruction chain. At the same level, AGENTS.override.md takes precedence. Keep rules concrete and verify what was actually loaded.",
+      "hero": {
+        "src": "/guides/codex-agents-md/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will accomplish"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Add a useful AGENTS.md to the Small Steps todo website so Codex knows the editing scope, verification commands and delivery requirements. Then make a small change and compare the actual work with those instructions. This lesson is for beginners who can start a task; allow 12 minutes to read and 20 minutes to practice."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "An instruction file saves project requirements you would otherwise repeat, such as testing commands and data preservation. It is not a credential store and does not enable network access or increase filesystem permissions. See "
+            },
+            {
+              "type": "article",
+              "text": "permissions and sandboxes",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": " for authorization settings; a sentence saying “allow everything” cannot reconfigure the execution environment."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before you begin"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Download the "
+            },
+            {
+              "type": "link",
+              "text": "todo practice materials",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": ". Extract them, copy the expected folder and name the copy codex-practice. Use the complete reference version for this lesson so an unfinished filter does not look like an instruction problem. The data is fictional. Start outside private projects and leave global instructions alone for now."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The folder root should directly contain index.html, style.css, app.js, core.mjs and core.test.mjs. Have a working Codex desktop app or CLI. Tests use Node.js; a local preview uses Python 3. You can write the instruction file first and return to the "
+            },
+            {
+              "type": "article",
+              "text": "first project lesson",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": " to prepare these tools later."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How instructions are selected"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex combines global and project guidance. The default global location is .codex in your user home; CODEX_HOME changes that location when configured. Within a project, discovery walks from the root to the current working directory. Guidance closer to the working directory can refine earlier requirements. It does not automatically read every child folder just because that folder exists."
+        },
+        {
+          "type": "paragraph",
+          "text": "At each directory, AGENTS.override.md is considered before AGENTS.md, followed by configured fallback names. Files at the same level are not all added together. README.md normally explains the project to people; being Markdown does not automatically make it an instruction file. The default combined project-instruction limit is 32 KiB. Remove duplicated explanations and large examples before increasing that limit."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "This lesson adds only the practice project's AGENTS.md. Global preferences affect other projects. Once you know which requirements really are universal, consult "
+            },
+            {
+              "type": "article",
+              "text": "config.toml settings",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": " and the official documentation before changing them."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Without a discoverable project root, instruction discovery checks only the current directory. Start this non-Git exercise at the codex-practice root rather than assuming a session launched in any child folder will find the parent instructions. See "
+            },
+            {
+              "type": "article",
+              "text": "instruction scopes",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": " for repository-root and subdirectory comparisons, and "
+            },
+            {
+              "type": "article",
+              "text": "splitting instructions and reference files",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": " for longer documents."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: check the directory and filename"
+        },
+        {
+          "type": "paragraph",
+          "text": "On Windows, open codex-practice in File Explorer, show file extensions, and create AGENTS.md in a plain-text editor. Check that the name has not become AGENTS.md.txt. Open PowerShell in the folder and run the commands below. The listing should include the five practice files. If you are one level above expected, enter the correct folder before continuing."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell, inside codex-practice",
+          "language": "powershell",
+          "code": "Get-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "On macOS, open a terminal at the practice folder, or type cd followed by the folder path dragged from Finder. On Linux, use the file manager's “Open in Terminal” action. Run the following in either system and create the same file with a plain-text editor. Preserve filename case so Linux can discover it too."
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux terminal, inside codex-practice",
+          "language": "bash",
+          "code": "pwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "If AGENTS.md already exists, read and preserve it, then merge only the needed requirements. A fresh copy of this exercise has no such file. Do not overwrite another project's instructions merely to reproduce these steps."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: write complete, actionable instructions"
+        },
+        {
+          "type": "paragraph",
+          "text": "The following is the entire file and requires no packages. The sample uses English so every translation shares the same content; you may write your own instructions in your preferred language. What matters is that the commands exist, the scope is concrete and compliance is observable."
+        },
+        {
+          "type": "code",
+          "label": "Write codex-practice/AGENTS.md; complete file",
+          "language": "markdown",
+          "code": "# Small Steps practice instructions\n\n- Work only inside this practice folder.\n- Keep the existing task data format and localStorage key unchanged.\n- Do not add packages or external network requests for this exercise.\n- Run `node --test core.test.mjs` after changing JavaScript.\n- After changing HTML or CSS, check the page at 390px and 1280px widths.\n- Preserve visible keyboard focus and accessible form labels.\n- In the final response, list changed files, checks run, and checks not run.\n- Say why a check could not be run; do not report it as passed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "“Make it good” is not a useful requirement on its own. This file turns quality into observable checks: a real test command, two viewport widths, keyboard focus and a delivery record. Do not substitute npm test: this exercise has no package.json, so that command would introduce a recurring failure."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: start fresh and verify discovery"
+        },
+        {
+          "type": "paragraph",
+          "text": "Save the file and start a new Codex session from the practice folder. In the desktop app, select this project and create a new task. In the CLI, leave the old interactive session and run codex again in this directory. Instructions are gathered when the session starts; editing the file during an existing conversation does not prove it has been reloaded."
+        },
+        {
+          "type": "code",
+          "label": "New Codex task or CLI conversation; first perform a read-only check",
+          "language": "text",
+          "code": "List the AGENTS.md or AGENTS.override.md files loaded for this task.\nSummarize the rules that apply to this practice folder.\nDo not modify any files. If you cannot establish a source, say so.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect the response to identify the practice folder's AGENTS.md and summarize testing, layout and reporting requirements. Treat that answer as a clue, then open the file and compare its contents. If the response only repeats the prompt without the correct path, fix the working directory or filename before requesting edits."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: verify behavior with a small change"
+        },
+        {
+          "type": "code",
+          "label": "The same Codex task after checking the instructions",
+          "language": "text",
+          "code": "In index.html, change the main heading to \"Small steps, clear progress.\"\nKeep the todo behavior, stored data, and other visible text unchanged.\nFollow the project instructions. Show the changed file and report the checks.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The diff should mainly contain the heading text in index.html. Start a preview with py -m http.server 4173 --bind 127.0.0.1 on Windows, or python3 -m http.server 4173 --bind 127.0.0.1 on macOS/Linux. Open http://127.0.0.1:4173, check the heading, both widths and Tab focus, then add Read and mark it complete. If Codex has no browser tool, perform the visual checks yourself and have it identify the checks it could not run."
+        },
+        {
+          "type": "paragraph",
+          "text": "A successful case has the requested scope, preserved data and a report that follows the instructions. The boundary case is a task without browser access: a valid response states that limitation and the remaining manual checks, rather than inventing screenshots or passes. Instructions still require verification through real files and tools."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Match each instruction to evidence"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Situation",
+            "Requirement",
+            "Evidence to inspect"
+          ],
+          "rows": [
+            [
+              "Only the HTML heading changes",
+              "Viewport, focus and delivery checks",
+              "Requested text and actual screen; missing checks explicitly listed"
+            ],
+            [
+              "JavaScript changes",
+              "Run existing data tests",
+              "Actual command, exit status and test counts"
+            ],
+            [
+              "A tool is unavailable",
+              "Explain why; do not report a pass",
+              "Original error and NOT RUN, with no invented result"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The heading-only edit does not trigger the “after changing JavaScript” condition. Do not classify that alone as a missed test. You can separately check that the command works with the read-only request below; expected should produce 3 passes and 0 failures. This verifies the command and report, not every instruction branch."
+        },
+        {
+          "type": "code",
+          "label": "The same Codex task; separately check the test command",
+          "language": "text",
+          "code": "Run node --test core.test.mjs from this practice folder without editing any files.\nReport the working folder, command, exit status, and test counts.\nIf the command cannot run, quote the error and mark the check NOT RUN.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting and restoring the exercise"
+        },
+        {
+          "type": "paragraph",
+          "text": "If the file is not found, check the selected project, actual extension, empty contents and a same-level override, in that order. A differently capitalized filename working on Windows does not guarantee discovery on Linux. Start a new session after correcting it."
+        },
+        {
+          "type": "paragraph",
+          "text": "If rules conflict, inspect their source levels, especially a deeper directory or global override. Separate universal guidance from a local exception clearly; adding more contradictory sentences makes the problem worse. A later lesson covers nested discovery. Keep this exercise to one project file."
+        },
+        {
+          "type": "paragraph",
+          "text": "If tests were not run, first check whether JavaScript was actually changed. Then check node --version and confirm core.test.mjs is in the working directory. A missing runtime and undiscovered instructions are different failures. Request the actual error instead of accepting “it should pass.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stop the preview with Ctrl+C. Restore only the changed heading. If this lesson created AGENTS.md, move it outside the practice folder to keep a copy; if you amended an existing file, restore only your additions. Removing instructions does not undo file changes made while they were active. Verify the restored instruction state in a new session."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Scope",
+            "Location",
+            "Treatment here"
+          ],
+          "rows": [
+            [
+              "Global",
+              "CODEX_HOME, default user .codex",
+              "Preserve existing settings"
+            ],
+            [
+              "Project",
+              "codex-practice/AGENTS.md",
+              "Add and verify in a new session"
+            ],
+            [
+              "Same-level override",
+              "AGENTS.override.md",
+              "Check whether it takes precedence"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice and sources"
+        },
+        {
+          "type": "paragraph",
+          "text": "Add a rule asking for manual checks first in the final response, then start a new session and request another heading change. Success means the source is identified, the diff contains only the requested heading and the report follows the new order. Remove your added rule and compare the next fresh session."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Checked on 2026-09-14 against the "
+            },
+            {
+              "type": "link",
+              "text": "official AGENTS.md documentation",
+              "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+            },
+            {
+              "type": "text",
+              "text": " for discovery and size limits. The practice website and data tests were verified on Windows/Edge; this is not a claim of hands-on macOS, Linux or Codex instruction-discovery testing. Continue with "
+            },
+            {
+              "type": "article",
+              "text": "Markdown basics",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "context handoff",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-agents-md/diagram-1.svg",
+          "alt": "10. Project instructions with AGENTS.md — Workflow illustration, not a product screenshot. Global → Project → Working directory",
+          "width": 1600,
+          "height": 900,
+          "caption": "10. Project instructions with AGENTS.md — Workflow illustration, not a product screenshot. Global → Project → Working directory",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "AGENTS.md instructions",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configuration basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "AGENTS.md でプロジェクトのルールを設定",
+      "description": "AGENTS.md は作業開始前にプロジェクトの指示を渡すファイルです。全体設定とルートから現在の作業場所までの規則が連なります。同じ階層では AGENTS.override.md が優先されます。読み込まれた内容を検証することが大切です。",
+      "hero": {
+        "src": "/guides/codex-agents-md/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "このレッスンでできること"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Small Steps の ToDo サイトに AGENTS.md を追加し、変更範囲、確認方法、完了報告の要件を Codex に伝えます。最後に小さな変更を依頼し、実際の作業がルールと一致するか確かめます。タスクを開始できる初心者向けです。読む時間は約 12 分、操作は約 20 分です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "指示ファイルには、毎回繰り返すテストコマンドやデータ保持の条件を保存できます。認証情報の保管庫ではなく、ネットワークやファイルの権限を増やすものでもありません。権限は"
+            },
+            {
+              "type": "article",
+              "text": "承認とサンドボックス",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "で扱います。「すべて許可する」と書いても実行環境の設定は変わりません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "始める前に"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "link",
+              "text": "ToDo 練習教材",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "をダウンロードして展開し、expected フォルダーをコピーして codex-practice と名付けます。このレッスンでは完成した参考版を使い、未実装のフィルターをルールの問題と混同しないようにします。データは架空です。個人のプロジェクトやグローバル設定はまだ変更しません。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "フォルダー直下に index.html、style.css、app.js、core.mjs、core.test.mjs があることを確認します。利用できる Codex デスクトップアプリまたは CLI を用意してください。テストには Node.js、ローカルプレビューには Python 3 を使います。まず指示ファイルだけ作り、ツールの準備は"
+            },
+            {
+              "type": "article",
+              "text": "最初のプロジェクト",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "で後から行ってもかまいません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "指示はどこから読み込まれるか"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex はグローバルとプロジェクトの指示を組み合わせます。グローバルの既定位置はホームディレクトリ内の .codex で、CODEX_HOME が設定されていればその場所を使います。プロジェクトではルートから現在の作業ディレクトリまで順に探索します。作業場所に近い指示で前の条件を具体化できますが、存在するすべての子フォルダーを自動的に読むわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じディレクトリでは AGENTS.override.md、AGENTS.md、設定済みの代替名の順に探します。同じ階層の候補をすべて足し合わせる仕組みではありません。README.md は通常、人にプロジェクトを説明する文書です。Markdown というだけで指示ファイルにはなりません。プロジェクト指示の合計は既定で 32 KiB が上限です。上限を増やす前に、重複した説明や大きなサンプルを整理してください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "今回は練習プロジェクトの AGENTS.md だけを追加します。グローバルな好みは他のプロジェクトにも影響するため、何が本当に共通か分かってから"
+            },
+            {
+              "type": "article",
+              "text": "config.toml の設定",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "と公式文書を確認します。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "プロジェクトルートを見つけられない場合、指示の探索対象は現在のディレクトリだけです。Git を使わないこの例は codex-practice 直下から開始し、任意の子フォルダーからでも親のルールが見つかるとは考えないでください。リポジトリ内の比較は"
+            },
+            {
+              "type": "article",
+              "text": "ルールの適用範囲",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": "、長い文書の分割は"
+            },
+            {
+              "type": "article",
+              "text": "ルールと参考資料の役割",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "で扱います。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 1：場所とファイル名を確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows ではエクスプローラーで codex-practice を開き、拡張子を表示して、テキストエディターで AGENTS.md を作ります。AGENTS.md.txt になっていないか確認してください。そのフォルダーで PowerShell を開き、次を実行します。5 個の練習ファイルが表示されるはずです。expected の一つ上にいる場合は、正しいフォルダーに移動します。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell、codex-practice 内で実行",
+          "language": "powershell",
+          "code": "Get-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS では練習フォルダーでターミナルを開くか、Terminal に cd と入力して Finder からフォルダーのパスをドラッグします。Linux はファイルマネージャーの「端末で開く」を使います。両方とも次のコマンドで場所を確認し、プレーンテキストの同名ファイルを作ります。Linux でも見つかるよう、大文字と小文字を正確に保ちます。"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux のターミナル、codex-practice 内で実行",
+          "language": "bash",
+          "code": "pwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "すでに AGENTS.md があれば、先に内容を読み、元の指示を残して必要な項目だけ統合します。新しい練習コピーにはこのファイルはありません。手順に合わせるために他のプロジェクトの指示を上書きしないでください。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 2：具体的なルールを書く"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下がファイル全体です。追加パッケージは不要です。五つの言語で同じ内容を使うため英語にしていますが、自分のルールは使いやすい言語で書けます。コマンドが実在し、範囲が具体的で、結果を確認できることが大切です。"
+        },
+        {
+          "type": "code",
+          "label": "codex-practice/AGENTS.md に保存する完全な内容",
+          "language": "markdown",
+          "code": "# Small Steps practice instructions\n\n- Work only inside this practice folder.\n- Keep the existing task data format and localStorage key unchanged.\n- Do not add packages or external network requests for this exercise.\n- Run `node --test core.test.mjs` after changing JavaScript.\n- After changing HTML or CSS, check the page at 390px and 1280px widths.\n- Preserve visible keyboard focus and accessible form labels.\n- In the final response, list changed files, checks run, and checks not run.\n- Say why a check could not be run; do not report it as passed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "「品質を良くする」だけでは確認基準がありません。この例は品質をテストコマンド、画面幅、キーボードフォーカス、報告内容に分解しています。npm test には置き換えないでください。この教材に package.json はなく、存在しないコマンドを指定すると毎回失敗します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 3：新しいセッションで読み込みを確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存したら、練習フォルダーから新しい Codex セッションを始めます。デスクトップではこのプロジェクトを選び、新規タスクを作ります。CLI では古い対話を終了し、このフォルダーで codex を再実行します。指示はセッション開始時に収集されるため、会話中にファイルを書き換えただけで再読み込みされたとは判断できません。"
+        },
+        {
+          "type": "code",
+          "label": "新しい Codex タスクまたは CLI の入力欄。最初は読み取りのみ",
+          "language": "text",
+          "code": "List the AGENTS.md or AGENTS.override.md files loaded for this task.\nSummarize the rules that apply to this practice folder.\nDo not modify any files. If you cannot establish a source, say so.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習フォルダーの AGENTS.md の場所と、テスト、表示、報告の要件が示されることを期待します。回答だけを証拠にせず、ファイルを開いて内容を照合します。正しいパスがなく依頼文を繰り返すだけなら、変更を頼む前に作業場所とファイル名を直します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 4：小さな変更で行動を確認する"
+        },
+        {
+          "type": "code",
+          "label": "指示を確認した同じ Codex タスクに入力",
+          "language": "text",
+          "code": "In index.html, change the main heading to \"Small steps, clear progress.\"\nKeep the todo behavior, stored data, and other visible text unchanged.\nFollow the project instructions. Show the changed file and report the checks.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "差分は主に index.html の見出し文字列になるはずです。Windows では py -m http.server 4173 --bind 127.0.0.1、macOS／Linux では python3 -m http.server 4173 --bind 127.0.0.1 でプレビューを開始します。http://127.0.0.1:4173 を開き、見出し、二つの幅、Tab のフォーカスを確認し、Read を追加して完了にします。Codex にブラウザがなければ自分で確認し、未実施の項目を報告させます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正常な例では、変更範囲が正しく、データが残り、報告が指示に沿っています。境界の例はブラウザが使えない場合です。制約と手動確認項目を示すのが適切で、スクリーンショットや成功を作り話にしてはいけません。ルールがあっても、実際のファイルやツールによる確認は必要です。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "ルールと証拠を一つずつ対応させる"
+        },
+        {
+          "type": "table",
+          "header": [
+            "今回の状況",
+            "必要な確認",
+            "確認する証拠"
+          ],
+          "rows": [
+            [
+              "HTML の見出しだけを変更",
+              "画面幅、フォーカス、結果の報告",
+              "指定文字列と実際の画面。未実施項目も明記"
+            ],
+            [
+              "JavaScript を変更",
+              "既存のデータテストを実行",
+              "実際のコマンド、終了状態、テスト件数"
+            ],
+            [
+              "ツールを使えない",
+              "理由を示し、合格とは書かない",
+              "元のエラーと NOT RUN。結果を作らない"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "見出しだけの変更では「JavaScript を変更した後」という条件は成立しません。それだけでテスト漏れとは判断しないでください。コマンドが動くかは次の読み取り専用の依頼で別途確認できます。expected は成功 3 件、失敗 0 件になる想定です。これはコマンドと報告の確認であり、ルールの全分岐を実測したことにはなりません。"
+        },
+        {
+          "type": "code",
+          "label": "同じ Codex タスク。テストコマンドを別途確認",
+          "language": "text",
+          "code": "Run node --test core.test.mjs from this practice folder without editing any files.\nReport the working folder, command, exit status, and test counts.\nIf the command cannot run, quote the error and mark the check NOT RUN.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "よくある問題と元に戻す方法"
+        },
+        {
+          "type": "paragraph",
+          "text": "見つからない場合は、選択したプロジェクト、実際の拡張子、空のファイル、同じ階層の override を順番に確認します。Windows で読めた別表記が Linux でも読めるとは限りません。修正したら新しいセッションで再試行します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ルールが衝突する場合は、深いフォルダーやグローバル override を含め、出典の階層を確認します。共通ルールとこのフォルダーの例外を明示し、互いを否定する文を増やさないでください。階層の詳しい追跡は後のレッスンで扱い、今回は一つのプロジェクトファイルに留めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テストが実行されない場合は、まず JavaScript を変更したか確認します。次に node --version と作業場所の core.test.mjs を確認します。実行環境がないことと指示が未読であることは別の問題です。「通るはず」ではなく実際のエラーを求めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プレビューは Ctrl+C で停止します。見出しは今回の変更だけを戻します。今回作成した AGENTS.md は練習フォルダーの外に移して保存できます。既存のファイルに追記した場合は自分の項目だけ戻します。ルールを除いても、すでに行われたファイル変更は戻りません。指示の状態も新しいセッションで確認します。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "範囲",
+            "場所",
+            "今回の扱い"
+          ],
+          "rows": [
+            [
+              "全体",
+              "CODEX_HOME、既定はホームの .codex",
+              "既存設定を残す"
+            ],
+            [
+              "プロジェクト",
+              "codex-practice/AGENTS.md",
+              "追加して新規セッションで確認"
+            ],
+            [
+              "同階層の優先候補",
+              "AGENTS.override.md",
+              "優先されていないか確認"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習と出典"
+        },
+        {
+          "type": "paragraph",
+          "text": "最終回答で手動確認事項を先に示すルールを加え、新しいセッションで別の見出し変更を頼みます。出典を特定でき、差分が指定した見出しだけで、報告順が変われば成功です。追加したルールを除き、次の新規セッションと比較します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "確認日は 2026-09-14 です。探索とサイズ制限は "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md 公式文書",
+              "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+            },
+            {
+              "type": "text",
+              "text": "で確認しました。教材サイトとデータテストは Windows／Edge で検証済みですが、macOS、Linux、Codex の指示読み込みを実機検証したという意味ではありません。次は "
+            },
+            {
+              "type": "article",
+              "text": "Markdown",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "引き継ぎ",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "を参照してください。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-agents-md/diagram-1.svg",
+          "alt": "10. AGENTS.md でプロジェクトのルールを設定 — 作業の流れを表す図です。製品画面の画像ではありません。 Global → Project → Working directory",
+          "width": 1600,
+          "height": 900,
+          "caption": "10. AGENTS.md でプロジェクトのルールを設定 — 作業の流れを表す図です。製品画面の画像ではありません。 Global → Project → Working directory",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "AGENTS.md instructions",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configuration basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "AGENTS.md 프로젝트 규칙",
+      "description": "AGENTS.md는 작업 시작 전 프로젝트 지침을 제공하는 파일입니다. 전역 지침과 프로젝트 루트부터 현재 작업 폴더까지의 규칙이 연결됩니다. 같은 위치에서는 AGENTS.override.md가 우선합니다. 실제로 무엇을 읽었는지 검증해야 합니다.",
+      "hero": {
+        "src": "/guides/codex-agents-md/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 글에서 완성할 것"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Small Steps 할 일 웹사이트에 AGENTS.md를 추가해 수정 범위, 확인 명령, 결과 보고 기준을 Codex에 전달합니다. 작은 변경을 요청한 뒤 실제 작업이 규칙과 일치하는지 확인합니다. 작업을 시작할 수 있는 입문자용이며 읽기 약 12분, 실습 약 20분입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "규칙 파일은 테스트 명령이나 데이터 보존 조건처럼 매번 반복하던 프로젝트 요구를 저장합니다. 비밀번호 보관소가 아니며 네트워크나 파일 권한을 늘리지 않습니다. 권한 설정은 "
+            },
+            {
+              "type": "article",
+              "text": "권한과 샌드박스",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하세요. 모든 작업을 허용한다는 문장만으로 실행 환경이 바뀌지는 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전 준비"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "link",
+              "text": "할 일 실습 자료",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "를 내려받아 압축을 풀고 expected 폴더를 복사해 codex-practice로 이름을 바꿉니다. 이 글은 완성된 참고 버전을 사용하므로 미완성 필터를 규칙 문제로 오해하지 않습니다. 데이터는 가상입니다. 개인 프로젝트나 전역 규칙은 아직 수정하지 마세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "폴더 바로 아래에 index.html, style.css, app.js, core.mjs, core.test.mjs가 있어야 합니다. 사용할 수 있는 Codex 데스크톱 앱 또는 CLI를 준비합니다. 테스트는 Node.js, 로컬 미리보기는 Python 3를 사용합니다. 먼저 규칙 파일을 작성하고 도구 준비는 "
+            },
+            {
+              "type": "article",
+              "text": "첫 프로젝트",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "에서 나중에 진행해도 됩니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "규칙을 읽는 위치와 순서"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex는 전역 지침과 프로젝트 지침을 결합합니다. 전역 기본 위치는 사용자 홈 아래 .codex이며 CODEX_HOME을 설정했다면 그 위치를 사용합니다. 프로젝트에서는 루트부터 현재 작업 디렉터리까지 탐색합니다. 작업 위치에 가까운 지침이 앞선 조건을 구체화할 수 있지만 모든 하위 폴더를 한꺼번에 읽는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 디렉터리에서는 AGENTS.override.md, AGENTS.md, 설정된 대체 이름 순으로 찾습니다. 같은 위치의 후보 파일을 모두 더하지는 않습니다. README.md는 보통 사람에게 프로젝트를 설명하는 문서이며 Markdown이라는 이유만으로 규칙 파일이 되지 않습니다. 프로젝트 지침의 합산 크기는 기본 32 KiB까지입니다. 제한을 늘리기 전에 중복 설명과 큰 예제를 정리하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이번에는 실습 프로젝트의 AGENTS.md만 추가합니다. 전역 선호는 다른 프로젝트에도 영향을 줍니다. 정말 공통으로 쓸 요구인지 확인한 뒤 "
+            },
+            {
+              "type": "article",
+              "text": "config.toml 설정",
+              "kind": "life",
+              "slug": "codex-config-toml"
+            },
+            {
+              "type": "text",
+              "text": "과 공식 문서를 살펴보세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "프로젝트 루트를 찾을 수 없으면 규칙 탐색은 현재 디렉터리만 확인합니다. Git을 쓰지 않는 이 실습은 codex-practice 바로 아래에서 시작하세요. 임의의 하위 폴더에서 시작해도 상위 규칙을 찾는다고 가정하면 안 됩니다. 저장소 안의 비교는 "
+            },
+            {
+              "type": "article",
+              "text": "규칙 적용 범위",
+              "kind": "life",
+              "slug": "codex-agents-md-scopes"
+            },
+            {
+              "type": "text",
+              "text": ", 긴 문서 분리는 "
+            },
+            {
+              "type": "article",
+              "text": "규칙과 참고 자료의 역할",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "을 참고하세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 경로와 파일 이름 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 탐색기에서 codex-practice를 열고 파일 확장명을 표시한 다음 일반 텍스트 편집기로 AGENTS.md를 만듭니다. AGENTS.md.txt가 아닌지 확인하세요. 폴더에서 PowerShell을 열어 아래 명령을 실행하면 실습 파일 다섯 개가 보여야 합니다. expected의 상위 폴더라면 올바른 폴더로 먼저 이동합니다."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell, codex-practice 안에서 실행",
+          "language": "powershell",
+          "code": "Get-Location\nGet-ChildItem -Name\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS에서는 실습 폴더에서 터미널을 열거나 Terminal에 cd를 입력한 다음 Finder의 폴더 경로를 끌어 놓습니다. Linux는 파일 관리자의 터미널에서 열기를 사용합니다. 두 환경 모두 아래 명령으로 경로를 확인하고 일반 텍스트 파일을 만듭니다. Linux에서도 찾을 수 있도록 대소문자를 정확히 유지합니다."
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux 터미널, codex-practice 안에서 실행",
+          "language": "bash",
+          "code": "pwd\nls -a\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "이미 AGENTS.md가 있다면 먼저 읽고 원문을 보존한 채 필요한 항목만 합칩니다. 새 실습 복사본에는 이 파일이 없습니다. 절차를 그대로 따라 하려고 다른 프로젝트의 규칙을 덮어쓰지 마세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 실행 가능한 규칙 작성"
+        },
+        {
+          "type": "paragraph",
+          "text": "아래가 전체 파일이며 추가 패키지는 필요 없습니다. 다섯 언어에서 같은 내용을 쓰도록 영어 예제를 사용하지만 자신의 규칙은 편한 언어로 작성할 수 있습니다. 명령이 실제로 존재하고 범위가 구체적이며 결과를 관찰할 수 있어야 합니다."
+        },
+        {
+          "type": "code",
+          "label": "codex-practice/AGENTS.md에 저장할 전체 내용",
+          "language": "markdown",
+          "code": "# Small Steps practice instructions\n\n- Work only inside this practice folder.\n- Keep the existing task data format and localStorage key unchanged.\n- Do not add packages or external network requests for this exercise.\n- Run `node --test core.test.mjs` after changing JavaScript.\n- After changing HTML or CSS, check the page at 390px and 1280px widths.\n- Preserve visible keyboard focus and accessible form labels.\n- In the final response, list changed files, checks run, and checks not run.\n- Say why a check could not be run; do not report it as passed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "품질을 좋게 하라는 말만으로는 검증 기준이 없습니다. 이 예제는 실제 테스트 명령, 화면 너비, 키보드 포커스, 보고 내용을 기준으로 만듭니다. npm test로 바꾸지 마세요. 이 자료에는 package.json이 없으므로 존재하지 않는 명령을 쓰면 매번 실패합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 새 세션에서 로드 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "파일을 저장한 뒤 실습 폴더에서 새 Codex 세션을 시작합니다. 데스크톱에서는 해당 프로젝트를 선택해 새 작업을 만들고, CLI에서는 기존 대화를 종료한 다음 같은 폴더에서 codex를 다시 실행합니다. 지침은 세션 시작 때 모으므로 기존 대화 중 파일을 바꿨다고 다시 읽었다고 판단하면 안 됩니다."
+        },
+        {
+          "type": "code",
+          "label": "새 Codex 작업 또는 CLI 대화에 입력. 먼저 읽기만 수행",
+          "language": "text",
+          "code": "List the AGENTS.md or AGENTS.override.md files loaded for this task.\nSummarize the rules that apply to this practice folder.\nDo not modify any files. If you cannot establish a source, say so.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "실습 폴더의 AGENTS.md 경로와 테스트, 화면, 보고 요구를 확인할 수 있어야 합니다. 답변은 단서이며 파일을 직접 열어 내용과 대조합니다. 올바른 경로 없이 요청만 반복한다면 수정을 진행하기 전에 작업 폴더와 파일 이름부터 고칩니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 작은 변경으로 행동 확인"
+        },
+        {
+          "type": "code",
+          "label": "지침을 확인한 같은 Codex 작업에 입력",
+          "language": "text",
+          "code": "In index.html, change the main heading to \"Small steps, clear progress.\"\nKeep the todo behavior, stored data, and other visible text unchanged.\nFollow the project instructions. Show the changed file and report the checks.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "차이는 주로 index.html의 제목 문자열이어야 합니다. Windows는 py -m http.server 4173 --bind 127.0.0.1, macOS/Linux는 python3 -m http.server 4173 --bind 127.0.0.1로 미리보기를 시작합니다. http://127.0.0.1:4173에서 제목, 두 화면 너비, Tab 포커스를 확인하고 Read를 추가해 완료 처리합니다. Codex에 브라우저 도구가 없다면 직접 확인하고 실행하지 못한 검사를 보고하도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "정상 사례는 요청한 범위만 바뀌고 기존 데이터가 남으며 보고가 규칙을 따르는 것입니다. 경계 사례는 브라우저가 없는 환경입니다. 제한과 수동 확인 항목을 밝혀야 하며 화면이나 통과 결과를 만들어 내면 안 됩니다. 규칙이 있어도 실제 파일과 도구로 증거를 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "규칙을 증거와 하나씩 연결"
+        },
+        {
+          "type": "table",
+          "header": [
+            "상황",
+            "필요한 확인",
+            "확인할 증거"
+          ],
+          "rows": [
+            [
+              "HTML 제목만 변경",
+              "화면 너비, 포커스, 결과 보고",
+              "요청한 문자열과 실제 화면. 미실행 항목도 명시"
+            ],
+            [
+              "JavaScript 변경",
+              "기존 데이터 테스트 실행",
+              "실제 명령, 종료 상태, 테스트 수"
+            ],
+            [
+              "도구 사용 불가",
+              "이유를 설명하고 통과로 보고하지 않음",
+              "원래 오류와 NOT RUN. 결과를 지어내지 않음"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "제목만 바꾸면 “JavaScript 변경 후”라는 조건은 충족되지 않습니다. 이것만으로 테스트를 빠뜨렸다고 판단하지 마세요. 명령 실행 가능 여부는 아래 읽기 전용 요청으로 별도 확인할 수 있습니다. expected 사본은 통과 3개, 실패 0개가 예상됩니다. 이는 명령과 보고를 확인하는 것이며 모든 규칙 분기를 실측한 것은 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "같은 Codex 작업. 테스트 명령을 별도로 확인",
+          "language": "text",
+          "code": "Run node --test core.test.mjs from this practice folder without editing any files.\nReport the working folder, command, exit status, and test counts.\nIf the command cannot run, quote the error and mark the check NOT RUN.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결과 복원"
+        },
+        {
+          "type": "paragraph",
+          "text": "규칙을 찾지 못하면 선택한 프로젝트, 실제 확장명, 빈 파일, 같은 위치의 override를 차례로 확인합니다. Windows에서 읽힌 다른 대소문자 이름이 Linux에서도 된다는 보장은 없습니다. 수정 후 새 세션에서 다시 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "규칙이 충돌하면 더 깊은 폴더와 전역 override를 포함해 출처의 계층을 확인합니다. 공통 조건과 이 폴더만의 예외를 구분하고 서로 부정하는 문장을 더하지 마세요. 하위 디렉터리 탐색은 후속 글에서 다루며 이번에는 프로젝트 파일 하나를 유지합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "테스트를 실행하지 않았다면 JavaScript를 실제로 바꿨는지 먼저 확인합니다. 이어서 node --version과 현재 폴더의 core.test.mjs를 확인하세요. 런타임이 없는 문제와 지침을 읽지 못한 문제는 다릅니다. 통과할 것 같다는 말 대신 실제 오류를 요청합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ctrl+C로 미리보기를 중지합니다. 제목은 이번에 바꾼 부분만 복원합니다. 새로 만든 AGENTS.md는 실습 폴더 밖으로 옮겨 보관할 수 있습니다. 기존 파일에 추가했다면 자신의 항목만 되돌립니다. 규칙을 제거해도 이미 수행한 파일 변경은 취소되지 않습니다. 복원된 지침 역시 새 세션에서 확인합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "범위",
+            "위치",
+            "이번 처리"
+          ],
+          "rows": [
+            [
+              "전역",
+              "CODEX_HOME, 기본 사용자 .codex",
+              "기존 설정 보존"
+            ],
+            [
+              "프로젝트",
+              "codex-practice/AGENTS.md",
+              "추가 후 새 세션에서 확인"
+            ],
+            [
+              "같은 위치의 우선 파일",
+              "AGENTS.override.md",
+              "우선 선택 여부 확인"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "추가 실습과 출처"
+        },
+        {
+          "type": "paragraph",
+          "text": "최종 답변에서 수동 확인 사항을 먼저 쓰라는 규칙을 추가한 뒤 새 세션에서 다른 제목 변경을 요청합니다. 출처를 찾고 차이가 요청한 제목에만 있으며 보고 순서가 바뀌면 성공입니다. 추가한 규칙을 제거하고 다음 새 세션과 비교하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "확인일은 2026-09-14입니다. 탐색과 크기 제한은 "
+            },
+            {
+              "type": "link",
+              "text": "AGENTS.md 공식 문서",
+              "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+            },
+            {
+              "type": "text",
+              "text": "로 확인했습니다. 실습 웹사이트와 데이터 테스트는 Windows/Edge에서 검증했지만 macOS, Linux 또는 Codex 지침 로드 자체를 실기기로 시험했다는 뜻은 아닙니다. 다음으로 "
+            },
+            {
+              "type": "article",
+              "text": "Markdown",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "작업 인계",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "를 읽을 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-agents-md/diagram-1.svg",
+          "alt": "10. AGENTS.md 프로젝트 규칙 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Global → Project → Working directory",
+          "width": 1600,
+          "height": 900,
+          "caption": "10. AGENTS.md 프로젝트 규칙 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Global → Project → Working directory",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "AGENTS.md instructions",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Configuration basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
