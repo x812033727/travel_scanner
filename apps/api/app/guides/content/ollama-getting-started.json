@@ -12,7 +12,7 @@
   "locales": {
     "zh-TW": {
       "title": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-      "description": "官網下載頁寫 macOS 要 14 Sonoma 或更新版本、Windows 要 10 或更新版本。這篇照官方文件走完安裝、第一次對話、看懂模型庫頁的標籤與檔案大小、用 ollama ps 確認模型跑在顯示卡還是 CPU，再從 curl 與 Python 呼叫本機 11434 埠的 REST 與 OpenAI 相容端點，最後說清楚結尾帶 cloud 的標籤是雲端模型、怎麼整個關掉。",
+      "description": "Ollama 是在自己電腦跑本機 AI 的入門工具，官網下載頁寫 macOS 要 14 Sonoma 或更新版本、Windows 要 10 或更新版本。這篇照官方文件走完安裝、第一次對話、看懂模型庫的標籤與大小、用 ollama ps 確認模型跑在顯示卡還是 CPU，再從 curl 與 Python 呼叫本機 11434 埠的 API，最後說清楚結尾帶 cloud 的標籤是雲端模型、怎麼關掉。",
       "hero": {
         "src": "/guides/ollama-getting-started/hero.jpg",
         "alt": "插圖：一台筆電螢幕上的對話框，旁邊有下載箭頭、硬碟與晶片，一條線連到程式端點。",
@@ -27,7 +27,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Ollama 把開放權重模型下載到自己的電腦上執行，官方對三個作業系統各給一行安裝指令，裝完在終端機打一個字就能開始對話，本機執行不需要帳號，打進去的字不會送出去。"
+          "text": "Ollama 把開放權重模型下載到自己的電腦上執行，官方對三個作業系統各給一行安裝指令，裝完在終端機打一個字就能開始對話，本機執行不需要帳號，打進去的字不會送出去。搜「本機 AI」找到 Ollama 的人，裝完先跑這一步。"
         },
         {
           "type": "paragraph",
