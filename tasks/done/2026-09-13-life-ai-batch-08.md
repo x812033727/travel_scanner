@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-life-ai-batch-08
 title: 生活分享 AI 系列批次 08：圖片、影片、音樂生成（20 篇）
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-14T19:28:39Z
 created_at: 2026-09-13T11:56:00Z
-completed_at:
+completed_at: 2026-09-15T01:08:05Z
 branch: claude/travel-guides-tutorials-59j1dv
 depends_on:
   - 2026-09-13-life-ai-series-tooling
