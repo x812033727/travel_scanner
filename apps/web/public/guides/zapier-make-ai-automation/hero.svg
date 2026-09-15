@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">同一條流程，兩種算法 / One flow, two ways of counting</title>
+  <desc id="desc">幾何插圖。左邊一張白色卡片代表表單，卡片上有四條灰色橫線。卡片右側分出兩條線：上面一條通往藍色圓形，圓內有一個菱形，代表一個 AI 步驟；下面一條通往綠色圓角方塊，方塊內是一個齒輪形狀，代表另一家的 AI 節點。兩條線再匯入右邊一張白色表格卡片，上面一條線上串著兩顆藍色圓點，下面一條線上串著三顆綠色圓點，表示同一條流程在兩邊扣掉的單位數量不同。畫面上方只有一行字：同一條流程，兩種算法。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="800" y="170" font-size="56" font-weight="bold" fill="#102A2B" text-anchor="middle">同一條流程，兩種算法</text>
+
+  <!-- connectors -->
+  <path d="M 370 470 C 480 470, 540 390, 655 390" fill="none" stroke="#5C6B6B" stroke-width="6"/>
+  <path d="M 370 550 C 480 550, 540 650, 655 650" fill="none" stroke="#5C6B6B" stroke-width="6"/>
+  <path d="M 815 390 C 940 390, 1010 460, 1130 460" fill="none" stroke="#5C6B6B" stroke-width="6" marker-end="url(#arrow)"/>
+  <path d="M 815 650 C 940 650, 1010 560, 1130 560" fill="none" stroke="#5C6B6B" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <!-- form card -->
+  <rect x="110" y="390" width="260" height="240" rx="24" fill="#FFFFFF" stroke="#102A2B" stroke-width="6"/>
+  <rect x="150" y="430" width="180" height="18" rx="9" fill="#5C6B6B"/>
+  <rect x="150" y="480" width="180" height="18" rx="9" fill="#5C6B6B"/>
+  <rect x="150" y="530" width="180" height="18" rx="9" fill="#5C6B6B"/>
+  <rect x="150" y="575" width="110" height="18" rx="9" fill="#D97A2B"/>
+
+  <!-- upper AI node -->
+  <circle cx="735" cy="390" r="80" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="8"/>
+  <path d="M 735 348 L 764 390 L 735 432 L 706 390 Z" fill="#2F6F9F"/>
+
+  <!-- lower AI node -->
+  <rect x="655" y="570" width="160" height="160" rx="28" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+  <circle cx="735" cy="650" r="34" fill="none" stroke="#0D6B68" stroke-width="10"/>
+  <rect x="726" y="586" width="18" height="18" fill="#0D6B68"/>
+  <rect x="783" y="641" width="18" height="18" fill="#0D6B68"/>
+  <rect x="726" y="696" width="18" height="18" fill="#0D6B68"/>
+  <rect x="669" y="641" width="18" height="18" fill="#0D6B68"/>
+
+  <!-- counting beads -->
+  <circle cx="931" cy="410" r="16" fill="#2F6F9F" stroke="#F7F1E8" stroke-width="5"/>
+  <circle cx="1018" cy="440" r="16" fill="#2F6F9F" stroke="#F7F1E8" stroke-width="5"/>
+  <circle cx="910" cy="633" r="16" fill="#0D6B68" stroke="#F7F1E8" stroke-width="5"/>
+  <circle cx="974" cy="605" r="16" fill="#0D6B68" stroke="#F7F1E8" stroke-width="5"/>
+  <circle cx="1039" cy="577" r="16" fill="#0D6B68" stroke="#F7F1E8" stroke-width="5"/>
+
+  <!-- spreadsheet card -->
+  <rect x="1150" y="390" width="360" height="240" rx="24" fill="#FFFFFF" stroke="#102A2B" stroke-width="6"/>
+  <line x1="1150" y1="450" x2="1510" y2="450" stroke="#102A2B" stroke-width="5"/>
+  <line x1="1150" y1="510" x2="1510" y2="510" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="1150" y1="570" x2="1510" y2="570" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="1270" y1="390" x2="1270" y2="630" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="1390" y1="390" x2="1390" y2="630" stroke="#5C6B6B" stroke-width="3"/>
+  <rect x="1180" y="468" width="60" height="16" rx="8" fill="#2F6F9F"/>
+  <rect x="1300" y="528" width="60" height="16" rx="8" fill="#0D6B68"/>
+  <rect x="1420" y="588" width="60" height="16" rx="8" fill="#D97A2B"/>
+</svg>

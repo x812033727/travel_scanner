@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一則提示詞的六個固定欄位 / Six fixed fields in one reusable prompt</title>
+  <desc id="desc">這張圖左邊是一則可重複使用的提示詞範本卡，由上往下有六個固定欄位。用途：一句話說什麼情況下用，也是以後搜尋用的關鍵字。角色：要模型站在什麼位置回答，寫得具體語氣才穩定。輸入：每次會貼進去的東西與格式，用明顯的佔位符標出來。輸出格式：要幾段、要不要表格、欄位叫什麼、長度上限多少。範例：一組這樣的輸入應該產生這樣的輸出，是最值得花時間的一欄。版本與日期：改了什麼、哪一天改的，沒有這一欄三個月後會分不清。圖的右邊有三個框。第一個框是各家官網寫明的長度上限：ChatGPT 自訂指令免費版與 Go 上限 1,500 字元、付費方案 5,000 字元，Claude 的 skill.md 檔 name 欄最多 64 個字元、description 欄最多 200 個字元，Raycast 單則 Snippet 上限 65,000 字元。第二個框是命名三段式：用途加輸出物加日期，例如週報整理、輸出三個重點、2026-09，用途放最前面是因為之後會用我要做什麼去搜尋。第三個框是不要寫進提示詞庫的四類內容：個資（姓名、電話、地址、身分證字號、病歷）、金鑰與密碼、還沒公開的內部資料與別人的整本著作；範本裡用客戶代稱這種佔位符，真的要用時才貼；分享出去之後，有存取權的人都看得到你寫了什麼。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="40" y="52" font-size="30" font-weight="700" fill="#102A2B">一則提示詞的六個固定欄位</text>
+  <text x="40" y="84" font-size="18" fill="#5C6B6B">Six fixed fields in one reusable prompt, and where it is allowed to live</text>
+
+  <!-- left card -->
+  <rect x="40" y="118" width="720" height="726" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+
+  <rect x="64" y="142" width="672" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="88" y="182" font-size="20" font-weight="700" fill="#102A2B">用途</text>
+  <text x="88" y="214" font-size="16" fill="#5C6B6B">一句話說什麼情況下用，也是以後搜尋用的關鍵字</text>
+
+  <rect x="64" y="250" width="672" height="96" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="88" y="290" font-size="20" font-weight="700" fill="#102A2B">角色</text>
+  <text x="88" y="322" font-size="16" fill="#5C6B6B">要模型站在什麼位置回答，寫得具體語氣才穩定</text>
+
+  <rect x="64" y="358" width="672" height="96" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="88" y="398" font-size="20" font-weight="700" fill="#102A2B">輸入</text>
+  <text x="88" y="430" font-size="16" fill="#5C6B6B">每次會貼進去的東西與格式，用明顯的佔位符標出來</text>
+
+  <rect x="64" y="466" width="672" height="96" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="88" y="506" font-size="20" font-weight="700" fill="#102A2B">輸出格式</text>
+  <text x="88" y="538" font-size="16" fill="#5C6B6B">要幾段、要不要表格、欄位叫什麼、長度上限多少</text>
+
+  <rect x="64" y="574" width="672" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="88" y="614" font-size="20" font-weight="700" fill="#102A2B">範例</text>
+  <text x="88" y="646" font-size="16" fill="#5C6B6B">一組「這樣的輸入應該產生這樣的輸出」，最值得花時間</text>
+
+  <rect x="64" y="682" width="672" height="96" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="88" y="722" font-size="20" font-weight="700" fill="#102A2B">版本與日期</text>
+  <text x="88" y="754" font-size="16" fill="#5C6B6B">改了什麼、哪一天改的，沒有這一欄三個月後會分不清</text>
+
+  <text x="400" y="812" font-size="17" fill="#5C6B6B" text-anchor="middle">六個欄位都填滿，三個月後才看得懂自己當初在要求什麼</text>
+
+  <!-- right box A: official limits -->
+  <rect x="800" y="118" width="760" height="214" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1180" y="162" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">官網寫明的長度上限</text>
+  <text x="830" y="206" font-size="17" fill="#102A2B">ChatGPT 自訂指令：免費版與 Go 上限 1,500 字元</text>
+  <text x="830" y="240" font-size="17" fill="#102A2B">ChatGPT 自訂指令：付費方案上限 5,000 字元</text>
+  <text x="830" y="274" font-size="17" fill="#102A2B">Claude skill.md：name 64 字元、description 200 字元</text>
+  <text x="830" y="308" font-size="17" fill="#102A2B">Raycast 單則 Snippet：上限 65,000 字元</text>
+
+  <!-- right box B: naming -->
+  <rect x="800" y="356" width="760" height="214" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1180" y="400" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">檔名用三段式</text>
+  <text x="830" y="444" font-size="17" fill="#5C6B6B">用途　＋　輸出物　＋　日期</text>
+  <text x="830" y="488" font-size="20" font-weight="700" fill="#0D6B68">週報整理｜輸出三個重點｜2026-09</text>
+  <text x="830" y="530" font-size="16" fill="#5C6B6B">用途放最前面，因為之後是用「我要做什麼」去搜尋</text>
+
+  <!-- right box C: do not store -->
+  <rect x="800" y="594" width="760" height="250" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1180" y="638" font-size="22" font-weight="700" fill="#B8442D" text-anchor="middle">不要寫進提示詞庫</text>
+  <text x="830" y="682" font-size="17" fill="#102A2B">個資：姓名、電話、地址、身分證字號、病歷</text>
+  <text x="830" y="716" font-size="17" fill="#102A2B">金鑰與密碼、還沒公開的內部資料、別人的整本著作</text>
+  <text x="830" y="756" font-size="16" fill="#5C6B6B">範本裡用「客戶代稱」這種佔位符，真的要用時才貼</text>
+  <text x="830" y="790" font-size="16" fill="#5C6B6B">分享出去之後，有存取權的人都看得到你寫了什麼</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

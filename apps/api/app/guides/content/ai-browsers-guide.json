@@ -1,0 +1,354 @@
+{
+  "slug": "ai-browsers-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 瀏覽器怎麼選：Comet、Dia、Chrome 的 Gemini 與代理風險",
+      "description": "AI 瀏覽器把助理放進側邊欄，能問目前頁面、整理跨分頁、甚至替你點按操作。這篇照 2026 年 9 月 15 日官網整理 Comet、Dia、Chrome 的 Gemini、Edge 的 Copilot 模式與 Brave Leo 的平台、方案與代理功能，說明 ChatGPT Atlas 已停止運作與接手方案，並拆解提示詞注入、密碼付款與隱私設定三類風險。",
+      "hero": {
+        "src": "/guides/ai-browsers-guide/hero.jpg",
+        "alt": "抽象插圖：三張層疊的圓角卡片代表分頁，一條路徑穿過它們通向一面盾牌。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "AI 瀏覽器把一個助理放進瀏覽器裡，回答你關於眼前這一頁的問題，也可能替你點按、填表、下單。結論先講：2026 年 9 月 15 日查各家官網，台灣讀者現在裝得起來的主要是 Perplexity Comet 與 Chrome 內建的 Gemini；Dia 只有 macOS 版，OpenAI 的 ChatGPT Atlas 已經停止運作，而真正替你操作網頁的代理（Agent）功能幾乎都綁著付費方案與美國地區。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把 AI 瀏覽器拆成三層——第 1 層問這一頁、第 2 層跨分頁整理、第 3 層代理操作——再照當天官網對照 Comet、ChatGPT 桌面版、Dia、Chrome 的 Gemini、Edge 的 Copilot 模式與 Brave Leo 的平台、方案與代理功能名稱，最後拆解提示詞注入、密碼與付款、隱私設定三類風險，附一份你自己就能跑的驗證步驟。本文不能登入、不做實測、不給評分，能力全照官方文件寫法，查不到的寫「以官網為準」。"
+        },
+        {
+          "type": "heading",
+          "text": "「AI 瀏覽器」在做什麼：把能力拆成三層",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "各家講法不同，攤開來看就是三件事。第 1 層是問這一頁：助理待在側邊欄，讀得到你正在看的分頁，幫你摘要、翻譯、解釋名詞。第 2 層是跨分頁整理：把好幾個分頁一起交給它比較，Google 的說明寫得最具體——除了目前分頁，還能再分享最多 10 個已開啟的分頁。第 3 層是代理操作：它自己點按、捲動、填表、換分頁，把一件事從頭做到尾。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "第 1 層 問這一頁：摘要、翻譯、抓重點；代價是這一頁的內容會送進模型。",
+            "第 2 層 跨分頁整理：比較與彙整多個分頁；代價是一次送出的內容變多，你未必記得每頁裡有什麼。",
+            "第 3 層 代理操作：點按、填表、登入、下單；代價是一個會讀網頁的程式，正用你已登入的身分做出真實動作。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "風險逐層遞增，各家也因此對第 3 層另外設門檻：Chrome 的 auto browse 限定美國，Edge 的 Browse with Copilot 先開放給美國的 Microsoft 365 Premium 訂閱者，OpenAI 的 cloud browser 寫明只給付費方案、不含 Free 與 Go。所以「要不要換 AI 瀏覽器」其實是兩個問題：你要哪一層，以及那一層在你的地區有沒有開放。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-browsers-guide/diagram-1.svg",
+          "alt": "三層能力由上到下排列，每層標出能做的事與對應風險，右側是三條共通的防線。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下看三層能力：左邊是它能做什麼，中間是對應的風險，右邊是不管用哪一家都該先做的三件事。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 搜尋 vs Google：六類問題什麼時候該用哪一個",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-search-vs-google"
+        },
+        {
+          "type": "heading",
+          "text": "Comet 與 Atlas 之後：Perplexity 與 OpenAI 的兩條路",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Perplexity 的 Comet 平台最齊。官網的 Comet 頁寫「Available for Mac, Windows, iOS, and Android」，說明中心的安裝文章列出系統需求：Windows 10 或更新版本、macOS 11（Big Sur）或更新版本。它是 Chromium 核心，支援大多數 Chrome 擴充功能。Perplexity 在 2025 年 10 月 2 日的官方部落格宣布把 Comet 免費開放下載；iOS 版在台灣 App Store 也標示免費，需要 iOS 18.0 以上。各訂閱方案之間的額度差異以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "它的助理叫 Comet Assistant，跑在主視窗旁的側邊欄。權限開關在設定的隱私與安全性頁：你可以允許或禁止它讀取瀏覽紀錄、瀏覽網頁與和網站互動，也能把特定網站加進封鎖清單，官方舉的例子就是自己的網路銀行。官方說明另外寫得很直白：Comet 不會取得你的密碼與付款資料。企業版管理員還能逐個網域設成 Browser Control、Read Only 或 No Access。"
+        },
+        {
+          "type": "link",
+          "text": "Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/perplexity-ai-search-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 這邊要改口徑。官方說明文件寫「Atlas is scheduled to stop working on August 9, 2026」，給了大約 30 天緩衝，要使用者先把書籤匯出成 HTML 檔再匯入別的瀏覽器。Atlas 從 2025 年 10 月 21 日推出到停止都只有 macOS 版，沒有出過 Windows 版。接手的是 ChatGPT 桌面版內建的瀏覽器：官方寫它在 macOS 與 Windows 的桌面版裡，能開多個分頁、下載檔案、等你登入。另外有一個跑在雲端的 cloud browser，遇到登入頁會停下來，用獨立的安全表單請你輸入帳密。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-agent-mode-guide"
+        },
+        {
+          "type": "heading",
+          "text": "Dia 與 Chrome 的 Gemini：一個只有 macOS，一個綁地區",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Dia 的開發商是 The Browser Company of New York，官網安全頁寫明這家公司現在是 Atlassian 的一部分，登入也改走 Atlassian 的身分系統。下載頁寫目前支援 macOS 14 以上、且要 M1 以上晶片；方案頁提到 Windows 版的付費方案還沒開始，Windows 狀態以官網為準。方案分三層：Better Browser 免費且沒有 AI 功能、Better Answers 每月 20 美元、Better Days 每月 100 美元；新使用者有 14 天免費試用，試用的是 Better Days，不需要信用卡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Chrome 分兩件事看。側邊欄的 Gemini in Chrome 在電腦版需要 Chromebook Plus、Mac 或 Windows，要登入 Chrome，無痕模式不能用，年齡門檻 13 歲。官方可用性頁列出 187 個 18 歲以上可用的地區與 51 種裝置語言，台灣在地區清單裡、中文在語言清單裡；18 歲以下的清單只有 43 個地區，台灣不在其中。iPhone 與 iPad 的清單也有台灣；Android 則官方明寫只有美國、只有英文，要 Android 12 以上、記憶體 4 GB 以上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "代理功能 Google 叫它 auto browse，條件寫得很清楚：18 歲以上、人在美國、裝置語言設成英文、帳號要有 Google AI Pro 或 Google AI Ultra，安全瀏覽要開在增強或標準保護，目前也還沒開放到 Live 對話與 iPhone、iPad。換句話說，台灣讀者今天在 Chrome 裡拿得到的是第 1 層與第 2 層。想先體驗代理操作，另一條路是用擴充功能把別家的代理接進來。"
+        },
+        {
+          "type": "link",
+          "text": "Claude 在瀏覽器裡：Chrome 擴充功能替你操作網頁",
+          "url": "https://mokaair.com/zh-TW/life/claude-in-chrome-browser-agent"
+        },
+        {
+          "type": "heading",
+          "text": "順帶一提：Edge 的 Copilot 模式與 Brave Leo",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "微軟把代理功能叫 Browse with Copilot，官方支援頁寫它會在 Edge 裡直接點按、輸入、切換分頁，你隨時可以接手，目前先開放給美國的 Microsoft 365 Premium 訂閱者。同一頁有三件值得抄下來的限制：Copilot 操作時看不到自動填入資料、已儲存的密碼與錢包資訊；它會為經過的頁面截圖，截圖跟著對話保存、最長 30 天；遇到銀行或電子郵件這類高風險網站，它會要你監看或接手。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Brave 的 Leo 走另一條路，官網沒有宣稱替你操作網頁。它在桌面（macOS、Windows、Linux）與行動裝置（Android、iOS）都有，免費使用而且不需要註冊帳號，對話不會被留下來訓練模型；要更多模型與更高用量就升級 Leo AI premium，每月 14.99 美元或每年 149.99 美元，有 7 天免費試用。官網也自己寫了：Leo 會產生幻覺，回答要再查一次。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "瀏覽器",
+            "平台",
+            "方案",
+            "代理功能"
+          ],
+          "rows": [
+            [
+              "Perplexity Comet",
+              "Mac、Windows、iOS、Android",
+              "免費下載；訂閱方案以官網為準",
+              "Comet Assistant，可授權控制瀏覽器"
+            ],
+            [
+              "ChatGPT 桌面版",
+              "macOS、Windows",
+              "cloud browser 限付費方案、不含 Free 與 Go",
+              "內建瀏覽器與 cloud browser"
+            ],
+            [
+              "Dia",
+              "macOS 14 以上、M1 以上晶片",
+              "免費／每月 20 美元／每月 100 美元",
+              "官網稱 agentic mode"
+            ],
+            [
+              "Chrome 的 Gemini",
+              "Chromebook Plus、Mac、Windows、iPhone、iPad",
+              "側邊欄免費；auto browse 需 Google AI Pro 或 Ultra",
+              "auto browse，限美國與英文"
+            ],
+            [
+              "Edge 的 Copilot 模式",
+              "Edge 內建，平台以官網為準",
+              "限美國的 Microsoft 365 Premium 訂閱者",
+              "Browse with Copilot"
+            ],
+            [
+              "Brave Leo",
+              "macOS、Windows、Linux、Android、iOS",
+              "免費；premium 每月 14.99 美元",
+              "無代理操作，只有側邊欄助理"
+            ]
+          ],
+          "caption": "2026 年 9 月 15 日查各家官網整理；方案、地區與功能名稱改得很快，動手前再開一次官網。"
+        },
+        {
+          "type": "heading",
+          "text": "三類風險：提示詞注入、密碼與付款、隱私設定",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一類是提示詞注入：網頁裡藏著一段寫給 AI 看的指令，助理讀到之後照著做，而不是照你說的做。各家官方文件都寫進去了。微軟的支援頁直接舉例：你請 Copilot 照食譜頁面訂食材，頁面裡可能藏著要它改去別的網站蒐集敏感資訊的文字。Dia 的安全頁把防線一條條列出來——不自動開啟模型產生的網址、代理模式看不到密碼欄位與不可逆的按鈕、不會自己導覽到別的網站——同時也承認防線不完美。OpenAI 的桌面版瀏覽器說明則給了一句可以直接當原則用的話：把網站內容當成不可信的資料。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞注入（Prompt Injection）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二類是密碼與付款。Comet 官方寫助理不會取得你的密碼與付款資料；Edge 的 Copilot 操作時拿不到自動填入資料與已儲存的密碼；OpenAI 的 cloud browser 用獨立的安全登入表單收帳密，官方寫模型看不到你在那裡輸入的帳號密碼，也不會保存。共同原則只有一條：帳密永遠輸入在網頁或專用表單裡，不要打進對話框，也不要在對話裡貼驗證碼與信用卡號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三類是隱私設定，而且多半預設打開。Dia 官方寫預設會拿一部分內容資料改進產品，這些資料不綁帳號、保留 30 天後刪除，可以在設定裡關掉；Chrome 的 Gemini 預設會分享你目前的分頁，這個預設值也能在 Chrome 設定裡關掉。裝完任何一個 AI 瀏覽器，第一件事就是把分享內容、預設分享分頁、記憶這幾個開關找出來，自己決定。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "代理模式先不要開在這三種頁面",
+          "text": "網路銀行與券商、醫療與保險入口、公司內部系統。官方文件態度一致：微軟直接列出不該交給 Browse with Copilot 的事，包括金融操作、身分證號與病歷、高度機密資料；Dia 則寫明自己不符合 HIPAA、也不提供 BAA，並建議需要的組織用 MDM 政策在特定網站上關掉全部 AI 功能。要試代理功能，先挑一個公開、不用登入、做錯了也能還原的任務，而且全程看著它。"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼挑，以及自己怎麼驗",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先問自己要哪一層。只想問這一頁，Chrome 的 Gemini 或 Brave Leo 就夠，不必換瀏覽器；想要一個平常就在用、四個平台都有的 AI 瀏覽器，Comet 的覆蓋最齊；在 Mac 上又願意付費買一套會幫你整理一天的助理，Dia 的方向最明確；已經是 ChatGPT 付費使用者，用桌面版內建的瀏覽器比再裝一個瀏覽器單純。至於代理操作，台灣目前能真正用到的選項不多，先把它當加分項，不是換瀏覽器的理由。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "用一個全新、乾淨的使用者設定檔安裝，第一次先不要匯入密碼。",
+            "拿同一篇長文章，在每個助理各問一次同樣的問題，看它有沒有給出處、答案能不能對回原文。",
+            "開三到五個分頁做一次比較，檢查它是真的讀了每一頁，還是只讀了最上面那一個。",
+            "代理功能先在公開、不用登入的網站上跑，例如整理一份公開清單。",
+            "把官方的權限頁打開，逐一決定哪些網站設成唯讀、哪些完全封鎖。",
+            "一個月後再看一次官網的方案頁與說明文件；這個領域幾個月就改一次名字、地區與計費方式。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "最後一句提醒：AI 瀏覽器讓分頁更好用，也讓隨手開一堆分頁的成本更低。把真正要留下來的東西整理成可以再次打開的收藏，比讓助理每次重讀一遍有用。"
+        },
+        {
+          "type": "link",
+          "text": "瀏覽器書籤太多怎麼辦：用正在做的事整理，讓收藏能再次開啟",
+          "url": "https://mokaair.com/zh-TW/life/browser-bookmark-project-folders"
+        },
+        {
+          "type": "link",
+          "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
+          "url": "https://mokaair.com/zh-TW/life/mcp-servers-for-everyone"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Comet Browser: a Personal AI Assistant（Perplexity 官方產品頁，支援平台）",
+          "url": "https://www.perplexity.ai/comet",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Installing Comet（Comet 說明中心，系統需求）",
+          "url": "https://comet-help.perplexity.ai/en/articles/11583748-installing-comet",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "The Internet is Better on Comet（Perplexity 官方部落格，免費開放下載）",
+          "url": "https://www.perplexity.ai/hub/blog/comet-is-now-available-to-everyone-worldwide",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Managing Comet Assistant permissions（Perplexity 說明中心，網域權限）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/13531023-managing-comet-assistant-permissions",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Control what Comet Assistant can use（Comet 說明中心，密碼與付款資料）",
+          "url": "https://comet-help.perplexity.ai/en/articles/12658082-control-what-comet-assistant-can-use",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Comet - AI Browser & Assistant（Apple App Store 台灣區，價格與系統需求）",
+          "url": "https://apps.apple.com/tw/app/comet-ai-browser-assistant/id6748622471",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Evolving Atlas into ChatGPT for browser-based agentic work（OpenAI 說明中心）",
+          "url": "https://help.openai.com/en/articles/20001371-evolving-atlas-into-chatgpt-for-browser-based-agentic-work",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "ChatGPT Atlas - Release Notes（OpenAI 說明中心，推出日期與平台）",
+          "url": "https://help.openai.com/en/articles/12591856-chatgpt-atlas-release-notes",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Using the built-in browser in the ChatGPT desktop app（OpenAI 說明中心）",
+          "url": "https://help.openai.com/en/articles/20001277-using-the-built-in-browser-in-the-chatgpt-desktop-app",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Using cloud browser in ChatGPT（OpenAI 說明中心，方案與登入表單）",
+          "url": "https://help.openai.com/en/articles/20001280-using-cloud-browser-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Dia Browser | Plans（Dia 官方方案頁）",
+          "url": "https://www.diabrowser.com/plans",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Dia Browser | Security（Dia 官方安全頁，Atlassian 與提示詞注入防線）",
+          "url": "https://www.diabrowser.com/security",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Dia | A browser you won't dread opening（Dia 官方首頁，支援平台）",
+          "url": "https://www.diabrowser.com/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini in Chrome availability（Google Chrome 說明，地區與語言）",
+          "url": "https://support.google.com/chrome/answer/17140089",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Use Gemini in Chrome（Google Chrome 說明，分享分頁）",
+          "url": "https://support.google.com/chrome/answer/16283624",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Ask Gemini in Chrome to complete tasks for you with auto browse（Google Chrome 說明）",
+          "url": "https://support.google.com/chrome/answer/16821166",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Browse with Copilot（Microsoft 支援，Edge 代理與安全措施）",
+          "url": "https://support.microsoft.com/en-us/microsoft-copilot/browse-with-copilot",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Brave Leo AI（Brave 官方頁，平台與免費使用）",
+          "url": "https://brave.com/leo/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Brave premium（Brave 官方訂閱價格）",
+          "url": "https://brave.com/premium/",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}
