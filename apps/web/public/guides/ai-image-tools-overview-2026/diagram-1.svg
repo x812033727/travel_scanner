@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">用途對應工具：AI 生圖決策樹 / Choosing an AI image tool by use case</title>
+  <desc id="desc">一張三列的決策樹。左欄是用途，中欄是先試哪一個工具，右欄是要注意的地方。第一列：要一張說明用的圖或改手上的照片，先試 ChatGPT Images 2.5 或 Gemini Nano Banana 2，兩家都有免費層但官網未公布每天張數。第二列：要一整組風格一致的作品，用 Midjourney V8.2，它沒有免費層，Basic 方案月費 10 美元。第三列：素材不能上傳、要在自己電腦處理，用 FLUX.2 klein 離線跑，4B 版本走 Apache 2.0 授權，9B 版本為 FLUX 非商業授權。底部提醒不論走哪一條路都要先確認兩件事：商用權方面，OpenAI 寫你擁有 ChatGPT 的輸出，Midjourney 規定年營收 100 萬美元的公司要用 Pro 或 Mega 方案；標示方面，OpenAI 的圖片含 C2PA 與 SynthID，Gemini 全部含 SynthID，Midjourney 在檔案裡藏一個 ID 標籤。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">用途對應工具：AI 生圖決策樹</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Choosing an AI image tool by use case</text>
+
+  <text x="60" y="128" font-size="18" font-weight="700" fill="#5C6B6B">你要做什麼</text>
+  <text x="600" y="128" font-size="18" font-weight="700" fill="#5C6B6B">先試哪一個</text>
+  <text x="1100" y="128" font-size="18" font-weight="700" fill="#5C6B6B">要注意什麼</text>
+
+  <rect x="60" y="145" width="440" height="140" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="280" y="197" font-size="20" fill="#102A2B" text-anchor="middle">要一張說明用的圖</text>
+  <text x="280" y="235" font-size="20" fill="#102A2B" text-anchor="middle">或改手上的照片</text>
+  <line x1="500" y1="215" x2="586" y2="215" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="600" y="145" width="440" height="140" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="820" y="197" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">ChatGPT Images 2.5</text>
+  <text x="820" y="235" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">或 Gemini Nano Banana 2</text>
+  <line x1="1040" y1="215" x2="1086" y2="215" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1100" y="145" width="440" height="140" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1320" y="197" font-size="20" fill="#102A2B" text-anchor="middle">兩家都有免費層</text>
+  <text x="1320" y="235" font-size="20" fill="#102A2B" text-anchor="middle">官網未公布每天張數</text>
+
+  <rect x="60" y="310" width="440" height="140" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="280" y="388" font-size="20" fill="#102A2B" text-anchor="middle">要一整組風格一致的作品</text>
+  <line x1="500" y1="380" x2="586" y2="380" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="600" y="310" width="440" height="140" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="820" y="388" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">Midjourney V8.2</text>
+  <line x1="1040" y1="380" x2="1086" y2="380" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1100" y="310" width="440" height="140" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1320" y="362" font-size="20" fill="#102A2B" text-anchor="middle">沒有免費層</text>
+  <text x="1320" y="400" font-size="20" fill="#102A2B" text-anchor="middle">Basic 月費 10 美元</text>
+
+  <rect x="60" y="475" width="440" height="140" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="280" y="527" font-size="20" fill="#102A2B" text-anchor="middle">素材不能上傳</text>
+  <text x="280" y="565" font-size="20" fill="#102A2B" text-anchor="middle">要在自己電腦處理</text>
+  <line x1="500" y1="545" x2="586" y2="545" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="600" y="475" width="440" height="140" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="820" y="527" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">FLUX.2 klein</text>
+  <text x="820" y="565" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">在自己電腦離線跑</text>
+  <line x1="1040" y1="545" x2="1086" y2="545" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1100" y="475" width="440" height="140" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1320" y="527" font-size="20" fill="#102A2B" text-anchor="middle">4B 走 Apache 2.0</text>
+  <text x="1320" y="565" font-size="20" fill="#102A2B" text-anchor="middle">9B 為 FLUX 非商業授權</text>
+
+  <rect x="60" y="650" width="1480" height="170" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="90" y="700" font-size="20" font-weight="700" fill="#B8442D">不論走哪一條路，出圖前先確認兩件事</text>
+  <text x="90" y="744" font-size="18" fill="#102A2B">商用權：OpenAI 寫你擁有 ChatGPT 的輸出；Midjourney 年營收 100 萬美元的公司要 Pro 或 Mega</text>
+  <text x="90" y="786" font-size="18" fill="#102A2B">標示：OpenAI 圖片含 C2PA 與 SynthID，Gemini 全部含 SynthID，Midjourney 藏一個 ID 標籤</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
