@@ -21,8 +21,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.affiliates.content_links import PARTNERS_BY_CODE, link_key, partner_link_problem
 from app.affiliates.sub_id import coarse_sub_id
-from app.destinations.catalog import destination_for_id
-from app.destinations.localized import city_name
+from app.destinations.catalog import DESTINATIONS, DestinationProfile, destination_for_id
+from app.destinations.localized import city_name, country_label
 from app.guides.models import (
     GuideArticle,
     GuideArticleLocale,
@@ -33,6 +33,8 @@ from app.guides.models import (
 from app.guides.publication import article_is_live, published_filters
 from app.guides.schemas import (
     SECTION_KINDS,
+    DestinationFacet,
+    DestinationFacetList,
     GuideDocument,
     Kind,
     PartnerLinkBlock,
@@ -44,9 +46,10 @@ from app.guides.schemas import (
     Section,
     SitemapEntry,
     SitemapList,
+    TopicOption,
 )
 from app.guides.series import article_navigation, resolve_article_links
-from app.guides.taxonomy import topic_option
+from app.guides.taxonomy import parent_slugs, topic_ids_including_children, topic_option
 from app.i18n import LOCALES, Locale
 from app.models import AffiliateClick
 from app.problems import AppError
@@ -68,6 +71,21 @@ def kind_filter(kind: Kind | None, section: Section | None) -> tuple[Kind, ...] 
     if kind is None:
         return kinds
     return (kind,) if kind in kinds else ()
+
+
+def country_slug(country: str) -> str:
+    """The URL form of a catalog country name: ``South Korea`` -> ``south-korea``."""
+    return "-".join(country.strip().casefold().split())
+
+
+def destinations_in_country(country: str) -> list[DestinationProfile]:
+    """Every catalog destination whose country has this slug; empty for an unknown one.
+
+    Empty is what the caller must answer with -- a filter on a country the catalog does not
+    know is a request for nothing, not for everything.
+    """
+    wanted = country_slug(country)
+    return [profile for profile in DESTINATIONS if country_slug(profile.country) == wanted]
 
 
 def _target(article_id: UUID, locale: str | None = None) -> str:
@@ -105,6 +123,25 @@ async def _topics_for(
     for article_id, topic in rows:
         grouped.setdefault(article_id, []).append(topic)
     return grouped
+
+
+async def _topic_options_for(
+    session: AsyncSession, article_ids: list[UUID], locale: Locale
+) -> dict[UUID, list[TopicOption]]:
+    """The topic chips of each article, with a sub-topic naming its parent so the reader's
+    side can link the chip to the right hub. Counts are not filled in here: a chip on a
+    card is a label, and the numbers belong to the vocabulary read."""
+    grouped = await _topics_for(session, article_ids)
+    parents = await parent_slugs(session, [topic for items in grouped.values() for topic in items])
+    return {
+        article_id: [
+            topic_option(
+                item, locale, parent=parents.get(item.parent_id) if item.parent_id else None
+            )
+            for item in items
+        ]
+        for article_id, items in grouped.items()
+    }
 
 
 async def _locale_rows(
@@ -179,6 +216,7 @@ async def public_list(
     kind: Kind | None = None,
     section: Section | None = None,
     destination: str | None = None,
+    country: str | None = None,
     topic: str | None = None,
     cursor: str | None = None,
     limit: int = 20,
@@ -187,6 +225,10 @@ async def public_list(
     if kinds is not None and not kinds:
         return PublicList(articles=[], next_cursor=None)
     size = min(max(limit, 1), MAX_PAGE)
+    topic_ids = await topic_ids_including_children(session, topic) if topic else None
+    if topic_ids is not None and not topic_ids:
+        # An unknown topic, like an impossible kind/section pair, is a request for nothing.
+        return PublicList(articles=[], next_cursor=None)
     query = (
         select(GuideArticle, GuideArticleLocale)
         .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
@@ -196,12 +238,19 @@ async def public_list(
         query = query.where(GuideArticle.kind.in_(kinds))
     if destination:
         query = query.where(GuideArticle.destination_id == destination.casefold())
-    if topic:
+    if country:
+        ids = [profile.id for profile in destinations_in_country(country)]
+        if not ids:
+            return PublicList(articles=[], next_cursor=None)
+        query = query.where(GuideArticle.destination_id.in_(ids))
+    if topic_ids:
+        # The parent's id and its children's: an article filed under ``ai-terms`` answers
+        # the ``ai`` filter without also having to carry ``ai``.
         query = query.where(
             GuideArticle.id.in_(
-                select(GuideArticleTopic.article_id)
-                .join(GuideTopic, GuideTopic.id == GuideArticleTopic.topic_id)
-                .where(GuideTopic.slug == topic.casefold())
+                select(GuideArticleTopic.article_id).where(
+                    GuideArticleTopic.topic_id.in_(topic_ids)
+                )
             )
         )
     position = _decode_cursor(cursor)
@@ -220,7 +269,7 @@ async def public_list(
     )
     has_more = len(rows) > size
     rows = rows[:size]
-    topics = await _topics_for(session, [article.id for article, _ in rows])
+    topics = await _topic_options_for(session, [article.id for article, _ in rows], locale)
     articles: list[PublicSummary] = []
     for article, row in rows:
         published = await _published_document(session, row)
@@ -232,7 +281,7 @@ async def public_list(
                 kind=cast(Kind, article.kind),
                 destination_id=article.destination_id,
                 destination_label=destination_label(article.destination_id, locale),
-                topics=[topic_option(item, locale) for item in topics.get(article.id, [])],
+                topics=topics.get(article.id, []),
                 title=published.title,
                 description=published.description,
                 hero=published.hero,
@@ -275,7 +324,7 @@ async def public_article(
             status="unpublished",
             published_locales=[item for item in LOCALES if item in set(published_locales)],
         )
-    topics = (await _topics_for(session, [article.id])).get(article.id, [])
+    topics = (await _topic_options_for(session, [article.id], locale)).get(article.id, [])
     expired = not article_is_live(article)
     document = await _published_document(session, row)
     return PublicArticle(
@@ -285,7 +334,7 @@ async def public_article(
         status="published",
         destination_id=article.destination_id,
         destination_label=destination_label(article.destination_id, locale),
-        topics=[topic_option(item, locale) for item in topics],
+        topics=topics,
         valid_until=article.valid_until,
         expired=expired,
         document=document,
@@ -296,6 +345,48 @@ async def public_article(
         else await resolve_article_links(session, locale, document),
         series=None if expired else await article_navigation(session, kind, slug, locale),
     )
+
+
+async def destination_facets(
+    session: AsyncSession, locale: Locale, section: Section | None = None
+) -> DestinationFacetList:
+    """Every destination with a published article in ``locale``, with its country and how
+    many articles it has, for the travel hub's "browse by destination" block.
+
+    Counted per locale rather than per article: a city whose only guide is Japanese has
+    nothing to show a Korean reader, and a pill that leads to an empty list is worse than
+    no pill. Ordered by catalog position, which already groups cities by country.
+    """
+    kinds = kind_filter(None, section)
+    query = (
+        select(GuideArticle.destination_id, GuideArticle.id)
+        .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
+        .where(
+            GuideArticleLocale.locale == locale,
+            GuideArticle.destination_id.is_not(None),
+            *published_filters(),
+        )
+    )
+    if kinds is not None:
+        if not kinds:
+            return DestinationFacetList(destinations=[])
+        query = query.where(GuideArticle.kind.in_(kinds))
+    rows = await session.execute(query)
+    articles: dict[str, set[UUID]] = {}
+    for destination_id, article_id in rows:
+        articles.setdefault(destination_id, set()).add(article_id)
+    facets = [
+        DestinationFacet(
+            id=profile.id,
+            label=city_name(profile, locale),
+            country=country_slug(profile.country),
+            country_label=country_label(profile, locale),
+            count=len(articles[profile.id]),
+        )
+        for profile in DESTINATIONS
+        if profile.id in articles
+    ]
+    return DestinationFacetList(destinations=facets)
 
 
 # --- partner links ------------------------------------------------------------

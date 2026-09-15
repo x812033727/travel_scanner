@@ -132,7 +132,13 @@ class GuideArticleRevision(Base):
 
 class GuideTopic(Timestamped, Base):
     """A subject tag. ``names_json`` holds one label per site locale, as HotspotTheme does,
-    so an editor can add a topic without a deploy and without an i18n catalog change."""
+    so an editor can add a topic without a deploy and without an i18n catalog change.
+
+    Topics are two levels deep at most: a topic with a ``parent_id`` is a sub-topic of that
+    parent and the parent itself has none. The depth is a rule of ``admin_service`` and the
+    seed, not a CHECK, because a self-referencing CHECK does not survive SQLite's batch
+    rebuild. Filtering by a parent includes its children; listing counts them once.
+    """
 
     __tablename__ = "guide_topics"
     __table_args__ = (
@@ -151,6 +157,16 @@ class GuideTopic(Timestamped, Base):
     # 0072's seed inserts rows without this column, and on a fresh database that seed runs
     # against a table 0001 already built from this model.
     section: Mapped[str] = mapped_column(String(16), default="travel", server_default="travel")
+    # The parent topic, or NULL for a top-level one. SET NULL rather than CASCADE: removing a
+    # parent promotes its children rather than deleting a vocabulary articles still carry.
+    parent_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("guide_topics.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    # One introductory paragraph per locale for the topic's hub page. Optional: a topic
+    # without one still lists its articles, it just has no lead.
+    descriptions_json: Mapped[dict[str, str] | None] = mapped_column(
+        JSON(none_as_null=True), nullable=True
+    )
 
 
 class GuideArticleTopic(Base):

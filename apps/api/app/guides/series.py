@@ -25,10 +25,14 @@ from app.guides.schemas import (
     Kind,
     PublicSeries,
     RichParagraphBlock,
+    Section,
     SeriesEntry,
     SeriesGroup,
+    SeriesIndex,
     SeriesNavigation,
     SeriesPath,
+    SeriesSource,
+    SeriesSummary,
 )
 from app.i18n import Locale
 from app.problems import AppError
@@ -77,6 +81,35 @@ class Catalogue(StrictModel):
             if not set(path.slugs) <= slugs or len(path.slugs) != len(set(path.slugs)):
                 raise ValueError("invalid learning path")
         return self
+
+
+class RegistryEntry(StrictModel):
+    """One hub the section pages list, whatever mechanism holds its order.
+
+    Three mechanisms carry a series today -- the catalogues in ``series_data`` (Claude
+    Code, Codex), the web's own Gemini projection, and the editorial catalogues under
+    ``docs/`` (AI terms, AI search) -- and until now each was linked from ``/life`` by
+    hand. The registry lists what cannot be derived: which hub article a series enters
+    through and which sub-topic it belongs to. Whether it shows is derived at request time
+    from the hub article's publication, so a withdrawn hub takes its card with it.
+    """
+
+    slug: str
+    section: Section
+    hub_slug: str
+    hub_kind: Kind = "life"
+    source: SeriesSource
+    topic: str | None = None
+
+
+@lru_cache(maxsize=1)
+def registry() -> tuple[RegistryEntry, ...]:
+    path = Path(__file__).with_name("series_registry.json")
+    rows = json.loads(path.read_text(encoding="utf-8"))
+    entries = tuple(RegistryEntry.model_validate(row) for row in rows)
+    if len({entry.slug for entry in entries}) != len(entries):
+        raise ValueError("duplicate series in the registry")
+    return entries
 
 
 @lru_cache(maxsize=1)
@@ -149,6 +182,33 @@ async def resolve_article_links(
         if isinstance(node, ArticleInline)
     }
     return [ref for ref, _ in (await published_documents(session, locale, targets)).values()]
+
+
+async def public_series_index(session: AsyncSession, locale: Locale) -> SeriesIndex:
+    """Every registered series whose hub is published in ``locale``, in registry order."""
+    entries = registry()
+    visible = await published_documents(
+        session, locale, {(entry.hub_kind, entry.hub_slug) for entry in entries}
+    )
+    summaries: list[SeriesSummary] = []
+    for entry in entries:
+        if entry.hub_slug not in visible:
+            continue
+        catalogue = next(
+            (item for item in catalogues() if item.slug == entry.slug and item.locale == locale),
+            None,
+        )
+        summaries.append(
+            SeriesSummary(
+                slug=entry.slug,
+                section=entry.section,
+                hub=visible[entry.hub_slug][0],
+                source=entry.source,
+                topic=entry.topic,
+                entries=len(catalogue.entries) if catalogue is not None else None,
+            )
+        )
+    return SeriesIndex(series=summaries)
 
 
 async def public_series(

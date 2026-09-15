@@ -216,7 +216,7 @@ def test_the_seeded_topics_match_the_python_vocabulary():
 #: appended to, never reordered, so concatenating these in revision order has to reproduce
 #: it exactly -- a slug inserted mid-tuple would still pass a set comparison while a fresh
 #: database and an upgraded one disagreed about its display_order.
-LIFE_SEED_MIGRATIONS = ("0074_lifestyle_guides", "0075_finance_topic")
+LIFE_SEED_MIGRATIONS = ("0074_lifestyle_guides", "0075_finance_topic", "0076_guide_topic_hierarchy")
 
 
 def test_the_seeded_life_topics_match_the_python_vocabulary():
@@ -236,6 +236,26 @@ def test_the_seeded_life_display_orders_do_not_collide():
     orders = [
         order for name in LIFE_SEED_MIGRATIONS for _, order, _ in migration(name).LIFE_SEED_TOPICS
     ]
+    assert len(set(orders)) == len(orders)
+    assert orders == sorted(orders)
+
+
+def test_the_seeded_sub_topics_match_the_python_vocabulary():
+    """0076 seeds the sub-topics and the hub leads; both must agree with the application
+    constants for the reason the parent vocabulary must."""
+    from app.guides.taxonomy import LIFE_SEED_SUBTOPICS, LIFE_SEED_TOPICS, LIFE_TOPIC_DESCRIPTIONS
+
+    module = migration("0076_guide_topic_hierarchy")
+    seeded = [(slug, parent, labels) for slug, parent, _, labels in module.LIFE_SEED_SUBTOPICS]
+    assert seeded == list(LIFE_SEED_SUBTOPICS)
+    assert module.TOPIC_DESCRIPTIONS == LIFE_TOPIC_DESCRIPTIONS
+    parents = {slug for slug, _ in LIFE_SEED_TOPICS}
+    assert {parent for _, parent, _, _ in module.LIFE_SEED_SUBTOPICS} <= parents
+    assert set(module.TOPIC_DESCRIPTIONS) <= parents | {slug for slug, _, _ in LIFE_SEED_SUBTOPICS}
+    # One display order column sorts parents and children alike, so none may repeat.
+    orders = [
+        order for name in LIFE_SEED_MIGRATIONS for _, order, _ in migration(name).LIFE_SEED_TOPICS
+    ] + [order for _, _, order, _ in module.LIFE_SEED_SUBTOPICS]
     assert len(set(orders)) == len(orders)
     assert orders == sorted(orders)
 
@@ -506,3 +526,103 @@ def test_0075_seeds_finance_and_its_rollback_spares_the_other_life_topics(monkey
             assert connection.scalar(
                 sa.select(sa.func.count()).select_from(GuideTopic)
             ) == before
+
+
+@pytest.mark.parametrize("fresh_metadata", [False, True])
+def test_0076_adds_the_hierarchy_and_its_rollback_spares_the_earlier_vocabulary(
+    monkeypatch, fresh_metadata
+):
+    """0076 on both shapes: a database 0075 upgraded, and a fresh one where 0001 already
+    built ``guide_topics`` with both columns. Either way the sub-topics land under their
+    parents, a re-run writes nothing, an editor's lead is kept, and the rollback removes
+    exactly this revision's rows and columns while 0074's and 0075's topics stay.
+
+    ``PRAGMA foreign_keys`` stays off for the reason the 0074 test gives.
+    """
+    modules = [migration(name) for name in ("0072_travel_guides", *LIFE_SEED_MIGRATIONS)]
+    for module in modules:
+        monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
+    travel, life, finance, hierarchy = modules
+    engine = sa.create_engine("sqlite://")
+    with engine.begin() as connection:
+        tables = [User.__table__]
+        if fresh_metadata:
+            tables += [
+                GuideTopic.__table__,
+                GuideArticle.__table__,
+                GuideArticleLocale.__table__,
+                GuideArticleRevision.__table__,
+            ]
+        Base.metadata.create_all(connection, tables=tables)
+        with Operations.context(MigrationContext.configure(connection)):
+            travel.upgrade()
+            life.upgrade()
+            finance.upgrade()
+            before = connection.scalar(sa.select(sa.func.count()).select_from(GuideTopic))
+            columns = {c["name"] for c in sa.inspect(connection).get_columns("guide_topics")}
+            assert ("parent_id" in columns) is fresh_metadata
+
+            hierarchy.upgrade()
+
+            columns = {c["name"] for c in sa.inspect(connection).get_columns("guide_topics")}
+            assert {"parent_id", "descriptions_json"} <= columns
+            rows = {
+                row.slug: row
+                for row in connection.execute(
+                    sa.select(
+                        GuideTopic.slug,
+                        GuideTopic.parent_id,
+                        GuideTopic.id,
+                        GuideTopic.section,
+                        GuideTopic.display_order,
+                        GuideTopic.descriptions_json,
+                        GuideTopic.source,
+                    )
+                )
+            }
+            added = len(hierarchy.LIFE_SEED_TOPICS) + len(hierarchy.LIFE_SEED_SUBTOPICS)
+            assert len(rows) == before + added
+            for slug, parent, order, _ in hierarchy.LIFE_SEED_SUBTOPICS:
+                assert rows[slug].parent_id == rows[parent].id, slug
+                assert rows[parent].parent_id is None, parent
+                assert (rows[slug].section, rows[slug].display_order, rows[slug].source) == (
+                    "life",
+                    order,
+                    "seed",
+                )
+            for slug, order, _ in hierarchy.LIFE_SEED_TOPICS:
+                assert rows[slug].parent_id is None and rows[slug].display_order == order
+            # The lead reaches 0074's parents too, not only this revision's rows.
+            assert rows["ai"].descriptions_json == hierarchy.TOPIC_DESCRIPTIONS["ai"]
+            assert rows["ai-terms"].descriptions_json == hierarchy.TOPIC_DESCRIPTIONS["ai-terms"]
+            assert rows["tutorial"].descriptions_json is None
+
+            # A re-run writes nothing, and a lead an editor wrote is never restored.
+            connection.execute(
+                sa.update(GuideTopic)
+                .where(GuideTopic.slug == "ai")
+                .values(descriptions_json={"zh-TW": "自訂"})
+            )
+            hierarchy.upgrade()
+            assert (
+                connection.scalar(sa.select(sa.func.count()).select_from(GuideTopic))
+                == before + added
+            )
+            kept = connection.scalar(
+                sa.select(GuideTopic.descriptions_json).where(GuideTopic.slug == "ai")
+            )
+            assert kept == {"zh-TW": "自訂"}
+
+            hierarchy.downgrade()
+
+            remaining = sections(connection)
+            assert set(remaining) & set(hierarchy.SLUGS) == set()
+            assert {slug for slug, value in remaining.items() if value == "life"} == set(
+                LIFE_SLUGS
+            ) | {"finance"}
+            assert connection.scalar(sa.select(sa.func.count()).select_from(GuideTopic)) == before
+            columns = {c["name"] for c in sa.inspect(connection).get_columns("guide_topics")}
+            assert not columns & {"parent_id", "descriptions_json"}
+            # The rebuild kept the table's other indexes.
+            names = {index["name"] for index in sa.inspect(connection).get_indexes("guide_topics")}
+            assert "ix_guide_topics_active_order" in names

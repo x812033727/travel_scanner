@@ -19,6 +19,7 @@ from app.guides.schemas import (
     BatchVisibilityWrite,
     ContentPartnerList,
     ContentPartnerOption,
+    DestinationFacetList,
     DraftWrite,
     GuideDocument,
     Kind,
@@ -29,11 +30,12 @@ from app.guides.schemas import (
     RestoreWrite,
     RevisionDetail,
     Section,
+    SeriesIndex,
     SitemapList,
     TopicList,
     VisibilityWrite,
 )
-from app.guides.series import public_series
+from app.guides.series import public_series, public_series_index
 from app.i18n import Locale
 from app.infra import client_ip, enforce_named_rate_limit
 from app.problems import AppError
@@ -51,6 +53,7 @@ async def list_public(
     kind: Kind | None = None,
     section: Section | None = None,
     destination: str | None = Query(default=None, max_length=64),
+    country: str | None = Query(default=None, max_length=32),
     topic: str | None = Query(default=None, max_length=64),
     cursor: str | None = Query(default=None, max_length=512),
     limit: int = Query(default=20, ge=1, le=50),
@@ -62,6 +65,7 @@ async def list_public(
         kind=kind,
         section=section,
         destination=destination,
+        country=country,
         topic=topic,
         cursor=cursor,
         limit=limit,
@@ -79,10 +83,31 @@ async def list_public_topics(
     return await taxonomy.list_topics(session, locale, section)
 
 
+@public_router.get("/destinations", response_model=DestinationFacetList)
+async def list_public_destinations(
+    response: Response,
+    session: Session,
+    locale: Locale = "zh-TW",
+    section: Section | None = None,
+) -> DestinationFacetList:
+    response.headers["Cache-Control"] = "no-store"
+    return await service.destination_facets(session, locale, section)
+
+
 @public_router.get("/sitemap", response_model=SitemapList)
 async def public_sitemap(response: Response, session: Session) -> SitemapList:
     response.headers["Cache-Control"] = "no-store"
     return await service.sitemap_entries(session)
+
+
+@public_router.get("/series", response_model=SeriesIndex)
+async def list_public_series(
+    response: Response,
+    session: Session,
+    locale: Locale = "zh-TW",
+) -> SeriesIndex:
+    response.headers["Cache-Control"] = "no-store"
+    return await public_series_index(session, locale)
 
 
 @public_router.get("/series/{series_slug}", response_model=PublicSeries)

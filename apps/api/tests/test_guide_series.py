@@ -24,6 +24,79 @@ def test_catalogue_is_complete_and_references_are_valid():
     assert catalogue.hub == "claude-code-tutorials"
 
 
+def test_the_registry_names_hubs_that_exist_and_series_the_api_can_serve():
+    """A registry row is a promise the section page will keep: its hub is a shipped pack,
+    an ``api-series`` row has a catalogue, and its topic is in the lifestyle vocabulary."""
+    from app.guides.content_pack import load_packs
+    from app.guides.retopic import LIFE_VOCABULARY
+    from app.guides.series import registry
+
+    entries = registry()
+    assert [entry.slug for entry in entries] == [
+        "claude-code",
+        "codex",
+        "gemini",
+        "ai-terms",
+        "ai-search-terms",
+    ]
+    shipped = {pack.slug: pack.kind for pack in load_packs()}
+    catalogued = {item.slug for item in catalogues()}
+    for entry in entries:
+        assert shipped.get(entry.hub_slug) == entry.hub_kind, entry.slug
+        assert entry.section == "life"
+        assert entry.topic in LIFE_VOCABULARY, entry.slug
+        if entry.source == "api-series":
+            assert entry.slug in catalogued, entry.slug
+
+
+async def test_the_series_index_lists_only_hubs_published_in_the_locale(database, actor):
+    from app.guides.series import public_series_index
+
+    async with guides.client(guides.make_app(database, actor)) as api:
+        hub = await guides.create_article(
+            api, slug="claude-code-tutorials", kind="life", destination_id=None, topics=["ai"]
+        )
+        await guides.publish(api, hub["id"], "zh-TW", hub["version"])
+        terms = await guides.create_article(
+            api, slug="ai-terms-index", kind="life", destination_id=None, topics=["ai"]
+        )
+        assert terms["status"] == "draft"
+
+        response = await api.get("/guides/series", params={"locale": "zh-TW"})
+        assert response.status_code == 200, response.text
+        assert response.headers["cache-control"] == "no-store"
+        assert response.json() == {
+            "series": [
+                {
+                    "slug": "claude-code",
+                    "section": "life",
+                    "hub": {
+                        "kind": "life",
+                        "slug": "claude-code-tutorials",
+                        "title": "成田機場到東京車站怎麼走",
+                    },
+                    "source": "api-series",
+                    "topic": "claude-code",
+                    "entries": 96,
+                }
+            ]
+        }
+        assert (await api.get("/guides/series", params={"locale": "ja"})).json() == {"series": []}
+        # Publishing the glossary hub adds its row, in registry order, with no catalogue count.
+        await guides.publish(api, terms["id"], "zh-TW", terms["version"])
+        rows = (await api.get("/guides/series", params={"locale": "zh-TW"})).json()["series"]
+        assert [(row["slug"], row["entries"]) for row in rows] == [
+            ("claude-code", 96),
+            ("ai-terms", None),
+        ]
+
+    async with database() as session:
+        assert [row.slug for row in (await public_series_index(session, "zh-TW")).series] == [
+            "claude-code",
+            "ai-terms",
+        ]
+
+
 def test_codex_catalogues_select_exact_locale_and_preserve_stable_routes():
     from app.guides.series import catalogue_for_article
 

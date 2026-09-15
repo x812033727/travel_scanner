@@ -63,6 +63,22 @@ labels stay byte-identical; nothing else stops two tables drifting. The lifestyl
 vocabulary (`ai`, `tutorial`, `software`, `gadgets`, `productivity`, `daily`, `misc`) shares
 nothing with either list on purpose, and a test holds the three sets disjoint.
 
+Since `0076_guide_topic_hierarchy` topics are **two levels deep**: a lifestyle parent such as
+`ai` holds sub-topics such as `ai-terms` (`guide_topics.parent_id`, nullable, SET NULL on
+delete; a parent never has a parent, which `admin_service` and the seed enforce rather than
+a CHECK). An article may carry the parent, the child or both; `?topic=<parent>` lists the
+children's articles too (`taxonomy.topic_ids_including_children`), and `GET /guides/topics`
+returns each topic's `parent`, its hub lead (`descriptions_json`, per locale) and how many
+articles each locale publishes under it (`count`, `counts`; a parent counts the distinct
+union of itself and its children). `tutorial` is deliberately not a parent: it marks the
+format of most lifestyle articles, not their subject. The travel vocabulary stays one level;
+its second axis is the destination, grouped by country (`?country=japan`, mapped to the
+catalog's cities by `service.destinations_in_country`, and `GET /guides/destinations` for
+the hub's country groups). Three slugs are refused as article slugs -- `topics`, `series`,
+`search` -- because the web routes own those path segments. The vocabulary, the rules that
+re-file existing packs (`app/guides/retopic.py`) and the phases that build on this live in
+[`docs/article-architecture.md`](article-architecture.md).
+
 ## Storage
 
 `site_pages` keys a document by `(slug, locale)` in one table because its slug set is four
@@ -189,9 +205,12 @@ only — for any path it does not recognise.
 Public, all `Cache-Control: no-store` (the web layer does the caching):
 
 ```
-GET /api/v1/guides?locale=&kind=&section=&destination=&topic=&cursor=&limit=
-GET /api/v1/guides/topics?locale=&section=
+GET /api/v1/guides?locale=&kind=&section=&destination=&country=&topic=&cursor=&limit=
+GET /api/v1/guides/topics?locale=&section=          parents then children, with per-locale counts
+GET /api/v1/guides/destinations?locale=&section=    destinations with a published article, by country
+GET /api/v1/guides/series?locale=                   every registered series hub published in the locale
 GET /api/v1/guides/sitemap
+GET /api/v1/guides/series/{series_slug}?locale=
 GET /api/v1/guides/{kind}/{slug}?locale=
 POST /api/v1/guides/{kind}/{slug}/partner-links/{key}/click?locale=   count one partner-link click, 204
 ```
@@ -201,7 +220,15 @@ empty intersection (`?section=life&kind=intel`) returns an empty list rather tha
 unfiltered one — the natural "skip the filter when the tuple is empty" refactor is what
 would leak lifestyle articles into a travel-scoped response. The keyset cursor encodes only
 `published_at` and the slug, so a cursor minted on one section is accepted on the other;
-harmless, because the section predicate is re-applied to every page.
+harmless, because the section predicate is re-applied to every page. `topic` names a parent
+or a sub-topic and an unknown slug answers an empty list; `country` is a catalog country in
+URL form (`japan`, `south-korea`) and an unknown one answers an empty list too.
+
+`GET /guides/series` reads `app/guides/series_registry.json`, the one list of series and
+tutorial hubs across the three mechanisms that hold one (the `series_data` catalogues, the
+web's Gemini projection, the editorial catalogues under `docs/`): a row names the hub
+article and the sub-topic a series belongs to, and the row shows in a locale only while
+that hub article is published there.
 
 `GET /guides/sitemap` is the publication-aware enumeration `apps/web/app/sitemap.ts` consumes:
 one row per published, non-expired article × locale, capped at 1,000 and ordered newest first. The article response carries `published_locales` so the web layer can emit

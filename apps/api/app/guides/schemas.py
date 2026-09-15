@@ -355,10 +355,34 @@ class TopicOption(BaseModel):
     slug: str
     label: str
     section: Section
+    # The parent's slug for a sub-topic, or None at the top level. Optional on the wire so
+    # a web build older than the two-level vocabulary keeps parsing the list.
+    parent: str | None = None
+    # The topic hub's lead paragraph in the reader's language, when the topic has one.
+    description: str | None = None
+    # Published articles under this topic in the request locale, and in every locale, so a
+    # hub page can decide its own indexability and its hreflang set from one read. A parent
+    # counts the distinct union of itself and its children.
+    count: int = 0
+    counts: dict[str, int] = Field(default_factory=dict)
 
 
 class TopicList(BaseModel):
     topics: list[TopicOption]
+
+
+class DestinationFacet(BaseModel):
+    """One destination with at least one published article in the request locale."""
+
+    id: str
+    label: str
+    country: str
+    country_label: str
+    count: int
+
+
+class DestinationFacetList(BaseModel):
+    destinations: list[DestinationFacet]
 
 
 class ContentPartnerOption(BaseModel):
@@ -613,6 +637,25 @@ class PublicSeries(BaseModel):
     groups: list[SeriesGroup]
     paths: list[SeriesPath]
     entries: list[SeriesEntry]
+
+
+SeriesSource = Literal["api-series", "web-gemini", "catalogue"]
+
+
+class SeriesSummary(BaseModel):
+    """One series or tutorial hub the reader can enter from a section page. ``entries`` is
+    the catalogue's count where the API holds the catalogue, and unknown otherwise."""
+
+    slug: str
+    section: Section
+    hub: ArticleReference
+    source: SeriesSource
+    topic: str | None = None
+    entries: int | None = None
+
+
+class SeriesIndex(BaseModel):
+    series: list[SeriesSummary]
 
 
 class SeriesNavigation(BaseModel):

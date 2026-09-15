@@ -381,9 +381,17 @@ async def _write_revision(
 # --- admin operations ---------------------------------------------------------
 
 
+# Path segments the web routes own under /guides and /life: a hub of topics, a series
+# directory and the search page. An article with one of these slugs would be unreachable,
+# shadowed by the static route, so the slug is refused before the row exists.
+RESERVED_SLUGS = frozenset({"topics", "series", "search"})
+
+
 async def create_article(
     session: AsyncSession, actor: User, payload: ArticleCreate
 ) -> ArticleDetail:
+    if payload.slug in RESERVED_SLUGS:
+        raise AppError(422, "guide_slug_reserved", "這個網址代稱是頁面路徑，不能當文章代稱")
     destination_id = _validate_destination(payload.destination_id)
     _validate_document(payload.document, destination_id)
     topics = await _resolve_topics(session, payload.topics, section_of(payload.kind))
