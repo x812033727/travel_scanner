@@ -1,0 +1,380 @@
+{
+  "slug": "ai-avatar-video-tools",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 虛擬主播與數位分身：HeyGen 的方案、同意規則與標示怎麼看",
+      "description": "數位分身影片是把腳本交給一個照你錄的 AI 主播念出來。這篇照 HeyGen 官網 2026 年 9 月 14 日的頁面整理免費與付費方案的月費、點數費率、分身名額與長度上限，錄製素材與同意影片的官方要求、驗證會卡在哪裡，政策禁止的題材，以及浮水印、輸出解析度與 AI 標示該由誰決定。",
+      "hero": {
+        "src": "/guides/ai-avatar-video-tools/hero.jpg",
+        "alt": "插圖：左邊一張帶勾選標記的同意卡片，中間一張腳本紙，右邊一個圓角螢幕裡有抽象人形剪影與說話的弧線，用箭頭依序串起來",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "數位分身影片的作法是：先錄一段自己的影片當素材，讓工具學會你的動作與說話節奏，之後打一段腳本，畫面上的「你」就會照著念。以 HeyGen 為例，免費方案每月 3 支、每支最長 1 分鐘、輸出最高 1080p，而且一定帶浮水印；要拿掉浮水印、把單支拉長到 30 分鐘，從月費 29 美元的 Creator 開始。真正會卡住的多半不是價格，而是同意影片過不了驗證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照 HeyGen 官網與說明中心在 2026 年 9 月 14 日的頁面，整理方案與點數費率、分身類型與錄製條件、同意影片的規格與退件原因、政策禁止的題材、輸出規格與浮水印，以及 AI 標示由誰負責。這個環境無法實際上傳影片測試，數字與規則都只引官方頁；官方頁沒寫的就寫「以官網為準」。"
+        },
+        {
+          "type": "heading",
+          "text": "數位分身影片是什麼：一段腳本，換一個會開口的你",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HeyGen 的拍攝說明頁把一個分身拆成三種素材：動作來自你的影片，也就是怎麼移動、手勢與眨眼；外觀來自照片，也就是服裝、場景與構圖；聲音來自音訊，也就是語氣與口音。官方建議先錄一段好的影片當基準，因為一段影片同時提供這三樣，之後就算換掉外觀或聲音，動作仍然綁在你身上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方用「訓練一個很會模仿的人」來形容：之後它不是重播你那段片，而是拿新的腳本重新演一次；素材裡的咳嗽、突兀動作或機械感的聲音，也會原封不動長在分身上。"
+        },
+        {
+          "type": "heading",
+          "text": "方案、點數與分身名額",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HeyGen 的付費方案用點數（credits）當單一額度，跨功能共用。定價頁寫免費方案每月 3 支影片、每支最長 1 分鐘、輸出最高 1080p、500 多個公版影片分身與 1 個自訂影片分身、30 多種語言；付費方案的月費、年繳金額與額度整理在下表。官方另外註明，Pro 各級距的功能相同，差別只在每月點數，隨時可以換級距。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "月繳月費（美元）",
+            "年繳月費（美元）",
+            "每月點數、長度上限與分身名額"
+          ],
+          "rows": [
+            [
+              "Free",
+              "0",
+              "0",
+              "每月 3 支、每支 1 分鐘、1080p、1 個自訂影片分身、帶浮水印"
+            ],
+            [
+              "Creator",
+              "29",
+              "24（一年 288）",
+              "600 點、單支 30 分鐘、1080p、可移除浮水印"
+            ],
+            [
+              "Pro",
+              "49 起",
+              "41 起",
+              "1,000 點起、最高 100,000 點（4,300 美元）、單支 30 分鐘、4K"
+            ],
+            [
+              "Business",
+              "149",
+              "119（一年 1,428）",
+              "1,500 點、單支 60 分鐘、4K、5 個以上自訂影片分身、每座位另計 20 美元"
+            ],
+            [
+              "Enterprise",
+              "洽詢業務",
+              "洽詢業務",
+              "影片長度無上限、4K、10 個以上自訂影片分身"
+            ]
+          ],
+          "caption": "HeyGen 定價頁的個人與商業方案，2026 年 9 月 14 日查證；年繳欄位為官方頁折算後的每月金額。"
+        },
+        {
+          "type": "paragraph",
+          "text": "點數怎麼扣，官方說明頁列得很細：Avatar IV 的照片外觀每分鐘 16 點、影片外觀 31 點，Avatar V 不分外觀都是每分鐘 48 點，較舊的 Avatar III 則是 7 點與 4 點。影片翻譯帶對嘴的一般模式每分鐘 6 點、精準模式 10 點，不帶對嘴每分鐘 4 點。Avatar IV 的說明頁另外註明，只按實際生成的秒數計費，不是按整支影片長度。Business 用完可以加購，每點 0.05 美元、以 100 點 5 美元為一組；Creator 與 Pro 不賣單次點數包，只能換更高的級距。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分身名額要分開看。定價頁寫免費 1 個自訂影片分身、Business 5 個以上、企業版 10 個以上；說明中心則寫付費方案預設 5 個，可加購，每個名額每月 29 美元或每年 300 美元。同一個名額最多 500 種外觀，都綁同一份同意影片、同一個人，每個帳單週期只能刪掉重傳一次。兩份官方頁寫法不一致，實際數量以你帳號內的方案頁為準。聲音則是免費方案 1 個語音克隆、付費方案不限數量，錄多久、同意怎麼確認、商用授權綁在哪裡，同系列另有一篇。"
+        },
+        {
+          "type": "link",
+          "text": "ElevenLabs 與語音克隆：配音、方案與同意規則怎麼看",
+          "url": "https://mokaair.com/zh-TW/life/ai-voice-cloning-elevenlabs"
+        },
+        {
+          "type": "heading",
+          "text": "分身類型與錄製要求：從 15 秒到 5 分鐘",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HeyGen 目前同時提供三代引擎。Avatar IV 從一張照片加一段音訊就能生成，官方說最適合卡通、3D 或非人類的角色，照片轉影片的腳本上限是 5,000 個字元。Avatar V 是新的數位分身模型，官方寫只要一段 15 秒的參考影片就能學會你的動作，再套到任何一張你的照片上；它只支援影片外觀，照片外觀仍要用 Avatar IV，在 Video Agent 最長支援 3 分鐘。"
+        },
+        {
+          "type": "paragraph",
+          "text": "影片素材的條件寫在拍攝說明頁：至少錄一段 2 分鐘不中斷的講話，不能剪接，必須一鏡到底；眼睛直視鏡頭，手不高過胸口，頭部左右轉動不要超過 30 度；開頭先停 2 到 3 秒，長句之間停 1 到 2 秒而且閉著嘴。建立分身的說明頁補充，錄到 5 分鐘訓練結果更好。官方也提醒，就算之後要換別的聲音，素材裡也一定要有你說話的聲音，對嘴才會準。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "錄製數位分身素材前的自查清單（依 HeyGen 拍攝說明頁）",
+          "code": "畫質：1080p、30fps 起跳，4K、60fps 更好\n長度：一鏡到底至少 2 分鐘，建議錄到 5 分鐘\n方向：16:9 或 9:16 都可以，中途不要轉向\n聲音：一定要有你說話的聲音，房間不要有回音或旁人講話\n動作：手不高過胸口，頭部左右不超過 30 度\n停頓：開頭停 2 到 3 秒，長句之間停 1 到 2 秒，停的時候閉嘴\n服裝：避開大 logo、大字、細密花紋\n手機：長按螢幕上的臉鎖定對焦與曝光，先試錄 5 秒確認亮度不飄"
+        },
+        {
+          "type": "heading",
+          "text": "同意影片：官方要求本人錄，而且要念一段口令",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HeyGen 把同意影片寫成 AI 安全流程的一部分：每建立一個以影片為基礎的數位分身，都必須先錄一段簡短的同意影片，官方說這能確保分身只在本人知情並允許下被建立。替別人做分身時，那個人必須自己錄；他不必在你旁邊，可以掃 QR Code 用手機送出，但同意影片必須和分身素材同時錄製、同時送出。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "照頁面上顯示的同意文字，一字不差地念完",
+            "長度控制在 30 秒以內，光線與收音要清楚",
+            "接受的格式是 MP4、MOV 或 WebM，解析度 480p 到 4K，檔案最大 10 GB",
+            "可以上傳檔案或貼 Google 雲端硬碟連結，也可以用筆電攝影機或手機現場錄",
+            "同意影片裡的人必須和分身素材是同一人，不能錄一段螢幕播放的同意聲明"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "錯誤代碼說明頁列出驗證失敗的原因：同意影片與素材不是同一人、偵測不到臉、沒有聲音、超過長度上限，都會被退。最容易漏掉的是，同意文字結尾會給一組四個英文字母的代碼，用來確認這段影片不是事先錄好的；官方建議字母一個一個分開念，整段唸快一點反而容易通過。官方也明說，同意影片不能使用 AI 生成的內容。退件原因會顯示在分身卡片上。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "同意影片要和素材同一個人、同一種光線，代碼要分開念",
+          "text": "官方錯誤代碼頁把「身分比對失敗」列為第一種同意錯誤，並指出兩段影片的光線或相機品質差太多也會比對不過。可行的作法是素材錄完先別收設備，原地接著錄同意影片，讓光線、背景與鏡頭一致；四個英文字母的代碼一個一個念清楚。替別人做分身時，同意影片一定要本人錄，這是官方政策的硬性要求，不是建議。"
+        },
+        {
+          "type": "heading",
+          "text": "官方政策畫的線：誰的臉、什麼題材不能做",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HeyGen 的內容審核政策（頁面標示 2024 年 7 月 25 日生效）在「所有權、同意與違規」一節寫得很直接：建立自訂分身時，必須取得被呈現者（官方稱為 Actor）的明確同意，除非已取得明確同意，否則建立他人的分身是嚴格禁止的。同一節還寫，Actor 隨時可以要求把肖像從服務中移除，而你有責任在你發布過的任何地方配合移除含該 Actor 的內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "被列為禁止的分身包括：呈現違法、誹謗、色情、暴力或欺騙性的形象；看起來未滿 18 歲的人物；未經明確同意的真實人物，包含名人與公眾人物；未經著作權人同意的侵權形象。影片內容那一節另外把暴力與犯罪、詐騙與詐欺、霸凌與騷擾、兒少安全、不實訊息與仇恨言論列為不可上傳或生成，並把「政治」單獨列為禁止：顯示政治意見、涉及政治事務、推廣政黨或候選人、競選或遊說政府官員的內容，特別是與各國選舉有關的內容。服務條款另外禁止未經授權冒充他人，也要求使用者年滿 18 歲。"
+        },
+        {
+          "type": "paragraph",
+          "text": "審核政策寫的是自動化工具掃描與標記，另有檢舉信箱，被標記的內容也可能再交由人工審核；違規可能被移除、停權或通報，使用者可以申訴。條款另寫明，在 HeyGen 與你之間，你擁有輸入與輸出的一切權利，也不限制商業用途。至於什麼樣的合成影片在台灣會踩到法律，本文不下法律結論，站上與同系列另有兩篇專門談。"
+        },
+        {
+          "type": "link",
+          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+        },
+        {
+          "type": "heading",
+          "text": "輸出規格、浮水印與 AI 標示",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方下載說明頁寫進階設定可以選 720p、1080p 或 4K，4K 只開放給 Pro、Business 與企業版，而且素材本身也要是 4K；同一頁可以另外下載純音訊或 SRT 字幕檔，SCORM 匯出只給 Business 與企業版，官方也明說不支援 HDR 輸出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "浮水印寫在專門的說明頁：預設所有 HeyGen 影片都帶 HeyGen 的 logo 浮水印，移除只開放給付費方案，免費使用者的影片一律帶浮水印且沒有移除選項。付費使用者在送出影片的視窗左下角把浮水印開關關掉即可，關一次會沿用到後續影片。浮水印的實際位置與樣式，官方頁沒有寫，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標示要分兩層看。HeyGen 在歐盟人工智慧法規的說明頁寫，作為提供者，它承諾在 2026 年 12 月 2 日前備妥三件事：對 AI 生成內容加上看不見的浮水印、嵌入說明內容來源的中繼資料，以及一個可以查驗內容是否由 HeyGen 生成的機制。至於觀眾看得到的標示，官方寫得很明白：你是部署者，必須自己決定怎麼向觀眾聲明內容是用 AI 製作的，HeyGen 無法替你決定。各平台的規範不一樣，同系列另有一篇整理。"
+        },
+        {
+          "type": "link",
+          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-avatar-video-tools/diagram-1.svg",
+          "alt": "圖解：錄製素材、同意驗證、寫腳本、生成、輸出與標示五個步驟由左到右排列，每一步標出官方頁寫的條件",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看：每一格是一個步驟，格子裡是官方頁對那一步寫明的條件；最下面一條是免費方案的上限。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "台灣可用性、語言，與其他同類工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "語言方面，影片翻譯的語言清單把中文拆得很細，明確列出台灣華語的繁體選項（Taiwanese Mandarin - Traditional），還有粵語繁體與數種官話變體；定價頁寫免費方案 30 多種語言、付費方案 175 種語言與方言。介面語言是另一回事：官網語言選單只有英文，台灣 App Store 上架的 AI Avatar Generator - HeyGen 列的語言是英文、葡萄牙文與西班牙文。官方頁沒有列支援地區清單，能不能在台灣註冊與付款，以官網為準。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "影片說明欄的 AI 揭露句型（可直接改寫）",
+          "code": "本片畫面中的人物為 AI 數位分身，由本人錄製素材並完成同意驗證後生成。\n本片旁白為 AI 合成語音，腳本由本人撰寫與校對。\n本片的外語版本由 AI 配音與對嘴生成，原始語言版本為中文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同類工具可以一起看。Synthesia 的定價頁寫 Basic 免費方案不能下載影片、也不能移除 Synthesia 的 logo，要下載得從月費 29 美元的 Starter 起，個人分身（Personal Avatar）列在月費 89 美元的 Creator，共 5 個；責任 AI 頁把分身的同意要求列為反深偽措施之一。D-ID 官網主打數位人平台，寫支援 120 多種語言的影片與即時互動。可靈（Kling）把對嘴（Lip Sync）與 Avatar 放在開發者平台的任務類型裡，官方描述是上傳角色圖片、加上語音輸入，生成帶自然表演與對嘴的分身。HeyGen 的 API 走用量計費，官方表列以 Avatar IV 生成數位分身每分鐘 720p 或 1080p 是 4 美元、4K 是 5 美元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果只是想先確認這條路走不走得通，可以照這個順序試。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "用免費方案錄一段 2 分鐘的素材，原地接著錄 30 秒以內的同意影片，先確認驗證會過。",
+            "生成一支 1 分鐘的影片，看口型、手勢與聲音能不能接受，記得免費方案一定帶浮水印。",
+            "確定要用，再決定付 Creator 去浮水印、把長度放寬到 30 分鐘，或直接跳 Pro 用 4K。",
+            "發布前把 AI 標示寫進說明欄，並確認題材沒有踩到政策裡的政治與詐騙類別。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "腳本、節奏與剪接和一般影片沒有兩樣，外語版本的字幕與譯名各有做法，這幾篇可以接著看。"
+        },
+        {
+          "type": "link",
+          "text": "教學影片怎麼剪：旁白、示範畫面與學習節奏",
+          "url": "https://mokaair.com/zh-TW/life/course-video-editing"
+        },
+        {
+          "type": "link",
+          "text": "短影音企劃：Reels 的腳本、製作與成效回顧",
+          "url": "https://mokaair.com/zh-TW/life/short-video-marketing"
+        },
+        {
+          "type": "link",
+          "text": "AI 上字幕與翻譯影片：CapCut、Whisper 與 YouTube 三條路",
+          "url": "https://mokaair.com/zh-TW/life/ai-video-subtitles-translation"
+        },
+        {
+          "type": "link",
+          "text": "用 Claude 做中英日翻譯：語氣、專有名詞與術語表",
+          "url": "https://mokaair.com/zh-TW/life/claude-for-translation-zh-tw"
+        }
+      ],
+      "sources": [
+        {
+          "title": "HeyGen 定價頁（各方案月費、年繳金額、點數額度、長度上限與分身名額）",
+          "url": "https://www.heygen.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 內容審核政策（分身的所有權與同意、禁止的分身與內容類別）",
+          "url": "https://www.heygen.com/moderation-policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 服務條款（輸入與輸出的權利、禁止冒充、年齡規定）",
+          "url": "https://www.heygen.com/terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：錄製你的同意影片（規格、提交方式與常見問題）",
+          "url": "https://help.heygen.com/en/articles/12092609-recording-your-consent-video",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：用 Avatar IV 建立第一個數位分身（拍攝條件與名額規則）",
+          "url": "https://help.heygen.com/en/articles/12089286-create-your-first-digital-twin-video-avatar-with-avatar-iv",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：數位分身拍攝建議（三種素材、畫質、停頓與角度）",
+          "url": "https://help.heygen.com/en/articles/8389138-digital-twin-video-avatar-filming-tips",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：數位分身常見問題（名額、加購價、外觀數與重做規則）",
+          "url": "https://help.heygen.com/en/articles/9380615-digital-twin-faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：數位分身建立錯誤代碼（同意驗證失敗的原因）",
+          "url": "https://help.heygen.com/en/articles/9824740-digital-twin-creation-error-codes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：Avatar IV 完整指南（適用情境、點數費率與字元上限）",
+          "url": "https://help.heygen.com/en/articles/11269603-heygen-avatar-iv-complete-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：Avatar V 上線公告（15 秒參考影片與點數費率）",
+          "url": "https://help.heygen.com/en/articles/14602974-avatar-v-is-now-available-on-heygen",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：點數怎麼用（各功能每分鐘費率與加購價）",
+          "url": "https://help.heygen.com/en/articles/15126059-how-to-use-credits-on-heygen",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：如何移除 HeyGen 浮水印（付費方案限定）",
+          "url": "https://help.heygen.com/en/articles/11057301-how-to-remove-the-heygen-watermark",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：如何下載或匯出影片（解析度、字幕檔與 HDR 說明）",
+          "url": "https://help.heygen.com/en/articles/9834825-how-to-download-or-export-a-video",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：對歐盟人工智慧法規的因應（浮水印、中繼資料與查驗機制）",
+          "url": "https://help.heygen.com/en/articles/11395771-heygen-s-compliance-with-the-eu-ai-act",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：影片翻譯支援的語言清單",
+          "url": "https://help.heygen.com/en/articles/11391941-video-translation-languages-we-support",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HeyGen 說明中心：API 定價說明（用量計費與各引擎每分鐘單價）",
+          "url": "https://help.heygen.com/en/articles/10060327-heygen-api-pricing-explained",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Synthesia 定價頁（方案、下載與 logo 限制、個人分身數）",
+          "url": "https://www.synthesia.io/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Synthesia 責任 AI 頁（分身的同意要求與深偽因應）",
+          "url": "https://www.synthesia.io/responsible-ai",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "D-ID 官方網站（數位人平台與語言支援）",
+          "url": "https://www.d-id.com/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple App Store 台灣區：AI Avatar Generator - HeyGen（上架與語言資訊）",
+          "url": "https://apps.apple.com/tw/app/ai-avatar-generator-heygen/id6711356409",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

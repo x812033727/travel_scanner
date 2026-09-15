@@ -12,7 +12,7 @@
   "locales": {
     "zh-TW": {
       "title": "在 VPS 上自架 AI 服務：Ollama＋Open WebUI",
-      "description": "一台 Linux VPS 就能把 Ollama 與 Open WebUI 架成自己或小團隊專用的 AI 服務：Ollama 用官方腳本裝成 systemd 服務，Open WebUI 用 Docker 跑起來只綁 127.0.0.1，前面用 Caddy 或 Nginx 加 Certbot 開 HTTPS。這篇照官方文件寫指令、環境變數、反向代理設定、關閉註冊與防火牆，說明為什麼 11434 埠不能對外，並交代備份、更新與費用。",
+      "description": "自架 AI 只要一台 Linux VPS：把 Ollama 與 Open WebUI 架成自己或小團隊專用的服務，Ollama 用官方腳本裝成服務，Open WebUI 用 Docker 跑起來只綁 127.0.0.1，前面用 Caddy 或 Nginx 開 HTTPS。這篇照官方文件寫指令、環境變數、反向代理、關閉註冊與防火牆，說明為什麼 11434 埠不能對外，並交代備份、更新與費用。",
       "hero": {
         "src": "/guides/self-host-ai-on-vps/hero.jpg",
         "alt": "插圖：一台筆電經過一把鎖連到一台伺服器主機，代表加密連線到自己的機器。",
@@ -27,7 +27,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "把 Ollama 裝在自己的筆電上，只有坐在那台電腦前面才用得到。換成一台 Linux VPS，同一組工具就變成一個隨時開著、手機和公司電腦都連得上的服務：Ollama 負責跑模型，Open WebUI 負責介面與帳號，前面再放一台反向代理接上網域與 HTTPS。結論先講：指令都是現成的，真正要小心的是把埠關好，因為 Ollama 的本機 API 不需要任何驗證，這一點決定了整台機器的設定方式。"
+          "text": "把 Ollama 裝在自己的筆電上，只有坐在那台電腦前面才用得到。換成一台 Linux VPS，同一組工具就變成一個隨時開著、手機和公司電腦都連得上的服務：Ollama 負責跑模型，Open WebUI 負責介面與帳號，前面再放一台反向代理接上網域與 HTTPS。結論先講：指令都是現成的，真正要小心的是把埠關好，因為 Ollama 的本機 API 不需要任何驗證，這一點決定了整台機器的設定方式。搜「自架 AI」的人，重點不在指令，在把埠關好。"
         },
         {
           "type": "paragraph",

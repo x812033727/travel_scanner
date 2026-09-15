@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">錄音、克隆、標示 / Record, clone, disclose</title>
+  <desc id="desc">幾何插圖。畫面左邊是一支深綠色的麥克風，由膠囊狀的頭、弧形支架、立柱與底座組成。中間是一個淺綠圓形，裡面排著九根由矮到高再到矮的聲波柱，代表被複製出來的聲音。右邊是一張白色卡片，上面有三條代表文字的灰線與一個綠色圓形勾選標記，代表同意與標示的紀錄。三個元素由左至右用箭頭串起來，下方寫著「錄音、克隆、標示」。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <circle cx="160" cy="150" r="26" fill="#E3F0EF"/>
+  <circle cx="1470" cy="180" r="38" fill="#E6F0F7"/>
+  <circle cx="1400" cy="740" r="22" fill="#E3F0EF"/>
+  <circle cx="210" cy="720" r="34" fill="#E6F0F7"/>
+
+  <!-- microphone -->
+  <rect x="255" y="240" width="90" height="180" rx="45" fill="#0D6B68"/>
+  <path d="M 210 386 Q 300 500 390 386" fill="none" stroke="#0D6B68" stroke-width="14" stroke-linecap="round"/>
+  <line x1="300" y1="438" x2="300" y2="556" stroke="#0D6B68" stroke-width="14" stroke-linecap="round"/>
+  <rect x="236" y="556" width="128" height="16" rx="8" fill="#0D6B68"/>
+  <line x1="272" y1="286" x2="328" y2="286" stroke="#F7F1E8" stroke-width="8" stroke-linecap="round"/>
+  <line x1="272" y1="320" x2="328" y2="320" stroke="#F7F1E8" stroke-width="8" stroke-linecap="round"/>
+  <line x1="272" y1="354" x2="328" y2="354" stroke="#F7F1E8" stroke-width="8" stroke-linecap="round"/>
+
+  <line x1="432" y1="400" x2="608" y2="400" stroke="#5C6B6B" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <!-- cloned voice -->
+  <circle cx="800" cy="400" r="160" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="690" y="380" width="16" height="40" rx="8" fill="#2E7D5B"/>
+  <rect x="716" y="355" width="16" height="90" rx="8" fill="#0D6B68"/>
+  <rect x="742" y="330" width="16" height="140" rx="8" fill="#2E7D5B"/>
+  <rect x="768" y="305" width="16" height="190" rx="8" fill="#0D6B68"/>
+  <rect x="794" y="290" width="16" height="220" rx="8" fill="#D97A2B"/>
+  <rect x="820" y="305" width="16" height="190" rx="8" fill="#0D6B68"/>
+  <rect x="846" y="330" width="16" height="140" rx="8" fill="#2E7D5B"/>
+  <rect x="872" y="355" width="16" height="90" rx="8" fill="#0D6B68"/>
+  <rect x="898" y="380" width="16" height="40" rx="8" fill="#2E7D5B"/>
+
+  <line x1="976" y1="400" x2="1128" y2="400" stroke="#5C6B6B" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <!-- consent and disclosure card -->
+  <rect x="1150" y="272" width="330" height="256" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <rect x="1186" y="318" width="210" height="14" rx="7" fill="#5C6B6B"/>
+  <rect x="1186" y="356" width="160" height="14" rx="7" fill="#5C6B6B"/>
+  <rect x="1186" y="394" width="190" height="14" rx="7" fill="#5C6B6B"/>
+  <circle cx="1392" cy="466" r="42" fill="#2E7D5B"/>
+  <path d="M 1372 466 L 1386 482 L 1414 448" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="800" y="742" font-size="54" font-weight="700" fill="#102A2B" text-anchor="middle">錄音、克隆、標示</text>
+</svg>

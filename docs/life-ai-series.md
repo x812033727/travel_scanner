@@ -1,4 +1,4 @@
-# 生活分享：AI 工具介紹與教學系列（249 篇總表）
+# 生活分享：AI 工具介紹與教學系列（260 篇總表）
 
 這份文件是「生活分享」（`kind: "life"`，`/{locale}/life/{slug}`）AI 系列的**編輯總表**：每一篇
 的 slug、標題、主題、配圖方式與合作連結在這裡定死，批次任務票的 `scope` 才能精確到檔案。
@@ -26,6 +26,8 @@ ChatGPT、Claude、Gemini、Codex、MiniMax 這些東西是什麼、怎麼開始
   「以官網為準」。「易變」欄打勾的篇要定期回查（`valid_until` 維持 null，life 文章不走到期邏輯）。
 - **主題：** 只用 life 詞彙（`ai`、`tutorial`、`software`、`gadgets`、`productivity`、`daily`、`misc`）；
   `destination_id` 一律 null。
+- **字尾關鍵字：** 「翻譯 AI」「簡報 AI」這類字尾型搜尋詞的對照、寫法與批次 12 的由來見
+  [`docs/ai-suffix-keywords.md`](ai-suffix-keywords.md)；已寫的篇只補 description 與導言，不改標題。
 
 ## 狀態怎麼看
 
@@ -44,7 +46,6 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 
 | 批次 | 主題 | 任務票 |
 | --- | --- | --- |
-
 | 01 | AI 入門與各工具總覽（先寫，之後每篇深入文都連回這 20 篇） | `2026-09-13-life-ai-batch-01` |
 | 02 | ChatGPT 教學 | `2026-09-13-life-ai-batch-02` |
 | 03 | Claude 教學 | `2026-09-13-life-ai-batch-03` |
@@ -56,6 +57,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 09 | 工作流、效率與自動化 | `2026-09-13-life-ai-batch-09` |
 | 10 | 比較、費用、資安與法律 | `2026-09-13-life-ai-batch-10` |
 | 11 | 生活應用、3C 與旅途中的 AI | `2026-09-13-life-ai-batch-11` |
+| 12 | 字尾關鍵字補位（11 篇，不是 20；`docs/ai-suffix-keywords.md`） | `2026-09-14-life-ai-batch-12-suffix-keywords` |
 
 工具與 brief：`2026-09-13-life-ai-series-tooling`；這份總表：`2026-09-13-life-ai-series-catalogue`。
 
@@ -253,26 +255,26 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 
 | # | slug | 標題 | topics | 圖 | 合作 | 易變 |
 |---|---|---|---|---|---|---|
-| 141 | `ai-image-tools-overview-2026` | AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux | ai, software | 插 |  | ✓ |
+| 141 | `ai-image-tools-overview-2026` | AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選 | ai, software | 插 |  | ✓ |
 | 142 | `midjourney-getting-started` | Midjourney 入門：網頁版、參數與訂閱 | ai, tutorial | 插 |  | ✓ |
 | 143 | `midjourney-prompt-guide` | Midjourney 提示詞：風格、比例、參考圖 | ai, tutorial | 插 |  |  |
-| 144 | `sora-video-guide` | Sora 影片生成教學 | ai, tutorial | 插 |  | ✓ |
-| 145 | `ai-video-tools-compared` | AI 影片工具比較：Veo、Sora、海螺、Kling | ai | 插 |  | ✓ |
+| 144 | `sora-video-guide` | Sora 影片生成教學：官方已停止服務，先匯出再挑替代工具 | ai, tutorial | 插 |  | ✓ |
+| 145 | `ai-video-tools-compared` | AI 影片工具比較：Veo、Sora、海螺、Kling 的方案與規格 | ai | 插 |  | ✓ |
 | 146 | `kling-runway-video-tools` | Kling 與 Runway：影片生成工具介紹 | ai | 插 |  | ✓ |
-| 147 | `suno-music-generation-guide` | Suno 做歌：從歌詞到成品 | ai, tutorial | 插 |  | ✓ |
-| 148 | `ai-voice-cloning-elevenlabs` | ElevenLabs 與語音克隆：配音與注意事項 | ai, tutorial | 插 |  | ✓ |
-| 149 | `ai-image-copyright-taiwan` | AI 生成圖片的版權：台灣法規與商用注意 | ai, misc | 插 |  |  |
+| 147 | `suno-music-generation-guide` | Suno 做歌：從歌詞到成品，方案、下載與商用權怎麼算 | ai, tutorial | 插 |  | ✓ |
+| 148 | `ai-voice-cloning-elevenlabs` | ElevenLabs 與語音克隆：配音、方案與同意規則怎麼看 | ai, tutorial | 插 |  | ✓ |
+| 149 | `ai-image-copyright-taiwan` | AI 生成圖片的版權：台灣法規與商用注意事項 | ai, misc | 插 |  |  |
 | 150 | `ai-image-watermark-c2pa` | AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識 | ai, misc | 插 |  |  |
-| 151 | `ai-remove-background-upscale` | AI 去背與放大：免費工具實測 | ai, tutorial | 照 |  |  |
-| 152 | `ai-photo-restoration-old-photos` | 用 AI 修復老照片 | ai, daily | 照 |  |  |
-| 153 | `canva-ai-features-guide` | Canva 的 AI 功能怎麼用 | ai, software | 插 |  | ✓ |
+| 151 | `ai-remove-background-upscale` | AI 去背與放大：免費工具怎麼挑 | ai, tutorial | 照 |  |  |
+| 152 | `ai-photo-restoration-old-photos` | 用 AI 修復老照片：去刮痕、放大與上色分開做，工具怎麼選 | ai, daily | 照 |  |  |
+| 153 | `canva-ai-features-guide` | Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算 | ai, software | 插 |  | ✓ |
 | 154 | `ai-slides-generation-tools` | AI 做簡報：Gamma、Copilot 與 Gemini | ai, productivity | 插 |  | ✓ |
-| 155 | `ai-product-photo-for-sellers` | 賣家用 AI 做商品圖：注意事項 | ai, daily | 照 |  |  |
-| 156 | `ai-video-subtitles-translation` | AI 上字幕與翻譯影片：CapCut、Whisper | ai, tutorial | 插 |  |  |
-| 157 | `ai-avatar-video-tools` | AI 虛擬主播與數位分身：HeyGen 等工具 | ai | 插 |  | ✓ |
+| 155 | `ai-product-photo-for-sellers` | 賣家用 AI 做商品圖：四種用法、平台規範與紅線 | ai, daily | 照 |  |  |
+| 156 | `ai-video-subtitles-translation` | AI 上字幕與翻譯影片：CapCut、Whisper 與 YouTube 三條路 | ai, tutorial | 插 |  |  |
+| 157 | `ai-avatar-video-tools` | AI 虛擬主播與數位分身：HeyGen 的方案、同意規則與標示怎麼看 | ai | 插 |  | ✓ |
 | 158 | `ai-generated-content-disclosure` | AI 內容標示：YouTube、Meta 與台灣的規定 | ai, misc | 插 |  | ✓ |
 | 159 | `ai-art-prompt-styles-reference` | AI 繪圖風格提示參考：50 種風格描述 | ai, tutorial | 插 |  |  |
-| 160 | `ai-3d-model-generation` | AI 生成 3D 模型入門 | ai | 插 |  | ✓ |
+| 160 | `ai-3d-model-generation` | AI 生成 3D 模型入門：從文字或圖片到能列印的檔案 | ai | 插 |  | ✓ |
 
 ### 批次 09｜工作流、效率與自動化
 
@@ -367,6 +369,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 - 批次 04（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-04.md`）：教學文很需要 `code` 區塊（指令、設定檔、範例提示詞），撰稿補充要明寫可用；連結文字直接取目標文章標題（同批會寫的篇用指派給的標題，收完後再統一一次）；無法實測的「比較」題改寫成操作步驟比較與讀者自測法。官方文件會搬家（Codex 文件轉到 learn.chatgpt.com），sources 記實際生效的網址。合作連結沒有聯盟網址就不放，總表的 H 標記只是允許。
 - 批次 06（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-06.md`）：中國系與其他家的產品名、模型版本、授權與方案半年內幾乎全換過（Le Chat→Vibe、Qwen Chat→Qwen Studio、MiniMax Agent→Mavis、Copilot Pro 停售），指派裡的「例如」只能當起點，寫手照當天官網寫、審稿再用 curl／Hugging Face API／iTunes lookup 逐篇複核；台灣可用性用 App Store／Google Play 官方查詢，查不到就寫查不到；政府禁令只引公告原文並限定公務機關；x.ai、help.x.com、perplexity.ai、volcengine 對機房 IP 回 403，寫手改讀 .md 版文件、說明中心的 Intercom 網址或 Wayback 快照並在 notes 記讀法。一波七個 Opus 代理會撞帳號的五小時額度，撞到就等重置再重跑。
 - 批次 07（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-07.md`）：本機與開源模型的授權要逐版本用 Hugging Face API 的 license 標籤與 LICENSE 原文核對，不能用家族名稱推論（Gemma 4 是 Apache 2.0 但 Gemma 3 仍是 Gemma Terms；FLUX.2 klein 4B 可商用但 9B 非商用；Qwen 只有 Flash-Next 是自訂授權；SDXL Turbo 的 HF 標籤與 LICENSE 檔不一致）。官方文件自己也會前後不一致（Ollama 預設上下文、Open WebUI 向量庫數、Whisper turbo 參數），正文擇一並註明出處。openai.com 與 help.openai.com 對本環境 403，Wayback 的 `id_` 原始快照要 `--compressed`；amd.com 要 `--http1.1` 加瀏覽器 UA；developer.apple.com 走 `tutorials/data/...json`；apple.com/tw 售價在 JSON-LD。硬體與價格只抄官網當天數字、不做效能推估；sitemap 已到 926/1,000 列。
+- 批次 08（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-08.md`）：圖片、影片、音樂工具改版比模型更快，指派裡的產品現況要當作假設（Sora 已停止服務、Midjourney 預設 V8.2 且 `--cref` 已被 Edit Model 取代、Canva 的 Magic Studio 改名、remove.bg 將併入 Leonardo.Ai、Luma 已無 3D 產品），寫手照當天官網寫、審稿逐篇用 Zendesk／Intercom 內容 API、Wayback、WebFetch 與 iTunes lookup 複核；價格照官網幣別，但 Google 訂閱有台灣頁就寫新台幣；法規與平台規範只引 law.moj.gov.tw 與官方頁原文、不下法律結論；免費層常見的坑是「能生成、不能下載或不能商用」（Meshy、Suno、remove.bg、Photoroom、HeyGen），表格要把這件事寫成獨立欄位。docs.midjourney.com 與 help.runwayml.com 走 Zendesk API，helpx.adobe.com 要完整瀏覽器標頭，canva.com 只能讀 Wayback，Meta 頁面要用 WebFetch。
 - Commons 照片：工具的 User-Agent 要有聯絡信箱，而且請求要走 urllib（httpx 的連線被 Wikimedia 擋 403）；十個代理同時搜 Commons 會被 429，工具會退避重試。
 
 ## Gemini 完整系列補充（2026-09-14）
@@ -404,3 +407,22 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 247 | `gemini-api-files-structured-output` | API 檔案與 JSON：結構化輸出及驗證 | ai, tutorial | 插 |  | ✓ |
 | 248 | `gemini-api-cost-errors-guide` | API 額度與錯誤：費用、重試與成本控制 | ai, tutorial | 插 |  | ✓ |
 | 249 | `gemini-api-document-assistant` | 完整實作：文件摘要與資料擷取工具 | ai, tutorial | 插 |  | ✓ |
+
+### 批次 12｜字尾關鍵字補位（11 篇）
+
+字尾型搜尋詞（「〇〇 AI」）哪裡都對不到文章的，排在這裡；對照表、寫法與四篇待拍板的敏感題見
+[`docs/ai-suffix-keywords.md`](ai-suffix-keywords.md)。第 250 篇是索引 hub，`featured: false`、`display_order: 100`，只連已寫的篇。
+
+| # | slug | 標題 | topics | 圖 | 合作 | 易變 |
+|---|---|---|---|---|---|---|
+| 250 | `ai-tools-by-search-term` | 〇〇 AI 怎麼找：從你會搜的字找到對的工具與教學 | ai, misc | 插 |  | ✓ |
+| 251 | `ai-image-to-text-ocr` | 圖片轉文字 AI：截圖、掃描件與手寫筆記變成可編輯文字 | ai, tutorial | 插 |  | ✓ |
+| 252 | `ai-taiwanese-hokkien-hakka-tools` | 台語 AI 與客語 AI：語音辨識、合成與翻譯工具有哪些、準不準 | ai, daily | 照 |  | ✓ |
+| 253 | `ai-line-sticker-creation` | 貼圖 AI：用 AI 做 LINE 貼圖的生成、去背、審核規則與版權 | ai, daily | 插 |  | ✓ |
+| 254 | `ai-interior-design-visualization` | 裝潢 AI：把房間照片變成設計提案，哪些不能靠 AI | ai, daily | 照 |  | ✓ |
+| 255 | `ai-id-photo-rules-taiwan` | 證件照 AI：AI 修圖或生成的證件照能不能用，護照與身分證規定 | ai, daily | 插 |  | ✓ |
+| 256 | `ai-naming-brainstorm-checks` | 取名 AI：品牌、公司與商品名的提示詞，以及預查與商標檢索 | ai, daily | 插 |  |  |
+| 257 | `ai-fortune-telling-apps-caution` | 算命 AI 在做什麼：生成式回答的原理、個資流向與付費陷阱 | ai, daily | 插 |  |  |
+| 258 | `ai-stock-research-boundaries` | 投資 AI 能幫什麼：整理財報與新聞、不能預測漲跌、金管會怎麼管 | ai, daily | 插 |  | ✓ |
+| 259 | `ai-legal-questions-boundaries` | 法律 AI：法律問題問 AI 能整理什麼、什麼要找律師 | ai, daily | 插 |  |  |
+| 260 | `ai-health-questions-boundaries` | 健康 AI：症狀整理、看診前準備與它不能取代的事 | ai, daily | 插 |  |  |

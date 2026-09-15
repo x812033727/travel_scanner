@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">三種爬蟲，三個 user-agent / Three kinds of crawler, three user-agents</title>
+  <desc id="desc">一張三列的對照圖。每一列由左到右是：這一類在做什麼、各家的 user-agent 例子、在 robots.txt 擋掉會怎樣。第一列是訓練用爬蟲，抓內容可能用於訓練生成式基礎模型，例子有 Google-Extended、GPTBot、ClaudeBot，官方文件說會遵守，Google 與 Apple 另寫明擋掉不影響搜尋收錄。第二列是搜尋索引爬蟲，建索引讓網站出現在該服務的結果裡，例子有 Googlebot、OAI-SearchBot、Claude-SearchBot，OpenAI 明寫退出的網站不出現在 ChatGPT 答案裡。第三列是代使用者取用的擷取器，使用者提問時去讀那一頁、答案裡附連結，例子有 ChatGPT-User、Claude-User、Perplexity-User，官方文件寫這一類通常忽略 robots.txt，所以那一行接近表態，不是閘門。圖的底部寫著：三件事各自有名字，你在 robots.txt 寫下哪一個，後果完全不同。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">三種爬蟲，三個 user-agent</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Three kinds of crawler, three user-agents</text>
+
+  <text x="60" y="158" font-size="18" font-weight="700" fill="#5C6B6B">這一類在做什麼</text>
+  <text x="500" y="158" font-size="18" font-weight="700" fill="#5C6B6B">各家的 user-agent 例子</text>
+  <text x="1020" y="158" font-size="18" font-weight="700" fill="#5C6B6B">在 robots.txt 擋掉會怎樣</text>
+
+  <!-- lane 1: training crawlers -->
+  <rect x="60" y="180" width="400" height="190" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="84" y="245" font-size="22" font-weight="700" fill="#102A2B">訓練用爬蟲</text>
+  <text x="84" y="289" font-size="17" fill="#102A2B">抓內容，可能用於</text>
+  <text x="84" y="321" font-size="17" fill="#102A2B">訓練生成式基礎模型</text>
+  <rect x="500" y="180" width="480" height="190" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="524" y="246" font-size="18" fill="#102A2B">Google-Extended</text>
+  <text x="524" y="288" font-size="18" fill="#102A2B">GPTBot</text>
+  <text x="524" y="330" font-size="18" fill="#102A2B">ClaudeBot</text>
+  <rect x="1020" y="180" width="520" height="190" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="1044" y="252" font-size="17" fill="#102A2B">官方文件說會遵守；</text>
+  <text x="1044" y="284" font-size="17" fill="#102A2B">Google 與 Apple 另寫明</text>
+  <text x="1044" y="316" font-size="17" fill="#102A2B">擋掉不影響搜尋收錄</text>
+  <path d="M 466 275 L 492 275" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 986 275 L 1012 275" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- lane 2: search-index crawlers -->
+  <rect x="60" y="395" width="400" height="190" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="84" y="460" font-size="22" font-weight="700" fill="#102A2B">搜尋索引爬蟲</text>
+  <text x="84" y="504" font-size="17" fill="#102A2B">建索引，讓網站出現</text>
+  <text x="84" y="536" font-size="17" fill="#102A2B">在該服務的結果裡</text>
+  <rect x="500" y="395" width="480" height="190" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="524" y="461" font-size="18" fill="#102A2B">Googlebot</text>
+  <text x="524" y="503" font-size="18" fill="#102A2B">OAI-SearchBot</text>
+  <text x="524" y="545" font-size="18" fill="#102A2B">Claude-SearchBot</text>
+  <rect x="1020" y="395" width="520" height="190" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="1044" y="483" font-size="17" fill="#102A2B">OpenAI 明寫退出的網站</text>
+  <text x="1044" y="515" font-size="17" fill="#102A2B">不出現在 ChatGPT 答案裡</text>
+  <path d="M 466 490 L 492 490" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 986 490 L 1012 490" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- lane 3: user-triggered fetchers -->
+  <rect x="60" y="610" width="400" height="190" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="84" y="675" font-size="22" font-weight="700" fill="#102A2B">代使用者取用的擷取器</text>
+  <text x="84" y="719" font-size="17" fill="#102A2B">使用者提問時去讀那</text>
+  <text x="84" y="751" font-size="17" fill="#102A2B">一頁，答案裡附連結</text>
+  <rect x="500" y="610" width="480" height="190" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="524" y="676" font-size="18" fill="#102A2B">ChatGPT-User</text>
+  <text x="524" y="718" font-size="18" fill="#102A2B">Claude-User</text>
+  <text x="524" y="760" font-size="18" fill="#102A2B">Perplexity-User</text>
+  <rect x="1020" y="610" width="520" height="190" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1044" y="682" font-size="17" fill="#102A2B">官方文件寫通常忽略</text>
+  <text x="1044" y="714" font-size="17" fill="#102A2B">robots.txt，所以那一行</text>
+  <text x="1044" y="746" font-size="17" fill="#102A2B">接近表態，不是閘門</text>
+  <path d="M 466 705 L 492 705" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 986 705 L 1012 705" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <text x="60" y="852" font-size="20" fill="#102A2B">三件事各自有名字：你在 robots.txt 寫下哪一個，後果完全不同。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

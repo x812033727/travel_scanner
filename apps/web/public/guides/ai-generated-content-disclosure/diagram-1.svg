@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 內容要不要標示的判斷流程 / Decision flow for disclosing AI content</title>
+  <desc id="desc">流程圖從「你要發布的內容」開始，往下先問「這段內容看起來像真的嗎」，動畫、明顯的藝術風格與幻想場景都不算，答否就走右邊「不用標示」；答是再往下問「是 AI 生成或大幅變造的嗎」，調色、美顏、裁切、字幕與畫質修復算微調，答否同樣走右邊「不用標示」。兩題都答是，就依平台標示：YouTube 要標擬真的 AI 生成或實質變造內容，在工作室「屬性」專區把「使用 AI 技術」選「是」，不標可能被加標籤或移除；Meta 要標擬真影片與音訊、圖片不要求，在貼文編輯器把「已關閉 AI 標籤」改為「新增 AI 標籤」，未標示可能受到處罰；TikTok 要標逼真場景或人物的 AI 內容，用 AIGC 標籤或自己加文字說明、貼圖、浮水印，不標可能被移除或限制。最下面提醒：標了不是免死金牌，三家平台都禁止誤導公共重要事務或傷害個人的內容；台灣沒有一般標示義務，深偽另有選罷法第 51 條之 3、第 104 條與刑法第 319 條之 4。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">AI 內容要不要標示：發布前的判斷流程</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Decision flow for disclosing AI content before you publish</text>
+
+  <rect x="610" y="115" width="380" height="64" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="156" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">你要發布的內容</text>
+
+  <line x1="800" y1="179" x2="800" y2="203" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="380" y="205" width="840" height="100" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="248" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">先問：這段內容看起來像真的嗎？</text>
+  <text x="800" y="280" font-size="17" fill="#5C6B6B" text-anchor="middle">動畫、明顯的藝術風格、幻想場景都不算</text>
+
+  <line x1="1220" y1="255" x2="1256" y2="255" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="1260" y="223" width="280" height="64" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1400" y="264" font-size="20" font-weight="bold" fill="#2E7D5B" text-anchor="middle">否：不用標示</text>
+
+  <line x1="800" y1="305" x2="800" y2="338" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="818" y="330" font-size="15" fill="#5C6B6B">是</text>
+
+  <rect x="380" y="340" width="840" height="100" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="383" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">再問：是 AI 生成或大幅變造的嗎？</text>
+  <text x="800" y="415" font-size="17" fill="#5C6B6B" text-anchor="middle">調色、美顏、裁切、字幕、畫質修復算微調</text>
+
+  <line x1="1220" y1="390" x2="1256" y2="390" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="1260" y="358" width="280" height="64" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1400" y="399" font-size="20" font-weight="bold" fill="#2E7D5B" text-anchor="middle">否：不用標示</text>
+
+  <line x1="800" y1="440" x2="800" y2="478" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="818" y="470" font-size="15" fill="#5C6B6B">是</text>
+  <line x1="280" y1="478" x2="1320" y2="478" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="280" y1="478" x2="280" y2="513" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="800" y1="478" x2="800" y2="513" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1320" y1="478" x2="1320" y2="513" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="515" width="440" height="205" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="280" y="552" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">YouTube</text>
+  <text x="280" y="586" font-size="16" fill="#5C6B6B" text-anchor="middle">擬真的 AI 生成或實質變造</text>
+  <text x="280" y="620" font-size="17" fill="#102A2B" text-anchor="middle">工作室「屬性」專區</text>
+  <text x="280" y="648" font-size="17" fill="#102A2B" text-anchor="middle">「使用 AI 技術」選「是」</text>
+  <text x="280" y="686" font-size="16" fill="#B8442D" text-anchor="middle">不標可能被加標籤、移除</text>
+
+  <rect x="580" y="515" width="440" height="205" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="552" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">Meta</text>
+  <text x="800" y="586" font-size="16" fill="#5C6B6B" text-anchor="middle">擬真影片與音訊；圖片不要求</text>
+  <text x="800" y="620" font-size="17" fill="#102A2B" text-anchor="middle">貼文編輯器「已關閉 AI 標籤」</text>
+  <text x="800" y="648" font-size="17" fill="#102A2B" text-anchor="middle">改為「新增 AI 標籤」</text>
+  <text x="800" y="686" font-size="16" fill="#B8442D" text-anchor="middle">未揭露可能受到處罰</text>
+
+  <rect x="1100" y="515" width="440" height="205" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1320" y="552" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">TikTok</text>
+  <text x="1320" y="586" font-size="16" fill="#5C6B6B" text-anchor="middle">逼真場景或人物的 AI 內容</text>
+  <text x="1320" y="620" font-size="17" fill="#102A2B" text-anchor="middle">AIGC 標籤，或自己加</text>
+  <text x="1320" y="648" font-size="17" fill="#102A2B" text-anchor="middle">文字說明、貼圖、浮水印</text>
+  <text x="1320" y="686" font-size="16" fill="#B8442D" text-anchor="middle">不標可能被移除或限制</text>
+
+  <rect x="60" y="742" width="1480" height="100" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="800" y="784" font-size="20" font-weight="bold" fill="#B8442D" text-anchor="middle">標了不是免死金牌：三家平台都禁止誤導公共重要事務或傷害個人的內容</text>
+  <text x="800" y="816" font-size="17" fill="#102A2B" text-anchor="middle">台灣沒有一般標示義務；深偽另有選罷法第 51 條之 3、第 104 條與刑法第 319 條之 4</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

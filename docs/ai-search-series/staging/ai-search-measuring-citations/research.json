@@ -1,0 +1,157 @@
+{
+  "slug": "ai-search-measuring-citations",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports",
+      "title": "Introducing Search Generative AI performance reports in Search Console（Google Search Central 官方公告）",
+      "access": "curl 取原始 HTML 後抽文字，2026-09-14",
+      "claims": [
+        "公告日期 Wednesday, June 3, 2026（正文寫 2026 年 6 月 3 日）",
+        "文中加註 As of August 31, 2026 已對全球所有網站開放（正文寫 2026 年 8 月 31 日）",
+        "報表列出的資訊為 Impressions、Pages、Countries、Devices、Dates",
+        "同篇寫 adding additional metrics over time，所以正文不寫報表有點擊或排名指標"
+      ]
+    },
+    {
+      "url": "https://support.google.com/webmasters/answer/16984139",
+      "title": "Generative AI performance report (Search)（Search Console 說明中心）",
+      "access": "curl 取原始 HTML 後抽文字，2026-09-14",
+      "claims": [
+        "報表涵蓋 AI Overviews 與 AI Mode 兩項生成式 AI 功能",
+        "曝光定義：links to your site were shown to a user in a generative AI feature on Google Search",
+        "Search Console 不含 Search Labs 實驗的資料",
+        "沿用一般成效報表的資料限制，包括 1,000 列上限",
+        "最新資料可能是 preliminary，之後幾小時還會變動；資料多半歸到 canonical URL"
+      ]
+    },
+    {
+      "url": "https://support.google.com/webmasters/answer/7042828",
+      "title": "What are impressions, position, and clicks?（Search Console 說明中心）",
+      "access": "curl 取原始 HTML 後抽文字，2026-09-14",
+      "claims": [
+        "自己搜尋看到的位置可能因 search history、location 等變因而與報表平均值不同",
+        "AI Overviews 佔一個版位，其中所有連結共用該版位（背景，正文未展開）"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/blog/2022/10/performance-data-deep-dive",
+      "title": "A deep dive into Search Console performance data filtering and limits（Google Search Central 官方公告）",
+      "access": "curl 取原始 HTML 後抽文字，2026-09-14",
+      "claims": [
+        "公告日期 Wednesday, October 19, 2022（正文寫 2022 年 10 月 19 日）",
+        "匿名化查詢定義：兩到三個月內未被超過數十位使用者查詢過的字串",
+        "匿名化查詢不列進表格但算進圖表總數，所以各列加總不等於總數",
+        "介面匯出上限 1,000 列；API 上限每天每站每種搜尋類型 50,000 列（後者因字數未寫進正文）"
+      ]
+    },
+    {
+      "url": "https://support.google.com/webmasters/answer/9008080",
+      "title": "Verify your site ownership（Search Console 說明中心）",
+      "access": "WebSearch 限定 support.google.com 取摘要，2026-09-14（該頁 curl 只回 SPA 外殼）",
+      "claims": [
+        "要先驗證資源所有權才看得到該資源的資料"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/blog/2012/03/upcoming-changes-in-googles-http",
+      "title": "Upcoming changes in Google's HTTP Referrer（Google Search Central 官方公告）",
+      "access": "curl 取原始 HTML 後抽文字，2026-09-14",
+      "claims": [
+        "公告日期 Monday, March 19, 2012（正文寫 2012 年 3 月 19 日）",
+        "Google 以 referrer meta 標籤簡化搜尋結果送出的來源網址",
+        "網站會看到 origin referrer，也就是 Google 的裸主機名，查詢字串不在裡面"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "title": "AI Features and Your Website（Google Search Central 官方文件）",
+      "access": "WebFetch，2026-09-14",
+      "claims": [
+        "AI Mode 與 AI Overviews 可能使用不同的模型與技術，呈現的回答與連結會有差異",
+        "Indexing and serving isn't guaranteed（支持全文不承諾成效的立場）"
+      ]
+    },
+    {
+      "url": "https://support.google.com/websearch/answer/16011537",
+      "title": "Get AI-powered responses with AI Mode in Google Search（Google 搜尋說明中心）",
+      "access": "curl 取原始 HTML 後抽文字（桌面版分頁），2026-09-14",
+      "claims": [
+        "AI 模式的 Personal Intelligence 會參考先前的搜尋與搜尋服務紀錄裡的活動",
+        "AI 模式使用 query fan-out，把問題拆成子題同時搜尋（背景）"
+      ]
+    },
+    {
+      "url": "https://w3c.github.io/webappsec-referrer-policy/",
+      "title": "Referrer Policy（W3C Web Application Security 工作組編輯草案）",
+      "access": "curl 取原始 HTML 後抽文字，2026-09-14；文件自標 Editor's Draft, 20 March 2026",
+      "claims": [
+        "The default referrer policy is strict-origin-when-cross-origin",
+        "no-referrer 時 Referer 標頭會被整個省略",
+        "跨站請求只送來源 origin；來源為加密連線而目的地不是時不送 Referer"
+      ]
+    },
+    {
+      "url": "https://www.w3.org/TR/referrer-policy/",
+      "title": "Referrer Policy（W3C 候選推薦標準快照）",
+      "access": "curl 取原始 HTML 後抽文字，2026-09-14",
+      "claims": [
+        "w3.org/TR 的快照是 2017-01-26 的 Candidate Recommendation，預設值寫的是 no-referrer-when-downgrade",
+        "本文採用現行編輯草案的值，兩個網址都列出以便讀者自行比對"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/bots",
+      "title": "Bots（OpenAI 官方開發者文件，說明 GPTBot、OAI-SearchBot 與 ChatGPT-User）",
+      "access": "WebFetch，2026-09-14；platform.openai.com/docs/bots 回 301 轉到此網址",
+      "claims": [
+        "OAI-SearchBot 用於讓網站出現在 ChatGPT 搜尋功能的結果裡",
+        "GPTBot 抓取的內容可能用於訓練生成式 AI 基礎模型",
+        "ChatGPT-User 是使用者在 ChatGPT 或自訂 GPT 提問時發出的造訪；因由使用者發起，robots.txt 規則可能不適用"
+      ]
+    },
+    {
+      "url": "https://help.openai.com/en/articles/12627856-publishers-and-developers-faq",
+      "title": "Publishers and Developers FAQ（OpenAI 說明中心）",
+      "access": "WebFetch，網址後加 .json 才讀得到全文，2026-09-14",
+      "claims": [
+        "ChatGPT 會在推薦網址自動帶上 utm_source=chatgpt.com 這個 UTM 參數",
+        "允許 OAI-SearchBot 讀取內容的發布者可用分析工具追蹤來自 ChatGPT 的推薦流量",
+        "全文沒有提到 Referer 標頭，正文因此把 UTM 參數與 Referer 標頭分開講"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/api-reference/chat/create",
+      "title": "Chat Completions API reference 的 seed 參數說明（OpenAI 官方開發者文件）",
+      "access": "WebFetch，2026-09-14",
+      "claims": [
+        "指定相同 seed 與參數時系統盡力做到穩定取樣，但 Determinism is not guaranteed"
+      ]
+    },
+    {
+      "url": "https://docs.perplexity.ai/docs/resources/perplexity-crawlers",
+      "title": "Perplexity Crawlers（Perplexity 官方文件）",
+      "access": "WebFetch，2026-09-14",
+      "claims": [
+        "PerplexityBot 是讓網站出現在 Perplexity 搜尋結果的爬蟲，不用於為基礎模型抓取內容",
+        "Perplexity-User 支援使用者動作；因抓取由使用者要求，一般會忽略 robots.txt 規則",
+        "該頁沒有說明點擊出去時是否送出 referrer，正文因此寫以官方文件為準"
+      ]
+    },
+    {
+      "url": "https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview",
+      "title": "Introducing AI Performance in Bing Webmaster Tools Public Preview（Bing Webmaster 官方部落格）",
+      "access": "curl 取原始 HTML 後抽文字，2026-09-14；官方 help 頁是 JS 單頁應用，讀不到正文，故只採用本篇字句",
+      "claims": [
+        "公告日期 February 10, 2026（正文只寫 2026 年 2 月）",
+        "涵蓋 Microsoft Copilot、Bing 的 AI 生成摘要與部分合作整合",
+        "Total Citations 不指出在個別回答裡的版位或呈現方式",
+        "頁面層級引用次數反映被引用頻率，不是頁面重要性、排名或版位",
+        "Grounding queries 呈現的是整體引用活動的一份樣本"
+      ]
+    }
+  ],
+  "running_text_characters": 2872,
+  "notes": "running_text_characters 依 app.guides.pack_ingest._body_length 的算法實際數出：段落、rich_paragraph、清單項目、表格格子、callout 的標題與內文，去掉空白後的字數，不含標題、圖說、連結區塊與 sources。結構：7 個 level-2 heading、1 個表格（3 欄 4 列）、2 個 callout、1 張 hero、1 張 diagram-1.svg、4 個站內 article inline 連結（google-ai-overviews-for-site-owners、ai-search-llmo、ai-term-evals、ai-search-terms-index，全部在 catalogue 指派的清單內）。dry-run 無 error 也無 warning。全文沒有任何未經一手來源的數字；沒有引用任何代理商或能見度工具廠商的內容作為事實依據；沒有任何一句承諾排名、索引、引用或流量結果。查不到官方說明而改寫成「以官方文件為準」的項目只有一項：OpenAI 以外的 AI 助理是否在使用者點擊時送出 referrer。"
+}
