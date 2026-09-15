@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">免息期與循環計息的分岔點 / Interest-free window and the revolving switch</title>
+<desc id="desc">上半是一條時間軸，由左到右依序標出消費也就是入帳日、結帳日、繳款截止日與次期結帳日；入帳日到繳款截止日之間有一條淺綠色的區間，標示發卡機構先墊付、這一段不計息。時間軸在繳款截止日分岔成兩條路：左邊是在繳款截止日前結清全部應付帳款，當期循環信用利息不予計收；右邊是只繳最低應繳金額，當期起動用循環信用，未清償餘額開始計息。下半是一個藍框方塊，說明利息從哪一天起算、對哪一筆金額算：起息日由發卡機構在入帳日、結帳日、繳款截止日中選定並載明，不得早於實際撥款日；計息的是已入帳帳款的未清償餘額，當期消費與各項費用不計入，也不以複利計息；繳款先抵費用與利息，再抵前期未付款項，最後才抵本金。圖的最下方兩行註明循環信用利率依信用風險差別定價、年利率上限不等於各家實收，以及繳款後剩餘未付款項低於一定金額時當期循環信用利息不予計收。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker></defs>
+
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">免息期怎麼形成，按下最低應繳之後從哪天起算</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">Interest-free window and the revolving switch · 以契約載明者為準</text>
+
+<text x="60" y="150" font-size="20" fill="#5C6B6B">一筆消費在帳單上的四個日期</text>
+
+<path d="M140 262 L1470 262" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<path d="M280 242 L280 282" stroke="#5C6B6B" stroke-width="4"/>
+<path d="M720 242 L720 282" stroke="#5C6B6B" stroke-width="4"/>
+<path d="M1090 242 L1090 282" stroke="#5C6B6B" stroke-width="4"/>
+<path d="M1380 242 L1380 282" stroke="#5C6B6B" stroke-width="4"/>
+<text x="280" y="222" text-anchor="middle" font-size="20" font-weight="700" fill="#102A2B">消費／入帳日</text>
+<text x="720" y="222" text-anchor="middle" font-size="20" font-weight="700" fill="#102A2B">結帳日</text>
+<text x="1090" y="222" text-anchor="middle" font-size="20" font-weight="700" fill="#102A2B">繳款截止日</text>
+<text x="1380" y="222" text-anchor="middle" font-size="20" font-weight="700" fill="#102A2B">次期結帳日</text>
+
+<rect x="280" y="300" width="810" height="58" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="685" y="338" text-anchor="middle" font-size="20" fill="#102A2B">發卡機構先墊付，這一段不計息</text>
+
+<path d="M1090 366 L1090 384 L460 384 L460 404" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-linecap="butt"/>
+<path d="M1090 384 L1140 384 L1140 404" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-linecap="butt"/>
+<path d="M446 404 L474 404 L460 418 Z" fill="#5C6B6B"/>
+<path d="M1126 404 L1154 404 L1140 418 Z" fill="#5C6B6B"/>
+
+<rect x="140" y="416" width="640" height="150" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+<text x="460" y="458" text-anchor="middle" font-size="17" fill="#5C6B6B">在繳款截止日前</text>
+<text x="460" y="498" text-anchor="middle" font-size="26" font-weight="700" fill="#102A2B">結清全部應付帳款</text>
+<text x="460" y="536" text-anchor="middle" font-size="18" fill="#5C6B6B">當期循環信用利息不予計收</text>
+
+<rect x="820" y="416" width="640" height="150" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+<text x="1140" y="458" text-anchor="middle" font-size="17" fill="#5C6B6B">只繳最低應繳金額</text>
+<text x="1140" y="498" text-anchor="middle" font-size="26" font-weight="700" fill="#102A2B">當期起動用循環信用</text>
+<text x="1140" y="536" text-anchor="middle" font-size="18" fill="#5C6B6B">未清償餘額開始計息</text>
+
+<rect x="140" y="610" width="1320" height="170" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="800" y="652" text-anchor="middle" font-size="22" font-weight="700" fill="#102A2B">利息從哪一天起算、對哪一筆金額算</text>
+<text x="800" y="692" text-anchor="middle" font-size="18" fill="#102A2B">起息日由發卡機構在入帳日、結帳日、繳款截止日中選定並載明，不得早於實際撥款日</text>
+<text x="800" y="726" text-anchor="middle" font-size="18" fill="#102A2B">計息的是已入帳帳款的未清償餘額；當期消費與各項費用不計入，也不以複利計息</text>
+<text x="800" y="760" text-anchor="middle" font-size="18" fill="#102A2B">繳款先抵費用與利息，再抵前期未付款項，最後才抵本金</text>
+
+<text x="140" y="824" font-size="20" fill="#5C6B6B">循環信用利率依信用風險差別定價，年利率上限 15%，上限不等於各家實收。</text>
+<text x="140" y="856" font-size="20" fill="#5C6B6B">繳款後剩餘未付款項不足 1,000 元時，當期循環信用利息不予計收。</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

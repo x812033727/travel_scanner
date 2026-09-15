@@ -57,6 +57,10 @@ LIFE_SEED_TOPICS: tuple[tuple[str, tuple[str, str, str, str, str]], ...] = (
     ("productivity", ("Productivity", "仕事効率化", "생산성", "效率工作", "效率工作")),
     ("daily", ("Everyday life", "暮らし", "일상", "生活雜記", "生活杂记")),
     ("misc", ("Other", "その他", "기타", "其他", "其他")),
+    # Appended, never inserted: 0075 seeds this one and
+    # tests/test_guides_migration.py compares the two migrations' lists to this tuple in
+    # order, so a slug that moves silently disagrees with what a live database holds.
+    ("finance", ("Money & finance", "お金・家計", "돈・재테크", "理財與金錢", "理财与金钱")),
 )
 
 

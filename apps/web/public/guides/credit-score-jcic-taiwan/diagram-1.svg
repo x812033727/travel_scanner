@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">報告裡的五大類，哪些進了評分模型 / What the credit score model uses</title>
+<desc id="desc">左邊的框是當事人綜合信用報告的五大類資料：借款資訊包含表 B1 餘額明細、表 B2 共同與從債務、表 B3 逾期催收呆帳；信用卡資訊包含表 K1 持卡紀錄與表 K2 帳款資訊；票信資訊包含表 D1 大額退票與表 D2 票據拒絕往來；查詢紀錄包含表 S1 被金融機構查詢與表 S2 本人查閱；其他包含表 Z1 附加訊息與表 Z2 至 Z4 債權轉讓。一個箭頭指向右邊的框，右邊是評分模型採用的三大類資料：繳款行為類看延遲還款的嚴重程度、頻率與時間點；負債類看負債總額、負債型態與負債變動幅度；其他類包含新信用申請、信用長度與保證人資訊，各項配分比重未對外公布。圖的下半部橫排三個框，列出不納入評分模型的三件事：本人查閱自己報告的紀錄，也就是表 S2，不進模型也不提供金融機構查詢；存款開戶、信用卡申請與舊客戶複審等查詢理由都不納入；存款、資產、年齡、職業、年薪與性別等基本資料模型未採用。最下方一行說明，只有金融機構基於新業務、為申請授信目的的查詢才納入評分，而最近一年內每 30 天的新業務查詢視為同一筆信用需求。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker></defs>
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">報告裡的五大類資料，哪些進了評分模型</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">JCIC credit report · 五大類資料與評分的三大類</text>
+
+<rect x="60" y="120" width="620" height="440" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="370" y="172" text-anchor="middle" font-size="24" font-weight="700" fill="#102A2B">當事人綜合信用報告：五大類</text>
+<rect x="100" y="216" width="18" height="18" rx="4" fill="#2F6F9F"/>
+<text x="134" y="232" font-size="20" fill="#102A2B">借款資訊　表 B1、B2、B3</text>
+<rect x="100" y="276" width="18" height="18" rx="4" fill="#0D6B68"/>
+<text x="134" y="292" font-size="20" fill="#102A2B">信用卡資訊　表 K1、K2</text>
+<rect x="100" y="336" width="18" height="18" rx="4" fill="#D97A2B"/>
+<text x="134" y="352" font-size="20" fill="#102A2B">票信資訊　表 D1、D2</text>
+<rect x="100" y="396" width="18" height="18" rx="4" fill="#2E7D5B"/>
+<text x="134" y="412" font-size="20" fill="#102A2B">查詢紀錄　表 S1、S2</text>
+<rect x="100" y="456" width="18" height="18" rx="4" fill="#5C6B6B"/>
+<text x="134" y="472" font-size="20" fill="#102A2B">其他　表 Z1 至 Z4</text>
+<text x="100" y="524" font-size="17" fill="#5C6B6B">每一類各有揭露期限，屆滿自動停止揭露</text>
+
+<path d="M720 340 L1000 340" fill="none" stroke="#5C6B6B" stroke-width="6" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<text x="860" y="318" text-anchor="middle" font-size="17" fill="#5C6B6B">套用模型</text>
+
+<rect x="1020" y="120" width="520" height="440" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="1280" y="172" text-anchor="middle" font-size="24" font-weight="700" fill="#102A2B">評分模型採用的三大類</text>
+<text x="1060" y="228" font-size="20" font-weight="700" fill="#0D6B68">繳款行為類</text>
+<text x="1060" y="258" font-size="17" fill="#5C6B6B">延遲還款的嚴重程度、頻率與時間點</text>
+<text x="1060" y="318" font-size="20" font-weight="700" fill="#0D6B68">負債類</text>
+<text x="1060" y="348" font-size="17" fill="#5C6B6B">負債總額、負債型態、負債變動幅度</text>
+<text x="1060" y="408" font-size="20" font-weight="700" fill="#0D6B68">其他類</text>
+<text x="1060" y="438" font-size="17" fill="#5C6B6B">新信用申請、信用長度、保證人資訊</text>
+<text x="1060" y="500" font-size="17" fill="#5C6B6B">各項目的配分比重未對外公布</text>
+
+<text x="60" y="612" font-size="20" font-weight="700" fill="#B8442D">不納入評分模型的三件事</text>
+
+<rect x="60" y="632" width="480" height="152" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+<text x="300" y="680" text-anchor="middle" font-size="18" fill="#102A2B">本人查閱自己的信用報告</text>
+<text x="300" y="712" text-anchor="middle" font-size="18" fill="#102A2B">表 S2 的紀錄不進模型，</text>
+<text x="300" y="744" text-anchor="middle" font-size="18" fill="#102A2B">也不提供金融機構查詢</text>
+
+<rect x="560" y="632" width="480" height="152" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+<text x="800" y="680" text-anchor="middle" font-size="18" fill="#102A2B">存款開戶、信用卡申請、</text>
+<text x="800" y="712" text-anchor="middle" font-size="18" fill="#102A2B">舊客戶複審等查詢理由，</text>
+<text x="800" y="744" text-anchor="middle" font-size="18" fill="#102A2B">都不納入</text>
+
+<rect x="1060" y="632" width="480" height="152" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+<text x="1300" y="680" text-anchor="middle" font-size="18" fill="#102A2B">存款、資產、年齡、職業、</text>
+<text x="1300" y="712" text-anchor="middle" font-size="18" fill="#102A2B">年薪、性別等基本資料，</text>
+<text x="1300" y="744" text-anchor="middle" font-size="18" fill="#102A2B">模型未採用</text>
+
+<text x="60" y="822" font-size="18" fill="#5C6B6B">只有金融機構基於新業務、為申請授信目的的查詢才納入；一年內每 30 天的新業務查詢算同一筆。</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
