@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">先審再合併 / Review before you merge</title>
+  <desc id="desc">插圖。左邊是一份程式改動文件，卡片上有幾條長短不一的色塊，綠色代表新增的行、紅色代表刪除的行、灰色代表沒有更動的行。箭頭指向中央一面盾牌，盾牌中間是一個勾選標記，代表合併前的審查關卡。再往右是版本控制的分支圖：兩個分支的節點沿著曲線匯入同一個綠色節點，然後延伸成一條線，代表通過審查之後才合併。畫面下方有一行字：先審再合併。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- diff document -->
+  <rect x="150" y="240" width="360" height="420" rx="28" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+  <rect x="196" y="304" width="30" height="30" rx="6" fill="#2E7D5B"/>
+  <rect x="248" y="311" width="216" height="18" rx="9" fill="#2E7D5B"/>
+  <rect x="196" y="374" width="30" height="30" rx="6" fill="#B8442D"/>
+  <rect x="248" y="381" width="176" height="18" rx="9" fill="#B8442D"/>
+  <rect x="196" y="444" width="30" height="30" rx="6" fill="#C9D3D3"/>
+  <rect x="248" y="451" width="206" height="18" rx="9" fill="#C9D3D3"/>
+  <rect x="196" y="514" width="30" height="30" rx="6" fill="#2E7D5B"/>
+  <rect x="248" y="521" width="146" height="18" rx="9" fill="#2E7D5B"/>
+  <rect x="196" y="584" width="30" height="30" rx="6" fill="#C9D3D3"/>
+  <rect x="248" y="591" width="196" height="18" rx="9" fill="#C9D3D3"/>
+
+  <line x1="540" y1="450" x2="618" y2="450" stroke="#5C6B6B" stroke-width="8" marker-end="url(#arrow)"/>
+
+  <!-- review gate: shield with a check -->
+  <path d="M800 248 L962 310 L962 470 C962 572 882 634 800 664 C718 634 638 572 638 470 L638 310 Z" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+  <path d="M714 452 L776 516 L892 388" fill="none" stroke="#0D6B68" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <line x1="988" y1="450" x2="1066" y2="450" stroke="#5C6B6B" stroke-width="8" marker-end="url(#arrow)"/>
+
+  <!-- branches merging -->
+  <path d="M1204 332 C1300 332 1288 450 1368 450" fill="none" stroke="#2F6F9F" stroke-width="8"/>
+  <path d="M1204 568 C1300 568 1288 450 1368 450" fill="none" stroke="#D97A2B" stroke-width="8"/>
+  <line x1="1436" y1="450" x2="1526" y2="450" stroke="#2E7D5B" stroke-width="8"/>
+  <circle cx="1178" cy="332" r="26" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+  <circle cx="1178" cy="568" r="26" fill="#FFFFFF" stroke="#D97A2B" stroke-width="8"/>
+  <circle cx="1400" cy="450" r="36" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="8"/>
+
+  <text x="800" y="814" font-size="56" font-weight="700" fill="#102A2B" text-anchor="middle">先審再合併</text>
+</svg>

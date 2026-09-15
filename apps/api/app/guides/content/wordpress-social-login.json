@@ -1,0 +1,243 @@
+{
+  "slug": "wordpress-social-login",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 社群登入：LINE、Google 與 Facebook 的串接檢查",
+      "description": "WordPress 加入 LINE、Google 或 Facebook 登入，不只是多放幾個按鈕。本篇說明社群登入外掛與平台應用程式的分工、回呼網址核對、既有帳號連結、註冊角色與停用前的復原準備，並以 Nextend Social Login 示範設定順序，協助台灣站長確認一般訪客真的能登入原本的會員帳號。",
+      "hero": {
+        "src": "/guides/wordpress-social-login/hero.jpg",
+        "alt": "身分盾牌、伺服器與會員頁螢幕組成的原創插圖，呈現社群驗證回到網站帳號。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "讀者原本用電子郵件註冊，後來按了 Google 登入，卻發現收藏清單是空的。這可能不是資料被刪除，而是網站建立或連到了另一個帳號。社群登入的重點，是讓平台身分正確對應到網站會員，並保留另一條可用的登入路徑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以先選一個讀者常用的平台完成流程，再評估增加其他入口。以下使用 Nextend Social Login 作為設定例子，介紹 LINE、Google 與 Facebook 的主要差異。平台後台會更新，畫面名稱與審查狀態應以操作當日的實際應用程式為準。"
+        },
+        {
+          "type": "heading",
+          "text": "先確認外掛版本與網站會員規則",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Nextend 官方外掛頁列出的免費平台包含 Google 與 Facebook，LINE 則屬於 Pro Addon；部分會員表單整合也列在付費功能。先確認你的登入頁由哪個工具產生，再查對應整合，不要只看到免費版有社群按鈕就假設所有會員表單都能直接使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "社群登入成功後取得什麼角色、是否允許新會員註冊，以及待審帳號能否登入，仍要與原本會員制度一致。若網站要求人工審核，請特別測試社群入口不會略過該規則。授權平台提供資料與取得網站會員資格，是兩個需要分別驗證的步驟。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出要支援的平台、會員表單來源及所需外掛版本。",
+            "記錄新會員角色、既有帳號連結及待審帳號處理方式。",
+            "建立測試應用程式或隔離環境，先完成一個平台的全流程。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "回呼網址由外掛提供，逐字核對",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在外掛中選擇平台並閱讀 Getting Started，取得它要求的回呼網址，再到平台建立應用程式填入。回呼是平台驗證後把結果交回網站的位置，不一定是首頁，也不等於登入完成後給讀者看的會員中心。這兩種網址不要互換。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 官方明確要求 redirect_uri 與核准的網址完全符合，包含通訊協定、大小寫與結尾斜線。LINE 也要在 Channel 的 LINE Login 設定登錄回呼。複製時確認正式或測試網域，以及外掛是否改用代理頁面，避免把另一個環境的設定帶過來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Client Secret 或 Channel Secret 只放在外掛指定的後台設定或受控的伺服器設定中，不要貼進頁面、公開截圖或前台程式碼。網站搬家、換網域或更換登入網址後，再回到各平台更新相應回呼，並重新測試。"
+        },
+        {
+          "type": "heading",
+          "text": "依各平台完成應用程式設定",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 登入需在 Google Cloud 專案建立網頁應用程式用戶端，設定品牌資訊、使用對象及授權重新導向網址，再把 Client ID 與 Secret 填回外掛。只要求登入需要的資料範圍；若同一專案另取用其他服務，額外權限和驗證需求也應另行確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE 使用 LINE Login Channel，選擇 Web app 並設定回呼。需要取得電子郵件時，LINE 官方要求先申請 Email address permission，並說明蒐集用途。不要假設每次登入都能拿到所有個人資料；網站若需要補填聯絡信箱，應另外驗證補填流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Facebook 部分，Nextend 現行設定章節列出應用程式建立、隱私及資料刪除說明、Business Verification、App Review 與發布等步驟。其舊 FAQ 仍有不同年代的敘述，不宜沿用免審查結論。實際需要完成的項目，請以 Meta 後台目前列出的要求及核准狀態確認。"
+        },
+        {
+          "type": "heading",
+          "text": "先測一般訪客，再顯示登入按鈕",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "外掛提供的設定驗證可先協助發現 ID、密鑰與回呼錯誤，但它不等於所有使用者都已能登入。平台的開發或測試狀態可能限制可用帳號，應在完成必要發布或審查後，請有授權的測試者以一般使用者身分確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試至少包含首次登入、再次登入、拒絕授權和返回上一頁。讓拒絕授權的人回到可理解的登入畫面，提供其他方式，不要在取消後顯示空白頁或無限重新導向。若使用者沒有提供預期的電子郵件，核對外掛如何處理，避免生成無法復原的會員帳號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手機也要從不同入口測試，例如一般瀏覽器與社群 App 內開啟的頁面。部分平台對內嵌瀏覽器有限制，Nextend 有不支援 WebView 時的按鈕處理設定；可以提供用外部瀏覽器開啟的引導，不要承諾任何 App 裡都能使用相同流程。"
+        },
+        {
+          "type": "heading",
+          "text": "既有帳號要連結，不要隨意合併",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Nextend 提供在 WordPress 個人資料頁加入或移除社群帳號的功能。對已有重要資料的會員，較清楚的操作是先用原方式登入，再從帳號設定連結社群身分，接著登出重登，確認看到的是同一份資料和同一個網站使用者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "外掛可能有自動比對或連結邏輯，應閱讀當前版本說明並在測試站驗證同信箱、不同信箱及已連結帳號的情境。不要只因兩個人顯示相同名字，就手動合併會員。需要處理衝突時，先核實對兩個帳號的控制權並保存資料對應。"
+        },
+        {
+          "type": "paragraph",
+          "text": "社群登入的身分確認不能代替網站的操作授權。讀者能登入，仍不應因此得到發布文章或管理其他人的能力；原本的雙因素驗證、會員限制與第三方登入整合也要按各入口測試，而不是只檢查傳統帳密登入。"
+        },
+        {
+          "type": "heading",
+          "text": "停用平台前，先讓會員能走另一條路",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "取消某個登入平台前，先確認會員有可用且已驗證的聯絡方式，並能設定或重設網站密碼。用測試帳號解除連結後，確認仍能登入同一個會員帳號。若只把按鈕隱藏，原先完全依賴它的使用者可能立即失去入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網站登出、解除帳號連結、撤銷平台授權與刪除會員資料是不同操作。請在帳號說明中分開描述，並核對外掛與其他服務實際保存的資料範圍。使用者取消授權後，網站仍可能保有先前建立的會員資料，應提供清楚的資料處理聯絡方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成後保存各平台應用程式持有人、回呼網址、所需權限、測試結果與確認日期。將平台通知交給持續管理網站的人，避免應用程式留在已離任廠商帳下。日後規則或版本改變時，這份對照表能幫助你知道要從哪裡重新驗證。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-social-login/diagram-1.svg",
+          "alt": "依序展示平台驗證、回呼網址、網站帳號與會員權限四個步驟，並提醒保留替代登入。",
+          "width": 1600,
+          "height": 900,
+          "caption": "完成平台登入，還要確認是正確會員與正確權限。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "平台",
+            "設定重點",
+            "特別驗收"
+          ],
+          "rows": [
+            [
+              "Google",
+              "網頁用戶端與授權回呼",
+              "帳號選擇及一般使用者登入"
+            ],
+            [
+              "LINE",
+              "Login Channel 與電子郵件權限",
+              "缺少信箱及手機返回流程"
+            ],
+            [
+              "Facebook",
+              "應用程式權限、審查與發布",
+              "開發帳號之外能否使用"
+            ],
+            [
+              "共同事項",
+              "WordPress 帳號連結與角色",
+              "舊資料、取消授權與替代登入"
+            ]
+          ],
+          "caption": "平台能力與外掛方案是兩層條件，請同時核對。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "用同一份會員資料驗收",
+          "text": "在測試帳號放入可辨識的收藏或個人資料，連結社群登入後再次登入核對。按鈕回到首頁只能證明跳轉發生，還需要確認登入到正確帳號。"
+        },
+        {
+          "type": "link",
+          "text": "完成會員註冊與帳號復原流程",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-member-registration"
+        },
+        {
+          "type": "link",
+          "text": "規劃 WordPress 使用者角色",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-user-roles"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Nextend 官方外掛功能",
+          "url": "https://wordpress.org/plugins/nextend-facebook-connect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend LINE 設定",
+          "url": "https://social-login.nextendweb.com/documentation/providers/line/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE 網站登入整合",
+          "url": "https://developers.line.biz/en/docs/line-login/integrate-line-login/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend Google 設定",
+          "url": "https://social-login.nextendweb.com/documentation/providers/google/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 網頁 OAuth 流程",
+          "url": "https://developers.google.com/identity/protocols/oauth2/web-server",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend Facebook 設定",
+          "url": "https://social-login.nextendweb.com/documentation/providers/facebook/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend 一般設定",
+          "url": "https://social-login.nextendweb.com/documentation/settings/general-settings/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

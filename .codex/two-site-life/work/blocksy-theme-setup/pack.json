@@ -1,0 +1,262 @@
+{
+  "slug": "blocksy-theme-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Blocksy 主題設定：從網站識別到手機導覽",
+      "description": "Blocksy 可以用主題設定管理網站外觀，再以 WordPress 區塊編輯內容。本文從安裝主題與 Companion 開始，說明 Starter Site 匯入、網站識別、全域色彩及中文字型，並逐步整理桌面頁首、手機抽屜選單與頁尾。也提供設定位置比較和前台驗收方式，幫助分清主題、擴充與頁面內容，避免匯入後留下示範資料或手機導覽空白。",
+      "hero": {
+        "src": "/guides/blocksy-theme-setup/hero.jpg",
+        "alt": "原創封面以螢幕、文件與盾牌呈現 Blocksy 外觀、內容設定和手機導航驗收。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "個人生活網站改用 Blocksy 時，最有感的工作往往是把文章、分類和聯絡入口整理好。主題可以控制整體外觀，但讀者能不能找到內容，仍取決於選單、文章結構與手機操作。先確立基本導航，再增加視覺效果，較容易維持一致的網站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下依 2026 年 9 月 14 日查閱的官方文件，以區塊編輯器搭配 Blocksy 為主要情境。範例是分享居家與閱讀筆記的網站，未沿用官方展示站文字、圖片或成效數字，也沒有替讀者匯入或購買主題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "主題、Companion 和 Starter Site 各有用途"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 WordPress 外觀、佈景主題、新增中搜尋 Blocksy，安裝後啟用。Blocksy Companion 是另一個外掛，提供 Starter Sites、擴充與相關 Theme Blocks。官方說明基本主題不強制依賴 Companion；是否安裝應看你需要哪些功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要使用起始網站，可在啟用 Companion 後進入 Blocksy、Starter Sites，選擇版型並啟動匯入精靈。先確認版型使用 Gutenberg 或 Elementor 等哪個編輯器，不要把不同編輯器的內容當成可以完全互換。也要核對會安裝哪些必要外掛。"
+        },
+        {
+          "type": "paragraph",
+          "text": "匯入精靈可選擇部分內容及是否建立子主題，但既有網站仍應先完整備份並在測試環境試做。模板是內容起點，匯入後要核對首頁、選單、媒體及設定。若失敗，先看錯誤原因，不要反覆重按讓網站留下多份示範資料。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先建立網站識別與共用色彩"
+        },
+        {
+          "type": "paragraph",
+          "text": "先準備網站名稱、標誌與簡短介紹，並確認標誌回到正確首頁。圖像式標誌不宜包含太多細小文字，否則手機縮小後無法辨識。若網站沒有獨立品牌圖案，也可以先以清楚的文字識別完成基本布局。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Customiser、General Options、Colors 設定 Global Color Palette，再將共用顏色指派給正文、連結、標題與背景。使用描述用途的名稱，例如主要文字、輔助背景，比只寫色碼容易維護。連結的正常與移入狀態都要看得出來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "調色盤可以供支援的區塊與編輯器引用，但個別元素設定仍可能覆寫全域值。如果某張文章卡片沒有跟著改色，先找它是否使用獨立顏色。不要每遇到一處差異就新增調色盤項目，否則共用規則會逐漸失去意義。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "中文字型與區塊內容保持一致"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Customiser、Typography 設定 Base Font、各層標題及按鈕文字，並保留合適的備援字型。先以真正的繁體中文長段落檢查字級、行高和標點，避免只看展示站英文就決定全站文字配置。文章內文與選單需要分別測試。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方目前以字母標示字型來源，例如 S 是系統字型、G 是遠端 Google Fonts，L 是透過本機 Google Fonts 擴充處理的字型。額外字型功能會有方案差異。只選到字型名稱不代表沒有外部請求，也不保證每個中文字元都包含。"
+        },
+        {
+          "type": "paragraph",
+          "text": "頁面正文可以使用 WordPress 原生區塊；需要 Blocksy Theme Blocks 時，再確認 Companion 與相應功能依賴。主題提供區塊功能，不表示每個區塊在所有方案都可用。先完成標題、段落、圖片與連結，再加入真正有助於閱讀的文章列表或導覽。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "桌面與手機頁首要分別配置"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自訂器的 Header 區域，使用拖放方式安排 Logo、Menu、Search 或 Button 等可用元素。先建立 WordPress 選單，再讓頁首元件使用正確選單。內容網站可以先保留主要分類、關於及搜尋，避免一開始就塞滿所有標籤和社群圖示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手機頁首需要 Trigger 開啟 Off Canvas 區域，而區域內要放 Mobile Menu 等實際內容。只有漢堡圖示卻沒配置選單，訪客可能打開空白抽屜。切換手機預覽後，分別確認開啟按鈕、抽屜中的選單及關閉按鈕。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mobile Menu 的 Select Menu 可指定顯示哪份選單；Interactive Collapse 決定子選單是否可展開收合。先測父項目連結與子選單切換是否容易分辨，再調整項目間距。桌面 Off Canvas 屬於 Pro 功能，不能把手機抽屜的可用性當成桌面也免費具備。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "在外觀選單建立並命名主要導航，確認每個網址與分類入口。",
+            "在桌面 Header 放入識別與導覽元件，指定選單。",
+            "切到手機配置 Trigger，再在 Off Canvas 加入 Mobile Menu 並選擇選單。",
+            "用前台測試開啟、子選單、關閉及回到頁面，最後檢查搜尋與聯絡入口。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "頁尾提供收尾資訊，不複製整個首頁"
+        },
+        {
+          "type": "paragraph",
+          "text": "Footer Builder 同樣以拖放方式配置可用元素，並可在每一列調整欄位、間距及裝置配置。生活網站頁尾可放簡短介紹、聯絡方式、必要頁面連結和版權資訊。不要為了填滿三欄加入過期公告或沒有維護的分類清單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Widget Area 可放入區塊式小工具，適合呈現簡單文字或連結；專用 Button、Contacts、Logo 等元素則可能受方案限制。看不到教學中的元素時，先核對功能標示和目前版本，不必立刻安裝另一套頁尾編輯器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在手機把頁尾欄位改成合適的堆疊方式，檢查長信箱、網址及社群名稱是否溢出。必要的聯絡和政策連結應仍可取得，不要為了縮短頁面全部隱藏。若同時使用頁面編輯器的頁尾範本，先決定由哪一套工具負責，避免重複呈現。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "發布前從訪客角度驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "完整走過首頁、分類列表、文章內頁與搜尋結果，確認標題與圖片沒有示範資料。點開最長的分類名稱，檢查沒有特色圖片的文章，以及含表格和長連結的內文。這些邊界情境比只看首頁更容易發現容器或字型問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再用未登入瀏覽器與手機檢查選單、抽屜和頁尾，並以鍵盤操作主要入口。自訂器的預覽可能反映尚未發布的設定，完成後仍要確認已發布狀態與實際網址。遇到舊樣式先核對儲存和快取，再改動更多設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存主題與 Companion 版本、啟用擴充及必要外掛清單，更新前做好備份。需要額外功能時，先描述訪客要完成的操作，再比較 Pro 或其他工具。沒有實測就不以官方速度形容詞作為網站成果，應以自己的頁面載入及操作結果評估。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/blocksy-theme-setup/diagram-1.svg",
+          "alt": "原創流程圖說明 Blocksy 手機頁首 Trigger、Off Canvas 區域和 Mobile Menu 的分工及關閉驗收。",
+          "width": 1600,
+          "height": 900,
+          "caption": "顯示按鈕、打開內容與完成導覽，是同一條需要測完的路徑。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "要處理的內容",
+            "主要位置",
+            "注意事項"
+          ],
+          "rows": [
+            [
+              "主題外觀",
+              "WordPress 自訂器",
+              "發布後再看前台"
+            ],
+            [
+              "共用色彩與字型",
+              "Colors、Typography",
+              "局部設定可能覆寫"
+            ],
+            [
+              "文章與頁面文字",
+              "WordPress 區塊編輯器",
+              "確認區塊依賴"
+            ],
+            [
+              "手機導覽",
+              "Trigger、Off Canvas、Mobile Menu",
+              "按鈕與內容要同時存在"
+            ],
+            [
+              "起始版型",
+              "Companion 的 Starter Sites",
+              "先核對編輯器及匯入範圍"
+            ]
+          ],
+          "caption": "主題設定與正文分開維護，才能快速找到修改位置。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先把手機選單走完一遍",
+          "text": "能看見漢堡圖示只是起點。確認它打開正確選單、子項目能操作、關閉後能繼續閱讀，並保留清楚的搜尋與聯絡入口，才算完成基本導航。"
+        },
+        {
+          "type": "link",
+          "text": "WordPress 分類、標籤與選單規劃",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-taxonomy-navigation"
+        },
+        {
+          "type": "link",
+          "text": "WordPress 字型來源與自行託管",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-fonts-self-hosting"
+        },
+        {
+          "type": "link",
+          "text": "選擇 WordPress 主題前的檢查",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-theme-selection"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Blocksy 安裝",
+          "url": "https://creativethemes.com/blocksy/docs/general/install-blocksy-theme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Blocksy Starter Site 匯入",
+          "url": "https://creativethemes.com/blocksy/docs/general/install-demo-contents/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Blocksy 全域色彩",
+          "url": "https://creativethemes.com/blocksy/docs/general-options/colors/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Blocksy 字型",
+          "url": "https://creativethemes.com/blocksy/docs/general-options/typography/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Blocksy Theme Blocks",
+          "url": "https://creativethemes.com/blocksy/docs/theme-blocks/theme-blocks-getting-started/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Blocksy 手機頁首",
+          "url": "https://creativethemes.com/blocksy/video-tutorials/customization/mobile-header-builder/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Blocksy 手機選單",
+          "url": "https://creativethemes.com/blocksy/docs/header-elements/menu-mobile/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Blocksy 頁尾元素",
+          "url": "https://creativethemes.com/blocksy/docs/footer-elements/footer-builder-elements/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Blocksy 頁尾配置",
+          "url": "https://creativethemes.com/blocksy/docs/footer-options/footer-row-options/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Blocksy 頁尾功能差異",
+          "url": "https://creativethemes.com/blocksy/video-tutorials/customization/exploring-the-footer-builder/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "scope": "One exploratory observation per workflow on the same three synthetic tasks; not a statistical benchmark",
+  "cli_version": "2.1.233",
+  "single": {
+    "seconds": 8.06,
+    "models": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 943,
+        "outputTokens": 369,
+        "cacheReadInputTokens": 7898,
+        "cacheCreationInputTokens": 8218,
+        "webSearchRequests": 0,
+        "costUSD": 0.0200138,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 206,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "api_equivalent_cost_usd": 0.0200138,
+    "source": "workflow-single-baseline.json",
+    "passed": true
+  },
+  "teams": {
+    "seconds_to_first_combined_result": 42.63,
+    "models_observed": [
+      "claude-haiku-4-5-20251001",
+      "claude-opus-5"
+    ],
+    "source": "interactive-products.json",
+    "passed": true,
+    "cost_usd": null
+  },
+  "limitations": [
+    "Single observation per workflow, no randomized repeated trial",
+    "Teams includes coordination prompts; the single agent does not",
+    "Teammates used their inherited/default models; model mix is explicitly recorded",
+    "A Max subscription was used; reported API-equivalent cost is not an invoice",
+    "No causal speed, quality, or cost advantage inferred"
+  ]
+}

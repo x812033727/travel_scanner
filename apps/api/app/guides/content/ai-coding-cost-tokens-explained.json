@@ -1,0 +1,467 @@
+{
+  "slug": "ai-coding-cost-tokens-explained",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+      "description": "AI 寫程式的帳單有兩套算法：訂閱制付月費換一段時間區間的額度，API 按每百萬 token 計價。這篇用 2026 年 9 月官網當天查到的數字，說明 token 是什麼計價單位、為什麼代理每一輪都重送整段上下文所以比聊天燒得快、提示詞快取怎麼把重複輸入降到十分之一，並列出 Claude、ChatGPT、Copilot、Cursor、Gemini CLI 的入門方案與代表模型的 API 價格，附一條估算算式、一個算到底的範例與六個省錢做法。",
+      "hero": {
+        "src": "/guides/ai-coding-cost-tokens-explained/hero.jpg",
+        "alt": "插圖：一個終端機視窗裡有三根越來越高的長條，旁邊是一個計量表，代表用量隨輪數累積並被計價",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "用 AI 寫程式的費用只有兩套算法：訂閱制付固定月費，換一段時間區間裡的額度；API 按 token 計價，用多少算多少。兩邊共用同一個單位 token，而代理（Agent）比聊天視窗燒得快，是因為它每一輪都重送整段上下文，模型每用一次工具還會再送一次請求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇先把 token、上下文視窗與提示詞快取講成看得懂的計價規則，再排出 2026 年 9 月 14 日各家官網的方案價格與 API 單價，最後給一條算式、一個算到底的範例與六個省錢做法。"
+        },
+        {
+          "type": "heading",
+          "text": "token 是計價單位，不是字數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "按量計費的 AI 服務，帳單單位都是 token，不是字數也不是次數。OpenAI 的說明中心把 token 描述成「可以是一個字元、一個字的一部分、一整個字或標點符號」，並給了英文換算：1 個 token 大約 4 個字元、大約四分之三個英文單字，100 個 token 大約等於 75 個英文單字；Anthropic 的名詞表則寫，對 Claude 來說一個 token「大約代表 3.5 個英文字元」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "中文呢。兩家都只給英文換算，也都加了但書：Anthropic 寫「確切數量會依使用的語言而不同」，OpenAI 寫「其他語言的字元、單字與 token 之間可能有不同的關係」。中文一個字算幾個 token 沒有官方比例，要準就得實際量。同一段文字換個模型數字也會變：Anthropic 的價格頁註明 Claude 4.7 之後的模型換了新分詞器，同樣的文字大約多出 30% 的 token。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "輸入 token：送進去的所有東西，含系統提示詞、工具定義、專案規則檔與先前整段對話。",
+            "輸出 token：模型生成的內容。思考過程也算輸出，官方文件寫明思考 token 以輸出 token 計費。",
+            "快取 token：重複送而且命中快取的那段輸入，另有較低的單價。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "token（Token）是什麼：AI 如何計算文字長度",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+        },
+        {
+          "type": "heading",
+          "text": "為什麼代理比聊天燒得快：每一輪都重送整段上下文",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型本身沒有記憶。OpenAI 的對話狀態文件寫得很直接：每一次生成請求都是獨立而且無狀態的，而且「這條鏈上所有先前的輸入 token 都會以輸入 token 計費」。Anthropic 的上下文視窗文件說同一件事：先前每一輪都被完整保留，系統提示詞、每一則訊息、工具結果與工具定義全部都算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "聊天視窗裡累積得慢，每輪只多幾百個 token，代理不一樣。Claude Code 的官方文件寫得很具體：每送一則訊息就是一次新的 API 請求，工具會把系統提示詞、專案上下文、先前每一則訊息與工具結果全部重送；模型每用一次工具，就再送一次請求帶上那批結果。假設起始上下文 30,000 個 token、每輪新增 2,000 個，第 2 輪的輸入就是 32,000 個，第 40 輪是 108,000 個。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以一個開了一整天的 session，即使只問一句話，用量還是跳很多。Anthropic 的成本文件把原因列成長上下文、快取失效、排程任務照樣觸發，以及上下文壓縮本身也要讀完要摘要的那段對話；同一份文件給的參考值是企業部署平均每位開發者每個有使用的日子約 13 美元、每月 150 到 250 美元。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-coding-cost-tokens-explained/diagram-1.svg",
+          "alt": "圖解：一次代理請求由四層內容組成，輸入量隨輪數累積，下方比較訂閱制與 API 兩條計價路徑",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊是一次請求裡有什麼，右邊是輸入量怎麼隨輪數長大，下面是兩條計價路徑。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "link",
+          "text": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-context-compaction"
+        },
+        {
+          "type": "heading",
+          "text": "提示詞快取：重複送的那一段可以只算十分之一",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "既然每輪都重送同一包開頭，把它存起來就能省。提示詞快取（Prompt Caching）是比對這次請求的開頭和最近處理過的內容，一樣的部分重用計算結果。比對要完全相符，前面改一個字，後面全部重算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的價格頁列出三個倍率：五分鐘快取寫入是基本輸入價的 1.25 倍、一小時寫入 2 倍、快取讀取 0.1 倍，並寫明五分鐘版讀到一次就回本、一小時版讀到兩次回本；可快取的最短長度依模型而定，Claude Sonnet 5 是 1,024 個 token、Haiku 4.5 是 4,096 個。OpenAI 則預設就開，GPT-5.6 之後的模型最低 1,024 個可見輸入 token，命中的部分以快取輸入價計費、是未快取的 0.1 倍，最多省 90%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要注意的是什麼會讓快取失效。Claude Code 的文件列了一整份清單，其中幾項是互動時很容易做的動作。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "中途換模型：每個模型有自己的快取，換過去等於整段重讀。",
+            "改 effort 等級或開啟快速模式：同樣會讓整包重算。",
+            "連上或斷開 MCP 伺服器、啟停外掛：工具定義在最前面一層，一改就全毀。",
+            "執行壓縮指令：用摘要換掉整段歷史，對話那層本來就會重建。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的建議很簡單：開頭就把模型與 effort 等級選定，壓縮留到兩個任務之間再做。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching"
+        },
+        {
+          "type": "link",
+          "text": "Claude API 省錢：提示快取與批次處理怎麼用",
+          "url": "https://mokaair.com/zh-TW/life/claude-api-prompt-caching-cost"
+        },
+        {
+          "type": "heading",
+          "text": "訂閱制：月費換一段時間區間的額度",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "訂閱制是付固定月費換一段時間區間的額度，超過就等重設或另外加購。各家的額度單位都不一樣，多半不用 token 表示，很難直接互比。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的個人方案分免費、Pro 與 Max，官網寫 Pro 每五小時區間的用量至少是免費版的 5 倍，Max 分 5x 與 20x 兩級。OpenAI 的 Codex 定價頁把單位寫成每五小時區間的本機訊息則數，每個模型上限不同，例如 Plus 的 GPT-5.6 Luna 是 250 到 2,000 則；說明中心另外寫明 Codex 有五小時與每週兩個視窗。實際則數會隨官網調整，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GitHub Copilot 走 credits：1 個 AI credit 等於 0.01 美元，一次互動的成本取決於用哪個模型與消耗多少 token，各方案每月配一筆基本 credits。Cursor 每個方案都含一定額度的模型用量，超過之後的 on-demand 是事後計費，沒用完的額度不會累積到下個月。Gemini CLI 用個人 Google 帳號登入則是每分鐘 60 次、每天 1,000 次請求。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "計費方式",
+            "單位",
+            "官網數字"
+          ],
+          "rows": [
+            [
+              "Claude Pro",
+              "訂閱",
+              "每五小時區間",
+              "月繳 20 美元、年繳每月 17 美元"
+            ],
+            [
+              "Claude Max 5x／20x",
+              "訂閱",
+              "每五小時區間",
+              "自每月 100 美元起"
+            ],
+            [
+              "ChatGPT Go／Plus",
+              "訂閱",
+              "每五小時區間訊息則數",
+              "每月 8 美元／20 美元"
+            ],
+            [
+              "ChatGPT Pro",
+              "訂閱",
+              "每五小時區間訊息則數",
+              "自每月 100 美元起"
+            ],
+            [
+              "Copilot Pro",
+              "訂閱加 credits",
+              "每月 AI credits",
+              "每月 10 美元，基本 1,000"
+            ],
+            [
+              "Copilot Pro+／Max",
+              "訂閱加 credits",
+              "每月 AI credits",
+              "每月 39／100 美元，基本 3,900／10,000"
+            ],
+            [
+              "Cursor Pro／Pro+／Ultra",
+              "訂閱加超額",
+              "每月含用量",
+              "每月 20／60／200 美元"
+            ],
+            [
+              "Gemini CLI（Google 帳號）",
+              "免費額度",
+              "每分鐘與每日請求數",
+              "每分鐘 60 次、每天 1,000 次"
+            ],
+            [
+              "Claude API",
+              "用量",
+              "每百萬 token",
+              "Sonnet 5 輸入 2、輸出 10 美元"
+            ],
+            [
+              "OpenAI API",
+              "用量",
+              "每百萬 token",
+              "GPT-5.6 Luna 輸入 0.20、輸出 1.20 美元"
+            ],
+            [
+              "Gemini API",
+              "用量",
+              "每百萬 token",
+              "Gemini 3.8 Flash 輸入 0.75、輸出 3.75 美元"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日於各供應商官網查得；額度單位照官網寫法，未列出的細項以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "heading",
+          "text": "API 計費：每百萬 token 算一次",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "API 沒有月費，開一把金鑰用多少算多少，單位是每百萬 token（官方寫成 per MTok），輸入與輸出分開計價，輸出通常是輸入的四到五倍。以下是各家官網上的代表模型。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Anthropic：Claude Opus 5 每百萬 token 輸入 5 美元、輸出 25 美元；Sonnet 5 是 2 與 10 美元；Haiku 4.5 是 1 與 5 美元。",
+            "OpenAI：GPT-6 Astra 輸入 10 美元、快取輸入 1 美元、輸出 50 美元；GPT-5.6 Luna 是 0.20、0.02 與 1.20 美元。",
+            "Google：Gemini 3.8 Flash 輸入 0.75 美元、輸出 3.75 美元，官網註明這個價格到 2026 年 12 月 31 日，2027 年 1 月 1 日起改為 1.50 與 7.50 美元。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "同一家的旗艦與輕量模型可以差到 50 倍，這是省錢最大的槓桿：改命名、補測試交給輕量模型，架構決策才用旗艦模型。"
+        },
+        {
+          "type": "link",
+          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        },
+        {
+          "type": "heading",
+          "text": "估一個小專案要多少錢",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "算式只有一條，把輸入、快取讀取與輸出三段分開乘，再加起來。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "按 token 計費的算式",
+          "code": "費用 = 輸入 token × 輸入單價 ÷ 1,000,000\n     + 快取讀取 token × 快取讀取單價 ÷ 1,000,000\n     + 輸出 token × 輸出單價 ÷ 1,000,000\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "難的不是算式，是估 token。可以這樣拆：起始上下文有多大、每一輪新增多少、總共要跑幾輪。"
+        },
+        {
+          "type": "paragraph",
+          "text": "舉個例子。用 Claude Sonnet 5 的 API，輸入每百萬 2 美元、輸出每百萬 10 美元、快取讀取每百萬 0.20 美元、五分鐘快取寫入每百萬 2.50 美元；起始上下文 30,000 個 token、每輪新增 2,000 個、跑 40 輪、每輪輸出 1,000 個。因為每輪都重送整包，40 輪的輸入合計 2,760,000 個 token，輸出共 40,000 個。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範例：同一個 40 輪的代理任務，有沒有命中快取的差別",
+          "code": "沒有快取\n  輸入 2,760,000 × 2  ÷ 1,000,000 = 5.52 美元\n  輸出    40,000 × 10 ÷ 1,000,000 = 0.40 美元\n  合計 5.92 美元\n\n命中快取\n  快取寫入   108,000 × 2.50 ÷ 1,000,000 = 0.27 美元\n  快取讀取 2,652,000 × 0.20 ÷ 1,000,000 = 0.53 美元\n  輸出        40,000 × 10   ÷ 1,000,000 = 0.40 美元\n  合計 1.20 美元\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "快取寫入的 108,000 是起始的 30,000 加上 39 輪各新增的 2,000，每段內容只會寫進快取一次；其餘 2,652,000 是重複讀到的，以 0.1 倍計價。同一個任務 5.92 美元變成 1.20 美元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訂閱制沒辦法這樣算，因為官網不把額度換算成 token。反過來做：先看用量畫面，看自己一天吃掉多少比例，再推估一個月夠不夠。"
+        },
+        {
+          "type": "heading",
+          "text": "省錢：六個官方文件寫過的做法",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "讓快取命中：開頭就把模型與 effort 等級選定，中途不換，壓縮留到任務之間。",
+            "簡單的事用小模型：改命名、補測試、整理格式交給輕量模型。",
+            "把上下文控制住：換不相關的工作就開新對話，用不到的 MCP 伺服器關掉。",
+            "把任務講清楚：官方點名「改善這個專案」會觸發大範圍掃描，「在 auth.ts 的 login 函式加上輸入驗證」則只讀必要的檔案。",
+            "先規劃再實作：複雜任務先讓代理提一個方向給你看過，避免走錯之後重做。",
+            "固定流程用非互動模式跑：每天要做的檢查寫成一行指令一次跑完。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "先把上限設好，再開始用",
+          "text": "按 token 計費沒有天然的煞車，一個沒停下來的代理任務可以在你去吃飯時把上下文推到上限。GitHub 的文件寫明額度用完後可以替額外用量設預算再繼續，額外用量本身也可能有上限；Cursor 的 on-demand 要自己到設定裡開啟；用 Claude API 則建議在 workspace 上設支出上限。做一次就好，比事後看帳單有用。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜用量、成本與效率調整",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-usage-cost-optimization"
+        },
+        {
+          "type": "link",
+          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+        },
+        {
+          "type": "heading",
+          "text": "用量儀表板在哪裡看",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "Claude：Claude Code 裡輸入斜線 usage 指令，或到 claude.ai 設定的 Usage；用 API 看 Claude Console 的 Usage 頁。",
+            "ChatGPT 與 Codex：開設定或 Codex 的用量頁，也可以在 Codex CLI 裡輸入斜線 status 指令。",
+            "GitHub Copilot：官方文件寫用量儀表板會顯示目前額度與已經用掉的量。",
+            "Cursor：儀表板的 Spending 分頁，有兩個用量池的即時用量與 on-demand 費用。",
+            "Gemini CLI：輸入斜線 stats 指令，顯示這次 session 的 token 用量與快取節省。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+        }
+      ],
+      "sources": [
+        {
+          "title": "token 是什麼、怎麼計算（OpenAI 說明中心）",
+          "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 名詞表：token 與上下文視窗（Anthropic 官方文件）",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "上下文視窗如何隨輪數累積（Anthropic 官方文件）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "對話狀態：每次請求都是無狀態的（OpenAI 官方文件）",
+          "url": "https://developers.openai.com/api/docs/guides/conversation-state",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code 成本管理與降低 token 用量（Anthropic 官方文件）",
+          "url": "https://code.claude.com/docs/en/costs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude Code 如何使用提示詞快取（Anthropic 官方文件）",
+          "url": "https://code.claude.com/docs/en/prompt-caching",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "提示詞快取：最短長度與快取壽命（Anthropic 官方文件）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude API 價格與快取倍率（Anthropic 官方文件）",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 方案與價格（Anthropic 官網）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "提示詞快取：預設開啟與快取輸入折扣（OpenAI 官方文件）",
+          "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI API 價格（官方文件）",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ChatGPT 與 Codex 方案價格與用量上限（OpenAI 官方文件）",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "用 ChatGPT 方案使用 Codex：用量視窗與查詢方式（OpenAI 說明中心）",
+          "url": "https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Copilot 方案與每月 AI credits（GitHub 官方文件）",
+          "url": "https://docs.github.com/en/copilot/get-started/plans",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Copilot 個人用量計費與 AI credits 換算（GitHub 官方文件）",
+          "url": "https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor 方案與價格（官網）",
+          "url": "https://cursor.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cursor 用量、額度與 Spending 分頁（官方說明）",
+          "url": "https://cursor.com/help/models-and-usage/usage-limits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 專案說明與免費額度（Google 官方 GitHub）",
+          "url": "https://github.com/google-gemini/gemini-cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini API 價格（Google 官方文件）",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 指令參考：stats（Google 官方文件）",
+          "url": "https://google-gemini.github.io/gemini-cli/docs/cli/commands.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

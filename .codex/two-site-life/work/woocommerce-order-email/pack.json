@@ -1,0 +1,237 @@
+{
+  "slug": "woocommerce-order-email",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WooCommerce 訂單信怎麼改：YayMail、內容與寄送驗收",
+      "description": "WooCommerce 訂單信需要先對應訂單情境，再調整品牌樣式。本文整理核心郵件設定與 YayMail 的使用範圍、動態欄位和共用頁首頁尾的編輯方式，以及測試信、真實流程觸發、手機與不同信箱的驗收方法，協助台灣店主把付款、出貨與退款資訊寫清楚，也能分辨版型問題和寄送問題。",
+      "hero": {
+        "src": "/guides/woocommerce-order-email/hero.jpg",
+        "alt": "原創插畫，以訂單信件文件、編輯畫面和寄送伺服器呈現郵件製作與驗收。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "顧客收到一封版面漂亮的信，卻找不到訂單編號或誤以為包裹已出貨，這封信仍然沒有完成任務。訂單信的第一個工作，是說明目前狀態和下一步，品牌顏色與圖片則幫助辨識商店。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WooCommerce 核心已有基本郵件設定，需要更細的版型時可研究 YayMail。以下從通知情境、編輯到驗收整理流程，避免只改了一張預覽圖，就把整套交易通知當成已完成。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先為每封信指定收件者與任務"
+        },
+        {
+          "type": "paragraph",
+          "text": "列出新訂單、保留中、處理中、完成、退款和顧客備註等情境，記下哪些寄給店主、哪些寄給顧客。管理者需要知道如何接單，顧客需要知道付款、配送或退款下一步，兩者不應共用所有內部資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "到 WooCommerce 設定的電子郵件分頁，核對通知是否啟用、主旨、收件者及格式。只有面向管理者的通知才有可設定的收件者欄位；顧客通知應依該筆訂單資料寄送，不能為了測試就把正式客戶地址改成工作人員地址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文案要符合狀態。處理中不能一律寫成包裹已交寄，完成狀態也應對上店內作業；退款信要能區分全額和部分退款。避免在所有信件頂端都放相同的「付款成功」，讓失敗或退款通知也出現不適合的訊息。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先確認核心設定是否已足夠"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前 WooCommerce 的 Email improvements 提供標誌、字型、對齊與色彩等設定，並可預覽電腦和手機及寄測試信。既有商店的功能開關與新版預設可能不同，先核對所用版本，不能沿用過去只有少數顏色可改的教學。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若只需要換品牌識別、頁尾和通知標題，可先用核心功能完成。需要重新安排商品區塊、加入不同說明或共用版型，再評估 YayMail，讓工具選擇對應實際差距，避免為了改一行文字增加多套編輯器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WooCommerce 另有標為 alpha 的區塊郵件編輯功能，與一般 Email improvements 不是同一開關。使用實驗功能或切換主要郵件編輯方式前，應確認外掛相容性與回復方法，不把核心更新、區塊編輯器及 YayMail 混成同一套設定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在 YayMail 選對版型並保留動態資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝後從 WooCommerce 的 Email Customizer 進入，先選要修改的通知，再選測試訂單作為預覽資料。YayMail 免費版主要處理標準 WooCommerce 信件，Pro 和額外 Addons 擴充第三方相容性；某套訂閱或出貨外掛的信件是否支援，需逐一核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先保留訂單編號、商品明細、數量、金額及必要地址，再調整標題與說明區。使用編輯器提供的動態欄位，不要把示範訂單的姓名、編號或金額直接寫死在一般文字中，否則下一位顧客可能收到前一筆資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "YayMail 文件要求對應通知使用 HTML 格式，並啟用要接管的版型才會套用。編輯版型與開啟通知是兩件事：儲存設計不會讓本來沒有的事件自動發信，停用 YayMail 接管也不等於停用 WooCommerce 的交易通知。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "備份或匯出目前版型，選定一種通知開始修改。",
+            "載入測試訂單，先核對動態資料再調整版面。",
+            "設定所需 HTML 格式、通知啟用及版型接管狀態。",
+            "寄測試信並執行對應訂單事件，確認兩者結果。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用共用樣式維持一致，讓內容保持差異"
+        },
+        {
+          "type": "paragraph",
+          "text": "YayMail 的共用頁首與頁尾可集中品牌識別和聯絡資訊，減少每封信各改一份造成不同版本。將客服方式、商店名稱和必要頁尾放在共用區，付款指示、退款說明或下載內容則依通知情境維護。"
+        },
+        {
+          "type": "paragraph",
+          "text": "主旨應先讓人辨識商店和事件，內文前段說明目前狀態，下一步按鈕使用具體名稱，例如查看訂單或完成付款。不要讓促銷橫幅把重要資訊推到很下面，也不要把整封信做成一張顧客必須載入的圖片。"
+        },
+        {
+          "type": "paragraph",
+          "text": "外掛整合的物流編號、超商門市或客製欄位，不一定能用一般 WooCommerce 動態欄位直接讀取。先確認資料由誰提供以及 YayMail 的支援方式，再用包含該資訊的測試訂單驗收；空白欄位不應保留令人困惑的標題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "預覽、測試信和事件觸發分三次驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "編輯器預覽適合檢查區塊順序與基本響應式，寄測試信則能看實際收件程式如何呈現。選擇常用的 Gmail、Outlook 與手機郵件環境，檢查長商品名稱、多規格、多品項、折扣、運費和長地址，不只測一件短名稱商品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外測圖片未載入與深色模式，確認文字和按鈕仍能閱讀。連結需指向正確商店，付款或重設密碼連結不可公開分享。若使用實際訂單預覽，收件人必須有權查看該資料；對外支援以去識別化測試資料為宜。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後在隔離環境觸發對應事件，核對是否由正確通知寄出、收件者是否正確，以及資料是否來自當前訂單。測試信成功只驗證了測試路徑，不能證明付款後的狀態變更、退款或第三方通知都已正常運作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "寄不到信時沿傳遞流程排查"
+        },
+        {
+          "type": "paragraph",
+          "text": "先檢查這個事件是否應該觸發通知，再看 WooCommerce 通知設定與訂單備註。若付款服務已成功、網站卻停在待付款，可能是交易通知沒有更新訂單，應先處理金流同步，而不是一直重設 YayMail 版型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網站產生信件後，還要經過寄信服務及收件端判斷。核對寄件網域驗證、寄送紀錄與退信資訊，使用商店自己可控制的寄件地址；需要不同回覆窗口時，另外設定 Reply-to，避免把寄件身分誤改成顧客信箱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "維護時保存匯出的版型和完整資料庫備份。YayMail 客製內容主要存於資料庫，只複製外掛資料夾不足以備份設計。更新後重新跑代表案例，保留版本與檢查結果，讓下一位維護者知道哪些通知已確認、哪些仍待處理。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/woocommerce-order-email/diagram-1.svg",
+          "alt": "原創四欄圖解，呈現事件情境、動態內容、版面預覽與實際寄送，協助區分 YayMail 設計和 WooCommerce 通知流程。",
+          "width": 1600,
+          "height": 900,
+          "caption": "通知情境、資料、設計和寄送各自驗證，才能交付可靠的訂單信。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查層次",
+            "能證明什麼",
+            "不能省略的下一步"
+          ],
+          "rows": [
+            [
+              "編輯器預覽",
+              "基本內容與版面",
+              "實際信箱呈現"
+            ],
+            [
+              "寄測試信",
+              "測試資料可寄達",
+              "訂單事件觸發"
+            ],
+            [
+              "流程測試",
+              "正確事件與收件者",
+              "不同商品與退款情境"
+            ],
+            [
+              "寄送紀錄",
+              "信件處理結果",
+              "收件端與退信核對"
+            ]
+          ],
+          "caption": "三種畫面都成功，仍需確認通知符合真正的訂單狀態。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "改版型不會自動修好寄信",
+          "text": "YayMail 處理信件呈現；事件觸發、通知開關、寄信服務與收件端是不同環節。先定位問題發生在哪一段，再修改對應設定。"
+        },
+        {
+          "type": "link",
+          "text": "先排查 WordPress 郵件傳遞",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-smtp-delivery"
+        },
+        {
+          "type": "link",
+          "text": "付款和物流通知各自核對",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-payments-shipping"
+        }
+      ],
+      "sources": [
+        {
+          "title": "WooCommerce 郵件設定",
+          "url": "https://woocommerce.com/document/configuring-woocommerce-settings/emails/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YayMail 安裝與接管版型",
+          "url": "https://wordpress.org/plugins/yaymail/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YayMail 版本與共用版型",
+          "url": "https://docs.yaycommerce.com/yaymail/getting-started/introduction",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YayMail 郵件模板與 HTML 要求",
+          "url": "https://docs.yaycommerce.com/yaymail/how-it-works/email-templates",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YayMail 預覽與測試訂單",
+          "url": "https://docs.yaycommerce.com/yaymail/how-it-works/preview-email",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YayMail 保存與備份",
+          "url": "https://docs.yaycommerce.com/yaymail/other-links/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WooCommerce 郵件排錯",
+          "url": "https://woocommerce.com/document/email-faq/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

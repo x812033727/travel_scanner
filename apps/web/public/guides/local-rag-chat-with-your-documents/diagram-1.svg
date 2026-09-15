@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">本機 RAG 的五個步驟 / Five steps of a local RAG pipeline</title>
+  <desc id="desc">流程圖由六個方框組成。上排由左到右是文件、分段、嵌入：文件是留在自己硬碟上的 PDF、Word 與純文字；分段把文件切成有重疊的片段，Open WebUI 的預設是 Chunk Size 1000、Chunk Overlap 100；嵌入把每段算成一串向量存進向量資料庫，長度常見 384 到 1024 維。一條連接線從嵌入繞到下排左邊。下排由左到右是檢索、重排（選用）、生成：檢索把問題也算成向量，取最相近的前幾段，Top K 預設 3；重排用 BM25 加向量搜尋再由 CrossEncoder 重新打分數，Open WebUI 預設關閉；生成把片段放進提示詞，要求模型只根據片段回答並附上引用。最下方的提醒寫著答案不對時先看檢索撈到了什麼，再回頭調分段大小、Top K 與上下文視窗，而掃描版 PDF 抽不到字、CSV 只看得到被撈到的那幾列。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">本機 RAG：一份文件怎麼變成有依據的回答</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Local RAG: from your own documents to a grounded answer</text>
+
+  <!-- row A -->
+  <rect x="150" y="125" width="380" height="205" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="340" y="190" font-size="28" font-weight="bold" fill="#102A2B" text-anchor="middle">文件</text>
+  <text x="340" y="237" font-size="17" fill="#102A2B" text-anchor="middle">PDF、Word、純文字</text>
+  <text x="340" y="267" font-size="17" fill="#102A2B" text-anchor="middle">留在自己的硬碟上</text>
+  <text x="340" y="297" font-size="17" fill="#5C6B6B" text-anchor="middle">不必上傳到雲端</text>
+
+  <rect x="610" y="125" width="380" height="205" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="190" font-size="28" font-weight="bold" fill="#102A2B" text-anchor="middle">分段</text>
+  <text x="800" y="237" font-size="17" fill="#102A2B" text-anchor="middle">切成一段一段，留重疊</text>
+  <text x="800" y="267" font-size="17" fill="#102A2B" text-anchor="middle">Chunk Size 1000</text>
+  <text x="800" y="297" font-size="17" fill="#102A2B" text-anchor="middle">Chunk Overlap 100</text>
+
+  <rect x="1070" y="125" width="380" height="205" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1260" y="190" font-size="28" font-weight="bold" fill="#102A2B" text-anchor="middle">嵌入</text>
+  <text x="1260" y="237" font-size="17" fill="#102A2B" text-anchor="middle">每段算成一串向量</text>
+  <text x="1260" y="267" font-size="17" fill="#102A2B" text-anchor="middle">常見 384 到 1024 維</text>
+  <text x="1260" y="297" font-size="17" fill="#5C6B6B" text-anchor="middle">存進向量資料庫</text>
+
+  <line x1="540" y1="227" x2="600" y2="227" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1000" y1="227" x2="1060" y2="227" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- connector from row A to row B -->
+  <path d="M 1260 330 L 1260 400 L 340 400 L 340 458" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="800" y="386" font-size="17" fill="#5C6B6B" text-anchor="middle">以上是先做好的索引，以下是每次提問才跑的</text>
+
+  <!-- row B -->
+  <rect x="150" y="470" width="380" height="205" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="340" y="535" font-size="28" font-weight="bold" fill="#102A2B" text-anchor="middle">檢索</text>
+  <text x="340" y="582" font-size="17" fill="#102A2B" text-anchor="middle">問題也算成向量</text>
+  <text x="340" y="612" font-size="17" fill="#102A2B" text-anchor="middle">取最相近的前幾段</text>
+  <text x="340" y="642" font-size="17" fill="#102A2B" text-anchor="middle">Top K 預設 3</text>
+
+  <rect x="610" y="470" width="380" height="205" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="800" y="535" font-size="28" font-weight="bold" fill="#102A2B" text-anchor="middle">重排（選用）</text>
+  <text x="800" y="582" font-size="17" fill="#102A2B" text-anchor="middle">BM25 加向量搜尋</text>
+  <text x="800" y="612" font-size="17" fill="#102A2B" text-anchor="middle">CrossEncoder 重新打分數</text>
+  <text x="800" y="642" font-size="17" fill="#5C6B6B" text-anchor="middle">Open WebUI 預設關閉</text>
+
+  <rect x="1070" y="470" width="380" height="205" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1260" y="535" font-size="28" font-weight="bold" fill="#102A2B" text-anchor="middle">生成</text>
+  <text x="1260" y="582" font-size="17" fill="#102A2B" text-anchor="middle">片段放進提示詞</text>
+  <text x="1260" y="612" font-size="17" fill="#102A2B" text-anchor="middle">只根據片段回答</text>
+  <text x="1260" y="642" font-size="17" fill="#2E7D5B" text-anchor="middle">回答附上引用</text>
+
+  <line x1="540" y1="572" x2="600" y2="572" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1000" y1="572" x2="1060" y2="572" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- bottom note -->
+  <rect x="150" y="730" width="1300" height="110" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="800" y="779" font-size="20" fill="#102A2B" text-anchor="middle">答案不對時，先看檢索撈到了什麼，再回頭調分段大小、Top K 與上下文視窗</text>
+  <text x="800" y="813" font-size="17" fill="#B8442D" text-anchor="middle">掃描版 PDF 抽不到字、CSV 只看得到被撈到的那幾列，先別急著相信答案</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

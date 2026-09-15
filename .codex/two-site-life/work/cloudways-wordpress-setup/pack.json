@@ -1,0 +1,208 @@
+{
+  "slug": "cloudways-wordpress-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Cloudways 建站：伺服器、應用程式與帳戶驗證",
+      "description": "Cloudways 把伺服器、應用程式與專案分開管理，第一次使用時應先弄清楚每個層級及其費用。本文以 Flexible 的 WordPress 建站流程為主，整理帳戶啟用、建立伺服器、加入應用程式、連接網域與上線驗收，並說明停機為何未必停止計費。遇到帳戶驗證要求時，也提供確認官方管道與處理個別要求的方法，幫你在開始使用前建立清楚的成本與維護責任。",
+      "hero": {
+        "src": "/guides/cloudways-wordpress-setup/hero.jpg",
+        "alt": "帳戶文件、雲端伺服器與應用畫面相連，未使用供應商品牌圖像。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在 Cloudways 建站時，伺服器是執行環境，應用程式則是放在其中的網站，專案用來整理工作。這些層級分開後，才容易理解新增一個網站、增加一台伺服器與更換方案的差別。不要只看 WordPress 已安裝，就忽略帳戶裡仍有哪些資源持續產生費用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以 Cloudways Flexible 的公開教學為主。Autonomous 是另一種產品體驗，應另查它自己的部署與計費條件，不能把 Flexible 的伺服器步驟直接套用。以下沒有使用者帳戶實測，也不提供特定雲端供應商的速度排名；你的選擇應以網站需求、可用區域和實際帳戶條件為準。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先完成帳戶啟用與個別驗證要求"
+        },
+        {
+          "type": "paragraph",
+          "text": "從 Cloudways 官方入口註冊，使用能持續收信的帳號，依畫面完成必要的電子郵件或其他啟用程序。若帳戶顯示待驗證，先保存提示與發生時間，從官方支援管道確認需要的下一步。這種狀態與 DNS 設定無關，修改網站網域不會替你解除帳戶層級的限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文未找到可套用所有新帳戶的統一證件清單或通過時間，因此不提供「寄某幾份文件就一定通過」的做法。若收到補件要求，先透過官方帳戶確認要求真實、提交方式與必要範圍，再依個別案件處理。不要照網路文章的舊信箱寄送證件，也不要建立不實資料或重複帳戶試圖跳過驗證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立前先看成本單位與停止條件"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways 的 Flexible 計費與使用的伺服器及加購項目有關，費用依相應規則計算後出帳。請在建立前記錄供應商、大小、區域、預估費用及額外服務。月費估算不是承諾你開了多個環境仍只付同一筆，也不能忽略儲存、傳輸或其他可能適用的額外項目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方帳務文件提醒，停止或不使用伺服器未必停止計費；不同基礎設施仍可能保留磁碟、IP 等資源。結束試用或移除環境時，應先保存資料，再依產品流程刪除不再使用的資源及停用付費加購，並核對後續帳單。不要把網站沒人訪問當成不會產生費用的證據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "依網站工作選擇伺服器"
+        },
+        {
+          "type": "paragraph",
+          "text": "從 Flexible 的伺服器建立流程選擇應用程式、供應商、規格及位置。先用目前網站的必要功能與資料量做判斷，不必一開始就選最大規格。讀者主要在台灣時，可以把候選區域列入測試，但地理距離只是因素之一，不能僅憑區域名稱保證實際載入速度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "請替伺服器、應用程式與專案取可區別的名稱，例如正式作品站與測試站分開命名。這能降低日後調整或刪除錯誤環境的機會。若已有伺服器，先確認它目前承擔哪些網站及資源狀態，再決定把新應用放進去，或建立另一個獨立環境。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把 WordPress 加入正確的伺服器"
+        },
+        {
+          "type": "paragraph",
+          "text": "依 Cloudways 官方文件，在既有 Flexible 伺服器新增應用時，進入 Servers、選擇目標伺服器，再使用 Add App 或對應的新增應用入口。選擇需要的 WordPress 類型，填入應用名稱與專案，再提交建立。若平台提示 PHP 或資料庫條件不符，應先查相容性，不直接升級承載其他正式網站的環境。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立完成後，進入應用程式管理頁，查看存取資訊與暫時網址，確認 WordPress 後台可用。主機管理帳戶、應用程式登入與 WordPress 管理者是不同層級，應分開保管。網站的名稱、時區、管理信箱及內容也要核對，避免把安裝用的初始資料直接當成正式設定。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "確認帳戶可用、目前選用 Flexible，並記錄伺服器及加購的計費條件。",
+            "建立伺服器，或在既有伺服器中選擇新增應用，核對位置、規格與其他網站的影響。",
+            "選擇 WordPress，設定可辨識的應用與專案名稱，等待平台回報建立結果。",
+            "使用應用存取資訊檢查暫時網站與後台，再整理正式內容、帳號與備份安排。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "以 Domain Management 連接正式網域"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways 的上線文件把網域管理與 DNS 設定分開。先在應用程式的 Domain Management 加入要使用的名稱，再依平台提供的資料到有效 DNS 服務設定解析。網域註冊商、DNS 代管者與 Cloudways 可以是不同公司；每次修改都要確認真正負責的管理位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更改前保存原紀錄，尤其信箱與服務驗證項目。正式網域、www 或其他子網域的使用方式要一致，再安裝涵蓋需要名稱的憑證並檢查 HTTPS。若網站已連接，但郵件或表單通知不正常，應另外查看郵件服務與應用寄信配置，不能因網頁能打開就認為所有整合都完成。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "上線前驗收，也安排退出方式"
+        },
+        {
+          "type": "paragraph",
+          "text": "以未登入的訪客身分檢查首頁、文章、導覽、搜尋及聯絡流程，再用手機查看主要版面。若是搬站，還要比對舊站的圖片、附件及必要網址，確認新環境沒有遺漏資料。先保留回復方案與原服務，直到主要功能及新資料流向都驗證完成，再處理後續停用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上線後記錄備份頻率、可用還原點、更新責任與帳單檢查人。若只是短期測試，也先安排何時匯出資料及移除資源，不讓測試站無限留在帳戶裡。能清楚說明網站放在哪台伺服器、誰能還原，以及停止使用時如何結束費用，才算把平台管理真正接起來。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/cloudways-wordpress-setup/diagram-1.svg",
+          "alt": "Cloudways 建站依序確認帳戶、伺服器、應用程式與正式網域四個層級。",
+          "width": 1600,
+          "height": 900,
+          "caption": "每個層級都有人管理，也有清楚的退出方式。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "層級",
+            "處理什麼",
+            "常見混淆"
+          ],
+          "rows": [
+            [
+              "帳戶",
+              "啟用、成員與付款",
+              "驗證問題誤當成網站設定"
+            ],
+            [
+              "伺服器",
+              "資源與執行環境",
+              "停止運作誤認為停止計費"
+            ],
+            [
+              "應用程式",
+              "網站、網域及存取資訊",
+              "新增網站與新增伺服器混用"
+            ],
+            [
+              "WordPress",
+              "內容、外掛與使用者",
+              "主機登入與網站管理者混用"
+            ],
+            [
+              "專案",
+              "整理應用與工作",
+              "名稱相似而選錯正式環境"
+            ]
+          ],
+          "caption": "本篇以 Flexible 為主；Autonomous 應查其專屬文件。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "停止伺服器不一定停止收費",
+          "text": "請核對供應商與產品條件。結束使用前先保存資料，再依官方流程移除不需要的計費資源，並確認付費加購與最後帳單。"
+        },
+        {
+          "type": "link",
+          "text": "Cloudways 的 HTTPS 檢查：DNS、憑證與續期",
+          "url": "https://mokaair.com/zh-TW/life/cloudways-ssl-setup"
+        },
+        {
+          "type": "link",
+          "text": "共享主機、VPS 與雲端代管：小網站的選擇順序",
+          "url": "https://mokaair.com/zh-TW/life/hosting-types-explained"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Cloudways：建立伺服器與應用程式",
+          "url": "https://support.cloudways.com/en/articles/5124126-how-to-launch-server-and-add-an-application-on-the-cloudways-platform",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：停止計費的條件",
+          "url": "https://support.cloudways.com/en/articles/5119650-how-do-i-stop-my-cloudways-billing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：月計費與時計費說明",
+          "url": "https://support.cloudways.com/en/articles/12157984-understanding-monthly-vs-hourly-billing-on-cloudways",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：網站正式上線",
+          "url": "https://support.cloudways.com/en/articles/4805075-how-do-i-take-my-website-live-from-cloudways",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：入門常見問題與支援範圍",
+          "url": "https://support.cloudways.com/en/articles/5245051-getting-started-faqs",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

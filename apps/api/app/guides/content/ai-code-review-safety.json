@@ -1,0 +1,444 @@
+{
+  "slug": "ai-code-review-safety",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+      "description": "代理寫完程式、按下合併之前先做完這張清單：讀 diff 確認改動沒有超出你交代的、跑測試並檢查斷言是不是真的在驗行為、確認相依套件存在且授權可用並鎖定版本、把金鑰與 .env 擋在 repo 外、檢查輸入驗證與注入、把代理的權限縮到最小，最後用 PR 範本、CI 與 Dependabot 固定成流程。依 OWASP、GitHub 官方文件與三家代理的官方安全說明整理，並說明什麼時候該找人審。",
+      "hero": {
+        "src": "/guides/ai-code-review-safety/hero.jpg",
+        "alt": "插圖：一份有增刪標記的程式改動文件，經過一道由盾牌與勾選標記組成的檢查關卡，再沿著箭頭匯流成一條合併線。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "AI 代理寫程式的速度不是問題，問題是要不要把產出的改動直接合併。可以用，但不能跳過審查，而且要看的地方跟你自己寫程式時不一樣：代理常犯的錯有固定幾種，改動超出交代、測試寫來配合實作、引用不存在的套件、把金鑰寫進程式碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把合併前該做的事排成一張初學者也做得到的清單，每一項說明怎麼檢查、用什麼工具接住，最後變成 PR 範本與 CI 設定。內容依 OWASP、GitHub 與三家代理的官方文件整理，查證日是 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "heading",
+          "text": "先讀 diff，再談其他",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一步不是跑測試，是打開改動本身。代理很常順手多做一點：重構你沒提到的檔案、改設定檔、刪掉看起來沒用的程式；單看每行合理，合起來卻改變行為。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "先看改了哪些檔案，再逐行看內容",
+          "code": "git status\ngit diff --stat\ngit diff\ngit log --oneline main..HEAD"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀的時候問三個問題：檔案在範圍裡嗎？有沒有刪掉我沒要求刪的？有沒有一段我看不懂？第三個最重要，看不懂就不要合併。OWASP 的 LLM Top 10 把過度代理（Excessive Agency）列為 LLM06:2025，成因之一是系統拿到超出需要的功能與權限。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+        },
+        {
+          "type": "paragraph",
+          "text": "你也可以請代理先審自己一次：不是把判斷交給它，而是逼它把做了什麼列成清單，你再拿這份自述對照 diff。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "請代理自我審查的提示詞",
+          "code": "請先不要修改任何檔案，只做一次自我審查，並用這五點回答我：\n1. 這次改動包含哪些檔案？其中哪些不在我一開始交代的範圍內？\n2. 有沒有刪除或改寫我沒有要求更動的程式？逐項列出並說明理由。\n3. 新增了哪些相依套件？每一個附上官方套件頁面網址、授權條款，以及為什麼非加不可。\n4. 有沒有把金鑰、密碼、連線字串或測試帳號寫進程式碼或設定檔？\n5. 使用者輸入在哪些地方進入資料庫查詢或系統命令？用的是參數化查詢嗎？\n最後列出三個你自己最不確定、建議我人工確認的地方。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果它一次改十幾個檔案而你讀不動，那是任務給得太大，把需求拆小、先提計畫。"
+        },
+        {
+          "type": "link",
+          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+        },
+        {
+          "type": "heading",
+          "text": "測試要看斷言，不是看有沒有綠燈",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第二步是跑測試，並讓代理補測試。陷阱在於：測試也可能是 AI 為了讓實作通過而寫的。它可能把斷言寫成「有回傳就好」，或把現在的輸出照抄進期望值，於是測試會過，卻是永遠亮綠燈的儀表板。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "斷言驗的是回傳值等於具體結果，還是只驗沒拋出例外？",
+            "期望值是從需求推出來的，還是照抄現在的輸出？",
+            "錯誤輸入、空值、權限不足有沒有測到？",
+            "故意把實作改錯一行，測試會不會紅？"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "最後一項值得養成習慣：不必懂整個測試框架，只要把回傳值改錯、看測試會不會變紅。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜除錯與補測試",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-debug-and-test"
+        },
+        {
+          "type": "heading",
+          "text": "相依套件：名字、授權與鎖定版本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 產出的程式常帶進新套件，這是最該停下來確認的一步。OWASP 的 LLM09:2025 Misinformation 直接點名：模型會建議不安全或不存在的程式庫，而攻擊者會找出常被幻覺出來的名字，搶先發佈同名的惡意套件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這不是假想。發表在 USENIX Security 2025 的研究分析 16 個程式碼生成模型、576,000 筆樣本，商用模型的套件幻覺率至少 5.2%，開源模型 21.7%，共蒐集到 205,474 個不存在的套件名。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "確認存在：到 npm 或 PyPI 官方頁面看發佈紀錄、維護者與更新時間，剛建立、下載量極低的別裝。",
+            "看授權：OWASP 的 LLM03:2025 Supply Chain 提醒，開源與專有授權的法律要求不同，沒管理就是風險。",
+            "鎖定版本：照鎖定檔安裝，否則審過的和實際跑的不是同一份。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "照鎖定檔安裝，不讓安裝過程自己升版",
+          "code": "npm ci\npip install --require-hashes -r requirements.txt"
+        },
+        {
+          "type": "paragraph",
+          "text": "npm 官方文件說明 npm ci 必須有 package-lock.json、絕不寫回鎖定檔，和 package.json 對不上時直接報錯。pip 的安全安裝文件說明，雜湊檢查模式用 requirements.txt 裡的雜湊值防止遠端竄改，並要求所有相依用 == 鎖版。"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "heading",
+          "text": "金鑰、注入，與會讀網頁的代理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "金鑰、資料庫密碼與 .env 檔不要進 repo，沒有例外。代理為了讓程式跑起來，很容易把金鑰寫進程式碼。把 .env 加進 .gitignore，程式改從環境變數讀值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更可靠的是讓平台幫你擋。GitHub 的 secret scanning 會掃描所有分支的整個 Git 歷史，找出寫死的 API 金鑰、密碼與 token；push protection 在推送當下就擋，範圍包括命令列推送、網頁介面的 commit、檔案上傳與 REST API。公開 repo 免費就能用。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "推上去了就當作已經外洩",
+          "text": "GitHub 官方文件寫得很清楚：要移除的敏感資料如果是密碼或 token，第一步是撤銷或輪換它。就算改寫歷史再強制推送，那些 commit 仍可能留在別人的 clone 與 fork、用 SHA-1 開啟的快取檢視，或引用它的 pull request 裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著看輸入驗證。OWASP Top 10 的 2025 年版把注入列為 A05:2025，涵蓋 SQL、作業系統命令、ORM、LDAP 等，首選做法是使用不經過直譯器、或提供參數化介面的安全 API；SQL 注入防護速查表更直接：教人寫查詢就該教他用綁定變數的預備語句。看 AI 寫的查詢，重點是輸入有沒有被串進字串。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果代理會讀網頁、讀 issue、讀別人傳來的檔案，還要多防一種注入。OWASP 的 LLM Top 10 把提示詞注入排在第一位 LLM01:2025。Anthropic 的 Claude Code 安全文件把它定義為攻擊者插入惡意文字、覆蓋或操縱 AI 助理的指令，說明 curl、wget 這類命令預設不自動核准，並建議：核准前先看命令、不把不可信內容直接餵給模型、用虛擬機器執行腳本。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞注入（Prompt Injection）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+        },
+        {
+          "type": "heading",
+          "text": "權限與沙盒：只給它需要的那個目錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "前面是看結果，這一項是事先設好邊界。OWASP 的 LLM06:2025 建議很直白：功能與權限限制在最小必要範圍，並用人工介入機制，讓高影響的動作先有人核准。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Anthropic：Claude Code 手動模式以唯讀權限起步，要編輯檔案或執行命令都先問你，也只能寫入啟動時所在的資料夾與其子資料夾。",
+            "OpenAI：Codex 預設關閉網路存取，本機用作業系統層級的沙盒把可觸及範圍限制在工作區；官方建議有版本控制的資料夾用 Auto，沒有的用唯讀。",
+            "Google：Gemini CLI 的受信任資料夾在尚未信任時進入受限安全模式，不載入工作區的 settings.json 與 .env，也不能裝擴充套件。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "原則一樣：先在唯讀模式讓它讀懂專案、提計畫，方向對了再放開寫入。"
+        },
+        {
+          "type": "link",
+          "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-sandbox"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜Plan Mode 與權限模式",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-permissions-plan-mode"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜專案資料與操作安全",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-project-data-safety"
+        },
+        {
+          "type": "heading",
+          "text": "把檢查做成流程，並知道什麼時候該找人審",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上面每一項都能靠自律做到，但自律會在趕時間時失效，寫成檔案讓工具替你記住。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "PR 範本：放一個 .github/pull_request_template.md 寫成勾選清單；GitHub 說明也可放在根目錄或 docs，合併進預設分支後協作者都看得到。",
+            "CI：GitHub Actions 的工作流程檔放在 .github/workflows，官方把「為每一個 pull request 建置與測試」列為典型用途。",
+            "相依更新：開啟 Dependabot alerts 與 security updates，套件有已知漏洞時自動開 PR 升到修補版本。",
+            "程式碼掃描：code scanning 用 CodeQL 找漏洞，可排程也可在推送時觸發；公開 repo 可直接用，私有 repo 要 GitHub Code Security 授權。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "最小可用的 .github/pull_request_template.md",
+          "code": "## 這個 PR 做了什麼\n\n## 合併前檢查\n- [ ] 我讀完整份 diff，沒有超出需求的檔案改動\n- [ ] 測試的斷言在驗行為，故意改壞會變紅\n- [ ] 新增的相依套件確認存在、授權可用，並照鎖定檔安裝\n- [ ] 沒有金鑰、密碼或 .env 進入 repo\n- [ ] 使用者輸入走參數化查詢，沒有字串拼接\n- [ ] CI 全部通過\n"
+        },
+        {
+          "type": "code",
+          "language": "yaml",
+          "label": ".github/dependabot.yml：每週檢查一次 npm 相依",
+          "code": "version: 2\nupdates:\n  - package-ecosystem: \"npm\"\n    directory: \"/\"\n    schedule:\n      interval: \"weekly\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後，有些改動不該由你加上 AI 就決定，下面幾種情況要找人看過再合併。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "碰到身分驗證、授權、付款、個資或金鑰管理",
+            "涉及資料庫遷移、刪除等回不去的操作",
+            "你看不懂那段程式，代理的解釋也無法驗證",
+            "要上線給真實使用者，而你是第一次做",
+            "代理順手改了 CI 或部署設定"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-human-in-the-loop"
+        },
+        {
+          "type": "link",
+          "text": "安全防護機制（Guardrails）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-code-review-safety/diagram-1.svg",
+          "alt": "流程圖：代理產出 diff 後依序經過讀改動範圍、跑測試看斷言、查套件與金鑰、看注入與權限、CI 與 PR 範本五道關卡才合併，任一關沒過就退回代理重做或找人審。",
+          "width": 1600,
+          "height": 900,
+          "caption": "從代理交出改動到合併的五道關卡，任一關沒過都回到左邊，不要往右推。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "怎麼檢查",
+            "用什麼工具"
+          ],
+          "rows": [
+            [
+              "改動範圍",
+              "逐行讀完，沒有你沒交代的改動",
+              "git diff --stat"
+            ],
+            [
+              "測試斷言",
+              "驗行為還是有回傳就好；改壞會不會紅",
+              "專案的測試指令"
+            ],
+            [
+              "套件真偽",
+              "官方頁面有發佈紀錄與維護者",
+              "npm、PyPI 官網"
+            ],
+            [
+              "版本鎖定",
+              "照鎖定檔安裝，不讓它自己升版",
+              "npm ci、pip 的 --require-hashes"
+            ],
+            [
+              "已知漏洞",
+              "有修補版本時自動開 PR",
+              "Dependabot"
+            ],
+            [
+              "金鑰外洩",
+              ".env 進 .gitignore，推送當下攔截",
+              "secret scanning、push protection"
+            ],
+            [
+              "注入風險",
+              "輸入沒被直接串進 SQL 或命令",
+              "參數化查詢、code scanning"
+            ],
+            [
+              "代理權限",
+              "可寫目錄與網路是最小必要",
+              "權限模式與沙盒"
+            ]
+          ],
+          "caption": "合併前的檢查清單，2026 年 9 月依官方文件整理。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "只做得到三件事的話，做這三件",
+          "text": "讀完整份 diff 再合併、把 .env 擋在 repo 外並開啟金鑰掃描、照鎖定檔安裝套件。這三件涵蓋代理最常造成的損失：改壞你沒看到的地方、把金鑰推上網路、裝進假套件。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OWASP Top 10 for LLM Applications 2025（OWASP GenAI Security Project 官方清單）",
+          "url": "https://genai.owasp.org/llm-top-10/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OWASP LLM03:2025 Supply Chain（官方風險頁，含授權與過時元件風險）",
+          "url": "https://genai.owasp.org/llmrisk/llm032025-supply-chain/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OWASP LLM06:2025 Excessive Agency（官方風險頁，最小權限與人工核准建議）",
+          "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OWASP LLM09:2025 Misinformation（官方風險頁，不存在程式庫與套件幻覺攻擊）",
+          "url": "https://genai.owasp.org/llmrisk/llm092025-misinformation/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OWASP Top 10:2025 A05:2025 Injection（官方類別頁與防護建議）",
+          "url": "https://top10.owasp.org/2025/A05_2025-Injection/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OWASP SQL Injection Prevention Cheat Sheet（官方速查表，預備語句與參數化查詢）",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：About secret scanning（掃描範圍與公開 repo 免費適用）",
+          "url": "https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：About push protection（推送當下攔截密鑰的範圍）",
+          "url": "https://docs.github.com/en/code-security/secret-scanning/introduction/about-push-protection",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Removing sensitive data from a repository（先撤銷或輪換密鑰）",
+          "url": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：About Dependabot security updates（自動開 PR 升到修補版本）",
+          "url": "https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Dependabot options reference（dependabot.yml 的必填欄位與位置）",
+          "url": "https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：About code scanning（CodeQL、觸發時機與授權條件）",
+          "url": "https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Creating a pull request template for your repository（範本檔案位置）",
+          "url": "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Understanding GitHub Actions（工作流程目錄與 pull request 測試）",
+          "url": "https://docs.github.com/en/actions/get-started/understanding-github-actions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "npm Docs：npm ci（需要鎖定檔、不寫回鎖定檔、對不上就報錯）",
+          "url": "https://docs.npmjs.com/cli/v11/commands/npm-ci",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "pip Docs：Secure installs（雜湊檢查模式與版本鎖定要求）",
+          "url": "https://pip.pypa.io/en/stable/topics/secure-installs/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic：Claude Code Security（權限架構、提示詞注入防護與使用建議）",
+          "url": "https://code.claude.com/docs/en/security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI：Codex Agent approvals & security（沙盒模式、核准政策與網路預設）",
+          "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：Gemini CLI Trusted Folders（未信任資料夾的受限安全模式）",
+          "url": "https://google-gemini.github.io/gemini-cli/docs/cli/trusted-folders.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "We Have a Package for You!（USENIX Security 2025 套件幻覺研究論文）",
+          "url": "https://arxiv.org/abs/2406.10279",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

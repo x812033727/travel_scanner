@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">M 系列在 MiniMax 產品線裡的位置與版本時序 / MiniMax M series: product line and versions</title>
+  <desc id="desc">上半部把 MiniMax 的模型分成四條線：文字是 M 系列，代表版本 M3 與 M2.7，權重可下載；影片是 MiniMax H3 與海螺 Hailuo 2.3、02；語音是 speech-2.8-hd 與 turbo；音樂是 music-3.0。下半部是 M 系列的版本時序，依官方 Hugging Face 組織上模型庫的建立年月排列：M1-80k 在 2025-06、授權 Apache 2.0；M2 在 2025-10、改過的 MIT；M2.1 在 2025-12、改過的 MIT；M2.5 在 2026-02、標示 modified-mit；M2.7 在 2026-04、非商業授權；M3 在 2026-06、MiniMax 社群授權。最下方的說明條寫：上下文視窗 M2 到 M2.7 為 204,800 token，M3 為 1,000,000 token；API 價格每百萬 token，M3 與 M2.7 都是輸入 0.3 美元、輸出 1.2 美元；本機執行方面，M2.7 部署指南寫權重需 220 GB 記憶體，單一序列最長 196K token。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">M 系列在 MiniMax 產品線裡的位置與版本時序</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">MiniMax M series: where it sits, and how the versions line up</text>
+
+  <text x="60" y="126" font-size="20" font-weight="bold" fill="#102A2B">四條模型線，M 系列是文字那一條</text>
+
+  <rect x="60" y="146" width="340" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="230" y="196" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">文字：M 系列</text>
+  <text x="230" y="234" font-size="17" fill="#102A2B" text-anchor="middle">M3、M2.7</text>
+  <text x="230" y="268" font-size="16" fill="#5C6B6B" text-anchor="middle">權重可下載</text>
+
+  <rect x="440" y="146" width="340" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="610" y="196" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">影片</text>
+  <text x="610" y="234" font-size="17" fill="#102A2B" text-anchor="middle">MiniMax H3</text>
+  <text x="610" y="268" font-size="16" fill="#5C6B6B" text-anchor="middle">海螺 Hailuo 2.3、02</text>
+
+  <rect x="820" y="146" width="340" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="990" y="196" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">語音</text>
+  <text x="990" y="234" font-size="17" fill="#102A2B" text-anchor="middle">speech-2.8</text>
+  <text x="990" y="268" font-size="16" fill="#5C6B6B" text-anchor="middle">語音合成</text>
+
+  <rect x="1200" y="146" width="340" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1370" y="196" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">音樂</text>
+  <text x="1370" y="234" font-size="17" fill="#102A2B" text-anchor="middle">music-3.0</text>
+  <text x="1370" y="268" font-size="16" fill="#5C6B6B" text-anchor="middle">音樂生成</text>
+
+  <text x="60" y="352" font-size="20" font-weight="bold" fill="#102A2B">M 系列版本時序：模型庫建立年月與授權條款</text>
+
+  <line x1="60" y1="430" x2="1520" y2="430" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <circle cx="165" cy="430" r="12" fill="#2E7D5B"/>
+  <line x1="165" y1="442" x2="165" y2="470" stroke="#5C6B6B" stroke-width="3"/>
+  <rect x="60" y="470" width="210" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="165" y="520" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">M1-80k</text>
+  <text x="165" y="558" font-size="17" fill="#5C6B6B" text-anchor="middle">2025-06</text>
+  <text x="165" y="594" font-size="16" fill="#2E7D5B" text-anchor="middle">Apache 2.0</text>
+
+  <circle cx="400" cy="430" r="12" fill="#2E7D5B"/>
+  <line x1="400" y1="442" x2="400" y2="470" stroke="#5C6B6B" stroke-width="3"/>
+  <rect x="295" y="470" width="210" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="400" y="520" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">M2</text>
+  <text x="400" y="558" font-size="17" fill="#5C6B6B" text-anchor="middle">2025-10</text>
+  <text x="400" y="594" font-size="16" fill="#2E7D5B" text-anchor="middle">改過的 MIT</text>
+
+  <circle cx="635" cy="430" r="12" fill="#2E7D5B"/>
+  <line x1="635" y1="442" x2="635" y2="470" stroke="#5C6B6B" stroke-width="3"/>
+  <rect x="530" y="470" width="210" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="635" y="520" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">M2.1</text>
+  <text x="635" y="558" font-size="17" fill="#5C6B6B" text-anchor="middle">2025-12</text>
+  <text x="635" y="594" font-size="16" fill="#2E7D5B" text-anchor="middle">改過的 MIT</text>
+
+  <circle cx="870" cy="430" r="12" fill="#5C6B6B"/>
+  <line x1="870" y1="442" x2="870" y2="470" stroke="#5C6B6B" stroke-width="3"/>
+  <rect x="765" y="470" width="210" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="870" y="520" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">M2.5</text>
+  <text x="870" y="558" font-size="17" fill="#5C6B6B" text-anchor="middle">2026-02</text>
+  <text x="870" y="594" font-size="16" fill="#5C6B6B" text-anchor="middle">modified-mit</text>
+
+  <circle cx="1105" cy="430" r="12" fill="#B8442D"/>
+  <line x1="1105" y1="442" x2="1105" y2="470" stroke="#5C6B6B" stroke-width="3"/>
+  <rect x="1000" y="470" width="210" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1105" y="520" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">M2.7</text>
+  <text x="1105" y="558" font-size="17" fill="#5C6B6B" text-anchor="middle">2026-04</text>
+  <text x="1105" y="594" font-size="16" fill="#B8442D" text-anchor="middle">非商業授權</text>
+
+  <circle cx="1340" cy="430" r="12" fill="#D97A2B"/>
+  <line x1="1340" y1="442" x2="1340" y2="470" stroke="#5C6B6B" stroke-width="3"/>
+  <rect x="1235" y="470" width="210" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1340" y="520" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">M3</text>
+  <text x="1340" y="558" font-size="17" fill="#5C6B6B" text-anchor="middle">2026-06</text>
+  <text x="1340" y="594" font-size="16" fill="#D97A2B" text-anchor="middle">社群授權</text>
+
+  <rect x="60" y="660" width="1480" height="160" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="90" y="706" font-size="18" fill="#102A2B">上下文視窗：M2 到 M2.7 為 204,800 token，M3 為 1,000,000 token</text>
+  <text x="90" y="750" font-size="18" fill="#102A2B">API 價格（每百萬 token）：M3 與 M2.7 都是輸入 0.3 美元、輸出 1.2 美元</text>
+  <text x="90" y="794" font-size="18" fill="#102A2B">本機執行：M2.7 部署指南寫權重需 220 GB 記憶體，單一序列最長 196K token</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

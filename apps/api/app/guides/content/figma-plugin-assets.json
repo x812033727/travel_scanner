@@ -1,0 +1,258 @@
+{
+  "slug": "figma-plugin-assets",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Figma 外掛怎麼挑：圖庫、圖示與檔案權限",
+      "description": "Figma 外掛能協助找圖、插入圖示或整理圖層，但選擇前要同時確認檔案存取、對外連線與素材授權。本文以原創社區共讀活動頁為例，建立從需求篩選、草稿試用到協作交接的檢查流程，說明外掛、Widget 和 Community 檔案的差異。附比較表、操作步驟及原創圖解，協助保留來源與變更紀錄，不用下載量或免費標籤取代實際判斷。",
+      "hero": {
+        "src": "/guides/figma-plugin-assets/hero.jpg",
+        "alt": "Mokaair 原創設計畫面、資料盾牌與素材資料夾插圖，代表 Figma 外掛的功能及權限檢查。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "為活動頁加入照片與圖示時，Figma 外掛能省去部分搜尋和搬移工作，但它同時也是在檔案裡執行的第三方程式。選擇外掛不能只看預覽圖，還要知道它會讀取什麼、連到哪裡，以及插入的內容能不能用在你的成品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以原創社區共讀活動頁示範評估方法，功能與條款依 2026 年 9 月 14 日查閱的官方文件整理。本文沒有執行或安裝特定外掛、購買資源或上傳真實活動名單；例子用來準備可驗證的試用流程。"
+        },
+        {
+          "type": "heading",
+          "text": "先確認需要外掛，還是只需要一份素材",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把工作拆成具體需求，例如為活動卡片找一張閱讀情境照、放入時間與地點圖示，或批次整理圖層名稱。若只需要少量已取得授權的素材，直接匯入也可能足夠；只有重複工作明確時，才容易比較外掛是否節省整理與檢查時間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Figma 外掛用來執行特定功能；Widget 則是放在畫布上、可供有權限的協作者互動的物件。Community 設計檔又是可複製的資源，不是一直運作的外掛。先分清類型，才不會把一個模板當成能自動同步資料的工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "複製 Community 檔案會取得新的副本，原檔後續更新、留言與版本歷程不會自動帶進來。若把它作為共讀頁起點，要記錄取得日期及修改內容。來源更新時，應另行評估差異，不能期待自己的副本一直與作者版本一致。"
+        },
+        {
+          "type": "heading",
+          "text": "讀清楚發布者、支援管道與使用條件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "從外掛的正式 Community 頁查看發布者、用途、支援的產品及需要的選取物件。某些工具直接改動畫布，另一些要先填設定；使用前應知道預期會新增、替換或刪除什麼。評價和使用人數可以提供線索，不能證明功能、授權或資料處理符合需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "核對是否需要第三方帳號、額外付款、API 額度或另購素材。Figma 的外掛審查準則要求額外連線與費用等資訊清楚呈現，但實際條件仍要讀該外掛與服務的說明。付費 Figma 席位，不代表所有外掛、圖庫和相關服務都已包含。"
+        },
+        {
+          "type": "paragraph",
+          "text": "找不到適合的執行入口時，也要檢查產品、席位與組織設定。官方目前依 Starter 或各類付費席位區分可使用外掛的產品，組織管理員也可能限制外掛使用。不要把權限限制誤認成電腦故障，更不要為了繞過組織規則把檔案搬到私人帳號。"
+        },
+        {
+          "type": "heading",
+          "text": "選取範圍不是檔案資料的安全邊界",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Figma 說明指出，外掛可存取使用者及檔案資訊，其中包括使用者識別資料與檔案內圖層。即使操作說明要求先選一張卡片，也不能因此推論外掛只看得到那張卡片。評估時要以程式實際存取能力與開發者說明為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Community 頁面的網路存取資訊可協助確認外掛是否宣告連線網域；Unknown network access 不表示不能連線，而是沒有定義範圍、可能存取任何網域。另有資料安全揭露標示時，可以查看開發者提供的回答，但它不是所有資料風險都不存在的保證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者文件也提醒，網域限制的執行範圍針對外掛請求；外掛若在框架中載入網站，限制不會逐項套用到該網站所有資源。一般使用者可把網域清單當成查核線索，再確認資料用途、保存和刪除方式，不能只靠一個網域數量就判定安全。"
+        },
+        {
+          "type": "heading",
+          "text": "外掛授權與插入素材授權分開保存",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Community 的免費設計檔、免費外掛與付費資源，並非全部採相同授權。官方將免費設計檔列為 CC BY 4.0，使用時需要署名；免費外掛預設使用 Community Free Resource License，作者可補充或更換條款。先看資源類型，再保存實際條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "即使外掛允許在商業設計檔中執行，也不能直接推論它提供的每張照片或圖示都有相同授權。圖庫聚合工具可能連到不同作者與來源；把素材插入 Figma 後，仍應記下原始素材頁、作者、授權版本、取得日期及修改方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "共讀活動頁若用了人物照片，還要避免暗示圖中人物實際參加或推薦活動。圖示也不能因匯入後可改色，就失去原本的署名或聲明要求。交付成品與轉交原始素材檔案的權利可能不同，請在素材清單中分別註記。"
+        },
+        {
+          "type": "heading",
+          "text": "用小份草稿確認結果與效能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建立不含個資與未公開資料的練習檔，只放這次要驗證的卡片、標題與示意素材。依外掛說明選取物件，從少量操作開始，先記錄執行前的圖層數量、內容和大小。這樣即使結果不符合預期，也比較容易判斷變更出在哪裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "外掛執行後，核對插入位置、圖層命名、圖片解析度、裁切與元件關係。檢查是否把文字轉成不易修改的圖形，或把大量不需要的物件一起帶入。若要批次處理，先確認小範圍結果正確，再逐步擴大，不用正式檔案試猜工具的行為。"
+        },
+        {
+          "type": "paragraph",
+          "text": "效能比較可以記下相同工作需要的操作時間、等待、檔案增加量與返工。不要只記第一次搜尋很快，忽略後續授權整理或修正裁切所花的時間。本文提供的是測試項目，沒有替任何外掛測出最快或最穩定的結論。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "寫出單一任務，確認資源是外掛、Widget 還是設計檔。",
+            "查閱發布者、費用、產品權限、網路與資料說明。",
+            "在不含敏感內容的小草稿試用，核對結果和素材授權。",
+            "保存使用紀錄與可替代流程，再決定是否納入團隊工作。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "把外掛結果交接成別人能維護的內容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "協作者能看到畫布的變更，不表示看得到你當時的外掛操作與設定。交接時記下外掛名稱、正式頁面、使用日期、處理範圍和必要參數；若後續還要更新資料，也要說明由誰執行、需要哪個帳號，以及沒有外掛時如何修改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對需要持續連線的工具，確認訂閱終止、帳號停用或服務失效後，哪些內容仍可編輯、哪些操作會停止。保存可使用的輸出與來源紀錄，避免把全部維護知識留在某個人的帳號裡。不要假設移除外掛會替你刪除已傳給外部服務的資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若試用結果沒有明顯改善工作，就保留原本的手動流程與已驗證素材。若決定採用，隨工具更新重新檢查關鍵行為，並把異常與替代方式寫入專案紀錄。外掛的價值應由具體任務判斷，而不是讓檔案依賴越多工具才顯得完整。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/figma-plugin-assets/diagram-1.svg",
+          "alt": "四張卡片區分外掛功能、資料存取、素材授權與交接，提醒每一層都需獨立確認。",
+          "width": 1600,
+          "height": 900,
+          "caption": "外掛使用權、素材使用權及資料處理範圍，是三份不同的確認。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查項目",
+            "應留下的資料",
+            "不能直接推論"
+          ],
+          "rows": [
+            [
+              "外掛功能",
+              "輸入、變更與產品支援",
+              "有預覽就符合需求"
+            ],
+            [
+              "網路與資料",
+              "網域、用途與保存說明",
+              "Unknown 代表離線"
+            ],
+            [
+              "素材授權",
+              "作者、原頁、條款及修改",
+              "能插入就能任意商用"
+            ],
+            [
+              "試用結果",
+              "小範圍前後差異與耗時",
+              "少量成功等於全檔無誤"
+            ],
+            [
+              "協作交接",
+              "設定、責任與替代方式",
+              "他人知道你如何操作"
+            ],
+            [
+              "Community 副本",
+              "來源版本及取得日期",
+              "原作者更新會自動同步"
+            ]
+          ],
+          "caption": "按任務評估外掛，資料權限、素材權利及使用成效分開記錄。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "只選一個物件，不代表外掛只讀那個物件",
+          "text": "先確認檔案存取與資料說明，再使用不含個資的小草稿評估。素材插入成功後，仍須保存其原始作者與授權，才能安心交接。"
+        },
+        {
+          "type": "link",
+          "text": "先理解 Figma 的檔案與元件結構",
+          "url": "https://mokaair.com/zh-TW/life/figma-design-basics"
+        },
+        {
+          "type": "link",
+          "text": "建立可回查的素材授權清單",
+          "url": "https://mokaair.com/zh-TW/life/licensed-assets-workflow"
+        },
+        {
+          "type": "link",
+          "text": "檢查圖片格式與輸出品質",
+          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Figma：外掛使用、席位與資料安全",
+          "url": "https://help.figma.com/hc/en-us/articles/360042532714-Use-plugins-in-files",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：Community 資源類型",
+          "url": "https://help.figma.com/hc/en-us/articles/360038510693-Guide-to-the-Figma-Community",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：Community 檔案複製與更新",
+          "url": "https://help.figma.com/hc/en-us/articles/360038510873-Duplicate-Community-files",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：Community 著作權及授權",
+          "url": "https://help.figma.com/hc/en-us/articles/360042296374-Figma-Community-copyright-and-licensing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：外掛網路存取的執行範圍",
+          "url": "https://developers.figma.com/docs/plugins/manifest/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Figma：外掛與 Widget 審查準則",
+          "url": "https://help.figma.com/hc/en-us/articles/360039958914-Plugin-and-widget-review-guidelines",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

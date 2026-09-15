@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">補全、Chat、代理：三種用法怎麼分 / Copilot completions, chat and agents compared</title>
+<desc id="desc">一張比較矩陣。三個直欄分別是補全、Chat 與代理，四個橫列分別是在哪裡執行、誰在動手、額度怎麼算、什麼時候用。補全在你的編輯器裡，由你自己按 Tab 採用，不扣 AI credits，免費方案每月上限 2,000 次，適合補完你已經知道要寫什麼的那幾行。Chat 在編輯器側邊欄，你問它答或改，會扣 AI credits，免費方案每月 50 次，適合看不懂、要修錯或要補測試的時候。代理在你的電腦或 GitHub 上執行，由它自己規劃與執行，會扣額度且跑得多扣得快，雲端代理限付費方案，適合一件說得清楚的完整任務。圖的下方說明代理有兩種：代理模式在你的電腦，在 VS Code 裡改檔案、提出終端機指令，每一步你都看得到也擋得下來；Copilot cloud agent 在 GitHub 上，在 GitHub Actions 提供的臨時環境裡工作，最後開一個草稿拉取請求給你審。</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0,0 L10,5 L0,10 z" fill="#5C6B6B"/>
+</marker>
+</defs>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+
+<text x="50" y="52" font-size="30" font-weight="bold" fill="#102A2B">補全、Chat、代理：三種用法怎麼分</text>
+<text x="50" y="84" font-size="18" fill="#5C6B6B">Completions, Chat and agents in VS Code</text>
+
+<text x="290" y="150" font-size="17" fill="#5C6B6B" text-anchor="end">比較面向</text>
+
+<rect x="320" y="108" width="400" height="66" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="520" y="139" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">補全</text>
+<text x="520" y="163" font-size="15" fill="#5C6B6B" text-anchor="middle">Completions</text>
+
+<rect x="740" y="108" width="400" height="66" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="940" y="139" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">Chat</text>
+<text x="940" y="163" font-size="15" fill="#5C6B6B" text-anchor="middle">Ask / Plan / Agent</text>
+
+<rect x="1160" y="108" width="400" height="66" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="1360" y="139" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">代理</text>
+<text x="1360" y="163" font-size="15" fill="#5C6B6B" text-anchor="middle">Agents</text>
+
+<text x="290" y="244" font-size="18" fill="#102A2B" text-anchor="end">在哪裡執行</text>
+<rect x="320" y="186" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="520" y="244" font-size="17" fill="#102A2B" text-anchor="middle">你的編輯器裡</text>
+<rect x="740" y="186" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="940" y="244" font-size="17" fill="#102A2B" text-anchor="middle">你的編輯器側邊欄</text>
+<rect x="1160" y="186" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="1360" y="244" font-size="17" fill="#102A2B" text-anchor="middle">你的電腦，或 GitHub</text>
+
+<text x="290" y="354" font-size="18" fill="#102A2B" text-anchor="end">誰在動手</text>
+<rect x="320" y="296" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="520" y="354" font-size="17" fill="#102A2B" text-anchor="middle">你自己，按 Tab 採用</text>
+<rect x="740" y="296" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="940" y="354" font-size="17" fill="#102A2B" text-anchor="middle">你問，它答或它改</text>
+<rect x="1160" y="296" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="1360" y="354" font-size="17" fill="#102A2B" text-anchor="middle">它自己規劃與執行</text>
+
+<text x="290" y="464" font-size="18" fill="#102A2B" text-anchor="end">額度怎麼算</text>
+<rect x="320" y="406" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="520" y="448" font-size="17" fill="#2E7D5B" text-anchor="middle">不扣 AI credits</text>
+<text x="520" y="476" font-size="17" fill="#5C6B6B" text-anchor="middle">Free 每月上限 2,000 次</text>
+<rect x="740" y="406" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="940" y="448" font-size="17" fill="#102A2B" text-anchor="middle">會扣 AI credits</text>
+<text x="940" y="476" font-size="17" fill="#5C6B6B" text-anchor="middle">Free 每月 50 次</text>
+<rect x="1160" y="406" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="1360" y="448" font-size="17" fill="#B8442D" text-anchor="middle">會扣，跑得多扣得快</text>
+<text x="1360" y="476" font-size="17" fill="#5C6B6B" text-anchor="middle">雲端代理限付費方案</text>
+
+<text x="290" y="574" font-size="18" fill="#102A2B" text-anchor="end">什麼時候用</text>
+<rect x="320" y="516" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="520" y="558" font-size="17" fill="#102A2B" text-anchor="middle">已經知道要寫什麼的</text>
+<text x="520" y="586" font-size="17" fill="#102A2B" text-anchor="middle">那幾行</text>
+<rect x="740" y="516" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="940" y="558" font-size="17" fill="#102A2B" text-anchor="middle">看不懂、要修錯、</text>
+<text x="940" y="586" font-size="17" fill="#102A2B" text-anchor="middle">要補測試</text>
+<rect x="1160" y="516" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="1360" y="558" font-size="17" fill="#102A2B" text-anchor="middle">一件說得清楚的</text>
+<text x="1360" y="586" font-size="17" fill="#102A2B" text-anchor="middle">完整任務</text>
+
+<text x="50" y="654" font-size="20" font-weight="bold" fill="#102A2B">代理有兩種，差別在它跑在哪裡</text>
+<path d="M1360,620 V648 H410" fill="none" stroke="#5C6B6B" stroke-width="3"/>
+<path d="M410,648 V686" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M1190,648 V686" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+<rect x="40" y="694" width="740" height="136" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="72" y="736" font-size="19" font-weight="bold" fill="#0D6B68">代理模式（Agent mode）：在你的電腦</text>
+<text x="72" y="770" font-size="16" fill="#102A2B">在 VS Code 裡改檔案、提出要執行的終端機指令，</text>
+<text x="72" y="800" font-size="16" fill="#102A2B">每一步你都看得到，也擋得下來</text>
+
+<rect x="820" y="694" width="740" height="136" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="852" y="736" font-size="19" font-weight="bold" fill="#2F6F9F">Copilot cloud agent：在 GitHub 上</text>
+<text x="852" y="770" font-size="16" fill="#102A2B">在 GitHub Actions 提供的臨時環境裡工作，</text>
+<text x="852" y="800" font-size="16" fill="#102A2B">最後開一個草稿拉取請求給你審</text>
+
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

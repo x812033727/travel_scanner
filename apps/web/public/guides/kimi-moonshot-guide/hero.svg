@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一整疊文件進到一個視窗裡 / A whole stack of files into one window</title>
+  <desc id="desc">抽象插圖。左邊是三張疊在一起的白色圓角文件，最前面那張上面有四條淺綠色的短橫線代表文字，右下角有一個橘色圓點。一支橘色粗箭頭從文件疊指向右方一個大的白色圓角視窗，視窗裡有五條長短不一的淺綠色橫線，下面有一條容量長條，左段被深綠色填滿、右段留白，代表上下文視窗被用掉一部分。視窗右側再分出兩支橘色箭頭：上面一支通向藍色的雲端方塊，方塊裡有三條白色的橫槽，代表線上服務與 API；下面一支通向綠色的方塊，方塊裡有一個同心圓的硬碟意象，代表把權重下載到自己的機器上跑。左下角有一行字：一次讀完一整疊文件。</desc>
+  <defs>
+    <marker id="tip" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#D97A2B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <circle cx="300" cy="450" r="235" fill="#E3F0EF"/>
+  <circle cx="1330" cy="455" r="240" fill="#E6F0F7"/>
+
+  <!-- stack of documents -->
+  <rect x="222" y="278" width="215" height="272" rx="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <rect x="196" y="314" width="215" height="272" rx="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <rect x="170" y="350" width="215" height="272" rx="18" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+  <rect x="200" y="398" width="155" height="15" rx="7" fill="#E3F0EF"/>
+  <rect x="200" y="438" width="125" height="15" rx="7" fill="#E3F0EF"/>
+  <rect x="200" y="478" width="155" height="15" rx="7" fill="#E3F0EF"/>
+  <rect x="200" y="518" width="100" height="15" rx="7" fill="#E3F0EF"/>
+  <circle cx="345" cy="565" r="14" fill="#D97A2B"/>
+
+  <!-- arrow into the window -->
+  <line x1="452" y1="450" x2="548" y2="450" stroke="#D97A2B" stroke-width="11" marker-end="url(#tip)"/>
+
+  <!-- the context window -->
+  <rect x="580" y="230" width="480" height="440" rx="26" fill="#FFFFFF" stroke="#0D6B68" stroke-width="7"/>
+  <rect x="620" y="288" width="400" height="17" rx="8" fill="#E3F0EF"/>
+  <rect x="620" y="330" width="330" height="17" rx="8" fill="#E3F0EF"/>
+  <rect x="620" y="372" width="384" height="17" rx="8" fill="#E3F0EF"/>
+  <rect x="620" y="414" width="284" height="17" rx="8" fill="#E3F0EF"/>
+  <rect x="620" y="456" width="352" height="17" rx="8" fill="#E3F0EF"/>
+  <rect x="620" y="546" width="400" height="30" rx="15" fill="#EDE2D0"/>
+  <rect x="620" y="546" width="268" height="30" rx="15" fill="#0D6B68"/>
+
+  <!-- two branches -->
+  <path d="M 1062 362 C 1122 362, 1142 328, 1200 326" fill="none" stroke="#D97A2B" stroke-width="9" marker-end="url(#tip)"/>
+  <path d="M 1062 540 C 1122 540, 1142 578, 1200 582" fill="none" stroke="#D97A2B" stroke-width="9" marker-end="url(#tip)"/>
+
+  <!-- cloud block: the hosted service -->
+  <rect x="1222" y="242" width="252" height="172" rx="22" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="6"/>
+  <rect x="1252" y="272" width="192" height="30" rx="15" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="3"/>
+  <rect x="1252" y="314" width="192" height="30" rx="15" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="3"/>
+  <rect x="1252" y="356" width="192" height="30" rx="15" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="3"/>
+  <circle cx="1272" cy="287" r="6" fill="#2F6F9F"/>
+  <circle cx="1272" cy="329" r="6" fill="#2F6F9F"/>
+  <circle cx="1272" cy="371" r="6" fill="#2F6F9F"/>
+
+  <!-- local block: weights on your own machine -->
+  <rect x="1222" y="496" width="252" height="172" rx="22" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <circle cx="1330" cy="582" r="54" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <circle cx="1330" cy="582" r="15" fill="#0D6B68"/>
+  <rect x="1398" y="628" width="52" height="14" rx="7" fill="#0D6B68"/>
+  <rect x="1398" y="524" width="52" height="14" rx="7" fill="#2E7D5B"/>
+
+  <text x="120" y="812" font-size="54" font-weight="700" fill="#102A2B">一次讀完一整疊文件</text>
+</svg>

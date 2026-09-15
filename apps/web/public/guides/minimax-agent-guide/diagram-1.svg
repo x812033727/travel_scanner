@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一次 MiniMax Agent 任務的流程 / How one MiniMax Agent task runs</title>
+  <desc id="desc">由左至右五個階段：一、描述，用一句話寫清楚要什麼結果、給誰看、輸出成什麼格式；二、釐清計畫，複雜任務會先提出計畫請你確認，也能選誰來驗收；三、執行，上網查、開瀏覽器、讀你給的檔案、呼叫 MCP 與外掛；四、產出，網頁、報告、簡報、試算表、圖片與影片，可匯出 PDF、Docx 與 PPTX；五、修改，點頁面元素直接改、回到檢查點重跑，或改指令再生一次。第五階段有一條回頭的箭頭指回第三階段，表示不滿意就帶著新指令再跑一次。下方藍色區塊列出你可以介入的三個地方：確認計畫、權限詢問（讀工作目錄外的檔案、刪檔、執行命令都會先問過你）、停在關鍵動作前（登入、購買決定與付款之前暫停，把控制權交回給你）。最下方橘框說明點數：官方舉的例子是分析一張照片拍攝地點約 97 點，整理一批專利清單並列出請求項約 470 點；生成失敗、模式被降級或內容審核沒過，系統會自動退還那一次消耗的點數。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">一次 MiniMax Agent 任務的流程</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">How one MiniMax Agent task runs</text>
+
+  <rect x="61" y="118" width="262" height="210" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="192" y="168" font-size="20" font-weight="bold" fill="#0D6B68" text-anchor="middle">一、描述</text>
+  <text x="192" y="208" font-size="16" fill="#102A2B" text-anchor="middle">一句話寫清楚</text>
+  <text x="192" y="236" font-size="16" fill="#102A2B" text-anchor="middle">要什麼結果、給誰看</text>
+  <text x="192" y="264" font-size="16" fill="#102A2B" text-anchor="middle">輸出成什麼格式</text>
+
+  <rect x="365" y="118" width="262" height="210" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="496" y="168" font-size="20" font-weight="bold" fill="#0D6B68" text-anchor="middle">二、釐清計畫</text>
+  <text x="496" y="208" font-size="16" fill="#102A2B" text-anchor="middle">複雜任務會先提出</text>
+  <text x="496" y="236" font-size="16" fill="#102A2B" text-anchor="middle">計畫請你確認</text>
+  <text x="496" y="264" font-size="16" fill="#102A2B" text-anchor="middle">也能選誰來驗收</text>
+
+  <rect x="669" y="118" width="262" height="210" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="168" font-size="20" font-weight="bold" fill="#0D6B68" text-anchor="middle">三、執行</text>
+  <text x="800" y="208" font-size="16" fill="#102A2B" text-anchor="middle">上網查、開瀏覽器</text>
+  <text x="800" y="236" font-size="16" fill="#102A2B" text-anchor="middle">讀你給的檔案</text>
+  <text x="800" y="264" font-size="16" fill="#102A2B" text-anchor="middle">呼叫 MCP 與外掛</text>
+
+  <rect x="973" y="118" width="262" height="210" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1104" y="168" font-size="20" font-weight="bold" fill="#0D6B68" text-anchor="middle">四、產出</text>
+  <text x="1104" y="208" font-size="16" fill="#102A2B" text-anchor="middle">網頁、報告、簡報</text>
+  <text x="1104" y="236" font-size="16" fill="#102A2B" text-anchor="middle">試算表、圖片、影片</text>
+  <text x="1104" y="264" font-size="16" fill="#102A2B" text-anchor="middle">匯出 PDF、Docx</text>
+  <text x="1104" y="292" font-size="16" fill="#102A2B" text-anchor="middle">與 PPTX</text>
+
+  <rect x="1277" y="118" width="262" height="210" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1408" y="168" font-size="20" font-weight="bold" fill="#0D6B68" text-anchor="middle">五、修改</text>
+  <text x="1408" y="208" font-size="16" fill="#102A2B" text-anchor="middle">點頁面元素直接改</text>
+  <text x="1408" y="236" font-size="16" fill="#102A2B" text-anchor="middle">回到檢查點重跑</text>
+  <text x="1408" y="264" font-size="16" fill="#102A2B" text-anchor="middle">或改指令再生一次</text>
+
+  <path d="M 327 223 L 357 223" stroke="#0D6B68" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 631 223 L 661 223" stroke="#0D6B68" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 935 223 L 965 223" stroke="#0D6B68" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1239 223 L 1269 223" stroke="#0D6B68" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <path d="M 1408 332 L 1408 388 L 800 388 L 800 338" stroke="#0D6B68" stroke-width="4" fill="none" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+  <text x="1104" y="416" font-size="16" fill="#5C6B6B" text-anchor="middle">不滿意就帶著新指令再跑一次</text>
+
+  <rect x="61" y="446" width="1478" height="178" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="486" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">你可以介入的三個地方</text>
+  <path d="M 554 506 L 554 600" stroke="#2F6F9F" stroke-width="2" opacity="0.4"/>
+  <path d="M 1046 506 L 1046 600" stroke="#2F6F9F" stroke-width="2" opacity="0.4"/>
+
+  <text x="307" y="536" font-size="17" font-weight="bold" fill="#0D6B68" text-anchor="middle">確認計畫</text>
+  <text x="307" y="566" font-size="16" fill="#102A2B" text-anchor="middle">複雜任務執行前先提出計畫，</text>
+  <text x="307" y="592" font-size="16" fill="#102A2B" text-anchor="middle">等你點頭才動手</text>
+
+  <text x="800" y="536" font-size="17" font-weight="bold" fill="#0D6B68" text-anchor="middle">權限詢問</text>
+  <text x="800" y="566" font-size="16" fill="#102A2B" text-anchor="middle">讀工作目錄外的檔案、刪檔、</text>
+  <text x="800" y="592" font-size="16" fill="#102A2B" text-anchor="middle">執行命令都會先問過你</text>
+
+  <text x="1293" y="536" font-size="17" font-weight="bold" fill="#0D6B68" text-anchor="middle">停在關鍵動作前</text>
+  <text x="1293" y="566" font-size="16" fill="#102A2B" text-anchor="middle">登入、購買決定與付款之前暫停，</text>
+  <text x="1293" y="592" font-size="16" fill="#102A2B" text-anchor="middle">把控制權交回給你</text>
+
+  <rect x="61" y="656" width="1478" height="148" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="97" y="698" font-size="19" font-weight="bold" fill="#B8442D">點數怎麼算、什麼情況會退回</text>
+  <text x="97" y="734" font-size="17" fill="#102A2B">官方舉的例子：分析一張照片拍攝地點約 97 點；整理一批專利清單並列出請求項約 470 點。</text>
+  <text x="97" y="768" font-size="17" fill="#102A2B">生成失敗、模式被降級或內容審核沒過，系統會自動退還那一次消耗的點數。</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

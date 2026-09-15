@@ -42,6 +42,30 @@
     {
       "id": "J",
       "title": "完整實作、維護與查表"
+    },
+    {
+      "id": "K",
+      "title": "專案規則與工作上下文"
+    },
+    {
+      "id": "L",
+      "title": "Skills 工程化與共用外掛"
+    },
+    {
+      "id": "M",
+      "title": "Hooks 事件、檢查與故障處理"
+    },
+    {
+      "id": "N",
+      "title": "MCP 工具開發與串接"
+    },
+    {
+      "id": "O",
+      "title": "開發驗證、多代理與跨裝置"
+    },
+    {
+      "id": "P",
+      "title": "可追蹤、可恢復的自動化"
     }
   ],
   "paths": [
@@ -125,6 +149,85 @@
         "claude-code-scheduled-tasks",
         "claude-code-github-actions",
         "claude-code-agent-sdk"
+      ]
+    },
+    {
+      "id": "advanced-md",
+      "title": "MD 與專案規則",
+      "slugs": [
+        "claude-code-project-rules-workshop",
+        "claude-code-monorepo-rules-workshop",
+        "claude-code-rules-loading-diagnostics",
+        "claude-code-context-handoff-workshop",
+        "claude-code-team-config-maintenance"
+      ]
+    },
+    {
+      "id": "advanced-skills",
+      "title": "Skills 與自訂指令",
+      "slugs": [
+        "claude-code-skill-sop-workshop",
+        "claude-code-skill-input-validation",
+        "claude-code-skill-resource-design",
+        "claude-code-skill-invocation-control",
+        "claude-code-skill-regression-testing",
+        "claude-code-plugin-team-distribution"
+      ]
+    },
+    {
+      "id": "advanced-hooks",
+      "title": "Hooks 與檢查流程",
+      "slugs": [
+        "claude-code-hook-event-test-lab",
+        "claude-code-hook-scoped-formatting",
+        "claude-code-hook-quality-gates",
+        "claude-code-hook-file-boundaries",
+        "claude-code-hook-notifications-audit",
+        "claude-code-hook-portability-recovery"
+      ]
+    },
+    {
+      "id": "advanced-mcp",
+      "title": "自建 MCP 工具",
+      "slugs": [
+        "claude-code-mcp-local-server-workshop",
+        "claude-code-mcp-tool-contracts",
+        "claude-code-mcp-http-auth-workshop",
+        "claude-code-mcp-failure-contract-tests",
+        "claude-code-mcp-untrusted-output",
+        "claude-code-issue-to-draft-pr-workshop"
+      ]
+    },
+    {
+      "id": "advanced-development",
+      "title": "完整開發與協作",
+      "slugs": [
+        "claude-code-tdd-debugging-workshop",
+        "claude-code-legacy-refactoring-workshop",
+        "claude-code-subagent-review-workshop",
+        "claude-code-worktree-integration-workshop",
+        "claude-code-agent-teams-integration-lab",
+        "claude-code-advanced-capstone"
+      ]
+    },
+    {
+      "id": "advanced-mobile",
+      "title": "桌面與手機接續",
+      "slugs": [
+        "claude-code-context-handoff-workshop",
+        "claude-code-cross-device-recovery-workshop"
+      ]
+    },
+    {
+      "id": "advanced-automation",
+      "title": "CLI 與可靠自動化",
+      "slugs": [
+        "claude-code-structured-cli-pipeline",
+        "claude-code-github-actions-review-workshop",
+        "claude-code-scheduled-workflow-reliability",
+        "claude-code-agent-sdk-stateful-runner",
+        "claude-code-workflow-evaluation-cost",
+        "claude-code-advanced-capstone"
       ]
     }
   ],
@@ -2011,6 +2114,1187 @@
         "claude-code-claude-md-guide",
         "claude-code-cli-command-guide",
         "claude-code-skills-skill-md"
+      ]
+    },
+    {
+      "slug": "claude-code-project-rules-workshop",
+      "title": "替真實專案設計 CLAUDE.md",
+      "outcome": "把模糊、過期或重複的規則改成可操作的專案說明",
+      "number": 61,
+      "group": "K",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "CLAUDE.md",
+        "MD",
+        "專案規範",
+        "規則重構"
+      ],
+      "prerequisites": [
+        "claude-code-claude-md-guide",
+        "claude-code-rules-and-imports",
+        "claude-code-understand-codebase"
+      ],
+      "related": [
+        "claude-code-monorepo-rules-workshop",
+        "claude-code-rules-loading-diagnostics",
+        "claude-code-skill-sop-workshop"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/sandboxing",
+        "https://code.claude.com/docs/en/best-practices"
+      ]
+    },
+    {
+      "slug": "claude-code-monorepo-rules-workshop",
+      "title": "Monorepo 的分層 MD 與路徑規則",
+      "outcome": "讓前端、API 與共用目錄使用適合的指引",
+      "number": 62,
+      "group": "K",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "monorepo",
+        "子目錄",
+        "paths",
+        "rules"
+      ],
+      "prerequisites": [
+        "claude-code-claude-md-scopes",
+        "claude-code-rules-and-imports",
+        "claude-code-project-rules-workshop"
+      ],
+      "related": [
+        "claude-code-rules-loading-diagnostics",
+        "claude-code-team-config-maintenance",
+        "claude-code-worktree-integration-workshop"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/sandboxing",
+        "https://code.claude.com/docs/en/best-practices"
+      ]
+    },
+    {
+      "slug": "claude-code-rules-loading-diagnostics",
+      "title": "Claude 沒照 MD 做：找出載入與規則衝突",
+      "outcome": "分辨沒有載入、規則矛盾、資料過期與任務描述不足",
+      "number": 63,
+      "group": "K",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "不生效",
+        "/memory",
+        "/context",
+        "規則衝突",
+        "MD 不生效"
+      ],
+      "prerequisites": [
+        "claude-code-auto-memory",
+        "claude-code-settings-json",
+        "claude-code-project-rules-workshop"
+      ],
+      "related": [
+        "claude-code-monorepo-rules-workshop",
+        "claude-code-context-handoff-workshop",
+        "claude-code-team-config-maintenance"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/sandboxing",
+        "https://code.claude.com/docs/en/best-practices"
+      ]
+    },
+    {
+      "slug": "claude-code-permissions-sandbox-lab",
+      "title": "權限與 Sandbox 邊界實驗",
+      "outcome": "用無害案例觀察允許、詢問、拒絕與執行隔離",
+      "number": 64,
+      "group": "K",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "權限",
+        "sandbox",
+        "allow",
+        "deny",
+        "WSL2"
+      ],
+      "prerequisites": [
+        "claude-code-settings-json",
+        "claude-code-permissions-plan-mode",
+        "claude-code-project-data-safety"
+      ],
+      "related": [
+        "claude-code-hook-file-boundaries",
+        "claude-code-mcp-untrusted-output",
+        "claude-code-github-actions-review-workshop"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/sandboxing",
+        "https://code.claude.com/docs/en/best-practices"
+      ]
+    },
+    {
+      "slug": "claude-code-context-handoff-workshop",
+      "title": "長任務的上下文整理與交接文件",
+      "outcome": "讓新的工作階段依檔案接手，而不依賴原對話",
+      "number": 65,
+      "group": "K",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "/compact",
+        "交接",
+        "上下文",
+        "handoff"
+      ],
+      "prerequisites": [
+        "claude-code-sessions-resume",
+        "claude-code-context-compact-clear",
+        "claude-code-understand-codebase"
+      ],
+      "related": [
+        "claude-code-rules-loading-diagnostics",
+        "claude-code-cross-device-recovery-workshop",
+        "claude-code-agent-sdk-stateful-runner"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/sandboxing",
+        "https://code.claude.com/docs/en/best-practices"
+      ]
+    },
+    {
+      "slug": "claude-code-team-config-maintenance",
+      "title": "把個人設定整理成團隊可維護的設定包",
+      "outcome": "建立共用範本、個人覆寫與更新檢查方式",
+      "number": 66,
+      "group": "K",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "settings.json",
+        "團隊設定",
+        "設定更新",
+        "版本漂移"
+      ],
+      "prerequisites": [
+        "claude-code-settings-json",
+        "claude-code-project-rules-workshop",
+        "claude-code-monorepo-rules-workshop"
+      ],
+      "related": [
+        "claude-code-rules-loading-diagnostics",
+        "claude-code-plugin-team-distribution",
+        "claude-code-workflow-evaluation-cost"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/sandboxing",
+        "https://code.claude.com/docs/en/best-practices"
+      ]
+    },
+    {
+      "slug": "claude-code-skill-sop-workshop",
+      "title": "把一套工作 SOP 做成可重用 Skill",
+      "outcome": "將程式碼審查流程做成有輸入、輸出及停止條件的技能",
+      "number": 67,
+      "group": "L",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "SKILL.md",
+        "SOP",
+        "/review-change",
+        "自訂指令"
+      ],
+      "prerequisites": [
+        "claude-code-skills-skill-md",
+        "claude-code-skill-arguments-resources",
+        "claude-code-git-review-pr"
+      ],
+      "related": [
+        "claude-code-skill-input-validation",
+        "claude-code-skill-invocation-control",
+        "claude-code-skill-regression-testing"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/skills",
+        "https://code.claude.com/docs/en/plugins"
+      ]
+    },
+    {
+      "slug": "claude-code-skill-input-validation",
+      "title": "Skill 參數驗證：缺值、錯誤與危險字元",
+      "outcome": "讓技能接收可預期的參數並安全交給輔助程式",
+      "number": 68,
+      "group": "L",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "$ARGUMENTS",
+        "參數",
+        "引號",
+        "空白路徑"
+      ],
+      "prerequisites": [
+        "claude-code-skill-arguments-resources",
+        "claude-code-skill-sop-workshop"
+      ],
+      "related": [
+        "claude-code-skill-resource-design",
+        "claude-code-skill-regression-testing",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/skills",
+        "https://code.claude.com/docs/en/plugins"
+      ]
+    },
+    {
+      "slug": "claude-code-skill-resource-design",
+      "title": "拆分大型 Skill 的範本、參考文件與腳本",
+      "outcome": "建立能按需讀取的技能目錄",
+      "number": 69,
+      "group": "L",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Skill 範本",
+        "resources",
+        "template",
+        "按需讀取"
+      ],
+      "prerequisites": [
+        "claude-code-skill-arguments-resources",
+        "claude-code-skill-sop-workshop"
+      ],
+      "related": [
+        "claude-code-skill-input-validation",
+        "claude-code-skill-invocation-control",
+        "claude-code-plugin-team-distribution"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/skills",
+        "https://code.claude.com/docs/en/plugins"
+      ]
+    },
+    {
+      "slug": "claude-code-skill-invocation-control",
+      "title": "Skill 何時啟動：手動呼叫與自動選用",
+      "outcome": "用正反例評估描述與呼叫設定",
+      "number": 70,
+      "group": "L",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "disable-model-invocation",
+        "user-invocable",
+        "自動觸發",
+        "description"
+      ],
+      "prerequisites": [
+        "claude-code-skills-skill-md",
+        "claude-code-custom-commands",
+        "claude-code-skill-sop-workshop"
+      ],
+      "related": [
+        "claude-code-skill-resource-design",
+        "claude-code-skill-regression-testing",
+        "claude-code-scheduled-workflow-reliability"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/skills",
+        "https://code.claude.com/docs/en/plugins"
+      ]
+    },
+    {
+      "slug": "claude-code-skill-regression-testing",
+      "title": "替 Skills 建立回歸案例與評分表",
+      "outcome": "讓 Skill 修改後有可比較的品質紀錄",
+      "number": 71,
+      "group": "L",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Skill 測試",
+        "eval",
+        "回歸",
+        "評分"
+      ],
+      "prerequisites": [
+        "claude-code-debug-and-test",
+        "claude-code-skill-sop-workshop",
+        "claude-code-skill-input-validation"
+      ],
+      "related": [
+        "claude-code-skill-invocation-control",
+        "claude-code-plugin-team-distribution",
+        "claude-code-workflow-evaluation-cost"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/skills",
+        "https://code.claude.com/docs/en/plugins"
+      ]
+    },
+    {
+      "slug": "claude-code-plugin-team-distribution",
+      "title": "把 Skills 與 Hooks 包成可版本管理的 Plugin",
+      "outcome": "讓同伴安裝、升級與回退同一套工作流程",
+      "number": 72,
+      "group": "L",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "plugin",
+        "外掛封裝",
+        "版本",
+        "團隊安裝"
+      ],
+      "prerequisites": [
+        "claude-code-plugins-guide",
+        "claude-code-team-config-maintenance",
+        "claude-code-skill-sop-workshop"
+      ],
+      "related": [
+        "claude-code-skill-resource-design",
+        "claude-code-skill-regression-testing",
+        "claude-code-hook-portability-recovery"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/skills",
+        "https://code.claude.com/docs/en/plugins",
+        "https://code.claude.com/docs/en/plugins-reference"
+      ]
+    },
+    {
+      "slug": "claude-code-hook-event-test-lab",
+      "title": "讀懂 Hook 事件：輸入、輸出與退出碼",
+      "outcome": "建立可重播事件的本機測試工具",
+      "number": 73,
+      "group": "M",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "hooks",
+        "stdin",
+        "JSON",
+        "exit code"
+      ],
+      "prerequisites": [
+        "claude-code-hooks-getting-started",
+        "claude-code-hooks-recipes"
+      ],
+      "related": [
+        "claude-code-hook-scoped-formatting",
+        "claude-code-hook-quality-gates",
+        "claude-code-hook-portability-recovery"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/hooks"
+      ]
+    },
+    {
+      "slug": "claude-code-hook-scoped-formatting",
+      "title": "只處理變更檔案的格式化 Hook",
+      "outcome": "限制格式化範圍並避免事件重複執行",
+      "number": 74,
+      "group": "M",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "PostToolUse",
+        "格式化",
+        "matcher",
+        "去重"
+      ],
+      "prerequisites": [
+        "claude-code-debug-and-test",
+        "claude-code-hook-event-test-lab"
+      ],
+      "related": [
+        "claude-code-hook-quality-gates",
+        "claude-code-hook-portability-recovery",
+        "claude-code-tdd-debugging-workshop"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/hooks"
+      ]
+    },
+    {
+      "slug": "claude-code-hook-quality-gates",
+      "title": "建立可停止的品質檢查 Hook",
+      "outcome": "讓完成檢查能指出失敗並有清楚的退出機制",
+      "number": 75,
+      "group": "M",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Stop hook",
+        "品質檢查",
+        "stop_hook_active",
+        "測試失敗"
+      ],
+      "prerequisites": [
+        "claude-code-debug-and-test",
+        "claude-code-hook-event-test-lab"
+      ],
+      "related": [
+        "claude-code-hook-scoped-formatting",
+        "claude-code-hook-portability-recovery",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/hooks"
+      ]
+    },
+    {
+      "slug": "claude-code-hook-file-boundaries",
+      "title": "用 Hook 保護指定檔案並測試路徑邊界",
+      "outcome": "為特定編輯工具設置範圍檢查及清楚的拒絕訊息",
+      "number": 76,
+      "group": "M",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "PreToolUse",
+        "路徑",
+        "機密檔案",
+        "保護"
+      ],
+      "prerequisites": [
+        "claude-code-project-data-safety",
+        "claude-code-permissions-sandbox-lab",
+        "claude-code-hook-event-test-lab"
+      ],
+      "related": [
+        "claude-code-hook-portability-recovery",
+        "claude-code-mcp-untrusted-output",
+        "claude-code-github-actions-review-workshop"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/hooks"
+      ]
+    },
+    {
+      "slug": "claude-code-hook-notifications-audit",
+      "title": "任務通知與事件紀錄：有用而不洗版",
+      "outcome": "產生可追查、去重且不含敏感內容的通知紀錄",
+      "number": 77,
+      "group": "M",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "通知",
+        "JSONL",
+        "審計",
+        "session_id"
+      ],
+      "prerequisites": [
+        "claude-code-hooks-recipes",
+        "claude-code-hook-event-test-lab"
+      ],
+      "related": [
+        "claude-code-hook-quality-gates",
+        "claude-code-hook-portability-recovery",
+        "claude-code-scheduled-workflow-reliability"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/hooks"
+      ]
+    },
+    {
+      "slug": "claude-code-hook-portability-recovery",
+      "title": "跨平台 Hooks：中文路徑、逾時與遞迴排錯",
+      "outcome": "把 Hook 做成可測試、可停用、可移植的工具",
+      "number": 78,
+      "group": "M",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "PowerShell",
+        "Bash",
+        "CRLF",
+        "timeout",
+        "Hook 排錯",
+        "Hook timeout"
+      ],
+      "prerequisites": [
+        "claude-code-hook-event-test-lab",
+        "claude-code-hook-scoped-formatting",
+        "claude-code-hook-quality-gates"
+      ],
+      "related": [
+        "claude-code-plugin-team-distribution",
+        "claude-code-hook-file-boundaries",
+        "claude-code-hook-notifications-audit"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/hooks"
+      ]
+    },
+    {
+      "slug": "claude-code-mcp-local-server-workshop",
+      "title": "建立自己的唯讀 MCP 工具",
+      "outcome": "讓 Claude 查詢本機練習待辦資料",
+      "number": 79,
+      "group": "N",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "MCP 開發",
+        "stdio",
+        "唯讀",
+        "自訂工具",
+        "list_tasks",
+        "get_task"
+      ],
+      "prerequisites": [
+        "claude-code-mcp-servers",
+        "claude-code-mcp-setup-troubleshooting"
+      ],
+      "related": [
+        "claude-code-mcp-tool-contracts",
+        "claude-code-mcp-failure-contract-tests",
+        "claude-code-mcp-untrusted-output"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/mcp",
+        "https://modelcontextprotocol.io/docs/develop/build-server",
+        "https://github.com/modelcontextprotocol/typescript-sdk"
+      ]
+    },
+    {
+      "slug": "claude-code-mcp-tool-contracts",
+      "title": "設計 MCP 工具名稱、輸入 Schema 與分頁",
+      "outcome": "讓模型能選對工具，也能正確處理空值與大量結果",
+      "number": 80,
+      "group": "N",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "inputSchema",
+        "分頁",
+        "工具描述",
+        "空結果",
+        "list_tasks",
+        "get_task"
+      ],
+      "prerequisites": [
+        "claude-code-mcp-local-server-workshop"
+      ],
+      "related": [
+        "claude-code-mcp-http-auth-workshop",
+        "claude-code-mcp-failure-contract-tests",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/mcp",
+        "https://modelcontextprotocol.io/docs/develop/build-server",
+        "https://github.com/modelcontextprotocol/typescript-sdk"
+      ]
+    },
+    {
+      "slug": "claude-code-mcp-http-auth-workshop",
+      "title": "遠端 MCP 登入、授權範圍與重新認證",
+      "outcome": "在測試服務演練連線與權限故障",
+      "number": 81,
+      "group": "N",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "HTTP MCP",
+        "OAuth",
+        "401",
+        "403",
+        "scope",
+        "MCP OAuth"
+      ],
+      "prerequisites": [
+        "claude-code-mcp-setup-troubleshooting",
+        "claude-code-project-data-safety",
+        "claude-code-mcp-local-server-workshop"
+      ],
+      "related": [
+        "claude-code-mcp-tool-contracts",
+        "claude-code-mcp-failure-contract-tests",
+        "claude-code-mcp-untrusted-output"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/mcp",
+        "https://modelcontextprotocol.io/docs/develop/build-server",
+        "https://github.com/modelcontextprotocol/typescript-sdk"
+      ]
+    },
+    {
+      "slug": "claude-code-mcp-failure-contract-tests",
+      "title": "MCP 排錯實驗室：斷線、逾時與格式錯誤",
+      "outcome": "用固定故障重現診斷及復原流程",
+      "number": 82,
+      "group": "N",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "MCP 排錯",
+        "timeout",
+        "斷線",
+        "契約測試"
+      ],
+      "prerequisites": [
+        "claude-code-mcp-local-server-workshop",
+        "claude-code-mcp-tool-contracts"
+      ],
+      "related": [
+        "claude-code-mcp-http-auth-workshop",
+        "claude-code-mcp-untrusted-output",
+        "claude-code-agent-sdk-stateful-runner"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/mcp",
+        "https://modelcontextprotocol.io/docs/develop/build-server",
+        "https://github.com/modelcontextprotocol/typescript-sdk"
+      ]
+    },
+    {
+      "slug": "claude-code-mcp-untrusted-output",
+      "title": "MCP 回傳含有指令時：資料與操作權限分開",
+      "outcome": "以無害的對抗案例測試工具資料處理",
+      "number": 83,
+      "group": "N",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "prompt injection",
+        "提示注入",
+        "工具回傳",
+        "不可信資料"
+      ],
+      "prerequisites": [
+        "claude-code-project-data-safety",
+        "claude-code-permissions-sandbox-lab",
+        "claude-code-mcp-local-server-workshop"
+      ],
+      "related": [
+        "claude-code-hook-file-boundaries",
+        "claude-code-mcp-http-auth-workshop",
+        "claude-code-issue-to-draft-pr-workshop"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/mcp",
+        "https://modelcontextprotocol.io/docs/develop/build-server",
+        "https://github.com/modelcontextprotocol/typescript-sdk"
+      ]
+    },
+    {
+      "slug": "claude-code-issue-to-draft-pr-workshop",
+      "title": "從 Issue 到變更草稿：串起工具與程式碼",
+      "outcome": "完成需求讀取、計畫、測試與 PR 說明稿",
+      "number": 84,
+      "group": "N",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "issue",
+        "GitHub MCP",
+        "PR 草稿",
+        "工作流"
+      ],
+      "prerequisites": [
+        "claude-code-git-review-pr",
+        "claude-code-skill-sop-workshop",
+        "claude-code-mcp-local-server-workshop"
+      ],
+      "related": [
+        "claude-code-mcp-untrusted-output",
+        "claude-code-tdd-debugging-workshop",
+        "claude-code-github-actions-review-workshop"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/mcp",
+        "https://modelcontextprotocol.io/docs/develop/build-server",
+        "https://github.com/modelcontextprotocol/typescript-sdk"
+      ]
+    },
+    {
+      "slug": "claude-code-tdd-debugging-workshop",
+      "title": "真正走完一次重現、失敗測試與修正",
+      "outcome": "定位跨資料層及介面層的待辦狀態錯誤",
+      "number": 85,
+      "group": "O",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop",
+        "ide"
+      ],
+      "aliases": [
+        "TDD",
+        "debug",
+        "失敗測試",
+        "驗證"
+      ],
+      "prerequisites": [
+        "claude-code-debug-and-test",
+        "claude-code-build-todo-app"
+      ],
+      "related": [
+        "claude-code-legacy-refactoring-workshop",
+        "claude-code-subagent-review-workshop",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/best-practices",
+        "https://code.claude.com/docs/en/sub-agents",
+        "https://code.claude.com/docs/en/agent-teams",
+        "https://code.claude.com/docs/en/remote-control"
+      ]
+    },
+    {
+      "slug": "claude-code-legacy-refactoring-workshop",
+      "title": "接手缺測試舊專案：先留住行為再重構",
+      "outcome": "用小步變更拆出可測試模組",
+      "number": 86,
+      "group": "O",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop",
+        "ide"
+      ],
+      "aliases": [
+        "legacy",
+        "重構",
+        "characterization",
+        "舊專案"
+      ],
+      "prerequisites": [
+        "claude-code-maintain-existing-project",
+        "claude-code-tdd-debugging-workshop"
+      ],
+      "related": [
+        "claude-code-monorepo-rules-workshop",
+        "claude-code-subagent-review-workshop",
+        "claude-code-worktree-integration-workshop"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/best-practices",
+        "https://code.claude.com/docs/en/sub-agents",
+        "https://code.claude.com/docs/en/agent-teams",
+        "https://code.claude.com/docs/en/remote-control"
+      ]
+    },
+    {
+      "slug": "claude-code-subagent-review-workshop",
+      "title": "讓 Subagent 提出可核對的審查發現",
+      "outcome": "設計專責代理的範圍、工具及回報格式",
+      "number": 87,
+      "group": "O",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "subagent",
+        "審查",
+        "reviewer",
+        "代理 MD"
+      ],
+      "prerequisites": [
+        "claude-code-subagents-guide",
+        "claude-code-tdd-debugging-workshop"
+      ],
+      "related": [
+        "claude-code-skill-regression-testing",
+        "claude-code-worktree-integration-workshop",
+        "claude-code-agent-teams-integration-lab"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/best-practices",
+        "https://code.claude.com/docs/en/sub-agents",
+        "https://code.claude.com/docs/en/agent-teams",
+        "https://code.claude.com/docs/en/remote-control"
+      ]
+    },
+    {
+      "slug": "claude-code-worktree-integration-workshop",
+      "title": "雙 Worktree 實作與衝突整合",
+      "outcome": "隔離兩項功能，最後完成整合與回歸",
+      "number": 88,
+      "group": "O",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "worktree",
+        "合併衝突",
+        "平行開發",
+        "port",
+        "worktree 衝突"
+      ],
+      "prerequisites": [
+        "claude-code-git-review-pr",
+        "claude-code-worktrees-parallel",
+        "claude-code-context-handoff-workshop"
+      ],
+      "related": [
+        "claude-code-legacy-refactoring-workshop",
+        "claude-code-subagent-review-workshop",
+        "claude-code-agent-teams-integration-lab"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/best-practices",
+        "https://code.claude.com/docs/en/sub-agents",
+        "https://code.claude.com/docs/en/agent-teams",
+        "https://code.claude.com/docs/en/remote-control"
+      ]
+    },
+    {
+      "slug": "claude-code-agent-teams-integration-lab",
+      "title": "Agent Teams 的分工、阻塞與成果整合",
+      "outcome": "比較單代理、專責代理與團隊協作成本",
+      "number": 89,
+      "group": "O",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Agent Teams",
+        "teammate",
+        "實驗功能",
+        "協作"
+      ],
+      "prerequisites": [
+        "claude-code-agent-teams",
+        "claude-code-subagent-review-workshop",
+        "claude-code-worktree-integration-workshop"
+      ],
+      "related": [
+        "claude-code-context-handoff-workshop",
+        "claude-code-cross-device-recovery-workshop",
+        "claude-code-workflow-evaluation-cost"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/best-practices",
+        "https://code.claude.com/docs/en/sub-agents",
+        "https://code.claude.com/docs/en/agent-teams",
+        "https://code.claude.com/docs/en/remote-control"
+      ]
+    },
+    {
+      "slug": "claude-code-cross-device-recovery-workshop",
+      "title": "桌面到手機：離線、中斷與返回工作現場",
+      "outcome": "確認執行位置，練習接續及故障後的核對",
+      "number": 90,
+      "group": "O",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop",
+        "mobile",
+        "web"
+      ],
+      "aliases": [
+        "手機",
+        "Remote Control",
+        "Dispatch",
+        "跨裝置",
+        "離線",
+        "手機中斷"
+      ],
+      "prerequisites": [
+        "claude-code-remote-control",
+        "claude-code-desktop-dispatch",
+        "claude-code-cross-device-workflow",
+        "claude-code-context-handoff-workshop"
+      ],
+      "related": [
+        "claude-code-sessions-resume",
+        "claude-code-worktree-integration-workshop",
+        "claude-code-scheduled-workflow-reliability"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/best-practices",
+        "https://code.claude.com/docs/en/sub-agents",
+        "https://code.claude.com/docs/en/agent-teams",
+        "https://code.claude.com/docs/en/remote-control"
+      ]
+    },
+    {
+      "slug": "claude-code-structured-cli-pipeline",
+      "title": "把 claude -p 接進有驗證的 JSON 流程",
+      "outcome": "處理合法結果、錯誤、逾時與不完整輸出",
+      "number": 91,
+      "group": "P",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "claude -p",
+        "JSON Schema",
+        "stream-json",
+        "結構化輸出",
+        "--json-schema",
+        "--output-format",
+        "structured_output"
+      ],
+      "prerequisites": [
+        "claude-code-headless-json",
+        "claude-code-debug-and-test"
+      ],
+      "related": [
+        "claude-code-skill-input-validation",
+        "claude-code-mcp-failure-contract-tests",
+        "claude-code-agent-sdk-stateful-runner"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/headless",
+        "https://code.claude.com/docs/en/github-actions",
+        "https://code.claude.com/docs/en/scheduled-tasks",
+        "https://code.claude.com/docs/en/agent-sdk/overview"
+      ]
+    },
+    {
+      "slug": "claude-code-github-actions-review-workshop",
+      "title": "CI 審查助手：權限、fork 與結果附件",
+      "outcome": "在測試儲存庫跑一次可審閱的工作流程",
+      "number": 92,
+      "group": "P",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "web"
+      ],
+      "aliases": [
+        "GitHub Actions",
+        "CI",
+        "fork PR",
+        "artifact"
+      ],
+      "prerequisites": [
+        "claude-code-github-actions",
+        "claude-code-project-data-safety",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "related": [
+        "claude-code-permissions-sandbox-lab",
+        "claude-code-issue-to-draft-pr-workshop",
+        "claude-code-scheduled-workflow-reliability"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/headless",
+        "https://code.claude.com/docs/en/github-actions",
+        "https://code.claude.com/docs/en/scheduled-tasks",
+        "https://code.claude.com/docs/en/agent-sdk/overview"
+      ]
+    },
+    {
+      "slug": "claude-code-scheduled-workflow-reliability",
+      "title": "排程失敗怎麼辦：重複執行、漏跑與停止",
+      "outcome": "為一次排程建立可追查且不重複寫入的工作",
+      "number": 93,
+      "group": "P",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop",
+        "web"
+      ],
+      "aliases": [
+        "排程",
+        "idempotency",
+        "去重",
+        "重試",
+        "漏跑"
+      ],
+      "prerequisites": [
+        "claude-code-scheduled-tasks",
+        "claude-code-hook-notifications-audit",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "related": [
+        "claude-code-skill-invocation-control",
+        "claude-code-cross-device-recovery-workshop",
+        "claude-code-agent-sdk-stateful-runner"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/headless",
+        "https://code.claude.com/docs/en/github-actions",
+        "https://code.claude.com/docs/en/scheduled-tasks",
+        "https://code.claude.com/docs/en/agent-sdk/overview"
+      ]
+    },
+    {
+      "slug": "claude-code-agent-sdk-stateful-runner",
+      "title": "Agent SDK：保存狀態、取消與重新接續",
+      "outcome": "建立可中斷且可診斷的最小代理程式",
+      "number": 94,
+      "group": "P",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Agent SDK",
+        "resume",
+        "取消",
+        "state machine"
+      ],
+      "prerequisites": [
+        "claude-code-agent-sdk",
+        "claude-code-context-handoff-workshop",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "related": [
+        "claude-code-mcp-failure-contract-tests",
+        "claude-code-scheduled-workflow-reliability",
+        "claude-code-workflow-evaluation-cost"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/headless",
+        "https://code.claude.com/docs/en/github-actions",
+        "https://code.claude.com/docs/en/scheduled-tasks",
+        "https://code.claude.com/docs/en/agent-sdk/overview",
+        "https://code.claude.com/docs/en/agent-sdk/sessions"
+      ]
+    },
+    {
+      "slug": "claude-code-workflow-evaluation-cost",
+      "title": "比較流程品質、用量與執行時間",
+      "outcome": "以同一資料集比較兩種工作方法",
+      "number": 95,
+      "group": "P",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "成本",
+        "用量",
+        "benchmark",
+        "評估",
+        "效能"
+      ],
+      "prerequisites": [
+        "claude-code-usage-cost-optimization",
+        "claude-code-skill-regression-testing",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "related": [
+        "claude-code-agent-teams-integration-lab",
+        "claude-code-agent-sdk-stateful-runner",
+        "claude-code-advanced-capstone"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/headless",
+        "https://code.claude.com/docs/en/github-actions",
+        "https://code.claude.com/docs/en/scheduled-tasks",
+        "https://code.claude.com/docs/en/agent-sdk/overview"
+      ]
+    },
+    {
+      "slug": "claude-code-advanced-capstone",
+      "title": "期末實作：可維護的待辦專案工作流程",
+      "outcome": "整合規則、技能、工具及驗證，交付一次完整變更",
+      "number": 96,
+      "group": "P",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "完整實作",
+        "capstone",
+        "待辦專案",
+        "驗收"
+      ],
+      "prerequisites": [
+        "claude-code-build-todo-app",
+        "claude-code-project-rules-workshop",
+        "claude-code-skill-sop-workshop",
+        "claude-code-hook-event-test-lab",
+        "claude-code-mcp-local-server-workshop",
+        "claude-code-tdd-debugging-workshop",
+        "claude-code-structured-cli-pipeline"
+      ],
+      "related": [
+        "claude-code-worktree-integration-workshop",
+        "claude-code-agent-sdk-stateful-runner",
+        "claude-code-workflow-evaluation-cost"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/headless",
+        "https://code.claude.com/docs/en/github-actions",
+        "https://code.claude.com/docs/en/scheduled-tasks",
+        "https://code.claude.com/docs/en/agent-sdk/overview"
       ]
     }
   ]

@@ -3,6 +3,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'apps/api'))
@@ -14,6 +15,7 @@ from app.guides.series import Catalogue  # noqa: E402
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--partial', action='store_true', help='Report missing lessons without passing final acceptance')
+    parser.add_argument('--output', type=Path, default=ROOT / 'docs/claude-code-series/evidence/content-validation.json')
     args = parser.parse_args()
     catalogue = Catalogue.model_validate(json.loads((ROOT / 'apps/api/app/guides/series_data/claude-code.json').read_text(encoding='utf-8')))
     expected = {entry.slug for entry in catalogue.entries} | {catalogue.hub}
@@ -46,10 +48,12 @@ def main():
                         refs.add(node.slug)
                         if node.kind != 'life' or node.slug not in expected:
                             report['errors'].append(f'{slug}: unknown internal reference {node.slug}')
-                    if node.type == 'link' and '/tutorials/claude-code/' in node.url:
-                        filename = node.url.rsplit('/', 1)[1]
-                        if not (ROOT / 'apps/web/public/tutorials/claude-code' / filename).is_file():
-                            report['errors'].append(f'{slug}: missing download {filename}')
+                    if node.type == 'link' and '/tutorials/claude-code/' in urlparse(node.url).path:
+                        base = (ROOT / 'apps/web/public/tutorials/claude-code').resolve()
+                        filename = unquote(urlparse(node.url).path.split('/tutorials/claude-code/', 1)[1])
+                        target = (base / filename).resolve()
+                        if not target.is_relative_to(base) or not target.is_file():
+                            report['errors'].append(f'{slug}: missing or unsafe download {filename}')
             elif block.type == 'code':
                 code_count += 1
                 if not block.label or not block.code.endswith('\n'):
@@ -68,7 +72,7 @@ def main():
                     report['errors' if issue.level == 'error' else 'warnings'].append(f'{slug}/{filename}: {issue.message}')
         report['pages'].append({'slug': slug, 'body_characters': _body_length(doc), 'blocks': len(doc.blocks), 'code_examples': code_count, 'internal_targets': sorted(refs)})
     report['complete'] = not report['missing'] and not report['errors']
-    target = ROOT / 'docs/claude-code-series/evidence/content-validation.json'
+    target = args.output
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({'pages': len(report['pages']), 'missing': len(report['missing']), 'errors': report['errors'], 'warnings': report['warnings'], 'complete': report['complete']}, ensure_ascii=False, indent=2))

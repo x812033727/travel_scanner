@@ -1,0 +1,415 @@
+{
+  "slug": "minimax-hailuo-video-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+      "description": "海螺 AI（Hailuo AI）是 MiniMax 的影片生成產品，網頁版與 iOS、Android App 都能用。這篇帶台灣使用者走完第一次：入口與登入方式、免費版的浮水印與排隊限制、點數與訂閱方案怎麼算、文生影片與圖生影片的操作順序、提示詞的四段寫法，以及官方公布的時長與解析度規格，最後說明服務條款怎麼寫生成內容的授權與商用。",
+      "hero": {
+        "src": "/guides/minimax-hailuo-video-guide/hero.jpg",
+        "alt": "一段文字方塊與一張圖片方塊同時連到一個播放鍵螢幕，再連到一個下載箭頭的插圖，代表文生影片與圖生影片兩條路徑",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "海螺 AI（Hailuo AI）是 MiniMax 的影片生成產品，網頁版和手機 App 都能用：登入之後打一段文字描述，或是上傳一張圖再寫要它怎麼動，等排隊生成完就能下載一支 MP4。免費帳號做得出來，但下載的影片帶浮水印、要排隊，而且服務條款把「這支片能不能拿去用」的責任放在使用者身上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇按第一次使用的順序走完一遍：先確認入口與登入方式、台灣使用者會卡在哪一關，再看免費額度與訂閱方案的點數怎麼算，接著實際做一支文生影片和一支圖生影片，最後講提示詞寫法、官方公布的規格、浮水印與審核的限制，以及輸出的授權與商用。"
+        },
+        {
+          "type": "heading",
+          "text": "入口在哪：兩個長得很像的網址與一個 App",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "海螺 AI 有兩個入口，第一次用很容易走錯。國際版在 hailuoai.video，介面是英文；另一個 hailuoai.com 打開是簡體中文的「海螺视频」，服務對象是中國市場。國際版的服務條款把 hailuoai.video 與 hailuo.ai 列為同一組服務，營運公司是登記在新加坡的 Nanonoble Pte. Ltd.，條款頁上標示的最後修改日是 2026 年 8 月 19 日。台灣使用者要用的是國際版，兩邊的帳號、點數與訂閱不要互相套用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手機端有官方 App，官網的下載頁同時放了 App Store 與 Google Play 的入口，標示的系統需求是 iOS 16.0 以上、Android 9.0 以上。網頁版與 App 共用同一個帳號，做過的影片會出現在同一個作品區。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "電子郵件：填信箱、收驗證碼登入，不必留手機號碼。",
+            "手機號碼：登入畫面有國家或地區選單，先選國碼再收簡訊驗證碼。",
+            "第三方帳號：用 Google 或 Apple 等既有帳號直接登入，是最省事的一條路。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "條款裡有一段地域聲明：這是新加坡公司營運的服務，公司不保證在所有司法管轄區都適合或可以使用，從新加坡以外的地方連線是使用者自己的決定。官網沒有單獨列出台灣的限制，不過「台灣門號能不能順利收到簡訊驗證碼」本站撰稿時無法從台灣的網路環境實測，實際選項以官網登入畫面為準；想避開這一關，用第三方帳號登入最單純。另外隱私政策寫的使用年齡下限是 16 歲。"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+        },
+        {
+          "type": "link",
+          "text": "使用中國系 AI App 前的資安檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "免費能做多少：浮水印、排隊與點數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "免費和付費的差別寫在官方的訂閱服務條款裡，主要是三件事。下載方面，免費帳號取得的影片一律帶浮水印，付費從 Standard 方案起可以下載沒有浮水印的版本。排隊方面，免費帳號最多同時送出三件生成任務、同一時間只有一支在跑；付費可以排五件、同時跑兩支，另外有優先生成的待遇。"
+        },
+        {
+          "type": "paragraph",
+          "text": "點數（credits）分三種算法。訂閱附的會員點數效期一個月，當月沒用完不會累積到下個月；額外加購的點數是 1 美元換 70 點，效期到購買當年之後第二個曆年的 12 月 31 日；新註冊的帳號有一次性的新手贈送點數，條款寫的是發放後三天到期，但沒有寫數量，實際送幾點以官網為準。生成失敗、或內容沒有通過審核時，系統會自動把扣掉的點數退回。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "每月價格（美元）",
+            "每月點數",
+            "主要差別"
+          ],
+          "rows": [
+            [
+              "免費",
+              "0",
+              "只有一次性的新手贈點",
+              "下載帶浮水印；排隊 3 件、同時 1 支"
+            ],
+            [
+              "Standard",
+              "14.99",
+              "1,000",
+              "無浮水印下載、優先生成"
+            ],
+            [
+              "Pro",
+              "54.99",
+              "4,500",
+              "同 Standard，點數較多"
+            ],
+            [
+              "Master",
+              "119.99",
+              "10,000",
+              "同 Standard，點數較多"
+            ],
+            [
+              "Ultra",
+              "124.99",
+              "12,000",
+              "同上，並含舊 Unlimited 方案的權益"
+            ],
+            [
+              "Max",
+              "199.99",
+              "20,000",
+              "另含 Relax 模式的不限量生成"
+            ]
+          ],
+          "caption": "官方訂閱服務條款頁列出的方案與金額，該頁標示的最後更新日是 2025 年 7 月 14 日；本站於 2026 年 9 月查證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要注意的是，上面是條款頁列出的原始方案，該頁的模型名稱還寫成 Hailuo01、Hailuo02。真正的訂閱頁是登入後才載入的動態畫面，上面另有促銷價、年繳折扣與重新組合過的方案，金額一律以官網訂閱頁當下顯示的為準。付款走 Stripe，稅金依帳單地址自動計算；取消訂閱在下一個計費週期生效，已經付掉的金額不退。"
+        },
+        {
+          "type": "heading",
+          "text": "做第一支：文生影片的六個步驟",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文生影片（text-to-video）就是不給素材，只用一段文字描述換一段畫面。網頁版的順序是固定的。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "登入後從首頁進入建立畫面，上方切到影片。",
+            "選模型，並把輸入模式留在只給文字的狀態，不要上傳任何素材。",
+            "在提示詞框寫下畫面描述，寫法在下一節。",
+            "設定時長、解析度與畫面比例，介面會顯示這次要扣多少點數。",
+            "送出後進入排隊，生成完成的影片會收在作品區。",
+            "開啟後下載成 MP4；免費帳號拿到的版本帶浮水印。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "文生影片：照主體、環境、動作與鏡頭、風格四段寫的範例提示詞",
+          "code": "主體：一位穿白色長洋裝的女子，獨自走在雨後的夜街\n環境：路面積水倒映兩側霓虹招牌，遠處有便利商店的燈光\n動作與鏡頭：她緩步前行並回頭；鏡頭先慢速推近，再向左輕微環繞\n風格：電影感、柔和散射光、冷色調、安靜而略帶憂鬱"
+        },
+        {
+          "type": "heading",
+          "text": "圖生影片：讓一張既有的圖動起來",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "圖生影片（image-to-video）是上傳一張圖當第一格，再用提示詞描述它要怎麼動。官方工具頁把流程寫成四步。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "打開輸入模式選單，選擇圖片參考，把靜態圖轉成動態。",
+            "把一張清晰的 JPG、PNG 或 WEBP 放進圖片欄位。",
+            "寫一段只描述「要動什麼」的提示詞，然後按建立。",
+            "完成後把影片下載成 MP4。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "圖生影片和文生影片最大的差別在提示詞的分工：構圖、服裝、光線已經由那張圖決定了，提示詞只要負責動作與鏡頭。把畫面從頭重新描述一次，反而會讓模型去改掉原圖已經定好的東西。這一代的模型還可以一次放多個參考素材，官方產品頁寫的上限是 12 個檔案，其中圖片最多 9 張、影片 3 支、音訊 3 段。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "圖生影片：只寫要動什麼的範例提示詞",
+          "code": "畫面中的女子微微轉頭看向鏡頭，露出淺笑\n背景窗外開始下小雨，雨滴沿著玻璃滑落\n鏡頭：極緩慢推近，幅度小，不切換鏡位\n維持原圖的服裝、髮型與光線不變"
+        },
+        {
+          "type": "image",
+          "src": "/guides/minimax-hailuo-video-guide/diagram-1.svg",
+          "alt": "海螺 AI 生成一支影片的六段流程圖：左邊是文生影片與圖生影片兩種輸入，接著是寫提示詞、設定規格、排隊生成、自動審核，最後是下載 MP4，每一段標出對應的官方數字",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左至右、由上而下讀：兩種輸入匯進同一條產線，中間每一段都有官方寫明的上限或限制。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "提示詞怎麼寫：四段順序與一次只挑兩三個重點",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的提示詞指南建議把描述拆成四塊，依序是主體、環境、動作與鏡頭、風格與氣氛，長度大約 20 到 50 個英文字，重點是資訊有沒有用，不是硬湊字數。最重要的元素放最前面，因為模型會優先處理先出現的資訊。另一份官方的鏡頭語言指南給的模板更細一點：先寫身分，再寫環境、動作、鏡頭、打光，最後才是調色。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "主體要具體：寫「一位穿白色長洋裝的女子在跳現代舞」，不要寫「有人在跳舞」。",
+            "鏡頭用專有名詞：升降鏡頭向上、推軌向前、平穩環繞、慢慢向右橫搖，這些詞模型讀得懂。",
+            "主體動作和鏡頭運動挑一個當主角，兩邊都劇烈會互相打架；沒寫主體在動，模型常會自己去動鏡頭補畫面。",
+            "風格與光線放最後：柔和散射光、金色時刻、高反差陰影，再加一個情緒詞就夠。",
+            "官方建議挑兩到三個有優先順序的電影語彙（鏡頭、運動、主光），比堆一整面形容詞有效。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "三種常見的寫壞方式",
+          "code": "太籠統：一個人在跳舞\n互相矛盾：鏡頭快速環繞，同時人物完全靜止不動\n全部都要：主體奔跑加鏡頭推軌加爆炸加下雨加慢動作加換場"
+        },
+        {
+          "type": "link",
+          "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+        },
+        {
+          "type": "link",
+          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+        },
+        {
+          "type": "heading",
+          "text": "官方公布的規格：模型名稱、時長與解析度",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "現在網頁版與 App 上主打的模型叫 MiniMax H3，官方把它描述成一個原生多模態的生成模型，同一個模型處理文字、圖片、影片與音訊；2026 年 8 月 3 日另外以 MiniMax H3 Community License Agreement 開源了權重。官方公告寫的規格是 24 FPS、最長 15 秒、最高 2K（預設短邊 768 像素），而且直接生成 32 kHz 的立體聲，不必另外配音。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "時長：API 文件寫 MiniMax-H3 支援 4 到 15 秒，MiniMax-H3-Max 支援 5 到 15 秒。",
+            "解析度：MiniMax-H3 支援 768P 與 2K；MiniMax-H3-Max 支援 480P 與 768P，不支援 2K。",
+            "畫面比例：官方產品頁列出 21:9、16:9、4:3、1:1、3:4、9:16 六種。",
+            "舊的海螺系列（MiniMax-Hailuo-02、2.3、2.3-Fast）還留在 API 文件裡，規格是 6 秒或 10 秒、512P 到 1080P。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "如果是要接程式而不是用網頁，API 走按量計費，影片以秒計價：MiniMax-H3 的 768P 每秒 0.08 美元、2K 每秒 0.13 美元，MiniMax-H3-Max 的 480P 每秒 0.05 美元、768P 每秒 0.08 美元，文字模型則另有一套 token 價目。"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+        },
+        {
+          "type": "link",
+          "text": "Veo 與 Google Flow：影片、分鏡與匯出",
+          "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+        },
+        {
+          "type": "heading",
+          "text": "限制：浮水印、自動審核與不能上傳的素材",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "除了浮水印與排隊，還有兩層限制會直接決定你做不做得出想要的東西。第一層是自動審核：服務條款寫公司會自動封鎖部分內容，並保留對任何投入內容或生成內容不予處理、移除、甚至停權的權利。內容沒通過審核時點數會退回，但影片拿不到，寫提示詞時貼近規範比較省時間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二層是素材本身。內容規範禁止侵害他人的專利、商標、著作權，也禁止侵害他人的形象權與隱私權、冒充他人身分或做出足以欺騙他人的內容，另外明文禁止用於政治競選或影響選舉結果。這代表別人的臉、別人的聲音、有版權的角色與畫面都不要當參考素材上傳。條款同時要求不得移除、遮蔽或修改公司加在內容上的浮水印、metadata 或任何標示這是 AI 生成的標記。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "上傳真人照片前先確認三件事",
+          "text": "一、照片裡的人有沒有同意：條款要求你保證擁有上傳素材的全部權利，包含形象權、隱私權與個人資料，出事時責任在上傳的人身上。二、素材是不是別人的作品：有版權的劇照、角色造型、商標都在禁止範圍，模型不會替你判斷。三、做出來要放哪裡：法律有要求時你必須揭露內容是 AI 生成或加工的，而且不能把公司加上的浮水印或標示拿掉，免費帳號的浮水印本身就是這種標示的一種。"
+        },
+        {
+          "type": "link",
+          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+        },
+        {
+          "type": "link",
+          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+        },
+        {
+          "type": "heading",
+          "text": "輸出算誰的：授權與商用怎麼寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "兩份文件講的角度不一樣，要合起來看。整體服務條款寫公司不主張使用者投入內容與生成內容的所有權，但你同時授予公司一個免權利金、永久、不可撤銷、全球、非專屬的授權，讓公司可以使用、重製、修改、改作、散布、公開展示，甚至從中取得收益，而且這個授權在終止使用之後仍然有效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訂閱服務條款寫得更明確：公司不主張你在付費訂閱期間生成並下載的內容的所有權，你保有該內容的全部智慧財產權，包含用於商業用途的權利；公司取得的是非專屬、全球、免權利金的授權，用於營運、改善與推廣服務，不影響你的所有權與商用權利。"
+        },
+        {
+          "type": "paragraph",
+          "text": "但條款也把話講在前面：不論商用是否被條款允許，你都是自行承擔風險，必須自己取得所有必要的權利、同意與授權，自己確認合法性、目標觀眾、適用法規與各平台規則。換句話說，「條款沒禁止」不等於「這支影片可以安心上架」；片子裡出現的臉、音樂、商標，仍然是你要自己處理的問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個帳號還能用到 MiniMax 的其他生成工具，做法各自不同。"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax Agent 怎麼用：一句話做出網頁、報告與簡報",
+          "url": "https://mokaair.com/zh-TW/life/minimax-agent-guide"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌",
+          "url": "https://mokaair.com/zh-TW/life/minimax-music-generation"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hailuo AI 官網首頁（產品線與 MiniMax H3 上線）",
+          "url": "https://hailuoai.video/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hailuo AI 服務條款（生成內容授權、內容規範、自動封鎖、地域聲明、營運公司）",
+          "url": "https://hailuoai.video/doc/terms-of-service.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hailuo AI 訂閱服務條款（方案與金額、點數規則、浮水印、排隊上限）",
+          "url": "https://hailuoai.video/doc/payment-policy.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hailuo AI 隱私政策（營運公司登記地址、16 歲年齡下限）",
+          "url": "https://hailuoai.video/doc/privacy-policy.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hailuo AI App 下載頁（iOS 與 Android 系統需求）",
+          "url": "https://hailuoai.video/app-download",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hailuo AI MiniMax H3 產品頁（時長、FPS、解析度、比例、參考素材上限）",
+          "url": "https://hailuoai.video/tools/minimax-h3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hailuo AI 圖生影片工具頁（四個操作步驟、支援的圖片格式）",
+          "url": "https://hailuoai.video/tools/image-to-video",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hailuo AI 官方提示詞指南（四段結構、20 到 50 字、鏡頭術語與常見錯誤）",
+          "url": "https://hailuoai.video/pages/blog/effective-ai-video-prompt-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hailuo AI 官方鏡頭語言指南（提示詞模板與挑兩三個重點的建議）",
+          "url": "https://hailuoai.video/pages/knowledge/prompt-engineering-cinematic-ai-video-workflow",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax 官網首頁（產品線與 MiniMax H3 發布時間）",
+          "url": "https://www.minimax.io/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax 公告：MiniMax H3 開源（日期、授權名稱、時長、解析度、FPS、音訊）",
+          "url": "https://www.minimax.io/news/minimax-h3-open-source",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API 文件：建立影片生成任務（模型名稱、時長與解析度上下限）",
+          "url": "https://platform.minimax.io/docs/api-reference/video-generation-v2-create",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API 文件：按量計費定價（影片每秒價格）",
+          "url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API 文件：影片套餐定價（舊海螺模型的時長與解析度組合）",
+          "url": "https://platform.minimax.io/docs/guides/pricing-video",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "海螺视频（中國版首頁，簡體中文介面）",
+          "url": "https://hailuoai.com/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -35,3 +35,7 @@ candidates/
 # pull requests collide with every other one in the same few table rows (PRs #404, #409,
 # #410 in one day), so it is generated on demand instead: `npm run tasks:board`.
 tasks/BOARD.md
+
+# Lighthouse CI writes reports here when the SEO audit runs. CI uploads the directory as an
+# artifact; a local `lhci autorun` leaves it in the working tree.
+.lighthouseci/

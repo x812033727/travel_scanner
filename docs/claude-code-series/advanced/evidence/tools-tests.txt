@@ -1,0 +1,63 @@
+
+> test:tools
+> node --test tools/*.test.mjs
+
+✔ normalizes local and hosted API roots safely (2.5256ms)
+✔ parses a bounded airline query for the Chrome bridge (5.4283ms)
+✔ rejects arbitrary airline codes and unsafe remote HTTP APIs (0.5386ms)
+✔ the tutorial catalogue keeps stable slugs, complete ordering and resolvable paths (7.3686ms)
+✔ all 97 native packs exist with source dates, code labels and valid references (92.1511ms)
+✔ downloadable starter has the documented test outcome (1580.4551ms)
+✔ downloadable complete has the documented test outcome (1135.6198ms)
+✔ downloadable bug-toggle has the documented test outcome (1045.198ms)
+✔ published JSON examples parse and JavaScript examples pass native syntax checking (9287.9875ms)
+✔ article filter and refactoring examples pass their own tests against the downloadable starter (1253.7264ms)
+✔ actual authored Hook scripts handle success, malformed input, syntax errors and repeated Stop events (6073.3909ms)
+✔ advanced TDD lesson reproduces the bug and the identical authored assertions pass on the reference (8921.1243ms)
+✔ all advanced archives contain the authored lesson and installed reference materials (15679.6831ms)
+✔ tutorial CI workflow parses and isolates secrets from pull request inputs (8.6189ms)
+✔ catalogue is one ordered, acyclic, complete series (3.9936ms)
+✔ all reviewed pages, assets and cross-links exist in the repository (246.2466ms)
+✔ invalid destinations and prerequisite cycles fail (2.1068ms)
+✔ body length counts rich prose but excludes code and labels (0.2092ms)
+✔ dry-run and publication stay in the supplied whitelist (0.7503ms)
+✔ hub is imported only after all children are verified twice (4.7384ms)
+✔ partial import failure stops before the next child or hub (0.7247ms)
+✔ failed public verification stops publication (0.5749ms)
+✔ dry-run partial failure prevents every write (0.2395ms)
+✔ finds nothing in a file with unique keys (3.4782ms)
+✔ finds the duplicate that shipped in trips.json (0.312ms)
+✔ reports a key repeated more than twice once per extra occurrence (0.1539ms)
+✔ does not confuse a value that looks like a key (0.1508ms)
+✔ does not confuse an escaped quote inside a value (0.152ms)
+✔ scopes keys to their own object (0.1305ms)
+✔ finds a duplicate inside an object nested in an array (0.1804ms)
+✔ attributes a nested object to its own key, not to the previous scalar (0.1484ms)
+✔ handles a key whose text needs unescaping (0.1629ms)
+✔ reads and rewrites a task file without changing it (4.5791ms)
+✔ rejects front matter a later reader could not trust (0.8511ms)
+✔ builds short ids and refuses titles with nothing to slug (12.823ms)
+✔ two tasks filed the same day never collide on an id (63.7247ms)
+✔ hands out work that does not touch files another agent is changing (620.1765ms)
+✔ a claim nobody comes back to is reclaimable after a day (29.3894ms)
+✔ a task waits for the tasks it depends on (135.4612ms)
+✔ finishing a task archives it and keeps the board honest (13.4935ms)
+✔ a committed board that no longer matches the task files fails the check (6.9314ms)
+✔ a stale board that is not committed is not the check's business (7.1565ms)
+✔ check names every way a task file can be wrong (0.8156ms)
+✔ check refuses two files claiming the same id and a dependency cycle (0.2735ms)
+✔ the board is a pure function of the task files (19.4115ms)
+✔ a pipe in a title cannot break the board table (37.1774ms)
+✔ release puts a task back and status moves it without losing the owner (18.3042ms)
+✔ an empty backlog says so instead of blaming another agent (18.8108ms)
+✔ every action is pinned to a full commit SHA (69.078ms)
+✔ each pin records which version it is, so a reader is not left with a bare SHA (9.3721ms)
+✔ the same action is the same SHA everywhere (4.7069ms)
+ℹ tests 51
+ℹ suites 0
+ℹ pass 51
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 46598.1498

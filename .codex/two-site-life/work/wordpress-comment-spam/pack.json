@@ -1,0 +1,232 @@
+{
+  "slug": "wordpress-comment-spam",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 垃圾留言怎麼處理：審核規則與 Akismet",
+      "description": "WordPress 留言防垃圾訊息除了安裝外掛，還需要合理的審核規則與誤判修正流程。本篇整理討論設定、Akismet 啟用及方案資格、垃圾留言回報與正常留言救回方法，提供小型網站的日常審核清單，協助站長降低管理負擔，也讓真正有問題想詢問的讀者能順利參與討論。",
+      "hero": {
+        "src": "/guides/wordpress-comment-spam/hero.jpg",
+        "alt": "原創文件、盾牌與螢幕插畫，呈現留言經過防護與人工審核後公開。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "每天登入網站都看到大量推銷連結，很容易想直接清空所有待審核留言。但其中也可能有讀者補充資訊或提出真實問題。留言管理要同時做到攔截明顯垃圾訊息，以及讓正常討論有機會被看見。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以經營生活教學網站為例，可以先用 WordPress 討論設定建立審核邊界，再以 Akismet 協助分類，最後由人員處理不確定與誤判項目。這是一個持續修正的工作流程，不是一次啟用就永遠不需要檢查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先決定哪些文章需要留言"
+        },
+        {
+          "type": "paragraph",
+          "text": "盤點留言的用途：補充教學、回報錯誤、提問，或只是保留舊佈景預設功能。如果某類公告不需要討論，可針對該類文章調整開放方式；仍有長期問答價值的教學，就不必只因為發布較久而一律關閉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在設定的討論頁面，可以管理新文章是否接受留言、是否接受 pingback 或 trackback，以及是否要求登入。這些選擇有不同代價：要求帳號能增加一道門檻，也可能讓偶爾來訪的讀者放棄回應；如果沒有會員需求，先評估審核流程是否已足夠。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新文章預設設定與已發布文章的個別設定要分別檢查。若要調整舊文章，可先篩選一小組並核對批次編輯範圍。不要把停用新留言、刪除既有留言與隱藏留言區視為同一件事，讀者先前提供的有用內容仍值得保留。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "設定容易理解的人工審核規則"
+        },
+        {
+          "type": "paragraph",
+          "text": "初期可將留言交由具權限的人員核准，再觀察每日數量。WordPress 也提供依連結數量及關鍵字保留待審核的設定，但連結多不必然代表垃圾內容，讀者可能正在提供參考資料。以等待確認作為第一層處理，通常比直接大範圍刪除更容易修正。"
+        },
+        {
+          "type": "paragraph",
+          "text": "關鍵字比對可能在較長字詞內命中，因此不要把過短的英文字或常見中文詞加入嚴格封鎖。先找反覆出現且具辨識度的推銷片語，記錄設定原因與日期；若正常留言被攔，回頭檢查規則，而不是要求每位讀者自行猜測不能使用哪些字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在留言區附近寫簡短規範，例如歡迎相關補充、不公開個人聯絡資料、不接受無關廣告。把對內容的不同意見與垃圾訊息分開處理，避免因讀者批評就標記為垃圾，讓自動分類收到錯誤回饋。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "確認 Akismet 方案與連線"
+        },
+        {
+          "type": "paragraph",
+          "text": "Akismet 是外部垃圾訊息判斷服務，啟用外掛後需要有效帳號或 API 金鑰。官方 Personal 方案針對非商業個人用途；有廣告、聯盟連結、銷售或推廣業務的網站，應核對商業方案資格，不要只因網站規模小就假設能使用免費金鑰。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝時核對作者為 Automattic，再依目前 WordPress 版本的官方啟用流程連線。設定入口可能在 Akismet Anti-spam、Jetpack，或新版 Connectors 整合；輸入金鑰後確認帳號及站點狀態，不要把金鑰放進公開截圖或交接文件正文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Akismet 的保護範圍也要看整合。WordPress 留言可以接受檢查，但聯絡表單可能需要額外欄位設定；官方並指出它不負責 WordPress 垃圾使用者註冊。若問題是大量假會員，應回到會員註冊流程處理，不能以留言外掛代替。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用可回復的方式確認分類有效"
+        },
+        {
+          "type": "paragraph",
+          "text": "開始觀察時，可選擇將垃圾內容送往 Spam 區供人工查看，而不是立刻採用靜默丟棄最嚴重垃圾的模式。這樣較容易確認正常留言是否被誤判，並建立網站自己的檢查節奏。是否改用較積極處理，應根據實際量與誤判情形決定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方提供專用測試字串 akismet-guaranteed-spam，可在測試留言正文只填入該字串，再到後台 Comments 的 Spam 分頁確認分類。先在受控頁面測試並清理測試紀錄，不必貼真實惡意連結，也不要用隨機胡言亂語就斷定工具失效。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "確認外掛連線有效，先保留可人工檢查的垃圾分類。",
+            "提交官方測試字串，檢查是否進入 Spam 分頁。",
+            "再提交一則正常且與文章相關的測試留言，核對審核及前台顯示流程。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "救回誤判，也回報漏網內容"
+        },
+        {
+          "type": "paragraph",
+          "text": "定期查看 Spam 分頁，對確認正常的留言使用 Not Spam，再按網站審核流程決定是否公開。對漏進待審核或已公開區的明顯垃圾，使用 Spam 回報。Akismet 官方說明，這些修正回饋需要服務保持啟用才能被收集。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要為了清空數量就整批核准不確定內容。先按文章、時間或重複模式縮小範圍，閱讀留言是否回答文章主題，以及連結文字是否與實際目的相符。可疑連結不需要直接開啟才能判斷，多數無關推銷從內容與重複行為就有線索。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若同一位讀者反覆被誤判，保留該次留言與分類線索供支援查核，避免自行建立「這個人永遠放行」的寬鬆規則。身分欄位可能被冒用，正常讀者帳號也可能遭入侵。批次刪除前再抽查，並確認不需要保留處理紀錄。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把隱私與維護安排放進日常工作"
+        },
+        {
+          "type": "paragraph",
+          "text": "Akismet 會把與垃圾訊息判斷有關的留言資料送到服務處理，因此不能描述成完全離線的外掛。官方提供留言區隱私提示選項；網站也應按實際使用方式說明資料流向，避免只貼一段與現況不符的制式文字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定固定查看待審核與 Spam 的人員，並把疑似誤判、反覆垃圾類型與規則修改留簡短紀錄。網站成長時核對帳號用量與方案，避免連線或資格失效後仍以為防護運作正常。若收到服務警告，先確認影響範圍再處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "維護後使用未登入視窗檢查留言入口、等待審核提示及公開結果。讓讀者知道留言是否已接收、是否需等待，不要讓前台沒有訊息而後台累積多次提交。良好的管理成果應是正常討論能被處理，而不只是垃圾數量看起來歸零。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-comment-spam/diagram-1.svg",
+          "alt": "四步圖解呈現設定審核規則、服務分類、人工查看及回報誤判，構成留言維護循環。",
+          "width": 1600,
+          "height": 900,
+          "caption": "減少垃圾內容，也要讓真實提問能被閱讀與回覆。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "主要用途",
+            "維護重點"
+          ],
+          "rows": [
+            [
+              "關閉特定文章留言",
+              "不需要討論的內容",
+              "核對舊文章及既有留言保留"
+            ],
+            [
+              "WordPress 待審核規則",
+              "依連結或字詞篩選",
+              "避免過短關鍵字造成誤攔"
+            ],
+            [
+              "Akismet 自動分類",
+              "協助辨識垃圾訊息",
+              "方案資格、連線與誤判回報"
+            ],
+            [
+              "人工審核",
+              "處理上下文與不確定項目",
+              "固定人員、清楚規範及紀錄"
+            ]
+          ],
+          "caption": "搭配不同方法，讓自動分類與人工判斷各自發揮作用。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "誤判修正是防護的一部分",
+          "text": "先確認內容再使用 Spam 或 Not Spam。不同意見不等於垃圾留言，清空數量也不等於完成審核；保留讓正常讀者被看見的流程。"
+        },
+        {
+          "type": "link",
+          "text": "規劃會員註冊的審核流程",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-member-registration"
+        },
+        {
+          "type": "link",
+          "text": "建立聯絡表單的防護與留存",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-contact-forms"
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 討論設定",
+          "url": "https://wordpress.org/documentation/article/settings-discussion-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 啟用方式",
+          "url": "https://akismet.com/support/getting-started/activate/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 免費與付費資格",
+          "url": "https://akismet.com/support/getting-started/free-or-paid/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 保護範圍",
+          "url": "https://akismet.com/support/getting-started/what-does-akismet-protect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 測試方法",
+          "url": "https://akismet.com/support/getting-started/confirm/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 誤判回報",
+          "url": "https://akismet.com/support/general/teach-akismet/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 隱私資訊",
+          "url": "https://akismet.com/privacy/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

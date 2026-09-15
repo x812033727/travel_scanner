@@ -1,0 +1,238 @@
+{
+  "slug": "wordpress-security-basics",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 安全維護：帳號、更新與防護外掛的分工",
+      "description": "WordPress 安全需要帳號、更新、防火牆與備份共同配合。本篇從小型網站的實際分工出發，說明最小權限、Wordfence 免費功能與限制、雙因素驗證的復原準備，以及學習模式和告警的檢查方法，提供可執行的維護步驟與比較表，協助台灣站長建立有人負責、能持續追蹤的防護流程。",
+      "hero": {
+        "src": "/guides/wordpress-security-basics/hero.jpg",
+        "alt": "盾牌、文件與資料夾構成的原創插圖，代表帳號防護、維護紀錄與備份復原。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "工作室網站只有三個人管理，卻有七個管理員帳號，其中兩個屬於已結案的廠商。即使裝了安全外掛，這些多餘的入口仍然存在。開始加強防護前，先把「誰能進來、程式由誰更新、出事由誰處理」寫清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安全維護的目標是降低風險並保有復原能力，沒有哪一個外掛能保證永遠不出問題。以下以 Wordfence 作為功能說明的例子，搭配 WordPress 官方建議建立操作順序，不提供供應商排名，也不把掃描結果當作完整安全認證。"
+        },
+        {
+          "type": "heading",
+          "text": "先把網站控制權列成清單",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "列出 WordPress、主機、網域、備份空間與管理員信箱的持有人。這些系統不一定使用同一帳號，但都可能影響網站。確認每個入口仍能由現在的負責人登入，並把復原聯絡方式更新到可接收通知的信箱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "日常寫文章的人通常不需要安裝外掛；只投稿的人也未必需要自行發布。使用各自帳號及符合工作的角色，結案後移除不再需要的權限。調整前先處理文章作者歸屬與交接資料，不要為了整理名單而直接刪掉仍需保留的內容。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "記錄各服務的帳號持有人、工作用途與復原窗口。",
+            "檢查管理員名單，將例行編輯工作改用較小權限的帳號。",
+            "確認外包人員的存取期限與撤銷方式，保留交接紀錄。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "更新流程要包含備份和功能檢查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先盤點正在使用的核心、佈景與外掛，核對官方更新與相容性說明。來源不明的修改版程式不適合作為正式站基礎。對已停止維護又負責重要功能的元件，建立替換計畫；暫時不用的工具也應評估移除，減少往後需要追蹤的項目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重要更新前確認完整備份可以取得，並在副本驗證登入、表單與主要頁面。安全修補有時需要優先處理，不宜為了等待完美測試而無期限擱置；如果無法立即修補，請維護者評估先限制受影響功能，記錄明確的處理期限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自動更新能減少遺漏，但仍需要有人讀取失敗通知及檢查結果。可以在清單中分別記錄自動更新項目、需人工驗證的整合與負責人。不要只看外掛清單顯示最新，就忽略主機上的 PHP、備份程序或管理者自己的電腦更新。"
+        },
+        {
+          "type": "heading",
+          "text": "了解 Wordfence 能提供哪些防護",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "依查證當日官方文件，Wordfence 免費版包含防火牆、掃描及雙因素驗證等功能；新防火牆規則與惡意程式特徵相較付費客戶有三十天的取得時間差。這項差異可作為評估依據，但不能直接換算成你的網站一定安全或一定會受攻擊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝後先核對通知信箱、目前防火牆狀態和掃描是否能完成，再閱讀發現項目的檔案路徑與變更內容。自訂過的程式也可能與原始檔不同；不要只因看到差異就全部刪除或覆寫，先保存副本並詢問維護者哪些變更是刻意留下的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若主機本身已提供部分防護，將它和外掛的責任範圍列在同一張表。主機備份、防火牆阻擋與 WordPress 帳號驗證各處理不同問題。新增工具前先確認相容性及資源需求，裝得越多不代表分工越清楚。"
+        },
+        {
+          "type": "heading",
+          "text": "設定雙因素驗證，也準備手機遺失的情境",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Wordfence 的 Login Security 開啟自己的 2FA 設定，使用支援 TOTP 的驗證器加入帳號，保存復原碼後輸入當前代碼啟用。完成時先保留原登入視窗，再用另一個瀏覽器測試帳密與驗證碼都能通過，避免立即把自己登出而失去調整入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "復原碼應放在只有授權者能取得的位置，並與一般網站操作文件分開管理。官方說明每個復原碼只能使用一次，重新產生會使舊碼失效。交接時應確認保存方法，不要把 QR Code、密鑰或復原碼直接貼進多人可見的工作群組。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自訂登入頁需要額外測試。官方指出部分第三方登入表單可能不相容；WooCommerce 帳號頁則有對應整合選項，啟用後仍要驗證。後台登入通過 2FA，不代表會員入口、社群登入及其他連線方式自動受到完全相同的控制。"
+        },
+        {
+          "type": "heading",
+          "text": "學習模式結束後要確認正在保護",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Wordfence 的學習模式會把部分看起來像攻擊的請求加入允許清單，用來減少誤擋。這段期間並非所有防火牆保護都完整啟用。依官方說明，網站正在受攻擊或剛遭入侵時，不應用學習模式作為處理方法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在適合的設定情境中，測試文章儲存、圖片上傳及表單等日常操作，再檢視允許清單並切回 Enabled and Protecting。手動開啟學習模式時，要指定結束日期或明確安排手動關閉，避免忘記後一直接受新的允許項目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若真實訪客被擋，先記錄時間與操作，在 Live Traffic 等記錄中核對原因。只有確定是合理動作才新增精確例外；不要因一個表單問題就停用全部防護，也不要依陌生人的指示把不理解的請求加入清單。"
+        },
+        {
+          "type": "heading",
+          "text": "告警要能交給明確的人處理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把更新失敗、陌生管理員、異常檔案與大量登入失敗分開記錄，為每類通知指定負責人和處理方式。例如編輯可回報異常，但檔案修復與主機限制由維護者處理；這樣通知不會在共同信箱裡被誤以為已有別人接手。"
+        },
+        {
+          "type": "paragraph",
+          "text": "出現疑似入侵時，先保存必要記錄、限制受影響入口並聯絡熟悉網站的維護人員。更換密碼與回復檔案只是可能的處置步驟，還要釐清影響範圍及入口是否已修補。掃描暫時沒有發現，不能代替事件調查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次交接或新增重要功能後，重新檢查帳號、通知、備份取得方式與登入復原。維護表至少寫上最後確認日期及下一個行動；安全工具的畫面分數可以參考，實際完成的修補與可驗證的流程才方便後續追蹤。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-security-basics/diagram-1.svg",
+          "alt": "以帳號、程式、防護與復原四欄呈現網站安全維護的責任分工。",
+          "width": 1600,
+          "height": 900,
+          "caption": "每項工作都寫上負責人、確認日期與下一步。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作",
+            "主要作用",
+            "仍需補上的事"
+          ],
+          "rows": [
+            [
+              "最小權限",
+              "限制帳號可執行的操作",
+              "定期撤銷離任者存取"
+            ],
+            [
+              "更新",
+              "修補程式與相容性問題",
+              "備份及更新後驗收"
+            ],
+            [
+              "防火牆",
+              "依規則處理請求",
+              "確認狀態與誤擋"
+            ],
+            [
+              "雙因素驗證",
+              "加強支援入口的登入驗證",
+              "復原碼及其他入口測試"
+            ],
+            [
+              "備份",
+              "提供資料復原途徑",
+              "隔離保存與還原演練"
+            ]
+          ],
+          "caption": "依功能分工安排負責人，不用單一工具承擔所有工作。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先確認復原，再擴大限制",
+          "text": "要求其他人啟用登入保護前，先用測試帳號走過正常登入與失去驗證器的處理流程，並確認主機及網域帳號也有各自的復原方法。"
+        },
+        {
+          "type": "link",
+          "text": "安排網站日常維護",
+          "url": "https://mokaair.com/zh-TW/life/website-maintenance-routine"
+        },
+        {
+          "type": "link",
+          "text": "建立 WordPress 備份與還原流程",
+          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 安全強化",
+          "url": "https://developer.wordpress.org/advanced-administration/security/hardening/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfence 免費版功能",
+          "url": "https://www.wordfence.com/help/wordfence-free/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfence 雙因素驗證",
+          "url": "https://www.wordfence.com/help/tools/two-factor-authentication/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfence 學習模式",
+          "url": "https://www.wordfence.com/help/firewall/learning-mode/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 角色權限",
+          "url": "https://wordpress.org/documentation/article/roles-and-capabilities/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

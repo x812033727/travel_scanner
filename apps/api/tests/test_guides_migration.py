@@ -212,14 +212,32 @@ def test_the_seeded_topics_match_the_python_vocabulary():
     assert [(slug, labels) for slug, _, labels in module.SEED_TOPICS] == list(SEED_TOPICS)
 
 
+#: Every migration that seeds a lifestyle topic, oldest first. The application tuple is
+#: appended to, never reordered, so concatenating these in revision order has to reproduce
+#: it exactly -- a slug inserted mid-tuple would still pass a set comparison while a fresh
+#: database and an upgraded one disagreed about its display_order.
+LIFE_SEED_MIGRATIONS = ("0074_lifestyle_guides", "0075_finance_topic")
+
+
 def test_the_seeded_life_topics_match_the_python_vocabulary():
-    """Same contract for the lifestyle vocabulary, which 0073 seeds."""
+    """Same contract for the lifestyle vocabulary, which 0074 and 0075 seed between them."""
     from app.guides.taxonomy import LIFE_SEED_TOPICS
 
-    module = migration("0074_lifestyle_guides")
-    assert [
-        (slug, labels) for slug, _, labels in module.LIFE_SEED_TOPICS
-    ] == list(LIFE_SEED_TOPICS)
+    seeded = [
+        (slug, labels)
+        for name in LIFE_SEED_MIGRATIONS
+        for slug, _, labels in migration(name).LIFE_SEED_TOPICS
+    ]
+    assert seeded == list(LIFE_SEED_TOPICS)
+
+
+def test_the_seeded_life_display_orders_do_not_collide():
+    """They order one filter row; two topics on the same number sort by slug by accident."""
+    orders = [
+        order for name in LIFE_SEED_MIGRATIONS for _, order, _ in migration(name).LIFE_SEED_TOPICS
+    ]
+    assert len(set(orders)) == len(orders)
+    assert orders == sorted(orders)
 
 
 LIFE_SLUGS = ("ai", "tutorial", "software", "gadgets", "productivity", "daily", "misc")
@@ -414,3 +432,77 @@ async def test_postgresql_append_only_guard_and_preserved_rows(monkeypatch):
         finally:
             await transaction.rollback()
     await engine.dispose()
+
+
+def test_0075_seeds_finance_and_its_rollback_spares_the_other_life_topics(monkeypatch):
+    """0075 adds one row and takes one row back.
+
+    The rollback is the half worth a test. 0074 removes every ``section = 'life'`` seed,
+    which is right for the revision that created the section; the same predicate here would
+    make a one-step downgrade delete the seven topics 0074 owns -- and their article links --
+    while the lifestyle section is still published. So this asserts what survives, not only
+    what goes.
+
+    ``PRAGMA foreign_keys`` stays off for the reason the 0074 test gives: SQLite's batch
+    rebuild would cascade the implicit DELETE through the linking tables.
+    """
+    travel = migration()
+    life = migration("0074_lifestyle_guides")
+    finance = migration("0075_finance_topic")
+    for module in (travel, life, finance):
+        monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
+    engine = sa.create_engine("sqlite://")
+    with engine.begin() as connection:
+        Base.metadata.create_all(connection, tables=[User.__table__])
+        with Operations.context(MigrationContext.configure(connection)):
+            travel.upgrade()
+            life.upgrade()
+            before = connection.scalar(sa.select(sa.func.count()).select_from(GuideTopic))
+
+            finance.upgrade()
+
+            row = connection.execute(
+                sa.select(
+                    GuideTopic.section, GuideTopic.display_order, GuideTopic.names_json,
+                    GuideTopic.is_active, GuideTopic.source,
+                ).where(GuideTopic.slug == "finance")
+            ).one()
+            assert (row.section, row.display_order, row.is_active, row.source) == (
+                "life", 270, True, "seed",
+            )
+            # All five labels, or the reader of a locale we did not write sees the slug.
+            assert set(row.names_json) == set(finance.LOCALES)
+            assert row.names_json["zh-TW"] == "理財與金錢"
+            assert connection.scalar(
+                sa.select(sa.func.count()).select_from(GuideTopic)
+            ) == before + 1
+
+            # Only absent slugs are inserted, so a re-run writes nothing...
+            finance.upgrade()
+            assert connection.scalar(
+                sa.select(sa.func.count()).select_from(GuideTopic)
+            ) == before + 1
+
+            # ...and a label an administrator rewrote is not restored by one.
+            connection.execute(
+                sa.update(GuideTopic).where(GuideTopic.slug == "finance").values(
+                    is_active=False, names_json={"zh-TW": "自訂"}
+                )
+            )
+            finance.upgrade()
+            kept = connection.execute(
+                sa.select(GuideTopic.is_active, GuideTopic.names_json)
+                .where(GuideTopic.slug == "finance")
+            ).one()
+            assert kept.is_active is False
+            assert kept.names_json == {"zh-TW": "自訂"}
+
+            finance.downgrade()
+
+            remaining = sections(connection)
+            assert "finance" not in remaining
+            # The whole point: 0074's vocabulary is untouched by 0075's rollback.
+            assert {slug for slug, value in remaining.items() if value == "life"} == set(LIFE_SLUGS)
+            assert connection.scalar(
+                sa.select(sa.func.count()).select_from(GuideTopic)
+            ) == before

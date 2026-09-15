@@ -1,14 +1,14 @@
 ---
 id: 2026-09-14-pack-ingest-urlopen-scheme
 title: Pack ingest urlopen accepts any scheme Commons hands back
-status: open
+status: review
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-14T11:14:16Z
 created_at: 2026-09-14T04:01:21Z
 completed_at:
-branch:
+branch: claude/security-check-o5zaj1
 depends_on: []
 scope:
   - apps/api/app/guides/pack_ingest.py
@@ -50,34 +50,58 @@ suppressed for this file pending this task.
 
 ## Definition of done
 
-- [ ] `UrllibTransport` refuses any request whose scheme is not `http` or `https`, with a
+- [x] `UrllibTransport` refuses any request whose scheme is not `http` or `https`, with a
       clear error rather than a silent read.
-- [ ] The Commons fetch path still works end to end.
-- [ ] The `S310` entry for `app/guides/pack_ingest.py` is gone from `pyproject.toml`, or its
-      comment says why it still has to be there.
+- [x] The Commons fetch path still works end to end — an ordinary redirect is still followed,
+      pinned by a test.
+- [x] The `S310` entry for `app/guides/pack_ingest.py` stays, and its comment now says why:
+      the rule objects to `urlopen` at all, which is the one thing that cannot change — the
+      transport exists precisely because httpx's own connections are refused by Wikimedia.
 
-## Steps
+## What was done, and the part that was nearly wrong
 
-- [ ] In `handle_request`, check `request.url.scheme` against `{"http", "https"}` before
-      building the `urllib` request, and raise rather than returning a response — a caller
-      that gets a 4xx back would retry it, and this is not a retryable condition.
-- [ ] Check the redirect path too. `follow_redirects=True` means httpx re-enters
-      `handle_request` for each hop, so the same guard should cover a redirect into `file:`;
-      confirm that is actually true rather than assuming it.
-- [ ] Add a test with a `file://` URL asserting the refusal. The module's I/O is injected and
-      the existing tests mock the `httpx.Client`, so this one has to exercise the transport
-      directly.
+Two changes, and the second only exists because the first step of this task said to check the
+redirect path "rather than assuming it". Checking it showed the assumption was false.
+
+**The scheme check.** `handle_request` refuses anything but `http`/`https` with a
+`PackIngestError`, raised rather than returned as a status because `_get` retries some
+statuses and no retry improves this.
+
+**Redirects handed back to httpx.** Left alone, `urlopen` follows redirects *internally*, so
+the hop never re-enters `handle_request` and the check above only ever sees the first URL.
+Measured, not assumed:
+
+| redirect target | plain `urlopen` |
+| --- | --- |
+| `file:///etc/hostname` | refused by urllib itself |
+| `ftp://example.invalid/x` | **followed** — urllib's redirect rule allows http, https *and* ftp |
+| `/ok` | followed |
+
+So the naive fix would have left `ftp:` reachable through a redirect. `_NoRedirect` stops
+urllib following them; the 3xx comes back through the existing `HTTPError` branch with its
+`Location` intact, and httpx — which `commons_client` already configures with
+`follow_redirects=True` — re-enters the transport for the next hop, where the scheme check
+applies again.
 
 ## How to verify
 
 ```bash
-cd apps/api && uv run ruff check . && uv run pytest tests/test_guides_pack_ingest.py -q
+cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest tests/test_guides_pack_ingest.py -q
 ```
+
+Both halves were checked against the code without them, which is what makes them more than
+an assertion:
+
+- remove the scheme check → 5 tests fail (three direct schemes, both redirects);
+- keep the check but let `urlopen` follow redirects again → **exactly one** fails, the `ftp:`
+  redirect. That single failure is the whole argument for the second half.
 
 ## Notes
 
-- Do not "fix" this by switching to plain `httpx`. The transport exists because Wikimedia's
-  edge answers httpx's own connections with 403 whatever the User-Agent says, which is
-  documented in the class docstring. The scheme check is the fix; the transport stays.
+- `defusedxml` is unrelated here; the `S314` entry for this file covers `_parse_svg` reading a
+  diagram out of the workspace, which is a separate question and stays suppressed.
+- The `pyproject.toml` comment refresh for both this entry and the Airalo one is scoped to
+  `2026-09-14-airalo-feed-utf16-doctype`, so the file is claimed once rather than by two
+  tasks the same agent happens to own.
 - Filed while working `2026-09-13-ruff-flake8-bandit`, which is where the `S310` suppression
-  and its comment live.
+  lives.

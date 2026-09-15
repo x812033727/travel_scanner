@@ -1,0 +1,331 @@
+{
+  "slug": "claude-code-hook-portability-recovery",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 178,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜跨平台 Hooks：中文路徑、逾時與遞迴排錯",
+      "description": "把 Hook 做成可測試、可停用、可移植的工具。Hook 在作者的資料夾能跑，不代表移到中文路徑、另一個 shell 或不同作業系統也正常。本篇建立一張環境矩陣，檢查路徑、編碼、換行、逾時與重複事件，最後寫出能停止並恢復正常工作的操作手冊。",
+      "hero": {
+        "src": "/guides/claude-code-hook-portability-recovery/hero.jpg",
+        "alt": "跨平台 Hooks：中文路徑、逾時與遞迴排錯：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Hook 在作者的資料夾能跑，不代表移到中文路徑、另一個 shell 或不同作業系統也正常。本篇建立一張環境矩陣，檢查路徑、編碼、換行、逾時與重複事件，最後寫出能停止並恢復正常工作的操作手冊。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hook-event-test-lab",
+              "text": "Hook 事件"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hook-scoped-formatting",
+              "text": "格式化"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hook-quality-gates",
+              "text": "品質檢查"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-78.zip",
+              "text": "第 78 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，使用新解壓縮的 starter。需要 Node.js 22 以上；閱讀約 20 分鐘，實作約 45 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先列出真正可用的環境"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-hook-portability-recovery/diagram-1.svg",
+          "alt": "先列出真正可用的環境 → 使用中文與空格路徑重跑 → 比較 LF、CRLF 與 UTF-8",
+          "width": 1600,
+          "height": 900,
+          "caption": "先列出真正可用的環境 → 使用中文與空格路徑重跑 → 比較 LF、CRLF 與 UTF-8",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "矩陣至少包含作業系統、shell、Node、Claude 版本、專案路徑與測試方式。原生 Windows 的 PowerShell、WSL2 裡的 Linux 終端機和 macOS 是不同環境，不能只因為都執行 node 就合併成一列。沒有設備的項目保留待測，不需要填一個推測的通過。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本套材料在 Windows 的本機 Node 測試有實際紀錄；其他平台應由對應環境重跑，才能標為通過。Claude 的真實 Hook 觸發又是另一層，需要可登入帳號。純 Node 重播成功，不能取代產品整合或其他作業系統的操作證據。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：每個環境都重新記錄",
+          "code": "node --version\nclaude --version\nnode -e \"console.log(JSON.stringify({platform:process.platform,cwd:process.cwd(),execPath:process.execPath}))\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存紀錄時，路徑可以在私有筆記中保留完整值；公開示例則改成能說明中文與空格的課程路徑。不要把環境變數全部列印，因為其中可能有權杖或其他與本篇無關的秘密。只收集診斷所需欄位。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "使用中文與空格路徑重跑"
+        },
+        {
+          "type": "paragraph",
+          "text": "把同一份 starter 解壓縮到「Claude 練習 78」資料夾，先在編輯器確認檔案完整，再由該位置執行模型與 Hook 測試。不要只把終端機提示文字改成中文；真正的絕對路徑需要含有這些字元，才能測到參數傳遞與路徑解析。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "新資料夾的專案終端機",
+          "code": "node --test tests/model.test.mjs tests/hooks.test.mjs\nnode hooks/replay.mjs audit fixtures/post-edit.json\nnode hooks/replay.mjs protect fixtures/pre-write.json\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若直接執行腳本成功，真實 Hook 卻失敗，檢查 settings.json 的 command、工作目錄與實際 shell。路徑內有空格時，shell 形式的命令需要正確引號；程式內啟動子程序則優先使用參數陣列。不要把 JSON 跳脫、shell 引號與 JavaScript 字串當成同一層。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可攜式程式不應假設 node 安裝在作者電腦的固定位置。腳本內啟動同一執行環境時可使用 process.execPath；設定的外部入口則要確保使用者的 PATH 可找到 node。找不到執行檔是環境問題，和事件 JSON 是否有效要分開排查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "比較 LF、CRLF 與 UTF-8"
+        },
+        {
+          "type": "paragraph",
+          "text": "本課 event.mjs 以 UTF-8 讀取 stdin，並處理起始 BOM。先用編輯器保存一份 LF 事件，再另存 CRLF，重播應得到相同語義結果。JSON 的正常空白和換行不應改變事件欄位，但不完整的字元或錯誤編碼可能讓解析失敗。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：建立 CRLF 與 BOM 事件副本",
+          "code": "node -e \"const fs=require('node:fs');const s=fs.readFileSync('fixtures/post-edit.json','utf8').replace(/\\r?\\n/g,'\\r\\n');fs.writeFileSync('fixtures/post-edit-crlf.json','\\ufeff'+s,'utf8');\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "重播器讀檔的解析入口也要處理同樣編碼，不能只改真正 Hook 的 stdin。若重播器先在 JSON.parse 失敗，事件根本還沒有到 Hook。請記錄失敗在哪一層，再決定修正哪個入口，避免把外層工具錯誤歸到 Hook 業務邏輯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要用會改變字串內容的全域替換處理換行。格式化 JSON 時應解析資料；程式碼字串內的跳脫字元則應保留。測試可以比較 JSON.parse 後物件相同，再檢查輸出是否符合預定換行，兩者各有用途。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讓慢程序在可控時間內停止"
+        },
+        {
+          "type": "paragraph",
+          "text": "材料的 timeout-demo.mjs 啟動一個只等待的 Node 子程序，三百毫秒後由父程序的 timeout 結束它。這是獨立的本機逾時實驗，不修改 Claude 設定，也不啟動外部網路服務。輸出應有 expectedTimeout=true 與 ETIMEDOUT，而不是成功結果。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：執行可控的逾時案例",
+          "code": "node hooks/timeout-demo.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "elapsedMs 不會在每台電腦都精確等於三百毫秒，因為程序啟動與排程需要時間。判準是有限時間內結束、狀態明確且沒有把逾時當成工作完成。不要寫一個只接受剛好三百毫秒的脆弱測試，反而把正常環境差異當成失敗。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本課子程序不再啟動孫程序，因此關閉範圍清楚。真實命令若會啟動伺服器或其他子程序，需要進一步處理程序樹，不能宣稱父程序收到終止訊號就代表所有後代都已消失。停用手冊應列出如何辨識本次啟動的程序及埠號。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "重複事件與錯誤資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 stop-repeated.json 重播 quality，確認不再無限輸出 block；同時以壞 JSON 測試 event 解析，確認得到明確錯誤。兩者都是失敗控制，但一個是有效事件的重複狀態，另一個是資料無法解析，處理方式不應相同。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：檢查重複停止事件",
+          "code": "node hooks/replay.mjs quality fixtures/stop-repeated.json\nnode --test tests/hooks.test.mjs\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "PostToolUse 格式化也要重播兩次，確認第二次不再改寫。事件重送可能來自重試或操作流程，本身不表示錯誤；真正要檢查的是重送會不會造成重複通知、資料破壞或無限遞迴。需要通知的流程可採用"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hook-notifications-audit",
+              "text": "事件去重"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "故障練習是把 Hook 命令指向不存在的腳本。先觀察實際錯誤，再恢復正確路徑並重測。不要為了消除紅字把所有錯誤輸出丟掉；那會讓下一次故障更難追查。日誌應保留錯誤類型，但避免不必要的完整私人輸入。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "恢復時先證明停用確實生效"
+        },
+        {
+          "type": "paragraph",
+          "text": "停用故障 Hook 後，在新的工作階段執行一個無害的相同操作，確認原本錯誤不再出現。只改設定檔卻繼續沿用舊階段，可能讓你誤判停用無效。恢復前先用固定事件在終端機通過測試，再重新啟用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記錄作業系統、終端機種類與 Node.js 版本。若問題只發生在某一環境，使用相同事件檔比較退出碼及輸出，不以另一台電腦成功來推定所有平台正常。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把停用手冊寫成可以照做的步驟"
+        },
+        {
+          "type": "paragraph",
+          "text": "記下這次新增的設定路徑與事件項目。需要停止時，先中止本次工作，再恢復備份或移除自己新增的 Hook 項目，建立新工作階段確認沒有新觸發。若使用 Plugin，還要確認是停用外掛來源而不是只改了原始素材檔。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留 run-data 作為診斷資料，依需要另外保存後再清理自己的練習目錄。不要使用「刪除所有 .claude」「關閉所有 Node」這種會影響其他工作的操作。故障恢復的目的是恢復可控狀態，同時保留可追查證據。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "環境案例",
+            "需檢查內容",
+            "可標示的狀態"
+          ],
+          "rows": [
+            [
+              "中文空格目錄",
+              "路徑、引號、工作目錄",
+              "通過、失敗、待測"
+            ],
+            [
+              "LF、CRLF、BOM",
+              "各解析入口與輸出",
+              "通過、失敗、待測"
+            ],
+            [
+              "慢程序",
+              "逾時、退出、程序存活",
+              "通過、失敗、待測"
+            ],
+            [
+              "重複事件",
+              "冪等或有限重試",
+              "通過、失敗、待測"
+            ],
+            [
+              "停用後新階段",
+              "不再有該來源的新觸發",
+              "通過、失敗、待測"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "完成本篇應交付矩陣、原始命令與結果，以及一份已照著做過的停用手冊。沒有實際測過的平台保留待測，即使你認為程式很可攜，也不能填成通過。小練習是請另一位讀者只看手冊恢復故障，記錄他卡住的位置，再補上缺少的路徑或判準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "當 Hook 需要分發給同事時，把這張矩陣放進"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-plugin-team-distribution",
+              "text": "Plugin 版本紀錄"
+            },
+            {
+              "type": "text",
+              "text": "，每次調整依賴、命令或腳本入口都重跑受影響案例。可攜性應由可重現結果維護，而不是只靠 README 上的一句跨平台宣告。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hooks reference",
+          "url": "https://code.claude.com/docs/en/hooks",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

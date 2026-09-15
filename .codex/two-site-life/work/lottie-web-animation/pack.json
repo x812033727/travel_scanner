@@ -1,0 +1,257 @@
+{
+  "slug": "lottie-web-animation",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "網頁 Lottie 動畫：載入、控制與減少動態效果",
+      "description": "Lottie 適合為網頁加入可控制的向量動畫，但檔案格式、播放器與操作狀態需要一起設計。本文以原創投影機借用申請頁為例，說明 Lottie JSON 和 dotLottie 的差異、動畫載入與播放控制、效能檢查，以及減少動態效果和靜態替代。附步驟、比較表與自繪圖解，協助檢查動畫失敗時頁面是否仍可使用，避免把完成動畫當成申請真的成功。",
+      "hero": {
+        "src": "/guides/lottie-web-animation/hero.jpg",
+        "alt": "Mokaair 原創動畫畫面、狀態文件與確認盾牌插圖，代表 Lottie 播放控制與靜態結果驗收。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "申請表送出後出現一個勾選動畫，可以幫助讀者注意狀態變化；但如果伺服器尚未確認成功，這個勾選反而會造成誤會。加入 Lottie 前，應先決定動畫傳達什麼，以及沒有動畫時使用者是否仍能看懂結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以原創投影機借用申請頁說明。文件查證日為 2026 年 9 月 14 日，本篇沒有部署播放器、匯出動畫或量測真實手機效能；示例是供讀者執行的設計與驗收方式，配圖則全部自行繪製。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分清動畫資料與播放工具"
+        },
+        {
+          "type": "paragraph",
+          "text": "Lottie JSON 以資料描述動畫元素和動作，可以包含圖片相關資料；它不是一般影片，也不是把 JSON 放進網頁就會自動播放。網站還需要相容播放器，解析內容並呈現畫面。來自設計軟體的匯出結果，也要用實際選定的播放器檢查效果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "dotLottie 的 .lottie 是壓縮容器，可封裝一個或多個動畫與相關資源，並支援主題或狀態機等內容。它不是替 JSON 改副檔名而已。若網站外掛只接受 Lottie JSON，不能直接假設它也能讀取 .lottie，應查看外掛與播放器目前的支援範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "airbnb 的 lottie-web 提供 SVG、Canvas 等渲染方式；LottieFiles 的 dotlottie-web 則可在瀏覽器呈現 .lottie 和 Lottie JSON。兩套工具的設定、方法及依賴不同，不宜從不同教學各複製一半程式再拼接。先固定使用哪套工具與版本。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立有靜態結果的載入流程"
+        },
+        {
+          "type": "paragraph",
+          "text": "原創借用頁可以保留文字狀態：尚未送出、送出中、申請已收到，以及送出失敗。動畫只協助強調狀態，不能成為唯一說明。收到成功回應後才顯示確認動畫；若是等待審核，也應寫申請已收到，不要改成設備已保留或借用已核准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "設計時先預留容器比例和可用尺寸，避免動畫載入後把按鈕推走。準備靜態勾選或簡短文字作替代；資料檔、外部圖片或播放器載入失敗時，仍能顯示申請結果與後續處理方式。動畫失敗和申請失敗必須分開處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "lottie-web 的 loadAnimation 會使用容器、renderer、loop、autoplay 與 path 等設定；若直接提供 animationData，就不要又提供 path。第一次整合可先關閉自動與循環播放，確認檔案及尺寸正常後，再由真實操作狀態觸發一次播放，避免載入頁面就出現成功提示。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "播放、暫停與銷毀是不同事情"
+        },
+        {
+          "type": "paragraph",
+          "text": "播放器通常提供播放與暫停方法，但細節要依工具查證。例如 dotLottie 的 pause 停在目前位置，stop 會回到起始畫格；freeze 用於停止渲染更新，並不等同改變播放狀態。對使用者提供的暫停按鈕，要選擇符合預期的控制行為。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成動畫可以停留在清楚的結果畫面，也可以淡出後保留文字。不要讓 complete 事件直接代表伺服器操作已完成，它只表示動畫時間軸到達結束。重送申請、網路重試與重播動畫，也不應互相綁成同一個按鈕動作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在單頁應用切換畫面或移除元件時，依播放器方法銷毀實例並清除事件監聽。只是把容器設成看不見，不一定會停止更新或釋放資源。若同一頁有多個動畫，保存各自的實例，不使用會影響整頁的控制方法而意外停止其他內容。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "效能要連同播放器和資源一起看"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較載入負擔時，除了動畫檔大小，也要計入播放器程式、外部圖片及相關執行資源。dotlottie-web 使用 WASM 引擎，首次呈現還需要引擎就緒；不能只拿很小的動畫檔，便宣稱整個頁面一定比圖片或影片更輕。實際結果取決於內容與使用方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對頁面下方的裝飾動畫，可以在接近可見範圍時才載入，離開畫面後停止不必要的渲染。若工具支援調整畫布解析度或畫格插補，再依實際清晰度與流暢度取捨。先處理造成卡頓的原因，不必把所有效能選項一次打開。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用瀏覽器開發工具查看網路請求與效能，再於目標手機檢查捲動、輸入及切換畫面的反應。記錄裝置、網路條件、動畫數量及設定，才能比較調整前後。沒有執行這些量測時，描述為待驗證方向，不寫成已省下特定比例或電量。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "界定動畫用途，先完成文字狀態與失敗時的靜態替代。",
+            "確認動畫格式、播放器版本、資源網址與素材使用權。",
+            "由正確的申請狀態控制播放，加入暫停及移除時清理。",
+            "測試減少動態效果、鍵盤、慢速載入及目標裝置的反應。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "尊重減少動態偏好，保留可控制的閱讀"
+        },
+        {
+          "type": "paragraph",
+          "text": "prefers-reduced-motion 可以偵測使用者偏好減少非必要動態。對 CSS 動畫，可在媒體查詢中調整；對 JavaScript 播放器，則可透過 matchMedia 讀取偏好，選擇不自動播放或改用靜態圖，並留意使用者在頁面開啟後變更設定的情況。"
+        },
+        {
+          "type": "paragraph",
+          "text": "只把 CSS animation 關掉，不保證由 JavaScript 更新的 SVG 或 Canvas 也停止。需要明確控制播放器，並檢查設定切換後的實際畫面。自動改成慢速大幅晃動也未必符合減少動態的目的；替代方式應保留必要資訊並減少不必要的位移。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WCAG 2.2 的暫停、停止、隱藏規範，對自動開始、超過 5 秒且與其他內容同時呈現的移動資訊，原則上要求提供控制方式，必要活動另有例外。這不是所有動畫只要少於 5 秒就全面合格；自動更新、閃爍、鍵盤及替代資訊仍有各自檢查要求。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "素材授權與交接規格一起留存"
+        },
+        {
+          "type": "paragraph",
+          "text": "從圖庫下載動畫時，保存作者、作品連結、適用授權與取得日期，並核對商用、修改及再散布條件。播放器的開源授權不會自動涵蓋動畫作者的作品；動畫可免費下載，也不代表其中的品牌、字體或人物權利都已取得。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資訊型動畫旁應有對應文字；純裝飾內容則避免讓輔助工具重複朗讀沒有意義的細節。控制按鈕使用清楚名稱並支援鍵盤，暫停後的狀態也要能辨認。SVG 的 title 或 description 可以協助描述，但不能取代整個頁面的語意與操作驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交接時列出動畫檔、靜態替代、播放器版本、觸發條件、停止位置及待確認項目。借用頁的驗收重點是使用者能否理解申請狀態並繼續操作；動畫能正常播放只是其中一項。若它增加等待或干擾，可以減少使用範圍，保留最有助理解的部分。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/lottie-web-animation/diagram-1.svg",
+          "alt": "四張卡片列出送出前、送出中、收到回應及動態替代，說明動畫故障不能覆蓋真正的申請狀態。",
+          "width": 1600,
+          "height": 900,
+          "caption": "動畫載入失敗、使用者關閉動態、申請送出失敗，必須分別處理。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "應確認的行為",
+            "不能直接推論"
+          ],
+          "rows": [
+            [
+              "Lottie JSON",
+              "播放器可解析動畫資料",
+              "所有設計效果完全相同"
+            ],
+            [
+              ".lottie 容器",
+              "工具支援封裝格式與內容",
+              "改副檔名就能轉換"
+            ],
+            [
+              "complete 事件",
+              "動畫時間軸結束",
+              "申請已獲伺服器確認"
+            ],
+            [
+              "減少動態偏好",
+              "播放器改用適當替代",
+              "關閉 CSS 動畫就足夠"
+            ],
+            [
+              "暫停與清理",
+              "控制播放及釋放不用實例",
+              "隱藏容器等於停止運算"
+            ],
+            [
+              "檔案大小",
+              "加總播放器與所需資源",
+              "動畫檔小就一定更快"
+            ]
+          ],
+          "caption": "不同播放器的方法與事件需依其版本文件使用；表內申請頁是原創假想案例。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "成功動畫應跟隨真實結果",
+          "text": "先確認申請收到或核准的實際狀態，再顯示對應文字與動畫。動畫或播放器失敗時，使用者仍應看得到結果與下一步。"
+        },
+        {
+          "type": "link",
+          "text": "檢查 CSS 版面與容器尺寸",
+          "url": "https://mokaair.com/zh-TW/life/css-layout-basics"
+        },
+        {
+          "type": "link",
+          "text": "比較圖片格式與頁面載入需求",
+          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+        },
+        {
+          "type": "link",
+          "text": "整理素材來源和授權紀錄",
+          "url": "https://mokaair.com/zh-TW/life/licensed-assets-workflow"
+        }
+      ],
+      "sources": [
+        {
+          "title": "airbnb：lottie-web 使用與控制文件",
+          "url": "https://github.com/airbnb/lottie-web",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles：格式比較",
+          "url": "https://docs.lottiefiles.com/en/format",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles：JavaScript 播放器",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles：播放控制",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js/v0.x/core-concepts/playback-control",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles：效能與資源清理",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js/v0.x/advanced/performance",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：prefers-reduced-motion",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：matchMedia",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：Understanding SC 2.2.2",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

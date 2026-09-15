@@ -1,0 +1,454 @@
+{
+  "slug": "stable-diffusion-comfyui-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "本機跑 Stable Diffusion 與 Flux：ComfyUI 入門",
+      "description": "ComfyUI 是一套開源的節點式生成引擎，可以在自己的電腦上跑 Stable Diffusion 與 Flux。這篇照官方文件整理三種安裝方式與系統需求、模型檔要放進哪個子資料夾、怎麼載入官方範本完成第一張圖，以及每個節點在做什麼；並逐版本核對 Flux 與 Stable Diffusion 的授權、商用條件與官方寫的顯示記憶體需求。",
+      "hero": {
+        "src": "/guides/stable-diffusion-comfyui-setup/hero.jpg",
+        "alt": "插圖：畫布上幾個圓角方塊用線接成一條流程，右端輸出一張圖片的框",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想在自己的電腦上跑 Stable Diffusion 或 Flux，ComfyUI 是官方文件最完整的一條路。它是一套以 GPL-3.0 釋出的開源節點式引擎，把載入模型、寫提示詞、取樣、解碼、存檔拆成一個個節點，接起來就是一份可以存成 JSON、也能從生成的圖片還原的工作流。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照官方文件帶你走完安裝、放模型、載入官方範本跑出第一張圖，再說明每個節點在做什麼。後半段處理三件最容易踩的事：各版本模型的授權差很多（同樣叫 Flux，有的是 Apache 2.0、有的完全不能商用）、官方寫過的顯示記憶體（VRAM）需求，以及輸出要不要標示。介面位置以官網當天版本為準。"
+        },
+        {
+          "type": "heading",
+          "text": "ComfyUI 是什麼：一張圖就是一條流程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般生圖工具給你一個輸入框，ComfyUI 給你一張畫布：每個方塊是一個節點，輸出接到下一個節點的輸入。官方把它定位成內容創作的模組化 AI 引擎，可在 Windows、Linux 與 macOS 本機執行，也有官方付費雲端版。官網寫得很直接：免費、開源、採 GPL-3.0，沒有功能鎖也沒有試用期，並有超過 5,000 個社群擴充、合計超過 60,000 個節點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方另外提到兩個省時間的設計：只有「有輸出而且輸入齊全」的部分會被執行，同一份圖送第二次時只重跑有變動的部分。README 也寫明核心除非你要求否則不下載任何東西，並可用 --disable-api-nodes 關掉需付費的 API 節點，讓功能全部留在離線狀態。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-image-generation-guide"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
+          "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+        },
+        {
+          "type": "heading",
+          "text": "安裝：桌面版、Windows 可攜版、手動安裝",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方提供三條本機路線。Comfy Desktop 是官方說「最容易上手」的一條，它幫你裝好 ComfyUI、Python 環境與相依套件，還能同時管理多個獨立實例。官方寫的需求是 Windows 10 或以上（x64 或 ARM64）、macOS 13 Ventura 以上且必須是 Apple Silicon（M1 以上）、Linux 有 .deb 與 AppImage；每個獨立安裝至少 4.85 GB 磁碟與 8 GB 記憶體，官方建議 16 GB。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 可攜版是內含獨立 Python 環境的壓縮檔，解開就能跑、永遠跟著最新提交，但官方明講「不建議一般使用者」用。目前的可攜包內建 Python 3.13 與 PyTorch CUDA 13.0，NVIDIA 版支援 20 系列以上；10 系列與更舊的卡要下載另一包 cu126 加 Python 3.12 的版本，官方註明新卡不要用那一包。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手動安裝支援所有系統與顯示卡類型。官方的版本說法是：Python 3.13 支援最好，3.14 可跑但部分自訂節點有問題，3.12 是備案；PyTorch 最低支援 2.7，NVIDIA 20 系列以上需要 cu130 或更新版本，官方並說如果你的 PyTorch 超過半年沒更新就該更新。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "手動安裝 ComfyUI（NVIDIA 顯示卡，照官方文件的順序）",
+          "code": "# 1. 開一個獨立的 Python 環境，避免汙染系統的 Python\nconda create -n comfyenv\nconda activate comfyenv\n\n# 2. 取得程式碼\ngit clone https://github.com/Comfy-Org/ComfyUI.git\n\n# 3. 先裝 PyTorch（NVIDIA 穩定版）\npip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu130\n\n# 4. 再裝其餘相依套件並啟動\ncd ComfyUI\npip install -r requirements.txt\npython main.py"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple Silicon 的 Mac（M 系列）走同一套流程，只是 PyTorch 要改裝 nightly 版，官方要你照 Apple 的 Metal 說明安裝。更新則是進安裝目錄 git pull 之後，再跑一次安裝相依套件的指令。"
+        },
+        {
+          "type": "heading",
+          "text": "模型檔要放哪一個資料夾",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ComfyUI 本體很小，佔空間的是模型。官方文件寫得很清楚：模型不隨程式附上，要自己下載，放到 ComfyUI/models/ 底下對應類型的子資料夾，再用對應的載入節點（名稱多半以 Load 開頭）選檔案。常見子資料夾有 checkpoints、vae、loras、controlnet、embeddings，以及新一代模型用到的 diffusion_models 與 text_encoders。"
+        },
+        {
+          "type": "paragraph",
+          "text": "舊的 Stable Diffusion 1.5 是整包的 checkpoint，丟進 checkpoints 就好；新模型多半拆成三個檔案要分開放。以官方範本為例，擴散模型放 diffusion_models、文字編碼器放 text_encoders、VAE 放 vae，放錯就找不到。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "模型檔的資料夾結構（照官方文件的路徑）",
+          "code": "ComfyUI/\n└── models/\n    ├── checkpoints/          # 整包的 checkpoint，例如 SD1.5、SDXL\n    ├── diffusion_models/     # 拆開放的擴散模型，新一代模型多半放這裡\n    ├── text_encoders/        # 文字編碼器\n    ├── vae/                  # VAE\n    ├── loras/                # LoRA\n    └── controlnet/           # ControlNet"
+        },
+        {
+          "type": "paragraph",
+          "text": "已經用別的介面（例如 WebUI）存了模型的話不必複製第二份。可攜版與手動安裝在根目錄有一個 extra_model_paths.yaml.example，複製並改名成 extra_model_paths.yaml 就生效；桌面版則點視窗上方的膠囊選單，開 Storage 分頁加資料夾。官方警告桌面版要補上設定而不是覆蓋安裝時產生的路徑，改前先備份，存檔後要重開才會讀到。"
+        },
+        {
+          "type": "code",
+          "language": "yaml",
+          "label": "extra_model_paths.yaml：把既有的 WebUI 模型資料夾接進來",
+          "code": "a111:\n    base_path: D:\\stable-diffusion-webui\\\n    checkpoints: models/Stable-diffusion\n    configs: models/Stable-diffusion\n    vae: models/VAE\n    loras: |\n         models/Lora\n         models/LyCORIS\n    embeddings: embeddings\n    controlnet: models/ControlNet"
+        },
+        {
+          "type": "paragraph",
+          "text": "手動複製進去的檔案 ComfyUI 不會自己發現，官方的做法是按鍵盤 R 重新整理節點定義，或直接重開。另有一個常被忽略的限制：ComfyUI 原生不支援 GGUF 格式，要用得另外安裝社群自訂節點。"
+        },
+        {
+          "type": "link",
+          "text": "Hugging Face 入門：找模型、看授權、下載",
+          "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+        },
+        {
+          "type": "heading",
+          "text": "第一個工作流：載入官方範本，跑出第一張圖",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不要從空白畫布開始。ComfyUI 內建工作流範本瀏覽器，裡面是官方原生支援的模型工作流。官方文件寫明：載入範本時會自動檢查需要的模型檔在不在，缺了就跳出下載提示。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "點側邊欄的 Templates 圖示，或用選單 Workflow → Browse Workflow Templates 打開範本瀏覽器。",
+            "點一個範本載入。若跳出缺少模型的警告，點開來看是缺哪個檔、下載連結在哪。",
+            "桌面版按 Download 會自動存到 ComfyUI/models/checkpoints；可攜版交給瀏覽器下載，要自己把檔案存進那個資料夾。",
+            "下載完按鍵盤 R 重新整理，確認 Load Checkpoint 節點已選到模型檔，而不是顯示 null。",
+            "按 Run 或 Ctrl + Enter（macOS 用 Cmd）開始生成；結果出現在 Save Image 節點，也會存進 ComfyUI/output。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "官方入門教學用的模型是 v1-5-pruned-emaonly-fp16.safetensors，也就是 Stable Diffusion 1.5。ComfyUI 產生的每一張圖，中繼資料都帶著完整工作流與當時的種子，把圖拖進畫面就會還原整份流程。另外要注意缺檔偵測只看對應的最上層資料夾，模型放在子資料夾時提示照樣會跳，忽略它、直接在載入節點選對檔案就好。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/stable-diffusion-comfyui-setup/diagram-1.svg",
+          "alt": "文字生圖工作流的節點流程圖：載入模型分出三條線，提示詞與空白潛在影像進入取樣器，再經解碼節點存檔",
+          "width": 1600,
+          "height": 900,
+          "caption": "最基本的文字生圖工作流：Load Checkpoint 分出模型、文字編碼器與 VAE 三條線，會合在 KSampler，解碼後存檔。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "每個節點在做什麼：從載入模型到存檔",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "看懂那張圖，之後換模型、換流程就有底。Load Checkpoint 負責載入生成模型，官方說明一個 checkpoint 通常包含三個部分，所以它分出三條線：MODEL 是負責預測雜訊的 UNet，CLIP 是把提示詞轉成向量的文字編碼器，VAE 負責在像素空間與潛在空間之間換算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著是兩個 CLIP Text Encode 節點，一個接到取樣器的 Positive、一個接到 Negative，分別是你要的與你不要的東西；Empty Latent Image 則建構出一塊純雜訊的潛在空間，尺寸決定最終圖片的長寬。"
+        },
+        {
+          "type": "paragraph",
+          "text": "KSampler 是核心，去雜訊就發生在這裡。官方列出的參數裡，seed 控制隨機性，steps 是去雜訊的迭代次數，cfg 是無分類器引導強度（太高會過擬合），sampler_name 與 scheduler 決定演算法與雜訊衰減節奏，denoise 官方寫 0.0 保留原輸入特徵、1.0 是完全的雜訊。最後 VAE Decode 換回像素空間，Save Image 預覽並存檔。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞有兩個 ComfyUI 特有的語法：用小括號調整權重，例如 (golden hour:1.2)，只寫括號的預設權重是 1.1；用大括號做動態提示詞，{day|night} 每次排入佇列時會隨機換一個。"
+        },
+        {
+          "type": "link",
+          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+        },
+        {
+          "type": "link",
+          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+        },
+        {
+          "type": "heading",
+          "text": "授權：同樣叫 Flux 或 Stable Diffusion，條款差很多",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這是本機生圖最容易出事的一段：能不能商用要一個版本一個版本看。先看 Black Forest Labs 的 Flux。FLUX.1 [schnell] 的授權標籤是 apache-2.0，可以商用，ComfyUI 文件說它只要 4 步就能出圖、適合低階硬體；FLUX.1 [dev] 則掛 FLUX.1 [dev] Non-Commercial License v1.1.1，只能非商用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "那份授權對非商用的定義寫得很細：只要你因此獲得任何直接或間接的報酬就不算，並明列三種不算非商用的情況——產生收入的活動、與終端使用者直接互動或會影響終端使用者的場合、以及拿來訓練或蒸餾其他要商用的模型。要商用必須另外向 Black Forest Labs 申請，公司可自行決定是否同意。"
+        },
+        {
+          "type": "paragraph",
+          "text": "FLUX.2 維持同樣分法但換了授權檔。官方 GitHub 的模型表列得很清楚：FLUX.2 [dev]（320 億參數）與 FLUX.2 [klein] 9B 系列走 FLUX Non-Commercial License v2.1；FLUX.2 [klein] 4B 系列則是 Apache 2.0，官方模型卡直接寫開放權重可依 Apache 2.0 授權作商業使用。同一個 klein 家族，4B 能商用、9B 不能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stability AI 這邊分兩段。ComfyUI 入門教學用的 Stable Diffusion 1.5 封存倉庫掛 CreativeML OpenRAIL-M，授權本身允許商業使用但附帶一份使用行為限制清單。Stable Diffusion 3.5 全系列與 SDXL Turbo 的 LICENSE 檔則是 Stability AI Community License Agreement（版本日期 2024 年 7 月 5 日）：研究與非商用免費，商用也免費但必須先向 Stability AI 註冊；一旦你或關係企業的年營收合計超過 100 萬美元，授權即於該日終止，要改談企業授權。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "模型",
+            "授權",
+            "商用條件",
+            "官方寫的顯示記憶體建議"
+          ],
+          "rows": [
+            [
+              "Stable Diffusion 1.5（封存倉庫）",
+              "CreativeML OpenRAIL-M",
+              "授權允許商用，要遵守使用限制清單",
+              "ComfyUI 文件：約 4GB 大小，可在 6GB 顯示記憶體的消費級顯示卡順跑"
+            ],
+            [
+              "SDXL Turbo",
+              "Stability AI Community License",
+              "年營收未達 100 萬美元免費，商用要先註冊",
+              "官方頁面未列，以官網為準"
+            ],
+            [
+              "Stable Diffusion 3.5 Medium（25 億參數）",
+              "Stability AI Community License",
+              "同上；超過門檻改談企業授權",
+              "官方新聞稿：9.9GB（不含文字編碼器）"
+            ],
+            [
+              "Stable Diffusion 3.5 Large（81 億參數）",
+              "Stability AI Community License",
+              "同上；超過門檻改談企業授權",
+              "官方頁面未列，以官網為準"
+            ],
+            [
+              "FLUX.1 [schnell]",
+              "Apache 2.0",
+              "可商用",
+              "ComfyUI 文件：4 步出圖，適合低階硬體"
+            ],
+            [
+              "FLUX.1 [dev]",
+              "FLUX.1 [dev] Non-Commercial License v1.1.1",
+              "僅限非商用；商用要另外申請",
+              "ComfyUI 文件：文字編碼器用 fp16 版建議顯示記憶體大於 32GB"
+            ],
+            [
+              "FLUX.2 [dev]（320 億參數）",
+              "FLUX Non-Commercial License v2.1",
+              "僅限非商用；商用要另外申請",
+              "官方 GitHub：原生需 H100 等級；量化版可在 RTX 4090 搭配遠端文字編碼器"
+            ],
+            [
+              "FLUX.2 [klein] 9B",
+              "FLUX Non-Commercial License v2.1",
+              "僅限非商用；商用要另外申請",
+              "官方頁面未單獨列出，以官網為準"
+            ],
+            [
+              "FLUX.2 [klein] 4B",
+              "Apache 2.0",
+              "可商用",
+              "官方模型卡：約 13GB，RTX 3090／4070 以上"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日查自各官方模型卡、授權原文與官方文件；顯示記憶體只抄官方寫過的數字，條款以官網原文為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "授權標籤只是入口，真正算數的是 LICENSE 檔",
+          "text": "Hugging Face 模型頁上那一行授權標籤是上傳者自己填的，標成 other 時真正的條款在倉庫裡的 LICENSE 檔。查證時就遇到一個例子：SDXL Turbo 的模型卡中繼資料把授權名稱寫成非商用研究社群授權，但倉庫裡 LICENSE 檔的內容是 Stability AI Community License Agreement。要商用之前請打開 LICENSE 檔讀原文，不要只看那一行標籤，也不要用家族名稱推論。"
+        },
+        {
+          "type": "heading",
+          "text": "跑不動或跑錯：官方列出的常見錯誤",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最常見的是顯示記憶體不夠，訊息是 CUDA out of memory。官方問題排除頁給的是一組階梯式參數：先試 --lowvram，不夠再 --novram，最後才是 --cpu，另有強制降精度與換注意力實作兩個參數。模型載入很慢則多半卡在硬碟，官方建議把模型移到 SSD。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "官方列的記憶體與效能參數（依序往下試）",
+          "code": "# 顯示記憶體不足時，由輕到重\npython main.py --lowvram\npython main.py --novram\npython main.py --cpu\n\n# 強制降精度、換一種注意力實作以省記憶體\npython main.py --force-fp16\npython main.py --use-pytorch-cross-attention\n\n# 懷疑是自訂節點造成的問題時，先全部停用再逐一找\npython main.py --disable-all-custom-nodes"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二類是把不同家族的模型混著用。官方把差異寫得很明白：Flux 用 16 通道潛在空間加雙文字編碼器，SD1.5 是 4 通道加單一個文字編碼器，SDXL 是 4 通道加雙編碼器，SD3 是 16 通道加三個編碼器。混用會在 VAE 解碼階段看到通道數對不上的張量錯誤。ControlNet 也必須和底層 checkpoint 同家族。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三類是檔案問題。載入節點的下拉選單空空如也、跳出 Value not in list，代表 ComfyUI 沒看到那個檔案，回頭檢查資料夾、按 R、重開。若是 Error while deserializing header，官方的判斷是檔案下載壞了或磁碟空間不足。載入範本顯示缺節點時，官方給的兩個可能原因是版本太舊，或有節點在啟動時匯入失敗。"
+        },
+        {
+          "type": "paragraph",
+          "text": "至於買什麼硬體才跑得動，這篇只抄官方寫過的數字。官網下載頁的說法是：強烈建議配一張獨立顯示卡，顯示記憶體越大，能跑的模型與批次就越大；沒有顯示卡的人可以改用官方雲端。"
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "link",
+          "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
+          "url": "https://mokaair.com/zh-TW/life/local-ai-gpu-buying-guide"
+        },
+        {
+          "type": "heading",
+          "text": "輸出怎麼標示：授權原文怎麼寫，圖又算誰的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型跑在自己電腦上也有義務。Flux 的兩份非商用授權都有同一段：使用者要嘛實作並維持內容過濾機制，要嘛在散布、展示、傳輸之前先審查輸出有沒有違法或侵權內容；而且在適用法律要求的範圍內，輸出要附上「由人工智慧技術生成或修改」這類揭露。FLUX.2 [klein] 的官方推論程式碼另附像素層浮水印範例，倉庫也連到 C2PA 標準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖算誰的？兩家原文都把輸出歸屬留給使用者。Black Forest Labs 寫「我們不主張輸出的任何所有權」，輸出可用於任何用途（包含商業用途），但不得拿輸出訓練與 Flux 競爭的模型；這條講的是輸出，模型本身的非商用限制沒有放寬。Stability 的社群授權則寫你擁有輸出，但散布模型或衍生作品時，要附上指定的 Notice 檔文字，並顯著標示 Powered by Stability AI。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣目前沒有針對 AI 生成影像的統一標示法規，但只要輸出會流到別人面前，主動標示最省事。另一個界線要先畫好：兩家的條款都禁止用模型產生冒用他人身分、未經同意的親密影像或其他違法內容，本機執行不會讓這些行為變成合法。"
+        },
+        {
+          "type": "link",
+          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+        },
+        {
+          "type": "link",
+          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+        }
+      ],
+      "sources": [
+        {
+          "title": "ComfyUI GitHub README（官方倉庫：功能、離線執行、可攜版、Python 與 PyTorch 版本、提示詞語法）",
+          "url": "https://github.com/comfyanonymous/ComfyUI",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ComfyUI 官方文件：Comfy Desktop 總覽（作業系統、磁碟與記憶體需求）",
+          "url": "https://docs.comfy.org/installation/desktop",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ComfyUI 官方文件：手動安裝（虛擬環境、clone、PyTorch、啟動與更新）",
+          "url": "https://docs.comfy.org/installation/manual_install",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ComfyUI 官方文件：模型（資料夾結構、extra_model_paths.yaml、按 R 重新整理、GGUF）",
+          "url": "https://docs.comfy.org/basic-concepts/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ComfyUI 官方文件：第一次生成（載入範本、缺模型提示、下載位置、Ctrl + Enter）",
+          "url": "https://docs.comfy.org/get_started/first_generation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ComfyUI 官方文件：文字生圖工作流（節點說明、KSampler 參數、SD1.5 大小與顯示記憶體）",
+          "url": "https://docs.comfy.org/tutorials/basic/text-to-image",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ComfyUI 官方文件：工作流範本瀏覽器（開啟方式、模型資料夾、缺檔偵測範圍）",
+          "url": "https://docs.comfy.org/interface/features/template",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ComfyUI 官方文件：模型問題排除（記憶體參數、架構通道數、常見錯誤訊息）",
+          "url": "https://docs.comfy.org/troubleshooting/model-issues",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ComfyUI 官方文件：自訂節點問題排除（--disable-all-custom-nodes）",
+          "url": "https://docs.comfy.org/troubleshooting/custom-node-issues",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ComfyUI 官方文件：Flux.1 文字生圖範例（schnell 步數與授權、t5xxl fp16 顯示記憶體建議）",
+          "url": "https://docs.comfy.org/tutorials/flux/flux-1-text-to-image",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "comfy.org 下載頁（GPL-3.0、擴充與節點數量、顯示卡建議）",
+          "url": "https://www.comfy.org/download",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Black Forest Labs flux 倉庫 README（FLUX.1 各版本的授權對照表）",
+          "url": "https://github.com/black-forest-labs/flux",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Black Forest Labs：FLUX.1 [dev] Non-Commercial License 原文",
+          "url": "https://github.com/black-forest-labs/flux/blob/main/model_licenses/LICENSE-FLUX1-dev",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Black Forest Labs flux2 倉庫 README（FLUX.2 各版本授權與顯示記憶體）",
+          "url": "https://github.com/black-forest-labs/flux2",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Black Forest Labs：FLUX Non-Commercial License 原文",
+          "url": "https://github.com/black-forest-labs/flux2/blob/main/model_licenses/LICENSE-FLUX-NON-COMMERICAL",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：FLUX.2 [klein] 4B 模型卡與 Apache 2.0 授權檔（顯示記憶體與商用說明）",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：ComfyUI 入門教學用的 Stable Diffusion 1.5 封存倉庫（授權標籤）",
+          "url": "https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：SDXL Turbo 倉庫裡的授權檔（Stability AI 社群授權原文與營收門檻）",
+          "url": "https://huggingface.co/stabilityai/sdxl-turbo/blob/main/LICENSE.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Stability AI 授權頁（社群版與企業版的年營收門檻、涵蓋的模型）",
+          "url": "https://stability.ai/license",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Stability AI 官方公告：Stable Diffusion 3.5（參數量與 Medium 的顯示記憶體需求）",
+          "url": "https://stability.ai/news/introducing-stable-diffusion-3-5",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

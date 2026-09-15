@@ -1,0 +1,400 @@
+{
+  "slug": "deepseek-local-with-ollama",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+      "description": "Ollama 官網目前列出 deepseek-r1 的 1.5b、7b、8b、14b、32b、70b 與 671b 七個標籤，下載大小從 1.1GB 到 404GB。這篇用官方文件帶你在 Windows 或 Mac 裝好 Ollama、拉一個蒸餾版開始對話，再接一次本機 11434 埠的 API 呼叫，並說清楚蒸餾與量化是什麼、蒸餾版和網頁版完整模型差在哪、MIT 授權實際允許什麼。",
+      "hero": {
+        "src": "/guides/deepseek-local-with-ollama/hero.jpg",
+        "alt": "插圖：一台筆電裡有一個對話框與一個模型方塊，外圍一圈虛線把它和上方的雲朵隔開",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在 Ollama 上下載得到的 DeepSeek，不是網頁版背後那個 671B 參數的完整模型，而是官方另外釋出的六個蒸餾版本：最小的 1.5B 下載只有 1.1GB，一般筆電就跑得動，品質則明顯低一階。這篇照 Ollama 與 DeepSeek 的官方文件，把這條路走完一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "你會做到四件事：裝好 Ollama、用一行指令拉下 deepseek-r1 的某個標籤、在終端機裡對話並用 /bye 離開、再從 curl 或 Python 呼叫本機的 11434 埠。中間會解釋決定檔案大小的兩個名詞，以及本機執行在隱私上換到什麼、付出什麼。"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "蒸餾版是什麼：官方釋出的六個小模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeek 的 GitHub 說明與 Hugging Face 模型卡寫的是同一件事：除了 671B 參數的 DeepSeek-R1 之外，官方另外用 R1 產生的推理資料，對 Qwen2.5 與 Llama3 系列的開源模型做微調，開源了 1.5B、7B、8B、14B、32B、70B 六個蒸餾版本，用的是 80 萬筆以 R1 整理出來的樣本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "蒸餾就是讓小模型學大模型的輸出：大模型當老師寫出解題過程，小模型照這批資料訓練。官方說大模型的推理模式可以蒸餾進小模型，比讓小模型自己摸索更好。所以你下載的不是「縮小版的 R1」，而是一個被 R1 教過的 Qwen 或 Llama。"
+        },
+        {
+          "type": "link",
+          "text": "知識蒸餾（Knowledge Distillation）：讓學生模型學教師",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-knowledge-distillation"
+        },
+        {
+          "type": "paragraph",
+          "text": "品質差距官方自己有列。以 AIME 2024 數學測驗的 pass@1 來看，完整的 DeepSeek-R1 是 79.8，32B 蒸餾版 72.6，7B 蒸餾版 55.5，1.5B 蒸餾版 28.9。方向很清楚：檔案小一個數量級，能力就退一階。"
+        },
+        {
+          "type": "link",
+          "text": "小型語言模型（Small Language Model）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-small-language-model"
+        },
+        {
+          "type": "heading",
+          "text": "裝 Ollama：三個系統的官方指令與需求",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的 README 對三個系統各給一行指令：macOS 與 Linux 把官方安裝腳本交給 shell 執行，Windows 在 PowerShell 裡執行官方的 install.ps1；不想跑腳本的人，官網下載頁也提供 Ollama.dmg 與 OllamaSetup.exe。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "安裝 Ollama（macOS 與 Linux 終端機）",
+          "code": "curl -fsSL https://ollama.com/install.sh | sh"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "安裝 Ollama（Windows PowerShell）",
+          "code": "irm https://ollama.com/install.ps1 | iex"
+        },
+        {
+          "type": "list",
+          "items": [
+            "macOS：14 Sonoma 或更新版本；Apple M 系列可用 CPU 與 GPU，Intel 機器只有 CPU。",
+            "Windows：文件寫 10 22H2 或更新版本（Home 或 Pro），下載頁寫的是 Windows 10 或更新版本。",
+            "顯示卡：NVIDIA 要 compute capability 5.0 以上與 550 以上驅動；AMD 走 ROCm v7 或 Vulkan；Apple 走 Metal。",
+            "硬碟：Windows 文件寫安裝本身至少 4GB，模型另外算，官方形容是「幾十到幾百 GB」。",
+            "模型預設存在使用者目錄的 .ollama/models，可用 OLLAMA_MODELS 環境變數改到別的磁碟。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "三個指令：拉模型、對話、離開",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "裝好以後終端機就有 ollama 指令（Windows 用 cmd 或 PowerShell 都可以）。下載模型用 ollama pull，開始對話用 ollama run，離開輸入 /bye，這三個都在官方的 CLI 參考與快速入門頁裡。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "拉一個蒸餾版並開始對話",
+          "code": "ollama pull deepseek-r1:8b\nollama run deepseek-r1:8b"
+        },
+        {
+          "type": "paragraph",
+          "text": "要注意預設標籤指到哪裡。官網標籤頁顯示 deepseek-r1:latest 與 deepseek-r1:8b 是同一個檔案（同一組 ID、同樣 5.2GB），內容是 DeepSeek-R1-0528-Qwen3-8B。直接打 ollama run deepseek-r1 拉到的就是這個 8B 版本，不是 671B 那一個。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "對話中與對話後會用到的指令",
+          "code": "/bye                      # 離開對話\nollama ps                 # 看載入的模型跑在 GPU 還是 CPU\nollama ls                 # 列出已下載的模型\nollama rm deepseek-r1:8b  # 刪掉不用的模型，把硬碟空間拿回來"
+        },
+        {
+          "type": "image",
+          "src": "/guides/deepseek-local-with-ollama/diagram-1.svg",
+          "alt": "流程圖：從安裝 Ollama、選模型標籤、下載、對話到離開，下方附本機 API 與硬體提醒",
+          "width": 1600,
+          "height": 900,
+          "caption": "上排是從安裝到第一次對話的四個步驟，中間那排是選標籤時要看的下載大小，最下面一條是對話之外的兩件事。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "硬體怎麼對應大小：量化、記憶體與上下文視窗",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個 7B 蒸餾版，官網上其實有三個檔案：q4_K_M 是 4.7GB、q8_0 是 8.1GB、fp16 是 15GB。差別在量化——參數改用較少位元存放，檔案小、吃的記憶體少，代價是精度。短標籤預設指向 q4_K_M，所以 deepseek-r1:7b 拿到的是 4.7GB 的四位元版本。"
+        },
+        {
+          "type": "link",
+          "text": "量化（Quantization）：用較少位元執行模型的取捨",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方沒有給「幾 B 要幾 GB 記憶體」的對照表，所以這裡不編一個，建議記憶體以官網為準。能引用的有兩條：下載大小就是記憶體需求的下限；Ollama 依顯示記憶體決定預設上下文視窗，不到 24 GiB 給 4K、24 到 48 GiB 給 32K、48 GiB 以上給 256K。"
+        },
+        {
+          "type": "paragraph",
+          "text": "跑不跑得動，用 ollama ps 看 PROCESSOR 那一欄最準：100% GPU 是整個模型進了顯示記憶體，100% CPU 是全靠系統記憶體，出現 48%/52% CPU/GPU 就是被拆成兩邊、速度會掉。官方建議盡量別落到 CPU。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "標籤",
+            "參數與基底模型",
+            "下載大小／上下文",
+            "指令"
+          ],
+          "rows": [
+            [
+              "1.5b",
+              "1.5B，Qwen2.5-Math",
+              "1.1GB／128K",
+              "ollama run deepseek-r1:1.5b"
+            ],
+            [
+              "7b",
+              "7B，Qwen2.5-Math",
+              "4.7GB／128K",
+              "ollama run deepseek-r1:7b"
+            ],
+            [
+              "8b",
+              "8B，Qwen3（等於 latest）",
+              "5.2GB／128K",
+              "ollama run deepseek-r1:8b"
+            ],
+            [
+              "14b",
+              "14B，Qwen2.5",
+              "9.0GB／128K",
+              "ollama run deepseek-r1:14b"
+            ],
+            [
+              "32b",
+              "32B，Qwen2.5",
+              "20GB／128K",
+              "ollama run deepseek-r1:32b"
+            ],
+            [
+              "70b",
+              "70B，Llama-3.3-Instruct",
+              "43GB／128K",
+              "ollama run deepseek-r1:70b"
+            ],
+            [
+              "671b",
+              "671B 完整版，非蒸餾",
+              "404GB／160K",
+              "ollama run deepseek-r1:671b"
+            ]
+          ],
+          "caption": "整理自 ollama.com 的 deepseek-r1 標籤頁，查證日 2026 年 9 月 14 日；建議記憶體官網未列，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "模型參數（Model Parameters）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+        },
+        {
+          "type": "heading",
+          "text": "接一個本機的 API 呼叫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 裝好就會在本機開一個 REST API，預設綁在 127.0.0.1 的 11434 埠，官方文件寫的基底網址是 localhost:11434 底下的 /api。模型頁的範例可以整段複製，把模型名稱換成你的標籤。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 curl 呼叫本機的 deepseek-r1",
+          "code": "curl http://localhost:11434/api/chat -d '{\n  \"model\": \"deepseek-r1\",\n  \"messages\": [{\"role\": \"user\", \"content\": \"Hello!\"}],\n  \"stream\": false\n}'"
+        },
+        {
+          "type": "paragraph",
+          "text": "Python 也有官方套件，先安裝再幾行就能對話："
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "用 Python 呼叫本機的 deepseek-r1",
+          "code": "from ollama import chat\n\nresponse = chat(\n    model='deepseek-r1',\n    messages=[{'role': 'user', 'content': 'Hello!'}],\n)\nprint(response.message.content)"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個端點預設只在自己的電腦上聽。官方文件說要讓區網其他裝置連得到得改 OLLAMA_HOST——沒有需要就不要改，那等於把一個不用密碼的模型端點開給整個網路。"
+        },
+        {
+          "type": "heading",
+          "text": "隱私換到什麼、付出什麼、授權能做什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的常見問答對「會不會把提示詞送回 ollama.com」寫得很直接：本機執行時他們看不到你的提示詞與資料。這就是本機跑最大的好處——貼進去的合約、客戶名單不會離開這台電腦，也不套用 DeepSeek 網頁版的資料政策。"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+        },
+        {
+          "type": "paragraph",
+          "text": "有一個例外要認出來：ollama.com 也上架雲端模型，標籤結尾是 :cloud，例如官網標示 304B 參數、1M 上下文視窗、按 token 計價的 deepseek-v4-flash:cloud。這種是送到 Ollama 雲端跑、要先登入，官方說提示詞與回應會被處理但不儲存、不記錄、不拿去訓練。要整個關掉可以設定 OLLAMA_NO_CLOUD 環境變數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "代價有三個，兩個官方文件寫得出來：硬碟（1.1GB 到 404GB，加上安裝本身的 4GB），以及模型放不進顯示記憶體時會落到 CPU、速度變慢。第三個是耗電與發熱，官方沒給數字，以實際使用為準。本機模型也不會自己上網查資料——Ollama 的網路搜尋是另一個雲端 API，要免費帳號與金鑰。"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 對話與深度思考：哪些題目該開推理模式",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-chat-and-reasoner"
+        },
+        {
+          "type": "paragraph",
+          "text": "授權方面，模型卡與 Ollama 的說明頁一致：權重採 MIT 授權，DeepSeek-R1 系列支援商業使用，也允許修改與衍生作品，包含拿輸出去蒸餾別的模型。但基底模型的授權要一起看——Qwen 系列蒸餾版來自 Qwen-2.5 的 Apache 2.0；Llama 蒸餾版分別適用 llama3.1 與 llama3.3 授權。"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "公務機關連本機下載也在禁用範圍",
+          "text": "數位發展部資通安全署 2025 年 2 月 20 日的新聞稿寫明：行政院宣布公務機關立即全面禁用 DeepSeek AI 服務，包含雲端服務、APP 及地端下載等方式；在機關電腦上用 Ollama 跑蒸餾模型同樣不行。同一份新聞稿也寫，目前未進一步限制業者提供民眾下載及使用。"
+        },
+        {
+          "type": "link",
+          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ollama GitHub README（三個系統的安裝指令、REST API 與 Python 範例）",
+          "url": "https://github.com/ollama/ollama",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官網下載頁（macOS 14 Sonoma 或更新版本、Windows 10 或更新版本）",
+          "url": "https://ollama.com/download",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：macOS（系統需求與模型存放位置）",
+          "url": "https://docs.ollama.com/macos",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：Windows（Windows 10 22H2、安裝空間 4GB、模型幾十到幾百 GB）",
+          "url": "https://docs.ollama.com/windows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：硬體支援（NVIDIA compute capability 與驅動版本、AMD ROCm 與 Vulkan、Apple Metal）",
+          "url": "https://docs.ollama.com/gpu",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：快速入門（ollama run 與 /bye）",
+          "url": "https://docs.ollama.com/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：CLI 參考（pull、run、ps、ls、rm 等指令）",
+          "url": "https://docs.ollama.com/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：上下文長度（依顯示記憶體決定的 4K／32K／256K 預設值）",
+          "url": "https://docs.ollama.com/context-length",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：常見問答（不會看到本機提示詞、關閉雲端功能、模型存放位置、ollama ps 的 PROCESSOR 欄）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：API 介紹（本機基底網址 localhost:11434）",
+          "url": "https://docs.ollama.com/api/introduction",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：雲端模型（需登入帳號、自動轉到 Ollama 雲端執行）",
+          "url": "https://docs.ollama.com/cloud",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：網路搜尋（需免費帳號與 API 金鑰的雲端 API）",
+          "url": "https://docs.ollama.com/capabilities/web-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：deepseek-r1（各標籤、下載大小、上下文視窗與授權說明）",
+          "url": "https://ollama.com/library/deepseek-r1",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：deepseek-r1 標籤頁（q4_K_M、q8_0、fp16 三種量化的檔案大小）",
+          "url": "https://ollama.com/library/deepseek-r1/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：deepseek-v4-flash（標示 cloud、304B 參數、1M 上下文與計價）",
+          "url": "https://ollama.com/library/deepseek-v4-flash",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub deepseek-ai/DeepSeek-R1 說明（六個蒸餾版、基底模型、AIME 2024 評測與授權）",
+          "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：deepseek-ai/DeepSeek-R1-Distill-Qwen-7B 模型卡（MIT 授權與基底模型授權）",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：deepseek-ai/DeepSeek-R1-0528-Qwen3-8B 模型卡（8B 蒸餾版的來源與授權）",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek 官網（深度思考與智能搜索兩個網頁版功能名稱、營運公司）",
+          "url": "https://www.deepseek.com/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "數位發展部資通安全署新聞稿：公務機關全面禁用 DeepSeek AI 服務，未限制一般民間使用",
+          "url": "https://moda.gov.tw/ACS/press/news/press/15296",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

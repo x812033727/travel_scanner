@@ -1,0 +1,383 @@
+{
+  "slug": "minimax-music-generation",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌",
+      "description": "MiniMax 的音樂生成在 2026 年換了入口：付費 API 自 8 月 20 日起不再開放給新使用者，官方把一般使用者指向 MiniMax Audio、開發者指向 Hugging Face 上的開源權重 MiniMax Music 3。這篇照官網整理提示詞與歌詞怎麼寫、14 種段落標記、長度與音檔格式、費用與免費額度、API 最小呼叫範例，以及輸出音檔的商用與著作權注意事項。",
+      "hero": {
+        "src": "/guides/minimax-music-generation/hero.jpg",
+        "alt": "插圖：兩張分別代表音樂描述與歌詞的卡片，箭頭匯入中央圓形裡的聲波，再輸出成右側的音檔卡片",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "MiniMax 的音樂生成用一段描述加一段歌詞做出一首帶人聲與編曲的完整歌曲，但入口換了位置：官方文件寫明，自 2026 年 8 月 20 日起，付費的音樂與歌詞生成 API 不再開放給新使用者，免費版音樂 API 停止提供，改請使用者用 MiniMax Audio 網頁服務，或取用 Hugging Face 上的開源權重 MiniMax Music 3。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照官網文件走一遍：在哪裡動手、描述與歌詞各自要寫什麼、段落標記有哪幾種、一首歌多長、輸出什麼格式、費用怎麼算、API 最小呼叫長什麼樣，音檔能不能商用與著作權要注意什麼。條款沒有明講的部分直接寫「以官網為準」。"
+        },
+        {
+          "type": "heading",
+          "text": "入口：官方現在把音樂生成放在哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者文件的音樂生成說明頁與 API 參考頁掛著同一則公告：付費的 Music Generation 與 Lyrics Generation API 不再開放給新使用者，既有付費使用者可繼續使用；免費版的 music-3.0-free、music-2.6-free、music-cover-free 停止提供。公告給了兩條替代路徑。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "一般使用者：用 MiniMax Audio 網頁服務。官方為這個功能另寫了一份「MiniMax Audio 音樂創作使用條款」，生效日 2025 年 6 月 19 日，涵蓋 AI 生成音樂與 AI 生成歌詞。",
+            "開發者或想自架的人：取用 Hugging Face 上的開源權重 MiniMax Music 3，官方自架文件教你用 SGLang-Omni 起服務，再透過語音端點送出歌詞與描述。",
+            "既有付費使用者：端點與參數規則都還在，只是新帳號不再開通，以官網為準。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "海螺（Hailuo AI）的 App 或網站裡有沒有獨立的音樂分頁、台灣的 App Store 與 Google Play 上架狀況，官方說明頁沒有寫，本站也無法從台灣以外的環境確認實際畫面，以官網為準。想先弄清楚這個品牌底下有哪些產品，先看下面這篇。"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+        },
+        {
+          "type": "heading",
+          "text": "音樂描述與歌詞怎麼寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型吃兩份輸入：提示詞欄位 prompt 放音樂描述，lyrics 放要唱出來的字。官方把 prompt 定義為「描述音樂的風格、情緒與使用情境」，做有人聲的歌時選填、長度 0 到 2,000 個字元；把 is_instrumental 設成 true 做純演奏曲時改為必填、1 到 2,000 個字元，歌詞可以不給。另有 lyrics_optimizer 參數，設成 true 又沒給歌詞時會照描述自動生一份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "描述不要只丟「抒情流行」這種標籤。模型卡建議寫成三段式的結構化描述（Structured Caption），讓模型跟得到曲子隨時間的發展："
+        },
+        {
+          "type": "list",
+          "items": [
+            "Global Metadata：曲風與次曲風、BPM、調性與音階、情緒推進、聆聽情境、製作質感。",
+            "Vocal Details：人聲性別、音色、演唱方式、和聲與背景人聲、人聲效果。",
+            "Arrangement：主次樂器、各段落樂器的進出、律動、低音聲部、打擊與空間效果。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "歌詞欄位做有人聲的歌時必填，長度 1 到 3,500 個字元，行與行之間用換行分隔。官方列出 14 種段落標記，每個標記各自占一行，完整清單附在下面的範例裡。歌詞生成 API 回傳的歌詞也帶標記，可直接貼進 lyrics；兩份文件列的寫法略有出入，以你呼叫的那一支為準。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範例：一組音樂描述與一段帶段落標記的歌詞",
+          "code": "音樂描述（prompt 欄位，可直接用英文寫，模型對英文樂理詞彙的辨識較穩）\nGenre: acoustic pop. BPM: 96. Key: C major. Warm and intimate, building gently into the chorus.\nVocals: soft female lead, close and breathy, light stacked harmonies in the chorus.\nArrangement: fingerpicked guitar and soft piano; brushed drums and upright bass enter in the chorus.\n\n歌詞（lyrics 欄位，段落標記各自占一行，行與行之間用 \\n 分隔）\n[Verse]\n清晨的光穿過松林\n街角安靜得只剩呼吸\n[Chorus]\n世界慢慢地開始呼吸\n把昨天的雨收進口袋\n\n音樂生成 API 文件列出的 14 種段落標記\n[Intro] [Verse] [Pre Chorus] [Chorus] [Interlude] [Bridge] [Outro]\n[Post Chorus] [Transition] [Break] [Hook] [Build Up] [Inst] [Solo]"
+        },
+        {
+          "type": "image",
+          "src": "/guides/minimax-music-generation/diagram-1.svg",
+          "alt": "流程圖：音樂描述與歌詞兩份輸入，經過模型與音檔設定，產出音檔並在發布前檢查",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左到右看：兩份輸入各有字數上限，中間決定模型與音檔設定，右邊是取回音檔與發布前要做的事。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "長度、格式與取樣率",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "長度方面，MiniMax Music 3 的模型卡寫的是原生支援最長五分鐘的完整歌曲，並在這個長度內維持主題、節奏、人聲特徵與編曲推進，撐得住前奏、主歌、副歌、橋段與尾奏的完整結構。自架文件另外提醒，服務框架容許的上限比五分鐘再長一點，但那是框架限制、不是模型多出來的能力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "音檔格式由 audio_setting 決定：取樣率可選 16000、24000、32000、44100，位元率可選 32000、64000、128000、256000，格式可選 mp3、wav、pcm。取回方式由 output_format 決定，url 給一條 24 小時後失效的連結，要盡快下載；hex 直接回傳十六進位字串，開啟串流時只支援 hex。自架開源權重那條路線輸出 32 kHz、16 位元立體聲 WAV。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "官網數字或規則"
+          ],
+          "rows": [
+            [
+              "目前主力模型",
+              "music-3.0，2026 年 7 月 16 日列入模型發布紀錄"
+            ],
+            [
+              "音樂描述 prompt",
+              "0 到 2,000 個字元；純演奏曲時必填，1 到 2,000 個字元"
+            ],
+            [
+              "歌詞 lyrics",
+              "有人聲時必填，1 到 3,500 個字元；段落標記 14 種"
+            ],
+            [
+              "單首長度",
+              "模型卡：原生支援最長五分鐘"
+            ],
+            [
+              "取樣率",
+              "16000、24000、32000、44100"
+            ],
+            [
+              "位元率",
+              "32000、64000、128000、256000"
+            ],
+            [
+              "音檔格式",
+              "mp3、wav、pcm；自架開源權重輸出 32 kHz、16 位元立體聲 WAV"
+            ],
+            [
+              "取回方式",
+              "output_format 選 url 或 hex；url 連結 24 小時後失效"
+            ],
+            [
+              "翻唱參考音檔",
+              "6 秒到 6 分鐘、最大 50 MB、常見音訊格式"
+            ],
+            [
+              "速率限制",
+              "音樂生成 RPM 120、並行連線 20"
+            ],
+            [
+              "API 價格",
+              "Music-3.0 與 Music-2.6 每首 0.15 美元（最長 5 分鐘）；歌詞生成每首 0.01 美元"
+            ]
+          ],
+          "caption": "資料查證於 2026 年 9 月，來源為 MiniMax 官方 API 文件、定價頁與 Hugging Face 模型卡。"
+        },
+        {
+          "type": "heading",
+          "text": "費用與免費額度",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "API 這一側，定價頁已把音樂模型全部標成 Discontinued（停止提供），價格仍列在頁上：Music-3.0 與 Music-2.6 每首 0.15 美元、單首最長 5 分鐘，歌詞生成每首 0.01 美元；翻唱的前處理步驟官方註明不計費。這是給既有付費使用者看的價目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "MiniMax Audio 這一側走點數制。官方訂閱服務條款寫：免費使用者登入後可拿到每日限時的免費點數；Starter 每月 5 美元、含每月 100,000 點；Standard 每月 30 美元、含每月 1,000,000 點；也可單次加值，每 1,000,000 點 30 美元，最低 5 美元。2026 年 2 月 12 日以後買的點數有效期兩個月，之前的維持兩年，月費附的點數每個自然月月底歸零，生成失敗或未過審會自動退點。一首歌扣多少點，條款沒有列，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "API 最小呼叫範例",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "既有付費帳號要接 API，最小的一次呼叫就是一個 POST：帶模型名稱、描述、歌詞與音檔設定。金鑰用環境變數讀，不要寫進程式碼。回應裡 status 是 2 代表完成，extra_info 附上音檔長度、取樣率、聲道數與檔案大小。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "最小呼叫：把描述與歌詞送進音樂生成端點",
+          "code": "import os\nimport requests\n\n# 金鑰放環境變數，不要寫進程式碼：export MINIMAX_API_KEY=\"...\"\napi_key = os.environ[\"MINIMAX_API_KEY\"]\n\npayload = {\n    \"model\": \"music-3.0\",\n    \"prompt\": \"Indie folk, melancholic, introspective, longing, solitary walk, coffee shop\",\n    \"lyrics\": \"[verse]\\n街燈閃爍 夜風嘆息\\n[chorus]\\n推開木門 香氣散開\",\n    \"audio_setting\": {\"sample_rate\": 44100, \"bitrate\": 256000, \"format\": \"mp3\"},\n    \"output_format\": \"url\",\n}\n\nresponse = requests.post(\n    \"https://api.minimax.io/v1/music_generation\",\n    headers={\"Content-Type\": \"application/json\", \"Authorization\": f\"Bearer {api_key}\"},\n    json=payload,\n)\nprint(response.json())"
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有付費帳號又想用程式跑的人走開源權重那條路。官方自架文件把模型與框架版本都釘死，服務起來後用共用的語音端點，歌詞放 input、描述放 instructions。這條路要 NVIDIA CUDA 顯示卡，模型檔案約 57.4 GB，不是一般筆電跑得動的規模。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "自架開源權重：起好服務後送出一次生成請求",
+          "code": "# 先照官方自架文件用 SGLang-Omni 起服務，再送出歌詞與音樂描述\ncurl http://127.0.0.1:8000/v1/audio/speech \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"MiniMaxAI/MiniMax-Music3\",\n    \"input\": \"[Verse]\\nMorning light filtering through the pine\\n[Chorus]\\nSoftly the world begins to breathe\",\n    \"instructions\": \"A warm acoustic pop song with intimate female vocals, fingerpicked guitar, soft piano, and a gradual emotional build into a wide final chorus.\",\n    \"response_format\": \"wav\",\n    \"max_new_tokens\": 750,\n    \"stream\": false\n  }' \\\n  --output minimax_music3.wav"
+        },
+        {
+          "type": "heading",
+          "text": "商用、上架與著作權",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "輸出音檔能不能商用，兩份條款要分開看。MiniMax 的 App 與網站服務條款寫「我們不主張使用者投入內容與使用者生成內容的所有權」，但同時要求你授權 MiniMax 一份免權利金、永久、不可撤回、全球、非專屬的授權，範圍含重製、修改、發布、散布與取得收益，終止後仍存續。條款沒有另寫「輸出可自由商用」這句，所以上架串流平台或用在客戶案子前，商用範圍以官網條款為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自架開源權重是另一套規則。MiniMax-Music3 採用自家的社群授權（COMMUNITY LICENSE），允許使用、修改與再散布，商用另有兩條要求：在商業產品或服務介面上明顯標示「MiniMax-Music3」；你與關係企業由這些產品取得的年度總營收超過 2,000 萬美元時要先取得官方書面授權。著作權這塊，官方條款寫到的只有下面幾條："
+        },
+        {
+          "type": "list",
+          "items": [
+            "投入內容必須是原創或已取得合法權利，不得侵害第三方的智慧財產權或人格權。",
+            "投入內容若包含任何個人的聲音，必須擁有完整合法權利或取得權利人授權。",
+            "禁止用途明文包含冒充他人或誤稱關係、損害名譽、散布不實或誤導資訊。",
+            "官方可能在輸出嵌入識別資訊或浮水印，不得擅自更改或移除；你有責任標示輸出是 AI 生成。",
+            "開源權重的可接受使用政策同樣要求：公開散布生成內容要揭露是機器生成，未經同意不得冒充他人。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "想模仿某個歌手的聲音或曲風，先停下來",
+          "text": "條款把「聲音」與「冒充」分開處理：投入內容裡只要有某個人的聲音，就必須先拿到那個人的授權；禁止用途也明文列出冒充他人與誤稱關係。把真實歌手的錄音丟進翻唱功能、或在描述裡指名某位歌手的聲線，風險都落在使用者身上。至於模仿曲風到什麼程度構成侵權，官方條款沒有寫，以當地著作權法為準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一件事其他家也在做，Google 把 Lyria 放進 Gemini 就是一例；各家的長度、費用與授權規則不一樣，要比就照官網一項一項比對。另一邊的選擇看 "
+            },
+            {
+              "type": "link",
+              "text": "Lyria 3.5 進入 Gemini：AI 音樂創作有哪些新選擇？",
+              "url": "https://mokaair.com/zh-TW/life/ai-news-lyria-35-gemini-20260904"
+            },
+            {
+              "type": "text",
+              "text": "。想補背景知識，"
+            },
+            {
+              "type": "link",
+              "text": "生成式 AI（Generative AI）是什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": "與 "
+            },
+            {
+              "type": "link",
+              "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+            },
+            {
+              "type": "text",
+              "text": " 兩篇夠用。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "MiniMax 底下的其他生成功能，本站另有三篇："
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+          "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 語音合成：中文配音、有聲書與影片旁白",
+          "url": "https://mokaair.com/zh-TW/life/minimax-speech-tts-guide"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+        }
+      ],
+      "sources": [
+        {
+          "title": "MiniMax API Docs：Music Generation 使用指南（官方文件）",
+          "url": "https://platform.minimax.io/docs/guides/music-generation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Music Generation API 參考（官方文件）",
+          "url": "https://platform.minimax.io/docs/api-reference/music-generation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Lyrics Generation API 參考（官方文件）",
+          "url": "https://platform.minimax.io/docs/api-reference/lyrics-generation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Music Cover Preprocess API 參考（官方文件）",
+          "url": "https://platform.minimax.io/docs/api-reference/music-cover-preprocess",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Pay as You Go 定價頁（官方定價）",
+          "url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Rate Limits 速率限制（官方文件）",
+          "url": "https://platform.minimax.io/docs/guides/rate-limits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：Self-host MiniMax Music 3 自架文件（官方文件）",
+          "url": "https://platform.minimax.io/docs/guides/local-deploy-music-3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Docs：模型發布紀錄（官方公告）",
+          "url": "https://platform.minimax.io/docs/release-notes/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：MiniMaxAI/MiniMax-Music3 模型卡（官方組織頁）",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-Music3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：MiniMax-Music3 COMMUNITY LICENSE 授權原文（官方組織頁）",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-Music3/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax Audio Music Creation Terms of Use 音樂創作使用條款（官方條款）",
+          "url": "https://www.minimax.io/audio/doc/terms-of-service-music.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax App and Web Terms of Service 應用程式與網站服務條款（官方條款）",
+          "url": "https://www.minimax.io/audio/doc/terms-of-service.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax Audio Paid Service Terms 訂閱服務條款（官方條款）",
+          "url": "https://www.minimax.io/audio/doc/paid-service-terms.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax Open Platform Terms of Service 開放平台服務條款（官方條款）",
+          "url": "https://platform.minimax.io/protocol/terms-of-service",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax 官方部落格：MiniMax Music 3.0 模型說明（官方公告）",
+          "url": "https://www.minimax.io/blog/minimax-music-3-0-next-generation-open-weights-production-ready-versatile-music-model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax Audio 官方產品頁（官方網站）",
+          "url": "https://www.minimax.io/audio",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
