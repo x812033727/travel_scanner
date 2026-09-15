@@ -1,0 +1,119 @@
+{
+  "slug": "ai-news-gpt-live-voice-20260708",
+  "event_date": "2026-07-08",
+  "title": "GPT-Live 讓 ChatGPT 語音邊聽邊說：插話、方案用量與錄音設定",
+  "sources": [
+    {"title": "OpenAI：介紹 GPT-Live", "url": "https://openai.com/zh-Hant/index/introducing-gpt-live/", "checked_on": "2026-09-15"},
+    {"title": "OpenAI 說明中心：ChatGPT 語音", "url": "https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice", "checked_on": "2026-09-15"},
+    {"title": "OpenAI 說明中心：ChatGPT Release Notes", "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes", "checked_on": "2026-09-15"},
+    {"title": "OpenAI 開發者文件：API Changelog", "url": "https://developers.openai.com/api/docs/changelog", "checked_on": "2026-09-15"}
+  ],
+  "checked_on": "2026-09-15",
+  "verified_facts": [
+    "官方發布文標示日期 2026年7月8日；ChatGPT 版本說明條目「Introducing GPT-Live-1 in ChatGPT Voice」在 July 8, 2026 之下；OpenAI RSS 的 pubDate 為 Wed, 08 Jul 2026（https://openai.com/zh-Hant/index/introducing-gpt-live/ ；https://help.openai.com/en/articles/6825453-chatgpt-release-notes ；https://openai.com/news/rss.xml）",
+    "GPT-Live 採全雙工架構，能同時聆聽與說話；模型每秒可多次決定說話、繼續聆聽、暫停、插話或呼叫工具（https://openai.com/zh-Hant/index/introducing-gpt-live/）",
+    "需要網路搜尋、更深入推理或更複雜工作時，GPT-Live 在幕後委派給前沿模型，推出初期在背景使用 GPT-5.5，處理期間仍能繼續交談（https://openai.com/zh-Hant/index/introducing-gpt-live/）",
+    "推出兩個版本 GPT-Live-1 與 GPT-Live-1 mini；向全球 iOS、Android、ChatGPT.com 的 ChatGPT 使用者推出；發布時 GPT-Live-1 為 Go、Plus、Pro 預設，GPT-Live-1 mini 為免費版預設（2026-09-09 起 Go 改用 mini，見下）（https://openai.com/zh-Hant/index/introducing-gpt-live/）",
+    "發布文：已針對 ChatGPT 中部分最常用的語言最佳化，未列出語言清單；發布文與版本說明都沒有列出地區清單或另外提到台灣（https://openai.com/zh-Hant/index/introducing-gpt-live/ ；https://help.openai.com/en/articles/6825453-chatgpt-release-notes）",
+    "版本說明 2026-07-08：GPT-Live-1 在支援的地區向消費者方案（含免費版）逐步推出，發布時（at launch）不提供 ChatGPT Business、Enterprise、Edu 工作區；不支援視訊與螢幕分享，符合資格的訂閱者可用進階語音模式（https://help.openai.com/en/articles/6825453-chatgpt-release-notes）",
+    "最初的 ChatGPT 語音串接語音轉文字、大型語言模型、文字轉語音三個模型；進階語音模式是回合式，以靜音判斷回合，短暫停頓或背景噪音可能被誤認為回合結束（https://openai.com/zh-Hant/index/introducing-gpt-live/）",
+    "可插話提問、暫停整理思緒、請 ChatGPT 放慢；會用「嗯嗯」「了解」回應；要求保持安靜聆聽會照做（https://openai.com/zh-Hant/index/introducing-gpt-live/）",
+    "每週有超過 1.5 億人透過語音和聽寫等功能與 ChatGPT 對話，用途包括練習語言（https://openai.com/zh-Hant/index/introducing-gpt-live/）",
+    "部分語言可能帶有非母語口音或流暢度不足（https://openai.com/zh-Hant/index/introducing-gpt-live/）",
+    "2026 年 7 月 31 日更新：透過 ChatGPT 語音與 OpenAI API 使用 GPT-Live 生成的受支援音訊加入 SynthID 浮水印（https://openai.com/zh-Hant/index/introducing-gpt-live/）",
+    "家長可透過家長控制選擇是否允許青少年子女使用 ChatGPT 語音（https://openai.com/zh-Hant/index/introducing-gpt-live/）",
+    "2026 年 9 月 9 日版本說明：Go 改為最多 3 小時 GPT-Live-1 mini（取代 GPT-Live-1）；Plus 最多 3 小時 GPT-Live-1；Pro（每月 100 美元）最多 15 小時；Pro（每月 200 美元）不限；Plus 與 Pro 達上限後不再切換到 GPT-Live mini；Instant/Medium/High 三種語音推理層級 deprecated（正文譯「已取消」）；語音需要搜尋或推理較難問題時可使用 GPT-5.6 或 GPT-6 Astra，用與文字聊天相同的控制選模型與推理強度，可用模型與用量依方案而定（https://help.openai.com/en/articles/6825453-chatgpt-release-notes）",
+    "說明中心用量表：對話模式中即時模式用量採 24 小時滾動週期；免費版可有限度使用 GPT-Live-1 mini、限制可能調整（https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice）",
+    "說明中心（現況）：符合資格的 Business、Enterprise、Edu、Healthcare 工作區可使用 ChatGPT 語音，受工作區設定約束；用量表列有 Business Standard／Premium 的 GPT-Live-1 時數，Enterprise、Edu、Healthcare 工作區在擁有者啟用語音時 Live 為預設；因此 7/8 版本說明的工作區排除是發布時條件（https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice）",
+    "即時模式（Live）不支援視訊、螢幕分享、已連結的應用程式或外掛程式；符合資格的訂閱者需要視訊或螢幕分享時可在 ChatGPT iOS 與 Android App 使用進階模式；可用選項取決於方案、工作區設定、地區、應用程式版本及家長控制（https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice）",
+    "語音重疊、背景噪音、網路狀況與麥克風設定會影響聽到的內容；可用耳機、較安靜環境、iPhone 控制中心麥克風模式開啟語音隔離；可在開頭說「等我請你回應再回應」；Live 主要為一對一設計，未針對多位說話者最佳化（https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice）",
+    "設定 → 語音可選語言；可在對話中要求說另一種語言；可要求說快或慢但目前無法精確控制播放速度（https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice）",
+    "ChatGPT 可在支援的 iPhone 上透過 Apple CarPlay 使用；僅在法律允許且情況適合安全使用時使用行動裝置，駕駛前設定好 App，避免車輛行進中操作（https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice）",
+    "設定 → 語音開啟背景對話；結束對話、強制關閉 App、達到使用量限制或最長工作階段長度時結束（https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice）",
+    "2026 年 8 月 31 日版本說明：Live 語音對話內容可顯示在 iPhone 鎖定畫面與動態島（https://help.openai.com/en/articles/6825453-chatgpt-release-notes）",
+    "Live 與進階語音音訊片段與逐字稿一併儲存，保留 30 天；刪除對話後 30 天內刪除，安全、保障、法律原因或已選擇分享且解除關聯者除外；刪除無法復原，封存不會刪除（https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice）",
+    "除非選擇分享或啟用「包含你的錄音」，否則不用音訊片段訓練；只要開啟「為所有人改進模型」，語音對話的逐字稿與其他檔案就可能依方案與設定用於訓練（不必另開錄音開關）；個人工作區免費版、Plus、Pro 在設定 → 資料控制項先開「為所有人改進模型」再開「包含你的錄音」；使用者無法分享 Business、Enterprise、Edu 工作區語音對話的片段；分享片段可能由團隊審查；停止分享後先前已解除關聯的片段可能繼續使用（https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice）",
+    "ChatGPT 可能出錯，日期、時間、地點敏感的問題要核對；語音用裝置或瀏覽器時區理解今天、明天；逐字稿不是逐字記錄；一次只能進行一個語音對話；達到用量、最長工作階段或內容脈絡限制時對話可能結束（https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice）",
+    "API Changelog Sep 10, 2026：GPT-Live 1 is now generally available in the API；Voice sessions cost $0.05 per minute, billed per second; backend model and tool usage is charged separately（https://developers.openai.com/api/docs/changelog；另見 https://openai.com/index/introducing-gpt-live-1-in-the-api/ 寫 $0.05 per minute for the front-end voice layer）"
+  ],
+  "unverified_or_excluded": [
+    "事件日期：官方發布文、ChatGPT 版本說明與 OpenAI RSS（pubDate Wed, 08 Jul 2026 00:00:00 GMT，屬日期戳記而非發布時刻）都標 2026-07-08；slug 已由 20260709 改為 20260708 與官方日期對齊，正文首句寫 7 月 8 日。沒有官方發布時刻，因此不換算、不寫「台灣時間」。",
+    "台灣／繁體中文：ChatGPT Supported Countries 頁列有 Taiwan，但那是 ChatGPT 整體的服務地區，不是 GPT-Live 的地區清單；GPT-Live 官方頁只寫「支援的地區」與「部分最常用的語言」，因此正文只寫官方未列清單、以 App 內設定為準（https://help.openai.com/en/articles/7947663-chatgpt-supported-countries）。",
+    "「CarPlay 需 iOS 26.4 以上」（2026-04-02 版本說明）：屬 CarPlay 功能本身的條件，不是 GPT-Live 的新聞，未寫。",
+    "「API 版有 12 種聲音」：API 發布文列出 12 個新聲音名稱，但沒有在文字中寫出數量，且這篇對 API 只簡短帶過，因此不寫聲音數量。",
+    "「7 月下旬擴到 Mac／Windows 桌面版」：2026-07-23 版本說明寫的是 ChatGPT 語音進入桌面 App 的 Work 與 Codex，不是 GPT-Live 聊天語音擴大到桌面；與 ChatGPT Work 篇重疊，未寫。",
+    "「Go／Plus／Pro 預設 GPT-Live-1」：發布時屬實，但 2026-09-09 起 Go 改用 GPT-Live-1 mini；正文把發布時與現況分開寫。",
+    "發布文中的「即時／中／高」語音推理程度：9 月 9 日已停用，正文只寫當時可選推理程度並註明已停用，不列名稱，避免和說明中心把 Live 譯為「即時」混淆。",
+    "GPQA、BrowseComp、τ³-Voice Telecom、Full Duplex Bench 與 Speak 減少近 80% 插話等評測與客戶數字：屬廠商宣稱且與一般使用者關聯低，不寫。",
+    "繁體中文或台灣是否已最佳化：官方只說針對部分最常用語言最佳化，未列語言清單；台灣帳號開放情況未實測，只寫以 App 內設定為準。",
+    "2026-08-07 版本說明寫語音支援檔案上傳與專案，但目前說明中心又寫 Live 無法從資料庫查找或加入檔案、須依帳號手動附加；兩者細節不易對讀者講清楚，未寫。",
+    "Business／Enterprise 額度點數計價、桌面版語音定價：與一般讀者關聯低，未寫。",
+    "Workspace Agents API（同為 2026-09-10）與 GPT-Live 無關，本篇不提，避免與 agents-api 篇混淆。"
+  ],
+  "editorial_brief": "原創情境：邊做菜時插話更正材料條件、練習外語口說時請它放慢與換語言、車上使用 CarPlay 時依官方提醒駕駛前設定好 App、行車中不看螢幕文字回應、停車後再核對資訊（不鼓勵行車中操作手機），皆標明為編輯設計的例子。刻意不談：ChatGPT Work 與桌面 App 的 Work／Codex 語音（另有專篇）、評測分數與企業客戶案例、企業工作區點數計價、API 串接細節與聲音清單；不寫實測，不推定台灣帳號已可用。",
+  "hero_label": "邊聽邊說的 ChatGPT 語音",
+  "diagram": {
+    "title": "GPT-Live 語音對話四個重點",
+    "caption": "GPT-Live 語音的四個重點：同時聽與說、背景查資料、各方案模型與用量、錄音保存與回答核對；依 OpenAI 官方說明整理。",
+    "nodes": [
+      ["同時聽與說", "可插話，也可請它先等"],
+      ["背景查資料", "結果好了再帶回對話"],
+      ["方案與用量", "Go 與免費版用 mini"],
+      ["錄音與核對", "音訊片段保留 30 天"]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Listens while it speaks",
+      "diagram": {
+        "title": "Four Key Points of GPT-Live Voice",
+        "caption": "Four key points about GPT-Live voice: listening and speaking at the same time, background lookups, each plan's model and usage, and audio retention and checking answers; compiled from OpenAI's official documentation.",
+        "nodes": [
+          ["Listen and speak", "Interrupt, or ask it to wait"],
+          ["Background lookup", "Results return to the chat"],
+          ["Plans and usage", "Go and Free use mini"],
+          ["Audio and checks", "Audio clips kept 30 days"]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "聞きながら話すChatGPT",
+      "diagram": {
+        "title": "GPT-Live音声会話の4つのポイント",
+        "caption": "GPT-Live音声の4つのポイント：聞き取りと発話の同時進行、バックグラウンドでの調べもの、プラン別のモデルと利用量、録音の保存と回答の確認。OpenAIの公式説明をもとに整理しました。",
+        "nodes": [
+          ["聞き取りと発話", "割り込みも待機の依頼も可"],
+          ["裏で調べもの", "結果がそろえば会話に戻す"],
+          ["プランと利用量", "Goと無料版はmini"],
+          ["録音と確認", "音声クリップは30日保持"]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "들으면서 말하는 음성 대화",
+      "diagram": {
+        "title": "GPT-Live 음성 대화의 네 가지 핵심",
+        "caption": "GPT-Live 음성의 네 가지 핵심: 듣기와 말하기 동시 진행, 백그라운드 정보 검색, 요금제별 모델과 사용량, 녹음 보관과 답변 확인. OpenAI 공식 설명을 바탕으로 정리했습니다.",
+        "nodes": [
+          ["듣기와 말하기", "끼어들기도, 기다려 달라고도"],
+          ["백그라운드 검색", "결과가 나오면 대화로"],
+          ["요금제와 사용량", "Go와 무료는 mini"],
+          ["녹음과 확인", "오디오 클립 30일 보관"]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "ChatGPT 语音边听边说",
+      "diagram": {
+        "title": "GPT-Live 语音对话四个要点",
+        "caption": "GPT-Live 语音的四个要点：同时听与说、后台查资料、各套餐模型与用量、录音保存与回答核对；依据 OpenAI 官方说明整理。",
+        "nodes": [
+          ["同时听与说", "可插话，也可请它先等"],
+          ["后台查资料", "结果好了再带回对话"],
+          ["套餐与用量", "Go 与免费版用 mini"],
+          ["录音与核对", "音频片段保留 30 天"]
+        ]
+      }
+    }
+  }
+}

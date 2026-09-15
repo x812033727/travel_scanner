@@ -1,0 +1,1044 @@
+{
+  "slug": "ai-news-openai-agents-api-20260910",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 145,
+  "locales": {
+    "zh-TW": {
+      "title": "OpenAI Agents API 公開 beta：委託 AI 自動化前，先看懂計費與資料位置",
+      "description": "OpenAI 在 2026 年 9 月 10 日以公開 beta 推出 Agents API，把驅動 Codex 的代理運作框架交給開發者使用。這篇寫給會用 AI 工具、可能委託工程師或外包做自動化的人：它和 ChatGPT、Codex 裡的代理差在哪，費用為什麼難先估準，資料落地只支援美國且不支援零資料保留的意思，以及委託前該問的權限、紀錄、停止與預算問題。",
+      "hero": {
+        "src": "/guides/ai-news-openai-agents-api-20260910/hero.jpg",
+        "alt": "代理工作階段連到沙箱、工具與費用紀錄卡片，呈現委託 AI 自動化流程的原創插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 10 日，OpenAI 發表〈Introducing the Agents API〉，以公開 beta 推出 Agents API。依官方文件說明，這個 API 讓其他應用程式透過 OpenAI 代管的服務，使用驅動 Codex 的代理運作框架（harness）：工作階段（session）、流程編排、上下文壓縮與復原（recovery）由 OpenAI 處理，開發者則負責提供工具並選擇執行環境。代理可以在沙箱裡執行程式、編輯檔案、連接 MCP 伺服器並產出成果檔，也能把工作拆給子代理分頭處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 15 日查核，依據 OpenAI 的發布公告、Agents API 文件與平台資料控制說明。OpenAI 表示公開 beta 即日起開放開發者使用，期間會依回饋快速調整、朝正式版推進；官方文件也註明，部分追蹤紀錄的取用方式不在這次公開 beta 的範圍內。這是給開發者的產品，本文不寫程式、沒有實際串接測試，文中的委託情境都是編輯設計的例子，目的是幫一般工作者在找工程師或外包時問對問題。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "和 ChatGPT、Codex 裡的代理差在哪"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 ChatGPT 或 Codex 裡，介面和可用的功能由 OpenAI 的產品設計好，你登入後直接交代工作。Agents API 則是把同一套 Codex 運作框架開放出來，讓公司或外包把代理放進自己的系統：畫面長什麼樣子、代理可以用哪些工具、在哪台機器上跑，都由做系統的人決定。換句話說，你未來看到的某個「自動整理報表」服務，背後可能就是這個 API，但權限範圍是對方設定的，不是 OpenAI 預設的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件用四個概念描述它。代理是模型、指示、工具與 MCP 伺服器的組合；環境是選配的沙箱或電腦，代理在裡面存取檔案、載入技能與執行指令；工作階段是一個持續存在的代理實例，負責處理任務並回應新的輸入；事件與項目則是送進代理的輸入，以及工作過程中的產出。對非工程師來說，工作階段最值得記住：它會保存先前的進度，所以一件工作可以分好幾輪接續做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "執行環境可以自己選。OpenAI 在公告中寫到，代理的運算環境可以是 OpenAI 代管的沙箱、開發者自己的基礎設施，或官方合作的沙箱供應商；選代管沙箱時，由 OpenAI 建置與管理沙箱。這個選擇會影響檔案實際在哪裡被處理，也影響機器由誰負責管理，委託時應該請對方說清楚採用哪一種。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "費用怎麼算，為什麼難先估準"
+        },
+        {
+          "type": "paragraph",
+          "text": "Agents API 文件的計價段落列出三類費用：模型用量按所選模型的 API 費率計算，OpenAI 提供的工具按各自的標準費率計算，使用 OpenAI 代管沙箱則按標準容器費率計算。OpenAI 在公告中也表示，使用 Agents API 本身沒有額外費用，但沒有平台費不代表一件自動化工作的總價容易估。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的用量說明指出，代理完成一個任務時可能呼叫模型好幾次，每次都照模型的 token 價格與提示快取規則計費。每次呼叫的輸入包括代理指示、工具定義、對話紀錄、使用者輸入、檔案與工具回傳的結果；推理過程的 token 算在輸出裡。代理在同一個工作階段裡會延續上下文，文件也提醒，重複的呼叫可能一再處理很長的歷史紀錄。工作做得越久、來回越多，費用就越難只看任務名稱來判斷。"
+        },
+        {
+          "type": "paragraph",
+          "text": "子代理也會各自呼叫模型。官方建議估算時，要把主代理與子代理的工作、重試，以及適用的工具、沙箱運算和第三方服務費用都算進去。另外，工作階段顯示的用量數字是盡力記錄，可能暫時是空值，之後也可能變動；文件明說空值不代表零用量，這些數字也不是最後帳單。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "費用來源",
+            "計價依據",
+            "難估的原因"
+          ],
+          "rows": [
+            [
+              "主代理模型",
+              "所選模型 API 費率",
+              "一個任務呼叫多次"
+            ],
+            [
+              "子代理",
+              "同樣按模型計費",
+              "分頭做會增加呼叫"
+            ],
+            [
+              "OpenAI 工具",
+              "各工具標準費率",
+              "看代理實際用多少"
+            ],
+            [
+              "代管沙箱",
+              "標準容器費率",
+              "與模型費分開算"
+            ],
+            [
+              "重試",
+              "照模型與工具計費",
+              "失敗重做也算"
+            ],
+            [
+              "第三方服務",
+              "依服務商收費",
+              "要另外加總"
+            ]
+          ],
+          "caption": "2026 年 9 月 15 日查核；依 OpenAI Agents API 文件與用量說明整理，實際價格以官方定價頁為準。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "資料放在哪裡，零資料保留為什麼重要"
+        },
+        {
+          "type": "paragraph",
+          "text": "Agents API 文件寫明，目前資料落地（data residency）只支援美國，而且不支援零資料保留（Zero Data Retention，簡稱 ZDR）。文件還特別補充，選擇自架沙箱並不會讓 Agents API 符合 ZDR 資格。也就是說，就算檔案在你們自己的機器上處理，代理的工作階段仍由 OpenAI 的服務管理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ZDR 是什麼？依 OpenAI 的資料控制說明，API 使用預設會產生濫用監控紀錄，其中可能包含提示與回應等內容，預設最多保存 30 天（法律要求或為防止危害而需要時例外）。通過 OpenAI 事先核准的客戶，可以用 ZDR 等控制選項把客戶內容排除在這類紀錄之外。資料控制表中，Agents API 的欄位寫的是：資料不用於訓練、濫用監控保存 30 天、應用程式狀態保存到刪除為止、不符合 ZDR 資格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對公司合規的意義很直接。如果貴公司和客戶的合約要求資料不得在供應商端保留，或規定資料必須放在美國以外的特定地區，這個 API 目前就不符合條件；至少在 ZDR 這一點，官方已明說換成自架沙箱也改變不了。資料控制說明也提醒，MCP 伺服器是第三方服務，送過去的資料適用對方的資料落地政策，所以連了哪些外部服務同樣要列入檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件說明 Agents API 會保存工作階段狀態，好讓工作可以跨輪接續，而工作階段和已發布的成果檔都可以在不需要時刪除。委託時可以請對方寫明誰負責刪除、多久刪一次，以及刪除前要先把哪些成果檔下載保存。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-agents-api-20260910/diagram-1.svg",
+          "alt": "Agents API 資料界線的四格圖解：落地只支援美國、不支援 ZDR、監控紀錄 30 天、狀態保存到刪除",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OpenAI 文件整理：資料落地目前只支援美國、不支援 ZDR、濫用監控紀錄預設最多 30 天、工作階段狀態保存到刪除。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "委託工程師或外包時，先問這幾件事"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一是權限。Agents API 的工具由開發的一方提供或選用，所以要問代理能讀哪些資料、能改哪些檔案、連了哪些 MCP 服務，能不能寄信或修改正式系統。官方文件列出的範例裡，有只用唯讀 SQL 回答資料倉儲問題的分析代理，也有在執行復原動作前先請求核准的事件應變代理；這兩種設計都值得當作參考，先從唯讀開始，會改動資料的動作保留人工確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二是紀錄。官方用量說明提到，開發者可以在 OpenAI 平台後台的 Agents 分頁查看工作階段紀錄，檢視每一輪工作、工具呼叫與子代理，也能透過事件串流和保存的項目追查過程。委託時可以請對方說明，出問題時誰能看這些紀錄、你們自己的系統會不會另外留存，以及紀錄保存多久。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三是停止機制與費用上限。以編輯設計的例子來說，一家小型行銷公司委託外包做「每週整理客戶意見並產出報告」的代理，驗收前可以請對方示範：代理跑錯方向時由誰、用什麼方式中止，中止後做到一半的檔案怎麼處理；再請對方用一週的真實資料試跑，記下實際費用，並說明他們的系統如何設定每月預算警示或上限，以及子代理最多同時開幾個。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "公開 beta 階段，一般工作者可以怎麼看"
+        },
+        {
+          "type": "paragraph",
+          "text": "你不需要自己學會呼叫 API，但接下來可能會更常看到標榜「用 Codex 同一套框架打造」的自動化服務或外包提案。判斷時可以把模型和框架分開看：模型決定理解與產出的能力，框架決定代理怎麼保存進度、使用工具和分工。GPT-6 Astra 那類發布談的是前者，Agents API 談的是後者，兩者都不等於你的工作流程已經安全可用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公開 beta 也意味著細節還會變，OpenAI 自己就說 beta 期間會依回饋快速調整。官方文件也提醒，用量數字可能在之後更新，部分追蹤功能不在這次 beta 的 API 範圍內。比較穩妥的做法，是先把它用在出錯後能修正、資料不涉及客戶機密的內部工作，例如整理公開資料或產出草稿，等費用紀錄、刪除流程和人工確認點都跑順了，再考慮擴大範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果公司有明確的資料保留或地區規定，最先要確認的反而不是功能，而是本文第三節提到的兩個限制：資料落地目前只支援美國、不支援零資料保留。這兩點在官方文件裡寫得很清楚，委託前先對照內部規範，可以省下開發到一半才發現不能上線的成本。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "委託 Agents API 自動化前的四個問題",
+          "text": "代理能讀寫哪些資料與服務？紀錄在哪裡、誰能看、留多久？跑錯時誰能中止、怎麼中止？試跑費用多少、預算上限怎麼設？另外先對照公司規範：資料落地目前只支援美國，且不支援零資料保留。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "GPT-6 Astra 發布：從回答問題到完成電腦工作",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-6-astra-20260903"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：Introducing the Agents API（2026 年 9 月 10 日）",
+          "url": "https://openai.com/index/introducing-the-agents-api/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API：Agents API 概覽",
+          "url": "https://developers.openai.com/api/docs/guides/agents-api/overview",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API：Agents API Observability and usage",
+          "url": "https://developers.openai.com/api/docs/guides/agents-api/observability",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API：Data controls in the OpenAI platform",
+          "url": "https://developers.openai.com/api/docs/guides/your-data",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "en": {
+      "title": "OpenAI Agents API Public Beta: Know Billing and Data Location Before Commissioning AI Work",
+      "description": "On September 10, 2026, OpenAI launched the Agents API in public beta, giving developers the agent harness that powers Codex. For people who use AI tools and may hire engineers or contractors for automation, this article covers how it differs from agents in ChatGPT and Codex, why costs are hard to estimate in advance, what US-only data residency and no Zero Data Retention support mean, and what to ask about permissions, logs, stopping, and budget before commissioning the work.",
+      "hero": {
+        "src": "/guides/ai-news-openai-agents-api-20260910/hero-en.jpg",
+        "alt": "Original illustration of an agent session linked to cards for a sandbox, tools, and cost records, depicting the workflow of commissioning AI automation",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 10, 2026, OpenAI published “Introducing the Agents API” and launched the Agents API in public beta. According to the official documentation, the API lets other applications use the harness that powers Codex through an OpenAI-managed service: OpenAI handles sessions, orchestration, context compaction, and recovery, while developers provide the tools and choose the execution environment. Agents can run code, edit files, connect to MCP servers, and produce artifacts inside a sandbox, and they can also divide work among subagents."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 15, 2026, against OpenAI's launch announcement, the Agents API documentation, and OpenAI's explanation of platform data controls. OpenAI says the public beta is open to developers starting immediately, and that during the beta it will iterate quickly based on feedback as it works toward general availability; the official documentation also notes that some ways of retrieving trace records are outside the scope of this public beta. This is a product for developers. This article contains no code and involved no hands-on integration testing, and the commissioning scenarios in it are examples designed by the editors, meant to help ordinary workers ask the right questions when they look for an engineer or contractor."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How It Differs from the Agents in ChatGPT and Codex"
+        },
+        {
+          "type": "paragraph",
+          "text": "In ChatGPT or Codex, the interface and the available features are designed into OpenAI's products; you sign in and hand over the work directly. The Agents API instead opens up the same Codex harness so that companies or contractors can build agents into their own systems: what the screens look like, which tools the agent can use, and which machine it runs on are all decided by whoever builds the system. In other words, a service you come across in the future that promises to “compile reports automatically” might be running on this API behind the scenes, but its permission scope is set by that provider, not by OpenAI defaults."
+        },
+        {
+          "type": "paragraph",
+          "text": "The official documentation describes it with four concepts. An agent is a combination of a model, instructions, tools, and MCP servers. An environment is an optional sandbox or computer in which the agent accesses files, loads skills, and runs commands. A session is a durable instance of an agent that works on tasks and responds to new input. Events and items are the input sent to the agent and what it produces while working. For non-engineers, the session is the concept most worth remembering: it keeps earlier progress, so a single job can be continued over several rounds."
+        },
+        {
+          "type": "paragraph",
+          "text": "The execution environment is a choice. OpenAI wrote in its announcement that an agent's compute environment can be an OpenAI-managed sandbox, the developer's own infrastructure, or one of its official sandbox partners; with the managed sandbox, OpenAI provisions and manages the sandbox. This choice affects where files are actually processed and who is responsible for managing the machines, so when commissioning work, ask the other party to state clearly which option they are using."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How Costs Are Calculated, and Why They Are Hard to Estimate in Advance"
+        },
+        {
+          "type": "paragraph",
+          "text": "The pricing section of the Agents API documentation lists three kinds of charges: model usage is billed at the selected model's API rates, tools provided by OpenAI at their own standard rates, and OpenAI-hosted sandboxes at standard container rates. OpenAI also said in its announcement that there are no additional fees for using the Agents API itself, but the absence of a platform fee does not make the total cost of an automation job easy to estimate."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI's usage guide points out that an agent may call the model several times while completing one task, and each call is billed according to the model's token pricing and prompt caching rules. The input to each call includes the agent instructions, tool definitions, conversation history, user input, files, and results returned by tools; tokens spent on reasoning are billed as output. Agents carry context forward within a session, and the documentation warns that repeated calls can process a long history over and over. The longer a job runs and the more back-and-forth it involves, the harder it becomes to judge the cost from the task's name alone."
+        },
+        {
+          "type": "paragraph",
+          "text": "Subagents make their own model calls as well. OpenAI recommends that estimates account for the work of the root agent and its subagents, retries, and any applicable tool, sandbox compute, and third-party service charges. In addition, the usage figures shown for a session are recorded on a best-effort basis: they may be temporarily null and may change later. The documentation states plainly that a null value does not mean zero usage, and that these figures are not the final bill."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Cost source",
+            "Billing basis",
+            "Why it is hard to estimate"
+          ],
+          "rows": [
+            [
+              "Root agent model",
+              "Selected model's API rates",
+              "Many calls per task"
+            ],
+            [
+              "Subagents",
+              "Also billed by model",
+              "Splitting work adds calls"
+            ],
+            [
+              "OpenAI tools",
+              "Each tool's standard rate",
+              "Depends on actual use"
+            ],
+            [
+              "Hosted sandbox",
+              "Standard container rates",
+              "Billed apart from models"
+            ],
+            [
+              "Retries",
+              "Model and tool rates",
+              "Failed reruns count too"
+            ],
+            [
+              "Third-party services",
+              "Set by each provider",
+              "Must be added separately"
+            ]
+          ],
+          "caption": "Checked on September 15, 2026; compiled from the OpenAI Agents API documentation and usage guide. Actual prices are subject to OpenAI's official pricing page."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Where the Data Lives, and Why Zero Data Retention Matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "The Agents API documentation states that data residency is currently supported only in the United States, and that Zero Data Retention (ZDR) is not supported. The documentation specifically adds that choosing a self-hosted sandbox does not make the Agents API ZDR-eligible. In other words, even if files are processed on your own machines, the agent's sessions are still managed by OpenAI's service."
+        },
+        {
+          "type": "paragraph",
+          "text": "What is ZDR? According to OpenAI's explanation of data controls, API usage generates abuse monitoring logs by default, which may contain content such as prompts and responses, and these are retained for up to 30 days by default (except where longer retention is required by law or needed to prevent harm). Customers who have received prior approval from OpenAI can use controls such as ZDR to keep customer content out of these logs. In the data controls table, the Agents API row reads: data not used for training, abuse monitoring retention of 30 days, application state retained until deleted, and not eligible for ZDR."
+        },
+        {
+          "type": "paragraph",
+          "text": "The implications for corporate compliance are straightforward. If your company's contracts with clients require that data not be retained on the vendor's side, or specify that data must be stored in a particular region outside the United States, this API does not currently meet those conditions; on ZDR, at least, OpenAI has stated outright that switching to a self-hosted sandbox does not change that. The data controls explanation also notes that MCP servers are third-party services and that data sent to them is subject to their own data residency policies, so which external services are connected belongs on the checklist as well."
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation explains that the Agents API retains session state so that work can continue across turns, and that sessions and published artifacts can be deleted when they are no longer needed. When commissioning work, you can ask the other party to put in writing who is responsible for deletion, how often it happens, and which artifacts must be downloaded and saved before anything is deleted."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-agents-api-20260910/diagram-1-en.svg",
+          "alt": "Four-panel diagram of the Agents API's data boundaries: data residency in the United States only, no ZDR support, 30-day monitoring logs, state kept until deleted",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from OpenAI documentation: data residency currently supported only in the United States, ZDR not supported, abuse monitoring logs kept for up to 30 days by default, session state retained until deleted.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What to Ask First When Commissioning an Engineer or Contractor"
+        },
+        {
+          "type": "paragraph",
+          "text": "The first question is permissions. Tools for the Agents API are provided or chosen by the party doing the development, so ask what data the agent can read, which files it can change, which MCP services it connects to, and whether it can send email or modify production systems. Among the examples in OpenAI's documentation are a data analyst agent that answers data warehouse questions using only read-only SQL, and an incident response agent that requests approval before taking recovery actions. Both designs are worth using as references: start with read-only access, and keep human confirmation for any action that changes data."
+        },
+        {
+          "type": "paragraph",
+          "text": "The second is logs. OpenAI's usage guide says developers can view session records in the Agents tab of the OpenAI platform dashboard, examining each turn of work, tool calls, and subagents, and can also trace what happened through the event stream and stored items. When commissioning work, ask the other party to explain who can see these records when something goes wrong, whether your own systems will keep a separate copy, and how long the records are kept."
+        },
+        {
+          "type": "paragraph",
+          "text": "The third is how to stop the agent and how to cap costs. Take an example designed by the editors: a small marketing firm hires a contractor to build an agent that “compiles customer feedback and produces a report every week.” Before accepting the work, the firm can ask the contractor to demonstrate who stops the agent, and how, when it heads in the wrong direction, and what happens to half-finished files once it is stopped. It can then ask for a trial run on one week of real data with the actual cost recorded, along with an explanation of how the contractor's system sets monthly budget alerts or caps, and the maximum number of subagents that can run at the same time."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Ordinary Workers Should Make of the Public Beta"
+        },
+        {
+          "type": "paragraph",
+          "text": "You don't need to learn how to call the API yourself, but you may increasingly see automation services or contractor proposals advertised as “built on the same harness as Codex.” When evaluating them, look at the model and the harness separately: the model determines the ability to understand and produce output, while the harness determines how the agent saves progress, uses tools, and divides up work. Launches like GPT-6 Astra are about the former, the Agents API is about the latter, and neither means your workflow is already safe and ready to use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Public beta also means the details will keep changing; OpenAI itself says it will iterate quickly based on feedback during the beta. The official documentation also warns that usage figures may be updated later and that some tracing features are outside the scope of the API in this beta. A safer approach is to start with internal work where mistakes can be corrected and no client confidential data is involved, such as organizing public information or producing drafts, and to consider widening the scope only once cost records, the deletion process, and human confirmation points are all running smoothly."
+        },
+        {
+          "type": "paragraph",
+          "text": "If your company has explicit rules on data retention or region, the first thing to confirm is not the features but the two limits covered in the third section of this article: data residency is currently supported only in the United States, and Zero Data Retention is not supported. Both points are spelled out clearly in the official documentation, and checking them against your internal policies before commissioning work can spare you the cost of discovering, halfway through development, that the system cannot go live."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Four Questions Before Commissioning Automation on the Agents API",
+          "text": "What data and services can the agent read and write? Where are the logs, who can see them, and how long are they kept? If the agent goes wrong, who can stop it, and how? What did the trial run cost, and how is the budget cap set? Also check your company's policies first: data residency is currently supported only in the United States, and Zero Data Retention is not supported."
+        },
+        {
+          "type": "link",
+          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "GPT-6 Astra Announced: From Answering Questions to Completing Computer Tasks",
+          "url": "https://mokaair.com/en/life/ai-news-gpt-6-astra-20260903"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: Introducing the Agents API (September 10, 2026)",
+          "url": "https://openai.com/index/introducing-the-agents-api/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API: Agents API Overview",
+          "url": "https://developers.openai.com/api/docs/guides/agents-api/overview",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API: Agents API Observability and usage",
+          "url": "https://developers.openai.com/api/docs/guides/agents-api/observability",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API: Data controls in the OpenAI platform",
+          "url": "https://developers.openai.com/api/docs/guides/your-data",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "ja": {
+      "title": "OpenAI Agents APIがパブリックベータに：AI自動化を委託する前に課金とデータの保存場所を理解する",
+      "description": "OpenAIは2026年9月10日、Agents APIをパブリックベータとして公開し、Codexを動かすエージェントのハーネス（harness）を開発者が使えるようにしました。本記事はAIツールを使い、エンジニアや外部委託先に自動化を依頼する可能性がある人に向けて、ChatGPTやCodexのエージェントとの違い、費用を事前に正確に見積もりにくい理由、データレジデンシーが米国のみでゼロデータ保持（ZDR）に対応しないことの意味、そして委託前に確認すべき権限、ログ、停止、予算の問題を解説します。",
+      "hero": {
+        "src": "/guides/ai-news-openai-agents-api-20260910/hero-ja.jpg",
+        "alt": "エージェントのセッションがサンドボックス、ツール、費用記録のカードにつながり、AI自動化を委託する流れを表したオリジナルイラスト",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月10日、OpenAIは「Introducing the Agents API」を発表し、Agents APIをパブリックベータとして公開しました。公式ドキュメントによると、このAPIを使うと、ほかのアプリケーションがOpenAIの管理するサービスを通じて、Codexを動かしているエージェントの実行基盤であるハーネス（harness）を利用できます。セッション（session）、オーケストレーション、コンテキストの圧縮とリカバリー（recovery）はOpenAIが担い、開発者はツールを用意して実行環境を選びます。エージェントはサンドボックス（sandbox）の中でコードを実行し、ファイルを編集し、MCPサーバーに接続して成果物を作成できるほか、作業をサブエージェントに手分けして処理させることもできます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月15日に、OpenAIの発表記事、Agents APIのドキュメント、プラットフォームのデータ管理に関する説明をもとに確認しました。OpenAIは、パブリックベータは即日から開発者に提供され、ベータ期間中はフィードバックに基づいて素早く改良を重ねながら正式版に向けて進めるとしています。公式ドキュメントには、一部のトレース記録の取得方法は今回のパブリックベータの対象外であることも記されています。これは開発者向けの製品であり、本記事ではコードを書いておらず、実際の接続テストも行っていません。記事中の委託シナリオはすべて編集部が設計した例で、一般の働く人がエンジニアや外部委託先を探すときに的確な質問ができるようにすることを目的としています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "ChatGPTやCodexのエージェントとの違い"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPTやCodexでは、画面や使える機能はOpenAIの製品としてあらかじめ設計されており、ログインすればそのまま作業を依頼できます。一方、Agents APIは同じCodexのハーネスを外部に開放し、企業や外部委託先が自社のシステムにエージェントを組み込めるようにするものです。画面の見た目、エージェントが使えるツール、どのマシンで動かすかは、すべてシステムを作る側が決めます。つまり、今後目にする「レポートを自動でまとめる」サービスの裏側でこのAPIが使われている可能性はありますが、その権限の範囲を設定しているのは提供する側であり、OpenAIの初期設定ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式ドキュメントは、4つの概念でこのAPIを説明しています。エージェントは、モデル、指示、ツール、MCPサーバーの組み合わせです。環境は任意で用意するサンドボックスまたはコンピューターで、エージェントはその中でファイルにアクセスし、スキルを読み込み、コマンドを実行します。セッションは継続して存在するエージェントのインスタンスで、タスクを処理し、新しい入力に応答します。イベントとアイテムは、エージェントに送られる入力と、作業の過程で生まれる出力です。エンジニアではない人にとって最も覚えておきたいのはセッションです。それまでの進捗が保存されるため、1つの仕事を何回かに分けて続けることができます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実行環境は選ぶことができます。OpenAIは発表記事で、エージェントの計算環境として、OpenAIが管理するサンドボックス、開発者自身のインフラ、公式に提携しているサンドボックス事業者のいずれかを使えると書いています。管理型のサンドボックスを選んだ場合は、OpenAIがサンドボックスの構築と管理を行います。この選択によって、ファイルが実際にどこで処理されるか、マシンの管理を誰が担うかが変わるため、委託する際にはどの方式を採用するのかを相手にはっきり説明してもらうべきです。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "費用はどう計算されるのか、なぜ事前に見積もりにくいのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "Agents APIのドキュメントの料金に関する項目には、3種類の費用が挙げられています。モデルの利用は選んだモデルのAPI料金で、OpenAIが提供するツールはそれぞれの標準料金で、OpenAIが管理するサンドボックスは標準のコンテナ料金で課金されます。OpenAIは発表記事で、Agents APIそのものの利用には追加料金がかからないとも述べていますが、プラットフォーム料金がないからといって、自動化の仕事全体の費用が見積もりやすくなるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式の利用量に関する説明によると、エージェントは1つのタスクを完了するまでにモデルを何度も呼び出すことがあり、そのたびにモデルのトークン単価とプロンプトキャッシュのルールに従って課金されます。各呼び出しの入力には、エージェントへの指示、ツールの定義、会話履歴、ユーザーの入力、ファイル、ツールから返された結果が含まれ、推論に使われたトークンは出力として数えられます。エージェントは同じセッションの中でコンテキストを引き継ぐため、ドキュメントでは、呼び出しを繰り返すと長い履歴が何度も処理される可能性があると注意を促しています。作業が長く続き、やり取りが増えるほど、タスクの名前だけで費用を判断するのは難しくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サブエージェントもそれぞれモデルを呼び出します。公式は見積もりの際に、メインのエージェントとサブエージェントの作業、再試行、さらに該当するツール、サンドボックスの計算資源、サードパーティーのサービスの費用まで含めるよう勧めています。また、セッションに表示される利用量の数値はベストエフォートで記録されるもので、一時的に空の値（null）になることも、後から変わることもあります。ドキュメントは、空の値は利用量ゼロを意味せず、これらの数値は最終的な請求額でもないと明言しています。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "費用の発生源",
+            "課金の基準",
+            "見積もりにくい理由"
+          ],
+          "rows": [
+            [
+              "メインエージェントのモデル",
+              "選んだモデルのAPI料金",
+              "1タスクで何度も呼び出す"
+            ],
+            [
+              "サブエージェント",
+              "同じくモデル料金",
+              "分担で呼び出しが増える"
+            ],
+            [
+              "OpenAIのツール",
+              "各ツールの標準料金",
+              "実際の使用量しだい"
+            ],
+            [
+              "管理型サンドボックス",
+              "標準のコンテナ料金",
+              "モデル料金とは別計算"
+            ],
+            [
+              "再試行",
+              "モデルとツールの料金",
+              "失敗のやり直しも課金"
+            ],
+            [
+              "サードパーティー",
+              "各事業者の料金",
+              "別途合算が必要"
+            ]
+          ],
+          "caption": "2026年9月15日確認。OpenAIのAgents APIドキュメントと利用量の説明をもとに整理。実際の価格は公式の料金ページをご確認ください。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "データはどこに置かれるのか、ゼロデータ保持はなぜ重要なのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "Agents APIのドキュメントには、現在データレジデンシー（data residency）は米国のみに対応し、ゼロデータ保持（Zero Data Retention、略称ZDR）には対応していないと明記されています。さらに、セルフホストのサンドボックスを選んでもAgents APIがZDRの対象になるわけではない、と特に補足しています。つまり、ファイルを自社のマシンで処理したとしても、エージェントのセッションは引き続きOpenAIのサービスが管理します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ZDRとは何でしょうか。OpenAIのデータ管理に関する説明によると、APIを利用すると初期設定で不正利用監視のログが作成され、そこにはプロンプトや応答などの内容が含まれることがあり、初期設定では最大30日間保存されます（法律で求められる場合や、危害を防ぐために必要な場合を除きます）。OpenAIの事前承認を受けた顧客は、ZDRなどの管理オプションを使って、顧客のコンテンツをこうしたログから除外できます。データ管理の表では、Agents APIの欄に、データは学習に使用しない、不正利用監視の保存期間は30日、アプリケーションの状態は削除まで保存、ZDRの対象外、と記載されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "企業のコンプライアンスにとっての意味は明快です。顧客との契約で、データをベンダー側に保持してはならない、あるいは米国以外の特定の地域にデータを置かなければならないと定めている場合、このAPIは現時点でその条件を満たしません。少なくともZDRについては、セルフホストのサンドボックスに切り替えても変わらないと公式が明言しています。データ管理の説明では、MCPサーバーはサードパーティーのサービスであり、そこに送られたデータには相手側のデータレジデンシーのポリシーが適用されるとも注意を促しているため、どの外部サービスに接続しているかも確認項目に含める必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ドキュメントによると、Agents APIは作業を複数のターンにわたって続けられるようにセッションの状態を保存し、セッションと公開済みの成果物は不要になった時点で削除できます。委託する際には、誰が削除を担当するのか、どのくらいの頻度で削除するのか、削除の前にどの成果物をダウンロードして保存しておくのかを、相手に文書で明記してもらうとよいでしょう。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-agents-api-20260910/diagram-1-ja.svg",
+          "alt": "Agents APIのデータの境界を示す4項目の図解：データレジデンシーは米国のみ、ZDR非対応、監視ログは30日、状態は削除まで保存",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAIのドキュメントをもとに整理：データレジデンシーは現在米国のみ、ZDR非対応、不正利用監視ログは初期設定で最大30日、セッションの状態は削除まで保存。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "エンジニアや外部委託先に依頼するとき、まず確認したいこと"
+        },
+        {
+          "type": "paragraph",
+          "text": "1つ目は権限です。Agents APIのツールは開発する側が用意または選択するため、エージェントがどのデータを読めるのか、どのファイルを変更できるのか、どのMCPサービスに接続しているのか、メールを送ったり本番システムを変更したりできるのかを確認しましょう。公式ドキュメントの例には、読み取り専用のSQLだけでデータウェアハウスに関する質問に答える分析エージェントや、復旧作業を実行する前に承認を求めるインシデント対応エージェントがあります。どちらの設計も参考になります。まずは読み取り専用から始め、データを変更する操作には人による確認を残しておきましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2つ目はログです。公式の利用量に関する説明では、開発者はOpenAIプラットフォームの管理画面にあるAgentsタブでセッションの記録を確認し、各ターンの作業、ツールの呼び出し、サブエージェントを見られるほか、イベントストリームと保存されたアイテムから経過をたどることもできるとしています。委託する際には、問題が起きたときに誰がこれらの記録を見られるのか、自社のシステムでも別に記録を残すのか、記録をどのくらいの期間保存するのかを相手に説明してもらいましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3つ目は停止の仕組みと費用の上限です。編集部が設計した例として、小規模なマーケティング会社が外部委託先に「毎週顧客の意見をまとめてレポートを作成する」エージェントを依頼したとします。検収の前に、エージェントが誤った方向に進んだとき誰がどのような方法で止めるのか、止めた後に作りかけのファイルをどう扱うのかを実演してもらいます。さらに、1週間分の実データで試験運用して実際の費用を記録してもらい、相手のシステムで月ごとの予算アラートや上限をどう設定するのか、サブエージェントを同時に最大いくつまで動かすのかも説明してもらいましょう。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "パブリックベータの段階で、一般の働く人はどう受け止めればよいか"
+        },
+        {
+          "type": "paragraph",
+          "text": "APIの呼び出し方を自分で覚える必要はありませんが、今後は「Codexと同じハーネスで構築」とうたう自動化サービスや外部委託の提案を目にする機会が増えるかもしれません。判断するときは、モデルとハーネスを分けて考えるとよいでしょう。モデルは理解と出力の能力を決め、ハーネスはエージェントが進捗をどう保存し、ツールをどう使い、作業をどう分担するかを決めます。GPT-6 Astraのような発表が扱うのは前者、Agents APIが扱うのは後者であり、どちらもあなたの業務フローがすでに安全に使える状態であることを意味するわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "パブリックベータということは、細かな仕様がこれからも変わるということでもあります。OpenAI自身も、ベータ期間中はフィードバックに基づいて素早く改良すると述べています。公式ドキュメントも、利用量の数値が後から更新される可能性があることや、一部のトレース機能が今回のベータのAPIの対象外であることに注意を促しています。より堅実なのは、まず誤りがあっても修正でき、顧客の機密情報を含まない社内業務、たとえば公開データの整理や下書きの作成に使い、費用の記録、削除の手順、人による確認ポイントがすべて円滑に回るようになってから、範囲の拡大を検討するやり方です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "会社にデータの保持や地域に関する明確な規定がある場合、最初に確認すべきなのは機能ではなく、本記事の第3節で触れた2つの制限です。データレジデンシーは現在米国のみに対応し、ゼロデータ保持には対応していません。この2点は公式ドキュメントにはっきり書かれているので、委託の前に社内の規定と照らし合わせておけば、開発の途中で本番運用できないと気づくようなコストを避けられます。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Agents APIで自動化を委託する前の4つの質問",
+          "text": "エージェントはどのデータとサービスを読み書きできますか。ログはどこにあり、誰が見られ、どのくらい保存されますか。誤った動作をしたとき、誰がどのように止められますか。試験運用の費用はいくらで、予算の上限はどう設定しますか。あわせて社内規定との照合も先に行いましょう。データレジデンシーは現在米国のみに対応し、ゼロデータ保持には対応していません。"
+        },
+        {
+          "type": "link",
+          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "GPT-6 Astra発表：質問への回答からコンピュータ作業の完遂へ",
+          "url": "https://mokaair.com/ja/life/ai-news-gpt-6-astra-20260903"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：Introducing the Agents API（2026年9月10日）",
+          "url": "https://openai.com/index/introducing-the-agents-api/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API：Agents API 概要",
+          "url": "https://developers.openai.com/api/docs/guides/agents-api/overview",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API：Agents API Observability and usage",
+          "url": "https://developers.openai.com/api/docs/guides/agents-api/observability",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API：Data controls in the OpenAI platform",
+          "url": "https://developers.openai.com/api/docs/guides/your-data",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "ko": {
+      "title": "OpenAI Agents API 공개 베타: AI 자동화를 맡기기 전에 과금과 데이터 위치부터 이해하기",
+      "description": "OpenAI가 2026년 9월 10일 Agents API를 공개 베타로 출시하며 Codex를 구동하는 에이전트 하네스(harness)를 개발자에게 제공했습니다. 이 글은 AI 도구를 쓰면서 엔지니어나 외주 업체에 자동화를 맡길 수 있는 사람을 위해 ChatGPT, Codex 속 에이전트와의 차이, 비용을 미리 정확히 추정하기 어려운 이유, 데이터 레지던시가 미국만 지원되고 제로 데이터 보존(ZDR)을 지원하지 않는다는 것의 의미, 그리고 맡기기 전에 물어야 할 권한, 기록, 중지, 예산 문제를 설명합니다.",
+      "hero": {
+        "src": "/guides/ai-news-openai-agents-api-20260910/hero-ko.jpg",
+        "alt": "에이전트 세션이 샌드박스, 도구, 비용 기록 카드로 연결되어 AI 자동화를 맡기는 흐름을 보여 주는 오리지널 일러스트",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 10일, OpenAI는 “Introducing the Agents API”를 발표하고 Agents API를 공개 베타로 출시했습니다. 공식 문서에 따르면 이 API를 사용하면 다른 애플리케이션이 OpenAI가 관리하는 서비스를 통해 Codex를 구동하는 에이전트 실행 프레임워크, 즉 하네스(harness)를 이용할 수 있습니다. 세션(session), 오케스트레이션, 컨텍스트 압축과 복구(recovery)는 OpenAI가 처리하고, 개발자는 도구를 제공하고 실행 환경을 선택합니다. 에이전트는 샌드박스(sandbox) 안에서 코드를 실행하고 파일을 편집하며 MCP 서버에 연결해 결과물을 만들 수 있고, 작업을 하위 에이전트들에게 나눠 맡겨 처리할 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 2026년 9월 15일에 OpenAI의 발표문, Agents API 문서, 플랫폼 데이터 통제 안내를 바탕으로 확인했습니다. OpenAI는 공개 베타를 즉시 개발자에게 제공하며, 베타 기간에는 피드백을 바탕으로 빠르게 개선하면서 정식 버전을 향해 나아가겠다고 밝혔습니다. 공식 문서에는 일부 트레이스 기록을 조회하는 방식이 이번 공개 베타의 범위에 포함되지 않는다는 점도 명시되어 있습니다. 이 제품은 개발자용이며, 이 글에서는 코드를 작성하지 않았고 실제 연동 테스트도 하지 않았습니다. 글에 나오는 위탁 상황은 모두 편집팀이 설계한 예시로, 일반 직장인이 엔지니어나 외주 업체를 찾을 때 올바른 질문을 할 수 있도록 돕기 위한 것입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "ChatGPT, Codex 속 에이전트와 무엇이 다른가"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT나 Codex에서는 화면과 사용할 수 있는 기능을 OpenAI 제품이 미리 설계해 두었기 때문에, 로그인한 뒤 바로 일을 맡기면 됩니다. 반면 Agents API는 같은 Codex 하네스를 외부에 개방해 기업이나 외주 업체가 자기 시스템에 에이전트를 넣을 수 있게 합니다. 화면 구성, 에이전트가 쓸 수 있는 도구, 어느 머신에서 실행할지는 모두 시스템을 만드는 쪽이 정합니다. 다시 말해 앞으로 보게 될 어떤 '보고서 자동 정리' 서비스의 뒤에 이 API가 있을 수 있지만, 그 권한 범위는 상대방이 설정한 것이지 OpenAI의 기본값이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 문서는 네 가지 개념으로 이 API를 설명합니다. 에이전트는 모델, 지시, 도구, MCP 서버의 조합입니다. 환경은 선택 사항인 샌드박스나 컴퓨터로, 에이전트가 그 안에서 파일에 접근하고 스킬을 불러오며 명령을 실행합니다. 세션은 지속적으로 존재하는 에이전트 인스턴스로, 작업을 처리하고 새로운 입력에 응답합니다. 이벤트와 항목은 에이전트에 보내는 입력과 작업 과정에서 나오는 산출물입니다. 엔지니어가 아닌 사람이 가장 기억해 둘 개념은 세션입니다. 이전 진행 상황을 저장하므로 하나의 일을 여러 차례에 걸쳐 이어서 할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실행 환경은 직접 고를 수 있습니다. OpenAI는 발표문에서 에이전트의 컴퓨팅 환경으로 OpenAI가 관리하는 샌드박스, 개발자 자체 인프라, 공식 파트너 샌드박스 제공업체 중 하나를 쓸 수 있다고 밝혔습니다. 관리형 샌드박스를 선택하면 OpenAI가 샌드박스를 구축하고 관리합니다. 이 선택에 따라 파일이 실제로 어디에서 처리되는지, 머신 관리를 누가 책임지는지가 달라지므로, 일을 맡길 때는 어떤 방식을 쓰는지 상대방에게 분명히 설명해 달라고 요청해야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "비용은 어떻게 계산되고, 왜 미리 추정하기 어려운가"
+        },
+        {
+          "type": "paragraph",
+          "text": "Agents API 문서의 가격 항목에는 세 가지 비용이 나와 있습니다. 모델 사용량은 선택한 모델의 API 요금으로, OpenAI가 제공하는 도구는 각 도구의 표준 요금으로, OpenAI 관리형 샌드박스는 표준 컨테이너 요금으로 청구됩니다. OpenAI는 발표문에서 Agents API 자체를 사용하는 데는 추가 요금이 없다고 밝혔지만, 플랫폼 요금이 없다고 해서 자동화 작업 하나의 총비용을 쉽게 추정할 수 있는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 사용량 안내에 따르면 에이전트는 하나의 작업을 끝내는 동안 모델을 여러 번 호출할 수 있으며, 호출할 때마다 해당 모델의 토큰 가격과 프롬프트 캐싱 규칙에 따라 요금이 부과됩니다. 각 호출의 입력에는 에이전트 지시, 도구 정의, 대화 기록, 사용자 입력, 파일, 도구가 반환한 결과가 포함되며, 추론 과정의 토큰은 출력으로 계산됩니다. 에이전트는 같은 세션 안에서 컨텍스트를 이어 가며, 문서는 반복되는 호출이 긴 기록을 거듭 처리할 수 있다는 점도 짚습니다. 작업이 오래 이어지고 주고받는 횟수가 많을수록 작업 이름만 보고 비용을 판단하기는 더 어려워집니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "하위 에이전트도 각자 모델을 호출합니다. OpenAI는 비용을 추정할 때 메인 에이전트와 하위 에이전트의 작업, 재시도, 그리고 해당되는 도구, 샌드박스 컴퓨팅, 서드파티 서비스 비용까지 모두 포함하라고 권장합니다. 또한 세션에 표시되는 사용량 수치는 최선의 노력(best-effort) 방식으로 기록되는 값이어서 일시적으로 빈 값(null)이거나 나중에 바뀔 수 있습니다. 문서는 빈 값이 사용량 0을 뜻하지 않으며 이 수치가 최종 청구서도 아니라고 분명히 밝히고 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "비용 발생원",
+            "과금 기준",
+            "추정이 어려운 이유"
+          ],
+          "rows": [
+            [
+              "메인 에이전트 모델",
+              "선택한 모델 API 요금",
+              "작업 하나에 여러 번 호출"
+            ],
+            [
+              "하위 에이전트",
+              "마찬가지로 모델 요금",
+              "나눠 하면 호출 증가"
+            ],
+            [
+              "OpenAI 도구",
+              "도구별 표준 요금",
+              "실제 사용량에 좌우"
+            ],
+            [
+              "관리형 샌드박스",
+              "표준 컨테이너 요금",
+              "모델 요금과 별도 계산"
+            ],
+            [
+              "재시도",
+              "모델·도구 요금 부과",
+              "실패 후 재실행도 과금"
+            ],
+            [
+              "서드파티 서비스",
+              "제공업체별 요금",
+              "따로 합산해야 함"
+            ]
+          ],
+          "caption": "2026년 9월 15일 확인. OpenAI Agents API 문서와 사용량 안내를 바탕으로 정리했으며, 실제 가격은 공식 가격 페이지를 기준으로 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "데이터는 어디에 있고, 제로 데이터 보존은 왜 중요한가"
+        },
+        {
+          "type": "paragraph",
+          "text": "Agents API 문서에는 현재 데이터 레지던시(data residency)는 미국만 지원하며 제로 데이터 보존(Zero Data Retention, 줄여서 ZDR)은 지원하지 않는다고 명시되어 있습니다. 문서는 자체 호스팅 샌드박스를 선택해도 Agents API가 ZDR 적용 대상이 되지는 않는다고 특별히 덧붙였습니다. 즉, 파일을 자사 머신에서 처리하더라도 에이전트의 세션은 여전히 OpenAI 서비스가 관리합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "ZDR이란 무엇일까요? OpenAI의 데이터 통제 안내에 따르면 API를 사용하면 기본적으로 악용 모니터링 로그가 생성되고, 여기에는 프롬프트와 응답 같은 내용이 포함될 수 있으며, 기본적으로 최대 30일 동안 보관됩니다(법률상 요구되거나 피해를 막기 위해 필요한 경우는 예외입니다). OpenAI의 사전 승인을 받은 고객은 ZDR 같은 통제 옵션을 사용해 고객 콘텐츠를 이러한 로그에서 제외할 수 있습니다. 데이터 통제 표의 Agents API 항목에는 데이터를 학습에 사용하지 않음, 악용 모니터링 보관 30일, 애플리케이션 상태는 삭제할 때까지 보관, ZDR 적용 대상 아님이라고 적혀 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기업 컴플라이언스 측면의 의미는 분명합니다. 회사가 고객과 맺은 계약에서 데이터를 공급업체 측에 보관해서는 안 된다고 요구하거나, 데이터를 미국 이외의 특정 지역에 두도록 규정하고 있다면 이 API는 현재 그 조건을 충족하지 못합니다. 적어도 ZDR에 관해서는 자체 호스팅 샌드박스로 바꿔도 달라지지 않는다고 공식적으로 밝혔습니다. 데이터 통제 안내는 MCP 서버가 서드파티 서비스이며 그곳으로 보낸 데이터에는 해당 서비스의 데이터 레지던시 정책이 적용된다는 점도 알리고 있으므로, 어떤 외부 서비스에 연결했는지도 점검 대상에 넣어야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "문서에 따르면 Agents API는 작업을 여러 턴에 걸쳐 이어 갈 수 있도록 세션 상태를 보관하며, 세션과 게시된 결과물은 더 이상 필요하지 않을 때 삭제할 수 있습니다. 일을 맡길 때는 누가 삭제를 책임지는지, 얼마나 자주 삭제하는지, 삭제 전에 어떤 결과물을 내려받아 보관해야 하는지를 상대방에게 문서로 명시해 달라고 요청할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-agents-api-20260910/diagram-1-ko.svg",
+          "alt": "Agents API의 데이터 경계를 보여 주는 4칸 도해: 데이터 레지던시는 미국만, ZDR 미지원, 모니터링 로그 30일, 상태는 삭제할 때까지 보관",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAI 문서를 바탕으로 정리: 데이터 레지던시는 현재 미국만 지원, ZDR 미지원, 악용 모니터링 로그는 기본 최대 30일, 세션 상태는 삭제할 때까지 보관.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "엔지니어나 외주 업체에 맡길 때 먼저 물어볼 것"
+        },
+        {
+          "type": "paragraph",
+          "text": "첫째는 권한입니다. Agents API의 도구는 개발하는 쪽이 제공하거나 선택하므로, 에이전트가 어떤 데이터를 읽을 수 있는지, 어떤 파일을 수정할 수 있는지, 어떤 MCP 서비스에 연결되어 있는지, 이메일을 보내거나 실제 운영 중인 시스템을 변경할 수 있는지 물어봐야 합니다. 공식 문서의 예시에는 읽기 전용 SQL만으로 데이터 웨어하우스 관련 질문에 답하는 분석 에이전트와, 복구 작업을 실행하기 전에 승인을 요청하는 인시던트 대응 에이전트가 있습니다. 두 설계 모두 참고할 만합니다. 읽기 전용으로 시작하고, 데이터를 바꾸는 작업에는 사람의 확인 단계를 남겨 두는 것이 좋습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "둘째는 기록입니다. 공식 사용량 안내에 따르면 개발자는 OpenAI 플랫폼 대시보드의 Agents 탭에서 세션 기록을 보고 각 턴의 작업, 도구 호출, 하위 에이전트를 살펴볼 수 있으며, 이벤트 스트림과 저장된 항목을 통해 과정을 추적할 수도 있습니다. 일을 맡길 때는 문제가 생겼을 때 누가 이 기록을 볼 수 있는지, 자사 시스템에도 따로 기록을 남기는지, 기록을 얼마나 오래 보관하는지 설명해 달라고 요청할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "셋째는 중지 방법과 비용 상한입니다. 편집팀이 설계한 예시로, 한 소규모 마케팅 회사가 외주 업체에 '매주 고객 의견을 정리해 보고서를 만드는' 에이전트를 맡겼다고 가정해 보겠습니다. 검수 전에는 에이전트가 엉뚱한 방향으로 갈 때 누가 어떤 방법으로 중지하는지, 중지한 뒤 절반쯤 만들어진 파일은 어떻게 처리하는지 시연해 달라고 요청할 수 있습니다. 이어서 일주일 치 실제 데이터로 시범 운영해 실제 비용을 기록하게 하고, 상대방 시스템에서 월 예산 알림이나 상한을 어떻게 설정하는지, 하위 에이전트를 동시에 최대 몇 개까지 실행하는지도 설명해 달라고 할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "공개 베타 단계에서 일반 직장인은 어떻게 바라보면 좋을까"
+        },
+        {
+          "type": "paragraph",
+          "text": "API를 직접 호출하는 방법까지 배울 필요는 없지만, 앞으로 'Codex와 같은 하네스로 만들었다'고 내세우는 자동화 서비스나 외주 제안을 더 자주 보게 될 수 있습니다. 판단할 때는 모델과 하네스를 나눠 보는 것이 좋습니다. 모델은 이해하고 결과물을 만드는 능력을 결정하고, 하네스는 에이전트가 진행 상황을 어떻게 저장하고 도구를 어떻게 쓰며 일을 어떻게 나누는지를 결정합니다. GPT-6 Astra 같은 발표가 다루는 것은 전자이고 Agents API가 다루는 것은 후자이며, 둘 중 어느 것도 여러분의 업무 흐름이 이미 안전하게 쓸 수 있는 상태라는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공개 베타라는 것은 세부 사항이 앞으로도 바뀐다는 뜻이기도 합니다. OpenAI 스스로도 베타 기간에 피드백을 바탕으로 빠르게 개선하겠다고 밝혔습니다. 공식 문서 역시 사용량 수치가 나중에 갱신될 수 있고 일부 추적 기능은 이번 베타의 API 범위에 포함되지 않는다고 알리고 있습니다. 더 안전한 방법은 먼저 실수가 생겨도 바로잡을 수 있고 고객 기밀이 담기지 않은 내부 업무, 예를 들어 공개 자료 정리나 초안 작성에 써 보고, 비용 기록과 삭제 절차, 사람의 확인 지점이 모두 원활하게 돌아가게 된 뒤에 범위 확대를 검토하는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "회사에 데이터 보존이나 지역에 관한 명확한 규정이 있다면, 가장 먼저 확인할 것은 기능이 아니라 이 글의 세 번째 절에서 다룬 두 가지 제한입니다. 데이터 레지던시는 현재 미국만 지원하며, 제로 데이터 보존은 지원하지 않습니다. 이 두 가지는 공식 문서에 분명히 적혀 있으므로, 맡기기 전에 사내 규정과 대조해 보면 개발 도중에야 실제 서비스에 적용할 수 없다는 사실을 발견하는 비용을 줄일 수 있습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Agents API 자동화를 맡기기 전 네 가지 질문",
+          "text": "에이전트가 읽고 쓸 수 있는 데이터와 서비스는 무엇입니까? 기록은 어디에 있고, 누가 볼 수 있으며, 얼마나 보관합니까? 잘못 실행될 때 누가 어떻게 중지할 수 있습니까? 시범 운영 비용은 얼마이고 예산 상한은 어떻게 설정합니까? 아울러 회사 규정과도 먼저 대조해 보시기 바랍니다. 데이터 레지던시는 현재 미국만 지원하며, 제로 데이터 보존은 지원하지 않습니다."
+        },
+        {
+          "type": "link",
+          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "GPT-6 Astra 발표: 질문 답변을 넘어 컴퓨터 작업 완수로",
+          "url": "https://mokaair.com/ko/life/ai-news-gpt-6-astra-20260903"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: Introducing the Agents API(2026년 9월 10일)",
+          "url": "https://openai.com/index/introducing-the-agents-api/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API: Agents API 개요",
+          "url": "https://developers.openai.com/api/docs/guides/agents-api/overview",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API: Agents API Observability and usage",
+          "url": "https://developers.openai.com/api/docs/guides/agents-api/observability",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API: Data controls in the OpenAI platform",
+          "url": "https://developers.openai.com/api/docs/guides/your-data",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "OpenAI Agents API 公开 beta：委托 AI 自动化前，先看懂计费与数据位置",
+      "description": "OpenAI 于 2026 年 9 月 10 日以公开 beta 形式推出 Agents API，把驱动 Codex 的智能体运行框架开放给开发者使用。本文写给会用 AI 工具、可能委托工程师或外包做自动化的人：它和 ChatGPT、Codex 里的智能体有何不同，费用为什么难以事先估准，数据驻留只支持美国且不支持零数据保留意味着什么，以及委托前应该问清的权限、日志、停止与预算问题。",
+      "hero": {
+        "src": "/guides/ai-news-openai-agents-api-20260910/hero-zh-cn.jpg",
+        "alt": "智能体会话连接到沙箱、工具与费用记录卡片，呈现委托 AI 自动化流程的原创插图",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 10 日，OpenAI 发布《Introducing the Agents API》，以公开 beta 形式推出 Agents API。根据官方文档说明，这个 API 让其他应用程序通过 OpenAI 托管的服务，使用驱动 Codex 的智能体运行框架（harness）：会话（session）、流程编排、上下文压缩与恢复（recovery）由 OpenAI 处理，开发者则负责提供工具并选择执行环境。智能体可以在沙箱（sandbox）里运行代码、编辑文件、连接 MCP 服务器并产出成果文件，也能把工作拆给子智能体分头处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 15 日核实，依据 OpenAI 的发布公告、Agents API 文档与平台数据控制说明。OpenAI 表示公开 beta 即日起向开发者开放，期间会根据反馈快速调整、向正式版推进；官方文档也注明，部分追踪记录的获取方式不在此次公开 beta 的范围内。这是面向开发者的产品，本文不写代码，也没有进行实际接入测试，文中的委托场景都是编辑设计的例子，目的是帮助普通职场人在找工程师或外包时问对问题。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "和 ChatGPT、Codex 里的智能体有何不同"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 ChatGPT 或 Codex 里，界面和可用功能由 OpenAI 的产品设计好，你登录后直接交代工作即可。Agents API 则是把同一套 Codex 运行框架开放出来，让公司或外包把智能体放进自己的系统：界面长什么样、智能体可以用哪些工具、在哪台机器上运行，都由搭建系统的一方决定。换句话说，你今后看到的某个“自动整理报表”服务，背后可能就是这个 API，但权限范围是对方设置的，而不是 OpenAI 默认的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文档用四个概念来描述它。智能体是模型、指令、工具与 MCP 服务器的组合；环境是可选的沙箱或计算机，智能体在其中访问文件、加载技能并执行命令；会话是一个持续存在的智能体实例，负责处理任务并响应新的输入；事件与条目则是发送给智能体的输入，以及工作过程中的产出。对非工程师来说，会话最值得记住：它会保存此前的进度，所以一项工作可以分好几轮接着做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "执行环境可以自己选。OpenAI 在公告中写道，智能体的运算环境可以是 OpenAI 托管的沙箱、开发者自己的基础设施，或官方合作的沙箱供应商；选择托管沙箱时，由 OpenAI 搭建与管理沙箱。这个选择会影响文件实际在哪里被处理，也影响机器由谁负责管理，委托时应当请对方说清楚采用的是哪一种。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "费用怎么算，为什么难以事先估准"
+        },
+        {
+          "type": "paragraph",
+          "text": "Agents API 文档的计价部分列出三类费用：模型用量按所选模型的 API 费率计算，OpenAI 提供的工具按各自的标准费率计算，使用 OpenAI 托管沙箱则按标准容器费率计算。OpenAI 在公告中也表示，使用 Agents API 本身没有额外费用，但没有平台费并不代表一项自动化工作的总价容易估算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的用量说明指出，智能体完成一个任务时可能多次调用模型，每次都按模型的 token 价格与提示缓存规则计费。每次调用的输入包括智能体指令、工具定义、对话记录、用户输入、文件以及工具返回的结果；推理过程的 token 计入输出。智能体在同一个会话里会延续上下文，文档也提醒，重复的调用可能反复处理很长的历史记录。工作持续越久、来回越多，就越难只凭任务名称判断费用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "子智能体也会各自调用模型。官方建议估算时，要把主智能体与子智能体的工作、重试，以及适用的工具、沙箱算力和第三方服务费用都算进去。另外，会话中显示的用量数字是尽力记录的，可能暂时为空值，之后也可能变动；文档明确说明空值不代表零用量，这些数字也不是最终账单。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "费用来源",
+            "计价依据",
+            "难估的原因"
+          ],
+          "rows": [
+            [
+              "主智能体模型",
+              "所选模型 API 费率",
+              "一个任务调用多次"
+            ],
+            [
+              "子智能体",
+              "同样按模型计费",
+              "分头做会增加调用"
+            ],
+            [
+              "OpenAI 工具",
+              "各工具标准费率",
+              "看智能体实际用量"
+            ],
+            [
+              "托管沙箱",
+              "标准容器费率",
+              "与模型费分开算"
+            ],
+            [
+              "重试",
+              "按模型与工具计费",
+              "失败重做也算"
+            ],
+            [
+              "第三方服务",
+              "按服务商收费",
+              "要另外加总"
+            ]
+          ],
+          "caption": "2026 年 9 月 15 日核实；根据 OpenAI Agents API 文档与用量说明整理，实际价格以官方定价页为准。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "数据存放在哪里，零数据保留为什么重要"
+        },
+        {
+          "type": "paragraph",
+          "text": "Agents API 文档写明，目前数据驻留（data residency）只支持美国，而且不支持零数据保留（Zero Data Retention，简称 ZDR）。文档还特别补充，选择自托管沙箱并不会让 Agents API 符合 ZDR 资格。也就是说，即使文件在你们自己的机器上处理，智能体的会话仍由 OpenAI 的服务管理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ZDR 是什么？根据 OpenAI 的数据控制说明，使用 API 时默认会产生滥用监控日志，其中可能包含提示与回复等内容，默认最多保存 30 天（法律要求或为防止危害而需要时除外）。经 OpenAI 事先批准的客户，可以通过 ZDR 等控制选项把客户内容排除在这类日志之外。在数据控制表中，Agents API 一栏写的是：数据不用于训练、滥用监控保存 30 天、应用程序状态保存至删除为止、不符合 ZDR 资格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对公司合规的意义很直接。如果贵公司与客户的合同要求数据不得在供应商端保留，或规定数据必须存放在美国以外的特定地区，这个 API 目前就不符合条件；至少在 ZDR 这一点上，官方已明确表示换成自托管沙箱也改变不了。数据控制说明还提醒，MCP 服务器是第三方服务，发送过去的数据适用对方的数据驻留政策，所以连接了哪些外部服务同样要纳入检查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文档说明 Agents API 会保存会话状态，以便工作可以跨轮次接续，而会话和已发布的成果文件都可以在不需要时删除。委托时可以请对方写明由谁负责删除、多久删除一次，以及删除前要先把哪些成果文件下载保存。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-agents-api-20260910/diagram-1-zh-cn.svg",
+          "alt": "Agents API 数据边界的四格图解：数据驻留只支持美国、不支持 ZDR、监控日志 30 天、状态保存至删除",
+          "width": 1600,
+          "height": 900,
+          "caption": "根据 OpenAI 文档整理：数据驻留目前只支持美国、不支持 ZDR、滥用监控日志默认最多保存 30 天、会话状态保存至删除。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "委托工程师或外包时，先问这几件事"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一是权限。Agents API 的工具由开发方提供或选用，所以要问清智能体能读取哪些数据、能修改哪些文件、连接了哪些 MCP 服务，能否发送邮件或修改生产系统。官方文档列出的示例中，有只用只读 SQL 回答数据仓库问题的数据分析智能体，也有在执行恢复操作前先请求批准的事件响应智能体；这两种设计都值得参考，先从只读开始，会改动数据的操作保留人工确认。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二是日志。官方用量说明提到，开发者可以在 OpenAI 平台后台的 Agents 标签页查看会话记录，检查每一轮工作、工具调用与子智能体，也能通过事件流和保存的条目追查过程。委托时可以请对方说明，出问题时谁能查看这些记录、你们自己的系统是否会另外留存，以及记录保存多久。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三是停止机制与费用上限。以编辑设计的例子来说，一家小型营销公司委托外包开发一个“每周整理客户意见并生成报告”的智能体，验收前可以请对方演示：智能体跑偏时由谁、用什么方式中止，中止后做到一半的文件如何处理；再请对方用一周的真实数据试运行，记下实际费用，并说明他们的系统如何设置每月预算提醒或上限，以及子智能体最多同时开几个。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "公开 beta 阶段，普通职场人可以怎么看"
+        },
+        {
+          "type": "paragraph",
+          "text": "你不需要自己学会调用 API，但接下来可能会更常看到标榜“用 Codex 同一套框架打造”的自动化服务或外包方案。判断时可以把模型和框架分开看：模型决定理解与产出的能力，框架决定智能体如何保存进度、使用工具和分工。GPT-6 Astra 这类发布谈的是前者，Agents API 谈的是后者，两者都不等于你的工作流程已经可以安全使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公开 beta 也意味着细节还会变化，OpenAI 自己就表示 beta 期间会根据反馈快速调整。官方文档也提醒，用量数字之后可能更新，部分追踪功能不在此次 beta 的 API 范围内。比较稳妥的做法，是先把它用在出错后能纠正、数据不涉及客户机密的内部工作上，例如整理公开资料或产出草稿，等费用记录、删除流程和人工确认环节都运转顺畅了，再考虑扩大范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果公司有明确的数据保留或地区规定，最先要确认的反而不是功能，而是本文第三节提到的两个限制：数据驻留目前只支持美国、不支持零数据保留。这两点在官方文档里写得很清楚，委托前先对照内部规范，可以省下开发到一半才发现无法上线的成本。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "委托 Agents API 自动化前的四个问题",
+          "text": "智能体能读写哪些数据与服务？日志在哪里、谁能看、保存多久？出错时谁能中止、怎么中止？试运行费用多少、预算上限怎么设？另外先对照公司规范：数据驻留目前只支持美国，且不支持零数据保留。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "GPT-6 Astra 发布：从回答问题到完成电脑工作",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-6-astra-20260903"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：Introducing the Agents API（2026 年 9 月 10 日）",
+          "url": "https://openai.com/index/introducing-the-agents-api/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API：Agents API 概览",
+          "url": "https://developers.openai.com/api/docs/guides/agents-api/overview",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API：Agents API Observability and usage",
+          "url": "https://developers.openai.com/api/docs/guides/agents-api/observability",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI API：Data controls in the OpenAI platform",
+          "url": "https://developers.openai.com/api/docs/guides/your-data",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

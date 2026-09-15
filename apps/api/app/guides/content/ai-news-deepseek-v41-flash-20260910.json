@@ -1,0 +1,974 @@
+{
+  "slug": "ai-news-deepseek-v41-flash-20260910",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 146,
+  "locales": {
+    "zh-TW": {
+      "title": "DeepSeek-V4.1-Flash 上線、V4-Pro 去留有兩種說法：模型換手時該注意什麼",
+      "description": "DeepSeek 在 2026 年 9 月 10 日推出 V4.1-Flash，V4-Flash 舊模型名暫時導向新模型；發布公告寫 V4-Pro 自 9 月 14 日起改導向，更新日誌與價格頁則寫 9 月 14 日之後繼續提供。本文依官方頁面整理兩種說法的先後與查核時的現況，並說明透過第三方工具間接使用的人，如何察覺模型換手、看懂價格與隱私條款。",
+      "hero": {
+        "src": "/guides/ai-news-deepseek-v41-flash-20260910/hero.jpg",
+        "alt": "模型名稱不變、背後模型已經換手的原創插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 10 日，DeepSeek 在官方 API 文件發布 DeepSeek-V4.1-Flash，說明它是新架構系列中最小的模型，具備原生的圖像理解能力，呼叫時的模型名稱是 deepseek-flash。前一代 V4-Flash 與 V4-Flash-Vision-Exp 同時退役，舊名暫時導向新模型。公告也寫 V4-Pro 的請求將自 9 月 14 日起改導向 V4.1-Flash，但查核時官方更新日誌與價格頁寫的是 9 月 14 日之後繼續提供 V4-Pro。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 15 日查核。這次公告說明的是 API 的變動，DeepSeek App 與網頁版目前用哪個模型，官方這幾頁沒有交代，本文不做推定。本站沒有實際呼叫或評測這個模型，文中的能力與評測說法都是 DeepSeek 自己的表述；生活與工作情境則是編輯設計的例子。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "V4.1-Flash 的公告寫了什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeek 表示，V4.1-Flash 是參數規模 552B 的混合專家（MoE）模型，採用新的 Causal Encoder-Decoder 架構，讀取輸入時啟用 8B 參數、產生輸出時啟用 16B，官方稱之為輸入與輸出不對稱。公告也說，新的預訓練方式加上更大規模的強化學習後訓練，讓它在基準測試上超過包括 DeepSeek-V4-Pro 在內的旗艦模型。這是廠商說法，模型卡對照表也有它落後其他廠商模型的項目，本站沒有重測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個重點是快取。模型處理長對話時會暫存中間計算資料，稱為 KV 快取。公告說與上一代相比，V4.1-Flash 的 KV 快取對 HBM 的需求降到四分之一、對 SSD 的需求降到八分之一，並表示架構更有效率，因此調降 API 價格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "權重方面，公告附上官方 Hugging Face 頁面。模型卡寫明儲存庫與模型權重採用 MIT 授權，支援最長一百萬 token 的上下文，能直接處理圖片與文字並輸出文字。開放下載不代表一般電腦跑得動：模型卡連結的推論範例以 8 路模型平行的設定執行。發布公告另外邀請規劃以兩千張 GPU 加儲存叢集大規模部署的單位聯絡 DeepSeek。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "舊模型名改導向、V4-Pro 去留：兩種說法的先後"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一種說法來自 9 月 10 日的發布公告。它說多方測試顯示 V4.1-Flash 在效能、費用、速度與總用時上都勝過 V4-Pro，因此計畫讓 V4-Pro 退場：自 2026 年 9 月 14 日 UTC 04:00（台灣時間中午 12 點）起，所有 deepseek-v4-pro 的請求改由 V4.1-Flash 處理並按 V4.1-Flash 的價格計費，直到 V4.1-Pro 推出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二種說法在更新日誌與價格頁。查核當天，更新日誌 9 月 10 日那一條與價格頁的註解寫著：因應使用者需求，DeepSeek 決定在 2026 年 9 月 14 日之後繼續提供 V4-Pro 的 API 服務，計費方式不變，若有變動會另行通知。價格頁上 deepseek-v4-pro 對應的版本是 DeepSeek-V4-Pro-0813。從「決定繼續提供」的措辭看是導向計畫之後的決定，但頁面未標示日期，API 文件新聞列表也沒有另發公告。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9 月 15 日查核時，英文與簡體中文的發布公告頁仍保留原本「9 月 14 日起改導向」的文字。只讀公告的人，可能以為 V4-Pro 已被取代；依更新日誌與價格頁的說明，deepseek-v4-pro 在 9 月 14 日之後繼續提供，V4-Flash 的兩個舊名則由 V4.1-Flash 服務並以 Flash 價格計費。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "模型名稱",
+            "實際服務的模型",
+            "計價"
+          ],
+          "rows": [
+            [
+              "deepseek-flash",
+              "DeepSeek-V4.1-Flash",
+              "Flash 價格"
+            ],
+            [
+              "deepseek-v4-flash",
+              "V4.1-Flash（原模型已退役）",
+              "Flash 價格"
+            ],
+            [
+              "deepseek-v4-flash-vision-exp",
+              "V4.1-Flash（原模型已退役）",
+              "Flash 價格"
+            ],
+            [
+              "deepseek-v4-pro",
+              "DeepSeek-V4-Pro-0813",
+              "計費方式不變"
+            ]
+          ],
+          "caption": "2026 年 9 月 15 日查核；依 DeepSeek 更新日誌與模型價格頁整理，僅限官方 API"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "沒有直接呼叫 API 的人，為什麼也會受影響"
+        },
+        {
+          "type": "paragraph",
+          "text": "多數台灣讀者不會自己呼叫 DeepSeek API，但可能間接用到它。有些翻譯外掛、寫作 App 或公司內部的問答工具，會在設定裡填入某個 DeepSeek 模型名，再把使用者的輸入轉送過去；DeepSeek 公告也點名 WorkBuddy（含 CodeBuddy）與 OpenCode 已全面支援 V4.1-Flash。服務商把舊名導向新模型時，工具設定不必改，背後回答的模型卻已經換了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這次的例子很清楚：deepseek-v4-flash 名稱裡寫著 V4，實際服務的卻是 V4.1-Flash。更新日誌也記載，4 月 24 日推出 V4 時，deepseek-chat 與 deepseek-reasoner 兩個舊名在過渡期間分別指向 deepseek-v4-flash 的非思考與思考模式，並預告 2026 年 7 月 24 日停用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以編輯設計的情境為例：一位上班族每天用公司內部的摘要工具整理會議紀錄，9 月 10 日之後發現摘要變長、分段方式也不同。可以先查工具的更新說明或詢問管理者，確認後端是否串接 DeepSeek、填的是哪個模型名。回答風格、長度、輸出格式或看圖能力突然改變，都是值得問一句的訊號；不一定代表變差，但輸出若要貼進正式文件，最好重新抽樣檢查。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-deepseek-v41-flash-20260910/diagram-1.svg",
+          "alt": "模型換手時的四個檢查：看工具更新說明、比對回答、確認模型名稱與版本、閱讀隱私政策",
+          "width": 1600,
+          "height": 900,
+          "caption": "模型換手時的四個檢查：看工具更新說明、比對回答長度與格式、確認模型名稱與實際版本、閱讀官方隱私政策。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "價格、尖峰時段與固定版本的意義"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 價格只簡單帶過。依定價頁，deepseek-flash 在尖峰時段每百萬 token 的輸入（未命中快取）為 0.3 美元、輸出為 1.2 美元；deepseek-v4-pro 分別是 1.32 與 3.96 美元。離峰價格是尖峰的一半，尖峰時段為週一到週五 UTC 01:00 至 04:00 與 06:00 至 10:00，即台灣時間上午 9 點到 12 點、下午 2 點到 6 點。公告寫新價格自 9 月 10 日 UTC 04:00 生效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "舊名導向新模型時，帳單也會跟著變。價格頁說 V4-Flash 舊名的請求改按 Flash 價格計費；若 V4-Pro 當初照原計畫導向，依定價頁數字，原本用 V4-Pro 的人費用會下降，回答卻會換成另一個模型。功能也不同：價格頁標示 deepseek-flash 支援圖像理解、deepseek-v4-pro 不支援。付月費使用第三方工具的人，方案價格是否跟著變，要看各工具自己的說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所謂固定版本，是指工具指定一個不會悄悄更換的模型版本，讓行為比較可預期。DeepSeek 價格頁把模型名稱與實際版本分開列出，但沒有說明能否用帶日期的版本名呼叫；8 月 13 日的更新日誌也寫，沿用 deepseek-v4-pro 這個名稱就會用到最新版本。自己管理工具的人，可以記下模型名、版本與查核日期，並定期查看更新日誌。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "使用中國廠商服務前，自己要讀的條款"
+        },
+        {
+          "type": "paragraph",
+          "text": "透過 DeepSeek 官方 API 或 App 使用時，輸入的內容會送到 DeepSeek 的服務處理。資料如何保存、存放在哪裡、是否用於改善服務，請閱讀 DeepSeek 官方隱私政策與服務條款，本文不代為解讀。公司若要把內部資料送進任何外部 AI 服務，不論廠商來自哪個國家，都應先確認內部的資料規範是否允許。"
+        },
+        {
+          "type": "paragraph",
+          "text": "間接使用時要多問一層。第三方工具可能直接串接 DeepSeek 官方 API，也可能使用其他雲端平台代管的模型，兩者適用的條款不同。可以在工具的說明頁或隱私政策裡找「模型供應商」「資料傳輸」之類的段落；找不到答案之前，不要先把身分證字號、客戶名單或未公開的合約貼進去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開放權重提供另一種選擇：模型卡採 MIT 授權，機構可以在自己的環境部署，資料不必送往 DeepSeek 的 API。不過自行部署要承擔硬體、維運與資料管理，這些取捨在本站 Qwen3.5 開放權重那篇已有說明。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "9 月 15 日查核時的現況",
+          "text": "deepseek-flash 由 V4.1-Flash 服務；deepseek-v4-flash 與 deepseek-v4-flash-vision-exp 兩個舊名暫時導向 V4.1-Flash，按 Flash 價格計費；更新日誌與價格頁寫 deepseek-v4-pro 在 9 月 14 日之後繼續提供，計費方式不變。發布公告頁仍保留 9 月 14 日起改導向的原文，官方未標示繼續提供這段說明的日期，串接前請再看更新日誌與價格頁的最新內容。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Qwen3.5 開放權重：可下載模型，與能在自己電腦運作差在哪？",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-qwen-35-20260216"
+        }
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek：DeepSeek-V4.1-Flash 發布公告",
+          "url": "https://api-docs.deepseek.com/news/news260910",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek：API 更新日誌（Change Log）",
+          "url": "https://api-docs.deepseek.com/updates",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek：模型與價格",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek：DeepSeek-V4.1-Flash 官方模型卡（Hugging Face）",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "en": {
+      "title": "DeepSeek-V4.1-Flash Launches, Mixed Word on V4-Pro: What to Watch When Models Switch",
+      "description": "DeepSeek launched V4.1-Flash on September 10, 2026, temporarily routing the old V4-Flash model names to it. The release announcement says V4-Pro would be rerouted from September 14; the change log and pricing page say it stays available after September 14. Using official pages, this article sets out the order of the two statements and the status when checked, and explains how people using DeepSeek indirectly through third-party tools can spot a model switch and read pricing and privacy terms.",
+      "hero": {
+        "src": "/guides/ai-news-deepseek-v41-flash-20260910/hero-en.jpg",
+        "alt": "Original illustration of a model name that stays the same while the model behind it has already been swapped",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 10, 2026, DeepSeek published DeepSeek-V4.1-Flash in its official API documentation, describing it as the smallest model in its new architecture family, with native image understanding; it is called with the model name deepseek-flash. The previous-generation V4-Flash and V4-Flash-Vision-Exp were retired at the same time, and their old names are temporarily routed to the new model. The announcement also said that requests to V4-Pro would be rerouted to V4.1-Flash starting September 14, but at the time of checking, DeepSeek's official change log and pricing page said V4-Pro would continue to be offered after September 14."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 15, 2026. The announcement describes changes to the API; these official pages do not say which model the DeepSeek app and web version currently use, and this article makes no assumption about it. This site has not called or benchmarked the model, so the capability and benchmark claims here are DeepSeek's own statements, and the everyday and work scenarios are examples designed by the editors."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What the V4.1-Flash Announcement Says"
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeek says V4.1-Flash is a mixture-of-experts (MoE) model with 552B parameters built on a new Causal Encoder-Decoder architecture. It activates 8B parameters when reading input and 16B when generating output, which the company describes as asymmetric between input and output. The announcement also says a new pre-training approach, combined with larger-scale reinforcement learning post-training, lets it beat flagship models including DeepSeek-V4-Pro on benchmarks. That is the vendor's claim: the comparison table in the model card also shows items where it trails models from other companies, and this site has not rerun any tests."
+        },
+        {
+          "type": "paragraph",
+          "text": "The other headline is caching. When a model handles a long conversation, it temporarily stores intermediate computation data, known as the KV cache. The announcement says that compared with the previous generation, V4.1-Flash cuts the KV cache's HBM requirement to one quarter and its SSD requirement to one eighth, and that the more efficient architecture is the reason API prices have been lowered."
+        },
+        {
+          "type": "paragraph",
+          "text": "On the weights, the announcement links to the official Hugging Face page. The model card states that the repository and model weights are licensed under the MIT License, that the model supports a context of up to one million tokens, and that it can take images and text directly and output text. Being downloadable does not mean an ordinary computer can run it: the inference example linked from the model card runs with an 8-way model-parallel setup. The release announcement separately invites organizations planning large-scale deployments with 2,000 GPUs plus a storage cluster to contact DeepSeek."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Old Names Rerouted and the Future of V4-Pro: Two Statements in Sequence"
+        },
+        {
+          "type": "paragraph",
+          "text": "The first statement comes from the September 10 release announcement. It says multiple tests showed V4.1-Flash beating V4-Pro on performance, cost, speed, and total time taken, so DeepSeek planned to retire V4-Pro: starting at UTC 04:00 on September 14, 2026 (12 noon Taiwan time), all deepseek-v4-pro requests would be handled by V4.1-Flash and billed at V4.1-Flash prices until V4.1-Pro is released."
+        },
+        {
+          "type": "paragraph",
+          "text": "The second statement appears in the change log and on the pricing page. On the day of checking, the September 10 entry in the change log and a note on the pricing page said that in response to user demand, DeepSeek had decided to keep offering the V4-Pro API service after September 14, 2026, with billing unchanged, and that any changes would be announced separately. On the pricing page, the version listed for deepseek-v4-pro is DeepSeek-V4-Pro-0813. The wording “decided to keep offering” suggests a decision made after the rerouting plan, but the pages carry no date, and the news list in the API documentation has no separate announcement."
+        },
+        {
+          "type": "paragraph",
+          "text": "When checked on September 15, both the English and Simplified Chinese versions of the release announcement still carried the original text about rerouting starting September 14. Someone who reads only the announcement may think V4-Pro has already been replaced. According to the change log and pricing page, deepseek-v4-pro continues to be offered after September 14, while the two old V4-Flash names are served by V4.1-Flash and billed at Flash prices."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Model name",
+            "Model actually serving",
+            "Pricing"
+          ],
+          "rows": [
+            [
+              "deepseek-flash",
+              "DeepSeek-V4.1-Flash",
+              "Flash pricing"
+            ],
+            [
+              "deepseek-v4-flash",
+              "V4.1-Flash (original model retired)",
+              "Flash pricing"
+            ],
+            [
+              "deepseek-v4-flash-vision-exp",
+              "V4.1-Flash (original model retired)",
+              "Flash pricing"
+            ],
+            [
+              "deepseek-v4-pro",
+              "DeepSeek-V4-Pro-0813",
+              "Billing unchanged"
+            ]
+          ],
+          "caption": "Checked on September 15, 2026; compiled from DeepSeek's change log and models and pricing page, official API only"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Why People Who Never Call the API Directly Are Affected Too"
+        },
+        {
+          "type": "paragraph",
+          "text": "Most readers in Taiwan will never call the DeepSeek API themselves, but they may still be using it indirectly. Some translation extensions, writing apps, and internal company Q&A tools put a DeepSeek model name in their settings and forward users' input to it; DeepSeek's announcement also names WorkBuddy (including CodeBuddy) and OpenCode as fully supporting V4.1-Flash. When a provider routes an old name to a new model, nothing in the tool's settings has to change, yet the model answering behind the scenes is already a different one."
+        },
+        {
+          "type": "paragraph",
+          "text": "This release is a clear example: the name deepseek-v4-flash says V4, but the model actually serving it is V4.1-Flash. The change log also records that when V4 launched on April 24, the two old names deepseek-chat and deepseek-reasoner pointed during the transition to the non-thinking and thinking modes of deepseek-v4-flash, respectively, and that they were scheduled to be discontinued on July 24, 2026."
+        },
+        {
+          "type": "paragraph",
+          "text": "Take a scenario designed by the editors: an office worker uses an internal company summarizer every day to tidy up meeting notes, and after September 10 notices that the summaries are longer and broken into sections differently. A good first step is to check the tool's update notes or ask an administrator whether the backend connects to DeepSeek and which model name is configured. A sudden change in answer style, length, output format, or image-reading ability is a signal worth asking about. It does not necessarily mean things got worse, but if the output goes into formal documents, it is wise to spot-check samples again."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-deepseek-v41-flash-20260910/diagram-1-en.svg",
+          "alt": "Four checks when a model changes hands: read the tool's update notes, compare answers, confirm the model name and version, read the privacy policy",
+          "width": 1600,
+          "height": 900,
+          "caption": "Four checks when a model changes hands: read the tool's update notes, compare answer length and format, confirm the model name and actual version, and read the official privacy policy.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Pricing, Peak Hours, and What a Fixed Version Means"
+        },
+        {
+          "type": "paragraph",
+          "text": "API pricing gets only a brief mention here. According to the pricing page, during peak hours deepseek-flash costs US$0.3 per million input tokens (cache miss) and US$1.2 per million output tokens; for deepseek-v4-pro the figures are US$1.32 and US$3.96. Off-peak prices are half the peak rate, and peak hours run from UTC 01:00 to 04:00 and from 06:00 to 10:00, Monday through Friday, which is 9 a.m. to 12 noon and 2 p.m. to 6 p.m. Taiwan time. The announcement says the new prices took effect at UTC 04:00 on September 10."
+        },
+        {
+          "type": "paragraph",
+          "text": "When an old name is routed to a new model, the bill changes as well. The pricing page says requests using the old V4-Flash names are billed at Flash prices. Had V4-Pro been rerouted as originally planned, the pricing page figures mean people using V4-Pro would have paid less, but their answers would have come from a different model. Features differ too: the pricing page marks deepseek-flash as supporting image understanding and deepseek-v4-pro as not supporting it. For people paying a monthly fee for a third-party tool, whether the plan price changes as a result depends on each tool's own documentation."
+        },
+        {
+          "type": "paragraph",
+          "text": "A fixed version means a tool specifies a model version that will not be quietly swapped out, which makes its behavior more predictable. DeepSeek's pricing page lists model names and actual versions separately, but does not say whether a dated version name can be used in calls; the August 13 change log entry also says that sticking with the name deepseek-v4-pro gets you the latest version. People who manage their own tools can record the model name, version, and date checked, and review the change log regularly."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Terms to Read Yourself Before Using a Chinese Company's Service"
+        },
+        {
+          "type": "paragraph",
+          "text": "When you use DeepSeek through its official API or app, what you type is sent to DeepSeek's service for processing. For how data is stored, where it is kept, and whether it is used to improve the service, read DeepSeek's official privacy policy and terms of service; this article does not interpret them for you. Before a company sends internal data to any outside AI service, whatever country the provider is based in, it should first confirm that its own data policies allow it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Indirect use calls for one more layer of questions. A third-party tool may connect directly to DeepSeek's official API, or it may use a model hosted on another cloud platform, and different terms apply to each. Look in the tool's help pages or privacy policy for sections on things like “model providers” or “data transfer.” Until you find an answer, do not paste in national ID numbers, customer lists, or unpublished contracts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Open weights offer another option: the model card uses the MIT License, so organizations can deploy the model in their own environment without sending data to DeepSeek's API. Self-hosting, however, means taking on the hardware, operations, and data management, trade-offs this site has already covered in its article on Qwen3.5 open weights."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Status as of the September 15 Check",
+          "text": "deepseek-flash is served by V4.1-Flash; the two old names deepseek-v4-flash and deepseek-v4-flash-vision-exp are temporarily routed to V4.1-Flash and billed at Flash prices; the change log and pricing page say deepseek-v4-pro continues to be offered after September 14 with billing unchanged. The release announcement page still carries the original text about rerouting starting September 14, and DeepSeek has not dated the note about continued availability, so check the latest version of the change log and the pricing page before integrating."
+        },
+        {
+          "type": "link",
+          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Qwen3.5 Open Weights: What Is the Difference Between a Downloadable Model and Running It on Your Own PC?",
+          "url": "https://mokaair.com/en/life/ai-news-qwen-35-20260216"
+        }
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek: DeepSeek-V4.1-Flash Release Announcement",
+          "url": "https://api-docs.deepseek.com/news/news260910",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek: API Change Log",
+          "url": "https://api-docs.deepseek.com/updates",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek: Models & Pricing",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek: DeepSeek-V4.1-Flash Official Model Card (Hugging Face)",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "ja": {
+      "title": "DeepSeek-V4.1-Flash公開、V4-Proの扱いに二通りの説明：モデルが入れ替わるときの注意点",
+      "description": "DeepSeekは2026年9月10日にV4.1-Flashを公開し、旧V4-Flashのモデル名は一時的に新モデルへ振り向けられています。リリース告知ではV4-Proも9月14日から振り向けるとした一方、更新ログと料金ページには9月14日以降も提供を続けると書かれています。本記事は公式ページをもとに二つの説明の前後関係と確認時点の状況を整理し、サードパーティ製ツール経由で間接的に使う人がモデルの入れ替わりに気づき、料金とプライバシー条項を読み解く方法を解説します。",
+      "hero": {
+        "src": "/guides/ai-news-deepseek-v41-flash-20260910/hero-ja.jpg",
+        "alt": "モデル名は変わらないまま、その裏のモデルがすでに入れ替わっていることを表すオリジナルイラスト",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月10日、DeepSeekは公式APIドキュメントでDeepSeek-V4.1-Flashを公開しました。新しいアーキテクチャ系列のなかで最も小さいモデルで、ネイティブの画像理解機能を備え、呼び出し時のモデル名はdeepseek-flashだと説明しています。前世代のV4-FlashとV4-Flash-Vision-Expは同時に退役し、旧名は一時的に新モデルへ振り向けられます。告知ではV4-Proへのリクエストも9月14日からV4.1-Flashに振り向けるとしていましたが、確認時点の公式の更新ログと料金ページには、9月14日以降もV4-Proの提供を続けると書かれていました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月15日に内容を確認しています。今回の告知が説明しているのはAPIの変更です。DeepSeekのアプリとウェブ版が現在どのモデルを使っているかは、これらの公式ページでは説明されていないため、本記事では推測しません。当サイトはこのモデルを実際に呼び出したり評価したりしておらず、文中の能力や評価に関する記述はすべてDeepSeek自身の説明です。生活や仕事の場面は編集部が設定した例です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "V4.1-Flashの告知に書かれていること"
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeekによると、V4.1-Flashはパラメータ規模552Bの混合エキスパート（MoE）モデルで、新しいCausal Encoder-Decoderアーキテクチャを採用しています。入力を読み取るときは8B、出力を生成するときは16Bのパラメータを有効化し、同社はこれを入力と出力の非対称と呼んでいます。告知では、新しい事前学習の手法と、より大規模な強化学習による事後学習によって、DeepSeek-V4-Proを含むフラッグシップモデルをベンチマークで上回ったとも述べています。これはベンダーの主張であり、モデルカードの比較表には他社モデルに及ばない項目もあります。当サイトは再テストしていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "もう一つのポイントはキャッシュです。モデルは長い会話を処理する際に途中の計算データを一時的に保存しており、これをKVキャッシュと呼びます。告知は、前世代と比べてV4.1-FlashのKVキャッシュはHBMの必要量が4分の1、SSDの必要量が8分の1に下がったとし、アーキテクチャの効率が上がったことからAPI料金を引き下げたと説明しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重みについては、告知に公式Hugging Faceページへのリンクが添えられています。モデルカードには、リポジトリとモデルの重みがMITライセンスで提供されること、最大100万トークンのコンテキストに対応すること、画像とテキストを直接処理してテキストを出力できることが明記されています。ただし、ダウンロードできることは一般的なパソコンで動かせることを意味しません。モデルカードからリンクされた推論サンプルは、モデル並列数を8とする設定で実行するものです。リリース告知では別途、2,000基のGPUとストレージクラスタによる大規模導入を計画している組織に、DeepSeekへの連絡を呼びかけています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "旧モデル名の振り向けとV4-Proの去就：二つの説明の前後関係"
+        },
+        {
+          "type": "paragraph",
+          "text": "一つ目の説明は9月10日のリリース告知です。複数のテストでV4.1-Flashが性能、費用、速度、総所要時間のすべてでV4-Proを上回ったため、V4-Proを退役させる計画だとしていました。2026年9月14日UTC 04:00（台湾時間の正午）から、deepseek-v4-proへのリクエストはすべてV4.1-Flashが処理し、V4.1-Flashの料金で課金する、それはV4.1-Proが公開されるまで続く、という内容です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "二つ目の説明は更新ログと料金ページにあります。確認当日、更新ログの9月10日の項目と料金ページの注記には、ユーザーの要望を受けてDeepSeekは2026年9月14日以降もV4-ProのAPIサービスを継続して提供することを決めた、課金方法は変わらず、変更がある場合は別途通知する、と書かれていました。料金ページでdeepseek-v4-proに対応するバージョンはDeepSeek-V4-Pro-0813です。「提供の継続を決めた」という言い回しからは、振り向け計画の後に下された決定だと読み取れますが、ページには日付が示されておらず、APIドキュメントのニュース一覧にも別の告知は出ていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9月15日の確認時点でも、英語版と簡体字中国語版のリリース告知ページには「9月14日から振り向ける」という元の文言が残っていました。告知だけを読んだ人は、V4-Proがすでに置き換えられたと考えるかもしれません。更新ログと料金ページの説明によれば、deepseek-v4-proは9月14日以降も提供が続き、V4-Flashの二つの旧名はV4.1-Flashが処理してFlashの料金で課金されます。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "モデル名",
+            "実際に処理するモデル",
+            "料金"
+          ],
+          "rows": [
+            [
+              "deepseek-flash",
+              "DeepSeek-V4.1-Flash",
+              "Flash料金"
+            ],
+            [
+              "deepseek-v4-flash",
+              "V4.1-Flash（元のモデルは退役）",
+              "Flash料金"
+            ],
+            [
+              "deepseek-v4-flash-vision-exp",
+              "V4.1-Flash（元のモデルは退役）",
+              "Flash料金"
+            ],
+            [
+              "deepseek-v4-pro",
+              "DeepSeek-V4-Pro-0813",
+              "課金方法は変更なし"
+            ]
+          ],
+          "caption": "2026年9月15日確認。DeepSeekの更新ログとモデル・料金ページをもとに整理、公式APIのみが対象"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "APIを直接呼び出さない人にも影響が及ぶ理由"
+        },
+        {
+          "type": "paragraph",
+          "text": "台湾の読者の多くはDeepSeek APIを自分で呼び出すことはありませんが、間接的に使っている可能性はあります。翻訳の拡張機能、文章作成アプリ、社内の質問応答ツールのなかには、設定にDeepSeekのモデル名を入力し、ユーザーの入力をそこへ転送するものがあります。DeepSeekの告知でも、WorkBuddy（CodeBuddyを含む）とOpenCodeがV4.1-Flashに全面対応したと名前を挙げています。サービス提供者が旧名を新モデルに振り向けると、ツールの設定は変えなくて済む一方で、裏で回答しているモデルはすでに入れ替わっています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "今回はその分かりやすい例です。deepseek-v4-flashという名前にはV4とありますが、実際に処理しているのはV4.1-Flashです。更新ログには、4月24日にV4を公開した際、deepseek-chatとdeepseek-reasonerの二つの旧名が移行期間中それぞれdeepseek-v4-flashの非思考モードと思考モードを指し、2026年7月24日に提供を終了すると予告したことも記録されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "編集部が設定した例で考えてみます。ある会社員が毎日、社内の要約ツールで議事録を整理していたところ、9月10日以降、要約が長くなり、段落の分け方も変わったことに気づきました。まずはツールの更新情報を確認するか管理者に問い合わせ、バックエンドがDeepSeekにつながっているか、どのモデル名が設定されているかを確かめるとよいでしょう。回答の文体、長さ、出力形式、画像を読み取る能力が急に変わったら、それは一度尋ねてみる価値のあるサインです。必ずしも品質が落ちたとは限りませんが、出力を正式な文書に貼り付けるのであれば、改めていくつか抜き出して確認するのが安心です。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-deepseek-v41-flash-20260910/diagram-1-ja.svg",
+          "alt": "モデルが入れ替わるときの四つの確認：ツールの更新情報を見る、回答を比べる、モデル名とバージョンを確認する、プライバシーポリシーを読む",
+          "width": 1600,
+          "height": 900,
+          "caption": "モデルが入れ替わるときの四つの確認：ツールの更新情報を見る、回答の長さと形式を比べる、モデル名と実際のバージョンを確認する、公式のプライバシーポリシーを読む。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "料金、ピーク時間帯、固定バージョンの意味"
+        },
+        {
+          "type": "paragraph",
+          "text": "API料金には簡単に触れるだけにします。料金ページによると、deepseek-flashのピーク時間帯の料金は100万トークンあたり入力（キャッシュ未ヒット）が0.3米ドル、出力が1.2米ドルで、deepseek-v4-proはそれぞれ1.32米ドルと3.96米ドルです。オフピーク料金はピーク時の半額で、ピーク時間帯は月曜から金曜のUTC 01:00〜04:00と06:00〜10:00、台湾時間では午前9時〜12時と午後2時〜6時にあたります。告知によると、新料金は9月10日UTC 04:00から適用されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "旧名が新モデルに振り向けられると、請求額も変わります。料金ページは、V4-Flashの旧名へのリクエストをFlashの料金で課金すると説明しています。仮にV4-Proが当初の計画どおり振り向けられていたら、料金ページの数字から見て、V4-Proを使っていた人の費用は下がる一方、回答するのは別のモデルに変わっていたことになります。機能も異なり、料金ページではdeepseek-flashは画像理解に対応、deepseek-v4-proは非対応と表示されています。サードパーティ製ツールに月額料金を払っている人の場合、プラン料金がそれに合わせて変わるかどうかは、各ツールの説明を確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "固定バージョンとは、ツールが知らないうちに差し替えられることのないモデルバージョンを指定し、挙動を予測しやすくすることです。DeepSeekの料金ページはモデル名と実際のバージョンを分けて掲載していますが、日付入りのバージョン名で呼び出せるかどうかは説明していません。8月13日の更新ログにも、deepseek-v4-proという名前をそのまま使えば最新バージョンが使われると書かれています。ツールを自分で管理している人は、モデル名、バージョン、確認日を記録し、定期的に更新ログを確認するとよいでしょう。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "中国企業のサービスを使う前に自分で読むべき規約"
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeekの公式APIやアプリを通じて使う場合、入力した内容はDeepSeekのサービスに送られて処理されます。データがどのように保存され、どこに置かれ、サービス改善に使われるかについては、DeepSeekの公式プライバシーポリシーと利用規約を読んでください。本記事がそれを代わりに解釈することはしません。企業が社内データを外部のAIサービスに送る場合は、提供元がどの国の企業であっても、まず社内のデータ規程で許可されているかを確認すべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "間接的に使う場合は、もう一段階の確認が必要です。サードパーティ製ツールはDeepSeekの公式APIに直接つないでいることもあれば、別のクラウドプラットフォームがホストするモデルを使っていることもあり、両者で適用される規約は異なります。ツールのヘルプページやプライバシーポリシーで「モデル提供元」「データ転送」といった項目を探してみてください。答えが見つかるまでは、身分証番号、顧客リスト、未公開の契約書を貼り付けないようにしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "オープンウェイトは別の選択肢になります。モデルカードはMITライセンスを採用しており、組織は自前の環境に導入でき、データをDeepSeekのAPIに送る必要はありません。ただし自前での導入にはハードウェア、保守運用、データ管理の負担が伴います。こうしたトレードオフは、当サイトのQwen3.5オープンウェイトの記事ですでに説明しています。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "9月15日確認時点の状況",
+          "text": "deepseek-flashはV4.1-Flashが処理しています。deepseek-v4-flashとdeepseek-v4-flash-vision-expの二つの旧名は一時的にV4.1-Flashへ振り向けられ、Flashの料金で課金されます。更新ログと料金ページには、deepseek-v4-proは9月14日以降も提供が続き、課金方法は変わらないと書かれています。リリース告知ページには9月14日から振り向けるという元の文言が残っており、提供継続の説明がいつのものかも公式には示されていないため、連携する前に更新ログと料金ページの最新内容を改めて確認してください。"
+        },
+        {
+          "type": "link",
+          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Qwen3.5オープンウェイト：DL可能モデルと手元PCでの動作の違い",
+          "url": "https://mokaair.com/ja/life/ai-news-qwen-35-20260216"
+        }
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek：DeepSeek-V4.1-Flash リリース告知",
+          "url": "https://api-docs.deepseek.com/news/news260910",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek：API 更新ログ（Change Log）",
+          "url": "https://api-docs.deepseek.com/updates",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek：モデルと料金",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek：DeepSeek-V4.1-Flash 公式モデルカード（Hugging Face）",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "ko": {
+      "title": "DeepSeek-V4.1-Flash 출시, V4-Pro 존속 여부는 설명이 엇갈려: 모델이 교체될 때 주의할 점",
+      "description": "DeepSeek는 2026년 9월 10일 V4.1-Flash를 출시했으며, 기존 V4-Flash 모델명은 일시적으로 새 모델로 연결됩니다. 출시 공지에는 V4-Pro를 9월 14일부터 새 모델로 전환한다고 적혀 있지만, 업데이트 로그와 가격 페이지에는 9월 14일 이후에도 계속 제공한다고 적혀 있습니다. 본 기사는 공식 페이지를 바탕으로 두 설명의 선후 관계와 확인 시점의 현황을 정리하고, 서드파티 도구를 통해 간접적으로 사용하는 사람이 모델 교체를 알아차리고 가격과 개인정보 조항을 이해하는 방법을 설명합니다.",
+      "hero": {
+        "src": "/guides/ai-news-deepseek-v41-flash-20260910/hero-ko.jpg",
+        "alt": "모델명은 그대로인데 그 뒤의 모델은 이미 교체된 상황을 표현한 오리지널 일러스트",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 10일 DeepSeek는 공식 API 문서에 DeepSeek-V4.1-Flash를 공개했습니다. 새 아키텍처 계열 중 가장 작은 모델로 네이티브 이미지 이해 기능을 갖췄으며, 호출할 때의 모델명은 deepseek-flash라고 설명했습니다. 이전 세대인 V4-Flash와 V4-Flash-Vision-Exp는 동시에 퇴역했고, 기존 이름은 일시적으로 새 모델로 연결됩니다. 공지에는 V4-Pro 요청도 9월 14일부터 V4.1-Flash로 전환한다고 적혀 있었지만, 확인 시점의 공식 업데이트 로그와 가격 페이지에는 9월 14일 이후에도 V4-Pro를 계속 제공한다고 적혀 있었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 15일에 확인했습니다. 이번 공지가 설명하는 것은 API 변경 사항이며, DeepSeek 앱과 웹 버전이 현재 어떤 모델을 쓰는지는 이 공식 페이지들에 나와 있지 않으므로 본 기사는 추정하지 않습니다. 본 사이트는 이 모델을 실제로 호출하거나 평가하지 않았으며, 글에 나오는 성능과 평가 관련 내용은 모두 DeepSeek 자체의 설명입니다. 일상과 업무 상황은 에디터가 설계한 예시입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "V4.1-Flash 공지에 적힌 내용"
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeek에 따르면 V4.1-Flash는 파라미터 규모 552B의 전문가 혼합(MoE) 모델로, 새로운 Causal Encoder-Decoder 아키텍처를 채택했습니다. 입력을 읽을 때는 8B, 출력을 생성할 때는 16B 파라미터를 활성화하며, DeepSeek는 이를 입력과 출력의 비대칭이라고 부릅니다. 공지는 또 새로운 사전 학습 방식과 더 큰 규모의 강화학습 사후 학습 덕분에 DeepSeek-V4-Pro를 포함한 플래그십 모델을 벤치마크에서 앞섰다고 밝혔습니다. 이는 업체의 주장이며, 모델 카드의 비교표에는 다른 업체 모델보다 뒤처지는 항목도 있습니다. 본 사이트는 다시 테스트하지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "또 하나의 핵심은 캐시입니다. 모델은 긴 대화를 처리할 때 중간 계산 데이터를 임시로 저장하는데, 이를 KV 캐시라고 합니다. 공지에 따르면 이전 세대와 비교해 V4.1-Flash의 KV 캐시는 HBM 요구량이 4분의 1, SSD 요구량이 8분의 1로 줄었으며, 아키텍처가 더 효율적이어서 API 가격을 인하했다고 설명합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "가중치와 관련해 공지에는 공식 Hugging Face 페이지 링크가 첨부되어 있습니다. 모델 카드에는 저장소와 모델 가중치가 MIT 라이선스로 제공되고, 최대 100만 토큰의 컨텍스트를 지원하며, 이미지와 텍스트를 직접 처리해 텍스트를 출력할 수 있다고 명시되어 있습니다. 다만 내려받을 수 있다고 해서 일반 컴퓨터에서 돌릴 수 있다는 뜻은 아닙니다. 모델 카드에 연결된 추론 예제는 8-way 모델 병렬 설정으로 실행됩니다. 출시 공지는 별도로 GPU 2,000장과 스토리지 클러스터로 대규모 배포를 계획하는 기관에 DeepSeek로 연락해 달라고 안내했습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "기존 모델명 전환과 V4-Pro의 거취: 두 가지 설명의 선후 관계"
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 번째 설명은 9월 10일 출시 공지에서 나왔습니다. 공지는 여러 테스트에서 V4.1-Flash가 성능, 비용, 속도, 총 소요 시간 모두에서 V4-Pro를 앞섰기 때문에 V4-Pro를 퇴장시킬 계획이라고 밝혔습니다. 2026년 9월 14일 UTC 04:00(대만 시간 정오)부터 모든 deepseek-v4-pro 요청을 V4.1-Flash가 처리하고 V4.1-Flash 가격으로 과금하며, 이는 V4.1-Pro가 출시될 때까지 이어진다는 내용이었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 번째 설명은 업데이트 로그와 가격 페이지에 있습니다. 확인 당일 업데이트 로그의 9월 10일 항목과 가격 페이지의 주석에는, 사용자 요구에 따라 DeepSeek가 2026년 9월 14일 이후에도 V4-Pro API 서비스를 계속 제공하기로 결정했으며 과금 방식은 변하지 않고 변경이 있으면 별도로 알리겠다고 적혀 있었습니다. 가격 페이지에서 deepseek-v4-pro에 대응하는 버전은 DeepSeek-V4-Pro-0813입니다. '계속 제공하기로 결정했다'는 표현으로 보면 전환 계획 이후에 내린 결정이지만, 페이지에 날짜가 표시되어 있지 않고 API 문서의 뉴스 목록에도 별도 공지가 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "9월 15일 확인 시점에도 영어판과 중국어 간체판 출시 공지 페이지에는 '9월 14일부터 전환한다'는 원래 문구가 남아 있었습니다. 공지만 읽은 사람은 V4-Pro가 이미 대체되었다고 생각할 수 있습니다. 업데이트 로그와 가격 페이지의 설명에 따르면 deepseek-v4-pro는 9월 14일 이후에도 계속 제공되며, V4-Flash의 기존 이름 두 개는 V4.1-Flash가 처리하고 Flash 가격으로 과금됩니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "모델명",
+            "실제 처리 모델",
+            "과금"
+          ],
+          "rows": [
+            [
+              "deepseek-flash",
+              "DeepSeek-V4.1-Flash",
+              "Flash 가격"
+            ],
+            [
+              "deepseek-v4-flash",
+              "V4.1-Flash(원래 모델 퇴역)",
+              "Flash 가격"
+            ],
+            [
+              "deepseek-v4-flash-vision-exp",
+              "V4.1-Flash(원래 모델 퇴역)",
+              "Flash 가격"
+            ],
+            [
+              "deepseek-v4-pro",
+              "DeepSeek-V4-Pro-0813",
+              "과금 방식 변동 없음"
+            ]
+          ],
+          "caption": "2026년 9월 15일 확인 기준. DeepSeek 업데이트 로그와 모델 및 가격 페이지를 바탕으로 정리했으며 공식 API에 한합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "API를 직접 호출하지 않는 사람도 영향을 받는 이유"
+        },
+        {
+          "type": "paragraph",
+          "text": "대만 독자 대부분은 DeepSeek API를 직접 호출하지 않지만 간접적으로 사용하고 있을 수 있습니다. 일부 번역 확장 프로그램, 글쓰기 앱, 사내 질의응답 도구는 설정에 특정 DeepSeek 모델명을 입력한 뒤 사용자의 입력을 그쪽으로 전달합니다. DeepSeek 공지도 WorkBuddy(CodeBuddy 포함)와 OpenCode가 V4.1-Flash를 전면 지원한다고 언급했습니다. 서비스 제공자가 기존 이름을 새 모델로 연결하면 도구 설정은 바꿀 필요가 없지만, 뒤에서 답변하는 모델은 이미 바뀐 상태입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 사례가 이를 잘 보여 줍니다. deepseek-v4-flash라는 이름에는 V4가 들어 있지만 실제로 처리하는 모델은 V4.1-Flash입니다. 업데이트 로그에는 4월 24일 V4를 출시할 때 deepseek-chat과 deepseek-reasoner 두 기존 이름이 전환 기간 동안 각각 deepseek-v4-flash의 비사고 모드와 사고 모드를 가리키며, 2026년 7월 24일에 사용이 중단된다고 예고한 내용도 기록되어 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "에디터가 설계한 상황을 예로 들어 보겠습니다. 한 직장인이 매일 사내 요약 도구로 회의록을 정리하다가 9월 10일 이후 요약이 길어지고 단락을 나누는 방식도 달라졌다는 것을 알아차렸습니다. 먼저 도구의 업데이트 안내를 확인하거나 관리자에게 문의해 백엔드가 DeepSeek에 연결되어 있는지, 어떤 모델명이 입력되어 있는지 확인할 수 있습니다. 답변 스타일, 길이, 출력 형식, 이미지 인식 능력이 갑자기 달라졌다면 한번 물어볼 만한 신호입니다. 반드시 품질이 나빠졌다는 뜻은 아니지만, 출력을 공식 문서에 붙여 넣어야 한다면 다시 표본을 뽑아 점검하는 것이 좋습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-deepseek-v41-flash-20260910/diagram-1-ko.svg",
+          "alt": "모델이 교체될 때의 네 가지 점검: 도구 업데이트 안내 확인, 답변 비교, 모델명과 버전 확인, 개인정보 처리방침 읽기",
+          "width": 1600,
+          "height": 900,
+          "caption": "모델이 교체될 때의 네 가지 점검: 도구 업데이트 안내 확인, 답변 길이와 형식 비교, 모델명과 실제 버전 확인, 공식 개인정보 처리방침 읽기.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "가격, 피크 시간대, 고정 버전의 의미"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 가격은 간단히만 짚겠습니다. 가격 페이지에 따르면 deepseek-flash의 피크 시간대 가격은 100만 토큰당 입력(캐시 미적중) 0.3달러, 출력 1.2달러이며, deepseek-v4-pro는 각각 1.32달러와 3.96달러입니다. 비피크 가격은 피크 가격의 절반이고, 피크 시간대는 월요일부터 금요일까지 UTC 01:00~04:00과 06:00~10:00으로, 대만 시간으로는 오전 9시~12시와 오후 2시~6시입니다. 공지에 따르면 새 가격은 9월 10일 UTC 04:00부터 적용되었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 이름이 새 모델로 연결되면 청구 금액도 함께 달라집니다. 가격 페이지는 V4-Flash 기존 이름으로 들어오는 요청을 Flash 가격으로 과금한다고 설명합니다. 만약 V4-Pro가 원래 계획대로 전환되었다면, 가격 페이지 수치로 볼 때 V4-Pro를 쓰던 사람의 비용은 줄었겠지만 답변은 다른 모델이 하게 되었을 것입니다. 기능도 다릅니다. 가격 페이지에는 deepseek-flash는 이미지 이해를 지원하고 deepseek-v4-pro는 지원하지 않는다고 표시되어 있습니다. 서드파티 도구에 월 요금을 내는 사람이라면 요금제 가격이 따라서 바뀌는지는 각 도구의 안내를 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "고정 버전이란 도구가 조용히 바뀌지 않는 모델 버전을 지정해 동작을 더 예측 가능하게 만드는 것을 말합니다. DeepSeek 가격 페이지는 모델명과 실제 버전을 따로 표기하지만, 날짜가 붙은 버전명으로 호출할 수 있는지는 설명하지 않습니다. 8월 13일 업데이트 로그에도 deepseek-v4-pro라는 이름을 계속 쓰면 최신 버전을 사용하게 된다고 적혀 있습니다. 도구를 직접 관리하는 사람은 모델명, 버전, 확인 날짜를 기록해 두고 업데이트 로그를 정기적으로 확인하는 것이 좋습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "중국 업체 서비스를 쓰기 전에 직접 읽어야 할 약관"
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeek 공식 API나 앱을 통해 사용하면 입력한 내용이 DeepSeek 서비스로 전송되어 처리됩니다. 데이터가 어떻게 보관되는지, 어디에 저장되는지, 서비스 개선에 쓰이는지는 DeepSeek 공식 개인정보 처리방침과 서비스 약관을 읽어 보시기 바랍니다. 본 기사는 이를 대신 해석하지 않습니다. 회사가 내부 데이터를 외부 AI 서비스로 보내려 한다면, 업체가 어느 나라 회사이든 먼저 내부 데이터 규정이 이를 허용하는지 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "간접적으로 사용할 때는 한 단계 더 확인해야 합니다. 서드파티 도구는 DeepSeek 공식 API에 직접 연결할 수도 있고, 다른 클라우드 플랫폼이 호스팅하는 모델을 사용할 수도 있으며, 두 경우에 적용되는 약관이 다릅니다. 도구의 도움말 페이지나 개인정보 처리방침에서 '모델 제공업체', '데이터 전송' 같은 항목을 찾아보십시오. 답을 찾기 전까지는 신분증 번호, 고객 명단, 공개되지 않은 계약서를 붙여 넣지 않는 것이 좋습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "오픈 가중치는 또 다른 선택지입니다. 모델 카드는 MIT 라이선스를 채택하고 있어 기관이 자체 환경에 배포할 수 있으며, 데이터를 DeepSeek API로 보낼 필요가 없습니다. 다만 자체 배포에는 하드웨어, 운영, 데이터 관리 부담이 따르며, 이러한 절충점은 본 사이트의 Qwen3.5 오픈 가중치 기사에서 이미 설명했습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "9월 15일 확인 시점의 현황",
+          "text": "deepseek-flash는 V4.1-Flash가 처리합니다. deepseek-v4-flash와 deepseek-v4-flash-vision-exp 두 기존 이름은 일시적으로 V4.1-Flash로 연결되며 Flash 가격으로 과금됩니다. 업데이트 로그와 가격 페이지에는 deepseek-v4-pro가 9월 14일 이후에도 계속 제공되며 과금 방식은 변하지 않는다고 적혀 있습니다. 출시 공지 페이지에는 9월 14일부터 전환한다는 원래 문구가 남아 있고, 계속 제공한다는 설명의 날짜도 공식적으로 표시되어 있지 않으므로, 연동하기 전에 업데이트 로그와 가격 페이지의 최신 내용을 다시 확인하시기 바랍니다."
+        },
+        {
+          "type": "link",
+          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Qwen3.5 오픈 가중치: 다운로드 가능한 모델과 내 컴퓨터 구동의 차이는?",
+          "url": "https://mokaair.com/ko/life/ai-news-qwen-35-20260216"
+        }
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek: DeepSeek-V4.1-Flash 출시 공지",
+          "url": "https://api-docs.deepseek.com/news/news260910",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek: API 업데이트 로그(Change Log)",
+          "url": "https://api-docs.deepseek.com/updates",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek: 모델 및 가격",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek: DeepSeek-V4.1-Flash 공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "DeepSeek-V4.1-Flash 上线、V4-Pro 去留有两种说法：模型换手时该注意什么",
+      "description": "DeepSeek 于 2026 年 9 月 10 日推出 V4.1-Flash，V4-Flash 旧模型名暂时指向新模型；发布公告写 V4-Pro 自 9 月 14 日起改为指向新模型，更新日志与价格页则写 9 月 14 日之后继续提供。本文依据官方页面梳理两种说法的先后与核实时的现状，并说明通过第三方工具间接使用的人，如何察觉模型换手、看懂价格与隐私条款。",
+      "hero": {
+        "src": "/guides/ai-news-deepseek-v41-flash-20260910/hero-zh-cn.jpg",
+        "alt": "模型名称不变、背后模型已经换手的原创插图",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 10 日，DeepSeek 在官方 API 文档发布 DeepSeek-V4.1-Flash，说明它是新架构系列中最小的模型，具备原生的图像理解能力，调用时的模型名称是 deepseek-flash。前一代 V4-Flash 与 V4-Flash-Vision-Exp 同时退役，旧名暂时指向新模型。公告还写道，V4-Pro 的请求将自 9 月 14 日起改为指向 V4.1-Flash，但核实时官方更新日志与价格页写的是 9 月 14 日之后继续提供 V4-Pro。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 15 日核实。这次公告说明的是 API 的变动，DeepSeek App 与网页版目前使用哪个模型，官方这几页没有交代，本文不做推断。本站没有实际调用或评测这个模型，文中的能力与评测说法都是 DeepSeek 自己的表述；生活与工作场景则是编辑设计的例子。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "V4.1-Flash 的公告写了什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeek 表示，V4.1-Flash 是参数规模 552B 的混合专家（MoE）模型，采用新的 Causal Encoder-Decoder 架构，读取输入时激活 8B 参数、生成输出时激活 16B，官方称之为输入与输出不对称。公告还说，新的预训练方式加上更大规模的强化学习后训练，让它在基准测试上超过包括 DeepSeek-V4-Pro 在内的旗舰模型。这是厂商的说法，模型卡的对照表里也有它落后于其他厂商模型的项目，本站没有重新测试。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一个重点是缓存。模型处理长对话时会暂存中间计算数据，称为 KV 缓存（KV cache）。公告说与上一代相比，V4.1-Flash 的 KV 缓存对 HBM 的需求降到四分之一、对 SSD 的需求降到八分之一，并表示架构更高效，因此下调了 API 价格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "权重方面，公告附上了官方 Hugging Face 页面。模型卡写明仓库与模型权重采用 MIT 许可证，支持最长一百万 token 的上下文，能直接处理图片与文字并输出文字。开放下载不代表普通电脑跑得动：模型卡链接的推理示例以 8 路模型并行的设置运行。发布公告另外邀请计划以两千张 GPU 加存储集群大规模部署的机构联系 DeepSeek。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "旧模型名改为指向新模型、V4-Pro 去留：两种说法的先后"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一种说法来自 9 月 10 日的发布公告。它说多方测试显示 V4.1-Flash 在性能、费用、速度与总用时上都胜过 V4-Pro，因此计划让 V4-Pro 退场：自 2026 年 9 月 14 日 UTC 04:00（台湾时间中午 12 点）起，所有 deepseek-v4-pro 的请求改由 V4.1-Flash 处理并按 V4.1-Flash 的价格计费，直到 V4.1-Pro 推出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二种说法在更新日志与价格页。核实当天，更新日志 9 月 10 日那一条与价格页的注释写着：根据用户需求，DeepSeek 决定在 2026 年 9 月 14 日之后继续提供 V4-Pro 的 API 服务，计费方式不变，如有变动会另行通知。价格页上 deepseek-v4-pro 对应的版本是 DeepSeek-V4-Pro-0813。从“决定继续提供”的措辞看，这是改为指向新模型的计划之后作出的决定，但页面未标注日期，API 文档的新闻列表也没有另发公告。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9 月 15 日核实时，英文与简体中文的发布公告页仍保留原本“9 月 14 日起改为指向 V4.1-Flash”的文字。只读公告的人，可能以为 V4-Pro 已被取代；根据更新日志与价格页的说明，deepseek-v4-pro 在 9 月 14 日之后继续提供，V4-Flash 的两个旧名则由 V4.1-Flash 提供服务并按 Flash 价格计费。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "模型名称",
+            "实际提供服务的模型",
+            "计价"
+          ],
+          "rows": [
+            [
+              "deepseek-flash",
+              "DeepSeek-V4.1-Flash",
+              "Flash 价格"
+            ],
+            [
+              "deepseek-v4-flash",
+              "V4.1-Flash（原模型已退役）",
+              "Flash 价格"
+            ],
+            [
+              "deepseek-v4-flash-vision-exp",
+              "V4.1-Flash（原模型已退役）",
+              "Flash 价格"
+            ],
+            [
+              "deepseek-v4-pro",
+              "DeepSeek-V4-Pro-0813",
+              "计费方式不变"
+            ]
+          ],
+          "caption": "2026 年 9 月 15 日核实；根据 DeepSeek 更新日志与模型价格页整理，仅限官方 API"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "没有直接调用 API 的人，为什么也会受影响"
+        },
+        {
+          "type": "paragraph",
+          "text": "多数台湾读者不会自己调用 DeepSeek API，但可能间接用到它。有些翻译插件、写作 App 或公司内部的问答工具，会在设置里填入某个 DeepSeek 模型名，再把用户的输入转发过去；DeepSeek 公告也点名 WorkBuddy（含 CodeBuddy）与 OpenCode 已全面支持 V4.1-Flash。服务商把旧名指向新模型时，工具设置不必修改，背后回答的模型却已经换了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这次的例子很清楚：deepseek-v4-flash 名称里写着 V4，实际提供服务的却是 V4.1-Flash。更新日志也记载，4 月 24 日推出 V4 时，deepseek-chat 与 deepseek-reasoner 两个旧名在过渡期间分别指向 deepseek-v4-flash 的非思考与思考模式，并预告 2026 年 7 月 24 日停用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以编辑设计的场景为例：一位上班族每天用公司内部的摘要工具整理会议纪要，9 月 10 日之后发现摘要变长、分段方式也不同。可以先查看工具的更新说明或询问管理员，确认后端是否接入 DeepSeek、填的是哪个模型名。回答风格、长度、输出格式或看图能力突然改变，都是值得问一句的信号；不一定代表变差，但输出如果要贴进正式文件，最好重新抽样检查。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-deepseek-v41-flash-20260910/diagram-1-zh-cn.svg",
+          "alt": "模型换手时的四个检查：看工具更新说明、比对回答、确认模型名称与版本、阅读隐私政策",
+          "width": 1600,
+          "height": 900,
+          "caption": "模型换手时的四个检查：看工具更新说明、比对回答长度与格式、确认模型名称与实际版本、阅读官方隐私政策。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "价格、高峰时段与固定版本的意义"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 价格只简单带过。根据定价页，deepseek-flash 在高峰时段每百万 token 的输入（未命中缓存）为 0.3 美元、输出为 1.2 美元；deepseek-v4-pro 分别是 1.32 与 3.96 美元。非高峰价格是高峰的一半，高峰时段为周一到周五 UTC 01:00 至 04:00 与 06:00 至 10:00，即台湾时间上午 9 点到 12 点、下午 2 点到 6 点。公告写新价格自 9 月 10 日 UTC 04:00 生效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "旧名指向新模型时，账单也会跟着变。价格页说 V4-Flash 旧名的请求改按 Flash 价格计费；如果 V4-Pro 当初按原计划改为指向新模型，根据定价页的数字，原本使用 V4-Pro 的人费用会下降，回答却会换成另一个模型。功能也不同：价格页标注 deepseek-flash 支持图像理解、deepseek-v4-pro 不支持。付月费使用第三方工具的人，套餐价格是否跟着变，要看各工具自己的说明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所谓固定版本，是指工具指定一个不会悄悄更换的模型版本，让行为更可预期。DeepSeek 价格页把模型名称与实际版本分开列出，但没有说明能否用带日期的版本名调用；8 月 13 日的更新日志也写道，沿用 deepseek-v4-pro 这个名称就会用到最新版本。自己管理工具的人，可以记下模型名、版本与核实日期，并定期查看更新日志。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "使用中国厂商服务前，自己要读的条款"
+        },
+        {
+          "type": "paragraph",
+          "text": "通过 DeepSeek 官方 API 或 App 使用时，输入的内容会发送到 DeepSeek 的服务处理。数据如何保存、存放在哪里、是否用于改进服务，请阅读 DeepSeek 官方隐私政策与服务条款，本文不代为解读。公司如果要把内部数据发送到任何外部 AI 服务，无论厂商来自哪个国家，都应先确认内部的数据规范是否允许。"
+        },
+        {
+          "type": "paragraph",
+          "text": "间接使用时要多问一层。第三方工具可能直接接入 DeepSeek 官方 API，也可能使用其他云平台托管的模型，两者适用的条款不同。可以在工具的说明页或隐私政策里找“模型供应商”“数据传输”之类的段落；找到答案之前，不要先把身份证号码、客户名单或未公开的合同粘贴进去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "开放权重提供了另一种选择：模型卡采用 MIT 许可证，机构可以在自己的环境中部署，数据不必发送到 DeepSeek 的 API。不过自行部署要承担硬件、运维与数据管理，这些取舍在本站 Qwen3.5 开放权重那篇已有说明。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "9 月 15 日核实时的现状",
+          "text": "deepseek-flash 由 V4.1-Flash 提供服务；deepseek-v4-flash 与 deepseek-v4-flash-vision-exp 两个旧名暂时指向 V4.1-Flash，按 Flash 价格计费；更新日志与价格页写 deepseek-v4-pro 在 9 月 14 日之后继续提供，计费方式不变。发布公告页仍保留 9 月 14 日起改为指向新模型的原文，官方未标注继续提供这段说明的日期，接入前请再查看更新日志与价格页的最新内容。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Qwen3.5 开放权重：可下载模型，与能在自己电脑运行差在哪？",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-qwen-35-20260216"
+        }
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek：DeepSeek-V4.1-Flash 发布公告",
+          "url": "https://api-docs.deepseek.com/news/news260910",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek：API 更新日志（Change Log）",
+          "url": "https://api-docs.deepseek.com/updates",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek：模型与价格",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek：DeepSeek-V4.1-Flash 官方模型卡（Hugging Face）",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "slug": "ai-news-openai-agents-api-20260910",
+  "event_date": "2026-09-10",
+  "title": "OpenAI Agents API 公開 beta：委託 AI 自動化前，先看懂計費與資料位置",
+  "sources": [
+    {
+      "title": "OpenAI：Introducing the Agents API（2026 年 9 月 10 日）",
+      "url": "https://openai.com/index/introducing-the-agents-api/",
+      "checked_on": "2026-09-15"
+    },
+    {
+      "title": "OpenAI API：Agents API 概覽",
+      "url": "https://developers.openai.com/api/docs/guides/agents-api/overview",
+      "checked_on": "2026-09-15"
+    },
+    {
+      "title": "OpenAI API：Agents API Observability and usage",
+      "url": "https://developers.openai.com/api/docs/guides/agents-api/observability",
+      "checked_on": "2026-09-15"
+    },
+    {
+      "title": "OpenAI API：Data controls in the OpenAI platform",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "checked_on": "2026-09-15"
+    }
+  ],
+  "checked_on": "2026-09-15",
+  "verified_facts": [
+    "官方公告〈Introducing the Agents API〉日期 September 10, 2026；Today, we're introducing the Agents API in public beta, bringing that same harness and infrastructure that powers Codex to developers（https://openai.com/index/introducing-the-agents-api/）",
+    "同一公告：Agents API is available in public beta today to all developers. There are no additional fees for using the Agents API – you simply pay for the tokens and tools your agents use（https://openai.com/index/introducing-the-agents-api/）",
+    "同一公告：During the public beta, we'll iterate quickly based on your feedback as we work toward general availability（https://openai.com/index/introducing-the-agents-api/）",
+    "同一公告：You choose the agent's compute environment: in an OpenAI-managed sandbox, on your own infrastructure, or with one of our sandbox partners；OpenAI provisions and manages the sandbox（OpenAI hosted sandbox 段落；https://openai.com/index/introducing-the-agents-api/）",
+    "交叉確認（未列 sources）：API Changelog 的 September, 2026／Sep 10 條目 Released the Agents API in public beta，並寫 Run agents in OpenAI-hosted sandboxes or connect a sandbox from your own infrastructure or a supported provider（https://developers.openai.com/api/docs/changelog）；官方 RSS pubDate Thu, 10 Sep 2026（https://openai.com/news/rss.xml）",
+    "Agents API gives your application access to the Codex harness through an OpenAI-managed API；OpenAI manages sessions, orchestration, context compaction, and recovery while your application provides tools and chooses its execution environment（https://developers.openai.com/api/docs/guides/agents-api/overview）",
+    "代理可在沙箱中 execute code, edit files, connect to MCP servers, and produce artifacts；managed harness 支援 delegating to subagents、resuming a session where it left off（https://developers.openai.com/api/docs/guides/agents-api/overview）",
+    "四個核心概念：Agent（model, instructions, tools, MCP servers）、Environment（optional sandbox or computer where the agent accesses files, loads skills, and runs commands）、Session（A durable instance of an agent that works on tasks and responds to input）、Events and items（https://developers.openai.com/api/docs/guides/agents-api/overview）",
+    "計價段落：Model usage is billed at the selected model's API rates；OpenAI tools use their standard rates；OpenAI-hosted sandboxes use standard container rates（https://developers.openai.com/api/docs/guides/agents-api/overview）",
+    "官方完整應用範例包括 Incident response agent（request approval for recovery actions）與 Data analyst（read-only SQL）（https://developers.openai.com/api/docs/guides/agents-api/overview）",
+    "The Agents API retains session state；You can delete sessions and published artifacts when you no longer need them（https://developers.openai.com/api/docs/guides/agents-api/overview）",
+    "The Agents API currently supports data residency only in the United States and does not support Zero Data Retention (ZDR). Choosing a self-hosted sandbox does not make the Agents API ZDR-eligible（https://developers.openai.com/api/docs/guides/agents-api/overview）",
+    "可在 platform.openai.com/logs?api=agents 的 Agents 分頁以 session ID 檢視 turns、tool calls 與 subagents；Trace retrieval and external trace exporters are not part of the public beta API（https://developers.openai.com/api/docs/guides/agents-api/observability）",
+    "An agent may make several model calls while completing a task；每次呼叫依 token pricing 與 prompt-caching rules 計費；輸入含 instructions、tool definitions、conversation history、user input、files、tool results；Reasoning tokens are billed as output tokens（https://developers.openai.com/api/docs/guides/agents-api/observability）",
+    "Agents carry context forward within a session；repeated calls can process a large history（https://developers.openai.com/api/docs/guides/agents-api/observability）",
+    "Account for root-agent and subagent work, including retries, plus any applicable tool, sandbox compute, and third-party service charges；Subagents can also make model calls（https://developers.openai.com/api/docs/guides/agents-api/observability）",
+    "usage 為 best-effort：can be null、may change；Missing usage does not mean zero usage. These counts are not a final bill（https://developers.openai.com/api/docs/guides/agents-api/observability）",
+    "Abuse monitoring logs may contain customer content such as prompts and responses；by default retained for up to 30 days, unless longer retention is required by law, or is reasonably necessary to protect our services or any third party from harm（https://developers.openai.com/api/docs/guides/your-data）",
+    "ZDR 與 Modified Abuse Monitoring 可把客戶內容排除於濫用監控紀錄，subject to prior approval by OpenAI and acceptance of additional requirements（https://developers.openai.com/api/docs/guides/your-data）",
+    "資料控制表 /v1/agents 列：Data used for training No；Abuse monitoring retention 30 days；Application state retention Until deleted；Zero Data Retention eligible No（https://developers.openai.com/api/docs/guides/your-data）",
+    "MCP servers are third-party services. Data sent to an MCP server is subject to its data residency policies（Remote MCP server tool 列的備註；https://developers.openai.com/api/docs/guides/your-data）"
+  ],
+  "unverified_or_excluded": [
+    "查核階段（2026-09-15）更正：撰稿時官方公告 WebFetch 回 403，改以 curl（User-Agent: Mokaair-editorial）可讀到全文，「no additional fees」已由官方公告證實並寫入正文、公告取代 Changelog 列入 sources（Changelog 改為交叉確認）。",
+    "官方公告的八則客戶引言與數字（如 Ciridae 評測分數 0.71→0.85、SafetyKit 每案成本降 60%、Hypha 失敗回應減 86%）屬客戶自述，與讀者角度無關，未寫。公告也提到 harness 開源、tool search 與 programmatic tool calling，屬技術選型，未寫。",
+    "公告寫 available … to all developers，但未說明地區；台灣開發者帳號是否有額外限制官方未說明，文章只寫「OpenAI 表示即日起開放開發者使用」。",
+    "容器價格數字：定價頁容器列寫 1 GB $0.03、4 GB $0.12、16 GB $0.48、64 GB $1.92 per 20-minute session per container，同頁註腳又寫 eligible container sessions billed by the minute, with a 5-minute minimum；兩種說法難以對齊，且 Agents API 文件只說代管沙箱用 standard container rates，因此不寫具體金額與計時方式（https://developers.openai.com/api/docs/pricing）。",
+    "查得到但因 sources 上限 4 條而未寫入正文：取消進行中的 turn 且保留 session（https://developers.openai.com/api/docs/guides/agents-api/sessions）；OpenAI 代管沙箱在活動與 keep-alive 停止一小時後可能被刪除、網路存取預設開啟並可設 disabled／restricted（https://developers.openai.com/api/docs/guides/agents-api/environments/openai-hosted）；max_concurrent_subagents 預設 6（https://developers.openai.com/api/docs/guides/agents-api/multi-agent）；官方列出的沙箱供應商 Modal、Cloudflare、Vercel、Daytona、Blaxel、E2B、Runloop、DigitalOcean、OCI（https://developers.openai.com/api/docs/guides/agents-api/environments/self-hosted）；API 金鑰需 api.agents.read／write 與 api.responses.write 權限（https://developers.openai.com/api/docs/guides/agents-api/environments/security）。文章在委託問題一節只把停止機制、子代理數量寫成要問對方的問題，不宣稱具體功能細節。",
+    "支援哪些模型：文件範例只用 gpt-6-astra，未找到支援模型清單，不寫。",
+    "速率限制、beta 何時轉正式版、台灣開發者帳號是否有地區限制：官方未說明，不寫。",
+    "資料落地端點加價 10% 的規定寫在資料控制頁，但 Agents API 目前只支援美國，未見說明是否適用，不寫。",
+    "二手整理（aiweekly、marktechpost、cellcog 等）的其他說法未採用；其中「US data residency only、不支援 ZDR」已由官方 Agents API 概覽頁證實，故以官方頁為出處。"
+  ],
+  "editorial_brief": "寫給會用 AI 工具、可能委託工程師或外包做自動化的一般工作者，不寫程式碼。原創情境：小型行銷公司委託外包做「每週整理客戶意見並產出報告」的代理，驗收前請對方示範中止方式、用一週真實資料試跑並記錄費用、說明預算警示。刻意不談：程式串接步驟與 API 參數、容器價格數字、各沙箱供應商比較、Agents SDK 與 Responses API 的技術選型、GPT-6 Astra 模型能力（已由相關篇處理）、同日的 Workspace Agents API 與 GPT-Live API。",
+  "hero_label": "委託代理前先看資料與費用",
+  "diagram": {
+    "title": "Agents API 的資料界線",
+    "caption": "依 OpenAI 文件整理：資料落地目前只支援美國、不支援 ZDR、濫用監控紀錄預設最多 30 天、工作階段狀態保存到刪除。",
+    "nodes": [
+      [
+        "落地只支援美國",
+        "不能選其他地區"
+      ],
+      [
+        "不支援 ZDR",
+        "自架沙箱也不會改變"
+      ],
+      [
+        "監控紀錄 30 天",
+        "預設最多保存 30 天"
+      ],
+      [
+        "保存到刪除",
+        "工作階段與成果檔可刪"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Check data, costs first",
+      "diagram": {
+        "title": "Agents API data boundaries",
+        "caption": "Compiled from OpenAI documentation: data residency currently supported only in the United States, ZDR not supported, abuse monitoring logs kept for up to 30 days by default, session state retained until deleted.",
+        "nodes": [
+          [
+            "US residency only",
+            "No other regions to choose"
+          ],
+          [
+            "No ZDR support",
+            "Self-hosting doesn't change it"
+          ],
+          [
+            "Logs kept 30 days",
+            "Up to 30 days by default"
+          ],
+          [
+            "Kept until deleted",
+            "Sessions, artifacts deletable"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "委託前にデータと費用を確認",
+      "diagram": {
+        "title": "Agents APIのデータの境界",
+        "caption": "OpenAIのドキュメントをもとに整理：データレジデンシーは現在米国のみ、ZDR非対応、不正利用監視ログは初期設定で最大30日、セッションの状態は削除まで保存。",
+        "nodes": [
+          [
+            "保存先は米国のみ",
+            "ほかの地域は選べない"
+          ],
+          [
+            "ZDR非対応",
+            "セルフホストでも同じ"
+          ],
+          [
+            "監視ログ30日",
+            "初期設定で最大30日保存"
+          ],
+          [
+            "削除まで保存",
+            "セッションと成果物は削除可"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "맡기기 전 데이터·비용 확인",
+      "diagram": {
+        "title": "Agents API 데이터 경계",
+        "caption": "OpenAI 문서를 바탕으로 정리: 데이터 레지던시는 현재 미국만 지원, ZDR 미지원, 악용 모니터링 로그는 기본 최대 30일, 세션 상태는 삭제할 때까지 보관.",
+        "nodes": [
+          [
+            "미국 레지던시만",
+            "다른 지역 선택 불가"
+          ],
+          [
+            "ZDR 미지원",
+            "자체 호스팅도 마찬가지"
+          ],
+          [
+            "로그 30일 보관",
+            "기본 최대 30일 보관"
+          ],
+          [
+            "삭제까지 보관",
+            "세션·결과물 삭제 가능"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "委托智能体前先看数据与费用",
+      "diagram": {
+        "title": "Agents API 的数据边界",
+        "caption": "根据 OpenAI 文档整理：数据驻留目前只支持美国、不支持 ZDR、滥用监控日志默认最多保存 30 天、会话状态保存至删除。",
+        "nodes": [
+          [
+            "驻留只支持美国",
+            "不能选择其他地区"
+          ],
+          [
+            "不支持 ZDR",
+            "自托管沙箱也不改变"
+          ],
+          [
+            "监控日志 30 天",
+            "默认最多保存 30 天"
+          ],
+          [
+            "保存至删除",
+            "会话与成果文件可删"
+          ]
+        ]
+      }
+    }
+  }
+}

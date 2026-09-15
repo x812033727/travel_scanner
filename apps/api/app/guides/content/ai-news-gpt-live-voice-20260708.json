@@ -1,0 +1,1039 @@
+{
+  "slug": "ai-news-gpt-live-voice-20260708",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 142,
+  "locales": {
+    "zh-TW": {
+      "title": "GPT-Live 讓 ChatGPT 語音邊聽邊說：插話、方案用量與錄音設定",
+      "description": "OpenAI 在 2026 年 7 月發布 GPT-Live，讓 ChatGPT 語音能同時聽與說、可以被插話，搜尋與推理則交給背景模型。本文依官方說明整理對話節奏的改變、9 月調整後各方案的模型與用量、做菜與練口說等使用情境、錄音保存與訓練設定，並簡短帶過 API 價格。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-live-voice-20260708/hero.jpg",
+        "alt": "手機上的語音波形與對話泡泡交錯，呈現邊聽邊說的原創插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在 2026 年 7 月 8 日發布新一代語音模型 GPT-Live，官方部落格與 ChatGPT 版本說明都標示這一天。GPT-Live 採用全雙工架構，能同時聆聽與說話，現在用在 ChatGPT 語音；遇到需要網路搜尋、較深入推理或較複雜工作的問題，它會在背景委派給另一個前沿模型，推出初期是 GPT-5.5，等結果準備好再帶回對話。OpenAI 同時推出 GPT-Live-1 與 GPT-Live-1 mini 兩個版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 15 日查核 OpenAI 發布文、說明中心的 ChatGPT 語音頁與版本說明。發布文寫的是向全球 iOS、Android 與 ChatGPT.com 使用者逐步推出，版本說明則寫在支援的地區推出、發布時不含 Business、Enterprise 與 Edu 工作區，但兩者都沒有列出地區清單，也未另外提到台灣。本站沒有實際試用，能力描述都是 OpenAI 的說法；你的台灣帳號是否已出現這個選項，請以 App 內設定為準。文中的做菜、練口說與車上情境，是編輯設計的例子。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "邊聽邊說之後，對話節奏有什麼不同"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 說明，最初的 ChatGPT 語音把語音轉文字、語言模型與文字轉語音三個模型串在一起，回應慢且生硬；後來的進階語音模式改在單一模型內處理音訊，但仍要等使用者說完才回應，而且以靜音判斷回合，短暫停頓或背景噪音都可能被當成說完了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 則在產生語音的同時持續聽，OpenAI 表示模型每秒可多次決定要說話、繼續聽、暫停、插話或呼叫工具。對話時，你可以在它回答到一半時插話提問、停下來整理思緒，或請它放慢；它可能用「嗯嗯」「了解」表示有跟上，你要求它安靜聽時也應照做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "說明中心同時提醒，語音重疊、背景噪音、網路狀況與麥克風設定都可能影響它聽到的內容，長時間停頓或旁人說話仍可能讓它開口。官方建議可改用耳機、換到較安靜的地方，iPhone 使用者可在控制中心的麥克風模式開啟語音隔離；想邊想邊說時，可以在開頭先講「等我請你回應再回應」。Live 主要為一對一對話設計，尚未針對多人同時說話最佳化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "查資料時的等待也和以前不同。OpenAI 表示，搜尋或推理交給背景模型處理時，GPT-Live 仍能繼續跟你交談，結果好了才帶回對話。編輯建議別把等待時的暫時回應當成結論，結果回來後再請它說明依據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "各方案用哪個模型、每天能用多久"
+        },
+        {
+          "type": "paragraph",
+          "text": "發布當天，OpenAI 表示 GPT-Live-1 是 Go、Plus 與 Pro 使用者的預設模型，免費版則預設 GPT-Live-1 mini；當時語音還能另外選擇快速回覆或多花時間思考的推理程度。Go 的模型與這組推理程度，都在 2026 年 9 月 9 日的版本說明中調整，讀過早期報導的人要以現況為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "依 9 月 9 日版本說明與說明中心，Go 改為最多 3 小時的 GPT-Live-1 mini，取代原本的 GPT-Live-1；Plus 最多 3 小時 GPT-Live-1，每月 100 美元的 Pro 最多 15 小時，每月 200 美元的 Pro 不限時數。Plus 與 Pro 達到上限後不再切換到 mini。用量以滾動 24 小時計算，免費版為有限度使用，上限可能調整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9 月 9 日版本說明也寫到，語音需要搜尋或思考較難的問題時，可以使用 GPT-5.6 或 GPT-6 Astra，模型與推理強度改用和文字聊天相同的控制選擇，可用模型與用量依方案而定；原本語音專用的三種推理程度已取消。說明中心現在也寫，符合資格的 Business、Enterprise、Edu 與 Healthcare 工作區可使用語音，但受工作區設定約束。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "Live 模型",
+            "用量上限"
+          ],
+          "rows": [
+            [
+              "免費版",
+              "GPT-Live-1 mini",
+              "有限度，可能調整"
+            ],
+            [
+              "Go",
+              "GPT-Live-1 mini",
+              "3 小時"
+            ],
+            [
+              "Plus",
+              "GPT-Live-1",
+              "3 小時"
+            ],
+            [
+              "Pro（每月 100 美元）",
+              "GPT-Live-1",
+              "15 小時"
+            ],
+            [
+              "Pro（每月 200 美元）",
+              "GPT-Live-1",
+              "不限"
+            ]
+          ],
+          "caption": "2026 年 9 月 15 日查核；依 OpenAI 說明中心與 9 月 9 日版本說明，用量以滾動 24 小時計算，未列工作區方案。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "做菜、練口說與 CarPlay：三個使用情境"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個情境是邊做菜邊問。手上沾著麵粉時，可以直接問某樣材料能不能替代，聽到一半發現家裡只剩兩顆蛋，就插話更正條件，不必等它講完。不過烹調溫度、過敏原與保存方式，仍應回到食譜或食品包裝核對，別只靠聽到的一句話。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個情境是練習口說。OpenAI 在發布文提到，每週有超過 1.5 億人透過語音與聽寫等功能和 ChatGPT 對話，用途包括練習語言。你可以在設定 → 語音選擇最常說的語言，也能在對話中要求它換語言或說慢一點，但說明中心寫目前無法精確控制播放速度。OpenAI 表示已針對部分最常用的語言最佳化，但未列出清單，部分語言可能帶非母語口音或不夠流暢，練發音時別把它的口音當標準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三個情境是車上。說明中心寫 ChatGPT 可在支援的 iPhone 上透過 Apple CarPlay 使用，同時提醒只在法律允許且情況安全時使用行動裝置，應在駕駛前設定好 App，避免在車輛行進中操作。編輯建議行車中不要看螢幕上的文字回應；營業時間、地址這類資訊，停車後再用官方來源確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果想在切到其他 App 或手機鎖定時繼續對話，需要到設定 → 語音開啟背景對話；2026 年 8 月 31 日的版本說明也提到，iPhone 的鎖定畫面與動態島可以顯示 Live 語音對話的內容。背景對話會在你結束對話、強制關閉 App、達到用量上限或最長工作階段長度時結束。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-live-voice-20260708/diagram-1.svg",
+          "alt": "GPT-Live 語音對話四個重點的圖解：同時聽與說、背景查資料、方案與用量、錄音與核對",
+          "width": 1600,
+          "height": 900,
+          "caption": "GPT-Live 語音的四個重點：同時聽與說、背景查資料、各方案模型與用量、錄音保存與回答核對；依 OpenAI 官方說明整理。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "錄音、逐字稿與訓練：先看官方資料控制說明"
+        },
+        {
+          "type": "paragraph",
+          "text": "說明中心寫，Live 與進階語音對話的音訊片段，會和對話記錄中的逐字稿一起儲存，保留 30 天。刪除對話後，相關音訊片段會在 30 天內刪除，但基於安全、保障或法律原因需要保留，或你先前已選擇分享且片段已與帳戶解除關聯的情況除外。刪除無法復原，封存只是從側邊欄移除，不會刪掉音訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "錄音會不會拿去訓練模型，要看兩個開關。說明中心表示，除非你選擇分享，否則不會用音訊片段訓練；個人工作區的免費版、Plus 與 Pro 使用者，要先在設定 → 資料控制項開啟「為所有人改進模型」，再開啟「包含你的錄音」才會分享；Business、Enterprise 與 Edu 工作區則無法分享片段。另要注意，只要「為所有人改進模型」開著，語音對話的逐字稿與其他檔案就可能依方案與設定被用於訓練。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分享的片段可能由 OpenAI 團隊審查；停止分享後，先前已解除關聯的片段仍可能繼續使用。OpenAI 另在 2026 年 7 月 31 日更新發布文，表示 GPT-Live 生成的受支援音訊已加入 SynthID 浮水印；家長也可透過家長控制決定青少年子女能否使用語音。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "語音回答仍要核對，API 價格簡單帶過"
+        },
+        {
+          "type": "paragraph",
+          "text": "說出來的回答聽過就過去，比文字更難回頭檢查。說明中心提醒 ChatGPT 可能出錯，日期、時間或地點相關的問題尤其要核對；語音會用裝置或瀏覽器的時區理解「今天」「明天」，回答不對時可以直接說出確切日期與地點。使用 Live 時回答會同步以文字顯示，結束後可在對話記錄查看，但逐字稿不是逐字紀錄，可能與實際說的內容不完全相符。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Live 目前也有功能邊界。說明中心寫它不支援視訊、螢幕分享、已連結的應用程式或外掛程式，需要視訊或螢幕分享時，符合資格的訂閱者可在 iOS 與 Android App 改用進階模式；一次只能進行一個語音對話，達到用量上限、最長工作階段長度或長對話的內容脈絡限制時，對話也可能結束。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者端和 ChatGPT 裡的推出是兩件事：OpenAI 的 API 更新紀錄在 2026 年 9 月 10 日寫到，GPT-Live 1 在 API 正式開放，語音工作階段每分鐘 0.05 美元、按秒計費，背後搭配的模型與工具用量另外計費。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "找不到 Live 選項時",
+          "text": "先更新 App，再到設定 → 語音查看是否有 Live（中文說明頁譯為「即時」）；可用選項可能受方案、工作區設定、地區、App 版本與家長控制影響。語音回答裡的日期、價格與地點，請回原始來源核對。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini Live 生產力更新：用語音處理郵件與待辦",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-live-20260826"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：介紹 GPT-Live",
+          "url": "https://openai.com/zh-Hant/index/introducing-gpt-live/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：ChatGPT 語音",
+          "url": "https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：ChatGPT Release Notes",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 開發者文件：API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "en": {
+      "title": "GPT-Live Lets ChatGPT Voice Listen as It Talks: Interruptions, Plan Limits, Recordings",
+      "description": "OpenAI released GPT-Live in July 2026, letting ChatGPT Voice listen and speak at the same time and be interrupted, while search and reasoning are handed to a background model. Based on OpenAI's official documentation, this article covers how the flow of conversation changes, each plan's model and usage limits after the September adjustment, use cases such as cooking and speaking practice, and audio retention and training settings, with a brief note on API pricing.",
+      "hero": {
+        "src": "/guides/ai-news-gpt-live-voice-20260708/hero-en.jpg",
+        "alt": "Original illustration of voice waveforms and chat bubbles interleaving on a phone, representing listening and speaking at the same time",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI released GPT-Live, its next-generation voice model, on July 8, 2026; both the official blog post and the ChatGPT release notes carry that date. GPT-Live uses a full-duplex architecture that can listen and speak at the same time, and it now powers ChatGPT Voice. When a question calls for web search, deeper reasoning, or more complex work, it delegates the task in the background to another frontier model, which was GPT-5.5 at launch, and brings the result back into the conversation once it is ready. OpenAI released two versions at the same time: GPT-Live-1 and GPT-Live-1 mini."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 15, 2026, against OpenAI's announcement, the ChatGPT Voice page in the Help Center, and the release notes. The announcement describes a gradual rollout to ChatGPT users worldwide on iOS, Android, and ChatGPT.com, while the release notes say it is rolling out in supported regions and that, at launch, it did not include Business, Enterprise, or Edu workspaces. Neither lists which regions are covered, and neither mentions Taiwan specifically. This site has not tried the feature, and all capability descriptions come from OpenAI. To see whether the option has reached your Taiwan account, check the app's settings. The cooking, speaking-practice, and in-car scenarios in this article are examples designed by the editors."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How the Rhythm of a Conversation Changes When Voice Listens While It Talks"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI explains that the original ChatGPT Voice chained three models together, speech-to-text, a language model, and text-to-speech, which made responses slow and stiff. The later Advanced Voice Mode processed audio within a single model, but it still waited for the user to finish before responding, and it judged turns by silence, so a brief pause or background noise could be mistaken for the end of what you were saying."
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live, by contrast, keeps listening while it generates speech. OpenAI says the model can decide many times per second whether to speak, keep listening, pause, interject, or call a tool. In conversation, you can cut in with a question while it is halfway through an answer, stop to collect your thoughts, or ask it to slow down. It may say things like “mm-hmm” or “got it” to show it is following along, and when you ask it to stay quiet and listen, it should do so."
+        },
+        {
+          "type": "paragraph",
+          "text": "The Help Center also cautions that overlapping speech, background noise, network conditions, and microphone settings can all affect what it hears, and that long pauses or other people talking may still prompt it to speak. OpenAI suggests using headphones or moving somewhere quieter, and iPhone users can turn on Voice Isolation from Mic Mode in Control Center. If you want to think out loud, you can say at the start, “Wait until I ask you to respond.” Live is designed primarily for one-on-one conversation and is not yet optimized for several people speaking at once."
+        },
+        {
+          "type": "paragraph",
+          "text": "Waiting while it looks something up is also different from before. OpenAI says that while search or reasoning is handled by the background model, GPT-Live can keep talking with you, and it brings the result into the conversation once it is ready. The editors suggest not treating its interim replies during the wait as conclusions; once the result comes back, ask it to explain what the answer is based on."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Which Model Each Plan Uses and How Long You Can Talk Each Day"
+        },
+        {
+          "type": "paragraph",
+          "text": "On launch day, OpenAI said GPT-Live-1 was the default model for Go, Plus, and Pro users, while the free tier defaulted to GPT-Live-1 mini. At that time, Voice also offered a separate choice of reasoning level, ranging from quick replies to taking more time to think. Both Go's model and that set of reasoning levels were changed in the September 9, 2026, release notes, so anyone who read early coverage should go by the current status."
+        },
+        {
+          "type": "paragraph",
+          "text": "According to the September 9 release notes and the Help Center, Go now gets up to 3 hours of GPT-Live-1 mini, replacing GPT-Live-1. Plus gets up to 3 hours of GPT-Live-1, Pro at $100 per month gets up to 15 hours, and Pro at $200 per month has no hour limit. Plus and Pro no longer switch to mini once they reach their limits. Usage is measured over a rolling 24-hour period; the free tier gets limited access, and its limits may change."
+        },
+        {
+          "type": "paragraph",
+          "text": "The September 9 release notes also say that when Voice needs to search or think through a harder question, it can use GPT-5.6 or GPT-6 Astra, with the model and reasoning effort now chosen through the same controls as text chat; which models are available and how much you can use them depends on your plan. The three voice-specific reasoning levels have been retired. The Help Center now also states that eligible Business, Enterprise, Edu, and Healthcare workspaces can use Voice, subject to workspace settings."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Plan",
+            "Live model",
+            "Usage limit"
+          ],
+          "rows": [
+            [
+              "Free",
+              "GPT-Live-1 mini",
+              "Limited, may change"
+            ],
+            [
+              "Go",
+              "GPT-Live-1 mini",
+              "3 hours"
+            ],
+            [
+              "Plus",
+              "GPT-Live-1",
+              "3 hours"
+            ],
+            [
+              "Pro ($100/month)",
+              "GPT-Live-1",
+              "15 hours"
+            ],
+            [
+              "Pro ($200/month)",
+              "GPT-Live-1",
+              "Unlimited"
+            ]
+          ],
+          "caption": "Checked on September 15, 2026; based on the OpenAI Help Center and the September 9 release notes. Usage is measured over a rolling 24-hour period; workspace plans are not listed."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Cooking, Speaking Practice, and CarPlay: Three Use Cases"
+        },
+        {
+          "type": "paragraph",
+          "text": "The first scenario is asking questions while you cook. With flour on your hands, you can simply ask whether an ingredient can be substituted, and if halfway through the answer you realize you only have two eggs left, you can cut in to correct the details without waiting for it to finish. Even so, cooking temperatures, allergens, and storage instructions should still be checked against the recipe or the food packaging rather than relying on a single sentence you heard."
+        },
+        {
+          "type": "paragraph",
+          "text": "The second scenario is speaking practice. In its announcement, OpenAI noted that more than 150 million people talk with ChatGPT each week through features such as voice and dictation, including to practice languages. You can choose the language you speak most often under Settings → Voice, and you can ask it mid-conversation to switch languages or speak more slowly, although the Help Center says precise playback-speed controls are not currently available. OpenAI says it has optimized for some of the most commonly used languages but has not published a list, and some languages may carry a non-native accent or sound less fluent, so do not treat its accent as the standard when you practice pronunciation."
+        },
+        {
+          "type": "paragraph",
+          "text": "The third scenario is the car. The Help Center says ChatGPT is available through Apple CarPlay on supported iPhones, and it also reminds users to use their mobile device only when allowed by law and when conditions permit safe use, to set up the app before driving, and to avoid interacting with the device while the vehicle is in motion. The editors recommend not looking at text responses on the screen while driving; details such as opening hours and addresses are best confirmed against official sources after you have parked."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you want to keep the conversation going after switching to another app or locking your phone, you need to turn on Background conversations under Settings → Voice. The August 31, 2026, release notes also mention that the iPhone Lock Screen and Dynamic Island can show the content of Live voice conversations. A background conversation ends when you end it, force close the app, reach a usage limit, or reach the maximum session length."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-live-voice-20260708/diagram-1-en.svg",
+          "alt": "Diagram of four key points about GPT-Live voice conversations: listening and speaking at once, background lookups, plans and usage, and recordings and fact-checking",
+          "width": 1600,
+          "height": 900,
+          "caption": "Four key points about GPT-Live voice: listening and speaking at the same time, background lookups, each plan's model and usage, and audio retention and checking answers; compiled from OpenAI's official documentation.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Recordings, Transcripts, and Training: Start With OpenAI's Data Controls Guidance"
+        },
+        {
+          "type": "paragraph",
+          "text": "The Help Center says audio clips from Live and Advanced Voice conversations are stored together with the transcript in your chat history and retained for 30 days. When you delete a chat, the associated audio clips are deleted within 30 days, except where they need to be kept for security, safety, or legal reasons, or where you previously chose to share them and they have already been disassociated from your account. Deletion cannot be undone, and archiving only removes the chat from the sidebar; it does not delete the audio."
+        },
+        {
+          "type": "paragraph",
+          "text": "Whether your recordings are used to train models comes down to two toggles. The Help Center says audio clips are not used for training unless you choose to share them. Free, Plus, and Pro users in personal workspaces share clips only if they first turn on Improve the model for everyone under Settings → Data Controls and then turn on Include your audio recordings; clips cannot be shared from Business, Enterprise, or Edu workspaces. Note, too, that as long as Improve the model for everyone is on, transcripts and other files from your voice conversations may be used for training, depending on your plan and settings."
+        },
+        {
+          "type": "paragraph",
+          "text": "Shared clips may be reviewed by OpenAI's teams, and after you stop sharing, clips that were previously disassociated from your account may continue to be used. OpenAI also updated its announcement on July 31, 2026, saying that supported audio generated by GPT-Live now carries a SynthID watermark. Parents can also use parental controls to decide whether their teens can use Voice."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Spoken Answers Still Need Checking, Plus a Quick Note on API Pricing"
+        },
+        {
+          "type": "paragraph",
+          "text": "A spoken answer is gone once you have heard it, which makes it harder to go back and check than text. The Help Center reminds users that ChatGPT can make mistakes and that questions involving dates, times, or locations especially need checking. Voice uses your device or browser time zone to interpret words like “today” and “tomorrow,” so if an answer seems off, you can say the exact date and location. With Live, responses also appear as text while they are spoken, and you can review them in your chat history afterward, but the transcript is not a verbatim record and may not exactly match what was actually said."
+        },
+        {
+          "type": "paragraph",
+          "text": "Live also has functional limits for now. The Help Center says it does not support video, screen sharing, connected apps, or plugins; eligible subscribers who need video or screen sharing can switch to Advanced mode in the iOS and Android apps. You can have only one voice conversation at a time, and a conversation may also end when it reaches a usage limit, the maximum session length, or the context limit of a long conversation."
+        },
+        {
+          "type": "paragraph",
+          "text": "The developer side is a separate matter from the rollout in ChatGPT. OpenAI's API changelog noted on September 10, 2026, that GPT-Live 1 is now generally available in the API, with voice sessions costing $0.05 per minute, billed per second, and the backend model and tool usage charged separately."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "If You Cannot Find the Live Option",
+          "text": "Update the app first, then check Settings → Voice to see whether Live is listed (the English help page calls it Live as well). The options available to you may depend on your plan, workspace settings, region, app version, and parental controls. Check any dates, prices, and locations in spoken answers against the original sources."
+        },
+        {
+          "type": "link",
+          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini Live Productivity Update: Handling Emails and To-Dos with Voice",
+          "url": "https://mokaair.com/en/life/ai-news-gemini-live-20260826"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: Introducing GPT-Live",
+          "url": "https://openai.com/zh-Hant/index/introducing-gpt-live/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI Help Center: ChatGPT Voice",
+          "url": "https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI Help Center: ChatGPT Release Notes",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI Developer Docs: API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "ja": {
+      "title": "GPT-LiveでChatGPTの音声が聞きながら話せるように：割り込み、プラン別の利用枠、録音の設定",
+      "description": "OpenAIは2026年7月にGPT-Liveを発表し、ChatGPTの音声モードで聞き取りと発話を同時に行い、途中で割り込めるようにしました。検索や推論はバックグラウンドのモデルが担います。本稿では公式の説明に基づき、会話のリズムの変化、9月の変更後のプラン別モデルと利用枠、料理や会話練習などの利用場面、録音の保存と学習の設定を整理し、APIの料金にも簡単に触れます。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-live-voice-20260708/hero-ja.jpg",
+        "alt": "スマートフォン上で音声の波形と吹き出しが交互に重なり、聞きながら話す様子を表したオリジナルイラスト",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAIは2026年7月8日、新世代の音声モデルGPT-Liveを発表しました。公式ブログとChatGPTのリリースノートのいずれもこの日付を記載しています。GPT-Liveは全二重のアーキテクチャを採用しており、聞き取りと発話を同時に行うことができ、現在はChatGPTの音声モードで使われています。ウェブ検索やより踏み込んだ推論、より複雑な作業が必要な質問では、バックグラウンドで別のフロンティアモデル（提供開始当初はGPT-5.5）に処理を委ね、結果がそろった時点で会話に戻します。OpenAIはGPT-Live-1とGPT-Live-1 miniの2つのバージョンを同時に公開しました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿は2026年9月15日に、OpenAIの発表記事、ヘルプセンターのChatGPT音声モードのページ、リリースノートを確認しました。発表記事は世界中のiOS、Android、ChatGPT.comのユーザーに段階的に提供すると書いており、リリースノートは対応地域で提供を始め、提供開始時点ではBusiness、Enterprise、Eduワークスペースを含まないとしています。ただし、どちらも地域の一覧は示しておらず、台湾についての個別の言及もありません。当サイトは実際には試用しておらず、機能に関する記述はすべてOpenAIの説明によるものです。お使いの台湾アカウントにこのオプションが表示されているかどうかは、アプリ内の設定で確認してください。本文中の料理、会話練習、車内の場面は、編集部が設計した例です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "聞きながら話せるようになると、会話のリズムはどう変わるのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIの説明によると、初期のChatGPTの音声機能は、音声のテキスト変換、言語モデル、テキストの音声変換という3つのモデルをつないでいたため、応答が遅くぎこちないものでした。その後の高度な音声モードは1つのモデル内で音声を処理するようになりましたが、ユーザーが話し終えるのを待ってから応答する点は変わらず、ターンの区切りを無音で判断していたため、短い間や背景音が話し終わりと受け取られることがありました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一方、GPT-Liveは音声を生成しながらも聞き続けます。OpenAIによると、モデルは1秒間に何度も、話す、聞き続ける、間を置く、割り込む、ツールを呼び出す、のいずれにするかを判断できます。会話中は、回答の途中で割り込んで質問したり、いったん止まって考えを整理したり、ゆっくり話すよう頼んだりできます。GPT-Liveは「うんうん」「なるほど」といった相づちで話についてきていることを示す場合があり、黙って聞いているよう頼んだときも、それに従うはずです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ヘルプセンターは同時に、発話の重なり、背景音、ネットワーク状況、マイク設定が聞き取る内容に影響する可能性があり、長い沈黙やそばにいる人の話し声によって話し始めてしまうこともあると注意を促しています。公式には、ヘッドフォンを使う、より静かな場所に移るといった方法が勧められており、iPhoneのユーザーはコントロールセンターのマイクモードで「声を分離」をオンにできます。考えながら話したいときは、最初に「私が答えてと言うまで待ってください」と伝えておく方法もあります。Liveは主に1対1の会話向けに設計されており、複数の人が同時に話す場面にはまだ最適化されていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "調べものをしている間の待ち方も、以前とは異なります。OpenAIによると、検索や推論をバックグラウンドのモデルが処理している間もGPT-Liveは会話を続けることができ、結果がそろってから会話に戻します。編集部としては、待っている間の暫定的な応答を結論とみなさず、結果が返ってきてから根拠を説明してもらうことをおすすめします。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "プランごとのモデルと、1日に使える時間"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表当日、OpenAIはGPT-Live-1をGo、Plus、Proユーザーのデフォルトモデルとし、無料版のデフォルトはGPT-Live-1 miniとしていました。当時の音声モードでは、すばやく応答するか、時間をかけて考えるかという推論レベルも別に選べました。Goのモデルとこの推論レベルは、いずれも2026年9月9日のリリースノートで変更されているため、初期の報道を読んだ方は現在の状況を基準にしてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9月9日のリリースノートとヘルプセンターによると、GoはこれまでのGPT-Live-1に代わってGPT-Live-1 miniを最大3時間使える形に変わりました。PlusはGPT-Live-1を最大3時間、月額100ドルのProは最大15時間、月額200ドルのProは時間無制限です。PlusとProは、上限に達してもminiに切り替わらなくなりました。利用量は直近24時間のローリング方式で計測され、無料版は制限付きの利用で、上限は変更される場合があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9月9日のリリースノートには、音声モードで検索や難しい質問についての思考が必要な場合にGPT-5.6またはGPT-6 Astraを使えること、モデルと推論の強度はテキストのチャットと同じコントロールで選ぶ形に変わったこと、利用できるモデルと利用量はプランによって異なることも書かれています。これまでの音声専用の3段階の推論レベルは廃止されました。ヘルプセンターには現在、対象となるBusiness、Enterprise、Edu、Healthcareワークスペースでも、ワークスペースの設定の範囲内で音声モードを利用できると記載されています。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "プラン",
+            "Liveのモデル",
+            "利用上限"
+          ],
+          "rows": [
+            [
+              "無料版",
+              "GPT-Live-1 mini",
+              "制限付き、変更の可能性あり"
+            ],
+            [
+              "Go",
+              "GPT-Live-1 mini",
+              "3時間"
+            ],
+            [
+              "Plus",
+              "GPT-Live-1",
+              "3時間"
+            ],
+            [
+              "Pro（月額100ドル）",
+              "GPT-Live-1",
+              "15時間"
+            ],
+            [
+              "Pro（月額200ドル）",
+              "GPT-Live-1",
+              "無制限"
+            ]
+          ],
+          "caption": "2026年9月15日確認。OpenAIヘルプセンターと9月9日のリリースノートに基づきます。利用量は直近24時間のローリング方式で計測され、ワークスペース向けのプランは掲載していません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "料理、会話練習、CarPlay：3つの利用場面"
+        },
+        {
+          "type": "paragraph",
+          "text": "1つ目の場面は、料理をしながらの質問です。手に小麦粉がついたままでも、ある材料を別のもので代用できるかをそのまま尋ねられ、回答の途中で家に卵が2個しか残っていないと気づいたら、話し終わるのを待たずに割り込んで条件を訂正できます。ただし、加熱温度、アレルゲン、保存方法は、耳にした一言だけに頼らず、レシピや食品のパッケージで確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2つ目の場面は、会話の練習です。OpenAIは発表記事で、毎週1億5,000万人以上が音声や音声入力などの機能を通じてChatGPTと会話しており、その用途には語学の練習も含まれると述べています。設定 → 音声で最もよく話す言語を選べるほか、会話の途中で言語の切り替えやゆっくり話すことを頼むこともできますが、ヘルプセンターによると、現在は再生速度を細かく調整することはできません。OpenAIは最もよく使われる一部の言語向けに最適化したとしていますが、その一覧は示しておらず、言語によってはネイティブとは異なるアクセントが混じったり、流暢さが足りなかったりする場合があります。発音を練習するときは、そのアクセントを手本とみなさないようにしてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3つ目の場面は車内です。ヘルプセンターによると、ChatGPTは対応するiPhoneでApple CarPlayを通じて利用できますが、同時に、モバイルデバイスは法律で認められ、安全に使用できる状況でのみ使うこと、運転前にアプリを設定しておくこと、車両の走行中は操作を避けることを求めています。編集部としては、運転中は画面に表示されるテキストの応答を見ないことをおすすめします。営業時間や住所といった情報は、駐車してから公式の情報源で確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ほかのアプリに切り替えたときやスマートフォンをロックしたときも会話を続けたい場合は、設定 → 音声でバックグラウンド会話をオンにする必要があります。2026年8月31日のリリースノートでは、iPhoneのロック画面とDynamic IslandにLiveの音声会話の内容を表示できることにも触れています。バックグラウンド会話は、ユーザーが会話を終了したとき、アプリを強制終了したとき、利用上限または最大セッション時間に達したときに終了します。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-live-voice-20260708/diagram-1-ja.svg",
+          "alt": "GPT-Liveの音声会話の4つのポイントを示す図解：聞き取りと発話の同時進行、バックグラウンドでの調べもの、プランと利用量、録音と確認",
+          "width": 1600,
+          "height": 900,
+          "caption": "GPT-Live音声の4つのポイント：聞き取りと発話の同時進行、バックグラウンドでの調べもの、プラン別のモデルと利用量、録音の保存と回答の確認。OpenAIの公式説明をもとに整理しました。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "録音、文字起こし、学習：まず公式のデータコントロールの説明を確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "ヘルプセンターによると、Liveと高度な音声モードの会話の音声クリップは、チャット履歴の文字起こしとともに保存され、30日間保持されます。チャットを削除すると関連する音声クリップも30日以内に削除されますが、セキュリティ、安全性、法的な理由で保持が必要な場合や、以前に共有を選択していてクリップがすでにアカウントとの関連付けを解除されている場合は例外です。削除は元に戻せず、アーカイブはチャットをサイドバーから外すだけで、音声は削除されません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "録音がモデルの学習に使われるかどうかは、2つのスイッチ次第です。ヘルプセンターは、ユーザーが共有を選択しない限り、音声クリップを学習には使わないとしています。個人ワークスペースの無料版、Plus、Proのユーザーは、設定 → データコントロールで「すべての人のためにモデルを改善する」をオンにし、さらに「音声録音を含める」をオンにしてはじめて共有されます。Business、Enterprise、Eduワークスペースでは、クリップを共有できません。また、「すべての人のためにモデルを改善する」がオンになっている限り、音声会話の文字起こしやその他のファイルは、プランと設定に応じて学習に使われる可能性がある点にも注意が必要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "共有されたクリップはOpenAIのチームが確認する場合があり、共有を停止しても、以前に関連付けが解除されたクリップは引き続き使われる可能性があります。またOpenAIは2026年7月31日に発表記事を更新し、GPT-Liveが生成した対応音声にSynthIDの透かしを追加したとしています。保護者は、ペアレンタルコントロールで10代の子どもが音声モードを使えるかどうかを決めることもできます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "音声の回答も確認が必要、APIの料金にも簡単に触れる"
+        },
+        {
+          "type": "paragraph",
+          "text": "声で聞いた回答は聞いたらそれきりになりやすく、テキストよりも後から見直すのが難しいものです。ヘルプセンターは、ChatGPTは誤りを犯すことがあり、特に日付、時間、場所に関わる質問は確認が必要だと注意しています。音声モードは「今日」「明日」をデバイスまたはブラウザのタイムゾーンで解釈するため、回答が合っていないときは正確な日付と場所をはっきり伝えることができます。Liveを使うと回答は話すと同時にテキストでも表示され、終了後はチャット履歴で確認できますが、文字起こしは逐語記録ではなく、実際に話された内容と完全には一致しない場合があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Liveには現時点での機能の制約もあります。ヘルプセンターによると、Liveは動画、画面共有、接続済みアプリ、プラグインに対応しておらず、動画や画面共有が必要な場合、対象のサブスクリプション利用者はiOSとAndroidのアプリでAdvancedに切り替えられます。音声会話は一度に1件しか行えず、利用上限、最大セッション時間、または長い会話のコンテキスト上限に達したときにも会話が終了することがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開発者向けの提供とChatGPTでの提供は別の話です。OpenAIのAPIの変更履歴には、2026年9月10日付でGPT-Live 1がAPIで一般提供となり、音声セッションは1分あたり0.05ドルで秒単位の課金、背後で組み合わせて使われるモデルとツールの利用量は別途課金されると書かれています。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Liveのオプションが見つからないとき",
+          "text": "まずアプリを更新してから、設定 → 音声にLiveがあるか確認してください（日本語のヘルプページでもLiveと表記されています）。利用できるオプションは、プラン、ワークスペースの設定、地域、アプリのバージョン、ペアレンタルコントロールによって異なる場合があります。音声の回答に含まれる日付、価格、場所は、元の情報源で確認してください。"
+        },
+        {
+          "type": "link",
+          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini Live生産性アップデート：音声でメールとToDoを処理",
+          "url": "https://mokaair.com/ja/life/ai-news-gemini-live-20260826"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：GPT-Liveの紹介",
+          "url": "https://openai.com/zh-Hant/index/introducing-gpt-live/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI ヘルプセンター：ChatGPT 音声モード",
+          "url": "https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI ヘルプセンター：ChatGPT Release Notes",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 開発者向けドキュメント：API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "ko": {
+      "title": "GPT-Live로 들으면서 말하는 ChatGPT 음성: 끼어들기, 요금제별 사용량, 녹음 설정",
+      "description": "OpenAI가 2026년 7월 GPT-Live를 발표하면서 ChatGPT 음성 대화는 듣기와 말하기를 동시에 하고 중간에 끼어들 수 있게 되었으며, 검색과 추론은 백그라운드 모델이 맡습니다. 이 글은 공식 설명을 바탕으로 대화 흐름의 변화, 9월 조정 이후 요금제별 모델과 사용량, 요리와 말하기 연습 등의 활용 상황, 녹음 보관과 학습 설정을 정리하고 API 가격도 간단히 다룹니다.",
+      "hero": {
+        "src": "/guides/ai-news-gpt-live-voice-20260708/hero-ko.jpg",
+        "alt": "휴대폰 화면에서 음성 파형과 대화 말풍선이 교차하며 들으면서 말하는 모습을 표현한 오리지널 일러스트",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 2026년 7월 8일 차세대 음성 모델 GPT-Live를 발표했으며, 공식 블로그와 ChatGPT 릴리스 노트 모두 이 날짜를 표기하고 있습니다. GPT-Live는 전이중 구조를 채택해 듣기와 말하기를 동시에 할 수 있고, 현재 ChatGPT 음성 대화에 쓰이고 있습니다. 웹 검색, 더 깊은 추론, 더 복잡한 작업이 필요한 질문을 받으면 백그라운드에서 다른 프런티어 모델(출시 초기에는 GPT-5.5)에 작업을 맡기고, 결과가 준비되면 다시 대화로 가져옵니다. OpenAI는 GPT-Live-1과 GPT-Live-1 mini 두 가지 버전을 함께 내놓았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 2026년 9월 15일 OpenAI 발표문, 도움말 센터의 ChatGPT 음성 대화 페이지, 릴리스 노트를 확인했습니다. 발표문은 전 세계 iOS, Android, ChatGPT.com 사용자에게 순차적으로 제공한다고 적었고, 릴리스 노트는 지원 지역에서 제공하며 출시 시점에는 Business, Enterprise, Edu 워크스페이스가 포함되지 않는다고 적었습니다. 그러나 두 곳 모두 지역 목록을 밝히지 않았고 대만도 따로 언급하지 않았습니다. 본 사이트는 직접 사용해 보지 않았으며, 기능에 대한 설명은 모두 OpenAI의 설명입니다. 대만 계정에 이 옵션이 나타났는지는 앱 내 설정에서 확인하시기 바랍니다. 본문의 요리, 말하기 연습, 차량 내 상황은 에디터가 설계한 예시입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "들으면서 말하게 되면 대화의 흐름은 어떻게 달라지나"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI의 설명에 따르면 초기 ChatGPT 음성은 음성-텍스트 변환, 언어 모델, 텍스트-음성 변환의 세 모델을 이어 붙인 방식이어서 응답이 느리고 딱딱했습니다. 이후의 고급 음성 모드는 하나의 모델 안에서 오디오를 처리하도록 바뀌었지만, 여전히 사용자가 말을 마칠 때까지 기다린 뒤 응답했고 침묵으로 차례를 판단했기 때문에 짧은 멈춤이나 배경 소음도 말이 끝난 것으로 오인될 수 있었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "반면 GPT-Live는 음성을 생성하는 동안에도 계속 듣습니다. OpenAI는 모델이 1초에 여러 번 말할지, 계속 들을지, 잠시 멈출지, 끼어들지, 도구를 호출할지를 결정할 수 있다고 밝혔습니다. 대화 중에는 답변 도중에 끼어들어 질문하거나, 잠시 멈춰 생각을 정리하거나, 천천히 말해 달라고 요청할 수 있습니다. ChatGPT는 “음음”, “알겠어요” 같은 맞장구로 대화를 따라가고 있음을 나타낼 수 있으며, 조용히 듣기만 해 달라고 요청하면 그대로 따라야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도움말 센터는 겹치는 음성, 배경 소음, 네트워크 상태, 마이크 설정이 들리는 내용에 영향을 줄 수 있고, 긴 침묵이나 주변 사람의 말소리 때문에 여전히 말을 시작할 수 있다고 함께 안내합니다. 공식적으로는 헤드폰을 사용하거나 더 조용한 곳으로 옮기는 방법을 권하며, iPhone 사용자는 제어 센터의 마이크 모드에서 음성 분리를 켤 수 있습니다. 생각하면서 말하고 싶다면 대화를 시작할 때 “응답하라고 할 때까지 기다려 줘”라고 먼저 말해 둘 수 있습니다. Live는 주로 일대일 대화를 위해 설계되었으며, 여러 사람이 동시에 말하는 상황에는 아직 최적화되지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "정보를 찾는 동안의 기다림도 예전과 다릅니다. OpenAI에 따르면 검색이나 추론을 백그라운드 모델이 처리하는 동안에도 GPT-Live는 계속 대화를 이어갈 수 있고, 결과가 준비되면 대화로 가져옵니다. 에디터는 기다리는 동안 나온 임시 응답을 결론으로 받아들이지 말고, 결과가 돌아온 뒤 근거를 설명해 달라고 요청하기를 권합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "요금제별로 쓰는 모델과 하루 사용 시간"
+        },
+        {
+          "type": "paragraph",
+          "text": "발표 당일 OpenAI는 GPT-Live-1이 Go, Plus, Pro 사용자의 기본 모델이고 무료 요금제는 GPT-Live-1 mini가 기본이라고 밝혔습니다. 당시 음성 대화에서는 빠르게 답할지, 시간을 더 들여 생각할지를 정하는 추론 수준도 따로 고를 수 있었습니다. Go의 모델과 이 추론 수준은 모두 2026년 9월 9일 릴리스 노트에서 조정되었으므로, 초기 보도를 읽은 분은 현재 상황을 기준으로 삼아야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "9월 9일 릴리스 노트와 도움말 센터에 따르면 Go는 기존 GPT-Live-1 대신 GPT-Live-1 mini를 최대 3시간 사용하도록 바뀌었고, Plus는 GPT-Live-1을 최대 3시간, 월 100달러 Pro는 최대 15시간 사용할 수 있으며, 월 200달러 Pro는 시간 제한이 없습니다. Plus와 Pro는 한도에 도달해도 더 이상 mini로 전환되지 않습니다. 사용량은 최근 24시간 롤링 방식으로 계산하며, 무료 요금제는 제한적으로 이용할 수 있고 한도는 조정될 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "9월 9일 릴리스 노트에는 음성 대화에서 검색하거나 어려운 질문을 생각해야 할 때 GPT-5.6 또는 GPT-6 Astra를 사용할 수 있고, 모델과 추론 강도는 텍스트 채팅과 같은 컨트롤로 선택하며, 사용할 수 있는 모델과 사용량은 요금제에 따라 다르다는 내용도 있습니다. 기존의 음성 전용 추론 수준 세 가지는 폐지되었습니다. 현재 도움말 센터에는 이용 자격이 있는 Business, Enterprise, Edu, Healthcare 워크스페이스도 워크스페이스 설정의 제약 안에서 음성 대화를 사용할 수 있다고 적혀 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "요금제",
+            "Live 모델",
+            "사용량 한도"
+          ],
+          "rows": [
+            [
+              "무료",
+              "GPT-Live-1 mini",
+              "제한적, 조정될 수 있음"
+            ],
+            [
+              "Go",
+              "GPT-Live-1 mini",
+              "3시간"
+            ],
+            [
+              "Plus",
+              "GPT-Live-1",
+              "3시간"
+            ],
+            [
+              "Pro(월 100달러)",
+              "GPT-Live-1",
+              "15시간"
+            ],
+            [
+              "Pro(월 200달러)",
+              "GPT-Live-1",
+              "무제한"
+            ]
+          ],
+          "caption": "2026년 9월 15일 확인. OpenAI 도움말 센터와 9월 9일 릴리스 노트 기준이며, 사용량은 최근 24시간 롤링 방식으로 계산하고 워크스페이스 요금제는 싣지 않았습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "요리, 말하기 연습, CarPlay: 세 가지 활용 상황"
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 번째 상황은 요리하면서 묻는 경우입니다. 손에 밀가루가 묻어 있어도 어떤 재료를 다른 것으로 대체할 수 있는지 바로 물어볼 수 있고, 답을 듣던 중 집에 달걀이 두 개밖에 없다는 사실을 알게 되면 끝까지 기다리지 않고 끼어들어 조건을 바로잡을 수 있습니다. 다만 조리 온도, 알레르기 유발 성분, 보관 방법은 들은 한마디에만 의존하지 말고 레시피나 식품 포장에서 다시 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 번째 상황은 말하기 연습입니다. OpenAI는 발표문에서 매주 1억 5천만 명 이상이 음성과 받아쓰기 같은 기능으로 ChatGPT와 대화하며, 그 용도에는 언어 연습도 포함된다고 밝혔습니다. 설정 → 음성에서 가장 자주 쓰는 언어를 선택할 수 있고, 대화 중에 언어를 바꾸거나 천천히 말해 달라고 요청할 수도 있지만, 도움말 센터에 따르면 현재 재생 속도를 정밀하게 조절할 수는 없습니다. OpenAI는 가장 많이 쓰이는 일부 언어에 맞춰 최적화했다고 밝혔으나 목록은 공개하지 않았고, 일부 언어는 원어민과 다른 억양이 섞이거나 유창함이 부족할 수 있으므로 발음을 연습할 때 그 억양을 표준으로 여기지 않는 것이 좋습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "세 번째 상황은 차 안입니다. 도움말 센터에 따르면 ChatGPT는 지원되는 iPhone에서 Apple CarPlay를 통해 사용할 수 있으며, 법적으로 허용되고 안전하게 사용할 수 있는 상황에서만 모바일 기기를 사용하고, 운전하기 전에 앱을 설정하며, 차량이 움직이는 동안에는 기기 조작을 피하라고 함께 안내합니다. 에디터는 운전 중에는 화면에 표시되는 텍스트 응답을 보지 말고, 영업시간이나 주소 같은 정보는 주차한 뒤 공식 출처에서 확인하기를 권합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "다른 앱으로 전환하거나 휴대폰이 잠긴 상태에서도 대화를 이어가려면 설정 → 음성에서 백그라운드 대화를 켜야 합니다. 2026년 8월 31일 릴리스 노트에는 iPhone 잠금 화면과 Dynamic Island에 Live 음성 대화 내용을 표시할 수 있다는 내용도 있습니다. 백그라운드 대화는 사용자가 대화를 종료하거나, 앱을 강제 종료하거나, 사용량 한도나 최대 세션 길이에 도달하면 끝납니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-live-voice-20260708/diagram-1-ko.svg",
+          "alt": "GPT-Live 음성 대화의 네 가지 핵심을 정리한 도해: 듣기와 말하기 동시 진행, 백그라운드 정보 검색, 요금제와 사용량, 녹음과 확인",
+          "width": 1600,
+          "height": 900,
+          "caption": "GPT-Live 음성의 네 가지 핵심: 듣기와 말하기 동시 진행, 백그라운드 정보 검색, 요금제별 모델과 사용량, 녹음 보관과 답변 확인. OpenAI 공식 설명을 바탕으로 정리했습니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "녹음, 대화 내용, 학습: 공식 데이터 제어 안내부터 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "도움말 센터에 따르면 Live와 고급 음성 대화의 오디오 클립은 채팅 기록에 표시되는 대화 내용과 함께 저장되며 30일 동안 보관됩니다. 채팅을 삭제하면 관련 오디오 클립도 30일 이내에 삭제되지만, 보안, 안전 또는 법적 사유로 보관해야 하는 경우나 이전에 공유를 선택해 클립이 이미 계정과의 연결이 해제된 경우는 예외입니다. 삭제는 되돌릴 수 없으며, 보관 처리는 채팅을 사이드바에서 없앨 뿐 오디오를 삭제하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "녹음이 모델 학습에 쓰이는지는 두 가지 설정에 달려 있습니다. 도움말 센터는 사용자가 공유를 선택하지 않는 한 오디오 클립을 학습에 사용하지 않는다고 설명합니다. 개인 워크스페이스의 무료, Plus, Pro 사용자는 설정 → 데이터 제어에서 ‘모두를 위한 모델 개선’을 먼저 켜고 ‘오디오 녹음 포함’까지 켜야 클립이 공유되며, Business, Enterprise, Edu 워크스페이스에서는 클립을 공유할 수 없습니다. 또한 ‘모두를 위한 모델 개선’이 켜져 있기만 하면 음성 대화의 텍스트 기록과 기타 파일이 요금제와 설정에 따라 학습에 사용될 수 있다는 점에도 유의해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공유된 클립은 OpenAI 팀이 검토할 수 있으며, 공유를 중지한 뒤에도 이전에 연결이 해제된 클립은 계속 사용될 수 있습니다. OpenAI는 또한 2026년 7월 31일 발표문을 업데이트해 GPT-Live가 생성한 지원 대상 오디오에 SynthID 워터마크를 넣었다고 밝혔습니다. 부모는 자녀 보호 기능을 통해 청소년 자녀의 음성 대화 사용 여부를 정할 수도 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "음성 답변도 확인이 필요하고, API 가격은 간단히"
+        },
+        {
+          "type": "paragraph",
+          "text": "말로 들은 답변은 듣고 나면 지나가 버리기 때문에 텍스트보다 다시 확인하기 어렵습니다. 도움말 센터는 ChatGPT가 실수할 수 있으며, 특히 날짜, 시간, 위치와 관련된 질문은 확인해야 한다고 안내합니다. 음성은 기기나 브라우저의 시간대를 기준으로 ‘오늘’, ‘내일’을 이해하므로, 답이 맞지 않으면 정확한 날짜와 위치를 직접 말하면 됩니다. Live를 사용하면 답변이 음성으로 나오는 동시에 텍스트로도 표시되고 대화가 끝난 뒤 채팅 기록에서 볼 수 있지만, 화면에 표시되는 텍스트는 말한 그대로 받아 적은 기록이 아니어서 실제로 말한 내용과 완전히 일치하지 않을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Live에는 현재 기능상의 한계도 있습니다. 도움말 센터에 따르면 Live는 동영상, 화면 공유, 연결된 앱이나 플러그인을 지원하지 않으며, 동영상이나 화면 공유가 필요하면 이용 자격이 있는 구독자는 iOS와 Android 앱에서 고급 모드로 바꿔 사용할 수 있습니다. 음성 대화는 한 번에 하나만 진행할 수 있고, 사용량 한도나 최대 세션 길이, 긴 대화의 컨텍스트 한도에 도달했을 때도 대화가 끝날 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "개발자용 제공과 ChatGPT에서의 출시는 별개입니다. OpenAI API 변경 기록에는 2026년 9월 10일 GPT-Live 1이 API에서 정식 제공되었으며, 음성 세션은 분당 0.05달러로 초 단위 과금되고 뒤에서 함께 쓰이는 모델과 도구 사용량은 별도로 과금된다고 적혀 있습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Live 옵션이 보이지 않을 때",
+          "text": "먼저 앱을 업데이트한 뒤 설정 → 음성에 Live가 있는지 확인하시기 바랍니다(한국어 도움말 페이지에서도 Live로 표기합니다). 사용할 수 있는 옵션은 요금제, 워크스페이스 설정, 지역, 앱 버전, 자녀 보호 설정에 따라 달라질 수 있습니다. 음성 답변에 나온 날짜, 가격, 장소는 원래 출처에서 확인하시기 바랍니다."
+        },
+        {
+          "type": "link",
+          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini Live 생산성 업데이트: 음성으로 메일과 할 일 처리하기",
+          "url": "https://mokaair.com/ko/life/ai-news-gemini-live-20260826"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: GPT-Live 소개",
+          "url": "https://openai.com/zh-Hant/index/introducing-gpt-live/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 도움말 센터: ChatGPT 음성 대화",
+          "url": "https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 도움말 센터: ChatGPT Release Notes",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 개발자 문서: API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "GPT-Live 让 ChatGPT 语音边听边说：插话、套餐用量与录音设置",
+      "description": "OpenAI 在 2026 年 7 月发布 GPT-Live，让 ChatGPT 语音能同时听与说、可以被插话，搜索与推理则交给后台模型。本文依据官方说明整理对话节奏的变化、9 月调整后各套餐的模型与用量、做菜与练口语等使用场景、录音保存与训练设置，并简要带过 API 价格。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-live-voice-20260708/hero-zh-cn.jpg",
+        "alt": "手机上的语音波形与对话气泡交错，呈现边听边说的原创插图",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在 2026 年 7 月 8 日发布新一代语音模型 GPT-Live，官方博客与 ChatGPT 版本说明都标注了这一天。GPT-Live 采用全双工架构，能同时聆听与说话，现在用于 ChatGPT 语音；遇到需要联网搜索、较深入推理或较复杂工作的问题，它会在后台委派给另一个前沿模型，推出初期是 GPT-5.5，等结果准备好再带回对话。OpenAI 同时推出了 GPT-Live-1 与 GPT-Live-1 mini 两个版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 15 日核查了 OpenAI 发布文章、帮助中心的 ChatGPT 语音页面与版本说明。发布文章写的是面向全球 iOS、Android 与 ChatGPT.com 用户逐步推出，版本说明则写在支持的地区推出、发布时不含 Business、Enterprise 与 Edu 工作空间，但两者都没有列出地区清单，也未另外提到台湾。本站没有实际试用，能力描述都是 OpenAI 的说法；你的台湾账号是否已出现这个选项，请以 App 内的设置为准。文中的做菜、练口语与车上场景，是编辑设计的例子。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "边听边说之后，对话节奏有什么不同"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 介绍，最初的 ChatGPT 语音把语音转文字、语言模型与文字转语音三个模型串在一起，响应慢且生硬；后来的高级语音模式改为在单一模型内处理音频，但仍要等用户说完才回应，而且以静音判断一轮发言是否结束，短暂停顿或背景噪音都可能被当成说完了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 则在生成语音的同时持续聆听，OpenAI 表示模型每秒可多次决定要说话、继续听、暂停、插话或调用工具。对话时，你可以在它回答到一半时插话提问、停下来整理思路，或请它放慢；它可能用“嗯嗯”“明白”表示有在跟着听，你要求它安静地听时也应照做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "帮助中心同时提醒，语音重叠、背景噪音、网络状况与麦克风设置都可能影响它听到的内容，长时间停顿或旁人说话仍可能让它开口。官方建议可改用耳机、换到较安静的地方，iPhone 用户可在控制中心的麦克风模式中开启语音隔离；想边想边说时，可以在开头先说“等我请你回复时再回复”。Live 主要为一对一对话设计，尚未针对多人同时说话进行优化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "查资料时的等待也和以前不同。OpenAI 表示，搜索或推理交给后台模型处理时，GPT-Live 仍能继续和你交谈，结果好了才带回对话。编辑建议不要把等待时的临时回应当成结论，结果回来后再请它说明依据。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "各套餐用哪个模型、每天能用多久"
+        },
+        {
+          "type": "paragraph",
+          "text": "发布当天，OpenAI 表示 GPT-Live-1 是 Go、Plus 与 Pro 用户的默认模型，免费版则默认使用 GPT-Live-1 mini；当时语音还能另外选择快速回复或多花时间思考的推理程度。Go 的模型与这组推理程度，都在 2026 年 9 月 9 日的版本说明中做了调整，读过早期报道的人要以现状为准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "根据 9 月 9 日版本说明与帮助中心，Go 改为最多 3 小时的 GPT-Live-1 mini，取代原本的 GPT-Live-1；Plus 最多 3 小时 GPT-Live-1，每月 100 美元的 Pro 最多 15 小时，每月 200 美元的 Pro 不限时长。Plus 与 Pro 达到上限后不再切换到 mini。用量按滚动 24 小时计算，免费版为有限使用，上限可能调整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9 月 9 日版本说明也写到，语音需要搜索或思考较难的问题时，可以使用 GPT-5.6 或 GPT-6 Astra，模型与推理强度改用和文字聊天相同的控件选择，可用模型与用量视套餐而定；原本语音专用的三种推理程度已取消。帮助中心现在也写明，符合条件的 Business、Enterprise、Edu 与 Healthcare 工作空间可使用语音，但受工作空间设置约束。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "套餐",
+            "Live 模型",
+            "用量上限"
+          ],
+          "rows": [
+            [
+              "免费版",
+              "GPT-Live-1 mini",
+              "有限，可能调整"
+            ],
+            [
+              "Go",
+              "GPT-Live-1 mini",
+              "3 小时"
+            ],
+            [
+              "Plus",
+              "GPT-Live-1",
+              "3 小时"
+            ],
+            [
+              "Pro（每月 100 美元）",
+              "GPT-Live-1",
+              "15 小时"
+            ],
+            [
+              "Pro（每月 200 美元）",
+              "GPT-Live-1",
+              "不限"
+            ]
+          ],
+          "caption": "2026 年 9 月 15 日核查；依据 OpenAI 帮助中心与 9 月 9 日版本说明，用量按滚动 24 小时计算，未列出工作空间套餐。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "做菜、练口语与 CarPlay：三个使用场景"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一个场景是边做菜边问。手上沾着面粉时，可以直接问某样食材能不能替代，听到一半发现家里只剩两个鸡蛋，就插话更正条件，不必等它讲完。不过烹饪温度、过敏原与保存方式，仍应回到菜谱或食品包装上核对，别只靠听到的一句话。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二个场景是练习口语。OpenAI 在发布文章中提到，每周有超过 1.5 亿人通过语音与听写等功能和 ChatGPT 对话，用途包括练习语言。你可以在设置 → 语音中选择最常说的语言，也能在对话中要求它换一种语言或说慢一点，但帮助中心写明目前无法精确控制播放速度。OpenAI 表示已针对部分最常用的语言进行优化，但未列出清单，部分语言可能带有非母语口音或不够流畅，练发音时别把它的口音当作标准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三个场景是在车上。帮助中心写明 ChatGPT 可在受支持的 iPhone 上通过 Apple CarPlay 使用，同时提醒仅在法律允许且安全的情况下使用移动设备，应在驾驶前设置好应用，避免在车辆行驶时操作。编辑建议行车中不要看屏幕上的文字回复；营业时间、地址这类信息，停车后再用官方来源确认。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果想在切换到其他 App 或手机锁定时继续对话，需要在设置 → 语音中开启后台对话；2026 年 8 月 31 日的版本说明也提到，iPhone 的锁定屏幕与灵动岛可以显示 Live 语音对话的内容。后台对话会在你结束对话、强制关闭 App、达到用量上限或最长会话时长时结束。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-live-voice-20260708/diagram-1-zh-cn.svg",
+          "alt": "GPT-Live 语音对话四个要点的图解：同时听与说、后台查资料、套餐与用量、录音与核对",
+          "width": 1600,
+          "height": 900,
+          "caption": "GPT-Live 语音的四个要点：同时听与说、后台查资料、各套餐模型与用量、录音保存与回答核对；依据 OpenAI 官方说明整理。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "录音、转录文本与训练：先看官方数据控制说明"
+        },
+        {
+          "type": "paragraph",
+          "text": "帮助中心写明，Live 与高级语音对话的音频片段，会和聊天记录中的转录文本一起存储，保留 30 天。删除聊天后，相关音频片段会在 30 天内删除，但出于安全、防护或法律原因需要保留，或你此前已选择共享且片段已与账户解除关联的情况除外。删除无法撤销，归档只是从侧边栏移除，不会删除音频。"
+        },
+        {
+          "type": "paragraph",
+          "text": "录音会不会被拿去训练模型，要看两个开关。帮助中心表示，除非你选择共享，否则不会用音频片段训练；个人工作空间的免费版、Plus 与 Pro 用户，要先在设置 → 数据控制中开启“为所有人改进模型”，再开启“包含你的音频录音”才会共享；Business、Enterprise 与 Edu 工作空间则无法共享片段。另外要注意，只要“为所有人改进模型”开着，语音对话的转录文本与其他文件就可能视套餐与设置被用于训练。"
+        },
+        {
+          "type": "paragraph",
+          "text": "共享的片段可能由 OpenAI 团队审核；停止共享后，此前已解除关联的片段仍可能继续被使用。OpenAI 另在 2026 年 7 月 31 日更新发布文章，表示 GPT-Live 生成的受支持音频已加入 SynthID 水印；家长也可通过家长控制决定青少年子女能否使用语音。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "语音回答仍要核对，API 价格简单带过"
+        },
+        {
+          "type": "paragraph",
+          "text": "说出来的回答听过就过去了，比文字更难回头检查。帮助中心提醒 ChatGPT 可能出错，与日期、时间或地点相关的问题尤其要核对；语音会用设备或浏览器的时区理解“今天”“明天”，回答不对时可以直接说出确切的日期与地点。使用 Live 时，回答会同步以文字显示，结束后可在聊天记录中查看，但转录文本不是逐字记录，可能与实际说的内容不完全一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Live 目前也有功能边界。帮助中心写明它不支持视频、屏幕共享、已连接的应用或插件，需要视频或屏幕共享时，符合条件的订阅用户可在 iOS 与 Android App 中改用高级模式；一次只能进行一个语音对话，达到用量上限、最长会话时长或长对话的上下文限制时，对话也可能结束。"
+        },
+        {
+          "type": "paragraph",
+          "text": "开发者端和 ChatGPT 里的推出是两回事：OpenAI 的 API 更新日志在 2026 年 9 月 10 日写到，GPT-Live 1 在 API 中正式开放，语音会话每分钟 0.05 美元、按秒计费，背后搭配的模型与工具用量另行计费。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "找不到 Live 选项时",
+          "text": "先更新 App，再到设置 → 语音查看是否有 Live（简体中文帮助页面同样写作 Live）；可用选项可能受套餐、工作空间设置、地区、App 版本与家长控制影响。语音回答里的日期、价格与地点，请回到原始来源核对。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Gemini Live 生产力更新：用语音处理邮件与待办",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-live-20260826"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI：介绍 GPT-Live",
+          "url": "https://openai.com/zh-Hant/index/introducing-gpt-live/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 帮助中心：ChatGPT 语音",
+          "url": "https://help.openai.com/zh-hant/articles/20001274-chatgpt-voice",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 帮助中心：ChatGPT Release Notes",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 开发者文档：API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}
