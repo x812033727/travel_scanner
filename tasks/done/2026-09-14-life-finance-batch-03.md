@@ -223,5 +223,11 @@ npm run check:tasks
 
 ### 留給下一批的
 
-**sitemap 落地後實測 986／1000，只剩 14 列。批次 04 開工前一定要先拆**
-（`2026-09-14-sitemap-split-before-1000-rows`，該票的兩個依賴目前都還是 `review`）。
+**sitemap 已經破表。** 這二十篇落地後，本分支自己是 986／1000（headroom 14）；
+但把同一天的 `origin/main` 併進來之後是 **1,395 列**——推過去的不是財經系列，
+是 AI 系列與教學中心那幾批**五語系**內容（五語系包從 32 個變成 93 個，一個就是五列）。
+
+`service.py` 的 sitemap 查詢是 `order_by(published_at.desc()).limit(SITEMAP_LIMIT)`，
+所以**被砍掉的是最舊的那幾百頁，而且不會有任何錯誤訊息**。
+`2026-09-14-sitemap-split-before-1000-rows` 的性質因此從「批次 04 開工前要做」
+變成「現在就該做」，該票已更新實測數字（它的兩個依賴目前都還是 `review`）。
