@@ -7,12 +7,13 @@ import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { guideHref, guideListHref, isTravelGuideKind, type TravelGuideKind } from "@/lib/guides";
+import { guideHref, guideListHref, guideTopicHref, isTravelGuideKind, type TravelGuideKind } from "@/lib/guides";
 import { getGuideList, getGuideTopics, hubIsEmpty } from "@/lib/guides.server";
+import { localeUrl } from "@/lib/seo";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 
 type Params = { locale: Locale; kind: string };
-type Search = { topic?: string; destination?: string; cursor?: string };
+type Search = { topic?: string; destination?: string; country?: string; cursor?: string };
 
 /** `[kind]` holds the two travel kinds; anything else is a 404, not a 500. That includes
  *  `life`, whose articles list at `/life`, so no listing ever answers at two addresses. */
@@ -25,14 +26,16 @@ async function resolve(params: Promise<Params>) {
 /** One listing read, shared by the metadata and the body through React's per-request cache:
  *  same arguments, one call to the API. */
 const listFor = (locale: Locale, kind: TravelGuideKind, search: Search) =>
-  getGuideList(locale, { kind, topic: search.topic, destination: search.destination, cursor: search.cursor }, 24);
+  getGuideList(locale, {
+    kind, topic: search.topic, destination: search.destination, country: search.country, cursor: search.cursor,
+  }, 24);
 
 export async function generateMetadata(
   { params, searchParams }: { params: Promise<Params>; searchParams: Promise<Search> },
 ): Promise<Metadata> {
   const [{ locale, kind }, search] = await Promise.all([resolve(params), searchParams]);
   const t = await getTranslations({ locale, namespace: "common" });
-  const filtered = Boolean(search.topic || search.destination || search.cursor);
+  const filtered = Boolean(search.topic || search.destination || search.country || search.cursor);
   // Only the unfiltered view asks: a filtered one is `noindex` already, and the extra read
   // would be a second API call per crawl of a URL whose answer cannot change.
   const empty = !filtered && hubIsEmpty(await listFor(locale, kind, search));
@@ -44,6 +47,9 @@ export async function generateMetadata(
     // An empty language is out for a different reason: there is nothing on the page at all
     // until this section publishes its first article here. Both stay `follow`.
     ...(filtered || empty ? { robots: { index: false, follow: true } } : {}),
+    // A `?topic=` view is the topic hub's collection under an older URL: the hub is the page
+    // that ranks, so this one names it as canonical rather than competing with it.
+    ...(search.topic ? { alternates: { canonical: localeUrl(locale, guideTopicHref("travel", search.topic)) } } : {}),
   };
 }
 
@@ -87,7 +93,10 @@ export default async function GuideListPage(
           kind={kind}
           topics={topics}
           active={search.topic ?? null}
-          labels={{ allTopics: t("guides.allTopics"), topicsLabel: t("guides.topicsLabel") }}
+          labels={{
+            allTopics: t("guides.allTopics"), topicsLabel: t("guides.topicsLabel"), subtopics: t("guides.subtopics"),
+            moreChips: t("guides.moreChips"), fewerChips: t("guides.fewerChips"),
+          }}
         />
 
         {list.articles.length ? (

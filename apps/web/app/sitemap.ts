@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
 import { locales, type Locale } from "@/i18n/routing";
-import { guideHref, type GuideKind } from "@/lib/guides";
+import { guideHref, guideTopicHref, type GuideKind } from "@/lib/guides";
 import { HREFLANG_DEFAULT, languageAlternates, localeUrl } from "@/lib/seo";
 import { featureEnabled, type SiteFeature } from "@/lib/site-features";
-import { guideSitemapEntries } from "@/lib/guides.server";
+import { guideSitemapEntries, guideTopicSitemapEntries } from "@/lib/guides.server";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { getCommunityState } from "@/lib/community/server";
@@ -105,8 +105,9 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
  * if the settings service is unavailable. The canonical origin is still fixed at build time.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [visibility, guides, discovery, community] = await Promise.all([
+  const [visibility, guides, discovery, community, topics] = await Promise.all([
     getSiteVisibility(), guideSitemapEntries(), getDiscoveryStatus(), getCommunityState(),
+    guideTopicSitemapEntries(),
   ]);
   const communityOpen = community.status === "ready" && community.flags.enabled;
 
@@ -191,5 +192,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }];
   });
 
-  return [...routes, ...articles];
+  /**
+   * Topic hubs, between the static hubs and the articles. Like an article hub, a topic hub
+   * is listed in a language only while that language has something under the topic, and
+   * like the static routes it carries no `lastModified`: the API knows when an article
+   * changed, not when a collection did. Its alternates are the languages it is listed in.
+   */
+  const topicHubs = topics.flatMap((entry) => {
+    const path = guideTopicHref(entry.section, entry.slug);
+    return entry.locales.map((locale) => ({
+      url: localeUrl(locale, path),
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+      alternates: { languages: hubAlternates(entry.locales, path) },
+    }));
+  });
+
+  return [...routes, ...topicHubs, ...articles];
 }

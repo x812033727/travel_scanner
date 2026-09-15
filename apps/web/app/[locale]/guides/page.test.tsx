@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import GuidesHubPage, { generateMetadata } from "./page";
 
@@ -8,13 +8,13 @@ import GuidesHubPage, { generateMetadata } from "./page";
  * either kind still belongs in the index.
  */
 
-const mocks = vi.hoisted(() => ({ list: vi.fn(), topics: vi.fn() }));
+const mocks = vi.hoisted(() => ({ list: vi.fn(), topics: vi.fn(), facets: vi.fn() }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 // Only the two reads are stubbed: `hubIsEmpty` stays the real rule, so a test that fakes
 // an empty listing is exercising the indexing decision rather than restating it.
 vi.mock("@/lib/guides.server", async (original) => ({
   ...await original<typeof import("@/lib/guides.server")>(),
-  getGuideList: mocks.list, getGuideTopics: mocks.topics,
+  getGuideList: mocks.list, getGuideTopics: mocks.topics, getDestinationFacets: mocks.facets,
 }));
 
 const summary = {
@@ -36,6 +36,7 @@ beforeEach(() => {
   vi.clearAllMocks();
   mocks.list.mockResolvedValue(list([summary]));
   mocks.topics.mockResolvedValue([{ slug: "transport", label: "交通" }]);
+  mocks.facets.mockResolvedValue({ destinations: [], available: true });
 });
 
 describe("the guides hub", () => {
@@ -50,6 +51,36 @@ describe("the guides hub", () => {
     mocks.list.mockResolvedValue(list([]));
     render(await GuidesHubPage({ params }));
     expect(screen.getAllByText("這裡還沒有已發布的內容。")).toHaveLength(2);
+  });
+
+  it("links each topic to its hub with its count, and leaves out a topic this language has nothing under", async () => {
+    mocks.topics.mockResolvedValue([
+      { slug: "transport", label: "交通", section: "travel", parent: null, count: 4 },
+      { slug: "beach", label: "海灘", section: "travel", parent: null, count: 0 },
+    ]);
+    render(await GuidesHubPage({ params }));
+    const transport = screen.getByRole("link", { name: /交通/ });
+    expect(transport.getAttribute("href")).toBe("/guides/topics/transport");
+    expect(transport.textContent).toBe("交通4");
+    expect(screen.queryByRole("link", { name: /海灘/ })).toBeNull();
+  });
+
+  it("groups the destinations with articles by country, and draws nothing without any", async () => {
+    mocks.facets.mockResolvedValue({
+      destinations: [
+        { id: "tokyo", label: "東京", country: "japan", country_label: "日本", count: 11 },
+        { id: "seoul", label: "首爾", country: "south-korea", country_label: "韓國", count: 9 },
+      ],
+      available: true,
+    });
+    render(await GuidesHubPage({ params }));
+    expect(mocks.facets).toHaveBeenCalledWith("zh-TW", "travel");
+    expect(screen.getByRole("link", { name: /日本全部/ }).getAttribute("href")).toBe("/guides/howto?country=japan");
+    expect(screen.getByRole("link", { name: /首爾/ }).getAttribute("href")).toBe("/guides/howto?destination=seoul");
+    cleanup();
+    mocks.facets.mockResolvedValue({ destinations: [], available: false });
+    render(await GuidesHubPage({ params }));
+    expect(screen.queryByTestId("destination-groups")).toBeNull();
   });
 });
 

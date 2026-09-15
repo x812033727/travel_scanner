@@ -22,7 +22,7 @@ const summary = {
 };
 
 const params = (kind = "intel") => Promise.resolve({ locale: "zh-TW" as const, kind });
-const search = (over: { topic?: string; destination?: string; cursor?: string } = {}) => Promise.resolve(over);
+const search = (over: { topic?: string; destination?: string; country?: string; cursor?: string } = {}) => Promise.resolve(over);
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -49,9 +49,16 @@ describe("the section listing", () => {
     expect(mocks.list).toHaveBeenCalledWith("zh-TW", expect.objectContaining({ topic: "transport" }), 24);
   });
 
-  it("marks the active topic chip so the reader can see the filter", async () => {
+  it("marks the active topic chip so the reader can see the filter, and links it to the topic hub", async () => {
     render(await GuideListPage({ params: params(), searchParams: search({ topic: "transport" }) }));
-    expect(screen.getByRole("link", { name: "交通" }).getAttribute("aria-current")).toBe("page");
+    const chip = screen.getByRole("link", { name: "交通" });
+    expect(chip.getAttribute("aria-current")).toBe("page");
+    expect(chip.getAttribute("href")).toBe("/guides/topics/transport");
+  });
+
+  it("resolves a country filter on the server too", async () => {
+    await GuideListPage({ params: params("howto"), searchParams: search({ country: "japan" }) });
+    expect(mocks.list).toHaveBeenCalledWith("zh-TW", expect.objectContaining({ country: "japan" }), 24);
   });
 
   it("says the section is empty rather than showing a bare heading", async () => {
@@ -76,7 +83,12 @@ describe("indexing", () => {
     expect(metadata.robots).toBeUndefined();
   });
 
-  it.each([{ topic: "transport" }, { destination: "tokyo" }, { cursor: "abc" }])(
+  it("names the topic hub as canonical for a ?topic= view", async () => {
+    const metadata = await generateMetadata({ params: params(), searchParams: search({ topic: "transport" }) });
+    expect(metadata.alternates).toEqual({ canonical: "http://localhost:3000/zh-TW/guides/topics/transport" });
+  });
+
+  it.each([{ topic: "transport" }, { destination: "tokyo" }, { country: "japan" }, { cursor: "abc" }])(
     "keeps a filtered view out of the index (%o)",
     async (filters) => {
       const metadata = await generateMetadata({ params: params(), searchParams: search(filters) });

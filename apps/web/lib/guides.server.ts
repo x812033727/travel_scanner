@@ -1,11 +1,17 @@
 import { cache } from "react";
-import { isArticleReference, isGuideSeries, isSeriesNavigation, type GuideSeries } from "./guide-series";
 import {
+  isArticleReference, isGuideSeries, isSeriesNavigation, isSeriesSummary,
+  type GuideSeries, type SeriesSummary,
+} from "./guide-series";
+import {
+  isDestinationFacet,
   isGuidePartnerLink,
   isGuideSummary,
+  isGuideTopic,
   isPublishedGuide,
   isGuideKind,
-  isGuideSection,
+  topicLocales,
+  type DestinationFacet,
   type GuideArticleState,
   type GuideKind,
   type GuideList,
@@ -51,6 +57,9 @@ export type GuideFilters = {
    *  so `{ section: "life", kind: "intel" }` is an empty list, never an unfiltered one. */
   section?: GuideSection;
   destination?: string;
+  /** A catalog country in URL form (`japan`, `south-korea`); the API maps it to its cities. */
+  country?: string;
+  /** A topic slug. A parent topic lists its sub-topics' articles too. */
   topic?: string;
   cursor?: string;
 };
@@ -60,6 +69,7 @@ function query(locale: string, filters: GuideFilters, limit: number): string {
   if (filters.kind) params.set("kind", filters.kind);
   if (filters.section) params.set("section", filters.section);
   if (filters.destination) params.set("destination", filters.destination);
+  if (filters.country) params.set("country", filters.country);
   if (filters.topic) params.set("topic", filters.topic);
   if (filters.cursor) params.set("cursor", filters.cursor);
   return params.toString();
@@ -107,16 +117,63 @@ export function hubIsEmpty(...lists: GuideListResult[]): boolean {
  * chips. A catalogue served by an older API carries no `section` on its rows; those rows are
  * kept, because the server already filtered them.
  */
-export async function loadGuideTopics(locale: Locale, section: GuideSection): Promise<GuideTopic[]> {
+export type GuideTopicListResult = { topics: GuideTopic[]; available: boolean };
+
+/**
+ * The vocabulary plus whether the API answered, for the one caller that needs to tell an
+ * unknown topic (a 404) from an unreachable vocabulary (a page that must not claim the topic
+ * is gone). Listing pages keep using `loadGuideTopics`, for which an outage is an empty chip
+ * row either way.
+ */
+export async function loadGuideTopicList(locale: Locale, section: GuideSection): Promise<GuideTopicListResult> {
   const params = new URLSearchParams({ locale, section });
   const row = await fetchJson(`/guides/topics?${params.toString()}`, locale);
   const body = row as Record<string, unknown> | null;
-  if (!body || !Array.isArray(body.topics)) return [];
-  return body.topics.filter((topic): topic is GuideTopic => {
-    const entry = topic as Record<string, unknown> | null;
-    return !!entry && typeof entry.slug === "string" && typeof entry.label === "string"
-      && (entry.section === undefined || isGuideSection(entry.section));
-  });
+  if (!body || !Array.isArray(body.topics)) return { topics: [], available: false };
+  return { topics: body.topics.filter(isGuideTopic), available: true };
+}
+
+export async function loadGuideTopics(locale: Locale, section: GuideSection): Promise<GuideTopic[]> {
+  return (await loadGuideTopicList(locale, section)).topics;
+}
+
+/** Every series hub published in `locale`, in the API's registry order; empty on any failure. */
+export async function loadSeriesIndex(locale: Locale): Promise<SeriesSummary[]> {
+  const row = await fetchJson(`/guides/series?locale=${encodeURIComponent(locale)}`, locale);
+  const body = row as Record<string, unknown> | null;
+  if (!body || !Array.isArray(body.series)) return [];
+  return body.series.filter(isSeriesSummary);
+}
+
+export type DestinationFacetResult = { destinations: DestinationFacet[]; available: boolean };
+
+/** The destinations with a published article in `locale`, with their country and count. */
+export async function loadDestinationFacets(
+  locale: Locale, section?: GuideSection,
+): Promise<DestinationFacetResult> {
+  const params = new URLSearchParams({ locale });
+  if (section) params.set("section", section);
+  const row = await fetchJson(`/guides/destinations?${params.toString()}`, locale);
+  const body = row as Record<string, unknown> | null;
+  if (!body || !Array.isArray(body.destinations)) return { destinations: [], available: false };
+  return { destinations: body.destinations.filter(isDestinationFacet), available: true };
+}
+
+/** One topic hub per section topic, with the locales that publish something under it. */
+export type GuideTopicSitemapEntry = { section: GuideSection; slug: string; locales: Locale[] };
+
+/**
+ * Publication-aware enumeration of the topic hubs for `app/sitemap.ts`: a hub is listed in a
+ * language only while that language has an article under the topic, which is the same rule
+ * the hub's own `generateMetadata` applies. Two reads, one per section vocabulary; a failed
+ * read lists nothing for that section rather than every hub in every language.
+ */
+export async function guideTopicSitemapEntries(): Promise<GuideTopicSitemapEntry[]> {
+  const sections: GuideSection[] = ["travel", "life"];
+  const results = await Promise.all(sections.map((section) => loadGuideTopicList(defaultLocale, section)));
+  return sections.flatMap((section, index) => results[index].topics
+    .map((topic) => ({ section, slug: topic.slug, locales: topicLocales(topic, locales) }))
+    .filter((entry) => entry.locales.length > 0));
 }
 
 export async function loadGuideArticle(
@@ -250,4 +307,7 @@ export async function guideSitemapEntries(): Promise<GuideSitemapResult> {
 
 export const getGuideList = cache(loadGuideList);
 export const getGuideTopics = cache(loadGuideTopics);
+export const getGuideTopicList = cache(loadGuideTopicList);
 export const getGuideArticle = cache(loadGuideArticle);
+export const getSeriesIndex = cache(loadSeriesIndex);
+export const getDestinationFacets = cache(loadDestinationFacets);

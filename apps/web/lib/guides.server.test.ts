@@ -6,10 +6,14 @@ vi.mock("next/headers", () => ({ headers: incoming }));
 incoming.mockResolvedValue(new Headers({ "x-forwarded-for": "203.0.113.9" }));
 import {
   guideSitemapEntries,
+  guideTopicSitemapEntries,
   hubIsEmpty,
+  loadDestinationFacets,
   loadGuideArticle,
   loadGuideList,
+  loadGuideTopicList,
   loadGuideTopics,
+  loadSeriesIndex,
   SITEMAP_GUIDE_ENTRY_LIMIT,
 } from "./guides.server";
 
@@ -295,5 +299,76 @@ describe("an empty section against a failed read", () => {
     // noindex a hub that may well have articles under the kind that failed.
     expect(hubIsEmpty(empty, failed)).toBe(false);
     expect(hubIsEmpty(empty, filled)).toBe(false);
+  });
+});
+
+describe("the two-level vocabulary and the hubs around it", () => {
+  const ai = { slug: "ai", label: "AI 工具", section: "life", parent: null, description: "導言", count: 5, counts: { "zh-TW": 5, en: 2 } };
+  const terms = { slug: "ai-terms", label: "AI 名詞解釋", section: "life", parent: "ai", description: null, count: 2, counts: { "zh-TW": 2 } };
+
+  it("keeps a topic's parent, lead and counts, and drops a row whose counts are not numbers", async () => {
+    vi.stubGlobal("fetch", respond({ topics: [ai, terms, { ...terms, slug: "broken", counts: { "zh-TW": "many" } }] }));
+    const result = await loadGuideTopicList("zh-TW", "life");
+    expect(result.available).toBe(true);
+    expect(result.topics).toEqual([ai, terms]);
+    expect(await loadGuideTopics("zh-TW", "life")).toEqual([ai, terms]);
+  });
+
+  it("tells an unreachable vocabulary apart from an empty one", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("connection reset")));
+    expect(await loadGuideTopicList("zh-TW", "life")).toEqual({ topics: [], available: false });
+    vi.stubGlobal("fetch", respond({ topics: [] }));
+    expect(await loadGuideTopicList("zh-TW", "life")).toEqual({ topics: [], available: true });
+  });
+
+  it("passes a country filter through as a query parameter", async () => {
+    const fetchMock = respond({ articles: [], next_cursor: null });
+    vi.stubGlobal("fetch", fetchMock);
+    await loadGuideList("zh-TW", { kind: "howto", country: "south-korea" }, 24);
+    const url = new URL(fetchMock.mock.calls[0][0]);
+    expect(url.searchParams.get("country")).toBe("south-korea");
+    expect(url.searchParams.get("kind")).toBe("howto");
+  });
+
+  it("reads the series index and drops a row that is not a series", async () => {
+    const series = {
+      slug: "claude-code", section: "life", hub: { kind: "life", slug: "claude-code-tutorials", title: "Claude Code 教學中心" },
+      source: "api-series", topic: "claude-code", entries: 96,
+    };
+    vi.stubGlobal("fetch", respond({ series: [series, { slug: "nope" }] }));
+    expect(await loadSeriesIndex("zh-TW")).toEqual([series]);
+    vi.stubGlobal("fetch", respond(null, false));
+    expect(await loadSeriesIndex("zh-TW")).toEqual([]);
+  });
+
+  it("reads the destination facets, keeps only well-formed rows and reports a failed read", async () => {
+    const tokyo = { id: "tokyo", label: "東京", country: "japan", country_label: "日本", count: 11 };
+    const fetchMock = respond({ destinations: [tokyo, { id: "seoul", count: "nine" }] });
+    vi.stubGlobal("fetch", fetchMock);
+    expect(await loadDestinationFacets("zh-TW", "travel")).toEqual({ destinations: [tokyo], available: true });
+    expect(new URL(fetchMock.mock.calls[0][0]).searchParams.get("section")).toBe("travel");
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("connection reset")));
+    expect(await loadDestinationFacets("zh-TW")).toEqual({ destinations: [], available: false });
+  });
+
+  it("enumerates the topic hubs with the languages that publish under each, in the site's locale order", async () => {
+    const fetchMock = vi.fn(async (input: string) => {
+      const section = new URL(input).searchParams.get("section");
+      const topics = section === "travel"
+        ? [{ slug: "transport", label: "交通", section: "travel", counts: { ja: 1, "zh-TW": 3 } }, { slug: "beach", label: "海灘", section: "travel", counts: {} }]
+        : [ai, terms];
+      return { ok: true, json: async () => ({ topics }) };
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    expect(await guideTopicSitemapEntries()).toEqual([
+      { section: "travel", slug: "transport", locales: ["ja", "zh-TW"] },
+      { section: "life", slug: "ai", locales: ["en", "zh-TW"] },
+      { section: "life", slug: "ai-terms", locales: ["zh-TW"] },
+    ]);
+  });
+
+  it("lists no hub for a section whose vocabulary could not be read", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("connection reset")));
+    expect(await guideTopicSitemapEntries()).toEqual([]);
   });
 });

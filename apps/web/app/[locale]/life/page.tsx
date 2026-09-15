@@ -6,8 +6,9 @@ import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { guideHref, guideListHref } from "@/lib/guides";
+import { guideHref, guideListHref, guideTopicHref } from "@/lib/guides";
 import { getGuideList, getGuideTopics, getGuideArticle, hubIsEmpty } from "@/lib/guides.server";
+import { localeUrl } from "@/lib/seo";
 import { seriesCopy } from "@/lib/guide-series-copy";
 import { getGeminiHubReference, getVisibleGeminiSeries, filterGeminiArticleLinks } from "@/lib/gemini-series.server";
 import { visibleGeminiHref } from "@/lib/gemini-series-projection";
@@ -45,6 +46,8 @@ export async function generateMetadata(
     // nothing in this language yet, so the page is a heading over one sentence. Both stay
     // `follow`, and the first article published here puts it back in the index.
     ...(filtered || empty ? { robots: { index: false, follow: true } } : {}),
+    // The topic hub is the page that ranks for a topic; this older `?topic=` URL names it.
+    ...(search.topic ? { alternates: { canonical: localeUrl(locale, guideTopicHref("life", search.topic)) } } : {}),
   };
 }
 
@@ -99,7 +102,10 @@ export default async function LifeHubPage(
           kind="life"
           topics={topics}
           active={search.topic ?? null}
-          labels={{ allTopics: t("guides.allTopics"), topicsLabel: t("guides.topicsLabel") }}
+          labels={{
+            allTopics: t("guides.allTopics"), topicsLabel: t("guides.topicsLabel"), subtopics: t("guides.subtopics"),
+            moreChips: t("guides.moreChips"), fewerChips: t("guides.fewerChips"),
+          }}
         />
         {tutorialHub.status === "published" && tutorialHub.document ? <section className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5">
           <h2 className="text-xl font-bold"><Link className="text-[var(--teal)] underline" href="/life/claude-code-tutorials">{tutorialHub.document.title}</Link></h2>

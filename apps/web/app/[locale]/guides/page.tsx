@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
+import { DestinationGroups } from "@/components/guides/destination-groups";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { guideHref, guideListHref } from "@/lib/guides";
-import { getGuideList, getGuideTopics, hubIsEmpty } from "@/lib/guides.server";
+import { guideHref, guideListHref, guideTopicHref } from "@/lib/guides";
+import { getDestinationFacets, getGuideList, getGuideTopics, hubIsEmpty } from "@/lib/guides.server";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 
 /** The same two reads the body makes, with the same arguments, so React's per-request cache
@@ -35,12 +36,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
 
 export default async function GuidesHubPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
-  const [[intel, howto], topics, t, nav] = await Promise.all([
+  const [[intel, howto], topics, facets, t, nav] = await Promise.all([
     hubLists(locale),
     getGuideTopics(locale, "travel"),
+    getDestinationFacets(locale, "travel"),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
   ]);
+  // A topic nothing is published under in this language has no hub worth linking; one whose
+  // count an older API did not send is kept.
+  const browsable = topics.filter((topic) => !topic.parent && (topic.count === undefined || topic.count > 0));
 
   const cardLabels = {
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
@@ -85,23 +90,28 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
           </section>
         ))}
 
-        {topics.length ? (
+        {browsable.length ? (
           <section className="mt-12 border-t border-[var(--line)] pt-8">
             <h2 className="text-2xl font-bold tracking-tight">{t("guides.browseTopics")}</h2>
             <ul className="mt-4 flex flex-wrap gap-2">
-              {topics.map((topic) => (
+              {browsable.map((topic) => (
                 <li key={topic.slug}>
-                  <Link
-                    className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] px-3 py-1 text-sm text-[var(--muted)]"
-                    href={guideListHref("howto", topic.slug)}
-                  >
+                  <Link className="app-filter-chip" href={guideTopicHref("travel", topic.slug)}>
                     {topic.label}
+                    {topic.count ? <span className="app-filter-count">{topic.count}</span> : null}
                   </Link>
                 </li>
               ))}
             </ul>
           </section>
         ) : null}
+
+        <DestinationGroups
+          destinations={facets.destinations}
+          labels={{
+            heading: t("guides.browseDestinations"), lead: t("guides.destinationsLead"), countryAll: t("guides.countryAll"),
+          }}
+        />
       </main>
     </>
   );

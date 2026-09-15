@@ -52,8 +52,58 @@ export function guideListHref(kind: GuideKind, topic?: string | null): string {
   return topic ? `${base}?topic=${encodeURIComponent(topic)}` : base;
 }
 
-/** `section` is optional on the wire so a catalogue served by an older API still parses. */
-export type GuideTopic = { slug: string; label: string; section?: GuideSection };
+/**
+ * The hub page of one topic: `/guides/topics/{topic}` for the travel vocabulary and
+ * `/life/topics/{topic}` for the lifestyle one. A `?topic=` listing is the same collection
+ * and canonicalizes here; a chip links here directly.
+ */
+export function guideTopicHref(section: GuideSection, topic: string): string {
+  return `${section === "life" ? "/life" : "/guides"}/topics/${encodeURIComponent(topic)}`;
+}
+
+/** The section hub a topic hub sits under, for its breadcrumb and its "all topics" chip. */
+export function sectionHubHref(section: GuideSection): string {
+  return section === "life" ? "/life" : "/guides";
+}
+
+/**
+ * `section` is optional on the wire so a catalogue served by an older API still parses; so
+ * are the two-level fields. `parent` names the parent topic of a sub-topic; `count` is how
+ * many articles the request locale publishes under the topic (a parent counts its children's
+ * too) and `counts` the same per locale, which is what a hub page decides its hreflang from.
+ */
+export type GuideTopic = {
+  slug: string;
+  label: string;
+  section?: GuideSection;
+  parent?: string | null;
+  description?: string | null;
+  count?: number;
+  counts?: Record<string, number>;
+};
+
+/** One destination with at least one published article, for the travel hub's country groups. */
+export type DestinationFacet = {
+  id: string;
+  label: string;
+  country: string;
+  country_label: string;
+  count: number;
+};
+
+export function isDestinationFacet(value: unknown): value is DestinationFacet {
+  if (!value || typeof value !== "object") return false;
+  const row = value as Record<string, unknown>;
+  return typeof row.id === "string" && typeof row.label === "string"
+    && typeof row.country === "string" && typeof row.country_label === "string"
+    && Number.isInteger(row.count) && Number(row.count) >= 0;
+}
+
+/** The locales a topic publishes in, in the site's own order, from the API's per-locale counts. */
+export function topicLocales(topic: Pick<GuideTopic, "counts">, all: readonly Locale[]): Locale[] {
+  const counts = topic.counts ?? {};
+  return all.filter((locale) => (counts[locale] ?? 0) > 0);
+}
 
 export type GuideSource = { title: string; url: string; checked_on: string | null };
 
@@ -211,12 +261,22 @@ export type GuideArticleState = {
   series?: SeriesNavigation | null;
 };
 
+export function isGuideTopic(value: unknown): value is GuideTopic {
+  const topic = value as Record<string, unknown> | null;
+  if (!topic || typeof topic.slug !== "string" || typeof topic.label !== "string") return false;
+  if (topic.section !== undefined && !isGuideSection(topic.section)) return false;
+  if (topic.parent !== undefined && topic.parent !== null && typeof topic.parent !== "string") return false;
+  if (topic.description !== undefined && topic.description !== null && typeof topic.description !== "string") return false;
+  if (topic.count !== undefined && !Number.isInteger(topic.count)) return false;
+  if (topic.counts !== undefined) {
+    if (!topic.counts || typeof topic.counts !== "object") return false;
+    if (!Object.values(topic.counts as Record<string, unknown>).every(Number.isInteger)) return false;
+  }
+  return true;
+}
+
 function isTopicList(value: unknown): value is GuideTopic[] {
-  return Array.isArray(value) && value.every((row) => {
-    const topic = row as Record<string, unknown> | null;
-    return !!topic && typeof topic.slug === "string" && typeof topic.label === "string"
-      && (topic.section === undefined || isGuideSection(topic.section));
-  });
+  return Array.isArray(value) && value.every(isGuideTopic);
 }
 
 function isSourceList(value: unknown): value is GuideSource[] {

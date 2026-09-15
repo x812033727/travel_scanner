@@ -29,6 +29,7 @@ results. Historical task notes describe their original snapshots, not necessaril
 | Home, food directory, destination directory/guides/services | Indexable public content |
 | Travel intel and guides (`/guides`, `/guides/{kind}`, articles) | Indexable public content; an article only in the locales it is published in |
 | Lifestyle (`/life`, `/life/{slug}`) | Indexable public content; same per-locale publication rule. Topic-filtered views are `noindex` |
+| Topic hubs (`/guides/topics/{topic}`, `/life/topics/{topic}`) | Indexable in a locale with at least one published article under the topic (a parent topic counts its sub-topics' articles); otherwise `noindex, follow` and absent from that locale's sitemap. A listing's `?topic=` view stays `noindex` and names the hub as its canonical |
 | An article hub in a locale with nothing published (`/guides`, `/guides/{kind}`, `/life`) | `noindex, follow`, and absent from the sitemap for that locale |
 | Hotspots, pricing, flight status, airline fares | Indexable only while the effective Web switch is enabled |
 | Privacy, terms, about, contact | Only the requested locale's published document is indexable |
@@ -83,6 +84,19 @@ answered and was not truncated at the entry cap. A guides outage therefore leave
 exactly as indexable and as listed as it is today, rather than `noindex`-ing all five locales
 at once. A hub returns to the index and to the sitemap with the first article published in
 that locale, with no deployment.
+
+### Topic hubs
+
+Every topic has a hub page (`/guides/topics/{topic}`, `/life/topics/{topic}`) with a lead,
+the topic's sub-topics and its articles. `app/sitemap.ts` lists a hub in a locale only
+while that locale publishes something under the topic, from the per-locale counts
+`GET /guides/topics` returns (`guideTopicSitemapEntries`), with the same hreflang rule as
+the section hubs and no `lastmod`. The hub's own `generateMetadata` applies the same rule:
+`noindex, follow` when the locale has nothing under the topic, when the URL carries a
+`?cursor=`, or when the vocabulary could not be read (an outage must not claim a topic is
+gone -- an unknown topic, by contrast, is a 404). A listing's older `?topic=` view is the
+same collection and names the hub as its canonical. These rows live outside the 1,000-row
+article budget below; there are at most a few dozen per locale.
 
 `/life` is listed at `priority 0.6` / `changeFrequency weekly`, matching `/guides/howto`
 rather than the dated `/guides/intel` feed: its articles are evergreen and are emitted at
