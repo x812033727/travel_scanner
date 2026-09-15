@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">資料與指令分開 / Separating data from instructions</title>
+  <desc id="desc">左邊是兩類來源：可信的指令，也就是你打進去的問題與應用寫好的系統提示詞；不可信的資料，包含網頁、郵件本文、文件、工具與 MCP 回傳的結果、工具說明欄與圖片裡的文字，裡面可能藏著一句指令，OWASP 寫明人眼看不見也算數。中間是模型的上下文視窗，兩類文字都排在同一個視窗裡，上半是指令區，決定接下來要做什麼；下半是資料區，只能被閱讀、被回報；中間那條線要靠設計畫出來，官方做法是只放進 tool_result、標明來源、在系統提示詞裡寫明不可信。指令區往右接到權限與確認關卡，採最小權限並由你按下確認，通過之後才是真正的動作，例如寄信、下單、刪檔、上傳、改設定與分享檔案。資料區想直接往右走會被一道紅色的牆擋下，資料裡的指令不會變成授權；它可以往下走，被回報給你，例如告訴你這一頁要我把資料寄出去。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#102A2B"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#B8442D"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#2E7D5B"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="52" font-size="30" font-weight="bold" fill="#102A2B">資料與指令分開：外部文字不會自己變成授權</text>
+  <text x="40" y="84" font-size="18" fill="#5C6B6B">Data vs instructions: retrieved text is data, not authorization</text>
+
+  <!-- left: trusted instructions -->
+  <rect x="50" y="175" width="360" height="160" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="230" y="222" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">可信的指令</text>
+  <text x="230" y="262" text-anchor="middle" font-size="17" fill="#102A2B">你打進去的問題</text>
+  <text x="230" y="296" text-anchor="middle" font-size="17" fill="#102A2B">應用寫好的系統提示詞</text>
+
+  <!-- left: untrusted data -->
+  <rect x="50" y="360" width="360" height="230" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="230" y="407" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">不可信的資料</text>
+  <text x="230" y="447" text-anchor="middle" font-size="17" fill="#102A2B">網頁、郵件本文、文件</text>
+  <text x="230" y="481" text-anchor="middle" font-size="17" fill="#102A2B">工具與 MCP 回傳的結果</text>
+  <text x="230" y="515" text-anchor="middle" font-size="17" fill="#102A2B">工具說明欄、圖片裡的字</text>
+  <text x="230" y="560" text-anchor="middle" font-size="17" fill="#B8442D">裡面可能藏著一句指令</text>
+  <text x="230" y="632" text-anchor="middle" font-size="17" fill="#5C6B6B">OWASP：人眼看不見也算數</text>
+
+  <!-- middle: context window -->
+  <rect x="520" y="150" width="510" height="520" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="775" y="202" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">模型的上下文視窗</text>
+
+  <rect x="552" y="235" width="446" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="775" y="277" text-anchor="middle" font-size="19" font-weight="bold" fill="#102A2B">指令區</text>
+  <text x="775" y="311" text-anchor="middle" font-size="17" fill="#102A2B">決定接下來要做什麼</text>
+
+  <line x1="552" y1="375" x2="998" y2="375" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="775" y="404" text-anchor="middle" font-size="17" fill="#5C6B6B">這條線要靠設計畫出來</text>
+
+  <rect x="552" y="420" width="446" height="110" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="775" y="462" text-anchor="middle" font-size="19" font-weight="bold" fill="#102A2B">資料區</text>
+  <text x="775" y="496" text-anchor="middle" font-size="17" fill="#102A2B">只能被閱讀、被回報</text>
+
+  <text x="775" y="580" text-anchor="middle" font-size="17" fill="#102A2B">官方做法：只放進 tool_result、</text>
+  <text x="775" y="614" text-anchor="middle" font-size="17" fill="#102A2B">標明來源、系統提示詞寫明不可信</text>
+
+  <!-- middle to left arrows -->
+  <line x1="415" y1="255" x2="542" y2="285" stroke="#102A2B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="415" y1="475" x2="542" y2="475" stroke="#102A2B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- report path -->
+  <rect x="520" y="700" width="510" height="130" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="775" y="750" text-anchor="middle" font-size="19" font-weight="bold" fill="#102A2B">資料裡的指令可以被回報</text>
+  <text x="775" y="788" text-anchor="middle" font-size="17" fill="#102A2B">「這一頁要我把資料寄出去」</text>
+  <line x1="775" y1="672" x2="775" y2="694" stroke="#2E7D5B" stroke-width="4" marker-end="url(#arrowGreen)"/>
+
+  <!-- blocked wall -->
+  <rect x="1066" y="400" width="14" height="160" rx="7" fill="#B8442D"/>
+  <text x="1073" y="382" text-anchor="middle" font-size="17" fill="#B8442D">擋下</text>
+  <line x1="1034" y1="480" x2="1060" y2="480" stroke="#B8442D" stroke-width="4" stroke-dasharray="9 7" marker-end="url(#arrowRed)"/>
+
+  <!-- right: gate -->
+  <rect x="1120" y="230" width="430" height="140" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1335" y="284" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">權限與確認</text>
+  <text x="1335" y="322" text-anchor="middle" font-size="17" fill="#102A2B">最小權限，由你按下確認</text>
+  <line x1="1034" y1="290" x2="1112" y2="296" stroke="#102A2B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1335" y1="376" x2="1335" y2="424" stroke="#102A2B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- right: actions -->
+  <rect x="1120" y="430" width="430" height="170" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1335" y="484" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">真正的動作</text>
+  <text x="1335" y="524" text-anchor="middle" font-size="17" fill="#102A2B">寄信、下單、刪檔、上傳</text>
+  <text x="1335" y="558" text-anchor="middle" font-size="17" fill="#102A2B">改設定、分享檔案</text>
+
+  <!-- right: blocked note -->
+  <rect x="1120" y="655" width="430" height="120" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1335" y="704" text-anchor="middle" font-size="19" font-weight="bold" fill="#B8442D">資料裡的指令走到這裡</text>
+  <text x="1335" y="740" text-anchor="middle" font-size="19" font-weight="bold" fill="#B8442D">不會變成授權</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
