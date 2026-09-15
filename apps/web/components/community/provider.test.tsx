@@ -16,7 +16,8 @@ beforeEach(() => {
   mock.user = null; mock.api.mockReset(); mock.mounts.mockReset();
   mock.api.mockImplementation(async (path: string) => path === "/community/status" ? state.flags : {});
 });
-afterEach(cleanup);
+// Unmount first so the provider closes its stream before the stubbed EventSource goes away.
+afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
 function CoreForm() {
   const [value, setValue] = useState("");
   useEffect(() => { mock.mounts(); }, []);
@@ -72,4 +73,26 @@ it("binds resource caches to the current account without remounting core pages",
   expect(screen.queryByText("First account secret")).toBeNull();
   await act(async () => { finishSecond({ value: "Second account data" }); });
   expect(screen.getByText("Second account data")).toBeTruthy();
+});
+
+it("asks community resources to catch up when the browser comes back online", async () => {
+  // Going offline can leave the stream open while every fetch fails, so the refreshes its
+  // events trigger fail too and no later event asks again. Coming back online has to.
+  class FakeEventSource { onmessage = null; addEventListener() {} close() {} }
+  vi.stubGlobal("EventSource", FakeEventSource);
+  mock.user = { id: "member" };
+  mock.api.mockImplementation(async (path: string) => path === "/community/status" ? state.flags
+    : path === "/community/me" ? identity("member")
+      : path === "/community/events/cursor" ? { cursor: 5 } : { unread: 0 });
+  const refreshed = vi.fn();
+  window.addEventListener("community-refresh", refreshed);
+  try {
+    render(<CommunityProvider state={state}><Identity /></CommunityProvider>);
+    await screen.findByText("member");
+    await waitFor(() => expect(refreshed).toHaveBeenCalledTimes(1));
+    await act(async () => { window.dispatchEvent(new Event("online")); });
+    expect(refreshed).toHaveBeenCalledTimes(2);
+  } finally {
+    window.removeEventListener("community-refresh", refreshed);
+  }
 });

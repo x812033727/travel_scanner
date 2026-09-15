@@ -221,8 +221,14 @@ test("administrator can preview, explicitly publish and restore only a draft", a
 
 test("dirty information drafts survive a cancelled browser Back and language switch", async ({ page, baseURL }) => {
   const writes = await adminFixtures(page, baseURL!);
+  // Settle each document's proxied /auth/me before moving on; the read-only test below explains
+  // the disposal race. /en/my is awaited first so its late response cannot satisfy the admin wait.
+  const accountSession = page.waitForResponse((response) => new URL(response.url()).pathname === "/api/travel/auth/me" && response.request().method() === "GET");
   await page.goto("/en/my");
+  await accountSession;
+  const sessionReady = page.waitForResponse((response) => new URL(response.url()).pathname === "/api/travel/auth/me" && response.request().method() === "GET");
   await page.goto("/en/admin/site-pages");
+  await sessionReady;
   const field = page.getByRole("textbox", { name: "Document title", exact: true });
   await field.fill("Keep this unsaved draft");
   page.once("dialog", (prompt) => prompt.dismiss());
@@ -238,7 +244,12 @@ test("dirty information drafts survive a cancelled browser Back and language swi
 
 test("read-only administrator cannot edit information documents", async ({ page, baseURL }) => {
   const writes = await adminFixtures(page, baseURL!, "viewer");
+  // The read-only state comes from the server-rendered admin bootstrap, so it is visible
+  // before the proxied /auth/me handler (route.fetch() then response.json()) finishes.
+  // Ending the test in that window closes the context and disposes the fetched body.
+  const sessionReady = page.waitForResponse((response) => new URL(response.url()).pathname === "/api/travel/auth/me" && response.request().method() === "GET");
   await page.goto("/en/admin/site-pages");
+  await sessionReady;
   await expect(page.getByRole("textbox", { name: "Document title", exact: true })).toBeDisabled();
   await expect(page.getByRole("button", { name: "Publish", exact: true })).toBeDisabled();
   await expect(page.getByRole("button", { name: "Preview", exact: true })).toBeEnabled();

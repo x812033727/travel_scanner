@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-ai-suffix-keywords-backfill
 title: 字尾關鍵字補進 61 篇既有 AI 文章的 description 與導言
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-14T23:06:59Z
 created_at: 2026-09-14T23:06:58Z
-completed_at:
+completed_at: 2026-09-15T00:45:58Z
 branch: claude/ai-suffix-keyword-planning-76gn21
 depends_on: []
 scope:
