@@ -1,0 +1,49 @@
+{
+  "lesson": 52,
+  "startedAt": "2026-09-15T00:39:26.820998+00:00",
+  "status": "36-regression-answers-captured-with-quality-failures",
+  "accountType": "personal",
+  "planObserved": "PRO",
+  "displayedModel": "Flash",
+  "exactModelId": "not exposed by UI",
+  "googleApiCalls": 0,
+  "additionalSpendLimitTWD": 0,
+  "additionalPurchases": 0,
+  "inputs": [
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/52/gem-instructions.md",
+      "sha256": "196dfa0da5766fb3c8bf1a560a91e5b8e7ca9e7293b73e6fac46f1955aa77674"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/52/product-handbook-v1.md",
+      "sha256": "68869eac4c5e964cd6f2ec58531f73ea932c366cc742217051dd1f964bd8060e"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/52/product-handbook-v2.md",
+      "sha256": "48e9818b0589ed457a7eac16816eb321e149f0302a9eaf3df045c341e6eacc2c"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/52/regression-cases.csv",
+      "sha256": "a3f657c35560a47aad3cca69948f88576e5bdbe4f07440a031cda374d9cf7782"
+    }
+  ],
+  "userConsent": "User replied 好了 after handling first-upload disclaimer; current DOM showed upload menu instead of consent dialog.",
+  "personalization": "Existing user settings unchanged; not independently disabled.",
+  "notes": [
+    "Only synthetic product handbook uploaded. Expected-answer columns were not submitted.",
+    "Two v1 previews are separate from the 24 isolated baseline and 12 isolated corrected regression conversations.",
+    "Corrected Gem uses v2 plus one capability-boundary instruction; original inputs and baseline answers preserved.",
+    "Capture checks passed; original v2 G09/G11 and corrected G02 have no source citation because the actual answer was a generic refusal.",
+    "Raw duplicate text and ambiguous wording remain in the evidence. See AI review; no human semantic approval."
+  ],
+  "baselineResponseCount": 24,
+  "previewResponseCount": 2,
+  "baselineCaptureCompletedAt": "2026-09-15T01:04:17.139Z",
+  "extraApiCalls": 0,
+  "semanticQualityApproved": false,
+  "exportNormalization": "Question strings restored from frozen case data; dates expanded from captured UTC time; repeated citation labels reconstructed. All fields checked against original browser records with FNV transport checksum. Conversation URL replaced by SHA256.",
+  "timing": "startedAt is immediately before fill/submit; capturedAt is capture time, not exact generation completion. Do not use difference as model latency.",
+  "correctedResponseCount": 12,
+  "correctedCaptureCompletedAt": "2026-09-15T01:23:38.247Z",
+  "totalResponseCountIncludingPreviews": 38
+}

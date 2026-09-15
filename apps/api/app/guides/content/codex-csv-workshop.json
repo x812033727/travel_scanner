@@ -1,0 +1,1427 @@
+{
+  "slug": "codex-csv-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 132,
+  "locales": {
+    "zh-TW": {
+      "title": "實戰：製作資料整理工具",
+      "description": "這個實戰製作 CSV 名單整理工具，保留原檔並產生新結果。規則固定為修剪空白、將 email 轉小寫、同 email 保留第一筆有效資料、略過缺姓名或格式不合的 email，最後回報保留、重複與無效筆數。這是練習用格式檢查，不保證信箱真實存在。",
+      "hero": {
+        "src": "/guides/codex-csv-workshop/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "做出一個保留原始資料的 CSV 整理工具：修剪空白、統一 email 大小寫、保留第一筆有效資料、統計重複與無效列，拒絕覆寫既有檔案。閱讀約 20 分鐘、實作約 45 分鐘。準備 Python 3.9 以上版本、Codex 與自己的空白 csv-lab；只使用下方虛構姓名及 example.test 地址。這是格式整理，不會寄信，也不能證明 email 真正存在。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：建立可以人工驗算的資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "在編輯器開啟 csv-lab，以 UTF-8 建立 contacts.csv，完整內容如下。第一列欄名必須正好是 name,email，順序也相同。保留 Alice 前後與第一筆 email 的空白，它們是測試條件。使用純文字編輯器檢查原文，避免試算表另存時換編碼或改值。Windows 執行 py -3 --version，macOS／Linux 執行 python3 --version，確認版本至少為 Python 3.9；本例不需要 pip、pandas 或資料庫。"
+        },
+        {
+          "type": "code",
+          "label": "contacts.csv（保留測試空白）",
+          "language": "csv",
+          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "輸入列",
+            "判定",
+            "輸出"
+          ],
+          "rows": [
+            [
+              "Alice／ALICE@EXAMPLE.TEST",
+              "有效，清除空白並轉小寫",
+              "Alice／alice@example.test"
+            ],
+            [
+              "Alice duplicate／alice@example.test",
+              "與有效 email 重複",
+              "不保留"
+            ],
+            [
+              "Bob／bob@example.test",
+              "有效",
+              "Bob／bob@example.test"
+            ],
+            [
+              "Missing／空 email",
+              "無效",
+              "不保留"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "因此預期 kept 2、duplicate 1、invalid 1。去重依標準化後 email，不依姓名；若第一筆同地址資料因姓名空白而無效，後來第一筆有效資料仍可保留。這些規則應在生成程式前說清楚。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：請 Codex 先規劃整理契約"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "讓 Codex 開啟 csv-lab，先用 "
+            },
+            {
+              "type": "article",
+              "text": "Plan 模式",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "確認輸入、輸出、例外及驗收，再交付實作。每次只輸出新檔案；結構壞掉要整次失敗，不留下看似成功的半份資料。一般無效 email 是可計數的資料問題，但缺欄、多欄或錯誤表頭是契約錯誤。這個區分會直接影響下游是否敢使用結果，不能只寫一句幫我清理 CSV。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "實作需求提示詞",
+          "language": "text",
+          "code": "Create clean_contacts.py using Python's standard library only.\nExpose clean(source: Path, target: Path) returning kept/duplicate/invalid counts.\nRead UTF-8 with optional BOM using csv.DictReader, not string splitting.\nRequire exactly name,email. Trim both fields and lowercase email.\nKeep the first valid row per email; reject empty names and invalid email shapes.\nTreat missing/extra columns or malformed CSV as whole-run failures.\nRead and validate before creating output. Never change input or overwrite output.\nWrite UTF-8 with name,email and a newline after each row.\nCLI takes source and target paths, reports counts on stderr and exits 0 on success,\n1 on data/file errors. Add tests for preservation, duplicates, Unicode, quoted\ncommas, malformed rows and overwrite refusal. Do not use real contact data.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：檢查參考程式的保護位置"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是完整參考程式，存為 clean_contacts.py 可獨立執行；若你已讓 Codex 生成版本，先另存備份，再比較差異。csv 模組負責引號、逗號與換行，不能用 split(',') 替代。程式在全部輸入讀完後才用 x 模式建立輸出；已有目標檔就失敗。這能避免輸入格式錯誤時留下輸出，但磁碟在寫到一半失敗仍可能留下不完整檔案，該次必須標記失敗並檢查產物，不能聲稱這是完整交易系統。"
+        },
+        {
+          "type": "code",
+          "label": "clean_contacts.py（完整參考）",
+          "language": "python",
+          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：執行、保存狀態與核對輸出"
+        },
+        {
+          "type": "paragraph",
+          "text": "執行前確認 cleaned-01.csv 不存在；macOS／Linux 的 contacts-before.csv 也須是未使用檔名，避免 cp 覆蓋舊備份。Windows PowerShell 記下輸入 SHA256；macOS／Linux 則複製自己這份虛構輸入供 cmp 比較。計數寫在 stderr，成功時仍會顯示 JSON，不能只因這個通道有文字就判定失敗。立即保存退出狀態，再核對輸出與原件。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "$csvBefore = (Get-FileHash -LiteralPath contacts.csv -Algorithm SHA256).Hash\npy -3 clean_contacts.py contacts.csv cleaned-01.csv\n$csvExit = $LASTEXITCODE\n$csvExit\nGet-Content -LiteralPath cleaned-01.csv\n$csvBefore -eq (Get-FileHash -LiteralPath contacts.csv -Algorithm SHA256).Hash\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux",
+          "language": "sh",
+          "code": "cp contacts.csv contacts-before.csv\npython3 clean_contacts.py contacts.csv cleaned-01.csv\ncsv_exit=$?\necho \"$csv_exit\"\ncat cleaned-01.csv\ncmp contacts-before.csv contacts.csv\n"
+        },
+        {
+          "type": "code",
+          "label": "cleaned-01.csv 的預期內容",
+          "language": "csv",
+          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期退出 0，計數為 kept 2、duplicate 1、invalid 1，輸出兩筆且順序保留，PowerShell 比對 True 或 cmp 無差異。接著原指令再執行一次，因 cleaned-01.csv 已存在應退出 1，既有輸出內容不變；不要先刪掉它來假裝通過覆寫防護。再把輸入與輸出都指定 contacts.csv，應拒絕且原件不變。這些失敗是驗收成功的一部分。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 5：Unicode、引號與壞列"
+        },
+        {
+          "type": "paragraph",
+          "text": "另存下方 contacts-unicode.csv，輸出用 cleaned-unicode.csv。預期 kept 1、duplicate 0、invalid 0，姓名中的逗號仍屬同一欄，Unicode 不變。若輸出重新打開變成亂碼，先確認編輯器以 UTF-8 解碼，不立刻改寫原始輸入。再建立 bad.csv，內容為 name,email 換行 Alice，也就是缺少 email 欄；指定全新的 cleaned-bad.csv 執行，應退出 1 且不建立輸出。把表頭改成 email,name 或多加第三欄也應拒絕。"
+        },
+        {
+          "type": "code",
+          "label": "contacts-unicode.csv",
+          "language": "csv",
+          "code": "name,email\n\"林, Alex\",alex@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "延伸：保留第一筆有效資料"
+        },
+        {
+          "type": "code",
+          "label": "contacts-first-valid.csv",
+          "language": "csv",
+          "code": "name,email\n ,first@example.test\nFirst valid,FIRST@example.test\nLater duplicate,first@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "用這份新增輸入與尚不存在的 cleaned-first-valid.csv 執行同一程式，其他參數不變。預期 kept 1、duplicate 1、invalid 1：第一筆姓名空白而無效，不應先占住 email；第二筆才是第一筆有效資料；第三筆才算重複。若輸出沒有 First valid，檢查 seen 是在資料通過驗證後才加入，而不是先去重再驗證。原 contacts.csv 與 cleaned-01.csv 都保持原樣。"
+        },
+        {
+          "type": "code",
+          "label": "cleaned-first-valid.csv 的預期內容",
+          "language": "csv",
+          "code": "name,email\nFirst valid,first@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 6：把驗收留成可重跑測試"
+        },
+        {
+          "type": "paragraph",
+          "text": "把下方完整測試存為 test_clean_contacts.py，放在程式與 contacts.csv 旁邊。它使用暫存資料夾，會核對輸入位元組未變、既有輸出拒絕覆寫、Unicode、引號與結構錯誤；不在你的練習目錄累積測試產物。Windows 執行 py -3 -m unittest -v test_clean_contacts.py；macOS／Linux 執行 python3 -m unittest -v test_clean_contacts.py。參考版本應有三項測試全部通過；若生成版本的介面不同，先對齊 clean 函式契約，不隨意刪除失敗案例。"
+        },
+        {
+          "type": "code",
+          "label": "test_clean_contacts.py",
+          "language": "python",
+          "code": "import csv\nimport tempfile\nimport unittest\nfrom pathlib import Path\n\nfrom clean_contacts import clean\n\n\nclass CleanupTests(unittest.TestCase):\n    def test_contract_and_input_preservation(self):\n        original = (Path(__file__).parent / \"contacts.csv\").read_bytes()\n        with tempfile.TemporaryDirectory() as directory:\n            source = Path(directory) / \"input.csv\"\n            target = Path(directory) / \"output.csv\"\n            source.write_bytes(original)\n            self.assertEqual(clean(source, target), {\"kept\": 2, \"duplicate\": 1, \"invalid\": 1})\n            self.assertEqual(source.read_bytes(), original)\n            with target.open(encoding=\"utf-8\", newline=\"\") as stream:\n                self.assertEqual(list(csv.DictReader(stream)), [{\"name\": \"Alice\", \"email\": \"alice@example.test\"}, {\"name\": \"Bob\", \"email\": \"bob@example.test\"}])\n            with self.assertRaises(FileExistsError):\n                clean(source, target)\n            with self.assertRaises(ValueError):\n                clean(source, source)\n\n    def test_unicode_and_quoted_comma(self):\n        with tempfile.TemporaryDirectory() as directory:\n            source, target = Path(directory) / \"in.csv\", Path(directory) / \"out.csv\"\n            source.write_text('name,email\\n\"林, Alex\",alex@example.test\\n', encoding=\"utf-8\")\n            self.assertEqual(clean(source, target)[\"kept\"], 1)\n            self.assertIn('\"林, Alex\"', target.read_text(encoding=\"utf-8\"))\n\n    def test_bad_header_and_malformed_rows_create_no_output(self):\n        with tempfile.TemporaryDirectory() as directory:\n            source, target = Path(directory) / \"in.csv\", Path(directory) / \"out.csv\"\n            for value in [\"email,name\\na@b.test,A\\n\", \"name,email\\nAlice\\n\", \"name,email\\nA,a@b.test,extra\\n\"]:\n                source.write_text(value, encoding=\"utf-8\")\n                with self.assertRaises(ValueError):\n                    clean(source, target)\n                self.assertFalse(target.exists())\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "交付、還原與限制"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "交付時提供原始虛構 CSV、程式、測試、執行指令、計數及未修改原件的證據。可以下載"
+            },
+            {
+              "type": "link",
+              "text": "完整 CSV 練習檔",
+              "url": "https://mokaair.com/guides/codex-csv-workshop/contacts-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "比對；壓縮檔包含參考程式，不需要先完成其他專案。重新整理用新的輸出名稱，清理時只選自己已確認的產物。若要讀真正名單、處理超大檔案或匯入試算表，另設計權限、串流及公式文字的處理規則；本篇把資料當文字保存，不自動把外部內容當命令執行。下一篇練習"
+            },
+            {
+              "type": "article",
+              "text": "接手既有專案",
+              "kind": "life",
+              "slug": "codex-maintain-existing-project"
+            },
+            {
+              "type": "text",
+              "text": "，保留這裡建立的基準與驗證方法。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-csv-workshop/diagram-1.svg",
+          "alt": "32. 實戰：製作資料整理工具 — 實作順序示意圖，非產品介面截圖。 contacts.csv → Cleanup → clean.csv",
+          "width": 1600,
+          "height": 900,
+          "caption": "32. 實戰：製作資料整理工具 — 實作順序示意圖，非產品介面截圖。 contacts.csv → Cleanup → clean.csv",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Python csv module",
+          "url": "https://docs.python.org/3/library/csv.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "实战：制作数据整理工具",
+      "description": "这个实战制作 CSV 名单整理工具，保留原档并产生新结果。规则固定为修剪空白、将 email 转小写、同 email 保留第一笔有效资料、略过缺姓名或格式不合的 email，最后回报保留、重复与无效笔数。这是练习用格式检查，不保证信箱真实存在。",
+      "hero": {
+        "src": "/guides/codex-csv-workshop/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "做出一个保留原始资料的 CSV 整理工具：修剪空白、统一 email 大小写、保留第一笔有效资料、统计重复与无效列，拒绝覆写既有档案。阅读约 20 分钟、实作约 45 分钟。准备 Python 3.9 以上版本、Codex 与自己的空白 csv-lab；只使用下方虚构姓名及 example.test 地址。这是格式整理，不会寄信，也不能证明 email 真正存在。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：建立可以人工验算的资料"
+        },
+        {
+          "type": "paragraph",
+          "text": "在编辑器开启 csv-lab，以 UTF-8 建立 contacts.csv，完整内容如下。第一列栏名必须正好是 name,email，顺序也相同。保留 Alice 前后与第一笔 email 的空白，它们是测试条件。使用纯文字编辑器检查原文，避免试算表另存时换编码或改值。Windows 执行 py -3 --version，macOS／Linux 执行 python3 --version，确认版本至少为 Python 3.9；本例不需要 pip、pandas 或资料库。"
+        },
+        {
+          "type": "code",
+          "label": "contacts.csv（保留测试空白）",
+          "language": "csv",
+          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "输入列",
+            "判定",
+            "输出"
+          ],
+          "rows": [
+            [
+              "Alice／ALICE@EXAMPLE.TEST",
+              "有效，清除空白并转小写",
+              "Alice／alice@example.test"
+            ],
+            [
+              "Alice duplicate／alice@example.test",
+              "与有效 email 重复",
+              "不保留"
+            ],
+            [
+              "Bob／bob@example.test",
+              "有效",
+              "Bob／bob@example.test"
+            ],
+            [
+              "Missing／空 email",
+              "无效",
+              "不保留"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "因此预期 kept 2、duplicate 1、invalid 1。去重依标准化后 email，不依姓名；若第一笔同地址资料因姓名空白而无效，后来第一笔有效资料仍可保留。这些规则应在生成程式前说清楚。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：请 Codex 先规划整理契约"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "让 Codex 开启 csv-lab，先用 "
+            },
+            {
+              "type": "article",
+              "text": "Plan 模式",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "确认输入、输出、例外及验收，再交付实作。每次只输出新档案；结构坏掉要整次失败，不留下看似成功的半份资料。一般无效 email 是可计数的资料问题，但缺栏、多栏或错误表头是契约错误。这个区分会直接影响下游是否敢使用结果，不能只写一句帮我清理 CSV。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "实作需求提示词",
+          "language": "text",
+          "code": "Create clean_contacts.py using Python's standard library only.\nExpose clean(source: Path, target: Path) returning kept/duplicate/invalid counts.\nRead UTF-8 with optional BOM using csv.DictReader, not string splitting.\nRequire exactly name,email. Trim both fields and lowercase email.\nKeep the first valid row per email; reject empty names and invalid email shapes.\nTreat missing/extra columns or malformed CSV as whole-run failures.\nRead and validate before creating output. Never change input or overwrite output.\nWrite UTF-8 with name,email and a newline after each row.\nCLI takes source and target paths, reports counts on stderr and exits 0 on success,\n1 on data/file errors. Add tests for preservation, duplicates, Unicode, quoted\ncommas, malformed rows and overwrite refusal. Do not use real contact data.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：检查参考程式的保护位置"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是完整参考程式，存为 clean_contacts.py 可独立执行；若你已让 Codex 生成版本，先另存备份，再比较差异。csv 模组负责引号、逗号与换行，不能用 split(',') 替代。程式在全部输入读完后才用 x 模式建立输出；已有目标档就失败。这能避免输入格式错误时留下输出，但磁碟在写到一半失败仍可能留下不完整档案，该次必须标记失败并检查产物，不能声称这是完整交易系统。"
+        },
+        {
+          "type": "code",
+          "label": "clean_contacts.py（完整参考）",
+          "language": "python",
+          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：执行、保存状态与核对输出"
+        },
+        {
+          "type": "paragraph",
+          "text": "执行前确认 cleaned-01.csv 不存在；macOS／Linux 的 contacts-before.csv 也须是未使用档名，避免 cp 覆盖旧备份。Windows PowerShell 记下输入 SHA256；macOS／Linux 则复制自己这份虚构输入供 cmp 比较。计数写在 stderr，成功时仍会显示 JSON，不能只因这个通道有文字就判定失败。立即保存退出状态，再核对输出与原件。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "$csvBefore = (Get-FileHash -LiteralPath contacts.csv -Algorithm SHA256).Hash\npy -3 clean_contacts.py contacts.csv cleaned-01.csv\n$csvExit = $LASTEXITCODE\n$csvExit\nGet-Content -LiteralPath cleaned-01.csv\n$csvBefore -eq (Get-FileHash -LiteralPath contacts.csv -Algorithm SHA256).Hash\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux",
+          "language": "sh",
+          "code": "cp contacts.csv contacts-before.csv\npython3 clean_contacts.py contacts.csv cleaned-01.csv\ncsv_exit=$?\necho \"$csv_exit\"\ncat cleaned-01.csv\ncmp contacts-before.csv contacts.csv\n"
+        },
+        {
+          "type": "code",
+          "label": "cleaned-01.csv 的预期内容",
+          "language": "csv",
+          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期退出 0，计数为 kept 2、duplicate 1、invalid 1，输出两笔且顺序保留，PowerShell 比对 True 或 cmp 无差异。接著原指令再执行一次，因 cleaned-01.csv 已存在应退出 1，既有输出内容不变；不要先删掉它来假装通过覆写防护。再把输入与输出都指定 contacts.csv，应拒绝且原件不变。这些失败是验收成功的一部分。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 5：Unicode、引号与坏列"
+        },
+        {
+          "type": "paragraph",
+          "text": "另存下方 contacts-unicode.csv，输出用 cleaned-unicode.csv。预期 kept 1、duplicate 0、invalid 0，姓名中的逗号仍属同一栏，Unicode 不变。若输出重新打开变成乱码，先确认编辑器以 UTF-8 解码，不立刻改写原始输入。再建立 bad.csv，内容为 name,email 换行 Alice，也就是缺少 email 栏；指定全新的 cleaned-bad.csv 执行，应退出 1 且不建立输出。把表头改成 email,name 或多加第三栏也应拒绝。"
+        },
+        {
+          "type": "code",
+          "label": "contacts-unicode.csv",
+          "language": "csv",
+          "code": "name,email\n\"林, Alex\",alex@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "延伸：保留第一笔有效资料"
+        },
+        {
+          "type": "code",
+          "label": "contacts-first-valid.csv",
+          "language": "csv",
+          "code": "name,email\n ,first@example.test\nFirst valid,FIRST@example.test\nLater duplicate,first@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "用这份新增输入与尚不存在的 cleaned-first-valid.csv 执行同一程式，其他参数不变。预期 kept 1、duplicate 1、invalid 1：第一笔姓名空白而无效，不应先占住 email；第二笔才是第一笔有效资料；第三笔才算重复。若输出没有 First valid，检查 seen 是在资料通过验证后才加入，而不是先去重再验证。原 contacts.csv 与 cleaned-01.csv 都保持原样。"
+        },
+        {
+          "type": "code",
+          "label": "cleaned-first-valid.csv 的预期内容",
+          "language": "csv",
+          "code": "name,email\nFirst valid,first@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 6：把验收留成可重跑测试"
+        },
+        {
+          "type": "paragraph",
+          "text": "把下方完整测试存为 test_clean_contacts.py，放在程式与 contacts.csv 旁边。它使用暂存资料夹，会核对输入位元组未变、既有输出拒绝覆写、Unicode、引号与结构错误；不在你的练习目录累积测试产物。Windows 执行 py -3 -m unittest -v test_clean_contacts.py；macOS／Linux 执行 python3 -m unittest -v test_clean_contacts.py。参考版本应有三项测试全部通过；若生成版本的介面不同，先对齐 clean 函式契约，不随意删除失败案例。"
+        },
+        {
+          "type": "code",
+          "label": "test_clean_contacts.py",
+          "language": "python",
+          "code": "import csv\nimport tempfile\nimport unittest\nfrom pathlib import Path\n\nfrom clean_contacts import clean\n\n\nclass CleanupTests(unittest.TestCase):\n    def test_contract_and_input_preservation(self):\n        original = (Path(__file__).parent / \"contacts.csv\").read_bytes()\n        with tempfile.TemporaryDirectory() as directory:\n            source = Path(directory) / \"input.csv\"\n            target = Path(directory) / \"output.csv\"\n            source.write_bytes(original)\n            self.assertEqual(clean(source, target), {\"kept\": 2, \"duplicate\": 1, \"invalid\": 1})\n            self.assertEqual(source.read_bytes(), original)\n            with target.open(encoding=\"utf-8\", newline=\"\") as stream:\n                self.assertEqual(list(csv.DictReader(stream)), [{\"name\": \"Alice\", \"email\": \"alice@example.test\"}, {\"name\": \"Bob\", \"email\": \"bob@example.test\"}])\n            with self.assertRaises(FileExistsError):\n                clean(source, target)\n            with self.assertRaises(ValueError):\n                clean(source, source)\n\n    def test_unicode_and_quoted_comma(self):\n        with tempfile.TemporaryDirectory() as directory:\n            source, target = Path(directory) / \"in.csv\", Path(directory) / \"out.csv\"\n            source.write_text('name,email\\n\"林, Alex\",alex@example.test\\n', encoding=\"utf-8\")\n            self.assertEqual(clean(source, target)[\"kept\"], 1)\n            self.assertIn('\"林, Alex\"', target.read_text(encoding=\"utf-8\"))\n\n    def test_bad_header_and_malformed_rows_create_no_output(self):\n        with tempfile.TemporaryDirectory() as directory:\n            source, target = Path(directory) / \"in.csv\", Path(directory) / \"out.csv\"\n            for value in [\"email,name\\na@b.test,A\\n\", \"name,email\\nAlice\\n\", \"name,email\\nA,a@b.test,extra\\n\"]:\n                source.write_text(value, encoding=\"utf-8\")\n                with self.assertRaises(ValueError):\n                    clean(source, target)\n                self.assertFalse(target.exists())\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "交付、还原与限制"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "交付时提供原始虚构 CSV、程式、测试、执行指令、计数及未修改原件的证据。可以下载"
+            },
+            {
+              "type": "link",
+              "text": "完整 CSV 练习档",
+              "url": "https://mokaair.com/guides/codex-csv-workshop/contacts-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "比对；压缩档包含参考程式，不需要先完成其他专案。重新整理用新的输出名称，清理时只选自己已确认的产物。若要读真正名单、处理超大档案或汇入试算表，另设计权限、串流及公式文字的处理规则；本篇把资料当文字保存，不自动把外部内容当命令执行。下一篇练习"
+            },
+            {
+              "type": "article",
+              "text": "接手既有专案",
+              "kind": "life",
+              "slug": "codex-maintain-existing-project"
+            },
+            {
+              "type": "text",
+              "text": "，保留这里建立的基准与验证方法。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-csv-workshop/diagram-1.svg",
+          "alt": "32. 实战：制作数据整理工具 — 实作顺序示意图，非产品介面截图。 contacts.csv → Cleanup → clean.csv",
+          "width": 1600,
+          "height": 900,
+          "caption": "32. 实战：制作数据整理工具 — 实作顺序示意图，非产品介面截图。 contacts.csv → Cleanup → clean.csv",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Python csv module",
+          "url": "https://docs.python.org/3/library/csv.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Workshop: build a CSV cleanup tool",
+      "description": "Build a CSV cleaner that preserves its input and writes a new output. The exercise trims whitespace, lowercases email, keeps the first valid occurrence of an address and skips blank names or malformed addresses. It reports kept, duplicate and invalid counts. Its format check does not prove a mailbox exists.",
+      "hero": {
+        "src": "/guides/codex-csv-workshop/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Build a CSV cleaner that preserves input, trims whitespace, normalizes email case, keeps the first valid record, counts duplicate/invalid rows and refuses existing output files. Allow 20 minutes to read and 45 to practice. Prepare Python 3.9 or later, Codex and your own empty csv-lab. Use only the fictional names and example.test addresses below. This cleans formatting; it neither sends mail nor proves an address exists."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Create manually checkable data"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open csv-lab in an editor and create UTF-8 contacts.csv exactly below. The header must be name,email in that order. Preserve the spaces around Alice and the first email as test conditions. Inspect with a text editor so spreadsheet re-saving does not change encoding or values. Check py -3 --version on Windows or python3 --version on macOS/Linux. Confirm Python 3.9 or later. This example needs no pip packages, pandas or database."
+        },
+        {
+          "type": "code",
+          "label": "contacts.csv (preserve test spaces)",
+          "language": "csv",
+          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Input row",
+            "Decision",
+            "Output"
+          ],
+          "rows": [
+            [
+              "Alice / ALICE@EXAMPLE.TEST",
+              "Valid; trim and lowercase",
+              "Alice / alice@example.test"
+            ],
+            [
+              "Alice duplicate / alice@example.test",
+              "Duplicate valid email",
+              "Omit"
+            ],
+            [
+              "Bob / bob@example.test",
+              "Valid",
+              "Bob / bob@example.test"
+            ],
+            [
+              "Missing / blank email",
+              "Invalid",
+              "Omit"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect kept 2, duplicate 1, invalid 1. Deduplicate normalized email, not names. If an earlier row for that address is invalid because its name is blank, the first later valid row can still be kept. Specify these rules before generating code."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Ask Codex to plan the cleaning contract"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Open csv-lab in Codex and use "
+            },
+            {
+              "type": "article",
+              "text": "Plan mode",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": " to agree on input, output, exceptions and acceptance before implementing. Write only a new output file. Structural corruption must fail the run without a misleading partial result. An invalid email is countable bad data, while missing/extra columns or a wrong header violate the contract. Downstream use depends on that distinction, so ask for more than simply cleaning a CSV."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Implementation request",
+          "language": "text",
+          "code": "Create clean_contacts.py using Python's standard library only.\nExpose clean(source: Path, target: Path) returning kept/duplicate/invalid counts.\nRead UTF-8 with optional BOM using csv.DictReader, not string splitting.\nRequire exactly name,email. Trim both fields and lowercase email.\nKeep the first valid row per email; reject empty names and invalid email shapes.\nTreat missing/extra columns or malformed CSV as whole-run failures.\nRead and validate before creating output. Never change input or overwrite output.\nWrite UTF-8 with name,email and a newline after each row.\nCLI takes source and target paths, reports counts on stderr and exits 0 on success,\n1 on data/file errors. Add tests for preservation, duplicates, Unicode, quoted\ncommas, malformed rows and overwrite refusal. Do not use real contact data.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Inspect the reference safeguards"
+        },
+        {
+          "type": "paragraph",
+          "text": "The complete reference below can run independently as clean_contacts.py. Back up your generated version before comparing. The csv module handles quotes, commas and newlines; split(',') cannot replace it. After reading all input, the program creates output with x mode, refusing existing targets. This avoids output on malformed input, but a disk failure during writing can still leave a partial file. Mark that run failed and inspect its artifacts; this is not a transactional system."
+        },
+        {
+          "type": "code",
+          "label": "clean_contacts.py (complete reference)",
+          "language": "python",
+          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Run, capture status and verify output"
+        },
+        {
+          "type": "paragraph",
+          "text": "Check that cleaned-01.csv is unused. On macOS/Linux, contacts-before.csv must also be unused so cp cannot overwrite a backup. Record the input SHA256 in PowerShell or copy this fictional input for cmp on macOS/Linux. Counts are written to stderr even on success; text on that channel alone is not failure. Save exit status immediately, then compare output and input."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "$csvBefore = (Get-FileHash -LiteralPath contacts.csv -Algorithm SHA256).Hash\npy -3 clean_contacts.py contacts.csv cleaned-01.csv\n$csvExit = $LASTEXITCODE\n$csvExit\nGet-Content -LiteralPath cleaned-01.csv\n$csvBefore -eq (Get-FileHash -LiteralPath contacts.csv -Algorithm SHA256).Hash\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux",
+          "language": "sh",
+          "code": "cp contacts.csv contacts-before.csv\npython3 clean_contacts.py contacts.csv cleaned-01.csv\ncsv_exit=$?\necho \"$csv_exit\"\ncat cleaned-01.csv\ncmp contacts-before.csv contacts.csv\n"
+        },
+        {
+          "type": "code",
+          "label": "Expected cleaned-01.csv",
+          "language": "csv",
+          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect exit 0, counts kept 2, duplicate 1, invalid 1, two output records in original order, and True or no cmp difference. Repeat the same command: existing cleaned-01.csv must cause exit 1 without changing it. Do not delete it first and claim overwrite protection passed. Then use contacts.csv as both input and output; it must refuse without changing the original. These expected failures are part of successful acceptance."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 5: Unicode, quotes and malformed rows"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create contacts-unicode.csv below and output cleaned-unicode.csv. Expect kept 1, duplicate 0, invalid 0, with the comma inside one name field and Unicode preserved. If re-opening looks garbled, check UTF-8 decoding before rewriting input. Create bad.csv containing name,email followed by a newline and Alice, a missing email column. A new cleaned-bad.csv target must not be created and exit must be 1. Reversed headers or an extra third column must also fail."
+        },
+        {
+          "type": "code",
+          "label": "contacts-unicode.csv",
+          "language": "csv",
+          "code": "name,email\n\"林, Alex\",alex@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Extension: retain the first valid row"
+        },
+        {
+          "type": "code",
+          "label": "contacts-first-valid.csv",
+          "language": "csv",
+          "code": "name,email\n ,first@example.test\nFirst valid,FIRST@example.test\nLater duplicate,first@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Run the same program with this new input and an unused cleaned-first-valid.csv target. Expect kept 1, duplicate 1, invalid 1. The blank-name row must not reserve the email; First valid is the first valid row, and the final row is the duplicate. If First valid is missing, check that seen is updated only after validation. Preserve contacts.csv and cleaned-01.csv."
+        },
+        {
+          "type": "code",
+          "label": "Expected cleaned-first-valid.csv content",
+          "language": "csv",
+          "code": "name,email\nFirst valid,first@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 6: Retain repeatable acceptance tests"
+        },
+        {
+          "type": "paragraph",
+          "text": "Save the complete test as test_clean_contacts.py beside the program and contacts.csv. It uses temporary folders to check byte-preserved input, overwrite refusal, Unicode, quoting and structural errors without accumulating test outputs in your practice folder. Run py -3 -m unittest -v test_clean_contacts.py on Windows or python3 -m unittest -v test_clean_contacts.py on macOS/Linux. All three reference tests should pass. If your generated interface differs, align the clean function contract rather than deleting failing cases."
+        },
+        {
+          "type": "code",
+          "label": "test_clean_contacts.py",
+          "language": "python",
+          "code": "import csv\nimport tempfile\nimport unittest\nfrom pathlib import Path\n\nfrom clean_contacts import clean\n\n\nclass CleanupTests(unittest.TestCase):\n    def test_contract_and_input_preservation(self):\n        original = (Path(__file__).parent / \"contacts.csv\").read_bytes()\n        with tempfile.TemporaryDirectory() as directory:\n            source = Path(directory) / \"input.csv\"\n            target = Path(directory) / \"output.csv\"\n            source.write_bytes(original)\n            self.assertEqual(clean(source, target), {\"kept\": 2, \"duplicate\": 1, \"invalid\": 1})\n            self.assertEqual(source.read_bytes(), original)\n            with target.open(encoding=\"utf-8\", newline=\"\") as stream:\n                self.assertEqual(list(csv.DictReader(stream)), [{\"name\": \"Alice\", \"email\": \"alice@example.test\"}, {\"name\": \"Bob\", \"email\": \"bob@example.test\"}])\n            with self.assertRaises(FileExistsError):\n                clean(source, target)\n            with self.assertRaises(ValueError):\n                clean(source, source)\n\n    def test_unicode_and_quoted_comma(self):\n        with tempfile.TemporaryDirectory() as directory:\n            source, target = Path(directory) / \"in.csv\", Path(directory) / \"out.csv\"\n            source.write_text('name,email\\n\"林, Alex\",alex@example.test\\n', encoding=\"utf-8\")\n            self.assertEqual(clean(source, target)[\"kept\"], 1)\n            self.assertIn('\"林, Alex\"', target.read_text(encoding=\"utf-8\"))\n\n    def test_bad_header_and_malformed_rows_create_no_output(self):\n        with tempfile.TemporaryDirectory() as directory:\n            source, target = Path(directory) / \"in.csv\", Path(directory) / \"out.csv\"\n            for value in [\"email,name\\na@b.test,A\\n\", \"name,email\\nAlice\\n\", \"name,email\\nA,a@b.test,extra\\n\"]:\n                source.write_text(value, encoding=\"utf-8\")\n                with self.assertRaises(ValueError):\n                    clean(source, target)\n                self.assertFalse(target.exists())\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Delivery, recovery and limits"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Deliver the fictional source CSV, program, tests, command, counts and evidence of preserved input. Download the "
+            },
+            {
+              "type": "link",
+              "text": "complete CSV exercise",
+              "url": "https://mokaair.com/guides/codex-csv-workshop/contacts-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": " for comparison; it includes reference code and needs no earlier project. Use new output names for reruns and clean only identified artifacts. Real contacts, very large files or spreadsheet imports need separate access, streaming and formula-text rules. This lesson saves data as text and never executes external content as commands. Continue to "
+            },
+            {
+              "type": "article",
+              "text": "Maintaining an existing project",
+              "kind": "life",
+              "slug": "codex-maintain-existing-project"
+            },
+            {
+              "type": "text",
+              "text": " with the same baseline and verification discipline."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-csv-workshop/diagram-1.svg",
+          "alt": "32. Workshop: build a CSV cleanup tool — Workflow illustration, not a product screenshot. contacts.csv → Cleanup → clean.csv",
+          "width": 1600,
+          "height": 900,
+          "caption": "32. Workshop: build a CSV cleanup tool — Workflow illustration, not a product screenshot. contacts.csv → Cleanup → clean.csv",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Python csv module",
+          "url": "https://docs.python.org/3/library/csv.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "実践：CSV 整理ツールを作る",
+      "description": "入力を保って別ファイルに出す CSV 整理ツールを作ります。空白除去、email の小文字化、重複は最初の有効行を保持、空の名前や不正な形式を除外し、三種類の件数を報告します。実在するメールかは保証しません。",
+      "hero": {
+        "src": "/guides/codex-csv-workshop/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "入力を保存したまま空白除去、email の小文字化、最初の有効行の保持、重複・無効行の集計、既存出力の上書き拒否を行う CSV 整理器を作ります。読む時間20分、実習45分です。Python 3.9 以降、Codex、自分の空 csv-lab と下記架空名・example.test だけを使います。形式整理であり、送信や住所の実在確認ではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：手で検算できるデータを作る"
+        },
+        {
+          "type": "paragraph",
+          "text": "csv-lab を開き、下記を UTF-8 contacts.csv に保存します。ヘッダーは順序も含め name,email と完全一致させ、Alice と最初の email の前後空白を試験条件として残します。スプレッドシートの再保存でエンコードや値が変わらないようテキストエディターで確認します。Windows は py -3 --version、macOS／Linux は python3 --version で Python 3.9 以降を確認し、pip・pandas・データベースは不要です。"
+        },
+        {
+          "type": "code",
+          "label": "contacts.csv（試験用空白を保持）",
+          "language": "csv",
+          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "入力行",
+            "判定",
+            "出力"
+          ],
+          "rows": [
+            [
+              "Alice／ALICE@EXAMPLE.TEST",
+              "有効・空白除去・小文字化",
+              "Alice／alice@example.test"
+            ],
+            [
+              "Alice duplicate／alice@example.test",
+              "有効 email の重複",
+              "省略"
+            ],
+            [
+              "Bob／bob@example.test",
+              "有効",
+              "Bob／bob@example.test"
+            ],
+            [
+              "Missing／空 email",
+              "無効",
+              "省略"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "kept 2・duplicate 1・invalid 1が期待値です。名前ではなく正規化 email で重複を決めます。同じメールアドレスの先行行が空の名前で無効なら後の最初の有効行を残せます。生成前にこの規則を明確にします。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：整理契約を先に計画する"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Codex で csv-lab を開き、"
+            },
+            {
+              "type": "article",
+              "text": "Plan モード",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "で入出力・例外・検証を確認してから実装します。出力は毎回新規で、構造損壊は成功に見える部分結果を残さず全体を失敗させます。無効 email は集計可能な資料問題ですが、欄不足・余分・ヘッダー誤りは契約違反です。下流で使えるかに関わるため、単に CSV 整理と頼むだけにしません。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "実装依頼",
+          "language": "text",
+          "code": "Create clean_contacts.py using Python's standard library only.\nExpose clean(source: Path, target: Path) returning kept/duplicate/invalid counts.\nRead UTF-8 with optional BOM using csv.DictReader, not string splitting.\nRequire exactly name,email. Trim both fields and lowercase email.\nKeep the first valid row per email; reject empty names and invalid email shapes.\nTreat missing/extra columns or malformed CSV as whole-run failures.\nRead and validate before creating output. Never change input or overwrite output.\nWrite UTF-8 with name,email and a newline after each row.\nCLI takes source and target paths, reports counts on stderr and exits 0 on success,\n1 on data/file errors. Add tests for preservation, duplicates, Unicode, quoted\ncommas, malformed rows and overwrite refusal. Do not use real contact data.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：参考実装の保護箇所を見る"
+        },
+        {
+          "type": "paragraph",
+          "text": "下記は clean_contacts.py として単独実行できる全文です。生成版があれば先に別保存して比較します。csv モジュールは引用符・カンマ・改行を扱い、split(',') では代替できません。全入力を読んだ後 x で新規出力を作り、既存目標を拒否します。入力誤りでは出力を残しませんが、書込途中のディスク障害なら部分ファイルが残り得るため失敗と記録して調査します。完全なトランザクションシステムとは称しません。"
+        },
+        {
+          "type": "code",
+          "label": "clean_contacts.py（全参考実装）",
+          "language": "python",
+          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：実行・状態保存・出力確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "cleaned-01.csv が未使用か確認します。macOS／Linux は cp が旧バックアップを上書きしないよう contacts-before.csv も未使用にします。PowerShell では入力 SHA256、macOS／Linux では架空入力コピーと cmp を使います。成功時も件数 JSON は stderr に出るため、その文字だけで失敗としません。終了値をすぐ保存して入出力を照合します。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "$csvBefore = (Get-FileHash -LiteralPath contacts.csv -Algorithm SHA256).Hash\npy -3 clean_contacts.py contacts.csv cleaned-01.csv\n$csvExit = $LASTEXITCODE\n$csvExit\nGet-Content -LiteralPath cleaned-01.csv\n$csvBefore -eq (Get-FileHash -LiteralPath contacts.csv -Algorithm SHA256).Hash\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux",
+          "language": "sh",
+          "code": "cp contacts.csv contacts-before.csv\npython3 clean_contacts.py contacts.csv cleaned-01.csv\ncsv_exit=$?\necho \"$csv_exit\"\ncat cleaned-01.csv\ncmp contacts-before.csv contacts.csv\n"
+        },
+        {
+          "type": "code",
+          "label": "cleaned-01.csv の期待内容",
+          "language": "csv",
+          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "0終了、kept 2・duplicate 1・invalid 1、元順序の2件、True または cmp 差異なしを期待します。同じ命令を再実行すると既存 cleaned-01.csv により1終了し、内容不変であるべきです。先に削除して上書き保護合格としません。入出力を両方 contacts.csv にした場合も原本不変で拒否します。この期待された失敗も検証合格の一部です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順5：Unicode・引用符・壊れた行"
+        },
+        {
+          "type": "paragraph",
+          "text": "下記 contacts-unicode.csv を作り、cleaned-unicode.csv に出します。kept 1・duplicate 0・invalid 0、姓名のカンマは同じ欄、Unicode 不変を期待します。再表示が文字化けなら入力を書き換える前に UTF-8 デコードを確認します。bad.csv は name,email の次行を Alice のみにして欄不足を作り、新規 cleaned-bad.csv は作らず1終了することを確認します。逆順表頭や第三欄も拒否すべきです。"
+        },
+        {
+          "type": "code",
+          "label": "contacts-unicode.csv",
+          "language": "csv",
+          "code": "name,email\n\"林, Alex\",alex@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "応用：最初の有効行を保持"
+        },
+        {
+          "type": "code",
+          "label": "contacts-first-valid.csv",
+          "language": "csv",
+          "code": "name,email\n ,first@example.test\nFirst valid,FIRST@example.test\nLater duplicate,first@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じプログラムにこの新入力と未使用の cleaned-first-valid.csv を渡します。kept 1、duplicate 1、invalid 1 が期待値です。空名の無効行は email を占有せず、First valid が最初の有効行、最後が重複です。First valid が出なければ seen への追加が検証後か確認します。contacts.csv と cleaned-01.csv は保持します。"
+        },
+        {
+          "type": "code",
+          "label": "cleaned-first-valid.csv の期待内容",
+          "language": "csv",
+          "code": "name,email\nFirst valid,first@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順6：繰返せる検証を保存する"
+        },
+        {
+          "type": "paragraph",
+          "text": "下記をプログラムと contacts.csv の横に test_clean_contacts.py として保存します。一時場所で入力のバイト列が変わらないこと、上書き拒否、Unicode、引用符、構造エラーを検証し、練習ディレクトリに産物を溜めません。Windows は py -3 -m unittest -v test_clean_contacts.py、macOS／Linux は python3 -m unittest -v test_clean_contacts.py で参考3試験全合格を確認します。生成版のインターフェースが違えば clean 契約を揃え、失敗例を削除しません。"
+        },
+        {
+          "type": "code",
+          "label": "test_clean_contacts.py",
+          "language": "python",
+          "code": "import csv\nimport tempfile\nimport unittest\nfrom pathlib import Path\n\nfrom clean_contacts import clean\n\n\nclass CleanupTests(unittest.TestCase):\n    def test_contract_and_input_preservation(self):\n        original = (Path(__file__).parent / \"contacts.csv\").read_bytes()\n        with tempfile.TemporaryDirectory() as directory:\n            source = Path(directory) / \"input.csv\"\n            target = Path(directory) / \"output.csv\"\n            source.write_bytes(original)\n            self.assertEqual(clean(source, target), {\"kept\": 2, \"duplicate\": 1, \"invalid\": 1})\n            self.assertEqual(source.read_bytes(), original)\n            with target.open(encoding=\"utf-8\", newline=\"\") as stream:\n                self.assertEqual(list(csv.DictReader(stream)), [{\"name\": \"Alice\", \"email\": \"alice@example.test\"}, {\"name\": \"Bob\", \"email\": \"bob@example.test\"}])\n            with self.assertRaises(FileExistsError):\n                clean(source, target)\n            with self.assertRaises(ValueError):\n                clean(source, source)\n\n    def test_unicode_and_quoted_comma(self):\n        with tempfile.TemporaryDirectory() as directory:\n            source, target = Path(directory) / \"in.csv\", Path(directory) / \"out.csv\"\n            source.write_text('name,email\\n\"林, Alex\",alex@example.test\\n', encoding=\"utf-8\")\n            self.assertEqual(clean(source, target)[\"kept\"], 1)\n            self.assertIn('\"林, Alex\"', target.read_text(encoding=\"utf-8\"))\n\n    def test_bad_header_and_malformed_rows_create_no_output(self):\n        with tempfile.TemporaryDirectory() as directory:\n            source, target = Path(directory) / \"in.csv\", Path(directory) / \"out.csv\"\n            for value in [\"email,name\\na@b.test,A\\n\", \"name,email\\nAlice\\n\", \"name,email\\nA,a@b.test,extra\\n\"]:\n                source.write_text(value, encoding=\"utf-8\")\n                with self.assertRaises(ValueError):\n                    clean(source, target)\n                self.assertFalse(target.exists())\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "引渡し・復元・制限"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "架空入力、プログラム、試験、命令、計数、原本保持の証拠を引渡します。"
+            },
+            {
+              "type": "link",
+              "text": "CSV 教材一式",
+              "url": "https://mokaair.com/guides/codex-csv-workshop/contacts-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "には参考コードがあり前のプロジェクトなしで比較できます。再整理は新しい出力名、整理は確認済み産物だけです。実名簿、大ファイル、スプレッドシートインポートは権限・ストリーミング・数式として解釈される文字列の扱いの規則を別設計します。本編は文字として保存し外部内容を命令実行しません。この基準と検証法で"
+            },
+            {
+              "type": "article",
+              "text": "既存プロジェクトの保守",
+              "kind": "life",
+              "slug": "codex-maintain-existing-project"
+            },
+            {
+              "type": "text",
+              "text": "へ進みます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-csv-workshop/diagram-1.svg",
+          "alt": "32. 実践：CSV 整理ツールを作る — 作業の流れを表す図です。製品画面の画像ではありません。 contacts.csv → Cleanup → clean.csv",
+          "width": 1600,
+          "height": 900,
+          "caption": "32. 実践：CSV 整理ツールを作る — 作業の流れを表す図です。製品画面の画像ではありません。 contacts.csv → Cleanup → clean.csv",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Python csv module",
+          "url": "https://docs.python.org/3/library/csv.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "실습: CSV 정리 도구 만들기",
+      "description": "입력을 보존하고 새 파일로 내보내는 CSV 정리 도구를 만듭니다. 공백 제거, email 소문자화, 중복 중 첫 유효 행 유지, 빈 이름이나 잘못된 형식 제외 후 세 종류의 건수를 보고합니다. 실제 이메일 존재를 보장하지는 않습니다.",
+      "hero": {
+        "src": "/guides/codex-csv-workshop/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "입력을 보존하면서 공백 제거·email 소문자화·첫 유효 행 유지·중복/무효 집계·기존 출력 덮어쓰기 거부를 하는 CSV 정리기를 만듭니다. 읽기 20분, 실습 45분입니다. Python 3.9 이상·Codex·자신의 빈 csv-lab과 아래 가상 이름·example.test만 사용하세요. 형식 정리이며 메일을 보내거나 주소 실재를 증명하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 손으로 검산할 데이터 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "csv-lab을 열어 아래를 UTF-8 contacts.csv로 저장합니다. 헤더는 순서까지 name,email과 같아야 하며 Alice와 첫 email 앞뒤 공백을 시험 조건으로 유지하세요. 스프레드시트 재저장으로 인코딩·값이 바뀌지 않게 텍스트 편집기로 확인합니다. Windows는 py -3 --version, macOS/Linux는 python3 --version으로 Python 3.9 이상을 확인하며 pip·pandas·데이터베이스는 필요 없습니다."
+        },
+        {
+          "type": "code",
+          "label": "contacts.csv (시험 공백 유지)",
+          "language": "csv",
+          "code": "name,email\n Alice , ALICE@EXAMPLE.TEST \nAlice duplicate,alice@example.test\nBob,bob@example.test\nMissing,\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "입력 행",
+            "판정",
+            "출력"
+          ],
+          "rows": [
+            [
+              "Alice / ALICE@EXAMPLE.TEST",
+              "유효·공백 제거·소문자화",
+              "Alice / alice@example.test"
+            ],
+            [
+              "Alice duplicate / alice@example.test",
+              "유효 email 중복",
+              "제외"
+            ],
+            [
+              "Bob / bob@example.test",
+              "유효",
+              "Bob / bob@example.test"
+            ],
+            [
+              "Missing / 빈 email",
+              "무효",
+              "제외"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "kept 2·duplicate 1·invalid 1을 기대합니다. 이름이 아니라 정규화한 email로 중복을 판정합니다. 같은 주소의 앞 행이 빈 이름으로 무효라면 뒤의 첫 유효 행을 유지할 수 있습니다. 생성 전에 이 규칙을 명확히 하세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 정리 계약 먼저 계획"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Codex에서 csv-lab을 열고 "
+            },
+            {
+              "type": "article",
+              "text": "Plan 모드",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "로 입출력·예외·검증을 확인한 뒤 구현합니다. 출력은 매번 새 파일이며 구조 손상은 성공처럼 보이는 일부 결과를 남기지 않고 전체 실패해야 합니다. 무효 email은 집계 가능한 자료 문제지만 필드 부족·추가·헤더 오류는 계약 위반입니다. 후속 사용 가능성에 영향을 주므로 단순히 CSV 정리라고만 요청하지 마세요."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "구현 요청",
+          "language": "text",
+          "code": "Create clean_contacts.py using Python's standard library only.\nExpose clean(source: Path, target: Path) returning kept/duplicate/invalid counts.\nRead UTF-8 with optional BOM using csv.DictReader, not string splitting.\nRequire exactly name,email. Trim both fields and lowercase email.\nKeep the first valid row per email; reject empty names and invalid email shapes.\nTreat missing/extra columns or malformed CSV as whole-run failures.\nRead and validate before creating output. Never change input or overwrite output.\nWrite UTF-8 with name,email and a newline after each row.\nCLI takes source and target paths, reports counts on stderr and exits 0 on success,\n1 on data/file errors. Add tests for preservation, duplicates, Unicode, quoted\ncommas, malformed rows and overwrite refusal. Do not use real contact data.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 참고 구현의 보호 지점 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "아래는 clean_contacts.py로 독립 실행하는 전체 참고 코드입니다. 생성본은 별도 보관한 뒤 비교하세요. csv 모듈이 따옴표·쉼표·줄바꿈을 처리하며 split(',')로 대체할 수 없습니다. 전체 입력을 읽은 뒤 x로 새 출력을 만들고 기존 대상은 거부합니다. 입력 오류에는 출력이 없지만 쓰는 도중 디스크 오류는 일부 파일을 남길 수 있어 실패로 기록하고 조사해야 합니다. 완전한 트랜잭션 시스템이라고 부르지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "clean_contacts.py (전체 참고 코드)",
+          "language": "python",
+          "code": "\"\"\"Clean a practice CSV without overwriting either the input or an existing output.\"\"\"\nimport argparse\nimport csv\nimport json\nimport re\nimport sys\nfrom pathlib import Path\n\n\ndef clean(source: Path, target: Path) -> dict[str, int]:\n    if source.resolve() == target.resolve():\n        raise ValueError(\"Input and output must differ\")\n    rows = []\n    seen = set()\n    counts = {\"kept\": 0, \"duplicate\": 0, \"invalid\": 0}\n    with source.open(encoding=\"utf-8-sig\", newline=\"\") as stream:\n        reader = csv.DictReader(stream, strict=True)\n        if reader.fieldnames != [\"name\", \"email\"]:\n            raise ValueError(\"Expected exactly: name,email\")\n        for row in reader:\n            if None in row or any(value is None for value in row.values()):\n                raise ValueError(\"Malformed CSV row\")\n            name = row[\"name\"].strip()\n            email = row[\"email\"].strip().lower()\n            # An exercise-level shape check, not proof an address can receive mail.\n            if not name or not re.fullmatch(r\"[^\\s@]+@[^\\s@]+\\.[^\\s@]+\", email):\n                counts[\"invalid\"] += 1\n            elif email in seen:\n                counts[\"duplicate\"] += 1\n            else:\n                seen.add(email)\n                rows.append({\"name\": name, \"email\": email})\n                counts[\"kept\"] += 1\n    # Exclusive creation: a rerun never silently replaces an existing result.\n    with target.open(\"x\", encoding=\"utf-8\", newline=\"\") as stream:\n        writer = csv.DictWriter(stream, fieldnames=[\"name\", \"email\"], lineterminator=\"\\n\")\n        writer.writeheader()\n        writer.writerows(rows)\n    return counts\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"source\", type=Path)\n    parser.add_argument(\"target\", type=Path)\n    args = parser.parse_args()\n    try:\n        counts = clean(args.source, args.target)\n    except (OSError, ValueError, csv.Error) as error:\n        print(str(error), file=sys.stderr)\n        return 1\n    print(json.dumps(counts), file=sys.stderr)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 실행·상태 저장·출력 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "cleaned-01.csv가 없는지 확인합니다. macOS/Linux의 contacts-before.csv도 사용하지 않은 이름이어야 cp가 이전 백업을 덮어쓰지 않습니다. PowerShell은 입력 SHA256, macOS/Linux는 가상 입력 사본과 cmp를 사용합니다. 성공 시에도 개수 JSON이 stderr에 나오므로 해당 채널의 텍스트만으로 실패라 판단하지 마세요. 종료 상태를 즉시 저장하고 입출력을 비교합니다."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell",
+          "language": "powershell",
+          "code": "$csvBefore = (Get-FileHash -LiteralPath contacts.csv -Algorithm SHA256).Hash\npy -3 clean_contacts.py contacts.csv cleaned-01.csv\n$csvExit = $LASTEXITCODE\n$csvExit\nGet-Content -LiteralPath cleaned-01.csv\n$csvBefore -eq (Get-FileHash -LiteralPath contacts.csv -Algorithm SHA256).Hash\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux",
+          "language": "sh",
+          "code": "cp contacts.csv contacts-before.csv\npython3 clean_contacts.py contacts.csv cleaned-01.csv\ncsv_exit=$?\necho \"$csv_exit\"\ncat cleaned-01.csv\ncmp contacts-before.csv contacts.csv\n"
+        },
+        {
+          "type": "code",
+          "label": "cleaned-01.csv 예상 내용",
+          "language": "csv",
+          "code": "name,email\nAlice,alice@example.test\nBob,bob@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "종료 0, kept 2·duplicate 1·invalid 1, 원래 순서의 두 행, True 또는 cmp 차이 없음을 기대합니다. 같은 명령을 반복하면 기존 cleaned-01.csv 때문에 종료 1이며 내용은 그대로여야 합니다. 먼저 삭제하고 덮어쓰기 보호를 통과했다고 하지 마세요. 입출력을 모두 contacts.csv로 지정해도 원본 불변으로 거부해야 합니다. 예상 실패도 검증 통과의 일부입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "5단계: Unicode·따옴표·잘못된 행"
+        },
+        {
+          "type": "paragraph",
+          "text": "아래 contacts-unicode.csv를 만들어 cleaned-unicode.csv로 출력합니다. kept 1·duplicate 0·invalid 0이며 이름의 쉼표는 한 필드 안에 있고 Unicode가 유지되어야 합니다. 다시 열 때 깨지면 입력을 고치기 전에 UTF-8 해석을 확인하세요. bad.csv는 name,email 다음 줄에 Alice만 써 email 필드를 누락시킵니다. 새 cleaned-bad.csv가 생성되지 않고 종료 1이어야 합니다. 뒤집은 헤더·세 번째 필드 추가도 거부해야 합니다."
+        },
+        {
+          "type": "code",
+          "label": "contacts-unicode.csv",
+          "language": "csv",
+          "code": "name,email\n\"林, Alex\",alex@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "확장: 첫 번째 유효 행 보존"
+        },
+        {
+          "type": "code",
+          "label": "contacts-first-valid.csv",
+          "language": "csv",
+          "code": "name,email\n ,first@example.test\nFirst valid,FIRST@example.test\nLater duplicate,first@example.test\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 프로그램에 새 입력과 아직 없는 cleaned-first-valid.csv를 지정합니다. kept 1, duplicate 1, invalid 1이 기대값입니다. 빈 이름의 무효 행이 email을 선점하면 안 되며 First valid가 첫 유효 행이고 마지막 행이 중복입니다. First valid가 없으면 검증 후 seen에 추가하는지 확인하세요. contacts.csv와 cleaned-01.csv는 그대로 유지합니다."
+        },
+        {
+          "type": "code",
+          "label": "cleaned-first-valid.csv 예상 내용",
+          "language": "csv",
+          "code": "name,email\nFirst valid,first@example.test\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "6단계: 재실행 가능한 검증 보존"
+        },
+        {
+          "type": "paragraph",
+          "text": "아래를 프로그램·contacts.csv 옆의 test_clean_contacts.py로 저장합니다. 임시 폴더에서 입력 바이트 불변·덮어쓰기 거부·Unicode·따옴표·구조 오류를 검증해 연습 폴더에 결과를 쌓지 않습니다. Windows는 py -3 -m unittest -v test_clean_contacts.py, macOS/Linux는 python3 -m unittest -v test_clean_contacts.py로 참고 시험 세 개 통과를 확인하세요. 생성본 인터페이스가 다르면 clean 계약을 맞추고 실패 사례를 삭제하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "test_clean_contacts.py",
+          "language": "python",
+          "code": "import csv\nimport tempfile\nimport unittest\nfrom pathlib import Path\n\nfrom clean_contacts import clean\n\n\nclass CleanupTests(unittest.TestCase):\n    def test_contract_and_input_preservation(self):\n        original = (Path(__file__).parent / \"contacts.csv\").read_bytes()\n        with tempfile.TemporaryDirectory() as directory:\n            source = Path(directory) / \"input.csv\"\n            target = Path(directory) / \"output.csv\"\n            source.write_bytes(original)\n            self.assertEqual(clean(source, target), {\"kept\": 2, \"duplicate\": 1, \"invalid\": 1})\n            self.assertEqual(source.read_bytes(), original)\n            with target.open(encoding=\"utf-8\", newline=\"\") as stream:\n                self.assertEqual(list(csv.DictReader(stream)), [{\"name\": \"Alice\", \"email\": \"alice@example.test\"}, {\"name\": \"Bob\", \"email\": \"bob@example.test\"}])\n            with self.assertRaises(FileExistsError):\n                clean(source, target)\n            with self.assertRaises(ValueError):\n                clean(source, source)\n\n    def test_unicode_and_quoted_comma(self):\n        with tempfile.TemporaryDirectory() as directory:\n            source, target = Path(directory) / \"in.csv\", Path(directory) / \"out.csv\"\n            source.write_text('name,email\\n\"林, Alex\",alex@example.test\\n', encoding=\"utf-8\")\n            self.assertEqual(clean(source, target)[\"kept\"], 1)\n            self.assertIn('\"林, Alex\"', target.read_text(encoding=\"utf-8\"))\n\n    def test_bad_header_and_malformed_rows_create_no_output(self):\n        with tempfile.TemporaryDirectory() as directory:\n            source, target = Path(directory) / \"in.csv\", Path(directory) / \"out.csv\"\n            for value in [\"email,name\\na@b.test,A\\n\", \"name,email\\nAlice\\n\", \"name,email\\nA,a@b.test,extra\\n\"]:\n                source.write_text(value, encoding=\"utf-8\")\n                with self.assertRaises(ValueError):\n                    clean(source, target)\n                self.assertFalse(target.exists())\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "전달·복원·제한"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "가상 입력·프로그램·시험·명령·집계·원본 보존 증거를 전달합니다. "
+            },
+            {
+              "type": "link",
+              "text": "CSV 전체 자료",
+              "url": "https://mokaair.com/guides/codex-csv-workshop/contacts-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "는 참고 코드가 있어 이전 프로젝트 없이 비교할 수 있습니다. 재정리는 새 출력 이름, 정리는 확인한 결과만 선택합니다. 실제 연락처·대용량·스프레드시트 가져오기는 권한·스트리밍·수식 문자열 규칙을 별도로 설계하세요. 이 편은 텍스트로 저장하며 외부 내용을 명령으로 실행하지 않습니다. 같은 기준·검증법으로 "
+            },
+            {
+              "type": "article",
+              "text": "기존 프로젝트 유지보수",
+              "kind": "life",
+              "slug": "codex-maintain-existing-project"
+            },
+            {
+              "type": "text",
+              "text": "로 진행합니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-csv-workshop/diagram-1.svg",
+          "alt": "32. 실습: CSV 정리 도구 만들기 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. contacts.csv → Cleanup → clean.csv",
+          "width": 1600,
+          "height": 900,
+          "caption": "32. 실습: CSV 정리 도구 만들기 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. contacts.csv → Cleanup → clean.csv",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Python csv module",
+          "url": "https://docs.python.org/3/library/csv.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

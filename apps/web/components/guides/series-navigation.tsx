@@ -18,7 +18,7 @@ export function SeriesStart({ series, locale }: { series: SeriesNavigation; loca
 export function SeriesEnd({ series, locale }: { series: SeriesNavigation; locale: string }) {
   const copy = seriesCopy(locale);
   return <section className="space-y-5 border-t border-[var(--line)] pt-6">
-    <nav aria-label={copy.hub} className="grid gap-3 sm:grid-cols-3">
+    <nav aria-label={series.hub.title} className="grid gap-3 sm:grid-cols-3">
       <div>{series.previous ? <ArticleLink target={series.previous} locale={locale} prefix={copy.previous} /> : null}</div>
       <a href={`/${locale}${guideHref(series.hub.kind, series.hub.slug)}`} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">{copy.back}</a>
       <div>{series.next ? <ArticleLink target={series.next} locale={locale} prefix={copy.next} /> : null}</div>

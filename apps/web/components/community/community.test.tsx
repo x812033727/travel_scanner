@@ -7,7 +7,7 @@ import { PetAdmin, PetRulesEditor } from "./pet-admin";
 import { PostEditor } from "./editor";
 import { ProfileEditor } from "./profile";
 import { TranslateText } from "./post";
-import { catchUpMessages } from "./messages";
+import { catchUpMessages, MessageCenter } from "./messages";
 import { CommunityAdmin } from "./admin";
 import { AppBottomNav } from "../app-bottom-nav";
 import { defaultPet, unknownPetRule } from "@/lib/community/types";
@@ -41,6 +41,37 @@ describe("community reconnect and identity-bound state", () => {
       "/community/conversations/conversation/messages?after=51",
       "/community/conversations/conversation/messages?after=101",
     ]);
+  });
+  it("brings a conversation back after a refresh fails while offline and the next one succeeds", async () => {
+    // A failed refresh replaces the log with an error notice. The next refresh must resume from
+    // the last page that did load, restore the log, and not repeat the messages it already had.
+    const path = "/community/conversations/conversation/messages";
+    const message = (id:number,body:string) => ({id,body,mine:false,sender_id:"other",card:null,card_unavailable:false,created_at:"2026-09-07"});
+    const page = (items:ReturnType<typeof message>[]) => ({items,next_cursor:null,latest_cursor:Math.max(...items.map((item)=>item.id)),can_send:true,other_read_id:0});
+    let offline=false;
+    mock.api.mockImplementation(async(requested:string)=>{
+      if(requested===path) return page([message(1,"Before offline")]);
+      if(requested===`${path}?after=1`) {
+        if(offline) throw new TypeError("Failed to fetch");
+        return page([message(1,"Before offline"),message(2,"Missed while offline")]);
+      }
+      return {items:[]};
+    });
+    render(<MessageCenter conversationId="conversation" />);
+    await within(await screen.findByRole("log")).findByText("Before offline");
+    offline=true;
+    await act(async()=>{window.dispatchEvent(new Event("community-refresh"));});
+    await screen.findByRole("alert");
+    expect(screen.queryByRole("log")).toBeNull();
+    offline=false;
+    await act(async()=>{window.dispatchEvent(new Event("community-refresh"));});
+    const log=await screen.findByRole("log");
+    await within(log).findByText("Missed while offline");
+    expect(within(log).getAllByText("Before offline")).toHaveLength(1);
+    expect(within(log).getAllByText("Missed while offline")).toHaveLength(1);
+    expect(screen.queryByRole("alert")).toBeNull();
+    expect(mock.api.mock.calls.map(([requested])=>requested).filter((requested)=>requested.startsWith(`${path}?`)))
+      .toEqual([`${path}?after=1`,`${path}?after=1`]);
   });
   it("initializes an already-loaded public profile without exposing the email", () => {
     render(<ProfileEditor />);

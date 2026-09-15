@@ -1,0 +1,2087 @@
+{
+  "slug": "codex-templates-cheatsheet",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 142,
+  "locales": {
+    "zh-TW": {
+      "title": "提示詞、規則與交接範本索引",
+      "description": "依工作選擇提示詞、規則與交接範本，替換必要欄位並知道每段應貼到哪裡。",
+      "hero": {
+        "src": "/guides/codex-templates-cheatsheet/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "建立一個自己的範本資料夾，能依任務選對欄位、填入真實觀察、刪掉不適用的步驟。閱讀約 15 分鐘、操作約 20 分鐘。範本是普通文字，貼進任務後才成為要求；不是新的斜線指令，也不是安裝後自動執行的插件。先完成需求描述與Markdown即可開始。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "需求描述",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Markdown",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：建立範本庫並分清用途"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自己的練習目錄中建立 templates 資料夾，用編輯器新增下列檔案。Windows 選另存新檔時確認沒有變成 .md.txt；macOS 使用純文字格式；Linux 在熟悉的編輯器保存 UTF-8。三種系統都從練習根目錄操作，檔名保持一致。這個資料夾沒有特殊載入效果，也不需要新增套件、登入其他網站或把範本放進全域設定。"
+        },
+        {
+          "type": "code",
+          "label": "要建立的資料夾與檔案",
+          "language": "text",
+          "code": "templates/\n  task.md\n  bug.md\n  review.md\n  handoff.md\n  rules.example.md\n  connection-check.md\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "需要完成的工作",
+            "使用哪份範本",
+            "不能取代什麼"
+          ],
+          "rows": [
+            [
+              "實作小功能",
+              "task.md",
+              "實際檔案與驗收"
+            ],
+            [
+              "修可重現錯誤",
+              "bug.md",
+              "原始錯誤與重現"
+            ],
+            [
+              "審查既有修改",
+              "review.md",
+              "測試與人工判讀"
+            ],
+            [
+              "交接長任務",
+              "handoff.md",
+              "最新 Git 狀態"
+            ],
+            [
+              "擬定專案規則",
+              "rules.example.md",
+              "正確位置的 AGENTS.md"
+            ],
+            [
+              "檢查外部工具",
+              "connection-check.md",
+              "真正的工具回應"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：把需求改成可驗收的任務"
+        },
+        {
+          "type": "code",
+          "label": "templates/task.md",
+          "language": "markdown",
+          "code": "# Task\nGoal: Verify the active-task filter and repair it only if the acceptance case fails.\nContext: Use the complete reference copy in this practice folder.\nInspect first: index.html, app.js, core.mjs, style.css and core.test.mjs.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run node --test core.test.mjs and verify the browser behavior; report actual results.\nIf the existing behavior passes, report that evidence without unnecessary edits.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這份填好的範例對應本系列的 Small Steps 練習，不是任何專案都能直接套用。先在自己的 expected 副本確認五份程式檔存在；操作說明在下載包根目錄的 README.md，不在 expected 裡。其他專案則依自己的 README 核對驗證指令。想先討論可行性時，使用 "
+            },
+            {
+              "type": "article",
+              "text": "Plan 模式",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": " 並把交付改成「先提出步驟及待決定項目」。若已要實作，清楚寫明可以修改的範圍。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "試著把「幫我整理一下網站」改寫成這個格式。合格版本應說出改哪個畫面、保留什麼、用什麼資料驗收，以及本次是否包含上線。檔案名稱未知時可以寫「先找出負責清單顯示的檔案再回報」，不要猜一個不存在的路徑。自然語言可以使用你的習慣語言，範例中的程式識別碼、路徑與判斷條件則保持原樣。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：Bug 回報保留原始證據"
+        },
+        {
+          "type": "code",
+          "label": "templates/bug.md",
+          "language": "markdown",
+          "code": "# Bug report\nEnvironment: <OS, browser/runtime and version>\nPractice folder or branch: <actual location>\nStarting state: <fixture or steps to create it>\nReproduction:\n1. <first action>\n2. <next action>\nExpected: <observable result>\nActual: <observed result>\nError: <exact message, with secrets removed>\nFrequency: <always / intermittent / unknown>\nAlready tried: <one change and its result, or none>\nFix scope: <allowed behavior and files>\nVerification: Reproduce first, fix, rerun the original case and a boundary case.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "尖括號內容是待填欄位，不是直接貼給終端機的語法。以"
+            },
+            {
+              "type": "article",
+              "text": "修 Bug",
+              "kind": "life",
+              "slug": "codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "練習為例，寫出「broken 副本，新增 Read 與 Build，只完成 Read，Completed 卻顯示 Build」，才能重現同一個錯誤。Actual 欄只記自己看到的結果；尚未操作就填 NOT RUN，不抄範例當實測。原因未確定時不預填「資料庫壞了」；沒有錯誤訊息可寫 none observed，再補畫面行為與步驟。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "修完後把原始步驟重跑一次，再檢查空資料或重複標題的邊界。測試失敗與尚未執行分開填；「預計應該通過」不是結果。若工具無法執行，交付限制及讀者能自行重跑的命令即可，不能把範本中的 Verification 當作已完成工作。本篇不預填任何人的測試通過數，讓下次使用時不會沿用舊證據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：分開審查與交接"
+        },
+        {
+          "type": "code",
+          "label": "templates/review.md",
+          "language": "markdown",
+          "code": "# Review request\nCompare: <base branch or exact before-state> -> <current change>\nPurpose: <user-visible behavior>\nRead first: <requirements and relevant files>\nReview for: correctness, regressions and missing meaningful tests.\nFor each finding: give the trigger, impact, file/location and suggested correction.\nEvidence: <commands actually run, exit codes and relevant output>\nUnknowns: <tests or environments not checked>\nReport no findings if none are supported; do not invent issues to fill a quota.\nDo not modify files in this review task unless I request a fix.\n"
+        },
+        {
+          "type": "code",
+          "label": "templates/handoff.md",
+          "language": "markdown",
+          "code": "# Handoff\nGoal:\nWorking directory and branch:\nCurrent commit:\nExisting uncommitted changes and owners:\nCompleted work with evidence:\nPending work:\nDecisions and constraints:\nFiles to inspect next:\nLast command and result:\nKnown limitations:\nNext smallest action:\nBefore continuing: verify the current files and Git state against this record.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Review 的比較起點要能在目前 Git 儲存庫解析；如果分支不存在，先查"
+            },
+            {
+              "type": "article",
+              "text": "Git 與差異",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "，不要默認 main 一定存在。交接範本則描述「目前在哪裡」，每次交接重新讀取狀態。某人在舊任務說已提交，不代表這個工作目錄乾淨；把尚未提交的修改與歸屬列出，接手者才不會覆寫正在進行的工作。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "交接文件可以存在專案內，但寫入位置要先確認是否適合共享。私人客戶資料、憑證、聊天全文通常不是交接所需；用路徑、問題摘要和可驗證結果足以帶回上下文。檔案仍然是提供給模型的資料，保存 handoff.md 不代表新任務一定讀過；開始時明確請它閱讀，並核對回覆描述的下一步。完整恢復流程見"
+            },
+            {
+              "type": "article",
+              "text": "上下文與交接",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 5：規則範本與外部工具範本"
+        },
+        {
+          "type": "code",
+          "label": "templates/rules.example.md：規則草稿",
+          "language": "markdown",
+          "code": "# Practice project rules\nRead index.html, app.js, core.mjs and core.test.mjs before changing this practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nRun node --test core.test.mjs and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "rules.example.md 故意不叫 AGENTS.md，讓它先作為待審核的範本。確認內容符合你的專案後，依 "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " 教學合併到正確層級；先讀現有規則，保留其他人的條件，不要整檔覆寫。若只用於這次任務，就直接貼在任務要求中。只有常常重複、範圍穩定的工作才值得做成 "
+            },
+            {
+              "type": "article",
+              "text": "SKILL.md",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "，不用把所有臨時提示詞都安裝成技能。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "templates/connection-check.md",
+          "language": "markdown",
+          "code": "# Connection check\nSurface / host / version:\nPlugin or MCP server name and source:\nConfigured:\nAuthenticated (if required):\nTool available in a new task:\nRead-only target (fictional or public):\nExpected marker or source:\nActual tool call and result:\nOriginal data unchanged:\nDisconnect or disable action, if performed:\nRetest after change:\nNever include tokens, passwords or one-time login URLs in this report.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "外部工具驗收要依序填設定、認證、能力與實際呼叫，不適用的認證可填 not required，未查證的欄位填 not checked。不要把「有設定檔」推論為連線正常；也不要預先填 true 讓報告看起來完整。使用 "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": " 或 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " 時，一次只填你這次檢查的那個入口與主機，同名伺服器在另一台電腦可能指向不同設定。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "把互相衝突的範本改成一個任務"
+        },
+        {
+          "type": "paragraph",
+          "text": "判讀這段錯誤需求：「只讀審查 expected，但順便修好並提交；用 npm test 驗證，回報三項全過」。它同時要求只讀與改檔、在沒有 package.json 的教材套用錯誤命令，還預填未執行的結果。這次選擇先做唯讀確認，把下方完整版本另存為練習根目錄的 adapted-task.md，保留六份原始空白範本。"
+        },
+        {
+          "type": "code",
+          "label": "任務副本：adapted-task.md",
+          "language": "markdown",
+          "code": "# Read-only practice check\nGoal: Verify the existing Active-filter behavior in this expected copy.\nConfirm the absolute working directory and the five expected source files first.\nRead core.mjs and core.test.mjs; explain the filter condition and test coverage.\nRun node --test core.test.mjs and report the actual exit code, passes and failures.\nDo not edit, stage, commit, push or deploy anything in this task.\nBrowser behavior: NOT RUN unless actually checked; core tests do not prove it.\nIf required files are missing, report the paths and stop before guessing commands.\nDelivery: observed evidence, unverified behavior and the next smallest step.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用乾淨 expected 副本執行時，核心測試的參考結果為 3 過 0 敗；你仍要填本次輸出，所有程式檔保持不變。若拿到 broken 副本，應如實回報 2 過 1 敗及起點不同，先修正路徑或另立修復任務，不因範本說 expected 就忽略實際故障。這正是"
+            },
+            {
+              "type": "link",
+              "text": "官方提示詞建議",
+              "url": "https://learn.chatgpt.com/docs/prompting"
+            },
+            {
+              "type": "text",
+              "text": "中目標、背景、邊界與可使用成果在本教材的具體運用。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見錯誤、還原與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一種錯誤是保留未填的尖括號：送出前搜尋 <，逐個換成實際資訊或刪掉不適用欄位。第二種是舊任務的命令套到新專案：先讀 README 並確認工作目錄。第三種是把範本寫成互相衝突的規則，例如只讀審查又要求順便改檔；選一個本次目標再提交。已存在同名範本時保存另一個副本或用 Git 看差異，回復只針對這次新寫的範本，不撤回正式專案其他修改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小練習：選 bug.md 填入一個你已觀察到的練習錯誤，再選 handoff.md 交代下一步。把兩份交給沒有看過原任務的人閱讀：對方應能找到正確資料夾、重現相同現象、知道哪些還沒確認。若對方還必須猜你用哪台電腦或哪份資料，補那個欄位即可，不要加長所有範本。保留一份空白主範本，每次另存任務副本，避免上次的結果變成下次的預設答案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇檔案與範例為原創教材，沒有內建執行權限，也不會改動你的帳號。驗收是六份可閱讀的範本、一份填好的 Bug 回報與交接，以及至少一項被你找出的含糊條件；不要求模型回覆特定句型。下一單元從 "
+            },
+            {
+              "type": "article",
+              "text": "MCP 設定",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " 開始，把 connection-check.md 用在真實的唯讀工具測試。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-templates-cheatsheet/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Prompt, rules and handoff templates",
+      "description": "Choose a prompt, rule or handoff template, fill its required fields and use the correct input location.",
+      "hero": {
+        "src": "/guides/codex-templates-cheatsheet/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Create a personal template folder, choose fields appropriate to a task, fill in real observations and remove inapplicable steps. Allow 15 minutes to read and 20 to practice. Templates are ordinary text that becomes a request when submitted; they are neither new slash commands nor automatically executing plugins. Start with Prompting and Markdown."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "Prompting",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Markdown",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Create a library and separate purposes"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a templates folder in your practice directory and add the files below using an editor. On Windows, check that Save As did not add .txt; on macOS use plain text; on Linux save UTF-8 in your preferred editor. Work from the practice root on all three systems and keep filenames consistent. The folder has no special loading behavior and requires no packages, additional website login or global configuration."
+        },
+        {
+          "type": "code",
+          "label": "Folder and files to create",
+          "language": "text",
+          "code": "templates/\n  task.md\n  bug.md\n  review.md\n  handoff.md\n  rules.example.md\n  connection-check.md\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Work",
+            "Template",
+            "Cannot replace"
+          ],
+          "rows": [
+            [
+              "Implement a small feature",
+              "task.md",
+              "Actual files and acceptance"
+            ],
+            [
+              "Repair a reproducible bug",
+              "bug.md",
+              "Original error and reproduction"
+            ],
+            [
+              "Review changes",
+              "review.md",
+              "Tests and human judgment"
+            ],
+            [
+              "Hand off a long task",
+              "handoff.md",
+              "Current Git state"
+            ],
+            [
+              "Draft project rules",
+              "rules.example.md",
+              "Correctly placed AGENTS.md"
+            ],
+            [
+              "Check an external tool",
+              "connection-check.md",
+              "Actual tool response"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Turn a request into a testable task"
+        },
+        {
+          "type": "code",
+          "label": "templates/task.md",
+          "language": "markdown",
+          "code": "# Task\nGoal: Verify the active-task filter and repair it only if the acceptance case fails.\nContext: Use the complete reference copy in this practice folder.\nInspect first: index.html, app.js, core.mjs, style.css and core.test.mjs.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run node --test core.test.mjs and verify the browser behavior; report actual results.\nIf the existing behavior passes, report that evidence without unnecessary edits.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "This filled example targets the Small Steps exercise, not every repository. Confirm the five code files in your expected copy. Instructions are in README.md at the download root, not inside expected; other projects use their own README to verify commands. To discuss feasibility, use "
+            },
+            {
+              "type": "article",
+              "text": "Plan mode",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": " with a proposed sequence and unresolved decisions as the deliverable. For implementation, clearly state the editable scope."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Rewrite 'tidy up my website' using this structure. A usable request identifies the screen, preserved behavior, acceptance data and whether release is included. When filenames are unknown, ask to locate and report the list-rendering files rather than inventing a path. Write prose in your preferred language while preserving identifiers, paths and conditions from the example."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Preserve evidence in bug reports"
+        },
+        {
+          "type": "code",
+          "label": "templates/bug.md",
+          "language": "markdown",
+          "code": "# Bug report\nEnvironment: <OS, browser/runtime and version>\nPractice folder or branch: <actual location>\nStarting state: <fixture or steps to create it>\nReproduction:\n1. <first action>\n2. <next action>\nExpected: <observable result>\nActual: <observed result>\nError: <exact message, with secrets removed>\nFrequency: <always / intermittent / unknown>\nAlready tried: <one change and its result, or none>\nFix scope: <allowed behavior and files>\nVerification: Reproduce first, fix, rerun the original case and a boundary case.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Angle-bracket text marks fields to fill, not terminal syntax. For the "
+            },
+            {
+              "type": "article",
+              "text": "bug exercise",
+              "kind": "life",
+              "slug": "codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": ", specify the broken copy, adding Read and Build, completing only Read, and Completed incorrectly showing Build. Actual contains your own observations; use NOT RUN if unperformed instead of treating the example as a test. Do not prefill an unconfirmed database diagnosis. If no error message appeared, write none observed and describe the behavior and steps."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "After a fix, repeat the original steps and an empty-data or duplicate-title boundary case. Separate failed tests from tests not run: expected to pass is not a result. If execution is unavailable, report the limitation and a reproducible command rather than treating the Verification field as completed work. No pass counts are prefilled, preventing old evidence from being reused as new."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Separate review and handoff"
+        },
+        {
+          "type": "code",
+          "label": "templates/review.md",
+          "language": "markdown",
+          "code": "# Review request\nCompare: <base branch or exact before-state> -> <current change>\nPurpose: <user-visible behavior>\nRead first: <requirements and relevant files>\nReview for: correctness, regressions and missing meaningful tests.\nFor each finding: give the trigger, impact, file/location and suggested correction.\nEvidence: <commands actually run, exit codes and relevant output>\nUnknowns: <tests or environments not checked>\nReport no findings if none are supported; do not invent issues to fill a quota.\nDo not modify files in this review task unless I request a fix.\n"
+        },
+        {
+          "type": "code",
+          "label": "templates/handoff.md",
+          "language": "markdown",
+          "code": "# Handoff\nGoal:\nWorking directory and branch:\nCurrent commit:\nExisting uncommitted changes and owners:\nCompleted work with evidence:\nPending work:\nDecisions and constraints:\nFiles to inspect next:\nLast command and result:\nKnown limitations:\nNext smallest action:\nBefore continuing: verify the current files and Git state against this record.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The review base must resolve in the current Git repository. If it does not, consult "
+            },
+            {
+              "type": "article",
+              "text": "Git and diffs",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": " rather than assuming main exists. A handoff records the current location and state and must be refreshed each time. A commit reported in an earlier task does not establish a clean current directory; list uncommitted work and ownership to avoid overwriting active changes."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "A handoff file can live in the project when the location is appropriate for sharing. Private client data, credentials and entire conversations are usually unnecessary; paths, a problem summary and verifiable results restore context. Saving handoff.md does not mean a new task has read it. Request that explicitly and check the proposed next action. See "
+            },
+            {
+              "type": "article",
+              "text": "Context and handoff",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 5: Rule and external-tool templates"
+        },
+        {
+          "type": "code",
+          "label": "templates/rules.example.md: draft rules",
+          "language": "markdown",
+          "code": "# Practice project rules\nRead index.html, app.js, core.mjs and core.test.mjs before changing this practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nRun node --test core.test.mjs and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "rules.example.md deliberately remains a reviewable draft rather than AGENTS.md. After confirming it fits your project, follow "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " to merge it into the appropriate scope, reading existing rules and preserving others' constraints. For a one-off task, include it in the request. Consider "
+            },
+            {
+              "type": "article",
+              "text": "SKILL.md",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": " for repeated work with stable scope instead of installing every temporary prompt as a skill."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "templates/connection-check.md",
+          "language": "markdown",
+          "code": "# Connection check\nSurface / host / version:\nPlugin or MCP server name and source:\nConfigured:\nAuthenticated (if required):\nTool available in a new task:\nRead-only target (fictional or public):\nExpected marker or source:\nActual tool call and result:\nOriginal data unchanged:\nDisconnect or disable action, if performed:\nRetest after change:\nNever include tokens, passwords or one-time login URLs in this report.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Fill configured, authentication, capability and actual invocation separately. Use not required for inapplicable authentication and not checked for unverified fields. A configuration file does not prove a working connection, and prefilled true values make a report misleading. With "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": " or "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": ", record only the tested surface and host; an identically named server elsewhere can have different settings."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Turn a contradictory template into one task"
+        },
+        {
+          "type": "paragraph",
+          "text": "Consider this faulty request: “Review expected read-only, but also fix and commit it; run npm test and report three passes.” It mixes reading with editing, applies a command to a fixture without package.json, and preassigns an unobserved result. Choose a read-only check for this run and save the complete version below as adapted-task.md in the practice root, preserving the six original templates."
+        },
+        {
+          "type": "code",
+          "label": "Task copy: adapted-task.md",
+          "language": "markdown",
+          "code": "# Read-only practice check\nGoal: Verify the existing Active-filter behavior in this expected copy.\nConfirm the absolute working directory and the five expected source files first.\nRead core.mjs and core.test.mjs; explain the filter condition and test coverage.\nRun node --test core.test.mjs and report the actual exit code, passes and failures.\nDo not edit, stage, commit, push or deploy anything in this task.\nBrowser behavior: NOT RUN unless actually checked; core tests do not prove it.\nIf required files are missing, report the paths and stop before guessing commands.\nDelivery: observed evidence, unverified behavior and the next smallest step.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "A clean expected copy has a reference result of three passes and zero failures; still record your current output and leave source files unchanged. A broken copy should instead be reported as two passes and one failure with a different starting state. Correct the path or create a separate repair task instead of ignoring the failure because the template said expected. This applies the "
+            },
+            {
+              "type": "link",
+              "text": "official prompting guidance",
+              "url": "https://learn.chatgpt.com/docs/prompting"
+            },
+            {
+              "type": "text",
+              "text": " on goals, context, boundaries and usable outcomes to this fixture."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Mistakes, restoration and exercise"
+        },
+        {
+          "type": "paragraph",
+          "text": "First, unresolved placeholders: search for < before submitting and replace each field or remove it if inapplicable. Second, stale commands copied into another project: read its README and verify the working directory. Third, conflicting instructions such as read-only review plus incidental edits: choose one goal. Preserve an existing same-name template as another copy or inspect its Git diff. Restore only the templates you changed, leaving other project work intact."
+        },
+        {
+          "type": "paragraph",
+          "text": "Exercise: fill bug.md with an observed practice failure and handoff.md with the next step. Give both to someone unfamiliar with the original task: they should locate the folder, reproduce the symptom and identify unchecked items. Add a missing host or data field where needed instead of lengthening every template. Keep a blank master and save a separate task copy so yesterday's result does not become tomorrow's default answer."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "These original teaching templates carry no execution privileges and do not change your account. Acceptance is six readable templates, a filled bug report and handoff, and at least one ambiguity you identified, without requiring a model to use a particular sentence. Continue with "
+            },
+            {
+              "type": "article",
+              "text": "MCP setup",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " and apply connection-check.md to an actual read-only tool test."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-templates-cheatsheet/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "依頼、ルール、引き継ぎのテンプレート",
+      "description": "依頼、規則、引き継ぎの雛形を選び、必要項目と入力場所を確認して使います。",
+      "hero": {
+        "src": "/guides/codex-templates-cheatsheet/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "自分用の雛形フォルダーを作り、作業に合う欄を選び、観測値を記入し不要な手順を除きます。読む時間15分、実習20分。雛形は送信して初めて要求になる普通の文字で、新しい対話指令や自動実行プラグインではありません。依頼の書き方と Markdownから始めます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "依頼の書き方",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Markdown",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：用途を分けて雛形を保存"
+        },
+        {
+          "type": "paragraph",
+          "text": "実習ディレクトリ内に templates を作り、下記ファイルをエディターで追加します。Windows は .md.txt になっていないか確認、macOS は標準テキスト、Linux は UTF-8 で保存します。全 OS とも実習ルートを基準に同じ名前を使います。このフォルダーは自動読込みされず、追加導入、別サイトへのログイン、グローバル設定は不要です。"
+        },
+        {
+          "type": "code",
+          "label": "作成するフォルダーとファイル",
+          "language": "text",
+          "code": "templates/\n  task.md\n  bug.md\n  review.md\n  handoff.md\n  rules.example.md\n  connection-check.md\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "作業",
+            "雛形",
+            "代用できないもの"
+          ],
+          "rows": [
+            [
+              "小機能の実装",
+              "task.md",
+              "ファイルと検証"
+            ],
+            [
+              "再現可能な修正",
+              "bug.md",
+              "元エラーと再現"
+            ],
+            [
+              "変更の審査",
+              "review.md",
+              "テストと判断"
+            ],
+            [
+              "長作業の引継ぎ",
+              "handoff.md",
+              "最新 Git 状態"
+            ],
+            [
+              "規則の下書き",
+              "rules.example.md",
+              "適切な AGENTS.md"
+            ],
+            [
+              "外部機能の確認",
+              "connection-check.md",
+              "実ツール応答"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：検証可能な依頼へ変える"
+        },
+        {
+          "type": "code",
+          "label": "templates/task.md",
+          "language": "markdown",
+          "code": "# Task\nGoal: Verify the active-task filter and repair it only if the acceptance case fails.\nContext: Use the complete reference copy in this practice folder.\nInspect first: index.html, app.js, core.mjs, style.css and core.test.mjs.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run node --test core.test.mjs and verify the browser behavior; report actual results.\nIf the existing behavior passes, report that evidence without unnecessary edits.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この記入例は Small Steps 用です。expected コピーに5つのコードファイルがあるか確認します。説明は expected 内ではなくダウンロードの根にある README.md にあります。他のプロジェクトでは各 README で検証命令を照合します。可能性の相談は "
+            },
+            {
+              "type": "article",
+              "text": "Plan モード",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "で手順と未決事項を成果にし、実装なら編集範囲を明示します。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "「サイトを整理して」をこの形式に直します。画面、維持する動作、検証データ、公開の有無まで分かれば使えます。ファイル名が未知なら一覧表示を担当する箇所の特定を依頼し、架空のパスを書きません。説明文は自分の言語に変えても、識別子、パス、条件は保持します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：不具合報告に証拠を残す"
+        },
+        {
+          "type": "code",
+          "label": "templates/bug.md",
+          "language": "markdown",
+          "code": "# Bug report\nEnvironment: <OS, browser/runtime and version>\nPractice folder or branch: <actual location>\nStarting state: <fixture or steps to create it>\nReproduction:\n1. <first action>\n2. <next action>\nExpected: <observable result>\nActual: <observed result>\nError: <exact message, with secrets removed>\nFrequency: <always / intermittent / unknown>\nAlready tried: <one change and its result, or none>\nFix scope: <allowed behavior and files>\nVerification: Reproduce first, fix, rerun the original case and a boundary case.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "山括弧は記入欄であり、ターミナルの構文ではありません。"
+            },
+            {
+              "type": "article",
+              "text": "不具合の練習",
+              "kind": "life",
+              "slug": "codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "なら「broken のコピーで Read と Build を追加し、Read だけ完了にすると、Completed に Build が出る」と書きます。Actual は自分の観測だけとし、未実施なら NOT RUN にして例を実測扱いしません。未確定のデータベース故障を原因に書かず、エラー表示がなければ none observed と動作・手順を記録します。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "修正後に元手順と空データ・同名の境界を再実行します。失敗と未実行を分け、通るはずを結果にしません。実行できない場合は制限と再実行命令を渡し、Verification 欄を完了扱いにしません。通過数を予記しないことで、古い証拠の流用を防ぎます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：審査と引継ぎを分ける"
+        },
+        {
+          "type": "code",
+          "label": "templates/review.md",
+          "language": "markdown",
+          "code": "# Review request\nCompare: <base branch or exact before-state> -> <current change>\nPurpose: <user-visible behavior>\nRead first: <requirements and relevant files>\nReview for: correctness, regressions and missing meaningful tests.\nFor each finding: give the trigger, impact, file/location and suggested correction.\nEvidence: <commands actually run, exit codes and relevant output>\nUnknowns: <tests or environments not checked>\nReport no findings if none are supported; do not invent issues to fill a quota.\nDo not modify files in this review task unless I request a fix.\n"
+        },
+        {
+          "type": "code",
+          "label": "templates/handoff.md",
+          "language": "markdown",
+          "code": "# Handoff\nGoal:\nWorking directory and branch:\nCurrent commit:\nExisting uncommitted changes and owners:\nCompleted work with evidence:\nPending work:\nDecisions and constraints:\nFiles to inspect next:\nLast command and result:\nKnown limitations:\nNext smallest action:\nBefore continuing: verify the current files and Git state against this record.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "審査の比較元は現在の Git で解決できる必要があります。存在しなければ "
+            },
+            {
+              "type": "article",
+              "text": "Git と差分",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "を確認し main を仮定しません。引継ぎは現在地と状態を毎回更新します。以前の会話のコミット報告だけで現在のディレクトリを未変更と判断せず、未コミット分と担当を残します。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "引継ぎ文書は共有可能な場所ならプロジェクト内に保存できます。顧客情報、資格情報、会話全文は通常不要で、パス、問題要約、検証結果を残します。保存だけで新タスクが読んだとは限らないため、開始時に読取りを依頼し次の行動を照合します。"
+            },
+            {
+              "type": "article",
+              "text": "文脈と引継ぎ",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "も参照します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順5：規則と外部ツールの雛形"
+        },
+        {
+          "type": "code",
+          "label": "templates/rules.example.md：規則下書き",
+          "language": "markdown",
+          "code": "# Practice project rules\nRead index.html, app.js, core.mjs and core.test.mjs before changing this practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nRun node --test core.test.mjs and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "rules.example.md は確認前の下書きなので AGENTS.md としていません。適合を確認後、既存条件を読み保全して "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " の適切な階層へ統合します。一回限りなら要求文に入れます。範囲が安定した反復作業を "
+            },
+            {
+              "type": "article",
+              "text": "SKILL.md",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": " にし、一時的な依頼まで全て導入しません。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "templates/connection-check.md",
+          "language": "markdown",
+          "code": "# Connection check\nSurface / host / version:\nPlugin or MCP server name and source:\nConfigured:\nAuthenticated (if required):\nTool available in a new task:\nRead-only target (fictional or public):\nExpected marker or source:\nActual tool call and result:\nOriginal data unchanged:\nDisconnect or disable action, if performed:\nRetest after change:\nNever include tokens, passwords or one-time login URLs in this report.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "設定、認証、能力、実呼出しを別記します。不要な認証は not required、未確認は not checked とします。設定ファイルだけで接続成功とせず true を予記しません。"
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": " や "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " は今回の入口とホストを記録し、他機の同名設定を同一視しません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "矛盾するテンプレートを1つの依頼へ直す"
+        },
+        {
+          "type": "paragraph",
+          "text": "誤った依頼「expected を読み取り専用で審査し、ついでに修正してコミット。npm test で3件通過と報告」を考えます。読み取りと変更が矛盾し、package.json のない教材へ不適切なコマンドを指定し、未実施の結果も決めています。今回は読み取り専用の確認を選び、次の完全な依頼を練習ルートの adapted-task.md に保存します。元の6つのテンプレートは保持します。"
+        },
+        {
+          "type": "code",
+          "label": "タスク用コピー：adapted-task.md",
+          "language": "markdown",
+          "code": "# Read-only practice check\nGoal: Verify the existing Active-filter behavior in this expected copy.\nConfirm the absolute working directory and the five expected source files first.\nRead core.mjs and core.test.mjs; explain the filter condition and test coverage.\nRun node --test core.test.mjs and report the actual exit code, passes and failures.\nDo not edit, stage, commit, push or deploy anything in this task.\nBrowser behavior: NOT RUN unless actually checked; core tests do not prove it.\nIf required files are missing, report the paths and stop before guessing commands.\nDelivery: observed evidence, unverified behavior and the next smallest step.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "クリーンな expected の参考結果は3件通過・0件失敗ですが、今回の出力を記録し、ソースは変更しません。broken を開いたなら2件通過・1件失敗と開始状態の違いを報告し、パスを直すか別の修正タスクを作ります。テンプレートに expected とあるだけで失敗を無視しません。これは"
+            },
+            {
+              "type": "link",
+              "text": "公式の依頼方法",
+              "url": "https://learn.chatgpt.com/docs/prompting"
+            },
+            {
+              "type": "text",
+              "text": "にある目標、背景、境界、使える成果を教材へ適用した例です。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "間違い・復元・小実習"
+        },
+        {
+          "type": "paragraph",
+          "text": "未記入の山括弧は送信前に < を検索し、記入または不要欄削除で直します。旧命令の流用は README と現在地の確認で防ぎます。読取り審査とついでの編集など競合する要求は一目的に絞ります。同名の既存雛形は別コピーや Git 差分で保護し、復元も自分が変更した雛形に限定します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実習では観測済みの不具合を bug.md、次の一歩を handoff.md に書き、元の作業を知らない人に渡します。場所、再現、未確認が分かれば合格です。ホストやデータを推測させるならその欄を足し、全雛形を長くしません。空の原本を保持し作業ごとにコピーを保存して、前回結果を既定値にしません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "オリジナル教材であるこれらのファイルに実行権限はなく、アカウントも変えません。六つの読める雛形、記入済み報告と引継ぎ、特定した曖昧さ一件が検証成果です。モデルの特定表現は要求しません。次は "
+            },
+            {
+              "type": "article",
+              "text": "MCP 設定",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": "で接続雛形を実際の読取り試験に使います。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-templates-cheatsheet/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "요청, 규칙, 인계 템플릿",
+      "description": "요청, 규칙, 인계 템플릿을 선택하고 필수 항목과 입력 위치를 확인해 사용합니다.",
+      "hero": {
+        "src": "/guides/codex-templates-cheatsheet/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "자신의 템플릿 폴더를 만들고 작업에 맞는 항목을 선택해 실제 관찰값을 채우며 불필요한 절차를 제거합니다. 읽기 15분, 실습 20분입니다. 템플릿은 제출하면 요청이 되는 일반 텍스트이며 새로운 슬래시 명령이나 자동 실행 플러그인이 아닙니다. 요청 작성과 Markdown을 먼저 읽으세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "요청 작성",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Markdown",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 용도를 나눠 템플릿 저장"
+        },
+        {
+          "type": "paragraph",
+          "text": "실습 디렉터리에 templates 폴더를 만들고 편집기로 아래 파일을 추가합니다. Windows는 .md.txt로 저장되지 않았는지, macOS는 일반 텍스트인지 확인하고 Linux는 익숙한 편집기에서 UTF-8로 저장하세요. 모든 OS에서 실습 루트를 기준으로 같은 파일명을 사용합니다. 자동 로드 기능이 없으며 추가 패키지·사이트 로그인·전역 설정도 필요하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "만들 폴더와 파일",
+          "language": "text",
+          "code": "templates/\n  task.md\n  bug.md\n  review.md\n  handoff.md\n  rules.example.md\n  connection-check.md\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "작업",
+            "템플릿",
+            "대체할 수 없는 것"
+          ],
+          "rows": [
+            [
+              "작은 기능 구현",
+              "task.md",
+              "실제 파일과 검증"
+            ],
+            [
+              "재현 가능한 버그 수정",
+              "bug.md",
+              "원래 오류와 재현"
+            ],
+            [
+              "변경 검토",
+              "review.md",
+              "테스트와 판단"
+            ],
+            [
+              "긴 작업 인계",
+              "handoff.md",
+              "최신 Git 상태"
+            ],
+            [
+              "규칙 초안",
+              "rules.example.md",
+              "올바른 위치의 AGENTS.md"
+            ],
+            [
+              "외부 도구 확인",
+              "connection-check.md",
+              "실제 도구 응답"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 검증 가능한 요청 작성"
+        },
+        {
+          "type": "code",
+          "label": "templates/task.md",
+          "language": "markdown",
+          "code": "# Task\nGoal: Verify the active-task filter and repair it only if the acceptance case fails.\nContext: Use the complete reference copy in this practice folder.\nInspect first: index.html, app.js, core.mjs, style.css and core.test.mjs.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run node --test core.test.mjs and verify the browser behavior; report actual results.\nIf the existing behavior passes, report that evidence without unnecessary edits.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 작성 예시는 Small Steps용입니다. expected 복사본에 코드 파일 다섯 개가 있는지 확인하세요. 설명 README.md는 expected 안이 아니라 다운로드 루트에 있습니다. 다른 프로젝트는 각 README로 검증 명령을 확인합니다. 타당성 논의는 "
+            },
+            {
+              "type": "article",
+              "text": "Plan 모드",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "에서 절차·미결정을 결과물로 정하고 구현이라면 수정 범위를 명시합니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "웹사이트를 정리해 달라는 문장을 이 형식으로 바꿔 보세요. 화면, 보존할 동작, 검증 데이터, 배포 포함 여부가 보여야 합니다. 파일명이 없으면 목록 표시 담당 파일을 찾아 보고하도록 요청하고 경로를 지어내지 않습니다. 설명은 편한 언어로 쓰되 식별자, 경로, 조건은 유지하세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 버그 보고에 증거 보존"
+        },
+        {
+          "type": "code",
+          "label": "templates/bug.md",
+          "language": "markdown",
+          "code": "# Bug report\nEnvironment: <OS, browser/runtime and version>\nPractice folder or branch: <actual location>\nStarting state: <fixture or steps to create it>\nReproduction:\n1. <first action>\n2. <next action>\nExpected: <observable result>\nActual: <observed result>\nError: <exact message, with secrets removed>\nFrequency: <always / intermittent / unknown>\nAlready tried: <one change and its result, or none>\nFix scope: <allowed behavior and files>\nVerification: Reproduce first, fix, rerun the original case and a boundary case.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "꺾쇠 안은 채울 항목이며 터미널 문법이 아닙니다. "
+            },
+            {
+              "type": "article",
+              "text": "버그 연습",
+              "kind": "life",
+              "slug": "codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "은 ‘broken 복사본에 Read와 Build를 추가하고 Read만 완료했는데 Completed에 Build가 나옴’처럼 적습니다. Actual에는 직접 관찰한 내용만 적고 미실행이면 NOT RUN으로 두어 예시를 실측처럼 쓰지 않습니다. 확인하지 않은 데이터베이스 고장을 원인으로 단정하지 말고 오류 메시지가 없으면 none observed와 동작 및 단계를 적습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "수정 후 원래 절차와 빈 데이터 또는 중복 제목 경계를 다시 실행합니다. 실패와 미실행을 구분하고 통과할 것이라는 예상을 결과로 적지 마세요. 실행할 수 없다면 한계와 재현 명령을 전달하며 Verification 항목을 완료로 보지 않습니다. 과거 증거를 새 결과로 쓰지 않도록 통과 개수는 미리 넣지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 검토와 인계 구분"
+        },
+        {
+          "type": "code",
+          "label": "templates/review.md",
+          "language": "markdown",
+          "code": "# Review request\nCompare: <base branch or exact before-state> -> <current change>\nPurpose: <user-visible behavior>\nRead first: <requirements and relevant files>\nReview for: correctness, regressions and missing meaningful tests.\nFor each finding: give the trigger, impact, file/location and suggested correction.\nEvidence: <commands actually run, exit codes and relevant output>\nUnknowns: <tests or environments not checked>\nReport no findings if none are supported; do not invent issues to fill a quota.\nDo not modify files in this review task unless I request a fix.\n"
+        },
+        {
+          "type": "code",
+          "label": "templates/handoff.md",
+          "language": "markdown",
+          "code": "# Handoff\nGoal:\nWorking directory and branch:\nCurrent commit:\nExisting uncommitted changes and owners:\nCompleted work with evidence:\nPending work:\nDecisions and constraints:\nFiles to inspect next:\nLast command and result:\nKnown limitations:\nNext smallest action:\nBefore continuing: verify the current files and Git state against this record.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "검토 기준은 현재 Git 저장소에서 찾을 수 있어야 합니다. 없으면 "
+            },
+            {
+              "type": "article",
+              "text": "Git과 차이",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "를 확인하고 main을 가정하지 마세요. 인계는 현재 위치와 상태를 매번 갱신합니다. 이전 작업의 커밋 보고가 현재 폴더의 깨끗함을 증명하지 않으므로 미커밋 변경과 담당자를 적어 덮어쓰기를 막습니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "인계 파일은 공유에 적합한 위치라면 프로젝트에 둘 수 있습니다. 고객 정보, 인증 정보, 전체 대화 대신 경로, 문제 요약, 검증 결과를 남기세요. 저장했다고 새 작업이 읽은 것은 아니므로 명시적으로 읽도록 요청하고 다음 행동을 확인합니다. "
+            },
+            {
+              "type": "article",
+              "text": "맥락과 인계",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "5단계: 규칙과 외부 도구 템플릿"
+        },
+        {
+          "type": "code",
+          "label": "templates/rules.example.md: 규칙 초안",
+          "language": "markdown",
+          "code": "# Practice project rules\nRead index.html, app.js, core.mjs and core.test.mjs before changing this practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nRun node --test core.test.mjs and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "rules.example.md는 검토 전 초안이므로 AGENTS.md로 부르지 않습니다. 프로젝트에 맞는지 확인한 뒤 기존 조건을 보존하며 "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "의 올바른 계층에 합칩니다. 일회 작업은 요청에 넣으세요. 반복되고 범위가 안정적인 작업을 "
+            },
+            {
+              "type": "article",
+              "text": "SKILL.md",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "로 만들며 모든 임시 요청을 스킬로 설치할 필요는 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "templates/connection-check.md",
+          "language": "markdown",
+          "code": "# Connection check\nSurface / host / version:\nPlugin or MCP server name and source:\nConfigured:\nAuthenticated (if required):\nTool available in a new task:\nRead-only target (fictional or public):\nExpected marker or source:\nActual tool call and result:\nOriginal data unchanged:\nDisconnect or disable action, if performed:\nRetest after change:\nNever include tokens, passwords or one-time login URLs in this report.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "설정·인증·기능·실제 호출을 따로 채웁니다. 불필요한 인증은 not required, 미확인은 not checked로 적으세요. 설정 파일만으로 연결 성공을 판단하거나 true를 미리 넣지 않습니다. "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "나 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": "는 이번 진입점과 호스트만 기록하며 다른 PC의 같은 이름 설정을 동일하게 보지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "서로 충돌하는 템플릿을 하나의 작업으로 고치기"
+        },
+        {
+          "type": "paragraph",
+          "text": "잘못된 요청인 ‘expected를 읽기 전용으로 검토하면서 수정하고 커밋도 해줘. npm test로 세 개 통과했다고 보고해’를 봅니다. 읽기와 수정이 충돌하고 package.json이 없는 자료에 잘못된 명령을 지정하며 관찰하지 않은 결과를 미리 정합니다. 이번에는 읽기 전용 확인을 선택하고 아래 완성 요청을 연습 루트의 adapted-task.md로 저장합니다. 원래 템플릿 여섯 개는 보존합니다."
+        },
+        {
+          "type": "code",
+          "label": "작업 사본: adapted-task.md",
+          "language": "markdown",
+          "code": "# Read-only practice check\nGoal: Verify the existing Active-filter behavior in this expected copy.\nConfirm the absolute working directory and the five expected source files first.\nRead core.mjs and core.test.mjs; explain the filter condition and test coverage.\nRun node --test core.test.mjs and report the actual exit code, passes and failures.\nDo not edit, stage, commit, push or deploy anything in this task.\nBrowser behavior: NOT RUN unless actually checked; core tests do not prove it.\nIf required files are missing, report the paths and stop before guessing commands.\nDelivery: observed evidence, unverified behavior and the next smallest step.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "깨끗한 expected 복사본의 참고 결과는 3개 통과, 0개 실패지만 현재 출력을 기록하고 소스 파일은 그대로 둡니다. broken을 열었다면 2개 통과, 1개 실패와 시작 상태가 다름을 보고하고 경로를 고치거나 별도 수정 작업을 만듭니다. 템플릿에 expected라고 적혔다고 실제 실패를 무시하지 않습니다. 이는 목표, 배경, 경계, 사용할 결과를 다루는 "
+            },
+            {
+              "type": "link",
+              "text": "공식 프롬프트 안내",
+              "url": "https://learn.chatgpt.com/docs/prompting"
+            },
+            {
+              "type": "text",
+              "text": "를 이 자료에 적용한 예입니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "오류·복원·연습"
+        },
+        {
+          "type": "paragraph",
+          "text": "전송 전에 <를 검색해 미완성 항목을 채우거나 제거하세요. 다른 프로젝트의 오래된 명령은 README와 작업 폴더 확인으로 방지합니다. 읽기 전용 검토와 추가 수정처럼 충돌하는 요구는 한 목표로 정리합니다. 동명 템플릿은 별도 사본이나 Git 차이로 보존하고 복원도 자신이 바꾼 템플릿만 대상으로 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "연습으로 관찰한 오류를 bug.md에, 다음 단계를 handoff.md에 채워 원래 작업을 모르는 사람에게 전달하세요. 폴더·재현·미확인 사항을 알 수 있어야 합니다. 기기나 데이터를 추측해야 하면 그 항목만 추가하세요. 빈 원본을 보존하고 작업별 사본을 저장해 이전 결과가 다음 기본 답이 되지 않게 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 원본 교육 템플릿에는 실행 권한이 없으며 계정을 바꾸지 않습니다. 읽을 수 있는 템플릿 여섯 개, 작성한 버그 보고와 인계, 찾은 모호한 조건 하나가 검증 결과입니다. 모델에 특정 문장을 요구하지 않습니다. 다음 "
+            },
+            {
+              "type": "article",
+              "text": "MCP 설정",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": "에서 연결 템플릿을 실제 읽기 전용 시험에 사용하세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-templates-cheatsheet/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "提示词、规则与交接范本索引",
+      "description": "依工作选择提示词、规则与交接范本，替换必要栏位并知道每段应贴到哪里。",
+      "hero": {
+        "src": "/guides/codex-templates-cheatsheet/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "建立一个自己的范本资料夹，能依任务选对栏位、填入真实观察、删掉不适用的步骤。阅读约 15 分钟、操作约 20 分钟。范本是普通文字，贴进任务后才成为要求；不是新的斜线指令，也不是安装后自动执行的插件。先完成需求描述与Markdown即可开始。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "需求描述",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "article",
+              "text": "Markdown",
+              "kind": "life",
+              "slug": "codex-markdown-basics"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：建立范本库并分清用途"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自己的练习目录中建立 templates 资料夹，用编辑器新增下列档案。Windows 选另存新档时确认没有变成 .md.txt；macOS 使用纯文字格式；Linux 在熟悉的编辑器保存 UTF-8。三种系统都从练习根目录操作，档名保持一致。这个资料夹没有特殊载入效果，也不需要新增套件、登入其他网站或把范本放进全域设定。"
+        },
+        {
+          "type": "code",
+          "label": "要建立的资料夹与档案",
+          "language": "text",
+          "code": "templates/\n  task.md\n  bug.md\n  review.md\n  handoff.md\n  rules.example.md\n  connection-check.md\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "需要完成的工作",
+            "使用哪份范本",
+            "不能取代什么"
+          ],
+          "rows": [
+            [
+              "实作小功能",
+              "task.md",
+              "实际档案与验收"
+            ],
+            [
+              "修可重现错误",
+              "bug.md",
+              "原始错误与重现"
+            ],
+            [
+              "审查既有修改",
+              "review.md",
+              "测试与人工判读"
+            ],
+            [
+              "交接长任务",
+              "handoff.md",
+              "最新 Git 状态"
+            ],
+            [
+              "拟定专案规则",
+              "rules.example.md",
+              "正确位置的 AGENTS.md"
+            ],
+            [
+              "检查外部工具",
+              "connection-check.md",
+              "真正的工具回应"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：把需求改成可验收的任务"
+        },
+        {
+          "type": "code",
+          "label": "templates/task.md",
+          "language": "markdown",
+          "code": "# Task\nGoal: Verify the active-task filter and repair it only if the acceptance case fails.\nContext: Use the complete reference copy in this practice folder.\nInspect first: index.html, app.js, core.mjs, style.css and core.test.mjs.\nScope: Only files needed for the filter and its focused tests.\nBehavior: All shows every task; Active shows tasks whose completed value is false.\nPreserve: Existing task IDs, titles, ordering and stored data format.\nAcceptance: With three tasks (two complete), Active shows exactly one.\nBoundary: An empty list shows a useful empty state and does not throw.\nValidation: Run node --test core.test.mjs and verify the browser behavior; report actual results.\nIf the existing behavior passes, report that evidence without unnecessary edits.\nDelivery: Explain changed behavior, tests actually run and remaining limitations.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "这份填好的范例对应本系列的 Small Steps 练习，不是任何专案都能直接套用。先在自己的 expected 副本确认五份程式档存在；操作说明在下载包根目录的 README.md，不在 expected 里。其他专案则依自己的 README 核对验证指令。想先讨论可行性时，使用 "
+            },
+            {
+              "type": "article",
+              "text": "Plan 模式",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": " 并把交付改成「先提出步骤及待决定项目」。若已要实作，清楚写明可以修改的范围。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "试著把「帮我整理一下网站」改写成这个格式。合格版本应说出改哪个画面、保留什么、用什么资料验收，以及本次是否包含上线。档案名称未知时可以写「先找出负责清单显示的档案再回报」，不要猜一个不存在的路径。自然语言可以使用你的习惯语言，范例中的程式识别码、路径与判断条件则保持原样。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：Bug 回报保留原始证据"
+        },
+        {
+          "type": "code",
+          "label": "templates/bug.md",
+          "language": "markdown",
+          "code": "# Bug report\nEnvironment: <OS, browser/runtime and version>\nPractice folder or branch: <actual location>\nStarting state: <fixture or steps to create it>\nReproduction:\n1. <first action>\n2. <next action>\nExpected: <observable result>\nActual: <observed result>\nError: <exact message, with secrets removed>\nFrequency: <always / intermittent / unknown>\nAlready tried: <one change and its result, or none>\nFix scope: <allowed behavior and files>\nVerification: Reproduce first, fix, rerun the original case and a boundary case.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "尖括号内容是待填栏位，不是直接贴给终端机的语法。以"
+            },
+            {
+              "type": "article",
+              "text": "修 Bug",
+              "kind": "life",
+              "slug": "codex-debugging"
+            },
+            {
+              "type": "text",
+              "text": "练习为例，写出「broken 副本，新增 Read 与 Build，只完成 Read，Completed 却显示 Build」，才能重现同一个错误。Actual 栏只记自己看到的结果；尚未操作就填 NOT RUN，不抄范例当实测。原因未确定时不预填「资料库坏了」；没有错误讯息可写 none observed，再补画面行为与步骤。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "修完后把原始步骤重跑一次，再检查空资料或重复标题的边界。测试失败与尚未执行分开填；「预计应该通过」不是结果。若工具无法执行，交付限制及读者能自行重跑的命令即可，不能把范本中的 Verification 当作已完成工作。本篇不预填任何人的测试通过数，让下次使用时不会沿用旧证据。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：分开审查与交接"
+        },
+        {
+          "type": "code",
+          "label": "templates/review.md",
+          "language": "markdown",
+          "code": "# Review request\nCompare: <base branch or exact before-state> -> <current change>\nPurpose: <user-visible behavior>\nRead first: <requirements and relevant files>\nReview for: correctness, regressions and missing meaningful tests.\nFor each finding: give the trigger, impact, file/location and suggested correction.\nEvidence: <commands actually run, exit codes and relevant output>\nUnknowns: <tests or environments not checked>\nReport no findings if none are supported; do not invent issues to fill a quota.\nDo not modify files in this review task unless I request a fix.\n"
+        },
+        {
+          "type": "code",
+          "label": "templates/handoff.md",
+          "language": "markdown",
+          "code": "# Handoff\nGoal:\nWorking directory and branch:\nCurrent commit:\nExisting uncommitted changes and owners:\nCompleted work with evidence:\nPending work:\nDecisions and constraints:\nFiles to inspect next:\nLast command and result:\nKnown limitations:\nNext smallest action:\nBefore continuing: verify the current files and Git state against this record.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Review 的比较起点要能在目前 Git 储存库解析；如果分支不存在，先查"
+            },
+            {
+              "type": "article",
+              "text": "Git 与差异",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "，不要默认 main 一定存在。交接范本则描述「目前在哪里」，每次交接重新读取状态。某人在旧任务说已提交，不代表这个工作目录干净；把尚未提交的修改与归属列出，接手者才不会覆写正在进行的工作。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "交接文件可以存在专案内，但写入位置要先确认是否适合共享。私人客户资料、凭证、聊天全文通常不是交接所需；用路径、问题摘要和可验证结果足以带回上下文。档案仍然是提供给模型的资料，保存 handoff.md 不代表新任务一定读过；开始时明确请它阅读，并核对回复描述的下一步。完整恢复流程见"
+            },
+            {
+              "type": "article",
+              "text": "上下文与交接",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 5：规则范本与外部工具范本"
+        },
+        {
+          "type": "code",
+          "label": "templates/rules.example.md：规则草稿",
+          "language": "markdown",
+          "code": "# Practice project rules\nRead index.html, app.js, core.mjs and core.test.mjs before changing this practice app.\nPreserve task IDs and the existing data format.\nKeep changes within the requested behavior.\nRun node --test core.test.mjs and report actual results.\nDo not commit credentials or private practice data.\nIf required files are missing, report the missing paths before making assumptions.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "rules.example.md 故意不叫 AGENTS.md，让它先作为待审核的范本。确认内容符合你的专案后，依 "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " 教学合并到正确层级；先读现有规则，保留其他人的条件，不要整档覆写。若只用于这次任务，就直接贴在任务要求中。只有常常重复、范围稳定的工作才值得做成 "
+            },
+            {
+              "type": "article",
+              "text": "SKILL.md",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "，不用把所有临时提示词都安装成技能。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "templates/connection-check.md",
+          "language": "markdown",
+          "code": "# Connection check\nSurface / host / version:\nPlugin or MCP server name and source:\nConfigured:\nAuthenticated (if required):\nTool available in a new task:\nRead-only target (fictional or public):\nExpected marker or source:\nActual tool call and result:\nOriginal data unchanged:\nDisconnect or disable action, if performed:\nRetest after change:\nNever include tokens, passwords or one-time login URLs in this report.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "外部工具验收要依序填设定、认证、能力与实际呼叫，不适用的认证可填 not required，未查证的栏位填 not checked。不要把「有设定档」推论为连线正常；也不要预先填 true 让报告看起来完整。使用 "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": " 或 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " 时，一次只填你这次检查的那个入口与主机，同名伺服器在另一台电脑可能指向不同设定。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "把互相冲突的范本改成一个任务"
+        },
+        {
+          "type": "paragraph",
+          "text": "判读这段错误需求：「只读审查 expected，但顺便修好并提交；用 npm test 验证，回报三项全过」。它同时要求只读与改档、在没有 package.json 的教材套用错误命令，还预填未执行的结果。这次选择先做唯读确认，把下方完整版本另存为练习根目录的 adapted-task.md，保留六份原始空白范本。"
+        },
+        {
+          "type": "code",
+          "label": "任务副本：adapted-task.md",
+          "language": "markdown",
+          "code": "# Read-only practice check\nGoal: Verify the existing Active-filter behavior in this expected copy.\nConfirm the absolute working directory and the five expected source files first.\nRead core.mjs and core.test.mjs; explain the filter condition and test coverage.\nRun node --test core.test.mjs and report the actual exit code, passes and failures.\nDo not edit, stage, commit, push or deploy anything in this task.\nBrowser behavior: NOT RUN unless actually checked; core tests do not prove it.\nIf required files are missing, report the paths and stop before guessing commands.\nDelivery: observed evidence, unverified behavior and the next smallest step.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用干净 expected 副本执行时，核心测试的参考结果为 3 过 0 败；你仍要填本次输出，所有程式档保持不变。若拿到 broken 副本，应如实回报 2 过 1 败及起点不同，先修正路径或另立修复任务，不因范本说 expected 就忽略实际故障。这正是"
+            },
+            {
+              "type": "link",
+              "text": "官方提示词建议",
+              "url": "https://learn.chatgpt.com/docs/prompting"
+            },
+            {
+              "type": "text",
+              "text": "中目标、背景、边界与可使用成果在本教材的具体运用。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见错误、还原与小练习"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一种错误是保留未填的尖括号：送出前搜寻 <，逐个换成实际资讯或删掉不适用栏位。第二种是旧任务的命令套到新专案：先读 README 并确认工作目录。第三种是把范本写成互相冲突的规则，例如只读审查又要求顺便改档；选一个本次目标再提交。已存在同名范本时保存另一个副本或用 Git 看差异，回复只针对这次新写的范本，不撤回正式专案其他修改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小练习：选 bug.md 填入一个你已观察到的练习错误，再选 handoff.md 交代下一步。把两份交给没有看过原任务的人阅读：对方应能找到正确资料夹、重现相同现象、知道哪些还没确认。若对方还必须猜你用哪台电脑或哪份资料，补那个栏位即可，不要加长所有范本。保留一份空白主范本，每次另存任务副本，避免上次的结果变成下次的预设答案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇档案与范例为原创教材，没有内建执行权限，也不会改动你的帐号。验收是六份可阅读的范本、一份填好的 Bug 回报与交接，以及至少一项被你找出的含糊条件；不要求模型回复特定句型。下一单元从 "
+            },
+            {
+              "type": "article",
+              "text": "MCP 设定",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " 开始，把 connection-check.md 用在真实的唯读工具测试。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-templates-cheatsheet/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

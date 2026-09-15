@@ -1,0 +1,1457 @@
+{
+  "slug": "codex-subagents",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 128,
+  "locales": {
+    "zh-TW": {
+      "title": "子代理與工作分工",
+      "description": "子代理適合把能獨立完成的工作分開處理，再由主要任務整合結果。分工會增加模型與工具用量；若工作互相依賴、都要改同一段程式，平行處理反而可能產生衝突。",
+      "hero": {
+        "src": "/guides/codex-subagents/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "把一個唯讀審查拆成兩個獨立子任務，等待兩份報告，再由主任務核對證據。閱讀約 15 分鐘、操作約 20 分鐘。使用第一個專案下載包中的 expected 完整參考副本，準備 Node.js 與可用的 Codex 入口。練習需要實際支援子代理的環境；只收到一篇分成兩段的回答，不能算成功建立兩個子代理。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "第一個專案",
+              "kind": "life",
+              "slug": "codex-first-project"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "子代理是主任務委派出去的工作者，負責明確的一部分，再把結果交回來。它不是另一個自動隔離的 Git 儲存庫，也不是多開兩個視窗就會自動互相協調。適合並行的工作必須各自有輸入、範圍與成果，而且不必等待另一個子任務先改好檔案。這次兩個人都只讀，因此不需要讓他們競爭同一份程式碼的寫入權。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：先確認材料與基準"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自己的完整參考副本打開 index.html、style.css、app.js、core.mjs、core.test.mjs 五個檔案。不要開到故意有錯的 start 或 broken 版本。Windows、macOS、Linux 都先確認終端機工作目錄，再執行同一個測試命令；此練習不需要安裝 npm 套件，也不會連外部資料庫。保存測試結果與版本，後面才能分辨原本就有的問題。"
+        },
+        {
+          "type": "code",
+          "label": "三種系統的終端機：位於 expected 參考副本",
+          "language": "sh",
+          "code": "node --version\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "目前教材包含三個頂層測試，正常參考副本應通過。這個數字只屬於本篇提供的材料，不代表你自己的專案一定有三個測試。若找不到 Node 或 core.test.mjs，先回到"
+            },
+            {
+              "type": "article",
+              "text": "CLI 排除問題",
+              "kind": "life",
+              "slug": "codex-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "與路徑說明，停止後續分工。不要請子代理在材料不全時自行重建一個看起來相似的專案，否則審查對象已經改變。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：用明確要求啟動兩個子代理"
+        },
+        {
+          "type": "paragraph",
+          "text": "在桌面、CLI 或 IDE 的主任務選好練習資料夾，送出下面提示詞。現在的本機 Codex 依直接要求或適用的 AGENTS.md／Skill 指示分派子代理；這裡直接寫清楚要兩個。模型與推理深度先沿用主任務，不另外硬寫帳號未必可用的模型名稱。子代理各自使用模型和工具，會增加用量；兩個小型唯讀範圍比不受限地持續新增工作者容易驗收。"
+        },
+        {
+          "type": "code",
+          "label": "主任務輸入框：兩個唯讀子任務",
+          "language": "text",
+          "code": "Use exactly two subagents for a read-only review of this Small Steps reference copy.\nDo not spawn additional subagents or modify files.\n\nAgent A: Read core.mjs. Map addTask, visibleTasks and decodeTasks.\nFor each function, report its input, behavior, failure or boundary handling, and file/symbol evidence.\n\nAgent B: Read core.test.mjs. Map existing test coverage to those same functions.\nDistinguish covered cases from possible missing cases; do not invent a bug just because a test is absent.\n\nParent: Wait for both reports. Verify cited symbols and reconcile disagreements.\nRun node --test core.test.mjs once in the practice directory after collecting the reports.\nReturn a compact evidence table, actual test result and unverified claims.\nIf subagents are unavailable, say so; do not present a single-agent answer as delegated work.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "送出前，把目前副本的完整根路徑與基準結果一併提供，並要求兩份回報各自列出讀取路徑。兩份報告即使都寫 core.mjs，也可能讀到不同 checkout；主任務要將路徑對回同一份 expected 副本。把「三項基準通過」標成主任務先前的紀錄，不能算成 A 或 B 自己執行的測試。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "角色",
+            "主要讀取",
+            "交付",
+            "不做的事"
+          ],
+          "rows": [
+            [
+              "A 行為分析",
+              "core.mjs",
+              "函式與邊界對照",
+              "修改程式"
+            ],
+            [
+              "B 測試分析",
+              "core.test.mjs",
+              "覆蓋與缺口證據",
+              "編造確定錯誤"
+            ],
+            [
+              "主任務",
+              "兩份報告與實檔",
+              "整合、測試、限制",
+              "只轉貼未核對摘要"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個子任務可以同時開始；測試統一由主任務最後執行，避免重複工作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：查看活動、補充條件與停止"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面從主任務的子代理活動開啟個別工作，查看讀到哪些檔案與目前狀態。CLI 在互動畫面輸入 /agent 切換查看，不是終端機中的 codex agent 命令。IDE 若提供背景代理面板，可展開看狀態或開啟個別代理。各入口可在主任務直接要求引導或停止某個工作者；看不到面板時先查版本與入口支援，不假造已完成名單。"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 互動畫面：查看子代理",
+          "language": "text",
+          "code": "/agent\n"
+        },
+        {
+          "type": "code",
+          "label": "送給主任務的補充條件",
+          "language": "text",
+          "code": "Tell Agent A to include duplicate task IDs in its analysis and keep the work read-only.\nWait for the updated evidence before the final summary.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個補充要由主任務轉給 A，再確認 A 的更新真的提到 addTask 對重複 ID 的處理。不要以為在目前打開的另一個視窗輸入就一定送到正確對象，先核對代理名稱或活動。若要停止 B，可明確寫「停止 B，保留已取得證據，B 尚未完成的部分列為未驗證」。停止不等於回復變更；本篇只讀所以應沒有檔案差異，若意外有修改仍須另外檢查與處理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：核對結果，而不只計算完成數"
+        },
+        {
+          "type": "paragraph",
+          "text": "正常參考版中 addTask 會修剪文字、限制長度、檢查 ID，並回傳新陣列；visibleTasks 依 active／completed 篩選；decodeTasks 會拒絕錯誤格式與重複 ID。主任務應回到這些實際函式驗證 A 的說法，再對照 B 指出的測試片段。假如 B 說沒有測重複 ID，先區分新增時與儲存讀回時的兩種檢查，不要只因兩份報告不同就選較長的一份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再由主任務執行一次基準測試，保存實際 exit code 與結果。驗收表至少包括「主張、檔案／函式、測試證據、已確認或未確認」。有些行為可讀程式確定，但沒經過瀏覽器操作；有些測試缺口只是建議，不是現存 Bug。把這些狀態分開，讀者才知道下一步該補測試、實際重現還是直接修正。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "進一步：保存狹義的自訂角色"
+        },
+        {
+          "type": "paragraph",
+          "text": "常重複做相同檢查時，可以在可信任練習專案建立 .codex/agents/data-reader.toml。這是代理設定 TOML，不是 AGENTS.md，也不會單憑檔案存在就啟動工作者。先確認沒有同名檔，再保存下列完整範例；新任務中明確要求使用 data_reader，檢查是否按角色讀取。這個延伸不必為了完成前面的兩人分工而先做。"
+        },
+        {
+          "type": "code",
+          "label": "練習專案：.codex/agents/data-reader.toml",
+          "language": "toml",
+          "code": "name = \"data_reader\"\ndescription = \"Inspect Small Steps data invariants with file and symbol evidence.\"\nsandbox_mode = \"read-only\"\ndeveloper_instructions = \"\"\"\nRead core.mjs and report inputs, invariants and error handling.\nDo not edit files, invoke external services or spawn other agents.\nCite the relevant functions and distinguish confirmed behavior from assumptions.\nIf the file is missing, report the missing path and stop.\n\"\"\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "範例未指定模型，讓它沿用已可用的設定。子代理會繼承主任務當下的權限；特別在互動 CLI，執行時的父層覆寫會重新套用，不能把檔案中的 read-only 當作永遠高於當前授權的保證。請在委派前檢查主任務的"
+            },
+            {
+              "type": "article",
+              "text": "權限模式",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "，並保留只讀要求。要撤回延伸設定，只移除這次自己新增的角色檔，重新開任務核對，不刪整個 .codex。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題、邊界與下一步"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "沒有建立子代理時，確認是否明確要求、入口與版本可用、是否已有執行中的工作者占用名額；不能用一個模型分飾兩角冒充。兩個人同時改檔時，先停止寫入與核對差異，再調整成不同目錄或順序執行，參考 "
+            },
+            {
+              "type": "article",
+              "text": "Worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "。子代理等待認證或權限時，主任務應說明來源與哪一步卡住，不能以更多權限偷偷重試同一個被拒絕的動作。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成時留下兩個真實工作者的活動、各自的證據、一次補充條件的回應、主任務的整合與測試結果，以及五個教材檔案未被改動的確認。刻意停止 B 的練習可以另開一次執行，標為停止案例，不算兩份完成報告。本文的角色設定與參考程式可靜態核對，沒有宣稱已替你的帳號啟動代理；桌面、IDE、其他系統與手機介面未實測者依官方文件查證。接續"
+            },
+            {
+              "type": "article",
+              "text": "子代理品質驗收",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            },
+            {
+              "type": "text",
+              "text": "學習驗證看起來合理但缺少證據的回報。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-subagents/diagram-1.svg",
+          "alt": "28. 子代理與工作分工 — 實作順序示意圖，非產品介面截圖。 Bounded tasks → Subagents → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "28. 子代理與工作分工 — 實作順序示意圖，非產品介面截圖。 Bounded tasks → Subagents → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Subagents: orchestration, permissions and custom roles",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "子代理与任务分工",
+      "description": "子代理适合把能独立完成的工作分开处理，再由主要任务整合结果。分工会增加模型与工具用量；若工作互相依赖、都要改同一段程式，平行处理反而可能产生冲突。",
+      "hero": {
+        "src": "/guides/codex-subagents/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "把一个唯读审查拆成两个独立子任务，等待两份报告，再由主任务核对证据。阅读约 15 分钟、操作约 20 分钟。使用第一个专案下载包中的 expected 完整参考副本，准备 Node.js 与可用的 Codex 入口。练习需要实际支援子代理的环境；只收到一篇分成两段的回答，不能算成功建立两个子代理。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "第一个专案",
+              "kind": "life",
+              "slug": "codex-first-project"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "子代理是主任务委派出去的工作者，负责明确的一部分，再把结果交回来。它不是另一个自动隔离的 Git 储存库，也不是多开两个视窗就会自动互相协调。适合并行的工作必须各自有输入、范围与成果，而且不必等待另一个子任务先改好档案。这次两个人都只读，因此不需要让他们竞争同一份程式码的写入权。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：先确认材料与基准"
+        },
+        {
+          "type": "paragraph",
+          "text": "在自己的完整参考副本打开 index.html、style.css、app.js、core.mjs、core.test.mjs 五个档案。不要开到故意有错的 start 或 broken 版本。Windows、macOS、Linux 都先确认终端机工作目录，再执行同一个测试命令；此练习不需要安装 npm 套件，也不会连外部资料库。保存测试结果与版本，后面才能分辨原本就有的问题。"
+        },
+        {
+          "type": "code",
+          "label": "三种系统的终端机：位于 expected 参考副本",
+          "language": "sh",
+          "code": "node --version\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "目前教材包含三个顶层测试，正常参考副本应通过。这个数字只属于本篇提供的材料，不代表你自己的专案一定有三个测试。若找不到 Node 或 core.test.mjs，先回到"
+            },
+            {
+              "type": "article",
+              "text": "CLI 排除问题",
+              "kind": "life",
+              "slug": "codex-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "与路径说明，停止后续分工。不要请子代理在材料不全时自行重建一个看起来相似的专案，否则审查对象已经改变。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：用明确要求启动两个子代理"
+        },
+        {
+          "type": "paragraph",
+          "text": "在桌面、CLI 或 IDE 的主任务选好练习资料夹，送出下面提示词。现在的本机 Codex 依直接要求或适用的 AGENTS.md／Skill 指示分派子代理；这里直接写清楚要两个。模型与推理深度先沿用主任务，不另外硬写帐号未必可用的模型名称。子代理各自使用模型和工具，会增加用量；两个小型唯读范围比不受限地持续新增工作者容易验收。"
+        },
+        {
+          "type": "code",
+          "label": "主任务输入框：两个唯读子任务",
+          "language": "text",
+          "code": "Use exactly two subagents for a read-only review of this Small Steps reference copy.\nDo not spawn additional subagents or modify files.\n\nAgent A: Read core.mjs. Map addTask, visibleTasks and decodeTasks.\nFor each function, report its input, behavior, failure or boundary handling, and file/symbol evidence.\n\nAgent B: Read core.test.mjs. Map existing test coverage to those same functions.\nDistinguish covered cases from possible missing cases; do not invent a bug just because a test is absent.\n\nParent: Wait for both reports. Verify cited symbols and reconcile disagreements.\nRun node --test core.test.mjs once in the practice directory after collecting the reports.\nReturn a compact evidence table, actual test result and unverified claims.\nIf subagents are unavailable, say so; do not present a single-agent answer as delegated work.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "送出前，把目前副本的完整根路径与基准结果一并提供，并要求两份回报各自列出读取路径。两份报告即使都写 core.mjs，也可能读到不同 checkout；主任务要将路径对回同一份 expected 副本。把「三项基准通过」标成主任务先前的纪录，不能算成 A 或 B 自己执行的测试。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "角色",
+            "主要读取",
+            "交付",
+            "不做的事"
+          ],
+          "rows": [
+            [
+              "A 行为分析",
+              "core.mjs",
+              "函式与边界对照",
+              "修改程式"
+            ],
+            [
+              "B 测试分析",
+              "core.test.mjs",
+              "覆盖与缺口证据",
+              "编造确定错误"
+            ],
+            [
+              "主任务",
+              "两份报告与实档",
+              "整合、测试、限制",
+              "只转贴未核对摘要"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "两个子任务可以同时开始；测试统一由主任务最后执行，避免重复工作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：查看活动、补充条件与停止"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面从主任务的子代理活动开启个别工作，查看读到哪些档案与目前状态。CLI 在互动画面输入 /agent 切换查看，不是终端机中的 codex agent 命令。IDE 若提供背景代理面板，可展开看状态或开启个别代理。各入口可在主任务直接要求引导或停止某个工作者；看不到面板时先查版本与入口支援，不假造已完成名单。"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 互动画面：查看子代理",
+          "language": "text",
+          "code": "/agent\n"
+        },
+        {
+          "type": "code",
+          "label": "送给主任务的补充条件",
+          "language": "text",
+          "code": "Tell Agent A to include duplicate task IDs in its analysis and keep the work read-only.\nWait for the updated evidence before the final summary.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "这个补充要由主任务转给 A，再确认 A 的更新真的提到 addTask 对重复 ID 的处理。不要以为在目前打开的另一个视窗输入就一定送到正确对象，先核对代理名称或活动。若要停止 B，可明确写「停止 B，保留已取得证据，B 尚未完成的部分列为未验证」。停止不等于回复变更；本篇只读所以应没有档案差异，若意外有修改仍须另外检查与处理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：核对结果，而不只计算完成数"
+        },
+        {
+          "type": "paragraph",
+          "text": "正常参考版中 addTask 会修剪文字、限制长度、检查 ID，并回传新阵列；visibleTasks 依 active／completed 筛选；decodeTasks 会拒绝错误格式与重复 ID。主任务应回到这些实际函式验证 A 的说法，再对照 B 指出的测试片段。假如 B 说没有测重复 ID，先区分新增时与储存读回时的两种检查，不要只因两份报告不同就选较长的一份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再由主任务执行一次基准测试，保存实际 exit code 与结果。验收表至少包括「主张、档案／函式、测试证据、已确认或未确认」。有些行为可读程式确定，但没经过浏览器操作；有些测试缺口只是建议，不是现存 Bug。把这些状态分开，读者才知道下一步该补测试、实际重现还是直接修正。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "进一步：保存狭义的自订角色"
+        },
+        {
+          "type": "paragraph",
+          "text": "常重复做相同检查时，可以在可信任练习专案建立 .codex/agents/data-reader.toml。这是代理设定 TOML，不是 AGENTS.md，也不会单凭档案存在就启动工作者。先确认没有同名档，再保存下列完整范例；新任务中明确要求使用 data_reader，检查是否按角色读取。这个延伸不必为了完成前面的两人分工而先做。"
+        },
+        {
+          "type": "code",
+          "label": "练习专案：.codex/agents/data-reader.toml",
+          "language": "toml",
+          "code": "name = \"data_reader\"\ndescription = \"Inspect Small Steps data invariants with file and symbol evidence.\"\nsandbox_mode = \"read-only\"\ndeveloper_instructions = \"\"\"\nRead core.mjs and report inputs, invariants and error handling.\nDo not edit files, invoke external services or spawn other agents.\nCite the relevant functions and distinguish confirmed behavior from assumptions.\nIf the file is missing, report the missing path and stop.\n\"\"\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "范例未指定模型，让它沿用已可用的设定。子代理会继承主任务当下的权限；特别在互动 CLI，执行时的父层覆写会重新套用，不能把档案中的 read-only 当作永远高于当前授权的保证。请在委派前检查主任务的"
+            },
+            {
+              "type": "article",
+              "text": "权限模式",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "，并保留只读要求。要撤回延伸设定，只移除这次自己新增的角色档，重新开任务核对，不删整个 .codex。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题、边界与下一步"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "没有建立子代理时，确认是否明确要求、入口与版本可用、是否已有执行中的工作者占用名额；不能用一个模型分饰两角冒充。两个人同时改档时，先停止写入与核对差异，再调整成不同目录或顺序执行，参考 "
+            },
+            {
+              "type": "article",
+              "text": "Worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "。子代理等待认证或权限时，主任务应说明来源与哪一步卡住，不能以更多权限偷偷重试同一个被拒绝的动作。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成时留下两个真实工作者的活动、各自的证据、一次补充条件的回应、主任务的整合与测试结果，以及五个教材档案未被改动的确认。刻意停止 B 的练习可以另开一次执行，标为停止案例，不算两份完成报告。本文的角色设定与参考程式可静态核对，没有宣称已替你的帐号启动代理；桌面、IDE、其他系统与手机介面未实测者依官方文件查证。接续"
+            },
+            {
+              "type": "article",
+              "text": "子代理品质验收",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            },
+            {
+              "type": "text",
+              "text": "学习验证看起来合理但缺少证据的回报。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-subagents/diagram-1.svg",
+          "alt": "28. 子代理与任务分工 — 实作顺序示意图，非产品介面截图。 Bounded tasks → Subagents → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "28. 子代理与任务分工 — 实作顺序示意图，非产品介面截图。 Bounded tasks → Subagents → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Subagents: orchestration, permissions and custom roles",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Subagents and task delegation",
+      "description": "Subagents suit independent work that can be reviewed and combined by the main task. They consume additional model and tool usage. Parallel tasks with mutual dependencies or overlapping edits can create more conflict than speed.",
+      "hero": {
+        "src": "/guides/codex-subagents/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Split a read-only review into two independent tasks, wait for both reports and have the parent verify the evidence. Allow 15 minutes to read and 20 to practice. Use the expected reference copy from First project, Node.js and a Codex client with subagent support. A single answer divided into two sections does not prove that two agents ran."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "First project",
+              "kind": "life",
+              "slug": "codex-first-project"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A subagent is delegated a defined part of the work and reports back to the parent. It is not automatically an isolated Git repository, and opening two windows does not create coordination. Parallel tasks need their own inputs, scopes and outputs without waiting for another worker's edits. Both workers in this exercise read only, avoiding competing writes to the same code."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Check materials and baseline"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open the five files index.html, style.css, app.js, core.mjs and core.test.mjs in your complete reference copy, not the deliberately broken start/broken variants. On Windows, macOS and Linux, verify the terminal working directory and run the same test command. No npm packages or external database are required. Save the result and version so later findings can be compared against the baseline."
+        },
+        {
+          "type": "code",
+          "label": "Terminal on all three systems: inside the expected reference copy",
+          "language": "sh",
+          "code": "node --version\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The provided reference currently has three top-level tests and should pass. That count belongs to this material, not arbitrary repositories. If Node or core.test.mjs is missing, resolve "
+            },
+            {
+              "type": "article",
+              "text": "CLI troubleshooting",
+              "kind": "life",
+              "slug": "codex-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": " and path issues before delegation. Do not ask a worker to invent a similar project when files are missing, as that changes the review target."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Explicitly request two subagents"
+        },
+        {
+          "type": "paragraph",
+          "text": "Select the practice folder in the parent desktop, CLI or IDE task and submit the prompt below. Current local Codex delegates when directly requested or instructed by applicable AGENTS.md/Skills; this prompt explicitly asks for two. Inherit the parent's model and effort instead of hardcoding a model unavailable to the account. Each worker consumes model/tool usage; two small bounded reviews are easier to verify than unlimited worker creation."
+        },
+        {
+          "type": "code",
+          "label": "Parent composer: two read-only subtasks",
+          "language": "text",
+          "code": "Use exactly two subagents for a read-only review of this Small Steps reference copy.\nDo not spawn additional subagents or modify files.\n\nAgent A: Read core.mjs. Map addTask, visibleTasks and decodeTasks.\nFor each function, report its input, behavior, failure or boundary handling, and file/symbol evidence.\n\nAgent B: Read core.test.mjs. Map existing test coverage to those same functions.\nDistinguish covered cases from possible missing cases; do not invent a bug just because a test is absent.\n\nParent: Wait for both reports. Verify cited symbols and reconcile disagreements.\nRun node --test core.test.mjs once in the practice directory after collecting the reports.\nReturn a compact evidence table, actual test result and unverified claims.\nIf subagents are unavailable, say so; do not present a single-agent answer as delegated work.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Include the reference copy's absolute root and baseline result with the request, and ask each report to identify its read paths. Two reports naming core.mjs may concern different checkouts; match both to the same expected copy. Label the three-pass baseline as the parent's earlier record, not a test run by A or B."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Role",
+            "Primary input",
+            "Deliverable",
+            "Excluded work"
+          ],
+          "rows": [
+            [
+              "A: behavior",
+              "core.mjs",
+              "Functions and boundaries",
+              "Code edits"
+            ],
+            [
+              "B: tests",
+              "core.test.mjs",
+              "Coverage and gap evidence",
+              "Invented confirmed bugs"
+            ],
+            [
+              "Parent",
+              "Both reports and files",
+              "Reconciliation, tests, limitations",
+              "Forwarding unchecked summaries"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Both workers can start together; the parent runs tests once afterward to avoid duplication."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Inspect, steer and stop work"
+        },
+        {
+          "type": "paragraph",
+          "text": "On desktop, open individual workers from activity in the parent and inspect files and status. In the interactive CLI, /agent switches views; it is not a shell command named codex agent. In an IDE with the background-agent panel, expand it or open a worker. Ask the parent to steer or stop a specific worker. If controls are absent, check version/surface support rather than inventing a completion list."
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI interactive session: inspect agents",
+          "language": "text",
+          "code": "/agent\n"
+        },
+        {
+          "type": "code",
+          "label": "Follow-up to the parent",
+          "language": "text",
+          "code": "Tell Agent A to include duplicate task IDs in its analysis and keep the work read-only.\nWait for the updated evidence before the final summary.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Have the parent send the addition to A and verify that A's update discusses addTask's duplicate-ID handling. Confirm the worker name/activity instead of assuming text entered in another window reaches the intended recipient. To stop B, request that explicitly while preserving evidence and marking unfinished work unverified. Stopping does not roll back changes. This read-only exercise should leave no file diff; investigate any unexpected edit separately."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Verify evidence, not just completion counts"
+        },
+        {
+          "type": "paragraph",
+          "text": "In the reference, addTask trims text, validates length and IDs and returns a new array; visibleTasks handles active/completed filters; decodeTasks rejects malformed data and duplicate IDs. The parent should verify A against those functions and B against the actual tests. If B claims duplicate IDs are untested, distinguish adding from decoding stored data. Resolve disagreement through evidence rather than choosing the longer report."
+        },
+        {
+          "type": "paragraph",
+          "text": "The parent then runs the baseline tests once and records the actual exit/result. Include claim, file/symbol, test evidence and verified/unverified status. Code inspection can establish some behavior without browser testing, while a coverage suggestion is not necessarily a current bug. Separate those states to decide whether the next step is another test, reproduction or a fix."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Optional: Save a narrowly scoped custom role"
+        },
+        {
+          "type": "paragraph",
+          "text": "For repeated reviews, create .codex/agents/data-reader.toml in a trusted practice project after checking that it does not already exist. This is agent TOML configuration, not AGENTS.md, and existence does not spawn a worker. Save the complete example, explicitly request data_reader in a new task and inspect its behavior. This optional extension is not a prerequisite for the two-worker exercise."
+        },
+        {
+          "type": "code",
+          "label": "Practice project: .codex/agents/data-reader.toml",
+          "language": "toml",
+          "code": "name = \"data_reader\"\ndescription = \"Inspect Small Steps data invariants with file and symbol evidence.\"\nsandbox_mode = \"read-only\"\ndeveloper_instructions = \"\"\"\nRead core.mjs and report inputs, invariants and error handling.\nDo not edit files, invoke external services or spawn other agents.\nCite the relevant functions and distinguish confirmed behavior from assumptions.\nIf the file is missing, report the missing path and stop.\n\"\"\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The example omits a model to inherit available settings. Workers inherit the parent's current permissions; interactive CLI runtime overrides are reapplied, so the file's read-only default is not an unconditional override of live permissions. Check the parent's "
+            },
+            {
+              "type": "article",
+              "text": "Permission mode",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": " before delegation and retain read-only instructions. To undo the extension, remove only your added role file and verify a new task without deleting the entire .codex folder."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Failures, boundaries and next step"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "If no subagent is created, check the explicit request, supported version/surface and capacity occupied by existing workers; do not substitute role-play for actual delegation. For concurrent edits, stop writes, inspect the diff and move to distinct workspaces or a sequence using "
+            },
+            {
+              "type": "article",
+              "text": "Worktrees",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": ". If a worker needs authentication or approval, the parent should identify the source and blocked step rather than silently retrying a denied action with greater access."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Retain activity from two real workers, their evidence, response to one steering message, parent reconciliation/test result and confirmation that all five files remain unchanged. A deliberately stopped B can be a separate run labeled stopped, not two completed reports. Role configuration and reference code can be checked statically; this text does not claim agents were spawned on your account. Unoperated clients/platforms are officially documented. Continue to "
+            },
+            {
+              "type": "article",
+              "text": "Subagent quality",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            },
+            {
+              "type": "text",
+              "text": " to assess plausible but unsupported reports."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-subagents/diagram-1.svg",
+          "alt": "28. Subagents and task delegation — Workflow illustration, not a product screenshot. Bounded tasks → Subagents → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "28. Subagents and task delegation — Workflow illustration, not a product screenshot. Bounded tasks → Subagents → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Subagents: orchestration, permissions and custom roles",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "サブエージェントと作業分担",
+      "description": "サブエージェントは独立した調査を分担し、主担当が統合する仕組みです。利用量が増え、依存や編集の重複があると競合します。",
+      "hero": {
+        "src": "/guides/codex-subagents/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "読取り審査を独立した二作業に分け、両報告を待って親が証拠を照合します。読む時間15分、実習20分。最初のプロジェクトの expected コピー、Node.js、対応 Codex を用意します。一つの回答が二節に分かれただけでは2つのエージェント実行の証明になりません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "最初のプロジェクト",
+              "kind": "life",
+              "slug": "codex-first-project"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "サブエージェントは親から特定部分を任され結果を返す働き手です。独立 Git が自動で付くわけでも、二窓だけで協調するわけでもありません。並行作業は入力、範囲、成果が別で、他方の編集完了に依存しないことが条件です。今回は両者読取りのみです。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：教材と基準の確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成コピーの五ファイルを開き、故障用 start・broken と混同しません。全 OS で現在地を確認し同じ命令を実行します。npm 導入や外部 DB は不要です。版と基準結果を保存して既存問題を区別します。"
+        },
+        {
+          "type": "code",
+          "label": "3 OS の端末：expected コピー内",
+          "language": "sh",
+          "code": "node --version\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "教材は現在三つの上位テストが通る想定ですが、他庫の数を保証しません。Node やテストがなければ"
+            },
+            {
+              "type": "article",
+              "text": "障害対応",
+              "kind": "life",
+              "slug": "codex-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "と経路を先に直します。不足時に似たプロジェクトをエージェントに作らせると審査対象が変わります。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：2つのエージェントを明示的に依頼"
+        },
+        {
+          "type": "paragraph",
+          "text": "親のデスクトップ・CLI・IDE で実習ディレクトリを選び下の依頼を送ります。現行のローカル Codex は直接要求または適用規則で分担するため二つと明示します。モデル・推論は親を継承し未提供名を固定しません。各エージェントが用量を使うので、無制限追加より二つの狭い読取り範囲にします。"
+        },
+        {
+          "type": "code",
+          "label": "親の入力欄：二つの読取り作業",
+          "language": "text",
+          "code": "Use exactly two subagents for a read-only review of this Small Steps reference copy.\nDo not spawn additional subagents or modify files.\n\nAgent A: Read core.mjs. Map addTask, visibleTasks and decodeTasks.\nFor each function, report its input, behavior, failure or boundary handling, and file/symbol evidence.\n\nAgent B: Read core.test.mjs. Map existing test coverage to those same functions.\nDistinguish covered cases from possible missing cases; do not invent a bug just because a test is absent.\n\nParent: Wait for both reports. Verify cited symbols and reconcile disagreements.\nRun node --test core.test.mjs once in the practice directory after collecting the reports.\nReturn a compact evidence table, actual test result and unverified claims.\nIf subagents are unavailable, say so; do not present a single-agent answer as delegated work.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "依頼に参照コピーの完全ルートと基準結果を添え、各報告に読んだパスを記載させます。同じ core.mjs 名でも別 checkout の可能性があるため、親が同じ expected コピーへ照合します。三成功の基準は親の過去記録であり、A や B の実行結果とはしません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "役割",
+            "主入力",
+            "成果",
+            "対象外"
+          ],
+          "rows": [
+            [
+              "A 動作",
+              "core.mjs",
+              "関数と境界",
+              "編集"
+            ],
+            [
+              "B 試験",
+              "core.test.mjs",
+              "テスト範囲と不足証拠",
+              "架空の確定不具合"
+            ],
+            [
+              "親",
+              "両報告と実体",
+              "統合・試験・制限",
+              "未検証の転送"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "両者は同時開始でき、試験は最後に親が一度行います。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：活動確認・追加指示・停止"
+        },
+        {
+          "type": "paragraph",
+          "text": "デスクトップは親の活動から個別作業を開き、ファイルと状態を見ます。CLI の /agent は対話内の切替で codex agent という端末命令ではありません。IDE の背景面板があれば開きます。親へ誘導・停止を依頼でき、表示がなければ版と対応を確認します。"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 対話内：エージェント確認",
+          "language": "text",
+          "code": "/agent\n"
+        },
+        {
+          "type": "code",
+          "label": "親への追加条件",
+          "language": "text",
+          "code": "Tell Agent A to include duplicate task IDs in its analysis and keep the work read-only.\nWait for the updated evidence before the final summary.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "親から A へ追加を渡し、更新に addTask の重複 ID があるか確認します。別窓の入力先を推測せず対象名を見ます。B の停止時は取得済み証拠を残し未完を未検証にします。停止は変更復元ではなく、読取り演習に差分が出たら別途確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：完了数だけでなく証拠を照合"
+        },
+        {
+          "type": "paragraph",
+          "text": "参考版の addTask は空白、長さ、ID を確認して新配列を返し、visibleTasks は二条件で絞り、decodeTasks は不正形式と ID 重複を拒みます。親は実関数と試験を照合し、重複未試験という主張なら追加と保存読戻しを区別します。長い報告を優先しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "親が基準試験を一度実行し実終了値と結果を保存します。主張、実体、試験証拠、確認状態を並べます。読解で分かってもブラウザー未操作の場合や、テスト範囲の追加提案であって不具合でない場合を分け、次の試験・再現・修正を決めます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "任意：狭い独自役割を保存"
+        },
+        {
+          "type": "paragraph",
+          "text": "反復する場合は信頼済み実習プロジェクトに、同名不在を確認して .codex/agents/data-reader.toml を作れます。エージェント TOML であり AGENTS.md ではなく、存在だけで起動しません。新タスクで data_reader を明示して役割を確認します。前の二人実習の前提ではありません。"
+        },
+        {
+          "type": "code",
+          "label": "実習プロジェクト：.codex/agents/data-reader.toml",
+          "language": "toml",
+          "code": "name = \"data_reader\"\ndescription = \"Inspect Small Steps data invariants with file and symbol evidence.\"\nsandbox_mode = \"read-only\"\ndeveloper_instructions = \"\"\"\nRead core.mjs and report inputs, invariants and error handling.\nDo not edit files, invoke external services or spawn other agents.\nCite the relevant functions and distinguish confirmed behavior from assumptions.\nIf the file is missing, report the missing path and stop.\n\"\"\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "モデルを省略して利用可能設定を継承します。エージェントは親の現在権限を継承し、CLI の実行時上書きも再適用されるため、read-only ファイルが常に最優先とは保証しません。委任前に"
+            },
+            {
+              "type": "article",
+              "text": "権限",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "を確認します。戻す際は追加した役割だけを除き新タスクで確認します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "問題・境界・次の一歩"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "未生成なら明示要求、対応版、既存作業による枠占有を確認し、一モデルの役割演技で代用しません。同時編集は停止・差分確認後に "
+            },
+            {
+              "type": "article",
+              "text": "Worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": " や順序処理へ替えます。認証・許可待ちは親が対象と停止箇所を示し、拒否行為を密かに権限拡大して再試行しません。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "実在2つのエージェントの活動、証拠、一追加への応答、親の統合・試験、五ファイル未変更を残します。B 停止は別実行で停止例とし、二完了とは数えません。役割・参考コードの静的確認と利用者アカウントでの実行を混同せず、未操作環境は公式確認とします。次は"
+            },
+            {
+              "type": "article",
+              "text": "エージェント品質検証",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            },
+            {
+              "type": "text",
+              "text": "です。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-subagents/diagram-1.svg",
+          "alt": "28. サブエージェントと作業分担 — 作業の流れを表す図です。製品画面の画像ではありません。 Bounded tasks → Subagents → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "28. サブエージェントと作業分担 — 作業の流れを表す図です。製品画面の画像ではありません。 Bounded tasks → Subagents → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Subagents: orchestration, permissions and custom roles",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "하위 에이전트와 작업 분담",
+      "description": "하위 에이전트는 독립 조사를 나누고 주 작업이 통합하는 방식입니다. 사용량이 늘며 의존성과 편집 중복이 있으면 충돌합니다.",
+      "hero": {
+        "src": "/guides/codex-subagents/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "읽기 전용 검토를 두 독립 작업으로 나누고 모두 기다린 뒤 부모가 증거를 확인합니다. 읽기 15분, 실습 20분입니다. 첫 프로젝트의 expected 사본, Node.js, 하위 에이전트 지원 Codex를 준비하세요. 답변 하나를 두 부분으로 나눈 것은 두 에이전트 실행 증거가 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "첫 프로젝트",
+              "kind": "life",
+              "slug": "codex-first-project"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "하위 에이전트는 부모에게 특정 부분을 위임받고 결과를 돌려줍니다. 자동 Git 격리도 아니며 두 창을 열었다고 조율되는 것도 아닙니다. 병렬 작업은 입력·범위·결과가 나뉘고 다른 작업의 수정 완료를 기다리지 않아야 합니다. 이번에는 둘 다 읽기만 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 자료와 기준 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "완성 사본의 다섯 파일을 열고 고의 오류가 있는 start/broken과 혼동하지 마세요. 각 OS에서 현재 폴더를 확인하고 같은 명령을 실행합니다. npm 패키지나 외부 DB가 필요하지 않습니다. 버전과 기준 결과를 보존해 기존 문제를 구분하세요."
+        },
+        {
+          "type": "code",
+          "label": "세 OS 터미널: expected 사본 안",
+          "language": "sh",
+          "code": "node --version\nnode --test core.test.mjs\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "현재 제공 자료는 최상위 테스트 세 개가 통과해야 하지만 다른 저장소의 개수를 뜻하지 않습니다. Node나 테스트가 없으면 "
+            },
+            {
+              "type": "article",
+              "text": "문제 해결",
+              "kind": "life",
+              "slug": "codex-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "과 경로를 먼저 확인하세요. 누락됐다고 비슷한 프로젝트를 만들게 하면 검토 대상이 달라집니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 두 하위 에이전트 명시 요청"
+        },
+        {
+          "type": "paragraph",
+          "text": "부모 데스크톱·CLI·IDE에서 실습 폴더를 선택하고 아래 요청을 보냅니다. 현재 로컬 Codex는 직접 요청이나 적용 규칙에 따라 위임하므로 두 개를 명시합니다. 모델과 추론은 부모를 상속하고 계정에 없을 수 있는 이름을 고정하지 마세요. 각 에이전트가 사용량을 쓰므로 무제한 생성 대신 작은 읽기 범위 둘로 제한합니다."
+        },
+        {
+          "type": "code",
+          "label": "부모 입력창: 읽기 전용 하위 작업 두 개",
+          "language": "text",
+          "code": "Use exactly two subagents for a read-only review of this Small Steps reference copy.\nDo not spawn additional subagents or modify files.\n\nAgent A: Read core.mjs. Map addTask, visibleTasks and decodeTasks.\nFor each function, report its input, behavior, failure or boundary handling, and file/symbol evidence.\n\nAgent B: Read core.test.mjs. Map existing test coverage to those same functions.\nDistinguish covered cases from possible missing cases; do not invent a bug just because a test is absent.\n\nParent: Wait for both reports. Verify cited symbols and reconcile disagreements.\nRun node --test core.test.mjs once in the practice directory after collecting the reports.\nReturn a compact evidence table, actual test result and unverified claims.\nIf subagents are unavailable, say so; do not present a single-agent answer as delegated work.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "요청에 참조 사본의 전체 루트와 기준 결과를 포함하고 각 보고서에 읽은 경로를 적게 하세요. core.mjs라는 이름이 같아도 다른 checkout일 수 있으므로 부모가 같은 expected 사본인지 맞춥니다. 세 항목 통과 기준은 부모의 이전 기록이며 A나 B가 실행한 테스트로 세지 않습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "역할",
+            "주요 입력",
+            "결과",
+            "제외"
+          ],
+          "rows": [
+            [
+              "A 동작",
+              "core.mjs",
+              "함수와 경계",
+              "코드 수정"
+            ],
+            [
+              "B 테스트",
+              "core.test.mjs",
+              "범위와 빈틈 증거",
+              "버그 단정 조작"
+            ],
+            [
+              "부모",
+              "두 보고와 실제 파일",
+              "조정·시험·제한",
+              "미확인 요약 전달"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "둘은 동시에 시작하고 테스트는 부모가 마지막에 한 번 실행합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 활동 확인·추가 지시·중지"
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱은 부모 활동에서 개별 작업을 열어 파일과 상태를 봅니다. CLI /agent는 대화 안의 전환이며 codex agent라는 셸 명령이 아닙니다. IDE에 배경 패널이 있으면 펼치세요. 부모에게 방향 수정·중지를 요청하며 표시가 없으면 버전과 지원을 확인합니다."
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 대화 안: 에이전트 확인",
+          "language": "text",
+          "code": "/agent\n"
+        },
+        {
+          "type": "code",
+          "label": "부모에게 추가 조건",
+          "language": "text",
+          "code": "Tell Agent A to include duplicate task IDs in its analysis and keep the work read-only.\nWait for the updated evidence before the final summary.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "부모가 A에 조건을 전달하고 업데이트에 addTask 중복 ID 처리가 있는지 확인하세요. 다른 창에 입력했다고 대상에게 전달됐다고 가정하지 않습니다. B 중지는 증거를 보존하고 미완료를 미검증으로 남기도록 요청합니다. 중지는 복원이 아니며 읽기 연습에 차이가 생기면 따로 조사합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 완료 수 대신 증거 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "참고판 addTask는 공백·길이·ID를 검사해 새 배열을 반환하고 visibleTasks는 active/completed를 필터링하며 decodeTasks는 잘못된 형식과 중복 ID를 거부합니다. 부모는 실제 함수와 테스트를 확인하고 중복 미검증 주장에는 추가와 저장 복원의 차이를 구분하세요. 긴 보고를 우선하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "부모가 기준 테스트를 한 번 실행해 실제 종료와 결과를 남깁니다. 주장·파일/함수·시험 증거·검증 상태를 기록하세요. 코드로 확인해도 브라우저 미실행일 수 있고 테스트 빈틈은 버그가 아닐 수 있습니다. 이를 구분해야 시험·재현·수정 중 다음 단계를 고를 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "선택: 좁은 사용자 역할 저장"
+        },
+        {
+          "type": "paragraph",
+          "text": "반복 검토는 신뢰한 실습 프로젝트에 동명 파일이 없는지 확인하고 .codex/agents/data-reader.toml을 만들 수 있습니다. AGENTS.md가 아닌 에이전트 TOML이며 파일만으로 실행되지 않습니다. 새 작업에서 data_reader를 명시해 역할을 확인하세요. 앞의 두 작업 실습에 필수는 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "실습 프로젝트: .codex/agents/data-reader.toml",
+          "language": "toml",
+          "code": "name = \"data_reader\"\ndescription = \"Inspect Small Steps data invariants with file and symbol evidence.\"\nsandbox_mode = \"read-only\"\ndeveloper_instructions = \"\"\"\nRead core.mjs and report inputs, invariants and error handling.\nDo not edit files, invoke external services or spawn other agents.\nCite the relevant functions and distinguish confirmed behavior from assumptions.\nIf the file is missing, report the missing path and stop.\n\"\"\"\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "모델을 생략해 사용 가능한 설정을 상속합니다. 하위 작업은 부모의 현재 권한을 받으며 CLI 런타임 덮어쓰기가 다시 적용되므로 파일 read-only가 항상 우선한다는 보장은 아닙니다. 위임 전 "
+            },
+            {
+              "type": "article",
+              "text": "권한",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "을 확인하세요. 되돌릴 때 추가한 역할 파일만 제거하고 새 작업에서 확인합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제·경계·다음 단계"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "생성되지 않으면 명시 요청·지원 버전·기존 작업의 슬롯 점유를 확인하고 한 모델 역할극으로 대체하지 않습니다. 동시 편집은 중지·차이 확인 후 "
+            },
+            {
+              "type": "article",
+              "text": "Worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "나 순차 작업으로 바꿉니다. 인증·승인 대기는 부모가 출처와 막힌 단계를 알리고 거부된 동작을 몰래 권한 확대하여 재시도하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "실제 두 작업자의 활동·증거·추가 지시 응답·부모 통합과 시험·다섯 파일 불변을 남깁니다. B 중지는 별도 실행의 중지 사례이며 두 완료로 세지 않습니다. 역할·참고 코드의 정적 확인이 사용자 계정에서 실행했다는 뜻은 아닙니다. 미실행 환경은 공식 문서 확인으로 표시하고 "
+            },
+            {
+              "type": "article",
+              "text": "품질 검증",
+              "kind": "life",
+              "slug": "codex-subagent-quality"
+            },
+            {
+              "type": "text",
+              "text": "으로 이어갑니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-subagents/diagram-1.svg",
+          "alt": "28. 하위 에이전트와 작업 분담 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Bounded tasks → Subagents → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "28. 하위 에이전트와 작업 분담 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Bounded tasks → Subagents → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Subagents: orchestration, permissions and custom roles",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

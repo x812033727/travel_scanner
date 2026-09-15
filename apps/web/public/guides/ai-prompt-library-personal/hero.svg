@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">自己的提示詞庫 / A personal prompt library</title>
+  <desc id="desc">一張抽象插圖。左邊是三張疊在一起的圓角卡片，最前面那張畫著幾條粗細不同的橫線，代表一則提示詞範本裡的固定欄位；卡片右下角有一個小圓圈標記，代表版本標籤。中間一個粗箭頭往右指，接到一條分成三岔的線。右邊由上而下是三個容器：一個圓角對話框、一個資料夾，以及兩顆鍵盤按鍵形狀的方塊，分別代表把同一則範本放進 AI 聊天工具、筆記軟體與文字展開工具。畫面底部有一行字「自己的提示詞庫」。整張圖用米色底，搭配深綠、藍與橘三種框線顏色，沒有任何產品標誌或介面。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- stacked template cards -->
+  <rect x="150" y="212" width="400" height="440" rx="34" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="6"/>
+  <rect x="115" y="242" width="400" height="440" rx="34" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="7"/>
+  <rect x="80" y="272" width="400" height="440" rx="34" fill="#FFFFFF" stroke="#0D6B68" stroke-width="10"/>
+
+  <!-- field lines on the front card -->
+  <rect x="126" y="330" width="230" height="26" rx="13" fill="#0D6B68"/>
+  <rect x="126" y="392" width="308" height="20" rx="10" fill="#E3F0EF"/>
+  <rect x="126" y="440" width="264" height="20" rx="10" fill="#E3F0EF"/>
+  <rect x="126" y="488" width="308" height="20" rx="10" fill="#E3F0EF"/>
+  <rect x="126" y="536" width="196" height="20" rx="10" fill="#E3F0EF"/>
+  <rect x="126" y="596" width="150" height="26" rx="13" fill="#D97A2B"/>
+  <circle cx="428" cy="609" r="20" fill="#F7F1E8" stroke="#D97A2B" stroke-width="8"/>
+
+  <!-- arrow and three-way fan -->
+  <path d="M 560 500 L 686 500" stroke="#0D6B68" stroke-width="16" stroke-linecap="round" fill="none"/>
+  <path d="M 690 458 L 758 500 L 690 542 Z" fill="#0D6B68"/>
+  <path d="M 770 500 L 820 500" stroke="#0D6B68" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M 820 245 L 820 713" stroke="#0D6B68" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M 820 245 L 942 245" stroke="#0D6B68" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M 820 500 L 942 500" stroke="#0D6B68" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M 820 713 L 942 713" stroke="#0D6B68" stroke-width="10" stroke-linecap="round" fill="none"/>
+
+  <!-- target 1: chat bubble -->
+  <rect x="980" y="168" width="420" height="154" rx="40" fill="#E3F0EF" stroke="#0D6B68" stroke-width="10"/>
+  <path d="M 1030 322 L 1030 382 L 1098 322 Z" fill="#E3F0EF" stroke="#0D6B68" stroke-width="10" stroke-linejoin="round"/>
+  <rect x="1024" y="214" width="252" height="20" rx="10" fill="#0D6B68"/>
+  <rect x="1024" y="258" width="168" height="20" rx="10" fill="#0D6B68"/>
+
+  <!-- target 2: folder -->
+  <path d="M 980 412 L 1140 412 L 1176 450 L 1400 450 L 1400 588 L 980 588 Z" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="10" stroke-linejoin="round"/>
+  <rect x="1024" y="508" width="252" height="20" rx="10" fill="#2F6F9F"/>
+
+  <!-- target 3: two keyboard keys -->
+  <rect x="980" y="640" width="196" height="146" rx="28" fill="#FFFFFF" stroke="#D97A2B" stroke-width="10"/>
+  <rect x="1022" y="703" width="112" height="20" rx="10" fill="#D97A2B"/>
+  <rect x="1204" y="640" width="196" height="146" rx="28" fill="#FFFFFF" stroke="#D97A2B" stroke-width="10"/>
+  <rect x="1246" y="703" width="112" height="20" rx="10" fill="#D97A2B"/>
+
+  <text x="760" y="860" font-size="54" font-weight="700" fill="#102A2B" text-anchor="middle">自己的提示詞庫</text>
+</svg>

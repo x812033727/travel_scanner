@@ -1,0 +1,1832 @@
+{
+  "slug": "codex-mobile-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 104,
+  "locales": {
+    "zh-TW": {
+      "title": "手機使用：iPhone 與 Android",
+      "description": "手機可以透過 ChatGPT 的 Remote 檢視與引導連線電腦上的 Codex 任務。官方文件列出 iOS 與 Android 客戶端，支援的 Remote 主機為 Mac 或 Windows；功能可能分批開放。不要將此解釋為把完整開發環境安裝到手機，或假定 Linux 可當 Remote 主機。",
+      "hero": {
+        "src": "/guides/codex-mobile-guide/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀完能做到什麼"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你會從 iPhone 或 Android 的 ChatGPT 應用程式，連接自己的 Mac 或 Windows 電腦，找到一個 Codex 練習任務，送出唯讀要求，再確認結果來自正確主機。閱讀約 12 分鐘，首次配對與操作約 20 分鐘。這篇先完成一條可核對的 Remote 路線，再說明它與雲端工作的差異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手機負責傳送需求、回覆與核准；檔案、終端機、瀏覽器及工具由連接的主機提供。手機畫面能看見任務，不表示專案已下載到手機，也不表示關掉電腦後仍能繼續執行。先學會辨識工作位置，比急著在手機上要求大量修改更有用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前：兩邊都要準備"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "電腦先完成"
+            },
+            {
+              "type": "article",
+              "text": "桌面版入門",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "，準備已解壓縮的"
+            },
+            {
+              "type": "link",
+              "text": "待辦網站材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "，並以 expected 副本建立 codex-practice 專案。先在電腦開啟這個專案，確認五個檔案都存在；本篇不需另外接上 GitHub 或 SSH 伺服器。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "iPhone 從 App Store、Android 從 Google Play 安裝或更新 OpenAI 的 ChatGPT 應用程式。兩邊使用相同 ChatGPT 帳號及工作區，且該帳號可使用 Codex。組織可能需要開啟 Remote Control，登入流程也可能要求 SSO、多因素驗證或通行金鑰。這些條件未完成時，先處理帳號流程，不要用新建一堆任務繞過。"
+        },
+        {
+          "type": "paragraph",
+          "text": "截至 2026-09-14，官方 Remote 文件列出 iOS、Android 作為手機入口，Mac 與 Windows 桌面應用程式作為主機。功能會分階段提供；Linux 桌面預覽版不能因此推定也支援本篇手機主機流程。CLI 或 IDE 擴充套件不能取代首次配對的桌面應用程式。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "為這份副本加上辨識標記"
+        },
+        {
+          "type": "paragraph",
+          "text": "在電腦的 codex-practice 根目錄，用純文字編輯器新增 remote-check.txt。這是本篇額外的辨識檔，不是五個網站程式檔之一。若同名檔案已存在，先閱讀；不要覆寫其他工作的檔案。寫入下列一行，並在儲存前把尾端 01 改成自己選的代號。同名副本使用不同代號，不要填帳號、密碼或配對碼。"
+        },
+        {
+          "type": "code",
+          "label": "電腦：codex-practice/remote-check.txt；儲存前自行改尾端代號",
+          "language": "text",
+          "code": "REMOTE-PRACTICE-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "把代號、主機名稱與完整資料夾路徑記在自己的筆記。稍後詢問時不把代號貼給 Codex，讓它從檔案讀取；這能區分一般知識回答與讀到這份副本，仍需搭配工具紀錄核對。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一階段：在電腦啟用連接"
+        },
+        {
+          "type": "paragraph",
+          "text": "在準備接收工作的那台電腦開啟 ChatGPT 桌面版，進入 Settings → Connections → Control this Mac or PC，選 Set up 或 Add。依畫面啟用遠端存取及完成驗證。請核對這台電腦的名稱與專案，避免在另一台空白測試機完成了配對卻找不到材料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著畫面會提供 QR code。這個碼用來配對手機與主機，應由你自己的手機掃描；不要將它放入公開教學截圖或傳給其他人。每台要控制的主機都需要配對，登入相同帳號本身不是所有裝置都已連接的證據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到 Connections 檢查是否允許其他裝置連接，以及可用的保持喚醒選項。主機需要開著應用程式、保持連線且未睡眠。Mac 筆電先保持接電與上蓋開啟；Windows 涉及 Computer Use 時，還要依官方條件保持桌面可用。本例只有讀取檔案，不需要為了完成它額外啟用所有電腦控制功能。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二階段：在手機完成配對"
+        },
+        {
+          "type": "paragraph",
+          "text": "iPhone 使用相機掃描主機 QR code，點開連結進入 ChatGPT，依 Remote 設定流程確認相同帳號及工作區。如果連結停在瀏覽器，檢查是否已安裝最新版應用程式，再回主機重新開始配對。不要把網頁聊天紀錄當作 Remote 已連接的完成畫面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Android 同樣掃描 QR code，選擇以 ChatGPT 開啟，完成帳號與工作區驗證。若系統出現選擇開啟應用程式的提示，確認進入的是官方 ChatGPT。手機未出現 Remote 時，先更新、重新開啟應用程式並檢查帳號可用功能；換手機瀏覽器不能保證取得尚未提供的入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩種系統的完成判準相同：Remote 中出現主機，能選中該主機，並看見其專案或任務。通知權限可用來接收完成或需要注意的提示；即使允許通知，仍應回到任務查看實際結果，不能把通知文字當成檔案驗收。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三階段：完成一個唯讀任務"
+        },
+        {
+          "type": "paragraph",
+          "text": "在手機 Remote 選擇剛配對的主機，再打開 codex-practice 專案中的 Codex 任務。若建立新任務，先確認工作位置依然是主機上的練習資料夾。下面內容貼進手機的任務輸入框，不是在手機搜尋列執行終端機命令。"
+        },
+        {
+          "type": "code",
+          "label": "手機 ChatGPT → Remote → 主機上的 Codex 練習任務",
+          "language": "text",
+          "code": "Read this practice project without changing files.\nReport the host or environment name if available and the current working folder.\nList index.html, style.css, app.js, core.mjs and core.test.mjs.\nExplain how task completion is stored and name the localStorage key.\nIf you cannot inspect a file, report the limitation instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "回應應指出練習路徑，從程式碼找到專用的 mokaair-codex-todo-v1 儲存鍵，並說明 completed 欄位。回電腦開啟 app.js 與 core.mjs 比對，確認沒有檔案被修改。若只收到一般待辦網站知識，缺少路徑和程式依據，這次仍未完成驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著在手機送出追問，讓它引用具體檔案說明空白任務為何不能加入。這能檢查你是否延續同一個任務與上下文。你不需要在手機安裝 Node.js，因為本機工具由主機提供；若下一篇要執行測試，仍要先確認主機真的有該工具。"
+        },
+        {
+          "type": "code",
+          "label": "同一個手機 Remote 任務；追問與驗證",
+          "language": "text",
+          "code": "In the same project, explain what happens when the new task contains only spaces.\nIdentify the relevant function and file. Do not edit or reset stored data.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期提到 core.mjs 的 addTask 會整理文字並拒絕空白，搭配表單的錯誤顯示。你可以在電腦預覽中實際輸入空白確認。正常案例是成功讀取專案；邊界案例是拒絕空白輸入，兩者都要有可比對依據。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "再核對主機與即時檔案"
+        },
+        {
+          "type": "code",
+          "label": "同一個手機 Remote 任務；代號不要貼進提示詞",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's working folder and quote its one-line content.\nReport the absolute file path and the tool used to read it.\nDo not edit files. If the file cannot be read, stop and report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "將回覆的代號與路徑對照電腦筆記，再看它是否真的有讀檔紀錄。代號不符、檔案不存在或只有猜測，都先停止後續修改，回查 Remote 選中的主機及任務。修正位置後重讀同一檔案；不要把正確代號告訴它來「修正答案」。若無法取得工具紀錄，保留該項未驗證。練習結束只移除自己新增的 remote-check.txt，保留網站原始檔。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "中斷時如何判斷工作狀態"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成唯讀操作後，可短暫讓主機離線，觀察手機是否顯示無法連接；不要在寫入進行中故意測試。恢復連線、開啟主機應用程式後，回原任務查看狀態。離線訊息只代表目前無法連線，不能據此認定前一項操作完全沒有發生。"
+        },
+        {
+          "type": "paragraph",
+          "text": "因此，網路恢復後先查看最後一則回應和檔案，再決定是否重新送出。將同一個「刪除／提交／建立」要求重送多次，可能造成重複結果。這一篇使用唯讀要求，正是為了讓你先練習辨識狀態，再進入需要寫入的流程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Remote、雲端與手機網址的差異"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Remote 使用連接主機的專案與工具；"
+            },
+            {
+              "type": "article",
+              "text": "雲端任務",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "使用另外設定的雲端環境。兩者的檔案、分支和依賴不一定相同，不能只因為任務標題相似就當成同一份工作。手機直接開啟某個網頁，也不等於取得電腦本機專案。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "同樣地，電腦上 http://127.0.0.1:4173 的 127.0.0.1 指的是那台電腦；在手機瀏覽器輸入同一個網址，指的會是手機自己。需要查看成果時，先在 Remote 任務看主機提供的預覽或截圖。不要為了本篇練習去開放公共連接埠。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與解除連接"
+        },
+        {
+          "type": "paragraph",
+          "text": "手機看不到主機：依序確認主機程式正在執行、允許連接、同帳號與工作區、電腦未睡眠。先修正具體條件再重新配對。舊配對長期未使用時，依官方說明更新兩邊並重做配對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "配對要求沒有出現：開手機 Remote 核對入口，再從主機重啟設定流程；組織帳號請核對 Remote Control 是否由管理者開啟。完成登入不代表組織遠端政策已允許，錯誤訊息應保留給管理者判讀，但不要附上驗證碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "連上卻找不到檔案：先看主機名稱和工作目錄，再確認專案是否在那台主機。另一台電腦上的資料夾不會因為同名自動同步。將任務交接到別處會涉及實際環境與 Git 狀態，初學者先回原主機完成驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不再需要遠端時，在主機 Settings → Connections 管理已連接裝置，關閉允許遠端控制或移除不再使用的配對。回手機確認已不能操作。關閉 Remote 不會回復先前的檔案變更，也不應當作停止所有工作的保證；有執行中的任務時，先在任務內停止並確認狀態。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作位置",
+            "提供什麼",
+            "如何核對"
+          ],
+          "rows": [
+            [
+              "手機",
+              "需求、追問、核准",
+              "Remote 中選中的主機與任務"
+            ],
+            [
+              "Mac / Windows 主機",
+              "專案檔案與本機工具",
+              "實際工作目錄與檔案內容"
+            ],
+            [
+              "雲端環境",
+              "另外設定的程式與依賴",
+              "雲端任務的環境與分支"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小練習與查證紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "在手機要求整理「目前工作位置、檔案清單、未執行檢查」三項交接資訊，再回電腦用同一個任務核對。完成判準是兩邊指向同一主機與路徑，且你能說明哪些結果已實際看過，哪些只是尚待執行的建議。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "入口、配對與主機條件依 "
+            },
+            {
+              "type": "link",
+              "text": "Remote connections 官方文件",
+              "url": "https://learn.chatgpt.com/docs/remote-connections"
+            },
+            {
+              "type": "text",
+              "text": "於 2026-09-14 查證；本文未在實體 iPhone、Android 或遠端配對流程實測，圖解只用來說明關係。練習網站的行為有獨立瀏覽器驗證。接著可讀"
+            },
+            {
+              "type": "article",
+              "text": "上下文交接",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "權限",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "text": "雲端工作",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mobile-guide/diagram-1.svg",
+          "alt": "04. 手機使用：iPhone 與 Android — 實作順序示意圖，非產品介面截圖。 Phone → Mac / Windows → Files",
+          "width": 1600,
+          "height": 900,
+          "caption": "04. 手機使用：iPhone 與 Android — 實作順序示意圖，非產品介面截圖。 Phone → Mac / Windows → Files",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloud tasks",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "手机使用：iPhone 与 Android",
+      "description": "手机可以透过 ChatGPT 的 Remote 检视与引导连线电脑上的 Codex 任务。官方文件列出 iOS 与 Android 客户端，支援的 Remote 主机为 Mac 或 Windows；功能可能分批开放。不要将此解释为把完整开发环境安装到手机，或假定 Linux 可当 Remote 主机。",
+      "hero": {
+        "src": "/guides/codex-mobile-guide/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "读完能做到什么"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你会从 iPhone 或 Android 的 ChatGPT 应用程式，连接自己的 Mac 或 Windows 电脑，找到一个 Codex 练习任务，送出唯读要求，再确认结果来自正确主机。阅读约 12 分钟，首次配对与操作约 20 分钟。这篇先完成一条可核对的 Remote 路线，再说明它与云端工作的差异。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手机负责传送需求、回复与核准；档案、终端机、浏览器及工具由连接的主机提供。手机画面能看见任务，不表示专案已下载到手机，也不表示关掉电脑后仍能继续执行。先学会辨识工作位置，比急著在手机上要求大量修改更有用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前：两边都要准备"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "电脑先完成"
+            },
+            {
+              "type": "article",
+              "text": "桌面版入门",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "，准备已解压缩的"
+            },
+            {
+              "type": "link",
+              "text": "待办网站材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "，并以 expected 副本建立 codex-practice 专案。先在电脑开启这个专案，确认五个档案都存在；本篇不需另外接上 GitHub 或 SSH 伺服器。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "iPhone 从 App Store、Android 从 Google Play 安装或更新 OpenAI 的 ChatGPT 应用程式。两边使用相同 ChatGPT 帐号及工作区，且该帐号可使用 Codex。组织可能需要开启 Remote Control，登入流程也可能要求 SSO、多因素验证或通行金钥。这些条件未完成时，先处理帐号流程，不要用新建一堆任务绕过。"
+        },
+        {
+          "type": "paragraph",
+          "text": "截至 2026-09-14，官方 Remote 文件列出 iOS、Android 作为手机入口，Mac 与 Windows 桌面应用程式作为主机。功能会分阶段提供；Linux 桌面预览版不能因此推定也支援本篇手机主机流程。CLI 或 IDE 扩充套件不能取代首次配对的桌面应用程式。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "为这份副本加上辨识标记"
+        },
+        {
+          "type": "paragraph",
+          "text": "在电脑的 codex-practice 根目录，用纯文字编辑器新增 remote-check.txt。这是本篇额外的辨识档，不是五个网站程式档之一。若同名档案已存在，先阅读；不要覆写其他工作的档案。写入下列一行，并在储存前把尾端 01 改成自己选的代号。同名副本使用不同代号，不要填帐号、密码或配对码。"
+        },
+        {
+          "type": "code",
+          "label": "电脑：codex-practice/remote-check.txt；储存前自行改尾端代号",
+          "language": "text",
+          "code": "REMOTE-PRACTICE-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "把代号、主机名称与完整资料夹路径记在自己的笔记。稍后询问时不把代号贴给 Codex，让它从档案读取；这能区分一般知识回答与读到这份副本，仍需搭配工具纪录核对。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一阶段：在电脑启用连接"
+        },
+        {
+          "type": "paragraph",
+          "text": "在准备接收工作的那台电脑开启 ChatGPT 桌面版，进入 Settings → Connections → Control this Mac or PC，选 Set up 或 Add。依画面启用远端存取及完成验证。请核对这台电脑的名称与专案，避免在另一台空白测试机完成了配对却找不到材料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著画面会提供 QR code。这个码用来配对手机与主机，应由你自己的手机扫描；不要将它放入公开教学截图或传给其他人。每台要控制的主机都需要配对，登入相同帐号本身不是所有装置都已连接的证据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到 Connections 检查是否允许其他装置连接，以及可用的保持唤醒选项。主机需要开著应用程式、保持连线且未睡眠。Mac 笔电先保持接电与上盖开启；Windows 涉及 Computer Use 时，还要依官方条件保持桌面可用。本例只有读取档案，不需要为了完成它额外启用所有电脑控制功能。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二阶段：在手机完成配对"
+        },
+        {
+          "type": "paragraph",
+          "text": "iPhone 使用相机扫描主机 QR code，点开连结进入 ChatGPT，依 Remote 设定流程确认相同帐号及工作区。如果连结停在浏览器，检查是否已安装最新版应用程式，再回主机重新开始配对。不要把网页聊天纪录当作 Remote 已连接的完成画面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Android 同样扫描 QR code，选择以 ChatGPT 开启，完成帐号与工作区验证。若系统出现选择开启应用程式的提示，确认进入的是官方 ChatGPT。手机未出现 Remote 时，先更新、重新开启应用程式并检查帐号可用功能；换手机浏览器不能保证取得尚未提供的入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "两种系统的完成判准相同：Remote 中出现主机，能选中该主机，并看见其专案或任务。通知权限可用来接收完成或需要注意的提示；即使允许通知，仍应回到任务查看实际结果，不能把通知文字当成档案验收。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三阶段：完成一个唯读任务"
+        },
+        {
+          "type": "paragraph",
+          "text": "在手机 Remote 选择刚配对的主机，再打开 codex-practice 专案中的 Codex 任务。若建立新任务，先确认工作位置依然是主机上的练习资料夹。下面内容贴进手机的任务输入框，不是在手机搜寻列执行终端机命令。"
+        },
+        {
+          "type": "code",
+          "label": "手机 ChatGPT → Remote → 主机上的 Codex 练习任务",
+          "language": "text",
+          "code": "Read this practice project without changing files.\nReport the host or environment name if available and the current working folder.\nList index.html, style.css, app.js, core.mjs and core.test.mjs.\nExplain how task completion is stored and name the localStorage key.\nIf you cannot inspect a file, report the limitation instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "回应应指出练习路径，从程式码找到专用的 mokaair-codex-todo-v1 储存键，并说明 completed 栏位。回电脑开启 app.js 与 core.mjs 比对，确认没有档案被修改。若只收到一般待办网站知识，缺少路径和程式依据，这次仍未完成验收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著在手机送出追问，让它引用具体档案说明空白任务为何不能加入。这能检查你是否延续同一个任务与上下文。你不需要在手机安装 Node.js，因为本机工具由主机提供；若下一篇要执行测试，仍要先确认主机真的有该工具。"
+        },
+        {
+          "type": "code",
+          "label": "同一个手机 Remote 任务；追问与验证",
+          "language": "text",
+          "code": "In the same project, explain what happens when the new task contains only spaces.\nIdentify the relevant function and file. Do not edit or reset stored data.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期提到 core.mjs 的 addTask 会整理文字并拒绝空白，搭配表单的错误显示。你可以在电脑预览中实际输入空白确认。正常案例是成功读取专案；边界案例是拒绝空白输入，两者都要有可比对依据。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "再核对主机与即时档案"
+        },
+        {
+          "type": "code",
+          "label": "同一个手机 Remote 任务；代号不要贴进提示词",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's working folder and quote its one-line content.\nReport the absolute file path and the tool used to read it.\nDo not edit files. If the file cannot be read, stop and report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "将回复的代号与路径对照电脑笔记，再看它是否真的有读档纪录。代号不符、档案不存在或只有猜测，都先停止后续修改，回查 Remote 选中的主机及任务。修正位置后重读同一档案；不要把正确代号告诉它来「修正答案」。若无法取得工具纪录，保留该项未验证。练习结束只移除自己新增的 remote-check.txt，保留网站原始档。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "中断时如何判断工作状态"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成唯读操作后，可短暂让主机离线，观察手机是否显示无法连接；不要在写入进行中故意测试。恢复连线、开启主机应用程式后，回原任务查看状态。离线讯息只代表目前无法连线，不能据此认定前一项操作完全没有发生。"
+        },
+        {
+          "type": "paragraph",
+          "text": "因此，网路恢复后先查看最后一则回应和档案，再决定是否重新送出。将同一个「删除／提交／建立」要求重送多次，可能造成重复结果。这一篇使用唯读要求，正是为了让你先练习辨识状态，再进入需要写入的流程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Remote、云端与手机网址的差异"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Remote 使用连接主机的专案与工具；"
+            },
+            {
+              "type": "article",
+              "text": "云端任务",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "使用另外设定的云端环境。两者的档案、分支和依赖不一定相同，不能只因为任务标题相似就当成同一份工作。手机直接开启某个网页，也不等于取得电脑本机专案。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "同样地，电脑上 http://127.0.0.1:4173 的 127.0.0.1 指的是那台电脑；在手机浏览器输入同一个网址，指的会是手机自己。需要查看成果时，先在 Remote 任务看主机提供的预览或截图。不要为了本篇练习去开放公共连接埠。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题与解除连接"
+        },
+        {
+          "type": "paragraph",
+          "text": "手机看不到主机：依序确认主机程式正在执行、允许连接、同帐号与工作区、电脑未睡眠。先修正具体条件再重新配对。旧配对长期未使用时，依官方说明更新两边并重做配对。"
+        },
+        {
+          "type": "paragraph",
+          "text": "配对要求没有出现：开手机 Remote 核对入口，再从主机重启设定流程；组织帐号请核对 Remote Control 是否由管理者开启。完成登入不代表组织远端政策已允许，错误讯息应保留给管理者判读，但不要附上验证码。"
+        },
+        {
+          "type": "paragraph",
+          "text": "连上却找不到档案：先看主机名称和工作目录，再确认专案是否在那台主机。另一台电脑上的资料夹不会因为同名自动同步。将任务交接到别处会涉及实际环境与 Git 状态，初学者先回原主机完成验收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不再需要远端时，在主机 Settings → Connections 管理已连接装置，关闭允许远端控制或移除不再使用的配对。回手机确认已不能操作。关闭 Remote 不会回复先前的档案变更，也不应当作停止所有工作的保证；有执行中的任务时，先在任务内停止并确认状态。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作位置",
+            "提供什么",
+            "如何核对"
+          ],
+          "rows": [
+            [
+              "手机",
+              "需求、追问、核准",
+              "Remote 中选中的主机与任务"
+            ],
+            [
+              "Mac / Windows 主机",
+              "专案档案与本机工具",
+              "实际工作目录与档案内容"
+            ],
+            [
+              "云端环境",
+              "另外设定的程式与依赖",
+              "云端任务的环境与分支"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小练习与查证纪录"
+        },
+        {
+          "type": "paragraph",
+          "text": "在手机要求整理「目前工作位置、档案清单、未执行检查」三项交接资讯，再回电脑用同一个任务核对。完成判准是两边指向同一主机与路径，且你能说明哪些结果已实际看过，哪些只是尚待执行的建议。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "入口、配对与主机条件依 "
+            },
+            {
+              "type": "link",
+              "text": "Remote connections 官方文件",
+              "url": "https://learn.chatgpt.com/docs/remote-connections"
+            },
+            {
+              "type": "text",
+              "text": "于 2026-09-14 查证；本文未在实体 iPhone、Android 或远端配对流程实测，图解只用来说明关系。练习网站的行为有独立浏览器验证。接著可读"
+            },
+            {
+              "type": "article",
+              "text": "上下文交接",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "权限",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "text": "云端工作",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mobile-guide/diagram-1.svg",
+          "alt": "04. 手机使用：iPhone 与 Android — 实作顺序示意图，非产品介面截图。 Phone → Mac / Windows → Files",
+          "width": 1600,
+          "height": 900,
+          "caption": "04. 手机使用：iPhone 与 Android — 实作顺序示意图，非产品介面截图。 Phone → Mac / Windows → Files",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloud tasks",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Mobile: iPhone and Android",
+      "description": "Remote in the ChatGPT mobile app lets you guide Codex work on a connected computer. Official documentation lists iOS and Android clients, with Mac or Windows hosts, subject to rollout. This does not install a full development environment on the phone, and does not establish Linux host support.",
+      "hero": {
+        "src": "/guides/codex-mobile-guide/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will accomplish"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Use ChatGPT on iPhone or Android to connect to your Mac or Windows computer, open a Codex practice task, make a read-only request and verify that the answer came from the correct host. Allow 12 minutes to read and 20 minutes for initial pairing and practice. This lesson completes one verifiable Remote workflow before comparing it with cloud work."
+        },
+        {
+          "type": "paragraph",
+          "text": "The phone sends prompts, replies and approvals. The connected host supplies files, terminals, browsers and tools. Seeing a task on your phone does not mean its project has been downloaded to the phone or that it keeps running after the computer shuts down. Learn to identify the working location before requesting extensive edits remotely."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Prepare both devices"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Complete "
+            },
+            {
+              "type": "article",
+              "text": "desktop setup",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": " on the computer. Extract the "
+            },
+            {
+              "type": "link",
+              "text": "todo materials",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": ", copy expected into codex-practice and open that project on the computer. Confirm all five files exist. This lesson does not require GitHub or a separate SSH server."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "On iPhone, install or update OpenAI's ChatGPT app from the App Store; on Android, use Google Play. Both devices must use the same ChatGPT account and workspace with Codex access. An organization may need to enable Remote Control, and authentication can require SSO, multi-factor verification or a passkey. Complete those requirements instead of creating more tasks to work around them."
+        },
+        {
+          "type": "paragraph",
+          "text": "As of 2026-09-14, the Remote documentation lists iOS and Android as mobile entry points and the Mac and Windows desktop apps as hosts. Availability varies by rollout. Do not infer that the Linux desktop preview supports this mobile-host workflow. The CLI or IDE extension cannot replace the desktop app for initial pairing."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Mark this particular copy"
+        },
+        {
+          "type": "paragraph",
+          "text": "On the computer, create remote-check.txt in the codex-practice root with a plain-text editor. This is an extra identification file, not one of the five website source files. Read an existing file first rather than overwriting another task's data. Write the line below, replacing the final 01 with a code you choose before saving. Give different copies different codes; do not use account details, passwords or pairing codes."
+        },
+        {
+          "type": "code",
+          "label": "Computer: codex-practice/remote-check.txt; choose your own final code before saving",
+          "language": "text",
+          "code": "REMOTE-PRACTICE-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the code, host name and full folder path in your own notes. Do not include the code in the later prompt: have Codex read it from the file. This helps distinguish a generic answer from access to this copy; also inspect the tool record."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Stage 1: enable the connection on the computer"
+        },
+        {
+          "type": "paragraph",
+          "text": "On the computer that will do the work, open the ChatGPT desktop app and go to Settings → Connections → Control this Mac or PC. Select Set up or Add, enable remote access and complete verification. Check the computer name and project so you do not pair an empty test machine and then search for missing materials."
+        },
+        {
+          "type": "paragraph",
+          "text": "The app displays a QR code to pair the phone with this host. Scan it with your own phone; do not include it in public tutorial screenshots or send it to other people. Each host needs pairing. Signing into the same account does not establish that every device is already connected."
+        },
+        {
+          "type": "paragraph",
+          "text": "In Connections, check whether other devices can connect and inspect any keep-awake options. The host needs the app open, an internet connection and an awake session. Start with a Mac laptop plugged in and its lid open. On Windows, Computer Use has additional desktop-availability requirements. This exercise only reads files, so enabling every computer-control feature is unnecessary."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Stage 2: complete pairing on the phone"
+        },
+        {
+          "type": "paragraph",
+          "text": "On iPhone, scan the host's QR code with the camera, open the link in ChatGPT and follow Remote setup, checking the account and workspace. If the link stays in a browser, confirm the latest app is installed, then restart pairing on the host. A web conversation history is not the Remote connection success screen."
+        },
+        {
+          "type": "paragraph",
+          "text": "On Android, scan the QR code, choose ChatGPT to open it, and complete account and workspace verification. If Android asks which app should handle the link, choose the official ChatGPT app. If Remote is missing, update and reopen the app, then check feature availability. A different mobile browser cannot guarantee access to a feature that has not rolled out."
+        },
+        {
+          "type": "paragraph",
+          "text": "Success is the same on both systems: Remote shows the host, you can select it, and its projects or tasks are visible. Notifications can announce completion or attention requests, but return to the task to inspect the actual result. A notification alone is not file verification."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Stage 3: complete a read-only task"
+        },
+        {
+          "type": "paragraph",
+          "text": "In Remote, select the newly paired host and open a Codex task in codex-practice. If creating a new task, confirm its location is still the practice folder on the host. Paste the following into the mobile task composer, not a phone search box as a shell command."
+        },
+        {
+          "type": "code",
+          "label": "Mobile ChatGPT → Remote → Codex practice task on the host",
+          "language": "text",
+          "code": "Read this practice project without changing files.\nReport the host or environment name if available and the current working folder.\nList index.html, style.css, app.js, core.mjs and core.test.mjs.\nExplain how task completion is stored and name the localStorage key.\nIf you cannot inspect a file, report the limitation instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect the practice path, the dedicated mokaair-codex-todo-v1 storage key and an explanation of the completed field based on the source. Back at the computer, inspect app.js and core.mjs and confirm no files changed. General advice about todo sites without a path or source evidence does not complete the exercise."
+        },
+        {
+          "type": "paragraph",
+          "text": "Send a follow-up asking why a whitespace-only task is rejected, with a specific file reference. This checks that you continued the same task and context. Node.js does not need to be installed on the phone: local tools come from the host. Before a later exercise runs tests, confirm that host actually has the required runtime."
+        },
+        {
+          "type": "code",
+          "label": "The same mobile Remote task; follow-up verification",
+          "language": "text",
+          "code": "In the same project, explain what happens when the new task contains only spaces.\nIdentify the relevant function and file. Do not edit or reset stored data.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect an explanation of addTask in core.mjs trimming and rejecting blank text, together with form error feedback. You can try blank input in the computer's preview. The normal case is reading the project successfully; the boundary case is rejected whitespace. Both need evidence you can compare."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Check the host and current file again"
+        },
+        {
+          "type": "code",
+          "label": "The same mobile Remote task; do not put the code into the prompt",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's working folder and quote its one-line content.\nReport the absolute file path and the tool used to read it.\nDo not edit files. If the file cannot be read, stop and report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare the returned code and path with your computer-side notes, then inspect the file-read record. A wrong code, missing file or guessed answer means you should stop further edits and check the selected Remote host and task. Correct the location and read the same file again; do not “fix the answer” by telling Codex the code. If no tool record is available, leave that check unverified. Afterwards, remove only the remote-check.txt you created and keep the website sources."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Understand interruptions"
+        },
+        {
+          "type": "paragraph",
+          "text": "After the read-only work finishes, you may briefly disconnect the host and observe the phone's unavailable state. Do not deliberately test disconnection during writes. Restore the connection, open the desktop app and return to the original task. An offline message establishes current unreachability, not that the previous operation never happened."
+        },
+        {
+          "type": "paragraph",
+          "text": "After reconnecting, inspect the last response and files before resubmitting. Repeating a create, delete or submit request can duplicate its effects. This exercise uses read-only requests to teach status interpretation before moving on to writes."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Remote, cloud work and phone URLs"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Remote uses the connected host's project and tools. "
+            },
+            {
+              "type": "article",
+              "text": "Cloud tasks",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": " use a separately configured environment. Their files, branches and dependencies may differ; similar task names do not establish that they are the same work. Opening a website on a phone also does not grant access to a computer's local project."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "In http://127.0.0.1:4173 on the computer, 127.0.0.1 refers to that computer. Entering the same address in the phone's browser points to the phone itself. For results, inspect previews or screenshots supplied by the host in the Remote task. This exercise does not require opening a public network port."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting and disconnecting"
+        },
+        {
+          "type": "paragraph",
+          "text": "Missing host: check the desktop app is running, connections are allowed, both account and workspace match, and the computer is awake. Fix the actual condition before pairing again. For an old unused pairing, follow the official update and re-pair guidance."
+        },
+        {
+          "type": "paragraph",
+          "text": "No pairing request: open Remote on the phone, then restart setup from the host. For an organization account, confirm that the administrator enabled Remote Control. Completing sign-in does not establish policy permission. Keep useful error details for the administrator without including verification codes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Connected but missing files: check the host name and working folder, then whether the project exists on that machine. A similarly named folder on another computer does not automatically synchronize. Moving tasks between environments involves real environment and Git state; beginners should finish verification on the original host first."
+        },
+        {
+          "type": "paragraph",
+          "text": "When finished, use Settings → Connections on the host to disable remote control or remove an unused pairing. Confirm the phone can no longer operate the host. Disabling Remote does not undo file changes or guarantee that all work has stopped. Stop any running task within the task itself and check its state first."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Location",
+            "Supplies",
+            "Verification"
+          ],
+          "rows": [
+            [
+              "Phone",
+              "Prompts, follow-ups, approvals",
+              "Selected Remote host and task"
+            ],
+            [
+              "Mac / Windows host",
+              "Project files and local tools",
+              "Actual directory and file contents"
+            ],
+            [
+              "Cloud environment",
+              "Separately configured code and dependencies",
+              "Cloud task environment and branch"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice and verification record"
+        },
+        {
+          "type": "paragraph",
+          "text": "From the phone, request a handoff note containing the working location, file list and checks not run. Return to the same task on the computer. Success means both views identify the same host and path, and you can distinguish inspected results from suggested future checks."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Entry points, pairing and host requirements were checked against "
+            },
+            {
+              "type": "link",
+              "text": "Remote connections",
+              "url": "https://learn.chatgpt.com/docs/remote-connections"
+            },
+            {
+              "type": "text",
+              "text": " on 2026-09-14. This lesson has not been tested on physical iPhone/Android devices or through an actual pairing; its diagram explains relationships. Practice-site behavior has separate browser verification. Continue with "
+            },
+            {
+              "type": "article",
+              "text": "context handoff",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "permissions",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "article",
+              "text": "cloud work",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mobile-guide/diagram-1.svg",
+          "alt": "04. Mobile: iPhone and Android — Workflow illustration, not a product screenshot. Phone → Mac / Windows → Files",
+          "width": 1600,
+          "height": 900,
+          "caption": "04. Mobile: iPhone and Android — Workflow illustration, not a product screenshot. Phone → Mac / Windows → Files",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloud tasks",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "スマートフォン：iPhone と Android",
+      "description": "ChatGPT モバイルアプリの Remote では、接続したコンピューター上の Codex タスクを操作できます。公式文書は iOS・Android と Mac・Windows ホストを案内していますが、提供状況は段階的です。スマートフォンに開発環境一式を入れる機能ではなく、Linux ホスト対応を意味しません。",
+      "hero": {
+        "src": "/guides/codex-mobile-guide/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "このレッスンでできること"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "iPhone または Android の ChatGPT から自分の Mac／Windows に接続し、Codex の練習タスクを開いて読み取りを依頼します。結果が正しいホストから来たか確認するまでが目標です。読む時間は約 12 分、初回接続と操作は約 20 分です。まず確認可能な Remote の一連の操作を完成させ、クラウドとの違いも説明します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "スマートフォンは依頼、返信、承認を送り、ファイル、端末、ブラウザ、ツールは接続先ホストが提供します。タスクが見えてもプロジェクトがスマートフォンに保存されたとは限らず、パソコンを切っても動き続けるわけではありません。大きな変更の前に作業場所を見分けます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "両方の端末を準備する"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "パソコンで"
+            },
+            {
+              "type": "article",
+              "text": "デスクトップ入門",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "を終え、"
+            },
+            {
+              "type": "link",
+              "text": "ToDo 教材",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "の expected を codex-practice にコピーして開きます。5 ファイルの存在を確認してください。GitHub や別の SSH サーバーは不要です。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "iPhone は App Store、Android は Google Play から OpenAI の ChatGPT をインストールまたは更新します。両端末で Codex を利用できる同一アカウントとワークスペースを使います。組織によっては Remote Control の許可、SSO、多要素認証、パスキーが必要です。新しいタスクを増やして回避せず、先に認証要件を満たします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026-09-14 時点の公式 Remote 文書は、iOS／Android をモバイル入口、Mac／Windows のデスクトップアプリをホストとしています。段階的な提供であり、Linux プレビューも同じホスト機能を持つとは判断できません。初回接続のデスクトップアプリを CLI や IDE 拡張で代用することもできません。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "このコピー専用の目印を付ける"
+        },
+        {
+          "type": "paragraph",
+          "text": "パソコンの codex-practice 直下に、テキストエディターで remote-check.txt を作ります。これは識別用の追加ファイルで、五つのサイト用ソースファイルには含みません。同名ファイルがあれば先に読み、別の作業のデータを上書きしないでください。次の一行を書き、保存する前に末尾の 01 を自分で選んだ識別子に変えます。コピーごとに別の識別子を使い、アカウント情報、パスワード、ペアリングコードは書きません。"
+        },
+        {
+          "type": "code",
+          "label": "パソコン：codex-practice/remote-check.txt。保存前に末尾の識別子を変更",
+          "language": "text",
+          "code": "REMOTE-PRACTICE-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "識別子、ホスト名、フォルダーの絶対パスを自分のメモに残します。後で依頼するときに識別子を教えず、ファイルから読ませてください。一般的な回答とこのコピーへのアクセスを区別する手掛かりになりますが、ツールの記録も確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "段階 1：パソコンで接続を有効にする"
+        },
+        {
+          "type": "paragraph",
+          "text": "作業するパソコンの ChatGPT デスクトップで Settings → Connections → Control this Mac or PC を開き、Set up または Add を選びます。遠隔アクセスを有効にし、認証を完了します。空のテスト機を接続してしまわないよう、コンピューター名とプロジェクトを確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表示された QR code は、このホストとスマートフォンをペアリングするものです。自分の端末で読み取り、公開用スクリーンショットに入れたり他人へ送ったりしないでください。各ホストに接続設定が必要で、同一アカウントへのログインだけでは全端末が接続済みとはいえません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Connections で他の端末の接続許可と、利用可能なスリープ防止設定を確認します。ホストはアプリを開き、オンラインで起きている必要があります。Mac ノートはまず電源をつなぎ、ふたを開けて使います。Windows の Computer Use にはデスクトップが利用可能であるなどの追加条件があります。今回はファイルを読むだけなので、すべての操作機能を有効にする必要はありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "段階 2：スマートフォンで接続を完了する"
+        },
+        {
+          "type": "paragraph",
+          "text": "iPhone ではカメラで QR code を読み、リンクを ChatGPT で開いて Remote 設定を進め、アカウントとワークスペースを確認します。ブラウザに留まる場合は最新版アプリを確認し、ホストから接続をやり直します。ウェブの会話履歴は Remote 接続成功の画面ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Android でも QR code を読み、ChatGPT で開いて認証を完了します。リンクを開くアプリの選択が出たら公式 ChatGPT を選びます。Remote がない場合は更新と再起動、機能の提供状況を確認します。別のモバイルブラウザに変えても未提供機能が使える保証はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "両 OS とも、Remote にホストが現れ、選択でき、そのプロジェクトやタスクが見えることが成功条件です。通知は完了や対応依頼を知らせますが、実際の結果はタスクへ戻って確認します。通知だけをファイルの検証結果にしないでください。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "段階 3：読み取り専用タスクを実行する"
+        },
+        {
+          "type": "paragraph",
+          "text": "Remote で接続したホストを選び、codex-practice の Codex タスクを開きます。新しく作る場合も、作業場所がホストの練習フォルダーか確認します。次は検索欄やシェルではなく、スマートフォンのタスク入力欄へ貼ります。"
+        },
+        {
+          "type": "code",
+          "label": "スマートフォンの ChatGPT → Remote → ホスト上の Codex 練習タスク",
+          "language": "text",
+          "code": "Read this practice project without changing files.\nReport the host or environment name if available and the current working folder.\nList index.html, style.css, app.js, core.mjs and core.test.mjs.\nExplain how task completion is stored and name the localStorage key.\nIf you cannot inspect a file, report the limitation instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習パス、保存キー mokaair-codex-todo-v1、completed フィールドの説明がソースに基づいて示されるはずです。パソコンで app.js と core.mjs を照合し、ファイルが変更されていないことも確かめます。一般的な ToDo の知識だけで、パスや根拠がなければ未完了です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "続けて、空白だけのタスクが拒否される理由を具体的なファイル付きで質問します。同じタスクと文脈を継続しているか確認できます。Node.js をスマートフォンに入れる必要はありません。ツールはホスト側のものです。後のレッスンでテストを動かす前に、そのホストに環境があるか確認します。"
+        },
+        {
+          "type": "code",
+          "label": "同じモバイル Remote タスク。追加質問",
+          "language": "text",
+          "code": "In the same project, explain what happens when the new task contains only spaces.\nIdentify the relevant function and file. Do not edit or reset stored data.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "core.mjs の addTask が文字列を整え、空白を拒否することと、フォームのエラー表示の説明を期待します。パソコンのプレビューで空白を入力して比べられます。正常な読み取りと、空白入力という境界例の両方に照合可能な根拠が必要です。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "ホストと現在のファイルを再確認する"
+        },
+        {
+          "type": "code",
+          "label": "同じスマートフォンの Remote タスク。識別子はプロンプトに書かない",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's working folder and quote its one-line content.\nReport the absolute file path and the tool used to read it.\nDo not edit files. If the file cannot be read, stop and report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "返された識別子とパスをパソコン側のメモと照合し、実際の読み取り記録を確認します。識別子が違う、ファイルがない、推測だけで答えている場合は、その先の編集を止めて Remote のホストとタスクを確認してください。場所を修正して同じファイルを読み直し、正しい識別子を教えて「回答を修正」してはいけません。ツール記録を取得できなければ、その項目は未検証とします。練習後は自分が作った remote-check.txt だけを取り除き、サイトのソースは残します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "切断時の状態を判断する"
+        },
+        {
+          "type": "paragraph",
+          "text": "読み取り完了後にホストを短時間オフラインにし、スマートフォンが接続不可になる様子を確認できます。書き込み中に意図的な切断テストはしません。ネットとデスクトップアプリを戻したら元のタスクを開きます。オフライン表示は現在接続できないという意味で、直前の処理が実行されなかった証明ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再接続したら再送前に最後の回答とファイルを確認します。作成、削除、送信を繰り返すと結果が重複する可能性があります。今回は読み取りだけで状態の見分け方を練習してから、書き込みへ進みます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Remote、クラウド、スマートフォンの URL"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Remote は接続先のプロジェクトとツールを使い、"
+            },
+            {
+              "type": "article",
+              "text": "クラウドタスク",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "は別に設定した環境を使います。ファイル、ブランチ、依存関係は異なる場合があります。同じようなタイトルでも同じ作業とは限りません。スマートフォンでウェブを開くだけでもパソコンのローカルプロジェクトへのアクセスにはなりません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "パソコンの http://127.0.0.1:4173 の 127.0.0.1 はそのパソコンです。同じ URL をスマートフォンに入れるとスマートフォン自身を指します。Remote タスクでホストが示すプレビューや画像を確認してください。この練習のために公開ポートを開く必要はありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "よくある問題と接続解除"
+        },
+        {
+          "type": "paragraph",
+          "text": "ホストが見えない場合は、アプリ実行、接続許可、同一アカウントとワークスペース、スリープしていないことを順に確認します。原因を直してから再接続します。長く使っていない古いペアリングは、公式案内に従い更新と再設定を行います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接続要求が出ない場合はスマートフォンの Remote を開き、ホストから設定を再開します。組織では管理者が Remote Control を許可したか確認します。ログイン成功と組織の利用許可は別です。管理者に伝えるエラーは残し、認証コードは含めません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接続できてもファイルがない場合はホスト名と作業パスを調べ、その機械にプロジェクトがあるか確かめます。他のパソコンの同名フォルダーは自動同期されません。タスクの移動には実環境と Git 状態が関わるため、初心者は元のホストで確認を終えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要になったらホストの Settings → Connections で遠隔操作を無効にするか、使わないペアリングを削除します。スマートフォンから操作できなくなったことを確認します。Remote の無効化は変更の復元や全作業の停止を保証しません。実行中のタスクは先にタスク内で停止し、状態を確認します。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "場所",
+            "提供するもの",
+            "確認方法"
+          ],
+          "rows": [
+            [
+              "スマートフォン",
+              "依頼、追問、承認",
+              "Remote で選んだホストとタスク"
+            ],
+            [
+              "Mac / Windows ホスト",
+              "ファイルとローカルツール",
+              "実パスと内容"
+            ],
+            [
+              "クラウド環境",
+              "別設定のコードと依存関係",
+              "クラウドタスクの環境とブランチ"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習と確認記録"
+        },
+        {
+          "type": "paragraph",
+          "text": "スマートフォンで作業場所、ファイル一覧、未実施の確認をまとめるよう依頼し、パソコンの同じタスクで照合します。同一ホストとパスを示し、確認済み結果と今後の提案を区別できれば成功です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "入口、接続、ホスト条件は 2026-09-14 に "
+            },
+            {
+              "type": "link",
+              "text": "Remote connections 公式文書",
+              "url": "https://learn.chatgpt.com/docs/remote-connections"
+            },
+            {
+              "type": "text",
+              "text": "で確認しました。実物の iPhone／Android やペアリングは実測していません。図は関係の説明で、教材サイトの動作には別のブラウザ検証があります。次は"
+            },
+            {
+              "type": "article",
+              "text": "引き継ぎ",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "権限",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "クラウド",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "を参照できます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mobile-guide/diagram-1.svg",
+          "alt": "04. スマートフォン：iPhone と Android — 作業の流れを表す図です。製品画面の画像ではありません。 Phone → Mac / Windows → Files",
+          "width": 1600,
+          "height": 900,
+          "caption": "04. スマートフォン：iPhone と Android — 作業の流れを表す図です。製品画面の画像ではありません。 Phone → Mac / Windows → Files",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloud tasks",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "모바일: iPhone과 Android",
+      "description": "ChatGPT 모바일 앱의 Remote로 연결된 컴퓨터의 Codex 작업을 확인하고 지시할 수 있습니다. 공식 문서는 iOS와 Android 클라이언트, Mac과 Windows 호스트를 안내하며 순차 제공될 수 있습니다. 휴대폰에 전체 개발 환경을 설치하거나 Linux 호스트 지원을 보장하는 기능은 아닙니다.",
+      "hero": {
+        "src": "/guides/codex-mobile-guide/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 글에서 완성할 것"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "iPhone 또는 Android의 ChatGPT에서 자신의 Mac/Windows 컴퓨터에 연결하고 Codex 실습 작업을 열어 읽기 요청을 보냅니다. 결과가 올바른 호스트에서 왔는지 확인하는 것이 목표입니다. 읽기 약 12분, 최초 연결과 실습 약 20분입니다. 검증 가능한 Remote 흐름을 먼저 완성하고 클라우드와의 차이도 설명합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "휴대전화는 요청, 답변, 승인을 보내고 연결된 호스트가 파일, 터미널, 브라우저, 도구를 제공합니다. 작업이 보인다고 프로젝트가 휴대전화에 내려받아졌거나 컴퓨터를 꺼도 계속 실행되는 것은 아닙니다. 큰 수정을 요청하기 전에 작업 위치부터 구분합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "두 장치 모두 준비"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "컴퓨터에서 "
+            },
+            {
+              "type": "article",
+              "text": "데스크톱 입문",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "을 마치고 "
+            },
+            {
+              "type": "link",
+              "text": "할 일 자료",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "의 expected를 codex-practice로 복사해 엽니다. 파일 다섯 개가 있는지 확인합니다. GitHub나 별도 SSH 서버는 필요 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "iPhone은 App Store, Android는 Google Play에서 OpenAI의 ChatGPT를 설치하거나 업데이트합니다. 두 장치는 Codex를 사용할 수 있는 같은 계정과 워크스페이스를 사용해야 합니다. 조직의 Remote Control 허용, SSO, 다중 인증, 패스키가 필요할 수 있습니다. 작업을 여러 개 만들어 우회하지 말고 인증 조건부터 완료합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "2026-09-14 공식 Remote 문서는 iOS/Android를 모바일 진입점, Mac/Windows 데스크톱 앱을 호스트로 명시합니다. 기능은 순차 제공되며 Linux 미리보기도 이 호스트 흐름을 지원한다고 추정하면 안 됩니다. 최초 연결에서 데스크톱 앱을 CLI나 IDE 확장으로 대체할 수 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "이 사본만의 식별 표시 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "컴퓨터의 codex-practice 바로 아래에 텍스트 편집기로 remote-check.txt를 만듭니다. 웹사이트 소스 다섯 개와 별도로 추가하는 식별 파일입니다. 같은 이름의 파일이 있으면 먼저 읽고 다른 작업의 자료를 덮어쓰지 마세요. 아래 한 줄을 작성하되 저장 전에 끝의 01을 자신이 고른 코드로 바꿉니다. 사본마다 다른 코드를 쓰고 계정 정보, 비밀번호, 페어링 코드는 넣지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "컴퓨터: codex-practice/remote-check.txt. 저장 전에 끝의 코드를 변경",
+          "language": "text",
+          "code": "REMOTE-PRACTICE-01\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "코드, 호스트 이름, 전체 폴더 경로를 개인 메모에 기록합니다. 나중에 요청할 때 코드를 알려 주지 말고 파일에서 읽게 하세요. 일반적인 답변과 이 사본을 읽은 결과를 구분하는 단서가 되지만 도구 기록도 함께 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 컴퓨터에서 연결 활성화"
+        },
+        {
+          "type": "paragraph",
+          "text": "작업할 컴퓨터의 ChatGPT 데스크톱에서 Settings → Connections → Control this Mac or PC로 이동해 Set up 또는 Add를 선택합니다. 원격 접근을 활성화하고 인증을 마칩니다. 빈 테스트 컴퓨터를 연결해 자료를 찾지 못하는 일이 없도록 컴퓨터 이름과 프로젝트를 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "표시되는 QR code는 휴대전화와 이 호스트를 연결합니다. 자신의 전화로 스캔하고 공개 튜토리얼 화면이나 다른 사람에게 공유하지 마세요. 호스트마다 연결이 필요하며 같은 계정에 로그인했다고 모든 장치가 연결된 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Connections에서 다른 장치의 연결 허용과 사용 가능한 절전 방지 옵션을 확인합니다. 호스트는 앱이 열려 있고 온라인이며 깨어 있어야 합니다. Mac 노트북은 우선 전원을 연결하고 덮개를 열어 둡니다. Windows의 Computer Use에는 데스크톱 사용 가능 상태 등 추가 조건이 있습니다. 이번에는 파일만 읽으므로 모든 제어 기능을 활성화할 필요는 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 휴대전화에서 연결 완료"
+        },
+        {
+          "type": "paragraph",
+          "text": "iPhone 카메라로 QR code를 스캔하고 ChatGPT로 링크를 열어 Remote 설정을 진행합니다. 계정과 워크스페이스를 확인하세요. 브라우저에 머물면 최신 앱이 설치되어 있는지 확인한 뒤 호스트에서 다시 연결합니다. 웹 대화 기록 화면을 Remote 연결 성공 화면으로 오해하면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Android도 QR code를 스캔하고 ChatGPT로 열어 인증을 마칩니다. 연결 앱 선택창에서는 공식 ChatGPT를 선택합니다. Remote가 없으면 업데이트, 재실행, 기능 제공 여부를 확인합니다. 다른 모바일 브라우저로 바꾼다고 아직 제공되지 않은 기능을 사용할 수 있는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 운영체제 모두 Remote에 호스트가 나타나고 선택할 수 있으며 그 프로젝트나 작업이 보여야 성공입니다. 알림은 완료나 주의 요청을 알려 주지만 실제 결과는 작업으로 돌아가 확인합니다. 알림만으로 파일 검증을 대신하지 마세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 읽기 전용 작업 실행"
+        },
+        {
+          "type": "paragraph",
+          "text": "Remote에서 연결한 호스트를 선택하고 codex-practice의 Codex 작업을 엽니다. 새로 만들 때도 작업 위치가 호스트의 실습 폴더인지 확인합니다. 아래는 휴대전화 검색창이나 셸 명령이 아니라 작업 입력창에 붙입니다."
+        },
+        {
+          "type": "code",
+          "label": "휴대전화 ChatGPT → Remote → 호스트의 Codex 실습 작업",
+          "language": "text",
+          "code": "Read this practice project without changing files.\nReport the host or environment name if available and the current working folder.\nList index.html, style.css, app.js, core.mjs and core.test.mjs.\nExplain how task completion is stored and name the localStorage key.\nIf you cannot inspect a file, report the limitation instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "실습 경로, 저장 키 mokaair-codex-todo-v1, completed 필드가 소스에 근거해 설명되어야 합니다. 컴퓨터에서 app.js와 core.mjs를 대조하고 파일이 수정되지 않았는지 확인합니다. 일반적인 할 일 사이트 설명만 있고 경로나 코드 근거가 없으면 아직 완료가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공백뿐인 항목을 거부하는 이유를 구체적인 파일과 함께 후속 질문합니다. 같은 작업과 문맥을 이어 가는지도 확인할 수 있습니다. 도구는 호스트가 제공하므로 휴대전화에 Node.js를 설치할 필요가 없습니다. 후속 글에서 테스트를 실행하기 전에 호스트에 런타임이 있는지 확인합니다."
+        },
+        {
+          "type": "code",
+          "label": "같은 모바일 Remote 작업, 후속 확인 질문",
+          "language": "text",
+          "code": "In the same project, explain what happens when the new task contains only spaces.\nIdentify the relevant function and file. Do not edit or reset stored data.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "core.mjs의 addTask가 문자열을 정리하고 공백을 거부하며 폼에서 오류를 보여 준다는 설명이 예상됩니다. 컴퓨터 미리보기에서 공백을 직접 입력해 대조할 수 있습니다. 정상적인 읽기와 공백 거부라는 경계 사례 모두 비교 가능한 근거가 필요합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "호스트와 현재 파일 다시 확인"
+        },
+        {
+          "type": "code",
+          "label": "같은 휴대전화 Remote 작업. 프롬프트에 코드를 넣지 않음",
+          "language": "text",
+          "code": "Read remote-check.txt from this task's working folder and quote its one-line content.\nReport the absolute file path and the tool used to read it.\nDo not edit files. If the file cannot be read, stop and report that limitation.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "반환된 코드와 경로를 컴퓨터에서 적은 메모와 비교하고 실제 파일 읽기 기록을 확인합니다. 코드가 다르거나 파일이 없거나 추측한 답변뿐이라면 추가 수정을 멈추고 Remote에서 선택한 호스트와 작업을 확인하세요. 위치를 바로잡고 같은 파일을 다시 읽게 합니다. 정답 코드를 알려 주어 “답변을 고치게” 하지 마세요. 도구 기록을 볼 수 없다면 해당 항목은 미검증으로 남깁니다. 실습 후에는 자신이 만든 remote-check.txt만 제거하고 웹사이트 소스는 보존합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "연결이 끊겼을 때 상태 판단"
+        },
+        {
+          "type": "paragraph",
+          "text": "읽기 작업이 끝난 뒤 호스트를 잠깐 오프라인으로 바꾸어 휴대전화의 연결 불가 상태를 관찰할 수 있습니다. 쓰기 중에 일부러 끊는 테스트는 하지 않습니다. 연결과 데스크톱 앱을 복구하고 원래 작업으로 돌아갑니다. 오프라인 표시는 지금 연결할 수 없다는 뜻이며 직전 작업이 실행되지 않았다는 증거는 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "재연결 후에는 다시 보내기 전에 마지막 응답과 파일을 확인합니다. 생성, 삭제, 제출 요청을 반복하면 결과가 중복될 수 있습니다. 이 글은 읽기 요청으로 상태를 판단하는 방법을 익힌 뒤 쓰기로 넘어갑니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Remote, 클라우드, 휴대전화 URL"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Remote는 연결 호스트의 프로젝트와 도구를 사용하고 "
+            },
+            {
+              "type": "article",
+              "text": "클라우드 작업",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "은 따로 설정한 환경을 사용합니다. 파일, 브랜치, 의존성이 다를 수 있으므로 제목이 비슷해도 같은 작업이라고 단정하지 않습니다. 휴대전화에서 웹사이트를 여는 것도 컴퓨터의 로컬 프로젝트 접근과 다릅니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "컴퓨터의 http://127.0.0.1:4173에서 127.0.0.1은 그 컴퓨터입니다. 휴대전화에 같은 주소를 입력하면 전화 자신을 가리킵니다. 결과는 Remote 작업에서 호스트가 제공하는 미리보기나 화면으로 확인합니다. 이번 실습을 위해 공개 포트를 열 필요는 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결과 연결 해제"
+        },
+        {
+          "type": "paragraph",
+          "text": "호스트가 없으면 데스크톱 앱 실행, 연결 허용, 동일 계정과 워크스페이스, 깨어 있는 컴퓨터인지 차례로 확인합니다. 원인을 고친 뒤 다시 연결합니다. 오래 사용하지 않은 연결은 공식 안내에 따라 양쪽을 업데이트하고 다시 페어링합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "연결 요청이 없으면 휴대전화 Remote를 열고 호스트에서 설정을 재시작합니다. 조직 계정은 관리자가 Remote Control을 허용했는지 확인합니다. 로그인 성공과 조직 정책 허용은 다릅니다. 관리자에게 전달할 오류는 남기되 인증 코드는 포함하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "연결됐지만 파일이 없다면 호스트 이름과 작업 경로를 확인하고 그 컴퓨터에 프로젝트가 있는지 봅니다. 다른 컴퓨터의 같은 이름 폴더가 자동 동기화되지는 않습니다. 작업 이동에는 실제 환경과 Git 상태가 관련되므로 입문자는 원래 호스트에서 검증을 마칩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "더 이상 필요 없으면 호스트 Settings → Connections에서 원격 제어를 끄거나 사용하지 않는 연결을 제거합니다. 전화에서 더 이상 조작할 수 없는지 확인합니다. Remote를 끄는 것은 파일 복원이나 모든 작업 중지를 보장하지 않습니다. 실행 중인 작업은 먼저 작업 안에서 중지하고 상태를 확인하세요."
+        },
+        {
+          "type": "table",
+          "header": [
+            "위치",
+            "제공 항목",
+            "확인 방법"
+          ],
+          "rows": [
+            [
+              "휴대전화",
+              "요청, 후속 질문, 승인",
+              "선택한 Remote 호스트와 작업"
+            ],
+            [
+              "Mac / Windows 호스트",
+              "파일과 로컬 도구",
+              "실제 경로와 파일 내용"
+            ],
+            [
+              "클라우드 환경",
+              "별도로 설정한 코드와 의존성",
+              "클라우드 작업 환경과 브랜치"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "추가 실습과 검증 기록"
+        },
+        {
+          "type": "paragraph",
+          "text": "휴대전화에서 작업 위치, 파일 목록, 실행하지 않은 검사를 정리하도록 요청한 다음 컴퓨터의 같은 작업에서 대조합니다. 같은 호스트와 경로를 가리키고 확인한 결과와 앞으로 할 제안을 구분할 수 있으면 성공입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "진입점, 연결, 호스트 조건은 2026-09-14에 "
+            },
+            {
+              "type": "link",
+              "text": "Remote connections 공식 문서",
+              "url": "https://learn.chatgpt.com/docs/remote-connections"
+            },
+            {
+              "type": "text",
+              "text": "로 확인했습니다. 실제 iPhone/Android나 페어링을 실측하지 않았으며 그림은 관계를 설명합니다. 실습 사이트 동작은 별도 브라우저 검증이 있습니다. 다음은 "
+            },
+            {
+              "type": "article",
+              "text": "문맥 인계",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "권한",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "클라우드 작업",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "을 참고하세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-mobile-guide/diagram-1.svg",
+          "alt": "04. 모바일: iPhone과 Android — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Phone → Mac / Windows → Files",
+          "width": 1600,
+          "height": 900,
+          "caption": "04. 모바일: iPhone과 Android — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Phone → Mac / Windows → Files",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Remote connections",
+          "url": "https://learn.chatgpt.com/docs/remote-connections",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloud tasks",
+          "url": "https://learn.chatgpt.com/docs/cloud",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

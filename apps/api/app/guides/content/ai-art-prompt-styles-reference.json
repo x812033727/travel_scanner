@@ -1,0 +1,592 @@
+{
+  "slug": "ai-art-prompt-styles-reference",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 繪圖風格提示參考：50 種風格描述",
+      "description": "把風格變成可以查的詞：媒材、攝影、設計、時代流派、光線氛圍五類共 50 條，每條給中英文描述詞與適合的用途，每類再附三段可直接貼上的提示詞。文中也說明風格詞該擺在提示詞的哪一段、為什麼用通用美術與攝影術語而不是創作者的名字，以及同一句話在不同工具結果不同時怎麼自己比對。描述詞依 Midjourney、Google 與 OpenAI 的官方提示詞說明整理，撰稿環境未實際生圖。",
+      "hero": {
+        "src": "/guides/ai-art-prompt-styles-reference/hero.jpg",
+        "alt": "左邊一張白色樣本紙上排著六個抽象風格色塊，箭頭指向右邊一張提示詞卡片，卡片上有幾段代表文字的色條",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想把一張圖畫成某個樣子，卡住的常常不是想法，而是講不出那個樣子叫什麼。這篇把風格拆成可以查的詞：媒材、攝影、設計、時代流派、光線氛圍五類共 50 條，每條一行，給你中英文的描述詞和適合的用途，直接複製到提示詞裡就能用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會有一份自己的風格字典，也會知道這些詞該擺在提示詞的哪一段、一次該換幾個詞。描述詞的定義依 Midjourney、Google 與 OpenAI 三家官方說明整理；撰稿環境不能生圖，文中不寫任何實測結果或效果評分，畫面長什麼樣請自己跑一次。"
+        },
+        {
+          "type": "heading",
+          "text": "風格詞該放在提示詞的哪一段",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先有位置，再談詞彙。Midjourney 官方的 Prompt Basics 說短而簡單的提示詞通常效果最好，長清單或一連串指令反而會干擾生成；它把值得寫清楚的細節整理成七個面向。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "主體（Subject）：人、動物、角色、地點或物件。",
+            "媒材（Medium）：照片、繪畫、插圖、雕塑、塗鴉、織品。",
+            "環境（Environment）：室內、戶外、水下、城市、月球。",
+            "光線（Lighting）：柔光、環境光、陰天、霓虹、棚燈。",
+            "色彩（Color）：鮮豔、低飽和、明亮、單色、黑白、粉彩。",
+            "情緒（Mood）：俏皮、平靜、陰鬱、充滿活力。",
+            "構圖（Composition）：人像、大頭照、特寫、鳥瞰。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "這七個面向裡，媒材、光線、色彩、構圖就是這篇要列的風格詞，主體與環境則是你自己的內容。Google 的 Imagen 提示詞指南把同一件事壓成三段：主體、情境與背景、風格，並說風格可以很籠統（繪畫、照片、素描），也可以很具體（粉彩畫、炭筆素描、等距 3D），而且可以混用。同一頁也寫明提示詞長度上限是 480 個 token，建議先寫核心想法再逐輪加細節。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 說明中心的 ChatGPT 圖片文章講的是同一件事：描述你要的畫面時，把主體、顏色或風格這類細節寫清楚，官方舉的例子是把一張手繪草圖變成一棟被樹圍繞的紅色房子的水彩畫。三家說法一致，差別只在參數：Midjourney 的參數一律放在描述文字最後、破折號前留一個空格、參數裡不要有標點，風格詞則寫在描述文字裡面。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "五個欄位組起來的一段提示詞（中英各一）",
+          "code": "主體 + 風格 + 光線 + 構圖或鏡頭 + 參數\n\n中文：清晨的港口停著三艘漁船，水彩畫，逆光，低角度廣角，比例 3:2\nEnglish: watercolor painting of three fishing boats in a harbour at dawn, backlit, low-angle wide shot --ar 3:2"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-art-prompt-styles-reference/diagram-1.svg",
+          "alt": "提示詞拆成主體、風格、光線與色彩、構圖與鏡頭、參數五個欄位的結構圖",
+          "width": 1600,
+          "height": 900,
+          "caption": "一段提示詞拆成五個欄位：1 到 5 依序寫，這篇的 50 條風格詞都放在第 2 欄，參數放最後。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "Midjourney 提示詞：風格、比例、參考圖",
+          "url": "https://mokaair.com/zh-TW/life/midjourney-prompt-guide"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "媒材與筆法：先決定這張圖是用什麼做出來的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "媒材是投資報酬率最高的詞。同一個主體加上水彩或版畫，線條、邊緣和顏色會一起換掉，比疊十個形容詞有效。Midjourney 官方的 Art of Prompting 頁就是這樣示範的：固定用一句「______ style cat」當提示詞，只換媒材，列出版畫、藍曬、孔版印刷、浮世繪、鉛筆速寫、水彩、像素藝術、十字繡、剪紙、油畫等十六種。下表挑出最常用的十條。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "風格（中／英）",
+            "可貼上的描述詞",
+            "適合用途"
+          ],
+          "rows": [
+            [
+              "水彩 Watercolor",
+              "watercolor painting, soft wet-on-wet washes, paper grain",
+              "插圖、封面、賀卡"
+            ],
+            [
+              "油畫 Oil painting",
+              "oil painting, thick impasto brushstrokes, canvas texture",
+              "人物、靜物、風景"
+            ],
+            [
+              "鉛筆素描 Pencil sketch",
+              "technical pencil drawing, graphite shading",
+              "說明圖、教學插圖"
+            ],
+            [
+              "炭筆 Charcoal",
+              "charcoal drawing, smudged black tones, rough paper",
+              "高對比人像、戲劇感"
+            ],
+            [
+              "色鉛筆 Colored pencil",
+              "colored pencil illustration, layered strokes",
+              "童書感、食物插圖"
+            ],
+            [
+              "粉彩 Pastel painting",
+              "pastel painting, chalky texture, muted palette",
+              "柔和的風景與人物"
+            ],
+            [
+              "版畫 Block print",
+              "block print, bold carved lines, limited ink colors",
+              "插圖、包裝、標誌"
+            ],
+            [
+              "孔版印刷 Risograph",
+              "risograph print, two spot colors, grainy fill",
+              "刊物、傳單、周邊"
+            ],
+            [
+              "藍曬 Cyanotype",
+              "cyanotype print, prussian blue tones",
+              "植物標本感、復古封面"
+            ],
+            [
+              "剪紙拼貼 Cut paper",
+              "cut paper collage, layered edges, soft shadows",
+              "簡報插圖、兒童繪本"
+            ]
+          ],
+          "caption": "媒材與筆法十條，描述詞依各家官方提示詞文件的用語整理，查證時間 2026 年 9 月。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "媒材：三段可直接貼上的提示詞",
+          "code": "中文：木桌上一只手作陶杯，水彩畫，濕染暈開，紙紋明顯\nEnglish: watercolor painting of a handmade ceramic mug on a wooden table, soft wet-on-wet washes, visible paper grain\n\n中文：老屋門口的一張藤椅，版畫，粗刻線條，只用兩種油墨顏色\nEnglish: block print of a rattan chair beside an old doorway, bold carved lines, two ink colors\n\n中文：三株曬乾的稻穗，孔版印刷，兩色套印，粗顆粒，些微對位偏移\nEnglish: risograph print of three dried rice stalks, two spot colors, grainy fill, slight misregistration"
+        },
+        {
+          "type": "heading",
+          "text": "攝影語彙：鏡頭、底片與打光",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "想要照片感，第一步是先說它是照片。Google 的 Imagen 提示詞指南直接建議提示詞用「A photo of…」開頭，接著再加攝影專用的修飾詞，官方把修飾詞分成六組：相機遠近（近拍、拉遠）、相機位置（空拍、由下往上）、光線（自然、戲劇、暖、冷）、相機設定（動態模糊、柔焦、散景、人像）、鏡頭種類（35mm、50mm、魚眼、廣角、微距），以及底片種類（黑白、即影即有）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一頁還有一張用途對鏡頭的對照表，可以當成預設值：人像用定焦或變焦 24 到 35mm，可加黑白底片、景深、雙色調；食物與靜物用微距 60 到 105mm，加高細節、精準對焦；運動與野生動物用望遠變焦 100 到 400mm，加高速快門、追蹤動態；天文與風景用廣角 10 到 24mm，加長曝光、平滑的水面或雲。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "風格（中／英）",
+            "可貼上的描述詞",
+            "適合用途"
+          ],
+          "rows": [
+            [
+              "定焦人像 35mm portrait",
+              "35mm portrait, prime lens, shallow depth of field",
+              "半身人像、專訪照"
+            ],
+            [
+              "微距 Macro",
+              "macro lens, 60mm, high detail, controlled lighting",
+              "食物、昆蟲、小物"
+            ],
+            [
+              "望遠追焦 Telephoto motion",
+              "telephoto zoom, 200mm, fast shutter speed",
+              "運動、動物抓拍"
+            ],
+            [
+              "廣角風景 Wide-angle",
+              "wide angle 10mm, long exposure, sharp focus",
+              "風景、夜空"
+            ],
+            [
+              "黑白底片 Black and white film",
+              "black and white film, high contrast, visible grain",
+              "紀實、人物"
+            ],
+            [
+              "即影即有 Instant film",
+              "instant film print, faded colors, thick white border",
+              "懷舊生活感、日常紀錄"
+            ],
+            [
+              "黑色電影 Film noir",
+              "film noir, hard side light, deep shadows",
+              "人像、懸疑氛圍"
+            ],
+            [
+              "散景柔焦 Bokeh",
+              "soft focus, bokeh background, city lights at night",
+              "夜景、氣氛照"
+            ],
+            [
+              "空拍俯視 Aerial",
+              "aerial photo, taken from above, city grid",
+              "城市、地景"
+            ],
+            [
+              "棚拍商品 Studio product",
+              "studio photo, softbox lighting, seamless backdrop",
+              "電商商品圖、型錄"
+            ]
+          ],
+          "caption": "攝影語彙十條，鏡頭與底片用語依 Google 官方提示詞指南整理，查證時間 2026 年 9 月。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "攝影：三段可直接貼上的提示詞",
+          "code": "中文：一片姑婆芋的葉子，微距鏡頭，60mm，細節清楚，光線可控\nEnglish: a leaf of a taro plant, macro lens, 60mm, high detail, controlled lighting\n\n中文：夜裡的城市橋邊，柔焦，背景散景光點，長曝\nEnglish: soft focus photograph of a bridge in a city at night, bokeh background, long exposure\n\n中文：一只黑色陶瓷馬克杯的棚拍商品照，三點柔光箱，無縫背景紙，略高的 45 度角\nEnglish: studio-lit product photograph of a matte black ceramic mug, three-point softbox setup, seamless backdrop, slightly elevated 45-degree shot"
+        },
+        {
+          "type": "heading",
+          "text": "設計與圖形：要能放進版面的那一類",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "簡報、貼文、商品頁要的往往不是一張畫，而是能放進版面、能上字、背景乾淨的圖。Google 的 Gemini 圖片生成文件給了幾個可以照抄的範本：極簡構圖那一段寫明大片空白畫布、留出大量負空間；等距場景那一段寫 45 度俯視的等距 3D 與乾淨的單色背景；貼紙那一段寫粗黑外框、賽璐璐平塗與白色背景。這類詞的共同點是把邊緣、填色與背景交代清楚。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "風格（中／英）",
+            "可貼上的描述詞",
+            "適合用途"
+          ],
+          "rows": [
+            [
+              "扁平插畫 Flat illustration",
+              "flat vector illustration, bold shapes, limited palette",
+              "簡報、網頁插圖、圖示"
+            ],
+            [
+              "等距視角 Isometric",
+              "isometric 3D, 45-degree top-down view, clean edges",
+              "流程圖、場景說明"
+            ],
+            [
+              "像素藝術 Pixel art",
+              "pixel art, limited palette, visible square pixels",
+              "遊戲風小圖、貼圖"
+            ],
+            [
+              "極簡負空間 Minimalist",
+              "minimalist composition, vast empty canvas, negative space",
+              "可以上字的背景圖"
+            ],
+            [
+              "線稿 Line art",
+              "clean line art, uniform stroke weight, white background",
+              "圖示、著色頁"
+            ],
+            [
+              "貼紙 Sticker",
+              "sticker design, bold clean outlines, white background",
+              "社群貼圖、周邊"
+            ],
+            [
+              "半色調印刷 Halftone",
+              "halftone dots, offset print texture, CMYK registration",
+              "復古印刷感、海報"
+            ],
+            [
+              "賽璐璐平塗 Cel shading",
+              "cel-shaded animation still, flat color fills",
+              "動畫感人物、頻道封面"
+            ],
+            [
+              "黏土質感 3D Tactile 3D",
+              "colorful and tactile 3D style, soft clay materials",
+              "圖示組、吉祥物"
+            ],
+            [
+              "資訊圖表 Infographic",
+              "vibrant infographic, labeled diagram, flat icons",
+              "教學圖、懶人包"
+            ]
+          ],
+          "caption": "設計與圖形十條，範本用語依 Google Gemini 圖片生成文件整理，查證時間 2026 年 9 月。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "設計與圖形：三段可直接貼上的提示詞",
+          "code": "中文：一座小鎮的等距 3D 場景，45 度俯視，柔和材質，乾淨的單色背景\nEnglish: an isometric 3D scene of a small town, 45-degree top-down view, soft refined materials, clean minimal background\n\n中文：一隻戴斗笠的柴犬貼紙，粗黑外框，簡單的賽璐璐平塗，白色背景\nEnglish: a sticker of a shiba inu wearing a straw hat, bold clean outlines, simple cel-shading, white background\n\n中文：畫面右下只有一片楓葉，極簡構圖，大片米白空白，左上方柔和散射光\nEnglish: a minimalist composition with a single maple leaf in the bottom-right, vast off-white canvas, significant negative space, soft diffused lighting from the top left"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-image-generation-guide"
+        },
+        {
+          "type": "heading",
+          "text": "時代流派與光線氛圍：最後兩成的差別",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "寫進美術史的流派名稱是公認的術語，官方文件也直接示範這種寫法。Google 的 Imagen 指南有一節叫歷史藝術參考，句型是「generate an image in the style of [藝術時期或運動]」，示範的是印象派、文藝復興與普普藝術。Midjourney 的 Art of Prompting 則是換年代，用「illustration of a ______ cat」跑過 1400s 到 2000s。年代與流派管的是造型語言和色彩習慣，不是某一個人的筆跡。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "風格（中／英）",
+            "可貼上的描述詞",
+            "適合用途"
+          ],
+          "rows": [
+            [
+              "印象派 Impressionist",
+              "in the style of an impressionist painting, broken color",
+              "風景、光影、戶外場景"
+            ],
+            [
+              "文藝復興 Renaissance",
+              "in the style of a renaissance painting, chiaroscuro",
+              "肖像、古典題材"
+            ],
+            [
+              "浮世繪 Ukiyo-e",
+              "ukiyo-e woodblock print, flat perspective, outlined figures",
+              "東方風景、節慶主題"
+            ],
+            [
+              "普普藝術 Pop art",
+              "pop art, flat bright blocks, thick outlines, halftone dots",
+              "海報、社群圖、封面"
+            ],
+            [
+              "裝飾藝術 Art deco",
+              "art deco poster, symmetrical geometry, gold and black, stepped forms",
+              "海報、邀請卡、片頭"
+            ],
+            [
+              "新藝術 Art nouveau",
+              "art nouveau, flowing organic lines, ornamental border",
+              "包裝、菜單、裝飾框"
+            ],
+            [
+              "包浩斯 Bauhaus",
+              "bauhaus poster, primary colors, geometric grid",
+              "簡報封面、課程視覺"
+            ],
+            [
+              "超現實主義 Surrealist",
+              "surrealist painting, impossible scale, dreamlike juxtaposition",
+              "概念圖、書封、專題"
+            ],
+            [
+              "賽博龐克 Cyberpunk",
+              "cyberpunk scene, neon signage, rain-soaked streets, dense signage",
+              "科幻主題、活動主視覺"
+            ],
+            [
+              "年代風格 1970s / 1980s",
+              "illustration of a 1970s scene, muted warm palette, grainy print",
+              "懷舊主題、復古包裝"
+            ]
+          ],
+          "caption": "時代與流派十條，句型依 Google Imagen 指南與 Midjourney Art of Prompting 整理，查證時間 2026 年 9 月。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "時代與流派：三段可直接貼上的提示詞",
+          "code": "中文：以印象派繪畫的風格畫一片風力發電場\nEnglish: generate an image in the style of an impressionist painting: a wind farm\n\n中文：一張裝飾藝術風格的音樂廳海報，對稱幾何，金黑配色，階梯造型\nEnglish: an art deco poster of a concert hall, symmetrical geometry, gold and black, stepped forms\n\n中文：1970 年代客廳的插畫，暖濁色調，印刷顆粒感\nEnglish: illustration of a 1970s living room, muted warm palette, grainy print"
+        },
+        {
+          "type": "paragraph",
+          "text": "光線通常是最後才調、卻差最多的一項。Midjourney 把光線和色彩各列成一個面向，Google 則把光線寫成自然、戲劇、暖、冷四個基本方向，再用黃金時刻、柔和散射光這類詞細分。同一個主體、同一個媒材，換一種光就是另一張圖。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "風格（中／英）",
+            "可貼上的描述詞",
+            "適合用途"
+          ],
+          "rows": [
+            [
+              "黃金時刻 Golden hour",
+              "golden hour lighting, long warm shadows",
+              "戶外人像、旅遊風景"
+            ],
+            [
+              "逆光剪影 Backlit",
+              "backlit, rim light, silhouette against a bright sky",
+              "情緒照、封面"
+            ],
+            [
+              "自然柔光 Natural light",
+              "natural lighting, soft diffused light from a window",
+              "生活感、居家商品"
+            ],
+            [
+              "戲劇打光 Dramatic light",
+              "dramatic lighting, single hard key light",
+              "人物特寫、專題視覺"
+            ],
+            [
+              "陰天散射 Overcast",
+              "overcast ambient light, flat soft shadows",
+              "建築、產品、資料照"
+            ],
+            [
+              "霓虹夜景 Neon",
+              "neon lighting, wet asphalt reflections, magenta and cyan",
+              "夜間城市、活動主視覺"
+            ],
+            [
+              "燭光暖調 Candlelight",
+              "warm candlelight, orange glow, soft vignette",
+              "餐飲、室內、節慶"
+            ],
+            [
+              "薄霧晨光 Misty morning",
+              "morning mist, volumetric light shafts",
+              "山景、森林"
+            ],
+            [
+              "雙色調 Duotone",
+              "duotone, blue and grey, monochromatic palette",
+              "品牌視覺、簡報底圖"
+            ],
+            [
+              "粉彩柔色 Pastel palette",
+              "pastel color palette, muted low-contrast tones",
+              "兒童、療癒、文具主題"
+            ]
+          ],
+          "caption": "光線與氛圍十條，光線用語依 Midjourney Prompt Basics 與 Google Imagen 指南整理，查證時間 2026 年 9 月。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "光線與氛圍：三段可直接貼上的提示詞",
+          "code": "中文：海邊坐著一個人，特寫，黃金時刻逆光，長長的暖色影子，比例 16:9\nEnglish: a man sitting on the beach, close up, golden hour lighting, backlit, long warm shadows --ar 16:9\n\n中文：雨後的巷口，霓虹燈，柏油路反光，洋紅與青色\nEnglish: a narrow alley after rain, neon lighting, wet asphalt reflections, magenta and cyan\n\n中文：清晨的山谷，薄霧，體積光束，冷調低飽和\nEnglish: a valley at dawn, morning mist, volumetric light shafts, cool pale palette"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
+          "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+        },
+        {
+          "type": "heading",
+          "text": "用通用詞、不指名人，然後自己比一次",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇 50 條全部是通用的美術與攝影術語，沒有用任何在世創作者的名字，也沒有指名特定商業作品。Google 的 Imagen 指南其實有寫「參考特定藝術家或藝術運動會有幫助」，本篇仍只用媒材、時代、技法、光線、構圖、色彩這類詞，理由很實際：這些詞說得出哪裡不對，可以一次只改一個；指名一個人只能整包接受或整包放棄。Midjourney 的社群守則管的是內容，例如真實人物的影像、誤導與選舉用途，沒有一條專門管風格詞。著作權與平台條款怎麼看 AI 生成圖，站上有專篇。"
+        },
+        {
+          "type": "link",
+          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果通用詞講不出你要的調性，官方也提供了不靠名字的做法。Midjourney 網頁版有 Style Creator，讓你從一批範例圖裡挑喜歡與不喜歡的，逐輪收斂成一組專屬的風格參考代碼；官方說多數風格在 5 到 10 輪會穩定，10 到 15 輪補細節，超過 15 輪變化很小，而且每一輪預覽都會用掉 GPU 時間。另一個做法是情緒板（Moodboards），用自己上傳或收藏的圖建立風格，官方說它比風格參考涵蓋更寬的美感範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一句提示詞在不同工具、甚至同一個工具的不同版本，結果都不一樣。這些詞是描述畫面的語言，不是模型的開關。Midjourney 的風格化參數就是例子，官方說它像一支滑桿，數值低會貼著提示詞走，數值高更有藝術味也更可能偏離細節，預設 100、可設 0 到 1000。想知道一個詞在你的工具上長什麼樣，用下面這個方法自己跑一次。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "固定主體、環境與構圖，只換風格那一段。",
+            "一次只改一個詞，改兩個就分不出是哪個詞的功勞。",
+            "好的組合立刻存下來，連同工具名稱與版本一起記。",
+            "同一句話換到另一個工具再跑一次，看哪一家比較聽得懂你的詞。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "風格詞不是免責聲明",
+          "text": "用通用術語描述畫面只是讓提示詞更可控，不代表產出沒有爭議。輸出能不能商用、誰擁有它，看的是你用的工具條款；台灣主管機關怎麼看 AI 生成圖的著作權，站上另有專篇。文中描述詞的說明都照官方文件寫，撰稿環境無法生圖，實際畫面以你當下的工具版本為準。"
+        },
+        {
+          "type": "link",
+          "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-tools-overview-2026"
+        },
+        {
+          "type": "link",
+          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+        },
+        {
+          "type": "link",
+          "text": "提示詞工程（Prompt Engineering）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-engineering"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Prompt Basics（Midjourney 官方說明文件，提示詞的七個面向與長度建議）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32023408776205-Prompt-Basics",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Art of Prompting（Midjourney 官方說明文件，媒材、年代、情緒、色彩、環境的詞彙清單）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32835253061645-Art-of-Prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Parameter List（Midjourney 官方說明文件，參數放最後與格式規則）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Stylize（Midjourney 官方說明文件，風格化的預設值與範圍）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32196176868109-Stylize",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Style Creator（Midjourney 官方說明文件，自訂風格代碼的收斂輪數）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/41308374558221-Style-Creator",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Moodboards（Midjourney 官方說明文件，用自己的圖建立風格）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/39193335040013-Moodboards",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Community Guidelines（Midjourney 官方社群守則，內容規範的四條主要規則）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32013696484109-Community-Guidelines",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Imagen 提示詞指南（Google 官方文件，攝影修飾詞、鏡頭對照表與歷史藝術參考句型）",
+          "url": "https://ai.google.dev/gemini-api/docs/imagen",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini API 圖片生成文件（Google 官方提示詞範本：寫實、插畫、極簡、商品、連環圖）",
+          "url": "https://ai.google.dev/gemini-api/docs/image-generation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Images in ChatGPT（OpenAI 說明中心，描述主體、顏色與風格的官方建議）",
+          "url": "https://help.openai.com/en/articles/11084440-images-in-chatgpt",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

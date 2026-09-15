@@ -1,0 +1,1642 @@
+{
+  "slug": "codex-plugins",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 124,
+  "locales": {
+    "zh-TW": {
+      "title": "Plugins 與外部服務",
+      "description": "Plugin 可以把 Skills 與 MCP 工具包在一起，提供可安裝的工作能力。安裝套件、連接外部帳號與實際執行工具是三個不同步驟；找到插件不代表已能讀你的服務資料。",
+      "hero": {
+        "src": "/guides/codex-plugins/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "安裝一個你確實需要的插件，完成外部帳號連線，讀取一份虛構教材，再驗證移除與斷線的差別。閱讀約 15 分鐘、操作約 25 分鐘；需要支援插件的入口及服務帳號。先讀權限與資料範圍。本篇以 Google Drive 中你自己建立的練習文件為例，實際可用插件與選項以帳號清單為準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "權限與資料範圍",
+              "kind": "life",
+              "slug": "codex-permissions"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Plugins 是分發功能的套件，可以包含 "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " 或其他配套。Skills 說明怎麼完成工作，MCP 工具實際讀取或操作服務。安裝插件不等於已登入那個服務，也不表示每個工具都可立即使用。先把這三種狀態分開，遇到「已安裝但不能讀文件」時才知道該查哪一層。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：確認使用入口"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "桌面版從 Plugins 開啟目錄，查看 OpenAI、工作區、Personal 或 Installed 等當下顯示的分類。Windows、macOS、Linux 都先核對桌面版本與插件詳情的環境要求；Linux 預覽中的實際提供情形應在本機清單確認。不要把看到公開介紹頁當成已能在目前系統執行。尚未安裝桌面版可回到"
+            },
+            {
+              "type": "article",
+              "text": "平台選擇",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI 在三種作業系統中都先開啟終端機，進入你的練習資料夾後啟動 codex，再於互動畫面輸入 /plugins。codex 是終端機命令，/plugins 是 Codex 內的斜線指令，必須分開操作。IDE 擴充套件目前不支援 Plugins，不能把 CLI 的選單流程照搬到編輯器裡；需要插件時改用支援的桌面或 CLI 入口。"
+        },
+        {
+          "type": "code",
+          "label": "終端機：啟動 Codex",
+          "language": "sh",
+          "code": "codex\n"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 互動輸入",
+          "language": "text",
+          "code": "/plugins\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "入口",
+            "先做的確認",
+            "本篇操作方式"
+          ],
+          "rows": [
+            [
+              "Windows／macOS／Linux 桌面",
+              "版本、目錄、插件平台條件",
+              "Plugins 詳情中安裝與連線"
+            ],
+            [
+              "三平台 CLI",
+              "已登入、/plugins 可用、市集來源",
+              "開啟詳情，安裝後開新工作階段"
+            ],
+            [
+              "iOS／Android",
+              "帳號在 Chat／Work 可用的插件",
+              "確認非 Desktop only，再於支援入口使用"
+            ],
+            [
+              "IDE",
+              "Plugins 不支援",
+              "改用桌面或 CLI；不混同獨立 Skills"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "手機上的插件不是自動取得電腦磁碟的通行證。若工作需要某台電腦的本機檔案，仍依"
+            },
+            {
+              "type": "article",
+              "text": "手機與跨裝置",
+              "kind": "life",
+              "slug": "codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": "的連線條件操作；本篇則只讀你選定服務中的文件。標記 Desktop only 的插件不能改在手機直接執行，網頁上可搜尋到也不表示可以安裝在手機上。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：準備可核對的文件"
+        },
+        {
+          "type": "paragraph",
+          "text": "在你自己的練習用 Google Drive 建立一份文件，標題設為 Codex Plugin Practice，內容完整貼入以下文字。使用私人文件即可，不要為了讓插件讀取而開啟所有人可存取。保留文件網址供下一步指定範圍；若不是這個服務，先完成安裝與狀態紀錄，等你確認替代插件有同等讀取工具後再換例子。"
+        },
+        {
+          "type": "code",
+          "label": "練習文件內容",
+          "language": "text",
+          "code": "Codex Plugin Practice\nRevision: 1\nDocument marker: PLUGIN-LAB-A\nTask count: 3\nCompleted count: 2\nPending count: 1\nScope: fictional practice data; read only.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個練習使用固定標記與版本，目的是辨識工具讀到了哪一份文件，並非讓模型猜測三個數字。標題可以重複，網址與標記要對上；若搜尋結果有兩份同名文件，不先選一份碰運氣。先在服務原頁確認內容，再請代理讀取同一網址，才有獨立的比對依據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：安裝、連線，再開新任務"
+        },
+        {
+          "type": "paragraph",
+          "text": "打開插件詳情，核對名稱、提供者、市集來源與功能，確認是你打算使用的 Google Drive 插件，再按顯示的安裝按鈕。桌面文件描述為加號；CLI 則在 /plugins 的來源分類中進入詳情安裝。記下插件名稱或識別碼與日期，避免日後把同名的另一份套件當成同一個。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要登入時，確認授權畫面顯示的服務與帳號是擁有練習文件的帳號，閱讀要求的資料範圍再繼續。不要把密碼、驗證碼、Token 或連線回傳網址貼進對話。若要求的範圍超出你可接受的用途，取消這次連線並記錄未連接；不是靠在提示詞寫「唯讀」就能縮小 OAuth 授權範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "登入完成後返回原入口，查看 Installed 與連線狀態，再建立新對話或 CLI 工作階段。某些插件在首次使用時才要求連線，看到已安裝不應省略此步。若使用 API key 登入 Codex，有些需要 OAuth 的插件不提供；先核對帳號認證方式和插件要求，不反覆更換金鑰或在終端機列印它。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：用實際讀取結果驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面輸入 @ 選取剛裝好的插件或其技能，再貼上下面需求，把指定位置換成自己的練習文件網址。CLI 在新工作階段直接要求使用已安裝插件處理同一文件，依實際出現的技能選取入口使用。只要求讀指定文件，不搜尋整個帳號或整理所有檔案，這樣結果與資料範圍才容易核對。"
+        },
+        {
+          "type": "code",
+          "label": "給 Codex 的需求；先替換文件網址",
+          "language": "text",
+          "code": "Use the installed Google Drive plugin to read this practice document:\n<PASTE YOUR PRACTICE DOCUMENT URL HERE>\nReturn the document title, source link, revision, marker, and the three counts.\nUse an actual read result. If access is unavailable, say which step failed.\nDo not edit, share, move, delete, or search unrelated files.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "回覆應指向相同文件，提供 Revision 1、PLUGIN-LAB-A、3／2／1，並有實際讀取工具紀錄。順序依文件中的 total、completed、pending 核對，不因為數字相同就忽略欄位。再親自把文件 Revision 改成 2、Completed 改成 1、Pending 改成 2，請它重新讀取，不在需求中透露新數字；看它是否依新內容更新結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果仍回覆舊數字，先要求重新取得來源並指出實際讀取版本，不直接說「答案錯了重試」；若連線失效、檔案不在該帳號或服務尚未更新，記錄那個錯誤而不是捏造新結果。必要時另開新任務排除舊對話內容的影響。最後回原服務確認文件沒有被代理修改、分享或移動，將你手動改版與代理讀取分開記錄。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "加入未曾告訴模型的辨識值"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成兩次固定數字比對後，在原服務把 Revision 改成 3，再自行想一個新的無敏感資訊代號，取代 Document marker 的範例值；數量維持第二輪的 3／1／2。代號只寫在文件，先不要貼進 Codex 的對話。建立新任務，仍使用前面的文件網址及讀取要求。應由真實工具結果取得你自訂的代號，才可將這一輪記成「新內容讀取已核對」。只回覆本篇範例代號或第二輪舊版本都不通過。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把下面欄位填入自己的筆記；私人文件網址留在自己的紀錄，公開求助用代稱。Installed 只填套件狀態，Connected 只填連線狀態，Fresh read 要另外引用讀取時間、來源與辨識值。移除插件後，即使看不到技能，也不能據此把 Connected 自動改成 false；依"
+            },
+            {
+              "type": "link",
+              "text": "官方插件文件",
+              "url": "https://learn.chatgpt.com/docs/plugins"
+            },
+            {
+              "type": "text",
+              "text": "核對獨立 MCP 連線，必要時再處理本次練習建立的授權。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "個人紀錄：plugin-read-verification.md",
+          "language": "markdown",
+          "code": "# Plugin read verification\nSurface / host / date:\nPlugin ID and source:\nPractice document alias:\nInstalled: <observed state>\nConnected: <observed state or unconfirmed>\nTool available in this new task: <evidence>\nFresh read time and source: <tool evidence or NOT RUN>\nRevision and private practice marker: <actual result, do not copy the tutorial value>\nSource unchanged by the tool: <verification>\nBundle removed: <observed or NOT RUN>\nSeparate connection disconnected: <observed or NOT RUN>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 5：停用、移除與斷開連線"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 CLI 的 /plugins 中，安裝項目可依畫面用 Space 切換啟用；若要移除，進詳情選 Uninstall plugin。桌面或網頁從已安裝插件詳情尋找相同移除動作。工作區或預設插件可能由管理員控制而不提供此按鈕，此時記錄管理限制，不去刪程式內部快取或手動破壞安裝目錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "移除套件和解除外部帳號連線是兩件事。個別 MCP 連線可能仍保留，需要到 ChatGPT 的連線管理中選取該服務並斷開；必要時也到服務自己的第三方授權頁確認。先核對是否有其他正常工作共用這個連線，只處理這次練習建立的項目。解除後開新任務確認無法再透過該連線讀取，不能只看 Installed 少一列就宣稱所有存取已撤銷。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "將安裝、授權、首次讀取、改版重讀與移除結果各寫一列；沒有實際操作的平台或服務就標記依官方文件查證。這份教材不聲稱已替你登入 Google Drive 或讀取私人文件。圖中 1 是選定插件與範圍、2 是連線與讀取、3 是驗證與收尾；更細的錯誤分層見"
+            },
+            {
+              "type": "article",
+              "text": "插件故障排除",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugins/diagram-1.svg",
+          "alt": "24. Plugins 與外部服務 — 實作順序示意圖，非產品介面截圖。 Plugin → Connect → Tool",
+          "width": 1600,
+          "height": 900,
+          "caption": "24. Plugins 與外部服務 — 實作順序示意圖，非產品介面截圖。 Plugin → Connect → Tool",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Plugins: installation, support and connections",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Plugins 与外部服务",
+      "description": "Plugin 可以把 Skills 与 MCP 工具包在一起，提供可安装的工作能力。安装套件、连接外部帐号与实际执行工具是三个不同步骤；找到插件不代表已能读你的服务资料。",
+      "hero": {
+        "src": "/guides/codex-plugins/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "安装一个你确实需要的插件，完成外部帐号连线，读取一份虚构教材，再验证移除与断线的差别。阅读约 15 分钟、操作约 25 分钟；需要支援插件的入口及服务帐号。先读权限与资料范围。本篇以 Google Drive 中你自己建立的练习文件为例，实际可用插件与选项以帐号清单为准。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "权限与资料范围",
+              "kind": "life",
+              "slug": "codex-permissions"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Plugins 是分发功能的套件，可以包含 "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " 或其他配套。Skills 说明怎么完成工作，MCP 工具实际读取或操作服务。安装插件不等于已登入那个服务，也不表示每个工具都可立即使用。先把这三种状态分开，遇到「已安装但不能读文件」时才知道该查哪一层。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：确认使用入口"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "桌面版从 Plugins 开启目录，查看 OpenAI、工作区、Personal 或 Installed 等当下显示的分类。Windows、macOS、Linux 都先核对桌面版本与插件详情的环境要求；Linux 预览中的实际提供情形应在本机清单确认。不要把看到公开介绍页当成已能在目前系统执行。尚未安装桌面版可回到"
+            },
+            {
+              "type": "article",
+              "text": "平台选择",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI 在三种作业系统中都先开启终端机，进入你的练习资料夹后启动 codex，再于互动画面输入 /plugins。codex 是终端机命令，/plugins 是 Codex 内的斜线指令，必须分开操作。IDE 扩充套件目前不支援 Plugins，不能把 CLI 的选单流程照搬到编辑器里；需要插件时改用支援的桌面或 CLI 入口。"
+        },
+        {
+          "type": "code",
+          "label": "终端机：启动 Codex",
+          "language": "sh",
+          "code": "codex\n"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 互动输入",
+          "language": "text",
+          "code": "/plugins\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "入口",
+            "先做的确认",
+            "本篇操作方式"
+          ],
+          "rows": [
+            [
+              "Windows／macOS／Linux 桌面",
+              "版本、目录、插件平台条件",
+              "Plugins 详情中安装与连线"
+            ],
+            [
+              "三平台 CLI",
+              "已登入、/plugins 可用、市集来源",
+              "开启详情，安装后开新工作阶段"
+            ],
+            [
+              "iOS／Android",
+              "帐号在 Chat／Work 可用的插件",
+              "确认非 Desktop only，再于支援入口使用"
+            ],
+            [
+              "IDE",
+              "Plugins 不支援",
+              "改用桌面或 CLI；不混同独立 Skills"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "手机上的插件不是自动取得电脑磁碟的通行证。若工作需要某台电脑的本机档案，仍依"
+            },
+            {
+              "type": "article",
+              "text": "手机与跨装置",
+              "kind": "life",
+              "slug": "codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": "的连线条件操作；本篇则只读你选定服务中的文件。标记 Desktop only 的插件不能改在手机直接执行，网页上可搜寻到也不表示可以安装在手机上。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：准备可核对的文件"
+        },
+        {
+          "type": "paragraph",
+          "text": "在你自己的练习用 Google Drive 建立一份文件，标题设为 Codex Plugin Practice，内容完整贴入以下文字。使用私人文件即可，不要为了让插件读取而开启所有人可存取。保留文件网址供下一步指定范围；若不是这个服务，先完成安装与状态纪录，等你确认替代插件有同等读取工具后再换例子。"
+        },
+        {
+          "type": "code",
+          "label": "练习文件内容",
+          "language": "text",
+          "code": "Codex Plugin Practice\nRevision: 1\nDocument marker: PLUGIN-LAB-A\nTask count: 3\nCompleted count: 2\nPending count: 1\nScope: fictional practice data; read only.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "这个练习使用固定标记与版本，目的是辨识工具读到了哪一份文件，并非让模型猜测三个数字。标题可以重复，网址与标记要对上；若搜寻结果有两份同名文件，不先选一份碰运气。先在服务原页确认内容，再请代理读取同一网址，才有独立的比对依据。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：安装、连线，再开新任务"
+        },
+        {
+          "type": "paragraph",
+          "text": "打开插件详情，核对名称、提供者、市集来源与功能，确认是你打算使用的 Google Drive 插件，再按显示的安装按钮。桌面文件描述为加号；CLI 则在 /plugins 的来源分类中进入详情安装。记下插件名称或识别码与日期，避免日后把同名的另一份套件当成同一个。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要登入时，确认授权画面显示的服务与帐号是拥有练习文件的帐号，阅读要求的资料范围再继续。不要把密码、验证码、Token 或连线回传网址贴进对话。若要求的范围超出你可接受的用途，取消这次连线并记录未连接；不是靠在提示词写「唯读」就能缩小 OAuth 授权范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "登入完成后返回原入口，查看 Installed 与连线状态，再建立新对话或 CLI 工作阶段。某些插件在首次使用时才要求连线，看到已安装不应省略此步。若使用 API key 登入 Codex，有些需要 OAuth 的插件不提供；先核对帐号认证方式和插件要求，不反复更换金钥或在终端机列印它。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：用实际读取结果验收"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面输入 @ 选取刚装好的插件或其技能，再贴上下面需求，把指定位置换成自己的练习文件网址。CLI 在新工作阶段直接要求使用已安装插件处理同一文件，依实际出现的技能选取入口使用。只要求读指定文件，不搜寻整个帐号或整理所有档案，这样结果与资料范围才容易核对。"
+        },
+        {
+          "type": "code",
+          "label": "给 Codex 的需求；先替换文件网址",
+          "language": "text",
+          "code": "Use the installed Google Drive plugin to read this practice document:\n<PASTE YOUR PRACTICE DOCUMENT URL HERE>\nReturn the document title, source link, revision, marker, and the three counts.\nUse an actual read result. If access is unavailable, say which step failed.\nDo not edit, share, move, delete, or search unrelated files.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "回复应指向相同文件，提供 Revision 1、PLUGIN-LAB-A、3／2／1，并有实际读取工具纪录。顺序依文件中的 total、completed、pending 核对，不因为数字相同就忽略栏位。再亲自把文件 Revision 改成 2、Completed 改成 1、Pending 改成 2，请它重新读取，不在需求中透露新数字；看它是否依新内容更新结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果仍回复旧数字，先要求重新取得来源并指出实际读取版本，不直接说「答案错了重试」；若连线失效、档案不在该帐号或服务尚未更新，记录那个错误而不是捏造新结果。必要时另开新任务排除旧对话内容的影响。最后回原服务确认文件没有被代理修改、分享或移动，将你手动改版与代理读取分开记录。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "加入未曾告诉模型的辨识值"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成两次固定数字比对后，在原服务把 Revision 改成 3，再自行想一个新的无敏感资讯代号，取代 Document marker 的范例值；数量维持第二轮的 3／1／2。代号只写在文件，先不要贴进 Codex 的对话。建立新任务，仍使用前面的文件网址及读取要求。应由真实工具结果取得你自订的代号，才可将这一轮记成「新内容读取已核对」。只回复本篇范例代号或第二轮旧版本都不通过。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把下面栏位填入自己的笔记；私人文件网址留在自己的纪录，公开求助用代称。Installed 只填套件状态，Connected 只填连线状态，Fresh read 要另外引用读取时间、来源与辨识值。移除插件后，即使看不到技能，也不能据此把 Connected 自动改成 false；依"
+            },
+            {
+              "type": "link",
+              "text": "官方插件文件",
+              "url": "https://learn.chatgpt.com/docs/plugins"
+            },
+            {
+              "type": "text",
+              "text": "核对独立 MCP 连线，必要时再处理本次练习建立的授权。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "个人纪录：plugin-read-verification.md",
+          "language": "markdown",
+          "code": "# Plugin read verification\nSurface / host / date:\nPlugin ID and source:\nPractice document alias:\nInstalled: <observed state>\nConnected: <observed state or unconfirmed>\nTool available in this new task: <evidence>\nFresh read time and source: <tool evidence or NOT RUN>\nRevision and private practice marker: <actual result, do not copy the tutorial value>\nSource unchanged by the tool: <verification>\nBundle removed: <observed or NOT RUN>\nSeparate connection disconnected: <observed or NOT RUN>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 5：停用、移除与断开连线"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 CLI 的 /plugins 中，安装项目可依画面用 Space 切换启用；若要移除，进详情选 Uninstall plugin。桌面或网页从已安装插件详情寻找相同移除动作。工作区或预设插件可能由管理员控制而不提供此按钮，此时记录管理限制，不去删程式内部快取或手动破坏安装目录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "移除套件和解除外部帐号连线是两件事。个别 MCP 连线可能仍保留，需要到 ChatGPT 的连线管理中选取该服务并断开；必要时也到服务自己的第三方授权页确认。先核对是否有其他正常工作共用这个连线，只处理这次练习建立的项目。解除后开新任务确认无法再透过该连线读取，不能只看 Installed 少一列就宣称所有存取已撤销。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "将安装、授权、首次读取、改版重读与移除结果各写一列；没有实际操作的平台或服务就标记依官方文件查证。这份教材不声称已替你登入 Google Drive 或读取私人文件。图中 1 是选定插件与范围、2 是连线与读取、3 是验证与收尾；更细的错误分层见"
+            },
+            {
+              "type": "article",
+              "text": "插件故障排除",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugins/diagram-1.svg",
+          "alt": "24. Plugins 与外部服务 — 实作顺序示意图，非产品介面截图。 Plugin → Connect → Tool",
+          "width": 1600,
+          "height": 900,
+          "caption": "24. Plugins 与外部服务 — 实作顺序示意图，非产品介面截图。 Plugin → Connect → Tool",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Plugins: installation, support and connections",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Plugins and connected services",
+      "description": "A plugin can distribute skills and MCP tools as an installable capability. Installing it, connecting an external account and successfully calling a tool are distinct stages. A listing does not establish access to your data.",
+      "hero": {
+        "src": "/guides/codex-plugins/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Install a plugin you need, connect its external account, read a fictional practice document and distinguish uninstalling from disconnecting. Allow 15 minutes to read and 25 to practice. Use a supported surface and an account with the external service; read Permissions and data scope. The example uses a practice document you create in Google Drive; available plugins and options depend on your account."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "Permissions and data scope",
+              "kind": "life",
+              "slug": "codex-permissions"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Plugins bundle "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " and supporting components. Skills describe workflows; MCP tools access services. Installation, service authentication and tool availability are separate states: an installed plugin may still be unable to read a document."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Confirm your surface"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Open Plugins and inspect the OpenAI, workspace, Personal and Installed categories shown. On Windows/macOS/Linux, check app version and plugin requirements; confirm Linux-preview availability locally. A public listing does not prove support. See "
+            },
+            {
+              "type": "article",
+              "text": "Platform selection",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": " for desktop setup."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "On Windows/macOS/Linux, enter your practice folder in a terminal, run codex, then enter /plugins inside Codex. The first is a shell command, the second an interactive command. Plugins are unsupported in the IDE extension; use desktop or CLI."
+        },
+        {
+          "type": "code",
+          "label": "Terminal: start Codex",
+          "language": "sh",
+          "code": "codex\n"
+        },
+        {
+          "type": "code",
+          "label": "Inside interactive Codex CLI",
+          "language": "text",
+          "code": "/plugins\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Surface",
+            "Confirm first",
+            "Practice route"
+          ],
+          "rows": [
+            [
+              "Windows/macOS/Linux desktop",
+              "Version, directory, plugin platform requirements",
+              "Install and connect through Plugins details"
+            ],
+            [
+              "CLI on all three",
+              "Login, /plugins, marketplace source",
+              "Inspect, install, then start a fresh session"
+            ],
+            [
+              "iOS/Android",
+              "Plugins available in account Chat/Work",
+              "Check it is not Desktop only; use a supported surface"
+            ],
+            [
+              "IDE",
+              "Plugins unsupported",
+              "Use desktop/CLI; standalone Skills are separate"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "A mobile plugin does not automatically expose a computer's disk. Tasks needing local computer files still follow "
+            },
+            {
+              "type": "article",
+              "text": "Mobile and cross-device",
+              "kind": "life",
+              "slug": "codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": " connection requirements; this exercise reads only the chosen service document. A Desktop only plugin cannot run directly on a phone merely because its listing is discoverable on the web."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Prepare a verifiable document"
+        },
+        {
+          "type": "paragraph",
+          "text": "In your practice Google Drive, create a document titled Codex Plugin Practice and paste the full text below. Keep it private; do not enable public access merely to make a plugin read it. Retain its URL to specify scope. If using another service, first complete installation and state recording, then adapt the example only after confirming equivalent read tools."
+        },
+        {
+          "type": "code",
+          "label": "Practice document content",
+          "language": "text",
+          "code": "Codex Plugin Practice\nRevision: 1\nDocument marker: PLUGIN-LAB-A\nTask count: 3\nCompleted count: 2\nPending count: 1\nScope: fictional practice data; read only.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The marker and revision identify what the tool actually read, rather than testing whether a model can guess three counts. Titles can repeat; the URL and marker must match. If search finds two documents with the same name, do not choose arbitrarily. Inspect the original service page first, then request that exact URL for an independent comparison."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Install, connect and start a fresh task"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open plugin details and verify the name, provider, marketplace source and capabilities before installing the intended Google Drive plugin. Desktop documentation describes a plus button; CLI installation is available from details under /plugins marketplace categories. Record the name or ID and date so a similarly named package is not mistaken for the same installation."
+        },
+        {
+          "type": "paragraph",
+          "text": "When sign-in is required, verify the service and account own the practice document, then read the requested permissions. Do not paste passwords, verification codes, tokens or connection callback URLs into chat. If the requested access exceeds your acceptable purpose, cancel and record not connected. A read-only prompt does not narrow OAuth permissions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Return to the original surface, inspect Installed and connection state, then start a new chat or CLI session. Some plugins connect only on first use, so installation alone cannot skip this check. API-key Codex authentication does not support every OAuth-dependent plugin. Check authentication mode and plugin requirements rather than repeatedly replacing or printing keys."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Verify an actual read"
+        },
+        {
+          "type": "paragraph",
+          "text": "On desktop, use @ to select the installed plugin or bundled skill and paste the request, replacing the marked position with your practice document URL. In a new CLI session, request the installed plugin for the same document and use the skill-selection entry if shown. Read only the specified document, making both results and scope easy to verify."
+        },
+        {
+          "type": "code",
+          "label": "Request to Codex; replace the document URL first",
+          "language": "text",
+          "code": "Use the installed Google Drive plugin to read this practice document:\n<PASTE YOUR PRACTICE DOCUMENT URL HERE>\nReturn the document title, source link, revision, marker, and the three counts.\nUse an actual read result. If access is unavailable, say which step failed.\nDo not edit, share, move, delete, or search unrelated files.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The reply should link the same document and report Revision 1, PLUGIN-LAB-A and 3/2/1 with actual read evidence. Match values to total, completed and pending fields rather than merely checking the numbers. Then manually change Revision to 2, Completed to 1 and Pending to 2. Request a fresh read without supplying the new values and verify it reports the updated document."
+        },
+        {
+          "type": "paragraph",
+          "text": "If it returns old counts, request a fresh source read and observed revision. Record connection, account-access or update-delay errors instead of fabricating new results. A fresh task can help separate old conversation context. Finally inspect the service to confirm the agent did not edit, share or move the document, distinguishing your manual revision from the agent's read."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Add a marker the model has not been told"
+        },
+        {
+          "type": "paragraph",
+          "text": "After the two fixed-count checks, change Revision to 3 in the source service and replace Document marker with a new non-sensitive marker of your own; keep the second round's counts at 3/1/2. Put the marker only in the document, not in the Codex prompt. Start a new task with the same document URL and earlier read request. Count this round as verified only when a real tool result supplies your new marker. Repeating the article's marker or the previous revision does not pass."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Fill the record below in your own notes; keep private URLs private and use aliases in public reports. Installed records the bundle, Connected the service connection, and Fresh read needs its own read time, source and marker evidence. After uninstalling, a missing skill does not automatically make Connected false. Check separately connected MCP integrations using the "
+            },
+            {
+              "type": "link",
+              "text": "official plugin documentation",
+              "url": "https://learn.chatgpt.com/docs/plugins"
+            },
+            {
+              "type": "text",
+              "text": ", then handle only the authorization created for this exercise if needed."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Personal record: plugin-read-verification.md",
+          "language": "markdown",
+          "code": "# Plugin read verification\nSurface / host / date:\nPlugin ID and source:\nPractice document alias:\nInstalled: <observed state>\nConnected: <observed state or unconfirmed>\nTool available in this new task: <evidence>\nFresh read time and source: <tool evidence or NOT RUN>\nRevision and private practice marker: <actual result, do not copy the tutorial value>\nSource unchanged by the tool: <verification>\nBundle removed: <observed or NOT RUN>\nSeparate connection disconnected: <observed or NOT RUN>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 5: Disable, uninstall and disconnect"
+        },
+        {
+          "type": "paragraph",
+          "text": "In CLI /plugins, Space toggles an installed entry; Uninstall plugin in details removes it. On desktop/web, open installed plugin details for that action. Workspace/default plugins may be administrator-controlled. Record restrictions; do not delete app caches or installation folders."
+        },
+        {
+          "type": "paragraph",
+          "text": "Uninstalling a bundle and disconnecting an external account are separate. Independently connected MCP integrations may remain; disconnect the service in ChatGPT connection management and inspect the provider's third-party authorization page if needed. Check shared use before removing only the practice connection. In a fresh task verify that connection can no longer read, rather than treating a removed Installed entry as proof all access was revoked."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Record installation, authorization, first read, revised read and removal separately. Mark unoperated platforms/services as documentation-checked. This lesson does not claim to have authenticated your Drive or read private documents. Diagram 1 selects capability/scope, 2 connects and reads, and 3 verifies and closes. Continue to "
+            },
+            {
+              "type": "article",
+              "text": "Plugin troubleshooting",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": " for layered diagnosis."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugins/diagram-1.svg",
+          "alt": "24. Plugins and connected services — Workflow illustration, not a product screenshot. Plugin → Connect → Tool",
+          "width": 1600,
+          "height": 900,
+          "caption": "24. Plugins and connected services — Workflow illustration, not a product screenshot. Plugin → Connect → Tool",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Plugins: installation, support and connections",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Plugins と外部サービス",
+      "description": "Plugin は Skills や MCP を配布できます。導入、アカウント接続、ツール成功は別段階です。",
+      "hero": {
+        "src": "/guides/codex-plugins/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "必要なプラグインを導入し、外部アカウント接続、架空教材の読取り、削除と切断の違いを確認します。読む時間15分、実習25分。対応入口とサービスアカウントを用意し、権限とデータ範囲を読みます。自分の Google Drive に作る教材を使い、提供状況はアカウントの一覧で確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "権限とデータ範囲",
+              "kind": "life",
+              "slug": "codex-permissions"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Plugins は "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " などをまとめて配布します。Skills は手順、MCP ツールはサービスの読取りや操作を担当します。導入済みでも認証済み、全ツール利用可能とは限りません。状態を分けると「導入済みだが読めない」原因を探せます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：入口を確認"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "デスクトップの Plugins を開き、OpenAI、作業領域、Personal、Installed など実際の分類を確認します。Windows、macOS、Linux とも版と個別要件を確認し、Linux プレビューはローカルの一覧で提供を確かめます。公開紹介ページだけで動作可能とは判断しません。導入前なら"
+            },
+            {
+              "type": "article",
+              "text": "環境選択",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "へ戻ります。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "3つの OS の端末で実習フォルダーへ移動し codex を起動、その対話内で /plugins を入力します。前者はシェル命令、後者は対話指令なので別操作です。IDE 拡張は現時点で Plugins 非対応のため、エディターに同じ選択画面を期待せず対応デスクトップか CLI を使います。"
+        },
+        {
+          "type": "code",
+          "label": "端末：Codex 起動",
+          "language": "sh",
+          "code": "codex\n"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI の対話入力",
+          "language": "text",
+          "code": "/plugins\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "入口",
+            "最初の確認",
+            "手順"
+          ],
+          "rows": [
+            [
+              "3 OS デスクトップ",
+              "版、一覧、個別環境要件",
+              "Plugins 詳細で導入・接続"
+            ],
+            [
+              "3 OS CLI",
+              "認証、/plugins、市場の出所",
+              "詳細、導入、新規セッション"
+            ],
+            [
+              "iOS／Android",
+              "アカウントの Chat／Work での提供",
+              "Desktop only でないことを確認"
+            ],
+            [
+              "IDE",
+              "Plugins 非対応",
+              "デスクトップか CLI、単独 Skills と区別"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "モバイルのプラグインで PC のディスクが自動公開されるわけではありません。ローカルファイルは"
+            },
+            {
+              "type": "article",
+              "text": "端末連携",
+              "kind": "life",
+              "slug": "codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": "の条件に従い、本記事では選んだサービスの文書だけを読みます。Desktop only は Web で見つけても電話で直接実行できません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：確認できる文書を準備"
+        },
+        {
+          "type": "paragraph",
+          "text": "自分の練習用 Google Drive で Codex Plugin Practice という文書を作り、以下を全文貼ります。非公開のままにし、読めるようにする目的で一般公開しません。URL を控えて範囲指定に使います。他サービスの場合は導入と状態記録を先に行い、同等の読取りが確認できてから例を置き換えます。"
+        },
+        {
+          "type": "code",
+          "label": "練習文書の内容",
+          "language": "text",
+          "code": "Codex Plugin Practice\nRevision: 1\nDocument marker: PLUGIN-LAB-A\nTask count: 3\nCompleted count: 2\nPending count: 1\nScope: fictional practice data; read only.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "識別マーカーと版は実際に読んだ文書を識別するもので、数値を当てる試験ではありません。同名文書でも URL と識別マーカーを一致させます。検索で2件なら任意に選ばず、元サービスのページを確認して同じ URL を指定し、独立した比較基準を作ります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：導入、接続、新規タスク"
+        },
+        {
+          "type": "paragraph",
+          "text": "詳細で名前、提供者、市場、機能を確認して目的の Google Drive プラグインを導入します。デスクトップ文書は加号、CLI は /plugins の市場分類から詳細で導入します。名称または ID と日付を記録し、同名の別配布物と混同しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "認証画面のサービスとアカウントが教材の所有者か確認し、要求権限を読みます。パスワード、確認コード、Token、接続戻り URL を会話へ貼りません。許容範囲を超えるなら中止して未接続と記録します。依頼に「読取りのみ」と書いても OAuth 権限は狭まりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "元の入口へ戻り Installed と接続状態を確認して新規会話か CLI セッションを始めます。初回使用時に接続するものもあるため導入だけで省略できません。API key 認証では一部 OAuth 依存プラグインが使えません。キーを交換・表示せず、認証方式と要件を確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：実際の読取りを検収"
+        },
+        {
+          "type": "paragraph",
+          "text": "デスクトップは @ で導入したプラグインかスキルを選び、下の依頼の指定箇所を自分の教材 URL に置き換えます。CLI は新規セッションで同じ文書への使用を依頼し、表示される選択入口を使います。全アカウント検索でなく指定文書だけを読ませ、結果と範囲を確認します。"
+        },
+        {
+          "type": "code",
+          "label": "Codex への依頼：先に文書 URL を置換",
+          "language": "text",
+          "code": "Use the installed Google Drive plugin to read this practice document:\n<PASTE YOUR PRACTICE DOCUMENT URL HERE>\nReturn the document title, source link, revision, marker, and the three counts.\nUse an actual read result. If access is unavailable, say which step failed.\nDo not edit, share, move, delete, or search unrelated files.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ文書へのリンク、Revision 1、PLUGIN-LAB-A、3／2／1 と実読取り記録を確認します。全体、完了、未完了の項目に対応させます。自分で Revision 2、Completed 1、Pending 2 に変更し、新しい数値を依頼に書かず再読取りを求め、更新内容に基づくか確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "旧数値なら再取得と実際の版を求めます。接続切れ、別アカウント、更新遅延はエラーとして残し、新結果を作りません。新規タスクで旧文脈も分離できます。最後に元サービスでエージェントによる変更、共有、移動がないか確認し、自分の改版とエージェントの読取りを区別します。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "モデルに伝えていない識別値を加える"
+        },
+        {
+          "type": "paragraph",
+          "text": "固定数値で2回比較した後、元サービスで Revision を 3 にし、Document marker を自分で考えた機密性のない新しい値に置き換えます。件数は2回目の 3／1／2 を維持します。値は文書だけに書き、Codex の依頼には含めません。同じ URL と読み取り依頼で新規タスクを作り、実際のツール結果が新しい値を返した場合に、この回の新内容を確認済みとします。記事の例や前の版を返すだけでは通過しません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "次の欄を自分の記録に記入し、非公開 URL は手元に保管して公開時は別名にします。Installed はパッケージ、Connected は接続の状態、Fresh read は取得時刻、出典、識別値の証拠を別々に記録します。アンインストール後にスキルが見えなくても Connected を自動で false にしません。"
+            },
+            {
+              "type": "link",
+              "text": "公式プラグイン文書",
+              "url": "https://learn.chatgpt.com/docs/plugins"
+            },
+            {
+              "type": "text",
+              "text": "に従い独立した MCP 接続を確認し、必要なら今回の練習で作成した認可だけを扱います。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "個人記録：plugin-read-verification.md",
+          "language": "markdown",
+          "code": "# Plugin read verification\nSurface / host / date:\nPlugin ID and source:\nPractice document alias:\nInstalled: <observed state>\nConnected: <observed state or unconfirmed>\nTool available in this new task: <evidence>\nFresh read time and source: <tool evidence or NOT RUN>\nRevision and private practice marker: <actual result, do not copy the tutorial value>\nSource unchanged by the tool: <verification>\nBundle removed: <observed or NOT RUN>\nSeparate connection disconnected: <observed or NOT RUN>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順5：無効化、削除、切断"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI の /plugins は表示に従い Space で切替、詳細の Uninstall plugin で削除します。デスクトップ／Web も導入済み詳細で探します。作業領域や既定プラグインは管理者が制御する場合があり、その制約を記録して内部キャッシュや導入フォルダーを壊しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "パッケージの削除と外部接続解除は別です。個別 MCP 接続が残る場合は ChatGPT の接続管理で切断し、必要ならサービス側の第三者認可も確認します。共有利用を確認して今回の接続だけを扱います。新規タスクでその接続から読めないことを確認し、一覧1件の削除だけで全権限撤回と主張しません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "導入、認可、初回読取り、改版再読取り、削除を別々に記録し、未操作環境は公式文書確認と記します。読者の Drive 認証や非公開文書読取りを実施したとは主張しません。図1は選択と範囲、2は接続と読取り、3は検収と終了です。"
+            },
+            {
+              "type": "article",
+              "text": "プラグイン問題対処",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "へ続きます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugins/diagram-1.svg",
+          "alt": "24. Plugins と外部サービス — 作業の流れを表す図です。製品画面の画像ではありません。 Plugin → Connect → Tool",
+          "width": 1600,
+          "height": 900,
+          "caption": "24. Plugins と外部サービス — 作業の流れを表す図です。製品画面の画像ではありません。 Plugin → Connect → Tool",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Plugins: installation, support and connections",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Plugins와 외부 서비스",
+      "description": "Plugin은 Skills와 MCP를 배포할 수 있습니다. 설치, 계정 연결과 도구 성공은 별도 단계입니다.",
+      "hero": {
+        "src": "/guides/codex-plugins/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "필요한 플러그인을 설치하고 외부 계정을 연결해 가상 문서를 읽은 뒤 제거와 연결 해제의 차이를 확인합니다. 읽기 15분, 실습 25분입니다. 지원 진입점과 서비스 계정을 준비하고 권한과 데이터 범위를 읽으세요. 자신의 Google Drive에 만든 연습 문서를 예로 들며 제공 플러그인과 옵션은 계정 목록을 기준으로 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "권한과 데이터 범위",
+              "kind": "life",
+              "slug": "codex-permissions"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Plugins는 "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "codex-skills"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " 등을 묶어 배포합니다. Skills는 절차를 설명하고 MCP 도구는 서비스를 읽거나 조작합니다. 설치가 서비스 인증이나 모든 도구의 즉시 사용을 뜻하지는 않습니다. 상태를 나누면 설치했는데 문서를 읽지 못하는 원인을 찾기 쉽습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 진입점 확인"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "데스크톱 Plugins에서 OpenAI, 작업 공간, Personal, Installed 등 실제 분류를 확인하세요. Windows, macOS, Linux 모두 버전과 개별 플러그인 요건을 확인하고 Linux 미리 보기는 로컬 목록에서 제공 여부를 봅니다. 공개 소개 페이지가 보인다고 현재 환경에서 실행 가능하다는 뜻은 아닙니다. 설치 전이라면 "
+            },
+            {
+              "type": "article",
+              "text": "플랫폼 선택",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "을 읽으세요."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "세 OS의 터미널에서 실습 폴더로 이동해 codex를 시작한 다음 대화형 화면에 /plugins를 입력합니다. 전자는 셸 명령이고 후자는 대화형 슬래시 명령이므로 따로 실행하세요. IDE 확장은 현재 Plugins를 지원하지 않으므로 편집기에 같은 메뉴를 기대하지 말고 지원 데스크톱이나 CLI를 사용합니다."
+        },
+        {
+          "type": "code",
+          "label": "터미널: Codex 시작",
+          "language": "sh",
+          "code": "codex\n"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 대화형 입력",
+          "language": "text",
+          "code": "/plugins\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "진입점",
+            "먼저 확인",
+            "실습 경로"
+          ],
+          "rows": [
+            [
+              "세 OS 데스크톱",
+              "버전, 목록, 개별 플랫폼 조건",
+              "Plugins 상세에서 설치/연결"
+            ],
+            [
+              "세 OS CLI",
+              "로그인, /plugins, 마켓 출처",
+              "상세 확인, 설치, 새 세션"
+            ],
+            [
+              "iOS/Android",
+              "계정 Chat/Work 제공 여부",
+              "Desktop only가 아닌지 확인"
+            ],
+            [
+              "IDE",
+              "Plugins 미지원",
+              "데스크톱/CLI 사용, 독립 Skills와 구분"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "모바일 플러그인이 컴퓨터 디스크를 자동으로 열어주지는 않습니다. 로컬 파일 작업은 "
+            },
+            {
+              "type": "article",
+              "text": "모바일과 기기 연결",
+              "kind": "life",
+              "slug": "codex-mobile-guide"
+            },
+            {
+              "type": "text",
+              "text": " 조건을 따라야 하며 여기서는 선택한 서비스 문서만 읽습니다. Desktop only는 웹에서 검색되어도 휴대전화에서 직접 실행할 수 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 확인 가능한 문서 준비"
+        },
+        {
+          "type": "paragraph",
+          "text": "자신의 연습 Google Drive에 Codex Plugin Practice 문서를 만들고 아래 전체 내용을 붙이세요. 비공개로 유지하며 플러그인이 읽게 하려고 공개 접근을 켜지 마세요. 범위를 지정할 URL을 보관합니다. 다른 서비스라면 먼저 설치와 상태 기록을 마치고 동등한 읽기 도구를 확인한 뒤 예제를 바꾸세요."
+        },
+        {
+          "type": "code",
+          "label": "실습 문서 내용",
+          "language": "text",
+          "code": "Codex Plugin Practice\nRevision: 1\nDocument marker: PLUGIN-LAB-A\nTask count: 3\nCompleted count: 2\nPending count: 1\nScope: fictional practice data; read only.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "표식과 버전은 도구가 실제 읽은 문서를 구분하기 위한 것이지 숫자를 맞히는 시험이 아닙니다. 제목이 같아도 URL과 표식이 일치해야 합니다. 동명 검색 결과가 둘이면 임의로 선택하지 말고 원래 서비스 페이지를 확인한 뒤 정확한 URL을 요청해 독립적으로 비교하세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 설치, 연결, 새 작업"
+        },
+        {
+          "type": "paragraph",
+          "text": "상세에서 이름, 제공자, 마켓 출처, 기능을 확인한 뒤 원하는 Google Drive 플러그인을 설치하세요. 데스크톱 문서는 더하기 버튼을, CLI는 /plugins의 마켓 분류 상세를 안내합니다. 이름이나 ID와 날짜를 기록해 이름이 비슷한 다른 패키지와 혼동하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "인증 화면의 서비스와 계정이 연습 문서를 소유하는지 확인하고 요청 권한을 읽으세요. 비밀번호, 인증 코드, 토큰, 연결 반환 URL을 대화에 붙이지 마세요. 허용할 수 있는 목적보다 넓으면 취소하고 미연결로 기록합니다. 읽기 전용 프롬프트가 OAuth 권한 범위를 줄이지는 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "원래 진입점으로 돌아와 Installed와 연결 상태를 확인하고 새 대화나 CLI 세션을 시작하세요. 처음 사용할 때 연결하는 플러그인도 있어 설치만으로 이 확인을 생략할 수 없습니다. API 키 인증에서는 일부 OAuth 의존 플러그인이 제공되지 않습니다. 키를 반복 교체하거나 출력하지 말고 인증 방식과 요구 조건을 확인하세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 실제 읽기 검수"
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱에서 @로 설치한 플러그인이나 스킬을 선택하고 아래 요청의 표시 부분을 자신의 문서 URL로 바꾸세요. 새 CLI 세션에서는 같은 문서에 설치된 플러그인을 사용하라고 요청하고 표시되는 스킬 선택 경로를 따릅니다. 전체 계정을 검색하지 말고 지정 문서만 읽어 결과와 범위를 확인하세요."
+        },
+        {
+          "type": "code",
+          "label": "Codex 요청: 먼저 문서 URL 교체",
+          "language": "text",
+          "code": "Use the installed Google Drive plugin to read this practice document:\n<PASTE YOUR PRACTICE DOCUMENT URL HERE>\nReturn the document title, source link, revision, marker, and the three counts.\nUse an actual read result. If access is unavailable, say which step failed.\nDo not edit, share, move, delete, or search unrelated files.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 문서 링크, Revision 1, PLUGIN-LAB-A, 3/2/1과 실제 읽기 기록을 확인하세요. 숫자만 보지 말고 전체, 완료, 대기 필드에 맞춰 비교합니다. 직접 Revision 2, Completed 1, Pending 2로 바꾼 뒤 새 수치를 요청문에 알려주지 않고 다시 읽게 해 갱신된 내용을 보고하는지 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이전 개수를 반환하면 출처를 새로 읽고 실제 버전을 제시하도록 요청하세요. 연결 만료, 다른 계정, 갱신 지연은 오류로 기록하고 새 결과를 꾸미지 않습니다. 새 작업으로 이전 문맥을 분리할 수도 있습니다. 마지막으로 원래 서비스에서 에이전트가 수정, 공유, 이동하지 않았는지 확인하고 수동 개정과 도구 읽기를 구분하세요."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "모델에게 알려주지 않은 식별값 추가"
+        },
+        {
+          "type": "paragraph",
+          "text": "고정 숫자로 두 번 비교한 뒤 원본 서비스에서 Revision을 3으로 바꾸고 Document marker를 직접 정한 민감하지 않은 새 값으로 교체합니다. 개수는 두 번째의 3/1/2를 유지합니다. 식별값은 문서에만 적고 Codex 요청에는 넣지 않습니다. 같은 URL과 앞의 읽기 요청으로 새 작업을 만들고 실제 도구 결과가 새 값을 가져와야 이번 새 내용 확인을 통과한 것으로 기록합니다. 기사의 예시 값이나 이전 버전만 반환하면 통과가 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "아래 항목을 개인 기록에 작성하고 비공개 URL은 보관하되 공개 보고에는 별칭을 씁니다. Installed는 패키지, Connected는 서비스 연결 상태이며 Fresh read에는 읽은 시각, 출처, 식별값의 별도 증거가 필요합니다. 제거 후 스킬이 보이지 않아도 Connected를 자동으로 false로 바꾸지 않습니다. "
+            },
+            {
+              "type": "link",
+              "text": "공식 플러그인 문서",
+              "url": "https://learn.chatgpt.com/docs/plugins"
+            },
+            {
+              "type": "text",
+              "text": "를 따라 별도 MCP 연결을 확인하고 필요하다면 이번 연습에서 만든 권한만 처리합니다."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "개인 기록: plugin-read-verification.md",
+          "language": "markdown",
+          "code": "# Plugin read verification\nSurface / host / date:\nPlugin ID and source:\nPractice document alias:\nInstalled: <observed state>\nConnected: <observed state or unconfirmed>\nTool available in this new task: <evidence>\nFresh read time and source: <tool evidence or NOT RUN>\nRevision and private practice marker: <actual result, do not copy the tutorial value>\nSource unchanged by the tool: <verification>\nBundle removed: <observed or NOT RUN>\nSeparate connection disconnected: <observed or NOT RUN>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "5단계: 비활성화, 제거, 연결 해제"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI /plugins에서 표시되는 Space로 설치 항목을 전환하고 상세의 Uninstall plugin으로 제거합니다. 데스크톱/웹도 설치된 플러그인 상세에서 찾으세요. 작업 공간이나 기본 플러그인은 관리자가 제어할 수 있으므로 제한을 기록하고 앱 캐시나 설치 폴더를 임의 삭제하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "패키지 제거와 외부 계정 연결 해제는 별개입니다. 별도 MCP 연결은 남을 수 있어 ChatGPT 연결 관리에서 서비스를 끊고 필요하면 제공자 측 외부 앱 권한도 확인하세요. 다른 작업이 공유하는지 확인하고 이번 연습 연결만 처리합니다. 새 작업에서 해당 연결로 읽을 수 없는지 확인해야 하며 Installed 항목 하나가 사라졌다고 모든 접근이 취소되었다고 하면 안 됩니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "설치, 승인, 첫 읽기, 개정 후 읽기, 제거를 각각 기록하고 조작하지 않은 플랫폼은 공식 문서 확인으로 표시하세요. 이 교재는 독자의 Drive에 인증하거나 비공개 문서를 읽었다고 주장하지 않습니다. 그림 1은 선택/범위, 2는 연결/읽기, 3은 검수/정리입니다. 자세한 원인 구분은 "
+            },
+            {
+              "type": "article",
+              "text": "플러그인 문제 해결",
+              "kind": "life",
+              "slug": "codex-plugin-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "로 이어집니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-plugins/diagram-1.svg",
+          "alt": "24. Plugins와 외부 서비스 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Plugin → Connect → Tool",
+          "width": 1600,
+          "height": 900,
+          "caption": "24. Plugins와 외부 서비스 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Plugin → Connect → Tool",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Plugins: installation, support and connections",
+          "url": "https://learn.chatgpt.com/docs/plugins",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

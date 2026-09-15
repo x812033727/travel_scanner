@@ -1,0 +1,309 @@
+{
+  "slug": "notebooklm-conflicting-sources",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 158,
+  "locales": {
+    "zh-TW": {
+      "title": "NotebookLM 引用查核：矛盾資料、缺證據與未知答案",
+      "description": "有來源連結的回答，仍可能誤讀日期、把提案當定案，或替未指派的人安排工作。本篇用三份互相補充又有矛盾的虛構文件，建立五列證據矩陣。完成後，你能分辨有依據的答案、尚未解決的衝突，以及資料根本沒有回答的問題，並保存可回頭核對的原文位置。",
+      "hero": {
+        "src": "/guides/notebooklm-conflicting-sources/hero.jpg",
+        "alt": "引用查核：支持或未知教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "有來源連結的回答，仍可能誤讀日期、把提案當定案，或替未指派的人安排工作。本篇用三份互相補充又有矛盾的虛構文件，建立五列證據矩陣。完成後，你能分辨有依據的答案、尚未解決的衝突，以及資料根本沒有回答的問題，並保存可回頭核對的原文位置。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/notebooklm-conflicting-sources/diagram-1.svg",
+          "alt": "支持：明確取代舊值：名額修訂為 30；未決：日期只是提案：不能當成定案；未知：沒有餐點資料：引用可保留空白；修正：保存原始回答：主張與引文同查",
+          "width": 1600,
+          "height": 900,
+          "caption": "先找原文，再判斷是否支持。五列矩陣已查；模型引用待驗。這是原創概念圖，不是介面截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "準備：先固定本次資料範圍",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀 "
+            },
+            {
+              "type": "link",
+              "text": "來源版本管理",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-source-versioning"
+            },
+            {
+              "type": "text",
+              "text": "，下載 E1、E2、E3 與 evidence-matrix.csv。三份文件都是作者設計的合成教材，日期只用來練習推理，並非真實活動公告。需要電腦瀏覽器、可建立筆記本的 Google 帳號與能逐份查看來源的權限。操作依 2026-09-14 官方文件整理，尚未在真實帳號完成引用點擊。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "NotebookLM 在本次官方文件使用 Gemini Notebook 名稱。請建立獨立筆記本，只加入這三份教材，勾選三個來源。記錄來源範圍與問題，再進行資料問答；若介面提供網路搜尋或實驗工具，另外記錄是否啟用及新增了哪些來源，不把外部查到的資料默認成原教材的一部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "E1 是原報名公告，E2 有正式名額修訂與尚未決定的改期提案，E3 說明工作分工與資訊缺口。先自行閱讀一次，圈出「替代」「也許」「尚未」等條件。日期較晚只能提供排序，不能代替文件的效力判斷。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：把問題拆成可查的主張",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先列出五個問題：有效名額、活動日期、報名表負責人、報名成功條件、退款金額。不要一開始就要求產出一篇流暢公告，因為流暢文字容易把不同確定程度的資訊合併。每次只檢查一個可判斷的主張，保留它的來源與理由。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "prompt.txt",
+          "code": "只用選取的 E1、E2、E3 回答五個問題：有效名額、活動日期、報名表負責人、報名成功條件、退款金額。每項分成主張、來源、原文位置與判斷。明確修訂與未確認提案分開，找不到就寫未知；不要用提問句替代證據。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "把模型原始答案另存，不覆寫下載包內的作者參考矩陣。為每一列填上主張、狀態、來源 ID、原文與判斷；如果模型多回答了停車費或餐點，新增列標記範圍外資訊，而不是默默納入公告。這份表是審閱工具，不是讓模型自行宣告答案可信的分數表。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：點開引用檢查支持關係",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在回答的引用標記上查看對應文字，再點擊回到來源位置。核對文件 ID、段落、原文中的主詞與條件。名額修訂應看到 E2 明確取代 E1 的句子；「小安負責教材」只能支持教材分工，不能支持他也負責報名表。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "問題",
+            "作者參考判斷",
+            "需要看到的依據"
+          ],
+          "rows": [
+            [
+              "有效名額",
+              "支持：30 人",
+              "E2 明確取代 E1 的 24 人"
+            ],
+            [
+              "已改到 10 月 4 日嗎",
+              "未決衝突／提案待確認",
+              "E1 原訂日期，E2 尚未決定"
+            ],
+            [
+              "誰負責報名表",
+              "未知／尚未指派",
+              "E3 的分工限制"
+            ],
+            [
+              "填表就算報名成功嗎",
+              "仍需收到確認信",
+              "E1 的完成條件"
+            ],
+            [
+              "退款多少",
+              "未知",
+              "E3 未提供費用或退款資訊"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "這裡「衝突」是需要保留兩種資訊、等待決定的工作分類，不表示兩份文件已給出同等有效的互斥結論。日期列要完整寫「原訂 10 月 3 日，10 月 4 日是尚未定案提案」，不能只填兩個日期讓下一位讀者猜。"
+        },
+        {
+          "type": "paragraph",
+          "text": "某些短文件可能引用整份來源。這時仍應在矩陣補上可定位的章節與關鍵句；引用範圍大不等於每句都支持主張。若想保存回答，可使用介面提供的儲存筆記操作，再重開確認引用可追查。此步驟的成功與否需填實際觀察。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：讓未知有可追蹤的出口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "再問「有沒有餐點與停車位」。三份教材都未提及，合理答案是資料不足，而不是沒有供餐或一定能停車。矩陣可記已查 E1、E2、E3，原文引用留空；沒有一句原文能證明「文件完全沒提某事」，不能為了填滿格子編造句子。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對於退款題，E3 確實寫出未提供資訊，因此可以引用那句說明目前缺口，但不能由此推導不能退款。接著寫明補件需求，例如需要有效的報名條款或主辦方確認；未取得資料前不自行補數字。這會讓接手者知道下一步該找什麼。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "unknown 不是失敗分數，而是證據範圍的紀錄。有引用但引文不支持主張，應標示問題並修正；不要把所有列都改成「支持」才算完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "你可以在解壓根目錄執行 python research_checks.py evidence 58。本機程式會檢查五列、已知來源與引用文字是否存在，並要求衝突列保留多個來源；它無法判斷一句話是否被斷章取義，因此仍需要逐列人工審閱。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：做一次假引用故障練習",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "複製矩陣當作測試檔，將名額列的引文改成原文不存在的「總共有 54 人」。檢查器應拒絕不存在的引用；若你把引文改回正確文字，卻仍在主張填 54 人，字串檢查可能通過，人工必須指出同一活動兩個版本不能相加。這正是機械檢查與語意審閱的差別。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個故障是把所有較晚文件都當成定案。請將改期列與名額列並排：前者只有討論，後者明確取代舊值。修正提示詞，要求逐項辨識文件效力，再保存新的回答與修改原因。不要刪掉錯誤版本，否則無法說明修正是否真的改善。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成後交付五列矩陣、原始回答、未知問題清單與修正前後差異。至少一列需要人工確認，至少一題必須保持未知；不是刻意追求不確定，而是忠實呈現教材。接著可用 "
+            },
+            {
+              "type": "link",
+              "text": "備考題庫",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-study-retrieval-practice"
+            },
+            {
+              "type": "text",
+              "text": " 檢查答案是否受教材支持，或用 "
+            },
+            {
+              "type": "link",
+              "text": "研究比較矩陣",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-paper-comparison-matrix"
+            },
+            {
+              "type": "text",
+              "text": " 擴展到論文方法與限制。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "模型附了很多引用，可以直接採用嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "不能以數量代替審閱。逐項確認引用與主張的主詞、時間與條件一致；同一來源被重複引用也不等於多份獨立證據。"
+        },
+        {
+          "type": "heading",
+          "text": "找不到資料時，應引用搜尋過的三份文件嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "可以記錄已檢索來源，但不要把它們標成支持答案的引文。保留引用空白、說明缺口，待取得新資料後再更新判斷。"
+        },
+        {
+          "type": "heading",
+          "text": "新來源解決矛盾後，需要改哪些地方？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "更新來源版本、矩陣狀態與理由，再核對受影響的公告或報告。保留先前未決紀錄與新依據，避免只有最後答案而失去更正脈絡。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 入門：資料、筆記本與引用",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 資料版本管理：來源清單、更新與過期內容",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-source-versioning"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 備考實作：題庫、錯題分類與間隔複習",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-study-retrieval-practice"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 58 篇完整練習包",
+          "url": "https://mokaair.com/guides/notebooklm-conflicting-sources/lesson-58.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組研究練習與本機檢查程式",
+          "url": "https://mokaair.com/guides/notebooklm-conflicting-sources/research-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Notebook 聊天與引用",
+          "url": "https://support.google.com/gemininotebook/answer/16179559",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "來源範圍與匯入",
+          "url": "https://support.google.com/gemininotebook/answer/16215270?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

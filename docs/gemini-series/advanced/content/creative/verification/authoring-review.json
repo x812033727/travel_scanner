@@ -1,0 +1,1188 @@
+{
+  "checkedAt": "2026-09-14T13:53:03.139941+00:00",
+  "status": "authoring-review-not-release",
+  "publishable": false,
+  "scope": "creative track 63-68 only",
+  "baselineCommit": "eab628d21ae18e168c786def1d4fcad2d694ae37",
+  "preservation": {
+    "runtimeArticles": 50,
+    "originalPacksUnchanged": 51,
+    "priorDraftsUnchanged": 24,
+    "comparison": "Git content normalized for existing Windows checkout line endings; catalogue raw bytes match previous batch receipt",
+    "catalogueSha256": "1f6afed7f3bf7f05a407b8d5af4647938cf6d91df6b42a381a904b1f6d697bb2"
+  },
+  "environment": {
+    "platform": "Windows",
+    "python": "3.13.15",
+    "spreadsheetPython": "3.12.14",
+    "node": "24.13.0",
+    "browser": "151.0.7922.34",
+    "spreadsheet": "@oai/artifact-tool bundled runtime"
+  },
+  "checks": {
+    "newPacks": 6,
+    "priorDrafts": 24,
+    "originalPages": 51,
+    "fixtureTests": 20,
+    "archives": 7,
+    "extractedFixtureTests": 20,
+    "articlePreviews": 24,
+    "referencePreviews": 28,
+    "workbookPreviews": 6,
+    "workbookFormulaMutation": "passed",
+    "savedXlsxVerification": "passed",
+    "relatedApiPassed": 45,
+    "relatedApiSkipped": 7,
+    "apiSkipReason": "requires isolated PostgreSQL integration services",
+    "ruff": "passed",
+    "tasks": "passed with existing unrelated warnings"
+  },
+  "notTested": [
+    "actual Gemini series images and failed generations",
+    "actual Gemini edit rounds",
+    "actual Flow three clips and assembled video",
+    "actual baseline and revised continuity videos and frames",
+    "Google Sheets import and Gemini actions",
+    "complete media handoff and revised date assets",
+    "published pages and sitemap"
+  ],
+  "modelCalls": 0,
+  "mediaGenerated": 0,
+  "files": [
+    {
+      "path": "apps/api/app/guides/content/gemini-content-production-handoff.json",
+      "sha256": "b6f1b9dcb337a2bf8a11c988db7484fd455266c8948d744a44fe4cad722698fc",
+      "bytes": 14979
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-image-consistent-series.json",
+      "sha256": "1f7ff4bf8f91f6e824f7a136bd3e1c96a7d44c33addc02d5798e00822d0d1f90",
+      "bytes": 14942
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-image-editing-debugging.json",
+      "sha256": "34d80f1ca6dcb08488bb68343c57fedc57ea55d40406a4f06170a8ede786dee6",
+      "bytes": 14356
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-sheets-data-audit-dashboard.json",
+      "sha256": "05b7d4d0289c676a0b1c17a3007da839cb6fe0815e49c098466493c5b4b1f4b1",
+      "bytes": 14424
+    },
+    {
+      "path": "apps/api/app/guides/content/google-flow-shot-continuity.json",
+      "sha256": "430bd29247e9d19676a7bda3fe20730d233d3aab2c146614b69a6d18e1f6d0e7",
+      "bytes": 14062
+    },
+    {
+      "path": "apps/api/app/guides/content/google-flow-storyboard-workshop.json",
+      "sha256": "5e26c2381d26872aa944ae93407d829085ef5a3368c0d9a587f3514c3c5d1bcd",
+      "bytes": 15207
+    },
+    {
+      "path": "apps/web/public/guides/gemini-content-production-handoff/creative-verification.zip",
+      "sha256": "e990976d626fb543d09a911cf076254b9da4fb925b44e53707a5343256679dc6",
+      "bytes": 744209
+    },
+    {
+      "path": "apps/web/public/guides/gemini-content-production-handoff/diagram-1.svg",
+      "sha256": "1cb328e606acf9a4b2cfe0c731c75371d2f21c2fa4dd27da7a44daebeea47d78",
+      "bytes": 2310
+    },
+    {
+      "path": "apps/web/public/guides/gemini-content-production-handoff/hero.jpg",
+      "sha256": "8033353f30260b5e1acfb5f8d61e8fa10d4becff3513cd8ef720f47f1124e527",
+      "bytes": 90722
+    },
+    {
+      "path": "apps/web/public/guides/gemini-content-production-handoff/hero.svg",
+      "sha256": "86e0dbe48058dc78764687d4c065b50899cbd42ca34536da975289b25276c884",
+      "bytes": 1628
+    },
+    {
+      "path": "apps/web/public/guides/gemini-content-production-handoff/lesson-68.zip",
+      "sha256": "17b65e67ed824721a82ef445bde6118ab9afe6e37d1dd2cca9fd8ad006e33686",
+      "bytes": 6117
+    },
+    {
+      "path": "apps/web/public/guides/gemini-image-consistent-series/creative-verification.zip",
+      "sha256": "e990976d626fb543d09a911cf076254b9da4fb925b44e53707a5343256679dc6",
+      "bytes": 744209
+    },
+    {
+      "path": "apps/web/public/guides/gemini-image-consistent-series/diagram-1.svg",
+      "sha256": "7ce21957eddf44d29fdff0ea1a485bb3650b084b9ba19a7a7185824ef84fcbc3",
+      "bytes": 2330
+    },
+    {
+      "path": "apps/web/public/guides/gemini-image-consistent-series/hero.jpg",
+      "sha256": "137abebcf0ff7f0fa016fe28d1448b3f9d6eb81db6bda96c004d49e3ff04122d",
+      "bytes": 88843
+    },
+    {
+      "path": "apps/web/public/guides/gemini-image-consistent-series/hero.svg",
+      "sha256": "0234ecede075a6720fe257460063af054169aaa3a660feb7f61677eff61aa97a",
+      "bytes": 1628
+    },
+    {
+      "path": "apps/web/public/guides/gemini-image-consistent-series/lesson-63.zip",
+      "sha256": "c124c211c33aeda70a93edb309fb84cf32b6e392a809e0ab883f5a9a7ce06447",
+      "bytes": 303065
+    },
+    {
+      "path": "apps/web/public/guides/gemini-image-editing-debugging/creative-verification.zip",
+      "sha256": "e990976d626fb543d09a911cf076254b9da4fb925b44e53707a5343256679dc6",
+      "bytes": 744209
+    },
+    {
+      "path": "apps/web/public/guides/gemini-image-editing-debugging/diagram-1.svg",
+      "sha256": "0bf2d4f6fd5c3ec31741f51b8cdaa01cd7a2dbe82805994cf8ac97ef95ee19b6",
+      "bytes": 2304
+    },
+    {
+      "path": "apps/web/public/guides/gemini-image-editing-debugging/hero.jpg",
+      "sha256": "6732c86f567b259a6d2f24ea67ebbb699eec82b833c643ace3e890cbb47f082c",
+      "bytes": 93543
+    },
+    {
+      "path": "apps/web/public/guides/gemini-image-editing-debugging/hero.svg",
+      "sha256": "88875b80639cb824d4eb1d4b08a8869b961a00f2d6025e9d1de66818d769474f",
+      "bytes": 1628
+    },
+    {
+      "path": "apps/web/public/guides/gemini-image-editing-debugging/lesson-64.zip",
+      "sha256": "08427b1a3cae735831eb1dc4574f3ab5afc6c7746124287801c102ce3d32baec",
+      "bytes": 108532
+    },
+    {
+      "path": "apps/web/public/guides/gemini-sheets-data-audit-dashboard/creative-verification.zip",
+      "sha256": "e990976d626fb543d09a911cf076254b9da4fb925b44e53707a5343256679dc6",
+      "bytes": 744209
+    },
+    {
+      "path": "apps/web/public/guides/gemini-sheets-data-audit-dashboard/diagram-1.svg",
+      "sha256": "6853c447d9cf2f01a6d6be9daecacd044e3bc5a0299cf6dfc26bcbf20fa3c2fb",
+      "bytes": 2264
+    },
+    {
+      "path": "apps/web/public/guides/gemini-sheets-data-audit-dashboard/hero.jpg",
+      "sha256": "785cea0abe6cc0e493057f03bf09d02a5fb678871199e3c20bb436b4b866e561",
+      "bytes": 95619
+    },
+    {
+      "path": "apps/web/public/guides/gemini-sheets-data-audit-dashboard/hero.svg",
+      "sha256": "78733d8017a5bad624329566e4d8b83619b789077ff3bc8a0133d9a67f5f0a9c",
+      "bytes": 1628
+    },
+    {
+      "path": "apps/web/public/guides/gemini-sheets-data-audit-dashboard/lesson-67.zip",
+      "sha256": "b24b5c043bf4557f0b9f31b50d3dcaa65c8da3cb4049f74a5f846596ae43004b",
+      "bytes": 23630
+    },
+    {
+      "path": "apps/web/public/guides/google-flow-shot-continuity/creative-verification.zip",
+      "sha256": "e990976d626fb543d09a911cf076254b9da4fb925b44e53707a5343256679dc6",
+      "bytes": 744209
+    },
+    {
+      "path": "apps/web/public/guides/google-flow-shot-continuity/diagram-1.svg",
+      "sha256": "aa01c91335e58a5f149b2f9facec56fa5917f8caf96d0187003c8867670ec12e",
+      "bytes": 2309
+    },
+    {
+      "path": "apps/web/public/guides/google-flow-shot-continuity/hero.jpg",
+      "sha256": "0b54b4d017bc7295db4fa154bcf89705fd6e7e8a73a138f056e431d279310270",
+      "bytes": 96623
+    },
+    {
+      "path": "apps/web/public/guides/google-flow-shot-continuity/hero.svg",
+      "sha256": "7197e1f50edbf9a1232c334a46658deecda0a49558cf00e0fcdd387d400cc9d6",
+      "bytes": 1628
+    },
+    {
+      "path": "apps/web/public/guides/google-flow-shot-continuity/lesson-66.zip",
+      "sha256": "76ea347b7fc23acb23b6f333dbbe6bcc268dee1a1a505b9310690183c43f97c5",
+      "bytes": 130022
+    },
+    {
+      "path": "apps/web/public/guides/google-flow-storyboard-workshop/creative-verification.zip",
+      "sha256": "e990976d626fb543d09a911cf076254b9da4fb925b44e53707a5343256679dc6",
+      "bytes": 744209
+    },
+    {
+      "path": "apps/web/public/guides/google-flow-storyboard-workshop/diagram-1.svg",
+      "sha256": "da7464e21f0e79bc35ae03a43b3b69714ea12e3a5b320ee7637b80604dfbfc18",
+      "bytes": 2323
+    },
+    {
+      "path": "apps/web/public/guides/google-flow-storyboard-workshop/hero.jpg",
+      "sha256": "b7cf603e2127f6007e771dfd00bea0093b922bdcb1acd0ffbf27a76ae4efe94b",
+      "bytes": 94060
+    },
+    {
+      "path": "apps/web/public/guides/google-flow-storyboard-workshop/hero.svg",
+      "sha256": "3cac91f7728472ebb693ad955136e92d4b86dd35ae7c32c8e1f168cd20cf3181",
+      "bytes": 1628
+    },
+    {
+      "path": "apps/web/public/guides/google-flow-storyboard-workshop/lesson-65.zip",
+      "sha256": "60039df58f69fd791b4625d7364350297863d15fee62ef96d348574d6a8f452a",
+      "bytes": 180663
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/63/diagram-1.svg",
+      "sha256": "7ce21957eddf44d29fdff0ea1a485bb3650b084b9ba19a7a7185824ef84fcbc3",
+      "bytes": 2330
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/63/hero.jpg",
+      "sha256": "137abebcf0ff7f0fa016fe28d1448b3f9d6eb81db6bda96c004d49e3ff04122d",
+      "bytes": 88843
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/63/hero.svg",
+      "sha256": "0234ecede075a6720fe257460063af054169aaa3a660feb7f61677eff61aa97a",
+      "bytes": 1628
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/63/lesson.md",
+      "sha256": "57dbf84dce2b5dfdd1abb656c3542e6a35a016016e4f0f081d3b84e490b51daf",
+      "bytes": 6357
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/63/meta.json",
+      "sha256": "41614a333e1a0fb154949630ac03c565bb3d1705255933c5b71510ebd21117ef",
+      "bytes": 997
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/64/diagram-1.svg",
+      "sha256": "0bf2d4f6fd5c3ec31741f51b8cdaa01cd7a2dbe82805994cf8ac97ef95ee19b6",
+      "bytes": 2304
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/64/hero.jpg",
+      "sha256": "6732c86f567b259a6d2f24ea67ebbb699eec82b833c643ace3e890cbb47f082c",
+      "bytes": 93543
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/64/hero.svg",
+      "sha256": "88875b80639cb824d4eb1d4b08a8869b961a00f2d6025e9d1de66818d769474f",
+      "bytes": 1628
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/64/lesson.md",
+      "sha256": "d13c524fb8fae15fd391e16771b7d7f4f2166dafa7ecf93bd9dfbb08bd59865c",
+      "bytes": 6235
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/64/meta.json",
+      "sha256": "955fbbcfed18a2932d4da21c85b1bfec8e711a617833796df76782dde684396f",
+      "bytes": 983
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/65/diagram-1.svg",
+      "sha256": "da7464e21f0e79bc35ae03a43b3b69714ea12e3a5b320ee7637b80604dfbfc18",
+      "bytes": 2323
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/65/hero.jpg",
+      "sha256": "b7cf603e2127f6007e771dfd00bea0093b922bdcb1acd0ffbf27a76ae4efe94b",
+      "bytes": 94060
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/65/hero.svg",
+      "sha256": "3cac91f7728472ebb693ad955136e92d4b86dd35ae7c32c8e1f168cd20cf3181",
+      "bytes": 1628
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/65/lesson.md",
+      "sha256": "205312637e1214c382db1782e265440a75338fc3205ea5bc4bca3d73d7f8576d",
+      "bytes": 6237
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/65/meta.json",
+      "sha256": "245d24ec8b34dc544c9c0d2322dce5678e07bc4749ea4a5af079bec3cfeedbfa",
+      "bytes": 1606
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/66/diagram-1.svg",
+      "sha256": "aa01c91335e58a5f149b2f9facec56fa5917f8caf96d0187003c8867670ec12e",
+      "bytes": 2309
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/66/hero.jpg",
+      "sha256": "0b54b4d017bc7295db4fa154bcf89705fd6e7e8a73a138f056e431d279310270",
+      "bytes": 96623
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/66/hero.svg",
+      "sha256": "7197e1f50edbf9a1232c334a46658deecda0a49558cf00e0fcdd387d400cc9d6",
+      "bytes": 1628
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/66/lesson.md",
+      "sha256": "cf8ca6dba6f11e9dcc2a6587a36da3528bd6fe8f494337754b272c1101b624f0",
+      "bytes": 6241
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/66/meta.json",
+      "sha256": "e101499394ebe07cd92659788b6410f4e98162efff6b640159ae530fd4f67582",
+      "bytes": 1288
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/67/diagram-1.svg",
+      "sha256": "6853c447d9cf2f01a6d6be9daecacd044e3bc5a0299cf6dfc26bcbf20fa3c2fb",
+      "bytes": 2264
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/67/hero.jpg",
+      "sha256": "785cea0abe6cc0e493057f03bf09d02a5fb678871199e3c20bb436b4b866e561",
+      "bytes": 95619
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/67/hero.svg",
+      "sha256": "78733d8017a5bad624329566e4d8b83619b789077ff3bc8a0133d9a67f5f0a9c",
+      "bytes": 1628
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/67/lesson.md",
+      "sha256": "31fc6124c4e0dde2e1c879948c8ab3eccc59d53e720a2d0c2c9774ffb40359d6",
+      "bytes": 6595
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/67/meta.json",
+      "sha256": "efc0e3f00a195b860a50b45fc180743a334e1e8b52abefdf9d99afe1647ee6a6",
+      "bytes": 995
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/68/diagram-1.svg",
+      "sha256": "1cb328e606acf9a4b2cfe0c731c75371d2f21c2fa4dd27da7a44daebeea47d78",
+      "bytes": 2310
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/68/hero.jpg",
+      "sha256": "8033353f30260b5e1acfb5f8d61e8fa10d4becff3513cd8ef720f47f1124e527",
+      "bytes": 90722
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/68/hero.svg",
+      "sha256": "86e0dbe48058dc78764687d4c065b50899cbd42ca34536da975289b25276c884",
+      "bytes": 1628
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/68/lesson.md",
+      "sha256": "88ce5efd4b173a9f31411f6236092f90749f8cdaf87e9d0f248d3505f97e780e",
+      "bytes": 6867
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/68/meta.json",
+      "sha256": "962a2423857eb7b4962c360c2a6fadf2981e30fa5b5150b9242ae299737a443a",
+      "bytes": 1296
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/build-art.py",
+      "sha256": "63d15083e35205ab2c2e15014c3bb71dd3263082861064cf879a98515cf905d3",
+      "bytes": 7415
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/build-media.py",
+      "sha256": "f3fed8091287bc959287028f1e0750f6d9ce602bf924d93ab3025afea3da831f",
+      "bytes": 14361
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/build-sales.py",
+      "sha256": "90321ed0769d4a6112d9ba28ec24ebf3f5fff841b25a866c91e70f28e6ab5820",
+      "bytes": 3717
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/build-workbook.mjs",
+      "sha256": "10c8cad5902a65c3f1ca0b4e6c64ce281775396e42465eea295fbe5f383c1593",
+      "bytes": 9646
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/actual-outputs-needed.md",
+      "sha256": "a4a9835e056047b1a1ba4c375348ccb019e3e1addd3ffd5f87a895c74dd27e12",
+      "bytes": 215
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/failure-fixtures/two-cups.png",
+      "sha256": "6f40f495a5060f49adb0b5a9dc0d45d9e1501015658afdd7f3ee9080cbd8653d",
+      "bytes": 59793
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/failure-fixtures/two-cups.svg",
+      "sha256": "a4bf25551c80eba317b2d9b9502db87a120ad5fa438b97bff5ed110f6b4b0c1d",
+      "bytes": 1621
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/failure-fixtures/two-handles.png",
+      "sha256": "e87b225f55aab0424c976e3fa01ead01d3648705bea1b041183b54d2f53c4a8c",
+      "bytes": 51531
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/failure-fixtures/two-handles.svg",
+      "sha256": "3c8140234a80d03a4bf163512117bb2f6f0605e41ce4264762527dbaa0f3f5e8",
+      "bytes": 1175
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/failure-fixtures/wrong-color.png",
+      "sha256": "8f33442ea0dae5ec1bfe81d52b06de3b6f7a2d2553056f31af8184dfbc77b1d2",
+      "bytes": 51522
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/failure-fixtures/wrong-color.svg",
+      "sha256": "5cbc7a3784187e24b56914d1782c1ff23d6cbcbb00a6fd63f005a7fa58bccb66",
+      "bytes": 1076
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/image-scorecard.csv",
+      "sha256": "3bb1dcce591e589275b67eb6edee9b969b7c172bc6144b1e8f89610d85f860f3",
+      "bytes": 156
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/LICENSE.txt",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/prompts/banner.txt",
+      "sha256": "049c53b32f1a3598d61d56ae8fbb0835eb781a7cf81cb0b7fd3bc91235da4ccb",
+      "bytes": 347
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/prompts/desk.txt",
+      "sha256": "2b61890c08b5fb37ced21bc03d78ffc8914b68def03b74ea728c3af418d75145",
+      "bytes": 317
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/prompts/product.txt",
+      "sha256": "1149efed94b26e3bf5fa3a35772f3d2b7c2b25a5b2d7c70ba4e1da061cb8ba60",
+      "bytes": 314
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/README.md",
+      "sha256": "b58a60f211d70e4ed95af178ebcd40320637c75680575994a7d6f089fdf2e557",
+      "bytes": 384
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/references/banner.png",
+      "sha256": "74240401dd893c95d8dbb88f36e614430b1f51093bf8310420aca9a8caa2c298",
+      "bytes": 65490
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/references/banner.svg",
+      "sha256": "9db728015cf204121fad8e1bdbcf886bb2e637f47f47c2b04939f6907e6aeeec",
+      "bytes": 1245
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/references/desk.png",
+      "sha256": "78c662377192751071e98ec21cc291d96439d67010a7ff753bc113dc571aeaa4",
+      "bytes": 49395
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/references/desk.svg",
+      "sha256": "0379033745b7ced647fd18d02b917e288767e8064871c73a587c95fe03773e8e",
+      "bytes": 1220
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/references/product.png",
+      "sha256": "71938e91a91980bfc6fcd0fa991b895c0d7df77469880937004b307b29575c4e",
+      "bytes": 46458
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/references/product.svg",
+      "sha256": "b79ce9c210a6bb4b1e674bf4ead1db2af7910063030b79c5b1d4b734bec396c3",
+      "bytes": 1066
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/63/style-guide.md",
+      "sha256": "01d9775f21fcad6aefaaeb279481a34b0eb8bf57068eb2c2ac75acf052fc3412",
+      "bytes": 654
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/64/edit-log.csv",
+      "sha256": "70c4ef8a8170be1e8b0cf3e9aa68683f08ef4f7ade99693dfbbdfb4ade613562",
+      "bytes": 260
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/64/edit-request.txt",
+      "sha256": "4cb623af4c5bb9bfb924b86c4c75e4dfc521f41e627f42ff22a68dc087b42669",
+      "bytes": 231
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/64/LICENSE.txt",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/64/manual-text-correction.png",
+      "sha256": "9f1d9ed635883c324266fb7428b6c6d36d118fc0e694a17f44070b498c6826a9",
+      "bytes": 54848
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/64/manual-text-correction.svg",
+      "sha256": "78ed2fe83add1181c1b128c05057cfb559fa389019034d98be4be62f98a72b21",
+      "bytes": 1177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/64/README.md",
+      "sha256": "0a08bc623accbd0ff0f41a8eaaae1920c85fb04f43f97e86bde73afce1191a07",
+      "bytes": 384
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/64/reference-original.png",
+      "sha256": "0a0b7213e440616ad26536e5d163a10dcf36448f69ee1cca6f4d3293514abfc8",
+      "bytes": 57220
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/64/reference-original.svg",
+      "sha256": "be70011f9e87acfc0b78f7dbbc23ba492b76ae136749277eaa8d68787024481e",
+      "bytes": 1160
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/64/region-check.md",
+      "sha256": "b3a761590dcdd8d80230c25bfdec7749c7b02caeefb4f91f19088d69444e433b",
+      "bytes": 446
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/editing-handoff.md",
+      "sha256": "b4ebc0b1ed25c74940e09043a0575f2f36618a6dd94f90237f252a1218b0b25d",
+      "bytes": 501
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/generation-log.csv",
+      "sha256": "c224aee41adcb03ac334313ffc62ad5207178294b98d999b05c6d216e4640844",
+      "bytes": 186
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/LICENSE.txt",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/model-capabilities.json",
+      "sha256": "2ee0604247f7689a8f801ffbe1f9a94046553a81ca3c9e0f3b0805852a2ced61",
+      "bytes": 1146
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/prompts/S1.txt",
+      "sha256": "811dfd9880a5dde79fa18b4f5e0254129ea9904482717f3fb3da485f868aefa9",
+      "bytes": 324
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/prompts/S2.txt",
+      "sha256": "995fc81a73acfee313c05a3a294c529eb0ff094ddaad64a00c64a89f8f3bb4ae",
+      "bytes": 333
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/prompts/S3.txt",
+      "sha256": "449243c0a52e350a90079aa51c5bcddffb8f0db73e1b2a173c84cb64cd05c66c",
+      "bytes": 345
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/README.md",
+      "sha256": "fc9f5f819c89f8392554d9bfc315e40f4c0455cbc9de18d9c75e42e0f7a6f940",
+      "bytes": 384
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/storyboard/S1.png",
+      "sha256": "ed025bdf7a066557a44d2815c3378f0b453b9db613d5f5dc99ca0906afac4596",
+      "bytes": 59136
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/storyboard/S1.svg",
+      "sha256": "61811cf69cbeb140efd428174b0c88edbc260dd8fb1e56fa814c8f5047c94407",
+      "bytes": 1180
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/storyboard/S2.png",
+      "sha256": "03006ee84cf055fbe3303b4fd268939517722af22c5f65eff0c533d504690a3a",
+      "bytes": 64283
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/storyboard/S2.svg",
+      "sha256": "0b57b59c3a08428c890acb7336ba01a3a2b830545f62a7eeed2f2c8fc165e954",
+      "bytes": 1189
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/storyboard/S3.png",
+      "sha256": "6a059a8aaf98fc2896aaf9836b05d7e57ec74e8555ff5910027ca06cfc70eb8a",
+      "bytes": 64589
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/storyboard/S3.svg",
+      "sha256": "d08cd0855633732e827051126b9da498edfcf221fae436ca0cfdc4f428c1062a",
+      "bytes": 1202
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/65/storyboard.csv",
+      "sha256": "023006d01830a5c94a69e30dd3a779ee3f715c4136771f9795592371ba127433",
+      "bytes": 405
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/66/continuity-checklist.md",
+      "sha256": "466d8088834d1674124f21154c1b857bbc4e899fc4c006c23a4f8d99a5bbbdc6",
+      "bytes": 603
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/66/continuity-log.csv",
+      "sha256": "f82cd555967e044f55e93ddae718211ab321a792d49962bddfa73a3fcf15b664",
+      "bytes": 335
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/66/LICENSE.txt",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/66/README.md",
+      "sha256": "dd5206a052056f1d5626436dd7ae7c087ba50da650307079fcb2e5984614f828",
+      "bytes": 384
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/66/reference-a-end.png",
+      "sha256": "03f376977acfd80e9a3a04e7505ecf58232804a271a4de564d1a4d05f4e3bd9f",
+      "bytes": 42779
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/66/reference-a-end.svg",
+      "sha256": "02a0448ca64bf07b228a086c867b78101a1624f0d03c22eaa269a12b81791971",
+      "bytes": 1065
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/66/reference-b-bad.png",
+      "sha256": "579754523c0b372930f0b34ffc072bc424dc8e00946317b4109b6db8b8f23c47",
+      "bytes": 53305
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/66/reference-b-bad.svg",
+      "sha256": "bf4190c9c0f7e9fc591b326299f25ae184ad4d07ce45d9d4361ca6aaf6448f6d",
+      "bytes": 1083
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/66/reference-b-target.png",
+      "sha256": "461724b3093ea4e70f4e59750d50c5351c189e410c9b63aa377f37914a80bb9c",
+      "bytes": 41749
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/66/reference-b-target.svg",
+      "sha256": "dab0e991d40f4f739a91be72ad77e9ce8c8f42c0bd3b04d527a0704a2be8c641",
+      "bytes": 1074
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/66/revision-prompt.txt",
+      "sha256": "fb5d13e9782d9403948191b5759cc1a34f5387afc5417aebd2c8a59391427d0d",
+      "bytes": 289
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/67/cleaning-log.md",
+      "sha256": "a8d69450a0ff8659edbb2d9f1f14f248ff716b2a620b7aed7367eb0275bc7104",
+      "bytes": 2602
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/67/cleaning-result.json",
+      "sha256": "f54cd91fcf26ae8705262cb5d6a0c6af74ae06fa1dcbe9bd6de5c72268fe72d9",
+      "bytes": 14171
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/67/expected-exclusions.csv",
+      "sha256": "3aa6247a033baa9fb9dbc0c82243a3ecde38b26e2706ea403746a20d3627ab6d",
+      "bytes": 281
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/67/expected-totals.csv",
+      "sha256": "f115f8b38f89f1db2f56901b66bf6c5890c605367f196482c3d554e91131c84b",
+      "bytes": 107
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/67/expected.json",
+      "sha256": "5a2b9ed697f5c405e27e5a76e068a05d6b9cc310ab40ab19c11bd3310a7c0dc6",
+      "bytes": 650
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/67/LICENSE.txt",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/67/outputs/creative-lessons/sales-audit.xlsx",
+      "sha256": "9ba597ccc4681ec7584da4e2de0803dc558324bb45d5213e322b5f02ff22120c",
+      "bytes": 17268
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/67/README.md",
+      "sha256": "8661a081eada7137f7e1ed4864c310ad09fc4dc4c64b378d7f2d8657fe140c18",
+      "bytes": 384
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/67/sales-dirty.csv",
+      "sha256": "a485f1914062e671d164b73a6a2651685f02c4f8202aa8e7c51ad446c67360bf",
+      "bytes": 2971
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/68/article-reference.md",
+      "sha256": "1f92e2e12efdb44fbec6b4309c5f09fc2c13eb61232581a007b4fee284b772e1",
+      "bytes": 595
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/68/asset-register.csv",
+      "sha256": "70af8d1278038f634249e05c018ed263a4391c7f4661c13507e4f3a1e95c220c",
+      "bytes": 305
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/68/brief-v1.json",
+      "sha256": "5463d71854807dbe852e5fd08c85acb46adb48ded41be005e1301b0d3b699459",
+      "bytes": 222
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/68/brief-v2.json",
+      "sha256": "8630af19679b89e7c5d67ae3f396b44d579ee31cc45b9bac6b40342963dcde78",
+      "bytes": 274
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/68/brief.md",
+      "sha256": "427690d146a4f3b5acea43ed3c1a0b1f68cf776fbc5356c9f26d64e5a46eaeed",
+      "bytes": 417
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/68/handoff.md",
+      "sha256": "e563a107618eca79b8c649bceaf42220cbf2440727c2b00a464b3119b6a45a4e",
+      "bytes": 601
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/68/LICENSE.txt",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/68/README.md",
+      "sha256": "2e861f7c32aff11101aeb1aece28e05829b2cdc0f869fede22633a3e5b1b8e70",
+      "bytes": 384
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/creative-verification.zip",
+      "sha256": "e990976d626fb543d09a911cf076254b9da4fb925b44e53707a5343256679dc6",
+      "bytes": 744209
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/creative_checks.py",
+      "sha256": "d43b07dc6ea27c8c5c309987da58a09d4439c82a07c0ca63e82bf1f6256cd130",
+      "bytes": 7002
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/lesson-63.zip",
+      "sha256": "c124c211c33aeda70a93edb309fb84cf32b6e392a809e0ab883f5a9a7ce06447",
+      "bytes": 303065
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/lesson-64.zip",
+      "sha256": "08427b1a3cae735831eb1dc4574f3ab5afc6c7746124287801c102ce3d32baec",
+      "bytes": 108532
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/lesson-65.zip",
+      "sha256": "60039df58f69fd791b4625d7364350297863d15fee62ef96d348574d6a8f452a",
+      "bytes": 180663
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/lesson-66.zip",
+      "sha256": "76ea347b7fc23acb23b6f333dbbe6bcc268dee1a1a505b9310690183c43f97c5",
+      "bytes": 130022
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/lesson-67.zip",
+      "sha256": "b24b5c043bf4557f0b9f31b50d3dcaa65c8da3cb4049f74a5f846596ae43004b",
+      "bytes": 23630
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/examples/lesson-68.zip",
+      "sha256": "17b65e67ed824721a82ef445bde6118ab9afe6e37d1dd2cca9fd8ad006e33686",
+      "bytes": 6117
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/package.py",
+      "sha256": "2bb023afce468411b0f97117b52ac0965cba39d2bc72730f7ae75f9cb878a9fc",
+      "bytes": 1094
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/README.md",
+      "sha256": "8b5b2569cc9f6efb99a277b95c13dd9840fcb9dcc543a09336fab501db8f8caf",
+      "bytes": 5410
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/render-examples.mjs",
+      "sha256": "79ccd4b0aaa5203f309eb52549e8621e839a26fdc29c2a432a2b07c14ccaf852",
+      "bytes": 2619
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/source-notes.md",
+      "sha256": "5c3218452aba10548a2d90990dbc5917185fc737f149efb035e366ac065c3670",
+      "bytes": 2390
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/sources.json",
+      "sha256": "3ded8485260b353f84bda4d5e4050dd3460d171e13701db383ece254159204d0",
+      "bytes": 2288
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/art-verification.json",
+      "sha256": "435098d26f03e11190f3a310ee28482ca8e68e5bb8d7a26c0ea3048805a25dc7",
+      "bytes": 2660
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/build.json",
+      "sha256": "cb4d967d2b118f42875092967d8f0a00d11dbd66dae3a3760b8337c9294ee25d",
+      "bytes": 1280
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/delivery.json",
+      "sha256": "1a16395dab07154e3e37d47870867fa5301c0d5c54c20f104646c3673f899383",
+      "bytes": 1807
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/fixtures.json",
+      "sha256": "d46be0f75456c4bf9fc7f970bf94f709a615099def6a49e847fafd2e8d13c0c0",
+      "bytes": 140
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/README.md",
+      "sha256": "a7ad443a0943353ddb1936002c51621e4dbaba567e59c78b6f823af4c4380561",
+      "bytes": 1655
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-rendering.json",
+      "sha256": "e1a658c39fe7f70d7289fbf93603997a61ab8474ea5be31ed787b2aa70ad4f9f",
+      "bytes": 2649
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/63/failure-fixtures/two-cups-mobile.png",
+      "sha256": "c3db008f26a3a5672cf3ad356e1b028026eb8a733bd0314258ee0aad4fceb48e",
+      "bytes": 10964
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/63/failure-fixtures/two-cups.png",
+      "sha256": "6f40f495a5060f49adb0b5a9dc0d45d9e1501015658afdd7f3ee9080cbd8653d",
+      "bytes": 59793
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/63/failure-fixtures/two-handles-mobile.png",
+      "sha256": "c264cb749345250f03610117451893ea225f911075d75a58cdb24c9ff9c02a19",
+      "bytes": 8594
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/63/failure-fixtures/two-handles.png",
+      "sha256": "e87b225f55aab0424c976e3fa01ead01d3648705bea1b041183b54d2f53c4a8c",
+      "bytes": 51531
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/63/failure-fixtures/wrong-color-mobile.png",
+      "sha256": "e602c371295dc92b6137f4d750f058c3678984d1a00f0a79822039affdee1e90",
+      "bytes": 8062
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/63/failure-fixtures/wrong-color.png",
+      "sha256": "8f33442ea0dae5ec1bfe81d52b06de3b6f7a2d2553056f31af8184dfbc77b1d2",
+      "bytes": 51522
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/63/references/banner-mobile.png",
+      "sha256": "f98cb67f9e398d08351ba8560cb3255b486145104c29a1b5ef03f9c7c6cfcd97",
+      "bytes": 10297
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/63/references/banner.png",
+      "sha256": "74240401dd893c95d8dbb88f36e614430b1f51093bf8310420aca9a8caa2c298",
+      "bytes": 65490
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/63/references/desk-mobile.png",
+      "sha256": "d05138cdab529dbe2403d4bb9a4ebd675fc49bf3d1a0daacae04e946a541c9bd",
+      "bytes": 7848
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/63/references/desk.png",
+      "sha256": "78c662377192751071e98ec21cc291d96439d67010a7ff753bc113dc571aeaa4",
+      "bytes": 49395
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/63/references/product-mobile.png",
+      "sha256": "02d1c11cc164c5f9dae44eec8910d5c2e9cc80ae1075dfa2ef3685fc1e38fdd0",
+      "bytes": 7353
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/63/references/product.png",
+      "sha256": "71938e91a91980bfc6fcd0fa991b895c0d7df77469880937004b307b29575c4e",
+      "bytes": 46458
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/64/manual-text-correction-mobile.png",
+      "sha256": "b2007d42f5cc0de20b5eb9ded30514412ec6bed2ea7de0cfcaafcc36ffe45acb",
+      "bytes": 9194
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/64/manual-text-correction.png",
+      "sha256": "9f1d9ed635883c324266fb7428b6c6d36d118fc0e694a17f44070b498c6826a9",
+      "bytes": 54848
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/64/reference-original-mobile.png",
+      "sha256": "0f857ec6dc714ab47b68dd6acefcec1552148e4e9a8d8773d9c2dfe773d7c3b4",
+      "bytes": 9056
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/64/reference-original.png",
+      "sha256": "0a0b7213e440616ad26536e5d163a10dcf36448f69ee1cca6f4d3293514abfc8",
+      "bytes": 57220
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/65/storyboard/S1-mobile.png",
+      "sha256": "e617d1ff907ac9da9a930dd82a69baf2f067dd90a4e940050b6e2ff560484726",
+      "bytes": 9507
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/65/storyboard/S1.png",
+      "sha256": "ed025bdf7a066557a44d2815c3378f0b453b9db613d5f5dc99ca0906afac4596",
+      "bytes": 59136
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/65/storyboard/S2-mobile.png",
+      "sha256": "d5809730eaf313a77c9650ac68eb58f2508186468aeb7fc6ed041673498aea9d",
+      "bytes": 9942
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/65/storyboard/S2.png",
+      "sha256": "03006ee84cf055fbe3303b4fd268939517722af22c5f65eff0c533d504690a3a",
+      "bytes": 64283
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/65/storyboard/S3-mobile.png",
+      "sha256": "3ba5875cb561b1c2481df266149dae3417a6993d495a3ad4c14df35c91ff3c7d",
+      "bytes": 10429
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/65/storyboard/S3.png",
+      "sha256": "6a059a8aaf98fc2896aaf9836b05d7e57ec74e8555ff5910027ca06cfc70eb8a",
+      "bytes": 64589
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/66/reference-a-end-mobile.png",
+      "sha256": "87f8d5f52f39207c476c40738e6c9f428493c70b9726b5b5c2ef0c60b4e3d53f",
+      "bytes": 7257
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/66/reference-a-end.png",
+      "sha256": "03f376977acfd80e9a3a04e7505ecf58232804a271a4de564d1a4d05f4e3bd9f",
+      "bytes": 42779
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/66/reference-b-bad-mobile.png",
+      "sha256": "7d22c286df102faa2eba7c6a1d01b991002adde82acf2fb2a21b94240bba792d",
+      "bytes": 8166
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/66/reference-b-bad.png",
+      "sha256": "579754523c0b372930f0b34ffc072bc424dc8e00946317b4109b6db8b8f23c47",
+      "bytes": 53305
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/66/reference-b-target-mobile.png",
+      "sha256": "f7a56d05599f37cc63fcb14947eeaff505a0cea5019cb9bcc0cde3db45593a47",
+      "bytes": 7119
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/reference-renders/66/reference-b-target.png",
+      "sha256": "461724b3093ea4e70f4e59750d50c5351c189e410c9b63aa377f37914a80bb9c",
+      "bytes": 41749
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-content-production-handoff/diagram-1-mobile.png",
+      "sha256": "0098a85c0206cba85935cb4e65c32250dcf6b3fee7e9456c0403da5bc79732e8",
+      "bytes": 26227
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-content-production-handoff/diagram-1.png",
+      "sha256": "779eda38bca19c6e7d2289a5fe85bc7d325f7f02fe0cb79faa42cd3a066f916c",
+      "bytes": 131830
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-content-production-handoff/hero-mobile.png",
+      "sha256": "5a35bdf3f817e8929d250c03467dce95876a81ce127b5f2fc77690817cb0b223",
+      "bytes": 15778
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-content-production-handoff/hero.png",
+      "sha256": "70672d8f47e1f1632bbd91c58c734470703cdfcea8e8c3ee2778805c22401aca",
+      "bytes": 80251
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-image-consistent-series/diagram-1-mobile.png",
+      "sha256": "9d9679b239eda277419f69805cceeb086ca7ef105b4e152ef941c36b961b4ad9",
+      "bytes": 25561
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-image-consistent-series/diagram-1.png",
+      "sha256": "1d61536b9fdb5287cd1700839555f9aafd0c8c01432e2b117ce4593993123a5a",
+      "bytes": 121670
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-image-consistent-series/hero-mobile.png",
+      "sha256": "dc52c518224f2009746deb91221a0c482651c4e77292bd368bfcc9b9e828440e",
+      "bytes": 15464
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-image-consistent-series/hero.png",
+      "sha256": "e9653d6cb4f2fe69d7135b7075f64acccec478cc83df0d93cc4ee1f473830be7",
+      "bytes": 76888
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-image-editing-debugging/diagram-1-mobile.png",
+      "sha256": "eaf23ccea80b8973c472d7053cfe8dfa8b1e3f6697247f96bbbd68452f711f23",
+      "bytes": 24872
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-image-editing-debugging/diagram-1.png",
+      "sha256": "70b7d3953b09d9b047380a676c6228f163139848c7bc990172ca83efa4715c2e",
+      "bytes": 118125
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-image-editing-debugging/hero-mobile.png",
+      "sha256": "913f0f7974e36bae07b396336ef0df4d0894d990c82d467612dd4c56f95760e4",
+      "bytes": 16196
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-image-editing-debugging/hero.png",
+      "sha256": "a3f7c0ee9c0ed653629dae276eb74073b5db249eaf80cec9670da3258c5fd720",
+      "bytes": 78765
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-sheets-data-audit-dashboard/diagram-1-mobile.png",
+      "sha256": "1e5f63733051aa96faec03bf84a33870d0af2bcb9ca92abb4aaaa48f52a1e362",
+      "bytes": 25689
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-sheets-data-audit-dashboard/diagram-1.png",
+      "sha256": "bfa5d2f956c40509e98fb4105611efcefd0008caaa0628d2e13397df65a7e0c1",
+      "bytes": 138009
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-sheets-data-audit-dashboard/hero-mobile.png",
+      "sha256": "bdeba399e5052cd5b930e24ae676535f92418be171fe5c8fe1ea063b423de2ae",
+      "bytes": 17112
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/gemini-sheets-data-audit-dashboard/hero.png",
+      "sha256": "2f29df11c0768dfff6a6699a3903320eedfbf9507d968512e1f999a60ef9dd86",
+      "bytes": 85822
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/google-flow-shot-continuity/diagram-1-mobile.png",
+      "sha256": "57215b17d79d8f6589d769067dc59e8488a3a75216479b4f80c972618791e4d3",
+      "bytes": 26069
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/google-flow-shot-continuity/diagram-1.png",
+      "sha256": "28889a294d82d33a74923da364b42b46749afa0a5009ee8bbd33e7d0d25d8b96",
+      "bytes": 131601
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/google-flow-shot-continuity/hero-mobile.png",
+      "sha256": "54229aaa4ab9906871b679a3b89c13644543a2120e8c5dcfaaabc85f212a79f0",
+      "bytes": 16890
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/google-flow-shot-continuity/hero.png",
+      "sha256": "4da2a746d46712468897307f5b889cf798a5844db3faba26b9ac82dd77c3d5e4",
+      "bytes": 84046
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/google-flow-storyboard-workshop/diagram-1-mobile.png",
+      "sha256": "f9f8bf5d55ed7480d3359ffb929b1aaec7c287d6db98d3674b00d098cdfc0c67",
+      "bytes": 28462
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/google-flow-storyboard-workshop/diagram-1.png",
+      "sha256": "a0bc5c0345dd618ff6ce2ae94ca95fafc82f14a5c03f3f65213aa5b4abdaf5bb",
+      "bytes": 140667
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/google-flow-storyboard-workshop/hero-mobile.png",
+      "sha256": "909b406cbb9a0764b3f9abbe7b8d5106661b38f7626cbf408003240e9b17b728",
+      "bytes": 16750
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/renders/google-flow-storyboard-workshop/hero.png",
+      "sha256": "6866200e178a8b2aacf97d169ff4a45413a46e519b045d874588e69c4b034e8c",
+      "bytes": 84042
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/test_materials.py",
+      "sha256": "6a6c7c5b5f07161790fd9e00a44c881917a92d5bd4db830c73031877ee70885f",
+      "bytes": 6552
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/verify_workbook.py",
+      "sha256": "1abbb86f571f881468142ca5bad227dfbb21388d47f43823d55c9c5d5104e566",
+      "bytes": 2553
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/visual-review.json",
+      "sha256": "b412756d6cae2796c2a606d1b8d609e32a6abbab107c69aa1679a921e54cba0c",
+      "bytes": 15048
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/workbook/clean-special.png",
+      "sha256": "167368111912c073ef3e32b21e9cccec2a2518abf4279cf1724f2b574d928617",
+      "bytes": 83926
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/workbook/clean-top.png",
+      "sha256": "8bf2471295d7bee71be05a9269dbe835fe04322834c8c4a5c917673cee9c8ae7",
+      "bytes": 99955
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/workbook/excluded.png",
+      "sha256": "c5de43ba211ec3cc32634c9eea8eeffb01982e0b706905746db50f5391ee3aaa",
+      "bytes": 49003
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/workbook/formula-errors.ndjson",
+      "sha256": "acc0111e19cf44d2753fc9ecd164bf1b27fbd65597463a25cf48bd1c65e90146",
+      "bytes": 60
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/workbook/inspection.ndjson",
+      "sha256": "63cf060547b2475b5431e4c3fbbb76abeb52cd3f4873c26fa9bafef65981766d",
+      "bytes": 534
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/workbook/raw-exceptions.png",
+      "sha256": "228133509fffe3173187354fa37bcbbf36718274fd402eda2f7a8c8df11e926d",
+      "bytes": 94507
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/workbook/raw-top.png",
+      "sha256": "e9c8c607ff7860660fdb40ad3dae9de9de22b19d9725e666a554e79b7a4553c4",
+      "bytes": 70621
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/workbook/report.png",
+      "sha256": "cbef0a77f8574c64672ca640d4b418a0ecba402b1350526b5f76afa5344afefe",
+      "bytes": 94166
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/workbook/results.json",
+      "sha256": "a214785a56d39ed7b8bb96a70e37401874776f4b3ec262f5f2931636d6b8566b",
+      "bytes": 557
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verification/workbook/saved-file.json",
+      "sha256": "82f92da4a18c4a7d06090dfd19932686dd3767be7e87c86f88dffcabd1084832",
+      "bytes": 681
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/creative/verify-delivery.py",
+      "sha256": "83ed2983f25144b68ee062bacc13836107709d9992c18c7723dbd1ede2452c80",
+      "bytes": 2155
+    }
+  ]
+}

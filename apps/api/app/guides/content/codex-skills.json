@@ -1,0 +1,1957 @@
+{
+  "slug": "codex-skills",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 123,
+  "locales": {
+    "zh-TW": {
+      "title": "Skills 與 SKILL.md",
+      "description": "Skill 將固定工作流程整理成可重用的指示與資源。最小結構是一個資料夾與 SKILL.md，檔案前段需要 name 和 description，正文描述操作與輸出。安裝技能不代表每個任務都必然使用，還要檢查是否載入。",
+      "hero": {
+        "src": "/guides/codex-skills/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀完能做到什麼"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你會建立一個專門驗收 Small Steps 待辦網站的技能，放在練習專案內，讓 Codex 找到並使用。完成後能分辨「技能檔案有效」「被發現」「已被採用」「檢查真的完成」四種狀態，並用正常版和故障版觀察不同結果。閱讀約 12 分鐘，操作約 25 分鐘。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Skill 適合把會反覆使用的工作流程整理成可重用指引，例如每次改完待辦網站後的驗收。不要把所有專案規則都移過來："
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "處理持續適用的專案要求，Skill 則針對特定任務被選用。Plugins 可用來分發技能與連接服務，詳見"
+            },
+            {
+              "type": "article",
+              "text": "插件教學",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "準備已登入的 Codex CLI 或支援 Skills 的桌面／IDE 入口，並下載"
+            },
+            {
+              "type": "link",
+              "text": "待辦網站教材",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "。本篇先複製 expected 為 codex-practice；再保留 broken 作為稍後的獨立故障練習，不要把兩個版本的檔案混在一起。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "測試使用 Node.js，瀏覽器預覽使用 Python 3。沒有瀏覽器工具時，技能應回報畫面檢查未執行，提供給你手動操作的步驟；不能因為寫了「檢查畫面」就假設環境會自動多出工具。你也可以下載"
+            },
+            {
+              "type": "link",
+              "text": "完整技能範例",
+              "url": "https://mokaair.com/guides/codex-skills/todo-acceptance.zip"
+            },
+            {
+              "type": "text",
+              "text": "，先閱讀再放入練習專案。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "最少必要概念：名稱、描述與內容"
+        },
+        {
+          "type": "paragraph",
+          "text": "一個技能至少是一個資料夾與其中的 SKILL.md。檔案開頭用 YAML frontmatter 保存 name 和 description，正文才是執行流程。Codex 先看到名稱與描述，決定使用後才讀完整內容，所以「什麼都幫忙」之類的描述很容易在不適合的任務被選中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本例的名字是 todo-acceptance，描述把範圍限定為 Small Steps 的驗收，而不是任意網站開發。先保持純指引，不加腳本、外部服務或全域安裝。只有需要穩定重複的工具邏輯時，再將程式放進 scripts；大量參考資料可以另放 references 並在主文件指出何時讀取。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：建立專案內的技能位置"
+        },
+        {
+          "type": "paragraph",
+          "text": "從 codex-practice 根目錄建立 .agents/skills/todo-acceptance。前面的點是資料夾名稱的一部分；不是 .codex，也不是 agents 少一個點。Windows PowerShell 可執行以下命令；已存在時先看內容，不要覆蓋別人的技能。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell；codex-practice 根目錄",
+          "language": "powershell",
+          "code": "New-Item -ItemType Directory -Force .agents/skills/todo-acceptance\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux 終端機；codex-practice 根目錄",
+          "language": "bash",
+          "code": "mkdir -p .agents/skills/todo-acceptance\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "用純文字編輯器建立 SKILL.md，Windows 檢查不是 SKILL.md.txt，Linux 檢查大寫檔名。完成後的目錄如下。這個位置讓技能和練習專案一起管理，不會立刻變成所有專案共用的個人技能。"
+        },
+        {
+          "type": "code",
+          "label": "codex-practice 內的完整必要結構",
+          "language": "text",
+          "code": "codex-practice/\n  index.html\n  style.css\n  app.js\n  core.mjs\n  core.test.mjs\n  .agents/\n    skills/\n      todo-acceptance/\n        SKILL.md\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：寫入完整技能"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下內容與下載範例相同。流程會讀現有程式、執行既有測試、在可用時檢查瀏覽器，最後以 PASS、FAIL、NOT RUN 區分結果。它不會為了讓驗收通過而偷偷修程式，讓你能先看懂實際問題再決定是否修改。"
+        },
+        {
+          "type": "code",
+          "label": "寫入 .agents/skills/todo-acceptance/SKILL.md；完整檔案",
+          "language": "markdown",
+          "code": "---\nname: todo-acceptance\ndescription: Verify the Small Steps todo practice website after a change, using its existing tests and browser checks. Use for acceptance checks of this exercise, not unrelated websites or feature implementation.\n---\n\n# Small Steps acceptance\n\nConfirm the requested practice folder contains index.html, style.css, app.js,\ncore.mjs and core.test.mjs. If these are missing, stop and report the path checked.\n\nRead the existing code, then run `node --test core.test.mjs` from that folder.\nDo not rewrite tests or implementation to make an acceptance run pass.\n\nIf a browser is available, preview the site on a loopback address with a fresh\nbrowser context. Add Read and Build, complete Read, check Active and Completed\nfilters, reload, and delete Read. Reject whitespace-only input. Check 390px and\n1280px widths and visible Tab focus. Keep existing user browser data unchanged.\n\nReport PASS, FAIL or NOT RUN for each check, with the command, observation or\nlimitation. Include the working folder and remaining issues. Do not claim that\ntests, screenshots, deployment or publication happened without evidence.\n\nIf a check fails, report the reproduction and relevant file. If a required tool\nis unavailable, report NOT RUN and the manual steps. Finish with results only;\nimplement fixes only when the user requests them.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "name 適合用小寫英文、數字及連字號，資料夾名稱也保持相同。description 的觸發邊界寫在前面，正文則保留真正會影響決策的條件。本例沒有多餘的套件或設定檔；建立更多空資料夾不會讓技能更完整。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：找到技能並明確使用"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 會偵測技能變更；沒有出現時重新開啟工作階段，確認工作目錄位於此專案。CLI 或 IDE 可用 /skills 或輸入 $ 尋找技能；桌面應用程式可由側欄 Skills 檢查可用項目，依目前介面選擇。選單能找到名稱，才是「已發現」的證據，仍不是已執行。"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 或 IDE 對話輸入框；不是系統 shell",
+          "language": "text",
+          "code": "$todo-acceptance Check this Small Steps practice folder. Report the results without editing files.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版若提供技能選擇器，先選 todo-acceptance，再送出同樣的驗收要求。開始時請確認它讀的是本專案 SKILL.md，而不是另一個同名技能。兩個同名技能不會自動合併；全域或其他目錄存在同名項目時，路徑尤其重要。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第四步：核對正常與故障結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 expected 副本，node --test core.test.mjs 應有 3 個測試通過。回應應列出實際命令與結果；如果也執行瀏覽器流程，應能描述 Read、Build、篩選、重新整理及空白輸入的結果。沒有瀏覽器時應把該項列 NOT RUN，這不是測試通過也不是整個技能失效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再建立一份獨立 broken 副本，把同一個技能資料夾放到該副本的 .agents/skills，從那個位置建立新任務。這個版本刻意把 Completed 篩選反過來：Read 完成、Build 未完成時，會錯誤顯示 Build。資料測試應為 2 個通過、1 個失敗，技能應報告 FAIL 和重現方法，原始碼維持不變。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個比較能驗證工作流程是否會忠實回報失敗。檔案格式檢查只證明 YAML、名稱與結構能解析，不證明代理真的照流程做；反過來，測試失敗也可能正是技能成功找到問題。請分開保存這些證據，避免只有一個模糊的「成功」勾選。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "再驗證「材料不足就停止」"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外複製 expected 成一份獨立的 incomplete 練習目錄，放入同一份技能。先把這個副本的 core.test.mjs 移到該目錄外的備份位置，保留原始 expected 與 broken 不變，再從 incomplete 開新任務選用技能。合格結果是指出缺少的檔案與檢查路徑，停止後續驗收；不能自行補寫測試、改到另一份目錄執行，或沿用先前的通過結果。完成後把備份放回原位置，再重新驗收。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這與 broken 的差別是：broken 材料齊全、測試確實執行但失敗；incomplete 尚不符合起步條件；沒有瀏覽器工具則只讓畫面項目 NOT RUN。不要把三種情況都寫成同一個 FAIL。要整理更多輸入與觸發情境，接著看"
+            },
+            {
+              "type": "article",
+              "text": "技能測試",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": "；要加入腳本與參考文件，先看"
+            },
+            {
+              "type": "article",
+              "text": "技能資源",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題、停用與還原"
+        },
+        {
+          "type": "paragraph",
+          "text": "技能沒有出現：先檢查 .agents/skills 的位置、SKILL.md 真正副檔名、frontmatter 是否以兩行 --- 包住，以及 name／description 是否存在。確認不是把整個 ZIP 放進資料夾後就以為已安裝。修正後重開 Codex 再查選單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技能出現卻沒使用：先明確選取或以 $todo-acceptance 指定，檢查名稱及來源路徑。自動選用依描述與任務判斷，不保證任何一句相似文字都會觸發。若普通問候也經常觸發，應收窄描述，讓它只處理待辦網站驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "被選用卻無法測試：確認 Node.js 在實際主機可用、目前目錄含 core.test.mjs。從手機 Remote 使用時，技能與測試工具都在主機；電腦 A 裝好不代表電腦 B 也有。不要讓技能自行安裝所有缺少的工具來掩蓋環境條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停止進行中的驗收先在任務內中止；需要停用時，將這份練習技能移出專案的技能掃描位置，保留備份，再重開工作階段核對。更細的停用設定可以依官方 [[skills.config]] 說明處理，但要先保留既有 config.toml。停用不會刪除之前的報告，也不會撤銷任何過去修改。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "狀態",
+            "可以證明什麼",
+            "尚不能證明什麼"
+          ],
+          "rows": [
+            [
+              "格式有效",
+              "必要欄位可以解析",
+              "會被選到"
+            ],
+            [
+              "已發現",
+              "選單找到正確名稱與路徑",
+              "已讀取完整流程"
+            ],
+            [
+              "已採用",
+              "任務讀取技能內容",
+              "所有檢查都完成"
+            ],
+            [
+              "已驗證",
+              "有實際測試或畫面結果",
+              "已經發布網站"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小練習與驗證紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較兩個提示詞：「請驗收 Small Steps 的篩選與儲存」和「請解釋今天的練習目標」。前者適合使用技能，後者不需要完整驗收。記錄選用與否、實際路徑和結果，根據觀察調整描述；不要把一次選對就當成所有情境都通過。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "技能機制依 "
+            },
+            {
+              "type": "link",
+              "text": "Build skills 官方文件",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": "於 2026-09-14 查證。範例會做格式驗證，網站核心與故障結果已有實際測試；自動觸發與不同 Codex 介面的選擇器仍須分別實測，未列為全部通過。下一步可讀"
+            },
+            {
+              "type": "article",
+              "text": "插件",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "text": "測試與審查",
+              "kind": "life",
+              "slug": "codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-skills/diagram-1.svg",
+          "alt": "23. Skills 與 SKILL.md — 實作順序示意圖，非產品介面截圖。 SKILL.md → Invoke → Output",
+          "width": 1600,
+          "height": 900,
+          "caption": "23. Skills 與 SKILL.md — 實作順序示意圖，非產品介面截圖。 SKILL.md → Invoke → Output",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Build skills",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Skills 与 SKILL.md",
+      "description": "Skill 将固定工作流程整理成可重用的指示与资源。最小结构是一个资料夹与 SKILL.md，档案前段需要 name 和 description，正文描述操作与输出。安装技能不代表每个任务都必然使用，还要检查是否载入。",
+      "hero": {
+        "src": "/guides/codex-skills/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "读完能做到什么"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你会建立一个专门验收 Small Steps 待办网站的技能，放在练习专案内，让 Codex 找到并使用。完成后能分辨「技能档案有效」「被发现」「已被采用」「检查真的完成」四种状态，并用正常版和故障版观察不同结果。阅读约 12 分钟，操作约 25 分钟。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Skill 适合把会反复使用的工作流程整理成可重用指引，例如每次改完待办网站后的验收。不要把所有专案规则都移过来："
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "处理持续适用的专案要求，Skill 则针对特定任务被选用。Plugins 可用来分发技能与连接服务，详见"
+            },
+            {
+              "type": "article",
+              "text": "插件教学",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "准备已登入的 Codex CLI 或支援 Skills 的桌面／IDE 入口，并下载"
+            },
+            {
+              "type": "link",
+              "text": "待办网站教材",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "。本篇先复制 expected 为 codex-practice；再保留 broken 作为稍后的独立故障练习，不要把两个版本的档案混在一起。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "测试使用 Node.js，浏览器预览使用 Python 3。没有浏览器工具时，技能应回报画面检查未执行，提供给你手动操作的步骤；不能因为写了「检查画面」就假设环境会自动多出工具。你也可以下载"
+            },
+            {
+              "type": "link",
+              "text": "完整技能范例",
+              "url": "https://mokaair.com/guides/codex-skills/todo-acceptance.zip"
+            },
+            {
+              "type": "text",
+              "text": "，先阅读再放入练习专案。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "最少必要概念：名称、描述与内容"
+        },
+        {
+          "type": "paragraph",
+          "text": "一个技能至少是一个资料夹与其中的 SKILL.md。档案开头用 YAML frontmatter 保存 name 和 description，正文才是执行流程。Codex 先看到名称与描述，决定使用后才读完整内容，所以「什么都帮忙」之类的描述很容易在不适合的任务被选中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本例的名字是 todo-acceptance，描述把范围限定为 Small Steps 的验收，而不是任意网站开发。先保持纯指引，不加脚本、外部服务或全域安装。只有需要稳定重复的工具逻辑时，再将程式放进 scripts；大量参考资料可以另放 references 并在主文件指出何时读取。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：建立专案内的技能位置"
+        },
+        {
+          "type": "paragraph",
+          "text": "从 codex-practice 根目录建立 .agents/skills/todo-acceptance。前面的点是资料夹名称的一部分；不是 .codex，也不是 agents 少一个点。Windows PowerShell 可执行以下命令；已存在时先看内容，不要覆盖别人的技能。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell；codex-practice 根目录",
+          "language": "powershell",
+          "code": "New-Item -ItemType Directory -Force .agents/skills/todo-acceptance\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux 终端机；codex-practice 根目录",
+          "language": "bash",
+          "code": "mkdir -p .agents/skills/todo-acceptance\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "用纯文字编辑器建立 SKILL.md，Windows 检查不是 SKILL.md.txt，Linux 检查大写档名。完成后的目录如下。这个位置让技能和练习专案一起管理，不会立刻变成所有专案共用的个人技能。"
+        },
+        {
+          "type": "code",
+          "label": "codex-practice 内的完整必要结构",
+          "language": "text",
+          "code": "codex-practice/\n  index.html\n  style.css\n  app.js\n  core.mjs\n  core.test.mjs\n  .agents/\n    skills/\n      todo-acceptance/\n        SKILL.md\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：写入完整技能"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下内容与下载范例相同。流程会读现有程式、执行既有测试、在可用时检查浏览器，最后以 PASS、FAIL、NOT RUN 区分结果。它不会为了让验收通过而偷偷修程式，让你能先看懂实际问题再决定是否修改。"
+        },
+        {
+          "type": "code",
+          "label": "写入 .agents/skills/todo-acceptance/SKILL.md；完整档案",
+          "language": "markdown",
+          "code": "---\nname: todo-acceptance\ndescription: Verify the Small Steps todo practice website after a change, using its existing tests and browser checks. Use for acceptance checks of this exercise, not unrelated websites or feature implementation.\n---\n\n# Small Steps acceptance\n\nConfirm the requested practice folder contains index.html, style.css, app.js,\ncore.mjs and core.test.mjs. If these are missing, stop and report the path checked.\n\nRead the existing code, then run `node --test core.test.mjs` from that folder.\nDo not rewrite tests or implementation to make an acceptance run pass.\n\nIf a browser is available, preview the site on a loopback address with a fresh\nbrowser context. Add Read and Build, complete Read, check Active and Completed\nfilters, reload, and delete Read. Reject whitespace-only input. Check 390px and\n1280px widths and visible Tab focus. Keep existing user browser data unchanged.\n\nReport PASS, FAIL or NOT RUN for each check, with the command, observation or\nlimitation. Include the working folder and remaining issues. Do not claim that\ntests, screenshots, deployment or publication happened without evidence.\n\nIf a check fails, report the reproduction and relevant file. If a required tool\nis unavailable, report NOT RUN and the manual steps. Finish with results only;\nimplement fixes only when the user requests them.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "name 适合用小写英文、数字及连字号，资料夹名称也保持相同。description 的触发边界写在前面，正文则保留真正会影响决策的条件。本例没有多余的套件或设定档；建立更多空资料夹不会让技能更完整。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：找到技能并明确使用"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 会侦测技能变更；没有出现时重新开启工作阶段，确认工作目录位于此专案。CLI 或 IDE 可用 /skills 或输入 $ 寻找技能；桌面应用程式可由侧栏 Skills 检查可用项目，依目前介面选择。选单能找到名称，才是「已发现」的证据，仍不是已执行。"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 或 IDE 对话输入框；不是系统 shell",
+          "language": "text",
+          "code": "$todo-acceptance Check this Small Steps practice folder. Report the results without editing files.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版若提供技能选择器，先选 todo-acceptance，再送出同样的验收要求。开始时请确认它读的是本专案 SKILL.md，而不是另一个同名技能。两个同名技能不会自动合并；全域或其他目录存在同名项目时，路径尤其重要。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第四步：核对正常与故障结果"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 expected 副本，node --test core.test.mjs 应有 3 个测试通过。回应应列出实际命令与结果；如果也执行浏览器流程，应能描述 Read、Build、筛选、重新整理及空白输入的结果。没有浏览器时应把该项列 NOT RUN，这不是测试通过也不是整个技能失效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再建立一份独立 broken 副本，把同一个技能资料夹放到该副本的 .agents/skills，从那个位置建立新任务。这个版本刻意把 Completed 筛选反过来：Read 完成、Build 未完成时，会错误显示 Build。资料测试应为 2 个通过、1 个失败，技能应报告 FAIL 和重现方法，原始码维持不变。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这个比较能验证工作流程是否会忠实回报失败。档案格式检查只证明 YAML、名称与结构能解析，不证明代理真的照流程做；反过来，测试失败也可能正是技能成功找到问题。请分开保存这些证据，避免只有一个模糊的「成功」勾选。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "再验证「材料不足就停止」"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外复制 expected 成一份独立的 incomplete 练习目录，放入同一份技能。先把这个副本的 core.test.mjs 移到该目录外的备份位置，保留原始 expected 与 broken 不变，再从 incomplete 开新任务选用技能。合格结果是指出缺少的档案与检查路径，停止后续验收；不能自行补写测试、改到另一份目录执行，或沿用先前的通过结果。完成后把备份放回原位置，再重新验收。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "这与 broken 的差别是：broken 材料齐全、测试确实执行但失败；incomplete 尚不符合起步条件；没有浏览器工具则只让画面项目 NOT RUN。不要把三种情况都写成同一个 FAIL。要整理更多输入与触发情境，接著看"
+            },
+            {
+              "type": "article",
+              "text": "技能测试",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": "；要加入脚本与参考文件，先看"
+            },
+            {
+              "type": "article",
+              "text": "技能资源",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题、停用与还原"
+        },
+        {
+          "type": "paragraph",
+          "text": "技能没有出现：先检查 .agents/skills 的位置、SKILL.md 真正副档名、frontmatter 是否以两行 --- 包住，以及 name／description 是否存在。确认不是把整个 ZIP 放进资料夹后就以为已安装。修正后重开 Codex 再查选单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技能出现却没使用：先明确选取或以 $todo-acceptance 指定，检查名称及来源路径。自动选用依描述与任务判断，不保证任何一句相似文字都会触发。若普通问候也经常触发，应收窄描述，让它只处理待办网站验收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "被选用却无法测试：确认 Node.js 在实际主机可用、目前目录含 core.test.mjs。从手机 Remote 使用时，技能与测试工具都在主机；电脑 A 装好不代表电脑 B 也有。不要让技能自行安装所有缺少的工具来掩盖环境条件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停止进行中的验收先在任务内中止；需要停用时，将这份练习技能移出专案的技能扫描位置，保留备份，再重开工作阶段核对。更细的停用设定可以依官方 [[skills.config]] 说明处理，但要先保留既有 config.toml。停用不会删除之前的报告，也不会撤销任何过去修改。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "状态",
+            "可以证明什么",
+            "尚不能证明什么"
+          ],
+          "rows": [
+            [
+              "格式有效",
+              "必要栏位可以解析",
+              "会被选到"
+            ],
+            [
+              "已发现",
+              "选单找到正确名称与路径",
+              "已读取完整流程"
+            ],
+            [
+              "已采用",
+              "任务读取技能内容",
+              "所有检查都完成"
+            ],
+            [
+              "已验证",
+              "有实际测试或画面结果",
+              "已经发布网站"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小练习与验证纪录"
+        },
+        {
+          "type": "paragraph",
+          "text": "比较两个提示词：「请验收 Small Steps 的筛选与储存」和「请解释今天的练习目标」。前者适合使用技能，后者不需要完整验收。记录选用与否、实际路径和结果，根据观察调整描述；不要把一次选对就当成所有情境都通过。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "技能机制依 "
+            },
+            {
+              "type": "link",
+              "text": "Build skills 官方文件",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": "于 2026-09-14 查证。范例会做格式验证，网站核心与故障结果已有实际测试；自动触发与不同 Codex 介面的选择器仍须分别实测，未列为全部通过。下一步可读"
+            },
+            {
+              "type": "article",
+              "text": "插件",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": "及"
+            },
+            {
+              "type": "article",
+              "text": "测试与审查",
+              "kind": "life",
+              "slug": "codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-skills/diagram-1.svg",
+          "alt": "23. Skills 与 SKILL.md — 实作顺序示意图，非产品介面截图。 SKILL.md → Invoke → Output",
+          "width": 1600,
+          "height": 900,
+          "caption": "23. Skills 与 SKILL.md — 实作顺序示意图，非产品介面截图。 SKILL.md → Invoke → Output",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Build skills",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Skills and SKILL.md",
+      "description": "A skill packages a repeatable workflow with instructions and optional resources. The minimum is a directory containing SKILL.md with name and description metadata followed by the procedure and expected output. Installation alone does not prove a task used it.",
+      "hero": {
+        "src": "/guides/codex-skills/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will accomplish"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Create a skill that verifies the Small Steps todo website, save it in the practice project and make it discoverable to Codex. Distinguish four states: valid file, discovered skill, selected skill and completed checks. Compare the reference and broken versions. Allow 12 minutes to read and 25 minutes to practice."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "A Skill packages a workflow you repeat, such as acceptance checks after a website change. Keep persistent project requirements in "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "; a Skill is selected for a particular task. "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": " can distribute skills and service connections."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before you begin"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Prepare a signed-in Codex CLI or a desktop/IDE entry point supporting Skills. Download the "
+            },
+            {
+              "type": "link",
+              "text": "todo materials",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": ", copy expected into codex-practice and keep broken as a separate later exercise. Do not mix files from the two versions."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Tests use Node.js and previewing uses Python 3. Without a browser tool, the skill must report visual checks as not run and provide manual steps; an instruction cannot create an unavailable tool. You can also download the "
+            },
+            {
+              "type": "link",
+              "text": "complete skill example",
+              "url": "https://mokaair.com/guides/codex-skills/todo-acceptance.zip"
+            },
+            {
+              "type": "text",
+              "text": ". Read it before placing it in your practice project."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Name, description and instructions"
+        },
+        {
+          "type": "paragraph",
+          "text": "A skill needs a folder containing SKILL.md. YAML frontmatter at the top provides name and description; the body contains the workflow. Codex initially sees the name and description, then reads the full file when using it. A description such as “help with everything” can attract unrelated work."
+        },
+        {
+          "type": "paragraph",
+          "text": "The example is named todo-acceptance and specifically covers Small Steps verification, not general website development. Start with instructions only, without scripts, external services or a global installation. Add scripts when deterministic repeated operations justify them; place substantial reference material in references and explain when to read it."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: create the project skill location"
+        },
+        {
+          "type": "paragraph",
+          "text": "At the codex-practice root, create .agents/skills/todo-acceptance. The leading dot matters: this is not .codex or agents without a dot. On Windows, use the following PowerShell command. If the directory exists, inspect it before overwriting any skill."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell, codex-practice root",
+          "language": "powershell",
+          "code": "New-Item -ItemType Directory -Force .agents/skills/todo-acceptance\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux terminal, codex-practice root",
+          "language": "bash",
+          "code": "mkdir -p .agents/skills/todo-acceptance\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create SKILL.md in a plain-text editor. Check for an accidental .txt extension on Windows and preserve uppercase SKILL.md on Linux. The complete required structure follows. This keeps the skill with the exercise rather than making it a personal skill for all projects."
+        },
+        {
+          "type": "code",
+          "label": "Complete required structure inside codex-practice",
+          "language": "text",
+          "code": "codex-practice/\n  index.html\n  style.css\n  app.js\n  core.mjs\n  core.test.mjs\n  .agents/\n    skills/\n      todo-acceptance/\n        SKILL.md\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: write the complete skill"
+        },
+        {
+          "type": "paragraph",
+          "text": "This is identical to the download. It reads the existing code, runs existing tests, checks a browser when available and reports PASS, FAIL or NOT RUN. It does not silently fix implementation to make acceptance pass; you can inspect the problem before choosing to change it."
+        },
+        {
+          "type": "code",
+          "label": "Write .agents/skills/todo-acceptance/SKILL.md; complete file",
+          "language": "markdown",
+          "code": "---\nname: todo-acceptance\ndescription: Verify the Small Steps todo practice website after a change, using its existing tests and browser checks. Use for acceptance checks of this exercise, not unrelated websites or feature implementation.\n---\n\n# Small Steps acceptance\n\nConfirm the requested practice folder contains index.html, style.css, app.js,\ncore.mjs and core.test.mjs. If these are missing, stop and report the path checked.\n\nRead the existing code, then run `node --test core.test.mjs` from that folder.\nDo not rewrite tests or implementation to make an acceptance run pass.\n\nIf a browser is available, preview the site on a loopback address with a fresh\nbrowser context. Add Read and Build, complete Read, check Active and Completed\nfilters, reload, and delete Read. Reject whitespace-only input. Check 390px and\n1280px widths and visible Tab focus. Keep existing user browser data unchanged.\n\nReport PASS, FAIL or NOT RUN for each check, with the command, observation or\nlimitation. Include the working folder and remaining issues. Do not claim that\ntests, screenshots, deployment or publication happened without evidence.\n\nIf a check fails, report the reproduction and relevant file. If a required tool\nis unavailable, report NOT RUN and the manual steps. Finish with results only;\nimplement fixes only when the user requests them.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use lowercase letters, digits and hyphens for the name and match the folder name. Put the trigger scope early in description and retain body instructions that actually affect decisions. This example needs no extra packages or configuration files. Empty folders do not improve it."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: find and explicitly use it"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex detects skill changes. If the skill is missing, restart the session and check the working directory. In CLI or IDE, use /skills or type $ to find it. In the desktop app, inspect Skills in the sidebar and use the current interface's selector. A visible name proves discovery, not execution."
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI or IDE composer, not the system shell",
+          "language": "text",
+          "code": "$todo-acceptance Check this Small Steps practice folder. Report the results without editing files.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "With a desktop skill selector, choose todo-acceptance and send the same verification request. Confirm it reads this project's SKILL.md rather than a different skill with the same name. Duplicate names are not automatically merged; paths matter when a global or other directory contains a matching name."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: compare a pass with a deliberate failure"
+        },
+        {
+          "type": "paragraph",
+          "text": "In the expected copy, node --test core.test.mjs should pass three tests. The report should include the real command and result. If the browser workflow ran, expect observations about Read, Build, filters, reload and blank input. Without a browser, that check is NOT RUN, not passed and not proof the entire skill failed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Make a separate broken copy, place the same skill under that copy's .agents/skills and create a new task from there. Completed filtering is intentionally reversed: when Read is completed and Build is active, it incorrectly shows Build. The tests should report two passes and one failure. The skill should report FAIL and reproduction steps while leaving source files unchanged."
+        },
+        {
+          "type": "paragraph",
+          "text": "This comparison checks whether the workflow reports failures faithfully. Format validation only establishes parseable metadata and structure, not that an agent followed the workflow. Conversely, a failing test can mean the skill successfully found a bug. Preserve these separate kinds of evidence instead of one ambiguous “success” checkbox."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Verify the missing-material stop condition"
+        },
+        {
+          "type": "paragraph",
+          "text": "Make a separate incomplete copy of expected and add the same skill. Move only that copy's core.test.mjs to a backup outside the folder, leaving the original expected and broken intact. Start a new task in incomplete and select the skill. It should name the missing file and checked path, then stop acceptance work. It must not invent tests, run against a different copy or reuse an earlier passing result. Put the backup back in its original location before running acceptance again."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "These are different outcomes: broken has all required files and actually runs a failing test; incomplete does not meet the starting conditions; a missing browser makes only the screen checks NOT RUN. Do not collapse all three into one FAIL. Continue to "
+            },
+            {
+              "type": "article",
+              "text": "skill testing",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": " for input and trigger cases, or "
+            },
+            {
+              "type": "article",
+              "text": "skill resources",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            },
+            {
+              "type": "text",
+              "text": " before adding scripts and references."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting, disabling and restoring"
+        },
+        {
+          "type": "paragraph",
+          "text": "Missing skill: inspect the .agents/skills location, true SKILL.md extension, the two --- frontmatter delimiters and required name/description. A ZIP placed in the folder is not an extracted skill. Fix the issue and restart Codex before checking the selector again."
+        },
+        {
+          "type": "paragraph",
+          "text": "Visible but unused: select it explicitly or use $todo-acceptance, then verify name and path. Automatic selection depends on description and task interpretation; similar wording does not guarantee a trigger. If ordinary greetings trigger acceptance, narrow the description to this exercise's verification."
+        },
+        {
+          "type": "paragraph",
+          "text": "Selected but unable to test: check Node.js on the actual host and core.test.mjs in the working directory. With mobile Remote, both skills and tools come from the host; installation on computer A does not provide them on B. Do not have the skill install every missing tool to hide prerequisites."
+        },
+        {
+          "type": "paragraph",
+          "text": "Stop active verification in the task. To disable this exercise skill, move it outside the project's scanned skill locations, preserve a copy and restart to verify. For configuration-based disabling, consult the official [[skills.config]] guidance and preserve your existing config.toml. Disabling removes neither previous reports nor past file changes."
+        },
+        {
+          "type": "table",
+          "header": [
+            "State",
+            "Evidence establishes",
+            "Does not establish"
+          ],
+          "rows": [
+            [
+              "Valid format",
+              "Required metadata parses",
+              "Selection will occur"
+            ],
+            [
+              "Discovered",
+              "Selector shows correct name and path",
+              "Full workflow was read"
+            ],
+            [
+              "Selected",
+              "Task reads the instructions",
+              "Every check completed"
+            ],
+            [
+              "Verified",
+              "Actual test or browser observations",
+              "Website publication"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice and verification record"
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare “Verify Small Steps filtering and persistence” with “Explain today's exercise objective.” The first fits the skill; the second does not require full acceptance. Record selection, source path and result, then refine the description based on observations. One correct trigger does not validate every situation."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Mechanics were checked against "
+            },
+            {
+              "type": "link",
+              "text": "Build skills",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": " on 2026-09-14. The example receives format validation, and the website's core and deliberate failure have actual test results. Automatic triggers and selectors across Codex interfaces still need separate hands-on validation. Continue with "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "article",
+              "text": "testing and review",
+              "kind": "life",
+              "slug": "codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-skills/diagram-1.svg",
+          "alt": "23. Skills and SKILL.md — Workflow illustration, not a product screenshot. SKILL.md → Invoke → Output",
+          "width": 1600,
+          "height": 900,
+          "caption": "23. Skills and SKILL.md — Workflow illustration, not a product screenshot. SKILL.md → Invoke → Output",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Build skills",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Skills と SKILL.md",
+      "description": "Skill は繰り返す手順と資料をまとめます。最小構成はフォルダーと SKILL.md で、先頭に name と description、本文に操作と出力を書きます。導入しただけで使用済みとは判断しません。",
+      "hero": {
+        "src": "/guides/codex-skills/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "このレッスンでできること"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Small Steps の ToDo サイトを検証するスキルを作り、練習プロジェクトに保存して Codex に認識させます。有効なファイル、発見済み、選択済み、検査完了の四つの状態を区別し、正常版と故障版を比較します。読む時間は約 12 分、操作は約 25 分です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Skill はサイト変更後の検証など、繰り返す手順をまとめます。常に適用するプロジェクト要件は "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "に残し、Skill は特定のタスクで選びます。"
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "はスキルとサービス接続の配布に使えます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "始める前に"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ログイン済みの Codex CLI または Skills 対応のデスクトップ／IDE を用意します。"
+            },
+            {
+              "type": "link",
+              "text": "ToDo 教材",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "の expected を codex-practice にコピーし、broken は後で使う独立した教材として残します。二つの版のファイルを混ぜないでください。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "テストは Node.js、プレビューは Python 3 を使います。ブラウザがなければスキルは画面確認を未実施として手動手順を示します。指示を書くだけでツールが増えるわけではありません。"
+            },
+            {
+              "type": "link",
+              "text": "完全なスキルサンプル",
+              "url": "https://mokaair.com/guides/codex-skills/todo-acceptance.zip"
+            },
+            {
+              "type": "text",
+              "text": "も取得できます。内容を読んでから配置します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "名前、説明、本文"
+        },
+        {
+          "type": "paragraph",
+          "text": "スキルには SKILL.md を含むフォルダーが必要です。先頭の YAML frontmatter に name と description、本文に手順を書きます。Codex は最初に名前と説明を見て、使用時に全文を読みます。「何でも手伝う」という説明は無関係の依頼にも選ばれやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例の名前は todo-acceptance で、一般のサイト開発ではなく Small Steps の検証に限定します。まずはスクリプト、外部サービス、全体インストールを加えず指示だけにします。決まった処理を反復する必要があれば scripts、大量の参考情報は references に置き、読む条件を示します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 1：プロジェクト内に作る"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-practice のルートに .agents/skills/todo-acceptance を作ります。先頭の点も名前の一部で、.codex や点のない agents ではありません。Windows では次を実行します。既存のフォルダーがあればスキルを上書きする前に内容を確認します。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell、codex-practice のルート",
+          "language": "powershell",
+          "code": "New-Item -ItemType Directory -Force .agents/skills/todo-acceptance\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux ターミナル、codex-practice のルート",
+          "language": "bash",
+          "code": "mkdir -p .agents/skills/todo-acceptance\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "テキストエディターで SKILL.md を作ります。Windows は .txt が付いていないか、Linux は大文字か確認します。必要な構成は以下です。練習プロジェクトと一緒に管理し、全プロジェクト共通のスキルにはしません。"
+        },
+        {
+          "type": "code",
+          "label": "codex-practice 内の必要な全構成",
+          "language": "text",
+          "code": "codex-practice/\n  index.html\n  style.css\n  app.js\n  core.mjs\n  core.test.mjs\n  .agents/\n    skills/\n      todo-acceptance/\n        SKILL.md\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 2：完全なスキルを書く"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下はダウンロード版と同じです。既存コードを読み、既存テストを実行し、可能ならブラウザを確認して PASS、FAIL、NOT RUN を報告します。検証を通すための修正は黙って行わず、問題を理解してから修正を選べるようにします。"
+        },
+        {
+          "type": "code",
+          "label": ".agents/skills/todo-acceptance/SKILL.md に保存する全文",
+          "language": "markdown",
+          "code": "---\nname: todo-acceptance\ndescription: Verify the Small Steps todo practice website after a change, using its existing tests and browser checks. Use for acceptance checks of this exercise, not unrelated websites or feature implementation.\n---\n\n# Small Steps acceptance\n\nConfirm the requested practice folder contains index.html, style.css, app.js,\ncore.mjs and core.test.mjs. If these are missing, stop and report the path checked.\n\nRead the existing code, then run `node --test core.test.mjs` from that folder.\nDo not rewrite tests or implementation to make an acceptance run pass.\n\nIf a browser is available, preview the site on a loopback address with a fresh\nbrowser context. Add Read and Build, complete Read, check Active and Completed\nfilters, reload, and delete Read. Reject whitespace-only input. Check 390px and\n1280px widths and visible Tab focus. Keep existing user browser data unchanged.\n\nReport PASS, FAIL or NOT RUN for each check, with the command, observation or\nlimitation. Include the working folder and remaining issues. Do not claim that\ntests, screenshots, deployment or publication happened without evidence.\n\nIf a check fails, report the reproduction and relevant file. If a required tool\nis unavailable, report NOT RUN and the manual steps. Finish with results only;\nimplement fixes only when the user requests them.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "名前は小文字、数字、ハイフンを使い、フォルダー名と合わせます。description の前半で対象を明確にし、本文には判断を変える条件を残します。この例に余分なパッケージや設定は不要です。空のフォルダーを増やしても完成度は上がりません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 3：見つけて明示的に使う"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex はスキルの変更を検出します。見えなければセッションを再開し、作業場所を確認します。CLI／IDE は /skills または $ で検索できます。デスクトップでは側欄の Skills と現在の選択 UI を使います。名前が見えることは発見の証拠で、実行の証拠ではありません。"
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI または IDE の会話欄。システムのシェルではない",
+          "language": "text",
+          "code": "$todo-acceptance Check this Small Steps practice folder. Report the results without editing files.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "デスクトップの選択 UI では todo-acceptance を選び、同じ検証を依頼します。このプロジェクトの SKILL.md を読み、別の同名スキルではないか確認します。同名スキルは自動で統合されないため、グローバルや他の場所にもある場合はパスが重要です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 4：正常と意図的な失敗を比べる"
+        },
+        {
+          "type": "paragraph",
+          "text": "expected のコピーでは node --test core.test.mjs が 3 テスト成功のはずです。報告には実際の命令と結果を含めます。ブラウザも動かしたなら Read、Build、フィルター、再読み込み、空白入力の観察を期待します。ブラウザがなければ NOT RUN であり、成功でもスキル全体の失敗でもありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "独立した broken コピーを作り、同じスキルをその .agents/skills に置き、その場所から新しいタスクを始めます。この版では Completed が反転し、Read が完了、Build が未完了のとき誤って Build を表示します。テストは 2 成功、1 失敗のはずです。スキルは FAIL と再現手順を報告し、ソースを変更しないことを確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "これで失敗を忠実に報告する流れか比較できます。形式検証はメタデータと構造が読めることだけを示し、エージェントが手順に従った証明ではありません。逆にテスト失敗はスキルがバグを見つけた成功でもあります。一つの「成功」だけにまとめず、証拠を分けます。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "材料不足で停止することも確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "expected から独立した incomplete コピーを作り、同じスキルを入れます。そのコピーの core.test.mjs だけをフォルダー外へ退避し、元の expected と broken は変更しません。incomplete から新しいタスクを開始してスキルを選びます。欠けたファイルと確認したパスを示して受け入れ確認を止めるのが期待する動作です。テストの創作、別コピーでの実行、以前の合格結果の再利用は認めません。退避したファイルを元の場所に戻してから再確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "broken は材料がそろい、実際に実行したテストが失敗します。incomplete は開始条件を満たしません。ブラウザがない場合は画面確認だけが NOT RUN です。この三つを同じ FAIL にまとめないでください。入力や選択のケースは"
+            },
+            {
+              "type": "article",
+              "text": "スキルのテスト",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": "、スクリプトや参考資料の追加は"
+            },
+            {
+              "type": "article",
+              "text": "スキルのリソース",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            },
+            {
+              "type": "text",
+              "text": "で学べます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "問題解決、無効化、復元"
+        },
+        {
+          "type": "paragraph",
+          "text": "表示されない場合は .agents/skills の場所、実際の拡張子、frontmatter の二つの ---、name と description を確認します。ZIP を置いただけでは展開済みスキルではありません。直して Codex を再起動し、一覧を調べます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表示されても使われない場合は明示選択または $todo-acceptance を使い、名前とパスを確認します。自動選択は説明と依頼の解釈によるため、似た文でも必ず発動するわけではありません。挨拶でも使われるなら、この教材の検証に説明を絞ります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "選ばれてもテストできなければ、実際のホストの Node.js と作業場所の core.test.mjs を確認します。スマートフォンの Remote でもスキルとツールはホストにあります。A にインストール済みでも B にあるとは限りません。不足ツールをすべて自動インストールして前提を隠さないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実行中の検証はタスク内で停止します。無効化はスキルをプロジェクトの探索場所から外に移して保存し、再起動後に確認します。設定で無効にする場合は公式 [[skills.config]] を参照し、既存 config.toml を残します。無効化しても過去の報告やファイル変更は消えません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "状態",
+            "証明できること",
+            "まだ証明できないこと"
+          ],
+          "rows": [
+            [
+              "形式が有効",
+              "必須項目を解析可能",
+              "選択されること"
+            ],
+            [
+              "発見済み",
+              "名前とパスが一覧にある",
+              "全文を読んだこと"
+            ],
+            [
+              "採用済み",
+              "タスクが指示を読む",
+              "全検査の完了"
+            ],
+            [
+              "検証済み",
+              "実テストや画面の観察",
+              "サイトの公開"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習と検証記録"
+        },
+        {
+          "type": "paragraph",
+          "text": "「Small Steps のフィルターと保存を検証」と「今日の練習目標を説明」を比較します。前者はスキルに合い、後者は全検証を必要としません。選択、パス、結果を記録して説明を調整します。一度正しく選ばれただけでは全状況の検証になりません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "機構は 2026-09-14 に "
+            },
+            {
+              "type": "link",
+              "text": "Build skills 公式文書",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": "で確認しました。例には形式検証を行い、サイトのコアと故障には実際のテスト結果があります。自動選択や各 Codex UI は別に実測が必要です。次は "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "テストとレビュー",
+              "kind": "life",
+              "slug": "codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "を参照できます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-skills/diagram-1.svg",
+          "alt": "23. Skills と SKILL.md — 作業の流れを表す図です。製品画面の画像ではありません。 SKILL.md → Invoke → Output",
+          "width": 1600,
+          "height": 900,
+          "caption": "23. Skills と SKILL.md — 作業の流れを表す図です。製品画面の画像ではありません。 SKILL.md → Invoke → Output",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Build skills",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Skills와 SKILL.md",
+      "description": "Skill은 반복할 절차와 자료를 묶습니다. 최소 구조는 폴더와 SKILL.md이며 앞부분에 name과 description, 본문에 동작과 출력을 적습니다. 설치만으로 사용되었다고 판단하지 않습니다.",
+      "hero": {
+        "src": "/guides/codex-skills/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 글에서 완성할 것"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Small Steps 할 일 사이트를 검증하는 스킬을 만들고 실습 프로젝트에 저장해 Codex가 발견하도록 합니다. 유효한 파일, 발견된 스킬, 선택된 스킬, 완료된 검사를 구분하고 정상 버전과 고장 버전을 비교합니다. 읽기 약 12분, 실습 약 25분입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Skill은 웹사이트 수정 후 검증처럼 반복하는 절차를 묶습니다. 항상 적용할 프로젝트 조건은 "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "에 두고 Skill은 특정 작업에 선택합니다. "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "는 스킬과 서비스 연결을 배포할 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전 준비"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "로그인한 Codex CLI 또는 Skills를 지원하는 데스크톱/IDE를 준비합니다. "
+            },
+            {
+              "type": "link",
+              "text": "할 일 자료",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "의 expected를 codex-practice로 복사하고 broken은 별도 후속 실습으로 남깁니다. 두 버전의 파일을 섞지 마세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "테스트는 Node.js, 미리보기는 Python 3를 사용합니다. 브라우저 도구가 없으면 스킬은 화면 검사를 미실행으로 보고하고 수동 절차를 제공해야 합니다. 지침이 없는 도구를 만들어 주지는 않습니다. "
+            },
+            {
+              "type": "link",
+              "text": "전체 스킬 예제",
+              "url": "https://mokaair.com/guides/codex-skills/todo-acceptance.zip"
+            },
+            {
+              "type": "text",
+              "text": "도 내려받을 수 있으며 내용을 읽은 뒤 배치합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이름, 설명, 본문"
+        },
+        {
+          "type": "paragraph",
+          "text": "스킬은 SKILL.md가 들어 있는 폴더가 필요합니다. 맨 위 YAML frontmatter에는 name과 description, 본문에는 절차를 씁니다. Codex는 먼저 이름과 설명을 보고 사용할 때 전체 파일을 읽습니다. 무엇이든 돕는다는 설명은 관련 없는 작업에도 선택되기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예제 이름은 todo-acceptance이며 일반 웹 개발이 아닌 Small Steps 검증에 한정합니다. 먼저 스크립트, 외부 서비스, 전역 설치 없이 지침만 사용합니다. 동일한 입력에 동일한 결과를 내는 반복 처리가 필요할 때 scripts를 추가하고 많은 참고 자료는 references에 두어 읽을 조건을 밝힙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 프로젝트 안에 스킬 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-practice 루트에 .agents/skills/todo-acceptance를 만듭니다. 앞의 점도 이름이며 .codex나 점 없는 agents가 아닙니다. Windows는 아래 PowerShell 명령을 사용합니다. 이미 있다면 다른 스킬을 덮기 전에 내용을 확인합니다."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell, codex-practice 루트",
+          "language": "powershell",
+          "code": "New-Item -ItemType Directory -Force .agents/skills/todo-acceptance\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux 터미널, codex-practice 루트",
+          "language": "bash",
+          "code": "mkdir -p .agents/skills/todo-acceptance\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 텍스트 편집기로 SKILL.md를 만듭니다. Windows는 .txt가 붙지 않았는지, Linux는 대문자인지 확인합니다. 필요한 전체 구조는 아래와 같습니다. 실습과 함께 관리하며 모든 프로젝트의 개인 스킬로 만들지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "codex-practice 안의 필요한 전체 구조",
+          "language": "text",
+          "code": "codex-practice/\n  index.html\n  style.css\n  app.js\n  core.mjs\n  core.test.mjs\n  .agents/\n    skills/\n      todo-acceptance/\n        SKILL.md\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 전체 스킬 작성"
+        },
+        {
+          "type": "paragraph",
+          "text": "아래는 다운로드와 같습니다. 기존 코드와 테스트를 읽고 실행하며 가능하면 브라우저를 확인해 PASS, FAIL, NOT RUN을 보고합니다. 검사를 통과시키려고 몰래 코드를 고치지 않으므로 문제를 이해한 뒤 수정 여부를 결정할 수 있습니다."
+        },
+        {
+          "type": "code",
+          "label": ".agents/skills/todo-acceptance/SKILL.md에 저장할 전체 내용",
+          "language": "markdown",
+          "code": "---\nname: todo-acceptance\ndescription: Verify the Small Steps todo practice website after a change, using its existing tests and browser checks. Use for acceptance checks of this exercise, not unrelated websites or feature implementation.\n---\n\n# Small Steps acceptance\n\nConfirm the requested practice folder contains index.html, style.css, app.js,\ncore.mjs and core.test.mjs. If these are missing, stop and report the path checked.\n\nRead the existing code, then run `node --test core.test.mjs` from that folder.\nDo not rewrite tests or implementation to make an acceptance run pass.\n\nIf a browser is available, preview the site on a loopback address with a fresh\nbrowser context. Add Read and Build, complete Read, check Active and Completed\nfilters, reload, and delete Read. Reject whitespace-only input. Check 390px and\n1280px widths and visible Tab focus. Keep existing user browser data unchanged.\n\nReport PASS, FAIL or NOT RUN for each check, with the command, observation or\nlimitation. Include the working folder and remaining issues. Do not claim that\ntests, screenshots, deployment or publication happened without evidence.\n\nIf a check fails, report the reproduction and relevant file. If a required tool\nis unavailable, report NOT RUN and the manual steps. Finish with results only;\nimplement fixes only when the user requests them.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "이름은 소문자, 숫자, 하이픈을 쓰고 폴더 이름과 맞춥니다. description 앞부분에 대상 범위를 쓰고 본문에는 실제 판단에 영향을 주는 조건을 남깁니다. 이 예제는 추가 패키지나 설정 파일이 필요 없으며 빈 폴더를 늘린다고 더 완성되는 것은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 찾고 명시적으로 사용"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex는 스킬 변경을 감지합니다. 보이지 않으면 세션을 다시 시작하고 작업 폴더를 확인합니다. CLI/IDE는 /skills 또는 $로 찾고 데스크톱은 사이드바 Skills와 현재 선택 UI를 사용합니다. 이름이 보이면 발견 증거일 뿐 실행 증거는 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "Codex CLI 또는 IDE 대화 입력창, 시스템 셸이 아님",
+          "language": "text",
+          "code": "$todo-acceptance Check this Small Steps practice folder. Report the results without editing files.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱 선택기가 있다면 todo-acceptance를 고르고 같은 검증 요청을 보냅니다. 다른 동명 스킬이 아닌 프로젝트의 SKILL.md를 읽는지 확인합니다. 같은 이름은 자동 병합되지 않으므로 전역이나 다른 폴더에도 있다면 경로가 중요합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 정상과 의도된 실패 비교"
+        },
+        {
+          "type": "paragraph",
+          "text": "expected 복사본에서 node --test core.test.mjs는 테스트 세 개가 통과해야 합니다. 보고에 실제 명령과 결과가 있어야 하며 브라우저를 실행했다면 Read, Build, 필터, 새로 고침, 공백 입력의 관찰을 기대합니다. 브라우저가 없으면 NOT RUN이며 통과도 스킬 전체의 실패도 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "독립된 broken 복사본을 만들고 그 .agents/skills에 같은 스킬을 넣어 새 작업을 시작합니다. 이 버전은 Completed가 반대로 되어 Read가 완료, Build가 미완료일 때 Build를 잘못 표시합니다. 테스트는 두 개 통과, 한 개 실패해야 합니다. 스킬은 FAIL과 재현 절차를 보고하고 소스를 바꾸지 않아야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 비교로 실패를 정확히 보고하는 절차인지 확인합니다. 형식 검증은 메타데이터와 구조가 해석된다는 뜻이며 에이전트가 절차를 따랐다는 증거는 아닙니다. 반대로 테스트 실패는 스킬이 버그를 찾은 성공일 수 있습니다. 모호한 성공 표시 하나 대신 증거를 나눠 보존합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "자료가 부족하면 멈추는지도 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "expected에서 독립적인 incomplete 사본을 만들고 같은 스킬을 넣습니다. 이 사본의 core.test.mjs만 폴더 밖의 백업 위치로 옮기고 원본 expected와 broken은 유지합니다. incomplete에서 새 작업을 시작해 스킬을 선택하세요. 누락된 파일과 확인한 경로를 알리고 검수를 멈춰야 합니다. 테스트를 새로 지어내거나 다른 사본에서 실행하거나 이전 통과 결과를 재사용하면 안 됩니다. 백업 파일을 원래 위치로 돌려놓은 뒤 다시 검수합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "broken은 자료가 갖춰져 있고 실제로 실행한 테스트가 실패합니다. incomplete는 시작 조건을 충족하지 못합니다. 브라우저가 없을 때는 화면 확인만 NOT RUN입니다. 세 상황을 모두 같은 FAIL로 기록하지 마세요. 입력과 선택 조건은 "
+            },
+            {
+              "type": "article",
+              "text": "스킬 테스트",
+              "kind": "life",
+              "slug": "codex-skill-testing"
+            },
+            {
+              "type": "text",
+              "text": ", 스크립트와 참고 자료 추가는 "
+            },
+            {
+              "type": "article",
+              "text": "스킬 리소스",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            },
+            {
+              "type": "text",
+              "text": "에서 이어서 배울 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결, 비활성화, 복원"
+        },
+        {
+          "type": "paragraph",
+          "text": "스킬이 없으면 .agents/skills 위치, 실제 확장명, frontmatter의 두 --- 구분자, name과 description을 확인합니다. ZIP을 폴더에 넣기만 한 것은 설치가 아닙니다. 수정 후 Codex를 다시 시작하고 선택기를 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "보이지만 쓰지 않으면 명시적으로 선택하거나 $todo-acceptance로 지정하고 이름과 경로를 확인합니다. 자동 선택은 설명과 요청 해석에 따르므로 비슷한 문장이 반드시 실행을 유발하지는 않습니다. 인사에도 검증을 시작한다면 설명을 이 실습 검증으로 좁힙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "선택됐지만 테스트를 못 하면 실제 호스트의 Node.js와 작업 폴더의 core.test.mjs를 확인합니다. 모바일 Remote에서도 스킬과 도구는 호스트에 있습니다. 컴퓨터 A에 있다고 B에도 있는 것은 아닙니다. 전제 조건을 숨기려고 모든 부족한 도구를 설치하게 하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "진행 중 검증은 작업 안에서 중지합니다. 비활성화하려면 스킬을 프로젝트 검색 위치 밖으로 옮겨 보관하고 재시작해 확인합니다. 설정으로 끄려면 공식 [[skills.config]] 안내를 참고하되 기존 config.toml을 보존합니다. 비활성화해도 이전 보고와 과거 파일 변경은 사라지지 않습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "상태",
+            "증명하는 것",
+            "아직 증명하지 않는 것"
+          ],
+          "rows": [
+            [
+              "유효한 형식",
+              "필수 항목 해석 가능",
+              "선택될 것"
+            ],
+            [
+              "발견됨",
+              "목록의 올바른 이름과 경로",
+              "전체 절차를 읽음"
+            ],
+            [
+              "선택됨",
+              "작업이 지침을 읽음",
+              "모든 검사 완료"
+            ],
+            [
+              "검증됨",
+              "실제 테스트나 화면 관찰",
+              "사이트 공개"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "추가 실습과 검증 기록"
+        },
+        {
+          "type": "paragraph",
+          "text": "Small Steps의 필터와 저장을 검증하라는 요청과 오늘의 실습 목표를 설명하라는 요청을 비교합니다. 전자는 적합하고 후자는 전체 검증이 필요 없습니다. 선택 여부, 경로, 결과를 기록해 설명을 조정합니다. 한 번 맞게 선택됐다고 모든 상황을 검증한 것은 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "작동 방식은 2026-09-14에 "
+            },
+            {
+              "type": "link",
+              "text": "Build skills 공식 문서",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": "로 확인했습니다. 예제는 형식 검증을 하며 사이트 핵심과 고장 결과에는 실제 테스트 증거가 있습니다. 자동 선택과 각 Codex UI는 별도 실측이 필요합니다. 다음은 "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "codex-mcp"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "테스트와 리뷰",
+              "kind": "life",
+              "slug": "codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-skills/diagram-1.svg",
+          "alt": "23. Skills와 SKILL.md — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. SKILL.md → Invoke → Output",
+          "width": 1600,
+          "height": 900,
+          "caption": "23. Skills와 SKILL.md — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. SKILL.md → Invoke → Output",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Build skills",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

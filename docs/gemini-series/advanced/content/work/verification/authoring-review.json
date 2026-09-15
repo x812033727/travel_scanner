@@ -1,0 +1,818 @@
+{
+  "checkedAt": "2026-09-14T13:04:15.698556+00:00",
+  "status": "authoring-review-not-release",
+  "publishable": false,
+  "scope": "work track 51-56 only",
+  "baselineCommit": "c84334ec78310ffd4bd556573833bc85c24c63c8",
+  "preservation": {
+    "runtimeArticles": 50,
+    "originalContentPacksUnchanged": 51,
+    "priorMdDraftsUnchanged": 6,
+    "priorAutomationDraftsUnchanged": 6,
+    "catalogueSha256": "1f6afed7f3bf7f05a407b8d5af4647938cf6d91df6b42a381a904b1f6d697bb2"
+  },
+  "environment": {
+    "platform": "Windows",
+    "python": "3.13.15",
+    "node": "24.13.0",
+    "browser": "151.0.7922.34"
+  },
+  "checks": {
+    "newPacks": 6,
+    "priorDrafts": 12,
+    "originalPages": 51,
+    "fixtureTests": 20,
+    "budgetBrowserObservations": 28,
+    "archives": 7,
+    "visualPreviews": 24,
+    "budgetScreenshots": 2,
+    "relatedApiPassed": 38,
+    "relatedApiSkipped": 8,
+    "apiSkipReason": "requires isolated PostgreSQL integration services",
+    "ruff": "passed",
+    "tasks": "passed with pre-existing unrelated warnings"
+  },
+  "notTested": [
+    "20 actual Gemini outputs and human ratings",
+    "24 Gems regression outputs and saved state",
+    "Canvas model generation and correction",
+    "Workspace account workflow and source access",
+    "Android/iPhone Live and desktop handoff",
+    "Spark manual and real scheduled run, pause/resume/delete/next-time observation",
+    "published pages and sitemap"
+  ],
+  "modelCalls": 0,
+  "sparkSchedulesCreated": 0,
+  "files": [
+    {
+      "path": "apps/api/app/guides/content/gemini-canvas-budget-calculator.json",
+      "bytes": 15307,
+      "sha256": "0bf30d560a2a5fde364bd373d351ee2ea09bdab3113d48447ed7bb9d14e21176"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-gems-support-playbook.json",
+      "bytes": 15145,
+      "sha256": "ea52a284f40efeeb49aa21aa72beb2498aa3ea118e8113b91b8977f762a4d1e4"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-mobile-field-notes.json",
+      "bytes": 16548,
+      "sha256": "d851b199e87d1dc6aa0680ddb61e511b85d08ef195afc62e34d911f6480ce0ad"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-prompt-evaluation-workshop.json",
+      "bytes": 15463,
+      "sha256": "cb59bfbefb3468dad05190d09f811d682532ff72f2a6c759aa51808b18b21976"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-spark-weekly-digest.json",
+      "bytes": 17042,
+      "sha256": "bfa3d2f0fb265dd1a0de38b3a8acf3c8341b7aff67df3b49c444a665c5250f65"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-workspace-meeting-handoff.json",
+      "bytes": 15272,
+      "sha256": "102e5376081f25f96b50801eaa5aa96a80ed7a1b96dc30327c61b94076a12e4a"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-canvas-budget-calculator/diagram-1.svg",
+      "bytes": 2289,
+      "sha256": "f24345dd02675891ac18b8d88d3630c214ae2cd1de1355288ecaf5497950f2da"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-canvas-budget-calculator/hero.jpg",
+      "bytes": 96619,
+      "sha256": "05642a2b5ad3bf58e1cf17b32f5320ddec0a2b5477745b7d07f675765341872f"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-canvas-budget-calculator/hero.svg",
+      "bytes": 1636,
+      "sha256": "4d6fc00ca83da120cdc395be61d3fbeb8255202a4ff1771788d61869f67b9df7"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-canvas-budget-calculator/lesson-53.zip",
+      "bytes": 5163,
+      "sha256": "f0ae5b6770f77202e2a597ae4e2f7c04c52715f2b95e769afadc35baae9465d7"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-canvas-budget-calculator/work-verification.zip",
+      "bytes": 330139,
+      "sha256": "48fe61957400075db5e3dc5fe1031834a2666b33d8cd5cbc003dc387e153cebd"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-gems-support-playbook/diagram-1.svg",
+      "bytes": 2249,
+      "sha256": "2bbf388581e99b147f93d2ac65fb15d899281fd7237e03dece43af7c4156577f"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-gems-support-playbook/hero.jpg",
+      "bytes": 92600,
+      "sha256": "baa39c871a8fb7b5e6cbc22d19c69916e98d35be35e0ec5be0f2ef47a7cd7346"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-gems-support-playbook/hero.svg",
+      "bytes": 1626,
+      "sha256": "333ac6e819a5e8201b7a0645847d102fdef0c78ee1f4853373199981b76bc97a"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-gems-support-playbook/lesson-52.zip",
+      "bytes": 3875,
+      "sha256": "019554a41ac923272bd5ee1dd936676aa4219828580a157f3fea745af9deb274"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-gems-support-playbook/work-verification.zip",
+      "bytes": 330139,
+      "sha256": "48fe61957400075db5e3dc5fe1031834a2666b33d8cd5cbc003dc387e153cebd"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-mobile-field-notes/diagram-1.svg",
+      "bytes": 2266,
+      "sha256": "0f3bb2005bd998a975412d1c8ab0bc8fd58d9dd527794041b7d66c619c84efc5"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-mobile-field-notes/hero.jpg",
+      "bytes": 93594,
+      "sha256": "8741c490f20b79e4a976b47b4cca15a1c5600536b44ea07a06eb014364697a24"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-mobile-field-notes/hero.svg",
+      "bytes": 1628,
+      "sha256": "4a3c18740e595259530543ea3b75d0c2868a14bec6f8cf26c32891e2913a75c9"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-mobile-field-notes/lesson-55.zip",
+      "bytes": 303137,
+      "sha256": "a50d9fd3120bc756cfaabc5ff960e18aaaacee02853fc2badd5161591508a5ef"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-mobile-field-notes/work-verification.zip",
+      "bytes": 330139,
+      "sha256": "48fe61957400075db5e3dc5fe1031834a2666b33d8cd5cbc003dc387e153cebd"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-prompt-evaluation-workshop/diagram-1.svg",
+      "bytes": 2247,
+      "sha256": "b1d177ea0e080958fd8b620316d0d5ed5bca02497e9301ce8111cbb8c837d184"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-prompt-evaluation-workshop/hero.jpg",
+      "bytes": 95340,
+      "sha256": "c033e041c5eb46e6337b8d773d5f16a26dffe4289273f3be12861f6c31979a37"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-prompt-evaluation-workshop/hero.svg",
+      "bytes": 1634,
+      "sha256": "b38a338d0f02795131d6e33e0c54727ae9719a3af273c784d7ac49c4e65925d2"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-prompt-evaluation-workshop/lesson-51.zip",
+      "bytes": 5565,
+      "sha256": "66eb41c6bc98b44fe8817860e0670ee0af4a44c4ef2d58362b6d8269bd2b88e5"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-prompt-evaluation-workshop/work-verification.zip",
+      "bytes": 330139,
+      "sha256": "48fe61957400075db5e3dc5fe1031834a2666b33d8cd5cbc003dc387e153cebd"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-spark-weekly-digest/diagram-1.svg",
+      "bytes": 2303,
+      "sha256": "fb8d4823b803747fff11e1f42c7f0394fa782c493c727fe5db0023641948b3c3"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-spark-weekly-digest/hero.jpg",
+      "bytes": 99860,
+      "sha256": "40c320b6d7a13201a1336e3f1fad025b4882185c26fb73a2496ee51cd3aa1aab"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-spark-weekly-digest/hero.svg",
+      "bytes": 1634,
+      "sha256": "13af29318a57b6a2a1d736dc861cf95e064d371f7c848627d1bf0a3609a532ef"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-spark-weekly-digest/lesson-56.zip",
+      "bytes": 3644,
+      "sha256": "fe00ce30e24829c5756047f9dc5115122947105f489de0d9220ef4334a7d43bc"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-spark-weekly-digest/work-verification.zip",
+      "bytes": 330139,
+      "sha256": "48fe61957400075db5e3dc5fe1031834a2666b33d8cd5cbc003dc387e153cebd"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-workspace-meeting-handoff/diagram-1.svg",
+      "bytes": 2275,
+      "sha256": "78fb71d6b8bb80383b1a39b517f99e6ffd76a48ce9dd420706a35f828cf331f3"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-workspace-meeting-handoff/hero.jpg",
+      "bytes": 94393,
+      "sha256": "d43524cdad555e374956039d8901a3213c00089729487e3cb4d51910145d6d11"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-workspace-meeting-handoff/hero.svg",
+      "bytes": 1628,
+      "sha256": "3b4b7379f8d70f556184905d5392d6b575c46c2945de582b88256e057cc8c422"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-workspace-meeting-handoff/lesson-54.zip",
+      "bytes": 4272,
+      "sha256": "6f341992c74b9a0db8cd125e88483f06162027beb51007f890aa1b0628218f7e"
+    },
+    {
+      "path": "apps/web/public/guides/gemini-workspace-meeting-handoff/work-verification.zip",
+      "bytes": 330139,
+      "sha256": "48fe61957400075db5e3dc5fe1031834a2666b33d8cd5cbc003dc387e153cebd"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/51/diagram-1.svg",
+      "bytes": 2247,
+      "sha256": "b1d177ea0e080958fd8b620316d0d5ed5bca02497e9301ce8111cbb8c837d184"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/51/hero.jpg",
+      "bytes": 95340,
+      "sha256": "c033e041c5eb46e6337b8d773d5f16a26dffe4289273f3be12861f6c31979a37"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/51/hero.svg",
+      "bytes": 1634,
+      "sha256": "b38a338d0f02795131d6e33e0c54727ae9719a3af273c784d7ac49c4e65925d2"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/51/lesson.md",
+      "bytes": 6986,
+      "sha256": "95d791eb0b64209a9e1885e0892d22024e2133aecd8ddf2393c269f3a6ed7d0c"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/51/meta.json",
+      "bytes": 953,
+      "sha256": "95fcb73ec32645470521ea41e9fa0f31cd7cf2f826f6311e4ca96614b28a7dd8"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/52/diagram-1.svg",
+      "bytes": 2249,
+      "sha256": "2bbf388581e99b147f93d2ac65fb15d899281fd7237e03dece43af7c4156577f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/52/hero.jpg",
+      "bytes": 92600,
+      "sha256": "baa39c871a8fb7b5e6cbc22d19c69916e98d35be35e0ec5be0f2ef47a7cd7346"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/52/hero.svg",
+      "bytes": 1626,
+      "sha256": "333ac6e819a5e8201b7a0645847d102fdef0c78ee1f4853373199981b76bc97a"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/52/lesson.md",
+      "bytes": 7049,
+      "sha256": "ee7ebda99f1aa4cc05037c6b0bb22a1a49c04e0e0349e24d79440332211bd49c"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/52/meta.json",
+      "bytes": 1099,
+      "sha256": "16adada7957ff18ca6258152ad6bde2d5beefa62c86d7c2dc692561751024d30"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/53/diagram-1.svg",
+      "bytes": 2289,
+      "sha256": "f24345dd02675891ac18b8d88d3630c214ae2cd1de1355288ecaf5497950f2da"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/53/hero.jpg",
+      "bytes": 96619,
+      "sha256": "05642a2b5ad3bf58e1cf17b32f5320ddec0a2b5477745b7d07f675765341872f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/53/hero.svg",
+      "bytes": 1636,
+      "sha256": "4d6fc00ca83da120cdc395be61d3fbeb8255202a4ff1771788d61869f67b9df7"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/53/lesson.md",
+      "bytes": 6976,
+      "sha256": "c9f0af1442b063cd11fd1bcdb00728f9b3f896a147bfe87f96af8ec2d08d2639"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/53/meta.json",
+      "bytes": 973,
+      "sha256": "f49b66a774e89576117bc21c4656dab9d638a964ffb8c83254389ba2e26ddb63"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/54/diagram-1.svg",
+      "bytes": 2275,
+      "sha256": "78fb71d6b8bb80383b1a39b517f99e6ffd76a48ce9dd420706a35f828cf331f3"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/54/hero.jpg",
+      "bytes": 94393,
+      "sha256": "d43524cdad555e374956039d8901a3213c00089729487e3cb4d51910145d6d11"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/54/hero.svg",
+      "bytes": 1628,
+      "sha256": "3b4b7379f8d70f556184905d5392d6b575c46c2945de582b88256e057cc8c422"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/54/lesson.md",
+      "bytes": 7312,
+      "sha256": "56303e65b0bc7ff6b7fc3c2fca3d057a1b538d6d59ea7fcb67367037721b9962"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/54/meta.json",
+      "bytes": 1114,
+      "sha256": "d845cdccf93a0b2ab28f19bb9a9eceb372915b2bb6664193ad22dc452f312254"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/55/diagram-1.svg",
+      "bytes": 2266,
+      "sha256": "0f3bb2005bd998a975412d1c8ab0bc8fd58d9dd527794041b7d66c619c84efc5"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/55/hero.jpg",
+      "bytes": 93594,
+      "sha256": "8741c490f20b79e4a976b47b4cca15a1c5600536b44ea07a06eb014364697a24"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/55/hero.svg",
+      "bytes": 1628,
+      "sha256": "4a3c18740e595259530543ea3b75d0c2868a14bec6f8cf26c32891e2913a75c9"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/55/lesson.md",
+      "bytes": 7526,
+      "sha256": "23f9657ea6130aedd8d551850a70397ce472193b05f4a0b729f9b62f6416e6ba"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/55/meta.json",
+      "bytes": 1320,
+      "sha256": "76a5650fbce4c8e224034f48538552bcf5854e1fc8d96b106ee9e4043a0397fb"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/56/diagram-1.svg",
+      "bytes": 2303,
+      "sha256": "fb8d4823b803747fff11e1f42c7f0394fa782c493c727fe5db0023641948b3c3"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/56/hero.jpg",
+      "bytes": 99860,
+      "sha256": "40c320b6d7a13201a1336e3f1fad025b4882185c26fb73a2496ee51cd3aa1aab"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/56/hero.svg",
+      "bytes": 1634,
+      "sha256": "13af29318a57b6a2a1d736dc861cf95e064d371f7c848627d1bf0a3609a532ef"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/56/lesson.md",
+      "bytes": 7735,
+      "sha256": "611fb2d9d776a8d3fb8a0faae9288903c2b751a6a74c2bc65144cbc4bcafddc7"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/56/meta.json",
+      "bytes": 1579,
+      "sha256": "5ab4ca1a601127c9f87a7cb4390960f540390d8c8b9b93e198057c26194897d4"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/build-art.py",
+      "bytes": 7329,
+      "sha256": "bc2980a1a733e1624e9f0e234b80e0b1bca49dc8f65bf112bbdb0517695075c5"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/build-data.py",
+      "bytes": 17866,
+      "sha256": "a29433f57db50d0409416b0fd2c5cb6abc57a9c95729529fd9a448f6c67fa023"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/authored-example.md",
+      "bytes": 364,
+      "sha256": "2f044d9638f8709b6b426abadf90fffaff6ba39e0699c19a3d8e4c6b2e644931"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/cases.csv",
+      "bytes": 2063,
+      "sha256": "5f199fc51a1c1877bac73aa346251e2944e2abbe1e3994d14727ce02a83d105b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/prompts-v1-v2.md",
+      "bytes": 783,
+      "sha256": "5863dc001d846b6e8aa83daad50373087e41fbffc44bd5cb9f162c02a5a84923"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/ratings-template.csv",
+      "bytes": 478,
+      "sha256": "71bf55f26d766eba752c2bfe180329be29c0b7f95624850f486c8862ec695929"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/README.md",
+      "bytes": 333,
+      "sha256": "9b3bb05d9606398dfd5baa97506a70ec3a8da2e15260e8b02ae7c84a28878f0b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/rubric.csv",
+      "bytes": 344,
+      "sha256": "5148dc27fd15a755df60816a9155b587039f9e3d57e12e9313fbf79ca573971b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/run-environment.md",
+      "bytes": 289,
+      "sha256": "47f7ac8a1b3eb40ec00d5e42de62af0d8dcdaebb755a8e8d25d70bfe0ac115d3"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/score.py",
+      "bytes": 2774,
+      "sha256": "59904e3afee036c7d58b920252d8b731a6bedea2f6368f9be1df8a68fe6ebb1b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/52/gem-instructions.md",
+      "bytes": 566,
+      "sha256": "196dfa0da5766fb3c8bf1a560a91e5b8e7ca9e7293b73e6fac46f1955aa77674"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/52/LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/52/product-handbook-v1.md",
+      "bytes": 734,
+      "sha256": "68869eac4c5e964cd6f2ec58531f73ea932c366cc742217051dd1f964bd8060e"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/52/product-handbook-v2.md",
+      "bytes": 734,
+      "sha256": "48e9818b0589ed457a7eac16816eb321e149f0302a9eaf3df045c341e6eacc2c"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/52/README.md",
+      "bytes": 333,
+      "sha256": "cf62cd871704b7d7bde161b83ca89c9ca45b8305a32e32353237441423d8fb16"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/52/regression-cases.csv",
+      "bytes": 981,
+      "sha256": "a3f657c35560a47aad3cca69948f88576e5bdbe4f07440a031cda374d9cf7782"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/52/regression-log.csv",
+      "bytes": 523,
+      "sha256": "d75ab6c1b2bdcd67013d75f2ed09d68ad3e19d4a553130843b85be8794393600"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/53/budget-reference.html",
+      "bytes": 6794,
+      "sha256": "672bbb6226e7f338811057bb985ee33d441bc715b9c9d8254a2b0c413b96d260"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/53/LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/53/README.md",
+      "bytes": 333,
+      "sha256": "9cfd07fe2d74bfd6857732b98d9c9e18592b99ef42b2a8e18715b4a10e505f3d"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/53/requirements.md",
+      "bytes": 853,
+      "sha256": "b135b5c03ab36caaa2c10658e92752bf863c4717b3675cba08d8a904e75ccac6"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/53/test-cases.csv",
+      "bytes": 157,
+      "sha256": "e6baff252a46a25cf31f6924ba625f8abd6762ee6b29e1ede59ea0fd47616d8c"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/54/action-items.csv",
+      "bytes": 941,
+      "sha256": "88dead73474121b0c3956bc7118826204a62ec13e882dc030edf204f458588ff"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/54/check_handoff.py",
+      "bytes": 2356,
+      "sha256": "fbb1125420044ef69c6faf697c7db6ce637a4d633e7323bdfb4e25a2df5ca509"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/54/handoff-template.md",
+      "bytes": 379,
+      "sha256": "52b7b81a5821a1e631d0504f8ca0db780042407fe214a485bbc69128d1857e66"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/54/LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/54/mail-samples.json",
+      "bytes": 833,
+      "sha256": "e46e5ed86218029173e7749aa191d1b5ee6039f962565eb3cdd285f1496b8c72"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/54/mail-samples.md",
+      "bytes": 687,
+      "sha256": "3b20586f9e8ee8527d07143828efb3b09d42af0bbbcff7ba7048e50792eaa40a"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/54/README.md",
+      "bytes": 333,
+      "sha256": "4ac87abfba25ec259512ec819db9f51beae76705a1c779e9ee8ba93db06ec445"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/55/field-checklist.md",
+      "bytes": 532,
+      "sha256": "23fd732a99e443d0d5d584cd8e555da90a7237bebd884a901a0979b470227c0b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/55/field-notes.md",
+      "bytes": 358,
+      "sha256": "05b3b28990ce9e0f3239605eb0b3da6b81b0a489997f37098999e9223d66b415"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/55/LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/55/observation-prompt.txt",
+      "bytes": 277,
+      "sha256": "a09e9163b68cc62352a6fb520eac58c5122feb539b8f2dfc5f8ef02d51b7a2e2"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/55/parts-of-a-ballpoint-pen.jpg",
+      "bytes": 300216,
+      "sha256": "bbfb1a491c9f20bf37369bf3c9d45b9ae99fa77edd08832822adbd7ae5dbbe81"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/55/photo-license.json",
+      "bytes": 558,
+      "sha256": "2d2f2fe40836cc3e6a09911de13e69eb85ba751b0326c6d5e2dd3d3d0ba6f7ab"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/55/README.md",
+      "bytes": 333,
+      "sha256": "7b0c4300440478f6f9e6e29c5d5d789b6023f07e45106ba193c667b999e0537f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/56/authored-digest-fixture.json",
+      "bytes": 812,
+      "sha256": "1a7db1b79b3f8286ff10dfed0da0fc0fa596459d53e4f7cf6b5fd6432c37ede8"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/56/check_digest.py",
+      "bytes": 2000,
+      "sha256": "c636969f9a21dbb594f9eaac56b435f732e967979c5629d2075559d8ee967fe2"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/56/digest-brief.md",
+      "bytes": 996,
+      "sha256": "32615b41b5bed8ce7890ce866e568c93c4f9c002fa16bc0328f21e917667769f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/56/LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/56/README.md",
+      "bytes": 333,
+      "sha256": "7011039c837f7181c49182b5ef2b2cfd6de894886634d1b1a39d8785c6acc5de"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/56/schedule-log.csv",
+      "bytes": 299,
+      "sha256": "15fbf3b689cc74f84bd2ec6c21e39daeb82d1bf24566c37521258a8dc72958b3"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/lesson-51.zip",
+      "bytes": 5565,
+      "sha256": "66eb41c6bc98b44fe8817860e0670ee0af4a44c4ef2d58362b6d8269bd2b88e5"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/lesson-52.zip",
+      "bytes": 3875,
+      "sha256": "019554a41ac923272bd5ee1dd936676aa4219828580a157f3fea745af9deb274"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/lesson-53.zip",
+      "bytes": 5163,
+      "sha256": "f0ae5b6770f77202e2a597ae4e2f7c04c52715f2b95e769afadc35baae9465d7"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/lesson-54.zip",
+      "bytes": 4272,
+      "sha256": "6f341992c74b9a0db8cd125e88483f06162027beb51007f890aa1b0628218f7e"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/lesson-55.zip",
+      "bytes": 303137,
+      "sha256": "a50d9fd3120bc756cfaabc5ff960e18aaaacee02853fc2badd5161591508a5ef"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/lesson-56.zip",
+      "bytes": 3644,
+      "sha256": "fe00ce30e24829c5756047f9dc5115122947105f489de0d9220ef4334a7d43bc"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/work-verification.zip",
+      "bytes": 330139,
+      "sha256": "48fe61957400075db5e3dc5fe1031834a2666b33d8cd5cbc003dc387e153cebd"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/README.md",
+      "bytes": 5057,
+      "sha256": "4a9bdf84eab106ca1a7e0265ced4ef8bd53d82b7df4699c3e27175ee2a2ec7dc"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/sources.json",
+      "bytes": 2350,
+      "sha256": "58670635b6e4345c1ee7649d1f3ddf98e6e89d400dc02f8b22cfd0ba4f4860cc"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/art-verification.json",
+      "bytes": 2636,
+      "sha256": "f7cdcb765b29e010332a0d068482c952699fb1d2f6c23031bac23ee1732fb9c7"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/browser-budget.json",
+      "bytes": 3929,
+      "sha256": "9e2d23ca0388c0a174ee84c9000e093a6982af1efe11a0b95c5a944bb7cc0ac8"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/budget-1440.png",
+      "bytes": 84248,
+      "sha256": "43ee6abfd40960420645b278851be7e25c227ae770e6ca7cae71da77ceae1d53"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/budget-360.png",
+      "bytes": 71062,
+      "sha256": "bf58f9025e7585ac818a5e80e4096fa9c103ae5d7aad9529ba3d7a4cfbee1f42"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/build.json",
+      "bytes": 1246,
+      "sha256": "520de1291b9a1ffa8c94a9e60fb6f105b39ff0526d1c97d2846460e99530ca16"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/delivery.json",
+      "bytes": 1908,
+      "sha256": "7a01a729ed73b3a02ee6553bca39a4874faebe9a646b04b790fcca3c6275b84f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/fixtures.json",
+      "bytes": 239,
+      "sha256": "37808845bf4031ba910f2ededcbfde59fd204b401785538ced154e4b1c1dd9d0"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/README.md",
+      "bytes": 1480,
+      "sha256": "e87174314f5ef8a42c714861a4089c20d6528f23d882d526976327ba1738da0e"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-canvas-budget-calculator/diagram-1-mobile.png",
+      "bytes": 25765,
+      "sha256": "ef2e0e7c47b9496ca830ade666eb92ae4dcdde5ce987429c0c1449a5f502c93b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-canvas-budget-calculator/diagram-1.png",
+      "bytes": 134942,
+      "sha256": "689b207312696b5604e57717802549a9f6f6b5a8d0ce9b3ddd1a8dafa647c333"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-canvas-budget-calculator/hero-mobile.png",
+      "bytes": 16949,
+      "sha256": "bacc606da6fa80a37bda785218af06f87daa95251c8fb14874161cf8e049d0fa"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-canvas-budget-calculator/hero.png",
+      "bytes": 84249,
+      "sha256": "966e08311710036d40e956a262520a2c622778cff7e024de0278bf76f8e5c8ab"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-gems-support-playbook/diagram-1-mobile.png",
+      "bytes": 22617,
+      "sha256": "2f57f8ef4b8374001ad19938a020417fd73c6bf5ca783bd249f8c5499b1fe572"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-gems-support-playbook/diagram-1.png",
+      "bytes": 113823,
+      "sha256": "4b7d2f30cf9edeae45536eefa73b48bae2798a12d2c8cd2abcd9ba651bcc7b55"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-gems-support-playbook/hero-mobile.png",
+      "bytes": 16246,
+      "sha256": "8dce0e9ec7d658d692d27a0611cfd17bd363f4591cf91fa9ad5085818c12e55c"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-gems-support-playbook/hero.png",
+      "bytes": 79010,
+      "sha256": "2dd2658bf9b20d97c9b4241c2371d3431157a14388ef134418d5eb3b8f6aae37"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-mobile-field-notes/diagram-1-mobile.png",
+      "bytes": 25989,
+      "sha256": "a339658bde00dc8705fd39e77b8baee36be11d21022c825737a131bad0a2851f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-mobile-field-notes/diagram-1.png",
+      "bytes": 130623,
+      "sha256": "f153a0b86c66d6fa45e0beb45ff4d6675ded327dace7e0e214ebe3c55afa9516"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-mobile-field-notes/hero-mobile.png",
+      "bytes": 16337,
+      "sha256": "aa5e4fca86bb80748c8cb349582d1a8b22b790df30628af42b391e228d6a92a3"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-mobile-field-notes/hero.png",
+      "bytes": 80616,
+      "sha256": "b688c341abb62ea7a1fcbcd904cef2dea250e66282bb0e61a86bf1f04399881b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-prompt-evaluation-workshop/diagram-1-mobile.png",
+      "bytes": 23333,
+      "sha256": "ea8fcd40f7467b01c12c05118ac06f1366fc4526e1c03d60ddf25656b0542f3f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-prompt-evaluation-workshop/diagram-1.png",
+      "bytes": 119345,
+      "sha256": "b2bf0135d376f31134d1beb674c78804b147c536a74f2420c7a58ed13616d5ed"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-prompt-evaluation-workshop/hero-mobile.png",
+      "bytes": 16410,
+      "sha256": "4fe548f86d0c65bf7b5ed6664442e7e4cfba1f540f741e0b7a35e9d7d7bbce18"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-prompt-evaluation-workshop/hero.png",
+      "bytes": 79262,
+      "sha256": "ce4a590b320801a7e11199acaf3c93b8b0bc3a39faca305a1f24dce67e568349"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-spark-weekly-digest/diagram-1-mobile.png",
+      "bytes": 25612,
+      "sha256": "eed0632431bc138508ffa1200c3ac902c005479a8e5761dc17bf8cf81b5872b1"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-spark-weekly-digest/diagram-1.png",
+      "bytes": 117327,
+      "sha256": "6f40d0c3bb5abb398fbbb9c34ee0946c98c8cbbe91539092c0b46885c917e629"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-spark-weekly-digest/hero-mobile.png",
+      "bytes": 17891,
+      "sha256": "f6e2f7409b5dac9ba040737870ecbdfbd877b64686c337681d89bc1cbd04c131"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-spark-weekly-digest/hero.png",
+      "bytes": 89275,
+      "sha256": "3c41db4f684aaf3635df56a9dab9a9af09140d5a828206625688bcb3b2f70452"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-workspace-meeting-handoff/diagram-1-mobile.png",
+      "bytes": 23895,
+      "sha256": "c9d599dd474e96f6e2361771bcaeee16522cdd25f2d2d84835732243546e41a4"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-workspace-meeting-handoff/diagram-1.png",
+      "bytes": 119721,
+      "sha256": "192112b9d987abd26cbbf17a727425bd3b02b26cec88222b7d62cbae45ada638"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-workspace-meeting-handoff/hero-mobile.png",
+      "bytes": 16931,
+      "sha256": "e7e3681fa6ad9929afdae2a8d644d063877ab1c5c257fc5ff43a703e52e66722"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/renders/gemini-workspace-meeting-handoff/hero.png",
+      "bytes": 84552,
+      "sha256": "442b1acb2c672fee7b8cb15079d90d917c4c502cd55ce236198eb2777dd1f8be"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/test_materials.py",
+      "bytes": 8509,
+      "sha256": "75344e929d80649edd554fced49a227522ad89ad44c3b2fc5444f7dbf3a09df2"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/visual-review.json",
+      "bytes": 9340,
+      "sha256": "198003a2aa6b480bbaaa4afafb4a4dc9f84c585645c47cc1bed2df279a3fc6c7"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verify-budget.mjs",
+      "bytes": 4063,
+      "sha256": "6b57784b55fd0cfbb5f1b286801bc920b072facc7b138827aadd4d0a2710097d"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verify-delivery.py",
+      "bytes": 2148,
+      "sha256": "2b01a766683174a752d01177234e50f7f0a8259ea570bb88ebf9bdd0b0ca6522"
+    }
+  ]
+}

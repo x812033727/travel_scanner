@@ -1,0 +1,460 @@
+{
+  "slug": "ai-regulation-eu-act-taiwan",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "歐盟 AI 法案與台灣 AI 基本法：對使用者的影響",
+      "description": "歐盟 AI 法案（Regulation (EU) 2024/1689）2024 年 8 月 1 日生效、2026 年 8 月 2 日起大部分條文適用，第 50 條要求聊天機器人先告知、生成內容帶機器可讀標記、深偽要揭露；台灣的人工智慧基本法民國 115 年 1 月 14 日公布全文 20 條，原則寫給政府。這篇照條文原文比對兩邊的風險分級、標示義務與申訴管道，也說明歐盟規定何時不適用台灣。",
+      "hero": {
+        "src": "/guides/ai-regulation-eu-act-taiwan/hero.jpg",
+        "alt": "四層階梯狀色塊由深到淺排成風險分級，右邊是一組同心圓與虛線方框，兩邊以一條線相連",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "歐盟 AI 法案與台灣的人工智慧基本法都已生效，但管的東西不一樣。歐盟那部帶罰則，把 AI 系統分成禁止、高風險、須透明、其他四層，直接對開發者與使用單位設義務；台灣那部是基本法，全文二十條，多數條文的主詞是「政府」，寫政策方向與主管機關該做什麼，沒有對一般使用者開罰的條文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇只照兩邊當天查到的原文寫：歐盟的部分引 Regulation (EU) 2024/1689 的條號與英文原文，台灣的部分逐字引全國法規資料庫的中文條文，再放進同一張表比對，最後說明歐盟的規定什麼時候不會碰到在台灣的你。條文隨時可能修正，本篇只整理原文、不下法律結論，個案請諮詢專業。"
+        },
+        {
+          "type": "heading",
+          "text": "歐盟 AI 法案：全名、日期與現在的進度",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "歐盟執委會的 AI 法案頁面把它寫成 Regulation (EU) 2024/1689，是全世界第一部全面性的 AI 法律框架。同一頁的「Application timeline」寫：2024 年 8 月 1 日生效、2026 年 8 月 2 日開始適用，中間有幾個例外分批上路。法規本文的時間在第 113 條。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Regulation (EU) 2024/1689 第 113 條：生效與適用（英文原文）",
+          "code": "Article 113\nEntry into force and application\n\nThis Regulation shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union.\n\nIt shall apply from 2 August 2026.\n\nHowever:\n\n(a) Chapters I and II shall apply from 2 February 2025;\n\n(b) Chapter III Section 4, Chapter V, Chapter VII and Chapter XII and Article 78 shall apply from 2 August 2025, with the exception of Article 101;\n\n(c) Article 6(1) and the corresponding obligations in this Regulation shall apply from 2 August 2027."
+        },
+        {
+          "type": "paragraph",
+          "text": "這是 2024 年公布時的原文。歐盟後來通過一部簡化用的修正法規，執委會頁面叫它「AI Omnibus」：2025 年 11 月 19 日提出、2026 年 5 月 7 日政治協議、2026 年 7 月 27 日生效，把高風險條文的適用日往後延。修正後的日期以歐盟官方 AI Act Single Information Platform 的時程表為準，它註明已把 Digital Omnibus on AI 算進去。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "2024 年 8 月 1 日：生效。",
+            "2025 年 2 月 2 日：一般規定（定義與 AI 素養）與禁止條款適用。",
+            "2025 年 8 月 2 日：通用 AI 模型規則適用，會員國要指定主管機關並訂好罰則。",
+            "2026 年 8 月 2 日：大部分條文適用，第 50 條透明義務上路，執法同時開始。",
+            "2026 年 12 月 2 日：新增的禁止條款（未經同意的性深偽與兒少性虐待素材）適用，也是第 50 條第 2 項給舊系統的過渡期終點。",
+            "2027 年 8 月 2 日：各會員國至少要有一個 AI 監理沙盒。",
+            "2027 年 12 月 2 日：附件三所列高風險應用的規則適用。",
+            "2028 年 8 月 2 日：附件一所列產品內建的高風險 AI 規則適用。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "四層風險：你平常用的 AI 落在哪一層",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "執委會的 AI 法案頁面寫「The AI Act defines 4 levels of risk for AI systems」，由上往下是不可接受風險、高風險、透明度風險、最小或無風險。一般人每天碰到的聊天機器人、生圖工具、翻譯與修圖，官方頁面歸在最後兩層。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最上面一層是第 5 條的禁止實務。執委會頁面列出九項，包括操縱與欺騙、利用弱勢、社會評分、只靠剖析預測個人犯罪風險、無差別抓取影像建人臉辨識庫、職場與校園情緒辨識、以生物特徵推論受保護特徵、執法用即時遠端生物辨識，以及第九項的未經同意性內容與兒少性虐待素材生成。前八項 2025 年 2 月生效，第九項 2026 年 12 月生效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二層是第 6 條的高風險，分兩條路：一條是 AI 當作受歐盟產品法規管制的產品或其安全元件、且該產品要做第三方符合性評鑑，另一條是落在附件三列舉的用途，例如教育、就業、信用評分、移民與司法。這層的義務給開發與導入單位，不是給個人使用者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三層叫透明度風險，也就是第 50 條，是使用者最有感的一層。最下面一層執委會頁面寫「The AI Act does not introduce rules for AI that is deemed minimal or no risk」，舉 AI 電玩與垃圾信過濾為例，並寫明歐盟境內絕大多數 AI 系統都在這層。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-regulation-eu-act-taiwan/diagram-1.svg",
+          "alt": "左邊是歐盟 AI 法案四層風險與各層適用日期，右邊是台灣人工智慧基本法的條文結構與現況對照。",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊由上往下看歐盟的四層風險與各自上路的日期，右邊看同一件事在台灣落在哪一條，中間的虛線把對得起來的兩格連在一起。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "第 50 條：聊天機器人、機器可讀標記與深偽揭露",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "歐盟執委會 2026 年 7 月 31 日的新聞稿寫，從 2026 年 8 月 2 日起，AI 辦公室與各國主管機關開始執行 AI 法案，同一天新的透明規則適用。條文是第 50 條，分給提供者（providers）與使用單位（deployers）兩邊。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Regulation (EU) 2024/1689 第 50 條第 1、2、4、5 項（英文原文，節錄各項首句）",
+          "code": "50(1)  Providers shall ensure that AI systems intended to interact directly with natural persons are\ndesigned and developed in such a way that the natural persons concerned are informed that they are\ninteracting with an AI system, unless this is obvious from the point of view of a natural person who is\nreasonably well-informed, observant and circumspect, taking into account the circumstances and the\ncontext of use.\n\n50(2)  Providers of AI systems, including general-purpose AI systems, generating synthetic audio,\nimage, video or text content, shall ensure that the outputs of the AI system are marked in a\nmachine-readable format and detectable as artificially generated or manipulated.\n\n50(4)  Deployers of an AI system that generates or manipulates image, audio or video content\nconstituting a deep fake, shall disclose that the content has been artificially generated or manipulated.\n\n50(5)  The information referred to in paragraphs 1 to 4 shall be provided to the natural persons\nconcerned in a clear and distinguishable manner at the latest at the time of the first interaction or\nexposure. The information shall conform to the applicable accessibility requirements."
+        },
+        {
+          "type": "paragraph",
+          "text": "白話說，第 1 項是「你在跟 AI 說話要讓你知道」，除非對一個資訊充足、留心又謹慎的人本來就很明顯；第 2 項是生成聲音、圖片、影片、文字的系統，輸出要帶機器可讀標記；第 4 項是深偽要揭露；第 5 項規定這些資訊最晚要在第一次互動或接觸內容時以清楚可辨的方式給你，還要符合無障礙要求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第 50 條也寫了不適用的情況。第 2 項的標記義務，在系統只是輔助標準編輯、或沒有實質改變輸入資料與其語意時不適用；第 4 項的深偽揭露，內容明顯屬於藝術、創作、諷刺或虛構作品時，義務縮小成用不妨礙作品呈現的方式說明有這類內容存在。第 4 項後段另規定，為告知公眾公共利益事項而發布的 AI 生成文字要揭露，但經人工審查或編輯把關、有人負編輯責任時不適用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "怎麼做算合規，執委會給了兩份東西：2026 年 7 月 20 日發布的第 50 條透明義務指引，以及自願性的「Code of Practice on Transparency of AI-generated Content」。官方頁面寫守則分兩節，第一節給提供者講標記與偵測，第二節給使用單位講深偽與生成文字的標示，歐盟還做了一組標示圖示；到 2026 年 7 月底約有 190 個組織簽署。同一頁寫明簽守則是自願的，但第 50 條本身是法律義務，不簽的得自己證明方式同樣適當。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AI 內容該不該標、各平台自己的規則怎麼寫，站上另有一篇整理過 YouTube、Meta 與台灣的做法，可以接著看 "
+            },
+            {
+              "type": "link",
+              "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+              "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+            },
+            {
+              "type": "text",
+              "text": "；深偽被拿來詐騙時的辨識與通報，則看 "
+            },
+            {
+              "type": "link",
+              "text": "AI 詐騙與 Deepfake：台灣案例與防範",
+              "url": "https://mokaair.com/zh-TW/life/ai-scams-deepfake-taiwan"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "出了事找誰：申訴、要求說明與罰則",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "歐盟 AI 法案第九章第四節叫 Remedies，兩條跟個人有關：第 85 條是向市場監督機關申訴的權利，第 86 條是對個別決策要求說明的權利。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Regulation (EU) 2024/1689 第 85 條與第 86 條第 1 項（英文原文）",
+          "code": "Article 85\nRight to lodge a complaint with a market surveillance authority\n\nWithout prejudice to other administrative or judicial remedies, any natural or legal person having\ngrounds to consider that there has been an infringement of the provisions of this Regulation may\nsubmit complaints to the relevant market surveillance authority.\n\nArticle 86\nRight to explanation of individual decision-making\n\n1.  Any affected person subject to a decision which is taken by the deployer on the basis of the output\nfrom a high-risk AI system listed in Annex III, with the exception of systems listed under point 2\nthereof, and which produces legal effects or similarly significantly affects that person in a way that\nthey consider to have an adverse impact on their health, safety or fundamental rights shall have the\nright to obtain from the deployer clear and meaningful explanations of the role of the AI system in the\ndecision-making procedure and the main elements of the decision taken."
+        },
+        {
+          "type": "paragraph",
+          "text": "申訴怎麼送，執委會的 AI Act complaints tool 頁面寫得很清楚：自然人與法人都可以就提供者或使用單位涉嫌違反 AI 法案向 AI 辦公室申訴，但只收落在第 85 條範圍、且屬 AI 辦公室權限的案件，不受理其他歐盟法、各國國內法與第 53 至 55 條的情況。表單要填發生所在國與詳細描述，可用任一種歐盟官方語言；同一頁寫明「This is not an anonymous reporting channel」，要留身分與聯絡方式，送出後會拿到案件編號。匿名管道是另一個 AI Act Whistleblower Tool。"
+        },
+        {
+          "type": "paragraph",
+          "text": "罰則在第 99 條：由會員國訂罰則，要有效且具嚇阻力，條文給了上限。違反第 5 條禁止實務，行政罰鍰最高 3,500 萬歐元，企業則為前一會計年度全球年營業額 7%，兩者取高；違反含第 50 條在內的一組義務最高 1,500 萬歐元或 3%；提供不正確、不完整或誤導資訊最高 750 萬歐元或 1%。這些罰的是提供者與使用單位，不是個人使用者。"
+        },
+        {
+          "type": "heading",
+          "text": "台灣：人工智慧基本法寫了什麼、沒寫什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 15 日在全國法規資料庫查，人工智慧基本法的法規編號是 H0160093，公布日期民國 115 年 1 月 14 日，法規類別是行政、國家科學及技術委員會、科學技術目。沿革頁只有一筆：中華民國一百十五年一月十四日總統華總一義字第 11500001671 號令制定公布全文 20 條，並自公布之日起施行，查證當天沒有修正紀錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "和使用者最有關的幾條逐字抄在下面，看的時候請留意主詞：第 4 條開頭是「政府推動人工智慧之研發與應用」，七項原則對政府講；第 5 條第 2 項的標示要求，前提是先被中央目的事業主管機關會商數位發展部認定為高風險應用。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "人工智慧基本法第 4 條第 5 款、第 5 條第 2 項、第 16 條第 1 項、第 20 條（全國法規資料庫原文）",
+          "code": "第 4 條（節錄）\n政府推動人工智慧之研發與應用，應在兼顧社會公益、數位平權、促進創新研發與強化國家競爭力之前提下，\n發展良善治理與基礎建設，並遵循下列原則：\n……\n五、透明與可解釋：人工智慧之產出應做適當資訊揭露或標記，以利評估可能風險，並瞭解對相關權益之影響，\n進而提升人工智慧可信任度。\n\n第 5 條第 2 項\n政府應以兒少最佳利益為原則，人工智慧產品或系統經中央目的事業主管機關會商數位發展部認定為高風險應用者，\n應明確標示注意事項或警語。\n\n第 16 條第 1 項\n數位發展部應參考國際標準或規範，推動與國際介接之人工智慧風險分類框架，並應協助各目的事業主管機關訂定\n以風險為基礎之管理規範。\n\n第 20 條\n本法自公布之日起施行。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外三條也值得記條號。第 3 條給了定義：「具自主運行能力之系統，該系統透過輸入或感測，經由機器學習及演算法，可為明確或隱含之目標實現預測、內容、建議或決策等影響實體或虛擬環境之產出」。第 17 條寫政府應就高風險應用明確責任歸屬及歸責條件，並建立救濟、補償或保險機制。第 18 條寫政府應自本法施行後二年內完成相關法規的制訂、修正或廢止。"
+        },
+        {
+          "type": "paragraph",
+          "text": "風險分級走到哪，數位發展部的兩個官方頁面寫得最直接。AI 基本法頁面（更新日期 2026 年 3 月 23 日）列出七大原則與後續工作；AI 風險分類框架頁面（更新 2026 年 7 月 8 日）寫這套框架的定位是「政府跨部會溝通的共同語言」，操作流程分成盤點應用情境、識別風險、評估風險、應對風險四步，並寫明「最終的治理執行權力與責任仍由各目的事業主管機關負責」，要由各機關轉成具法律拘束力的領域管理規範。查證當天，台灣的風險分級是給機關用的工具，不是像歐盟那樣寫進法律、直接對業者生義務的分層。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "歐盟 AI 法案（Regulation (EU) 2024/1689）",
+            "台灣（人工智慧基本法等）"
+          ],
+          "rows": [
+            [
+              "法規性質與生效",
+              "規則（Regulation），2024 年 8 月 1 日生效，2026 年 8 月 2 日起大部分條文適用",
+              "基本法，民國 115 年 1 月 14 日公布，全文 20 條，第 20 條規定自公布之日起施行"
+            ],
+            [
+              "風險分級",
+              "法律本身分四層：禁止（第 5 條）、高風險（第 6 條）、透明度風險（第 50 條）、最小或無風險",
+              "第 16 條授權數位發展部推動風險分類框架；數發部頁面定位為跨部會共同語言，須由各目的事業主管機關轉為可執行規範"
+            ],
+            [
+              "聊天機器人要告知你在跟 AI 對話",
+              "第 50 條第 1 項，2026 年 8 月 2 日起適用，除非對一般人而言本來就明顯",
+              "查證日 2026 年 9 月 15 日，全國法規資料庫未查到相同的一般性義務條文"
+            ],
+            [
+              "AI 生成內容的機器可讀標記",
+              "第 50 條第 2 項，提供者的義務；輔助標準編輯或未實質改變輸入者除外",
+              "第 4 條第 5 款寫「人工智慧之產出應做適當資訊揭露或標記」，該條主詞為政府推動 AI 研發與應用之原則"
+            ],
+            [
+              "深偽的標示",
+              "第 50 條第 4 項，使用單位須揭露；藝術、創作、諷刺、虛構作品義務減輕",
+              "第 5 條第 2 項限於經中央目的事業主管機關會商數位發展部認定為高風險之產品或系統，標示注意事項或警語"
+            ],
+            [
+              "個人申訴管道",
+              "第 85 條；執委會設 AI Act complaints tool，非匿名管道，需留身分與聯絡方式，會給案件編號",
+              "查證日 2026 年 9 月 15 日，基本法全文未設個人申訴專條；第 17 條寫政府應建立高風險應用之救濟、補償或保險機制"
+            ],
+            [
+              "對個別決策要求說明",
+              "第 86 條第 1 項，限附件三高風險系統（排除其中第 2 點）且產生法律效果或類似重大影響者",
+              "查證日 2026 年 9 月 15 日，個人資料保護法全文未見自動化決策說明權專條，第 3 條列的是查詢、複製本、補充更正、停止蒐集處理利用、刪除五項權利"
+            ],
+            [
+              "罰則上限",
+              "第 99 條：違反第 5 條最高 3,500 萬歐元或全球年營業額 7%；含第 50 條在內最高 1,500 萬歐元或 3%",
+              "基本法無罰則條文；廣告不實與薦證責任回到公平交易法第 21 條等既有法律"
+            ]
+          ],
+          "caption": "歐盟 AI 法案與台灣現行規定對照，依 Regulation (EU) 2024/1689 條號、歐盟執委會官方頁面與全國法規資料庫 2026 年 9 月 15 日查得的內容整理。"
+        },
+        {
+          "type": "heading",
+          "text": "歐盟的規定會不會管到在台灣的你",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "答案寫在第 2 條的適用範圍，關鍵不是你用哪家工具，而是提供者把系統投放到哪個市場、使用單位設在哪裡、輸出在哪裡被使用。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Regulation (EU) 2024/1689 第 2 條第 1 項（英文原文，節錄）",
+          "code": "1.  This Regulation applies to:\n\n(a) providers placing on the market or putting into service AI systems or placing on the market\ngeneral-purpose AI models in the Union, irrespective of whether those providers are established or\nlocated within the Union or in a third country;\n\n(b) deployers of AI systems that have their place of establishment or are located within the Union;\n\n(c) providers and deployers of AI systems that have their place of establishment or are located in a\nthird country, where the output produced by the AI system is used in the Union;\n\n(g) affected persons that are located in the Union."
+        },
+        {
+          "type": "paragraph",
+          "text": "照這段文字，一個人在台灣、用沒有投放到歐盟市場的服務、輸出也只在台灣使用，就不落在歐盟 AI 法案的適用範圍裡：歐盟的規定不適用台灣，台灣的義務要回頭看台灣自己的法律。反過來，若你是歐盟境內的公司、或做的東西輸出到歐盟被使用，要另外判斷，這種情況請諮詢專業。"
+        },
+        {
+          "type": "paragraph",
+          "text": "至於手上的跨國 AI 服務會不會為了在歐盟合規，就把標記與揭露做成全球一致的預設，各家做法不同也隨時在改，以官網當天的說明為準，不要用歐盟條文推論它在台灣的行為。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在台灣要找規定，常用到的是既有法律：個人資料保護法第 3 條列出當事人五項權利（查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集處理或利用、請求刪除），且不得預先拋棄或以特約限制；廣告與代言看公平交易法第 21 條第 5 項的薦證者連帶損害賠償責任。著作權那一塊站上另有專篇："
+            },
+            {
+              "type": "link",
+              "text": "AI 與著作權：台灣法規與判決整理",
+              "url": "https://mokaair.com/zh-TW/life/ai-and-copyright-law-taiwan"
+            },
+            {
+              "type": "text",
+              "text": "，圖片商用則看 "
+            },
+            {
+              "type": "link",
+              "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+              "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "公司內部要訂規範時，這個差別會直接影響政策怎麼寫：歐盟有可對照的義務清單，台灣要看各目的事業主管機關後續發的規範。檢查清單看 "
+            },
+            {
+              "type": "link",
+              "text": "公司裡用 AI 的規範：資料外流與合規",
+              "url": "https://mokaair.com/zh-TW/life/ai-at-work-policy-checklist"
+            },
+            {
+              "type": "text",
+              "text": "；資料送境外的取捨看 "
+            },
+            {
+              "type": "link",
+              "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+              "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+            },
+            {
+              "type": "text",
+              "text": "；模型開源或閉源會影響誰是條文裡的「提供者」，可以看 "
+            },
+            {
+              "type": "link",
+              "text": "開源 vs 閉源模型：對使用者的差別",
+              "url": "https://mokaair.com/zh-TW/life/ai-open-vs-closed-models"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "別把歐盟的條文當成台灣的規定",
+          "text": "網路上很多「AI 生成內容一定要標示」的說法，來源是歐盟 AI 法案第 50 條，那是歐盟的法律義務，適用範圍寫在第 2 條，不及於在台灣、輸出也不在歐盟使用的情況。台灣查證當天可引的是人工智慧基本法的原則條文、第 5 條第 2 項限於被認定為高風險應用的標示要求，以及個資法、公平交易法這些既有法律。看到有人拿歐盟條號說「台灣規定要這樣」，先回查全國法規資料庫原文。"
+        },
+        {
+          "type": "link",
+          "text": "安全防護機制（Guardrails）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails"
+        }
+      ],
+      "sources": [
+        {
+          "title": "歐盟執委會 Shaping Europe's digital future：AI Act（四層風險、九項禁止實務、適用時程與 AI Omnibus；頁面標 Last update 3 August 2026）",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Act Service Desk：Timeline for the Implementation of the EU AI Act（官方時程表，註明已納入 Digital Omnibus on AI 的修正）",
+          "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Act Explorer：Article 2 Scope（適用範圍，含第三國提供者與輸出在歐盟使用的情形）",
+          "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-2",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Act Explorer：Article 5 Prohibited AI practices（禁止實務原文）",
+          "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-5",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Act Explorer：Article 6 Classification rules for high-risk AI systems（高風險分類原文）",
+          "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-6",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Act Explorer：Article 50 Transparency obligations（第 1、2、4、5 項原文與例外）",
+          "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Act Explorer：Article 85 Right to lodge a complaint with a market surveillance authority（原文）",
+          "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-85",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Act Explorer：Article 86 Right to explanation of individual decision-making（原文）",
+          "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-86",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Act Explorer：Article 99 Penalties（3,500 萬歐元／7%、1,500 萬歐元／3%、750 萬歐元／1% 上限）",
+          "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-99",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Act Explorer：Article 113 Entry into force and application（2024 年公布時的原文）",
+          "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-113",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "歐盟執委會：Guidelines on transparency obligations for providers and deployers of certain AI systems（第 50 條指引，頁面標 Last update 6 August 2026）",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/guidelines-ai-transparency-obligations",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "歐盟執委會：Code of Practice on Transparency of AI-generated Content（自願性守則兩節、標示圖示、2026 年 7 月底約 190 個組織簽署）",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "歐盟執委會新聞稿（2026 年 7 月 31 日）：Commission starts enforcing AI Act rules and new transparency requirements on 2 August",
+          "url": "https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "歐盟執委會：AI Act complaints tool（申訴受理範圍、非匿名管道、案件編號）",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-act-complaints-tool",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "全國法規資料庫：人工智慧基本法（pcode H0160093，公布日期民國 115 年 1 月 14 日，全文 20 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0160093",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "全國法規資料庫：人工智慧基本法沿革（總統華總一義字第 11500001671 號令制定公布全文 20 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawHistory.aspx?pcode=H0160093",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "數位發展部：AI 基本法（七大原則與後續推動方向，頁面標更新日期 2026-03-23）",
+          "url": "https://moda.gov.tw/major-policies/ai/governance/19248",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "數位發展部：AI 風險分類框架（跨部會共同語言定位、四項操作流程、權責由各目的事業主管機關負責，頁面標更新日期 2026-07-08）",
+          "url": "https://moda.gov.tw/major-policies/ai/governance/19244",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "全國法規資料庫：個人資料保護法（修正日期民國 114 年 11 月 11 日，第 3 條當事人五項權利）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0050021",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "全國法規資料庫：公平交易法（修正日期民國 106 年 6 月 14 日，第 21 條廣告薦證者連帶損害賠償責任）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=J0150002",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

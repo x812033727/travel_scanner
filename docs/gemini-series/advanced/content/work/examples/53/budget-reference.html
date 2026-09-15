@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>海風活動預算｜教學參考實作</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f5f1e9;color:#263b38;font:17px/1.6 system-ui,"Microsoft JhengHei",sans-serif}
+    main{max-width:1040px;margin:auto;padding:48px 24px}h1{font-size:clamp(30px,5vw,48px);line-height:1.25;margin:12px 0 18px;letter-spacing:-.04em}
+    .tag{display:inline-block;padding:4px 12px;border:1px solid #b6c9bd;border-radius:24px;font-size:14px;letter-spacing:.1em}.intro{max-width:660px;color:#536862;margin-bottom:32px}
+    .layout{display:grid;grid-template-columns:1fr 1fr;gap:28px}form,.result{background:#fff;border:1px solid #d9dfd5;border-radius:18px;padding:28px;min-width:0}
+    label{display:block;font-weight:650;margin:0 0 7px}.field{margin-bottom:20px}input{width:100%;min-width:0;border:1px solid #93aaa1;border-radius:8px;padding:12px;font:inherit;color:inherit;background:#fcfdfb}
+    input:focus,button:focus-visible{outline:3px solid #e6bb6b;outline-offset:3px}.hint{font-size:13px;color:#536862;display:block;margin-top:5px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}button{font:inherit;border-radius:8px;padding:12px 18px;border:1px solid #236254;cursor:pointer;background:#236254;color:#fff;min-height:48px}
+    button[type=reset]{background:#fff;color:#236254}#error{color:#913722;min-height:26px;font-size:15px;margin:18px 0 0;overflow-wrap:anywhere}.result{background:#e5eee5}
+    h2{font-size:21px;margin:0 0 20px}.total{font-size:clamp(26px,4vw,42px);line-height:1.3;font-weight:750;overflow-wrap:anywhere;margin:0 0 24px}
+    dl{margin:0}dl div{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid #bbcebf;flex-wrap:wrap}dt,dd{margin:0}dd{font-weight:650;overflow-wrap:anywhere}
+    .note{font-size:14px;color:#536862;margin-top:24px}.credit{font-size:13px;border-top:1px solid #c9d5cb;padding-top:18px;margin-top:28px;color:#536862}
+    [hidden]{display:none!important}@media(max-width:660px){main{padding:28px 18px}.layout{grid-template-columns:1fr;gap:18px}form,.result{padding:22px}.intro{margin-bottom:24px}}
+  </style>
+</head>
+<body><main>
+  <span class="tag">GEMINI 教學 · 53</span>
+  <h1>先算清楚，<br>再開始一場活動。</h1>
+  <p class="intro">調整人數、單價與場地費，確認基本費用和備用金。此頁只在本機計算，輸入不會傳送或保存。</p>
+  <div class="layout">
+    <form id="budget" novalidate>
+      <div class="field"><label for="people">參加人數</label><input id="people" name="people" inputmode="numeric" value="20" aria-describedby="people-hint" autocomplete="off"><span class="hint" id="people-hint">1～10,000 人，只接受整數</span></div>
+      <div class="field"><label for="price">每人單價（元）</label><input id="price" name="price" inputmode="decimal" value="350" aria-describedby="price-hint" autocomplete="off"><span class="hint" id="price-hint">0～10,000,000 元，最多兩位小數</span></div>
+      <div class="field"><label for="venue">場地費（元）</label><input id="venue" name="venue" inputmode="decimal" value="2000" aria-describedby="venue-hint" autocomplete="off"><span class="hint" id="venue-hint">0～10,000,000 元，最多兩位小數</span></div>
+      <div class="field"><label for="reserve">備用金比率（%）</label><input id="reserve" name="reserve" inputmode="decimal" value="10" aria-describedby="reserve-hint" autocomplete="off"><span class="hint" id="reserve-hint">0～100%，最多兩位小數</span></div>
+      <div class="actions"><button type="submit">計算預算</button><button type="reset">重設</button></div>
+      <p id="error" role="alert"></p>
+    </form>
+    <section class="result" aria-labelledby="result-heading" aria-live="polite">
+      <h2 id="result-heading">這次活動的預算</h2>
+      <p id="empty">填好四個欄位，按「計算預算」。</p>
+      <div id="numbers" hidden><p class="total" id="total"></p><dl>
+        <div><dt>基本費用</dt><dd id="base"></dd></div><div><dt>備用金</dt><dd id="extra"></dd></div><div><dt>平均每人</dt><dd id="average"></dd></div>
+      </dl></div>
+      <p class="note">備用金先四捨五入至分，再加入總額。平均每人僅供預算參考，乘回人數可能有幾分差額。</p>
+    </section>
+  </div>
+  <p class="credit">Mokaair 作者參考實作 · MIT · 不是 Gemini Canvas 實測生成結果。配合三組人工算好的案例使用。</p>
+</main>
+<script>
+  const form=document.querySelector('#budget');
+  const byId=id=>document.getElementById(id);
+  function decimal(raw,label,max){
+    const value=raw.trim();
+    if(!/^(?:0|[1-9][0-9]{0,7})(?:\.[0-9]{1,2})?$/.test(value))throw new Error(label+'請填非負數，最多兩位小數；不可留白。');
+    const [whole,fraction='']=value.split('.');
+    const cents=BigInt(whole)*100n+BigInt(fraction.padEnd(2,'0'));
+    if(cents>max*100n)throw new Error(label+'超出允許範圍。');
+    return cents;
+  }
+  function calculate(values){
+    const raw=values.people.trim();
+    if(!/^[1-9][0-9]{0,4}$/.test(raw)||BigInt(raw)>10000n)throw new Error('人數請填 1～10,000 的整數，不可留白。');
+    const people=BigInt(raw),price=decimal(values.price,'每人單價',10000000n),venue=decimal(values.venue,'場地費',10000000n),percent=decimal(values.reserve,'備用金比率',100n);
+    const base=people*price+venue;
+    const extra=(base*percent+5000n)/10000n;
+    const total=base+extra;
+    const average=(total*2n+people)/(people*2n);
+    return {base,extra,total,average};
+  }
+  function money(cents){return 'NT$ '+new Intl.NumberFormat('zh-TW').format(cents/100n)+'.'+String(cents%100n).padStart(2,'0');}
+  function clear(message='填好四個欄位，按「計算預算」。'){
+    byId('numbers').hidden=true;byId('empty').hidden=false;byId('empty').textContent=message;byId('error').textContent='';
+  }
+  form.addEventListener('input',()=>clear('欄位已修改，請重新計算。'));
+  form.addEventListener('reset',()=>clear());
+  form.addEventListener('submit',event=>{
+    event.preventDefault();clear();
+    try{
+      const values=Object.fromEntries(new FormData(form).entries());
+      const answer=calculate(values);
+      for(const key of ['base','extra','total','average'])byId(key).textContent=money(answer[key]);
+      byId('numbers').hidden=false;byId('empty').hidden=true;
+    }catch(error){byId('error').textContent=error.message;}
+  });
+</script>
+</body></html>

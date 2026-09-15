@@ -6,7 +6,7 @@ type Params = { locale: Locale; slug: string };
 
 /** A lifestyle article. The kind is fixed by the route, so no `[kind]` segment to validate. */
 export async function generateMetadata(
-  { params }: { params: Promise<Params> }, parent?: ResolvingMetadata,
+  { params }: { params: Promise<Params> }, parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale, slug } = await params;
   return guideArticleMetadata({ locale, kind: "life", slug }, parent);

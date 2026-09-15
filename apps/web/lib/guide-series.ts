@@ -3,7 +3,7 @@ import type { GuideKind } from "./guides";
 export type ArticleReference = { kind: GuideKind; slug: string; title: string };
 export type SeriesEntry = ArticleReference & {
   number: number; group: string; level: string; platforms: string[]; aliases: string[];
-  description: string; minutes: number;
+  description: string; minutes: number; operation_minutes?: number | null;
 };
 export type GuideSeries = {
   slug: string; locale: string; hub: ArticleReference;
@@ -26,7 +26,8 @@ export function isArticleReference(v: unknown): v is ArticleReference {
 export function isSeriesEntry(v: unknown): v is SeriesEntry {
   return object(v) && Number.isInteger(v.number) && Number(v.number) > 0
     && typeof v.group === "string" && typeof v.level === "string" && strings(v.platforms)
-    && strings(v.aliases) && typeof v.description === "string" && Number.isInteger(v.minutes) && Number(v.minutes) > 0 && isArticleReference(v);
+    && strings(v.aliases) && typeof v.description === "string" && Number.isInteger(v.minutes) && Number(v.minutes) > 0
+    && (v.operation_minutes == null || (Number.isInteger(v.operation_minutes) && Number(v.operation_minutes) > 0)) && isArticleReference(v);
 }
 export function isGuideSeries(v: unknown): v is GuideSeries {
   return object(v) && typeof v.slug === "string" && slugPattern.test(v.slug) && typeof v.locale === "string"

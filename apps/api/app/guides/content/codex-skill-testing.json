@@ -1,0 +1,1562 @@
+{
+  "slug": "codex-skill-testing",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 139,
+  "locales": {
+    "zh-TW": {
+      "title": "Skill 觸發與結果測試",
+      "description": "分開驗證格式、選用條件及實際結果，用應觸發與不應觸發的案例修正技能描述。",
+      "hero": {
+        "src": "/guides/codex-skill-testing/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "驗證 todo-summary 的程式是否正確，以及 Codex 是否在合適的需求中照技能流程操作。閱讀約 15 分鐘、練習約 30 分鐘；沿用技能資源分拆的 codex-skill-lab 和完整四份資源，需要 Node.js 22 以上相容版本、編輯器及已登入的 Codex。先手動跑一次統計器，確認原始三筆資料得到 3／1／2。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教學與資源: "
+            },
+            {
+              "type": "article",
+              "text": "技能資源分拆",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "「測試全過」在這裡有兩種不同範圍：下面的八項自動測試只證明檢查程式對指定輸入的結果；技能行為驗收還需要觀察選擇、讀檔、工具紀錄及回覆。兩者分開記錄，才不會把 Node.js 成功當成 Codex 已成功觸發技能。測試也不要求特定模型名稱，請記錄你當時實際使用的入口與可用選項。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：列出正確結果與失敗條件"
+        },
+        {
+          "type": "paragraph",
+          "text": "先看這張表，再寫測試。正常案例保留兩筆同名 Read；空陣列是有效輸入，不應因為沒有任務就報錯。反過來，重複 ID、錯誤型別或壞 JSON 必須明確失敗，不能先刪掉有問題的列，再回覆看似正常的總數。錯誤輸入不應在標準輸出混入半份成功 JSON，否則後續腳本很容易誤讀。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "案例",
+            "程式退出碼",
+            "可接受結果"
+          ],
+          "rows": [
+            [
+              "三筆任務、兩筆同名",
+              "0",
+              "total 3、active 1、completed 2"
+            ],
+            [
+              "空陣列",
+              "0",
+              "三個數量均為 0"
+            ],
+            [
+              "重複 ID",
+              "1",
+              "Duplicate id，不輸出成功 JSON"
+            ],
+            [
+              "completed 為字串",
+              "1",
+              "Invalid task，不自動轉型"
+            ],
+            [
+              "非陣列、壞 JSON、缺檔或缺參數",
+              "1",
+              "明確錯誤、沒有成功統計"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：加入八項可重跑測試"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 codex-skill-lab 根目錄新增 skill.test.mjs，貼入下列全部程式。它使用 Node.js 內建測試工具，不必安裝額外套件。每個案例在系統暫存目錄建立自己的輸入，呼叫真實統計器，再比對退出碼、輸出與原檔位元組。測試結束只清除自己剛建立的暫存資料夾，不碰 data/tasks.json。"
+        },
+        {
+          "type": "code",
+          "label": "skill.test.mjs",
+          "language": "javascript",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'node:fs';\nimport { tmpdir } from 'node:os';\nimport { resolve, join, dirname } from 'node:path';\nimport { spawnSync } from 'node:child_process';\n\nconst script = resolve('.agents/skills/todo-summary/scripts/count-tasks.mjs');\nconst tasks = [\n  { id: 'a', title: 'Read', completed: true },\n  { id: 'b', title: 'Build', completed: false },\n  { id: 'c', title: 'Read', completed: true },\n];\nfunction run(input, verify, missing = false) {\n  const folder = mkdtempSync(join(tmpdir(), 'todo-skill-test-'));\n  const file = join(folder, 'input.json');\n  try {\n    if (!missing) writeFileSync(file, input, 'utf8');\n    const before = missing ? null : readFileSync(file);\n    const result = spawnSync(process.execPath, [script, file], { encoding: 'utf8' });\n    assert.equal(result.error, undefined);\n    verify(result);\n    if (!missing) assert.deepEqual(readFileSync(file), before, 'Input changed');\n  } finally {\n    assert.equal(dirname(resolve(folder)), resolve(tmpdir()));\n    rmSync(folder, { recursive: true });\n  }\n}\nfunction fails(input, pattern) {\n  run(input, result => {\n    assert.equal(result.status, 1);\n    assert.equal(result.stdout, '');\n    assert.match(result.stderr, pattern);\n  });\n}\ntest('keeps repeated titles as three records', () => run(JSON.stringify(tasks), result => {\n  assert.equal(result.status, 0);\n  assert.equal(result.stderr, '');\n  assert.deepEqual(JSON.parse(result.stdout), { total: 3, active: 1, completed: 2 });\n}));\ntest('accepts an empty array', () => run('[]', result => {\n  assert.equal(result.status, 0);\n  assert.deepEqual(JSON.parse(result.stdout), { total: 0, active: 0, completed: 0 });\n}));\ntest('rejects duplicate IDs', () => fails(JSON.stringify([tasks[0], tasks[0]]), /Duplicate id/));\ntest('rejects string completed', () => fails(JSON.stringify([{ ...tasks[0], completed: 'true' }]), /Invalid task/));\ntest('rejects a non-array', () => fails('{}', /Input must be an array/));\ntest('rejects malformed JSON', () => fails('{', /\\S/));\ntest('reports a missing file', () => run('', result => {\n  assert.equal(result.status, 1);\n  assert.equal(result.stdout, '');\n  assert.match(result.stderr, /ENOENT/);\n}, true));\ntest('requires an input argument', () => {\n  const result = spawnSync(process.execPath, [script], { encoding: 'utf8' });\n  assert.equal(result.status, 1);\n  assert.equal(result.stdout, '');\n  assert.match(result.stderr, /Usage:/);\n});\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保持終端機位於練習根目錄，Windows PowerShell、macOS、Linux 都執行下面命令。正常的檢查器應得到 8 項通過、0 項失敗，測試程式本身退出 0。表格中預期失敗的輸入，會因為被正確拒絕而讓對應測試通過；不要把統計器退出 1 和測試套件失敗混在一起。"
+        },
+        {
+          "type": "code",
+          "label": "在練習根目錄執行",
+          "language": "sh",
+          "code": "node --test skill.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果第一項說找不到腳本，先檢查根目錄和 .agents/skills/todo-summary/scripts/count-tasks.mjs 的實際位置。若全部案例都變成 Usage，看看測試檔是否仍傳入 file 參數；若只有 JSON 錯誤文字不同，測試只要求有錯誤訊息，不依賴某一版 Node.js 的完整標點。先保留錯誤輸出，再比對版本，別為了綠燈而刪掉負面案例。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：確認測試真的能抓到錯誤"
+        },
+        {
+          "type": "paragraph",
+          "text": "先把 count-tasks.mjs 複製成 count-tasks.saved.mjs，確認備份存在。只在原檔的 result 那一行，把 total: tasks.length 暫時改成下面片段，其餘保留。這模擬「依標題計數」的錯誤：兩筆 Read 被算成一筆，但 active 與 completed 仍沿用原數量。它是刻意製造的局部故障，不是本教學的最終版本。"
+        },
+        {
+          "type": "code",
+          "label": "只替換 result 內的 total 欄位",
+          "language": "javascript",
+          "code": "total: new Set(tasks.map(task => task.title)).size\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "重跑相同命令，應出現 7 項通過、1 項失敗，失敗名稱是 keeps repeated titles as three records。觀察 actual total 為 2、expected 為 3，這才是測試抓到原本契約不允許的行為。接著只把原檔從剛才備份還原，再跑一次應恢復 8 項通過。保留前、故障、還原三次摘要，不把最後一張綠燈當成全部過程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 4：設計技能行為驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "程式還原之後，開始檢查 Codex。每一列使用新的任務，先確認工作資料夾，再依表格送出需求；不得讓前一次已讀規格、已完成報告或手動補充的答案污染下一列。每次記錄輸入原文、是否手動選技能、實際讀取檔案、工具命令、退出碼與結果，才能判斷問題發生在選擇還是執行。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "送出的自然語言需求",
+            "檢查重點"
+          ],
+          "rows": [
+            [
+              "明確使用",
+              "選取 todo-summary，統計 data/tasks.json，只在回覆給報告",
+              "讀取資源、實際執行、3／1／2、輸入不變"
+            ],
+            [
+              "符合情境",
+              "統計這份本機待辦 JSON 的總數、未完成及完成數",
+              "記錄是否選到技能；沒選到不冒稱已使用"
+            ],
+            [
+              "不符合情境",
+              "將網站背景改成藍色，先提出計畫，不修改檔案",
+              "不應為這個需求執行待辦統計器"
+            ],
+            [
+              "必要資源缺少",
+              "規格檔改名後明確使用技能產生已驗證報告",
+              "說明缺檔並停止，不創造規格或結果"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版透過 Skills 入口或 @ 選擇；CLI／IDE 透過 /skills 或 $。自動選擇依描述與上下文判斷，沒有選到不一定表示安裝失敗；先確認明確選取案例是否成功，再看 description 是否包含真正的用途與排除條件。不要把描述擴大成「所有任務都使用」，那會讓不相關工作也載入這個技能。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "只允許明確選用的對照練習"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在這份獨立的 todo-summary 技能中建立 agents/openai.yaml，使用下面設定。若已有此檔，先保存副本並只合併 policy 欄位，保留原 interface 與 dependencies。依"
+            },
+            {
+              "type": "link",
+              "text": "官方技能文件",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": "，allow_implicit_invocation 為 false 時不依提示自動選用，但明確提及技能仍可使用。它控制選用方式，不是沙盒，也不會授予工具權限。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "agents/openai.yaml：合併片段",
+          "language": "yaml",
+          "code": "policy:\n  allow_implicit_invocation: false\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存後用兩個新任務重測：「統計 data/tasks-next.json 的待辦數量」不手動選技能；另一個則明確選 todo-summary 並指定同一檔案。前者不應自動選到這份技能，後者應仍可選用；兩者分別記錄實際讀取與工具活動。前者即使以普通檔案工具自行算對，也不能寫成技能已觸發。若更新未反映，重新啟動 Codex 後再測，仍保留未確認欄位。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個比較需要在支援的實際入口執行；YAML 可解析或八項 Node 測試通過，都不能代替選用政策驗證。結束時只移除自己本次新建的 openai.yaml，或從備份恢復原檔，再開新任務確認原設定。若只想保留明確選用，就保留 false，並在驗收紀錄寫下這個決定及檔案位置。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 5：記錄、修正，再測一次"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立下面的驗收紀錄，欄位沒量到就寫未執行，不要填入預期數字。一次只修一個問題：找不到資源就修路徑；描述造成誤選就修 description；程式計數錯才改腳本。每次保存修正前的版本與失敗案例，修正後重跑受影響的自動測試和對應新任務。修改主檔不代表舊任務已重新讀入。"
+        },
+        {
+          "type": "code",
+          "label": "驗收紀錄範本",
+          "language": "markdown",
+          "code": "# Skill acceptance record\n\nDate and surface: <observed>\nNode / Codex versions: <observed>\nModel and effort, if shown: <observed or unavailable>\nSkill path and revision: <exact local path and saved version>\nProgram tests: <command, exit, passes, failures>\nBehavior case: <explicit / matching / outside-scope / missing-resource>\nRequest: <exact text>\nSelected skill: <observed / not selected / unconfirmed>\nResources read and command executed: <evidence or not run>\nActual result and preserved input: <evidence>\nFailure and one change: <description>\nFresh-task retest: <result or not run>\nRemaining checks: <not run>\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若代理宣稱已執行但只提供預期結果，要求指出實際命令與工具輸出；仍無法確認，就保留「未確認」，不要替它補證據。若多個同名技能同時出現，記錄選到的路徑，先停用或移出你這次新建的重複副本再重測，保留其他人的技能。不要任意改全域設定來掩蓋本機教材路徑錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習結束前確認 input-format.md 已恢復原名、count-tasks.mjs 已恢復正確版、data/tasks.json 未被修改，最後八項測試全過。報告必須分開寫程式測試與技能行為；未在 macOS 或 Linux 實際操作，就標記依文件與跨平台 Node.js 用法查證。本教材提供的參考測試不等於已替你在各入口執行模型。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這套方法也能用於你日後建立的其他技能：先固定輸入、寫清失敗條件，再保存可重複的檢查。若只是需要可複製的需求或文件骨架，接著看"
+            },
+            {
+              "type": "article",
+              "text": "範本與速查表",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": "；若要把多個技能交給別人安裝，再閱讀 "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "。示意圖 1 固定案例、2 執行與觀察、3 修正後重驗。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-skill-testing/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Build skills: resources and invocation",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Testing skill selection and results",
+      "description": "Test format, selection and outcomes separately, using matching and non-matching requests to refine descriptions.",
+      "hero": {
+        "src": "/guides/codex-skill-testing/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Verify both the todo-summary checker and Codex's use of the skill on appropriate requests. Allow 15 minutes to read and 30 to practice. Reuse codex-skill-lab and all four resources from Skill resources, with compatible Node.js 22 or later, an editor and authenticated Codex. First run the checker manually and confirm the original three records yield 3/1/2."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lessons and resources mentioned here: "
+            },
+            {
+              "type": "article",
+              "text": "Skill resources",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Eight automated tests check the program's specified inputs. Skill acceptance separately checks selection, file reads, tool records and replies; Node.js success does not prove activation. No specific model is required: record your actual surface and available settings."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Define results and failure conditions"
+        },
+        {
+          "type": "paragraph",
+          "text": "Read the matrix before adding tests. The normal case keeps both Read tasks; an empty array is valid. Duplicate IDs, invalid types and malformed JSON must fail explicitly instead of dropping troublesome rows and reporting plausible counts. Invalid input must not produce partial success JSON on stdout, which downstream scripts could mistake for a result."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Case",
+            "Checker exit",
+            "Accepted result"
+          ],
+          "rows": [
+            [
+              "Three tasks, repeated title",
+              "0",
+              "total 3, active 1, completed 2"
+            ],
+            [
+              "Empty array",
+              "0",
+              "All three counts are 0"
+            ],
+            [
+              "Duplicate ID",
+              "1",
+              "Duplicate id; no success JSON"
+            ],
+            [
+              "String completed value",
+              "1",
+              "Invalid task; no coercion"
+            ],
+            [
+              "Non-array, malformed JSON, absent file or argument",
+              "1",
+              "Explicit error; no success counts"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Add eight repeatable tests"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create skill.test.mjs at the codex-skill-lab root and paste the complete program below. It uses Node.js's built-in test runner, requiring no extra package. Each case creates its own temporary input, executes the real checker and compares exit status, output and original bytes. Cleanup removes only its own newly created temporary folder, preserving data/tasks.json."
+        },
+        {
+          "type": "code",
+          "label": "skill.test.mjs",
+          "language": "javascript",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'node:fs';\nimport { tmpdir } from 'node:os';\nimport { resolve, join, dirname } from 'node:path';\nimport { spawnSync } from 'node:child_process';\n\nconst script = resolve('.agents/skills/todo-summary/scripts/count-tasks.mjs');\nconst tasks = [\n  { id: 'a', title: 'Read', completed: true },\n  { id: 'b', title: 'Build', completed: false },\n  { id: 'c', title: 'Read', completed: true },\n];\nfunction run(input, verify, missing = false) {\n  const folder = mkdtempSync(join(tmpdir(), 'todo-skill-test-'));\n  const file = join(folder, 'input.json');\n  try {\n    if (!missing) writeFileSync(file, input, 'utf8');\n    const before = missing ? null : readFileSync(file);\n    const result = spawnSync(process.execPath, [script, file], { encoding: 'utf8' });\n    assert.equal(result.error, undefined);\n    verify(result);\n    if (!missing) assert.deepEqual(readFileSync(file), before, 'Input changed');\n  } finally {\n    assert.equal(dirname(resolve(folder)), resolve(tmpdir()));\n    rmSync(folder, { recursive: true });\n  }\n}\nfunction fails(input, pattern) {\n  run(input, result => {\n    assert.equal(result.status, 1);\n    assert.equal(result.stdout, '');\n    assert.match(result.stderr, pattern);\n  });\n}\ntest('keeps repeated titles as three records', () => run(JSON.stringify(tasks), result => {\n  assert.equal(result.status, 0);\n  assert.equal(result.stderr, '');\n  assert.deepEqual(JSON.parse(result.stdout), { total: 3, active: 1, completed: 2 });\n}));\ntest('accepts an empty array', () => run('[]', result => {\n  assert.equal(result.status, 0);\n  assert.deepEqual(JSON.parse(result.stdout), { total: 0, active: 0, completed: 0 });\n}));\ntest('rejects duplicate IDs', () => fails(JSON.stringify([tasks[0], tasks[0]]), /Duplicate id/));\ntest('rejects string completed', () => fails(JSON.stringify([{ ...tasks[0], completed: 'true' }]), /Invalid task/));\ntest('rejects a non-array', () => fails('{}', /Input must be an array/));\ntest('rejects malformed JSON', () => fails('{', /\\S/));\ntest('reports a missing file', () => run('', result => {\n  assert.equal(result.status, 1);\n  assert.equal(result.stdout, '');\n  assert.match(result.stderr, /ENOENT/);\n}, true));\ntest('requires an input argument', () => {\n  const result = spawnSync(process.execPath, [script], { encoding: 'utf8' });\n  assert.equal(result.status, 1);\n  assert.equal(result.stdout, '');\n  assert.match(result.stderr, /Usage:/);\n});\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "From the practice root, run the following command in PowerShell, macOS or Linux. The correct checker should produce eight passes, zero failures and test-runner exit 0. Inputs expected to fail make their tests pass when correctly rejected. Distinguish a checker exit of 1 from failure of the test suite itself."
+        },
+        {
+          "type": "code",
+          "label": "Run at the practice root",
+          "language": "sh",
+          "code": "node --test skill.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "If the first case cannot find the script, verify the root and the exact script location. If every case prints Usage, inspect whether the test still passes file. Malformed-JSON wording can vary by Node version; that test requires a nonempty error rather than version-specific punctuation. Preserve the failing output and compare versions instead of deleting negative cases to get a green result."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Prove the tests can catch a defect"
+        },
+        {
+          "type": "paragraph",
+          "text": "Copy count-tasks.mjs to count-tasks.saved.mjs and confirm the backup exists. In the original result line, temporarily replace only total: tasks.length with the fragment below. This simulates counting titles: two Read records become one while active and completed retain the original counts. It is a deliberate local fault, not the final version."
+        },
+        {
+          "type": "code",
+          "label": "Replace only total inside result",
+          "language": "javascript",
+          "code": "total: new Set(tasks.map(task => task.title)).size\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Run the same command: expect seven passes and one failure named keeps repeated titles as three records. Its actual total is 2 and expected total is 3, demonstrating detection of a contract violation. Restore only the original checker from your backup and rerun for eight passes. Keep summaries of baseline, fault and restoration rather than only the last green result."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: Design skill behavior checks"
+        },
+        {
+          "type": "paragraph",
+          "text": "After restoring the program, test Codex. Use a fresh task for each row, verify the working folder and send the specified request. Prevent previously read contracts, finished reports or manually supplied answers from contaminating later cases. Record the exact request, manual selection, files read, command, exit status and result to distinguish selection failures from execution failures."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Situation",
+            "Natural-language request",
+            "What to check"
+          ],
+          "rows": [
+            [
+              "Explicit",
+              "Select todo-summary; summarize data/tasks.json in the reply only",
+              "Read resources, execute, 3/1/2, preserve input"
+            ],
+            [
+              "Matching context",
+              "Count total, active and completed tasks in this local JSON",
+              "Record selection; no false claim of using a skill"
+            ],
+            [
+              "Outside scope",
+              "Plan a blue website background; do not edit files",
+              "Do not run the task counter for this request"
+            ],
+            [
+              "Required resource missing",
+              "Rename the contract, then explicitly request a verified skill report",
+              "Report missing resource and stop; invent nothing"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the desktop Skills entry or @ picker; in CLI/IDE use /skills or $. Implicit selection depends on description and context, so non-selection does not by itself establish an installation failure. First verify explicit selection, then inspect whether description names the use case and exclusions. Do not broaden it to all tasks, which would load this workflow for unrelated work."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Compare explicit-only invocation"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Create agents/openai.yaml in this isolated todo-summary skill with the setting below. If it exists, save a copy and merge only the policy field, preserving interface and dependencies. The "
+            },
+            {
+              "type": "link",
+              "text": "official skill documentation",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": " says false disables implicit invocation while explicit mentions still work. This controls invocation, not sandboxing or tool permissions."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "agents/openai.yaml: merge fragment",
+          "language": "yaml",
+          "code": "policy:\n  allow_implicit_invocation: false\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use two fresh tasks with data/tasks-next.json: one requests counts without selecting a skill; the other explicitly selects todo-summary. Expect no implicit invocation in the first and explicit use in the second. Record reads and tool activity: correct counts from ordinary file tools do not prove skill use. If unchanged, restart Codex and retest; retain unconfirmed fields."
+        },
+        {
+          "type": "paragraph",
+          "text": "Verify this policy on a supported surface; parsed YAML or eight passing Node tests cannot prove it. Afterwards remove only this exercise's new openai.yaml, or restore its backup, then check a fresh task. To retain explicit-only use, keep false and record the decision and path."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 5: Record, repair and repeat"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use this acceptance record and mark unmeasured fields not run instead of filling expected values. Fix one issue at a time: resource paths, selection description or checker logic. Preserve the previous version and failing case, then rerun affected program tests and the corresponding fresh task. Editing SKILL.md does not establish that an old task has reloaded it."
+        },
+        {
+          "type": "code",
+          "label": "Acceptance record template",
+          "language": "markdown",
+          "code": "# Skill acceptance record\n\nDate and surface: <observed>\nNode / Codex versions: <observed>\nModel and effort, if shown: <observed or unavailable>\nSkill path and revision: <exact local path and saved version>\nProgram tests: <command, exit, passes, failures>\nBehavior case: <explicit / matching / outside-scope / missing-resource>\nRequest: <exact text>\nSelected skill: <observed / not selected / unconfirmed>\nResources read and command executed: <evidence or not run>\nActual result and preserved input: <evidence>\nFailure and one change: <description>\nFresh-task retest: <result or not run>\nRemaining checks: <not run>\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "If the agent claims execution but supplies only expectations, ask for the actual command and tool output. Keep the status unconfirmed if evidence remains unavailable. If duplicate skill names appear, record the selected path and disable or move only the duplicate you created before retesting, preserving others' skills. Avoid global-setting changes that merely hide a local fixture-path problem."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before finishing, restore input-format.md, restore the correct checker, confirm data/tasks.json is unchanged and obtain eight passing tests. Report program and skill checks separately. Mark macOS/Linux as documentation and cross-platform Node.js checks if you did not operate those systems. Reference tests are not claims of model execution in every surface."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Apply the same method to future skills: fix the input, define failure conditions and retain repeatable checks. For reusable requests or document outlines, continue to "
+            },
+            {
+              "type": "article",
+              "text": "Templates and cheatsheets",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": "; for distributing multiple skills, read "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": ". Diagram 1 fixes cases, 2 executes and observes, and 3 rechecks a repair."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-skill-testing/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Build skills: resources and invocation",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Skill の選択と結果を検証する",
+      "description": "形式、選択、結果を分けて試し、適合する依頼としない依頼で説明を改善します。",
+      "hero": {
+        "src": "/guides/codex-skill-testing/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "todo-summary の検査プログラムと、適切な依頼に対する Codex のスキル使用を確認します。読む時間15分、実習30分。スキルリソースの codex-skill-lab と4リソース、対応 Node.js 22 以降、エディター、認証済み Codex を使います。最初に手動で元の3件が3／1／2になることを確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "この段落の教材・資料: "
+            },
+            {
+              "type": "article",
+              "text": "スキルリソース",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "成功には2つの範囲があります。8つの自動テストは指定入力へのプログラム動作だけを検証し、スキル検収では選択、読取り、ツール記録、返信も観察します。Node.js 成功を正しいスキル適用と混同せず、別々に記録します。特定モデルは不要で、実際の入口と設定を残します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：期待結果と失敗条件"
+        },
+        {
+          "type": "paragraph",
+          "text": "テスト前に表を確認します。正常例は同名 Read 2件を保持し、空配列は有効です。ID 重複、型不正、壊れた JSON は明確に失敗し、問題行を除いてそれらしい件数を返してはいけません。不正入力時に stdout へ部分的な成功 JSON を出すと後続処理が誤認します。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "事例",
+            "検査終了",
+            "期待結果"
+          ],
+          "rows": [
+            [
+              "同名を含む3件",
+              "0",
+              "total 3、active 1、completed 2"
+            ],
+            [
+              "空配列",
+              "0",
+              "すべて0"
+            ],
+            [
+              "ID 重複",
+              "1",
+              "Duplicate id、成功 JSON なし"
+            ],
+            [
+              "completed が文字列",
+              "1",
+              "Invalid task、自動変換なし"
+            ],
+            [
+              "配列以外、壊れた JSON、欠落ファイル・引数",
+              "1",
+              "明確な失敗、成功集計なし"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：8つの反復テスト"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-skill-lab ルートに skill.test.mjs を作り、全文を貼ります。Node.js 内蔵テストなので追加パッケージ不要です。事例ごとに専用一時入力を作り、実検査器を実行して終了コード、出力、元バイト列を比較します。終了時は自分で作った一時フォルダーのみ削除し、data/tasks.json は触りません。"
+        },
+        {
+          "type": "code",
+          "label": "skill.test.mjs",
+          "language": "javascript",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'node:fs';\nimport { tmpdir } from 'node:os';\nimport { resolve, join, dirname } from 'node:path';\nimport { spawnSync } from 'node:child_process';\n\nconst script = resolve('.agents/skills/todo-summary/scripts/count-tasks.mjs');\nconst tasks = [\n  { id: 'a', title: 'Read', completed: true },\n  { id: 'b', title: 'Build', completed: false },\n  { id: 'c', title: 'Read', completed: true },\n];\nfunction run(input, verify, missing = false) {\n  const folder = mkdtempSync(join(tmpdir(), 'todo-skill-test-'));\n  const file = join(folder, 'input.json');\n  try {\n    if (!missing) writeFileSync(file, input, 'utf8');\n    const before = missing ? null : readFileSync(file);\n    const result = spawnSync(process.execPath, [script, file], { encoding: 'utf8' });\n    assert.equal(result.error, undefined);\n    verify(result);\n    if (!missing) assert.deepEqual(readFileSync(file), before, 'Input changed');\n  } finally {\n    assert.equal(dirname(resolve(folder)), resolve(tmpdir()));\n    rmSync(folder, { recursive: true });\n  }\n}\nfunction fails(input, pattern) {\n  run(input, result => {\n    assert.equal(result.status, 1);\n    assert.equal(result.stdout, '');\n    assert.match(result.stderr, pattern);\n  });\n}\ntest('keeps repeated titles as three records', () => run(JSON.stringify(tasks), result => {\n  assert.equal(result.status, 0);\n  assert.equal(result.stderr, '');\n  assert.deepEqual(JSON.parse(result.stdout), { total: 3, active: 1, completed: 2 });\n}));\ntest('accepts an empty array', () => run('[]', result => {\n  assert.equal(result.status, 0);\n  assert.deepEqual(JSON.parse(result.stdout), { total: 0, active: 0, completed: 0 });\n}));\ntest('rejects duplicate IDs', () => fails(JSON.stringify([tasks[0], tasks[0]]), /Duplicate id/));\ntest('rejects string completed', () => fails(JSON.stringify([{ ...tasks[0], completed: 'true' }]), /Invalid task/));\ntest('rejects a non-array', () => fails('{}', /Input must be an array/));\ntest('rejects malformed JSON', () => fails('{', /\\S/));\ntest('reports a missing file', () => run('', result => {\n  assert.equal(result.status, 1);\n  assert.equal(result.stdout, '');\n  assert.match(result.stderr, /ENOENT/);\n}, true));\ntest('requires an input argument', () => {\n  const result = spawnSync(process.execPath, [script], { encoding: 'utf8' });\n  assert.equal(result.status, 1);\n  assert.equal(result.stdout, '');\n  assert.match(result.stderr, /Usage:/);\n});\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "実習ルートの PowerShell、macOS、Linux で次を実行します。正しい検査器は8成功0失敗、テスト全体の終了0です。拒否すべき入力は適切に拒否すればテスト成功になります。検査器の終了1とテスト全体の失敗を混同しません。"
+        },
+        {
+          "type": "code",
+          "label": "実習ルートで実行",
+          "language": "sh",
+          "code": "node --test skill.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "スクリプト未発見はルートと実ファイル、全件 Usage なら file 引数を確認します。JSON エラー文言は Node 版で変わるため、そのテストは固定の句読点ではなく非空メッセージを求めます。失敗出力を残して版を比較し、成功表示のために負の事例を削除しません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：誤りを捕捉できることを確認"
+        },
+        {
+          "type": "paragraph",
+          "text": "count-tasks.mjs を count-tasks.saved.mjs にコピーして保存を確認します。元ファイルの result 行で total: tasks.length だけを次に変え、同名2件を1件と数える誤りを作ります。active と completed は元のままです。局所的な故障実験であり、最終版ではありません。"
+        },
+        {
+          "type": "code",
+          "label": "result 内の total だけ置換",
+          "language": "javascript",
+          "code": "total: new Set(tasks.map(task => task.title)).size\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ命令は7成功1失敗となり、keeps repeated titles as three records が失敗するはずです。actual total 2、expected 3 で仕様違反を検出します。検査器だけ保存版から戻し、8成功へ復帰することを確認します。基準、故障、復元の3結果を残します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：スキル動作の検収"
+        },
+        {
+          "type": "paragraph",
+          "text": "復元後に Codex を検収します。表の各行は新規タスクで作業場所を確認し、前回の仕様、完成報告、手動で与えた答えを持ち込まないようにします。依頼全文、手動選択、読んだファイル、命令、終了値、結果を記録し、選択と実行の失敗を分けます。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "状況",
+            "自然言語での依頼",
+            "確認点"
+          ],
+          "rows": [
+            [
+              "明示",
+              "todo-summary を選び data/tasks.json を返信内だけで集計",
+              "リソース読取り、実行、3／1／2、入力保持"
+            ],
+            [
+              "適合",
+              "ローカルの待ちタスク JSON の全体・未完了・完了を数える",
+              "選択の有無を記録し使用を偽らない"
+            ],
+            [
+              "対象外",
+              "サイト背景を青にする計画のみ、変更しない",
+              "タスク集計器を実行しない"
+            ],
+            [
+              "必須リソースなし",
+              "仕様を改名して検証済み報告を明示依頼",
+              "欠落報告して停止し、仕様や結果を創作しない"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "デスクトップは Skills または @、CLI／IDE は /skills または $ を使います。自動選択は説明と文脈によるため、不選択だけでは導入失敗と断定しません。まず明示選択を確認し、description の用途と除外条件を見ます。「全タスクで使用」に広げると無関係な仕事にも適用されます。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "明示的な呼び出しだけを許す比較練習"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "独立した todo-summary スキル内に、次の設定で agents/openai.yaml を作ります。既存ならコピーを保存し、interface と dependencies を保ったまま policy だけを統合します。"
+            },
+            {
+              "type": "link",
+              "text": "公式スキル文書",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": "では false にすると暗黙の呼び出しを無効にし、明示的な指定は引き続き使えるとしています。これは呼び出し方の制御であり、サンドボックスやツール権限の付与ではありません。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "agents/openai.yaml：統合用の断片",
+          "language": "yaml",
+          "code": "policy:\n  allow_implicit_invocation: false\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存後、data/tasks-next.json を使う新規タスクを2つ作ります。一方はスキルを選ばず件数を依頼し、もう一方は todo-summary を明示的に指定します。前者はこのスキルを暗黙に選ばず、後者は利用できるはずです。読み取りとツール活動を別々に記録します。通常のファイルツールで正しく計算できても、スキルを呼び出した証拠ではありません。更新が反映されなければ Codex を再起動して再確認し、未確認欄は残します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この比較は対応する製品の実際の入口で実施する必要があります。YAML の解析成功や Node の8件通過では呼び出し方を検証できません。終了時は今回新規作成した openai.yaml だけを削除するか、元のファイルをバックアップから復元し、新規タスクで元設定を確認します。明示的な指定だけにしたいなら false を残し、決定とファイル位置を記録します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順5：記録、修正、再検証"
+        },
+        {
+          "type": "paragraph",
+          "text": "次の検収記録で未測定は未実施とし、期待値を埋めません。リソースならパス、誤選択なら description、集計ならコードを一つずつ直します。旧版と失敗例を保持し、影響テストと新規タスクを再実行します。主ファイルの変更だけで旧タスクの再読取りを証明できません。"
+        },
+        {
+          "type": "code",
+          "label": "検収記録テンプレート",
+          "language": "markdown",
+          "code": "# Skill acceptance record\n\nDate and surface: <observed>\nNode / Codex versions: <observed>\nModel and effort, if shown: <observed or unavailable>\nSkill path and revision: <exact local path and saved version>\nProgram tests: <command, exit, passes, failures>\nBehavior case: <explicit / matching / outside-scope / missing-resource>\nRequest: <exact text>\nSelected skill: <observed / not selected / unconfirmed>\nResources read and command executed: <evidence or not run>\nActual result and preserved input: <evidence>\nFailure and one change: <description>\nFresh-task retest: <result or not run>\nRemaining checks: <not run>\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "実行を主張しながら期待値しか示さない場合、実命令と出力を求め、確認不能なら未確認を維持します。同名スキルが複数なら選択パスを記録し、自分が作った重複だけを無効化か移動して再検証します。他者のスキルを保持し、教材パス誤りを全体設定変更で隠しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "終了前に仕様名、正しい検査器、未変更の入力を確認し、最後に8成功を得ます。プログラムとスキル動作を分け、macOS／Linux 未操作なら文書と共通 Node.js 用法での確認と記します。参考テストは各入口でモデルを実行した証拠ではありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "将来のスキルでも入力固定、失敗条件、再実行可能な検査を残します。依頼や文書の型だけが必要なら"
+            },
+            {
+              "type": "article",
+              "text": "テンプレートと早見表",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": "、複数スキルの配布なら "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "へ進みます。図1は事例固定、2は実行と観察、3は修正後の再確認です。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-skill-testing/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Build skills: resources and invocation",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Skill 선택과 결과 검증",
+      "description": "형식, 선택, 결과를 나누어 시험하고 맞는 요청과 맞지 않는 요청으로 설명을 개선합니다.",
+      "hero": {
+        "src": "/guides/codex-skill-testing/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "todo-summary 검사기와 적절한 요청에서 Codex의 스킬 사용을 모두 검증합니다. 읽기 15분, 실습 30분입니다. 스킬 자원의 codex-skill-lab과 네 자원, 호환 Node.js 22 이상, 편집기, 로그인 Codex를 사용합니다. 먼저 검사기를 직접 실행해 원래 세 레코드가 3/1/2인지 확인하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 단락의 학습 자료: "
+            },
+            {
+              "type": "article",
+              "text": "스킬 자원",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "통과의 범위는 두 가지입니다. 자동 테스트 여덟 개는 지정 입력에 대한 프로그램 동작만 확인합니다. 스킬 검수는 선택, 파일 읽기, 도구 기록, 응답도 관찰해야 합니다. Node.js 성공을 올바른 스킬 활성화로 간주하지 않도록 따로 기록하세요. 특정 모델은 필요 없으며 실제 진입점과 설정을 남깁니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 결과와 실패 조건 정의"
+        },
+        {
+          "type": "paragraph",
+          "text": "테스트 전에 표를 확인하세요. 정상 사례는 Read 두 개를 보존하고 빈 배열은 유효합니다. 중복 ID, 잘못된 타입, 손상된 JSON은 명확히 실패해야 하며 문제 행을 지운 뒤 그럴듯한 개수를 반환하면 안 됩니다. 잘못된 입력에서 stdout에 부분 성공 JSON이 섞이면 후속 스크립트가 오인할 수 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "사례",
+            "검사기 종료",
+            "허용 결과"
+          ],
+          "rows": [
+            [
+              "동명 포함 세 작업",
+              "0",
+              "total 3, active 1, completed 2"
+            ],
+            [
+              "빈 배열",
+              "0",
+              "세 개수 모두 0"
+            ],
+            [
+              "중복 ID",
+              "1",
+              "Duplicate id, 성공 JSON 없음"
+            ],
+            [
+              "completed가 문자열",
+              "1",
+              "Invalid task, 자동 변환 없음"
+            ],
+            [
+              "배열 아님, 손상 JSON, 누락 파일/인수",
+              "1",
+              "명확한 오류, 성공 집계 없음"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 반복 가능한 테스트 여덟 개"
+        },
+        {
+          "type": "paragraph",
+          "text": "codex-skill-lab 루트에 skill.test.mjs를 만들고 전체 코드를 붙이세요. Node.js 내장 테스트라 추가 패키지가 필요 없습니다. 각 사례는 임시 입력을 만들고 실제 검사기를 실행해 종료 코드, 출력, 원본 바이트를 비교합니다. 정리는 방금 만든 임시 폴더만 삭제하며 data/tasks.json은 건드리지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "skill.test.mjs",
+          "language": "javascript",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'node:fs';\nimport { tmpdir } from 'node:os';\nimport { resolve, join, dirname } from 'node:path';\nimport { spawnSync } from 'node:child_process';\n\nconst script = resolve('.agents/skills/todo-summary/scripts/count-tasks.mjs');\nconst tasks = [\n  { id: 'a', title: 'Read', completed: true },\n  { id: 'b', title: 'Build', completed: false },\n  { id: 'c', title: 'Read', completed: true },\n];\nfunction run(input, verify, missing = false) {\n  const folder = mkdtempSync(join(tmpdir(), 'todo-skill-test-'));\n  const file = join(folder, 'input.json');\n  try {\n    if (!missing) writeFileSync(file, input, 'utf8');\n    const before = missing ? null : readFileSync(file);\n    const result = spawnSync(process.execPath, [script, file], { encoding: 'utf8' });\n    assert.equal(result.error, undefined);\n    verify(result);\n    if (!missing) assert.deepEqual(readFileSync(file), before, 'Input changed');\n  } finally {\n    assert.equal(dirname(resolve(folder)), resolve(tmpdir()));\n    rmSync(folder, { recursive: true });\n  }\n}\nfunction fails(input, pattern) {\n  run(input, result => {\n    assert.equal(result.status, 1);\n    assert.equal(result.stdout, '');\n    assert.match(result.stderr, pattern);\n  });\n}\ntest('keeps repeated titles as three records', () => run(JSON.stringify(tasks), result => {\n  assert.equal(result.status, 0);\n  assert.equal(result.stderr, '');\n  assert.deepEqual(JSON.parse(result.stdout), { total: 3, active: 1, completed: 2 });\n}));\ntest('accepts an empty array', () => run('[]', result => {\n  assert.equal(result.status, 0);\n  assert.deepEqual(JSON.parse(result.stdout), { total: 0, active: 0, completed: 0 });\n}));\ntest('rejects duplicate IDs', () => fails(JSON.stringify([tasks[0], tasks[0]]), /Duplicate id/));\ntest('rejects string completed', () => fails(JSON.stringify([{ ...tasks[0], completed: 'true' }]), /Invalid task/));\ntest('rejects a non-array', () => fails('{}', /Input must be an array/));\ntest('rejects malformed JSON', () => fails('{', /\\S/));\ntest('reports a missing file', () => run('', result => {\n  assert.equal(result.status, 1);\n  assert.equal(result.stdout, '');\n  assert.match(result.stderr, /ENOENT/);\n}, true));\ntest('requires an input argument', () => {\n  const result = spawnSync(process.execPath, [script], { encoding: 'utf8' });\n  assert.equal(result.status, 1);\n  assert.equal(result.stdout, '');\n  assert.match(result.stderr, /Usage:/);\n});\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "실습 루트의 PowerShell, macOS, Linux에서 다음 명령을 실행하세요. 올바른 검사기는 8통과 0실패, 테스트 실행기 종료 0이어야 합니다. 거부해야 할 입력은 올바르게 거부되면 테스트가 통과합니다. 검사기의 종료 1과 테스트 묶음 자체의 실패를 구분하세요."
+        },
+        {
+          "type": "code",
+          "label": "실습 루트에서 실행",
+          "language": "sh",
+          "code": "node --test skill.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "스크립트를 못 찾으면 루트와 실제 경로를, 모두 Usage이면 file 인수가 전달되는지 확인하세요. JSON 오류 문구는 Node 버전에 따라 달라 해당 테스트는 특정 문장부호 대신 비어 있지 않은 오류를 요구합니다. 실패 출력을 보존하고 버전을 비교하며 초록 결과를 만들려고 부정 사례를 삭제하지 마세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 테스트가 결함을 잡는지 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "count-tasks.mjs를 count-tasks.saved.mjs로 복사하고 백업을 확인하세요. 원본 result 행의 total: tasks.length만 다음 조각으로 바꿔 동명 두 개를 하나로 세는 오류를 만듭니다. active와 completed는 원래 개수입니다. 의도적인 국소 결함이며 최종 버전이 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "result 안의 total만 교체",
+          "language": "javascript",
+          "code": "total: new Set(tasks.map(task => task.title)).size\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 명령을 실행하면 7통과 1실패이며 keeps repeated titles as three records가 실패해야 합니다. actual total 2와 expected 3으로 계약 위반을 잡은 것을 확인합니다. 검사기만 백업에서 복원하고 다시 8통과인지 확인하세요. 마지막 초록 결과뿐 아니라 기준, 결함, 복원 결과를 모두 남깁니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 스킬 행동 검수 설계"
+        },
+        {
+          "type": "paragraph",
+          "text": "복원 후 Codex를 검수합니다. 표의 각 행마다 새 작업에서 폴더를 확인하고 이전 규격, 완성 보고서, 수동으로 준 정답이 섞이지 않게 합니다. 정확한 요청, 수동 선택 여부, 읽은 파일, 명령, 종료 값, 결과를 기록해 선택 문제와 실행 문제를 구분하세요."
+        },
+        {
+          "type": "table",
+          "header": [
+            "상황",
+            "자연어 요청",
+            "확인점"
+          ],
+          "rows": [
+            [
+              "명시",
+              "todo-summary 선택 후 data/tasks.json을 응답으로만 집계",
+              "자원 읽기, 실행, 3/1/2, 원본 보존"
+            ],
+            [
+              "적합",
+              "로컬 작업 JSON의 전체/미완료/완료 개수 집계",
+              "선택 여부 기록, 사용했다고 거짓 주장하지 않음"
+            ],
+            [
+              "범위 밖",
+              "사이트 배경을 파랑으로 바꾸는 계획만, 수정 금지",
+              "이 요청 때문에 작업 검사기를 실행하지 않음"
+            ],
+            [
+              "필수 자원 없음",
+              "규격 이름을 바꾼 뒤 검증 완료 보고서 명시 요청",
+              "누락 보고 후 중단, 규격/결과를 지어내지 않음"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱은 Skills나 @, CLI/IDE는 /skills나 $를 사용합니다. 자동 선택은 설명과 문맥에 따라 달라 미선택만으로 설치 실패라 단정할 수 없습니다. 먼저 명시 선택이 성공하는지 확인하고 description의 용도와 제외 조건을 점검하세요. 모든 작업에 사용한다고 넓히면 관련 없는 작업에도 적용됩니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "명시적 호출만 허용하는 비교 연습"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 독립 todo-summary 스킬에 아래 설정으로 agents/openai.yaml을 만듭니다. 이미 있다면 복사본을 저장하고 interface와 dependencies를 보존하면서 policy만 병합합니다. "
+            },
+            {
+              "type": "link",
+              "text": "공식 스킬 문서",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": "에 따르면 false는 암시적 호출을 막지만 명시적 언급은 계속 허용합니다. 호출 방식의 설정이지 샌드박스나 도구 권한 부여가 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "agents/openai.yaml: 병합할 조각",
+          "language": "yaml",
+          "code": "policy:\n  allow_implicit_invocation: false\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "저장 후 data/tasks-next.json을 대상으로 새 작업 두 개를 만듭니다. 하나는 스킬 선택 없이 개수만 요청하고, 다른 하나는 todo-summary를 명시적으로 선택합니다. 전자는 이 스킬을 자동 선택하지 않아야 하고 후자는 사용할 수 있어야 합니다. 파일 읽기와 도구 활동을 각각 기록하세요. 일반 파일 도구로 숫자를 맞혔다고 스킬 호출의 증거가 되는 것은 아닙니다. 갱신이 반영되지 않으면 Codex를 재시작해 재검사하고 미확인 항목은 남깁니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 비교는 지원되는 실제 제품에서 실행해야 합니다. YAML 파싱 성공이나 Node 테스트 8개 통과로 호출 정책을 검증할 수는 없습니다. 마칠 때 이번에 새로 만든 openai.yaml만 제거하거나 기존 파일을 백업에서 복원하고 새 작업에서 원래 설정을 확인합니다. 명시적 호출만 원하면 false를 유지하고 그 결정과 파일 경로를 기록합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "5단계: 기록, 수정, 재검증"
+        },
+        {
+          "type": "paragraph",
+          "text": "다음 검수 기록에서 측정하지 않은 값은 미실행으로 쓰고 예상값을 채우지 마세요. 자원 문제는 경로, 잘못된 선택은 description, 집계 문제는 코드처럼 하나씩 수정합니다. 이전 버전과 실패 사례를 보존하고 영향받은 테스트와 새 작업을 다시 실행하세요. SKILL.md 수정만으로 이전 작업의 재로딩을 입증할 수 없습니다."
+        },
+        {
+          "type": "code",
+          "label": "검수 기록 템플릿",
+          "language": "markdown",
+          "code": "# Skill acceptance record\n\nDate and surface: <observed>\nNode / Codex versions: <observed>\nModel and effort, if shown: <observed or unavailable>\nSkill path and revision: <exact local path and saved version>\nProgram tests: <command, exit, passes, failures>\nBehavior case: <explicit / matching / outside-scope / missing-resource>\nRequest: <exact text>\nSelected skill: <observed / not selected / unconfirmed>\nResources read and command executed: <evidence or not run>\nActual result and preserved input: <evidence>\nFailure and one change: <description>\nFresh-task retest: <result or not run>\nRemaining checks: <not run>\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "실행했다고 주장하지만 예상값만 제시하면 실제 명령과 도구 출력을 요구하고 확인할 수 없으면 미확인 상태를 유지하세요. 같은 이름의 스킬이 여러 개면 선택 경로를 기록하고 자신이 만든 중복만 비활성화하거나 옮긴 뒤 재검증합니다. 다른 사람의 스킬을 보존하고 로컬 경로 오류를 전역 설정 변경으로 숨기지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "마치기 전에 input-format.md 이름과 올바른 검사기를 복원하고 data/tasks.json이 그대로이며 마지막 여덟 테스트가 통과하는지 확인하세요. 코드와 스킬 행동 결과는 따로 보고하고 macOS/Linux를 조작하지 않았다면 문서와 공통 Node.js 사용법으로 확인했다고 기록합니다. 참고 테스트는 모든 진입점에서 모델을 실행했다는 증거가 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "새 스킬도 입력을 고정하고 실패 조건을 정한 뒤 반복 검사를 남기세요. 재사용 요청이나 문서 틀은 "
+            },
+            {
+              "type": "article",
+              "text": "템플릿과 빠른 참고",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": ", 여러 스킬 배포는 "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "를 읽으세요. 그림 1은 사례 고정, 2는 실행과 관찰, 3은 수정 후 재검사입니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-skill-testing/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Build skills: resources and invocation",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Skill 触发与结果测试",
+      "description": "分开验证格式、选用条件及实际结果，用应触发与不应触发的案例修正技能描述。",
+      "hero": {
+        "src": "/guides/codex-skill-testing/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "验证 todo-summary 的程式是否正确，以及 Codex 是否在合适的需求中照技能流程操作。阅读约 15 分钟、练习约 30 分钟；沿用技能资源分拆的 codex-skill-lab 和完整四份资源，需要 Node.js 22 以上相容版本、编辑器及已登入的 Codex。先手动跑一次统计器，确认原始三笔资料得到 3／1／2。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本段提到的教学与资源: "
+            },
+            {
+              "type": "article",
+              "text": "技能资源分拆",
+              "kind": "life",
+              "slug": "codex-skill-resources"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "「测试全过」在这里有两种不同范围：下面的八项自动测试只证明检查程式对指定输入的结果；技能行为验收还需要观察选择、读档、工具纪录及回复。两者分开记录，才不会把 Node.js 成功当成 Codex 已成功触发技能。测试也不要求特定模型名称，请记录你当时实际使用的入口与可用选项。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：列出正确结果与失败条件"
+        },
+        {
+          "type": "paragraph",
+          "text": "先看这张表，再写测试。正常案例保留两笔同名 Read；空阵列是有效输入，不应因为没有任务就报错。反过来，重复 ID、错误型别或坏 JSON 必须明确失败，不能先删掉有问题的列，再回复看似正常的总数。错误输入不应在标准输出混入半份成功 JSON，否则后续脚本很容易误读。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "案例",
+            "程式退出码",
+            "可接受结果"
+          ],
+          "rows": [
+            [
+              "三笔任务、两笔同名",
+              "0",
+              "total 3、active 1、completed 2"
+            ],
+            [
+              "空阵列",
+              "0",
+              "三个数量均为 0"
+            ],
+            [
+              "重复 ID",
+              "1",
+              "Duplicate id，不输出成功 JSON"
+            ],
+            [
+              "completed 为字串",
+              "1",
+              "Invalid task，不自动转型"
+            ],
+            [
+              "非阵列、坏 JSON、缺档或缺参数",
+              "1",
+              "明确错误、没有成功统计"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：加入八项可重跑测试"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 codex-skill-lab 根目录新增 skill.test.mjs，贴入下列全部程式。它使用 Node.js 内建测试工具，不必安装额外套件。每个案例在系统暂存目录建立自己的输入，呼叫真实统计器，再比对退出码、输出与原档位元组。测试结束只清除自己刚建立的暂存资料夹，不碰 data/tasks.json。"
+        },
+        {
+          "type": "code",
+          "label": "skill.test.mjs",
+          "language": "javascript",
+          "code": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'node:fs';\nimport { tmpdir } from 'node:os';\nimport { resolve, join, dirname } from 'node:path';\nimport { spawnSync } from 'node:child_process';\n\nconst script = resolve('.agents/skills/todo-summary/scripts/count-tasks.mjs');\nconst tasks = [\n  { id: 'a', title: 'Read', completed: true },\n  { id: 'b', title: 'Build', completed: false },\n  { id: 'c', title: 'Read', completed: true },\n];\nfunction run(input, verify, missing = false) {\n  const folder = mkdtempSync(join(tmpdir(), 'todo-skill-test-'));\n  const file = join(folder, 'input.json');\n  try {\n    if (!missing) writeFileSync(file, input, 'utf8');\n    const before = missing ? null : readFileSync(file);\n    const result = spawnSync(process.execPath, [script, file], { encoding: 'utf8' });\n    assert.equal(result.error, undefined);\n    verify(result);\n    if (!missing) assert.deepEqual(readFileSync(file), before, 'Input changed');\n  } finally {\n    assert.equal(dirname(resolve(folder)), resolve(tmpdir()));\n    rmSync(folder, { recursive: true });\n  }\n}\nfunction fails(input, pattern) {\n  run(input, result => {\n    assert.equal(result.status, 1);\n    assert.equal(result.stdout, '');\n    assert.match(result.stderr, pattern);\n  });\n}\ntest('keeps repeated titles as three records', () => run(JSON.stringify(tasks), result => {\n  assert.equal(result.status, 0);\n  assert.equal(result.stderr, '');\n  assert.deepEqual(JSON.parse(result.stdout), { total: 3, active: 1, completed: 2 });\n}));\ntest('accepts an empty array', () => run('[]', result => {\n  assert.equal(result.status, 0);\n  assert.deepEqual(JSON.parse(result.stdout), { total: 0, active: 0, completed: 0 });\n}));\ntest('rejects duplicate IDs', () => fails(JSON.stringify([tasks[0], tasks[0]]), /Duplicate id/));\ntest('rejects string completed', () => fails(JSON.stringify([{ ...tasks[0], completed: 'true' }]), /Invalid task/));\ntest('rejects a non-array', () => fails('{}', /Input must be an array/));\ntest('rejects malformed JSON', () => fails('{', /\\S/));\ntest('reports a missing file', () => run('', result => {\n  assert.equal(result.status, 1);\n  assert.equal(result.stdout, '');\n  assert.match(result.stderr, /ENOENT/);\n}, true));\ntest('requires an input argument', () => {\n  const result = spawnSync(process.execPath, [script], { encoding: 'utf8' });\n  assert.equal(result.status, 1);\n  assert.equal(result.stdout, '');\n  assert.match(result.stderr, /Usage:/);\n});\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保持终端机位于练习根目录，Windows PowerShell、macOS、Linux 都执行下面命令。正常的检查器应得到 8 项通过、0 项失败，测试程式本身退出 0。表格中预期失败的输入，会因为被正确拒绝而让对应测试通过；不要把统计器退出 1 和测试套件失败混在一起。"
+        },
+        {
+          "type": "code",
+          "label": "在练习根目录执行",
+          "language": "sh",
+          "code": "node --test skill.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果第一项说找不到脚本，先检查根目录和 .agents/skills/todo-summary/scripts/count-tasks.mjs 的实际位置。若全部案例都变成 Usage，看看测试档是否仍传入 file 参数；若只有 JSON 错误文字不同，测试只要求有错误讯息，不依赖某一版 Node.js 的完整标点。先保留错误输出，再比对版本，别为了绿灯而删掉负面案例。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：确认测试真的能抓到错误"
+        },
+        {
+          "type": "paragraph",
+          "text": "先把 count-tasks.mjs 复制成 count-tasks.saved.mjs，确认备份存在。只在原档的 result 那一行，把 total: tasks.length 暂时改成下面片段，其余保留。这模拟「依标题计数」的错误：两笔 Read 被算成一笔，但 active 与 completed 仍沿用原数量。它是刻意制造的局部故障，不是本教学的最终版本。"
+        },
+        {
+          "type": "code",
+          "label": "只替换 result 内的 total 栏位",
+          "language": "javascript",
+          "code": "total: new Set(tasks.map(task => task.title)).size\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "重跑相同命令，应出现 7 项通过、1 项失败，失败名称是 keeps repeated titles as three records。观察 actual total 为 2、expected 为 3，这才是测试抓到原本契约不允许的行为。接著只把原档从刚才备份还原，再跑一次应恢复 8 项通过。保留前、故障、还原三次摘要，不把最后一张绿灯当成全部过程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 4：设计技能行为验收"
+        },
+        {
+          "type": "paragraph",
+          "text": "程式还原之后，开始检查 Codex。每一列使用新的任务，先确认工作资料夹，再依表格送出需求；不得让前一次已读规格、已完成报告或手动补充的答案污染下一列。每次记录输入原文、是否手动选技能、实际读取档案、工具命令、退出码与结果，才能判断问题发生在选择还是执行。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "送出的自然语言需求",
+            "检查重点"
+          ],
+          "rows": [
+            [
+              "明确使用",
+              "选取 todo-summary，统计 data/tasks.json，只在回复给报告",
+              "读取资源、实际执行、3／1／2、输入不变"
+            ],
+            [
+              "符合情境",
+              "统计这份本机待办 JSON 的总数、未完成及完成数",
+              "记录是否选到技能；没选到不冒称已使用"
+            ],
+            [
+              "不符合情境",
+              "将网站背景改成蓝色，先提出计划，不修改档案",
+              "不应为这个需求执行待办统计器"
+            ],
+            [
+              "必要资源缺少",
+              "规格档改名后明确使用技能产生已验证报告",
+              "说明缺档并停止，不创造规格或结果"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版透过 Skills 入口或 @ 选择；CLI／IDE 透过 /skills 或 $。自动选择依描述与上下文判断，没有选到不一定表示安装失败；先确认明确选取案例是否成功，再看 description 是否包含真正的用途与排除条件。不要把描述扩大成「所有任务都使用」，那会让不相关工作也载入这个技能。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "只允许明确选用的对照练习"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在这份独立的 todo-summary 技能中建立 agents/openai.yaml，使用下面设定。若已有此档，先保存副本并只合并 policy 栏位，保留原 interface 与 dependencies。依"
+            },
+            {
+              "type": "link",
+              "text": "官方技能文件",
+              "url": "https://learn.chatgpt.com/docs/build-skills"
+            },
+            {
+              "type": "text",
+              "text": "，allow_implicit_invocation 为 false 时不依提示自动选用，但明确提及技能仍可使用。它控制选用方式，不是沙盒，也不会授予工具权限。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "agents/openai.yaml：合并片段",
+          "language": "yaml",
+          "code": "policy:\n  allow_implicit_invocation: false\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存后用两个新任务重测：「统计 data/tasks-next.json 的待办数量」不手动选技能；另一个则明确选 todo-summary 并指定同一档案。前者不应自动选到这份技能，后者应仍可选用；两者分别记录实际读取与工具活动。前者即使以普通档案工具自行算对，也不能写成技能已触发。若更新未反映，重新启动 Codex 后再测，仍保留未确认栏位。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这个比较需要在支援的实际入口执行；YAML 可解析或八项 Node 测试通过，都不能代替选用政策验证。结束时只移除自己本次新建的 openai.yaml，或从备份恢复原档，再开新任务确认原设定。若只想保留明确选用，就保留 false，并在验收纪录写下这个决定及档案位置。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 5：记录、修正，再测一次"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立下面的验收纪录，栏位没量到就写未执行，不要填入预期数字。一次只修一个问题：找不到资源就修路径；描述造成误选就修 description；程式计数错才改脚本。每次保存修正前的版本与失败案例，修正后重跑受影响的自动测试和对应新任务。修改主档不代表旧任务已重新读入。"
+        },
+        {
+          "type": "code",
+          "label": "验收纪录范本",
+          "language": "markdown",
+          "code": "# Skill acceptance record\n\nDate and surface: <observed>\nNode / Codex versions: <observed>\nModel and effort, if shown: <observed or unavailable>\nSkill path and revision: <exact local path and saved version>\nProgram tests: <command, exit, passes, failures>\nBehavior case: <explicit / matching / outside-scope / missing-resource>\nRequest: <exact text>\nSelected skill: <observed / not selected / unconfirmed>\nResources read and command executed: <evidence or not run>\nActual result and preserved input: <evidence>\nFailure and one change: <description>\nFresh-task retest: <result or not run>\nRemaining checks: <not run>\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若代理宣称已执行但只提供预期结果，要求指出实际命令与工具输出；仍无法确认，就保留「未确认」，不要替它补证据。若多个同名技能同时出现，记录选到的路径，先停用或移出你这次新建的重复副本再重测，保留其他人的技能。不要任意改全域设定来掩盖本机教材路径错误。"
+        },
+        {
+          "type": "paragraph",
+          "text": "练习结束前确认 input-format.md 已恢复原名、count-tasks.mjs 已恢复正确版、data/tasks.json 未被修改，最后八项测试全过。报告必须分开写程式测试与技能行为；未在 macOS 或 Linux 实际操作，就标记依文件与跨平台 Node.js 用法查证。本教材提供的参考测试不等于已替你在各入口执行模型。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "这套方法也能用于你日后建立的其他技能：先固定输入、写清失败条件，再保存可重复的检查。若只是需要可复制的需求或文件骨架，接著看"
+            },
+            {
+              "type": "article",
+              "text": "范本与速查表",
+              "kind": "life",
+              "slug": "codex-templates-cheatsheet"
+            },
+            {
+              "type": "text",
+              "text": "；若要把多个技能交给别人安装，再阅读 "
+            },
+            {
+              "type": "article",
+              "text": "Plugins",
+              "kind": "life",
+              "slug": "codex-plugins"
+            },
+            {
+              "type": "text",
+              "text": "。示意图 1 固定案例、2 执行与观察、3 修正后重验。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-skill-testing/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Build skills: resources and invocation",
+          "url": "https://learn.chatgpt.com/docs/build-skills",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

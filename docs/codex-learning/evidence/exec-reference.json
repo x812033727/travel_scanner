@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-09-14T15:03:18.657136+00:00",
+  "status": "passed",
+  "checks": [
+    "Rendered lesson programs exactly match the reference sources",
+    "A synthetic single-turn JSONL stream and exact fixture answer are accepted",
+    "The exact authored wrong-count answer passes structural verify-only but fails fixture truth; original evidence stays valid",
+    "The browser measurement parses as JavaScript only; no DOM, page, browser or preview was executed",
+    "Eight invalid shapes, types, revisions and count combinations are rejected",
+    "Truncated JSONL, missing completion, failure events and duplicate or reversed turn boundaries are rejected",
+    "A valid-looking final answer cannot override unsuccessful or incorrectly typed process status",
+    "Unknown event kinds, blank lines and UTF-8 BOM do not break valid input",
+    "The documented verify-only command returns correct exit codes and original output remains valid",
+    "The wrapper uses an argument array, calls once and refuses to overwrite previous evidence",
+    "Simulated timeout and launch failure retain distinct status without retry or input edits",
+    "CI is manually triggered with pinned Actions, read-only permissions and a separate secret-free validation job",
+    "The exact CI validation script accepts the fixture, rejects changed counts and writes matching synthetic run identifiers"
+  ],
+  "cliProbe": null,
+  "authorHashes": {
+    "26": "8f4bfc6e2c108af7067abbdeb4aca17a5809132f4c0ab25500f8bb0abf7d7f2b",
+    "29": "19d8e61615ff185ec2afe747f36659173d9a7568d9f049a7b0553e0c786bccfa",
+    "30": "72c85ebd1c95a8b347cad9c8643213736335c6ee7753021ed538e21c51952de6",
+    "55": "eb86e765ece8dd8205fec46b14d88f666c53d9554e726427dec50963b0f157cd",
+    "56": "05d16531f0005a0ec3dc9655704360fc59da326be80b71868a39d23008b03994",
+    "57": "5d699ca44af3f163f4877e88cc92d8bda3e2b94d74fd3c4006d6e285f95e7f61"
+  },
+  "environment": "Windows; temporary fictional files; mocked Codex process; exact local Python validator",
+  "sourceHashes": {
+    "run_summary.py": "95e5818e6502f4475cb2022278a0b109b487044abc42ddd723458ab8801ab984",
+    "practice-codex.yml": "595ba836ae168f9cd5f4833b2582d7394923f3f8937d20abea287f72432ab7d6"
+  },
+  "notTested": [
+    "Actual model output or API authentication",
+    "GitHub-hosted workflow execution",
+    "macOS/Linux runtime",
+    "Publication or deployment"
+  ]
+}

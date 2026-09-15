@@ -4,18 +4,16 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "tutorial"
   ],
-  "valid_until": null,
-  "featured": false,
-  "display_order": 100,
+  "display_order": 101,
   "locales": {
     "zh-TW": {
-      "title": "OpenAI Codex 是什麼：從 ChatGPT 裡的寫程式代理到 Codex CLI",
-      "description": "Codex 是 OpenAI 的寫程式代理，有三種形態：ChatGPT 裡的雲端代理會讀你的 GitHub 專案、在沙盒裡改程式並開 PR，Codex CLI 在終端機裡跑，IDE 擴充裝在 VS Code 等編輯器裡。這篇依 2026 年 9 月官方文件說明它和聊天要程式碼的差別、哪些方案包含、API 怎麼計費，並用 Excel 轉 vCard 的小工具走完整個流程，附比較表與風險提醒。",
+      "title": "Codex 是什麼？與 ChatGPT 的差別",
+      "description": "Codex 是能讀取專案、修改檔案並執行工具的程式開發代理。一般聊天給你的程式碼，往往還要自己貼進編輯器；代理則可以在你選定的工作環境裡完成修改。模型是它用來推理的引擎，任務是一次工作，專案是相關檔案與工作的集合，三者不要混為一談。",
       "hero": {
         "src": "/guides/codex-beginner-guide/hero.jpg",
-        "alt": "自繪插圖：左邊一個終端機視窗、右邊一個對話泡泡，中間兩個齒輪相扣轉動，代表 Codex 把對話變成程式",
+        "alt": "實作順序示意圖，非產品介面截圖。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -26,305 +24,1852 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Codex 是 OpenAI 的寫程式代理（coding agent）：你用中文或英文描述要做什麼，它會自己讀專案裡的程式碼、動手修改、跑測試、看結果、再改到通過，最後把整份修改交給你審。它不是某一個模型的名字，而是同一個代理的三種形態：ChatGPT 裡的雲端代理、終端機裡的 Codex CLI，以及裝在 VS Code 等編輯器裡的 IDE 擴充。依 2026 年 9 月的官方文件，所有 ChatGPT 方案（含免費版）都能用到某個程度，差別在額度。"
-        },
-        {
-          "type": "paragraph",
-          "text": "這篇寫給兩種人：不寫程式、但想知道「AI 幫人寫程式」現在到哪裡的讀者，以及想親手試一次的入門者。讀完你會分得清三種形態各在哪裡、適合誰，知道它和跟 ChatGPT 聊天要一段程式碼差在哪，看懂方案與計費，並用一個「把 Excel 名單轉成 vCard」的小工具走一遍從交代任務到收到結果的流程，最後是合併之前一定要做的幾件事。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "heading",
-          "text": "Codex 現在指什麼：一個代理、三種形態",
-          "level": 2
+          "level": 2,
+          "text": "讀完能做到什麼"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你會分清楚 Codex、模型、任務和工作環境，並用一個只有兩個檔案的小資料夾完成「先讀取、再修改、自己驗證」。閱讀約 10 分鐘，實作約 15 分鐘；不需要先學會寫程式，也不會在這一篇部署網站。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先理解四個角色"
         },
         {
           "type": "paragraph",
-          "text": "Codex 這個名字在 OpenAI 的產品裡出現過不只一次，容易混淆。現在官方詞彙表的定義很單純：Codex 是「OpenAI 用於軟體開發任務的寫程式代理」，文件集中在 learn.chatgpt.com（原本的 developers.openai.com/codex 網址會自動轉過去）。它背後是 GPT-6 Astra 與 GPT-5.6 Sol、Terra、Luna 這幾個通用模型，Pro 方案另外多一個專為即時改程式設計的 GPT-5.3 Codex Spark 研究預覽版；推理深度從 Low 到 Ultra 共六檔，小修改用低檔，難的除錯再往上調。"
+          "text": "Codex 是能在取得相應工具與權限後讀檔、修改及執行命令的代理。模型負責推理；任務儲存這次需求與對話；工作環境決定實際能接觸哪些檔案和工具。換一個更強的模型，不會讓選錯資料夾的任務突然找到你的專案。後續每次求助，都先記下入口、工作目錄和可用工具。"
         },
         {
           "type": "paragraph",
-          "text": "第一種是 ChatGPT 裡的雲端代理，官方叫 Codex cloud。它住在 chatgpt.com/codex，也出現在 ChatGPT 網頁與桌面 App 的側欄。你先把 GitHub（或測試中的 GitLab）帳號連上，替一個專案建立「環境」，Codex 就會在 OpenAI 管理的隔離容器裡把你的程式庫抓下來、跑你設定的安裝腳本，然後照任務去改。任務可以同時開好幾個、在背景跑，還能從手機的 ChatGPT App 追進度。做完你會看到一份摘要和 diff（改了哪幾行的對照），可以要求再修，也可以直接開成 GitHub 的 pull request（PR）。它還能反過來當審查者：在 PR 底下留言 @codex review，它會標出最嚴重的 P0、P1 問題，開啟「Automatic reviews」之後每個新 PR 都會自動被看一遍。"
+          "text": "「與 ChatGPT 有什麼不同」不能只用應用程式名稱判斷：官方桌面文件現在以 ChatGPT 桌面應用程式說明 Codex 工作。實際差別要看當前對話是否連到專案、是否能執行工具，以及成果是回答文字還是落在檔案中。一般聊天也可能有工具；Codex 也可能因環境限制只能分析。請看這一次任務的能力，不要只看圖示或舊截圖。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本機工作使用你選定電腦的資料夾；雲端工作使用另外設定的環境。兩者即使叫同一個專案，也不代表未提交檔案會自動同步。手機遙控則需要可連線的主機。想先比較操作習慣，可讀"
+            },
+            {
+              "type": "article",
+              "text": "平臺選擇",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "；本篇採用桌面版或 CLI 的本機資料夾，讓檔案結果最容易確認。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先判斷：這個需求需要什麼能力？"
         },
         {
           "type": "paragraph",
-          "text": "第二種是 Codex CLI，跑在你自己電腦的終端機裡，macOS、Linux、Windows 都支援。安裝方式有官方的一行安裝腳本、npm（npm install -g @openai/codex）或 Homebrew（brew install --cask codex），裝好後輸入 codex，第一次會問你要用「Sign in with ChatGPT」登入方案，還是用 API key。它讀的是你硬碟上的專案，改動直接寫進檔案，但預設關在沙盒裡：只能改目前的工作區、不能連網，要越界就得問你。CLI 的程式碼是開源的（Apache-2.0 授權），放在 GitHub 的 openai/codex；IDE 擴充與雲端版則不開源。"
+          "text": "先不執行任務，判斷三個情境。① 你貼上十行文字，請它說明意思。② 你要求把電腦中的 packing.txt 改好，關閉對話後也能打開檔案看到結果。③ 你希望它在已設定的 GitHub 儲存庫環境中修改程式，供你稍後檢查差異。各情境需要的是讀取提供的文字、存取本機檔案，還是存取指定的遠端環境？"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "答案依序是：① 提供的文字已足夠，不必存取你的整個資料夾。② 必須選對本機資料夾，且工具確實有讀寫能力；回覆一段新文字不代表檔案已修改。③ 必須先設定並選對遠端儲存庫與環境；本機尚未提交的檔案不能當成它已讀到的內容。第二種可接著看"
+            },
+            {
+              "type": "article",
+              "text": "桌面入門",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "，第三種看"
+            },
+            {
+              "type": "article",
+              "text": "雲端任務",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "。這是需求判讀練習，不要求你現在開通三種入口。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "準備獨立練習資料夾"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先確認已有可用的 Codex 登入。還沒安裝時，先完成"
+            },
+            {
+              "type": "article",
+              "text": "桌面版",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "或 "
+            },
+            {
+              "type": "article",
+              "text": "CLI 入門",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。這裡只需要純文字編輯器與終端機，不需要 GitHub、API 金鑰、Node.js 或 Python。先用檔案管理員在自己的檔案資料夾建立 codex-orientation；若同名資料夾已存在，改用另一個新名稱，避免覆蓋舊練習。"
+            }
+          ]
         },
         {
           "type": "paragraph",
-          "text": "第三種是 IDE 擴充，裝在你寫程式的編輯器裡：官方列出的有 VS Code、VS Code Insiders、Cursor、Windsurf、JetBrains 系列與 Xcode，在 VS Code 市集的識別名稱是 openai.chatgpt，裝好後從命令面板執行「Codex: Open Codex Sidebar」。它的長處是把你正開著的檔案、選取的那幾行直接帶進提示，改完的 diff 就顯示在原始碼旁邊，你可以只留想要的部分；短的修改在本機做，長任務可以從編輯器直接丟到雲端環境，做完再回來看。"
+          "text": "Windows 開啟檔案總管的副檔名顯示，以記事本儲存時選擇所有檔案與 UTF-8；macOS 使用純文字模式的編輯器，避免儲存成 RTF；Linux 使用純文字編輯器並保留檔名大小寫。在新資料夾建立下面兩個完整檔案。副檔名分別是 .md 與 .txt，不要把顯示在文章外面的檔名也複製進內容。"
         },
         {
           "type": "paragraph",
-          "text": "另外還有一個 ChatGPT 桌面 App（macOS、Windows、Linux），產品選擇器可以在 Chat、Work、Codex 之間切換；選 Codex 之後，還能挑這次對話要在本機目錄（Local）、獨立的 Git worktree，還是雲端環境（Cloud）裡跑。對入門者來說，它是三種形態的共同入口，不想碰終端機的人從這裡開始最省事。"
+          "text": "檔案一：codex-orientation/README.md。這是供人閱讀的專案說明，不會因為副檔名是 .md 就自動變成代理規則。"
         },
         {
-          "type": "link",
-          "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+          "type": "code",
+          "label": "檔案內容：貼入 README.md",
+          "language": "markdown",
+          "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "檔案二：codex-orientation/packing.txt。每個物品各占一行，最後一行後可以有換行。"
+        },
+        {
+          "type": "code",
+          "label": "檔案內容：貼入 packing.txt",
+          "language": "text",
+          "code": "Notebook\nBottle\nUmbrella\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：選對位置，先做唯讀任務"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版把 codex-orientation 加入專案後建立任務。CLI 則在這個資料夾開啟終端機，再執行 codex。若你只開啟電腦的檔案總資料夾，任務可能看見許多不相關檔案；先縮小到練習資料夾，再貼下方提示詞。英文範例在五語版保持相同，方便對照結果，也可以用自己的語言提出同樣要求。"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：貼入 Codex 任務輸入區",
+          "language": "text",
+          "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期回答指出兩個檔案、三個物品，以及這裡沒有可執行網站。開啟檔案管理員比對路徑和內容；回答格式不用逐字一致，但不能增加原文沒有的資料。若它只提供「你可以執行某命令」，先確認目前入口是否真的有檔案工具，而不是把教你做事的回答誤認成已執行。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：只修改一個可檢查的項目"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：貼入同一個 Codex 任務",
+          "language": "text",
+          "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接受相關檔案修改要求後，重新開啟 packing.txt。預期三行依序是 Notebook、Bottle、Raincoat；README.md 完全相同，沒有新套件或多餘檔案。若工具要求超出這個資料夾的授權，先看原因並縮小任務。本例不需要全面存取電腦。關於權限的實際控制，另見"
+            },
+            {
+              "type": "article",
+              "text": "權限與沙盒",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：驗證失敗情況與還原"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著要求「唯讀列出 missing.txt 內容；不存在就說明，不要建立」。正常結果是明確回報檔案不存在，而且資料夾仍只有原來兩個檔案。這個邊界案例測試它會不會在缺少資料時猜測；不需要真的刪除任何檔案製造錯誤。若它捏造內容，請它重新讀取目錄，指出缺乏證據的句子並修正回答。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "還原時在編輯器把 Raincoat 改回 Umbrella，儲存並再讀一次。不必執行全專案重設，也不要刪除整個檔案資料夾。中斷尚在執行的任務只能停止後續工作，已經寫入的文字仍要自行核對及還原。關閉對話也不等於把檔案恢復原狀，這是進入 "
+            },
+            {
+              "type": "article",
+              "text": "Git 教學",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "之前就應建立的習慣。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題與自主練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "看到的內容不同，先檢查是否選到另一個同名資料夾，以及編輯器是否尚未儲存；不要連續換模型重試。無法讀到 README.md，先顯示完整檔名，排除 README.md.txt、富文字格式及大小寫差異。只能看到舊對話時，重新確認任務對應的電腦和專案，而不是假定雲端會讀到剛建立的本機檔案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自己再做一次：把 Bottle 換成 Cup，要求保留順序與行數，再恢復原文。完成判準是能解釋資料在哪裡、指出真正修改的檔案、驗證三行內容，以及說明哪些動作沒有執行。接著讀"
+            },
+            {
+              "type": "article",
+              "text": "第一個小專案",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "text": "需求描述",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "，把同樣的查證方法用在可預覽的網站上。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "入口與產品名稱依 2026-09-14 的"
+            },
+            {
+              "type": "link",
+              "text": "桌面官方文件",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": "及 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 官方文件",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": "核對。這是原創文字檔練習；可用工具與實際回覆依讀者環境而異。跨平臺編輯步驟未冒充三個作業系統的實機 Codex 測試。"
+            }
+          ]
         },
         {
           "type": "table",
           "header": [
-            "形態",
-            "在哪裡",
-            "適合誰",
-            "需要什麼"
+            "角色",
+            "這次代表什麼"
           ],
           "rows": [
             [
-              "Codex cloud（ChatGPT 裡的雲端代理）",
-              "chatgpt.com/codex、ChatGPT 側欄、手機 ChatGPT App",
-              "專案已放在 GitHub、想交辦長任務、不想在自己電腦裝東西的人",
-              "ChatGPT 帳號、連上 GitHub 或 GitLab、替專案設好環境"
+              "代理",
+              "使用工具完成工作"
             ],
             [
-              "Codex CLI（終端機）",
-              "macOS、Linux、Windows 的終端機",
-              "習慣命令列、專案在本機、想寫進腳本或 CI 的人",
-              "安裝 CLI，用 ChatGPT 方案登入或 API key"
+              "模型",
+              "理解與推理"
             ],
             [
-              "IDE 擴充",
-              "VS Code、VS Code Insiders、Cursor、Windsurf、JetBrains、Xcode",
-              "每天在編輯器裡寫程式、想邊改邊看 diff 的人",
-              "裝擴充（VS Code 市集 openai.chatgpt）後登入"
+              "任務",
+              "這次需求和對話"
             ],
             [
-              "ChatGPT 桌面 App 的 Codex 模式",
-              "macOS、Windows、Linux 桌面 App",
-              "不想碰終端機的入門者；想在本機、worktree、雲端之間切換的人",
-              "下載 App、登入 ChatGPT 帳號、選一個資料夾"
+              "環境",
+              "可用的檔案與工具"
             ]
-          ],
-          "caption": "2026 年 9 月依 OpenAI 官方文件整理；支援的編輯器與登入方式以官網為準。"
-        },
-        {
-          "type": "heading",
-          "text": "和「跟 ChatGPT 聊天要程式碼」差在哪",
-          "level": 2
+          ]
         },
         {
           "type": "paragraph",
-          "text": "很多人已經會在 ChatGPT 裡說「幫我寫一段 Python 把 Excel 讀進來」，把回答貼進自己的檔案裡跑，出錯再貼回去問。這個流程裡，讀檔、執行、看錯誤訊息、決定下一步的人都是你，AI 只負責產生文字。Codex 把整個迴圈接過去：它在真實的專案目錄裡工作，看得到你所有的檔案，改完會自己執行測試或程式、讀輸出，沒過就回頭再改，直到通過或它判斷需要問你。官方的最佳實務講得很直接：叫它在需要時自己寫測試、跑相關檢查、確認結果，然後你再審查。"
+          "text": "圖中 01 是任務需求，02 是執行環境，03 是可驗證的檔案成果；三者對上，才能確認這次工作做在哪裡。"
         },
         {
-          "type": "paragraph",
-          "text": "另一個差別是產出的形式。聊天給你的是一段貼在對話裡的程式碼；Codex 給你的是一份 diff、一段說明，以及（雲端版）一個可以直接合併的 PR。桌面 App 的產品選擇器也反映這個分工：Chat 是一問一答，Work 是交辦研究、文件、試算表這類成品，Codex 則是給想看技術細節（Git 指令、diff、審查畫面）的人。整個代理迴圈可以拆成五步："
-        },
-        {
-          "type": "list",
-          "items": [
-            "任務：你用一句話加上限制條件交代目標，例如「做一個把 Excel 名單轉成 vCard 的工具，只能用標準函式庫」。",
-            "讀程式：代理先看專案結構、既有的程式碼與 AGENTS.md 裡的規則，決定要動哪些檔案。",
-            "改程式：新增或修改檔案，有需要時順手補測試。",
-            "跑測試：執行測試與程式本身、讀輸出；失敗就回到第 3 步，直到通過或它決定要問你。",
-            "交出 PR：整理成 diff 與摘要，雲端版可以直接開成 pull request，等你審。"
-          ],
-          "ordered": true
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
           "type": "image",
           "src": "/guides/codex-beginner-guide/diagram-1.svg",
-          "alt": "Codex 的三種形態與代理迴圈：上排是 Codex cloud 雲端代理、Codex CLI 終端機、IDE 擴充三個框，各寫在哪裡與特點；中間是五步迴圈任務、讀程式、改程式、跑測試、交出 PR，跑測試失敗會回到改程式；下排是各 ChatGPT 方案價格與 API 計費，以及看 diff 再合併、雲端代理階段不連網、不給正式環境金鑰三條底線",
+          "alt": "01. Codex 是什麼？與 ChatGPT 的差別 — 實作順序示意圖，非產品介面截圖。 Task → Environment → Files",
           "width": 1600,
           "height": 900,
-          "caption": "上排是三種形態，中間是它們共用的五步迴圈，下排是方案與安全底線（2026 年 9 月依官方文件查證）。",
+          "caption": "01. Codex 是什麼？與 ChatGPT 的差別 — 實作順序示意圖，非產品介面截圖。 Task → Environment → Files",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
             "source_url": null
           }
-        },
-        {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
-        },
-        {
-          "type": "link",
-          "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
-        },
-        {
-          "type": "heading",
-          "text": "誰能用、怎麼算錢",
-          "level": 2
-        },
-        {
-          "type": "paragraph",
-          "text": "依官方定價頁（2026 年 9 月查證），Codex 包含在所有 ChatGPT 方案裡：Free（US$0，官方說法是「探索 Codex、做快速的小任務」）、Go（US$8／月，輕量的程式任務）、Plus（US$20／月，「每週幾次專注的寫程式時段」，網頁、CLI、IDE、iOS 都能用，額度用完可加購）、Pro（US$100／月起，上限是 Plus 的 5 倍；US$200／月是 20 倍並含無限制語音）、Business（每人每月 US$20，年繳、2 人起；月繳 US$25）、Enterprise 與 Edu 另議。額度的算法是每 5 小時一個區間可以送幾則訊息，依模型不同：Plus 用 GPT-5.6 Terra 是 25 到 200 則，用 GPT-6 Astra 是 5 到 45 則，Pro 依倍數放大，Business 與 Plus 相同；本機訊息與雲端任務共用同一份額度。Free 與 Go 的具體額度官網沒有列數字，以官網為準。"
-        },
-        {
-          "type": "paragraph",
-          "text": "額度用完有兩條路。Plus 與 Pro 可以加購 credits，官方估 GPT-5.6 模型平均一則訊息消耗 5 到 30 credits，credits 的售價以官網為準。另一條是改用 API key 登入 CLI 或 IDE 擴充：這時走的是 OpenAI Platform 的用量計費，不吃 ChatGPT 方案額度，官方說適合 CI 這種共用環境。2026 年 9 月的 API 牌價，每百萬 token 輸入／輸出：GPT-5.6 Terra US$2／US$12，GPT-5.6 Luna US$0.20／US$1.20，GPT-5.6 Sol US$4／US$20，GPT-6 Astra US$10／US$50。要注意代理會反覆讀檔、跑測試，token 用量比一問一答高得多，用 API key 之前先確認帳號的用量上限設定。"
-        },
-        {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
-        },
-        {
-          "type": "heading",
-          "text": "一個完整例子：把 Excel 名單轉成 vCard",
-          "level": 2
-        },
-        {
-          "type": "paragraph",
-          "text": "假設你手上有一份活動報名的 Excel，欄位是姓名、公司、手機、Email，想一次匯進手機通訊錄。手機認的是 vCard（.vcf）檔，所以你需要一個小工具。你不用先想程式怎麼寫，只要把需求講清楚；官方最佳實務建議提示裡放四件事：目標、脈絡、限制、什麼叫完成。用 CLI 的話，先在一個空資料夾裡輸入 codex，然後這樣說："
-        },
-        {
-          "type": "paragraph",
-          "text": "「目標：寫一個命令列工具，把 contacts.xlsx 轉成 contacts.vcf。脈絡：Excel 第一列是欄位名稱，欄位有姓名、公司、手機、Email，手機是台灣的 09 開頭十碼。限制：用 Python，讀 Excel 可以裝 openpyxl，其他只用標準函式庫，不要動這個資料夾以外的東西。完成的定義：附一個含三筆假資料的測試檔，測試通過，README 說明怎麼跑。」"
-        },
-        {
-          "type": "list",
-          "items": [
-            "它先列出資料夾內容，確認是空的，然後規劃要建哪些檔案。預設的沙盒讓它在這個資料夾裡可以直接建檔，但安裝 openpyxl 需要連網，它會停下來請你核准這一步。",
-            "接著它寫出 convert.py：讀 Excel、逐列組成 vCard 格式的文字、寫成 .vcf，並處理手機號碼開頭的 0 被 Excel 當數字吃掉的問題。",
-            "它自己建 test_convert.py 與一個三筆假資料的 Excel，執行 pytest。第一次可能失敗，例如 Email 欄位是空的時候出錯；它讀錯誤訊息、補上空值處理、再跑一次，直到通過。",
-            "最後它回報做了什麼、列出 diff，並說明它假設了哪些事（例如欄位名稱的寫法）。你把真正的 contacts.xlsx 丟進去跑一次，匯進手機確認，不對就再交代一輪。"
-          ],
-          "ordered": true
-        },
-        {
-          "type": "paragraph",
-          "text": "同樣的任務交給雲端版，差別只在起點與終點：你要先把資料夾推上 GitHub、在 Codex cloud 替它建環境（安裝腳本寫 pip install openpyxl），任務結束時它交出的是一個 PR，你在手機上就能看 diff、決定要不要合併。這正是三種形態的關係：同一個代理、同一套迴圈，只是跑在哪裡、結果送到哪裡不同。"
-        },
-        {
-          "type": "heading",
-          "text": "風險與限制：看 diff 再合併、沙盒、金鑰",
-          "level": 2
-        },
-        {
-          "type": "paragraph",
-          "text": "Codex 會動真的檔案、跑真的指令，所以官方文件反覆強調三件事。第一，把它交出來的東西當成同事的 PR 來審：看 diff、跑你自己的檢查、在 commit 訊息裡寫下決定。它會自己跑測試，但測試多半也是它寫的，通過只代表它跟自己的理解一致，不代表符合你的需求。第二，先開分支、確認 git status 是乾淨的再交辦，改壞了才好退回。第三，別讓它看到不該看的東西。"
-        },
-        {
-          "type": "paragraph",
-          "text": "本機的沙盒是作業系統層級的：macOS 用內建的 Seatbelt，Linux 用 bubblewrap，Windows 在 PowerShell 有原生沙盒、在 WSL2 則走 Linux 那套。預設模式是 workspace-write：能讀寫目前的工作區、能跑指令，但不能連網、不能碰工作區以外的檔案，要越界就會問你（on-request）。另外兩個模式是 read-only（只看不改）與 danger-full-access（完全不設限，名字裡就有 danger）。桌面 App 的對應選項叫「Ask for approval」「Approve for me」「Full access」，中間那個會把越界請求交給一個自動審查代理先看過；官方特別說明，換誰來核准並不會放大沙盒的範圍。"
-        },
-        {
-          "type": "paragraph",
-          "text": "雲端版的規則不同但更嚴。每次任務分兩段：先跑你設定的安裝腳本，這段可以連網、看得到你放的 Secrets；然後才進入代理階段，這時 Secrets 已經被移除，網路預設整個關閉，要開也只能挑「常見套件來源」的白名單或自己加網域，還能限制只准 GET、HEAD、OPTIONS。官方列出的理由是提示注入（網頁或 issue 裡藏指令，騙代理把程式或密鑰傳出去）、程式或 Secrets 外洩、下載到惡意套件，以及授權有問題的程式碼。容器狀態會快取最多 12 小時，用來加速後續任務。"
-        },
-        {
-          "type": "list",
-          "items": [
-            "不要把正式環境的資料庫密碼、API 金鑰、雲端帳號憑證放進代理看得到的地方；雲端環境只放安裝套件需要的 Secrets，本機就用另一組只有測試權限的金鑰。",
-            "不要在正式環境的伺服器上跑 CLI；在自己的電腦、分支或雲端環境裡做完，經過審查再部署。",
-            "不要因為嫌它一直問就切到 Full access 或 danger-full-access；先想清楚它為什麼需要越界。",
-            "Free 與 Go 方案額度較低，長任務可能中途用完；額度與方案內容以官網為準。"
-          ],
-          "ordered": false
-        },
-        {
-          "type": "callout",
-          "tone": "tip",
-          "title": "第一次用，先從自己的小專案開始",
-          "text": "找一個只有你在用、壞了也不痛的小東西：整理照片檔名的腳本、上面那個 vCard 轉檔、部落格的一個小修正。任務要小到一次做完、結果你自己驗得出來。先在本機或 worktree 模式跑，看它怎麼問、怎麼改、怎麼跑測試，習慣看 diff 之後，再把它接到公司的程式庫或開 PR。"
         }
       ],
       "sources": [
         {
-          "title": "OpenAI Codex 文件總覽（developers.openai.com/codex 轉址至此）",
-          "url": "https://learn.chatgpt.com/docs",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Codex 詞彙表：Codex、Codex cloud、Codex CLI、IDE extension 的官方定義",
-          "url": "https://learn.chatgpt.com/docs/glossary",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Codex cloud：雲端隔離環境、從 GitHub／GitLab／Linear／Slack 啟動、開 PR",
-          "url": "https://learn.chatgpt.com/docs/cloud",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Codex cloud 環境設定：容器、安裝腳本、Secrets 只在 setup 階段、快取 12 小時",
-          "url": "https://learn.chatgpt.com/docs/environments/cloud-environment",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Codex cloud 代理網路存取：預設關閉、白名單、HTTP 方法限制、提示注入風險",
-          "url": "https://learn.chatgpt.com/docs/cloud/internet-access",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Codex CLI：安裝指令、登入方式、/permissions、/model、/review",
-          "url": "https://learn.chatgpt.com/docs/codex/cli",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "Codex IDE 擴充：VS Code、Cursor、Windsurf、JetBrains、Xcode",
-          "url": "https://learn.chatgpt.com/docs/codex/ide",
-          "checked_on": "2026-09-13"
-        },
-        {
-          "title": "ChatGPT 桌面 App：macOS、Windows、Linux，Chat／Work／Codex 切換",
+          "title": "ChatGPT desktop app",
           "url": "https://learn.chatgpt.com/docs/app",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-09-14"
         },
         {
-          "title": "Chat、ChatGPT Work 與 Codex 的分工",
-          "url": "https://learn.chatgpt.com/docs/use-chatgpt",
-          "checked_on": "2026-09-13"
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Codex 是什么？与 ChatGPT 的区别",
+      "description": "Codex 是能读取专案、修改档案并执行工具的程式开发代理。一般聊天给你的程式码，往往还要自己贴进编辑器；代理则可以在你选定的工作环境里完成修改。模型是它用来推理的引擎，任务是一次工作，专案是相关档案与工作的集合，三者不要混为一谈。",
+      "hero": {
+        "src": "/guides/codex-beginner-guide/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
         },
         {
-          "title": "Codex 定價與各方案額度（Free、Go、Plus、Pro、Business、Enterprise、API key）",
-          "url": "https://learn.chatgpt.com/docs/pricing",
-          "checked_on": "2026-09-13"
+          "type": "heading",
+          "level": 2,
+          "text": "读完能做到什么"
         },
         {
-          "title": "OpenAI API 定價（GPT-6 Astra、GPT-5.6 Sol／Terra／Luna 每百萬 token 牌價）",
-          "url": "https://developers.openai.com/api/docs/pricing",
-          "checked_on": "2026-09-13"
+          "type": "callout",
+          "tone": "info",
+          "text": "你会分清楚 Codex、模型、任务和工作环境，并用一个只有两个档案的小资料夹完成「先读取、再修改、自己验证」。阅读约 10 分钟，实作约 15 分钟；不需要先学会写程式，也不会在这一篇部署网站。"
         },
         {
-          "title": "Codex 可用模型與推理深度",
-          "url": "https://learn.chatgpt.com/docs/models",
-          "checked_on": "2026-09-13"
+          "type": "heading",
+          "level": 2,
+          "text": "先理解四个角色"
         },
         {
-          "title": "Codex 沙盒：Seatbelt、bubblewrap、Windows 沙盒；read-only、workspace-write、danger-full-access",
-          "url": "https://learn.chatgpt.com/docs/sandboxing",
-          "checked_on": "2026-09-13"
+          "type": "paragraph",
+          "text": "Codex 是能在取得相应工具与权限后读档、修改及执行命令的代理。模型负责推理；任务储存这次需求与对话；工作环境决定实际能接触哪些档案和工具。换一个更强的模型，不会让选错资料夹的任务突然找到你的专案。后续每次求助，都先记下入口、工作目录和可用工具。"
         },
         {
-          "title": "Codex 代理核准與安全：on-request、網路預設關閉、把建議當 PR 審",
-          "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
-          "checked_on": "2026-09-13"
+          "type": "paragraph",
+          "text": "「与 ChatGPT 有什么不同」不能只用应用程式名称判断：官方桌面文件现在以 ChatGPT 桌面应用程式说明 Codex 工作。实际差别要看当前对话是否连到专案、是否能执行工具，以及成果是回答文字还是落在档案中。一般聊天也可能有工具；Codex 也可能因环境限制只能分析。请看这一次任务的能力，不要只看图示或旧截图。"
         },
         {
-          "title": "桌面 App 權限模式：Ask for approval、Approve for me、Full access",
-          "url": "https://learn.chatgpt.com/docs/permission-modes",
-          "checked_on": "2026-09-13"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本机工作使用你选定电脑的资料夹；云端工作使用另外设定的环境。两者即使叫同一个专案，也不代表未提交档案会自动同步。手机遥控则需要可连线的主机。想先比较操作习惯，可读"
+            },
+            {
+              "type": "article",
+              "text": "平台选择",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "；本篇采用桌面版或 CLI 的本机资料夹，让档案结果最容易确认。"
+            }
+          ]
         },
         {
-          "title": "GitHub 整合：@codex review、Automatic reviews、P0／P1 問題",
-          "url": "https://learn.chatgpt.com/docs/third-party/github",
-          "checked_on": "2026-09-13"
+          "type": "heading",
+          "level": 3,
+          "text": "先判断：这个需求需要什么能力？"
         },
         {
-          "title": "Codex 最佳實務：目標、脈絡、限制、完成定義；讓它寫測試、跑檢查再審查",
-          "url": "https://learn.chatgpt.com/guides/best-practices",
-          "checked_on": "2026-09-13"
+          "type": "paragraph",
+          "text": "先不执行任务，判断三个情境。① 你贴上十行文字，请它说明意思。② 你要求把电脑中的 packing.txt 改好，关闭对话后也能打开档案看到结果。③ 你希望它在已设定的 GitHub 储存库环境中修改程式，供你稍后检查差异。各情境需要的是读取提供的文字、存取本机档案，还是存取指定的远端环境？"
         },
         {
-          "title": "openai/codex GitHub README：Codex CLI 安裝、登入、Apache-2.0 授權",
-          "url": "https://github.com/openai/codex",
-          "checked_on": "2026-09-13"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "答案依序是：① 提供的文字已足够，不必存取你的整个资料夹。② 必须选对本机资料夹，且工具确实有读写能力；回复一段新文字不代表档案已修改。③ 必须先设定并选对远端储存库与环境；本机尚未提交的档案不能当成它已读到的内容。第二种可接著看"
+            },
+            {
+              "type": "article",
+              "text": "桌面入门",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "，第三种看"
+            },
+            {
+              "type": "article",
+              "text": "云端任务",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "。这是需求判读练习，不要求你现在开通三种入口。"
+            }
+          ]
         },
         {
-          "title": "Codex 開源元件：CLI 開源，IDE 擴充與雲端版不開源",
-          "url": "https://learn.chatgpt.com/docs/open-source",
-          "checked_on": "2026-09-13"
+          "type": "heading",
+          "level": 2,
+          "text": "准备独立练习资料夹"
         },
         {
-          "title": "Codex Remote：從手機的 ChatGPT App 啟動、核准、審查任務",
-          "url": "https://learn.chatgpt.com/docs/remote",
-          "checked_on": "2026-09-13"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先确认已有可用的 Codex 登入。还没安装时，先完成"
+            },
+            {
+              "type": "article",
+              "text": "桌面版",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "或 "
+            },
+            {
+              "type": "article",
+              "text": "CLI 入门",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。这里只需要纯文字编辑器与终端机，不需要 GitHub、API 金钥、Node.js 或 Python。先用档案管理员在自己的档案资料夹建立 codex-orientation；若同名资料夹已存在，改用另一个新名称，避免覆盖旧练习。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 开启档案总管的副档名显示，以记事本储存时选择所有档案与 UTF-8；macOS 使用纯文字模式的编辑器，避免储存成 RTF；Linux 使用纯文字编辑器并保留档名大小写。在新资料夹建立下面两个完整档案。副档名分别是 .md 与 .txt，不要把显示在文章外面的档名也复制进内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "档案一：codex-orientation/README.md。这是供人阅读的专案说明，不会因为副档名是 .md 就自动变成代理规则。"
+        },
+        {
+          "type": "code",
+          "label": "档案内容：贴入 README.md",
+          "language": "markdown",
+          "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "档案二：codex-orientation/packing.txt。每个物品各占一行，最后一行后可以有换行。"
+        },
+        {
+          "type": "code",
+          "label": "档案内容：贴入 packing.txt",
+          "language": "text",
+          "code": "Notebook\nBottle\nUmbrella\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：选对位置，先做唯读任务"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版把 codex-orientation 加入专案后建立任务。CLI 则在这个资料夹开启终端机，再执行 codex。若你只开启电脑的档案总资料夹，任务可能看见许多不相关档案；先缩小到练习资料夹，再贴下方提示词。英文范例在五语版保持相同，方便对照结果，也可以用自己的语言提出同样要求。"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：贴入 Codex 任务输入区",
+          "language": "text",
+          "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期回答指出两个档案、三个物品，以及这里没有可执行网站。开启档案管理员比对路径和内容；回答格式不用逐字一致，但不能增加原文没有的资料。若它只提供「你可以执行某命令」，先确认目前入口是否真的有档案工具，而不是把教你做事的回答误认成已执行。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：只修改一个可检查的项目"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：贴入同一个 Codex 任务",
+          "language": "text",
+          "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接受相关档案修改要求后，重新开启 packing.txt。预期三行依序是 Notebook、Bottle、Raincoat；README.md 完全相同，没有新套件或多余档案。若工具要求超出这个资料夹的授权，先看原因并缩小任务。本例不需要全面存取电脑。关于权限的实际控制，另见"
+            },
+            {
+              "type": "article",
+              "text": "权限与沙盒",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：验证失败情况与还原"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著要求「唯读列出 missing.txt 内容；不存在就说明，不要建立」。正常结果是明确回报档案不存在，而且资料夹仍只有原来两个档案。这个边界案例测试它会不会在缺少资料时猜测；不需要真的删除任何档案制造错误。若它捏造内容，请它重新读取目录，指出缺乏证据的句子并修正回答。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "还原时在编辑器把 Raincoat 改回 Umbrella，储存并再读一次。不必执行全专案重设，也不要删除整个档案资料夹。中断尚在执行的任务只能停止后续工作，已经写入的文字仍要自行核对及还原。关闭对话也不等于把档案恢复原状，这是进入 "
+            },
+            {
+              "type": "article",
+              "text": "Git 教学",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "之前就应建立的习惯。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题与自主练习"
+        },
+        {
+          "type": "paragraph",
+          "text": "看到的内容不同，先检查是否选到另一个同名资料夹，以及编辑器是否尚未储存；不要连续换模型重试。无法读到 README.md，先显示完整档名，排除 README.md.txt、富文字格式及大小写差异。只能看到旧对话时，重新确认任务对应的电脑和专案，而不是假定云端会读到刚建立的本机档案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自己再做一次：把 Bottle 换成 Cup，要求保留顺序与行数，再恢复原文。完成判准是能解释资料在哪里、指出真正修改的档案、验证三行内容，以及说明哪些动作没有执行。接著读"
+            },
+            {
+              "type": "article",
+              "text": "第一个小专案",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "article",
+              "text": "需求描述",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "，把同样的查证方法用在可预览的网站上。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "入口与产品名称依 2026-09-14 的"
+            },
+            {
+              "type": "link",
+              "text": "桌面官方文件",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": "及 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 官方文件",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": "核对。这是原创文字档练习；可用工具与实际回复依读者环境而异。跨平台编辑步骤未冒充三个作业系统的实机 Codex 测试。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "角色",
+            "这次代表什么"
+          ],
+          "rows": [
+            [
+              "代理",
+              "使用工具完成工作"
+            ],
+            [
+              "模型",
+              "理解与推理"
+            ],
+            [
+              "任务",
+              "这次需求和对话"
+            ],
+            [
+              "环境",
+              "可用的档案与工具"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "图中 01 是任务需求，02 是执行环境，03 是可验证的档案成果；三者对上，才能确认这次工作做在哪里。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-beginner-guide/diagram-1.svg",
+          "alt": "01. Codex 是什么？与 ChatGPT 的区别 — 实作顺序示意图，非产品介面截图。 Task → Environment → Files",
+          "width": 1600,
+          "height": 900,
+          "caption": "01. Codex 是什么？与 ChatGPT 的区别 — 实作顺序示意图，非产品介面截图。 Task → Environment → Files",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "What is Codex? How it differs from ChatGPT",
+      "description": "Codex is a coding agent that can inspect a project, edit files and run tools in a chosen environment. A model supplies its reasoning; a task is one assignment; a project groups related work and files. Unlike copying a code answer from chat into an editor, an agent can make the change in the workspace you selected.",
+      "hero": {
+        "src": "/guides/codex-beginner-guide/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will be able to do"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Distinguish Codex, a model, a task and its environment, then inspect, edit and independently check a folder containing just two files. Allow about 10 minutes to read and 15 to practise. You do not need programming experience; this exercise does not deploy a website."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Understand four different roles"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex is an agent that can read files, make changes and run commands when the appropriate tools and permissions are available. The model supplies reasoning; the task holds the request and conversation; the environment determines accessible files and tools. A more capable model will not correct a task pointed at the wrong folder. When asking for help, identify the interface, working directory and available tools first."
+        },
+        {
+          "type": "paragraph",
+          "text": "The distinction from ChatGPT is not simply the application name: current desktop documentation describes Codex work inside the ChatGPT desktop app. Check whether this conversation has a project, can use tools and produces actual file changes or only an answer. A general chat may also have tools; a constrained Codex environment may only support analysis. Judge the capabilities of this particular task rather than its icon or an old screenshot."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Local work uses a folder on the selected computer; cloud work uses a separately configured environment. Identical project names do not automatically synchronize uncommitted files. Mobile remote work also needs a reachable host. See "
+            },
+            {
+              "type": "article",
+              "text": "choosing a platform",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": " to compare workflows. This lesson uses a local folder in desktop or CLI so that you can readily inspect the result."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "First decide: what capabilities does the request need?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Without running a task, classify three scenarios. ① You paste ten lines and ask for an explanation. ② You want packing.txt on your computer changed so that you can open the result after closing the conversation. ③ You want changes in a configured GitHub repository environment for a later diff review. Which requires reading supplied text, local file access or access to a specific remote environment?"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The answers are: ① The supplied text is sufficient; access to your whole folder is unnecessary. ② Select the correct local folder and confirm that tools can read and write it; a reply containing revised text is not evidence that the file changed. ③ Configure and select the remote repository and environment; do not assume it has read uncommitted local files. Continue with "
+            },
+            {
+              "type": "article",
+              "text": "desktop basics",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": " for the second case or "
+            },
+            {
+              "type": "article",
+              "text": "cloud tasks",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": " for the third. This exercise does not require setting up all three interfaces."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Prepare an independent practice folder"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Make sure you can sign in to Codex. If it is not installed, complete "
+            },
+            {
+              "type": "article",
+              "text": "desktop setup",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": " or "
+            },
+            {
+              "type": "article",
+              "text": "CLI setup",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": ". This exercise needs only a plain-text editor and terminal, not GitHub, an API key, Node.js or Python. Use your file manager to create codex-orientation in your documents folder. If that name already exists, choose a new one so that old work is preserved."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "On Windows, show filename extensions and save from Notepad as All files with UTF-8. On macOS, use plain-text mode rather than RTF. On Linux, use a text editor and preserve filename case. Create the following two complete files in the new folder. Their extensions are .md and .txt; the filename labels outside the examples are not part of their contents."
+        },
+        {
+          "type": "paragraph",
+          "text": "File one: codex-orientation/README.md. This describes the project for people; a .md extension alone does not turn it into agent instructions."
+        },
+        {
+          "type": "code",
+          "label": "File content: paste into README.md",
+          "language": "markdown",
+          "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "File two: codex-orientation/packing.txt. Put each item on its own line; a final newline is fine."
+        },
+        {
+          "type": "code",
+          "label": "File content: paste into packing.txt",
+          "language": "text",
+          "code": "Notebook\nBottle\nUmbrella\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: select the folder and inspect it"
+        },
+        {
+          "type": "paragraph",
+          "text": "In desktop, add codex-orientation as a project and create a task. In CLI, open a terminal in this folder and run codex. Opening the entire documents directory may expose unrelated files to the task; narrow the location to this exercise before pasting the prompt below. The English prompt is shared across all translations for comparable results; you may express the same request in your own language."
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: paste into the Codex task input",
+          "language": "text",
+          "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect two filenames, three items and an explanation that this is not an executable website. Compare the reported path and contents with your file manager. Wording may vary, but the answer must not add unsupported facts. If it only suggests commands for you to run, check whether this interface actually has file tools; instructions for doing work are not evidence that the work ran."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: request one checkable edit"
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: paste into the same Codex task",
+          "language": "text",
+          "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "After allowing the relevant file edit, reopen packing.txt. The three lines should be Notebook, Bottle and Raincoat, with README.md unchanged and no packages or extra files. If a tool asks for access outside this folder, inspect the reason and narrow the task. This exercise does not need unrestricted access to the computer. See "
+            },
+            {
+              "type": "article",
+              "text": "permissions and sandboxing",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": " for the actual controls."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: check failure handling and restore"
+        },
+        {
+          "type": "paragraph",
+          "text": "Next ask it to read missing.txt without writing anything and report if the file does not exist. A correct result states that it is missing and leaves the original two files alone. This tests whether the agent guesses when evidence is absent, without deleting anything to manufacture an error. If it invents contents, ask it to inspect the directory again and correct the unsupported statements."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "To restore the example, replace Raincoat with Umbrella in your editor, save and read it again. Do not reset an entire project or delete your documents directory. Interrupting a running task stops further work; text already written still needs checking and restoration. Closing a conversation does not undo file edits. Establish this habit before moving on to "
+            },
+            {
+              "type": "article",
+              "text": "Git",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting and independent practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "If the contents differ, check for another folder with the same name and unsaved editor changes before repeatedly switching models. If README.md is missing, show its full name and rule out README.md.txt, rich-text formatting and case differences. If you only see an old conversation, verify its computer and project instead of assuming that cloud work can see newly created local files."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Repeat independently: replace Bottle with Cup while preserving order and line count, then restore it. You are finished when you can locate the data, identify the actual changed file, verify all three lines and say which actions were not performed. Continue to "
+            },
+            {
+              "type": "article",
+              "text": "your first project",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "article",
+              "text": "writing a request",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": " to apply the same checks to a previewable website."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Interface and product terminology were checked against the "
+            },
+            {
+              "type": "link",
+              "text": "desktop documentation",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "link",
+              "text": "CLI documentation",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": " on 2026-09-14. This is an original text-file exercise; available tools and responses depend on your environment. The platform editing instructions are not presented as hands-on Codex tests on all three operating systems."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "Role",
+            "Meaning in this exercise"
+          ],
+          "rows": [
+            [
+              "Agent",
+              "Uses tools to do the work"
+            ],
+            [
+              "Model",
+              "Understanding and reasoning"
+            ],
+            [
+              "Task",
+              "This request and conversation"
+            ],
+            [
+              "Environment",
+              "Available files and tools"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "In the diagram, 01 is the task request, 02 the execution environment and 03 the verifiable file result. Match all three to locate the work."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-beginner-guide/diagram-1.svg",
+          "alt": "01. What is Codex? How it differs from ChatGPT — Workflow illustration, not a product screenshot. Task → Environment → Files",
+          "width": 1600,
+          "height": 900,
+          "caption": "01. What is Codex? How it differs from ChatGPT — Workflow illustration, not a product screenshot. Task → Environment → Files",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Codex とは？ChatGPT との違い",
+      "description": "Codex は、指定した環境でプロジェクトを読み、ファイルを編集し、ツールを実行できる開発エージェントです。モデルは推論の仕組み、タスクは一つの依頼、プロジェクトは関連する作業やファイルのまとまりです。チャットのコードを自分で貼り付ける方法とは、変更を行う場所が異なります。",
+      "hero": {
+        "src": "/guides/codex-beginner-guide/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "このレッスンの到達点"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Codex、モデル、タスク、実行環境を区別し、二つのファイルだけを使って「調べる、変更する、自分で確認する」を体験します。読む時間は約 10 分、実習は約 15 分です。プログラミング経験は不要で、この実習ではサイトを公開しません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "四つの役割を理解する"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex は、必要なツールと権限があればファイルを読み、変更し、コマンドを実行できるエージェントです。モデルは推論、タスクは依頼と会話、環境は利用できるファイルとツールを担います。高性能なモデルに変えても、間違ったフォルダーを選んだ問題は直りません。質問するときは入口、作業場所、使えるツールを先に整理しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT との違いをアプリ名だけで判断しないでください。現在の公式デスクトップ文書では、ChatGPT デスクトップアプリ内の Codex 作業が説明されています。プロジェクトに接続しているか、ツールを使えるか、結果が文章だけか実ファイルの変更かを見ます。通常のチャットにツールがある場合も、Codex が分析だけに制限される場合もあります。古い画像やアイコンより、今のタスクの能力を確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ローカル作業は選択したコンピューターのフォルダー、クラウド作業は別に設定した環境を使います。同名のプロジェクトでも未コミットのファイルが自動同期するとは限りません。スマートフォンのリモート作業には接続可能なホストも必要です。"
+            },
+            {
+              "type": "article",
+              "text": "入口の選び方",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "で比較できます。今回は成果を直接確認しやすいローカルのデスクトップか CLI を使います。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "まず判断：依頼に必要な機能は何ですか"
+        },
+        {
+          "type": "paragraph",
+          "text": "タスクを実行せずに三つの場面を分類します。① 貼り付けた十行の説明を求める。② パソコンの packing.txt を変更し、会話を閉じた後もファイルで結果を確認したい。③ 設定済みの GitHub リポジトリ環境で変更を行い、後から差分を確認したい。それぞれ必要なのは、提供された文章の読解、ローカルファイルへのアクセス、特定の遠隔環境へのアクセスのどれでしょうか。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "答えは順に、① 提供した文章だけで足り、フォルダー全体へのアクセスは不要。② 正しいローカルフォルダーを選び、ツールが読み書きできることを確認する。修正文が返るだけではファイル変更の証拠にならない。③ 遠隔リポジトリと環境を設定して選び、未コミットのローカルファイルを読んだとは決めつけない、です。② は"
+            },
+            {
+              "type": "article",
+              "text": "デスクトップ入門",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "、③ は"
+            },
+            {
+              "type": "article",
+              "text": "クラウドタスク",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "へ進めます。今ここで全入口を設定する必要はありません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "独立した練習フォルダーを用意する"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Codex にサインインできることを確認します。未導入なら"
+            },
+            {
+              "type": "article",
+              "text": "デスクトップ版",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "か "
+            },
+            {
+              "type": "article",
+              "text": "CLI 入門",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "を先に進めてください。今回はテキストエディターと端末だけでよく、GitHub、API キー、Node.js、Python は不要です。ファイル管理画面で書類フォルダー内に codex-orientation を新規作成します。同名があれば別名を選び、既存の練習を残します。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows は拡張子を表示し、メモ帳では「すべてのファイル」と UTF-8 で保存します。macOS は RTF ではなく標準テキストを使います。Linux もテキストエディターで、ファイル名の大文字小文字を保ちます。新しいフォルダーに次の二つの完全なファイルを作成してください。拡張子は .md と .txt です。例の外側にあるファイル名は内容に含めません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一つ目は codex-orientation/README.md。人向けのプロジェクト説明であり、.md だから自動的にエージェントの規則になるわけではありません。"
+        },
+        {
+          "type": "code",
+          "label": "ファイル内容：README.md に貼り付ける",
+          "language": "markdown",
+          "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "二つ目は codex-orientation/packing.txt。各項目を一行ずつ書き、末尾に改行があっても構いません。"
+        },
+        {
+          "type": "code",
+          "label": "ファイル内容：packing.txt に貼り付ける",
+          "language": "text",
+          "code": "Notebook\nBottle\nUmbrella\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 1：場所を選んで読み取りだけを依頼する"
+        },
+        {
+          "type": "paragraph",
+          "text": "デスクトップ版では codex-orientation をプロジェクトに追加してタスクを作成します。CLI はこのフォルダーで端末を開き、codex を実行します。書類全体を開くと無関係なファイルも対象になるため、練習フォルダーに絞ってから次の依頼を送ってください。比較しやすいよう英語の入力例は各言語で共通ですが、同じ依頼を自分の言葉で書いても構いません。"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：Codex タスクの入力欄に貼り付ける",
+          "language": "text",
+          "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "二つのファイル、三つの持ち物、実行できるサイトではないことが示されるはずです。ファイル管理画面でパスと内容を照合します。表現は同じでなくてもよいですが、元データにない事実を足してはいけません。コマンドの提案だけなら、現在の入口でファイルツールが利用できるか確認してください。操作方法の説明は実行済みの証拠ではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 2：確認できる変更を一つ依頼する"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：同じ Codex タスクに貼り付ける",
+          "language": "text",
+          "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "必要なファイル変更を許可した後、packing.txt を開き直します。Notebook、Bottle、Raincoat の三行になり、README.md は同じで、パッケージや余分なファイルが増えていないことを確認します。フォルダー外の権限を求められたら理由を読み、範囲を絞ってください。この実習にコンピューター全体へのアクセスは不要です。制御方法は"
+            },
+            {
+              "type": "article",
+              "text": "権限とサンドボックス",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "を参照してください。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 3：失敗時の対応と復元を確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "次に「missing.txt を読み取るだけにし、なければ説明して作成しない」と依頼します。正しい結果は不存在の報告で、元の二つのファイルがそのまま残ります。ファイルを削除せずに、情報がないときの推測を確認できます。内容を作り上げた場合は、ディレクトリを再確認し、根拠のない説明を訂正させましょう。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "復元するにはエディターで Raincoat を Umbrella に戻し、保存して読み直します。プロジェクト全体のリセットや書類フォルダーの削除は不要です。実行中のタスクを中断しても、すでに書かれた内容は確認と復元が必要です。会話を閉じてもファイル変更は元に戻りません。"
+            },
+            {
+              "type": "article",
+              "text": "Git",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "に進む前にこの習慣を身につけます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "よくある問題と追加練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "内容が異なる場合は、同名の別フォルダーやエディターの未保存状態を確認し、モデル変更を繰り返さないでください。README.md が見えなければ完全な名前を表示し、README.md.txt、リッチテキスト、大文字小文字の違いを調べます。古い会話だけが見える場合は、対応するコンピューターとプロジェクトを確認し、クラウドが新しいローカルファイルを読めると決めつけないでください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自分で Bottle を Cup に変え、順序と行数を保ってから復元してみましょう。データの場所、変更した実ファイル、三行の内容、実施していない操作を説明できれば完了です。次は"
+            },
+            {
+              "type": "article",
+              "text": "最初の小さなプロジェクト",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "と"
+            },
+            {
+              "type": "article",
+              "text": "依頼の書き方",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "で、同じ確認をプレビュー可能なサイトに応用します。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "入口と製品名は 2026-09-14 の"
+            },
+            {
+              "type": "link",
+              "text": "デスクトップ公式文書",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": "と "
+            },
+            {
+              "type": "link",
+              "text": "CLI 公式文書",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": "で確認しました。教材は独自のテキストファイル練習で、ツールや応答は環境により異なります。各 OS の編集手順を三つの OS での Codex 実機試験と称してはいません。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "役割",
+            "今回の意味"
+          ],
+          "rows": [
+            [
+              "エージェント",
+              "ツールで作業を実施"
+            ],
+            [
+              "モデル",
+              "理解と推論"
+            ],
+            [
+              "タスク",
+              "今回の依頼と会話"
+            ],
+            [
+              "環境",
+              "利用可能なファイルとツール"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "図の 01 は依頼、02 は実行環境、03 は検証できるファイル成果です。三つを照合して作業場所を確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-beginner-guide/diagram-1.svg",
+          "alt": "01. Codex とは？ChatGPT との違い — 作業の流れを表す図です。製品画面の画像ではありません。 Task → Environment → Files",
+          "width": 1600,
+          "height": 900,
+          "caption": "01. Codex とは？ChatGPT との違い — 作業の流れを表す図です。製品画面の画像ではありません。 Task → Environment → Files",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Codex란? ChatGPT와의 차이",
+      "description": "Codex는 선택한 환경에서 프로젝트를 읽고 파일을 수정하며 도구를 실행하는 개발 에이전트입니다. 모델은 추론을 담당하고, 작업은 하나의 요청이며, 프로젝트는 관련 파일과 작업의 묶음입니다. 채팅이 준 코드를 직접 붙여 넣는 방식과 달리 선택한 작업 공간에서 변경할 수 있습니다.",
+      "hero": {
+        "src": "/guides/codex-beginner-guide/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 강의에서 할 수 있게 되는 일"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Codex, 모델, 작업, 실행 환경을 구분하고 파일 두 개로 읽기, 수정, 직접 확인하기를 연습합니다. 읽기 약 10분, 실습 약 15분입니다. 프로그래밍 경험은 필요 없으며 이 실습에서 사이트를 배포하지는 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "네 가지 역할 이해하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex는 필요한 도구와 권한이 주어지면 파일을 읽고 수정하며 명령을 실행하는 에이전트입니다. 모델은 추론을, 작업은 요청과 대화 기록을, 환경은 접근 가능한 파일과 도구를 담당합니다. 더 강력한 모델을 선택해도 잘못 연 폴더가 자동으로 바뀌지는 않습니다. 도움을 요청할 때는 사용 화면, 작업 경로, 이용 가능한 도구부터 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT와의 차이를 앱 이름만으로 판단하면 안 됩니다. 현재 공식 데스크톱 문서는 ChatGPT 데스크톱 앱에서의 Codex 작업을 설명합니다. 현재 대화에 프로젝트가 연결되어 있는지, 도구를 실행할 수 있는지, 결과가 답변인지 실제 파일 변경인지 확인하세요. 일반 채팅에도 도구가 있을 수 있고 Codex도 분석만 가능한 환경일 수 있습니다. 오래된 아이콘보다 이번 작업의 실제 기능을 기준으로 판단합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "로컬 작업은 선택한 컴퓨터의 폴더를, 클라우드 작업은 별도로 구성한 환경을 사용합니다. 프로젝트 이름이 같아도 커밋하지 않은 파일까지 자동 동기화되지는 않습니다. 휴대전화 원격 작업에는 연결 가능한 호스트도 필요합니다. 방식 비교는 "
+            },
+            {
+              "type": "article",
+              "text": "플랫폼 선택",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "을 참고하세요. 이번에는 결과를 쉽게 확인할 수 있도록 데스크톱 또는 CLI의 로컬 폴더를 사용합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "먼저 판단하기: 요청에 어떤 기능이 필요한가요"
+        },
+        {
+          "type": "paragraph",
+          "text": "작업을 실행하지 않고 세 상황을 구분해 보세요. ① 열 줄을 붙여 넣고 설명을 요청합니다. ② 컴퓨터의 packing.txt를 수정하여 대화를 닫은 뒤에도 파일에서 결과를 확인하고 싶습니다. ③ 설정된 GitHub 저장소 환경에서 수정한 뒤 나중에 차이를 검토하고 싶습니다. 각 상황에는 제공한 텍스트 읽기, 로컬 파일 접근, 지정한 원격 환경 접근 중 무엇이 필요한가요?"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "정답은 다음과 같습니다. ① 제공한 텍스트만으로 충분하며 폴더 전체에 접근할 필요는 없습니다. ② 올바른 로컬 폴더를 선택하고 도구가 읽고 쓸 수 있는지 확인해야 합니다. 수정된 글을 답변으로 받았다는 사실만으로 파일이 바뀌었다고 볼 수는 없습니다. ③ 원격 저장소와 환경을 설정하고 선택해야 하며 커밋하지 않은 로컬 파일을 읽었다고 가정하면 안 됩니다. 두 번째는 "
+            },
+            {
+              "type": "article",
+              "text": "데스크톱 입문",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": ", 세 번째는 "
+            },
+            {
+              "type": "article",
+              "text": "클라우드 작업",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "으로 이어집니다. 지금 세 방식을 모두 설정할 필요는 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "독립된 실습 폴더 준비하기"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "먼저 Codex에 로그인할 수 있는지 확인하세요. 설치 전이라면 "
+            },
+            {
+              "type": "article",
+              "text": "데스크톱 설정",
+              "kind": "life",
+              "slug": "codex-desktop-getting-started"
+            },
+            {
+              "type": "text",
+              "text": " 또는 "
+            },
+            {
+              "type": "article",
+              "text": "CLI 입문",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "을 진행합니다. 이번에는 일반 텍스트 편집기와 터미널만 필요하며 GitHub, API 키, Node.js, Python은 필요 없습니다. 파일 관리자에서 문서 폴더에 codex-orientation을 새로 만드세요. 같은 이름이 있으면 다른 이름을 선택해 기존 작업을 보존합니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows에서는 확장자를 표시하고 메모장에서 파일 형식은 모든 파일, 인코딩은 UTF-8로 저장합니다. macOS에서는 RTF가 아닌 일반 텍스트 모드를 사용합니다. Linux에서도 텍스트 편집기를 쓰고 파일 이름의 대소문자를 유지하세요. 새 폴더에 아래 두 파일을 완성된 내용 그대로 만듭니다. 확장자는 .md와 .txt이며 예제 바깥의 파일 이름은 본문에 넣지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 파일은 codex-orientation/README.md입니다. 사람을 위한 프로젝트 설명이며 .md 확장자만으로 자동 적용되는 에이전트 규칙이 되지는 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "파일 내용: README.md에 붙여 넣기",
+          "language": "markdown",
+          "code": "# Orientation exercise\n\nThis folder contains a fictional packing list.\nThe list has exactly three items.\nNo website or package installation is required.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "둘째 파일은 codex-orientation/packing.txt입니다. 항목마다 한 줄씩 쓰며 마지막 줄 뒤에 줄바꿈이 있어도 됩니다."
+        },
+        {
+          "type": "code",
+          "label": "파일 내용: packing.txt에 붙여 넣기",
+          "language": "text",
+          "code": "Notebook\nBottle\nUmbrella\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 폴더를 선택하고 읽기만 요청하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱에서는 codex-orientation을 프로젝트로 추가한 뒤 작업을 만듭니다. CLI에서는 이 폴더에서 터미널을 열고 codex를 실행합니다. 문서 폴더 전체를 열면 관련 없는 파일까지 작업 대상이 될 수 있으므로 실습 폴더로 좁힌 뒤 아래 요청을 입력하세요. 영어 입력 예제는 결과 비교를 위해 모든 번역에서 동일하며 같은 내용을 자신의 언어로 요청해도 됩니다."
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: Codex 작업 입력란에 붙여 넣기",
+          "language": "text",
+          "code": "Inspect this practice folder without changing files.\nReport the working directory, list the files, and read README.md and packing.txt.\nExplain what this project contains. Cite the filenames supporting your answer.\nIf a requested file is missing, say so instead of guessing.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "예상 결과에는 파일 두 개, 물품 세 개, 실행할 웹사이트가 아니라는 설명이 포함됩니다. 파일 관리자에서 경로와 내용을 비교하세요. 표현이 완전히 같을 필요는 없지만 원문에 없는 사실을 추가하면 안 됩니다. 실행할 명령을 제안하기만 한다면 이 화면에 파일 도구가 있는지 확인하세요. 방법을 설명한 답변과 실제 실행은 다릅니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 확인 가능한 변경 하나 요청하기"
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: 같은 Codex 작업에 붙여 넣기",
+          "language": "text",
+          "code": "In packing.txt, replace the line Umbrella with Raincoat.\nPreserve the other two lines and leave README.md unchanged.\nDo not add files, install tools, or run a website.\nAfter editing, read packing.txt and report exactly what changed.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "해당 파일 수정을 허용한 뒤 packing.txt를 다시 엽니다. Notebook, Bottle, Raincoat의 세 줄이어야 하며 README.md는 그대로이고 추가 패키지나 파일이 없어야 합니다. 도구가 폴더 밖의 접근 권한을 요구하면 이유를 확인하고 범위를 좁히세요. 이 실습에는 컴퓨터 전체 접근이 필요 없습니다. 실제 제어 방법은 "
+            },
+            {
+              "type": "article",
+              "text": "권한과 샌드박스",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "를 참고합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 실패 처리와 복원 확인하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "다음으로 missing.txt를 읽기만 하고 파일이 없으면 설명하되 만들지 말라고 요청합니다. 정상 결과는 파일이 없다는 보고이며 기존 두 파일은 그대로 남습니다. 오류를 만들기 위해 파일을 지우지 않고도 근거가 없을 때 추측하는지 확인할 수 있습니다. 내용을 지어냈다면 폴더를 다시 확인하고 근거 없는 문장을 수정하도록 요청하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "복원하려면 편집기에서 Raincoat를 Umbrella로 되돌리고 저장한 뒤 다시 읽습니다. 프로젝트 전체를 초기화하거나 문서 폴더를 삭제할 필요는 없습니다. 실행 중인 작업을 중단해도 이미 기록된 내용은 직접 확인하고 복원해야 합니다. 대화를 닫는다고 파일 변경이 취소되지는 않습니다. "
+            },
+            {
+              "type": "article",
+              "text": "Git",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "을 배우기 전부터 이 습관을 들이세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결과 추가 연습"
+        },
+        {
+          "type": "paragraph",
+          "text": "내용이 다르면 같은 이름의 다른 폴더를 열었거나 편집 내용을 저장하지 않았는지 먼저 확인합니다. 모델을 반복해서 바꾸지 마세요. README.md를 못 찾으면 전체 이름을 표시해 README.md.txt, 서식 있는 텍스트, 대소문자 차이를 확인합니다. 이전 대화만 보인다면 연결된 컴퓨터와 프로젝트부터 확인하고 클라우드가 방금 만든 로컬 파일을 볼 수 있다고 가정하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이번에는 직접 Bottle을 Cup으로 바꾸되 순서와 줄 수를 유지하고 다시 복원하세요. 데이터 위치, 실제 수정 파일, 세 줄의 내용, 실행하지 않은 작업을 설명할 수 있으면 완료입니다. 다음으로 "
+            },
+            {
+              "type": "article",
+              "text": "첫 프로젝트",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "와 "
+            },
+            {
+              "type": "article",
+              "text": "요청 작성",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "을 읽고 미리 볼 수 있는 웹사이트에 같은 검증 방법을 적용합니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "화면 및 제품 명칭은 2026-09-14의 "
+            },
+            {
+              "type": "link",
+              "text": "공식 데스크톱 문서",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": "와 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 문서",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": "로 확인했습니다. 직접 만든 텍스트 파일 실습이며 도구와 답변은 환경마다 다릅니다. 운영체제별 편집 안내를 세 운영체제에서 Codex를 직접 테스트한 결과로 제시하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "역할",
+            "이번 실습에서의 의미"
+          ],
+          "rows": [
+            [
+              "에이전트",
+              "도구로 작업 수행"
+            ],
+            [
+              "모델",
+              "이해와 추론"
+            ],
+            [
+              "작업",
+              "이번 요청과 대화"
+            ],
+            [
+              "환경",
+              "이용 가능한 파일과 도구"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "그림의 01은 작업 요청, 02는 실행 환경, 03은 검증 가능한 파일 결과입니다. 세 가지를 맞춰 작업 위치를 확인합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-beginner-guide/diagram-1.svg",
+          "alt": "01. Codex란? ChatGPT와의 차이 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Task → Environment → Files",
+          "width": 1600,
+          "height": 900,
+          "caption": "01. Codex란? ChatGPT와의 차이 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Task → Environment → Files",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
         }
       ]
     }

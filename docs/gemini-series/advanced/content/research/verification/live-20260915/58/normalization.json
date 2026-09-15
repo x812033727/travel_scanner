@@ -1,0 +1,19 @@
+{
+  "provenance": "Codex derivation from captured model text, not a NotebookLM CSV export.",
+  "input": "corrected.json",
+  "inputSha256": "2929d704806c8f1ec3784e67efee254feec99a26e9a08ccf5f1342c657bbdc7b",
+  "answerChecksum": "5359b8cb",
+  "outputs": [
+    "evidence-matrix.csv",
+    "unknown-register.json"
+  ],
+  "changes": [
+    "Removed native citation-number display labels from claim and judgment cells.",
+    "Mapped comma-separated source IDs to the local checker's pipe-separated format.",
+    "Extracted verbatim quotes into per-source JSON; all quotes checked against sources.",
+    "Extracted chapter names, removing erroneous #### levels and literal <br> separators.",
+    "Represented U1/U2 no supporting quote as an empty object; kept checked sources separate."
+  ],
+  "claimOrJudgmentRewritten": false,
+  "rawCaptureUnchanged": true
+}

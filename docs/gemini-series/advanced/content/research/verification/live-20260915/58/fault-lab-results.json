@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "case": "reviewed",
+      "checkerOutcome": "accepted",
+      "detail": {
+        "claims": 5,
+        "quoteStructureValid": true,
+        "humanSemanticReviewRequired": true,
+        "modelCitationClicksTested": false
+      }
+    },
+    {
+      "case": "fake-quote",
+      "checkerOutcome": "rejected",
+      "detail": "fabricated_quote"
+    },
+    {
+      "case": "bad-claim",
+      "checkerOutcome": "accepted",
+      "detail": {
+        "claims": 5,
+        "quoteStructureValid": true,
+        "humanSemanticReviewRequired": true,
+        "modelCitationClicksTested": false
+      }
+    },
+    {
+      "case": "repaired",
+      "checkerOutcome": "accepted",
+      "detail": {
+        "claims": 5,
+        "quoteStructureValid": true,
+        "humanSemanticReviewRequired": true,
+        "modelCitationClicksTested": false
+      }
+    }
+  ],
+  "humanReview": {
+    "bad-claim": "Rejected: E2 replaces 24 with 30; 54 is not supported even with exact quotes.",
+    "repaired": "Accepted within the five-claim exercise; date proposal still needs confirmation."
+  },
+  "provenance": "Controlled local mutations of the reviewed model-derived matrix, not model mistakes.",
+  "modelCalls": 0
+}

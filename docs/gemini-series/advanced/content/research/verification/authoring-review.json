@@ -1,0 +1,930 @@
+{
+  "checkedAt": "2026-09-14T13:28:01.151348+00:00",
+  "status": "authoring-review-not-release",
+  "publishable": false,
+  "scope": "research track 57-62 only",
+  "baselineCommit": "394b0f998c6ebcd024053f4b9c7971d96ed82b98",
+  "preservation": {
+    "runtimeArticles": 50,
+    "originalPacksUnchanged": 51,
+    "priorDraftsUnchanged": 18,
+    "comparison": "Git content normalized for existing Windows checkout line endings; catalogue raw bytes also match previous batch receipt",
+    "catalogueSha256": "1f6afed7f3bf7f05a407b8d5af4647938cf6d91df6b42a381a904b1f6d697bb2"
+  },
+  "environment": {
+    "platform": "Windows",
+    "python": "3.13.15",
+    "pdfPython": "3.12.14",
+    "pypdf": "6.10.0",
+    "node": "24.13.0",
+    "browser": "151.0.7922.34"
+  },
+  "checks": {
+    "newPacks": 6,
+    "priorDrafts": 18,
+    "originalPages": 51,
+    "fixtureTests": 22,
+    "archives": 7,
+    "extractedFixtureTests": 22,
+    "artPreviews": 24,
+    "paperPages": 9,
+    "relatedApiPassed": 38,
+    "relatedApiSkipped": 8,
+    "apiSkipReason": "requires isolated PostgreSQL integration services",
+    "ruff": "passed",
+    "tasks": "passed with existing unrelated warnings"
+  },
+  "notTested": [
+    "Drive synchronization and uploaded source replacement",
+    "actual model answers and citation clicks",
+    "Studio quizzes and actual learner retests",
+    "model paper comparison matrix",
+    "actual generated handout audio video and 30 observations",
+    "Deep Research plan and generated report",
+    "published pages and sitemap"
+  ],
+  "modelCalls": 0,
+  "mediaGenerated": 0,
+  "files": [
+    {
+      "path": "apps/api/app/guides/content/gemini-research-report-workshop.json",
+      "sha256": "48db1684d41e3e3735a0d3c0007e3aa6a318ab6fc92027ece39af3fbb5a697eb",
+      "bytes": 15384
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-conflicting-sources.json",
+      "sha256": "dfcada4f9ce7447eec1ab93d8f3806b545c67e5fd3d37499e8ed7894cb40f218",
+      "bytes": 14119
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-multiformat-lesson-pack.json",
+      "sha256": "d1349290585f2a9d0692e7b24ac5dfc563d61e237f61dd89abb82ec2e41308c9",
+      "bytes": 14551
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-paper-comparison-matrix.json",
+      "sha256": "e63eeff80f47a15d59e44404a2009f4ccbc43ab97d013570f548c6fdfc78aeb6",
+      "bytes": 14243
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-source-versioning.json",
+      "sha256": "b670e39c5797d797619ec31fa10c8e2efc015c18b52e17bb2c789b7874157676",
+      "bytes": 13579
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-study-retrieval-practice.json",
+      "sha256": "1630f5889a1a9d8bbc56d2d8875c26025eba5f38c0a14ed199aff68a244a92a8",
+      "bytes": 13952
+    },
+    {
+      "path": "apps/web/public/guides/gemini-research-report-workshop/diagram-1.svg",
+      "sha256": "defa80bcdcf0c59e70cc5b7495628ae505de9ab39ead3b36e9756baac48fe09d",
+      "bytes": 2280
+    },
+    {
+      "path": "apps/web/public/guides/gemini-research-report-workshop/hero.jpg",
+      "sha256": "406811ec1b10ecc0547e3de02612c448d98446a760a7fa25f4f2cf1a80937fd0",
+      "bytes": 89225
+    },
+    {
+      "path": "apps/web/public/guides/gemini-research-report-workshop/hero.svg",
+      "sha256": "bb1cea166ecf102d39dab6e1e858c993494a253349232a3f39cc4afc8119136c",
+      "bytes": 1631
+    },
+    {
+      "path": "apps/web/public/guides/gemini-research-report-workshop/lesson-62.zip",
+      "sha256": "b70dd7690c2bbcbe54dad4c2565b274e62759b4e5cf5e129fedddb4aafc2544d",
+      "bytes": 121182
+    },
+    {
+      "path": "apps/web/public/guides/gemini-research-report-workshop/research-verification.zip",
+      "sha256": "3c00e7db6694f86cc5d41ffbc217c112d48f6acfbcb631f9c4eda96e3609c60b",
+      "bytes": 3005217
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-conflicting-sources/diagram-1.svg",
+      "sha256": "b308d45166242e431af8a9e598e60136c2419df4618ee23be8ace1f000736956",
+      "bytes": 2261
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-conflicting-sources/hero.jpg",
+      "sha256": "4f4c03839deaa7baa85fed3b88b32679f8cf73d5f8ed95d29b6d30acb54cc7d9",
+      "bytes": 87292
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-conflicting-sources/hero.svg",
+      "sha256": "fdda41de7d9da9df64500f36a2ef62fb669834c59058cd57dcb9229088b6a240",
+      "bytes": 1631
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-conflicting-sources/lesson-58.zip",
+      "sha256": "8cc760c6151f68839a0cd3f7f34d41a517287d34e583bf2f618669a72a183124",
+      "bytes": 6204
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-conflicting-sources/research-verification.zip",
+      "sha256": "3c00e7db6694f86cc5d41ffbc217c112d48f6acfbcb631f9c4eda96e3609c60b",
+      "bytes": 3005217
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-multiformat-lesson-pack/diagram-1.svg",
+      "sha256": "cb55c42ba47008f1e48f98a34e874afab4b69d3e457a39313d63e6157c8f9bd5",
+      "bytes": 2287
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-multiformat-lesson-pack/hero.jpg",
+      "sha256": "cde172744183865760823819f8e94feb04027275192f9420b6526a878cba227a",
+      "bytes": 92738
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-multiformat-lesson-pack/hero.svg",
+      "sha256": "601474b8f3a0cdf3858385d57326827c4345f0aa7a8b6f2739479c859abc88e3",
+      "bytes": 1631
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-multiformat-lesson-pack/lesson-61.zip",
+      "sha256": "cd0b1277ca9fafd788ed6b6953acb6bf929245b6f16381507bb9a13f12b63134",
+      "bytes": 6669
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-multiformat-lesson-pack/research-verification.zip",
+      "sha256": "3c00e7db6694f86cc5d41ffbc217c112d48f6acfbcb631f9c4eda96e3609c60b",
+      "bytes": 3005217
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-paper-comparison-matrix/diagram-1.svg",
+      "sha256": "76ae15ff86fc8f23fb0336422997be522dc62d4fb1cd5a7a3e3f47228d4bdbc5",
+      "bytes": 2283
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-paper-comparison-matrix/hero.jpg",
+      "sha256": "f6fbe6e02886d4e2965f3d5f032fcd9b0a27a53255ac96955ae2f234ab159d91",
+      "bytes": 89613
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-paper-comparison-matrix/hero.svg",
+      "sha256": "6683c4c7a2f79d41cde401fa04d25cda43a3c88669fac685a24bf3289e51debb",
+      "bytes": 1631
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-paper-comparison-matrix/lesson-60.zip",
+      "sha256": "12a5820b1221a0f2359c13b3f320e3ef1e7395830f82e03e159ddc4b5f5abb7d",
+      "bytes": 2864820
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-paper-comparison-matrix/research-verification.zip",
+      "sha256": "3c00e7db6694f86cc5d41ffbc217c112d48f6acfbcb631f9c4eda96e3609c60b",
+      "bytes": 3005217
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-source-versioning/diagram-1.svg",
+      "sha256": "1fc74a1da2872f51bd08a480b5b3ef1dee30fb6a3ccacaec26bcc9d952f50c68",
+      "bytes": 2256
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-source-versioning/hero.jpg",
+      "sha256": "00dea4dd41e7de0291309576b605773c82b7fe285b5250061b72fcf5f1946dc8",
+      "bytes": 91703
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-source-versioning/hero.svg",
+      "sha256": "eeb3ecfe3881e99998daebd78ec6cba3902528d18ddc51a450116d2d362df75e",
+      "bytes": 1631
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-source-versioning/lesson-57.zip",
+      "sha256": "2b9d416cdf7687a4f1bc5069d4794442b09b1bd3702fff27bc966555f0e805be",
+      "bytes": 7013
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-source-versioning/research-verification.zip",
+      "sha256": "3c00e7db6694f86cc5d41ffbc217c112d48f6acfbcb631f9c4eda96e3609c60b",
+      "bytes": 3005217
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-study-retrieval-practice/diagram-1.svg",
+      "sha256": "5b12018b01207da126d68275e3f13c14a6b5cf22077e56c15c57c874f2308bc9",
+      "bytes": 2280
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-study-retrieval-practice/hero.jpg",
+      "sha256": "7b0e26bfb9066984ea92ad8e4a4f245186e6889678e0f5265a9a7b99f806c98e",
+      "bytes": 88579
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-study-retrieval-practice/hero.svg",
+      "sha256": "9b7e1acc016610e3b462525d0797b7827a24e3e30dfe3713bcb414ba2683ca9b",
+      "bytes": 1631
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-study-retrieval-practice/lesson-59.zip",
+      "sha256": "ed9a125cb1a03f9cc773e7243176b3b5f416a38b45301cb95e8c9d32a958c6e0",
+      "bytes": 8542
+    },
+    {
+      "path": "apps/web/public/guides/notebooklm-study-retrieval-practice/research-verification.zip",
+      "sha256": "3c00e7db6694f86cc5d41ffbc217c112d48f6acfbcb631f9c4eda96e3609c60b",
+      "bytes": 3005217
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/57/diagram-1.svg",
+      "sha256": "1fc74a1da2872f51bd08a480b5b3ef1dee30fb6a3ccacaec26bcc9d952f50c68",
+      "bytes": 2256
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/57/hero.jpg",
+      "sha256": "00dea4dd41e7de0291309576b605773c82b7fe285b5250061b72fcf5f1946dc8",
+      "bytes": 91703
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/57/hero.svg",
+      "sha256": "eeb3ecfe3881e99998daebd78ec6cba3902528d18ddc51a450116d2d362df75e",
+      "bytes": 1631
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/57/lesson.md",
+      "sha256": "fc42ba014cb572d6e225fec162da08fce5f821f61fad3279e01d4c5f6cb61935",
+      "bytes": 6400
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/57/meta.json",
+      "sha256": "a9887a6c8cbed42979715fc39c821cab983f02b1b57b4c10b621a34455125071",
+      "bytes": 1132
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/58/diagram-1.svg",
+      "sha256": "b308d45166242e431af8a9e598e60136c2419df4618ee23be8ace1f000736956",
+      "bytes": 2261
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/58/hero.jpg",
+      "sha256": "4f4c03839deaa7baa85fed3b88b32679f8cf73d5f8ed95d29b6d30acb54cc7d9",
+      "bytes": 87292
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/58/hero.svg",
+      "sha256": "fdda41de7d9da9df64500f36a2ef62fb669834c59058cd57dcb9229088b6a240",
+      "bytes": 1631
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/58/lesson.md",
+      "sha256": "10e842608b1cf45a4a233947c853252c5b770a6651a340c6f31854e5fcd576f1",
+      "bytes": 6258
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/58/meta.json",
+      "sha256": "9fe5769ccd92fb2357e57c3662912bec69f554225c2aaaaf17dac4c1a3cbff6b",
+      "bytes": 1125
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/59/diagram-1.svg",
+      "sha256": "5b12018b01207da126d68275e3f13c14a6b5cf22077e56c15c57c874f2308bc9",
+      "bytes": 2280
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/59/hero.jpg",
+      "sha256": "7b0e26bfb9066984ea92ad8e4a4f245186e6889678e0f5265a9a7b99f806c98e",
+      "bytes": 88579
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/59/hero.svg",
+      "sha256": "9b7e1acc016610e3b462525d0797b7827a24e3e30dfe3713bcb414ba2683ca9b",
+      "bytes": 1631
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/59/lesson.md",
+      "sha256": "23012019c2b733f9d1d4efba7a859be2bde908d1fc390eefbaf8770475a14c54",
+      "bytes": 6401
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/59/meta.json",
+      "sha256": "4c51bce5d2f8f6f845ce82222680bf212334d0cfe1ad1f6f1bf444098c3068a1",
+      "bytes": 1124
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/60/diagram-1.svg",
+      "sha256": "76ae15ff86fc8f23fb0336422997be522dc62d4fb1cd5a7a3e3f47228d4bdbc5",
+      "bytes": 2283
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/60/hero.jpg",
+      "sha256": "f6fbe6e02886d4e2965f3d5f032fcd9b0a27a53255ac96955ae2f234ab159d91",
+      "bytes": 89613
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/60/hero.svg",
+      "sha256": "6683c4c7a2f79d41cde401fa04d25cda43a3c88669fac685a24bf3289e51debb",
+      "bytes": 1631
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/60/lesson.md",
+      "sha256": "438501df0d32ea7211d9555f277904540d086eac410a1b696f5fc804a560de83",
+      "bytes": 6329
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/60/meta.json",
+      "sha256": "fa7001f625d26fc40e4ebb17d351d9b9cc507d701252cd21367bfab6145b64be",
+      "bytes": 1547
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/61/diagram-1.svg",
+      "sha256": "cb55c42ba47008f1e48f98a34e874afab4b69d3e457a39313d63e6157c8f9bd5",
+      "bytes": 2287
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/61/hero.jpg",
+      "sha256": "cde172744183865760823819f8e94feb04027275192f9420b6526a878cba227a",
+      "bytes": 92738
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/61/hero.svg",
+      "sha256": "601474b8f3a0cdf3858385d57326827c4345f0aa7a8b6f2739479c859abc88e3",
+      "bytes": 1631
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/61/lesson.md",
+      "sha256": "50d691df1c5e10085a7d3bf8c313617492e95ab60de55ee6c05d73cea985d43b",
+      "bytes": 6613
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/61/meta.json",
+      "sha256": "83d27028aeb0e4b7247605b4b32149d43b9ed9a3946de79f960150c92945de56",
+      "bytes": 1295
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/62/diagram-1.svg",
+      "sha256": "defa80bcdcf0c59e70cc5b7495628ae505de9ab39ead3b36e9756baac48fe09d",
+      "bytes": 2280
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/62/hero.jpg",
+      "sha256": "406811ec1b10ecc0547e3de02612c448d98446a760a7fa25f4f2cf1a80937fd0",
+      "bytes": 89225
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/62/hero.svg",
+      "sha256": "bb1cea166ecf102d39dab6e1e858c993494a253349232a3f39cc4afc8119136c",
+      "bytes": 1631
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/62/lesson.md",
+      "sha256": "13447032bbc69ba4b79d49d59c7c9cc20b7574e1ef118d6fde61b6249a0efd98",
+      "bytes": 6758
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/62/meta.json",
+      "sha256": "76cf5c760cfb23dec1ef81001db85cde9bd7dea9b831ba63c79e0529885a17da",
+      "bytes": 1585
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/build-art.py",
+      "sha256": "c8b47835d69bf9ba7f108573ee62acdcf73e46ae94971134786aa39a3e4869c2",
+      "bytes": 7691
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/build-data.py",
+      "sha256": "c1558cb2a1b182b123594480dd8f7bc5e88c60f89644df1470e78f0d1418cdf6",
+      "bytes": 21485
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/build-report.py",
+      "sha256": "de60085497140a3be9bffc8477f0c01452ca117a647d0e936412aecffc792f6c",
+      "bytes": 6642
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/57/LICENSE.txt",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/57/README.md",
+      "sha256": "88e4b839ad464e85ce8edba8c0500fd336070bfd3581ce0b426f5ee8533fcc9b",
+      "bytes": 373
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/57/sources/S01-v1.md",
+      "sha256": "292f507c7ab11f98401e48a050fe285958ad8544a7b9e0356cdac2c93f520988",
+      "bytes": 148
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/57/sources/S01-v2.md",
+      "sha256": "1801a5839f71aa2c7dd7a71ccca3c75359a13114878fcee9658c99bde6b4e35b",
+      "bytes": 187
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/57/sources/S02-v1.md",
+      "sha256": "559f80a2267c8225249bac8a2f83fc3768d718b02879b55b928a77df77d67bac",
+      "bytes": 119
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/57/sources/S03-v1.md",
+      "sha256": "c320577e853e990a0164af6bdc8e6bc08350792e8b9b0e730cd7a69cb72bc448",
+      "bytes": 119
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/57/sources/S04-v1.md",
+      "sha256": "4b1226c1d54f81d59ff0de5517bf81557f249246da94379872d26c4c555e882a",
+      "bytes": 93
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/57/sources/S05-v1.md",
+      "sha256": "c05718f6eb806f427130432c406494085625e37a2ac29c348923af8d1549c1c0",
+      "bytes": 109
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/57/sources/S06-v1.md",
+      "sha256": "0fbb9d4460ddfc47df7af57a60f9c7f70549ed8f89038696e37a7f497e99c780",
+      "bytes": 135
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/57/sources-v1-v2.csv",
+      "sha256": "e943d4e177a6b3c365c1b5de89407fa0ef7f2310d28f309248113689c93e3599",
+      "bytes": 818
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/57/update-checklist.md",
+      "sha256": "bd8f782fd8317a39f3e4f204b7d9c2708b64d279633911e5de6ab842f7454432",
+      "bytes": 544
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/57/update-log.csv",
+      "sha256": "b4a8b7463cc671a04f02a5159e5d7679b6b68519f0891b1540e9f8ec279813ab",
+      "bytes": 165
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/58/evidence-matrix.csv",
+      "sha256": "6669498a2306288272b015c21b46b2e55453e1d11afaeb26ae64dd064596804a",
+      "bytes": 851
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/58/LICENSE.txt",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/58/prompt.txt",
+      "sha256": "84f9cbee05557430412f3a222d72d956de3737707ddf0bdaa9fa23eaf2787cda",
+      "bytes": 288
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/58/README.md",
+      "sha256": "21d4a74a39caf4f90658b292996532e5687cbd9a28f3a01944885072b7d9b042",
+      "bytes": 373
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/58/sources/E1.md",
+      "sha256": "0eb9511fe1a7105d087a1ea536c4d789711bd246987c11087a222e6799332f86",
+      "bytes": 169
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/58/sources/E2.md",
+      "sha256": "e6e103f47cff9c3700473523ba23cffe4785c87c15e32717fe6b41a9878b57fc",
+      "bytes": 183
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/58/sources/E3.md",
+      "sha256": "f451332ebfdadd389799d9f32b18e47babb6c0edd70fc1a06168f2d2e2dff729",
+      "bytes": 162
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/58/unknown-questions.md",
+      "sha256": "a522458689440e32dac689e8040fe0840dc45044dfb4ff6d8202db9c829491d3",
+      "bytes": 314
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/59/answer-key.md",
+      "sha256": "15541d54922b051608cf1be84805671944a7e982fd9a4d98d01130f1b80cb359",
+      "bytes": 1692
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/59/bad-questions.md",
+      "sha256": "b6572de64164a9a063731bd2c1541edd752ac986423a9de3fc3379d2af02ccf1",
+      "bytes": 395
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/59/chapter-1.md",
+      "sha256": "8912be507773ca3cb42245a81d19a7fe5fbd1f5c8281138373d926a3a24b05ca",
+      "bytes": 650
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/59/chapter-2.md",
+      "sha256": "3bb2d208a76e73f3923f2c2103d272513c5d7a483ae14425445008611b224e2a",
+      "bytes": 638
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/59/error-log.csv",
+      "sha256": "309e50c3c78ce13a0035888c6955b5ece085efd0ae721241138b1624a413a950",
+      "bytes": 253
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/59/LICENSE.txt",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/59/questions.csv",
+      "sha256": "11e46ab18181f432a7ee46cb38f50e46e00ecc67f04a0dd61c97864b34fcdc1e",
+      "bytes": 2640
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/59/README.md",
+      "sha256": "7f17f6bf4925307e363b41bc99535a6dfc937620688d34141a7d4c3d8bf6485f",
+      "bytes": 373
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/59/study-plan.csv",
+      "sha256": "fdf2bebb930f66cabc48ef104cfd7de12ce6b535c490dea956aefddad47ac76d",
+      "bytes": 104
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/60/LICENSE.txt",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/60/paper-licenses.json",
+      "sha256": "390fcf3a3f436c9ef4fb65742a1c53e01f3f5558d5dd22247965f7e2d68314f1",
+      "bytes": 3795
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/60/paper-matrix.csv",
+      "sha256": "f283094c499c1f39c536ad09b96d51ec4f9cb18c4401ef1aaf8b06ba6709b4fc",
+      "bytes": 2521
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/60/papers/dpr-2020.pdf",
+      "sha256": "2abfc7991519be2b8ce30215905516fdb593218b7bf59e50ece0d8a088a7c4d5",
+      "bytes": 403775
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/60/papers/hyde-2023.pdf",
+      "sha256": "cfc80c2ae284e1a3f36b4cec65122cc06707ac8088f107e43b328906305f609d",
+      "bytes": 609521
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/60/papers/lost-middle-2024.pdf",
+      "sha256": "f37f6fabe0fe0d8c73b67579cd115dbf14e282cfb7b7af655ae8109638402c9b",
+      "bytes": 2609413
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/60/reading-questions.md",
+      "sha256": "1e0a1a426bf61f324f554e741eea4ea6ae25dd90facd7ff01c25b32fe82121ac",
+      "bytes": 480
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/60/README.md",
+      "sha256": "07e4c98d6829103f3f2ee93e898ae977ed714ce7e298bc7d302e1154caca4552",
+      "bytes": 373
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/61/consistency-log.csv",
+      "sha256": "f4ed6a4bb85d3783efe5db12ff1aa777046d9cc5d9729edab5b73f8ab54ab350",
+      "bytes": 697
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/61/generation-brief.md",
+      "sha256": "480b10898b58e59fe49659a55140481e45b6fb362842e29e448361e9319c6004",
+      "bytes": 475
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/61/handout.md",
+      "sha256": "f4cab6c2844ec5919d4ba3eb0363b2deddb8bdec34a259c03a9f2b1bb31fe6ae",
+      "bytes": 540
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/61/lesson-facts.csv",
+      "sha256": "efbdbf3b29551bd107a723e221b89fa5b24d3f71be4167413941ece04e3d8b96",
+      "bytes": 363
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/61/LICENSE.txt",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/61/narration-script.md",
+      "sha256": "2811f5646b37cfd140fd8b83d9ce3de4a30044e807bae6adca2358dfeb29a9e4",
+      "bytes": 488
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/61/README.md",
+      "sha256": "81c5dacd5f8e805054fd92abe68e5b3bb50415af275f396a54f8022f6deeb29c",
+      "bytes": 373
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/61/source-lesson.md",
+      "sha256": "6a433bf4d85deddc6e541d70c60acd1d31a79a473da3196c7d057a75ebe3c642",
+      "bytes": 551
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/62/ATTRIBUTION.md",
+      "sha256": "a68e313b921ca2be220e76c06140a21f0051cba564cb7e3fbc6fcda3478237c1",
+      "bytes": 493
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/62/computed-summary.json",
+      "sha256": "9ff19ad84279f30e41e0b5f204df9100847f21829dd5ee820339a8ebb3644c12",
+      "bytes": 932
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/62/LICENSE.txt",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/62/metadata-fields.json",
+      "sha256": "ad8fecc926fb6ee1bea55a7f09962b427d0dc8ca87cc98d770c1862c3810f3f2",
+      "bytes": 384
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/62/README.md",
+      "sha256": "2e8af13801b673f8c1b2e3c398c9cf002d49bc059ec0f1e46dc65d2bc580b3e6",
+      "bytes": 373
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/62/report.md",
+      "sha256": "8164d38862385b8dfa2dd8eb163f93f6e05f1c7e3f7bebe498ba40f964fc4904",
+      "bytes": 5867
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/62/research-brief.md",
+      "sha256": "c335652c17dfca2b9d5cc337e9317c3fec46e035d13da3aee2898f22584e0279",
+      "bytes": 618
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/62/snapshot-provenance.json",
+      "sha256": "50699a44c55213e42703b47113940a2f3c862547b702f488815b0dbbb70845a7",
+      "bytes": 802
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/62/source-register.csv",
+      "sha256": "1c11dd6ad661cab3630aa203605c9410b7f150534179e9e810c70480e1134fe0",
+      "bytes": 447
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/62/youbike-snapshot.json",
+      "sha256": "0db1c5e3ceaf7757a7bf344a99e47dbbe27d6433e0c725fe1ba0939007cb7a1a",
+      "bytes": 942914
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/lesson-57.zip",
+      "sha256": "2b9d416cdf7687a4f1bc5069d4794442b09b1bd3702fff27bc966555f0e805be",
+      "bytes": 7013
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/lesson-58.zip",
+      "sha256": "8cc760c6151f68839a0cd3f7f34d41a517287d34e583bf2f618669a72a183124",
+      "bytes": 6204
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/lesson-59.zip",
+      "sha256": "ed9a125cb1a03f9cc773e7243176b3b5f416a38b45301cb95e8c9d32a958c6e0",
+      "bytes": 8542
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/lesson-60.zip",
+      "sha256": "12a5820b1221a0f2359c13b3f320e3ef1e7395830f82e03e159ddc4b5f5abb7d",
+      "bytes": 2864820
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/lesson-61.zip",
+      "sha256": "cd0b1277ca9fafd788ed6b6953acb6bf929245b6f16381507bb9a13f12b63134",
+      "bytes": 6669
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/lesson-62.zip",
+      "sha256": "b70dd7690c2bbcbe54dad4c2565b274e62759b4e5cf5e129fedddb4aafc2544d",
+      "bytes": 121182
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/research-verification.zip",
+      "sha256": "3c00e7db6694f86cc5d41ffbc217c112d48f6acfbcb631f9c4eda96e3609c60b",
+      "bytes": 3005217
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/examples/research_checks.py",
+      "sha256": "5b69ce8720d76887c65c072900a7ff12fbcb14a0c94f27103bb98917552f460c",
+      "bytes": 7925
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/README.md",
+      "sha256": "18e40c891d6874db704f449e3bc38b103ef2900713bf16985f9e77227b52c40a",
+      "bytes": 6018
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/source-downloads.json",
+      "sha256": "99242268b18cdec0707fda559fd155a942ec856d7ebd47255ec653fd5905bcd9",
+      "bytes": 1940
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/sources.json",
+      "sha256": "643a262c927111f67704f2d09d72c62758ccbf782770353bdc94471a053e97e8",
+      "bytes": 3070
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/art-verification.json",
+      "sha256": "e9f30a70b713c6c304119850fe5787853b4ac0d292ddc292c93d6abb4486b343",
+      "bytes": 2674
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/build.json",
+      "sha256": "9e8f07f976ac6883c2211080fe8ace8336da01d12da8cb5eafd1d2b281b89c9c",
+      "bytes": 1287
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/delivery.json",
+      "sha256": "8568ac12fabacb38dad54d97a8361fa13bf7244a75aa339952d30f0be49c4c8e",
+      "bytes": 1913
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/fixtures.json",
+      "sha256": "05d6936115dc8bd65ca3ef58a04406ed02d4b86ffae20cd2fda18010aa6dd77a",
+      "bytes": 242
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/papers/dpr-2020-1.png",
+      "sha256": "b600eff53a4ceb26faf882eed319c4563bfaf5960f694da2cefa51387d675bce",
+      "bytes": 478714
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/papers/dpr-2020-4.png",
+      "sha256": "7aee8e44ae664532ac03e467097deecf4d73408196dea55baf94d19a15a4313d",
+      "bytes": 493773
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/papers/dpr-2020-5.png",
+      "sha256": "7b3739f58a8e0fd3e747e00afa25c2875b21d2b2fe8cb836870d67ad0496a6f5",
+      "bytes": 437217
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/papers/hyde-2023-1.png",
+      "sha256": "ead5fd649ae4569d0bfaa34f256201abebc7d02bb0797cb768ae412c93987129",
+      "bytes": 481667
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/papers/hyde-2023-2.png",
+      "sha256": "725a2e3b4fa9d237b6c2d7aef6ed463d5861c32c49654b55189f1cdce171ce89",
+      "bytes": 480412
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/papers/hyde-2023-4.png",
+      "sha256": "ffad84ccf123c0239d394d75680f38d3a98c08d15cb013a363da2f7e0c60aa8c",
+      "bytes": 462903
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/papers/hyde-2023-6.png",
+      "sha256": "d49a72baba1ebfcb04f4309f17530eef66ae58af266871c81aa28986c42a57aa",
+      "bytes": 328628
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/papers/lost-middle-2024-1.png",
+      "sha256": "b832724917b3a0f227697ce07f96afbb167e09141a51ef0247dd9f3d9f57813a",
+      "bytes": 433024
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/papers/lost-middle-2024-3.png",
+      "sha256": "546a4fb30eb6f6eb283772f6dac242917a44057efc6a6a510cd8fb095a8f8e67",
+      "bytes": 439190
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/README.md",
+      "sha256": "02184e2110b7fedac26d1d95120bc4ee80c5f0e801cd75cf7ef4cb1d7a968151",
+      "bytes": 1456
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/gemini-research-report-workshop/diagram-1-mobile.png",
+      "sha256": "24b7016a769ea86346a1dbba6f20072c1f9d8aca7c486fe475faabf7e97bf55b",
+      "bytes": 25049
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/gemini-research-report-workshop/diagram-1.png",
+      "sha256": "fb05bdfb7c0d3cca5a40a57eca5901cdec62e35c2a8f645b2d6dd245f1e7105d",
+      "bytes": 124496
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/gemini-research-report-workshop/hero-mobile.png",
+      "sha256": "08f1d1aed5d41471e613d834276f63b1cd760bac29665db0897f8b071a098187",
+      "bytes": 15970
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/gemini-research-report-workshop/hero.png",
+      "sha256": "77fb54b3d6b407ed82af419cae35b4e3fa9ceb37059c0bc59b8c282a5515dc73",
+      "bytes": 76490
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-conflicting-sources/diagram-1-mobile.png",
+      "sha256": "d7ef113b5eedde3a005065bf0da8a2ae5ac65fa4500ecff388b31cf484ed3354",
+      "bytes": 24073
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-conflicting-sources/diagram-1.png",
+      "sha256": "ec1e354ff65a433bca51436dc96d38b43281ad047a1ad6df0154b366792bc129",
+      "bytes": 122000
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-conflicting-sources/hero-mobile.png",
+      "sha256": "b65541dcf8f5415b1a557546a163eb4ca7c7a19e1f0d1b968560b8eb2658e454",
+      "bytes": 15641
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-conflicting-sources/hero.png",
+      "sha256": "0c164ea38d1f5d4a22cd4788d03a6acd87e48a6e19d408c2adec711a481d17f1",
+      "bytes": 78608
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-multiformat-lesson-pack/diagram-1-mobile.png",
+      "sha256": "c1c16e8a1846b665fd3f79b79bac5dd2a544ce4e31e600b7a5593a883e17939f",
+      "bytes": 24453
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-multiformat-lesson-pack/diagram-1.png",
+      "sha256": "fa6f918207e9f029433a3b46da31a8ec29d79c9c17a5357e2c56b24522d90c7d",
+      "bytes": 119177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-multiformat-lesson-pack/hero-mobile.png",
+      "sha256": "3f52774badf2f9690a99863a03a7f0cdcda55338ab5108951bb883338fed3d88",
+      "bytes": 17401
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-multiformat-lesson-pack/hero.png",
+      "sha256": "7021df1f38d02fb1556b6369855461b337460c8b3879bf72019fb4afa0dde888",
+      "bytes": 89919
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-paper-comparison-matrix/diagram-1-mobile.png",
+      "sha256": "1736a0dcd25e524d2faa0b7fb124e34727bbe095f766630d9a42d8e1b7b559a4",
+      "bytes": 25517
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-paper-comparison-matrix/diagram-1.png",
+      "sha256": "0de70c7a7c15d0a55348b85eeef974492850a9970d5c8ab50eca66b1ce013977",
+      "bytes": 127008
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-paper-comparison-matrix/hero-mobile.png",
+      "sha256": "2bba2f75be7dd4d1dc6f56e35d8627c3ccd46262a68876c43bfec6752ba17525",
+      "bytes": 16400
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-paper-comparison-matrix/hero.png",
+      "sha256": "3f9f54e286f55001fb049e249670d5f1e3bbad74e2d65ac07c1a4680cd19fda1",
+      "bytes": 82440
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-source-versioning/diagram-1-mobile.png",
+      "sha256": "6349da1f47ff142d3e698289ce8efac8edc90d282b1d60177147322056967a0a",
+      "bytes": 23932
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-source-versioning/diagram-1.png",
+      "sha256": "84cd4af7a4f264b3bd2c6bf4bc76176192a78d97b5f9bbeaf18373ec5667b970",
+      "bytes": 122751
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-source-versioning/hero-mobile.png",
+      "sha256": "1b826310c864bb9ef1712ea458698886140ec5a31fb80b7e8ca525d55f6556e8",
+      "bytes": 16925
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-source-versioning/hero.png",
+      "sha256": "28ca470bd6698d43938e4f442b7b7995e416da8eeb4e79b367bd0115758b4bde",
+      "bytes": 87510
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-study-retrieval-practice/diagram-1-mobile.png",
+      "sha256": "b0cbf593c4aa60f8ea8e05a71855cb32505b0aa069489bb19da2bcf548933854",
+      "bytes": 24616
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-study-retrieval-practice/diagram-1.png",
+      "sha256": "91b6d61cfd1de614f5f0ead11dbc7dccbd4c9fc58181e98c3e215f4c4918b40f",
+      "bytes": 121790
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-study-retrieval-practice/hero-mobile.png",
+      "sha256": "5fcc00c8954a075a3f5f214c7f206f9b88b18a1f01e7a9dcfdd34109bd009606",
+      "bytes": 15996
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/renders/notebooklm-study-retrieval-practice/hero.png",
+      "sha256": "41ca6fc12d2c9c03b45930d42ed7f7929f2fb47bb643562d3baa918d3cfdbaa5",
+      "bytes": 81244
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/test_materials.py",
+      "sha256": "2d59dac5a0e1dea3e7789f87f04dfac5c2f8c90b41ec9c374d2261ecaa5a78a8",
+      "bytes": 8884
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verification/visual-review.json",
+      "sha256": "0eb96f4915862dbb45c5c3cc93ac2b54371253a0579ff219872b2e09f88b8b6a",
+      "bytes": 10271
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/research/verify-delivery.py",
+      "sha256": "dcadbc3642393d8263931a3c88f9d4a3b883109eee34a340a1b1fb80c58be98e",
+      "bytes": 2155
+    }
+  ]
+}

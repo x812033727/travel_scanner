@@ -1,0 +1,358 @@
+{
+  "checked_on": "2026-09-14",
+  "scope": "Targeted Unit C depth revisions: five full Traditional Chinese drafts read; new and changed English, Japanese, Korean and generated Simplified Chinese sections compared. No full-text final editorial sign-off or product UI execution.",
+  "base_commit": "077617885e2f1a55f601fa9366e7a8a9d3f4fd70",
+  "changes": {
+    "15": "Review final changes against the observed starting commit, including already committed changes; PR fields use actual test and preview results.",
+    "38": "iPhone/iPad availability boundary; unique non-secret host-side marker, fresh read without revealing its value, stale/mismatched result handling and created-file-only cleanup.",
+    "39": "Android host-side marker exercise with per-copy identity, fresh tool evidence and created-file-only cleanup.",
+    "40": "Separate remote access, device pairing and task execution; a worked case and private observation template.",
+    "41": "Inspect staged, unstaged and untracked work separately; matching HEAD and a clean destination do not establish a complete handoff."
+  },
+  "code_labels": {
+    "existing_blocks_labeled": 15,
+    "added_blocks": 6,
+    "locales": 5
+  },
+  "official_document_bodies_reviewed": [
+    {
+      "url": "https://learn.chatgpt.com/docs/remote-connections.md",
+      "sha256": "56337f1d1ae34b3cd91db9bcb3fad282b00cb2a1eba9332793adec0b67868b82",
+      "body_characters": 12516,
+      "review_scope": "Full body reviewed"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/cloud.md",
+      "sha256": "a91151b55ae491b364b6792dd8cb19acde34ffb54d97abfa3011685117be1f69",
+      "body_characters": 4172,
+      "review_scope": "Full body reviewed"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/environments/cloud-environment.md",
+      "sha256": "169d4ae31b6b7f69ddb3500dc6a302aca5cfb4d713b7403b86f6ab10ac333660",
+      "body_characters": 4579,
+      "review_scope": "Full body reviewed"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/projects.md",
+      "sha256": "6e5b927e6edde8117acb797422ebf92a6e450b6f4b2da84946aa177d5a8f5588",
+      "body_characters": 12983,
+      "review_scope": "Opening project-source section only; remaining body fetched but not used for new claims"
+    }
+  ],
+  "practice": {
+    "platform": "Windows",
+    "git_version": "git version 2.55.0.windows.4",
+    "node_version": "v24.13.0",
+    "scope": "Temporary local Git repositories and reference code only. No cloud task, GitHub connection, PR, Remote pairing, product UI or Handoff execution.",
+    "handoff_reference": {
+      "commands_from_lesson": [
+        "git rev-parse --show-toplevel",
+        "git rev-parse HEAD",
+        "git branch --show-current",
+        "git status --short",
+        "git diff --stat",
+        "git diff --cached --stat",
+        "git ls-files --others --exclude-standard"
+      ],
+      "same_head_on_two_copies": true,
+      "working_directory_verified": true,
+      "unstaged_stat_contains_only": "core.mjs",
+      "staged_stat_contains_only": "note.md",
+      "untracked_list": [
+        "local-note.txt"
+      ],
+      "ignored_material_not_reported_by_these_queries": true,
+      "clean_destination_missing_source_work": true,
+      "actual_handoff_performed": false,
+      "conclusion": "Matching HEAD is insufficient evidence that staged, unstaged, untracked or ignored material was transferred."
+    },
+    "cloud_reference": {
+      "kind": "local reference, not Codex cloud execution",
+      "checks": [
+        {
+          "name": "broken starting point",
+          "command": "node --test core.test.mjs",
+          "exit": 1,
+          "passed": 2,
+          "failed": 1,
+          "output_sha256": "a92e88357f7e1271b5a4af85682cf0b7d5db99964c53ab242744deeb9c4f298c"
+        },
+        {
+          "name": "reference fix committed before final review",
+          "command": "node --test core.test.mjs",
+          "exit": 0,
+          "passed": 3,
+          "failed": 0,
+          "output_sha256": "2232bef5132773acd270c8f54afe8914f2fc4e18fce7c1a01341f260ee729197"
+        }
+      ],
+      "plain_git_diff_empty_after_commit": true,
+      "baseline_comparison_changed_files": [
+        "core.mjs"
+      ],
+      "existing_test_file_unchanged": true,
+      "result_head_differs_from_baseline": true,
+      "pr_created": false
+    },
+    "product_execution": false,
+    "immutable_fixture_hashes": {
+      "app.js": "a247b129bd7abba01ec851b43867d9317531cc69857c55c0a13b4bea0b137159",
+      "core.mjs": "31aadb24a2d1326a968d4f9f6078c54990ef1418eba51e14c6aee8d50eed8c2e",
+      "core.test.mjs": "2bf82633d42280359db3d6dc8e7d629914fd227738366d13d5bd35441ec57fb5",
+      "index.html": "04b3e5a4a063d642057e874d0e55119644684b913c184211d3f35580326d01d0",
+      "style.css": "689a6ffd664c00ac708d2f04e3c1375474802efe0a92119a548e395f99f9dbe5"
+    }
+  },
+  "validation": {
+    "series_integrity": {
+      "lessons": 60,
+      "locale_documents": 300,
+      "result": "passed"
+    },
+    "api_content_tests": {
+      "passed": 9
+    },
+    "compiler_tests": {
+      "passed": 9
+    },
+    "content_audit": {
+      "errors": 0,
+      "warnings": 26,
+      "note": "No new warnings versus the base. Shortened redundant English phrasing in the two mobile lessons while retaining all exercise conditions; no validator threshold changed."
+    },
+    "shared_catalogue_check": "All five API catalogues match the shared manifest."
+  },
+  "final_acceptance": {
+    "targeted_depth_revised_lessons_total": 21,
+    "other_lessons_pending_targeted_review": 39,
+    "next_unit": "D: 09, 42, 43, 16, 44; representative 10 already targeted",
+    "accepted_lessons": 0,
+    "full_editorial_accepted": false,
+    "preview_accepted": false,
+    "blocker": "Automatic approval review rejected preview startup, including loopback-only retry: blocked by policy; no specific reason. No alternate startup/rendering route attempted."
+  },
+  "publication": {
+    "pushed": false,
+    "pr": false,
+    "merged": false,
+    "imported": false,
+    "published": false,
+    "deployed": false
+  },
+  "scope_boundary": {
+    "api_series_projections": "unchanged from base",
+    "source_metadata": "unchanged from base",
+    "reason": "The active Claude tutorial task owns shared series_data. Only owned author sources, compiled packs and documentation were changed.",
+    "checked_no_projection_or_source_metadata_diff": true
+  },
+  "lessons": [
+    {
+      "id": 38,
+      "slug": "codex-mobile-ios",
+      "source_hashes": {
+        "zh-TW": "9a98bfc5a962911bfef666cc01b3a844ab4b10ad57c1d4da201756a097da20b7",
+        "en": "dca681a939bb55a0b7c04603e127513546a3ba647854e7828dea92d8027cf9f0",
+        "ja": "1dda71818bc69b90a87590de8a11f222aa292a287a6df8bc4eb2c34cfa8871ca",
+        "ko": "98c76d73159f34ae33d65d4eebba533a225475eb31f03f0d8c3a582cce552c8f",
+        "zh-CN": "b8fc56a940d4ce60ebf59799f630e3935e78ad6ff17b02ce7973150312bc0660"
+      },
+      "pack_hash": "e01c0be817f2c7324d92ab6d218b9357935f3287ca677b02b3da038ba60036c9",
+      "code_blocks": {
+        "zh-TW": {
+          "before": 2,
+          "after": 4
+        },
+        "en": {
+          "before": 2,
+          "after": 4
+        },
+        "ja": {
+          "before": 2,
+          "after": 4
+        },
+        "ko": {
+          "before": 2,
+          "after": 4
+        },
+        "zh-CN": {
+          "before": 2,
+          "after": 4
+        }
+      },
+      "intentional_code_replacements": [],
+      "all_other_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true,
+      "zh_tw_prose_characters": 2831
+    },
+    {
+      "id": 39,
+      "slug": "codex-mobile-android",
+      "source_hashes": {
+        "zh-TW": "c0a4eabbec5170e34e655b179b6008506bd6fbbed45d128f90ebb2d07efb0947",
+        "en": "c66a210bc71a3f901c37da380f7c4eb9a7ca3860fc5c357096d2b33320e9a95d",
+        "ja": "8ff66fae75b8f7894242ecde4aefc031620aa8b3f8332f56a882bd797c16125e",
+        "ko": "b674c8900a5a5801c47c6a82cff58fd10aefa268d32109fcedbe8bf59734d046",
+        "zh-CN": "547ae00ede96a4ee6ea701c36b0a5ac6d9780248e89ce30d5cef8651a4a6e168"
+      },
+      "pack_hash": "0c70ebad9a5fc43924aa2988778b007a6882652fa158e16134cf51effd6c98d6",
+      "code_blocks": {
+        "zh-TW": {
+          "before": 2,
+          "after": 4
+        },
+        "en": {
+          "before": 2,
+          "after": 4
+        },
+        "ja": {
+          "before": 2,
+          "after": 4
+        },
+        "ko": {
+          "before": 2,
+          "after": 4
+        },
+        "zh-CN": {
+          "before": 2,
+          "after": 4
+        }
+      },
+      "intentional_code_replacements": [],
+      "all_other_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true,
+      "zh_tw_prose_characters": 2786
+    },
+    {
+      "id": 40,
+      "slug": "codex-remote-setup",
+      "source_hashes": {
+        "zh-TW": "61157ca34d1aeeebc361b793fe1c5df799353a142e0a57f41174c3e4aa02b905",
+        "en": "78225dbb9f06d52c0576335f4ac62d7a8cf6bffa83e8942c9831e41775dc0052",
+        "ja": "4285e72341a5f36b20e54f81c97a6c857b9dccca0df4832676bc4d0f367cac48",
+        "ko": "445c8bfcd5a0f4286b1b821c0cc711b6e7f828cde420e51be9b078721c9c003b",
+        "zh-CN": "a439e64a6d212aa3ecc4713ea0f13e7a7499b15b14ef8b9b02d200c827888815"
+      },
+      "pack_hash": "39d4753e4582ae1048a67d081fff82d7f2dbe8d128da5d0d4f9f2ab6957f7b03",
+      "code_blocks": {
+        "zh-TW": {
+          "before": 3,
+          "after": 4
+        },
+        "en": {
+          "before": 3,
+          "after": 4
+        },
+        "ja": {
+          "before": 3,
+          "after": 4
+        },
+        "ko": {
+          "before": 3,
+          "after": 4
+        },
+        "zh-CN": {
+          "before": 3,
+          "after": 4
+        }
+      },
+      "intentional_code_replacements": [],
+      "all_other_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true,
+      "zh_tw_prose_characters": 2571
+    },
+    {
+      "id": 15,
+      "slug": "codex-cloud-tasks-github",
+      "source_hashes": {
+        "zh-TW": "2fc18584f3774b416494943f353c003d89d61100d65872e2735daeaf3025c7e7",
+        "en": "3a2918236a3166123797b179c19914f59baa48a046552f4a6fe3cde0dbc02365",
+        "ja": "809871978e04156cd7c068027ef94e9c4290dc369bc31d369d877462b9087991",
+        "ko": "37fc1696329873ef9c9256e33e9eba5ee2465fbd17b688c35d3589b40fbd799e",
+        "zh-CN": "44f59b84d67cb77fd68cd134bb4e96bba1b1556fdc897988fa4566d14f6cd6fb"
+      },
+      "pack_hash": "5a65c4102a6af9cdc50d6c313bbc1670b5c499ebdabf50af11006b37b7f1391b",
+      "code_blocks": {
+        "zh-TW": {
+          "before": 4,
+          "after": 5
+        },
+        "zh-CN": {
+          "before": 4,
+          "after": 5
+        },
+        "en": {
+          "before": 4,
+          "after": 5
+        },
+        "ja": {
+          "before": 4,
+          "after": 5
+        },
+        "ko": {
+          "before": 4,
+          "after": 5
+        }
+      },
+      "intentional_code_replacements": [
+        {
+          "before_index": 3,
+          "before": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nValidation: node --test core.test.mjs — 3 passed.\nBrowser verification: not run in this cloud exercise.\nDeployment: not performed.\n",
+          "after": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nBaseline commit: [fill in the commit from the initial inspection]\nResult checked: [fill in the final commit or task diff identifier]\nValidation: [fill in command, exit code and actual pass/fail counts]\nBrowser verification: [performed / not run, with scope or reason]\nDeployment: not performed.\n"
+        }
+      ],
+      "all_other_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true,
+      "zh_tw_prose_characters": 2605
+    },
+    {
+      "id": 41,
+      "slug": "codex-cross-device-workflow",
+      "source_hashes": {
+        "zh-TW": "02ef6dbe1514251ad3586174e45e2b610ad6527992748221ea1850f25fd45a65",
+        "en": "69dde2a45d2a76067285ffefac2db026f7bda6928802b0ec373191e6cb98ee06",
+        "ja": "f59089d4d3dcb70e7382d004d5873a1be28abaa3290360fafef04114b56b190f",
+        "ko": "39b3269e3b1ec7b0b66a9bc580b9f88b6e5f116661b4cc0198935efc761f7b96",
+        "zh-CN": "7cb127f3490094667f55abfcf7daf9979fdcc7017daeafdcaa676e000a3c3c23"
+      },
+      "pack_hash": "854419e2e51aa82b543239007ccb46a48de7eb1d7a03104145ff714137b4e975",
+      "code_blocks": {
+        "zh-TW": {
+          "before": 4,
+          "after": 4
+        },
+        "en": {
+          "before": 4,
+          "after": 4
+        },
+        "ja": {
+          "before": 4,
+          "after": 4
+        },
+        "ko": {
+          "before": 4,
+          "after": 4
+        },
+        "zh-CN": {
+          "before": 4,
+          "after": 4
+        }
+      },
+      "intentional_code_replacements": [
+        {
+          "before_index": 3,
+          "before": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\n",
+          "after": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\ngit diff --cached --stat\ngit ls-files --others --exclude-standard\n"
+        }
+      ],
+      "all_other_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true,
+      "zh_tw_prose_characters": 2758
+    }
+  ]
+}

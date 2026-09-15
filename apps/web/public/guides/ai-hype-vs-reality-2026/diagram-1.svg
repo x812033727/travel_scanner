@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 能與不能：官方自己寫的三欄盤點 / What official model cards say AI can, needs watching, and cannot do</title>
+  <desc id="desc">一張分成三欄的盤點圖。左欄「今天做得到」列出三項官方規格：三家旗艦都標 100 萬 token 級上下文視窗、官方自報 OSWorld 2.0 電腦操作評測 70.6、Gemini 3.8 Flash 收文字、圖片、音訊與影片。中欄「要人盯著」列出三項官方承認的風險：幻覺率比前一版高 6%（但整體準確率更高）、說「已完成」不等於真的完成、提示詞注入試 15 次的攻擊成功率 8.5%。右欄「還做不到」列出三項官方自己寫的界線：整件商業任務做完在 AutomationBench 只有 26.0、取代資深研究工程師是官方自己判定還不接近、記住全部做不到因為知識截止日最早到 2025 年 1 月。底部一條橫幅寫著自己盤點時只記三件事：做完了嗎、錯在哪一步、你多久才發現，並註明來源是各家 system card、model card 與官方文件，查證日 2026 年 9 月 15 日。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">AI 能與不能：官方自己寫的三欄盤點</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">What official system cards and docs say: can do / needs watching / cannot do</text>
+
+  <!-- column 1 -->
+  <rect x="60" y="130" width="470" height="470" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="90" y="156" width="410" height="52" rx="14" fill="#0D6B68"/>
+  <text x="295" y="192" font-size="24" font-weight="bold" fill="#FFFFFF" text-anchor="middle">今天做得到</text>
+  <circle cx="86" cy="256" r="7" fill="#0D6B68"/>
+  <text x="110" y="262" font-size="19" fill="#102A2B">三家旗艦都標 100 萬</text>
+  <text x="110" y="292" font-size="19" fill="#102A2B">token 級上下文視窗</text>
+  <line x1="86" y1="330" x2="504" y2="330" stroke="#E3F0EF" stroke-width="3"/>
+  <circle cx="86" cy="374" r="7" fill="#0D6B68"/>
+  <text x="110" y="380" font-size="19" fill="#102A2B">官方自報 OSWorld 2.0</text>
+  <text x="110" y="410" font-size="19" fill="#102A2B">電腦操作評測 70.6</text>
+  <line x1="86" y1="448" x2="504" y2="448" stroke="#E3F0EF" stroke-width="3"/>
+  <circle cx="86" cy="492" r="7" fill="#0D6B68"/>
+  <text x="110" y="498" font-size="19" fill="#102A2B">Gemini 3.8 Flash 收</text>
+  <text x="110" y="528" font-size="19" fill="#102A2B">文字、圖片、音訊、影片</text>
+
+  <!-- column 2 -->
+  <rect x="565" y="130" width="470" height="470" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <rect x="595" y="156" width="410" height="52" rx="14" fill="#D97A2B"/>
+  <text x="800" y="192" font-size="24" font-weight="bold" fill="#FFFFFF" text-anchor="middle">要人盯著</text>
+  <circle cx="591" cy="256" r="7" fill="#D97A2B"/>
+  <text x="615" y="262" font-size="19" fill="#102A2B">幻覺率比前一版高 6%</text>
+  <text x="615" y="292" font-size="19" fill="#5C6B6B">但整體準確率更高</text>
+  <line x1="591" y1="330" x2="1009" y2="330" stroke="#F2E3D4" stroke-width="3"/>
+  <circle cx="591" cy="374" r="7" fill="#D97A2B"/>
+  <text x="615" y="380" font-size="19" fill="#102A2B">它說「已完成」不等於</text>
+  <text x="615" y="410" font-size="19" fill="#102A2B">真的完成</text>
+  <line x1="591" y1="448" x2="1009" y2="448" stroke="#F2E3D4" stroke-width="3"/>
+  <circle cx="591" cy="492" r="7" fill="#D97A2B"/>
+  <text x="615" y="498" font-size="19" fill="#102A2B">提示詞注入：試 15 次</text>
+  <text x="615" y="528" font-size="19" fill="#102A2B">攻擊成功率 8.5%</text>
+
+  <!-- column 3 -->
+  <rect x="1070" y="130" width="470" height="470" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <rect x="1100" y="156" width="410" height="52" rx="14" fill="#B8442D"/>
+  <text x="1305" y="192" font-size="24" font-weight="bold" fill="#FFFFFF" text-anchor="middle">還做不到</text>
+  <circle cx="1096" cy="256" r="7" fill="#B8442D"/>
+  <text x="1120" y="262" font-size="19" fill="#102A2B">整件商業任務做完：</text>
+  <text x="1120" y="292" font-size="19" fill="#102A2B">AutomationBench 26.0</text>
+  <line x1="1096" y1="330" x2="1514" y2="330" stroke="#F0DED8" stroke-width="3"/>
+  <circle cx="1096" cy="374" r="7" fill="#B8442D"/>
+  <text x="1120" y="380" font-size="19" fill="#102A2B">取代資深研究工程師</text>
+  <text x="1120" y="410" font-size="19" fill="#5C6B6B">（官方自己的判定）</text>
+  <line x1="1096" y1="448" x2="1514" y2="448" stroke="#F0DED8" stroke-width="3"/>
+  <circle cx="1096" cy="492" r="7" fill="#B8442D"/>
+  <text x="1120" y="498" font-size="19" fill="#102A2B">記住全部：知識截止</text>
+  <text x="1120" y="528" font-size="19" fill="#102A2B">日最早到 2025 年 1 月</text>
+
+  <line x1="536" y1="182" x2="558" y2="182" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1041" y1="182" x2="1063" y2="182" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="648" width="1480" height="152" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="706" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">自己盤點時只記三件事：做完了嗎 · 錯在哪一步 · 你多久才發現</text>
+  <text x="800" y="752" font-size="18" fill="#5C6B6B" text-anchor="middle">來源：各家 system card、model card 與官方文件，查證日 2026 年 9 月 15 日</text>
+  <text x="800" y="784" font-size="18" fill="#5C6B6B" text-anchor="middle">每個數字都是廠商自報，不是實測，也不是跨廠牌排名</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

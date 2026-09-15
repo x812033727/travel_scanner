@@ -1,0 +1,278 @@
+{
+  "id": 15,
+  "readingMinutes": 15,
+  "operationMinutes": 35,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與開始之前",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "在獨立 GitHub 練習儲存庫修好 Completed 篩選，取得測試與 diff，最後準備一份可審查的 PR。閱讀約 15 分鐘，操作約 35 分鐘，另加帳號設定與排隊時間。Windows、macOS、Linux 都從瀏覽器操作；需要具 Codex 資格的 ChatGPT 帳號、可建立儲存庫的 GitHub 帳號，以及 Small Steps 練習包。",
+        "Fix the Completed filter in an isolated GitHub practice repository, collect tests and a diff, then prepare a reviewable PR. Allow 15 minutes to read and 35 to practice, plus account setup and queue time. Windows, macOS and Linux use the browser. You need Codex access, a GitHub account allowed to create repositories, and the Small Steps pack.",
+        "独立した GitHub 教材リポジトリで Completed を直し、テストと差分を確認してレビュー可能な PR を準備します。読む時間15分、操作35分程度に認証や待ち時間が加わります。三つの OS ともブラウザを使い、Codex の利用資格、リポジトリを作れる GitHub アカウント、Small Steps が必要です。",
+        "독립 GitHub 실습 저장소에서 Completed 필터를 고치고 테스트와 diff를 확인해 검토 가능한 PR을 준비합니다. 읽기 15분, 실습 35분에 계정 설정과 대기 시간이 추가됩니다. 세 OS 모두 브라우저를 쓰며 Codex 접근, 저장소 생성 권한이 있는 GitHub 계정, Small Steps 자료가 필요합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "Codex 雲端在它的環境執行工作；[手機 Remote](article:codex-mobile-guide)則控制已連接主機。電腦上的未提交修改、登入網站與 node_modules 不會因為選了同名專案就出現在雲端。這次用明確的 GitHub 分支和檔案清單當起點，讓每個結果都能追到同一份材料。",
+        "Cloud work runs in its configured environment; [mobile Remote](article:codex-mobile-guide) controls a connected host. Uncommitted computer edits, signed-in websites and node_modules do not appear in cloud simply because a project has the same name. Use an explicit repository branch and file inventory as the reproducible starting point.",
+        "クラウドは設定した環境で実行し、[Remote](article:codex-mobile-guide)は接続ホストを操作します。同名プロジェクトでも未コミットの変更、サイトのログイン状態、node_modules は自動で移りません。対象ブランチとファイル一覧を起点にして結果の出所を確認します。",
+        "클라우드는 설정된 환경에서 실행되고 [Remote](article:codex-mobile-guide)는 연결된 호스트를 제어합니다. 프로젝트 이름이 같아도 미커밋 변경, 웹사이트 로그인, node_modules는 자동으로 옮겨지지 않습니다. 명확한 브랜치와 파일 목록으로 결과의 출발점을 고정합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟一：準備雲端真正讀得到的材料",
+        "Step 1: Prepare files the cloud can actually read",
+        "手順1：クラウドから読める教材を用意",
+        "1단계: 클라우드가 실제로 읽을 자료 준비"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "下載並解壓[Small Steps 練習包](https://mokaair.com/guides/codex-first-project/todo-practice.zip)。這次取 broken 裡的 index.html、style.css、app.js、core.mjs、core.test.mjs 五個檔案；expected 是答案參考，保留在電腦，不要混進起始儲存庫。broken 刻意讓 Completed 回傳未完成項目，所以起始測試有一項失敗，這是要修的題目。",
+        "Extract the [Small Steps pack](https://mokaair.com/guides/codex-first-project/todo-practice.zip). Take index.html, style.css, app.js, core.mjs and core.test.mjs from broken. Keep expected as a local answer reference, outside the starting repository. The broken Completed filter returns unfinished tasks, deliberately producing one failing test.",
+        "[教材](https://mokaair.com/guides/codex-first-project/todo-practice.zip)を展開し、broken の index.html、style.css、app.js、core.mjs、core.test.mjs を使います。expected はローカルの回答参照として残し、開始リポジトリに混ぜません。Completed が未完了を返すため一件失敗する設計です。",
+        "[실습 자료](https://mokaair.com/guides/codex-first-project/todo-practice.zip)를 풀고 broken의 index.html, style.css, app.js, core.mjs, core.test.mjs를 사용합니다. expected는 로컬 정답 참고용으로 남기고 시작 저장소에 섞지 않습니다. Completed가 미완료를 반환하므로 테스트 하나가 의도적으로 실패합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 GitHub 的 New repository 選自己的帳號，命名 codex-cloud-lab，選 Private，初始化 README 後建立。進入該儲存庫的 Add file → Upload files，上傳五個檔案到根目錄，寫明「Add broken Small Steps exercise」並提交到這個全新練習庫的起始分支。若帳號規則要求分支與 PR，依規則合併教材後再往下；不要更改正式儲存庫保護規則。",
+        "In GitHub New repository, choose your account, name it codex-cloud-lab, select Private and initialize a README. Use Add file → Upload files to place the five files at its root. Describe the commit as “Add broken Small Steps exercise” and save it to this new lab's starting branch. If account rules require a branch and PR, follow that process to land the materials first; keep production protections intact.",
+        "GitHub の New repository で自分のアカウント、codex-cloud-lab、Private、README 初期化を選びます。Add file → Upload files で五つをルートへ追加し、教材追加と分かるメッセージでこの新規教材の開始ブランチに保存します。組織規則が PR を要求するなら教材をその手順で取り込み、本番保護を変更しません。",
+        "GitHub New repository에서 자신의 계정, codex-cloud-lab, Private, README 초기화를 선택합니다. Add file → Upload files로 다섯 파일을 루트에 올리고 교재 추가를 설명하는 메시지로 새 실습 저장소의 시작 브랜치에 저장합니다. 조직 규칙이 PR을 요구하면 그 절차로 자료를 반영하고 운영 저장소 보호는 바꾸지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在檔案清單確認不是 broken/core.mjs 多包一層，也不是五個空白檔。打開 core.mjs 找 visibleTasks，核對 completed 分支有反向篩選，再記下畫面上的分支名稱與最新 commit。不要直接假設預設分支叫 main；後面選的分支必須包含剛上傳的教材。這個步驟比只確認 GitHub 登入成功更接近真正可執行的起點。",
+        "Confirm core.mjs is at the root, not accidentally inside broken, and files contain real code. Open visibleTasks and verify the reversed completed predicate. Record the displayed branch and latest commit; do not assume the default is main. The cloud selection must include the uploaded materials. Successful GitHub login alone does not establish that starting state.",
+        "core.mjs が broken 内ではなくルートにあり、中身があることを確認します。visibleTasks の completed 条件が逆であること、画面のブランチ名と最新コミットを記録します。main と決めつけず、教材を含むブランチを選びます。認証成功だけではこの開始状態を保証しません。",
+        "core.mjs가 broken 하위가 아닌 루트에 있고 실제 코드가 있는지 확인합니다. visibleTasks의 completed 조건이 반대인지 보고 표시된 브랜치와 최신 커밋을 기록합니다. main이라 가정하지 말고 자료가 있는 브랜치를 선택합니다. GitHub 로그인 성공만으로 시작 상태가 보장되지는 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟二：連接帳號並建立環境",
+        "Step 2: Connect the repository and create an environment",
+        "手順2：リポジトリと環境を接続",
+        "2단계: 저장소 연결 및 환경 생성"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "開啟[Codex 雲端](https://chatgpt.com/codex)，確認 ChatGPT 帳號與工作區，依 Connect GitHub 流程選擇可存取的儲存庫。首次練習只選 codex-cloud-lab；若是組織帳號需要管理員核准，先完成核準再確認清單出現。GitHub 的登入身分與 ChatGPT 身分不同，登入其中一個不代表另一個連線已授權。",
+        "Open [Codex cloud](https://chatgpt.com/codex), confirm the ChatGPT account/workspace and follow Connect GitHub to select accessible repositories. Grant this first exercise access to codex-cloud-lab. Complete any required organization approval before expecting it in the list. GitHub identity and ChatGPT identity are distinct; signing into one does not authorize the other connection.",
+        "[Codex cloud](https://chatgpt.com/codex)で ChatGPT のアカウントとワークスペースを確認し、GitHub 接続で codex-cloud-lab を選びます。組織の承認が必要なら先に完了させて一覧を確認します。GitHub と ChatGPT の認証は別で、片方のログインだけでは接続許可になりません。",
+        "[Codex cloud](https://chatgpt.com/codex)에서 ChatGPT 계정/워크스페이스를 확인하고 GitHub 연결로 codex-cloud-lab을 선택합니다. 조직 승인이 필요하면 완료 후 목록을 확인합니다. GitHub와 ChatGPT의 인증은 별개이며 한쪽 로그인만으로 연결이 허가되지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "到[環境設定](https://chatgpt.com/codex/settings/environments)建立練習庫環境，確認儲存庫名稱。本例沒有外部套件、API 或金鑰，只需支援 node:test 的 Node.js。使用環境的套件版本選項選擇可用的 Node.js 22 或更新相容版本，並在 setup script 只放下面的版本檢查。不要把故意失敗的測試放進 setup，否則任務可能在代理開始前就中止。",
+        "Create its environment in [environment settings](https://chatgpt.com/codex/settings/environments). The exercise needs no external package, API or key, only Node.js with node:test. Select an available compatible Node.js 22 or newer runtime through package-version settings. Put only the following version check in the setup script; the deliberately failing test belongs in the task, not setup where it could prevent the agent from starting.",
+        "[環境設定](https://chatgpt.com/codex/settings/environments)で教材を選び、利用可能な Node.js 22 以降の互換ランタイムを指定します。外部パッケージ、API、キーは不要です。setup script には次のバージョン確認だけを入れます。意図的に失敗するテストを setup に置くとエージェント開始前に止まるため、課題内で実行します。",
+        "[환경 설정](https://chatgpt.com/codex/settings/environments)에서 교재 저장소와 사용 가능한 Node.js 22 이상 호환 런타임을 선택합니다. 외부 패키지, API, 키는 필요 없습니다. setup script에는 다음 버전 확인만 넣습니다. 의도된 실패 테스트를 setup에 넣으면 에이전트 시작 전에 중단될 수 있으므로 작업 안에서 실행합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "code": "node --version\n",
+      "label": [
+        "雲端環境設定：貼入 setup script 的版本檢查",
+        "Cloud environment settings: version check for the setup script",
+        "クラウド環境設定：setup script に入れるバージョン確認",
+        "클라우드 환경 설정: setup script에 넣는 버전 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "本例的 agent internet access 保持 Off 即可，因為需要的檔案已在儲存庫。環境安裝階段與代理工作階段的網路設定要分開看，能安裝不表示代理可任意連網。若另做有套件的專案，依 lockfile 設定安裝命令並讀取失敗紀錄；不要為了這個零依賴練習增加套件或把私人 token 寫進 README。",
+        "Leave agent internet access Off for this exercise: all required files are in the repository. Setup networking and agent networking are different stages; successful installation does not imply unrestricted agent access. For a separate package-based project, use its lockfile and setup logs. Do not add dependencies or put a private token in README to solve this dependency-free lab.",
+        "必要なファイルは揃っているので agent internet access は Off のままです。準備とエージェント段階の通信は別です。別の依存付きプロジェクトなら lockfile と準備ログに従いますが、この教材に不要な依存を加えたり README にトークンを書いたりしません。",
+        "필요한 파일이 모두 있으므로 agent internet access는 Off로 둡니다. 준비 단계와 에이전트 단계의 네트워크는 별개입니다. 의존성이 있는 다른 프로젝트라면 lockfile과 준비 로그를 따르되 이 실습에 불필요한 패키지를 추가하거나 README에 토큰을 쓰지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟三：確認版本後修正",
+        "Step 3: Verify the starting version, then repair",
+        "手順3：開始版を確認して修正",
+        "3단계: 시작 버전 확인 후 수정"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "回雲端任務頁，選練習環境及包含教材的分支，先送出下列唯讀要求。預期列出五個程式檔、目前目錄、commit 與一項失敗測試。如果顯示已全部通過，先查是否上傳 expected 或選到修好後的分支；不要為了符合文章而任意破壞已正確的程式。若根目錄沒有檔案，先修正環境或上傳位置。",
+        "Select the environment and branch containing the materials, then submit this read-only request. Expect the directory, commit, five source files and one failing test. If all tests already pass, check whether you uploaded expected or selected a repaired branch; do not damage correct code just to match the article. Missing root files indicate a repository or upload-location problem to resolve first.",
+        "教材のある環境とブランチを選び、まず次の読み取り依頼を送ります。場所、コミット、五つのソース、一件の失敗が期待値です。全成功なら expected や修正済みブランチを選んでいないか確認し、正しいコードを無理に壊しません。ルートにファイルがなければ環境や配置を先に直します。",
+        "교재 환경/브랜치를 선택하고 다음 읽기 요청을 보냅니다. 경로, 커밋, 다섯 소스와 실패 하나가 예상됩니다. 모두 성공하면 expected 업로드나 수정된 브랜치 선택을 확인하고 맞는 코드를 억지로 망가뜨리지 않습니다. 루트에 파일이 없으면 환경/업로드 위치부터 바로잡습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Inspect this Small Steps practice repository without changing files. Report the working directory, git commit, branch if available, and the five source filenames. Run node --test core.test.mjs. Explain the failing behavior from the test and core.mjs. Keep files unchanged and do not open a pull request yet.\n",
+      "label": [
+        "自然語言提示詞：在選定環境的雲端任務輸入",
+        "Natural-language prompt: enter in a cloud task using the selected environment",
+        "自然言語の依頼：選択した環境のクラウドタスクに入力する",
+        "자연어 요청: 선택한 환경의 클라우드 작업에 입력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "核對回覆與工作紀錄後，在同一任務送出修正要求。這次限定 core.mjs 的 completed 篩選，保留既有測試與其他功能；不要用刪除失敗測試、放寬斷言或改 expected 值來換取通過。若它提出更大重構，請先說明為什麼單一條件修正不足，再決定是否擴大範圍。",
+        "After checking the response and logs, send the repair request in the same task. Limit it to the completed filter in core.mjs, preserving tests and other behavior. Deleting tests, weakening assertions or changing expected values is not the repair. If a larger rewrite is proposed, ask why a focused predicate correction is insufficient before expanding scope.",
+        "ログを確認後、同じ課題で修正を依頼します。core.mjs の completed 条件に限定し、テストと他の動作を保持します。テスト削除や期待値の緩和は修正になりません。大きな書き換えなら、条件だけでは直らない理由を確認してから範囲を広げます。",
+        "로그 확인 후 같은 작업에서 수정을 요청합니다. core.mjs의 completed 조건으로 범위를 제한하고 테스트와 다른 동작을 보존합니다. 테스트 삭제나 기대값 완화는 수정이 아닙니다. 큰 재작성은 단일 조건 수정으로 부족한 이유를 확인한 뒤 결정합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Fix only the reversed completed filter in core.mjs. Completed must return only finished tasks, Active only unfinished tasks, and All every task. Preserve order, input immutability and all existing tests. Remove any now-obsolete exercise comment. Run node --test core.test.mjs and show the final diff. Do not merge, deploy or open a PR until I review the result.\n",
+      "label": [
+        "自然語言提示詞：在同一個雲端任務要求修正",
+        "Natural-language prompt: request the fix in the same cloud task",
+        "自然言語の依頼：同じクラウドタスクで修正を求める",
+        "자연어 요청: 같은 클라우드 작업에서 수정 요청"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟四：驗收，再準備 PR",
+        "Step 4: Verify and prepare the PR",
+        "手順4：検証して PR を準備",
+        "4단계: 검증 후 PR 준비"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 情境 | 輸入狀態 | 預期顯示 |\n| --- | --- | --- |\n| Completed | Read 完成、Build 未完成 | 只有 Read |\n| Active | 相同兩筆資料 | 只有 Build |\n| All | 相同兩筆資料 | Read、Build，原順序 |\n| 空清單 | 沒有任何項目 | 三種篩選都是空清單 |",
+        "| Case | Input | Expected display |\n| --- | --- | --- |\n| Completed | Read finished, Build unfinished | Read only |\n| Active | Same two tasks | Build only |\n| All | Same two tasks | Read, Build in original order |\n| Empty list | No tasks | All filters return an empty list |",
+        "| 条件 | 入力 | 期待表示 |\n| --- | --- | --- |\n| Completed | Read 完了、Build 未完了 | Read のみ |\n| Active | 同じ二件 | Build のみ |\n| All | 同じ二件 | 元の順の Read、Build |\n| 空一覧 | 項目なし | すべてのフィルターが空 |",
+        "| 조건 | 입력 | 예상 표시 |\n| --- | --- | --- |\n| Completed | Read 완료, Build 미완료 | Read만 |\n| Active | 같은 두 항목 | Build만 |\n| All | 같은 두 항목 | 원래 순서의 Read, Build |\n| 빈 목록 | 항목 없음 | 모든 필터에서 빈 목록 |"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "合格結果應為三項測試通過，core.mjs 的 completed 分支改為保留 completed 為真的項目，並移除過期的故障註解。Active 與 All 不變；core.test.mjs 不應被修改。檢查的是最終 diff 與最後一次測試，不是較早那段「我已完成」摘要。若回覆省略退出狀態或只說應該通過，要求補實際輸出。",
+        "Expect all three tests to pass. The completed branch keeps tasks whose completed value is true, and the obsolete exercise comment is removed. Active and All remain unchanged; core.test.mjs should have no diff. Inspect the final diff and latest test run, not an earlier completion sentence. Request actual output if the answer only predicts success or omits the execution result.",
+        "三件成功し、completed が真の項目を残す条件と不要な故障コメントの削除を確認します。Active、All、core.test.mjs は変わりません。以前の完了文ではなく最終差分と最新の実行を読みます。予測だけなら実出力を求めます。",
+        "테스트 세 개가 성공하고 completed가 참인 항목을 남기는 조건과 불필요한 오류 주석 제거를 확인합니다. Active, All, core.test.mjs는 바뀌지 않아야 합니다. 이전 완료 문구 대신 최종 diff와 최신 실행을 읽고 예상만 있다면 실제 출력을 요청합니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "用起始 commit 比較，不只看現在還沒提交的差異",
+        "Compare with the starting commit, not just uncommitted changes",
+        "未コミット差分だけでなく開始時のコミットと比べる",
+        "미커밋 변경뿐 아니라 시작 커밋과 비교하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "把步驟三第一次唯讀檢查記下的 commit 當作比較基準。若代理已在任務內提交修改，現在的 git diff 可能空白，但本次工作仍有變更；因此要比較起點到最終結果的完整差異。找不到起始紀錄時先補查任務日誌，不猜一個分支名稱當基準。下面要求只作審查，不會自動替你建立或合併 PR。",
+        "Use the commit recorded in the first read-only inspection as the baseline. If the agent already committed changes within the task, a plain git diff can now be empty even though the task changed files. Review the complete difference from the starting point to the final result. If the baseline is missing, recover it from the task log rather than guessing a branch name. The request below is for inspection and does not itself create or merge a PR.",
+        "最初の読み取り確認で記録したコミットを基準にします。タスク内で変更が既にコミットされていると、git diff が空でも今回の変更がある場合があります。開始点から最終結果までの差分を確認してください。開始記録がなければログで調べ、推測したブランチ名を基準にしません。次の依頼は確認だけで、PR の作成やマージは行いません。",
+        "첫 읽기 전용 점검에서 기록한 커밋을 기준으로 삼습니다. 에이전트가 작업 중 변경을 이미 커밋했다면 일반 git diff는 비어 있어도 이번 작업의 변경은 남아 있을 수 있습니다. 시작점부터 최종 결과까지 전체 차이를 검토하세요. 시작 기록이 없다면 브랜치 이름을 추측하지 말고 작업 로그에서 확인합니다. 아래 요청은 점검용이며 PR을 만들거나 병합하지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Use the commit recorded in our initial read-only inspection as the baseline.\nIf you cannot identify it, stop and ask me to recover that record.\nCompare the final tracked tree against that baseline, including committed, staged and unstaged changes.\nList untracked files separately. Confirm whether core.test.mjs is unchanged and explain every changed file.\nReport the latest actual test command and result, or say not run.\nDo not modify files, open a PR, merge or deploy.\n",
+      "label": [
+        "自然語言提示詞：在同一個雲端任務核對完整修改",
+        "Natural-language prompt: inspect all changes in the same cloud task",
+        "自然言語の依頼：同じクラウドタスクで変更全体を確認する",
+        "자연어 요청: 같은 클라우드 작업에서 전체 변경 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "準備好時使用任務的建立 PR 入口，確認目的儲存庫、base 分支與包含修正的 head，再填下面的標題和說明。PR 是提交審查，不代表已合併或網站已上線；若 GitHub 顯示衝突、檢查尚未完成或新增了其他修改，先處理再決定合併。本篇練習可以停在未合併 PR，保留成果供下一篇[測試與審查](article:codex-testing-review)使用。",
+        "When ready, use the task's PR action, confirm the repository, base branch and repaired head, and use the draft below. A PR requests review; it is not a merge or deployment. Resolve conflicts, pending checks or unrelated changes before deciding to merge. This exercise may stop at an unmerged PR for the [testing and review lesson](article:codex-testing-review).",
+        "準備できたら課題の PR 作成から、リポジトリ、base、修正版 head を確認し、次の案を使います。PR はレビュー依頼で、マージや公開ではありません。競合、未完了チェック、無関係な差分を解決してから判断します。[レビュー記事](article:codex-testing-review)用に未マージで止めても構いません。",
+        "준비되면 작업의 PR 생성에서 저장소, base, 수정된 head를 확인하고 다음 초안을 사용합니다. PR은 검토 요청이며 병합/배포가 아닙니다. 충돌, 미완료 검사, 관련 없는 변경을 해결한 후 판단합니다. [리뷰 강의](article:codex-testing-review)를 위해 미병합 상태로 남겨도 됩니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "code": "Title: Fix Completed filtering in Small Steps\n\nCompleted previously displayed unfinished tasks. It now displays only finished tasks while preserving Active, All, order and input data.\n\nBaseline commit: [fill in the commit from the initial inspection]\nResult checked: [fill in the final commit or task diff identifier]\nValidation: [fill in command, exit code and actual pass/fail counts]\nBrowser verification: [performed / not run, with scope or reason]\nDeployment: not performed.\n",
+      "label": [
+        "PR 草稿範本：先填入實際結果，再送出審查",
+        "PR draft template: fill in actual results before submitting for review",
+        "PR 下書き：実際の結果を記入してからレビューに出す",
+        "PR 초안 양식: 실제 결과를 작성한 뒤 검토 요청"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "先用自己的實際紀錄替換所有方括號；只有真的跑出三項通過時才能這樣填寫。未跑的項目填「未執行」及原因，PR 的標題與結果敘述也要符合最終差異。需要畫面驗收時，把 PR 的確切分支或 commit 取得到另一個獨立資料夾，再按[第一個專案](article:codex-first-project)啟動預覽。先保留想留下的練習資料，再於 About this exercise 選 Reset practice data，切到 All tasks 並確認空清單，然後加入 Read、Build，只完成 Read，Completed 只看見 Read，Active 只看見 Build。不要用電腦舊資料夾的正常畫面替雲端新修改背書。",
+        "Replace every bracketed field with your actual record. Report three passing tests only if that is what you ran, and mark unperformed checks as not run with a reason. The PR title and result description must match the final diff too. For visual acceptance, obtain the exact PR branch or commit in a separate folder and follow [your first project](article:codex-first-project): preserve any wanted practice data, use About this exercise → Reset practice data, select All tasks and confirm an empty list. Then add Read and Build, complete only Read, and verify Completed shows Read while Active shows Build. A working older local copy does not validate the new cloud changes.",
+        "角括弧の項目はすべて自分の実際の記録に置き換えます。三つ成功と書けるのは実行で確認した場合だけで、未実施の確認には理由を添えます。PR の題名と結果の説明も最終差分に合わせます。画面検証では PR の正確なブランチかコミットを別フォルダーに取得し、[最初のプロジェクト](article:codex-first-project)に従います。残したい練習データを保存してから About this exercise → Reset practice data を選び、All tasks で空一覧を確認します。その後 Read と Build を追加し、Read だけを完了にします。Completed は Read、Active は Build が期待値です。古いローカル版の正常画面で新しいクラウド変更を合格にしないでください。",
+        "대괄호 필드를 모두 실제 기록으로 바꾸세요. 실제 실행에서 세 테스트가 통과했을 때만 그렇게 적고, 실행하지 않은 검사는 미실행과 이유를 기록합니다. PR 제목과 결과 설명도 최종 diff와 맞아야 합니다. 화면 검증은 정확한 PR 브랜치나 커밋을 별도 폴더에 가져와 [첫 프로젝트](article:codex-first-project)를 따릅니다. 남길 실습 자료를 보존한 뒤 About this exercise → Reset practice data를 선택하고 All tasks에서 빈 목록을 확인합니다. 그런 다음 Read와 Build를 추가하고 Read만 완료하면 Completed에는 Read, Active에는 Build가 보여야 합니다. 오래된 로컬 사본의 정상 화면으로 새 클라우드 수정을 검증하지 마세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "常見問題、停止與下一步",
+        "Troubleshooting, stopping and next steps",
+        "問題の切り分け、停止、次の手順",
+        "문제 해결, 중단, 다음 단계"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "看不到儲存庫時，先核對 GitHub 擁有者、連接授權範圍與組織核准；環境初始化失敗時，讀 setup 的第一個錯誤並確認 Node 版本；測試找不到檔案時，核對選定分支和根目錄；雲端結果與本機不同時，比對 commit、檔案與最後測試，而不是反覆送相同提示詞。這四種現象分別對應存取、工具、材料位置與版本問題。",
+        "For a missing repository, check owner, connection scope and organization approval. For failed initialization, read the first setup error and Node version. For a missing test file, check branch and root layout. For cloud/local disagreement, compare commits, files and latest tests. These are access, tool, material-location and version problems; resending the same prompt does not distinguish them.",
+        "一覧にない場合は所有者、接続許可、組織承認を確認します。初期化失敗は最初の setup エラーと Node、テスト欠落はブランチと配置、ローカルとの差はコミットと最新実行を確認します。アクセス、道具、配置、版を分け、同じ依頼の再送だけで済ませません。",
+        "목록 누락은 소유자/연결 권한/조직 승인, 초기화 실패는 첫 setup 오류/Node, 테스트 파일 누락은 브랜치/위치, 로컬 불일치는 커밋/최신 실행을 확인합니다. 접근, 도구, 자료 위치, 버전을 구분하며 같은 프롬프트 재전송으로 끝내지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "要停止時，在目前任務使用可用的停止控制並確認狀態已停止，再檢查已留下的差異；停止不會撤銷先前提交的 PR 或 GitHub 變更。未合併 PR 可在核對後關閉，已合併修改要走指定提交的還原流程，不能用刪除聊天取代。本文環境與 UI 步驟依官方文件查證；故障及參考測試在本機驗證，沒有聲稱已替讀者建立雲端任務、GitHub PR 或部署。",
+        "Use the current task's available stop control and verify its stopped state, then inspect retained changes. Stopping does not undo an existing PR or GitHub mutation. An unmerged PR can be closed after review; merged work needs a targeted Git reversal, not chat deletion. Environment/UI steps are documentation-checked, while broken/reference tests were checked locally. This article does not claim to have created a reader's cloud task, PR or deployment.",
+        "停止操作後は状態と残った差分を確認します。停止は既存 PR や GitHub 変更を取り消しません。未マージ PR は確認して閉じ、マージ済みは対象コミットの復元を行います。チャット削除で代用しません。UI と環境は公式資料確認、教材テストはローカル確認であり、読者のクラウド課題や PR を実行済みとはしていません。",
+        "중단 후 상태와 남은 변경을 확인합니다. 중단은 기존 PR/GitHub 변경을 취소하지 않습니다. 미병합 PR은 확인 후 닫고 병합된 변경은 대상 커밋 복구를 사용하며 채팅 삭제로 대신하지 않습니다. UI/환경은 공식 문서, 교재 테스트는 로컬에서 확인했으며 독자의 클라우드 작업이나 PR을 실행했다고 주장하지 않습니다."
+      ]
+    }
+  ]
+}

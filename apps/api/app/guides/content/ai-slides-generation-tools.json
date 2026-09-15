@@ -1,0 +1,344 @@
+{
+  "slug": "ai-slides-generation-tools",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 做簡報：Gamma、Copilot 與 Gemini",
+      "description": "用 AI 把大綱變成整份簡報，2026 年 9 月有三條路線：Gamma、PowerPoint 裡的 Copilot、Google Slides 裡的 Gemini。本篇照各家官方說明頁整理入口、方案與台幣價格、點數與額度、匯出格式與免費層限制，另附從大綱到人工檢查的五步流程，以及交件前一定要自己核對的三件事。",
+      "hero": {
+        "src": "/guides/ai-slides-generation-tools/hero.jpg",
+        "alt": "自繪插圖：左邊一份條列大綱，中間一顆齒輪，右邊三張排好的投影片與一個打勾的檢查框",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "把一份大綱變成一整份簡報，2026 年 9 月在台灣最容易走的有三條路線：Gamma 這類線上簡報生成服務、PowerPoint 裡的 Copilot、Google Slides 裡的 Gemini。三條路線都能在幾分鐘內生出可以繼續編輯的草稿，真正的差別不在誰比較聰明，而在你手上有哪一種帳號、產出能不能匯出成 PPTX，以及免費層會留下什麼限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把三家官方說明頁當天寫的入口、方案、額度、匯出格式與限制整理成一張對照表，再把「從大綱到簡報再到人工檢查」的流程拆成五個步驟。讀完你可以判斷自己該走哪一條路線、要不要付費，以及交件前有哪些事情必須自己核對。本文不做實測評分，所有能力描述都照各家官方說明頁的寫法。"
+        },
+        {
+          "type": "heading",
+          "text": "三條路線的入口，先看你手上有什麼帳號",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "決定權常常不在你喜歡哪個介面，而在公司或學校給了你什麼帳號。Gamma 是獨立的網頁服務，任何人都能自己註冊；PowerPoint 的 Copilot 綁在 Microsoft 365 的訂閱與授權上；Google Slides 的 Gemini 則要看你用的是個人 Google 帳戶，還是公司的 Google Workspace 帳戶。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Gamma：在儀表板按 Create New AI，官方說明頁列出三種模式，Generate 是給題目讓 AI 起草，Paste 是貼上寫好的文字讓 AI 排版，Import 是上傳 PowerPoint、文件或貼一個網址。",
+            "PowerPoint：官方說明頁寫的步驟是開一份新簡報，按右下角的 Copilot 圖示，在輸入框按 Add Content，從下拉選單選 Agent Mode，再輸入提示詞。",
+            "Google Slides：官方說明頁寫在空白簡報的右上角按 Ask Gemini，在側欄描述你要的簡報。",
+            "另外兩個順手的入口是 Canva 的 AI 簡報，以及 Gemini Notebook（NotebookLM）的 Slide Deck，後者把你上傳的資料整理成一份可以直接播放、也能下載成 PDF 的簡報。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
+          "url": "https://mokaair.com/zh-TW/life/microsoft-copilot-windows-office"
+        },
+        {
+          "type": "heading",
+          "text": "Gamma：從一句話、一段文字或一份舊檔案開始",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "除了 Generate、Paste、Import 三種模式，Gamma 官方說明頁還介紹了 Create with Agent：把 PDF、Word、簡報、網址或圖片丟進對話，代理（Agent）會先問幾個問題、跟你一起改大綱，再生成整份簡報，並在可能的地方標出內容取自哪一份素材。官方寫這個模式目前開放給 Plus、Pro、Ultra 與 Teams 方案，Free 與 Business 還沒有。它同時提供 Minimal、Visual、Classic、Consultant 四種版面風格，官方說同一份大綱套不同風格，版面與寫作口吻都會不一樣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gamma 的 AI 功能吃「點數」。官方說明頁寫免費方案在註冊時拿到 400 點而且不會每月補充，付費方案則每月依方案補點：Plus 每月 1,000 點、Pro 4,000 點、Ultra 20,000 點，Business 每位成員 6,000 點；沒用完的點數可以往下個月累積，最多累到方案月額度的兩倍。點數怎麼扣，官方寫依「每張卡與每張圖」計量，生成圖片之前畫面會先顯示該模型要花幾點，而且官方明講 AI 出錯或反問你澄清時不會扣點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "價格要小心。Gamma 的方案頁對本環境回 403 讀不到，能從官方說明頁確認的是 Business 每位成員每月 40 美元、按年計費，以及年繳方案的每月點數與月繳相同、官方寫折扣 28%。Plus、Pro、Ultra 的實際月費以官網為準。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "給 Gamma 的大綱提示詞（Generate 模式）",
+          "code": "為門市店長做一份 10 張的季度銷售回顧簡報。\n對象：沒有看過數字的新任店長。\n結構：現況一張、三個問題各一張、三個對策各一張、時程一張、結尾一張。\n風格：文字少、每張一個重點句，圖片用佔位圖不要生成。\n數字先留空白，我會自己填。"
+        },
+        {
+          "type": "heading",
+          "text": "PowerPoint 裡的 Copilot：先確認你有哪一張授權",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方說明頁把步驟寫得很短：送出提示詞後，Copilot 可能會反問對象是誰、要什麼簡報與圖片風格，接著先給一份大綱，你可以繼續跟它對話修改，滿意了再讓它生投影片，生完還能繼續用對話調整。官方另外註明，調整簡報長度、語氣、風格與圖片偏好的支援正在向 Frontier 與 Microsoft 365 Insiders 推送，之後才會開放給所有 Copilot 訂閱者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "授權是這條路線最容易卡住的地方。官方的常見問題頁寫，沒有 Designer 授權的人只能用摘要、開放式問答與基本聊天；新增投影片、依主題建立簡報、從檔案建立簡報、整理簡報、加入圖片這幾件事都需要 Designer 授權。要套公司的品牌範本，官方寫只有取得 Microsoft Copilot 授權的使用者可以。另外 Copilot in PowerPoint 只能用在 .ppt 與 .pptx 檔案上，而且需要網路連線。"
+        },
+        {
+          "type": "paragraph",
+          "text": "從檔案生成簡報也有版本差異：官方寫家用的 Copilot Pro 支援以單一 Word 檔為來源，在輸入框打斜線就能挑檔案，工作用的 Microsoft Copilot 還可以用 PDF 與加密文件。官方提示 Word 檔小於 24 MB 效果最好，並建議先用 Word 的樣式整理好結構、先從公司範本開檔，Copilot 會沿用該範本的版面配置。還有一個小限制值得記住：官方寫 Design Suggestions 正式支援的語系只有 en-US，其他語言的品質不保證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "價格方面，微軟台灣官網當天列出 Microsoft 365 個人版每月 NT$309、家用版 NT$419、進階版 NT$669，年繳分別是 NT$3,090、NT$4,190、NT$6,690，都附一個月免費試用；家用版寫明 1 至 6 人共用，但 AI 僅限訂閱擁有者使用。商務用的 Microsoft 365 Copilot Business 附加授權，官網寫每位使用者每月 NT$675、按年付費、價格不含營業稅，月繳是 NT$810；頁面當天另外標了促銷價 NT$578.58，註腳寫折扣期間為 2026 年 7 月 1 日到 2026 年 12 月 31 日，需年度履約承諾、促銷價只適用第一年、最多 300 個使用者。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "給 PowerPoint Copilot 的提示詞（Agent Mode）",
+          "code": "Create a presentation about our Q3 store performance review for new store managers.\nKeep it to 10 slides, one key message per slide, and use our corporate template's layouts.\nLeave placeholders where numbers should go instead of inventing figures."
+        },
+        {
+          "type": "heading",
+          "text": "Google Slides 裡的 Gemini：帳號類型決定你看得到哪些功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 把 Slides 的 AI 拆成兩件事。一次生一張投影片的官方說明頁寫：在右上角按 Ask Gemini，輸入你要的內容，也可以用 Match a presentation style 指定要套哪一份既有簡報的視覺風格；預覽出來以後選 Insert 新增一張，或選 Replace 取代目前這張，官方明講一次只能生一張。生成整份簡報的官方說明頁寫：你先描述主題與目的，可以從雲端硬碟加參考檔，Gemini 會先給一份簡報計畫，包含概述、參考來源與每一張投影片的大綱，你改完按 Approve 才會開始生成，生成期間可以切到別的分頁，但不能關掉 Slides 或 Gemini 側欄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資格比功能更需要先確認。官方頁寫這些功能需要合格的 Google Workspace 或 Google AI 方案，而且目前只在桌機、只支援英文。整份簡報生成掛在 Google Workspace Experiments 底下，那是給個人帳戶的測試者計畫：官方寫要年滿 18 歲、只收個人 Google 帳戶、不適用 Workspace 帳戶，而且一旦退出就永久失去存取權、不能再加入；官方的地區頁寫它已在 170 多個國家與地區推出，清單裡有台灣。至於「產生與編輯投影片」，官方的方案對照表列出 Workspace 的 Business Standard、Business Plus、Enterprise Standard、Enterprise Plus，以及個人帳戶的 Google AI Pro 與 Google AI Ultra。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣的訂閱頁當天寫：免費方案每月 NT$0、Google AI Plus 每月 NT$165、Google AI Pro 每月 NT$650、Google AI Ultra 最低每月 NT$3,300，用量上限二十倍的那一階是每月 NT$6,500。公司帳戶要看 Workspace 的版本，Workspace 定價頁的金額在本環境讀不到，以官網為準。如果你只是想把一份長文件整理成可以講的段落，Gemini 的 Canvas 也做得到，站上另有專篇。"
+        },
+        {
+          "type": "link",
+          "text": "Gmail、Docs 與 Slides：信件、文件與簡報",
+          "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+        },
+        {
+          "type": "link",
+          "text": "Canvas：編輯文章、簡報與製作小工具",
+          "url": "https://mokaair.com/zh-TW/life/gemini-canvas-guide"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "給 Google Slides 的提示詞（官方說明頁的示範句型，目前只支援英文）",
+          "code": "Create a 5-slide presentation on quantum computing for a general audience with a modern design."
+        },
+        {
+          "type": "heading",
+          "text": "從大綱到簡報的五個步驟",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三條路線的介面不一樣，可用的做法卻是同一套：先把素材備好，再用提示詞給結構，生成草稿，調版面與品牌，最後匯出並人工檢查。素材階段最容易撞到檔案上限，Gamma 官方寫匯入 PowerPoint 或 Word 每個檔案 200 MB、PDF 每個檔案 100 MB、圖片另有 5,000 萬畫素上限，Copilot 則建議 Word 檔小於 24 MB。提示詞階段值得多花兩分鐘：三家都是先出大綱再出投影片，在大綱階段改一行，比生完再一張一張改省事得多。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-slides-generation-tools/diagram-1.svg",
+          "alt": "五步流程圖：準備素材、寫提示詞與大綱、生成草稿、調版面與品牌、匯出交件，最後接一條人工檢查橫幅",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左而右、由上而下看五個步驟，每個框下面是該步驟的官方限制；最底下那條是生成完之後一定要自己做的三件事。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "匯出、品牌與資料：交件前要確認的事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gamma 官方說明頁列出的匯出格式是 PDF、PNG 與 PowerPoint（PPTX），PPTX 可以再上傳成 Google 簡報，也能直接發到個人的 LinkedIn 頁面。匯出的畫面以放映模式為準，不是編輯畫面。免費工作區匯出的 PDF 與 PPTX 會帶上 Made by Gamma 標記，訂任何付費方案之後往後的匯出才會拿掉，已經匯出的檔案不會回溯；官方另外寫，在自己的編輯器用瀏覽器列印不會加這個標記。官方也誠實列了已知落差：表格匯到 PowerPoint 會變直角、漸層標題可能變單色、超過 150 張的簡報可能匯出失敗，而 PPTX 上傳到 Google 簡報時字型會被替換掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "品牌是另一個落差。Gamma 官方寫匯入 PowerPoint 時不會保留母片版面、範本設計與背景圖，只能用「從 .pptx 匯入佈景主題」把品牌色與字型抓過來；如果版面必須跟原檔一模一樣，官方直接建議留在 PowerPoint 完成。Copilot 的做法剛好相反，它從你的公司範本開檔、沿用既有的版面配置。Gemini Notebook 的 Slide Deck 則只提供下載成 PDF，適合當講稿與講義，不適合當要交給別人繼續改的檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料要不要拿去訓練，也值得花一分鐘設定。Gamma 官方寫個人工作區（Free、Plus、Pro、Ultra）預設允許用你的內容改善它的 AI 功能，可以到左下角的頭像或縮寫進 Settings，打開 Data Controls 分頁隨時關掉；Team 與 Business 工作區則是自動排除、而且鎖定不能改。把公司的未公開資料丟進任何一條路線之前，先把這一格看清楚。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "怎麼開始",
+            "方案與價格",
+            "匯出"
+          ],
+          "rows": [
+            [
+              "Gamma",
+              "儀表板按 Create New AI，選 Generate、Paste 或 Import；付費方案另有 Create with Agent",
+              "Free 註冊送 400 點不補充；Plus 每月 1,000 點、Pro 4,000 點、Ultra 20,000 點（月費以官網為準）；Business 每位成員每月 40 美元按年計費；年繳官方寫折扣 28%",
+              "PDF、PNG、PPTX，PPTX 可上傳成 Google 簡報；免費工作區的 PDF 與 PPTX 會帶 Made by Gamma 標記"
+            ],
+            [
+              "PowerPoint 的 Copilot",
+              "新簡報右下角 Copilot 圖示，按 Add Content，選 Agent Mode 後輸入提示詞",
+              "台灣官網：個人版每月 NT$309、家用版 NT$419、進階版 NT$669；商務用 Microsoft 365 Copilot Business 每位使用者每月 NT$675（按年付費、未稅）",
+              "產出本來就是 .pptx，在 PowerPoint 裡繼續編輯或另存"
+            ],
+            [
+              "Google Slides 的 Gemini",
+              "簡報右上角 Ask Gemini，描述主題並加雲端硬碟參考檔，先看簡報計畫再按 Approve",
+              "個人帳戶：Google AI Plus 每月 NT$165、Pro NT$650、Ultra 自 NT$3,300 起；公司帳戶看 Workspace 版本（金額以官網為準）",
+              "產出是可繼續編輯的 Google 簡報，官方寫 fully editable"
+            ],
+            [
+              "Gemini Notebook 的 Slide Deck",
+              "在 Studio 面板選 Slide Deck，可指定格式、輸出語言與長度",
+              "官方寫需年滿 18 歲；方案資格以官網為準",
+              "下載成 PDF，或直接用全螢幕放映"
+            ]
+          ],
+          "caption": "各家官方說明頁與定價頁 2026 年 9 月查證；方案、價格與功能隨時可能調整，以官網當天頁面為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "生成完不是交件，這三件事沒人幫你做",
+          "text": "第一，數字要回到原始資料核對：微軟官方寫 Copilot 產出的內容可能不正確，Google 也寫 Slide Deck 是 AI 生成、可能有視覺或事實上的錯誤，兩家都要求使用者自己審閱。第二，AI 生成的圖片要說清楚：微軟官方寫 Microsoft Copilot 產生的圖片會依 C2PA 標準寫入內容憑證（Content Credentials），而且投影片的備忘稿會標上 AI-generated，交件前先決定要不要保留這段說明。第三，匯出的檔案一定要重新打開看過一次，字型、表格與圖表在換一個軟體之後常常不是你在編輯器裡看到的樣子。"
+        },
+        {
+          "type": "link",
+          "text": "Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算",
+          "url": "https://mokaair.com/zh-TW/life/canva-ai-features-guide"
+        },
+        {
+          "type": "link",
+          "text": "Canva 製作圖文：範本、版面與輸出品質檢查",
+          "url": "https://mokaair.com/zh-TW/life/canva-design-workflow"
+        },
+        {
+          "type": "link",
+          "text": "Claude Design 怎麼評估：原型、簡報與設計交接",
+          "url": "https://mokaair.com/zh-TW/life/claude-design-evaluation"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gamma 說明中心：點數怎麼運作（免費 400 點、方案月額度與累積規則）",
+          "url": "https://help.gamma.app/en/articles/7834324-how-do-credits-work-in-gamma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gamma 說明中心：升級訂閱（Free、Plus、Pro、Ultra、Business 與各方案月點數、年繳折扣）",
+          "url": "https://help.gamma.app/en/articles/8077107-how-can-i-upgrade-my-gamma-subscription",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gamma 說明中心：Gamma 的企業方案（Business 每位成員每月價格與點數）",
+          "url": "https://help.gamma.app/en/articles/11594955-what-options-does-gamma-offer-for-business",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gamma 說明中心：如何建立新的簡報、文件或網頁（Generate、Paste、Import 三種模式）",
+          "url": "https://help.gamma.app/en/articles/7838093-how-do-i-create-a-new-presentation-document-or-webpage-in-gamma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gamma 說明中心：Create with Agent 怎麼用（適用方案、可用素材、四種版面風格）",
+          "url": "https://help.gamma.app/en/articles/15002203-how-do-i-create-with-agent-in-gamma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gamma 說明中心：如何匯入簡報或文件（檔案大小上限、母片版面不保留）",
+          "url": "https://help.gamma.app/en/articles/11047840-how-can-i-import-slides-or-documents-into-gamma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gamma 說明中心：最簡單的匯出方式（PDF／PNG／PPTX、Made by Gamma 標記、已知落差）",
+          "url": "https://help.gamma.app/en/articles/8022861-what-s-the-easiest-way-to-export-my-gamma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gamma 說明中心：匯出的 PDF 或 PowerPoint 為什麼和編輯畫面不一樣（放映模式、150 張上限、字型替換）",
+          "url": "https://help.gamma.app/en/articles/15939201-why-doesn-t-my-exported-pdf-or-powerpoint-match-what-i-see-in-gamma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gamma 說明中心：Gamma 會不會用我的內容訓練 AI（Data Controls 預設值與鎖定規則）",
+          "url": "https://help.gamma.app/en/articles/12281928-does-gamma-use-my-content-to-train-its-ai-features",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft 支援：用 PowerPoint 的 Copilot 建立新簡報（步驟、24 MB 建議、C2PA 內容憑證與備忘稿標示）",
+          "url": "https://support.microsoft.com/en-us/office/create-a-new-presentation-with-copilot-in-powerpoint-3222ee03-f5a4-4d27-8642-9c387ab4854d",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft 支援：PowerPoint 的 Copilot 常見問題（Designer 授權、支援檔案、品牌範本、語系）",
+          "url": "https://support.microsoft.com/en-us/powerpoint/frequently-asked-questions-about-copilot-in-powerpoint",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft 台灣官網：比較 Microsoft 365 方案與定價（個人版、家用版、進階版台幣價格）",
+          "url": "https://www.microsoft.com/zh-tw/microsoft-365/buy/compare-all-microsoft-365-products",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft 台灣官網：Microsoft 365 Copilot for Business（附加授權價格、促銷期間與條件）",
+          "url": "https://www.microsoft.com/zh-tw/microsoft-365-copilot/business",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 文件編輯器說明：用 Google Slides 的 Gemini 生成整份簡報（步驟、資格、桌機與英文限制）",
+          "url": "https://support.google.com/docs/answer/17111393",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 文件編輯器說明：用 Google Slides 的 Gemini 生成一張投影片（Match a presentation style、一次一張）",
+          "url": "https://support.google.com/docs/answer/16961475",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 文件編輯器說明：開始使用 Google Workspace with Gemini（各方案可用的 Slides 功能對照）",
+          "url": "https://support.google.com/docs/answer/13952129",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 文件編輯器說明：開始使用 Google Workspace Experiments（年齡、帳戶類型與退出規則）",
+          "url": "https://support.google.com/docs/answer/13447104",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 文件編輯器說明：Google Workspace Experiments 的推出地區與支援語言（清單含台灣）",
+          "url": "https://support.google.com/docs/answer/13607340",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini 台灣訂閱頁：Google AI Plus、Pro、Ultra 的每月台幣價格",
+          "url": "https://gemini.google/tw/subscriptions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini Notebook 說明：產生 Slide Deck（格式、輸出語言、年齡限制、下載為 PDF）",
+          "url": "https://support.google.com/notebooklm/answer/16757456",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

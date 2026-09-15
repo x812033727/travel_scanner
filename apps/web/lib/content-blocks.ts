@@ -38,7 +38,7 @@ export type InlineNode =
   | { type: "link"; text: string; url: string }
   | { type: "article"; text: string; kind: "life" | "intel" | "howto"; slug: string };
 export type RichParagraphBlock = { type: "rich_paragraph"; inlines: InlineNode[] };
-export const codeLanguages = ["text", "powershell", "bash", "json", "markdown", "html", "css", "javascript", "typescript", "python", "yaml", "toml"] as const;
+export const codeLanguages = ["text", "powershell", "bash", "json", "markdown", "html", "css", "javascript", "typescript", "python", "yaml", "sh", "shell", "toml", "csv"] as const;
 export type CodeBlock = { type: "code"; label: string; language: typeof codeLanguages[number]; code: string };
 export type RichContentBlock = ContentBlock | ImageBlock | TableBlock | CalloutBlock | RichParagraphBlock | CodeBlock;
 

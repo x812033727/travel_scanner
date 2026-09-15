@@ -1,0 +1,355 @@
+{
+  "slug": "gemini-cli-hooks-quality-gates",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 176,
+  "locales": {
+    "zh-TW": {
+      "title": "Hooks 品質檢查：事件輸入、退出碼與失敗時停止",
+      "description": "Hooks 可以在 Gemini CLI 的特定事件前後執行程式，但「程式失敗」不一定等於「工具被阻擋」。本篇製作一個寫入 Markdown 前的品質檢查，親手比較正常、拒絕、錯誤與逾時，讓你從實際事件結果判斷控制是否生效，而不是只看終端有沒有紅字。",
+      "hero": {
+        "src": "/guides/gemini-cli-hooks-quality-gates/hero.jpg",
+        "alt": "Hooks：品質檢查關卡教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Hooks 可以在 Gemini CLI 的特定事件前後執行程式，但「程式失敗」不一定等於「工具被阻擋」。本篇製作一個寫入 Markdown 前的品質檢查，親手比較正常、拒絕、錯誤與逾時，讓你從實際事件結果判斷控制是否生效，而不是只看終端有沒有紅字。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-hooks-quality-gates/diagram-1.svg",
+          "alt": "JSON 決策：allow 或 deny：核對 BeforeTool；退出碼 2：阻擋這次操作：錯誤原因要可讀；退出碼 1：可能繼續執行：不是通用阻擋碼；逾時：不等於已阻擋：仍須核對實際決策",
+          "width": 1600,
+          "height": 900,
+          "caption": "非零退出，不一定代表阻擋。CLI 0.59.0 Hook 模組實測。這是原創概念圖，不是介面截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "成果、版本與準備",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成 "
+            },
+            {
+              "type": "link",
+              "text": "Hooks 入門",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "settings.json 除錯",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings-debug-lab"
+            },
+            {
+              "type": "text",
+              "text": "。下載 76 練習包，使用新資料夾及自己的教材檔案。本文於 2026-09-14 以 Windows、Node 24.19.0、Gemini CLI 0.59.0 的實際 HookRunner、聚合器、登錄表與執行計畫模組驗證；完整模型到寫檔工具的互動流程尚未實測。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "我們選 BeforeTool，也就是工具執行之前的事件，只匹配 write_file。這個範例的成品是一支檢查器和一份設定，目標為直接位於 docs/ 的 Markdown 文件。它不是通用防護系統，沒有涵蓋 replace、shell 或任意其他寫入工具；需要控制那些操作時必須另訂規則。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：明確定義要允許的寫入",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "教材允許寫入 docs/example.md 這樣的檔案，內容必須有主標題和「來源」章節，且不能留下 TODO。這是三條可以由程式判定的規則，沒有宣稱能證明資料正確或來源可信。先開啟 docs/example.md 看正常範例，再想清楚每條規則失敗時要讓使用者修哪裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "BeforeTool 會把事件資訊放進 stdin，其中包含工具名稱、參數、工作目錄與會話識別。程式從 tool_input 讀取 file_path 與 content；不要從模型的口頭描述猜它準備寫什麼。若欄位型別不符，直接回傳有原因的拒絕，避免把缺值當成空文件繼續處理。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "quality-gate.mjs",
+          "code": "/** A deliberately narrow BeforeTool gate for a disposable documentation project. */\nimport { existsSync, lstatSync, readFileSync, realpathSync } from 'node:fs';\nimport path from 'node:path';\n\nfunction decide(event) {\n  if (event.hook_event_name !== 'BeforeTool' || event.tool_name !== 'write_file') {\n    return { decision: 'deny', reason: 'Unexpected event or tool; check the hook matcher.' };\n  }\n  const input = event.tool_input;\n  if (!input || typeof input.file_path !== 'string' || typeof input.content !== 'string') {\n    return { decision: 'deny', reason: 'file_path and content must be strings.' };\n  }\n  const root = realpathSync(event.cwd);\n  const documents = path.join(root, 'docs');\n  const file = path.resolve(root, input.file_path);\n  const relative = path.relative(root, file).split(path.sep).join('/');\n  if (!/^docs\\/[a-z0-9-]+\\.md$/.test(relative) ||\n      realpathSync(documents) !== documents ||\n      realpathSync(path.dirname(file)) !== documents ||\n      (existsSync(file) && lstatSync(file).isSymbolicLink())) {\n    return { decision: 'deny', reason: 'Only direct docs/*.md lesson files may be written.' };\n  }\n  const issues = [];\n  if (!/^# [^\\r\\n]+$/m.test(input.content)) issues.push('missing_title');\n  if (!/^## 來源\\s*$/m.test(input.content)) issues.push('missing_sources');\n  if (/\\bTODO\\b/.test(input.content)) issues.push('unfinished_todo');\n  return issues.length ? { decision: 'deny', reason: issues.join(', ') } : { decision: 'allow' };\n}\n\ntry {\n  const event = JSON.parse(readFileSync(0, 'utf8'));\n  process.stdout.write(JSON.stringify(decide(event)) + '\\n');\n} catch {\n  process.stderr.write('quality-gate: invalid event or inaccessible lesson path\\n');\n  process.exitCode = 2;\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "檢查器會將路徑解析到教材根目錄，比對檔名與真實父目錄，拒絕跑到其他位置的請求。絕對與相對路徑都先轉成相同範圍判斷；本機實測兩種正常路徑都得到 allow。若 docs 目錄被連到別處，則得到 deny；已有檔案也拒絕符號連結。這個做法只針對教材的單層 docs/；有巢狀目錄需求時要重新定義範圍。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：先單獨執行，再接事件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建立 event.json，將 cwd 換成練習資料夾的絕對路徑。Windows JSON 路徑可用正斜線，若使用反斜線則必須跳脫。把同一份事件先送給腳本，看 stdout 是否只有一個 JSON 物件，再查看程序結束碼。不要一開始就同時調整模型、工具與檢查器，否則很難定位問題。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "event.json：替換 cwd",
+          "code": "{\n  \"hook_event_name\": \"BeforeTool\",\n  \"cwd\": \"REPLACE_WITH_ABSOLUTE_LESSON_DIRECTORY\",\n  \"tool_name\": \"write_file\",\n  \"tool_input\": {\n    \"file_path\": \"docs/example.md\",\n    \"content\": \"# 標題\\n\\n## 來源\\n教材原始資料。\"\n  }\n}\n"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "終端機：UTF-8 輸入送入 Node",
+          "code": "$OutputEncoding = [System.Text.UTF8Encoding]::new()\nGet-Content -Raw -Encoding utf8 event.json | node quality-gate.mjs\n$LASTEXITCODE\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "正確事件應輸出 decision 為 allow，結束碼為 0。刪掉「來源」章節後，應輸出 deny 及 missing_sources，但結束碼仍可以是 0。這表示腳本成功完成了「拒絕判斷」；不能因為程序成功結束，就把這次工具操作當成被允許。"
+        },
+        {
+          "type": "paragraph",
+          "text": "將 settings.example.json 的 hooks 區段放進練習專案 .gemini/settings.json，保留其他設定。命令中的相對路徑由目前工作目錄決定，因此啟動 gemini 前先確認你位於放置 quality-gate.mjs 的根目錄。若 Node 不在 PATH，改用適合自己 shell 的完整執行檔路徑與引號。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "settings.example.json",
+          "code": "{\n  \"hooks\": {\n    \"BeforeTool\": [{\n      \"matcher\": \"^write_file$\",\n      \"hooks\": [{\"name\": \"lesson-doc-quality\", \"type\": \"command\", \"command\": \"node ./quality-gate.mjs\", \"timeout\": 10000}]\n    }]\n  }\n}\n"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：比較阻擋與失敗放行",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本機實際模組驗證中，正常文件得到 allow，缺來源、含 TODO、越出範圍三組得到 deny。接著我們換上幾個刻意故障的短腳本：一個以 1 結束、一個以 2 結束、一個只印普通文字，另一個等待超過設定時間。它們測的是 CLI 如何解讀結果，不是正式品質規則。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "案例",
+            "實際模組判斷",
+            "能否視為阻擋"
+          ],
+          "rows": [
+            [
+              "JSON 明確 deny，退出 0",
+              "deny",
+              "可以"
+            ],
+            [
+              "程式退出 1",
+              "allow，帶警告",
+              "不可以"
+            ],
+            [
+              "程式退出 2",
+              "deny，原因取 stderr",
+              "可以"
+            ],
+            [
+              "stdout 是普通文字",
+              "allow",
+              "不可以"
+            ],
+            [
+              "超過 hook 逾時",
+              "沒有阻擋輸出",
+              "不可以"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "因此，若你原本只是讓 lint 失敗後回傳 1，不能期待它一定阻止寫檔。應在腳本內讀取 lint 的結果，轉成此事件支援的 deny 和清楚原因，再驗證 CLI 的實際反應。外部 lint 若找不到、輸出壞掉或逾時，也需要自己的決策，不能默默吞掉錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "範例的 JSON 解析或路徑存取異常會使用結束碼 2，stderr 提供簡短原因。一般除錯訊息也應寫到 stderr，stdout 留給完整 JSON。即使你很想先印出「開始檢查」，也不要放在 stdout：本次測量顯示，這可能讓原本預期的拒絕失去效力。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：確認停用、範圍與實際工具行為",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在練習專案停用這個 hook，再提出同一個正常檔案請求，核對不再出現該檢查。教材已直接驗證登錄表與執行計畫：啟用時能找到計畫，停用後為空。這證明模組切換行為，不等於完整終端介面的開關與模型流程也已驗收完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "請用相同內容測 write_file，再另看其他工具是否根本沒有命中 matcher。這個反例能避免範圍誤會：正規表示式匹配的是工具名稱，不是「任何可能寫檔的事情」。若需要禁止 shell 修改文件，應透過適當工具政策處理，並另做測試，而不是只把 hook 名稱改成「全面保護」。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Gemini CLI 提示詞：在可丟棄教材目錄測試",
+          "code": "請用 write_file 將 docs/example.md 寫成只有一行主標題的內容。\n如果工具被拒絕，回報真正的拒絕原因，不改用其他工具繞過。\n不要更動其他檔案。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這段互動測試還要檢查磁碟上的檔案。看到拒絕訊息後，原檔是否保持原內容，才是這次工作的重要成果。再把來源章節補齊重新請求，保存工具輸入、事件結果與前後差異。若模型改用其他工具，應將它列為範圍之外的行為，不能把它算成原規則通過。"
+        },
+        {
+          "type": "heading",
+          "text": "遇到逾時時怎麼改",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先單獨計時品質檢查，分清啟動 Node、讀資料、跑 lint 各自花多久。把經常很慢的完整測試搬到寫入後或批次驗收，不要讓每次小寫入都等待大型測試。增加 hook 逾時需要實際理由；檢查越久，讀者越難辨認是工具工作中還是腳本卡住。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本次逾時反例也出現清理已結束程序時的系統訊息，沒有把它列為模型錯誤。報告應保留逾時本身與最終決策，不以「程序被關掉」推論 BeforeTool 已經拒絕操作。如果這一層承擔必要限制，還要有獨立政策或檔案存取邊界，不能只依賴可能失敗放行的 hook。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "本篇十一組本機觀察區分 runner 是否成功、程序退出碼、聚合決策與停用計畫。模型實際觸發及寫檔前後差異仍待互動驗收；模組測試不冒充終端操作影片。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "為什麼腳本退出 0 卻不讓我寫入？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "0 表示腳本完成，實際決策在 JSON 的 decision。先看 deny 的 reason，再修內容；不要只把退出碼改成其他數字。"
+        },
+        {
+          "type": "heading",
+          "text": "可以把所有事件都套同一個拒絕格式嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "事件能阻擋的對象不同。BeforeTool 阻擋工具，AfterTool 可能影響的是返回給模型的結果。新增事件前先讀該事件規格，重做成功與故障測試。"
+        },
+        {
+          "type": "heading",
+          "text": "下一步如何把品質檢查串成工作流程？",
+          "level": 3
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先用 "
+            },
+            {
+              "type": "link",
+              "text": "子代理審查契約",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-subagent-review-workflow"
+            },
+            {
+              "type": "text",
+              "text": " 規定報告內容，再透過 "
+            },
+            {
+              "type": "link",
+              "text": "文件維護完整專案",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-docs-maintenance-project"
+            },
+            {
+              "type": "text",
+              "text": " 將連結檢查、候選修正與人工審閱串起來。每一段都保存自己的實際結果。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "Hooks：在指定事件執行檢查",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "settings.json 設定除錯：來源優先順序與升級前後比較",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings-debug-lab"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Subagents 審查工作流：任務契約、工具限制與結果整合",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-subagent-review-workflow"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 76 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-cli-hooks-quality-gates/lesson-76.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組練習與本機驗證程式（CLI 0.59.0）",
+          "url": "https://mokaair.com/guides/gemini-cli-hooks-quality-gates/automation-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hooks 概念與設定",
+          "url": "https://geminicli.com/docs/hooks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hook 事件及退出碼",
+          "url": "https://geminicli.com/docs/hooks/reference/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

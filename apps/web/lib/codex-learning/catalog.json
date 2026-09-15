@@ -1,0 +1,3189 @@
+[
+  {
+    "id": 1,
+    "slug": "codex-beginner-guide",
+    "batch": 1,
+    "level": 0,
+    "platforms": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      0
+    ],
+    "minutes": 10,
+    "aliases": "agent model ChatGPT Codex",
+    "related": [
+      2,
+      3,
+      5
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Codex 是什麼？與 ChatGPT 的差別",
+        "description": "Codex 是能讀取專案、修改檔案並執行工具的程式開發代理。一般聊天給你的程式碼，往往還要自己貼進編輯器；代理則可以在你選定的工作環境裡完成修改。模型是它用來推理的引擎，任務是一次工作，專案是相關檔案與工作的集合，三者不要混為一談。"
+      },
+      "zh-CN": {
+        "title": "Codex 是什么？与 ChatGPT 的区别",
+        "description": "Codex 是能读取专案、修改档案并执行工具的程式开发代理。一般聊天给你的程式码，往往还要自己贴进编辑器；代理则可以在你选定的工作环境里完成修改。模型是它用来推理的引擎，任务是一次工作，专案是相关档案与工作的集合，三者不要混为一谈。"
+      },
+      "en": {
+        "title": "What is Codex? How it differs from ChatGPT",
+        "description": "Codex is a coding agent that can inspect a project, edit files and run tools in a chosen environment. A model supplies its reasoning; a task is one assignment; a project groups related work and files. Unlike copying a code answer from chat into an editor, an agent can make the change in the workspace you selected."
+      },
+      "ja": {
+        "title": "Codex とは？ChatGPT との違い",
+        "description": "Codex は、指定した環境でプロジェクトを読み、ファイルを編集し、ツールを実行できる開発エージェントです。モデルは推論の仕組み、タスクは一つの依頼、プロジェクトは関連する作業やファイルのまとまりです。チャットのコードを自分で貼り付ける方法とは、変更を行う場所が異なります。"
+      },
+      "ko": {
+        "title": "Codex란? ChatGPT와의 차이",
+        "description": "Codex는 선택한 환경에서 프로젝트를 읽고 파일을 수정하며 도구를 실행하는 개발 에이전트입니다. 모델은 추론을 담당하고, 작업은 하나의 요청이며, 프로젝트는 관련 파일과 작업의 묶음입니다. 채팅이 준 코드를 직접 붙여 넣는 방식과 달리 선택한 작업 공간에서 변경할 수 있습니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 1,
+    "unit": "A",
+    "prerequisites": [],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 15
+  },
+  {
+    "id": 2,
+    "slug": "codex-account-usage",
+    "batch": 1,
+    "level": 0,
+    "platforms": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      0
+    ],
+    "minutes": 10,
+    "aliases": "login logout usage credits API",
+    "related": [
+      1,
+      17,
+      18
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "帳號、登入、方案與額度",
+        "description": "先確認登入方式，才能判斷用量扣在哪裡。ChatGPT 帳號登入使用方案提供的 Codex 額度；以 API key 使用支援的客戶端則需要另行確認 API 帳務。這篇不固定寫入容易過期的價格或訊息上限，而是教你找到自己帳號的有效資訊。"
+      },
+      "zh-CN": {
+        "title": "账号、登录、方案与额度",
+        "description": "先确认登入方式，才能判断用量扣在哪里。ChatGPT 帐号登入使用方案提供的 Codex 额度；以 API key 使用支援的客户端则需要另行确认 API 帐务。这篇不固定写入容易过期的价格或讯息上限，而是教你找到自己帐号的有效资讯。"
+      },
+      "en": {
+        "title": "Accounts, sign-in, plans and usage",
+        "description": "Check how you signed in before interpreting usage. ChatGPT sign-in uses the Codex allowance associated with that account; API-key authentication in a supported client requires checking API billing separately. This tutorial teaches you where to verify your own allowance rather than freezing a price or message limit that may change."
+      },
+      "ja": {
+        "title": "アカウント・ログイン・プラン・利用枠",
+        "description": "利用量を見る前にログイン方法を確認します。ChatGPT アカウントでのログインと、対応クライアントでの API キー認証では、確認すべき請求先が異なります。変化しやすい価格や回数を固定せず、自分のアカウントで確かめる方法を学びます。"
+      },
+      "ko": {
+        "title": "계정, 로그인, 요금제와 사용량",
+        "description": "사용량을 해석하기 전에 로그인 방식을 확인하세요. ChatGPT 계정 로그인은 해당 계정의 Codex 사용 한도를 이용하며, 지원 클라이언트의 API 키 인증은 별도 API 결제를 확인해야 합니다. 바뀌기 쉬운 가격을 외우기보다 자신의 계정에서 확인하는 방법을 익힙니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 2,
+    "unit": "A",
+    "prerequisites": [
+      1
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 15
+  },
+  {
+    "id": 3,
+    "slug": "codex-desktop-getting-started",
+    "batch": 1,
+    "level": 0,
+    "platforms": [
+      0
+    ],
+    "goals": [
+      0
+    ],
+    "minutes": 15,
+    "aliases": "desktop Windows macOS Linux",
+    "related": [
+      4,
+      5,
+      13
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "桌面版：Windows、macOS、Linux",
+        "description": "桌面版把任務、檔案、終端機與修改結果放在同一個工作空間。目前官方下載文件使用 ChatGPT desktop app 名稱，進入後可選 Codex。這裡提供三種系統的安裝主線；Linux 屬預覽版，不能把其支援範圍推廣到所有發行版。"
+      },
+      "zh-CN": {
+        "title": "桌面版：Windows、macOS、Linux",
+        "description": "桌面版把任务、档案、终端机与修改结果放在同一个工作空间。目前官方下载文件使用 ChatGPT desktop app 名称，进入后可选 Codex。这里提供三种系统的安装主线；Linux 属预览版，不能把其支援范围推广到所有发行版。"
+      },
+      "en": {
+        "title": "Desktop: Windows, macOS and Linux",
+        "description": "The desktop workspace combines tasks, files, terminals and change review. Current official downloads use the name ChatGPT desktop app; choose Codex inside it. Follow the separate installation path for your system. Linux is a preview with a specific support list, not a promise of compatibility with every distribution."
+      },
+      "ja": {
+        "title": "デスクトップ：Windows・macOS・Linux",
+        "description": "デスクトップではタスク、ファイル、端末、差分を一つの画面で扱えます。現在の公式配布名は ChatGPT desktop app で、その中から Codex を選びます。Linux はプレビューであり、すべてのディストリビューションを保証するものではありません。"
+      },
+      "ko": {
+        "title": "데스크톱: Windows, macOS, Linux",
+        "description": "데스크톱 작업 공간은 작업, 파일, 터미널과 변경 검토를 모아 보여 줍니다. 현재 공식 배포 이름은 ChatGPT desktop app이며 앱 안에서 Codex를 선택합니다. Linux는 지원 목록이 정해진 미리보기 버전입니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 11,
+    "unit": "B",
+    "prerequisites": [
+      37
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 4,
+    "slug": "codex-mobile-guide",
+    "batch": 1,
+    "level": 0,
+    "platforms": [
+      1
+    ],
+    "goals": [
+      0
+    ],
+    "minutes": 12,
+    "aliases": "Remote iOS iPhone Android QR",
+    "related": [
+      3,
+      13,
+      15
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "手機使用：iPhone 與 Android",
+        "description": "手機可以透過 ChatGPT 的 Remote 檢視與引導連線電腦上的 Codex 任務。官方文件列出 iOS 與 Android 客戶端，支援的 Remote 主機為 Mac 或 Windows；功能可能分批開放。不要將此解釋為把完整開發環境安裝到手機，或假定 Linux 可當 Remote 主機。"
+      },
+      "zh-CN": {
+        "title": "手机使用：iPhone 与 Android",
+        "description": "手机可以透过 ChatGPT 的 Remote 检视与引导连线电脑上的 Codex 任务。官方文件列出 iOS 与 Android 客户端，支援的 Remote 主机为 Mac 或 Windows；功能可能分批开放。不要将此解释为把完整开发环境安装到手机，或假定 Linux 可当 Remote 主机。"
+      },
+      "en": {
+        "title": "Mobile: iPhone and Android",
+        "description": "Remote in the ChatGPT mobile app lets you guide Codex work on a connected computer. Official documentation lists iOS and Android clients, with Mac or Windows hosts, subject to rollout. This does not install a full development environment on the phone, and does not establish Linux host support."
+      },
+      "ja": {
+        "title": "スマートフォン：iPhone と Android",
+        "description": "ChatGPT モバイルアプリの Remote では、接続したコンピューター上の Codex タスクを操作できます。公式文書は iOS・Android と Mac・Windows ホストを案内していますが、提供状況は段階的です。スマートフォンに開発環境一式を入れる機能ではなく、Linux ホスト対応を意味しません。"
+      },
+      "ko": {
+        "title": "모바일: iPhone과 Android",
+        "description": "ChatGPT 모바일 앱의 Remote로 연결된 컴퓨터의 Codex 작업을 확인하고 지시할 수 있습니다. 공식 문서는 iOS와 Android 클라이언트, Mac과 Windows 호스트를 안내하며 순차 제공될 수 있습니다. 휴대폰에 전체 개발 환경을 설치하거나 Linux 호스트 지원을 보장하는 기능은 아닙니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 13,
+    "unit": "C",
+    "prerequisites": [
+      3
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 5,
+    "slug": "codex-cli-getting-started",
+    "batch": 1,
+    "level": 0,
+    "platforms": [
+      2
+    ],
+    "goals": [
+      0
+    ],
+    "minutes": 12,
+    "aliases": "npm codex --version --help",
+    "related": [
+      3,
+      11,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Codex CLI 安裝與入門",
+        "description": "選擇自己的安裝平台，完成 CLI 登入、唯讀檢查、單行修改、獨立驗證與工作階段接續。包含可重做的兩檔練習與缺檔測試。"
+      },
+      "zh-CN": {
+        "title": "Codex CLI 安装与入门",
+        "description": "选择自己的安装平台，完成 CLI 登录、只读检查、单行修改、独立验证与工作阶段接续。包含可重做的两文件练习与缺文件测试。"
+      },
+      "en": {
+        "title": "Install and start Codex CLI",
+        "description": "Choose an installation platform, sign in, inspect a file, make a one-line change, verify it independently and resume the session. Includes a repeatable two-file exercise and a missing-file test."
+      },
+      "ja": {
+        "title": "Codex CLI のインストールと入門",
+        "description": "環境に合う導入経路を選び、ログイン、読み取り、一行変更、独立した検証、セッション再開を行います。二つのファイルで繰り返せる課題と欠落時の確認を含みます。"
+      },
+      "ko": {
+        "title": "Codex CLI 설치와 시작",
+        "description": "환경에 맞는 설치 경로를 선택하고 로그인, 읽기, 한 줄 수정, 독립 검증, 세션 재개를 진행합니다. 반복 가능한 두 파일 실습과 없는 파일 확인을 포함합니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 7,
+    "unit": "B",
+    "prerequisites": [
+      34
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 6,
+    "slug": "codex-first-project",
+    "batch": 1,
+    "level": 0,
+    "platforms": [
+      0,
+      2
+    ],
+    "goals": [
+      0
+    ],
+    "minutes": 12,
+    "aliases": "HTML index.html",
+    "related": [
+      7,
+      9,
+      31
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "完成第一個小專案",
+        "description": "使用 Small Steps 待辦網站的獨立副本，修改主標題與背景色。辨識五個練習檔案的用途，比對修改前後差異、核心測試與兩種視窗寬度，確認原有功能及資料保留。"
+      },
+      "zh-CN": {
+        "title": "完成第一个小项目",
+        "description": "使用 Small Steps 待办网站的独立副本，修改主标题与背景色。辨识五个练习文件的用途，比对修改前后差异、核心测试与两种窗口宽度，确认原有功能及数据保留。"
+      },
+      "en": {
+        "title": "Finish your first small project",
+        "description": "Use an independent copy of the Small Steps todo website to change its heading and background. Identify the five practice files and compare the diff, core tests and two viewport widths while preserving behavior and data."
+      },
+      "ja": {
+        "title": "最初の小さなプロジェクトを完成させる",
+        "description": "Small Steps の ToDo サイトを独立したコピーで使い、見出しと背景色を変更します。五つの教材ファイルの役割を確認し、差分、基本テスト、二つの画面幅を照合して機能とデータを保ちます。"
+      },
+      "ko": {
+        "title": "첫 소규모 프로젝트 완성하기",
+        "description": "Small Steps 할 일 사이트의 독립 복사본에서 제목과 배경색을 바꿉니다. 실습 파일 다섯 개의 역할을 확인하고 변경 내역, 핵심 테스트, 두 화면 폭을 비교하여 기존 기능과 데이터를 보존합니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 5,
+    "unit": "A",
+    "prerequisites": [
+      34
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 30
+  },
+  {
+    "id": 7,
+    "slug": "codex-prompting",
+    "batch": 1,
+    "level": 0,
+    "platforms": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      2
+    ],
+    "minutes": 12,
+    "aliases": "prompt goal constraints",
+    "related": [
+      8,
+      20,
+      22
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "如何把需求說清楚",
+        "description": "有效的需求不是把提示詞寫得很長，而是讓代理知道你要什麼、已有哪些材料、有哪些界線，以及怎樣算完成。同一個『幫我改善網頁』，可以指速度、外觀或無障礙；先把目標變成能觀察的行為。"
+      },
+      "zh-CN": {
+        "title": "如何把需求说清楚",
+        "description": "有效的需求不是把提示词写得很长，而是让代理知道你要什么、已有哪些材料、有哪些界线，以及怎样算完成。同一个『帮我改善网页』，可以指速度、外观或无障碍；先把目标变成能观察的行为。"
+      },
+      "en": {
+        "title": "Write a clear task request",
+        "description": "A useful request explains the outcome, available context, boundaries and acceptance checks. 'Improve the page' could mean speed, appearance or accessibility. Convert it into observable behavior before adding more instructions."
+      },
+      "ja": {
+        "title": "目的が伝わる依頼の書き方",
+        "description": "よい依頼は成果、背景、制約、完了条件を明確にします。「ページを改善」だけでは速度、見た目、操作性のどれか分かりません。まず観察できる動作へ言い換えます。"
+      },
+      "ko": {
+        "title": "명확하게 작업 요청하기",
+        "description": "좋은 요청은 결과, 배경, 제한과 완료 조건을 명확히 합니다. '페이지 개선'만으로는 속도, 디자인, 접근성 중 무엇인지 알 수 없습니다. 먼저 관찰 가능한 동작으로 바꿔 적으세요."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 6,
+    "unit": "A",
+    "prerequisites": [
+      6
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 8,
+    "slug": "codex-plan-mode",
+    "batch": 2,
+    "level": 0,
+    "platforms": [
+      0,
+      2
+    ],
+    "goals": [
+      2
+    ],
+    "minutes": 13,
+    "aliases": "/plan",
+    "related": [
+      7,
+      19,
+      21
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Plan 模式：先規劃再實作",
+        "description": "Plan 模式適合還需要決定範圍或做法的工作。它幫你把需求整理成可實作的計畫，但計畫本身不是已完成的程式。使用時先定義要討論的問題，再檢查計畫是否包含輸入、輸出、限制與驗證。"
+      },
+      "zh-CN": {
+        "title": "Plan 模式：先规划再实现",
+        "description": "Plan 模式适合还需要决定范围或做法的工作。它帮你把需求整理成可实作的计划，但计划本身不是已完成的程式。使用时先定义要讨论的问题，再检查计划是否包含输入、输出、限制与验证。"
+      },
+      "en": {
+        "title": "Plan mode: agree on the work first",
+        "description": "Plan mode is useful when scope or approach still needs decisions. It produces an implementation plan, not finished code. Define the questions to resolve and check that the plan includes inputs, outputs, constraints and verification."
+      },
+      "ja": {
+        "title": "Plan モードで実装前に計画する",
+        "description": "Plan モードは範囲や方法を決める段階に向いています。成果は実装計画であり、完成したコードではありません。入力、出力、制約、検証方法が含まれるかを確認します。"
+      },
+      "ko": {
+        "title": "Plan 모드로 구현 전 계획하기",
+        "description": "Plan 모드는 범위와 접근법을 결정할 때 유용합니다. 결과물은 구현 계획이며 완성된 코드는 아닙니다. 입력, 출력, 제한과 검증 방법이 포함되었는지 확인합니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 29,
+    "unit": "E",
+    "prerequisites": [
+      17
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 9,
+    "slug": "codex-markdown-basics",
+    "batch": 1,
+    "level": 0,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      1
+    ],
+    "minutes": 10,
+    "aliases": "Markdown README.md",
+    "related": [
+      10,
+      22,
+      23
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Markdown 與 MD 檔入門",
+        "description": "Markdown 是用純文字標記標題、清單、連結與程式碼的格式，常見副檔名是 .md。README.md 通常用來說明專案，AGENTS.md 提供代理工作規則，SKILL.md 描述可重用技能；不是所有 MD 檔都會被 Codex 自動當作指令。"
+      },
+      "zh-CN": {
+        "title": "Markdown 与 MD 文件入门",
+        "description": "Markdown 是用纯文字标记标题、清单、连结与程式码的格式，常见副档名是 .md。README.md 通常用来说明专案，AGENTS.md 提供代理工作规则，SKILL.md 描述可重用技能；不是所有 MD 档都会被 Codex 自动当作指令。"
+      },
+      "en": {
+        "title": "Markdown and MD files",
+        "description": "Markdown uses plain-text markers for headings, lists, links and code, commonly in .md files. README.md explains a project, AGENTS.md supplies agent instructions and SKILL.md defines a reusable skill. An arbitrary MD file is not automatically an instruction source."
+      },
+      "ja": {
+        "title": "Markdown と MD ファイル入門",
+        "description": "Markdown は見出し、一覧、リンク、コードを純粋なテキストで表す形式です。README.md は説明、AGENTS.md は代理の作業規則、SKILL.md は再利用する技能を扱います。すべての MD が自動的に指示として読まれるわけではありません。"
+      },
+      "ko": {
+        "title": "Markdown과 MD 파일 입문",
+        "description": "Markdown은 제목, 목록, 링크와 코드를 일반 텍스트 기호로 표현하는 형식입니다. README.md는 프로젝트 설명, AGENTS.md는 에이전트 규칙, SKILL.md는 재사용할 스킬을 다룹니다. 모든 MD 파일이 자동으로 지침이 되는 것은 아닙니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 19,
+    "unit": "D",
+    "prerequisites": [
+      6
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 10,
+    "slug": "codex-agents-md",
+    "batch": 1,
+    "level": 0,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      1
+    ],
+    "minutes": 12,
+    "aliases": "AGENTS.md AGENTS.override.md /init",
+    "related": [
+      9,
+      16,
+      23
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "AGENTS.md 專案規則",
+        "description": "AGENTS.md 是讓 Codex 在開始工作前取得專案規則的檔案。全域規則、專案根目錄與工作目錄路徑中的子目錄規則會形成一條指令鏈；同一層有 AGENTS.override.md 時優先讀取它。規則愈具體愈容易遵循，仍需要驗證實際載入。"
+      },
+      "zh-CN": {
+        "title": "AGENTS.md 项目规则",
+        "description": "AGENTS.md 是让 Codex 在开始工作前取得专案规则的档案。全域规则、专案根目录与工作目录路径中的子目录规则会形成一条指令链；同一层有 AGENTS.override.md 时优先读取它。规则愈具体愈容易遵循，仍需要验证实际载入。"
+      },
+      "en": {
+        "title": "Project instructions with AGENTS.md",
+        "description": "AGENTS.md supplies project instructions before Codex starts work. Global guidance and files along the project-root-to-working-directory path form an instruction chain. At the same level, AGENTS.override.md takes precedence. Keep rules concrete and verify what was actually loaded."
+      },
+      "ja": {
+        "title": "AGENTS.md でプロジェクトのルールを設定",
+        "description": "AGENTS.md は作業開始前にプロジェクトの指示を渡すファイルです。全体設定とルートから現在の作業場所までの規則が連なります。同じ階層では AGENTS.override.md が優先されます。読み込まれた内容を検証することが大切です。"
+      },
+      "ko": {
+        "title": "AGENTS.md 프로젝트 규칙",
+        "description": "AGENTS.md는 작업 시작 전 프로젝트 지침을 제공하는 파일입니다. 전역 지침과 프로젝트 루트부터 현재 작업 폴더까지의 규칙이 연결됩니다. 같은 위치에서는 AGENTS.override.md가 우선합니다. 실제로 무엇을 읽었는지 검증해야 합니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 20,
+    "unit": "D",
+    "prerequisites": [
+      9
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 11,
+    "slug": "codex-commands",
+    "batch": 2,
+    "level": 0,
+    "platforms": [
+      2
+    ],
+    "goals": [
+      2
+    ],
+    "minutes": 12,
+    "aliases": "/status /model /permissions /review /resume /compact",
+    "related": [
+      5,
+      8,
+      30
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "CLI 命令與斜線指令",
+        "description": "分清楚終端機命令與啟動參數、互動斜線指令、鍵盤快捷鍵及自然語言需求。先確認輸入位置：/plan 要輸入 Codex 互動介面，codex --help 則在作業系統的終端機執行。"
+      },
+      "zh-CN": {
+        "title": "CLI 命令与斜线命令",
+        "description": "分清楚终端机命令与启动参数、互动斜线指令、键盘快捷键及自然语言需求。先确认输入位置：/plan 要输入 Codex 互动介面，codex --help 则在操作系统的终端机执行。"
+      },
+      "en": {
+        "title": "CLI commands and slash commands",
+        "description": "Distinguish shell commands and launch flags, interactive slash commands, keyboard shortcuts and natural-language requests. Check the input location: /plan belongs in the Codex interactive client; codex --help runs in the operating-system terminal."
+      },
+      "ja": {
+        "title": "CLI コマンドとスラッシュコマンド",
+        "description": "シェルコマンドと起動時のフラグ、対話画面のスラッシュコマンド、キーボード操作、自然文の依頼を区別します。/plan は Codex の対話画面、codex --help は OS の端末に入力します。"
+      },
+      "ko": {
+        "title": "CLI 명령과 슬래시 명령",
+        "description": "셸 명령과 실행 옵션, 대화형 슬래시 명령, 키보드 단축키, 자연어 요청을 구분합니다. /plan은 Codex 대화형 화면에 입력하고 codex --help는 운영체제 터미널에서 실행합니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 25,
+    "unit": "E",
+    "prerequisites": [
+      5
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 12,
+    "slug": "codex-troubleshooting",
+    "batch": 3,
+    "level": 0,
+    "platforms": [
+      0,
+      1,
+      2
+    ],
+    "goals": [
+      3
+    ],
+    "minutes": 15,
+    "aliases": "PATH EACCES login",
+    "related": [
+      2,
+      5,
+      18
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "新手問題排除",
+        "description": "排除問題先判斷發生在哪一層：找不到程式是安裝或 PATH；進不了帳號是登入；讀不到檔案是目錄或權限；結果不對則可能是需求或專案程式。一次改一個條件，才能知道是哪個修正有效。"
+      },
+      "zh-CN": {
+        "title": "新手问题排查",
+        "description": "排除问题先判断发生在哪一层：找不到程式是安装或 PATH；进不了帐号是登入；读不到档案是目录或权限；结果不对则可能是需求或专案程式。一次改一个条件，才能知道是哪个修正有效。"
+      },
+      "en": {
+        "title": "Troubleshooting for beginners",
+        "description": "Start by locating the failing layer. A missing executable suggests installation or PATH; a rejected account suggests authentication; missing files suggest location or permissions; an incorrect result may involve the request or project code. Change one condition at a time."
+      },
+      "ja": {
+        "title": "初心者のトラブルシューティング",
+        "description": "まず失敗する層を見分けます。コマンド不在は導入や PATH、ログイン失敗は認証、ファイル不在は場所や権限、結果の誤りは依頼やコードを調べます。一度に一つだけ条件を変えます。"
+      },
+      "ko": {
+        "title": "입문자를 위한 문제 해결",
+        "description": "먼저 실패한 계층을 구분합니다. 명령을 못 찾으면 설치나 PATH, 로그인 거부는 인증, 파일 누락은 위치나 권한, 결과 오류는 요청이나 코드를 확인합니다. 한 번에 조건 하나만 바꾸세요."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 60,
+    "unit": "J",
+    "prerequisites": [
+      60
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 13,
+    "slug": "codex-project-management",
+    "batch": 2,
+    "level": 1,
+    "platforms": [
+      0
+    ],
+    "goals": [
+      5
+    ],
+    "minutes": 12,
+    "aliases": "archive projects tasks",
+    "related": [
+      22,
+      27,
+      29
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "桌面版任務與專案管理",
+        "description": "把同一件事的追問留在同一任務，把獨立成果分成不同任務，能減少上下文混亂。專案負責定位相關檔案，任務負責一次具體工作；建立很多任務不會自動讓檔案彼此隔離，隔離需要 worktree 等機制。"
+      },
+      "zh-CN": {
+        "title": "桌面版任务与项目管理",
+        "description": "把同一件事的追问留在同一任务，把独立成果分成不同任务，能减少上下文混乱。专案负责定位相关档案，任务负责一次具体工作；建立很多任务不会自动让档案彼此隔离，隔离需要 worktree 等机制。"
+      },
+      "en": {
+        "title": "Manage desktop tasks and projects",
+        "description": "Keep follow-ups about one outcome in the same task and separate independent outcomes into different tasks. Projects identify files; tasks track assignments. Multiple tasks do not automatically isolate files: use worktrees when isolation is needed."
+      },
+      "ja": {
+        "title": "デスクトップのタスクとプロジェクト管理",
+        "description": "同じ成果への追加依頼は同じタスクで続け、独立した成果は別にします。プロジェクトはファイルの位置、タスクは依頼を整理します。複数タスクだけではファイルは分離されません。"
+      },
+      "ko": {
+        "title": "데스크톱 작업과 프로젝트 관리",
+        "description": "같은 결과를 위한 후속 요청은 같은 작업에서 이어 가고 독립적인 결과는 분리합니다. 프로젝트는 파일 위치를, 작업은 요청을 정리합니다. 여러 작업이 자동으로 파일을 격리하지는 않습니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 31,
+    "unit": "F",
+    "prerequisites": [
+      6
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 14,
+    "slug": "codex-ide-getting-started",
+    "batch": 1,
+    "level": 1,
+    "platforms": [
+      3
+    ],
+    "goals": [
+      0
+    ],
+    "minutes": 12,
+    "aliases": "VS Code Cursor Windsurf",
+    "related": [
+      5,
+      19,
+      21
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "IDE 擴充套件入門",
+        "description": "IDE 整合把 Codex 放在程式碼旁邊，適合針對選取內容解釋與修改。VS Code、Cursor、Windsurf 使用 Codex 擴充；Xcode 與 JetBrains 有自己的整合入口，不能把安裝步驟混用。"
+      },
+      "zh-CN": {
+        "title": "IDE 扩展入门",
+        "description": "IDE 整合把 Codex 放在程式码旁边，适合针对选取内容解释与修改。VS Code、Cursor、Windsurf 使用 Codex 扩充；Xcode 与 JetBrains 有自己的整合入口，不能把安装步骤混用。"
+      },
+      "en": {
+        "title": "Get started in your IDE",
+        "description": "IDE integration places Codex beside your code for focused explanation and edits. VS Code, Cursor and Windsurf use the Codex extension; Xcode and JetBrains expose their own integration flows. Do not interchange their installation steps."
+      },
+      "ja": {
+        "title": "IDE 拡張機能を使い始める",
+        "description": "IDE ではコードの横で説明や編集を依頼できます。VS Code、Cursor、Windsurf は拡張機能、Xcode と JetBrains は独自の統合を使います。導入手順を混同しません。"
+      },
+      "ko": {
+        "title": "IDE 확장 시작하기",
+        "description": "IDE에서는 코드 옆에서 설명과 편집을 요청합니다. VS Code, Cursor, Windsurf는 확장을 쓰고 Xcode와 JetBrains는 자체 통합을 사용하므로 설치 절차를 구분합니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 12,
+    "unit": "B",
+    "prerequisites": [
+      3
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 30
+  },
+  {
+    "id": 15,
+    "slug": "codex-cloud-tasks-github",
+    "batch": 1,
+    "level": 1,
+    "platforms": [
+      4
+    ],
+    "goals": [
+      4
+    ],
+    "minutes": 15,
+    "aliases": "GitHub cloud PR",
+    "related": [
+      18,
+      21,
+      27
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "雲端任務與 GitHub",
+        "description": "雲端任務使用為程式庫設定的遠端環境，適合把較長工作交出去並回來檢查。它不會自動讀取你電腦尚未提交的檔案；建立 PR 也不代表已合併或部署。"
+      },
+      "zh-CN": {
+        "title": "云端任务与 GitHub",
+        "description": "云端任务使用为程式库设定的远端环境，适合把较长工作交出去并回来检查。它不会自动读取你电脑尚未提交的档案；建立 PR 也不代表已合并或部署。"
+      },
+      "en": {
+        "title": "Cloud tasks and GitHub",
+        "description": "Cloud tasks run in a remote environment configured for a repository. They suit longer delegated work, but cannot automatically see uncommitted files on your computer. Creating a pull request is distinct from merging or deploying it."
+      },
+      "ja": {
+        "title": "クラウドタスクと GitHub",
+        "description": "クラウドタスクはリポジトリ用に設定した遠隔環境で動きます。長い作業を委ねられますが、ローカルの未コミットファイルは自動では見えません。PR の作成とマージ・公開は別です。"
+      },
+      "ko": {
+        "title": "클라우드 작업과 GitHub",
+        "description": "클라우드 작업은 저장소에 설정된 원격 환경에서 실행됩니다. 긴 작업을 맡길 수 있지만 로컬의 미커밋 파일이 자동으로 보이지는 않습니다. PR 생성과 병합·배포는 별개입니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 17,
+    "unit": "C",
+    "prerequisites": [
+      2,
+      6
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 35
+  },
+  {
+    "id": 16,
+    "slug": "codex-config-toml",
+    "batch": 2,
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      1
+    ],
+    "minutes": 12,
+    "aliases": "config.toml approval_policy",
+    "related": [
+      10,
+      17,
+      25
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "config.toml 設定教學",
+        "description": "config.toml 控制 Codex 的設定值，與 AGENTS.md 的自然語言工作規則不同。使用者設定在 Codex home，受信任專案也能有 .codex/config.toml。設定可能被 CLI 參數、專案層或組織政策影響，不能只看一個檔案就斷言生效。"
+      },
+      "zh-CN": {
+        "title": "config.toml 配置教程",
+        "description": "config.toml 控制 Codex 的设定值，与 AGENTS.md 的自然语言工作规则不同。使用者设定在 Codex home，受信任专案也能有 .codex/config.toml。设定可能被 CLI 参数、专案层或组织政策影响，不能只看一个档案就断言生效。"
+      },
+      "en": {
+        "title": "Configure Codex with config.toml",
+        "description": "config.toml sets client options, while AGENTS.md describes working instructions. User settings live in Codex home; trusted projects can add .codex/config.toml. CLI overrides, project layers and managed requirements mean a single file does not prove the effective configuration."
+      },
+      "ja": {
+        "title": "config.toml による設定",
+        "description": "config.toml は設定値、AGENTS.md は作業指示を扱います。ユーザー設定に加えて信頼したプロジェクトに .codex/config.toml を置けます。引数や組織の制限もあるため、一つのファイルだけで有効値を判断しません。"
+      },
+      "ko": {
+        "title": "config.toml 설정",
+        "description": "config.toml은 설정 값을, AGENTS.md는 작업 지침을 다룹니다. 사용자 설정 외에 신뢰하는 프로젝트에 .codex/config.toml을 둘 수 있습니다. 인자와 조직 정책도 있으므로 파일 하나만으로 적용 값을 판단하지 않습니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 23,
+    "unit": "D",
+    "prerequisites": [
+      43
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 17,
+    "slug": "codex-model-selection",
+    "batch": 2,
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      2
+    ],
+    "minutes": 12,
+    "aliases": "/model reasoning effort",
+    "related": [
+      2,
+      7,
+      30
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "模型、推理深度與速度",
+        "description": "模型決定可用能力與成本條件，推理深度影響代理願意花多少工作來處理問題。先用同一個小任務比較品質，再決定是否提高深度；模型名稱與額度會變，因此只以帳號當下顯示的選項為準。"
+      },
+      "zh-CN": {
+        "title": "模型、推理深度与速度",
+        "description": "模型决定可用能力与成本条件，推理深度影响代理愿意花多少工作来处理问题。先用同一个小任务比较品质，再决定是否提高深度；模型名称与额度会变，因此只以帐号当下显示的选项为准。"
+      },
+      "en": {
+        "title": "Choose a model, effort and speed",
+        "description": "Model choice affects available capabilities and usage conditions; reasoning effort affects how much work the agent devotes to a problem. Compare quality on the same small task before increasing effort. Use the options currently exposed by your account rather than assuming a named model is universally available."
+      },
+      "ja": {
+        "title": "モデル・推論量・速度の選び方",
+        "description": "モデルと推論量は別の選択です。同じ小さな課題で品質を比較し、必要なら推論量を増やします。名前だけで判断せず、現在のアカウントに表示される候補を使います。"
+      },
+      "ko": {
+        "title": "모델, 추론 수준과 속도 선택",
+        "description": "모델 선택과 추론 수준은 별개입니다. 같은 작은 과제에서 품질을 비교하고 필요할 때 추론을 높입니다. 이름만 보고 판단하지 말고 현재 계정에 표시되는 옵션을 사용하세요."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 28,
+    "unit": "E",
+    "prerequisites": [
+      22
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 18,
+    "slug": "codex-permissions",
+    "batch": 2,
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      1
+    ],
+    "minutes": 14,
+    "aliases": "/permissions sandbox API key",
+    "related": [
+      16,
+      24,
+      25
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "權限、沙盒、網路與金鑰",
+        "description": "沙盒決定工具技術上能碰哪些檔案或網路，授權政策決定什麼時候需要詢問。兩層設定不能混為一談：不顯示詢問不代表動作一定被允許，能讀檔也不代表可以寫入所有地方。"
+      },
+      "zh-CN": {
+        "title": "权限、沙箱、网络与密钥",
+        "description": "沙盒决定工具技术上能碰哪些档案或网路，授权政策决定什么时候需要询问。两层设定不能混为一谈：不显示询问不代表动作一定被允许，能读档也不代表可以写入所有地方。"
+      },
+      "en": {
+        "title": "Permissions, sandbox, network and keys",
+        "description": "Sandbox rules define technical access to files and networks; approval policy determines when the agent asks before acting. No prompt does not guarantee permission, and read access does not imply write access everywhere."
+      },
+      "ja": {
+        "title": "権限・サンドボックス・ネットワーク・キー",
+        "description": "サンドボックスは技術的なアクセス範囲、承認設定は確認するタイミングを制御します。確認が出ないことと無制限に操作できることは同じではありません。"
+      },
+      "ko": {
+        "title": "권한, 샌드박스, 네트워크와 키",
+        "description": "샌드박스는 기술적인 접근 범위를, 승인 정책은 질문 시점을 제어합니다. 질문이 없다는 것과 무제한 실행이 가능하다는 것은 다릅니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 30,
+    "unit": "E",
+    "prerequisites": [
+      8
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 19,
+    "slug": "codex-git-basics",
+    "batch": 2,
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      4
+    ],
+    "minutes": 15,
+    "aliases": "git diff status restore branch",
+    "related": [
+      20,
+      21,
+      27
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Git、分支、diff 與還原",
+        "description": "Git 保存檔案版本，分支承接一組修改，diff 顯示差異。Codex 可以協助操作，但你仍要確認修改屬於這次任務。聊天紀錄與 Git 歷史不同，恢復舊對話不會自動還原檔案。"
+      },
+      "zh-CN": {
+        "title": "Git、分支、diff 与还原",
+        "description": "Git 保存档案版本，分支承接一组修改，diff 显示差异。Codex 可以协助操作，但你仍要确认修改属于这次任务。聊天纪录与 Git 历史不同，恢复旧对话不会自动还原档案。"
+      },
+      "en": {
+        "title": "Git, branches, diffs and recovery",
+        "description": "Git stores file history, branches organize changes and diffs show what changed. Codex can help, but you must verify that the changes belong to the task. Restoring an old conversation does not restore Git files."
+      },
+      "ja": {
+        "title": "Git・ブランチ・差分・復元",
+        "description": "Git は履歴、ブランチは変更のまとまり、diff は差分を扱います。会話の再開ではファイルは復元されません。"
+      },
+      "ko": {
+        "title": "Git, 브랜치, diff와 복원",
+        "description": "Git은 파일 이력, 브랜치는 변경 묶음, diff는 차이를 관리합니다. 대화를 재개한다고 파일이 복원되지는 않습니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 35,
+    "unit": "F",
+    "prerequisites": [
+      20
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 30
+  },
+  {
+    "id": 20,
+    "slug": "codex-debugging",
+    "batch": 2,
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      3
+    ],
+    "minutes": 14,
+    "aliases": "bug reproduction regression",
+    "related": [
+      7,
+      19,
+      21
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "修 Bug 的完整流程",
+        "description": "好的除錯从可重現的症狀開始，再用證據縮小原因，最後驗證修正。『網站壞了』不夠具體；提供哪個輸入、在哪個步驟、期待什麼、實際出現什麼，能讓 Codex 更快找到相關程式。"
+      },
+      "zh-CN": {
+        "title": "修复 Bug 的完整流程",
+        "description": "好的除错从可重现的症状开始，再用证据缩小原因，最后验证修正。『网站坏了』不够具体；提供哪个输入、在哪个步骤、期待什么、实际出现什么，能让 Codex 更快找到相关程式。"
+      },
+      "en": {
+        "title": "A complete debugging workflow",
+        "description": "Debugging starts with a reproducible symptom, narrows causes with evidence and verifies the fix. Give the input, exact step, expected behavior and observed failure instead of only saying the site is broken."
+      },
+      "ja": {
+        "title": "不具合修正の一連の流れ",
+        "description": "不具合修正は再現する症状から始め、根拠で原因を絞って検証します。入力、操作、期待、実際を伝えます。"
+      },
+      "ko": {
+        "title": "버그 수정의 전체 과정",
+        "description": "디버깅은 재현 가능한 증상에서 시작해 근거로 원인을 좁히고 수정 결과를 검증합니다. 입력, 단계, 기대와 실제 결과를 전달하세요."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 34,
+    "unit": "F",
+    "prerequisites": [
+      47
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 21,
+    "slug": "codex-testing-review",
+    "batch": 2,
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      4
+    ],
+    "minutes": 15,
+    "aliases": "/review pytest npm test PR",
+    "related": [
+      19,
+      20,
+      15
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "測試、Code Review 與 PR",
+        "description": "測試確認程式在指定條件的行為，Code Review 檢查變更是否有遺漏或風險，PR 則讓人查看並討論要合併的差異。三者互補；通過測試不等於審查通過，開 PR 也不是已合併。"
+      },
+      "zh-CN": {
+        "title": "测试、Code Review 与 PR",
+        "description": "测试确认程式在指定条件的行为，Code Review 检查变更是否有遗漏或风险，PR 则让人查看并讨论要合并的差异。三者互补；通过测试不等于审查通过，开 PR 也不是已合并。"
+      },
+      "en": {
+        "title": "Tests, code review and pull requests",
+        "description": "Tests check behavior under specified conditions, review examines the change for defects and a PR presents proposed integration. They complement each other: tests passing does not establish review approval, and an open PR is not a merge."
+      },
+      "ja": {
+        "title": "テスト・コードレビュー・PR",
+        "description": "テストは条件下の動作、レビューは変更の問題、PR は統合候補を扱います。テスト成功、承認、マージは別の状態です。"
+      },
+      "ko": {
+        "title": "테스트, 코드 리뷰와 PR",
+        "description": "테스트는 조건별 동작, 리뷰는 변경의 결함, PR은 통합 제안을 다룹니다. 테스트 통과, 승인과 병합은 별도 상태입니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 36,
+    "unit": "F",
+    "prerequisites": [
+      19
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 30
+  },
+  {
+    "id": 22,
+    "slug": "codex-context-handoff",
+    "batch": 2,
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      1
+    ],
+    "minutes": 12,
+    "aliases": "resume context README.md",
+    "related": [
+      9,
+      10,
+      13
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "上下文與工作交接",
+        "description": "長工作需要把決策與證據留下，不能只依靠對話長度。README 說明怎麼使用專案，設計文件記錄為何這樣做，交接文件整理目前做到哪裡；AGENTS.md 則放持續有效的工作規則，避免把所有進度塞成規則。"
+      },
+      "zh-CN": {
+        "title": "上下文与工作交接",
+        "description": "长工作需要把决策与证据留下，不能只依靠对话长度。README 说明怎么使用专案，设计文件记录为何这样做，交接文件整理目前做到哪里；AGENTS.md 则放持续有效的工作规则，避免把所有进度塞成规则。"
+      },
+      "en": {
+        "title": "Context and task handoff",
+        "description": "Long work needs durable decisions and evidence, not just a long conversation. README explains use, design documents explain choices, handoffs record current progress and AGENTS.md holds ongoing instructions. Do not turn all temporary progress into permanent rules."
+      },
+      "ja": {
+        "title": "コンテキストと作業の引き継ぎ",
+        "description": "長い作業には判断と証拠を残します。README は使い方、設計書は理由、引き継ぎは進捗、AGENTS.md は継続する規則に分けます。"
+      },
+      "ko": {
+        "title": "맥락과 작업 인계",
+        "description": "긴 작업에는 결정과 증거를 남깁니다. README는 사용법, 설계 문서는 이유, 인계는 진행 상황, AGENTS.md는 지속할 규칙으로 구분합니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 27,
+    "unit": "E",
+    "prerequisites": [
+      45
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 22
+  },
+  {
+    "id": 23,
+    "slug": "codex-skills",
+    "batch": 2,
+    "level": 2,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      5
+    ],
+    "minutes": 12,
+    "aliases": "SKILL.md /skills",
+    "related": [
+      10,
+      24,
+      25
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Skills 與 SKILL.md",
+        "description": "Skill 將固定工作流程整理成可重用的指示與資源。最小結構是一個資料夾與 SKILL.md，檔案前段需要 name 和 description，正文描述操作與輸出。安裝技能不代表每個任務都必然使用，還要檢查是否載入。"
+      },
+      "zh-CN": {
+        "title": "Skills 与 SKILL.md",
+        "description": "Skill 将固定工作流程整理成可重用的指示与资源。最小结构是一个资料夹与 SKILL.md，档案前段需要 name 和 description，正文描述操作与输出。安装技能不代表每个任务都必然使用，还要检查是否载入。"
+      },
+      "en": {
+        "title": "Skills and SKILL.md",
+        "description": "A skill packages a repeatable workflow with instructions and optional resources. The minimum is a directory containing SKILL.md with name and description metadata followed by the procedure and expected output. Installation alone does not prove a task used it."
+      },
+      "ja": {
+        "title": "Skills と SKILL.md",
+        "description": "Skill は繰り返す手順と資料をまとめます。最小構成はフォルダーと SKILL.md で、先頭に name と description、本文に操作と出力を書きます。導入しただけで使用済みとは判断しません。"
+      },
+      "ko": {
+        "title": "Skills와 SKILL.md",
+        "description": "Skill은 반복할 절차와 자료를 묶습니다. 최소 구조는 폴더와 SKILL.md이며 앞부분에 name과 description, 본문에 동작과 출력을 적습니다. 설치만으로 사용되었다고 판단하지 않습니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 37,
+    "unit": "G",
+    "prerequisites": [
+      9,
+      10
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 24,
+    "slug": "codex-plugins",
+    "batch": 2,
+    "level": 2,
+    "platforms": [
+      0,
+      2
+    ],
+    "goals": [
+      5
+    ],
+    "minutes": 15,
+    "aliases": "/plugins",
+    "related": [
+      18,
+      23,
+      25
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Plugins 與外部服務",
+        "description": "Plugin 可以把 Skills 與 MCP 工具包在一起，提供可安裝的工作能力。安裝套件、連接外部帳號與實際執行工具是三個不同步驟；找到插件不代表已能讀你的服務資料。"
+      },
+      "zh-CN": {
+        "title": "Plugins 与外部服务",
+        "description": "Plugin 可以把 Skills 与 MCP 工具包在一起，提供可安装的工作能力。安装套件、连接外部帐号与实际执行工具是三个不同步骤；找到插件不代表已能读你的服务资料。"
+      },
+      "en": {
+        "title": "Plugins and connected services",
+        "description": "A plugin can distribute skills and MCP tools as an installable capability. Installing it, connecting an external account and successfully calling a tool are distinct stages. A listing does not establish access to your data."
+      },
+      "ja": {
+        "title": "Plugins と外部サービス",
+        "description": "Plugin は Skills や MCP を配布できます。導入、アカウント接続、ツール成功は別段階です。"
+      },
+      "ko": {
+        "title": "Plugins와 외부 서비스",
+        "description": "Plugin은 Skills와 MCP를 배포할 수 있습니다. 설치, 계정 연결과 도구 성공은 별도 단계입니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 40,
+    "unit": "G",
+    "prerequisites": [
+      49
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 25,
+    "slug": "codex-mcp",
+    "batch": 3,
+    "level": 2,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      5
+    ],
+    "minutes": 15,
+    "aliases": "/mcp codex mcp list",
+    "related": [
+      16,
+      18,
+      24
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "MCP 設定與連線排除",
+        "description": "MCP 讓 Codex 使用外部工具與資料。STDIO 伺服器通常由本機命令啟動；HTTP 伺服器透過 URL 連線。設定檔寫入成功只代表設定存在，還需要確認服務啟動、驗證通過與工具回應。"
+      },
+      "zh-CN": {
+        "title": "MCP 配置与连接排查",
+        "description": "MCP 让 Codex 使用外部工具与资料。STDIO 伺服器通常由本机命令启动；HTTP 伺服器透过 URL 连线。设定档写入成功只代表设定存在，还需要确认服务启动、验证通过与工具回应。"
+      },
+      "en": {
+        "title": "MCP setup and connection checks",
+        "description": "MCP connects Codex to tools and data. STDIO servers usually start as local processes; HTTP servers use a URL. Saving configuration only proves it exists: verify startup, authentication and an actual tool response."
+      },
+      "ja": {
+        "title": "MCP の設定と接続確認",
+        "description": "MCP は外部ツールと接続します。STDIO はローカル命令、HTTP は URL を使います。設定保存だけでなく起動、認証、応答を確認します。"
+      },
+      "ko": {
+        "title": "MCP 설정과 연결 확인",
+        "description": "MCP는 외부 도구를 연결합니다. STDIO는 로컬 명령, HTTP는 URL을 사용합니다. 설정 저장뿐 아니라 시작, 인증과 응답을 확인해야 합니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 43,
+    "unit": "H",
+    "prerequisites": [
+      18
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 26,
+    "slug": "codex-browser-images",
+    "batch": 3,
+    "level": 2,
+    "platforms": [
+      0,
+      2
+    ],
+    "goals": [
+      3
+    ],
+    "minutes": 15,
+    "aliases": "browser screenshot image",
+    "related": [
+      3,
+      20,
+      31
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "瀏覽器、截圖與圖片協作",
+        "description": "畫面需求需要把參考、實際結果與修改條件放在一起。瀏覽器可以找資料與檢視網站，截圖能傳達當下畫面，生成圖適合概念參考；三者提供的證據不同，不能用生成的介面當成操作成功。"
+      },
+      "zh-CN": {
+        "title": "浏览器、截图与图片协作",
+        "description": "画面需求需要把参考、实际结果与修改条件放在一起。浏览器可以找资料与检视网站，截图能传达当下画面，生成图适合概念参考；三者提供的证据不同，不能用生成的介面当成操作成功。"
+      },
+      "en": {
+        "title": "Work with browsers, screenshots and images",
+        "description": "Visual work needs a reference, the actual result and explicit change criteria. Browser inspection, screenshots and generated concepts provide different evidence. A generated interface is not proof that a workflow works."
+      },
+      "ja": {
+        "title": "ブラウザー・スクリーンショット・画像の活用",
+        "description": "画面の作業では参考、現状、変更条件を揃えます。スクリーンショットと生成図は証拠の意味が違い、生成した画面で動作成功を証明できません。"
+      },
+      "ko": {
+        "title": "브라우저, 스크린샷과 이미지 활용",
+        "description": "시각 작업에는 참고, 현재 화면과 변경 조건이 필요합니다. 스크린샷과 생성 그림은 증거의 의미가 다르며 생성 화면으로 동작 성공을 증명할 수 없습니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 49,
+    "unit": "I",
+    "prerequisites": [
+      18
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 27,
+    "slug": "codex-worktrees",
+    "batch": 3,
+    "level": 2,
+    "platforms": [
+      0,
+      2
+    ],
+    "goals": [
+      4
+    ],
+    "minutes": 15,
+    "aliases": "worktree branch",
+    "related": [
+      13,
+      19,
+      28
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Worktree 與多任務隔離",
+        "description": "Worktree 讓同一個 Git 程式庫有不同的工作目錄，各自承接不同分支。它適合讓兩項工作分開改檔，但資料庫、連接埠與外部服務仍可能共用，不能把檔案隔離當成所有資源隔離。"
+      },
+      "zh-CN": {
+        "title": "Worktree 与多任务隔离",
+        "description": "Worktree 让同一个 Git 程式库有不同的工作目录，各自承接不同分支。它适合让两项工作分开改档，但资料库、连接埠与外部服务仍可能共用，不能把档案隔离当成所有资源隔离。"
+      },
+      "en": {
+        "title": "Worktrees and isolated tasks",
+        "description": "A Git worktree gives one repository multiple working directories on different branches. It isolates file edits, but databases, ports and external services may still be shared. File isolation is not full resource isolation."
+      },
+      "ja": {
+        "title": "Worktree とタスクの分離",
+        "description": "Worktree は一つの Git リポジトリに別ブランチの作業場所を作ります。ファイルは分かれても DB、ポート、外部サービスは共有される場合があります。"
+      },
+      "ko": {
+        "title": "Worktree와 작업 격리",
+        "description": "Worktree는 하나의 Git 저장소에 다른 브랜치의 작업 폴더를 만듭니다. 파일이 분리되어도 DB, 포트와 외부 서비스는 공유될 수 있습니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 45,
+    "unit": "H",
+    "prerequisites": [
+      52
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 28,
+    "slug": "codex-subagents",
+    "batch": 3,
+    "level": 2,
+    "platforms": [
+      0,
+      2
+    ],
+    "goals": [
+      5
+    ],
+    "minutes": 15,
+    "aliases": "subagents delegate",
+    "related": [
+      7,
+      21,
+      27
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "子代理與工作分工",
+        "description": "子代理適合把能獨立完成的工作分開處理，再由主要任務整合結果。分工會增加模型與工具用量；若工作互相依賴、都要改同一段程式，平行處理反而可能產生衝突。"
+      },
+      "zh-CN": {
+        "title": "子代理与任务分工",
+        "description": "子代理适合把能独立完成的工作分开处理，再由主要任务整合结果。分工会增加模型与工具用量；若工作互相依赖、都要改同一段程式，平行处理反而可能产生冲突。"
+      },
+      "en": {
+        "title": "Subagents and task delegation",
+        "description": "Subagents suit independent work that can be reviewed and combined by the main task. They consume additional model and tool usage. Parallel tasks with mutual dependencies or overlapping edits can create more conflict than speed."
+      },
+      "ja": {
+        "title": "サブエージェントと作業分担",
+        "description": "サブエージェントは独立した調査を分担し、主担当が統合する仕組みです。利用量が増え、依存や編集の重複があると競合します。"
+      },
+      "ko": {
+        "title": "하위 에이전트와 작업 분담",
+        "description": "하위 에이전트는 독립 조사를 나누고 주 작업이 통합하는 방식입니다. 사용량이 늘며 의존성과 편집 중복이 있으면 충돌합니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 46,
+    "unit": "H",
+    "prerequisites": [
+      27
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 29,
+    "slug": "codex-automations",
+    "batch": 3,
+    "level": 2,
+    "platforms": [
+      0
+    ],
+    "goals": [
+      5
+    ],
+    "minutes": 15,
+    "aliases": "schedule automation reminder",
+    "related": [
+      13,
+      18,
+      30
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "排程、自動化與提醒",
+        "description": "排程讓固定工作在指定時間執行，但要先確認使用哪個環境。需要本機檔案的桌面排程，電腦與應用程式必須在執行時可用；雲端任務不能直接讀取未提供的本機資料。"
+      },
+      "zh-CN": {
+        "title": "计划任务、自动化与提醒",
+        "description": "排程让固定工作在指定时间执行，但要先确认使用哪个环境。需要本机档案的桌面排程，电脑与应用程式必须在执行时可用；云端任务不能直接读取未提供的本机资料。"
+      },
+      "en": {
+        "title": "Scheduled tasks and reminders",
+        "description": "Scheduled work needs a defined execution environment. A desktop task that reads local files requires the computer and app to be available at run time. Cloud work cannot directly read local data you have not supplied."
+      },
+      "ja": {
+        "title": "スケジュール実行とリマインダー",
+        "description": "定期実行には実行環境を決めます。ローカルファイルを読む場合、実行時にコンピューターとアプリが利用可能である必要があります。"
+      },
+      "ko": {
+        "title": "예약 작업과 알림",
+        "description": "예약 작업에는 실행 환경을 정해야 합니다. 로컬 파일을 읽는 작업은 실행 시 컴퓨터와 앱을 사용할 수 있어야 합니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 50,
+    "unit": "I",
+    "prerequisites": [
+      26
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 30,
+    "slug": "codex-exec-scripting",
+    "batch": 3,
+    "level": 2,
+    "platforms": [
+      2
+    ],
+    "goals": [
+      5
+    ],
+    "minutes": 15,
+    "aliases": "codex exec --json -o",
+    "related": [
+      11,
+      18,
+      32
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "codex exec 與腳本整合",
+        "description": "codex exec 在非互動模式執行一次任務，適合腳本與 CI。預設一般輸出把進度放 stderr、最後回答放 stdout；--json 改成逐行 JSON 事件，不能把整份輸出當成單一 JSON 物件解析。"
+      },
+      "zh-CN": {
+        "title": "codex exec 与脚本集成",
+        "description": "codex exec 在非互动模式执行一次任务，适合脚本与 CI。预设一般输出把进度放 stderr、最后回答放 stdout；--json 改成逐行 JSON 事件，不能把整份输出当成单一 JSON 物件解析。"
+      },
+      "en": {
+        "title": "codex exec and scripts",
+        "description": "codex exec runs one non-interactive task for scripts or CI. Normally progress goes to stderr and the final answer to stdout. --json produces JSON Lines events, not a single JSON object."
+      },
+      "ja": {
+        "title": "codex exec とスクリプト連携",
+        "description": "codex exec は非対話で一回のタスクを実行します。通常は stderr に進捗、stdout に最終回答、--json では一行ずつ JSON のイベントが出ます。"
+      },
+      "ko": {
+        "title": "codex exec와 스크립트 연동",
+        "description": "codex exec는 비대화형으로 작업 한 번을 실행합니다. 보통 stderr는 진행, stdout은 최종 답변이며 --json은 한 줄씩 JSON 이벤트를 출력합니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 51,
+    "unit": "I",
+    "prerequisites": [
+      29
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 31,
+    "slug": "codex-website-workshop",
+    "batch": 3,
+    "level": 2,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      0
+    ],
+    "minutes": 20,
+    "aliases": "HTML CSS accessibility",
+    "related": [
+      6,
+      21,
+      26
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "實戰：製作小網站",
+        "description": "從 brief.md 規劃並製作 Small Steps 待辦網站，完成新增、完成、刪除、篩選與本機資料保存。將 HTML、CSS、資料函式、畫面事件與測試分開，以 Node 測試和瀏覽器操作驗收，並留下可重新啟動與還原的交接紀錄。"
+      },
+      "zh-CN": {
+        "title": "实战：制作小网站",
+        "description": "从 brief.md 规划并制作 Small Steps 待办网站，完成新增、完成、删除、筛选与本机资料保存。将 HTML、CSS、资料函式、画面事件与测试分开，以 Node 测试和浏览器操作验收，并留下可重新启动与还原的交接纪录。"
+      },
+      "en": {
+        "title": "Workshop: build a small website",
+        "description": "Plan and build the Small Steps task website from brief.md, with adding, completing, deleting, filtering and local persistence. Separate HTML, CSS, data functions, UI events and tests, verify with Node and browser checks, and document restart and recovery steps."
+      },
+      "ja": {
+        "title": "実践：小さな Web サイトを作る",
+        "description": "brief.md から Small Steps のタスクサイトを計画・制作し、追加、完了、削除、絞り込み、ローカル保存を実装します。HTML、CSS、データ関数、画面イベント、テストを分け、Node とブラウザーで検証して再起動・復元の手順を残します。"
+      },
+      "ko": {
+        "title": "실습: 작은 웹사이트 만들기",
+        "description": "brief.md에서 Small Steps 할 일 사이트를 계획하고 추가·완료·삭제·필터·로컬 저장을 구현합니다. HTML·CSS·데이터 함수·화면 이벤트·시험을 분리하고 Node와 브라우저로 검증한 뒤 재시작·복원 인계 기록을 남깁니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 55,
+    "unit": "J",
+    "prerequisites": [
+      19,
+      21
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 60
+  },
+  {
+    "id": 32,
+    "slug": "codex-csv-workshop",
+    "batch": 3,
+    "level": 2,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      5
+    ],
+    "minutes": 20,
+    "aliases": "CSV Python unittest",
+    "related": [
+      6,
+      20,
+      30
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "實戰：製作資料整理工具",
+        "description": "這個實戰製作 CSV 名單整理工具，保留原檔並產生新結果。規則固定為修剪空白、將 email 轉小寫、同 email 保留第一筆有效資料、略過缺姓名或格式不合的 email，最後回報保留、重複與無效筆數。這是練習用格式檢查，不保證信箱真實存在。"
+      },
+      "zh-CN": {
+        "title": "实战：制作数据整理工具",
+        "description": "这个实战制作 CSV 名单整理工具，保留原档并产生新结果。规则固定为修剪空白、将 email 转小写、同 email 保留第一笔有效资料、略过缺姓名或格式不合的 email，最后回报保留、重复与无效笔数。这是练习用格式检查，不保证信箱真实存在。"
+      },
+      "en": {
+        "title": "Workshop: build a CSV cleanup tool",
+        "description": "Build a CSV cleaner that preserves its input and writes a new output. The exercise trims whitespace, lowercases email, keeps the first valid occurrence of an address and skips blank names or malformed addresses. It reports kept, duplicate and invalid counts. Its format check does not prove a mailbox exists."
+      },
+      "ja": {
+        "title": "実践：CSV 整理ツールを作る",
+        "description": "入力を保って別ファイルに出す CSV 整理ツールを作ります。空白除去、email の小文字化、重複は最初の有効行を保持、空の名前や不正な形式を除外し、三種類の件数を報告します。実在するメールかは保証しません。"
+      },
+      "ko": {
+        "title": "실습: CSV 정리 도구 만들기",
+        "description": "입력을 보존하고 새 파일로 내보내는 CSV 정리 도구를 만듭니다. 공백 제거, email 소문자화, 중복 중 첫 유효 행 유지, 빈 이름이나 잘못된 형식 제외 후 세 종류의 건수를 보고합니다. 실제 이메일 존재를 보장하지는 않습니다."
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 56,
+    "unit": "J",
+    "prerequisites": [
+      31
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 45
+  },
+  {
+    "id": 33,
+    "slug": "codex-platforms-guide",
+    "level": 0,
+    "platforms": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      0
+    ],
+    "minutes": 10,
+    "aliases": "platform desktop mobile CLI IDE cloud entry",
+    "related": [
+      2,
+      34,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "平台選擇：找到適合的 Codex 入口",
+        "description": "用具體工作情境比較桌面、手機、CLI、IDE 與雲端，核對檔案和工具在哪裡執行。"
+      },
+      "en": {
+        "title": "Choosing a Codex platform",
+        "description": "Compare desktop, mobile, CLI, IDE and cloud scenarios, and identify where files and tools run."
+      },
+      "ja": {
+        "title": "Codex の利用環境を選ぶ",
+        "description": "デスクトップ、モバイル、CLI、IDE、クラウドを具体例で比べ、ファイルとツールの実行場所を確認します。"
+      },
+      "ko": {
+        "title": "Codex 사용 환경 선택",
+        "description": "데스크톱, 모바일, CLI, IDE, 클라우드를 사례로 비교하고 파일과 도구의 실행 위치를 확인합니다."
+      },
+      "zh-CN": {
+        "title": "平台选择：找到适合的 Codex 入口",
+        "description": "用具体工作情境比较桌面、手机、CLI、IDE 与云端，核对档案和工具在哪里执行。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 3,
+    "unit": "A",
+    "batch": 1,
+    "prerequisites": [
+      2
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 15
+  },
+  {
+    "id": 34,
+    "slug": "codex-terminal-paths",
+    "level": 0,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      0,
+      2
+    ],
+    "minutes": 12,
+    "aliases": "terminal shell PowerShell cd pwd path directory",
+    "related": [
+      33,
+      6,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "終端機與路徑：找到專案根目錄",
+        "description": "在 Windows、macOS、Linux 建立練習資料夾，確認目前目錄並辨識相對與絕對路徑。"
+      },
+      "en": {
+        "title": "Terminal paths and project roots",
+        "description": "Create a practice folder on Windows, macOS or Linux and distinguish current, relative and absolute paths."
+      },
+      "ja": {
+        "title": "ターミナルのパスとプロジェクトルート",
+        "description": "Windows、macOS、Linux で練習フォルダーを作り、現在位置、相対パス、絶対パスを区別します。"
+      },
+      "ko": {
+        "title": "터미널 경로와 프로젝트 루트",
+        "description": "Windows, macOS, Linux에서 실습 폴더를 만들고 현재 위치, 상대 경로, 절대 경로를 구분합니다."
+      },
+      "zh-CN": {
+        "title": "终端机与路径：找到专案根目录",
+        "description": "在 Windows、macOS、Linux 建立练习资料夹，确认目前目录并辨识相对与绝对路径。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 4,
+    "unit": "A",
+    "batch": 1,
+    "prerequisites": [
+      33
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 35,
+    "slug": "codex-cli-windows",
+    "level": 0,
+    "platforms": [
+      2
+    ],
+    "goals": [
+      0,
+      2,
+      3
+    ],
+    "minutes": 12,
+    "aliases": "Windows PowerShell CLI npm PATH Get-Command",
+    "related": [
+      5,
+      36,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Windows CLI 安裝與排錯",
+        "description": "在 PowerShell 安裝、登入、核對執行路徑，完成第一次讀取並處理更新與找不到命令。"
+      },
+      "en": {
+        "title": "Windows CLI setup and troubleshooting",
+        "description": "Install and sign in from PowerShell, check command discovery, read a project and troubleshoot updates."
+      },
+      "ja": {
+        "title": "Windows CLI の導入と問題解決",
+        "description": "PowerShell で導入とログインを行い、実行パス、最初の読み取り、更新時の問題を確認します。"
+      },
+      "ko": {
+        "title": "Windows CLI 설치와 문제 해결",
+        "description": "PowerShell에서 설치와 로그인, 명령 경로, 첫 읽기, 업데이트 문제를 확인합니다."
+      },
+      "zh-CN": {
+        "title": "Windows CLI 安装与排错",
+        "description": "在 PowerShell 安装、登入、核对执行路径，完成第一次读取并处理更新与找不到命令。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 8,
+    "unit": "B",
+    "batch": 1,
+    "prerequisites": [
+      5
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 36,
+    "slug": "codex-cli-macos",
+    "level": 0,
+    "platforms": [
+      2
+    ],
+    "goals": [
+      0,
+      2,
+      3
+    ],
+    "minutes": 12,
+    "aliases": "macOS Mac Terminal zsh CLI npm PATH",
+    "related": [
+      35,
+      37,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "macOS CLI 安裝與排錯",
+        "description": "在 macOS 終端機完成安裝、登入與專案定位，分開處理 shell 環境、更新和權限問題。"
+      },
+      "en": {
+        "title": "macOS CLI setup and troubleshooting",
+        "description": "Set up the CLI in macOS Terminal and separate shell, update, directory and permission problems."
+      },
+      "ja": {
+        "title": "macOS CLI の導入と問題解決",
+        "description": "macOS のターミナルで導入とログインを行い、シェル、更新、場所、権限の問題を分けて解決します。"
+      },
+      "ko": {
+        "title": "macOS CLI 설치와 문제 해결",
+        "description": "macOS 터미널에서 설치하고 셸, 업데이트, 경로, 권한 문제를 구분해 해결합니다."
+      },
+      "zh-CN": {
+        "title": "macOS CLI 安装与排错",
+        "description": "在 macOS 终端机完成安装、登入与专案定位，分开处理 shell 环境、更新和权限问题。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 9,
+    "unit": "B",
+    "batch": 1,
+    "prerequisites": [
+      5
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 37,
+    "slug": "codex-cli-linux-wsl",
+    "level": 0,
+    "platforms": [
+      2
+    ],
+    "goals": [
+      0,
+      2,
+      3
+    ],
+    "minutes": 12,
+    "aliases": "Linux WSL WSL2 Ubuntu bash home mount CLI",
+    "related": [
+      36,
+      3,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Linux／WSL CLI 與檔案位置",
+        "description": "辨識主機與 WSL 的工具、路徑和帳號，從正確目錄執行相同練習並更新 CLI。"
+      },
+      "en": {
+        "title": "Linux and WSL CLI environments",
+        "description": "Distinguish host and WSL tools, paths and accounts, then run the exercise and update from the right environment."
+      },
+      "ja": {
+        "title": "Linux／WSL の CLI とファイルの場所",
+        "description": "ホストと WSL のツール、パス、アカウントを区別し、正しい環境で練習と更新を行います。"
+      },
+      "ko": {
+        "title": "Linux/WSL CLI와 파일 위치",
+        "description": "호스트와 WSL의 도구, 경로, 계정을 구분하고 올바른 환경에서 실습과 업데이트를 진행합니다."
+      },
+      "zh-CN": {
+        "title": "Linux／WSL CLI 与档案位置",
+        "description": "辨识主机与 WSL 的工具、路径和帐号，从正确目录执行相同练习并更新 CLI。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 10,
+    "unit": "B",
+    "batch": 1,
+    "prerequisites": [
+      5
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 30
+  },
+  {
+    "id": 38,
+    "slug": "codex-mobile-ios",
+    "level": 0,
+    "platforms": [
+      1
+    ],
+    "goals": [
+      0,
+      3
+    ],
+    "minutes": 12,
+    "aliases": "iPhone iPad iOS Remote QR mobile",
+    "related": [
+      4,
+      39,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "iPhone／iPad：接續 Codex 工作",
+        "description": "核對 iOS 的可用入口、配對與驗證條件，送出一次支援的任務並追蹤主機結果。"
+      },
+      "en": {
+        "title": "Continuing Codex work on iPhone or iPad",
+        "description": "Check the available iOS entry point, pairing and authentication, then track a supported task on its host."
+      },
+      "ja": {
+        "title": "iPhone／iPad で Codex の作業を続ける",
+        "description": "iOS の利用入口、接続、認証条件を確認し、対応するタスクを送りホストの結果を追跡します。"
+      },
+      "ko": {
+        "title": "iPhone/iPad에서 Codex 작업 이어가기",
+        "description": "iOS 진입점, 연결, 인증 조건을 확인하고 지원되는 작업을 보내 호스트 결과를 추적합니다."
+      },
+      "zh-CN": {
+        "title": "iPhone／iPad：接续 Codex 工作",
+        "description": "核对 iOS 的可用入口、配对与验证条件，送出一次支援的任务并追踪主机结果。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 14,
+    "unit": "C",
+    "batch": 1,
+    "prerequisites": [
+      4
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 39,
+    "slug": "codex-mobile-android",
+    "level": 0,
+    "platforms": [
+      1
+    ],
+    "goals": [
+      0,
+      3
+    ],
+    "minutes": 12,
+    "aliases": "Android Remote QR mobile Google Play",
+    "related": [
+      38,
+      40,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Android：接續 Codex 工作",
+        "description": "檢查 Android 應用程式、配對與通知設定，找到正確主機並核對任務成果。"
+      },
+      "en": {
+        "title": "Continuing Codex work on Android",
+        "description": "Check the Android app, pairing and notifications, select the correct host and verify the task output."
+      },
+      "ja": {
+        "title": "Android で Codex の作業を続ける",
+        "description": "Android アプリ、接続、通知を確認し、正しいホストを選んで成果を照合します。"
+      },
+      "ko": {
+        "title": "Android에서 Codex 작업 이어가기",
+        "description": "Android 앱, 연결, 알림을 확인하고 올바른 호스트에서 작업 결과를 검증합니다."
+      },
+      "zh-CN": {
+        "title": "Android：接续 Codex 工作",
+        "description": "检查 Android 应用程式、配对与通知设定，找到正确主机并核对任务成果。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 15,
+    "unit": "C",
+    "batch": 1,
+    "prerequisites": [
+      4
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 40,
+    "slug": "codex-remote-setup",
+    "level": 0,
+    "platforms": [
+      0,
+      1
+    ],
+    "goals": [
+      0,
+      3
+    ],
+    "minutes": 12,
+    "aliases": "Remote pairing Connections QR host disconnect",
+    "related": [
+      39,
+      15,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Remote 設定、排錯與解除連接",
+        "description": "完成配對、檢查主機狀態，以新讀檔驗證連線，並分辨遠端存取、裝置配對與任務的停止狀態。"
+      },
+      "en": {
+        "title": "Remote setup, diagnosis and disconnection",
+        "description": "Pair devices, diagnose host availability and verify fresh file reads. Distinguish remote access, device pairing and task execution when stopping work."
+      },
+      "ja": {
+        "title": "Remote の設定、診断、接続解除",
+        "description": "接続とホスト状態を確認し、新しいファイル読み取りで検証します。終了時には遠隔アクセス、ペアリング、タスクの状態を分けて確認します。"
+      },
+      "ko": {
+        "title": "Remote 설정, 진단, 연결 해제",
+        "description": "기기를 연결하고 호스트 상태와 새 파일 읽기를 검증합니다. 중지할 때 원격 접근, 기기 페어링, 작업 실행 상태를 구분합니다."
+      },
+      "zh-CN": {
+        "title": "Remote 设定、排错与解除连接",
+        "description": "完成配对、检查主机状态，以新读档验证连线，并分辨远端存取、装置配对与任务的停止状态。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 16,
+    "unit": "C",
+    "batch": 1,
+    "prerequisites": [
+      3,
+      4
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 41,
+    "slug": "codex-cross-device-workflow",
+    "level": 0,
+    "platforms": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      4
+    ],
+    "minutes": 12,
+    "aliases": "handoff cross-device host workspace branch context",
+    "related": [
+      15,
+      9,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "跨裝置交接：核對檔案與環境",
+        "description": "追蹤對話、主機、工作目錄與分支，用交接紀錄確認接續的是同一份工作。"
+      },
+      "en": {
+        "title": "Cross-device handoff: files and environments",
+        "description": "Track the conversation, host, directory and branch so a handoff continues the intended work."
+      },
+      "ja": {
+        "title": "端末間の引き継ぎとファイル確認",
+        "description": "会話、ホスト、作業場所、ブランチを追跡し、意図した作業を引き継ぎます。"
+      },
+      "ko": {
+        "title": "기기 간 인계와 파일 환경 확인",
+        "description": "대화, 호스트, 작업 경로, 브랜치를 추적해 의도한 작업을 이어 갑니다."
+      },
+      "zh-CN": {
+        "title": "跨装置交接：核对档案与环境",
+        "description": "追踪对话、主机、工作目录与分支，用交接纪录确认接续的是同一份工作。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 18,
+    "unit": "C",
+    "batch": 1,
+    "prerequisites": [
+      40,
+      15
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 42,
+    "slug": "codex-agents-md-scopes",
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      1,
+      3
+    ],
+    "minutes": 12,
+    "aliases": "AGENTS.md AGENTS.override.md scope hierarchy root cwd",
+    "related": [
+      10,
+      43,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "AGENTS.md 層級與覆寫驗證",
+        "description": "用根目錄與子目錄案例追蹤規則來源、衝突與 override，確認實際選入的文件。"
+      },
+      "en": {
+        "title": "AGENTS.md scopes and overrides",
+        "description": "Trace root and nested instructions, conflicts and overrides, and verify which files were selected."
+      },
+      "ja": {
+        "title": "AGENTS.md の階層と優先規則",
+        "description": "ルートと子フォルダーの指示、衝突、override を追い、選択された文書を確認します。"
+      },
+      "ko": {
+        "title": "AGENTS.md 범위와 우선 규칙",
+        "description": "루트와 하위 폴더의 지침, 충돌, override를 추적해 선택된 문서를 확인합니다."
+      },
+      "zh-CN": {
+        "title": "AGENTS.md 层级与覆写验证",
+        "description": "用根目录与子目录案例追踪规则来源、冲突与 override，确认实际选入的文件。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 21,
+    "unit": "D",
+    "batch": 2,
+    "prerequisites": [
+      10
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 43,
+    "slug": "codex-rules-and-context-files",
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      1
+    ],
+    "minutes": 12,
+    "aliases": "README.md AGENTS.md SKILL.md config.toml context rules",
+    "related": [
+      42,
+      16,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "規則、說明與上下文文件怎麼分",
+        "description": "把工作規則、專案入口、設計條件與交接狀態分開保存，用實檔與測試驗證過期猜測。"
+      },
+      "en": {
+        "title": "Separating rules, documentation and context",
+        "description": "Separate working rules, project entry points, design requirements and handoff state. Check outdated hypotheses against actual files and tests."
+      },
+      "ja": {
+        "title": "ルール、説明、文脈ファイルを分ける",
+        "description": "作業規則、プロジェクトの入口、設計条件、引き継ぎ状態を分け、古い仮説を実ファイルとテストで確認します。"
+      },
+      "ko": {
+        "title": "규칙, 설명, 문맥 파일 구분",
+        "description": "작업 규칙, 프로젝트 진입점, 설계 조건, 인계 상태를 나누고 오래된 가설을 실제 파일과 테스트로 확인합니다."
+      },
+      "zh-CN": {
+        "title": "规则、说明与上下文文件怎么分",
+        "description": "把工作规则、专案入口、设计条件与交接状态分开保存，用实档与测试验证过期猜测。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 22,
+    "unit": "D",
+    "batch": 2,
+    "prerequisites": [
+      42
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 44,
+    "slug": "codex-config-troubleshooting",
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      1,
+      3
+    ],
+    "minutes": 12,
+    "aliases": "config.toml precedence profile override debug-config",
+    "related": [
+      16,
+      11,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "設定優先順序與故障排除",
+        "description": "從設定來源追查無效或衝突的選項，一次修改一項，驗證結果後保留可還原的紀錄。"
+      },
+      "en": {
+        "title": "Configuration precedence and diagnosis",
+        "description": "Trace ineffective or conflicting settings, change one item at a time and keep a reversible record."
+      },
+      "ja": {
+        "title": "設定の優先順位と診断",
+        "description": "無効な設定や衝突の出典を調べ、一項目ずつ変更し、戻せる記録を残します。"
+      },
+      "ko": {
+        "title": "설정 우선순위와 진단",
+        "description": "적용되지 않거나 충돌하는 설정의 출처를 찾고 한 항목씩 변경해 복원 가능한 기록을 남깁니다."
+      },
+      "zh-CN": {
+        "title": "设定优先顺序与故障排除",
+        "description": "从设定来源追查无效或冲突的选项，一次修改一项，验证结果后保留可还原的纪录。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 24,
+    "unit": "D",
+    "batch": 2,
+    "prerequisites": [
+      16
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 45,
+    "slug": "codex-sessions-resume",
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      2
+    ],
+    "minutes": 12,
+    "aliases": "resume fork session history /resume /new /compact",
+    "related": [
+      11,
+      22,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "工作階段、接續與分岔",
+        "description": "辨識新任務、接續與分岔的差異，從歷史中找到正確工作並核對路徑和剩餘事項。"
+      },
+      "en": {
+        "title": "Sessions, resuming and forking",
+        "description": "Distinguish new, resumed and forked tasks, locate the right history and verify the directory and remaining work."
+      },
+      "ja": {
+        "title": "セッションの再開と分岐",
+        "description": "新規、再開、分岐を区別し、履歴から目的の作業を見つけて場所と残作業を確認します。"
+      },
+      "ko": {
+        "title": "세션 재개와 분기",
+        "description": "신규, 재개, 분기 작업을 구분하고 기록에서 올바른 작업과 경로, 남은 일을 확인합니다."
+      },
+      "zh-CN": {
+        "title": "工作阶段、接续与分岔",
+        "description": "辨识新任务、接续与分岔的差异，从历史中找到正确工作并核对路径和剩余事项。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 26,
+    "unit": "E",
+    "batch": 2,
+    "prerequisites": [
+      11
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 46,
+    "slug": "codex-understand-codebase",
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      3
+    ],
+    "minutes": 14,
+    "aliases": "codebase architecture read-only understand repository",
+    "related": [
+      13,
+      47,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "先讀懂一個既有專案",
+        "description": "用唯讀流程找到啟動點、資料流與測試，產生有檔案依據的專案地圖。"
+      },
+      "en": {
+        "title": "Understanding an existing codebase",
+        "description": "Use a read-only workflow to locate entry points, data flow and tests, with file-backed explanations."
+      },
+      "ja": {
+        "title": "既存のコードベースを理解する",
+        "description": "読み取りで入口、データの流れ、テストを探し、ファイルに基づくプロジェクト地図を作ります。"
+      },
+      "ko": {
+        "title": "기존 코드베이스 이해",
+        "description": "읽기 흐름으로 진입점, 데이터 흐름, 테스트를 찾아 파일 근거가 있는 프로젝트 지도를 만듭니다."
+      },
+      "zh-CN": {
+        "title": "先读懂一个既有专案",
+        "description": "用唯读流程找到启动点、资料流与测试，产生有档案依据的专案地图。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 32,
+    "unit": "F",
+    "batch": 2,
+    "prerequisites": [
+      13
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 47,
+    "slug": "codex-implement-feature",
+    "level": 1,
+    "platforms": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      3
+    ],
+    "minutes": 14,
+    "aliases": "feature acceptance todo filter implement",
+    "related": [
+      46,
+      20,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "實作功能：完成待辦篩選",
+        "description": "從 start 材料補上 Active／Completed 篩選，保留資料格式並用正常與邊界案例驗收。"
+      },
+      "en": {
+        "title": "Implementing the todo filters",
+        "description": "Implement Active and Completed filters from start, preserving data and verifying normal and boundary cases."
+      },
+      "ja": {
+        "title": "ToDo のフィルターを実装する",
+        "description": "start から Active／Completed を実装し、データ形式を保って正常例と境界例を確認します。"
+      },
+      "ko": {
+        "title": "할 일 필터 구현",
+        "description": "start에서 Active/Completed 필터를 구현하고 데이터 형식과 정상 및 경계 사례를 검증합니다."
+      },
+      "zh-CN": {
+        "title": "实作功能：完成待办筛选",
+        "description": "从 start 材料补上 Active／Completed 筛选，保留资料格式并用正常与边界案例验收。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 33,
+    "unit": "F",
+    "batch": 2,
+    "prerequisites": [
+      46
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 30
+  },
+  {
+    "id": 48,
+    "slug": "codex-skill-resources",
+    "level": 2,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      1,
+      5
+    ],
+    "minutes": 15,
+    "aliases": "SKILL.md scripts references assets resources",
+    "related": [
+      23,
+      49,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Skill 的腳本、參考文件與材料",
+        "description": "把重複邏輯與大型資料拆到必要的支援檔案，讓技能按需要讀取並驗證相對路徑。"
+      },
+      "en": {
+        "title": "Skill scripts, references and assets",
+        "description": "Move repeated logic and large references into useful resources, then verify conditional loading and relative paths."
+      },
+      "ja": {
+        "title": "Skill のスクリプト、参照、素材",
+        "description": "反復処理と大きな資料を支援ファイルに分け、必要時の読み込みと相対パスを確認します。"
+      },
+      "ko": {
+        "title": "Skill 스크립트, 참조, 자료",
+        "description": "반복 로직과 큰 자료를 지원 파일로 나누고 필요할 때 읽는 흐름과 상대 경로를 확인합니다."
+      },
+      "zh-CN": {
+        "title": "Skill 的脚本、参考文件与材料",
+        "description": "把重复逻辑与大型资料拆到必要的支援档案，让技能按需要读取并验证相对路径。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 38,
+    "unit": "G",
+    "batch": 2,
+    "prerequisites": [
+      23
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 30
+  },
+  {
+    "id": 49,
+    "slug": "codex-skill-testing",
+    "level": 2,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      1,
+      3,
+      5
+    ],
+    "minutes": 15,
+    "aliases": "skill testing triggers validation quick_validate",
+    "related": [
+      48,
+      24,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Skill 觸發與結果測試",
+        "description": "分開驗證格式、選用條件及實際結果，用應觸發與不應觸發的案例修正技能描述。"
+      },
+      "en": {
+        "title": "Testing skill selection and results",
+        "description": "Test format, selection and outcomes separately, using matching and non-matching requests to refine descriptions."
+      },
+      "ja": {
+        "title": "Skill の選択と結果を検証する",
+        "description": "形式、選択、結果を分けて試し、適合する依頼としない依頼で説明を改善します。"
+      },
+      "ko": {
+        "title": "Skill 선택과 결과 검증",
+        "description": "형식, 선택, 결과를 나누어 시험하고 맞는 요청과 맞지 않는 요청으로 설명을 개선합니다."
+      },
+      "zh-CN": {
+        "title": "Skill 触发与结果测试",
+        "description": "分开验证格式、选用条件及实际结果，用应触发与不应触发的案例修正技能描述。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 39,
+    "unit": "G",
+    "batch": 2,
+    "prerequisites": [
+      48
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 30
+  },
+  {
+    "id": 50,
+    "slug": "codex-plugin-troubleshooting",
+    "level": 2,
+    "platforms": [
+      0,
+      2
+    ],
+    "goals": [
+      0,
+      3
+    ],
+    "minutes": 15,
+    "aliases": "plugin connection account permission disconnect uninstall",
+    "related": [
+      24,
+      51,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "Plugin 連線與工具不可用排錯",
+        "description": "區分已安裝、已連帳號、已授權與工具可用，依實際錯誤重連或移除需要處理的項目。"
+      },
+      "en": {
+        "title": "Troubleshooting plugin connections",
+        "description": "Distinguish installation, account connection, authorization and callable tools before reconnecting or removing a plugin."
+      },
+      "ja": {
+        "title": "Plugin の接続とツールの問題解決",
+        "description": "導入、アカウント接続、許可、ツール利用を区別し、原因に応じて再接続や削除を行います。"
+      },
+      "ko": {
+        "title": "Plugin 연결과 도구 문제 해결",
+        "description": "설치, 계정 연결, 승인, 도구 사용 가능 상태를 구분해 원인에 맞게 재연결하거나 제거합니다."
+      },
+      "zh-CN": {
+        "title": "Plugin 连线与工具不可用排错",
+        "description": "区分已安装、已连帐号、已授权与工具可用，依实际错误重连或移除需要处理的项目。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 41,
+    "unit": "G",
+    "batch": 3,
+    "prerequisites": [
+      24
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 51,
+    "slug": "codex-templates-cheatsheet",
+    "level": 2,
+    "platforms": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      1,
+      2
+    ],
+    "minutes": 15,
+    "aliases": "template cheatsheet prompts AGENTS.md SKILL.md checklist",
+    "related": [
+      50,
+      25,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "提示詞、規則與交接範本索引",
+        "description": "依工作選擇提示詞、規則與交接範本，替換必要欄位並知道每段應貼到哪裡。"
+      },
+      "en": {
+        "title": "Prompt, rules and handoff templates",
+        "description": "Choose a prompt, rule or handoff template, fill its required fields and use the correct input location."
+      },
+      "ja": {
+        "title": "依頼、ルール、引き継ぎのテンプレート",
+        "description": "依頼、規則、引き継ぎの雛形を選び、必要項目と入力場所を確認して使います。"
+      },
+      "ko": {
+        "title": "요청, 규칙, 인계 템플릿",
+        "description": "요청, 규칙, 인계 템플릿을 선택하고 필수 항목과 입력 위치를 확인해 사용합니다."
+      },
+      "zh-CN": {
+        "title": "提示词、规则与交接范本索引",
+        "description": "依工作选择提示词、规则与交接范本，替换必要栏位并知道每段应贴到哪里。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 42,
+    "unit": "G",
+    "batch": 3,
+    "prerequisites": [
+      50
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 52,
+    "slug": "codex-mcp-troubleshooting",
+    "level": 2,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      3
+    ],
+    "minutes": 15,
+    "aliases": "MCP OAuth stdio HTTP timeout tool unavailable",
+    "related": [
+      25,
+      27,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "MCP 連線診斷與故障復原",
+        "description": "從程序、傳輸、認證與工具清單分層檢查，保留錯誤證據並驗證最小可用操作。"
+      },
+      "en": {
+        "title": "MCP connection diagnosis and recovery",
+        "description": "Inspect process, transport, authentication and tool discovery, preserve errors and verify a minimal operation."
+      },
+      "ja": {
+        "title": "MCP 接続の診断と復旧",
+        "description": "プロセス、通信、認証、ツール一覧を順に調べ、エラーを残して最小操作を確認します。"
+      },
+      "ko": {
+        "title": "MCP 연결 진단과 복구",
+        "description": "프로세스, 전송, 인증, 도구 목록을 차례로 확인하고 오류를 보존해 최소 동작을 검증합니다."
+      },
+      "zh-CN": {
+        "title": "MCP 连线诊断与故障复原",
+        "description": "从程序、传输、认证与工具清单分层检查，保留错误证据并验证最小可用操作。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 44,
+    "unit": "H",
+    "batch": 3,
+    "prerequisites": [
+      25
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 53,
+    "slug": "codex-subagent-quality",
+    "level": 2,
+    "platforms": [
+      0,
+      2
+    ],
+    "goals": [
+      5
+    ],
+    "minutes": 15,
+    "aliases": "subagent review delegation quality scope evidence",
+    "related": [
+      28,
+      54,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "子代理分工與品質檢查",
+        "description": "定義獨立輸入、修改範圍與交付證據，審查子代理結果並處理缺項。"
+      },
+      "en": {
+        "title": "Subagent scope and quality checks",
+        "description": "Define independent inputs, edit scopes and evidence, then review subagent results and resolve gaps."
+      },
+      "ja": {
+        "title": "サブエージェントの範囲と品質確認",
+        "description": "独立した入力、変更範囲、証拠を定義し、サブエージェントの結果と不足を確認します。"
+      },
+      "ko": {
+        "title": "하위 에이전트 범위와 품질 확인",
+        "description": "독립 입력, 수정 범위, 증거를 정하고 하위 에이전트 결과와 누락을 확인합니다."
+      },
+      "zh-CN": {
+        "title": "子代理分工与品质检查",
+        "description": "定义独立输入、修改范围与交付证据，审查子代理结果并处理缺项。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 47,
+    "unit": "H",
+    "batch": 3,
+    "prerequisites": [
+      28
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 54,
+    "slug": "codex-parallel-integration",
+    "level": 2,
+    "platforms": [
+      0,
+      2,
+      3
+    ],
+    "goals": [
+      4,
+      5
+    ],
+    "minutes": 20,
+    "aliases": "parallel worktree merge conflicts integration",
+    "related": [
+      53,
+      26,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "平行工作後的整合與驗收",
+        "description": "依檔案與介面契約整合獨立修改，處理衝突，再驗證合併後的整體行為。"
+      },
+      "en": {
+        "title": "Integrating parallel work",
+        "description": "Integrate independent edits using file and interface contracts, resolve conflicts and verify combined behavior."
+      },
+      "ja": {
+        "title": "並行作業の統合と確認",
+        "description": "ファイルとインターフェースの契約に沿って変更を統合し、衝突と全体動作を確認します。"
+      },
+      "ko": {
+        "title": "병렬 작업 통합과 검증",
+        "description": "파일과 인터페이스 계약에 따라 변경을 통합하고 충돌과 전체 동작을 검증합니다."
+      },
+      "zh-CN": {
+        "title": "平行工作后的整合与验收",
+        "description": "依档案与介面契约整合独立修改，处理冲突，再验证合并后的整体行为。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 48,
+    "unit": "H",
+    "batch": 3,
+    "prerequisites": [
+      53
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 30
+  },
+  {
+    "id": 55,
+    "slug": "codex-json-output",
+    "level": 2,
+    "platforms": [
+      2
+    ],
+    "goals": [
+      2,
+      5
+    ],
+    "minutes": 20,
+    "aliases": "codex exec --json JSONL output schema events",
+    "related": [
+      30,
+      56,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "JSON 輸出與結果驗證",
+        "description": "區分事件串流與最終結果，解析結構化輸出並拒絕缺欄位或錯誤格式。"
+      },
+      "en": {
+        "title": "JSON output and result validation",
+        "description": "Separate event streams from final results, parse structured output and reject missing or invalid fields."
+      },
+      "ja": {
+        "title": "JSON 出力と結果の検証",
+        "description": "イベント列と最終結果を区別し、構造化出力を解析して不足項目や不正形式を検出します。"
+      },
+      "ko": {
+        "title": "JSON 출력과 결과 검증",
+        "description": "이벤트 스트림과 최종 결과를 구분하고 구조화 출력을 해석해 누락과 잘못된 형식을 거부합니다."
+      },
+      "zh-CN": {
+        "title": "JSON 输出与结果验证",
+        "description": "区分事件串流与最终结果，解析结构化输出并拒绝缺栏位或错误格式。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 52,
+    "unit": "I",
+    "batch": 3,
+    "prerequisites": [
+      30
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  },
+  {
+    "id": 56,
+    "slug": "codex-ci-workflows",
+    "level": 2,
+    "platforms": [
+      2,
+      4
+    ],
+    "goals": [
+      4,
+      5
+    ],
+    "minutes": 20,
+    "aliases": "CI GitHub Actions codex exec checks secrets exit",
+    "related": [
+      55,
+      57,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "把 Codex 接入 CI 工作流程",
+        "description": "設計有明確輸入、權限與退出狀態的 CI 工作，保存產物並區分建議與正式套用。"
+      },
+      "en": {
+        "title": "Codex in CI workflows",
+        "description": "Design a CI job with explicit input, permissions and exit states, preserving artifacts and separating proposals from application."
+      },
+      "ja": {
+        "title": "Codex を CI に組み込む",
+        "description": "入力、権限、終了状態を明示する CI を設計し、成果を保存して提案と適用を分けます。"
+      },
+      "ko": {
+        "title": "Codex를 CI에 연결",
+        "description": "입력, 권한, 종료 상태가 명확한 CI를 설계하고 결과물을 보존해 제안과 적용을 구분합니다."
+      },
+      "zh-CN": {
+        "title": "把 Codex 接入 CI 工作流程",
+        "description": "设计有明确输入、权限与退出状态的 CI 工作，保存产物并区分建议与正式套用。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 53,
+    "unit": "I",
+    "batch": 3,
+    "prerequisites": [
+      55
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 30
+  },
+  {
+    "id": 57,
+    "slug": "codex-automation-recovery",
+    "level": 2,
+    "platforms": [
+      0,
+      2
+    ],
+    "goals": [
+      3,
+      5
+    ],
+    "minutes": 15,
+    "aliases": "automation schedule retry idempotency recovery stop",
+    "related": [
+      56,
+      31,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "自動化失敗、重試與停止",
+        "description": "從執行紀錄判斷是否已產生結果，避免重複操作，修正條件並確認排程停止。"
+      },
+      "en": {
+        "title": "Automation failure, retry and stopping",
+        "description": "Use execution records to detect prior effects, avoid duplicates, repair prerequisites and confirm a schedule has stopped."
+      },
+      "ja": {
+        "title": "自動化の失敗、再試行、停止",
+        "description": "実行記録で既存の結果を確認し、重複を避け、前提を直して停止を確かめます。"
+      },
+      "ko": {
+        "title": "자동화 실패, 재시도, 중지",
+        "description": "실행 기록으로 기존 결과를 확인하고 중복을 피하며 조건을 고쳐 일정 중지를 검증합니다."
+      },
+      "zh-CN": {
+        "title": "自动化失败、重试与停止",
+        "description": "从执行纪录判断是否已产生结果，避免重复操作，修正条件并确认排程停止。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 54,
+    "unit": "I",
+    "batch": 3,
+    "prerequisites": [
+      56
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 58,
+    "slug": "codex-maintain-existing-project",
+    "level": 2,
+    "platforms": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      3,
+      4
+    ],
+    "minutes": 15,
+    "aliases": "maintenance existing project regression baseline handoff",
+    "related": [
+      32,
+      59,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "實戰：維護既有專案",
+        "description": "建立現況基準，處理一項真實變更，以回歸檢查和交接紀錄交付可追溯成果。"
+      },
+      "en": {
+        "title": "Workshop: maintaining an existing project",
+        "description": "Establish a baseline, implement one change and deliver traceable regression checks and handoff notes."
+      },
+      "ja": {
+        "title": "実践：既存プロジェクトを保守する",
+        "description": "現状を記録し、一つの変更を実施して回帰確認と引き継ぎを残します。"
+      },
+      "ko": {
+        "title": "실전: 기존 프로젝트 유지보수",
+        "description": "현황 기준을 만들고 한 가지 변경을 수행해 회귀 검사와 인계 기록을 남깁니다."
+      },
+      "zh-CN": {
+        "title": "实战：维护既有专案",
+        "description": "建立现况基准，处理一项真实变更，以回归检查和交接纪录交付可追溯成果。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 57,
+    "unit": "J",
+    "batch": 3,
+    "prerequisites": [
+      32
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 30
+  },
+  {
+    "id": 59,
+    "slug": "codex-project-data-safety",
+    "level": 2,
+    "platforms": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      4
+    ],
+    "minutes": 15,
+    "aliases": "data safety secrets backup fictional permissions privacy",
+    "related": [
+      58,
+      60,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "專案資料、金鑰與練習隔離",
+        "description": "建立虛構測試資料與可還原副本，辨識不該進入提示詞、截圖或版本庫的資訊。"
+      },
+      "en": {
+        "title": "Project data, credentials and practice isolation",
+        "description": "Create fictional test data and restorable copies, and identify information to exclude from prompts, screenshots and repositories."
+      },
+      "ja": {
+        "title": "プロジェクトデータと認証情報の分離",
+        "description": "架空データと復元可能なコピーを作り、依頼、画像、リポジトリに含めない情報を見分けます。"
+      },
+      "ko": {
+        "title": "프로젝트 데이터와 인증 정보 분리",
+        "description": "가상 데이터와 복원 가능한 복사본을 만들고 요청, 화면, 저장소에서 제외할 정보를 구분합니다."
+      },
+      "zh-CN": {
+        "title": "专案资料、金钥与练习隔离",
+        "description": "建立虚构测试资料与可还原副本，辨识不该进入提示词、截图或版本库的资讯。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 58,
+    "unit": "J",
+    "batch": 3,
+    "prerequisites": [
+      58
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 20
+  },
+  {
+    "id": 60,
+    "slug": "codex-usage-efficiency",
+    "level": 2,
+    "platforms": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "goals": [
+      2
+    ],
+    "minutes": 15,
+    "aliases": "usage efficiency model reasoning context budget time",
+    "related": [
+      59,
+      12
+    ],
+    "locales": {
+      "zh-TW": {
+        "title": "用量與效率：減少重工",
+        "description": "記錄任務條件、模型選項、時間與成果，找出能減少無效重試和過多上下文的調整。"
+      },
+      "en": {
+        "title": "Usage and efficiency: reducing rework",
+        "description": "Record task conditions, model options, time and outcomes to reduce unnecessary retries and excess context."
+      },
+      "ja": {
+        "title": "使用量と効率：やり直しを減らす",
+        "description": "条件、モデル設定、時間、成果を記録し、不要な再試行と過剰な文脈を減らします。"
+      },
+      "ko": {
+        "title": "사용량과 효율: 재작업 줄이기",
+        "description": "조건, 모델 선택, 시간, 결과를 기록해 불필요한 재시도와 과도한 문맥을 줄입니다."
+      },
+      "zh-CN": {
+        "title": "用量与效率：减少重工",
+        "description": "记录任务条件、模型选项、时间与成果，找出能减少无效重试和过多上下文的调整。"
+      }
+    },
+    "ready": true,
+    "checkedOn": "2026-09-14",
+    "order": 59,
+    "unit": "J",
+    "batch": 3,
+    "prerequisites": [
+      59
+    ],
+    "depthStatus": "drafted",
+    "deepDraft": true,
+    "operationMinutes": 25
+  }
+]

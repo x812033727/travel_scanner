@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-09-14T12:54:16.362473+00:00",
+  "status": "passed",
+  "cliVersion": "codex-cli 0.154.0-alpha.6.2",
+  "environment": "Windows; isolated child-process CODEX_HOME; direct public HTTP MCP",
+  "checks": [
+    "CLI add/get saved the exact HTTP URL and preserved an unrelated disabled server",
+    "CLI get reflects disabled state; this is configuration evidence, not a model tool-catalog test",
+    "CLI remove removed only the practice entry; a subsequent get failed as expected",
+    "The real user configuration remained byte-for-byte unchanged",
+    "Public Docs MCP initialized and advertised a document retrieval tool without credentials",
+    "Direct MCP retrieval returned the official AGENTS.md page, containing global and project guidance"
+  ],
+  "source": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+  "sourceHash": "9d1f87a2d1cb55b4782b95abe710692b35b9659789c2db31a22c7074a3383e8e",
+  "toolCountObserved": 5,
+  "notTested": [
+    "Codex model invocation or tool selection",
+    "desktop or IDE settings UI",
+    "macOS and Linux execution",
+    "OAuth",
+    "physical phones"
+  ],
+  "authorHashes": {
+    "25": "aa15ff35c1dec81646ee1fa1e92ffdb46e3a131b3f99e9d13e0fc81c699e4a6f",
+    "52": "a9580282546e7d0e22fe78e5c4f680e1a24662ac510d316c407692cc82416ec3"
+  }
+}

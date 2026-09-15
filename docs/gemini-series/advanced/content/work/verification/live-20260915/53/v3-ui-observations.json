@@ -1,0 +1,120 @@
+[
+  {
+    "case": "reset",
+    "observedAt": "2026-09-15T03:05:23.563Z",
+    "values": {
+      "cr": "",
+      "hc": "",
+      "up": "",
+      "vf": ""
+    },
+    "resultVisible": false,
+    "errors": [],
+    "pass": true,
+    "notes": "Reset returns to initially blank inputs; prior result text remains in hidden DOM."
+  },
+  {
+    "case": "keyboard",
+    "observedAt": "2026-09-15T03:05:23.789Z",
+    "focusOrder": [
+      {
+        "id": "up",
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "id": "vf",
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "id": "cr",
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "id": "",
+        "tag": "BUTTON",
+        "text": "計算"
+      }
+    ],
+    "results": [
+      "9000.00",
+      "900.00",
+      "9900.00",
+      "495.00"
+    ],
+    "resultVisible": true,
+    "pass": true
+  },
+  {
+    "case": "B04-upper-bounds",
+    "observedAt": "2026-09-15T03:05:44.356Z",
+    "values": {
+      "cr": "100",
+      "hc": "10000",
+      "up": "10000000",
+      "vf": "10000000"
+    },
+    "actual": [
+      "100010000000.00",
+      "100010000000.00",
+      "200020000000.00",
+      "20002000.00"
+    ],
+    "expected": [
+      "100010000000.00",
+      "100010000000.00",
+      "200020000000.00",
+      "20002000.00"
+    ],
+    "width": 360,
+    "scrollWidth": 360,
+    "pass": true,
+    "visual": "Screenshot viewed; labels, buttons and amounts readable with no clipping. Not saved."
+  },
+  {
+    "case": "root-font-200-test-fixture",
+    "observedAt": "2026-09-15T03:06:32.402Z",
+    "file": "budget-v3-text200-test.html",
+    "rootFontScale": 2,
+    "headingFont": "38.4px",
+    "values": {
+      "cr": "100",
+      "hc": "10000",
+      "up": "10000000",
+      "vf": "10000000"
+    },
+    "width": 360,
+    "scrollWidth": 380,
+    "pass": false,
+    "visual": "Screenshot viewed: labels and amounts collide, large amounts overflow right edge. Not saved.",
+    "scope": "Separate root-font-size fixture; native browser zoom shortcut had no observed effect. Not a verified native 200% zoom or real mobile device test."
+  },
+  {
+    "case": "B05-large-decimal-rounding",
+    "observedAt": "2026-09-15T03:07:25.051Z",
+    "values": {
+      "cr": "76.49",
+      "hc": "10000",
+      "up": "9393957.73",
+      "vf": "9582704.53"
+    },
+    "expected": [
+      "93949160004.53",
+      "71861712487.46",
+      "165810872491.99",
+      "16581087.25"
+    ],
+    "actual": [
+      "93949160004.53",
+      "71861712487.47",
+      "165810872492.00",
+      "16581087.25"
+    ],
+    "width": 360,
+    "scrollWidth": 360,
+    "pass": false,
+    "notes": "Found through a deterministic numerical probe, then independently reproduced in the unedited downloaded HTML in Chrome."
+  }
+]

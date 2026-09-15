@@ -1,0 +1,2459 @@
+{
+  "slug": "codex-desktop-getting-started",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 103,
+  "locales": {
+    "zh-TW": {
+      "title": "桌面版：Windows、macOS、Linux",
+      "description": "桌面版把任務、檔案、終端機與修改結果放在同一個工作空間。目前官方下載文件使用 ChatGPT desktop app 名稱，進入後可選 Codex。這裡提供三種系統的安裝主線；Linux 屬預覽版，不能把其支援範圍推廣到所有發行版。",
+      "hero": {
+        "src": "/guides/codex-desktop-getting-started/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀完能做到什麼"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你會在自己的電腦選對安裝入口，開啟一個獨立練習資料夾，請 Codex 修改待辦網站，最後以檔案差異與瀏覽器確認成果。閱讀約 15 分鐘，安裝與操作約 25 分鐘。本文依 2026-09-14 官方名稱使用「ChatGPT 桌面應用程式」，在其中選擇 Codex；舊畫面或捷徑仍可能顯示 Codex。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "桌面應用程式負責讓你管理任務、檔案與成果。模型負責理解需求；任務則保存這一次工作的對話與環境。開始之前先分清楚這三件事，才不會把「換模型」誤認成「換到另一個資料夾」。需要比較入口可先看"
+            },
+            {
+              "type": "article",
+              "text": "Codex 入門",
+              "kind": "life",
+              "slug": "codex-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "準備能使用 Codex 的 ChatGPT 帳號及網路，依"
+            },
+            {
+              "type": "article",
+              "text": "帳號與用量",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "確認登入的工作區。方案、額度與模型選單可能依帳號不同，本篇不硬寫固定價格或指定某個模型。若已有桌面版，先使用應用程式提供的更新方式，再核對下方入口。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下載"
+            },
+            {
+              "type": "link",
+              "text": "Small Steps 練習包",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "，解壓縮並複製 expected 為自己的 codex-practice。這個資料夾有五個程式檔案，使用虛構資料、沒有登入或後端。本篇只改標題與樣式，先不要把正式專案選進來。預覽需要 Python 3；資料測試需要 Node.js。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先保留原始副本"
+        },
+        {
+          "type": "paragraph",
+          "text": "解壓縮後先在檔案管理員把 expected 複製成兩份並排的資料夾：codex-practice 用來修改，codex-practice-before 用來比對。兩者都應直接包含五個原始程式檔；備份放在工作資料夾外，不要放進它的子目錄。Windows 用檔案總管，macOS 用 Finder，Linux 用檔案管理員完成相同操作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "尚未建立 Git 儲存庫時，應用程式的 Git 差異功能可能無法使用。你仍可用文字編輯器開啟兩份同名檔案逐項比對；不必先學會提交或還原整個儲存庫。需要正式版本管理再接"
+            },
+            {
+              "type": "article",
+              "text": "Git 教學",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：依作業系統安裝"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows：從 "
+            },
+            {
+              "type": "link",
+              "text": "ChatGPT 官方下載頁",
+              "url": "https://chatgpt.com/download/"
+            },
+            {
+              "type": "text",
+              "text": "選 Windows，依官方安裝程式完成安裝，再從開始功能表開啟 ChatGPT。若你熟悉 PowerShell，也可使用官方 Windows 文件列出的命令。安裝完成後重新開啟應用程式；看不到新捷徑時先檢查安裝是否結束，不要重複下載多份。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell；選用的官方安裝方式",
+          "language": "powershell",
+          "code": "winget install --id 9PLM9XGG6VKS -s msstore\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS：同樣從官方下載頁選 macOS，開啟下載的安裝檔，依畫面將應用程式安裝到指定位置，再從「應用程式」開啟 ChatGPT。若系統顯示不相容，回下載頁核對目前系統需求；不要用停用系統保護來處理版本不支援。安裝後關閉安裝視窗，再確認啟動的是已安裝的程式。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Linux：桌面版目前是預覽版，官方列出 Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44，提供 x64 與 ARM64。先在終端機確認系統與處理器，再從"
+            },
+            {
+              "type": "link",
+              "text": "Linux 官方安裝頁",
+              "url": "https://learn.chatgpt.com/docs/linux/linux-app"
+            },
+            {
+              "type": "text",
+              "text": "下載對應套件。其他發行版不在這次正式支援清單中，不要把套件裝得進去當成全部功能受支援。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Linux 終端機；確認發行版與架構",
+          "language": "bash",
+          "code": "cat /etc/os-release\nuname -m\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ubuntu／Debian 選 .deb，Fedora 選 .rpm。x86_64 代表 x64；aarch64 或 arm64 選 ARM64。在放有下載檔案的資料夾開啟終端機，只執行下表符合自己系統的一行。檔案被瀏覽器加上編號時，先核對實際檔名。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "系統",
+            "架構",
+            "安裝命令"
+          ],
+          "rows": [
+            [
+              "Ubuntu / Debian",
+              "x64",
+              "sudo apt install ./chatgpt_amd64.deb"
+            ],
+            [
+              "Ubuntu / Debian",
+              "ARM64",
+              "sudo apt install ./chatgpt_arm64.deb"
+            ],
+            [
+              "Fedora",
+              "x64",
+              "sudo dnf install ./chatgpt.x86_64.rpm"
+            ],
+            [
+              "Fedora",
+              "ARM64",
+              "sudo dnf install ./chatgpt.aarch64.rpm"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Linux 安裝後從應用程式選單開啟 ChatGPT，或在終端機執行 chatgpt。後續更新使用發行版套件管理器。預覽版尚未支援 Computer Use，原生 Wayland 仍有實驗性限制；這不妨礙你先練習檔案修改與手動瀏覽器驗收，也不要用 macOS 截圖代表 Linux 實際畫面。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：登入並選擇練習位置"
+        },
+        {
+          "type": "paragraph",
+          "text": "三種系統都先在應用程式完成登入，確認帳號與工作區，選擇 Codex，再以開啟資料夾或建立專案的入口選 codex-practice。應直接看到 index.html 等檔案，而不是壓縮包或上一層資料夾。若畫面要求選本機或其他工作環境，這一篇選自己的練習副本所在位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立 New chat 後先做唯讀確認。把下列文字貼在 Codex 任務輸入框，不是 PowerShell 或 Terminal。這一步能提早發現選錯專案、檔案沒解壓縮，以及任務開在另一台主機等問題。"
+        },
+        {
+          "type": "code",
+          "label": "Codex 桌面版，新任務輸入框；先確認工作位置",
+          "language": "text",
+          "code": "Before editing, report the current working folder and list the exercise files.\nRead index.html and explain how the page loads its JavaScript.\nDo not change files. Tell me if the expected five files are missing.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "預期指出實際資料夾，並找到 app.js 及 core.mjs 的關係。與你的檔案總管比對路徑，不要只看到「我已了解專案」就跳過。若應用程式開了工作樹副本，請先核對副本位置；詳見"
+            },
+            {
+              "type": "article",
+              "text": "Worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "。本例不需要 Git 倉庫也能開始。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：交付一個可驗收的小修改"
+        },
+        {
+          "type": "code",
+          "label": "同一個 Codex 桌面任務；完整需求",
+          "language": "text",
+          "code": "Update this Small Steps practice website.\nChange the main heading to \"Small steps, clear progress.\"\nUse a dark blue heading color with readable contrast on the existing background.\nKeep the form labels, task data format, storage key and behavior unchanged.\nDo not add dependencies or external services.\nShow the changed files, explain the diff and report checks actually performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "等待任務提供成果後，從檔案或變更檢視開啟 index.html、style.css。檢查標題字串與顏色設定是否對應需求，是否意外修改儲存格式或刪除標籤。檔案差異中的新增與刪除只是比較結果，不表示網站已發布。第一次不用同時要求登入、雲端部署與資料庫；先完成一個可以自己驗收的小範圍。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先核對差異，再看畫面"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檔案",
+            "本次應檢查的內容"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "主標題變成指定字串，其餘標籤與文字保留"
+            ],
+            [
+              "style.css",
+              "標題色彩的必要差異；實際對比度仍要看畫面"
+            ],
+            [
+              "app.js、core.mjs、core.test.mjs",
+              "與原始副本內容相同；本題沒有要求改動資料邏輯或測試"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "若多改了檔案，先要求說明每處差異，核對後只撤回本題以外的修改。不要用整個資料夾覆蓋來掩蓋原因。也不要用「只有兩個檔案變動」代替接下來的功能驗收。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第四步：在瀏覽器確認結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "在練習資料夾開終端機，Windows 使用下列命令。服務會持續占用這個終端機，這是正常狀態；另開瀏覽器，不要因為沒有回到提示符號就再次啟動。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell；codex-practice 資料夾",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux 終端機；codex-practice 資料夾",
+          "language": "bash",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "開啟 http://127.0.0.1:4173。先看標題，再新增 Read 與 Build，完成 Read，切換 Active tasks 應只剩 Build，Completed tasks 應只剩 Read。重新整理後資料應保留。輸入只有空白的任務不得新增；這是與正常流程一起檢查的邊界案例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用瀏覽器開發工具的響應式模式檢查 390 與 1280 像素，或縮小視窗檢查窄版；文字、按鈕與表單不應左右溢出。按 Tab 時要看得到焦點。再於另一個同目錄終端機執行 node --test core.test.mjs，參考版應為 3 個測試通過。若 Codex 沒有瀏覽器工具，就由你執行畫面驗收，並保留「未由代理實測」的紀錄。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題、停止與還原"
+        },
+        {
+          "type": "paragraph",
+          "text": "應用程式中沒有 Codex：先核對是否已更新、登入正確帳號與工作區，再查帳號可用功能。不要反覆重裝來處理額度或工作區管理限制。CLI 是另一個入口，安裝桌面版不代表終端機一定能找到 codex 命令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開到錯誤資料夾：比較任務回報的絕對路徑與五個檔案。如果是解壓縮前的 ZIP、空目錄或另一個專案，停止修改，重新選擇。已發生的修改要在原位置核對，不要假設切換專案會搬移檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁空白或 JavaScript 沒執行：確認網址是 http://127.0.0.1:4173，而不是雙擊檔案的 file URL。再檢查伺服器終端機與瀏覽器 Console。若連接埠已占用，停止自己先前啟動的服務或選另一個連接埠；不同連接埠的瀏覽器儲存空間不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停止預覽使用 Ctrl+C。還原時參照差異，只恢復標題與本次樣式；保留其他既有修改。練習網站的 Reset practice data 只用來清除本例專用資料，與還原程式不同。任務完成、測試通過和網站正式上線是三個不同狀態。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小練習與查證紀錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "把需求改成「手機上表單按鈕維持整行，桌面維持與輸入框並排」，要求 Codex 先說明目前樣式，再做必要修改。以兩個寬度及原有資料操作完成驗收；如果既有樣式已符合，就接受無須修改的結果，避免為了產生差異而改程式。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "安裝與功能依"
+            },
+            {
+              "type": "link",
+              "text": "桌面官方文件",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Windows 文件",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-app"
+            },
+            {
+              "type": "text",
+              "text": "及 Linux 文件於 2026-09-14 查證。教材網站已在 Windows／Edge 153 的 360、390、1280px 視窗驗證；這些是網頁成果截圖，不是桌面產品介面、實體手機或 macOS／Linux 安裝實測。接著可讀"
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "Plan 模式",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "text": "Git 差異",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-desktop-getting-started/diagram-1.svg",
+          "alt": "03. 桌面版：Windows、macOS、Linux — 實作順序示意圖，非產品介面截圖。 Install → Folder → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "03. 桌面版：Windows、macOS、Linux — 實作順序示意圖，非產品介面截圖。 Install → Folder → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "待辦練習網站：Build 已完成，Read the AGENTS.md rules 尚未完成，共兩項任務。",
+          "caption": "完整參考版的實際瀏覽器畫面，供修改前比對。Windows / Edge 153.0.4234.32，2026-09-14；使用虛構資料。390px 為響應式視窗，非實體手機。這不是 Codex 桌面介面截圖。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "待辦練習網站：Build 已完成，Read the AGENTS.md rules 尚未完成，共兩項任務。",
+          "caption": "完整參考版的實際瀏覽器畫面，供修改前比對。Windows / Edge 153.0.4234.32，2026-09-14；使用虛構資料。1280px 為響應式視窗，非實體手機。這不是 Codex 桌面介面截圖。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows desktop app",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Linux desktop app",
+          "url": "https://learn.chatgpt.com/docs/linux/linux-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ChatGPT download",
+          "url": "https://chatgpt.com/download/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "桌面版：Windows、macOS、Linux",
+      "description": "桌面版把任务、档案、终端机与修改结果放在同一个工作空间。目前官方下载文件使用 ChatGPT desktop app 名称，进入后可选 Codex。这里提供三种系统的安装主线；Linux 属预览版，不能把其支援范围推广到所有发行版。",
+      "hero": {
+        "src": "/guides/codex-desktop-getting-started/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "读完能做到什么"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你会在自己的电脑选对安装入口，开启一个独立练习资料夹，请 Codex 修改待办网站，最后以档案差异与浏览器确认成果。阅读约 15 分钟，安装与操作约 25 分钟。本文依 2026-09-14 官方名称使用「ChatGPT 桌面应用程式」，在其中选择 Codex；旧画面或捷径仍可能显示 Codex。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "桌面应用程式负责让你管理任务、档案与成果。模型负责理解需求；任务则保存这一次工作的对话与环境。开始之前先分清楚这三件事，才不会把「换模型」误认成「换到另一个资料夹」。需要比较入口可先看"
+            },
+            {
+              "type": "article",
+              "text": "Codex 入门",
+              "kind": "life",
+              "slug": "codex-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "准备能使用 Codex 的 ChatGPT 帐号及网路，依"
+            },
+            {
+              "type": "article",
+              "text": "帐号与用量",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "确认登入的工作区。方案、额度与模型选单可能依帐号不同，本篇不硬写固定价格或指定某个模型。若已有桌面版，先使用应用程式提供的更新方式，再核对下方入口。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下载"
+            },
+            {
+              "type": "link",
+              "text": "Small Steps 练习包",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "，解压缩并复制 expected 为自己的 codex-practice。这个资料夹有五个程式档案，使用虚构资料、没有登入或后端。本篇只改标题与样式，先不要把正式专案选进来。预览需要 Python 3；资料测试需要 Node.js。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先保留原始副本"
+        },
+        {
+          "type": "paragraph",
+          "text": "解压缩后先在档案管理员把 expected 复制成两份并排的资料夹：codex-practice 用来修改，codex-practice-before 用来比对。两者都应直接包含五个原始程式档；备份放在工作资料夹外，不要放进它的子目录。Windows 用档案总管，macOS 用 Finder，Linux 用档案管理员完成相同操作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "尚未建立 Git 储存库时，应用程式的 Git 差异功能可能无法使用。你仍可用文字编辑器开启两份同名档案逐项比对；不必先学会提交或还原整个储存库。需要正式版本管理再接"
+            },
+            {
+              "type": "article",
+              "text": "Git 教学",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：依作业系统安装"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows：从 "
+            },
+            {
+              "type": "link",
+              "text": "ChatGPT 官方下载页",
+              "url": "https://chatgpt.com/download/"
+            },
+            {
+              "type": "text",
+              "text": "选 Windows，依官方安装程式完成安装，再从开始功能表开启 ChatGPT。若你熟悉 PowerShell，也可使用官方 Windows 文件列出的命令。安装完成后重新开启应用程式；看不到新捷径时先检查安装是否结束，不要重复下载多份。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell；选用的官方安装方式",
+          "language": "powershell",
+          "code": "winget install --id 9PLM9XGG6VKS -s msstore\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS：同样从官方下载页选 macOS，开启下载的安装档，依画面将应用程式安装到指定位置，再从「应用程式」开启 ChatGPT。若系统显示不相容，回下载页核对目前系统需求；不要用停用系统保护来处理版本不支援。安装后关闭安装视窗，再确认启动的是已安装的程式。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Linux：桌面版目前是预览版，官方列出 Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44，提供 x64 与 ARM64。先在终端机确认系统与处理器，再从"
+            },
+            {
+              "type": "link",
+              "text": "Linux 官方安装页",
+              "url": "https://learn.chatgpt.com/docs/linux/linux-app"
+            },
+            {
+              "type": "text",
+              "text": "下载对应套件。其他发行版不在这次正式支援清单中，不要把套件装得进去当成全部功能受支援。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Linux 终端机；确认发行版与架构",
+          "language": "bash",
+          "code": "cat /etc/os-release\nuname -m\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ubuntu／Debian 选 .deb，Fedora 选 .rpm。x86_64 代表 x64；aarch64 或 arm64 选 ARM64。在放有下载档案的资料夹开启终端机，只执行下表符合自己系统的一行。档案被浏览器加上编号时，先核对实际档名。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "系统",
+            "架构",
+            "安装命令"
+          ],
+          "rows": [
+            [
+              "Ubuntu / Debian",
+              "x64",
+              "sudo apt install ./chatgpt_amd64.deb"
+            ],
+            [
+              "Ubuntu / Debian",
+              "ARM64",
+              "sudo apt install ./chatgpt_arm64.deb"
+            ],
+            [
+              "Fedora",
+              "x64",
+              "sudo dnf install ./chatgpt.x86_64.rpm"
+            ],
+            [
+              "Fedora",
+              "ARM64",
+              "sudo dnf install ./chatgpt.aarch64.rpm"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Linux 安装后从应用程式选单开启 ChatGPT，或在终端机执行 chatgpt。后续更新使用发行版套件管理器。预览版尚未支援 Computer Use，原生 Wayland 仍有实验性限制；这不妨碍你先练习档案修改与手动浏览器验收，也不要用 macOS 截图代表 Linux 实际画面。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：登入并选择练习位置"
+        },
+        {
+          "type": "paragraph",
+          "text": "三种系统都先在应用程式完成登入，确认帐号与工作区，选择 Codex，再以开启资料夹或建立专案的入口选 codex-practice。应直接看到 index.html 等档案，而不是压缩包或上一层资料夹。若画面要求选本机或其他工作环境，这一篇选自己的练习副本所在位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立 New chat 后先做唯读确认。把下列文字贴在 Codex 任务输入框，不是 PowerShell 或 Terminal。这一步能提早发现选错专案、档案没解压缩，以及任务开在另一台主机等问题。"
+        },
+        {
+          "type": "code",
+          "label": "Codex 桌面版，新任务输入框；先确认工作位置",
+          "language": "text",
+          "code": "Before editing, report the current working folder and list the exercise files.\nRead index.html and explain how the page loads its JavaScript.\nDo not change files. Tell me if the expected five files are missing.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "预期指出实际资料夹，并找到 app.js 及 core.mjs 的关系。与你的档案总管比对路径，不要只看到「我已了解专案」就跳过。若应用程式开了工作树副本，请先核对副本位置；详见"
+            },
+            {
+              "type": "article",
+              "text": "Worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "。本例不需要 Git 仓库也能开始。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：交付一个可验收的小修改"
+        },
+        {
+          "type": "code",
+          "label": "同一个 Codex 桌面任务；完整需求",
+          "language": "text",
+          "code": "Update this Small Steps practice website.\nChange the main heading to \"Small steps, clear progress.\"\nUse a dark blue heading color with readable contrast on the existing background.\nKeep the form labels, task data format, storage key and behavior unchanged.\nDo not add dependencies or external services.\nShow the changed files, explain the diff and report checks actually performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "等待任务提供成果后，从档案或变更检视开启 index.html、style.css。检查标题字串与颜色设定是否对应需求，是否意外修改储存格式或删除标签。档案差异中的新增与删除只是比较结果，不表示网站已发布。第一次不用同时要求登入、云端部署与资料库；先完成一个可以自己验收的小范围。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先核对差异，再看画面"
+        },
+        {
+          "type": "table",
+          "header": [
+            "档案",
+            "本次应检查的内容"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "主标题变成指定字串，其余标签与文字保留"
+            ],
+            [
+              "style.css",
+              "标题色彩的必要差异；实际对比度仍要看画面"
+            ],
+            [
+              "app.js、core.mjs、core.test.mjs",
+              "与原始副本内容相同；本题没有要求改动资料逻辑或测试"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "若多改了档案，先要求说明每处差异，核对后只撤回本题以外的修改。不要用整个资料夹覆盖来掩盖原因。也不要用「只有两个档案变动」代替接下来的功能验收。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第四步：在浏览器确认结果"
+        },
+        {
+          "type": "paragraph",
+          "text": "在练习资料夹开终端机，Windows 使用下列命令。服务会持续占用这个终端机，这是正常状态；另开浏览器，不要因为没有回到提示符号就再次启动。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell；codex-practice 资料夹",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux 终端机；codex-practice 资料夹",
+          "language": "bash",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "开启 http://127.0.0.1:4173。先看标题，再新增 Read 与 Build，完成 Read，切换 Active tasks 应只剩 Build，Completed tasks 应只剩 Read。重新整理后资料应保留。输入只有空白的任务不得新增；这是与正常流程一起检查的边界案例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用浏览器开发工具的响应式模式检查 390 与 1280 像素，或缩小视窗检查窄版；文字、按钮与表单不应左右溢出。按 Tab 时要看得到焦点。再于另一个同目录终端机执行 node --test core.test.mjs，参考版应为 3 个测试通过。若 Codex 没有浏览器工具，就由你执行画面验收，并保留「未由代理实测」的纪录。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题、停止与还原"
+        },
+        {
+          "type": "paragraph",
+          "text": "应用程式中没有 Codex：先核对是否已更新、登入正确帐号与工作区，再查帐号可用功能。不要反复重装来处理额度或工作区管理限制。CLI 是另一个入口，安装桌面版不代表终端机一定能找到 codex 命令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "开到错误资料夹：比较任务回报的绝对路径与五个档案。如果是解压缩前的 ZIP、空目录或另一个专案，停止修改，重新选择。已发生的修改要在原位置核对，不要假设切换专案会搬移档案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "网页空白或 JavaScript 没执行：确认网址是 http://127.0.0.1:4173，而不是双击档案的 file URL。再检查伺服器终端机与浏览器 Console。若连接埠已占用，停止自己先前启动的服务或选另一个连接埠；不同连接埠的浏览器储存空间不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停止预览使用 Ctrl+C。还原时参照差异，只恢复标题与本次样式；保留其他既有修改。练习网站的 Reset practice data 只用来清除本例专用资料，与还原程式不同。任务完成、测试通过和网站正式上线是三个不同状态。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小练习与查证纪录"
+        },
+        {
+          "type": "paragraph",
+          "text": "把需求改成「手机上表单按钮维持整行，桌面维持与输入框并排」，要求 Codex 先说明目前样式，再做必要修改。以两个宽度及原有资料操作完成验收；如果既有样式已符合，就接受无须修改的结果，避免为了产生差异而改程式。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "安装与功能依"
+            },
+            {
+              "type": "link",
+              "text": "桌面官方文件",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Windows 文件",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-app"
+            },
+            {
+              "type": "text",
+              "text": "及 Linux 文件于 2026-09-14 查证。教材网站已在 Windows／Edge 153 的 360、390、1280px 视窗验证；这些是网页成果截图，不是桌面产品介面、实体手机或 macOS／Linux 安装实测。接著可读"
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "Plan 模式",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "article",
+              "text": "Git 差异",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-desktop-getting-started/diagram-1.svg",
+          "alt": "03. 桌面版：Windows、macOS、Linux — 实作顺序示意图，非产品介面截图。 Install → Folder → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "03. 桌面版：Windows、macOS、Linux — 实作顺序示意图，非产品介面截图。 Install → Folder → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "待办练习网站：Build 已完成，Read the AGENTS.md rules 尚未完成，共两项任务。",
+          "caption": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。390px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "待办练习网站：Build 已完成，Read the AGENTS.md rules 尚未完成，共两项任务。",
+          "caption": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。1280px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows desktop app",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Linux desktop app",
+          "url": "https://learn.chatgpt.com/docs/linux/linux-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ChatGPT download",
+          "url": "https://chatgpt.com/download/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Desktop: Windows, macOS and Linux",
+      "description": "The desktop workspace combines tasks, files, terminals and change review. Current official downloads use the name ChatGPT desktop app; choose Codex inside it. Follow the separate installation path for your system. Linux is a preview with a specific support list, not a promise of compatibility with every distribution.",
+      "hero": {
+        "src": "/guides/codex-desktop-getting-started/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will accomplish"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Install the appropriate desktop app, open an isolated practice folder, ask Codex to update a todo website and verify the result through a diff and a browser. Allow 15 minutes to read and 25 minutes for setup and practice. This lesson uses the official name as checked on 2026-09-14: the ChatGPT desktop app, with Codex selected inside it. Older screens or shortcuts may still say Codex."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The desktop app organizes tasks, files and outputs. The model interprets requests; a task holds the conversation and its working environment. Distinguishing these prevents confusing a model change with a change of folder. See "
+            },
+            {
+              "type": "article",
+              "text": "the Codex introduction",
+              "kind": "life",
+              "slug": "codex-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": " to compare entry points."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before you begin"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Prepare an internet connection and a ChatGPT account with Codex access. Use "
+            },
+            {
+              "type": "article",
+              "text": "account and usage guidance",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": " to check the workspace you are signed into. Plans, limits and model menus vary, so this lesson does not prescribe a fixed price or model. If the app is installed already, use its supported update method before checking the entry points below."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Download the "
+            },
+            {
+              "type": "link",
+              "text": "Small Steps practice package",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": ", extract it and copy expected into your own codex-practice folder. It contains five source files, fictional data, no login and no backend. This lesson changes only a heading and its styling. Use this copy before opening a production project. Previewing requires Python 3; data tests require Node.js."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Keep an untouched copy first"
+        },
+        {
+          "type": "paragraph",
+          "text": "After extracting expected, use your file manager to make two sibling folders: codex-practice for edits and codex-practice-before for comparison. Each must directly contain the five source files. Keep the backup outside the working folder, not in a child directory. Use File Explorer on Windows, Finder on macOS, or your Linux file manager."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The app's Git diff features may be unavailable before you create a Git repository. You can still compare matching files in a text editor. You do not need to commit or restore an entire repository for this exercise; continue to the "
+            },
+            {
+              "type": "article",
+              "text": "Git lesson",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": " when you need version control."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: install for your operating system"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows: choose Windows on the "
+            },
+            {
+              "type": "link",
+              "text": "official ChatGPT download page",
+              "url": "https://chatgpt.com/download/"
+            },
+            {
+              "type": "text",
+              "text": ", complete the official installer and open ChatGPT from Start. If you use PowerShell, the Windows documentation also provides the following command. Open the app after installation finishes; if the shortcut is missing, check installation progress before downloading more copies."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell; optional official installation method",
+          "language": "powershell",
+          "code": "winget install --id 9PLM9XGG6VKS -s msstore\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS: choose macOS on the official download page, open the downloaded installer and follow its instructions to place the app in the indicated location. Open ChatGPT from Applications. If the system reports incompatibility, check the current requirements on the download page; disabling system protections will not make an unsupported version supported. Close the installer and confirm you are launching the installed app."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Linux: the desktop app is in preview. The documented distributions are Ubuntu 24.04/26.04 LTS, Debian 13 and Fedora 43/44, with x64 and ARM64 packages. Check your distribution and processor before downloading from the "
+            },
+            {
+              "type": "link",
+              "text": "official Linux installation page",
+              "url": "https://learn.chatgpt.com/docs/linux/linux-app"
+            },
+            {
+              "type": "text",
+              "text": ". Other distributions are outside this supported list; successfully installing a package does not establish full support."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Linux terminal; identify the distribution and architecture",
+          "language": "bash",
+          "code": "cat /etc/os-release\nuname -m\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use .deb for Ubuntu/Debian and .rpm for Fedora. x86_64 means x64; aarch64 or arm64 means ARM64. Open a terminal in the download folder and run only the row matching your system. If the browser added a number to the filename, check the actual name first."
+        },
+        {
+          "type": "table",
+          "header": [
+            "System",
+            "Architecture",
+            "Installation command"
+          ],
+          "rows": [
+            [
+              "Ubuntu / Debian",
+              "x64",
+              "sudo apt install ./chatgpt_amd64.deb"
+            ],
+            [
+              "Ubuntu / Debian",
+              "ARM64",
+              "sudo apt install ./chatgpt_arm64.deb"
+            ],
+            [
+              "Fedora",
+              "x64",
+              "sudo dnf install ./chatgpt.x86_64.rpm"
+            ],
+            [
+              "Fedora",
+              "ARM64",
+              "sudo dnf install ./chatgpt.aarch64.rpm"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Open ChatGPT from the application menu or run chatgpt in a terminal. Later updates use the distribution's package manager. Computer Use is not yet available in the Linux preview, and native Wayland has experimental limitations. You can still practice file edits and inspect the browser yourself. A macOS screenshot should not be presented as a Linux screen."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: sign in and select the practice folder"
+        },
+        {
+          "type": "paragraph",
+          "text": "On all three systems, sign in, verify the account and workspace, select Codex, then open a folder or create a project pointing to codex-practice. You should see index.html and the other files directly, rather than the ZIP or its parent directory. If asked to choose a local or other environment, select the location of your own practice copy."
+        },
+        {
+          "type": "paragraph",
+          "text": "Start a New chat and perform a read-only check first. Paste the following into the Codex task composer, not PowerShell or Terminal. This catches the wrong project, unextracted files or a task running on another host before it edits anything."
+        },
+        {
+          "type": "code",
+          "label": "Codex desktop app, new task composer; verify the working location",
+          "language": "text",
+          "code": "Before editing, report the current working folder and list the exercise files.\nRead index.html and explain how the page loads its JavaScript.\nDo not change files. Tell me if the expected five files are missing.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Expect an actual folder path and an explanation of how app.js relates to core.mjs. Compare the path with your file manager instead of accepting “I understand the project.” If the app created a worktree copy, inspect that copy's location; see "
+            },
+            {
+              "type": "article",
+              "text": "Worktrees",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": ". This exercise can start without a Git repository."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: request one verifiable change"
+        },
+        {
+          "type": "code",
+          "label": "The same Codex desktop task; complete request",
+          "language": "text",
+          "code": "Update this Small Steps practice website.\nChange the main heading to \"Small steps, clear progress.\"\nUse a dark blue heading color with readable contrast on the existing background.\nKeep the form labels, task data format, storage key and behavior unchanged.\nDo not add dependencies or external services.\nShow the changed files, explain the diff and report checks actually performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "After the task responds, open index.html and style.css through its file or changes view. Check the heading string and color against the request, and look for unintended storage changes or removed labels. Added and removed lines in a diff are a comparison, not publication. For the first task, keep a scope you can verify rather than adding accounts, deployment and a database at once."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Inspect files before the screen"
+        },
+        {
+          "type": "table",
+          "header": [
+            "File",
+            "Check for this request"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "The main heading matches the requested text; other labels and text remain"
+            ],
+            [
+              "style.css",
+              "Only necessary heading-color changes; contrast still needs visual inspection"
+            ],
+            [
+              "app.js, core.mjs, core.test.mjs",
+              "Contents match the untouched copy; this request does not change data logic or tests"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "If other files changed, ask for an explanation of each difference, then undo only changes outside this request. Do not overwrite the whole folder to hide the cause. “Only two files changed” also does not replace the functional checks that follow."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: inspect the browser result"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open a terminal in the practice directory. On Windows, run the following. The server keeps that terminal busy; this is normal. Open a browser separately instead of launching the server again because the shell prompt did not return."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell, codex-practice folder",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux terminal, codex-practice folder",
+          "language": "bash",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Visit http://127.0.0.1:4173. Check the heading, add Read and Build, and complete Read. Active tasks should show only Build; Completed tasks should show only Read. Reload and confirm the data remains. A whitespace-only task must be rejected: verify this boundary case alongside the normal workflow."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use responsive mode in browser developer tools at 390 and 1280 pixels, or narrow the window to check the small layout. Text, buttons and the form must not overflow horizontally. Tab should show a visible focus indicator. In another terminal in the same folder, run node --test core.test.mjs: the reference version should pass three tests. If Codex lacks a browser tool, perform visual verification yourself and record that the agent did not run it."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting, stopping and restoring"
+        },
+        {
+          "type": "paragraph",
+          "text": "No Codex option: check the app update, account and workspace, then account availability. Reinstalling repeatedly does not resolve usage limits or workspace policy. CLI is a separate entry point; installing the desktop app does not establish that a terminal can find the codex command."
+        },
+        {
+          "type": "paragraph",
+          "text": "Wrong folder: compare the task's absolute path and five files with your copy. If it points to a ZIP, empty directory or different project, stop editing and select the correct location. Inspect any changes already made at the original location; switching projects does not move files."
+        },
+        {
+          "type": "paragraph",
+          "text": "Blank page or inactive JavaScript: confirm the URL is http://127.0.0.1:4173 rather than a file URL from double-clicking HTML. Check the server terminal and browser Console. If the port is busy, stop your earlier server or choose another port. Browser storage is separate for different ports."
+        },
+        {
+          "type": "paragraph",
+          "text": "Stop the preview with Ctrl+C. Restore only the heading and styles changed in this exercise, preserving unrelated edits. Reset practice data clears this exercise's dedicated data, not its source code. Task completion, passing tests and a publicly deployed website are separate states."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice and verification record"
+        },
+        {
+          "type": "paragraph",
+          "text": "Try asking for the form button to occupy its own full row on mobile while staying beside the input on desktop. Ask Codex to explain the existing CSS before editing. Verify both widths and the original data workflow. If the current styles already satisfy the request, accept that no change is necessary."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Installation and features were checked on 2026-09-14 using the "
+            },
+            {
+              "type": "link",
+              "text": "desktop documentation",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "Windows documentation",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-app"
+            },
+            {
+              "type": "text",
+              "text": " and Linux documentation. The practice site was tested in Windows/Edge 153 at 360, 390 and 1280px. Those captures show the website result, not the desktop product interface, a physical phone or hands-on macOS/Linux installation. Continue with "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "Plan mode",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "article",
+              "text": "Git diffs",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-desktop-getting-started/diagram-1.svg",
+          "alt": "03. Desktop: Windows, macOS and Linux — Workflow illustration, not a product screenshot. Install → Folder → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "03. Desktop: Windows, macOS and Linux — Workflow illustration, not a product screenshot. Install → Folder → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "Practice task website: Build is complete and Read the AGENTS.md rules is pending, with two tasks in total.",
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 390px is a responsive viewport, not a physical phone. This is not the Codex desktop interface.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "Practice task website: Build is complete and Read the AGENTS.md rules is pending, with two tasks in total.",
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 1280px is a responsive viewport, not a physical phone. This is not the Codex desktop interface.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows desktop app",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Linux desktop app",
+          "url": "https://learn.chatgpt.com/docs/linux/linux-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ChatGPT download",
+          "url": "https://chatgpt.com/download/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "デスクトップ：Windows・macOS・Linux",
+      "description": "デスクトップではタスク、ファイル、端末、差分を一つの画面で扱えます。現在の公式配布名は ChatGPT desktop app で、その中から Codex を選びます。Linux はプレビューであり、すべてのディストリビューションを保証するものではありません。",
+      "hero": {
+        "src": "/guides/codex-desktop-getting-started/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "このレッスンでできること"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "自分の OS に合うアプリをインストールし、独立した練習フォルダーを開いて Codex に ToDo サイトの変更を依頼します。最後に差分とブラウザで結果を確認します。読む時間は約 15 分、準備と操作は約 25 分です。2026-09-14 の公式名称に合わせて「ChatGPT デスクトップアプリ」と呼び、その中で Codex を選びます。古い画面やショートカットには Codex と表示される場合があります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "デスクトップアプリはタスク、ファイル、成果物を整理します。モデルは依頼を解釈し、タスクは今回の会話と作業環境を保持します。この違いを知ると、モデル変更と作業フォルダー変更を混同せずに済みます。入口の比較は "
+            },
+            {
+              "type": "article",
+              "text": "Codex 入門",
+              "kind": "life",
+              "slug": "codex-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "を参照してください。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "始める前に"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ネット接続と Codex を利用できる ChatGPT アカウントを用意し、"
+            },
+            {
+              "type": "article",
+              "text": "アカウントと使用量",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "でワークスペースを確認します。プラン、上限、モデルの選択肢はアカウントによって異なるため、固定料金や特定モデルは指定しません。インストール済みなら、アプリが提供する更新方法を使ってから以下の入口を確認します。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "link",
+              "text": "Small Steps 練習パッケージ",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "を展開し、expected を自分の codex-practice フォルダーにコピーします。5 個のソースファイルがあり、データは架空で、ログインやバックエンドはありません。今回は見出しとスタイルだけを変更します。本番プロジェクトを開く前に、このコピーで練習してください。プレビューには Python 3、データテストには Node.js が必要です。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "変更前のコピーを残す"
+        },
+        {
+          "type": "paragraph",
+          "text": "expected を展開したら、ファイルマネージャーで同じ階層に二つのコピーを作ります。編集用は codex-practice、比較用は codex-practice-before とします。どちらも直下に五つのソースファイルがあることを確認してください。バックアップは作業フォルダーの外に置き、子フォルダーにはしません。Windows はエクスプローラー、macOS は Finder、Linux はファイルマネージャーで操作します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Git リポジトリを作っていない場合、アプリの Git 差分機能を使えないことがあります。その場合も、テキストエディターで同名ファイルを開いて比較できます。この練習のためにリポジトリ全体のコミットや復元を覚える必要はありません。バージョン管理が必要になったら、"
+            },
+            {
+              "type": "article",
+              "text": "Git のレッスン",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "に進みます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 1：OS に合わせてインストールする"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows："
+            },
+            {
+              "type": "link",
+              "text": "ChatGPT 公式ダウンロードページ",
+              "url": "https://chatgpt.com/download/"
+            },
+            {
+              "type": "text",
+              "text": "で Windows を選び、公式インストーラーを完了して、スタートメニューから ChatGPT を開きます。PowerShell を使う場合は公式 Windows 文書にある次の方法も選べます。ショートカットが見つからないときは、何度もダウンロードする前にインストールの完了を確認します。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell。公式の任意のインストール方法",
+          "language": "powershell",
+          "code": "winget install --id 9PLM9XGG6VKS -s msstore\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS：公式ページで macOS を選び、ダウンロードしたインストーラーを開き、表示に従って指定場所にアプリを置きます。「アプリケーション」から ChatGPT を開いてください。互換性エラーが出た場合は公式ページの現在の要件を確認します。システム保護を無効にしても非対応バージョンが対応になるわけではありません。インストーラーを閉じ、インストール済みのアプリを起動しているか確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Linux：現在はプレビュー版です。公式の対象は Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44 で、x64 と ARM64 のパッケージがあります。次のコマンドで OS と CPU を確認し、"
+            },
+            {
+              "type": "link",
+              "text": "Linux 公式インストールページ",
+              "url": "https://learn.chatgpt.com/docs/linux/linux-app"
+            },
+            {
+              "type": "text",
+              "text": "から対応するものを取得します。他のディストリビューションはこの正式対応一覧に含まれません。インストール成功だけですべての機能への対応を判断しないでください。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Linux のターミナル。ディストリビューションとアーキテクチャを確認",
+          "language": "bash",
+          "code": "cat /etc/os-release\nuname -m\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ubuntu／Debian は .deb、Fedora は .rpm を選びます。x86_64 は x64、aarch64 または arm64 は ARM64 です。ダウンロード先のフォルダーで、自分の環境に合う一行だけ実行します。ブラウザがファイル名に番号を付けた場合は実際の名前を確認してください。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "システム",
+            "アーキテクチャ",
+            "インストールコマンド"
+          ],
+          "rows": [
+            [
+              "Ubuntu / Debian",
+              "x64",
+              "sudo apt install ./chatgpt_amd64.deb"
+            ],
+            [
+              "Ubuntu / Debian",
+              "ARM64",
+              "sudo apt install ./chatgpt_arm64.deb"
+            ],
+            [
+              "Fedora",
+              "x64",
+              "sudo dnf install ./chatgpt.x86_64.rpm"
+            ],
+            [
+              "Fedora",
+              "ARM64",
+              "sudo dnf install ./chatgpt.aarch64.rpm"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "アプリメニューから ChatGPT を開くか、端末で chatgpt を実行します。更新にはディストリビューションのパッケージ管理を使います。Linux プレビューにはまだ Computer Use がなく、ネイティブ Wayland にも実験的な制限があります。ファイル変更と自分で行うブラウザ確認は練習できます。macOS の画像を Linux の実画面として示してはいけません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 2：ログインして練習場所を選ぶ"
+        },
+        {
+          "type": "paragraph",
+          "text": "どの OS でもログイン後にアカウントとワークスペースを確認し、Codex を選びます。フォルダーを開く、またはプロジェクトを作る入口で codex-practice を指定します。ZIP や親フォルダーではなく、index.html などが直接見える場所です。ローカルなどの作業環境を選ぶ場合は、自分の練習コピーがある場所を指定します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "New chat を作り、最初は読み取りだけを頼みます。次は PowerShell や Terminal ではなく Codex のタスク入力欄に貼ります。編集前に、別プロジェクト、未展開の教材、別ホストを選んだ間違いを発見できます。"
+        },
+        {
+          "type": "code",
+          "label": "Codex デスクトップの新規タスク入力欄。作業場所を確認",
+          "language": "text",
+          "code": "Before editing, report the current working folder and list the exercise files.\nRead index.html and explain how the page loads its JavaScript.\nDo not change files. Tell me if the expected five files are missing.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "実際のパスと app.js、core.mjs の関係が示されることを期待します。「理解しました」だけで済ませず、ファイルマネージャーの場所と比べます。アプリが worktree のコピーを作った場合は、その場所も確認します。"
+            },
+            {
+              "type": "article",
+              "text": "Worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "も参照できます。この練習は Git リポジトリがなくても始められます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 3：確認できる小さな変更を依頼する"
+        },
+        {
+          "type": "code",
+          "label": "同じ Codex デスクトップタスク。依頼の全文",
+          "language": "text",
+          "code": "Update this Small Steps practice website.\nChange the main heading to \"Small steps, clear progress.\"\nUse a dark blue heading color with readable contrast on the existing background.\nKeep the form labels, task data format, storage key and behavior unchanged.\nDo not add dependencies or external services.\nShow the changed files, explain the diff and report checks actually performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "結果が出たらファイル表示や変更表示から index.html と style.css を開きます。見出しと色が依頼に合い、保存形式の変更やラベル削除が紛れていないか確認します。差分の追加・削除行は比較結果であり、公開されたという意味ではありません。最初からログイン、デプロイ、データベースを加えず、自分で確認できる範囲を完了します。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "画面を見る前に差分を確認する"
+        },
+        {
+          "type": "table",
+          "header": [
+            "ファイル",
+            "今回の確認内容"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "主見出しが指定文字列になり、ほかのラベルや文字は残っている"
+            ],
+            [
+              "style.css",
+              "見出しの色に必要な変更だけがある。コントラストは画面でも確認する"
+            ],
+            [
+              "app.js、core.mjs、core.test.mjs",
+              "変更前のコピーと内容が同じ。今回はデータ処理やテストの変更を依頼していない"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "ほかのファイルも変わっていたら、それぞれの差分の理由を確認してから、依頼範囲外の変更だけを戻します。原因を隠すためにフォルダー全体を上書きしないでください。また、「変更は二ファイルだけ」という確認では、この後の機能確認を代替できません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 4：ブラウザで確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習フォルダーで端末を開き、Windows では次を実行します。サーバーが端末を使い続けるのは正常です。プロンプトが戻らないからと再起動せず、別にブラウザを開きます。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell、codex-practice フォルダー",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux ターミナル、codex-practice フォルダー",
+          "language": "bash",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "http://127.0.0.1:4173 を開き、見出しを確認します。Read と Build を追加して Read を完了にすると、Active tasks には Build だけ、Completed tasks には Read だけが表示されるはずです。再読み込み後もデータが残ることを確認します。空白だけのタスクは追加できないことも、正常操作と一緒に試します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開発者ツールのレスポンシブ表示で 390 と 1280 ピクセルを確認するか、ウィンドウを狭くします。文字、ボタン、フォームが横にはみ出さず、Tab のフォーカスが見えることを確認します。同じ場所の別端末で node --test core.test.mjs を実行すると、参考版は 3 テスト成功のはずです。Codex にブラウザがなければ自分で表示を確認し、エージェントによる実測ではないと記録します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "問題解決、停止、復元"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex が見つからない場合は、更新、アカウント、ワークスペース、利用可能機能の順に確認します。再インストールを繰り返しても使用量や管理ポリシーは解決しません。CLI は別の入口であり、デスクトップを入れても端末の codex コマンドが使えるとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "場所が違う場合は、絶対パスと 5 ファイルを照合します。ZIP、空の場所、別プロジェクトなら編集を止めて選び直します。すでに行った変更は元の場所で確認します。プロジェクトを切り替えてもファイルは移動しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "画面が空白、または JavaScript が動かない場合は、ダブルクリックの file URL ではなく http://127.0.0.1:4173 か確認します。続いて端末と Console を調べます。ポート使用中なら自分の前のサーバーを止めるか別ポートを選びます。ポートが違うとブラウザ保存領域も別になります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プレビューは Ctrl+C で止めます。今回の見出しとスタイルだけを差分で戻し、他の変更は残します。Reset practice data は専用データの削除であり、コードの復元ではありません。タスク完了、テスト成功、サイト公開は別の状態です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "練習と確認記録"
+        },
+        {
+          "type": "paragraph",
+          "text": "「モバイルではボタンを一行全体に、デスクトップでは入力欄の隣にする」と依頼を変えてみます。変更前に現在の CSS を説明させ、二つの幅と元のデータ操作で確認します。すでに条件を満たす場合は、変更不要という結果を受け入れます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "インストールと機能は 2026-09-14 に"
+            },
+            {
+              "type": "link",
+              "text": "デスクトップ公式文書",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Windows 文書",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-app"
+            },
+            {
+              "type": "text",
+              "text": "、Linux 文書で確認しました。教材サイトは Windows／Edge 153 の 360、390、1280px で検証済みです。画像はサイトの成果であり、製品 UI、実物のスマートフォン、macOS／Linux のインストール実測ではありません。次は "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "Plan モード",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "Git 差分",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "を参照してください。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-desktop-getting-started/diagram-1.svg",
+          "alt": "03. デスクトップ：Windows・macOS・Linux — 作業の流れを表す図です。製品画面の画像ではありません。 Install → Folder → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "03. デスクトップ：Windows・macOS・Linux — 作業の流れを表す図です。製品画面の画像ではありません。 Install → Folder → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "練習用タスクサイト。Build は完了、Read the AGENTS.md rules は未完了で、合計2件。",
+          "caption": "変更前の完成参考版を実際のブラウザで撮影。Windows / Edge 153.0.4234.32、2026-09-14。架空データを使用。390px はレスポンシブ表示で実物のスマートフォンではありません。Codex デスクトップ UI の画像ではありません。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "練習用タスクサイト。Build は完了、Read the AGENTS.md rules は未完了で、合計2件。",
+          "caption": "変更前の完成参考版を実際のブラウザで撮影。Windows / Edge 153.0.4234.32、2026-09-14。架空データを使用。1280px はレスポンシブ表示で実物のスマートフォンではありません。Codex デスクトップ UI の画像ではありません。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows desktop app",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Linux desktop app",
+          "url": "https://learn.chatgpt.com/docs/linux/linux-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ChatGPT download",
+          "url": "https://chatgpt.com/download/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "데스크톱: Windows, macOS, Linux",
+      "description": "데스크톱 작업 공간은 작업, 파일, 터미널과 변경 검토를 모아 보여 줍니다. 현재 공식 배포 이름은 ChatGPT desktop app이며 앱 안에서 Codex를 선택합니다. Linux는 지원 목록이 정해진 미리보기 버전입니다.",
+      "hero": {
+        "src": "/guides/codex-desktop-getting-started/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 글에서 완성할 것"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "운영체제에 맞는 앱을 설치하고 독립된 실습 폴더를 열어 Codex에 할 일 웹사이트 수정을 요청합니다. 마지막으로 파일 차이와 브라우저에서 결과를 확인합니다. 읽기 약 15분, 설치와 실습 약 25분입니다. 2026-09-14 공식 명칭에 맞춰 ChatGPT 데스크톱 앱이라고 부르며 그 안에서 Codex를 선택합니다. 예전 화면이나 바로가기는 여전히 Codex라고 표시할 수 있습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "데스크톱 앱은 작업, 파일, 결과물을 관리합니다. 모델은 요청을 해석하고 작업은 대화와 실행 환경을 보존합니다. 이 차이를 알면 모델 변경을 작업 폴더 변경으로 오해하지 않습니다. 진입점 비교는 "
+            },
+            {
+              "type": "article",
+              "text": "Codex 소개",
+              "kind": "life",
+              "slug": "codex-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전 준비"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "인터넷과 Codex를 사용할 수 있는 ChatGPT 계정을 준비하고 "
+            },
+            {
+              "type": "article",
+              "text": "계정과 사용량",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "에서 워크스페이스를 확인합니다. 요금제, 한도, 모델 메뉴는 계정마다 다르므로 고정 가격이나 특정 모델을 지정하지 않습니다. 앱이 이미 있다면 제공되는 업데이트 방식으로 갱신한 뒤 아래 진입점을 확인합니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "link",
+              "text": "Small Steps 실습 묶음",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "을 풀고 expected를 자신의 codex-practice 폴더로 복사합니다. 소스 파일 다섯 개가 있으며 데이터는 가상이고 로그인이나 백엔드는 없습니다. 이번에는 제목과 스타일만 바꾸므로 운영 프로젝트보다 이 복사본을 먼저 사용하세요. 미리보기는 Python 3, 데이터 테스트는 Node.js가 필요합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "수정 전 사본 보관"
+        },
+        {
+          "type": "paragraph",
+          "text": "expected를 압축 해제한 뒤 파일 관리자로 같은 상위 폴더에 사본 두 개를 만듭니다. codex-practice는 수정용, codex-practice-before는 비교용입니다. 두 폴더 바로 아래에 소스 파일 다섯 개가 있어야 합니다. 백업은 작업 폴더의 하위 폴더가 아닌 외부에 둡니다. Windows에서는 파일 탐색기, macOS에서는 Finder, Linux에서는 파일 관리자를 사용합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Git 저장소를 만들지 않았다면 앱의 Git 차이 보기를 사용할 수 없을 수 있습니다. 이때도 텍스트 편집기에서 같은 이름의 파일을 열어 비교할 수 있습니다. 이 실습을 위해 저장소 전체를 커밋하거나 복원할 필요는 없습니다. 버전 관리가 필요하면 "
+            },
+            {
+              "type": "article",
+              "text": "Git 수업",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "으로 이어 가세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 운영체제에 맞게 설치"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows: "
+            },
+            {
+              "type": "link",
+              "text": "ChatGPT 공식 다운로드 페이지",
+              "url": "https://chatgpt.com/download/"
+            },
+            {
+              "type": "text",
+              "text": "에서 Windows를 선택하고 공식 설치를 완료한 다음 시작 메뉴에서 ChatGPT를 엽니다. PowerShell을 사용한다면 공식 Windows 문서의 아래 방법도 가능합니다. 바로가기가 없으면 여러 번 내려받기 전에 설치가 끝났는지 확인합니다."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell, 선택 가능한 공식 설치 방법",
+          "language": "powershell",
+          "code": "winget install --id 9PLM9XGG6VKS -s msstore\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS: 공식 페이지에서 macOS를 선택하고 내려받은 설치 파일을 열어 안내된 위치에 앱을 설치합니다. 응용 프로그램에서 ChatGPT를 엽니다. 호환되지 않는다는 메시지가 나오면 다운로드 페이지의 현재 요구사항을 확인하세요. 시스템 보호를 끈다고 지원하지 않는 버전이 지원되는 것은 아닙니다. 설치 창을 닫고 설치된 앱을 실행하는지 확인합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Linux: 데스크톱 앱은 미리보기 단계입니다. 공식 대상은 Ubuntu 24.04/26.04 LTS, Debian 13, Fedora 43/44이며 x64와 ARM64 패키지를 제공합니다. 먼저 배포판과 CPU를 확인한 뒤 "
+            },
+            {
+              "type": "link",
+              "text": "Linux 공식 설치 페이지",
+              "url": "https://learn.chatgpt.com/docs/linux/linux-app"
+            },
+            {
+              "type": "text",
+              "text": "에서 맞는 파일을 받습니다. 다른 배포판은 이 공식 지원 목록 밖에 있으며 패키지가 설치됐다고 모든 기능을 지원하는 것은 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Linux 터미널, 배포판과 아키텍처 확인",
+          "language": "bash",
+          "code": "cat /etc/os-release\nuname -m\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ubuntu/Debian은 .deb, Fedora는 .rpm을 선택합니다. x86_64는 x64, aarch64 또는 arm64는 ARM64입니다. 다운로드 폴더에서 자신의 환경에 맞는 한 줄만 실행합니다. 브라우저가 파일 이름에 번호를 붙였다면 실제 이름을 먼저 확인하세요."
+        },
+        {
+          "type": "table",
+          "header": [
+            "시스템",
+            "아키텍처",
+            "설치 명령"
+          ],
+          "rows": [
+            [
+              "Ubuntu / Debian",
+              "x64",
+              "sudo apt install ./chatgpt_amd64.deb"
+            ],
+            [
+              "Ubuntu / Debian",
+              "ARM64",
+              "sudo apt install ./chatgpt_arm64.deb"
+            ],
+            [
+              "Fedora",
+              "x64",
+              "sudo dnf install ./chatgpt.x86_64.rpm"
+            ],
+            [
+              "Fedora",
+              "ARM64",
+              "sudo dnf install ./chatgpt.aarch64.rpm"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "앱 메뉴에서 ChatGPT를 열거나 터미널에서 chatgpt를 실행합니다. 이후 업데이트는 배포판 패키지 관리자를 사용합니다. Linux 미리보기는 아직 Computer Use를 지원하지 않으며 네이티브 Wayland도 실험적 제한이 있습니다. 파일 수정과 직접 하는 브라우저 확인은 연습할 수 있습니다. macOS 화면을 Linux 실화면으로 표시해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 로그인하고 실습 위치 선택"
+        },
+        {
+          "type": "paragraph",
+          "text": "세 운영체제 모두 로그인 후 계정과 워크스페이스를 확인하고 Codex를 선택합니다. 폴더 열기 또는 프로젝트 만들기로 codex-practice를 지정합니다. ZIP이나 상위 폴더가 아닌 index.html 등이 바로 보이는 위치여야 합니다. 로컬 또는 다른 환경을 선택하라는 화면이 나오면 자신의 실습 복사본이 있는 위치를 고릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "New chat을 만들고 먼저 읽기만 요청합니다. 아래는 PowerShell이나 Terminal이 아니라 Codex 작업 입력창에 붙입니다. 수정 전에 다른 프로젝트, 압축되지 않은 파일, 다른 호스트를 선택한 문제를 찾을 수 있습니다."
+        },
+        {
+          "type": "code",
+          "label": "Codex 데스크톱 새 작업 입력창, 작업 위치 확인",
+          "language": "text",
+          "code": "Before editing, report the current working folder and list the exercise files.\nRead index.html and explain how the page loads its JavaScript.\nDo not change files. Tell me if the expected five files are missing.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "실제 폴더 경로와 app.js, core.mjs의 관계가 나와야 합니다. 프로젝트를 이해했다는 말만 믿지 말고 파일 관리자와 경로를 비교하세요. 앱이 worktree 복사본을 만들었다면 그 위치도 확인합니다. "
+            },
+            {
+              "type": "article",
+              "text": "Worktree",
+              "kind": "life",
+              "slug": "codex-worktrees"
+            },
+            {
+              "type": "text",
+              "text": "를 참고할 수 있습니다. 이 실습은 Git 저장소 없이도 시작할 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 확인 가능한 작은 수정 요청"
+        },
+        {
+          "type": "code",
+          "label": "같은 Codex 데스크톱 작업, 전체 요청문",
+          "language": "text",
+          "code": "Update this Small Steps practice website.\nChange the main heading to \"Small steps, clear progress.\"\nUse a dark blue heading color with readable contrast on the existing background.\nKeep the form labels, task data format, storage key and behavior unchanged.\nDo not add dependencies or external services.\nShow the changed files, explain the diff and report checks actually performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "결과가 나오면 파일 또는 변경 보기에서 index.html과 style.css를 엽니다. 제목과 색이 요청과 맞는지, 저장 형식 변경이나 라벨 삭제가 섞이지 않았는지 확인합니다. diff의 추가와 삭제는 비교 결과이며 배포를 뜻하지 않습니다. 처음부터 로그인, 배포, 데이터베이스를 더하기보다 직접 검증할 수 있는 범위를 완성합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "화면보다 먼저 파일 차이 확인"
+        },
+        {
+          "type": "table",
+          "header": [
+            "파일",
+            "이번 요청에서 확인할 내용"
+          ],
+          "rows": [
+            [
+              "index.html",
+              "주 제목이 요청한 문자열과 같고 다른 레이블과 문구는 유지됨"
+            ],
+            [
+              "style.css",
+              "제목 색상에 필요한 변경만 있음. 대비는 화면에서도 확인"
+            ],
+            [
+              "app.js, core.mjs, core.test.mjs",
+              "수정 전 사본과 내용이 같음. 이번 요청은 데이터 로직이나 테스트를 변경하지 않음"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "다른 파일도 바뀌었다면 각 차이의 이유를 확인한 다음 요청 범위 밖의 변경만 되돌립니다. 원인을 가리기 위해 폴더 전체를 덮어쓰지 마세요. “두 파일만 바뀌었다”는 확인도 다음 기능 검증을 대신하지 못합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 브라우저 결과 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "실습 폴더에서 터미널을 열고 Windows는 아래 명령을 실행합니다. 서버가 터미널을 계속 사용하는 것은 정상입니다. 프롬프트가 돌아오지 않는다고 다시 실행하지 말고 브라우저를 따로 엽니다."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell, codex-practice 폴더",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "code",
+          "label": "macOS / Linux 터미널, codex-practice 폴더",
+          "language": "bash",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "http://127.0.0.1:4173에서 제목을 확인하고 Read와 Build를 추가한 뒤 Read를 완료합니다. Active tasks에는 Build만, Completed tasks에는 Read만 보여야 합니다. 새로 고침 후 데이터도 남아야 합니다. 공백뿐인 항목은 추가되지 않는지 정상 흐름과 함께 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "개발자 도구의 반응형 모드에서 390과 1280픽셀을 확인하거나 창을 좁혀 봅니다. 글자, 버튼, 폼이 가로로 넘치지 않고 Tab 포커스가 보여야 합니다. 같은 폴더의 다른 터미널에서 node --test core.test.mjs를 실행하면 참고 버전은 테스트 세 개가 통과해야 합니다. Codex에 브라우저 도구가 없으면 직접 화면을 확인하고 에이전트가 실행하지 않았다고 기록합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결, 중지, 복원"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex가 없으면 앱 업데이트, 계정, 워크스페이스, 사용 가능한 기능 순서로 확인합니다. 재설치를 반복해도 사용량이나 관리자 정책은 해결되지 않습니다. CLI는 별도 진입점이므로 데스크톱 앱을 설치했다고 터미널에서 codex 명령을 찾을 수 있는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "폴더가 다르면 작업의 절대 경로와 파일 다섯 개를 대조합니다. ZIP, 빈 폴더, 다른 프로젝트라면 수정을 멈추고 다시 선택합니다. 이미 생긴 변경은 원래 위치에서 확인하세요. 프로젝트를 바꿔도 파일은 이동하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "빈 화면이나 작동하지 않는 JavaScript는 먼저 file URL이 아닌 http://127.0.0.1:4173인지 확인합니다. 이어 서버 터미널과 브라우저 Console을 확인합니다. 포트가 사용 중이면 자신이 이전에 실행한 서버를 멈추거나 다른 포트를 선택합니다. 포트마다 브라우저 저장 공간이 다릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ctrl+C로 미리보기를 멈춥니다. 이번 제목과 스타일만 차이를 보고 복원하고 다른 수정은 보존합니다. Reset practice data는 실습 전용 데이터 삭제이며 코드 복원이 아닙니다. 작업 완료, 테스트 통과, 공개 배포는 각각 다른 상태입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "추가 실습과 검증 기록"
+        },
+        {
+          "type": "paragraph",
+          "text": "모바일에서는 버튼이 한 줄 전체를 차지하고 데스크톱에서는 입력창 옆에 있도록 요청해 보세요. 수정 전에 현재 CSS를 설명하게 하고 두 너비와 원래 데이터 동작으로 확인합니다. 이미 조건을 충족한다면 변경이 필요 없다는 결과를 받아들입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "설치와 기능은 2026-09-14에 "
+            },
+            {
+              "type": "link",
+              "text": "데스크톱 공식 문서",
+              "url": "https://learn.chatgpt.com/docs/app"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "link",
+              "text": "Windows 문서",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-app"
+            },
+            {
+              "type": "text",
+              "text": ", Linux 문서로 확인했습니다. 실습 사이트는 Windows/Edge 153의 360, 390, 1280px에서 검증했습니다. 화면은 웹사이트 결과이며 제품 UI, 실제 휴대전화, macOS/Linux 설치 실측이 아닙니다. 다음은 "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "Plan 모드",
+              "kind": "life",
+              "slug": "codex-plan-mode"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "Git 차이",
+              "kind": "life",
+              "slug": "codex-git-basics"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-desktop-getting-started/diagram-1.svg",
+          "alt": "03. 데스크톱: Windows, macOS, Linux — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Install → Folder → Review",
+          "width": 1600,
+          "height": 900,
+          "caption": "03. 데스크톱: Windows, macOS, Linux — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Install → Folder → Review",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "실습 할 일 사이트. Build는 완료, Read the AGENTS.md rules는 미완료이며 총 두 항목입니다.",
+          "caption": "수정 전 완성 참고 버전의 실제 브라우저 화면. Windows / Edge 153.0.4234.32, 2026-09-14, 가상 데이터. 390px은 반응형 화면이며 실제 휴대전화가 아닙니다. Codex 데스크톱 UI 화면도 아닙니다.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "실습 할 일 사이트. Build는 완료, Read the AGENTS.md rules는 미완료이며 총 두 항목입니다.",
+          "caption": "수정 전 완성 참고 버전의 실제 브라우저 화면. Windows / Edge 153.0.4234.32, 2026-09-14, 가상 데이터. 1280px은 반응형 화면이며 실제 휴대전화가 아닙니다. Codex 데스크톱 UI 화면도 아닙니다.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows desktop app",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Linux desktop app",
+          "url": "https://learn.chatgpt.com/docs/linux/linux-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ChatGPT download",
+          "url": "https://chatgpt.com/download/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

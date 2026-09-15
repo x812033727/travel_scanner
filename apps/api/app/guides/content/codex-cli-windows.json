@@ -1,0 +1,1582 @@
+{
+  "slug": "codex-cli-windows",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 108,
+  "locales": {
+    "zh-TW": {
+      "title": "Windows CLI 安裝與排錯",
+      "description": "在 PowerShell 安裝、登入、核對執行路徑，完成第一次讀取並處理更新與找不到命令。",
+      "hero": {
+        "src": "/guides/codex-cli-windows/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與適用環境"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在 Windows 原生 PowerShell 安裝 Codex CLI、確認實際執行的程式、登入並讀取一個含空格路徑的練習檔。閱讀約 12 分鐘，操作約 25 分鐘，下載時間另計。以下安裝與沙盒步驟依 2026-09-14 官方文件查證；本機驗證僅涵蓋版本、help 與檔案操作，沒有重灌使用者的 CLI 或變更電腦政策。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows 原生 CLI 不要求先裝 WSL。若開啟的是 Ubuntu、路徑以 /home 開頭，請改看"
+            },
+            {
+              "type": "article",
+              "text": "Linux／WSL",
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
+            },
+            {
+              "type": "text",
+              "text": "；本篇在 PowerShell 進行。先完成"
+            },
+            {
+              "type": "article",
+              "text": "CLI 共用入門",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "的環境判讀，安裝後再回去做單行修改練習。圖的 1 是安裝入口，2 是定位與登入，3 是獨立讀檔驗證。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "安裝前用 Windows 的 winver 畫面確認版本。官方目前建議 Windows 11；近期且完整更新的 Windows 10 屬盡力支援，並要求現代主控台能力，不能把所有舊版 Windows 都視為同等支援。原生沙盒另有 winget 與管理員核准設定等前提，詳細條件見"
+            },
+            {
+              "type": "link",
+              "text": "Windows 官方沙盒文件",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "。先區分「CLI 安裝完成」和「沙盒設定完成」，出錯時記錄停在哪一步。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟一：開對 PowerShell，選定安裝管道"
+        },
+        {
+          "type": "paragraph",
+          "text": "按開始選單搜尋 PowerShell，或在 Windows Terminal 的分頁選單選 PowerShell。先用一般使用者視窗，不需要把所有日常工作都以系統管理員執行。在系統終端機輸入下面第一行；若能找到 codex，先記錄其版本與 Source，通常可直接跳到定位步驟，避免新增第二份安裝。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：查詢所有命令來源與版本",
+          "language": "powershell",
+          "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "尚未安裝時，第一行可能回報找不到命令，這是合理起點。官方目前提供下列 Windows 獨立安裝命令；它會下載並執行安裝指令碼，應從官方頁面核對網址後才貼上。ByPass 是這次子程式的引數，不是要求你永久關閉電腦的執行政策；若公司管理政策阻擋，先記錄具體訊息並使用管理員核准的安裝方式。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：只在選擇官方獨立安裝時執行",
+          "language": "powershell",
+          "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "等待安裝完成，保留最後顯示的安裝位置與 PATH 提示。關閉這個終端機，開一個新的 PowerShell，再跑 Get-Command codex -All 與 codex --version。預期至少有一個可執行來源及版本。不要把下載完成、資料夾存在或沒有跳出錯誤視為命令已能使用；新的 shell 必須真的找得到它。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "已有 Node.js 時的 npm 替代路線"
+        },
+        {
+          "type": "paragraph",
+          "text": "只有選擇 npm 管道時才執行下面三行；第一、二行都應顯示版本，否則先解決 Node.js 安裝，不要連續重試第三行。本例使用 npm.cmd 直接選 Windows 命令包裝檔，能避免把 npm.ps1 的執行政策問題誤認成 Codex 安裝失敗。npm 不是獨立安裝版的必要前置工具。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：npm 替代路線，逐行確認成功",
+          "language": "powershell",
+          "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟二：建立有空格的路徑並確認內容"
+        },
+        {
+          "type": "paragraph",
+          "text": "選一個不在正式專案內、可寫入的位置。包含 & { 與最後 } 的整段一起貼上，建立全新的 codex windows lab；這樣存在檢查失敗時會停止整個區塊。若已有同名資料夾，保留內容並另取新名稱，不要跳過檢查繼續執行寫檔行。成功後會切進新資料夾，列檔並讀取 note.txt；引號保留空格，LiteralPath 避免把路徑字元當成萬用字元。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：整段貼上，在目前位置建立全新練習資料夾",
+          "language": "powershell",
+          "code": "& {\n  $cliLab = Join-Path (Get-Location) 'codex windows lab'\n  if (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\n  New-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\n  Set-Location -LiteralPath $cliLab -ErrorAction Stop\n  Set-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8 -ErrorAction Stop\n  Get-Location\n  Get-ChildItem\n  Get-Content -LiteralPath 'note.txt'\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "成功時目前路徑最後一段是 codex windows lab，清單有 note.txt，讀取結果為 WINDOWS-CLI-01。另記錄雜湊作為唯讀前後的比較。雜湊表示檔案位元組的指紋；不同電腦因 UTF-8 BOM 或換行差異可能不同，不要拿本文的數字當標準。本機前後應相同。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：在練習資料夾計算檔案雜湊",
+          "language": "powershell",
+          "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟三：登入、沙盒與實際讀取"
+        },
+        {
+          "type": "paragraph",
+          "text": "仍在練習資料夾，逐行執行 codex login、codex login status，再啟動唯讀工作階段。瀏覽器登入時核對帳號與工作區；已登入不代表需要登出重來。若另一個 IDE 擴充套件共用認證，登出也可能影響它。看見登入程式碼或憑證路徑時不要放進公開截圖。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：逐行登入、確認狀態，再啟動 Codex",
+          "language": "powershell",
+          "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows 沙盒設定可能需要一次管理員核准；這和把日常 PowerShell 視窗長期以管理員執行不同。官方以 elevated 為較強的原生選項，unelevated 是受限制的替代方式，組織可禁止替代。若初始化失敗，先記錄 Windows 版本、沙盒模式及錯誤階段；不要直接把教學改成全存取模式。需要調整時先看"
+            },
+            {
+              "type": "article",
+              "text": "權限與沙盒",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：在 Codex CLI 輸入",
+          "language": "text",
+          "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "上段貼進 Codex 對話，不是 PowerShell。回覆和讀取記錄應包含 WINDOWS-CLI-01 及正確目錄。先記錄這個成功基準，再在同一個 Codex 工作階段要求讀取 missing-note.txt，預期回報不存在而不建立。接著用 /exit 回到 PowerShell，再執行讀檔、列檔和雜湊，確認內容未變、沒有新增練習檔。若讀到其他內容，先處理工作目錄錯誤。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "更新與三類排錯"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新前先退出 CLI、保留工作摘要和未提交檔案。獨立版重跑同一個官方安裝命令；npm 版再執行 npm.cmd install -g @openai/codex。開新 PowerShell，核對 Get-Command 的來源和版本。若顯示舊版，先找重複來源；更新成功的是其中一份，PATH 仍可能先選另一份。不要只重複更新卻不查實際執行檔。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "現象",
+            "先查什麼",
+            "下一步"
+          ],
+          "rows": [
+            [
+              "找不到 codex",
+              "新 shell 的 Get-Command 結果",
+              "依安裝輸出修正使用者 PATH，再開視窗"
+            ],
+            [
+              "npm.ps1 不允許執行",
+              "是否用 npm 管道及指令碼包裝檔",
+              "用 npm.cmd 查版本；保留公司政策"
+            ],
+            [
+              "登入後讀檔失敗",
+              "目錄、檔案是否存在、沙盒錯誤",
+              "修正目錄或授權範圍，不能以重灌代替"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "PATH 是 shell 搜尋程式的目錄清單，不是專案清單。先對照安裝輸出與 Get-Command Source；需要手動修改時，在 Windows 搜尋「編輯帳戶的環境變數」，編輯使用者 Path，新增已確認的安裝資料夾，保留現有項目，儲存後開新終端機。不要把整段 PATH 替換成教學範例，也不要新增來路不明的下載資料夾。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成條件與下一步"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "你應能指出正在執行哪一份 CLI、從哪個資料夾啟動、登入狀態如何、讀到的標記為何，以及唯讀前後雜湊是否相同。把安裝管道、版本、錯誤和解法記在自己的練習筆記即可，不需儲存憑證內容。接著回"
+            },
+            {
+              "type": "article",
+              "text": "CLI 共用入門",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "完成小幅修改與接續；若要在編輯器工作，再看"
+            },
+            {
+              "type": "article",
+              "text": "IDE 擴充套件",
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-cli-windows/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows sandbox",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Windows CLI setup and troubleshooting",
+      "description": "Install and sign in from PowerShell, check command discovery, read a project and troubleshoot updates.",
+      "hero": {
+        "src": "/guides/codex-cli-windows/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and environment"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Install Codex CLI in native Windows PowerShell, identify the executable, sign in and read a practice file in a path containing spaces. Allow 12 minutes to read and 25 minutes to practice, excluding downloads. Installation and sandbox steps were checked against official documentation on 2026-09-14. Local checks cover version, help and file operations; they did not reinstall the user's CLI or change machine policy."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Native Windows CLI does not require WSL. If your terminal is Ubuntu with /home paths, use "
+            },
+            {
+              "type": "article",
+              "text": "Linux / WSL",
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
+            },
+            {
+              "type": "text",
+              "text": ". This lesson uses PowerShell. Review environment selection in "
+            },
+            {
+              "type": "article",
+              "text": "CLI basics",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": ", then return there for the one-line edit after setup. Diagram 1 is installation, 2 location and authentication, and 3 independent file verification."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Before installation, check your Windows version with winver. Current documentation recommends Windows 11 and provides best-effort support for recent, fully updated Windows 10 with modern console support; older versions are not equally supported. Native sandbox setup has additional prerequisites including winget and administrator-approved setup; consult the "
+            },
+            {
+              "type": "link",
+              "text": "official Windows sandbox documentation",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+            },
+            {
+              "type": "text",
+              "text": ". Treat CLI installation and sandbox setup as separate stages, and record which stage failed."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: open PowerShell and choose a channel"
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Start for PowerShell, or select its profile in Windows Terminal. Begin with an ordinary user window; routine work does not require an administrator terminal. Run the first command below in the shell. If codex is found, record its version and Source and usually proceed directly to folder setup instead of adding another installation."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: inspect command sources and version",
+          "language": "powershell",
+          "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "A command-not-found result is expected before installation. The official standalone Windows command below downloads and executes an installer; verify its URL on the official page before using it. ByPass is an argument for this child process, not an instruction to permanently disable machine execution policy. If organization policy blocks it, record the specific error and use an administrator-approved installation route."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: run only when choosing the official standalone installer",
+          "language": "powershell",
+          "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Wait for completion and retain the reported installation path and PATH instructions. Close that terminal, open a fresh PowerShell and rerun Get-Command codex -All and codex --version. Expect a discoverable executable and version. A completed download, existing folder or absence of an error is not enough; the new shell must resolve the command."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "npm alternative when Node.js is already present"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use these three lines only if choosing npm. The first two must print versions; otherwise resolve Node.js setup before retrying installation. npm.cmd explicitly selects the Windows command wrapper, helping distinguish npm.ps1 execution-policy problems from Codex installation failures. npm is not a prerequisite for the standalone installer."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: alternative npm route; verify each line succeeds",
+          "language": "powershell",
+          "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: prepare and verify a path with spaces"
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose a writable location outside production projects. Paste the whole block, including & { and the final }, to create a new codex windows lab; a failed existence check then stops the block. If that name already exists, preserve its contents and choose a new name rather than skipping the check and running the write lines. On success, the commands enter the new folder, list files and read note.txt. Quotes preserve spaces; LiteralPath avoids wildcard interpretation."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: paste the whole block to create a new practice folder here",
+          "language": "powershell",
+          "code": "& {\n  $cliLab = Join-Path (Get-Location) 'codex windows lab'\n  if (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\n  New-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\n  Set-Location -LiteralPath $cliLab -ErrorAction Stop\n  Set-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8 -ErrorAction Stop\n  Get-Location\n  Get-ChildItem\n  Get-Content -LiteralPath 'note.txt'\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Success means the current path ends in codex windows lab, note.txt appears and its content is WINDOWS-CLI-01. Record the hash for comparison before and after the read-only task. A hash fingerprints file bytes; UTF-8 BOM and newline differences can vary across machines, so compare your own before and after values rather than a published fixed value."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: hash the file in the practice folder",
+          "language": "powershell",
+          "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: authentication, sandbox and reading"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stay in the practice folder. Run codex login and codex login status, then start a read-only session. Confirm the account and workspace in the browser; existing valid sign-in does not need a logout/reset. Logging out can also affect an IDE extension sharing the credentials. Keep login codes and credential information out of public screenshots."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: sign in, check status, then start Codex one line at a time",
+          "language": "powershell",
+          "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows sandbox setup may request one-time administrator approval; this is distinct from running everyday PowerShell as administrator. Official guidance prefers the stronger elevated native sandbox and provides unelevated as a restricted fallback that organizations may prohibit. On setup failure, record Windows version, sandbox mode and failure stage rather than switching the exercise to full access. See "
+            },
+            {
+              "type": "article",
+              "text": "permissions and sandboxing",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": " before adjusting it."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: enter inside Codex CLI",
+          "language": "text",
+          "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Paste that prompt into Codex, not PowerShell. The response and read record should identify WINDOWS-CLI-01 and the correct directory. After recording that success, request missing-note.txt in the same Codex session and expect absence without creation. Then use /exit and read, list and hash again in PowerShell to confirm unchanged content and no extra practice files. Unexpected content points first to a working-directory problem."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Updating and three troubleshooting branches"
+        },
+        {
+          "type": "paragraph",
+          "text": "Before updating, exit CLI and preserve the work summary and uncommitted files. Rerun the official installer for standalone installations, or npm.cmd install -g @openai/codex for npm. In fresh PowerShell, check command Source and version. If the old version remains, inspect duplicate sources: one installation may have updated while PATH selects another. Repeated updates without checking the executable will not resolve that ambiguity."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Symptom",
+            "First check",
+            "Next step"
+          ],
+          "rows": [
+            [
+              "codex not found",
+              "Get-Command in a fresh shell",
+              "Follow installer instructions for user PATH, then reopen"
+            ],
+            [
+              "npm.ps1 execution blocked",
+              "npm channel and script wrapper",
+              "Check npm.cmd; preserve managed policy"
+            ],
+            [
+              "Reading fails after login",
+              "Directory, file existence and sandbox error",
+              "Correct location or access; reinstalling is not a substitute"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "PATH is the shell's executable-search list, not a project list. Compare installer output with Get-Command Source. If manual correction is necessary, open Windows' environment-variable editor for your account, edit the user Path, add the confirmed installation directory while retaining existing entries, save and reopen the terminal. Do not replace the entire PATH with an example or add an unverified downloads folder."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Completion and next step"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "You should identify which CLI runs, its working folder, authentication state, file marker and whether the hash stayed unchanged. Record channel, version, errors and solutions in practice notes without credential contents. Return to "
+            },
+            {
+              "type": "article",
+              "text": "CLI basics",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": " for a focused edit and resume, or continue to the "
+            },
+            {
+              "type": "article",
+              "text": "IDE extension",
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": " for editor work."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-cli-windows/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows sandbox",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Windows CLI の導入と問題解決",
+      "description": "PowerShell で導入とログインを行い、実行パス、最初の読み取り、更新時の問題を確認します。",
+      "hero": {
+        "src": "/guides/codex-cli-windows/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と対象環境"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Windows ネイティブの PowerShell で CLI を導入し、実行ファイルを特定してログインし、空白のあるパスの練習ファイルを読みます。読む時間約12分、操作約25分で、ダウンロードは別です。導入とサンドボックスの説明は2026-09-14の公式資料で確認しました。ローカルでの確認は版、help、ファイル操作であり、CLI の再導入や端末ポリシーの変更はしていません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows ネイティブの CLI に WSL は必須ではありません。Ubuntu を開き、/home のパスが出ている場合は "
+            },
+            {
+              "type": "article",
+              "text": "Linux / WSL",
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
+            },
+            {
+              "type": "text",
+              "text": " を使います。本記事は PowerShell 用です。"
+            },
+            {
+              "type": "article",
+              "text": "CLI 基礎",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "で環境を見分け、導入後に一行変更の課題へ戻ります。図の 1 は導入、2 は場所と認証、3 は独立したファイル確認です。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "導入前に winver で Windows の版を確認します。現在の公式推奨は Windows 11 で、新しいコンソール機能を備えた更新済み Windows 10 はベストエフォート対応です。古い版も同等に対応しているとは考えないでください。ネイティブサンドボックスには winget や管理者承認の設定など追加条件があり、"
+            },
+            {
+              "type": "link",
+              "text": "公式 Windows サンドボックス文書",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "で確認します。CLI 導入とサンドボックス設定を分け、失敗した段階を記録します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：PowerShell と導入経路を選ぶ"
+        },
+        {
+          "type": "paragraph",
+          "text": "スタートで PowerShell を検索するか、Windows Terminal のプロファイルから選びます。通常ユーザーのウィンドウで開始し、普段の作業すべてを管理者として実行する必要はありません。次の最初のコマンドをシェルで実行します。codex があれば版と Source を記録し、二重導入せず場所の準備へ進めます。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：コマンドの候補と版を確認する",
+          "language": "powershell",
+          "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "未導入なら見つからないという結果で構いません。次は公式の Windows 用独立インストーラーで、スクリプトをダウンロードして実行します。公式ページの URL と照合して使ってください。ByPass はこの子プロセスの引数で、端末の実行ポリシーを永久に無効化する指示ではありません。組織の管理で止まる場合は具体的なエラーを記録し、承認済みの導入方法を使います。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：公式の独立インストーラーを選ぶ場合に実行する",
+          "language": "powershell",
+          "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "完了を待ち、最後に示された導入場所と PATH の案内を残します。端末を閉じて新しい PowerShell を開き、Get-Command codex -All と codex --version を再実行します。実行元と版が確認できることが必要です。ダウンロード済み、フォルダーがある、エラーが出ないというだけでは、コマンドを使える確認になりません。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Node.js がある場合の npm 経路"
+        },
+        {
+          "type": "paragraph",
+          "text": "npm を選んだ場合だけ次の三行を実行します。最初の二つで版が出なければ、三行目を繰り返さず Node.js を先に直します。npm.cmd は Windows のコマンドラッパーを明示し、npm.ps1 の実行ポリシー問題と Codex の導入失敗を区別します。独立インストーラーに npm は必須ではありません。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：npm の代替経路。各行の成功を確認する",
+          "language": "powershell",
+          "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：空白のあるパスを準備して確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "本番プロジェクト外の書き込み可能な場所を選びます。& { から最後の } まで全体を貼り付け、新しい codex windows lab を作ります。存在確認で失敗すればブロック全体が停止します。同名フォルダーがあれば内容を残して別名を選び、確認を飛ばして書き込み行だけ実行しないでください。成功すると新しい場所へ移動して一覧と note.txt を読みます。引用符は空白を保ち、LiteralPath はワイルドカード解釈を避けます。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：全体を貼り付け、現在地に新しい練習フォルダーを作る",
+          "language": "powershell",
+          "code": "& {\n  $cliLab = Join-Path (Get-Location) 'codex windows lab'\n  if (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\n  New-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\n  Set-Location -LiteralPath $cliLab -ErrorAction Stop\n  Set-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8 -ErrorAction Stop\n  Get-Location\n  Get-ChildItem\n  Get-Content -LiteralPath 'note.txt'\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "現在の場所が codex windows lab で終わり、note.txt が表示され、内容が WINDOWS-CLI-01 なら準備完了です。読み取り前後の比較用にハッシュも記録します。ハッシュはバイト列の指紋で、UTF-8 BOM や改行の違いで端末ごとに変わることがあります。固定の掲載値ではなく、自分の前後を比べます。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：練習フォルダーでファイルのハッシュを計算する",
+          "language": "powershell",
+          "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：認証、サンドボックス、読み取り"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習フォルダーのまま codex login と codex login status を順に実行し、読み取り専用で開始します。ブラウザーではアカウントとワークスペースを照合します。有効なログインがあれば、ログアウトしてやり直す必要はありません。認証を共有する IDE 拡張にもログアウトが影響する場合があります。公開画面に認証情報を含めないでください。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：一行ずつ認証、状態確認、Codex の起動を行う",
+          "language": "powershell",
+          "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows のサンドボックス設定では一度管理者の承認を求められる場合があり、普段の PowerShell を管理者として使うこととは別です。公式では強い elevated を優先し、制限付きの代替に unelevated を示していますが、組織が禁止する場合もあります。失敗時は OS の版、モード、段階を記録し、全アクセスへ切り替えず"
+            },
+            {
+              "type": "article",
+              "text": "権限とサンドボックス",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "を確認します。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：Codex CLI 内に入力する",
+          "language": "text",
+          "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "この依頼は PowerShell ではなく Codex に入力します。返答と記録で WINDOWS-CLI-01 と正しい場所を確認します。その成功を記録したら、同じ Codex セッションで missing-note.txt を要求し、作成せず欠落を報告するか試します。その後 /exit で PowerShell に戻り、再度読み取り、一覧、ハッシュを確認して、変更や余計な練習ファイルがないことを確かめます。異なる内容ならまず作業場所を直します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "更新と三種類の問題の切り分け"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新前に CLI を終了し、作業の要約と未コミットのファイルを残します。独立版なら同じ公式インストーラー、npm 版なら npm.cmd install -g @openai/codex を使います。新しい PowerShell で Source と版を確認します。古い版なら重複元を調べます。一つを更新しても PATH が別のものを選ぶ場合があり、実行元を見ずに更新を繰り返しても解決しません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "症状",
+            "最初の確認",
+            "次の操作"
+          ],
+          "rows": [
+            [
+              "codex が不明",
+              "新しいシェルで Get-Command",
+              "導入時の案内でユーザー PATH を直して開き直す"
+            ],
+            [
+              "npm.ps1 が拒否される",
+              "npm 経路とラッパー",
+              "npm.cmd を確認し管理ポリシーは保つ"
+            ],
+            [
+              "ログイン後に読めない",
+              "場所、存在、サンドボックスのエラー",
+              "場所か権限を直す。再導入で代用しない"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "PATH は実行ファイルの検索先で、プロジェクト一覧ではありません。導入時の出力と Source を比較します。手動修正が必要なら Windows のアカウント用環境変数画面でユーザーの Path を編集し、既存項目を保って確認済み導入フォルダーを追加します。保存して端末を開き直します。全体を例で置き換えたり、不明なダウンロード先を追加したりしないでください。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完了条件と次の手順"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "実行中の CLI、作業場所、認証状態、ファイルの印、ハッシュが変わらないことを説明できれば完了です。経路、版、エラー、解決方法を練習ノートに記録し、認証情報そのものは保存しません。"
+            },
+            {
+              "type": "article",
+              "text": "CLI 基礎",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "に戻って変更と再開を練習し、エディターなら "
+            },
+            {
+              "type": "article",
+              "text": "IDE 拡張",
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "へ進みます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-cli-windows/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows sandbox",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Windows CLI 설치와 문제 해결",
+      "description": "PowerShell에서 설치와 로그인, 명령 경로, 첫 읽기, 업데이트 문제를 확인합니다.",
+      "hero": {
+        "src": "/guides/codex-cli-windows/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 대상 환경"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Windows 네이티브 PowerShell에서 CLI를 설치하고 실제 실행 파일을 확인한 뒤 로그인하여 공백 경로의 연습 파일을 읽습니다. 읽기 약 12분, 실습 약 25분이며 다운로드는 별도입니다. 설치와 샌드박스는 2026-09-14 공식 문서로 확인했습니다. 로컬 검증은 버전, help, 파일 조작이며 사용자 CLI 재설치나 컴퓨터 정책 변경은 하지 않았습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows 네이티브 CLI에는 WSL이 필수가 아닙니다. Ubuntu 터미널이고 경로가 /home으로 시작하면 "
+            },
+            {
+              "type": "article",
+              "text": "Linux / WSL",
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
+            },
+            {
+              "type": "text",
+              "text": "을 보세요. 이 글은 PowerShell용입니다. "
+            },
+            {
+              "type": "article",
+              "text": "CLI 기초",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "에서 환경을 구분한 후 설치를 마치고 한 줄 수정 실습으로 돌아갑니다. 그림의 1은 설치, 2는 위치와 인증, 3은 독립적인 파일 확인입니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "설치 전에 winver로 Windows 버전을 확인하세요. 현재 공식 문서는 Windows 11을 권장하며 최신 콘솔 기능을 갖추고 업데이트된 Windows 10은 가능한 범위에서만 지원합니다. 오래된 버전까지 같은 수준으로 지원된다고 판단하지 마세요. 기본 샌드박스 설정에는 winget과 관리자 승인 등 추가 조건이 있으므로 "
+            },
+            {
+              "type": "link",
+              "text": "공식 Windows 샌드박스 문서",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "를 확인합니다. CLI 설치와 샌드박스 설정을 별도 단계로 나누고 어느 단계에서 실패했는지 기록하세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: PowerShell과 설치 경로 선택하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "시작 메뉴에서 PowerShell을 검색하거나 Windows Terminal 프로필에서 선택합니다. 일반 사용자 창으로 시작하며 일상 작업을 모두 관리자 권한으로 실행할 필요는 없습니다. 아래 첫 명령을 셸에서 실행하세요. codex가 있으면 버전과 Source를 기록하고 중복 설치 대신 폴더 준비로 넘어갈 수 있습니다."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: 명령 출처와 버전 확인",
+          "language": "powershell",
+          "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "설치 전에는 명령을 찾지 못해도 정상입니다. 아래 공식 Windows 독립 설치 명령은 스크립트를 다운로드해 실행하므로 공식 페이지의 URL을 확인한 후 사용하세요. ByPass는 이번 자식 프로세스의 인수이지 실행 정책을 영구 해제하라는 뜻이 아닙니다. 조직 정책이 막으면 구체적인 오류를 기록하고 관리자 승인 설치 경로를 사용합니다."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: 공식 독립 설치 프로그램을 선택한 경우에만 실행",
+          "language": "powershell",
+          "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "완료를 기다리고 마지막에 표시된 설치 경로와 PATH 안내를 남깁니다. 터미널을 닫고 새 PowerShell에서 Get-Command codex -All과 codex --version을 다시 실행합니다. 실행 가능한 원본과 버전이 확인되어야 합니다. 다운로드 완료, 폴더 존재, 오류 없음만으로는 명령을 사용할 수 있다는 검증이 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Node.js가 이미 있을 때 npm 대안"
+        },
+        {
+          "type": "paragraph",
+          "text": "npm 방식을 선택한 경우에만 세 줄을 실행합니다. 처음 두 줄에서 버전이 나오지 않으면 설치 명령을 반복하지 말고 Node.js부터 해결하세요. npm.cmd는 Windows 명령 래퍼를 명시해 npm.ps1 실행 정책 문제와 Codex 설치 실패를 구분합니다. 독립 설치 프로그램에 npm은 필수가 아닙니다."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: npm 대체 경로, 각 줄의 성공 확인",
+          "language": "powershell",
+          "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 공백 경로를 만들고 확인하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 프로젝트 밖의 쓰기 가능한 위치를 고릅니다. & {부터 마지막 }까지 블록 전체를 붙여 넣어 새 codex windows lab을 만드세요. 존재 확인에 실패하면 블록이 중단됩니다. 같은 이름이 이미 있으면 내용을 보존하고 새 이름을 선택하며 확인을 건너뛰고 쓰기 줄만 실행하지 않습니다. 성공하면 새 폴더로 이동해 목록과 note.txt를 읽습니다. 따옴표는 공백을 보존하고 LiteralPath는 와일드카드 해석을 막습니다."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: 블록 전체를 붙여 넣어 현재 위치에 새 실습 폴더 만들기",
+          "language": "powershell",
+          "code": "& {\n  $cliLab = Join-Path (Get-Location) 'codex windows lab'\n  if (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\n  New-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\n  Set-Location -LiteralPath $cliLab -ErrorAction Stop\n  Set-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8 -ErrorAction Stop\n  Get-Location\n  Get-ChildItem\n  Get-Content -LiteralPath 'note.txt'\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 경로가 codex windows lab으로 끝나고 note.txt가 있으며 내용이 WINDOWS-CLI-01이면 준비가 됐습니다. 읽기 전후 비교용 해시도 기록합니다. 해시는 파일 바이트의 지문이며 UTF-8 BOM과 줄바꿈 차이로 컴퓨터마다 다를 수 있으므로 게시된 고정값이 아닌 자신의 전후 값을 비교하세요."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: 실습 폴더에서 파일 해시 계산",
+          "language": "powershell",
+          "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 인증, 샌드박스, 파일 읽기"
+        },
+        {
+          "type": "paragraph",
+          "text": "연습 폴더에서 codex login과 codex login status를 차례로 실행한 후 읽기 전용 세션을 시작합니다. 브라우저에서 계정과 워크스페이스를 확인하세요. 유효한 로그인이 있으면 로그아웃해 초기화할 필요가 없습니다. 인증을 공유하는 IDE 확장도 로그아웃의 영향을 받을 수 있습니다. 공개 화면에 인증 정보를 넣지 마세요."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell: 로그인, 상태 확인, Codex 시작을 한 줄씩 실행",
+          "language": "powershell",
+          "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows 샌드박스 설정에는 일회성 관리자 승인이 필요할 수 있으며 일상 PowerShell을 관리자로 실행하는 것과는 다릅니다. 공식 안내는 더 강한 elevated를 우선하고 unelevated를 제한된 대안으로 제공하지만 조직이 금지할 수 있습니다. 실패하면 Windows 버전, 모드, 실패 단계를 기록하고 전체 접근으로 바꾸기 전에 "
+            },
+            {
+              "type": "article",
+              "text": "권한과 샌드박스",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "를 확인하세요."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: Codex CLI 안에 입력",
+          "language": "text",
+          "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "이 요청은 PowerShell이 아닌 Codex에 입력합니다. 응답과 읽기 기록에서 WINDOWS-CLI-01과 올바른 폴더를 확인합니다. 성공 기준을 기록한 뒤 같은 Codex 세션에서 missing-note.txt를 요청해 생성 없이 없다고 보고하는지 시험합니다. 이어서 /exit로 PowerShell에 돌아온 뒤 다시 읽고 목록과 해시를 확인해 내용 변경이나 추가 연습 파일이 없는지 봅니다. 다른 내용이 나오면 먼저 작업 위치를 바로잡으세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "업데이트와 세 가지 문제 구분"
+        },
+        {
+          "type": "paragraph",
+          "text": "업데이트 전 CLI를 종료하고 작업 요약과 커밋하지 않은 파일을 보존합니다. 독립 버전은 같은 공식 설치 명령, npm 버전은 npm.cmd install -g @openai/codex를 사용합니다. 새 PowerShell에서 Source와 버전을 확인합니다. 구버전이면 중복 원본을 찾으세요. 한 설치본만 갱신되고 PATH가 다른 것을 선택할 수 있어 실행 파일 확인 없이 반복 업데이트하면 해결되지 않습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "증상",
+            "먼저 확인",
+            "다음 단계"
+          ],
+          "rows": [
+            [
+              "codex를 찾지 못함",
+              "새 셸의 Get-Command",
+              "설치 안내대로 사용자 PATH를 수정한 후 다시 열기"
+            ],
+            [
+              "npm.ps1 실행 차단",
+              "npm 경로와 래퍼",
+              "npm.cmd를 확인하고 관리 정책 유지"
+            ],
+            [
+              "로그인 후 읽기 실패",
+              "폴더, 파일 존재, 샌드박스 오류",
+              "위치나 접근 범위 수정, 재설치로 대신하지 않기"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "PATH는 셸의 실행 파일 검색 목록이며 프로젝트 목록이 아닙니다. 설치 출력과 Source를 비교합니다. 직접 수정해야 하면 Windows의 계정 환경 변수 편집기에서 사용자 Path를 열어 기존 항목을 유지하고 확인된 설치 폴더를 추가한 뒤 저장하고 터미널을 다시 엽니다. 전체 PATH를 예제로 덮거나 확인하지 않은 다운로드 폴더를 추가하지 마세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "완료 조건과 다음 단계"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "어느 CLI가 실행되는지, 작업 폴더, 인증 상태, 파일 표식, 전후 해시 일치 여부를 설명할 수 있어야 합니다. 설치 경로, 버전, 오류와 해결법을 실습 노트에 적되 인증 내용은 저장하지 않습니다. "
+            },
+            {
+              "type": "article",
+              "text": "CLI 기초",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "로 돌아가 수정과 재개를 연습하거나 편집기 작업은 "
+            },
+            {
+              "type": "article",
+              "text": "IDE 확장",
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "으로 이어가세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-cli-windows/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows sandbox",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Windows CLI 安装与排错",
+      "description": "在 PowerShell 安装、登入、核对执行路径，完成第一次读取并处理更新与找不到命令。",
+      "hero": {
+        "src": "/guides/codex-cli-windows/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与适用环境"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在 Windows 原生 PowerShell 安装 Codex CLI、确认实际执行的程式、登入并读取一个含空格路径的练习档。阅读约 12 分钟，操作约 25 分钟，下载时间另计。以下安装与沙盒步骤依 2026-09-14 官方文件查证；本机验证仅涵盖版本、help 与档案操作，没有重灌使用者的 CLI 或变更电脑政策。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows 原生 CLI 不要求先装 WSL。若开启的是 Ubuntu、路径以 /home 开头，请改看"
+            },
+            {
+              "type": "article",
+              "text": "Linux／WSL",
+              "kind": "life",
+              "slug": "codex-cli-linux-wsl"
+            },
+            {
+              "type": "text",
+              "text": "；本篇在 PowerShell 进行。先完成"
+            },
+            {
+              "type": "article",
+              "text": "CLI 共用入门",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "的环境判读，安装后再回去做单行修改练习。图的 1 是安装入口，2 是定位与登入，3 是独立读档验证。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "安装前用 Windows 的 winver 画面确认版本。官方目前建议 Windows 11；近期且完整更新的 Windows 10 属尽力支援，并要求现代主控台能力，不能把所有旧版 Windows 都视为同等支援。原生沙盒另有 winget 与管理员核准设定等前提，详细条件见"
+            },
+            {
+              "type": "link",
+              "text": "Windows 官方沙盒文件",
+              "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "。先区分「CLI 安装完成」和「沙盒设定完成」，出错时记录停在哪一步。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤一：开对 PowerShell，选定安装管道"
+        },
+        {
+          "type": "paragraph",
+          "text": "按开始选单搜寻 PowerShell，或在 Windows Terminal 的分页选单选 PowerShell。先用一般使用者视窗，不需要把所有日常工作都以系统管理员执行。在系统终端机输入下面第一行；若能找到 codex，先记录其版本与 Source，通常可直接跳到定位步骤，避免新增第二份安装。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：查询所有命令来源与版本",
+          "language": "powershell",
+          "code": "Get-Command codex -All | Select-Object CommandType, Name, Source\ncodex --version\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "尚未安装时，第一行可能回报找不到命令，这是合理起点。官方目前提供下列 Windows 独立安装命令；它会下载并执行安装指令码，应从官方页面核对网址后才贴上。ByPass 是这次子程式的引数，不是要求你永久关闭电脑的执行政策；若公司管理政策阻挡，先记录具体讯息并使用管理员核准的安装方式。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：只在选择官方独立安装时执行",
+          "language": "powershell",
+          "code": "powershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "等待安装完成，保留最后显示的安装位置与 PATH 提示。关闭这个终端机，开一个新的 PowerShell，再跑 Get-Command codex -All 与 codex --version。预期至少有一个可执行来源及版本。不要把下载完成、资料夹存在或没有跳出错误视为命令已能使用；新的 shell 必须真的找得到它。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "已有 Node.js 时的 npm 替代路线"
+        },
+        {
+          "type": "paragraph",
+          "text": "只有选择 npm 管道时才执行下面三行；第一、二行都应显示版本，否则先解决 Node.js 安装，不要连续重试第三行。本例使用 npm.cmd 直接选 Windows 命令包装档，能避免把 npm.ps1 的执行政策问题误认成 Codex 安装失败。npm 不是独立安装版的必要前置工具。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：npm 替代路线，逐行确认成功",
+          "language": "powershell",
+          "code": "node --version\nnpm.cmd --version\nnpm.cmd install -g @openai/codex\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤二：建立有空格的路径并确认内容"
+        },
+        {
+          "type": "paragraph",
+          "text": "选一个不在正式专案内、可写入的位置。包含 & { 与最后 } 的整段一起贴上，建立全新的 codex windows lab；这样存在检查失败时会停止整个区块。若已有同名资料夹，保留内容并另取新名称，不要跳过检查继续执行写档行。成功后会切进新资料夹，列档并读取 note.txt；引号保留空格，LiteralPath 避免把路径字元当成万用字元。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：整段贴上，在目前位置建立全新练习资料夹",
+          "language": "powershell",
+          "code": "& {\n  $cliLab = Join-Path (Get-Location) 'codex windows lab'\n  if (Test-Path -LiteralPath $cliLab) { throw 'Choose a new practice folder name.' }\n  New-Item -ItemType Directory -Path $cliLab -ErrorAction Stop\n  Set-Location -LiteralPath $cliLab -ErrorAction Stop\n  Set-Content -LiteralPath 'note.txt' -Value 'WINDOWS-CLI-01' -Encoding utf8 -ErrorAction Stop\n  Get-Location\n  Get-ChildItem\n  Get-Content -LiteralPath 'note.txt'\n}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "成功时目前路径最后一段是 codex windows lab，清单有 note.txt，读取结果为 WINDOWS-CLI-01。另记录杂凑作为唯读前后的比较。杂凑表示档案位元组的指纹；不同电脑因 UTF-8 BOM 或换行差异可能不同，不要拿本文的数字当标准。本机前后应相同。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：在练习资料夹计算档案杂凑",
+          "language": "powershell",
+          "code": "Get-FileHash -LiteralPath 'note.txt' -Algorithm SHA256\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤三：登入、沙盒与实际读取"
+        },
+        {
+          "type": "paragraph",
+          "text": "仍在练习资料夹，逐行执行 codex login、codex login status，再启动唯读工作阶段。浏览器登入时核对帐号与工作区；已登入不代表需要登出重来。若另一个 IDE 扩充套件共用认证，登出也可能影响它。看见登入程式码或凭证路径时不要放进公开截图。"
+        },
+        {
+          "type": "code",
+          "label": "PowerShell：逐行登入、确认状态，再启动 Codex",
+          "language": "powershell",
+          "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows 沙盒设定可能需要一次管理员核准；这和把日常 PowerShell 视窗长期以管理员执行不同。官方以 elevated 为较强的原生选项，unelevated 是受限制的替代方式，组织可禁止替代。若初始化失败，先记录 Windows 版本、沙盒模式及错误阶段；不要直接把教学改成全存取模式。需要调整时先看"
+            },
+            {
+              "type": "article",
+              "text": "权限与沙盒",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：在 Codex CLI 输入",
+          "language": "text",
+          "code": "Read note.txt in the current practice folder. Report the exact content and current working directory. Do not edit, create files, or use external services. If it is missing or inaccessible, report the actual error.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "上段贴进 Codex 对话，不是 PowerShell。回复和读取记录应包含 WINDOWS-CLI-01 及正确目录。先记录这个成功基准，再在同一个 Codex 工作阶段要求读取 missing-note.txt，预期回报不存在而不建立。接著用 /exit 回到 PowerShell，再执行读档、列档和杂凑，确认内容未变、没有新增练习档。若读到其他内容，先处理工作目录错误。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "更新与三类排错"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新前先退出 CLI、保留工作摘要和未提交档案。独立版重跑同一个官方安装命令；npm 版再执行 npm.cmd install -g @openai/codex。开新 PowerShell，核对 Get-Command 的来源和版本。若显示旧版，先找重复来源；更新成功的是其中一份，PATH 仍可能先选另一份。不要只重复更新却不查实际执行档。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "现象",
+            "先查什么",
+            "下一步"
+          ],
+          "rows": [
+            [
+              "找不到 codex",
+              "新 shell 的 Get-Command 结果",
+              "依安装输出修正使用者 PATH，再开视窗"
+            ],
+            [
+              "npm.ps1 不允许执行",
+              "是否用 npm 管道及指令码包装档",
+              "用 npm.cmd 查版本；保留公司政策"
+            ],
+            [
+              "登入后读档失败",
+              "目录、档案是否存在、沙盒错误",
+              "修正目录或授权范围，不能以重灌代替"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "PATH 是 shell 搜寻程式的目录清单，不是专案清单。先对照安装输出与 Get-Command Source；需要手动修改时，在 Windows 搜寻「编辑帐户的环境变数」，编辑使用者 Path，新增已确认的安装资料夹，保留现有项目，储存后开新终端机。不要把整段 PATH 替换成教学范例，也不要新增来路不明的下载资料夹。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成条件与下一步"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "你应能指出正在执行哪一份 CLI、从哪个资料夹启动、登入状态如何、读到的标记为何，以及唯读前后杂凑是否相同。把安装管道、版本、错误和解法记在自己的练习笔记即可，不需储存凭证内容。接著回"
+            },
+            {
+              "type": "article",
+              "text": "CLI 共用入门",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "完成小幅修改与接续；若要在编辑器工作，再看"
+            },
+            {
+              "type": "article",
+              "text": "IDE 扩充套件",
+              "kind": "life",
+              "slug": "codex-ide-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-cli-windows/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows sandbox",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

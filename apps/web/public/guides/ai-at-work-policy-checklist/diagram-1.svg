@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">資料分級決策圖 / Data tier decision tree</title>
+  <desc id="desc">一份要貼進 AI 的資料，先問第一個問題：裡面有沒有指向特定個人的內容，或公司當成營業秘密在管的東西，依據是個資法第 5 條與營業秘密法第 2 條。答是的話走到第二個問題：換成代號、改成級距之後還有用嗎，答是就是去識別後可貼，答否就是不可貼。第一題答否的話走到第三個問題：外面本來就查得到嗎，像已公開的文案與新聞稿，答是就是可貼，答否代表是內部資訊，先問負責人。三級都適用兩件事：含公司資料的對話不要按讚或倒讚，公司帳號的資料管理員可能存取、匯出與刪除；萬一送出去了，個資法第 12 條寫的是通知當事人與通報主管機關，所以要留得下紀錄。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">資料分級：貼進 AI 之前的三個問題</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Data tiers: three questions before you paste</text>
+
+  <rect x="60" y="350" width="280" height="120" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="200" y="418" font-size="22" fill="#102A2B" text-anchor="middle">一份要貼進 AI 的資料</text>
+
+  <rect x="400" y="305" width="360" height="210" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="580" y="356" font-size="18" fill="#102A2B" text-anchor="middle">裡面有沒有指向特定個人的</text>
+  <text x="580" y="388" font-size="18" fill="#102A2B" text-anchor="middle">內容，或公司當成營業秘密</text>
+  <text x="580" y="420" font-size="18" fill="#102A2B" text-anchor="middle">在管的東西？</text>
+  <text x="580" y="452" font-size="16" fill="#5C6B6B" text-anchor="middle">個資法第 5 條</text>
+  <text x="580" y="478" font-size="16" fill="#5C6B6B" text-anchor="middle">營業秘密法第 2 條</text>
+
+  <rect x="830" y="182" width="330" height="120" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="995" y="232" font-size="18" fill="#102A2B" text-anchor="middle">換成代號、改成級距</text>
+  <text x="995" y="264" font-size="18" fill="#102A2B" text-anchor="middle">之後還有用嗎？</text>
+
+  <rect x="830" y="517" width="330" height="120" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="995" y="567" font-size="18" fill="#102A2B" text-anchor="middle">外面本來就查得到嗎？</text>
+  <text x="995" y="597" font-size="16" fill="#5C6B6B" text-anchor="middle">已公開的文案、新聞稿</text>
+
+  <rect x="1230" y="120" width="310" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1385" y="178" font-size="24" fill="#102A2B" text-anchor="middle">去識別後可貼</text>
+
+  <rect x="1230" y="265" width="310" height="100" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1385" y="323" font-size="24" fill="#102A2B" text-anchor="middle">不可貼</text>
+
+  <rect x="1230" y="455" width="310" height="100" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1385" y="513" font-size="24" fill="#102A2B" text-anchor="middle">可貼</text>
+
+  <rect x="1230" y="600" width="310" height="100" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="1385" y="658" font-size="20" fill="#102A2B" text-anchor="middle">內部資訊，先問負責人</text>
+
+  <path d="M 344 410 L 392 410" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <path d="M 760 370 L 795 370 L 795 242 L 822 242" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="768" y="358" font-size="17" fill="#0D6B68">是</text>
+  <path d="M 760 450 L 795 450 L 795 577 L 822 577" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="768" y="478" font-size="17" fill="#0D6B68">否</text>
+
+  <path d="M 1160 222 L 1195 222 L 1195 170 L 1222 170" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="1200" y="210" font-size="17" fill="#0D6B68">是</text>
+  <path d="M 1160 262 L 1195 262 L 1195 315 L 1222 315" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="1200" y="292" font-size="17" fill="#0D6B68">否</text>
+
+  <path d="M 1160 557 L 1195 557 L 1195 505 L 1222 505" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="1200" y="545" font-size="17" fill="#0D6B68">是</text>
+  <path d="M 1160 597 L 1195 597 L 1195 650 L 1222 650" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="1200" y="627" font-size="17" fill="#0D6B68">否</text>
+
+  <rect x="60" y="745" width="1480" height="95" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="2"/>
+  <text x="90" y="782" font-size="17" fill="#102A2B">三級都適用：含公司資料的對話不要按讚或倒讚，公司帳號的資料管理員可能存取、匯出與刪除。</text>
+  <text x="90" y="814" font-size="17" fill="#102A2B">萬一送出去了：個資法第 12 條寫的是通知當事人與通報主管機關，所以要留得下紀錄。</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

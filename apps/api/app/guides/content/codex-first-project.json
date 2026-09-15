@@ -1,0 +1,1844 @@
+{
+  "slug": "codex-first-project",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 106,
+  "locales": {
+    "zh-TW": {
+      "title": "完成第一個小專案",
+      "description": "使用 Small Steps 待辦網站的獨立副本，修改主標題與背景色。辨識五個練習檔案的用途，比對修改前後差異、核心測試與兩種視窗寬度，確認原有功能及資料保留。",
+      "hero": {
+        "src": "/guides/codex-first-project/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀完能做到什麼"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你會把一個可下載的待辦網站放進獨立資料夾，啟動本機預覽，請 Codex 完成兩個明確的畫面修改，再自行驗證功能與修改範圍。閱讀約 12 分鐘，操作約 30 分鐘。成果只在自己的電腦預覽；網站能開啟、測試通過與正式上線是不同階段。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "開始之前：拿到正確版本"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下載"
+            },
+            {
+              "type": "link",
+              "text": "Small Steps 練習材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "，解壓縮後會看到 start、broken、expected。這篇只複製 expected，將副本命名為 codex-first-site，保留解壓縮的原版。start 的篩選尚未完成，broken 故意有錯，兩者留給後續課程；不要把三個資料夾合併，以免不知道自己正在驗證哪一版。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "副本根目錄直接包含 index.html、style.css、app.js、core.mjs、core.test.mjs。HTML 是畫面結構，CSS 是樣式，app.js 串接瀏覽器互動，core.mjs 處理資料，test 檔負責檢查核心行為。這些檔案不用先全部看懂，但必須確認都存在。本篇需要可用的 Codex、Node.js 與 Python 3；已有工具就不重灌，只核對命令可執行。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows 在這個資料夾開啟 PowerShell，macOS／Linux 開啟終端機；不熟位置確認時先讀"
+            },
+            {
+              "type": "article",
+              "text": "終端機與路徑",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "。Windows 用 py --version，macOS／Linux 用 python3 --version，三個平臺都用 node --version。找不到命令時先安裝對應工具並重開終端機；這個範例沒有 package.json，因此不使用 npm install 或 npm test。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：先確認修改前能運作"
+        },
+        {
+          "type": "paragraph",
+          "text": "在副本根目錄執行核心測試，應有三個測試通過、零失敗。這是「修改前」的證據；如果現在已失敗，先核對是否誤用了 start 或 broken，或缺少檔案。不要在壞掉的基礎上要求 Codex 同時改畫面和修所有錯誤，否則無法判斷哪個結果來自哪項需求。"
+        },
+        {
+          "type": "code",
+          "label": "終端機命令：在 codex-first-site 資料夾執行",
+          "language": "shell",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 用下方命令啟動預覽。這個終端機會持續顯示伺服器日誌，先保留它，不要等待它自動回到提示符號；需要執行別的命令時另開終端機。命令只繫結本機的 127.0.0.1。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：在練習資料夾啟動本機預覽",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS 或 Linux 用下方等效命令。兩段選自己的平臺其中一段執行，不能同時佔用 4173。若該埠已被自己的另一個練習使用，先停止已確認的那個伺服器，或改用 4174 並在後續網址保持一致。"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux 終端機：在練習資料夾啟動本機預覽",
+          "language": "bash",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "瀏覽器開啟 http://127.0.0.1:4173。看到 Small Steps 待辦畫面後，新增 Read、Build，勾選 Read，切到 Completed 應只看到 Read；切到 Active 應只看到 Build。重新整理確認狀態仍在。直接雙擊 index.html 可能因 file 網址限制無法載入模組，請使用剛啟動的 http 網址。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：先讓 Codex 讀取，再下修改要求"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版選 codex-first-site 建立任務；CLI 則在副本根目錄啟動。先要求只讀取五個檔案並摘要用途、回報工作目錄與測試命令，暫不修改。確認它知道這是沒有套件安裝步驟的靜態網站，再送出下方完整需求。即使是小修改，也要把「要保留的功能」一起交代。"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：貼入練習專案的 Codex 任務",
+          "language": "text",
+          "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "理想的差異只有 index.html 的 h1 文字與 style.css 的背景色；不是整份 HTML 被重建，也不是資料程式被換成另一套框架。Codex 若說沒有瀏覽器工具，應把畫面檢查列為未執行，你仍可自行完成。不要要求它為了聲稱檢查通過而猜測畫面，或把沒有錯誤訊息當成視覺驗收。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：自己驗證成果"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新讀取兩個檔案，核對指定字串與色碼；再次執行核心測試並保留測試結果。瀏覽器重新整理後看標題、背景與原來的 Read、Build。縮到約 390px 再看一次，頁面不應出現整頁橫向捲動；放大到 1280px 檢查內容寬度。窄視窗驗證響應式版面，不代表真的測過 iPhone 或 Android。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再做兩個邊界測試：只輸入空白不能新增；輸入 下方樣本 應顯示為文字，不應成為圖片。用 Tab 移動到輸入框、按鈕、篩選與核取方塊，應有可見焦點。這些檢查確認小幅畫面修改沒有順手破壞資料處理或鍵盤操作；核心測試不會自動涵蓋 CSS 外觀，所以兩種證據都要看。"
+        },
+        {
+          "type": "code",
+          "label": "網頁輸入值：貼入待辦輸入框，再新增",
+          "language": "text",
+          "code": "<img src=x>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題、停止與還原"
+        },
+        {
+          "type": "paragraph",
+          "text": "頁面變成資料夾清單，表示伺服器從太外層啟動；停止它，移入直接包含 index.html 的副本，再啟動。Port 被佔用時不要亂停其他服務，先找自己的預覽或換埠。改了檔案畫面沒變，先確認儲存、網址、資料夾與重新整理；換了埠會使用不同的瀏覽器儲存來源，待辦消失不一定是程式刪掉資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停止預覽是在執行 Python 的終端機按 Ctrl+C。還原時只從保留的 expected 原版取回這次改過的 index.html 與 style.css，或手動恢復兩行；不要刪除瀏覽器全部資料。若要清除練習待辦，頁面 About this exercise 裡的 Reset practice data 只處理本例的儲存鍵。先保留需要的虛構記錄，再按重置。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小練習與查證紀錄"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自主練習只改主標題成自己的另一句英文，仍保留所有功能並重做正常與空值案例。你能交付修改前後差異、實際測試結果、兩種寬度的觀察及未執行項目，就完成這一篇。接著讀"
+            },
+            {
+              "type": "article",
+              "text": "需求描述",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "專案規則",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "text": "測試及審查",
+              "kind": "life",
+              "slug": "codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "，把這次流程變成每次都能重複的工作習慣。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "材料是本系列原創、可公開分享的虛構練習網站。參考版核心與瀏覽器行為已在 Windows／Edge 驗證；其他 OS 的啟動說明未冒充實機測試。Codex 入口依 2026-09-14 的"
+            },
+            {
+              "type": "link",
+              "text": "官方快速開始",
+              "url": "https://learn.chatgpt.com/docs/quickstart"
+            },
+            {
+              "type": "text",
+              "text": "與 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 檔案",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": "查證。圖片只表示練習成果，不是 Codex 的產品介面。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "把「預期」與「實際檢查」分開記錄"
+        },
+        {
+          "type": "paragraph",
+          "text": "下表是驗收時的預期對照，不是你這次執行的通過紀錄。每次另記四項：實際修改的檔案；測試執行目錄與通過／失敗數；390px 與 1280px 各自的實際畫面結果；尚未完成的操作。即使核心測試 3 項全通過，主標題或背景仍可能改錯，因為這組測試檢查待辦資料邏輯。若無法開啟預覽，畫面欄填「未執行」並保留待驗收項目，不要用原始碼中的顏色值代替畫面結果。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "驗收項目",
+            "修改前",
+            "修改後"
+          ],
+          "rows": [
+            [
+              "主標題",
+              "Make room for one small task.",
+              "Small steps, clear progress."
+            ],
+            [
+              "背景色",
+              "#f2f5ef",
+              "#fff8ed"
+            ],
+            [
+              "核心測試",
+              "3 通過／0 失敗",
+              "3 通過／0 失敗"
+            ],
+            [
+              "既有待辦",
+              "Read、Build",
+              "仍保留"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/diagram-1.svg",
+          "alt": "06. 完成第一個小專案 — 實作順序示意圖，非產品介面截圖。 Request → index.html → Browser",
+          "width": 1600,
+          "height": 900,
+          "caption": "06. 完成第一個小專案 — 實作順序示意圖，非產品介面截圖。 Request → index.html → Browser",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "待辦練習網站：Build 已完成，Read the AGENTS.md rules 尚未完成，共兩項任務。",
+          "caption": "完整參考版的實際瀏覽器畫面，供修改前比對。Windows / Edge 153.0.4234.32，2026-09-14；使用虛構資料。390px 為響應式視窗，非實體手機。這不是 Codex 桌面介面截圖。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "待辦練習網站：Build 已完成，Read the AGENTS.md rules 尚未完成，共兩項任務。",
+          "caption": "完整參考版的實際瀏覽器畫面，供修改前比對。Windows / Edge 153.0.4234.32，2026-09-14；使用虛構資料。1280px 為響應式視窗，非實體手機。這不是 Codex 桌面介面截圖。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/reference-390.png",
+          "alt": "修改後的練習網站：標題為 Small steps, clear progress.，Add task 按鈕有橘色鍵盤焦點框。",
+          "caption": "本篇指定修改的參考成果，使用原始練習檔套用指定變更後，在 Windows / Edge 153.0.4234.32 於 2026-09-14 實際截圖。橘框是鍵盤焦點；資料皆為虛構。這是寬 390px 的響應式視窗，非實體手機，也不是 Codex 介面或模型執行紀錄。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/reference-1280.png",
+          "alt": "修改後的練習網站：標題為 Small steps, clear progress.，Add task 按鈕有橘色鍵盤焦點框。",
+          "caption": "本篇指定修改的參考成果，使用原始練習檔套用指定變更後，在 Windows / Edge 153.0.4234.32 於 2026-09-14 實際截圖。橘框是鍵盤焦點；資料皆為虛構。這是寬 1280px 的響應式視窗，非實體手機，也不是 Codex 介面或模型執行紀錄。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex quickstart",
+          "url": "https://learn.chatgpt.com/docs/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "完成第一个小项目",
+      "description": "使用 Small Steps 待办网站的独立副本，修改主标题与背景色。辨识五个练习文件的用途，比对修改前后差异、核心测试与两种窗口宽度，确认原有功能及数据保留。",
+      "hero": {
+        "src": "/guides/codex-first-project/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "读完能做到什么"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "你会把一个可下载的待办网站放进独立资料夹，启动本机预览，请 Codex 完成两个明确的画面修改，再自行验证功能与修改范围。阅读约 12 分钟，操作约 30 分钟。成果只在自己的电脑预览；网站能开启、测试通过与正式上线是不同阶段。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "开始之前：拿到正确版本"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下载"
+            },
+            {
+              "type": "link",
+              "text": "Small Steps 练习材料",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "，解压缩后会看到 start、broken、expected。这篇只复制 expected，将副本命名为 codex-first-site，保留解压缩的原版。start 的筛选尚未完成，broken 故意有错，两者留给后续课程；不要把三个资料夹合并，以免不知道自己正在验证哪一版。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "副本根目录直接包含 index.html、style.css、app.js、core.mjs、core.test.mjs。HTML 是画面结构，CSS 是样式，app.js 串接浏览器互动，core.mjs 处理资料，test 档负责检查核心行为。这些档案不用先全部看懂，但必须确认都存在。本篇需要可用的 Codex、Node.js 与 Python 3；已有工具就不重灌，只核对命令可执行。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows 在这个资料夹开启 PowerShell，macOS／Linux 开启终端机；不熟位置确认时先读"
+            },
+            {
+              "type": "article",
+              "text": "终端机与路径",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "。Windows 用 py --version，macOS／Linux 用 python3 --version，三个平台都用 node --version。找不到命令时先安装对应工具并重开终端机；这个范例没有 package.json，因此不使用 npm install 或 npm test。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一步：先确认修改前能运作"
+        },
+        {
+          "type": "paragraph",
+          "text": "在副本根目录执行核心测试，应有三个测试通过、零失败。这是「修改前」的证据；如果现在已失败，先核对是否误用了 start 或 broken，或缺少档案。不要在坏掉的基础上要求 Codex 同时改画面和修所有错误，否则无法判断哪个结果来自哪项需求。"
+        },
+        {
+          "type": "code",
+          "label": "终端机命令：在 codex-first-site 资料夹执行",
+          "language": "shell",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 用下方命令启动预览。这个终端机会持续显示伺服器日志，先保留它，不要等待它自动回到提示符号；需要执行别的命令时另开终端机。命令只系结本机的 127.0.0.1。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：在练习资料夹启动本机预览",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS 或 Linux 用下方等效命令。两段选自己的平台其中一段执行，不能同时占用 4173。若该埠已被自己的另一个练习使用，先停止已确认的那个伺服器，或改用 4174 并在后续网址保持一致。"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux 终端机：在练习资料夹启动本机预览",
+          "language": "bash",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "浏览器开启 http://127.0.0.1:4173。看到 Small Steps 待办画面后，新增 Read、Build，勾选 Read，切到 Completed 应只看到 Read；切到 Active 应只看到 Build。重新整理确认状态仍在。直接双击 index.html 可能因 file 网址限制无法载入模组，请使用刚启动的 http 网址。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二步：先让 Codex 读取，再下修改要求"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版选 codex-first-site 建立任务；CLI 则在副本根目录启动。先要求只读取五个档案并摘要用途、回报工作目录与测试命令，暂不修改。确认它知道这是没有套件安装步骤的静态网站，再送出下方完整需求。即使是小修改，也要把「要保留的功能」一起交代。"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：贴入练习专案的 Codex 任务",
+          "language": "text",
+          "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "理想的差异只有 index.html 的 h1 文字与 style.css 的背景色；不是整份 HTML 被重建，也不是资料程式被换成另一套框架。Codex 若说没有浏览器工具，应把画面检查列为未执行，你仍可自行完成。不要要求它为了声称检查通过而猜测画面，或把没有错误讯息当成视觉验收。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三步：自己验证成果"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新读取两个档案，核对指定字串与色码；再次执行核心测试并保留测试结果。浏览器重新整理后看标题、背景与原来的 Read、Build。缩到约 390px 再看一次，页面不应出现整页横向卷动；放大到 1280px 检查内容宽度。窄视窗验证响应式版面，不代表真的测过 iPhone 或 Android。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再做两个边界测试：只输入空白不能新增；输入 下方样本 应显示为文字，不应成为图片。用 Tab 移动到输入框、按钮、筛选与核取方块，应有可见焦点。这些检查确认小幅画面修改没有顺手破坏资料处理或键盘操作；核心测试不会自动涵盖 CSS 外观，所以两种证据都要看。"
+        },
+        {
+          "type": "code",
+          "label": "网页输入值：贴入待办输入框，再新增",
+          "language": "text",
+          "code": "<img src=x>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题、停止与还原"
+        },
+        {
+          "type": "paragraph",
+          "text": "页面变成资料夹清单，表示伺服器从太外层启动；停止它，移入直接包含 index.html 的副本，再启动。Port 被占用时不要乱停其他服务，先找自己的预览或换埠。改了档案画面没变，先确认储存、网址、资料夹与重新整理；换了埠会使用不同的浏览器储存来源，待办消失不一定是程式删掉资料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停止预览是在执行 Python 的终端机按 Ctrl+C。还原时只从保留的 expected 原版取回这次改过的 index.html 与 style.css，或手动恢复两行；不要删除浏览器全部资料。若要清除练习待办，页面 About this exercise 里的 Reset practice data 只处理本例的储存键。先保留需要的虚构记录，再按重置。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "小练习与查证纪录"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自主练习只改主标题成自己的另一句英文，仍保留所有功能并重做正常与空值案例。你能交付修改前后差异、实际测试结果、两种宽度的观察及未执行项目，就完成这一篇。接著读"
+            },
+            {
+              "type": "article",
+              "text": "需求描述",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "专案规则",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "article",
+              "text": "测试及审查",
+              "kind": "life",
+              "slug": "codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "，把这次流程变成每次都能重复的工作习惯。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "材料是本系列原创、可公开分享的虚构练习网站。参考版核心与浏览器行为已在 Windows／Edge 验证；其他 OS 的启动说明未冒充实机测试。Codex 入口依 2026-09-14 的"
+            },
+            {
+              "type": "link",
+              "text": "官方快速开始",
+              "url": "https://learn.chatgpt.com/docs/quickstart"
+            },
+            {
+              "type": "text",
+              "text": "与 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 档案",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": "查证。图片只表示练习成果，不是 Codex 的产品介面。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "把「预期」与「实际检查」分开记录"
+        },
+        {
+          "type": "paragraph",
+          "text": "下表是验收时的预期对照，不是你这次执行的通过纪录。每次另记四项：实际修改的档案；测试执行目录与通过／失败数；390px 与 1280px 各自的实际画面结果；尚未完成的操作。即使核心测试 3 项全通过，主标题或背景仍可能改错，因为这组测试检查待办资料逻辑。若无法开启预览，画面栏填「未执行」并保留待验收项目，不要用原始码中的颜色值代替画面结果。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "验收项目",
+            "修改前",
+            "修改后"
+          ],
+          "rows": [
+            [
+              "主标题",
+              "Make room for one small task.",
+              "Small steps, clear progress."
+            ],
+            [
+              "背景色",
+              "#f2f5ef",
+              "#fff8ed"
+            ],
+            [
+              "核心测试",
+              "3 通过／0 失败",
+              "3 通过／0 失败"
+            ],
+            [
+              "既有待办",
+              "Read、Build",
+              "仍保留"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/diagram-1.svg",
+          "alt": "06. 完成第一个小项目 — 实作顺序示意图，非产品介面截图。 Request → index.html → Browser",
+          "width": 1600,
+          "height": 900,
+          "caption": "06. 完成第一个小项目 — 实作顺序示意图，非产品介面截图。 Request → index.html → Browser",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "待办练习网站：Build 已完成，Read the AGENTS.md rules 尚未完成，共两项任务。",
+          "caption": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。390px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "待办练习网站：Build 已完成，Read the AGENTS.md rules 尚未完成，共两项任务。",
+          "caption": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。1280px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/reference-390.png",
+          "alt": "修改后的练习网站：标题为 Small steps, clear progress.，Add task 按钮有橙色键盘焦点框。",
+          "caption": "本篇指定修改的参考成果，使用原始练习文件应用指定更改后，在 Windows / Edge 153.0.4234.32 于 2026-09-14 实际截图。橙框是键盘焦点；数据均为虚构。这是宽 390px 的响应式窗口，非实体手机，也不是 Codex 界面或模型执行记录。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/reference-1280.png",
+          "alt": "修改后的练习网站：标题为 Small steps, clear progress.，Add task 按钮有橙色键盘焦点框。",
+          "caption": "本篇指定修改的参考成果，使用原始练习文件应用指定更改后，在 Windows / Edge 153.0.4234.32 于 2026-09-14 实际截图。橙框是键盘焦点；数据均为虚构。这是宽 1280px 的响应式窗口，非实体手机，也不是 Codex 界面或模型执行记录。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex quickstart",
+          "url": "https://learn.chatgpt.com/docs/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Finish your first small project",
+      "description": "Use an independent copy of the Small Steps todo website to change its heading and background. Identify the five practice files and compare the diff, core tests and two viewport widths while preserving behavior and data.",
+      "hero": {
+        "src": "/guides/codex-first-project/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What you will be able to do"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Download a todo website into an independent folder, start a local preview, ask Codex for two precise visual edits and independently verify behavior and scope. Allow 12 minutes to read and 30 to practise. The result is a local preview; opening a page, passing tests and publishing a website are separate stages."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Before starting: choose the right version"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Download the "
+            },
+            {
+              "type": "link",
+              "text": "Small Steps exercise",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": " and extract start, broken and expected. Copy only expected into a new codex-first-site folder and retain the extracted original. Filtering is unfinished in start and deliberately wrong in broken; those versions belong to later lessons. Do not merge the three folders or you will lose track of the version being checked."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The copy's root should directly contain index.html, style.css, app.js, core.mjs and core.test.mjs. HTML defines structure, CSS presentation, app.js browser interaction, core.mjs data behavior and the test file core checks. You need not understand everything yet, but all five files must exist. You need Codex, Node.js and Python 3; if already installed, verify commands rather than reinstalling."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Open PowerShell in this folder on Windows or a terminal on macOS/Linux. See "
+            },
+            {
+              "type": "article",
+              "text": "terminal paths",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": " if location checks are unfamiliar. Check Python with py --version on Windows or python3 --version elsewhere; use node --version on all three. If a command is missing, install the corresponding tool and reopen the terminal. There is no package.json here, so do not use npm install or npm test."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: establish a working baseline"
+        },
+        {
+          "type": "paragraph",
+          "text": "Run the core tests at the copy's root. Expect three passing tests and zero failures. This is evidence from before the edit. If tests already fail, check whether you copied start or broken or omitted a file. Do not ask for visual edits and every unrelated fix on a broken baseline; that obscures which result belongs to which request."
+        },
+        {
+          "type": "code",
+          "label": "Terminal command: run in the codex-first-site folder",
+          "language": "shell",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "On Windows, start the preview with the command below. Keep this terminal open while it displays server logs; it is not supposed to immediately return to a prompt. Open another terminal for other commands. The server binds only to the local address 127.0.0.1."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell: start a local preview in the practice folder",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "On macOS or Linux, use the equivalent command below. Run only the one for your platform; two servers cannot share port 4173. If your other exercise already uses it, stop that identified server or use 4174 and consistently change the URL."
+        },
+        {
+          "type": "code",
+          "label": "macOS/Linux terminal: start a local preview in the practice folder",
+          "language": "bash",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open http://127.0.0.1:4173 in your browser. Add Read and Build, complete Read, then check that Completed shows only Read and Active only Build. Refresh to confirm persistence. Double-clicking index.html may prevent module loading under a file URL; use the HTTP address of the running server."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: inspect before requesting edits"
+        },
+        {
+          "type": "paragraph",
+          "text": "Select codex-first-site as a desktop project, or start CLI at its root. First request a read-only summary of the five files, working directory and test command. Confirm that the agent recognizes a static site without a package installation step, then send the complete request below. Even a small visual edit should state which behavior must be preserved."
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: paste into the practice project's Codex task",
+          "language": "text",
+          "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "The intended diff changes only the h1 in index.html and background color in style.css, not a wholesale HTML rewrite or a different data framework. If Codex lacks browser tools, it should mark visual checks as not run so that you can perform them. Do not invite guessed screenshots or treat absence of error messages as visual acceptance."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: independently verify the result"
+        },
+        {
+          "type": "paragraph",
+          "text": "Reopen the two files and verify the requested text and color. Run core tests again and retain the result. Refresh the browser to check heading, background and the existing Read and Build items. At about 390px, the full page should not scroll horizontally; at 1280px, inspect content width. A narrow viewport checks responsive layout, not physical iPhone or Android behavior."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check two boundaries: whitespace alone must not add a task, and the sample below must display as text rather than becoming an image. Use Tab to reach the input, button, filter and checkbox with visible focus. These checks catch data-handling or keyboard regressions accompanying a visual edit. Core tests do not automatically inspect CSS appearance, so examine both kinds of evidence."
+        },
+        {
+          "type": "code",
+          "label": "Page input: paste into the todo field, then add",
+          "language": "text",
+          "code": "<img src=x>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting, stopping and restoring"
+        },
+        {
+          "type": "paragraph",
+          "text": "A directory listing means the server started too high in the folder tree: stop it, enter the copy directly containing index.html and restart. For a busy port, identify your preview or choose another port rather than stopping unrelated services. If edits do not appear, check saving, URL, folder and refresh. A different port uses a different browser storage origin, so missing todos do not necessarily mean the code deleted them."
+        },
+        {
+          "type": "paragraph",
+          "text": "Stop the preview with Ctrl+C in the Python terminal. Restore only index.html and style.css from the retained expected original, or undo the two edited lines. Do not clear all browser data. To remove practice todos, Reset practice data under About this exercise targets this exercise's storage key. Retain any fictional records you need before using it."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice and verification notes"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "For independent practice, change only the heading to another English sentence, preserve all behavior and repeat normal and empty-input cases. Finish by delivering the actual diff, test results, observations at both widths and checks not run. Continue with "
+            },
+            {
+              "type": "article",
+              "text": "writing requests",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "project instructions",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "article",
+              "text": "testing and review",
+              "kind": "life",
+              "slug": "codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": " to make the process repeatable."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The materials are an original, shareable fictional website. Reference core and browser behavior were verified on Windows/Edge; other OS startup instructions are not claimed as hands-on tests. Codex entry points were checked on 2026-09-14 against the "
+            },
+            {
+              "type": "link",
+              "text": "official quickstart",
+              "url": "https://learn.chatgpt.com/docs/quickstart"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "link",
+              "text": "CLI documentation",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": ". Images illustrate exercise results, not Codex product UI."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Record expectations separately from actual checks"
+        },
+        {
+          "type": "paragraph",
+          "text": "The table below lists expected acceptance results, not a record of your run. Separately record four things: files actually changed; the test working directory and pass/fail counts; actual visual results at 390px and 1280px; and unfinished checks. All three core tests can pass while the heading or background is wrong because these tests cover todo data logic. If preview is unavailable, mark visual checks as not run and leave them pending; a color value in source code is not a visual result."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "Before",
+            "After"
+          ],
+          "rows": [
+            [
+              "Main heading",
+              "Make room for one small task.",
+              "Small steps, clear progress."
+            ],
+            [
+              "Background",
+              "#f2f5ef",
+              "#fff8ed"
+            ],
+            [
+              "Core tests",
+              "3 pass / 0 fail",
+              "3 pass / 0 fail"
+            ],
+            [
+              "Existing todos",
+              "Read, Build",
+              "Preserved"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/diagram-1.svg",
+          "alt": "06. Finish your first small project — Workflow illustration, not a product screenshot. Request → index.html → Browser",
+          "width": 1600,
+          "height": 900,
+          "caption": "06. Finish your first small project — Workflow illustration, not a product screenshot. Request → index.html → Browser",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "Practice task website: Build is complete and Read the AGENTS.md rules is pending, with two tasks in total.",
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 390px is a responsive viewport, not a physical phone. This is not the Codex desktop interface.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "Practice task website: Build is complete and Read the AGENTS.md rules is pending, with two tasks in total.",
+          "caption": "Actual browser view of the complete reference version, before lesson edits. Windows / Edge 153.0.4234.32, 2026-09-14; fictional data. 1280px is a responsive viewport, not a physical phone. This is not the Codex desktop interface.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/reference-390.png",
+          "alt": "Edited practice website with the heading Small steps, clear progress. and an orange keyboard focus outline around Add task.",
+          "caption": "Reference edits applied to the practice files; actual Windows / Edge 153.0.4234.32 screenshot, 2026-09-14. Orange outline: keyboard focus. Fictional data in a 390px responsive viewport, not a physical phone. Not Codex UI or proof of model execution.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/reference-1280.png",
+          "alt": "Edited practice website with the heading Small steps, clear progress. and an orange keyboard focus outline around Add task.",
+          "caption": "Reference edits applied to the practice files; actual Windows / Edge 153.0.4234.32 screenshot, 2026-09-14. Orange outline: keyboard focus. Fictional data in a 1280px responsive viewport, not a physical phone. Not Codex UI or proof of model execution.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex quickstart",
+          "url": "https://learn.chatgpt.com/docs/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "最初の小さなプロジェクトを完成させる",
+      "description": "Small Steps の ToDo サイトを独立したコピーで使い、見出しと背景色を変更します。五つの教材ファイルの役割を確認し、差分、基本テスト、二つの画面幅を照合して機能とデータを保ちます。",
+      "hero": {
+        "src": "/guides/codex-first-project/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "このレッスンの到達点"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "ダウンロードできる ToDo サイトを独立フォルダーに置き、ローカル表示を起動します。Codex に二つの明確な画面変更を頼み、機能と変更範囲を自分で確認します。読む時間は約 12 分、操作は約 30 分です。成果は自分のコンピューターでの表示であり、ページが開くこと、テスト成功、公開は別段階です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "準備：正しい版を選ぶ"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "link",
+              "text": "Small Steps 教材",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "を展開すると start、broken、expected があります。今回は expected だけを codex-first-site にコピーし、展開した原本は残します。start の絞り込みは未完成、broken は意図的な不具合があり後の教材用です。三つを混ぜず、検証対象の版が分かるようにします。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "コピー直下には index.html、style.css、app.js、core.mjs、core.test.mjs が必要です。HTML は構造、CSS は表示、app.js はブラウザー操作、core.mjs はデータ、test は基本動作の確認を担当します。すべて理解する必要はありませんが、存在を確認します。Codex、Node.js、Python 3 が必要で、導入済みなら再インストールせずコマンドを確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows はこのフォルダーで PowerShell、macOS/Linux は端末を開きます。不慣れなら"
+            },
+            {
+              "type": "article",
+              "text": "端末とパス",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "を参照してください。Python は Windows で py --version、それ以外は python3 --version、Node は全環境で node --version です。見つからなければ必要なツールを導入して端末を開き直します。この教材に package.json はないため npm install や npm test は使いません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 1：変更前の動作を確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "コピー直下で基本テストを実行し、三件成功・失敗ゼロを確認します。これは変更前の証拠です。すでに失敗するなら start や broken をコピーしていないか、ファイル不足がないか確認します。壊れた状態で画面変更と全不具合修正を同時に頼むと、どの依頼がどの結果を生んだか分からなくなります。"
+        },
+        {
+          "type": "code",
+          "label": "端末コマンド：codex-first-site フォルダーで実行する",
+          "language": "shell",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows は次で表示用サーバーを起動します。この端末はログを出し続けるので閉じず、プロンプトにすぐ戻ることを期待しません。別コマンドには別端末を使います。接続先はローカルの 127.0.0.1 だけです。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：練習フォルダーでローカルプレビューを起動する",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS/Linux は次の同等コマンドを使います。自分の OS の一方だけを実行し、二つで 4173 を共有しません。別の自分の練習が使っていれば、確認したサーバーを止めるか 4174 に変えて以後の URL も揃えます。"
+        },
+        {
+          "type": "code",
+          "label": "macOS／Linux 端末：練習フォルダーでローカルプレビューを起動する",
+          "language": "bash",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "ブラウザーで http://127.0.0.1:4173 を開きます。Read と Build を追加して Read を完了し、Completed では Read だけ、Active では Build だけになることを確認します。再読み込みでも状態が残るはずです。index.html のダブルクリックは file URL の制約でモジュールを読めない場合があるため、起動した HTTP URL を使います。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 2：調査してから変更を依頼する"
+        },
+        {
+          "type": "paragraph",
+          "text": "デスクトップは codex-first-site を選んでタスクを作り、CLI はその直下で起動します。まず五ファイルの役割、現在地、テスト命令を読み取りだけで報告させます。パッケージ導入の不要な静的サイトと理解したことを確認してから次の依頼を送ります。小さな表示変更でも残すべき機能を伝えましょう。"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：練習プロジェクトの Codex タスクに貼り付ける",
+          "language": "text",
+          "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "期待する差分は index.html の h1 と style.css の背景だけです。HTML 全体の作り直しや別フレームワークへの置換ではありません。ブラウザーツールがなければ画面検証を未実施と報告させ、自分で行います。推測画像を求めたり、エラーが出ないだけで画面合格としたりしないでください。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順 3：成果を自分で確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "二つのファイルで指定の文字と色を確認し、再テストの結果を残します。ブラウザーを再読込して見出し、背景、以前の Read と Build を見ます。約 390px でページ全体が横スクロールせず、1280px でも幅が適切か確認します。狭い表示の確認はレスポンシブ検証で、iPhone や Android の実機試験ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "境界も二つ確認します。空白だけでは追加されず、下のサンプル は画像ではなく文字として表示されます。Tab で入力、ボタン、絞り込み、チェックボックスへ移動し、フォーカスが見えることも確認します。表示変更に付随するデータやキーボード操作の退行を見つけるためです。基本テストは CSS 外観を自動確認しないので両方の証拠を見ます。"
+        },
+        {
+          "type": "code",
+          "label": "画面の入力値：ToDo 入力欄に貼り付けて追加する",
+          "language": "text",
+          "code": "<img src=x>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "問題対応、停止、復元"
+        },
+        {
+          "type": "paragraph",
+          "text": "一覧ページになったらサーバーの起動場所が上位すぎます。止めて index.html が直下にあるコピーへ移動し、再起動します。ポート使用中なら自分のサーバーを確認するか番号を変え、無関係なサービスを停止しません。変更が見えなければ保存、URL、場所、再読込を確認します。ポートが変わると保存元も変わるため、ToDo が消えて見えても削除とは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停止は Python の端末で Ctrl+C です。復元は保存した expected 原本から今回の index.html と style.css だけを戻すか、二行を手動で戻します。ブラウザー全データを消さないでください。練習の ToDo を消す場合は About this exercise 内の Reset practice data が専用キーだけを扱います。必要な架空記録を残してから操作します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "追加練習と検証記録"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "追加練習は主見出しを別の英文に変えるだけにして、正常系と空入力を再確認します。実際の差分、テスト結果、二つの幅の観察、未実施項目を提出できれば完了です。"
+            },
+            {
+              "type": "article",
+              "text": "依頼の書き方",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "プロジェクト規則",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "テストとレビュー",
+              "kind": "life",
+              "slug": "codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "で繰り返せる習慣にします。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "教材はこのシリーズ独自の公開共有可能な架空サイトです。参考版の基本動作とブラウザー動作は Windows/Edge で検証し、他 OS の起動説明を実機試験と称していません。入口は 2026-09-14 の"
+            },
+            {
+              "type": "link",
+              "text": "公式クイックスタート",
+              "url": "https://learn.chatgpt.com/docs/quickstart"
+            },
+            {
+              "type": "text",
+              "text": "と "
+            },
+            {
+              "type": "link",
+              "text": "CLI 文書",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": "で確認しました。画像は練習成果で Codex UI ではありません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "期待値と実際の確認結果を分けて記録する"
+        },
+        {
+          "type": "paragraph",
+          "text": "次の表は受け入れ時の期待値であり、今回の実行が合格した記録ではありません。実際に変えたファイル、テスト実行場所と成功／失敗数、390px と 1280px それぞれの画面結果、未完了の確認を別に記録します。この三つのテストは ToDo のデータ処理を検証するため、全成功でも見出しや背景が違う場合があります。プレビューできなければ画面確認は未実施として残し、ソース中の色指定を画面結果の代わりにしません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認",
+            "変更前",
+            "変更後"
+          ],
+          "rows": [
+            [
+              "主見出し",
+              "Make room for one small task.",
+              "Small steps, clear progress."
+            ],
+            [
+              "背景",
+              "#f2f5ef",
+              "#fff8ed"
+            ],
+            [
+              "基本テスト",
+              "3 成功 / 0 失敗",
+              "3 成功 / 0 失敗"
+            ],
+            [
+              "既存 ToDo",
+              "Read、Build",
+              "保持"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/diagram-1.svg",
+          "alt": "06. 最初の小さなプロジェクトを完成させる — 作業の流れを表す図です。製品画面の画像ではありません。 Request → index.html → Browser",
+          "width": 1600,
+          "height": 900,
+          "caption": "06. 最初の小さなプロジェクトを完成させる — 作業の流れを表す図です。製品画面の画像ではありません。 Request → index.html → Browser",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "練習用タスクサイト。Build は完了、Read the AGENTS.md rules は未完了で、合計2件。",
+          "caption": "変更前の完成参考版を実際のブラウザで撮影。Windows / Edge 153.0.4234.32、2026-09-14。架空データを使用。390px はレスポンシブ表示で実物のスマートフォンではありません。Codex デスクトップ UI の画像ではありません。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "練習用タスクサイト。Build は完了、Read the AGENTS.md rules は未完了で、合計2件。",
+          "caption": "変更前の完成参考版を実際のブラウザで撮影。Windows / Edge 153.0.4234.32、2026-09-14。架空データを使用。1280px はレスポンシブ表示で実物のスマートフォンではありません。Codex デスクトップ UI の画像ではありません。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/reference-390.png",
+          "alt": "変更後の練習サイト。見出しは Small steps, clear progress.、Add task ボタンに橙色のキーボードフォーカス枠。",
+          "caption": "元の教材に本記事の指定変更を適用した参考成果。Windows / Edge 153.0.4234.32、2026-09-14 の実画像です。橙枠はキーボードフォーカスでデータは架空です。幅 390px のレスポンシブ表示で、実物のスマートフォン、Codex UI、モデル実行記録ではありません。",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/reference-1280.png",
+          "alt": "変更後の練習サイト。見出しは Small steps, clear progress.、Add task ボタンに橙色のキーボードフォーカス枠。",
+          "caption": "元の教材に本記事の指定変更を適用した参考成果。Windows / Edge 153.0.4234.32、2026-09-14 の実画像です。橙枠はキーボードフォーカスでデータは架空です。幅 1280px のレスポンシブ表示で、実物のスマートフォン、Codex UI、モデル実行記録ではありません。",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex quickstart",
+          "url": "https://learn.chatgpt.com/docs/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "첫 소규모 프로젝트 완성하기",
+      "description": "Small Steps 할 일 사이트의 독립 복사본에서 제목과 배경색을 바꿉니다. 실습 파일 다섯 개의 역할을 확인하고 변경 내역, 핵심 테스트, 두 화면 폭을 비교하여 기존 기능과 데이터를 보존합니다.",
+      "hero": {
+        "src": "/guides/codex-first-project/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 강의의 목표"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "다운로드한 할 일 사이트를 독립 폴더에 두고 로컬 미리보기를 실행한 뒤 Codex에 명확한 화면 수정 두 개를 요청하고 기능과 범위를 직접 검증합니다. 읽기 약 12분, 실습 약 30분입니다. 결과는 로컬 미리보기이며 페이지 열기, 테스트 통과, 실제 공개는 서로 다른 단계입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "시작 전: 올바른 버전 선택"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "link",
+              "text": "Small Steps 실습 자료",
+              "url": "https://mokaair.com/guides/codex-first-project/todo-practice.zip"
+            },
+            {
+              "type": "text",
+              "text": "를 풀면 start, broken, expected가 나옵니다. 이번에는 expected만 새 codex-first-site 폴더로 복사하고 압축을 푼 원본을 보존합니다. start는 필터가 미완성이고 broken에는 의도적인 오류가 있어 뒤 강의에서 씁니다. 세 폴더를 합치면 어떤 버전을 검증하는지 알기 어려우므로 따로 둡니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "복사본 바로 아래에 index.html, style.css, app.js, core.mjs, core.test.mjs가 있어야 합니다. HTML은 구조, CSS는 스타일, app.js는 브라우저 상호작용, core.mjs는 데이터 동작, test 파일은 핵심 검사를 담당합니다. 전부 이해할 필요는 없지만 다섯 파일은 확인해야 합니다. Codex, Node.js, Python 3가 필요하며 이미 있다면 재설치 대신 명령 실행 여부를 확인합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Windows에서는 이 폴더에서 PowerShell을, macOS/Linux에서는 터미널을 엽니다. 위치 확인이 낯설면 "
+            },
+            {
+              "type": "article",
+              "text": "터미널과 경로",
+              "kind": "life",
+              "slug": "codex-terminal-paths"
+            },
+            {
+              "type": "text",
+              "text": "를 먼저 봅니다. Python은 Windows에서 py --version, 나머지는 python3 --version으로 확인하며 Node는 모두 node --version을 씁니다. 명령이 없다면 해당 도구를 설치하고 터미널을 다시 엽니다. package.json이 없으므로 npm install이나 npm test는 사용하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 수정 전 정상 동작 확인"
+        },
+        {
+          "type": "paragraph",
+          "text": "복사본 루트에서 핵심 테스트를 실행해 3개 통과, 0개 실패를 확인합니다. 이는 수정 전 증거입니다. 이미 실패하면 start나 broken을 복사했거나 파일이 빠졌는지 확인하세요. 잘못된 기준 상태에서 화면 수정과 모든 오류 수정을 동시에 요청하면 어떤 요구가 어떤 결과를 만들었는지 판단하기 어렵습니다."
+        },
+        {
+          "type": "code",
+          "label": "터미널 명령: codex-first-site 폴더에서 실행",
+          "language": "shell",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows에서는 아래 명령으로 미리보기를 시작합니다. 이 터미널은 서버 로그를 계속 표시하므로 열어 두고 바로 프롬프트로 돌아오기를 기다리지 마세요. 다른 명령은 새 터미널에서 실행합니다. 서버는 로컬 주소 127.0.0.1에만 연결됩니다."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell: 실습 폴더에서 로컬 미리보기 시작",
+          "language": "powershell",
+          "code": "py -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS/Linux에서는 아래의 동등한 명령을 사용합니다. 자신의 플랫폼 명령 하나만 실행하며 두 서버가 4173 포트를 같이 쓸 수는 없습니다. 다른 실습에서 사용 중이면 확인된 서버를 중단하거나 4174로 바꾸고 이후 URL도 맞춥니다."
+        },
+        {
+          "type": "code",
+          "label": "macOS/Linux 터미널: 실습 폴더에서 로컬 미리보기 시작",
+          "language": "bash",
+          "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "브라우저에서 http://127.0.0.1:4173을 엽니다. Read와 Build를 추가하고 Read를 완료한 뒤 Completed에는 Read만, Active에는 Build만 보이는지 확인합니다. 새로고침해 상태가 유지되는지도 봅니다. index.html을 더블클릭하면 file URL 제한으로 모듈을 못 불러올 수 있으므로 실행한 HTTP 주소를 사용하세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 읽은 뒤 수정 요청하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱은 codex-first-site를 프로젝트로 선택하고 CLI는 루트에서 시작합니다. 먼저 파일 다섯 개의 역할, 작업 경로, 테스트 명령을 읽기만 해서 보고하도록 요청합니다. 패키지 설치가 필요 없는 정적 사이트임을 이해했는지 확인한 뒤 아래 전체 요청을 보냅니다. 작은 화면 수정도 보존할 기능을 함께 알려야 합니다."
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: 실습 프로젝트의 Codex 작업에 붙여 넣기",
+          "language": "text",
+          "code": "Work only in this codex-first-site practice folder.\n1. In index.html, set the h1 text to \"Small steps, clear progress.\"\n2. In style.css, set the :root background to #fff8ed.\nKeep all todo behavior, labels, storage keys and data formats unchanged.\nDo not add packages or external requests. Do not deploy the site.\nRun node --test core.test.mjs.\nCheck the page at 390px and 1280px if browser access is available.\nReport changed files, checks performed and any checks not run.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "의도한 차이는 index.html의 h1과 style.css의 배경색뿐입니다. HTML 전체를 다시 만들거나 데이터 코드를 다른 프레임워크로 바꾸는 것이 아닙니다. Codex에 브라우저 도구가 없으면 화면 검사를 미실행으로 적고 직접 확인하세요. 화면을 추측하게 하거나 오류 메시지가 없다는 이유로 시각 검증을 통과 처리하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 결과 직접 검증하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "두 파일을 다시 열어 문구와 색상 코드를 확인하고 핵심 테스트를 다시 실행해 결과를 남깁니다. 브라우저를 새로고침해 제목, 배경, 기존 Read와 Build를 확인하세요. 약 390px에서는 페이지 전체에 가로 스크롤이 없어야 하고 1280px에서는 내용 폭을 확인합니다. 좁은 화면 검사는 반응형 배치 검증이지 iPhone이나 Android 실기기 테스트가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "경계 사례 두 가지도 확인합니다. 공백만으로는 할 일을 추가할 수 없어야 하고 아래 샘플는 이미지가 아닌 텍스트로 보여야 합니다. Tab으로 입력창, 버튼, 필터, 체크박스를 이동하며 포커스가 보이는지 확인하세요. 작은 화면 수정에 데이터 처리나 키보드 동작 회귀가 섞이지 않았는지 검사하는 것입니다. 핵심 테스트는 CSS 외관을 자동 확인하지 않으므로 두 종류의 증거를 모두 봅니다."
+        },
+        {
+          "type": "code",
+          "label": "웹페이지 입력값: 할 일 입력란에 붙여 넣고 추가",
+          "language": "text",
+          "code": "<img src=x>\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결, 중단과 복원"
+        },
+        {
+          "type": "paragraph",
+          "text": "폴더 목록이 나오면 서버를 너무 상위 폴더에서 실행한 것입니다. 중단하고 index.html이 바로 있는 복사본으로 이동해 다시 시작하세요. 포트가 사용 중이면 자신의 미리보기인지 확인하거나 다른 포트를 쓰고 관련 없는 서비스를 중단하지 않습니다. 변경이 안 보이면 저장, URL, 폴더, 새로고침을 확인합니다. 포트가 바뀌면 브라우저 저장 출처도 달라져 할 일이 안 보여도 코드가 삭제했다고 단정할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Python 터미널에서 Ctrl+C로 미리보기를 중단합니다. 복원은 보존한 expected 원본에서 이번에 바꾼 index.html과 style.css만 가져오거나 두 줄을 직접 되돌립니다. 브라우저 데이터를 전부 지우지 마세요. 실습 할 일을 없애려면 About this exercise의 Reset practice data가 전용 저장 키만 처리합니다. 필요한 가상 기록은 먼저 남기고 초기화합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "추가 연습과 검증 기록"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "추가 연습으로 주 제목만 다른 영어 문장으로 바꾸고 모든 기능을 보존한 채 정상 입력과 빈 입력을 다시 확인합니다. 실제 차이, 테스트 결과, 두 화면 폭의 관찰, 미실행 항목을 제출하면 완료입니다. "
+            },
+            {
+              "type": "article",
+              "text": "요청 작성",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "프로젝트 규칙",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "article",
+              "text": "테스트와 검토",
+              "kind": "life",
+              "slug": "codex-testing-review"
+            },
+            {
+              "type": "text",
+              "text": "로 반복 가능한 작업 습관을 만듭니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "자료는 이 시리즈가 직접 만든 공개 공유 가능한 가상 사이트입니다. 참고 버전의 핵심 및 브라우저 동작은 Windows/Edge에서 확인했으며 다른 OS의 시작 안내를 직접 테스트했다고 주장하지 않습니다. Codex 진입점은 2026-09-14의 "
+            },
+            {
+              "type": "link",
+              "text": "공식 빠른 시작",
+              "url": "https://learn.chatgpt.com/docs/quickstart"
+            },
+            {
+              "type": "text",
+              "text": "과 "
+            },
+            {
+              "type": "link",
+              "text": "CLI 문서",
+              "url": "https://learn.chatgpt.com/docs/codex/cli"
+            },
+            {
+              "type": "text",
+              "text": "로 확인했습니다. 이미지는 실습 결과이며 Codex 제품 화면이 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "예상 결과와 실제 검사를 나누어 기록하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "아래 표는 예상 인수 결과이며 이번 실행의 통과 기록이 아닙니다. 실제 변경 파일, 테스트 실행 디렉터리와 통과/실패 수, 390px와 1280px 각각의 실제 화면 결과, 미완료 검사를 따로 기록하세요. 세 핵심 테스트는 할 일 데이터 로직을 검사하므로 모두 통과해도 제목이나 배경이 틀릴 수 있습니다. 미리보기를 열 수 없으면 화면 검사를 미실행으로 남기고 소스의 색상 값을 화면 결과로 대신하지 마세요."
+        },
+        {
+          "type": "table",
+          "header": [
+            "검사",
+            "수정 전",
+            "수정 후"
+          ],
+          "rows": [
+            [
+              "주 제목",
+              "Make room for one small task.",
+              "Small steps, clear progress."
+            ],
+            [
+              "배경색",
+              "#f2f5ef",
+              "#fff8ed"
+            ],
+            [
+              "핵심 테스트",
+              "3 통과 / 0 실패",
+              "3 통과 / 0 실패"
+            ],
+            [
+              "기존 할 일",
+              "Read, Build",
+              "보존"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/diagram-1.svg",
+          "alt": "06. 첫 소규모 프로젝트 완성하기 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Request → index.html → Browser",
+          "width": 1600,
+          "height": 900,
+          "caption": "06. 첫 소규모 프로젝트 완성하기 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Request → index.html → Browser",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-390.png",
+          "alt": "실습 할 일 사이트. Build는 완료, Read the AGENTS.md rules는 미완료이며 총 두 항목입니다.",
+          "caption": "수정 전 완성 참고 버전의 실제 브라우저 화면. Windows / Edge 153.0.4234.32, 2026-09-14, 가상 데이터. 390px은 반응형 화면이며 실제 휴대전화가 아닙니다. Codex 데스크톱 UI 화면도 아닙니다.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/todo-1280.png",
+          "alt": "실습 할 일 사이트. Build는 완료, Read the AGENTS.md rules는 미완료이며 총 두 항목입니다.",
+          "caption": "수정 전 완성 참고 버전의 실제 브라우저 화면. Windows / Edge 153.0.4234.32, 2026-09-14, 가상 데이터. 1280px은 반응형 화면이며 실제 휴대전화가 아닙니다. Codex 데스크톱 UI 화면도 아닙니다.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/reference-390.png",
+          "alt": "수정한 실습 사이트. 제목은 Small steps, clear progress.이며 Add task 버튼에 주황색 키보드 포커스 테두리가 있습니다.",
+          "caption": "원본 실습 파일에 이 강의의 지정 변경을 적용한 참고 결과. Windows / Edge 153.0.4234.32에서 2026-09-14에 촬영했습니다. 주황 테두리는 키보드 포커스이며 데이터는 가상입니다. 너비 390px의 반응형 뷰포트로 실제 휴대전화, Codex UI 또는 모델 실행 기록이 아닙니다.",
+          "width": 390,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-first-project/reference-1280.png",
+          "alt": "수정한 실습 사이트. 제목은 Small steps, clear progress.이며 Add task 버튼에 주황색 키보드 포커스 테두리가 있습니다.",
+          "caption": "원본 실습 파일에 이 강의의 지정 변경을 적용한 참고 결과. Windows / Edge 153.0.4234.32에서 2026-09-14에 촬영했습니다. 주황 테두리는 키보드 포커스이며 데이터는 가상입니다. 너비 1280px의 반응형 뷰포트로 실제 휴대전화, Codex UI 또는 모델 실행 기록이 아닙니다.",
+          "width": 1280,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex quickstart",
+          "url": "https://learn.chatgpt.com/docs/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

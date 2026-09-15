@@ -1,0 +1,61 @@
+{
+  "id": 14,
+  "sources": [
+    "ide",
+    "prompting"
+  ],
+  "text": {
+    "zh-TW": [
+      "IDE 整合把 Codex 放在程式碼旁邊，適合針對選取內容解釋與修改。VS Code、Cursor、Windsurf 使用 Codex 擴充；Xcode 與 JetBrains 有自己的整合入口，不能把安裝步驟混用。",
+      "先安裝支援的編輯器並開啟練習專案。以下以 VS Code 相容擴充為主，Windows、macOS、Linux 都先確認編輯器可用；Xcode 的整合僅適用其支援環境。",
+      [
+        "從官方 IDE 文件的連結進入擴充商店，核對發布者 OpenAI，安裝 Codex。重新載入編輯器，從側欄圖示開啟；若沒看到，用命令面板搜尋 Codex: Open Codex Sidebar。",
+        "依擴充的登入流程完成認證。確認目前開啟的是練習資料夾，再選取 index.html 的一個段落，將選取內容加入提問。",
+        "先問這段程式的作用，再要求只修改這個區塊。檢查側欄顯示的上下文，避免以為所有未儲存的分頁都已被提供。",
+        "在編輯器查看 diff，儲存後用瀏覽器驗證。JetBrains 從 AI Chat 選 Codex，Xcode 從其 coding assistant 選代理；依各自整合文件操作，不套用 VS Code 的按鈕名稱。"
+      ],
+      "能在程式旁加入明確上下文，看到修改差異並驗證實際檔案，而不是只取得一段回答。",
+      "找不到圖示先查命令面板與擴充是否啟用。插件目錄不等同 IDE 擴充；官方文件目前說 IDE 不支援 Plugins，相關工作改用受支援入口。",
+      "解釋目前選取的 HTML，指出哪一段控制文字結構。不要修改其他檔案；若沒有收到選取內容，請先告訴我。"
+    ],
+    "en": [
+      "IDE integration places Codex beside your code for focused explanation and edits. VS Code, Cursor and Windsurf use the Codex extension; Xcode and JetBrains expose their own integration flows. Do not interchange their installation steps.",
+      "Install a supported editor and open the practice project. The main path below uses the VS Code-compatible extension on an OS supported by that editor; Xcode follows its own platform requirements.",
+      [
+        "Follow the official IDE page to the extension marketplace and verify OpenAI as publisher. Install Codex and reload the editor. Open its sidebar icon or run Codex: Open Codex Sidebar in the command palette.",
+        "Complete authentication and verify the opened folder. Select a paragraph in index.html and add the selection to your request.",
+        "Ask for an explanation before requesting a change only to that section. Inspect the attached context instead of assuming every unsaved tab was included.",
+        "Review the diff, save and verify in a browser. In JetBrains choose Codex in AI Chat; in Xcode choose the agent in the coding assistant, following the integration-specific documentation."
+      ],
+      "You can attach precise editor context, inspect the actual diff and verify files rather than receiving only a code suggestion.",
+      "If the icon is missing, use the command palette and check extension enablement. Plugins are separate: current official documentation says the IDE extension does not support the plugin directory.",
+      "Explain the selected HTML and identify its text structure. Do not change other files. If the selection was not received, tell me first."
+    ],
+    "ja": [
+      "IDE ではコードの横で説明や編集を依頼できます。VS Code、Cursor、Windsurf は拡張機能、Xcode と JetBrains は独自の統合を使います。導入手順を混同しません。",
+      "対応エディターで練習プロジェクトを開きます。主な説明は VS Code 互換拡張向けで、各 OS はエディターの対応条件に従います。",
+      [
+        "公式 IDE ページからストアへ進み、OpenAI の Codex を導入します。再読み込み後にアイコンか Codex: Open Codex Sidebar を使います。",
+        "認証し、正しいフォルダーを確認して index.html の段落を選択し、依頼へ添付します。",
+        "先に説明させ、その部分だけの変更を依頼します。未保存タブがすべて伝わったと仮定せず、添付内容を確認します。",
+        "差分を確認して保存し、ブラウザーで検証します。JetBrains は AI Chat、Xcode は coding assistant の統合案内を使います。"
+      ],
+      "選択内容を渡し、差分と実際のファイルを検証できれば完了です。",
+      "アイコンがなければコマンドパレットと有効状態を確認します。Plugins は別機能で、現在の IDE 拡張では非対応です。",
+      "選択した HTML の文章構造を説明してください。他のファイルは変更せず、選択が届いていなければ先に知らせてください。"
+    ],
+    "ko": [
+      "IDE에서는 코드 옆에서 설명과 편집을 요청합니다. VS Code, Cursor, Windsurf는 확장을 쓰고 Xcode와 JetBrains는 자체 통합을 사용하므로 설치 절차를 구분합니다.",
+      "지원 편집기에서 연습 프로젝트를 엽니다. 주 절차는 VS Code 호환 확장 기준이며 OS는 편집기의 지원 조건을 따릅니다.",
+      [
+        "공식 IDE 페이지에서 스토어로 이동하여 OpenAI의 Codex를 설치합니다. 다시 로드한 뒤 아이콘이나 Codex: Open Codex Sidebar 명령을 사용합니다.",
+        "인증하고 올바른 폴더를 확인한 뒤 index.html 문단을 선택하여 요청에 첨부합니다.",
+        "먼저 설명하게 하고 그 부분만 수정하도록 합니다. 저장하지 않은 모든 탭이 전달되었다고 가정하지 말고 첨부 맥락을 확인합니다.",
+        "diff를 확인하고 저장한 뒤 브라우저에서 검증합니다. JetBrains는 AI Chat, Xcode는 coding assistant의 통합 안내를 따릅니다."
+      ],
+      "선택 내용을 전달하고 diff와 실제 파일을 검증할 수 있으면 완료입니다.",
+      "아이콘이 없으면 명령 팔레트와 확장 활성화를 확인하세요. Plugins는 별도 기능이며 현재 IDE 확장에서는 지원하지 않습니다.",
+      "선택한 HTML의 텍스트 구조를 설명하세요. 다른 파일은 수정하지 말고 선택 내용이 전달되지 않았다면 먼저 알려 주세요."
+    ]
+  }
+}

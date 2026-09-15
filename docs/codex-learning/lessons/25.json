@@ -1,0 +1,64 @@
+{
+  "id": 25,
+  "sources": [
+    "extend/mcp"
+  ],
+  "code": {
+    "language": "toml",
+    "code": "[mcp_servers.practice]\nurl = \"https://your-approved-server.example/mcp\""
+  },
+  "text": {
+    "zh-TW": [
+      "MCP 讓 Codex 使用外部工具與資料。STDIO 伺服器通常由本機命令啟動；HTTP 伺服器透過 URL 連線。設定檔寫入成功只代表設定存在，還需要確認服務啟動、驗證通過與工具回應。",
+      "先選有文件、可授權使用的伺服器，確認使用 STDIO 還是 HTTP。範例中的 .example 是佔位網址，不是真實可連線服務；必須換成你已核准的端點，不輸入私人金鑰到示範檔。",
+      [
+        "桌面版可由 Settings → MCP servers → Add server 選類型並填命令或 URL。CLI 先用 codex mcp --help 查語法；也可在 config.toml 加入對應設定。",
+        "保存後依介面 Restart；需要 OAuth 的服務完成 Authenticate，CLI 可用 codex mcp login 加伺服器名稱。確認本機與服務的網路可達。",
+        "用 codex mcp list 看設定，再在互動介面 /mcp 看實際連線狀態與工具。檢查工具名稱、參數與讀寫性質。",
+        "選一個沒有副作用的工具做最小測試，對照回傳資料與來源。若失敗，分別檢查命令能否啟動、URL 是否正確、認證是否過期與工作階段是否重載。"
+      ],
+      "有一次成功工具呼叫與可核對結果，才算連接完成。留下伺服器名稱與非敏感診斷，不保存 token。",
+      "連上錯誤帳號與伺服器也可能回應成功，因此要核對資料來源。不要把未驗證的 MCP 設定當成已能控制應用程式。",
+      "列出目前 MCP 連線與可用的唯讀工具，選一個最小查詢驗證。不要執行會寫入或刪除資料的工具。"
+    ],
+    "en": [
+      "MCP connects Codex to tools and data. STDIO servers usually start as local processes; HTTP servers use a URL. Saving configuration only proves it exists: verify startup, authentication and an actual tool response.",
+      "Choose a documented server you are authorized to use and identify its transport. The .example URL below is a placeholder, not a live service; replace it with an approved endpoint and keep secrets out of examples.",
+      [
+        "In desktop, use Settings → MCP servers → Add server and choose command or URL. In CLI, inspect codex mcp --help, or add the appropriate config.toml entry.",
+        "Save and restart the connection. Complete Authenticate for OAuth servers, or use codex mcp login with the server name. Check network reachability.",
+        "Use codex mcp list for configuration, then /mcp inside the interactive client for live connection and tools. Inspect tool names, arguments and whether they read or write.",
+        "Run one minimal read-only query and compare its response with the expected source. For failure, distinguish startup errors, wrong endpoint, expired credentials and a session that was not reloaded."
+      ],
+      "A successful tool call with a verifiable result establishes the connection. Keep non-sensitive diagnostics without tokens.",
+      "A wrong account or server can still respond successfully, so verify the source. Configuration alone is not evidence that Codex controls an application.",
+      "List current MCP connections and read-only tools, then perform one minimal query. Do not use tools that write or delete data."
+    ],
+    "ja": [
+      "MCP は外部ツールと接続します。STDIO はローカル命令、HTTP は URL を使います。設定保存だけでなく起動、認証、応答を確認します。",
+      "利用許可のあるサーバーを選びます。.example は接続できる実サーバーではなく置換用です。",
+      [
+        "Settings → MCP servers → Add server または CLI のヘルプを確認して設定します。",
+        "再起動し、必要な OAuth 認証を完了します。通信先が到達可能か確認します。",
+        "codex mcp list で設定、/mcp で実際の状態とツールを確認します。引数と読み書きの性質を読みます。",
+        "副作用のない最小照会を試し、出典を確認します。失敗は起動、URL、認証、再読み込みを分けて調べます。"
+      ],
+      "確認できるツール応答が得られて初めて接続完了です。",
+      "別アカウントでも応答する場合があるため、データの出所を確認します。",
+      "接続と読み取りツールを示し、最小照会を一つ行ってください。書き込みや削除は禁止です。"
+    ],
+    "ko": [
+      "MCP는 외부 도구를 연결합니다. STDIO는 로컬 명령, HTTP는 URL을 사용합니다. 설정 저장뿐 아니라 시작, 인증과 응답을 확인해야 합니다.",
+      "허가된 서버를 선택합니다. .example은 실제 서버가 아니라 교체할 자리표시자입니다.",
+      [
+        "Settings → MCP servers → Add server 또는 CLI 도움말을 확인하여 설정합니다.",
+        "재시작하고 필요한 OAuth 인증을 완료합니다. 네트워크 연결도 확인합니다.",
+        "codex mcp list로 설정을, /mcp로 실제 상태와 도구를 봅니다. 인자와 읽기·쓰기 성격을 확인합니다.",
+        "부작용 없는 최소 조회를 실행하고 출처를 확인합니다. 실패하면 시작, URL, 인증과 다시 로드를 구분해 점검합니다."
+      ],
+      "검증할 수 있는 도구 응답을 받아야 연결 완료입니다.",
+      "다른 계정도 정상 응답할 수 있으므로 데이터 출처를 확인하세요.",
+      "연결과 읽기 도구를 보여 주고 최소 조회 하나를 실행하세요. 쓰기와 삭제는 하지 마세요."
+    ]
+  }
+}

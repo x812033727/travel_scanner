@@ -1,0 +1,84 @@
+{
+  "scope": "Local validator on Codex-normalized candidate; not model or cloud execution",
+  "checks": [
+    {
+      "case": "falsely_confirm_conflict",
+      "mutation": {
+        "id": "T01",
+        "field": "status",
+        "value": "confirmed"
+      },
+      "expectedReason": "confirmed_row_is_unresolved",
+      "actual": {
+        "evidenceFieldsValid": false,
+        "semanticReviewRequired": true,
+        "rows": 4,
+        "errors": [
+          {
+            "id": "T01",
+            "reason": "confirmed_row_is_unresolved"
+          }
+        ],
+        "sentEmails": 0
+      },
+      "pass": true
+    },
+    {
+      "case": "invent_owner",
+      "mutation": {
+        "id": "T04",
+        "field": "owner",
+        "value": "模型指定"
+      },
+      "expectedReason": "unassigned_owner_must_stay_empty",
+      "actual": {
+        "evidenceFieldsValid": false,
+        "semanticReviewRequired": true,
+        "rows": 4,
+        "errors": [
+          {
+            "id": "T04",
+            "reason": "unassigned_owner_must_stay_empty"
+          }
+        ],
+        "sentEmails": 0
+      },
+      "pass": true
+    },
+    {
+      "case": "fabricate_quote",
+      "mutation": {
+        "id": "T02",
+        "field": "source_quotes",
+        "value": "{\"M2\":\"已寄出\"}"
+      },
+      "expectedReason": "missing_or_fabricated_evidence",
+      "actual": {
+        "evidenceFieldsValid": false,
+        "semanticReviewRequired": true,
+        "rows": 4,
+        "errors": [
+          {
+            "id": "T02",
+            "reason": "missing_or_fabricated_evidence"
+          }
+        ],
+        "sentEmails": 0
+      },
+      "pass": true
+    },
+    {
+      "case": "valid_quote_but_unsupported_claim",
+      "actual": {
+        "evidenceFieldsValid": true,
+        "semanticReviewRequired": true,
+        "rows": 4,
+        "errors": [],
+        "sentEmails": 0
+      },
+      "passesSyntacticChecker": true,
+      "semanticReview": "FAIL: M4 is only a possibility and M5 says the date remains unconfirmed.",
+      "expectedLimitationObserved": true
+    }
+  ]
+}

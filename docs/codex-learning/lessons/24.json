@@ -1,0 +1,65 @@
+{
+  "id": 24,
+  "sources": [
+    "plugins",
+    "build-skills"
+  ],
+  "code": {
+    "language": "text",
+    "code": "/plugins"
+  },
+  "text": {
+    "zh-TW": [
+      "Plugin 可以把 Skills 與 MCP 工具包在一起，提供可安裝的工作能力。安裝套件、連接外部帳號與實際執行工具是三個不同步驟；找到插件不代表已能讀你的服務資料。",
+      "選一項有明確目的的外部服務，先確認其插件適用平台。官方目前不提供 IDE Plugins；CLI 可使用 /plugins，桌面版從 Plugins 分頁操作。標示 Desktop only 的功能不能假定手機可用。",
+      [
+        "在支援入口開啟 Plugins，搜尋名稱並核對說明、來源與需要的權限。只安裝這次練習需要的套件。",
+        "若要求連接帳號，使用官方授權流程並確認工作區與資料範圍。不要把密碼交給提示詞，也不要使用別人的帳號憑證。",
+        "CLI 安裝後依文件開新工作階段，再要求一個唯讀的查詢。核對結果是否來自預期帳號，並區分『插件已裝』與『工具呼叫成功』。",
+        "要停止使用時，從插件管理移除或停用，必要時另到外部服務撤销連線。卸載本機插件不應被當成外部帳號授權一定已撤銷。"
+      ],
+      "能在正確帳號用一次工具取得預期結果，並知道如何停止連線與移除插件。",
+      "沒有工具時檢查客戶端支援、是否開新工作階段、帳號是否連接與管理員限制。不要為了看見工具就授權無關資料。",
+      "使用已連接的指定插件做一個唯讀查詢，先說明將查詢的資料範圍。不要傳送訊息或修改外部資料。"
+    ],
+    "en": [
+      "A plugin can distribute skills and MCP tools as an installable capability. Installing it, connecting an external account and successfully calling a tool are distinct stages. A listing does not establish access to your data.",
+      "Choose one service for a specific purpose and check platform support. The current IDE extension does not support plugins; use /plugins in CLI or the desktop Plugins tab. Desktop-only capabilities are not automatically available on mobile.",
+      [
+        "Search in Plugins and inspect the description, source and requested permissions. Install only what the exercise needs.",
+        "If account connection is requested, use the official authorization flow and verify workspace and data scope. Never put passwords in the prompt.",
+        "After CLI installation, start a new session as documented and make a read-only query. Verify the result belongs to the intended account, separately from installation status.",
+        "Disable or uninstall the plugin when finished. Revoke external authorization separately when necessary; local removal does not prove the service-side grant was revoked."
+      ],
+      "A tool returns the expected data from the correct account, and you know how to disconnect and remove it.",
+      "For missing tools, check client support, fresh session, account connection and admin policy. Do not grant unrelated access merely to make a tool appear.",
+      "Use the selected connected plugin for a read-only query and state the data scope first. Do not send messages or modify external records."
+    ],
+    "ja": [
+      "Plugin は Skills や MCP を配布できます。導入、アカウント接続、ツール成功は別段階です。",
+      "目的を一つ選び、対応画面を確認します。現在 IDE は Plugins 非対応で、CLI は /plugins、デスクトップは Plugins を使います。",
+      [
+        "説明、提供元、権限を確認し必要なものだけ導入します。",
+        "公式認証でアカウントと範囲を確認します。パスワードを依頼文に入れません。",
+        "CLI は新規セッションから読み取りを試し、期待するアカウントの結果か確認します。",
+        "不要なら無効化や削除を行い、必要に応じて外部サービス側の許可も解除します。"
+      ],
+      "正しいアカウントで結果を得て、接続解除方法も分かれば完了です。",
+      "機能がない場合は対応画面、再起動、接続、管理者設定を確認します。",
+      "指定したプラグインで範囲を明示して読み取りだけを行ってください。送信や変更はしないでください。"
+    ],
+    "ko": [
+      "Plugin은 Skills와 MCP를 배포할 수 있습니다. 설치, 계정 연결과 도구 성공은 별도 단계입니다.",
+      "목적 하나를 정하고 지원 화면을 확인합니다. 현재 IDE는 Plugins를 지원하지 않으며 CLI는 /plugins, 데스크톱은 Plugins를 사용합니다.",
+      [
+        "설명, 출처와 권한을 확인하고 필요한 것만 설치합니다.",
+        "공식 인증에서 계정과 범위를 확인합니다. 비밀번호를 요청문에 넣지 않습니다.",
+        "CLI는 새 세션에서 읽기를 시험하고 예상한 계정의 결과인지 확인합니다.",
+        "필요 없으면 비활성화하거나 제거하고 필요에 따라 외부 서비스 권한도 해제합니다."
+      ],
+      "올바른 계정에서 결과를 얻고 연결 해제 방법도 알면 완료입니다.",
+      "도구가 없으면 지원 화면, 새 세션, 연결과 관리자 정책을 확인하세요.",
+      "선택한 플러그인으로 범위를 명시한 읽기만 수행하세요. 전송하거나 변경하지 마세요."
+    ]
+  }
+}

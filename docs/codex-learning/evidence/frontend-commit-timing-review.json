@@ -1,0 +1,178 @@
+{
+  "checked_on": "2026-09-15",
+  "reviewer": "codex-modal-final-fc2e",
+  "baseline_commit": "24c5662aacb4a06f619c65acb88f350ada861f40",
+  "baseline_runs": [
+    {
+      "run": 1,
+      "started_at": "2026-09-14T16:12:52.1592309+00:00",
+      "completed_at": "2026-09-14T16:23:30.7228505+00:00",
+      "exit_code": 0,
+      "log": "frontend-1.log"
+    },
+    {
+      "run": 2,
+      "started_at": "2026-09-14T16:23:52.9486817+00:00",
+      "completed_at": "2026-09-14T16:36:42.8772157+00:00",
+      "exit_code": 0,
+      "log": "frontend-2.log"
+    },
+    {
+      "run": 3,
+      "started_at": "2026-09-14T16:36:42.9159287+00:00",
+      "completed_at": "2026-09-14T16:47:40.2851400+00:00",
+      "exit_code": 1,
+      "log": "frontend-3.log"
+    }
+  ],
+  "baseline_result": "First two whole-suite runs passed 2815 tests. Third failed route-mode-panel.test.tsx:96 with document.activeElement body instead of the visible route details: 2814 passed, 1 failed. This is not three consecutive passes.",
+  "baseline_scope": "Component and frontend test source stayed at baseline throughout all three runs. Only the independently validated practice ZIP was refreshed during runs 2 and 3.",
+  "deterministic_regressions": {
+    "before": "Four new cases fail: two first-result focus cases (body/query-button origin), first/reopened sheet Escape registration and current close callback. Name filtering accounts for 57 unselected tests; no test was disabled in source.",
+    "cause": "Result focus and modal listener/current-close-ref updates were passive effects, after committed DOM could be observed. Profiler callbacks expose this interval without sleeps or delayed assertions.",
+    "fix": "Move result focus and modal registration/current-close-ref updates to layout effects, while retaining the original user-moved-focus guard."
+  },
+  "focus_restore_regression": {
+    "finding": "The first modal fix made the existing opener-focus test fail deterministically. A temporary focus spy recorded Open filters -> Close filters -> Open filters -> Close filters; the last call was React flushMutationEffects restoring its prior selection.",
+    "resolution": "Modal teardown unregisters listeners and releases the lock in layout cleanup; opener focus restoration stays in a passive cleanup after React selection restoration. No original assertion was weakened.",
+    "probe_removed": true,
+    "installed_react_source": "node_modules/react-dom/cjs/react-dom-client.development.js:18068"
+  },
+  "checks": [
+    {
+      "name": "Focused final component tests",
+      "result": "passed",
+      "files": 4,
+      "tests": 89,
+      "duration_seconds": 17.32
+    },
+    {
+      "name": "Full ESLint plus final four-file ESLint after focus cleanup adjustment",
+      "result": "passed"
+    },
+    {
+      "name": "TypeScript after final fix",
+      "result": "passed"
+    }
+  ],
+  "sources": {
+    "apps/web/components/route-mode-panel.tsx": "d9c79c7926cf15648b35c5a785bb859183a32800650673e9a35a5bfc8d8ac5ea",
+    "apps/web/components/route-mode-panel.test.tsx": "b279cf7dc556fc8f35e9ceb9d2dd5fc16e4936ed5a055f49cd4969c6b3326411",
+    "apps/web/lib/modal-sheet.ts": "c5e6d0a5e78f4052bd13e33fe8d1ee9572f7f95b33a43f1964fb9d7ac7fd95e4",
+    "apps/web/lib/modal-sheet.test.tsx": "5a1198cb51f395157b72d5ac8fed0ef13cf20e5a3a778c8a683c87388f5077d0"
+  },
+  "hash_convention": "Source hashes normalize CRLF to LF; log hashes use raw bytes.",
+  "references": [
+    "https://react.dev/reference/react/useLayoutEffect",
+    "https://react.dev/reference/react/useEffect",
+    "https://react.dev/reference/react/Profiler"
+  ],
+  "logs": {
+    "commit-regressions-after.log": {
+      "archive": "docs/codex-learning/evidence/frontend-validation-20260915/commit-regressions-after.log.gz",
+      "raw_sha256": "45358fc11504df44e885ac1c39e9ff7a060ee0aedd2c8b13883ccafa40a2ac15",
+      "gzip_sha256": "43d2a202fe06eb996ed03477c7f5b11dff01b10a3072b39db9cb4e41148a2843",
+      "summary": [
+        "Test Files  1 failed | 3 passed (4)",
+        "Tests  1 failed | 88 passed (89)",
+        "Duration  9.71s (transform 595ms, setup 311ms, import 1.35s, tests 4.52s, environment 2.98s)"
+      ]
+    },
+    "commit-regressions-before.log": {
+      "archive": "docs/codex-learning/evidence/frontend-validation-20260915/commit-regressions-before.log.gz",
+      "raw_sha256": "a1b41e9816cb9da11b8a8b1862c3b51ef3dd17048459cbd48791549b4e402ee9",
+      "gzip_sha256": "04067aedbbd7a71b7f385b012abbc513b9182be98db0f4c6353ecf58bb3e8df8",
+      "summary": [
+        "Test Files  2 failed (2)",
+        "Tests  4 failed | 57 skipped (61)",
+        "Duration  2.90s (transform 401ms, setup 234ms, import 585ms, tests 313ms, environment 1.47s)"
+      ]
+    },
+    "commit-regressions-final.log": {
+      "archive": "docs/codex-learning/evidence/frontend-validation-20260915/commit-regressions-final.log.gz",
+      "raw_sha256": "994951b5413e56083e98f7df867846157e3ee2d999213f8123752755861ba0d3",
+      "gzip_sha256": "d38d1c7fdf170e25d3a6608bf3c894faffcc47809bdc4ccd908e149bead32e6e",
+      "summary": [
+        "Test Files  4 passed (4)",
+        "Tests  89 passed (89)",
+        "Duration  17.32s (transform 1.01s, setup 606ms, import 2.54s, tests 8.53s, environment 4.73s)"
+      ]
+    },
+    "frontend-1.log": {
+      "archive": "docs/codex-learning/evidence/frontend-validation-20260915/frontend-1.log.gz",
+      "raw_sha256": "6856bb9a3f801a2cdb9bd4d4a7157001467fb6970e8c82e867c89a6487437e82",
+      "gzip_sha256": "02affd903854677732951b756c53aeacfb1b9cd8edf6fa009218d059e2bd38b1",
+      "summary": [
+        "Test Files  260 passed (260)",
+        "Tests  2815 passed (2815)",
+        "Duration  633.46s (transform 10.74s, setup 21.61s, import 71.10s, tests 167.19s, environment 318.31s)"
+      ]
+    },
+    "frontend-2.log": {
+      "archive": "docs/codex-learning/evidence/frontend-validation-20260915/frontend-2.log.gz",
+      "raw_sha256": "de558b2ab0d9ef34f8186bd4cd2c17ea8bfb49314f2035b5feb0bffdd8bbd884",
+      "gzip_sha256": "cec691292a6b1fd6a2607133796c1b72442123c42b0b7068b16c60b05a6369d1",
+      "summary": [
+        "Test Files  260 passed (260)",
+        "Tests  2815 passed (2815)",
+        "Duration  768.59s (transform 11.72s, setup 26.67s, import 73.78s, tests 239.20s, environment 359.87s)"
+      ]
+    },
+    "frontend-3.log": {
+      "archive": "docs/codex-learning/evidence/frontend-validation-20260915/frontend-3.log.gz",
+      "raw_sha256": "0fb8333d8ee47f4f4d2cd8bb6ef2eb631ecadd7a3d1824314336a9f4a2d4ddf2",
+      "gzip_sha256": "a13d5b178027b3bb39cac5555e44a48bd5d67ecc7b0adf184ad9d163dfe1ff92",
+      "summary": [
+        "Test Files  1 failed | 259 passed (260)",
+        "Tests  1 failed | 2814 passed (2815)",
+        "Duration  655.89s (transform 10.27s, setup 25.27s, import 67.26s, tests 171.78s, environment 330.06s)"
+      ]
+    },
+    "modal-focus-probe.log": {
+      "archive": "docs/codex-learning/evidence/frontend-validation-20260915/modal-focus-probe.log.gz",
+      "raw_sha256": "4a1c1eb88a4e1b026fe784cc816551b595a644d8e9d80605b8c82346ae75baf2",
+      "gzip_sha256": "b410947d0d6b627e2d528cbec1d3e504cecacf52defb6fe1f01b7c76052dae06",
+      "summary": [
+        "Test Files  1 failed (1)",
+        "Tests  1 failed | 14 skipped (15)",
+        "Duration  1.47s (transform 142ms, setup 177ms, import 124ms, tests 140ms, environment 729ms)"
+      ]
+    },
+    "modal-focus-recheck.log": {
+      "archive": "docs/codex-learning/evidence/frontend-validation-20260915/modal-focus-recheck.log.gz",
+      "raw_sha256": "87394efcd785ebebc11087147f67cb51a188b9d9070b8901b091c21af84cfe8f",
+      "gzip_sha256": "83a69c463d67276f07897b53083dac708167ffc13e3005c2ab311249fa099efb",
+      "summary": [
+        "Test Files  1 failed (1)",
+        "Tests  1 failed | 14 passed (15)",
+        "Duration  1.72s (transform 140ms, setup 172ms, import 124ms, tests 362ms, environment 891ms)"
+      ]
+    }
+  },
+  "final_complete_runs": [],
+  "limits": [
+    "Post-fix full repetition was interrupted for upstream reconciliation; no three-pass claim. Subsequent integration validation is recorded separately.",
+    "Commit-boundary tests establish concrete defects; they do not establish that all historical intermittent failures shared a single cause.",
+    "No final Codex browser preview, PR, CI, production import, publication or deployment occurred."
+  ],
+  "superseded_validation_attempt": {
+    "run": 1,
+    "commit": "00a513c5",
+    "result": "interrupted",
+    "reported_exec_exit": 1,
+    "passed_cases_before_interruption": 504,
+    "reason": "Stopped with Ctrl+C after discovering merged PR #493 already supplies equivalent modal/result-focus fixes; synchronize main before spending further full-suite runs on the old base. No completed-suite pass/fail is claimed.",
+    "log": "frontend-final-1.log",
+    "archive": "docs/codex-learning/evidence/frontend-validation-20260915/frontend-final-1.log.gz",
+    "raw_sha256": "a8ecd8a36f122b6adc4320cdd9c0a67b18a4b785ea261f85c37631d74931656b",
+    "gzip_sha256": "7bf4853a59e4d0f3e913cac87cfa24fb99ca246d9343bbb0a246de0183089e54"
+  },
+  "upstream_reconciliation": {
+    "pr": "https://github.com/x812033727/travel_scanner/pull/493",
+    "verified_state": "MERGED",
+    "merge_commit": "46298e2863e9c2c4d6776e9d58a821be683a4b32",
+    "merged_at": "2026-09-14T10:32:48Z",
+    "observed_main": "3d1df9cc2a0334c1e4045ffc488187283f982975",
+    "decision": "Adopt upstream implementations and tests during integration, retaining these independent historical diagnostics. Do not present duplicate modal fixes as a new PR change."
+  }
+}

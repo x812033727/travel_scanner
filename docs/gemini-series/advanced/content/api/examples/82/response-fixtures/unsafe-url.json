@@ -1,0 +1,27 @@
+{
+  "id": "author-fixture",
+  "status": "completed",
+  "object": "interaction",
+  "model": "gemini-3.8-flash",
+  "created": "2026-09-14T00:00:00Z",
+  "steps": [
+    {
+      "type": "model_output",
+      "content": [
+        {
+          "type": "text",
+          "text": "颱風警報資訊請查看中央氣象署官方網站。",
+          "annotations": [
+            {
+              "type": "url_citation",
+              "url": "javascript:alert(1)",
+              "title": "中央氣象署",
+              "start_index": 0,
+              "end_index": 57
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "status": "partial",
+  "records": [
+    {
+      "version": "v3",
+      "width": 360,
+      "case": "B01",
+      "inputs": [
+        "20",
+        "350",
+        "2000",
+        "10"
+      ],
+      "expected": [
+        "9000.00",
+        "900.00",
+        "9900.00",
+        "495.00"
+      ],
+      "actual": [
+        "9000.00",
+        "900.00",
+        "9900.00",
+        "495.00"
+      ],
+      "oldResultHiddenOnEdit": true,
+      "pass": true,
+      "observedAt": "2026-09-15T02:59:00.471Z"
+    },
+    {
+      "version": "v3",
+      "width": 360,
+      "case": "B02",
+      "inputs": [
+        "3",
+        "99.95",
+        "1000",
+        "7.5"
+      ],
+      "expected": [
+        "1299.85",
+        "97.49",
+        "1397.34",
+        "465.78"
+      ],
+      "actual": [
+        "1299.85",
+        "97.49",
+        "1397.34",
+        "465.78"
+      ],
+      "oldResultHiddenOnEdit": true,
+      "pass": true,
+      "observedAt": "2026-09-15T02:59:03.462Z"
+    },
+    {
+      "version": "v3",
+      "width": 360,
+      "case": "B03",
+      "inputs": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "expected": [
+        "0.00",
+        "0.00",
+        "0.00",
+        "0.00"
+      ],
+      "actual": [
+        "0.00",
+        "0.00",
+        "0.00",
+        "0.00"
+      ],
+      "oldResultHiddenOnEdit": true,
+      "pass": true,
+      "observedAt": "2026-09-15T02:59:06.478Z"
+    }
+  ],
+  "interruption": "An invalid-input batch timed out and reset the browser session. No output from that batch was returned, so none of its cases are counted. The subsequent tab reported its debugger was not attached. Network monitoring was incomplete and cannot support a no-network claim."
+}

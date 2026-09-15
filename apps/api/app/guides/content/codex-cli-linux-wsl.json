@@ -1,0 +1,1677 @@
+{
+  "slug": "codex-cli-linux-wsl",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 110,
+  "locales": {
+    "zh-TW": {
+      "title": "Linux／WSL CLI 與檔案位置",
+      "description": "辨識主機與 WSL 的工具、路徑和帳號，從正確目錄執行相同練習並更新 CLI。",
+      "hero": {
+        "src": "/guides/codex-cli-linux-wsl/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原創流程示意圖，非產品介面截圖。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與兩條入口"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在 Linux 或 Windows 的 WSL2 中安裝 Codex CLI，分辨主機、發行版與檔案位置，完成標記檔唯讀驗證及更新。閱讀約 12 分鐘，操作約 30 分鐘；初次安裝 WSL、重開機與下載另計。本篇依 2026-09-14 官方文件查證，未在 Linux／WSL 實機執行，也沒有使用 Windows 畫面冒充 Linux 截圖。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本來就在 Linux 電腦上，直接開該系統的 Terminal，從步驟二開始。Windows 使用者先決定是否真的需要 Linux 工具；原生 PowerShell 可以使用 Codex，不必為了 CLI 強制加裝 WSL。已有 Linux 開發環境或專案依賴 Linux 時才走 WSL2。兩者的選擇與"
+            },
+            {
+              "type": "article",
+              "text": "Windows CLI",
+              "kind": "life",
+              "slug": "codex-cli-windows"
+            },
+            {
+              "type": "text",
+              "text": "並列，不是 Windows 安裝失敗就無條件搬家。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "圖中 1 是辨認正在輸入指令的環境，2 是安裝並進入 Linux 專案，3 是從同一環境讀檔驗收。Linux 的家目錄、工具和認證預設各自存在；在 Windows 成功執行 codex --version，不能證明 Ubuntu 裡也已安裝。反過來，WSL 的登入完成也不能單憑這點判定 Windows 桌面端已登入。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟一：Windows 使用者確認 WSL2"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Windows PowerShell 執行下面的查詢，先看是否已有發行版，以及 VERSION 欄是否為 2。這不是 Linux shell 命令。已有 WSL2 就保留它，不重灌、不刪除發行版。官方現行 Codex Linux 沙盒不支援 WSL1；若現有專案還在 WSL1，先備份並依 Microsoft 文件規劃轉換，不要對唯一的工作副本直接試改。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：只查詢已安裝的 WSL 發行版",
+          "language": "powershell",
+          "code": "wsl --list --verbose\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "先用 winver 核對 Windows 版本；Microsoft 的 wsl --install 簡化流程要求 Windows 11，或 Windows 10 2004（組建 19041）以上。舊版請用官方手動安裝文件，不要直接套用下面命令。 沒有安裝 WSL 的讀者，先確認電腦政策允許啟用虛擬化與 WSL，再按 Microsoft 文件在系統管理員 PowerShell 執行 wsl --install，依提示重開機與建立 Linux 使用者。這是安裝作業系統環境，不是只下載一個 npm 套件；需要安排中斷其他工作的時間。公司電腦依管理政策處理，不另教繞過限制。"
+        },
+        {
+          "type": "code",
+          "label": "管理員 PowerShell：僅限尚未安裝且已決定使用 WSL",
+          "language": "powershell",
+          "code": "wsl --install\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "有多個發行版時，可在 PowerShell 使用 wsl --distribution 加上清單中的完整名稱，例如把自己的名稱放在引號內。先選對發行版再安裝；不要在發行版 A 查到 codex，就跳到發行版 B 宣稱已可使用。完成本篇後若切回 PowerShell，必須重新辨識命令來源，不把 Linux 的安裝或檔案雜湊紀錄套到 Windows。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝完成後在 Terminal 選自己的 Linux 發行版，或於一般 PowerShell 執行 wsl 進入預設發行版。有多個發行版時，用 wsl --list --verbose 的真實名稱選擇，不要照抄不一定存在的 Ubuntu。進入後提示符號與路徑變成 Linux 形式；以下步驟全部在這個 Linux shell 執行。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟二：辨認 shell、CLI 和家目錄"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL shell：辨識系統、位置與命令來源",
+          "language": "bash",
+          "code": "uname -s\npwd\nprintf '%s\\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "uname 預期顯示 Linux；WSL_DISTRO_NAME 在 WSL 會指出發行版，一般 Linux 留空是合理的。command -v 與 type -a 應指向你打算在 Linux 使用的安裝；若出現 /mnt/c 下的 Windows 包裝程式，不要只因命令能跑就當成 Linux 安裝。先記錄來源，後續把 CLI 安裝在 Linux 環境，並重新核對 shell 實際選到哪一份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新裝使用官方獨立安裝命令，先核對來源，完成後閱讀 PATH 指示並開新 Linux 終端機。已用 npm 的讀者可在同一個 Linux 環境確認 node 和 npm 版本，再用 npm install -g @openai/codex；不把 Windows 的 Node.js 當作 Linux 的前置依賴。一次選一種管道，之後更新保持一致。"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL shell：官方獨立安裝路線",
+          "language": "bash",
+          "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL shell：安裝後在新視窗查來源與版本",
+          "language": "bash",
+          "code": "command -v codex\ncodex --version\ncodex --help\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝輸出、實際路徑和版本三者要能對上。curl、sh 或系統工具本身不存在時，先依你的 Linux 發行版文件準備工具；不要照抄另一個發行版的套件管理指令。CLI 能啟動仍不代表專案依賴或 Linux 沙盒已正常；後面的實際讀檔會檢查第二層。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟三：在 Linux 家目錄建立練習檔"
+        },
+        {
+          "type": "paragraph",
+          "text": "WSL 專案若由 Linux 工具執行，優先放在 Linux 家目錄，例如 ~/code 下；/mnt/c 是 Windows 檔案系統的掛載入口，與 /home 不是兩個名稱指向同一份專案。不要為了本練習搬動正式專案。下面用新資料夾示範，若目錄已存在會保留內容並停止建立；換新名字再試。整個區塊在子 shell 執行，結束後依下一段明確切入。"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL shell：整段建立全新練習資料夾",
+          "language": "bash",
+          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立成功才執行下一個區塊。若 mkdir 顯示 File exists，表示它保護了原資料，並不是需要加 sudo；先選新目錄。切入後應看到兩個檔案及 LINUX-CLI-01，兩份 SHA-256 相同。這個相同是本機兩份相同位元組的比對，不要求與 Windows 的檔案雜湊一致。"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL shell：建立成功後進入、讀取與核對",
+          "language": "bash",
+          "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟四：在同一個 Linux 環境登入與讀取"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL shell：每行完成後才執行下一行",
+          "language": "bash",
+          "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "逐行等候完成，依實際登入畫面處理；WSL 可能透過主機瀏覽器完成認證，完成頁出現後仍要回 Linux 終端機確認登入結果。沒有瀏覽器或本機回呼不可用時，先查 codex login --help 及官方認證頁；只有帳號與組織允許裝置碼流程時，才用 codex login --device-auth。不要把 Windows 認證檔複製到專案來解決登入。"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：在 Linux 的 Codex CLI 輸入",
+          "language": "text",
+          "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "上段是 Codex 對話，不是 bash 命令。要求的目錄應是 Linux 練習資料夾，標記 LINUX-CLI-01；同時看實際讀取記錄。接著在同一個 Codex 工作階段要求讀取不存在的 note-missing.txt，預期清楚回報缺檔而不新增。完成後才用 /exit 回 shell，重跑 sha256sum、cat 和 ls，核對沒有改動。能完成這兩種結果，才驗證安裝、登入、定位與讀取串在一起。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "檔案位置、更新與排錯"
+        },
+        {
+          "type": "table",
+          "header": [
+            "位置或工具",
+            "代表的環境",
+            "本篇怎麼判斷"
+          ],
+          "rows": [
+            [
+              "C:\\Users 路徑",
+              "Windows 本機",
+              "在 PowerShell 用 Get-Location"
+            ],
+            [
+              "/home 下的專案",
+              "Linux／WSL 的檔案系統",
+              "在 Linux shell 用 pwd"
+            ],
+            [
+              "/mnt/c 下的專案",
+              "Linux 看到的 Windows 掛載磁碟",
+              "不當成 /home 的另一個副本"
+            ],
+            [
+              "Linux 的 codex",
+              "Linux shell 選到的 CLI",
+              "command -v 與版本一起核對"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果 Linux 工具專案放在 /mnt/c 而操作很慢，先用新的 Linux 家目錄練習副本比較，不要直接移動或刪除唯一原稿。需要從 Windows 檔案總管檢視 WSL，可用官方文件說明的 "
+            },
+            {
+              "type": "code",
+              "text": "\\\\wsl$"
+            },
+            {
+              "type": "text",
+              "text": " 入口選實際發行版；這是存取 Linux 檔案，不是把兩份內容同步。兩個目錄都存在時，用標記與 pwd 判斷，不憑同名資料夾猜測。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "更新前先退出 CLI 並記錄工作摘要。獨立版重跑 Linux 的官方安裝命令，npm 版用同一個 Linux 的 npm 更新，然後開新 shell 核對 command -v 和版本。wsl --update 更新的是 WSL，不能代替 CLI 更新；wsl --shutdown 會停止 WSL 執行中的工作，不要把它當作每次安裝 Codex 必做的步驟。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "shell 能讀、Codex 不能讀時，記錄沙盒啟動或權限錯誤，先確認 WSL2 與發行版環境，依"
+            },
+            {
+              "type": "article",
+              "text": "權限教學",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "排查，不要一律關閉沙盒。找不到舊工作階段時，核對是否換了發行版、Linux 使用者或 CODEX_HOME；本篇不設定共用認證目錄，以免把登入和工具來源混在一起。後續回"
+            },
+            {
+              "type": "article",
+              "text": "CLI 共用入門",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "完成修改與還原，再接"
+            },
+            {
+              "type": "article",
+              "text": "上下文交接",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-cli-linux-wsl/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原創流程示意圖，非產品介面截圖。",
+          "caption": "原創流程示意圖，非產品介面截圖。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WSL with Codex",
+          "url": "https://learn.chatgpt.com/docs/windows/wsl",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows app and WSL authentication separation",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Install WSL",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/install",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WSL commands",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/basic-commands",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Linux and WSL CLI environments",
+      "description": "Distinguish host and WSL tools, paths and accounts, then run the exercise and update from the right environment.",
+      "hero": {
+        "src": "/guides/codex-cli-linux-wsl/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "Original workflow illustration, not a product screenshot."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and two entry routes"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Install Codex CLI in Linux or WSL2, distinguish host, distribution and file location, verify a read-only marker-file task and update correctly. Allow 12 minutes to read and 30 minutes to practice; first-time WSL installation, reboot and downloads are additional. This procedure was checked against official documentation on 2026-09-14, not run on Linux/WSL hardware. No Windows image is presented as a Linux screenshot."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "On a Linux computer, open its terminal and begin at step two. Windows users should decide whether Linux tooling is needed; native PowerShell can run Codex without WSL. Choose WSL2 for an existing Linux workflow or Linux-dependent project. It is an alternative to "
+            },
+            {
+              "type": "article",
+              "text": "Windows CLI",
+              "kind": "life",
+              "slug": "codex-cli-windows"
+            },
+            {
+              "type": "text",
+              "text": ", not an automatic migration for every Windows installation error."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Diagram 1 identifies the command environment, 2 installs and enters the Linux project, and 3 verifies files from that environment. Linux home directories, tools and credentials are separate by default. A successful Windows codex --version does not establish installation inside Ubuntu, and WSL authentication alone does not establish sign-in in the Windows desktop client."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Windows users verify WSL2"
+        },
+        {
+          "type": "paragraph",
+          "text": "Run this query in Windows PowerShell and inspect the distributions and VERSION column for 2. It is not a Linux-shell command. Preserve an existing WSL2 distribution. The current Codex Linux sandbox does not support WSL1. If your work is in WSL1, back it up and plan conversion with Microsoft's documentation rather than experimenting on its only copy."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell: inspect installed WSL distributions only",
+          "language": "powershell",
+          "code": "wsl --list --verbose\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Check winver first: Microsoft’s simplified wsl --install procedure requires Windows 11 or Windows 10 version 2004 (build 19041) or later. Older versions require the official manual installation procedure rather than the command below. If WSL is absent, confirm virtualization/WSL is permitted and follow Microsoft's instructions to run wsl --install in administrator PowerShell. Complete any requested reboot and Linux-user creation. This installs an operating-system environment, not just an npm package, so allow time to interrupt other work. Follow managed-device policy rather than bypassing it."
+        },
+        {
+          "type": "code",
+          "label": "Administrator PowerShell: only if WSL is absent and you chose to install it",
+          "language": "powershell",
+          "code": "wsl --install\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "With several distributions, use wsl --distribution followed by the full name shown in your list, quoted as needed, from PowerShell. Select the distribution before installing. Finding codex in distribution A does not establish its availability in B. If you later return to PowerShell, inspect command resolution again rather than applying Linux installation or file-hash records to Windows."
+        },
+        {
+          "type": "paragraph",
+          "text": "After setup, select your distribution in Terminal or run wsl from ordinary PowerShell to open the default distribution. With multiple distributions, choose the actual name shown by wsl --list --verbose rather than assuming Ubuntu exists. Once inside, prompts and paths use Linux conventions. All following steps run in that Linux shell."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: identify the shell, CLI and home directory"
+        },
+        {
+          "type": "code",
+          "label": "Linux/WSL shell: identify system, location and command sources",
+          "language": "bash",
+          "code": "uname -s\npwd\nprintf '%s\\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect Linux from uname. WSL_DISTRO_NAME identifies the distribution in WSL; an empty value on ordinary Linux is normal. Inspect command -v and type -a for the intended Linux installation. A Windows wrapper under /mnt/c is not evidence of a native Linux installation. Record the source, install inside Linux and verify which command the shell subsequently selects."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a new installation, verify and run the official standalone command, read the PATH instructions and open a new Linux terminal. Existing npm users can verify node/npm inside the same Linux environment and use npm install -g @openai/codex. Windows Node.js is not a substitute for that Linux setup. Choose one channel and keep updates consistent."
+        },
+        {
+          "type": "code",
+          "label": "Linux/WSL shell: official standalone installation route",
+          "language": "bash",
+          "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
+        },
+        {
+          "type": "code",
+          "label": "Linux/WSL shell: verify source and version in a new window after installation",
+          "language": "bash",
+          "code": "command -v codex\ncodex --version\ncodex --help\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Match installer output, executable path and version. If curl, sh or system utilities are missing, prepare them using your distribution's documentation rather than another distribution's package commands. CLI startup does not establish project dependencies or working sandbox execution; the file task checks the next layer."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: create the exercise in Linux home"
+        },
+        {
+          "type": "paragraph",
+          "text": "For WSL work executed by Linux tools, prefer Linux home such as ~/code. /mnt/c is a Windows filesystem mount, not another name for the same /home project. Leave production repositories in place for this exercise. The block below creates a new folder and stops without overwriting if it exists. Choose a new name if needed. It runs in a subshell; explicitly enter the folder afterward."
+        },
+        {
+          "type": "code",
+          "label": "Linux/WSL shell: run the whole block to create a new practice folder",
+          "language": "bash",
+          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Run the next block only after creation succeeds. A File exists error from mkdir protects prior data; it is not a reason to add sudo. Choose a new directory. After entering, expect two files, LINUX-CLI-01 and matching SHA-256 hashes. This compares identical local bytes, not a required match to Windows file hashes."
+        },
+        {
+          "type": "code",
+          "label": "Linux/WSL shell: enter, read and verify after successful creation",
+          "language": "bash",
+          "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 4: authenticate and read in that Linux environment"
+        },
+        {
+          "type": "code",
+          "label": "Linux/WSL shell: finish each line before running the next",
+          "language": "bash",
+          "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Wait for each command and follow the actual sign-in flow. WSL may use the host browser, but return to the Linux terminal to verify completion. Without a browser or working local callback, consult codex login --help and the official authentication page. Use codex login --device-auth only when your account and organization permit device authentication. Do not copy Windows credential files into a project as a login fix."
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: enter inside Codex CLI on Linux",
+          "language": "text",
+          "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "That is a Codex prompt, not a bash command. Expect the Linux practice directory, LINUX-CLI-01 and an actual read record. Next, request nonexistent note-missing.txt in the same Codex session and expect an explicit absence report without creation. Then use /exit to return to the shell and rerun sha256sum, cat and ls to confirm no changes. Both outcomes connect installation, authentication, location and reading into a verified workflow."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Files, updates and troubleshooting"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Location or tool",
+            "Environment",
+            "How to check"
+          ],
+          "rows": [
+            [
+              "C:\\Users path",
+              "Native Windows",
+              "Get-Location in PowerShell"
+            ],
+            [
+              "Project under /home",
+              "Linux / WSL filesystem",
+              "pwd in Linux shell"
+            ],
+            [
+              "Project under /mnt/c",
+              "Windows drive mounted in Linux",
+              "Do not confuse it with a /home copy"
+            ],
+            [
+              "Linux codex",
+              "CLI selected by Linux shell",
+              "Check command -v and version together"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "For slow Linux-tool workloads under /mnt/c, compare a new practice copy in Linux home before moving or deleting the only original. To inspect WSL through File Explorer, use the documented "
+            },
+            {
+              "type": "code",
+              "text": "\\\\wsl$"
+            },
+            {
+              "type": "text",
+              "text": " entry and choose the actual distribution. This accesses Linux files; it does not synchronize two copies. Identify directories through markers and pwd, not matching names alone."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Exit CLI and record the work summary before updating. Use the Linux installer again for standalone, or npm in the same Linux environment for npm installations. Check command -v and version in a new shell. wsl --update updates WSL, not Codex CLI; wsl --shutdown stops running WSL work and is not a routine required Codex installation step."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "If the shell can read but Codex cannot, record sandbox startup/access errors, confirm WSL2 and the distribution, and follow "
+            },
+            {
+              "type": "article",
+              "text": "permissions",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": " rather than disabling sandboxing by default. Missing old sessions may reflect a different distribution, Linux user or CODEX_HOME. This lesson does not share credential directories across environments. Return to "
+            },
+            {
+              "type": "article",
+              "text": "CLI basics",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": " for editing/restoration, then "
+            },
+            {
+              "type": "article",
+              "text": "context handoff",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-cli-linux-wsl/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "Original workflow illustration, not a product screenshot.",
+          "caption": "Original workflow illustration, not a product screenshot."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WSL with Codex",
+          "url": "https://learn.chatgpt.com/docs/windows/wsl",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows app and WSL authentication separation",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Install WSL",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/install",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WSL commands",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/basic-commands",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Linux／WSL の CLI とファイルの場所",
+      "description": "ホストと WSL のツール、パス、アカウントを区別し、正しい環境で練習と更新を行います。",
+      "hero": {
+        "src": "/guides/codex-cli-linux-wsl/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "独自の手順図です。製品画面の画像ではありません。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と二つの入口"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Linux または WSL2 で CLI を導入し、ホスト、ディストリビューション、ファイルの場所を区別して、印付きファイルの読み取り検証と更新を行います。読む時間約12分、操作約30分で、WSL 初回導入や再起動、取得時間は別です。2026-09-14の公式資料による確認で、Linux / WSL 実機では実行していません。Windows 画像を Linux 画面として使っていません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Linux PC ならその端末を開いて手順2へ進みます。Windows では Linux ツールが必要か判断します。ネイティブ PowerShell でも使えるため WSL は必須ではありません。Linux の開発環境や依存関係がある場合に WSL2 を選びます。"
+            },
+            {
+              "type": "article",
+              "text": "Windows CLI",
+              "kind": "life",
+              "slug": "codex-cli-windows"
+            },
+            {
+              "type": "text",
+              "text": "と並ぶ選択肢で、Windows のエラーすべてを移行で解決するわけではありません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "図の 1 は入力環境の識別、2 は導入と Linux プロジェクトへの移動、3 は同じ環境での検証です。Linux のホーム、ツール、認証情報は既定では別です。Windows の codex --version が成功しても Ubuntu 内の導入確認にはならず、WSL の認証だけで Windows デスクトップ側のログインも確認したとはいえません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：Windows で WSL2 を確認する"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows PowerShell で次を実行し、ディストリビューションと VERSION が 2 かを確認します。Linux シェルのコマンドではありません。既存の WSL2 は保ち、再導入や削除はしません。現行 Codex の Linux サンドボックスは WSL1 非対応です。WSL1 の作業は先にバックアップし、Microsoft 資料で変換を計画します。唯一のコピーで試さないでください。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：導入済み WSL ディストリビューションを確認する",
+          "language": "powershell",
+          "code": "wsl --list --verbose\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず winver で確認します。Microsoft の wsl --install による簡易導入は Windows 11、または Windows 10 2004（ビルド19041）以降が必要です。古い版は次のコマンドを流用せず、公式の手動導入手順を確認してください。 未導入なら仮想化と WSL が許可されているか確認し、Microsoft の案内で管理者 PowerShell から wsl --install を実行します。必要な再起動と Linux ユーザー作成を終えます。npm パッケージだけでなく OS 環境を追加するので、他の作業を中断する時間も確保します。管理端末では規則に従います。"
+        },
+        {
+          "type": "code",
+          "label": "管理者 PowerShell：WSL が未導入で、導入すると決めた場合のみ",
+          "language": "powershell",
+          "code": "wsl --install\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "複数のディストリビューションがある場合は、PowerShell で wsl --distribution の後に一覧にある完全な名前を必要に応じて引用符付きで指定します。導入前に対象を選んでください。A で codex が見つかっても B で利用できる証拠にはなりません。後で PowerShell に戻ったらコマンドの解決先を確認し直し、Linux の導入やハッシュ記録を Windows に当てはめないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "導入後は Terminal で対象を選ぶか、通常の PowerShell で wsl を実行して既定の環境を開きます。複数ある場合は一覧の実名を選び、Ubuntu があると決めつけません。入るとプロンプトとパスが Linux 形式になります。以降はすべてこの Linux シェルで行います。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：シェル、CLI、ホームを識別する"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL シェル：システム、場所、コマンド候補を確認する",
+          "language": "bash",
+          "code": "uname -s\npwd\nprintf '%s\\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "uname は Linux を示します。WSL_DISTRO_NAME は WSL のディストリビューションを示し、通常 Linux では空でも正常です。command -v と type -a で目的の Linux 導入元か調べます。/mnt/c の Windows ラッパーは Linux ネイティブ導入の証拠ではありません。元を記録し、Linux 内で導入して選択されるコマンドを確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新規導入は公式の独立コマンドを照合して実行し、PATH の案内を読んで新しい Linux 端末を開きます。npm 利用者は同じ Linux 内の node / npm を確認して npm install -g @openai/codex を使えます。Windows の Node.js は代わりになりません。一つの経路を選んで更新も統一します。"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL シェル：公式の独立インストーラーで導入する",
+          "language": "bash",
+          "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL シェル：導入後の新しい端末で場所と版を確認する",
+          "language": "bash",
+          "code": "command -v codex\ncodex --version\ncodex --help\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "導入出力、実行パス、版を一致させます。curl、sh、基本ツールがなければ自分のディストリビューションの資料で準備し、別のパッケージ管理命令を流用しません。起動だけでは依存関係やサンドボックスの動作確認にならないため、次の読み取りで確認します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：Linux ホームに課題を作る"
+        },
+        {
+          "type": "paragraph",
+          "text": "Linux ツールで動かす WSL 作業は ~/code など Linux ホームを優先します。/mnt/c は Windows のマウント先で、/home と同じプロジェクトの別名ではありません。この課題のために本番を移動しません。次は既存なら上書きせず停止する新規フォルダー作成です。必要なら別名を選びます。サブシェルなので終了後に明示的に移動します。"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL シェル：ブロック全体で新しい練習フォルダーを作る",
+          "language": "bash",
+          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "作成成功後だけ次へ進みます。mkdir の File exists は既存データを保護した結果で、sudo を付ける理由ではありません。新しい名前を選びます。移動後は二つのファイル、LINUX-CLI-01、一致する SHA-256 を確認します。ローカルのバイト比較であり、Windows のハッシュとの一致は要求しません。"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL シェル：作成成功後に移動、読み取り、照合する",
+          "language": "bash",
+          "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順4：同じ Linux 環境で認証して読む"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL シェル：一行が完了してから次を実行する",
+          "language": "bash",
+          "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "各コマンドの完了を待ち、実際の認証案内に従います。WSL でホストのブラウザーを使っても、Linux 端末へ戻って完了を確認します。ブラウザーやローカルのコールバックが使えなければ login --help と公式認証ページを確認します。アカウントと組織が許可する場合だけ --device-auth を使い、Windows の認証ファイルをプロジェクトへコピーして解決しません。"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：Linux 側の Codex CLI に入力する",
+          "language": "text",
+          "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "これは bash ではなく Codex の依頼です。Linux 練習フォルダー、LINUX-CLI-01、実際の読み取り記録を確認します。次に同じ Codex セッションで存在しない note-missing.txt を要求し、作成せず欠落を示すことを確認します。その後 /exit でシェルに戻り、sha256sum、cat、ls で不変を確かめます。二種類の結果で導入、認証、場所、読み取りの流れを検証します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "ファイルの場所、更新、問題解決"
+        },
+        {
+          "type": "table",
+          "header": [
+            "場所やツール",
+            "環境",
+            "確認"
+          ],
+          "rows": [
+            [
+              "C:\\Users のパス",
+              "Windows ネイティブ",
+              "PowerShell の Get-Location"
+            ],
+            [
+              "/home のプロジェクト",
+              "Linux / WSL ファイルシステム",
+              "Linux の pwd"
+            ],
+            [
+              "/mnt/c のプロジェクト",
+              "Linux から見た Windows ドライブ",
+              "/home のコピーと混同しない"
+            ],
+            [
+              "Linux の codex",
+              "Linux シェルが選ぶ CLI",
+              "command -v と版を照合"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/mnt/c の Linux 作業が遅ければ、唯一の原稿を移動や削除する前に Linux ホームの新しい練習コピーで比較します。エクスプローラーからは公式資料の "
+            },
+            {
+              "type": "code",
+              "text": "\\\\wsl$"
+            },
+            {
+              "type": "text",
+              "text": " 入口で実際の環境を選びます。Linux ファイルへのアクセスであって二つのコピーの同期ではありません。同名だけで判断せず、印と pwd を照合します。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "更新前に CLI を終了して要約を残します。独立版は Linux の公式インストーラー、npm 版は同じ Linux の npm を使い、新しいシェルでパスと版を確認します。wsl --update は WSL の更新で Codex の代用ではありません。wsl --shutdown は動作中の WSL 作業を止めるため、毎回の Codex 導入手順にはしません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "シェルでは読めて Codex では読めなければ起動や権限のエラーを記録し、WSL2 と環境を確認して"
+            },
+            {
+              "type": "article",
+              "text": "権限",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "を調べます。一律にサンドボックスを無効にしません。古いセッションがなければ環境、Linux ユーザー、CODEX_HOME の違いを確認します。本記事では認証ディレクトリを共有しません。"
+            },
+            {
+              "type": "article",
+              "text": "CLI 基礎",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "で変更と復元、その後"
+            },
+            {
+              "type": "article",
+              "text": "引き継ぎ",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "へ進みます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-cli-linux-wsl/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "独自の手順図です。製品画面の画像ではありません。",
+          "caption": "独自の手順図です。製品画面の画像ではありません。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WSL with Codex",
+          "url": "https://learn.chatgpt.com/docs/windows/wsl",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows app and WSL authentication separation",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Install WSL",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/install",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WSL commands",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/basic-commands",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Linux/WSL CLI와 파일 위치",
+      "description": "호스트와 WSL의 도구, 경로, 계정을 구분하고 올바른 환경에서 실습과 업데이트를 진행합니다.",
+      "hero": {
+        "src": "/guides/codex-cli-linux-wsl/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 두 가지 시작 경로"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Linux 또는 WSL2에서 CLI를 설치하고 호스트, 배포판, 파일 위치를 구분해 표식 파일 읽기 전용 검증과 업데이트를 진행합니다. 읽기 약 12분, 실습 약 30분이며 최초 WSL 설치, 재부팅, 다운로드는 별도입니다. 2026-09-14 공식 문서로 확인했으며 Linux/WSL 실기 실행은 하지 않았습니다. Windows 이미지를 Linux 화면으로 제시하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Linux 컴퓨터에서는 터미널을 열고 2단계부터 시작합니다. Windows 사용자는 Linux 도구가 필요한지 먼저 결정하세요. 네이티브 PowerShell에서도 Codex를 실행하므로 WSL이 필수는 아닙니다. 기존 Linux 작업 흐름이나 의존성이 있을 때 WSL2를 선택합니다. "
+            },
+            {
+              "type": "article",
+              "text": "Windows CLI",
+              "kind": "life",
+              "slug": "codex-cli-windows"
+            },
+            {
+              "type": "text",
+              "text": "의 대안이며 모든 Windows 설치 오류에 자동으로 이주하는 방식은 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "그림의 1은 명령 입력 환경 식별, 2는 설치와 Linux 프로젝트 이동, 3은 같은 환경에서 파일 검증입니다. Linux 홈, 도구, 인증 정보는 기본적으로 별도입니다. Windows의 codex --version 성공은 Ubuntu 내부 설치를 증명하지 않으며 WSL 인증만으로 Windows 데스크톱 로그인까지 확인할 수 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: Windows에서 WSL2 확인하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows PowerShell에서 아래를 실행해 배포판과 VERSION 값이 2인지 확인합니다. Linux 셸 명령이 아닙니다. 기존 WSL2는 유지하고 재설치하거나 삭제하지 않습니다. 현재 Codex Linux 샌드박스는 WSL1을 지원하지 않습니다. 작업이 WSL1에 있으면 먼저 백업하고 Microsoft 문서로 변환을 계획하며 유일한 사본으로 실험하지 마세요."
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell: 설치된 WSL 배포판만 조회",
+          "language": "powershell",
+          "code": "wsl --list --verbose\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 winver를 확인하세요. Microsoft의 wsl --install 간편 설치에는 Windows 11 또는 Windows 10 2004(빌드 19041) 이상이 필요합니다. 이전 버전은 아래 명령을 그대로 쓰지 말고 공식 수동 설치 절차를 확인합니다. WSL이 없다면 가상화와 WSL 허용 여부를 확인하고 Microsoft 안내에 따라 관리자 PowerShell에서 wsl --install을 실행합니다. 필요한 재부팅과 Linux 사용자 생성을 마칩니다. npm 패키지 하나가 아닌 운영체제 환경을 설치하므로 다른 작업을 중단할 시간도 확보하세요. 관리 장치는 정책을 따릅니다."
+        },
+        {
+          "type": "code",
+          "label": "관리자 PowerShell: WSL이 없고 설치를 결정한 경우에만 실행",
+          "language": "powershell",
+          "code": "wsl --install\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "배포판이 여러 개라면 PowerShell에서 wsl --distribution 뒤에 목록의 전체 이름을 필요에 따라 따옴표로 넣습니다. 설치 전에 배포판을 선택하세요. A에서 codex를 찾았다고 B에서도 사용할 수 있다는 뜻은 아닙니다. 이후 PowerShell로 돌아오면 명령을 찾는 위치를 다시 확인하고 Linux 설치나 파일 해시 기록을 Windows에 그대로 적용하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "설치 후 Terminal에서 배포판을 선택하거나 일반 PowerShell의 wsl로 기본 배포판을 엽니다. 여러 배포판이면 목록에 나온 실제 이름을 선택하고 Ubuntu가 있다고 가정하지 마세요. 들어가면 프롬프트와 경로가 Linux 형식이 됩니다. 이후 단계는 모두 이 Linux 셸에서 실행합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 셸, CLI, 홈 폴더 식별하기"
+        },
+        {
+          "type": "code",
+          "label": "Linux/WSL 셸: 시스템, 위치, 명령 출처 확인",
+          "language": "bash",
+          "code": "uname -s\npwd\nprintf '%s\\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "uname은 Linux가 예상됩니다. WSL_DISTRO_NAME은 WSL 배포판을 나타내며 일반 Linux에서 비어 있어도 정상입니다. command -v와 type -a가 의도한 Linux 설치를 가리키는지 봅니다. /mnt/c 아래 Windows 래퍼는 Linux 네이티브 설치 증거가 아닙니다. 원본을 기록하고 Linux 안에 설치한 뒤 실제 선택 명령을 다시 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "새 설치는 공식 독립 명령을 확인해 실행하고 PATH 안내를 읽은 뒤 새 Linux 터미널을 엽니다. 기존 npm 사용자는 같은 Linux 안에서 node/npm 버전을 확인하고 npm install -g @openai/codex를 쓸 수 있습니다. Windows Node.js가 Linux 설정을 대신하지 않습니다. 한 경로를 선택해 업데이트도 일치시킵니다."
+        },
+        {
+          "type": "code",
+          "label": "Linux/WSL 셸: 공식 독립 설치 경로",
+          "language": "bash",
+          "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
+        },
+        {
+          "type": "code",
+          "label": "Linux/WSL 셸: 설치 후 새 창에서 출처와 버전 확인",
+          "language": "bash",
+          "code": "command -v codex\ncodex --version\ncodex --help\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "설치 출력, 실행 경로, 버전을 맞춥니다. curl, sh, 기본 도구가 없다면 다른 배포판 명령을 복사하지 말고 자신의 배포판 문서로 준비하세요. CLI 실행만으로 프로젝트 의존성이나 샌드박스 작동이 검증되지는 않으므로 다음 파일 작업으로 확인합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: Linux 홈에 실습 만들기"
+        },
+        {
+          "type": "paragraph",
+          "text": "Linux 도구로 실행하는 WSL 작업은 ~/code 같은 Linux 홈을 우선합니다. /mnt/c는 Windows 파일 시스템 마운트이며 /home 프로젝트의 다른 이름이 아닙니다. 실습 때문에 실제 저장소를 이동하지 마세요. 아래는 폴더가 이미 있으면 덮지 않고 멈추므로 필요하면 새 이름을 선택합니다. 서브셸에서 실행되므로 끝난 뒤 명시적으로 이동합니다."
+        },
+        {
+          "type": "code",
+          "label": "Linux/WSL 셸: 블록 전체로 새 실습 폴더 만들기",
+          "language": "bash",
+          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "생성 성공 후에만 다음 블록을 실행합니다. mkdir의 File exists는 기존 데이터를 보호한 결과이며 sudo를 붙일 이유가 아닙니다. 새 폴더를 선택하세요. 이동 후 두 파일, LINUX-CLI-01, 같은 SHA-256을 확인합니다. 같은 로컬 바이트를 비교하는 것이며 Windows 파일 해시와 일치할 필요는 없습니다."
+        },
+        {
+          "type": "code",
+          "label": "Linux/WSL 셸: 생성 성공 후 이동, 읽기, 확인",
+          "language": "bash",
+          "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4단계: 같은 Linux 환경에서 인증하고 읽기"
+        },
+        {
+          "type": "code",
+          "label": "Linux/WSL 셸: 한 줄이 완료된 후 다음 줄 실행",
+          "language": "bash",
+          "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "각 명령을 기다리고 실제 인증 안내를 따릅니다. WSL이 호스트 브라우저를 쓰더라도 Linux 터미널에서 완료를 확인합니다. 브라우저나 로컬 콜백을 쓸 수 없으면 login --help와 공식 인증 페이지를 보세요. 계정과 조직이 허용할 때만 --device-auth를 사용하고 Windows 인증 파일을 프로젝트로 복사해 해결하지 마세요."
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: Linux의 Codex CLI 안에 입력",
+          "language": "text",
+          "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "bash 명령이 아닌 Codex 요청입니다. Linux 실습 폴더, LINUX-CLI-01, 실제 읽기 기록을 확인합니다. 이어서 같은 Codex 세션에서 없는 note-missing.txt를 요청해 생성 없이 없다고 명시하는지 확인합니다. 마친 뒤 /exit로 셸에 돌아와 sha256sum, cat, ls로 변경이 없음을 봅니다. 두 결과로 설치, 인증, 위치, 읽기를 하나의 흐름으로 검증합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "파일 위치, 업데이트, 문제 해결"
+        },
+        {
+          "type": "table",
+          "header": [
+            "위치나 도구",
+            "환경",
+            "확인 방법"
+          ],
+          "rows": [
+            [
+              "C:\\Users 경로",
+              "네이티브 Windows",
+              "PowerShell의 Get-Location"
+            ],
+            [
+              "/home 프로젝트",
+              "Linux / WSL 파일 시스템",
+              "Linux의 pwd"
+            ],
+            [
+              "/mnt/c 프로젝트",
+              "Linux에 마운트된 Windows 드라이브",
+              "/home 사본과 혼동하지 않기"
+            ],
+            [
+              "Linux codex",
+              "Linux 셸이 선택한 CLI",
+              "command -v와 버전 함께 확인"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "/mnt/c의 Linux 도구 작업이 느리면 유일한 원본을 옮기거나 지우기 전에 Linux 홈의 새 연습 사본으로 비교합니다. 탐색기에서는 공식 문서의 "
+            },
+            {
+              "type": "code",
+              "text": "\\\\wsl$"
+            },
+            {
+              "type": "text",
+              "text": " 입구로 실제 배포판을 선택합니다. Linux 파일 접근이며 두 사본 동기화가 아닙니다. 같은 이름만 보지 말고 표식과 pwd로 구분하세요."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "업데이트 전에 CLI를 종료하고 요약을 남깁니다. 독립 버전은 Linux 공식 설치 프로그램, npm 버전은 같은 Linux의 npm을 사용하고 새 셸에서 경로와 버전을 확인합니다. wsl --update는 Codex가 아닌 WSL 업데이트입니다. wsl --shutdown은 실행 중인 WSL 작업을 중지하므로 매번 Codex 설치의 필수 단계로 쓰지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "셸은 읽지만 Codex가 못 읽으면 샌드박스 시작/접근 오류를 기록하고 WSL2와 배포판을 확인한 뒤 "
+            },
+            {
+              "type": "article",
+              "text": "권한",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "을 점검하며 일괄 해제하지 않습니다. 이전 세션이 없으면 배포판, Linux 사용자, CODEX_HOME 변경을 확인합니다. 이 글은 환경 간 인증 폴더를 공유하지 않습니다. "
+            },
+            {
+              "type": "article",
+              "text": "CLI 기초",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "에서 수정과 복구를 마치고 "
+            },
+            {
+              "type": "article",
+              "text": "맥락 인계",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "로 이어가세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-cli-linux-wsl/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다.",
+          "caption": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WSL with Codex",
+          "url": "https://learn.chatgpt.com/docs/windows/wsl",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows app and WSL authentication separation",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Install WSL",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/install",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WSL commands",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/basic-commands",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Linux／WSL CLI 与档案位置",
+      "description": "辨识主机与 WSL 的工具、路径和帐号，从正确目录执行相同练习并更新 CLI。",
+      "hero": {
+        "src": "/guides/codex-cli-linux-wsl/hero.jpg",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        },
+        "alt": "原创流程示意图，非产品界面截图。"
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与两条入口"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "在 Linux 或 Windows 的 WSL2 中安装 Codex CLI，分辨主机、发行版与档案位置，完成标记档唯读验证及更新。阅读约 12 分钟，操作约 30 分钟；初次安装 WSL、重开机与下载另计。本篇依 2026-09-14 官方文件查证，未在 Linux／WSL 实机执行，也没有使用 Windows 画面冒充 Linux 截图。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本来就在 Linux 电脑上，直接开该系统的 Terminal，从步骤二开始。Windows 使用者先决定是否真的需要 Linux 工具；原生 PowerShell 可以使用 Codex，不必为了 CLI 强制加装 WSL。已有 Linux 开发环境或专案依赖 Linux 时才走 WSL2。两者的选择与"
+            },
+            {
+              "type": "article",
+              "text": "Windows CLI",
+              "kind": "life",
+              "slug": "codex-cli-windows"
+            },
+            {
+              "type": "text",
+              "text": "并列，不是 Windows 安装失败就无条件搬家。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "图中 1 是辨认正在输入指令的环境，2 是安装并进入 Linux 专案，3 是从同一环境读档验收。Linux 的家目录、工具和认证预设各自存在；在 Windows 成功执行 codex --version，不能证明 Ubuntu 里也已安装。反过来，WSL 的登入完成也不能单凭这点判定 Windows 桌面端已登入。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤一：Windows 使用者确认 WSL2"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Windows PowerShell 执行下面的查询，先看是否已有发行版，以及 VERSION 栏是否为 2。这不是 Linux shell 命令。已有 WSL2 就保留它，不重灌、不删除发行版。官方现行 Codex Linux 沙盒不支援 WSL1；若现有专案还在 WSL1，先备份并依 Microsoft 文件规划转换，不要对唯一的工作副本直接试改。"
+        },
+        {
+          "type": "code",
+          "label": "Windows PowerShell：只查询已安装的 WSL 发行版",
+          "language": "powershell",
+          "code": "wsl --list --verbose\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "先用 winver 核对 Windows 版本；Microsoft 的 wsl --install 简化流程要求 Windows 11，或 Windows 10 2004（组建 19041）以上。旧版请用官方手动安装文件，不要直接套用下面命令。 没有安装 WSL 的读者，先确认电脑政策允许启用虚拟化与 WSL，再按 Microsoft 文件在系统管理员 PowerShell 执行 wsl --install，依提示重开机与建立 Linux 使用者。这是安装作业系统环境，不是只下载一个 npm 套件；需要安排中断其他工作的时间。公司电脑依管理政策处理，不另教绕过限制。"
+        },
+        {
+          "type": "code",
+          "label": "管理员 PowerShell：仅限尚未安装且已决定使用 WSL",
+          "language": "powershell",
+          "code": "wsl --install\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "有多个发行版时，可在 PowerShell 使用 wsl --distribution 加上清单中的完整名称，例如把自己的名称放在引号内。先选对发行版再安装；不要在发行版 A 查到 codex，就跳到发行版 B 宣称已可使用。完成本篇后若切回 PowerShell，必须重新辨识命令来源，不把 Linux 的安装或档案杂凑纪录套到 Windows。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安装完成后在 Terminal 选自己的 Linux 发行版，或于一般 PowerShell 执行 wsl 进入预设发行版。有多个发行版时，用 wsl --list --verbose 的真实名称选择，不要照抄不一定存在的 Ubuntu。进入后提示符号与路径变成 Linux 形式；以下步骤全部在这个 Linux shell 执行。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤二：辨认 shell、CLI 和家目录"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL shell：辨识系统、位置与命令来源",
+          "language": "bash",
+          "code": "uname -s\npwd\nprintf '%s\\n' \"$WSL_DISTRO_NAME\"\ncommand -v codex\ntype -a codex\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "uname 预期显示 Linux；WSL_DISTRO_NAME 在 WSL 会指出发行版，一般 Linux 留空是合理的。command -v 与 type -a 应指向你打算在 Linux 使用的安装；若出现 /mnt/c 下的 Windows 包装程式，不要只因命令能跑就当成 Linux 安装。先记录来源，后续把 CLI 安装在 Linux 环境，并重新核对 shell 实际选到哪一份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新装使用官方独立安装命令，先核对来源，完成后阅读 PATH 指示并开新 Linux 终端机。已用 npm 的读者可在同一个 Linux 环境确认 node 和 npm 版本，再用 npm install -g @openai/codex；不把 Windows 的 Node.js 当作 Linux 的前置依赖。一次选一种管道，之后更新保持一致。"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL shell：官方独立安装路线",
+          "language": "bash",
+          "code": "curl -fsSL https://chatgpt.com/codex/install.sh | sh\n"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL shell：安装后在新视窗查来源与版本",
+          "language": "bash",
+          "code": "command -v codex\ncodex --version\ncodex --help\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "安装输出、实际路径和版本三者要能对上。curl、sh 或系统工具本身不存在时，先依你的 Linux 发行版文件准备工具；不要照抄另一个发行版的套件管理指令。CLI 能启动仍不代表专案依赖或 Linux 沙盒已正常；后面的实际读档会检查第二层。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤三：在 Linux 家目录建立练习档"
+        },
+        {
+          "type": "paragraph",
+          "text": "WSL 专案若由 Linux 工具执行，优先放在 Linux 家目录，例如 ~/code 下；/mnt/c 是 Windows 档案系统的挂载入口，与 /home 不是两个名称指向同一份专案。不要为了本练习搬动正式专案。下面用新资料夹示范，若目录已存在会保留内容并停止建立；换新名字再试。整个区块在子 shell 执行，结束后依下一段明确切入。"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL shell：整段建立全新练习资料夹",
+          "language": "bash",
+          "code": "(\n  set -e\n  cd ~\n  mkdir 'codex linux lab'\n  cd 'codex linux lab'\n  printf '%s\\n' 'LINUX-CLI-01' > note.txt\n  cp note.txt note.original.txt\n  pwd\n  ls\n)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立成功才执行下一个区块。若 mkdir 显示 File exists，表示它保护了原资料，并不是需要加 sudo；先选新目录。切入后应看到两个档案及 LINUX-CLI-01，两份 SHA-256 相同。这个相同是本机两份相同位元组的比对，不要求与 Windows 的档案杂凑一致。"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL shell：建立成功后进入、读取与核对",
+          "language": "bash",
+          "code": "cd ~/\"codex linux lab\"\npwd\ncat note.txt\nsha256sum note.txt note.original.txt\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤四：在同一个 Linux 环境登入与读取"
+        },
+        {
+          "type": "code",
+          "label": "Linux／WSL shell：每行完成后才执行下一行",
+          "language": "bash",
+          "code": "codex login\ncodex login status\ncodex --sandbox read-only\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "逐行等候完成，依实际登入画面处理；WSL 可能透过主机浏览器完成认证，完成页出现后仍要回 Linux 终端机确认登入结果。没有浏览器或本机回呼不可用时，先查 codex login --help 及官方认证页；只有帐号与组织允许装置码流程时，才用 codex login --device-auth。不要把 Windows 认证档复制到专案来解决登入。"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：在 Linux 的 Codex CLI 输入",
+          "language": "text",
+          "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "上段是 Codex 对话，不是 bash 命令。要求的目录应是 Linux 练习资料夹，标记 LINUX-CLI-01；同时看实际读取记录。接著在同一个 Codex 工作阶段要求读取不存在的 note-missing.txt，预期清楚回报缺档而不新增。完成后才用 /exit 回 shell，重跑 sha256sum、cat 和 ls，核对没有改动。能完成这两种结果，才验证安装、登入、定位与读取串在一起。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "档案位置、更新与排错"
+        },
+        {
+          "type": "table",
+          "header": [
+            "位置或工具",
+            "代表的环境",
+            "本篇怎么判断"
+          ],
+          "rows": [
+            [
+              "C:\\Users 路径",
+              "Windows 本机",
+              "在 PowerShell 用 Get-Location"
+            ],
+            [
+              "/home 下的专案",
+              "Linux／WSL 的档案系统",
+              "在 Linux shell 用 pwd"
+            ],
+            [
+              "/mnt/c 下的专案",
+              "Linux 看到的 Windows 挂载磁碟",
+              "不当成 /home 的另一个副本"
+            ],
+            [
+              "Linux 的 codex",
+              "Linux shell 选到的 CLI",
+              "command -v 与版本一起核对"
+            ]
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果 Linux 工具专案放在 /mnt/c 而操作很慢，先用新的 Linux 家目录练习副本比较，不要直接移动或删除唯一原稿。需要从 Windows 档案总管检视 WSL，可用官方文件说明的 "
+            },
+            {
+              "type": "code",
+              "text": "\\\\wsl$"
+            },
+            {
+              "type": "text",
+              "text": " 入口选实际发行版；这是存取 Linux 档案，不是把两份内容同步。两个目录都存在时，用标记与 pwd 判断，不凭同名资料夹猜测。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "更新前先退出 CLI 并记录工作摘要。独立版重跑 Linux 的官方安装命令，npm 版用同一个 Linux 的 npm 更新，然后开新 shell 核对 command -v 和版本。wsl --update 更新的是 WSL，不能代替 CLI 更新；wsl --shutdown 会停止 WSL 执行中的工作，不要把它当作每次安装 Codex 必做的步骤。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "shell 能读、Codex 不能读时，记录沙盒启动或权限错误，先确认 WSL2 与发行版环境，依"
+            },
+            {
+              "type": "article",
+              "text": "权限教学",
+              "kind": "life",
+              "slug": "codex-permissions"
+            },
+            {
+              "type": "text",
+              "text": "排查，不要一律关闭沙盒。找不到旧工作阶段时，核对是否换了发行版、Linux 使用者或 CODEX_HOME；本篇不设定共用认证目录，以免把登入和工具来源混在一起。后续回"
+            },
+            {
+              "type": "article",
+              "text": "CLI 共用入门",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "完成修改与还原，再接"
+            },
+            {
+              "type": "article",
+              "text": "上下文交接",
+              "kind": "life",
+              "slug": "codex-context-handoff"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-cli-linux-wsl/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          },
+          "alt": "原创流程示意图，非产品界面截图。",
+          "caption": "原创流程示意图，非产品界面截图。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex CLI",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Authentication",
+          "url": "https://learn.chatgpt.com/docs/auth",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Developer commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WSL with Codex",
+          "url": "https://learn.chatgpt.com/docs/windows/wsl",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows app and WSL authentication separation",
+          "url": "https://learn.chatgpt.com/docs/windows/windows-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Install WSL",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/install",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WSL commands",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/basic-commands",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

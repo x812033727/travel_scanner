@@ -242,7 +242,10 @@ class CodeBlock(StrictModel):
         "typescript",
         "python",
         "yaml",
+        "sh",
+        "shell",
         "toml",
+        "csv",
     ] = "text"
     label: NonemptyText = Field(max_length=160)
     code: Annotated[str, AfterValidator(code_text)] = Field(min_length=1, max_length=24000)
@@ -589,6 +592,7 @@ class SeriesEntry(ArticleReference):
     aliases: list[str]
     description: str
     minutes: int
+    operation_minutes: int | None = None
 
 
 class SeriesGroup(BaseModel):

@@ -1,0 +1,333 @@
+{
+  "slug": "notebooklm-conflicting-sources",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 158,
+  "locales": {
+    "zh-TW": {
+      "title": "NotebookLM 引用查核：矛盾資料、缺證據與未知答案",
+      "description": "有來源連結的回答，仍可能誤讀日期、把提案當定案，或替未指派的人安排工作。本篇用三份互相補充又有矛盾的虛構文件，建立五列證據矩陣。完成後，你能區分資料支持、尚未決定與根本沒有答案的情況，保存原文位置，並用實際錯誤練習修正提示詞。",
+      "hero": {
+        "src": "/guides/notebooklm-conflicting-sources/hero.jpg",
+        "alt": "引用查核：支持或未知教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "有來源連結的回答，仍可能誤讀日期、把提案當定案，或替未指派的人安排工作。本篇用三份互相補充又有矛盾的虛構文件，建立五列證據矩陣。完成後，你能區分資料支持、尚未決定與根本沒有答案的情況，保存原文位置，並用實際錯誤練習修正提示詞。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/notebooklm-conflicting-sources/diagram-1.svg",
+          "alt": "支持：明確取代舊值：名額修訂為 30；未決：日期只是提案：不能當成定案；未知：沒有餐點資料：引用可保留空白；修正：保存原始回答：主張與引文同查",
+          "width": 1600,
+          "height": 900,
+          "caption": "名額修訂為 30 人，日期提案待確認，餐點資料未知。五列矩陣與引用已實測；假引文及錯誤主張另做離線檢查。原創概念圖，非介面截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "準備：先固定本次資料範圍",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀 "
+            },
+            {
+              "type": "link",
+              "text": "來源版本管理",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-source-versioning"
+            },
+            {
+              "type": "text",
+              "text": "，下載本篇練習包。original/58 保留作者教材、參考矩陣與可重做欄位；live 則保存本次實測。需要電腦瀏覽器、可建立筆記本的 Google 帳號與來源存取權。本篇於 2026-09-15 使用 Windows、Chrome、個人 Google AI Pro 完成三次提問；未呼叫 API、未新增付費項目。介面未顯示後端模型型號，不推定版本；手機未實測。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件目前使用 Gemini Notebook 名稱。建立獨立筆記本，在「來源」加入 original/58/sources 內的 E1.md、E2.md、E3.md，等處理完成，逐份開啟核對原文，再勾選三份來源。這些是作者合成教材，沒有真實活動或個資；若加入其他來源，先記錄變更，不能把外部資訊默認成教材內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "E1 是原報名公告；E2 正式修訂名額，但只提出尚未決定的改期；E3 說明分工與缺資料之處。自行圈出「替代」「也許」「尚未」等條件。日期較晚提供排序，文件內容才決定是否取代舊說法。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：把問題拆成可查的主張",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "列出有效名額、日期、報名表負責人、報名成功條件、退款金額五個問題，再把下面提示詞貼進對話框。先要求可逐項判斷的主張，避免流暢公告把不同確定程度混在一起。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "prompt.txt",
+          "code": "只用選取的 E1、E2、E3 回答五個問題：有效名額、活動日期、報名表負責人、報名成功條件、退款金額。每項分成主張、來源、原文位置與判斷。明確修訂與未確認提案分開，找不到就寫未知；不要用提問句替代證據。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "等待完成後，使用回答下方「儲存至記事」，命名為「五項原始回答 v1」。把答案另存，保留原稿與作者參考矩陣，接著逐列填主張、狀態、來源 ID、章節、原文與判斷。不要讓模型自行宣告可信就算驗收，也不要直接覆寫錯誤版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本次首輪回答正確找出 30 人，卻把日期寫成「唯一確定之預定日期」，還將確認信描述為「唯一必要條件」。原文只有預定日期與確認信條件，未支持這些額外確定性。這是實際回覆問題，不是為教學虛構的模型錯誤；完整答案見下載包 initial.json。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：點開引用檢查支持關係",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在每列引用標記查看預覽，再點擊回到來源，核對文件 ID、章節、主詞與限制詞。不要依賴數字固定對應哪份文件：本次不同回答的引用排序就不同。名額列需看到 E2 明確取代 E1；「小安負責教材」只支持教材分工，不能推出他也負責報名表。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "問題",
+            "參考判斷；本次修正版也符合",
+            "必須核對的原文位置"
+          ],
+          "rows": [
+            [
+              "有效名額",
+              "supported：30 人",
+              "E1／E2 的 CAP，正式取代 24 人"
+            ],
+            [
+              "日期是否改期",
+              "conflict：原預定 10 月 3 日；10 月 4 日提案待確認",
+              "E1／E2 的 DATE，保留「也許」「尚未決定」"
+            ],
+            [
+              "報名表負責人",
+              "unknown：尚未指派",
+              "E3 OWNER，不能把教材負責人移用"
+            ],
+            [
+              "報名成功條件",
+              "supported：收到確認信才算成功",
+              "E1 CONFIRM，不擴大為唯一條件"
+            ],
+            [
+              "退款金額",
+              "unknown",
+              "E3 COST，未提供費用或退款資訊"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "supported 表示來源支持這個範圍內的主張；conflict 在這張工作表表示需要保留資訊、等待決定，並非兩個日期都已定案；unknown 表示問題尚無可採用答案。負責人列的「未指派」有明文，具體人選仍未知。狀態要配合問題與判斷讀，不能只看標籤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "短文件可能顯示整份來源，仍須找章節與關鍵句。本次保留十七筆回答引用觀察，其中修正版七筆涵蓋全部五列；三份來源全文均與教材核對。原文有引用不代表整句解讀正確，引用數量也不是可靠度分數。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：讓未知有可追蹤的出口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "再問：「只用這三份來源，活動有沒有餐點、停車位，退款金額多少？分開已知、缺資料與需要補件的證據。」餐點與停車沒有資料，合理答案是未知，不能推論沒有供餐或一定有停車。本次回答都保留未知，但在缺資料敘述後掛上 E1 引用，容易被誤認為直接支持答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把「已查 E1、E2、E3」放在查閱範圍，支持原文另留空。退款不同：E3 確實寫出未提供資訊，可以引用這句說明缺口，但仍不能推論不能退款。補件需求可以寫活動交通資訊、行前通知、有效退費條款；取得之前不要自己填數字。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "未知是證據範圍的紀錄。需要補件時保留缺口，不為了填滿表格編造引文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是可重用的修正提示詞節錄；完整實際提示保存在 corrected.json。套用其他資料時，替換來源 ID、問題與誤讀句子，先自行核對原文，不照搬本篇結論。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "text",
+          "code": "只用 E1、E2、E3 修訂。E1 的日期只寫「預定」；E2 較晚但改期只是「也許」，不能全部覆蓋。\n確認信條件不要擴大成「唯一必要條件」。\n輸出 C1–C5 五列：ID、主張、狀態、來源 ID、章節、逐字原文、判斷，附可點擊引用。\n日期保留原預定日與待確認提案。退款缺資訊不等於不能退款。\n另列 U1 餐點、U2 停車：unknown，支持原文留空，另寫已查來源與補件需求。\n最後說明相對首輪改了什麼，不使用外部搜尋。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "本次修正版移除過度確定用語，餐點與停車支持引文留空，另列查閱範圍。保存為「五項證據矩陣 v2」，重開筆記與引用確認仍可追查；本次三份回答、三份筆記保存成功，重開修正版日期引用仍看到 E2 的未定案句子。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下載包 evidence-matrix.csv 是從修正版文字整理的衍生檔，不是產品直接匯出的 CSV。原回覆把二級章節寫成四級，部分換行顯示 HTML 標記文字；整理時移除介面引用數字、轉成章節名稱與分欄，保留主張和判斷。原始輸出完整保留，讀者可比對 normalization.json 的整理紀錄。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：做一次假引用故障練習",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本機需要 Python。解壓後先在根目錄驗檔，再執行刻意製造的兩種故障；這些指令只處理下載教材，不呼叫 Google。請以實際解壓目錄作為終端機工作目錄。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "powershell",
+          "code": "python verify_archive.py\npython original/research_checks.py evidence live/fault-lab/reviewed\npython original/research_checks.py evidence live/fault-lab/fake-quote\npython original/research_checks.py evidence live/fault-lab/bad-claim\npython original/research_checks.py evidence live/fault-lab/repaired\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "fake-quote 把 E2 引文改成不存在的「總共有 54 人」，本次確實得到 fabricated_quote；這個非零結束是預期拒絕。bad-claim 保留真正引文，只把主張改成 54 人，字串檢查仍通過，人工必須拒絕：同一活動版本取代不能相加。repaired 還原 30 人後通過。四份輸出已保存，這些是本機故障，不是假稱模型曾答 54 人。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "另一種語意故障是較晚文件全部勝出。把名額與日期並排，要求逐項找「正式取代」或「仍在討論」的依據，再修訂。完成後交付五列矩陣、原始答案、未知清單與修正差異。接著用 "
+            },
+            {
+              "type": "link",
+              "text": "備考題庫",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-study-retrieval-practice"
+            },
+            {
+              "type": "text",
+              "text": " 練習答案查核，或用 "
+            },
+            {
+              "type": "link",
+              "text": "研究比較矩陣",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-paper-comparison-matrix"
+            },
+            {
+              "type": "text",
+              "text": " 延伸到研究方法與限制。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "模型附了很多引用，可以直接採用嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "不能以數量代替審閱。逐列比對主詞、時間與條件；同一文件重複引用也不等於獨立證據。本次名額正確，日期和確認信措辭仍需修正。"
+        },
+        {
+          "type": "heading",
+          "text": "檢查器通過，代表語意也正確嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "它只驗五列、來源、狀態與引文存在，不能識別誤讀。輸出的 modelCitationClicksTested: false 表示離線程式不測瀏覽器，真實點擊另看實測紀錄，兩者不能互相取代。"
+        },
+        {
+          "type": "heading",
+          "text": "新來源補齊未知後，需要更新什麼？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "更新來源清單、矩陣狀態與理由，再檢查受影響的公告或報告。保留原本未知與新依據，讓下一位讀者能追查更正原因。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 入門：資料、筆記本與引用",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 資料版本管理：來源清單、更新與過期內容",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-source-versioning"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 備考實作：題庫、錯題分類與間隔複習",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-study-retrieval-practice"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 58 篇練習與真實實測增補",
+          "url": "https://mokaair.com/guides/notebooklm-conflicting-sources/lesson-58-live-20260915.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組研究練習與本機檢查程式",
+          "url": "https://mokaair.com/guides/notebooklm-conflicting-sources/research-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Notebook 聊天與引用",
+          "url": "https://support.google.com/gemininotebook/answer/16179559",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "來源範圍與匯入",
+          "url": "https://support.google.com/gemininotebook/answer/16215270?hl=en",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

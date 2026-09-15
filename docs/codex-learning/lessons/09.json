@@ -1,0 +1,65 @@
+{
+  "id": 9,
+  "sources": [
+    "agent-configuration/agents-md",
+    "build-skills"
+  ],
+  "code": {
+    "language": "markdown",
+    "code": "# Practice project\n\n## Goal\nCreate one readable profile card.\n\n## Checklist\n- [ ] Open index.html in a browser\n- [ ] Check a narrow viewport\n\n[Project instructions](AGENTS.md)\n\n```shell\ngit status --short\n```"
+  },
+  "text": {
+    "zh-TW": [
+      "Markdown 是用純文字標記標題、清單、連結與程式碼的格式，常見副檔名是 .md。README.md 通常用來說明專案，AGENTS.md 提供代理工作規則，SKILL.md 描述可重用技能；不是所有 MD 檔都會被 Codex 自動當作指令。",
+      "準備文字編輯器，顯示檔案副檔名，避免存成 README.md.txt。Windows 可用記事本另存 UTF-8；macOS 的 TextEdit 要先轉成純文字；Linux 可用純文字編輯器。所有平台都保留實際的換行。",
+      [
+        "在練習資料夾建立 README.md，貼入下方內容。# 是主標，## 是段落標題；標題與清單前後保留空行。",
+        "用 - 建立清單，用 - [ ] 表示未完成項目。實際驗證完成後才改成 - [x]，不要讓文件勾選與檔案狀態分離。",
+        "連結採用方括號標籤接圓括號目的地。範例是相對路徑，只有同資料夾真的有 AGENTS.md 才能打開；尚未建立時先記為下一篇的練習。",
+        "三個反引號包住程式碼，第一行可加 shell、python 或 markdown。預覽時確認符號沒有被當成正文，回到純文字檢查原始碼再存檔。"
+      ],
+      "README.md 可在文字編輯器讀取，預覽時有正確標題、清單與程式碼區塊。檔名沒有多餘 .txt，連結能在目標存在後開啟。",
+      "Word 產生的格式化文件不是純文字 MD。把檔案放進資料夾不代表代理已讀取；要它參考一般設計文件時，在需求中明確指出檔名。",
+      "請讀取 README.md，解釋標題、待辦清單、相對連結與程式碼區塊。先不要修改，指出哪些連結目標目前不存在。"
+    ],
+    "en": [
+      "Markdown uses plain-text markers for headings, lists, links and code, commonly in .md files. README.md explains a project, AGENTS.md supplies agent instructions and SKILL.md defines a reusable skill. An arbitrary MD file is not automatically an instruction source.",
+      "Use a plain-text editor and show file extensions so README.md does not become README.md.txt. Windows Notepad can save UTF-8; set macOS TextEdit to plain text; use a plain-text editor on Linux. Preserve actual line breaks.",
+      [
+        "Create README.md in the practice folder and paste the sample. # is a main heading and ## a section heading. Leave blank lines around headings and lists.",
+        "Use - for lists and - [ ] for unfinished checks. Change a box to - [x] only after verifying the behavior, not because the document looks finished.",
+        "A Markdown link uses a bracketed label followed by a parenthesized destination. The sample is relative: it works only when AGENTS.md exists in the same folder. Create it in the next lesson.",
+        "Fence code with three backticks and optionally identify shell, python or markdown. Check both preview and source before saving so the fence is not accidentally rendered as prose."
+      ],
+      "The file remains readable as text and previews with headings, a checklist and a code block. It has no extra .txt extension, and links work once their targets exist.",
+      "A formatted Word document is not a plain-text MD file. A file's presence does not prove the agent read it; reference ordinary design documents explicitly in your request.",
+      "Read README.md and explain its headings, checklist, relative link and code block. Do not edit it. Identify any link targets that do not exist."
+    ],
+    "ja": [
+      "Markdown は見出し、一覧、リンク、コードを純粋なテキストで表す形式です。README.md は説明、AGENTS.md は代理の作業規則、SKILL.md は再利用する技能を扱います。すべての MD が自動的に指示として読まれるわけではありません。",
+      "拡張子を表示して README.md.txt になるのを防ぎます。Windows は UTF-8 のメモ帳、macOS は標準テキストにした TextEdit、Linux はテキストエディターを使えます。",
+      [
+        "練習フォルダーに README.md を作り、例を貼ります。# は主見出し、## は節の見出しです。見出しや一覧の前後に空行を入れます。",
+        "- で一覧、- [ ] で未完了の項目を作ります。実際に確認してから - [x] に変更します。",
+        "リンクは角括弧のラベルと丸括弧の参照先です。例の相対リンクは同じフォルダーに AGENTS.md が存在する場合だけ開けます。次の記事で作成します。",
+        "コードは三つのバッククォートで囲み、shell などの言語名を付けます。保存前にプレビューと元のテキストの両方を確認します。"
+      ],
+      "テキストとして読め、プレビューに見出し、一覧、コードが表示されれば完了です。拡張子と参照先も確認します。",
+      "Word の書式付き文書は純粋な MD ではありません。普通の設計ファイルは依頼で明示的に参照させます。",
+      "README.md の見出し、チェックリスト、相対リンク、コードを説明してください。編集せず、存在しない参照先を指摘してください。"
+    ],
+    "ko": [
+      "Markdown은 제목, 목록, 링크와 코드를 일반 텍스트 기호로 표현하는 형식입니다. README.md는 프로젝트 설명, AGENTS.md는 에이전트 규칙, SKILL.md는 재사용할 스킬을 다룹니다. 모든 MD 파일이 자동으로 지침이 되는 것은 아닙니다.",
+      "확장자를 표시하여 README.md.txt로 저장되는 것을 막으세요. Windows 메모장은 UTF-8, macOS TextEdit는 일반 텍스트, Linux는 텍스트 편집기를 사용합니다.",
+      [
+        "연습 폴더에 README.md를 만들고 예시를 붙입니다. #은 큰 제목, ##은 절 제목이며 제목과 목록 앞뒤에 빈 줄을 둡니다.",
+        "-로 목록, - [ ]로 미완료 항목을 만듭니다. 실제 확인 후에만 - [x]로 바꿉니다.",
+        "링크는 대괄호 라벨과 소괄호 대상입니다. 예시의 상대 링크는 같은 폴더에 AGENTS.md가 있어야 열립니다. 다음 글에서 만듭니다.",
+        "코드는 백틱 세 개로 감싸고 shell 같은 언어를 지정할 수 있습니다. 저장 전 미리보기와 원문을 모두 확인합니다."
+      ],
+      "텍스트로 읽을 수 있고 미리보기에 제목, 목록과 코드가 표시되면 완료입니다. 확장자와 링크 대상도 확인합니다.",
+      "Word 서식 문서는 일반 MD가 아닙니다. 일반 설계 문서를 읽게 하려면 요청에 파일명을 명확히 적으세요.",
+      "README.md의 제목, 체크리스트, 상대 링크와 코드 블록을 설명하세요. 편집하지 말고 존재하지 않는 링크 대상을 알려 주세요."
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-09-14T04:50:06.741Z",
+  "environment": "Windows / Edge 153.0.4234.32 / 4x CPU slowdown",
+  "checks": [
+    "reload and immediate back 1"
+  ],
+  "failure": {
+    "message": "expect(locator).toHaveValue(expected) failed\n\nLocator:  locator('main select').nth(3)\nExpected: \"D\"\nReceived: \"E\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.value\" with timeout 5000ms\n  - waiting for locator('main select').nth(3)\n    13 × locator resolved to <select class=\"mt-1 min-h-11 w-full rounded-lg border border-[var(--line)] bg-[var(--paper)] px-3\">…</select>\n       - unexpected value \"E\"\n",
+    "navigation": {
+      "currentIndex": 4,
+      "entries": [
+        {
+          "id": 2,
+          "url": "about:blank",
+          "userTypedURL": "about:blank",
+          "title": "",
+          "transitionType": "auto_toplevel"
+        },
+        {
+          "id": 4,
+          "url": "http://127.0.0.1:3123/ja/life/codex-learning-hub?q=AGENTS.md",
+          "userTypedURL": "http://127.0.0.1:3123/ja/life/codex-learning-hub",
+          "title": "Codex 学習ガイド：全記事の目次",
+          "transitionType": "typed"
+        },
+        {
+          "id": 6,
+          "url": "http://127.0.0.1:3123/ja/life/codex-learning-hub?q=AGENTS.md&unit=D",
+          "userTypedURL": "http://127.0.0.1:3123/ja/life/codex-learning-hub",
+          "title": "Codex 学習ガイド：全記事の目次",
+          "transitionType": "reload"
+        },
+        {
+          "id": 8,
+          "url": "http://127.0.0.1:3123/ja/life/codex-learning-hub?q=AGENTS.md",
+          "userTypedURL": "http://127.0.0.1:3123/ja/life/codex-learning-hub",
+          "title": "Codex 学習ガイド：全記事の目次",
+          "transitionType": "typed"
+        },
+        {
+          "id": 10,
+          "url": "http://127.0.0.1:3123/ja/life/codex-learning-hub?q=AGENTS.md&unit=E",
+          "userTypedURL": "http://127.0.0.1:3123/ja/life/codex-learning-hub",
+          "title": "Codex 学習ガイド：全記事の目次",
+          "transitionType": "reload"
+        },
+        {
+          "id": 11,
+          "url": "http://127.0.0.1:3123/ja/life/codex-learning-hub?q=AGENTS.md&unit=E",
+          "userTypedURL": "http://127.0.0.1:3123/ja/life/codex-learning-hub",
+          "title": "Codex 学習ガイド：全記事の目次",
+          "transitionType": "link"
+        }
+      ]
+    },
+    "currentUrl": "http://127.0.0.1:3123/ja/life/codex-learning-hub?q=AGENTS.md&unit=E",
+    "unit": "E"
+  }
+}

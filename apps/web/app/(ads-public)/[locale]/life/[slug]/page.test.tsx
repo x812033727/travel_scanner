@@ -1,3 +1,4 @@
+import type { ResolvingMetadata } from "next";
 import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import LifeArticlePage, { generateMetadata } from "./page";
@@ -47,6 +48,8 @@ const travelSummary = {
   title: "成田到東京怎麼走", description: "三種選擇",
   published_at: "2026-09-01T00:00:00Z", valid_until: null, featured: false,
 };
+
+const emptyParent = Promise.resolve({}) as ResolvingMetadata;
 
 const params = (over: Record<string, string> = {}) =>
   Promise.resolve({ locale: "zh-TW" as const, slug: "ai-notes", ...over });
@@ -112,7 +115,7 @@ describe("a published lifestyle article", () => {
 
 describe("what a lifestyle article tells search engines", () => {
   it("declares only the locales it is genuinely published in", async () => {
-    const metadata = await generateMetadata({ params: params() });
+    const metadata = await generateMetadata({ params: params() }, emptyParent);
     const languages = metadata.alternates!.languages!;
     expect(Object.keys(languages).sort()).toEqual(["ja", "zh-TW"]);
     expect(languages["zh-TW"]).toContain("/zh-TW/life/ai-notes");
@@ -122,7 +125,7 @@ describe("what a lifestyle article tells search engines", () => {
 
   it("offers x-default only once English exists", async () => {
     mocks.article.mockResolvedValue({ ...published, published_locales: ["zh-TW", "en"] });
-    const metadata = await generateMetadata({ params: params() });
+    const metadata = await generateMetadata({ params: params() }, emptyParent);
     expect(metadata.alternates!.languages!["x-default"]).toContain("/en/life/ai-notes");
   });
 
@@ -130,7 +133,7 @@ describe("what a lifestyle article tells search engines", () => {
     mocks.article.mockResolvedValue({
       ...published, status: "unpublished", document: null, published_locales: ["ja"],
     });
-    const metadata = await generateMetadata({ params: params() });
+    const metadata = await generateMetadata({ params: params() }, emptyParent);
     expect(metadata.robots).toEqual({ index: false });
     expect(metadata.alternates?.languages).toBeUndefined();
 
@@ -144,7 +147,7 @@ describe("what a lifestyle article tells search engines", () => {
     mocks.article.mockResolvedValue({
       ...published, status: "unavailable", document: null, published_locales: [],
     });
-    const metadata = await generateMetadata({ params: params() });
+    const metadata = await generateMetadata({ params: params() }, emptyParent);
     expect(metadata.robots).toEqual({ index: false });
 
     render(await LifeArticlePage({ params: params() }));

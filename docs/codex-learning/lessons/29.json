@@ -1,0 +1,60 @@
+{
+  "id": 29,
+  "sources": [
+    "automations"
+  ],
+  "text": {
+    "zh-TW": [
+      "排程讓固定工作在指定時間執行，但要先確認使用哪個環境。需要本機檔案的桌面排程，電腦與應用程式必須在執行時可用；雲端任務不能直接讀取未提供的本機資料。",
+      "選一項沒有副作用的練習，例如每週檢查練習專案的待辦。先決定時區、頻率、資料來源與通知條件，不從自動發布或刪除資料開始。",
+      [
+        "在桌面版或支援的網頁介面描述排程需求。CLI 與 IDE 可準備提示詞，但官方目前不提供 Scheduled 管理介面。",
+        "建立前核對工作環境、每週哪一天幾點、時區與要讀的資料。說清楚什麼時候通知，例如只有出現新的待辦或執行失敗。",
+        "建立後到 Scheduled 檢查保存的設定，先執行一次測試並查看近期執行結果。真的產出符合格式的報告後，再信任下一次排程。",
+        "停止使用時暫停或刪除這個特定排程，確認清單狀態已變更。修改時間時更新既有排程，不再建立一個同名副本。"
+      ],
+      "排程設定與需求一致，有一次可核對的測試執行，並能找到暫停或移除入口。",
+      "排程存在不等於已執行。沒有通知先查最近執行記錄、通知設定與本機是否在線；不要反覆新增排程造成重複工作。",
+      "每週一上午 9 點，Asia/Taipei 時區，唯讀檢查練習專案的待辦。只有新待辦或執行失敗才通知，不修改檔案。先讓我核對保存的頻率與資料來源。"
+    ],
+    "en": [
+      "Scheduled work needs a defined execution environment. A desktop task that reads local files requires the computer and app to be available at run time. Cloud work cannot directly read local data you have not supplied.",
+      "Choose a read-only exercise such as a weekly backlog check. Define time zone, frequency, source and notification conditions before scheduling anything that publishes or deletes.",
+      [
+        "Describe the schedule in desktop or a supported web interface. CLI and IDE can prepare prompts, but currently do not provide Scheduled management.",
+        "Verify environment, weekday, time, time zone and source. Specify meaningful notification conditions, such as new backlog items or failure.",
+        "Inspect the saved configuration in Scheduled, run a test and read the recent result. Verify the report before relying on the next run.",
+        "Pause or remove that specific schedule when done and check its state. Update the existing schedule when changing time instead of creating a duplicate."
+      ],
+      "The saved schedule matches the request, a test run has evidence and you can locate pause/removal controls.",
+      "A schedule's existence is not proof of execution. Check run history, notification settings and host availability before creating another schedule.",
+      "Every Monday at 09:00 Asia/Taipei, read the practice-project backlog. Notify only for new items or execution failure. Do not edit files. Show the saved frequency and source for verification."
+    ],
+    "ja": [
+      "定期実行には実行環境を決めます。ローカルファイルを読む場合、実行時にコンピューターとアプリが利用可能である必要があります。",
+      "読み取りだけの週次確認を選び、時刻、時区、頻度、通知条件を決めます。",
+      [
+        "対応するデスクトップや Web で依頼します。CLI・IDE には現在 Scheduled 管理画面がありません。",
+        "曜日、時刻、時区、環境、資料を確認し、新規項目や失敗だけ通知するなど条件を指定します。",
+        "Scheduled で保存内容を確認して試験実行し、最近の結果を読みます。",
+        "不要なら該当設定を停止・削除します。時刻変更は既存設定を更新し、重複を作りません。"
+      ],
+      "保存設定と試験結果を確認し、停止方法が分かれば完了です。",
+      "設定の存在と実行成功は別です。通知がなければ履歴とホストを確認します。",
+      "毎週月曜 9 時、Asia/Taipei で練習プロジェクトの残件を読み取り、新規項目か失敗だけ通知してください。変更せず、保存設定を確認させてください。"
+    ],
+    "ko": [
+      "예약 작업에는 실행 환경을 정해야 합니다. 로컬 파일을 읽는 작업은 실행 시 컴퓨터와 앱을 사용할 수 있어야 합니다.",
+      "읽기 전용 주간 점검을 선택하고 시간, 시간대, 빈도와 알림 조건을 정합니다.",
+      [
+        "지원 데스크톱이나 웹에서 요청합니다. CLI와 IDE에는 현재 Scheduled 관리 화면이 없습니다.",
+        "요일, 시간, 시간대, 환경과 자료를 확인하고 새 항목이나 실패만 알리는 조건을 지정합니다.",
+        "Scheduled에서 저장 내용을 확인하고 시험 실행하여 최근 결과를 읽습니다.",
+        "필요 없으면 해당 설정을 중지하거나 삭제합니다. 시간 변경은 기존 설정을 업데이트하고 중복 생성하지 않습니다."
+      ],
+      "저장 설정과 시험 결과를 확인하고 중지 방법을 알면 완료입니다.",
+      "설정 존재와 실행 성공은 다릅니다. 알림이 없으면 이력과 호스트를 확인하세요.",
+      "매주 월요일 9시 Asia/Taipei에 연습 프로젝트의 남은 일을 읽고 새 항목이나 실패만 알리세요. 수정하지 말고 저장 설정을 확인하게 해 주세요."
+    ]
+  }
+}

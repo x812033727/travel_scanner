@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">把收件匣分類、摘要，再自己動筆 / Sorting the inbox before writing</title>
+  <desc id="desc">一幅幾何插圖：左邊一個白色信封，箭頭指向中間一個綠色的漏斗，漏斗下方分出三道箭頭，分別指向右邊三個顏色不同的收信托盤；漏斗下方是一個綠色的打勾圓圈，代表最後一段由人自己確認。底部一行字寫著「分類、摘要，再動筆」。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <circle cx="240" cy="640" r="80" fill="#E6F0F7"/>
+  <circle cx="1400" cy="660" r="56" fill="#E3F0EF"/>
+
+  <!-- envelope -->
+  <rect x="150" y="250" width="300" height="200" rx="18" fill="#FFFFFF" stroke="#102A2B" stroke-width="6"/>
+  <path d="M 150 272 L 300 374 L 450 272" fill="none" stroke="#102A2B" stroke-width="6" stroke-linejoin="round"/>
+
+  <line x1="480" y1="350" x2="548" y2="350" stroke="#0D6B68" stroke-width="7" marker-end="url(#arrow)"/>
+
+  <!-- funnel -->
+  <path d="M 600 210 L 900 210 L 768 362 L 768 412 L 732 412 L 732 362 Z" fill="#E3F0EF" stroke="#0D6B68" stroke-width="7" stroke-linejoin="round"/>
+
+  <line x1="790" y1="345" x2="975" y2="272" stroke="#0D6B68" stroke-width="7" marker-end="url(#arrow)"/>
+  <line x1="800" y1="382" x2="975" y2="382" stroke="#0D6B68" stroke-width="7" marker-end="url(#arrow)"/>
+  <line x1="790" y1="418" x2="975" y2="490" stroke="#0D6B68" stroke-width="7" marker-end="url(#arrow)"/>
+
+  <!-- trays -->
+  <rect x="1000" y="232" width="380" height="80" rx="16" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <line x1="1042" y1="262" x2="1262" y2="262" stroke="#0D6B68" stroke-width="7" stroke-linecap="round"/>
+  <line x1="1042" y1="288" x2="1170" y2="288" stroke="#0D6B68" stroke-width="7" stroke-linecap="round"/>
+
+  <rect x="1000" y="342" width="380" height="80" rx="16" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="6"/>
+  <line x1="1042" y1="372" x2="1262" y2="372" stroke="#2F6F9F" stroke-width="7" stroke-linecap="round"/>
+  <line x1="1042" y1="398" x2="1140" y2="398" stroke="#2F6F9F" stroke-width="7" stroke-linecap="round"/>
+
+  <rect x="1000" y="452" width="380" height="80" rx="16" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <line x1="1042" y1="482" x2="1262" y2="482" stroke="#D97A2B" stroke-width="7" stroke-linecap="round"/>
+  <line x1="1042" y1="508" x2="1198" y2="508" stroke="#D97A2B" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- human check -->
+  <circle cx="750" cy="600" r="62" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="7"/>
+  <path d="M 720 600 L 742 624 L 782 578" fill="none" stroke="#2E7D5B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="800" y="790" font-size="48" font-weight="bold" text-anchor="middle" fill="#102A2B">分類、摘要，再動筆</text>
+</svg>

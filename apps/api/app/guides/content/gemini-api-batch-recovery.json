@@ -1,0 +1,340 @@
+{
+  "slug": "gemini-api-batch-recovery",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 185,
+  "locales": {
+    "zh-TW": {
+      "title": "Batch API 批次評測：工作 ID、部分失敗與重送管理",
+      "description": "本篇用二十題合成規格問答，練習 Batch API（批次處理介面）的送件、狀態追蹤、逐題核對與有限重送。完成後會得到題庫、工作紀錄、結果清單及唯一採用表，能分辨整個工作完成與每一題回答成功的差異。",
+      "hero": {
+        "src": "/guides/gemini-api-batch-recovery/hero.jpg",
+        "alt": "批次評測：每題可追蹤教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "本篇用二十題合成規格問答，練習 Batch API（批次處理介面）的送件、狀態追蹤、逐題核對與有限重送。完成後會得到題庫、工作紀錄、結果清單及唯一採用表，能分辨整個工作完成與每一題回答成功的差異。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-api-batch-recovery/diagram-1.svg",
+          "alt": "送件：固定題目識別碼：逾時先核對原工作；分類：缺項與故障分開：已成功題目不重送；重試：引用父工作紀錄：驗雜湊與次數上限；採用：每題只採用一次：保留未解決項目",
+          "width": 1600,
+          "height": 900,
+          "caption": "工作完成後，仍要逐題核對。二十題合成故障已測；Batch 待驗。原創概念圖，不是操作截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "開始前準備",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成 "
+            },
+            {
+              "type": "link",
+              "text": "API 用量與錯誤處理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "有限次工具流程",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-function-calling-workshop"
+            },
+            {
+              "type": "text",
+              "text": "，再下載本篇練習包。使用 Python 虛擬環境及 requirements.txt 的固定版本。本機驗證採 Windows、Python 3.13.15、google-genai 2.23.0，實際 SDK 請求只送往本機測試服務；沒有建立 Google 批次工作。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇批次輸入採 generateContent 請求格式，不把 Interactions 的 steps、previous_interaction_id 或工具結果物件塞入 JSONL。模型預設名稱來自本批查證的官方文件；執行時仍須確認帳號支援該模型的 Batch 功能，並先決定整批與重試費用上限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先閱讀二十題 cases.jsonl，確認內容都是可公開的合成規格。每題都有不變的 key，例如 B01；它是後續比對身分，不是回答的行號。重送時保留原 key，不能重新編成一到二十，否則無法知道哪些答案已經採用。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：先做可重現的本機核對",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "JSONL 是每行一個 JSON 物件。每行的 key 與 request 都要完整；空白行可以跳過，但重複 key 或結果中出現未知 key 會讓本練習停止。先跑作者合成的部分失敗資料，確認分類程式與自己理解一致。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "本機分類，不呼叫 Google",
+          "code": ".venv/Scripts/python.exe 85/batch-eval/main.py reconcile --cases 85/cases.jsonl --results 85/response-fixtures/partial.jsonl --summary first-summary.json\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "作者測試資料的預期分類"
+          ],
+          "rows": [
+            [
+              "B01 至 B16",
+              "十六題有文字且正常結束，可進入答案審核"
+            ],
+            [
+              "B17",
+              "暫時性服務錯誤，可規劃有限重試"
+            ],
+            [
+              "B18",
+              "請求錯誤，先修正輸入"
+            ],
+            [
+              "B19",
+              "沒有結果，先核對下載是否完整"
+            ],
+            [
+              "B20",
+              "安全阻擋，交由人工判讀"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "命令會寫出 first-summary.json 與 retry-cases.jsonl。後者應只有 B17。不要把 B18、B19、B20 一起放回佇列，也不要把十六題的輸出文字視為已答對；accepted 在程式裡只表示傳輸與結束形式可接受，還要對照標準答案。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：送出一次並保存工作身分",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "設定金鑰與模型後，明確加上 --live 才會送件。先讓 ledger 檔不存在，並使用新的檔名辨識本次實驗。程式先建立本機紀錄，再上傳題庫、保存原始檔案名稱，最後建立批次工作並保存 job 名稱。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "已準備帳號與費用上限才執行",
+          "code": ".venv/Scripts/python.exe 85/batch-eval/main.py submit --live --cases 85/cases.jsonl --ledger first-job.json\n.venv/Scripts/python.exe 85/batch-eval/main.py fetch --live --ledger first-job.json --results first-results.jsonl\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "fetch 每次只查一次工作狀態。尚未完成時稍後再查同一個工作，不重做 submit，也不使用無限輪詢。成功狀態仍要有結果檔案指標才下載；紀錄會保存輸入與輸出雜湊，讓後續重試能查出有人改過檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果建立工作時逾時，本機可能只留下 submission_uncertain。這表示不知道服務是否已接受，不代表服務沒有工作。先用已知上傳 ID、唯一顯示名稱與官方工作清單核對；不能刪掉 ledger 再送一次，否則可能建立兩個計費工作。找不到明確證據時保留不確定狀態並停止送件。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "工作名稱、檔案名稱與題目 key 是三種身分。帳本記錄它們的對應；任何一次送件結果不確定，都先查原工作，不能把網路錯誤當成重送授權。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：只重送確認可重試的題目",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "真實工作完成並下載後，改用 first-results.jsonl 執行 reconcile，另存 first-live-summary.json。先讀失敗原因，再決定是否重送暫時性錯誤。額度不足時應先處理配額與費用，不能持續用重試試運氣。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "核對第一輪，再建立獨立重試工作",
+          "code": ".venv/Scripts/python.exe 85/batch-eval/main.py reconcile --results first-results.jsonl --summary first-live-summary.json\n.venv/Scripts/python.exe 85/batch-eval/main.py submit --live --cases retry-cases.jsonl --ledger retry-job.json --parent-ledger first-job.json\n.venv/Scripts/python.exe 85/batch-eval/main.py fetch --live --ledger retry-job.json --results retry-results.jsonl\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "parent-ledger 讓程式重新讀取第一輪的實際輸入與輸出，驗證雜湊、模型、題目內容與暫時性錯誤清單。重試題庫須完全符合推導結果，不能加入已採用題目。每條父子紀錄最多三次送件；已到第三次仍失敗，就記錄未解決項目，不能另開無關帳本重置次數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三輪若有必要，必須引用第二輪帳本，而不是再次引用第一輪。每次只在原工作已確認完成、費用仍在上限內時操作。這個本機範例採單人依序執行，不能由兩個終端機同時處理同一份 ledger；正式佇列需要資料庫唯一限制與鎖定。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：合併、故障練習與清理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "重試完成後，以 retry-cases.jsonl 為題庫核對 retry-results.jsonl，寫入 retry-summary.json。接著用原始二十題合併兩輪摘要；同一 key 被採用兩次會直接報錯，不會默默用最後一筆覆蓋。未完成的題目仍留在 unresolved，方便交接。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "建立唯一採用表",
+          "code": ".venv/Scripts/python.exe 85/batch-eval/main.py reconcile --cases retry-cases.jsonl --results retry-results.jsonl --summary retry-summary.json\n.venv/Scripts/python.exe 85/batch-eval/main.py merge --summaries first-live-summary.json retry-summary.json --summary adopted.json\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "故障練習先在本機把合成結果的一行複製一次，觀察 duplicate 錯誤；復原後再把 key 改成未知名稱，確認停止。最後將同一摘要合併兩次，確認不會重複採用。這些都是作者測試，不能當成真實 Batch 失敗與恢復的截圖。"
+        },
+        {
+          "type": "paragraph",
+          "text": "逐題把答案與 evaluation.csv 的標準值對照，記錄不符原因、模型及時間。清理前保存需要的輸入、結果、摘要與帳單資料；對已確認終止的每個工作執行 cleanup，僅刪除此帳本列出的工作與檔案。取消中的工作先查到終止狀態，不能把取消要求成功當作已停止計費。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "清理已核對完成的工作",
+          "code": ".venv/Scripts/python.exe 85/batch-eval/main.py cleanup --live --ledger first-job.json\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "檔案刪除與費用結清各自記錄。接著可把題庫與採用規則帶入 "
+            },
+            {
+              "type": "link",
+              "text": "文件助手的完整評測",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-service-capstone"
+            },
+            {
+              "type": "text",
+              "text": "；若要比較相同資料重複使用的成本，再讀 "
+            },
+            {
+              "type": "link",
+              "text": "快取實驗",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-context-cache-experiment"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "工作成功，但有幾題沒有答案，要整批重送嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "先逐題核對。缺項、永久錯誤、內容阻擋與暫時故障的處理不同，整批重送會讓已完成題目再次產生費用。"
+        },
+        {
+          "type": "heading",
+          "text": "網路逾時後刪除本機帳本，可以重新開始嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "不能據此判斷原工作不存在。先查原工作與上傳紀錄，確認服務端狀態後再處理本機紀錄。"
+        },
+        {
+          "type": "heading",
+          "text": "adopted.json 有二十題，就代表模型品質合格嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "不代表。唯一採用表只處理追蹤與重複，答案正確性、來源與實際費用仍須逐項核對。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "API 額度與錯誤：費用、重試與成本控制",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "提示詞改寫實驗：用固定題庫找出有效的修改",
+              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-evaluation-workshop"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "文件助手進階專案：有引用的問答服務、評測與交接",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-service-capstone"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 85 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-api-batch-recovery/lesson-85.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組 API 練習與本機檢查程式",
+          "url": "https://mokaair.com/guides/gemini-api-batch-recovery/api-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Batch API 官方教學",
+          "url": "https://ai.google.dev/gemini-api/docs/batch-api",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方 Python SDK",
+          "url": "https://googleapis.github.io/python-genai/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

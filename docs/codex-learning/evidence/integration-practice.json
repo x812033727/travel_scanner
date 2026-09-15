@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-09-14T14:49:31.120836+00:00",
+  "status": "passed",
+  "environment": "Windows; isolated temporary Git repository; explicit reference edits",
+  "gitVersion": "git version 2.55.0.windows.4",
+  "checks": [
+    "The exact authored baseline has two intentionally unmet acceptance cases",
+    "Each independent checkout changes only its assigned file and passes only its own requirement",
+    "Sequential integration produces both expected changes, two passing tests and a clean checkout",
+    "The deliberate conflicting heading yields an actual unmerged file and conflict markers",
+    "Abort restores the exact pre-conflict commit, clean state and both passing tests",
+    "Cleanup preserves the original main files and the integrated branch without any remote"
+  ],
+  "inputCommits": {
+    "heading": "4c367dbaf0a8c3d2442ae365be35434c1a5cfa8d",
+    "footer": "d8cd6f02d95f37bb314033dde49e7fdc11db9791"
+  },
+  "integrationCommit": "be6c630a6f35735bb69202fcdbff2fbbc86bb021",
+  "baselineCommit": "1b0ad0ddddf5894557f2890f8e65b9fc2e948d15",
+  "authorHash": "abe6987a6bc5c644593edcb2dba1f61df31c538033a735b69c9e8822eea548d3",
+  "notTested": [
+    "Actual model delegation",
+    "Codex Handoff",
+    "macOS/Linux execution",
+    "Website build, browser UI, publication or deployment"
+  ]
+}

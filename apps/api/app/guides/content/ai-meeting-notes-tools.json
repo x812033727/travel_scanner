@@ -1,0 +1,396 @@
+{
+  "slug": "ai-meeting-notes-tools",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "productivity",
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 會議記錄工具怎麼挑：Otter、Google Meet、Teams、Zoom 與 Notion",
+      "description": "錄音存在誰家、要買哪個方案才打得開、官網語言清單有沒有中文，是挑 AI 會議記錄工具的三個關鍵。這篇照當天官網比較四條路線：Otter.ai 的方案與分鐘數、Google Meet 與 Microsoft Teams 各要什麼授權、Zoom 與 Notion 的限制、Apple 備忘錄與本機 Whisper 的免費做法，並附錄音同意的法條原文與提示詞範本。",
+      "hero": {
+        "src": "/guides/ai-meeting-notes-tools/hero.jpg",
+        "alt": "幾何插圖：三個圓形代表與會者，聲波往右流進一張有勾選項目的筆記卡片",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "AI 會議記錄工具分成四條路線：專門工具、會議軟體內建、筆記軟體內建、本機轉錄。要比的不是誰的摘要寫得漂亮，而是錄音與逐字稿存在誰的伺服器、要買哪個方案才打得開、官網語言清單裡有沒有中文。這三題答得出來，工具就選得出來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把 2026 年 9 月 15 日查到的官方頁面整理成一張對照表：Otter.ai 的方案與每月分鐘數、Google Meet「幫我做筆記」與 Microsoft Teams 智慧型回顧各需要什麼授權、Zoom Workplace 內建 AI 與 Notion AI Meeting Notes 的限制，以及 Apple 備忘錄和本機 Whisper 的免費做法。後半段附上台灣錄音同意相關的法條原文、可以直接抄的提示詞範本，以及自己測一輪的方法。"
+        },
+        {
+          "type": "heading",
+          "text": "先決定錄音檔放哪，再挑工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "選工具的第一個問題不是準不準，是這場會議的內容可不可以離開公司的帳號。四條路線的資料落點完全不同：專門工具把音檔存在自己的雲端，會議軟體內建的功能留在你原本的 Google Workspace 或 Microsoft 365 租戶裡，筆記軟體看它的說明頁怎麼寫，本機轉錄則整段留在你的電腦。先把這題問過資訊或法務同事，再看價格。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "專門工具：Otter.ai 這類服務，可以派機器人進到 Zoom、Microsoft Teams、Google Meet 的會議裡錄音與寫筆記。",
+            "會議軟體內建：Google Meet 的「幫我做筆記」、Microsoft Teams 的智慧型回顧、Zoom Workplace 內建的 AI 功能。",
+            "筆記軟體內建：Notion AI Meeting Notes，錄完直接長成一頁 Notion 筆記。",
+            "裝置與本機：Apple 備忘錄的錄音轉錄，以及在自己電腦上跑的 Whisper。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個問題是語言。幾乎每一家官方說明都寫著一次只能設定一種語言，中英夾雜的會議得先決定主語言；各家官網的清單差距很大，下面每段都照官網原文寫，查不到的就寫以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "專門工具：Otter.ai 的方案與每月分鐘數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Otter.ai 定價頁以美元計價，分四個方案。Basic 免費，每月 300 分鐘轉錄額度、終身 3 次音訊或影片檔匯入、工作區成員上限 5 人。Pro 月繳 16.99 美元、年繳 8.33 美元（每位使用者每月），有 1200 分鐘 app 內錄音額度、每場會議上限 90 分鐘、每月 10 次檔案匯入。Business 月繳 30 美元、年繳 19.99 美元，官網寫不限會議與 app 內錄音、每場上限 4 小時、可同時加入 3 場會議。Enterprise 沒有列價，要預約示範。"
+        },
+        {
+          "type": "paragraph",
+          "text": "語言是台灣使用者要盯的一欄。Otter 定價頁的方案比較表寫的是英語、西班牙語、法語、德語、日語與中文；說明中心的語言專頁講得更細：中文指的是中文（簡體），而且德語與中文（簡體）目前仍標示為 beta。同一頁也寫明一次只能轉錄一種語言，只有把預設語言設為法語時系統會在偵測到英語時自動切換，其他語言組合還不支援；改語言只影響轉錄，Otter 的介面仍然是英文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料放哪也有官方答案：Otter 說明中心的資料安全與隱私頁寫著資料存放在 AWS 美國西部區域，使用 S3 伺服器端加密（AES-256）。台灣客戶會議的錄音要不要進到美國區的雲端，是簽約前該先問的問題。"
+        },
+        {
+          "type": "heading",
+          "text": "會議軟體內建：Google Meet、Teams 與 Zoom",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Meet 的「幫我做筆記」（Take notes for me）在說明頁第一行就寫著需要合格的 Google Workspace 版本或 Google AI 方案。它把筆記整理進 Google 文件，會後把摘要連結寄給主辦人，連結也會掛在日曆活動上；官方建議用在 15 分鐘到最多 8 小時的會議。語言清單只有 8 種：英語、法語、德語、義大利語、日語、韓語、葡萄牙語、西班牙語，一次只支援一種語言，清單裡沒有中文。Meet 的會議逐字稿是另一個功能，語言清單同樣是這 8 種，只能在電腦、筆電或 Android 裝置上使用，檔案存到主辦人 Google 雲端硬碟的「Google Meet」資料夾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "管理面有兩件事值得先知道。第一，管理員可以要求所有與會者在「幫我做筆記」、錄製或轉錄啟動前明確同意，這個設定預設是關的。第二，Google Workspace 管理說明寫著，2026 年 9 月 21 日起，使用 Business Standard 或 Business Plus 的組織，自動做筆記會對 3 人以上（含主持人）的會議預設開啟；管理員可以在管理控制台選擇退出，使用者也能在自己的 Meet 設定裡改回來。"
+        },
+        {
+          "type": "link",
+          "text": "小團隊使用 Workspace AI：帳號與管理",
+          "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft Teams 這邊叫智慧型回顧（intelligent recap）。Microsoft Learn 的管理員文件列得很清楚：使用者要有包含 Teams 的 Microsoft 365 訂閱，再加上 Teams 進階版授權或 Microsoft Copilot 授權，其中語音回顧一定要 Microsoft Copilot 授權；而且必須開啟轉錄，沒開轉錄就不會產生 AI 摘要。產出包含 AI 會議筆記、AI 建議工作、講者時間軸、會議章節與主題。語言是 Teams 的強項：即時逐字稿的官方清單有 57 種語言，中文（繁體，台灣）在裡面。價格部分，Microsoft 台灣官網列 Teams 進階版每位使用者每月新台幣 320 元、按年付費，不含營業稅；Microsoft 365 Copilot Business 附加元件原價新台幣 675 元、目前起價新台幣 578.58 元，同樣按年付費。"
+        },
+        {
+          "type": "link",
+          "text": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
+          "url": "https://mokaair.com/zh-TW/life/microsoft-copilot-windows-office"
+        },
+        {
+          "type": "paragraph",
+          "text": "Zoom 在 2026 年 6 月 24 日的官方部落格公告了改名：AI Companion 這個名字退場，會議摘要、聊天撰寫、轉錄、通話摘要改為直接內建在 Zoom Workplace，仍隨符合資格的付費方案提供、不另外收費；新的 ZoomMate 才是要加購或獨立訂閱的代理（Agent）型產品，官網目前沒有顯示金額，以官網為準。語言方面，Zoom 支援語言的說明頁列出會議摘要支援 32 種語言，中文（繁體）在清單裡。隱私上，Zoom 的技術文件庫寫明不使用任何客戶音訊、影片、聊天、螢幕分享、附件或其他通訊類客戶內容，訓練 Zoom 或其第三方的 AI 模型。"
+        },
+        {
+          "type": "heading",
+          "text": "筆記軟體與裝置內建：Notion、Apple 備忘錄、本機 Whisper",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Notion AI Meeting Notes 只在 Business 與 Enterprise 方案，以及包含 Notion AI 的合格行動訂閱上提供。Notion 定價頁的預設檢視列出 Free 0 美元、Plus 10 美元、Business 20 美元，每位成員每月；頁面可切換月繳與年繳，年繳最多省 20%，實際金額以官網為準。使用限制寫在說明頁上：每位使用者每天 10 小時，逐字稿至少要有 300 個字元（大約一分鐘的說話量）才會生成摘要。語言有 16 種：英語、中文、西班牙語、法語、德語、日語、韓語、葡萄牙語、俄語、泰語、越南語、丹麥語、芬蘭語、挪威語、荷蘭語、瑞典語；講者標記目前只有英語。"
+        },
+        {
+          "type": "paragraph",
+          "text": "音檔的去向 Notion 寫得比多數家詳細：在桌機或瀏覽器上，音訊直接送給子處理者做即時轉錄，子處理者不儲存音訊，裝置上只留一份工作階段期間的暫存；即時處理失敗時才會上傳到 Notion 伺服器，最多保留 3 天重試。手機版則是把音檔上傳到 Notion 伺服器，成功處理後立即刪除。「本機儲存音訊」預設關閉。同一頁還建議在開始前取得所有與會者同意，並給了三種做法：貼一段文字到會議聊天室、點喇叭圖示播放同意提示語音、或乾脆口頭問一句。"
+        },
+        {
+          "type": "link",
+          "text": "Notion AI 入門：哪個方案才有、能做什麼、資料怎麼處理",
+          "url": "https://mokaair.com/zh-TW/life/notion-ai-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "不想多付一份訂閱的話，iPhone 本身就能錄音加轉錄。Apple 的 iPhone 使用手冊寫著，備忘錄的錄音轉錄可在 iPhone 12 以後的機型使用，裝置語言要設為英語、西班牙語、葡萄牙語、義大利語、法語、德語、日語、韓語、簡體中文或繁體中文；繁體中文在清單裡，這是它對台灣使用者最實在的一點。摘要則要 Apple Intelligence，iOS 27 以後支援的機型是 iPhone 15 Pro、iPhone 15 Pro Max 或 iPhone 16 以後。通話錄音是另一個功能，部分國家與地區不提供（手冊列出歐盟等地），錄音開始時通話雙方都會聽到語音提示，檔案自動存進備忘錄的「通話錄音」資料夾，也可以到設定的 App、電話項目裡把「語音通話錄音」關掉。手冊同時提醒：依賴一份轉錄之前先自己確認正確性。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後一條路線是本機轉錄，把音檔留在自己的電腦上跑。OpenAI 的 Whisper 倉庫 README 列出六種模型大小：tiny 39M、base 74M、small 244M、medium 769M、large 1550M、turbo 809M；turbo 是 large-v3 的最佳化版本，約需 6 GB 顯示記憶體、速度約為 large 的 8 倍，但沒有被訓練來做翻譯任務，要把外語翻成英文得改用多語言模型。安裝還需要 ffmpeg，指令照 README 抄："
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "在自己的電腦安裝 Whisper 並轉錄一個音檔（指令照官方 README）",
+          "code": "pip install -U openai-whisper\n\nwhisper meeting.m4a --model turbo\n\nwhisper meeting.m4a --model medium --language Chinese"
+        },
+        {
+          "type": "link",
+          "text": "用 Whisper 本機轉錄逐字稿：會議與訪談的離線做法",
+          "url": "https://mokaair.com/zh-TW/life/whisper-local-transcription"
+        },
+        {
+          "type": "link",
+          "text": "逐字稿工具怎麼用：MacWhisper 與 Whisper 桌面工作流",
+          "url": "https://mokaair.com/zh-TW/life/transcription-desktop-tools"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "需要的方案",
+            "語言（官網清單）",
+            "輸出"
+          ],
+          "rows": [
+            [
+              "Otter.ai",
+              "Basic 免費（每月 300 分鐘）；Pro 年繳 8.33 美元；Business 年繳 19.99 美元，每位使用者每月",
+              "英語、西班牙語、法語、德語、日語、中文（簡體，beta）；一次一種",
+              "逐字稿、摘要大綱、行動項目、AI Chat"
+            ],
+            [
+              "Google Meet 幫我做筆記",
+              "合格的 Google Workspace 版本或 Google AI 方案",
+              "英、法、德、義、日、韓、葡、西 共 8 種；沒有中文",
+              "Google 文件筆記、後續步驟、會後摘要連結電子郵件"
+            ],
+            [
+              "Microsoft Teams 智慧型回顧",
+              "含 Teams 的 Microsoft 365 訂閱，加 Teams 進階版（新台幣 320 元，按年付費）或 Microsoft Copilot 授權",
+              "即時逐字稿 57 種，含中文（繁體，台灣）",
+              "AI 會議筆記、AI 建議工作、講者時間軸、章節與主題"
+            ],
+            [
+              "Zoom Workplace 內建 AI",
+              "符合資格的付費 Zoom Workplace 方案，官網寫不另外收費",
+              "會議摘要 32 種，含中文（繁體）",
+              "會議摘要、智慧錄製、聊天與電子郵件草稿"
+            ],
+            [
+              "Notion AI Meeting Notes",
+              "Business 或 Enterprise（Business 20 美元，每位成員每月）",
+              "16 種，含中文；講者標記只有英語",
+              "逐字稿與摘要，直接寫成 Notion 頁面"
+            ],
+            [
+              "Apple 備忘錄錄音轉錄",
+              "iOS 內建，不另外付費；iPhone 12 以後機型",
+              "10 種，含繁體中文",
+              "錄音與逐字稿；摘要需要 Apple Intelligence"
+            ],
+            [
+              "本機 Whisper",
+              "開源、自行安裝，不另外付費",
+              "多語言模型支援中文",
+              "逐字稿檔案；摘要要另外用模型做"
+            ]
+          ],
+          "caption": "各家官網 2026 年 9 月 15 日查證；方案、價格與語言清單會變動，購買前以官網當天頁面為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "中文會議先查語言清單",
+          "text": "台灣的會議最容易踩的坑，是買了方案才發現官網語言清單裡沒有你要的語言。Google Meet 的「幫我做筆記」與會議逐字稿目前是 8 種語言、沒有中文；Otter 的中文是簡體，官方還標示為 beta；Microsoft Teams、Zoom、Notion 與 Apple 備忘錄的官網清單則明確寫有中文。另外幾乎每一家都寫著一次只能設定一種語言，中英夾雜的會議要先決定主語言，並在會議開始前設定好，事後改不了已經產生的那份逐字稿。"
+        },
+        {
+          "type": "heading",
+          "text": "錄音同意：台灣的法條原文怎麼寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "錄音不是把工具打開就好。台灣有兩條常被提到的規定，這裡只照全國法規資料庫的原文引用，不做法律結論。"
+        },
+        {
+          "type": "paragraph",
+          "text": "中華民國刑法第 315 條之 1：有下列行為之一者，處三年以下有期徒刑、拘役或三十萬元以下罰金：一、無故利用工具或設備窺視、竊聽他人非公開之活動、言論、談話或身體隱私部位者。二、無故以錄音、照相、錄影或電磁紀錄竊錄他人非公開之活動、言論、談話或身體隱私部位者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通訊保障及監察法第 29 條：監察他人之通訊，而有下列情形之一者，不罰：一、依法律規定而為。二、電信事業、設置公眾電信網路者或郵政事業人員基於提供公共電信、公眾電信網路或郵政服務之目的，而依有關法令執行。三、監察者為通訊之一方或已得通訊之一方事先同意，而非出於不法目的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "條文長什麼樣子就是上面這兩段，怎麼適用到你的個案不是這篇能回答的，遇到具體爭議請諮詢律師或相關主管機關。倒是各家官方文件的做法相當一致：Apple 的手冊要你先確認對方願意被錄音，Google 的管理員設定可以要求與會者明確同意，Notion 直接附上三種取得同意的做法。把「這場會議會錄音、逐字稿給誰看、存多久」在開始前講一次並留紀錄，是成本最低的做法。"
+        },
+        {
+          "type": "heading",
+          "text": "會議前、中、後各做幾件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "工具挑定之後，真正決定筆記品質的是流程。把工作拆成會議前、中、後三段，每段只做幾件事就夠。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-meeting-notes-tools/diagram-1.svg",
+          "alt": "把 AI 會議記錄拆成會議前、會議中、會議後三段的流程圖，下方一排是各工具的官網數字",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左至右看三段各做什麼；最下面一排是各家官網當天查到的語言與額度數字。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "會議前除了徵求同意，記得先把語言設好，大多數工具一次只吃一種語言。下面這段可以改成自己的說法，開場口頭講一次，或貼到會議聊天室："
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "會議前：徵求錄音同意的說法（改成自己的用詞）",
+          "code": "這場會議我會用 AI 工具錄音，產出逐字稿與摘要。\n用途只有一個：整理決議與待辦，分享對象是今天在場的人。\n錄音檔會存在（工具名稱）的（帳號或工作區），（保留期間）後刪除。\n如果有人不希望被錄音，現在說一聲，我就不開，改用手寫記錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "會議後不要直接把逐字稿丟給模型說「幫我整理」。把輸出格式寫死，要求它只根據逐字稿回答、聽不清楚的地方列出來，才不會拿到一份讀起來很順卻混進幻覺的摘要："
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "會議後：把逐字稿整理成決議與待辦的提示詞",
+          "code": "你會拿到一段會議逐字稿。只根據逐字稿的內容整理，不要補充稿子裡沒有的事。\n\n輸出四段：\n1. 決議：每條寫「決定了什麼」，並附上逐字稿裡支持這條的一句原話。\n2. 待辦：每條寫「做什麼｜負責人｜期限」，逐字稿沒講到負責人或期限就寫「未指定」。\n3. 未解決：還在爭論，或需要更多資料才能決定的事。\n4. 需要確認：你不確定有沒有聽對的地方，把原句列出來。\n\n逐字稿：\n（把逐字稿貼在這裡）"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇沒有任何實測數字，因為準確率會被口音、麥克風、專有名詞和會議語言一起影響，別人的數字對你沒有意義。自己測一輪很快：拿一段 10 分鐘、有兩三個人講話、帶公司專有名詞的舊錄音，同一個檔案分別餵給你在考慮的工具，然後只看三件事：人名與專有名詞錯了幾個、決議有沒有被寫進摘要、待辦有沒有抓到負責人。這三件事錯了，摘要再漂亮都得重寫一次。"
+        },
+        {
+          "type": "link",
+          "text": "會議筆記怎麼寫才有人接手：把決定、負責人與下一步留下來",
+          "url": "https://mokaair.com/zh-TW/life/meeting-notes-action-template"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
+          "url": "https://mokaair.com/zh-TW/life/ai-note-taking-workflow"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 管理 Email：分類、摘要與草稿的工作流",
+          "url": "https://mokaair.com/zh-TW/life/ai-email-management"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Otter.ai 定價頁（官方方案與額度）",
+          "url": "https://otter.ai/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Otter.ai 說明中心：以英語、西班牙語、法語、德語、日語或中文（簡體）轉錄（官方頁面）",
+          "url": "https://help.otter.ai/hc/en-us/articles/26660468516631-Transcribe-conversations-in-English-Spanish-French-German-Japanese-or-Chinese-Simplified",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Otter.ai 說明中心：資料安全與隱私政策（官方頁面）",
+          "url": "https://help.otter.ai/hc/en-us/articles/360048258953-Data-security-and-privacy-policies",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google Meet 說明中心：「幫我做筆記」（官方頁面）",
+          "url": "https://support.google.com/meet/answer/14754931",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google Meet 說明中心：搭配 Google Meet 使用會議逐字稿（官方頁面）",
+          "url": "https://support.google.com/meet/answer/12849897",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google Workspace 管理說明：管理 Meet 的自動做筆記（官方頁面）",
+          "url": "https://knowledge.workspace.google.com/admin/meet/upcoming-changes-to-automatic-note-taking",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Microsoft Learn：Teams 通話、會議與活動的智慧型回顧（官方文件）",
+          "url": "https://learn.microsoft.com/en-us/microsoftteams/intelligent-recap-calls-meetings",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Microsoft 支援：在 Teams 會議開始、停止與下載即時逐字稿（官方頁面，含語言清單）",
+          "url": "https://support.microsoft.com/en-us/teams/meetings/start-stop-and-download-live-transcripts-in-microsoft-teams-meetings",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Microsoft Teams 進階版（台灣官網定價）",
+          "url": "https://www.microsoft.com/zh-tw/microsoft-teams/premium",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Microsoft 365 Copilot 方案與定價（台灣官網）",
+          "url": "https://www.microsoft.com/zh-tw/microsoft-365-copilot/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Zoom 官方部落格：Meet ZoomMate（AI Companion 名稱異動公告）",
+          "url": "https://www.zoom.com/en/blog/zoom-ai-companion-zoommate/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Zoom 支援：Zoom AI 功能支援的語言（官方頁面）",
+          "url": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0078144",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Zoom 技術文件庫：模型、處理、儲存與使用（官方 AI 白皮書）",
+          "url": "https://library.zoom.com/ai/ai-whitepaper/models-processing-storage-and-usage",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Notion 說明中心：AI Meeting Notes（官方頁面）",
+          "url": "https://www.notion.com/help/ai-meeting-notes",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Notion 定價頁（官方方案）",
+          "url": "https://www.notion.com/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Apple 支援：在 iPhone 的「備忘錄」中錄音和轉錄（iPhone 使用手冊）",
+          "url": "https://support.apple.com/guide/iphone/record-and-transcribe-audio-iphbe11247b5/ios",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Apple 支援：在 iPhone 上錄製和轉錄通話（iPhone 使用手冊）",
+          "url": "https://support.apple.com/guide/iphone/record-and-transcribe-a-call-iph57c6590e9/ios",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI Whisper 官方倉庫 README（模型大小與指令）",
+          "url": "https://github.com/openai/whisper",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "全國法規資料庫：中華民國刑法第 315 條之 1",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=C0000001&flno=315-1",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "全國法規資料庫：通訊保障及監察法第 29 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=K0060044&flno=29",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

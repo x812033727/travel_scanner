@@ -1,0 +1,64 @@
+{
+  "id": 16,
+  "sources": [
+    "config-file/config-basic"
+  ],
+  "code": {
+    "language": "toml",
+    "code": "approval_policy = \"on-request\"\nsandbox_mode = \"workspace-write\"\nweb_search = \"cached\""
+  },
+  "text": {
+    "zh-TW": [
+      "config.toml 控制 Codex 的設定值，與 AGENTS.md 的自然語言工作規則不同。使用者設定在 Codex home，受信任專案也能有 .codex/config.toml。設定可能被 CLI 參數、專案層或組織政策影響，不能只看一個檔案就斷言生效。",
+      "先讀現有設定並另存備份，不顯示認證檔案。Windows 通常在使用者目錄的 .codex；macOS／Linux 通常是 ~/.codex。若有 CODEX_HOME，先確認它指向哪裡。",
+      [
+        "找出現有 config.toml。已有相同鍵時修改原值，不要在同一層重複貼上。先只改一項，例如網頁搜尋模式，讓前後比較清楚。",
+        "下方是一般本機練習的設定示例，不是要求覆寫整份檔案。保留其他 provider、MCP 與工作區設定；TOML 字串使用一般雙引號。",
+        "理解優先順序：CLI 覆寫通常高於信任的專案設定，接著是選定 profile、使用者與其他預設。組織強制要求仍可能限制可用值。",
+        "重開工作階段，從狀態或設定介面核對實際值並做一個小測試。若解析錯誤，還原這次改動再依行號檢查引號、表格標頭與重複鍵。"
+      ],
+      "你能說明改了哪個設定、作用在哪一層，並看到新工作階段的實際效果。備份保留到驗證完成。",
+      "專案被標為不信任時，其本機 .codex 層可能不被讀入。不要用修改全域設定掩蓋專案信任問題，也不要為了解析錯誤刪除整個 .codex。",
+      "協助檢查這段 config.toml 的語法與設定層級。只讀設定名稱與非敏感值，指出是否可能被專案或啟動參數覆寫，不要修改認證檔案。"
+    ],
+    "en": [
+      "config.toml sets client options, while AGENTS.md describes working instructions. User settings live in Codex home; trusted projects can add .codex/config.toml. CLI overrides, project layers and managed requirements mean a single file does not prove the effective configuration.",
+      "Read existing settings and make a backup without opening authentication files. The default is .codex under your Windows user home or ~/.codex on macOS/Linux; check any CODEX_HOME override.",
+      [
+        "Find config.toml and update an existing key rather than pasting a duplicate. Change one option first, such as web-search mode, so you can compare behavior.",
+        "The snippet below is a local-practice example, not a replacement for the whole file. Preserve other provider, MCP and workspace settings. Use ordinary quotes for TOML strings.",
+        "CLI overrides generally precede trusted project configuration, followed by the selected profile, user settings and other defaults. Enforced organization requirements can still restrict choices.",
+        "Start a new session, inspect effective settings and run a small check. If parsing fails, undo only this change and inspect quotes, table headers and duplicate keys at the reported line."
+      ],
+      "You can name the changed option, its scope and observed effect. Keep the backup until verification finishes.",
+      "An untrusted project's .codex layer may be skipped. Do not hide a trust issue by changing global defaults, or delete the entire .codex folder to fix one syntax error.",
+      "Check this config.toml snippet's syntax and precedence. Inspect only setting names and non-sensitive values. Identify potential project or CLI overrides without modifying authentication files."
+    ],
+    "ja": [
+      "config.toml は設定値、AGENTS.md は作業指示を扱います。ユーザー設定に加えて信頼したプロジェクトに .codex/config.toml を置けます。引数や組織の制限もあるため、一つのファイルだけで有効値を判断しません。",
+      "既存設定を読みバックアップします。既定はユーザーホームの .codex です。CODEX_HOME があれば確認し、認証ファイルは開きません。",
+      [
+        "同じキーを重複させず、既存値を変更します。まず検索モードなど一項目だけを変えます。",
+        "例はファイル全体の置換用ではありません。provider、MCP、他の設定を残し、通常の引用符を使います。",
+        "CLI 引数、信頼したプロジェクト、選択した profile、ユーザー設定などの順序を確認します。組織の強制要件も適用されます。",
+        "新しいセッションで有効値を確かめます。構文エラーなら今回の変更だけを戻し、引用符、見出し、重複キーを調べます。"
+      ],
+      "変えた項目、階層、実際の効果を説明できれば完了です。",
+      "信頼していないプロジェクトの設定は読み飛ばされる場合があります。一つのエラーで .codex 全体を削除しません。",
+      "この設定の構文と優先順位を確認してください。機密情報と認証ファイルは表示・変更しないでください。"
+    ],
+    "ko": [
+      "config.toml은 설정 값을, AGENTS.md는 작업 지침을 다룹니다. 사용자 설정 외에 신뢰하는 프로젝트에 .codex/config.toml을 둘 수 있습니다. 인자와 조직 정책도 있으므로 파일 하나만으로 적용 값을 판단하지 않습니다.",
+      "기존 설정을 읽고 백업합니다. 기본 위치는 사용자 홈의 .codex이며 CODEX_HOME이 있으면 확인합니다. 인증 파일은 열지 않습니다.",
+      [
+        "같은 키를 중복으로 넣지 말고 기존 값을 수정합니다. 검색 모드처럼 항목 하나만 먼저 바꿉니다.",
+        "예시는 전체 파일 교체용이 아닙니다. provider, MCP와 다른 설정은 보존하고 일반 따옴표를 사용합니다.",
+        "CLI 인자, 신뢰한 프로젝트, 선택한 profile, 사용자 설정 등의 순서를 확인합니다. 조직의 강제 요구 사항도 적용됩니다.",
+        "새 세션에서 실제 값을 확인합니다. 문법 오류가 나면 이번 변경만 되돌리고 따옴표, 표 제목과 중복 키를 점검합니다."
+      ],
+      "바꾼 항목, 적용 계층과 실제 효과를 설명할 수 있으면 완료입니다.",
+      "신뢰하지 않는 프로젝트의 설정은 건너뛸 수 있습니다. 오류 하나 때문에 .codex 전체를 삭제하지 마세요.",
+      "이 설정의 문법과 우선순위를 확인하세요. 민감 정보와 인증 파일은 표시하거나 수정하지 마세요."
+    ]
+  }
+}

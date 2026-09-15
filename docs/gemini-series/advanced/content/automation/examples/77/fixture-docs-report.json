@@ -1,0 +1,13 @@
+{
+  "agent": "authored-docs-fixture",
+  "status": "complete",
+  "findings": [
+    {
+      "file": "docs/limits.md",
+      "line": 2,
+      "quote": "輸入最小值為 0，最大值為 100。",
+      "check": "upper-bound-documentation",
+      "recommendation": "Change the documented upper bound to 10."
+    }
+  ]
+}

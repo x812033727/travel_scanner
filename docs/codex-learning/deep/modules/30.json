@@ -1,0 +1,226 @@
+{
+  "id": 30,
+  "readingMinutes": 15,
+  "operationMinutes": 20,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與準備",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "完成一次讀取虛構清單的非互動工作，分別保存答案、診斷與退出狀態。閱讀約 15 分鐘、操作約 20 分鐘，模型等待另計。先完成 [CLI 安裝與登入](article:codex-cli-getting-started)，準備 Git 與自己的空白資料夾。這篇會實際送出一次 Codex 請求並使用目前登入方式的額度；只查看 help 與故意使用無效旗標的步驟不需要模型回答。",
+        "Complete a non-interactive read of a fictional list, saving the answer, diagnostics and exit status separately. Allow 15 minutes to read and 20 to practice, plus model waiting time. Complete [CLI installation and login](article:codex-cli-getting-started), and prepare Git and your own empty folder. The exercise sends one real Codex request using the quota of your current authentication method; help and the deliberately invalid flag do not need a model response.",
+        "架空の一覧を非対話で読み、回答・診断・終了状態を別々に保存します。読む時間15分、実習20分にモデル待機時間が加わります。[CLI の導入とログイン](article:codex-cli-getting-started)を済ませ、Git と自分の空フォルダーを用意します。本実習では現在の認証方式の利用枠を使う Codex 要求を1回送信します。help と意図的に無効なフラグを使う手順ではモデルの回答は不要です。",
+        "가상 목록을 비대화형으로 읽고 답변·진단·종료 상태를 따로 저장합니다. 읽기 15분, 실습 20분에 모델 대기 시간이 추가됩니다. [CLI 설치와 로그인](article:codex-cli-getting-started)을 마치고 Git과 자신의 빈 폴더를 준비하세요. 실습은 현재 인증 방식의 사용량을 쓰는 Codex 요청을 한 번 보냅니다. help와 일부러 잘못된 플래그를 쓰는 단계는 모델 응답이 필요 없습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：認識執行入口",
+        "Step 1: Identify the execution surface",
+        "手順1：実行する入口を確認する",
+        "1단계: 실행 진입점 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "codex exec 是終端機命令，不是桌面聊天的斜線指令。Windows 在 PowerShell 執行；macOS 的 Terminal 與 Linux 的終端機執行相同 CLI。若用 WSL，就在 WSL 裡安裝與登入後執行，不能把 Windows 的登入狀態視為已同步。桌面與 IDE 可開終端機執行；手機畫面上的對話不是這個本機程序，必須有能執行 CLI 的電腦或受控遠端環境。各系統先執行以下兩行，確認本機版本提供本文旗標，再繼續。",
+        "codex exec is a terminal command, not a desktop chat slash command. Use PowerShell on Windows, Terminal on macOS, or a Linux terminal. In WSL, install and authenticate inside WSL; do not assume Windows login has synchronized. Desktop and IDE terminals can host the CLI. A phone conversation is not this local process: a computer or controlled remote environment must run it. On every OS, run the following two commands and confirm your installed version supports the flags before continuing.",
+        "codex exec は端末コマンドで、デスクトップ会話のスラッシュコマンドではありません。Windows は PowerShell、macOS は Terminal、Linux は端末を使います。WSL では内部で導入・認証し、Windows のログインが同期済みとは考えません。デスクトップや IDE の端末でも実行できます。携帯の会話はこのローカルプロセスではなく、CLI を実行できる PC または管理された遠隔環境が必要です。各 OS で次の2行を実行し、実版がフラグに対応するか確認します。",
+        "codex exec는 터미널 명령이며 데스크톱 대화의 슬래시 명령이 아닙니다. Windows는 PowerShell, macOS는 Terminal, Linux는 터미널을 사용합니다. WSL에서는 내부에 설치·인증하며 Windows 로그인이 동기화됐다고 가정하지 마세요. 데스크톱·IDE 터미널에서도 CLI를 실행할 수 있습니다. 휴대전화 대화는 이 로컬 프로세스가 아니므로 CLI를 실행할 컴퓨터나 관리되는 원격 환경이 필요합니다. 모든 OS에서 다음 두 줄로 실제 버전의 플래그 지원을 확인하세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "label": [
+        "查看 CLI 版本與 exec 說明",
+        "Inspect CLI version and exec help",
+        "CLI 版と exec の説明を確認",
+        "CLI 버전과 exec 도움말 확인"
+      ],
+      "code": "codex --version\ncodex exec --help\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 介面 | 本篇內容 | 用法 |\n| --- | --- | --- |\n| 終端機 | codex exec | 啟動一次非互動工作 |\n| 提示詞參數 | Read tasks.md… | 告訴代理工作目標 |\n| stdout | 最後答案 | 可存成文字檔 |\n| stderr | 過程與診斷 | 有文字不等於失敗 |\n| 退出狀態 | 整數 | 0 代表程序成功結束，仍需驗證答案 |\n\n[JSON／JSONL](article:codex-json-output) 篇會切換 stdout 的格式；此處先保持普通文字。不要以診斷檔是否空白、回答是否寫著 Done，替代退出狀態與內容檢查。",
+        "| Surface | This exercise | Use |\n| --- | --- | --- |\n| Terminal | codex exec | Start one non-interactive run |\n| Prompt argument | Read tasks.md… | State the agent's objective |\n| stdout | Final answer | Save as text |\n| stderr | Progress and diagnostics | Text does not itself mean failure |\n| Exit status | Integer | 0 means process success; validate the answer too |\n\nThe [JSON/JSONL](article:codex-json-output) lesson changes stdout's format; keep plain text here. Neither an empty diagnostic file nor an answer saying Done replaces exit-status and content checks.",
+        "| 入口 | 本実習 | 用途 |\n| --- | --- | --- |\n| 端末 | codex exec | 非対話処理を1回開始 |\n| 依頼引数 | Read tasks.md… | エージェントに目的を指定 |\n| stdout | 最終回答 | テキストとして保存 |\n| stderr | 進行・診断 | 文字があるだけで失敗とは限らない |\n| 終了状態 | 整数 | 0 は正常終了だが回答の検証も必要 |\n\n[JSON／JSONL](article:codex-json-output)編で stdout の形式を変えます。ここでは普通の文字列を使い、診断が空か、回答に Done とあるかだけで成功を決めません。",
+        "| 진입점 | 실습 내용 | 용도 |\n| --- | --- | --- |\n| 터미널 | codex exec | 비대화형 실행 한 번 시작 |\n| 요청 인수 | Read tasks.md… | 에이전트 목표 지정 |\n| stdout | 최종 답변 | 텍스트로 저장 |\n| stderr | 진행·진단 | 글이 있다고 실패는 아님 |\n| 종료 상태 | 정수 | 0은 정상 종료이며 답변 검증도 필요 |\n\n[JSON/JSONL](article:codex-json-output) 편에서 stdout 형식을 바꿉니다. 여기서는 일반 텍스트를 쓰며 진단 파일이 비었거나 Done이라는 답변만으로 성공을 판단하지 않습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：建立獨立輸入",
+        "Step 2: Create an isolated input",
+        "手順2：独立した入力を用意する",
+        "2단계: 독립 입력 만들기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在自己的練習位置建立全新的 exec-lab 資料夾，再以編輯器開啟它。若同名資料夾已有資料，改用另一個空白名稱。新增 UTF-8 的 tasks.md，內容完整如下。不要使用正式專案、私有日誌或整個使用者目錄；一份小而可人工核對的清單就能練習輸入與輸出。接著在這個資料夾的終端機初始化 Git；本文不需要提交、遠端或 GitHub 帳號。",
+        "Create a new exec-lab folder in your practice area and open it in an editor. If that name already contains files, choose another empty folder. Add UTF-8 tasks.md exactly as below. Avoid a production project, private logs or your whole user directory: a small list that you can check by hand is enough. Initialize Git in that folder's terminal. No commit, remote or GitHub account is required.",
+        "練習場所に新しい exec-lab を作り、エディターで開きます。同名の場所に既存データがあれば別の空フォルダーを選びます。UTF-8 の tasks.md に下記を保存します。正式プロジェクト、非公開ログ、利用者ディレクトリ全体は使わず、手で検算できる小さな一覧で十分です。そのフォルダーの端末で Git を初期化します。コミット、リモート、GitHub アカウントは不要です。",
+        "연습 위치에 새 exec-lab 폴더를 만들어 편집기로 여세요. 같은 이름에 기존 파일이 있으면 다른 빈 폴더를 고릅니다. UTF-8 tasks.md에 아래 내용을 저장하세요. 운영 프로젝트·비공개 로그·사용자 폴더 전체 대신 손으로 검산할 작은 목록이면 충분합니다. 해당 폴더의 터미널에서 Git을 초기화하며 커밋·원격 저장소·GitHub 계정은 필요 없습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "markdown",
+      "label": [
+        "exec-lab/tasks.md",
+        "exec-lab/tasks.md",
+        "exec-lab/tasks.md",
+        "exec-lab/tasks.md"
+      ],
+      "code": "# Practice tasks\nRevision: exec-practice-1\n\n- [x] Read the guide\n- [ ] Create a practice file\n- [ ] Verify the result\n"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "label": [
+        "在 exec-lab 內執行，各平台相同",
+        "Run inside exec-lab on every platform",
+        "全 OS で exec-lab 内から実行",
+        "모든 OS에서 exec-lab 안에서 실행"
+      ],
+      "code": "git init\ngit status --short\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "預期看到 tasks.md 是未追蹤檔案。Git 初始化只是滿足 CLI 工作目錄檢查，沒有把檔案上傳。先人工記下版本 exec-practice-1、總數 3、完成 1、未完成 2。不要把這些答案直接寫進下一步提示詞，才能檢查它是否真的讀到資料。若目前資料夾有其他檔案，先用[路徑教學](article:codex-terminal-paths)確認自己位於哪裡。",
+        "Expect tasks.md to be untracked. Git initialization satisfies the CLI's working-directory check and uploads nothing. Privately note revision exec-practice-1, total 3, completed 1, pending 2. Do not include these answers in the next prompt, so the result can demonstrate reading the input. If other files appear, use [Terminal paths](article:codex-terminal-paths) to verify your location.",
+        "tasks.md が未追跡と表示されるはずです。初期化は CLI の作業場所確認を満たすだけで、アップロードしません。版 exec-practice-1、総数3、完了1、未完了2を手元に控えます。次の依頼には答えを書かず、入力を読んだ結果か確認します。他のファイルが見える場合は[パスの説明](article:codex-terminal-paths)で現在地を調べます。",
+        "tasks.md가 추적되지 않은 파일로 보여야 합니다. Git 초기화는 CLI 작업 위치 확인을 만족할 뿐 업로드하지 않습니다. 버전 exec-practice-1, 전체 3, 완료 1, 미완료 2를 따로 기록하세요. 다음 요청에 답을 넣지 않아야 실제 입력을 읽었는지 확인할 수 있습니다. 다른 파일이 보이면 [경로 설명](article:codex-terminal-paths)으로 위치를 확인하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：保存輸出並立刻記下退出狀態",
+        "Step 3: Save output and immediately capture the exit status",
+        "手順3：出力を保存し、直後に終了状態を記録する",
+        "3단계: 출력 저장 후 즉시 종료 상태 기록"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "以下兩組選自己系統的一組，執行前確認 report-01.md、stdout-01.txt、stderr-01.log 不存在；macOS／Linux 也要確認 tasks-before.md 尚不存在；第二次練習改用 02，避免把舊答案誤認為新成功。唯讀沙盒限制代理的修改權限，shell 重新導向與 -o 仍會寫出指定報告，這正是本篇要保存的產物。--ephemeral 不保留工作階段檔，仍不代表不會使用帳號額度或不會產生這三份檔案。",
+        "Choose the command set for your OS. Confirm report-01.md, stdout-01.txt and stderr-01.log (and tasks-before.md on macOS/Linux) do not exist first; use 02 for a second attempt to avoid mistaking an old answer for new success. The read-only sandbox limits agent edits; shell redirection and -o still write the specified reports. --ephemeral avoids persisted session files, but does not mean zero account usage or the absence of these three output files.",
+        "自分の OS の組を選びます。report-01.md、stdout-01.txt、stderr-01.log（macOS／Linux は tasks-before.md も） が未作成か確認し、再実習では02に変えて古い回答との混同を避けます。読み取り専用サンドボックスはエージェントの編集を制限しますが、shell のリダイレクトと -o は指定した報告を書きます。--ephemeral はセッション保存を省くだけで、利用枠を消費しない、またはこの3ファイルを作らないという意味ではありません。",
+        "OS에 맞는 명령 묶음을 고르세요. report-01.md, stdout-01.txt, stderr-01.log(macOS/Linux는 tasks-before.md도)가 없는지 확인하고 두 번째 시도는 02로 바꿔 오래된 답변을 새 성공으로 오인하지 않게 합니다. 읽기 전용 샌드박스는 에이전트 수정을 제한하지만 shell 리디렉션과 -o는 지정 보고서를 씁니다. --ephemeral은 세션 저장을 생략할 뿐 사용량이 없거나 이 세 파일을 만들지 않는다는 뜻은 아닙니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "powershell",
+      "label": [
+        "Windows PowerShell",
+        "Windows PowerShell",
+        "Windows PowerShell",
+        "Windows PowerShell"
+      ],
+      "code": "$practiceBefore = (Get-FileHash -LiteralPath tasks.md -Algorithm SHA256).Hash\ncodex exec --sandbox read-only --ephemeral -o report-01.md 'Read tasks.md. Report its revision and the total, completed and pending checkbox counts. Do not edit input files or use external tools.' 1> stdout-01.txt 2> stderr-01.log\n$practiceExit = $LASTEXITCODE\n$practiceExit\nGet-Content -LiteralPath report-01.md\n$practiceBefore -eq (Get-FileHash -LiteralPath tasks.md -Algorithm SHA256).Hash\n"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "label": [
+        "macOS／Linux shell",
+        "macOS / Linux shell",
+        "macOS／Linux shell",
+        "macOS / Linux shell"
+      ],
+      "code": "cp tasks.md tasks-before.md\ncodex exec --sandbox read-only --ephemeral -o report-01.md 'Read tasks.md. Report its revision and the total, completed and pending checkbox counts. Do not edit input files or use external tools.' > stdout-01.txt 2> stderr-01.log\npractice_exit=$?\nprintf '%s\\n' \"$practice_exit\"\ncat report-01.md\ncmp tasks-before.md tasks.md\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "提示詞中的 external tools 指外部服務；Codex 可以用本機讀檔工具讀取 tasks.md。退出狀態要在下一個原生命令之前保存，否則可能變成另一條命令的狀態。成功時檢查三件事：狀態為 0、報告含正確版本與 3／1／2、原始檔相同。PowerShell 最後一行應為 True；macOS／Linux 的 cmp 無輸出且退出 0 表示相同。若報告語言或句型不同，只要數值和依據正確就接受，不要求逐字一樣。",
+        "External tools in the prompt means external services; Codex can use local file-reading tools for tasks.md. Capture exit status before the next native command replaces it. Success requires status 0, the correct revision and 3/1/2 counts, and unchanged input. PowerShell's last line should be True; on macOS/Linux, cmp produces no output and exits 0 when files match. Accept different response wording or language if the values and evidence are correct.",
+        "依頼中の external tools は外部サービスを指し、ローカルの読取りツールで tasks.md を読めます。次の外部コマンドに上書きされる前に終了状態を保存します。成功条件は0終了、正しい版と3／1／2、入力の不変です。PowerShell の最後は True、macOS／Linux の cmp は一致なら無出力で0終了です。回答の言語・表現が違っても値と根拠が正しければ合格です。",
+        "요청의 external tools는 외부 서비스를 뜻하며 로컬 파일 읽기 도구는 사용할 수 있습니다. 다음 외부 명령이 상태를 바꾸기 전에 종료 상태를 저장하세요. 성공 조건은 종료 0, 올바른 버전과 3/1/2, 입력 불변입니다. PowerShell 마지막 줄은 True여야 하며 macOS/Linux의 cmp는 같으면 출력 없이 0으로 종료합니다. 답변 언어·표현이 달라도 수치와 근거가 맞으면 통과입니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 4：確認失敗不會被當成答案",
+        "Step 4: Ensure a failure is not accepted as an answer",
+        "手順4：失敗を回答として採用しない",
+        "4단계: 실패를 답변으로 채택하지 않기"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "label": [
+        "各平台的無效參數練習",
+        "Invalid-argument exercise on every platform",
+        "全 OS の無効引数実習",
+        "모든 OS의 잘못된 인수 실습"
+      ],
+      "code": "codex exec --sandbox invalid 'Read tasks.md'\n"
+    },
+    {
+      "type": "p",
+      "text": [
+        "這一行應在解析參數時被拒絕，不會取得新的模型答案。PowerShell 緊接著輸入 $LASTEXITCODE；macOS／Linux 緊接著輸入 echo $?，應為非 0。此時上一輪的 report-01.md 可能仍存在，但不能拿來宣稱本輪成功。修正為 read-only 後若要重跑，用新的輸出檔名並重新記錄狀態。不要為了消除錯誤改成略過權限或沙盒；參數錯誤、登入錯誤、額度不足與輸入不存在應分別處理。",
+        "This should be rejected during argument parsing, without a new model answer. Immediately inspect $LASTEXITCODE in PowerShell or echo $? on macOS/Linux; expect nonzero. The previous report-01.md can still exist and does not prove this run succeeded. To retry with read-only, use new output names and capture status again. Do not bypass permissions or sandboxing to hide errors: invalid arguments, authentication failures, exhausted quota and missing input need different fixes.",
+        "引数解析で拒否され、新しいモデル回答は出ないはずです。直後に PowerShell は $LASTEXITCODE、macOS／Linux は echo $? を確認し、0以外を期待します。前回の report-01.md が残っていても今回の成功証拠にはなりません。read-only に直して再実行するなら新しい出力名で状態を保存します。権限やサンドボックスを迂回してエラーを隠さず、引数・認証・利用枠・入力欠如を分けて修正します。",
+        "인수 해석 단계에서 거부되어 새 모델 답변이 없어야 합니다. 직후 PowerShell은 $LASTEXITCODE, macOS/Linux는 echo $?로 0이 아닌지 확인합니다. 이전 report-01.md가 남아도 이번 실행 성공 증거가 아닙니다. read-only로 수정해 재시도하려면 새 출력 이름과 종료 상태를 기록하세요. 오류를 없애려고 권한·샌드박스를 우회하지 말고 인수·인증·사용량·입력 누락을 구분해 고칩니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "將結果記成兩列：第一次唯讀工作填實際輸出檔名、退出碼與計數；無效旗標那列填「參數解析失敗，未產生新答案」。查看舊 report-01.md 的內容仍在，只能證明舊檔保留，不能填入第二列的成功欄。若第一輪尚未真的呼叫模型，就留為未執行，仍可獨立完成無效旗標練習。",
+        "Keep two result rows: the read-only run's actual filenames, exit status and counts; then the invalid-flag attempt marked argument parsing failed, no new answer. An existing report-01.md proves only that the earlier file remains. If the model run was not performed, leave it unexecuted; the invalid-flag exercise can still be done independently.",
+        "結果は二行で記録します。読取り実行は実際の出力名・終了値・件数、無効フラグは「引数解析失敗、新回答なし」とします。report-01.md が残ることは旧ファイルの保存だけを示します。モデルを未実行ならその欄を未実行とし、無効フラグだけ独立して試せます。",
+        "결과를 두 줄로 기록합니다. 읽기 실행에는 실제 파일명·종료 상태·개수를 적고 잘못된 플래그 시도에는 인수 해석 실패, 새 답변 없음을 적으세요. report-01.md가 남아 있다는 것은 이전 파일 보존만 증명합니다. 모델을 실행하지 않았다면 미실행으로 남기고 잘못된 플래그만 독립적으로 시험할 수 있습니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "常見問題、還原與下一步",
+        "Troubleshooting, cleanup and next steps",
+        "問題の切り分け・復元・次の学習",
+        "문제 해결·복원·다음 단계"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "找不到 codex 時回到安裝篇查 PATH，不在這裡反覆登入。出現 Git 工作目錄錯誤就確認 exec-lab 及 git status，不直接略過檢查。登入或用量錯誤先用 codex login status 查看登入狀態，再依[帳號與額度](article:codex-account-usage)查對應入口；不要公開診斷裡的憑證、使用者路徑或私人提示詞。若要求互動授權導致無法繼續，先回互動模式確認必要權限，再決定如何縮小非互動工作的範圍。",
+        "If codex is missing, check PATH in the installation lesson rather than repeatedly logging in. For Git-directory errors, check exec-lab and git status before considering any override. For authentication or quota errors, inspect codex login status and the relevant [Account and usage](article:codex-account-usage) surface. Do not publish credentials, user paths or private prompts from diagnostics. If interactive approval is required, investigate the needed permission interactively, then narrow the non-interactive task as appropriate.",
+        "codex が見つからなければ導入編で PATH を調べ、ログインを繰り返しません。Git 場所エラーでは exec-lab と git status を確認し、すぐチェックを省略しません。認証・利用枠エラーは codex login status と[アカウント・利用量](article:codex-account-usage)の入口で調べます。診断中の資格情報、利用者パス、非公開依頼は公開しません。対話承認が必要なら対話モードで必要な権限を確認し、非対話処理の範囲を小さくします。",
+        "codex를 찾지 못하면 설치 편에서 PATH를 확인하고 로그인을 반복하지 않습니다. Git 위치 오류는 exec-lab과 git status를 확인하며 바로 검사를 생략하지 않습니다. 인증·사용량 오류는 codex login status와 [계정·사용량](article:codex-account-usage)의 해당 화면에서 확인하세요. 진단의 자격 증명·사용자 경로·비공개 요청을 공개하지 마세요. 대화형 승인이 필요하면 대화 모드에서 필요한 권한을 확인한 뒤 비대화형 작업 범위를 줄입니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "最後保留本輪退出狀態與核對結果，重新開啟 tasks.md 確認內容。若要清理，用檔案管理員逐一選取自己建立的 report、stdout、stderr，以及 macOS／Linux 的 tasks-before.md；不要刪除整個專案目錄或使用清除全部未追蹤檔的指令。你已完成一次可核對的唯讀執行；下一篇把同樣任務改成有欄位驗證的結構化輸出，之後才接入 [CI](article:codex-ci-workflows)。本文旗標依官方文件及列出的 CLI help 核對；不把參考腳本通過當作每個讀者帳號已成功執行模型。",
+        "Keep this run's exit status and verification result, then reopen tasks.md. For cleanup, individually select your report, stdout, stderr and, on macOS/Linux, tasks-before.md in the file manager. Do not delete the project or clear every untracked file. You now have a verifiable read-only run. Next add structured-output validation, then move to [CI](article:codex-ci-workflows). Flags are checked against official documentation and CLI help; passing reference-script checks does not prove a model run succeeded for every reader's account.",
+        "今回の終了状態と検算結果を保存し、tasks.md を再確認します。片付けるなら自分が作った report、stdout、stderr と macOS／Linux の tasks-before.md だけをファイル管理画面で選びます。プロジェクト全体や未追跡ファイル全部を消しません。これで検証可能な読み取り専用処理を終え、次は構造化出力の検証、その後 [CI](article:codex-ci-workflows)へ進みます。フラグは公式文書と CLI help で確認しており、参考スクリプトの合格が各利用者のモデル実行成功を意味するわけではありません。",
+        "이번 종료 상태와 검증 결과를 보관하고 tasks.md를 다시 확인하세요. 정리는 자신이 만든 report·stdout·stderr와 macOS/Linux의 tasks-before.md만 파일 관리 화면에서 개별 선택합니다. 프로젝트 전체나 모든 미추적 파일을 지우지 마세요. 검증 가능한 읽기 전용 실행을 마쳤으니 다음에는 구조화 출력 검증, 이후 [CI](article:codex-ci-workflows)로 진행합니다. 플래그는 공식 문서와 CLI help로 확인했으며 참고 스크립트 통과가 모든 독자의 모델 실행 성공을 뜻하지 않습니다."
+      ]
+    }
+  ]
+}

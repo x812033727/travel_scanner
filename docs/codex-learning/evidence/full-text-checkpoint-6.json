@@ -1,0 +1,632 @@
+{
+  "checked_on": "2026-09-14",
+  "recorded_at": "2026-09-14T15:04:21.119832+00:00",
+  "reviewer": "codex-fulltext-fc2e",
+  "base_commit": "d11ea02f15188a6300808ac06221d058fb15076b",
+  "checkpoint": 6,
+  "planned_ids": [
+    30,
+    55,
+    56,
+    57,
+    31,
+    32,
+    58,
+    59,
+    60,
+    12
+  ],
+  "scope": "Ten additional complete five-language reads and ten editorial passes. This records checkpoint 6 only and does not replace previous checkpoint or cumulative progress files. Final page acceptance remains pending.",
+  "hash_convention": "Canonical LF UTF-8 compiler hashes; fetched source hashes use raw bytes.",
+  "lessons": [
+    {
+      "id": 30,
+      "slug": "codex-exec-scripting",
+      "source_hashes": {
+        "zh-TW": "925cecd7dcd3139e0c47cc683f4d053e072fb7612f1a93423efbafe73b981a91",
+        "en": "384c40cbcb315e0baf07452f34deddc420f404aa949c1403ae6d065779356201",
+        "ja": "73640a99bf7ca07bc3856eaea0c928070074affd6386439ed804e4e73ba5948c",
+        "ko": "eda95422c98982817520e4e347612c8dbbc2c336e1e6f2fc1408907a222ef6e2",
+        "zh-CN": "70dfa538d2cc5bf67a46355e9bcb2b03bd8c9cb99e493ae560fa6b6f031f6d35"
+      },
+      "pack_hash": "02590250d2010fe830d05bebfc17824aede2c612c84a87cf1d0d6cedc1ca7f04",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed one non-interactive run, distinct output channels and immediate exit capture on PowerShell and POSIX shells; unused filenames and input preservation are explicit. Invalid-flag failure cannot reuse an old report as new success."
+      ],
+      "product_evidence": "pending; reference tests are distinct from actual product/browser operation"
+    },
+    {
+      "id": 55,
+      "slug": "codex-json-output",
+      "source_hashes": {
+        "zh-TW": "4bd00790d2a281cf4dfbec0678f94ec020491d579102d07e784ac9105c43c6ec",
+        "en": "336bb66ebe09153a4fc196babb9d133a3eaa5235480207661b49f69fb8daf797",
+        "ja": "a6b075facdda987ed4677f88b7f7572cb0b279f9842aecdb92b3acf1819a5572",
+        "ko": "6b0d48bc52e4d9cf4996622d1562faa175201ebf8a6aef83f913f46726fa0437",
+        "zh-CN": "3a1f1c88c58abe8f6f4a37a06f5c4484c6aa38ec2c154356ed8542f27e391d6a"
+      },
+      "pack_hash": "948d1b2e6b54e0a40ce92263c75633f8e927e52e82ddec1bc5c7a7b1b40f30c6",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed the entire wrapper, one-turn JSONL boundaries, status and schema validation, Windows standalone executable requirement and failure copies. Wrong 3/2/1 counts intentionally pass structure but fail manual truth comparison; this is not a general factual verifier."
+      ],
+      "product_evidence": "pending; reference tests are distinct from actual product/browser operation"
+    },
+    {
+      "id": 56,
+      "slug": "codex-ci-workflows",
+      "source_hashes": {
+        "zh-TW": "e16d3873ad34739f9f2f4a6e497c44c43c002ea8d8cc44aab149c00a12a72408",
+        "en": "ada354eedea1dce2c596a572cf42815ea539d670d9e0ff2afcc78151a6bff607",
+        "ja": "24fa842999aea28d648b0c9d107406adc4c84ea1fd87db580de75bbc51d3c2bb",
+        "ko": "62c743f5eea1240e971f890e54efa5f1d7e9779a08c4e6e57845527448fe6d03",
+        "zh-CN": "4ab3fc709106868da2d2318119b0cc9ce655be138ffb2b775f07e41d2332435b"
+      },
+      "pack_hash": "2587d7f665a2186f9ab5d4b791535c2844a8198bcc3ee1e3171fcbd261dc4767",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Corrected annotated-tag interpretation: v1 tag object f367b1e9572fd064ea71ef925ca24ee0f01080af resolves to pinned commit 86365089eb2b84e0a8fb0717b304f8bdcb13b20e. Tag-object identity is not commit recency.",
+        "Reviewed pinned inputs, permission-profile exclusivity, separate secret-free validation job, exact fixture values and default single-pending concurrency semantics. Corrected Japanese proxy-startup terminology. No GitHub-hosted run was triggered."
+      ],
+      "product_evidence": "pending; reference tests are distinct from actual product/browser operation"
+    },
+    {
+      "id": 57,
+      "slug": "codex-automation-recovery",
+      "source_hashes": {
+        "zh-TW": "cf9434fd0d3deb142834d2f4bd393ff7de4743b0ad6c421d4483036d2de4a923",
+        "en": "52dc8c25a6048390e61514c8b2cabeba3dfc7c88012ce7b821427fd0c8f17033",
+        "ja": "43beedf6a4622a7c2f3b09db07868066c22bcdc34b3c00d1a50fd84659b53e6b",
+        "ko": "cda59e0c6e48eba71e1c227d388c12fe34cf2d33223efa83794fddde6e3f62f4",
+        "zh-CN": "c4fd1d28e56dc94a8e2eb6129e7f1727c430fd9a23bad891263b0577cd3c928d"
+      },
+      "pack_hash": "6585c5d070b54676105ce88285f7c5f8c941143214bd3ade2e91e15d845d8882",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed independent saved schedule and active run states, simulated running/timeout copies, actual subprocess.run timeout guarantees and original-result preservation. Corrected Japanese host terminology. No schedule, host outage or model timeout was induced."
+      ],
+      "product_evidence": "pending; reference tests are distinct from actual product/browser operation"
+    },
+    {
+      "id": 31,
+      "slug": "codex-website-workshop",
+      "source_hashes": {
+        "zh-TW": "418c94a473f4a78bc561b7dc695c1ecd545fd9ef7e9fc9a9513dbc3bf90100ca",
+        "en": "957b359c0212a9bea933bcf95c7ae5b1f5dd27c88eb1fdaba6d45df705902842",
+        "ja": "5261a38fec68eefd92167e4fb59d511bdf685798637cf5a5239ae83e7a93cb40",
+        "ko": "b40b53304eab0dfd09e87320f139d3b22f6f4abd918b83461d280de0f0a54f64",
+        "zh-CN": "a2c8c360458abb433d7b5377b8725704e8d8d3e81e2e1235be514d75ba9db959"
+      },
+      "pack_hash": "94c74bd5fc8936ce2c977fd2fd046b1f8c9d8bfc5e9a924713e43a2571e248f1",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Added explicit Show, About this exercise and Reset practice data controls to the brief and an All tasks empty baseline to UI acceptance.",
+        "Replaced obsolete studio-site metadata across author source, shared catalogue, API projections and packs. Removed two unrelated legacy studio-page screenshot references from this lesson; preserved their original files and retained the existing todo-reference screenshots.",
+        "Reviewed fixed inputs, filters/counts, malformed-storage preservation, keyboard/layout checklist and handoff expectations. Actual current website/browser acceptance remains pending."
+      ],
+      "product_evidence": "pending; reference tests are distinct from actual product/browser operation"
+    },
+    {
+      "id": 32,
+      "slug": "codex-csv-workshop",
+      "source_hashes": {
+        "zh-TW": "4842482c2007c39ded4f0e9987b95bed73760abba73d10a28a9a9e5501810912",
+        "en": "bf11a3272ff2d8db978fb98984056ca286b91a2aa74dbe01882c79e01b1c0938",
+        "ja": "f0d0d5873bd0d196ce5841ece64106e61449ff0aa03160163b560efbba2c94f7",
+        "ko": "8daf79cdc84ec7f68ef193a6bce3b15c3312fcb181f745218c0d3198a73dbc9a",
+        "zh-CN": "8862d5e1bcdfb339acad86831a3f74c68761951db9821abdb77230f60eb7b53d"
+      },
+      "pack_hash": "1398571ed91ad0c9762ad0c53f2395202b2148d6c716a13c827a2b3eda3f212e",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Specified Python 3.9 or later in prerequisites and the downloadable README. Clarified first valid occurrence in every description. Corrected Japanese CSV, header, byte-preservation and spreadsheet terminology.",
+        "Reviewed the full cleaner and tests, input/output identity, overwrite refusal, malformed structure, Unicode/quoted comma, first-valid record and disk-write limitations. Reference checks detect intentionally removed overwrite protection."
+      ],
+      "product_evidence": "pending; reference tests are distinct from actual product/browser operation"
+    },
+    {
+      "id": 58,
+      "slug": "codex-maintain-existing-project",
+      "source_hashes": {
+        "zh-TW": "017093d61a0fdc860f7718985b7571a18463c12fb3d89abf130b6bca91cc4a1f",
+        "en": "2101ad6d1d3fb86a074f6866939eb1ef191926af23b0d72142aa8a7888af2487",
+        "ja": "c3e2ad1483704372d9b50979c6bf27c4dec27d7dc4a4dbb2a995f268fc80c266",
+        "ko": "e74450b5ef9b4d93df86b5c32c99ec8da76bccad8da31d48b67d353a59b07225",
+        "zh-CN": "120457f5f2f276752202834f74f966d0ee77bf39731f9dd2431abc2ce4f0849c"
+      },
+      "pack_hash": "b128d2b44d54f2b3dae87878283f88cb59478ff73d6da50484d1e7235bdce4ef",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Established pre-edit UI data and stored JSON with IDs before refactoring; use an empty dedicated profile and the same origin/profile/data afterward. Reuse the existing preview service, use a second terminal for Codex, check both widths before deleting Read once, and stop only the owned service afterward.",
+        "Reviewed full count helper, original/new tests, tasks versus shown wiring and targeted restoration. Core tests do not prove UI persistence or browser behavior. Corrected Chinese/Japanese wording."
+      ],
+      "product_evidence": "pending; reference tests are distinct from actual product/browser operation"
+    },
+    {
+      "id": 59,
+      "slug": "codex-project-data-safety",
+      "source_hashes": {
+        "zh-TW": "66f3210b8f1c414d88292c5b9873b12ea1ec842bb45c75701d46f6dc18ea5ebb",
+        "en": "80cce2cac442592396360b6a5000c88cfe06fd497ad21118fd9fc98164d3740e",
+        "ja": "b846416a04bcd99bf5c37c942cdae66077b946ab64ce381dba8161b582126b8a",
+        "ko": "1a16b0e0002578aee68d39aae84a87fe41368b1b45623b7b9ff9f691420dbfdb",
+        "zh-CN": "7b8a444b153562288072c5316c0ea54d43e5b90697676136dc77924af410c574"
+      },
+      "pack_hash": "6a017993ebb625828fe4753088b083d225cea321c882e529fa9ebd4ac0b47869",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed fictional ignored env data, tracked-file limitations, untrusted external-content boundaries and independent Git/output/tool-activity evidence. Corrected Japanese terms and ambiguous English git add punctuation. No real credential or model-resistance trial was used."
+      ],
+      "product_evidence": "pending; reference tests are distinct from actual product/browser operation"
+    },
+    {
+      "id": 60,
+      "slug": "codex-usage-efficiency",
+      "source_hashes": {
+        "zh-TW": "3f6cc92ef9fb7bf6da0a80f714547248a1bd4236793dfe5e07efaaf84f98de20",
+        "en": "671ec441f5e3b21e74ba43a8ac1d6e4fe6773d004186d854aafcc8e274caa16f",
+        "ja": "461a59093babaf848f0c058866baca18ff3d16e8d01b3235ddb1bf2cc37134b9",
+        "ko": "ce97b395dc459e576511ab0610a705979653c0fda57cdcc3af38d62f74630de9",
+        "zh-CN": "af50026c313e67e81ab94ff193d709448af06f76a50d5330d3dac01353655679"
+      },
+      "pack_hash": "383fca704a6bdbc6d5ceef553d9f15fbcce94b7170158fa462096b2a874e7eca",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed two identical broken baselines, distinct fresh read-only task prompts, four fixed criteria, human versus wait time and a fictional example that cannot establish complete-run efficiency. Corrected Japanese account-wide usage terminology."
+      ],
+      "product_evidence": "pending; reference tests are distinct from actual product/browser operation"
+    },
+    {
+      "id": 12,
+      "slug": "codex-troubleshooting",
+      "source_hashes": {
+        "zh-TW": "59ba58f95d3b925c181dc281e4f5ec482846d273734dd821f737066c5af37f97",
+        "en": "45ad08a565f2a9019dbe7d898356e190a4e20d63a2e9ea08e1198a403fb4586c",
+        "ja": "64cd77691d5e797687c9e07611eb744ac7e173de44b9484e9aaac0c9b6626ad8",
+        "ko": "424739c028a1331245b3a5a2db2a5d0afca211ca362c48a4822b9c20973be798",
+        "zh-CN": "1eab42746635efb5ad83aae3c0973c2aaf279729c71f07e8b4abac1c4535cb1c"
+      },
+      "pack_hash": "0441424a3d360a467755fce4633f68d590b5acebf630f0f503282ce802f244ef",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed all troubleshooting tables, usable cross-links, exact path fixture, immediate PowerShell cmdlet status versus native exit codes and original-file preservation. Corrected Japanese desktop/container/plugin/process/handshake/handoff terms."
+      ],
+      "product_evidence": "pending; reference tests are distinct from actual product/browser operation"
+    }
+  ],
+  "code_blocks_checked_across_five_locales": 58,
+  "reference_checks": {
+    "exec-reference.json": {
+      "sha256": "5bc94c0cd3b0fd9f8932f667ef7df511df872ec319a8d49dfd7ef04d770d01b7",
+      "checkedAt": "2026-09-14T15:03:18.657136+00:00",
+      "check_count": 13,
+      "notTested": [
+        "Actual model output or API authentication",
+        "GitHub-hosted workflow execution",
+        "macOS/Linux runtime",
+        "Publication or deployment"
+      ]
+    },
+    "workshop-reference.json": {
+      "sha256": "3e5e117921711eaac00dd19979132a4bf12bb58879540da9860078d6180407f2",
+      "checkedAt": "2026-09-14T15:03:22.484749+00:00",
+      "check_count": 12,
+      "notTested": [
+        "Generated model implementations",
+        "Actual Codex prompt-injection response",
+        "Live usage comparison",
+        "Post-refactor browser behavior",
+        "macOS/Linux execution",
+        "Publication or deployment"
+      ]
+    }
+  },
+  "official_content_reads": [
+    {
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode.md",
+      "sha256": "cd4a99999324ff8a1c73e08a767126cea7c5db0bc977adc5f44eee0285b41fd8",
+      "read_scope": "Complete page: output channels, JSONL, schema, final output, Git context and authentication."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/github-action.md",
+      "sha256": "3c3a244ef87fffb064114e388f4c7827b3ddc55b712f5aec50f2719a3cf1bc6a",
+      "read_scope": "Complete page; exact pinned source takes precedence for permission-profile inputs."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex-action/86365089eb2b84e0a8fb0717b304f8bdcb13b20e/action.yml",
+      "sha256": "448852e9e59565440bf25174b54bbf661bd66102be295af2e526fa09eaaf3bd7",
+      "read_scope": "Complete pinned inputs and composite action: API proxy, drop-sudo and permission profile."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex-action/main/docs/security.md",
+      "sha256": "06d1039180fc0a40515f23b68bb980c30c5430116389e904d57500a47694aa05",
+      "read_scope": "Complete security page: runner platform strategy and separate subsequent jobs."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/pricing.md",
+      "sha256": "095adeca37f9e8ac4b21ef79a819701fe0138fcfd25b94cfeb0d64394b8eda56",
+      "read_scope": "API-key plan distinction, variable/shared usage and usage dashboard/status sections; no hardcoded prices added."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/models.md",
+      "sha256": "f4ffe196ccff81a40e1ff1f80d97ddd0c9523bb01b1716f1bd5a8aa4836bda23",
+      "read_scope": "Availability by rollout/account/client and reasoning-effort selection sections."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/auth.md",
+      "sha256": "1203cb8b22c421c0af9125dd2b70c475993028468d8f5359ad91ad2c40075677",
+      "read_scope": "Sign-in methods and applicable data controls; login status, cache and diagnostic sections."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/permissions.md",
+      "sha256": "a4ef92666fcff0fceb7ab5332588585d3b4958909263e5576bf54dd14acf022e",
+      "read_scope": "Built-in local profiles and scope/enforcement distinctions from browser, connectors, MCP and model service traffic."
+    }
+  ],
+  "additional_primary_sections_read": [
+    {
+      "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+      "scope": "exec and login/status sections; local CLI exec --help independently checked at version 0.154.0-alpha.6.2."
+    },
+    {
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "scope": "run(timeout) kills and waits for its direct child; initial process creation may exceed the duration."
+    },
+    {
+      "url": "https://docs.python.org/3/library/csv.html",
+      "scope": "newline handling, DictReader headers/restkey/restval, quoted fields and strict input errors."
+    },
+    {
+      "url": "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency",
+      "scope": "Default single pending run, cancellation semantics and expanded-queue option distinction."
+    },
+    {
+      "url": "https://git-scm.com/docs/gitignore",
+      "scope": "Untracked-file purpose, tracked-file exclusion and precedence."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables",
+      "scope": "Immediate $? and $LASTEXITCODE definitions; native and cmdlet distinction."
+    },
+    {
+      "url": "https://status.openai.com/",
+      "scope": "Service-specific categories, history and aggregate availability limitations; no current incident claim added."
+    }
+  ],
+  "carried_source_reads": {
+    "checkpoint_4": [
+      "prompting"
+    ],
+    "checkpoint_5": [
+      "browser",
+      "automations",
+      "worktrees"
+    ]
+  },
+  "pinned_actions": {
+    "codex": {
+      "v1_tag_object": "f367b1e9572fd064ea71ef925ca24ee0f01080af",
+      "resolved_commit": "86365089eb2b84e0a8fb0717b304f8bdcb13b20e",
+      "matches_example": true
+    },
+    "checkout_v5": "fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+    "upload_artifact_v4": "ea165f8d65b6e75b540449e92b4886f43607fa02"
+  },
+  "image_review": [
+    "Read all ten SVGs and five-language captions; viewed five distinct hero rasters, including the identical shared six-lesson hero.",
+    "Viewed the obsolete studio screenshots and removed their article references from 31 while preserving original assets.",
+    "Existing todo 390/1280 screenshots were visually inspected in checkpoint 5; retained captions distinguish prior Windows/Edge reference capture from current product evidence."
+  ],
+  "validation": {
+    "compiler_tests": 9,
+    "api_tests": 9,
+    "repository_tool_tests": 39,
+    "series_lessons": 60,
+    "series_locale_documents": 300,
+    "api_catalogues": 5,
+    "i18n_locales": 5,
+    "i18n_namespaces": 25,
+    "task_files": 412,
+    "audit_errors": 0,
+    "audit_warnings": 22,
+    "diff_check": "passed",
+    "task_warnings": "Existing unrelated stale owners and overlapping scopes."
+  },
+  "limitations": [
+    "Final preview startup remains blocked by automatic approval review; no alternative preview was started.",
+    "Earlier changes-required lessons and the denied cumulative checkpoint-3 update remain unresolved; this checkpoint does not claim to fix them.",
+    "No model task, API-billed run, subagent, new schedule, actual GitHub workflow, PR, publication or deployment was performed.",
+    "Windows reference tests do not establish macOS/Linux or physical mobile operation."
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "id": 38,
+  "readingMinutes": 12,
+  "operationMinutes": 25,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與 iPhone 的角色",
+        "Goal and the iPhone's role",
+        "目標と iPhone の役割",
+        "목표와 iPhone의 역할"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "用 iPhone 的 ChatGPT Remote 進入主機上的 Codex 任務，送出一個可核對的讀檔要求、追問進度、離開後找回同一任務，再回電腦驗收。閱讀約 12 分鐘，操作約 25 分鐘，配對等待另計。本篇於 2026-09-14 依 OpenAI Remote 與 Apple 掃碼文件查證；未在實體 iPhone 實測，不將網站窄版截圖當成 iOS 產品畫面。",
+        "Use ChatGPT Remote on iPhone to enter a host's Codex task, send a verifiable file-read request, follow up, leave and return to the same task, then verify on the computer. Allow 12 minutes to read and 25 minutes to practice, plus pairing waits. Checked on 2026-09-14 against OpenAI Remote and Apple QR documentation. No physical iPhone test or iOS product screenshot is claimed.",
+        "iPhone の ChatGPT Remote でホストの Codex 課題に入り、検証できる読み取り、追問、離れてから同じ課題への復帰、PC での確認を行います。読む時間約12分、操作約25分で、ペアリング待ちは別です。2026-09-14の OpenAI Remote と Apple QR 資料で確認しました。iPhone 実機検証や iOS 製品画像とはしていません。",
+        "iPhone의 ChatGPT Remote로 호스트 Codex 작업에 들어가 검증 가능한 파일 읽기, 후속 질문, 나갔다 같은 작업으로 복귀, 컴퓨터 검증까지 진행합니다. 읽기 약 12분, 실습 약 25분이며 페어링 대기는 별도입니다. 2026-09-14 OpenAI Remote와 Apple QR 문서로 확인했으며 실물 iPhone 테스트나 iOS 제품 화면이라고 주장하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "iPhone 負責傳送需求與查看結果，程式檔、終端機、依賴與網站登入都由連接主機提供。手機裝了 ChatGPT，不等於手機已安裝 Codex CLI，也不會把電腦資料夾自動同步到「檔案」App。先了解[手機總覽](article:codex-mobile-guide)與[Remote 主機設定](article:codex-remote-setup)，就能分開辨認連線、任務與實際工作。",
+        "The iPhone sends requests and displays results; the connected host provides source files, terminal, dependencies and signed-in websites. Installing ChatGPT on the phone does not install Codex CLI or synchronize computer folders into Files. Read the [mobile overview](article:codex-mobile-guide) and [Remote host setup](article:codex-remote-setup) to distinguish connection, task and execution.",
+        "iPhone は依頼と結果表示を担い、ソース、端末、依存関係、ログイン済みサイトはホストが提供します。電話に ChatGPT を入れても CLI 導入やファイル App への同期にはなりません。[モバイル概要](article:codex-mobile-guide)と[ホスト設定](article:codex-remote-setup)で接続、課題、実行を区別します。",
+        "iPhone은 요청과 결과 표시를 맡고 소스 파일, 터미널, 의존성, 로그인된 사이트는 호스트가 제공합니다. 휴대전화 ChatGPT 설치가 CLI 설치나 파일 앱 동기화를 뜻하지 않습니다. [모바일 개요](article:codex-mobile-guide)와 [호스트 설정](article:codex-remote-setup)으로 연결, 작업, 실행을 구분합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "開始之前：電腦與帳號先準備好",
+        "Before starting: prepare the host and account",
+        "開始前：ホストとアカウントを準備する",
+        "시작 전: 호스트와 계정 준비하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在自己的 Mac 或 Windows 電腦安裝或更新 ChatGPT 桌面版，登入與 iPhone 相同的帳號及工作區，確認能使用 Codex。將[Small Steps 練習包](https://mokaair.com/guides/codex-first-project/todo-practice.zip)解壓，以 expected 副本建立 codex-iphone-lab 專案。保留原 expected，並先在主機確認五個程式檔存在；不要用私人正式專案做首次配對測試。",
+        "Update ChatGPT desktop on your Mac or Windows computer, use the same account/workspace as the iPhone and confirm Codex access. Extract the [Small Steps pack](https://mokaair.com/guides/codex-first-project/todo-practice.zip), copy expected into codex-iphone-lab and retain the original. Check the five source files on the host before pairing. Use this fictional practice project rather than private production work.",
+        "Mac / Windows のデスクトップ版を更新し、電話と同じアカウントとワークスペースで Codex を確認します。[Small Steps](https://mokaair.com/guides/codex-first-project/todo-practice.zip)の expected を codex-iphone-lab にコピーし原本を残します。ペアリング前にホストの五つのソースを確認し、私的な本番プロジェクトではなく課題を使います。",
+        "Mac/Windows 데스크톱 앱을 업데이트하고 iPhone과 같은 계정/워크스페이스의 Codex 접근을 확인합니다. [Small Steps](https://mokaair.com/guides/codex-first-project/todo-practice.zip)의 expected를 codex-iphone-lab으로 복사하고 원본을 보존합니다. 페어링 전에 호스트의 다섯 소스를 확인하며 비공개 실제 프로젝트 대신 실습 자료를 사용합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 App Store 核對發行者 OpenAI，安裝或更新官方 ChatGPT。完成 SSO、多因素驗證或通行金鑰等畫面要求，再回來設定 Remote。組織帳號可能需要管理員啟用 Remote Control；功能也可能依帳號逐步提供。沒有 Remote 時先記錄版本與工作區，不要以更換 Safari 或重裝 CLI 作為已取得入口的證據。",
+        "Install or update the official ChatGPT app from App Store, verifying OpenAI as publisher. Complete SSO, MFA or passkey requirements before Remote setup. Organization access may need administrator enablement and rollout can vary. If Remote is absent, record app version and workspace; switching Safari or reinstalling CLI does not establish feature access.",
+        "App Store で OpenAI を確認して公式 ChatGPT を更新します。SSO、MFA、パスキーなどを済ませて設定へ戻ります。組織管理者の有効化や段階提供が関係する場合があります。Remote がなければ版とワークスペースを記録し、Safari の変更や CLI 再導入を機能取得の証拠にしません。",
+        "App Store에서 OpenAI를 확인해 공식 ChatGPT를 설치하거나 업데이트합니다. SSO, MFA, 패스키 요구를 마친 뒤 Remote를 설정합니다. 관리자 활성화와 단계적 제공이 관련될 수 있습니다. Remote가 없으면 버전과 워크스페이스를 기록하고 Safari 변경이나 CLI 재설치를 기능 접근 증거로 삼지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "本篇以 iPhone 為操作示例。若使用 iPad，先在自己的 ChatGPT App 確認 Remote 實際可見且能選主機，再沿同一個讀檔練習操作；官方此處以 iOS 說明入口，沒有提供可直接套用的 iPad 獨立版面保證。不要用 iPhone 的畫面位置推定 iPad 按鈕位置，也不要把本篇當成 iPad 已實測紀錄。",
+        "This lesson uses iPhone as the example. On iPad, first confirm that Remote is actually available in your ChatGPT app and that you can select a host before following the same file-reading exercise. The official page describes iOS access without guaranteeing a separate iPad layout. Do not infer iPad button positions from iPhone screens or treat this lesson as evidence of an iPad test.",
+        "本記事の操作例は iPhone です。iPad では自分の ChatGPT アプリに Remote が表示され、ホストを選べることを先に確認してから同じ読み取り練習を行います。公式ページは iOS の入口を説明していますが、iPad 専用レイアウトの保証ではありません。iPhone の画面位置から iPad のボタン位置を決めつけたり、この記事を iPad の実機検証記録と扱ったりしないでください。",
+        "이 글의 조작 예시는 iPhone입니다. iPad에서는 자신의 ChatGPT 앱에 Remote가 실제로 표시되고 호스트를 선택할 수 있는지 먼저 확인한 뒤 같은 파일 읽기 실습을 진행하세요. 공식 페이지는 iOS 접근을 설명하지만 별도의 iPad 화면 배치를 보장하지 않습니다. iPhone 화면으로 iPad 버튼 위치를 추정하거나 이 글을 iPad 실기기 검증 기록으로 보지 마세요."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "先在主機加上自己的辨識檔",
+        "Add your own identification file on the host",
+        "ホストに自分の識別ファイルを用意する",
+        "호스트에 자신의 식별 파일 준비하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在 codex-iphone-lab 根目錄新增 remote-check.txt，使用下方一行，儲存前把尾端 01 改成自己選的代號。若同名檔案已存在，先讀內容，不覆寫其他工作的檔案。這是五個網站程式檔之外的第六個練習檔；每個副本用不同代號，不填帳號、密碼或配對碼。在私人筆記記下代號與完整路徑，稍後不要把代號貼進提示詞。",
+        "Create remote-check.txt in codex-iphone-lab, replacing 01 below with your own marker. Inspect any existing file; do not overwrite another task's file. This sixth file supplements the five website files. Use a unique marker per copy, never an account, password or pairing code. Privately note the marker and full path; omit the marker from the later prompt.",
+        "codex-iphone-lab のルートに remote-check.txt を作り、次の行の 01 を自分の識別コードに変えて保存します。同名ファイルがあれば先に読み、別作業の内容を上書きしません。これは五つのサイトファイルに追加する六つ目の練習ファイルです。コピーごとに違う識別コードを使い、アカウント、パスワード、ペアリングコードは入れません。識別コードと完全なパスは個人用メモに残し、後の依頼には識別コードを書きません。",
+        "codex-iphone-lab 루트에 remote-check.txt를 만들고 아래 줄의 01을 자신만의 표식으로 바꿔 저장합니다. 같은 이름이 있으면 먼저 읽고 다른 작업의 파일을 덮어쓰지 마세요. 다섯 웹사이트 파일에 추가하는 여섯 번째 실습 파일입니다. 사본마다 다른 표식을 쓰며 계정, 비밀번호, 페어링 코드는 넣지 않습니다. 표식과 전체 경로는 개인 메모에 남기고 나중 요청에는 표식 값을 넣지 마세요."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "IOS-PRACTICE-01\n",
+      "label": [
+        "主機檔案內容：remote-check.txt；先自行更換尾端代號",
+        "Host file content: remote-check.txt; replace the marker suffix first",
+        "ホスト上のファイル内容：remote-check.txt。先に末尾の識別コードを変える",
+        "호스트 파일 내용: remote-check.txt, 표식 끝부분을 먼저 바꾸기"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟一：從相機掃碼進入 Remote",
+        "Step 1: scan into Remote with Camera",
+        "手順1：カメラで Remote の設定を開く",
+        "1단계: 카메라로 Remote 설정 열기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在主機桌面版開 Settings → Connections → Control this Mac or PC，選 Set up 或 Add，完成要求的驗證並顯示配對 QR code。iPhone 開「相機」的拍照模式，讓完整 QR code 進入畫面，點偵測到的連結；也可使用控制中心的掃描碼工具。這不是把 QR code 拍照後上傳給聊天機器人，掃出的連結應帶你到官方 ChatGPT 設定。",
+        "On the host, open Settings → Connections → Control this Mac or PC, select Set up or Add and complete verification to display the pairing QR code. In iPhone Camera's Photo mode, frame the entire code and tap the detected link; Control Center's code scanner is another route. Do not upload a photo of the code to a chatbot. The link should open official ChatGPT setup.",
+        "ホストの Settings → Connections → Control this Mac or PC で Set up / Add と認証を済ませ QR を表示します。iPhone カメラの写真モードで全体を写し、検出リンクを押します。コントロールセンターのコードスキャンも使えます。写真をチャットへ送る操作ではなく、公式 ChatGPT の設定へ進むリンクです。",
+        "호스트 Settings → Connections → Control this Mac or PC에서 Set up/Add와 인증을 마쳐 QR을 표시합니다. iPhone 카메라 사진 모드에서 코드 전체를 잡고 감지된 링크를 누릅니다. 제어 센터 코드 스캐너도 가능합니다. QR 사진을 챗봇에 업로드하는 것이 아니라 공식 ChatGPT 설정을 여는 링크입니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "若掃不到，先調整距離讓整個碼可見、減少螢幕反光，確認用的是拍照或掃碼模式。若連結只開 Safari，確認官方 App 已裝好、登入正確，再從主機重啟設定流程。不要把配對網址貼到公開討論區排錯；QR code、驗證碼與帳號資料都不應出現在公開教學圖。",
+        "If scanning fails, fit the whole code in frame, reduce glare and use photo/scanner mode. If only Safari opens, verify the installed official app and intended login, then restart setup from the host. Keep pairing URLs, QR codes, authentication codes and account details out of public troubleshooting posts and teaching screenshots.",
+        "読めなければ全体が入る距離、反射、写真かスキャンのモードを確認します。Safari だけなら公式アプリとログインを確認してホストからやり直します。ペアリング URL、QR、認証コード、アカウント情報を公開の質問や教材画像に含めないでください。",
+        "스캔이 안 되면 코드 전체가 보이는 거리, 반사, 사진/스캔 모드를 확인합니다. Safari만 열리면 공식 앱 설치와 로그인을 확인하고 호스트에서 다시 시작합니다. 페어링 URL, QR, 인증 코드, 계정 정보는 공개 질문이나 교재 화면에 넣지 마세요."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在手機設定流程確認帳號、工作區與主機，成功後 Remote 中應出現該主機。只看到登入完成頁還不夠；要能選主機，找到 codex-iphone-lab 專案並開啟 Codex 任務。如果列表是另一臺電腦，回主機設定核對配對對象。圖的 1 是 iPhone 入口，2 是選中的主機，3 是可核對的專案結果。",
+        "Confirm account, workspace and host in the phone setup. Success should show the host in Remote and let you select codex-iphone-lab and open a Codex task. A login-complete page alone is insufficient. If the listed machine is wrong, revisit the intended host's pairing setup. Diagram 1 is the iPhone entry, 2 the selected host and 3 the verifiable project result.",
+        "電話でアカウント、ワークスペース、ホストを確認します。Remote に対象が表示され、codex-iphone-lab と Codex 課題を開けることが必要です。認証完了画面だけでは不足します。別 PC なら対象ホストの設定に戻ります。図の 1 は電話の入口、2 は選んだホスト、3 は検証可能な成果です。",
+        "전화에서 계정, 워크스페이스, 호스트를 확인합니다. Remote에 대상이 보이고 codex-iphone-lab과 Codex 작업을 열 수 있어야 합니다. 로그인 완료 화면만으로는 부족합니다. 다른 PC라면 대상 호스트의 설정을 다시 확인합니다. 그림의 1은 전화 입구, 2는 선택한 호스트, 3은 검증 가능한 결과입니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟二：送出第一個明確讀檔要求",
+        "Step 2: send a precise file-read request",
+        "手順2：明確な読み取りを依頼する",
+        "2단계: 명확한 파일 읽기 요청하기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在手機 Remote 的專案任務輸入框貼上下面內容。先檢查檔名與函式名稱沒有被鍵盤自動修正；這是自然語言提示詞，不是要 iPhone 執行終端機命令。送出一次後留在該任務觀察回覆，記下任務標題或可以再次辨認的資訊，避免切換 App 後找不到原工作。",
+        "Paste the following into the host project's task composer in Remote. Check that keyboard autocorrection has not altered filenames or function names. This is a prompt, not a terminal command for iPhone. Send once, observe the response and record identifying task information so you can return after switching apps.",
+        "Remote のプロジェクト課題入力欄に次を貼ります。キーボードの自動修正で名前が変わっていないか確認します。電話で端末コマンドを実行するものではありません。一度送って返答を見ながら、アプリ切替後も戻れる課題名などを記録します。",
+        "Remote 프로젝트 작업 입력창에 아래를 붙입니다. 키보드 자동 수정이 파일명이나 함수명을 바꾸지 않았는지 확인하세요. iPhone에서 터미널 명령을 실행하는 것이 아닙니다. 한 번 전송하고 응답을 보며 앱 전환 후 찾을 작업명 등을 기록합니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Read this Small Steps project without changing files. Confirm the working directory and inspect app.js and core.mjs. Identify the localStorage key, the field that records completion, and the function that rejects blank task titles. Cite the file for each answer. If a file is unavailable, report that instead of guessing.\n",
+      "label": [
+        "自然語言提示詞：在同一個手機 Remote 任務輸入",
+        "Natural-language prompt: enter in the same mobile Remote task",
+        "自然言語の依頼：同じモバイル Remote タスクに入力する",
+        "자연어 요청: 같은 모바일 Remote 작업에 입력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "預期回覆會從 app.js 找到 mokaair-codex-todo-v1，從 core.mjs 指出 completed 欄位及 addTask 的空白檢查，也應提供實際工作目錄。若只有一般待辦程式知識，追問它實際讀了哪個檔案；若目錄不符，先停止本次要求、回正確主機和專案。不要把一段聽起來合理的說明當成成功連線的證據。",
+        "Expect mokaair-codex-todo-v1 from app.js, completed and addTask's blank-title check from core.mjs, and the actual working directory. Generic todo-app advice is insufficient; ask which file was inspected. For a wrong directory, stop and select the correct host/project. A plausible explanation alone does not prove the connection reached your files.",
+        "app.js の mokaair-codex-todo-v1、core.mjs の completed と addTask の空白確認、実際の場所を確認します。一般論だけなら読んだファイルを追問します。場所が違えば止めて正しいホストとプロジェクトを選びます。もっともらしい説明だけでは接続の証拠になりません。",
+        "app.js의 mokaair-codex-todo-v1, core.mjs의 completed와 addTask 공백 검사, 실제 경로를 확인합니다. 일반적인 할 일 앱 설명뿐이면 읽은 파일을 묻습니다. 경로가 틀리면 멈추고 올바른 호스트/프로젝트를 선택하세요. 그럴듯한 설명만으로 파일에 연결됐다고 볼 수 없습니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "再讀一次只有這份副本才有的標記",
+        "Read a marker unique to this copy",
+        "このコピー固有の目印を読み直す",
+        "이 복사본만의 표식을 다시 읽기"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Read remote-check.txt from this task's project now.\nQuote its exact content and report the absolute file path and the tool used to read it.\nDo not edit files or infer the marker from earlier messages.\nIf the file is missing or cannot be read, report that limitation.\n",
+      "label": [
+        "自然語言提示詞：在同一個手機 Remote 任務輸入",
+        "Natural-language prompt: enter in the same mobile Remote task",
+        "自然言語の依頼：同じモバイル Remote タスクに入力する",
+        "자연어 요청: 같은 모바일 Remote 작업에 입력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "把回覆與你在主機筆記留下的代號、路徑及讀檔紀錄比對。主機清單中的名稱與這個檔案代號是兩種資料；不要把代號當成電腦名稱。要查是否讀到新內容，可等任務完成後只在主機改代號、存檔，再送同一個讀檔要求，不先提供新代號。結果仍舊、沒有工具紀錄或路徑不符時，保留「尚未確認」，先查儲存狀態、所選主機與副本。",
+        "Compare the reply with the marker and path in your host-side note and with the tool read record. The host's displayed name and this file marker are different facts. To check freshness, wait for the task to finish, change and save only the marker on the host, then send the same read request without supplying the new value. A stale value, missing tool evidence or mismatched path remains unverified; check saved state, host and copy first.",
+        "ホスト側のメモにある識別コードとパス、ツールの読み取り記録を返答と照合します。ホスト表示名とファイルの目印は別の情報です。新しい内容か確かめるにはタスク完了後にホストで識別コードだけ変更して保存し、新しい値を教えずに同じ読み取り依頼を送ります。古い値、ツール記録の欠落、パスの不一致は未確認のままにし、保存状態、ホスト、コピーを先に調べます。",
+        "답변을 호스트에 적어 둔 표식과 경로, 도구 읽기 기록과 비교합니다. 표시된 호스트 이름과 파일 표식은 서로 다른 정보입니다. 최신 내용을 읽는지 확인하려면 작업 완료 후 호스트에서 표식만 바꾸어 저장하고 새 값을 알려 주지 않은 채 같은 읽기 요청을 보냅니다. 값이 오래되었거나 도구 증거가 없거나 경로가 다르면 미확인으로 남기고 저장 상태, 호스트, 사본부터 확인하세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟三：追問、核准與查看進度",
+        "Step 3: follow up, review approvals and inspect progress",
+        "手順3：追問、承認内容、進捗を確認する",
+        "3단계: 후속 질문, 승인 내용, 진행 상황 확인하기"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "In the same project, explain what happens when I add Read and Build, complete Read, and choose Completed. Then explain an empty task title. Separate code you inspected, tests actually run, and checks still pending. Do not edit or clear stored data.\n",
+      "label": [
+        "自然語言提示詞：在同一個手機 Remote 任務輸入",
+        "Natural-language prompt: enter in the same mobile Remote task",
+        "自然言語の依頼：同じモバイル Remote タスクに入力する",
+        "자연어 요청: 같은 모바일 Remote 작업에 입력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "這是起初沒有待辦、只加入 Read 與 Build 的假設例；若本機預覽已有其他項目，請依現有資料判讀，不會因這段唯讀要求而清空資料。 這次追問檢查同一任務的上下文，回覆應預期 Completed 只顯示 Read，空白標題被拒絕；它也應分開列出已讀程式、真的跑過的測試與尚未操作的畫面。只分析原始碼就標成「預期行為」，不能改稱已在手機完成測試。你可在電腦的本機預覽親自做上述步驟，補上驗證。",
+        "With only Read and Build initially present, expect Completed to show only Read and blank titles to be rejected. Account for any other stored tasks; this read-only request leaves them unchanged. Separate inspected code, executed tests and pending UI checks. Verify the predicted behavior in the computer's local preview.",
+        "この例は空の一覧に Read と Build だけを追加した場合です。ローカルプレビューに他の項目があればそのデータを踏まえて判断します。この読み取り依頼でデータは消去されません。 同じ課題の文脈を確認します。Completed は Read だけ、空白は拒否を予測し、読んだコード、実行済みテスト、未操作の画面を分けることが必要です。コード分析は予測であり、電話での実測ではありません。PC のプレビューで実際に操作して補います。",
+        "이 예시는 빈 목록에 Read와 Build만 추가했다고 가정합니다. 로컬 미리 보기에 다른 항목이 있으면 해당 데이터를 기준으로 판단하며 이 읽기 요청은 데이터를 지우지 않습니다. 같은 작업 맥락을 확인합니다. Completed는 Read만 보이고 공백은 거절되어야 하며 읽은 코드, 실행한 테스트, 미검증 화면을 나눠야 합니다. 코드 분석은 예상 동작이며 전화 실측이 아닙니다. 컴퓨터 로컬 미리 보기에서 직접 조작해 검증을 보탭니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "若手機出現批准要求，先看操作內容、目錄與影響範圍，再決定是否符合你剛才的要求。本例只讀檔，無須為了前進而準許新增外部帳號、發布網站或刪除資料。若看不清楚長命令，回主機檢視完整內容再處理。批准視窗沒有出現時先回 Remote 原任務確認狀態，不用連續新建任務催它。",
+        "If an approval appears, inspect the operation, directory and scope against your request. This read-only exercise does not need new external accounts, website publication or deletion. Review long commands on the host if the phone view is insufficient. If no approval appears, inspect the original Remote task's state instead of repeatedly creating new tasks.",
+        "承認が出たら操作、場所、範囲を依頼と照合します。読み取り課題に外部アカウント追加、公開、削除は不要です。長い命令が見えにくければホストで確認します。承認が出ない場合も新規を繰り返さず、元の Remote 課題の状態を確認します。",
+        "승인이 뜨면 동작, 폴더, 범위를 요청과 대조합니다. 읽기 실습에 외부 계정 추가, 웹사이트 공개, 삭제는 필요하지 않습니다. 긴 명령이 잘 안 보이면 호스트에서 확인하세요. 승인이 안 나타나도 새 작업을 반복 생성하지 말고 원래 Remote 작업 상태를 봅니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟四：離開後回到同一任務",
+        "Step 4: leave and return to the same task",
+        "手順4：離れてから同じ課題に戻る",
+        "4단계: 나갔다 같은 작업으로 돌아오기"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "等唯讀回覆完成後，暫時切到另一個 iPhone App，再回 ChatGPT → Remote，選相同主機與任務。核對最後一筆回覆及目前狀態，送出「請重新讀取目前目錄」的短追問，確認不是只在看先前快取文字。手機畫面仍保留舊回覆，不能證明主機此刻在線；只有新的讀取結果才能確認當下可工作。",
+        "After the read-only response finishes, switch to another iPhone app, then return through ChatGPT → Remote to the same host/task. Inspect the last response and current state, then ask for a fresh current-directory read. Old visible text does not prove the host is online now. A new successful read verifies present access.",
+        "読み取り返答の完了後に別アプリへ切り替え、ChatGPT → Remote で同じホストと課題へ戻ります。最後の返答と状態を見て現在の場所を新たに読ませます。古い表示だけではホストの現在のオンライン状態を証明できず、新しい読み取りで確認します。",
+        "읽기 응답 완료 후 다른 앱으로 전환했다가 ChatGPT → Remote에서 같은 호스트/작업으로 돌아옵니다. 마지막 응답과 상태를 보고 현재 폴더를 새로 읽게 합니다. 이전 글이 보인다고 호스트가 지금 온라인이라는 증거는 아니며 새 읽기 성공으로 확인합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "通知用來提醒完成或需要注意，不代替成果驗收。若未收到通知，可主動回任務查看；若主機睡眠、斷網或關閉 App，先恢復主機，再核對上次要求是否已完成。尤其有寫入的後續任務，不要因手機暫時斷線就重送同一個建立或提交要求。這次以唯讀練習學會恢復工作流程。",
+        "Notifications signal completion or attention; they do not validate results. Open the task even without a notification. If the host sleeps, disconnects or closes the app, restore it and inspect whether the previous request finished. For later writable tasks, avoid resending create/submit actions merely because the phone disconnected. This read-only exercise teaches recovery first.",
+        "通知は完了や注意の合図で、成果確認の代わりではありません。なくても課題を開きます。ホストの睡眠、通信断、アプリ終了は復帰させ、前の要求が完了したか確認します。後の書き込み課題では、電話の切断だけで作成や提出を再送しません。まず読み取りで復帰を学びます。",
+        "알림은 완료나 주의 신호이며 결과 검증을 대신하지 않습니다. 알림이 없어도 작업을 열어 보세요. 호스트 절전, 연결 끊김, 앱 종료는 복구한 후 이전 요청 완료 여부를 확인합니다. 이후 쓰기 작업에서는 전화 연결이 끊겼다는 이유만으로 생성이나 제출을 다시 보내지 않습니다. 먼저 읽기로 복구를 익힙니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "完成檢查與常見誤會",
+        "Completion checks and common misunderstandings",
+        "完了確認とよくある誤解",
+        "완료 확인과 흔한 오해"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 核對項目 | 成功證據 | 不足的證據 |\n| --- | --- | --- |\n| 配對 | Remote 可選正確主機 | 只有相同帳號登入 |\n| 讀檔 | 正確目錄、儲存鍵與函式來源 | 泛泛解釋待辦程式 |\n| 接續 | 同任務的新讀取成功 | 只看到舊通知或回覆 |\n| 驗收 | 電腦端核對檔案與操作 | 模型只說測試沒問題 |",
+        "| Check | Sufficient evidence | Insufficient evidence |\n| --- | --- | --- |\n| Pairing | Correct selectable Remote host | Same-account login alone |\n| Reading | Directory, storage key and source function | Generic todo explanation |\n| Continuation | Fresh read in the same task | Old notification or response |\n| Verification | Host file and behavior checks | Unsubstantiated model assurance |",
+        "| 確認 | 十分な証拠 | 不足する証拠 |\n| --- | --- | --- |\n| ペアリング | 正しいホストを選べる | 同じアカウントの認証だけ |\n| 読み取り | 場所、保存キー、関数の出典 | ToDo アプリの一般論 |\n| 再開 | 同じ課題で新たに読める | 古い通知や返答 |\n| 検証 | ホストのファイルと操作確認 | 根拠のない成功宣言 |",
+        "| 확인 | 충분한 증거 | 부족한 증거 |\n| --- | --- | --- |\n| 페어링 | 올바른 Remote 호스트 선택 가능 | 같은 계정 로그인만 |\n| 읽기 | 경로, 저장 키, 함수 출처 | 일반 할 일 앱 설명 |\n| 재개 | 같은 작업의 새 읽기 | 이전 알림이나 응답 |\n| 검증 | 호스트 파일과 동작 확인 | 근거 없는 성공 선언 |"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "主機的 localhost 網址在 iPhone Safari 會指向手機自己，不是那臺電腦。查看練習成果時，先從 Remote 任務看主機提供的截圖或結果，再回電腦開本機預覽；公開預覽與部署是另一個步驟。要停止手機存取，依[主機設定篇](article:codex-remote-setup)管理連線，並分開確認任務是否停止；登出不會自動刪除既有配對。",
+        "A host's localhost URL entered in iPhone Safari points to the phone, not the computer. Review host-provided results or screenshots in Remote and use the computer for local preview; public preview/deployment is a separate step. Manage access through [host setup](article:codex-remote-setup), and check task cancellation separately. Signing out does not automatically delete pairings.",
+        "ホストの localhost を iPhone Safari に入れても電話自身を指します。Remote のホスト側結果や画像を見て、ローカルプレビューは PC で確認します。公開プレビューや配備は別です。[ホスト設定](article:codex-remote-setup)で接続を管理し、タスク停止も別に確認します。ログアウトでペアリングは消えません。",
+        "호스트 localhost URL을 iPhone Safari에 넣으면 전화 자신을 가리킵니다. Remote의 호스트 결과나 캡처를 보고 로컬 미리 보기는 컴퓨터에서 확인합니다. 공개 미리 보기/배포는 별도입니다. [호스트 설정](article:codex-remote-setup)으로 접근을 관리하고 작업 취소는 별도로 확인하세요. 로그아웃이 페어링을 자동 삭제하지 않습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "最後請 Codex 整理主機／目錄、已檢查內容、未跑測試與下一步，再回電腦逐項對照；不包含帳號或驗證碼。這份交接紀錄讓你下次用手機查進度時，能知道哪些真的完成。接著看[跨裝置工作](article:codex-cross-device-workflow)與[上下文交接](article:codex-context-handoff)；若另有 Android 手機，可用[Android 專篇](article:codex-mobile-android)完成同等驗收。",
+        "Finish by asking for host/directory, inspected content, unrun tests and next steps, excluding account details and codes. Compare that handoff on the computer so future phone progress checks distinguish completed work. Continue to [cross-device work](article:codex-cross-device-workflow) and [context handoff](article:codex-context-handoff), or use the [Android lesson](article:codex-mobile-android) for equivalent verification on another phone.",
+        "最後にホストと場所、確認済み内容、未実行テスト、次の操作を認証情報なしでまとめさせ、PC で照合します。次回の進捗確認で完了範囲を判断できます。[装置間作業](article:codex-cross-device-workflow)と[文脈引き継ぎ](article:codex-context-handoff)、別の電話なら [Android 編](article:codex-mobile-android)へ進みます。",
+        "마지막에 인증 정보 없이 호스트/폴더, 확인한 내용, 미실행 테스트, 다음 단계를 정리하게 하고 컴퓨터에서 대조합니다. 다음 전화 진행 확인 때 완료 범위를 알 수 있습니다. [기기 간 작업](article:codex-cross-device-workflow), [맥락 인계](article:codex-context-handoff), 다른 전화는 [Android 강의](article:codex-mobile-android)로 이어갑니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "練習結束，回主機只移除這次由你新增的 remote-check.txt，保留五個網站程式檔。原本就存在的檔案不刪除、不覆寫。新增的標記練習與前面的程式分析都只要求讀取；未實際配對或操作的部分，要在紀錄中保留未實測。",
+        "On the host, remove only the remote-check.txt created in this exercise. Keep the five website files and never delete or overwrite pre-existing files. The marker and code requests are read-only. Record pairing or product operations you did not perform as untested.",
+        "終了時は今回自分が追加した remote-check.txt だけをホストから取り除き、五つのサイトファイルは残します。元からあるファイルは削除も上書きもしません。目印確認もコード分析も読み取りだけです。実施していないペアリングや製品操作は未検証として記録します。",
+        "마치면 호스트에서 이번 실습 중 자신이 만든 remote-check.txt만 제거하고 다섯 웹사이트 파일은 남깁니다. 원래 있던 파일은 삭제하거나 덮어쓰지 않습니다. 표식 검사와 코드 분석 모두 읽기만 요청하며 실제로 수행하지 않은 페어링이나 제품 조작은 미검증으로 기록합니다."
+      ]
+    }
+  ]
+}

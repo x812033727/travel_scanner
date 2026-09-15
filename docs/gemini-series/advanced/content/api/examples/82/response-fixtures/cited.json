@@ -1,0 +1,45 @@
+{
+  "id": "author-fixture",
+  "status": "completed",
+  "object": "interaction",
+  "model": "gemini-3.8-flash",
+  "created": "2026-09-14T00:00:00Z",
+  "steps": [
+    {
+      "type": "google_search_call",
+      "id": "search-author-1",
+      "arguments": {
+        "queries": [
+          "中央氣象署 颱風警報"
+        ]
+      }
+    },
+    {
+      "type": "google_search_result",
+      "call_id": "search-author-1",
+      "result": [
+        {
+          "search_suggestions": "<div class=\"author-widget\"><a href=\"https://www.google.com/search?q=CWA\">作者合成搜尋建議範例</a></div>"
+        }
+      ]
+    },
+    {
+      "type": "model_output",
+      "content": [
+        {
+          "type": "text",
+          "text": "颱風警報資訊請查看中央氣象署官方網站。",
+          "annotations": [
+            {
+              "type": "url_citation",
+              "url": "https://www.cwa.gov.tw/",
+              "title": "中央氣象署",
+              "start_index": 0,
+              "end_index": 57
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

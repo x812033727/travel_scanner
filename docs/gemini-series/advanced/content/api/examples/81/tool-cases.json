@@ -1,0 +1,31 @@
+[
+  {
+    "name": "lookup_order",
+    "args": {
+      "order_id": "DEMO-001"
+    },
+    "expected": "found"
+  },
+  {
+    "name": "lookup_order",
+    "args": {
+      "order_id": "DEMO-999"
+    },
+    "expected": "not_found"
+  },
+  {
+    "name": "delete_order",
+    "args": {
+      "order_id": "DEMO-001"
+    },
+    "expected": "tool_not_allowed"
+  },
+  {
+    "name": "lookup_order",
+    "args": {
+      "order_id": "DEMO-001",
+      "delete": true
+    },
+    "expected": "invalid_arguments"
+  }
+]

@@ -1,0 +1,321 @@
+{
+  "slug": "ai-search-generated-answers",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 摘要與 AI 模式：生成式答案怎麼組出來，站長能控制什麼",
+      "description": "這篇只講機制：Google 官方文件對 AI 摘要與 AI 模式寫到哪裡為止，查詢展開、檢索、接地、挑引用各是什麼，為什麼被檢索到、被用來接地、被列為引用是三件不同的事，以及 nosnippet、max-snippet、data-nosnippet 與搜尋生成式 AI 控制各自做什麼、代價是什麼。操作步驟不在這篇，文中連到既有的兩篇教學。本文不承諾任何引用或流量結果。",
+      "hero": {
+        "src": "/guides/ai-search-generated-answers/hero.jpg",
+        "alt": "原創插畫：左邊一個對話框分出三條虛線連到三份文件，其中兩份再連到右邊的答案面板，中間那份的連線中斷；圖上一行字寫著被用到不等於被列出。",
+        "width": 1,
+        "height": 1
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇回答一個問題：Google 的 AI 摘要與 AI 模式，官方文件對「答案怎麼組出來」寫到哪裡為止，站長又能控制什麼。結論是：官方寫到查詢展開與資格條件就停了，排序規則沒公布；控制項都有文件，但每個都帶代價。這篇不重複既有的操作教學：讀者端怎麼判讀來源，看"
+            },
+            {
+              "type": "article",
+              "text": "Google 搜尋 AI 模式：追問與來源判讀",
+              "kind": "life",
+              "slug": "google-ai-mode-search"
+            },
+            {
+              "type": "text",
+              "text": "；站長端怎麼看生成式 AI 成效，看"
+            },
+            {
+              "type": "article",
+              "text": "網站經營者看 AI 摘要：引用與成效",
+              "kind": "life",
+              "slug": "google-ai-overviews-for-site-owners"
+            },
+            {
+              "type": "text",
+              "text": "。那兩篇講操作，這篇只講機制。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "以下每句都標明是哪一級：官方文件說明的機制、業界普遍做法但官方沒說明，或是廠商的行銷主張；官方沒寫的不替它補。文中頁面都在 2026 年 9 月 14 日查證，日後以官方文件為準。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "官方文件把生成式答案寫到哪裡為止"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 搜尋說明中心對 AI 模式的描述是：把問題拆成子題，同時對多個資料來源各自搜尋，再把結果合起來變成容易理解的回應。開發者文件用的詞是查詢展開（query fan-out），並寫著生成回應的過程中，模型會找出更多支援的網頁，因此能顯示比傳統搜尋更廣的連結。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份文件也寫了它不保證什麼：要出現在 AI 摘要或 AI 模式沒有額外要求，也不需要其他特別的最佳化；兩個功能可能使用不同的模型與技術，顯示的回應與連結會不一樣——同一個問題在兩邊看到的連結未必相同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 另一份官方文件，Gemini API 的 Grounding with Google Search，把流程寫成五步：模型判斷搜尋能不能改善答案、自動生成一個或多個查詢並執行、處理結果組出回應、回傳以搜尋結果為依據的答案，引用把一段文字對應到一個來源網址。那是開發者用的 API，不是 AI 摘要的內部實作，挑連結的規則官方沒公布。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "查詢展開：把問題拆成多個子題各自搜尋。官方寫了這件事存在，沒寫拆解規則。",
+            "檢索：從已建立索引的網頁取回候選內容，跟一般搜尋共用這層。",
+            "接地：把取回的內容當成生成答案的依據，Google 的 robots meta 文件用的詞是「直接輸入」。",
+            "挑引用：決定答案旁列出哪些支援連結，官方只寫資格，沒寫挑選規則。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把外部文件取回來當成生成當下的依據，技術上的通用名稱是"
+            },
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "，生成式答案是它在搜尋場景的應用。知道這名稱的好處是：讀到「我們的 AI 會先查資料再回答」時，你知道它在講哪個環節，也知道它沒回答「查到之後怎麼挑」。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "被檢索到、被用來接地、被列為引用，是三件事"
+        },
+        {
+          "type": "paragraph",
+          "text": "這三件事由不同的官方句子在管，混成一件講就產生錯誤期待。被檢索到是爬蟲讀得到、頁面已建立索引，由 robots.txt 與 noindex 決定；被用來接地是內容成為生成答案的直接輸入；被列為引用是頁面出現在答案旁的支援連結裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方對第三件只寫資格：要有資格被顯示為 AI 摘要或 AI 模式裡的支援連結，頁面必須已建立索引、有資格在搜尋中顯示摘要片段，並符合技術需求。「有資格」不等於「會」，這是官方文件說明的機制，也是最常被行銷內容偷換的一句。"
+        },
+        {
+          "type": "paragraph",
+          "text": "反過來也成立：被用來接地不等於會被列出來。OpenAI 的爬蟲說明是另一個方向的例子——退出 OAI-SearchBot 的網站不會出現在 ChatGPT 搜尋的答案裡，但仍可能以導覽連結出現。兩家都把「產生答案」和「被列成連結」分開寫。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-search-generated-answers/diagram-1.svg",
+          "alt": "圖解：上排是查詢展開、檢索、接地、挑引用四個階段；下排三欄分別是被檢索到、被用來接地、被列為引用，各欄列出管它的官方控制項與那一層不保證的事。",
+          "width": 1,
+          "height": 1,
+          "caption": "先看上排四個階段，再看下排三欄：每一欄由不同的官方句子與不同的控制項在管，前一欄過了不保證後一欄會發生。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "有官方文件的控制項，各自做什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "搜尋中心的 AI 功能說明頁只列出這幾項控制項，下表是各自的官方描述與連帶影響，不是本站建議。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "控制項",
+            "官方文件說它做什麼",
+            "同時影響到什麼"
+          ],
+          "rows": [
+            [
+              "nosnippet",
+              "不顯示文字摘要片段或影片預覽，並阻止內容成為 AI 摘要與 AI 模式的直接輸入",
+              "適用所有形式的搜尋結果，精選摘要一併消失"
+            ],
+            [
+              "max-snippet",
+              "限制摘要片段字數與可當成直接輸入的量；設 0 等同 nosnippet，設 -1 不限",
+              "設低時精選摘要可能不出現，官方寫明不保證"
+            ],
+            [
+              "data-nosnippet",
+              "標在 span、div、section 上，指定某些文字不當成摘要片段",
+              "精選摘要與一般摘要都不出現這段字；文件沒寫 AI 輸入"
+            ],
+            [
+              "noindex",
+              "不在搜尋結果中顯示這個頁面、媒體或資源",
+              "整頁退出搜尋，不是只退出生成式答案"
+            ],
+            [
+              "搜尋生成式 AI 控制",
+              "以資源為單位納入或排除，排除時不被連結也不協助接地",
+              "官方寫明不是排名或收錄訊號，改完要幾天生效"
+            ],
+            [
+              "Google-Extended",
+              "管理是否用於訓練未來的 Gemini 模型與其他系統接地",
+              "官方寫明不影響搜尋收錄，也不是排名訊號"
+            ]
+          ],
+          "caption": "各控制項的官方描述與連帶影響，2026 年 9 月查證；名稱與行為日後以官方文件為準。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "代價：關掉生成式答案的輸入，通常也關掉一般搜尋的摘要"
+        },
+        {
+          "type": "paragraph",
+          "text": "robots meta 這一組的代價很直接：不是 AI 專用的開關。nosnippet 的定義就是不顯示文字摘要片段，文件明講適用於所有形式的搜尋結果；精選摘要那份文件更白——要擋掉所有摘要片段，包含精選摘要與一般摘要，就加上 nosnippet。換掉生成式答案的直接輸入，同時也換掉一般結果的說明文字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "max-snippet 是程度問題，不是開關。精選摘要文件寫著可以把它設短，精選摘要只有在能顯示足夠文字時才會出現；但緊接著又寫，低的設定不保證會停止顯示，需要保證就用 nosnippet。把「不保證」讀進去，才不會把它當成可靠的開關。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "文件沒寫的部分，不要替它補",
+          "text": "nosnippet 與 max-snippet 的官方說明都明寫會限制內容成為 AI 摘要與 AI 模式的直接輸入，data-nosnippet 那一段只寫不被當成摘要片段，沒寫到 AI 的直接輸入。微軟的 Bing 網站管理員部落格則在 2025 年 10 月 15 日宣布支援 data-nosnippet，並寫明它同時作用於搜尋摘要與 AI 生成的答案。同一個屬性，兩家文件的範圍不同。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "搜尋生成式 AI 控制是另一種代價結構：以資源為單位，不是逐頁；官方寫明它只影響內容能不能出現在特定的生成式 AI 功能，不是搜尋其他部分的排名或收錄訊號，換掉的是生成式功能裡的曝光與連結，不是一般結果的摘要。至於開關在哪、報表怎麼看，寫在"
+            },
+            {
+              "type": "article",
+              "text": "網站經營者看 AI 摘要：引用與成效",
+              "kind": "life",
+              "slug": "google-ai-overviews-for-site-owners"
+            },
+            {
+              "type": "text",
+              "text": "那一篇。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "每家引擎的控制項是各自的，不能互相套用"
+        },
+        {
+          "type": "paragraph",
+          "text": "robots meta 標籤看起來像通用語法，但哪些規則被支援、對各家生成式功能有什麼效果，都寫在各自的文件裡。微軟在 2023 年 9 月 22 日的 Bing 網站管理員部落格公布過一組針對聊天式答案的規則：標了 NOCACHE 的內容仍可能出現在 Bing Chat 的答案中，但只顯示網址、摘要片段與標題；標了 NOARCHIVE 的不會被納入答案，也不會被連結；兩者的內容都仍會出現在 Bing 搜尋結果中。Bing 讓站方分開處理一般結果與聊天式答案，Google 的 nosnippet 則是一起關。OpenAI 又是第三種形狀：用 robots.txt 區分用途，OAI-SearchBot 讓網站出現在 ChatGPT 的搜尋，GPTBot 對應訓練模型的抓取，沒有逐頁的摘要控制。要面對哪個引擎就讀哪個引擎的文件。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎麼判斷一句關於生成式答案的說法屬於哪一級"
+        },
+        {
+          "type": "list",
+          "items": [
+            "官方文件說明的機制：在搜尋引擎自己的文件找得到對應句子。",
+            "業界普遍做法但官方沒有說明：很多人這樣做、聽起來合理，但文件沒寫。",
+            "廠商或代理商的行銷主張：出自賣服務的一方，引用時標明是誰說的。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "示例：讀到「把重點寫在開頭就會被 AI 摘要引用」。先找官方對應句——搜尋中心寫的是沒有額外要求、也不需要特別的最佳化，整份文件沒有位置或字數的規則。所以這句最多是第二級，出自賣服務的一方就是第三級。本文沒做過實測，也不給成效數字。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這一系列其他名詞——SEO、GEO、AEO、AIO、LLMO、llms.txt——的定義分歧，整理在"
+            },
+            {
+              "type": "article",
+              "text": "搜尋最佳化名詞系列總覽",
+              "kind": "life",
+              "slug": "ai-search-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "；讀完再看宣稱能提高 AI 曝光的文案，你會知道該查哪份文件。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 搜尋中心：AI 功能與你的網站（官方開發者文件）",
+          "url": "https://developers.google.com/search/docs/appearance/ai-features",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：robots meta 標籤與 X-Robots-Tag 規格（官方開發者文件）",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：精選摘要與你的網站（官方開發者文件）",
+          "url": "https://developers.google.com/search/docs/appearance/featured-snippets",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋說明中心：AI 摘要（官方產品說明）",
+          "url": "https://support.google.com/websearch/answer/14901683",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋說明中心：AI 模式（官方產品說明）",
+          "url": "https://support.google.com/websearch/answer/16011537",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 說明中心：搜尋生成式 AI 控制（官方說明）",
+          "url": "https://support.google.com/webmasters/answer/16908024",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 爬蟲與擷取工具：Google-Extended（官方開發者文件）",
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini API：Grounding with Google Search（Google 官方開發者文件）",
+          "url": "https://ai.google.dev/gemini-api/docs/google-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bing 網站管理員部落格：控制內容在 Bing Chat 中的使用方式（微軟官方）",
+          "url": "https://blogs.bing.com/webmaster/september-2023/Announcing-new-options-for-webmasters-to-control-usage-of-their-content-in-Bing-Chat",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bing 網站管理員部落格：Bing 支援 data-nosnippet 屬性（微軟官方）",
+          "url": "https://blogs.bing.com/webmaster/October-2025/Bing-Introduces-Support-for-the-data-nosnippet-HTML-Attribute",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 開發者文件：OpenAI 的爬蟲與 robots.txt 控制（官方文件）",
+          "url": "https://developers.openai.com/api/docs/bots",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

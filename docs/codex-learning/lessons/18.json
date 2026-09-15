@@ -1,0 +1,65 @@
+{
+  "id": 18,
+  "sources": [
+    "agent-approvals-security",
+    "config-file/config-basic"
+  ],
+  "code": {
+    "language": "shell",
+    "code": "codex --sandbox read-only --ask-for-approval on-request"
+  },
+  "text": {
+    "zh-TW": [
+      "沙盒決定工具技術上能碰哪些檔案或網路，授權政策決定什麼時候需要詢問。兩層設定不能混為一談：不顯示詢問不代表動作一定被允許，能讀檔也不代表可以寫入所有地方。",
+      "用沒有秘密的練習專案測試。先確認目前有哪些可寫範圍、網路設定與組織限制。下方唯讀啟動範例適合做檢查，不適合要求代理直接改檔。",
+      [
+        "啟動後用 /permissions 或設定畫面檢視有效權限。先做列檔與讀 README 的任務，確認唯讀工作能完成。",
+        "要修改練習專案時，依介面將權限調整到所需工作區範圍。遇到要求越界的命令，閱讀目標路徑、參數與理由，不只看程式名稱。",
+        "安裝套件與網路 API 會增加外部存取。先確認這次任務需要什麼，對應開放；網頁搜尋與 shell 網路存取也可能受不同控制。",
+        "金鑰只交給官方認證或秘密管理機制；不要寫入程式碼、示範檔與公開截圖。若真的洩漏，先撤銷／輪替，再處理歷史紀錄，單純刪掉當前文字不足以保護已外流金鑰。"
+      ],
+      "可以完成必要工作，並能解釋為何某個動作被允許或拒絕。結果報告不包含秘密。",
+      "避免使用已退役的設定範例，例如目前官方標示不再支援的 approval_policy = untrusted。若組織強制政策拒絕，不要用另一個入口繞過；先修正任務方法或找管理員確認。",
+      "只讀取練習專案並摘要 README，列出目前可見的權限狀態。不要請求擴大權限，也不要讀取認證檔案。"
+    ],
+    "en": [
+      "Sandbox rules define technical access to files and networks; approval policy determines when the agent asks before acting. No prompt does not guarantee permission, and read access does not imply write access everywhere.",
+      "Use a practice repository without secrets. Inspect writable scope, network settings and managed restrictions. The read-only invocation below is for inspection, not for an editing task.",
+      [
+        "Inspect effective permissions with /permissions or settings. Try listing files and reading README before making changes.",
+        "For edits, choose the required workspace scope. When a command requests broader access, read its target path, arguments and purpose, not only its executable name.",
+        "Dependency installation and API calls need external access. Match permissions to the actual task. Web search and shell network access may be controlled separately.",
+        "Use official authentication or secret-management flows for keys, never source code, examples or screenshots. If a key leaks, revoke or rotate it first; deleting the visible text does not secure a copied credential."
+      ],
+      "Necessary work succeeds within an explainable boundary, and the result contains no secrets.",
+      "Avoid retired configuration examples, including approval_policy = untrusted as currently documented. Do not switch clients to evade enforced organization policy; adjust the workflow or resolve access with the administrator.",
+      "Read only the practice project and summarize README and visible permission status. Do not request broader access or inspect authentication files."
+    ],
+    "ja": [
+      "サンドボックスは技術的なアクセス範囲、承認設定は確認するタイミングを制御します。確認が出ないことと無制限に操作できることは同じではありません。",
+      "秘密のない練習環境で書き込み範囲、通信、管理者制限を確認します。例の起動は読み取り専用です。",
+      [
+        "/permissions などで有効な権限を見て、一覧と README の読み取りを試します。",
+        "編集には必要な作業範囲を選びます。越境要求ではパス、引数、理由を確認します。",
+        "依存導入や API の通信は必要性を確認して許可します。検索とシェル通信は別に制御される場合があります。",
+        "キーは公式の認証や秘密管理で扱い、コードや画像へ入れません。漏れた場合は先に失効・交換します。"
+      ],
+      "必要な作業が説明できる範囲で完了し、秘密が出力されなければ完了です。",
+      "廃止された approval_policy = untrusted の例を使いません。組織の制限を別画面から迂回しません。",
+      "練習プロジェクトと README、見える権限状態だけを読み取ってください。範囲拡大や認証ファイルの読み取りはしないでください。"
+    ],
+    "ko": [
+      "샌드박스는 기술적인 접근 범위를, 승인 정책은 질문 시점을 제어합니다. 질문이 없다는 것과 무제한 실행이 가능하다는 것은 다릅니다.",
+      "비밀이 없는 연습 환경에서 쓰기 범위, 네트워크와 관리자 제한을 확인합니다. 예시 실행은 읽기 전용입니다.",
+      [
+        "/permissions 등으로 실제 권한을 보고 목록과 README 읽기를 시험합니다.",
+        "편집에는 필요한 작업 범위를 선택합니다. 범위를 벗어나는 요청은 경로, 인자와 이유를 확인합니다.",
+        "의존성 설치와 API 통신은 필요성을 확인하고 허용합니다. 검색과 셸 네트워크는 별도로 제어될 수 있습니다.",
+        "키는 공식 인증이나 비밀 관리로 다루고 코드와 이미지에 넣지 않습니다. 유출되면 먼저 폐기하거나 교체합니다."
+      ],
+      "필요한 작업이 설명 가능한 범위에서 끝나고 비밀이 출력되지 않으면 완료입니다.",
+      "폐기된 approval_policy = untrusted 예시를 쓰지 마세요. 조직 정책을 다른 인터페이스로 우회하지 않습니다.",
+      "연습 프로젝트, README와 보이는 권한 상태만 읽으세요. 범위를 넓히거나 인증 파일을 읽지 마세요."
+    ]
+  }
+}

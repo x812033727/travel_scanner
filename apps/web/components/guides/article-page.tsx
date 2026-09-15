@@ -2,16 +2,21 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { SeriesHub } from "./series-hub";
+import { LearningHub } from "@/components/codex-learning/hub";
+import { HUB_SLUG, learningEntries } from "@/lib/codex-learning";
+import { depthCopy } from "@/lib/codex-learning/units";
 import { seriesCopy } from "@/lib/guide-series-copy";
-import { geminiSeries, seriesMember } from "@/lib/gemini-series";
+import { getGeminiHubReference, getVisibleGeminiSeries, isGeminiSeriesPage, projectGeminiArticle } from "@/lib/gemini-series.server";
 import { GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
 import type { GuideCardLabels } from "@/components/guides/card";
 import { TravelCrosslinks, type TravelCrosslinksLabels } from "@/components/guides/travel-crosslinks";
 import { SiteHeader } from "@/components/site-header";
+import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
 import { citiesForCountry, countryKeys, destinationSeeds, type CatalogTranslator } from "@/lib/destinations";
+import { contentBlockLink } from "@/lib/content-blocks";
 import { guideAffiliateDestination } from "@/lib/guide-affiliate";
 import {
   guideHeadings, guideHref, guideListHref, readingMinutes,
@@ -19,8 +24,8 @@ import {
 } from "@/lib/guides";
 import { getAdsenseSlot } from "@/lib/adsense.server";
 import { getGuideArticle, getGuideList, getGuideSeries } from "@/lib/guides.server";
-import { localeUrl, siteUrl } from "@/lib/seo";
-import { breadcrumbs, type Crumb } from "@/lib/structured-data";
+import { localeUrl } from "@/lib/seo";
+import { breadcrumbs, guideArticle, type Crumb } from "@/lib/structured-data";
 
 /**
  * The one article page, shared by `/guides/[kind]/[slug]` and `/life/[slug]`.
@@ -161,12 +166,17 @@ async function relatedTravel(
 }
 
 export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRoute) {
-  const [state, t, nav, ts] = await Promise.all([
+  const [rawState, t, nav, ts] = await Promise.all([
     getGuideArticle(kind, slug, locale),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
     getTranslations({ locale, namespace: "travelServices" }),
   ]);
+  const hubReference = getGeminiHubReference(locale);
+  const belongsToGemini = rawState.status === "published" && Boolean(rawState.document) && isGeminiSeriesPage(slug, locale, kind);
+  const geminiHub = belongsToGemini && hubReference ? (slug === hubReference.slug ? rawState : await getGuideArticle("life", hubReference.slug, locale)) : null;
+  const geminiSeries = belongsToGemini ? getVisibleGeminiSeries({ locale, hubPublished: geminiHub?.status === "published" && Boolean(geminiHub.document) }) : null;
+  const state = projectGeminiArticle(rawState, geminiSeries);
   const listing = listingOf(kind, t);
 
   if (state.status !== "published" || !state.document) {
@@ -239,15 +249,15 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   };
   const hero = state.document.hero;
   const copy = seriesCopy(locale);
-  const belongsToGemini = locale === geminiSeries.locale && kind === "life" && (slug === geminiSeries.hubSlug || Boolean(seriesMember(slug, locale, kind)));
-  const geminiHub = belongsToGemini ? (slug === geminiSeries.hubSlug ? state : await getGuideArticle("life", geminiSeries.hubSlug, locale)) : null;
-  const geminiEnabled = geminiHub?.status === "published" && Boolean(geminiHub.document);
   labels.blocks.code = copy;
-  const isHub = Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
-  const series = isHub && state.series ? await getGuideSeries(state.series.slug, locale) : null;
+  const isCodexHub = kind === "life" && slug === HUB_SLUG;
+  const isHub = isCodexHub || Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
+  const series = isHub ? await getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : null;
   if (state.series?.current) trail.push({ name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) });
   const headings = guideHeadings(state.document.blocks);
-  const seriesDirectory = isHub ? series ? <SeriesHub series={series} />
+  const seriesDirectory = isCodexHub
+    ? <LearningHub locale={locale} entries={learningEntries(locale, series?.entries ?? [])} available={Boolean(series)} />
+    : isHub ? series ? <SeriesHub series={series} />
     : <div role="alert"><p>{copy.unavailable}</p><a href={`/${locale}${guideHref(kind, slug)}`} className="inline-flex min-h-11 items-center underline">{copy.retry}</a></div> : null;
 
   return (
@@ -256,24 +266,34 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
       <StructuredData
         data={[
           breadcrumbs(locale, [...trail, { name: state.document.title, path: guideHref(kind, slug) }]),
-          // Honest because this page renders the article it describes: a real headline, a
-          // real body, a real publication date, and an image only when the article has one.
-          {
-            "@context": "https://schema.org",
-            "@type": isHub ? "CollectionPage" : "Article",
-            headline: state.document.title,
+          // Honest because this page renders every part of it: the headline, the body, the
+          // publication date, the topic chips, the reading time, and the source list with the
+          // date each entry was checked. `guideArticle` records what is deliberately left out.
+          guideArticle(locale, {
+            path: guideHref(kind, slug),
+            title: state.document.title,
             description: state.document.description,
-            inLanguage: locale,
-            datePublished: state.document.published_at,
-            dateModified: state.document.modified_at ?? state.document.published_at,
-            ...(hero ? { image: `${siteUrl}${hero.src}` } : {}),
-            mainEntityOfPage: localeUrl(locale, guideHref(kind, slug)),
-            author: { "@type": "Organization", name: "Mokaair" },
-            publisher: { "@type": "Organization", name: "Mokaair" },
-            ...(series ? { mainEntity: { "@type": "ItemList", itemListElement: series.entries.map((entry, index) => ({
-              "@type": "ListItem", position: index + 1, name: entry.title, url: localeUrl(locale, guideHref(entry.kind, entry.slug)),
-            })) } } : {}),
-          },
+            publishedAt: state.document.published_at,
+            modifiedAt: state.document.modified_at,
+            hero,
+            section: listingOf(kind, t).name,
+            keywords: state.topics.map((topic) => topic.label),
+            // Only an id with a destination page behind it. Every id in the corpus has one
+            // today, but the graph may not be the thing that finds out when one stops.
+            destination: state.destination_id && state.destination_label
+              && (PUBLIC_DESTINATIONS as readonly string[]).includes(state.destination_id)
+              ? { name: state.destination_label, path: `/destinations/${state.destination_id}` }
+              : null,
+            // Through the same sanitizer the source list below is drawn with, so the graph can
+            // never name a source the page itself refused to link.
+            references: state.document.sources.flatMap((source) => {
+              const href = contentBlockLink(source.url);
+              return href ? [{ title: source.title, url: href, checkedOn: source.checked_on }] : [];
+            }),
+            minutes: readingMinutes(state.document),
+            collection: isHub,
+            entries: series?.entries.map((item) => ({ name: item.title, path: guideHref(item.kind, item.slug) })),
+          }),
         ]}
       />
       <main className={`mx-auto px-5 py-10 md:py-14 ${state.series ? "max-w-6xl" : "max-w-3xl"}`}>
@@ -284,10 +304,11 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
         <div className={state.series?.current ? "grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]" : ""}>
         <div className="min-w-0">
         <GuideArticle
-          geminiEnabled={geminiEnabled}
+          geminiSeries={geminiSeries}
           state={{ ...state, document: state.document }}
           related={related}
-          readingTime={t("guides.readingTime", { minutes: readingMinutes(state.document) })}
+          readingTime={t("guides.readingTime", { minutes: state.series?.current?.minutes ?? readingMinutes(state.document) })
+            + (state.series?.current?.operation_minutes ? ` · ${depthCopy(locale).practice} ${state.series.current.operation_minutes} ${copy.minutes}` : "")}
           labels={labels}
           adsense={adsense}
           seriesHub={seriesDirectory}

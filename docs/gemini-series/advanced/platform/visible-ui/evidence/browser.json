@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-09-14T15:27:06.226Z",
+  "method": "isolated product-component SSR + hydration, actual site CSS; not Next routing/RSC or production",
+  "browser": "151.0.7922.34",
+  "clientHasCatalogue": false,
+  "clientSha256": "afb5be5baca5c0d08b841d7edbe67c37288c52c90cef00e0d3432970c002023c",
+  "scenarios": [
+    {
+      "name": "50-1200-js",
+      "lessons": 50,
+      "routes": 5,
+      "width": 1200,
+      "javaScriptEnabled": true,
+      "passed": true
+    },
+    {
+      "name": "50-360-js",
+      "lessons": 50,
+      "routes": 5,
+      "width": 360,
+      "javaScriptEnabled": true,
+      "passed": true
+    },
+    {
+      "name": "50-360-no-js",
+      "lessons": 50,
+      "routes": 5,
+      "width": 360,
+      "javaScriptEnabled": false,
+      "passed": true
+    },
+    {
+      "name": "86-1200-js",
+      "lessons": 86,
+      "routes": 11,
+      "width": 1200,
+      "javaScriptEnabled": true,
+      "passed": true
+    },
+    {
+      "name": "86-360-js",
+      "lessons": 86,
+      "routes": 11,
+      "width": 360,
+      "javaScriptEnabled": true,
+      "passed": true
+    },
+    {
+      "name": "86-360-no-js",
+      "lessons": 86,
+      "routes": 11,
+      "width": 360,
+      "javaScriptEnabled": false,
+      "passed": true
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "apps/web/components/gemini-series/directory.tsx",
+      "sha256": "faf627037964ee0009e0e973bb02e86f6727de8ba87693260b518dfae978bf8a"
+    },
+    {
+      "path": "apps/web/components/gemini-series/navigation.tsx",
+      "sha256": "2ad4788b3f1c9c9393371ace7a6da9ae92dc1cf6c726f16f8b047e0e3e2b34bc"
+    },
+    {
+      "path": "apps/web/lib/gemini-series-projection.ts",
+      "sha256": "9cb4abe79dd748e82bd7e7de677398ad182b4130cbd39f4690ea21d14cae9b7e"
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "sha256": "47d991b588240fb68e1fcb5758a9fbe27931d4be2ba6cb0f3778b1336cc02966"
+    },
+    {
+      "path": "apps/web/components/guide-code-block.tsx",
+      "sha256": "884e74d824783c54a4f6755ef9daf6016140eaf75a8dc4988e2cac9df935de5c"
+    }
+  ],
+  "clipboardLineEndings": "Windows CRLF; only CRLF normalized for comparison",
+  "navigationPagesChecked": 136
+}

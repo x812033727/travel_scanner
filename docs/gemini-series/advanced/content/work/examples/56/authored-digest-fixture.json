@@ -1,0 +1,33 @@
+{
+  "authored_fixture": true,
+  "start": "2026-09-07T00:00:00+08:00",
+  "end": "2026-09-14T00:00:00+08:00",
+  "allowed_sources": [
+    "https://example.invalid/source-a",
+    "https://example.invalid/source-b",
+    "https://example.invalid/source-c"
+  ],
+  "sources": [
+    {
+      "url": "https://example.invalid/source-a",
+      "status": "read"
+    },
+    {
+      "url": "https://example.invalid/source-b",
+      "status": "read"
+    },
+    {
+      "url": "https://example.invalid/source-c",
+      "status": "unavailable"
+    }
+  ],
+  "items": [
+    {
+      "source": "https://example.invalid/source-a",
+      "published": "2026-09-11T09:00:00+08:00",
+      "title": "作者虛構更新，非Google新聞",
+      "summary": "只用於測試期間檢查。",
+      "quote": "合成資料測試。"
+    }
+  ]
+}

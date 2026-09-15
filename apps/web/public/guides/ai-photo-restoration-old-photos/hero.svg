@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">老照片修復三件事 / Three jobs in old photo restoration</title>
+  <desc id="desc">左邊是一張灰白色的卡片，裡面用簡單幾何圖形排出一個風景：一個圓形的太陽與兩座三角形的山，上面有三道紅色的裂痕與幾顆灰色的塵點。中間一支粗箭頭往右指，箭頭上方有三個由小到大的圓點，分別是青綠、藍與橘色，代表去刮痕與噪點、放大、上色三件工作。右邊是同一張卡片，裂痕與塵點都不見了，太陽變成橘色、山變成綠色與青綠色，天空是淡藍色。畫面上方一行字寫著「老照片修復三件事」。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="800" y="160" font-size="64" font-weight="bold" fill="#102A2B" text-anchor="middle">老照片修復三件事</text>
+
+  <!-- left card: damaged -->
+  <rect x="120" y="250" width="460" height="420" rx="24" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="8"/>
+  <rect x="150" y="280" width="400" height="250" fill="#E8E4DD"/>
+  <circle cx="250" cy="362" r="48" fill="#C9C2B6"/>
+  <polygon points="180,530 300,362 420,530" fill="#B9B2A6"/>
+  <polygon points="340,530 440,398 540,530" fill="#C9C2B6"/>
+  <rect x="150" y="530" width="400" height="110" fill="#D8D2C7"/>
+  <line x1="192" y1="298" x2="332" y2="636" stroke="#B8442D" stroke-width="6" stroke-linecap="round"/>
+  <line x1="428" y1="292" x2="498" y2="620" stroke="#B8442D" stroke-width="6" stroke-linecap="round"/>
+  <line x1="166" y1="472" x2="540" y2="436" stroke="#B8442D" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="368" cy="330" r="6" fill="#5C6B6B"/>
+  <circle cx="470" cy="352" r="5" fill="#5C6B6B"/>
+  <circle cx="228" cy="592" r="6" fill="#5C6B6B"/>
+  <circle cx="330" cy="604" r="5" fill="#5C6B6B"/>
+  <circle cx="500" cy="576" r="6" fill="#5C6B6B"/>
+
+  <!-- middle: three jobs, then one arrow -->
+  <circle cx="700" cy="372" r="18" fill="#0D6B68"/>
+  <circle cx="800" cy="372" r="24" fill="#2F6F9F"/>
+  <circle cx="906" cy="372" r="30" fill="#D97A2B"/>
+  <line x1="632" y1="462" x2="958" y2="462" stroke="#0D6B68" stroke-width="14" marker-end="url(#arrow)"/>
+
+  <!-- right card: restored -->
+  <rect x="1020" y="250" width="460" height="420" rx="24" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <rect x="1050" y="280" width="400" height="250" fill="#E6F0F7"/>
+  <circle cx="1150" cy="362" r="48" fill="#D97A2B"/>
+  <polygon points="1080,530 1200,362 1320,530" fill="#2E7D5B"/>
+  <polygon points="1240,530 1340,398 1440,530" fill="#0D6B68"/>
+  <rect x="1050" y="530" width="400" height="110" fill="#E3F0EF"/>
+
+  <!-- baseline: original file kept -->
+  <rect x="120" y="726" width="460" height="24" rx="12" fill="#5C6B6B"/>
+  <rect x="1020" y="726" width="460" height="24" rx="12" fill="#0D6B68"/>
+</svg>

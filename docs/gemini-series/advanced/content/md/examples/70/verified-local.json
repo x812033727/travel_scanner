@@ -1,0 +1,35 @@
+{
+  "checkedOn": "2026-09-14T11:55:47.892Z",
+  "cli": "0.59.0",
+  "node": "v24.19.0",
+  "platform": "win32",
+  "method": "installed CLI modules including ExtensionManager; authored Node/Git fixtures",
+  "cloudCalls": 0,
+  "notTested": [
+    "native extension terminal wrapper exits reliably (Windows libuv failure recorded separately)",
+    "model response quality and actual adherence",
+    "authenticated interactive session resume",
+    "macOS/Linux execution",
+    "upgrade to a different Gemini CLI version"
+  ],
+  "results": [
+    {
+      "step": "valid-imports",
+      "output": "{\n  \"imports\": [\n    \"./rules/style.md\",\n    \"./rules/testing.md\",\n    \"./rules/ownership.md\"\n  ],\n  \"errors\": []\n}\n"
+    },
+    {
+      "step": "documented-tests",
+      "output": "✔ trim title (1.426ms)\n✔ empty title (0.1527ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 152.4816\n"
+    },
+    {
+      "step": "missing-import",
+      "expectedExit": 1,
+      "output": "{\n  \"imports\": [\n    \"./rules/missing.md\",\n    \"./rules/testing.md\",\n    \"./rules/ownership.md\"\n  ],\n  \"errors\": [\n    \"Missing or outside import: ./rules/missing.md\"\n  ]\n}\n"
+    },
+    {
+      "step": "conflicting-command",
+      "expectedExit": 1,
+      "output": "{\n  \"imports\": [\n    \"./rules/style.md\",\n    \"./rules/testing.md\",\n    \"./rules/ownership.md\"\n  ],\n  \"errors\": [\n    \"Conflicting test command: ./rules/testing.md\"\n  ]\n}\n"
+    }
+  ]
+}

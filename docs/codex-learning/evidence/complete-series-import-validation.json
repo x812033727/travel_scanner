@@ -1,0 +1,320 @@
+{
+  "checked_on": "2026-09-15",
+  "reviewer": "codex-final-validation-fc2e",
+  "base_commit": "24c5662aacb4a06f619c65acb88f350ada861f40",
+  "scope": "Complete Codex content-pack import and API round-trip in a temporary SQLite fixture. This is not an import into staging or production.",
+  "test_file": "apps/api/tests/test_codex_learning.py",
+  "test_name": "test_complete_series_import_preserves_identity_and_publication[sqlite]",
+  "test_sha256": "1b1767ac05bca1c4ea3589e3b3c17265601db88c4b64c70d9a1eff4675b4be0b",
+  "hash_convention": "Test source uses LF-normalized UTF-8; content-pack hashes use raw bytes.",
+  "environment": {
+    "database": "SQLite file under pytest tmp_path; explicit sqlite fixture parameter, no configured PostgreSQL connection",
+    "http": "httpx ASGITransport in process; no listening server or external HTTP calls"
+  },
+  "checks": [
+    {
+      "phase": "Validation",
+      "command": "uv run ruff check tests/test_codex_learning.py",
+      "result": "passed"
+    },
+    {
+      "phase": "API/content test file",
+      "command": "uv run pytest tests/test_codex_learning.py -q",
+      "result": "passed",
+      "tests": 13,
+      "duration_seconds": 73.05
+    },
+    {
+      "phase": "Scoped intake",
+      "articles": 61,
+      "locale_documents": 305,
+      "method": "Copied only catalogued lesson packs plus the hub into a temporary directory; loaded that directory through the existing importer."
+    },
+    {
+      "phase": "Existing fixtures",
+      "old_routes": [
+        "codex-beginner-guide",
+        "codex-cli-getting-started",
+        "codex-cloud-tasks-github"
+      ],
+      "old_public_locales": 3,
+      "unrelated_local_fixture_locales": 1
+    },
+    {
+      "phase": "Read-only plan",
+      "result": "Article, locale, revision and audit row counts unchanged."
+    },
+    {
+      "phase": "Draft import",
+      "new_locales": 302,
+      "updated_locales": 3,
+      "published_locales": 0,
+      "result": "Three existing public titles remain unchanged. The hub remains unpublished in all five locales; all five public series endpoints remain unavailable."
+    },
+    {
+      "phase": "Test-only publication",
+      "published_locales": 305,
+      "result": "All 305 detail responses expose the matching localized title and exact code language/content; all five series responses contain the expected 60 lessons."
+    },
+    {
+      "phase": "Repeat import",
+      "unchanged_locales": 305,
+      "created": 0,
+      "updated": 0,
+      "published": 0,
+      "result": "Article/locale/revision/audit counts unchanged, existing article identities retained, unrelated fixture locale identity/version/publication pointer/document preserved."
+    }
+  ],
+  "pack_manifest": [
+    {
+      "slug": "codex-account-usage",
+      "sha256": "9520a14c63fde9d22694665d63c5f9f8a1c3f67a4c468a617fd3fa56b0dd47f8"
+    },
+    {
+      "slug": "codex-agents-md",
+      "sha256": "e8ba6807937846c68649e90252b15b1d737039c050f5dd94d8e552883d9e95fb"
+    },
+    {
+      "slug": "codex-agents-md-scopes",
+      "sha256": "b1e1fb34496773868e7020646e958decb0de11e6c50f76f31b2af0d6f0d92172"
+    },
+    {
+      "slug": "codex-automation-recovery",
+      "sha256": "cd5e62fe153a6ee3547f1dad2370d985884faf568b85fb29ddeb6d3b8b99c1e4"
+    },
+    {
+      "slug": "codex-automations",
+      "sha256": "9488e46c990dc9a56c260f12617bf3623c75726291544752ed888335d0a3a1ab"
+    },
+    {
+      "slug": "codex-beginner-guide",
+      "sha256": "d04e555e4bc6151adacb8f57fd0ed0581dffe51aa03296f93dd42e2378d0393c"
+    },
+    {
+      "slug": "codex-browser-images",
+      "sha256": "a13af8957dab1e1b98f6e4b748d4355196f8a7ddf022f998802b7c6924e4c0e8"
+    },
+    {
+      "slug": "codex-ci-workflows",
+      "sha256": "40e986be138a8d975285d52f3a2c0c4438141449a20d0599b5ed24ba7ae6adfc"
+    },
+    {
+      "slug": "codex-cli-getting-started",
+      "sha256": "cf8f8354e4db6ee82f57d5a89e89d647bd1f21117e951c48f77f4fd19a885d53"
+    },
+    {
+      "slug": "codex-cli-linux-wsl",
+      "sha256": "80d379487ad991096b0e9384ad6a442074a03cfd72e785be228dd2ff845c8885"
+    },
+    {
+      "slug": "codex-cli-macos",
+      "sha256": "e8c29afeed1b5145d8e19fc5710f91972f13d2f32770171ee98db2d98b0ff061"
+    },
+    {
+      "slug": "codex-cli-windows",
+      "sha256": "4082d31bf9af85897928619c34df4b07ab0d86ba5a776f4223d4b0c988107b2a"
+    },
+    {
+      "slug": "codex-cloud-tasks-github",
+      "sha256": "7595e3300e9e0b3faaa22500ae50c14e41dc37b392b99bb2d2d8a5137ef3278d"
+    },
+    {
+      "slug": "codex-commands",
+      "sha256": "3c5d0f7f83b9b450626c8dc9a015823f13fec1650a292df093d5d8414c15a4e8"
+    },
+    {
+      "slug": "codex-config-toml",
+      "sha256": "7357343e742339d642252fda4852e3ac7e00286bb3156d752c3106255cb4a11f"
+    },
+    {
+      "slug": "codex-config-troubleshooting",
+      "sha256": "a1d84af11d5893abc0ad19d9bbf26d866876d037bf89b69ee95199975c55105b"
+    },
+    {
+      "slug": "codex-context-handoff",
+      "sha256": "558e7c76ee91e1f75d38415cee98e50c24945bca00b6dda8a6b6b102ea64c232"
+    },
+    {
+      "slug": "codex-cross-device-workflow",
+      "sha256": "203cfe7cc1152f84a186554fffb54bd83f519dd160955bc4f478b62c784d1be5"
+    },
+    {
+      "slug": "codex-csv-workshop",
+      "sha256": "a3547e7b65cfe8ffd14d7b9b0820cca2f608a3868ef8cf418299486824f00930"
+    },
+    {
+      "slug": "codex-debugging",
+      "sha256": "6135a1733093ee43ef0118bc1dbc1d88dc8dcb1764f8fdf835dbaafae30052d4"
+    },
+    {
+      "slug": "codex-desktop-getting-started",
+      "sha256": "d6f9ec20547035bd98825a7c5e155d4a4a546823ee478c769082a0ed71f045f5"
+    },
+    {
+      "slug": "codex-exec-scripting",
+      "sha256": "8b42fcce272e9f2d92eac601bc3501da1d032445f0453c37bdf09d8e7e0a57c2"
+    },
+    {
+      "slug": "codex-first-project",
+      "sha256": "fe0b4d73424e93883b05422668297be78f498617043d5a347037ebe8825c126f"
+    },
+    {
+      "slug": "codex-git-basics",
+      "sha256": "7b536a383a4598ae65051d371988dbdaad26451253599103f45763470328deb2"
+    },
+    {
+      "slug": "codex-ide-getting-started",
+      "sha256": "c588e1e01ef7bf518cc062d5fe3370832db50f5f0e3a224387fb67504f7ff44e"
+    },
+    {
+      "slug": "codex-implement-feature",
+      "sha256": "e43e35b011e30bce428722dcf1520a46c076cf86d953e9aac41dc8e67b7c8287"
+    },
+    {
+      "slug": "codex-json-output",
+      "sha256": "e140a103148e71eea5b6d6685f941bee369fc2d42db3eda2b912b878632ebd86"
+    },
+    {
+      "slug": "codex-learning-hub",
+      "sha256": "bef257d6f398c23f283d73bb2a90be9dd4d402e85250c670840d9215b9c1cac7"
+    },
+    {
+      "slug": "codex-maintain-existing-project",
+      "sha256": "efa4b45cd1e4f91be1014f1878d2eecd33bb77e02ec2d3aa55b54bcb043152e9"
+    },
+    {
+      "slug": "codex-markdown-basics",
+      "sha256": "6a39d43bc7d6a30c7c6493043a3ea4c1e96ba4443fa7b26ed4f6a162b13c836a"
+    },
+    {
+      "slug": "codex-mcp",
+      "sha256": "8576ceed28bede544df5c4e305bedb7ebc1522e1490cfe6039307b3e7ae2abe0"
+    },
+    {
+      "slug": "codex-mcp-troubleshooting",
+      "sha256": "2351ccc24c3692525b0fe4c4def4fec3a48e7abf4d2f96676ce8954fcee40644"
+    },
+    {
+      "slug": "codex-mobile-android",
+      "sha256": "12d5b3a8bd04286ef9a154b28ec18b301a347ef7853ae1f2bd7c60bc3f6f87ba"
+    },
+    {
+      "slug": "codex-mobile-guide",
+      "sha256": "e652a2c702ac1a459b280962e9ad9c4ca4f221287ae9ed4d9e457f5cdce27786"
+    },
+    {
+      "slug": "codex-mobile-ios",
+      "sha256": "77e0b973cec0be872760eaf316426fa7557f2e311b691189905749044b6c91e2"
+    },
+    {
+      "slug": "codex-model-selection",
+      "sha256": "a7812385903a56c31a8282609c67c69e25a459d28138a0eabdb542932a167744"
+    },
+    {
+      "slug": "codex-parallel-integration",
+      "sha256": "205425752716664fb28b5d53de0ab72b83bcf61688598d0c9f2ebe584d6f08da"
+    },
+    {
+      "slug": "codex-permissions",
+      "sha256": "77fd62392534df92e6af4ab7660cd9609d841b465eb4f45db2533dbb2873bb8d"
+    },
+    {
+      "slug": "codex-plan-mode",
+      "sha256": "0880c54fb48883ffee3ca134493ee6ef8da46b1cf7a868ab393c6de50dc51757"
+    },
+    {
+      "slug": "codex-platforms-guide",
+      "sha256": "2721026a96d8375d863f9aa76b529fee8e74f26ed65f553e9d087b1b06264156"
+    },
+    {
+      "slug": "codex-plugin-troubleshooting",
+      "sha256": "d4555c2d7f20876b7b8a380580ba1fc2c9d4fb7a649ed3c5de574f4ba99d45d9"
+    },
+    {
+      "slug": "codex-plugins",
+      "sha256": "1f035913406a9f27947d63fc2439691c8dd491264affcbc20aa88c2637bfe886"
+    },
+    {
+      "slug": "codex-project-data-safety",
+      "sha256": "1b6d4c2b07c4dd14c4cf110d19c0a9b48ac9eab63b6b2c622503781c50337d37"
+    },
+    {
+      "slug": "codex-project-management",
+      "sha256": "088d0ae555c41c381a7287613b7b65ff0a831ac145fc7a00abdc92bb9d73ae7c"
+    },
+    {
+      "slug": "codex-prompting",
+      "sha256": "5bbc62470ef58894893109c135d1dfce09d5308dbca41d2121a10aa1f84e2eb8"
+    },
+    {
+      "slug": "codex-remote-setup",
+      "sha256": "c5e2abcb3da667e9a145ada3790ea87e03552d4a957a132c0b10efe616267863"
+    },
+    {
+      "slug": "codex-rules-and-context-files",
+      "sha256": "c25f06965cef12e3081fdcfa9d0d11816fb7fbf79fd84605ec824eff40bf68d3"
+    },
+    {
+      "slug": "codex-sessions-resume",
+      "sha256": "402edcaf9f1f3057bf56a687d5705210211587ae34fc6f3e80db17e619e1f5af"
+    },
+    {
+      "slug": "codex-skill-resources",
+      "sha256": "5c2445025efa93578dc4c9c8b551c7efe543d710cabf8d8702690127c82e9cfc"
+    },
+    {
+      "slug": "codex-skill-testing",
+      "sha256": "c28f42ebf93c6f9ae67a0011cc7c14a352274a8b06b05dba8908c92ff52f91ac"
+    },
+    {
+      "slug": "codex-skills",
+      "sha256": "1f5659f004b234dec00defe27a7a14a667a0eb7c8b2527523161be86a594665c"
+    },
+    {
+      "slug": "codex-subagent-quality",
+      "sha256": "35e80f44438471ccdb6e8a78359b36d9ae4c9631676c7f22b35e51fedfb7c25c"
+    },
+    {
+      "slug": "codex-subagents",
+      "sha256": "e9f331b621e796f406372cc03a22d821602de5b0c7ea055fe822b069944b8b0b"
+    },
+    {
+      "slug": "codex-templates-cheatsheet",
+      "sha256": "9b8dcae7c8de592d71006a7c651d1b59d27b76b9da84243cae41848e1f81e4e2"
+    },
+    {
+      "slug": "codex-terminal-paths",
+      "sha256": "d004e87c3f20ac08681e58924520605c89dc2d807d5391ea3a759df84a2b9060"
+    },
+    {
+      "slug": "codex-testing-review",
+      "sha256": "7faa4ced925c74364c45ae879e98832185f32bee52df1b2e297b57469eef5327"
+    },
+    {
+      "slug": "codex-troubleshooting",
+      "sha256": "8723a73d251ec0ea7590d06b27159eb3dcbb8fd7cb248bd15d4e9992ec4e5c4d"
+    },
+    {
+      "slug": "codex-understand-codebase",
+      "sha256": "e29b3639aeec633bd06792c0e226d93dadce26fb253766eb2eb31be761b55b44"
+    },
+    {
+      "slug": "codex-usage-efficiency",
+      "sha256": "d7779c2115b346211518b1929be70b6c83b786a4f14c1c1e855d2757ad23f77a"
+    },
+    {
+      "slug": "codex-website-workshop",
+      "sha256": "a9f91f63fe216ec786a92a601515dd59ee6f6314d804ca2f6e4343869d3258b6"
+    },
+    {
+      "slug": "codex-worktrees",
+      "sha256": "4ea4f2d7295f114b58dc6763586f708b594af36dd8b0e87dc483a7026f5a9e5c"
+    }
+  ],
+  "limits": [
+    "SQLite does not establish PostgreSQL migration or production performance behavior.",
+    "Existing-route fixtures use fictional older titles, not a snapshot of the production database.",
+    "This verifies import/API behavior, not editorial correctness, actual Codex product behavior or final browser acceptance.",
+    "The 61 packs still include the separately recorded editorial blockers. No staging/production import, publication, PR or deployment was performed."
+  ]
+}

@@ -1,0 +1,551 @@
+{
+  "slug": "ai-model-release-timeline-2026",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "2026 年 AI 模型大事記：1 月到 9 月 15 日的官方發布時間軸",
+      "description": "2026 年 1 月 1 日到 9 月 15 日，各家 AI 公司在官方公告頁上宣布了哪些模型？這篇只收各家官網自己寫的發布：OpenAI、Anthropic、Google、Meta、DeepSeek、Qwen、Mistral、SpaceXAI 與 MiniMax，依月份排成一條時間軸，每一筆記下公告日期、模型名、官方那句定位，以及對一般使用者的實際影響：免費層能不能用、要不要付費方案、開放權重能不能下載，最後附一張三十筆的對照表。不做排名、不轉述媒體報導，只抄各家官方公告的原文。",
+      "hero": {
+        "src": "/guides/ai-model-release-timeline-2026/hero.jpg",
+        "alt": "一條橫向長線上排著九個由小到大的圓點，線上方有幾組高低不一的長條，代表一年之中陸續發布的模型",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 1 月 1 日到 9 月 15 日，主要 AI 公司在自家官方公告頁上宣布的模型超過三十個。這篇把它們依月份排成一條時間軸，每一筆只寫三件事：公告日期、模型名，以及廠商自己給的那句定位。不做排名，也不轉述媒體說法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會有一份可以自己核對的清單：哪一個月誰發了什麼、哪些模型免費帳號就用得到、哪些要付費方案、哪些是可以下載的開放權重。收錄範圍到 2026 年 9 月 15 日為止，資料全部來自各家當天查得到的官方公告頁與官方新聞來源；本環境不能登入、不做實測，官網沒寫的就不寫。"
+        },
+        {
+          "type": "heading",
+          "text": "這份時間軸只收「模型」，先說怎麼讀",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先說收錄規則。只要是廠商在官方公告頁宣布的模型本體就收：語言模型、推理模型、程式模型、多模態模型、開放權重模型都算。功能更新、方案改名、企業合作、資料中心投資、安全報告一律不收，因為那些不是模型。同一家在同一天發多個型號的，合併成一筆。"
+        },
+        {
+          "type": "paragraph",
+          "text": "日期一律用官方公告頁或官方新聞來源上標的發布日，不是你實際看到那個模型出現在介面上的日子，兩者常常差好幾天。有些公告把模型分成預覽、研究預覽與正式版三個階段，時間軸記的是那一次公告本身在講哪個階段，正式開放與各地區開放時間以官網為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "收錄：官方公告頁上寫明的新模型或新版本，包含開放權重釋出。",
+            "不收：價格調整、方案更名、企業合作、投資消息、安全與研究報告。",
+            "日期：以官方公告頁或官方新聞來源標示的發布日為準。",
+            "定位：抄官方公告自己那句話，不是本站的評價，本篇不做排名也不宣稱實測。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一段時間的 AI 消息不只有模型。站上另有一篇 "
+            },
+            {
+              "type": "link",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+            },
+            {
+              "type": "text",
+              "text": "，涵蓋功能、法規與產品；這篇只挑模型，兩篇搭著看剛好。想先弄懂「模型」這個詞本身指什麼，可以看 "
+            },
+            {
+              "type": "link",
+              "text": "基礎模型（Foundation Model）是什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-foundation-model"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "1 月到 3 月：舊模型先下架，新一代接著上",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "1 月最影響一般使用者的其實不是新模型，而是一則下架公告。OpenAI 在 1 月 29 日公告，2 月 13 日起會把 GPT-4o、GPT-4.1、GPT-4.1 mini 與 OpenAI o4-mini 從 ChatGPT 移除，與先前已公告的 GPT-5 系列退場同時進行，公告也寫明 API 當時沒有變動。同月 1 月 30 日，Qwen 在 Hugging Face 釋出 Qwen3-Coder-Next 的開放權重，官方模型卡寫它是為程式代理與本機開發設計的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2 月是今年最密集的一個月。2 月 5 日 Anthropic 發 Claude Opus 4.6，公告寫它在前代的程式能力上再進步、規劃更謹慎、能把代理任務撐得更久；同一天 OpenAI 發 GPT-5.3-Codex。2 月 12 日 OpenAI 再發 GPT-5.3-Codex-Spark，官方說是第一個即時程式模型、生成速度快 15 倍、帶 128k 上下文視窗，先以研究預覽開放給 ChatGPT Pro 使用者。2 月 16 日 Qwen 開放 Qwen3.5 旗艦權重，模型卡的授權標 Apache 2.0。2 月 17 日 Claude Sonnet 4.6 上線，這一筆對免費使用者最有感，公告寫明它成為免費與 Pro 方案的預設模型。2 月 19 日 Google 發 Gemini 3.1 Pro，官方那句話是「為簡單答案不夠用的任務而設計」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3 月 3 日 Google 推 Gemini 3.1 Flash-Lite，定位是 Gemini 3 系列裡最快、最省成本的一個。3 月 5 日 OpenAI 發 GPT-5.4，公告寫它是最有能力也最有效率的專業工作前沿模型，帶 100 萬 token 上下文視窗，3 月 17 日再補上 GPT-5.4 mini 與 nano。3 月 10 日 SpaceXAI 的釋出說明頁記 Grok 4.20 與 Grok 4.20 Multi-agent 上線。3 月 16 日 Mistral 發 Mistral Small 4，官方寫它把 Magistral 的推理、Pixtral 的多模態與 Devstral 的代理程式能力合成一個模型，授權同樣是 Apache 2.0。3 月 18 日 MiniMax 的官方釋出說明記 MiniMax M2.7 系列。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "舊型號會下架，不要把工作流綁死在型號上",
+          "text": "OpenAI 在 1 月 29 日的公告寫明，GPT-4o、GPT-4.1、GPT-4.1 mini 與 o4-mini 於 2 月 13 日從 ChatGPT 移除。如果你的提示詞、自動化流程或第三方工具指名某個型號，換代時就會直接失效。把「用哪個模型」寫成一個可以改的設定，不要寫死在流程裡；每次看到下架公告，先去翻自己有沒有指名型號的地方。"
+        },
+        {
+          "type": "heading",
+          "text": "4 月到 6 月：開放權重追上來，前沿模型分成兩層",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "4 月 2 日 Google 釋出 Gemma 4，官方定位是至今最聰明的開放模型。4 月 8 日 Meta 發 Muse Spark，官方說法是原生多模態的推理模型，支援工具使用、視覺思考鏈與多代理協調，同日在 meta.ai 與 Meta AI App 上線。4 月 16 日 Anthropic 發 Claude Opus 4.7，公告寫它在最困難的軟體工程任務上比 Opus 4.6 明顯進步；同一天 OpenAI 發 GPT-Rosalind，定位是給生命科學研究用的前沿推理模型。4 月 23 日 GPT-5.5 上線，官方說它是為程式、研究與資料分析這類跨工具的複雜任務打造的。4 月 24 日 DeepSeek 公告 DeepSeek-V4 預覽並開源，一次給 V4-Pro 與 V4-Flash 兩個型號，公告寫 100 萬 token 上下文成為所有官方服務的預設。"
+        },
+        {
+          "type": "paragraph",
+          "text": "5 月 Google 發 Gemini 3.5，官方那句話是「前沿智慧加上行動力」，公告寫 Gemini App 與 Google 搜尋的 AI 模式全球都能用；同月稍後再發全模態的 Gemini Omni。5 月 22 日 Mistral 公告 Mistral Medium 3.5，用來驅動 Vibe 的遠端程式代理。5 月 28 日 Anthropic 發 Claude Opus 4.8，公告寫它在各項評測上勝過 Opus 4.7，而且價格不變。"
+        },
+        {
+          "type": "paragraph",
+          "text": "6 月出現今年最特別的一組公告。6 月 9 日 Anthropic 同時發 Claude Fable 5 與 Claude Mythos 5，官方說法是同一個底層模型：Fable 5 是加了安全防護、可一般使用的版本，Mythos 5 則在特定領域解除限制，只透過 Project Glasswing 給資安防禦者與基礎設施業者。同月 6 月 1 日 MiniMax 發 M3，官方寫是 M 系列最新的語言模型，涵蓋代理推理、工具使用、程式與長上下文；6 月 30 日 Anthropic 再發 Claude Sonnet 5，公告寫它是至今最會做代理任務的 Sonnet，並且是免費與 Pro 方案的預設模型。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "開放權重與閉源模型的差距在這半年被反覆拿出來講。同一件事在 "
+            },
+            {
+              "type": "link",
+              "text": "開源 vs 閉源模型：對使用者的差別",
+              "url": "https://mokaair.com/zh-TW/life/ai-open-vs-closed-models"
+            },
+            {
+              "type": "text",
+              "text": " 講得更完整；想知道 DeepSeek、Qwen 這些中國系模型各自的位置，可以看 "
+            },
+            {
+              "type": "link",
+              "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+              "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+            },
+            {
+              "type": "text",
+              "text": "，OpenAI 自己的開放權重路線則在 "
+            },
+            {
+              "type": "link",
+              "text": "OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪",
+              "url": "https://mokaair.com/zh-TW/life/gpt-oss-openai-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-model-release-timeline-2026/diagram-1.svg",
+          "alt": "2026 年 1 月到 9 月的 AI 模型發布時間軸，依月份列出各廠商的主要模型與三個階段標題",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右照月份看：上排是該月的代表模型，下排灰字是廠商，最底下三段是整段時間的走向。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "7 月到 9 月：能力往上、價格往下，免費層也動了",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "7 月 7 日 Meta 發 Muse Image 與 Muse Video，官方寫 Muse Image 是至今最強的圖像生成模型，Muse Video 建在同一個基礎上。7 月 8 日 SpaceXAI 發 Grok 4.5，官方釋出說明寫是給程式、代理任務與知識工作用的模型。7 月 9 日 OpenAI 發 GPT-5.6，官方那句話是「每個 token 更多智慧、每一塊錢更強的表現」。7 月 21 日 Google 一次公告 Gemini 3.6 Flash、3.5 Flash-Lite 與 3.5 Flash Cyber。7 月 24 日 Anthropic 發 Claude Opus 5，公告寫它以一半的價格接近 Claude Fable 5 的前沿智慧，同時成為 Claude Max 的預設模型、Claude Pro 上最強的模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "8 月的重點落在免費層與開放權重。8 月 6 日 OpenAI 公告改進 ChatGPT 裡的 GPT-5.6 Sol，同時把 GPT-5.6 Luna 的存取擴大給免費使用者，官方寫的是日常對話不限次數。8 月 8 日 Qwen 在 Hugging Face 上架 Qwen3.8，官方模型卡寫這是第一次把 Max 等級的模型開放釋出。8 月 12 日 Grok 4.6 上 API，官方釋出說明寫它是程式、代理與知識工作的前沿模型，帶 50 萬 token 上下文視窗。8 月 13 日 Google 發 Gemini 3.7 Flash，官方定位是至今最聰明的主力模型；同一天 DeepSeek 公告 DeepSeek-V4-Pro 正式版，重點是代理能力升級與可調整的推理強度。8 月 21 日 DeepSeek 再發實驗性的多模態 DeepSeek-V4-Flash-Vision-Exp。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9 月到 15 日為止，時間軸上收了四筆。9 月 1 日 Anthropic 發 Claude Fable 5.1 與 Mythos 5.1，公告寫這是世界上最先進的程式與知識工作模型，Mythos 5.1 仍只開放給通過驗證的對象。9 月 2 日 Google 發 Gemini 3.8 Flash 與 3.8 Flash Cyber，官方定位是最聰明的主力模型，Gemini App 這一端寫明給 Google AI Pro 與 Ultra 訂閱者。9 月 3 日 OpenAI 發 GPT-6 Astra，官方說是至今最聰明、最對齊的模型，涵蓋電腦操作、程式、資安與科學。9 月 10 日 DeepSeek 發 DeepSeek-V4.1-Flash，公告同時寫明 V4-Flash 與 V4-Flash-Vision-Exp 退場。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "月份",
+            "模型",
+            "廠商",
+            "官方一句定位"
+          ],
+          "rows": [
+            [
+              "1 月",
+              "Qwen3-Coder-Next",
+              "Qwen",
+              "為程式代理與本機開發設計的開放權重模型"
+            ],
+            [
+              "2 月",
+              "Claude Opus 4.6",
+              "Anthropic",
+              "程式能力勝過前代，規劃更謹慎、代理任務撐更久"
+            ],
+            [
+              "2 月",
+              "GPT-5.3-Codex",
+              "OpenAI",
+              "Codex 原生代理，撐得住長時程的真實技術工作"
+            ],
+            [
+              "2 月",
+              "Qwen3.5",
+              "Qwen",
+              "統一的視覺語言基礎模型，開放權重"
+            ],
+            [
+              "2 月",
+              "Claude Sonnet 4.6",
+              "Anthropic",
+              "至今最強的 Sonnet，能力全面升級"
+            ],
+            [
+              "2 月",
+              "Gemini 3.1 Pro",
+              "Google",
+              "為簡單答案不夠用的任務而設計"
+            ],
+            [
+              "3 月",
+              "Gemini 3.1 Flash-Lite",
+              "Google",
+              "Gemini 3 系列最快、最省成本的一個"
+            ],
+            [
+              "3 月",
+              "GPT-5.4",
+              "OpenAI",
+              "專業工作的前沿模型，100 萬 token 上下文視窗"
+            ],
+            [
+              "3 月",
+              "Grok 4.20",
+              "SpaceXAI",
+              "同時推出多代理版本"
+            ],
+            [
+              "3 月",
+              "Mistral Small 4",
+              "Mistral",
+              "合併推理、多模態與代理程式能力的單一模型"
+            ],
+            [
+              "4 月",
+              "Gemma 4",
+              "Google",
+              "至今最聰明的開放模型"
+            ],
+            [
+              "4 月",
+              "Muse Spark",
+              "Meta",
+              "原生多模態推理模型，支援工具使用與多代理協調"
+            ],
+            [
+              "4 月",
+              "GPT-5.5",
+              "OpenAI",
+              "為程式、研究與資料分析等複雜任務打造"
+            ],
+            [
+              "4 月",
+              "DeepSeek-V4 預覽",
+              "DeepSeek",
+              "開源，並把 100 萬 token 上下文變成預設"
+            ],
+            [
+              "5 月",
+              "Gemini 3.5",
+              "Google",
+              "前沿智慧加上行動力"
+            ],
+            [
+              "5 月",
+              "Mistral Medium 3.5",
+              "Mistral",
+              "驅動 Vibe 的遠端程式代理"
+            ],
+            [
+              "5 月",
+              "Claude Opus 4.8",
+              "Anthropic",
+              "各項評測勝過 Opus 4.7，價格不變"
+            ],
+            [
+              "6 月",
+              "MiniMax M3",
+              "MiniMax",
+              "M 系列最新語言模型，涵蓋代理推理與長上下文"
+            ],
+            [
+              "6 月",
+              "Claude Fable 5 與 Mythos 5",
+              "Anthropic",
+              "能力超過先前任何已發布的模型"
+            ],
+            [
+              "6 月",
+              "Claude Sonnet 5",
+              "Anthropic",
+              "至今最會做代理任務的 Sonnet"
+            ],
+            [
+              "7 月",
+              "Grok 4.5",
+              "SpaceXAI",
+              "給程式、代理任務與知識工作的模型"
+            ],
+            [
+              "7 月",
+              "GPT-5.6",
+              "OpenAI",
+              "每個 token 更多智慧、每一塊錢更強的表現"
+            ],
+            [
+              "7 月",
+              "Claude Opus 5",
+              "Anthropic",
+              "以一半價格接近 Claude Fable 5 的前沿智慧"
+            ],
+            [
+              "8 月",
+              "Qwen3.8",
+              "Qwen",
+              "第一次把 Max 等級的模型開放釋出"
+            ],
+            [
+              "8 月",
+              "Grok 4.6",
+              "SpaceXAI",
+              "程式、代理與知識工作的前沿模型"
+            ],
+            [
+              "8 月",
+              "DeepSeek-V4-Pro 正式版",
+              "DeepSeek",
+              "代理能力大幅升級，推理強度可依任務調整"
+            ],
+            [
+              "9 月",
+              "Claude Fable 5.1 與 Mythos 5.1",
+              "Anthropic",
+              "世界上最先進的程式與知識工作模型"
+            ],
+            [
+              "9 月",
+              "Gemini 3.8 Flash",
+              "Google",
+              "最聰明的主力模型，軟體工程與多步推理再進步"
+            ],
+            [
+              "9 月",
+              "GPT-6 Astra",
+              "OpenAI",
+              "至今最聰明、最對齊的模型"
+            ],
+            [
+              "9 月",
+              "DeepSeek-V4.1-Flash",
+              "DeepSeek",
+              "更聰明、更快、更有效率，新架構家族中最小的型號"
+            ]
+          ],
+          "caption": "依 2026 年 9 月 15 日各家官方公告頁與官方新聞來源整理，定位一欄是官方原文的中文摘譯，不是本站評分。"
+        },
+        {
+          "type": "heading",
+          "text": "三十幾筆公告裡，哪幾筆對你真的有差",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "多數公告是寫給開發者與企業看的。以台灣的一般使用者來說，真正會改到日常體驗的只有三類，其餘的可以當成背景知識，不必每一筆都追。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "免費層換模型：Anthropic 在 2 月的 Sonnet 4.6 與 6 月的 Sonnet 5 兩次把免費方案的預設模型換掉，OpenAI 在 8 月把 GPT-5.6 Luna 擴大給免費使用者。這幾筆你什麼都不用做就會生效，回答風格變了通常是這個原因。",
+            "舊型號下架：ChatGPT 在 2 月 13 日移除四個舊型號，指名舊型號的提示詞、自動化與第三方工具會直接失效。",
+            "開放權重釋出：Qwen3.5、Gemma 4、DeepSeek-V4、Mistral Small 4 與 Qwen3.8 都能下載，但能下載不等於一般筆電跑得動，總參數、每次啟用的參數與記憶體需求是三個不同的數字。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣能不能用、哪個方案可以用，各家公告寫得詳略差很多。Google 在 Gemini 3.8 Flash 的公告裡寫明 Gemini App 這一端給 Google AI Pro 與 Ultra 訂閱者；Anthropic 的 Sonnet 4.6 與 Sonnet 5 公告寫明免費與 Pro 方案預設；其餘多數公告只寫「在所有平台上線」，沒有逐國逐方案說明。查不到的部分本篇不猜，一律以官網當天頁面為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一件容易誤會的事：版本號變大，不等於你的體感一定變好。今年多數公告的重點落在程式、代理與長工作流，日常問答與寫作的差異，官方公告本身通常沒有給可驗證的數字。要判斷一次改版對自己有沒有用，最省事的方法是留一組固定的樣本題，換模型時原樣再跑一次，自己比對輸出。"
+        },
+        {
+          "type": "link",
+          "text": "模型跑分怎麼看：LMArena、SWE-bench 與三個陷阱",
+          "url": "https://mokaair.com/zh-TW/life/ai-benchmarks-explained"
+        },
+        {
+          "type": "link",
+          "text": "AI 能與不能：2026 年的誠實盤點",
+          "url": "https://mokaair.com/zh-TW/life/ai-hype-vs-reality-2026"
+        },
+        {
+          "type": "link",
+          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "link",
+          "text": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/claude-model-lineup-2026"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 模型怎麼選：速度、能力與情境",
+          "url": "https://mokaair.com/zh-TW/life/gemini-model-lineup-flash-pro"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "想自己追這條時間軸，訂閱一手來源就夠了",
+          "text": "不必等別人彙整。OpenAI、Google DeepMind 與 Mistral 的官方部落格都有 RSS；DeepSeek 與 SpaceXAI 把模型公告放在開發者文件的新聞頁與釋出說明頁；Anthropic 的模型公告集中在官網的 news 目錄；Qwen 的開放權重直接看 Hugging Face 官方帳號的模型卡。訂閱這幾條，你看到的就是第一手的日期與原文，不會被二手轉述改掉語氣。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 官方新聞來源（openai.com/news RSS）：2026 年 GPT-5.3-Codex、GPT-5.3-Codex-Spark、GPT-5.4、GPT-5.5、GPT-5.6、GPT-6 Astra 等公告的標題、日期與官方一句說明",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI：Retiring GPT-4o, GPT-4.1, GPT-4.1 mini, and OpenAI o4-mini in ChatGPT（2026 年 1 月 29 日公告，2 月 13 日下架）",
+          "url": "https://openai.com/index/retiring-gpt-4o-and-older-models",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta AI 部落格：Introducing Muse Spark（2026 年 4 月 8 日，原生多模態推理模型，在 meta.ai 與 Meta AI App 上線）",
+          "url": "https://ai.meta.com/blog/introducing-muse-spark-msl/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI：Improving GPT-5.6 Sol in ChatGPT—and expanding access to GPT-5.6 Luna for free users（2026 年 8 月 6 日）",
+          "url": "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic：Introducing Claude Opus 4.6（2026 年 2 月 5 日）",
+          "url": "https://www.anthropic.com/news/claude-opus-4-6",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic：Introducing Claude Sonnet 4.6（2026 年 2 月 17 日，成為免費與 Pro 方案預設模型）",
+          "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic：Introducing Claude Opus 4.7（2026 年 4 月 16 日）",
+          "url": "https://www.anthropic.com/news/claude-opus-4-7",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic：Introducing Claude Opus 4.8（2026 年 5 月 28 日，價格不變）",
+          "url": "https://www.anthropic.com/news/claude-opus-4-8",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic：Claude Fable 5 and Claude Mythos 5（2026 年 6 月 9 日，Mythos 5 僅限 Project Glasswing 夥伴）",
+          "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic：Introducing Claude Sonnet 5（2026 年 6 月 30 日，免費與 Pro 方案預設）",
+          "url": "https://www.anthropic.com/news/claude-sonnet-5",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic：Introducing Claude Opus 5（2026 年 7 月 24 日，Claude Max 預設模型）",
+          "url": "https://www.anthropic.com/news/claude-opus-5",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic：Introducing Claude Fable 5.1 and Claude Mythos 5.1（2026 年 9 月 1 日）",
+          "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google DeepMind 部落格官方 RSS：2026 年 Gemini 3.1 Pro、3.1 Flash-Lite、Gemma 4、Gemini 3.5、Gemini Omni、3.6 Flash、3.7 Flash、3.8 Flash 等公告的標題與日期",
+          "url": "https://deepmind.google/blog/rss.xml",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google：Introducing Gemini 3.8 Flash and 3.8 Flash Cyber（2026 年 9 月 2 日；Gemini App 端給 Google AI Pro 與 Ultra 訂閱者）",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google：Introducing Gemini 3.7 Flash（2026 年 8 月 13 日）",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google：Gemini 3.5 frontier intelligence with action（2026 年 5 月，Gemini App 與搜尋 AI 模式全球可用）",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek API 官方新聞頁：DeepSeek-V4 預覽開源（4 月 24 日）、V4-Pro 正式版（8 月 13 日）、V4-Flash-Vision-Exp（8 月 21 日）、V4.1-Flash（9 月 10 日）",
+          "url": "https://api-docs.deepseek.com/news/news260910",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "SpaceXAI（xAI）開發者文件釋出說明：Grok 4.20（3 月 10 日）、Grok 4.5（7 月 8 日）、Grok 4.6（8 月 12 日，50 萬 token 上下文視窗）",
+          "url": "https://docs.x.ai/developers/release-notes",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Mistral AI 官方新聞來源（mistral.ai/news RSS）與 Mistral Small 4 公告：2026 年 3 月 16 日，Apache 2.0 授權",
+          "url": "https://mistral.ai/news/mistral-small-4/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方 Qwen 模型卡：Qwen3-Coder-Next、Qwen3.5-397B-A17B（Apache 2.0）與 Qwen3.8-2.4T-A95B（首次開放 Max 等級權重）的說明與上架日期",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

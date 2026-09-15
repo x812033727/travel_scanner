@@ -1,0 +1,144 @@
+{
+  "checked_on": "2026-09-15",
+  "evidence_type": "Read-only diagnosis of direct tool results in this task transcript",
+  "records": [
+    {
+      "timestamp_utc": "2026-09-14T06:29:12.212Z",
+      "operation": "Project-management module and sources",
+      "error": "CreateProcess Rejected: blocked by policy",
+      "recorded_context": {
+        "approval_policy": "never",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      }
+    },
+    {
+      "timestamp_utc": "2026-09-14T07:44:28.790Z",
+      "operation": "Local Next production preview startup",
+      "error": "CreateProcess Rejected: blocked by policy",
+      "recorded_context": {
+        "approval_policy": "never",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      }
+    },
+    {
+      "timestamp_utc": "2026-09-14T07:44:38.305Z",
+      "operation": "Localhost-only Next preview startup",
+      "error": "CreateProcess Rejected: blocked by policy",
+      "recorded_context": {
+        "approval_policy": "never",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      }
+    },
+    {
+      "timestamp_utc": "2026-09-14T08:56:53.607Z",
+      "operation": "Curriculum/module author patch",
+      "error": "CreateProcess Rejected: blocked by policy",
+      "recorded_context": {
+        "approval_policy": "never",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      }
+    },
+    {
+      "timestamp_utc": "2026-09-14T13:23:59.509Z",
+      "operation": "Lesson 03 author text correction",
+      "error": "CreateProcess Rejected: blocked by policy",
+      "recorded_context": {
+        "approval_policy": "never",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      }
+    },
+    {
+      "timestamp_utc": "2026-09-14T13:39:06.903Z",
+      "operation": "Lesson 06 module text correction",
+      "error": "CreateProcess Rejected: blocked by policy",
+      "recorded_context": {
+        "approval_policy": "never",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      }
+    },
+    {
+      "timestamp_utc": "2026-09-14T14:22:04.279Z",
+      "operation": "Checkpoint 3 evidence/progress update",
+      "error": "CreateProcess Rejected: blocked by policy",
+      "recorded_context": {
+        "approval_policy": "never",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      }
+    },
+    {
+      "timestamp_utc": "2026-09-14T14:33:51.072Z",
+      "operation": "Lesson 20 debugging correction",
+      "error": "CreateProcess Rejected: blocked by policy",
+      "recorded_context": {
+        "approval_policy": "never",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      }
+    },
+    {
+      "timestamp_utc": "2026-09-14T14:44:09.863Z",
+      "operation": "MCP/plugins/template corrections",
+      "error": "CreateProcess Rejected: blocked by policy",
+      "recorded_context": {
+        "approval_policy": "never",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      }
+    },
+    {
+      "timestamp_utc": "2026-09-14T14:49:15.575Z",
+      "operation": "Worktree/subagent/browser/automation corrections",
+      "error": "CreateProcess Rejected: blocked by policy",
+      "recorded_context": {
+        "approval_policy": "never",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      }
+    },
+    {
+      "timestamp_utc": "2026-09-14T15:07:28.372Z",
+      "operation": "Five-language native hub body correction",
+      "error": "CreateProcess Rejected: blocked by policy",
+      "recorded_context": {
+        "approval_policy": "never",
+        "sandbox_policy": {
+          "type": "danger-full-access"
+        }
+      }
+    }
+  ],
+  "conclusion": "The tool process launch was rejected by policy. The specific policy layer and rationale are not present in the returned evidence; prior categorical attribution to sandbox-boundary Auto-review was unsupported.",
+  "sources": [
+    {
+      "url": "https://learn.chatgpt.com/docs/sandboxing/auto-review",
+      "checked_on": "2026-09-15"
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/reference/troubleshooting",
+      "checked_on": "2026-09-15"
+    }
+  ],
+  "limits": [
+    "No denied operation was retried.",
+    "No permission settings were changed.",
+    "No transcript, feedback, or issue was sent externally.",
+    "Successful unrelated commands do not establish that prior denials were lifted."
+  ]
+}

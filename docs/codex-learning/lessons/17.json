@@ -1,0 +1,62 @@
+{
+  "id": 17,
+  "sources": [
+    "models",
+    "pricing",
+    "developer-commands"
+  ],
+  "text": {
+    "zh-TW": [
+      "模型決定可用能力與成本條件，推理深度影響代理願意花多少工作來處理問題。先用同一個小任務比較品質，再決定是否提高深度；模型名稱與額度會變，因此只以帳號當下顯示的選項為準。",
+      "準備一個可驗證的任務，例如解釋一段 HTML，或找出有重現步驟的 Bug。記錄輸入、所需時間、修改是否正確，以及用量介面可提供的資訊。",
+      [
+        "在桌面模型選單或 CLI 的 /model 查看可用模型與推理選項。不要把文章出現的模型名當成每個方案都可選。",
+        "先用一般深度完成小任務，評估是否遵守限制、是否查到正確檔案、是否有驗證。時間快但錯誤的結果不算比較勝出。",
+        "對需要多檔案理解或反覆除錯的工作，逐步提高推理深度並使用同一組驗收。提高深度不能替代缺少的資料、錯誤的目錄或未提供的測試環境。",
+        "確認服務速度選項與模型推理深度是不同控制；若介面有 Fast，先查看該帳號的用量條件。把本次选择與結果記下，下次同類工作沿用有效組合。"
+      ],
+      "你有一份基於任務品質與可見用量的選擇記錄，而不是只憑模型名稱判断。",
+      "模型不在清單中先查帳號與工作區。若輸入缺少關鍵例子，先補資料，不要持續升級深度。訂閱與 API 的計費差別回到帳號篇查看。",
+      "用相同驗收條件分析這個任務，回報證據與不確定處。不要因為換了模型就擴大修改範圍。"
+    ],
+    "en": [
+      "Model choice affects available capabilities and usage conditions; reasoning effort affects how much work the agent devotes to a problem. Compare quality on the same small task before increasing effort. Use the options currently exposed by your account rather than assuming a named model is universally available.",
+      "Prepare a verifiable task, such as explaining HTML or fixing a reproducible bug. Record input, elapsed time, correctness and usage information the interface actually provides.",
+      [
+        "Inspect the desktop model menu or /model in CLI for available models and reasoning levels. A model mentioned in an article may not be included in your plan.",
+        "Try ordinary effort first. Check adherence to constraints, correct file selection and verification. A fast but incorrect answer is not a successful comparison.",
+        "For multi-file reasoning or difficult debugging, raise effort incrementally using the same acceptance criteria. More effort cannot replace missing inputs, a correct working directory or a working test environment.",
+        "Distinguish service speed from reasoning effort. If Fast is offered, inspect its account-specific usage conditions first. Record the chosen combination and reuse it for similar work when it performs well."
+      ],
+      "You have a task-based comparison grounded in correctness and visible usage, rather than a model-name ranking.",
+      "For a missing model, check account and workspace. Add missing examples before increasing effort repeatedly. See the account tutorial for subscription versus API billing.",
+      "Analyze this task against the same acceptance criteria and report evidence and uncertainty. Do not expand the scope just because the model changed."
+    ],
+    "ja": [
+      "モデルと推論量は別の選択です。同じ小さな課題で品質を比較し、必要なら推論量を増やします。名前だけで判断せず、現在のアカウントに表示される候補を使います。",
+      "説明や再現できる不具合など検証可能な課題を用意し、入力、時間、正確さ、見える利用量を記録します。",
+      [
+        "モデルメニューか /model で選択肢を確認します。すべてのプランに同じモデルがあるとは限りません。",
+        "通常の推論量で試し、制約、対象ファイル、検証を評価します。速くても誤った答えは成功ではありません。",
+        "複雑な課題は同じ合格条件で少しずつ推論量を上げます。情報不足や環境不備は別に直します。",
+        "Fast などの速度設定と推論量を区別し、利用条件を確認します。有効な組み合わせを記録します。"
+      ],
+      "品質と実際の利用情報に基づく比較が残れば完了です。",
+      "候補がない場合はアカウントを確認します。情報を補う前に推論量だけを増やし続けません。",
+      "同じ合格条件で分析し、根拠と不確かな点を報告してください。モデル変更を理由に範囲を広げないでください。"
+    ],
+    "ko": [
+      "모델 선택과 추론 수준은 별개입니다. 같은 작은 과제에서 품질을 비교하고 필요할 때 추론을 높입니다. 이름만 보고 판단하지 말고 현재 계정에 표시되는 옵션을 사용하세요.",
+      "설명이나 재현 가능한 버그처럼 검증할 과제를 준비하고 입력, 시간, 정확성과 보이는 사용량을 기록합니다.",
+      [
+        "모델 메뉴나 /model에서 선택지를 확인합니다. 모든 요금제에 같은 모델이 있는 것은 아닙니다.",
+        "보통 수준에서 제한 준수, 대상 파일과 검증을 평가합니다. 빠르지만 틀린 답은 성공이 아닙니다.",
+        "복잡한 과제는 같은 기준으로 추론을 조금씩 높입니다. 부족한 자료와 환경 문제는 따로 해결합니다.",
+        "Fast 같은 속도 설정과 추론 수준을 구분하고 사용 조건을 확인합니다. 효과적인 조합을 기록합니다."
+      ],
+      "품질과 실제 사용 정보에 근거한 비교가 남으면 완료입니다.",
+      "선택지가 없으면 계정을 확인하세요. 자료를 보완하기 전에 추론만 계속 높이지 않습니다.",
+      "같은 완료 기준으로 분석하고 근거와 불확실성을 보고하세요. 모델 변경을 이유로 범위를 넓히지 마세요."
+    ]
+  }
+}

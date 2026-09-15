@@ -1,0 +1,36 @@
+{
+  "checkedOn": "2026-09-14T11:55:47.892Z",
+  "cli": "0.59.0",
+  "node": "v24.19.0",
+  "platform": "win32",
+  "method": "installed CLI modules including ExtensionManager; authored Node/Git fixtures",
+  "cloudCalls": 0,
+  "notTested": [
+    "native extension terminal wrapper exits reliably (Windows libuv failure recorded separately)",
+    "model response quality and actual adherence",
+    "authenticated interactive session resume",
+    "macOS/Linux execution",
+    "upgrade to a different Gemini CLI version"
+  ],
+  "results": [
+    {
+      "step": "baseline-test",
+      "expectedExit": 1,
+      "output": "✔ normal (1.326ms)\n✔ upper (0.1045ms)\n✖ lower (1.0162ms)\nℹ tests 3\nℹ suites 0\nℹ pass 2\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 167.4271\n\n✖ failing tests:\n\ntest at test.mjs:6:1\n✖ lower (1.0162ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  -2 !== 0\n  \n      at TestContext.<anonymous> (file:///<temporary>/sample-repo/test.mjs:6:25)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1382:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)\n      at Test.postRun (node:internal/test_runner/test:1522:19)\n      at Test.run (node:internal/test_runner/test:1447:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: -2,\n    expected: 0,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n"
+    },
+    {
+      "step": "reference-fix-test",
+      "output": "✔ normal (1.1001ms)\n✔ upper (0.096ms)\n✔ lower (0.0878ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 164.7054\n"
+    },
+    {
+      "step": "scope",
+      "changed": [
+        "apps/web/limit.mjs",
+        "docs/editor-note.md"
+      ],
+      "userEditPreserved": true,
+      "implementation": "authored reference fix applied locally; not a model-generated change",
+      "resumeModelSessionTested": false
+    }
+  ]
+}

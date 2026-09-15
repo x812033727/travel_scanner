@@ -1,0 +1,590 @@
+{
+  "checked_on": "2026-09-14",
+  "reviewer": "codex-fulltext-fc2e",
+  "base_commit": "3cf8428bcfaa2ad15a193bbb77341d12ae74b302",
+  "checkpoint": 4,
+  "planned_ids": [
+    13,
+    46,
+    47,
+    20,
+    19,
+    21,
+    23,
+    48,
+    49,
+    24
+  ],
+  "scope": "Nine additional five-language full-text reads, eight new editorial passes and one changes-required; unchanged lesson 23 review reused. This file records checkpoint 4 only. No final acceptance.",
+  "hash_convention": "Canonical LF UTF-8 as recorded by the compiler; official hashes are raw fetched bytes.",
+  "lessons": [
+    {
+      "id": 13,
+      "slug": "codex-project-management",
+      "source_hashes": {
+        "zh-TW": "e13173805cec3a76e4ba693dcefad93eeff085e130c998a9cdcfb82becead95e",
+        "en": "e287a06b6604a8c373002ae4f76057cae467ec33200cc97c7f5291df1f420b9a",
+        "ja": "d96eef43ac87eb283ed778b43bbc5af63a7c1c2e3cbe2fce794d97d5312027c7",
+        "ko": "46ef48440aa04f86a71c9eb19f73fd828d683f2724bb5ba698a3a1731c635413",
+        "zh-CN": "5bfd7324545dbab459b7646d23e9af4fa239e963eb61384ee4ef26b46a1e17be"
+      },
+      "pack_hash": "fbad548318655b91c933da15c7741a8c106b17115cc87eeed40c747c1de8c334",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed both project markers, all three task names, revision changes, primary-folder scope and the managed-worktree archive exception.",
+        "Corrected Japanese and Korean duplicate task names to match the first task; clarified Japanese documentation-only platform verification."
+      ],
+      "original_code_metadata_sources_and_images_preserved": true,
+      "product_evidence": "pending; reference checks do not establish Codex operation"
+    },
+    {
+      "id": 46,
+      "slug": "codex-understand-codebase",
+      "source_hashes": {
+        "zh-TW": "32d5d5ddc7b5af9e24036eb3ac87e311f7b942a0fb5cf919c1d8591aff5543d5",
+        "en": "c107a89981065d087166de590085f8834f0a5cd9f9ae940467636efcbcca41b8",
+        "ja": "0dc3225aee30e11068629d32c593fc7daf4ddd9f1a2e8b51727be314cdc9a248",
+        "ko": "81671a12525357122930f46bedf1b56338568f7b209fead1df85024d12fadfae",
+        "zh-CN": "6bf48dd3f657081372997d72fe9c6640aa31415fb4d27c3f8a3141086dd6f823"
+      },
+      "pack_hash": "1cfff63718873b7044173c51152958bb5aba114a673ce078a9ac899b8f391b17",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Traced submit, addTask, persistence, render, filtering and storage failures against the five expected fixture files.",
+        "Added explicit desktop/CLI entry and an empty All tasks baseline; clarified Japanese/Korean platform commands and a Japanese document term."
+      ],
+      "original_code_metadata_sources_and_images_preserved": true,
+      "product_evidence": "pending; reference checks do not establish Codex operation"
+    },
+    {
+      "id": 47,
+      "slug": "codex-implement-feature",
+      "source_hashes": {
+        "zh-TW": "1e6daf186c7e74eafe6d134c721fd40437bc2e2954aa3c191dba432be47297a3",
+        "en": "c07ddac10e61d5a84d290c4c5ac07f40afaab74b1758aa160198808272b67dfc",
+        "ja": "02b5dc96eb89385b380ed75082783ec8e72900be4435287edfb477d755650753",
+        "ko": "3e7a9843aee8f3dd317a48bafdc90d9f5bfe02415f2a9d8a4729a1dbf46050ca",
+        "zh-CN": "23f7b8c5ddbea87efa1d9c6dfcd9d3810816d7291ae7b48da42a9acf9ab6f8b1"
+      },
+      "pack_hash": "b2e1e4d031620a5f1db6e19648bdc8c47345358b98b489b52d2d2f29a0a760e6",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed six-test acceptance, duplicate titles with distinct IDs, frozen inputs, three UI filters and the intentional deduplication fault.",
+        "Added explicit desktop/CLI entry and preserved-data/reset/All tasks baseline. Read all five screenshot captions and visually inspected the existing 390 and 1280 reference images; this is not final article-page acceptance."
+      ],
+      "original_code_metadata_sources_and_images_preserved": true,
+      "product_evidence": "pending; reference checks do not establish Codex operation"
+    },
+    {
+      "id": 20,
+      "slug": "codex-debugging",
+      "source_hashes": {
+        "zh-TW": "4a41e0b03355071fdb770ce29c323515e5227fa79c52b2e2d09a7a7d7858858d",
+        "en": "db732960e36114bce3b7a9dfcf9812422fd1c93faa113fe9000dd989ec01b01b",
+        "ja": "7c82cc2e7ed565b410de09b597dee38c557c0e25944b3e88b6684d253f03e4c5",
+        "ko": "5a3946dae08c57b5a37c0cb72b05801ca9c4aee481d5895c5e389d8757eb60c1",
+        "zh-CN": "c3f03ea25a9a1ffeae9ef9de37d51affb77b8e1b9a0923ed56700bbaea0576cc"
+      },
+      "pack_hash": "506154cfc1f5da86f326e0508654b97a2eddc189756f47b5d98304002f66d7bb",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "changes-required",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "changes-required"
+        }
+      },
+      "findings": [
+        "Read all five bodies, code labels, metadata and captions. The broken predicate, minimal reproduction, independent regression script and reference fix remain unchanged.",
+        "Required startup, platform and empty-list wording edits were denied before execution by automatic approval review with only blocked by policy. They have not been retried.",
+        "Additional metadata finding: zh-TW description contains simplified character 从 in 好的除錯从."
+      ],
+      "original_code_metadata_sources_and_images_preserved": true,
+      "product_evidence": "pending; reference checks do not establish Codex operation"
+    },
+    {
+      "id": 19,
+      "slug": "codex-git-basics",
+      "source_hashes": {
+        "zh-TW": "bcba423d50c830e6c8c607b6f7631bf614a2225ffd28a4941308feaf677072b2",
+        "en": "9c3f52d3f0cd9ed8787c00241d8e735ec14982f52986f8595cb87369206801f9",
+        "ja": "426bc4d858d35754aeb10f679f80742506f6d1f7864dcc5183a406944ec43ad0",
+        "ko": "ac88969d306cbf06377937a67b8f591a866568daede360001e05d155c8858100",
+        "zh-CN": "6ea15cd717f1ee2f5b68e4e7b8414e98e6965227d79d9259472d1fa5052b88e7"
+      },
+      "pack_hash": "3ed28b498e275929a284f8ba98007b3d3ae6c3c636d5835beb9e677ea47c52d4",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed HEAD/index/worktree distinctions, MM status, both restore orders, CSS preservation, scoped commit and history-preserving revert against Git documentation.",
+        "Clarified platform path commands and the exact Japanese/Korean starting heading and branch. Thirteen fresh isolated Git/reference checks passed, including lesson 21."
+      ],
+      "original_code_metadata_sources_and_images_preserved": true,
+      "product_evidence": "pending; reference checks do not establish Codex operation"
+    },
+    {
+      "id": 21,
+      "slug": "codex-testing-review",
+      "source_hashes": {
+        "zh-TW": "9ad4da321dc758273e5355b112e7201afc574283f023237ae8a50d6261e2449a",
+        "en": "caec74c043fce190a17f716d846f5a5535ee4f49feb00ffe00bb5e66c6d9a7c4",
+        "ja": "8a5f5064a3db7eac0216fc26138581d7251eb9c909e49050a8d5fe72723113c9",
+        "ko": "a5c41a9aa33bc3b5a82546a1aab874597cfe998436f9592bf96dce478f925cbf",
+        "zh-CN": "98ad05361aeb9d69e3b7044c4021fc4fc64d6ef12bbb8377a6ab3a4d73011ae9"
+      },
+      "pack_hash": "d41f169f80f102d1ffbff56e5c5d658505e637ce297024234e6217b10a37a386",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed intentional reverse mutation missed by the original tests, two added regression cases, uncommitted review scope and final test-only branch diff.",
+        "Added explicit CLI startup before /review and corrected a Japanese placeholder term. Fresh Git reference checks confirmed final five tests, clean unchanged HEAD and scoped restoration. No model review or GitHub operation performed."
+      ],
+      "original_code_metadata_sources_and_images_preserved": true,
+      "product_evidence": "pending; reference checks do not establish Codex operation"
+    },
+    {
+      "id": 23,
+      "slug": "codex-skills",
+      "source_hashes": {
+        "zh-TW": "dc29a31fd13f032c4d99ff93225bd8e20667c2f1145adb56a259e44cbcc49df0",
+        "en": "93505bf0fb0297d6cecfd987c5589bf7305ca30acf94783b5a59801c38bfa25e",
+        "ja": "3707db8e555900334790569161a2c0ba8f98bbdb1f1ba644ca340468f1b745af",
+        "ko": "44b37219d1f34cd1753f14f500a3fc18a77e61f5e1029e718f7df53712e511b3",
+        "zh-CN": "1419ef21fef94aa83e04917ff517a6c410bee06c560fce41eea7e388786cbd7a"
+      },
+      "pack_hash": "17cf588865823ab05eefb017b20dcebb4ee546b5e6f66ecec39b39cd54ce9ed3",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "review_reused_from": "full-text-representatives.json",
+      "editorial_result": "passed",
+      "counted_again_as_new_read": false
+    },
+    {
+      "id": 48,
+      "slug": "codex-skill-resources",
+      "source_hashes": {
+        "zh-TW": "dab5bcf6c91bdc30778609651d2993a0a588c4b761feb18cb040c4e0bbec97f1",
+        "en": "2d4b17e9a414e6c85ddf5d5c5be68e89d65b16c8148bda0caffb588bf2199b62",
+        "ja": "91cb0dac392ed3bd5a5632b2e655ced95eb73f1d368e7865f4800dec2e332bcf",
+        "ko": "5ad227c26ece494e07fb091a87f4ee8c729193b66b0df8c6d71204288cbb824b",
+        "zh-CN": "0d85abc8ebd2a5b490eb2ad949dad9924fd69a6708cfabde9c7a9e215ffdde7c"
+      },
+      "pack_hash": "93911d7a4676037bafa2881d6ce6b3b61222ac8d2c1702e44edb45b44124b715",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed all resource files, contract validation, relative-link versus command-cwd behavior, second input and missing-resource failure.",
+        "Require a fresh task after hiding the contract and another fresh task after restoration, preventing old conversation content from obscuring the missing file. Ten fresh skill reference checks passed across the existing reference harness; no skill installed or invoked."
+      ],
+      "original_code_metadata_sources_and_images_preserved": true,
+      "product_evidence": "pending; reference checks do not establish Codex operation",
+      "advisory_disposition": {
+        "code": "text_length",
+        "locale": "en",
+        "characters": 6127,
+        "result": "retained-with-editorial-rationale",
+        "rationale": "Retain the complete resources, both path baselines, two independent inputs and fresh-task missing-resource/recovery instructions.",
+        "threshold_changed": false
+      }
+    },
+    {
+      "id": 49,
+      "slug": "codex-skill-testing",
+      "source_hashes": {
+        "zh-TW": "171a720736345cce84e6d93737a0c0a9e09c74cacb733ea3c5e88518373d4771",
+        "en": "2610472fda4ca65611bdc2c733d1057c27003ea7357cb4fcdfae7dba83b3ed5a",
+        "ja": "1b77453600ddb848162672f5e353ad48e1661f96a71289ec7072c2fc496919a1",
+        "ko": "9265ee9ffe00350319b2966e97765eda703df241c9593d8742605ac832b5a24a",
+        "zh-CN": "a58d5424ddcdabcb3400959120b0aab962f830e1964e226da9503deacaf838b8"
+      },
+      "pack_hash": "6ac7e0b7df00bbc661ed2da888c6edc5f0247477a185434603e8da388d5f7ad7",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed all eight exact tests, expected program failures versus suite failures, deliberate title deduplication, fresh-task behavior matrix and explicit-only policy.",
+        "Verified current official allow_implicit_invocation documentation. Policy parsing or Node tests are not model invocation evidence."
+      ],
+      "original_code_metadata_sources_and_images_preserved": true,
+      "product_evidence": "pending; reference checks do not establish Codex operation"
+    },
+    {
+      "id": 24,
+      "slug": "codex-plugins",
+      "source_hashes": {
+        "zh-TW": "14b5f2e3779fdda493e42dcc76a2f1f7867a9aaed9e6c70a115a5d9f82060842",
+        "en": "b4889d1f71e42e75653e165e5e5be585fbd657df7efe0556db03bf88038102a3",
+        "ja": "68186ebdd0896b68e1e8fa8480b64418c2eb742858e49f41741a9001964de5f7",
+        "ko": "eadb14b36c1e405e567a9f9b00235a336d330522bd76347b0b902cd812fac573",
+        "zh-CN": "481a44acab171687df5dc05e071bd651f6c61d1d8afe08f1d6614eca30f26e94"
+      },
+      "pack_hash": "e3849be8091a77d360b082d349ecac20a517f31ab2fbc8c4fa9e4a1b9cb65824",
+      "accepted": false,
+      "final_page_acceptance": "pending",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reviewed supported surfaces, account-dependent availability, installed/connected/tool states, private fictional document, changing revision and undisclosed marker, and separate disconnect behavior.",
+        "Clarified English external-service account wording and corrected a Japanese package term. Verified the full official plugins document; no external account was connected or read."
+      ],
+      "original_code_metadata_sources_and_images_preserved": true,
+      "product_evidence": "pending; reference checks do not establish Codex operation"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://learn.chatgpt.com/docs/projects.md",
+      "sha256": "6e5b927e6edde8117acb797422ebf92a6e450b6f4b2da84946aa177d5a8f5588",
+      "read_scope": "Full document: local project folders, task organization, archive and restoration."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/environments/git-worktrees.md",
+      "sha256": "d163fcbf82ca40859a5d317060f302cb4c45c57e12aba8a2bce75d85de4b5c6c",
+      "read_scope": "Managed/permanent worktree and cleanup sections only."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/build-skills.md",
+      "sha256": "d15791562748e64a53dfec534b8558aa522e732cec0fdedcf7257fa4ef486a20",
+      "read_scope": "Full document: resource layout, discovery, invocation and explicit-only policy."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/plugins.md",
+      "sha256": "edfc5dfe4e2fbd6b0d00ab30bda96241f6ca81f9a96141c2a340ec46e962446a",
+      "read_scope": "Full document: surfaces, directory, connection, CLI toggling and uninstall."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/code-review.md",
+      "sha256": "337da0338ae2ad13216339600ab9d90f404a1f1d7d21abcb49ef30dde5aa61c4",
+      "read_scope": "Full document: app/CLI scopes, staged and unstaged states, review delivery."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/developer-commands.md",
+      "sha256": "118db8171f800613d254710d76f5765bb520c7de8c1d18e8e02a72c1e406abf3",
+      "read_scope": "Actual /review command sections."
+    }
+  ],
+  "other_primary_sources_read": [
+    {
+      "url": "https://git-scm.com/install/",
+      "read_scope": "Platform installation entry page."
+    },
+    {
+      "url": "https://git-scm.com/docs/git-init",
+      "read_scope": "Initialization and initial branch."
+    },
+    {
+      "url": "https://git-scm.com/docs/git-init/2.28.0",
+      "read_scope": "Initial branch option in 2.28."
+    },
+    {
+      "url": "https://git-scm.com/docs/git-status",
+      "read_scope": "Short-format X/Y and MM states."
+    },
+    {
+      "url": "https://git-scm.com/docs/git-restore",
+      "read_scope": "Index and worktree restoration sources."
+    },
+    {
+      "url": "https://git-scm.com/docs/git-revert",
+      "read_scope": "Clean state, new commits, no-edit and abort."
+    },
+    {
+      "url": "https://git-scm.com/docs/git-diff",
+      "read_scope": "Unstaged, cached and three-dot comparison."
+    },
+    {
+      "url": "https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request",
+      "read_scope": "Base, compare, files, title and creation workflow."
+    }
+  ],
+  "sources_read_earlier_in_active_task": [
+    "https://learn.chatgpt.com/docs/prompting",
+    "https://learn.chatgpt.com/guides/best-practices"
+  ],
+  "checks": {
+    "series": "60 lessons / 300 documents passed",
+    "compiler_tests": "9 passed",
+    "api_tests": "9 passed",
+    "api_catalogues": "5 match",
+    "task_files": "412 validated; existing unrelated warnings retained",
+    "code_contracts": "74 shared code blocks unchanged in five locales against base commit",
+    "content_audit": "0 errors, 22 warnings; one new lesson 48 English length advisory explained above",
+    "git_reference": "13 checks passed; see git-practice.json for environment and limitations",
+    "skill_reference": "10 checks passed; see skill-practice.json for environment and limitations",
+    "diff_check": "passed"
+  },
+  "totals": {
+    "new_full_text_reads": 9,
+    "new_editorial_passes": 8,
+    "reused_editorial_passes": 1,
+    "changes_required": [
+      20
+    ],
+    "accepted": 0
+  },
+  "release": {
+    "pr_opened": false,
+    "merged": false,
+    "imported": false,
+    "published": false,
+    "deployed": false
+  },
+  "next_checkpoint": [
+    50,
+    51,
+    25,
+    52,
+    27,
+    28,
+    53,
+    54,
+    26,
+    29
+  ]
+}

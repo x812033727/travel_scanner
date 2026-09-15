@@ -1,0 +1,328 @@
+{
+  "slug": "ai-search-terms-index",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "GEO、AEO、AIO 與 SEO 名詞總索引：10 篇看懂差在哪",
+      "description": "SEO、GEO、AEO、AIO 常被混著用，但它們想換到的東西不同，定義的共識程度也不同。這份索引用一張比較表把四個縮寫分開，連到十篇專文，並逐條列出目前沒有共識的五個地方，包括 GEO 與 AEO 是不是同一件事，以及 llms.txt 有沒有引擎真的在讀。",
+      "hero": {
+        "src": "/guides/ai-search-terms-index/hero.jpg",
+        "alt": "四個縮寫並排指向不同的終點，象徵它們問的不是同一個問題",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "SEO、GEO、AEO、AIO 常常出現在同一篇文章裡，好像是同一件事的四種說法。它們不是。這四個縮寫想換到的東西不一樣，定義的共識程度也不一樣：有的寫在搜尋引擎自己的文件裡幾十年，有的出自一篇2023 年的論文，有的根本是三個不相干的東西共用一個縮寫。這份索引先用一張表把它們分開，再連到十篇專文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "查證截止日是2026 年 9 月 14 日，面向的是台灣的一般網站經營者與內容工作者。收錄範圍是這次查證過、而且找得到一手來源的名詞。這個領域的用語還在增加，所以這是一份有日期與範圍的導讀，不是一本宣稱收齊了的字典。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個系列和市面上多數同題材文章的差別，在於每一句主張都標明它是哪一級：搜尋引擎自己的文件說明的機制、業界普遍做法但官方沒有說明、還是廠商或代理商的行銷主張。第三級一律寫出是誰說的。這個題目的中文搜尋結果幾乎全是行銷內容，彼此定義互相矛盾，分不清級別就無從判斷一份提案值不值得照做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本系列沒有做過任何成效實測，因此不承諾排名、索引、被引用或流量的結果。看到任何一篇文章給你百分比，先問那個數字是在什麼設定下量到的。"
+        },
+        {
+          "type": "heading",
+          "text": "先看這張表：四個縮寫各自在講什麼",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "比較項目",
+            "SEO",
+            "GEO",
+            "AEO",
+            "AIO"
+          ],
+          "rows": [
+            [
+              "中文常見譯法",
+              "搜尋引擎最佳化",
+              "生成引擎最佳化",
+              "答案引擎最佳化",
+              "沒有穩定譯法"
+            ],
+            [
+              "想換到什麼",
+              "在搜尋結果裡被找到",
+              "被生成的答案引用",
+              "成為那一個答案",
+              "要看對方指的是哪一個"
+            ],
+            [
+              "這個詞從哪裡來",
+              "業界長期用語",
+              "2023 年的一篇論文",
+              "業界用語，早於生成式 AI",
+              "縮寫碰撞，三個所指同時在用"
+            ],
+            [
+              "有沒有共同定義",
+              "有，官方文件寫得很細",
+              "論文有；業界沿用名字沒沿用指標",
+              "沒有，混用與區分兩派並存",
+              "沒有，得先問對方指哪一個"
+            ],
+            [
+              "Google 官方文件",
+              "整套機制都有文件",
+              "文件裡有提到這個詞",
+              "文件裡有提到這個詞",
+              "查證的文件裡沒有這個縮寫"
+            ],
+            [
+              "從外面量得到嗎",
+              "可以，有官方報表",
+              "部分：回答附來源時看得到",
+              "部分：曝光與點擊是兩個數字",
+              "看它指的是哪一個"
+            ]
+          ],
+          "caption": "依2026 年 9 月 14 日查證的官方文件與原始論文整理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這張表最該記住的一列是「有沒有共同定義」。SEO 之外的三個縮寫都處在定義還沒收斂的階段，所以同一個詞在兩份提案裡可能指兩件不同的事。遇到爭論時，先確認雙方用的是不是同一個定義，往往比爭論誰對誰錯有用。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-search-terms-index/diagram-1.svg",
+          "alt": "四個縮寫並排，各自標出想換到什麼、定義有沒有共識、從外面量不量得到",
+          "width": 1600,
+          "height": 900,
+          "caption": "四個縮寫問的是四個不同的問題；共識程度由左到右遞減。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "從你想解決的問題開始",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不必按順序讀完十篇。先找到你現在遇到的情況，從那一篇進去，再沿文章裡的連結補齊相鄰的概念。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "有人提案要幫你做「GEO」或「AI 最佳化」，你想判斷值不值得做：先讀 GEO 與 AIO 這兩篇，它們教你怎麼問對方用的是哪一個定義。",
+            "想知道 AI 時代還要不要做傳統那一套：先讀 SEO，它把可被抓取、已被索引、出現在結果裡拆成不同的狀態。",
+            "看到「加了結構化資料就會被 AI 引用」這類說法：讀結構化資料那篇，它的重點是資格不等於排名。",
+            "被要求「提升 E-E-A-T」：讀 E-E-A-T 那篇，先確認它到底是不是一個可以設定的東西。",
+            "有人建議你放 llms.txt 或調整 robots.txt：讀 llms.txt 那篇，它把三類爬蟲分開。",
+            "想知道自己的網站有沒有被 AI 引用：讀量測那篇，它先講哪些東西從外面根本測不到。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "四個縮寫本身",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這四篇是系列的骨幹。SEO 那篇建立後面共用的詞彙，另外三篇各自處理一個定義還沒收斂的縮寫。"
+        },
+        {
+          "type": "link",
+          "text": "SEO 是什麼：搜尋引擎最佳化在 AI 時代沒有改變的那一半",
+          "url": "https://mokaair.com/zh-TW/life/ai-search-seo"
+        },
+        {
+          "type": "link",
+          "text": "GEO（生成引擎最佳化）是什麼：論文定義與行銷業用法的落差",
+          "url": "https://mokaair.com/zh-TW/life/ai-search-geo"
+        },
+        {
+          "type": "link",
+          "text": "AEO（答案引擎最佳化）是什麼：生成式 AI 之前就存在的做法",
+          "url": "https://mokaair.com/zh-TW/life/ai-search-aeo"
+        },
+        {
+          "type": "link",
+          "text": "AIO 是什麼：同一個縮寫的三種用法，以及怎麼分辨",
+          "url": "https://mokaair.com/zh-TW/life/ai-search-aio"
+        },
+        {
+          "type": "heading",
+          "text": "旁邊那兩個常被混進來的詞",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LLMO 是這組裡最投機的一個，而且和 LLMOps 只是縮寫像。E-E-A-T 則是被大量引用、但幾乎總是被誤解成排名訊號的一份文件用語。"
+        },
+        {
+          "type": "link",
+          "text": "LLMO 是什麼：和 LLMOps 差在哪，哪些說法無法驗證",
+          "url": "https://mokaair.com/zh-TW/life/ai-search-llmo"
+        },
+        {
+          "type": "link",
+          "text": "E-E-A-T 是什麼：品質評分指南裡的概念，不是可以設定的排名訊號",
+          "url": "https://mokaair.com/zh-TW/life/ai-search-eeat"
+        },
+        {
+          "type": "heading",
+          "text": "你真正能動的兩個檔案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "前面談的都是名詞。實際上你能動手改的東西不多：頁面上的標記，以及告訴爬蟲該怎麼做的那兩個檔案。這兩篇講它們能換到什麼、換不到什麼。"
+        },
+        {
+          "type": "link",
+          "text": "結構化資料與 Schema.org：能換到什麼、換不到什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-search-structured-data"
+        },
+        {
+          "type": "link",
+          "text": "llms.txt 是什麼：一份社群提案，以及 robots.txt 真正能做的事",
+          "url": "https://mokaair.com/zh-TW/life/ai-search-llms-txt"
+        },
+        {
+          "type": "heading",
+          "text": "機制與量測",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最後兩篇處理「生成式答案是怎麼組出來的」以及「你能不能量到自己被引用」。兩篇都只描述官方文件寫過的部分，文件沒寫的地方就寫明沒寫。"
+        },
+        {
+          "type": "link",
+          "text": "AI 摘要與 AI 模式：生成式答案怎麼組出來，站長能控制什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-search-generated-answers"
+        },
+        {
+          "type": "link",
+          "text": "怎麼量 AI 引用：測得到的、測不到的，與不能相信的分數",
+          "url": "https://mokaair.com/zh-TW/life/ai-search-measuring-citations"
+        },
+        {
+          "type": "heading",
+          "text": "定義分歧在哪：五個沒有共識的地方",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下五點，本系列都不替任何一方裁決，只寫出誰這樣主張、以及各自的依據到哪裡為止。你在別處看到有人斬釘截鐵地回答其中任何一題，那通常表示他只讀了一邊。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "GEO 是 SEO 的上位、子集，還是改名？三種說法都在流通。提出這個詞的論文把它框成針對生成引擎評估的內容端技巧，不是取代 SEO；Google 的文件則說為生成式 AI 做最佳化仍然是 SEO。",
+            "GEO 與 AEO 是不是同一件事？有人混用；也有人主張 AEO 指擷取式答案、GEO 指生成式答案。兩種用法現在都在流通。",
+            "AIO 指的是 Google 的 AI Overviews 功能、一門叫 AI Optimization 的服務，還是舊文案裡的 All-in-One？三個所指同時在用，而本次查證的 Google 官方文件裡沒有出現這個縮寫。",
+            "LLMO 的範圍只含檢索當下，還是也包含想辦法讓內容進入訓練資料？後者流傳很廣，但從網站外面無法驗證。",
+            "llms.txt 到底有沒有作用？支持者說是新興標準；本次查證沒有找到任何主流引擎公布過消費它的證據。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "名詞幫你分辨主張，不能替成果背書",
+          "text": "知道一份提案用的是哪一個定義，能幫你判斷它在講什麼；但它做不做得到、有沒有效，仍然要看可以核對的證據。任何一個縮寫本身都不構成成效的保證，本系列也沒有量測過搜尋引擎實際的收錄或引用結果。"
+        },
+        {
+          "type": "heading",
+          "text": "延伸閱讀",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "站上另有三篇從讀者與站長操作角度寫的文章，以及一份涵蓋範圍更廣的 AI 名詞總索引。本系列講名詞與機制，操作步驟在那三篇裡。"
+        },
+        {
+          "type": "link",
+          "text": "AI 名詞總索引：81 個概念",
+          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+        },
+        {
+          "type": "link",
+          "text": "網站經營者看 AI 摘要：引用與成效",
+          "url": "https://mokaair.com/zh-TW/life/google-ai-overviews-for-site-owners"
+        },
+        {
+          "type": "link",
+          "text": "Google 搜尋 AI 模式：追問與來源判讀",
+          "url": "https://mokaair.com/zh-TW/life/google-ai-mode-search"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 搜尋 vs Google：六類問題什麼時候該用哪一個",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-search-vs-google"
+        }
+      ],
+      "sources": [
+        {
+          "title": "GEO: Generative Engine Optimization（原始論文 arXiv 摘要頁）",
+          "url": "https://arxiv.org/abs/2311.09735",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Optimizing your website for generative AI features on Google Search（Google 官方指南，定義了 AEO 與 GEO）",
+          "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AI features and your website（Google Search Central 官方文件）",
+          "url": "https://developers.google.com/search/docs/appearance/ai-features",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "General Guidelines（Google 搜尋品質評分指南原文 PDF）",
+          "url": "https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "llms.txt 提案原文（提案本身的網站）",
+          "url": "https://llmstxt.org/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：Google 常見爬蟲（各 user-agent 的用途與界線）",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：說明文件更新紀錄",
+          "url": "https://developers.google.com/search/updates",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋說明中心：AI 模式（官方產品說明）",
+          "url": "https://support.google.com/websearch/answer/16011537",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

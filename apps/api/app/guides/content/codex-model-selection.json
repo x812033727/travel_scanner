@@ -1,0 +1,1527 @@
+{
+  "slug": "codex-model-selection",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 117,
+  "locales": {
+    "zh-TW": {
+      "title": "模型、推理深度與速度",
+      "description": "模型決定可用能力與成本條件，推理深度影響代理願意花多少工作來處理問題。先用同一個小任務比較品質，再決定是否提高深度；模型名稱與額度會變，因此只以帳號當下顯示的選項為準。",
+      "hero": {
+        "src": "/guides/codex-model-selection/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "找到帳號真正可用的模型與推理選項，做一個只改單一設定的比較，依結果選擇日常預設。閱讀約 12 分鐘，操作約 20 分鐘。使用已登入的桌面版或 CLI；比較會產生實際用量，只需兩次小型唯讀任務，不需要購買新方案。缺少某個選項時記錄不可用即可。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先了解"
+            },
+            {
+              "type": "article",
+              "text": "帳號與額度",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "。模型是處理任務的選擇，推理深度是該模型投入分析的程度，速度或服務層級是另一個控制；它們不能全部用「比較聰明」代替。平台、登入方式及推出階段可能讓選單不同，文章不要求每個人看到同一組名稱，也不把官網展示範例當成你的帳號權限。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：記錄現在的選擇"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版查看輸入框下方的模型與推理控制；若顯示 Power 滑桿，先記下目前位置，需要指定細項時再看 Advanced。CLI 在互動介面輸入 /model，查看模型及該模型允許的推理等級，再用 /status 確認狀態。這些是互動斜線指令，不是終端機命令。不要為了配合文章去改不認識的全域設定。"
+        },
+        {
+          "type": "code",
+          "label": "互動斜線指令：在 Codex CLI 內輸入",
+          "language": "text",
+          "code": "/model\n"
+        },
+        {
+          "type": "code",
+          "label": "互動斜線指令：在 Codex CLI 內輸入",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在文字編輯器新建 comparison.md，先記日期、平台版本、登入類型及選單可見項目。不要貼電子郵件、API 金鑰或付款資料。若 CLI 與桌面可見選項不一樣，分開記錄兩個環境；不要推論其中一個壞掉。Codex 雲端任務的模型限制也不同，本篇的本機切換步驟不能直接套到"
+            },
+            {
+              "type": "article",
+              "text": "雲端任務",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：建立可判分的固定題目"
+        },
+        {
+          "type": "paragraph",
+          "text": "用編輯器建立獨立資料夾 codex-model-lab，新增 sample.mjs 並貼入以下內容。Windows、macOS、Linux 都是一般文字檔，不需要執行或安裝套件。程式中的錯誤刻意保留，這次要比較的是能否準確指出錯誤及提出驗證例，不是讓兩個任務同時修改同一個檔案。"
+        },
+        {
+          "type": "code",
+          "label": "檔案內容：存入 sample.mjs",
+          "language": "javascript",
+          "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "正確答案先由人確認：函式名稱與需求是「已完成標題」，所以 sample 應回傳 Read，但目前會回傳 Build。要移除的是 !，不是改變任務狀態、重命名欄位或排序。空陣列應回傳空陣列；原始資料不應被更改。有明確答案，才不會只挑語氣最有自信、篇幅最長的回答。"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
+          "language": "text",
+          "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：只改一個選項再比較"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版先把 codex-model-lab 加入為專案，兩次都在這個專案建立新任務。CLI 用編輯器開此資料夾與整合終端機；Windows PowerShell 以 Get-Location、macOS／Linux 以 pwd 核對路徑，再執行 codex。第一輪完成後用 /exit 回到系統終端機，從同一路徑重新執行 codex 開第二輪，不使用 resume。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次使用目前預設設定，在新任務送出上面完整提示詞，記錄開始到完成的時間、是否讀了正確檔案及回答。第二次建立另一個新任務，使用相同檔案與完整提示詞，只調整同一模型的推理等級；其餘模型、速度、權限與工具保持相同。如果沒有另一個推理選項，就記錄本次只能建立基準，不硬寫出比較結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要接著同一個對話問第二遍，因為第二次已經看過前一個答案，不再是同樣起點。也不要同時換模型與推理等級，否則不知道差異來自哪裡。用量介面如果只有帳號共用的剩餘百分比，且其他任務正在工作，就不能把前後差額全算在本題。看不到單次數據時，填「不可取得」。"
+        },
+        {
+          "type": "code",
+          "label": "比較表範本：存為 comparison.md，填實際結果",
+          "language": "markdown",
+          "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "比較項目",
+            "合格證據",
+            "不能替代它的東西"
+          ],
+          "rows": [
+            [
+              "正確性",
+              "Build 與 Read 的差異及正確修正",
+              "回答很長或很有自信"
+            ],
+            [
+              "範圍",
+              "sample.mjs 沒有修改",
+              "只說自己沒有改"
+            ],
+            [
+              "速度",
+              "同樣起點的實際耗時",
+              "不同任務的體感"
+            ],
+            [
+              "用量",
+              "可取得的單次紀錄",
+              "有其他任務運行的帳號差額"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "若兩次都答錯，先確認它們是否讀到 sample.mjs、需求是否真的指定 completed，而不是立刻挑較貴或較慢的選項。缺少檔案、工作目錄錯誤及限制互相矛盾，都會讓比較失去意義；修正這些條件後，再以新任務重新建立相同起點。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先判斷結果能不能比較"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個虛構判讀例：甲花 20 秒且完整答對，乙花 8 秒卻說應回傳 Build；這題只能說乙較快但不合格，不能選它為本需求的較佳設定。另一組甲乙都答對，但乙用過上一輪的答案或檔案已被改好，起點不同，應標「比較無效」並以原樣新任務重做。這些時間只是例題，不是任何模型的實測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要比較推理深度時，先用 Advanced 或 CLI /model 確認真正模型與深度。只移動 Power 滑桿可能同時改變模型，不能只記「第幾格」就聲稱只改一個變因；若無法保持其餘設定相同，記成不同組合的試用，保留限制，不計算推理深度單獨帶來的差異。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "如何把結果用在日常工作"
+        },
+        {
+          "type": "paragraph",
+          "text": "每個答案先看正確性、是否遵守範圍、是否清楚說明未執行的測試，全部合格後才比較速度與用量。這種一行故障兩種設定都答對，通常已足以為這類小任務選出可用設定；不能據此宣稱某模型在所有大型專案都最好。服務負載與回覆隨機性也會影響一次測量，需要時另日重做，不為了漂亮數字反覆消耗。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "規格清楚的小修改可先從帳號預設開始；遇到多檔案相依、難以重現的錯誤或需要權衡時，再提高推理並重新驗證。更高深度可能花更久、用更多 token，仍可能錯。Max 與 Ultra 不是每個任務的必選項；Ultra 涉及"
+            },
+            {
+              "type": "article",
+              "text": "子代理分工",
+              "kind": "life",
+              "slug": "codex-subagents"
+            },
+            {
+              "type": "text",
+              "text": "，本篇的單題比較不需要開啟它。具體選項以你的選單和官方模型頁為準。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題、恢復與驗收"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型找不到時，先確認登入方式、版本與帳號可見清單，不把網路文章中的舊 ID 直接寫入 config.toml。設定無效時回到"
+            },
+            {
+              "type": "article",
+              "text": "設定排錯",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "，移除本次新增的覆寫值並還原原先選擇。切換後狀態不符，先停止比較並確認是否被既有啟動參數或專案設定影響，不拿錯誤設定的結果當實驗。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「速度變慢」也可能是它在等待工具、網路或權限；查看正在做的步驟，不立刻增加深度或重送同一工作。額度不足就保存比較表與未完成狀態，依"
+            },
+            {
+              "type": "article",
+              "text": "帳號篇",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "查自己的重設資訊。這裡不硬寫價格、剩餘次數或通用可用模型表，避免多篇文章彼此矛盾。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "完成條件是能指出實際選擇、用同一題目判斷兩次結果、說明比較的限制，並把模型與推理控制恢復到練習前的值。sample.mjs 應完全沒變；若任務改了它，保留差異後用上面的完整內容還原，再把該次標記為未遵守範圍。圖中 1 是記錄，2 是控制變因比較，3 是按證據選擇。本文不提供虛構的模型速度實測排名。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-model-selection/diagram-1.svg",
+          "alt": "17. 模型、推理深度與速度 — 實作順序示意圖，非產品介面截圖。 Task → Model / effort → Evaluation",
+          "width": 1600,
+          "height": 900,
+          "caption": "17. 模型、推理深度與速度 — 實作順序示意圖，非產品介面截圖。 Task → Model / effort → Evaluation",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Models and reasoning controls",
+          "url": "https://learn.chatgpt.com/docs/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI model and status commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "模型、推理深度与速度",
+      "description": "模型决定可用能力与成本条件，推理深度影响代理愿意花多少工作来处理问题。先用同一个小任务比较品质，再决定是否提高深度；模型名称与额度会变，因此只以帐号当下显示的选项为准。",
+      "hero": {
+        "src": "/guides/codex-model-selection/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "找到帐号真正可用的模型与推理选项，做一个只改单一设定的比较，依结果选择日常预设。阅读约 12 分钟，操作约 20 分钟。使用已登入的桌面版或 CLI；比较会产生实际用量，只需两次小型唯读任务，不需要购买新方案。缺少某个选项时记录不可用即可。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先了解"
+            },
+            {
+              "type": "article",
+              "text": "帐号与额度",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "。模型是处理任务的选择，推理深度是该模型投入分析的程度，速度或服务层级是另一个控制；它们不能全部用「比较聪明」代替。平台、登入方式及推出阶段可能让选单不同，文章不要求每个人看到同一组名称，也不把官网展示范例当成你的帐号权限。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：记录现在的选择"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版查看输入框下方的模型与推理控制；若显示 Power 滑杆，先记下目前位置，需要指定细项时再看 Advanced。CLI 在互动介面输入 /model，查看模型及该模型允许的推理等级，再用 /status 确认状态。这些是互动斜线指令，不是终端机命令。不要为了配合文章去改不认识的全域设定。"
+        },
+        {
+          "type": "code",
+          "label": "互动斜线指令：在 Codex CLI 内输入",
+          "language": "text",
+          "code": "/model\n"
+        },
+        {
+          "type": "code",
+          "label": "互动斜线指令：在 Codex CLI 内输入",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在文字编辑器新建 comparison.md，先记日期、平台版本、登入类型及选单可见项目。不要贴电子邮件、API 金钥或付款资料。若 CLI 与桌面可见选项不一样，分开记录两个环境；不要推论其中一个坏掉。Codex 云端任务的模型限制也不同，本篇的本机切换步骤不能直接套到"
+            },
+            {
+              "type": "article",
+              "text": "云端任务",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：建立可判分的固定题目"
+        },
+        {
+          "type": "paragraph",
+          "text": "用编辑器建立独立资料夹 codex-model-lab，新增 sample.mjs 并贴入以下内容。Windows、macOS、Linux 都是一般文字档，不需要执行或安装套件。程式中的错误刻意保留，这次要比较的是能否准确指出错误及提出验证例，不是让两个任务同时修改同一个档案。"
+        },
+        {
+          "type": "code",
+          "label": "档案内容：存入 sample.mjs",
+          "language": "javascript",
+          "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "正确答案先由人确认：函式名称与需求是「已完成标题」，所以 sample 应回传 Read，但目前会回传 Build。要移除的是 !，不是改变任务状态、重命名栏位或排序。空阵列应回传空阵列；原始资料不应被更改。有明确答案，才不会只挑语气最有自信、篇幅最长的回答。"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
+          "language": "text",
+          "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：只改一个选项再比较"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版先把 codex-model-lab 加入为专案，两次都在这个专案建立新任务。CLI 用编辑器开此资料夹与整合终端机；Windows PowerShell 以 Get-Location、macOS／Linux 以 pwd 核对路径，再执行 codex。第一轮完成后用 /exit 回到系统终端机，从同一路径重新执行 codex 开第二轮，不使用 resume。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次使用目前预设设定，在新任务送出上面完整提示词，记录开始到完成的时间、是否读了正确档案及回答。第二次建立另一个新任务，使用相同档案与完整提示词，只调整同一模型的推理等级；其余模型、速度、权限与工具保持相同。如果没有另一个推理选项，就记录本次只能建立基准，不硬写出比较结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要接著同一个对话问第二遍，因为第二次已经看过前一个答案，不再是同样起点。也不要同时换模型与推理等级，否则不知道差异来自哪里。用量介面如果只有帐号共用的剩余百分比，且其他任务正在工作，就不能把前后差额全算在本题。看不到单次数据时，填「不可取得」。"
+        },
+        {
+          "type": "code",
+          "label": "比较表范本：存为 comparison.md，填实际结果",
+          "language": "markdown",
+          "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "比较项目",
+            "合格证据",
+            "不能替代它的东西"
+          ],
+          "rows": [
+            [
+              "正确性",
+              "Build 与 Read 的差异及正确修正",
+              "回答很长或很有自信"
+            ],
+            [
+              "范围",
+              "sample.mjs 没有修改",
+              "只说自己没有改"
+            ],
+            [
+              "速度",
+              "同样起点的实际耗时",
+              "不同任务的体感"
+            ],
+            [
+              "用量",
+              "可取得的单次纪录",
+              "有其他任务运行的帐号差额"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "若两次都答错，先确认它们是否读到 sample.mjs、需求是否真的指定 completed，而不是立刻挑较贵或较慢的选项。缺少档案、工作目录错误及限制互相矛盾，都会让比较失去意义；修正这些条件后，再以新任务重新建立相同起点。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "先判断结果能不能比较"
+        },
+        {
+          "type": "paragraph",
+          "text": "两个虚构判读例：甲花 20 秒且完整答对，乙花 8 秒却说应回传 Build；这题只能说乙较快但不合格，不能选它为本需求的较佳设定。另一组甲乙都答对，但乙用过上一轮的答案或档案已被改好，起点不同，应标「比较无效」并以原样新任务重做。这些时间只是例题，不是任何模型的实测。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要比较推理深度时，先用 Advanced 或 CLI /model 确认真正模型与深度。只移动 Power 滑杆可能同时改变模型，不能只记「第几格」就声称只改一个变因；若无法保持其余设定相同，记成不同组合的试用，保留限制，不计算推理深度单独带来的差异。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "如何把结果用在日常工作"
+        },
+        {
+          "type": "paragraph",
+          "text": "每个答案先看正确性、是否遵守范围、是否清楚说明未执行的测试，全部合格后才比较速度与用量。这种一行故障两种设定都答对，通常已足以为这类小任务选出可用设定；不能据此宣称某模型在所有大型专案都最好。服务负载与回复随机性也会影响一次测量，需要时另日重做，不为了漂亮数字反复消耗。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "规格清楚的小修改可先从帐号预设开始；遇到多档案相依、难以重现的错误或需要权衡时，再提高推理并重新验证。更高深度可能花更久、用更多 token，仍可能错。Max 与 Ultra 不是每个任务的必选项；Ultra 涉及"
+            },
+            {
+              "type": "article",
+              "text": "子代理分工",
+              "kind": "life",
+              "slug": "codex-subagents"
+            },
+            {
+              "type": "text",
+              "text": "，本篇的单题比较不需要开启它。具体选项以你的选单和官方模型页为准。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题、恢复与验收"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型找不到时，先确认登入方式、版本与帐号可见清单，不把网路文章中的旧 ID 直接写入 config.toml。设定无效时回到"
+            },
+            {
+              "type": "article",
+              "text": "设定排错",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "，移除本次新增的覆写值并还原原先选择。切换后状态不符，先停止比较并确认是否被既有启动参数或专案设定影响，不拿错误设定的结果当实验。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「速度变慢」也可能是它在等待工具、网路或权限；查看正在做的步骤，不立刻增加深度或重送同一工作。额度不足就保存比较表与未完成状态，依"
+            },
+            {
+              "type": "article",
+              "text": "帐号篇",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "查自己的重设资讯。这里不硬写价格、剩余次数或通用可用模型表，避免多篇文章彼此矛盾。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "完成条件是能指出实际选择、用同一题目判断两次结果、说明比较的限制，并把模型与推理控制恢复到练习前的值。sample.mjs 应完全没变；若任务改了它，保留差异后用上面的完整内容还原，再把该次标记为未遵守范围。图中 1 是记录，2 是控制变因比较，3 是按证据选择。本文不提供虚构的模型速度实测排名。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-model-selection/diagram-1.svg",
+          "alt": "17. 模型、推理深度与速度 — 实作顺序示意图，非产品介面截图。 Task → Model / effort → Evaluation",
+          "width": 1600,
+          "height": 900,
+          "caption": "17. 模型、推理深度与速度 — 实作顺序示意图，非产品介面截图。 Task → Model / effort → Evaluation",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Models and reasoning controls",
+          "url": "https://learn.chatgpt.com/docs/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI model and status commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Choose a model, effort and speed",
+      "description": "Model choice affects available capabilities and usage conditions; reasoning effort affects how much work the agent devotes to a problem. Compare quality on the same small task before increasing effort. Use the options currently exposed by your account rather than assuming a named model is universally available.",
+      "hero": {
+        "src": "/guides/codex-model-selection/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Find the models and reasoning options actually available to your account, compare one changed setting and choose a practical default from observed results. Allow 12 minutes to read and 20 to practice. Use authenticated desktop or CLI. Two small read-only runs consume real usage; no new plan purchase is needed. Record unavailable choices rather than assuming access."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "First understand "
+            },
+            {
+              "type": "article",
+              "text": "account usage",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": ". Model, reasoning effort and speed/service tier are separate choices, not one “smarter” setting. Client, authentication and rollout can change the options. Do not expect identical menus for everyone or treat documentation illustrations as your account's entitlement."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Record current choices"
+        },
+        {
+          "type": "paragraph",
+          "text": "In desktop, inspect model/reasoning controls below the composer. If you see a Power slider, record its position and use Advanced only for specific choices. In interactive CLI, use /model to inspect models and supported efforts, then /status to check state. These are slash commands inside Codex, not shell commands. Do not alter unfamiliar global configuration to match this article."
+        },
+        {
+          "type": "code",
+          "label": "Interactive slash command: enter inside Codex CLI",
+          "language": "text",
+          "code": "/model\n"
+        },
+        {
+          "type": "code",
+          "label": "Interactive slash command: enter inside Codex CLI",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Create comparison.md in your editor with date, client version, sign-in type and visible choices. Omit email, API keys and billing data. Record CLI and desktop separately when their menus differ; that alone does not indicate a fault. Cloud model controls have different restrictions, so these local steps do not automatically apply to "
+            },
+            {
+              "type": "article",
+              "text": "cloud tasks",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Prepare a fixed, scoreable task"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create codex-model-lab and sample.mjs below in your editor. It is a plain text fixture on all three OSes; no execution or packages are required. Preserve its intentional defect. Compare accurate diagnosis and proposed verification, without allowing two tasks to edit the same file."
+        },
+        {
+          "type": "code",
+          "label": "File content: save as sample.mjs",
+          "language": "javascript",
+          "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Establish the answer independently: the intended completed titles are Read, while the current function returns Build. Remove ! rather than changing task state, field names or order. Empty input should return an empty array and inputs should remain unchanged. An explicit rubric prevents choosing merely the most confident or longest response."
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: enter in this practice Codex task",
+          "language": "text",
+          "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Change one option and compare"
+        },
+        {
+          "type": "paragraph",
+          "text": "In desktop, add codex-model-lab as a project and create both new tasks there. For CLI, open that folder and its integrated terminal. Confirm the path with Get-Location in Windows PowerShell or pwd on macOS/Linux, then run codex. After run A, use /exit and launch codex again from that directory for run B; do not resume A."
+        },
+        {
+          "type": "paragraph",
+          "text": "Run the full prompt in a fresh task at current defaults. Record elapsed time, correct file reading and answer. Start another fresh task with identical files and prompt, changing only reasoning effort for the same model. Keep model, speed, permissions and tools constant. If no alternate effort exists, record a baseline only instead of inventing a comparison."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not reuse the same conversation for run B: it has already seen run A's answer. Changing both model and effort also obscures the cause of differences. If usage only shows account-wide percentages while other tasks run, do not attribute the entire difference to this task. Mark unavailable per-run usage as unavailable."
+        },
+        {
+          "type": "code",
+          "label": "Comparison template: save as comparison.md and record actual results",
+          "language": "markdown",
+          "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "Evidence",
+            "Insufficient substitute"
+          ],
+          "rows": [
+            [
+              "Correctness",
+              "Build versus Read and correct fix",
+              "Length or confidence"
+            ],
+            [
+              "Scope",
+              "Unchanged sample.mjs",
+              "Claiming no edits"
+            ],
+            [
+              "Speed",
+              "Measured time from identical starts",
+              "Feelings from different tasks"
+            ],
+            [
+              "Usage",
+              "Available per-run record",
+              "Shared-account delta during other work"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "If both are wrong, first verify that they read sample.mjs and received the completed requirement instead of immediately selecting a costlier or slower option. Missing files, wrong directories and conflicting constraints invalidate the comparison. Correct them and start fresh tasks from the same baseline."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Decide whether the results are comparable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Two fictional cases: A takes 20 seconds and answers correctly; B takes 8 seconds but says Build is required. B is faster but fails this task. If both answer correctly but B saw A's answer or an already-fixed file, mark the comparison invalid and retry from identical fresh inputs. These times are teaching examples, not model measurements."
+        },
+        {
+          "type": "paragraph",
+          "text": "For an effort comparison, verify the actual model and effort through Advanced or CLI /model. Moving Power can also change the model; a slider position alone does not establish one changed variable. If other settings cannot be held constant, record a trial of different combinations, not an isolated effort effect."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Apply the result to daily work"
+        },
+        {
+          "type": "paragraph",
+          "text": "Judge correctness, scope and honest test reporting before speed or usage. If both solve this one-line defect, you have a useful setting for similar small tasks, not a universal model ranking for large projects. Service load and response variation affect single measurements. Repeat another day if needed, rather than consuming usage to manufacture attractive numbers."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Start well-scoped edits at account defaults. For dependencies, elusive bugs or tradeoffs, try more reasoning and revalidate. Higher effort can take longer and use more tokens without guaranteeing correctness. Max and Ultra are optional; Ultra involves "
+            },
+            {
+              "type": "article",
+              "text": "subagents",
+              "kind": "life",
+              "slug": "codex-subagents"
+            },
+            {
+              "type": "text",
+              "text": ", unnecessary for this single-task comparison. Follow your actual picker and the official models page."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting, restoration and acceptance"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "If a model is missing, check sign-in, version and visible availability before copying old IDs into config.toml. For invalid settings, use "
+            },
+            {
+              "type": "article",
+              "text": "configuration troubleshooting",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": ", remove only this experiment's overrides and restore the original choice. If displayed state differs, check launch/project overrides before counting the run."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Slowness may be a tool, network or permission wait. Inspect current activity before changing effort or duplicating work. If usage runs out, save the incomplete table and check your reset information in "
+            },
+            {
+              "type": "article",
+              "text": "account usage",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": ". Prices, quota counts and universal model lists are not duplicated here."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Finish by identifying actual settings, scoring identical tasks, explaining limitations and restoring pre-exercise model/effort. sample.mjs should be unchanged. If edited, preserve the diff, restore the full sample above and mark that run as a scope failure. Diagram 1 records settings, 2 compares one variable, 3 chooses from evidence. No fabricated speed ranking is supplied."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-model-selection/diagram-1.svg",
+          "alt": "17. Choose a model, effort and speed — Workflow illustration, not a product screenshot. Task → Model / effort → Evaluation",
+          "width": 1600,
+          "height": 900,
+          "caption": "17. Choose a model, effort and speed — Workflow illustration, not a product screenshot. Task → Model / effort → Evaluation",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Models and reasoning controls",
+          "url": "https://learn.chatgpt.com/docs/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI model and status commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "モデル・推論量・速度の選び方",
+      "description": "モデルと推論量は別の選択です。同じ小さな課題で品質を比較し、必要なら推論量を増やします。名前だけで判断せず、現在のアカウントに表示される候補を使います。",
+      "hero": {
+        "src": "/guides/codex-model-selection/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "アカウントで利用できるモデルと推論設定を確認し、一つだけ変える比較から日常設定を選びます。読む時間12分、操作20分です。認証済みデスクトップまたは CLI を使います。小さな読取り課題2回でも使用量が発生します。追加購入は不要で、ない選択肢は利用不可と記録します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先に"
+            },
+            {
+              "type": "article",
+              "text": "アカウントと使用量",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "を確認します。モデル、推論強度、速度・サービス層は別の選択です。クライアント、認証、展開段階で一覧が変わり、公式例と自分の権限が同じとは限りません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：現在の選択を記録"
+        },
+        {
+          "type": "paragraph",
+          "text": "デスクトップは入力欄下のモデル・推論操作を確認します。Power があれば位置を記録し、詳細指定には Advanced を見ます。CLI は対話内の /model で対応モデルと強度、/status で状態を確認します。シェル命令ではなく、記事に合わせて不明な全体設定を変更しません。"
+        },
+        {
+          "type": "code",
+          "label": "対話スラッシュコマンド：Codex CLI 内で入力する",
+          "language": "text",
+          "code": "/model\n"
+        },
+        {
+          "type": "code",
+          "label": "対話スラッシュコマンド：Codex CLI 内で入力する",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "エディターで comparison.md を作り、日付、版、認証の種類、表示選択肢を記録します。メール、API 鍵、支払情報は不要です。CLI とデスクトップで違えば別々に記録し、故障と決めつけません。"
+            },
+            {
+              "type": "article",
+              "text": "クラウド課題",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": "の制約も別で、ローカル手順をそのまま当てはめません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：採点できる同じ課題を用意"
+        },
+        {
+          "type": "paragraph",
+          "text": "エディターで codex-model-lab と次の sample.mjs を作ります。3 OS とも通常のテキストで、実行や依存追加は不要です。故障を残し、診断と検証例の正確さを比べます。二つの課題で同時編集しません。"
+        },
+        {
+          "type": "code",
+          "label": "ファイル内容：sample.mjs に保存する",
+          "language": "javascript",
+          "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "人が正答を先に確認します。完了済みタイトルは Read ですが現状は Build です。状態・項目名・順序ではなく ! を取り除きます。空入力は空、元データは不変です。基準があれば自信ある口調や長さだけで選びません。"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
+          "language": "text",
+          "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：一つの設定だけ変えて比べる"
+        },
+        {
+          "type": "paragraph",
+          "text": "デスクトップでは codex-model-lab をプロジェクトに追加し、両方の新規課題をそこで作ります。CLI は同フォルダーの統合端末を開き、Windows PowerShell は Get-Location、macOS／Linux は pwd で場所を確認して codex を起動します。A の後は /exit でシェルへ戻り、同じ場所から codex を起動して B を始めます。A の resume は使いません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "既定設定の新課題で全文を送り、時間、正しい読取り、回答を記録します。別の新課題で同じファイルと全文を使い、同一モデルの強度だけ変えます。モデル、速度、権限、道具は固定です。他の強度がなければ基準測定のみと記録し、比較を捏造しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ会話で2回目を行うと前答を見ているため起点が違います。モデルと強度の同時変更も原因を不明にします。ほかの課題が動く共有アカウント残量差を全て本題へ割り当てず、単回数値がなければ取得不可とします。"
+        },
+        {
+          "type": "code",
+          "label": "比較表のひな型：comparison.md に保存し実際の結果を記入する",
+          "language": "markdown",
+          "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "評価",
+            "証拠",
+            "代わりにならないもの"
+          ],
+          "rows": [
+            [
+              "正確さ",
+              "Build と Read、正しい修正",
+              "長さや自信"
+            ],
+            [
+              "範囲",
+              "sample.mjs 不変",
+              "無変更という主張だけ"
+            ],
+            [
+              "速度",
+              "同一起点の実時間",
+              "別課題の体感"
+            ],
+            [
+              "使用量",
+              "単回の取得可能な記録",
+              "別作業中の共有残量差"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "両方誤答なら、先に sample.mjs の読取りと completed の指定を確認し、高価・低速な設定へ即座に移りません。ファイル不足、場所違い、制約矛盾を直し、同じ起点の新課題で再比較します。"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "結果を比較できるか先に判断する"
+        },
+        {
+          "type": "paragraph",
+          "text": "架空例です。A は20秒で正答、B は8秒でも正解を Build としたなら、B は速くても不合格です。両方正答でも B が A の回答や修正済みファイルを見ていたら、開始条件が異なるので比較無効とし、同一の新規入力でやり直します。この時間は教材でありモデルの実測ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "推論深度を比べるなら Advanced または CLI /model で実際のモデルと深度を確認します。Power はモデルも変え得るため、位置だけでは単一変数の変更と証明できません。他の設定を揃えられなければ異なる組合せの試用として制限を記録し、深度単独の効果とはしません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "結果を日常作業に使う"
+        },
+        {
+          "type": "paragraph",
+          "text": "正確さ、範囲遵守、未実施の明記を先に評価し、合格後に速度と使用量を見ます。一行故障で両方正解なら類似小課題の設定選択には使えますが、大規模案件の総合順位ではありません。負荷と回答の揺れも影響するため、必要なら別日に再確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "明確な小変更は既定から始め、依存関係や難しい故障、取捨選択なら強度を上げ再検証します。時間・トークンが増えても正解保証はありません。Max / Ultra は必須でなく、"
+            },
+            {
+              "type": "article",
+              "text": "子エージェント",
+              "kind": "life",
+              "slug": "codex-subagents"
+            },
+            {
+              "type": "text",
+              "text": "を使う Ultra は本比較に不要です。実際の選択欄と公式資料を確認します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "対処、復元と受入"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "モデルがなければ認証、版、一覧を確認し、古い ID を config.toml へコピーしません。無効設定は"
+            },
+            {
+              "type": "article",
+              "text": "設定対処",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "で実験の上書きだけ戻します。状態が一致しなければ起動引数やプロジェクト設定を確認してから測定に数えます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "遅さが道具・通信・権限待ちの場合もあります。強度変更や重複依頼の前に現在の処理を見ます。残量不足なら未完成表を保存し、"
+            },
+            {
+              "type": "article",
+              "text": "使用量",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "で自分の更新時刻を確認します。価格、回数、全員共通モデル表は重複掲載しません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "実際の設定、同題採点、限界説明、元設定への復元で完了です。sample.mjs は不変のはずで、変更されたら差分を残して例から復元し、その回は範囲違反とします。図1は記録、2は一変数比較、3は証拠による選択です。架空の速度順位は掲載しません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-model-selection/diagram-1.svg",
+          "alt": "17. モデル・推論量・速度の選び方 — 作業の流れを表す図です。製品画面の画像ではありません。 Task → Model / effort → Evaluation",
+          "width": 1600,
+          "height": 900,
+          "caption": "17. モデル・推論量・速度の選び方 — 作業の流れを表す図です。製品画面の画像ではありません。 Task → Model / effort → Evaluation",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Models and reasoning controls",
+          "url": "https://learn.chatgpt.com/docs/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI model and status commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "모델, 추론 수준과 속도 선택",
+      "description": "모델 선택과 추론 수준은 별개입니다. 같은 작은 과제에서 품질을 비교하고 필요할 때 추론을 높입니다. 이름만 보고 판단하지 말고 현재 계정에 표시되는 옵션을 사용하세요.",
+      "hero": {
+        "src": "/guides/codex-model-selection/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "계정에서 실제 사용할 모델/추론 설정을 확인하고 한 설정만 바꿔 비교해 일상 기본값을 고릅니다. 읽기 12분, 실습 20분입니다. 로그인한 데스크톱 또는 CLI를 사용합니다. 작은 읽기 작업 두 번도 사용량이 발생합니다. 추가 구매는 필요 없으며 없는 옵션은 사용 불가로 기록합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "먼저 "
+            },
+            {
+              "type": "article",
+              "text": "계정과 사용량",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "을 확인합니다. 모델, 추론 강도, 속도/서비스 등급은 서로 다른 선택입니다. 클라이언트, 로그인, 배포 단계에 따라 목록이 달라지며 공식 예시가 자신의 권한과 같지는 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 현재 선택 기록"
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱은 입력창 아래 모델/추론 조작을 봅니다. Power가 있으면 위치를 기록하고 세부 지정에 Advanced를 봅니다. CLI 대화에서 /model로 모델/지원 강도를, /status로 상태를 확인합니다. 셸 명령이 아니며 글에 맞추려고 모르는 전역 설정을 바꾸지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "대화형 슬래시 명령: Codex CLI 안에서 입력",
+          "language": "text",
+          "code": "/model\n"
+        },
+        {
+          "type": "code",
+          "label": "대화형 슬래시 명령: Codex CLI 안에서 입력",
+          "language": "text",
+          "code": "/status\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "편집기에서 comparison.md에 날짜, 버전, 로그인 유형, 보이는 옵션을 기록합니다. 이메일/API 키/결제 정보는 제외합니다. CLI/데스크톱이 다르면 별도로 기록하고 고장으로 단정하지 않습니다. "
+            },
+            {
+              "type": "article",
+              "text": "클라우드 작업",
+              "kind": "life",
+              "slug": "codex-cloud-tasks-github"
+            },
+            {
+              "type": "text",
+              "text": " 제약도 별도이므로 로컬 절차를 그대로 적용하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 채점 가능한 고정 과제"
+        },
+        {
+          "type": "paragraph",
+          "text": "편집기로 codex-model-lab과 다음 sample.mjs를 만듭니다. 세 OS 모두 일반 텍스트이며 실행/의존성 추가가 필요 없습니다. 결함을 남기고 진단/검증 예시의 정확성을 비교합니다. 두 작업이 동시에 편집하게 하지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "파일 내용: sample.mjs로 저장",
+          "language": "javascript",
+          "code": "export function completedTitles(tasks) {\n  return tasks.filter((task) => !task.completed).map((task) => task.title);\n}\n\nexport const sample = [\n  { title: \"Read\", completed: true },\n  { title: \"Build\", completed: false },\n];\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "사람이 정답을 먼저 확인합니다. 완료 제목은 Read지만 현재는 Build입니다. 상태/필드명/순서가 아니라 !를 제거합니다. 빈 입력은 빈 배열, 원본은 불변입니다. 기준이 있으면 자신 있는 말투나 길이만으로 고르지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
+          "language": "text",
+          "code": "Read sample.mjs without modifying any file. The requirement is to return titles of completed tasks in original order.\n1. State the actual output for sample and the required output.\n2. Identify the precise defect and the smallest fix.\n3. Give two verification cases, including empty input, and say whether inputs are mutated.\nDo not install tools or run a web search. Distinguish reasoning from tests you actually ran. Keep the answer under 250 words.\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 한 옵션만 바꾸고 비교"
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱에서는 codex-model-lab을 프로젝트로 추가하고 두 새 작업을 모두 그 안에서 만드세요. CLI는 해당 폴더의 통합 터미널을 열고 Windows PowerShell은 Get-Location, macOS/Linux는 pwd로 경로를 확인한 뒤 codex를 실행합니다. A가 끝나면 /exit로 셸에 돌아와 같은 경로에서 codex를 다시 실행해 B를 시작하며 A를 resume하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기본 설정의 새 작업에서 전체 요청을 보내 시간, 올바른 읽기, 답변을 기록합니다. 다른 새 작업에서 같은 파일/요청으로 동일 모델의 추론 강도만 바꿉니다. 모델/속도/권한/도구는 고정합니다. 다른 강도가 없으면 기준 측정만 기록하고 비교를 만들어내지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 대화의 두 번째 실행은 앞 답을 봤으므로 시작점이 다릅니다. 모델/강도를 함께 바꾸면 차이 원인도 불명확합니다. 다른 작업이 도는 공유 계정 잔량 차이를 전부 이 과제에 배정하지 말고 단일 실행 수치가 없으면 확인 불가로 씁니다."
+        },
+        {
+          "type": "code",
+          "label": "비교표 양식: comparison.md로 저장하고 실제 결과 작성",
+          "language": "markdown",
+          "code": "# Model comparison\nDate / client / sign-in type: fill from your environment\nTask: completedTitles review; identical sample.mjs and prompt\n\n| Check | Run A | Run B |\n| --- | --- | --- |\n| Model and reasoning effort | NOT RUN | NOT RUN |\n| Speed / permissions unchanged | NOT RUN | NOT RUN |\n| Elapsed time | NOT RUN | NOT RUN |\n| Actual Build, required Read | NOT RUN | NOT RUN |\n| Correct minimal fix | NOT RUN | NOT RUN |\n| Empty-input case and no mutation | NOT RUN | NOT RUN |\n| Files unchanged | NOT RUN | NOT RUN |\n| Per-run usage, if available | UNAVAILABLE | UNAVAILABLE |\n\nDecision and reason: pending observed results\nLimit: one small task is not a general model ranking.\n"
+        },
+        {
+          "type": "table",
+          "header": [
+            "평가",
+            "증거",
+            "대체할 수 없는 것"
+          ],
+          "rows": [
+            [
+              "정확성",
+              "Build/Read 차이와 올바른 수정",
+              "길이/자신감"
+            ],
+            [
+              "범위",
+              "sample.mjs 불변",
+              "안 바꿨다는 주장"
+            ],
+            [
+              "속도",
+              "동일 시작점의 실측 시간",
+              "다른 과제의 체감"
+            ],
+            [
+              "사용량",
+              "확인 가능한 단일 기록",
+              "다른 작업 중 공유 잔량 차이"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "둘 다 틀리면 비싸거나 느린 설정부터 고르지 말고 sample.mjs 읽기와 completed 요구를 확인합니다. 누락 파일/경로 오류/제약 충돌을 고치고 같은 시작점의 새 작업으로 다시 비교합니다."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "결과를 비교할 수 있는지 먼저 판단하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "가상 사례입니다. A는 20초에 정확히 답하고 B는 8초지만 정답이 Build라고 했다면 B는 빠르지만 불합격입니다. 둘 다 맞아도 B가 A의 답이나 이미 수정한 파일을 보았다면 시작 조건이 달라 비교 무효로 기록하고 같은 새 입력으로 다시 하세요. 이 시간은 교육용 예시이며 모델 실측이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "추론 수준을 비교하려면 Advanced 또는 CLI /model에서 실제 모델과 수준을 확인하세요. Power를 움직이면 모델도 바뀔 수 있어 위치만으로 한 변수만 바뀌었다고 할 수 없습니다. 나머지 설정을 고정할 수 없으면 서로 다른 조합의 시험으로 기록하고 추론 수준만의 효과로 계산하지 마세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "결과를 일상 작업에 적용"
+        },
+        {
+          "type": "paragraph",
+          "text": "정확성, 범위 준수, 미실행 명시를 먼저 평가한 뒤 속도/사용량을 봅니다. 한 줄 결함을 둘 다 맞히면 비슷한 작은 작업 설정 선택에는 유용하지만 대규모 프로젝트의 종합 순위는 아닙니다. 부하와 답변 변동도 영향을 주므로 필요하면 다른 날 다시 확인합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "명확한 작은 변경은 기본값으로 시작하고 의존 관계/어려운 오류/선택 문제가 있으면 강도를 올려 재검증합니다. 시간/토큰이 늘어도 정답 보장은 아닙니다. Max/Ultra는 필수가 아니며 "
+            },
+            {
+              "type": "article",
+              "text": "하위 에이전트",
+              "kind": "life",
+              "slug": "codex-subagents"
+            },
+            {
+              "type": "text",
+              "text": "를 쓰는 Ultra는 이 비교에 필요 없습니다. 실제 선택기/공식 자료를 따릅니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결, 복원과 검수"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "모델이 없으면 로그인/버전/목록을 확인하고 오래된 ID를 config.toml에 복사하지 않습니다. 잘못된 설정은 "
+            },
+            {
+              "type": "article",
+              "text": "설정 해결",
+              "kind": "life",
+              "slug": "codex-config-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "로 실험의 덮어쓰기만 되돌립니다. 상태가 다르면 시작 인수/프로젝트 설정을 확인한 뒤 측정에 포함합니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "느림은 도구/네트워크/권한 대기일 수도 있습니다. 강도 변경/중복 요청 전에 현재 처리를 봅니다. 사용량 부족이면 미완성 표를 저장하고 "
+            },
+            {
+              "type": "article",
+              "text": "사용량",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "에서 자신의 초기화 정보를 확인합니다. 가격/횟수/모두에게 같은 모델 표는 중복 기재하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 설정 확인, 같은 과제 채점, 한계 설명, 원래 설정 복원이 완료 조건입니다. sample.mjs는 불변이어야 하고 바뀌면 차이를 남겨 예시로 복원하고 그 실행은 범위 위반으로 표시합니다. 그림 1은 기록, 2는 한 변수 비교, 3은 증거에 따른 선택입니다. 가짜 속도 순위는 제공하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-model-selection/diagram-1.svg",
+          "alt": "17. 모델, 추론 수준과 속도 선택 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Task → Model / effort → Evaluation",
+          "width": 1600,
+          "height": 900,
+          "caption": "17. 모델, 추론 수준과 속도 선택 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Task → Model / effort → Evaluation",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Models and reasoning controls",
+          "url": "https://learn.chatgpt.com/docs/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI model and status commands",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

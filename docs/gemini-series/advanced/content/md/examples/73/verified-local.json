@@ -1,0 +1,80 @@
+{
+  "checkedOn": "2026-09-14T11:55:47.892Z",
+  "cli": "0.59.0",
+  "node": "v24.19.0",
+  "platform": "win32",
+  "method": "installed CLI modules including ExtensionManager; authored Node/Git fixtures",
+  "cloudCalls": 0,
+  "notTested": [
+    "native extension terminal wrapper exits reliably (Windows libuv failure recorded separately)",
+    "model response quality and actual adherence",
+    "authenticated interactive session resume",
+    "macOS/Linux execution",
+    "upgrade to a different Gemini CLI version"
+  ],
+  "results": [
+    {
+      "step": "script-good",
+      "output": "{\n  \"file\": \"<examples>\\\\73\\\\samples\\\\good.md\",\n  \"errors\": []\n}\n"
+    },
+    {
+      "step": "script-bad",
+      "expectedExit": 1,
+      "output": "{\n  \"file\": \"<examples>\\\\73\\\\samples\\\\bad.md\",\n  \"errors\": [\n    \"missing_title\",\n    \"missing_sources\"\n  ]\n}\n"
+    },
+    {
+      "step": "script-missing",
+      "expectedExit": 2,
+      "output": "ENOENT\n"
+    },
+    {
+      "step": "install",
+      "version": "1.0.0",
+      "isActive": true,
+      "skills": [
+        "doc-check"
+      ],
+      "method": "real ExtensionManager; no terminal wrapper"
+    },
+    {
+      "step": "disable",
+      "version": "1.0.0",
+      "isActive": false,
+      "skills": [
+        "doc-check"
+      ],
+      "method": "real ExtensionManager; no terminal wrapper"
+    },
+    {
+      "step": "enable",
+      "version": "1.0.0",
+      "isActive": true,
+      "skills": [
+        "doc-check"
+      ],
+      "method": "real ExtensionManager; no terminal wrapper"
+    },
+    {
+      "step": "update",
+      "version": "1.1.0",
+      "isActive": true,
+      "skills": [
+        "doc-check"
+      ],
+      "method": "real ExtensionManager; no terminal wrapper"
+    },
+    {
+      "step": "uninstall",
+      "installedCount": 0
+    },
+    {
+      "step": "rollback-install",
+      "version": "1.0.0",
+      "isActive": true,
+      "skills": [
+        "doc-check"
+      ],
+      "method": "real ExtensionManager; no terminal wrapper"
+    }
+  ]
+}

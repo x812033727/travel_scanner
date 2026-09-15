@@ -1,0 +1,458 @@
+{
+  "slug": "ai-api-pricing-comparison-2026",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "API 價格比較：每百萬 token 各家多少",
+      "description": "接 API 之前先把價目表攤開：這篇抄下 OpenAI、Anthropic、Google Gemini、xAI、阿里雲百鍊、Mistral、MiniMax、DeepSeek 八家官網當天的旗艦、中階、輕量三級每百萬 token 輸入與輸出價，寫出快取價、批次折扣、免費層條款與計費幣別，最後附一段一萬次對話的算式讓你代入自己的用量。不評分、不宣稱實測，只照官網欄位排。",
+      "hero": {
+        "src": "/guides/ai-api-pricing-comparison-2026/hero.jpg",
+        "alt": "三條由粗到細的橫向色帶疊在一起，每條帶子上放著大小不一的圓點代表不同價位，右側是一個圓角方框與幾條計算用的橫線",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "要接 API 的人第一個該回答的不是哪家比較聰明，而是同一份工作丟進去，帳單差幾倍。照官網當天的標準價看，最貴的旗艦每百萬輸出 token 要 50 美元，最便宜的輕量模型不到半美元，中間隔了一百倍以上；而且同一家內部從旗艦到輕量的落差，常常比不同家之間還大。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把八家官網定價頁在 2026 年 9 月 15 日當天的數字抄下來，各取旗艦、中階、輕量三級的每百萬 token 輸入與輸出價，再寫出快取與批次折扣、免費層條款、計費幣別，最後給一段可以自己代入用量的算式。這裡不打分數、不宣稱實測，只照官網寫得出來的欄位排，看完你要能自己判斷該盯哪一欄。"
+        },
+        {
+          "type": "heading",
+          "text": "價目表上真正要看的四個欄位",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每一家的定價頁長得都不一樣，但影響帳單的欄位就四個：輸入價、輸出價、快取價、批次價。輸入是你送進去的提示詞、系統指示與整段對話紀錄，輸出是模型吐出來的字。多數家的輸出價是輸入價的三到五倍，所以讓模型少講一點，通常比讓它少讀一點更省。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "輸入：提示詞、系統指示、貼進去的文件與整段對話紀錄都算，上下文視窗塞得越滿，每一次呼叫的輸入就越貴。",
+            "輸出：模型產生的字。推理模型的思考過程多半也算輸出，Google 的定價頁乾脆把欄位名稱寫成「輸出價（含思考 token）」。",
+            "快取：重複送出的相同開頭可以只付一小筆讀取費，但通常要先付一筆寫入費，回本要讀幾次官網都有寫。",
+            "批次：不急著要答案，改成非同步整批丟進去，多數家給五折。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "還沒搞清楚 token 怎麼數的，先看 "
+            },
+            {
+              "type": "link",
+              "text": "token（Token）是什麼：AI 如何計算文字長度",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "；訂閱制與 API 額度的差別，站上有 "
+            },
+            {
+              "type": "link",
+              "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+              "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "旗艦級：10 美元對 50 美元是天花板，不是每家都這樣收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的定價頁把 gpt-6-astra 放在旗艦那一排，短上下文每百萬輸入 10.00 美元、輸出 50.00 美元，快取過的輸入 1.00 美元；長上下文另有一欄，輸入 20.00 美元、輸出 75.00 美元。同一排還有 gpt-5.6-sol，輸入 4.00 美元、輸出 20.00 美元，頁面下方註明這個促銷價至少到 2026 年 11 月 21 日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的 API 定價頁上，Claude Fable 5.1 每百萬輸入 10 美元、輸出 50 美元，快取命中 0.25 美元；下一階的 Claude Opus 5 是輸入 5 美元、輸出 25 美元。同一頁有一條註記值得記下來：Claude Sonnet 5 原訂 2026 年 9 月 1 日調成 3 美元與 15 美元的漲價不會發生，2 美元與 10 美元成為標準價。這是價目表會往下走、不是只會往上走的例子。"
+        },
+        {
+          "type": "paragraph",
+          "text": "旗艦這一級並不是每家都收到 50 美元。Google 的 gemini-3.1-pro-preview 在 20 萬 token 以內是輸入 2.00 美元、輸出 12.00 美元，超過就跳到 4.00 美元與 18.00 美元；xAI 的 grok-4.6 在 20 萬 token 以內是輸入 2.00 美元、輸出 6.00 美元，快取過的輸入 0.50 美元，超過門檻後兩欄都翻倍；阿里雲百鍊的 qwen3.8-max 在新加坡站是輸入 2 美元、輸出 6 美元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再往下差距更明顯。MiniMax 的 MiniMax-M3 在 51.2 萬輸入 token 以內標著「永久五折」，折後輸入 0.30 美元、輸出 1.20 美元，快取讀取 0.06 美元；DeepSeek 的 deepseek-v4-pro 尖峰時段輸入 1.32 美元、輸出 3.96 美元，離峰再對折。換句話說，「旗艦」是各家自己的命名，不是同一個價位帶。"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+        },
+        {
+          "type": "heading",
+          "text": "中階與輕量：同一家內部的落差更大",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的 gpt-5.6-terra 是輸入 2.00 美元、輸出 12.00 美元，同一代的 gpt-5.6-luna 只要 0.20 美元與 1.20 美元，兩者差了十倍；再往回看，gpt-5-mini 是 0.25 美元與 2.00 美元，gpt-5-nano 是 0.05 美元與 0.40 美元。Anthropic 這一級是 Claude Sonnet 5，輸入 2 美元、輸出 10 美元，快取命中 0.20 美元；輕量的 Claude Haiku 4.5 是輸入 1.00 美元、輸出 5.00 美元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的 gemini-3.8-flash 把到期日寫在價格旁邊：2026 年 12 月 31 日前輸入 0.75 美元、輸出 3.75 美元，2027 年 1 月 1 日起變成 1.50 美元與 7.50 美元；更早一代的 gemini-3.5-flash 是 1.50 美元與 9.00 美元，輕量的 gemini-3.5-flash-lite 是 0.30 美元與 2.50 美元。這一家把同一個級距的新舊兩代放在同一頁，新的反而比舊的便宜。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mistral 的分級跟名字對不上：mistral-medium-latest（Mistral Medium 3.5）是輸入 1.50 美元、輸出 7.50 美元，反而比掛著旗艦名字的 mistral-large-latest（Mistral Large 3，0.50 美元與 1.50 美元）貴，最小的 mistral-small-latest（Mistral Small 4）是 0.15 美元與 0.60 美元。阿里雲百鍊的 qwen3.7-plus 在 25.6 萬 token 以內是 0.40 美元與 1.60 美元，qwen3.8-flash 是 0.15 美元與 0.47 美元。MiniMax-M2.7 是 0.30 美元與 1.20 美元，DeepSeek 的 deepseek-flash 尖峰是 0.30 美元與 1.20 美元、離峰 0.15 美元與 0.60 美元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把三級的區間攤開來看：旗艦每百萬輸入 0.30 到 10.00 美元、輸出 1.20 到 50.00 美元；中階輸入 0.40 到 2.00 美元、輸出 1.60 到 12.00 美元；輕量輸入 0.15 到 1.00 美元、輸出 0.47 到 5.00 美元。三段區間互相重疊，某一家的旗艦可能比另一家的輕量還便宜，所以選型不能只看級距名稱。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-api-pricing-comparison-2026/diagram-1.svg",
+          "alt": "三條橫向價格帶，由上到下是旗艦、中階、輕量，每條標出每百萬 token 的輸入與輸出價格區間，兩端各標一個廠商的模型名稱",
+          "width": 1600,
+          "height": 900,
+          "caption": "三條帶子畫的是各級距的價格區間，不是排名；兩端是區間的最低與最高，中間任何一家都可能落在別條帶子的範圍內。價格為 2026 年 9 月 15 日官網標準價。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "快取、批次與離峰：官網真的寫出來的折扣",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "快取是把重複的開頭存起來，下一次只付很小的讀取費。Anthropic 寫成倍率：5 分鐘寫入 1.25 倍、1 小時寫入 2 倍、命中 0.1 倍（Claude Fable 5.1 是 0.025 倍），並說明 5 分鐘那種讀一次就回本、1 小時要讀兩次。OpenAI 直接在表上列快取輸入價，旗艦是標準輸入價的十分之一。阿里雲百鍊寫明顯式快取建立算標準輸入價的 125%、命中算 10%。Mistral 的定價頁寫快取輸入最多省 90%。Google 則是把快取分成單價與每小時儲存費兩筆，gemini-3.8-flash 是 0.075 美元加每百萬 token 每小時 0.50 美元。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "快取到底在快取什麼，可以看 "
+            },
+            {
+              "type": "link",
+              "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching"
+            },
+            {
+              "type": "text",
+              "text": "；實際怎麼設斷點、怎麼跟批次一起用，站上有 "
+            },
+            {
+              "type": "link",
+              "text": "Claude API 省錢：提示快取與批次處理怎麼用",
+              "url": "https://mokaair.com/zh-TW/life/claude-api-prompt-caching-cost"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "批次的折扣比較一致：OpenAI、Anthropic、Google、Mistral 與阿里雲百鍊的官網都寫五折，Google 的方案欄直接標成「Batch API（成本降低 50%）」，gemini-3.8-flash 的批次價是輸入 0.375 美元、輸出 1.875 美元。xAI 是例外，定價頁列出只有 grok-4.3 與 grok-4.20 系列享八折，並寫明沒列到的模型沒有批次折扣，也就是旗艦的 grok-4.6 不打折。DeepSeek 不做批次，改用時段：尖峰是週一到週五世界協調時間 01:00 至 04:00 與 06:00 至 10:00，其餘時段一律半價。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "折扣不一定能疊，價格旁邊常常掛著到期日",
+          "text": "阿里雲百鍊的定價頁寫明批次折扣與快取折扣不能同時套用，只能挑一個。Google 的 gemini-3.8-flash 整欄價格都標「到 2026 年 12 月 31 日止」，2027 年 1 月 1 日起翻倍；OpenAI 註明 gpt-5.6-sol 的促銷價至少到 2026 年 11 月 21 日；Mistral 的定價頁還有「區域推論加 10%」這種會悄悄改變單價的選項。估算之前回官網把當天的數字對一次，別拿三個月前抄下來的表當結論。"
+        },
+        {
+          "type": "heading",
+          "text": "免費層、幣別，以及台灣付不付得了",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "免費層寫得最清楚的是 Google。Gemini API 定價頁的方案欄把免費層寫成「部分模型有限度使用」與「免費的輸入與輸出 token」，付費層則多了快取、批次與較高的速率限制。真正要看的是最後一行條款：免費層寫「內容會用於改進我們的產品」，付費層寫「內容不會用於改進我們的產品」，而且每個模型的表格底下都再標一次是與否。旗艦的 gemini-3.1-pro-preview 免費層那一格寫的是「不提供」，想免費試的只能從 Flash 那幾檔開始。"
+        },
+        {
+          "type": "paragraph",
+          "text": "其他家的免費額度形式不同。阿里雲百鍊在新加坡站給每個模型 100 萬 token 的免費額度，從開通、模型發布或申請通過起算 90 天，並寫明其他地區沒有這個額度。Anthropic 的定價頁常見問題寫新用戶會拿到少量免費額度試用。Mistral 把兩個端點標成免費。OpenAI、xAI、MiniMax 與 DeepSeek 的免費層，官網定價頁當天沒有寫，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "幣別部分，八家定價頁上標的都是美元；Mistral 的頁面多一個美元與歐元的切換鈕，阿里雲百鍊則是分區計價，新加坡站用美元、中國站用人民幣，兩張表不能直接放在一起比。至於台灣能不能直接付款，官網查得到名單的有三家：OpenAI 的支援國家與地區頁、Anthropic 的支援國家頁、Google 的 Gemini API 可用地區頁都列了台灣。xAI、Mistral、MiniMax、DeepSeek 與阿里雲百鍊當天沒有可以直接引用的台灣付款說明，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "API 額度與錯誤：費用、重試與成本控制",
+          "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼估：一萬次對話的算式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把價目表換成帳單只需要兩個數字：一個月送進去多少輸入 token、拿回來多少輸出 token。下面用一個假設情境自己算一次，一萬次對話、每次輸入 2,000 個 token、輸出 500 個。這組數字是為了示範算式而假設的，不是任何產品的實測結果，換成你自己的用量才有意義。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "自己算一次：一萬次對話的月費用（假設值，單價為 2026 年 9 月 15 日官網標準價）",
+          "code": "假設（把數字換成你自己的）\n  對話次數 = 10,000\n  每次輸入 = 2,000 tokens -> 輸入合計 = 20,000,000 tokens = 20 個百萬\n  每次輸出 = 500 tokens   -> 輸出合計 =  5,000,000 tokens =  5 個百萬\n\n公式（單價 = 每百萬 token 美元）\n  月費用 = 20 x 輸入單價 + 5 x 輸出單價\n\n代入\n  gpt-6-astra        20 x 10.00 + 5 x 50.00 = 450.00 美元\n  Claude Sonnet 5    20 x  2.00 + 5 x 10.00 =  90.00 美元\n  gemini-3.8-flash   20 x  0.75 + 5 x  3.75 =  33.75 美元\n  MiniMax-M3         20 x  0.30 + 5 x  1.20 =  12.00 美元\n  qwen3.8-flash      20 x  0.15 + 5 x  0.47 =   5.35 美元\n\n這段算式沒有算進去的\n  快取折扣、批次五折、離峰半價、推理模型的思考 token、\n  搜尋與工具呼叫的次數費、超過門檻的長上下文加價欄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份工作，450.00 美元與 5.35 美元之間差了八十幾倍，而這還沒動用任何折扣。所以真正的問題不是哪一家便宜，而是你的工作能不能接受最便宜那一欄的模型；這件事只有你自己拿真實資料跑得出來。下面是一套可以自己做的核對步驟。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "抓真實用量：從上個月實際跑過的請求裡挑十筆，看回應的用量欄位或各家的 token 計算端點，算出每次的平均輸入與輸出 token。",
+            "代公式：把平均值乘上預估次數，代進上面的算式，一家算一個數字，先不要考慮折扣。",
+            "再看折扣欄：提示詞前面有沒有一大段固定不變的內容，有就把快取價換進去；工作能不能等到隔天，能等就換批次價或離峰價。",
+            "補上表格沒有的欄位：超過門檻的長上下文加價、推理模型的思考 token、搜尋與工具呼叫的次數費、區域推論的加價。",
+            "拿最小的預算跑一天真實流量，把帳單抓回來跟你的估算對一次，差多少就把差額補進假設裡再估一輪。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想把估算做得更細，站上有 "
+            },
+            {
+              "type": "link",
+              "text": "token 計算與費用估算：官方計數工具、一次對話的算式與費用上限",
+              "url": "https://mokaair.com/zh-TW/life/ai-token-cost-estimation"
+            },
+            {
+              "type": "text",
+              "text": "；如果你在考慮乾脆把模型跑在自己機器上，成本要怎麼比可以看 "
+            },
+            {
+              "type": "link",
+              "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+              "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "廠商",
+            "模型（級距）",
+            "輸入／百萬 token",
+            "輸出／百萬 token"
+          ],
+          "rows": [
+            [
+              "OpenAI",
+              "gpt-6-astra（旗艦）",
+              "10.00 美元",
+              "50.00 美元"
+            ],
+            [
+              "Anthropic",
+              "Claude Fable 5.1（旗艦）",
+              "10 美元",
+              "50 美元"
+            ],
+            [
+              "Anthropic",
+              "Claude Opus 5（旗艦）",
+              "5 美元",
+              "25 美元"
+            ],
+            [
+              "OpenAI",
+              "gpt-5.6-terra（中階）",
+              "2.00 美元",
+              "12.00 美元"
+            ],
+            [
+              "Google",
+              "gemini-3.1-pro-preview（旗艦，20 萬 token 內）",
+              "2.00 美元",
+              "12.00 美元"
+            ],
+            [
+              "Anthropic",
+              "Claude Sonnet 5（中階）",
+              "2 美元",
+              "10 美元"
+            ],
+            [
+              "Mistral",
+              "Mistral Medium 3.5（中階）",
+              "1.50 美元",
+              "7.50 美元"
+            ],
+            [
+              "xAI",
+              "grok-4.6（旗艦，20 萬 token 內）",
+              "2.00 美元",
+              "6.00 美元"
+            ],
+            [
+              "阿里雲百鍊",
+              "qwen3.8-max（旗艦，新加坡站）",
+              "2 美元",
+              "6 美元"
+            ],
+            [
+              "Anthropic",
+              "Claude Haiku 4.5（輕量）",
+              "1.00 美元",
+              "5.00 美元"
+            ],
+            [
+              "Google",
+              "gemini-3.8-flash（中階，年底前）",
+              "0.75 美元",
+              "3.75 美元"
+            ],
+            [
+              "MiniMax",
+              "MiniMax-M3（旗艦，折後）",
+              "0.30 美元",
+              "1.20 美元"
+            ]
+          ],
+          "caption": "各家官網 2026 年 9 月 15 日當天的標準價，照官網幣別（美元）未做換算，未套用快取、批次與離峰折扣；DeepSeek 與其餘型號的價格寫在內文。"
+        },
+        {
+          "type": "heading",
+          "text": "你的情況該看哪一欄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一張表，不同的工作要盯的欄位不一樣。與其問哪家最便宜，不如先確認自己的請求長什麼樣子，再回去看對應的那一欄。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "輸出很長（寫報告、翻譯整份文件、產生程式碼）：先看輸出價，它通常是輸入價的三到五倍，旗艦與輕量在這一欄拉開最多。",
+            "輸入很長、輸出很短（分類、抽欄位、內容審核）：重點在輸入價與快取價，輸出價再高也只佔一小部分。",
+            "每次都送同一份系統指示或同一批文件：看快取命中價與寫入倍率，回本要讀幾次官網都寫了。",
+            "結果可以等到隔天（整批翻譯、批次標註、離線分析）：看批次欄，五折與八折的差別就在這裡，也要確認你要的模型有沒有被列進折扣名單。",
+            "時段可以自己挑：DeepSeek 是八家裡唯一按時段計價的，離峰半價對排程跑的工作很直接。",
+            "上下文常常超過 20 萬 token：確認有沒有第二層長上下文價，OpenAI、Google、xAI 與 MiniMax 都有，一超過門檻就是整筆請求都用高價計。",
+            "資料不想被拿去改進產品：看免費層與付費層的條款差別，Google 這一欄寫得最直接。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
+          "url": "https://mokaair.com/zh-TW/life/claude-api-first-call"
+        },
+        {
+          "type": "link",
+          "text": "OpenRouter：一把金鑰用遍各家模型",
+          "url": "https://mokaair.com/zh-TW/life/openrouter-multi-model-api"
+        },
+        {
+          "type": "link",
+          "text": "只能訂一個的話訂哪個：ChatGPT、Claude、Gemini",
+          "url": "https://mokaair.com/zh-TW/life/ai-subscription-which-to-pay-2026"
+        },
+        {
+          "type": "link",
+          "text": "開源 vs 閉源模型：對使用者的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-open-vs-closed-models"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI API 定價頁（gpt-6-astra、gpt-5.6-sol／terra／luna 與 gpt-5 系列的標準價、快取輸入價與批次價表）",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 支援的國家與地區清單（名單中列有 Taiwan）",
+          "url": "https://developers.openai.com/api/docs/supported-countries",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic Claude 平台定價頁（各模型每百萬 token 價、快取倍率、批次五折、Sonnet 5 不漲價註記與付款說明）",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 支援的國家與地區清單（名單中列有 Taiwan）",
+          "url": "https://www.anthropic.com/supported-countries",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini API 定價頁（免費層與付費層條款、各 Gemini 模型的標準價、批次價與快取價）",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini API 可用地區頁（支援國家與地區名單中列有 Taiwan）",
+          "url": "https://ai.google.dev/gemini-api/docs/available-regions",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek API 文件：模型與定價（deepseek-flash 與 deepseek-v4-pro 的尖峰／離峰輸入輸出價與快取命中價）",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Mistral API 定價頁（Mistral Large 3、Medium 3.5、Small 4 的每百萬 token 價、批次半價、快取省 90% 與美元歐元切換）",
+          "url": "https://mistral.ai/pricing/api/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "阿里雲 Model Studio（百鍊）模型推理計費頁（qwen3.8-max、qwen3.7-plus、qwen3.8-flash 新加坡站美元價、快取與批次規則、免費額度）",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "MiniMax API 文件：隨用隨付定價（MiniMax-M3、M2.7 與舊型號的輸入輸出價與快取讀寫價）",
+          "url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "xAI 開發者文件：定價頁（Grok 各型號輸入、快取與輸出價，批次折扣名單與優先處理加價）",
+          "url": "https://docs.x.ai/developers/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "xAI 開發者文件：模型頁（grok-4.6 的上下文長度與每百萬 token 價）",
+          "url": "https://docs.x.ai/developers/models",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1336 @@
+{
+  "slug": "codex-context-handoff",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "display_order": 122,
+  "locales": {
+    "zh-TW": {
+      "title": "上下文與工作交接",
+      "description": "長工作需要把決策與證據留下，不能只依靠對話長度。README 說明怎麼使用專案，設計文件記錄為何這樣做，交接文件整理目前做到哪裡；AGENTS.md 則放持續有效的工作規則，避免把所有進度塞成規則。",
+      "hero": {
+        "src": "/guides/codex-context-handoff/hero.jpg",
+        "alt": "實作順序示意圖，非產品介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標與準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "寫出能讓下一個工作階段接手的 handoff.md，並用一次刻意過期的交接測試它是否可靠。閱讀約 12 分鐘，操作約 22 分鐘。需要桌面版或 CLI、文字編輯器、Node.js 22 以上相容版本，以及獨立的 Small Steps 教材副本。Windows、macOS、Linux 步驟相同；終端機位置確認方式依平台不同。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "工作階段續接",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "保留對話，但對話不一定包含磁碟最新內容。交接文件的工作是保存目標、已確認的事實、未解問題與下一步，讓新任務能重新驗證。它不是把所有聊天複製成長文，也不是加入一個檔案就自動被所有工作階段讀取；應在新任務明確要求讀取。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 1：準備故障副本與狀態標記"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "取得"
+            },
+            {
+              "type": "article",
+              "text": "第一個小專案",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "的練習 ZIP，把 broken 中五個檔案複製到新資料夾 codex-handoff-lab。這份故障與 start 不同：Completed 誤回傳未完成任務。用編輯器開根目錄並新增 LAB_STATE.txt，內容如下。PowerShell 用 Get-Location，macOS／Linux 用 pwd，確認操作位置後執行測試。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "檔案內容：存入 LAB_STATE.txt",
+          "language": "text",
+          "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n"
+        },
+        {
+          "type": "code",
+          "label": "系統終端機：先核對本篇指定的練習目錄",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期是 2 過 1 敗，失敗在篩選行為。只有真的執行得到這個結果，才能在交接寫「已確認」。沒有 Node 或路徑錯誤，就寫阻礙與實際錯誤摘要，不填預設成功數字。不要保存帳號、金鑰或完整私密工具輸出；這個教材只需要虛構標記與相關測試資訊。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 2：寫一份可查證的交接"
+        },
+        {
+          "type": "paragraph",
+          "text": "在根目錄建立 handoff.md。下面是完成基準測試後可使用的完整範例；如果你的結果不同，先更正 Observed 欄位。目標說明要做到什麼，Scope 指出可以改哪裡，Observed 帶上版本與命令，Not checked 保留缺少的證據，Next 讓接手者知道第一步要確認什麼。"
+        },
+        {
+          "type": "code",
+          "label": "交接範例：基準結果相符後才存入 handoff.md",
+          "language": "markdown",
+          "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把「已做了一些修改」當成可驗證成果。寫出檔案、具體行為、執行過的命令與未執行的檢查，才方便下一個人重做。正式 Git 專案可加分支與 commit，但未提交的變更仍需看 diff；commit 相同不能證明工作樹相同。本練習不需要為了填欄位捏造 commit ID。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步驟 3：讓交接刻意過期，再交給新任務"
+        },
+        {
+          "type": "paragraph",
+          "text": "現在做一次受控改動：只把 ZIP 裡 expected/core.mjs 複製到本練習的 core.mjs，將 LAB_STATE.txt 的 Revision 改成 FIXED-2，暫時不改 handoff.md。再跑測試應 3 項全過。這模擬你離開後另一位協作者已修好程式，但聊天與文件仍記著故障。整個網站仍是同一份教材，測試檔沒有變。"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版在同一練習專案新建任務，CLI 則先 /exit 回系統終端機，確認目錄後重新執行 codex，這次不用 resume。把下列要求送到新任務。預期它辨識 FIXED-2、舊交接 BROKEN-1 與 3 項通過之間的差異，提出只更新交接記錄，不再改已正確的篩選函式。"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
+          "language": "text",
+          "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若它仍想修正 Completed，要求指出目前哪一行錯、哪個測試還失敗；不要用舊紀錄覆蓋剛讀到的證據。確認後只允許更新 handoff.md：Observed 改為 FIXED-2 與真正 3 項通過，Next 改為未完成的畫面驗證。保留「原交接過期，已重新核對」的短記錄，讓版本差異有原因可追。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "長對話、compact 與文件分工"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI 的 /compact 可壓縮長對話保留重要內容；在互動輸入框使用，若介面要求確認就依提示操作，完成後請它重述目標、限制與未完成項目並和 handoff.md 對照。本練習不需要刻意灌滿對話。壓縮不能當作檔案備份、Git 還原或一定不漏細節的保證，重要決策應保存在可重新讀取的文件。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "文件",
+            "保存什麼",
+            "何時更新"
+          ],
+          "rows": [
+            [
+              "AGENTS.md",
+              "長期規則與命令",
+              "團隊工作方式改變"
+            ],
+            [
+              "README.md",
+              "專案入口與啟動方法",
+              "使用方式改變"
+            ],
+            [
+              "設計文件",
+              "行為、取捨、限制",
+              "接受新的設計決策"
+            ],
+            [
+              "handoff.md",
+              "當前證據、阻礙、下一步",
+              "暫停、交接或驗證後"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "壓縮之後做一次唯讀交接核對"
+        },
+        {
+          "type": "code",
+          "label": "互動斜線指令：在 Codex CLI 內輸入",
+          "language": "text",
+          "code": "/compact\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "只在需要整理的原 CLI 任務使用上面指令，待壓縮結束後送出下面要求；不為了練習另外灌入大量對話。合格回覆應保留只改 core.mjs 的原範圍、測試不可變，以及畫面未驗收的狀態。若摘要遺漏限制，依磁碟文件補回；不要為了讓摘要看起來一致而把 FIXED-2 改成 BROKEN-1。"
+        },
+        {
+          "type": "code",
+          "label": "自然語言提示詞：在本練習的 Codex 任務輸入",
+          "language": "text",
+          "code": "After compaction, read handoff.md and LAB_STATE.txt from disk. Restate the goal, allowed changes, preserved files, actual recorded checks and remaining work. Compare the summary with the files and identify conflicts or missing constraints. Do not edit files or rerun tests in this check. Label recorded evidence separately from checks performed in this turn.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這些角色可參考"
+            },
+            {
+              "type": "article",
+              "text": "規則與文件分工",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "。不要把一次故障的完整記錄長期塞進 AGENTS.md，讓每個任務都帶著過期資訊。交接最上方放眼前目標與最新核對日期，已解決項目用簡短結果保留，失效的路徑及臨時猜測要刪除或註明，避免接手者把歷史假設當現況。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見問題、還原與驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "新任務說找不到文件，先核對工作目錄與檔名，不立刻讓它搜尋整台電腦；它沒讀交接，就明確附上路徑並要求回報讀到的 Revision；命令在別的目錄成功，不能當作這份程式已通過。若測試失敗與交接不同，保留兩份結果與時間，重新讀相關檔案後再決定，不先改測試來配合舊記錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成時應有舊紀錄與新磁碟不一致的說明、更新的 handoff.md，以及 core.mjs 未被重複修改的證據。想重做只還原 broken/core.mjs、將 LAB_STATE.txt 改回 BROKEN-1，再用上面的原始交接；其他檔案不動。圖中 1 是記錄事實，2 是接手時重驗，3 是更新下一步。本文的模型對話與 /compact 依文件說明，實際執行要由你的結果補上；參考程式的故障與修正另有本機測試。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教學總目錄",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-context-handoff/diagram-1.svg",
+          "alt": "22. 上下文與工作交接 — 實作順序示意圖，非產品介面截圖。 Evidence → Handoff → Resume",
+          "width": 1600,
+          "height": 900,
+          "caption": "22. 上下文與工作交接 — 實作順序示意圖，非產品介面截圖。 Evidence → Handoff → Resume",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "CLI commands and session controls",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Prompting and context",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md discovery",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "上下文与工作交接",
+      "description": "长工作需要把决策与证据留下，不能只依靠对话长度。README 说明怎么使用专案，设计文件记录为何这样做，交接文件整理目前做到哪里；AGENTS.md 则放持续有效的工作规则，避免把所有进度塞成规则。",
+      "hero": {
+        "src": "/guides/codex-context-handoff/hero.jpg",
+        "alt": "实作顺序示意图，非产品介面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目标与准备"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "写出能让下一个工作阶段接手的 handoff.md，并用一次刻意过期的交接测试它是否可靠。阅读约 12 分钟，操作约 22 分钟。需要桌面版或 CLI、文字编辑器、Node.js 22 以上相容版本，以及独立的 Small Steps 教材副本。Windows、macOS、Linux 步骤相同；终端机位置确认方式依平台不同。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "工作阶段续接",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "保留对话，但对话不一定包含磁碟最新内容。交接文件的工作是保存目标、已确认的事实、未解问题与下一步，让新任务能重新验证。它不是把所有聊天复制成长文，也不是加入一个档案就自动被所有工作阶段读取；应在新任务明确要求读取。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 1：准备故障副本与状态标记"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "取得"
+            },
+            {
+              "type": "article",
+              "text": "第一个小专案",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "的练习 ZIP，把 broken 中五个档案复制到新资料夹 codex-handoff-lab。这份故障与 start 不同：Completed 误回传未完成任务。用编辑器开根目录并新增 LAB_STATE.txt，内容如下。PowerShell 用 Get-Location，macOS／Linux 用 pwd，确认操作位置后执行测试。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "档案内容：存入 LAB_STATE.txt",
+          "language": "text",
+          "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n"
+        },
+        {
+          "type": "code",
+          "label": "系统终端机：先核对本篇指定的练习目录",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期是 2 过 1 败，失败在筛选行为。只有真的执行得到这个结果，才能在交接写「已确认」。没有 Node 或路径错误，就写阻碍与实际错误摘要，不填预设成功数字。不要保存帐号、金钥或完整私密工具输出；这个教材只需要虚构标记与相关测试资讯。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 2：写一份可查证的交接"
+        },
+        {
+          "type": "paragraph",
+          "text": "在根目录建立 handoff.md。下面是完成基准测试后可使用的完整范例；如果你的结果不同，先更正 Observed 栏位。目标说明要做到什么，Scope 指出可以改哪里，Observed 带上版本与命令，Not checked 保留缺少的证据，Next 让接手者知道第一步要确认什么。"
+        },
+        {
+          "type": "code",
+          "label": "交接范例：基准结果相符后才存入 handoff.md",
+          "language": "markdown",
+          "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把「已做了一些修改」当成可验证成果。写出档案、具体行为、执行过的命令与未执行的检查，才方便下一个人重做。正式 Git 专案可加分支与 commit，但未提交的变更仍需看 diff；commit 相同不能证明工作树相同。本练习不需要为了填栏位捏造 commit ID。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "步骤 3：让交接刻意过期，再交给新任务"
+        },
+        {
+          "type": "paragraph",
+          "text": "现在做一次受控改动：只把 ZIP 里 expected/core.mjs 复制到本练习的 core.mjs，将 LAB_STATE.txt 的 Revision 改成 FIXED-2，暂时不改 handoff.md。再跑测试应 3 项全过。这模拟你离开后另一位协作者已修好程式，但聊天与文件仍记著故障。整个网站仍是同一份教材，测试档没有变。"
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面版在同一练习专案新建任务，CLI 则先 /exit 回系统终端机，确认目录后重新执行 codex，这次不用 resume。把下列要求送到新任务。预期它辨识 FIXED-2、旧交接 BROKEN-1 与 3 项通过之间的差异，提出只更新交接记录，不再改已正确的筛选函式。"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
+          "language": "text",
+          "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "若它仍想修正 Completed，要求指出目前哪一行错、哪个测试还失败；不要用旧纪录覆盖刚读到的证据。确认后只允许更新 handoff.md：Observed 改为 FIXED-2 与真正 3 项通过，Next 改为未完成的画面验证。保留「原交接过期，已重新核对」的短记录，让版本差异有原因可追。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "长对话、compact 与文件分工"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI 的 /compact 可压缩长对话保留重要内容；在互动输入框使用，若介面要求确认就依提示操作，完成后请它重述目标、限制与未完成项目并和 handoff.md 对照。本练习不需要刻意灌满对话。压缩不能当作档案备份、Git 还原或一定不漏细节的保证，重要决策应保存在可重新读取的文件。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "文件",
+            "保存什么",
+            "何时更新"
+          ],
+          "rows": [
+            [
+              "AGENTS.md",
+              "长期规则与命令",
+              "团队工作方式改变"
+            ],
+            [
+              "README.md",
+              "专案入口与启动方法",
+              "使用方式改变"
+            ],
+            [
+              "设计文件",
+              "行为、取舍、限制",
+              "接受新的设计决策"
+            ],
+            [
+              "handoff.md",
+              "当前证据、阻碍、下一步",
+              "暂停、交接或验证后"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "压缩之后做一次唯读交接核对"
+        },
+        {
+          "type": "code",
+          "label": "互动斜线指令：在 Codex CLI 内输入",
+          "language": "text",
+          "code": "/compact\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "只在需要整理的原 CLI 任务使用上面指令，待压缩结束后送出下面要求；不为了练习另外灌入大量对话。合格回复应保留只改 core.mjs 的原范围、测试不可变，以及画面未验收的状态。若摘要遗漏限制，依磁碟文件补回；不要为了让摘要看起来一致而把 FIXED-2 改成 BROKEN-1。"
+        },
+        {
+          "type": "code",
+          "label": "自然语言提示词：在本练习的 Codex 任务输入",
+          "language": "text",
+          "code": "After compaction, read handoff.md and LAB_STATE.txt from disk. Restate the goal, allowed changes, preserved files, actual recorded checks and remaining work. Compare the summary with the files and identify conflicts or missing constraints. Do not edit files or rerun tests in this check. Label recorded evidence separately from checks performed in this turn.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "这些角色可参考"
+            },
+            {
+              "type": "article",
+              "text": "规则与文件分工",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "。不要把一次故障的完整记录长期塞进 AGENTS.md，让每个任务都带著过期资讯。交接最上方放眼前目标与最新核对日期，已解决项目用简短结果保留，失效的路径及临时猜测要删除或注明，避免接手者把历史假设当现况。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常见问题、还原与验收"
+        },
+        {
+          "type": "paragraph",
+          "text": "新任务说找不到文件，先核对工作目录与档名，不立刻让它搜寻整台电脑；它没读交接，就明确附上路径并要求回报读到的 Revision；命令在别的目录成功，不能当作这份程式已通过。若测试失败与交接不同，保留两份结果与时间，重新读相关档案后再决定，不先改测试来配合旧记录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成时应有旧纪录与新磁碟不一致的说明、更新的 handoff.md，以及 core.mjs 未被重复修改的证据。想重做只还原 broken/core.mjs、将 LAB_STATE.txt 改回 BROKEN-1，再用上面的原始交接；其他档案不动。图中 1 是记录事实，2 是接手时重验，3 是更新下一步。本文的模型对话与 /compact 依文件说明，实际执行要由你的结果补上；参考程式的故障与修正另有本机测试。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Codex 教学总目录",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-context-handoff/diagram-1.svg",
+          "alt": "22. 上下文与工作交接 — 实作顺序示意图，非产品介面截图。 Evidence → Handoff → Resume",
+          "width": 1600,
+          "height": 900,
+          "caption": "22. 上下文与工作交接 — 实作顺序示意图，非产品介面截图。 Evidence → Handoff → Resume",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "CLI commands and session controls",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Prompting and context",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md discovery",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Context and task handoff",
+      "description": "Long work needs durable decisions and evidence, not just a long conversation. README explains use, design documents explain choices, handoffs record current progress and AGENTS.md holds ongoing instructions. Do not turn all temporary progress into permanent rules.",
+      "hero": {
+        "src": "/guides/codex-context-handoff/hero.jpg",
+        "alt": "Workflow illustration, not a product screenshot.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Goal and preparation"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Write a handoff.md that another session can use, then test it with a deliberately stale record. Allow 12 minutes to read and 22 to practice. Use desktop or CLI, a text editor, compatible Node.js 22 or later and an isolated Small Steps copy. The workflow is shared across Windows, macOS and Linux; directory inspection commands differ."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Session resumption",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": " preserves conversation, which may not reflect current disk state. A handoff records goals, verified facts, unresolved issues and next steps for fresh validation. It is not a complete chat transcript or a file guaranteed to load automatically. Explicitly request it in the next task."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 1: Prepare a faulty copy and state marker"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "From the "
+            },
+            {
+              "type": "article",
+              "text": "first-project ZIP",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": ", copy the five broken files into a new codex-handoff-lab. Unlike start, this fixture incorrectly returns unfinished tasks for Completed. Open the root in your editor and add LAB_STATE.txt below. Verify location with Get-Location in PowerShell or pwd on macOS/Linux, then run tests."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "File content: save as LAB_STATE.txt",
+          "language": "text",
+          "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n"
+        },
+        {
+          "type": "code",
+          "label": "System terminal: first verify the practice directory specified here",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expect two passes and one filter failure. Mark this verified only after observing it. If Node is missing or the path is wrong, record the blocker and actual error summary instead of assumed counts. Do not store accounts, keys or full private tool output; fictional markers and relevant test evidence are enough."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 2: Write a verifiable handoff"
+        },
+        {
+          "type": "paragraph",
+          "text": "Create handoff.md at the root. This complete example assumes the observed baseline above; correct Observed if your result differs. Goal defines the outcome, Scope allowed edits, Observed revision and commands, Not checked missing evidence and Next the first checks for the next session."
+        },
+        {
+          "type": "code",
+          "label": "Handoff example: save as handoff.md only after matching the baseline results",
+          "language": "markdown",
+          "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "“Made some changes” is not verifiable evidence. File names, behavior, executed commands and omitted checks let another person repeat the work. In a Git project, add branch and commit, but inspect uncommitted diff too: equal commits do not guarantee equal working trees. Do not invent a commit ID for this lab."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Step 3: Make the handoff stale and start fresh"
+        },
+        {
+          "type": "paragraph",
+          "text": "Make a controlled change: copy only expected/core.mjs from the ZIP over this lab's core.mjs, change LAB_STATE.txt to Revision: FIXED-2 and leave handoff.md stale. Tests should now pass all three. This simulates another collaborator fixing the code after the recorded conversation. Other program files and tests remain unchanged."
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a new desktop task for the same lab. In CLI, /exit to the shell, verify the directory and launch codex again without resume. Send the following request. Expect it to detect FIXED-2 versus recorded BROKEN-1 and three passing tests, then propose updating the record without modifying the already correct filter."
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: enter in this practice Codex task",
+          "language": "text",
+          "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "If it still proposes fixing Completed, ask which current line is wrong and which test still fails. Current evidence must take priority over stale notes. Then authorize only handoff.md: update Observed to FIXED-2 and the actual three passes, and Next to the remaining browser checks. Briefly record that the original handoff was stale and revalidated."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Long conversations, compact and document roles"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI /compact condenses long conversations while retaining important context. Enter it in the interactive composer, follow any confirmation and then compare its restated goal, constraints and remaining work with handoff.md. This lab need not artificially fill context. Compaction is not a file backup, Git rollback or guarantee that every detail survives. Preserve important decisions in readable files."
+        },
+        {
+          "type": "table",
+          "header": [
+            "File",
+            "Stores",
+            "Update when"
+          ],
+          "rows": [
+            [
+              "AGENTS.md",
+              "Durable rules and commands",
+              "Working conventions change"
+            ],
+            [
+              "README.md",
+              "Entry point and startup",
+              "Usage changes"
+            ],
+            [
+              "Design document",
+              "Behavior, tradeoffs, constraints",
+              "A design decision is accepted"
+            ],
+            [
+              "handoff.md",
+              "Current evidence, blockers, next step",
+              "Pausing, handing off or validating"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Check the handoff read-only after compaction"
+        },
+        {
+          "type": "code",
+          "label": "Interactive slash command: enter inside Codex CLI",
+          "language": "text",
+          "code": "/compact\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the command only in the original CLI task when compaction is needed, then send the request below. Do not pad the chat for practice. The answer should preserve the core.mjs-only program scope, unchanged tests and pending browser checks. Recover omitted constraints from files; never change FIXED-2 back to BROKEN-1 merely to match a summary."
+        },
+        {
+          "type": "code",
+          "label": "Natural-language prompt: enter in this practice Codex task",
+          "language": "text",
+          "code": "After compaction, read handoff.md and LAB_STATE.txt from disk. Restate the goal, allowed changes, preserved files, actual recorded checks and remaining work. Compare the summary with the files and identify conflicts or missing constraints. Do not edit files or rerun tests in this check. Label recorded evidence separately from checks performed in this turn.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "See "
+            },
+            {
+              "type": "article",
+              "text": "rules and context files",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": ". Do not permanently place an entire incident log in AGENTS.md so every task inherits stale details. Put the present goal and last verification date near the top of the handoff, retain concise resolved outcomes, and remove or label invalid paths and temporary hypotheses."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Troubleshooting, restoration and acceptance"
+        },
+        {
+          "type": "paragraph",
+          "text": "If the new task cannot find the file, check directory and name rather than searching the entire computer. If unread, provide its path and request the observed Revision. A test succeeding in another directory does not validate this code. If failure differs from the handoff, preserve both results and times, reread relevant files and decide before changing tests."
+        },
+        {
+          "type": "paragraph",
+          "text": "Completion requires an explanation of stale versus current state, updated handoff.md and evidence that core.mjs was not redundantly edited. To repeat, restore only broken/core.mjs, set LAB_STATE.txt to BROKEN-1 and restore the reference handoff. Diagram 1 records facts, 2 revalidates on handoff, 3 updates next steps. Model dialogue and /compact are documented procedures; record your own execution. The reference defect and fix have separate local tests."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back to the Codex learning hub",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-context-handoff/diagram-1.svg",
+          "alt": "22. Context and task handoff — Workflow illustration, not a product screenshot. Evidence → Handoff → Resume",
+          "width": 1600,
+          "height": 900,
+          "caption": "22. Context and task handoff — Workflow illustration, not a product screenshot. Evidence → Handoff → Resume",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "CLI commands and session controls",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Prompting and context",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md discovery",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "コンテキストと作業の引き継ぎ",
+      "description": "長い作業には判断と証拠を残します。README は使い方、設計書は理由、引き継ぎは進捗、AGENTS.md は継続する規則に分けます。",
+      "hero": {
+        "src": "/guides/codex-context-handoff/hero.jpg",
+        "alt": "作業の流れを表す図です。製品画面の画像ではありません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "目標と準備"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "次のセッションが使える handoff.md を作り、意図的に古い記録で信頼性を試します。読む時間12分、操作22分です。デスクトップまたは CLI、エディター、対応する Node.js 22 以降、独立した Small Steps 教材を使います。3 OS 共通で、現在地の確認命令だけが異なります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "セッション再開",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "は会話を残しますが、最新ディスクとは限りません。引継ぎは目的、確認済み事実、未解決点、次の操作を記録して再検証を可能にします。会話全コピーでも自動読込みの保証でもなく、新課題で読むよう明示します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順1：故障コピーと状態の印を用意"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "最初の教材 ZIP",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "の broken 内5ファイルを、新しい codex-handoff-lab へコピーします。start と違い Completed が未完了を返します。ルートに次の LAB_STATE.txt を作り、PowerShell の Get-Location または macOS/Linux の pwd で確認してテストします。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "ファイル内容：LAB_STATE.txt に保存する",
+          "language": "text",
+          "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n"
+        },
+        {
+          "type": "code",
+          "label": "システム端末：先に本文で指定した練習ディレクトリを確認する",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "2成功1失敗で、失敗はフィルターです。実際に観測してから確認済みと書きます。Node 不足や場所違いなら障害と実エラーを書き、数を推測しません。アカウント、鍵、私的な全出力は残さず、架空の印と必要なテスト情報に絞ります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順2：検証可能な引継ぎを書く"
+        },
+        {
+          "type": "paragraph",
+          "text": "ルートに handoff.md を作ります。次の完全例は上の基準結果を実測した前提です。違えば Observed を修正します。Goal は成果、Scope は許可範囲、Observed は版と命令、Not checked は未確認、Next は次の確認を示します。"
+        },
+        {
+          "type": "code",
+          "label": "引き継ぎ例：基準の結果が一致してから handoff.md に保存する",
+          "language": "markdown",
+          "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "「いくつか変更」では検証できません。ファイル、挙動、実行命令、未実施確認を明示します。Git ならブランチと commit も加えますが、未コミット差分も見ます。同じ commit でも作業ツリーは異なり得ます。教材に架空 ID を埋めません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "手順3：記録を古くして新課題へ渡す"
+        },
+        {
+          "type": "paragraph",
+          "text": "ZIP の expected/core.mjs だけ教材へ上書きし、LAB_STATE.txt を Revision: FIXED-2 に変え、handoff.md は古いまま残します。テストは3成功になるはずです。離席中に別の人が修正し、会話と文書だけ故障状態のままという状況を再現します。他ファイルとテストは不変です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ教材でデスクトップの新課題を作ります。CLI は /exit 後に場所を確認して resume なしで codex を起動します。次を送り、FIXED-2、古い BROKEN-1、3成功の不一致を認識し、正しい関数を再変更せず記録更新を提案するか確認します。"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
+          "language": "text",
+          "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "まだ Completed 修正を提案するなら、現在の誤った行と失敗テストを求めます。最新証拠を古い記録で上書きしません。その後 handoff.md だけ更新し、Observed は FIXED-2 と実際の3成功、Next は残る画面確認とします。古い記録を再検証した理由も短く残します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "長い会話、compact と文書の分担"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI の /compact は長い会話を圧縮します。対話欄で入力し、確認があれば従い、目的・制約・残作業の再述を handoff.md と比較します。教材で無理に会話を埋める必要はありません。ファイル保存、Git 復元、全詳細保持の保証ではなく、大事な決定は読める文書に残します。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "文書",
+            "保存するもの",
+            "更新時"
+          ],
+          "rows": [
+            [
+              "AGENTS.md",
+              "長期ルールと命令",
+              "作業慣習の変更"
+            ],
+            [
+              "README.md",
+              "入口と起動方法",
+              "使い方の変更"
+            ],
+            [
+              "設計文書",
+              "挙動、判断、制約",
+              "設計決定の採用"
+            ],
+            [
+              "handoff.md",
+              "最新証拠、障害、次の操作",
+              "中断、引継ぎ、検証後"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "圧縮後に読み取りだけで引き継ぎを照合する"
+        },
+        {
+          "type": "code",
+          "label": "対話スラッシュコマンド：Codex CLI 内で入力する",
+          "language": "text",
+          "code": "/compact\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "整理が必要な元の CLI タスクだけで使い、圧縮終了後に次の依頼を送ります。練習のために会話を水増ししません。core.mjs だけという変更範囲、テスト維持、画面未検証が残っているか確認します。抜けた制約は文書から補い、要約に合わせて FIXED-2 を BROKEN-1 に戻さないでください。"
+        },
+        {
+          "type": "code",
+          "label": "自然言語の依頼：この練習の Codex タスクに入力する",
+          "language": "text",
+          "code": "After compaction, read handoff.md and LAB_STATE.txt from disk. Restate the goal, allowed changes, preserved files, actual recorded checks and remaining work. Compare the summary with the files and identify conflicts or missing constraints. Do not edit files or rerun tests in this check. Label recorded evidence separately from checks performed in this turn.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ルールと文書分担",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "も参照します。一度の障害全記録を AGENTS.md に常置して全課題へ古い情報を渡しません。引継ぎ冒頭に現在目的と確認日、解決済みは短い結果、無効パスや仮説は削除または注記します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "対処、復元と受入"
+        },
+        {
+          "type": "paragraph",
+          "text": "見つからなければ場所と名前を確認し、全 PC 検索をすぐ依頼しません。未読ならパスと読んだ Revision の報告を求めます。別フォルダーの成功は教材の証拠ではありません。記録と違う失敗なら両結果と時刻を残して再読し、古い記録に合わせてテストを変えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不一致の説明、更新済み handoff.md、core.mjs を重複変更していない証拠が完了条件です。再実行は broken/core.mjs だけ復元し、BROKEN-1 と元の引継ぎに戻します。図1は記録、2は再検証、3は次の操作更新です。モデル会話と /compact は資料手順で、実行結果は各自記録します。参考コードの故障と修正は別途ローカルテスト済みです。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 学習目次に戻る",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-context-handoff/diagram-1.svg",
+          "alt": "22. コンテキストと作業の引き継ぎ — 作業の流れを表す図です。製品画面の画像ではありません。 Evidence → Handoff → Resume",
+          "width": 1600,
+          "height": 900,
+          "caption": "22. コンテキストと作業の引き継ぎ — 作業の流れを表す図です。製品画面の画像ではありません。 Evidence → Handoff → Resume",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "CLI commands and session controls",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Prompting and context",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md discovery",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "맥락과 작업 인계",
+      "description": "긴 작업에는 결정과 증거를 남깁니다. README는 사용법, 설계 문서는 이유, 인계는 진행 상황, AGENTS.md는 지속할 규칙으로 구분합니다.",
+      "hero": {
+        "src": "/guides/codex-context-handoff/hero.jpg",
+        "alt": "작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목표와 준비"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "다음 세션이 사용할 handoff.md를 만들고 일부러 오래된 기록으로 신뢰성을 시험합니다. 읽기 12분, 실습 22분입니다. 데스크톱 또는 CLI, 편집기, 호환 Node.js 22 이상, 독립 Small Steps 사본을 사용합니다. 세 OS에서 절차는 같고 현재 경로 확인 명령만 다릅니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "세션 재개",
+              "kind": "life",
+              "slug": "codex-sessions-resume"
+            },
+            {
+              "type": "text",
+              "text": "는 대화를 보존하지만 최신 디스크와 같지는 않습니다. 인계는 목표, 확인 사실, 미해결 문제, 다음 행동을 기록해 재검증하게 합니다. 전체 대화 복사도 자동 로드 보장도 아니며 새 작업에서 읽도록 명시합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1단계: 결함 사본과 상태 표식 준비"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "첫 실습 ZIP",
+              "kind": "life",
+              "slug": "codex-first-project"
+            },
+            {
+              "type": "text",
+              "text": "의 broken 안 다섯 파일을 새 codex-handoff-lab에 복사합니다. start와 달리 Completed가 미완료를 반환합니다. 루트에 다음 LAB_STATE.txt를 만들고 PowerShell Get-Location 또는 macOS/Linux pwd로 확인해 테스트합니다."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "파일 내용: LAB_STATE.txt로 저장",
+          "language": "text",
+          "code": "Lab: codex-handoff-lab\nRevision: BROKEN-1\n"
+        },
+        {
+          "type": "code",
+          "label": "시스템 터미널: 먼저 본문에서 지정한 실습 폴더 확인",
+          "language": "sh",
+          "code": "node --test core.test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "2통과1실패이며 실패는 필터입니다. 실제 관찰한 뒤 확인됨으로 씁니다. Node 누락/경로 오류면 장애와 실제 오류 요약을 쓰고 숫자를 추정하지 않습니다. 계정/키/개인 도구 전체 출력 대신 가상 표식과 필요한 테스트 정보만 남깁니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2단계: 검증 가능한 인계 작성"
+        },
+        {
+          "type": "paragraph",
+          "text": "루트에 handoff.md를 만듭니다. 다음 완성 예시는 위 기준 결과를 실제 관찰한 전제이므로 다르면 Observed를 수정합니다. Goal은 결과, Scope는 허용 범위, Observed는 버전/명령, Not checked는 미확인, Next는 다음 확인입니다."
+        },
+        {
+          "type": "code",
+          "label": "인계 예시: 기준 결과가 일치한 뒤 handoff.md로 저장",
+          "language": "markdown",
+          "code": "# Small Steps handoff\n\n## Goal\nCompleted shows only completed tasks. Keep ordering, storage and existing UI.\n\n## Scope\nLab: codex-handoff-lab. Only core.mjs may need a program change.\nDo not change tests or add dependencies. Preserve other work.\n\n## Observed\nLAB_STATE.txt: Revision: BROKEN-1.\nCommand: node --test core.test.mjs\nResult: 2 passed, 1 failed in the filter case.\nThe completed branch of visibleTasks currently selects unfinished tasks.\n\n## Not checked\nBrowser interaction: NOT RUN.\nPublishing and deployment: NOT PERFORMED.\n\n## Next\n1. Re-read LAB_STATE.txt, core.mjs and the test file; do not trust this record over current files.\n2. Re-run the baseline before deciding whether a fix is still needed.\n3. If still faulty, change only the completed predicate, then test and review the diff.\n4. Manually check Read completed / Build active under all three filters.\n\n## Stop condition\nIf revision, test results or files differ, report the mismatch and revise this record before editing program code.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "‘몇 가지 수정’만으로는 검증할 수 없습니다. 파일, 동작, 실행 명령, 미실행 확인을 명시합니다. Git에서는 브랜치/commit도 넣되 미커밋 차이도 봅니다. 같은 commit이어도 작업 트리는 다를 수 있습니다. 실습에 가짜 ID를 넣지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계: 기록을 오래된 상태로 만들고 새 작업 시작"
+        },
+        {
+          "type": "paragraph",
+          "text": "ZIP expected/core.mjs만 실습에 덮어쓰고 LAB_STATE.txt를 Revision: FIXED-2로 바꾸며 handoff.md는 그대로 둡니다. 테스트는 3개 통과해야 합니다. 다른 협업자가 수정했지만 대화/문서만 결함 상태로 남은 상황을 재현합니다. 다른 파일과 테스트는 바꾸지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "동일 실습의 새 데스크톱 작업을 만듭니다. CLI는 /exit 후 경로 확인하고 resume 없이 codex를 시작합니다. 다음 요청으로 FIXED-2, 오래된 BROKEN-1, 3통과 불일치를 인식하고 올바른 함수를 다시 수정하지 않고 기록 갱신을 제안하는지 확인합니다."
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
+          "language": "text",
+          "code": "Continue this lab using handoff.md, but first verify it against current files. Read LAB_STATE.txt, core.mjs and core.test.mjs. Run node --test core.test.mjs. Do not edit anything yet.\nCompare the recorded revision, predicate and test result with current evidence. Report mismatches and propose the smallest next step. Browser checks must remain NOT RUN unless actually performed.\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "계속 Completed 수정을 제안하면 현재 틀린 줄과 실패 테스트를 요청합니다. 최신 증거를 오래된 기록으로 덮지 않습니다. 이후 handoff.md만 갱신해 Observed는 FIXED-2와 실제 3통과, Next는 남은 화면 확인으로 바꿉니다. 오래된 기록을 재검증했다는 이유도 짧게 남깁니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "긴 대화, compact와 문서 역할"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLI /compact는 긴 대화를 압축합니다. 대화 입력창에 넣고 확인 안내를 따른 뒤 목표/제약/남은 작업 요약을 handoff.md와 비교합니다. 실습에서 억지로 문맥을 채울 필요는 없습니다. 파일 백업, Git 복원, 모든 상세 보존 보장이 아니므로 중요한 결정은 읽을 수 있는 문서에 남깁니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "문서",
+            "저장 내용",
+            "갱신 시점"
+          ],
+          "rows": [
+            [
+              "AGENTS.md",
+              "장기 규칙과 명령",
+              "작업 관행 변경"
+            ],
+            [
+              "README.md",
+              "진입점과 시작 방법",
+              "사용법 변경"
+            ],
+            [
+              "설계 문서",
+              "동작, 선택 이유, 제약",
+              "설계 결정 채택"
+            ],
+            [
+              "handoff.md",
+              "최신 증거, 장애, 다음 행동",
+              "중단, 인계, 검증 후"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "압축 후 읽기 전용으로 인계 확인하기"
+        },
+        {
+          "type": "code",
+          "label": "대화형 슬래시 명령: Codex CLI 안에서 입력",
+          "language": "text",
+          "code": "/compact\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "정리가 필요한 원래 CLI 작업에서만 사용하고 압축이 끝난 뒤 아래 요청을 보내세요. 실습을 위해 대화를 부풀리지 마세요. 코드 변경은 core.mjs만, 테스트 유지, 화면 미검증이라는 조건이 남아 있어야 합니다. 빠진 제약은 파일에서 복원하며 요약에 맞추려고 FIXED-2를 BROKEN-1로 바꾸지 않습니다."
+        },
+        {
+          "type": "code",
+          "label": "자연어 요청: 이 실습의 Codex 작업에 입력",
+          "language": "text",
+          "code": "After compaction, read handoff.md and LAB_STATE.txt from disk. Restate the goal, allowed changes, preserved files, actual recorded checks and remaining work. Compare the summary with the files and identify conflicts or missing constraints. Do not edit files or rerun tests in this check. Label recorded evidence separately from checks performed in this turn.\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "규칙과 문서 역할",
+              "kind": "life",
+              "slug": "codex-rules-and-context-files"
+            },
+            {
+              "type": "text",
+              "text": "도 참고합니다. 일회성 장애 전체를 AGENTS.md에 상시 저장해 모든 작업에 오래된 정보를 주지 않습니다. 인계 위쪽에 현재 목표/확인 날짜, 해결 항목은 짧은 결과, 무효 경로/가설은 삭제하거나 표시합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문제 해결, 복원과 검수"
+        },
+        {
+          "type": "paragraph",
+          "text": "파일을 못 찾으면 경로/이름부터 확인하고 PC 전체 검색을 바로 요청하지 않습니다. 안 읽었다면 경로와 읽은 Revision 보고를 요청합니다. 다른 폴더의 성공은 이 코드 검증이 아닙니다. 기록과 다른 실패면 두 결과/시간을 남기고 재확인하며 옛 기록에 맞춰 테스트를 바꾸지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "불일치 설명, 갱신한 handoff.md, core.mjs를 중복 수정하지 않았다는 증거가 완료 조건입니다. 반복 시 broken/core.mjs만 복원하고 BROKEN-1과 원래 인계로 되돌립니다. 그림 1은 기록, 2는 재검증, 3은 다음 행동 갱신입니다. 모델 대화와 /compact는 문서 절차이며 자신의 실행 결과를 기록합니다. 참고 코드 결함/수정은 별도 로컬 테스트되었습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex 학습 목차로 돌아가기",
+              "kind": "life",
+              "slug": "codex-learning-hub"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/codex-context-handoff/diagram-1.svg",
+          "alt": "22. 맥락과 작업 인계 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Evidence → Handoff → Resume",
+          "width": 1600,
+          "height": 900,
+          "caption": "22. 맥락과 작업 인계 — 작업 흐름을 설명하는 그림이며 제품 스크린샷이 아닙니다. Evidence → Handoff → Resume",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "CLI commands and session controls",
+          "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Prompting and context",
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AGENTS.md discovery",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

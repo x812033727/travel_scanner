@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">看得到與看不到 / What can be seen and what cannot</title>
+  <desc id="desc">一張抽象插圖。左邊是一個白色對話框，裡面有三條長短不一的色塊代表一個提問。對話框往右分出兩條粗箭頭：上面那條通往一張淺綠色的卡片，卡片裡有三個圓點各連著一條白色長條，代表一份看得到的來源清單；下面那條通往一個深色的封閉方塊，方塊裡的長條顏色很暗、讀不出內容，代表從外部看不進去的部分。左下角有一行字寫著看得到與看不到。畫面只用圓角矩形、圓形與箭頭等基本幾何形狀，沒有任何商標或介面。</desc>
+  <defs>
+    <marker id="heroarrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <rect x="110" y="300" width="380" height="230" rx="30" fill="#FFFFFF" stroke="#102A2B" stroke-width="6"/>
+  <path d="M 205 530 L 265 530 L 205 596 z" fill="#FFFFFF" stroke="#102A2B" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="160" y="352" width="270" height="22" rx="11" fill="#0D6B68"/>
+  <rect x="160" y="404" width="210" height="22" rx="11" fill="#0D6B68"/>
+  <rect x="160" y="456" width="160" height="22" rx="11" fill="#D97A2B"/>
+
+  <path d="M 530 390 C 620 320, 660 270, 700 250" stroke="#5C6B6B" stroke-width="9" fill="none" stroke-linecap="round" marker-end="url(#heroarrow)"/>
+  <path d="M 530 470 C 620 545, 660 600, 700 630" stroke="#5C6B6B" stroke-width="9" fill="none" stroke-linecap="round" marker-end="url(#heroarrow)"/>
+
+  <rect x="740" y="120" width="720" height="300" rx="26" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <circle cx="806" cy="200" r="20" fill="#0D6B68"/>
+  <circle cx="806" cy="270" r="20" fill="#0D6B68"/>
+  <circle cx="806" cy="340" r="20" fill="#0D6B68"/>
+  <rect x="856" y="188" width="530" height="24" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="856" y="258" width="440" height="24" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="856" y="328" width="500" height="24" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+
+  <rect x="740" y="510" width="720" height="270" rx="26" fill="#102A2B" stroke="#B8442D" stroke-width="6"/>
+  <rect x="806" y="576" width="560" height="24" rx="12" fill="#2C4344"/>
+  <rect x="806" y="644" width="460" height="24" rx="12" fill="#2C4344"/>
+  <rect x="806" y="712" width="520" height="24" rx="12" fill="#2C4344"/>
+
+  <text x="300" y="726" font-size="46" font-weight="bold" text-anchor="middle" fill="#102A2B">看得到與看不到</text>
+</svg>

@@ -1,0 +1,31 @@
+{
+  "attempt": "v4-functional-and-accessibility-repair",
+  "startedAt": "2026-09-15T03:09:30.402Z",
+  "displayedModel": "Pro",
+  "modelMenuLabel": "3.1 Pro 進階推論",
+  "promptFile": "prompt-v4-fixes.txt",
+  "promptSha256": "37efc8ea6a7a6b1fce2bb64ce8ad98f2e3ba58af3a836ca5990a8ce0bf47bf6a",
+  "promptParagraphNormalizedMatch": true,
+  "sameConversationAsV1": true,
+  "status": "complete-html-passed-35-scoped-browser-observations",
+  "repairTargets": [
+    "B05 reserve and total are one cent too high",
+    "Missing accessible error association and dynamic status",
+    "360px width overflows to 380px in 200% root-font fixture"
+  ],
+  "generationCountIncludingThisAttempt": 4,
+  "expectedCounterexampleAnswersSubmitted": true,
+  "authorReferenceSubmitted": false,
+  "googleApiCalls": 0,
+  "additionalPurchases": 0,
+  "browserRecovery": "Original controlled tab became unattached after a test-kernel timeout. Opened the same saved conversation in a new tab; no new conversation or regenerated historical answer.",
+  "answerFile": "v4-answer.txt",
+  "answerCapturedAt": "2026-09-15T03:12:11.938Z",
+  "downloadedFile": "budget-v4.html",
+  "downloadedBytes": 9760,
+  "downloadedSha256": "753e744f95d6d5a2ff756cf2227a9080f7491001beddd01faa6217ad772e4635",
+  "endsWithHtmlTag": true,
+  "actualLineCount": 223,
+  "modelClaimsIndependentlyVerified": false,
+  "reviewFile": "README.md"
+}

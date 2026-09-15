@@ -1,0 +1,397 @@
+{
+  "checked_on": "2026-09-14",
+  "scope": "Targeted Unit H revision: six complete Traditional Chinese drafts read; changed text and added examples compared across four author languages and compiled Simplified Chinese. Not final full-text editorial acceptance.",
+  "changes": {
+    "25": "Corrected /mcp to CLI-only input; desktop/IDE use their settings and fresh task tool activity for normal/disabled/restore checks.",
+    "27": "Added the dirty-worktree removal refusal exercise with verified path, preserved COPY-B and no force.",
+    "28": "Added exact checkout-path attribution and parent-versus-worker baseline evidence.",
+    "52": "Separated interactive CLI input from desktop/IDE diagnostic actions and cross-host configuration evidence.",
+    "53": "Added an optional separate fault copy: removing the exact duplicate-ID guard yields four passes/two failures, then six after restoration.",
+    "54": "Added a concrete integration SHA command and SHA/status/tests comparison after abort."
+  },
+  "code_blocks": {
+    "original_blocks_retained": 44,
+    "added_blocks": 3,
+    "locales": 5,
+    "original_copyable_code_changed": false,
+    "all_blocks_have_labels": true
+  },
+  "official_documents_reviewed": [
+    {
+      "url": "https://learn.chatgpt.com/docs/extend/mcp.md",
+      "sha256": "41f531ed9200f16cda4519d632e42589c40f50671bd370ce45cf8f1ebf67fa2d",
+      "body_characters": 20179,
+      "review_scope": "CLI/TUI, desktop/IDE setup, config fields, auth/callbacks, timeouts, allow/deny policy and plugin-provided server sections; actual body inspected."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents.md",
+      "sha256": "578375343fcbb4bfac2121fbc2bc1ef9839b306c98e49e0472310ef6e179f5a6",
+      "body_characters": 22084,
+      "review_scope": "Availability, explicit triggering, orchestration, surface controls, permission inheritance/runtime overrides and standalone custom-role schema; actual body inspected."
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/environments/git-worktrees.md",
+      "sha256": "d163fcbf82ca40859a5d317060f302cb4c45c57e12aba8a2bce75d85de4b5c6c",
+      "body_characters": 12831,
+      "review_scope": "Actual worktree body inspected earlier in this turn for the F review: starting state, branch/Handoff and managed cleanup versus manual Git worktrees."
+    },
+    {
+      "url": "https://developers.openai.com/learn/docs-mcp",
+      "review_scope": "Actual endpoint, transport, public read-only tools and shared CLI/IDE configuration guidance."
+    },
+    {
+      "url": "https://git-scm.com/docs/git-worktree",
+      "review_scope": "Actual remove, occupied branch and prune/repair sections; remove requires clean worktrees unless forced."
+    },
+    {
+      "url": "https://git-scm.com/docs/git-merge",
+      "review_scope": "Actual description/pre-merge, no-ff, conflict and abort sections; dirty starting states may not be reconstructed."
+    }
+  ],
+  "practice": {
+    "checks_total": 25,
+    "scope": "Windows isolated reference execution: real CLI configuration and unauthenticated public MCP protocol; temporary Git worktrees and Node tests. No model calls.",
+    "reports": [
+      {
+        "path": "docs/codex-learning/evidence/mcp-practice.json",
+        "checks": 6,
+        "sha256": "b25fd1e209c47d8fc6fb2c3eae76dc8b7f0c57aa6b8d268539aa8c21f60b207a",
+        "environment": "Windows; isolated child-process CODEX_HOME; direct public HTTP MCP",
+        "versions": {
+          "cliVersion": "codex-cli 0.154.0-alpha.6.2"
+        }
+      },
+      {
+        "path": "docs/codex-learning/evidence/worktree-practice.json",
+        "checks": 7,
+        "sha256": "3e64dd7c9c2b31a30bf7b28fc9a3b5fee454ce05956ab79eeeb8623e00d7c4cd",
+        "environment": "Windows; temporary repository; isolated Git configuration",
+        "versions": {
+          "gitVersion": "git version 2.55.0.windows.4"
+        }
+      },
+      {
+        "path": "docs/codex-learning/evidence/subagent-reference.json",
+        "checks": 6,
+        "sha256": "1fd8121a6f3235b65122f10916558d5f9a4350a28e092af7d7eb47b22c3f9f0a",
+        "environment": "Windows; temporary Small Steps reference copy",
+        "versions": {
+          "nodeVersion": "v24.13.0"
+        }
+      },
+      {
+        "path": "docs/codex-learning/evidence/integration-practice.json",
+        "checks": 6,
+        "sha256": "cbe17528c07391898a5f00c145ea2d92dbffc869589465f47e8ecf28010b6a42",
+        "environment": "Windows; isolated temporary Git repository; explicit reference edits",
+        "versions": {
+          "gitVersion": "git version 2.55.0.windows.4"
+        }
+      }
+    ],
+    "actual_subagents_spawned": false,
+    "custom_role_activated": false,
+    "desktop_or_ide_ui_executed": false,
+    "oauth_executed": false,
+    "browser_executed": false,
+    "other_os_executed": false
+  },
+  "validation": {
+    "series_integrity": {
+      "lessons": 60,
+      "locale_documents": 300,
+      "result": "passed"
+    },
+    "api_content_tests": {
+      "passed": 9
+    },
+    "compiler_tests": {
+      "passed": 9
+    },
+    "affected_tool_ruff": "passed",
+    "shared_catalogues": "Five API catalogues match the shared manifest",
+    "content_audit": {
+      "errors": 0,
+      "warnings": 21,
+      "note": "Two pre-existing minimum-length advisories for the quality lesson are resolved by its fault/recovery exercise; no threshold changed.",
+      "resolved_advisories": [
+        [
+          "codex-subagent-quality",
+          {
+            "level": "warning",
+            "code": "text_length",
+            "message": "ja: 1451 characters of body text; the guideline for life is 1500–6000"
+          }
+        ],
+        [
+          "codex-subagent-quality",
+          {
+            "level": "warning",
+            "code": "text_length",
+            "message": "ko: 1464 characters of body text; the guideline for life is 1500–6000"
+          }
+        ]
+      ]
+    },
+    "relative_file_links": {
+      "checked": 1119,
+      "result": "passed",
+      "scope": "Learning README/progress and deepening Markdown file targets; anchors separate."
+    },
+    "task_check": {
+      "files": 412,
+      "result": "passed",
+      "existing_unrelated_warnings": "retained"
+    },
+    "diff_whitespace": "passed"
+  },
+  "final_acceptance": {
+    "targeted_depth_revised_lessons_total": 48,
+    "other_lessons_pending_targeted_review": 12,
+    "next_unit": "I: 26, 29, 30, 55, 56, 57",
+    "accepted_lessons": 0,
+    "full_editorial_accepted": false,
+    "preview_accepted": false,
+    "blocker": "Automatic approval review rejected preview startup, including loopback-only retry: blocked by policy; no specific reason. No alternative startup/rendering route attempted."
+  },
+  "publication": {
+    "pushed": false,
+    "pr": false,
+    "merged": false,
+    "imported": false,
+    "published": false,
+    "deployed": false
+  },
+  "base_commit": "1cb4df54621cb3a54181aaf344c3aa5aba396c25",
+  "hash_convention": "Source/pack and practice-report hashes use compiler-compatible UTF-8 text with LF endings. Raw module hashes follow reference reports.",
+  "lessons": [
+    {
+      "id": 25,
+      "slug": "codex-mcp",
+      "source_hashes": {
+        "zh-TW": "5378632c3403d82a881d13a5f7b1544f1f47d7f8162a0ad547276ce924adc42c",
+        "en": "49a2b42505cbab1cb6ec6d5c0596df145757aa1dc808a1a67adb0dac810545b1",
+        "ja": "07123c308f292df027db12d02ad216c14ef2c877acc9ac551da6e430b134f682",
+        "ko": "d442d2fa7d7bcfb300af839d402449128db350d80d5cab72636aaff087e8a641",
+        "zh-CN": "08af5a3fb550e50788824a8c3e1875b800f69cd09d56dc6249985501153673aa"
+      },
+      "pack_hash": "c4204deb5186715afc3d4ae23071db4145c9753a0177179b756f6282a378d1c0",
+      "zh_tw_prose_characters": 2499,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 6,
+          "after": 6
+        },
+        "zh-CN": {
+          "before": 6,
+          "after": 6
+        },
+        "en": {
+          "before": 6,
+          "after": 6
+        },
+        "ja": {
+          "before": 6,
+          "after": 6
+        },
+        "ko": {
+          "before": 6,
+          "after": 6
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 27,
+      "slug": "codex-worktrees",
+      "source_hashes": {
+        "zh-TW": "de60c10485aa7236755cbe262545cc9c27bc2578d186d567f28fcdde87032aad",
+        "en": "2c4a86728239d15940657cdbc692e705c3723e5d2f7d81b86160d662ba6f5687",
+        "ja": "e44aa7d3be87ee158437cfce19022281ff30775ad0413773f0bf4988864577ee",
+        "ko": "a652f4107a560122acc1a86df348cfa6c2a5b96ec6dfbc483168f9a66614c2c7",
+        "zh-CN": "59a20687fad28f5c2e4beebbd1f5cae2243b1ff4bda6fb27ed5870c893064191"
+      },
+      "pack_hash": "3bf50be674504ef1003cc58df3d50349f2a22b4768fece125caf9a94ecef3ac3",
+      "zh_tw_prose_characters": 2649,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 8,
+          "after": 9
+        },
+        "zh-CN": {
+          "before": 8,
+          "after": 9
+        },
+        "en": {
+          "before": 8,
+          "after": 9
+        },
+        "ja": {
+          "before": 8,
+          "after": 9
+        },
+        "ko": {
+          "before": 8,
+          "after": 9
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 28,
+      "slug": "codex-subagents",
+      "source_hashes": {
+        "zh-TW": "3026afa40b0f3bad802e0a68353079f418640b92f6fef95e92f55acd91f39226",
+        "en": "1b130211bc5cc67d27780659e9a4cdb77b79d577fcb7996538be26142740dbd4",
+        "ja": "c2d800dede58c9bf7be07a8259b3b1ac1d59e5d1a10fd51ef2793600927f3e09",
+        "ko": "b7aae0313bfc5a6bc005df04e2f05b4398991a0625f3688b4ce8374c4bab2d0c",
+        "zh-CN": "1014240381fc1b7ec4e063a0792ab9dac3757179bbddd2a061bf5622a9d76b54"
+      },
+      "pack_hash": "7b2e44f8c856965bcf08663a4ddf356865893e43abc9a870e83a0f72a2979f14",
+      "zh_tw_prose_characters": 2307,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 5,
+          "after": 5
+        },
+        "zh-CN": {
+          "before": 5,
+          "after": 5
+        },
+        "en": {
+          "before": 5,
+          "after": 5
+        },
+        "ja": {
+          "before": 5,
+          "after": 5
+        },
+        "ko": {
+          "before": 5,
+          "after": 5
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 52,
+      "slug": "codex-mcp-troubleshooting",
+      "source_hashes": {
+        "zh-TW": "b4462ccc46bd0f4cf7b961b8918875309f977a9df48dc90bfb7d3200552c87d5",
+        "en": "c1a7a43ed672bfe4fc2a8056df6a03d70f141ddd32388127efa21442dd4aecb1",
+        "ja": "de803ccf3b26dc293b84eab3cedaaec3c193b31141c847c1da016dfb1a46b88e",
+        "ko": "77ba946b315dcaf509b5c7c106e6e858d140f5aff9cf24fb2793fdf9ebd2e5b3",
+        "zh-CN": "9542f1744ab853c05fa2648bdc4b50943bed1792f0ba8d56724c372ff9acbf74"
+      },
+      "pack_hash": "23be2167a66d955e7e75e127fa4ed3b63e64bb2e1201d40242bfc8a280811760",
+      "zh_tw_prose_characters": 2425,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 6,
+          "after": 6
+        },
+        "en": {
+          "before": 6,
+          "after": 6
+        },
+        "ja": {
+          "before": 6,
+          "after": 6
+        },
+        "ko": {
+          "before": 6,
+          "after": 6
+        },
+        "zh-CN": {
+          "before": 6,
+          "after": 6
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 53,
+      "slug": "codex-subagent-quality",
+      "source_hashes": {
+        "zh-TW": "e31b9218ad62a73bebf8c66e0d8dcb83726f69bd4d201b668de8c253f9d1c90b",
+        "en": "e6a2ac52076cb8804cb4e9f8e368340df1563ce96d4c634e2ab1823a0763de9b",
+        "ja": "76085714d4cde36ea59ca6b7723c295fa847eb99da66c2bb071f1daf0df96748",
+        "ko": "3f14930b5fc1d04d3fb8f61d9ef5bd7247e0fe9171b9383a8bac99113ac60eda",
+        "zh-CN": "f24f854fc2fae13353eee5cd1ab59e6063f51de05a4baa23b1a8b751d4590ac1"
+      },
+      "pack_hash": "ffc80af4ba5705f4b3aa5439f655313cadd2f14c62c2e5295795965f9901d110",
+      "zh_tw_prose_characters": 2231,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 5,
+          "after": 6
+        },
+        "en": {
+          "before": 5,
+          "after": 6
+        },
+        "ja": {
+          "before": 5,
+          "after": 6
+        },
+        "ko": {
+          "before": 5,
+          "after": 6
+        },
+        "zh-CN": {
+          "before": 5,
+          "after": 6
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true
+    },
+    {
+      "id": 54,
+      "slug": "codex-parallel-integration",
+      "source_hashes": {
+        "zh-TW": "3107de9c1c2aa97a7849504bb7779cbc065eb9cbfb85d4552405e7fa1e1563e4",
+        "en": "da8b2f05c1816d8cdd99dbaa7955492c68b256f163b2cc5f7c94fe311e864d4c",
+        "ja": "e3b48b7ce76484aa7f45aa728816ce79ad57156eb513210d086f4741c46488b8",
+        "ko": "a48697b69ccf5375ba3ab3346ef769cd5313d7fe47bbd196adeb5e0a742907d2",
+        "zh-CN": "af54f13ee443a1a7f916619e4009727fdfa01927bd09013073a8b4176dde60fc"
+      },
+      "pack_hash": "27141aa4432d7ff55fc089f6feab2d5d1c1a40681fcde55e952e2c46dd4d5ee0",
+      "zh_tw_prose_characters": 2340,
+      "code_blocks": {
+        "zh-TW": {
+          "before": 14,
+          "after": 15
+        },
+        "en": {
+          "before": 14,
+          "after": 15
+        },
+        "ja": {
+          "before": 14,
+          "after": 15
+        },
+        "ko": {
+          "before": 14,
+          "after": 15
+        },
+        "zh-CN": {
+          "before": 14,
+          "after": 15
+        }
+      },
+      "all_original_code_retained_in_order": true,
+      "existing_images_unchanged": true,
+      "source_lists_unchanged": true
+    }
+  ]
+}

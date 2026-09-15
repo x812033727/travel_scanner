@@ -1,0 +1,64 @@
+{
+  "id": 27,
+  "sources": [
+    "environments/git-worktrees"
+  ],
+  "code": {
+    "language": "shell",
+    "code": "git status --short\ngit worktree list\ngit worktree add ../codex-practice-docs -b practice/docs\n# Inspect the new directory before starting another task."
+  },
+  "text": {
+    "zh-TW": [
+      "Worktree 讓同一個 Git 程式庫有不同的工作目錄，各自承接不同分支。它適合讓兩項工作分開改檔，但資料庫、連接埠與外部服務仍可能共用，不能把檔案隔離當成所有資源隔離。",
+      "在練習 repo 有乾淨基準提交後開始。先用 git status 與 git worktree list 看已有工作，確定新資料夾與新分支名稱尚未使用。",
+      [
+        "桌面版新任務可選受支援的 Worktree 工作方式；若用 Git 命令，使用下方範例建立獨立目錄。先確認起點分支，別默默從錯誤版本開始。",
+        "在新目錄啟動任務，請代理回報工作目錄與分支。原目錄修改卡片，新目錄修改 README，先用互不相撞的檔案練習。",
+        "每個 worktree 各自安裝必要的本機依賴與環境。忽略檔案不一定自動複製；不要為了方便把正式金鑰拷到所有工作目錄。",
+        "各自驗證與提交，再在整合分支選擇合併。若衝突，理解兩邊改動後修正並重跑驗證。移除 worktree 前確保工作已保存，使用 Git 管理命令而非直接刪資料夾。"
+      ],
+      "兩項工作的檔案與分支可清楚分辨，整合後測試通過，沒有遺失未提交內容。",
+      "同一分支通常不能同時檢出到兩個 worktree。服務 port 衝突要調整執行設定；它不是 Git 分支壞掉。清理前永遠先讀 status。",
+      "在目前 worktree 只改善 README，先回報目錄與分支。不要修改另一個工作目錄或重設其他分支。"
+    ],
+    "en": [
+      "A Git worktree gives one repository multiple working directories on different branches. It isolates file edits, but databases, ports and external services may still be shared. File isolation is not full resource isolation.",
+      "Start from a committed practice baseline. Inspect git status and git worktree list and ensure the new directory and branch names are unused.",
+      [
+        "Use the desktop Worktree option where offered, or the Git command below. Verify the starting branch rather than silently branching from an unintended revision.",
+        "Start the new task in the new directory and ask for path and branch. Practice independent files: card layout in one worktree and README in the other.",
+        "Set up required dependencies and local environment separately. Ignored files may not copy automatically; do not distribute production credentials for convenience.",
+        "Verify and commit each result, then integrate on an intended branch. Resolve conflicts based on both changes and rerun checks. Preserve work before removing a worktree with Git's management commands."
+      ],
+      "The two branches and file sets remain identifiable, integration passes checks and no uncommitted work is lost.",
+      "The same branch generally cannot be checked out in two worktrees at once. A port conflict belongs to runtime configuration, not Git history. Inspect status before cleanup.",
+      "Improve only README in this worktree. Report directory and branch first. Do not modify another worktree or reset other branches."
+    ],
+    "ja": [
+      "Worktree は一つの Git リポジトリに別ブランチの作業場所を作ります。ファイルは分かれても DB、ポート、外部サービスは共有される場合があります。",
+      "基準コミット、status、worktree list を確認し、未使用の名前を選びます。",
+      [
+        "デスクトップの Worktree または例の Git 命令を使い、開始ブランチを確認します。",
+        "新しい場所でパスとブランチを報告させ、片方はカード、片方は README を編集します。",
+        "依存環境をそれぞれ準備します。無視ファイルは自動コピーされるとは限らず、本番キーをばらまきません。",
+        "検証・コミット後に統合し、衝突は両方の意図を確認して直します。削除前に保存し、Git の管理命令を使います。"
+      ],
+      "別々の作業を失わず統合して検証できれば完了です。",
+      "同じブランチの二重チェックアウトやポート競合に注意し、清掃前に status を確認します。",
+      "この worktree の README だけを改善し、最初に場所とブランチを報告してください。他の作業場所やブランチは変更しないでください。"
+    ],
+    "ko": [
+      "Worktree는 하나의 Git 저장소에 다른 브랜치의 작업 폴더를 만듭니다. 파일이 분리되어도 DB, 포트와 외부 서비스는 공유될 수 있습니다.",
+      "기준 커밋, status와 worktree list를 확인하고 사용하지 않은 이름을 선택합니다.",
+      [
+        "데스크톱 Worktree 또는 예시 Git 명령을 쓰고 시작 브랜치를 확인합니다.",
+        "새 위치에서 경로와 브랜치를 보고하게 하고 한쪽은 카드, 다른 쪽은 README를 수정합니다.",
+        "의존 환경을 각각 준비합니다. 무시 파일은 자동 복사되지 않을 수 있으며 운영 키를 널리 복사하지 않습니다.",
+        "검증·커밋 후 통합하고 충돌은 양쪽 의도를 이해하여 수정합니다. 제거 전 저장하고 Git 관리 명령을 사용합니다."
+      ],
+      "각 작업을 잃지 않고 통합해 검증하면 완료입니다.",
+      "같은 브랜치의 중복 체크아웃과 포트 충돌에 주의하고 정리 전 status를 확인하세요.",
+      "이 worktree의 README만 개선하고 먼저 경로와 브랜치를 보고하세요. 다른 작업 폴더나 브랜치는 수정하지 마세요."
+    ]
+  }
+}

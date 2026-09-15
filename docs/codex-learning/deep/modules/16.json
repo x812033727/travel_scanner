@@ -1,0 +1,289 @@
+{
+  "id": 16,
+  "readingMinutes": 12,
+  "operationMinutes": 25,
+  "blocks": [
+    {
+      "type": "h2",
+      "text": [
+        "目標與準備",
+        "Goal and preparation",
+        "目標と準備",
+        "목표와 준비"
+      ]
+    },
+    {
+      "type": "note",
+      "text": [
+        "在獨立專案設定 web_search，確認設定檔位置、有效層級與重新啟動後的狀態，再還原這次變更。閱讀約 12 分鐘，操作約 25 分鐘。需要已能啟動的 Codex CLI、Git 和純文字編輯器；Windows、macOS、Linux 都使用同一份 TOML 內容。IDE 可從設定入口開檔，但本篇用 CLI 診斷作為共同驗證方式。",
+        "Set web_search in an isolated project, identify the file and effective configuration layers, verify after restart and restore the change. Allow 12 minutes to read and 25 to practice. Have a working Codex CLI, Git and a plain-text editor. Windows, macOS and Linux use identical TOML. IDE users can open configuration through its settings; this lesson uses CLI diagnostics for common verification.",
+        "独立プロジェクトで web_search を設定し、ファイルと有効な層、再起動後の状態を確認して戻します。読む時間12分、操作25分です。Codex CLI、Git、テキストエディターが必要で、各 OS の TOML 内容は同じです。IDE の設定からも開けますが検証は共通の CLI 診断を使います。",
+        "독립 프로젝트에서 web_search를 설정하고 파일/유효한 설정 층/재시작 후 상태를 확인한 다음 복원합니다. 읽기 12분, 실습 25분입니다. Codex CLI, Git, 일반 텍스트 편집기가 필요하고 세 OS의 TOML은 같습니다. IDE 설정으로도 열 수 있지만 검증은 공통 CLI 진단을 사용합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "[AGENTS.md](article:codex-agents-md) 告訴代理如何工作，config.toml 則設定應用選項。把「使用哪個模型」寫進一段普通 Markdown，不等於已更改預設模型；同樣地，在 config.toml 留一段沒有註解符號的中文要求，可能讓 TOML 無法解析。先用一項低影響設定學會正確位置與還原，再逐步增加真正需要的選項。",
+        "[AGENTS.md](article:codex-agents-md) instructs the agent; config.toml configures the client. Mentioning a model in ordinary Markdown does not change the configured default. Un-commented prose in TOML may make it invalid. Learn location, verification and restoration with one low-impact option before adding other settings you need.",
+        "[AGENTS.md](article:codex-agents-md) は指示、config.toml はクライアントの設定です。普通の Markdown でモデル名を書いても既定設定は変わりません。TOML に注釈記号なしの説明を書くと解析できないことがあります。低影響の一項目で場所、確認、復元を覚えてから必要な設定を増やします。",
+        "[AGENTS.md](article:codex-agents-md)는 지침이고 config.toml은 클라이언트 설정입니다. 일반 Markdown에 모델명을 써도 기본 설정은 바뀌지 않습니다. TOML에 주석 표시 없이 설명을 쓰면 파싱이 실패할 수 있습니다. 영향이 작은 한 항목으로 위치/검증/복구를 익힌 뒤 필요한 설정을 추가합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "先分清使用者設定與專案設定",
+        "Distinguish user and project configuration",
+        "ユーザー設定とプロジェクト設定",
+        "사용자 설정과 프로젝트 설정 구분"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "使用者設定預設是使用者目錄下的 .codex/config.toml；若啟動環境已有 CODEX_HOME，先確認實際指向哪裡。專案設定則是儲存庫內的 .codex/config.toml，只在該專案被信任時載入。兩個檔案同名，但影響範圍不同。本次只建立練習專案的檔案，不需要搬走帳號驗證、改使用者設定或更動系統環境變數。",
+        "User configuration normally lives at .codex/config.toml under your home directory; check an existing CODEX_HOME override if present. Project configuration is .codex/config.toml inside a repository and loads only for trusted projects. Same filename, different scope. This exercise creates only the lab's file, without moving authentication, changing user defaults or altering system environment variables.",
+        "ユーザー設定は通常ホームの .codex/config.toml で、既存 CODEX_HOME があれば場所を確認します。プロジェクト側はリポジトリ内の同名パスで、信頼された場合に読まれます。同名でも範囲が違います。本課題はプロジェクトのファイルだけを作り、認証移動やグローバル・環境変数変更は不要です。",
+        "사용자 설정은 기본 홈의 .codex/config.toml이며 기존 CODEX_HOME이 있으면 경로를 확인합니다. 프로젝트 설정은 저장소 안의 같은 경로이고 신뢰된 프로젝트에서 로드됩니다. 이름은 같지만 범위는 다릅니다. 실습은 프로젝트 파일만 만들며 인증 이동/전역 설정/시스템 환경 변수 변경은 필요 없습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "| 系統 | 使用者預設位置 | 本次專案位置 |\n| --- | --- | --- |\n| Windows | 使用者資料夾內 .codex/config.toml | codex-config-lab/.codex/config.toml |\n| macOS | ~/.codex/config.toml | 同一個練習相對路徑 |\n| Linux／WSL | 該 Linux 使用者的 ~/.codex/config.toml | 該環境的練習相對路徑 |\n| IDE 擴充套件 | 齒輪 → Codex Settings → Open config.toml | 開檔後核對實際位置 |",
+        "| System | Default user location | Lab location |\n| --- | --- | --- |\n| Windows | .codex/config.toml under user folder | codex-config-lab/.codex/config.toml |\n| macOS | ~/.codex/config.toml | Same lab-relative path |\n| Linux/WSL | That Linux user's ~/.codex/config.toml | Lab path in that environment |\n| IDE extension | Gear → Codex Settings → Open config.toml | Check the opened file's actual path |",
+        "| 環境 | ユーザーの既定位置 | 教材位置 |\n| --- | --- | --- |\n| Windows | ユーザーフォルダー内 .codex/config.toml | codex-config-lab/.codex/config.toml |\n| macOS | ~/.codex/config.toml | 同じ相対パス |\n| Linux/WSL | Linux ユーザーの ~/.codex/config.toml | その環境の教材パス |\n| IDE | 歯車 → Codex Settings → Open config.toml | 開いた実パスを確認 |",
+        "| 환경 | 사용자 기본 위치 | 실습 위치 |\n| --- | --- | --- |\n| Windows | 사용자 폴더 내 .codex/config.toml | codex-config-lab/.codex/config.toml |\n| macOS | ~/.codex/config.toml | 같은 상대 경로 |\n| Linux/WSL | Linux 사용자의 ~/.codex/config.toml | 해당 환경의 실습 경로 |\n| IDE | 톱니바퀴 → Codex Settings → Open config.toml | 실제 열린 경로 확인 |"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 1：先留下原本狀態",
+        "Step 1: Record the starting state",
+        "手順1：元の状態を記録",
+        "1단계: 시작 상태 기록"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "建立新的 codex-config-lab，用編輯器開啟，新增 note.txt 寫入下方一行。從整合終端機確認位置：PowerShell 用 Get-Location，macOS／Linux 用 pwd；在確認全新練習資料夾後執行 git init，讓專案根目錄明確。先不要建立 .codex/config.toml。若同名資料夾已是別人的專案，換新的練習位置，不能為了照步驟重設它。",
+        "Create a new codex-config-lab and note.txt with the line below. Verify the integrated terminal location using Get-Location in PowerShell or pwd on macOS/Linux, then run git init in this new lab to define the project root. Do not create project configuration yet. If that folder already belongs to another project, choose a new lab location instead of resetting it.",
+        "新規 codex-config-lab の note.txt に次の一行を保存します。PowerShell の Get-Location、macOS / Linux の pwd で場所を確認し、新規教材で git init を実行してルートを定めます。設定はまだ作りません。同名の別プロジェクトがあればリセットせず新しい場所を使います。",
+        "새 codex-config-lab의 note.txt에 다음 한 줄을 저장합니다. PowerShell의 Get-Location 또는 macOS/Linux의 pwd로 위치를 확인하고 새 실습에서 git init으로 루트를 정합니다. 설정 파일은 아직 만들지 않습니다. 같은 이름의 다른 프로젝트가 있으면 초기화하지 말고 새 위치를 씁니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "CONFIG-LAB-01\n",
+      "label": [
+        "檔案內容：存入 note.txt",
+        "File content: save as note.txt",
+        "ファイル内容：note.txt に保存する",
+        "파일 내용: note.txt로 저장"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在系統終端機輸入 codex --cd .。若出現專案信任選擇，先核對就是自己剛建立的材料，再依畫面處理。進入互動 CLI 後，分別輸入下面兩個斜線指令；它們不是 PowerShell 命令。/debug-config 用來看設定層及啟用狀態，/status 用來核對任務環境。記錄相關層的路徑與狀態即可，不將完整私人設定輸出貼到公開教學。",
+        "Start codex --cd . in the shell. For a trust prompt, verify it identifies the lab you just created. Inside interactive Codex, run the two slash commands separately; they are not shell commands. /debug-config shows configuration layers and enabled state, while /status checks session context. Record relevant paths/states without publishing full private diagnostics.",
+        "シェルで codex --cd . を起動し、信頼確認は作った教材の場所を確認して処理します。内部で次の斜線コマンドを別々に実行します。シェル命令ではありません。/debug-config で層と状態、/status で課題環境を確認し、必要情報だけ記録して私的な診断全文は公開しません。",
+        "셸에서 codex --cd .로 시작하고 신뢰 안내가 방금 만든 실습인지 확인합니다. 내부에서 다음 슬래시 명령을 각각 실행합니다. 셸 명령이 아닙니다. /debug-config로 층/활성 상태, /status로 작업 환경을 보고 필요한 정보만 기록하며 비공개 진단 전문은 공개하지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "/debug-config\n",
+      "label": [
+        "互動斜線指令：在 Codex CLI 內輸入",
+        "Interactive slash command: enter inside Codex CLI",
+        "対話スラッシュコマンド：Codex CLI 内で入力する",
+        "대화형 슬래시 명령: Codex CLI 안에서 입력"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "/status\n",
+      "label": [
+        "互動斜線指令：在 Codex CLI 內輸入",
+        "Interactive slash command: enter inside Codex CLI",
+        "対話スラッシュコマンド：Codex CLI 内で入力する",
+        "대화형 슬래시 명령: Codex CLI 안에서 입력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "看不到 /debug-config 時先輸入 / 查看該版選單，再用 /exit 回系統終端機，以 codex --version 記版本；依官方安裝來源更新後，重新啟動 CLI 再查。不要臆造另一個同名 shell 指令。若版本或組織環境沒有足夠診斷資訊，就把有效值標成尚未確認，不能只靠模型說「已設定」就算完成。保存起始紀錄後用 /exit 退出。",
+        "If /debug-config is absent, inspect that version's / menu, use /exit to return to the shell and record codex --version. Update through its official installation source, restart CLI and check again. Do not invent a same-named shell command. If diagnostics remain insufficient, mark the effective setting unverified rather than relying on a model assurance. Save your baseline and use /exit.",
+        "/debug-config がなければ / の一覧を見て、/exit でシェルへ戻り codex --version を確認します。導入元の方法で更新し、CLI を再起動して調べます。同名シェル命令を作りません。版や組織環境で診断が足りなければ有効値は未確認とし、モデルの成功宣言だけで完了扱いしません。記録後 /exit で終了します。",
+        "/debug-config가 없으면 / 목록을 확인한 뒤 /exit로 셸에 돌아가 codex --version을 기록합니다. 설치한 공식 방식으로 업데이트하고 CLI를 다시 시작해 확인합니다. 같은 이름의 셸 명령을 지어내지 않습니다. 버전/조직 환경의 진단이 부족하면 유효값을 미확인으로 남기고 모델 성공 선언만 믿지 않습니다. 기준 기록 후 /exit로 종료합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 2：新增一項可還原設定",
+        "Step 2: Add one reversible setting",
+        "手順2：復元可能な一項目を追加",
+        "2단계: 복원 가능한 설정 하나 추가"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "在編輯器的專案檔案清單新增 .codex 資料夾，再建立 config.toml。檢查路徑確實為 codex-config-lab/.codex/config.toml，不是專案根目錄的 config.toml 或 config.toml.txt。如果檔案已存在，先複製到自己能辨認的備份位置並記下原值，只修改同一個頂層 web_search，不重複新增相同鍵。全新練習檔可以直接使用下方完整內容。",
+        "Create .codex/config.toml through the project's file explorer. Verify it is inside .codex, not root config.toml or a .txt file. If it exists, make an identifiable backup, record the original value and modify the existing top-level web_search key without duplicating it. For a new lab file, use the complete sample below.",
+        "プロジェクト内に .codex/config.toml を作り、ルート直下や .txt ではないことを確認します。既存なら分かる場所にバックアップし、元の値を記録して同じトップレベルキーを変更し、重複追加しません。新規なら次の全文を使えます。",
+        "프로젝트 안에 .codex/config.toml을 만들고 루트 바로 아래나 .txt가 아닌지 확인합니다. 기존 파일이면 알아볼 수 있는 곳에 백업하고 원래 값을 기록한 뒤 같은 최상위 키를 수정하며 중복 추가하지 않습니다. 새 파일이면 다음 전체 예시를 씁니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "toml",
+      "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n",
+      "label": [
+        "TOML 檔案內容：新的專案 .codex/config.toml",
+        "TOML file content: new project .codex/config.toml",
+        "TOML ファイル内容：新しいプロジェクトの .codex/config.toml",
+        "TOML 파일 내용: 새 프로젝트 .codex/config.toml"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "鍵名和值的拼字保持原樣；字串要用半形引號，# 後面是註解。這是一個頂層鍵，不能不加判斷就貼在 [features] 或其他表格段落下面；TOML 的表格標頭會改變後續鍵的位置。不要把網頁顯示的程式碼外框反引號一起貼進檔案，存成 UTF-8 純文字後再檢查一次。",
+        "Keep key/value spelling, use straight quotes for the string and # for comments. This is a top-level key: do not blindly append it below [features] or another table header, which changes subsequent key scope. Do not copy the website's surrounding backtick fence into the file. Save as UTF-8 plain text and recheck.",
+        "キーと値の綴り、半角引用符、# の注釈を守ります。トップレベルキーなので [features] などの下へ無条件に追加しません。表見出しは後続キーの所属を変えます。サイトの外側のバッククォートも入れず、UTF-8 のテキストとして保存し確認します。",
+        "키/값 철자, 일반 따옴표, # 주석을 지킵니다. 최상위 키이므로 [features] 등 아래에 무조건 붙이지 않습니다. 테이블 헤더는 뒤 키의 소속을 바꿉니다. 사이트 바깥 백틱도 넣지 말고 UTF-8 텍스트로 저장해 재확인합니다."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 3：重新啟動並確認生效來源",
+        "Step 3: Restart and identify the effective source",
+        "手順3：再起動して有効な出所を確認",
+        "3단계: 재시작 후 유효 출처 확인"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "仍在練習根目錄，用 codex --cd . 開新工作階段，不使用 --search、-c 或 --profile 等額外選項，以免混入另一個實驗。再看 /debug-config，確認專案層是否列出且啟用；若顯示因未信任被略過，先核對專案來源，再按正常信任流程處理。診斷資料的層級順序可能由低到高顯示，要看標籤與啟用狀態，不能只把第一列當成贏家。",
+        "Launch a fresh codex --cd . from the lab without --search, -c or --profile overrides. Inspect /debug-config for an enabled project layer. If skipped as untrusted, verify the project's origin and follow the normal trust flow. Diagnostics may list layers from low to high precedence: read their labels and enabled state rather than treating the first row as the winner.",
+        "教材ルートから --search、-c、--profile なしで新規起動し、/debug-config のプロジェクト層と有効状態を確認します。未信頼で省略なら出所を確認して通常の信頼手順を行います。診断は低優先から表示する場合があるため、最初の行を勝者とせずラベルと状態を読みます。",
+        "실습 루트에서 --search/-c/--profile 없이 새로 시작하고 /debug-config의 프로젝트 층/활성을 확인합니다. 미신뢰로 생략되면 출처 확인 후 정상 신뢰 절차를 따릅니다. 진단은 낮은 우선순위부터 표시할 수 있으므로 첫 행을 승자로 보지 말고 라벨/상태를 읽습니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "將有效設定或可用工具資訊與本檔案比對，並送出下面的本機讀取要求。預期 note.txt 正確回報 CONFIG-LAB-01，沒有為這項任務執行網頁搜尋；若介面提供 web_search 有效值，應為 disabled。單次沒有搜尋只證明那次沒用，不能單獨證明設定成功，所以需保留設定層的診斷依據。",
+        "Compare effective settings or available-tool information with the file, then send the local-read request below. Expect CONFIG-LAB-01 and no search for this task; if the interface exposes the effective web_search value, it should be disabled. One task not searching proves only non-use, not successful configuration, so retain layer diagnostics as evidence.",
+        "有効設定や利用可能ツールの情報とファイルを比較し、次のローカル読み取りを依頼します。CONFIG-LAB-01 と検索なしを期待し、有効値が表示されれば disabled を確認します。一回検索しないだけでは設定成功の証明ではないため、層の診断根拠も残します。",
+        "유효 설정/사용 가능 도구 정보와 파일을 비교하고 다음 로컬 읽기를 요청합니다. CONFIG-LAB-01과 검색 없음이 예상되며 유효값이 표시되면 disabled인지 확인합니다. 한 번 검색하지 않은 것만으로 설정 성공이 입증되지는 않으므로 층 진단 근거도 남깁니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n",
+      "label": [
+        "自然語言提示詞：在此練習專案的新 CLI 輸入",
+        "Natural-language prompt: enter in a new CLI session for this project",
+        "自然言語の依頼：この練習プロジェクトの新しい CLI に入力する",
+        "자연어 요청: 이 실습 프로젝트의 새 CLI에 입력"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "這個開關只關閉內建網頁搜尋工具，不能用來證明所有網路都被封鎖。Shell、瀏覽器、MCP 與外部服務還有自己的權限和設定；需要控制這些範圍時讀[權限與沙盒](article:codex-permissions)。本例不開新服務、不做網路測試，也不為了證明搜尋關閉而繞到其他工具上網。",
+        "This switch disables the built-in search tool, not every network path. Shell, browser, MCP and external services have their own permissions and settings; see [permissions and sandboxing](article:codex-permissions). This exercise neither starts services nor bypasses the setting through another network tool merely to demonstrate it.",
+        "この設定は内蔵検索ツールを無効にするもので全通信遮断ではありません。シェル、ブラウザ、MCP、外部サービスは別の権限と設定を持ちます。[権限とサンドボックス](article:codex-permissions)を参照し、実証のために別ツールで迂回通信しません。",
+        "이 설정은 내장 검색 도구를 끄며 모든 통신 차단은 아닙니다. 셸/브라우저/MCP/외부 서비스에는 별도 권한과 설정이 있습니다. [권한과 샌드박스](article:codex-permissions)를 참고하고 증명을 위해 다른 도구로 우회 통신하지 않습니다."
+      ]
+    },
+    {
+      "type": "h3",
+      "text": [
+        "同一句「沒有搜尋」，可能代表三種情況",
+        "Three meanings behind “no search occurred”",
+        "「検索しなかった」には三つの状態があります",
+        "검색하지 않았다는 관찰이 뜻하는 세 가지 상태"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "判讀例題：甲只有看到 config.toml 寫 disabled；乙另有診斷顯示該專案層因未信任而略過；丙看到該層已啟用且有效值為 disabled。三者這次都沒有搜尋。甲的有效值仍未知；乙要先解決載入來源，不能稱此專案檔已生效；丙才有這個設定的診斷證據，仍不能推論所有網路工具都被封鎖。記錄「檔案內容／層是否載入／有效值／本次行為」四欄，缺證據的欄位留未確認。",
+        "Worked case: A only sees disabled in the file; B also sees the project layer skipped as untrusted; C sees it enabled and the effective value disabled. None searched. A's effective value is unknown. B has a loading issue, not an applied project setting. C has diagnostic evidence for this setting, not proof that all network tools are blocked. Record file content, loaded state, effective value and task behavior separately; leave unsupported fields unverified.",
+        "例：A はファイルの disabled だけを確認、B は未信頼のためプロジェクト層が省略された診断も確認、C は層が有効で実効値が disabled と確認しました。全員が検索しなくても A の実効値は未知、B は読み込みの問題、C はこの設定の診断証拠がある状態です。C でも全通信が遮断されたとは言えません。内容、読み込み状態、実効値、今回の動作を別欄に記録し、不明は未確認にします。",
+        "사례: A는 파일의 disabled만 보았고, B는 신뢰되지 않아 프로젝트 계층을 건너뛰었다는 진단도 보았으며, C는 계층 활성화와 실제 적용 값 disabled를 확인했습니다. 셋 다 검색하지 않았어도 A의 적용 값은 미상, B는 로드 문제, C는 해당 설정의 진단 근거가 있는 상태입니다. C도 모든 네트워크 도구가 차단되었다고 할 수는 없습니다. 파일 내용, 로드 상태, 적용 값, 이번 동작을 따로 기록하고 근거가 없는 칸은 미확인으로 남기세요."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "步驟 4：還原並留下短紀錄",
+        "Step 4: Restore and record the result",
+        "手順4：復元して結果を記録",
+        "4단계: 복원 및 결과 기록"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "退出 CLI 後，若原本沒有此檔案，把本次新建的 config.toml 移到專案設定目錄以外的備份位置；若原本有檔案，只還原 web_search 的舊值或移除這次新增的那一個鍵，保留其他設定。重新開新工作階段，確認專案這項覆寫已不再生效，note.txt 仍未改動。還原後的實際搜尋模式取決於其餘設定，不一定回到某個你猜測的預設值。",
+        "Exit CLI. If no file existed before, move the new config.toml outside the project's configuration directory as a backup. Otherwise restore only web_search's original value or remove only the newly added key. Restart and verify this override is gone and note.txt unchanged. The resulting search mode depends on remaining layers, not an assumed default.",
+        "CLI 終了後、新規ファイルなら設定ディレクトリ外へバックアップとして移します。既存なら web_search の元値だけを戻すか追加キーだけを除き、他を保持します。再起動で上書きが消え note.txt が不変か確認します。復元後の値は残る層で決まり、想像した既定値とは限りません。",
+        "CLI 종료 후 새 파일이면 프로젝트 설정 폴더 밖으로 백업 이동합니다. 기존 파일이면 web_search 원래 값만 복원하거나 추가 키만 제거하고 다른 설정은 보존합니다. 재시작 후 덮어쓰기가 사라지고 note.txt가 그대로인지 확인합니다. 복원값은 남은 층에 따라 달라지며 추측한 기본값과 같다고 단정하지 않습니다."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "File changed: codex-config-lab/.codex/config.toml\nOriginal state: record whether the file/key existed.\nRequested change: web_search = disabled\nLoaded layer: record observed path and enabled/skipped state.\nEffective value: record verified value, or unverified.\nLocal read: record actual note.txt result.\nRestoration: record the restored file/key state and fresh-session check.\n",
+      "label": [
+        "私人驗證筆記：填入實際觀察，不是指令",
+        "Private verification note: record observations; not a command",
+        "個人用の検証メモ：実際の観察を記入する。コマンドではありません",
+        "개인 검증 메모: 실제 관찰을 작성하며 명령으로 실행하지 않음"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": [
+        "常見問題與下一步",
+        "Troubleshooting and next steps",
+        "問題の切り分けと次の手順",
+        "문제 해결과 다음 단계"
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "不能啟動時，先看錯誤指到哪份 TOML、哪一行，檢查引號、重複鍵與表格位置；能啟動但值沒變時，查檔案路徑、專案信任、啟動參數和較近的子目錄設定；編輯器與 CLI 不同時，查它們是否在相同 OS、使用者與工作目錄，尤其 Windows 和 WSL 不共享同一個使用者家目錄。這些問題需要逐一查來源，重裝程式通常不是第一個判斷。",
+        "For startup failure, inspect the named TOML file/line for quotes, duplicate keys and table scope. For unchanged values, check path, trust, launch overrides and nearer project layers. For IDE/CLI disagreement, compare OS, user and directory, especially separate Windows and WSL homes. Diagnose the source before choosing reinstallation.",
+        "起動不能は指定 TOML と行の引用符、重複キー、表の所属を確認します。値が変わらなければパス、信頼、起動上書き、近い層を確認します。IDE と CLI の差は OS、ユーザー、場所、とくに別々の Windows / WSL ホームを比較し、再インストール前に出所を調べます。",
+        "시작 실패는 지목된 TOML/줄의 따옴표, 중복 키, 테이블 소속을 확인합니다. 값이 안 바뀌면 경로/신뢰/시작 옵션/가까운 층을 봅니다. IDE와 CLI 차이는 OS/사용자/경로, 특히 별개인 Windows/WSL 홈을 비교하고 재설치 전에 출처를 진단합니다."
+      ]
+    },
+    {
+      "type": "p",
+      "text": [
+        "組織強制要求與一般預設不同，不能靠專案鍵覆寫被禁止的值。模型、推理深度與額度另看[模型選擇](article:codex-model-selection)，不要從網路抄一份整包設定把現有供應者與登入流程換掉。完成本篇應有起始、啟用、還原三份紀錄，並能指出哪些項目仍未確認；接著到[設定故障排除](article:codex-config-troubleshooting)實際診斷錯誤檔案。本文入口與設定依官方文件查證，檔案語法可獨立驗證，不能把語法正確當成每台機器都已載入。",
+        "Enforced organization requirements differ from defaults; project keys cannot override forbidden values. Use [model selection](article:codex-model-selection) for models and reasoning rather than replacing provider/auth settings with a copied configuration bundle. Finish with baseline, enabled and restored records plus explicit unknowns. Continue to [configuration troubleshooting](article:codex-config-troubleshooting). File syntax can be checked independently; valid TOML is not proof every client loaded it.",
+        "強制要件は一般の既定値と異なり、プロジェクトキーで禁止値を通せません。モデルや推論は[選択記事](article:codex-model-selection)を使い、設定一式のコピーで認証や提供元を替えません。開始、有効、復元と未確認を記録し、[設定の切り分け](article:codex-config-troubleshooting)へ進みます。構文が正しくても各クライアントでの読込み証明ではありません。",
+        "강제 요구는 일반 기본값과 달라 프로젝트 키로 금지값을 허용할 수 없습니다. 모델/추론은 [선택 강의](article:codex-model-selection)를 참고하고 설정 묶음 복사로 인증/공급자를 바꾸지 않습니다. 시작/활성/복원과 미확인을 기록하고 [설정 문제 해결](article:codex-config-troubleshooting)로 이어 갑니다. 문법이 맞아도 모든 클라이언트의 로드 증거는 아닙니다."
+      ]
+    }
+  ]
+}

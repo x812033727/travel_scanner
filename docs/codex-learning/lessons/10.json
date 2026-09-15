@@ -1,0 +1,64 @@
+{
+  "id": 10,
+  "sources": [
+    "agent-configuration/agents-md"
+  ],
+  "code": {
+    "language": "markdown",
+    "code": "# Practice project instructions\n\n- Work only on the profile-card exercise.\n- Keep all supplied text unchanged unless requested.\n- Do not add dependencies without explaining why.\n- After an HTML change, check narrow and wide layouts.\n- Report changed files, checks run, and checks not run."
+  },
+  "text": {
+    "zh-TW": [
+      "AGENTS.md 是讓 Codex 在開始工作前取得專案規則的檔案。全域規則、專案根目錄與工作目錄路徑中的子目錄規則會形成一條指令鏈；同一層有 AGENTS.override.md 時優先讀取它。規則愈具體愈容易遵循，仍需要驗證實際載入。",
+      "先在練習專案使用範例，不要直接改動你所有專案共用的規則。Windows 全域位置通常是使用者資料夾下的 .codex，macOS／Linux 是 ~/.codex；若設定 CODEX_HOME，位置會改變。不要覆寫既有文件，先閱讀它。",
+      [
+        "在練習資料夾根目錄建立 AGENTS.md，加入下方規則。只寫這個專案真正使用的命令與要求，不要貼入不存在的 npm test。",
+        "若需要所有專案共用的個人偏好，再追加到 Codex home 的 AGENTS.md。可建立 AGENTS.override.md 作暫時替代，但要記得它會讓同層一般檔案不被選入。",
+        "需要子目錄規則時，在該目錄放 AGENTS.md 或 override，從該工作目錄啟動驗證。官方發現機制沿根目錄到目前工作目錄讀取，不要假定所有子資料夾規則都會一次加入。",
+        "重新啟動一個工作階段，請 Codex 列出已載入的規則來源並摘要。用一個小修改驗證它有回報檔案與檢查，而不是只用它說『我會遵守』當證據。"
+      ],
+      "你能分辨全域與專案規則，確認來源順序，並用一次實際任務看到規則要求的交付資訊。",
+      "規則沒有生效時檢查檔名大小寫、空檔、override 與目前目錄。預設合併大小有上限，長篇規則可能被截斷；先刪掉重複內容，必要時依官方設定調整。一般 README 不會自動等同 AGENTS.md。",
+      "列出你這次實際載入的 AGENTS.md 或 override 路徑，摘要對這個練習有效的規則。不要修改檔案，也不要輸出認證資料。"
+    ],
+    "en": [
+      "AGENTS.md supplies project instructions before Codex starts work. Global guidance and files along the project-root-to-working-directory path form an instruction chain. At the same level, AGENTS.override.md takes precedence. Keep rules concrete and verify what was actually loaded.",
+      "Try the sample in the practice repository before changing shared personal rules. The default global directory is .codex under your user home on Windows and ~/.codex on macOS/Linux; CODEX_HOME can relocate it. Read existing files before appending changes.",
+      [
+        "Create AGENTS.md at the practice-project root using the sample. Include only commands the project actually supports; do not prescribe npm test in a project without that script.",
+        "Add genuinely cross-project preferences to AGENTS.md in Codex home. A temporary AGENTS.override.md replaces the ordinary instruction file selected at that level, so remember to remove it when no longer needed.",
+        "For specialized folders, add local instructions and start verification from that working directory. Discovery walks from the root to the current directory; it does not load every child directory's rules at once.",
+        "Start a new session and ask for loaded instruction sources and a summary. Run a small change and verify that the file/check report follows the rules rather than treating a promise as proof."
+      ],
+      "You can distinguish global and project scope, identify the source order and observe the requested reporting in an actual task.",
+      "For missing instructions, check filename case, empty files, overrides and current directory. The combined document size is limited; remove duplication before adjusting the documented limit. README does not automatically have AGENTS.md semantics.",
+      "List the AGENTS.md or override paths actually loaded for this run and summarize the rules relevant to the exercise. Do not edit files or expose credentials."
+    ],
+    "ja": [
+      "AGENTS.md は作業開始前にプロジェクトの指示を渡すファイルです。全体設定とルートから現在の作業場所までの規則が連なります。同じ階層では AGENTS.override.md が優先されます。読み込まれた内容を検証することが大切です。",
+      "まず練習プロジェクトで試します。既定の全体設定はユーザーホームの .codex、macOS・Linux では ~/.codex です。CODEX_HOME で変わる場合があります。既存ファイルを先に読みます。",
+      [
+        "ルートに AGENTS.md を作って例を入れます。存在しない npm test など、そのプロジェクトで使えない命令は書きません。",
+        "全プロジェクト共通の希望だけを Codex home の AGENTS.md に追加します。一時的な override は同階層の通常ファイルに優先するため、不要になったら解除します。",
+        "専門のフォルダーには個別規則を置き、そのディレクトリから確認します。探索はルートから現在の場所までで、すべての子フォルダーを一度に読むわけではありません。",
+        "新しいセッションで読み込んだパスと要約を報告させます。小さな変更を試し、ファイルと検証の報告に規則が反映されたかを確認します。"
+      ],
+      "全体規則とプロジェクト規則を区別し、読み込み順と実際の動作を確認できれば完了です。",
+      "無効ならファイル名、空の内容、override、現在の場所を確認します。合計サイズに上限があるため重複を整理します。README は自動的には同じ役割になりません。",
+      "今回読み込んだ AGENTS.md または override のパスと有効な規則を示してください。編集や認証情報の表示は行わないでください。"
+    ],
+    "ko": [
+      "AGENTS.md는 작업 시작 전 프로젝트 지침을 제공하는 파일입니다. 전역 지침과 프로젝트 루트부터 현재 작업 폴더까지의 규칙이 연결됩니다. 같은 위치에서는 AGENTS.override.md가 우선합니다. 실제로 무엇을 읽었는지 검증해야 합니다.",
+      "먼저 연습 프로젝트에서 시험하세요. 기본 전역 위치는 사용자 홈의 .codex이며 macOS/Linux에서는 ~/.codex입니다. CODEX_HOME 설정으로 달라질 수 있습니다. 기존 파일을 먼저 읽습니다.",
+      [
+        "루트에 AGENTS.md를 만들고 예시 규칙을 넣습니다. 존재하지 않는 npm test처럼 프로젝트에서 실행할 수 없는 명령은 적지 않습니다.",
+        "모든 프로젝트에 필요한 선호만 Codex home의 AGENTS.md에 추가합니다. 임시 override는 같은 위치의 일반 파일보다 우선하므로 필요 없으면 해제합니다.",
+        "특정 폴더에는 별도 규칙을 두고 그 위치에서 확인합니다. 탐색은 루트에서 현재 폴더까지이며 모든 하위 폴더 규칙을 한 번에 읽는 것은 아닙니다.",
+        "새 세션에서 로드된 경로와 규칙을 보고하게 합니다. 작은 변경을 시험하고 파일 및 검증 보고가 규칙을 따르는지 확인합니다."
+      ],
+      "전역과 프로젝트 규칙을 구분하고 로드 순서와 실제 동작을 확인하면 완료입니다.",
+      "적용되지 않으면 파일명, 빈 파일, override와 현재 경로를 확인하세요. 합산 크기에 제한이 있으므로 중복을 줄입니다. README는 자동으로 같은 역할을 하지 않습니다.",
+      "이번에 실제로 로드한 AGENTS.md 또는 override 경로와 적용 규칙을 알려 주세요. 파일을 수정하거나 인증 정보를 표시하지 마세요."
+    ]
+  }
+}

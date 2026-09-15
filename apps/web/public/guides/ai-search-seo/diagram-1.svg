@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">四層狀態：往下相依，往上不保證 / Four states of a page in search</title>
+  <desc id="desc">由上往下四層：第一層 HTTP 成功，伺服器正常回應、頁面打得開，這一層的官方控制項是狀態碼與轉址，頁面壞掉後面三層都不會發生。第二層可被抓取，robots.txt 沒有擋住這個路徑，控制項是 robots.txt 的 allow 與 disallow，規範寫明它不是存取授權。第三層已被索引，內容被分析並存進索引資料庫，控制項是 noindex、canonical、hreflang，網站地圖只是告知不是保證。第四層出現在結果裡，包含一般結果與生成式答案，控制項是 nosnippet、data-nosnippet、max-snippet，官方說明寫著已建立索引也不保證出現。每一層只讓下一層有資格發生，沒有一層是保證。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">四層狀態：往下相依，往上不保證</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Four states of a page: crawled, indexed, served. None of them is guaranteed.</text>
+
+  <text x="60" y="126" font-size="18" font-weight="700" fill="#5C6B6B">四層狀態</text>
+  <text x="980" y="126" font-size="18" font-weight="700" fill="#5C6B6B">官方文件裡的控制項</text>
+
+  <rect x="60" y="145" width="880" height="140" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="140" cy="215" r="34" fill="#2F6F9F"/>
+  <text x="140" y="227" text-anchor="middle" font-size="32" font-weight="700" fill="#FFFFFF">一</text>
+  <text x="205" y="203" font-size="26" font-weight="700" fill="#102A2B">HTTP 成功</text>
+  <text x="205" y="245" font-size="18" fill="#5C6B6B">伺服器正常回應，頁面打得開</text>
+  <rect x="980" y="145" width="560" height="140" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1010" y="203" font-size="17" fill="#102A2B">狀態碼與轉址</text>
+  <text x="1010" y="243" font-size="17" fill="#5C6B6B">頁面壞掉，後面三層都不會發生</text>
+
+  <line x1="140" y1="291" x2="140" y2="317" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="325" width="880" height="140" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <circle cx="140" cy="395" r="34" fill="#D97A2B"/>
+  <text x="140" y="407" text-anchor="middle" font-size="32" font-weight="700" fill="#FFFFFF">二</text>
+  <text x="205" y="383" font-size="26" font-weight="700" fill="#102A2B">可被抓取</text>
+  <text x="205" y="425" font-size="18" fill="#5C6B6B">robots.txt 沒有擋住這個路徑</text>
+  <rect x="980" y="325" width="560" height="140" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1010" y="383" font-size="17" fill="#102A2B">robots.txt 的 allow 與 disallow</text>
+  <text x="1010" y="423" font-size="17" fill="#5C6B6B">規範寫明它不是存取授權</text>
+
+  <line x1="140" y1="471" x2="140" y2="497" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="505" width="880" height="140" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="140" cy="575" r="34" fill="#0D6B68"/>
+  <text x="140" y="587" text-anchor="middle" font-size="32" font-weight="700" fill="#FFFFFF">三</text>
+  <text x="205" y="563" font-size="26" font-weight="700" fill="#102A2B">已被索引</text>
+  <text x="205" y="605" font-size="18" fill="#5C6B6B">內容被分析並存進索引資料庫</text>
+  <rect x="980" y="505" width="560" height="140" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1010" y="563" font-size="17" fill="#102A2B">noindex、canonical、hreflang</text>
+  <text x="1010" y="603" font-size="17" fill="#5C6B6B">網站地圖只是告知，不是保證</text>
+
+  <line x1="140" y1="651" x2="140" y2="677" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="685" width="880" height="140" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <circle cx="140" cy="755" r="34" fill="#2E7D5B"/>
+  <text x="140" y="767" text-anchor="middle" font-size="32" font-weight="700" fill="#FFFFFF">四</text>
+  <text x="205" y="743" font-size="26" font-weight="700" fill="#102A2B">出現在結果裡</text>
+  <text x="205" y="785" font-size="18" fill="#5C6B6B">包含一般結果與生成式答案</text>
+  <rect x="980" y="685" width="560" height="140" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1010" y="743" font-size="17" fill="#102A2B">nosnippet、data-nosnippet、max-snippet</text>
+  <text x="1010" y="783" font-size="17" fill="#5C6B6B">官方說明：已建立索引也不保證出現</text>
+
+  <text x="60" y="872" font-size="16" fill="#5C6B6B">每一層只讓下一層有資格發生，沒有一層是保證</text>
+  <text x="1540" y="872" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

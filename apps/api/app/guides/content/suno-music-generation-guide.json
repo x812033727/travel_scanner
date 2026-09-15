@@ -1,0 +1,383 @@
+{
+  "slug": "suno-music-generation-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Suno 做歌：從歌詞到成品，方案、下載與商用權怎麼算",
+      "description": "Suno 2026 年 9 月 3 日生效的新版條款把商用權綁在「有沒有下載」上：免費方案只有 7 次終身試用下載且不可商用，Pro 每月 20 次、Premier 每月 60 次才附商用權。這篇照官網當天頁面整理 Simple 與 Custom 模式怎麼填、歌詞與風格欄位的寫法、v6 三個模型與單次最長 8 分鐘、Extend 與 Cover、輸出格式與方案點數，以及條款裡的所有權條文。",
+      "hero": {
+        "src": "/guides/suno-music-generation-guide/hero.jpg",
+        "alt": "插圖：左邊一張寫著歌詞行的紙卡，箭頭指向中央圓形裡的聲波，再指向右邊代表音檔的卡片與下載箭頭",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suno 用文字描述與歌詞生成完整歌曲，這篇要回答的是：從註冊到一首可以發行的歌，中間要做什麼、花多少錢、做出來的歌能不能拿去賺錢。結論先說，2026 年 9 月 3 日生效的新版服務條款把商用權綁在「有沒有合法下載」上，免費方案最多 7 次終身試用下載且不附商用權，Pro 每月 20 次、Premier 每月 60 次下載才附商用權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下按 suno.com 與 help.suno.com 在 2026 年 9 月 14 日的頁面整理：免費方案的額度、Simple 與 Custom 兩種建立模式、歌詞與風格欄位的寫法、現役的 v6 三個模型與單次最長 8 分鐘的限制、延長與翻唱這些官方功能、輸出格式與下載計次規則，以及條款裡的所有權與內容規範。介面名稱以官網當天版本為準。"
+        },
+        {
+          "type": "heading",
+          "text": "開始之前：免費方案能做到哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "註冊照官方說明是在 suno.com 右上角按 Sign Up，會轉到 Google 之類的單一登入；手機版打開 App 選「Create a free account」，同一個帳號在網頁版與 App 通用。註冊完就能生成，不需要先付費。"
+        },
+        {
+          "type": "paragraph",
+          "text": "免費方案每天補滿 50 點，官方說明寫補點以世界協調時間（UTC）計算，並把這個額度形容成「一天可以做 10 首歌」。為什麼是 10 首？因為每按一次生成會同時做出兩首歌、合計扣 10 點，50 點剛好是五次生成。免費方案能用的模型是 v6-mini，可上傳的音檔長度上限 8 分鐘。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "模型：只有免費模型 v6-mini，沒有 v6 與 v6-wild",
+            "佇列：共用佇列、一次最多 4 首；付費方案是優先佇列、一次最多 10 首",
+            "下載：定價頁寫「沒有每月歌曲下載額度」，說明中心補充最多 7 次終身試用下載",
+            "加購：不能加購點數，也不能做分軌（stem separation）",
+            "商用：沒有商用權，試用下載的歌一樣不能商用"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "官方把免費下載分成兩種情況：2026 年 9 月 3 日之前加入的免費使用者最多有 7 次試用下載，之後加入的可能偶爾拿到，兩種都可以另外加購。試用下載會留著、不每月補充，而且明文不適用商業用途。下載額度只管「把檔案帶離平台」：在 Suno 上聽、用連結分享整個資料庫，官方寫所有方案都不受限制。"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌",
+          "url": "https://mokaair.com/zh-TW/life/minimax-music-generation"
+        },
+        {
+          "type": "heading",
+          "text": "Simple 與 Custom：兩種建立模式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的建立頁只有兩個模式。Simple 照官方說明是到 suno.com/create 選 Simple，寫一段你想聽到什麼的描述就好，官方舉的例子是「A synth pop song about having fun all night」，不知道從哪開始可以按骰子拿隨機提示詞。v6 的官方問答還寫，現在可以在同一段提示詞裡一次引用 Suno 的歌曲、播放清單、上傳音檔、圖片與影片。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Custom 是給要掌控細節的人。官方說明寫：到 suno.com/create（或左側工具列的 Create 圖示），把上方切到 Custom，就會出現貼自己歌詞的欄位。iOS 的步驟一樣：切 Custom、貼歌詞或讓 Suno 幫你寫，不要人聲就打開 Instrumental，接著填 Styles 與進階選項，最後填標題按 Create。"
+        },
+        {
+          "type": "paragraph",
+          "text": "進階選項第一個是 Exclude，把不想要的樂器或唱腔寫進去就會被排除。v6 的官方問答另外說明 Variety 滑桿會替你調整並更新風格提示詞，想完全掌控自己寫的風格標籤就把它調到 0。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Custom 模式四個欄位的填法範例（歌詞、風格、排除、標題）",
+          "code": "【Lyrics 歌詞欄位】\n[Intro]\n夜班公車 停在第七個路口\n\n[Verse]\n便利商店的燈 白得像白天\n我把耳機音量 調到蓋過雨聲\n明天的事 留給明天再說\n\n[Pre-Chorus]\n再兩站 就到家\n再兩句 就說完\n\n[Chorus]\n所以我們慢慢走\n把整條回家的路 走成一首歌\n所以我們慢慢走\n沒有人在等 也沒關係\n\n[Bridge]\n如果天亮以前 雨停了\n我就把這一段 留給你\n\n[Outro]\n夜班公車 開走了\n\n【Styles 風格欄位】\ndream pop, mid-tempo, female vocal, clean electric guitar,\nwarm analog synth pads, soft brushed drums, reverb-heavy,\nmelancholic but hopeful\n\n【Advanced / Exclude 排除欄位】\nheavy distortion, rap vocals, saxophone\n\n【Title 標題欄位】\n夜班公車\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "段落標記的字直接照官方的音樂詞彙表：Intro、Verse、Pre-Chorus、Chorus、Bridge、Outro 都在表上。同一份詞彙表建議把速度、力度與樂器寫進提示詞，官方舉的例子像「upbeat allegro pop」「crescendo into powerful chorus」「sparse piano and vocals」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "歌詞的歸屬官方寫得很清楚：不論你用哪一個方案，你輸入的原創歌詞的所有權與權利都還是你的；如果歌詞是別人寫的，官方要求先取得授權。"
+        },
+        {
+          "type": "link",
+          "text": "ElevenLabs 與語音克隆：配音、方案與同意規則怎麼看",
+          "url": "https://mokaair.com/zh-TW/life/ai-voice-cloning-elevenlabs"
+        },
+        {
+          "type": "heading",
+          "text": "模型版本與單次長度",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 14 日官網的現役模型是 v6 家族三個版本。v6 是旗艦款，官方形容它可靠、精準，開放給 Pro 與 Premier；v6-wild 走實驗路線，結果比較難預測、更會混搭曲風，同樣限付費方案；v6-mini 比較快、比較輕，所有方案都能用。三個版本都支援單次生成最長 8 分鐘，模型在建立表單右上角的下拉選單切換。"
+        },
+        {
+          "type": "paragraph",
+          "text": "點數算法沒有因為換模型而變。官方問答寫「v6 的生成點數跟過去的模型一樣，每次生成會做出兩首歌、合計 10 點」，但也提醒提示詞裡放進很多圖片與影片會提高點數。另有一個 Max Mode 可以在任何一次生成打開，官方寫它花更多點數，適合超過兩分鐘的歌、希望翻唱貼近原曲，以及要讓人聲與風格整首保持一致的時候。"
+        },
+        {
+          "type": "paragraph",
+          "text": "v6 之前的模型全部退場。官方寫舊模型只是不能再生成新歌，既有的歌還留在資料庫裡可以聽、分享、重新母帶（Remaster）與翻唱，但新的產出一律由 v6 系列生成，聲音可能跟原本那次不同。"
+        },
+        {
+          "type": "link",
+          "text": "Lyria 3.5 進入 Gemini：AI 音樂創作有哪些新選擇？",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-lyria-35-gemini-20260904"
+        },
+        {
+          "type": "heading",
+          "text": "延長、翻唱、Persona 與換段落",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一首歌生成之後還能繼續改。官方說明裡的延長（Extend）步驟是這樣："
+        },
+        {
+          "type": "list",
+          "items": [
+            "找到要改的那首歌，按歌名右邊的三點（...）圖示，選 Remix/Edit",
+            "往下選 Extend",
+            "拖曳延長視窗裡的白色箭頭，決定保留原曲到哪裡、從哪裡開始接",
+            "填入新的歌詞或風格細節，按 Create",
+            "挑到滿意的版本後按三點圖示、移到 Create、選 Get Whole Song，把新結尾接回原曲"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "翻唱（Cover）是換風格、保留旋律，官方標示還在 Beta、只開放 Pro 與 Premier，而且只能用在你自己做的歌；官方也寫第一批生成不扣點。Persona 則是把一首歌的人聲與風格存起來重複使用：在三點選單選 Create、Make Persona，命名存檔後，在 Custom 模式歌詞欄位上方就能叫出來，風格細節會自動填進 Style of Music。官方提醒 Persona 預設公開，不想被看到要切成私人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "換段落（Replace Section）是 Pro 與 Premier 的編輯功能，用來換掉中間的段落或改一段歌詞：拖曳選取要換的區間，左邊歌詞框直接改，按 Recreate Section 會生成兩個版本讓你挑，選定後另外產生一份完整歌曲。想單純剪掉頭尾則用 Crop。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分軌（Get Stems）把一首歌拆成人聲、鼓、貝斯、吉他、鍵盤等獨立音軌，官方註明只有 Pro 與 Premier 能用：Auto Split 最多拆成 12 軌、每次 50 點；Split from Mix 抽出單一樂器或人聲再加一軌互補音軌、每軌 10 點；Advanced Split 限 Premier，可從將近 100 種樂器裡指定、每軌 10 點。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/suno-music-generation-guide/diagram-1.svg",
+          "alt": "流程圖：選模式、填歌詞與風格、生成、延長與修改、輸出下載五個步驟，最後接到依方案而定的商用權閘門",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右是一首歌在 Suno 的完整流程；下方那條說明為什麼「有沒有下載」決定能不能商用。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "Adobe Podcast 音訊處理：降噪前後應該檢查什麼",
+          "url": "https://mokaair.com/zh-TW/life/adobe-podcast-audio"
+        },
+        {
+          "type": "heading",
+          "text": "輸出格式、下載額度與方案比較",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方列的下載格式有五種：MP3 所有方案都有、網頁與手機都能下載；WAV 只開放 Pro 與 Premier，而且要在 suno.com 下載，手機版預設給 MP3；影片檔可以直接下載；分軌檔在那首歌做過分軌時才會出現；MIDI 只給在 Suno Studio 做的曲子、限 Premier。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下載動作本身很單純：在 Library 或 Workspace 找到那首歌，按 More Actions（...）選單、移到 Download、選格式；複選多首後右鍵選 Download All，會打包成一個 ZIP。"
+        },
+        {
+          "type": "paragraph",
+          "text": "計次規則要先看懂：一首歌算一次下載，不管下載幾種格式；同一首重複下載不再扣；分軌算在那首歌的同一次下載裡；失敗或中斷的不計。Pro 與 Premier 的額度在每月帳單日重設、用不完不滾存，額度用完可以加購，加購的下載則會留到下個月。官方另外註明 Suno Studio 的工作流程不受下載上限限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "價格方面，定價頁預設顯示的是年繳計價（頁面標「save 20%」）：Pro 每月 8 美元、Premier 每月 24 美元，頁面另外標示年繳可分別省 24 美元與 72 美元，稅在結帳時計算。說明中心則寫付費方案「每月 10 美元起，年繳有折扣」，也就是月繳的單價比年繳高，改成月繳的實際金額以官網結帳頁為準。官方列出的收款幣別沒有新台幣，台灣的使用者等於用外幣計價；iOS 版的 Suno 應用程式在台灣 App Store 上架、可免費下載。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "月費（美元）",
+            "每月點數",
+            "下載額度與商用權"
+          ],
+          "rows": [
+            [
+              "Free Plan",
+              "0",
+              "每天 50 點",
+              "最多 7 次終身試用下載；無商用權"
+            ],
+            [
+              "Pro Plan",
+              "8（年繳計價）",
+              "2,500 點",
+              "每月 20 次下載；附商用權"
+            ],
+            [
+              "Premier Plan",
+              "24（年繳計價）",
+              "10,000 點",
+              "每月 60 次下載；附商用權"
+            ]
+          ],
+          "caption": "資料來源：suno.com/pricing 與 help.suno.com，2026 年 9 月 14 日查證；定價頁預設顯示年繳計價。"
+        },
+        {
+          "type": "paragraph",
+          "text": "點數用完不代表要停工。官方寫 Pro 與 Premier 的月額度用完後，隔天起會拿到跟免費方案一樣的每天 50 點，而且只要訂閱還在，用這 50 點做的歌一樣有商用權；一旦退回免費層，之後做的新歌就不再符合商用資格。"
+        },
+        {
+          "type": "link",
+          "text": "Envato 音樂素材怎麼用：專案授權與上傳後申訴",
+          "url": "https://mokaair.com/zh-TW/life/envato-music-license"
+        },
+        {
+          "type": "heading",
+          "text": "條款怎麼寫：所有權、商用與內容規範",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "服務條款頁自己標示最後修訂日 2026 年 8 月 10 日、生效日 2026 年 9 月 3 日，裡面把方案分兩段寫。Pro 與 Premier 那段的原文是 Suno 把它擁有的、由你的輸入所生成的產出（Output）的一切權利、所有權與利益「讓與」給你，但同一句接著寫，基於機器學習的性質，Suno 不保證任何產出會產生著作權。免費或基本方案那段則寫你承諾只把產出用於合法的、個人的、非商業的用途。"
+        },
+        {
+          "type": "paragraph",
+          "text": "真正的門檻在條款的「Permitted Commercial Use」：你只能對「依你方案的下載額度取得的合法下載」進行商業利用，沒有經由認可管道下載過的產出不得商用，每月能下載幾次依方案而定。同一段還寫不得移除、更改、遮蔽或規避 Suno 附在產出上的指紋、浮水印或詮釋資料，也不得用錄音、側錄串流之類的方式取得檔案。另一方面，已取得的下載與其商用權是永久的，不因額度用完、改價或退訂、降級而受影響。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個容易漏看的段落：一是 Remix，條款寫啟用後產生的作品由你與 Remixer 共同且平均擁有，而且不論方案都只能用於個人、非商業用途。二是你上傳或輸入的內容，條款寫你保有所有權，但同時授權 Suno 一份全球、非專屬、免權利金、可轉授權、永久且不可撤銷的使用權，範圍包含改進與訓練支撐服務的模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "發行到串流平台，官方說明寫得明確：訂閱期間做的歌附商用權，可以用你選的發行商上架到 Spotify、Apple Music，也可以用在 YouTube、TikTok 的內容裡，而且不需要標註 Suno；但要營利就必須是那份素材 100% 的專屬權利人。條款另外寫，把產出用在平台之外還要遵守該平台自己的規則。"
+        },
+        {
+          "type": "paragraph",
+          "text": "內容規範方面，說明中心列出可能讓生成被擋下來的內容：知名藝人或真人的名字、受著作權或商標保護的詞、貶損或誹謗的字眼、過量髒話，以及其他不適當的題材，並寫明會依 DMCA 程序處理權利人的檢舉。社群守則（頁面標示 2026 年 8 月 6 日更新）禁止上傳受著作權保護的素材、重製既有歌曲、未經同意使用真人的聲音或形象，也禁止假冒他人。以上都是官方頁面的說法，個案問題請諮詢專業意見。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "先決定哪一版是定案，再用下載額度",
+          "text": "條款把商用權綁在合法下載上：沒有下載過的產出不能商用，而 Pro 每月 20 次、Premier 每月 60 次的額度不滾存、每個帳單日重設，所以要發行的歌先在平台上聽完、確定版本再下載，不要用額度試聽。免費方案的 7 次終身試用下載不附商用權，事後升級預設也不會追溯授權免費期間做的歌，官方寫例外情況存在但不保證。"
+        },
+        {
+          "type": "link",
+          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+        },
+        {
+          "type": "link",
+          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Suno Pricing（官方定價頁：三個方案、點數、下載與功能比較）",
+          "url": "https://suno.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：What type of plan do I have?（方案與點數）",
+          "url": "https://help.suno.com/en/articles/2410049",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：When will I get more credits?（每日與每月補點）",
+          "url": "https://help.suno.com/en/articles/2418177",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：What happens if I use all of my paid credits?（額度用完之後）",
+          "url": "https://help.suno.com/en/articles/2643713",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：What types of payments are accepted?（收款幣別）",
+          "url": "https://help.suno.com/en/articles/2421185",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：How do I sign up or log in?（註冊與登入）",
+          "url": "https://help.suno.com/en/articles/2408065",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：Make a song in Simple Mode（Simple 模式）",
+          "url": "https://help.suno.com/en/articles/2462273",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：Can I use my own lyrics?（Custom 模式與歌詞所有權）",
+          "url": "https://help.suno.com/en/articles/2415873",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：v6 FAQ（模型差異、點數、Max Mode、Variety 滑桿）",
+          "url": "https://help.suno.com/en/articles/13924481",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：What's new in v6?（三個模型與 8 分鐘上限）",
+          "url": "https://help.suno.com/en/articles/13924801",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：Music Glossary for Suno（段落與音樂術語）",
+          "url": "https://help.suno.com/en/articles/9010177",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：How do I make my song longer?（Extend 步驟）",
+          "url": "https://help.suno.com/en/articles/2409601",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：What are Personas?（Persona 建立與使用）",
+          "url": "https://help.suno.com/en/articles/3484161",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：How do I get stems?（分軌種類與點數）",
+          "url": "https://help.suno.com/en/articles/13925185",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：What types of files can I download?（MP3、WAV、影片、分軌、MIDI）",
+          "url": "https://help.suno.com/en/articles/13926081",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：How many downloads come with my subscription?（下載額度與計次）",
+          "url": "https://help.suno.com/en/articles/13926209",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：Can I distribute my songs to Spotify, etc?（發行到串流平台）",
+          "url": "https://help.suno.com/en/articles/2410177",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno 說明中心：If I subscribe, do I get rights for the songs I made before subscribing?（追溯授權與月繳起價）",
+          "url": "https://help.suno.com/en/articles/2425729",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno Terms of Service（所有權、Permitted Commercial Use、Remix 條文）",
+          "url": "https://suno.com/terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Suno Community Guidelines（內容規範與真人聲音、形象）",
+          "url": "https://suno.com/community-guidelines",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

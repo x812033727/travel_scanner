@@ -1,0 +1,953 @@
+{
+  "checkedAt": "2026-09-14T14:35:50.967089+00:00",
+  "status": "authoring-review-not-release",
+  "publishable": false,
+  "scope": "API 81-86 only",
+  "baselineCommit": "09d998821387af06c5e7d7a7bb5489da61916e2a",
+  "preservation": {
+    "runtimeArticles": 50,
+    "originalPacksUnchanged": 51,
+    "priorDraftsUnchanged": 30,
+    "allExistingPacksVerified": 408,
+    "catalogueSha256": "1f6afed7f3bf7f05a407b8d5af4647938cf6d91df6b42a381a904b1f6d697bb2"
+  },
+  "checks": {
+    "newPacks": 6,
+    "fixtureTests": 29,
+    "archives": 7,
+    "extractedFixtureTests": 29,
+    "articlePreviews": 24,
+    "browserPreviews": 6,
+    "serviceGoldenCases": 20,
+    "relatedApiPassed": 45,
+    "relatedApiSkipped": 7,
+    "skipReason": "PostgreSQL integration services unavailable",
+    "ruff": "passed",
+    "tasks": "passed with unrelated existing warnings"
+  },
+  "realGoogleCalls": 0,
+  "realCloudAcceptance": "not_run",
+  "files": [
+    {
+      "path": "apps/api/app/guides/content/gemini-api-batch-recovery.json",
+      "sha256": "c0756c0d7a28856702c9c5c70d3f0db7709a4d38c3eaf3dea8538d7bffc87b28",
+      "bytes": 15509
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-context-cache-experiment.json",
+      "sha256": "db4146bbb42cc1edc2a2087b4fcb90689fcfc0c0c9c38c1d663a6525089c9c74",
+      "bytes": 15539
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-document-service-capstone.json",
+      "sha256": "d240889c50620297f9a477d8618c2b1afa18a800bba5e84edec895a3c7d06bdd",
+      "bytes": 16103
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-file-search-rag-project.json",
+      "sha256": "fb7fc160ab889b49e3f909239777a5b29f283833d0be822545ccb67f8abf57e8",
+      "bytes": 16470
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-function-calling-workshop.json",
+      "sha256": "c3454da2d57980f6f1890abcedf6e514a081bafab6d3bce6785c412a17312c17",
+      "bytes": 16140
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-api-search-grounding-citations.json",
+      "sha256": "a69b16a2cbcd5d97ce982071b54f7fa30069c4fdd3cd464b65e077774c65b2cd",
+      "bytes": 15605
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-batch-recovery/api-verification.zip",
+      "sha256": "92c104dbd80597927065b5f8c934ca59b1c92d5ceb208c944f8c7fedba300351",
+      "bytes": 55318
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-batch-recovery/diagram-1.svg",
+      "sha256": "fc410dd4a091467c06d77e6f25afbc90ffeba718486627658d73cb8686b8e83c",
+      "bytes": 2315
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-batch-recovery/hero.jpg",
+      "sha256": "965df87470d1dc3144c0fe286a50b262936d119518e53e5dc18881a3980455dd",
+      "bytes": 88131
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-batch-recovery/hero.svg",
+      "sha256": "4679a052e1ae17f61bb9e62a1347759f938e9bb63c5db9ecbbad03ca74caa6cd",
+      "bytes": 1512
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-batch-recovery/lesson-85.zip",
+      "sha256": "721382770b5fa7e6e9919b985037282ed2fb9d1ebc614465d641bf33b9488c9c",
+      "bytes": 17512
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-context-cache-experiment/api-verification.zip",
+      "sha256": "92c104dbd80597927065b5f8c934ca59b1c92d5ceb208c944f8c7fedba300351",
+      "bytes": 55318
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-context-cache-experiment/diagram-1.svg",
+      "sha256": "a5c2b8f3e22e5ec9f2ae9b6fdfdb92835c6d4ce90da6ca9fca20813f164486ad",
+      "bytes": 2259
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-context-cache-experiment/hero.jpg",
+      "sha256": "2d65e42f2630e6fa1275282f3f4c14d64f69f765374ffe197d8ef206b3a94256",
+      "bytes": 87501
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-context-cache-experiment/hero.svg",
+      "sha256": "4f30d539c78991acafe72823ba64a2c0c7e8acb99d33c79cda3199b44cc77be5",
+      "bytes": 1512
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-context-cache-experiment/lesson-84.zip",
+      "sha256": "ad17632a024b3addc25f55efe4fd0299263342293f1e9d10e9d8a84438f7343f",
+      "bytes": 19404
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-document-service-capstone/api-verification.zip",
+      "sha256": "92c104dbd80597927065b5f8c934ca59b1c92d5ceb208c944f8c7fedba300351",
+      "bytes": 55318
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-document-service-capstone/diagram-1.svg",
+      "sha256": "b47777bf3b7e54c193d1adc473d9c9c4addb7858d93c1acd83b813509732d561",
+      "bytes": 2288
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-document-service-capstone/hero.jpg",
+      "sha256": "bed55789cce71bbb0363fa26702c7e31d0b5fd901ad26f324340da5045b29c0c",
+      "bytes": 87118
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-document-service-capstone/hero.svg",
+      "sha256": "d1d4e59ed4d5c21ac6a2296c4da288d7061bfac27440269fe372ff877b053adb",
+      "bytes": 1512
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-document-service-capstone/lesson-86.zip",
+      "sha256": "21bb172a25f12fa1797f214de1459edb5a59831e29acd283ab58036e0a119e80",
+      "bytes": 22602
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-file-search-rag-project/api-verification.zip",
+      "sha256": "92c104dbd80597927065b5f8c934ca59b1c92d5ceb208c944f8c7fedba300351",
+      "bytes": 55318
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-file-search-rag-project/diagram-1.svg",
+      "sha256": "f96e1c3fa7dd1aff49bbcf87199b536e2df8acce959495502f1f5b34871b40f1",
+      "bytes": 2324
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-file-search-rag-project/hero.jpg",
+      "sha256": "bc7e5c8ef4fd84971e51da9eacb2a380db8a389d833af7ac6903d8ca43ddb896",
+      "bytes": 86108
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-file-search-rag-project/hero.svg",
+      "sha256": "7b62791ce303ac04388deceea598092c384b523544ef772f0e7f19a9dca80f0f",
+      "bytes": 1512
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-file-search-rag-project/lesson-83.zip",
+      "sha256": "215ff3bc2fa15ebc89920de24270bdc18c00c1e74eacf911b0b2699a53635d58",
+      "bytes": 20674
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-function-calling-workshop/api-verification.zip",
+      "sha256": "92c104dbd80597927065b5f8c934ca59b1c92d5ceb208c944f8c7fedba300351",
+      "bytes": 55318
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-function-calling-workshop/diagram-1.svg",
+      "sha256": "880dcdf538a447ac432e23ff2390181601b7b8ce7c23d704b20d8d5e460347dd",
+      "bytes": 2318
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-function-calling-workshop/hero.jpg",
+      "sha256": "2b6a0733d0b94f09be5cba9a2507581fd62bafdf68cf68eaf194dcffce9a133b",
+      "bytes": 84175
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-function-calling-workshop/hero.svg",
+      "sha256": "fb1359a7410e774a9a1aff0a0bc50a72ba0ef5b24b009fb958ce0dc760dc4934",
+      "bytes": 1512
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-function-calling-workshop/lesson-81.zip",
+      "sha256": "abd9be35c009534b55b6b4ce6c52576e62b17bd0ae1ba0f356adaed25f8b1874",
+      "bytes": 15877
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-search-grounding-citations/api-verification.zip",
+      "sha256": "92c104dbd80597927065b5f8c934ca59b1c92d5ceb208c944f8c7fedba300351",
+      "bytes": 55318
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-search-grounding-citations/diagram-1.svg",
+      "sha256": "7d06f604408ccaa897285b292c472de420d14a6e84df780433e9fab1d1ed629a",
+      "bytes": 2330
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-search-grounding-citations/hero.jpg",
+      "sha256": "10b23a365ba826db6b61ea67d6cc2dff8e06aded9bafb9c8d8664c5a7c307957",
+      "bytes": 85136
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-search-grounding-citations/hero.svg",
+      "sha256": "9d32717e922a3f85d65dd1a80d1416d996c9146298eee5993e1763e9efec0725",
+      "bytes": 1506
+    },
+    {
+      "path": "apps/web/public/guides/gemini-api-search-grounding-citations/lesson-82.zip",
+      "sha256": "2bb572fbefb5667b43bb826357cc69d8f80f9c4376313c2a9c1340e6b47e9f7d",
+      "bytes": 18004
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/81/diagram-1.svg",
+      "sha256": "880dcdf538a447ac432e23ff2390181601b7b8ce7c23d704b20d8d5e460347dd",
+      "bytes": 2318
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/81/hero.jpg",
+      "sha256": "db7d7c9f0d9e2a544bcde4d2712b5025284bdfa9d07c66f5de97a13f92045a45",
+      "bytes": 97510
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/81/hero.svg",
+      "sha256": "fb1359a7410e774a9a1aff0a0bc50a72ba0ef5b24b009fb958ce0dc760dc4934",
+      "bytes": 1512
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/81/lesson.md",
+      "sha256": "0d485482b328abba8d4daa6abe03070924832332fe884232aae4bdc49bec4184",
+      "bytes": 6800
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/81/meta.json",
+      "sha256": "9993f4e3372f2ae358f49d02e2dccb58f8ceb7828f56b9e0f6ed6e3efaab4d98",
+      "bytes": 1140
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/82/diagram-1.svg",
+      "sha256": "7d06f604408ccaa897285b292c472de420d14a6e84df780433e9fab1d1ed629a",
+      "bytes": 2330
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/82/hero.jpg",
+      "sha256": "55a660bf6cd503a9d374ace080d3d439950e6b3b500b960036a275847ab7edf7",
+      "bytes": 98072
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/82/hero.svg",
+      "sha256": "9d32717e922a3f85d65dd1a80d1416d996c9146298eee5993e1763e9efec0725",
+      "bytes": 1506
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/82/lesson.md",
+      "sha256": "6754ef1aacbc6ae2d98e8d5893361e4e72f3b7035aaa33eead51fdf5b64c8c7e",
+      "bytes": 7008
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/82/meta.json",
+      "sha256": "e71d73634bc5b852d7e0a4598e30aa01b4e7c318d3262c5f945fcae321f00f0b",
+      "bytes": 1265
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/83/diagram-1.svg",
+      "sha256": "f96e1c3fa7dd1aff49bbcf87199b536e2df8acce959495502f1f5b34871b40f1",
+      "bytes": 2324
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/83/hero.jpg",
+      "sha256": "d6bd045dc869397cc69d4053be4cdc215a1ae6b147e94adcdd3bdb5280610def",
+      "bytes": 99494
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/83/hero.svg",
+      "sha256": "7b62791ce303ac04388deceea598092c384b523544ef772f0e7f19a9dca80f0f",
+      "bytes": 1512
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/83/lesson.md",
+      "sha256": "e895ba6e13977565d27cdd73c135aca9e361150f311d61df33685670c96418d0",
+      "bytes": 7471
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/83/meta.json",
+      "sha256": "4b5c52122d4944d3161e687668b7c751ca124fb206192d58c15eec17576b5b2f",
+      "bytes": 1108
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/84/diagram-1.svg",
+      "sha256": "a5c2b8f3e22e5ec9f2ae9b6fdfdb92835c6d4ce90da6ca9fca20813f164486ad",
+      "bytes": 2259
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/84/hero.jpg",
+      "sha256": "ac2e737a6ca2a5b1783b00b91b36c1d7e7c49c4a40a836c452b0e4f561b0a148",
+      "bytes": 100993
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/84/hero.svg",
+      "sha256": "4f30d539c78991acafe72823ba64a2c0c7e8acb99d33c79cda3199b44cc77be5",
+      "bytes": 1512
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/84/lesson.md",
+      "sha256": "e21b48291a16e60ee80ec62f553378de380e59d918b347658e19afebe285d404",
+      "bytes": 7340
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/84/meta.json",
+      "sha256": "d22aca004a47ef485e1865b8bce5ad320474a2924aa54a3d94fce0e51d6684ca",
+      "bytes": 1105
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/85/diagram-1.svg",
+      "sha256": "fc410dd4a091467c06d77e6f25afbc90ffeba718486627658d73cb8686b8e83c",
+      "bytes": 2315
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/85/hero.jpg",
+      "sha256": "e1678e7c91449442346c3e4fb697bcec65cfbd58e653ee7555773526554b90e2",
+      "bytes": 101295
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/85/hero.svg",
+      "sha256": "4679a052e1ae17f61bb9e62a1347759f938e9bb63c5db9ecbbad03ca74caa6cd",
+      "bytes": 1512
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/85/lesson.md",
+      "sha256": "1badfe4553aecc6a751ec5614cc0e2540b1943f7369d76986f85b25be9e4de6c",
+      "bytes": 7336
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/85/meta.json",
+      "sha256": "5253b9d317c593709bf7b75c22edb63da85a964be7b1733d2e8b48dc126feb40",
+      "bytes": 1101
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/86/diagram-1.svg",
+      "sha256": "b47777bf3b7e54c193d1adc473d9c9c4addb7858d93c1acd83b813509732d561",
+      "bytes": 2288
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/86/hero.jpg",
+      "sha256": "54d47f6ba811a244020e747fa77e80e9933eabe7b6ca827c34aebedb9734fad1",
+      "bytes": 100057
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/86/hero.svg",
+      "sha256": "d1d4e59ed4d5c21ac6a2296c4da288d7061bfac27440269fe372ff877b053adb",
+      "bytes": 1512
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/86/lesson.md",
+      "sha256": "35418688d23cb829908fabaf5c9a7e5b6a10f2066738c94d5f283400a0cf6ca9",
+      "bytes": 7403
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/86/meta.json",
+      "sha256": "5ae8524e4aa128e2202aea42bb7ea90fc8d59d76004372bf74d775e3ea66e772",
+      "bytes": 1280
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/README.md",
+      "sha256": "eb556a1ae38b218a38e154e9fce1dbf6ee59c54432c725edbffdfbdbbbe12a70",
+      "bytes": 4272
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/build-art.py",
+      "sha256": "602a1817e839424e325bddf0d3adf487c4db93f30f7a46ff492513ac197726d6",
+      "bytes": 6339
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/build-data.py",
+      "sha256": "13b649669d884906e22acc7b0dd170323e720dfc0ee8a2a0476c9dc79fa8b9ab",
+      "bytes": 8086
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/81/LICENSE",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/81/README.md",
+      "sha256": "8b9ef678fdc396ee2219aeb2e7fbe59f50fdfcaace3caac805b49d7d4ad3e002",
+      "bytes": 657
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/81/function-loop/main.py",
+      "sha256": "76975b736c7bb28497fa16f0e84f4a69d6054a041cac7b74fe4cc9c9a310db4d",
+      "bytes": 1035
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/81/orders.json",
+      "sha256": "b72ff80fff3408789ada709d21cddf257a0ad14f49ddb7d9c6bb0b18db26723d",
+      "bytes": 187
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/81/tool-cases.json",
+      "sha256": "374f988367e4063af56450eca108bd100c1277f281a272091b5f3f34e485e85a",
+      "bytes": 496
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/82/LICENSE",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/82/README.md",
+      "sha256": "9fb3365be59cb01f6d69b8b4b2f1dfdb648bad2d06ca1bd22c536f96dfd673f7",
+      "bytes": 661
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/82/grounding-demo/main.py",
+      "sha256": "709db53888223c5301de7f85964f039a84fba0d69bff1323b7df777aee4e7b8d",
+      "bytes": 2183
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/82/response-fixtures/cited.json",
+      "sha256": "d6cb6f2e5839e2f285ab2314389152289a001034bd2c6599527f79430ecdb356",
+      "bytes": 1084
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/82/response-fixtures/no-search.json",
+      "sha256": "45a4a910aa5f6e6a93d25294f6b29021ec099e6f8d742f8a0762ef3ab49206b0",
+      "bytes": 368
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/82/response-fixtures/unsafe-url.json",
+      "sha256": "1bd4f89b5072af5c8c2376c884a4ad85de92a0e5883ae6b03fb8499e079186c3",
+      "bytes": 614
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/82/response-fixtures/wrong-byte-offset.json",
+      "sha256": "cffeb6ebe307a3ba9cce2978a4d5a6dd78e2a439356f3f017d6dc0e884d12d9f",
+      "bytes": 618
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/LICENSE",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/README.md",
+      "sha256": "3a574a7a1cb1437753f9ee8fb3bf9d888b2f3b1cfb0240bdb47625a7ec824b81",
+      "bytes": 1870
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/citation-cases.json",
+      "sha256": "70e4ec0a8ced9aae2f7e092a68ccb1246e213a635d057690b5cfd5c3b4bf2c1d",
+      "bytes": 239
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/documents.json",
+      "sha256": "5a9be4f6572592a218ccfc517737cdc83e941085b382a2974580920a1a889f61",
+      "bytes": 3452
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/file-search-demo/main.py",
+      "sha256": "934df94cc7c19d0e11126a2df2343d98dd3b67c50da7c3b3f9f25639db44f3c7",
+      "bytes": 2242
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/resource-ledger-template.json",
+      "sha256": "769423a3a99b02e09cd168dff88ffe6d20412c9036eedb7aaeab0ea6508ae7bc",
+      "bytes": 177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/revisions/S003-v2.txt",
+      "sha256": "e1857b8387b6027d3c9b9b644988d510a522c26583e39e30af6e09ed6c78d1d7",
+      "bytes": 177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/specifications/S001-v1.txt",
+      "sha256": "9fda81d840dfb6e44f14568585fe857d0a083e62f253da6f9a8ac0b103f24f6d",
+      "bytes": 177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/specifications/S002-v1.txt",
+      "sha256": "cdb26fd1db00881a70bcbf12e2152d25950a988f30df9305505e5a139679c649",
+      "bytes": 177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/specifications/S003-v1.txt",
+      "sha256": "4bf75ac091d4f9c216fdc461231c8dc47b990b9dc138378792707d2bdb953191",
+      "bytes": 177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/specifications/S004-v1.txt",
+      "sha256": "25ba7814bdeaed5b056ba30b84548a06f9b7996414870f11b357dd7f1e5b482b",
+      "bytes": 177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/specifications/S005-v1.txt",
+      "sha256": "0250b92257228e1de95a55688fdbbe67874add757bc53f30e71f13152bd88323",
+      "bytes": 177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/specifications/S006-v1.txt",
+      "sha256": "a111e4a67d428d701a9368d407e6fd6921544bd2dcc5a272bf92a8139b4dbef6",
+      "bytes": 177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/specifications/S007-v1.txt",
+      "sha256": "c7fe49226bb30a013138f9efc5be41e51b56c3283c15700e723fa36cf7fb14f2",
+      "bytes": 177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/specifications/S008-v1.txt",
+      "sha256": "75c7affd237b813d88fd8163d36e8acdd7a2fd157ab4340ce8648fbcde028812",
+      "bytes": 177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/specifications/S009-v1.txt",
+      "sha256": "53da045954890694ddfefb1eb0b5600718640e6f437e7c808b45d68ec1e6fb17",
+      "bytes": 177
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/83/specifications/S010-v1.txt",
+      "sha256": "21ce23a42a9f4f32de01e2a0152dd27c267e63b9fb73541c4cef3d947374c571",
+      "bytes": 325
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/84/LICENSE",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/84/README.md",
+      "sha256": "8b66c008c9f56f93bedc01489a9f9bff9877774f720c81e1655e0308d6730d88",
+      "bytes": 1049
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/84/cache-lab/document.txt",
+      "sha256": "5b5bd3fb274b22cb39159484145daa5c90e884518e46efaea71b81323e7814d9",
+      "bytes": 60000
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/84/cache-lab/main.py",
+      "sha256": "9cd985a3b5e68715fcd93df243ed0c304a12e943d2c30f41a49994b9c942d6d7",
+      "bytes": 2286
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/84/cache-lab/questions.json",
+      "sha256": "2d596f6f884ade6088e98d426fdcd63edddcb512ac26044de422bdece0266ee9",
+      "bytes": 174
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/84/usage-log.csv",
+      "sha256": "c6b6098f5c9ca568a84677cf5afb3f2bfb0b8eb4f4e3648e16fe49330e709aef",
+      "bytes": 307
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/85/LICENSE",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/85/README.md",
+      "sha256": "f257446563a9756d37bb0d9a9c9ec54c0c837d2f49dd80410e790ef47e93ada9",
+      "bytes": 983
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/85/batch-eval/main.py",
+      "sha256": "af9c1ba1a7d46edcab9cab71222949b48bdef63ed499100bee7a00ec47674aba",
+      "bytes": 2329
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/85/cases.jsonl",
+      "sha256": "7c59ceb114a7dc07c5e14447f736737cac5207b02b20d03b4dc77bbdf601d988",
+      "bytes": 7418
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/85/evaluation.csv",
+      "sha256": "67ac7f3f727c16ad1058cf147450b7a49614a56d540e109e9eca36c0cfb88bc7",
+      "bytes": 414
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/85/job-ledger-template.json",
+      "sha256": "971fe5049394b766a674c04c6a5705f26c9c1e48575902f546bb23081698e865",
+      "bytes": 115
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/85/response-fixtures/partial.jsonl",
+      "sha256": "725b21be1dd9fc84e49a0d4027b34f6b333dace1b002c1f955851f313b5c0c73",
+      "bytes": 3256
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/86/LICENSE",
+      "sha256": "ee46ac4c86389a03b55b11a0261cbc12a81067d687d1b9833257d90253d887c1",
+      "bytes": 1064
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/86/README.md",
+      "sha256": "c81dd969d3f158a6194e0b438e89210858e6120981a3cb11557c5641cb68f220",
+      "bytes": 1114
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/86/document-service/.env.example",
+      "sha256": "e0f373f001bcbfcafdd1a729591a4c6dcf33906b51ad3170871e1ad81c0221f3",
+      "bytes": 194
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/86/document-service/app.js",
+      "sha256": "a6532362af5390ec39e9a5d4cb6da68c535f407e20e80e4824a6e2bfaf233d39",
+      "bytes": 1653
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/86/document-service/app.py",
+      "sha256": "edb3284f86d945cf2bdcb7411fb33c7de97f9a59e666f4294d178c0975d88356",
+      "bytes": 5310
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/86/document-service/evaluate.py",
+      "sha256": "fffe6fffe3dd6a9f6c589c9aa5a154bdd6a312ec53edd7d9b2ed3f5f8679d478",
+      "bytes": 2244
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/86/document-service/index.html",
+      "sha256": "2d8209877c0b1ac9e37ebe1745d192451a6e61babe8906fa673f710a4d313a08",
+      "bytes": 1631
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/86/documents.json",
+      "sha256": "5a9be4f6572592a218ccfc517737cdc83e941085b382a2974580920a1a889f61",
+      "bytes": 3452
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/86/golden-cases.json",
+      "sha256": "eb9cdd0f37b70b2003f6268c1108550b944df3a1c1e49962a2e7c25217e5d937",
+      "bytes": 7995
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/86/orders.json",
+      "sha256": "b72ff80fff3408789ada709d21cddf257a0ad14f49ddb7d9c6bb0b18db26723d",
+      "bytes": 187
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/README.md",
+      "sha256": "be797d68c4eacd0668775234dfbd8cb2b6e903744a5dfad889658b674531c500",
+      "bytes": 1708
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/api-verification.zip",
+      "sha256": "92c104dbd80597927065b5f8c934ca59b1c92d5ceb208c944f8c7fedba300351",
+      "bytes": 55318
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lablib/__init__.py",
+      "sha256": "7d59a6a3ee361a4a85924a1bca30605acbf993bfa957b5a17e97f02e4a5ca09d",
+      "bytes": 83
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lablib/batch.py",
+      "sha256": "517a1c6496a622e44f6a64121a703eac56376d421eef359e3d097f8d61ed9c78",
+      "bytes": 7108
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lablib/cache_lab.py",
+      "sha256": "5e10b379997e1ef61f2f67877f0ae77b375e2e3d3c42067c69f0ec0108e40795",
+      "bytes": 3633
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lablib/citations.py",
+      "sha256": "38ce86b593d0eac16f551705ebf8d9cf5075202b572ef3ba183c37cfdd7f6955",
+      "bytes": 5801
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lablib/common.py",
+      "sha256": "e5eb706b68dbbdfd82f9de455730b1eafedf25523f095b3b58d813d5ee527ebe",
+      "bytes": 4245
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lablib/file_store.py",
+      "sha256": "c86172b98e28fa83a39566ac3a0100cd61b0cb2cc1b772a629151696f43c6c0f",
+      "bytes": 6501
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lablib/function_loop.py",
+      "sha256": "f266abaaf69e4c249a7b25b1791db47c41b1fde0ec88450b374f056c81fd742e",
+      "bytes": 3273
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lesson-81.zip",
+      "sha256": "abd9be35c009534b55b6b4ce6c52576e62b17bd0ae1ba0f356adaed25f8b1874",
+      "bytes": 15877
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lesson-82.zip",
+      "sha256": "2bb572fbefb5667b43bb826357cc69d8f80f9c4376313c2a9c1340e6b47e9f7d",
+      "bytes": 18004
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lesson-83.zip",
+      "sha256": "215ff3bc2fa15ebc89920de24270bdc18c00c1e74eacf911b0b2699a53635d58",
+      "bytes": 20674
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lesson-84.zip",
+      "sha256": "ad17632a024b3addc25f55efe4fd0299263342293f1e9d10e9d8a84438f7343f",
+      "bytes": 19404
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lesson-85.zip",
+      "sha256": "721382770b5fa7e6e9919b985037282ed2fb9d1ebc614465d641bf33b9488c9c",
+      "bytes": 17512
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/lesson-86.zip",
+      "sha256": "21bb172a25f12fa1797f214de1459edb5a59831e29acd283ab58036e0a119e80",
+      "bytes": 22602
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/examples/requirements.txt",
+      "sha256": "3b6784241cc3bfa7100706de4d5a5cbca586a80f2c9041c229d434bdd30965ec",
+      "bytes": 68
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/freeze-author.py",
+      "sha256": "8970361e9439f65438c358c9e3c873d228aa45be53bbcbdfc7ffe159a3dbf406",
+      "bytes": 2639
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/package.py",
+      "sha256": "5dc63ce2e6392eb947aa2e9a955e9a577b7d3cd4100754544e1e87b8f2514467",
+      "bytes": 1040
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/source-notes.md",
+      "sha256": "1a62b15c1809ac714edd919da18329889b163386fe623d959fa787cca4879758",
+      "bytes": 3116
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/sources.json",
+      "sha256": "23970c4cba6bd7f9db2780df58e9c6547863e25cba5070466a066550412572e8",
+      "bytes": 2269
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/README.md",
+      "sha256": "2295af69c42b904e8053062cbb14f48833b9b60ef785122aa95639f6334adc36",
+      "bytes": 1005
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/art-verification.json",
+      "sha256": "8c6c1954624338544ffac2c9b943eeccdabd4b8045ba3b95c2a67a87815744ed",
+      "bytes": 2691
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/browser/grounding-1200.png",
+      "sha256": "48b2de5317ba502da428d2ef98f8f1337cf5dd5ccfa834262f51bee32a93960f",
+      "bytes": 28938
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/browser/grounding-360.png",
+      "sha256": "8fdd0c430e6ce9990cdb8b984072f7795ec5dcf45658b2dbea91ae5ac0649cac",
+      "bytes": 25521
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/browser/grounding-author-fixture.html",
+      "sha256": "dd2d6b8692e0380d6fda34a7a54b3103acfe656a51983f0e89b5e4b95e9160dc",
+      "bytes": 886
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/browser/receipt.json",
+      "sha256": "0402a0d401bb8a5451bf55c4db1fc595887dd34844cfb735048051b8c8b8bcea",
+      "bytes": 653
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/browser/service-1200-cited.png",
+      "sha256": "a0bf2bcb946b9da0b24cc72b5c5da0ffda4fbea0b5312449344fc8549406bd06",
+      "bytes": 45891
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/browser/service-1200-missing.png",
+      "sha256": "4656d96dabb353f933561380965f6f94efbf1ff557bbedac7f68187496d8c8c4",
+      "bytes": 42217
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/browser/service-360-cited.png",
+      "sha256": "7d0cf90c50ddd179b3f889b9d0f8032faf82a1af58aa481e862aaeb5a101e6aa",
+      "bytes": 42142
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/browser/service-360-missing.png",
+      "sha256": "86706c7a35c48a61500b4cc397ac280c5474fcb46c2005d52ef0d5799b6974e0",
+      "bytes": 38473
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/browser/service-evaluation.json",
+      "sha256": "6bb0c5e3370f7537012f703afdd19739da2b463f0682b64f43382c82b4185812",
+      "bytes": 12084
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/build.json",
+      "sha256": "e732f507144b92d58d08164f44a29d8dc1fd80c2d947f505abf542b4dcde1c99",
+      "bytes": 1271
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/delivery.json",
+      "sha256": "bcc9596b452daa216a18c558959c3cafc165fa991b7806afac1f959196ad60ae",
+      "bytes": 1879
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/fixtures.json",
+      "sha256": "fd47021f3105be554a42ec5411469ed9beb0c89df6264d84a13bd73ef550dcba",
+      "bytes": 212
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-batch-recovery/diagram-1-mobile.png",
+      "sha256": "490fa7a057e49ccb029c8c16cad2c3dd267db61e6f2bd920481c91a29604377c",
+      "bytes": 26813
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-batch-recovery/diagram-1.png",
+      "sha256": "3fbe6b2e84814d4d2b539ad4223d0c318157311aa8f967ab3f36d956ed24d019",
+      "bytes": 138801
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-batch-recovery/hero-mobile.png",
+      "sha256": "9a297be3d128c6276343149047d41e98f27347d3cb62ebe5e7211b52998785a6",
+      "bytes": 16008
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-batch-recovery/hero.png",
+      "sha256": "5c07e2e52c797de6f81ec026cc34bc59795bdc91c7261e85fa3d2353ab1328bd",
+      "bytes": 80498
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-context-cache-experiment/diagram-1-mobile.png",
+      "sha256": "1650402a6f22f6022dda2f0a7b980ad7a70a2bef47292bc215dc9bd14d936c27",
+      "bytes": 24878
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-context-cache-experiment/diagram-1.png",
+      "sha256": "7ccbe68bcd04fe2a9f998074631b454d4d2a50e4e7df180759635bd82ed38dcf",
+      "bytes": 126619
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-context-cache-experiment/hero-mobile.png",
+      "sha256": "7fecb854e47fdc0f6c99f1683375bfafbd11df1d166f71356d7e449825a168a9",
+      "bytes": 15692
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-context-cache-experiment/hero.png",
+      "sha256": "9cd032dac2b72849bc7df73d5fd445b9b6f3061fb7882efb65a87265281b50d0",
+      "bytes": 75754
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-document-service-capstone/diagram-1-mobile.png",
+      "sha256": "9b43b7ec324264abc75deee3cf9aa67f8bd3d75b059b62ef498dc450d7a9f334",
+      "bytes": 25823
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-document-service-capstone/diagram-1.png",
+      "sha256": "013404a25b365c8c2166795ee485bf8cf7bf93fb9535af599946481345c2dff1",
+      "bytes": 131985
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-document-service-capstone/hero-mobile.png",
+      "sha256": "165b59fa042ac21a39717375d6a4440c50133926430fd96cdf8819e4a600d034",
+      "bytes": 15949
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-document-service-capstone/hero.png",
+      "sha256": "ffd44c38796a4223fb63ae3f9f06bda456dc03a43571b90bb8354810950f884f",
+      "bytes": 80564
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-file-search-rag-project/diagram-1-mobile.png",
+      "sha256": "4d14c74f75000b4c8d509073e0276c9db53e61e67bf536d19245fe9da5e4582b",
+      "bytes": 26634
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-file-search-rag-project/diagram-1.png",
+      "sha256": "366892e74da9328beba05d1b8b4d1ab6bb923b1449d38ac1a9e92ff5e4381a8a",
+      "bytes": 132539
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-file-search-rag-project/hero-mobile.png",
+      "sha256": "b761d30ae9fcd907ce24aa65ddbf917a3f02c6ca4c50deeb0c3c923b26552736",
+      "bytes": 15525
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-file-search-rag-project/hero.png",
+      "sha256": "8e93ca92b750a16d36e76b40222270e3de5782bda579ad46f1eebb771320badf",
+      "bytes": 77160
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-function-calling-workshop/diagram-1-mobile.png",
+      "sha256": "9d0dfb5e7e44b6e4ad19511b48b31f5563528916498e50ac2683486c1dcf24cc",
+      "bytes": 27101
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-function-calling-workshop/diagram-1.png",
+      "sha256": "d4917ed618a81aa0341fd8d103e79fa58d1e9635d745227f921f3f6677355df8",
+      "bytes": 132464
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-function-calling-workshop/hero-mobile.png",
+      "sha256": "b16699accddac2be0bb3d229e3df48d0bcaab049cfb44f645fae033f6393bf3d",
+      "bytes": 15171
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-function-calling-workshop/hero.png",
+      "sha256": "379b7e7a763a639975fb351b5320442c5cb048f8aa48ed0affdc04c3f72e4219",
+      "bytes": 73799
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-search-grounding-citations/diagram-1-mobile.png",
+      "sha256": "bf82b340ea7734a7c3d23ea102449d966302d2a1d59a539e71c91fab5f6b8757",
+      "bytes": 27567
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-search-grounding-citations/diagram-1.png",
+      "sha256": "ac81fea788177c4d0b854a4a0719b3208575f34aa0a18d894c89a8ec7ff1242d",
+      "bytes": 139698
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-search-grounding-citations/hero-mobile.png",
+      "sha256": "c565f8ca1bcedb9c1ee43d257ed708736748ae91636e518acefde659cbb08d2a",
+      "bytes": 15627
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/renders/gemini-api-search-grounding-citations/hero.png",
+      "sha256": "92cd4e4a80f924b5c8aa948d449deb303c3356d7ef6479a521698e62694a32b6",
+      "bytes": 77159
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/runtime.json",
+      "sha256": "d2859bb9cc141f0fe3680be2af20271b489106089c63aad186ef707ae2571e17",
+      "bytes": 959
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/test_materials.py",
+      "sha256": "adb79f8f88a20495ddc0f0867d47173de1d1e91965f0c3654c21196c47603a2e",
+      "bytes": 23718
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verification/visual-review.json",
+      "sha256": "67ab4396b9468fe0576d34b5697ef60c2631e660591f605b046fb61cd4897efe",
+      "bytes": 7047
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verify-browser.mjs",
+      "sha256": "8c9cc72ee637e224f60a30bd2c224cfa4475097525e5f77a9be7d128ab5b2784",
+      "bytes": 4998
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/api/verify-delivery.py",
+      "sha256": "873e2c592b6c23c3558ff9664b08ad7cfe29884275fd3c0260d3b80e21c2848c",
+      "bytes": 2140
+    }
+  ],
+  "textNormalization": "UTF-8 text uses LF in both checkout and Git"
+}
