@@ -12,7 +12,7 @@ from uuid import UUID, uuid4, uuid5
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import httpx
-from fastapi import APIRouter, Depends, Header, Query
+from fastapi import APIRouter, Depends, Header, Query, Request
 from fastapi.exceptions import RequestValidationError
 from pydantic import BaseModel, Field, ValidationError, model_validator
 from sqlalchemy import delete, func, select, update
@@ -22,12 +22,12 @@ from app.admin.service import load_runtime_settings
 from app.ai.itinerary import (
     PLANNER_WARNING_PLACES_NEED_REVIEW,
     PLANNER_WARNING_PLACES_UNCONFIRMED,
-    AIItineraryPlanner,
     AIItineraryRequest,
     AIPlannerCandidate,
     AIPlanningResult,
     clamp_candidate_access,
     clamp_candidate_duration,
+    plan_within_budget,
 )
 from app.analytics.service import record_event
 from app.auth.schemas import Currency
@@ -39,7 +39,7 @@ from app.destinations.catalog import destination_for_code, match_destination
 from app.foods.service import load_planner_foods
 from app.hotspots.service import load_planner_hotspots, months_in_span
 from app.i18n import Locale, active_locale, current_locale
-from app.infra import enforce_named_rate_limit, get_redis
+from app.infra import client_ip, enforce_named_rate_limit, get_redis
 from app.localized_names import (
     ITEM_LOCATION_KEY,
     ITEM_TITLE_KEY,
@@ -2257,6 +2257,7 @@ async def save_trip(
     payload: SaveTripRequest,
     user: CurrentUser,
     session: Session,
+    request: Request,
     idempotency_key: Annotated[
         str | None, Header(alias="Idempotency-Key", min_length=8, max_length=255)
     ] = None,
@@ -2299,7 +2300,8 @@ async def save_trip(
                 start_date=cast(date, payload.start_date),
                 end_date=cast(date, payload.end_date),
             )
-            planning = await AIItineraryPlanner(settings).generate(
+            planning = await plan_within_budget(
+                settings,
                 _planning_request(
                     destination_name=destination,
                     start_date=cast(date, payload.start_date),
@@ -2310,7 +2312,9 @@ async def save_trip(
                     preferences=payload.preferences,
                     notes=payload.notes,
                     candidates=candidates,
-                )
+                ),
+                user_id=user.id,
+                source_ip=client_ip(request),
             )
         # Only exact adjacent locations enter routing; unset hotel anchors are excluded.
         route_pairs = (
@@ -3922,6 +3926,7 @@ async def _build_ai_planning(
     payload: ItineraryGenerateRequest,
     *,
     extra_notes: str | None = None,
+    source_ip: str | None = None,
 ) -> tuple[AIPlanningResult, list[TripPlanItem], list[TripPlanItem], list[AIPlannerCandidate]]:
     """Load candidates and run the planner for a trip or a single day.
 
@@ -3929,6 +3934,10 @@ async def _build_ai_planning(
     preference text. It reaches the provider only through the user-content
     payload's ``notes`` field, never the system prompt, and is never written
     back to ``trip.data``.
+
+    ``source_ip`` is the caller's address for the planner budget. Every endpoint that
+    reaches this has a request and should pass it: without one, a caller minting
+    accounts is only ever metered per account.
     """
     if not trip.destination_name or not trip.start_date or not trip.end_date:
         raise AppError(422, "trip_planning_fields_missing", "旅程缺少目的地或日期，無法重新排行程")
@@ -3960,7 +3969,8 @@ async def _build_ai_planning(
         locale=str(trip.data.get("locale") or "zh-TW"),
     )
     settings = await load_runtime_settings(session)
-    planning = await AIItineraryPlanner(settings).generate(
+    planning = await plan_within_budget(
+        settings,
         _planning_request(
             destination_name=trip.destination_name,
             start_date=target_date or trip.start_date,
@@ -3978,7 +3988,9 @@ async def _build_ai_planning(
             last_day_available_until=cast(str, availability["last_day_available_until"]),
             trip_start_date=trip.start_date,
             trip_end_date=trip.end_date,
-        )
+        ),
+        user_id=trip.user_id,
+        source_ip=source_ip,
     )
     return planning, preserved, planning_preserved, candidates
 
@@ -3990,6 +4002,7 @@ async def preview_trip_itinerary(
     user: CurrentUser,
     session: Session,
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+    request: Request,
 ) -> dict[str, Any]:
     redis = get_redis()
     request_key = _itinerary_preview_request_key(user.id, trip_id, idempotency_key)
@@ -4006,7 +4019,7 @@ async def preview_trip_itinerary(
     )
     trip = await owned_trip(session, user.id, trip_id)
     planning, preserved, planning_preserved, candidates = await _build_ai_planning(
-        session, trip, payload
+        session, trip, payload, source_ip=client_ip(request)
     )
     result, cached_payload = await build_itinerary_preview_envelope(
         session,
@@ -4137,6 +4150,7 @@ async def generate_trip_itinerary(
     user: CurrentUser,
     session: Session,
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+    request: Request,
 ) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)
     if not trip.destination_name or not trip.start_date or not trip.end_date:
@@ -4183,7 +4197,8 @@ async def generate_trip_itinerary(
             end_date=target_date or trip.end_date,
             locale=str(trip.data.get("locale") or "zh-TW"),
         )
-        planning = await AIItineraryPlanner(settings).generate(
+        planning = await plan_within_budget(
+            settings,
             _planning_request(
                 destination_name=trip.destination_name,
                 start_date=target_date or trip.start_date,
@@ -4199,7 +4214,9 @@ async def generate_trip_itinerary(
                 last_day_available_until=cast(str, availability["last_day_available_until"]),
                 trip_start_date=trip.start_date,
                 trip_end_date=trip.end_date,
-            )
+            ),
+            user_id=user.id,
+            source_ip=client_ip(request),
         )
         if planning.planning.readiness == "needs_setup":
             raise AppError(

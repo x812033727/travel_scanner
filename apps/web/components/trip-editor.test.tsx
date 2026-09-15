@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen, waitFor, within } from "@testing-librar
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { TripEditor } from "./trip-editor";
 import type { Trip } from "@/lib/trip-types";
+import trips from "@/messages/zh-TW/trips.json";
 
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }), useSearchParams: () => new URLSearchParams() }));
 
@@ -525,6 +526,81 @@ describe("trip editor", () => {
       const dayChip = screen.getAllByRole("button", { pressed: true }).find((button) => button.textContent?.includes("11/12"));
       expect(dayChip).toBeTruthy();
     });
+  });
+
+  it("names a spent planner budget instead of reporting an AI outage", async () => {
+    const budgetTrip = {
+      ...trip,
+      start_date: "2026-11-11",
+      end_date: "2026-11-11",
+      // What catalog_result returns when plan_within_budget finds the budget spent: the
+      // same catalogue plan as an outage, told apart only by the warning it carries.
+      planning: {
+        status: "fallback" as const,
+        readiness: "ready" as const,
+        provider: "catalog" as const,
+        model: null,
+        generated_at: "2026-11-01T10:00:00Z",
+        scope: "trip" as const,
+        warnings: ["planner_budget_reached"],
+        unscheduled_slots: [],
+      },
+    };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(budgetTrip))));
+
+    render(<TripEditor tripId={trip.id} />);
+
+    expect(await screen.findByText(trips.editor.aiBudgetReached)).toBeTruthy();
+    expect(screen.queryByText(trips.editor.aiFallbackApplied)).toBeNull();
+    const reminders = screen.getByRole("list", { name: trips.editor.aiWarningsLabel });
+    expect(within(reminders).getByText(trips.editor.plannerWarning.planner_budget_reached)).toBeTruthy();
+    // Dropping the code from PLANNER_WARNING_CODES would turn the reason into the generic line.
+    expect(within(reminders).queryByText(trips.editor.plannerWarning.unknown)).toBeNull();
+  });
+
+  it("names a spent planner budget in the replan preview, before Apply, and again after it", async () => {
+    let applyBody: Record<string, unknown> | undefined;
+    const budgetPlanning = {
+      status: "fallback", readiness: "fallback", provider: "catalog", model: null,
+      generated_at: "2026-11-01T10:00:00Z", warnings: ["planner_budget_reached", "planner_blank_slots:2"],
+    };
+    const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.includes("/itinerary/preview")) {
+        const preview = itineraryPreview("trip");
+        return response({ ...preview, planning: budgetPlanning, readiness: { ...preview.readiness, status: "fallback" } });
+      }
+      if (url.includes("/itinerary/apply")) {
+        applyBody = JSON.parse(String(init?.body));
+        return response({
+          ...trip,
+          version: 2,
+          planning: { ...budgetPlanning, scope: "trip", unscheduled_slots: [] },
+          usage: { status: "released", uses: 0, reference: "ai-trip-1" },
+        });
+      }
+      return response(trip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    await openAI();
+    fireEvent.click(screen.getByRole("radio", { name: /全行程安排/ }));
+    fireEvent.click(screen.getByRole("button", { name: /^產生預覽/ }));
+
+    const dialog = await screen.findByRole("dialog", { name: "確認 AI 行程預覽" });
+    const headline = within(dialog).getByText(trips.editor.preview.budgetReached);
+    expect(headline.closest("section")?.className).toContain("bg-amber-50");
+    expect(within(dialog).queryByText(trips.editor.preview.catalog)).toBeNull();
+    // The headline carries the budget; the list under it only adds what the headline does not
+    // say, so the budget line is not repeated and its "adjust it freely" is not offered pre-Apply.
+    const reminders = within(dialog).getByRole("list", { name: trips.editor.aiWarningsLabel });
+    expect(within(reminders).getAllByRole("listitem")).toHaveLength(1);
+    expect(within(reminders).queryByText(trips.editor.plannerWarning.planner_budget_reached)).toBeNull();
+
+    fireEvent.click(within(dialog).getByRole("button", { name: /^套用行程/ }));
+    await waitFor(() => expect(applyBody).toEqual({ version: 1, preview_id: "preview-trip" }));
+    await waitFor(() => expect(document.querySelector(".planner-toast-stack")?.textContent).toContain(trips.editor.aiBudgetReached));
+    expect(screen.queryByText(/本次未扣次/)).toBeNull();
   });
 
   it("shows durable catalog coordinates as a confirmed place", async () => {
