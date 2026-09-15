@@ -1,0 +1,83 @@
+{
+  "scheduleName": "GeminiLesson56Live20260915 每週摘要測試",
+  "setup": "schedule-setup.json",
+  "expectedLocalCandidate": "2026-09-15T12:15:00+08:00",
+  "candidateAssumesEnvironmentTimeZone": true,
+  "canonicalSchedulerTimeZoneConfirmed": false,
+  "events": [
+    {
+      "at": "2026-09-15T04:14:08.889Z",
+      "action": "saved-setting-check",
+      "result": "已儲存; weekly Tuesday 12:15; prompt checksum matches"
+    },
+    {
+      "at": "2026-09-15T04:16:09.806Z",
+      "action": "observe",
+      "result": "待執行"
+    },
+    {
+      "at": "2026-09-15T04:19:41.258Z",
+      "action": "observe-after-reload",
+      "result": "待執行"
+    },
+    {
+      "at": "2026-09-15T04:22:15.131Z",
+      "action": "usage-page-read",
+      "result": "current used 13%; weekly used 1%; no exhausted warning observed"
+    },
+    {
+      "at": "2026-09-15T04:24:03.118Z",
+      "action": "last-list-observation-before-pause",
+      "result": "執行中 section; 待執行 status"
+    },
+    {
+      "at": "2026-09-15T04:24:17.852Z",
+      "action": "tasks-list-check",
+      "result": "manual digest remains; no automatically created test task observed"
+    },
+    {
+      "at": "2026-09-15T04:24:29.913Z",
+      "action": "pause",
+      "result": "已暫停排程 toast; then 已暫停 section"
+    },
+    {
+      "at": "2026-09-15T04:24:49.867Z",
+      "action": "resume",
+      "result": "已恢復排程 toast; menu changed back to 暫停"
+    },
+    {
+      "at": "2026-09-15T04:25:03.099Z",
+      "action": "pause-again",
+      "result": "已暫停排程 toast"
+    },
+    {
+      "at": "2026-09-15T04:25:40.079Z",
+      "action": "reload",
+      "result": "same title under 已暫停"
+    },
+    {
+      "at": "2026-09-15T04:25:57.393Z",
+      "action": "delete-after-user-confirmation",
+      "result": "dialog states task retained; confirmed 刪除; 已刪除排程 toast"
+    },
+    {
+      "at": "2026-09-15T04:26:21.606Z",
+      "action": "reload",
+      "result": "新增第一個排程; test schedule absent"
+    }
+  ],
+  "userConfirmedDeletion": true,
+  "finalState": "deleted",
+  "runNowClicked": false,
+  "duplicateSchedulesCreated": 0,
+  "automaticTrigger": "not_observed_in_limited_window",
+  "scheduledOutputCaptured": false,
+  "pauseResumeUiVerification": "passed",
+  "deletionPersistence": "passed",
+  "fullWeekStopObservation": "not_run",
+  "nextOriginalWeeklyCandidate": "2026-09-22T12:15:00+08:00",
+  "nextCandidateStillAssumesUnconfirmedSchedulerTimeZone": true,
+  "deviceOffRun": "not_run",
+  "publishable": false,
+  "limit": "The pre-pause observation window ends about nine minutes after the local candidate. This does not establish the cause or prove that a later run would never occur."
+}
