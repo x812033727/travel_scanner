@@ -89,3 +89,18 @@ scope:
 - [ ] 與其他批次及正式導覽整合，全部完成後再依限定清單發布及驗 sitemap。
 
 authoring-review.json 凍結作者交付位元組；publishable=false。正式 guide-series.json 未加入深入篇章，沒有模型呼叫、寄信、建立 Spark 排程、資料庫匯入、push 或部署。任務保留 open，讓上述實測條件具備後接續；不要把作者完成改成整套驗收完成。
+
+## 2026-09-15 Google Pro 真實網頁測試
+
+使用者已開啟 Chrome／內建瀏覽器並確認 Pro；另允許 API，但費用上限 NT$0，僅可確認免費額度。這輪使用 Chrome 個人帳號的 Flash 網頁模式，保留現有個人化設定。API 金鑰環境變數只檢查存在與否，均未設定；沒有 API 呼叫或額外購買。
+
+- [x] 51：固定題庫十題 × A/B，共二十個不同的新對話，交替順序；二十份真實回答已保存於 `docs/gemini-series/advanced/content/work/verification/live-20260915/51/`。
+- [x] 題庫、兩版提示詞、rubric 及評分工具雜湊與原稿一致；所有提示詞在瀏覽器紀錄逐字核對，匯出後再核對二十筆傳輸 checksum。擷取僅取回答本文；追蹤檔把私人對話 URL 換成 SHA256。
+- [x] 已提供逐題 AI 初查及獨立人工評分表；表內 `capture_status=captured`、`review_status=pending`，沒有將 AI 初查當成人工評分或宣稱 B 勝出。
+- [ ] 51：人工依四項 rubric 評分及語意核准，完成後才能解除本篇完整驗收門檻。
+- [x] 52：確認目前介面「設定 → Gem → 新增 Gem」，填入專用虛構助手名稱、說明與五段指示。
+- [ ] 52：首次檔案功能出現「同意免責事項」；尚未同意／上傳／儲存，Chrome 草稿留待使用者處理後接續。詳細位置與下一步在 `live-20260915/52/preflight.md`。
+
+本次只新增實測證據及本票進度，原作者交付、內容包、共享 catalogue、candidate release 及歷史 hash 收據不變；歷史收據的「未實測」是當時狀態，最新實測見上述目錄。整套仍不可發布，52–56 的原驗收項目持續待辦。沒有 push、PR、部署、資料庫匯入或公開頁改動。
+
+本輪檢查：20 筆捕捉 audit、20 筆 browser-to-file checksum、154 個歷史作者檔案 hash、Ruff 及 428 份任務檢查通過；任務工具仍有既有其他範圍的 stale／overlap warnings。C08 兩份原始回答含行尾 tab；限定 raw/*.txt 保留位元組與行尾空白後，git diff --check 通過，不修改模型輸出以符合格式檢查。前後端程式與正式內容包未改動，沒有重跑全站測試。暫停時釋放認領，待同意視窗處理後可重新認領本票接續，勿重跑已保存的 51 題庫。
