@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">住院日額型與實支實付型的給付邏輯 / Daily hospital benefit versus reimbursement</title>
+  <desc id="desc">左右並排兩張卡。左邊是住院日額型：住院日數乘以約定日額等於給付金額，申領文件是診斷書或住院證明，沒有醫療費用收據這一項，限制是每次住院的給付日數上限，出院後十四日內在同一醫院再次住院視為一次住院。右邊是實支實付型：收據分項對應條款限額後核付金額，申領文件除診斷書外還要醫療費用收據，限制是各項保險金限額或每次住院總限額擇一。下方兩格標出兩者各自補的缺口：日額型補住院期間的收入中斷與雜支，實支實付型補已經發生的自費醫療支出。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+    <marker id="arrowblue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#2F6F9F"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="48" y="52" font-size="30" font-weight="bold" fill="#102A2B">住院日額型與實支實付型：兩種給付邏輯</text>
+  <text x="48" y="84" font-size="18" fill="#5C6B6B">Hospital daily benefit versus reimbursement</text>
+
+  <rect x="70" y="130" width="680" height="420" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="410" y="182" font-size="28" font-weight="bold" fill="#102A2B" text-anchor="middle">住院日額型</text>
+  <text x="410" y="214" font-size="17" fill="#5C6B6B" text-anchor="middle">定額給付，與實際花費無關</text>
+
+  <rect x="90" y="245" width="190" height="70" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="185" y="289" font-size="20" fill="#102A2B" text-anchor="middle">住院日數</text>
+  <text x="310" y="292" font-size="26" fill="#5C6B6B" text-anchor="middle">×</text>
+  <rect x="340" y="245" width="190" height="70" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="435" y="289" font-size="20" fill="#102A2B" text-anchor="middle">約定日額</text>
+  <text x="560" y="292" font-size="26" fill="#5C6B6B" text-anchor="middle">＝</text>
+  <rect x="590" y="245" width="140" height="70" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="660" y="289" font-size="20" fill="#102A2B" text-anchor="middle">給付金額</text>
+
+  <rect x="90" y="345" width="640" height="82" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="410" y="378" font-size="20" fill="#102A2B" text-anchor="middle">申領文件：診斷書或住院證明</text>
+  <text x="410" y="408" font-size="20" fill="#B8442D" text-anchor="middle">清單上沒有醫療費用收據</text>
+
+  <rect x="90" y="447" width="640" height="82" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="410" y="480" font-size="20" fill="#102A2B" text-anchor="middle">限制：每次住院的給付日數上限</text>
+  <text x="410" y="510" font-size="20" fill="#102A2B" text-anchor="middle">出院後十四日內再住院算一次</text>
+
+  <rect x="850" y="130" width="680" height="420" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1190" y="182" font-size="28" font-weight="bold" fill="#102A2B" text-anchor="middle">實支實付型</text>
+  <text x="1190" y="214" font-size="17" fill="#5C6B6B" text-anchor="middle">以實際自行負擔的費用為上限</text>
+
+  <rect x="870" y="245" width="190" height="70" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="965" y="289" font-size="20" fill="#102A2B" text-anchor="middle">收據分項</text>
+  <line x1="1072" y1="280" x2="1108" y2="280" stroke="#2F6F9F" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrowblue)"/>
+  <rect x="1120" y="245" width="190" height="70" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1215" y="289" font-size="20" fill="#102A2B" text-anchor="middle">條款限額</text>
+  <line x1="1322" y1="280" x2="1358" y2="280" stroke="#2F6F9F" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrowblue)"/>
+  <rect x="1370" y="245" width="140" height="70" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1440" y="289" font-size="20" fill="#102A2B" text-anchor="middle">核付金額</text>
+
+  <rect x="870" y="345" width="640" height="82" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1190" y="378" font-size="20" fill="#102A2B" text-anchor="middle">申領文件：診斷書或住院證明</text>
+  <text x="1190" y="408" font-size="20" fill="#D97A2B" text-anchor="middle">清單上另有醫療費用收據</text>
+
+  <rect x="870" y="447" width="640" height="82" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1190" y="480" font-size="20" fill="#102A2B" text-anchor="middle">限制：各項保險金限額</text>
+  <text x="1190" y="510" font-size="20" fill="#102A2B" text-anchor="middle">或每次住院總限額擇一</text>
+
+  <line x1="410" y1="552" x2="410" y2="616" stroke="#5C6B6B" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrow)"/>
+  <line x1="1190" y1="552" x2="1190" y2="616" stroke="#5C6B6B" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <rect x="70" y="628" width="680" height="168" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="410" y="672" font-size="18" fill="#5C6B6B" text-anchor="middle">補的是</text>
+  <text x="410" y="716" font-size="26" font-weight="bold" fill="#102A2B" text-anchor="middle">住院期間的收入中斷與雜支</text>
+  <text x="410" y="760" font-size="18" fill="#5C6B6B" text-anchor="middle">請假、家屬照顧、交通這些不在收據上的成本</text>
+
+  <rect x="850" y="628" width="680" height="168" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1190" y="672" font-size="18" fill="#5C6B6B" text-anchor="middle">補的是</text>
+  <text x="1190" y="716" font-size="26" font-weight="bold" fill="#102A2B" text-anchor="middle">已經發生的自費醫療支出</text>
+  <text x="1190" y="760" font-size="18" fill="#5C6B6B" text-anchor="middle">健保沒有給付、由自己負擔的項目</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

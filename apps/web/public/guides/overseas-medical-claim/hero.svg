@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一張收據、兩個文件夾 / One receipt, two folders</title>
+  <desc id="desc">一張沒有文字的插圖。畫面上方是一個白色圓形，裡面有一個紅色十字，代表在國外的醫院；圓形下方一支灰色箭頭往下指向畫面中央的一張白色收據，收據有紅色外框與鋸齒狀的下緣，裡面三條紅色橫線代表金額欄位。收據左右各有一支箭頭往外指，左邊的綠色箭頭指向一個綠色文件夾，右邊的藍色箭頭指向一個藍色文件夾，兩個文件夾大小相同、左右對稱，代表同一張收據正本被健保核退與保險理賠兩條路同時需要。</desc>
+  <defs>
+    <marker id="aGrey" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="3" markerHeight="3" orient="auto">
+      <path d="M0 0 L12 6 L0 12 Z" fill="#5C6B6B"/>
+    </marker>
+    <marker id="aTeal" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="3" markerHeight="3" orient="auto">
+      <path d="M0 0 L12 6 L0 12 Z" fill="#0D6B68"/>
+    </marker>
+    <marker id="aBlue" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="3" markerHeight="3" orient="auto">
+      <path d="M0 0 L12 6 L0 12 Z" fill="#2F6F9F"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <circle cx="800" cy="250" r="68" fill="#FFFFFF" stroke="#0D6B68" stroke-width="12"/>
+  <rect x="788" y="214" width="24" height="72" fill="#B8442D"/>
+  <rect x="764" y="238" width="72" height="24" fill="#B8442D"/>
+  <line x1="800" y1="328" x2="800" y2="417" stroke="#5C6B6B" stroke-width="10" stroke-linecap="butt" marker-end="url(#aGrey)"/>
+
+  <rect x="200" y="418" width="110" height="34" rx="12" fill="#E3F0EF" stroke="#0D6B68" stroke-width="10"/>
+  <rect x="200" y="444" width="300" height="226" rx="18" fill="#E3F0EF" stroke="#0D6B68" stroke-width="10"/>
+  <rect x="1100" y="418" width="110" height="34" rx="12" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="10"/>
+  <rect x="1100" y="444" width="300" height="226" rx="18" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="10"/>
+
+  <line x1="650" y1="557" x2="508" y2="557" stroke="#0D6B68" stroke-width="12" stroke-linecap="butt" marker-end="url(#aTeal)"/>
+  <line x1="950" y1="557" x2="1092" y2="557" stroke="#2F6F9F" stroke-width="12" stroke-linecap="butt" marker-end="url(#aBlue)"/>
+
+  <polygon points="660,420 940,420 940,672 912,700 884,672 856,700 828,672 800,700 772,672 744,700 716,672 688,700 660,672" fill="#FFFFFF" stroke="#B8442D" stroke-width="12" stroke-linejoin="round"/>
+  <line x1="704" y1="476" x2="896" y2="476" stroke="#B8442D" stroke-width="12" stroke-linecap="butt"/>
+  <line x1="704" y1="528" x2="896" y2="528" stroke="#B8442D" stroke-width="12" stroke-linecap="butt"/>
+  <line x1="704" y1="580" x2="832" y2="580" stroke="#B8442D" stroke-width="12" stroke-linecap="butt"/>
+</svg>
