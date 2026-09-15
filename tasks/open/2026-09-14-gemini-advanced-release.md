@@ -84,3 +84,16 @@ scope:
 證據入口：docs/gemini-series/advanced/release/README.md、local-verification.json、candidate/review.json、candidate/schema-validation.json、readiness.json、browser/verification.json。候選 schema 刻意不能交給發布工具；原 runtime catalogue raw SHA-256 仍為 1f6afed7f3bf7f05a407b8d5af4647938cf6d91df6b42a381a904b1f6d697bb2，50 篇未改動。
 
 檢查來源 HEAD：b2f9dbc9；本次沒有 push、PR、merge、deploy、database import 或 publish。預設 Node 24.13.0 跑候選準備無輸出退出，改用 bundled Node 24.19.0 後成功；未修改 CLI 本體或隱藏這個本機工具限制。
+
+
+## 2026-09-15 第一版 PR 整理（codex-gemini-pr）
+
+使用者要求「先整理開 PR 推一版」。本輪 --force 僅取得 PR 整理及主線衝突解決的 scope，不跳過依賴驗收、不開放系列。
+
+- [x] 整合 main 4072e60e，唯一衝突為 docs/life-ai-series.md。保留主線 250–260，Gemini 編輯總表改 261–296；教學篇號、slug 不變。
+- [x] release/pr-review-20260915 提供本次交接、修訂採用順序、檢查結果與 PR 說明。52–54、57–58 的完整 revision 和第 57 篇 SVG 補正均列入，原歷史收據不改。
+- [x] npm ci 更新至鎖定依賴；型別、24 檔 ESLint、13 檔／160 項前端回歸、60 項工具、9 項編譯器、7 項驗收工具、五語系與 51／87 頁內容連結檢查通過；文章 API 為 53 通過、17 跳過。
+- [x] 47 個不同 ZIP 及 PR 文字模式掃描零命中；忽略私人 Google 文件連結和無關工作區暫存。
+- [ ] 嚴格舊候選雜湊不通過：主線更新 13／420 個輸入，詳見 original-candidate-audit.json。保留舊收據，先整合真實 revision 再建立新候選，不把此失敗標成可發布。
+- [ ] 全站本機 lint／測試因可用記憶體偏低中止，改驗受影響範圍；新鎖定依賴的完整建置與 E2E 待本次 GitHub CI，不借用舊瀏覽器收據。
+- [ ] 草稿 PR 的 CI／審查與所有原內容發布門檻仍待完成。此輪只授權推送與開 PR，未合併、部署或匯入。
