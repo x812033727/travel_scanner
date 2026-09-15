@@ -697,10 +697,29 @@ class SitemapEntry(BaseModel):
     slug: str
     locale: Locale
     published_at: datetime
-    # The current public version's own timestamp: the honest ``lastmod``. Optional on the
-    # wire so a web layer built against the older shape keeps parsing the file.
+    # When the current public version went live -- the honest lastmod. None only when the
+    # published pointer is damaged, which costs the row its date, not its place.
     modified_at: datetime | None = None
+    # Every locale this article is published in, so a child sitemap that holds one locale can
+    # still name the article's other translations as alternates.
+    locales: list[Locale] = Field(default_factory=list)
 
 
 class SitemapList(BaseModel):
     entries: list[SitemapEntry]
+    # Present when the page was full and rows follow; absent (None) on the last page and from
+    # an API that predates paging. Same keyset shape as the listing, one key wider.
+    next_cursor: str | None = None
+
+
+class SitemapCount(BaseModel):
+    kind: Kind
+    locale: Locale
+    count: int
+
+
+class SitemapSummary(BaseModel):
+    """How many published rows each kind has in each locale: what the sitemap index and the
+    section hubs need, without paging through every row to learn it."""
+
+    counts: list[SitemapCount]

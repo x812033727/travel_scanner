@@ -32,6 +32,7 @@ from app.guides.schemas import (
     Section,
     SeriesIndex,
     SitemapList,
+    SitemapSummary,
     TopicList,
     VisibilityWrite,
 )
@@ -95,9 +96,24 @@ async def list_public_destinations(
 
 
 @public_router.get("/sitemap", response_model=SitemapList)
-async def public_sitemap(response: Response, session: Session) -> SitemapList:
+async def public_sitemap(
+    response: Response,
+    session: Session,
+    section: Section | None = None,
+    locale: Locale | None = None,
+    cursor: str | None = Query(default=None, max_length=512),
+    limit: int = Query(default=service.SITEMAP_LIMIT, ge=1, le=service.SITEMAP_LIMIT),
+) -> SitemapList:
     response.headers["Cache-Control"] = "no-store"
-    return await service.sitemap_entries(session)
+    return await service.sitemap_entries(
+        session, section=section, locale=locale, cursor=cursor, limit=limit
+    )
+
+
+@public_router.get("/sitemap/summary", response_model=SitemapSummary)
+async def public_sitemap_summary(response: Response, session: Session) -> SitemapSummary:
+    response.headers["Cache-Control"] = "no-store"
+    return await service.sitemap_summary(session)
 
 
 @public_router.get("/series", response_model=SeriesIndex)

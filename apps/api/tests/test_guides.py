@@ -852,6 +852,118 @@ async def test_the_sitemap_lists_one_entry_per_published_locale(database, actor)
         assert all(entry["published_at"] for entry in entries)
 
 
+async def publish_sitemap_fixture(api: AsyncClient) -> dict[str, dict]:
+    """Five published rows over three articles: a how-to in zh-TW and ja, a notice in zh-TW,
+    a lifestyle article in zh-TW and en, all within the same second or two, plus a draft."""
+    guide = await create_article(api, slug="narita-to-tokyo")
+    await publish(api, guide["id"], "zh-TW", guide["version"])
+    japanese = await api.post(
+        f"/admin/guides/{guide['id']}/ja",
+        json=document(title="成田空港から東京駅まで", description="三つの行き方を比べます"),
+    )
+    assert japanese.status_code == 201
+    await publish(api, guide["id"], "ja", 1)
+    notice = await create_article(api, slug="jr-pass-sale", kind="intel")
+    await publish(api, notice["id"], "zh-TW", notice["version"])
+    life = await create_article(
+        api, slug="ai-notes", kind="life", destination_id=None, topics=["ai"]
+    )
+    await publish(api, life["id"], "zh-TW", life["version"])
+    english = await api.post(
+        f"/admin/guides/{life['id']}/en",
+        json=document(title="AI notes", description="Four tools and what each costs"),
+    )
+    assert english.status_code == 201
+    await publish(api, life["id"], "en", 1)
+    draft = await create_article(
+        api, slug="draft-only", kind="life", destination_id=None, topics=["ai"]
+    )
+    assert draft["status"] == "draft"
+    return {"guide": guide, "notice": notice, "life": life}
+
+
+async def test_the_sitemap_pages_by_section_and_locale_without_repeating_or_dropping_a_row(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        await publish_sitemap_fixture(api)
+
+        async def rows(**params):
+            seen, cursor = [], None
+            while True:
+                query = {**params, **({"cursor": cursor} if cursor else {})}
+                response = await api.get("/guides/sitemap", params=query)
+                assert response.status_code == 200, response.text
+                body = response.json()
+                seen.extend(body["entries"])
+                cursor = body["next_cursor"]
+                if cursor is None:
+                    return seen
+
+        everything = await rows()
+        keys = [(row["kind"], row["slug"], row["locale"]) for row in everything]
+        assert sorted(keys) == [
+            ("howto", "narita-to-tokyo", "ja"),
+            ("howto", "narita-to-tokyo", "zh-TW"),
+            ("intel", "jr-pass-sale", "zh-TW"),
+            ("life", "ai-notes", "en"),
+            ("life", "ai-notes", "zh-TW"),
+        ]
+        # One row per page: rows published in the same second must still page cleanly.
+        paged = await rows(limit=1)
+        assert [(row["kind"], row["slug"], row["locale"]) for row in paged] == keys
+        # A page that is not full carries no cursor; a full one carries one.
+        first = (await api.get("/guides/sitemap", params={"limit": 2})).json()
+        assert len(first["entries"]) == 2 and first["next_cursor"]
+        whole = (await api.get("/guides/sitemap")).json()
+        assert len(whole["entries"]) == 5 and whole["next_cursor"] is None
+
+        # Every row names all the locales its article is published in, whichever child asks.
+        by_key = {(row["kind"], row["slug"], row["locale"]): row for row in everything}
+        assert by_key[("howto", "narita-to-tokyo", "ja")]["locales"] == ["ja", "zh-TW"]
+        assert by_key[("life", "ai-notes", "en")]["locales"] == ["en", "zh-TW"]
+        assert by_key[("intel", "jr-pass-sale", "zh-TW")]["locales"] == ["zh-TW"]
+
+        life = await rows(section="life")
+        assert sorted(row["locale"] for row in life) == ["en", "zh-TW"]
+        assert {row["kind"] for row in life} == {"life"}
+        travel_zh = await rows(section="travel", locale="zh-TW")
+        assert sorted(row["slug"] for row in travel_zh) == ["jr-pass-sale", "narita-to-tokyo"]
+        assert await rows(locale="ko") == []
+        assert (await api.get("/guides/sitemap", params={"section": "recipes"})).status_code == 422
+
+        tampered = await api.get("/guides/sitemap", params={"cursor": "not-a-cursor"})
+        assert tampered.status_code == 422
+        assert tampered.json()["code"] == "guide_cursor_invalid"
+
+
+async def test_the_sitemap_summary_counts_published_rows_per_kind_and_locale(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        articles = await publish_sitemap_fixture(api)
+        response = await api.get("/guides/sitemap/summary")
+        assert response.status_code == 200, response.text
+        assert response.headers["Cache-Control"] == "no-store"
+        assert response.json()["counts"] == [
+            {"kind": "intel", "locale": "zh-TW", "count": 1},
+            {"kind": "howto", "locale": "ja", "count": 1},
+            {"kind": "howto", "locale": "zh-TW", "count": 1},
+            {"kind": "life", "locale": "en", "count": 1},
+            {"kind": "life", "locale": "zh-TW", "count": 1},
+        ]
+        # Hiding leaves the counts the moment it leaves the site.
+        life = articles["life"]
+        hidden = await set_hidden(api, life["id"], life["version"])
+        assert hidden.status_code == 200, hidden.text
+        counts = (await api.get("/guides/sitemap/summary")).json()["counts"]
+        assert {(row["kind"], row["locale"]) for row in counts} == {
+            ("intel", "zh-TW"),
+            ("howto", "ja"),
+            ("howto", "zh-TW"),
+        }
+
+
 async def test_a_translation_starts_empty_and_never_copies_another_locale(database, actor) -> None:
     async with client(make_app(database, actor)) as api:
         created = await create_article(api)
@@ -893,7 +1005,7 @@ async def test_an_admin_without_content_capability_cannot_write(database, actor)
 
 async def test_public_reads_never_require_an_account(database) -> None:
     async with client(make_app(database)) as api:
-        for path in ("/guides", "/guides/topics", "/guides/sitemap"):
+        for path in ("/guides", "/guides/topics", "/guides/sitemap", "/guides/sitemap/summary"):
             response = await api.get(path, params={"locale": "zh-TW"})
             assert response.status_code == 200
             assert response.headers["Cache-Control"] == "no-store"

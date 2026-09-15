@@ -428,6 +428,35 @@ def test_lint_all_compares_the_packs_with_the_catalogue(tmp_path: Path) -> None:
     assert [p.message for p in findings["catalogue"]] == ["ai-tools-2026-overview: not written yet"]
 
 
+def test_lint_all_warns_per_child_sitemap_and_only_past_its_threshold(
+    tmp_path: Path, monkeypatch
+) -> None:
+    """The sitemap is one child per section and locale, so the budget warning names the
+    child that is filling, counts every pack rather than the ones ``kind`` narrowed the run
+    to, and stays silent below the threshold."""
+    from app.guides import pack_ingest
+    from app.guides.content_pack import load_packs
+
+    workdir, content, public = tmp_path / "work", tmp_path / "content", tmp_path / "public"
+    _write_workspace(workdir)
+    ingest(
+        workdir,
+        "chatgpt-beginner-guide",
+        content_dir=content,
+        public_dir=public,
+        renderer=fake_renderer,
+    )
+    assert pack_ingest.sitemap_children(load_packs(content)) == {"life-zh-TW": 1}
+    assert "sitemap" not in lint_all(content, public, kind="life")
+
+    monkeypatch.setattr(pack_ingest, "SITEMAP_WARN_ROWS", 0)
+    findings = lint_all(content, public, kind="howto")
+    assert [(p.level, p.code) for p in findings["sitemap"]] == [("warning", "sitemap_budget")]
+    assert findings["sitemap"][0].message.startswith(
+        "life-zh-TW: 1 (article, locale) rows; a child sitemap holds 5,000"
+    )
+
+
 # --- the Commons transport ------------------------------------------------------------------
 
 def _redirecting_server(location: str) -> tuple[HTTPServer, str]:

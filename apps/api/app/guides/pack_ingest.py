@@ -84,8 +84,10 @@ INTEL_TEXT_RANGE = (700, 3_000)
 DOCUMENT_JSON_LIMIT = 110_000
 MIN_LABEL_PX = 15
 DIAGRAM_VIEWBOX = "0 0 1600 900"
-#: Both sections share one 1,000-row sitemap (``docs/travel-guides.md``, "Still open").
-SITEMAP_WARN_ROWS = 800
+#: The sitemap is one child per section and locale (``apps/web/app/sitemap.ts``), each
+#: holding up to this many (article, locale) rows; the lint warns at 80% of it, per child.
+SITEMAP_CHILD_LIMIT = 5000
+SITEMAP_WARN_ROWS = 4000
 SITE_ORIGIN = "https://mokaair.com/"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 MOKAAIR_CREDIT = ImageCredit(author="Mokaair", license="© Mokaair")
@@ -910,8 +912,9 @@ def lint_all(
     catalogue: Path | None = None,
 ) -> dict[str, list[Problem]]:
     """The rules over every pack that ships, keyed by slug. Two extra keys: ``catalogue`` for
-    the difference between the series list and the packs, and ``sitemap`` when the (article,
-    locale) rows approach the shared budget."""
+    the difference between the series list and the packs, and ``sitemap`` when one child
+    sitemap's (article, locale) rows approach its limit -- counted over every pack, whatever
+    ``kind`` or ``slugs`` narrowed the run to, because the budget is the site's."""
     findings: dict[str, list[Problem]] = {}
     try:
         packs = load_packs(content_dir)
@@ -981,14 +984,31 @@ def lint_all(
                     Problem("warning", "pack_not_in_catalogue", f"{pack.slug}: add it to the list")
                 )
         findings["catalogue"] = notes
-    rows = sum(len(pack.locales) for pack in packs)
-    if rows > SITEMAP_WARN_ROWS:
-        findings["sitemap"] = [
-            Problem(
-                "warning",
-                "sitemap_budget",
-                f"{rows} (article, locale) rows; the shared sitemap holds 1,000 -- split it "
-                "before adding another locale",
-            )
-        ]
+    budget = sitemap_budget(packs)
+    if budget:
+        findings["sitemap"] = budget
     return findings
+
+
+def sitemap_children(packs: list[ArticlePack]) -> dict[str, int]:
+    """(article, locale) rows per child sitemap, keyed ``{section}-{locale}`` as the web
+    names the children."""
+    rows: dict[str, int] = {}
+    for pack in packs:
+        for locale in pack.locales:
+            key = f"{section_of(pack.kind)}-{locale}"
+            rows[key] = rows.get(key, 0) + 1
+    return rows
+
+
+def sitemap_budget(packs: list[ArticlePack]) -> list[Problem]:
+    return [
+        Problem(
+            "warning",
+            "sitemap_budget",
+            f"{child}: {rows} (article, locale) rows; a child sitemap holds "
+            f"{SITEMAP_CHILD_LIMIT:,} -- split that child before it fills",
+        )
+        for child, rows in sorted(sitemap_children(packs).items())
+        if rows > SITEMAP_WARN_ROWS
+    ]

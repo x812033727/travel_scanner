@@ -16,7 +16,7 @@ from typing import Any, Literal, cast
 from urllib.parse import urlsplit
 from uuid import UUID
 
-from sqlalchemy import and_, select
+from sqlalchemy import and_, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.affiliates.content_links import PARTNERS_BY_CODE, link_key, partner_link_problem
@@ -32,6 +32,7 @@ from app.guides.models import (
 )
 from app.guides.publication import article_is_live, published_filters
 from app.guides.schemas import (
+    KINDS,
     SECTION_KINDS,
     DestinationFacet,
     DestinationFacetList,
@@ -44,8 +45,10 @@ from app.guides.schemas import (
     PublicSummary,
     PublishedDocument,
     Section,
+    SitemapCount,
     SitemapEntry,
     SitemapList,
+    SitemapSummary,
     TopicOption,
 )
 from app.guides.series import article_navigation, resolve_article_links
@@ -55,6 +58,8 @@ from app.models import AffiliateClick
 from app.problems import AppError
 
 MAX_PAGE = 50
+# The largest page ``GET /guides/sitemap`` answers, and its default: a caller that predates
+# paging still gets the newest thousand rows in one call, and a paging caller asks for less.
 SITEMAP_LIMIT = 1000
 
 
@@ -479,17 +484,71 @@ async def record_partner_click(
     await session.commit()
 
 
-async def sitemap_entries(session: AsyncSession) -> SitemapList:
-    """Publication-aware enumeration for ``apps/web/app/sitemap.ts``.
+def _encode_sitemap_cursor(published_at: datetime, slug: str, locale: str) -> str:
+    """The sitemap's row grain is (article, locale), so its keyset carries one key more than
+    the listing's; the encoding is otherwise the same, and just as opaque to the caller."""
+    raw = json.dumps([published_at.isoformat(), slug, locale], separators=(",", ":"))
+    return base64.urlsafe_b64encode(raw.encode()).decode().rstrip("=")
+
+
+def _decode_sitemap_cursor(cursor: str | None) -> tuple[datetime, str, str] | None:
+    if not cursor:
+        return None
+    try:
+        padded = cursor + "=" * (-len(cursor) % 4)
+        stamp, slug, locale = json.loads(base64.urlsafe_b64decode(padded.encode()).decode())
+        return datetime.fromisoformat(stamp), str(slug), str(locale)
+    except (ValueError, TypeError):
+        raise AppError(422, "guide_cursor_invalid", "分頁資訊無效，請重新瀏覽") from None
+
+
+async def _published_locales(
+    session: AsyncSession, article_ids: set[UUID]
+) -> dict[UUID, list[Locale]]:
+    """Every locale each article is published in, in the site's own locale order."""
+    if not article_ids:
+        return {}
+    rows = await session.execute(
+        select(GuideArticleLocale.article_id, GuideArticleLocale.locale)
+        .join(GuideArticle, GuideArticle.id == GuideArticleLocale.article_id)
+        .where(GuideArticleLocale.article_id.in_(article_ids), *published_filters())
+    )
+    found: dict[UUID, set[str]] = {}
+    for article_id, locale in rows:
+        found.setdefault(article_id, set()).add(locale)
+    return {
+        article_id: [item for item in LOCALES if item in locales]
+        for article_id, locales in found.items()
+    }
+
+
+async def sitemap_entries(
+    session: AsyncSession,
+    *,
+    section: Section | None = None,
+    locale: Locale | None = None,
+    cursor: str | None = None,
+    limit: int = SITEMAP_LIMIT,
+) -> SitemapList:
+    """Publication-aware enumeration for ``apps/web/app/sitemap.ts``, one page at a time.
 
     Only rows that the list and the article page would also serve. Expired intel and
     withdrawn translations leave here at the same moment they leave the site.
+
+    The web splits the sitemap into one child per section and locale, so both filters exist;
+    a page holds at most ``SITEMAP_LIMIT`` rows and the caller follows ``next_cursor`` until
+    it is None. Newest first, with the slug and the locale as tiebreakers: a batch import
+    publishes dozens of rows in the same second, and a keyset on the timestamp alone would
+    repeat or skip them across pages.
     """
+    kinds = kind_filter(None, section)
+    size = min(max(limit, 1), SITEMAP_LIMIT)
     # The current public version's own timestamp rides along as ``modified_at``: the same
     # predicate ``_published_document`` resolves the pointer with, as an outer join so a
     # damaged pointer costs that row its lastmod rather than its place in the file.
-    rows = await session.execute(
+    query = (
         select(
+            GuideArticle.id,
             GuideArticle.kind,
             GuideArticle.slug,
             GuideArticleLocale.locale,
@@ -505,20 +564,70 @@ async def sitemap_entries(session: AsyncSession) -> SitemapList:
                 GuideArticleRevision.action == "published",
             ),
         )
-        .where(*published_filters())
-        .order_by(GuideArticleLocale.published_at.desc())
-        .limit(SITEMAP_LIMIT)
+        .where(GuideArticleLocale.published_at.is_not(None), *published_filters())
     )
-    return SitemapList(
-        entries=[
-            SitemapEntry(
-                kind=cast(Kind, kind),
-                slug=slug,
-                locale=cast(Locale, locale),
-                published_at=published_at,
-                modified_at=modified_at or published_at,
+    if kinds:
+        query = query.where(GuideArticle.kind.in_(kinds))
+    if locale:
+        query = query.where(GuideArticleLocale.locale == locale)
+    position = _decode_sitemap_cursor(cursor)
+    if position is not None:
+        stamp, after_slug, after_locale = position
+        query = query.where(
+            or_(
+                GuideArticleLocale.published_at < stamp,
+                and_(GuideArticleLocale.published_at == stamp, GuideArticle.slug > after_slug),
+                and_(
+                    GuideArticleLocale.published_at == stamp,
+                    GuideArticle.slug == after_slug,
+                    GuideArticleLocale.locale > after_locale,
+                ),
             )
-            for kind, slug, locale, published_at, modified_at in rows
-            if published_at is not None
-        ]
+        )
+    rows = list(
+        await session.execute(
+            query.order_by(
+                GuideArticleLocale.published_at.desc(),
+                GuideArticle.slug,
+                GuideArticleLocale.locale,
+            ).limit(size + 1)
+        )
     )
+    has_more = len(rows) > size
+    rows = rows[:size]
+    locales = await _published_locales(session, {article_id for article_id, *_ in rows})
+    entries = [
+        SitemapEntry(
+            kind=cast(Kind, kind),
+            slug=slug,
+            locale=cast(Locale, row_locale),
+            published_at=published_at,
+            modified_at=modified_at or published_at,
+            locales=locales.get(article_id, [cast(Locale, row_locale)]),
+        )
+        for article_id, kind, slug, row_locale, published_at, modified_at in rows
+    ]
+    last = rows[-1] if rows and has_more else None
+    return SitemapList(
+        entries=entries,
+        next_cursor=_encode_sitemap_cursor(last[4], last[2], last[3]) if last else None,
+    )
+
+
+async def sitemap_summary(session: AsyncSession) -> SitemapSummary:
+    """Published rows per kind and locale, from the same predicate the enumeration uses, so
+    the index can list only the children that have something and a section hub can tell
+    which languages publish it -- one grouped query instead of paging every row."""
+    rows = await session.execute(
+        select(GuideArticle.kind, GuideArticleLocale.locale, func.count())
+        .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
+        .where(GuideArticleLocale.published_at.is_not(None), *published_filters())
+        .group_by(GuideArticle.kind, GuideArticleLocale.locale)
+    )
+    counts = [
+        SitemapCount(kind=cast(Kind, kind), locale=cast(Locale, locale), count=count)
+        for kind, locale, count in rows
+    ]
+    order = {kind: index for index, kind in enumerate(KINDS)}
+    counts.sort(key=lambda item: (order[item.kind], LOCALES.index(item.locale)))
+    return SitemapSummary(counts=counts)
