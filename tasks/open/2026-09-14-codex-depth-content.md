@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-codex-depth-content
 title: Codex deep content and isolated learning components
-status: open
+status: blocked
 priority: P2
 area: docs
 owner:
@@ -373,3 +373,12 @@ Preview commands and full implementation history are in docs/codex-learning/READ
 - Read the requested task, "規劃 Claude Code 教學目錄", and its current local advanced README/verification records. It now has 96 lessons plus a hub, including a separate 36-lesson expansion. No files or task messages were written in its workspace.
 - Added a nine-group comparison to the existing Codex 60-lesson curriculum, with hashes of the inspected sources. Educational acceptance stays aligned; product commands, Hooks/Teams behavior and real-operation evidence are not transplanted. Dedicated custom MCP server/pagination and Agent SDK courses are explicitly outside the current 60 lessons, rather than falsely marked covered.
 - Evidence: docs/codex-learning/evidence/claude-alignment-20260915.json, linked from depth-plan.md. This does not revise blocked editorial checkpoints, claim any pending lesson passed or change the all-complete-before-PR gate.
+
+## Production build and execution-denial diagnosis — 2026-09-15
+
+- Built source commit 20ffb50a with Node 24.15.0 / Next 16.3.4 using the existing merged lockfile. `npm run build:web` passed, including TypeScript and 293 static pages. Verified compiled lifestyle listing/article, admin-guide and sitemap entries and the standalone server artifact. The upstream article route has the `(ads-public)` group; its public URL is unchanged. No server was launched and this is not final page acceptance.
+- Evidence: docs/codex-learning/evidence/post-main-production-build.json and its compressed log, with verified raw/compressed hashes. No application source changed; the preceding full frontend/API results remain historical evidence for their named source.
+- No Docker, psql or pg_ctl command was found on PATH, and 127.0.0.1:5432 was not reachable. No database was started and no PostgreSQL test result is claimed.
+- Read the direct rejected tool results in this task's transcript: 11 process-creation denials, all reporting `blocked by policy` without a specific rationale. Every recorded context used approval_policy=never and danger-full-access. The earlier categorical attribution to sandbox-boundary Auto-review is not established by this evidence or the current official documentation. Use "tool execution rejected by policy, source unconfirmed" until a concrete explanation is available.
+- Sanitized diagnostic: docs/codex-learning/execution-denial-diagnosis.md and evidence/execution-denial-diagnosis.json. No full transcript, private path, account, credential, feedback or external issue was shared. No denied operation or alternate execution route was attempted; permission settings remain unchanged.
+- All independent integration/build work currently identified is complete. The remaining known text/hub corrections and final preview still require resolution of the execution restriction. Release ownership and mark this content task blocked to avoid presenting the same unchanged work as freely actionable. The original series remains blocked; do not open a partial PR, publish or deploy.
