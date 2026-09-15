@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-ai-suffix-keywords-catalogue
 title: AI 字尾關鍵字總表與批次 12 名單
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-14T23:06:58Z
 created_at: 2026-09-14T23:06:57Z
-completed_at:
+completed_at: 2026-09-15T00:45:58Z
 branch: claude/ai-suffix-keyword-planning-76gn21
 depends_on: []
 scope:
