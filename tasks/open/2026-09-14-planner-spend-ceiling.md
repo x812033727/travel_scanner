@@ -15,8 +15,12 @@ scope:
   - apps/api/app/ai/itinerary.py
   - apps/api/app/config.py
   - apps/api/app/trips/router.py
+  - apps/api/app/trips/intents.py
+  - apps/api/app/i18n.py
   - apps/api/tests/conftest.py
   - apps/api/tests/test_planner_budget.py
+  - apps/api/tests/test_trip_intents.py
+  - apps/api/tests/test_trip_create_replay.py
   - apps/web/components/trip-editor.tsx
   - apps/web/messages
   - .env.example
@@ -157,3 +161,44 @@ written down in `docs/anti-scraping.md` Known gaps rather than left implied.
 name the catalogue does not know spent the whole roster and could not produce one usable
 item. It costs a caller nothing to type and cost us four vendors. Found while checking the
 budget design, fixed in the same door.
+
+## Follow-up after review (2026-09-15, another claude-opus-5 session, at the owner's request)
+
+PR #500 sat red on `api` for two runs, and the Codex review on it left three findings. All four
+were real and are fixed on the same branch; the scope above grew by `intents.py`, `i18n.py`
+and the intent tests to carry them.
+
+**The red `api` job was test isolation, not the gate.**
+`test_an_uncountable_budget_is_treated_as_spent` patched `_incr_window` so the real
+`budget_spent` would run, but left `record_rate_limit_hit` real. `get_redis()` is an
+`lru_cache` singleton, and pytest gives every test its own event loop, so on a machine with a
+Redis server the write reused a pooled connection bound to an earlier test's closed loop and
+raised `RuntimeError: Event loop is closed` -- which `record_rate_limit_hit` does not catch.
+Without a server it is a swallowed `ConnectionError`, which is why it passed on Windows and
+failed only in CI. Reproduced locally by warming the client against a `fakeredis`
+`TcpFakeServer` in a prior test. Fix: `stub_redis_writes` in the test file, used by the
+`gate` fixture and by that test; the same reproduction then passes. Production has one loop
+and is unaffected.
+
+**P1 -- the address ceiling only covered trip creation.** `_build_ai_planning` (behind
+`/itinerary/preview` and `/intents`) and the deprecated `/itinerary/generate` passed only the
+account, so minted accounts each brought a whole budget to those routes. All three now pass
+`client_ip(request)`; router-level tests pin preview and generate, and an intent test pins the
+intent path.
+
+**P2 -- a spent budget on `/intents` was reported as an outage.** The intent route treats
+every catalogue fallback as a provider failure and raised `503 ai_planner_unavailable`. It now
+checks for `planner_budget_reached` and raises `429 planner_budget_reached` with its own copy
+in the five locales (`i18n.py`); the fair-use slots are still refunded, since nothing was
+produced, and the planner budget itself still is not.
+
+**P2 -- an address refusal spent the account's own hour.** The account was counted before
+the address turned the attempt away, so a traveller behind a busy NAT lost personal budget to
+attempts that never reached a provider -- a block that could outlast the shared window.
+`plan_within_budget` now refunds the earlier account count when a later budget rejects. It is
+the only refund in the gate, and it undoes a count for a call that never happened; attempts
+that reach the roster stay counted, and a test pins that.
+
+Verified locally: `ruff`, `mypy app` (328 files), and `test_planner_budget.py`,
+`test_trip_intents.py`, `test_trip_create_replay.py`, `test_trip_preferences.py`,
+`test_ai_itinerary.py` -- 128 passed, 1 skipped.

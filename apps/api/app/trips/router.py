@@ -3926,6 +3926,7 @@ async def _build_ai_planning(
     payload: ItineraryGenerateRequest,
     *,
     extra_notes: str | None = None,
+    source_ip: str | None = None,
 ) -> tuple[AIPlanningResult, list[TripPlanItem], list[TripPlanItem], list[AIPlannerCandidate]]:
     """Load candidates and run the planner for a trip or a single day.
 
@@ -3933,6 +3934,10 @@ async def _build_ai_planning(
     preference text. It reaches the provider only through the user-content
     payload's ``notes`` field, never the system prompt, and is never written
     back to ``trip.data``.
+
+    ``source_ip`` is the caller's address for the planner budget. Every endpoint that
+    reaches this has a request and should pass it: without one, a caller minting
+    accounts is only ever metered per account.
     """
     if not trip.destination_name or not trip.start_date or not trip.end_date:
         raise AppError(422, "trip_planning_fields_missing", "旅程缺少目的地或日期，無法重新排行程")
@@ -3985,6 +3990,7 @@ async def _build_ai_planning(
             trip_end_date=trip.end_date,
         ),
         user_id=trip.user_id,
+        source_ip=source_ip,
     )
     return planning, preserved, planning_preserved, candidates
 
@@ -3996,6 +4002,7 @@ async def preview_trip_itinerary(
     user: CurrentUser,
     session: Session,
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+    request: Request,
 ) -> dict[str, Any]:
     redis = get_redis()
     request_key = _itinerary_preview_request_key(user.id, trip_id, idempotency_key)
@@ -4012,7 +4019,7 @@ async def preview_trip_itinerary(
     )
     trip = await owned_trip(session, user.id, trip_id)
     planning, preserved, planning_preserved, candidates = await _build_ai_planning(
-        session, trip, payload
+        session, trip, payload, source_ip=client_ip(request)
     )
     result, cached_payload = await build_itinerary_preview_envelope(
         session,
@@ -4143,6 +4150,7 @@ async def generate_trip_itinerary(
     user: CurrentUser,
     session: Session,
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+    request: Request,
 ) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)
     if not trip.destination_name or not trip.start_date or not trip.end_date:
@@ -4208,6 +4216,7 @@ async def generate_trip_itinerary(
                 trip_end_date=trip.end_date,
             ),
             user_id=user.id,
+            source_ip=client_ip(request),
         )
         if planning.planning.readiness == "needs_setup":
             raise AppError(

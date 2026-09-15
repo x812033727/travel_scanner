@@ -4,6 +4,7 @@ import importlib.util
 from datetime import UTC, date, datetime, time, timedelta
 from decimal import Decimal
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock
 from uuid import UUID, uuid4
@@ -14,6 +15,7 @@ import pytest
 from pydantic import ValidationError
 
 from app.ai.itinerary import (
+    PLANNER_WARNING_BUDGET_REACHED,
     AIDraftDay,
     AIDraftItem,
     AIItineraryDraft,
@@ -182,6 +184,7 @@ def planning_from(
     pool: list[AIPlannerCandidate] | None = None,
     status: str = "live",
     provider: str = "openai",
+    warnings: list[str] | None = None,
 ) -> AIPlanningResult:
     """Turn (day, candidate_key, HH:MM) triples into a planner result."""
     pool = pool or candidates()
@@ -214,7 +217,11 @@ def planning_from(
     return AIPlanningResult(
         itinerary=[day.model_copy(update={"label": "測試"}) for day in days],
         planning=PlanningMetadata(
-            status=status, readiness="ready", provider=provider, generated_at=datetime.now(UTC)
+            status=status,
+            readiness="ready",
+            provider=provider,
+            generated_at=datetime.now(UTC),
+            warnings=warnings or [],
         ),
         unscheduled_slots=[],
     )
@@ -918,6 +925,7 @@ def _stub_endpoint(
     existing: list[TripPlanItem],
     order: list[str] | None = None,
     providers: list[object] | None = None,
+    planning_calls: list[dict[str, object]] | None = None,
 ) -> fakeredis.aioredis.FakeRedis:
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
     trip = _trip()
@@ -938,7 +946,9 @@ def _stub_endpoint(
     async def fake_limit(namespace: str, _identifier: str, **_kwargs: object) -> None:
         calls.append(namespace)
 
-    async def fake_planning(*_args: object, **_kwargs: object) -> tuple[Any, ...]:
+    async def fake_planning(*_args: object, **kwargs: object) -> tuple[Any, ...]:
+        if planning_calls is not None:
+            planning_calls.append(kwargs)
         return planning, [], [], candidates()
 
     async def fake_envelope(*_args: object, **_kwargs: object) -> tuple[dict, dict]:
@@ -966,6 +976,10 @@ def _stub_endpoint(
     return redis
 
 
+CALLER_ADDRESS = "198.51.100.23"
+CALLER = SimpleNamespace(headers={}, client=SimpleNamespace(host=CALLER_ADDRESS))
+
+
 async def _post(payload: TripIntentRequest, key: str = "idempotency-key-1") -> dict[str, Any]:
     return await create_trip_intent(
         TRIP_ID,
@@ -973,6 +987,7 @@ async def _post(payload: TripIntentRequest, key: str = "idempotency-key-1") -> d
         MagicMock(id=USER_ID),
         MagicMock(),
         key,
+        CALLER,  # type: ignore[arg-type]
     )
 
 
@@ -1103,6 +1118,50 @@ async def test_a_provider_outage_after_the_limiters_gives_both_slots_back(
         await _post(TripIntentRequest(version=3, text="這天下雨，改室內", day_date=MID_DAY))
     assert raised.value.status == 503
     assert order[-2:] == ["refund:ai-itinerary-intent-trip", "refund:ai-itinerary-preview-user"]
+
+
+@pytest.mark.asyncio
+async def test_a_spent_planner_budget_is_not_reported_as_an_outage(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The budget degrades to the catalogue, which an intent cannot use either -- but
+    "temporarily unavailable" would send the traveller to retry a door that stays shut
+    until their own window turns over."""
+    order: list[str] = []
+    _stub_endpoint(
+        monkeypatch,
+        planning=planning_from(
+            [(MID_DAY, "hotspot:4", "10:00")],
+            status="fallback",
+            provider="catalog",
+            warnings=[PLANNER_WARNING_BUDGET_REACHED],
+        ),
+        existing=[row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00")],
+        order=order,
+    )
+    with pytest.raises(AppError) as raised:
+        await _post(TripIntentRequest(version=3, text="這天下雨，改室內", day_date=MID_DAY))
+    assert raised.value.status == 429
+    assert raised.value.code == "planner_budget_reached"
+    # Nothing was produced, so the fair-use slots go back exactly as for an outage.
+    assert order[-2:] == ["refund:ai-itinerary-intent-trip", "refund:ai-itinerary-preview-user"]
+
+
+@pytest.mark.asyncio
+async def test_an_intent_meters_the_callers_address_as_well(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Per account alone, every freshly registered account brings a whole planner budget."""
+    planning_calls: list[dict[str, object]] = []
+    _stub_endpoint(
+        monkeypatch,
+        planning=planning_from([(MID_DAY, "hotspot:4", "10:00")]),
+        existing=[],
+        planning_calls=planning_calls,
+    )
+    await _post(TripIntentRequest(version=3, text="走路少一點", day_date=MID_DAY))
+    assert [call["source_ip"] for call in planning_calls] == [CALLER_ADDRESS]
+    assert [call["extra_notes"] for call in planning_calls] == ["走路少一點"]
 
 
 @pytest.mark.asyncio

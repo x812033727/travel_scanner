@@ -20,7 +20,7 @@ from app.ai.structured_output import (
     responses_output_text,
 )
 from app.config import Settings
-from app.infra import budget_spent, record_rate_limit_hit
+from app.infra import budget_spent, record_rate_limit_hit, refund_named_rate_limit
 from app.localized_names import item_names, join_localized_names
 from app.search.schemas import SearchPreferences, Travelers, TripPace
 from app.trips.hours import open_slot
@@ -1114,9 +1114,14 @@ async def plan_within_budget(
     the reviewed catalogue and is told so, which is the same trade
     ``app.ai.trip_parser`` already makes when its own gate closes.
 
-    The count is never given back. The limiters around this one refund a slot when every
-    provider failed, which is right -- but it also means a caller who can provoke a failure
-    is never actually charged, and a budget that can be handed back is not a ceiling.
+    A count for an attempt that reached the roster is never given back. The limiters around
+    this one refund a slot when every provider failed, which is right -- but it also means a
+    caller who can provoke a failure is never actually charged, and a budget that can be
+    handed back is not a ceiling. The one exception is an attempt the address budget turned
+    away before any provider was asked; see the loop below.
+
+    Pass ``source_ip`` from every request-driven caller. Without it only the account is
+    metered, and accounts are free to mint.
     """
     if not request.candidates:
         # No candidate, no provider call, ever -- and this one is not about budget at all.
@@ -1143,6 +1148,7 @@ async def plan_within_budget(
         identifiers.append(
             (_PLANNER_IP_BUDGET_NAMESPACE, source_ip, settings.ai_planner_ip_budget)
         )
+    counted: list[tuple[str, str]] = []
     for namespace, identifier, limit in identifiers:
         if await budget_spent(
             namespace,
@@ -1153,7 +1159,16 @@ async def plan_within_budget(
             # Kept for a week, per source, so the number can be judged against real traffic
             # before anyone argues about whether it is the right one.
             await record_rate_limit_hit(namespace, identifier)
+            # A spent address turns the attempt away before any provider is asked, so the
+            # account's count for it goes back. Kept, every traveller behind a busy NAT would
+            # lose their own hour to attempts that never cost anything -- and since the two
+            # windows open at different times, that block could outlast the shared one. This
+            # is the only refund here: it undoes a count for a call that never happened,
+            # where the ones this gate refuses to make hand back calls that did.
+            for earlier_namespace, earlier_identifier in counted:
+                await refund_named_rate_limit(earlier_namespace, earlier_identifier)
             return catalog_result(request, [PLANNER_WARNING_BUDGET_REACHED], datetime.now(UTC))
+        counted.append((namespace, identifier))
     return await AIItineraryPlanner(settings).generate(request)
 
 

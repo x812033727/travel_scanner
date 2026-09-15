@@ -29,6 +29,7 @@ from app.ai.itinerary import (
     plan_within_budget,
 )
 from app.config import Settings
+from app.models import UsageAccount
 from app.trips import router as trips
 
 harness = shared_harness
@@ -65,25 +66,51 @@ class PlannerSpy:
         return itinerary_module.catalog_result(request, [], datetime.now(UTC))
 
 
+def stub_redis_writes(monkeypatch: pytest.MonkeyPatch) -> SimpleNamespace:
+    """Replace the two Redis writes the gate makes beside the counter, and record them.
+
+    Not optional. ``get_redis`` caches one client for the process, and pytest gives every
+    test its own event loop, so whichever test first reached Redis leaves a pooled
+    connection bound to a loop that is closed by the time the next one runs. On a machine
+    with a Redis server the next write raises ``RuntimeError: Event loop is closed``,
+    which ``record_rate_limit_hit`` does not catch -- without one it is a quietly swallowed
+    ``ConnectionError``, which is why this only ever failed in CI.
+    """
+    recorded: list[tuple[str, str]] = []
+    refunded: list[tuple[str, str]] = []
+
+    async def record(namespace, identifier):
+        recorded.append((namespace, identifier))
+
+    async def refund(namespace, identifier):
+        refunded.append((namespace, identifier))
+
+    monkeypatch.setattr(itinerary_module, "record_rate_limit_hit", record)
+    monkeypatch.setattr(itinerary_module, "refund_named_rate_limit", refund)
+    return SimpleNamespace(recorded=recorded, refunded=refunded)
+
+
 @pytest.fixture
 def gate(monkeypatch: pytest.MonkeyPatch):
     """Record what was counted, and answer each namespace however the test wants."""
     counted: list[tuple[str, str, int, int]] = []
-    recorded: list[tuple[str, str]] = []
     spent: set[str] = set()
 
     async def budget_spent(namespace, identifier, *, limit, window_seconds):
         counted.append((namespace, identifier, limit, window_seconds))
         return namespace in spent
 
-    async def record(namespace, identifier):
-        recorded.append((namespace, identifier))
-
     planner = PlannerSpy()
+    writes = stub_redis_writes(monkeypatch)
     monkeypatch.setattr(itinerary_module, "budget_spent", budget_spent)
-    monkeypatch.setattr(itinerary_module, "record_rate_limit_hit", record)
     monkeypatch.setattr(itinerary_module, "AIItineraryPlanner", planner)
-    return SimpleNamespace(counted=counted, recorded=recorded, spent=spent, planner=planner)
+    return SimpleNamespace(
+        counted=counted,
+        recorded=writes.recorded,
+        refunded=writes.refunded,
+        spent=spent,
+        planner=planner,
+    )
 
 
 async def test_a_draft_counts_one_attempt_against_the_account_and_the_address(gate) -> None:
@@ -154,18 +181,52 @@ async def test_a_spent_address_degrades_an_account_still_inside_its_own_budget(g
     assert result.planning.provider == "catalog"
 
 
+async def test_an_address_refusal_gives_the_account_its_count_back(gate) -> None:
+    # The account was counted before the shared address turned the attempt away, and no
+    # provider was asked. Kept, a busy NAT whose window is spent would drain every traveller
+    # behind it of their own hour -- a block that can outlast the shared one, because the
+    # two windows open at different times.
+    gate.spent.add("ai-planner-llm-ip")
+    user_id = uuid4()
+    await plan_within_budget(
+        keyed_settings(), request_for(), user_id=user_id, source_ip="203.0.113.7"
+    )
+    assert gate.refunded == [("ai-planner-llm-user", str(user_id))]
+
+
+async def test_a_spent_account_is_never_refunded(gate) -> None:
+    gate.spent.add("ai-planner-llm-user")
+    await plan_within_budget(
+        keyed_settings(), request_for(), user_id=uuid4(), source_ip="203.0.113.7"
+    )
+    assert gate.refunded == []
+
+
+async def test_an_attempt_that_reaches_the_roster_is_never_refunded(gate) -> None:
+    # The refund above is for a call that never happened. One that did stays counted, or a
+    # caller who can provoke a provider failure is never charged at all.
+    await plan_within_budget(
+        keyed_settings(), request_for(), user_id=uuid4(), source_ip="203.0.113.7"
+    )
+    assert gate.planner.calls == 1
+    assert gate.refunded == []
+
+
 async def test_an_uncountable_budget_is_treated_as_spent(monkeypatch) -> None:
     # budget_spent fails closed on an unreachable Redis, and this is the reason it does:
     # "the counter is down" must not be a way to buy an unmetered hour of a paid vendor.
     # Nothing is refused -- the traveller gets the catalogue plan, not a 503.
     planner = PlannerSpy()
     monkeypatch.setattr(itinerary_module, "AIItineraryPlanner", planner)
+    writes = stub_redis_writes(monkeypatch)
     # Patched on infra so the real budget_spent runs: its fail-closed branch is the
     # thing under test, not a stub standing in for it.
     monkeypatch.setattr(infra, "_incr_window", lambda *a, **k: _none())
-    result = await plan_within_budget(keyed_settings(), request_for(), user_id=uuid4())
+    user_id = uuid4()
+    result = await plan_within_budget(keyed_settings(), request_for(), user_id=user_id)
     assert planner.calls == 0
     assert result.planning.provider == "catalog"
+    assert writes.recorded == [("ai-planner-llm-user", str(user_id))]
 
 
 async def _none() -> None:
@@ -269,3 +330,61 @@ async def test_creating_an_ai_draft_trip_meters_the_account_and_the_address(
     # hands back a token immediately, so per-account alone is thirty budgets an hour.
     assert [user for user, _ in seen] == [harness["user"].id]
     assert len(seen) == 1 and seen[0][1] is not None
+
+
+@pytest.fixture
+def metered(monkeypatch):
+    """Spy on the gate from the router's side, with the fair-use limiters out of the way."""
+    seen: list[tuple[object, object]] = []
+
+    async def spy(settings, request, *, user_id, source_ip=None):
+        seen.append((user_id, source_ip))
+        return itinerary_module.catalog_result(request, [], datetime.now(UTC))
+
+    async def no_limit(*_args, **_kwargs):
+        return None
+
+    async def no_candidates(*_args, **_kwargs):
+        # The harness trip travels with a dog, and pet-friendly candidates come from the
+        # community, which this app does not mount. What is loaded is not under test here.
+        return []
+
+    monkeypatch.setattr(trips, "plan_within_budget", spy)
+    monkeypatch.setattr(trips, "enforce_named_rate_limit", no_limit)
+    monkeypatch.setattr(trips, "_load_trip_candidates", no_candidates)
+    return seen
+
+
+async def test_previewing_a_replan_meters_the_address_too(harness, metered) -> None:
+    # /itinerary/preview and /intents reach the planner through _build_ai_planning. Metered
+    # per account only, each freshly registered account would bring its own whole budget, and
+    # the address ceiling would bound trip creation and nothing else.
+    user_id = harness["user"].id
+    trip_id, version = harness["trip"].id, harness["trip"].version
+    response = await harness["client"].post(
+        f"/trips/{trip_id}/itinerary/preview",
+        headers={"Idempotency-Key": "preview-meters-the-address"},
+        json={"version": version, "scope": "trip"},
+    )
+    assert response.status_code == 200, response.text
+    assert [user for user, _ in metered] == [user_id]
+    assert metered[0][1] is not None
+
+
+async def test_the_deprecated_generate_route_meters_the_address_too(harness, metered) -> None:
+    # This route reserves a use before it plans, so the account needs one to reserve.
+    user_id = harness["user"].id
+    trip_id, version = harness["trip"].id, harness["trip"].version
+    harness["session"].add(
+        UsageAccount(id=uuid4(), user_id=user_id, remaining_uses=5, reserved_uses=0)
+    )
+    await harness["session"].commit()
+    response = await harness["client"].post(
+        f"/trips/{trip_id}/itinerary/generate",
+        headers={"Idempotency-Key": "generate-meters-the-address"},
+        json={"version": version, "scope": "trip"},
+    )
+    # Whatever the route makes of a catalogue plan afterwards, the gate saw the address. The
+    # ids were read before the call: the route's own commit expires the harness's objects.
+    assert [user for user, _ in metered] == [user_id], response.text
+    assert metered[0][1] is not None
