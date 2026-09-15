@@ -271,14 +271,96 @@ CMS publication isolation, robots and the runtime sitemap. Unit tests separately
 visibility failures/reopening, filter seeds and moderation-sensitive fetch policies.
 
 Still outside this revision: full discovery/community SSR, indexable item detail pages,
-publication-aware CMS sitemap/hreflang, Search Console configuration and measured Lighthouse
-improvements. Single-city Osaka/Kyoto services are distinct from the combined guide (one
+publication-aware CMS sitemap/hreflang and Search Console configuration. Lighthouse is now
+measured in CI; see "Lighthouse thresholds and baseline" below for what it does and does not
+prove. Single-city Osaka/Kyoto services are distinct from the combined guide (one
 service section versus two); do not consolidate their canonicals as if they were duplicates.
 City-specific service descriptions and shared metadata helpers are optional future improvements.
 
 Deployment and Search Console submission are separate actions requiring authorization.
 After deployment, inspect representative URLs and selected canonicals; a passing test or merge
 does not prove Google has indexed the pages.
+
+## Lighthouse thresholds and baseline
+
+`.github/workflows/seo-audit.yml` runs Lighthouse CI against a production build on every pull
+request, on merges to `main`, and on demand. It is a separate workflow rather than a job in
+`ci.yml`: the audit is slower than the required check and is advisory while its baseline is
+collected. It does not repeat `e2e/seo.spec.ts`, which already asserts the markup facts; what
+it adds is category scores — Accessibility, Best Practices and Performance — that nothing else
+in the repository produces. Every budget lives in `apps/web/lighthouserc.json`; the workflow
+passes only `configPath`, because a `urls` or `runs` input to the action overrides the config
+rather than merging with it.
+
+### Measured baseline
+
+Measured 2026-09-14 against the workflow's own configuration (production build, no backend,
+three runs per URL, Lighthouse 12.6.1). SEO and Accessibility showed no variance across runs.
+
+| URL | SEO | Accessibility | Best practices | Performance |
+| --- | --- | --- | --- | --- |
+| `/en` | 1.00 | 1.00 | 0.96 | 0.89 |
+| `/zh-TW` | 1.00 | 1.00 | 0.96 | 0.86 |
+| `/en/destinations` | 1.00 | 1.00 | 0.96 | 0.97 |
+| `/zh-TW/destinations` | 1.00 | 1.00 | 0.96 | 0.97 |
+| `/en/hotspots` | 0.66 | 1.00 | 0.96 | 0.91 |
+
+Only two audits fail anywhere. `is-crawlable` on `/en/hotspots` is the whole of that page's
+0.66 — it is the deliberate `noindex` on the "unavailable" card — and one console-error audit
+costs every page the same 0.04 of Best Practices.
+
+### What is gated and what is only observed
+
+| URL | SEO | Accessibility | Why |
+| --- | --- | --- | --- |
+| `/en`, `/zh-TW` | Gated at 1.0 | Gated at 0.95 | Fully server-rendered without the API |
+| `/en/destinations`, `/zh-TW/destinations` | Gated at 1.0 | Gated at 0.95 | Falls back to the offline city catalog |
+| `/en/hotspots` | Warning only | Warning only | Renders the "unavailable" card, `noindex` by design |
+
+SEO is gated at 1.0 rather than a round 0.9 because that is what the pages actually score, on
+every run, and because its audits are deterministic markup checks rather than timings. A 0.9
+line would have left room for a lost canonical or a stray `noindex` to pass unnoticed — the
+regression the workflow exists to catch. Accessibility keeps a little room at 0.95, since a few
+of its audits depend on rendering rather than markup. Performance and Best Practices are
+warnings on every URL; the performance number describes the offline fallback on runner
+hardware, so it is recorded for its trend and never enforced.
+
+The job starts the Next.js build alone and points `API_INTERNAL_URL` at a dead port, so every
+server-side read fails and the pages render their offline fallbacks. This is deliberate: it
+needs no database, it is reproducible, and the surface being guarded — title, description,
+canonical, hreflang, `html[lang]`, crawlability — does not come from the API on the gated URLs.
+The port is named rather than left unset because the loaders otherwise default to
+`http://localhost:8000` and would silently pick up anything that later binds it on the runner.
+
+`/en/destinations/tokyo` is deliberately **not** audited, though it is the obvious fifth URL.
+The guide page throws when the destination catalog cannot be read — an outage has to be a 5xx,
+since a 404 invites Google to drop a real page — and `loadDestinations()` also returns `null`
+for an empty catalog. Without seeded destination rows that URL is a hard 500, and the action's
+collect loop aborts the whole run on a failed document, so including it would destroy
+collection for the other four rather than merely score badly. `/zh-TW/destinations` stands in
+and adds second-locale coverage on a content route.
+
+### Adjusting the thresholds
+
+- The scores live in `ci.assert.assertMatrix` in `apps/web/lighthouserc.json`, one entry per
+  URL pattern. `error` fails the run, `warn` only reports, and any category not listed is off.
+- Always pass the options object, so the threshold is explicit rather than inherited from a
+  default that has changed between Lighthouse CI versions.
+- `aggregationMethod: "median"` is set on purpose: the default `optimistic` takes the best of
+  the three runs, which makes an `error` threshold weaker than it reads.
+- `numberOfRuns` has to stay in the config. The action falls back to a single run when neither
+  its `runs` input nor `collect.numberOfRuns` is set, overriding Lighthouse's own default.
+- Adding a URL means adding it to `collect.url` **and** to a matching `matchingUrlPattern`. A
+  collected URL that matches no pattern is asserted against nothing, silently, which in the log
+  is indistinguishable from passing.
+
+### Turning the baseline into a gate
+
+The audit step carries `continue-on-error: true`. Collect a fortnight of runs, read the scores
+off the `lighthouse-seo-reports` artifact, confirm the numbers above still hold on runner
+hardware, then delete that one line. Nothing else has to change. Reports are uploaded by a
+separate `if: always()` step, so they are retrievable whether the audit passed, failed a
+threshold, or never ran at all.
 
 ## Primary references
 

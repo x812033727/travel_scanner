@@ -7,6 +7,7 @@ import { featureEnabled, type SiteFeature } from "@/lib/site-features";
 import { guideSitemapEntries } from "@/lib/guides.server";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
+import { getCommunityState } from "@/lib/community/server";
 
 // Evaluate public switches at request time, not while building without the API.
 export const dynamic = "force-dynamic";
@@ -24,6 +25,10 @@ type SitemapRoute = {
   /** Listed only while the discovery switch is on. Behind it the route has server-rendered
    *  content of its own; in front of it, the fallback link grid, which has nothing to rank. */
   discovery?: true;
+  /** Listed only while the community switch is on. With it off every community route renders
+   *  the "closed" notice and its own metadata says `noindex`, so advertising it here would
+   *  contradict the page. */
+  community?: true;
 };
 
 /**
@@ -34,10 +39,16 @@ type SitemapRoute = {
  *   an administrator publishes the managed document, so listing them now would only accumulate
  *   "Excluded by noindex" in Search Console. They are linked from the footer, so nothing is lost
  *   by waiting for 2026-09-06-legal-content-from-owner.
- * - /explore/collections, /pet-friendly and the community routes, which are `noindex`
- *   because their content is fetched after hydration and the server sends an empty shell.
- *   /explore no longer sends one -- it is listed below, but only while discovery is on, since
- *   with the switch off it falls back to a grid of links to pages already listed here.
+ * - /explore/collections and the community routes other than /pet-friendly, which are
+ *   `noindex` because their content is fetched after hydration and the server sends an empty
+ *   shell. /explore no longer sends one -- it is listed below, but only while discovery is on,
+ *   since with the switch off it falls back to a grid of links to pages already listed here.
+ *   /pet-friendly no longer sends one either and is listed below, behind the community switch.
+ * - the per-record community routes -- /pet-friendly/{id}, /community/posts/{id} and
+ *   /community/profiles/{handle}. They server-render and are indexable now, but enumerating
+ *   them means paging the API from this route on every crawl, which is a separate change
+ *   (2026-09-14-sitemap-lists-pet-friendly-places). /pet-friendly links to every place it
+ *   lists, so the detail pages are reachable meanwhile.
  * - every member and token route, which carries `noindex`.
  * - an article hub in a language that has nothing published in it. Those pages exist and
  *   answer 200, but with one sentence saying the section is empty; `hub` below lists them
@@ -57,6 +68,9 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
   // Ranked below the directories it draws from: the feed reorders their rows, and an entry
   // there is one of them rather than a page of its own.
   { path: "/explore", priority: 0.5, changeFrequency: "daily", discovery: true },
+  // Verified pet rules, and the only community route with a server-rendered directory of its
+  // own. Ranked with the other directories it sits beside rather than with the feed.
+  { path: "/pet-friendly", priority: 0.5, changeFrequency: "weekly", community: true },
   // No `feature`: the guides section is first-party content with no switch behind it, so it
   // is never one of the conditional routes. The two kind hubs resolve through the `[kind]`
   // folder; `/life` is its own folder, because `/guides/life/...` is deliberately a 404.
@@ -91,9 +105,10 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
  * if the settings service is unavailable. The canonical origin is still fixed at build time.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [visibility, guides, discovery] = await Promise.all([
-    getSiteVisibility(), guideSitemapEntries(), getDiscoveryStatus(),
+  const [visibility, guides, discovery, community] = await Promise.all([
+    getSiteVisibility(), guideSitemapEntries(), getDiscoveryStatus(), getCommunityState(),
   ]);
+  const communityOpen = community.status === "ready" && community.flags.enabled;
 
   /**
    * Which languages each hub has something to show, from the enumeration this route already
@@ -119,7 +134,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const routes = SITEMAP_ROUTES.filter(
     (route) => (!route.feature || featureEnabled(visibility, route.feature))
-      && (!route.discovery || discovery.enabled),
+      && (!route.discovery || discovery.enabled)
+      && (!route.community || communityOpen),
   ).flatMap((route) => {
     const available = hubLocales(route);
     const languages = available.length === locales.length
