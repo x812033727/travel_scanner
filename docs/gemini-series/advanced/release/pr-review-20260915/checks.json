@@ -1,0 +1,95 @@
+{
+  "date": "2026-09-15",
+  "testedCodeHead": "db43a8e1272ef7c2a91f028790fbf1f03998bfb9",
+  "integratedMain": "4072e60e07b0905d44aeaec7491846f90baa40cb",
+  "dependencies": {
+    "install": "npm ci --no-audit --no-fund; 541 packages; exit 0",
+    "node": "24.19.0",
+    "next": "16.3.5",
+    "vitest": "5.0.0"
+  },
+  "passed": [
+    {
+      "check": "Web typecheck",
+      "command": "tsc --noEmit",
+      "result": "exit 0"
+    },
+    {
+      "check": "Changed Web TypeScript/TSX ESLint",
+      "files": 24,
+      "result": "exit 0; max-warnings=0"
+    },
+    {
+      "check": "Focused frontend regression",
+      "files": 13,
+      "passed": 160,
+      "failed": 0
+    },
+    {
+      "check": "Tool tests",
+      "passed": 60,
+      "failed": 0
+    },
+    {
+      "check": "Authoring compiler unittest",
+      "passed": 9
+    },
+    {
+      "check": "Readiness unittest",
+      "passed": 7
+    },
+    {
+      "check": "Guide API tests",
+      "passed": 53,
+      "skipped": 17,
+      "failed": 0
+    },
+    {
+      "check": "i18n",
+      "locales": 5,
+      "namespaces": 25
+    },
+    {
+      "check": "Original series catalogue, prose, assets and links",
+      "pages": 51
+    },
+    {
+      "check": "Advanced draft catalogue, prose, assets and links",
+      "pages": 87
+    },
+    {
+      "check": "Selected compiler/readiness Python Ruff",
+      "result": "exit 0"
+    },
+    {
+      "check": "Sensitive pattern scan",
+      "findings": 0,
+      "uniqueArchives": 47
+    }
+  ],
+  "incompleteOrFailed": [
+    {
+      "check": "Full local Web test run",
+      "status": "stopped before results due to low available memory; replaced by 13-file focused run, not counted as passed"
+    },
+    {
+      "check": "Full local Web ESLint",
+      "status": "stopped to free memory; 24 changed files subsequently passed"
+    },
+    {
+      "check": "Historical candidate strict integrity audit",
+      "status": "failed on first changed source; separate inventory finds 13/420 inputs differ after main integration; retained unchanged"
+    },
+    {
+      "check": "Whole PR whitespace check",
+      "status": "historical authored files and raw build log contain EOF/trailing whitespace; preserved to retain hashes"
+    }
+  ],
+  "pending": [
+    "GitHub CI on pushed head including full Web/API, build and browser jobs",
+    "Fresh release candidate integrating live revisions",
+    "Remaining human/model/device/media/API acceptance",
+    "Publication-date prices, database dry-run, deployment, publication and sitemap"
+  ],
+  "scope": "No Google model calls or publication in this PR preparation. Existing browser evidence is historical, not rerun under the new lockfile."
+}

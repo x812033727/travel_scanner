@@ -1,0 +1,44 @@
+{
+  "checked_on": "2026-09-14",
+  "source": "https://support.google.com/flow/answer/16352836?hl=en",
+  "models": {
+    "Veo 3.1 Lite": {
+      "frames_first_last": true,
+      "ingredients": true,
+      "ingredients_seconds": [
+        8
+      ],
+      "extend": true,
+      "video_edit": false
+    },
+    "Veo 3.1 Fast": {
+      "frames_first_last": true,
+      "ingredients": true,
+      "ingredients_seconds": [
+        8
+      ],
+      "extend": false,
+      "video_edit": false
+    },
+    "Veo 3.1 Quality": {
+      "frames_first_last": true,
+      "ingredients": false,
+      "ingredients_seconds": [],
+      "extend": false,
+      "video_edit": false
+    },
+    "Gemini Omni Flash 1.1": {
+      "frames_first_last": true,
+      "ingredients": true,
+      "ingredients_seconds": [
+        4,
+        6,
+        8,
+        10
+      ],
+      "extend": false,
+      "video_edit": true
+    }
+  },
+  "note": "只摘錄本練習需用能力，非完整規格。Omni Extend列coming soon，不能當已提供。Veo Lite延伸限相容Veo 3.1八秒片段。選功能後重查實際模型、比例、秒數、解析度、點數與地區條件。"
+}

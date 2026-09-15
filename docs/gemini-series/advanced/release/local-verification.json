@@ -1,0 +1,172 @@
+{
+  "checkedAt": "2026-09-14T16:29:54.651912+00:00",
+  "scope": "Local candidate validation, no production writes or real Google account calls",
+  "status": "passed",
+  "checks": [
+    {
+      "command": [
+        "apps/api/.venv/Scripts/python.exe",
+        "-X",
+        "utf8",
+        "docs/gemini-series/advanced/release/test-readiness.py"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "output": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.027s\n\nOK\n"
+    },
+    {
+      "command": [
+        "apps/api/.venv/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "--isolated",
+        "--select",
+        "E4,E7,E9,F",
+        "docs/gemini-series/advanced/release"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "output": "All checks passed!\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\x8120\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "--test",
+        "tools/gemini-series.test.mjs"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "output": "✔ catalogue is one ordered, acyclic, complete series (2.6557ms)\n✔ all reviewed pages, assets and cross-links exist in the repository (27.1691ms)\n✔ invalid destinations and prerequisite cycles fail (1.7012ms)\n✔ body length counts rich prose but excludes code and labels (0.1183ms)\n✔ dry-run and publication stay in the supplied whitelist (0.4785ms)\n✔ hub is imported only after all children are verified twice (1.2099ms)\n✔ partial import failure stops before the next child or hub (0.2881ms)\n✔ failed public verification stops publication (0.2505ms)\n✔ dry-run partial failure prevents every write (0.1551ms)\n✔ advanced identities, paths and metadata cannot silently lose or replace a lesson (6.1361ms)\n✔ CLI parsing refuses ambiguous or misspelled options before any import (0.3148ms)\n✔ authoring checks reject a broken downloadable exercise before release freeze (23.8465ms)\n✔ a frozen advanced release writes exactly 36 children plus declared updates and hub (701.8502ms)\n✔ freeze detects changed packs, added assets, downloads and catalogue metadata (1202.9718ms)\n✔ frozen text hashes survive CRLF checkouts but edited manifests are rejected (662.5545ms)\n✔ advanced publication rechecks all 86 children before updating the hub (1.8264ms)\n✔ a post-dry-run file change stops the first write and a missing old child prevents hub release (1.3393ms)\nℹ tests 17\nℹ suites 0\nℹ pass 17\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2795.3975\n"
+    },
+    {
+      "command": [
+        "apps/api/.venv/Scripts/python.exe",
+        "-X",
+        "utf8",
+        "docs/gemini-series/advanced/release/audit-readiness.py",
+        "--require-ready"
+      ],
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "passed": true,
+      "output": "{\"status\": \"structural-checks-passed-release-not-ready\", \"releaseReady\": false, \"uniqueEvidenceFilesVerified\": 1239, \"newArtworks\": 72, \"pendingExternalLessonNumbers\": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]}\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\x8120\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "tools/tasks.mjs",
+        "check"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "output": "warning: tasks/open/2026-09-11-deny-school-hospital-tram-stop-ward.md: claude-opus-5 has held this task for 71h; it can be claimed by someone else\nwarning: tasks/open/2026-09-12-food-merchant-enrichment.md: claude-fable-5-1 has held this task for 58h; it can be claimed by someone else\nwarning: tasks/open/2026-09-12-hk-openrice-public.md: claude-opus-5 has held this task for 63h; it can be claimed by someone else\nwarning: tasks/open/2026-09-12-non-japan-reservation-sweep.md: claude-opus-5 has held this task for 48h; it can be claimed by someone else\nwarning: tasks/open/2026-09-12-shared-trip-partner-cta.md: claude-fable-5-1 has held this task for 51h; it can be claimed by someone else\nwarning: tasks/open/2026-09-12-trip-partner-cta.md: claude-fable-5-1 has held this task for 51h; it can be claimed by someone else\nwarning: tasks/open/2026-09-12-trip-partner-offer-availability.md: claude-fable-5-1 has held this task for 51h; it can be claimed by someone else\nwarning: tasks/open/2026-09-13-guide-search-name-only-crosses-borders.md: claude-opus-5 has held this task for 27h; it can be claimed by someone else\nwarning: tasks/open/2026-09-13-header.md: claude-sonnet-5 has held this task for 25h; it can be claimed by someone else\nwarning: tasks/open/2026-09-13-klook-clickout-locale.md: claude-opus-5 has held this task for 25h; it can be claimed by someone else\nwarning: tasks/open/2026-09-13-web-upstream-keepalive-502.md: claude-opus-5 has held this task for 28h; it can be claimed by someone else\nwarning: 2026-09-12-food-merchant-enrichment and 2026-09-13-klook-clickout-locale are both active and both cover apps/api/app/i18n.py\nwarning: 2026-09-12-food-merchant-enrichment and 2026-09-13-password-policy-length-only are both active and both cover apps/api/app/i18n.py\nwarning: 2026-09-13-analytics-hash-key-separation and 2026-09-13-ruff-flake8-bandit are both active and both cover apps/api/app/config.py\nwarning: 2026-09-13-klook-clickout-locale and 2026-09-13-password-policy-length-only are both active and both cover apps/api/app/i18n.py\nwarning: 2026-09-13-password-policy-length-only and 2026-09-13-ruff-flake8-bandit are both active and both cover apps/api/app/auth/schemas.py\nValidated 428 task file(s).\n"
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/gemini-series/advanced/release/.gitignore",
+      "sha256": "35fb0710c38f002b5801d9a6df2fd9805aa1d0c05107e3bf98f7fa2af70a2c93"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/acceptance-plan.json",
+      "sha256": "3415ffc0676169431121fc6b7bf23d182b02675a6a57c2ac1c67b9d915f6cf10"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/ACCEPTANCE.md",
+      "sha256": "5f2c48266f35c2045c207dac65040c91875c77edc2e647460f0155e353ee1de8"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/audit-readiness.py",
+      "sha256": "df2aa97eac7fe1f44f20fc598962f73fc51cbe83bf1a8638acd363025dc37345"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/browser/mobile-2-copy.png",
+      "sha256": "0bddae04e1259867d7c7e1e1ae8fc9c8956b432e3673337c1cd2259072d0fe33"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/browser/mobile-49-copy.png",
+      "sha256": "693652b20a62f18b4cd15bdd08a897ae6c310d387b4ab600be8550fb6d7601ae"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/browser/verification.json",
+      "sha256": "e7ce58600ca657341d83ab534b569cbe9ee99aac0a0e421a4848b747dd942cfb"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/candidate/content/gemini-api-cost-errors-guide.json",
+      "sha256": "2b3a5357d646436864bf5fb0b7f83a6ee19f22402f3547ff0a7284c2251ba8f3"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/candidate/content/gemini-guide.json",
+      "sha256": "32acced4cb2bec647406659ef074239b8744b7d52a092db9711842f0b9973b43"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/candidate/content/gemini-plans-ai-pro-ultra-2026.json",
+      "sha256": "ba7bab8abbc6180a0fc37f187902a26f07b791147abffad5f36e1db22c812bdd"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/candidate/guide-series.json",
+      "sha256": "737cb72485352f723cc77cd937c26a6757bff762949dca4946627543ba9ac660"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/candidate/review.json",
+      "sha256": "6717f02a7dff60cc2050b7a3994b1f2b4a7a4140bd186a1aaf5a3d9090e43e14"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/candidate/schema-validation.json",
+      "sha256": "94916f4d0ab72cce5da1849f02546786b7d21bc2d1754bfc90852dcbce1ab36d"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/check-candidate-browser.mjs",
+      "sha256": "5a36736e873444dead2fcdc72e2bae6434016634f00020f96427289dff04c51e"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/check-public-prices.mjs",
+      "sha256": "84c614d833b45b43d962daa22b5d2119365069ca7893915f43937cb34c5ccc34"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/compile-overlay.py",
+      "sha256": "5f9003738202fe4786ae760e9b244d6289fea5a5f2e29903017652fabfc49c75"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/lessons/00.md",
+      "sha256": "ef94856a65279d6787c6fb2f680f3e4032c62235158ec5409eeb503d13ca07da"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/lessons/02.md",
+      "sha256": "08ae3bcdbffe06953dfb907c3aac33b055f0a2630b4ff0df5cfe5e0231abb795"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/lessons/49.md",
+      "sha256": "d0e52d672775abb11c3e10c3f52720662609d77d985a3a5f0326d7ebdbc31499"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/prepare-candidate.mjs",
+      "sha256": "15f52c4bf98bcbdf60c100ccc5cd45aed5747ab750defca09af866d362b4f457"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/public-prices.json",
+      "sha256": "244516dae4c14329943ac55a2f4c63ac505bd0888c3fd096e44f51bd0d6696af"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/readiness.json",
+      "sha256": "f49543631b045bbbd70268601c246a36193cea9d725f011e49f7983574a65562"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/README.md",
+      "sha256": "5b63a504477f677f3d474018c47747c54eab048dc05e89993f6d02214900228e"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/source-checks.json",
+      "sha256": "b156d68ac82cdbaf2b888c51fa10306fcbc38d0e782df2e883548ed09526a220"
+    },
+    {
+      "path": "docs/gemini-series/advanced/release/test-readiness.py",
+      "sha256": "beecfda9201271d70dfb348dc42f28a4f1a5d5a45921874d2c0b39f8c07cc530"
+    }
+  ]
+}

@@ -1,0 +1,1952 @@
+{
+  "schemaVersion": 1,
+  "status": "planned",
+  "locale": "zh-TW",
+  "plannedOn": "2026-09-14",
+  "hubSlug": "gemini-guide",
+  "firstPhaseArticleCount": 50,
+  "plannedAdditionalArticleCount": 36,
+  "plannedTotalPageCount": 87,
+  "note": "本檔只供編輯規劃，不由網站讀取，也不表示內容、素材或實測已完成。正式可見篇序仍只來自 apps/web/lib/guide-series.json。",
+  "tracks": [
+    {
+      "id": "work",
+      "title": "日常與工作流程",
+      "numbers": [
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "wave": 1
+    },
+    {
+      "id": "research",
+      "title": "NotebookLM 與研究方法",
+      "numbers": [
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ],
+      "wave": 2
+    },
+    {
+      "id": "creative",
+      "title": "圖片、影片與資料作品",
+      "numbers": [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "wave": 3
+    },
+    {
+      "id": "md",
+      "title": "MD 與 CLI 設定實驗",
+      "numbers": [
+        69,
+        70,
+        71,
+        72,
+        73,
+        74
+      ],
+      "wave": 1
+    },
+    {
+      "id": "automation",
+      "title": "CLI 擴充與自動化專案",
+      "numbers": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "wave": 2
+    },
+    {
+      "id": "api",
+      "title": "API 工程與完整專案",
+      "numbers": [
+        81,
+        82,
+        83,
+        84,
+        85,
+        86
+      ],
+      "wave": 3
+    }
+  ],
+  "routes": [
+    {
+      "id": "advanced-work",
+      "title": "把日常工作做成可重用流程",
+      "articles": [
+        9,
+        11,
+        51,
+        52,
+        53,
+        17,
+        18,
+        19,
+        54,
+        14,
+        55,
+        16,
+        56
+      ]
+    },
+    {
+      "id": "advanced-research",
+      "title": "研究到有證據的報告",
+      "articles": [
+        13,
+        20,
+        21,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ]
+    },
+    {
+      "id": "advanced-creative",
+      "title": "交付圖片、短片與資料作品",
+      "articles": [
+        23,
+        24,
+        63,
+        64,
+        65,
+        66,
+        10,
+        18,
+        67,
+        51,
+        68
+      ]
+    },
+    {
+      "id": "advanced-md",
+      "title": "MD 設定與除錯",
+      "articles": [
+        35,
+        29,
+        30,
+        36,
+        37,
+        38,
+        39,
+        40,
+        69,
+        70,
+        71,
+        72,
+        41,
+        42,
+        73,
+        33,
+        34,
+        74
+      ]
+    },
+    {
+      "id": "advanced-automation",
+      "title": "CLI 從工具到可恢復流程",
+      "articles": [
+        41,
+        43,
+        44,
+        45,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    {
+      "id": "advanced-api",
+      "title": "API 從第一次呼叫到文件服務",
+      "articles": [
+        47,
+        48,
+        49,
+        50,
+        81,
+        82,
+        58,
+        83,
+        84,
+        51,
+        85,
+        86
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "number": 51,
+      "slug": "gemini-prompt-evaluation-workshop",
+      "title": "提示詞改寫實驗：用固定題庫找出有效的修改",
+      "status": "planned",
+      "stage": 2,
+      "track": "work",
+      "group": "B",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 40,
+      "prerequisites": [
+        9,
+        10
+      ],
+      "related": [
+        9,
+        10,
+        52
+      ],
+      "keywords": [
+        "提示詞",
+        "A/B",
+        "評測",
+        "評分表"
+      ],
+      "purpose": "留下能重做的提示詞 A/B 比較與評分表。",
+      "steps": [
+        "建立 10 題客服摘要題庫與人工答案要點",
+        "固定帳號、模型、輸入資料與日期，分別跑 A/B 提示詞",
+        "依正確性、漏項、格式與不確定性評分",
+        "只改一項指示重做，保存原始結果與失敗題"
+      ],
+      "exercise": "prompts-v1-v2.md、cases.csv、rubric.csv；正文示範一題完整前後差異。",
+      "acceptance": {
+        "success": "10 題均有兩版原始輸出與逐項評分；結論能連到具體題目。",
+        "failureCase": "加入缺日期與互相矛盾的題目，不能靠補造資訊提高分數。"
+      },
+      "sourceIds": [
+        "prompts"
+      ],
+      "gate": "standard"
+    },
+    {
+      "number": 52,
+      "slug": "gemini-gems-support-playbook",
+      "title": "Gems 客服知識助手：資料更新、拒答與回歸測試",
+      "status": "planned",
+      "stage": 2,
+      "track": "work",
+      "group": "B",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 50,
+      "prerequisites": [
+        11,
+        51
+      ],
+      "related": [
+        11,
+        51,
+        53
+      ],
+      "keywords": [
+        "Gems",
+        "客服",
+        "知識庫",
+        "回歸"
+      ],
+      "purpose": "製作依商品手冊回答、遇到缺資料會轉人工的助手。",
+      "steps": [
+        "整理虛構商品手冊、退換貨規則與更新日期",
+        "在 Gems 介面設定回答規則與參考資料",
+        "用已知、未知、過期資訊各類問題測試",
+        "更新一條規則後重跑固定題庫並記錄差異"
+      ],
+      "exercise": "product-handbook-v1-v2.md、gem-instructions.md、12 題回歸題庫。",
+      "acceptance": {
+        "success": "所有已知答案可回指資料；更新前後差異與未知題處理均留存。",
+        "failureCase": "加入手冊不存在的保固承諾；回答必須指出缺資料而非承諾補償。"
+      },
+      "sourceIds": [
+        "gems",
+        "prompts"
+      ],
+      "gate": "standard"
+    },
+    {
+      "number": 53,
+      "slug": "gemini-canvas-budget-calculator",
+      "title": "Canvas 實作活動預算計算器：需求、除錯與驗收",
+      "status": "planned",
+      "stage": 2,
+      "track": "work",
+      "group": "B",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 60,
+      "prerequisites": [
+        12,
+        51
+      ],
+      "related": [
+        12,
+        51,
+        54
+      ],
+      "keywords": [
+        "Canvas",
+        "小工具",
+        "計算器",
+        "除錯"
+      ],
+      "purpose": "完成可調整人數、單價與備用金的預算小工具。",
+      "steps": [
+        "先寫欄位、公式與三組人工算好的答案",
+        "用 Canvas 產生單頁計算器並檢查程式與預覽",
+        "加入空白、負數與小數測試並根據錯誤逐項修正",
+        "匯出程式，分別在手機尺寸與桌面檢查"
+      ],
+      "exercise": "requirements.md、test-cases.csv、完整單頁程式；不加入雲端資料庫。",
+      "acceptance": {
+        "success": "三組金額均符合人工計算；重新輸入與重設可用，360px 可操作。",
+        "failureCase": "空值、非數字與負數有可理解提示，不能產生 NaN 或默默當成零。"
+      },
+      "sourceIds": [
+        "canvas"
+      ],
+      "gate": "standard"
+    },
+    {
+      "number": 54,
+      "slug": "gemini-workspace-meeting-handoff",
+      "title": "Gmail 到 Docs、Sheets：把會議信件整理成可交接的待辦",
+      "status": "planned",
+      "stage": 2,
+      "track": "work",
+      "group": "C",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 50,
+      "prerequisites": [
+        17,
+        18,
+        19
+      ],
+      "related": [
+        18,
+        19,
+        55
+      ],
+      "keywords": [
+        "Gmail",
+        "Docs",
+        "Sheets",
+        "會議",
+        "交接"
+      ],
+      "purpose": "將散落信件轉成附來源、負責人與日期的交接表。",
+      "steps": [
+        "使用五封虛構會議信件與附件確認帳號可用入口",
+        "抽出決策、未定事項及承諾，逐項附原始來源",
+        "整理到 Docs，再將待辦轉成 Sheets 欄位",
+        "核對日期時區、重複項及責任人，建立人工確認流程"
+      ],
+      "exercise": "mail-samples.md、handoff-template.md、action-items.csv。",
+      "acceptance": {
+        "success": "五封信的決策均有來源；不確定負責人保留待確認；交接表可篩選。",
+        "failureCase": "同一事項兩封信日期不同時保留衝突，不能自動替人承諾或寄出信件。"
+      },
+      "sourceIds": [
+        "workspace",
+        "sheets"
+      ],
+      "gate": "workspace"
+    },
+    {
+      "number": 55,
+      "slug": "gemini-mobile-field-notes",
+      "title": "手機現場筆記：Gemini Live、照片與回到電腦整理",
+      "status": "planned",
+      "stage": 2,
+      "track": "work",
+      "group": "D",
+      "level": "中階",
+      "platforms": [
+        "Android",
+        "iPhone",
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 40,
+      "prerequisites": [
+        6,
+        7,
+        14,
+        10
+      ],
+      "related": [
+        14,
+        10,
+        56
+      ],
+      "keywords": [
+        "手機",
+        "Android",
+        "iPhone",
+        "Live",
+        "現場筆記"
+      ],
+      "purpose": "把現場觀察整理成可核對的清單與圖文筆記。",
+      "steps": [
+        "準備無個資的桌面物品與觀察清單",
+        "Android、iPhone 分別用 Live 與照片提問並保留觀察文字",
+        "回到電腦整理原圖、文字及待確認項目",
+        "比對實物與輸出，補上看不清楚或辨識錯誤的部分"
+      ],
+      "exercise": "field-checklist.md、經授權的 Commons 示範照片、field-notes.md；現場自攝只作私人練習紀錄。",
+      "acceptance": {
+        "success": "每項結論能連到照片或人工觀察；兩平台步驟與可用性分開記錄。",
+        "failureCase": "遮住物品標籤測試，不能把模糊資訊當成確定型號或價格。"
+      },
+      "sourceIds": [
+        "live"
+      ],
+      "gate": "devices"
+    },
+    {
+      "number": 56,
+      "slug": "gemini-spark-weekly-digest",
+      "title": "Spark 每週資訊摘要：設定排程、檢查結果與停止任務",
+      "status": "planned",
+      "stage": 2,
+      "track": "work",
+      "group": "B",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 50,
+      "prerequisites": [
+        16,
+        13
+      ],
+      "related": [
+        16,
+        13,
+        55
+      ],
+      "keywords": [
+        "Spark",
+        "排程",
+        "每週摘要",
+        "停止任務"
+      ],
+      "purpose": "建立範圍有限、來源可追查的每週摘要任務。",
+      "steps": [
+        "核對個人帳號、年齡、方案、地區與活動設定",
+        "定義三個官方來源、期間、摘要格式與停止條件",
+        "先執行一次並核對，再設定每週排程",
+        "觀察下一次排程結果，練習暫停、恢復與完全停止"
+      ],
+      "exercise": "digest-brief.md、schedule-log.csv、缺資料時的回報範例。",
+      "acceptance": {
+        "success": "至少一次手動與一次排程執行有時間與輸出證據，停止後不再有新執行。",
+        "failureCase": "來源不可讀時標示缺漏；不能把前週內容當本週更新或自動改用未指定來源。"
+      },
+      "sourceIds": [
+        "spark"
+      ],
+      "gate": "spark",
+      "additionalObservation": "另需至少觀察一次預定的每週排程，等待時間不計入 50 分鐘操作估計。"
+    },
+    {
+      "number": 57,
+      "slug": "notebooklm-source-versioning",
+      "title": "NotebookLM 資料版本管理：來源清單、更新與過期內容",
+      "status": "planned",
+      "stage": 2,
+      "track": "research",
+      "group": "C",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 45,
+      "prerequisites": [
+        20
+      ],
+      "related": [
+        20,
+        58
+      ],
+      "keywords": [
+        "NotebookLM",
+        "Gemini Notebook",
+        "來源",
+        "版本",
+        "同步"
+      ],
+      "purpose": "建立能追蹤資料版本的專題筆記本。",
+      "steps": [
+        "為六份示範文件建立來源 ID、版本與更新日期",
+        "分別加入 Drive 與上傳檔案，記錄其更新方式",
+        "替換一份修訂文件並用同題檢查新舊答案",
+        "保存版本對照、引用位置與仍待更新的產出"
+      ],
+      "exercise": "sources-v1-v2.csv、兩版規格書、update-checklist.md。",
+      "acceptance": {
+        "success": "修訂數字能對回新來源；更新時間、舊產出是否重做均有記錄。",
+        "failureCase": "同時保留新舊規格時能辨識日期，不能把不同版本數字相加。"
+      },
+      "sourceIds": [
+        "notebook-sources",
+        "notebook-integration"
+      ],
+      "gate": "standard"
+    },
+    {
+      "number": 58,
+      "slug": "notebooklm-conflicting-sources",
+      "title": "NotebookLM 引用查核：矛盾資料、缺證據與未知答案",
+      "status": "planned",
+      "stage": 2,
+      "track": "research",
+      "group": "C",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 45,
+      "prerequisites": [
+        20,
+        57
+      ],
+      "related": [
+        20,
+        57,
+        59
+      ],
+      "keywords": [
+        "NotebookLM",
+        "引用",
+        "矛盾",
+        "幻覺",
+        "查核"
+      ],
+      "purpose": "用證據矩陣辨識資料支持、矛盾及未回答的問題。",
+      "steps": [
+        "準備三份刻意有不同日期與數字的示範資料",
+        "依問題建立主張、來源、引文與判斷欄位",
+        "點開引用核對前後文，不把引用存在視為結論成立",
+        "用資料未提供的題目檢查回答，再修訂問法"
+      ],
+      "exercise": "evidence-matrix.csv、三份原創矛盾資料、unknown-questions.md。",
+      "acceptance": {
+        "success": "五個關鍵主張都有引文及人工判斷，矛盾與缺證據分開列出。",
+        "failureCase": "沒有答案的問題不得補造引用；不要求系統保證每次拒答。"
+      },
+      "sourceIds": [
+        "notebook-integration",
+        "notebook-sources"
+      ],
+      "gate": "standard"
+    },
+    {
+      "number": 59,
+      "slug": "notebooklm-study-retrieval-practice",
+      "title": "NotebookLM 備考實作：題庫、錯題分類與間隔複習",
+      "status": "planned",
+      "stage": 2,
+      "track": "research",
+      "group": "C",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 60,
+      "prerequisites": [
+        21,
+        58
+      ],
+      "related": [
+        21,
+        58,
+        60
+      ],
+      "keywords": [
+        "NotebookLM",
+        "測驗",
+        "錯題",
+        "間隔複習"
+      ],
+      "purpose": "由兩章教材製作可檢查答案的複習流程。",
+      "steps": [
+        "整理章節目標與關鍵概念對照",
+        "分別產生記憶卡與測驗，人工核對題目和答案",
+        "記錄錯題原因並安排重測日期",
+        "比較第一次與重測結果，回到來源修正不良題目"
+      ],
+      "exercise": "study-plan.csv、answer-key.md、error-log.csv；提供兩章原創短教材。",
+      "acceptance": {
+        "success": "至少 12 題有答案依據與概念分類；錯題重測紀錄可追蹤。",
+        "failureCase": "排除兩個答案都合理、超出教材或引文不支持答案的題目。"
+      },
+      "sourceIds": [
+        "notebook-quiz",
+        "notebook-sources"
+      ],
+      "gate": "standard"
+    },
+    {
+      "number": 60,
+      "slug": "notebooklm-paper-comparison-matrix",
+      "title": "NotebookLM 比較多篇研究：研究問題、方法與限制矩陣",
+      "status": "planned",
+      "stage": 2,
+      "track": "research",
+      "group": "C",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 60,
+      "prerequisites": [
+        58,
+        13
+      ],
+      "related": [
+        58,
+        13,
+        61
+      ],
+      "keywords": [
+        "NotebookLM",
+        "論文",
+        "研究",
+        "比較矩陣"
+      ],
+      "purpose": "產出區分研究設計與結論強度的比較表。",
+      "steps": [
+        "選三份可合法使用的研究材料並記錄來源版本",
+        "先定義問題、樣本、方法、結果與限制欄位",
+        "逐欄提問並對照原文引用",
+        "整理共識、分歧與不能推論的部分"
+      ],
+      "exercise": "paper-matrix.csv、讀文問題清單；採方法比較，不做醫療或投資建議。",
+      "acceptance": {
+        "success": "三份資料每個關鍵欄位均有依據或明示未提供；比較表保留研究限制。",
+        "failureCase": "不同樣本或量尺的數字不能直接排出優劣；二手摘要不能冒充全文。"
+      },
+      "sourceIds": [
+        "notebook-sources",
+        "notebook-integration"
+      ],
+      "gate": "standard"
+    },
+    {
+      "number": 61,
+      "slug": "notebooklm-multiformat-lesson-pack",
+      "title": "NotebookLM 多格式教材：講義、語音與影片摘要一致性檢查",
+      "status": "planned",
+      "stage": 2,
+      "track": "research",
+      "group": "C",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 70,
+      "prerequisites": [
+        21,
+        58
+      ],
+      "related": [
+        21,
+        58,
+        62
+      ],
+      "keywords": [
+        "NotebookLM",
+        "語音摘要",
+        "影片摘要",
+        "教材"
+      ],
+      "purpose": "將同一份教材製作成可對照來源的三種學習材料。",
+      "steps": [
+        "整理一份原創教材與關鍵事實清單",
+        "在筆記本 Studio 產生講義相關內容、語音及影片摘要",
+        "逐項核對人名、數字與概念在不同產出的差異",
+        "以勘誤表記錄修改與重新生成，保存可用的下載格式"
+      ],
+      "exercise": "lesson-facts.csv、handout.md、語音與影片範例及勘誤表。",
+      "acceptance": {
+        "success": "10 個關鍵事實逐一核對，生成格式、語言及下載限制均記錄。",
+        "failureCase": "語音或影片省略必要限定詞時標示修訂；不能宣稱 Gemini 聊天入口等同 Studio。"
+      },
+      "sourceIds": [
+        "notebook-media",
+        "notebook-integration",
+        "notebook-video"
+      ],
+      "gate": "media"
+    },
+    {
+      "number": 62,
+      "slug": "gemini-research-report-workshop",
+      "title": "Deep Research 加 NotebookLM：完成有證據與更新紀錄的專題報告",
+      "status": "planned",
+      "stage": 2,
+      "track": "research",
+      "group": "D",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 90,
+      "prerequisites": [
+        13,
+        57,
+        58,
+        60
+      ],
+      "related": [
+        58,
+        60,
+        61
+      ],
+      "keywords": [
+        "Deep Research",
+        "NotebookLM",
+        "報告",
+        "證據"
+      ],
+      "purpose": "完成一份問題明確、引用可追查的長文報告。",
+      "steps": [
+        "以公開城市交通資料設定範圍、時間與研究問題",
+        "用 Deep Research 擬計畫並核對蒐集到的原始資料",
+        "將必要資料交給筆記本建立主張與證據矩陣",
+        "撰寫摘要、比較與限制，保存來源日期及更新清單"
+      ],
+      "exercise": "research-brief.md、source-register.csv、report.md。",
+      "acceptance": {
+        "success": "報告所有關鍵事實能對回來源，至少列出三個未解問題與更新項目。",
+        "failureCase": "官方頁面改版或資料年份不同時保留差異，不用流暢敘述掩蓋缺證據。"
+      },
+      "sourceIds": [
+        "deep-research",
+        "notebook-sources"
+      ],
+      "gate": "standard"
+    },
+    {
+      "number": 63,
+      "slug": "gemini-image-consistent-series",
+      "title": "Gemini 圖片系列製作：參考圖、風格規格與一致性評分",
+      "status": "planned",
+      "stage": 2,
+      "track": "creative",
+      "group": "C",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 60,
+      "prerequisites": [
+        23,
+        51
+      ],
+      "related": [
+        23,
+        51,
+        64
+      ],
+      "keywords": [
+        "圖片",
+        "參考圖",
+        "一致性",
+        "Nano Banana"
+      ],
+      "purpose": "製作同一原創商品的三張用途不同但風格一致的圖片。",
+      "steps": [
+        "建立主體外觀、配色、鏡位與禁止變動項目",
+        "用自有參考圖生成第一張並記錄完整提示詞",
+        "逐次改變情境，維持其餘條件",
+        "對照原圖評分，保存失敗結果與修訂原因"
+      ],
+      "exercise": "style-guide.md、三張成品、三張失敗案例、image-scorecard.csv。",
+      "acceptance": {
+        "success": "三張圖均附主體特徵與比例核對；一致性是評分結果，不保證生成必然一致。",
+        "failureCase": "商品外形、字樣或數量改變時列為失敗，不以漂亮代替符合需求。"
+      },
+      "sourceIds": [
+        "images"
+      ],
+      "gate": "media"
+    },
+    {
+      "number": 64,
+      "slug": "gemini-image-editing-debugging",
+      "title": "Gemini 修圖除錯：局部修改、文字錯誤與多輪退化",
+      "status": "planned",
+      "stage": 2,
+      "track": "creative",
+      "group": "C",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 50,
+      "prerequisites": [
+        23,
+        63
+      ],
+      "related": [
+        23,
+        63,
+        65
+      ],
+      "keywords": [
+        "修圖",
+        "局部修改",
+        "文字",
+        "多輪"
+      ],
+      "purpose": "用可追蹤的修改紀錄完成指定區域的修圖。",
+      "steps": [
+        "圈定修改目標並列出必須保留的區域",
+        "每輪只改一件事，保存輸入與輸出",
+        "比較文字、邊緣、比例及未要求變動的背景",
+        "若品質退化回到原始圖重做並交付前後對照"
+      ],
+      "exercise": "edit-log.csv、原創基準圖、逐輪輸出與差異說明。",
+      "acceptance": {
+        "success": "修改項目逐條可見；保留區域失真如實記錄，必要時回到原稿。",
+        "failureCase": "刻意加入小字修正任務，顯示失敗和人工補正方法，不保證精準局部遮罩。"
+      },
+      "sourceIds": [
+        "images"
+      ],
+      "gate": "media"
+    },
+    {
+      "number": 65,
+      "slug": "google-flow-storyboard-workshop",
+      "title": "Google Flow 三鏡頭短片：腳本、分鏡與逐鏡生成",
+      "status": "planned",
+      "stage": 2,
+      "track": "creative",
+      "group": "C",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 90,
+      "prerequisites": [
+        24,
+        63
+      ],
+      "related": [
+        24,
+        63,
+        66
+      ],
+      "keywords": [
+        "Flow",
+        "Veo",
+        "分鏡",
+        "短片"
+      ],
+      "purpose": "完成具開場、過程與收尾的短片專案。",
+      "steps": [
+        "先寫三鏡頭腳本與每鏡驗收條件",
+        "依當日模型對照選擇素材、影格與畫面比例",
+        "逐鏡生成並記錄失敗原因與使用點數",
+        "編排場景、下載成品，必要時用明示的外部剪輯工具接合"
+      ],
+      "exercise": "storyboard.csv、三鏡頭提示詞、素材清單與實際輸出。",
+      "acceptance": {
+        "success": "三鏡頭次序、主體與敘事可辨識；下載格式、實際長度和總成本均留存。",
+        "failureCase": "選用模型不支援該輸入模式時更換流程，不能把其他模型操作直接套用。"
+      },
+      "sourceIds": [
+        "flow-create",
+        "flow-models"
+      ],
+      "gate": "media"
+    },
+    {
+      "number": 66,
+      "slug": "google-flow-shot-continuity",
+      "title": "Google Flow 畫面連貫：起訖影格、參考素材與轉場修正",
+      "status": "planned",
+      "stage": 2,
+      "track": "creative",
+      "group": "C",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 70,
+      "prerequisites": [
+        65
+      ],
+      "related": [
+        65,
+        67
+      ],
+      "keywords": [
+        "Flow",
+        "影格",
+        "連貫",
+        "轉場"
+      ],
+      "purpose": "修正兩個片段間的主體、動作與鏡位不連貫。",
+      "steps": [
+        "從前一篇選取相鄰片段與連貫性問題",
+        "以當日模型支援的起訖影格或參考素材重做",
+        "逐格核對主體、光線、動作方向與接點",
+        "記錄哪種方法改善或失敗，再輸出比較版本"
+      ],
+      "exercise": "continuity-checklist.md、基準片段、修訂片段、版本對照。",
+      "acceptance": {
+        "success": "兩段片的接點有逐項評分與實際對照，不能只展示成功的一格。",
+        "failureCase": "模型不支援終點影格或素材組合時給替代步驟並明示限制。"
+      },
+      "sourceIds": [
+        "flow-create",
+        "flow-models"
+      ],
+      "gate": "media"
+    },
+    {
+      "number": 67,
+      "slug": "gemini-sheets-data-audit-dashboard",
+      "title": "Gemini 與 Sheets 資料報表：清理 CSV、核對公式與圖表",
+      "status": "planned",
+      "stage": 2,
+      "track": "creative",
+      "group": "C",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 70,
+      "prerequisites": [
+        10,
+        18
+      ],
+      "related": [
+        10,
+        18,
+        68
+      ],
+      "keywords": [
+        "Sheets",
+        "CSV",
+        "圖表",
+        "公式",
+        "資料清理"
+      ],
+      "purpose": "將含錯誤的資料整理成總數正確、可追查來源的報表。",
+      "steps": [
+        "匯入 50 列合成銷售資料並保存原表",
+        "處理日期、空值、重複列與幣別，記錄清理規則",
+        "用 Gemini 協助公式及圖表，再用人工基準核對",
+        "建立來源列、計算欄與圖表範圍的追蹤關係"
+      ],
+      "exercise": "sales-dirty.csv、expected-totals.csv、cleaning-log.md、Sheets 模板。",
+      "acceptance": {
+        "success": "有效列數、分組金額及圖表總數均與基準吻合；每個排除項有理由。",
+        "failureCase": "重複資料和空白金額必須被發現；不能讓模型自行刪除異常但真實的交易。"
+      },
+      "sourceIds": [
+        "sheets"
+      ],
+      "gate": "workspace"
+    },
+    {
+      "number": 68,
+      "slug": "gemini-content-production-handoff",
+      "title": "Gemini 內容專案交付：文章、圖片與短片的版本和素材清單",
+      "status": "planned",
+      "stage": 2,
+      "track": "creative",
+      "group": "D",
+      "level": "中階",
+      "platforms": [
+        "電腦網頁"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 90,
+      "prerequisites": [
+        51,
+        63,
+        65
+      ],
+      "related": [
+        63,
+        65,
+        67
+      ],
+      "keywords": [
+        "交付",
+        "內容製作",
+        "版本",
+        "素材"
+      ],
+      "purpose": "交付同一活動的文章、三張圖與短片，附完整素材記錄。",
+      "steps": [
+        "從單一活動資料表定義受眾、規格與不可變更的事實",
+        "分別製作文章、圖片與影片，保存提示詞及版本",
+        "核對各格式的日期、名稱、尺寸與素材來源",
+        "整理交付資料夾、修改單與已知限制"
+      ],
+      "exercise": "brief.md、asset-register.csv、handoff.md、完整範例成果包。",
+      "acceptance": {
+        "success": "每個成品可追到輸入、版本、素材與核對人；同一活動資訊無矛盾。",
+        "failureCase": "活動日期變更後能找出所有受影響成品，不能只改文章漏掉影片字卡。"
+      },
+      "sourceIds": [
+        "images",
+        "flow-create",
+        "prompts"
+      ],
+      "gate": "media"
+    },
+    {
+      "number": 69,
+      "slug": "gemini-cli-memory-scope-lab",
+      "title": "GEMINI.md 載入實驗：親手驗證全域、專案與子目錄規則",
+      "status": "planned",
+      "stage": 2,
+      "track": "md",
+      "group": "F",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 60,
+      "prerequisites": [
+        36,
+        37
+      ],
+      "related": [
+        36,
+        37,
+        70
+      ],
+      "keywords": [
+        "MD",
+        "GEMINI.md",
+        "/memory",
+        "載入",
+        "作用範圍"
+      ],
+      "purpose": "以最小專案觀察每份規則何時進入上下文。",
+      "steps": [
+        "建立隔離測試家目錄與含兩個子目錄的示範專案",
+        "放入不同標記的 GEMINI.md 與匯入檔",
+        "依序檢查啟動、檔案存取與 /memory show、reload",
+        "修改與移走一份規則，記錄載入範圍及信任邊界差異"
+      ],
+      "exercise": "memory-lab/、expected-context.csv、PowerShell 與 shell 操作表。",
+      "acceptance": {
+        "success": "每步載入內容、CLI 版本及工作目錄均有紀錄；區分載入證據與模型是否遵循。",
+        "failureCase": "刻意製造衝突或缺檔，不能宣稱下層規則必定覆寫上層或每次被模型遵守。"
+      },
+      "sourceIds": [
+        "cli-memory"
+      ],
+      "gate": "cli"
+    },
+    {
+      "number": 70,
+      "slug": "gemini-cli-modular-project-rules",
+      "title": "GEMINI.md 團隊範本：拆分規則、匯入與維護責任",
+      "status": "planned",
+      "stage": 2,
+      "track": "md",
+      "group": "F",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 60,
+      "prerequisites": [
+        69,
+        35
+      ],
+      "related": [
+        69,
+        35,
+        71
+      ],
+      "keywords": [
+        "MD",
+        "GEMINI.md",
+        "規則範本",
+        "團隊",
+        "匯入"
+      ],
+      "purpose": "製作可維護的共用規則加前後端專案範本。",
+      "steps": [
+        "列出共用語言、檢查命令與目錄責任",
+        "拆成精簡主檔、開發規範與任務專用說明",
+        "設定匯入並用同一範例專案驗證",
+        "加入規則變更紀錄與新成員接手流程"
+      ],
+      "exercise": "GEMINI.md、rules/style.md、rules/testing.md、rules/ownership.md。",
+      "acceptance": {
+        "success": "所有匯入可解析，命令在範例專案可執行；每條規則有適用目錄與維護理由。",
+        "failureCase": "失效檔案路徑或互相矛盾的命令要被檢查找出，不把規則堆疊當成穩定性保證。"
+      },
+      "sourceIds": [
+        "cli-memory"
+      ],
+      "gate": "cli"
+    },
+    {
+      "number": 71,
+      "slug": "gemini-cli-settings-debug-lab",
+      "title": "settings.json 設定除錯：來源優先順序與升級前後比較",
+      "status": "planned",
+      "stage": 2,
+      "track": "md",
+      "group": "F",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 60,
+      "prerequisites": [
+        38,
+        69
+      ],
+      "related": [
+        38,
+        69,
+        72
+      ],
+      "keywords": [
+        "settings.json",
+        "設定",
+        "優先順序",
+        "環境變數"
+      ],
+      "purpose": "定位一項設定為何未生效，保存可重做的診斷程序。",
+      "steps": [
+        "鎖定 CLI 版本並建立乾淨的全域及專案設定",
+        "一次改一項設定，記錄環境變數與命令列影響",
+        "加入格式錯誤、未知欄位與舊版設定觀察診斷",
+        "依官方 schema 比較版本，驗證後才搬回真實專案"
+      ],
+      "exercise": "settings-cases/、effective-settings.csv、migration-checklist.md。",
+      "acceptance": {
+        "success": "至少六組案例記錄預期與實際行為；有效設定能追到來源。",
+        "failureCase": "未知欄位可能被忽略或拒絕，必須依實際版本記錄，不能一概當成成功。"
+      },
+      "sourceIds": [
+        "cli-settings"
+      ],
+      "gate": "cli"
+    },
+    {
+      "number": 72,
+      "slug": "gemini-cli-custom-command-library",
+      "title": "自訂 CLI 指令庫：程式審查、測試計畫與文件同步",
+      "status": "planned",
+      "stage": 2,
+      "track": "md",
+      "group": "F",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 70,
+      "prerequisites": [
+        40,
+        70
+      ],
+      "related": [
+        40,
+        70,
+        73
+      ],
+      "keywords": [
+        "TOML",
+        "自訂指令",
+        "/commands",
+        "中文路徑"
+      ],
+      "purpose": "建立三個可重用、可測試的 TOML 指令。",
+      "steps": [
+        "定義 review、test-plan、docs-sync 三種輸入與輸出契約",
+        "撰寫命名清楚的 TOML 並處理參數及檔案引用",
+        "在乾淨專案載入後測試空參數、空格與中文路徑",
+        "區分純讀取與會執行 shell 的命令，整理版本與使用說明"
+      ],
+      "exercise": "commands/review.toml、test-plan.toml、docs-sync.toml、cases.md。",
+      "acceptance": {
+        "success": "三個命令均能載入且輸出符合契約；跨平台差異有對應範例。",
+        "failureCase": "含引號或 shell 特殊字元的參數不能被不安全地串接成命令。"
+      },
+      "sourceIds": [
+        "cli-commands"
+      ],
+      "gate": "cli"
+    },
+    {
+      "number": 73,
+      "slug": "gemini-cli-skill-extension-package",
+      "title": "把 SKILL.md 打包成 Extension：安裝、更新與回退",
+      "status": "planned",
+      "stage": 2,
+      "track": "md",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 90,
+      "prerequisites": [
+        41,
+        42,
+        72
+      ],
+      "related": [
+        42,
+        72,
+        74
+      ],
+      "keywords": [
+        "SKILL.md",
+        "Skills",
+        "Extensions",
+        "更新",
+        "回退"
+      ],
+      "purpose": "將文件檢查技能打包成可安裝的本機擴充套件。",
+      "steps": [
+        "設計一個明確的文件檢查技能及所需資源",
+        "依官方格式加入 SKILL.md、腳本與擴充 manifest",
+        "從隔離目錄安裝、確認啟用並執行範例",
+        "測試升級、停用、卸載與回到前版的流程"
+      ],
+      "exercise": "doc-check-extension/、CHANGELOG.md、安裝與回退操作表。",
+      "acceptance": {
+        "success": "乾淨環境可安裝，停用後能力消失；重裝或回退結果可驗證。",
+        "failureCase": "技能與一般 GEMINI.md 指示用途不同；腳本失敗要能被看見而非只回報成功。"
+      },
+      "sourceIds": [
+        "cli-extensions",
+        "cli-skills"
+      ],
+      "gate": "cli"
+    },
+    {
+      "number": 74,
+      "slug": "gemini-cli-large-project-context",
+      "title": "大型專案的 CLI 上下文：分段任務、Git 差異與恢復",
+      "status": "planned",
+      "stage": 2,
+      "track": "md",
+      "group": "E",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 80,
+      "prerequisites": [
+        33,
+        34,
+        39,
+        70
+      ],
+      "related": [
+        39,
+        70,
+        73
+      ],
+      "keywords": [
+        "上下文",
+        "大型專案",
+        "Git",
+        "恢復",
+        "/compress"
+      ],
+      "purpose": "在含多個模組的專案只修改指定範圍並保存恢復點。",
+      "steps": [
+        "先以檔案清單與依賴圖確認本次修改範圍",
+        "明確選擇所需上下文並切分調查與修改",
+        "查看 Git 差異、測試與未提交變更，避免覆蓋既有工作",
+        "中斷再恢復，對照對話狀態與檔案狀態差異"
+      ],
+      "exercise": "sample-repo/、task-scope.md、resume-log.md。",
+      "acceptance": {
+        "success": "指定模組完成修改，其他檔案差異可解釋；恢復後能辨識已做與未做工作。",
+        "failureCase": "對話恢復不等於檔案回滾；不要把 .geminiignore 當成安全存取邊界。"
+      },
+      "sourceIds": [
+        "cli-memory",
+        "cli-sessions"
+      ],
+      "gate": "cli"
+    },
+    {
+      "number": 75,
+      "slug": "gemini-cli-mcp-server-workshop",
+      "title": "MCP 實作：建立本機唯讀商品查詢工具並排除連線問題",
+      "status": "planned",
+      "stage": 2,
+      "track": "automation",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 90,
+      "prerequisites": [
+        41,
+        30
+      ],
+      "related": [
+        41,
+        30,
+        76
+      ],
+      "keywords": [
+        "MCP",
+        "本機工具",
+        "連線",
+        "工具結果"
+      ],
+      "purpose": "讓 Gemini CLI 能查詢受範圍限制的合成商品資料。",
+      "steps": [
+        "依官方 MCP SDK 建立唯讀查詢工具與資料結構",
+        "以合成 CSV 作資料來源並限制可查範圍",
+        "設定 Gemini CLI，確認工具探索與正確參數",
+        "逐一測試啟動失敗、逾時、空結果與移除工具"
+      ],
+      "exercise": "local-catalog-mcp/、products.csv、connection-cases.md。",
+      "acceptance": {
+        "success": "正確、不存在、無效參數三類查詢均有工具紀錄；停用後不可再查。",
+        "failureCase": "工具不得把參數當檔案路徑任意讀取；回傳文字不能被當成新的高權限指示。"
+      },
+      "sourceIds": [
+        "cli-mcp",
+        "mcp-sdk"
+      ],
+      "gate": "cli"
+    },
+    {
+      "number": 76,
+      "slug": "gemini-cli-hooks-quality-gates",
+      "title": "Hooks 品質檢查：事件輸入、退出碼與失敗時停止",
+      "status": "planned",
+      "stage": 2,
+      "track": "automation",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 80,
+      "prerequisites": [
+        43,
+        71
+      ],
+      "related": [
+        43,
+        71,
+        77
+      ],
+      "keywords": [
+        "Hooks",
+        "品質檢查",
+        "退出碼",
+        "stdin"
+      ],
+      "purpose": "做出可觀察且確實會阻擋指定操作的檢查。",
+      "steps": [
+        "選一個官方可阻擋事件並建立最小 hook",
+        "處理 stdin JSON、stdout 回應及 stderr 診斷",
+        "加入 lint 檢查與可控的通過、拒絕案例",
+        "測試格式損壞、逾時與停用行為，記錄是否 fail-open 或 fail-closed"
+      ],
+      "exercise": "hooks/quality-check.py、event-fixtures/、expected-decisions.json。",
+      "acceptance": {
+        "success": "每個案例的 CLI 行為與事件規格一致，拒絕有可理解原因。",
+        "failureCase": "不能把一般 shell 非零退出碼想當然視為阻擋；須逐事件驗證實際語意。"
+      },
+      "sourceIds": [
+        "cli-hooks",
+        "cli-hooks-reference"
+      ],
+      "gate": "cli"
+    },
+    {
+      "number": 77,
+      "slug": "gemini-cli-subagent-review-workflow",
+      "title": "Subagents 審查工作流：任務契約、工具限制與結果整合",
+      "status": "planned",
+      "stage": 2,
+      "track": "automation",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 80,
+      "prerequisites": [
+        44,
+        74
+      ],
+      "related": [
+        44,
+        74,
+        78
+      ],
+      "keywords": [
+        "Subagents",
+        "代理",
+        "審查",
+        "工具限制"
+      ],
+      "purpose": "以兩個專門審查代理完成有證據的程式與文件檢查。",
+      "steps": [
+        "定義程式與文件兩種審查輸入、輸出格式及工具範圍",
+        "配置子代理並先以固定範例分別執行",
+        "保存各自結果，主代理逐條核對檔案與行號",
+        "處理相反建議、失敗與重複問題，彙整人工可審查清單"
+      ],
+      "exercise": "agents/、review-contract.md、兩份原始回報與合併報告。",
+      "acceptance": {
+        "success": "每個採納問題都可定位，重複合併且不採納無依據建議；實際並行與否明示。",
+        "failureCase": "不假設代理必定並行或自動隔離寫入；無法確保唯讀時使用可丟棄副本。"
+      },
+      "sourceIds": [
+        "cli-subagents"
+      ],
+      "gate": "cli"
+    },
+    {
+      "number": 78,
+      "slug": "gemini-cli-resumable-batch-pipeline",
+      "title": "Headless 批次處理：JSONL、續跑與避免重複輸出",
+      "status": "planned",
+      "stage": 2,
+      "track": "automation",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 90,
+      "prerequisites": [
+        45,
+        49
+      ],
+      "related": [
+        45,
+        49,
+        79
+      ],
+      "keywords": [
+        "Headless",
+        "JSONL",
+        "批次",
+        "續跑",
+        "去重"
+      ],
+      "purpose": "讓 20 份文件批次整理可中斷、續跑與追查失敗。",
+      "steps": [
+        "建立文件 ID、內容雜湊及處理狀態清單",
+        "以 headless 執行並分開解析結果、事件與錯誤",
+        "由自行撰寫的腳本保存檢查點，限制並行與重試",
+        "中途停止、重啟及修改一份輸入，核對是否重做正確項目"
+      ],
+      "exercise": "batch-runner/、20 份合成文件、manifest.jsonl、run-report.csv。",
+      "acceptance": {
+        "success": "中斷重跑不重複寫成品，修改一份只重做對應輸入；失敗保留原因。",
+        "failureCase": "stream-json 的工具事件或局部文字不是最終成功；CLI 退出成功也需驗證輸出契約。"
+      },
+      "sourceIds": [
+        "cli-headless"
+      ],
+      "gate": "cli"
+    },
+    {
+      "number": 79,
+      "slug": "gemini-cli-github-actions-artifacts",
+      "title": "Gemini CLI 接 GitHub Actions：受控觸發與產生審查報告",
+      "status": "planned",
+      "stage": 2,
+      "track": "automation",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 90,
+      "prerequisites": [
+        39,
+        78
+      ],
+      "related": [
+        39,
+        78,
+        80
+      ],
+      "keywords": [
+        "CI",
+        "GitHub Actions",
+        "報告",
+        "artifact"
+      ],
+      "purpose": "在測試 repository 手動執行工作流並保存可下載的審查報告。",
+      "steps": [
+        "建立 workflow_dispatch 與受限的檔案輸入範圍",
+        "固定 CLI 版本、最小權限及秘密金鑰使用方式",
+        "執行 headless，把報告保存為 artifact",
+        "檢查逾時、失敗與無憑證情境，避免非受信任程式拿到金鑰"
+      ],
+      "exercise": "workflow.yml、sample-change.diff、report-contract.json。",
+      "acceptance": {
+        "success": "手動觸發可取回報告，workflow 權限與用量可查；不自動合併、部署或留言。",
+        "failureCase": "fork 或不受信任內容不能取得秘密；未核對 API 用量前不啟用無限制自動觸發。"
+      },
+      "sourceIds": [
+        "cli-headless",
+        "github-workflows"
+      ],
+      "gate": "ci"
+    },
+    {
+      "number": 80,
+      "slug": "gemini-cli-docs-maintenance-project",
+      "title": "CLI 完整專案：文件更新、連結檢查與人工審查交付",
+      "status": "planned",
+      "stage": 2,
+      "track": "automation",
+      "group": "G",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 120,
+      "prerequisites": [
+        72,
+        76,
+        78
+      ],
+      "related": [
+        76,
+        78,
+        79
+      ],
+      "keywords": [
+        "文件維護",
+        "MD",
+        "自動化",
+        "連結檢查"
+      ],
+      "purpose": "將文件維護整合成能產出差異、報告及失敗記錄的流程。",
+      "steps": [
+        "建立十篇互連 Markdown 文件與故意損壞的連結",
+        "以自訂指令提出修訂，再檢查 Markdown 與連結",
+        "使用 headless 執行並保留每篇輸入、輸出與檢查結果",
+        "輸出差異與交接說明，人工確認後才套用"
+      ],
+      "exercise": "docs-maintenance-project/、fixtures/、report.md、變更前後對照。",
+      "acceptance": {
+        "success": "已知斷鏈可找到，修改符合範圍，重跑可分辨未變更與需處理文件。",
+        "failureCase": "測試不過或資料不存在時停止產出可發布標記，不讓模型憑空建立來源網址。"
+      },
+      "sourceIds": [
+        "cli-commands",
+        "cli-hooks",
+        "cli-headless"
+      ],
+      "gate": "cli"
+    },
+    {
+      "number": 81,
+      "slug": "gemini-api-function-calling-workshop",
+      "title": "Function calling 實作：參數驗證、工具回傳與有限次迴圈",
+      "status": "planned",
+      "stage": 2,
+      "track": "api",
+      "group": "H",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux",
+        "Python"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 90,
+      "prerequisites": [
+        47,
+        48,
+        49
+      ],
+      "related": [
+        48,
+        49,
+        82
+      ],
+      "keywords": [
+        "API",
+        "Python",
+        "Function calling",
+        "工具呼叫"
+      ],
+      "purpose": "用 Python 建立只查詢合成訂單的工具呼叫流程。",
+      "steps": [
+        "定義查詢工具 schema 與允許的訂單 ID",
+        "接收工具要求後自行驗證參數並執行本機函式",
+        "把工具結果送回同一 API 家族的後續請求",
+        "設定迴圈上限、逾時與查無訂單的回覆"
+      ],
+      "exercise": "function-loop/、orders.json、tool-cases.json。",
+      "acceptance": {
+        "success": "正常、查無資料、非法參數與迴圈達上限皆有可判斷的結果。",
+        "failureCase": "模型提出工具要求不等於已執行；不允許任意函式名稱或自動重複具副作用操作。"
+      },
+      "sourceIds": [
+        "api-functions"
+      ],
+      "gate": "api"
+    },
+    {
+      "number": 82,
+      "slug": "gemini-api-search-grounding-citations",
+      "title": "Gemini API 搜尋引用：Grounding 結果解析與來源呈現",
+      "status": "planned",
+      "stage": 2,
+      "track": "api",
+      "group": "H",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux",
+        "Python"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 80,
+      "prerequisites": [
+        47,
+        48
+      ],
+      "related": [
+        47,
+        48,
+        83
+      ],
+      "keywords": [
+        "API",
+        "Grounding",
+        "搜尋",
+        "引用"
+      ],
+      "purpose": "讓應用程式回傳有來源對應的公開資訊摘要。",
+      "steps": [
+        "選可重做的官方網站問題並確認模型與工具支援",
+        "發出 Google Search grounding 請求並保存回應",
+        "解析引用與支援片段，依官方要求呈現搜尋相關內容",
+        "測試沒有引用、來源失效及模型未啟動搜尋的結果"
+      ],
+      "exercise": "grounding-demo/、response-fixtures/、citation-view.html。",
+      "acceptance": {
+        "success": "摘要中的引用能對到回應來源；缺引用時明示不能追查，不捏造 URL。",
+        "failureCase": "搜尋有回應不代表每個結論正確，須逐一核對支援片段並防止不安全連結。"
+      },
+      "sourceIds": [
+        "api-search"
+      ],
+      "gate": "api"
+    },
+    {
+      "number": 83,
+      "slug": "gemini-api-file-search-rag-project",
+      "title": "File Search 知識庫實作：匯入、查詢、更新與刪除驗證",
+      "status": "planned",
+      "stage": 2,
+      "track": "api",
+      "group": "H",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux",
+        "Python"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 100,
+      "prerequisites": [
+        48,
+        58
+      ],
+      "related": [
+        48,
+        58,
+        84
+      ],
+      "keywords": [
+        "API",
+        "File Search",
+        "RAG",
+        "知識庫",
+        "引用"
+      ],
+      "purpose": "以十份合成規格文件建立有引用的檢索問答。",
+      "steps": [
+        "建立 File Search store 並記錄原始檔與索引文件 ID",
+        "上傳、等待匯入完成，建立可查詢狀態",
+        "查詢後逐項核對引用與來源版本",
+        "更新及刪除一份資料，驗證查詢與資源生命週期"
+      ],
+      "exercise": "file-search-demo/、10 份規格書、resource-ledger.json、citation-cases.json。",
+      "acceptance": {
+        "success": "匯入完成後可追到正確來源，更新與刪除步驟均可查證且能清理測試資源。",
+        "failureCase": "查無證據不補造答案；File Search 與 Google Search 分次呼叫，不假設能同請求混用。"
+      },
+      "sourceIds": [
+        "api-file-search"
+      ],
+      "gate": "api"
+    },
+    {
+      "number": 84,
+      "slug": "gemini-api-context-cache-experiment",
+      "title": "API 快取實驗：隱含快取、手動快取與實際成本核對",
+      "status": "planned",
+      "stage": 2,
+      "track": "api",
+      "group": "H",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux",
+        "Python"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 80,
+      "prerequisites": [
+        47,
+        49
+      ],
+      "related": [
+        47,
+        49,
+        85
+      ],
+      "keywords": [
+        "API",
+        "快取",
+        "cache",
+        "成本",
+        "Interactions"
+      ],
+      "purpose": "比較重複文件請求的使用量，理解快取是否真的有幫助。",
+      "steps": [
+        "先區分 Interactions 與 generateContent 的快取支援",
+        "固定模型、文件版本與一組重複問題建立未快取基準",
+        "分別量測隱含快取；手動快取另用 generateContent 範例",
+        "核對用量、保存時間與過期行為，清理測試快取"
+      ],
+      "exercise": "cache-lab/implicit/、explicit/、usage-log.csv、文件版本雜湊。",
+      "acceptance": {
+        "success": "兩種 API 路徑各自可執行，實際用量有來源；未命中也如實保存。",
+        "failureCase": "短輸入不保證命中或省錢；不把手動快取建立語法放進 Interactions 範例。"
+      },
+      "sourceIds": [
+        "api-cache"
+      ],
+      "gate": "api"
+    },
+    {
+      "number": 85,
+      "slug": "gemini-api-batch-recovery",
+      "title": "Batch API 批次評測：工作 ID、部分失敗與重送管理",
+      "status": "planned",
+      "stage": 2,
+      "track": "api",
+      "group": "H",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux",
+        "Python"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 100,
+      "prerequisites": [
+        48,
+        49,
+        51
+      ],
+      "related": [
+        49,
+        51,
+        86
+      ],
+      "keywords": [
+        "API",
+        "Batch",
+        "評測",
+        "重試",
+        "部分失敗"
+      ],
+      "purpose": "對固定題庫建立可追蹤、可收斂的離線批次評測。",
+      "steps": [
+        "以 generateContent 相容請求建立 20 題 JSONL 與固定 key",
+        "提交一次後立即保存 job ID，觀察工作狀態",
+        "下載每項結果，將成功、失敗與缺漏分開",
+        "只重送核對後仍需執行的項目，彙總品質與成本"
+      ],
+      "exercise": "batch-eval/、cases.jsonl、job-ledger.json、evaluation.csv。",
+      "acceptance": {
+        "success": "每個 key 只有一個採納結果；部分失敗與重送對照清楚，成本可查。",
+        "failureCase": "建立 Batch 並非冪等；網路逾時後先核對工作，不能盲目再送整批。"
+      },
+      "sourceIds": [
+        "api-batch"
+      ],
+      "gate": "api",
+      "additionalObservation": "批次工作可能跨日完成；等待時間不計入 100 分鐘操作估計，不能保證即時回傳。"
+    },
+    {
+      "number": 86,
+      "slug": "gemini-api-document-service-capstone",
+      "title": "文件助手進階專案：有引用的問答服務、評測與交接",
+      "status": "planned",
+      "stage": 2,
+      "track": "api",
+      "group": "H",
+      "level": "進階",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux",
+        "Python"
+      ],
+      "estimatedReadingMinutes": 8,
+      "estimatedLabMinutes": 120,
+      "prerequisites": [
+        50,
+        81,
+        83,
+        85
+      ],
+      "related": [
+        83,
+        85,
+        49
+      ],
+      "keywords": [
+        "API",
+        "文件助手",
+        "完整專案",
+        "評測",
+        "引用"
+      ],
+      "purpose": "完成可本機使用、有來源引用與測試資料的文件問答服務。",
+      "steps": [
+        "以十份合成文件定義單一使用者服務的功能與限制",
+        "建立後端金鑰管理、文件索引及受限工具查詢",
+        "以 20 題評測資料檢查正確、缺證據與不合法輸入",
+        "加入資源清理、錯誤紀錄及啟動文件，交給他人重做"
+      ],
+      "exercise": "document-service/、.env.example、golden-cases.json、README.md；Python 為主。",
+      "acceptance": {
+        "success": "全新環境能啟動，瀏覽器收不到 API Key，引用與錯誤路徑均可核對。",
+        "failureCase": "資料中夾帶指示不能改變工具權限；本機單人範例不宣稱已具多租戶或公開上線能力。"
+      },
+      "sourceIds": [
+        "api-file-search",
+        "api-functions",
+        "api-batch"
+      ],
+      "gate": "api"
+    }
+  ]
+}

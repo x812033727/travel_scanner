@@ -1,0 +1,99 @@
+{
+  "checkedOn": "2026-09-15",
+  "method": "Read official public documents through web tool; no authenticated account or billed Google requests. Google One amounts were unavailable in both text extraction and isolated signed-out Chromium.",
+  "priceAmountStatus": "unavailable-on-2026-09-15; retain historical 2026-09-14 record",
+  "historicalPriceEvidence": "docs/gemini-series/device-verification.json",
+  "currentPriceAttempt": "public-prices.json",
+  "lessons": {
+    "0": {
+      "notice": "本篇沿用 2026-09-14 的官方來源紀錄，閱讀路線於 2026-09-15 整理。各篇依自身來源日期及實測範圍判讀，概念圖與範例不是實際模型輸出。",
+      "sources": [
+        {
+          "title": "Gemini 官方說明",
+          "url": "https://support.google.com/gemini/?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini CLI 官方文件",
+          "url": "https://geminicli.com/docs/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini API 官方入門",
+          "url": "https://ai.google.dev/gemini-api/docs/ai-studio-quickstart",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "2": {
+      "notice": "台灣價格與 Flow 點數沿用 2026-09-14 的官方頁面載入紀錄；2026-09-15 複核方案用量與管理文件，本次未重新取得價格金額。個別帳號資格、優惠及付款條件仍以當下畫面為準。",
+      "sources": [
+        {
+          "title": "Google One 台灣 AI 方案與價格",
+          "url": "https://one.google.com/intl/zh-TW_tw/about/google-ai-plans/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini 方案用量限制",
+          "url": "https://support.google.com/gemini/answer/16275805?hl=en",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "管理 Google AI 訂閱",
+          "url": "https://support.google.com/gemini/answer/14517446?hl=en",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    },
+    "49": {
+      "notice": "2026-09-15 對照官方價格、額度、工具與快取文件整理。Python 計算器只驗證算術，沒有呼叫 Google 模型或產生實際帳單；教學估算需用自己的回傳用量及帳單核對。",
+      "sources": [
+        {
+          "title": "官方 API 價格表",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "速率與專案限制",
+          "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "API 錯誤排解",
+          "url": "https://ai.google.dev/gemini-api/docs/troubleshooting",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "API 計費管理",
+          "url": "https://ai.google.dev/gemini-api/docs/billing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "快取與 API 路線差異",
+          "url": "https://ai.google.dev/gemini-api/docs/caching",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "File Search",
+          "url": "https://ai.google.dev/gemini-api/docs/file-search",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "搜尋引用",
+          "url": "https://ai.google.dev/gemini-api/docs/google-search",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Batch API",
+          "url": "https://ai.google.dev/gemini-api/docs/batch-api",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Interactions API",
+          "url": "https://ai.google.dev/gemini-api/docs/interactions-overview",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

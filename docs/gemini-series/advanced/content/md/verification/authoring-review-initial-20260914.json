@@ -1,0 +1,469 @@
+{
+  "checkedAt": "2026-09-14T12:06:40.701305+00:00",
+  "status": "authoring-review-not-release",
+  "publishable": false,
+  "scope": "MD track 69-74 only",
+  "baselineCommit": "487be24dc6a60242fb2d5925a324d2aee6ac7cd8",
+  "preservation": {
+    "runtimeArticles": 50,
+    "originalContentPacksUnchanged": 51,
+    "catalogueSha256": "1f6afed7f3bf7f05a407b8d5af4647938cf6d91df6b42a381a904b1f6d697bb2"
+  },
+  "environment": {
+    "os": "Windows",
+    "node": "24.19.0",
+    "cli": "0.59.0",
+    "upstreamTag": "v0.59.0",
+    "upstreamTagSha": "fb0d535af931b27c51e87e5e6ade72905b1e8390"
+  },
+  "checks": [
+    {
+      "name": "selected draft catalogue, length, assets and internal links",
+      "passed": 6
+    },
+    {
+      "name": "selected guide pack lint",
+      "passed": 6
+    },
+    {
+      "name": "original hub and articles check",
+      "passed": 51
+    },
+    {
+      "name": "related API content, series and rich block pytest",
+      "passed": 31,
+      "skipped": 15,
+      "skipReason": "isolated PostgreSQL services unavailable"
+    },
+    {
+      "name": "actual CLI modules and authored fixtures",
+      "observations": 48,
+      "cloudCalls": 0
+    },
+    {
+      "name": "ZIP CRC, source equality and extracted verification run",
+      "archives": 7,
+      "observationsAfterExtraction": 48
+    },
+    {
+      "name": "public article artwork and download copies equal reviewed sources",
+      "articles": 6
+    },
+    {
+      "name": "JavaScript syntax",
+      "passed": 8
+    },
+    {
+      "name": "TOML command parsing",
+      "passed": 3
+    },
+    {
+      "name": "PowerShell AST parsing",
+      "passed": 2
+    },
+    {
+      "name": "selected Python Ruff",
+      "status": "passed"
+    },
+    {
+      "name": "task protocol",
+      "files": 426,
+      "status": "passed with existing unrelated stale/overlap warnings"
+    },
+    {
+      "name": "real compiler regression suite including CRLF author input and LF output",
+      "passed": 9
+    }
+  ],
+  "boundaries": {
+    "databaseImports": 0,
+    "publication": false,
+    "siteMobileE2E": false,
+    "nativeExtensionTerminal": "unresolved Windows libuv exit",
+    "modelQuality": "not tested",
+    "authenticatedSessionResume": "not tested"
+  },
+  "articles": [
+    {
+      "number": 69,
+      "slug": "gemini-cli-memory-scope-lab",
+      "stage": 2,
+      "track": "md",
+      "characters": 2282,
+      "minutes": 6,
+      "labMinutes": 60,
+      "status": "built-unpublished",
+      "files": [
+        {
+          "path": "apps/api/app/guides/content/gemini-cli-memory-scope-lab.json",
+          "sha256": "454ca63f58be3ce70c01c0f96869d16fdd262175bb0b4ea167caf7c6d2a7db57"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/69/diagram-1.svg",
+          "sha256": "b665047e572766b4ac892ea1124a2e3c3ee0c3eed00faa2e33c23c52aa4bdb0d"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/69/hero.jpg",
+          "sha256": "6b5b5e1e2ca76f8c563f883c5fb794d4edb3e4b9616c21a248dda89604b06a69"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/69/hero.svg",
+          "sha256": "6b78367c62555d620dd0aff42934b13fe4eefe5878068048205a51fddc5d8fa8"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/69/lesson.md",
+          "sha256": "1722774198dc954f039c3005cc24a98fc95026db61b47d8caf7b0695972b4e04"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/69/meta.json",
+          "sha256": "64882f087163368252bd5e2d5fc131d7e0f7f4be4c400409d1efc674eb17eedb"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-memory-scope-lab/diagram-1.svg",
+          "sha256": "b665047e572766b4ac892ea1124a2e3c3ee0c3eed00faa2e33c23c52aa4bdb0d"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-memory-scope-lab/hero.jpg",
+          "sha256": "6b5b5e1e2ca76f8c563f883c5fb794d4edb3e4b9616c21a248dda89604b06a69"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-memory-scope-lab/hero.svg",
+          "sha256": "6b78367c62555d620dd0aff42934b13fe4eefe5878068048205a51fddc5d8fa8"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-memory-scope-lab/lesson-69.zip",
+          "sha256": "cd47d9a7b95e0244050a21798639df74f483d1fce78c66ce40639d700c9ef49b"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-memory-scope-lab/md-verification.zip",
+          "sha256": "3507ef23934f323fb0a88c415eb3a154ec2c230ed45072783c862e12640d7596"
+        }
+      ]
+    },
+    {
+      "number": 70,
+      "slug": "gemini-cli-modular-project-rules",
+      "stage": 2,
+      "track": "md",
+      "characters": 2355,
+      "minutes": 6,
+      "labMinutes": 60,
+      "status": "built-unpublished",
+      "files": [
+        {
+          "path": "apps/api/app/guides/content/gemini-cli-modular-project-rules.json",
+          "sha256": "cdf2e2fc4f850d9321c9ff36365871128366807ff274214e8e48013a36717af1"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/70/diagram-1.svg",
+          "sha256": "edde50f75e0f74f4beb5b013ef37f52fdd70f44af7b002a2299a506c542afe66"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/70/hero.jpg",
+          "sha256": "4162af5cb0d275a01e792ca727578517e61a8872ce6407dbdb7a3a3c32d190aa"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/70/hero.svg",
+          "sha256": "aa1837f05cf2a87a21029c71d7e8a7aa33bbc91d9c01ca7f4de3bf9e4968e16c"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/70/lesson.md",
+          "sha256": "ca0a2c8dc097b0fceea66c5c94bffdba88cd498cedc9ee2887ba144825f590fd"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/70/meta.json",
+          "sha256": "5ce4d12c2e66a81fe915ef9270de79864d94d4d59b8c9d143feae3893f765643"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-modular-project-rules/diagram-1.svg",
+          "sha256": "edde50f75e0f74f4beb5b013ef37f52fdd70f44af7b002a2299a506c542afe66"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-modular-project-rules/hero.jpg",
+          "sha256": "4162af5cb0d275a01e792ca727578517e61a8872ce6407dbdb7a3a3c32d190aa"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-modular-project-rules/hero.svg",
+          "sha256": "aa1837f05cf2a87a21029c71d7e8a7aa33bbc91d9c01ca7f4de3bf9e4968e16c"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-modular-project-rules/lesson-70.zip",
+          "sha256": "ed471a0fdf31e69868acd86d71c46393f7e91abd82f2d4aed78aedc3faeaaa5e"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-modular-project-rules/md-verification.zip",
+          "sha256": "3507ef23934f323fb0a88c415eb3a154ec2c230ed45072783c862e12640d7596"
+        }
+      ]
+    },
+    {
+      "number": 71,
+      "slug": "gemini-cli-settings-debug-lab",
+      "stage": 2,
+      "track": "md",
+      "characters": 2498,
+      "minutes": 7,
+      "labMinutes": 60,
+      "status": "built-unpublished",
+      "files": [
+        {
+          "path": "apps/api/app/guides/content/gemini-cli-settings-debug-lab.json",
+          "sha256": "d0f945d385dc49a5c8b2d444a991334ab0d07e64f24784ef46625d1b73591054"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/71/diagram-1.svg",
+          "sha256": "e82064c50074d1b9275409d817ba866dd548fc6b3ad66c0a264277e80658768f"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/71/hero.jpg",
+          "sha256": "2dcf35c43a3f6c426dd5646ba913b195eb989291b92e827d6ad2deceb46acb0b"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/71/hero.svg",
+          "sha256": "c3a14544fe823386db97a74933b21c02117ed8c16652866a50310d720718a017"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/71/lesson.md",
+          "sha256": "9a5610eab3042af85d684783b395278f81540cecff23dc092f9f4efc14951be8"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/71/meta.json",
+          "sha256": "d826b593a8452da3fafdd3d274402627b6abc938a8f8d07cf9398c0263803223"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-settings-debug-lab/diagram-1.svg",
+          "sha256": "e82064c50074d1b9275409d817ba866dd548fc6b3ad66c0a264277e80658768f"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-settings-debug-lab/hero.jpg",
+          "sha256": "2dcf35c43a3f6c426dd5646ba913b195eb989291b92e827d6ad2deceb46acb0b"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-settings-debug-lab/hero.svg",
+          "sha256": "c3a14544fe823386db97a74933b21c02117ed8c16652866a50310d720718a017"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-settings-debug-lab/lesson-71.zip",
+          "sha256": "0d72ee76c01cbe9a8382068959e0f075757abcd108e02d12db632f5e8bc5a904"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-settings-debug-lab/md-verification.zip",
+          "sha256": "3507ef23934f323fb0a88c415eb3a154ec2c230ed45072783c862e12640d7596"
+        }
+      ]
+    },
+    {
+      "number": 72,
+      "slug": "gemini-cli-custom-command-library",
+      "stage": 2,
+      "track": "md",
+      "characters": 2321,
+      "minutes": 6,
+      "labMinutes": 70,
+      "status": "built-unpublished",
+      "files": [
+        {
+          "path": "apps/api/app/guides/content/gemini-cli-custom-command-library.json",
+          "sha256": "7a6308c00b62b7400eca1890b21fea9d404d2e14ab61d7bd0ddcb9da4cf2b7e2"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/72/diagram-1.svg",
+          "sha256": "6950fc84a85f7d42871a3fbfd9f2d968daf1dccf0a913b61c0c8117c44f8429f"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/72/hero.jpg",
+          "sha256": "62400af6fc865f535ce672ddb9f48d3a65812ef3c4dafb7ac568523eba948086"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/72/hero.svg",
+          "sha256": "ac00a796deae4c75b91c8dec9be9f7f7da5da93168f2bac1a943ccb309efcd9c"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/72/lesson.md",
+          "sha256": "7bc5da19204976117cc3eed5d76e7993014c726d89188ddfa98f829a3e63c952"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/72/meta.json",
+          "sha256": "c9a4418299dd66d9e6c3b759599d287c992c677520913c0b83d910ebb87d914d"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-custom-command-library/diagram-1.svg",
+          "sha256": "6950fc84a85f7d42871a3fbfd9f2d968daf1dccf0a913b61c0c8117c44f8429f"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-custom-command-library/hero.jpg",
+          "sha256": "62400af6fc865f535ce672ddb9f48d3a65812ef3c4dafb7ac568523eba948086"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-custom-command-library/hero.svg",
+          "sha256": "ac00a796deae4c75b91c8dec9be9f7f7da5da93168f2bac1a943ccb309efcd9c"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-custom-command-library/lesson-72.zip",
+          "sha256": "7414e9bf81438c3d33e293e69d6873ff0eb92eec9dc5a28451b0598d9c78f515"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-custom-command-library/md-verification.zip",
+          "sha256": "3507ef23934f323fb0a88c415eb3a154ec2c230ed45072783c862e12640d7596"
+        }
+      ]
+    },
+    {
+      "number": 73,
+      "slug": "gemini-cli-skill-extension-package",
+      "stage": 2,
+      "track": "md",
+      "characters": 2657,
+      "minutes": 7,
+      "labMinutes": 90,
+      "status": "built-unpublished",
+      "files": [
+        {
+          "path": "apps/api/app/guides/content/gemini-cli-skill-extension-package.json",
+          "sha256": "351421f54c504e10948965962209c6fb0a6c25b18014cff996c4c1436ef9438c"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/73/diagram-1.svg",
+          "sha256": "4a648991cea3eafe2fb4f990f160775237ac64052a63225c84e60592cb7e8a6c"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/73/hero.jpg",
+          "sha256": "c5d8ef11e347216fc040118704930590318ebfc12db33851762df1bde06ba9bc"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/73/hero.svg",
+          "sha256": "9461ca13693406316b21be82e9588a3b10edc0b10a6d309594c062fcca1143ce"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/73/lesson.md",
+          "sha256": "b9450e4d7f70ddc51c14722e746a3bb6e95a90a23087dc87f1caf42e49d51680"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/73/meta.json",
+          "sha256": "2cd10b32a0337822e8bea1cf5b24ee2d815f5c8c61136538e4685c866b3481b0"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-skill-extension-package/diagram-1.svg",
+          "sha256": "4a648991cea3eafe2fb4f990f160775237ac64052a63225c84e60592cb7e8a6c"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-skill-extension-package/hero.jpg",
+          "sha256": "c5d8ef11e347216fc040118704930590318ebfc12db33851762df1bde06ba9bc"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-skill-extension-package/hero.svg",
+          "sha256": "9461ca13693406316b21be82e9588a3b10edc0b10a6d309594c062fcca1143ce"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-skill-extension-package/lesson-73.zip",
+          "sha256": "5aa9175f1e417dd6b338ee58446b8b58f59d92f58fae77d635576619437922b6"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-skill-extension-package/md-verification.zip",
+          "sha256": "3507ef23934f323fb0a88c415eb3a154ec2c230ed45072783c862e12640d7596"
+        }
+      ]
+    },
+    {
+      "number": 74,
+      "slug": "gemini-cli-large-project-context",
+      "stage": 2,
+      "track": "md",
+      "characters": 2439,
+      "minutes": 7,
+      "labMinutes": 80,
+      "status": "built-unpublished",
+      "files": [
+        {
+          "path": "apps/api/app/guides/content/gemini-cli-large-project-context.json",
+          "sha256": "d0a486a73b93446ad3ee9e3e1992b7df55cf3acb4956dfc09605a89b36f70ada"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/74/diagram-1.svg",
+          "sha256": "06dd83c29a2c6763fad3c635865e61e1ea97d25eb6af346b50a373925cbcf6f0"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/74/hero.jpg",
+          "sha256": "6103e8ac803351c2a13fc5a8cf8b08bdde6ff55c53f79692df3298930fcde568"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/74/hero.svg",
+          "sha256": "0c12f51fa159e7fd7e919df824d2acda1d29088ef2f3b38c7c2178e85b7c53e8"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/74/lesson.md",
+          "sha256": "d30cae85fc37e5a950744e8f0366c41cf167cbb8f308bfa0539647f792e79767"
+        },
+        {
+          "path": "docs/gemini-series/advanced/content/md/74/meta.json",
+          "sha256": "5e3698298cc782c46817f4eec87482e589c4cf844ac588ab17463fba3eb9cab4"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-large-project-context/diagram-1.svg",
+          "sha256": "06dd83c29a2c6763fad3c635865e61e1ea97d25eb6af346b50a373925cbcf6f0"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-large-project-context/hero.jpg",
+          "sha256": "6103e8ac803351c2a13fc5a8cf8b08bdde6ff55c53f79692df3298930fcde568"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-large-project-context/hero.svg",
+          "sha256": "0c12f51fa159e7fd7e919df824d2acda1d29088ef2f3b38c7c2178e85b7c53e8"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-large-project-context/lesson-74.zip",
+          "sha256": "611aa2fa118ea8adf1f30d8207225738bf0b0391563cbe1836d5e04027314e17"
+        },
+        {
+          "path": "apps/web/public/guides/gemini-cli-large-project-context/md-verification.zip",
+          "sha256": "3507ef23934f323fb0a88c415eb3a154ec2c230ed45072783c862e12640d7596"
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "path": "docs/gemini-series/advanced/content/md/verification/art-verification.json",
+      "sha256": "209ead8c353e21738fad7a92ae16a30ac4efcc4b4fab0720047c2b270fef4d1d"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/md/verification/build.json",
+      "sha256": "00c43964aab5399ef1d5d99972a60e6c016ad6cf8e84960afababa6044db726f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/md/verification/delivery.json",
+      "sha256": "5d0f5c23d969e4a3c38ab82be2358a82285e69ec7860ddba04c1b1d7b184ab63"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/md/verification/local-cli.json",
+      "sha256": "d8594343ad02b427d2cc28d2e74e57fab0918b4ebd3d699b3b8161c6ac534f02"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/md/verification/native-cli-limitations.json",
+      "sha256": "7516c15c305f0a264762df2cc6380432737b894676e15b05a2012c091226fd8b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/md/verification/visual-review.json",
+      "sha256": "d597a6600924c0a41e96bed53a79a43d547285e607da4df988b8cf3edff23c96"
+    }
+  ],
+  "hashEncoding": "SHA-256 of raw bytes; generated text uses LF, matching repository .gitattributes.",
+  "authorTools": [
+    {
+      "path": "docs/gemini-series/advanced/content/md/build-exercises.py",
+      "sha256": "704394eadb7e0afc4caeff06d4bb2956d0836f88e1694149216164aaee76a1f9"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/md/build-art.py",
+      "sha256": "dfa5507563a43f2a85dcb4ff9f2a281344e6c76acf784151f9481406f09a378f"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/md/verify-cli.mjs",
+      "sha256": "16297768d74bc4a356188ada71a0b53f2047e1674398b34e8b41fa2c7744562c"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/md/verify-delivery.py",
+      "sha256": "4e72768c85657740c7a17c58ddb51a4e22b2bf371aeb79105a37e34775bd65e6"
+    }
+  ]
+}

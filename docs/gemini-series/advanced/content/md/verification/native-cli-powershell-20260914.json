@@ -1,0 +1,246 @@
+{
+  "checkedAt": "2026-09-14T15:21:53.464058+00:00",
+  "method": "Unmodified CLI bundle in a Windows subprocess with redirected file stdio and isolated home; only the inspected original local update receives y. No terminal-emulator or cloud verification.",
+  "runs": [
+    {
+      "node": "v22.23.2",
+      "cli": "0.59.0",
+      "platform": "nt",
+      "entrySha256": "283a6044adc7837f9331fc2a5ea06ec4d52e9738f6fd202a94a4ae0c11efd53d",
+      "entryModified": false,
+      "modelCalls": 0,
+      "steps": [
+        {
+          "label": "initial-list",
+          "command": "gemini extensions list",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "No extensions installed.\n",
+          "filesystemState": {
+            "installed": false,
+            "version": null,
+            "installedSourceFilesMatch": null
+          },
+          "expectedVersion": null,
+          "passed": true
+        },
+        {
+          "label": "install",
+          "command": "gemini extensions install <isolated>\\workspace\\extension-source --consent",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "You have consented to the following:\nThe extension you are about to install may have been created by a third-party developer and sourced from a public repository. Google does not vet, endorse, or guarantee the functionality or security of extensions. Please carefully inspect any extension and its source code before installing to understand the permissions it requires and the actions it may perform.\nExtension \"mokaair-doc-check\" installed successfully and enabled.\n",
+          "filesystemState": {
+            "installed": true,
+            "version": "1.0.0",
+            "installedSourceFilesMatch": true
+          },
+          "expectedVersion": "1.0.0",
+          "passed": true
+        },
+        {
+          "label": "list-installed",
+          "command": "gemini extensions list",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "✓ mokaair-doc-check (1.0.0)\n ID: dfb5932a8092f429719efe5cb1e27deb0e7a20f0d99cd3048dd57a1672dbec89\n name: fe8e3f713209acc1d07576c18a6fd48a28a829d9b6fb3b899439a822ceb1851b\n Path: <isolated>\\user\\.gemini\\extensions\\mokaair-doc-check\n Source: <isolated>\\workspace\\extension-source (Type: local)\n Enabled (User): true\n Enabled (Workspace): true\n Agent skills:\n  doc-check: 檢查使用者指定的 Markdown 文件是否有主標題與來源章節；只在文件格式檢查時使用。\n",
+          "filesystemState": {
+            "installed": true,
+            "version": "1.0.0",
+            "installedSourceFilesMatch": true
+          },
+          "expectedVersion": "1.0.0",
+          "passed": true
+        },
+        {
+          "label": "disable-workspace",
+          "command": "gemini extensions disable mokaair-doc-check --scope workspace",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "Extension \"mokaair-doc-check\" successfully disabled for scope \"workspace\".\n",
+          "filesystemState": {
+            "installed": true,
+            "version": "1.0.0",
+            "installedSourceFilesMatch": true
+          },
+          "expectedVersion": "1.0.0",
+          "passed": true
+        },
+        {
+          "label": "list-disabled",
+          "command": "gemini extensions list",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "✗ mokaair-doc-check (1.0.0)\n ID: dfb5932a8092f429719efe5cb1e27deb0e7a20f0d99cd3048dd57a1672dbec89\n name: fe8e3f713209acc1d07576c18a6fd48a28a829d9b6fb3b899439a822ceb1851b\n Path: <isolated>\\user\\.gemini\\extensions\\mokaair-doc-check\n Source: <isolated>\\workspace\\extension-source (Type: local)\n Enabled (User): true\n Enabled (Workspace): false\n Agent skills:\n  doc-check: 檢查使用者指定的 Markdown 文件是否有主標題與來源章節；只在文件格式檢查時使用。\n",
+          "filesystemState": {
+            "installed": true,
+            "version": "1.0.0",
+            "installedSourceFilesMatch": true
+          },
+          "expectedVersion": "1.0.0",
+          "passed": true,
+          "workspaceActivationVerified": true
+        },
+        {
+          "label": "enable-workspace",
+          "command": "gemini extensions enable mokaair-doc-check --scope workspace",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "Extension \"mokaair-doc-check\" successfully enabled for scope \"workspace\".\n",
+          "filesystemState": {
+            "installed": true,
+            "version": "1.0.0",
+            "installedSourceFilesMatch": true
+          },
+          "expectedVersion": "1.0.0",
+          "passed": true
+        },
+        {
+          "label": "list-enabled",
+          "command": "gemini extensions list",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "✓ mokaair-doc-check (1.0.0)\n ID: dfb5932a8092f429719efe5cb1e27deb0e7a20f0d99cd3048dd57a1672dbec89\n name: fe8e3f713209acc1d07576c18a6fd48a28a829d9b6fb3b899439a822ceb1851b\n Path: <isolated>\\user\\.gemini\\extensions\\mokaair-doc-check\n Source: <isolated>\\workspace\\extension-source (Type: local)\n Enabled (User): true\n Enabled (Workspace): true\n Agent skills:\n  doc-check: 檢查使用者指定的 Markdown 文件是否有主標題與來源章節；只在文件格式檢查時使用。\n",
+          "filesystemState": {
+            "installed": true,
+            "version": "1.0.0",
+            "installedSourceFilesMatch": true
+          },
+          "expectedVersion": "1.0.0",
+          "passed": true,
+          "workspaceActivationVerified": true
+        },
+        {
+          "label": "update",
+          "command": "gemini extensions update mokaair-doc-check",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": "y",
+          "stdout": "Do you want to continue? [Y/n]: ",
+          "stderr": "Installing extension \"mokaair-doc-check\".\n\nAgent Skills:\n\nThis extension will install the following agent skills:\n\n  * doc-check: 檢查使用者指定的 Markdown 文件是否有主標題與來源章節；只在文件格式檢查時使用。\n    (Source: <isolated>\\workspace\\extension-source\\skills\\doc-check\\SKILL.md) (2 items in directory)\n\n\nThe extension you are about to install may have been created by a third-party developer and sourced from a public repository. Google does not vet, endorse, or guarantee the functionality or security of extensions. Please carefully inspect any extension and its source code before installing to understand the permissions it requires and the actions it may perform.\n\nAgent skills inject specialized instructions and domain-specific knowledge into the agent's system prompt. This can change how the agent interprets your requests and interacts with your environment. Review the skill definitions at the location(s) provided below to ensure they meet your security standards.\nExtension \"mokaair-doc-check\" successfully updated: 1.0.0 → 1.1.0.\n",
+          "filesystemState": {
+            "installed": true,
+            "version": "1.1.0",
+            "installedSourceFilesMatch": true
+          },
+          "expectedVersion": "1.1.0",
+          "passed": true
+        },
+        {
+          "label": "list-updated",
+          "command": "gemini extensions list",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "✓ mokaair-doc-check (1.1.0)\n ID: dfb5932a8092f429719efe5cb1e27deb0e7a20f0d99cd3048dd57a1672dbec89\n name: fe8e3f713209acc1d07576c18a6fd48a28a829d9b6fb3b899439a822ceb1851b\n Path: <isolated>\\user\\.gemini\\extensions\\mokaair-doc-check\n Source: <isolated>\\workspace\\extension-source (Type: local)\n Enabled (User): true\n Enabled (Workspace): true\n Agent skills:\n  doc-check: 檢查使用者指定的 Markdown 文件是否有主標題與來源章節；只在文件格式檢查時使用。\n",
+          "filesystemState": {
+            "installed": true,
+            "version": "1.1.0",
+            "installedSourceFilesMatch": true
+          },
+          "expectedVersion": "1.1.0",
+          "passed": true
+        },
+        {
+          "label": "uninstall",
+          "command": "gemini extensions uninstall mokaair-doc-check",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "Extension \"mokaair-doc-check\" successfully uninstalled.\n",
+          "filesystemState": {
+            "installed": false,
+            "version": null,
+            "installedSourceFilesMatch": null
+          },
+          "expectedVersion": null,
+          "passed": true
+        },
+        {
+          "label": "list-uninstalled",
+          "command": "gemini extensions list",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "No extensions installed.\n",
+          "filesystemState": {
+            "installed": false,
+            "version": null,
+            "installedSourceFilesMatch": null
+          },
+          "expectedVersion": null,
+          "passed": true
+        },
+        {
+          "label": "rollback-install",
+          "command": "gemini extensions install <isolated>\\workspace\\extension-source --consent",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "You have consented to the following:\nThe extension you are about to install may have been created by a third-party developer and sourced from a public repository. Google does not vet, endorse, or guarantee the functionality or security of extensions. Please carefully inspect any extension and its source code before installing to understand the permissions it requires and the actions it may perform.\nExtension \"mokaair-doc-check\" installed successfully and enabled.\n",
+          "filesystemState": {
+            "installed": true,
+            "version": "1.0.0",
+            "installedSourceFilesMatch": true
+          },
+          "expectedVersion": "1.0.0",
+          "passed": true
+        },
+        {
+          "label": "list-rollback",
+          "command": "gemini extensions list",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "✓ mokaair-doc-check (1.0.0)\n ID: dfb5932a8092f429719efe5cb1e27deb0e7a20f0d99cd3048dd57a1672dbec89\n name: fe8e3f713209acc1d07576c18a6fd48a28a829d9b6fb3b899439a822ceb1851b\n Path: <isolated>\\user\\.gemini\\extensions\\mokaair-doc-check\n Source: <isolated>\\workspace\\extension-source (Type: local)\n Enabled (User): true\n Enabled (Workspace): true\n Agent skills:\n  doc-check: 檢查使用者指定的 Markdown 文件是否有主標題與來源章節；只在文件格式檢查時使用。\n",
+          "filesystemState": {
+            "installed": true,
+            "version": "1.0.0",
+            "installedSourceFilesMatch": true
+          },
+          "expectedVersion": "1.0.0",
+          "passed": true
+        },
+        {
+          "label": "final-uninstall",
+          "command": "gemini extensions uninstall mokaair-doc-check",
+          "exitCode": 0,
+          "timedOut": false,
+          "updateConfirmation": null,
+          "stdout": "",
+          "stderr": "Extension \"mokaair-doc-check\" successfully uninstalled.\n",
+          "filesystemState": {
+            "installed": false,
+            "version": null,
+            "installedSourceFilesMatch": null
+          },
+          "expectedVersion": null,
+          "passed": true
+        }
+      ],
+      "entryMode": "PowerShell npm gemini.cmd",
+      "status": "native-lifecycle-passed",
+      "temporaryHomeRemoved": true,
+      "personalConfigurationModified": false
+    }
+  ]
+}

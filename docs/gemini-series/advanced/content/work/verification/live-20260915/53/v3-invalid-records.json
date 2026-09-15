@@ -1,0 +1,304 @@
+[
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I01",
+    "field": "hc",
+    "value": "",
+    "oldResultHiddenOnEdit": false,
+    "resultHiddenAfterInvalid": false,
+    "errors": [],
+    "pass": false,
+    "observedAt": "2026-09-15T03:01:34.719Z",
+    "classification": "unqualified-test-input-not-applied",
+    "followupObservedValueAfterEmptyFill": "20",
+    "notes": "A separate UI reproduction showed fill(\"\") kept 20. This record is not an application failure; retest with keyboard deletion."
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I02",
+    "field": "hc",
+    "value": "0",
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "hc-err",
+        "text": "請輸入 1 至 10,000 的整數"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:01:40.834Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I01-keyboard",
+    "field": "hc",
+    "value": "",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "hc-err",
+        "text": "請輸入 1 至 10,000 的整數"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:02:12.736Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I03",
+    "field": "hc",
+    "value": "1.5",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "hc-err",
+        "text": "請輸入 1 至 10,000 的整數"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:02:18.825Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I04",
+    "field": "hc",
+    "value": "10001",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "hc-err",
+        "text": "請輸入 1 至 10,000 的整數"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:02:40.146Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I05",
+    "field": "up",
+    "value": "abc",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "up-err",
+        "text": "無效輸入或超出範圍"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:02:46.193Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I06",
+    "field": "up",
+    "value": "-1",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "up-err",
+        "text": "無效輸入或超出範圍"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:02:55.884Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I07",
+    "field": "up",
+    "value": "1e3",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "up-err",
+        "text": "無效輸入或超出範圍"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:03:01.958Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I08",
+    "field": "up",
+    "value": "0.001",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "up-err",
+        "text": "無效輸入或超出範圍"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:03:24.091Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I09",
+    "field": "vf",
+    "value": "10000001",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "vf-err",
+        "text": "無效輸入或超出範圍"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:03:30.145Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I10",
+    "field": "cr",
+    "value": "101",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "cr-err",
+        "text": "無效輸入或超出範圍"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:03:39.363Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I11",
+    "field": "up",
+    "value": "+1",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "up-err",
+        "text": "無效輸入或超出範圍"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:03:45.443Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I12",
+    "field": "cr",
+    "value": "0.001",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "cr-err",
+        "text": "無效輸入或超出範圍"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:03:59.921Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I13",
+    "field": "vf",
+    "value": "",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "vf-err",
+        "text": "無效輸入或超出範圍"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:04:05.998Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I14",
+    "field": "cr",
+    "value": "",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "cr-err",
+        "text": "無效輸入或超出範圍"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:04:14.395Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I15",
+    "field": "up",
+    "value": "",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "up-err",
+        "text": "無效輸入或超出範圍"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:04:20.468Z"
+  },
+  {
+    "version": "v3",
+    "width": 360,
+    "case": "I16",
+    "field": "hc",
+    "value": "   ",
+    "inputVerified": true,
+    "oldResultHiddenOnEdit": true,
+    "resultHiddenAfterInvalid": true,
+    "errors": [
+      {
+        "id": "hc-err",
+        "text": "請輸入 1 至 10,000 的整數"
+      }
+    ],
+    "pass": true,
+    "observedAt": "2026-09-15T03:04:27.760Z"
+  }
+]

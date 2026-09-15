@@ -1,0 +1,360 @@
+{
+  "slug": "gemini-cli-subagent-review-workflow",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 177,
+  "locales": {
+    "zh-TW": {
+      "title": "Subagents 審查工作流：任務契約、工具限制與結果整合",
+      "description": "把同一份程式交給兩個子代理，不會自動得到兩倍可靠的結果。本篇設計程式審查與文件審查兩個角色，要求每個問題都附檔案、行號與原文，再用小型合併器排除沒有依據的建議。最後產出可人工核對的清單，保留衝突與失敗，而不是直接修改專案。",
+      "hero": {
+        "src": "/guides/gemini-cli-subagent-review-workflow/hero.jpg",
+        "alt": "兩個代理：一份審查報告教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "把同一份程式交給兩個子代理，不會自動得到兩倍可靠的結果。本篇設計程式審查與文件審查兩個角色，要求每個問題都附檔案、行號與原文，再用小型合併器排除沒有依據的建議。最後產出可人工核對的清單，保留衝突與失敗，而不是直接修改專案。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-subagent-review-workflow/diagram-1.svg",
+          "alt": "契約：檔名・行號・原文：缺證據就不接受；重複：同項同建議：合併並保留來源；衝突：同項不同建議：列出兩邊理由；交付：待人工審閱：不自動套用修正",
+          "width": 1600,
+          "height": 900,
+          "caption": "引用有依據，衝突交給人判斷。定義與合併已測；模型回答待驗。這是原創概念圖，不是介面截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "學完成果與準備",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀 "
+            },
+            {
+              "type": "link",
+              "text": "Subagents 入門",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-subagents"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "大型專案上下文",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-large-project-context"
+            },
+            {
+              "type": "text",
+              "text": "。下載 77 練習包，裡面有 review-project、兩份代理定義、報告契約與合併程式。本文於 2026-09-14 以 Windows、Node 24.19.0、CLI 0.59.0 的真實代理解析器驗證設定；Python 合併器則用作者固定案例實際測試。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "兩份 fixture 報告是作者建立的輸入，檔名及 agent 名稱都明確標示來源，沒有冒充雲端代理回答。要驗證模型是否找對問題，還需要已登入 CLI、可用模型與實際工具紀錄。本文先把能在本機重做的部分做完整，最後列出互動驗收方式。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：把兩種責任分開",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "教材只有一個程式和一份文件。明確需求是數字限制在 0 到 10，但程式只處理上限，文件卻寫最大值為 100。程式審查者負責比對實作與需求，文件審查者負責找文件矛盾。不要讓其中一方直接把另一份有錯的內容當成正確規格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在開始前保存這兩個檔案的內容與工作目錄。實際專案若有其他人未完成的修改，先依前篇方式記錄差異；本篇練習使用可以丟棄的副本，避免將未知的代理行為直接放進正式工作區。上下文分開不代表作業系統上的檔案已經完全隔離。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "教材需求",
+          "code": "輸入為數字；輸出最小 0、最大 10。\n只審查 src/limit.mjs 與 docs/limits.md。\n不要修改檔案，不處理非數字轉型，不提交 Git。\n"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：配置工具與報告契約",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "代理定義放在 .gemini/agents/ 下，每份 Markdown 以 YAML 開頭。name 用於辨識代理，description 說明它適合處理什麼任務，正文則保存工作指示。本篇只給 read_file 與 grep_search，沒有授予 shell、寫檔或所有工具的萬用字元。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "code-reviewer.md",
+          "code": "---\nname: lesson-code-reviewer\ndescription: Review the synthetic src/limit.mjs implementation against a 0 to 10 requirement.\nkind: local\ntools: [read_file, grep_search]\nmodel: inherit\nmax_turns: 4\ntimeout_mins: 2\n---\n只讀 src/limit.mjs 與 docs/limits.md，不修改檔案。需求是數字限制在 0 到 10。\n回傳 JSON：agent、status（complete 或 failed）、findings。\n每筆 findings 包含 file、從 1 開始的 line、該行完整 quote、check、recommendation。\n無法讀取就回報 failed；沒有工具紀錄不得聲稱已驗證。不要推測其他檔案的內容。\n"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "docs-reviewer.md",
+          "code": "---\nname: lesson-docs-reviewer\ndescription: Review the synthetic docs/limits.md against the stated 0 to 10 requirement.\nkind: local\ntools: [read_file, grep_search]\nmodel: inherit\nmax_turns: 4\ntimeout_mins: 2\n---\n只讀 docs/limits.md 與 src/limit.mjs，不修改檔案。需求是數字限制在 0 到 10。\n回傳 JSON：agent、status（complete 或 failed）、findings。\n每筆 findings 包含 file、從 1 開始的 line、該行完整 quote、check、recommendation。\n若文件與需求不同，分開引用原文和需求，不將程式中的錯誤當成正確規格。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "model 使用 inherit，代表由主會話的模型設定繼承，不把可能無法使用的模型名稱寫死。max_turns 與 timeout_mins 分別限制對話回合與執行時間，它們不是價格上限，也不能保證所有請求都沒有內部重試。需要估算用量時回到 "
+            },
+            {
+              "type": "link",
+              "text": "費用與錯誤處理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": "，記錄真正使用的認證與模型。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本機真實解析結果顯示兩個代理都有指定的工具清單、繼承模型與四回合上限；缺少 YAML 開頭的文件會被拒絕。這證明設定可以解析，不代表模型已執行審查。工具名稱能被解析與實際可用也有差別，首次互動時仍要核對工具紀錄及錯誤。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：先各自執行，再談整合",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "從 review-project 啟動 CLI，先要求使用程式審查代理，完成後另存它的原始回答，再執行文件審查代理。第一輪採逐一執行，較容易看出哪一段失敗；等兩者都通過，再研究是否值得同時派發。報告裡應記錄實際是否並行，不能只因存在兩個角色就寫「平行完成」。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Gemini CLI 提示詞",
+          "code": "請用 lesson-code-reviewer 審查指定教材程式，需求為數字限制在 0 到 10。\n請保留代理名稱、實際讀取檔案，以及符合契約的 JSON 報告。\n本輪不修改檔案。代理失敗時回報 failed，不代替它編造 findings。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "將第二輪的名稱換成 lesson-docs-reviewer，其他範圍保持一致。讀者可以先手動把回傳 JSON 存成兩個檔案，不需要給代理新增寫入權限。若回應夾帶 Markdown 圍欄，先保留原始回答，再保存可解析的 JSON 副本，記錄這一步是人工整理，不能假裝原輸出完全符合格式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每筆 finding 必須帶相對檔名、從 1 開始的行號、該行完整原文、檢查項目與建議。行號不是裝飾：合併器會讀取當下檔案，核對那一行是否仍與 quote 相同。若檔案在審查後被修改，舊證據可能不再適用，需要重做相關審查。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：把證據送進合併器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "從 77 資料夾執行下面命令，先用附帶的作者案例理解結果。程式會得到兩個有依據的問題，不會自動修改 source。接著把命令最後兩個檔名換成自己的實際代理報告，再觀察是否有被拒絕或互相衝突的項目。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機：先驗作者案例",
+          "code": "python merge_reviews.py review-project fixture-code-report.json fixture-docs-report.json\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "合併器先確認報告完成狀態，再檢查檔案是否在允許名單、行號是否有效、原文是否精確匹配。相同檔案、行號與檢查項目形成一組；若建議也相同，就合併代理來源，避免同一個問題重複列兩次。這是證據與重複項目的檢查，不是通用自然語言正確性判定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果同一組證據得到相反建議，程式保留在 conflicts，不自動採多數決，也不把兩句建議拼成不清楚的折衷。需求文件、程式測試或使用者決策才是下一步依據。只有一位代理提出的問題也可能正確，不能單靠票數決定是否採納。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情況",
+            "本機合併結果",
+            "接下來做什麼"
+          ],
+          "rows": [
+            [
+              "兩個不同且有原文的問題",
+              "兩項 accepted",
+              "人工核對影響"
+            ],
+            [
+              "相同證據與建議重複",
+              "合併成一項",
+              "保留兩個來源"
+            ],
+            [
+              "相同證據、建議相反",
+              "放入 conflicts",
+              "回到需求判斷"
+            ],
+            [
+              "行號、原文或路徑錯誤",
+              "放入 rejected",
+              "重取證據"
+            ],
+            [
+              "代理標示 failed",
+              "不採納 findings",
+              "先排除失敗"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "heading",
+          "text": "故障練習與驗收紀錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "複製一份 fixture 報告，把 line 改成 0，再將 quote 改成檔案裡不存在的句子，分兩次執行。兩次都應被拒絕。第三次把 file 換成 ../private.txt，確認合併器不會順著報告去讀任意檔案。每次只改一項，才能知道是哪個條件真正發揮作用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著複製程式報告，將建議改成「保留負數」，其他證據保持相同。這次應得到衝突，沒有可以自動採納的共同結論。最後將 status 改成 failed，即使 findings 仍有看起來合理的文字，也不能當成已完成的代理成果；保留失敗原因比填滿清單更有用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "真正完成互動驗收時，除了合併結果，還要保存主會話的模型與 CLI 版本、兩個代理的實際輸入、工具紀錄及原始回答。檢查原檔沒有變動，再比較已知的程式下限問題與文件上限矛盾是否都被發現。這些檔案證據與模型效果是兩組不同的驗收。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "本批已驗證兩份代理定義、缺 YAML 的反例，以及六類報告整合行為。實際模型審查品質、工具執行與並行方式尚未測試，fixture 不計為真實代理執行。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "只列唯讀工具，就能保證完全隔離嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "先核對實際可用工具與專案設定，不把提示詞當成權限。初次測試使用可丟棄副本，並比較前後檔案；隔離對話歷史與隔離磁碟寫入是不同事情。"
+        },
+        {
+          "type": "heading",
+          "text": "有正確行號就一定是好建議嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "行號與原文只證明定位有效，建議是否符合需求仍需人工與測試判斷。不要把 accepted 解讀為已批准合併或修改。"
+        },
+        {
+          "type": "heading",
+          "text": "要批次審查更多文件怎麼辦？",
+          "level": 3
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先用 "
+            },
+            {
+              "type": "link",
+              "text": "可續跑批次處理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-resumable-batch-pipeline"
+            },
+            {
+              "type": "text",
+              "text": " 保存文件識別、雜湊與狀態，讓改過的文件重新審查。每個失敗都留在清單，不用空結果冒充沒有問題。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "Subagents：拆分任務與整合結果",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-subagents"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "大型專案的 CLI 上下文：分段任務、Git 差異與恢復",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-large-project-context"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Headless 批次處理：JSONL、續跑與避免重複輸出",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-resumable-batch-pipeline"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 77 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-cli-subagent-review-workflow/lesson-77.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組練習與本機驗證程式（CLI 0.59.0）",
+          "url": "https://mokaair.com/guides/gemini-cli-subagent-review-workflow/automation-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "CLI Subagents",
+          "url": "https://geminicli.com/docs/core/subagents/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CLI 0.59.0 原始碼",
+          "url": "https://github.com/google-gemini/gemini-cli/tree/v0.59.0",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

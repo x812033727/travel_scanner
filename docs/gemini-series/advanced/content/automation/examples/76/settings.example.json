@@ -1,0 +1,8 @@
+{
+  "hooks": {
+    "BeforeTool": [{
+      "matcher": "^write_file$",
+      "hooks": [{"name": "lesson-doc-quality", "type": "command", "command": "node ./quality-gate.mjs", "timeout": 10000}]
+    }]
+  }
+}

@@ -1,0 +1,478 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\x8120\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "docs/gemini-series/advanced/platform/next-integration/playwright.config.ts"
+    ],
+    "configFile": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\playwright.config.ts",
+    "rootDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/next-1789400503873/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/advanced-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/next-1789400503873/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "gemini-series.spec.ts"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/advanced-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/next-1789400503873/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "gemini-series.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\advanced-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "gemini-series.spec.ts",
+      "file": "gemini-series.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "hub has every lesson, searchable aliases, categories and learning paths",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9881,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T15:53:53.230Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-81e93d60628e6df203e8",
+          "file": "gemini-series.spec.ts",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "all visible real article bodies, previous/next, anchors and copy render without overflow",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 70177,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: \u001b[32m\"Connected Apps：Drive、日曆與地圖整合\"\u001b[39m\nReceived: \u001b[31m\"This page couldn’t load\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    14 × locator resolved to <h1>This page couldn’t load</h1>\u001b[22m\n\u001b[2m       - unexpected value \"This page couldn’t load\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: \u001b[32m\"Connected Apps：Drive、日曆與地圖整合\"\u001b[39m\nReceived: \u001b[31m\"This page couldn’t load\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    14 × locator resolved to <h1>This page couldn’t load</h1>\u001b[22m\n\u001b[2m       - unexpected value \"This page couldn’t load\"\u001b[22m\n\n    at C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts:144:38",
+                    "location": {
+                      "file": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts",
+                      "column": 38,
+                      "line": 144
+                    },
+                    "snippet": "  142 |   for (const article of series.articles) {\n  143 |     await page.goto(`${canonical}/zh-TW/life/${article.slug}`);\n> 144 |     await expect(page.locator(\"h1\")).toHaveText(article.title);\n      |                                      ^\n  145 |     await expect(page.getByRole(\"navigation\", { name: \"Gemini 系列導覽\", exact: true }).getByRole(\"link\", { name: \"返回 Gemini 教學總目錄\" })).toHaveAttribute(\"href\", hub);\n  146 |     const bottom = page.getByRole(\"navigation\", { name: \"繼續閱讀 Gemini 系列\" });\n  147 |     await expect(bottom.locator('a[rel=\"prev\"]')).toHaveCount(article.number > 1 ? 1 : 0);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts",
+                        "column": 38,
+                        "line": 144
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: \u001b[32m\"Connected Apps：Drive、日曆與地圖整合\"\u001b[39m\nReceived: \u001b[31m\"This page couldn’t load\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    14 × locator resolved to <h1>This page couldn’t load</h1>\u001b[22m\n\u001b[2m       - unexpected value \"This page couldn’t load\"\u001b[22m\n\n\n  142 |   for (const article of series.articles) {\n  143 |     await page.goto(`${canonical}/zh-TW/life/${article.slug}`);\n> 144 |     await expect(page.locator(\"h1\")).toHaveText(article.title);\n      |                                      ^\n  145 |     await expect(page.getByRole(\"navigation\", { name: \"Gemini 系列導覽\", exact: true }).getByRole(\"link\", { name: \"返回 Gemini 教學總目錄\" })).toHaveAttribute(\"href\", hub);\n  146 |     const bottom = page.getByRole(\"navigation\", { name: \"繼續閱讀 Gemini 系列\" });\n  147 |     await expect(bottom.locator('a[rel=\"prev\"]')).toHaveCount(article.number > 1 ? 1 : 0);\n    at C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts:144:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T15:54:09.073Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\advanced-results\\gemini-series-all-visible--3bfa2-opy-render-without-overflow-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\advanced-results\\gemini-series-all-visible--3bfa2-opy-render-without-overflow-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts",
+                    "column": 38,
+                    "line": 144
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-c778f4f23bcab97b151f",
+          "file": "gemini-series.spec.ts",
+          "line": 139,
+          "column": 1
+        },
+        {
+          "title": "all links remain in server HTML with JavaScript disabled",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4393,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T15:55:46.401Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-a31469a573c836ff7d78",
+          "file": "gemini-series.spec.ts",
+          "line": 165,
+          "column": 1
+        },
+        {
+          "title": "life entry and series navigation wait for published hub",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9968,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T15:56:03.734Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-cc9b4b346d69677ba57d",
+          "file": "gemini-series.spec.ts",
+          "line": 180,
+          "column": 1
+        },
+        {
+          "title": "server HTML, RSC, loaded scripts and life cards respect the server flag",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10411,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T15:56:13.736Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-de3d0b1c0a1f4d0b033d",
+          "file": "gemini-series.spec.ts",
+          "line": 191,
+          "column": 1
+        },
+        {
+          "title": "hub has every lesson, searchable aliases, categories and learning paths",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12269,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T15:56:38.435Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-656b6a84bf4d48cea72c",
+          "file": "gemini-series.spec.ts",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "all visible real article bodies, previous/next, anchors and copy render without overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 186643,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T15:56:53.682Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-8b22c3e1b85a1df37bb6",
+          "file": "gemini-series.spec.ts",
+          "line": 139,
+          "column": 1
+        },
+        {
+          "title": "all links remain in server HTML with JavaScript disabled",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3521,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:00:00.346Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-0ba1014160561a3eb25d",
+          "file": "gemini-series.spec.ts",
+          "line": 165,
+          "column": 1
+        },
+        {
+          "title": "life entry and series navigation wait for published hub",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7179,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:00:03.893Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-dafbd4c54868a263db22",
+          "file": "gemini-series.spec.ts",
+          "line": 180,
+          "column": 1
+        },
+        {
+          "title": "server HTML, RSC, loaded scripts and life cards respect the server flag",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1997,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:00:11.095Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-447852febe3edc038ba8",
+          "file": "gemini-series.spec.ts",
+          "line": 191,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-14T15:53:50.379Z",
+    "duration": 383743.68,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

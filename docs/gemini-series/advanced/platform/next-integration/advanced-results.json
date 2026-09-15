@@ -1,0 +1,456 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\x8120\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "docs/gemini-series/advanced/platform/next-integration/playwright.config.ts"
+    ],
+    "configFile": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\playwright.config.ts",
+    "rootDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/next-1789400503873/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/advanced-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/next-1789400503873/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "gemini-series.spec.ts"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/advanced-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/next-1789400503873/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "gemini-series.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\advanced-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "gemini-series.spec.ts",
+      "file": "gemini-series.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "hub has every lesson, searchable aliases, categories and learning paths",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4230,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:00:49.049Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-81e93d60628e6df203e8",
+          "file": "gemini-series.spec.ts",
+          "line": 113,
+          "column": 1
+        },
+        {
+          "title": "all visible real article bodies, previous/next, anchors and copy render without overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 142261,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:00:55.115Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-c778f4f23bcab97b151f",
+          "file": "gemini-series.spec.ts",
+          "line": 145,
+          "column": 1
+        },
+        {
+          "title": "all links remain in server HTML with JavaScript disabled",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2163,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:03:17.401Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-a31469a573c836ff7d78",
+          "file": "gemini-series.spec.ts",
+          "line": 172,
+          "column": 1
+        },
+        {
+          "title": "life entry and series navigation wait for published hub",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3025,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:03:19.587Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-cc9b4b346d69677ba57d",
+          "file": "gemini-series.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "server HTML, RSC, loaded scripts and life cards respect the server flag",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3129,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:03:22.631Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-de3d0b1c0a1f4d0b033d",
+          "file": "gemini-series.spec.ts",
+          "line": 198,
+          "column": 1
+        },
+        {
+          "title": "hub has every lesson, searchable aliases, categories and learning paths",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3784,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:03:27.701Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-656b6a84bf4d48cea72c",
+          "file": "gemini-series.spec.ts",
+          "line": 113,
+          "column": 1
+        },
+        {
+          "title": "all visible real article bodies, previous/next, anchors and copy render without overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 82309,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:03:34.191Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-8b22c3e1b85a1df37bb6",
+          "file": "gemini-series.spec.ts",
+          "line": 145,
+          "column": 1
+        },
+        {
+          "title": "all links remain in server HTML with JavaScript disabled",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1718,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:04:56.518Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-0ba1014160561a3eb25d",
+          "file": "gemini-series.spec.ts",
+          "line": 172,
+          "column": 1
+        },
+        {
+          "title": "life entry and series navigation wait for published hub",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1697,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:04:58.252Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-dafbd4c54868a263db22",
+          "file": "gemini-series.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "server HTML, RSC, loaded scripts and life cards respect the server flag",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1908,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "Gemini loopback request failed: /zh-TW route.fulfill: Fetch response has been disposed\n"
+                    },
+                    {
+                      "text": "Gemini loopback request failed: /zh-TW/life/gemini-plans-ai-pro-ultra-2026 route.fulfill: Fetch response has been disposed\n"
+                    },
+                    {
+                      "text": "Gemini loopback request failed: /zh-TW/life/gemini-model-lineup-flash-pro route.fulfill: Fetch response has been disposed\n"
+                    },
+                    {
+                      "text": "Gemini loopback request failed: /zh-TW/life/gemini-beginner-guide route.fulfill: Fetch response has been disposed\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-09-14T16:04:59.962Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c152c4fd65008c629b4a-447852febe3edc038ba8",
+          "file": "gemini-series.spec.ts",
+          "line": 198,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-14T16:00:48.212Z",
+    "duration": 254299.329,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

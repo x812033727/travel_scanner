@@ -1,0 +1,40 @@
+{
+  "preparedAt": "2026-09-15T00:22:41.500321+00:00",
+  "lesson": 51,
+  "status": "20-real-web-outputs-captured-human-ratings-pending",
+  "platform": "Windows Chrome through connected browser UI",
+  "accountType": "personal",
+  "planObserved": "PRO",
+  "modelLabelObserved": "Flash",
+  "exactModelId": "not exposed by selected UI",
+  "additionalSpendLimitTWD": 0,
+  "apiCalls": 0,
+  "newConversationPerInput": true,
+  "order": "C01 A/B, C02 B/A, then alternate by case number",
+  "personalization": "Existing account settings retained; personalization was not independently disabled or controlled. No existing conversation was opened as source data.",
+  "data": "Only the authored synthetic input column; expected_points/rubric not sent to Gemini.",
+  "grading": "Agent preliminary review must be separated from human ratings; human approval pending.",
+  "inputs": [
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/cases.csv",
+      "sha256": "5f199fc51a1c1877bac73aa346251e2944e2abbe1e3994d14727ce02a83d105b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/prompts-v1-v2.md",
+      "sha256": "5863dc001d846b6e8aa83daad50373087e41fbffc44bd5cb9f162c02a5a84923"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/rubric.csv",
+      "sha256": "5148dc27fd15a755df60816a9155b587039f9e3d57e12e9313fbf79ca573971b"
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/51/score.py",
+      "sha256": "59904e3afee036c7d58b920252d8b731a6bedea2f6368f9be1df8a68fe6ebb1b"
+    }
+  ],
+  "captureCompletedAt": "2026-09-15T00:28:24.986Z",
+  "responseCount": 20,
+  "allPromptStringsMatchedInBrowserRepl": true,
+  "exportNormalization": "Repeated prompt strings restored from frozen source after exact browser REPL equality check; URL replaced by SHA256. All rendered response text and timestamps retained.",
+  "timing": "startedAt is pre-fill/submit time; finishedAt is capture time, not exact generation completion. Do not interpret the difference as model latency."
+}

@@ -6,7 +6,7 @@ import { LearningHub } from "@/components/codex-learning/hub";
 import { HUB_SLUG, learningEntries } from "@/lib/codex-learning";
 import { depthCopy } from "@/lib/codex-learning/units";
 import { seriesCopy } from "@/lib/guide-series-copy";
-import { geminiSeries, seriesMember } from "@/lib/gemini-series";
+import { getGeminiHubReference, getVisibleGeminiSeries, isGeminiSeriesPage, projectGeminiArticle } from "@/lib/gemini-series.server";
 import { GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
 import type { GuideCardLabels } from "@/components/guides/card";
 import { TravelCrosslinks, type TravelCrosslinksLabels } from "@/components/guides/travel-crosslinks";
@@ -166,12 +166,17 @@ async function relatedTravel(
 }
 
 export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRoute) {
-  const [state, t, nav, ts] = await Promise.all([
+  const [rawState, t, nav, ts] = await Promise.all([
     getGuideArticle(kind, slug, locale),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
     getTranslations({ locale, namespace: "travelServices" }),
   ]);
+  const hubReference = getGeminiHubReference(locale);
+  const belongsToGemini = rawState.status === "published" && Boolean(rawState.document) && isGeminiSeriesPage(slug, locale, kind);
+  const geminiHub = belongsToGemini && hubReference ? (slug === hubReference.slug ? rawState : await getGuideArticle("life", hubReference.slug, locale)) : null;
+  const geminiSeries = belongsToGemini ? getVisibleGeminiSeries({ locale, hubPublished: geminiHub?.status === "published" && Boolean(geminiHub.document) }) : null;
+  const state = projectGeminiArticle(rawState, geminiSeries);
   const listing = listingOf(kind, t);
 
   if (state.status !== "published" || !state.document) {
@@ -244,9 +249,6 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   };
   const hero = state.document.hero;
   const copy = seriesCopy(locale);
-  const belongsToGemini = locale === geminiSeries.locale && kind === "life" && (slug === geminiSeries.hubSlug || Boolean(seriesMember(slug, locale, kind)));
-  const geminiHub = belongsToGemini ? (slug === geminiSeries.hubSlug ? state : await getGuideArticle("life", geminiSeries.hubSlug, locale)) : null;
-  const geminiEnabled = geminiHub?.status === "published" && Boolean(geminiHub.document);
   labels.blocks.code = copy;
   const isCodexHub = kind === "life" && slug === HUB_SLUG;
   const isHub = isCodexHub || Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
@@ -302,7 +304,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
         <div className={state.series?.current ? "grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]" : ""}>
         <div className="min-w-0">
         <GuideArticle
-          geminiEnabled={geminiEnabled}
+          geminiSeries={geminiSeries}
           state={{ ...state, document: state.document }}
           related={related}
           readingTime={t("guides.readingTime", { minutes: state.series?.current?.minutes ?? readingMinutes(state.document) })

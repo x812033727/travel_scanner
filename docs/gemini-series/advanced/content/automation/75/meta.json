@@ -1,0 +1,34 @@
+{
+  "hero_alt": "本機 MCP：查詢與除錯教學封面",
+  "diagram_alt": "輸入：只接受商品編號：拒絕路徑與錯誤型別；查詢：唯讀合成 CSV：不開放任意檔案；結果：找到・查無資料：資料文字不是指令；連線：啟動・握手・中斷：分開記錄錯誤",
+  "diagram_caption": "固定資料來源，逐項驗證連線。本機 stdio 已測；模型選工具待驗。這是原創概念圖，不是介面截圖。",
+  "sources": [
+    {
+      "title": "Gemini CLI MCP server",
+      "url": "https://geminicli.com/docs/tools/mcp-server/",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "MCP Python SDK 2.2.0",
+      "url": "https://pypi.org/project/mcp/2.2.0/",
+      "checked_on": "2026-09-14"
+    },
+    {
+      "title": "MCP Python SDK 官方原始碼",
+      "url": "https://github.com/modelcontextprotocol/python-sdk",
+      "checked_on": "2026-09-14"
+    }
+  ],
+  "downloads": [
+    {
+      "source": "examples/lesson-75.zip",
+      "filename": "lesson-75.zip",
+      "text": "下載第 75 篇完整練習包"
+    },
+    {
+      "source": "examples/automation-verification.zip",
+      "filename": "automation-verification.zip",
+      "text": "下載六組練習與本機驗證程式（CLI 0.59.0）"
+    }
+  ]
+}

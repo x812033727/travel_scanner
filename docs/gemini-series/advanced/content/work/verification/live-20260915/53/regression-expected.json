@@ -1,0 +1,107 @@
+{
+  "method": "Python Decimal, ROUND_HALF_UP; independent expected values, not model output",
+  "outputOrder": [
+    "base",
+    "reserve",
+    "total",
+    "average"
+  ],
+  "cases": [
+    {
+      "id": "B01",
+      "inputs": [
+        "20",
+        "350",
+        "2000",
+        "10"
+      ],
+      "reason": "Frozen authored acceptance case",
+      "expected": [
+        "9000.00",
+        "900.00",
+        "9900.00",
+        "495.00"
+      ]
+    },
+    {
+      "id": "B02",
+      "inputs": [
+        "3",
+        "99.95",
+        "1000",
+        "7.5"
+      ],
+      "reason": "Frozen authored acceptance case",
+      "expected": [
+        "1299.85",
+        "97.49",
+        "1397.34",
+        "465.78"
+      ]
+    },
+    {
+      "id": "B03",
+      "inputs": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "reason": "Frozen authored acceptance case",
+      "expected": [
+        "0.00",
+        "0.00",
+        "0.00",
+        "0.00"
+      ]
+    },
+    {
+      "id": "B04",
+      "inputs": [
+        "10000",
+        "10000000",
+        "10000000",
+        "100"
+      ],
+      "reason": "All permitted upper bounds",
+      "expected": [
+        "100010000000.00",
+        "100010000000.00",
+        "200020000000.00",
+        "20002000.00"
+      ]
+    },
+    {
+      "id": "B05",
+      "inputs": [
+        "10000",
+        "9393957.73",
+        "9582704.53",
+        "76.49"
+      ],
+      "reason": "Actual v3 one-cent error reproduced in Chrome",
+      "expected": [
+        "93949160004.53",
+        "71861712487.46",
+        "165810872491.99",
+        "16581087.25"
+      ]
+    },
+    {
+      "id": "B06",
+      "inputs": [
+        "3",
+        "0.01",
+        "0",
+        "50"
+      ],
+      "reason": "Exact half-cent reserve rounds upward; average rounds separately",
+      "expected": [
+        "0.03",
+        "0.02",
+        "0.05",
+        "0.02"
+      ]
+    }
+  ]
+}

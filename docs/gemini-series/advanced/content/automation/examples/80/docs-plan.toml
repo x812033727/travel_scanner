@@ -1,0 +1,6 @@
+description = "Propose a bounded document correction; no automatic write."
+prompt = """
+檢查 documents/doc01.md 到 doc10.md 的本機連結，只提出有資料可追查的修正。
+回傳 JSON 物件，鍵是需修改的 docNN.md，值是該篇完整修訂內容。
+找不到目標請說明，不建立網址或資料；不寫入原檔。參數：{{args}}
+"""

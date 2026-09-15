@@ -1,0 +1,346 @@
+{
+  "slug": "gemini-api-search-grounding-citations",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 182,
+  "locales": {
+    "zh-TW": {
+      "title": "Gemini API 搜尋引用：Grounding 結果解析與來源呈現",
+      "description": "本篇讓應用程式顯示能追查來源的搜尋回答。你會發出一次 Google Search grounding 請求，辨識搜尋步驟、回答與引用位置，再把原文、對應來源和搜尋建議一起呈現。完成後，遇到沒有引用、網址不安全或引用位置錯誤時，程式會明確停止或標示缺口，不替模型補上一個看起來可信的連結。",
+      "hero": {
+        "src": "/guides/gemini-api-search-grounding-citations/hero.jpg",
+        "alt": "搜尋引用：對照來源教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "本篇讓應用程式顯示能追查來源的搜尋回答。你會發出一次 Google Search grounding 請求，辨識搜尋步驟、回答與引用位置，再把原文、對應來源和搜尋建議一起呈現。完成後，遇到沒有引用、網址不安全或引用位置錯誤時，程式會明確停止或標示缺口，不替模型補上一個看起來可信的連結。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-api-search-grounding-citations/diagram-1.svg",
+          "alt": "搜尋：確認搜尋步驟：沒有搜尋就不冒稱；定位：中文用位元組查：錯誤邊界停止連結；呈現：保留來源與建議：不改寫搜尋元件；保存：真實回應僅記憶體：作者測試資料可下載",
+          "width": 1600,
+          "height": 900,
+          "caption": "答案、引用與搜尋建議分別核對。合成引用已測；真實搜尋待驗。原創概念圖，不是操作截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "準備：先區分搜尋與引用",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成 "
+            },
+            {
+              "type": "link",
+              "text": "API 入門",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "資料結構驗證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+            },
+            {
+              "type": "text",
+              "text": "。本篇使用 Python、google-genai 2.23.0 與 Interactions API。查證日的官方例子採 gemini-3.8-flash，但是否可用仍由專案、模型和工具條件決定；搜尋使用量也與純文字生成不同，計費集中看 "
+            },
+            {
+              "type": "link",
+              "text": "API 費用",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google Search grounding 是讓模型使用 Google 搜尋資訊的工具，不等於自己抓取某個網址全文，也不等於 NotebookLM 的指定來源問答。想只查自己匯入的十份文件，應接著使用 "
+            },
+            {
+              "type": "link",
+              "text": "File Search 知識庫",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-file-search-rag-project"
+            },
+            {
+              "type": "text",
+              "text": "，不要把兩者的引用欄位視為同一格式。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "下載包有四種作者合成回應：正常引用、未使用搜尋、不安全網址與中文字節位置錯誤。它們供本機測試，沒有冒充 Google 實際結果。真實回答不放進可公開下載的測試資料；來源與搜尋建議的呈現及保存需依官方當日條款處理。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：固定一個能重做的問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "範例問題請模型依中央氣象署官方網站說明颱風警報資訊在哪裡查閱，並要求不要推測目前有沒有警報。這樣可以練習引用與入口辨識，同時避免將過期時間資訊寫成固定教材答案。你也可以換成自己熟悉的官方網站問題，但要保留完整題目與操作日期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先在程式中確認 tools 是 google_search，並使用 store=False。這個設定不代表所有服務處理紀錄都不存在，只是不以這次 Interaction 建立可接續的儲存狀態。不要把金鑰、私人文件或無關背景加到公開資訊問題中。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "作者合成回應預覽",
+          "code": ".venv/Scripts/python.exe 82/grounding-demo/main.py --fixture 82/response-fixtures/cited.json\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個命令只產生 citation-view.html，頁面清楚標示作者合成模式。先打開它，確認原回答可閱讀、引用有可點文字、對應片段是完整繁體中文，再考慮使用真實搜尋。離線預覽成功只能證明顯示程式能處理這份資料。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：讀懂 Interactions 回傳步驟",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "回應的 steps 可能包含 google_search_call、google_search_result 與 model_output，順序和數量不能固定假設。搜尋要求記錄查詢內容，搜尋結果可能提供 search_suggestions，回答文字則放在 model_output 的 text 區塊。程式只把回答區塊當正文，不把思考摘要當成給讀者的答案。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "回應內容",
+            "用途",
+            "需要核對"
+          ],
+          "rows": [
+            [
+              "google_search_call",
+              "模型使用的搜尋查詢",
+              "是否真的有搜尋"
+            ],
+            [
+              "search_suggestions",
+              "Google 提供的搜尋建議",
+              "是否與本次回答一同呈現"
+            ],
+            [
+              "text",
+              "原始回答文字",
+              "不能先改寫再套原引用位置"
+            ],
+            [
+              "url_citation",
+              "來源與所支持片段",
+              "網址、起訖位置、片段內容"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "每個文字區塊的 annotations 都要分別處理。不同區塊可能各有自己的索引範圍，不能先把所有文字串成一大段，再拿原來的位置切片；前面增加一句標題也可能讓後面的引用全部錯位。"
+        },
+        {
+          "type": "paragraph",
+          "text": "此版本 SDK 的引用欄位說明以 UTF-8 位元組計算位置。繁體中文通常占多個位元組，表情符號也不同；下載包先編碼、核對範圍與字元邊界，再解碼片段。官方簡短範例中的一般字串切片適合說明流程，正式處理中文時應依 SDK 欄位規格與實際回應再核對。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：保留原回答並呈現來源",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "citations.py 對每段回答保留原文字，另外列出具名來源與對應片段。回答、標題與片段都先做 HTML 文字跳脫，避免模型文字變成可執行的標籤。來源只接受明確的 HTTPS 網址，不允許 javascript、夾帶帳密或控制字元；程式不因標題看似官方就放行。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果引用沒有涵蓋整段回答，頁面不能宣稱所有句子都已驗證。即使某句有引用，仍需打開來源確認它支持的是完整主張還是其中一部分；來源存在、片段範圍正確與事實成立是三件不同的事。不要因為找到一個官方首頁就自動替所有數字背書。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "單次真實搜尋",
+          "code": ".venv/Scripts/python.exe 82/grounding-demo/main.py --live\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "程式會顯示一個只綁定本機的網址，六十秒內開啟一次即可讀取這次回答。真實回應保留在記憶體，沒有自動寫成公開教材 JSON；請依終端機顯示的實際網址開啟，不能假設每次使用相同連接埠。完成後本次預覽服務結束。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 回傳的搜尋建議要與這次回答一起呈現。範例對建議 HTML 採有限的被動標籤檢查，保留通過檢查的原始內容；遇到新格式或可執行內容就停止顯示，不擅自刪掉其中連結後繼續。正式應用若調整版面，應重新查閱當日顯示要求。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：測沒有引用與引用失效",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先用 no-search.json 測模型沒搜尋的情況：作者預覽會說明缺證據，真實顯示流程則拒絕把不完整搜尋結果當成正常成品。再用 unsafe-url.json 測拒絕危險連結，最後以 wrong-byte-offset.json 測中文字元被切開時能否報错，而非顯示亂碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若來源開啟失敗，保留回應原網址與當時觀察，不自行改成猜測的文章頁。可以重新搜尋同一問題，但那是新的請求與結果，不能把新來源倒填到舊答案中。網址轉址也應由讀者正常開啟，不增加站內追蹤中繼頁來改寫目的地。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "引用解析器只能驗證結構與連結條件；它不會判斷網站內容真偽，也不會把沒有來源的句子補成已查證。合成測試通過與真實搜尋驗收分別記錄。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "交付時保留題目、模型、SDK、日期、請求是否搜尋及顯示測試結果。真實 Grounding 的回答和搜尋建議有專屬使用及保存要求，本教材只配送原創合成 fixtures，不建立真實搜尋結果資料庫。下一步可將同樣的引用核對原則帶到文件知識庫與 "
+            },
+            {
+              "type": "link",
+              "text": "完整文件助手",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-service-capstone"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "有開 google_search，就一定會搜尋嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "不應只從請求設定推斷結果。查看實際步驟與引用；缺少搜尋或必要的顯示資料時，程式要明確處理。"
+        },
+        {
+          "type": "heading",
+          "text": "為什麼英文引用正常，中文卻切錯？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "可能把位元組位置當成字元位置。先查看 SDK 欄位單位，再用中文和表情符號的固定資料測邊界，不能只用英文短句驗證。"
+        },
+        {
+          "type": "heading",
+          "text": "可以把沒有引用的句子連到官方首頁嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "不可以藉此宣稱它已獲來源支持。保留缺口，重新提問或人工查證；新增的人工來源應另記，不能冒充原始模型引用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "AI Studio 與第一個 Gemini API 呼叫",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "API 檔案與 JSON：結構化輸出及驗證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "File Search 知識庫實作：匯入、查詢、更新與刪除驗證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-file-search-rag-project"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 82 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-api-search-grounding-citations/lesson-82.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組 API 練習與本機檢查程式",
+          "url": "https://mokaair.com/guides/gemini-api-search-grounding-citations/api-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Search Grounding 官方教學",
+          "url": "https://ai.google.dev/gemini-api/docs/google-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini API 使用條款",
+          "url": "https://ai.google.dev/gemini-api/terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方 Python SDK",
+          "url": "https://googleapis.github.io/python-genai/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

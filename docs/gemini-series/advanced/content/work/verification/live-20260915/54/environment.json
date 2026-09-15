@@ -1,0 +1,90 @@
+{
+  "lesson": 54,
+  "startedAt": "2026-09-15T03:33:47.048861+00:00",
+  "status": "synthetic-workspace-flow-verified-awaiting-article-integration",
+  "platform": "Windows Chrome",
+  "account": "personal Google account; existing Pro subscription",
+  "googleApiCalls": 0,
+  "additionalPurchases": 0,
+  "additionalSpendTWD": 0,
+  "syntheticSourcesOnly": true,
+  "realInboxMessagesOpened": 0,
+  "sentEmails": 0,
+  "calendarEventsCreated": 0,
+  "googleTasksCreated": 0,
+  "inputs": [
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/54/mail-samples.json",
+      "sha256": "e46e5ed86218029173e7749aa191d1b5ee6039f962565eb3cdd285f1496b8c72",
+      "submittedAsReferenceAnswer": false
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/54/mail-samples.md",
+      "sha256": "3b20586f9e8ee8527d07143828efb3b09d42af0bbbcff7ba7048e50792eaa40a",
+      "submittedAsReferenceAnswer": false
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/examples/54/action-items.csv",
+      "sha256": "88dead73474121b0c3956bc7118826204a62ec13e882dc030edf204f458588ff",
+      "submittedAsReferenceAnswer": false
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/live-20260915/54/prompt-gmail-v1.txt",
+      "sha256": "2c484579cbfeaafed22aaa34698217ee7718d5b4c3459674da3b6c82ac96fdab",
+      "submittedAsReferenceAnswer": false
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/live-20260915/54/prompt-gmail-doc.txt",
+      "sha256": "e60937ccf69906a591d38c87b892905b7c24f2bdab62528aab73477bbd6e64ca",
+      "submittedAsReferenceAnswer": false
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/live-20260915/54/prompt-gmail-sheet.txt",
+      "sha256": "8e8c90f1bdf3148a7af1034d88662bcb1165b520846c3bdca378fbf76acfdfc8",
+      "submittedAsReferenceAnswer": false
+    },
+    {
+      "path": "docs/gemini-series/advanced/content/work/verification/live-20260915/54/prompt-docs-fix.txt",
+      "sha256": "0f8ffb4c4fd0dcc76a90832ddec2f144b09553f3ff1bdb84c1676dc1b00f77b7",
+      "submittedAsReferenceAnswer": false
+    }
+  ],
+  "referenceAnswerSubmitted": false,
+  "publishable": false,
+  "officialSources": [
+    {
+      "url": "https://support.google.com/mail/answer/14355636?hl=en",
+      "checkedOn": "2026-09-15"
+    },
+    {
+      "url": "https://support.google.com/docs/answer/14356410?hl=en",
+      "checkedOn": "2026-09-15"
+    },
+    {
+      "url": "https://support.google.com/docs/answer/14925782?hl=en",
+      "checkedOn": "2026-09-15"
+    }
+  ],
+  "completedObservationsAt": "2026-09-15T03:50:08.100Z",
+  "webGeminiGenerations": 4,
+  "cloudArtifactsCreated": 2,
+  "modelLabel": "Gemini in Gmail and Docs side panels; exact backend model/version not exposed",
+  "sourceAccess": "Five synthetic sources preserved in the created document, readable by the same signed-in account",
+  "limitations": {
+    "realInboxRetrievalTested": false,
+    "recipientAccountAccessTested": false,
+    "physicalMobileTested": false,
+    "humanSemanticApproval": false,
+    "publicWebsiteIntegrationTested": false,
+    "fullDocumentStyleFidelityMeasured": false,
+    "screenshotsSaved": false
+  },
+  "notes": [
+    "This is a live Google Workspace workflow using pasted synthetic source text; not a real-inbox search test.",
+    "Observed response claims were checked against created cloud artifacts. Docs initially contained a Person placeholder and required an accepted correction.",
+    "Initial Docs Markdown export succeeded. Three later export attempts timed out; a native Markdown download was not confirmed. Final text was copied through the visible document UI after reopening.",
+    "An immediate post-input snapshot initially lagged behind typing. The final 704-character first prompt matched exactly before one submission.",
+    "Google Docs edits required Accept despite the model saying the modification was completed.",
+    "Artifacts remain private to the account; no sharing permissions changed."
+  ]
+}

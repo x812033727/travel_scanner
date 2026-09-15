@@ -1,0 +1,15 @@
+{
+  "evidenceFieldsValid": true,
+  "semanticReviewRequired": true,
+  "rows": 4,
+  "errors": [],
+  "sentEmails": 0,
+  "label": "Codex-normalized candidate, not raw model output or downloaded Sheet",
+  "normalizations": [
+    "Assign stable T01-T04 IDs in displayed order",
+    "Map Chinese status labels to existing validator codes",
+    "Change the literal placeholder （留空） to an empty field",
+    "Normalize date text to the authored CSV convention; keep original precision",
+    "Expand sample task label to 12 sets using its existing M5 quotation"
+  ]
+}

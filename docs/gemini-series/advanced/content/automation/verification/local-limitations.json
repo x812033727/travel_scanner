@@ -1,0 +1,26 @@
+{
+  "checkedOn": "2026-09-14",
+  "observations": [
+    {
+      "area": "Windows temporary directory cleanup",
+      "observed": "One initial CLI verification run ended with EPERM while removing its own temporary directory.",
+      "change": "Print the original verification error before cleanup and use bounded filesystem cleanup retries.",
+      "recheck": "Subsequent source and extracted-archive CLI module verification completed with exit 0.",
+      "boundary": "This does not establish equivalent behavior for every antivirus, sync client or native interactive CLI session."
+    },
+    {
+      "area": "batch fixture first-run precondition",
+      "observed": "An initial tampered-output test expected one reprocessed file but observed nineteen. That test had not asserted that its initial batch completed.",
+      "change": "Added an explicit initial-batch failure assertion so a recurrence reports the actual failed precondition.",
+      "recheck": "The isolated case, complete 23-test suite and both later extracted-archive suites passed.",
+      "boundary": "The original failure's cause is not established. No filesystem or model retry fix is claimed; retain this observation for a recurrence."
+    }
+  ],
+  "notTested": [
+    "authenticated model-to-tool MCP and BeforeTool flows",
+    "actual subagent output quality and concurrency",
+    "real Headless model calls, latency and billing",
+    "GitHub hosted runner and artifact download",
+    "macOS and Linux physical environments"
+  ]
+}
