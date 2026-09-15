@@ -1,0 +1,346 @@
+{
+  "slug": "ai-search-structured-data",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "結構化資料與 Schema.org：能換到什麼、換不到什麼",
+      "description": "結構化資料讓網頁有資格取得特定的複合式搜尋結果，它不是排名加分，也不保證被 AI 摘要引用。這篇整理官方文件對資格、內容必須對使用者可見的規定與假造標記的處置，並說明本站為何只輸出 Article、BreadcrumbList、ItemList 這類標記。",
+      "hero": {
+        "src": "/guides/ai-search-structured-data/hero.jpg",
+        "alt": "一張文件卡片旁邊掛著標籤，標籤連到一道門，門後是搜尋結果的位置示意",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "結構化資料是在網頁裡另外附一段給機器讀的說明，描述的是這一頁上本來就有的東西。它換到的是資格：Google 說明文件的原話是，使用結構化資料會「啟用」相關功能，但不「保證」該功能一定會顯示。它不是排名加分，也不是被 AI 摘要引用的保證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把官方文件寫過的三件事整理出來：資格與排名的差別、標記內容必須讓使用者看得到的規定，以及假造標記會得到什麼處置；最後說明本站目前只輸出 Article、BreadcrumbList、ItemList 這類標記的理由。讀完之後，看到「加上 schema 就會被 AI 引用」這種句子，你會知道該翻哪一份文件驗證。"
+        },
+        {
+          "type": "heading",
+          "text": "結構化資料在做什麼：把頁面上已經有的東西講給機器聽",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 搜尋中心對結構化資料的定義是「為網頁提供資訊並將網頁內容分類的標準化格式」，例如一頁食譜的食材、烹調時間與熱量。詞彙本身來自 schema.org，那是一份由 Google、Microsoft、Yahoo 與 Yandex 發起、以開放社群流程維護的共用詞彙表。這一段是官方文件說明的機制。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "格式有三種：JSON-LD、微資料 (Microdata) 與 RDFa；Google 說明文件建議優先使用 JSON-LD。",
+            "詞彙不等於功能：schema.org 的常見問答自己就寫著，不是每一種 schema.org 的資訊都會出現在搜尋結果中，各家公司的實際用法要看它們自己的文件。",
+            "Google 也寫明，Google 搜尋的行為以 Google 搜尋中心文件為準，而不是 schema.org 的文件。",
+            "微軟在官方部落格寫的是，結構化資料是 Bing 用來理解網頁內容的線索之一；那句話講的是理解，不是顯示的承諾。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這一系列其他名詞之間的關係整理在"
+            },
+            {
+              "type": "article",
+              "text": "名詞總索引",
+              "kind": "life",
+              "slug": "ai-search-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "；如果你要找的是「把內容整理成容易被擷取的答案」那種做法，它屬於"
+            },
+            {
+              "type": "article",
+              "text": "AEO",
+              "kind": "life",
+              "slug": "ai-search-aeo"
+            },
+            {
+              "type": "text",
+              "text": "的討論範圍，和這篇講的標記是兩件事。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "資格不是排名：官方文件的兩句原話",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "結構化資料通用指南裡有兩句可以直接引用的話。第一句：「使用結構化資料會『啟用』相關功能，但不『保證』該功能一定會顯示。」第二句：「即使複合式搜尋結果測試顯示網頁已正確加上標記，Google 也不能保證您的結構化資料一定會出現在搜尋結果中。」兩句都是官方文件說明的機制，不是誰的解讀。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份文件也列出了常見的不顯示原因：結構化資料無法代表網頁的主要內容、結構化資料所參照的內容已對使用者隱藏、網頁不符合結構化資料指南或搜尋基礎入門。換句話說，標記是一道資格門檻；門後面要不要顯示，由搜尋引擎在當下決定。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-search-structured-data/diagram-1.svg",
+          "alt": "上排從內容到標記再到資格門檻，中排分成換得到的資格與換不到的東西，下排把主張分成機制、慣例與行銷三級",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左讀到右：先有內容，標記只是描述；門檻換到的是資格，不是排名或引用。此為原創圖解，不是任何搜尋結果畫面。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "標記的內容必須是使用者看得到的：這是規則，不是建議",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "通用指南的品質規定寫得很直接：「請勿為網頁讀者看不到的內容加上標記。」文件還附了例子——如果 JSON-LD 標記介紹的是某位演出者，網頁內文就必須描述同一位演出者。另一條同方向的規定是完整性：如果標記了評論，使用者會預期在搜尋結果看到的就是全部評論，只標記其中一部分可能造成誤導。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這條規則決定了工作順序：先把內容做出來、讓使用者在頁面上看得到，標記只是把已經存在的東西講給機器聽。為了換取某個功能而先寫標記、再想辦法補內容，就是文件明文禁止的那一種做法。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同樣的道理也適用在"
+            },
+            {
+              "type": "article",
+              "text": "E-E-A-T",
+              "kind": "life",
+              "slug": "ai-search-eeat"
+            },
+            {
+              "type": "text",
+              "text": "上：它是人工品質評分指南裡的詞彙，沒有可以宣告的標記欄位，寫一段標記說自己很有經驗並不會因此產生任何訊號。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "假造標記會怎樣：文件寫了兩種不同的處置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一種是結構化資料本身的問題。官方文件寫：如果網頁因結構化資料而受到人工判決處罰，就無法以複合式搜尋結果的形式呈現，但是這並不會影響網頁在 Google 網頁搜尋中的排名。評論摘錄的指南另外註明，不是由實際使用者給予的評論或評分，可能會導致人工判決處罰；被評論的對象自己控制關於自己的評論時，那些頁面也不符合星級評論功能的資格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二種是這個做法本身就在欺騙使用者，那就落到垃圾內容政策。該政策把「操縱 Google 搜尋中的生成式 AI 回覆」也寫進垃圾內容的定義，並說違反政策的網站可能排名較低，或完全不出現在搜尋結果中。兩種處置的範圍不一樣，值得分開記住。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "做法",
+            "官方文件怎麼寫",
+            "文件寫出來的後果"
+          ],
+          "rows": [
+            [
+              "標記頁面上真的有、使用者看得到的內容",
+              "符合通用指南的內容規定",
+              "有資格顯示為複合式搜尋結果，但不保證顯示"
+            ],
+            [
+              "為讀者看不到的內容加上標記",
+              "請勿為網頁讀者看不到的內容加上標記",
+              "可能被視為結構化資料問題，導致人工判決處罰"
+            ],
+            [
+              "造假評論，或標記與網頁主題無關的內容",
+              "請勿為不相關或容易誤導使用者的內容加上標記",
+              "不是實際使用者給的評分可能導致人工判決處罰"
+            ],
+            [
+              "網站自己控制關於自己的評論與星等",
+              "評論摘錄指南的自利評論規定",
+              "該頁面不符合星級評論功能的資格"
+            ],
+            [
+              "用標記欺騙或誤導使用者",
+              "垃圾內容政策",
+              "可能排名較低，或完全不出現在搜尋結果中"
+            ],
+            [
+              "已經受到結構化資料的人工判決處罰",
+              "通用指南",
+              "失去複合式搜尋結果資格，但不影響網頁搜尋排名"
+            ]
+          ],
+          "caption": "Google 說明文件寫過的規定與對應處置，2026 年 9 月查證；表內不含推測的後果。"
+        },
+        {
+          "type": "heading",
+          "text": "「加了標記就會被 AI 引用嗎」：把三種等級的說法分開",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 在生成式 AI 搜尋最佳化指南的「破解迷思」一節寫得很清楚：結構化資料不是生成式 AI 搜尋的必要條件，也沒有特別的 schema.org 標記需要加；但它仍建議把結構化資料留在整體 SEO 裡，因為那關係到複合式搜尋結果的資格。這是官方文件說明的機制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "行銷主張則要標明是誰說的。美國數位行銷公司 Globe Runner 在 2026 年 7 月發布的行銷文章寫「Google 與微軟都已確認結構化資料幫助它們的 AI 系統理解、驗證並引用內容」，並把 schema 稱為 AI 的「信任訊號」。該文把這兩個「確認」歸給科技媒體的報導，沒有連向這兩家公司自己的文件。遇到這種句子，去廠商自己的說明中心找原文；找不到就以官方文件為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "介於兩者之間的是業界普遍做法：很多網站替文章加上 Article 與 BreadcrumbList，期待 AI 產品也讀得懂。這樣做確實普遍，但官方文件沒有說明生成式 AI 功能如何使用這些標記，所以它只能寫成慣例，不能寫成機制。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "生成式答案實際上怎麼組出來、站長能控制的又是哪些項目，寫在"
+            },
+            {
+              "type": "article",
+              "text": "AI 摘要與 AI 模式",
+              "kind": "life",
+              "slug": "ai-search-generated-answers"
+            },
+            {
+              "type": "text",
+              "text": "那一篇，這裡不重複。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "本站目前的做法（2026 年 9 月 14 日查證）",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本站的結構化資料由同一個元件輸出，規則只有一條：只描述這一頁真的顯示出來的東西，空的清單就整段不輸出。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "文章頁：BreadcrumbList 加 Article（系列總覽頁換成 CollectionPage）。標題、描述、發布與更新時間都取自這一頁實際顯示的內容；沒有首圖的文章就不寫 image 屬性。",
+            "目錄頁與目的地索引：BreadcrumbList 加 ItemList，項目就是頁面上列出、而且每一筆都有自己網址的文章或城市。ItemList 在 Google 要搭配課程、電影、食譜或餐廳才有資格換到輪轉介面，本站的清單不屬於那幾種，只是把清單講清楚。",
+            "首頁：Organization 與 WebSite；站內搜尋的 SearchAction 只在搜尋功能開啟時輸出，而且不是在換取任何搜尋框功能。",
+            "沒有 FAQ、評論與商品標記：本站頁面上沒有問答區塊、沒有讀者評分，也沒有開放購買。把這些寫進標記就會違反「請勿為網頁讀者看不到的內容加上標記」。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "這是本站在查證日的做法，不是對讀者的建議，也不是一份可以照抄的清單。本站沒有量測過這些標記帶來的曝光差異，因此不宣稱它們改善了任何成效；官方文件建議的量測方式是自己挑一批頁面做前後對照，本站沒有做。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "FAQ 標記現在換不到複合式搜尋結果",
+          "text": "Google 的說明文件更新紀錄寫著：FAQ 複合式搜尋結果從 2026 年 5 月 7 日起不再於 Google 搜尋顯示，相關說明文件也在 2026 年 6 月 15 日被移除。功能被收掉並不罕見——2024 年 10 月 Google 公告從同年 11 月 21 日起移除網站連結搜尋框，同時說明留著那段標記不會造成問題。所以把力氣放在頁面上真的有的內容，比追逐某一個功能安全。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 搜尋中心：結構化資料標記簡介（官方說明文件）",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：結構化資料通用指南（官方說明文件，繁體中文版）",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：說明文件更新紀錄（FAQ 複合式搜尋結果淘汰與文件移除）",
+          "url": "https://developers.google.com/search/updates",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：針對生成式 AI 搜尋進行最佳化（含破解迷思一節）",
+          "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：Google 網頁搜尋的垃圾內容政策",
+          "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：Article 結構化資料",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/article",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：Breadcrumb（BreadcrumbList）結構化資料",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/breadcrumb",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：Carousel（ItemList）結構化資料",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/carousel",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：評論摘錄結構化資料（含自利評論規定）",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/review-snippet",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心網誌：Farewell, Sitelinks Search Box（網站連結搜尋框下架公告）",
+          "url": "https://developers.google.com/search/blog/2024/10/sitelinks-search-box",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "schema.org 首頁（詞彙表的自我說明與發起單位）",
+          "url": "https://schema.org/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "schema.org 常見問答",
+          "url": "https://schema.org/docs/faq.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "schema.org：ItemList 型別定義",
+          "url": "https://schema.org/ItemList",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "schema.org：BreadcrumbList 型別定義",
+          "url": "https://schema.org/BreadcrumbList",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bing 網站管理員官方部落格：JSON-LD 支援（微軟官方說法）",
+          "url": "https://blogs.bing.com/webmaster/august-2018/Introducing-JSON-LD-Support-in-Bing-Webmaster-Tools",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Globe Runner（數位行銷公司）部落格文章（行銷內容，僅作為行銷主張的佐證）",
+          "url": "https://globerunner.com/structured-data-schema-markup-ai-2026/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

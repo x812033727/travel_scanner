@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">讓 AI 排好一週 / AI scheduling and calendar assistants</title>
+  <desc id="desc">一張抽象插圖。左邊是一面白色的週曆板，最上排有四個淺藍色的星期標籤，下方分成四欄三列的方格，方格裡散落著青綠、藍、綠與橘色的圓角時間區塊，右上角有一個虛線框的空格。右邊有兩個彩色時間區塊沿著一條曲線往左下落進那個空格，旁邊是一個白底的圓形時鐘，指針指著整點過一點，四周散著幾顆大小不同的圓點。畫面上方寫著「讓 AI 排好一週」。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="800" y="155" font-size="60" font-weight="bold" fill="#102A2B" text-anchor="middle">讓 AI 排好一週</text>
+
+  <!-- calendar board -->
+  <rect x="160" y="250" width="780" height="520" rx="24" fill="#FFFFFF" stroke="#102A2B" stroke-width="6"/>
+  <rect x="180" y="275" width="155" height="26" rx="13" fill="#E6F0F7"/>
+  <rect x="375" y="275" width="155" height="26" rx="13" fill="#E6F0F7"/>
+  <rect x="570" y="275" width="155" height="26" rx="13" fill="#E6F0F7"/>
+  <rect x="765" y="275" width="155" height="26" rx="13" fill="#E6F0F7"/>
+  <line x1="160" y1="325" x2="940" y2="325" stroke="#102A2B" stroke-width="4"/>
+  <line x1="355" y1="325" x2="355" y2="770" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="550" y1="325" x2="550" y2="770" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="745" y1="325" x2="745" y2="770" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="160" y1="473" x2="940" y2="473" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="160" y1="621" x2="940" y2="621" stroke="#5C6B6B" stroke-width="3"/>
+
+  <!-- scheduled blocks already on the board -->
+  <rect x="180" y="360" width="155" height="75" rx="12" fill="#E3F0EF" stroke="#0D6B68" stroke-width="5"/>
+  <rect x="570" y="350" width="155" height="95" rx="12" fill="#2E7D5B"/>
+  <rect x="375" y="500" width="155" height="95" rx="12" fill="#2F6F9F"/>
+  <rect x="180" y="650" width="155" height="95" rx="12" fill="#D97A2B"/>
+  <rect x="570" y="660" width="155" height="75" rx="12" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="5"/>
+
+  <!-- the empty slot the next block falls into -->
+  <rect x="765" y="350" width="155" height="95" rx="12" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-dasharray="14 12"/>
+
+  <!-- blocks dropping in -->
+  <path d="M 1150 300 C 1060 322, 975 332, 890 356" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-dasharray="16 12" marker-end="url(#arrow)"/>
+  <rect x="1130" y="252" width="145" height="54" rx="14" fill="#0D6B68"/>
+  <rect x="1305" y="206" width="110" height="46" rx="12" fill="#D97A2B"/>
+
+  <!-- clock -->
+  <circle cx="1240" cy="590" r="135" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <circle cx="1240" cy="485" r="9" fill="#5C6B6B"/>
+  <circle cx="1345" cy="590" r="9" fill="#5C6B6B"/>
+  <circle cx="1240" cy="695" r="9" fill="#5C6B6B"/>
+  <circle cx="1135" cy="590" r="9" fill="#5C6B6B"/>
+  <line x1="1240" y1="590" x2="1240" y2="505" stroke="#102A2B" stroke-width="12" stroke-linecap="round"/>
+  <line x1="1240" y1="590" x2="1318" y2="622" stroke="#102A2B" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="1240" cy="590" r="13" fill="#102A2B"/>
+
+  <!-- dots -->
+  <circle cx="1455" cy="425" r="34" fill="#D97A2B"/>
+  <circle cx="1512" cy="352" r="17" fill="#D97A2B"/>
+  <circle cx="1418" cy="343" r="11" fill="#0D6B68"/>
+  <circle cx="1062" cy="192" r="25" fill="#0D6B68"/>
+  <circle cx="1012" cy="245" r="13" fill="#0D6B68"/>
+</svg>

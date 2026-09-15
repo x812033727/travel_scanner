@@ -1,0 +1,349 @@
+{
+  "slug": "ai-search-aio",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AIO 是什麼：同一個縮寫的三種用法，以及怎麼分辨",
+      "description": "AIO 不是一門方法，而是一個命名碰撞：它同時被用來指 Google 搜尋的 AI Overviews 功能、行銷業自造的 AI Optimization 服務，以及更早以前文案裡的 All-in-One 套裝方案。這篇整理三個所指各自的出處、官方文件實際怎麼稱呼這個功能，並給你一條辨識規則與三個該問的問題。",
+      "hero": {
+        "src": "/guides/ai-search-aio/hero.jpg",
+        "alt": "三個標籤指向同一個 AIO 字樣的抽象插圖，分別代表功能、做法與套裝",
+        "width": 1,
+        "height": 1
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "AIO 這三個字母在中文的搜尋最佳化討論裡同時指三件事：Google 搜尋裡叫做 AI Overviews 的功能、行銷服務業造出來的 AI Optimization 服務，以及更早以前文案裡的 All-in-One 套裝方案。結論很直接：AIO 是一個命名碰撞，不是一門方法。看到它，先確認對方指的是哪一個。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會有一條辨識規則，用來判斷說話的人指的是一個功能、一種做法，還是一個套裝服務，以及遇到用 AIO 的文章時該問的三個問題。本文查證日期是 2026 年 9 月 14 日，機制以搜尋引擎自己的文件為準。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三個所指，各自從哪裡來"
+        },
+        {
+          "type": "paragraph",
+          "text": "三個所指的來源與出現時間都不一樣，這正是它們會撞在一起的原因：一個是 Google 給自家功能取的產品名稱，一個是行銷服務業自己造的服務名稱，一個是用了很多年、跟生成式 AI 無關的通用縮寫。下面三節分別交代各自的出處。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這個系列裡的其他縮寫也有類似分歧，"
+            },
+            {
+              "type": "article",
+              "text": "搜尋最佳化名詞總覽",
+              "kind": "life",
+              "slug": "ai-search-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "整理了每個詞的爭議點；本文只處理 AIO 這一個。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第一個所指：AI Overviews 是 Google 的產品名稱"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 搜尋中心的開發者文件用兩個名字稱呼搜尋裡的生成式 AI 體驗：AI Overviews 與 AI Mode。官方部落格在 2024 年 5 月 14 日的 Google I/O 公告裡寫下 AI Overviews 開始向美國所有使用者推出，AI Mode 則是 2025 年 3 月 5 日另一則公告宣布的 Labs 實驗。這是第一級：官方部落格自己寫的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重點在於 AI Overviews 是一個功能的名字，就像圖片搜尋是一個功能的名字，功能名稱本身不描述任何做法。Google 的開發者文件寫得很清楚：要出現在 AI Overviews 或 AI Mode 裡沒有額外要求，也不需要其他特別的最佳化，不必新增機器可讀的檔案、AI 專用文字檔或標記，也沒有哪一種 schema.org 結構化資料是為此而設的。這是第一級，官方文件說明的機制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一件值得注意的事：本文查證的 Google 官方文件與說明頁裡沒有出現 AIO 這個縮寫。Google 自己的生成式 AI 最佳化指南倒是點名了另外兩個業界縮寫，說明 AEO 指答案引擎最佳化、GEO 指生成式引擎最佳化，並寫下立場：為生成式 AI 搜尋做最佳化就是為搜尋體驗做最佳化，因此仍然是 SEO。縮寫是業界造的，不是 Google 給的。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這個功能長什麼樣、站長可以用哪些官方報表觀察它，站上的"
+            },
+            {
+              "type": "article",
+              "text": "網站經營者看 AI 摘要",
+              "kind": "life",
+              "slug": "google-ai-overviews-for-site-owners"
+            },
+            {
+              "type": "text",
+              "text": "寫的是那一套操作流程，本文不重複。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第二個所指：被創造出來的「AI Optimization」"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個所指來自行銷服務業。麻煩不在於有人造詞，而在於造出來之後各家填進去的內容互相打架。以下三筆都是廠商或代理商自己的行銷內容，不是機制說明，只用來證明確實有人這樣用這個詞。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "行銷科技公司 awoo（阿物科技）的部落格把 AI Optimization 中譯為「AI 賦能」，說它是利用 AI 改善工作流程的方法。這個讀法跟搜尋沒有關係。",
+            "英國代理商 Generate UK 的文章說 AI Optimisation 是用人工智慧工具產生、個人化並改善你發布的內容。這個讀法講的是用 AI 做內容。",
+            "台灣的瓦吉科技與好創行銷的服務頁把 AIO 定義成運用人工智慧持續優化行銷活動、SEO 與網站效能，並延伸出「爭取被 AI 引用」。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "三種讀法無法同時成立：一個講內部流程，一個講內容生產，一個講對外的搜尋能見度，唯一的共同點是縮寫一樣。好創行銷的服務頁另外寫了通常 2 到 3 個月可以看到明顯成效，那是該公司自己的行銷主張，本站沒有做過相關實測。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一個位置上還有 GEO 在流通，它至少有一篇論文可以指，但論文的指標有自己的查詢集與前提，"
+            },
+            {
+              "type": "article",
+              "text": "GEO 是什麼",
+              "kind": "life",
+              "slug": "ai-search-geo"
+            },
+            {
+              "type": "text",
+              "text": "把兩者的落差分開寫。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第三個所指：更早就存在的 All-in-One"
+        },
+        {
+          "type": "paragraph",
+          "text": "AIO 當成 All-in-One 的縮寫，比生成式 AI 摘要早得多。華碩台灣的商用桌機產品線用 AiO 指一體成型電腦；WordPress 外掛 All in One SEO 的官方頁面則寫明品牌正確寫法是 AIOSEO，而 AIOSEO 是 Semper Plugins LLC 的註冊商標。"
+        },
+        {
+          "type": "paragraph",
+          "text": "行銷服務這邊也有。台灣的傑愛得資訊有個服務頁標題就叫「AIO 數位行銷全端解決方案」，把廣告、網站、雲主機包成一個方案；網頁典藏服務上留有這個網址在 2022 年 11 月 11 日的快照，比 AI Overviews 的公告還早。這一類文案講的是什麼都包，跟生成式 AI 無關。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-search-aio/diagram-1.svg",
+          "alt": "辨識流程圖：把句子裡的 AIO 分成看得到的功能、有人去做的做法、可以買的套裝三條路",
+          "width": 1,
+          "height": 1,
+          "caption": "從句子裡 AIO 的位置判斷所指的流程。此為原創解說圖解，不是任何產品的畫面。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼「AIO 最佳化」這種說法本身有語意問題"
+        },
+        {
+          "type": "paragraph",
+          "text": "把三個所指代回「AIO 最佳化」這句話，問題就看得出來了。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "代入 AI Overviews：整句變成對 Google 的一個功能做最佳化。但官方文件說要出現在裡面沒有額外要求、也不需要特別的最佳化；把功能名稱當成最佳化對象，等於承諾了官方文件沒有承諾的事。",
+            "代入 AI Optimization：整句變成「AI 最佳化 最佳化」，字面上重複一次。這通常代表寫的人自己也沒固定用哪一個所指。",
+            "代入 All-in-One：整句變成「全包方案最佳化」，那是在講服務內容，不是技術做法。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "這不是咬文嚼字。中文文章裡最常見的混淆，就是先用「AI Overviews（簡稱 AIO）」介紹一個 Google 功能，下一段直接接上「AIO 優化策略」，讀者就以為 AIO 是一門可以操作的方法。零售科技公司 91APP 與邦立資訊的文章都這樣寫；兩篇都是公司自己的行銷內容，本文只用來證明這種寫法存在。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "看到「AIO 最佳化」先問是哪一個 AIO",
+          "text": "Google 的開發者文件寫明，要出現在 AI Overviews 或 AI Mode 沒有額外要求，也不需要特別的最佳化、不必新增 AI 專用檔案或標記。任何宣稱有一套做法能讓你被 AI 摘要引用的說法，都超出官方文件的範圍，屬於廠商的行銷主張。本站不承諾任何排名、索引、引用或流量的結果。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "所指",
+            "全稱與出處",
+            "它其實是什麼",
+            "代回「AIO 最佳化」之後"
+          ],
+          "rows": [
+            [
+              "AI Overviews",
+              "Google 搜尋的功能名稱，官方中文說明頁稱「AI 摘要」",
+              "一個功能",
+              "對功能做最佳化；官方文件說沒有額外要求"
+            ],
+            [
+              "AI Optimization",
+              "行銷服務業自造，各家定義不一致",
+              "一種做法，定義未統一",
+              "字面重複一次，要先問是哪一種做法"
+            ],
+            [
+              "All-in-One",
+              "通用縮寫，硬體與行銷套裝都在用",
+              "一個套裝服務",
+              "在講方案包了什麼，不是技術做法"
+            ]
+          ],
+          "caption": "三個所指的對照，2026 年 9 月查證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一條辨識規則：功能、做法，還是套裝"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則只有一句：看那個詞在句子裡站的位置，而不是看作者怎麼定義它。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "如果它是螢幕上看得到、也關得掉的東西，那是功能，句子會長成「AIO 出現在搜尋結果最上方」。這時把 AIO 換成「AI 摘要」句子仍然成立。",
+            "如果它是一件有人去做的事，有步驟、有工具、有人執行，那是做法，句子會長成「我們幫你做 AIO」。這時要追問是哪一種：改內部流程、用 AI 產內容，還是改網站上的內容。",
+            "如果它是可以買的東西，有方案、有價目、有合約期間，那是套裝服務，句子會長成「AIO 方案包含網站、廣告與社群」。這時多半是 All-in-One。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "三個測試互相排斥，同一句話通常只會通過其中一個。三個都通不過，代表那段文字根本沒把所指固定下來。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "遇到用 AIO 的文章時該問的三個問題"
+        },
+        {
+          "type": "list",
+          "items": [
+            "第一次出現 AIO 的時候，把全稱寫出來了嗎？是 AI Overviews、AI Optimization 還是 All-in-One？沒寫全稱就開始給建議的，後面通常會混用。",
+            "機制描述指得出是哪一份官方文件嗎？講 Google 的功能，搜尋中心與搜尋說明都有公開頁面可以對照；指不出來的部分是業界推測或行銷主張。",
+            "它承諾了什麼？只要句子長成做了就會被引用、排名會上升、AI 曝光會增加，那就是成效承諾。官方文件不承諾這些，本站也不承諾。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "三個問題裡最難的是第二個，因為生成式答案的產生過程有一部分從網站外面觀察不到。"
+            },
+            {
+              "type": "article",
+              "text": "AI 生成答案是怎麼來的",
+              "kind": "life",
+              "slug": "ai-search-generated-answers"
+            },
+            {
+              "type": "text",
+              "text": "把有文件的機制與沒有文件的推測分開寫。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "分辨 AIO 指什麼，不會讓你的網站得到任何名次或曝光，它只是讓你讀得懂別人在講什麼。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 搜尋中心：AI 功能與你的網站（官方開發者文件）",
+          "url": "https://developers.google.com/search/docs/appearance/ai-features",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：生成式 AI 最佳化指南（官方開發者文件）",
+          "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋說明：AI 摘要（官方繁體中文說明頁）",
+          "url": "https://support.google.com/websearch/answer/14901683?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 官方部落格：Google I/O 2024 搜尋的生成式 AI 體驗（AI Overviews 推出公告）",
+          "url": "https://blog.google/products/search/generative-ai-google-search-may-2024/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 官方部落格：擴大 AI Overviews 並推出 AI Mode（官方公告）",
+          "url": "https://blog.google/products/search/ai-mode-search/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "awoo 阿物科技部落格：AI Optimization (AIO) 是什麼（廠商行銷內容）",
+          "url": "https://www.awoo.ai/zh-hant/blog/aio-trend-example/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Generate UK：SEO, AIO, GEO and AO explained（代理商行銷內容）",
+          "url": "https://www.generateuk.co.uk/resources/seo-aio-geo-ao-explained/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "瓦吉科技 WAGI：AIO 是什麼（代理商服務頁，行銷內容）",
+          "url": "https://wagikg.com.tw/what-is-aio/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "好創行銷：AIO 內容優化專家（代理商服務頁，行銷內容）",
+          "url": "https://twamazing.com/aio/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "91APP 部落格：什麼是 AI Overviews (AIO)（公司行銷內容）",
+          "url": "https://91app.com/blog/what-is-aioverviews/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "邦立資訊：AIO 是什麼（代理商行銷內容）",
+          "url": "https://www.bondlink.com.tw/article-info/what-is-aio-ai-search-optimization-guide-2026",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "All in One SEO 外掛官方頁面：品牌正確寫法為 AIOSEO",
+          "url": "https://wordpress.org/plugins/all-in-one-seo-pack/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ASUS 台灣：ExpertCenter AiO 商用一體成型電腦（廠商官網）",
+          "url": "https://www.asus.com/tw/business/desktops/expertcenter-all-in-one-pcs/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "傑愛得資訊 jumpAD：AIO 數位行銷全端解決方案（代理商服務頁，行銷內容）",
+          "url": "https://jumpad.com.tw/service-AIOSolution",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

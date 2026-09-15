@@ -1,0 +1,410 @@
+{
+  "slug": "ai-spreadsheet-automation",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "productivity",
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "試算表 AI 自動化：Google 試算表 AI 函式與 Excel Copilot 怎麼分工",
+      "description": "Google 試算表有 =AI() 函式與 Gemini 側邊欄，Excel 的 COPILOT 函式已於 2026 年 9 月 14 日停用、改走 Copilot 窗格。本文照 2026 年 9 月 15 日的官方頁，寫清楚兩邊各需要哪個方案與官網標價、清資料與分類摘要怎麼分工、AI 函式的 350 格與 24 小時額度、語言限制，以及該留給內建功能和人工抽查的部分。",
+      "hero": {
+        "src": "/guides/ai-spreadsheet-automation/hero.jpg",
+        "alt": "一張格線紙上有幾格被填成不同顏色，右邊一個齒輪與放大鏡，下方一條線連到打勾的方框。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "試算表的 AI 現在分成兩層：一層是側邊欄或窗格裡的助理，你用一句話請它建表、畫圖、寫公式；另一層是寫在儲存格裡的 AI 函式，一列一列把文字分類或摘要。Google 試算表兩層都有，Excel 則從 2026 年 9 月 14 日起把儲存格裡的 COPILOT 函式下架，只留 Copilot 窗格這一層。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照 2026 年 9 月 15 日的官方說明頁寫三件事：兩邊各要哪個方案、官網標多少錢；清資料、分類摘要、寫公式與腳本該讓誰做；AI 函式與 Copilot 各自的額度、語言與資料限制。本文不能登入也不能實測，能力與限制都照官方文件寫，成效請你自己抽樣驗。"
+        },
+        {
+          "type": "heading",
+          "text": "兩邊現在各有什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 試算表這邊有三樣東西。第一是 Gemini 側邊欄，在右上角點「Ask Gemini」開啟：官方說明頁寫它能建立表格、寫公式、產生資料分析與洞察、做圖表，也能摘要你雲端硬碟與 Gmail 裡的檔案與郵件；它還會代你執行動作，官方列的包括套用條件式格式設定、建立樞紐分析表、排序與篩選、尋找並取代、設定數字格式、插入或凍結列與欄、填滿範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二是寫在儲存格裡的 AI 函式。官方頁寫 =AI() 與 =Gemini() 兩個名字都可以用，語法是 AI(\"prompt\",[optional range])，第一個參數是提示詞，第二個是選用的範圍。重點是它不像一般函式會自己算出答案：輸入之後要選取那些儲存格，再按「Generate and insert」才會真的產生內容，要重跑就按「Refresh and insert」。官方也提到在表格最右欄點「Insert AI column right」可以直接加一欄 AI 欄，第一個非標題列會自動帶出 AI 函式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三是加強型智慧填入（Enhanced Smart Fill）：官方頁說它會偵測兩個未完成欄位之間的關係，用 AI 預測剩下的值一次填好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Excel 這邊，官網上最重要的變化是 COPILOT 函式。官方頁明寫：自 2026 年 9 月 14 日起，COPILOT 函式已無法在 Microsoft Excel 使用；那個函式原本是預覽功能，只在 Frontier 計畫與 Microsoft 365 測試人員計畫提供。舊活頁簿裡已經算好的結果會以快取值留著，但只要那一格重新計算，就會因為函式不再被辨識而回傳 #NAME? 錯誤。官方要你改用 Copilot 窗格，並說窗格支援許多相同的工作，包括摘要文字、分類資料、生成內容與從網路查資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Copilot in Excel 有編輯（edit）、規劃（plan）、聊天（chat）三種模式：編輯直接改活頁簿，規劃先給一份計畫讓你確認，聊天只在對話裡回答。官方平台表寫 Windows、Mac 與網頁版三種都有，iPad 只有聊天與規劃，iPhone 與 Android 只有聊天。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外還有 Python in Excel：在「公式」索引標籤點「插入 Python」，或在儲存格輸入 =PY。官方寫程式在 Microsoft 雲端執行、結果送回工作表，函式庫由 Anaconda 提供，需要網路連線。"
+        },
+        {
+          "type": "heading",
+          "text": "需要哪個方案、官網標多少錢",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 這邊，官方的功能與方案對照表講得很直接：Sheets 的「AI function」「Enhanced Smart Fill」「Generate insights and analyze data」這三項，在 Google Workspace 需要 Business Standard、Business Plus、Enterprise Standard 或 Enterprise Plus；Business Starter 與 Frontline 不在清單裡。用個人 Google 帳戶的話要 Google AI 方案，而且同一張表寫這三項只列在 Google AI Pro 與 Google AI Ultra，Google AI Plus 沒有。"
+        },
+        {
+          "type": "paragraph",
+          "text": "價格照 Google 台灣的方案頁：Google AI Plus 每月 NT$165、Google AI Pro 每月 NT$650、Google AI Ultra 從每月 NT$3,300 起（另一個等級是每月 NT$6,500）。Google Workspace 各版本的每人每月價格會依國家與付款方案變動，該頁的數字要在瀏覽器裡才會載入，以官網定價頁為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Excel 這邊，官方 FAQ 列了四種合格授權：帶 AI 額度（AI credits）方案的 Microsoft 365 個人版或家用版、Microsoft 365 進階版（Premium）、商用的 Microsoft Copilot 訂閱，或符合 Copilot Chat 資格的 Microsoft 365／Office 365 商用或企業版訂閱。Microsoft 台灣官網標的個人方案價格是：個人版每月 NT$309 或每年 NT$3,090、家用版每月 NT$419 或每年 NT$4,190、進階版每月 NT$669 或每年 NT$6,690。家用版與進階版可以和另外五個人共用，但官網同一頁寫明 AI 功能只有訂閱擁有者能用，不能分給家人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "商用方案照 Microsoft 美國官網的商用比較頁，都是年繳、每位使用者每月計價：Microsoft 365 Business Basic 7.00 美元、Business Standard with Copilot 23.50 美元、Business Premium with Copilot 32.00 美元。想在既有訂閱上加購的話，Microsoft 365 Copilot Business 這個附加元件頁面標「原價每位使用者每月 21.00 美元，現在從 18.00 美元起」，同樣是年繳，官網沒有標優惠到期日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一個很常卡住人的條件寫在官方 FAQ 裡：Copilot in Excel 需要開啟自動儲存，也就是檔案必須存在 OneDrive，沒有存檔的檔案不能用。另一條是編輯功能只在「計算選項」設為自動時才支援。"
+        },
+        {
+          "type": "link",
+          "text": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
+          "url": "https://mokaair.com/zh-TW/life/microsoft-copilot-windows-office"
+        },
+        {
+          "type": "link",
+          "text": "小團隊使用 Workspace AI：帳號與管理",
+          "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+        },
+        {
+          "type": "heading",
+          "text": "三個常見任務怎麼分工",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一類是清資料：去重、去空格、統一格式。這一類反而不該優先找 AI，因為兩邊都有規則式的內建功能，結果穩定、可重複，也不會出現幻覺。Google 試算表在「資料」→「資料清理」底下有「移除重複項目」與「刪除前後空格」，官方頁提醒值相同但大小寫、格式或公式不同的儲存格會被視為重複；把一欄拆成多欄則用「資料」→「將文字分割成多欄」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個選單裡的「清理建議」會逐欄列出常見錯誤，官方點名的項目是多餘空格與重複值、加上數字格式、找出異常值、修正不一致的資料；旁邊的「資料欄統計資料」可以看單一欄的分布與摘要統計。先跑這兩個，再決定哪些欄真的需要 AI。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二類是分類與摘要文字欄，這才是 AI 函式的主場。官方頁把用途分成五類：產生文字、摘要資訊、分類資訊、情緒分析、從 Google 搜尋取得即時資訊。下面的寫法照官方範例原文。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Google 試算表 AI 函式：官方頁的語法與範例",
+          "code": "AI(\"prompt\",[optional range])\n\n=AI(\"Classify the preview as either a spam email or not a spam email.\", D2)\n=AI(\"Categorize the customer inquiry as a compliment, exchange request, or return request.\",C2)\n=AI(\"For the customer, write a one sentence summary of their feedback.\", A2:D2)\n=AI(\"List in bullet points the main themes of the book summary.\", D2)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Excel 這邊因為 COPILOT 函式已經停用，官方頁附了一張改寫對照表，把原本的函式寫法翻成對 Copilot 窗格講的話：把第一個參數的提示詞加上第二個參數的範圍，變成一句完整指令。官方另外建議講具體、明確點名要處理的欄或範圍、先問大方向再逐步補細節。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Excel：官方頁給的 Copilot 窗格說法（取代已停用的 COPILOT 函式）",
+          "code": "Summarize the feedback in A2:A20\nClassify each of the sentiment entries in B2:B100 and add the result in a new column\nLook up upcoming holidays or major events in Seattle"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三類是寫公式與腳本。公式可以請 Gemini 側邊欄或 Copilot 窗格產生，但重複性的動作更適合寫成腳本：Google 試算表用 Apps Script，Excel 用 Office Scripts 或 VBA。Apps Script 的自訂函式有官方範例，關鍵在註解裡的 @customfunction，有這一行 Sheets 才會把它當成可以在儲存格呼叫的函式。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "Apps Script 自訂函式：官方文件的範例",
+          "code": "/**\n * Multiplies the input value by 2.\n *\n * @param {number} input The value to multiply.\n * @return {number} The input multiplied by 2.\n * @customfunction\n */\nfunction DOUBLE(input) {\n  return input * 2;\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "錄製巨集也會產生 Apps Script：官方文件寫，錄好的巨集會在繫結專案裡建立 macros.gs 與對應函式並更新資訊清單（manifest），之後可以進編輯器改；巨集只能用在與 Google 試算表繫結的指令碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不論公式或腳本是誰寫的，貼上去之前自己看一遍：範圍對不對、有沒有會覆蓋原始資料的動作、錯誤怎麼處理。AI 寫的程式看起來很順，順不等於對。"
+        },
+        {
+          "type": "link",
+          "text": "用 ChatGPT 寫 Excel 公式與 VBA：從問題描述到可貼上的公式",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-for-excel-formulas"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-spreadsheet-automation/diagram-1.svg",
+          "alt": "五個方框由左到右排成一列，依序是複製原始資料、規則式清理、AI 分類與摘要、人工抽查、確認後輸出，下方另有兩個提醒框。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左看到右就是一條完整流程：AI 只在複本上動手，規則式清理先做，抽查通過才合併回原表。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "任務",
+            "Google 試算表",
+            "Excel"
+          ],
+          "rows": [
+            [
+              "去除重複與多餘空格",
+              "資料 → 資料清理 → 移除重複項目、刪除前後空格",
+              "先用內建功能，或請 Copilot 窗格處理後自行核對"
+            ],
+            [
+              "找出異常與不一致",
+              "資料 → 資料清理 → 清理建議；資料 → 資料欄統計資料",
+              "Copilot 窗格：識別洞察、標示、排序與篩選"
+            ],
+            [
+              "分類與情緒分析",
+              "=AI(\"Classify the preview as either a spam email or not a spam email.\", D2)",
+              "Copilot 窗格（COPILOT 函式 2026 年 9 月 14 日起停用）"
+            ],
+            [
+              "摘要文字欄",
+              "=AI(\"For the customer, write a one sentence summary of their feedback.\", A2:D2)",
+              "Copilot 窗格：Summarize the feedback in A2:A20"
+            ],
+            [
+              "補完不規則欄位",
+              "加強型智慧填入（僅支援英文值、僅桌面版）",
+              "Copilot 窗格產生資料與公式"
+            ],
+            [
+              "建整張表與儀表板",
+              "Gemini 側邊欄：建表格、樞紐分析表、圖表",
+              "Copilot 編輯模式：直接改活頁簿、建圖表與樞紐分析表"
+            ],
+            [
+              "寫程式做進階處理",
+              "Apps Script（JavaScript，含自訂函式與巨集）",
+              "Python in Excel（=PY，在 Microsoft 雲端執行）"
+            ],
+            [
+              "需要的方案",
+              "Workspace Business Standard 以上，或 Google AI Pro／Ultra",
+              "Microsoft 365 個人版或家用版（含 AI 額度）、進階版，或商用 Copilot 訂閱"
+            ]
+          ],
+          "caption": "2026 年 9 月查證：各欄做法與方案條件照 Google 與 Microsoft 官方說明頁。"
+        },
+        {
+          "type": "heading",
+          "text": "額度與限制：你會卡在哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 函式的限制官方頁列了一整串，挑會踩到的講：回應只有文字；函式讀不到整份試算表，也讀不到你雲端硬碟裡的其他檔案，要餵資料就得放進同一份試算表再用那個選用的範圍參數，官方說這一點強烈建議做；不能復原或重做，只能重新產生；同一份試算表不能有兩個同名函式，你自己寫的 =AI() 自訂函式會被對應到內建的 AI 函式；巢狀寫法不支援，官方舉的反例就是把 AI 函式塞進 IF 裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "額度方面，官方頁寫 AI 函式有短期與長期的產生上限，碰到長期上限會暫時不能按「Generate」，要等 24 小時再試。一次選取多格產生時，只有前 350 格的 AI 函式會被處理，要等這批跑完再選下一批。另外如果你是透過 Box、Dropbox 或 Egnyte 搭配 Google 雲端硬碟開啟試算表，AI 函式不能產生內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "語言是台灣使用者最該先確認的一項。官方支援語言頁的 AI 函式清單裡，中文只列了 Mandarin (zh-CN)，整頁找不到繁體中文或 zh-TW；Gemini 側邊欄的清單則只寫 Chinese，沒有再細分。官方的疑難排解也寫，看到「AI function not available」可能是方案不符，也可能是管理員設定或你的語言設定造成的。帳號語言設成繁體中文到底能不能用，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "加強型智慧填入的條件更嚴：官方頁寫它只能偵測與支援英文的值；要觸發偵測，表格至少要有 3 個範例列、2 個不同的欄值；只在文字欄執行，數字欄與日期欄不會跑；而且只有桌面版有。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Excel 這邊，Copilot 的提示詞支援語言清單有列到 Chinese (Simplified and Traditional)，但官方同一段註明它主要以英文來源訓練，其他語言表現可能沒那麼好。Python in Excel 分兩層：合格的 Microsoft 365 訂閱可用標準運算與自動重新計算，每月另有一份 premium compute 額度，用完自動降回標準運算、月初重置；要完整的 premium compute 與手動或部分重新計算模式，得另外買 Python in Excel 附加元件授權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "平台門檻照官網：企業與商業版在 Windows 是目前通道 2408 版、Mac 是 16.96 版，家用版與個人版還在預覽（從 2405 版開始）；Excel for iPad、iPhone 與 Android 完全不支援，在這些平台可以開啟含 Python 的活頁簿，重新計算就會出錯。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "最容易出事的是「AI 直接動你的原始資料」",
+          "text": "Copilot 在編輯模式會直接改活頁簿，官方提醒存檔後所有能開這個檔案的人都看得到變更，要回復得靠復原或版本記錄；Google 試算表的 AI 函式則是不能復原或重做，只能重新產生。穩妥的做法是把原始資料複製到獨立工作表，AI 只在複本上跑，抽查通過再合併回去。"
+        },
+        {
+          "type": "heading",
+          "text": "資料送到哪、怎麼自己驗證",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的資料保護頁寫：Gemini 在文件、雲端硬碟、試算表等服務會使用你在 Google Workspace 的內容產生回應，但不會用來訓練或改進 Gemini 與其他生成式 AI 模型，未經允許也不會儲存你的提示詞與輸出。同一頁另提醒：用個人帳戶的 Workspace 使用者若把資料分享給 Gemini 應用程式或搜尋服務，那些資料會依各自的條款處理，可能被用於模型訓練。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft 這邊，Copilot in Excel 的聊天欄有「Select sources」選單，可以逐一開關資料來源，關掉的不會被使用。官方列三類：網路（回應附引用來源，管理員也能關）、工作（需商用 Microsoft Copilot 訂閱，每次開新對話都要重新確認來源）、聯合連接器（federated connectors，同樣要商用訂閱，資料送出前須經你明確同意，且只讀得到你有權限看的資料）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型也寫在官方 FAQ：Copilot in Excel 編輯活頁簿時支援 Anthropic 的 Claude 與 OpenAI 的 GPT 模型，可以切換或選 Auto，選擇只在當次工作階段有效。切換器需要商用 Microsoft Copilot 訂閱或 Microsoft 365 進階版，企業還要管理員先開放 Anthropic 作為子處理者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗證沒有捷徑。官方 FAQ 自己就寫 Copilot 產生的洞察與公式可能不正確，要在依賴之前檢查、編輯、驗證，也建議別用在財務、法律、醫療這類敏感決定。自測法是：先人工標好 20 到 30 列當答案，讓 AI 跑同一批比對不一致的比例；分類任務把類別定義寫進提示詞，摘要任務抽查原文有沒有被寫成沒說過的事。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-data-analysis-csv"
+        },
+        {
+          "type": "link",
+          "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+          "url": "https://mokaair.com/zh-TW/life/claude-file-analysis-pdf-excel"
+        },
+        {
+          "type": "paragraph",
+          "text": "要讓資料自己流進試算表，那是自動化工具的守備範圍。"
+        },
+        {
+          "type": "link",
+          "text": "Zapier 與 Make 的 AI 自動化：計費方式與 AI 功能對照",
+          "url": "https://mokaair.com/zh-TW/life/zapier-make-ai-automation"
+        },
+        {
+          "type": "link",
+          "text": "n8n 入門：用 AI 節點做自動化工作流",
+          "url": "https://mokaair.com/zh-TW/life/n8n-ai-automation-guide"
+        },
+        {
+          "type": "link",
+          "text": "家裡用品一直重複買？用簡單庫存表記位置、數量與補貨狀態",
+          "url": "https://mokaair.com/zh-TW/life/household-inventory-spreadsheet"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Use the AI function in Google Sheets（Google 文件編輯器說明）",
+          "url": "https://support.google.com/docs/answer/15877199",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Collaborate with Gemini in Google Sheets（Google 文件編輯器說明）",
+          "url": "https://support.google.com/docs/answer/14356410",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Use enhanced Smart Fill with Gemini in Google Sheets（Google 文件編輯器說明）",
+          "url": "https://support.google.com/docs/answer/14226603",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Get started with Google Workspace with Gemini（Gemini 功能與方案對照）",
+          "url": "https://support.google.com/docs/answer/13952129",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Supported languages for Google Workspace with Gemini（支援語言清單）",
+          "url": "https://support.google.com/docs/answer/14925782",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Learn how Gemini in Gmail, Calendar, Chat, Docs, Drive, Sheets, Slides, Meet & Vids protects your data",
+          "url": "https://support.google.com/docs/answer/14615114",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Split text, remove duplicates, or trim whitespace（Google 試算表說明）",
+          "url": "https://support.google.com/docs/answer/6325535",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Use Sheets Smart Cleanup to prepare your data for analysis（Google 試算表說明）",
+          "url": "https://support.google.com/docs/answer/10098582",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google AI Pro 與 Google AI Ultra 方案頁（台灣）",
+          "url": "https://gemini.google/intl/zh-TW/subscriptions/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Custom functions in Google Sheets（Google Apps Script 官方文件）",
+          "url": "https://developers.google.com/apps-script/guides/sheets/functions",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google Sheets Macros（Google Apps Script 官方文件）",
+          "url": "https://developers.google.com/apps-script/guides/sheets/macros",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "COPILOT Function（Microsoft 支援，含停用公告）",
+          "url": "https://support.microsoft.com/en-us/excel/functions/copilot-function",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Get started with Copilot in Excel（Microsoft 支援）",
+          "url": "https://support.microsoft.com/en-us/excel/copilot/get-started-with-copilot-in-excel",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Frequently asked questions about Copilot in Excel（Microsoft 支援）",
+          "url": "https://support.microsoft.com/en-us/office/frequently-asked-questions-about-copilot-in-excel-7a13758f-d61e-4a56-8440-f2c9a07802ec",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Copilot in Excel data sources（Microsoft 支援）",
+          "url": "https://support.microsoft.com/en-us/excel/copilot/copilot-in-excel-data-sources",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Frequently asked questions about Copilot in Microsoft 365 subscriptions（Microsoft 支援）",
+          "url": "https://support.microsoft.com/en-us/microsoft-365-copilot/frequently-asked-questions-about-copilot-in-microsoft-365-subscriptions",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Introduction to Python in Excel（Microsoft 支援）",
+          "url": "https://support.microsoft.com/en-us/office/introduction-to-python-in-excel-55643c2e-ff56-4168-b1ce-9428c8308545",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Python in Excel availability（Microsoft 支援）",
+          "url": "https://support.microsoft.com/en-us/office/python-in-excel-availability-781383e6-86b9-4156-84fb-93e786f7cab0",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "比較 Microsoft 365 方案與定價（Microsoft 台灣官網）",
+          "url": "https://www.microsoft.com/zh-tw/microsoft-365/buy/compare-all-microsoft-365-products",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Compare All Microsoft 365 Business Products（Microsoft 美國官網）",
+          "url": "https://www.microsoft.com/en-us/microsoft-365/business/compare-all-microsoft-365-business-products",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

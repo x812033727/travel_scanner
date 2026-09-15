@@ -136,6 +136,30 @@ async def over_named_rate_limit(
     return count is not None and count > limit
 
 
+async def budget_spent(
+    namespace: str,
+    identifier: str,
+    *,
+    limit: int,
+    window_seconds: int,
+) -> bool:
+    """Whether this caller has spent a budget that costs us money, failing **closed**.
+
+    The third answer to the question :func:`_incr_window` leaves open, and the one
+    neither limiter above gives. A catalogue page that cannot count a read should
+    still render, so :func:`over_named_rate_limit` shrugs; a window we cannot count
+    must not become an unmetered hour against a provider billed per call, so this
+    one treats silence as spent.
+
+    That is only affordable because callers here degrade rather than refuse: an
+    unreachable Redis costs a traveller the cleverness of their itinerary, not the
+    itinerary. Refusing on the same signal would be the outage
+    :func:`over_named_rate_limit` exists to avoid.
+    """
+    count = await _incr_window(namespace, identifier, window_seconds=window_seconds)
+    return count is None or count > limit
+
+
 async def record_rate_limit_hit(namespace: str, identifier: str) -> None:
     """Keep a week of daily counts per source, so a threshold can be judged before it bites.
 

@@ -1,0 +1,155 @@
+{
+  "slug": "ai-search-structured-data",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
+      "title": "Google 搜尋中心：結構化資料標記簡介（官方說明文件）",
+      "access": "curl -sSL 直接讀取，HTTP 200（頁尾 Last updated 2025-12-10 UTC）",
+      "claims": [
+        "結構化資料是為網頁提供資訊並將網頁內容分類的標準化格式",
+        "支援 JSON-LD、微資料 (Microdata)、RDFa，建議優先使用 JSON-LD",
+        "Google 搜尋的行為以 Google 搜尋中心文件為準，而非 schema.org 文件",
+        "官方建議的量測方式是自己挑一批頁面做前後對照"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=zh-tw",
+      "title": "Google 搜尋中心：結構化資料通用指南（官方說明文件，繁體中文版）",
+      "access": "curl -sSL 直接讀取繁體中文版，HTTP 200（頁尾 Last updated 2026-07-10 UTC）",
+      "claims": [
+        "使用結構化資料會啟用相關功能，但不保證該功能一定會顯示",
+        "即使複合式搜尋結果測試通過，也不保證結構化資料會出現在搜尋結果中",
+        "請勿為網頁讀者看不到的內容加上標記（附演出者的例子）",
+        "請勿為不相關或容易誤導使用者的內容加上標記，例如造假評論",
+        "不是由實際使用者給予的評論或評分，可能會導致人工判決處罰",
+        "結構化資料的人工判決處罰會失去複合式搜尋結果資格，但不影響網頁搜尋排名",
+        "標記評論必須完整，只標記其中一部分可能誤導使用者"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/updates",
+      "title": "Google 搜尋中心：說明文件更新紀錄（FAQ 複合式搜尋結果淘汰與文件移除）",
+      "access": "由 faqpage 說明文件網址 301 轉址而來，curl 讀取全文的 #removing-faq-rich-result 段落",
+      "claims": [
+        "FAQ 複合式搜尋結果自 2026 年 5 月 7 日起不再於 Google 搜尋顯示（2026-05-08 更新）",
+        "FAQ 複合式搜尋結果的說明文件於 2026 年 6 月 15 日移除"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "title": "Google 搜尋中心：針對生成式 AI 搜尋進行最佳化（含破解迷思一節）",
+      "access": "curl -sSL 直接讀取，HTTP 200（頁尾 Last updated 2026-07-10 UTC）",
+      "claims": [
+        "破解迷思一節寫明：結構化資料不是生成式 AI 搜尋的必要條件，也沒有特別的 schema.org 標記需要加",
+        "同一節仍建議繼續使用結構化資料，因為它關係到複合式搜尋結果的資格",
+        "該指南沒有說明生成式 AI 功能如何使用個別標記，所以正文把相關做法寫成業界慣例"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "title": "Google 搜尋中心：Google 網頁搜尋的垃圾內容政策",
+      "access": "curl -sSL 直接讀取，HTTP 200（頁尾 Last updated 2026-08-28 UTC）",
+      "claims": [
+        "垃圾內容的定義包含操縱 Google 搜尋中的生成式 AI 回覆",
+        "違反政策的網站可能排名較低，或完全不出現在搜尋結果中"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/article",
+      "title": "Google 搜尋中心：Article 結構化資料",
+      "access": "curl -sSL 直接讀取，HTTP 200（頁尾 Last updated 2026-09-08 UTC）",
+      "claims": [
+        "Article 標記幫助 Google 更理解網頁，並顯示更好的標題文字、圖片與日期資訊"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/breadcrumb",
+      "title": "Google 搜尋中心：Breadcrumb（BreadcrumbList）結構化資料",
+      "access": "curl -sSL 直接讀取，HTTP 200（頁尾 Last updated 2026-09-08 UTC）",
+      "claims": [
+        "BreadcrumbList 表示網頁在網站層級中的位置"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/carousel",
+      "title": "Google 搜尋中心：Carousel（ItemList）結構化資料",
+      "access": "curl -sSL 直接讀取，HTTP 200（頁尾 Last updated 2026-09-08 UTC）",
+      "claims": [
+        "ItemList 要搭配 Course list、Movie、Recipe 或 Restaurant 才有資格取得同站輪轉",
+        "Top stories 這類跨站輪轉無法用輪轉標記控制"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/review-snippet",
+      "title": "Google 搜尋中心：評論摘錄結構化資料（含自利評論規定）",
+      "access": "curl -sSL 直接讀取，HTTP 200",
+      "claims": [
+        "被評論的對象自己控制關於自己的評論時，該頁面不符合星級評論功能的資格",
+        "不得聚合其他網站的評論或評分，不得放上假造或未揭露的誘導評論"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/blog/2024/10/sitelinks-search-box",
+      "title": "Google 搜尋中心網誌：Farewell, Sitelinks Search Box（網站連結搜尋框下架公告）",
+      "access": "curl -sSL 直接讀取，HTTP 200",
+      "claims": [
+        "2024 年 10 月 21 日公告，自 2024 年 11 月 21 日起移除網站連結搜尋框",
+        "該變動不影響排名，留著已不支援的標記不會在搜尋造成問題"
+      ]
+    },
+    {
+      "url": "https://schema.org/",
+      "title": "schema.org 首頁（詞彙表的自我說明與發起單位）",
+      "access": "curl -sSL --compressed 直接讀取，HTTP 200；頁面帶有 development version 橫幅",
+      "claims": [
+        "schema.org 是共用詞彙表，由 Google、Microsoft、Yahoo 與 Yandex 發起，以開放社群流程維護"
+      ]
+    },
+    {
+      "url": "https://schema.org/docs/faq.html",
+      "title": "schema.org 常見問答",
+      "access": "WebFetch 讀取",
+      "claims": [
+        "不是每一種 schema.org 的資訊都會出現在搜尋結果中，各家公司的用法要看它們自己的文件"
+      ]
+    },
+    {
+      "url": "https://schema.org/ItemList",
+      "title": "schema.org：ItemList 型別定義",
+      "access": "curl -sSL --compressed 直接讀取，HTTP 200",
+      "claims": [
+        "ItemList 是任何種類項目的清單，與純排版用的 HTML 清單不同"
+      ]
+    },
+    {
+      "url": "https://schema.org/BreadcrumbList",
+      "title": "schema.org：BreadcrumbList 型別定義",
+      "access": "curl -sSL --compressed 直接讀取，HTTP 200",
+      "claims": [
+        "BreadcrumbList 是由連結網頁構成的 ItemList，用 position 重建順序"
+      ]
+    },
+    {
+      "url": "https://blogs.bing.com/webmaster/august-2018/Introducing-JSON-LD-Support-in-Bing-Webmaster-Tools",
+      "title": "Bing 網站管理員官方部落格：JSON-LD 支援（微軟官方說法）",
+      "access": "WebFetch 讀取（bing.com 的說明中心需要 JavaScript，curl 讀不到內容；Wayback 在本環境被 egress policy 擋住）",
+      "claims": [
+        "微軟官方說法：結構化資料是 Bing 用來理解網頁內容的線索之一"
+      ]
+    },
+    {
+      "url": "https://globerunner.com/structured-data-schema-markup-ai-2026/",
+      "title": "Globe Runner（數位行銷公司）部落格文章（行銷內容，僅作為行銷主張的佐證）",
+      "access": "curl + WebFetch 讀取，HTTP 200；行銷內容，僅作為第 3 級主張的佐證",
+      "claims": [
+        "行銷主張：Google 與微軟都已確認結構化資料幫助它們的 AI 系統理解、驗證並引用內容",
+        "行銷主張：schema 對 AI 系統而言是信任訊號",
+        "查證結果：該文把兩個「確認」歸給科技媒體報導，沒有連向兩家公司自己的文件"
+      ]
+    }
+  ],
+  "running_text_characters": 2995,
+  "notes": "正文字數依 app.guides.pack_ingest._body_length 的算法自行計算（段落、rich_paragraph、清單項目、表格表頭與格子、callout 的標題與內文，去掉空白字元）。全篇沒有成效承諾、沒有前後對照數字、沒有實測；主張分三級並在句子裡標明等級，第 3 級（行銷主張）已寫出是誰說的。diagram-1.svg 的文字節點只有「© Mokaair 製圖 2026」一個數字，2026 在正文多處出現；hero.svg 無數字。站方立場寫成「本站目前的做法（2026 年 9 月 14 日查證）」，並明說沒有量測過曝光差異、不是給讀者的建議。查不到一手來源的項目：微軟是否曾官方表示 schema 有助於 Copilot 引用——blogs.bing.com 2026-02-10 的 AI Performance 公告沒有提到結構化資料，因此正文不下判斷，改寫成「去廠商自己的說明中心找原文；找不到就以官方文件為準」。另外代理商文章流傳的引用率倍數與百分比（例如 3.2 倍、36%、44%）沒有可查的查詢集與方法，全部不採用。"
+}

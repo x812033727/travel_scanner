@@ -1,14 +1,14 @@
 ---
 id: 2026-09-08-community-ci-read-retry
 title: Revalidate community read resets against production-build CI
-status: open
+status: done
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-15T06:35:02Z
 created_at: 2026-09-08T06:53:17Z
-completed_at:
-branch:
+completed_at: 2026-09-15T07:00:32Z
+branch: claude/ci-flake-fixes
 depends_on: []
 scope:
   - apps/web/e2e/community.spec.ts
@@ -182,3 +182,26 @@ settling before implementing that retry: are these one defect or two?
 The task's own history ("Attempt 3 of the same PR workflow passed") held again on #409.
 That is a description of the flake, not a repair, and each occurrence still costs a
 full-stack CI cycle per affected PR.
+
+## Closed into 2026-09-15-ci-recurring-flakes (2026-09-15, claude-opus-5)
+
+This task held two separate defects, and both are now explained:
+
+- **`read ECONNRESET` in `registerAndVerify`.** This is a keep-alive race, so a read retry is
+  not the right tool. Playwright's APIRequestContext reuses sockets with no idle timeout, and CI's
+  `next start` closed idle sockets after about 6 s, the same gap the test leaves between its
+  POST and GET. The fix is `next start --keepAliveTimeout 65000` in `apps/web/package.json`,
+  matching production's `KEEP_ALIVE_TIMEOUT`. Details are in
+  2026-09-12-community-smoke-econnreset-stays-unexplained-after.
+- **The `community.spec.ts:155` offline redelivery timeout.** This is a product bug, not a
+  harness one. `setOffline` leaves the open EventSource connected, so events delivered while
+  offline trigger refreshes that fail. Nothing refreshed again when the browser came back
+  online, and a reset-only read retry could never fix it. Fixed in
+  `components/community/provider.tsx` with an `online` listener that runs the existing refresh.
+  Unit tests in `provider.test.tsx` and `community.test.tsx` fail without it.
+
+The failure artifacts item is also covered. The browser result uploads now run on
+`failure() || cancelled()`, which keeps timed-out jobs.
+
+Validation against the real stack (ten clean `full-stack-smoke` runs) carries over to
+2026-09-15-ci-recurring-flakes, because it can only be observed in CI after merge.

@@ -1,0 +1,257 @@
+{
+  "series": "ai-search-terms",
+  "locale": "zh-TW",
+  "kind": "life",
+  "task": "2026-09-14-ai-search-terms-series",
+  "brief": "docs/ai-search-series/brief.md",
+  "staging_root": "docs/ai-search-series/staging",
+  "defaults": {
+    "kind": "life",
+    "destination_id": null,
+    "topics": ["ai", "tutorial"],
+    "valid_until": null,
+    "featured": false,
+    "display_order": 100
+  },
+  "existing_articles_to_link_not_rewrite": [
+    {"slug": "google-ai-overviews-for-site-owners", "owns": "站長用 Search Console 看生成式 AI 成效的操作流程"},
+    {"slug": "google-ai-mode-search", "owns": "讀者怎麼用 AI 模式追問與判讀來源"},
+    {"slug": "chatgpt-search-vs-google", "owns": "讀者什麼時候該用 ChatGPT 搜尋、什麼時候用 Google"}
+  ],
+  "articles": [
+    {
+      "number": 1,
+      "slug": "ai-search-seo",
+      "title": "SEO 是什麼：搜尋引擎最佳化在 AI 時代沒有改變的那一半",
+      "spine": "地基篇。可抓取→可索引→canonical→sitemap 這條鏈沒有因為 AI 而改變，所有「AI 最佳化」的做法都疊在它上面。而且這是整組名詞裡唯一有數十年一手官方文件的。",
+      "must_cover": [
+        "四種狀態要分清楚：HTTP 成功、可被抓取、已被索引、出現在結果裡，是四件事不是一件事",
+        "canonical、hreflang、sitemap、robots 各自解決什麼問題",
+        "哪些是官方文件明確說明的機制，哪些只是業界慣例",
+        "為什麼「SEO 已死」是行銷話術：生成式答案仍然從被索引的頁面取材",
+        "這篇不教操作步驟，只建立後面九篇共用的詞彙"
+      ],
+      "links": ["ai-search-terms-index", "ai-search-geo", "ai-search-structured-data", "ai-search-llms-txt"],
+      "source_directions": [
+        "Google Search Central 的爬取與索引說明文件",
+        "Google Search Central 的 canonical 與 sitemap 文件",
+        "robotstxt.org / RFC 9309（Robots Exclusion Protocol）"
+      ],
+      "volatile": false
+    },
+    {
+      "number": 2,
+      "slug": "ai-search-geo",
+      "title": "GEO（生成引擎最佳化）是什麼：論文定義與行銷業用法的落差",
+      "spine": "出身與指標。GEO 出自一篇學術論文，帶著一組在特定查詢集上定義的曝光指標；業界沿用了名字卻丟掉了指標。教這個落差本身。",
+      "must_cover": [
+        "提出這個詞的論文怎麼定義它、它的查詢集與指標是什麼",
+        "論文的數字只在它自己的設定裡成立，不能推廣成通則建議",
+        "業界用法與論文定義的差別",
+        "GEO 是 SEO 的上位、子集，還是改名——三種說法都在流通，寫出誰這樣主張",
+        "哪些 GEO 建議其實就是既有的內容品質建議換個名字"
+      ],
+      "links": ["ai-search-terms-index", "ai-search-aeo", "ai-search-llmo", "ai-search-generated-answers"],
+      "source_directions": [
+        "GEO 的原始論文（arXiv／ACM），特別是它的 benchmark 與 metric 定義章節",
+        "至少一份行銷業對 GEO 的公開定義，作為「確實有人這樣用」的佐證並標明它是行銷內容"
+      ],
+      "volatile": false
+    },
+    {
+      "number": 3,
+      "slug": "ai-search-aeo",
+      "title": "AEO（答案引擎最佳化）是什麼：生成式 AI 之前就存在的做法",
+      "spine": "它比 LLM 更早。精選摘要、相關問題、語音助理。說明「AEO 是新東西」是行銷話術而不是事實。",
+      "must_cover": [
+        "答案引擎指的是什麼：精選摘要、相關問題、語音助理，這些在生成式 AI 之前就有",
+        "擷取式答案與生成式答案的差別，以及為什麼這個差別決定了 AEO 與 GEO 是不是同一件事",
+        "問題型內容、結論先寫這類建議的實際依據是什麼",
+        "AEO 與 GEO 混用的現況：有人混用、有人區分，兩種用法都現行",
+        "被選為答案不等於帶來流量——零點擊的問題"
+      ],
+      "links": ["ai-search-terms-index", "ai-search-geo", "ai-search-structured-data", "chatgpt-search-vs-google"],
+      "source_directions": [
+        "Google Search Central 關於精選摘要（featured snippet）的官方說明",
+        "Google 關於精選摘要無法手動指定、只能用 nosnippet 退出的說明"
+      ],
+      "volatile": false
+    },
+    {
+      "number": 4,
+      "slug": "ai-search-aio",
+      "title": "AIO 是什麼：同一個縮寫的三種用法，以及怎麼分辨",
+      "spine": "這是命名碰撞，不是一門方法。三個現行所指：Google 的 AI Overviews 功能、被創造出來的「AI Optimization」服務、舊代理商文案裡的 All-in-One。給讀者一條辨識規則。",
+      "must_cover": [
+        "三個所指各自是什麼，各自從哪裡來",
+        "一條辨識規則：看說話的人指的是一個功能、一種做法，還是一個套裝服務",
+        "AI Overviews 是 Google 的產品名稱，不是一種最佳化方法——這個混淆是大多數中文文章的源頭",
+        "為什麼「AIO 最佳化」這種說法本身就有語意問題",
+        "遇到用 AIO 的文章時該問的三個問題"
+      ],
+      "links": ["ai-search-terms-index", "ai-search-generated-answers", "ai-search-geo", "google-ai-overviews-for-site-owners"],
+      "source_directions": [
+        "Google 對 AI Overviews 這個功能名稱的官方說明",
+        "至少一份把 AIO 當作服務名稱的公開資料，標明它是行銷內容"
+      ],
+      "volatile": false
+    },
+    {
+      "number": 5,
+      "slug": "ai-search-llmo",
+      "title": "LLMO 是什麼：和 LLMOps 差在哪，哪些說法無法驗證",
+      "spine": "最投機的詞，加上一個真實的名稱衝突。LLMO（最佳化）與 LLMOps（維運）毫無關係。把兩種主張拆開：檢索當下的影響可以觀察，訓練資料的影響從外部無法驗證。",
+      "must_cover": [
+        "LLMO 與 LLMOps 是兩個不相干的詞，只是縮寫像",
+        "把 LLMO 的主張拆成兩類：檢索當下（模型即時查資料）與訓練當下（資料進入模型權重）",
+        "檢索當下的影響可以觀察，因為回答會附來源",
+        "訓練當下的影響從外部無法驗證，而且訓練資料截止日讓它在時間上也不可能即時",
+        "「讓品牌被 LLM 記住」這類主張為什麼不可稽核"
+      ],
+      "links": ["ai-search-terms-index", "ai-term-llmops", "ai-search-geo", "ai-search-measuring-citations"],
+      "source_directions": [
+        "廠商對模型訓練資料截止日的官方說明",
+        "廠商對檢索增強（模型即時查網路）的官方說明",
+        "站上既有的 ai-term-llmops 一文，確認 LLMOps 的定義一致"
+      ],
+      "volatile": false
+    },
+    {
+      "number": 6,
+      "slug": "ai-search-eeat",
+      "title": "E-E-A-T 是什麼：品質評分指南裡的概念，不是可以設定的排名訊號",
+      "spine": "重點在「它不是什麼」。它出自搜尋品質評分者指南——那些人不排名任何東西。沒有 E-E-A-T 欄位、分數或標記。",
+      "must_cover": [
+        "它出自哪一份文件、那份文件是寫給誰看的",
+        "品質評分者做什麼、不做什麼：他們評估搜尋結果的品質，不改變任何一頁的排名",
+        "沒有 E-E-A-T 分數、欄位，也沒有可以宣告它的標記",
+        "四個字母各自指什麼，以及 Experience 是後來才加的",
+        "常見的過度解讀：作者簡介頁、專家掛名、外部連結能不能「提升 E-E-A-T」"
+      ],
+      "links": ["ai-search-terms-index", "ai-search-seo", "ai-search-structured-data", "ai-search-geo"],
+      "source_directions": [
+        "Google Search Quality Rater Guidelines 原文（PDF）",
+        "Google Search Central 關於 E-E-A-T 與實用內容的官方說明"
+      ],
+      "volatile": false
+    },
+    {
+      "number": 7,
+      "slug": "ai-search-structured-data",
+      "title": "結構化資料與 Schema.org：能換到什麼、換不到什麼",
+      "spine": "資格 vs 排名。標記讓頁面有資格取得特定的複合式搜尋結果，它不是加分、也不保證被引用。帶出站方拒絕假造 FAQ／評論／商品標記的立場。",
+      "must_cover": [
+        "結構化資料做的是什麼：讓機器讀懂頁面上已經有的東西",
+        "資格與排名的差別：標記讓頁面有資格取得特定呈現方式，不是排名加分",
+        "標記內容必須是頁面上真的有的東西——這是官方文件寫的規則，不是建議",
+        "假造 FAQ、評論、商品標記的後果，以及本站為此拒絕使用它們的理由（標查證日）",
+        "本站目前實際輸出哪些標記（Article、BreadcrumbList、ItemList 等），以及為什麼停在那裡"
+      ],
+      "links": ["ai-search-terms-index", "ai-search-eeat", "ai-search-aeo", "ai-search-generated-answers"],
+      "source_directions": [
+        "Google Search Central 的結構化資料總覽與複合式搜尋結果說明",
+        "Google 的結構化資料一般指南（含內容必須對使用者可見的規定）",
+        "schema.org 本身的詞彙定義",
+        "repo 內的 docs/seo.md 與 apps/web/lib/structured-data.ts（只讀，描述現況，不修改）"
+      ],
+      "volatile": false
+    },
+    {
+      "number": 8,
+      "slug": "ai-search-llms-txt",
+      "title": "llms.txt 是什麼：一份提案，以及 robots.txt 真正能做的事",
+      "spine": "提案 vs 已部署的機制。llms.txt 是社群提案，沒有主流引擎承諾讀它。對照 robots.txt：靠慣例遵守，而且不是授權控制。",
+      "must_cover": [
+        "llms.txt 提案本身說它要解決什麼問題、格式長什麼樣",
+        "哪些引擎表態過、哪些沒有——附日期；沒有引擎公布過消費它的證據",
+        "robots.txt 能做什麼：它擋抓取，不擋索引；被擋的網址連 noindex 都讀不到",
+        "robots 指令不是授權控制，遵守靠慣例",
+        "訓練用爬蟲、檢索用爬蟲、搜尋索引是三件事，各自對應不同的 user-agent",
+        "本站目前的做法（標查證日）：拒絕抓取式爬蟲，刻意放行代使用者即時取用並附引用的那類，以及這個取捨的理由"
+      ],
+      "links": ["ai-search-terms-index", "ai-search-seo", "ai-search-generated-answers", "ai-search-measuring-citations"],
+      "source_directions": [
+        "llms.txt 提案本身的網站",
+        "RFC 9309（Robots Exclusion Protocol）",
+        "Google 關於 robots.txt 不能用來移除索引的官方說明",
+        "OpenAI、Anthropic、Google 等對自家爬蟲 user-agent 與用途的官方說明頁",
+        "repo 內的 apps/web/app/robots.ts（只讀，描述現況，不修改）"
+      ],
+      "volatile": true
+    },
+    {
+      "number": 9,
+      "slug": "ai-search-generated-answers",
+      "title": "AI 摘要與 AI 模式：生成式答案怎麼組出來，站長能控制什麼",
+      "spine": "講機制，不講操作（操作歸既有那兩篇）。查詢展開→檢索→接地→挑引用；以及真的有官方文件的控制項和它們的代價。",
+      "must_cover": [
+        "第一段就要明寫「這篇不重複既有的操作教學」並連過去",
+        "生成式答案的組成步驟：查詢展開、檢索、接地、挑引用——只寫官方文件說明的部分",
+        "被檢索到、被用來接地、被列為引用，是三件不同的事",
+        "有官方文件的控制項：nosnippet、max-snippet、data-nosnippet，各自做什麼",
+        "這些控制項的代價：關掉摘要通常也關掉一般搜尋的摘要",
+        "不可以寫任何超出官方文件的排序或挑選機制推測"
+      ],
+      "links": ["ai-search-terms-index", "google-ai-mode-search", "google-ai-overviews-for-site-owners", "ai-term-retrieval-augmented-generation"],
+      "source_directions": [
+        "Google Search Central 關於 AI 功能與網站的說明文件",
+        "Google 關於 nosnippet、max-snippet、data-nosnippet 的 robots meta 文件",
+        "Google 對 AI Overviews 與 AI Mode 的官方產品說明"
+      ],
+      "volatile": true
+    },
+    {
+      "number": 10,
+      "slug": "ai-search-measuring-citations",
+      "title": "怎麼量 AI 引用：測得到的、測不到的，與不能相信的分數",
+      "spine": "量測邊界。referrer／UTM 的缺口、伺服器日誌 vs 助理端引用、為什麼單次回答不是樣本、為什麼廠商的「AI 能見度分數」無法稽核。",
+      "must_cover": [
+        "第一段就要明寫「這篇不重複既有的 Search Console 操作教學」並連過去",
+        "referrer 能看到什麼、看不到什麼；為什麼很多 AI 來源的流量無法歸因",
+        "伺服器日誌看到的是爬蟲取用，不是使用者看到了引用",
+        "為什麼自己問一次 AI 看到自己的網站，不構成量測——樣本、隨機性、個人化",
+        "廠商「AI 能見度分數」的問題：方法不公開、樣本不可稽核、無法重現",
+        "可以誠實做的事：分開記錄曝光與到站行為，接受量測有邊界"
+      ],
+      "links": ["ai-search-terms-index", "google-ai-overviews-for-site-owners", "ai-search-llmo", "ai-term-evals"],
+      "source_directions": [
+        "Google Search Console 對生成式 AI 相關報表涵蓋範圍與限制的官方說明",
+        "Referrer Policy 規範（W3C）關於 referrer 何時不送出的規定",
+        "廠商對自家助理是否送出 referrer 的官方說明（查不到就寫以官方文件為準）"
+      ],
+      "volatile": true
+    },
+    {
+      "number": 11,
+      "slug": "ai-search-terms-index",
+      "title": "GEO、AEO、AIO 與 SEO 名詞總索引：10 篇看懂差在哪",
+      "spine": "系列總索引兼旗艦比較表。比照 ai-terms-index 的骨架：導言→「從你想解決的問題開始」表→四者比較表→圖解→分組 link 清單→「定義分歧在哪」一節。最後寫、最後發布。",
+      "must_cover": [
+        "導言說清楚這個系列的範圍與查證截止日，以及它不是一份封閉字典",
+        "「從你想解決的問題開始」表：讀者的處境對應該先讀哪幾篇",
+        "旗艦比較表：SEO／GEO／AEO／AIO 各自的目標、對象、可觀察程度、定義是否有共識",
+        "五個真實分歧逐條點名（見下方 disagreements）",
+        "10 篇的分組 link 清單，用絕對網址",
+        "一個 callout：名詞幫你分辨主張，不能替成果背書",
+        "連到 AI 名詞總索引與三篇既有相鄰文章"
+      ],
+      "links": [
+        "ai-search-seo", "ai-search-geo", "ai-search-aeo", "ai-search-aio", "ai-search-llmo",
+        "ai-search-eeat", "ai-search-structured-data", "ai-search-llms-txt",
+        "ai-search-generated-answers", "ai-search-measuring-citations",
+        "ai-terms-index", "google-ai-overviews-for-site-owners", "google-ai-mode-search", "chatgpt-search-vs-google"
+      ],
+      "link_style": "絕對網址的 link 區塊（比照 ai-terms-index），不是 article inline",
+      "source_directions": ["彙整 10 篇各自的一手來源，去重後取最關鍵的 ≤20 筆"],
+      "volatile": false,
+      "write_last": true
+    }
+  ],
+  "disagreements": [
+    "GEO 是 SEO 的上位、子集，還是改名？三種用法都在流通；提出這個詞的論文把它框成針對生成引擎評估的內容端技巧，不是取代 SEO。",
+    "GEO 與 AEO 是不是同一件事？有人混用；也有人主張 AEO 是擷取式答案、GEO 是生成式答案。兩種用法都現行。",
+    "AIO 指 Google 的 AI Overviews 功能、一門叫 AI Optimization 的服務，還是舊文案裡的 All-in-One？三個所指同時在用。",
+    "LLMO 的範圍只含檢索當下，還是也包含想辦法進入訓練資料？後者流傳很廣，而且從外部無法驗證。",
+    "llms.txt 到底有沒有作用？支持者說是新興標準；沒有主流引擎承諾消費它，部分還明講不讀。兩邊都可引用，照來源寫，不要越過來源去裁決。"
+  ]
+}
