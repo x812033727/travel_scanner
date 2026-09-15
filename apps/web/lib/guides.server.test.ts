@@ -15,6 +15,8 @@ import {
   loadGuideTopics,
   loadSeriesIndex,
   guideSitemapSummary,
+  loadGuideSearch,
+  SEARCH_PAGE_SIZE,
   SITEMAP_CHILD_LIMIT,
   SITEMAP_PAGE_SIZE,
 } from "./guides.server";
@@ -425,5 +427,48 @@ describe("the two-level vocabulary and the hubs around it", () => {
   it("lists no hub for a section whose vocabulary could not be read", async () => {
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("connection reset")));
     expect(await guideTopicSitemapEntries()).toEqual([]);
+  });
+});
+
+describe("article search", () => {
+  const hit = { ...summary, snippet: "…段落…", matched: ["jr"] };
+  const body = { query: "jr", total: 1, offset: 0, limit: 10, results: [hit], best_match: null, next_offset: null };
+  const respondWith = (status: number, payload: unknown) =>
+    vi.fn().mockResolvedValue({ ok: status < 400, status, json: async () => payload });
+
+  it("passes the words, the scope and the page through, sized for the page", async () => {
+    const fetchMock = respondWith(200, body);
+    vi.stubGlobal("fetch", fetchMock);
+    const result = await loadGuideSearch("ja", { q: "JR Pass", section: "travel", topic: "transport", offset: 20 });
+    const url = new URL(fetchMock.mock.calls[0][0]);
+    expect(url.pathname).toBe("/api/v1/guides/search");
+    expect(Object.fromEntries(url.searchParams)).toEqual({
+      locale: "ja", q: "JR Pass", section: "travel", topic: "transport", offset: "20", limit: String(SEARCH_PAGE_SIZE),
+    });
+    expect(fetchMock.mock.calls[0][1].cache).toBe("no-store");
+    expect(result).toEqual({ ...body, available: true, invalid: false });
+  });
+
+  it("calls a 422 the reader's to fix and anything else the API's", async () => {
+    vi.stubGlobal("fetch", respondWith(422, { code: "guide_search_query_invalid" }));
+    const refused = await loadGuideSearch("zh-TW", { q: "a" });
+    expect(refused).toMatchObject({ available: true, invalid: true, total: 0, results: [], query: "a" });
+
+    vi.stubGlobal("fetch", respondWith(500, { code: "boom" }));
+    expect(await loadGuideSearch("zh-TW", { q: "jr" })).toMatchObject({ available: false, invalid: false, results: [] });
+
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("down")));
+    expect(await loadGuideSearch("zh-TW", { q: "jr" })).toMatchObject({ available: false, invalid: false });
+
+    // A 200 that is not a result is an outage too, never a blank page of "no results".
+    vi.stubGlobal("fetch", respondWith(200, { results: "nope" }));
+    expect(await loadGuideSearch("zh-TW", { q: "jr" })).toMatchObject({ available: false });
+  });
+
+  it("never sends a negative offset", async () => {
+    const fetchMock = respondWith(200, body);
+    vi.stubGlobal("fetch", fetchMock);
+    await loadGuideSearch("zh-TW", { q: "jr", offset: -5 });
+    expect(new URL(fetchMock.mock.calls[0][0]).searchParams.get("offset")).toBe("0");
   });
 });

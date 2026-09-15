@@ -10,8 +10,10 @@ import {
   isGuideTopic,
   isPublishedGuide,
   isGuideKind,
+  isGuideSearchResult,
   topicLocales,
   type DestinationFacet,
+  type GuideSearchResult,
   type GuideArticleState,
   type GuideKind,
   type GuideList,
@@ -35,20 +37,29 @@ function apiBase() {
   return (process.env.API_INTERNAL_URL || "http://localhost:8000").replace(/\/$/, "");
 }
 
-async function fetchJson(path: string, locale: string): Promise<unknown | null> {
+type Answer = { ok: boolean; status: number; body: unknown };
+
+/** One read, with the status kept: a caller that has to tell "the API refused the input"
+ *  (422) from "the API is down" reads this; every other caller reads `fetchJson`. */
+async function fetchJsonWithStatus(path: string, locale: string): Promise<Answer | null> {
   try {
     const response = await fetch(`${apiBase()}/api/v1${path}`, {
       cache: "no-store",
       signal: AbortSignal.timeout(3000),
       headers: await publicServerHeaders(locale),
     });
-    if (!response.ok) return null;
-    return (await response.json()) as unknown;
+    const body: unknown = await response.json().catch(() => null);
+    return { ok: response.ok, status: response.status, body };
   } catch {
     // Each caller decides what a miss means: a list degrades to empty, an article refuses
     // to render a blank document and says it is unavailable.
     return null;
   }
+}
+
+async function fetchJson(path: string, locale: string): Promise<unknown | null> {
+  const answer = await fetchJsonWithStatus(path, locale);
+  return answer && answer.ok ? answer.body : null;
 }
 
 export type GuideFilters = {
@@ -143,6 +154,46 @@ export async function loadSeriesIndex(locale: Locale): Promise<SeriesSummary[]> 
   const body = row as Record<string, unknown> | null;
   if (!body || !Array.isArray(body.series)) return [];
   return body.series.filter(isSeriesSummary);
+}
+
+export type GuideSearchFilters = {
+  q: string;
+  section?: GuideSection;
+  kind?: GuideKind;
+  topic?: string;
+  destination?: string;
+  country?: string;
+  offset?: number;
+};
+
+/** A search answer, plus how it failed when it did: `invalid` is the API refusing the
+ *  query (nothing searchable in it), `available: false` is the API not answering at all.
+ *  The page words the two differently, because only one of them is the reader's to fix. */
+export type GuideSearchState = GuideSearchResult & { available: boolean; invalid: boolean };
+
+export const SEARCH_PAGE_SIZE = 10;
+
+function emptySearch(q: string, offset: number, limit: number, state: Pick<GuideSearchState, "available" | "invalid">): GuideSearchState {
+  return { query: q, total: 0, offset, limit, results: [], best_match: null, next_offset: null, ...state };
+}
+
+export async function loadGuideSearch(
+  locale: Locale, filters: GuideSearchFilters, limit = SEARCH_PAGE_SIZE,
+): Promise<GuideSearchState> {
+  const offset = Math.max(0, filters.offset ?? 0);
+  const params = new URLSearchParams({ locale, q: filters.q, limit: String(limit), offset: String(offset) });
+  if (filters.section) params.set("section", filters.section);
+  if (filters.kind) params.set("kind", filters.kind);
+  if (filters.topic) params.set("topic", filters.topic);
+  if (filters.destination) params.set("destination", filters.destination);
+  if (filters.country) params.set("country", filters.country);
+  const answer = await fetchJsonWithStatus(`/guides/search?${params.toString()}`, locale);
+  if (!answer) return emptySearch(filters.q, offset, limit, { available: false, invalid: false });
+  if (answer.status === 422) return emptySearch(filters.q, offset, limit, { available: true, invalid: true });
+  if (!answer.ok || !isGuideSearchResult(answer.body)) {
+    return emptySearch(filters.q, offset, limit, { available: false, invalid: false });
+  }
+  return { ...answer.body, best_match: answer.body.best_match ?? null, next_offset: answer.body.next_offset ?? null, available: true, invalid: false };
 }
 
 export type DestinationFacetResult = { destinations: DestinationFacet[]; available: boolean };
@@ -362,3 +413,4 @@ export const getGuideTopicList = cache(loadGuideTopicList);
 export const getGuideArticle = cache(loadGuideArticle);
 export const getSeriesIndex = cache(loadSeriesIndex);
 export const getDestinationFacets = cache(loadDestinationFacets);
+export const getGuideSearch = cache(loadGuideSearch);

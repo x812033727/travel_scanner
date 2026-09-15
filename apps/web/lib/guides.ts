@@ -240,6 +240,102 @@ export type GuideSummary = {
 
 export type GuideList = { articles: GuideSummary[]; next_cursor: string | null };
 
+/** One search result: the card fields plus the passage the match was found in, and the
+ *  folded terms the API matched so the card can mark them. */
+export type GuideSearchHit = GuideSummary & { snippet: string; matched: string[] };
+
+export type GuideSearchResult = {
+  query: string;
+  total: number;
+  offset: number;
+  limit: number;
+  results: GuideSearchHit[];
+  /** The article whose alias or title *is* the query; shown above the list, never in it. */
+  best_match: GuideSummary | null;
+  next_offset: number | null;
+};
+
+export type ArticleSearchOptions = { section?: GuideSection | null; offset?: number | null };
+
+/** The results page URL. Only what changes the result set goes in: the query, the section
+ *  and the offset, so two readers searching the same thing land on the same address. */
+export function articleSearchHref(q: string, options: ArticleSearchOptions = {}): string {
+  const params = new URLSearchParams();
+  const query = q.trim();
+  if (query) params.set("q", query);
+  if (options.section) params.set("section", options.section);
+  if (options.offset) params.set("offset", String(options.offset));
+  const suffix = params.toString();
+  return suffix ? `/search/articles?${suffix}` : "/search/articles";
+}
+
+export type HighlightSegment = { text: string; hit: boolean };
+
+/** The same fold the API applies to both the index and the query (NFKC, casefold). */
+function foldForMatch(text: string): string {
+  return text.normalize("NFKC").toLowerCase();
+}
+
+/**
+ * `text` folded character by character, with each folded position mapped back to the
+ * original character it came from. NFKC is not length-preserving -- an ellipsis becomes
+ * three periods, a ligature two letters -- so a match found in the folded copy has to be
+ * carried back through this map rather than by index.
+ */
+function foldWithMap(text: string): { folded: string; starts: number[]; stops: number[] } {
+  let folded = "";
+  const starts: number[] = [];
+  const stops: number[] = [];
+  let index = 0;
+  for (const char of text) {
+    const piece = foldForMatch(char) || char;
+    for (let offset = 0; offset < piece.length; offset += 1) {
+      starts.push(index);
+      stops.push(index + char.length);
+    }
+    folded += piece;
+    index += char.length;
+  }
+  return { folded, starts, stops };
+}
+
+/**
+ * Splits `text` into the runs that match one of `terms` and the runs between them, so a
+ * card can wrap the hits in `<mark>` without ever building HTML from a string. The match is
+ * made on the folded copy, so `ＡＩ` marks for `ai` and `JR PASS` for `jr pass`, and the
+ * runs are sliced from the original so the reader sees their own text. A term that lands
+ * inside one original character (a period inside an ellipsis) marks that character once.
+ */
+export function highlight(text: string, terms: readonly string[]): HighlightSegment[] {
+  if (!text) return [];
+  const needles = [...new Set(terms.map(foldForMatch).filter(Boolean))].sort((a, b) => b.length - a.length);
+  if (!needles.length) return [{ text, hit: false }];
+  const { folded, starts, stops } = foldWithMap(text);
+  const segments: HighlightSegment[] = [];
+  let foldCursor = 0;
+  let cursor = 0;
+  while (foldCursor < folded.length) {
+    let nextIndex = -1;
+    let nextLength = 0;
+    for (const needle of needles) {
+      const index = folded.indexOf(needle, foldCursor);
+      if (index >= 0 && (nextIndex < 0 || index < nextIndex)) { nextIndex = index; nextLength = needle.length; }
+    }
+    if (nextIndex < 0) break;
+    const from = Math.max(starts[nextIndex], cursor);
+    const to = stops[nextIndex + nextLength - 1];
+    if (to > from) {
+      if (from > cursor) segments.push({ text: text.slice(cursor, from), hit: false });
+      segments.push({ text: text.slice(from, to), hit: true });
+      cursor = to;
+    }
+    foldCursor = nextIndex + nextLength;
+  }
+  if (cursor < text.length) segments.push({ text: text.slice(cursor), hit: false });
+  return segments;
+}
+
+
 export type GuideArticleState = {
   slug: string;
   kind: GuideKind;
@@ -308,6 +404,23 @@ export function isGuideSummary(value: unknown): value is GuideSummary {
     && (row.valid_until === null || typeof row.valid_until === "string")
     && isOptionalHero(row.hero)
     && isTopicList(row.topics);
+}
+
+export function isGuideSearchHit(value: unknown): value is GuideSearchHit {
+  if (!isGuideSummary(value)) return false;
+  const row = value as unknown as Record<string, unknown>;
+  return typeof row.snippet === "string"
+    && Array.isArray(row.matched) && row.matched.every((term) => typeof term === "string");
+}
+
+export function isGuideSearchResult(value: unknown): value is GuideSearchResult {
+  if (!value || typeof value !== "object") return false;
+  const row = value as Record<string, unknown>;
+  return typeof row.query === "string" && Number.isInteger(row.total) && Number.isInteger(row.offset)
+    && Number.isInteger(row.limit)
+    && Array.isArray(row.results) && row.results.every(isGuideSearchHit)
+    && (row.best_match === null || row.best_match === undefined || isGuideSummary(row.best_match))
+    && (row.next_offset === null || row.next_offset === undefined || Number.isInteger(row.next_offset));
 }
 
 /** An `intel` notice past its own validity. It keeps its page; it just stops being current. */
