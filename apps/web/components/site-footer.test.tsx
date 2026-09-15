@@ -55,6 +55,7 @@ describe("SiteFooter", () => {
   it.each([
     ["旅遊情報攻略", "/guides"],
     ["生活分享", "/life"],
+    ["搜尋文章", "/search/articles"],
   ])("carries the only entry point to %s that survives a first paint", (name, href) => {
     // The header renders each section only after the discovery switch resolves; these links
     // are in the response body of every public page regardless.

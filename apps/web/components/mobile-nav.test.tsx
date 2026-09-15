@@ -7,6 +7,8 @@ import { ThemeProvider } from "./theme-provider";
 afterEach(() => vi.unstubAllGlobals());
 const discovery = vi.hoisted(() => ({ enabled: false, loading: false }));
 vi.mock("@/lib/discovery", () => ({useDiscoveryStatus: () => discovery}));
+const search = vi.hoisted(() => ({ open: vi.fn() }));
+vi.mock("@/components/site-search/site-search-dialog", () => ({ openSiteSearch: search.open }));
 beforeEach(() => { discovery.enabled = false; discovery.loading = false; });
 
 describe("MobileNav", () => {
@@ -28,6 +30,19 @@ describe("MobileNav", () => {
     discovery.enabled = true;
     render(<ThemeProvider><MobileNav /></ThemeProvider>);
     expect(screen.getByRole("link", { name }).getAttribute("href")).toBe(href);
+  });
+
+  // The desktop search box is hidden below lg, so the phone header opens the same
+  // search as a sheet -- in both modes, since discovery returns before the menu.
+  it.each([false, true])("opens the article search from the header row (discovery: %s)", (enabled) => {
+    discovery.enabled = enabled;
+    render(<ThemeProvider><MobileNav /></ThemeProvider>);
+    const button = screen.getByRole("button", { name: "開啟搜尋" });
+    fireEvent.click(button);
+    expect(search.open).toHaveBeenCalledTimes(1);
+    // The discovery row is full at 380px; the search joins it only where a seventh
+    // target fits, at the largest text size 440px.
+    if (enabled) expect(button.className).toContain("min-[440px]:grid");
   });
 
   it("offers a way to sign in on a phone even in discovery mode", () => {

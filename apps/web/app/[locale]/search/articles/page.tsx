@@ -7,7 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { articleSearchHref, guideHref, guideTopicHref, isGuideSection, type GuideSection, type GuideTopic } from "@/lib/guides";
-import { getGuideSearch, getGuideTopics, getSeriesIndex, SEARCH_PAGE_SIZE } from "@/lib/guides.server";
+import { getGuideSearch, getGuideTopics, getSeriesIndex } from "@/lib/guides.server";
 
 type Params = { locale: Locale };
 type Search = { q?: string; section?: string; offset?: string };

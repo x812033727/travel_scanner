@@ -1,10 +1,11 @@
 "use client";
 
-import { BookOpen, CircleUserRound, LogIn, Menu, Search, ShieldCheck, Sparkles, X } from "lucide-react";
+import { BookOpen, CircleUserRound, LogIn, Menu, Search, ShieldCheck, Sparkles, TextSearch, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { openSiteSearch } from "@/components/site-search/site-search-dialog";
 import { useTheme } from "@/components/theme-provider";
 import { useHeaderSession } from "@/components/header-session";
 import { TextSizeSwitcher } from "@/components/text-size-switcher";
@@ -86,6 +87,12 @@ export function MobileNav() {
         breakpoint has to be the widest the row can get. The same overflow is what
         collapsed the language switcher into an icon; see language-switcher.tsx. */}
     <Link href="/life" aria-label={nav("life")} className="hidden min-[380px]:grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><Sparkles size={21} aria-hidden /></Link>
+    {/* The article search, by the same arithmetic one target further along: a seventh
+        2.75rem target and its gap put the row's right edge at 440px at the largest text
+        size. Below that the desktop box is out of reach too, so /search/articles stays
+        linked from the footer. A different glyph from the explore magnifier above, since
+        two identical icons a thumb apart would be a guess. */}
+    <button type="button" aria-label={nav("openSearch")} onClick={openSiteSearch} className="hidden min-[440px]:grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><TextSearch size={21} aria-hidden /></button>
   </div>;
   return <div className="flex items-center gap-1 lg:hidden">
     <LanguageSwitcher compact />
@@ -98,6 +105,10 @@ export function MobileNav() {
     <Link href={status === "authenticated" ? "/account" : "/login"} aria-label={status === "authenticated" ? nav("account") : nav("login")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
       {status === "authenticated" ? <CircleUserRound size={21} /> : <LogIn size={21} />}
     </Link>
+    {/* The desktop search box is hidden below lg; this opens the same search as a sheet. */}
+    <button type="button" aria-label={nav("openSearch")} onClick={openSiteSearch} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
+      <TextSearch size={21} />
+    </button>
     <button ref={triggerRef} type="button" aria-label={nav("openMenu")} aria-expanded={open} onClick={(event) => { event.currentTarget.focus(); setOpen(true); }} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
       <Menu size={21} />
     </button>
