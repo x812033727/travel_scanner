@@ -1,0 +1,190 @@
+{
+  "slug": "ai-news-deepseek-v41-flash-20260910",
+  "event_date": "2026-09-10",
+  "title": "DeepSeek-V4.1-Flash 上線、V4-Pro 去留有兩種說法：模型換手時該注意什麼",
+  "sources": [
+    {
+      "title": "DeepSeek：DeepSeek-V4.1-Flash 發布公告",
+      "url": "https://api-docs.deepseek.com/news/news260910",
+      "checked_on": "2026-09-15"
+    },
+    {
+      "title": "DeepSeek：API 更新日誌（Change Log）",
+      "url": "https://api-docs.deepseek.com/updates",
+      "checked_on": "2026-09-15"
+    },
+    {
+      "title": "DeepSeek：模型與價格",
+      "url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "checked_on": "2026-09-15"
+    },
+    {
+      "title": "DeepSeek：DeepSeek-V4.1-Flash 官方模型卡（Hugging Face）",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+      "checked_on": "2026-09-15"
+    }
+  ],
+  "checked_on": "2026-09-15",
+  "verified_facts": [
+    "發布公告頁標題為「DeepSeek-V4.1-Flash Release 2026/09/10」，說明 V4.1-Flash 是新架構家族中最小的模型，具原生視覺理解（https://api-docs.deepseek.com/news/news260910）",
+    "更新日誌 2026-09-10 條目：V4.1-Flash 正式發布，已上線 DeepSeek API、原生支援多模態，模型名改為 deepseek-flash 即可呼叫（https://api-docs.deepseek.com/updates）",
+    "公告寫 552B 參數 MoE、新的 Causal Encoder–Decoder 架構，輸入啟用 8B、輸出啟用 16B；新預訓練方式與更大規模 RL 後訓練使基準測試超過含 DeepSeek-V4-Pro 的旗艦模型（廠商宣稱）（https://api-docs.deepseek.com/news/news260910）",
+    "模型卡寫法：「activate only 8B parameters per token during prefill and 16B during decode」；前沿模型對照表中 Opus-5.0、GPT-5.6 Sol 等在 GPQA Diamond、HLE、Terminal-Bench 3.0／4.0、ProgramBench、NL2Repo-Bench 等項目高於 DS-V4.1-Flash（文章只寫「有落後其他廠商模型的項目」，不寫分數）（https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash）",
+    "公告寫與上一代相比，KV 快取的 HBM 需求為 1/4、SSD 需求為 1/8；快取命中費用常占代理類成本很大比例（https://api-docs.deepseek.com/news/news260910）",
+    "公告寫 V4-Flash 與 V4-Flash-Vision-Exp 已退役，deepseek-v4-flash 與 deepseek-v4-flash-vision-exp 暫時導向 V4.1-Flash（https://api-docs.deepseek.com/news/news260910；https://api-docs.deepseek.com/updates）",
+    "公告（2026-09-15 查核時英文版與簡體中文版皆仍保留）寫：多方測試顯示 V4.1-Flash 在效能、費用、速度與總用時上勝過 V4-Pro，計畫讓 V4-Pro 退場；自 2026-09-14 04:00 UTC（簡中版寫北京時間 12:00）起所有 deepseek-v4-pro 請求導向 V4.1-Flash、按 V4.1-Flash 價格計費，持續到 V4.1-Pro 推出（https://api-docs.deepseek.com/news/news260910；https://api-docs.deepseek.com/zh-cn/news/news260910）",
+    "更新日誌 2026-09-10 條目與價格頁註 (2) 在查核時寫：因應使用者需求，決定在 2026-09-14 之後繼續提供 DeepSeek V4 Pro 的 API 服務，計費方式不變，如有變動另行通知；這段文字未標示日期。2026-09-15 查核時，更新日誌 9 月 10 日條目的「API changes」段只有這段繼續提供的說明，沒有發布公告那段 9 月 14 日起導向的文字；API 文件新聞列表最新一則仍是 news260910（https://api-docs.deepseek.com/updates；https://api-docs.deepseek.com/zh-cn/updates；https://api-docs.deepseek.com/quick_start/pricing；https://api-docs.deepseek.com/zh-cn/quick_start/pricing）",
+    "簡中價格頁以人民幣標示、英文價格頁以美元標示；文章引用的美元數字取自英文價格頁（https://api-docs.deepseek.com/quick_start/pricing）",
+    "API 文件 Lists Models 的回應範例列出 deepseek-flash 與 deepseek-v4-pro 兩個 id；價格頁與這一頁都沒有說明可用帶日期的版本名（如 DeepSeek-V4-Pro-0813）呼叫（https://api-docs.deepseek.com/api/list-models；https://api-docs.deepseek.com/quick_start/pricing）",
+    "更新日誌 2026-08-13 條目：V4-Pro 正式版已在 APP、網頁與 API 上線，API 呼叫方式不變，模型名設為 deepseek-v4-pro 即可使用最新版本（https://api-docs.deepseek.com/updates）",
+    "價格頁：deepseek-flash 版本為 DeepSeek-V4.1-Flash，deepseek-v4-pro 版本為 DeepSeek-V4-Pro-0813；上下文長度 1M、最大輸出 384K；Vision 一列 deepseek-flash 打勾、deepseek-v4-pro 為 Not supported（https://api-docs.deepseek.com/quick_start/pricing）",
+    "價格頁註 (1)：舊名 deepseek-v4-flash、deepseek-v4-flash-vision-exp 仍可呼叫，但對應模型已退役，由 V4.1-Flash 服務並按 Flash 價格計費（https://api-docs.deepseek.com/quick_start/pricing）",
+    "價格頁每百萬 token（美元）：deepseek-flash 命中快取 離峰 0.003／尖峰 0.006，未命中 0.15／0.3，輸出 0.6／1.2；deepseek-v4-pro 命中 0.022／0.044，未命中 0.66／1.32，輸出 1.98／3.96；離峰為尖峰一半，尖峰為週一至週五 UTC 01:00–04:00 與 06:00–10:00（簡中價格頁寫北京時間 9:00–12:00、14:00–18:00，與台灣時間相同）（https://api-docs.deepseek.com/quick_start/pricing）",
+    "公告寫新價格自 2026-09-10 04:00 UTC 生效，並表示架構效率讓成本降低、把省下的成本反映在較低價格（https://api-docs.deepseek.com/news/news260910）",
+    "公告寫官方合作夥伴 WorkBuddy（含 CodeBuddy）與 OpenCode 已全面支援 V4.1-Flash（https://api-docs.deepseek.com/news/news260910）",
+    "公告英文版寫「Planning a large-scale deployment with 2,000 GPUs + a storage cluster? Let's talk.」，簡中版寫有大規模部署需求且具備相應資源（2k 卡 GPU、有存儲集群）歡迎聯繫；這是部署合作邀請，不是執行模型的最低需求，並附 Hugging Face 模型與技術報告連結（https://api-docs.deepseek.com/news/news260910；https://api-docs.deepseek.com/zh-cn/news/news260910）",
+    "模型卡：552B backbone parameters、支援最長一百萬 token 上下文、原生處理圖片與文字並輸出文字；「This repository and the model weights are licensed under the MIT License」（https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash）",
+    "模型卡連到的 inference/README.md 自稱「readable reference implementation rather than a production serving engine」，範例以 MP=8（每個 tensor-parallel rank 一個轉換檔、torchrun --nproc-per-node 8）轉換並執行權重；模型卡與該 README 都沒有列出最低硬體需求（https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/blob/main/inference/README.md）",
+    "更新日誌 2026-04-24 條目：deepseek-chat 與 deepseek-reasoner 將於三個月後（2026-07-24）停用，過渡期間分別指向 deepseek-v4-flash 的非思考與思考模式（https://api-docs.deepseek.com/updates）"
+  ],
+  "unverified_or_excluded": [
+    "V4-Pro 繼續提供這段改寫的確切日期：官方頁沒有標示，也沒有另發新聞頁。Internet Archive 快照顯示簡中價格頁在 2026-09-11 10:45 UTC 仍是舊文字、19:37 UTC 已是新文字，但存檔站不是一手來源，文章不寫日期。查核編輯 2026-09-15 重查時 Internet Archive 暫停服務，無法複核這兩個快照",
+    "更新日誌 9 月 10 日條目是否曾經寫過「9 月 14 日起導向」再被改掉：沒有一手證據（上一條快照只涉及簡中價格頁），查核後文章不再寫「改寫」「已變成」，只寫查核當天兩處頁面的文字，以及「決定繼續提供」的措辭顯示這是導向計畫之後的決定",
+    "DeepSeek 是否在 X、微信公眾號等社群帳號另發 V4-Pro 繼續提供的說明：未查核，文章只寫「API 文件新聞列表沒有另發公告」，不寫「官方沒有另發新聞稿」",
+    "V4-Pro 在 9 月 14 日之後是否實際仍可呼叫：本站沒有呼叫 API，文章寫成「依更新日誌與價格頁的說明繼續提供」，不寫「仍在服務」",
+    "DeepSeek App 與網頁版是否已改用 V4.1-Flash：9 月 10 日公告與更新日誌只談 API，沒有寫 App／網頁，文章明寫未交代、不推定",
+    "各項基準分數（GPQA Diamond、Terminal-Bench 等）：屬廠商宣稱且對一般讀者意義有限，刻意不寫；另外更新日誌寫 NL2Repo-Bench 65.4，模型卡表格寫 64.0，兩頁不一致",
+    "模型卡的細部規格（Engram 196B、45T tokens 預訓練、384 個 routed experts、CSA2、每 token 890 bytes KV 快取、推理強度 1–100）：官方有寫但與讀者角度無關，不寫",
+    "V4.1-Flash 相較舊 V4-Flash 降價多少：沒有抓到 9 月 10 日之前的一手價格頁，不寫降幅",
+    "deepseek-chat／deepseek-reasoner 是否真的已於 2026-07-24 停用：更新日誌只有預告，文章寫成「預告停用」",
+    "二手線索「文字與 Agent 能力提升」：官方只寫新預訓練與更大規模 RL 後訓練、基準超過 V4-Pro 等旗艦，文章寫成 DeepSeek 表示，不寫成事實",
+    "第三方雲端平台（Azure、Bedrock 等）是否已提供 V4.1-Flash：未查核，文章只泛稱「其他雲端平台代管」",
+    "DeepSeek 隱私政策的具體內容（資料存放地、訓練用途）：本篇依規格只寫「請閱讀官方隱私政策」，不做未查證的描述"
+  ],
+  "editorial_brief": "讀者設定為不直接呼叫 API、但可能透過翻譯外掛、寫作 App 或公司內部工具間接用到 DeepSeek 的台灣使用者。原創情境是上班族發現內部摘要工具在 9 月 10 日後輸出變長、分段不同，藉此說明模型名稱導向、如何察覺與固定版本的意義。刻意不談：基準分數比較、開放權重的本機部署細節（已在 Qwen3.5 篇）、DeepSeek 隱私條款的解讀與任何未查證的資料安全指控、投資或企業採購建議。",
+  "hero_label": "名稱沒變，模型換了",
+  "diagram": {
+    "title": "模型換手時的四個檢查",
+    "caption": "模型換手時的四個檢查：看工具更新說明、比對回答長度與格式、確認模型名稱與實際版本、閱讀官方隱私政策。",
+    "nodes": [
+      [
+        "看更新說明",
+        "工具是否換了模型"
+      ],
+      [
+        "比對回答",
+        "長度格式有無改變"
+      ],
+      [
+        "確認名稱",
+        "模型名與實際版本"
+      ],
+      [
+        "讀隱私政策",
+        "資料如何保存使用"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Same name, new model",
+      "diagram": {
+        "title": "Four Checks When a Model Changes Hands",
+        "caption": "Four checks when a model changes hands: read the tool's update notes, compare answer length and format, confirm the model name and actual version, and read the official privacy policy.",
+        "nodes": [
+          [
+            "Read update notes",
+            "Did the tool switch models?"
+          ],
+          [
+            "Compare answers",
+            "Length or format changed?"
+          ],
+          [
+            "Confirm the name",
+            "Model name and real version"
+          ],
+          [
+            "Read privacy terms",
+            "How data is stored and used"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "名前は同じ、中身は別モデル",
+      "diagram": {
+        "title": "モデルが入れ替わるときの四つの確認",
+        "caption": "モデルが入れ替わるときの四つの確認：ツールの更新情報を見る、回答の長さと形式を比べる、モデル名と実際のバージョンを確認する、公式のプライバシーポリシーを読む。",
+        "nodes": [
+          [
+            "更新情報を見る",
+            "ツールがモデルを変えたか"
+          ],
+          [
+            "回答を比べる",
+            "長さや形式が変わったか"
+          ],
+          [
+            "名称を確認",
+            "モデル名と実際のバージョン"
+          ],
+          [
+            "プライバシーポリシー",
+            "データの保存と利用方法を読む"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "이름은 그대로, 모델은 교체",
+      "diagram": {
+        "title": "모델 교체 시 네 가지 점검",
+        "caption": "모델이 교체될 때의 네 가지 점검: 도구 업데이트 안내 확인, 답변 길이와 형식 비교, 모델명과 실제 버전 확인, 공식 개인정보 처리방침 읽기.",
+        "nodes": [
+          [
+            "업데이트 안내 확인",
+            "도구가 모델을 바꿨는지"
+          ],
+          [
+            "답변 비교",
+            "길이·형식이 달라졌는지"
+          ],
+          [
+            "이름 확인",
+            "모델명과 실제 버전"
+          ],
+          [
+            "개인정보 처리방침",
+            "데이터 저장·이용 방식"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "名称没变，模型换了",
+      "diagram": {
+        "title": "模型换手时的四个检查",
+        "caption": "模型换手时的四个检查：看工具更新说明、比对回答长度与格式、确认模型名称与实际版本、阅读官方隐私政策。",
+        "nodes": [
+          [
+            "看更新说明",
+            "工具是否换了模型"
+          ],
+          [
+            "比对回答",
+            "长度格式有无改变"
+          ],
+          [
+            "确认名称",
+            "模型名与实际版本"
+          ],
+          [
+            "读隐私政策",
+            "数据如何保存使用"
+          ]
+        ]
+      }
+    }
+  }
+}
