@@ -42,6 +42,23 @@ scope:
 `GET /guides/sitemap`（`apps/api/app/guides/router.py`）沒有分頁參數，所以不能只在 web 端拆；`docs/seo.md`
 寫的「No sitemap index is needed」與 `docs/travel-guides.md` 的「Still open」都要一起改。
 
+
+## 2026-09-15 複測：966 列，headroom 只剩 34
+
+財經系列批次 03 開工前實測 `origin/main` 上的內容包：**778 個包、966 個 (article, locale) 列**
+（zh-TW 758、en／ja／ko／zh-CN 各 52）。比這張票寫的 926 又多了 40 列，因為這中間又合併了幾批。
+
+- 距離 `SITEMAP_LIMIT = 1000` 只剩 **34 列**。
+- 財經批次 03（20 篇，只有 zh-TW）落地後是 **986**，剩 14 列。
+- 財經批次 04–06 還有 **60 篇**，AI 系列批次 08–12 還有 **91 篇**——兩邊加起來 151 篇，
+  **不管哪一邊先動都會爆掉**。
+
+站主已知悉並決定先寫批次 03。**批次 04 開工前這張票必須先解決。**
+
+這張票目前認領不了：`depends_on` 的 `2026-09-14-claude-code-tutorial-center` 與
+`2026-09-14-pack-ingest-urlopen-scheme` 都還是 `status: review`，而且兩張都佔著
+`apps/api/app/guides/pack_ingest.py` 的 scope。要動這張票得先讓那兩張合併或認領過期。
+
 ## Definition of done
 
 - [ ] `/sitemap.xml` 變成 sitemap index，靜態路由一個子 sitemap、文章依專區或依語系分成多個子 sitemap，每個子檔不超過 1,000 列，沒有文章被擠掉。

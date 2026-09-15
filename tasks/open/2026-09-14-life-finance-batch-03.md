@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-life-finance-batch-03
 title: 生活分享財經系列批次 03：保險與風險（20 篇）
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-15T01:02:14Z
 created_at: 2026-09-14T11:45:48Z
 completed_at:
 branch:

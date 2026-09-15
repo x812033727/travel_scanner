@@ -22,9 +22,11 @@ AI 系列沒有這個問題，不要把兩邊的規則混著用。
 ## 政策
 
 - **語系：只寫 zh-TW。** 五語系共用一份 1,000 列的 sitemap（`SITEMAP_LIMIT`／`SITEMAP_GUIDE_ENTRY_LIMIT`），
-  一個已發布的翻譯佔一列。今天文章約佔 478 列，靜態頁另有 ≤385 個 URL，
-  `pack_ingest.SITEMAP_WARN_ROWS` 是 800。120 篇單語系加進去約 598 列，仍在警戒線內；
-  要翻其他語系得等 sitemap 拆分（`docs/travel-guides.md`「Still open」）。
+  一個已發布的翻譯佔一列，`pack_ingest.SITEMAP_WARN_ROWS` 是 800。
+  **2026-09-15 實測：已經 966 列，只剩 34 列 headroom。** 規劃這個系列時算的是 478 列，
+  但 AI 系列這段期間推了好幾批，數字早就不是那個了。批次 03 落地後是 986。
+  **批次 04–06（60 篇）放不進去，一定要先做 `2026-09-14-sitemap-split-before-1000-rows`。**
+  多語系更不用想：一批 20 篇翻五語系就是 100 列，立刻爆掉。
 - **主題：** 用 `finance` 加上 life 既有詞彙（`ai`、`tutorial`、`software`、`gadgets`、`productivity`、
   `daily`、`misc`）。實務上是 `finance` 再加一個：操作教學型加 `tutorial`，工具比較型加 `software`，
   生活情境型加 `daily`。`destination_id` 一律 `null`。
@@ -245,9 +247,12 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life \
 | 17 | `insurance-claim-process` | 理賠申請流程：文件、時限與被拒賠的常見原因 | finance, tutorial | 插 |  |  |
 | 18 | `insurance-surrender-lapse` | 解約、停效與復效：繳不出保費時有哪些選項 | finance | 插 |  |  |
 | 19 | `online-insurance-purchase` | 網路投保：能買什麼、和臨櫃差在哪 | finance, software | 插 |  | ✓ |
-| 20 | `insurance-sales-questions` | 聽業務員說明時該問的問題：把話術換回條款 | finance | 照 |  |  |
+| 20 | `insurance-sales-questions` | 聽業務員說明時該問的問題：把話術換回條款 | finance | 插 |  |  |
 
-第 10–13 篇是旅遊銜接篇。保險文尤其要守「不推薦個別保單」：講的是險種與條款結構。
+第 10–13 篇是旅遊銜接篇。保險文尤其要守「不推薦個別保單」：講的是險種與條款結構，
+**額外的法遵限制寫在 brief 的 2.5 節**（不得出現保險公司或商品名稱、不做費率比較、
+不給投保金額建議、條款用語照抄正式名稱、理賠不寫成通則）。
+第 20 篇原本標「照」，依批次 01 的經驗記錄改為全批自繪。
 
 ### 批次 04｜稅務與政府制度
 
