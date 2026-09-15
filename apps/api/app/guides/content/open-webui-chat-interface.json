@@ -1,0 +1,415 @@
+{
+  "slug": "open-webui-chat-interface",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
+      "description": "Ollama 裝好之後，對話只留在終端機裡。Open WebUI 官方文件給一行 Docker 指令，把介面開在埠 3000：聊天記錄、多模型並排、上傳文件做 RAG、多人帳號都在裡面。這篇照官方文件走完 Docker 與 pip 兩種安裝、用 OLLAMA_BASE_URL 接上 11434 埠、建立第一個管理員帳號、做知識庫與提示詞範本、備份 volume，最後把 LICENSE 裡那條不能拿掉 Open WebUI 標示的條款照原文說清楚。",
+      "hero": {
+        "src": "/guides/open-webui-chat-interface/hero.jpg",
+        "alt": "插圖：一個瀏覽器視窗裡的對話框，兩條線分別連到一台本機電腦與一朵雲，下方有一個資料匣。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Ollama 把模型跑起來以後，對話只活在終端機的畫面裡：關掉視窗就沒了，也沒辦法把檔案丟進去問、沒辦法換一個模型再問一次同樣的問題。Open WebUI 是一套自己架的網頁介面，官方 README 把它寫成「自架的 AI 平台」，支援 Ollama 與任何 OpenAI 相容 API，一行 Docker 指令就能在瀏覽器裡得到聊天記錄、多模型切換、檔案上傳與多人帳號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照官方文件走完六件事：用 Docker 或 pip 裝起來、接上本機的 Ollama、建立第一個管理員帳號、把文件放進知識庫、把常用指示存成提示詞範本、更新與備份。最後一節談授權，因為 Open WebUI 的授權條款裡有一條品牌標示條款，人數超過門檻就不能把「Open WebUI」的標示拿掉，自架之前值得先看清楚。介面步驟依官方文件描述，實際畫面以官網當天版本為準。"
+        },
+        {
+          "type": "heading",
+          "text": "Open WebUI 是什麼：只有介面，模型要自己接",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方快速開始有一句話講得很直白：Open WebUI 本身沒有任何模型，它是一層介面與工具，模型要從連線設定裡接進來。官網首頁把它定位成自架的 AI 介面，強調可以完全離線執行、裝起來不需要帳號。換句話說，它跟 Ollama 不是二選一，而是疊在 Ollama 上面的那一層。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方 README 的功能清單很長，對一般使用者最有感的是這幾項："
+        },
+        {
+          "type": "list",
+          "items": [
+            "多模型對話：同一個問題同時送給兩個以上的模型，回答並排顯示，可以當場比較。",
+            "本機 RAG：上傳文件後由檢索增強生成回答，支援混合檢索（BM25 加向量）與重新排序，README 逐一列出 9 種向量資料庫。",
+            "權限與群組：管理員可以設定角色、群組與細部權限，每個人看到的東西不一樣。",
+            "提示詞範本、模型預設、筆記、網頁搜尋、語音與視訊對話、用量統計。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "安裝：Docker 一行指令，或 pip 裝進 Python",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方快速開始把 Docker 列為正式支援、也是多數人建議走的方式。文件要你先用 openssl rand -hex 32 產生一組祕鑰填進 WEBUI_SECRET_KEY，再執行下面這一行；它會自動拉映像檔並啟動。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 Docker 啟動 Open WebUI（官方快速開始）",
+          "code": "docker run -d -p 3000:8080 \\\n  --add-host=host.docker.internal:host-gateway \\\n  -v open-webui:/app/backend/data \\\n  -e WEBUI_SECRET_KEY=your-secret-key \\\n  --name open-webui --restart always \\\n  ghcr.io/open-webui/open-webui:main"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件對每個旗標都給了一句說明：-p 3000:8080 是把容器內部的 8080 對應到你這台機器的埠 3000，3000 被占用就改左邊那個數字；-v open-webui:/app/backend/data 是對話、使用者與設定存放的 volume，文件寫「絕對不要不帶它執行」；--add-host 讓容器連得到跑在你機器上的 Ollama；WEBUI_SECRET_KEY 沒有固定下來的話，每次重建容器都會換一把新鑰匙，所有人都會被登出。"
+        },
+        {
+          "type": "code",
+          "language": "yaml",
+          "label": "docker-compose.yml（官方快速開始的 Compose 版本）",
+          "code": "services:\n  open-webui:\n    image: ghcr.io/open-webui/open-webui:main\n    ports:\n      - \"3000:8080\"\n    volumes:\n      - open-webui:/app/backend/data\n    extra_hosts:\n      - host.docker.internal:host-gateway\n    environment:\n      - WEBUI_SECRET_KEY=your-secret-key\n    restart: unless-stopped\n\nvolumes:\n  open-webui:"
+        },
+        {
+          "type": "paragraph",
+          "text": "存成 docker-compose.yml 之後執行 docker compose up -d。文件特別提醒要用 Docker Compose 第二版，也就是中間有空格的 docker compose；舊教學裡帶連字號的 docker-compose 是第一版語法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不想碰容器，官方也提供 pip 安裝，但要先看 Python 版本：文件寫 Open WebUI 支援 Python 3.11 與 3.12，3.13 還不支援，正式使用建議用最新的 3.11。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 pip 安裝並啟動（官方快速開始）",
+          "code": "pip install open-webui\nopen-webui serve"
+        },
+        {
+          "type": "paragraph",
+          "text": "pip 這條路啟動後介面在埠 8080，跟 Docker 的 3000 不一樣。文件說用 open-webui serve 啟動時 PORT 環境變數不生效，要換埠得加 --port 參數，例如 open-webui serve --port 9999。資料位置用 DATA_DIR 指定，環境變數說明頁寫它的預設值是 ./data，上傳檔案、快取與向量資料庫都放在底下。"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "接上 Ollama：埠 11434 與 OLLAMA_BASE_URL",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的 API 在埠 11434。官方文件說 Open WebUI 裝好啟動後會自動去找 Ollama：從 Docker 裡找的是 host.docker.internal 的 11434 埠，上面那個 --add-host 就是為了這件事；用 pip 跑則是 localhost 的 11434 埠。接上之後，在頭像選單的 Settings → Admin → Connections 裡可以看到 Manage Ollama API Connections 這一區，身為管理員，在新對話的模型選單直接打模型名稱、確認下載，就會叫 Ollama 去拉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 跑在另一台機器上，就用 OLLAMA_BASE_URL 指過去。環境變數說明頁寫它的預設值是 localhost 的 11434 埠，在 Docker 裡的預設值改成 host.docker.internal 的同一個埠。文件也提醒：Open WebUI 在 Docker 裡、Ollama 在主機上時，Ollama 那邊要監聽 0.0.0.0，模型清單才不會是空的。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "連到另一台機器上的 Ollama（官方快速開始）",
+          "code": "docker run -d -p 3000:8080 \\\n  -e OLLAMA_BASE_URL=https://example.com \\\n  -v open-webui:/app/backend/data \\\n  -e WEBUI_SECRET_KEY=your-secret-key \\\n  --name open-webui --restart always \\\n  ghcr.io/open-webui/open-webui:main"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 服務商的模型走另一條路：同一頁的 Manage OpenAI API Connections 按加號，填服務商的網址與金鑰後存檔，模型就會自動列出來。文件說 Open WebUI 是協定導向的，只實作 OpenAI Chat Completions 這類通用協定，不替個別服務商寫專用模組；有些服務商沒有 /models 端點，加連線時驗證會失敗，但對話仍然可用，只要手動把模型代號加進 Model IDs 允許清單。反過來，Open WebUI 自己也對外開一個 OpenAI 相容端點 /api/chat/completions，金鑰在 Settings → Account 產生，可以讓其他程式接進來。"
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        },
+        {
+          "type": "image",
+          "src": "/guides/open-webui-chat-interface/diagram-1.svg",
+          "alt": "架構圖：瀏覽器連到 Open WebUI，Open WebUI 再連到本機 Ollama 與 OpenAI 相容 API，資料存在 volume。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：瀏覽器只跟 Open WebUI 說話，模型都是 Open WebUI 從連線設定接進來的，資料留在下方那個 volume 裡。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "第一次登入：第一個帳號就是管理員",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "瀏覽器打開埠 3000，第一個畫面寫著 Get started with Open WebUI，按下 Create Admin Account。官方文件講得很清楚：第一個帳號就是管理員，管使用者也管全站設定，而這組帳號跟其他資料一樣留在你自己的 volume 裡。管理員密碼弄丟會鎖住全站設定，文件另外有一頁講怎麼重設，先把密碼記好比較省事。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "開瀏覽器到埠 3000，等到容器日誌出現 Application startup complete。",
+            "在第一個畫面按 Create Admin Account，填 email 與密碼。",
+            "到 Settings → Admin → Connections 確認 Ollama 連線，或加一條 OpenAI 相容連線。",
+            "要讓別人加入，到 Settings → Admin → Authentication 打開 New Sign Ups。",
+            "新帳號會停在 Pending，回 Admin Panel 的 Users 頁核准。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "Open WebUI 定義三種系統角色：admin 是超級使用者，預設繞過大部分權限檢查；user 是一般成員，能做什麼完全看全域預設權限與群組給了什麼；pending 是新註冊的預設狀態，在管理員核准前什麼都看不到、什麼都不能做。新帳號拿到哪一種由 DEFAULT_USER_ROLE 決定，文件寫預設值就是 pending，對開放給別人用的站台來說這是建議值。角色一改，那個帳號的連線會馬上被切斷。"
+        },
+        {
+          "type": "link",
+          "text": "在 VPS 上自架 AI 服務：Ollama＋Open WebUI",
+          "url": "https://mokaair.com/zh-TW/life/self-host-ai-on-vps"
+        },
+        {
+          "type": "heading",
+          "text": "把文件丟進去：知識庫、# 指令與引用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open WebUI 的文件功能分兩種用法。臨時問一份檔案，直接把它拖進對話框；會重複用到的就建成知識庫：側邊欄點 Workspace，選 Knowledge，按 Create 取名字與說明，然後上傳檔案。之後在任何對話裡打一個井字號，就能從跳出來的清單挑知識庫或單一檔案；也可以到 Workspace → Models → Edit 把知識庫綁死在某個模型上，用那個模型時不必每次重挑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "附件有兩種檢索模式，點一下已附加的項目就能切換。預設是 Focused Retrieval，用檢索增強生成只撈出跟問題相關的片段，適合大量文件；Full Context 則是把整份文件一字不漏塞進每一次訊息，適合短的參考文件或風格指南。模型預設裡還有一個 Citations 開關，文件寫它預設開啟，回答會把知識庫、網頁搜尋與內建工具找到的來源列出來。"
+        },
+        {
+          "type": "link",
+          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+        },
+        {
+          "type": "link",
+          "text": "本機 RAG：跟自己的文件聊天",
+          "url": "https://mokaair.com/zh-TW/life/local-rag-chat-with-your-documents"
+        },
+        {
+          "type": "heading",
+          "text": "提示詞範本與模型預設：把重複的指示存起來",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一段指示打第三次就該存起來。到 Workspace → Prompts 按 Create，填名稱、斜線指令（例如 /summarize）與提示詞內容，之後在任何對話打那個斜線指令就整段帶入。提示詞裡可以放變數：{{CURRENT_DATE}}、{{USER_NAME}} 這類系統變數在執行時自動代換；自訂變數則會在送出前跳出一張表單，欄位可以是文字、下拉選單、日期或數字，非技術的同事也能用。每次修改都會留版本，可以比對也可以退回舊版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Workspace → Models 是更上一層：挑一個基礎模型，綁上系統提示詞、知識庫、工具與參數，存成一個預設，等於一個專用助理。文件提醒系統提示詞是指示不是保證，模型聽不聽話跟基礎模型、服務商的對話樣板與整段上下文都有關；同一份提示詞在別的模型上照樣有效，就不是提示詞格式的問題。"
+        },
+        {
+          "type": "link",
+          "text": "系統提示詞（System Prompt）是什麼：設定助理的工作規則",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-system-prompt"
+        },
+        {
+          "type": "table",
+          "header": [
+            "功能",
+            "在哪裡設定",
+            "備註"
+          ],
+          "rows": [
+            [
+              "連 Ollama",
+              "Settings → Admin → Connections",
+              "預設自動偵測 11434 埠；另一台機器用 OLLAMA_BASE_URL 指過去"
+            ],
+            [
+              "連 OpenAI 相容 API",
+              "同上，Manage OpenAI API Connections",
+              "填網址與金鑰；沒有 /models 端點的服務商要手動加 Model IDs"
+            ],
+            [
+              "開放註冊",
+              "Settings → Admin → Authentication",
+              "管理員建好後自動關閉；新帳號預設角色 pending"
+            ],
+            [
+              "核准與調整角色",
+              "Admin Panel → Users",
+              "三種角色：admin、user、pending"
+            ],
+            [
+              "知識庫",
+              "Workspace → Knowledge",
+              "上傳後在對話打井字號引用，可綁到模型；預設 Focused Retrieval"
+            ],
+            [
+              "提示詞範本",
+              "Workspace → Prompts",
+              "存成斜線指令，支援系統變數與表單欄位，有版本記錄"
+            ],
+            [
+              "模型預設",
+              "Workspace → Models",
+              "綁系統提示詞、知識庫、工具與參數，可設定誰能用"
+            ],
+            [
+              "多模型並排",
+              "模型選單的 Compare",
+              "權限在 Admin Panel → Users → Groups 裡開關"
+            ],
+            [
+              "備份與還原",
+              "主機上的 open-webui volume",
+              "官方更新指南給了 tar 打包與還原指令"
+            ]
+          ],
+          "caption": "Open WebUI 常用功能的設定位置，依官方文件整理；介面以官網當天版本為準，2026 年 9 月查證。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "祕鑰要固定，單人模式改了換不回來",
+          "text": "官方文件在兩個地方提醒同一件事：沒有固定的 WEBUI_SECRET_KEY，每次重建容器就換一把新鑰匙，所有人的登入狀態全部失效，產生方式是 openssl rand -hex 32，設一次就別再改。另一個是單人模式：加上 WEBUI_AUTH=False 可以完全不用登入，但文件寫這只能在還沒有任何使用者的全新安裝上做，已經有人註冊過就關不掉；而且單人模式與多帳號模式之間改了就換不回去。自己一個人用也建議照正常流程建帳號。"
+        },
+        {
+          "type": "heading",
+          "text": "更新與備份：資料不在容器裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方更新指南第一句話就是重點：你的資料（對話、使用者、設定、上傳的檔案）在 volume 或資料庫裡，不在容器裡，更新就是把容器換成新的映像檔，資料原封不動。手動更新是三步：docker rm -f 砍掉容器、docker pull 拉新映像檔、再用原來那一行把容器跑起來。用 Compose 就是 docker compose pull 加 docker compose up -d，pip 版本是 pip install -U open-webui 再重新 open-webui serve。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新前先備份。官方更新指南給的做法是開一個臨時的 alpine 容器，把整個 volume 打包成 tar.gz："
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "備份 open-webui volume（官方更新指南）",
+          "code": "docker run --rm -v open-webui:/data -v $(pwd):/backup \\\n  alpine tar czf /backup/openwebui-$(date +%Y%m%d).tar.gz /data"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件建議每次更新前備份一次，平常也照使用頻率定期備份。還原是先停掉容器，清空 volume 再解開備份檔，所以還原指令會刪掉 volume 裡的東西，執行前要確認拿的是對的檔案。另外文件提醒資料庫遷移是單向的：升級跑過遷移之後，把容器換回舊版本並不會把資料庫改回去，舊版本不一定讀得懂新的結構，那時候只能靠更新前的備份。想要穩定一點，就別用會一直往前滾的 main 標籤，改釘一個版本號。"
+        },
+        {
+          "type": "heading",
+          "text": "授權：可以自由改，但別把 Open WebUI 的標示拿掉",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open WebUI 的 LICENSE 檔名稱就叫 Open WebUI License。前三條是 BSD 三條款的標準文字：原始碼散布要保留著作權聲明、二進位散布也要在文件裡附上、不得用著作權人或貢獻者的名義為衍生產品背書。真正要看的是第四條。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第四條寫明，作為本授權所授予權利的實質條件，被授權人嚴格禁止更動、移除、遮蔽或替換任何 Open WebUI 的品牌標示，包含名稱、標誌，以及任何可辨識這套軟體與其介面的視覺、文字或象徵性識別，除非符合三種情況之一：在任一連續 30 天內，可直接使用這套應用的自然人總數不超過 50 人；事先取得著作權人的書面許可；或取得明確允許修改標示的企業授權。不符合又把標示拿掉，條款直接寫成重大違約。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方授權說明頁補上時間線與退路：這條品牌條款從 v0.6.6 開始生效，日期是 2025 年 4 月 19 日；v0.6.5 以前併入的程式碼仍然是 BSD-3-Clause，想要完全沒有限制的人可以從 v0.6.5 分支出去自己走。說明頁也直接寫了門檻的另一面：50 人以下的自架內部部署，要完全換成自己的品牌是可以的。一般人在家裡或小團隊自架，照原樣用就不會踩到這條。"
+        },
+        {
+          "type": "link",
+          "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Open WebUI 官方文件：快速開始（安裝指令、埠、第一個管理員帳號）",
+          "url": "https://docs.openwebui.com/getting-started/quick-start/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：環境變數說明（OLLAMA_BASE_URL、WEBUI_AUTH、DATA_DIR 等）",
+          "url": "https://docs.openwebui.com/reference/env-configuration",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：連接 Ollama",
+          "url": "https://docs.openwebui.com/getting-started/quick-start/connect-a-provider/starting-with-ollama",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：連接 OpenAI 相容 API 與本機伺服器",
+          "url": "https://docs.openwebui.com/getting-started/quick-start/connect-a-provider/starting-with-openai-compatible",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：知識庫（Knowledge）",
+          "url": "https://docs.openwebui.com/features/workspace/knowledge",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：檢索增強生成（RAG）",
+          "url": "https://docs.openwebui.com/features/chat-conversations/rag/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：提示詞範本（Prompts）",
+          "url": "https://docs.openwebui.com/features/workspace/prompts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：模型預設（Models）",
+          "url": "https://docs.openwebui.com/features/workspace/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：使用者角色（Roles）",
+          "url": "https://docs.openwebui.com/features/authentication-access/rbac/roles",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：多模型對話（Multi-Model Chats）",
+          "url": "https://docs.openwebui.com/features/chat-conversations/chat-features/multi-model-chats",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：更新與備份還原",
+          "url": "https://docs.openwebui.com/getting-started/updating",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：API 端點（OpenAI 相容端點與金鑰）",
+          "url": "https://docs.openwebui.com/reference/api-endpoints",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：授權說明頁",
+          "url": "https://docs.openwebui.com/license",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub open-webui/open-webui：LICENSE 原文",
+          "url": "https://github.com/open-webui/open-webui/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub open-webui/open-webui：README（功能清單與安裝方式）",
+          "url": "https://github.com/open-webui/open-webui",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方網站首頁",
+          "url": "https://openwebui.com/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

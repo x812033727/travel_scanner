@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Vibe、Studio 與開放權重：同一批模型的三種取得方式 / Vibe, Studio API and open-weight models</title>
+  <desc id="desc">結構圖分成三欄。左欄是訂閱制的 Vibe（原 Le Chat），底下列出 Work 多步驟工作任務、Code 終端機與 IDE、Chat 一問一答三種模式，價格是 Free、Pro 每月 14.99 美元、Team 每人每月 24.99 美元，未稅，Enterprise 需洽詢。中欄是 Mistral Studio 的 API，按 token 計價，提供對話、代理與工具 API、Document AI、批次與嵌入，以及管金鑰與用量的主控台，代表價格是 Mistral Large 3 每百萬 token 輸入 0.5、輸出 1.5 美元。右欄是可以自己下載的開放權重模型，包含 Mistral Large 3 與 Mistral Small 4 的 Apache 2.0，以及 Mistral Medium 3.5 的 Modified MIT；Hugging Face 官方組織有 75 個模型庫，其中 65 個標 Apache 2.0。三欄各有一個向下的箭頭指到同一條橫幅，說明它們取得的是同一批 Mistral 模型，差別只在按月訂閱、按 token 付費或自己下載。最底下的提醒是資料預設存放在歐盟，Vibe 的訓練開關預設是開的要自己關，API 的輸入與輸出另留 30 個滾動天數監控濫用，而且 Vibe 與 API 是兩個獨立開關。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="48" y="52" font-size="30" font-weight="700" fill="#102A2B">Vibe、Studio 與開放權重：同一批模型的三種取得方式</text>
+  <text x="48" y="84" font-size="18" fill="#5C6B6B">Vibe (Le Chat) &#183; Mistral Studio API &#183; Open-weight models</text>
+
+  <!-- column 1: Vibe -->
+  <rect x="60" y="120" width="460" height="424" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="290" y="164" text-anchor="middle" font-size="24" font-weight="700" fill="#0D6B68">Vibe（原 Le Chat）</text>
+  <text x="290" y="190" text-anchor="middle" font-size="16" fill="#5C6B6B">訂閱制 &#183; 網頁、App 與指令列</text>
+  <rect x="80" y="212" width="420" height="64" rx="14" fill="#E3F0EF"/>
+  <text x="290" y="251" text-anchor="middle" font-size="18" fill="#102A2B">Work｜多步驟工作任務</text>
+  <rect x="80" y="288" width="420" height="64" rx="14" fill="#E3F0EF"/>
+  <text x="290" y="327" text-anchor="middle" font-size="18" fill="#102A2B">Code｜終端機、IDE 與遠端</text>
+  <rect x="80" y="364" width="420" height="64" rx="14" fill="#E3F0EF"/>
+  <text x="290" y="403" text-anchor="middle" font-size="18" fill="#102A2B">Chat｜一問一答</text>
+  <rect x="80" y="442" width="420" height="86" rx="14" fill="#F7F1E8"/>
+  <text x="290" y="478" text-anchor="middle" font-size="18" font-weight="700" fill="#102A2B">Free｜Pro 14.99｜Team 24.99</text>
+  <text x="290" y="508" text-anchor="middle" font-size="16" fill="#5C6B6B">美元／月，未稅（Enterprise 洽詢）</text>
+
+  <!-- column 2: Studio API -->
+  <rect x="570" y="120" width="460" height="424" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="164" text-anchor="middle" font-size="24" font-weight="700" fill="#2F6F9F">Mistral Studio（API）</text>
+  <text x="800" y="190" text-anchor="middle" font-size="16" fill="#5C6B6B">開發者平台 &#183; 按 token 計價</text>
+  <rect x="590" y="212" width="420" height="64" rx="14" fill="#E6F0F7"/>
+  <text x="800" y="251" text-anchor="middle" font-size="18" fill="#102A2B">對話、代理與工具 API</text>
+  <rect x="590" y="288" width="420" height="64" rx="14" fill="#E6F0F7"/>
+  <text x="800" y="327" text-anchor="middle" font-size="18" fill="#102A2B">Document AI、批次與嵌入</text>
+  <rect x="590" y="364" width="420" height="64" rx="14" fill="#E6F0F7"/>
+  <text x="800" y="403" text-anchor="middle" font-size="18" fill="#102A2B">主控台：金鑰、用量、Playground</text>
+  <rect x="590" y="442" width="420" height="86" rx="14" fill="#F7F1E8"/>
+  <text x="800" y="478" text-anchor="middle" font-size="18" font-weight="700" fill="#102A2B">Mistral Large 3：輸入 0.5／輸出 1.5</text>
+  <text x="800" y="508" text-anchor="middle" font-size="16" fill="#5C6B6B">每百萬 token，美元</text>
+
+  <!-- column 3: open weights -->
+  <rect x="1080" y="120" width="460" height="424" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1310" y="164" text-anchor="middle" font-size="24" font-weight="700" fill="#D97A2B">開放權重模型</text>
+  <text x="1310" y="190" text-anchor="middle" font-size="16" fill="#5C6B6B">自己下載 &#183; 自己跑</text>
+  <rect x="1100" y="212" width="420" height="64" rx="14" fill="#F7F1E8"/>
+  <text x="1310" y="251" text-anchor="middle" font-size="18" fill="#102A2B">Mistral Large 3｜Apache 2.0</text>
+  <rect x="1100" y="288" width="420" height="64" rx="14" fill="#F7F1E8"/>
+  <text x="1310" y="327" text-anchor="middle" font-size="18" fill="#102A2B">Mistral Small 4｜Apache 2.0</text>
+  <rect x="1100" y="364" width="420" height="64" rx="14" fill="#F7F1E8"/>
+  <text x="1310" y="403" text-anchor="middle" font-size="18" fill="#102A2B">Mistral Medium 3.5｜Modified MIT</text>
+  <rect x="1100" y="442" width="420" height="86" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1310" y="478" text-anchor="middle" font-size="18" font-weight="700" fill="#102A2B">Hugging Face：75 個模型庫</text>
+  <text x="1310" y="508" text-anchor="middle" font-size="16" fill="#5C6B6B">其中 65 個標 Apache 2.0</text>
+
+  <line x1="290" y1="552" x2="290" y2="598" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="800" y1="552" x2="800" y2="598" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1310" y1="552" x2="1310" y2="598" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="606" width="1480" height="68" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="800" y="648" text-anchor="middle" font-size="20" font-weight="700" fill="#102A2B">同一批 Mistral 模型：按月訂閱、按 token 付費，或自己下載</text>
+
+  <rect x="60" y="700" width="1480" height="106" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="744" text-anchor="middle" font-size="20" font-weight="700" fill="#102A2B">資料預設存放在歐盟；Vibe 的訓練開關預設是開的，要自己關</text>
+  <text x="800" y="778" text-anchor="middle" font-size="17" fill="#5C6B6B">API 的輸入與輸出另留 30 個滾動天數監控濫用；Vibe 與 API 是兩個獨立開關</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,402 @@
+{
+  "slug": "local-ai-on-mac-mini",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "gadgets"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Mac mini 當家用 AI 伺服器：統一記憶體、售價與區網設定",
+      "description": "把 Mac mini 放在家裡當常開的 AI 伺服器，手機和筆電連區網就能用本機模型。本文整理 2026 年 9 月 14 日 apple.com/tw 上 Mac mini 的晶片、統一記憶體選項與新台幣售價，說明統一記憶體為什麼適合跑本機模型，並照 Ollama 與 Open WebUI 官方文件寫出 macOS 安裝、常駐與開放到區網的做法與風險，以及 Apple 官網有的耗電數字。",
+      "hero": {
+        "src": "/guides/local-ai-on-mac-mini/hero.jpg",
+        "alt": "插圖：一個圓角方塊代表放在家中的小主機，三條線連到手機、筆電與平板的簡化外框，旁邊是一疊代表模型檔案的長條",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想把 AI 留在自己家裡跑，Mac mini 是目前最容易擺得下、也最安靜的一種選擇，原因不在晶片有多快，而在它的記憶體是 CPU 與 GPU 共用的統一記憶體：模型不必先擠進顯示卡那一小塊顯示記憶體（VRAM），所以「買多少記憶體」幾乎就等於「能載入多大的模型」。結論先講：真正的決定權在統一記憶體容量，而 2026 年 9 月 14 日 apple.com/tw 上的 Mac mini，統一記憶體從 16GB 到 64GB。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇會帶你做完三件事：看懂 apple.com/tw 當天列出的機型、統一記憶體選項與新台幣售價；照 Ollama 與 Open WebUI 的官方文件，把 Mac mini 設定成開機就在跑、家裡其他裝置連區網就能用的服務；並且弄清楚「開放到區網」這一步的官方做法與風險。文中的規格、價格、指令與檔案大小全部來自官方頁面，效能推估、跑分與通路價一律不寫。"
+        },
+        {
+          "type": "heading",
+          "text": "統一記憶體為什麼適合跑本機模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般的顯示卡桌機跑本機模型時，模型權重要從系統記憶體搬進顯示卡的顯示記憶體，放不下就得拆開放或退回 CPU 執行。Apple 晶片走的是另一條路。Apple 開發者文件在 Metal 的 hasUnifiedMemory 屬性上寫的定義是「一個布林值，表示 GPU 是否與 CPU 共用它全部的記憶體」，同一份資料 CPU 與 GPU 都看得到，不必為了給 GPU 用而複製一份。對本機模型來說，這代表你買到的統一記憶體幾乎整塊都能拿來放模型，而不是被一張卡的容量鎖死。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 官方的硬體支援頁對這件事只寫了一句：Ollama 透過 Metal API 在 Apple 裝置上做 GPU 加速。也就是說，在 Apple 晶片的 Mac 上不必另外處理驅動程式或 CUDA。Apple 自己的 Mac mini 產品頁也直接點名了這類軟體，寫「Mac mini 經過最佳化，可執行世界上最先進的 AI app」，並列出 Ollama 與 LM Studio Bionic 這些大型語言模型 app。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個要看的數字是記憶體頻寬。apple.com/tw 的技術規格頁寫：M6 搭 16GB 統一記憶體是 153GB/s，加選到 24GB 或 32GB 會變成 170GB/s，M5 Pro 則是 307GB/s。頻寬決定資料在記憶體與運算單元之間搬得多快，但官網沒有把它換算成每秒幾個 token，這篇也不替它換算。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "統一記憶體是 CPU 與 GPU 共用的同一塊記憶體，模型不必先複製進顯示記憶體",
+            "能載入多大的模型，看的是統一記憶體總量，選購時記憶體容量比晶片名稱重要",
+            "記憶體頻寬官網有寫（153GB/s、170GB/s、307GB/s），但官網沒有給對應的生成速度"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "heading",
+          "text": "當天官網的 Mac mini：晶片、記憶體與售價",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 14 日的 apple.com/tw，Mac mini 還在預訂狀態，商店頁寫著「9 月 22 日開始發售」與「每位顧客限購兩部 Mac mini」。技術規格頁列出四種標準機型：三種是 Apple M6 晶片（12 核心 CPU、12 核心 GPU、雙 16 核心神經網路引擎），一種是 Apple M5 Pro 晶片（15 核心 CPU、16 核心 GPU、16 核心神經網路引擎），M5 Pro 另可選配 18 核心 CPU 與 20 核心 GPU 的版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "統一記憶體的選項照官網是：M6 機型的標準配置有 16GB 與 24GB 兩種，最高可加選到 32GB；M5 Pro 標準是 24GB，可加選 48GB 或 64GB。整條產品線的價格，官網商品頁標示的範圍是 NT$29,900 到 NT$255,380。下表只列官網當天六個標準配置的價格，加選記憶體、SSD 或 10Gb 乙太網路後的價格以官網配置頁為準。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "官網標準配置",
+            "統一記憶體（頻寬）",
+            "官網售價（新台幣）",
+            "Ollama 模型庫標示的檔案大小"
+          ],
+          "rows": [
+            [
+              "M6，12 核心 CPU／12 核心 GPU，256GB SSD",
+              "16GB（153GB/s）",
+              "NT$29,900",
+              "qwen3:latest 5.2GB、gemma4:latest 9.6GB"
+            ],
+            [
+              "M6，12 核心 CPU／12 核心 GPU，512GB SSD",
+              "16GB（153GB/s）",
+              "NT$36,900",
+              "gpt-oss:latest 14GB 已很接近 16GB"
+            ],
+            [
+              "M6，12 核心 CPU／12 核心 GPU，512GB SSD",
+              "24GB（170GB/s）",
+              "NT$43,900",
+              "qwen3:30b 19GB、gemma4:26b 19GB"
+            ],
+            [
+              "M6，12 核心 CPU／12 核心 GPU，1TB SSD",
+              "32GB（170GB/s）",
+              "NT$61,400",
+              "qwen3:32b 20GB、gemma4:31b 20GB"
+            ],
+            [
+              "M5 Pro，15 核心 CPU／16 核心 GPU，512GB SSD",
+              "24GB（307GB/s）",
+              "NT$59,900",
+              "與 24GB 那一列相同"
+            ],
+            [
+              "M5 Pro，18 核心 CPU／20 核心 GPU，1TB SSD",
+              "64GB（307GB/s）",
+              "NT$112,400",
+              "gpt-oss:120b 65GB，已超過 64GB"
+            ]
+          ],
+          "caption": "查證於 2026 年 9 月 14 日。售價為 apple.com/tw 商品頁當天標示的新台幣價格；檔案大小為 ollama.com/library 標示，不是效能保證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表格裡有一件事值得停下來想：M6 加到 32GB 加 1TB SSD 的 NT$61,400，已經比 M5 Pro 24GB 版本的 NT$59,900 貴。同樣的錢，一邊買到比較大的記憶體、一邊買到比較高的頻寬與比較多的核心，官網沒有告訴你哪個組合跑模型比較好，這個判斷得自己下。"
+        },
+        {
+          "type": "link",
+          "text": "買新 3C 前先寫需求：從真實問題、相容性到維修與退場成本",
+          "url": "https://mokaair.com/zh-TW/life/gadget-purchase-needs-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "記憶體選多少：只看官方標示的檔案大小",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「這台跑得動什麼模型」沒有官方對照表，查得到的官方數字只有兩種：模型在 Ollama 模型庫上標示的檔案大小，以及 Ollama 文件依顯示記憶體決定的預設上下文視窗。把兩者放在一起，可以得到一個很粗但誠實的判斷方式：模型檔案要放得進統一記憶體，還要留出上下文視窗與系統本身要用的空間。以下是 2026 年 9 月 14 日 ollama.com/library 上的檔案大小。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "qwen3:latest 5.2GB、qwen3:14b 9.3GB、qwen3:30b 19GB、qwen3:32b 20GB",
+            "gemma4:e2b 7.2GB、gemma4:12b 7.6GB、gemma4:latest 9.6GB、gemma4:26b 19GB、gemma4:31b 20GB",
+            "gpt-oss:latest 14GB、gpt-oss:120b 65GB",
+            "同一個模型的量化版本差很多，例如 gemma4:31b 的 q4_K_M 是 20GB、q8_0 是 34GB"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "上下文視窗也要吃記憶體。Ollama 文件寫預設的上下文視窗是 4096 個 token，並依顯示記憶體分三級給預設值：小於 24 GiB 是 4k、24 到 48 GiB 是 32k、48 GiB 以上是 256k；文件同時建議網頁搜尋、代理（Agent）與寫程式這類任務至少設到 64000 個 token。這份分級是照顯示記憶體寫的，官網沒有另外給 Apple 晶片的對照表，實際載到哪裡請用 ollama ps 看 PROCESSOR 欄位。"
+        },
+        {
+          "type": "link",
+          "text": "量化（Quantization）：用較少位元執行模型的取捨",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+        },
+        {
+          "type": "heading",
+          "text": "把 Mac mini 設定成常開的家用 AI 伺服器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的 macOS 文件寫的系統需求是 macOS Sonoma（v14）或更新版本，加上 Apple M 系列晶片（CPU 與 GPU 都支援），x86 的 Intel Mac 只有 CPU。安裝方式是掛載 ollama.dmg，把 Ollama 應用程式拖進系統的「應用程式」檔案夾；第一次啟動時如果 PATH 裡找不到 ollama 指令，它會請你授權在 /usr/local/bin 建立連結。模型與設定存在使用者目錄下的 .ollama，文件提醒模型「可能有幾十到幾百 GB」，SSD 容量要一起算進去。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "下載模型、開始對話、看目前載入了什麼",
+          "code": "ollama run gemma4\nollama ps\nollama stop gemma4"
+        },
+        {
+          "type": "paragraph",
+          "text": "常開靠兩件事。第一，官方 FAQ 寫 macOS 與 Windows 版的 Ollama 安裝時會註冊成登入項目，登入就自己啟動（同一段也寫了怎麼關掉：在「系統設定」搜尋「登入項目」，於「允許在背景執行」底下把 Ollama 關掉）。第二，模型預設只在記憶體裡留 5 分鐘就卸載，官方提供 OLLAMA_KEEP_ALIVE 環境變數或 API 的 keep_alive 參數來改，設成 -1 代表一直留著。在 macOS 上以應用程式方式執行時，官方指定的環境變數設法是 launchctl setenv，設完要重新啟動 Ollama 應用程式。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "讓模型留在記憶體裡不自動卸載（macOS 官方設法，設完重啟 Ollama）",
+          "code": "launchctl setenv OLLAMA_KEEP_ALIVE \"-1\""
+        },
+        {
+          "type": "paragraph",
+          "text": "接下來才是家用伺服器的重點：預設情況下 Ollama 只綁在 127.0.0.1:11434，也就是只有這台 Mac mini 自己連得到。官方 FAQ 的做法是用 OLLAMA_HOST 改綁定位址，改成 0.0.0.0:11434 就會對同一個區網開放。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "把 Ollama 開放到區網（Ollama FAQ 的官方做法）",
+          "code": "launchctl setenv OLLAMA_HOST \"0.0.0.0:11434\""
+        },
+        {
+          "type": "paragraph",
+          "text": "這一步要想清楚再做。Ollama 的 API 文件寫得很明白：本機透過 localhost 的 11434 埠存取 Ollama API 時不需要任何驗證；文件裡需要驗證的情形只有雲端模型、發佈模型與下載私有模型。換句話說，一旦綁到 0.0.0.0，同一個區網裡的任何裝置都能直接呼叫它、載入模型、吃掉記憶體。自己家裡的區網可以接受，往公網開就不行。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/local-ai-on-mac-mini/diagram-1.svg",
+          "alt": "架構圖：Mac mini 上的 Ollama 與 Open WebUI 經由家中區網，被手機、平板與筆電的瀏覽器使用",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：Mac mini 上跑兩個服務，經由家中區網被其他裝置使用；底下的紅框是唯一一條不能省的安全規則。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "綁到 0.0.0.0 之後，別讓 11434 埠出現在公網上",
+          "text": "Ollama 官方文件說明本機 API 端點不需要驗證，所以綁到 0.0.0.0 等於把模型的控制權交給整個區網。做完這一步請確認路由器沒有把 11434 埠對外轉發。真的需要在外面連，官方文件列出的方式只有三種：用 Nginx 之類的代理伺服器把請求轉給本機的 11434 埠、用 ngrok、或用 Cloudflare Tunnel；這三種都只負責把流量送進來，驗證要自己在前面那一層補上。"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        },
+        {
+          "type": "heading",
+          "text": "家人要用的介面：Open WebUI",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "命令列不適合拿給家人用，這正是 Open WebUI 存在的理由。它官方的「Sharing Open WebUI」頁寫得很直白：跑本機模型時，一台夠力的伺服器可以服務整個團隊，而不需要每一張桌子上都擺一台跑得動模型的電腦；使用者不必安裝任何東西，打開瀏覽器連進去就好。官方快速開始頁給的是 Docker 指令。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "Open WebUI 官方快速開始的 Docker 指令（先用 openssl rand -hex 32 產生密鑰）",
+          "code": "docker run -d -p 3000:8080 \\\n  --add-host=host.docker.internal:host-gateway \\\n  -v open-webui:/app/backend/data \\\n  -e WEBUI_SECRET_KEY=your-secret-key \\\n  --name open-webui --restart always \\\n  ghcr.io/open-webui/open-webui:main"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方對每個旗標的解釋是：3000:8080 把介面放在這台機器的 3000 埠；open-webui 這個 volume 裝的是聊天記錄、使用者與設定，文件寫「never run without it」；add-host 那一行讓容器連得到跑在這台機器上的 Ollama；restart always 讓它重開機之後自己回來。WEBUI_SECRET_KEY 要固定下來，否則每次重建容器所有人都會被登出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "怎麼連進去，官方列的第一種方式就是最簡單的：同一個區網或 VPN 的人，用這台機器的區網位址加上 3000 埠就能開，文件給的例子是 192.168.1.100 加 3000。第一個註冊的帳號會成為管理員，之後註冊自動關閉；要讓家人加入，到頭像底下的 Settings、Admin、Authentication 打開 New Sign Ups，新帳號會停在 Pending 等你核准（介面以官網當天版本為準）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open WebUI 的強化指南第一節談的就是網路位置：這套軟體是為「私人、可信任的網路」設計的，跟資料庫、容器登錄或 CI 伺服器一樣，建議放在 VPN、零信任存取代理，或帶驗證與 IP 白名單的反向代理後面。家用情境把這句話翻成白話就是：留在區網裡，不要直接往公網開。"
+        },
+        {
+          "type": "link",
+          "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
+          "url": "https://mokaair.com/zh-TW/life/open-webui-chat-interface"
+        },
+        {
+          "type": "heading",
+          "text": "耗電、噪音，還有和顯示卡桌機的取捨",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "常開的機器一定會被問電費，所以這裡只寫 Apple 官網有的數字。技術規格頁寫現行 Mac mini 的最大連續功率是 155W，待機時操作者位置的聲壓位準是 5 dBA。Apple 支援文件〈Mac mini 耗電量與熱輸出（BTU）的相關資訊〉列到 2024 年機型為止：Mac mini（2024 年）搭 M4、16GB、256GB SSD 是閒置 4W、最大 65W，搭 M4 Pro、64GB、8TB SSD 是閒置 5W、最大 140W。M6 與 M5 Pro 機型當天還沒有列進那一頁，實際的閒置與最大功耗以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "至於該買 Mac mini 還是組一台裝顯示卡的桌機，這篇不做跨平台的數字比較，因為官網之間沒有可以直接比的共同基準。可以先分開想兩個問題：顯示記憶體要多少、預算怎麼配，以及自己養一台到底划不划算。這兩題同系列各有專篇。"
+        },
+        {
+          "type": "link",
+          "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
+          "url": "https://mokaair.com/zh-TW/life/local-ai-gpu-buying-guide"
+        },
+        {
+          "type": "link",
+          "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+          "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後提醒一件常被混在一起的事：Apple Intelligence 是 Apple 內建在系統裡的 AI 功能，和你自己用 Ollama 跑的開放權重模型是兩套完全不同的東西，只是剛好可以住在同一台 Mac mini 上。想知道系統內建的那一套在台灣能做到什麼，那是另一篇的題目。"
+        },
+        {
+          "type": "link",
+          "text": "Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援",
+          "url": "https://mokaair.com/zh-TW/life/apple-intelligence-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Apple 台灣：Mac mini 技術規格（晶片、統一記憶體、記憶體頻寬、最大連續功率與聲學表現）",
+          "url": "https://www.apple.com/tw/mac-mini/specs/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 台灣：Mac mini 產品頁（統一記憶體與頻寬摘要、官方點名的 AI app）",
+          "url": "https://www.apple.com/tw/mac-mini/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 台灣：購買 Mac mini（發售日、限購與價格範圍）",
+          "url": "https://www.apple.com/tw/shop/buy-mac/mac-mini",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 台灣：Mac mini，M6 晶片，16GB 記憶體，512GB 儲存裝置（商品頁售價）",
+          "url": "https://www.apple.com/tw/shop/buy-mac/mac-mini/m6-%E6%99%B6%E7%89%87-12-%E6%A0%B8%E5%BF%83-cpu-12-%E6%A0%B8%E5%BF%83-gpu-16gb-%E8%A8%98%E6%86%B6%E9%AB%94-512gb-%E5%84%B2%E5%AD%98%E8%A3%9D%E7%BD%AE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 台灣：Mac mini，M6 晶片，24GB 記憶體，512GB 儲存裝置（商品頁售價）",
+          "url": "https://www.apple.com/tw/shop/buy-mac/mac-mini/m6-%E6%99%B6%E7%89%87-12-%E6%A0%B8%E5%BF%83-cpu-12-%E6%A0%B8%E5%BF%83-gpu-24gb-%E8%A8%98%E6%86%B6%E9%AB%94-512gb-%E5%84%B2%E5%AD%98%E8%A3%9D%E7%BD%AE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 台灣：Mac mini，M6 晶片，32GB 記憶體，1TB 儲存裝置（商品頁售價）",
+          "url": "https://www.apple.com/tw/shop/buy-mac/mac-mini/m6-%E6%99%B6%E7%89%87-12-%E6%A0%B8%E5%BF%83-cpu-12-%E6%A0%B8%E5%BF%83-gpu-32gb-%E8%A8%98%E6%86%B6%E9%AB%94-1tb-%E5%84%B2%E5%AD%98%E8%A3%9D%E7%BD%AE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 台灣：Mac mini，M5 Pro 晶片，64GB 記憶體，1TB 儲存裝置（商品頁售價）",
+          "url": "https://www.apple.com/tw/shop/buy-mac/mac-mini/m5-pro-%E6%99%B6%E7%89%87-18-%E6%A0%B8%E5%BF%83-cpu-20-%E6%A0%B8%E5%BF%83-gpu-64gb-%E8%A8%98%E6%86%B6%E9%AB%94-1tb-%E5%84%B2%E5%AD%98%E8%A3%9D%E7%BD%AE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple 支援：Mac mini 耗電量與熱輸出（BTU）的相關資訊",
+          "url": "https://support.apple.com/zh-tw/103253",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple Developer：Metal 的 hasUnifiedMemory（GPU 是否與 CPU 共用全部記憶體）",
+          "url": "https://developer.apple.com/documentation/metal/mtldevice/hasunifiedmemory",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama Docs：macOS（系統需求、安裝方式與檔案位置）",
+          "url": "https://docs.ollama.com/macos",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama Docs：Hardware support（Metal 與 Apple GPU 加速）",
+          "url": "https://docs.ollama.com/gpu",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama Docs：FAQ（OLLAMA_HOST、launchctl setenv、登入項目、keep_alive）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama Docs：Context length（預設上下文視窗與依顯示記憶體的分級）",
+          "url": "https://docs.ollama.com/context-length",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama Docs：API Authentication（本機端點不需要驗證）",
+          "url": "https://docs.ollama.com/api/authentication",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：gemma4 的標籤與檔案大小",
+          "url": "https://ollama.com/library/gemma4/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：qwen3 的標籤與檔案大小",
+          "url": "https://ollama.com/library/qwen3/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：gpt-oss 的標籤與檔案大小",
+          "url": "https://ollama.com/library/gpt-oss/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI Docs：Quick Start（Docker 指令與各旗標說明）",
+          "url": "https://docs.openwebui.com/getting-started/quick-start",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI Docs：Sharing Open WebUI（區網存取與第一個帳號）",
+          "url": "https://docs.openwebui.com/getting-started/sharing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI Docs：Hardening（網路位置建議）",
+          "url": "https://docs.openwebui.com/getting-started/advanced-topics/hardening",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

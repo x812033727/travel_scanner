@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">線上結匯的兩種去向 / Two destinations of an online forex settlement</title>
+  <desc id="desc">插圖。左側是一支圓角長方形的手機，畫面上有一條深綠色的頁首色塊與兩個同樣大小的圓角列，下方有一個圓形按鈕。手機右側有一個圓形節點，從節點分出兩條同樣粗細的曲線：上面一條通往一張抽象的長方形紙鈔，紙鈔中央是一個圓形，紙鈔右邊有一個行李箱輪廓；下面一條通往一本圓角存摺，存摺左側有書脊線，內頁有三條等長的橫線。畫面下方有一行字「線上結匯，兩條路」。整張圖只用簡單幾何形狀，沒有任何機構標誌、真實鈔券圖樣或走勢曲線。</desc>
+  <defs>
+    <marker id="tipA" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="34" markerHeight="34" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+    <marker id="tipB" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="34" markerHeight="34" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#2F6F9F"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <rect x="180" y="190" width="280" height="440" rx="36" fill="#FFFFFF" stroke="#102A2B" stroke-width="8"/>
+  <rect x="212" y="232" width="216" height="44" rx="12" fill="#0D6B68"/>
+  <rect x="212" y="306" width="216" height="56" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="5"/>
+  <rect x="212" y="390" width="216" height="56" rx="10" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="5"/>
+  <circle cx="320" cy="560" r="26" fill="#F7F1E8" stroke="#102A2B" stroke-width="7"/>
+
+  <path d="M 492 402 C 640 402 664 220 806 220" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="butt" marker-end="url(#tipA)"/>
+  <path d="M 492 418 C 640 418 664 630 806 630" fill="none" stroke="#2F6F9F" stroke-width="12" stroke-linecap="butt" marker-end="url(#tipB)"/>
+  <circle cx="470" cy="410" r="24" fill="#FFFFFF" stroke="#D97A2B" stroke-width="8"/>
+
+  <rect x="870" y="130" width="360" height="180" rx="20" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <circle cx="1050" cy="220" r="44" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <line x1="906" y1="220" x2="952" y2="220" stroke="#0D6B68" stroke-width="8" stroke-linecap="butt"/>
+  <line x1="1148" y1="220" x2="1194" y2="220" stroke="#0D6B68" stroke-width="8" stroke-linecap="butt"/>
+
+  <path d="M 1345 150 L 1345 122 L 1415 122 L 1415 150" fill="none" stroke="#102A2B" stroke-width="8" stroke-linecap="butt"/>
+  <rect x="1290" y="150" width="180" height="150" rx="18" fill="#E3F0EF" stroke="#102A2B" stroke-width="8"/>
+  <line x1="1380" y1="162" x2="1380" y2="288" stroke="#0D6B68" stroke-width="6" stroke-linecap="butt"/>
+
+  <rect x="870" y="540" width="360" height="180" rx="20" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+  <line x1="930" y1="552" x2="930" y2="708" stroke="#2F6F9F" stroke-width="6" stroke-linecap="butt"/>
+  <line x1="970" y1="595" x2="1170" y2="595" stroke="#2F6F9F" stroke-width="8" stroke-linecap="butt"/>
+  <line x1="970" y1="632" x2="1170" y2="632" stroke="#2F6F9F" stroke-width="8" stroke-linecap="butt"/>
+  <line x1="970" y1="669" x2="1170" y2="669" stroke="#2F6F9F" stroke-width="8" stroke-linecap="butt"/>
+
+  <text x="800" y="838" font-size="44" font-weight="bold" fill="#102A2B" text-anchor="middle">線上結匯，兩條路</text>
+</svg>

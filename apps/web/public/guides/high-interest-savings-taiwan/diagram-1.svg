@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">一個戶頭兩段餘額 / One account, two balance tiers</title>
+<desc id="desc">由上往下的結構圖。最上面一條長條代表假設 30 萬元的帳戶餘額，左邊三分之一填成淺綠色，標示適用額度之內的 10 萬元，右邊三分之二留白，標示超過的部分 20 萬元。兩段各有一支箭頭往下指到自己的試算框。左邊的框寫著 10 萬元乘以假設年利率 2.4%，再乘以 30 天除以 365，約 197 元。右邊的框寫著 20 萬元乘以假設年利率 0.6%，再乘以 30 天除以 365，約 99 元。兩個框再各有一支箭頭指進下方的合計框：兩段相加，30 天約 296 元，整戶的實際年利率約 1.2%，而廣告寫的 2.4% 只適用到額度上限為止。圖上的利率都是假設值。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker></defs>
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">一個戶頭，兩段餘額：實際拿到的利息怎麼算</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">High-interest savings · 分段乘完再相加，才是整戶的利率</text>
+
+<text x="90" y="146" font-size="18" fill="#5C6B6B">帳戶餘額（假設 30 萬元）</text>
+<rect x="90" y="165" width="473" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<rect x="563" y="165" width="947" height="110" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+<text x="326" y="230" text-anchor="middle" font-size="24" font-weight="700" fill="#102A2B">適用額度之內 10 萬元</text>
+<text x="1036" y="230" text-anchor="middle" font-size="24" fill="#102A2B">超過的部分 20 萬元</text>
+
+<path d="M326 281 L326 352" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<path d="M1036 281 L1036 352" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+<rect x="90" y="360" width="700" height="200" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="440" y="400" text-anchor="middle" font-size="18" fill="#5C6B6B">適用額度之內的那一段</text>
+<text x="440" y="448" text-anchor="middle" font-size="26" font-weight="700" fill="#102A2B">10 萬元 × 假設年利率 2.4%</text>
+<text x="440" y="491" text-anchor="middle" font-size="22" fill="#5C6B6B">× 30 天 ÷ 365</text>
+<text x="440" y="536" text-anchor="middle" font-size="28" font-weight="700" fill="#0D6B68">約 197 元</text>
+
+<rect x="810" y="360" width="700" height="200" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="1160" y="400" text-anchor="middle" font-size="18" fill="#5C6B6B">超過額度的那一段</text>
+<text x="1160" y="448" text-anchor="middle" font-size="26" font-weight="700" fill="#102A2B">20 萬元 × 假設年利率 0.6%</text>
+<text x="1160" y="491" text-anchor="middle" font-size="22" fill="#5C6B6B">× 30 天 ÷ 365</text>
+<text x="1160" y="536" text-anchor="middle" font-size="28" font-weight="700" fill="#2F6F9F">約 99 元</text>
+
+<path d="M440 566 L690 628" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<path d="M1160 566 L910 628" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+<rect x="400" y="635" width="800" height="180" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="800" y="688" text-anchor="middle" font-size="28" font-weight="700" fill="#102A2B">兩段相加：30 天約 296 元</text>
+<text x="800" y="733" text-anchor="middle" font-size="26" font-weight="700" fill="#0D6B68">整戶的實際年利率約 1.2%</text>
+<text x="800" y="778" text-anchor="middle" font-size="20" fill="#5C6B6B">廣告寫的 2.4% 只適用到額度上限為止</text>
+
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

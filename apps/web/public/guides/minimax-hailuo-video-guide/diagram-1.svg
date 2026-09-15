@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">海螺 AI 做一支影片的六段流程 / Hailuo AI video pipeline in six stages</title>
+  <desc id="desc">一張六格的流程圖，分成上下兩列，由左至右閱讀。第一格「選輸入模式」：文生影片只給一段文字描述，圖生影片上傳 JPG、PNG 或 WEBP 再寫它要怎麼動。第二格「寫提示詞」：依主體、環境、動作與鏡頭、風格的順序寫，約二十到五十個英文字，鏡頭與主體動作挑一個當主角。第三格「設定規格」：時長四到十五秒，解析度 768P 或 2K，每秒二十四格，介面會顯示要扣多少點數。箭頭從第三格折返到下一列的第四格「排隊生成」：免費帳號最多排三件、同時只跑一支，付費可以排五件、同時跑兩支。第五格「自動審核」：公司會自動封鎖部分內容，沒通過會自動退回點數，但影片拿不到。第六格「下載 MP4」：免費帳號的檔案帶浮水印，付費 Standard 方案起沒有浮水印，而且不可以自行移除浮水印或 AI 生成標示。最下方橫幅提醒，浮水印、內容審核與商用授權都寫在服務條款裡，能不能上架的責任在使用者身上。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">海螺 AI 做一支影片的六段流程</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Hailuo AI: from a prompt to a downloadable MP4</text>
+
+  <!-- row 1 -->
+  <rect x="60" y="140" width="440" height="250" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="98" cy="182" r="22" fill="#0D6B68"/>
+  <text x="98" y="189" font-size="20" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="136" y="191" font-size="22" font-weight="bold" fill="#102A2B">選輸入模式</text>
+  <line x1="84" y1="216" x2="476" y2="216" stroke="#5C6B6B" stroke-width="2" opacity="0.35"/>
+  <text x="84" y="256" font-size="17" fill="#102A2B">文生影片：只給一段文字描述</text>
+  <text x="84" y="290" font-size="17" fill="#102A2B">圖生影片：上傳 JPG、PNG 或</text>
+  <text x="84" y="324" font-size="17" fill="#102A2B">WEBP，再寫它要怎麼動</text>
+  <text x="84" y="358" font-size="16" fill="#5C6B6B">構圖已由圖決定，別重寫一次</text>
+
+  <rect x="560" y="140" width="440" height="250" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="598" cy="182" r="22" fill="#0D6B68"/>
+  <text x="598" y="189" font-size="20" font-weight="bold" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="636" y="191" font-size="22" font-weight="bold" fill="#102A2B">寫提示詞</text>
+  <line x1="584" y1="216" x2="976" y2="216" stroke="#5C6B6B" stroke-width="2" opacity="0.35"/>
+  <text x="584" y="256" font-size="17" fill="#102A2B">主體 → 環境 → 動作與鏡頭</text>
+  <text x="584" y="290" font-size="17" fill="#102A2B">→ 風格，約 20 到 50 個英文字</text>
+  <text x="584" y="324" font-size="17" fill="#102A2B">鏡頭與主體動作挑一個當主角</text>
+  <text x="584" y="358" font-size="16" fill="#5C6B6B">別寫互相矛盾的指令</text>
+
+  <rect x="1060" y="140" width="480" height="250" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="1098" cy="182" r="22" fill="#2F6F9F"/>
+  <text x="1098" y="189" font-size="20" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="1136" y="191" font-size="22" font-weight="bold" fill="#102A2B">設定規格</text>
+  <line x1="1084" y1="216" x2="1516" y2="216" stroke="#5C6B6B" stroke-width="2" opacity="0.35"/>
+  <text x="1084" y="256" font-size="17" fill="#102A2B">時長 4 到 15 秒</text>
+  <text x="1084" y="290" font-size="17" fill="#102A2B">解析度 768P 或 2K，24 FPS</text>
+  <text x="1084" y="324" font-size="17" fill="#102A2B">介面會顯示要扣多少點數</text>
+  <text x="1084" y="358" font-size="16" fill="#5C6B6B">比例有 16:9、1:1、9:16 等</text>
+
+  <line x1="504" y1="265" x2="552" y2="265" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1004" y1="265" x2="1052" y2="265" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <polyline points="1300,394 1300,445 280,445 280,492" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- row 2 -->
+  <rect x="60" y="500" width="440" height="250" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <circle cx="98" cy="542" r="22" fill="#D97A2B"/>
+  <text x="98" y="549" font-size="20" font-weight="bold" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="136" y="551" font-size="22" font-weight="bold" fill="#102A2B">排隊生成</text>
+  <line x1="84" y1="576" x2="476" y2="576" stroke="#5C6B6B" stroke-width="2" opacity="0.35"/>
+  <text x="84" y="616" font-size="17" fill="#102A2B">免費：排隊 3 件、同時跑 1 支</text>
+  <text x="84" y="650" font-size="17" fill="#102A2B">付費：排隊 5 件、同時跑 2 支</text>
+  <text x="84" y="684" font-size="16" fill="#5C6B6B">付費另有優先生成</text>
+
+  <rect x="560" y="500" width="440" height="250" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <circle cx="598" cy="542" r="22" fill="#B8442D"/>
+  <text x="598" y="549" font-size="20" font-weight="bold" fill="#FFFFFF" text-anchor="middle">5</text>
+  <text x="636" y="551" font-size="22" font-weight="bold" fill="#102A2B">自動審核</text>
+  <line x1="584" y1="576" x2="976" y2="576" stroke="#5C6B6B" stroke-width="2" opacity="0.35"/>
+  <text x="584" y="616" font-size="17" fill="#102A2B">公司會自動封鎖部分內容</text>
+  <text x="584" y="650" font-size="17" fill="#102A2B">沒通過會自動退回點數</text>
+  <text x="584" y="684" font-size="16" fill="#B8442D">但影片拿不到</text>
+
+  <rect x="1060" y="500" width="480" height="250" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="1098" cy="542" r="22" fill="#0D6B68"/>
+  <text x="1098" y="549" font-size="20" font-weight="bold" fill="#FFFFFF" text-anchor="middle">6</text>
+  <text x="1136" y="551" font-size="22" font-weight="bold" fill="#102A2B">下載 MP4</text>
+  <line x1="1084" y1="576" x2="1516" y2="576" stroke="#5C6B6B" stroke-width="2" opacity="0.35"/>
+  <text x="1084" y="616" font-size="17" fill="#102A2B">免費帳號：檔案帶浮水印</text>
+  <text x="1084" y="650" font-size="17" fill="#102A2B">付費 Standard 起：無浮水印</text>
+  <text x="1084" y="684" font-size="16" fill="#5C6B6B">不可自行移除浮水印或標示</text>
+
+  <line x1="504" y1="625" x2="552" y2="625" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1004" y1="625" x2="1052" y2="625" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="782" width="1480" height="66" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="823" font-size="20" fill="#102A2B" text-anchor="middle">浮水印、內容審核與商用授權都寫在服務條款；能不能上架，責任在使用者</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

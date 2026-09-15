@@ -95,13 +95,13 @@ export function CollectButton({ kind, target, discovery = false, initialOpen = f
   </form></Dialog>}</>;
 }
 
-export function PostDetails({ id }: { id: string }) {
+export function PostDetails({ id, initial }: { id: string; initial?: Post }) {
   const t = useTranslations("community");
   const router = useRouter();
   const { user } = useHeaderSession();
   const { me } = useCommunity();
   const visibility = useSiteVisibility();
-  const { data: post, error, reload } = useResource<Post>(`/community/posts/${id}`);
+  const { data: post, error, reload } = useResource<Post>(`/community/posts/${id}`, api, initial);
   const [busy, setBusy] = useState(false);
   const [actionError, setActionError] = useState<unknown>();
   const [forking, setForking] = useState(false);

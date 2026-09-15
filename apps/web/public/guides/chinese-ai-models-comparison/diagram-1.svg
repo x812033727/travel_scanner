@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">五家中國系 AI 的定位：旗艦權重與台灣 App Store / Where five Chinese AI makers sit</title>
+  <desc id="desc">一張兩軸定位圖。橫向分三段，代表旗艦模型的權重狀況：左段「可下載，MIT」只有 DeepSeek，旗艦是 deepseek-v4-pro，上下文 1M；中段「可下載，自訂授權」有三家，上排的 Kimi 旗艦 kimi-k3 上下文 1,048,576、Qwen 旗艦 qwen3.8-max 上下文 1M，下排的 MiniMax 旗艦 MiniMax-M3 上下文 1,000,000；右段「只有 API」是豆包 Seed，旗艦 doubao-seed-2-1-pro，上下文 256k。縱向分兩列，上列是 2026 年 9 月 14 日在台灣區 App Store 查得到官方 App 且標示免費的三家：DeepSeek、Kimi、Qwen；下列是當天查不到官方 App 的兩家：MiniMax 與豆包。圖下方註明價格與上架狀態以官網為準。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">五家中國系 AI 的定位：旗艦權重與台灣 App Store</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Open weights and Taiwan App Store status, checked 2026-09-14</text>
+
+  <text x="480" y="172" font-size="19" font-weight="bold" fill="#0D6B68" text-anchor="middle">可下載 · MIT</text>
+  <text x="935" y="172" font-size="19" font-weight="bold" fill="#2F6F9F" text-anchor="middle">可下載 · 自訂授權</text>
+  <text x="1365" y="172" font-size="19" font-weight="bold" fill="#D97A2B" text-anchor="middle">只有 API</text>
+
+  <line x1="660" y1="190" x2="660" y2="730" stroke="#5C6B6B" stroke-width="2" stroke-dasharray="10 10"/>
+  <line x1="1210" y1="190" x2="1210" y2="730" stroke="#5C6B6B" stroke-width="2" stroke-dasharray="10 10"/>
+  <line x1="300" y1="460" x2="1520" y2="460" stroke="#5C6B6B" stroke-width="2" stroke-dasharray="10 10"/>
+
+  <text x="48" y="315" font-size="19" font-weight="bold" fill="#102A2B">台灣區 App Store</text>
+  <text x="48" y="345" font-size="18" fill="#2E7D5B">查得到（免費）</text>
+  <text x="48" y="580" font-size="19" font-weight="bold" fill="#102A2B">台灣區 App Store</text>
+  <text x="48" y="610" font-size="18" fill="#B8442D">查不到官方 App</text>
+
+  <rect x="345" y="240" width="270" height="170" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="480" y="295" font-size="23" font-weight="bold" fill="#102A2B" text-anchor="middle">DeepSeek</text>
+  <text x="480" y="335" font-size="17" fill="#5C6B6B" text-anchor="middle">deepseek-v4-pro</text>
+  <text x="480" y="375" font-size="17" fill="#102A2B" text-anchor="middle">上下文 1M</text>
+
+  <rect x="688" y="240" width="232" height="170" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="804" y="295" font-size="23" font-weight="bold" fill="#102A2B" text-anchor="middle">Kimi</text>
+  <text x="804" y="335" font-size="17" fill="#5C6B6B" text-anchor="middle">kimi-k3</text>
+  <text x="804" y="375" font-size="17" fill="#102A2B" text-anchor="middle">上下文 1,048,576</text>
+
+  <rect x="952" y="240" width="232" height="170" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1068" y="295" font-size="23" font-weight="bold" fill="#102A2B" text-anchor="middle">Qwen</text>
+  <text x="1068" y="335" font-size="17" fill="#5C6B6B" text-anchor="middle">qwen3.8-max</text>
+  <text x="1068" y="375" font-size="17" fill="#102A2B" text-anchor="middle">上下文 1M</text>
+
+  <rect x="820" y="505" width="240" height="170" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="940" y="560" font-size="23" font-weight="bold" fill="#102A2B" text-anchor="middle">MiniMax</text>
+  <text x="940" y="600" font-size="17" fill="#5C6B6B" text-anchor="middle">MiniMax-M3</text>
+  <text x="940" y="640" font-size="17" fill="#102A2B" text-anchor="middle">上下文 1,000,000</text>
+
+  <rect x="1240" y="505" width="250" height="170" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1365" y="560" font-size="23" font-weight="bold" fill="#102A2B" text-anchor="middle">豆包 Seed</text>
+  <text x="1365" y="600" font-size="16" fill="#5C6B6B" text-anchor="middle">doubao-seed-2-1-pro</text>
+  <text x="1365" y="640" font-size="17" fill="#102A2B" text-anchor="middle">上下文 256k</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <line x1="300" y1="762" x2="1500" y2="762" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="300" y="796" font-size="17" fill="#5C6B6B">橫向是旗艦權重的取得方式：MIT 可下載 → 自訂授權可下載 → 只有 API</text>
+  <text x="60" y="836" font-size="16" fill="#5C6B6B">查證日 2026 年 9 月 14 日；模型版本、價格與上架狀態隨時會改，以官網為準。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

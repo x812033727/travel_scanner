@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">模型檔案與三種記憶體容器 / A model file and three sizes of memory</title>
+  <desc id="desc">簡單幾何插圖。左邊是一個深綠色的方塊，像一顆晶片，內部有幾條橫線代表模型的權重層，兩側有短短的接腳。一個粗箭頭從方塊指向右邊。右邊立著三個由小到大的敞口容器，輪廓分別是藍色、深綠色與綠色，三個容器底部裝著高度相同的一份色塊，代表同一個模型放進顯示記憶體、系統記憶體與統一記憶體時剩下的餘裕不同：容器越小，剩下的空間越少。容器下方有一條淺灰色的檯面線。畫面底部有一行字：裝得下，才跑得快。</desc>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <g transform="translate(0,-58)">
+  <!-- model block: a chip-like brick with weight layers -->
+  <rect x="140" y="326" width="300" height="248" rx="26" fill="#0D6B68"/>
+  <rect x="180" y="372" width="220" height="24" rx="12" fill="#E3F0EF"/>
+  <rect x="180" y="420" width="220" height="24" rx="12" fill="#E3F0EF"/>
+  <rect x="180" y="468" width="160" height="24" rx="12" fill="#D97A2B"/>
+  <rect x="180" y="516" width="220" height="24" rx="12" fill="#E3F0EF"/>
+  <rect x="104" y="368" width="36" height="16" rx="8" fill="#5C6B6B"/>
+  <rect x="104" y="442" width="36" height="16" rx="8" fill="#5C6B6B"/>
+  <rect x="104" y="516" width="36" height="16" rx="8" fill="#5C6B6B"/>
+  <rect x="440" y="368" width="36" height="16" rx="8" fill="#5C6B6B"/>
+  <rect x="440" y="516" width="36" height="16" rx="8" fill="#5C6B6B"/>
+
+  <!-- arrow from the model to the memory shelves -->
+  <rect x="490" y="438" width="84" height="24" rx="12" fill="#102A2B"/>
+  <path d="M 566 424 L 610 450 L 566 476 z" fill="#102A2B"/>
+
+  <!-- three open-topped memory containers, same model volume inside each -->
+  <path d="M 660 444 L 660 668 a 18 18 0 0 0 18 18 L 862 686 a 18 18 0 0 0 18 -18 L 880 444" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 674 556 L 674 664 a 8 8 0 0 0 8 8 L 858 672 a 8 8 0 0 0 8 -8 L 866 556 z" fill="#2F6F9F"/>
+
+  <path d="M 990 356 L 990 668 a 18 18 0 0 0 18 18 L 1192 686 a 18 18 0 0 0 18 -18 L 1210 356" fill="#FFFFFF" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 1004 556 L 1004 664 a 8 8 0 0 0 8 8 L 1188 672 a 8 8 0 0 0 8 -8 L 1196 556 z" fill="#0D6B68"/>
+
+  <path d="M 1320 256 L 1320 668 a 18 18 0 0 0 18 18 L 1522 686 a 18 18 0 0 0 18 -18 L 1540 256" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 1334 556 L 1334 664 a 8 8 0 0 0 8 8 L 1518 672 a 8 8 0 0 0 8 -8 L 1526 556 z" fill="#2E7D5B"/>
+
+  <!-- headroom markers above each fill line -->
+  <rect x="674" y="474" width="192" height="8" rx="4" fill="#E6F0F7"/>
+  <rect x="1004" y="402" width="192" height="8" rx="4" fill="#E3F0EF"/>
+  <rect x="1334" y="304" width="192" height="8" rx="4" fill="#E3F0EF"/>
+
+  <!-- shelf -->
+  <rect x="630" y="700" width="920" height="8" rx="4" fill="#5C6B6B"/>
+  </g>
+
+  <text x="800" y="792" text-anchor="middle" font-size="58" font-weight="700" fill="#102A2B">裝得下，才跑得快</text>
+</svg>

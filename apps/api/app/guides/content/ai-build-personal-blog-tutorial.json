@@ -1,0 +1,404 @@
+{
+  "slug": "ai-build-personal-blog-tutorial",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 AI 做個人部落格：靜態網站產生器與部署",
+      "description": "不想把文章寄放在別人的平台，就用靜態網站產生器做自己的部落格。這篇以 Hugo 為主線，示範怎麼讓 AI 代理幫你安裝、建立專案、換主題與改版型，用 front matter 寫標題、日期與標籤，在本機 1313 埠預覽，再用 GitHub Actions 部署到 GitHub Pages 或 Cloudflare Pages，最後接上自己的網域並開啟 HTTPS。",
+      "hero": {
+        "src": "/guides/ai-build-personal-blog-tutorial/hero.jpg",
+        "alt": "插圖：一份 Markdown 文件經過一個齒輪，變成一個有網址列與鎖頭的瀏覽器視窗，下方一行短標題",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想把文章放在自己的網址底下，又不想租一台每月會出帳單的伺服器、不想維護資料庫，靜態網站產生器就是最省事的那條路：它在你自己的電腦上把 Markdown 檔案建置成一整包 HTML，代管服務只負責把這包檔案送給讀者。個人部落格用一個產生器、一個免費代管方案、一個自己的網域就夠了，而安裝、設定與改版型這幾段最容易卡住的工作，正好可以交給 AI 代理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇會走完一整條路線：先弄清楚產生器在做什麼，再從 Hugo、Astro、Eleventy 裡挑一個，讓代理幫你安裝、建立專案、換主題、改版型，接著用 Markdown 寫第一篇文章、在本機預覽，最後部署到 GitHub Pages 或 Cloudflare Pages，接上自己的網域並開啟 HTTPS。以下版本號、指令與免費額度都照各家官方文件在 2026 年 9 月 14 日當天的寫法，過一段時間再動手請重新對一次官網。"
+        },
+        {
+          "type": "heading",
+          "text": "靜態網站產生器在做什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "靜態網站產生器的輸入是純文字檔加上版型，輸出是一整個資料夾的 HTML。以 Hugo 為例，執行建置指令之後，成品會被放進專案裡的 public 目錄：每篇文章一個 index.html，首頁、章節頁、分類頁與標籤頁各自附一個 index.xml，也就是 RSS，最外層再加一份 sitemap.xml。把這個資料夾整包交給任何一台網頁伺服器，網站就能運作，過程中沒有任何程式在主機上跑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有資料庫這件事，對個人部落格的意義比想像中大：外掛沒更新、資料表沒備份、後台被登入這幾種常見災難，在這種架構下幾乎不會發生。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "沒有資料庫、沒有後台登入頁，也就沒有需要定期更新的套件與需要備份的資料表。",
+            "網站只是一堆檔案，所以能放在免費方案上；GitHub 官方文件寫明，GitHub Free 的個人帳號與組織帳號都可以在公開儲存庫使用 GitHub Pages。",
+            "文章是 Markdown 純文字檔，放在自己的電腦與 Git 裡，日後換產生器、換代管服務都搬得走。",
+            "因為是純文字，AI 代理可以直接讀、直接改，不必先教它操作某一套後台介面。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "Markdown 基礎：建立 MD、標題與程式碼",
+          "url": "https://mokaair.com/zh-TW/life/gemini-markdown-basics"
+        },
+        {
+          "type": "heading",
+          "text": "Hugo、Astro、Eleventy 怎麼選",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三個都把 Markdown 轉成靜態網頁，真正的差別在語言與安裝方式，這決定你電腦上要先裝什麼。Hugo 用 Go 寫成，官方提供各作業系統預先編譯好的執行檔，也能用套件管理器安裝，不需要 Node.js。Astro 與 Eleventy 都是 Node.js 專案，安裝前要先有 Node.js，版本還有下限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugo 的官方 Quick Start 要求 v0.158.0 以上，另外要有 Git，因為主題常以 Git submodule 的形式裝進專案。它分成 standard、deploy、extended、extended/deploy 四個版本，官方建議沒有特別需求就用 standard；Homebrew 裝到的是 extended/deploy，Winget 與 Chocolatey 裝到的是 extended。開發伺服器啟動後，終端機會印出本機的 1313 埠網址，改檔案存檔瀏覽器就自動重整。官方網站上另有一個主題目錄可以挑版型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Astro 目前的大版本是 v7，官方文件要求 Node.js v22.12.0 以上，並特別註明不支援 v23 這類奇數版本。用 npm create astro@latest 會啟動一個安裝精靈，一路問下來，中間可以挑一個官方的 starter template。開發伺服器跑起來之後在本機的 4321 埠，建置產物預設放在 dist。Astro 的特色是可以在同一個專案裡加進 React、Preact、Svelte、Vue 這些官方整合的前端框架元件，之後想在部落格裡放互動小工具時會派上用場。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Eleventy 目前的穩定版是 3.1.6，要求 Node.js 18 以上，官方同時在測 4.0.0-alpha.10。安裝方式是在專案資料夾裡執行 npm install @11ty/eleventy，用 npx @11ty/eleventy 建置，加上 --serve 啟動本機伺服器，網址是本機的 8080 埠，輸出資料夾預設叫 _site。它幾乎不替你預設任何東西，官方文件把重點放在樣板語言的選擇上，Markdown、Nunjucks、Liquid、WebC 等可以在同一個專案裡混用。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "產生器",
+            "語言與安裝方式",
+            "本機預覽與輸出",
+            "適合誰"
+          ],
+          "rows": [
+            [
+              "Hugo（官方文件當天標示 v0.166.0）",
+              "Go；下載官方執行檔，或用 Homebrew、Winget、Chocolatey、Snap、apt 等套件管理器安裝，電腦上不需要 Node.js",
+              "本機 1313 埠；建置後輸出到 public",
+              "想要裝好就能寫、不想先處理 Node.js 環境的人"
+            ],
+            [
+              "Astro（大版本 v7）",
+              "JavaScript／TypeScript；需要 Node.js v22.12.0 以上，用 npm create astro@latest 跑安裝精靈",
+              "本機 4321 埠；npm run build 輸出到 dist",
+              "想在文章之外放互動元件，或已經熟悉前端框架的人"
+            ],
+            [
+              "Eleventy 3.1.6",
+              "JavaScript；需要 Node.js 18 以上，在專案裡 npm install @11ty/eleventy",
+              "本機 8080 埠；npx @11ty/eleventy 輸出到 _site",
+              "想自己決定每一段 HTML、不要框架幫忙做決定的人"
+            ]
+          ],
+          "caption": "三個產生器的官方安裝方式與預設值，2026 年 9 月 14 日查證於各自的官方文件。"
+        },
+        {
+          "type": "heading",
+          "text": "讓 AI 代理把站建起來",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "代理在這裡能做的事很具體：跑安裝指令、建立專案、把主題裝成 Git submodule、改設定檔、在版型檔裡加減欄位。你要做的是把想要什麼講清楚，而且每一步都自己看一次結果。下面這組指令來自 Hugo 官方文件，先自己貼一次確認環境沒問題，再把後面的工作交出去。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "依 Hugo 官方文件安裝並建立專案（macOS 與 Windows 擇一）",
+          "code": "# macOS：Homebrew 裝到的是 extended/deploy 版\nbrew install hugo\n\n# Windows：Winget 裝到的是 extended 版\nwinget install Hugo.Hugo.Extended\n\n# 確認版本，官方 Quick Start 要求 v0.158.0 或更新\nhugo version\n\n# 建立專案並裝上 Ananke 主題\nhugo new project quickstart\ncd quickstart\ngit init\ngit submodule add https://github.com/gohugo-ananke/ananke themes/ananke\necho \"theme = 'ananke'\" >> hugo.toml\nhugo server"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 使用者要注意，Hugo 官方文件明講不要用命令提示字元，也不要用 Windows PowerShell，要用 PowerShell、WSL 這類 Linux 終端機或 Git Bash。這種細節正好交給代理確認：與其自己猜，不如要它先查官方文件、把指令列出來給你看。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "請代理建站的提示詞範例",
+          "code": "我要做一個個人部落格，用 Hugo，電腦是 macOS。\n請先讀 gohugo.io 官方文件目前的寫法，再一步一步做：\n1. 檢查我電腦上有沒有 Hugo 和 Git。沒有就告訴我要執行哪一行安裝指令，先不要自己跑。\n2. 在 ~/sites/myblog 建立新專案，從官方主題目錄挑一個適合純文字部落格的主題裝上去。\n3. 建立第一篇文章，啟動本機預覽伺服器，把網址告訴我。\n\n規則：\n- 每做完一步就停下來，把你執行的指令與輸出貼給我，等我說繼續。\n- 不要改 ~/sites/myblog 以外的任何檔案。\n- 指令如果和官方文件寫的不一樣，先說明為什麼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改版型的提示要更收斂。版型檔是最容易一次改壞的地方，主題資料夾又通常是別人的 Git submodule，直接改進去，下次更新主題就會被蓋掉。正確做法是在專案自己的 layouts 目錄下建同名檔案覆寫，這正好可以寫成提示詞裡的規則。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "請代理改版型的提示詞範例",
+          "code": "這一輪只改一件事：文章列表頁。\n\n目標：\n- 每篇顯示標題、日期、前兩行摘要。\n- 一頁 10 篇，手機上單欄，桌機上維持現在的寬度。\n\n規則：\n- 不要改 themes/ 資料夾裡的檔案。要覆寫就在專案的 layouts/ 下建同名檔案。\n- 改完跑一次 hugo server，告訴我新增或修改了哪幾個檔案。\n- 我看過再決定要不要留，不要順手改其他頁面。"
+        },
+        {
+          "type": "link",
+          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code 入門：認識工具與第一條學習路線",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "寫一篇文章：front matter、圖片與本機預覽",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugo 用 hugo new content 這個指令建立文章，產出的檔案開頭有一段被 TOML 分隔符號包住的設定，叫做 front matter，寫的是這篇文章的標題、日期與狀態。官方範例預設給三個欄位：title、date、draft。tags 與 categories 則是 Hugo 預設就有的兩個分類法，填進去之後會自動長出標籤頁與分類頁。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "label": "Hugo 產生的 front matter，再自己補上標籤與分類",
+          "code": "+++\ntitle = '第一篇：為什麼自己架部落格'\ndate = 2026-09-14T09:00:00+08:00\ndraft = true\ntags = ['寫作', '工具']\ncategories = ['日誌']\n+++\n\n## 前言\n\n這是 **粗體**，這是 *斜體*。"
+        },
+        {
+          "type": "paragraph",
+          "text": "draft 設成 true 就是草稿。Hugo 預設不會發布三種內容：draft 為 true 的、date 或 publishDate 還在未來的、expiryDate 已經過去的。想在本機看草稿，啟動開發伺服器時加上 --buildDrafts 或簡寫 -D；文章寫好要上線，把 draft 改成 false 再建置。這一組行為等於內建了一個草稿匣，不需要另外開資料夾分類。"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖片建議用 Hugo 的 page bundle。做法是把文章從一個 .md 檔改成一個資料夾，資料夾裡放 index.md 與所有圖檔，這樣圖片和文章永遠綁在一起，之後搬動或改網址都不會斷圖。官方把含 index.md 的資料夾叫 leaf bundle，含 _index.md 的叫 branch bundle，後者用在章節頁。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "用 leaf bundle 讓圖片跟文章放在同一個資料夾",
+          "code": "content/\n└── posts/\n    └── my-first-post/\n        ├── index.md\n        ├── cover.jpg\n        └── screenshot-1.png"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機預覽是最該養成的習慣。開發伺服器跑起來後，終端機會印出本機的 1313 埠網址，改檔案存檔瀏覽器就用 LiveReload 自動重整；官方文件說明這是把一小段 JavaScript 注入產生的頁面，不必安裝任何軟體或外掛。每篇文章上線前，先在這裡看過排版、圖片與連結。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜Markdown 零基礎",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-markdown-basics"
+        },
+        {
+          "type": "heading",
+          "text": "部署與自訂網域：從 git push 到自己的網址",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "兩條路都有免費方案，差別在於誰幫你跑建置。GitHub Pages 是在儲存庫的 Settings 裡進 Pages，把發布來源改成 GitHub Actions，再在專案裡放一個工作流程檔；Cloudflare Pages 則是在控制台接上儲存庫，填好建置指令與輸出目錄。兩邊都是 git push 之後自動重建。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugo 官方文件直接附了一份完整的 GitHub Actions 範例，檔案放在專案的 .github/workflows/hugo.yaml。整份太長，這裡只節錄最需要自己動手改的兩段：工具版本與建置指令。官方把版本寫死，是為了讓線上建置跟你電腦上的行為一致；範例裡的時區預設是 Europe/Oslo，官方要你依需要調整，台灣填 Asia/Taipei。"
+        },
+        {
+          "type": "code",
+          "language": "yaml",
+          "label": "Hugo 官方 GitHub Actions 範例節錄：工具版本與建置指令",
+          "code": "env:\n  # Define tool versions\n  DART_SASS_VERSION: 1.104.0\n  GO_VERSION: 1.27.0\n  HUGO_VERSION: 0.166.0\n  NODE_VERSION: 24.20.0\n  # Set the build time zone\n  TZ: Europe/Oslo\n\n# ……中間的安裝步驟請整段照抄官方文件……\n\n- name: Build\n  run: |\n    hugo build \\\n      --gc \\\n      --minify \\\n      --baseURL \"${{ steps.pages.outputs.base_url }}/\" \\\n      --cacheDir \"${{ runner.temp }}/.cache/hugo\""
+        },
+        {
+          "type": "paragraph",
+          "text": "GitHub Pages 官方寫明的限制值得先看一遍：來源儲存庫建議在 1 GB 以內，發布後的網站不得大於 1 GB，部署超過 10 分鐘會逾時，每月頻寬有 100 GB 的軟性上限，每小時 10 次建置的軟性上限則在使用自訂 GitHub Actions 工作流程時不適用。另外每個帳號只能有一個使用者或組織網站，其餘都是專案網站。官方也寫明方案差異：GitHub Free 只能在公開儲存庫使用 Pages，私人儲存庫要 GitHub Pro、Team、Enterprise Cloud 或 Enterprise Server。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudflare Pages 免費方案的官方數字是：每月 500 次建置、同時 1 個建置、每個網站最多 20,000 個檔案、單一檔案最大 25 MiB、每個專案 100 個自訂網域、每個帳號 100 個專案，建置超過 20 分鐘逾時。要注意 Cloudflare 在 Pages 文件首頁放了一段提醒，說 Workers 已涵蓋大多數 Pages 的使用情境、建議新專案直接用 Workers，決定之前先看一次那段說明。建置設定就填你用的產生器那一組：Hugo 是建置指令 hugo、輸出目錄 public，Astro 是 npm run build 與 dist，Eleventy 是 npx @11ty/eleventy 與 _site。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GitHub Pages 的順序是先在儲存庫的 Settings 進 Pages，在 Custom domain 填好網域並儲存，再去 DNS 商設定記錄。apex 網域，也就是不帶子網域的 example.com，要建一筆 ALIAS、ANAME 或 A 記錄。用 A 記錄的話，官方列出的四個位址是 185.199.108.153、185.199.109.153、185.199.110.153 與 185.199.111.153；要一併支援 IPv6 再加四筆 AAAA，位址是 2606:50c0:8000::153 到 2606:50c0:8003::153。官方建議即使做了 IPv6 也保留 A 記錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "www 這種子網域則是建一筆 CNAME，指向你的帳號名稱加上 github.io，注意不要接上儲存庫名稱。apex 與 www 兩邊都設好之後，GitHub Pages 會自動在兩者之間轉址。DNS 變更官方說最多要 24 小時才會散布完成；憑證由 GitHub 自動向 Let's Encrypt 申請，Settings 的 Pages 裡那個 Enforce HTTPS 選項也最多要 24 小時才會變成可以勾選。2016 年 6 月 15 日之後建立、使用 github.io 網域的網站，官方說一律自動走 HTTPS。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudflare Pages 這邊，apex 網域必須把整個網域加進 Cloudflare 當成一個 zone，並把網域的 nameserver 指過去，之後 Cloudflare 會自己建好 CNAME 記錄。子網域就不必轉 nameserver，在原本的 DNS 商建一筆 CNAME，指向你的專案名稱加上 pages.dev 即可。兩種情況都要先在 Pages 專案的 Custom domains 裡走一次設定網域的流程。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "先在平台登記網域，再去改 DNS",
+          "text": "GitHub 官方文件特別提醒，順序反過來會出事：還沒把自訂網域加到儲存庫就先設好 DNS，別人有機會搶先在你的子網域上架站。Cloudflare 那邊的後果不同但一樣麻煩，只在 DNS 端加了 CNAME 卻沒在 Pages 控制台登記網域，網域會解析失敗並顯示 522 錯誤。還有一條兩邊都適用：不要用萬用字元記錄，GitHub 明講那會立刻提高網域被接管的風險。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在 content 資料夾裡寫一篇 Markdown，front matter 填標題、日期、標籤。",
+            "在本機執行建置指令，產生器把文章轉成靜態檔，開發伺服器在 1313 埠給你預覽。",
+            "把整個專案 commit 並 push 到 Git 儲存庫，唯獨建置產物的資料夾不進版控。",
+            "代管服務偵測到新的 commit，自動跑一次建置，把靜態檔放上它的網路。",
+            "你的自訂網域透過 DNS 記錄指向代管服務，讀者從自己的網域看到新文章。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-build-personal-blog-tutorial/diagram-1.svg",
+          "alt": "流程圖：Markdown 文章經過產生器建置、靜態檔、代管服務，最後抵達自訂網域",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左至右是一篇文章從純文字變成公開網址的五個階段；下方兩塊寫的是之後每次發文要做的事，以及不必自己做的事。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
+          "url": "https://mokaair.com/zh-TW/life/deploy-ai-built-site-to-vps"
+        },
+        {
+          "type": "heading",
+          "text": "寫作與備份的習慣",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Git 就是備份，不必另外做一套。整個專案目錄都進版控，唯一要排除的是建置產物；Hugo 官方文件講得很直接，不要把 public 目錄的內容提交進儲存庫，因為每次建置都會重新產生，而且建置前不會清空這個目錄，舊檔案會留著。養成一篇文章一次 commit 的節奏，回頭找某一版就只是看歷史紀錄的事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "草稿也不需要另外的工具。draft 設成 true 的文章不會被發布，用 -D 就能在本機預覽，等於一個永遠跟著專案走的草稿匣。同一組規則還涵蓋排程：把 date 填成未來的時間，那篇文章要等到那天之後重新建置才會出現。"
+        },
+        {
+          "type": "paragraph",
+          "text": "RSS 與 sitemap 交給產生器就好。Hugo 內建這兩樣，預設會替首頁、章節、分類與標籤頁產生 RSS，建置後也會在輸出目錄根部放一份 sitemap.xml。Astro 要自己加官方的 sitemap 整合，裝好之後建置時會產生 sitemap-index.xml 與 sitemap-0.xml；Eleventy 則是裝官方的 RSS 外掛，官方註明外掛第 2 版起需要 Eleventy v3 以上。三者都要你在設定檔裡填好網站的正式網址，feed 裡的連結才會是絕對網址。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+        },
+        {
+          "type": "link",
+          "text": "Vibe coding：不會寫程式也能做出第一個網站",
+          "url": "https://mokaair.com/zh-TW/life/vibe-coding-first-website"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hugo Documentation：Quick start（官方教學）",
+          "url": "https://gohugo.io/getting-started/quick-start/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugo Documentation：Install Hugo on macOS（官方安裝說明）",
+          "url": "https://gohugo.io/installation/macos/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugo Documentation：Install Hugo on Windows（官方安裝說明）",
+          "url": "https://gohugo.io/installation/windows/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugo Documentation：Basic usage（官方文件）",
+          "url": "https://gohugo.io/getting-started/usage/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugo Documentation：Page bundles（官方文件）",
+          "url": "https://gohugo.io/content-management/page-bundles/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugo Documentation：Configure taxonomies（官方文件）",
+          "url": "https://gohugo.io/configuration/taxonomies/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugo Documentation：RSS templates（官方文件）",
+          "url": "https://gohugo.io/templates/rss/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugo Documentation：Host on GitHub Pages（官方部署教學與工作流程範例）",
+          "url": "https://gohugo.io/host-and-deploy/host-on-github-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Astro Docs：Install Astro（官方文件）",
+          "url": "https://docs.astro.build/en/install-and-setup/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Astro Docs：Develop and build（官方文件）",
+          "url": "https://docs.astro.build/en/develop-and-build/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Astro Docs：Upgrade to Astro v7（官方升級指南）",
+          "url": "https://docs.astro.build/en/guides/upgrade-to/v7/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Astro Docs：@astrojs/sitemap（官方整合套件文件）",
+          "url": "https://docs.astro.build/en/guides/integrations-guide/sitemap/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Eleventy Documentation：Get Started（官方教學）",
+          "url": "https://www.11ty.dev/docs/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Eleventy Documentation：RSS Plugin（官方外掛文件）",
+          "url": "https://www.11ty.dev/docs/plugins/rss/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：GitHub Pages limits（官方文件）",
+          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Managing a custom domain for your GitHub Pages site（官方文件）",
+          "url": "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Securing your GitHub Pages site with HTTPS（官方文件）",
+          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare Docs：Pages limits（官方文件）",
+          "url": "https://developers.cloudflare.com/pages/platform/limits/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare Docs：Pages custom domains（官方文件）",
+          "url": "https://developers.cloudflare.com/pages/configuration/custom-domains/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare Docs：Cloudflare Pages 總覽（官方文件，含改用 Workers 的建議）",
+          "url": "https://developers.cloudflare.com/pages/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

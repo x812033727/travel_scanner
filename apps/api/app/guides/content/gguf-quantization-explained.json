@@ -1,0 +1,409 @@
+{
+  "slug": "gguf-quantization-explained",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+      "description": "GGUF 檔名裡的 Q4_K_M、Q8_0、F16 是量化類型，決定檔案多大、要多少記憶體。這篇照 llama.cpp 與 ggml 官方文件講 GGUF 格式與命名規則、各類型的每權重位元數，用官方對照表（Llama 3.1 8B 從 14.96 GiB 到 4.58 GiB）與 Ollama、Hugging Face 上同一個模型的不同量化大小說明怎麼選，並附官方的轉檔與量化指令。",
+      "hero": {
+        "src": "/guides/gguf-quantization-explained/hero.jpg",
+        "alt": "三個由大到小的方塊排成階梯，格線由細變粗，代表模型量化後檔案逐步變小",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在 Ollama 或 Hugging Face 上下載本機模型時，同一個模型會有好幾個檔案：gemma3:4b-it-q4_K_M、gemma3:4b-it-q8_0、gemma3:4b-it-fp16，名字只差幾個字，大小卻差兩三倍。這些尾碼是量化類型，決定檔案裡每個權重用幾個位元存、檔案多大、載入時要佔掉多少記憶體。結論先講：記憶體放得下就往位元數高的選，放不下就往下降一階；官方文件給得出來的是位元數與檔案大小，品質差多少沒有通用的官方對照表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇不重講量化的定義，而是把檔名讀懂、把數字對起來：GGUF 是什麼格式、Q4_K_M 這串字每一段代表什麼、llama.cpp 官方文件列出的每權重位元數與檔案大小、怎麼在 Ollama 標籤頁與 Hugging Face 檔案列表看到同一個模型的不同量化，最後照官方文件跑一次自己轉檔與量化的指令。名詞本身的定義在這篇："
+        },
+        {
+          "type": "link",
+          "text": "量化（Quantization）：用較少位元執行模型的取捨",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+        },
+        {
+          "type": "heading",
+          "text": "GGUF 是什麼：一個檔案裝下權重與說明書",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ggml 官方的規格文件對 GGUF 的定義是「一種儲存模型、供 GGML 與以 GGML 為基礎的執行器進行推論的檔案格式」。它是二進位格式，為了快速載入與儲存、也為了容易讀取而設計，是舊格式 GGML、GGMF、GGJT 的後繼者。Hugging Face 的官方說明補了一個比較：和只存張量的 safetensors 不同，GGUF 同時編碼張量與一組標準化的中繼資料——模型的設定與權重裝在同一個檔案裡。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "單檔部署：可以直接散布與載入，不需要任何外部檔案",
+            "可擴充：加入新功能或新資訊不會讓既有模型讀不了",
+            "支援 mmap：模型可以用 mmap 載入，載入與儲存都比較快",
+            "容易使用：少量程式碼就能讀寫，不必依賴外部函式庫",
+            "資訊完整：載入模型需要的所有資訊都在檔案裡，不必使用者另外提供"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "llama.cpp 的官方文件寫得很直接：llama.cpp 要求模型必須以 GGUF 格式儲存，其他資料格式要用專案裡的 convert_*.py 腳本轉換。所以你在 Ollama、LM Studio 或 llama.cpp 上看到的本機模型，幾乎都是 GGUF；換句話說，讀懂 GGUF 的檔名，就等於讀懂了本機模型的規格標示。"
+        },
+        {
+          "type": "heading",
+          "text": "Q4_K_M 這串字怎麼讀",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "GGUF 規格文件裡有一套官方命名慣例，格式是 Sidecar、BaseName、SizeLabel、FineTune、Version、Encoding、Type、Shard 依序排列，每一段之間用減號隔開。其中 Encoding 那一段就是量化類型，文件的說明是「套用在模型權重上的編碼方式」。文件自己給的範例是 mtp-Qwen3-27B-v1.0-Q4_K_M.gguf，它的拆解如下。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "GGUF 官方命名慣例的檔名拆解（照 ggml 規格文件的範例）",
+          "code": "mtp-Qwen3-27B-v1.0-Q4_K_M.gguf\n\nmtp      Sidecar：附屬模組，選用\nQwen3    BaseName：模型名稱\n27B      SizeLabel：參數規模\nv1.0     Version：版本，沒寫就當作 v1.0\nQ4_K_M   Encoding：權重編碼，也就是量化類型"
+        },
+        {
+          "type": "paragraph",
+          "text": "再把 Q4_K_M 本身拆開。Q 是整數量化，後面的數字是這一類型大約每個權重用幾個位元，K 指的是 llama.cpp 的 K-quant 家族，最後的 S、M、L 是同一個家族裡不同的張量搭配。最後這點可以從官方選項說明得到佐證：llama-quantize 的 --pure 作用是「停用 k-quant 混用，把所有張量量化成同一種類型」，也就是說預設的 Q4_K_M 本來就是多種類型混著用，不是整個檔案都是 4 位元。ggml 規格文件的檔案類型列舉裡，Q4_K_S 與 Q4_K_M 是兩個不同的編號，S 與 M 並不是同一個東西的別名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "F16、BF16、F32 則不是量化，是原始的浮點精度，只是 ggml 把它們和量化類型放在同一份張量型別清單裡（這份清單目前編到 40 號，含已經移除支援的項目）。Hugging Face 的 GGUF 說明把 Q4_0、Q4_1、Q5_0、Q5_1、Q8_0、Q8_1 標成「舊式（legacy）量化方式，如今不常用」，每個區塊 32 個權重；Q2_K 到 Q6_K 用的是超級區塊結構；IQ 開頭的類型則要靠 importance matrix 才算得出權重。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份 Hugging Face 文件列出了各類型換算後的每權重位元數，這是官方文件裡最直接的「幾位元」數字："
+        },
+        {
+          "type": "list",
+          "items": [
+            "Q6_K：6.5625 位元，超級區塊含 16 個區塊、每區塊 16 個權重",
+            "Q5_K：5.5 位元，超級區塊含 8 個區塊、每區塊 32 個權重",
+            "Q4_K：4.5 位元，超級區塊含 8 個區塊、每區塊 32 個權重",
+            "Q3_K：3.4375 位元",
+            "Q2_K：2.625 位元",
+            "IQ4_XS：4.25 位元、IQ1_S：1.56 位元，兩者都要用 importance matrix"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "位元數怎麼變成檔案大小與記憶體",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "llama.cpp 的 quantize 官方文件有一張 Llama 3.1 8B 的對照表，把每權重位元與實際檔案大小放在一起：F16 是 16.0005 位元、14.96 GiB；Q8_0 是 8.5008 位元、7.95 GiB；Q4_K_M 是 4.8944 位元、4.58 GiB；再往下的 Q2_K 是 3.1593 位元、2.95 GiB。位元數幾乎等比例反映在檔案大小上，量化換的就是這個。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記憶體呢？同一份文件寫著：模型目前會完整載入記憶體，所以你需要足夠的磁碟空間存放，也需要足夠的記憶體載入，「目前記憶體與磁碟需求是一樣的」。換句話說，檔案大小就是記憶體需求的下限。這一頁另一張表列了 Llama 3.1 各尺寸量化成 Q4_K_M 前後的大小：8B 從 32.1 GB 變成 4.9 GB、70B 從 280.9 GB 變成 43.1 GB、405B 從 1,625.1 GB 變成 249.1 GB。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下限之外還有上下文。Ollama 的官方常見問題說預設上下文視窗是 4096 個 token，可以用 OLLAMA_CONTEXT_LENGTH 調整；而存放這些 token 的 K/V 快取本身也能量化，環境變數 OLLAMA_KV_CACHE_TYPE 預設是 f16，設成 q8_0 大約只用 f16 一半的記憶體、精度損失非常小，設成 q4_0 大約用四分之一、精度損失小到中等，在較長的上下文會比較明顯。權重的量化與上下文的量化是兩件事，記憶體要分開算。"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gguf-quantization-explained/diagram-1.svg",
+          "alt": "F16、Q8_0、Q4_K_M 三個量化等級的每權重位元與檔案大小比較圖",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右位元數減半再減半，檔案大小跟著縮。左欄是 llama.cpp 官方表的 Llama 3.1 8B，右欄是 Ollama 標籤頁上 gemma3:4b 的三個量化。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "heading",
+          "text": "在 Ollama 與 Hugging Face 上看同一個模型的不同量化",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 模型庫的每個模型都有標籤頁，同一個模型的不同量化就列在那裡。查證當天的 gemma3 標籤頁上，4B 這一組是 gemma3:4b-it-q4_K_M 3.3GB、gemma3:4b-it-q8_0 5.0GB、gemma3:4b-it-fp16 8.6GB，三個都標 128K 上下文視窗；27B 那一組則是 q4_K_M 17GB、q8_0 30GB、fp16 55GB。"
+        },
+        {
+          "type": "paragraph",
+          "text": "值得注意的是預設標籤：gemma3:4b 與 gemma3:latest 顯示的摘要碼都是 a2af6cc3eb7f、大小 3.3GB，和 gemma3:4b-it-q4_K_M 是同一個，也就是不指定量化時拿到的就是 q4_K_M。Hugging Face 的官方文件寫的是同一個預設：用 ollama run 跑 Hub 上的 GGUF 時，「預設使用 Q4_K_M 量化方式，如果該儲存庫裡有的話」，沒有的話才挑一個該庫裡合理的類型。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "在 Ollama 指定量化並確認模型載到哪裡",
+          "code": "# 不指定就是預設標籤，要指定量化就寫在冒號後面\nollama pull gemma3:4b-it-q8_0\nollama run gemma3:4b-it-q8_0\n\n# 看目前載入的模型放在哪裡：Processor 欄會顯示 100% GPU、100% CPU 或兩者混合\nollama ps"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugging Face 這邊看得更細。官方文件說可以用 library=gguf 的篩選瀏覽所有含 GGUF 的模型，而且模型頁與 Files 分頁都內建 GGUF 檢視器，可以看中繼資料與張量資訊（名稱、形狀、精度）；文件也提到撰寫當下 Hub 上有 45K 個公開的 GGUF 檔案。實際打開 llama.cpp 官方組織 ggml-org 的 gemma-3-4b-it-GGUF，檔案列表就是三個權重檔：Q4_K_M 2.49 GB、Q8_0 4.13 GB、f16 7.77 GB，另外一個 0.85 GB 的 mmproj-model-f16.gguf 是多模態投影器。同一個模型在 Ollama 與 Hugging Face 上的數字不會完全一樣，因為兩邊打包進去的內容不同，以各自頁面當天顯示的為準。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "從 Hugging Face 直接下載並執行 GGUF（照官方文件的例子）",
+          "code": "# llama.cpp 官方文件的參數格式是 -hf <user>/<model>[:quant]\nllama cli -hf ggml-org/gemma-3-4b-it-GGUF\n\n# 冒號後面指定量化（Hugging Face 官方文件的例子）\nllama-cli -hf bartowski/Llama-3.2-3B-Instruct-GGUF:Q8_0\n\n# 用 Ollama 跑 Hub 上的 GGUF，冒號後面同樣可以指定量化\nollama run hf.co/bartowski/Llama-3.2-3B-Instruct-GGUF:Q8_0"
+        },
+        {
+          "type": "paragraph",
+          "text": "上面第一行與第二行的執行檔名稱不一樣，是因為 llama.cpp 專案現在的說明寫成 llama cli，Hugging Face 文件的範例則是 llama-cli；兩種寫法都出現在官方文件裡，以你安裝的版本為準。不想打指令的話，圖形介面的工具也會在下載頁直接標出量化類型與檔案大小。"
+        },
+        {
+          "type": "link",
+          "text": "Hugging Face 入門：找模型、看授權、下載",
+          "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "LM Studio 入門：圖形介面跑本機模型",
+          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼選：先量記憶體，再決定往上或往下",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "選法可以縮成一句：先看模型檔案放不放得進你要跑的記憶體，放得下就往位元數高的選，放不下就往下降一階。官方文件對品質只給方向、不給分數表：llama.cpp 的 quantize 文件說量化「可能帶來一些精度損失，通常以困惑度（perplexity，ppl）或 KL 散度（KLD）衡量」，並且「用合適的 imatrix 檔可以把損失降到最低」；Ollama 的匯入文件說量化讓模型「跑得更快、記憶體用得更少，但正確性下降」。跨模型、跨任務差多少，只能自己測。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "先查你要的模型在 Ollama 標籤頁或 Hugging Face 檔案列表上的實際大小",
+            "扣掉作業系統與其他軟體佔用，看剩下的顯示記憶體或統一記憶體放不放得下",
+            "放得下而且還有餘裕，就往 Q6_K、Q8_0 走；剛好卡住就用 Q4_K_M",
+            "放不下就往 Q4_K_S、Q3_K_M 降一階，或直接換小一號的參數規模",
+            "用 ollama ps 確認 Processor 欄是 100% GPU；出現 48%/52% CPU/GPU 就是超出顯示記憶體了",
+            "同一組提示詞在兩個量化各跑一次，用自己的任務判斷差別值不值得"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "參數規模與量化是兩個不同的旋鈕，不要混成一個。同樣是 8GB 上下的空間，你可以選 12B 的 q4_K_M（gemma3:12b-it-q4_K_M 是 8.1GB），也可以選 4B 的 fp16（gemma3:4b-it-fp16 是 8.6GB）；官方文件沒有說哪一邊比較好，只有大小是確定的。"
+        },
+        {
+          "type": "link",
+          "text": "模型參數（Model Parameters）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+        },
+        {
+          "type": "table",
+          "header": [
+            "量化類型",
+            "每權重位元",
+            "檔案大小（Llama 3.1 8B）",
+            "什麼時候用"
+          ],
+          "rows": [
+            [
+              "F16",
+              "16.0005",
+              "14.96 GiB",
+              "原始精度，轉檔與比較的基準"
+            ],
+            [
+              "Q8_0",
+              "8.5008",
+              "7.95 GiB",
+              "記憶體很充裕時的高位元選擇"
+            ],
+            [
+              "Q6_K",
+              "6.5633",
+              "6.14 GiB",
+              "想比 Q4 再高一階又放得下"
+            ],
+            [
+              "Q5_K_M",
+              "5.7036",
+              "5.33 GiB",
+              "Q4 與 Q8 之間的中間檔"
+            ],
+            [
+              "Q4_K_M",
+              "4.8944",
+              "4.58 GiB",
+              "Ollama 與 Hugging Face 的預設"
+            ],
+            [
+              "Q4_K_S",
+              "4.6672",
+              "4.36 GiB",
+              "比 Q4_K_M 再省一點空間"
+            ],
+            [
+              "IQ4_XS",
+              "4.4597",
+              "4.17 GiB",
+              "需要 importance matrix 的 4 位元"
+            ],
+            [
+              "Q3_K_M",
+              "3.9960",
+              "3.74 GiB",
+              "Q4 放不下時往下一階"
+            ],
+            [
+              "Q2_K",
+              "3.1593",
+              "2.95 GiB",
+              "空間很緊，其他都放不下時"
+            ],
+            [
+              "IQ1_S",
+              "2.0042",
+              "1.87 GiB",
+              "官方表中最小的一檔"
+            ]
+          ],
+          "caption": "資料來源：llama.cpp quantize 官方文件的 Llama 3.1 8B 對照表，2026 年 9 月查證。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "檔案大小是下限，不是全部",
+          "text": "llama.cpp 官方文件寫「模型目前會完整載入記憶體」，而且「目前記憶體與磁碟需求是一樣的」，所以一個 4.58 GiB 的檔案至少要有同樣大小的空間放它。上下文的 K/V 快取、其他程式與作業系統都還要另外佔；Ollama 預設 4096 個 token 的上下文、K/V 快取預設 f16，要省記憶體才改成 q8_0 或 q4_0。看到「顯示記憶體有 8GB，檔案 7.95 GiB 應該剛好」就要小心，通常不會剛好。"
+        },
+        {
+          "type": "heading",
+          "text": "自己轉檔與量化：照官方文件跑一次",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果 Hugging Face 上沒有你要的量化，或你微調過自己的模型，llama.cpp 官方文件把流程分成兩個階段：先把原始模型轉成 GGUF，再對 GGUF 做量化。文件強調第一步要先轉成高精度格式（F32 或 BF16），量化工具是吃這種高精度 GGUF 當輸入。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "llama.cpp 官方文件的轉檔與量化步驟",
+          "code": "# 1. 安裝 Python 需求（在 llama.cpp 專案目錄裡）\npython3 -m pip install -r requirements.txt\n\n# 2. 轉成高精度 GGUF，--remote 直接抓 Hugging Face 上的權重\npython convert_hf_to_gguf.py --outfile gemma-4-E2B-it-bf16.gguf \\\n  --outtype bf16 --remote google/gemma-4-E2B-it\n\n# 3. 量化成 Q4_K_M\n./build/bin/llama-quantize gemma-4-E2B-it-bf16.gguf \\\n  gemma-4-E2B-it-Q4_K_M.gguf Q4_K_M"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方列出的選項裡，和品質最相關的是這幾個："
+        },
+        {
+          "type": "list",
+          "items": [
+            "--imatrix 檔名：用這份 importance matrix 做量化最佳化",
+            "--pure：停用 k-quant 混用，把所有張量量化成同一種類型",
+            "--allow-requantize：允許對已經量化過的張量再量化，官方警告這比從 16 位元或 32 位元量化「會嚴重降低品質」",
+            "--leave-output-tensor：output.weight 不做量化，檔案會變大但品質可能較好",
+            "--keep-split：維持輸入檔的分片方式，不合併成單一檔案"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 也能量化，但支援的類型少很多。官方文件寫它可以把 FP16 或 FP32 的模型用 -q 或 --quantize 轉成其他等級，列出的支援清單只有 q8_0，加上 K-means 類的 q4_K_S 與 q4_K_M 兩個。匯入既有的 GGUF 則是寫一個 Modelfile 指向那個檔案再 ollama create。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 Ollama 匯入 GGUF 與量化（照官方文件）",
+          "code": "# Modelfile 的內容：指向一個 GGUF 檔\nFROM /path/to/file.gguf\n\n# 依這個 Modelfile 建立模型\nollama create my-model\n\n# 從 FP16／FP32 的模型建立量化版本\nollama create --quantize q4_K_M mymodel"
+        },
+        {
+          "type": "paragraph",
+          "text": "不想在自己電腦裝環境的話，llama.cpp 文件指向 Hugging Face 上的 GGUF-my-repo 空間，可以在瀏覽器裡把模型轉成 GGUF 並量化；官方說明寫著它每 6 小時同步一次 llama.cpp 的 main 分支。轉好的檔案就跟你在 Hub 上下載的一樣，檔名照前面那套命名慣例讀就好。"
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        }
+      ],
+      "sources": [
+        {
+          "title": "GGUF 檔案格式規格（ggml 官方文件）",
+          "url": "https://github.com/ggml-org/ggml/blob/master/docs/gguf.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "llama.cpp 專案說明（官方 README）",
+          "url": "https://github.com/ggml-org/llama.cpp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Obtaining and quantizing models（llama.cpp 官方文件）",
+          "url": "https://github.com/ggml-org/llama.cpp/blob/master/docs/models.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "quantize 工具說明與量化對照表（llama.cpp 官方文件）",
+          "url": "https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GGUF（Hugging Face Hub 官方文件）",
+          "url": "https://huggingface.co/docs/hub/gguf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GGUF usage with llama.cpp（Hugging Face Hub 官方文件）",
+          "url": "https://huggingface.co/docs/hub/gguf-llamacpp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Use Ollama with any GGUF Model on Hugging Face Hub（官方文件）",
+          "url": "https://huggingface.co/docs/hub/ollama",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Importing a Model（Ollama 官方文件，含量化與 Modelfile）",
+          "url": "https://docs.ollama.com/import",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FAQ（Ollama 官方文件，含上下文長度與 K/V 快取量化）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "gemma3 標籤頁（Ollama 官方模型庫，各量化的檔案大小）",
+          "url": "https://ollama.com/library/gemma3/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ggml-org/gemma-3-4b-it-GGUF 檔案列表（Hugging Face 官方組織）",
+          "url": "https://huggingface.co/ggml-org/gemma-3-4b-it-GGUF/tree/main",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

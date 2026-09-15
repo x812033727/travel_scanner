@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">從 Markdown 到自己的網域 / From Markdown to your own domain</title>
+  <desc id="desc">簡單幾何插圖。左邊是一份文件：白底深綠邊框的圓角長方形，上方有一塊淺綠色區塊，裡面三條短線代表文章開頭的設定欄位，下方五條長短不一的灰線代表內文。一個箭頭指向中間的齒輪，齒輪由深綠色圓環與八個小方塊組成，代表產生器把文字建置成網頁。第二個箭頭指向右邊的瀏覽器視窗：藍色邊框的圓角長方形，上方有三個小圓點、一條分隔線、一顆淺藍色的網址列膠囊與一個綠色鎖頭，下方是一條深色標題色塊、三條文字線、一個淺綠色方形代表圖片，以及一條長文字線。畫面下方有一行標題文字「從 Markdown 到自己的網域」。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- markdown document -->
+  <rect x="150" y="200" width="300" height="400" rx="24" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <rect x="185" y="235" width="230" height="86" rx="12" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+  <rect x="205" y="255" width="120" height="10" rx="5" fill="#0D6B68"/>
+  <rect x="205" y="273" width="170" height="10" rx="5" fill="#0D6B68"/>
+  <rect x="205" y="291" width="96" height="10" rx="5" fill="#0D6B68"/>
+  <rect x="185" y="360" width="230" height="12" rx="6" fill="#5C6B6B"/>
+  <rect x="185" y="396" width="196" height="12" rx="6" fill="#5C6B6B"/>
+  <rect x="185" y="432" width="230" height="12" rx="6" fill="#5C6B6B"/>
+  <rect x="185" y="468" width="160" height="12" rx="6" fill="#5C6B6B"/>
+  <rect x="185" y="504" width="212" height="12" rx="6" fill="#5C6B6B"/>
+
+  <line x1="482" y1="400" x2="576" y2="400" stroke="#5C6B6B" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <!-- build gear -->
+  <g transform="rotate(0 668 400)"><rect x="650" y="312" width="36" height="34" rx="8" fill="#0D6B68"/></g>
+  <g transform="rotate(45 668 400)"><rect x="650" y="312" width="36" height="34" rx="8" fill="#0D6B68"/></g>
+  <g transform="rotate(90 668 400)"><rect x="650" y="312" width="36" height="34" rx="8" fill="#0D6B68"/></g>
+  <g transform="rotate(135 668 400)"><rect x="650" y="312" width="36" height="34" rx="8" fill="#0D6B68"/></g>
+  <g transform="rotate(180 668 400)"><rect x="650" y="312" width="36" height="34" rx="8" fill="#0D6B68"/></g>
+  <g transform="rotate(225 668 400)"><rect x="650" y="312" width="36" height="34" rx="8" fill="#0D6B68"/></g>
+  <g transform="rotate(270 668 400)"><rect x="650" y="312" width="36" height="34" rx="8" fill="#0D6B68"/></g>
+  <g transform="rotate(315 668 400)"><rect x="650" y="312" width="36" height="34" rx="8" fill="#0D6B68"/></g>
+  <circle cx="668" cy="400" r="72" fill="#FFFFFF" stroke="#0D6B68" stroke-width="14"/>
+  <circle cx="668" cy="400" r="26" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+
+  <line x1="760" y1="400" x2="854" y2="400" stroke="#5C6B6B" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <!-- browser window -->
+  <rect x="880" y="215" width="570" height="370" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <line x1="883" y1="302" x2="1447" y2="302" stroke="#2F6F9F" stroke-width="3"/>
+  <circle cx="920" cy="259" r="9" fill="#5C6B6B"/>
+  <circle cx="950" cy="259" r="9" fill="#5C6B6B"/>
+  <circle cx="980" cy="259" r="9" fill="#5C6B6B"/>
+  <rect x="1012" y="241" width="330" height="36" rx="18" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <rect x="1040" y="254" width="180" height="10" rx="5" fill="#2F6F9F"/>
+  <path d="M 1372 258 v -8 a 12 12 0 0 1 24 0 v 8" fill="none" stroke="#2E7D5B" stroke-width="6"/>
+  <rect x="1362" y="256" width="44" height="30" rx="7" fill="#2E7D5B"/>
+
+  <rect x="930" y="342" width="280" height="20" rx="10" fill="#102A2B"/>
+  <rect x="930" y="396" width="270" height="12" rx="6" fill="#5C6B6B"/>
+  <rect x="930" y="428" width="240" height="12" rx="6" fill="#5C6B6B"/>
+  <rect x="930" y="460" width="262" height="12" rx="6" fill="#5C6B6B"/>
+  <rect x="1240" y="336" width="152" height="112" rx="12" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="930" y="506" width="462" height="12" rx="6" fill="#5C6B6B"/>
+
+  <text x="800" y="750" text-anchor="middle" font-size="54" font-weight="700" fill="#102A2B">從 Markdown 到自己的網域</text>
+</svg>
