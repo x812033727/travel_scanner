@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-life-ai-batch-10
 title: 生活分享 AI 系列批次 10：比較、費用、資安與法律（20 篇）
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-15T06:20:43Z
 created_at: 2026-09-13T11:56:00Z
-completed_at:
+completed_at: 2026-09-15T08:53:43Z
 branch:
 depends_on:
   - 2026-09-13-life-ai-series-tooling
