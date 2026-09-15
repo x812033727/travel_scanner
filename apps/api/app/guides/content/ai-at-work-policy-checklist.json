@@ -1,0 +1,516 @@
+{
+  "slug": "ai-at-work-policy-checklist",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "公司裡用 AI 的規範：資料外流與合規",
+      "description": "小公司老闆與員工的一張檢查清單：哪些資料不能貼進公開 AI、ChatGPT 商用與 Claude 商用與 Gemini for Workspace 的訓練與保留條款原文、個人帳號與公司帳號差在哪、管理員能看到什麼，附個資法與營業秘密法條文原文，以及一份可以直接改的一頁公司 AI 使用規範範本。全部照 2026 年 9 月各家官網與全國法規資料庫當天頁面。",
+      "hero": {
+        "src": "/guides/ai-at-work-policy-checklist/hero.jpg",
+        "alt": "一份文件分成三疊，分別走向打勾、遮罩與禁止三個方向，旁邊有一把鎖與一條資料流線",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "公司裡能不能用 AI，不是一句可以或不行講得完。要決定的是三件事：哪些資料不能貼進公開的 AI、公司買的商用方案對訓練與保留寫了什麼、出事時公司拿得出哪些管理紀錄。三件事都有官方答案，不必用猜的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把三家商用方案當天官網寫的訓練與保留條款、管理員控制項，和個資法與營業秘密法的條文原文擺在一起，最後給一份可以直接改的一頁規範範本。內容照 2026 年 9 月 15 日各家官方說明頁與全國法規資料庫當天頁面；本環境不能登入實測，法條只抄原文，個案請諮詢專業人士。"
+        },
+        {
+          "type": "heading",
+          "text": "先把資料分成三級，再談工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "規範寫得再長，同事記不住就沒用。先把公司會碰到的資料分成三級：不可貼、去識別後可貼、可貼。依據不是感覺，而是兩條線：裡面有沒有可以指向特定個人的內容，以及公司有沒有把它當成營業秘密在管。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "不可貼：客戶名單、合約與報價、病歷與健檢資料、員工薪資與身分證字號、未公開財報、原始碼裡的金鑰與連線字串、供應商條件與製程配方。",
+            "去識別後可貼：姓名換代號、金額改級距、公司名改產業別之後的客訴、會議記錄、專案時程。",
+            "可貼：已公開的產品說明與文案、新聞稿、與公司無關的一般知識查詢。",
+            "判斷不出來的，一律先當作不可貼。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "第三級最常被低估：只是問一個程式問題看起來很安全，但把含有內部網域、資料庫結構或金鑰的程式碼整段貼上去，就同時踩到營業秘密與資安兩條線。分級的兩條法源是個人資料保護法第 5 條與營業秘密法第 2 條，照全國法規資料庫當天頁面逐字抄在下面。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "個人資料保護法第 5 條與營業秘密法第 2 條（全國法規資料庫原文）",
+          "code": "【個人資料保護法第 5 條】\n個人資料之蒐集、處理或利用，應尊重當事人之權益，依誠實及信用方法為之，不得逾越特定目的之必要範圍，並應與蒐集之目的具有正當合理之關聯。\n\n【營業秘密法第 2 條】\n本法所稱營業秘密，係指方法、技術、製程、配方、程式、設計或其他可用於生產、銷售或經營之資訊，而符合左列要件者：\n一、非一般涉及該類資訊之人所知者。\n二、因其秘密性而具有實際或潛在之經濟價值者。\n三、所有人已採取合理之保密措施者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "營業秘密法第 2 條第 3 款那句「所有人已採取合理之保密措施者」是這篇存在的理由：一份寫下來、發下去、有人簽收的規範，本身就是公司留下的管理紀錄；夠不夠是法院認定的事，這篇不做判斷。要把個人資料交給 AI 處理，蒐集當下的告知義務也要先看過。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "個人資料保護法第 8 條第 1 項：向當事人蒐集個人資料時應告知的六款事項",
+          "code": "【個人資料保護法第 8 條第 1 項】\n公務機關或非公務機關依第十五條或第十九條規定向當事人蒐集個人資料時，應明確告知當事人下列事項：\n一、公務機關或非公務機關名稱。\n二、蒐集之目的。\n三、個人資料之類別。\n四、個人資料利用之期間、地區、對象及方式。\n五、當事人依第三條規定得行使之權利及方式。\n六、當事人得自由選擇提供個人資料時，不提供將對其權益之影響。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "個人帳號那一層的開關看 "
+            },
+            {
+              "type": "link",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+            },
+            {
+              "type": "text",
+              "text": "；對話記錄怎麼帶走或清掉看 "
+            },
+            {
+              "type": "link",
+              "text": "匯出與刪除你的 AI 對話記錄",
+              "url": "https://mokaair.com/zh-TW/life/ai-chat-history-export-delete"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-at-work-policy-checklist/diagram-1.svg",
+          "alt": "資料分級決策圖，從一份資料出發，依三個問題判斷屬於不可貼、去識別後可貼還是可貼，並標出對應的法條",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右走三個問題：有沒有指向特定個人、公司有沒有當成營業秘密在管、外面查不查得到；答案決定這份資料落在哪一級。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "三家商用方案的原文：訓練、保留、管理員控制項",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先看 OpenAI，商用那段的原文是：預設不會用商用產品（ChatGPT Business、ChatGPT Enterprise 與 API）的任何輸入或輸出訓練模型；API 客戶可以主動選擇分享資料，沒有明確選擇加入的組織預設就是不分享。Business 的資料頁另外寫明工作區資料預設排除於訓練之外，傳輸與儲存都加密。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留期方面，刪掉的對話立刻從帳號移除，並排程在 30 天內從系統永久刪除，暫時對話一樣。成員被移除時，Business 工作區的對話與檔案無限期保留，人加回來就還原；Enterprise 與 Edu 照工作區設定走，官網舉的例子是 90 天、180 天，設成無限期就永久保留。"
+        },
+        {
+          "type": "paragraph",
+          "text": "管理員能看到什麼要分開講。Business 的資料頁寫明每個成員有自己的對話紀錄，其他成員與管理員不會自動看到，用量分析看的是使用量與 credits。Business 不能整個工作區關掉分享連結，也不能匯出工作區資料，官網把這兩項標為 Enterprise 才有。Enterprise 走合規平台，只有擁有者能授予對話訊息權限，合規日誌保留 30 天。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要不要為了這些控制項升級方案，"
+            },
+            {
+              "type": "link",
+              "text": "小公司要不要買 ChatGPT Business（原 Team）：資料不訓練、共用專案、集中管理",
+              "url": "https://mokaair.com/zh-TW/life/chatgpt-team-for-small-business"
+            },
+            {
+              "type": "text",
+              "text": " 一篇把座位、價格與工作區功能算過一次。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 商用那篇的原文是：預設不會用商用產品（例如 Claude for Work、Anthropic API）的輸入或輸出訓練模型。組織資料那篇寫保留期：刪掉的對話立刻從歷史消失、30 天內從後端刪除；無痕對話 30 天內自動刪除；被標記為違反使用政策的對話，輸入與輸出最長 2 年、分類分數最長 7 年；回饋資料 5 年。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Enterprise 可以自訂保留期，最短 30 天，官網寫明一個月一律算 30 天，預設無限期，刪除在排定當天的世界標準時間午夜執行，只有 Primary Owner 或 Owner 能改。稽核紀錄只有 Enterprise 有，一次匯出過去 180 天，官網寫明裡面不含對話與專案的標題與內容，只有識別碼；對話內容要由 Primary Owner 走組織匯出，一般成員沒有自助匯出。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "記憶會記住什麼、怎麼清，"
+            },
+            {
+              "type": "link",
+              "text": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
+              "url": "https://mokaair.com/zh-TW/life/claude-memory-and-privacy"
+            },
+            {
+              "type": "text",
+              "text": " 一篇寫得比較細。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 這邊看生成式 AI 隱私中心頁，最後更新日期標 2026 年 8 月 14 日。訓練那段的原文是：使用者的提示詞屬於雲端資料處理增補條款下的客戶資料，未經客戶事前許可或指示，Workspace 不會用客戶資料訓練模型。保留期用一張表列：Workspace 裡的 Gemini 由管理員決定，從 90 天到無限期，可選 3 個月、18 個月、3 年或無限期；Gemini 應用程式最長 36 個月，可選 3、18 或 36 個月自動刪除，預設 18 個月，對話記錄關掉時新對話只存 72 小時；Gemini Notebook 在工作階段結束後不保留。回饋資料最長 18 個月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三家有一個共同的例外要寫進規範：按讚與倒讚。OpenAI 寫明即使已退出訓練，只要送出回饋，整段對話都可能被用來訓練模型；Anthropic 寫明回饋會讓整段對話在後端存最長 5 年，Owner 可以用組織設定裡的 Rate chats 把按鈕關掉；Google 寫明回饋不用來訓練模型，提示詞與產出只在使用者保持勾選時才一起送出。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "ChatGPT 商用",
+            "Claude 商用",
+            "Gemini for Workspace"
+          ],
+          "rows": [
+            [
+              "預設訓練",
+              "Business、Enterprise、API 不訓練",
+              "商用產品不訓練",
+              "未經許可或指示不訓練"
+            ],
+            [
+              "回饋按鈕例外",
+              "整段對話可能用於訓練",
+              "整段對話保留 5 年",
+              "不訓練模型，勾選才送出"
+            ],
+            [
+              "刪除後從後端消失",
+              "30 天內",
+              "30 天內",
+              "依雲端資料處理增補條款"
+            ],
+            [
+              "預設保留期",
+              "Business 無限期",
+              "無限期",
+              "由管理員決定"
+            ],
+            [
+              "可設定的保留期",
+              "Enterprise 90 天、180 天等",
+              "Enterprise 最短 30 天",
+              "3、18、36 個月或無限期"
+            ],
+            [
+              "違反政策標記後",
+              "依安全與法律義務保留",
+              "輸入輸出 2 年、分數 7 年",
+              "以官網為準"
+            ],
+            [
+              "稽核紀錄",
+              "Enterprise 合規日誌 30 天",
+              "Enterprise 稽核紀錄 180 天",
+              "Workspace 稽核紀錄"
+            ],
+            [
+              "匯出整個組織資料",
+              "Business 不提供",
+              "Primary Owner 可匯出",
+              "管理員用 Vault 管理"
+            ],
+            [
+              "管理員讀得到對話嗎",
+              "不會自動看到",
+              "稽核紀錄不含內容",
+              "對話只有本人看得到"
+            ],
+            [
+              "寫規範給員工看",
+              "工作區 AI 政策視窗",
+              "組織設定發布指示",
+              "以官網為準"
+            ]
+          ],
+          "caption": "條款與期間照 2026 年 9 月 15 日三家官方說明頁當天內容抄寫，只放官網寫得出來的規格，不評分也不排名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公司已經在用 Google Workspace 的話，帳號與管理那一層值得先看過；如果同事會用到中國廠商的服務，資料流向要另外查一次。"
+        },
+        {
+          "type": "link",
+          "text": "小團隊使用 Workspace AI：帳號與管理",
+          "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+        },
+        {
+          "type": "heading",
+          "text": "個人帳號與公司帳號：差別在誰看得到",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個人、同一個工具，帳號不同，規則幾乎相反。OpenAI 給受管理帳號的公告寫得最直白：在組織設定與適用法律允許的範圍內，管理員可能可以存取、匯出、稽核、保留、刪除這個帳號的資料，並選擇加入把資料分享給 OpenAI 改善模型；範圍包含提示詞、上傳的檔案與產出、對話記錄、共用工作區內容與活動中繼資料。同一頁還寫明：登入受管理帳號時，OpenAI 的使用條款與隱私權政策不適用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以公司帳號比較安全只對了一半：對外比較嚴，對內比較透明。Business 的資料頁說管理員不會自動看到成員的對話，受管理帳號公告說管理員在組織設定允許的範圍內可能取得帳號資料，兩頁要一起看。Anthropic 的稽核紀錄不含對話內容，但 Primary Owner 的組織匯出含得到，成員被移除之後資料仍會出現在後續的匯出裡。Google 的分界是權限：Gemini 只取用使用者本來就有權限存取的內容，隱私中心頁寫明對話只有本人看得到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "帳號切換器也不會合併帳號，OpenAI 寫明兩個帳號仍然分開，切換不會搬移對話、檔案或設定。規範裡值得寫死一句：工作用公司帳號，私事用個人帳號。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "公司帳號不是沒人看得到，是看得到的人換成公司",
+          "text": "OpenAI 的受管理帳號公告寫明管理員可能可以存取、匯出、稽核、保留、刪除該帳號的資料；Anthropic 的 Primary Owner 可以匯出整個組織的對話資料；Google 管理員可以用 Vault 與稽核紀錄管理。把這句話放進規範第一頁，比出事之後再解釋有用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "帳號本身的防護是另一條線，兩步驟驗證與金鑰外洩看 "
+            },
+            {
+              "type": "link",
+              "text": "保護你的 AI 帳號：兩步驟驗證與金鑰外洩",
+              "url": "https://mokaair.com/zh-TW/life/ai-account-security-2fa-api-keys"
+            },
+            {
+              "type": "text",
+              "text": "；同事把外部網頁或檔案丟給 AI 讀時要小心的攻擊面，看 "
+            },
+            {
+              "type": "link",
+              "text": "提示詞注入是什麼：使用者該懂的攻擊",
+              "url": "https://mokaair.com/zh-TW/life/ai-prompt-injection-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "一頁規範怎麼寫，寫完放哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "規範超過一頁就沒有人看。把它壓成六塊：適用範圍、帳號與工具、資料分級、使用方式、事故通報、維護。下面這份可以直接複製，方括號換成公司的實際情況；期間與功能名稱記得回官網再確認，各家改版很快。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "一頁公司 AI 使用規範範本（方括號處自行替換）",
+          "code": "[公司名稱] AI 工具使用規範（第 1 版，[生效日期]）\n\n一、適用範圍\n1. 全體員工、實習生、承攬人與外部顧問。\n2. 本規範所稱 AI 工具，指任何會把公司資料送到公司以外伺服器處理的服務，包含對話式 AI、AI 寫程式工具、會議記錄工具與瀏覽器外掛。\n\n二、帳號與工具\n1. 核准的工具：[工具 A]、[工具 B]；其餘工具使用前向 [負責人] 申請。\n2. 工作一律用公司配發的帳號登入；不得用個人帳號處理公司資料，也不得把公司資料留在個人帳號。\n3. 公司帳號由管理員管理。依各家方案提供的功能，管理員可能可以存取、匯出、稽核、保留或刪除這個帳號的資料。\n\n三、資料分級\n1. 不可貼：個人資料（姓名、身分證字號、聯絡方式、帳戶、病歷與健康資料）、客戶名單、合約與報價、未公開財報、原始碼中的金鑰與連線資訊、供應商條件與製程配方。\n2. 去識別後可貼：姓名換代號、金額改級距、公司名改產業別之後的客訴內容、會議記錄、專案時程。\n3. 可貼：已公開的產品說明與文案、公開新聞稿、與公司無關的一般知識查詢。\n4. 判斷不出屬於哪一級，一律當作不可貼，先問 [負責人]。\n\n四、使用方式\n1. 含公司資料的對話不要按讚或倒讚；各家條款寫明送出回饋時整段對話會被保留，或可能用於改善模型。\n2. AI 產出一律由承辦人查證後才對外使用，不得作為決策的唯一依據。\n3. 對外交付的成果由 AI 協助產生時，依 [客戶合約／內部規定] 揭露。\n4. 不要把 AI 回覆裡出現的指令當成命令執行；外部網頁與檔案可能夾帶針對 AI 的提示詞注入。\n\n五、事故通報\n1. 發現可能已送出不可貼的資料，立即停止使用，並於 [時數] 小時內通知 [負責人] 與 [資安窗口]。\n2. 通報內容：時間、工具、帳號、送出的資料範圍、已採取的處置。\n3. 由 [負責人] 判斷是否啟動對當事人的通知與對主管機關的通報，並保存紀錄。\n\n六、維護\n1. 本規範由 [負責人] 維護，每 [週期] 檢視一次；工具改版或條款更新時同步更新。\n2. 到職與離職各確認一次；離職時由管理員移除帳號，並依該方案的保留設定處理資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "發下去之後還有一步。ChatGPT Enterprise 的工作區設定裡有一塊 AI 政策區，擁有者與管理員可以寫進自己組織的政策內容，官網寫明開啟或更新之後，政策視窗每 30 天會顯示一次，內容更新時也會再顯示。把規範前兩段貼進去，比放在共用資料夾裡沒人點開有用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公部門的版本是公開的，可以當骨架。行政院及所屬機關（構）使用生成式 AI 參考指引由國科會研擬，行政院院會議案頁寫明訂定目的是讓各行政機關使用生成式 AI 時能保有執行公務之機密性及專業性，秉持安全性、隱私性與資料治理、問責等原則。常見問答頁把話講清楚：本指引雖非屬法律，不具強制性亦無明定罰則。數位發展部另有公部門人工智慧應用參考手冊，供各機關參考運用。兩份都不是給民間企業的法規。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "規範裡如果要寫產出的著作權歸屬，或是未來的法規會怎麼管，另外兩篇有整理："
+            },
+            {
+              "type": "link",
+              "text": "AI 與著作權：台灣法規與判決整理",
+              "url": "https://mokaair.com/zh-TW/life/ai-and-copyright-law-taiwan"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "歐盟 AI 法案與台灣 AI 基本法：對使用者的影響",
+              "url": "https://mokaair.com/zh-TW/life/ai-regulation-eu-act-taiwan"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "違反的時候：先看條文原文",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "規範最後一段通常寫違反者依公司規定處理，這句沒有資訊量。真正要讓同事知道的是外面有哪幾條線。以下三段照全國法規資料庫當天頁面逐字抄，這篇不對任何個案下法律結論。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "營業秘密法第 10 條、個人資料保護法第 12 條與第 20-1 條（全國法規資料庫原文）",
+          "code": "【營業秘密法第 10 條】\n有左列情形之一者，為侵害營業秘密。\n一、以不正當方法取得營業秘密者。\n二、知悉或因重大過失而不知其為前款之營業秘密，而取得、使用或洩漏者。\n三、取得營業秘密後，知悉或因重大過失而不知其為第一款之營業秘密，而使用或洩漏者。\n四、因法律行為取得營業秘密，而以不正當方法使用或洩漏者。\n五、依法令有守營業秘密之義務，而使用或無故洩漏者。\n前項所稱之不正當方法，係指竊盜、詐欺、脅迫、賄賂、擅自重製、違反保密義務、引誘他人違反其保密義務或其他類似方法。\n\n【個人資料保護法第 12 條】\n公務機關或非公務機關知悉所保有之個人資料被竊取、竄改、毀損、滅失或洩漏時，應通知當事人。\n前項情形符合一定通報範圍者，公務機關或非公務機關應通報下列機關：\n一、公務機關：向主管機關及依第二十一條之一第一項規定收受其實施情形之機關通報。\n二、非公務機關：向主管機關通報。主管機關受理通報後，並轉知其目的事業主管機關。\n第一項情形，公務機關或非公務機關應採取即時有效之應變措施，防止事故之擴大，及記載相關事實、影響、已採取之因應措施，並保存相關紀錄，以備主管機關查驗。\n\n【個人資料保護法第 20-1 條】\n非公務機關保有個人資料檔案者，應辦理安全維護事項，防止個人資料被竊取、竄改、毀損、滅失或洩漏。\n前項個人資料檔案安全維護事項、管理機制、應採取之措施及其他相關事項之辦法，由主管機關定之。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個地方值得畫線。營業秘密法第 10 條第 2 項把違反保密義務明列為不正當方法之一；個人資料保護法第 12 條講的是事故發生後對當事人的通知與對主管機關的通報義務，也就是說公司要有辦法知道誰在什麼時候送出了什麼，這正是稽核紀錄與保留設定的用處。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還要更正一個常被引用的條號。全國法規資料庫目前列的個資法修正日期是民國 114 年 11 月 11 日，第 27 條顯示為「（刪除）」，非公務機關的安全維護義務改寫在新增的第 20-1 條。同一頁的生效狀態欄標示「本法規部分或全部條文尚未生效，最後生效日期：未定」，沿革寫明刪除第 27 條的施行日期由行政院定之。引用條號前自己去看一次當天的條文與生效狀態。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果公司是靠 AI 寫程式，還有一組跟規範綁在一起的檢查動作，"
+            },
+            {
+              "type": "link",
+              "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+              "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+            },
+            {
+              "type": "text",
+              "text": " 一篇有清單可以照著做。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 說明中心：How your data is used to improve model performance（商用產品預設不以輸入與輸出訓練模型；回饋送出時整段對話可能用於訓練）",
+          "url": "https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Managing data, sharing, and privacy in ChatGPT Business（工作區資料預設排除訓練、成員對話互不可見、不能關閉分享連結、不提供資料匯出）",
+          "url": "https://help.openai.com/en/articles/8798634-managing-data-sharing-and-privacy-in-chatgpt-business",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Chat and File Retention Policies in ChatGPT（刪除後 30 天內永久刪除、暫時對話 30 天、Enterprise 未存入 Library 的檔案 48 小時過期）",
+          "url": "https://help.openai.com/en/articles/8983778-chat-and-file-retention-policies-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Data retention when a member is removed from a workspace（Business 無限期保留、Enterprise 與 Edu 依工作區設定的 90 天或 180 天等期間）",
+          "url": "https://help.openai.com/en/articles/8266418-data-retention-when-a-member-is-removed-from-a-workspace",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：OpenAI Compliance Platform for Enterprise and Edu customers（限 Enterprise 與 Edu、只有擁有者能授予對話訊息權限、合規日誌保留 30 天）",
+          "url": "https://help.openai.com/en/articles/9261474-openai-compliance-platform-for-enterprise-and-edu-customers",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Managing workspace settings in ChatGPT Enterprise（工作區 AI 政策視窗每 30 天顯示一次、權限與角色、身分與存取設定）",
+          "url": "https://help.openai.com/en/articles/8411955-managing-workspace-settings-in-chatgpt-enterprise",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Data access for your managed ChatGPT account（管理員可存取、匯出、稽核、保留、刪除帳號資料；受管理帳號不適用 OpenAI 使用條款與隱私權政策；帳號切換不合併）",
+          "url": "https://help.openai.com/en/articles/20001067-data-access-for-your-managed-chatgpt-account",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 隱私中心：Is my data used for model training?（商用版：預設不以商用產品的輸入或輸出訓練模型；回饋整段對話保留 5 年；Rate chats 可關閉）",
+          "url": "https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 隱私中心：How long do you store my organization's data?（刪除後 30 天、無痕對話 30 天、違反使用政策輸入輸出 2 年與分類分數 7 年、回饋 5 年）",
+          "url": "https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Configure custom data retention controls for Enterprise plans（限 Enterprise、最短 30 天、一個月算 30 天、預設無限期、UTC 午夜刪除、限 Primary Owner 或 Owner）",
+          "url": "https://support.claude.com/en/articles/10440198-configure-custom-data-retention-controls-for-enterprise-plans",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Access audit logs（限 Enterprise、匯出過去 180 天、連結 24 小時失效、不含對話與專案的標題與內容）",
+          "url": "https://support.claude.com/en/articles/9970975-access-audit-logs",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Export your organization's data（限 Team 與 Enterprise 的 Primary Owner、成員沒有自助匯出、連結 24 小時失效）",
+          "url": "https://support.claude.com/en/articles/13346720-export-your-organization-s-data",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：What happens to a user's data when they are removed from a Team or Enterprise organization?（移除後成員對話不可存取、資料仍列入組織匯出）",
+          "url": "https://support.claude.com/en/articles/12053672-what-happens-to-a-user-s-data-when-they-are-removed-from-a-team-or-enterprise-organization",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google Workspace 說明：Generative AI in Google Workspace Privacy Hub（最後更新 2026 年 8 月 14 日；訓練限制、保留期表、對話只有本人看得到、稽核紀錄、回饋 18 個月）",
+          "url": "https://knowledge.workspace.google.com/admin/generative-ai/generative-ai-in-google-workspace-privacy-hub",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "全國法規資料庫：個人資料保護法（第 5、8、12、20-1、27 條條文；修正日期民國 114 年 11 月 11 日；生效狀態欄標示部分或全部條文尚未生效）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0050021",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "全國法規資料庫：個人資料保護法沿革（民國 114 年 11 月 11 日修正並刪除第 27 條，施行日期由行政院定之）",
+          "url": "https://law.moj.gov.tw/LawClass/LawHistory.aspx?pcode=I0050021",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "全國法規資料庫：營業秘密法（第 2 條營業秘密三要件、第 10 條侵害態樣與不正當方法；修正日期民國 109 年 01 月 15 日）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=J0080028",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "行政院全球資訊網院會議案：行政院及所屬機關（構）使用生成式 AI 參考指引（訂定目的、負責任及可信賴之態度與四項原則）",
+          "url": "https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "國家科學及技術委員會：行政院及所屬機關（構）使用生成式 AI 參考指引常見問答（非屬法律、不具強制性亦無明定罰則；封閉式地端定義）",
+          "url": "https://www.nstc.gov.tw/folksonomy/detail/d21566a0-3465-4b63-84b7-5d7cb2e1e5ff?l=ch",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "數位發展部：公部門人工智慧應用參考手冊（參酌國際間陸續頒布之 AI 相關指引、指南文件訂定，供各機關參考運用）",
+          "url": "https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

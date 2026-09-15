@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">三道關卡不是同一件事 / Retrieved, grounded, cited are three things</title>
+  <desc id="desc">上排由左到右是官方文件寫到的四個階段：查詢展開，把問題拆成多個子題各自搜尋；檢索，從已建立索引的網頁取回候選內容；接地，把取回的內容當成生成答案的依據；挑引用，決定答案旁列出哪些支援連結。下排是三欄對照。第一欄被檢索到：爬蟲讀得到、頁面已建立索引，控制項是 robots.txt 與 noindex，這層跟一般搜尋共用，這層過了不代表內容被拿來用。第二欄被用來接地：內容成為生成答案的直接輸入，控制項是 nosnippet 與 max-snippet，官方用詞是直接輸入，被拿來用了不代表會被列出。第三欄被列為引用：頁面出現在答案旁的支援連結，控制項是搜尋生成式 AI 控制，官方只寫資格條件，有資格被列出不等於一定會列。最下方一行寫著官方文件沒有公布 AI 摘要與 AI 模式的排序與挑選規則，本文只描述有文件的機制與有文件的控制項。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">三道關卡不是同一件事</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Retrieved, grounded, cited: three different things, three different sentences in the docs.</text>
+
+  <text x="60" y="126" font-size="18" font-weight="700" fill="#5C6B6B">官方文件寫到的階段</text>
+
+  <rect x="60" y="145" width="340" height="120" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="230" y="196" text-anchor="middle" font-size="24" font-weight="700" fill="#102A2B">查詢展開</text>
+  <text x="230" y="232" text-anchor="middle" font-size="17" fill="#5C6B6B">拆成多個子題各自搜尋</text>
+  <line x1="404" y1="205" x2="432" y2="205" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="440" y="145" width="340" height="120" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="610" y="196" text-anchor="middle" font-size="24" font-weight="700" fill="#102A2B">檢索</text>
+  <text x="610" y="232" text-anchor="middle" font-size="17" fill="#5C6B6B">從已建立索引的網頁取回</text>
+  <line x1="784" y1="205" x2="812" y2="205" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="145" width="340" height="120" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="990" y="196" text-anchor="middle" font-size="24" font-weight="700" fill="#102A2B">接地</text>
+  <text x="990" y="232" text-anchor="middle" font-size="17" fill="#5C6B6B">當成生成答案的依據</text>
+  <line x1="1164" y1="205" x2="1192" y2="205" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="1200" y="145" width="340" height="120" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1370" y="196" text-anchor="middle" font-size="24" font-weight="700" fill="#102A2B">挑引用</text>
+  <text x="1370" y="232" text-anchor="middle" font-size="17" fill="#5C6B6B">決定列出哪些支援連結</text>
+
+  <text x="60" y="312" font-size="18" font-weight="700" fill="#5C6B6B">三件事，三組不同的官方句子在管</text>
+
+  <rect x="60" y="330" width="466" height="380" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <path d="M60 344 a14 14 0 0 1 14 -14 h438 a14 14 0 0 1 14 14 v50 h-466 z" fill="#2F6F9F"/>
+  <text x="293" y="372" text-anchor="middle" font-size="24" font-weight="700" fill="#FFFFFF">被檢索到</text>
+  <text x="293" y="450" text-anchor="middle" font-size="18" fill="#102A2B">爬蟲讀得到、頁面已建立索引</text>
+  <text x="293" y="505" text-anchor="middle" font-size="18" fill="#102A2B">控制項：robots.txt、noindex</text>
+  <text x="293" y="560" text-anchor="middle" font-size="18" fill="#5C6B6B">跟一般搜尋共用這一層</text>
+  <text x="293" y="640" text-anchor="middle" font-size="18" font-weight="700" fill="#2F6F9F">這層過了，不代表被拿來用</text>
+
+  <rect x="566" y="330" width="466" height="380" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <path d="M566 344 a14 14 0 0 1 14 -14 h438 a14 14 0 0 1 14 14 v50 h-466 z" fill="#D97A2B"/>
+  <text x="799" y="372" text-anchor="middle" font-size="24" font-weight="700" fill="#FFFFFF">被用來接地</text>
+  <text x="799" y="450" text-anchor="middle" font-size="18" fill="#102A2B">成為生成答案的直接輸入</text>
+  <text x="799" y="505" text-anchor="middle" font-size="18" fill="#102A2B">控制項：nosnippet、max-snippet</text>
+  <text x="799" y="560" text-anchor="middle" font-size="18" fill="#5C6B6B">官方用詞是「直接輸入」</text>
+  <text x="799" y="640" text-anchor="middle" font-size="18" font-weight="700" fill="#D97A2B">被拿來用，不代表會被列出</text>
+
+  <rect x="1072" y="330" width="468" height="380" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <path d="M1072 344 a14 14 0 0 1 14 -14 h440 a14 14 0 0 1 14 14 v50 h-468 z" fill="#0D6B68"/>
+  <text x="1306" y="372" text-anchor="middle" font-size="24" font-weight="700" fill="#FFFFFF">被列為引用</text>
+  <text x="1306" y="450" text-anchor="middle" font-size="18" fill="#102A2B">出現在答案旁的支援連結</text>
+  <text x="1306" y="505" text-anchor="middle" font-size="18" fill="#102A2B">控制項：搜尋生成式 AI 控制</text>
+  <text x="1306" y="560" text-anchor="middle" font-size="18" fill="#5C6B6B">官方只寫資格，沒寫挑選規則</text>
+  <text x="1306" y="640" text-anchor="middle" font-size="18" font-weight="700" fill="#0D6B68">有資格，不等於一定會列</text>
+
+  <rect x="60" y="742" width="1480" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="784" text-anchor="middle" font-size="20" font-weight="700" fill="#102A2B">官方文件沒有公布 AI 摘要與 AI 模式的排序與挑選規則</text>
+  <text x="800" y="816" text-anchor="middle" font-size="17" fill="#5C6B6B">本文只描述有文件的機制與有文件的控制項，不推測文件以外的部分</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

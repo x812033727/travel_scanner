@@ -1,0 +1,112 @@
+{
+  "slug": "ai-search-eeat",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf",
+      "title": "General Guidelines（Google 搜尋品質評分指南原文 PDF）",
+      "access": "WebFetch 取得 302 轉址目標 static.googleusercontent.com 的 PDF，本地以 pypdf 抽出 182 頁全文後逐節閱讀",
+      "claims": [
+        "封面日期 September 11, 2025，頁尾標示 Copyright 2025，全文 182 頁",
+        "E-E-A-T 定義在第 3.4 節（第 26 頁），標題為 Experience, Expertise, Authoritativeness, and Trust (E-E-A-T)",
+        "第 3.4 節：Trust 是 E-E-A-T 家族中心、最重要的一員；頁面因任何理由不可信，E-E-A-T 就是低的；例子是金融詐騙",
+        "第 3.4 節：Experience、Expertise、Authoritativeness 是支持 Trust 判斷的概念",
+        "第 0.1 節：沒有任何單一評分能直接影響某頁在搜尋裡的呈現，也不能讓它上移或下移；拿評分去排序不可行；評分用來量測與改進搜尋引擎",
+        "第 19 頁（3.0）：Page Quality 以滑桿給整體評分，Lowest / Low / Medium / High / Highest，另有 Lowest+、Low+、Medium+、High+；沒有 E-E-A-T 欄位",
+        "第 5.6 節：E-E-A-T 判斷要根據主要內容、名聲調查與可查證資歷，不能只憑自稱是專家；誇大或輕微誤導時給 Low",
+        "第 4.5.1 節：對需要高度信任的頁面，責任歸屬資訊不足或造假是 Lowest 的理由",
+        "第 4.6.4 節：網站名聲濫用指第三方內容主要因宿主網站既有的排名訊號而被刊登",
+        "附錄二 Guideline Change Log 只涵蓋 September 2023 – September 2025，2022 年那次改版不在表上"
+      ]
+    },
+    {
+      "url": "https://services.google.com/fh/files/misc/hsw-sqrg.pdf",
+      "title": "Search Quality Rater Guidelines: An Overview（Google 官方說明文件，封面標示 November 2023）",
+      "access": "WebFetch 取得 PDF 後本地以 pypdf 抽出 36 頁全文",
+      "claims": [
+        "與大約 16,000 名外部搜尋品質評分者合作",
+        "評分任務分兩種：Page Quality 與 Needs Met",
+        "沒有任何單一評分或單一評分者會直接影響一頁或一個網站在搜尋裡的排名",
+        "評分彙總後用來量測系統成效並提供正反例改進系統"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "title": "Creating helpful, reliable, people-first content（Google Search Central 官方文件）",
+      "access": "WebFetch 直接讀取，頁面標示 Last updated 2025-12-10 UTC",
+      "claims": [
+        "E-E-A-T 本身不是一個特定的排名因素，但用一組能辨識出具備良好 E-E-A-T 的內容的因素是有用的",
+        "搜尋評分者無法控制頁面怎麼排，評分者的資料不會直接用在排名演算法裡",
+        "四個面向中 trust 最重要",
+        "建議讓讀者看得出內容是誰寫的（Who, How, Why 自評問題），但未宣稱這會改變排名"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/blog/2022/12/google-raters-guidelines-e-e-a-t",
+      "title": "Our latest update to the quality rater guidelines: E-A-T gets an extra E for Experience（官方公告）",
+      "access": "WebFetch 取得標題與發布日期（內文為前端渲染，未取得逐字段落）；再以限定 developers.google.com 的 WebSearch 交叉確認日期與改版內容",
+      "claims": [
+        "公告日期 2022 年 12 月 15 日",
+        "該次改版把 Experience 加進原本的 E-A-T，成為 E-E-A-T"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/ranking-systems-guide",
+      "title": "A guide to Google Search ranking systems（官方排名系統清單）",
+      "access": "WebFetch 直接讀取，頁面標示 Last updated 2025-12-10 UTC",
+      "claims": [
+        "列出 BERT、MUM、RankBrain、link analysis systems and PageRank、neural matching、freshness systems 等，沒有名為 E-E-A-T 或 E-A-T 的系統",
+        "該頁自陳只列 some of our more notable ranking systems，不是完整清單"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/search-gallery",
+      "title": "Structured data markup that Google Search supports（官方結構化資料功能總覽）",
+      "access": "WebFetch 直接讀取，頁面標示 Last updated 2026-06-15 UTC",
+      "claims": [
+        "列出 Article、Breadcrumb、Product、Review snippet、Profile page 等型別",
+        "沒有任何型別可以宣告 E-E-A-T、經驗、專業、權威或信任"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/article",
+      "title": "Article structured data（官方文件）",
+      "access": "WebFetch 直接讀取，頁面標示 Last updated 2026-09-08 UTC",
+      "claims": [
+        "Article 有 author 屬性（Person 或 Organization），建議含 author.name 與 author.url",
+        "Google 不保證使用結構化資料的功能一定會出現在搜尋結果裡"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "title": "Spam policies for Google web search（官方垃圾內容政策）",
+      "access": "WebFetch 直接讀取，頁面標示 Last updated 2026-08-28 UTC",
+      "claims": [
+        "連結濫發包含買賣連結、過度的連結交換、以自動程式建立連結、低品質目錄或書籤網站連結"
+      ]
+    },
+    {
+      "url": "https://foreverwebs.com/blog/eeat-google-ranking-guide-2026",
+      "title": "恆遠數位科技：E-E-A-T 是什麼（SEO 服務業者的行銷內容）",
+      "access": "WebFetch 直接讀取；僅作為「確實有人這樣用這個詞」的佐證，不作事實依據，正文已標明是行銷內容",
+      "claims": [
+        "發布日期 2026 年 4 月 6 日，發布者為販售 SEO 服務的公司",
+        "標題稱 E-E-A-T 為 2026 年 Google 最重視的排名因素",
+        "內文寫嚴格來說 E-E-A-T 不是像 PageSpeed 或反向連結那樣可以直接量測的排名因子"
+      ]
+    },
+    {
+      "url": "https://seo.whoops.com.tw/what-is-eeat/",
+      "title": "Whoops SEO：什麼是 E-E-A-T（SEO 服務業者的行銷內容）",
+      "access": "WebFetch 直接讀取；僅作為用詞佐證，不作事實依據，正文已標明是行銷內容",
+      "claims": [
+        "發布者為販售 SEO 成長代理服務的公司",
+        "寫 E-E-A-T 不是一條獨立演算法，也不是一個可直接量測的分數",
+        "主張它對排名的影響是間接、緩慢，但長期累積下來非常實質"
+      ]
+    }
+  ],
+  "running_text_characters": 2995,
+  "notes": "以 pack_ingest 的 _body_length 演算法實際數過：段落、rich_paragraph、清單項目、表格格子與 callout 的標題與內文，去掉空白後合計 2995 字，落在 1,800–3,000 區間。dry-run（--from docs/ai-search-series/staging --slug ai-search-eeat --dry-run）沒有 error 也沒有 warning。結構：6 個 level-2 heading、1 個比較表、1 個 warning callout、1 張 diagram-1.svg 圖片區塊、4 個 rich_paragraph 的 article inline（ai-search-seo、ai-search-structured-data、ai-search-geo、ai-search-terms-index），只連指派列出的 slug。diagram-1.svg 上唯一的數字是版權行的 2026，正文含「2026 年 9 月 14 日」等字串；hero.svg 不含數字。所有成效類說法都避開：正文沒有任何一句承諾排名、索引、引用或流量結果；行銷主張一律寫出是哪一家公司說的；定義有爭議處（是不是排名因素）同時放了官方與行銷兩邊的來源。查不到而未寫死的項目：指南是否有 2025 年 9 月之後的新版（正文只寫「查證日取得的版本」）；2022 年 12 月公告的內文逐字段落（Wayback 在本環境被擋，只引用可交叉確認的日期與標題）；Google 內部是否存在與 E-E-A-T 相關的訊號（照抄官方兩句話，其餘以官方文件為準）。"
+}

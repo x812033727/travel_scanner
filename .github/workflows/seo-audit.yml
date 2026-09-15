@@ -1,0 +1,108 @@
+name: SEO audit
+
+# Lighthouse against a production build. `e2e/seo.spec.ts` already asserts the markup facts in
+# ci.yml -- canonicals, hreflang, robots directives, five-language social tags -- so this does
+# not repeat them. What it adds is a score: category-level Accessibility, Best Practices and
+# Performance numbers that no assertion in the repository currently produces, and an SEO score
+# that covers the audits nobody wrote a spec for.
+#
+# A separate file rather than a job in ci.yml, for two reasons: ci.yml is scope-locked by other
+# in-flight work, and this audit is slower and advisory while its baseline is collected, so it
+# must not sit inside the required check yet.
+on:
+  pull_request:
+  # Only main. A bare `push:` would run this a second time for every branch push that already
+  # has a pull request open -- the duplication 2026-09-13-ci-duplicate-runs-amplify-flakes
+  # already records against ci.yml. On main it tracks the trend after each merge.
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: seo-audit-${{ github.ref }}
+  # Superseding a pull request's own earlier run is free: only the newest commit's scores
+  # matter. Runs on main are not superseded -- those are the baseline this workflow exists to
+  # accumulate, and a quick succession of merges would cancel exactly the ones worth keeping.
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    # Measured: 5 URLs x 3 runs is ~13 minutes of Lighthouse alone, before npm ci and a full
+    # production build. Twenty was not enough to finish a single clean run.
+    timeout-minutes: 45
+    env:
+      # Read by the canonical and hreflang builders, so it has to name the exact origin
+      # Lighthouse loads. Unset it falls back to port 3000 anyway, but naming it keeps the two
+      # from drifting apart and reporting a canonical problem that does not exist.
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      # No FastAPI service in this job: the pages under test render their offline fallbacks,
+      # and apps/web/lighthouserc.json records that the thresholds were measured that way. The
+      # dead port is deliberate rather than leaving this unset -- the loaders would otherwise
+      # default to http://localhost:8000 and silently pick up anything that ever binds it.
+      # Port 9 refuses immediately, so each failed read costs milliseconds, not the 3s abort.
+      API_INTERNAL_URL: http://127.0.0.1:9
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npm run build:web
+      # `next start`, as ci.yml serves the build for its browser journeys. It prints a warning
+      # about `output: standalone`; the warning is all it is, and the alternative is worse: the
+      # standalone server without its copied .next/static and public directories answers 200
+      # for the HTML while every stylesheet and script 404s, which would hand Lighthouse a page
+      # with no CSS and no JavaScript and no indication anything was wrong.
+      - name: Start the production web server
+        run: setsid npm run start --workspace @travel-scanner/web -- --port 3000 > "$RUNNER_TEMP/seo-web.log" 2>&1 &
+      # Explicitly, rather than through LHCI's own startServerCommand: when that one times out
+      # it prints a warning and audits anyway, so a slow start would yield five reports of a
+      # connection-refused page and call the run a success.
+      - name: Wait for the web server
+        run: |
+          for attempt in {1..60}; do
+            if curl --fail --silent http://localhost:3000/en >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat "$RUNNER_TEMP/seo-web.log"
+          exit 1
+      - name: Audit the five representative URLs
+        id: lighthouse
+        # Advisory while the baseline is collected, as the task that introduced this file asks.
+        # Deleting this one line is the whole switch that turns the SEO and Accessibility
+        # assertions in lighthouserc.json into a real gate; nothing else here changes.
+        continue-on-error: true
+        uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # 12.6.2
+        with:
+          # URLs, run count and every threshold live in the config file and never here. A
+          # `urls` or `runs` input does not merge with the config, it silently overrides it,
+          # which is how a budget ends up split across two files that disagree.
+          configPath: ./apps/web/lighthouserc.json
+          # The reports are uploaded by the step below instead, so that they carry the same
+          # retention as every other artifact in this repository and survive a run that failed
+          # before the action got as far as uploading anything.
+          uploadArtifacts: false
+          # Reports would otherwise be pushed to a public Google-hosted URL.
+          temporaryPublicStorage: false
+      - name: Upload the Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lighthouse-seo-reports
+          path: .lighthouseci
+          retention-days: 7
+          if-no-files-found: warn
+      # Separate from the reports, and unconditional: the case worth having it for is the
+      # server never starting, which fails the wait step and skips the audit entirely.
+      - name: Upload the web server log
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: seo-audit-web-log
+          path: ${{ runner.temp }}/seo-web.log
+          retention-days: 7
+          if-no-files-found: warn

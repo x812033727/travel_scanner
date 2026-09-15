@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">從大綱到簡報：三條路線共用的五個步驟 / From outline to deck: five shared steps</title>
+  <desc id="desc">一張五步流程圖。步驟一準備素材與授權：Gamma 匯入每檔 200 MB、PDF 每檔 100 MB，Copilot 建議 Word 小於 24 MB，Copilot 要新增投影片需要 Designer 授權。步驟二寫提示詞與大綱：三條路線都先出大綱再出投影片，在大綱階段改一行比生完再一張張改省事。步驟三生成草稿：Gamma 免費方案註冊送 400 點，Google Slides 的 Gemini 一次只生一張且只在桌機與英文，Copilot 會先反問再給大綱。步驟四調版面與品牌：Gamma 不保留 PowerPoint 母片版面，只能從 .pptx 匯入佈景主題，Copilot 沿用公司範本的版面配置。步驟五匯出交件：Gamma 可匯出 PDF、PNG 與 PPTX，免費工作區的檔案會帶 Made by Gamma 標記，Gemini Notebook 的 Slide Deck 只能下載 PDF。最下方橫幅是生成完之後沒人幫你做的三件事：數字回原始資料核對、AI 生成的圖片要標示、匯出檔重開一次確認字型與表格。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">從大綱到簡報：三條路線共用的五個步驟</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From outline to deck: five shared steps</text>
+
+  <!-- row 1 -->
+  <rect x="100" y="130" width="420" height="175" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="124" y="174" font-size="20" font-weight="bold" fill="#102A2B">① 準備素材與授權</text>
+  <text x="124" y="212" font-size="17" fill="#5C6B6B">Gamma：匯入每檔 200 MB、PDF 100 MB</text>
+  <text x="124" y="242" font-size="17" fill="#5C6B6B">Copilot：Word 小於 24 MB 效果最好</text>
+  <text x="124" y="272" font-size="17" fill="#5C6B6B">加投影片需 Designer 授權</text>
+
+  <rect x="590" y="130" width="420" height="175" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="614" y="174" font-size="20" font-weight="bold" fill="#102A2B">② 寫提示詞與大綱</text>
+  <text x="614" y="212" font-size="17" fill="#5C6B6B">三條路線都先出大綱、再出投影片</text>
+  <text x="614" y="242" font-size="17" fill="#5C6B6B">在大綱階段改一行，</text>
+  <text x="614" y="272" font-size="17" fill="#5C6B6B">比生完再一張一張改省事</text>
+
+  <rect x="1080" y="130" width="420" height="175" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1104" y="174" font-size="20" font-weight="bold" fill="#102A2B">③ 生成草稿</text>
+  <text x="1104" y="212" font-size="17" fill="#5C6B6B">Gamma 免費方案註冊送 400 點</text>
+  <text x="1104" y="242" font-size="17" fill="#5C6B6B">Gemini 一次只生一張、僅桌機英文</text>
+  <text x="1104" y="272" font-size="17" fill="#5C6B6B">Copilot 先反問，再給大綱</text>
+
+  <line x1="528" y1="217" x2="582" y2="217" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1018" y1="217" x2="1072" y2="217" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- return connector from step 3 to step 4 -->
+  <path d="M 1290 305 L 1290 342 L 555 342 L 555 372" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- row 2 -->
+  <rect x="345" y="380" width="420" height="175" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="369" y="424" font-size="20" font-weight="bold" fill="#102A2B">④ 調版面與品牌</text>
+  <text x="369" y="462" font-size="17" fill="#5C6B6B">Gamma 不保留 PowerPoint 母片版面</text>
+  <text x="369" y="492" font-size="17" fill="#5C6B6B">只能從 .pptx 匯入佈景主題</text>
+  <text x="369" y="522" font-size="17" fill="#5C6B6B">Copilot 沿用公司範本的版面</text>
+
+  <rect x="835" y="380" width="420" height="175" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="859" y="424" font-size="20" font-weight="bold" fill="#102A2B">⑤ 匯出交件</text>
+  <text x="859" y="462" font-size="17" fill="#5C6B6B">Gamma：PDF、PNG、PPTX</text>
+  <text x="859" y="492" font-size="17" fill="#5C6B6B">免費工作區帶 Made by Gamma 標記</text>
+  <text x="859" y="522" font-size="17" fill="#5C6B6B">Slide Deck 只能下載 PDF</text>
+
+  <line x1="773" y1="467" x2="827" y2="467" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1045" y1="555" x2="1045" y2="612" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- review band -->
+  <rect x="100" y="620" width="1400" height="152" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="130" y="664" font-size="20" font-weight="bold" fill="#B8442D">生成完之後，這三件事沒人幫你做</text>
+
+  <text x="130" y="712" font-size="17" font-weight="bold" fill="#102A2B">數字回原始資料核對</text>
+  <text x="130" y="744" font-size="17" fill="#5C6B6B">官方都寫產出可能不正確</text>
+
+  <text x="600" y="712" font-size="17" font-weight="bold" fill="#102A2B">AI 生成的圖片要標示</text>
+  <text x="600" y="744" font-size="17" fill="#5C6B6B">Copilot 依 C2PA 寫內容憑證</text>
+
+  <text x="1070" y="712" font-size="17" font-weight="bold" fill="#102A2B">匯出檔重開一次</text>
+  <text x="1070" y="744" font-size="17" fill="#5C6B6B">字型與表格常會跑掉</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

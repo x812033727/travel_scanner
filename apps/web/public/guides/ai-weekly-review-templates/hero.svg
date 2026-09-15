@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">每週同一份範本 / The same weekly template, every week</title>
+  <desc id="desc">一張幾何插畫。左邊是三張疊在一起的卡片，最上面那張畫著一條標題色塊與四條長短不一的橫線，代表一份欄位固定的回顧範本。一支粗箭頭從卡片指向右邊。右邊是一個接近閉合的圓形迴圈箭頭，圈內有一張小卡片與三條短線，代表整理後的固定輸出；小卡片下方排著七個圓點，前五個是深綠色、後兩個是橘色，代表一個星期。畫面下方有一行字「每週同一份範本」。整張圖沒有任何產品介面、商標或人物。</desc>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="4.4" markerHeight="4.4" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#D97A2B"/>
+    </marker>
+  </defs>
+
+  <!-- 左：疊在一起的範本卡片 -->
+  <rect x="300" y="196" width="320" height="300" rx="20" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <rect x="268" y="228" width="320" height="300" rx="20" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <rect x="236" y="260" width="320" height="300" rx="20" fill="#FFFFFF" stroke="#0D6B68" stroke-width="7"/>
+  <rect x="272" y="300" width="248" height="46" rx="10" fill="#E3F0EF"/>
+  <line x1="272" y1="390" x2="520" y2="390" stroke="#5C6B6B" stroke-width="10" stroke-linecap="round"/>
+  <line x1="272" y1="430" x2="452" y2="430" stroke="#5C6B6B" stroke-width="10" stroke-linecap="round"/>
+  <line x1="272" y1="470" x2="500" y2="470" stroke="#5C6B6B" stroke-width="10" stroke-linecap="round"/>
+  <line x1="272" y1="510" x2="408" y2="510" stroke="#5C6B6B" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- 中間：粗箭頭 -->
+  <path d="M 650 400 H 860" stroke="#D97A2B" stroke-width="14" fill="none" stroke-linecap="round" marker-end="url(#arrowOrange)"/>
+
+  <!-- 右：迴圈箭頭 -->
+  <path d="M 1188.4 212.1 A 200 200 0 1 1 1051.6 212.1" stroke="#0D6B68" stroke-width="20" fill="none" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <!-- 圈內：整理後的固定輸出 -->
+  <rect x="1000" y="306" width="240" height="124" rx="16" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <line x1="1032" y1="344" x2="1208" y2="344" stroke="#2F6F9F" stroke-width="9" stroke-linecap="round"/>
+  <line x1="1032" y1="376" x2="1160" y2="376" stroke="#2F6F9F" stroke-width="9" stroke-linecap="round"/>
+  <line x1="1032" y1="408" x2="1184" y2="408" stroke="#2F6F9F" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- 圈內：一個星期的七個圓點 -->
+  <circle cx="1000" cy="478" r="11" fill="#0D6B68"/>
+  <circle cx="1040" cy="478" r="11" fill="#0D6B68"/>
+  <circle cx="1080" cy="478" r="11" fill="#0D6B68"/>
+  <circle cx="1120" cy="478" r="11" fill="#0D6B68"/>
+  <circle cx="1160" cy="478" r="11" fill="#0D6B68"/>
+  <circle cx="1200" cy="478" r="11" fill="#D97A2B"/>
+  <circle cx="1240" cy="478" r="11" fill="#D97A2B"/>
+
+  <text x="800" y="762" font-size="56" font-weight="700" fill="#102A2B" text-anchor="middle">每週同一份範本</text>
+</svg>

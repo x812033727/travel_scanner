@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">LM Studio 的三個畫面與資料流 / Three screens in LM Studio and the data flow</title>
+  <desc id="desc">三個並排的抽象方塊代表 LM Studio 的三個使用階段。第一個是 Discover 分頁：搜尋關鍵字或貼上 Hugging Face 網址、挑選 GGUF 或 MLX 格式與量化版本、把檔案存到 ~/.lmstudio/models，這一段需要網路。第二個是 Chat 分頁：把模型載入到記憶體、設定上下文視窗與 GPU offload、開始對話並可附加文件檔案。第三個是 Developer 分頁：打開 Start server 開關或執行 lms server start、伺服器監聽在 localhost 的埠 1234、其他程式用 OpenAI 相容端點呼叫。第二與第三個階段被一個虛線框圈起來，標示為在你的電腦裡執行、可以離線。底部說明資料流：只有第一步需要網路，模型下載完成後，第二步與第三步的對話與 API 請求都留在本機。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">LM Studio 的三個畫面與資料流</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Discover, Chat and the local server: what leaves your computer and what does not</text>
+
+  <!-- network zone -->
+  <rect x="60" y="150" width="440" height="62" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="280" y="188" font-size="17" fill="#102A2B" text-anchor="middle">Hugging Face：這一段需要網路</text>
+  <line x1="280" y1="216" x2="280" y2="242" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- local zone -->
+  <rect x="556" y="222" width="1008" height="438" rx="14" fill="none" stroke="#2E7D5B" stroke-width="4" stroke-dasharray="14 10"/>
+  <text x="1552" y="212" font-size="18" fill="#2E7D5B" text-anchor="end">以下都在你的電腦裡執行，可以離線</text>
+
+  <!-- panel 1 -->
+  <rect x="60" y="250" width="440" height="390" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="104" cy="288" r="18" fill="#2F6F9F"/>
+  <text x="104" y="294" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="136" y="294" font-size="20" font-weight="bold" fill="#102A2B">Discover 分頁：下載模型</text>
+  <rect x="84" y="312" width="392" height="90" rx="10" fill="#E6F0F7"/>
+  <text x="280" y="348" font-size="17" fill="#102A2B" text-anchor="middle">搜尋關鍵字，或貼上</text>
+  <text x="280" y="376" font-size="17" fill="#102A2B" text-anchor="middle">Hugging Face 網址</text>
+  <rect x="84" y="414" width="392" height="90" rx="10" fill="#E6F0F7"/>
+  <text x="280" y="450" font-size="17" fill="#102A2B" text-anchor="middle">挑格式與量化版本：</text>
+  <text x="280" y="478" font-size="17" fill="#102A2B" text-anchor="middle">GGUF／MLX、4-bit 以上</text>
+  <rect x="84" y="516" width="392" height="90" rx="10" fill="#E6F0F7"/>
+  <text x="280" y="567" font-size="17" fill="#102A2B" text-anchor="middle">存到 ~/.lmstudio/models</text>
+
+  <!-- panel 2 -->
+  <rect x="580" y="250" width="440" height="390" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="624" cy="288" r="18" fill="#0D6B68"/>
+  <text x="624" y="294" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="656" y="294" font-size="20" font-weight="bold" fill="#102A2B">Chat 分頁：載入與對話</text>
+  <rect x="604" y="312" width="392" height="90" rx="10" fill="#E3F0EF"/>
+  <text x="800" y="363" font-size="17" fill="#102A2B" text-anchor="middle">把模型載入到記憶體</text>
+  <rect x="604" y="414" width="392" height="90" rx="10" fill="#E3F0EF"/>
+  <text x="800" y="450" font-size="17" fill="#102A2B" text-anchor="middle">設定上下文視窗與</text>
+  <text x="800" y="478" font-size="17" fill="#102A2B" text-anchor="middle">GPU offload</text>
+  <rect x="604" y="516" width="392" height="90" rx="10" fill="#E3F0EF"/>
+  <text x="800" y="552" font-size="17" fill="#102A2B" text-anchor="middle">對話，可附加</text>
+  <text x="800" y="580" font-size="17" fill="#102A2B" text-anchor="middle">.docx／.pdf／.txt</text>
+
+  <!-- panel 3 -->
+  <rect x="1100" y="250" width="440" height="390" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="1144" cy="288" r="18" fill="#0D6B68"/>
+  <text x="1144" y="294" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="1176" y="294" font-size="20" font-weight="bold" fill="#102A2B">Developer 分頁：本機伺服器</text>
+  <rect x="1124" y="312" width="392" height="90" rx="10" fill="#E3F0EF"/>
+  <text x="1320" y="348" font-size="17" fill="#102A2B" text-anchor="middle">打開 Start server 開關</text>
+  <text x="1320" y="376" font-size="17" fill="#102A2B" text-anchor="middle">或用 lms server start</text>
+  <rect x="1124" y="414" width="392" height="90" rx="10" fill="#E3F0EF"/>
+  <text x="1320" y="465" font-size="17" fill="#102A2B" text-anchor="middle">監聽 localhost 的埠 1234</text>
+  <rect x="1124" y="516" width="392" height="90" rx="10" fill="#E3F0EF"/>
+  <text x="1320" y="552" font-size="17" fill="#102A2B" text-anchor="middle">其他程式呼叫</text>
+  <text x="1320" y="580" font-size="17" fill="#102A2B" text-anchor="middle">OpenAI 相容端點</text>
+
+  <!-- flow arrows -->
+  <line x1="508" y1="445" x2="570" y2="445" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1028" y1="445" x2="1090" y2="445" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- bottom band -->
+  <rect x="60" y="690" width="1480" height="90" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="730" font-size="18" fill="#102A2B" text-anchor="middle">資料流：只有第 1 步需要網路；模型下載完成後，第 2、3 步都在本機執行。</text>
+  <text x="800" y="758" font-size="18" fill="#5C6B6B" text-anchor="middle">官方文件寫：與模型對話、與文件對話、跑本機伺服器，核心功能都不需要網路。</text>
+
+  <text x="60" y="820" font-size="15" fill="#5C6B6B">圖中是抽象方塊，不是實際介面；名稱與位置以 lmstudio.ai 官方文件 2026 年 9 月查證的版本為準。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

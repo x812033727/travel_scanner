@@ -1,0 +1,396 @@
+{
+  "slug": "perplexity-ai-search-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定",
+      "description": "Perplexity 是把答案和引用放在一起的搜尋 AI。這篇說明一次查詢怎麼跑完五步、和 Google 搜尋與 ChatGPT 搜尋差在哪、官網現在的方案價格與額度、Search 與 Deep Research 等模式怎麼挑、可選哪些模型、Spaces 與檔案上傳限制，以及 AI data retention 在哪裡關。數字查自 2026 年 9 月 14 日的官網。",
+      "hero": {
+        "src": "/guides/perplexity-ai-search-guide/hero.jpg",
+        "alt": "插圖：一個問題流向三張文件卡片，再匯成一段附著編號的答案",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Perplexity 把搜尋結果直接寫成一段答案，句子後面掛著編號，點下去就是它讀的那個網頁。結論先說：它適合「我想知道某件事，而且要看得到出處」的題目；要創作、要長篇改稿，回去用聊天型的工具比較順手。搜「搜尋 AI」找 Google 以外選項的人，它是最常被點名的一個。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你做到六件事：看懂一次查詢在背後跑過哪幾步、分清楚它和 Google 搜尋與 ChatGPT 搜尋的差別、從台灣把帳號開起來、挑對模式與模型、知道 Spaces 與檔案上傳的限制在哪，以及把資料拿去訓練的開關關掉。價格、額度與功能名稱全部是 2026 年 9 月 14 日當天查官方說明中心、官方定價頁與台灣區商店頁面的結果。"
+        },
+        {
+          "type": "heading",
+          "text": "一次查詢在背後跑過哪五步",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方說明把 Perplexity 定位成「AI 驅動的搜尋引擎」：你問一個問題，它去搜網路，把找到的內容整理成一段口語化的答案，並且在答案裡附上引用與原始連結，讓你可以自己回去查證、再往下讀。這和「模型憑記憶回答」不同，內容是當下從網路抓回來的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方對 Pro Search 的說明把流程拆成五步：先決定要用哪個模型；接著跨網路做多次搜尋，可以限定網頁、學術、財經或你自己的檔案；然後讀取並綜合數十個來源；再把答案裡的結論標上可點的原始連結；最後你可以接著追問，它會記得前面的脈絡。把這五步記起來的用處是，出錯的時候你知道要看哪一段，是搜錯了，還是讀對了卻寫歪了。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/perplexity-ai-search-guide/diagram-1.svg",
+          "alt": "流程圖：提問、搜尋網路、讀取來源、標上引用、給出答案五個步驟，下方比較三種搜尋模式",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左至右看五個步驟，下半部是三種模式在第二、三步投入的力氣差別。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "這種「先檢索、再讓模型根據檢索到的內容作答」的做法有個統一的名字，各家 AI 搜尋都建立在同一套原理上。"
+        },
+        {
+          "type": "link",
+          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+        },
+        {
+          "type": "heading",
+          "text": "和 Google 搜尋、ChatGPT 搜尋差在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三者都會給你一段 AI 寫的答案，差別在預設值擺在哪裡。Google 搜尋的主體仍然是一頁連結，AI 摘要是疊在上面的一層；Perplexity 的主體就是那段答案，連結退成答案旁邊的註腳；ChatGPT 的主體是對話，需要時才去搜尋。官方自己的說法是，一般搜尋引擎給你一堆連結要自己篩，它的定位是把資訊收斂成你需要的那一段。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "要找某個網站、要比價、要看很多家的原文：連結清單還是比較快。",
+            "要一段帶出處的答案，而且會追問兩三輪：附引用的介面最省事。",
+            "要寫東西、要長對話、要反覆改稿：聊天型工具比較順手。",
+            "要判斷答案對不對：三者都得回去點來源，沒有例外。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 搜尋 vs Google：六類問題什麼時候該用哪一個",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-search-vs-google"
+        },
+        {
+          "type": "link",
+          "text": "Google 搜尋 AI 模式：追問與來源判讀",
+          "url": "https://mokaair.com/zh-TW/life/google-ai-mode-search"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一種做法是把 AI 助手直接放在社群平台裡，回答時大量引用平台上的貼文，那又是另一套取捨。"
+        },
+        {
+          "type": "link",
+          "text": "Grok（xAI）怎麼用：三個入口、方案價格與資料訓練開關",
+          "url": "https://mokaair.com/zh-TW/life/grok-xai-guide"
+        },
+        {
+          "type": "heading",
+          "text": "註冊、台灣可用性與方案價格",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "註冊不需要手機門號。官方說明寫最簡單的方式是用 Apple 或 Google 帳號登入，也可以填 Email，系統會寄一條登入連結或一組一次性密碼過來；目前不支援自己設密碼，Email 註冊之後也不能更換綁定的信箱。不登入也能用一部分功能，但要用 Pro Search、要上傳檔案、要保留對話紀錄就得登入。官方另外提醒，掛 VPN 使用容易觸發 Cloudflare 的安全檢查，手機 App 可能會變得不能用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣可用性方面，撰稿當天 App Store 台灣區與 Google Play 台灣區都查得到官方 App，Google Play 上的名稱是 Perplexity - Ask Anything，開發者標示 PerplexityAI，頁面顯示一億次以上下載、更新日期 2026 年 9 月 4 日。付款方面，官方說明寫在網站上訂閱時可以在結帳頁選當地幣別或美元，選定之後每期扣款都用同一個幣別，要換幣別必須取消再重辦，手機商店內購則不適用這個選項。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "官網價格（美元）",
+            "台灣 App Store 標價",
+            "官方寫的額度或重點"
+          ],
+          "rows": [
+            [
+              "免費（Standard）",
+              "免費",
+              "免費",
+              "基本搜尋官方寫「幾乎不限量」，Pro Search 每天 3 次、Research 每月 1 次，不含進階模型"
+            ],
+            [
+              "Pro",
+              "20 美元／月或 200 美元／年",
+              "每月 NT$690、每年 NT$6,990",
+              "Pro Search 每週額度（一般使用），進階模型、影像與影片生成，每個 Space 最多 50 個檔案"
+            ],
+            [
+              "Max",
+              "200 美元／月或 2,000 美元／年",
+              "每月 NT$6,990",
+              "含 Pro 全部內容，另有 GPT-5.5、Claude Opus 4.7、Model Council，每月 10,000 點 Computer 點數"
+            ],
+            [
+              "Education Pro",
+              "10 美元／月",
+              "以官網為準",
+              "需經 SheerID 驗證學生或教職員身分"
+            ],
+            [
+              "Enterprise Pro",
+              "每席 40 美元／月或 400 美元／年",
+              "以官網為準",
+              "資料不用於訓練，Pro Search 每週 400 次、Research 每月 80 次，上傳檔案只留 7 天"
+            ],
+            [
+              "Enterprise Max",
+              "以官網為準",
+              "以官網為準",
+              "Pro Search 每週 4,000 次、Research 每月 800 次，每個 Space 最多 5,000 個檔案"
+            ]
+          ],
+          "caption": "方案、價格與額度查證於 2026 年 9 月 14 日，美元價格出自官方定價頁與說明中心，台幣標價出自 App Store 台灣區。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要注意兩件事。第一，免費版的 Pro Search 次數，官方方案比較表寫每天 3 次，另一篇較舊的帳號說明卻寫每天 5 次，兩個數字都掛在官網上，實際可用次數以你帳號裡顯示的為準。第二，付費版的額度官方只寫「每週額度（一般使用）」這種文字，沒有公開確切數字，只有企業方案才列出每週 400 次、每月 80 次這類值。"
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "heading",
+          "text": "模式、模型、Spaces 與 Comet 瀏覽器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "輸入框上可以切換模式。說明中心目前列出的名稱是：Search（預設，速度與準確度之間取平衡）、Pro Search（多次搜尋，來源數約是一般搜尋的三倍，可以自己挑模型，還內建可以執行程式碼的環境）、Deep Research（做數十次搜尋、讀上百個來源後寫成一份報告）、Learn step by step（一步一步解釋，適合學習）、Model Council（同時問三個模型再合成一份答案，只有 Max 與 Enterprise Max 在網頁版才有）。另外有一組「建立檔案與應用程式」的功能，免費版沒有，Pro 以上才開放。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Deep Research 官方寫多數研究任務在 3 分鐘內完成，實際產出一份回答大約要等 4 到 5 分鐘；這個模式不能自己指定模型，官方寫它會依研究需求自動挑一組最合適的模型。同樣是要等上好幾分鐘的研究功能，其他家的做法可以對照著看。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Deep Research：讓 AI 花十分鐘幫你做一份完整研究",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-deep-research-guide"
+        },
+        {
+          "type": "link",
+          "text": "Deep Research：研究計畫、來源與報告",
+          "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "把「要出處」寫進提示詞的範例",
+          "code": "請回答：<你的問題>\n規則：\n- 每個數字、日期、金額後面標出處，出處限官方網站或政府網站\n- 官方頁面查不到就寫「查不到」，不要用推估的數字\n- 最後列出你實際讀過的網址，一行一個"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型清單官方說會隨著新模型推出而更新。撰稿當天說明中心列的 Pro Search 可選模型是 GPT-5.4、Claude Sonnet 4.6、Nemotron 3 Super 120B with Thinking，另外 GPT-5.5 與 Claude Opus 4.7 只開給 Max 與企業方案；預設的「Best」模式則由系統依題型自動挑，官方寫這個模式不設額度上限。部分模型還有「Thinking」開關，打開就是切到推理模型的走法，適合多步驟的技術題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Spaces 是把同一個專案的對話、檔案與自訂指令收在一起的工作區，預設私密，可以邀人當檢視者或共編者，Pro 與 Max 每個 Space 最多五位共編者。檔案上傳的官方數字是單檔 50 MB；每個 Space 的檔案數 Pro 是 50 個、Max 與 Enterprise Pro 是 500 個、Enterprise Max 是 5,000 個。可以上傳純文字、程式碼、PDF、圖片，以及音訊與影片，官方會自動把語音轉成逐字稿並標記說話者，但影片畫面不會被索引。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Comet 是 Perplexity 自己的瀏覽器。官方說明寫它以 Chromium 為基礎，把 Perplexity 當成預設搜尋引擎，另外有「問這一頁」與「摘要這一頁」按鈕、用自然語言管理分頁、內建擋廣告，並且可以沿用多數 Chrome 擴充功能、從原本的瀏覽器匯入書籤與密碼。官方頁面寫支援 Windows 與 Mac，安裝檔放在官網的 Comet 頁面。能不能從台灣直接下載，以官網頁面實際顯示的為準。"
+        },
+        {
+          "type": "heading",
+          "text": "隱私設定：AI data retention 在哪裡關",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "免費、Pro 與 Max 帳號的「AI data retention」預設是開著的，也就是你的資料可能被用來訓練模型、改善搜尋品質。官方說明寫得很直白：這個開關在帳號設定裡，關掉就是退出訓練資料收集。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "打開帳號設定（網頁版點左下角的頭像，選 All Settings）。",
+            "切到 Preferences 這一頁。",
+            "找到 AI data retention 開關，開著代表資料正在被收集。",
+            "把它切成關閉。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "官方一併寫明幾件事：退出只對關掉之後產生的資料有效，先前已收集的訓練資料不會被刪除；這個設定只管你自己一個帳號；核心功能不受影響，資料仍可能為了服務運作、法遵與產品改善被處理。第三方那一邊，官方說與 OpenAI、Anthropic 等模型供應商的合約禁止把 Perplexity 的資料拿去訓練他們的模型。企業方案的資料則是一律不用於訓練，上傳檔案只留 7 天。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要整個刪掉也可以自助完成：帳號設定頁最下方能啟動刪除，帳號會先停用、30 天後永久刪除；這 30 天內只要再登入一次，刪除就會取消，30 天之後不可逆，用同一個 Email 登入只會得到一個全新的空帳號。不想刪帳號的話，Library 頁面右上角的「…」可以刪單一對話或全部對話，刪掉對話時附在裡面的檔案會一起刪。刪帳號之前記得先取消訂閱。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "上傳檔案的留存天數，官網兩篇說明不一致",
+          "text": "檔案隱私那篇寫一般使用者的檔案與圖片保留 90 天、企業版 7 天；自助刪除那篇卻寫檔案預設保留 30 天。單檔大小也有兩個數字：檔案上傳說明寫上限 50 MB，檔案隱私那篇的排錯段落寫不要超過 40 MB。遇到這種情況不要挑對自己有利的那個：把敏感檔案當成會留在雲端來處理，需要確定就寄信問官方支援，或乾脆不要上傳。"
+        },
+        {
+          "type": "heading",
+          "text": "引用怎麼驗證，以及對站長的意義",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "附上引用不等於引用是對的。編號連到的網頁確實存在，但「那句話是不是真的出自那一頁」要自己看。最省時間的做法是只驗證會影響你決定的那幾個數字，其餘敘述先放著。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "把答案裡的數字、日期、金額圈出來，這些是會出錯又最有後果的部分。",
+            "點開數字後面的編號，用瀏覽器的頁內搜尋在原頁找同一個數字。",
+            "原頁找不到就換一個來源；官方頁面也找不到，就當成沒有這個數字。",
+            "看來源層級：官方網站、政府公告、原始論文優先，轉述的新聞次之。",
+            "看日期：來源頁面自己標的更新日期，比答案裡寫的年份可靠。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "會被錯誤引用的多半不是整段胡說，而是數字對不上、把舊版本的規則當成現行規則。判讀的方法另有一篇專門寫。"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "paragraph",
+          "text": "對經營網站的人來說，這種「答案在上、連結在下」的介面代表一件事：內容要寫得容易被引用，結論明確、數字標出處、段落各自成立可以被單獨摘走。"
+        },
+        {
+          "type": "link",
+          "text": "AI 搜尋時代的內容整理：SEO、GEO 與 AEO 怎麼配合",
+          "url": "https://mokaair.com/zh-TW/life/ai-search-geo-content"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Perplexity 說明中心：What is Perplexity?（產品定位與引用機制）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/10352155-what-is-perplexity",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：What is Pro Search?（查詢流程五步與可選模型）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/10352903-what-is-pro-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：What is Research mode?（Deep Research 時間與模型限制）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/10738684-what-is-research-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：What is Model Council?（三模型合成與 Max 價格）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/13641704-what-is-model-council",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：Which Perplexity Subscription Plan is right for you?（方案清單與額度表）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/11187416-which-perplexity-subscription-plan-is-right-for-you",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：What is Perplexity Pro?（Pro 內容與模式名稱）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/10352901-what-is-perplexity-pro",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：Perplexity Max（Max 價格與每月點數）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/11680686-perplexity-max",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：What advanced AI models are included in my subscription?（模型清單）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/10354919-what-advanced-ai-models-are-included-in-my-subscription",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：What are Spaces?（Spaces 共編與每個 Space 檔案數）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/10352961-what-are-spaces",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：File Uploads（單檔大小與支援格式）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/10354807-file-uploads",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：Security and Privacy with File Uploads（檔案留存天數）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/10354810-security-and-privacy-with-file-uploads",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：Data Collection at Perplexity（AI data retention 開關與退出規則）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/11564572-data-collection-at-perplexity",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：Are third-party model providers training on my data?（第三方供應商訓練條款）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/10354963-are-third-party-model-providers-training-on-my-data",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：Self-Serve Data Deletion（刪除帳號與對話的流程）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/11564562-self-serve-data-deletion",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：Account Management and Security（註冊方式與未登入可用範圍）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/10352998-account-management-and-security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：Paying in Local Currency（結帳幣別選擇）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/13182759-paying-in-local-currency",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Play 台灣區：Perplexity - Ask Anything（上架狀態與更新日期）",
+          "url": "https://play.google.com/store/apps/details?id=ai.perplexity.app.android",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity 說明中心：Getting Started with Comet（Comet 瀏覽器功能與安裝）",
+          "url": "https://www.perplexity.ai/help-center/en/articles/11172798-getting-started-with-comet",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity Pricing（官方定價頁，Pro 與 Max 的美元價格）",
+          "url": "https://www.perplexity.ai/hub/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "App Store 台灣區：Perplexity（台幣標價與上架狀態）",
+          "url": "https://apps.apple.com/tw/app/perplexity-ask-anything/id1668000334",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

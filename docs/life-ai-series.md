@@ -1,4 +1,4 @@
-# 生活分享：AI 工具介紹與教學系列（249 篇總表）
+# 生活分享：AI 工具介紹與教學系列（260 篇總表）
 
 這份文件是「生活分享」（`kind: "life"`，`/{locale}/life/{slug}`）AI 系列的**編輯總表**：每一篇
 的 slug、標題、主題、配圖方式與合作連結在這裡定死，批次任務票的 `scope` 才能精確到檔案。
@@ -26,6 +26,8 @@ ChatGPT、Claude、Gemini、Codex、MiniMax 這些東西是什麼、怎麼開始
   「以官網為準」。「易變」欄打勾的篇要定期回查（`valid_until` 維持 null，life 文章不走到期邏輯）。
 - **主題：** 只用 life 詞彙（`ai`、`tutorial`、`software`、`gadgets`、`productivity`、`daily`、`misc`）；
   `destination_id` 一律 null。
+- **字尾關鍵字：** 「翻譯 AI」「簡報 AI」這類字尾型搜尋詞的對照、寫法與批次 12 的由來見
+  [`docs/ai-suffix-keywords.md`](ai-suffix-keywords.md)；已寫的篇只補 description 與導言，不改標題。
 
 ## 狀態怎麼看
 
@@ -44,7 +46,6 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 
 | 批次 | 主題 | 任務票 |
 | --- | --- | --- |
-
 | 01 | AI 入門與各工具總覽（先寫，之後每篇深入文都連回這 20 篇） | `2026-09-13-life-ai-batch-01` |
 | 02 | ChatGPT 教學 | `2026-09-13-life-ai-batch-02` |
 | 03 | Claude 教學 | `2026-09-13-life-ai-batch-03` |
@@ -56,6 +57,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 09 | 工作流、效率與自動化 | `2026-09-13-life-ai-batch-09` |
 | 10 | 比較、費用、資安與法律 | `2026-09-13-life-ai-batch-10` |
 | 11 | 生活應用、3C 與旅途中的 AI | `2026-09-13-life-ai-batch-11` |
+| 12 | 字尾關鍵字補位（11 篇，不是 20；`docs/ai-suffix-keywords.md`） | `2026-09-14-life-ai-batch-12-suffix-keywords` |
 
 工具與 brief：`2026-09-13-life-ai-series-tooling`；這份總表：`2026-09-13-life-ai-series-catalogue`。
 
@@ -203,23 +205,23 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 
 | # | slug | 標題 | topics | 圖 | 合作 | 易變 |
 |---|---|---|---|---|---|---|
-| 101 | `minimax-hailuo-video-guide` | MiniMax 海螺影片生成教學 | ai, tutorial | 插 |  | ✓ |
-| 102 | `minimax-speech-tts-guide` | MiniMax 語音合成：中文配音與有聲書 | ai, tutorial | 插 |  | ✓ |
-| 103 | `minimax-music-generation` | MiniMax 音樂生成怎麼用 | ai, tutorial | 插 |  | ✓ |
-| 104 | `minimax-m-series-models-explained` | MiniMax M 系列模型：開源權重與 API | ai | 插 |  | ✓ |
-| 105 | `minimax-agent-guide` | MiniMax Agent：一句話做出網頁與報告 | ai, tutorial | 插 |  | ✓ |
-| 106 | `deepseek-chat-and-reasoner` | DeepSeek 對話與推理模式怎麼用 | ai, tutorial | 插 |  | ✓ |
+| 101 | `minimax-hailuo-video-guide` | MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片 | ai, tutorial | 插 |  | ✓ |
+| 102 | `minimax-speech-tts-guide` | MiniMax 語音合成：中文配音、有聲書與影片旁白 | ai, tutorial | 插 |  | ✓ |
+| 103 | `minimax-music-generation` | MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌 | ai, tutorial | 插 |  | ✓ |
+| 104 | `minimax-m-series-models-explained` | MiniMax M 系列模型：開放權重、授權條款與 API 價格 | ai | 插 |  | ✓ |
+| 105 | `minimax-agent-guide` | MiniMax Agent 怎麼用：一句話做出網頁、報告與簡報 | ai, tutorial | 插 |  | ✓ |
+| 106 | `deepseek-chat-and-reasoner` | DeepSeek 對話與深度思考：哪些題目該開推理模式 | ai, tutorial | 插 |  | ✓ |
 | 107 | `deepseek-privacy-and-data-flow` | DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨 | ai, misc | 插 |  |  |
 | 108 | `deepseek-local-with-ollama` | 在自己電腦跑 DeepSeek：Ollama 蒸餾版教學 | ai, tutorial | 插 |  | ✓ |
-| 109 | `qwen-alibaba-models-guide` | 通義千問 Qwen：開源模型家族與 Qwen Chat | ai | 插 |  | ✓ |
+| 109 | `qwen-alibaba-models-guide` | 通義千問 Qwen：開放權重模型家族與 Qwen Studio | ai | 插 |  | ✓ |
 | 110 | `kimi-moonshot-guide` | Kimi（月之暗面）：長文件與 K 系列模型 | ai | 插 |  | ✓ |
 | 111 | `doubao-bytedance-guide` | 豆包（字節跳動）：功能與台灣可用性 | ai | 插 |  | ✓ |
 | 112 | `chinese-ai-models-comparison` | 中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax | ai | 插 |  | ✓ |
 | 113 | `chinese-ai-apps-security-checklist` | 使用中國系 AI App 前的資安檢查清單 | ai, misc | 插 |  |  |
-| 114 | `mistral-le-chat-guide` | Mistral Le Chat：歐洲的 AI 助手 | ai | 插 |  | ✓ |
-| 115 | `grok-xai-guide` | Grok（xAI）：X 上的 AI 助手與注意事項 | ai | 插 |  | ✓ |
-| 116 | `perplexity-ai-search-guide` | Perplexity：AI 搜尋引擎入門 | ai, productivity | 插 |  | ✓ |
-| 117 | `microsoft-copilot-windows-office` | Microsoft Copilot：Windows 與 Office 裡的 AI | ai, software | 插 |  | ✓ |
+| 114 | `mistral-le-chat-guide` | Mistral Vibe（原 Le Chat）：歐洲 AI 助手的方案、功能與資料存放 | ai | 插 |  | ✓ |
+| 115 | `grok-xai-guide` | Grok（xAI）怎麼用：三個入口、方案價格與資料訓練開關 | ai | 插 |  | ✓ |
+| 116 | `perplexity-ai-search-guide` | Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定 | ai, productivity | 插 |  | ✓ |
+| 117 | `microsoft-copilot-windows-office` | Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關 | ai, software | 插 |  | ✓ |
 | 118 | `meta-ai-whatsapp-instagram` | Meta AI：WhatsApp、Instagram 裡的 AI 與隱私 | ai, daily | 插 |  | ✓ |
 | 119 | `apple-intelligence-guide` | Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援 | ai, gadgets | 照 |  | ✓ |
 | 120 | `line-ai-features-taiwan` | LINE 裡的 AI：聊天、翻譯與台灣可用功能 | ai, daily | 照 |  | ✓ |
@@ -240,88 +242,88 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 130 | `gpt-oss-openai-open-weights` | OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪 | ai | 插 |  | ✓ |
 | 131 | `gemma-google-open-models` | Gemma：Google 的開源模型怎麼用 | ai | 插 |  | ✓ |
 | 132 | `qwen-local-deployment` | 本機跑 Qwen：中文表現與設定 | ai, tutorial | 插 |  | ✓ |
-| 133 | `whisper-local-transcription` | 用 Whisper 本機轉錄逐字稿：會議與訪談 | ai, tutorial | 照 |  |  |
+| 133 | `whisper-local-transcription` | 用 Whisper 本機轉錄逐字稿：會議與訪談的離線做法 | ai, tutorial | 照 |  |  |
 | 134 | `stable-diffusion-comfyui-setup` | 本機跑 Stable Diffusion 與 Flux：ComfyUI 入門 | ai, tutorial | 插 |  | ✓ |
-| 135 | `local-ai-on-mac-mini` | Mac mini 當家用 AI 伺服器 | ai, gadgets | 照 |  | ✓ |
+| 135 | `local-ai-on-mac-mini` | Mac mini 當家用 AI 伺服器：統一記憶體、售價與區網設定 | ai, gadgets | 照 |  | ✓ |
 | 136 | `local-ai-gpu-buying-guide` | 為 AI 選顯示卡：顯示記憶體優先與預算配置 | gadgets, ai | 照 |  | ✓ |
 | 137 | `huggingface-guide` | Hugging Face 入門：找模型、看授權、下載 | ai, tutorial | 插 |  |  |
 | 138 | `self-host-ai-on-vps` | 在 VPS 上自架 AI 服務：Ollama＋Open WebUI | tutorial, software | 插 | H |  |
-| 139 | `local-vs-cloud-ai-cost` | 本機 vs 雲端 AI 成本試算 | ai, software | 插 |  | ✓ |
+| 139 | `local-vs-cloud-ai-cost` | 本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算 | ai, software | 插 |  | ✓ |
 | 140 | `openrouter-multi-model-api` | OpenRouter：一把金鑰用遍各家模型 | ai, tutorial | 插 |  | ✓ |
 
 ### 批次 08｜圖片、影片、音樂生成
 
 | # | slug | 標題 | topics | 圖 | 合作 | 易變 |
 |---|---|---|---|---|---|---|
-| 141 | `ai-image-tools-overview-2026` | AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux | ai, software | 插 |  | ✓ |
+| 141 | `ai-image-tools-overview-2026` | AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選 | ai, software | 插 |  | ✓ |
 | 142 | `midjourney-getting-started` | Midjourney 入門：網頁版、參數與訂閱 | ai, tutorial | 插 |  | ✓ |
 | 143 | `midjourney-prompt-guide` | Midjourney 提示詞：風格、比例、參考圖 | ai, tutorial | 插 |  |  |
-| 144 | `sora-video-guide` | Sora 影片生成教學 | ai, tutorial | 插 |  | ✓ |
-| 145 | `ai-video-tools-compared` | AI 影片工具比較：Veo、Sora、海螺、Kling | ai | 插 |  | ✓ |
+| 144 | `sora-video-guide` | Sora 影片生成教學：官方已停止服務，先匯出再挑替代工具 | ai, tutorial | 插 |  | ✓ |
+| 145 | `ai-video-tools-compared` | AI 影片工具比較：Veo、Sora、海螺、Kling 的方案與規格 | ai | 插 |  | ✓ |
 | 146 | `kling-runway-video-tools` | Kling 與 Runway：影片生成工具介紹 | ai | 插 |  | ✓ |
-| 147 | `suno-music-generation-guide` | Suno 做歌：從歌詞到成品 | ai, tutorial | 插 |  | ✓ |
-| 148 | `ai-voice-cloning-elevenlabs` | ElevenLabs 與語音克隆：配音與注意事項 | ai, tutorial | 插 |  | ✓ |
-| 149 | `ai-image-copyright-taiwan` | AI 生成圖片的版權：台灣法規與商用注意 | ai, misc | 插 |  |  |
+| 147 | `suno-music-generation-guide` | Suno 做歌：從歌詞到成品，方案、下載與商用權怎麼算 | ai, tutorial | 插 |  | ✓ |
+| 148 | `ai-voice-cloning-elevenlabs` | ElevenLabs 與語音克隆：配音、方案與同意規則怎麼看 | ai, tutorial | 插 |  | ✓ |
+| 149 | `ai-image-copyright-taiwan` | AI 生成圖片的版權：台灣法規與商用注意事項 | ai, misc | 插 |  |  |
 | 150 | `ai-image-watermark-c2pa` | AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識 | ai, misc | 插 |  |  |
-| 151 | `ai-remove-background-upscale` | AI 去背與放大：免費工具實測 | ai, tutorial | 照 |  |  |
-| 152 | `ai-photo-restoration-old-photos` | 用 AI 修復老照片 | ai, daily | 照 |  |  |
-| 153 | `canva-ai-features-guide` | Canva 的 AI 功能怎麼用 | ai, software | 插 |  | ✓ |
+| 151 | `ai-remove-background-upscale` | AI 去背與放大：免費工具怎麼挑 | ai, tutorial | 照 |  |  |
+| 152 | `ai-photo-restoration-old-photos` | 用 AI 修復老照片：去刮痕、放大與上色分開做，工具怎麼選 | ai, daily | 照 |  |  |
+| 153 | `canva-ai-features-guide` | Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算 | ai, software | 插 |  | ✓ |
 | 154 | `ai-slides-generation-tools` | AI 做簡報：Gamma、Copilot 與 Gemini | ai, productivity | 插 |  | ✓ |
-| 155 | `ai-product-photo-for-sellers` | 賣家用 AI 做商品圖：注意事項 | ai, daily | 照 |  |  |
-| 156 | `ai-video-subtitles-translation` | AI 上字幕與翻譯影片：CapCut、Whisper | ai, tutorial | 插 |  |  |
-| 157 | `ai-avatar-video-tools` | AI 虛擬主播與數位分身：HeyGen 等工具 | ai | 插 |  | ✓ |
+| 155 | `ai-product-photo-for-sellers` | 賣家用 AI 做商品圖：四種用法、平台規範與紅線 | ai, daily | 照 |  |  |
+| 156 | `ai-video-subtitles-translation` | AI 上字幕與翻譯影片：CapCut、Whisper 與 YouTube 三條路 | ai, tutorial | 插 |  |  |
+| 157 | `ai-avatar-video-tools` | AI 虛擬主播與數位分身：HeyGen 的方案、同意規則與標示怎麼看 | ai | 插 |  | ✓ |
 | 158 | `ai-generated-content-disclosure` | AI 內容標示：YouTube、Meta 與台灣的規定 | ai, misc | 插 |  | ✓ |
 | 159 | `ai-art-prompt-styles-reference` | AI 繪圖風格提示參考：50 種風格描述 | ai, tutorial | 插 |  |  |
-| 160 | `ai-3d-model-generation` | AI 生成 3D 模型入門 | ai | 插 |  | ✓ |
+| 160 | `ai-3d-model-generation` | AI 生成 3D 模型入門：從文字或圖片到能列印的檔案 | ai | 插 |  | ✓ |
 
 ### 批次 09｜工作流、效率與自動化
 
 | # | slug | 標題 | topics | 圖 | 合作 | 易變 |
 |---|---|---|---|---|---|---|
-| 161 | `ai-note-taking-workflow` | 用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM | productivity, ai | 插 |  |  |
-| 162 | `notion-ai-guide` | Notion AI 入門 | productivity, software | 插 |  | ✓ |
-| 163 | `ai-meeting-notes-tools` | AI 會議記錄：Otter、Google Meet、Teams 摘要 | productivity, ai | 照 |  | ✓ |
-| 164 | `n8n-ai-automation-guide` | n8n 入門：用 AI 節點做自動化 | tutorial, productivity | 插 | H |  |
-| 165 | `zapier-make-ai-automation` | Zapier 與 Make 的 AI 自動化 | productivity, software | 插 |  | ✓ |
+| 161 | `ai-note-taking-workflow` | 用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工 | productivity, ai | 插 |  |  |
+| 162 | `notion-ai-guide` | Notion AI 入門：哪個方案才有、能做什麼、資料怎麼處理 | productivity, software | 插 |  | ✓ |
+| 163 | `ai-meeting-notes-tools` | AI 會議記錄工具怎麼挑：Otter、Google Meet、Teams、Zoom 與 Notion | productivity, ai | 照 |  | ✓ |
+| 164 | `n8n-ai-automation-guide` | n8n 入門：用 AI 節點做自動化工作流 | tutorial, productivity | 插 | H |  |
+| 165 | `zapier-make-ai-automation` | Zapier 與 Make 的 AI 自動化：計費方式與 AI 功能對照 | productivity, software | 插 |  | ✓ |
 | 166 | `mcp-servers-for-everyone` | MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器 | ai, tutorial | 插 |  | ✓ |
-| 167 | `ai-email-management` | 用 AI 管理 Email：分類、摘要與草稿 | productivity, ai | 插 |  |  |
-| 168 | `ai-calendar-scheduling` | AI 排程與行事曆助手 | productivity, ai | 插 |  | ✓ |
-| 169 | `ai-pdf-tools-summarize-translate` | AI PDF 工具：摘要、翻譯、問答 | productivity, software | 插 |  |  |
-| 170 | `ai-browsers-guide` | AI 瀏覽器：Comet、Atlas、Dia 與 Chrome 的 AI | ai, software | 插 |  | ✓ |
-| 171 | `ai-spreadsheet-automation` | 試算表 AI 自動化：Sheets、Excel Copilot | productivity, ai | 插 |  |  |
-| 172 | `ai-second-brain-obsidian` | Obsidian＋AI：打造第二大腦 | productivity, software | 插 |  |  |
-| 173 | `ai-prompt-library-personal` | 建立自己的提示詞庫 | productivity, ai | 插 |  |  |
+| 167 | `ai-email-management` | 用 AI 管理 Email：分類、摘要與草稿的工作流 | productivity, ai | 插 |  |  |
+| 168 | `ai-calendar-scheduling` | AI 排程與行事曆助手：找時間、排工作區塊與定時提醒 | productivity, ai | 插 |  | ✓ |
+| 169 | `ai-pdf-tools-summarize-translate` | AI PDF 工具：摘要、翻譯、問答怎麼分工 | productivity, software | 插 |  |  |
+| 170 | `ai-browsers-guide` | AI 瀏覽器怎麼選：Comet、Dia、Chrome 的 Gemini 與代理風險 | ai, software | 插 |  | ✓ |
+| 171 | `ai-spreadsheet-automation` | 試算表 AI 自動化：Google 試算表 AI 函式與 Excel Copilot 怎麼分工 | productivity, ai | 插 |  |  |
+| 172 | `ai-second-brain-obsidian` | Obsidian＋AI 打造第二大腦：外掛、程式代理與 MCP 三種接法 | productivity, software | 插 |  |  |
+| 173 | `ai-prompt-library-personal` | 建立自己的提示詞庫：固定欄位、放在哪裡、怎麼管版本 | productivity, ai | 插 |  |  |
 | 174 | `ai-for-social-media-content` | 用 AI 做社群貼文：IG、Threads、FB 排程 | ai, daily | 插 |  |  |
-| 175 | `ai-for-youtube-creators` | YouTuber 的 AI 工作流：腳本、字幕、縮圖 | ai, productivity | 插 |  |  |
+| 175 | `ai-for-youtube-creators` | YouTuber 的 AI 工作流：腳本、字幕、縮圖與標示規則 | ai, productivity | 插 |  |  |
 | 176 | `ai-for-small-business-taiwan` | 台灣小店的 AI 應用：客服、菜單、廣告 | ai, daily | 照 |  |  |
 | 177 | `ai-customer-service-line-bot` | 用 AI 做客服機器人：LINE 官方帳號接 AI | tutorial, software | 插 | H |  |
 | 178 | `ai-agent-frameworks-explained` | Agent 框架入門：OpenAI Agents SDK、Claude Agent SDK、LangGraph | ai, tutorial | 插 |  | ✓ |
-| 179 | `ai-weekly-review-templates` | AI 週回顧與目標管理範本 | productivity, daily | 插 |  |  |
-| 180 | `ai-reading-list-books-2026` | AI 入門書單：十本值得讀的書 | ai, misc | 照 | B | ✓ |
+| 179 | `ai-weekly-review-templates` | AI 週回顧與目標管理範本：固定輸入、固定輸出，還能讓它自動跑 | productivity, daily | 插 |  |  |
+| 180 | `ai-reading-list-books-2026` | AI 入門書單：十本值得讀的書，附繁中版出版資訊 | ai, misc | 照 | B | ✓ |
 
 ### 批次 10｜比較、費用、資安與法律
 
 | # | slug | 標題 | topics | 圖 | 合作 | 易變 |
 |---|---|---|---|---|---|---|
 | 181 | `ai-subscription-which-to-pay-2026` | 只能訂一個的話訂哪個：ChatGPT、Claude、Gemini | ai, software | 插 |  | ✓ |
-| 182 | `ai-benchmarks-explained` | 模型跑分怎麼看：LMArena、SWE-bench 與陷阱 | ai | 插 |  | ✓ |
-| 183 | `ai-model-release-timeline-2026` | 2026 年 AI 模型大事記 | ai, misc | 插 |  | ✓ |
+| 182 | `ai-benchmarks-explained` | 模型跑分怎麼看：LMArena、SWE-bench 與三個陷阱 | ai | 插 |  | ✓ |
+| 183 | `ai-model-release-timeline-2026` | 2026 年 AI 模型大事記：1 月到 9 月 15 日的官方發布時間軸 | ai, misc | 插 |  | ✓ |
 | 184 | `ai-api-pricing-comparison-2026` | API 價格比較：每百萬 token 各家多少 | ai, software | 插 |  | ✓ |
 | 185 | `ai-scams-deepfake-taiwan` | AI 詐騙與 Deepfake：台灣案例與防範 | ai, daily | 插 |  |  |
 | 186 | `ai-account-security-2fa-api-keys` | 保護你的 AI 帳號：兩步驟驗證與金鑰外洩 | ai, tutorial | 插 |  |  |
 | 187 | `ai-and-copyright-law-taiwan` | AI 與著作權：台灣法規與判決整理 | ai, misc | 插 |  |  |
 | 188 | `ai-at-work-policy-checklist` | 公司裡用 AI 的規範：資料外流與合規 | ai, productivity | 插 |  |  |
-| 189 | `ai-detection-tools-reliability` | AI 偵測工具準不準 | ai, misc | 插 |  |  |
+| 189 | `ai-detection-tools-reliability` | AI 偵測工具準不準：官方自己寫的限制與誤判 | ai, misc | 插 |  |  |
 | 190 | `ai-energy-water-footprint` | AI 的用電與用水：一次對話的成本 | ai, misc | 插 |  |  |
 | 191 | `ai-for-kids-parent-guide` | 家長指南：孩子用 AI 的年齡限制與設定 | ai, daily | 照 |  | ✓ |
 | 192 | `ai-regulation-eu-act-taiwan` | 歐盟 AI 法案與台灣 AI 基本法：對使用者的影響 | ai, misc | 插 |  | ✓ |
 | 193 | `ai-prompt-injection-explained` | 提示詞注入是什麼：使用者該懂的攻擊 | ai, tutorial | 插 |  |  |
 | 194 | `ai-chat-history-export-delete` | 匯出與刪除你的 AI 對話記錄 | ai, tutorial | 插 |  | ✓ |
-| 195 | `ai-token-cost-estimation` | token 計算與費用估算 | ai, tutorial | 插 |  | ✓ |
+| 195 | `ai-token-cost-estimation` | token 計算與費用估算：官方計數工具、一次對話的算式與費用上限 | ai, tutorial | 插 |  | ✓ |
 | 196 | `ai-open-vs-closed-models` | 開源 vs 閉源模型：對使用者的差別 | ai | 插 |  |  |
 | 197 | `ai-taiwan-local-models-taide` | 台灣的本土模型：TAIDE 與繁中表現 | ai | 插 |  | ✓ |
 | 198 | `ai-companion-mental-health-caution` | AI 陪伴與心理健康：可以與不可以 | ai, daily | 插 |  |  |
-| 199 | `ai-news-sources-to-follow` | 追 AI 新聞的來源清單 | ai, misc | 插 |  |  |
+| 199 | `ai-news-sources-to-follow` | 追 AI 新聞的來源清單：只看官方一手來源 | ai, misc | 插 |  |  |
 | 200 | `ai-hype-vs-reality-2026` | AI 能與不能：2026 年的誠實盤點 | ai, misc | 插 |  | ✓ |
 
 ### 批次 11｜生活應用、3C 與旅途中的 AI
@@ -365,6 +367,11 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
   撰稿代理會繼承 session 的 plan mode，開著時代理只寫計畫檔；`ExitPlanMode` 後用 SendMessage 讓同一個代理接著執行即可，查證不用重做。
   總表標題以實際篇名為準（本批同步 5 列，其中「兩家寫作比一比」因為我們無法真的實測，改寫成讀者自測法）。
 - 批次 04（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-04.md`）：教學文很需要 `code` 區塊（指令、設定檔、範例提示詞），撰稿補充要明寫可用；連結文字直接取目標文章標題（同批會寫的篇用指派給的標題，收完後再統一一次）；無法實測的「比較」題改寫成操作步驟比較與讀者自測法。官方文件會搬家（Codex 文件轉到 learn.chatgpt.com），sources 記實際生效的網址。合作連結沒有聯盟網址就不放，總表的 H 標記只是允許。
+- 批次 06（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-06.md`）：中國系與其他家的產品名、模型版本、授權與方案半年內幾乎全換過（Le Chat→Vibe、Qwen Chat→Qwen Studio、MiniMax Agent→Mavis、Copilot Pro 停售），指派裡的「例如」只能當起點，寫手照當天官網寫、審稿再用 curl／Hugging Face API／iTunes lookup 逐篇複核；台灣可用性用 App Store／Google Play 官方查詢，查不到就寫查不到；政府禁令只引公告原文並限定公務機關；x.ai、help.x.com、perplexity.ai、volcengine 對機房 IP 回 403，寫手改讀 .md 版文件、說明中心的 Intercom 網址或 Wayback 快照並在 notes 記讀法。一波七個 Opus 代理會撞帳號的五小時額度，撞到就等重置再重跑。
+- 批次 07（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-07.md`）：本機與開源模型的授權要逐版本用 Hugging Face API 的 license 標籤與 LICENSE 原文核對，不能用家族名稱推論（Gemma 4 是 Apache 2.0 但 Gemma 3 仍是 Gemma Terms；FLUX.2 klein 4B 可商用但 9B 非商用；Qwen 只有 Flash-Next 是自訂授權；SDXL Turbo 的 HF 標籤與 LICENSE 檔不一致）。官方文件自己也會前後不一致（Ollama 預設上下文、Open WebUI 向量庫數、Whisper turbo 參數），正文擇一並註明出處。openai.com 與 help.openai.com 對本環境 403，Wayback 的 `id_` 原始快照要 `--compressed`；amd.com 要 `--http1.1` 加瀏覽器 UA；developer.apple.com 走 `tutorials/data/...json`；apple.com/tw 售價在 JSON-LD。硬體與價格只抄官網當天數字、不做效能推估；sitemap 已到 926/1,000 列。
+- 批次 08（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-08.md`）：圖片、影片、音樂工具改版比模型更快，指派裡的產品現況要當作假設（Sora 已停止服務、Midjourney 預設 V8.2 且 `--cref` 已被 Edit Model 取代、Canva 的 Magic Studio 改名、remove.bg 將併入 Leonardo.Ai、Luma 已無 3D 產品），寫手照當天官網寫、審稿逐篇用 Zendesk／Intercom 內容 API、Wayback、WebFetch 與 iTunes lookup 複核；價格照官網幣別，但 Google 訂閱有台灣頁就寫新台幣；法規與平台規範只引 law.moj.gov.tw 與官方頁原文、不下法律結論；免費層常見的坑是「能生成、不能下載或不能商用」（Meshy、Suno、remove.bg、Photoroom、HeyGen），表格要把這件事寫成獨立欄位。docs.midjourney.com 與 help.runwayml.com 走 Zendesk API，helpx.adobe.com 要完整瀏覽器標頭，canva.com 只能讀 Wayback，Meta 頁面要用 WebFetch。
+- 批次 09（2026-09-15，`tasks/open/2026-09-13-life-ai-batch-09.md`）：工作流與自動化工具半年內改名改計費的比例比模型還高（NotebookLM→Gemini Notebook、Make operations→credits、Clockwise 收攤、Atlas 停止運作、Excel COPILOT 函式停用、n8n npm 安裝淘汰、ChatGPT 個人帳號不能新建 GPT），指派裡的功能名稱只能當起點；台灣讀者最常踩的是語言清單（Meet 筆記、Sheets AI 函式、Google 商家檔案 Gemini、Acrobat AI 助理、YouTube 自動配音都沒有繁中或只能配英語），每篇都要把語言清單當獨立欄位查。文件網域大搬家（docs.claude.com→platform.claude.com／code.claude.com、langchain-ai.github.io→docs.langchain.com、adk-docs→adk.dev、help.obsidian.md→obsidian.md/help），sources 記轉址後網址。七個代理撞到 session 額度時不用重開，額度重置後 SendMessage 接續同一個代理即可。本批落地後 repo 的 sitemap 列數 1,017，已超過 1,000，發布前要先拆 sitemap。
+- 批次 10（2026-09-15，`tasks/open/2026-09-13-life-ai-batch-10.md`）：比較、費用、資安與法律這類文章最怕「看起來像官方」的二手來源，本批把來源限制在定價頁、說明中心、系統卡／模型卡 PDF、官方 RSS、法規資料庫與政府官方頁，法律與心理健康兩類只引原文、不下結論，二十篇全部一次通過審稿。廠商網站對本環境的封鎖越來越多（openai.com／platform.openai.com 全站 403、iea.org 403、EUR-Lex 只回空頁、opensource.org 與 perplexity.ai 403），要備妥替代讀法：help.openai.com 的 `<id>-<slug>.json`、developers.openai.com 的 `.md`、官方 RSS、Wayback 的 `web/<ts>id_/`、執委會 AI Act Service Desk、Zendesk API `.json`、HF `api/models/<repo>`；PDF 系統卡用 pypdf 抽全文比對引文最省事。標題可以在寫完後依內容改得更具體（本批改了五篇），改完要同步總表。本批落地後 sitemap 列數 1,037，拆分票仍未關，發布前要先拆。
 - Commons 照片：工具的 User-Agent 要有聯絡信箱，而且請求要走 urllib（httpx 的連線被 Wikimedia 擋 403）；十個代理同時搜 Commons 會被 429，工具會退避重試。
 
 ## Gemini 完整系列補充（2026-09-14）
@@ -402,3 +409,22 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 247 | `gemini-api-files-structured-output` | API 檔案與 JSON：結構化輸出及驗證 | ai, tutorial | 插 |  | ✓ |
 | 248 | `gemini-api-cost-errors-guide` | API 額度與錯誤：費用、重試與成本控制 | ai, tutorial | 插 |  | ✓ |
 | 249 | `gemini-api-document-assistant` | 完整實作：文件摘要與資料擷取工具 | ai, tutorial | 插 |  | ✓ |
+
+### 批次 12｜字尾關鍵字補位（11 篇）
+
+字尾型搜尋詞（「〇〇 AI」）哪裡都對不到文章的，排在這裡；對照表、寫法與四篇待拍板的敏感題見
+[`docs/ai-suffix-keywords.md`](ai-suffix-keywords.md)。第 250 篇是索引 hub，`featured: false`、`display_order: 100`，只連已寫的篇。
+
+| # | slug | 標題 | topics | 圖 | 合作 | 易變 |
+|---|---|---|---|---|---|---|
+| 250 | `ai-tools-by-search-term` | 〇〇 AI 怎麼找：從你會搜的字找到對的工具與教學 | ai, misc | 插 |  | ✓ |
+| 251 | `ai-image-to-text-ocr` | 圖片轉文字 AI：截圖、掃描件與手寫筆記變成可編輯文字 | ai, tutorial | 插 |  | ✓ |
+| 252 | `ai-taiwanese-hokkien-hakka-tools` | 台語 AI 與客語 AI：語音辨識、合成與翻譯工具有哪些、準不準 | ai, daily | 照 |  | ✓ |
+| 253 | `ai-line-sticker-creation` | 貼圖 AI：用 AI 做 LINE 貼圖的生成、去背、審核規則與版權 | ai, daily | 插 |  | ✓ |
+| 254 | `ai-interior-design-visualization` | 裝潢 AI：把房間照片變成設計提案，哪些不能靠 AI | ai, daily | 照 |  | ✓ |
+| 255 | `ai-id-photo-rules-taiwan` | 證件照 AI：AI 修圖或生成的證件照能不能用，護照與身分證規定 | ai, daily | 插 |  | ✓ |
+| 256 | `ai-naming-brainstorm-checks` | 取名 AI：品牌、公司與商品名的提示詞，以及預查與商標檢索 | ai, daily | 插 |  |  |
+| 257 | `ai-fortune-telling-apps-caution` | 算命 AI 在做什麼：生成式回答的原理、個資流向與付費陷阱 | ai, daily | 插 |  |  |
+| 258 | `ai-stock-research-boundaries` | 投資 AI 能幫什麼：整理財報與新聞、不能預測漲跌、金管會怎麼管 | ai, daily | 插 |  | ✓ |
+| 259 | `ai-legal-questions-boundaries` | 法律 AI：法律問題問 AI 能整理什麼、什麼要找律師 | ai, daily | 插 |  |  |
+| 260 | `ai-health-questions-boundaries` | 健康 AI：症狀整理、看診前準備與它不能取代的事 | ai, daily | 插 |  |  |

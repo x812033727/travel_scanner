@@ -1,0 +1,481 @@
+{
+  "slug": "ai-news-sources-to-follow",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "追 AI 新聞的來源清單：只看官方一手來源",
+      "description": "追 AI 新聞不必訂閱一堆電子報。這篇只列一手來源：九家廠商的官方新聞頁、模型卡與 system card 的位置、官方釋出說明、arXiv 的 cs.CL 與 cs.AI，以及 OWASP、歐盟與台灣國科會、數位發展部的官方頁。每個網址都在 2026 年 9 月 15 日當天連過，寫清楚哪些有官方 RSS、哪些沒有，最後附一套一週 30 分鐘的固定流程。",
+      "hero": {
+        "src": "/guides/ai-news-sources-to-follow/hero.jpg",
+        "alt": "十幾條細線從左邊匯進中間一個圓形，圓上有一段標示三十分之一圈的弧，右邊是三張疊起來的卡片與幾個圓點",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想知道一個模型哪天上線、限制寫在哪一句、價格改了沒有，最短的路是直接讀發布它的那一家自己寫的那一頁，而不是讀別人的轉述。這篇只做一件事：把一手來源的網址整理成一張清單，寫清楚哪一個有官方 RSS、哪一個只能自己開頁面看，不推薦任何媒體、創作者或第三方電子報。"
+        },
+        {
+          "type": "paragraph",
+          "text": "清單裡的每一個網址，都在 2026 年 9 月 15 日當天實際連過一次、確認回應正常才寫進來，讀不到的一律不列；官方電子報也只寫官網頁面上真的看得到訂閱入口的，沒有就寫沒有。讀完你會拿到一張 15 列的來源表、一份 10 個官方 RSS 網址、可以直接貼進閱讀器的清單，以及一套一週 30 分鐘就跑得完的固定流程。"
+        },
+        {
+          "type": "heading",
+          "text": "先分清楚：一則新聞是不是一手",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一手來源的定義很窄：做這件事的那個組織，在自己的網域上，自己寫的那一頁。模型公告的一手來源是發布模型的公司，法規的一手來源是立法或主管機關，論文的一手來源是論文本身。其他所有形式，包含整理得再好的摘要，都是二手。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "看網域：模型公告要落在 openai.com、anthropic.com、deepmind.google、ai.meta.com 這類發布者自己的網域上，不是別人的站。",
+            "看日期：官方公告頁與官方 RSS 都會標日期，一則沒有日期的「新聞」通常是轉述，或是把舊事重寫一次。",
+            "看主詞：同一家講自己的產品是一手，講別家的產品只是評論，就算刊在官方部落格上也一樣。",
+            "看原文能不能對上：規格與限制要能在模型卡、system card 或釋出說明上找到同一句話，找不到就先當成還沒確認。",
+            "看數字指到哪裡：跑分、價格、上限這種數字，一手來源會把你帶到自己的定價頁、榜單或技術報告。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "二手不是不能看，而是它把「官方寫了什麼」和「寫的人怎麼想」混在同一段裡，久了會分不開。本篇不給任何媒體、創作者或第三方電子報的名字，只給原始入口；你自己讀一遍官方那段話，比看十篇解讀有用。"
+        },
+        {
+          "type": "heading",
+          "text": "九家的官方新聞頁：哪些有 RSS，哪些沒有",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的情況最特別。它的網站會擋掉一部分自動讀取，查證這篇時連它的新聞列表頁都打不開，回的是 HTTP 403，但同一個網域上的官方新聞 RSS 是公開的：今天讀到 1,193 筆，最新一筆標的日期是 9 月 14 日。更有用的是，RSS 把 system card 也當成一般公告發出來，標題就寫成「GPT-5.5 System Card」這種形式，連結指回官方頁面。也就是說，就算你打不開它的網站，也追得到它發了什麼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 反過來：官方新聞頁今天讀得到，列表卡片上最新標的是 9 月 10 日，但它沒有 RSS。常見的三個路徑 rss.xml、news/rss.xml、feed.xml 今天都回 404。要追它只能自己開新聞頁，或者改追它的開發者釋出說明頁，那一頁反而有官方 RSS。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 要分兩邊看。Google DeepMind 的部落格有官方 RSS，今天讀到 100 筆，最新一筆標的是 9 月 8 日；同一頁的頁尾還放了一個官方訂閱表單，標題原文是「Sign up for updates on our latest innovations」，這是本篇列到的來源裡，唯一一個在廠商官方頁面上直接看得到的電子報入口。Gemini 的模型細節另外一條線是開發者文件的釋出說明頁，那一頁逐日列，今天最上面三條分別標 9 月 3 日、9 月 2 日與 9 月 1 日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "剩下幾家的情況：Meta 的 AI 部落格今天讀得到，列表上最新的文章標在 7 月，但沒有 RSS，rss 與 feed 兩個路徑都是 404；Microsoft 的官方新聞室有一個 AI 主題頁，頁面上就掛著一個標示為訂閱 RSS 的連結，指到官方 feed；Mistral 的新聞 RSS 今天 86 筆；DeepSeek 把模型公告放在官方 API 文件底下的 news 區，沒有 RSS，試出來的 rss.xml 回的是一頁文件而不是 feed；Qwen 的官方部落格是前端渲染、程式讀不到內容，改追它在 Hugging Face 的官方帳號最實際；Hugging Face 自己的部落格有 RSS，今天 862 筆。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這九家 2026 年到目前為止各發了什麼，站上已經按官方公告日整理成一條時間軸："
+            },
+            {
+              "type": "link",
+              "text": "2026 年 AI 模型大事記：1 月到 9 月 15 日的官方發布時間軸",
+              "url": "https://mokaair.com/zh-TW/life/ai-model-release-timeline-2026"
+            },
+            {
+              "type": "text",
+              "text": "；想先知道這些名字分別是什麼東西、誰做什麼用的，可以看"
+            },
+            {
+              "type": "link",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "今天確認可用的 10 個官方 RSS 網址，複製貼進任何閱讀器",
+          "code": "# 廠商官方新聞\nhttps://openai.com/news/rss.xml\nhttps://deepmind.google/blog/rss.xml\nhttps://news.microsoft.com/source/feed/\nhttps://mistral.ai/news/rss\nhttps://huggingface.co/blog/feed.xml\n\n# 官方釋出說明（release notes）\nhttps://platform.claude.com/docs/en/release-notes/feed.xml\n\n# 論文\nhttps://rss.arxiv.org/rss/cs.CL\nhttps://rss.arxiv.org/rss/cs.AI\n\n# 標準與台灣官方\nhttps://genai.owasp.org/feed/\nhttps://www.nstc.gov.tw/nstc/rss/newsdata"
+        },
+        {
+          "type": "heading",
+          "text": "規格寫在別的地方：模型卡、system card 與釋出說明",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新聞稿講的是故事，規格寫在另外三種頁面上，而且這三種頁面幾乎不會被轉述，所以自己去看反而最省時間。第一種是模型卡。Hugging Face 的官方文件講得很白：模型卡就是模型倉庫裡的 README.md，是一個帶有 YAML 中繼資料的 Markdown 檔，應該寫出這個模型是什麼、預期用途與限制（含偏誤與倫理考量）、訓練參數與實驗資訊、用了哪些資料集，以及評測結果。授權欄也在這裡，這是判斷一個開放權重模型能不能商用的地方。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二種是 system card。它比模型卡更著重安全評估與已知風險，通常由模型的發布者自己出。以 OpenAI 為例，它把 system card 當成一般公告發布，所以官方新聞 RSS 裡直接找得到標題結尾是 System Card 的條目，連結指向官方網域上的那一頁；就算那一頁本身打不開，RSS 至少會告訴你有這份文件、哪一天發的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三種是釋出說明（release notes）。它最枯燥，也最準：功能哪天上線、參數改了什麼、哪個模型退役，都會逐條逐日列。Claude 平台的釋出說明頁有官方 RSS，今天讀到 138 筆，最新一條標的是 9 月 10 日；Gemini API 的釋出說明頁按日期由新到舊列；Grok 的開發者文件也有一頁 Release Notes；DeepSeek 則是把這一層跟新聞合在一起，模型的釋出、改版與退役都寫在官方 API 文件底下的 news 區。這一層看起來瑣碎，但退役公告只會出現在這裡，一個模型什麼時候不能用了，新聞稿通常不會再寫一次。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "釋出說明、模型卡與法規原文的官方入口（2026-09-15 當天都確認可開）",
+          "code": "# 官方釋出說明\nhttps://platform.claude.com/docs/en/release-notes/overview\nhttps://ai.google.dev/gemini-api/docs/changelog\nhttps://docs.x.ai/developers/release-notes\nhttps://api-docs.deepseek.com/news/\n\n# 模型卡（README.md 就是模型卡）\nhttps://huggingface.co/docs/hub/model-cards\nhttps://huggingface.co/Qwen                        # 官方帳號的模型列表\nhttps://huggingface.co/Qwen/Qwen3.8-2.4T-A95B/raw/main/README.md\n\n# 法規原文\nhttps://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai\nhttps://law.moj.gov.tw/"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型卡怎麼讀、授權欄那些字母代表什麼，站上有一篇專門寫這件事："
+            },
+            {
+              "type": "link",
+              "text": "Hugging Face 入門：找模型、看授權、下載",
+              "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+            },
+            {
+              "type": "text",
+              "text": "。模型卡與 system card 裡的評測數字要怎麼看才不會被誤導，另外一篇寫得比較細："
+            },
+            {
+              "type": "link",
+              "text": "模型跑分怎麼看：LMArena、SWE-bench 與三個陷阱",
+              "url": "https://mokaair.com/zh-TW/life/ai-benchmarks-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "論文、資安標準與台灣官方：剩下四類來源",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "論文看 arXiv。它的官方 RSS 網址是組出來的：把類別代碼接在固定前綴後面就好，自然語言處理是 cs.CL、人工智慧是 cs.AI，把 rss 換成 atom 就是 ATOM 版。說明頁還寫了兩件事：訂閱可以用加號串多個類別、上限 2000 筆，而且所有 feed 在每天美東標準時間午夜更新一次。要有心理準備的是量：今天 cs.CL 一天就有 323 筆、cs.AI 有 634 筆，這種量只適合掃標題，不適合逐篇讀。"
+        },
+        {
+          "type": "paragraph",
+          "text": "arXiv 也有官方的郵件訂閱，做法寫在它的說明頁上：寄一封純文字信給對應的檔案庫信箱，主旨寫 subscribe 加上你的名字，內文用 add 指定子類別。官方特別提醒信要用純 ASCII 文字寄，格式化信件會被系統忽略。這是本篇列到的第二個官方郵件訂閱入口，也是唯一一個學術來源的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資安標準看 OWASP 的生成式 AI 安全專案，官網有 RSS，首頁上也有官方電子報的訂閱區塊，原文寫的是「Join the Newsletter」。它的 LLM 風險清單是提示詞注入這類名詞的原始出處，被引用得很多，但引用的人常常改寫過，直接看原文比較準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "法規只看機關自己的頁面。歐盟那部法在執委會的官方頁上寫明是 Regulation (EU) 2024/1689，頁面本身就說明適用對象與風險分級的架構；台灣的法條原文去全國法規資料庫看，每一部法的頁面上方依序是法規名稱、修正日期與生效狀態，右邊還有沿革可以看歷次修正，判斷一條規定現在到底生效了沒有，靠的就是這三格。本篇只說這些頁面在哪裡、怎麼看，不對任何條文下結論；真的牽涉到自己的案子，要問專業人士。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣官方追兩個部會就夠。數位發展部的新聞發布頁今天就掛著當天 9 月 15 日的稿，但官網沒有 RSS，幾個常見路徑今天試出來都是 404，只能自己開頁面看。國家科學及技術委員會相反，它的網站上同時有 RSS 與電子報兩個入口，新聞資料的官方 feed 今天讀到 30 筆，主選單的科技發展底下還單獨開了一個「人工智慧基本法」專區，跟台灣立法有關的東西會出現在那裡。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方公告裡的專有名詞如果卡住，可以先翻"
+            },
+            {
+              "type": "link",
+              "text": "AI 名詞速查：50 個常見詞彙一次搞懂",
+              "url": "https://mokaair.com/zh-TW/life/ai-glossary-50-terms"
+            },
+            {
+              "type": "text",
+              "text": "；官方自己也會把話講得比實際能力漂亮，這部分的落差整理在"
+            },
+            {
+              "type": "link",
+              "text": "AI 能與不能：2026 年的誠實盤點",
+              "url": "https://mokaair.com/zh-TW/life/ai-hype-vs-reality-2026"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "一週 30 分鐘：固定流程，不要每天追",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每天追 AI 新聞是件沒有終點的事，前面算過，光是 arXiv 兩個類別今天就有近千筆。比較能維持的是一週一次、固定 30 分鐘的流程：先掃、再選、再查、最後留下一行自己的筆記。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "掃標題（10 分鐘）：打開閱讀器，把那 10 個官方 feed 的新標題掃過一遍，只看標題與日期，先不要點進去。",
+            "讀原文（10 分鐘）：從掃到的東西裡挑 3 則跟你自己真的有關的，開官方那一頁讀完，不看任何轉述。",
+            "查規格（5 分鐘）：挑到的東西如果牽涉到你會用的模型，去對應的模型卡、system card 或釋出說明上核對一次規格與日期。",
+            "記一行（5 分鐘）：每則寫一行，內容固定三格：日期、官方網域、對我有什麼影響。下週再看就知道哪些後來真的發生了。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "這套流程的重點不是資訊量，而是每一格都能追回到一個官方網址。沒有官方網址可以填的那一則，就先放著不要記；十次裡大概有六七次，一週後它自己會消失。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "一週 30 分鐘的檢查表，可以直接抄進筆記軟體",
+          "code": "本週 AI 新聞複查（每週固定一次，30 分鐘）\n\n[ ] 10 分鐘  掃 10 個官方 feed 的新標題，只看標題與日期\n[ ] 10 分鐘  挑 3 則跟自己有關的，開官方原頁讀完\n[ ]  5 分鐘  對規格：模型卡 / system card / 釋出說明，抄下日期\n[ ]  5 分鐘  每則寫一行：日期 | 官方網域 | 對我的影響\n\n每一則都要能填的三格（填不出來就先不要記）：\n  發布日期：\n  官方網址：\n  原文那一句："
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-sources-to-follow/diagram-1.svg",
+          "alt": "一週 30 分鐘追 AI 新聞的四步流程圖，四個步驟依序是掃標題、讀原文、查規格、記一行，下方是判斷一手來源的三個問題",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右照四個步驟跑，每格上面是分鐘數、下面是這一步要動的來源；底下那排是每一則都要問的三個問題。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "來源",
+            "網址",
+            "看什麼",
+            "更新方式"
+          ],
+          "rows": [
+            [
+              "OpenAI 官方新聞",
+              "openai.com/news",
+              "模型公告與 system card",
+              "官方 RSS"
+            ],
+            [
+              "Anthropic 官方新聞",
+              "anthropic.com/news",
+              "Claude 模型公告與政策說明",
+              "官網無 RSS，自己開頁面"
+            ],
+            [
+              "Google DeepMind 部落格",
+              "deepmind.google/blog",
+              "研究成果與 Gemini 公告",
+              "官方 RSS，頁尾有電子報"
+            ],
+            [
+              "Meta AI 部落格",
+              "ai.meta.com/blog",
+              "Meta 自家模型公告",
+              "官網無 RSS，自己開頁面"
+            ],
+            [
+              "Microsoft 官方新聞室 AI 主題",
+              "news.microsoft.com/source/topics/ai",
+              "產品整合與合作公告",
+              "官方 RSS"
+            ],
+            [
+              "Mistral AI 新聞",
+              "mistral.ai/news",
+              "模型與產品公告",
+              "官方 RSS"
+            ],
+            [
+              "DeepSeek 官方釋出說明",
+              "api-docs.deepseek.com/news",
+              "模型釋出、改版與退役",
+              "官網無 RSS，自己開頁面"
+            ],
+            [
+              "Qwen 官方帳號（Hugging Face）",
+              "huggingface.co/Qwen",
+              "權重、授權與規格原文",
+              "官網無 RSS，自己開頁面"
+            ],
+            [
+              "Hugging Face 部落格",
+              "huggingface.co/blog",
+              "開放模型與技術文章",
+              "官方 RSS"
+            ],
+            [
+              "Claude 平台釋出說明",
+              "platform.claude.com/docs/en/release-notes",
+              "API、SDK 與主控台的逐日改動",
+              "官方 RSS"
+            ],
+            [
+              "arXiv cs.CL 與 cs.AI",
+              "rss.arxiv.org/rss/cs.CL",
+              "當天新論文的標題與摘要",
+              "官方 RSS，另有官方郵件訂閱"
+            ],
+            [
+              "OWASP 生成式 AI 安全專案",
+              "genai.owasp.org",
+              "LLM 風險清單與資安指引",
+              "官方 RSS，首頁有電子報"
+            ],
+            [
+              "歐盟執委會 AI Act 頁",
+              "digital-strategy.ec.europa.eu",
+              "歐盟法規架構與適用對象",
+              "官網無 RSS，自己開頁面"
+            ],
+            [
+              "數位發展部新聞發布",
+              "moda.gov.tw/press/press-releases",
+              "台灣政策、公告與新聞稿",
+              "官網無 RSS，自己開頁面"
+            ],
+            [
+              "國科會新聞資料",
+              "nstc.gov.tw 動態資訊的新聞資料",
+              "台灣研發政策與人工智慧基本法",
+              "官方 RSS，另有官方電子報"
+            ]
+          ],
+          "caption": "網址與更新方式查證於 2026 年 9 月 15 日，每一筆當天都實際連過；官網沒有的就寫沒有。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "官網打不開，不等於消息是假的，也不等於它是真的",
+          "text": "查證這篇時有三個官網讀不到：OpenAI 的網站與說明中心回 HTTP 403、Perplexity 的網站回 403、歐盟法規資料庫 EUR-Lex 沒有回正常內容。遇到這種情況，正確的做法是換同一家的其他官方入口，例如 OpenAI 的官方新聞 RSS、Grok 的開發者文件，或歐盟執委會自己的 AI Act 頁面，而不是改去看轉述。反過來說，一則消息在官網上找不到任何對應頁面，就先當成還沒確認，不要因為它被很多人轉發就當真。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 官方新聞 RSS（今天讀到 1,193 筆，最新一筆標 2026-09-14；標題含 System Card 的條目即官方 system card 公告）",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 官方新聞頁（列表卡片最新標 Sep 10, 2026；rss.xml、news/rss.xml、feed.xml 三個路徑今天都回 404）",
+          "url": "https://www.anthropic.com/news",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 平台釋出說明總覽（頁上有 Subscribe，官方 RSS 在同目錄的 feed.xml，今天 138 筆，最新一條標 September 10, 2026）",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google DeepMind 部落格（官方 RSS 在 blog/rss.xml，今天 100 筆，最新一筆標 08 Sep 2026；頁尾訂閱表單原文 Sign up for updates on our latest innovations）",
+          "url": "https://deepmind.google/blog/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini API 釋出說明（逐日列出，今天最上面三條標 September 3、September 2 與 September 1, 2026）",
+          "url": "https://ai.google.dev/gemini-api/docs/changelog",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta AI 部落格（今天可讀，列表最新文章標 July 9, 2026；blog/rss 與 blog/feed 今天都回 404）",
+          "url": "https://ai.meta.com/blog/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Microsoft 官方新聞室 AI 主題頁（頁上的訂閱圖示連到官方 feed，標示 Subscribe to RSS）",
+          "url": "https://news.microsoft.com/source/topics/ai/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Mistral AI 新聞頁（官方 RSS 在 news/rss，今天 86 筆，最新一筆標 10 Sep 2026）",
+          "url": "https://mistral.ai/news/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "DeepSeek 官方 API 文件的 news 區（模型釋出、改版與退役公告；news/rss.xml 今天回的是文件頁而非 feed）",
+          "url": "https://api-docs.deepseek.com/news/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Qwen 在 Hugging Face 的官方帳號（官方模型卡與權重；qwen.ai 的部落格為前端渲染，程式端讀不到文章內容）",
+          "url": "https://huggingface.co/Qwen",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 部落格（官方 RSS 在 blog/feed.xml，今天 862 筆）",
+          "url": "https://huggingface.co/blog",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Hugging Face 官方文件：Model Cards（原文 You can find a model card as the README.md file in any model repo，並列出模型卡應寫的五類內容）",
+          "url": "https://huggingface.co/docs/hub/model-cards",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "SpaceXAI（xAI）開發者文件的 Release Notes 頁（Grok 模型上線與 API 變更；x.ai 主站今天對本環境回 403）",
+          "url": "https://docs.x.ai/developers/release-notes",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "arXiv 官方說明：RSS news feeds（feed 網址組法、加號串多類別上限 2000 筆、每天美東標準時間午夜更新）",
+          "url": "https://info.arxiv.org/help/rss.html",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "arXiv 官方說明：Email subscriptions for new papers（純 ASCII 文字信、主旨 subscribe 加姓名、內文用 add 指定子類別）",
+          "url": "https://info.arxiv.org/help/subscribe.html",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OWASP 生成式 AI 安全專案官網（官方 RSS 在 /feed/，首頁電子報區塊原文 Join the Newsletter）",
+          "url": "https://genai.owasp.org/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "歐盟執委會 AI Act 官方頁（原文寫明 Regulation (EU) 2024/1689，說明風險分級架構；EUR-Lex 今天未回正常內容）",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "全國法規資料庫（法規頁面依序列出法規名稱、修正日期、生效狀態，並提供沿革）",
+          "url": "https://law.moj.gov.tw/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "數位發展部公告訊息的新聞發布頁（今天列表最上方即 2026-09-15 當天的新聞稿；/rss 等常見路徑今天都回 404，官網無 RSS 與電子報入口）",
+          "url": "https://moda.gov.tw/press/press-releases/372",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "國家科學及技術委員會動態資訊的新聞資料頁（官方 RSS 為 /nstc/rss/newsdata，今天 30 筆；網站主選單同時有 RSS 與電子報入口，科技發展底下另有人工智慧基本法專區）",
+          "url": "https://www.nstc.gov.tw/folksonomy/list/9aa56881-8df0-4eb6-a5a7-32a2f72826ff",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

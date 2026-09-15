@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 客戶端、MCP 與四類實用伺服器 / AI clients, MCP and four kinds of servers</title>
+  <desc id="desc">左邊列出會接 MCP 的 AI 客戶端：Claude 與 Claude 桌面版（連接器與桌面擴充功能）、Claude Code、ChatGPT Business 與 Enterprise 及 Edu（beta）、Gemini CLI、Cursor 與 VS Code。中間是 MCP，同一套介面，協定版本 2026-07-28。右邊是四類伺服器：檔案的 filesystem 在本機執行，是官方參考伺服器，讀寫你指定的資料夾，由 MCP 指導小組維護；Google 的 Gmail、行事曆與雲端硬碟走 Claude 與 ChatGPT 的官方連接器，Google 自己的官方遠端伺服器屬於開發者預覽；Notion 可以搜尋、讀取、建立與更新內容，由 Notion 官方代管並走 OAuth 授權；瀏覽器類可以開網頁、填表單與量效能，有 Microsoft 的 Playwright MCP 與 Chrome DevTools 團隊的 Chrome DevTools MCP。底下是接之前先確認的四件事：只接你信任的伺服器、唯讀優先、把伺服器回傳的內容當成資料而不是指令、金鑰不要貼進聊天視窗。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">AI 客戶端、MCP 與四類實用伺服器</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">AI clients, MCP and four kinds of servers</text>
+
+  <rect x="50" y="145" width="340" height="400" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="220" y="188" font-size="20" font-weight="bold" fill="#2F6F9F" text-anchor="middle">AI 客戶端</text>
+  <text x="80" y="232" font-size="17" fill="#102A2B">Claude、Claude 桌面版</text>
+  <text x="80" y="262" font-size="15" fill="#5C6B6B">（連接器與桌面擴充功能）</text>
+  <text x="80" y="302" font-size="17" fill="#102A2B">Claude Code</text>
+  <text x="80" y="342" font-size="17" fill="#102A2B">ChatGPT Business、</text>
+  <text x="80" y="372" font-size="17" fill="#102A2B">Enterprise 與 Edu（beta）</text>
+  <text x="80" y="412" font-size="17" fill="#102A2B">Gemini CLI</text>
+  <text x="80" y="452" font-size="17" fill="#102A2B">Cursor、VS Code</text>
+  <text x="80" y="500" font-size="15" fill="#5C6B6B">名字各家不同，協定是同一套</text>
+
+  <line x1="394" y1="355" x2="432" y2="355" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="440" y="275" width="250" height="165" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="565" y="327" font-size="28" font-weight="bold" fill="#0D6B68" text-anchor="middle">MCP</text>
+  <text x="565" y="362" font-size="17" fill="#102A2B" text-anchor="middle">同一套介面</text>
+  <text x="565" y="392" font-size="15" fill="#5C6B6B" text-anchor="middle">協定版本</text>
+  <text x="565" y="414" font-size="15" fill="#5C6B6B" text-anchor="middle">2026-07-28</text>
+
+  <line x1="690" y1="355" x2="720" y2="355" stroke="#5C6B6B" stroke-width="4"/>
+  <line x1="720" y1="200" x2="720" y2="515" stroke="#5C6B6B" stroke-width="4"/>
+  <line x1="720" y1="200" x2="752" y2="200" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="720" y1="305" x2="752" y2="305" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="720" y1="410" x2="752" y2="410" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="720" y1="515" x2="752" y2="515" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="760" y="156" width="780" height="88" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="788" y="191" font-size="18" font-weight="bold" fill="#102A2B">檔案：filesystem（本機執行，官方參考伺服器）</text>
+  <text x="788" y="221" font-size="15" fill="#5C6B6B">讀寫你指定的資料夾；由 MCP 指導小組維護</text>
+
+  <rect x="760" y="261" width="780" height="88" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="788" y="296" font-size="18" font-weight="bold" fill="#102A2B">Google：Gmail、行事曆、雲端硬碟</text>
+  <text x="788" y="326" font-size="15" fill="#5C6B6B">走 Claude 或 ChatGPT 的官方連接器；Google 官方遠端伺服器屬開發者預覽</text>
+
+  <rect x="760" y="366" width="780" height="88" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="788" y="401" font-size="18" font-weight="bold" fill="#102A2B">Notion：搜尋、讀取、建立與更新內容</text>
+  <text x="788" y="431" font-size="15" fill="#5C6B6B">Notion 官方代管的遠端伺服器，走 OAuth 授權</text>
+
+  <rect x="760" y="471" width="780" height="88" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="788" y="506" font-size="18" font-weight="bold" fill="#102A2B">瀏覽器：開網頁、填表單、量效能</text>
+  <text x="788" y="536" font-size="15" fill="#5C6B6B">Playwright MCP（Microsoft）、Chrome DevTools MCP（Chrome DevTools 團隊）</text>
+
+  <rect x="50" y="598" width="1490" height="204" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="80" y="640" font-size="20" font-weight="bold" fill="#B8442D">接之前先確認四件事</text>
+  <text x="80" y="680" font-size="17" fill="#102A2B">一、只接你信任的伺服器：先看官方倉庫與官方說明頁的維護狀態與授權</text>
+  <text x="80" y="710" font-size="17" fill="#102A2B">二、唯讀優先：只開放真的要用的資料夾與工具，寫入動作保留逐次核准</text>
+  <text x="80" y="740" font-size="17" fill="#102A2B">三、伺服器回傳的內容當成資料，不是指令；會改東西的動作自己看過再同意</text>
+  <text x="80" y="770" font-size="17" fill="#102A2B">四、金鑰不貼進聊天視窗，也不寫死在設定檔；遠端伺服器盡量走 OAuth 授權</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

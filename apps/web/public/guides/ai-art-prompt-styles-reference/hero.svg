@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">風格樣本與提示詞 / Style swatches and a prompt</title>
+  <desc id="desc">一張插圖。左邊是一張白色樣本紙，上面排著六個抽象的風格色塊：暈染的圓形、規則的網點、方格像素、等距立方體、斜線排線，以及一道漸層光。一支箭頭從樣本紙指向右邊的白色提示詞卡片，卡片上有四行代表文字的圓角色條，其中幾條用不同顏色標出，代表被換掉的風格描述詞，最後一行結尾有一個游標。畫面下方寫著「把風格寫成描述詞」。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L12 6 L0 12 z" fill="#5C6B6B"/>
+    </marker>
+    <linearGradient id="glow" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#102A2B"/>
+      <stop offset="0.55" stop-color="#D97A2B"/>
+      <stop offset="1" stop-color="#F7F1E8"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="100" y="180" width="620" height="520" rx="30" fill="#FFFFFF" stroke="#102A2B" stroke-width="6"/>
+
+  <rect x="130" y="207" width="170" height="220" rx="16" fill="#E3F0EF"/>
+  <circle cx="190" cy="285" r="52" fill="#0D6B68" opacity="0.45"/>
+  <circle cx="243" cy="345" r="46" fill="#2F6F9F" opacity="0.4"/>
+
+  <rect x="325" y="207" width="170" height="220" rx="16" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+  <g fill="#D97A2B">
+    <circle cx="360" cy="245" r="11"/><circle cx="398" cy="245" r="11"/><circle cx="436" cy="245" r="11"/><circle cx="474" cy="245" r="11"/>
+    <circle cx="360" cy="288" r="11"/><circle cx="398" cy="288" r="11"/><circle cx="436" cy="288" r="11"/><circle cx="474" cy="288" r="11"/>
+    <circle cx="360" cy="331" r="11"/><circle cx="398" cy="331" r="11"/><circle cx="436" cy="331" r="11"/><circle cx="474" cy="331" r="11"/>
+    <circle cx="360" cy="374" r="11"/><circle cx="398" cy="374" r="11"/><circle cx="436" cy="374" r="11"/><circle cx="474" cy="374" r="11"/>
+  </g>
+
+  <rect x="520" y="207" width="170" height="220" rx="16" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
+  <g>
+    <rect x="545" y="232" width="40" height="40" fill="#2F6F9F"/>
+    <rect x="625" y="232" width="40" height="40" fill="#0D6B68"/>
+    <rect x="585" y="272" width="40" height="40" fill="#D97A2B"/>
+    <rect x="545" y="312" width="40" height="40" fill="#2E7D5B"/>
+    <rect x="625" y="312" width="40" height="40" fill="#2F6F9F"/>
+    <rect x="585" y="352" width="40" height="40" fill="#102A2B"/>
+  </g>
+
+  <rect x="130" y="452" width="170" height="220" rx="16" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="5"/>
+  <path d="M215 500 L282 540 L282 615 L215 655 L148 615 L148 540 Z" fill="#E4F0E9" stroke="#2E7D5B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M215 500 L282 540 L215 580 L148 540 Z" fill="#2E7D5B"/>
+  <path d="M215 580 L215 655" stroke="#2E7D5B" stroke-width="5"/>
+
+  <rect x="325" y="452" width="170" height="220" rx="16" fill="#FFFFFF" stroke="#102A2B" stroke-width="5"/>
+  <g stroke="#102A2B" stroke-width="6" stroke-linecap="round">
+    <line x1="350" y1="640" x2="440" y2="480"/>
+    <line x1="378" y1="645" x2="468" y2="485"/>
+    <line x1="406" y1="650" x2="470" y2="536"/>
+    <line x1="352" y1="580" x2="412" y2="475"/>
+    <line x1="434" y1="648" x2="470" y2="584"/>
+  </g>
+
+  <rect x="520" y="452" width="170" height="220" rx="16" fill="url(#glow)"/>
+
+  <line x1="740" y1="440" x2="792" y2="440" stroke="#5C6B6B" stroke-width="7" marker-end="url(#arrow)"/>
+
+  <rect x="800" y="260" width="700" height="360" rx="30" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <rect x="840" y="310" width="170" height="44" rx="14" fill="#E7E1D6"/>
+  <rect x="1030" y="310" width="230" height="44" rx="14" fill="#E7E1D6"/>
+  <rect x="1280" y="310" width="120" height="44" rx="14" fill="#E7E1D6"/>
+  <rect x="840" y="380" width="210" height="44" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="5"/>
+  <rect x="1070" y="380" width="160" height="44" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="5"/>
+  <rect x="840" y="450" width="150" height="44" rx="14" fill="#F6E2CE" stroke="#D97A2B" stroke-width="5"/>
+  <rect x="1010" y="450" width="190" height="44" rx="14" fill="#E7E1D6"/>
+  <rect x="840" y="520" width="180" height="44" rx="14" fill="#E4F0E9" stroke="#2E7D5B" stroke-width="5"/>
+  <rect x="1044" y="512" width="9" height="60" fill="#102A2B"/>
+
+  <text x="800" y="800" text-anchor="middle" font-size="56" font-weight="700" fill="#102A2B">把風格寫成描述詞</text>
+</svg>

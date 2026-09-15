@@ -1,0 +1,431 @@
+{
+  "slug": "ai-pdf-tools-summarize-translate",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "productivity",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI PDF 工具：摘要、翻譯、問答怎麼分工",
+      "description": "同樣一份 PDF，要摘要、要問答、要整份翻譯，該用的工具不一樣。這篇照 2026 年 9 月各家官網，整理 ChatGPT、Claude、Gemini、Gemini Notebook 與 Acrobat AI 助理的上傳上限與價格，Google 翻譯與 DeepL 的文件翻譯格式與大小限制，掃描檔為什麼常常失敗，各家把你的檔案拿去做什麼，以及四段可以直接貼的提示詞與一套回原文核對的自測法。",
+      "hero": {
+        "src": "/guides/ai-pdf-tools-summarize-translate/hero.jpg",
+        "alt": "抽象插圖：一疊文件頁面分出三條路徑，分別通向摘要卡片、雙語對話框與問號對話框，旁邊有一把鎖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "一份 PDF 交給 AI 之前，先決定你要的是哪一件事：讀懂它、換一種語言看它，還是它根本不能外傳。三種需求對應的工具不一樣，卡住你的通常不是模型聰不聰明，而是各家官網白紙黑字寫的上傳上限：檔案幾 MB、幾頁、一天幾次，以及掃描出來的 PDF 到底讀不讀得到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把 2026 年 9 月各家官方說明頁上的數字排在一起：ChatGPT、Claude、Gemini、Gemini Notebook 與 Adobe Acrobat 的 AI 助理各能吃多大的檔案，Google 翻譯與 DeepL 支援什麼格式與大小，圖片型 PDF 為什麼常常翻完還是原文，各家把檔案拿去做什麼，最後給四段提示詞與一套自測法。本站無法登入實測，以下只寫官方文件寫得出來的能力與限制。"
+        },
+        {
+          "type": "heading",
+          "text": "先分清楚你要做的是哪一件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「用 AI 處理 PDF」其實是四種不同的任務，選錯工具會在第一步就卡住，先照下面對一下自己的檔案："
+        },
+        {
+          "type": "list",
+          "items": [
+            "讀懂一兩份文件：用通用聊天機器人（ChatGPT、Claude、Gemini）最快。",
+            "同時對照很多份文件：要的是每句答案都附引用的工具，也就是改名為 Gemini Notebook 的 NotebookLM。",
+            "整份翻譯又要留住版面：合約、說明書、投影片要的是排版跟原檔一樣的譯文，這是 Google 翻譯與 DeepL 檔案翻譯的守備範圍。",
+            "檔案不能外傳：健檢報告、沒簽的合約、內部資料，該問的不是哪家 AI 聰明，而是能不能讓檔案不離開自己的電腦。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "摘要與問答：先看各家的上傳上限",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的檔案上傳 FAQ 把限制寫得很細。不分方案，單一檔案硬上限 512MB，文字與文件類檔案每個上限 200 萬個 token（試算表不受這條限制），CSV 或試算表約 50MB，圖片 20MB；儲存空間是每位使用者 25GB、每個組織 100GB。次數則寫一般使用者每 3 小時最多上傳 80 個檔案，免費使用者每天 3 個檔案；放進專案（Projects）的檔案另外算，免費 5 個、Go 與 Plus 25 個、Edu、Pro、Business 與 Enterprise 40 個。官方說明頁寫 ChatGPT Plus 每月 20 美元，目前不支援年繳。"
+        },
+        {
+          "type": "link",
+          "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-file-upload-analysis"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 的上傳說明頁列出支援 PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON 與 XLSX（XLSX 要先在帳號裡開啟程式碼執行與檔案建立）。對話裡上傳是單檔 500MB、每個對話最多 20 個檔案、PDF 最多 1000 頁；放進專案的檔案是單檔 30MB，數量不限但要塞得進上下文視窗。PDF 的讀法分兩段：100 頁以內連圖表等視覺元素一起分析，101 到 1000 頁只處理文字，超過 1000 頁直接跳出檔案太大的錯誤。價格是 Free 0 美元，Pro 年繳折算每月 17 美元（一次收 200 美元）、月繳 20 美元，Max 從每月 100 美元起。"
+        },
+        {
+          "type": "link",
+          "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+          "url": "https://mokaair.com/zh-TW/life/claude-file-analysis-pdf-excel"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 應用程式的官方說明頁寫，同一個提示裡最多放 10 個檔案，影片每個最多 2 GB，其他支援的檔案類型每個最多 100 MB；含檔案的對話另有滾動式的次數上限。遇到「你的上傳可能太大」時，官方建議換內容少一點的檔案，或升級 Google AI Pro 與 Ultra 取得 100 萬 token 的上下文視窗。Google AI 方案頁列的價格是免費 0 美元、AI Plus 每月 4.99 美元、AI Pro 每月 19.99 美元、AI Ultra 從每月 99.99 美元起（每月 199.99 美元那一檔標示是 AI Pro 的 20 倍用量）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NotebookLM 現在的官方名稱是 Gemini Notebook，說明頁寫每一則來源最多 50 萬字或上傳檔 200MB、沒有頁數上限，匯入失敗的三個常見原因是超過 50 萬字、超過 200MB，以及原始 PDF 有防拷貝保護。升級頁列的結構上限是：免費（Standard）每人 100 本筆記本、每本 50 則來源、每天 50 次對話、3 份語音摘要；AI Plus 每本 100 則來源；AI Pro 500 本、每本 300 則來源、每天 500 次對話；AI Ultra 每本 500 或 600 則來源。但官方另一頁寫，2026 年 9 月 2 日起改成依運算量計算的使用上限，額度每 5 小時回補一次直到每週上限，所以那些每天次數實際還剩多少，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "NotebookLM 入門：資料、筆記本與引用",
+          "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果檔案本來就在 Acrobat 裡，Adobe 的 AI 助理（AI Assistant）是最短的路，但條件也最硬。官方技術需求頁寫：檔案要小於 100 MB、最多 600 頁、PDF 不能有密碼保護或使用限制、不能是 PDF 檔案包（Portfolio）；提示詞要少於 500 個字元，選取的文字要少於 8000 個字元且必須在同一頁，AI 助理也不支援圖片與複雜的向量圖。用量政策頁寫，含 AI Assistant 的個人與團隊方案是每人每月 1,000 個 Request，免費與付費使用者都會先拿到有限次數的免費 Request 試用。最關鍵的一條給台灣讀者：官方列的支援檔案語言共 13 種，含英文、日文、韓文與十種歐洲語言，中文不在其中。加購價格以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "整份翻譯：Google 翻譯與 DeepL 的上限完全不同",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 翻譯的文件翻譯說明頁寫得很直接：檔案最多 10 MB，支援 .docx、.pdf、.pptx、.xlsx 四種格式，其中 PDF 必須 300 頁以內；小螢幕與行動裝置不提供這個功能，更大的文件官方指向 Cloud Translation API。它不用付費也不用挑方案，適合先弄懂一份外文說明書在講什麼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepL 則是把上限綁在方案上。官方格式頁那張表裡，免費的 DeepL 帳號這一欄是 Word、PowerPoint 與 PDF 每檔 5 MB、10 萬個字元，Excel、純文字與 HTML 標示為不提供，PNG 與 JPG 圖片 3 MB；Pro Starter 10 MB、100 萬字元，Pro Advanced 20 MB（開始支援 Excel），Pro Ultimate 100 MB。次數也看方案：每個 Pro 方案含固定的每月檔案翻譯數、用不完不累積到下個月，選多個目標語言時每種語言各扣一次。實際次數與價格以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你要的不是輸出一份譯文檔案，而是一邊看原文一邊看譯文、或守住整份專有名詞的譯法，整份機器翻譯就不是最好的工具：前者該用瀏覽器外掛，後者要的是帶著術語表來回校對的對話。"
+        },
+        {
+          "type": "link",
+          "text": "沉浸式翻譯怎麼設定：網頁、文件與內容校對",
+          "url": "https://mokaair.com/zh-TW/life/immersive-translate-guide"
+        },
+        {
+          "type": "link",
+          "text": "用 Claude 做中英日翻譯：語氣、專有名詞與術語表",
+          "url": "https://mokaair.com/zh-TW/life/claude-for-translation-zh-tw"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "免費層上限（官網）",
+            "官網寫它擅長什麼",
+            "資料怎麼處理（官網）"
+          ],
+          "rows": [
+            [
+              "ChatGPT",
+              "每天 3 個檔案；單檔 512MB、文件每檔 200 萬 token",
+              "綜合、轉換、擷取三類任務",
+              "個人服務可能用來訓練，可在資料控管關閉"
+            ],
+            [
+              "Claude",
+              "單檔 500MB、每個對話 20 個檔案、PDF 1000 頁",
+              "100 頁以內連圖表一起讀",
+              "同意才用於改進，審閱前先去連結"
+            ],
+            [
+              "Gemini",
+              "單一提示 10 個檔案；單檔 100 MB",
+              "文件、試算表、圖片、影片一起問",
+              "部分資料經人工審閱，活動預設留 18 個月"
+            ],
+            [
+              "Gemini Notebook",
+              "每人 100 本、每本 50 則來源、每則 50 萬字",
+              "多份來源的問答與引用",
+              "不會直接訓練基礎模型，除非送出意見回饋"
+            ],
+            [
+              "Acrobat AI 助理",
+              "有限次數的免費 Request；檔案 100 MB、600 頁",
+              "文件問答與摘要，不支援中文檔案",
+              "官方寫不用你的文件訓練模型，但在雲端處理"
+            ],
+            [
+              "Google 翻譯（文件）",
+              "10 MB；PDF 限 300 頁；四種格式",
+              "整份翻譯並保留原始排版",
+              "以官網為準"
+            ],
+            [
+              "DeepL（檔案翻譯）",
+              "Word、PPT、PDF 各 5 MB、10 萬字元",
+              "翻完保留原始格式、圖片與字型",
+              "官方寫 Pro 方案提供另一層安全性"
+            ]
+          ],
+          "caption": "各家官方說明頁的上限與說法，查證日 2026 年 9 月 15 日；價格與額度以官網為準。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-pdf-tools-summarize-translate/diagram-1.svg",
+          "alt": "決策樹：從「你要這份 PDF 做什麼」分成讀懂、對照多份、整份翻譯、檔案在 Acrobat 裡四條路，各自標出工具與官網上限",
+          "width": 1600,
+          "height": 900,
+          "caption": "從最上面的問題往下走，先選需求再選工具，最後對一下官網寫的上限；下方那條是四條路都會遇到的坑。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "掃描檔與圖片型 PDF：官方文件自己寫了會失敗",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份 PDF，裡面是可以選取的文字還是一張張圖片，幾乎決定了所有事。ChatGPT 的檔案上傳 FAQ 寫，只有 ChatGPT Enterprise 支援 PDF 的視覺檢索（Visual Retrieval），其他方案與其他文件格式都只做文字檢索，也就是把數位文字抽出來、圖片直接丟掉。Claude 的上傳說明頁也寫，非 PDF 的文件只擷取文字，裡面嵌的圖片讀不到。Google 翻譯的說明頁講得最白：圖片裡的文字與掃描的 PDF 頁面會出現在輸出檔案裡，但不會被翻譯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepL 把原因寫了出來：PDF 的檔案轉換依賴光學文字辨識（OCR），錯誤率本來就比較高。官方排除疑難頁建議掃描解析度用 300 DPI，並指出自訂字型與大尺寸圖片會影響品質、CAD 匯出的 PDF（例如樓層平面圖）不支援、有密碼保護的檔案無法翻譯；這份 PDF 若本來是從 Word 或 PowerPoint 匯出的，官方建議直接拿原始檔去翻。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以上傳之前先做這三件事，可以省掉大半的來回："
+        },
+        {
+          "type": "list",
+          "items": [
+            "在 PDF 閱讀器裡拖曳選一段文字：選得到就是文字型，選不到就是整頁圖片。",
+            "如果是圖片型，先找有沒有原始檔（Word、PowerPoint、原始網頁）；有的話一律拿原始檔去做。",
+            "只剩掃描檔時，先把掃描品質補起來再上傳，DeepL 官方建議的 300 DPI 是可以照抄的基準。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "link",
+          "text": "手機掃描檔案怎麼更清楚：光線、裁切、頁序與送出前檢查",
+          "url": "https://mokaair.com/zh-TW/life/phone-document-scanning-workflow"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "頁碼會對不上，數字要自己回去核",
+          "text": "Claude 的官方說明頁有一條很少人注意的提醒：要它看某一頁時，請用 PDF 閱讀器顯示的頁碼，不要用文件上印的頁碼，兩者常常差好幾頁（封面、目錄、羅馬數字編頁都會造成落差）。這條規則同樣適用於驗收：要 AI 在每句結論後面附上依據的頁碼，再把每個數字、日期與人名回原文對一次。對不上的地方不是你誤會，就是模型產生了幻覺。"
+        },
+        {
+          "type": "heading",
+          "text": "隱私：文件送到誰家、留多久",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上傳一份 PDF，等於把內容交給對方處理。各家官方頁的說法不一樣，值得看過再決定哪些檔案能上傳。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的說明頁寫，使用 ChatGPT 這類個人服務時「我們可能會使用你的內容來訓練模型」，要退出可在設定的資料控管（Data Controls）裡關掉「Improve the model for everyone」；商業版本寫明預設不拿輸入與輸出去訓練，暫時聊天（Temporary Chat）也不會進歷史紀錄或用於訓練。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的說明頁寫，當你同意用對話改進 Claude 時，資料會先與使用者 ID 去連結再進入審閱，無痕（incognito）對話即使開了模型改進也不會被使用；同一頁也建議不要輸入財務資訊、健康紀錄與密碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的 Gemini 應用程式隱私中心寫，人工審閱者會檢視一部分資料，並請使用者不要輸入不希望審閱者看到的機密資訊；活動紀錄自動刪除預設 18 個月，可改成 3 個月、36 個月或不自動刪除，經人工審閱的對話最多保留 3 年，暫時對話與關掉「保留活動」時的對話則只留 72 小時、不用於訓練模型。Gemini Notebook 的隱私頁另外寫，筆記本裡的內容不會直接訓練基礎 AI 模型，除非你送出意見回饋。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe 在 AI 助理的說明頁寫「Adobe 絕不會使用你的文件或資料來訓練 AI 模型」，但同一套文件的用量政策頁也寫明，Acrobat 的生成式 AI 功能會在雲端處理文件。DeepL 的說明中心則寫 Pro 方案提供另一層安全性。"
+        },
+        {
+          "type": "paragraph",
+          "text": "判斷標準不是哪一家比較安全，而是這份檔案能不能接受它離開你的電腦；答案是不能的時候，唯一乾淨的作法是在自己的電腦上跑模型。"
+        },
+        {
+          "type": "link",
+          "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
+          "url": "https://mokaair.com/zh-TW/life/open-webui-chat-interface"
+        },
+        {
+          "type": "heading",
+          "text": "四段提示詞，加一套自己驗收的方法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下面四段複製貼上就能用，換掉角括號裡的字即可。共同的設計是先限定只能用文件裡的內容、再要求標出頁碼、最後留一個「找不到」的出口，能把大部分的幻覺擋在你看到之前。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞一：帶頁碼的摘要",
+          "code": "你是我的文件助理。只根據我上傳的這份 PDF 回答，不要引入外部知識。\n請輸出：\n1. 五句話的總結，每一句後面用括號標出依據的頁碼。\n2. 這份文件在處理的問題，以及它主張的結論。\n3. 三個我讀完應該追問的問題。\n如果某一點在文件裡找不到依據，請直接寫「文件未提及」，不要推測。\n頁碼請用 PDF 閱讀器顯示的頁碼。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞二：把數字抓成表格",
+          "code": "只根據這份文件，把所有出現的數字整理成一張表，欄位如下：\n項目 | 數值 | 單位 | 期間或日期 | 出處頁碼\n規則：\n- 一個儲存格只放一個數字，不要合併。\n- 原文寫百分比就寫百分比，不要自己換算。\n- 文件裡沒寫單位或期間的，該欄填「未標示」。\n- 不要補上文件裡沒有的數字。\n表格做完後，另外列出你不確定是否讀對的三筆，並說明為什麼。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞三：比對兩個版本",
+          "code": "我上傳了同一份文件的兩個版本，舊版檔名是 <舊檔名>，新版是 <新檔名>。\n請逐條列出兩者的差異，每一條寫成：\n- 變動類型（新增／刪除／修改）\n- 舊版原文（含頁碼）\n- 新版原文（含頁碼）\n- 這個改動實際上會影響什麼\n先列出會影響金額、期限、責任歸屬的改動，其餘再列。\n只比對文字內容，排版與字型的差異不用寫。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞四：翻譯時守住術語",
+          "code": "請把這份文件翻成台灣用語的繁體中文。規則：\n1. 下列術語一律照這張表翻，不要換詞：\n   <原文術語 A> = <指定譯法 A>\n   <原文術語 B> = <指定譯法 B>\n2. 產品名、法條名、機構名保留原文，後面用括號附中文。\n3. 數字、日期、單位照抄，不要換算成其他單位或幣別。\n4. 遇到你不確定的專有名詞，保留原文並在譯文最後列成一張待確認清單。\n輸出格式：一段原文、一段譯文交錯，方便我逐段核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二段抓出來的表格可以直接倒進試算表接著算；第一段的帶頁碼摘要適合存進筆記工具，頁碼就是半年後回頭找原文的索引。"
+        },
+        {
+          "type": "link",
+          "text": "試算表 AI 自動化：Google 試算表 AI 函式與 Excel Copilot 怎麼分工",
+          "url": "https://mokaair.com/zh-TW/life/ai-spreadsheet-automation"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
+          "url": "https://mokaair.com/zh-TW/life/ai-note-taking-workflow"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後是自測法。官方文件寫得出上限，寫不出它讀你的檔案讀得準不準，拿一份你熟的文件去測："
+        },
+        {
+          "type": "list",
+          "items": [
+            "挑一份你完整讀過的 PDF，先寫下三個你知道答案的問題。",
+            "同一份檔案、同一組問題，在兩個工具上各問一次，要求每句附頁碼。",
+            "回原文核對：頁碼對不對、數字有沒有被四捨五入、有沒有把「不超過」讀成「至少」。",
+            "換一份掃描版再跑一次，就看得出哪一家讀得到圖片裡的字。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "link",
+          "text": "用 Claude 讀論文與長報告：摘要、提問與批判",
+          "url": "https://mokaair.com/zh-TW/life/claude-for-research-summaries"
+        }
+      ],
+      "sources": [
+        {
+          "title": "File Uploads FAQ（OpenAI 官方說明中心）",
+          "url": "https://help.openai.com/en/articles/8555545-file-uploads-faq",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "What is ChatGPT Plus?（OpenAI 官方說明中心）",
+          "url": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "How your data is used to improve model performance（OpenAI 官方說明中心）",
+          "url": "https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Upload files to Claude（Anthropic 官方說明中心）",
+          "url": "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "I would like to input sensitive data into my chats with Claude（Anthropic 官方說明中心）",
+          "url": "https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Pricing（Anthropic 官方方案與價格頁）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Upload & analyze files in Gemini Apps（Google 官方說明中心）",
+          "url": "https://support.google.com/gemini/answer/14903178",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini Apps Privacy Hub（Google 官方隱私說明）",
+          "url": "https://support.google.com/gemini/answer/13594961",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google AI plans（Gemini 官方訂閱方案頁）",
+          "url": "https://gemini.google/subscriptions/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Upgrade Gemini Notebook（Google 官方說明中心）",
+          "url": "https://support.google.com/gemininotebook/answer/16213268",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Frequently asked questions（Gemini Notebook 官方說明中心）",
+          "url": "https://support.google.com/gemininotebook/answer/16269187",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Manage your Gemini Notebook usage limits（Google 官方說明中心）",
+          "url": "https://support.google.com/gemininotebook/answer/17670842",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Privacy and Terms of Use in Gemini Notebook（Google 官方說明中心）",
+          "url": "https://support.google.com/gemininotebook/answer/17004255",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Adobe Acrobat AI Assistant Plus（Adobe 官方說明）",
+          "url": "https://helpx.adobe.com/acrobat/desktop/use-acrobat-ai/ai-assistant-plus-acrobat.html",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Generative AI technical requirements（Adobe 官方說明）",
+          "url": "https://helpx.adobe.com/acrobat/desktop/use-acrobat-ai/get-started-with-generative-ai/ai-tech-requirements.html",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Generative AI usage policy and limitations（Adobe 官方說明）",
+          "url": "https://helpx.adobe.com/acrobat/desktop/use-acrobat-ai/understand-usage-policies/ai-usage-policy-limitations.html",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Translate documents & websites（Google 翻譯官方說明中心）",
+          "url": "https://support.google.com/translate/answer/2534559",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "File formats（DeepL 官方說明中心）",
+          "url": "https://support.deepl.com/hc/en-us/articles/360020582359-File-formats",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "About file translation（DeepL 官方說明中心）",
+          "url": "https://support.deepl.com/hc/en-us/articles/360020582499-About-file-translation",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Troubleshooting: File translation（DeepL 官方說明中心）",
+          "url": "https://support.deepl.com/hc/en-us/articles/360018880579-Troubleshooting-File-translation",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

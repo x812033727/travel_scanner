@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">DeepSeek 的資料流向 / Where your DeepSeek data goes</title>
+  <desc id="desc">由左到右三段。左邊是你的裝置，隱私政策列出的四類資料是帳號資料（電子郵件、電話、密碼）、輸入內容（文字、語音、檔案、照片）、裝置與網路資料（型號、系統、IP 位址）、使用紀錄與 cookie。中間是 DeepSeek 伺服器：存放地寫在中華人民共和國境內，留存期間只寫提供服務所必要的期間、沒有寫天數，政策標示的更新日是 2026 年 2 月 10 日。右邊是政策與條款寫的三種用途：提供、維運與改善服務；訓練模型與最佳化技術，可用條款第 4.3 條的開關關閉；依法配合主管機關與執法。最下面一排是使用者按得到的三個動作：關掉訓練開關、刪除所有對話、註銷帳號。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#D97A2B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">DeepSeek 的資料流向</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Where your DeepSeek data goes</text>
+
+  <!-- A: your device -->
+  <rect x="50" y="140" width="400" height="460" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="250" y="186" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">你的裝置</text>
+  <text x="250" y="214" font-size="16" fill="#5C6B6B" text-anchor="middle">手機 App 或瀏覽器</text>
+
+  <rect x="75" y="238" width="350" height="74" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="250" y="268" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">帳號資料</text>
+  <text x="250" y="293" font-size="15" fill="#5C6B6B" text-anchor="middle">電子郵件、電話、密碼</text>
+
+  <rect x="75" y="320" width="350" height="74" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="250" y="350" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">輸入內容</text>
+  <text x="250" y="375" font-size="15" fill="#5C6B6B" text-anchor="middle">文字、語音、檔案、照片</text>
+
+  <rect x="75" y="402" width="350" height="74" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="250" y="432" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">裝置與網路資料</text>
+  <text x="250" y="457" font-size="15" fill="#5C6B6B" text-anchor="middle">型號、系統、IP 位址</text>
+
+  <rect x="75" y="484" width="350" height="74" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="3"/>
+  <text x="250" y="514" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">使用紀錄與 cookie</text>
+  <text x="250" y="539" font-size="15" fill="#5C6B6B" text-anchor="middle">用了哪些功能與動作</text>
+
+  <line x1="460" y1="370" x2="542" y2="370" stroke="#D97A2B" stroke-width="5" marker-end="url(#arrow)"/>
+
+  <!-- B: the server -->
+  <rect x="560" y="140" width="430" height="460" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="775" y="192" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">DeepSeek 伺服器</text>
+
+  <rect x="585" y="222" width="380" height="118" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="775" y="254" font-size="16" fill="#5C6B6B" text-anchor="middle">存放地（Where We Store）</text>
+  <text x="775" y="288" font-size="21" font-weight="700" fill="#0D6B68" text-anchor="middle">中華人民共和國境內</text>
+  <text x="775" y="318" font-size="15" fill="#5C6B6B" text-anchor="middle">中英文版寫的是同一件事</text>
+
+  <rect x="585" y="360" width="380" height="112" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="775" y="392" font-size="16" fill="#5C6B6B" text-anchor="middle">留存期間（How Long）</text>
+  <text x="775" y="422" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">提供服務所必要的期間</text>
+  <text x="775" y="450" font-size="15" fill="#5C6B6B" text-anchor="middle">沒有寫天數，帳號在就留</text>
+
+  <rect x="585" y="492" width="380" height="88" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="775" y="524" font-size="16" fill="#5C6B6B" text-anchor="middle">政策標示的更新日</text>
+  <text x="775" y="554" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">2026 年 2 月 10 日</text>
+
+  <line x1="1000" y1="370" x2="1082" y2="370" stroke="#D97A2B" stroke-width="5" marker-end="url(#arrow)"/>
+
+  <!-- C: the uses -->
+  <rect x="1100" y="140" width="450" height="460" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1325" y="192" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">政策與條款寫的用途</text>
+
+  <rect x="1125" y="215" width="400" height="110" rx="14" fill="#F7F1E8" stroke="#D97A2B" stroke-width="3"/>
+  <text x="1325" y="257" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">提供、維運與改善服務</text>
+  <text x="1325" y="290" font-size="15" fill="#5C6B6B" text-anchor="middle">隱私政策 How We Use 一節</text>
+
+  <rect x="1125" y="340" width="400" height="110" rx="14" fill="#F7F1E8" stroke="#D97A2B" stroke-width="3"/>
+  <text x="1325" y="382" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">訓練模型與最佳化技術</text>
+  <text x="1325" y="415" font-size="15" fill="#5C6B6B" text-anchor="middle">條款第 4.3 條的開關可以關掉</text>
+
+  <rect x="1125" y="465" width="400" height="110" rx="14" fill="#F7F1E8" stroke="#D97A2B" stroke-width="3"/>
+  <text x="1325" y="507" font-size="18" font-weight="700" fill="#102A2B" text-anchor="middle">依法配合主管機關與執法</text>
+  <text x="1325" y="540" font-size="15" fill="#5C6B6B" text-anchor="middle">條款與隱私政策都寫明</text>
+
+  <!-- bottom: what the reader can do -->
+  <text x="60" y="656" font-size="20" font-weight="700" fill="#102A2B">你按得到的三個動作</text>
+
+  <rect x="50" y="676" width="480" height="108" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="290" y="718" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">關掉訓練開關</text>
+  <text x="290" y="750" font-size="15" fill="#5C6B6B" text-anchor="middle">Improve the model for everyone</text>
+
+  <rect x="560" y="676" width="480" height="108" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="718" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">刪除所有對話</text>
+  <text x="800" y="750" font-size="15" fill="#5C6B6B" text-anchor="middle">頭像帳號區域選刪除所有對話</text>
+
+  <rect x="1070" y="676" width="480" height="108" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1310" y="718" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">註銷帳號</text>
+  <text x="1310" y="750" font-size="15" fill="#5C6B6B" text-anchor="middle">刪了無法重新啟用，內容拿不回來</text>
+
+  <text x="60" y="828" font-size="16" fill="#5C6B6B">圖上只整理官方文件寫的事；介面名稱與位置以官網為準。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

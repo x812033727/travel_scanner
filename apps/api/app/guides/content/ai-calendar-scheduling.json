@@ -1,0 +1,410 @@
+{
+  "slug": "ai-calendar-scheduling",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "productivity",
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 排程與行事曆助手：找時間、排工作區塊與定時提醒",
+      "description": "AI 排程助手實際能做的是四件事：找出大家都有空的時段、把工作排成行事曆上的區塊、用一句話建立活動、定時跑一次任務把摘要推給你。這篇把 Google 日曆、Gmail、Outlook 的 Copilot、Gemini App、ChatGPT 排程任務、Reclaim 與 Motion 放在同一張表上，寫清楚各要哪個方案、免費層到哪裡、支援哪些行事曆，另附週一排程流程與提示詞。",
+      "hero": {
+        "src": "/guides/ai-calendar-scheduling/hero.jpg",
+        "alt": "週曆方格裡放著幾個彩色時間區塊，右邊兩個區塊沿著虛線落進一個空格，旁邊是圓形時鐘與幾個圓點",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "行事曆上的 AI 不會替你決定該做什麼，它省下的是比對誰有空、把待辦拖進日曆、記得在對的時間提醒自己。官網現在寫得出來的能力只有四類：找時間、自動排工作區塊、用自然語言建活動、定時提醒與排程任務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇按四類逐一寫：功能在哪個產品、要哪個方案、免費層到哪裡、支援哪些行事曆，全部以 2026 年 9 月 15 日官網當天頁面為準，並附一套週一排程流程與兩段提示詞。本環境無法登入實測，只照官方說明頁寫。"
+        },
+        {
+          "type": "heading",
+          "text": "AI 在行事曆上能做的四件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先把「AI 行事曆」這個說法拆開。四件事由不同產品負責：找時間的工具不會幫你排工作，自動排區塊的也不會替你開預約頁。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "找時間：在幾個人的行事曆之間找出共同空檔，像 Google 日曆的建議時段與 Gmail 的協助安排。",
+            "自動排工作區塊：把任務與專注時間變成會自己挪動的事件，像 Reclaim.ai 與 Motion。",
+            "用自然語言建活動：說一句「下週三下午三點看牙醫」就寫進行事曆，像 Gemini App。",
+            "定時提醒與排程任務：時間到了 AI 自己跑一次再把結果送給你。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "找時間：建議時段、協助安排與 Outlook 的 Copilot",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 日曆的「建議時段」要符合資格的 Google Workspace 方案才會出現：建立活動、加入邀請對象後點「建議時段」，改期時點「編輯活動」也有。說明頁列了四種看不到它的情況：用行動裝置的日曆 App、活動超過 8 小時、與會者太多、日期已過去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gmail 的「協助安排」是寫信時用的，需要符合資格的 Google Workspace 或 Google AI 方案。點下去，Gemini 會依雙方空檔插進一張時段卡片，預設 4 個時段、最多 20 位邀請對象。綠色代表所有人都有空，琥珀色代表至少一人有衝突。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Outlook 分兩層：沒有 Microsoft Copilot 附加授權的公司或學校帳戶，也能用 Copilot 聊天請它安排會議，官方常見問題頁寫明最多加到另外兩個人，且只在新版 Windows Outlook 或網頁版上有。它另有一個容易漏掉的開關：建立活動時打開「如果發生衝突，讓 Copilot 為我改期」，但只處理個人行程與一對一會議，加入第二位以上與會者、活動超過 5 小時或已自動改期 5 次就不動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要讓別人直接訂你的時間，靠的是 Google 日曆的預約時段。個人帳戶或 Business Starter 可以建一個預約頁；要建多個、自動寄提醒或加最多 20 位共同主持人，需要 Google One Premium、AI Pro 或 Business Standard 以上方案。"
+        },
+        {
+          "type": "link",
+          "text": "家庭共用行事曆怎麼用：讓誰出門、誰接手與時間異動都看得懂",
+          "url": "https://mokaair.com/zh-TW/life/shared-household-calendar"
+        },
+        {
+          "type": "link",
+          "text": "小團隊使用 Workspace AI：帳號與管理",
+          "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+        },
+        {
+          "type": "heading",
+          "text": "自動排工作區塊：Reclaim 與 Motion，Clockwise 已經收攤",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先講一件會影響選擇的事：Clockwise 已經結束。官網首頁放的是收攤公告，寫著團隊加入 Salesforce、產品自 2026 年 3 月 27 日起不再提供，它建立的事件會從行事曆移除，並建議轉用 Reclaim。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Reclaim.ai 官網頁首與關於頁現在都寫著「Reclaim.ai from Dropbox」，說法是它現在是 Dropbox 的一部分。它跑在 Google 日曆或 Outlook 行事曆上，把專注時間、習慣與任務排進空檔。免費的 Lite 給 5 個 AI 代理（Agent）、1 人團隊、1 週排程範圍、1 組行事曆同步、1 條預約連結；定價頁預設年繳，Starter 每席每月 10 美元、Business 15 美元、Enterprise 22 美元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Motion 把 AI 行事曆與專案管理放在同一個訂閱裡。定價頁預設年繳、標示省 33%：Pro AI 每席每月 19 美元、含 7,500 點 AI 額度；Business AI 29 美元、含 15,000 點。整合頁列的行事曆是 Google 日曆、Outlook 365 與 iCloud，月繳價以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Notion Calendar 不自動排工作，而是把多個行事曆與 Notion 資料庫的日期放進同一畫面。產品頁寫明它同步 Google 日曆、Outlook 與 Apple iCloud 的行事曆，下載寫免費取得；介面語言列了 12 種，中文不在其中。"
+        },
+        {
+          "type": "heading",
+          "text": "用一句話建活動，用排程任務定時提醒",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini App 可以建立、查詢、修改與取消行事曆活動，支援的行事曆除了 Google 日曆，還有 HONOR、OPPO、Samsung、TECNO 與 Xiaomi。要用 Google 日曆得先連結 Google Workspace 並開啟「保留活動記錄」。它做不到的事也寫在同一頁：不能替既有活動邀請與會者，也不能改地點與說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "實際用起來有幾個細節值得先知道。提示詞裡加上 @Google Calendar 可以指定用 Google 日曆，不特別說的話活動一律建在預設行事曆，次要與共用行事曆也可以指定。查詢的問法官方頁列了幾種：今天行事曆上有什麼、明天第一場會議是幾點、上次跟某人見面是什麼時候。建錯了可以在確認通知上點復原，或開啟回覆下方連結的活動自己改；但官方寫明有些動作不能復原，例如修改活動時已經寄給與會者的通知信，而在 Gemini Live 於背景執行的情況下建立的活動也無法復原。"
+        },
+        {
+          "type": "paragraph",
+          "text": "排程動作是另一回事：時間到了 Gemini 自己跑一次你寫好的提示詞再通知你，同時最多 10 個。官方寫明沒有 Google AI 方案時內容會提前幾小時準備好，有方案則在送達前一小時內準備。台灣官網標價是 Google AI Plus 每月 NT$165 元、AI Pro 每月 NT$650 元、AI Ultra 每月 NT$3,300 元起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的排程任務可以跑一次性或重複的工作，說明頁寫明同時啟用的任務數：免費與 Go 是 3 個、Plus 5 個、Business 與 Edu 10 個、Pro 與 Enterprise 15 個。免費帳戶只能排一次性或每天一次的任務，且只能選早上、下午、晚上這種彈性時段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "排程任務的通知要自己開：在設定的通知頁選推播、電子郵件或兩者都要，瀏覽器擋掉通知權限時 ChatGPT 會跳出提示要你允許，手機推播則要在支援的 App 裡建立任務並授權。另一種是事件觸發任務，由 Gmail、Slack 或 GitHub 的活動觸發，開放給 Plus、Pro、Business、Enterprise 與 Edu，免費與 Go 不能建立；Gmail 可以依寄件者或主旨過濾，Slack 則要把 @ChatGPT 加進每個受監控的頻道。官方也提醒，在專案裡建立的任務讀不到該專案上傳的檔案。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "三段可以直接貼的提示詞：建活動、找空檔、設排程任務",
+          "code": "【建活動｜Gemini App，指定行事曆】\n@Google Calendar 下週三下午三點，在信義區牙醫診所，建立一個 60 分鐘的「洗牙」活動，說明欄寫上要帶健保卡。\n\n【找空檔｜任何已連結行事曆的助理】\n列出我這週三到週五的空檔，只算上午九點到下午六點、連續 90 分鐘以上的，並標出哪幾段已經被會議切開。\n\n【設排程任務｜ChatGPT 排程任務或 Gemini 排程動作】\n每週一早上八點，整理我本週的行事曆與未完成待辦，列出三件必須完成的事、兩段可以放深度工作的空檔，以及需要我先確認的衝突。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-mobile-app-tips"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜排程與重複任務",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-scheduled-tasks"
+        },
+        {
+          "type": "heading",
+          "text": "週一早上：讓 AI 幫你排好一週",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把四類串成一套固定動作，週一早上大約十五分鐘跑完。重點不是讓 AI 決定優先順序，而是讓它把散落的待辦收成清單再放進空檔。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "收集：把這週要做的事集中到一個地方，Reclaim 與 Motion 都是從任務清單長出區塊的。",
+            "排區塊：請助理把清單放進空檔，或交給自動排程工具，先問出可用的連續時段。",
+            "處理衝突：排不進去的當場決定延後、縮短還是改期。",
+            "回顧：週五看一次哪些區塊真的被用掉、哪些每次都被吃掉，不做這步下週只會重複。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "週一早上的排程提示詞範本，貼進任何已連結行事曆的助理",
+          "code": "角色：你是我的排程助理。以下是我這週的待辦清單與行事曆摘要。\n待辦：<每行一件，標註預估時間與截止日>\n行事曆：<貼上本週已排定的活動，或請助理自行讀取>\n限制：工作時段為週一到週五上午九點到下午六點；每天至少留一段 90 分鐘不被打斷；週三下午不排會議。\n請輸出三件事：\n1. 建議時間表，每個項目寫出日期、起訖時間與理由。\n2. 排不進去的項目清單，各給一個處理選項（延後、縮短、改期某場會議）。\n3. 你不確定的地方，用問句列出來，不要自己假設。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-calendar-scheduling/diagram-1.svg",
+          "alt": "一週排程流程圖，從收集任務、AI 排區塊、衝突處理到回顧四個步驟，每步下方標出對應工具與官網寫明的上限",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看：上排是每一步要做的事，下排灰字是對應的工具與官網寫明的上限。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "每週回顧怎麼開始：整理承諾、刪減待辦，為下週留出空間",
+          "url": "https://mokaair.com/zh-TW/life/weekly-review-reset-routine"
+        },
+        {
+          "type": "link",
+          "text": "AI 週回顧與目標管理範本：固定輸入、固定輸出，還能讓它自動跑",
+          "url": "https://mokaair.com/zh-TW/life/ai-weekly-review-templates"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "做什麼",
+            "方案與價格",
+            "支援的行事曆"
+          ],
+          "rows": [
+            [
+              "Google 日曆建議時段",
+              "找共同空檔",
+              "需 Workspace",
+              "Google 日曆"
+            ],
+            [
+              "Gmail 協助安排",
+              "信裡插時段卡",
+              "需 Workspace 或 AI",
+              "Google 日曆"
+            ],
+            [
+              "Google 日曆預約時段",
+              "讓別人訂時間",
+              "個人帳戶一頁",
+              "Google 日曆"
+            ],
+            [
+              "Outlook 的 Copilot",
+              "排會議、自動改期",
+              "需公司帳戶",
+              "Outlook"
+            ],
+            [
+              "Gemini App",
+              "自然語言建活動",
+              "免費方案可用",
+              "Google 日曆等六家"
+            ],
+            [
+              "Gemini 排程動作",
+              "定時跑提示詞",
+              "最多 10 個",
+              "已連結的 Workspace"
+            ],
+            [
+              "ChatGPT 排程任務",
+              "定時提醒與摘要",
+              "免費 3 個、Plus 5 個",
+              "需連結 Google 日曆"
+            ],
+            [
+              "Reclaim.ai",
+              "自動排專注時間",
+              "Lite 免費，年繳 10 美元起",
+              "Google、Outlook"
+            ],
+            [
+              "Motion",
+              "AI 行事曆排任務",
+              "年繳每月 19 美元起",
+              "Google、Outlook"
+            ],
+            [
+              "Notion Calendar",
+              "多個行事曆同畫面",
+              "官網寫免費",
+              "Google、Outlook、iCloud"
+            ]
+          ],
+          "caption": "方案與價格以 2026 年 9 月 15 日各產品官網當天頁面為準，照官網標價未做換算。"
+        },
+        {
+          "type": "heading",
+          "text": "交出行事曆之前，先確認三件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "行事曆是密度很高的個人資料，你去哪裡、見了誰都寫在上面。第一件是連結本身，Gemini App 要連結 Google Workspace 並開著「保留活動記錄」才能存取，設定裡可以隨時中斷。第二件是模型訓練，OpenAI 的 Google 應用程式資料控管常見問題寫著，它不會用直接來自已連結 Google 應用程式的資料訓練通用模型，例外是送出意見回饋、自己複製貼上，以及已出現在回覆的內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三件是權限最小化：先在不重要的帳戶上試、只連真的需要的行事曆、把排程任務壓到最低。另外，只要助理會讀行事曆上的文字，活動標題與說明欄就是外部輸入，別人寄來的邀請可以在說明欄裡寫下針對 AI 的指令，也就是提示詞注入。先給讀取再考慮寫入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "排程任務跑出來的東西也要驗。官方寫明回應是提前準備好的，Gemini 沒有 Google AI 方案時會提前幾小時備好內容，所以摘要裡的時間與狀態不一定是你收到通知那一刻的樣子，臨時改期或新加的活動可能沒被算進去；把它當成提醒你去看行事曆的觸發點，不要當成結論。通知本身也分兩處：Gemini 在網頁版是把該排程動作的對話標成未讀，手機則是推播，依裝置設定可能出現在鎖定畫面；不想收了可以在設定裡暫停，暫停期間不會執行。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的分享任務連結是另一個要小心的地方。官方說明寫著，分享出去的是任務標題、指示、排程與原始時區的快照，不含建立者姓名、對話紀錄、先前的任務結果、已儲存的記憶、自訂指示、附加檔案或已連結應用程式的憑證，收到的人用的是自己的帳戶權限；但任務標題可能出現在連結預覽裡，任何能開啟連結的人都讀得到完整的任務指示，所以指示裡不要寫健康資訊、財務細節、密碼或帳號。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "自動改期會寄出更新通知，對方不會知道是 AI 改的",
+          "text": "Microsoft 官方常見問題寫明：Copilot 自動改期時，與會者收到的是一般的會議更新訊息，看起來就像你自己改了時間。重要的對外會議先不要打開自動改期，或事先告訴對方你開了這個功能。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 管理 Email：分類、摘要與草稿的工作流",
+          "url": "https://mokaair.com/zh-TW/life/ai-email-management"
+        },
+        {
+          "type": "link",
+          "text": "AI 會議記錄工具怎麼挑：Otter、Google Meet、Teams、Zoom 與 Notion",
+          "url": "https://mokaair.com/zh-TW/life/ai-meeting-notes-tools"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 日曆說明：Let Gemini in Google Calendar find times to meet（需符合資格的 Workspace 方案；行動版日曆 App、活動超過 8 小時、與會者太多、日期已過看不到建議）",
+          "url": "https://support.google.com/calendar/answer/16690875",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google 日曆說明：Suggest times to meet with Gemini in Gmail（需 Workspace 或 Google AI 方案；預設 4 個時段；一張卡片最多 20 位邀請對象；綠色與琥珀色時段）",
+          "url": "https://support.google.com/calendar/answer/16865189",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google 日曆說明：Compare premium features for appointment schedules（個人帳戶與 Business Starter 一個預約頁；多頁、提醒、收費、最多 20 位共同主持人需付費方案；Frontline 與 Essentials 不能建立）",
+          "url": "https://support.google.com/calendar/answer/16287038",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini Apps 說明：Create & manage your calendar events with Gemini Apps（支援的行事曆、需連結 Workspace 與保留活動記錄、不能加與會者或改地點說明）",
+          "url": "https://support.google.com/gemini/answer/15305236",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini Apps 說明：Schedule actions in Gemini Apps（最多 10 個啟用中的排程動作；有無 Google AI 方案的內容準備時間差異）",
+          "url": "https://support.google.com/gemini/answer/16316416",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini 訂閱方案（台灣）：免費、Google AI Plus 每月 NT$165 元、AI Pro 每月 NT$650 元、AI Ultra 每月 NT$3,300 元起",
+          "url": "https://gemini.google/tw/subscriptions/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Scheduled tasks in ChatGPT（任務上限 3、5、10、15；免費帳戶的彈性時段與每日一次限制；不支援語音與 GPTs）",
+          "url": "https://help.openai.com/en/articles/10291617-tasks-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：What is ChatGPT Plus?（每月 20 美元、按月計費）",
+          "url": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Google app data controls FAQ（不以已連結 Google 應用程式資料訓練通用模型的三項例外；中斷連結不會自動刪除對話與記憶）",
+          "url": "https://help.openai.com/en/articles/10408842-google-app-for-chatgpt-data-controls-faq",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Microsoft 支援：Schedule a meeting using Copilot（在 Outlook 用 Copilot 聊天排會議）",
+          "url": "https://support.microsoft.com/en-us/outlook/schedule-a-meeting-using-copilot",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Microsoft 支援：Frequently asked questions about Copilot in Outlook（聊天排會議最多加兩個人；聊天限公司或學校帳戶與新版 Windows Outlook 或網頁版）",
+          "url": "https://support.microsoft.com/en-us/office/frequently-asked-questions-about-copilot-in-outlook-07420c70-099e-4552-8522-7d426712917b",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Microsoft 支援：Automatically reschedule events with Copilot（可接受時段設定、不改期的情況、5 小時與 5 次上限、與會者收到的是一般更新訊息）",
+          "url": "https://support.microsoft.com/en-us/topic/automatically-reschedule-events-b07da559-387e-4b95-92eb-8c8f0be065a7",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Microsoft 365 Copilot 商務方案定價：Microsoft 365 Copilot Business 年繳原價每人每月 21 美元、現價 18 美元起",
+          "url": "https://www.microsoft.com/en-us/microsoft-365-copilot/business",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Reclaim.ai 定價頁：Lite 免費方案內容與 Starter、Business、Enterprise 的年繳與月繳價格",
+          "url": "https://reclaim.ai/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Reclaim.ai 關於頁：Reclaim.ai from Dropbox、現在是 Dropbox 的一部分",
+          "url": "https://reclaim.ai/about",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Reclaim.ai 首頁常見問題：可在 Google 日曆或 Outlook 行事曆帳戶上運作，並同步多個行事曆",
+          "url": "https://reclaim.ai/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Motion 定價頁：年繳 Pro AI 每席每月 19 美元、7,500 點額度；Business AI 29 美元、15,000 點",
+          "url": "https://www.usemotion.com/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Motion 整合頁：Google 日曆、Microsoft Outlook 365 與 iCloud 行事曆",
+          "url": "https://www.usemotion.com/features/integrations",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Clockwise 官網公告 Our Next Chapter：團隊加入 Salesforce，產品自 2026 年 3 月 27 日起不再提供，建議轉用 Reclaim",
+          "url": "https://getclockwise.com/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Notion Calendar 產品頁：同步 Google 日曆、Outlook 行事曆與 Apple iCloud 同步的行事曆；官網寫免費取得；介面支援 12 種語言",
+          "url": "https://www.notion.com/product/calendar",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

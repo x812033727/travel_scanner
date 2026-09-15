@@ -1,0 +1,364 @@
+{
+  "slug": "ai-for-social-media-content",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "daily"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 AI 做社群貼文：IG、Threads、FB 排程",
+      "description": "一週的 IG、Threads 與 Facebook 貼文可以拆成定主題、寫文案、做圖、排程、回顧五段，AI 只幫得上中間三段。這篇照 2026 年 9 月 15 日的官方頁面，整理 Meta Business Suite 能排哪些平台、20 分鐘到 29 天的範圍、跨發 Threads 的條件與 Buffer 免費層限制，附提示詞範本，並引 Meta 的 AI 標示規則與公平會薦證廣告規範原文。",
+      "hero": {
+        "src": "/guides/ai-for-social-media-content/hero.jpg",
+        "alt": "插圖：三個堆疊的對話框連到一張日曆卡片，日曆右邊是一張折線成效卡與一個綠色勾號徽章。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "社群貼文可以拆成五段：定主題、寫文案、做圖、排程、回顧。AI 真正省得下時間的是中間三段，定主題與發佈前的最後確認還是人的事。一次能排幾天、AI 生成的內容要不要標示是平台與主管機關的規則，照當天官方頁面走。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你把一週的 Instagram、Threads 與 Facebook 貼文排完：Meta Business Suite 對三個平台各能做到什麼、Buffer 免費層的限制、三段可以直接貼的提示詞，以及 Meta 的 AI 標示規則與公平交易委員會對薦證廣告的規範說明原文。本文照 2026 年 9 月 15 日的官方頁面寫，沒有實測。"
+        },
+        {
+          "type": "heading",
+          "text": "一、一週貼文的五段工作流",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把一週的貼文當成流水線比每天臨時想省力：錯了只改那一段，不必從頭來過。AI 插在第二段與第三段，第五段幫忙整理，第一段別交給它。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "定主題：從這個月要講的事與讀者常問的問題裡挑題目，各寫成一句話的重點。",
+            "寫文案：把那句重點交給模型產幾版草稿，自己挑一版再改。",
+            "做圖：先定尺寸、字級與品牌色，再用設計工具或 AI 圖片工具產圖。",
+            "排程：在 Meta Business Suite 或第三方工具設定平台與時間。",
+            "回顧：看成效面板，把表現好的題目留到下週。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-for-social-media-content/diagram-1.svg",
+          "alt": "一週貼文五段流程圖，標出每一段的工具、AI 做的事與人要確認的事。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左至右看：五段各自的工具寫在框裡，AI 只出現在中間三段，下排是人要確認的事與官方頁面寫的數字。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "二、主題與文案：提示詞怎麼寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型不知道你這個月要推什麼、哪些字不能寫。題目要自己定：把讀者反覆問的問題列出來，對照這個月要講的事，交集就是最該做的貼文。"
+        },
+        {
+          "type": "link",
+          "text": "社群內容怎麼安排：主題、互動與維護界線",
+          "url": "https://mokaair.com/zh-TW/life/social-media-planning"
+        },
+        {
+          "type": "link",
+          "text": "內容行銷怎麼排：讀者問題、素材與更新節奏",
+          "url": "https://mokaair.com/zh-TW/life/content-marketing-calendar"
+        },
+        {
+          "type": "paragraph",
+          "text": "文案階段才輪到 AI：先把語氣與禁用字講清楚，再要多版草稿，最後改成各平台的長度。下面三段提示詞可以直接貼，尖括號換成你自己的內容。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "第一則訊息：把品牌語氣與禁用字一次講清楚",
+          "code": "你是我這個社群帳號的文案助理。之後我給你貼文重點，你就照下面的設定寫。\n品牌：<一句話說你賣什麼、賣給誰>\n語氣：<例如：像店員跟熟客說話，不堆敬語，不用驚嘆號>\n用語：台灣繁體中文。用「影片」不用「視頻」、用「品質」不用「質量」、用「使用者」不用「用戶」。\n每篇一定要出現：<價格或條件或時間>\n不能寫：療效、最便宜、第一、保證、絕對。\n你不確定的細節就留成 <待確認>，不要自己補一個看起來合理的。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "把一句話的重點變成三版貼文",
+          "code": "貼文重點：<一句話>\n平台：Instagram 貼文\n請給三個版本，每一版都要有：\n1) 第一行不超過 20 個字，看得出這篇要講什麼\n2) 內文兩段，合計 120 到 180 字\n3) 最後一行寫一個明確的下一步（留言、私訊、點主頁連結，擇一）\n4) 主題標籤 5 個以內，只用跟內容有關的\n三版的切入角度要不同：一版講問題，一版講做法，一版講結果。\n最後用一行說明三版差在哪裡。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "同一篇改寫成 Threads 串與 Facebook 版",
+          "code": "把我選定的那一版改成兩種：\nA. Threads 串：三則以內，每則不超過 100 個字，第一則要能單獨看懂，後面每則只講一件事。\nB. Facebook 貼文：可以長一點，但開頭兩行要先把結論講完。\n兩種都不可以更動原本的事實與數字，只能改語氣與斷句。\n改完列出你動過的地方。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型寫出來的一律當草稿。日期、價格、地址與活動辦法要回原始資料核對——模型會把不存在的細節寫得很自然，這就是幻覺。用字也看一遍，中國用語換成台灣用語。"
+        },
+        {
+          "type": "link",
+          "text": "行銷文案怎麼寫：說清楚價值、條件與下一步",
+          "url": "https://mokaair.com/zh-TW/life/marketing-copywriting"
+        },
+        {
+          "type": "link",
+          "text": "品牌語氣與氛圍行銷：讓內容一致又能回答問題",
+          "url": "https://mokaair.com/zh-TW/life/brand-tone-vibe-marketing"
+        },
+        {
+          "type": "heading",
+          "text": "三、圖片：先定規格，再叫 AI",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "圖卡住多半不是工具，是沒有規格。先把尺寸、字級、品牌色與標誌位置定好做成範本，之後每篇只換字與照片。AI 生成圖適合當背景與情境，不適合畫價目表：生成圖裡的文字常常是錯的，要精確文字就讓 AI 出底圖、字自己排。設計工具的 AI 功能屬於哪個方案、免費額度怎麼算，以 canva.com 當天的說明頁為準。"
+        },
+        {
+          "type": "link",
+          "text": "Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算",
+          "url": "https://mokaair.com/zh-TW/life/canva-ai-features-guide"
+        },
+        {
+          "type": "link",
+          "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-tools-overview-2026"
+        },
+        {
+          "type": "heading",
+          "text": "四、排程：Meta Business Suite、Threads 與 Buffer",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Meta 自家的排程工具是 Meta Business Suite。桌面版說明頁寫，可以在裡面建立並排程貼文發佈到 Facebook 與 Instagram；建立時在「Post to」選目的地，發到 Instagram 的照片上限是 10 張；排程選項旁的「Active times」依粉絲過去 7 天在兩個平台的活躍時間推薦時段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "時間範圍最常被忽略。Facebook 粉絲專頁排程的說明頁寫明：貼文可以排在 20 分鐘之後到 29 天之內發佈，所有排程時間以你目前的時區為準。想一次排一季，只能分批排。已排程的內容在左側「Planner」的週／月日曆裡改時間、移到草稿或刪除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Threads 走的是跨平台發佈。官方說明頁寫，兩邊的貼文都能跨發到 Threads，但這功能只有桌面版有，且必須把 Instagram 選為發佈位置；Threads 個人檔案還要加進同一個商業檔案組合，使用者名稱要和 Instagram 相同。手機版 App 是在最後一步選「Schedule for later」。Instagram App 內建的排程另有一頁說明，能往前排幾天以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三方工具以 Buffer 為例，定價頁按「管道」計費，一個社群帳號一個管道。Free 最多 3 個管道、每個管道同時 10 則排程貼文（發出去就空回一格），1 位使用者與 AI Assistant。Essentials 每個管道每月 US$6（月繳）、年繳約 US$5，Team 是 US$12 與 US$10，付費方案排程則數不限（公平使用上限每管道 5,000 則），年繳折 20%、有 14 天試用，定價頁寫價格最後更新於 2025 年 11 月。官方管道支援表把 Threads 列為可自動發佈。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "步驟",
+            "工具",
+            "AI 做什麼",
+            "人要確認什麼"
+          ],
+          "rows": [
+            [
+              "定主題",
+              "行事曆或試算表",
+              "不建議交給 AI",
+              "要講與不能講的事"
+            ],
+            [
+              "寫文案",
+              "ChatGPT、Claude",
+              "產多版草稿、改長度語氣",
+              "日期價格、台灣用語"
+            ],
+            [
+              "做圖",
+              "設計工具、AI 圖片工具",
+              "去背、改尺寸、生成背景",
+              "圖上的字、品牌色、標示"
+            ],
+            [
+              "排程",
+              "Meta Business Suite、Buffer",
+              "建議時段（Active times）",
+              "平台、20 分鐘到 29 天、跨發 Threads 的條件"
+            ],
+            [
+              "回顧",
+              "Business Suite Insights",
+              "整理數字、歸納題目",
+              "指標定義、同一段期間"
+            ]
+          ],
+          "caption": "一週貼文五段各用什麼、AI 做到哪裡（官方頁面查證日 2026 年 9 月 15 日）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想把「表單進來就先寫一版草稿」接起來，自動化工具是另一條路。"
+        },
+        {
+          "type": "link",
+          "text": "Zapier 與 Make 的 AI 自動化：計費方式與 AI 功能對照",
+          "url": "https://mokaair.com/zh-TW/life/zapier-make-ai-automation"
+        },
+        {
+          "type": "heading",
+          "text": "五、AI 標示與利益揭露：兩份規則原文",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 生成的圖或影片要不要標，平台有規則。Meta 透明度中心〈Labeling AI Content〉頁寫，2024 年 5 月起 Meta 為更多影片、音訊與圖片加上「AI Info」標籤，觸發情況是偵測到業界通用的 AI 圖片指標或發文者自行揭露。社群守則〈Misinformation〉頁寫成義務：張貼以數位方式製作或變造、具照片寫實感的影片或聽起來像真實錄音的音訊時，要用 Meta 的 AI 揭露工具揭露，未揭露可能受到處分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "廣告那一側有一條和台灣有關。Meta Business 說明中心的廣告 AI info 頁寫：用 Meta 自家或第三方生成式 AI 工具製作、編輯的廣告素材會自動加上 AI info 標籤，Meta 以 C2PA 這類業界標準偵測；部分地區廣告主可自行揭露，該頁列的地區包含歐洲地區、加州、紐約、印度與台灣，並註明在台灣若偵測到 Meta 生成式 AI 工具做的圖片或影片含寫實 AI 人物，也可能自動加標籤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣這邊要看公平交易委員會〈對於薦證廣告之規範說明〉（民國 94 年 9 月 23 日公發布，106 年 1 月 19 日修正）。它把「利益關係」定義為薦證者與廣告主間的僱用、贈與、受有報酬或其他有償關係，並有一點專講社群：「薦證廣告以社群網站推文方式為之，如薦證者與廣告主間具有非一般大眾可合理預期之利益關係，而未於廣告中充分揭露，且足以影響交易秩序者，涉及違反本法第二十五條規定」。這裡只引原文，個案認定請諮詢專業人士。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "AI 生成與業配是兩件事，各有各的揭露",
+          "text": "平台規則管的是內容怎麼做的：Meta 要求自行揭露具照片寫實感的影片與聽起來像真實錄音的音訊。公平會的規範說明管的是關係：有非一般大眾可合理預期的利益關係而未充分揭露、且足以影響交易秩序者，涉及違反公平交易法第二十五條規定。一篇用 AI 生成配圖的合作貼文，兩件事都要處理。個案請諮詢專業人士。"
+        },
+        {
+          "type": "link",
+          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+        },
+        {
+          "type": "link",
+          "text": "Meta 廣告入門：Facebook、Instagram 與 Threads 的設定檢查",
+          "url": "https://mokaair.com/zh-TW/life/meta-ads-first-campaign"
+        },
+        {
+          "type": "heading",
+          "text": "六、不要做的事，與回顧看哪些數字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Meta 社群守則〈Spam〉頁的禁止行為裡，有幾條正好是「衝數字」的常見做法：以人工或自動方式極高頻率地張貼、分享、互動或建立帳號與粉絲專頁；買賣或交換讚、分享、觀看、追蹤與特定主題標籤；要求先按讚或分享才能看到承諾的內容。用模型大量生成留言互推就踩在這裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "回顧用 Meta Business Suite 的 Insights。官方說明頁寫，Overview 分頁聚焦過去 28 天，指標包含 Views（內容被播放或顯示的次數）與 Follows；Content 分頁是單篇表格；Benchmarking 把你和同類別、自然觸及 28 天相近的商家對照。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 在這段負責整理，不負責判斷：資料匯出後可請模型分組、找共同點，但「哪一篇值得再寫一次」要自己決定。想確認某個做法有沒有用，自測法是同一題目寫兩版，隔週同一時段各發一次，比同一組指標與同樣長的期間。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "每週固定一個時段做完五段，下週的題目在回顧那步訂好。",
+            "提示詞存成筆記，改過就記日期，下次直接貼。",
+            "送出前逐篇看：平台對嗎、時間在 20 分鐘到 29 天內嗎、AI 素材標了嗎、合作關係揭露了嗎。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "短影音企劃：Reels 的腳本、製作與成效回顧",
+          "url": "https://mokaair.com/zh-TW/life/short-video-marketing"
+        },
+        {
+          "type": "link",
+          "text": "台灣小店的 AI 應用：客服、菜單、廣告",
+          "url": "https://mokaair.com/zh-TW/life/ai-for-small-business-taiwan"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Meta Business Help Center — Create and manage posts in Meta Business Suite on desktop（官方說明頁）",
+          "url": "https://www.facebook.com/business/help/942827662903020",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta Business Help Center — Schedule a post and manage scheduled posts for your Facebook Page（官方說明頁）",
+          "url": "https://www.facebook.com/business/help/1252240869631062",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta Business Help Center — About cross-posting to Facebook, Instagram and Threads in Meta Business Suite（官方說明頁）",
+          "url": "https://www.facebook.com/business/help/914097058035853",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta Business Help Center — Schedule Facebook and Instagram content on Meta Business Suite mobile app（官方說明頁）",
+          "url": "https://www.facebook.com/business/help/609176706604372",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta Business Help Center — Use Planner in Meta Business Suite on desktop（官方說明頁）",
+          "url": "https://www.facebook.com/business/help/1678733516458988",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta Business Help Center — About Insights in Meta Business Suite on desktop（官方說明頁）",
+          "url": "https://www.facebook.com/business/help/700570830721044",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta Business Help Center — About AI info on ads created or edited with generative AI tools（官方說明頁）",
+          "url": "https://www.facebook.com/business/help/1010479435004531",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta Transparency Center — Labeling AI Content（官方政策頁）",
+          "url": "https://transparency.meta.com/governance/tracking-impact/labeling-ai-content/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta Transparency Center — Community Standards: Misinformation（官方政策頁）",
+          "url": "https://transparency.meta.com/policies/community-standards/misinformation",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta Transparency Center — Community Standards: Spam（官方政策頁）",
+          "url": "https://transparency.meta.com/policies/community-standards/spam/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Instagram Help Center — How to create and manage scheduled posts and Reels on Instagram（官方說明頁）",
+          "url": "https://help.instagram.com/439971288310029",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Instagram Help Center — Label AI content on Threads（官方說明頁）",
+          "url": "https://help.instagram.com/407718162047721",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Buffer — Pricing（官方定價頁）",
+          "url": "https://buffer.com/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "公平交易委員會主管法規共用系統 — 公平交易委員會對於薦證廣告之規範說明（法規原文）",
+          "url": "https://law.ftc.gov.tw/law/LawContent.aspx?id=FL037059",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "公平交易委員會 — 公平交易委員會對於薦證廣告之規範說明（官方公告頁）",
+          "url": "https://www.ftc.gov.tw/internet/main/doc/docDetail.aspx?uid=165&docid=13021",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

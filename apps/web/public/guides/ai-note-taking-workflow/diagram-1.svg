@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">收集、整理、回想三段筆記工作流 / A three-stage note-taking workflow</title>
+  <desc id="desc">這張圖把筆記拆成三段。收集這一段用 Obsidian 的本機 Markdown vault、Notion 收件匣（免費層單檔上限 5 MB）與免費瀏覽器擴充 Web Clipper，這一步先不用 AI，最多把網頁轉成純文字，你自己要寫一行為什麼存它並填上標題與網址。整理這一段用 Notion 資料庫的專案、標籤與日期，以及 Obsidian 的屬性與 Bases 檢視，Obsidian Sync 每人每月 4 美元起；AI 在這裡做摘要、抽出待辦與改寫，Notion AI 在 Business 方案每人每月 20 美元；分類與標籤最後由你自己按，每週清空一次收件匣。回想這一段用 NotebookLM，一本筆記本只放一個主題，來源可以是 PDF、網址或逐字稿，免費層每本 50 個來源；AI 依你給的來源回答並附上可點回原文的行內引用，免費層每天 50 次對話與 3 份語音摘要；你自己每次都要點開引用確認原文，再把確認過的結論寫回筆記。最下面一條提醒：原始出處與連結、你自己的判斷、敏感資料要不要離開自己的電腦，這三件不要交給 AI。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="52" font-size="30" font-weight="700" fill="#102A2B">收集 → 整理 → 回想：一套筆記工作流</text>
+  <text x="40" y="84" font-size="18" fill="#5C6B6B">Capture, organise, recall: where each tool and the AI belong</text>
+
+  <!-- stage headers -->
+  <rect x="40" y="124" width="460" height="70" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="270" y="167" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">收集 Capture</text>
+  <rect x="570" y="124" width="460" height="70" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="167" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">整理 Organise</text>
+  <rect x="1100" y="124" width="460" height="70" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1330" y="167" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">回想 Recall</text>
+  <line x1="508" y1="159" x2="556" y2="159" stroke="#0D6B68" stroke-width="5" marker-end="url(#arrow)"/>
+  <line x1="1038" y1="159" x2="1086" y2="159" stroke="#0D6B68" stroke-width="5" marker-end="url(#arrow)"/>
+
+  <!-- column 1: capture -->
+  <rect x="40" y="214" width="460" height="152" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="64" y="248" font-size="16" font-weight="700" fill="#2F6F9F">工具</text>
+  <text x="64" y="282" font-size="17" fill="#102A2B">Obsidian vault：本機 Markdown 檔</text>
+  <text x="64" y="310" font-size="17" fill="#102A2B">Notion 收件匣：免費層單檔 5 MB</text>
+  <text x="64" y="338" font-size="17" fill="#102A2B">Web Clipper：免費瀏覽器擴充</text>
+  <rect x="40" y="386" width="460" height="162" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="64" y="420" font-size="16" font-weight="700" fill="#D97A2B">AI 做什麼</text>
+  <text x="64" y="454" font-size="17" fill="#102A2B">這一步先不用 AI</text>
+  <text x="64" y="482" font-size="17" fill="#102A2B">最多把網頁轉成純文字</text>
+  <text x="64" y="510" font-size="17" fill="#102A2B">不要在這裡就叫它分類</text>
+  <rect x="40" y="568" width="460" height="124" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="64" y="602" font-size="16" font-weight="700" fill="#2E7D5B">你自己做</text>
+  <text x="64" y="636" font-size="17" fill="#102A2B">只填標題與網址，不分類</text>
+  <text x="64" y="664" font-size="17" fill="#102A2B">寫一行「我為什麼存它」</text>
+
+  <!-- column 2: organise -->
+  <rect x="570" y="214" width="460" height="152" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="594" y="248" font-size="16" font-weight="700" fill="#2F6F9F">工具</text>
+  <text x="594" y="282" font-size="17" fill="#102A2B">Notion 資料庫：專案、標籤、日期</text>
+  <text x="594" y="310" font-size="17" fill="#102A2B">Obsidian 屬性與 Bases 檢視</text>
+  <text x="594" y="338" font-size="17" fill="#102A2B">Obsidian Sync 每人每月 4 美元起</text>
+  <rect x="570" y="386" width="460" height="162" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="594" y="420" font-size="16" font-weight="700" fill="#D97A2B">AI 做什麼</text>
+  <text x="594" y="454" font-size="17" fill="#102A2B">摘要長文、抽出待辦事項</text>
+  <text x="594" y="482" font-size="17" fill="#102A2B">改寫成自己看得懂的句子</text>
+  <text x="594" y="510" font-size="17" fill="#102A2B">Notion AI 在 Business：每月 20 美元</text>
+  <rect x="570" y="568" width="460" height="124" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="594" y="602" font-size="16" font-weight="700" fill="#2E7D5B">你自己做</text>
+  <text x="594" y="636" font-size="17" fill="#102A2B">每週清空一次收件匣</text>
+  <text x="594" y="664" font-size="17" fill="#102A2B">分類與標籤最後自己按</text>
+
+  <!-- column 3: recall -->
+  <rect x="1100" y="214" width="460" height="152" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1124" y="248" font-size="16" font-weight="700" fill="#2F6F9F">工具</text>
+  <text x="1124" y="282" font-size="17" fill="#102A2B">NotebookLM：一本一個主題</text>
+  <text x="1124" y="310" font-size="17" fill="#102A2B">來源：PDF、網址、逐字稿</text>
+  <text x="1124" y="338" font-size="17" fill="#102A2B">免費層每本 50 個來源</text>
+  <rect x="1100" y="386" width="460" height="162" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1124" y="420" font-size="16" font-weight="700" fill="#D97A2B">AI 做什麼</text>
+  <text x="1124" y="454" font-size="17" fill="#102A2B">只依你給的來源回答</text>
+  <text x="1124" y="482" font-size="17" fill="#102A2B">附上可點回原文的行內引用</text>
+  <text x="1124" y="510" font-size="17" fill="#102A2B">免費層每天 50 次對話、3 份語音摘要</text>
+  <rect x="1100" y="568" width="460" height="124" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1124" y="602" font-size="16" font-weight="700" fill="#2E7D5B">你自己做</text>
+  <text x="1124" y="636" font-size="17" fill="#102A2B">每次都點開引用確認原文</text>
+  <text x="1124" y="664" font-size="17" fill="#102A2B">確認過的結論寫回筆記</text>
+
+  <!-- bottom band -->
+  <rect x="40" y="726" width="1520" height="104" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="64" y="762" font-size="18" font-weight="700" fill="#B8442D">不要交給 AI</text>
+  <text x="64" y="798" font-size="17" fill="#102A2B">原始出處與連結、你自己的判斷、敏感資料要不要離開自己的電腦</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

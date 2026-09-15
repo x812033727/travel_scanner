@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">帳戶分離法：用三到四個帳戶把錢分開管</title>
+<desc id="desc">左側一個圓角方框裡有三條等長的橫線，像一張薪資明細；方框右邊伸出一條粗線，接上一條直立的幹線，再由幹線分出四道等長的橫向分流，分別指向四個同樣大小的圓角方塊。四個方塊由上而下畫著房子、卡片、鎖與日曆，代表固定支出、生活費、儲蓄與年度大額支出；最下面那個方塊的外框與通往它的分流都是虛線，表示它是選配的第四個帳戶。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs>
+<marker id="tipteal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3" markerHeight="3" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0D6B68"/></marker>
+<marker id="tipblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3" markerHeight="3" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2F6F9F"/></marker>
+<marker id="tipgreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3" markerHeight="3" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E7D5B"/></marker>
+<marker id="tiporange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3" markerHeight="3" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D97A2B"/></marker>
+</defs>
+
+<path d="M410 450 H620" fill="none" stroke="#0D6B68" stroke-width="26" stroke-linecap="butt"/>
+<path d="M620 165 V735" fill="none" stroke="#0D6B68" stroke-width="26" stroke-linecap="butt"/>
+<path d="M607 165 H866" fill="none" stroke="#0D6B68" stroke-width="26" stroke-linecap="butt" marker-end="url(#tipteal)"/>
+<path d="M633 355 H866" fill="none" stroke="#2F6F9F" stroke-width="26" stroke-linecap="butt" marker-end="url(#tipblue)"/>
+<path d="M633 545 H866" fill="none" stroke="#2E7D5B" stroke-width="26" stroke-linecap="butt" marker-end="url(#tipgreen)"/>
+<path d="M607 735 H866" fill="none" stroke="#D97A2B" stroke-width="26" stroke-linecap="butt" stroke-dasharray="30 20" marker-end="url(#tiporange)"/>
+
+<rect x="110" y="340" width="300" height="220" rx="40" fill="#E3F0EF" stroke="#0D6B68" stroke-width="18"/>
+<path d="M170 405 H350 M170 450 H350 M170 495 H350" stroke="#0D6B68" stroke-width="18" stroke-linecap="round"/>
+
+<rect x="880" y="80" width="520" height="170" rx="30" fill="#FFFFFF" stroke="#0D6B68" stroke-width="14"/>
+<path d="M1080 154 L1140 104 L1200 154" fill="none" stroke="#0D6B68" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1094" y="154" width="92" height="72" fill="none" stroke="#0D6B68" stroke-width="14" stroke-linejoin="round"/>
+
+<rect x="880" y="270" width="520" height="170" rx="30" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="14"/>
+<rect x="1076" y="313" width="128" height="84" rx="14" fill="none" stroke="#2F6F9F" stroke-width="14"/>
+<path d="M1076 341 H1204" stroke="#2F6F9F" stroke-width="14"/>
+
+<rect x="880" y="460" width="520" height="170" rx="30" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="14"/>
+<path d="M1114 531 V516 A26 26 0 0 1 1166 516 V531" fill="none" stroke="#2E7D5B" stroke-width="14" stroke-linecap="round"/>
+<rect x="1096" y="531" width="88" height="72" rx="12" fill="none" stroke="#2E7D5B" stroke-width="14"/>
+
+<rect x="880" y="650" width="520" height="170" rx="30" fill="#FFFFFF" stroke="#D97A2B" stroke-width="14" stroke-dasharray="26 18"/>
+<rect x="1080" y="695" width="120" height="96" rx="12" fill="none" stroke="#D97A2B" stroke-width="14"/>
+<path d="M1106 679 V703 M1174 679 V703" stroke="#D97A2B" stroke-width="14" stroke-linecap="round"/>
+<path d="M1080 725 H1200" stroke="#D97A2B" stroke-width="14"/>
+</svg>

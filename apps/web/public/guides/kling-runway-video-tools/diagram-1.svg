@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">素材到影片：Kling 與 Runway 的流程對照 / From input to video: Kling and Runway</title>
+  <desc id="desc">兩排並列的流程圖。上排是 Kling：素材可用文字提示詞、圖片或多圖、首尾幀；以 VIDEO 3.0 生成 3 到 15 秒、720p 或 1080p 或原生 4K、可開原生音訊與對嘴；接著用影片延長、多元素影片編輯與 Motion Control 修改；輸出時 1080p 每秒扣 12 點、原生 4K 每秒 30 點，付費會員才去浮水印。下排是 Runway：素材可用文字提示詞、圖片或一段表演影片；以 Gen-4.5 生成 2 到 10 秒、輸出一律 720p、影格率 24 或 25 fps；接著用 Edit Studio 改既有影片最長 30 秒、Act-Two 做表演捕捉、Stitch Videos 接片總長最多 60 分鐘；輸出時每秒扣 12 點，要更高解析度就按 Upscale to 4K，免費方案的影片一律帶浮水印。兩家都是先生成短片段，再決定要延長還是要改。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">素材到影片：Kling 與 Runway 的流程對照</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From input to video: Kling and Runway side by side</text>
+
+  <text x="325" y="138" font-size="18" fill="#5C6B6B" text-anchor="middle">素材</text>
+  <text x="675" y="138" font-size="18" fill="#5C6B6B" text-anchor="middle">生成一段</text>
+  <text x="1025" y="138" font-size="18" fill="#5C6B6B" text-anchor="middle">延長與修改</text>
+  <text x="1380" y="138" font-size="18" fill="#5C6B6B" text-anchor="middle">輸出與扣點</text>
+
+  <text x="100" y="300" font-size="24" font-weight="bold" fill="#0D6B68" text-anchor="middle">Kling</text>
+  <rect x="170" y="165" width="310" height="255" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="325" y="211" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">輸入素材</text>
+  <text x="325" y="261" font-size="16" fill="#102A2B" text-anchor="middle">文字提示詞</text>
+  <text x="325" y="299" font-size="16" fill="#102A2B" text-anchor="middle">圖片、多圖</text>
+  <text x="325" y="337" font-size="16" fill="#102A2B" text-anchor="middle">首尾幀</text>
+  <text x="325" y="375" font-size="16" fill="#102A2B" text-anchor="middle">參考影片</text>
+
+  <rect x="520" y="165" width="310" height="255" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="675" y="211" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">VIDEO 3.0</text>
+  <text x="675" y="261" font-size="16" fill="#102A2B" text-anchor="middle">長度 3 到 15 秒</text>
+  <text x="675" y="299" font-size="16" fill="#102A2B" text-anchor="middle">720p、1080p、原生 4K</text>
+  <text x="675" y="337" font-size="16" fill="#102A2B" text-anchor="middle">原生音訊與對嘴</text>
+  <text x="675" y="375" font-size="16" fill="#102A2B" text-anchor="middle">Multi-Shot 多鏡頭</text>
+
+  <rect x="870" y="165" width="310" height="255" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1025" y="211" font-size="19" font-weight="bold" fill="#D97A2B" text-anchor="middle">同一支往下做</text>
+  <text x="1025" y="261" font-size="16" fill="#102A2B" text-anchor="middle">影片延長</text>
+  <text x="1025" y="299" font-size="16" fill="#102A2B" text-anchor="middle">多元素影片編輯</text>
+  <text x="1025" y="337" font-size="16" fill="#102A2B" text-anchor="middle">Motion Control</text>
+  <text x="1025" y="375" font-size="16" fill="#102A2B" text-anchor="middle">影片特效</text>
+
+  <rect x="1220" y="165" width="320" height="255" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1380" y="211" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">扣點與浮水印</text>
+  <text x="1380" y="261" font-size="16" fill="#102A2B" text-anchor="middle">1080p 每秒 12 點</text>
+  <text x="1380" y="299" font-size="16" fill="#102A2B" text-anchor="middle">原生 4K 每秒 30 點</text>
+  <text x="1380" y="337" font-size="16" fill="#102A2B" text-anchor="middle">付費會員才去浮水印</text>
+  <text x="1380" y="375" font-size="16" fill="#102A2B" text-anchor="middle">1 美元換 66 點</text>
+
+  <line x1="484" y1="292" x2="514" y2="292" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="834" y1="292" x2="864" y2="292" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1184" y1="292" x2="1214" y2="292" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="100" y="655" font-size="24" font-weight="bold" fill="#2F6F9F" text-anchor="middle">Runway</text>
+  <rect x="170" y="520" width="310" height="255" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="325" y="566" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">輸入素材</text>
+  <text x="325" y="616" font-size="16" fill="#102A2B" text-anchor="middle">文字提示詞</text>
+  <text x="325" y="654" font-size="16" fill="#102A2B" text-anchor="middle">圖片</text>
+  <text x="325" y="692" font-size="16" fill="#102A2B" text-anchor="middle">一段表演影片</text>
+  <text x="325" y="730" font-size="16" fill="#102A2B" text-anchor="middle">角色圖或角色影片</text>
+
+  <rect x="520" y="520" width="310" height="255" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="675" y="566" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">Gen-4.5</text>
+  <text x="675" y="616" font-size="16" fill="#102A2B" text-anchor="middle">長度 2 到 10 秒</text>
+  <text x="675" y="654" font-size="16" fill="#102A2B" text-anchor="middle">輸出一律 720p</text>
+  <text x="675" y="692" font-size="16" fill="#102A2B" text-anchor="middle">24 或 25 fps</text>
+  <text x="675" y="730" font-size="16" fill="#102A2B" text-anchor="middle">Standard 以上才有</text>
+
+  <rect x="870" y="520" width="310" height="255" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1025" y="566" font-size="19" font-weight="bold" fill="#D97A2B" text-anchor="middle">改片再接片</text>
+  <text x="1025" y="616" font-size="16" fill="#102A2B" text-anchor="middle">Edit Studio 最長 30 秒</text>
+  <text x="1025" y="654" font-size="16" fill="#102A2B" text-anchor="middle">Act-Two 表演捕捉</text>
+  <text x="1025" y="692" font-size="16" fill="#102A2B" text-anchor="middle">Stitch 最長 60 分鐘</text>
+  <text x="1025" y="730" font-size="16" fill="#102A2B" text-anchor="middle">Multi-Shot Video</text>
+
+  <rect x="1220" y="520" width="320" height="255" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1380" y="566" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">扣點與浮水印</text>
+  <text x="1380" y="616" font-size="16" fill="#102A2B" text-anchor="middle">Gen-4.5 每秒 12 點</text>
+  <text x="1380" y="654" font-size="16" fill="#102A2B" text-anchor="middle">再按 Upscale to 4K</text>
+  <text x="1380" y="692" font-size="16" fill="#102A2B" text-anchor="middle">免費方案帶浮水印</text>
+  <text x="1380" y="730" font-size="16" fill="#102A2B" text-anchor="middle">1 點 0.01 美元</text>
+
+  <line x1="484" y1="647" x2="514" y2="647" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="834" y1="647" x2="864" y2="647" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1184" y1="647" x2="1214" y2="647" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="800" y="828" font-size="17" fill="#5C6B6B" text-anchor="middle">兩家都是先生成短片段，再決定要延長還是要改；扣點以生成頁面當下顯示為準</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,124 @@
+{
+  "slug": "ai-search-generated-answers",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "title": "Google 搜尋中心：AI 功能與你的網站",
+      "access": "WebFetch 直接讀取，HTTP 200；頁尾標示 Last updated 2025-12-10 UTC",
+      "claims": [
+        "AI 摘要與 AI 模式可能使用查詢展開（query fan-out）技巧，發出多個跨子題與跨資料來源的相關搜尋來產生回應。",
+        "在回應生成的過程中，模型會找出更多支援的網頁，因此能顯示比傳統網頁搜尋更廣、更多樣的連結。",
+        "要出現在 AI 摘要或 AI 模式沒有額外要求，也不需要其他特別的最佳化。",
+        "兩個功能可能使用不同的模型與技術，所以顯示的回應與連結會不一樣。",
+        "要有資格被顯示為支援連結，頁面必須已建立索引、有資格在 Google 搜尋中顯示摘要片段，並符合搜尋的技術需求。",
+        "限制頁面被顯示資訊的控制項是 nosnippet、data-nosnippet、max-snippet 與 noindex；Google-Extended 限制的是 Google 其他系統的 AI 訓練與接地。",
+        "該頁沒有公布 AI 摘要或 AI 模式的排序與挑選規則，正文因此只寫「官方沒公布」。"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+      "title": "Google 搜尋中心：robots meta 標籤與 X-Robots-Tag 規格",
+      "access": "WebFetch 直接讀取，HTTP 200；data-nosnippet 段落另做一次針對性重讀",
+      "claims": [
+        "nosnippet：不要為這個頁面顯示文字摘要片段或影片預覽。",
+        "nosnippet 適用於所有形式的搜尋結果（網頁搜尋、圖片、Discover、AI 摘要、AI 模式），並會阻止內容被當成 AI 摘要與 AI 模式的直接輸入。",
+        "max-snippet：最多使用指定字數作為文字摘要片段，同時限制內容可被當成直接輸入的量；設 0 等同 nosnippet，設 -1 表示不限長度。",
+        "data-nosnippet 標在 span、div、section 元素上，該段 HTML 必須合法、標籤正確關閉。",
+        "data-nosnippet 那一段沒有寫到 AI 摘要與 AI 模式的直接輸入，正文據此寫成「文件沒寫，不替它補」。",
+        "noindex：不要在搜尋結果中顯示這個頁面、媒體或資源。"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/featured-snippets",
+      "title": "Google 搜尋中心：精選摘要與你的網站",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "要擋掉所有摘要片段（包含精選摘要與一般摘要），就在該頁加上 nosnippet 規則。",
+        "精選摘要只有在能顯示足夠文字時才會出現；低的 max-snippet 設定不保證 Google 會停止顯示精選摘要，需要保證就用 nosnippet。",
+        "被 data-nosnippet 標記的文字不會出現在精選摘要與一般摘要。"
+      ]
+    },
+    {
+      "url": "https://support.google.com/webmasters/answer/16908024",
+      "title": "Search Console 說明中心：搜尋生成式 AI 控制",
+      "access": "WebFetch 直接讀取，HTTP 200；分兩次提問取得選項原文與適用功能清單",
+      "claims": [
+        "以資源為單位選擇納入或排除；排除時內容不會在搜尋生成式 AI 功能中被使用者看到，包含不會被連結、也不會協助接地。",
+        "適用的功能是 AI 摘要、AI 模式與 Google Discover 中的生成式 AI 功能。",
+        "這個控制不會被當成影響搜尋其他部分的排名或收錄訊號。",
+        "改設定後一般要幾天，內容才會被排除在適用的功能之外。"
+      ]
+    },
+    {
+      "url": "https://support.google.com/websearch/answer/16011537",
+      "title": "Google 搜尋說明中心：AI 模式",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "AI 模式把問題拆成子題，同時對多個資料來源各自搜尋，再把結果合起來變成容易理解的回應。",
+        "官方提醒使用者查證重要資訊、點開來源連結，也寫明這個功能不一定每次都對。"
+      ]
+    },
+    {
+      "url": "https://support.google.com/websearch/answer/14901683",
+      "title": "Google 搜尋說明中心：AI 摘要",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "AI 摘要是 Google 搜尋在系統判斷生成式 AI 特別有幫助時顯示的功能（正文用來確立「AI 摘要」一詞的所指）。",
+        "官方寫明 AI 摘要會出錯，建議點開支援連結查證。"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "title": "Google 爬蟲與擷取工具：Google-Extended",
+      "access": "WebFetch 直接讀取，HTTP 200",
+      "claims": [
+        "Google-Extended 讓網站管理是否讓內容用於訓練未來的 Gemini 模型，以及 Gemini 應用程式與 Vertex AI 上的接地。",
+        "Google-Extended 不影響網站在 Google 搜尋中的收錄，也不是 Google 搜尋的排名訊號。"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/google-search",
+      "title": "Gemini API：Grounding with Google Search",
+      "access": "WebFetch 直接讀取，HTTP 200；第二次提問確認沒有 groundingChunks 與 groundingSupports 欄位說明",
+      "claims": [
+        "流程五步：帶著提示詞呼叫模型、模型判斷搜尋能不能改善答案、需要時自動生成一個或多個查詢並執行、處理結果組出回應、回傳以搜尋結果為依據的答案。",
+        "引用（url_citation）把一段文字對應到一個來源網址。",
+        "這份文件描述的是開發者用的 API，不是 AI 摘要的內部實作；正文明寫這一點。"
+      ]
+    },
+    {
+      "url": "https://blogs.bing.com/webmaster/september-2023/Announcing-new-options-for-webmasters-to-control-usage-of-their-content-in-Bing-Chat",
+      "title": "Bing 網站管理員部落格：控制內容在 Bing Chat 中的使用方式（2023-09-22）",
+      "access": "WebFetch 直接讀取微軟官方部落格，HTTP 200",
+      "claims": [
+        "標了 NOCACHE 的內容仍可能出現在 Bing Chat 的答案中，但只顯示網址、摘要片段與標題。",
+        "標了 NOARCHIVE 的內容不會被納入 Bing Chat 的答案，也不會在答案中被連結。",
+        "帶這兩種標記的內容仍會出現在 Bing 的搜尋結果中。"
+      ]
+    },
+    {
+      "url": "https://blogs.bing.com/webmaster/October-2025/Bing-Introduces-Support-for-the-data-nosnippet-HTML-Attribute",
+      "title": "Bing 網站管理員部落格：Bing 支援 data-nosnippet 屬性（2025-10-15）",
+      "access": "WebFetch 直接讀取微軟官方部落格，HTTP 200",
+      "claims": [
+        "Bing 宣布支援 data-nosnippet，並寫明它同時作用於搜尋摘要與 AI 生成的答案。",
+        "與 Google 文件的範圍不同：Google 在 data-nosnippet 那一段沒有寫到 AI 的直接輸入。"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/bots",
+      "title": "OpenAI 開發者文件：OpenAI 的爬蟲與 robots.txt 控制",
+      "access": "WebFetch 讀取；原網址 https://platform.openai.com/docs/bots 回 301 轉址到此，sources 記轉址後的官方位置",
+      "claims": [
+        "OAI-SearchBot 用於讓網站出現在 ChatGPT 搜尋功能的結果中。",
+        "退出 OAI-SearchBot 的網站不會出現在 ChatGPT 搜尋的答案裡，但仍可能以導覽連結出現。",
+        "GPTBot 對應的是訓練生成式基礎模型的抓取。",
+        "文件沒有提供任何等同 nosnippet 或 max-snippet 的逐頁摘要控制。"
+      ]
+    }
+  ],
+  "running_text_characters": 2900,
+  "notes": "正文字數 2,900 字，以 pack_ingest._body_length 的算法（段落、rich_paragraph、清單項目、表格格子、callout 標題與內文，去除空白後計數）實際數出。結構：6 個 level-2 heading、1 張 hero、1 個 diagram 圖片區塊、恰好 1 個表格、1 個 callout、5 個站內 article inline 連結（google-ai-mode-search 一次、google-ai-overviews-for-site-owners 兩次、ai-term-retrieval-augmented-generation 一次、ai-search-terms-index 一次，全部在指派給的 slug 清單內）。第一段就明寫不重複既有的操作教學並連到那兩篇。diagram-1.svg 上唯一的數字是頁尾的 2026，正文帶有「2026 年 9 月 14 日」；hero.svg 沒有任何數字。dry-run（uv run python -m app.guides.pack_cli ingest --from ../../docs/ai-search-series/staging --slug ai-search-generated-answers --dry-run）在 2026-09-14 跑出零 error、零 warning。查不到而改寫成「以官方文件為準」或直接不寫的項目，列在 notes.md 的『查不到、因此改寫或不寫的項目』一節：AI 摘要的排序與挑選機制、data-nosnippet 是否阻擋 AI 直接輸入、Search Console 生成式 AI 成效報表的欄位定義、Vertex AI 的 grounding 回應欄位、Bing 說明中心的完整 robots meta 清單、AI 摘要使用的模型版本。"
+}

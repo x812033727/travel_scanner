@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">文字與圖片兩條路徑變成一支可下載的影片 / Text and image both become a downloadable video</title>
+  <desc id="desc">一張幾何插圖。左側上方是一張白色卡片，裡面有四條橫線，代表一段文字描述；左側下方是另一張白色卡片，裡面有一個橘色圓形太陽與兩座三角形山丘，代表一張上傳的圖片。兩張卡片各有一條箭頭曲線往右匯入畫面中央的大圓角矩形螢幕，螢幕中央是一個深綠色的播放三角形，代表生成出來的影片。螢幕右側再以一個箭頭接到綠色的下載符號，由一根向下的箭頭與一個開口向上的托盤組成。畫面下方寫著一行字：文字或一張圖，變成影片。整張圖用米色底、墨綠與藍色線條，沒有任何產品標誌或介面。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <circle cx="1440" cy="140" r="150" fill="#E3F0EF"/>
+  <circle cx="150" cy="830" r="120" fill="#E6F0F7"/>
+
+  <!-- text card -->
+  <rect x="120" y="180" width="300" height="200" rx="26" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <rect x="162" y="222" width="216" height="18" rx="9" fill="#0D6B68"/>
+  <rect x="162" y="262" width="170" height="18" rx="9" fill="#0D6B68" opacity="0.75"/>
+  <rect x="162" y="302" width="216" height="18" rx="9" fill="#0D6B68" opacity="0.75"/>
+  <rect x="162" y="342" width="110" height="18" rx="9" fill="#0D6B68" opacity="0.5"/>
+
+  <!-- image card -->
+  <rect x="120" y="520" width="300" height="200" rx="26" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+  <circle cx="200" cy="580" r="28" fill="#D97A2B"/>
+  <path d="M 150 690 L 236 586 L 306 690 Z" fill="#2E7D5B"/>
+  <path d="M 268 690 L 334 608 L 392 690 Z" fill="#2F6F9F" opacity="0.85"/>
+  <rect x="140" y="682" width="264" height="18" rx="9" fill="#2F6F9F" opacity="0.3"/>
+
+  <!-- flow into the screen -->
+  <path d="M 432 280 C 528 280, 566 356, 646 416" fill="none" stroke="#5C6B6B" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M 432 620 C 528 620, 566 544, 646 484" fill="none" stroke="#5C6B6B" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <!-- screen -->
+  <rect x="660" y="270" width="460" height="360" rx="30" fill="#E3F0EF" stroke="#0D6B68" stroke-width="10"/>
+  <path d="M 848 384 L 982 450 L 848 516 Z" fill="#0D6B68"/>
+
+  <!-- out to download -->
+  <path d="M 1142 450 L 1248 450" fill="none" stroke="#5C6B6B" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <rect x="1327" y="312" width="36" height="128" rx="18" fill="#2E7D5B"/>
+  <path d="M 1285 432 L 1405 432 L 1345 514 Z" fill="#2E7D5B"/>
+  <path d="M 1263 548 L 1263 626 L 1427 626 L 1427 548" fill="none" stroke="#2E7D5B" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="800" y="800" text-anchor="middle" font-size="64" font-weight="bold" fill="#102A2B">文字或一張圖，變成影片</text>
+</svg>

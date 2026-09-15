@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">豆包、Seed 模型與火山方舟的關係 / How Doubao, ByteDance Seed models and Volcengine Ark fit together</title>
+<desc id="desc">左側由上往下是一條主流程：使用者入口有網頁版（doubao.com 對話頁）、手機 App（iOS 與 Android）、桌面客戶端與瀏覽器外掛；四個入口都指向豆包帳號，註冊與登入方式為手機號、營運商一鍵登入、Apple ID 與抖音帳號，同一組帳號的體系內產品包含豆包、飛書、PICO、火山引擎與豆包輸入法；帳號之下是 Seed 模型，代號分成 doubao-seed（語言）、doubao-seedance（影片）、doubao-seedream（圖片）三條線；最下方是火山方舟 API，線上推理常規第一段單價的單位為元每百萬 token，doubao-seed-2.1-pro 輸入 6.00、輸出 30.00。右側是三個提醒欄：隱私政策寫境內營運收集的個人資料存放在中華人民共和國境內，個人版預設可能用於模型訓練，可在設定的隱私與權限關閉；台灣可用性當天實查的結果是 App Store 台灣區以官方 App ID 查詢回傳零筆，Google Play 用台灣語系參數讀得到頁面但搜尋前排沒有它，網頁版本站從台灣以外讀得到；最後提醒自己驗一次，看開發者名稱與 App ID，不要只看名字和圖示。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs>
+<marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+<path d="M1 1 L11 6 L1 11 z" fill="#5C6B6B"/>
+</marker>
+</defs>
+
+<text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">豆包、Seed 模型與火山方舟的關係</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">How Doubao, ByteDance Seed models and Volcengine Ark fit together</text>
+
+<text x="60" y="118" font-size="18" fill="#5C6B6B">使用者入口</text>
+
+<rect x="60" y="132" width="240" height="92" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="180" y="170" font-size="17" fill="#102A2B" text-anchor="middle">網頁版</text>
+<text x="180" y="198" font-size="15" fill="#5C6B6B" text-anchor="middle">doubao.com 對話頁</text>
+
+<rect x="320" y="132" width="240" height="92" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="440" y="170" font-size="17" fill="#102A2B" text-anchor="middle">手機 App</text>
+<text x="440" y="198" font-size="15" fill="#5C6B6B" text-anchor="middle">iOS 與 Android</text>
+
+<rect x="580" y="132" width="240" height="92" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="700" y="170" font-size="17" fill="#102A2B" text-anchor="middle">桌面客戶端</text>
+<text x="700" y="198" font-size="15" fill="#5C6B6B" text-anchor="middle">官網有下載頁</text>
+
+<rect x="840" y="132" width="240" height="92" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="960" y="170" font-size="17" fill="#102A2B" text-anchor="middle">瀏覽器外掛</text>
+<text x="960" y="198" font-size="15" fill="#5C6B6B" text-anchor="middle">側邊欄 AI 助理</text>
+
+<line x1="570" y1="224" x2="570" y2="248" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+<rect x="60" y="252" width="1020" height="140" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="570" y="290" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">豆包帳號（註冊與登入）</text>
+<text x="570" y="324" font-size="17" fill="#102A2B" text-anchor="middle">手機號・營運商一鍵登入・Apple ID・抖音帳號</text>
+<text x="570" y="356" font-size="15" fill="#5C6B6B" text-anchor="middle">同一組帳號的體系內產品：豆包・飛書・PICO・火山引擎・豆包輸入法</text>
+
+<line x1="570" y1="392" x2="570" y2="416" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+<rect x="60" y="420" width="1020" height="136" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="570" y="458" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">Seed 模型（字節跳動 Seed 團隊）</text>
+<text x="570" y="494" font-size="17" fill="#102A2B" text-anchor="middle">doubao-seed（語言）・doubao-seedance（影片）・doubao-seedream（圖片）</text>
+<text x="570" y="526" font-size="15" fill="#5C6B6B" text-anchor="middle">模型代號分成語言、影片、圖片三條線</text>
+
+<line x1="570" y1="556" x2="570" y2="580" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+<rect x="60" y="584" width="1020" height="188" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="570" y="622" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">火山方舟 API（火山引擎）</text>
+<text x="570" y="656" font-size="17" fill="#5C6B6B" text-anchor="middle">線上推理（常規）第一段單價，單位為元／百萬 token</text>
+
+<rect x="80" y="676" width="316" height="70" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="238" y="704" font-size="15" fill="#102A2B" text-anchor="middle">doubao-seed-2.1-pro</text>
+<text x="238" y="728" font-size="15" fill="#2E7D5B" text-anchor="middle">輸入 6.00／輸出 30.00</text>
+
+<rect x="412" y="676" width="316" height="70" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="570" y="704" font-size="15" fill="#102A2B" text-anchor="middle">doubao-seedance</text>
+<text x="570" y="728" font-size="15" fill="#5C6B6B" text-anchor="middle">影片生成模型</text>
+
+<rect x="744" y="676" width="316" height="70" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="902" y="704" font-size="15" fill="#102A2B" text-anchor="middle">doubao-seedream</text>
+<text x="902" y="728" font-size="15" fill="#5C6B6B" text-anchor="middle">圖片生成模型</text>
+
+<line x1="1100" y1="132" x2="1100" y2="772" stroke="#D8CFC2" stroke-width="3"/>
+
+<rect x="1120" y="132" width="440" height="208" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="1340" y="174" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">隱私政策怎麼寫</text>
+<text x="1340" y="212" font-size="15" fill="#102A2B" text-anchor="middle">境內營運收集的個人資料，</text>
+<text x="1340" y="240" font-size="15" fill="#102A2B" text-anchor="middle">存放在中華人民共和國境內</text>
+<text x="1340" y="274" font-size="15" fill="#5C6B6B" text-anchor="middle">個人版預設可能用於模型訓練，</text>
+<text x="1340" y="302" font-size="15" fill="#5C6B6B" text-anchor="middle">設定→隱私與權限可關閉</text>
+
+<rect x="1120" y="372" width="440" height="228" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+<text x="1340" y="414" font-size="20" font-weight="bold" fill="#B8442D" text-anchor="middle">台灣可用性（當天實查）</text>
+<text x="1340" y="452" font-size="15" fill="#102A2B" text-anchor="middle">App Store 台灣區：以官方</text>
+<text x="1340" y="480" font-size="15" fill="#102A2B" text-anchor="middle">App ID 查詢回傳零筆</text>
+<text x="1340" y="514" font-size="15" fill="#5C6B6B" text-anchor="middle">Google Play：台灣語系參數</text>
+<text x="1340" y="542" font-size="15" fill="#5C6B6B" text-anchor="middle">讀得到頁面，搜尋前排沒有它</text>
+<text x="1340" y="570" font-size="15" fill="#5C6B6B" text-anchor="middle">網頁版：本站從台灣以外讀得到</text>
+
+<rect x="1120" y="632" width="440" height="140" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="1340" y="672" font-size="18" font-weight="bold" fill="#D97A2B" text-anchor="middle">自己驗一次</text>
+<text x="1340" y="708" font-size="15" fill="#102A2B" text-anchor="middle">看開發者名稱與 App ID，</text>
+<text x="1340" y="736" font-size="15" fill="#102A2B" text-anchor="middle">不要只看名字和圖示</text>
+
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

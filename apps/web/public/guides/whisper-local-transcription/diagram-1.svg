@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Whisper 本機轉錄的流程 / How a local Whisper transcription runs</title>
+  <desc id="desc">由左往右的五格流程：第一格是音檔或影片音軌，格式可以是 m4a、mp3、wav 或 mov 的音軌；第二格是 ffmpeg 解碼，把各種格式解成模型吃得下的音訊；第三格是切成 30 秒視窗，模型一次只看 30 秒的音訊；第四格是 Whisper 模型，六種大小可選，從 tiny 到 large 還有 turbo；第五格是輸出逐字稿與字幕檔，格式有 txt、srt、vtt、tsv、json 與 jsonl。下面一排是常用參數：--language Chinese 指定音檔語言、不給就自動偵測；--initial_prompt 放一段繁體中文提示，讓用字往繁體靠；--output_format srt 選輸出格式，預設是 all、每種各寫一份。最下面兩個提醒：逐字稿一定要人工核對，模型卡寫明預測可能包含音檔裡沒有講過的內容，人名、數字與結論要對著時間戳再聽一次；以及全程在自己的電腦上執行，音檔、逐字稿與字幕檔都不離開這台機器，不需要帳號，也不必連網路。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="54" y="52" font-size="30" font-weight="700" fill="#102A2B">Whisper 本機轉錄的流程</text>
+  <text x="54" y="84" font-size="18" fill="#5C6B6B">How a local Whisper transcription runs</text>
+
+  <!-- step 1 -->
+  <rect x="54" y="150" width="264" height="180" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="186" y="205" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">音檔／影片音軌</text>
+  <text x="186" y="250" font-size="17" fill="#5C6B6B" text-anchor="middle">m4a、mp3、wav</text>
+  <text x="186" y="280" font-size="17" fill="#5C6B6B" text-anchor="middle">mov 的音軌也行</text>
+
+  <!-- step 2 -->
+  <rect x="361" y="150" width="264" height="180" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="493" y="205" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">ffmpeg 解碼</text>
+  <text x="493" y="250" font-size="17" fill="#5C6B6B" text-anchor="middle">把各種格式解碼</text>
+  <text x="493" y="280" font-size="17" fill="#5C6B6B" text-anchor="middle">成模型讀得懂的音訊</text>
+
+  <!-- step 3 -->
+  <rect x="668" y="150" width="264" height="180" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="205" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">切成 30 秒視窗</text>
+  <text x="800" y="250" font-size="17" fill="#5C6B6B" text-anchor="middle">模型一次只看</text>
+  <text x="800" y="280" font-size="17" fill="#5C6B6B" text-anchor="middle">30 秒的音訊</text>
+
+  <!-- step 4 -->
+  <rect x="975" y="150" width="264" height="180" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1107" y="205" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">Whisper 模型</text>
+  <text x="1107" y="250" font-size="17" fill="#5C6B6B" text-anchor="middle">六種大小可選</text>
+  <text x="1107" y="280" font-size="17" fill="#5C6B6B" text-anchor="middle">tiny 到 large、turbo</text>
+
+  <!-- step 5 -->
+  <rect x="1282" y="150" width="264" height="180" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1414" y="205" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">逐字稿與字幕檔</text>
+  <text x="1414" y="250" font-size="17" fill="#5C6B6B" text-anchor="middle">txt／srt／vtt</text>
+  <text x="1414" y="280" font-size="17" fill="#5C6B6B" text-anchor="middle">tsv／json／jsonl</text>
+
+  <line x1="322" y1="240" x2="353" y2="240" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="629" y1="240" x2="660" y2="240" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="936" y1="240" x2="967" y2="240" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1243" y1="240" x2="1274" y2="240" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="54" y="400" font-size="18" font-weight="700" fill="#5C6B6B">常用參數（照官方的選項清單）</text>
+
+  <rect x="54" y="424" width="480" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="294" y="479" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">--language Chinese</text>
+  <text x="294" y="522" font-size="17" fill="#5C6B6B" text-anchor="middle">指定音檔語言</text>
+  <text x="294" y="550" font-size="17" fill="#5C6B6B" text-anchor="middle">不給就讓模型自己偵測</text>
+
+  <rect x="560" y="424" width="480" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="479" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">--initial_prompt</text>
+  <text x="800" y="522" font-size="17" fill="#5C6B6B" text-anchor="middle">放一段繁體中文的提示</text>
+  <text x="800" y="550" font-size="17" fill="#5C6B6B" text-anchor="middle">讓用字往繁體靠</text>
+
+  <rect x="1066" y="424" width="480" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1306" y="479" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">--output_format srt</text>
+  <text x="1306" y="522" font-size="17" fill="#5C6B6B" text-anchor="middle">選輸出格式</text>
+  <text x="1306" y="550" font-size="17" fill="#5C6B6B" text-anchor="middle">預設是每種各寫一份</text>
+
+  <rect x="54" y="630" width="730" height="180" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="419" y="688" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">逐字稿一定要人工核對</text>
+  <text x="419" y="732" font-size="17" fill="#5C6B6B" text-anchor="middle">模型卡寫明：預測可能包含音檔裡沒有講過的內容</text>
+  <text x="419" y="762" font-size="17" fill="#5C6B6B" text-anchor="middle">人名、數字與結論要對著時間戳再聽一次</text>
+
+  <rect x="816" y="630" width="730" height="180" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1181" y="688" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">全程在自己的電腦上</text>
+  <text x="1181" y="732" font-size="17" fill="#5C6B6B" text-anchor="middle">音檔、逐字稿與字幕檔都不離開這台機器</text>
+  <text x="1181" y="762" font-size="17" fill="#5C6B6B" text-anchor="middle">不需要帳號，也不必連網路</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

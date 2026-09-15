@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 瀏覽器的三層能力與風險 / Three layers of an AI browser</title>
+  <desc id="desc">由上而下三層。第 1 層問這一頁：側邊欄助理讀目前分頁，做摘要、翻譯、解釋名詞；風險是這一頁的內容會送進模型，而且頁面可能藏著寫給 AI 看的指令。第 2 層跨分頁整理：把多個分頁一起交給它比較，Chrome 最多再分享 10 個已開啟的分頁；風險是一次送出的內容變多，你未必記得每頁有什麼。第 3 層代理操作：它自己點按、填表、登入、下單，代表功能有 Comet Assistant、auto browse、Browse with Copilot；風險是用你已登入的身分做出真實動作，而且多半綁付費方案與美國地區。底部三條共通防線：帳密只輸入在網頁或專用表單、銀行與醫療與公司內部系統先不要開代理模式、關掉分享內容改進產品與預設分享目前分頁的開關。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">AI 瀏覽器的三層能力與風險</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Three layers of an AI browser: ask the page, compare tabs, act for you</text>
+
+  <!-- row 1 -->
+  <rect x="60" y="140" width="230" height="160" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="175" y="200" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">第 1 層</text>
+  <text x="175" y="235" font-size="20" fill="#0D6B68" text-anchor="middle">問這一頁</text>
+  <line x1="294" y1="220" x2="314" y2="220" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="320" y="140" width="680" height="160" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="344" y="185" font-size="20" font-weight="700" fill="#102A2B">側邊欄助理讀目前分頁</text>
+  <text x="344" y="220" font-size="17" fill="#102A2B">摘要、翻譯、解釋名詞、抓出重點</text>
+  <text x="344" y="250" font-size="17" fill="#5C6B6B">Chrome 的 Gemini、Brave Leo 在這一層</text>
+  <line x1="1004" y1="220" x2="1024" y2="220" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1030" y="140" width="510" height="160" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1054" y="185" font-size="20" font-weight="700" fill="#B8442D">風險</text>
+  <text x="1054" y="220" font-size="17" fill="#102A2B">這一頁的內容會送進模型</text>
+  <text x="1054" y="250" font-size="17" fill="#102A2B">頁面可能藏著寫給 AI 看的指令</text>
+
+  <!-- row 2 -->
+  <rect x="60" y="320" width="230" height="160" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="175" y="380" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">第 2 層</text>
+  <text x="175" y="415" font-size="20" fill="#2F6F9F" text-anchor="middle">跨分頁整理</text>
+  <line x1="294" y1="400" x2="314" y2="400" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="320" y="320" width="680" height="160" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="344" y="365" font-size="20" font-weight="700" fill="#102A2B">把多個分頁一起交給它比較</text>
+  <text x="344" y="400" font-size="17" fill="#102A2B">彙整、對照、找出差別</text>
+  <text x="344" y="430" font-size="17" fill="#5C6B6B">Chrome 最多再分享 10 個已開啟的分頁</text>
+  <line x1="1004" y1="400" x2="1024" y2="400" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1030" y="320" width="510" height="160" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1054" y="365" font-size="20" font-weight="700" fill="#B8442D">風險</text>
+  <text x="1054" y="400" font-size="17" fill="#102A2B">一次送出的內容變多</text>
+  <text x="1054" y="430" font-size="17" fill="#102A2B">你未必記得每個分頁裡有什麼</text>
+
+  <!-- row 3 -->
+  <rect x="60" y="500" width="230" height="160" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="175" y="560" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">第 3 層</text>
+  <text x="175" y="595" font-size="20" fill="#D97A2B" text-anchor="middle">代理操作</text>
+  <line x1="294" y1="580" x2="314" y2="580" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="320" y="500" width="680" height="160" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="344" y="545" font-size="20" font-weight="700" fill="#102A2B">自己點按、填表、登入、下單</text>
+  <text x="344" y="580" font-size="17" fill="#5C6B6B">Comet Assistant、auto browse、</text>
+  <text x="344" y="610" font-size="17" fill="#5C6B6B">Browse with Copilot</text>
+  <line x1="1004" y1="580" x2="1024" y2="580" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1030" y="500" width="510" height="160" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1054" y="545" font-size="20" font-weight="700" fill="#B8442D">風險</text>
+  <text x="1054" y="580" font-size="17" fill="#102A2B">用你已登入的身分做出真實動作</text>
+  <text x="1054" y="610" font-size="17" fill="#102A2B">多半綁付費方案與美國地區</text>
+
+  <!-- bottom -->
+  <rect x="60" y="690" width="1480" height="150" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="85" y="727" font-size="20" font-weight="700" fill="#2E7D5B">不管用哪一家，先做這三件事</text>
+  <text x="85" y="760" font-size="17" fill="#102A2B">1. 帳號密碼只輸入在網頁或專用表單，不要打進對話框</text>
+  <text x="85" y="790" font-size="17" fill="#102A2B">2. 網路銀行、醫療入口、公司內部系統先不要開代理模式</text>
+  <text x="85" y="820" font-size="17" fill="#102A2B">3. 關掉「分享內容改進產品」與「預設分享目前分頁」的開關</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

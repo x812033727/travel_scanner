@@ -1,0 +1,102 @@
+{
+  "slug": "ai-search-geo",
+  "status": "verified",
+  "checked_on": "2026-09-14",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2311.09735",
+      "title": "GEO: Generative Engine Optimization（論文 arXiv 摘要頁）",
+      "access": "WebFetch 直接讀取，正常回應",
+      "claims": [
+        "論文題名、第一作者 Pranjal Aggarwal、arXiv 編號 2311.09735",
+        "v1 於 2023 年 11 月提交",
+        "arXiv 頁面註明本文被 KDD 2024 接受",
+        "摘要原句：GEO can boost visibility by up to 40% in generative engine responses",
+        "GEO 被定義為協助內容創作者提高自身內容在生成引擎回答中曝光度的黑箱最佳化框架"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/html/2311.09735v3",
+      "title": "GEO: Generative Engine Optimization（論文全文 HTML 版）",
+      "access": "WebFetch 直接讀取，正常回應",
+      "claims": [
+        "生成引擎定義：傳統搜尋引擎加生成模型，檢索後由語言模型綜合多個來源產生附引用的回答",
+        "GEO-Bench 共 10,000 筆查詢，切成 8,000、1,000、1,000 的訓練、驗證、測試",
+        "查詢來自九個來源資料集，標註涵蓋 25 個領域",
+        "每題只取 Google 搜尋結果前 5 個來源，原因是上下文長度限制與成本",
+        "指標一 Position-Adjusted Word Count：屬於某來源的句子字數，依句子位置指數加權",
+        "指標二 Subjective Impression：七個子項，以 GPT-3.5 評分，方法比照 G-Eval",
+        "主要實驗由 gpt3.5-turbo 產生回答，temperature 0.7，每題抽樣 5 個回答",
+        "另在 Perplexity.ai 這個實際部署的生成引擎上驗證",
+        "九種改寫方法名稱",
+        "關鍵字堆砌對生成引擎的回答幾乎沒有改善",
+        "論文主張傳統 SEO 方法不直接適用於生成引擎",
+        "不同方法的效果在各領域之間有差異",
+        "限制章節：方法需隨生成引擎演進調整，查詢樣貌也會隨時間改變"
+      ]
+    },
+    {
+      "url": "https://dl.acm.org/doi/10.1145/3637528.3671900",
+      "title": "GEO: Generative Engine Optimization（KDD 2024 論文集頁面）",
+      "access": "原站回 403，改讀 Wayback Machine 快照 20250912102915（web/<時間戳>id_/<網址>）",
+      "claims": [
+        "會議版本收錄於 KDD '24 論文集",
+        "2024 年 8 月 24 日出版，開放取用"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "title": "Optimizing your website for generative AI features on Google Search（Google Search Central 官方文件）",
+      "access": "WebFetch 直接讀取，正常回應",
+      "claims": [
+        "官方段落：AEO 與 GEO 都被用來描述提升 AI 搜尋曝光的工作，但從 Google 搜尋的角度，為生成式 AI 搜尋最佳化就是為搜尋體驗最佳化，因此仍然是 SEO",
+        "同頁建議讀者以官方的第三方 SEO 指引檢視第三方的 AEO 或 GEO 建議與服務",
+        "不需要新增機器可讀檔案、AI 文字檔或標記",
+        "頁面標示 Last updated 2026-07-10 UTC"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "title": "AI features and your website（Google Search Central 官方文件）",
+      "access": "WebFetch 直接讀取，正常回應",
+      "claims": [
+        "出現在 AI 摘要或 AI 模式沒有額外要求，也不需要特別的最佳化",
+        "頁面必須已被索引且可顯示摘要",
+        "頁面標示 Last updated 2025-12-10 UTC"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/third-party-seo",
+      "title": "Google Search's guidance on using third-party SEO tools, services, and advice（Google Search Central 官方文件）",
+      "access": "WebFetch 直接讀取，正常回應",
+      "claims": [
+        "使用某個服務或工具並不保證排名成功，第三方無法保證成效",
+        "第三方工具拿不到 Google 內部的排名資料",
+        "頁面標示 Last updated 2026-06-05 UTC"
+      ]
+    },
+    {
+      "url": "https://www.semrush.com/blog/generative-engine-optimization/",
+      "title": "Generative Engine Optimization (GEO): A Practical Guide（Semrush 官方部落格，該公司的行銷內容）",
+      "access": "WebFetch 直接讀取，正常回應",
+      "claims": [
+        "該公司的 GEO 定義：優化自身內容以出現在 AI 搜尋系統產生的回答裡",
+        "該頁主張 GEO 不取代 SEO 而是補足 SEO",
+        "作者 Alex Lindley，標示更新於 2026 年 4 月 16 日，頁面同時推銷自家付費工具",
+        "頁面未使用論文的兩個指標名稱"
+      ]
+    },
+    {
+      "url": "https://blog.hubspot.com/marketing/generative-engine-optimization",
+      "title": "Generative engine optimization: What we know so far about generative SEO（HubSpot 官方部落格，該公司的行銷內容）",
+      "access": "WebSearch 限定 blog.hubspot.com 網域取得該站內容摘要",
+      "claims": [
+        "該公司用「SEO 讓你被點擊，GEO 讓你被引述」區分兩者",
+        "該公司把 AEO 當作上位詞，GEO 放在其下",
+        "頁面未使用論文的兩個指標名稱"
+      ]
+    }
+  ],
+  "running_text_characters": 2995,
+  "notes": "正文字數依 pack_ingest._body_length 的算法自行計算（段落、rich_paragraph、清單項目、表格格子、callout 標題與內文，去除空白後計數），不含標題、圖說與來源。全文沒有承諾排名、索引、引用或流量結果；論文數字一律標明只在該論文自己的查詢集、指標與引擎設定下成立。爭議點（GEO 是 SEO 的上位、子集，還是改名）同時列出 Google 官方文件、原始論文與兩家廠商行銷內容的說法，正文明說本站不裁決。行銷來源只作為『確實有人這樣用這個詞』的佐證，句中已標明是該公司的行銷內容。dl.acm.org 原站對本環境回 403，改讀 Wayback 快照，sources 仍記原始網址。沒有查不到而改寫成『以官方文件為準』的項目。"
+}

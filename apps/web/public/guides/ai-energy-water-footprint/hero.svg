@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一次對話用多少電和水 / Energy and water behind one AI chat</title>
+  <desc id="desc">一張抽象插圖。左邊是一個青綠色邊框、淺綠底的圓角對話框，裡面有三條長短不一的粗線代表文字，下方有一個三角形的尾巴。對話框右邊有一條帶箭頭的灰線，指向中間三個上下排列的白底藍框長方塊，每個方塊左側有兩個藍色圓點、右側有一條藍色橫線，代表機房裡的機櫃。再往右又有一條帶箭頭的灰線，指向一個橘色的半圓弧刻度與一根深色指針，像一只電表；電表下方是一排五個藍色圓點，代表五滴水。畫面上方寫著「一次對話用多少電和水」。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="800" y="160" text-anchor="middle" font-size="56" font-weight="700" fill="#102A2B">一次對話用多少電和水</text>
+
+  <!-- speech bubble -->
+  <path d="M 230 590 L 230 668 L 312 590 Z" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="150" y="300" width="440" height="290" rx="50" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <line x1="212" y1="380" x2="540" y2="380" stroke="#0D6B68" stroke-width="14" stroke-linecap="round"/>
+  <line x1="212" y1="442" x2="496" y2="442" stroke="#0D6B68" stroke-width="14" stroke-linecap="round"/>
+  <line x1="212" y1="504" x2="450" y2="504" stroke="#0D6B68" stroke-width="14" stroke-linecap="round"/>
+
+  <line x1="620" y1="445" x2="762" y2="445" stroke="#5C6B6B" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <!-- server racks -->
+  <rect x="800" y="290" width="360" height="120" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="852" cy="350" r="13" fill="#2F6F9F"/>
+  <circle cx="898" cy="350" r="13" fill="#2F6F9F"/>
+  <line x1="952" y1="350" x2="1110" y2="350" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+
+  <rect x="800" y="440" width="360" height="120" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="852" cy="500" r="13" fill="#2F6F9F"/>
+  <circle cx="898" cy="500" r="13" fill="#2F6F9F"/>
+  <line x1="952" y1="500" x2="1110" y2="500" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+
+  <rect x="800" y="590" width="360" height="120" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <circle cx="852" cy="650" r="13" fill="#2F6F9F"/>
+  <circle cx="898" cy="650" r="13" fill="#2F6F9F"/>
+  <line x1="952" y1="650" x2="1110" y2="650" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+
+  <line x1="1182" y1="420" x2="1236" y2="420" stroke="#5C6B6B" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <!-- energy meter -->
+  <path d="M 1250 420 A 115 115 0 0 1 1480 420" fill="none" stroke="#D97A2B" stroke-width="18" stroke-linecap="round"/>
+  <line x1="1365" y1="420" x2="1436" y2="338" stroke="#102A2B" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="1365" cy="420" r="14" fill="#102A2B"/>
+
+  <!-- five drops -->
+  <circle cx="1251" cy="560" r="19" fill="#2F6F9F"/>
+  <circle cx="1308" cy="560" r="19" fill="#2F6F9F"/>
+  <circle cx="1365" cy="560" r="19" fill="#2F6F9F"/>
+  <circle cx="1422" cy="560" r="19" fill="#2F6F9F"/>
+  <circle cx="1479" cy="560" r="19" fill="#2F6F9F"/>
+</svg>

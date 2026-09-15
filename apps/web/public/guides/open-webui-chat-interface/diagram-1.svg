@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Open WebUI 架構：瀏覽器、介面層與模型來源 / Open WebUI architecture: browser, interface layer and model backends</title>
+  <desc id="desc">由左往右的架構圖。最左邊是瀏覽器，介面開在埠 3000，使用者在這裡聊天、上傳檔案、比較模型；左下角另有一塊說明第一次登入：第一個帳號就是管理員，之後註冊自動關閉，新帳號預設是 pending 待核准。中間是 Open WebUI 本身，容器內部埠是 8080，裡面包含聊天記錄與多模型並排、知識庫與 RAG 檢索、提示詞範本與模型預設、使用者與權限 admin、user、pending 四個部分。右邊是模型來源：上方是本機 Ollama，API 在埠 11434，另一台機器用 OLLAMA_BASE_URL 指過去；下方是 OpenAI 相容 API，填網址與金鑰，服務商沒有 models 端點時手動加模型代號。中間往下連到資料 volume，路徑是 open-webui 冒號斜線 app 斜線 backend 斜線 data，對話、使用者、設定與上傳檔案都存在這裡。左下說明更新只換映像檔、volume 留著，更新前先把 volume 打包備份；右下說明授權：50 人以上不可移除 Open WebUI 標示，門檻算的是任一連續 30 天內可直接使用的人數。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrowBlue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#2F6F9F"/>
+    </marker>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#D97A2B"/>
+    </marker>
+  </defs>
+
+  <text x="70" y="52" font-size="30" font-weight="700" fill="#102A2B">瀏覽器連 Open WebUI，模型從連線設定接進來</text>
+  <text x="70" y="84" font-size="18" fill="#5C6B6B">Browser to Open WebUI, then out to Ollama or an OpenAI-compatible API</text>
+
+  <rect x="60" y="248" width="370" height="165" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="245" y="298" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">瀏覽器</text>
+  <text x="245" y="334" font-size="17" fill="#102A2B" text-anchor="middle">介面開在埠 3000</text>
+  <text x="245" y="364" font-size="17" fill="#5C6B6B" text-anchor="middle">聊天、上傳檔案、比較模型</text>
+
+  <rect x="60" y="455" width="370" height="175" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="245" y="500" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">第一次登入</text>
+  <text x="245" y="534" font-size="17" fill="#102A2B" text-anchor="middle">第一個帳號就是管理員</text>
+  <text x="245" y="564" font-size="17" fill="#102A2B" text-anchor="middle">之後註冊自動關閉</text>
+  <text x="245" y="596" font-size="16" fill="#5C6B6B" text-anchor="middle">新帳號預設 pending 待核准</text>
+
+  <rect x="520" y="160" width="480" height="490" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="760" y="208" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">Open WebUI</text>
+  <text x="760" y="240" font-size="17" fill="#5C6B6B" text-anchor="middle">容器內部埠 8080</text>
+
+  <rect x="550" y="272" width="420" height="76" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="760" y="318" font-size="19" fill="#102A2B" text-anchor="middle">聊天記錄與多模型並排</text>
+
+  <rect x="550" y="364" width="420" height="76" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="760" y="410" font-size="19" fill="#102A2B" text-anchor="middle">知識庫與 RAG 檢索</text>
+
+  <rect x="550" y="456" width="420" height="76" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="760" y="502" font-size="19" fill="#102A2B" text-anchor="middle">提示詞範本、模型預設</text>
+
+  <rect x="550" y="548" width="420" height="76" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="760" y="580" font-size="18" fill="#102A2B" text-anchor="middle">使用者與權限</text>
+  <text x="760" y="606" font-size="16" fill="#5C6B6B" text-anchor="middle">admin／user／pending</text>
+
+  <rect x="1150" y="230" width="390" height="155" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1345" y="278" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">本機 Ollama</text>
+  <text x="1345" y="312" font-size="17" fill="#102A2B" text-anchor="middle">API 在埠 11434</text>
+  <text x="1345" y="344" font-size="16" fill="#5C6B6B" text-anchor="middle">另一台機器用 OLLAMA_BASE_URL</text>
+
+  <rect x="1150" y="440" width="390" height="155" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1345" y="488" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">OpenAI 相容 API</text>
+  <text x="1345" y="522" font-size="17" fill="#102A2B" text-anchor="middle">填網址與金鑰</text>
+  <text x="1345" y="554" font-size="16" fill="#5C6B6B" text-anchor="middle">沒有 models 端點就手動加代號</text>
+
+  <line x1="434" y1="330" x2="508" y2="330" stroke="#2F6F9F" stroke-width="4" marker-end="url(#arrowBlue)"/>
+  <text x="473" y="310" font-size="15" fill="#5C6B6B" text-anchor="middle">網頁</text>
+
+  <line x1="1004" y1="300" x2="1138" y2="300" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrowTeal)"/>
+  <text x="1071" y="280" font-size="16" fill="#5C6B6B" text-anchor="middle">Ollama 協定</text>
+
+  <line x1="1004" y1="510" x2="1138" y2="510" stroke="#2F6F9F" stroke-width="4" marker-end="url(#arrowBlue)"/>
+  <text x="1071" y="490" font-size="16" fill="#5C6B6B" text-anchor="middle">相容端點</text>
+
+  <line x1="760" y1="654" x2="760" y2="694" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrowOrange)"/>
+
+  <rect x="520" y="700" width="480" height="130" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="760" y="745" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">資料 volume</text>
+  <text x="760" y="776" font-size="16" fill="#102A2B" text-anchor="middle">open-webui:/app/backend/data</text>
+  <text x="760" y="806" font-size="16" fill="#5C6B6B" text-anchor="middle">對話、使用者、設定、上傳檔案</text>
+
+  <rect x="60" y="700" width="370" height="130" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="245" y="745" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">更新不動資料</text>
+  <text x="245" y="776" font-size="16" fill="#102A2B" text-anchor="middle">換映像檔，volume 留著</text>
+  <text x="245" y="806" font-size="16" fill="#5C6B6B" text-anchor="middle">更新前先打包備份</text>
+
+  <rect x="1150" y="700" width="390" height="130" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1345" y="745" font-size="20" font-weight="700" fill="#B8442D" text-anchor="middle">授權提醒</text>
+  <text x="1345" y="776" font-size="16" fill="#102A2B" text-anchor="middle">超過 50 人不可移除標示</text>
+  <text x="1345" y="806" font-size="16" fill="#5C6B6B" text-anchor="middle">算任一連續 30 天內的人數</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

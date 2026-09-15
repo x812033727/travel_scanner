@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">三級模型價格帶對照 / API price bands by model tier</title>
+  <desc id="desc">三條由上到下的價格帶，分別是旗艦級、中階級與輕量級，每一條標出各家官網當天每百萬 token 的輸入與輸出價格區間。旗艦級輸入 0.30 到 10.00 美元、輸出 1.20 到 50.00 美元，區間兩端是 MiniMax-M3 與 gpt-6-astra。中階級輸入 0.40 到 2.00 美元、輸出 1.60 到 12.00 美元，區間兩端是 qwen3.7-plus 與 gpt-5.6-terra。輕量級輸入 0.15 到 1.00 美元、輸出 0.47 到 5.00 美元，區間兩端是 qwen3.8-flash 與 Claude Haiku 4.5。三段區間互相重疊，畫的是區間不是排名，價格為 2026 年 9 月 15 日官網標準價。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">三級模型價格帶對照</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Price bands by flagship, mid and light model tiers</text>
+
+  <!-- row 1: flagship -->
+  <rect x="60" y="130" width="1480" height="210" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="90" y="160" width="210" height="80" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="195" y="210" font-size="30" font-weight="bold" fill="#102A2B" text-anchor="middle">旗艦級</text>
+  <text x="195" y="270" font-size="17" fill="#5C6B6B" text-anchor="middle">各家最貴的一檔</text>
+  <rect x="340" y="158" width="560" height="118" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="620" y="192" font-size="18" fill="#0D6B68" text-anchor="middle">輸入／每百萬 token</text>
+  <text x="620" y="248" font-size="32" font-weight="bold" fill="#102A2B" text-anchor="middle">0.30 – 10.00 美元</text>
+  <rect x="940" y="158" width="560" height="118" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1220" y="192" font-size="18" fill="#2F6F9F" text-anchor="middle">輸出／每百萬 token</text>
+  <text x="1220" y="248" font-size="32" font-weight="bold" fill="#102A2B" text-anchor="middle">1.20 – 50.00 美元</text>
+  <text x="920" y="315" font-size="17" fill="#5C6B6B" text-anchor="middle">區間兩端：MiniMax-M3（低）與 gpt-6-astra（高）</text>
+
+  <!-- row 2: mid -->
+  <rect x="60" y="365" width="1480" height="210" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <rect x="90" y="395" width="210" height="80" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="195" y="445" font-size="30" font-weight="bold" fill="#102A2B" text-anchor="middle">中階級</text>
+  <text x="195" y="505" font-size="17" fill="#5C6B6B" text-anchor="middle">多數專案的主力</text>
+  <rect x="340" y="393" width="560" height="118" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="620" y="427" font-size="18" fill="#0D6B68" text-anchor="middle">輸入／每百萬 token</text>
+  <text x="620" y="483" font-size="32" font-weight="bold" fill="#102A2B" text-anchor="middle">0.40 – 2.00 美元</text>
+  <rect x="940" y="393" width="560" height="118" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1220" y="427" font-size="18" fill="#2F6F9F" text-anchor="middle">輸出／每百萬 token</text>
+  <text x="1220" y="483" font-size="32" font-weight="bold" fill="#102A2B" text-anchor="middle">1.60 – 12.00 美元</text>
+  <text x="920" y="550" font-size="17" fill="#5C6B6B" text-anchor="middle">區間兩端：qwen3.7-plus（低）與 gpt-5.6-terra（高）</text>
+
+  <!-- row 3: light -->
+  <rect x="60" y="600" width="1480" height="210" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <rect x="90" y="630" width="210" height="80" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="195" y="680" font-size="30" font-weight="bold" fill="#102A2B" text-anchor="middle">輕量級</text>
+  <text x="195" y="740" font-size="17" fill="#5C6B6B" text-anchor="middle">最便宜的一檔</text>
+  <rect x="340" y="628" width="560" height="118" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="620" y="662" font-size="18" fill="#0D6B68" text-anchor="middle">輸入／每百萬 token</text>
+  <text x="620" y="718" font-size="32" font-weight="bold" fill="#102A2B" text-anchor="middle">0.15 – 1.00 美元</text>
+  <rect x="940" y="628" width="560" height="118" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1220" y="662" font-size="18" fill="#2F6F9F" text-anchor="middle">輸出／每百萬 token</text>
+  <text x="1220" y="718" font-size="32" font-weight="bold" fill="#102A2B" text-anchor="middle">0.47 – 5.00 美元</text>
+  <text x="920" y="785" font-size="17" fill="#5C6B6B" text-anchor="middle">區間兩端：qwen3.8-flash（低）與 Claude Haiku 4.5（高）</text>
+
+  <text x="60" y="870" font-size="17" fill="#5C6B6B">三段區間互相重疊，畫的是區間不是排名；2026 年 9 月 15 日官網標準價</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,342 @@
+{
+  "slug": "ai-product-photo-for-sellers",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "daily"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "賣家用 AI 做商品圖：四種用法、平台規範與紅線",
+      "description": "電商賣家用 AI 處理商品圖有四種用法：去背換白底、生成情境背景、虛擬模特兒與試穿、放大修瑕。這篇整理 Photoroom、Canva、Adobe Firefly 與 Shopify 官方頁寫出來的能力、免費層限制與價格，對照蝦皮 AI 服務條款與商品規範的標示要求，附上公平交易法第 21 條原文與第 42 條罰鍰，並給一套從原圖到上架圖的檢查流程與檔案命名做法，內容為 2026 年 9 月查證。",
+      "hero": {
+        "src": "/guides/ai-product-photo-for-sellers/hero.jpg",
+        "alt": "插圖：左邊一個裝著商品的方框，箭頭穿過一道帶勾選標記的檢查關卡，右邊變成一張放在購物頁版位上的商品圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "用 AI 修商品圖已經不是要不要用的問題，而是修到哪裡為止的問題：背景、光線、構圖可以換，商品本身的顏色、材質、尺寸與附件不能換。這篇把賣家最常用的四種 AI 商品圖用法、各家工具官方頁寫得出來的能力與限制，以及蝦皮規範與公平交易法對商品圖的要求放在一起看，結論是同一條線：圖可以做得好看，但不能讓買家對收到的東西產生錯誤預期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會有三樣東西。一張用法對照表，知道各自該用哪個工具、免費層卡在哪裡；一份平台與法規的原文要點，知道蝦皮的條款把揭露責任寫在誰身上、不實廣告的紅線寫在哪一條；還有一套從商品原圖到上架圖的檢查流程與檔案命名方式。本文引用的方案、額度與規範都是 2026 年 9 月在各官方頁面查到的，這類工具改版很快，付款前再開一次官網確認。"
+        },
+        {
+          "type": "heading",
+          "text": "AI 商品圖的四種用法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把商品拍好再修，和把商品修成另一個樣子，是兩件事。賣家最常用到的四種用法都落在前者：價值是把棚拍才做得到的一致性壓縮成幾分鐘的批次處理，風險則是模型會自己補出原圖沒有的細節。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "去背換底：把商品從雜亂背景裡切出來，換成純白或單色底，用在需要統一底色的主圖。",
+            "生成情境背景：把去背後的商品放進桌面、廚房、戶外等情境，用在第二張之後的情境圖與廣告素材。",
+            "虛擬模特兒與試穿：讓平放的服飾或人台上的衣服呈現在虛擬人物身上，用在服飾類的版型參考圖。",
+            "放大與修瑕：把手機拍的小圖放大、去雜訊、消除反光與灰塵，用在舊素材翻新。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "四種用法裡，只有去背換底幾乎不會改變商品外觀。虛擬模特兒會重新畫出衣服的皺褶與版型，放大會猜出原圖沒有的紋理，情境背景則會用光影暗示材質。所以上架前的檢查點不是「像不像真的」，而是「和買家會收到的東西一不一樣」。"
+        },
+        {
+          "type": "heading",
+          "text": "工具官方頁寫得出來的能力與限制",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Photoroom 的定價頁把工具分成兩類。Background Remover、Retouch、AI Fill、AI Expand/Resize、Image Enhancer 這些核心工具在付費方案裡不扣點數；Video Generator、Virtual Model、AI Backgrounds Studio、Edit with AI 這類生成工具則從每月的 AI 點數扣。Pro 每月 8,000 點與 1,000 次匯出，Max 是 25,000 點與 3,000 次匯出，Ultra 是 75,000 點與 10,000 次匯出；官方另外註明匯出額度適用於 2K 以內的素材，4K 的影片與圖片解析度只在 Ultra 以上。定價頁預設顯示年繳並標示可省 33%，金額由官網依地區帶入，價格以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Canva 把 AI 功能分成 Standard、Premium、Ultra 三層，共用同一份每月 AI 額度。官方說明頁寫免費方案每月最多 200 次 Standard 或 20 次 Premium，而且沒有 Ultra 的使用權；Pro 與 Teams 是2,000 次 Standard 或 200 次 Premium 或 20 次 Ultra；Business 與 Enterprise 是 4,000、400、40。用文字生圖屬於 Premium 以上，所以免費方案每個月能生成的商品情境圖大約就是 20 張的量級；這份額度表 Canva 會調整，實際數字以官網當天的說明頁為準。Canva 的方案價格頁在這個環境讀不到，價格以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe Firefly 的方案頁列出 Firefly Standard 每月 US$9.99 含 2,000 點生成額度、Pro 每月 US$19.99 含 4,000 點、Pro Plus 原價 US$49.99 首年 US$34.97 含 10,000 點。免費使用者官方寫的是每天有一定的生成次數、每日重設，沒有寫確切張數，以官網為準。Firefly 的產品頁寫模型以 Adobe Stock 的授權內容與著作權已到期的公共領域內容訓練，產出會附上內容憑證（Content Credentials）；說明頁進一步寫，只有在「100% 的像素都由 Firefly 生成」的素材上才會自動加上內容憑證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Shopify 後台的媒體產生功能提供兩個動作：Color background 把背景換成單色，Generate 用一句話改背景或光線。說明頁寫生成圖的預設解析度是 1 MP，依原圖比例計算，大於 1 MP 會被縮小、小於 1 MP 會被放大；要保留透明背景必須存成 PNG；邊緣乾淨、構圖單純的圖去背效果比較好。最值得記住的是這一句：所有生成的圖都會被加上一個看不見的浮水印，不限制商業使用，但無法移除。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "用法",
+            "工具與官方功能名稱",
+            "官方頁寫的限制",
+            "上架時要注意的規範"
+          ],
+          "rows": [
+            [
+              "去背換白底",
+              "Photoroom Background Remover；Shopify Magic 的 Color background",
+              "Photoroom 核心工具在付費方案不扣點；Shopify 生成圖預設 1 MP，透明底必須存 PNG",
+              "主圖只能呈現實際商品，去背時不要順手調整商品顏色"
+            ],
+            [
+              "生成情境背景",
+              "Photoroom AI Backgrounds Studio；Canva 文字生圖；Shopify Magic 的 Generate",
+              "都屬於扣點或 Premium 級功能；Canva 免費方案每月上限 20 次 Premium",
+              "情境道具不能被誤讀成附贈品；蝦皮條款要求 AI 內容可被合理辨識"
+            ],
+            [
+              "虛擬模特兒與試穿",
+              "Photoroom AI Fashion Models、Virtual Try-On",
+              "4K 版本只在 Ultra 方案；1K 版本在 Pro 方案最多約 1,600 次生成",
+              "不得使用未經授權的真實公眾人物，或以 AI 生成與其高度相似的角色"
+            ],
+            [
+              "放大與修瑕",
+              "Photoroom Image Enhancer；Adobe Firefly 的生成式填色",
+              "Firefly 依方案給每月生成額度，免費層每日重設、次數以官網為準",
+              "放大會補出原圖沒有的紋理，不能用來掩蓋瑕疵或改變材質"
+            ]
+          ],
+          "caption": "資料來源：各工具的官方功能頁與定價頁，2026 年 9 月查證；免費層內容與價格會依地區顯示，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "AI 去背與放大：免費工具怎麼挑",
+          "url": "https://mokaair.com/zh-TW/life/ai-remove-background-upscale"
+        },
+        {
+          "type": "heading",
+          "text": "從商品原圖到上架圖：流程與檢查點",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "工具再多，流程只有一條。把它固定下來，才能在工具改版或換供應商時知道是哪一步出了問題。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "拍原圖：同一批商品用同一個角度、同一種光線拍，並且留一張完全沒修過的原檔當比對基準。",
+            "去背與統一底色：先處理主圖，確認邊緣沒有殘留背景色，也沒有把提把、線材、標籤切掉。",
+            "生成情境或虛擬模特兒：只用在第二張之後的圖，同一組提示詞批次產出，讓整個賣場風格一致。",
+            "三重比對：把成品、原檔、實際商品放在一起看顏色、材質、配件數量與尺寸感，任何一項對不上就退回上一步。",
+            "輸出與命名：依各通路需要的尺寸與格式輸出，用固定規則命名之後才上傳。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-product-photo-for-sellers/diagram-1.svg",
+          "alt": "流程圖：原圖、去背、生成情境或虛擬模特兒、三重比對、輸出命名五個步驟，中間標出商品外觀不能改與必須標示兩個檢查點",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右是一張商品圖從拍攝到上架的路徑；下方兩個方框是整條流程裡不能省的檢查點。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "第四步是唯一不能省的一步。蝦皮的說明頁寫，新增、上架或編輯商品之後系統會自動進入商品審核流程，審核作業會在 2 個工作天內（不含假日）完成；不符合上架規範的商品會被系統暫時下架或刪除，賣家要到賣家中心的違規頁面查看原因再依限期修正。與其等系統退件，不如在輸出前就把差異抓出來。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "商品圖的資料夾與檔名規則（範例）",
+          "code": "products/\n  SKU-A1023/\n    raw/      原始檔，永遠不覆蓋\n      A1023-raw-01.jpg\n    main/     主圖，去背白底\n      A1023-main-01.png\n    scene/    情境圖，檔名帶 ai\n      A1023-scene-ai-01.jpg\n    model/    虛擬模特兒圖，檔名帶 ai\n      A1023-model-ai-01.jpg\n    out/      各通路輸出\n      A1023-shopee-01.jpg\n      A1023-web-01.webp\n\n命名規則：SKU-用途-來源-序號\n來源欄位只有兩種值：留空代表實拍，ai 代表含 AI 生成內容"
+        },
+        {
+          "type": "heading",
+          "text": "平台規範把揭露責任寫在賣家身上",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Shopee AI 服務條款（頁面標示最後更新 2025 年 8 月 28 日）第 3.1.6 點寫得很直白：使用者「應自行辨識或判斷，為避免誤導或使用者有權知悉時，應於適當處揭露並讓使用者可合理辨識該等內容有使用 AI 工具或係 AI 生成內容」，而且「本平台不對任何未適當標示的行為所造成之任何爭議或損害承擔任何責任」。同一份條款第 3.1.5 點要求賣家對上傳的內容、素材或檔案擁有所有必要權利，第 3.3 點則寫，用蝦皮以外的工具做出來的第三方 AI 生成內容，「必須被標記為 AI 生成的內容」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "蝦皮的短影音 AI 使用規範講得更具體，而且明確把圖片算進去：「所有 AI 生成內容（包含但不限於：文字、圖片、影片等）都必須清楚標示，例如：加上【AI 生成】標籤或浮水印」。同一頁列出三條創作規範：未經授權不得使用第三方素材，例如品牌 Logo、人物照片或相似外貌特徵；除非已取得授權，否則不得使用真實公眾人物或以 AI 生成與其高度相似的角色；不得利用 AI 製作不實產品宣稱，或生成虛假的評論與推薦內容。違規的處理從降低曝光、移除內容，到暫時或永久停用功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "較早的蝦皮購物規範也是同一個方向，要求賣家「提供仔細且真實的商品敘述，並附售商品的實際圖片」，並寫明如果蝦皮認定商品有廣告不實等情形，仍會禁止刊登。其他通路查不到對外公開的圖片規範頁：momo 的供應商規範要登入供應商系統才看得到，以官方公告為準；PChome 商店街的網站公告寫，原平台交易功能提供到 2024 年 10 月 31 日，自 2024 年 11 月 1 日起轉型為品牌官網服務；Amazon 的商品圖片規範頁需登入賣家中心才能開啟，規格以該頁當天的版本為準。"
+        },
+        {
+          "type": "link",
+          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+        },
+        {
+          "type": "heading",
+          "text": "不實廣告的紅線寫在公平交易法第 21 條",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "前面所有平台規則的上游是同一條法律。對商品圖來說，公平交易法第 21 條第 1 項就是底線，原文是一句話。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "公平交易法第 21 條第 1 項原文（全國法規資料庫）",
+          "code": "事業不得在商品或廣告上，或以其他使公眾得知之方法，對於與商品相關而足以影響交易決定之事項，為虛偽不實或引人錯誤之表示或表徵。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同條第 2 項把「與商品相關而足以影響交易決定之事項」列舉出來，包括商品之價格、數量、品質、內容、製造方法、製造日期、有效期限、使用方法、用途、原產地、製造者、製造地、加工者、加工地，以及其他具有招徠效果之相關事項。商品圖上呈現的顏色、尺寸感、材質與配件數量，全都落在品質與內容這兩個詞裡面。效果寫在第 42 條：主管機關得限期令停止、改正行為或採取必要更正措施，並得處新臺幣五萬元以上二千五百萬元以下罰鍰；屆期仍未改正者，得按次處新臺幣十萬元以上五千萬元以下罰鍰。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公平交易委員會的「對於網路廣告案件之處理原則」（民國 112 年 2 月 21 日修正）把網路上的商品頁納入廣告的範圍，指的是事業「為銷售其商品或服務，以網際網路為媒介，提供商品或服務之相關資訊，以招徠交易機會之傳播行為」。該原則第八點列舉的不當表示類型裡，第一類就是「廣告所示價格、數量、品質、內容及其他相關交易資訊等與事實不符」。這裡只是把主管機關寫的文字攤開，個案怎麼認定請諮詢專業人士。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "AI 可以動背景，不能動商品",
+          "text": "去背、換情境、放大與虛擬模特兒都會重新畫出像素，模型不知道商品實際長什麼樣子，只會把畫面補成合理的樣子。上架前把成品、沒修過的原檔與實際商品放在一起比對顏色、材質、配件數量與尺寸感，是唯一能擋下問題的步驟。另外要記得平台的標示要求：蝦皮把「應於適當處揭露並讓使用者可合理辨識」寫進 AI 服務條款，而且明講平台不為未適當標示負責；Canva 的 AI 產品條款也禁止移除、變更或停用內容的來源與中繼資料標籤，包含但不限於 C2PA 中繼資料。"
+        },
+        {
+          "type": "link",
+          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+        },
+        {
+          "type": "heading",
+          "text": "檔案與版本管理決定這套流程能不能長期用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "商品圖真正的成本不在生成，在版本管理。常見的狀況是情境圖生成了三版，換季時找不到哪一版是上架中的那一張，也想不起來哪些圖含有 AI 生成內容。前面那份檔名規則就是為了解決這件事：把來源寫進檔名，之後要補標示、要換平台、要回頭核對，都只是一次搜尋。原始檔案永遠獨立存放、不覆蓋，因為它是爭議發生時唯一能拿出來的比對基準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "輸出這一段建議按通路分開處理：主圖用能存透明底的格式做中介檔，最後輸出成平台接受的格式；情境圖與說明圖走壓縮率較好的格式。內容憑證雖然會附在檔案上，但一般的壓縮與轉檔流程不保證中繼資料會被保留，如果打算靠它做揭露，輸出後要自己確認資料還在，或者乾脆在商品描述裡用文字寫清楚哪幾張是 AI 生成的。內容憑證的規格由 C2PA 維護，官方網站寫這套標準已有五百家以上的公司支持。"
+        },
+        {
+          "type": "link",
+          "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
+          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖片處理完之後，剩下的是商品頁本身：替代文字怎麼寫、圖片和規格表怎麼對上、變體要不要各自配圖。這些和 AI 無關，卻決定了這批圖能不能被找到。"
+        },
+        {
+          "type": "link",
+          "text": "網站圖片怎麼處理：尺寸、替代文字與搜尋可讀性",
+          "url": "https://mokaair.com/zh-TW/life/image-seo-workflow"
+        },
+        {
+          "type": "link",
+          "text": "商品頁 SEO：規格、變體與購買問題怎麼整理",
+          "url": "https://mokaair.com/zh-TW/life/ecommerce-product-seo"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Photoroom Pricing（官方定價頁：方案、AI 點數、匯出額度與 2K 匯出限制）",
+          "url": "https://www.photoroom.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva Help Center: Understanding your AI usage（官方說明頁：各方案每月 AI 額度）",
+          "url": "https://www.canva.com/help/ai-access/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva AI Product Terms（官方條款頁：產出歸屬與禁止移除 C2PA 中繼資料）",
+          "url": "https://www.canva.com/policies/ai-product-terms/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe Firefly plans（官方方案頁：各方案月費與每月生成額度）",
+          "url": "https://www.adobe.com/products/firefly/plans.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe Firefly 產品頁（官方頁：模型訓練來源與內容憑證說明）",
+          "url": "https://www.adobe.com/products/firefly.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe Firefly: Content Credentials overview（官方說明頁：何時自動加上內容憑證與內含欄位）",
+          "url": "https://helpx.adobe.com/firefly/web/get-started/learn-the-basics/content-credentials-overview.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Shopify Help Center: Media generation in the file editor（官方說明頁：兩種動作、1 MP 解析度、隱形浮水印）",
+          "url": "https://help.shopify.com/en/manual/shopify-admin/productivity-tools/shopify-magic/media-generation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Shopify Help Center: Shopify Magic（官方說明頁：可移除商品圖背景）",
+          "url": "https://help.shopify.com/en/manual/shopify-magic",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Shopee AI 服務條款（蝦皮官方條款頁：揭露義務與第三方 AI 生成內容標示）",
+          "url": "https://help.shopee.tw/portal/4/article/185317",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "[蝦皮短影音] AI 使用規範（蝦皮官方說明頁：AI 生成內容必須清楚標示與四條創作規範）",
+          "url": "https://help.shopee.tw/portal/4/article/201316",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "[條款與政策] 蝦皮購物規範（蝦皮官方規範頁：真實商品圖與廣告不實禁止刊登）",
+          "url": "https://help.shopee.tw/portal/4/article/77364",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "[賣家相關] 如何上架、管理我的賣場商品（蝦皮官方說明頁：商品審核 2 個工作天）",
+          "url": "https://help.shopee.tw/portal/4/article/146385",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "公平交易法 第 21 條（全國法規資料庫條文原文）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0150002&flno=21",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "公平交易法 第 42 條（全國法規資料庫條文原文：罰鍰範圍）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0150002&flno=42",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "公平交易委員會對於網路廣告案件之處理原則（公平會主管法規系統：廣告定義與第八點）",
+          "url": "https://law.ftc.gov.tw/law/LawContent.aspx?id=GL000222",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "PChome 商店街 營運模式調整公告（官方網站公告：轉型時間）",
+          "url": "https://www.pcstore.com.tw/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Content Credentials（官方網站：C2PA 規格與支持企業數）",
+          "url": "https://contentcredentials.org/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,329 @@
+{
+  "slug": "whisper-local-transcription",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 Whisper 本機轉錄逐字稿：會議與訪談的離線做法",
+      "description": "Whisper 是可以整個搬回自己電腦的逐字稿 AI：OpenAI 的模型權重下載後，音檔不必上傳。這篇照官方 README、模型卡與 LICENSE，說明六種模型大小的參數、顯示記憶體需求與相對速度，用 pip 與 ffmpeg 完成安裝，示範指令列與 Python 兩種轉錄方式、srt 與 vtt 字幕的輸出參數、中文與繁體輸出的設定，以及幻覺與重複這些官方寫明的限制。",
+      "hero": {
+        "src": "/guides/whisper-local-transcription/hero.jpg",
+        "alt": "插圖：一台筆電的螢幕裡，左邊圓形中的聲波沿著橘色箭頭指向右邊一張帶時間戳的逐字稿卡片",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "一小時的會議錄音要變成逐字稿，最省事的做法是丟給線上服務，但錄音裡的人名與客戶資料也跟著上傳。OpenAI 的 Whisper 提供另一條路：程式碼與模型權重可以下載回自己的電腦執行，轉錄不必連網路，音檔與逐字稿都留在本機。搜「逐字稿 AI」又不想把錄音上傳的人，這是最常見的解法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照 GitHub 上 openai/whisper 的 README、模型卡與 LICENSE，加上 Hugging Face 的 openai/whisper-large-v3 模型頁，帶你把一支錄音變成逐字稿：六種模型大小要多少顯示記憶體、怎麼用 pip 與 ffmpeg 裝起來、指令列與 Python 兩種用法、中文與繁體的設定，以及官方寫明的限制。"
+        },
+        {
+          "type": "heading",
+          "text": "Whisper 是什麼：可以下載回來執行的語音辨識模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方 README 給 Whisper 的定位是「通用的語音辨識模型」，而且是一個多任務模型，一次做三件事：多語言語音辨識、語音翻譯（把外語講的內容翻成英語文字）與語言辨識。模型卡補上訓練資料的規模：從網路收集的 680,000 小時音檔與對應逐字稿，其中 65% 是英語音檔配英語逐字稿，非英語的部分涵蓋 98 種語言。"
+        },
+        {
+          "type": "link",
+          "text": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-automatic-speech-recognition"
+        },
+        {
+          "type": "paragraph",
+          "text": "授權寫在 repo 的 LICENSE 檔裡：Whisper 的程式碼與模型權重以 MIT 授權釋出，允許使用、修改、散布與販售，條件是保留版權聲明與授權條文，軟體按現狀提供、不附任何擔保。要注意 Hugging Face 上 openai/whisper-large-v3 那一頁的授權標籤寫的是 apache-2.0，跟 GitHub 的 MIT 不是同一個名字；兩邊都是官方頁面，要商用時以你實際下載的那一頁為準。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "授權原文：README 的 License 一節與 LICENSE 檔開頭",
+          "code": "# README.md\nWhisper's code and model weights are released under the MIT License.\n\n# LICENSE\nMIT License\n\nCopyright (c) 2022 OpenAI\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "heading",
+          "text": "六種模型大小：參數、顯示記憶體與相對速度",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "README 的模型表列出六種大小，其中 tiny、base、small、medium 四種另有英語專用版本，名稱後面加 .en；官方觀察是英語專用版本在 tiny 與 base 上比較有感，到 small 與 medium 差距就不明顯。turbo 是 large-v3 的最佳化版本，速度更快、準確度只有極小的退步，但 README 標明 turbo 沒有為翻譯任務訓練過：要把非英語翻成英語得用多語言模型，就算加上 --task translate，turbo 也只會回傳原本的語言。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "模型",
+            "參數",
+            "需要的顯示記憶體",
+            "相對速度"
+          ],
+          "rows": [
+            [
+              "tiny",
+              "39 M",
+              "約 1 GB",
+              "約 10 倍"
+            ],
+            [
+              "base",
+              "74 M",
+              "約 1 GB",
+              "約 7 倍"
+            ],
+            [
+              "small",
+              "244 M",
+              "約 2 GB",
+              "約 4 倍"
+            ],
+            [
+              "medium",
+              "769 M",
+              "約 5 GB",
+              "約 2 倍"
+            ],
+            [
+              "large",
+              "1550 M",
+              "約 10 GB",
+              "1 倍（基準）"
+            ],
+            [
+              "turbo",
+              "809 M",
+              "約 6 GB",
+              "約 8 倍"
+            ]
+          ],
+          "caption": "數字照 GitHub openai/whisper 的 README 模型表，2026 年 9 月 14 日查證；相對速度是官方在 A100 上轉錄英語、以 large 為 1 倍量到的比值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三個欄位要一起看。顯示記憶體是 README 寫的需求，沒有獨立顯示卡時也能用 CPU 跑，只是慢得多；相對速度是官方在 A100 上轉錄英語量到的，README 自己註明實際速度會因語言、語速與硬體差很多，當成大小之間的比例看就好，不要當成你機器上的秒數。另外，同一個 repo 的模型卡把 turbo 的參數寫成 798 M，跟 README 表上的 809 M 不同。"
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "heading",
+          "text": "安裝：pip 套件、ffmpeg 與第一次下載模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝分兩件事。Python 套件用 README 給的 pip install -U openai-whisper；系統上另外要有命令列工具 ffmpeg，README 列出 Ubuntu 或 Debian、Arch、macOS 的 Homebrew、Windows 的 Chocolatey 與 Scoop 五種寫法。ffmpeg 官網把自己定位成處理多媒體的框架，Whisper 用它把 m4a、mp3 或影片音軌解碼成模型吃得下的音訊；官網只提供原始碼，下載頁另外整理了各平台編譯好的版本。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "安裝 Whisper 與 ffmpeg（指令照官方 README）",
+          "code": "# Python 套件\npip install -U openai-whisper\n\n# ffmpeg：macOS（Homebrew）\nbrew install ffmpeg\n\n# ffmpeg：Ubuntu 或 Debian\nsudo apt update && sudo apt install ffmpeg\n\n# ffmpeg：Windows（Chocolatey）\nchoco install ffmpeg"
+        },
+        {
+          "type": "paragraph",
+          "text": "README 說這套程式碼預期相容 Python 3.8 到 3.11 與近期版本的 PyTorch；PyPI 上 openai-whisper 套件頁標的授權同樣是 MIT，查證當天的最新版本是 20250625。安裝時若出現 tiktoken 相關錯誤，README 說要先裝 Rust 開發環境。模型權重會在第一次指定模型時自動下載，預設放在 ~/.cache/whisper，想換位置用 --model_dir。"
+        },
+        {
+          "type": "heading",
+          "text": "轉第一支檔案：指令列與 Python",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "命令列工具就叫 whisper，把檔名接在後面即可，一次給多個檔案也行。--model 預設是 turbo；--language 指定音檔的語言，不給就讓模型自己偵測；--task 有 transcribe 與 translate 兩個值。輸出格式用 --output_format 選，可選 txt、vtt、srt、tsv、json 與 jsonl，預設值是 all，也就是每種各寫一份。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "命令列：基本用法、指定語言與輸出字幕",
+          "code": "# README 的基本用法，一次轉多個檔案\nwhisper audio.flac audio.mp3 audio.wav --model turbo\n\n# 指定語言、只輸出 srt 字幕，結果放進 out 資料夾\nwhisper meeting.m4a --model turbo --language Chinese --output_format srt --output_dir out\n\n# 把日語錄音翻成英語文字（turbo 不做翻譯，改用多語言模型）\nwhisper japanese.wav --model medium --language Japanese --task translate"
+        },
+        {
+          "type": "paragraph",
+          "text": "Python 這邊三行就有結果：載入模型、呼叫 transcribe()、印出文字。README 說明 transcribe() 會把整個檔案讀進來，用一個 30 秒的滑動視窗逐段處理，所以一小時的會議不必自己先切檔；回傳的字典除了整篇文字，還帶著分段與時間資訊。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "Python：README 的基本轉錄範例",
+          "code": "import whisper\n\nmodel = whisper.load_model(\"turbo\")\nresult = model.transcribe(\"audio.mp3\")\nprint(result[\"text\"])"
+        },
+        {
+          "type": "image",
+          "src": "/guides/whisper-local-transcription/diagram-1.svg",
+          "alt": "流程圖：音檔經 ffmpeg 解碼、切成 30 秒視窗送進 Whisper 模型，輸出逐字稿與字幕檔，全程在本機",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：音檔先交給 ffmpeg 解碼，再切成 30 秒的視窗送進模型，最後一次寫出逐字稿與字幕檔，整段流程都在自己的電腦上完成。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "中文與繁體輸出：語言參數與初始提示詞",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "--language 接受語言代碼與英文名稱兩種寫法，中文可以寫 zh 或 Chinese，粵語是 yue。Hugging Face 上 openai/whisper-large-v3 模型頁的語言標籤列出 99 種語言，套件裡 tokenizer.py 的語言表有 100 筆，多的是 large-v3 新增的粵語。不過模型卡也說，只有大約 10 種語言有很強的結果，不同語言與口音之間的表現並不平均。"
+        },
+        {
+          "type": "link",
+          "text": "Hugging Face 入門：找模型、看授權、下載",
+          "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "輸出繁體還是簡體，官方文件沒有給開關。能用的是 --initial_prompt，官方對它的說明只有一句：提供給第一個視窗的一段提示文字。把一段繁體中文的句子放進去，可以讓模型的用字往繁體靠；--carry_initial_prompt 設成 True 會把這段提示接在每次內部解碼前面，官方同時註明這樣會削弱 --condition_on_previous_text 的效果。這是引導不是保證：官方沒有承諾輸出的字體，成品仍要自己抽查。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用初始提示詞把用字往繁體中文帶",
+          "code": "whisper interview.m4a --model turbo --language Chinese \\\n  --initial_prompt \"以下是繁體中文的訪談逐字稿，用詞請照台灣的習慣。\" \\\n  --output_format srt --output_dir out"
+        },
+        {
+          "type": "heading",
+          "text": "限制與核對：幻覺、重複與長檔",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型卡把限制寫得很直白：因為訓練用的是弱監督與大量帶雜訊的資料，模型的預測可能包含音檔裡根本沒講過的內容，也就是幻覺；官方的推測是模型一邊轉錄，一邊在用語言知識預測下一個字。序列到序列的架構還讓它容易產生重複的文字，官方說束搜尋與溫度排程能緩解一部分、但無法完全解決，而且這兩種毛病在資料較少的語言上可能更嚴重。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的選項清單裡有幾個對應的旋鈕：--condition_on_previous_text 預設是開的，關掉之後段落之間的一致性會變差，但模型比較不會卡在重複的迴圈裡；--word_timestamps 打開逐字時間戳（官方標為實驗性），開了才能用 --hallucination_silence_threshold，在偵測到可能的幻覺時跳過超過設定秒數的靜音。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "逐字稿一定要對過再用",
+          "text": "模型卡寫得很清楚：預測可能包含音檔裡沒有出現的文字。所以逐字稿不要直接當紀錄發出去，人名、數字與結論這幾種一錯就出事的內容，對著時間戳回去聽一次最快。官方同時提醒，不要拿 Whisper 去轉錄未經當事人同意的錄音，也不要在高風險的決策場景裡依賴它的輸出。"
+        },
+        {
+          "type": "heading",
+          "text": "音檔不出門：適合的場合與後續",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本機轉錄真正的差別在資料流向：模型下載回來之後，音檔、逐字稿與字幕檔都只在自己的電腦上處理，不需要帳號、也不必連網路；代價是硬體與時間要自己出，雲端服務則是用費用換掉這些麻煩。會議、訪談或客戶錄音這類內容敏感的場合，通常值得先在本機跑一次。"
+        },
+        {
+          "type": "link",
+          "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外兩件事對成品的影響比換模型還大。一是錄音本身：麥克風擺位、背景雜訊與人聲重疊都會直接變成辨識錯誤，該重錄就重錄、該降噪就先降噪。二是逐字稿之後的整理：Whisper 交給你的是文字與時間戳，決定與下一步還是得有人寫成筆記。不想碰指令列的話，桌面工具也有現成的選擇。"
+        },
+        {
+          "type": "link",
+          "text": "OBS 螢幕錄影入門：畫面來源、音軌與錄製驗收",
+          "url": "https://mokaair.com/zh-TW/life/obs-screen-recording"
+        },
+        {
+          "type": "link",
+          "text": "Adobe Podcast 音訊處理：降噪前後應該檢查什麼",
+          "url": "https://mokaair.com/zh-TW/life/adobe-podcast-audio"
+        },
+        {
+          "type": "link",
+          "text": "逐字稿工具怎麼用：MacWhisper 與 Whisper 桌面工作流",
+          "url": "https://mokaair.com/zh-TW/life/transcription-desktop-tools"
+        },
+        {
+          "type": "link",
+          "text": "會議筆記怎麼寫才有人接手：把決定、負責人與下一步留下來",
+          "url": "https://mokaair.com/zh-TW/life/meeting-notes-action-template"
+        }
+      ],
+      "sources": [
+        {
+          "title": "GitHub openai/whisper：README（模型表、安裝、指令列與 Python 用法）",
+          "url": "https://github.com/openai/whisper",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub openai/whisper：LICENSE（MIT 授權原文）",
+          "url": "https://github.com/openai/whisper/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub openai/whisper：模型卡（訓練資料、限制與幻覺說明）",
+          "url": "https://github.com/openai/whisper/blob/main/model-card.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub openai/whisper：transcribe.py（命令列選項與預設值）",
+          "url": "https://github.com/openai/whisper/blob/main/whisper/transcribe.py",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub openai/whisper：tokenizer.py（支援的語言表）",
+          "url": "https://github.com/openai/whisper/blob/main/whisper/tokenizer.py",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face openai/whisper-large-v3 模型卡（語言標籤、長檔處理與限制）",
+          "url": "https://huggingface.co/openai/whisper-large-v3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face API：openai/whisper-large-v3 的授權標籤與更新時間",
+          "url": "https://huggingface.co/api/models/openai/whisper-large-v3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "PyPI：openai-whisper 套件頁（版本、授權與 Python 需求）",
+          "url": "https://pypi.org/project/openai-whisper/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FFmpeg 官網：About（這個工具是什麼）",
+          "url": "https://ffmpeg.org/about.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FFmpeg 官網：下載頁（官方只提供原始碼，另列各平台建置）",
+          "url": "https://ffmpeg.org/download.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI：Introducing Whisper（發布說明，模型與推論程式碼開源）",
+          "url": "https://openai.com/index/whisper/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

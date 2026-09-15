@@ -1,0 +1,388 @@
+{
+  "slug": "deepseek-privacy-and-data-flow",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+      "description": "DeepSeek 的隱私政策寫明個人資料在中華人民共和國境內蒐集、處理與儲存，輸入與輸出可能用於模型訓練，退出的開關英文版叫 Improve the model for everyone；服務條款則寫明有權以技術手段審查使用行為、建立風險過濾機制。台灣這邊，數位發展部與資通安全署的公告禁的是公務機關，未限制一般民間使用。這篇只引官方文件與政府公告原文，整理資料流向、你按得到的四個動作，以及三種用法的風險差別。",
+      "hero": {
+        "src": "/guides/deepseek-privacy-and-data-flow/hero.jpg",
+        "alt": "插圖：一個對話框沿箭頭連到一座伺服器機櫃，機櫃外有一圈虛線邊界，再分出三條線通向三個圓形的用途符號",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "DeepSeek 的官方文件把三件事寫明了：個人資料在中華人民共和國境內蒐集、處理與儲存；輸入與輸出可能用來訓練模型，但產品內有開關可以關掉；服務條款授權它以技術手段審查使用行為、建立風險過濾機制。台灣的政府公告禁的是公務機關，不是一般民眾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇只引 DeepSeek 自己公布的隱私政策與服務條款，加上數位發展部、行政院與資通安全署的公告原文，不引新聞，也不做政治評價。讀完你會知道資料流向哪裡、哪些權利你用得到、哪些要看居住地，以及哪些內容不該貼進去。"
+        },
+        {
+          "type": "heading",
+          "text": "隱私政策列出的四類資料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "隱私政策分成十三節，英文版與簡體中文版標示的最後更新日都是 2026 年 2 月 10 日。「What Personal Data We Collect」一節分成你主動提供、自動蒐集與從其他來源取得三塊，對一般使用者來說就是四類。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "帳號資料：出生日期、使用者名稱（都寫「在適用的情況下」）、電子郵件與／或電話號碼、密碼。",
+            "輸入內容：文字、語音、提示詞、上傳的檔案與照片、回饋、對話紀錄，以及你提供給模型與服務的其他內容。",
+            "裝置與網路資料：裝置型號、作業系統、IP 位址、裝置識別碼與系統語言，連線就會蒐集。",
+            "使用紀錄：你用了哪些功能、採取哪些動作，加上 cookie 與類似的追蹤技術。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "政策沒有替敏感資料另開一類：你貼進去的合約條文、客戶名單或健保資料，和一句閒聊同樣算「你提供給模型與服務的其他內容」。"
+        },
+        {
+          "type": "heading",
+          "text": "資料存在哪裡、留多久、會不會拿去訓練",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「Where We Store Your Personal Data」一節只有兩句：資料可能存放在你居住國家以外的伺服器；為了提供服務，公司直接在中華人民共和國蒐集、處理與儲存你的個人資料。簡體中文版寫的是依法律法規把境內營運蒐集與產生的個人資訊儲存於中華人民共和國境內，講的是同一件事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "留存期間在「How Long Do We Keep Your Personal Data」一節，沒有天數也沒有月數，只寫在提供服務所必要的期間內保存，並舉例說只要你還有帳號就會保留。帳號在多久，資料就可能留多久。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訓練兩份文件都寫了。隱私政策把訓練與改善自家的機器學習模型與演算法列為用途之一；簡體中文版寫可能將服務蒐集的輸入及對應輸出，用於 DeepSeek 模型訓練和服務的最佳化。服務條款第 4.3 條給了開關：在加密處理、嚴格去識別化且無法還原到特定個人的前提下以最小範圍使用，拒絕的人可以關閉「Improve the model for everyone」退出，簡體中文版把開關寫成「数据用于优化体验」。實際名稱與位置以介面為準。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/deepseek-privacy-and-data-flow/diagram-1.svg",
+          "alt": "資料流向圖：左邊是你的裝置與四類資料，中間是政策寫的位於中華人民共和國境內的伺服器，右邊是三種用途，最下面一排是使用者能做的三個動作",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右是資料的去向，最下面一排是你真的按得到的開關與按鈕；括號裡標的是官方文件的節名或條號。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "你能做的四件事，以及台灣使用者的前提",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「Your Choices」一節寫得很短，實際能做的就下面四件。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "關掉訓練開關：找到條款寫的那個開關並關閉（英文版「Improve the model for everyone」、簡體中文版「数据用于优化体验」）。",
+            "刪除對話：簡體中文版政策寫的路徑是點擊頭像帳號區域，選擇刪除所有對話。",
+            "刪除帳號：主頁、個人資訊、系統設定、帳號管理、註銷帳號。刪了無法重新啟用，內容也拿不回來。",
+            "行使權利：寄信到 privacy@deepseek.com，歐洲地區另有代表信箱。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣使用者要先看清楚一個前提。「Your Rights」一節開頭寫的是「視你居住的地方而定」，才享有查閱、更正、刪除、取得可攜副本，以及拒絕把個人資料用於訓練模型的權利；政策最後的「Supplemental Clause - Jurisdiction-Specific」只列歐洲經濟區、瑞士與英國，沒有列台灣。第 4.3 條的開關人人按得到，但請求刪除或匯出在台灣能不能主張、官方會不會受理，官方文件沒有寫，以官網回覆為準。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "寄給 privacy@deepseek.com 的資料請求信範本（角括號換成你自己的資料）",
+          "code": "Subject: Data Subject Request - Access and Deletion\n\nHello DeepSeek Privacy Team,\n\nI am a DeepSeek account holder located in Taiwan.\nAccount email / phone: <your account>\n\nI would like to request:\n1. A copy of the personal data associated with my account.\n2. Deletion of my chat history and my account.\n3. Confirmation that my inputs and outputs are no longer used\n   for training your models.\n\nPlease confirm whether these requests can be processed for a\nuser located in Taiwan, and what identity verification you need.\n\nThank you.\n"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "table",
+          "header": [
+            "資料類型",
+            "政策怎麼寫",
+            "你能做的"
+          ],
+          "rows": [
+            [
+              "帳號資料",
+              "你主動提供；帳號還在就可能保留",
+              "用不綁工作的信箱註冊，不用了就註銷帳號"
+            ],
+            [
+              "輸入內容與上傳檔案",
+              "可能用於模型訓練與服務最佳化",
+              "關掉第 4.3 條的開關，定期刪除所有對話"
+            ],
+            [
+              "裝置與網路資料",
+              "連線就蒐集，沒有關閉選項",
+              "改用網頁版，並限制瀏覽器的權限與追蹤"
+            ],
+            [
+              "使用紀錄與 cookie",
+              "記錄你用了哪些功能與動作",
+              "用瀏覽器管理 cookie；刪帳號後怎麼處理以官網為準"
+            ],
+            [
+              "存放地與留存期間",
+              "中華人民共和國境內；只寫「必要期間」",
+              "使用者改不了，要換就走第三方託管或本機執行"
+            ]
+          ],
+          "caption": "整理自 DeepSeek 隱私政策與服務條款，2026 年 9 月 14 日查證，政策標示的更新日為 2026 年 2 月 10 日。"
+        },
+        {
+          "type": "heading",
+          "text": "服務條款怎麼寫內容規範與審查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "條款有兩個版本，更新日不同：英文版標 2026 年 3 月 27 日，簡體中文版的《用戶協議》標 2025 年 9 月 5 日，禁止內容的清單也不一樣。英文版第 3.4 條禁的是仇恨、誹謗、辱罵、粗俗的內容，基於種族、性別、宗教、國籍、身心障礙或年齡的歧視，色情猥褻，助長或美化暴力與恐怖主義，剝削傷害未成年人，以及未標示的身分冒充。"
+        },
+        {
+          "type": "paragraph",
+          "text": "簡體中文版第 3.3 條除了淫穢色情、賭博、暴力、教唆犯罪、侮辱誹謗他人，還加上反對憲法所確定的基本原則，危害國家安全、洩露國家秘密、顛覆國家政權、破壞國家統一，損害國家榮譽和利益，歪曲否定英雄烈士事蹟，煽動民族仇恨，宣揚邪教迷信，散布謠言擾亂秩序。你同意哪個版本，適用的就是哪一份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「審查」不必靠猜，條款自己寫了。英文版第 3.3 條寫，為履行法律與合規要求，有權以技術手段審查使用者使用服務的行為，包括但不限於建立風險過濾機制、建立違法內容特徵庫；簡體中文版第 3.4 條多一句對輸入和輸出進行審查。處置在英文版第 8.2 條與簡體中文版第 8.1 條：警示、限期改正、限制帳號功能、暫停使用、關閉帳號、禁止重新註冊、刪除內容；涉嫌違法犯罪的行為會保存記錄，並依法向主管部門報告。"
+        },
+        {
+          "type": "paragraph",
+          "text": "條款寫的是有權審查，不是哪些題目會被擋。實際問到某些題目時回覆被截斷或改口，官方文件沒有逐項說明，以實際使用為準。另外，未滿 18 歲要在法定監護人陪同下閱讀並取得同意；準據法是中華人民共和國大陸地區法律，訴訟由杭州深度求索註冊地有管轄權的法院管轄。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型層的安全限制和平台層的內容審查是兩件事：前者是模型被訓練成不回答，後者是服務端的過濾與記錄。想分清楚，可以看"
+            },
+            {
+              "type": "link",
+              "text": "安全防護機制（Guardrails）是什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "台灣政府的規範管到誰",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "政府公告有三份。2025 年 1 月 31 日，數位發展部發布「公務機關不得使用 Deepseek AI 服務以防範資安風險」，依據是行政院 2019 年公布實施的「各機關對危害國家資通安全產品限制使用原則」，理由寫其運行涉跨境傳輸及資訊外洩等資安疑慮，屬危害國家資通安全產品。適用對象是中央與地方機關（構）、公立學校、公營事業、行政法人，以及自行或委外營運提供公眾活動或使用之場地；關鍵基礎設施提供者與政府捐助之財團法人參考辦理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2025 年 2 月 3 日，行政院發布「卓揆：公務機關全面禁用 Deepseek AI 服務」。2025 年 2 月 20 日，資通安全署的新聞稿標題就是界線：「公務機關全面禁用 DeepSeek AI 服務，未限制一般民間使用」，內文寫雲端服務、APP 及地端下載三種方式公務機關皆不得使用，並寫目前未進一步限制業者提供民眾下載及使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "個人這邊的一般原則在個人資料保護法第 5 條：個人資料之蒐集、處理或利用，應尊重當事人之權益，依誠實及信用方法為之，不得逾越特定目的之必要範圍，並應與蒐集之目的具有正當合理之關聯。你貼進 AI 對話框的別人的個資，責任在你不在工具。"
+        },
+        {
+          "type": "link",
+          "text": "使用中國系 AI App 前的資安檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "三種用法，資料流向完全不同",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "官方 App 與網頁版：伺服器在中華人民共和國境內，輸入與輸出預設可能用於訓練，可用第 4.3 條的開關關掉。功能最完整。",
+            "API 與第三方託管：資料去哪裡看你連到誰。連官方開放平台就是 DeepSeek 的伺服器；官方的開放平台服務條款（2026 年 4 月 22 日發布、4 月 29 日生效）只寫開發者的合規與告知義務，沒寫存放地與是否用於訓練，以官網為準。改連雲端業者託管的版本，就依那個平台的條款。",
+            "在自己電腦跑開放權重：DeepSeek 在 Hugging Face 官方組織頁釋出的 DeepSeek-V4.1-Flash 以 MIT 授權開放權重，跑在本機時輸入不會離開你的機器，代價是硬體與速度。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第三條路的前提是開放權重，看"
+            },
+            {
+              "type": "link",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "；想實際跑一次看"
+            },
+            {
+              "type": "link",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+            },
+            {
+              "type": "text",
+              "text": "。沒用過 DeepSeek 的人先看"
+            },
+            {
+              "type": "link",
+              "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
+              "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "DeepSeek 對話與深度思考：哪些題目該開推理模式",
+              "url": "https://mokaair.com/zh-TW/life/deepseek-chat-and-reasoner"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "個人使用者的取捨清單",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "不要輸入：身分證字號、護照號碼、金融帳號、密碼與驗證碼、病歷與保險資料、公司未公開的合約與客戶名單、原始碼，以及別人的個資。",
+            "風險低：公開資料的翻譯與改寫、寫作草稿、程式語法問題、一般知識問答、行程與清單整理。",
+            "先想一下：含公司內部脈絡的信件、人事內容、法律與醫療問題。把名字、金額與單位換掉再問，或改用本機模型。",
+            "不要做：用公家機關的電腦、網路或帳號使用；貼客戶或病患資料；分享對話之前沒重看一遍。",
+            "習慣動作：用不綁工作的信箱註冊、第一次登入先關掉訓練開關、定期清空對話、不用了就刪帳號。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "別家工具也一樣。記憶功能會留下什麼，看"
+            },
+            {
+              "type": "link",
+              "text": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
+              "url": "https://mokaair.com/zh-TW/life/claude-memory-and-privacy"
+            },
+            {
+              "type": "text",
+              "text": "；把對話分享出去的後果，看"
+            },
+            {
+              "type": "link",
+              "text": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
+              "url": "https://mokaair.com/zh-TW/life/chatgpt-shared-links-privacy"
+            },
+            {
+              "type": "text",
+              "text": "。要問的都是同三個問題：存在哪裡、留多久、會不會拿去訓練。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "刪掉對話不等於資料刪光了",
+          "text": "隱私政策的「Your Choices」只寫你可以透過設定複製或刪除對話紀錄，「How Long Do We Keep Your Personal Data」沒有給任何天數，也沒寫刪除之後備份與日誌多久清掉。把「刪除所有對話」當成讓介面變乾淨、降低下次誤貼的機會，不要當成資料已經從伺服器消失的保證。判斷點在貼進去之前，不在刪除之後。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek 隱私政策（英文版官方頁面：蒐集項目、用途、分享對象、使用者權利、存放地、留存期間、聯絡信箱）",
+          "url": "https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek 隱私政策（簡體中文版官方頁面：境內儲存、輸入與輸出用於模型訓練、刪除對話與註銷帳號的介面路徑）",
+          "url": "https://cdn.deepseek.com/policies/zh-CN/deepseek-privacy-policy.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek 服務條款（英文版官方頁面：第 3.3 條技術審查與風險過濾、第 3.4 條禁止內容、第 4.3 條訓練開關、第 8.2 條處置、第 10.1 條準據法）",
+          "url": "https://cdn.deepseek.com/policies/en-US/deepseek-terms-of-use.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek 用戶協議（簡體中文版官方頁面：第 3.3 條禁止內容清單、第 3.4 條審查輸入與輸出、第 4.3 條退出開關、第 8.1 條處置與報告）",
+          "url": "https://cdn.deepseek.com/policies/zh-CN/deepseek-terms-of-use.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek 開放平台服務條款（官方頁面：開發者的內容合規與告知義務、AI 生成標示、發布日與生效日）",
+          "url": "https://cdn.deepseek.com/policies/en-US/deepseek-open-platform-terms-of-service.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek 官網（營運公司名稱與官方產品連結）",
+          "url": "https://www.deepseek.com/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：deepseek-ai/DeepSeek-V4.1-Flash 官方模型卡（MIT 授權開放權重）",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "數位發展部新聞稿：公務機關不得使用 Deepseek AI 服務以防範資安風險（適用對象、2019 年限制使用原則）",
+          "url": "https://moda.gov.tw/press/press-releases/15104",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "行政院新聞：卓揆：公務機關全面禁用 Deepseek AI 服務",
+          "url": "https://www.ey.gov.tw/Page/9277F759E41CCD91/3ce9fe8f-2f5f-4d1d-8176-6fa4cf622b82",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "數位發展部資通安全署新聞稿：公務機關全面禁用 DeepSeek AI 服務，未限制一般民間使用（雲端服務、APP 及地端下載）",
+          "url": "https://moda.gov.tw/ACS/press/news/press/15296",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "全國法規資料庫：個人資料保護法第 5 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0050021&flno=5",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
