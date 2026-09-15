@@ -247,7 +247,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life \
 | 17 | `insurance-claim-process` | 理賠申請流程：文件、時限與被拒賠的常見原因 | finance, tutorial | 插 |  |  |
 | 18 | `insurance-surrender-lapse` | 解約、停效與復效：繳不出保費時有哪些選項 | finance | 插 |  |  |
 | 19 | `online-insurance-purchase` | 網路投保：能買什麼、和臨櫃差在哪 | finance, software | 插 |  | ✓ |
-| 20 | `insurance-sales-questions` | 聽業務員說明時該問的問題：把話術換回條款 | finance | 插 |  |  |
+| 20 | `insurance-sales-questions` | 聽業務員說明時該問的問題：把口語說法換回條款用語 | finance | 插 |  |  |
 
 第 10–13 篇是旅遊銜接篇。保險文尤其要守「不推薦個別保單」：講的是險種與條款結構，
 **額外的法遵限制寫在 brief 的 2.5 節**（不得出現保險公司或商品名稱、不做費率比較、
