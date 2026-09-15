@@ -10,6 +10,11 @@ This document covers what is implemented. The layer that would actually absorb a
 determined scrape — request limiting at the edge — is **not** implemented; see
 [Known gaps](#known-gaps).
 
+It also covers the other half of bounding a caller, which is not about reading at all:
+[what one account can spend](#bounding-what-a-caller-can-spend) on the AI planner, where the
+request is cheap to make and expensive to serve. Same counters, opposite failure mode — a
+read we cannot count still renders, a paid call we cannot count does not happen.
+
 ## What is enforced
 
 `PublicReadRateLimitMiddleware` (`apps/api/app/middleware.py`) counts `GET`/`HEAD`
@@ -105,6 +110,97 @@ Before moving to `enforce`, look for the shape of the distribution rather than t
 Many sources with a handful of hits each is ordinary traffic near the line, and means the
 threshold is too low. A few sources with thousands is what the limit is for.
 
+## Bounding what a caller can spend
+
+Reads are bounded because copying the catalogue is cheap for whoever does it. AI itinerary
+planning is the opposite problem: every call is cheap for the caller and expensive for us,
+because `AIItineraryPlanner` fails over across the whole provider roster and Gemini repairs
+its own invalid JSON once, so a single request can be several billed completions at
+`AI_PLANNER_MAX_OUTPUT_TOKENS` each.
+
+Creating a blank trip was the widest door. It charges the usage ledger nothing by design
+(planning at creation is free), and the twenty-saved-trips cap it sits behind is undone by
+one `DELETE /trips/{id}` -- so create, delete, create was an unbounded loop. Every
+user-facing path onto the planner now goes through one door, `plan_within_budget`
+(`apps/api/app/ai/itinerary.py`), which counts before it spends.
+
+| Setting | Default | What it does |
+| --- | --- | --- |
+| `AI_PLANNER_USER_BUDGET` | 40 | Planner attempts per account per window |
+| `AI_PLANNER_IP_BUDGET` | 120 | Planner attempts per source address per window |
+| `AI_PLANNER_USER_BUDGET_WINDOW_SECONDS` | 3600 | The window both use |
+
+Per address as well as per account, because an account costs nothing to mint: `/auth/register`
+returns a token immediately, so per account alone is `AUTH_REGISTER_IP_LIMIT` budgets an hour
+from one machine. The account is counted first and the address only if the account is still
+inside its own budget, so one caller on an office network cannot spend their colleagues'
+share on requests that were never going to run.
+
+### Over the budget, planning degrades instead of refusing
+
+This is the difference from every other limit in this document. On trip creation
+(`ai_draft`), `/itinerary/preview` and the deprecated `/itinerary/generate`, a spent budget
+does not produce a `429`; it produces the itinerary the deterministic catalogue planner
+builds, which is the same plan a total provider outage produces. Refusing to create a trip is
+the harshest outcome available and teaches the caller to retry; a plainer first draft costs
+nothing and teaches them nothing. `apps/api/app/ai/trip_parser.py` already makes the same
+trade when its own gate closes.
+
+It says which of the two happened. A budget degrade carries `planner_budget_reached`, not
+`planner_fallback_used`, because the badge for a fallback reads "AI is temporarily
+unavailable" and that is false when a budget, not the roster, is what ran out.
+
+`POST /trips/{id}/intents` is the exception. A refinement is the traveller's sentence, and
+the catalogue planner never reads one, so a catalogue plan there would be the old itinerary
+re-sorted and presented as their request. A spent budget answers `429`
+`planner_budget_reached` instead, and the route still gives its two intent fair-use slots
+back, because the traveller got nothing; the planner budget itself is not given back. A trip
+with no plannable places answers `422` `itinerary_exact_locations_required` on the same
+route, since that is a property of the trip and waiting out a window would not change it.
+
+### A count for an attempt that reached the roster is never refunded
+
+The fair-use limiters around this one give a slot back when every provider failed
+(`trips/intents.py`), which is right: an outage should not also cost a traveller their hour.
+It is also why they cannot be the ceiling -- a caller who can provoke a failure gets the
+calls attempted and the budget handed back, indefinitely. This counter is never refunded for
+an attempt that reached the provider roster, so it bounds the attempts themselves and the
+refunds above stay as they are.
+
+The one refund is when the address budget turns an attempt away. The account is counted
+first, so by then it has already counted that attempt, and that count goes back: no provider
+was asked, and keeping it would let a busy NAT address spend every traveller's own hour on
+attempts that never cost anything.
+
+### An unreachable counter counts as spent
+
+`budget_spent` (`apps/api/app/infra.py`) fails closed, unlike `over_named_rate_limit` which
+guards the public reads above and fails open. A window we cannot count must not become an
+unmetered hour against a provider billed per call, and "take Redis down" is a state worth
+assuming someone would try to produce. It costs availability nothing, because the caller
+still gets an itinerary.
+
+### Requests that can only come back empty are not sent at all
+
+Separate from the budget, and it removes more waste than the budget does for the cheapest
+attack. Every item a provider returns must name a `candidate_key` the request supplied, or
+`normalize_draft` drops it -- so a request with no candidates can only come back empty,
+after the whole roster has been asked and billed. `_load_ai_planner_candidates` returns an
+empty list the moment `match_destination` misses, which made a destination the catalogue
+does not know ("Narnia") the cheapest way there has ever been to spend four vendors at once.
+Those requests now go straight to the catalogue and are not counted, because nothing was
+spent.
+
+### Reading these counters
+
+```bash
+redis-cli hgetall abuse:ai-planner-llm-user:$(date -u +%F)
+redis-cli hgetall abuse:ai-planner-llm-ip:$(date -u +%F)
+```
+
+Same reading as above: many sources with a few hits each means the number is too low; a few
+with hundreds is what it is for.
+
 ## Known gaps
 
 - **Edge rate limiting is written but not known to be applied.** [`ops/nginx/`](../ops/nginx)
@@ -114,6 +210,15 @@ threshold is too low. A few sources with thousands is what the limit is for.
   whether the running proxy matches those files. The runbook's forged-address check is what
   answers that, and until someone runs it on the host, INF-10 in
   [`security-audit-2026-09.md`](security-audit-2026-09.md) is addressed on paper only.
+- **Account farming is bounded, not closed.** `AI_PLANNER_IP_BUDGET` is what stands between
+  a scripted attacker and `AUTH_REGISTER_IP_LIMIT` fresh accounts an hour, each with its own
+  planner budget. That bounds each address, not the attacker: registration is not email
+  verified, and `AUTH_REGISTER_IP_LIMIT` lets one address mint enough accounts to reach
+  `AI_PLANNER_IP_BUDGET` (three at the defaults, 120 / 40), so the residual ceiling for
+  someone with many addresses is `AI_PLANNER_IP_BUDGET` attempts per address per window
+  (120 an hour by default) times however many addresses they have, not the per-account
+  budget times that number. Distinguishing that from a large office is the same measurement
+  problem as the read limits, and the counters above are how it gets answered.
 - **No WAF, CAPTCHA or challenge.** Out of scope by decision: the brief was to bound
   volume without a normal visitor noticing anything.
 - **Whole-dataset endpoints are still unpaginated** — `GET /guides/sitemap`,

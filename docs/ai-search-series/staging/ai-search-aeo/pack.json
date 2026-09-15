@@ -1,0 +1,333 @@
+{
+  "slug": "ai-search-aeo",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AEO（答案引擎最佳化）是什麼：生成式 AI 之前就存在的做法",
+      "description": "AEO（答案引擎最佳化）常被說成生成式 AI 帶來的新學問，但精選摘要、其他人也問與語音助理都比大型語言模型更早。本文用 Google 官方文件說明答案引擎的實際歷史、擷取式答案與生成式答案的差別、AEO 與 GEO 為什麼兩種用法都現行，以及被選為答案為什麼不等於帶來流量。不承諾任何成效。",
+      "hero": {
+        "src": "/guides/ai-search-aeo/hero.jpg",
+        "alt": "一個問句從搜尋框出發，左邊走向一段從單一頁面抓出的原文，右邊走向由多個來源綜合出的新段落",
+        "width": 1,
+        "height": 1
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "AEO 是 answer engine optimization 的縮寫，答案引擎最佳化，指把內容寫成能被搜尋介面直接拿去當答案。行銷文章常說它是生成式 AI 帶來的新學問，但官方文件擺在那裡：Google 自家部落格寫明精選摘要 2014 年 1 月就推出，「其他人也問」展開後顯示的就是精選摘要。答案引擎比大型語言模型更早。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇不再給一個定義，而是分開三件事：答案引擎在生成式 AI 之前長什麼樣、擷取式與生成式答案差在哪（這正是 AEO 與 GEO 吵不完的原因），以及為什麼被選為答案和拿到流量是兩回事。本文不教你怎麼被選上，也不保證任何結果；官方文件自己就寫著，站長無法指定精選摘要。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "答案引擎在生成式 AI 之前就已經在了"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 搜尋中心把精選摘要定義成一種特殊方框：它把一般搜尋結果的格式反過來，先顯示描述片段，內容是從某一個頁面抓出來的一小段文字。Google 自家部落格 2018 年 1 月 30 日的回顧文章寫明，精選摘要是 2014 年 1 月推出的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「其他人也問」不是另一套系統。官方的搜尋外觀元件說明寫著：相關問題群組是一串與原始查詢相關的問題，使用者展開問題時看到的就是精選摘要。語音也有文件：官方說明寫精選摘要在用手機或對裝置說話時特別有用，而 speakable 結構化資料文件說明 Google 助理用這個標記在智慧音箱回答主題新聞，唸出段落時會標示出處；該文件仍標示為 beta，只適用美國與英文內容。再往前看：微軟 2009 年 5 月 28 日的新聞稿就把 Bing 稱為 Decision Engine、說要超越搜尋——那是微軟自己的行銷用語。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「AEO」這個詞是誰先用的"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個詞的來歷本身就不是中立記錄。行銷公司 Kalicube 在自家網站主張答案引擎最佳化是創辦人 Jason Barnard 提出的，同一頁一處寫 2017 年、另一處的圖寫 2018 年，自己就對不起來。這是廠商的行銷主張，但可以佐證一件事：這個詞在聊天機器人普及前就在行銷圈流通，而當時它指的對象是精選摘要、其他人也問與語音結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 搜尋中心 2026 年 7 月更新的生成式 AI 搜尋指南直接處理了這兩個縮寫：文件寫 AEO 指答案引擎最佳化、GEO 指生成式引擎最佳化，都是用來描述提升 AI 搜尋能見度的說法；而從 Google 搜尋的角度，為生成式 AI 搜尋最佳化就是為搜尋體驗最佳化，因此仍然是 SEO。文件也提醒，評估第三方的這類服務時要對照官方指引。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "擷取式答案與生成式答案，差在哪裡"
+        },
+        {
+          "type": "paragraph",
+          "text": "擷取式答案是從單一頁面抓一段既有文字顯示，你的句子原封不動出現。官方文件寫得很具體：點擊精選摘要會把使用者直接帶到頁面上出現在摘要裡的那一段，自動捲動過去；只有瀏覽器不支援或系統無法確定位置時，才帶到最上方。"
+        },
+        {
+          "type": "paragraph",
+          "text": "生成式答案是模型綜合多個來源寫出新的文字。Google 的 AI 功能文件描述 AI 概覽與 AI 模式可能使用查詢展開（query fan-out）：同時發出多個相關子查詢、跨子題抓更多結果再組成回答，並顯示支持回答的連結；文件也寫明兩者可能用不同模型，給的連結不一樣。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這是實作層面的差別。擷取式答案顯示的是你的原文；生成式答案裡，模型寫出的句子可能沒有一個字和你的頁面相同。GEO 這個詞出自一篇論文，它自己的查詢集與指標定義、以及業界用法和論文的落差，寫在 "
+            },
+            {
+              "type": "article",
+              "text": "GEO 那一篇",
+              "kind": "life",
+              "slug": "ai-search-geo"
+            },
+            {
+              "type": "text",
+              "text": "，這裡不重複。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-search-aeo/diagram-1.svg",
+          "alt": "左右兩欄對照擷取式答案與生成式答案，下方標出兩者共用的控制項與同一條流量提醒",
+          "width": 1,
+          "height": 1,
+          "caption": "先看左右兩欄判斷對方講的是哪一種答案，再看最下面那條：被選為答案和拿到點擊，在報表上是兩個數字。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "所以 AEO 和 GEO 是不是同一件事"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩種用法都在流通，而且都不是官方定義。SEO 工具商 Ahrefs 的行銷部落格在 2025 年 4 月那篇直接寫：GEO、LLMO、AEO 是同一件事的三個名字。行銷軟體商 HubSpot 的部落格則寫，有些人把 AEO 留給精選摘要那類直接答案、GEO 用在 AI 聊天機器人的引用，但業界沒有共識標準，HubSpot 自己把 AEO 當成涵蓋全部的上位詞。兩段都是行銷內容，只用來佐證有人這樣用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文不替他們裁決，因為沒有機構有權定義這個縮寫。實用的作法是：看到 AEO 就先問對方講的是擷取式還是生成式答案。下表只整理有官方文件可查的部分。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "面向",
+            "擷取式（精選摘要、其他人也問）",
+            "生成式（AI 概覽、AI 模式）"
+          ],
+          "rows": [
+            [
+              "內容怎麼來",
+              "從單一頁面抓一段既有文字",
+              "綜合多個來源改寫成新段落"
+            ],
+            [
+              "能不能指定",
+              "不能，官方文件的回答是「你不能」",
+              "官方文件寫沒有額外條件與專用標記"
+            ],
+            [
+              "官方退出方式",
+              "nosnippet 擋全部摘要，max-snippet 調短但不保證",
+              "同一組控制項，官方文件明列"
+            ],
+            [
+              "點擊之後",
+              "直接捲到頁面上摘要那一段",
+              "要點連結才會離開 Google"
+            ]
+          ],
+          "caption": "查證於 2026 年 9 月；內容取自 Google 官方文件的敘述，不是成效比較。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「結論先寫、用問答格式」的依據到哪裡為止"
+        },
+        {
+          "type": "paragraph",
+          "text": "這類建議分三級看最清楚。官方文件說明的機制只有幾條：頁面要能被抓取、能被索引、能顯示摘要才有資格；官方也建議用段落、章節與標題整理內容，理由是讀者比較好讀，不是系統會加分。摘要長度控制項反過來說明另一件事：max-snippet 設太短，可顯示的文字不夠，精選摘要就不會出現。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更值得注意的是官方明確否定的部分。那份 2026 年的指南把幾種流傳做法列成「你不需要做的事」：不需要為了 AI 重寫內容、不需要把內容切碎、沒有理想的頁面長度、不需要 llms.txt 這類檔案或特殊標記、不需要製造不真實的品牌提及。至於「答案放在前幾個字」這種規則，官方文件沒有寫。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "官方文件說明的機制：可抓取、可索引、能顯示摘要才有資格，用標題與段落整理內容",
+            "業界普遍做法但沒有官方確認：結論寫在段落開頭、用問句當小標、一問一答的版面",
+            "廠商的行銷主張：說「這樣寫就會被引用」的，要問是誰說的、在什麼範圍量到什麼"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一份指南也寫，結構化資料不是生成式 AI 搜尋的必要條件，沒有專用的 schema.org 標記要加，但仍值得做，因為關係到複合式搜尋結果的資格。標記能做什麼，"
+            },
+            {
+              "type": "article",
+              "text": "結構化資料那一篇",
+              "kind": "life",
+              "slug": "ai-search-structured-data"
+            },
+            {
+              "type": "text",
+              "text": " 寫得更完整。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "被選為答案，不等於帶來流量：零點擊的問題"
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console 的官方定義是：曝光是有人看到你的連結，點擊是有人從 Google 點到你的網站，停留在 Google 平台內部的點擊不算點擊；精選摘要通常算在第 1 個位置。合起來看就知道：被選為答案卻沒人點的頁面，報表上是曝光在動、點擊不動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "外界對零點擊的數字兩邊都有，都要連著各自的設定讀。Google 2018 年那篇回顧文寫精選摘要確實帶來流量；2025 年 8 月 6 日由搜尋部門主管署名的官方部落格稱整體自然點擊量年對年大致持平、點擊品質略有提升，那是 Google 的內部資料，沒有公開底層數據。皮尤研究中心則用自己的樣本量到：出現 AI 摘要時，點擊一般搜尋結果的比例是 8%，沒有 AI 摘要時是 15%，點擊摘要內連結的只有 1%；樣本是 900 位美國成人、68,879 次 Google 搜尋，且只涵蓋 Google。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "兩邊的數字都不是你網站的預測",
+          "text": "兩邊量到的都是各自範圍內的平均，不是任何單一網站會發生的事，也不能推論你改寫版面之後會怎樣。本站沒有做過這類實測，也不提供成效保證。要看自己的情況只能看自己的 Search Console，而且報表回答得了「有多少人從 Google 點進來」，回答不了「有多少人看完答案就走」。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "什麼時候人們會直接問聊天式介面、什麼時候回到搜尋結果慢慢挑，"
+            },
+            {
+              "type": "article",
+              "text": "ChatGPT 搜尋與 Google 的比較",
+              "kind": "life",
+              "slug": "chatgpt-search-vs-google"
+            },
+            {
+              "type": "text",
+              "text": " 已經從讀者角度寫過，這篇不重複。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀到一篇 AEO 文章，先問這三個問題"
+        },
+        {
+          "type": "list",
+          "items": [
+            "它說的答案是擷取式還是生成式？講精選摘要和講 AI 概覽，能驗證的事不一樣。",
+            "這個主張是哪一級？官方文件說明的機制、業界普遍做法但無官方確認，還是廠商的行銷主張？第三級一定說得出是誰說的。",
+            "它有沒有把「被選為答案」講成「會帶來流量」？這兩件事在 Search Console 裡本來就分開計算。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這個系列的其他名詞——SEO、GEO、AIO、LLMO、E-E-A-T、結構化資料、llms.txt——各有各的分歧點，"
+            },
+            {
+              "type": "article",
+              "text": "名詞總覽那一篇",
+              "kind": "life",
+              "slug": "ai-search-terms-index"
+            },
+            {
+              "type": "text",
+              "text": " 把它們排在一起，可以一次看完哪些有官方文件、哪些只有行銷說法。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 搜尋中心：Featured snippets and your website（官方說明頁）",
+          "url": "https://developers.google.com/search/docs/appearance/featured-snippets",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋說明中心：How Google's featured snippets work（官方說明頁）",
+          "url": "https://support.google.com/websearch/answer/9351707",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 官方部落格：A reintroduction to Google's featured snippets（2018-01-30）",
+          "url": "https://blog.google/products-and-platforms/products/search/reintroduction-googles-featured-snippets/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：Visual Elements gallery（相關問題群組的官方定義）",
+          "url": "https://developers.google.com/search/docs/appearance/visual-elements-gallery",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：speakable structured data（Google 助理與智慧音箱，官方文件）",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/speakable",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：AI features and your website（官方說明頁）",
+          "url": "https://developers.google.com/search/docs/appearance/ai-features",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：Guide to Optimizing for Generative AI Features on Google Search（官方文件，含 AEO 與 GEO 的說明）",
+          "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 說明：Performance report 的曝光、點擊與排名定義（官方說明頁）",
+          "url": "https://support.google.com/webmasters/answer/7042828",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 官方部落格：AI in Search is driving more queries and higher quality clicks（2025-08-06，Google 自己的內部資料）",
+          "url": "https://blog.google/products-and-platforms/products/search/ai-search-driving-more-queries-higher-quality-clicks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Pew Research Center：Google users are less likely to click on links when an AI summary appears in the results（2025-07-22 原始研究）",
+          "url": "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "arXiv 2311.09735：GEO: Generative Engine Optimization（論文原文）",
+          "url": "https://arxiv.org/abs/2311.09735",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ahrefs 部落格：GEO, LLMO, AEO… It's All Just SEO（SEO 工具商的行銷內容，佐證混用派的用法）",
+          "url": "https://ahrefs.com/blog/geo-is-just-seo/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HubSpot 部落格：AEO vs. GEO explained（行銷軟體商的行銷內容，佐證區分派的用法與沒有共識）",
+          "url": "https://blog.hubspot.com/marketing/aeo-vs-geo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kalicube：Answer Engine Optimization（廠商自家網站，佐證提出者主張與年份不一致）",
+          "url": "https://kalicube.com/entity/answer-engine-optimization/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft 新聞稿：Microsoft's New Search at Bing.com Helps People Make Better Decisions（2009-05-28）",
+          "url": "https://news.microsoft.com/source/2009/05/28/microsofts-new-search-at-bing-com-helps-people-make-better-decisions/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,358 @@
+{
+  "slug": "ai-image-tools-overview-2026",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+      "description": "給沒用過 AI 生圖的人的地圖：ChatGPT 的圖片生成、Gemini 的 Nano Banana、Midjourney 與可下載的 FLUX 四條路線，各自的入口、免費層限制、付費月費、官方文件寫的參考圖與局部修改能力、輸出的商用授權原文與 AI 標示方式，最後用一張決策樹把用途對應到工具。價格與規格為 2026 年 9 月 14 日當天查官網的結果。",
+      "hero": {
+        "src": "/guides/ai-image-tools-overview-2026/hero.jpg",
+        "alt": "四條彩色路徑從左側的一個提示詞方框分出去，各自通往一個代表不同 AI 生圖工具的圖框",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "第一次要用 AI 生圖，該從哪一個開始？答案是先看你要它做什麼，再看免費層給你什麼。目前的主流是四條路線：ChatGPT 的圖片生成、Gemini 的 Nano Banana、Midjourney，以及 FLUX 這類可以下載到自己電腦跑的開放權重模型。差別不在誰畫得好看，而在免費層的限制、能不能改你手上的圖、輸出能不能拿去賣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把四條路線的入口、月費、官方文件寫的能力與商用授權整理成一張地圖，數字都是 2026 年 9 月 14 日當天查官網的結果，查不到的寫「以官網為準」。最後有一張決策樹把用途對應到工具；操作步驟站上已有專篇，這裡不重複。"
+        },
+        {
+          "type": "heading",
+          "text": "四條路線各是什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的圖片生成長在對話裡：描述你要的圖，生成完可以繼續在同一段對話裡要求修改，手機上也能先畫草圖再叫它變成成品。官方在 2026 年 9 月 8 日換上 ChatGPT Images 2.5，發布文說它的細節更銳利、編輯更精準，生成延遲比 Images 2.0 最多降低 50%。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Images 2.5：圖片生成、局部修改與草圖功能更新",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-chatgpt-images-25-20260908"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 的圖片功能叫「Create images」，主力模型是 Nano Banana 2（代號 gemini-3.1-flash-image），上面有走複雜任務的 Nano Banana Pro，下面有速度取向的 Nano Banana 2 Lite。官方介紹頁把「把參考照片的材質、顏色或風格套到你的主體上」與「做出字清楚的標誌與海報」列為特色。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Midjourney 是獨立的訂閱服務，入口是官方網站的網頁版與 Discord，現行版本 V8.2。文件寫在預設的 1:1 比例下，HD 圖是 2048 乘 2048 像素、SD 圖是 1024 乘 1024 像素。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第四條是開放權重：黑森林實驗室（Black Forest Labs）的 FLUX 與 Stability AI 的 Stable Diffusion 都公開模型權重，你可以呼叫官方 API，也可以下載到自己的電腦跑。官方模型頁列出 FLUX.2 klein 的 4B 版本需要 8.4 GB 顯示記憶體、9B 版本需要 19.6 GB。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-image-generation-guide"
+        },
+        {
+          "type": "link",
+          "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
+          "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+        },
+        {
+          "type": "link",
+          "text": "本機跑 Stable Diffusion 與 Flux：ComfyUI 入門",
+          "url": "https://mokaair.com/zh-TW/life/stable-diffusion-comfyui-setup"
+        },
+        {
+          "type": "heading",
+          "text": "免費層各給你什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的免費方案能生圖，定價頁把它寫成「有限且較慢的圖片生成」，而「帶思考的圖片生成」免費與 Go 都沒有，要 Plus 或 Pro。免費方案說明頁只寫圖片生成有獨立於聊天的用量上限、到了會跳通知，沒有公布每天幾張，實際額度以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 的免費帳號也能生圖，Google 同樣沒有公布張數，方案頁只寫倍數：Google AI Plus 是標準用量的 2 倍、AI Pro 4 倍、AI Ultra 是 AI Pro 的 5 倍或 20 倍。官方也註明圖片生成需求很高、上限可能經常調整，而且每天重置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Midjourney 沒有免費層，文件寫得很直接：Discord 與官方網站目前都沒有免費試用，只有 niji journey 的 iOS 與 Android App 有限定試用，想試只能先付一個月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自己下載模型跑是另一種免費：軟體與權重不用錢，成本換成顯示卡與電費，授權要自己讀。"
+        },
+        {
+          "type": "heading",
+          "text": "付費方案與月費",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下表 Google 用台灣頁的新台幣定價，其他三家只有美元。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "免費層",
+            "付費方案（每月）",
+            "官方寫的特色"
+          ],
+          "rows": [
+            [
+              "ChatGPT Images 2.5",
+              "有，官網寫「有限且較慢」，未公布張數",
+              "Plus 20 美元；Pro 從 100 起（200 方案暫停申購）；Go 以官網為準",
+              "對話中改圖、圈選局部重畫、範本與草圖生圖"
+            ],
+            [
+              "Gemini Nano Banana 2",
+              "有，未公布張數",
+              "AI Plus NT$165；AI Pro NT$650；AI Ultra 從 NT$3,300 起",
+              "預設 1K、可指定 2K 與 4K，10 種比例，多張參考圖"
+            ],
+            [
+              "Midjourney V8.2",
+              "無；只有 niji journey App 有限定試用",
+              "Basic 10、Standard 30、Pro 60、Mega 120 美元（年繳八折）",
+              "Fast GPU 每月 3.3 至 60 小時，Editor 局部重畫與外擴"
+            ],
+            [
+              "FLUX 與 Stable Diffusion",
+              "權重可免費下載，授權依模型而定",
+              "官方 API 依用量計費；商用授權另購",
+              "可離線執行、可微調，klein 4B 為 Apache 2.0"
+            ]
+          ],
+          "caption": "四條路線的方案對照。Google 採台灣頁的新台幣定價，其餘三家為美元，都是 2026 年 9 月的官網價。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個容易誤會的地方：ChatGPT 比 Plus 便宜的 Go 方案含圖片生成、額度比免費高，但說明頁沒有列月費；Pro 的 200 美元方案自 2026 年 9 月 10 日起暫停新申購。Midjourney 年繳打八折，Basic 一年 96 美元、Mega 一年 1,152 美元，Standard 以上在 Relax 模式產圖不限張數，Stealth 模式只有 Pro 與 Mega 有。"
+        },
+        {
+          "type": "heading",
+          "text": "參考圖、局部修改與文字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "參考圖上 Gemini 的文件列得最細：Nano Banana 2 可以吃到 10 個物件與 4 個角色，3 張風格參考要用 Nano Banana Pro。Midjourney 的 Edit Model 最多掛 4 張。ChatGPT 則是上傳既有圖片再描述要改什麼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "局部修改三家都有。ChatGPT 用選取工具圈出要改的區域再描述，或直接在對話裡講；Midjourney 的 Editor 用同一個 Edit Model 做局部重畫與往外擴圖；Gemini 的文件把做法寫成語意遮罩與局部重繪。"
+        },
+        {
+          "type": "paragraph",
+          "text": "輸出規格是 Gemini 寫得最清楚：預設 1K，可指定 2K 與 4K，比例有 1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9 這十種。Midjourney 用比例參數指定，預設 1:1 且不接受小數。ChatGPT 只寫可以換比例重新生成，沒有公布像素對照表。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "同一個人或商品換場景：先看參考圖上限，Nano Banana 2 到 10 個物件、Midjourney 到 4 張。",
+            "圖上要放清楚的字：Google 把它列為 Nano Banana 2 的特色，可先從這條試。",
+            "要一整組風格一致的圖：用風格參考圖比在提示詞裡堆形容詞穩定。",
+            "素材完全不能上傳：只有把模型裝在自己電腦這條路能滿足。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+        },
+        {
+          "type": "link",
+          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+        },
+        {
+          "type": "heading",
+          "text": "輸出的商用權與 AI 標示",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的常見問題寫得最白：在內容政策與條款的前提下，你擁有你用 ChatGPT 產生的輸出，包含重製、販售與製成商品的權利，而且不分免費或付費方案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Midjourney 的文件寫你擁有你建立的所有圖片與影片，取消訂閱也一樣，但有兩個例外：放大別人建立的圖仍屬於原作者；年營收超過 100 萬美元的公司要用 Pro 或 Mega 方案，才能把圖用在公司的商業用途上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開放權重要看授權。官方模型頁寫 FLUX.2 klein 的 4B 版本走 Apache 2.0、可以商用，9B 版本走 FLUX 非商業授權；其他模型的授權各不相同，下載前先看模型卡的 license 欄位，不要假設開源等於可商用。Google 官方頁面沒有寫一句「你擁有生成的圖片」，商用條件以其服務條款為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標示三家都做，形式不同。OpenAI 說支援的圖片同時含 C2PA 內容憑證與 SynthID 浮水印，並提供官方驗證頁。Gemini 產生或編輯的所有媒體都含隱形的 SynthID，看得見的浮水印可在設定裡開關，在印度、南韓、越南要有 AI Ultra 訂閱才看得到這個設定。Midjourney 在每個檔案裡藏一個 ID 標籤，但官方承認截圖、編輯與多數社群網站會把它移除。"
+        },
+        {
+          "type": "link",
+          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+        },
+        {
+          "type": "link",
+          "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼選：從用途回推工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把用途分成四類就好決定：要一張說明用的圖、要改手上的照片、要一整組風格一致的作品、素材不能離開電腦。前兩類用你已經在付錢的聊天工具最省事；第三類是 Midjourney 的主場，代價是沒有免費層；第四類只有開放權重能滿足。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-image-tools-overview-2026/diagram-1.svg",
+          "alt": "決策樹：從四種用途分別指向 ChatGPT、Nano Banana、Midjourney 與開放權重模型，每條路徑標出免費層與授權重點",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左邊的用途出發往右走，每個終點寫出該工具的免費層與授權要注意的地方。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "刷卡前先問三個問題",
+          "text": "一、這張圖要做什麼？改照片和做整組作品用的工具不一樣。二、會不會拿去賣？Midjourney 對年營收超過 100 萬美元的公司有方案要求，開放權重模型也有明寫非商業的版本。三、素材能不能上傳？不能的話就只剩下把模型裝在自己電腦這條路。"
+        },
+        {
+          "type": "link",
+          "text": "Midjourney 入門：網頁版、參數與訂閱",
+          "url": "https://mokaair.com/zh-TW/life/midjourney-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "AI 繪圖風格提示參考：50 種風格描述",
+          "url": "https://mokaair.com/zh-TW/life/ai-art-prompt-styles-reference"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 說明中心｜Images in ChatGPT（ChatGPT Images 2.5 的功能、編輯與比例）",
+          "url": "https://help.openai.com/en/articles/11084440-images-in-chatgpt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI｜Introducing ChatGPT Images 2.5（發布日期與延遲改善）",
+          "url": "https://openai.com/index/introducing-chatgpt-images-2-5/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI｜ChatGPT 定價頁（各方案的圖片生成說明與比較表）",
+          "url": "https://openai.com/chatgpt/pricing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心｜ChatGPT Free Tier FAQ（免費層的獨立用量上限）",
+          "url": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心｜What is ChatGPT Plus?（Plus 月費與 Pro 方案暫停公告）",
+          "url": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心｜What is ChatGPT Go?（Go 方案的圖片生成額度說明）",
+          "url": "https://help.openai.com/en/articles/11989085-what-is-chatgpt-go",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心｜ChatGPT 常見問題（輸出的所有權與商用）",
+          "url": "https://help.openai.com/en/articles/6783457-chatgpt-general-faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心｜內容來源標示：Content Credentials 與 SynthID",
+          "url": "https://help.openai.com/en/articles/8912793-c2pa-in-chatgpt-images",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google｜Gemini API 圖片生成文件（模型、解析度、比例、參考圖上限、SynthID）",
+          "url": "https://ai.google.dev/gemini-api/docs/image-generation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google｜Gemini 圖片生成介紹頁（Create images 的官方特色說明）",
+          "url": "https://gemini.google/overview/image-generation/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google｜Gemini 訂閱方案台灣頁（Google AI Plus、Pro、Ultra 的新台幣月費與用量倍數）",
+          "url": "https://gemini.google/subscriptions/?hl=zh-TW",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 說明中心｜Gemini Apps 訂閱者的用量上限與升級（倍數說明）",
+          "url": "https://support.google.com/gemini/answer/16275805",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 說明中心｜管理 Gemini Apps 的浮水印設定",
+          "url": "https://support.google.com/gemini/answer/17405358",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 文件｜Comparing Midjourney Plans（方案月費、年費與 GPU 時數）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/27870484040333-Comparing-Midjourney-Plans",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 文件｜Free Trials（目前沒有免費試用的官方說明）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/27870399340173-Free-Trials",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 文件｜Using Images & Videos Commercially（所有權與年營收門檻）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/27870375276557-Using-Images-Videos-Commercially",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 文件｜Image Size & Resolution（V8.2 的 HD 與 SD 像素）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/33329374594957-Image-Size-Resolution",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 文件｜Edit Model（參考圖張數、局部重畫與外擴）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/48495453462797-Edit-Model",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 文件｜Content Authenticity（檔案裡的 ID 標籤與驗證）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/48207461163661-Content-Authenticity",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Black Forest Labs｜FLUX.2 klein 模型頁（各變體的授權與顯示記憶體需求）",
+          "url": "https://bfl.ai/models/flux-2-klein",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

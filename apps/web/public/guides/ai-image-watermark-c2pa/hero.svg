@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 圖片的標示與查驗 / Watermarks and content credentials on an AI image</title>
+  <desc id="desc">插圖。左邊是一張圓角的圖片卡片，畫面裡有太陽與兩座山，整片畫面上鋪著淡淡的小圓點，代表肉眼看不見的浮水印與中繼資料；卡片右上角貼著一枚圓形印章，代表附在檔案上的內容憑證。卡片右側有三條虛線把訊號送往右邊的放大鏡，放大鏡裡是被放大的圓點陣列，中間一顆是橘色的，代表查驗工具讀到了標示。畫面下方寫著「標示與查驗」。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- the picture card -->
+  <rect x="240" y="210" width="620" height="420" rx="28" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
+  <rect x="270" y="230" width="560" height="240" rx="12" fill="#E6F0F7"/>
+  <circle cx="360" cy="300" r="42" fill="#D97A2B"/>
+  <polygon points="286,470 410,340 550,470" fill="#2E7D5B"/>
+  <polygon points="480,470 620,370 760,470" fill="#0D6B68"/>
+
+  <g fill="#102A2B" opacity="0.16">
+    <circle cx="300" cy="262" r="5"/><circle cx="378" cy="262" r="5"/><circle cx="456" cy="262" r="5"/>
+    <circle cx="534" cy="262" r="5"/><circle cx="612" cy="262" r="5"/><circle cx="690" cy="262" r="5"/>
+    <circle cx="768" cy="262" r="5"/>
+    <circle cx="300" cy="330" r="5"/><circle cx="378" cy="330" r="5"/><circle cx="456" cy="330" r="5"/>
+    <circle cx="534" cy="330" r="5"/><circle cx="612" cy="330" r="5"/><circle cx="690" cy="330" r="5"/>
+    <circle cx="768" cy="330" r="5"/>
+    <circle cx="300" cy="398" r="5"/><circle cx="378" cy="398" r="5"/><circle cx="456" cy="398" r="5"/>
+    <circle cx="534" cy="398" r="5"/><circle cx="612" cy="398" r="5"/><circle cx="690" cy="398" r="5"/>
+    <circle cx="768" cy="398" r="5"/>
+  </g>
+
+  <rect x="270" y="500" width="420" height="18" rx="9" fill="#E3F0EF"/>
+  <rect x="270" y="536" width="320" height="18" rx="9" fill="#E3F0EF"/>
+  <rect x="270" y="572" width="200" height="18" rx="9" fill="#E3F0EF"/>
+
+  <!-- the credential seal stuck on the corner -->
+  <circle cx="848" cy="206" r="46" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <circle cx="848" cy="206" r="27" fill="none" stroke="#0D6B68" stroke-width="5"/>
+  <circle cx="848" cy="206" r="10" fill="#0D6B68"/>
+
+  <!-- signal travelling to the reader's tool -->
+  <line x1="900" y1="380" x2="995" y2="380" stroke="#5C6B6B" stroke-width="5" stroke-dasharray="12 14" stroke-linecap="round"/>
+  <line x1="900" y1="420" x2="995" y2="420" stroke="#5C6B6B" stroke-width="5" stroke-dasharray="12 14" stroke-linecap="round"/>
+  <line x1="900" y1="460" x2="995" y2="460" stroke="#5C6B6B" stroke-width="5" stroke-dasharray="12 14" stroke-linecap="round"/>
+
+  <!-- magnifier -->
+  <line x1="1229" y1="509" x2="1330" y2="610" stroke="#2F6F9F" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="1140" cy="420" r="126" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="14"/>
+  <g fill="#0D6B68" opacity="0.32">
+    <circle cx="1080" cy="360" r="12"/><circle cx="1140" cy="360" r="12"/><circle cx="1200" cy="360" r="12"/>
+    <circle cx="1080" cy="420" r="12"/><circle cx="1200" cy="420" r="12"/>
+    <circle cx="1080" cy="480" r="12"/><circle cx="1140" cy="480" r="12"/><circle cx="1200" cy="480" r="12"/>
+  </g>
+  <circle cx="1140" cy="420" r="17" fill="#D97A2B"/>
+
+  <text x="800" y="782" font-size="52" font-weight="bold" fill="#102A2B" text-anchor="middle">標示與查驗</text>
+</svg>

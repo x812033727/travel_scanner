@@ -3,6 +3,7 @@
 import asyncio
 import json
 from datetime import date, timedelta
+from types import SimpleNamespace
 from unittest.mock import AsyncMock
 
 import pytest
@@ -117,7 +118,15 @@ async def test_concurrent_same_account_requests_create_one_trip(harness):
 
     async def attempt():
         async with maker() as session:
-            return await trips.save_trip(request, h["user"], session, "concurrent-create-1234")
+            # save_trip meters the planner per address as well as per account; this one
+            # never reaches the planner (manual_blank), so any address will do.
+            return await trips.save_trip(
+                request,
+                h["user"],
+                session,
+                SimpleNamespace(headers={}, client=None),  # type: ignore[arg-type]
+                "concurrent-create-1234",
+            )
 
     before = await h["session"].scalar(select(func.count()).select_from(TripPlan))
     first, second = await asyncio.gather(attempt(), attempt())

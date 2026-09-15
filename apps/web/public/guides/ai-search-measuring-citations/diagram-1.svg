@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">量 AI 引用的三層：誰記錄、能回答什麼 / Three layers of measuring AI citations</title>
+  <desc id="desc">一張由上往下的三層範圍圖，說明量 AI 引用時能拿到什麼證據。第一層是曝光，由搜尋引擎自己的站長工具記錄，能回答你的連結在生成式 AI 功能中被顯示幾次、在哪些頁面與哪些國家，不能回答使用者問了什麼、有沒有人真的看到那個連結，也不含實驗性功能與超出列數上限的資料。第二層是取用，由你自己的伺服器日誌記錄，能回答哪個爬蟲在什麼時間抓了哪一頁，不能回答那次抓走的內容有沒有被寫進回答、有沒有人看到；圖上並標出爬取與使用者觸發是兩種不同的請求。第三層是到站，由你自己的分析工具記錄，能回答這次到站從哪個網域來、網址上帶了什麼參數，不能回答使用者問了什麼、回答引用了哪幾頁，而且來源網頁的政策可能讓來源位址完全不送出。三層之間用虛線箭頭連接，並標明上一層發生不保證下一層發生。圖的右側另有一個框，寫著自己去問一次 AI 只是一則觀察，不是量測。圖的最後註明本圖只說明證據拿不拿得到，不代表任何成效承諾。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">量 AI 引用的三層：誰記錄、能回答什麼</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Impression, fetch and visit are recorded by different parties and answer different questions</text>
+
+  <!-- column headers -->
+  <text x="185" y="144" font-size="18" text-anchor="middle" fill="#5C6B6B">層次與記錄者</text>
+  <text x="600" y="144" font-size="18" text-anchor="middle" fill="#5C6B6B">能回答</text>
+  <text x="1035" y="144" font-size="18" text-anchor="middle" fill="#5C6B6B">不能回答</text>
+
+  <!-- layer 1: exposure -->
+  <rect x="60" y="162" width="250" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="185" y="216" font-size="26" font-weight="bold" text-anchor="middle" fill="#0D6B68">曝光</text>
+  <text x="185" y="252" font-size="17" text-anchor="middle" fill="#5C6B6B">記錄者</text>
+  <text x="185" y="282" font-size="19" text-anchor="middle" fill="#102A2B">引擎的站長工具</text>
+
+  <rect x="340" y="162" width="520" height="150" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="600" y="208" font-size="19" text-anchor="middle" fill="#102A2B">連結在生成式 AI 功能中被顯示幾次</text>
+  <text x="600" y="244" font-size="19" text-anchor="middle" fill="#102A2B">哪些頁面、哪些國家、哪些裝置</text>
+  <text x="600" y="280" font-size="19" text-anchor="middle" fill="#102A2B">依日期看變化</text>
+
+  <rect x="890" y="162" width="520" height="150" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1150" y="208" font-size="19" text-anchor="middle" fill="#102A2B">使用者問了什麼</text>
+  <text x="1150" y="244" font-size="19" text-anchor="middle" fill="#102A2B">有沒有人真的看到那個連結</text>
+  <text x="1150" y="280" font-size="19" text-anchor="middle" fill="#102A2B">實驗功能與超出列數上限的資料</text>
+
+  <!-- arrow 1 -->
+  <path d="M 185 318 L 185 356" stroke="#5C6B6B" stroke-width="4" fill="none" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+  <text x="215" y="346" font-size="17" fill="#5C6B6B">上一層發生，不保證下一層發生</text>
+
+  <!-- layer 2: fetch -->
+  <rect x="60" y="368" width="250" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="185" y="422" font-size="26" font-weight="bold" text-anchor="middle" fill="#2F6F9F">取用</text>
+  <text x="185" y="458" font-size="17" text-anchor="middle" fill="#5C6B6B">記錄者</text>
+  <text x="185" y="488" font-size="19" text-anchor="middle" fill="#102A2B">你的伺服器日誌</text>
+
+  <rect x="340" y="368" width="520" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="600" y="414" font-size="19" text-anchor="middle" fill="#102A2B">哪個 user agent、什麼時間</text>
+  <text x="600" y="450" font-size="19" text-anchor="middle" fill="#102A2B">抓走了哪一頁</text>
+  <text x="600" y="486" font-size="19" text-anchor="middle" fill="#D97A2B">爬取與使用者觸發要分開看</text>
+
+  <rect x="890" y="368" width="520" height="150" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1150" y="414" font-size="19" text-anchor="middle" fill="#102A2B">抓走的內容有沒有進回答</text>
+  <text x="1150" y="450" font-size="19" text-anchor="middle" fill="#102A2B">回答有沒有附上你的連結</text>
+  <text x="1150" y="486" font-size="19" text-anchor="middle" fill="#102A2B">有沒有人看到那則回答</text>
+
+  <!-- arrow 2 -->
+  <path d="M 185 524 L 185 562" stroke="#5C6B6B" stroke-width="4" fill="none" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+  <text x="215" y="552" font-size="17" fill="#5C6B6B">被取用，不代表被引用；被引用，不代表有人看到</text>
+
+  <!-- layer 3: visit -->
+  <rect x="60" y="574" width="250" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="185" y="628" font-size="26" font-weight="bold" text-anchor="middle" fill="#0D6B68">到站</text>
+  <text x="185" y="664" font-size="17" text-anchor="middle" fill="#5C6B6B">記錄者</text>
+  <text x="185" y="694" font-size="19" text-anchor="middle" fill="#102A2B">你的分析工具</text>
+
+  <rect x="340" y="574" width="520" height="150" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="600" y="620" font-size="19" text-anchor="middle" fill="#102A2B">這次到站從哪個網域來</text>
+  <text x="600" y="656" font-size="19" text-anchor="middle" fill="#102A2B">網址上帶了什麼參數</text>
+  <text x="600" y="692" font-size="19" text-anchor="middle" fill="#D97A2B">來源位址可能完全沒有</text>
+
+  <rect x="890" y="574" width="520" height="150" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1150" y="620" font-size="19" text-anchor="middle" fill="#102A2B">使用者問了什麼</text>
+  <text x="1150" y="656" font-size="19" text-anchor="middle" fill="#102A2B">回答引用了哪幾頁</text>
+  <text x="1150" y="692" font-size="19" text-anchor="middle" fill="#102A2B">參數掉了就什麼都不剩</text>
+
+  <!-- footer band -->
+  <rect x="60" y="754" width="1350" height="86" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="735" y="790" font-size="20" font-weight="bold" text-anchor="middle" fill="#102A2B">自己去問一次 AI，是一則有日期的觀察，不是量測</text>
+  <text x="735" y="822" font-size="18" text-anchor="middle" fill="#5C6B6B">樣本只有一個、官方文件寫明回答不保證決定性、而且會個人化</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

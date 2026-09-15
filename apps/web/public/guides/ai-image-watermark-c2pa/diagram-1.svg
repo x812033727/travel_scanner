@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 圖片的標示與查驗流程 / How AI image provenance is embedded, lost and checked</title>
+  <desc id="desc">由左到右四個階段。生成：用 AI 工具產圖或修圖，這一步決定檔案裡會帶什麼標示，手機拍的照片也可能帶內容憑證。嵌入標示：可見浮水印畫在畫面上人眼看得到；隱形浮水印把 SynthID 嵌進像素本身；內容憑證是簽章中繼資料，記錄誰做的、什麼時候做的；IPTC 中繼資料標示數位來源類型。發布：上傳、轉檔、截圖這一段標示會流失，中繼資料可能被平台移除、截圖不帶原圖憑證、壓縮裁切會削弱浮水印，隱形浮水印較耐得住縮放、改色與壓縮。查驗：用 Verify 或 Inspect 讀 C2PA 內容憑證，用 Gemini 問這是不是 AI 生成，用 openai.com/verify 查 OpenAI 的來源訊號，也可以直接看檔案中繼資料的數位來源類型欄位。最後提醒：查不到標示不等於不是 AI 生成，可能是工具沒標、途中被移除，或來自別家 AI，內容憑證只給正面訊號。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">AI 圖片的標示與查驗流程</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Embedding, losing and checking AI image provenance</text>
+
+  <!-- stage 1 -->
+  <rect x="60" y="130" width="330" height="500" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="62" y="132" width="326" height="58" rx="12" fill="#E3F0EF"/>
+  <text x="225" y="172" font-size="22" font-weight="bold" fill="#0D6B68" text-anchor="middle">生成</text>
+  <text x="80" y="246" font-size="18" font-weight="bold" fill="#0D6B68">用 AI 工具產圖</text>
+  <text x="80" y="278" font-size="17" fill="#102A2B">文字生圖或 AI 修圖</text>
+  <text x="80" y="306" font-size="17" fill="#102A2B">都算這一步</text>
+  <text x="80" y="380" font-size="18" font-weight="bold" fill="#0D6B68">這一步決定</text>
+  <text x="80" y="412" font-size="17" fill="#102A2B">檔案裡會帶什麼標示</text>
+  <text x="80" y="486" font-size="18" font-weight="bold" fill="#5C6B6B">不只 AI</text>
+  <text x="80" y="518" font-size="17" fill="#102A2B">手機拍的照片</text>
+  <text x="80" y="546" font-size="17" fill="#102A2B">也可能帶內容憑證</text>
+
+  <line x1="396" y1="380" x2="437" y2="380" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- stage 2 -->
+  <rect x="443" y="130" width="330" height="500" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="445" y="132" width="326" height="58" rx="12" fill="#E3F0EF"/>
+  <text x="608" y="172" font-size="22" font-weight="bold" fill="#0D6B68" text-anchor="middle">嵌入標示</text>
+  <text x="463" y="246" font-size="18" font-weight="bold" fill="#D97A2B">可見浮水印</text>
+  <text x="463" y="278" font-size="17" fill="#102A2B">畫在畫面上，人眼看得到</text>
+  <text x="463" y="334" font-size="18" font-weight="bold" fill="#0D6B68">隱形浮水印</text>
+  <text x="463" y="366" font-size="17" fill="#102A2B">SynthID 嵌進像素本身</text>
+  <text x="463" y="422" font-size="18" font-weight="bold" fill="#2F6F9F">內容憑證 C2PA</text>
+  <text x="463" y="454" font-size="17" fill="#102A2B">簽章中繼資料，記錄誰做</text>
+  <text x="463" y="482" font-size="17" fill="#102A2B">的、什麼時候做的</text>
+  <text x="463" y="540" font-size="18" font-weight="bold" fill="#2E7D5B">IPTC 中繼資料</text>
+  <text x="463" y="572" font-size="17" fill="#102A2B">標示數位來源類型</text>
+
+  <line x1="779" y1="380" x2="820" y2="380" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- stage 3 -->
+  <rect x="826" y="130" width="330" height="500" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <rect x="828" y="132" width="326" height="58" rx="12" fill="#E3F0EF"/>
+  <text x="991" y="172" font-size="22" font-weight="bold" fill="#B8442D" text-anchor="middle">發布</text>
+  <text x="846" y="246" font-size="18" font-weight="bold" fill="#102A2B">上傳、轉檔、截圖</text>
+  <text x="846" y="278" font-size="17" fill="#5C6B6B">標示在這一段流失</text>
+  <text x="846" y="334" font-size="18" font-weight="bold" fill="#B8442D">可能會掉</text>
+  <text x="846" y="366" font-size="17" fill="#102A2B">中繼資料被平台移除</text>
+  <text x="846" y="394" font-size="17" fill="#102A2B">截圖不帶原圖憑證</text>
+  <text x="846" y="422" font-size="17" fill="#102A2B">壓縮裁切削弱浮水印</text>
+  <text x="846" y="490" font-size="18" font-weight="bold" fill="#2E7D5B">通常還在</text>
+  <text x="846" y="522" font-size="17" fill="#102A2B">隱形浮水印較耐得住</text>
+  <text x="846" y="550" font-size="17" fill="#102A2B">縮放、改色與壓縮</text>
+
+  <line x1="1162" y1="380" x2="1203" y2="380" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- stage 4 -->
+  <rect x="1209" y="130" width="330" height="500" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <rect x="1211" y="132" width="326" height="58" rx="12" fill="#E6F0F7"/>
+  <text x="1374" y="172" font-size="22" font-weight="bold" fill="#2F6F9F" text-anchor="middle">查驗</text>
+  <text x="1229" y="246" font-size="18" font-weight="bold" fill="#2F6F9F">Verify 或 Inspect</text>
+  <text x="1229" y="278" font-size="17" fill="#102A2B">讀 C2PA 內容憑證</text>
+  <text x="1229" y="334" font-size="18" font-weight="bold" fill="#2F6F9F">Gemini</text>
+  <text x="1229" y="366" font-size="17" fill="#102A2B">問這是不是 AI 生成</text>
+  <text x="1229" y="422" font-size="18" font-weight="bold" fill="#2F6F9F">openai.com/verify</text>
+  <text x="1229" y="454" font-size="17" fill="#102A2B">查 OpenAI 的來源訊號</text>
+  <text x="1229" y="510" font-size="18" font-weight="bold" fill="#2F6F9F">檔案中繼資料</text>
+  <text x="1229" y="542" font-size="17" fill="#102A2B">看數位來源類型欄位</text>
+
+  <!-- caveat bar -->
+  <rect x="60" y="670" width="1480" height="120" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="800" y="720" font-size="22" font-weight="bold" fill="#B8442D" text-anchor="middle">查不到標示，不等於不是 AI 生成</text>
+  <text x="800" y="756" font-size="17" fill="#102A2B" text-anchor="middle">可能是工具沒標、途中被移除，或來自別家 AI；內容憑證只給正面訊號</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,379 @@
+{
+  "slug": "ai-search-measuring-citations",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "怎麼量 AI 引用：測得到的、測不到的，與不能相信的分數",
+      "description": "AI 回答裡出現自己的網站，到底量不量得到？這篇不重複 Search Console 的操作流程，而是講量測邊界：referrer 依規範預設只送來源網域、伺服器日誌記的是爬蟲取用而不是使用者看到引用、自己問一次 AI 不構成樣本。另外整理 Google 與 Bing 官方報表自己寫明的涵蓋範圍與限制，以及看到「AI 能見度分數」時該追問的三個問題。查證日 2026 年 9 月 14 日。",
+      "hero": {
+        "src": "/guides/ai-search-measuring-citations/hero.jpg",
+        "alt": "插圖：一支量尺只量得到最上面一格，下面兩格是虛線的框，量不到。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AI 回答裡出現自己的網站，量不量得到？結論是：量得到的比想像中少。這篇不重複站上的 "
+            },
+            {
+              "type": "article",
+              "text": "網站經營者看 AI 摘要：引用與成效",
+              "kind": "life",
+              "slug": "google-ai-overviews-for-site-owners"
+            },
+            {
+              "type": "text",
+              "text": "，那篇負責 Search Console 的操作流程；這篇只講量測邊界。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完能把曝光、取用、到站分開記錄，知道每一件由哪份官方文件定義、看不到什麼。本文查證日為 2026 年 9 月 14 日；本站沒做過實測，不承諾排名、索引、引用或流量結果。"
+        },
+        {
+          "type": "heading",
+          "text": "先把三件事分開：曝光、取用、到站",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "量測會亂，多半是三件事被當成同一件：曝光是連結出現在某則 AI 回答裡，取用是程式抓走你的網頁，到站是有人真的點進來。三者的時間、記錄者與證據來源都不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "它們也不互相保證：被取用不代表內容進了回答，被引用不代表有人看到，有人到站也未必知道他從哪個介面來。"
+        },
+        {
+          "type": "heading",
+          "text": "referrer 看得到什麼、看不到什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "referrer（HTTP 的 Referer 標頭）是瀏覽器跳轉時附上的來源位址。依照 W3C 的 Referrer Policy 規範，預設政策是 strict-origin-when-cross-origin：跨站請求只送來源的 origin，不送完整網址；來源是加密連線而目的地不是時不送，指定 no-referrer 時則整個省略。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以 referrer 預設只回答一件事：這次到站從哪個網域來。Google Search Central 在 2012 年 3 月 19 日的官方公告就說明過，Google 用 referrer meta 標籤簡化搜尋結果送出的來源網址，網站收到的是 Google 的裸主機名。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "能回答：這次到站從哪個網域來。",
+            "不能回答：問了什麼、引用哪幾頁、你排第幾、多少人看過那則回答。",
+            "可能完全沒有：設了 no-referrer、從加密連線連到未加密網址，或不是一般跳轉。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "廠商有官方說明嗎？OpenAI 說明中心的發布者常見問題寫明，ChatGPT 會在推薦網址加上 utm_source=chatgpt.com 這個 UTM 參數。那是網址參數，不是 Referer 標頭，複製網址或重新導向就會消失。其他助理是否送出 referrer，查證時沒找到同等級的官方說明，以官方文件為準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「內容被寫進模型」那類主張為什麼從外部拿不到證據，站上的 "
+            },
+            {
+              "type": "article",
+              "text": "LLMO 是什麼：和 LLMOps 差在哪",
+              "kind": "life",
+              "slug": "ai-search-llmo"
+            },
+            {
+              "type": "text",
+              "text": " 分得比較細。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-search-measuring-citations/diagram-1.svg",
+          "alt": "圖解：曝光、取用、到站三層，各自由誰記錄、能回答什麼、不能回答什麼。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下看三層：先看誰記錄，再看它能回答什麼、不能回答什麼。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "伺服器日誌記的是爬蟲取用，不是使用者看到了引用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "日誌裡 AI 相關 user agent 的請求次數常被當成「被引用幾次」，這是兩件事。依照 OpenAI 的爬蟲官方文件，OAI-SearchBot 用於讓網站出現在 ChatGPT 搜尋結果，GPTBot 抓的內容可能用於訓練生成式 AI 基礎模型，ChatGPT-User 則是使用者提問時系統去造訪網頁的請求，官方寫明這類動作由使用者發起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Perplexity 的官方文件做了同一組區分：PerplexityBot 是爬蟲，Perplexity-User 是使用者要求的抓取。"
+        },
+        {
+          "type": "paragraph",
+          "text": "日誌裡的一次請求只證明有程式來取用：不保證內容進了回答，不保證回答附上你的連結，也不保證有人看到。反過來也一樣：回答可能引用你的頁面，用的卻是早就抓好的索引，日誌一行都不會多。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "日誌次數不是曝光次數",
+          "text": "AI 爬蟲的請求次數只是「有沒有被取用」的訊號，不能換算成被引用或被看到的次數，兩者之間沒有官方文件定義過對應關係。分開記，不要相除。"
+        },
+        {
+          "type": "heading",
+          "text": "自己去問一次 AI，不構成量測",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "打開 AI 介面問一題自己的主題，看回答裡有沒有自己的網站——這是有用的定性觀察，但不是量測，三個理由都有官方文件可對照。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一是樣本：一次查詢就是一個樣本，問法還是你自己想的。第二是隨機性：OpenAI 的 API 文件說明 seed 參數時寫明，即使給相同的 seed 與參數也只是盡力穩定取樣，不保證決定性；Google 的 AI 功能文件也寫明，AI 模式與 AI 摘要可能用不同模型與技術，呈現的回答與連結會有差異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三是個人化：Google 搜尋說明中心寫明，AI 模式的個人化功能會參考你先前的搜尋與搜尋服務紀錄裡的活動；Search Console 的說明也提醒，自己搜尋看到的位置可能因搜尋紀錄、所在地而與報表平均值不同。"
+        },
+        {
+          "type": "heading",
+          "text": "官方報表給了什麼，邊界寫在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "有官方定義的曝光數字來自搜尋引擎自己的站長工具。Google Search Central 在 2026 年 6 月 3 日的公告宣布推出 Search 生成式 AI 成效報表，並加註 2026 年 8 月 31 日已對全球開放；說明中心寫明報表涵蓋 AI 摘要與 AI 模式，提供曝光，可依頁面、國家、裝置分組。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方也把邊界寫清楚：不含 Search Labs 實驗的資料；沿用一般成效報表的限制，包括介面 1,000 列上限；2022 年 10 月 19 日的官方說明另外解釋匿名化查詢——兩到三個月內只有數十位以下使用者查過的字串不列進表格，卻算進圖表總數，各列加總本來就不等於總數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Bing Webmaster Tools 在 2026 年 2 月的官方部落格介紹 AI Performance 時寫明，資料涵蓋 Microsoft Copilot 與 Bing 的 AI 摘要等介面，並指出引用次數反映的是被引用頻率，不是頁面重要性、排名或版位，其中的檢索用語只是整體引用活動的樣本。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "管道",
+            "能回答",
+            "不能回答"
+          ],
+          "rows": [
+            [
+              "Search Console 生成式 AI 報表",
+              "AI 摘要與 AI 模式的曝光，可依頁面、國家、裝置分組",
+              "問了什麼、Search Labs 實驗、超出列數上限的資料"
+            ],
+            [
+              "Bing 的 AI Performance",
+              "支援介面的引用次數與被引用頁面",
+              "版位、排名、重要性；檢索用語是樣本"
+            ],
+            [
+              "伺服器日誌",
+              "哪個 user agent、何時、抓哪頁",
+              "內容有沒有進回答、有沒有人看到"
+            ],
+            [
+              "referrer 與網址參數",
+              "到站從哪個網域來、網址帶的參數",
+              "問了什麼、引用哪幾頁；參數掉了就沒有"
+            ]
+          ],
+          "caption": "各管道的涵蓋範圍，依據為各家官方文件與 W3C 規範，2026 年 9 月查證。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把這幾欄當成小型評測來設計會踏實得多——站上的 "
+            },
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）是什麼",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": " 講的就是這套思路。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "看到「AI 能見度分數」時，先問三個問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "市面上有工具會給一個「AI 能見度分數」。這節不評論任何公司，只講方法論：廠商的行銷資料怎麼說是一回事，分數能不能拿來做決定是另一回事，後者看三件事。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "樣本：用了哪些查詢、幾條、誰決定的、多久重跑、帳號與地區怎麼設定？",
+            "稽核：官方說明寫明生成式 AI 的曝光數字要先驗證網站所有權才看得到；第三方沒這條管道，數字來自別的方法。",
+            "重現：同一組問法重跑一次差多少？官方文件已寫明回答不保證決定性且會個人化。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "三個都答不出來，那個數字就不該拿來做決定；對方能不能回答，本身就是資訊。"
+        },
+        {
+          "type": "heading",
+          "text": "可以誠實做的事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "接受量測有邊界，不等於什麼都不做。可以做的是把不同層次的紀錄分開，並寫下來源與限制。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "曝光一欄：只放官方站長工具報表的數字，註明那份報表寫明的涵蓋範圍與限制。",
+            "取用一欄：從日誌統計 AI 相關 user agent，依官方文件註明哪些是爬取、哪些是使用者觸發。",
+            "到站一欄：用 referrer 網域與網址參數辨識來源，接受有一部分無法歸因；業界普遍會另外加自己的追蹤參數，官方文件沒說明它在 AI 介面的效果。",
+            "定性一欄：自己問 AI 的觀察記成有日期、有問法、有帳號狀態的紀錄，不是量測。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "有一句話值得寫進報告：目前沒有公開管道能讓站外的人知道某則 AI 回答被多少人看過、你的連結排第幾。承認邊界，比生出一個看似精確的數字誠實。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "把邊界寫進報告裡",
+          "text": "每一欄數字旁邊寫一行：來源是哪份文件、它說明了哪些限制、查證日期是哪天。日後拿來比對，讀的人才分得出哪些是真的變化，哪些只是報表涵蓋範圍換了。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇是搜尋最佳化名詞系列的一篇，各家縮寫的分歧整理在 "
+            },
+            {
+              "type": "article",
+              "text": "GEO、AEO、AIO 與 SEO 名詞總索引",
+              "kind": "life",
+              "slug": "ai-search-terms-index"
+            },
+            {
+              "type": "text",
+              "text": " 裡。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introducing Search Generative AI performance reports in Search Console（Google Search Central 官方公告）",
+          "url": "https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Generative AI performance report (Search)（Search Console 說明中心）",
+          "url": "https://support.google.com/webmasters/answer/16984139",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "What are impressions, position, and clicks?（Search Console 說明中心）",
+          "url": "https://support.google.com/webmasters/answer/7042828",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "A deep dive into Search Console performance data filtering and limits（Google Search Central 官方公告）",
+          "url": "https://developers.google.com/search/blog/2022/10/performance-data-deep-dive",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Verify your site ownership（Search Console 說明中心）",
+          "url": "https://support.google.com/webmasters/answer/9008080",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Upcoming changes in Google's HTTP Referrer（Google Search Central 官方公告）",
+          "url": "https://developers.google.com/search/blog/2012/03/upcoming-changes-in-googles-http",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AI Features and Your Website（Google Search Central 官方文件）",
+          "url": "https://developers.google.com/search/docs/appearance/ai-features",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Get AI-powered responses with AI Mode in Google Search（Google 搜尋說明中心）",
+          "url": "https://support.google.com/websearch/answer/16011537",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Referrer Policy（W3C Web Application Security 工作組編輯草案）",
+          "url": "https://w3c.github.io/webappsec-referrer-policy/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Referrer Policy（W3C 候選推薦標準快照）",
+          "url": "https://www.w3.org/TR/referrer-policy/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bots（OpenAI 官方開發者文件，說明 GPTBot、OAI-SearchBot 與 ChatGPT-User）",
+          "url": "https://developers.openai.com/api/docs/bots",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Publishers and Developers FAQ（OpenAI 說明中心）",
+          "url": "https://help.openai.com/en/articles/12627856-publishers-and-developers-faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chat Completions API reference 的 seed 參數說明（OpenAI 官方開發者文件）",
+          "url": "https://developers.openai.com/api/docs/api-reference/chat/create",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Perplexity Crawlers（Perplexity 官方文件）",
+          "url": "https://docs.perplexity.ai/docs/resources/perplexity-crawlers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Introducing AI Performance in Bing Webmaster Tools Public Preview（Bing Webmaster 官方部落格）",
+          "url": "https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
