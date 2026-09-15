@@ -1,0 +1,68 @@
+{
+  "checkedOn": "2026-09-14T11:55:47.892Z",
+  "cli": "0.59.0",
+  "node": "v24.19.0",
+  "platform": "win32",
+  "method": "installed CLI modules including ExtensionManager; authored Node/Git fixtures",
+  "cloudCalls": 0,
+  "notTested": [
+    "native extension terminal wrapper exits reliably (Windows libuv failure recorded separately)",
+    "model response quality and actual adherence",
+    "authenticated interactive session resume",
+    "macOS/Linux execution",
+    "upgrade to a different Gemini CLI version"
+  ],
+  "results": [
+    {
+      "step": "initial",
+      "memoryShowMarkers": [
+        "GLOBAL_RULE",
+        "PROJECT_RULE",
+        "IMPORT_RULE"
+      ],
+      "newToolContextMarkers": [],
+      "fileCount": 2
+    },
+    {
+      "step": "frontend-read",
+      "memoryShowMarkers": [
+        "GLOBAL_RULE",
+        "PROJECT_RULE",
+        "IMPORT_RULE"
+      ],
+      "newToolContextMarkers": [
+        "FRONTEND_RULE"
+      ],
+      "fileCount": 3
+    },
+    {
+      "step": "backend-read",
+      "memoryShowMarkers": [
+        "GLOBAL_RULE",
+        "PROJECT_RULE",
+        "IMPORT_RULE"
+      ],
+      "newToolContextMarkers": [
+        "BACKEND_RULE"
+      ],
+      "fileCount": 4
+    },
+    {
+      "step": "reload-after-removal",
+      "memoryShowMarkers": [
+        "GLOBAL_RULE",
+        "PROJECT_RULE"
+      ],
+      "newToolContextMarkers": [],
+      "fileCount": 2
+    },
+    {
+      "step": "untrusted",
+      "memoryShowMarkers": [
+        "GLOBAL_RULE"
+      ],
+      "newToolContextMarkers": [],
+      "fileCount": 1
+    }
+  ]
+}

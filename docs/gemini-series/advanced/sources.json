@@ -1,0 +1,278 @@
+{
+  "checkedOn": "2026-09-14",
+  "scope": "規劃時官方功能與限制查閱；不是平台、範例、付費呼叫或排程的執行驗證。",
+  "sources": [
+    {
+      "id": "prompts",
+      "title": "Google Workspace 提示詞",
+      "url": "https://support.google.com/docs/answer/15013615?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "角色、任務、背景、格式與迭代原則；題庫與評分方法是本系列設計。"
+    },
+    {
+      "id": "gems",
+      "title": "Gems 使用方式",
+      "url": "https://support.google.com/gemini/answer/15236405?hl=en-GB",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "Gems 可重用指示；客服範例、拒答題庫與回歸流程為教學設計。"
+    },
+    {
+      "id": "canvas",
+      "title": "Canvas 文件與小工具",
+      "url": "https://support.google.com/gemini/answer/16047321?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "可編輯程式、查看預覽錯誤及匯出；共享資料與年齡條件需於操作日重查。"
+    },
+    {
+      "id": "workspace",
+      "title": "Connected Apps",
+      "url": "https://support.google.com/gemini/answer/13695044?hl=zh-Hant",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "連結服務因帳號與權限而異；交接範例不假設可自動寫入每個應用程式。"
+    },
+    {
+      "id": "sheets",
+      "title": "Gemini in Sheets",
+      "url": "https://support.google.com/docs/answer/14356410?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "公式、資料與圖表功能；清理基準值與驗收表由作者另行準備。"
+    },
+    {
+      "id": "live",
+      "title": "Gemini Live（Android）",
+      "url": "https://support.google.com/gemini/answer/15274899?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "行動語音、鏡頭與螢幕互動；iPhone 版另需逐平台驗證，不能沿用 Android 結果。"
+    },
+    {
+      "id": "spark",
+      "title": "Gemini Spark",
+      "url": "https://support.google.com/gemini/answer/17094507?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "目前有年齡、個人帳號、方案、活動設定與地區條件；Spark 排程與一般 scheduled actions 不同。"
+    },
+    {
+      "id": "notebook-sources",
+      "title": "筆記本來源管理",
+      "url": "https://support.google.com/gemininotebook/answer/16215270?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "來源類型與更新流程；來源快照、版本表與回歸問題屬教學設計。"
+    },
+    {
+      "id": "notebook-integration",
+      "title": "Gemini 與 Gemini Notebook 的整合差異",
+      "url": "https://support.google.com/gemininotebook/answer/17003757",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "Gemini Notebook 依筆記本來源回答；Gemini 可另用搜尋等工具，Studio 產出入口不同。官方頁面的共享與聊天可見性敘述需寫作時再核對，不在此推導分享保證。"
+    },
+    {
+      "id": "notebook-quiz",
+      "title": "筆記本記憶卡與測驗",
+      "url": "https://support.google.com/gemininotebook/answer/16958963?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "支援記憶卡與測驗；錯題追蹤表與間隔複習排程由本教學自行建立。"
+    },
+    {
+      "id": "notebook-media",
+      "title": "筆記本語音摘要",
+      "url": "https://support.google.com/gemininotebook/answer/16212820?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "語音摘要與語言設定；影片格式與下載另依影片官方頁查證。"
+    },
+    {
+      "id": "notebook-video",
+      "title": "筆記本影片摘要",
+      "url": "https://support.google.com/gemininotebook/answer/16454555?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "影片摘要的格式與語言選擇；產出一致性及下載流程須在具使用資格帳號驗證。"
+    },
+    {
+      "id": "deep-research",
+      "title": "Gemini Deep Research",
+      "url": "https://support.google.com/gemini/answer/15719111?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "研究計畫、來源與報告；證據矩陣及更新清單是本系列方法。"
+    },
+    {
+      "id": "images",
+      "title": "Gemini 圖片生成與編輯",
+      "url": "https://support.google.com/gemini/answer/14286560?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "圖片產出、上傳參考及編輯；風格一致性和局部修改效果須看實際結果。"
+    },
+    {
+      "id": "flow-create",
+      "title": "Google Flow 建立影片",
+      "url": "https://support.google.com/flow/answer/16353334?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "文字、參考素材與起訖影格操作；功能依所選模型而異。"
+    },
+    {
+      "id": "flow-models",
+      "title": "Flow 模型與功能對照",
+      "url": "https://support.google.com/flow/answer/16352836?hl=en",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "必須逐模型確認支援的素材、影格與輸出設定，不能共用一份過時規格表。"
+    },
+    {
+      "id": "cli-memory",
+      "title": "GEMINI.md",
+      "url": "https://geminicli.com/docs/cli/gemini-md/",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "階層載入、JIT 上下文、匯入與 /memory show、reload；載入先後不等於模型必然遵守的衝突優先序。"
+    },
+    {
+      "id": "cli-settings",
+      "title": "CLI 設定參考",
+      "url": "https://geminicli.com/docs/reference/configuration/",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "設定來源、欄位與優先序要綁定實際測試版本。"
+    },
+    {
+      "id": "cli-commands",
+      "title": "自訂斜線指令",
+      "url": "https://geminicli.com/docs/cli/custom-commands/",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "TOML、參數與工具插值；shell 範例需按 PowerShell / POSIX 分開驗證。"
+    },
+    {
+      "id": "cli-extensions",
+      "title": "建立 CLI Extensions",
+      "url": "https://geminicli.com/docs/extensions/writing-extensions/",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "擴充 manifest 與打包；安裝及回退流程另做實際乾淨環境測試。"
+    },
+    {
+      "id": "cli-skills",
+      "title": "Agent Skills",
+      "url": "https://geminicli.com/docs/cli/skills/",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "技能按需啟用，與工作區一般上下文用途不同；不要和 Gems 或 Spark Skills 混為一談。"
+    },
+    {
+      "id": "cli-sessions",
+      "title": "CLI 工作階段與歷史",
+      "url": "https://geminicli.com/docs/cli/tutorials/session-management/",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "恢復對話與保留歷史；Git 差異及檔案恢復另行核對。"
+    },
+    {
+      "id": "cli-mcp",
+      "title": "CLI MCP 伺服器",
+      "url": "https://geminicli.com/docs/tools/mcp-server/",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "工具探索、配置與通訊；本機查詢服務的資料權限由教學程式明確實作。"
+    },
+    {
+      "id": "mcp-sdk",
+      "title": "MCP 官方 Python SDK",
+      "url": "https://github.com/modelcontextprotocol/python-sdk",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "供本機唯讀伺服器使用；實作時鎖定 release 與完整依賴。"
+    },
+    {
+      "id": "cli-hooks",
+      "title": "CLI Hooks",
+      "url": "https://geminicli.com/docs/hooks/",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "掛鉤在事件中同步執行；阻擋語意與退出碼需查對應事件。"
+    },
+    {
+      "id": "cli-hooks-reference",
+      "title": "CLI Hooks 事件規格",
+      "url": "https://geminicli.com/docs/hooks/reference/",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "各事件的 JSON 輸入、回應及退出碼語意；正式範例須實測拒絕、格式錯誤與逾時。"
+    },
+    {
+      "id": "cli-subagents",
+      "title": "CLI Subagents",
+      "url": "https://geminicli.com/docs/core/subagents/",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "目前文件寫預設啟用，設定仍包含 experimental 路徑；不可僅由欄位名稱斷言所有子功能均為實驗或必須手動開啟。"
+    },
+    {
+      "id": "cli-headless",
+      "title": "Headless 模式",
+      "url": "https://geminicli.com/docs/cli/headless/",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "JSON、stream-json、退出碼；續跑帳本與去重屬教學腳本，不是 CLI 的批次排程保證。"
+    },
+    {
+      "id": "github-workflows",
+      "title": "Google 官方 run-gemini-cli Action",
+      "url": "https://github.com/google-github-actions/run-gemini-cli",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "GitHub Actions 整合入口；教學採手動觸發、最小權限與 artifact，釘選 commit SHA。"
+    },
+    {
+      "id": "api-functions",
+      "title": "Function calling",
+      "url": "https://ai.google.dev/gemini-api/docs/function-calling",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "模型回傳函式名稱與參數，應用程式驗證並執行工具，再送回結果。"
+    },
+    {
+      "id": "api-search",
+      "title": "Google Search grounding",
+      "url": "https://ai.google.dev/gemini-api/docs/google-search",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "搜尋引用、回應支援片段及呈現要求；引用不等於結論正確。"
+    },
+    {
+      "id": "api-file-search",
+      "title": "File Search",
+      "url": "https://ai.google.dev/gemini-api/docs/file-search",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "內建檢索、索引與引用；目前不能與 Google Search / URL Context 同請求組合，Live API 亦不支援。"
+    },
+    {
+      "id": "api-cache",
+      "title": "Context caching",
+      "url": "https://ai.google.dev/gemini-api/docs/caching",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "Interactions 只支援隱含快取；手動建立快取要走 generateContent，需分開範例。"
+    },
+    {
+      "id": "api-batch",
+      "title": "Batch API",
+      "url": "https://ai.google.dev/gemini-api/docs/batch-api",
+      "checkedOn": "2026-09-14",
+      "verification": "official-document-review",
+      "note": "目前只供 generateContent；建立 job 非冪等，整體完成後仍須查每項失敗。"
+    }
+  ]
+}

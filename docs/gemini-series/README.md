@@ -2,6 +2,8 @@
 
 本系列有一個總目錄和 50 篇繁體中文教學，使用既有生活分享文章系統。網址為 `/zh-TW/life/gemini-guide`。完成編寫、程式測試或本機瀏覽器驗收，都不代表正式站已部署或發布；正式發布紀錄另存於發布日誌。
 
+第二階段 [36 篇深入教學（51–86）](advanced/README.md) 的原稿、內容包、72 張原創配圖、可下載練習與作者本機檢查均已製作；實際 Next 頁面也完成 [50／86 篇兩種可見狀態的驗證](advanced/platform/next-integration/README.md)。2026-09-15 已建立 [87 頁本機候選包](advanced/release/README.md) 及 [逐篇待驗成果](advanced/release/ACCEPTANCE.md)。33 篇仍需帳號、模型或裝置實測，尚未整套發布。現行正式 catalogue 保持 50 篇；來源日期、外部實測與發布檢查完成後才開放新增內容。
+
 ## 維護來源
 
 - `apps/web/lib/guide-series.json`：唯一的篇序、slug、分類、難度、平台、用途、關鍵字、先修、延伸、路線與指令定位清單。

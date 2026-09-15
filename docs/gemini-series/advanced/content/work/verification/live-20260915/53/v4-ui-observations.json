@@ -1,0 +1,152 @@
+[
+  {
+    "case": "reset",
+    "observedAt": "2026-09-15T03:18:02.312Z",
+    "pass": true,
+    "width": 360,
+    "scrollWidth": 360,
+    "values": {
+      "cr": "",
+      "hc": "",
+      "up": "",
+      "vf": ""
+    },
+    "results": [
+      "9000.00",
+      "900.00",
+      "9900.00",
+      "495.00"
+    ],
+    "visible": false,
+    "announcement": "表單已重設",
+    "errorsCleared": true,
+    "ariaInvalidCleared": true
+  },
+  {
+    "case": "keyboard",
+    "observedAt": "2026-09-15T03:18:02.480Z",
+    "pass": true,
+    "width": 360,
+    "scrollWidth": 360,
+    "values": {
+      "cr": "10",
+      "hc": "20",
+      "up": "350",
+      "vf": "2000"
+    },
+    "results": [
+      "9000.00",
+      "900.00",
+      "9900.00",
+      "495.00"
+    ],
+    "visible": true,
+    "announcement": "計算完成，請查看下方結果",
+    "focusOrder": [
+      {
+        "id": "up",
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "id": "vf",
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "id": "cr",
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "id": "",
+        "tag": "BUTTON",
+        "text": "計算"
+      }
+    ]
+  },
+  {
+    "case": "change-status",
+    "observedAt": "2026-09-15T03:18:02.501Z",
+    "pass": true,
+    "width": 360,
+    "scrollWidth": 360,
+    "values": {
+      "cr": "10",
+      "hc": "20",
+      "up": "351",
+      "vf": "2000"
+    },
+    "results": [
+      "9000.00",
+      "900.00",
+      "9900.00",
+      "495.00"
+    ],
+    "visible": false,
+    "announcement": "輸入已變更，結果已隱藏，請重新計算"
+  },
+  {
+    "case": "root-font-200-test-fixture",
+    "observedAt": "2026-09-15T03:18:16.928Z",
+    "pass": true,
+    "width": 360,
+    "scrollWidth": 345,
+    "values": {
+      "cr": "100",
+      "hc": "10000",
+      "up": "10000000",
+      "vf": "10000000"
+    },
+    "results": [
+      "100010000000.00",
+      "100010000000.00",
+      "200020000000.00",
+      "20002000.00"
+    ],
+    "visible": true,
+    "announcement": "計算完成，請查看下方結果",
+    "file": "budget-v4-text200-test.html",
+    "rootFontScale": 2,
+    "scope": "Independent root-font test fixture; native browser zoom and physical device testing not verified."
+  },
+  {
+    "case": "desktop-reset-keyboard",
+    "observedAt": "2026-09-15T03:22:05.059Z",
+    "pass": true,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "values": {
+      "cr": "10",
+      "hc": "20",
+      "up": "350",
+      "vf": "2000"
+    },
+    "results": [
+      "9000.00",
+      "900.00",
+      "9900.00",
+      "495.00"
+    ],
+    "visible": true,
+    "announcement": "計算完成，請查看下方結果",
+    "focusOrder": [
+      "up",
+      "vf",
+      "cr",
+      "計算"
+    ],
+    "resetFieldsBlank": true,
+    "resetErrorsCleared": true,
+    "resetAriaInvalidCleared": true
+  },
+  {
+    "case": "desktop-layout",
+    "observedAt": "2026-09-15T03:22:15.227Z",
+    "pass": true,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "visual": "Desktop screenshot successfully inspected with the tab screenshot API: centered form, readable labels, buttons and result amounts; not saved. Earlier full-page screenshot timed out and clipped screenshot was blank.",
+    "visualCheckedAt": "2026-09-15T03:23:35.448Z"
+  }
+]

@@ -1,0 +1,332 @@
+{
+  "slug": "gemini-api-function-calling-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 181,
+  "locales": {
+    "zh-TW": {
+      "title": "Function calling 實作：參數驗證、工具回傳與有限次迴圈",
+      "description": "本篇把工具呼叫做成能檢查、能停下來的程式：Gemini 提出訂單查詢要求，Python 驗證函式名稱與參數，讀取兩筆合成訂單，再把結果送回模型。完成後，你會分辨模型提出要求、本機執行成功與最終回答三個不同階段，並知道查無資料、非法參數和迴圈上限各自怎麼處理。",
+      "hero": {
+        "src": "/guides/gemini-api-function-calling-workshop/hero.jpg",
+        "alt": "工具呼叫：驗證再執行教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "本篇把工具呼叫做成能檢查、能停下來的程式：Gemini 提出訂單查詢要求，Python 驗證函式名稱與參數，讀取兩筆合成訂單，再把結果送回模型。完成後，你會分辨模型提出要求、本機執行成功與最終回答三個不同階段，並知道查無資料、非法參數和迴圈上限各自怎麼處理。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-api-function-calling-workshop/diagram-1.svg",
+          "alt": "宣告：只讀合成訂單：名稱與參數白名單；檢查：查無與非法分開：不動態執行字串；回傳：保留呼叫識別碼：完整步驟交回模型；停止：次數與時間有界：不把逾時當重送",
+          "width": 1600,
+          "height": 900,
+          "caption": "模型提出要求，程式決定能做什麼。本機協定已測；真實模型待驗。原創概念圖，不是操作截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "準備：固定 SDK 與唯讀資料",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀 "
+            },
+            {
+              "type": "link",
+              "text": "第一次 API 呼叫",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "結構化輸出",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "費用和錯誤處理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": "。本篇採 Python、google-genai 2.23.0，以及查證日官方示範的 gemini-3.8-flash；先在自己的專案確認模型可用。Windows 本機已做真實 SDK 對本機 HTTP 測試，沒有把合成回應當作 Google 雲端效果。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "下載包的 orders.json 只有 DEMO-001 與 DEMO-002，沒有客戶個資，也不連正式訂單庫。第一筆是兩個青禾杯、包裝中，第二筆是一本筆記本、已出貨。請先打開檔案認識資料，再建立虛擬環境安裝 requirements.txt；不要把本練習直接接到會改訂單狀態的函式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這裡使用 Interactions API，請求採 input，模型步驟在 steps；不把 generateContent 的 function_response 或 contents 欄位混進來。本機測試不需金鑰，只有明確加上 --live 才會讀取環境變數並送出模型請求。費用上限應先由自己的專案與這次練習預算決定。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：工具宣告與程式驗證各司其職",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "打開 lablib/function_loop.py，工具只宣告 lookup_order，參數只有字串 order_id。Schema（資料結構規格）告訴模型應提供什麼，真正允許執行什麼仍由 Python 判斷。即使模型說參數已驗證，也不能省略自己的檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "lookup 函式先核對名稱，再確認參數恰好包含 order_id，最後檢查 DEMO 加三位數的格式。多出 delete、參數型別不對或要求其他函式，都回傳明確錯誤；合法格式但找不到訂單，則回傳 found 為 false。這兩種情況要分開，才不會把使用者查不到的訂單誤稱成程式故障。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "狀況",
+            "本機處理",
+            "不應發生的行為"
+          ],
+          "rows": [
+            [
+              "DEMO-001",
+              "回傳合成訂單",
+              "修改資料"
+            ],
+            [
+              "DEMO-999",
+              "明示查無資料",
+              "猜測出貨狀態"
+            ],
+            [
+              "多出 delete 參數",
+              "回傳參數錯誤",
+              "忽略多餘欄位繼續執行"
+            ],
+            [
+              "要求 delete_order",
+              "拒絕未知工具",
+              "用名稱動態尋找任意函式"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇沒有 eval、動態模組匯入或把工具名稱拼進終端機命令。工具要求只是待檢查的資料，不能因為來自模型，就取得 Python 程式本身的所有權限。將來新增工具時，每一個都要另外定義輸入、授權與結果規格。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：讓模型提出要求，再由本機查詢",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先跑下載包的測試，確認正常查詢、未知訂單與非法參數都得到預期分類。準備實際連線時，依入門篇設定 GEMINI_API_KEY；不要把金鑰貼在提示詞或 orders.json。從下載包根目錄執行下面的命令，輸出檔另存到自己的練習資料夾。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "工具查詢練習",
+          "code": ".venv/Scripts/python.exe 81/function-loop/main.py \"請查 DEMO-001 的品項、數量與狀態\" --live --output order-run.json\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "程式送出包含工具宣告的請求，讀取所有 function_call 步驟，而不是假設第一個步驟一定是工具。每次最多接受四個工具要求，call ID 必須存在且不能重複；重複 ID 會停止，避免把同一份要求誤執行多次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "觀察 order-run.json 的 trace：每輪有請求編號、Interaction ID、狀態、用量與工具結果。看到 function_call 不代表已執行；必須再找到同一 call ID 的本機結果。模型最後用自然語言回答，也不代表數量正確，仍要與兩筆固定資料逐項比對。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：保留完整上下文並送回結果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這個範例採 store=False 的無伺服器狀態模式，因此每輪重新送出完整歷史。初始 user_input、模型原樣回傳的所有 steps，以及本機產生的 function_result 都要保留。尤其 thought signature（思考簽章）是模型回傳資料，不能自行重建或只保留看得懂的文字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "function_result 必須帶上原工具名稱與 call_id，結果以文字內容包含 JSON。下一輪仍送同一份工具宣告；宣告與歷史是不同設定，不能以為前次已給工具就永遠生效。下載包已把這些步驟串在一起，修改時優先保持欄位對應清楚。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "main.py",
+          "code": "\"\"\"Run one bounded synthetic-order conversation only with --live.\"\"\"\nimport argparse\nimport json\nimport sys\nfrom pathlib import Path\n\nsys.path.insert(0, str(Path(__file__).resolve().parents[2]))\nfrom lablib.common import client_for, model_name, read_json, write_json\nfrom lablib.function_loop import run\n\n\ndef main():\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"question\")\n    parser.add_argument(\"--live\", action=\"store_true\")\n    parser.add_argument(\"--output\", type=Path, default=Path(\"order-run.json\"))\n    args = parser.parse_args()\n    if not args.live:\n        parser.error(\"Use local tests first; --live sends up to three paid model requests.\")\n    with client_for(\"interactions\") as client:\n        result = run(client.interactions.create, args.question, read_json(Path(__file__).parent.parent/\"orders.json\"), model_name())\n    write_json(args.output, result)\n    print(json.dumps({\"status\": result[\"status\"], \"requests\": len(result[\"trace\"])}, ensure_ascii=False))\n\n\nif __name__ == \"__main__\":\n    main()\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期流程是模型要求查詢、本機得到 found 與訂單、模型回覆答案。真正的模型可能直接回答、不使用工具或回傳不同狀態；程式會留下 no_answer、unexpected_status 等分類。不要把這些分支改成固定成功訊息，否則只能證明畫面有字，無法證明工具有參與。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：限制迴圈，驗證故障結果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "run 預設最多三次模型請求，整段期限四十五秒，單次網路逾時最多十五秒。如果最後一次仍要求工具，程式回傳 request_limit，且不再執行無法送回結果的工具。對唯讀函式這能節省多餘工作；對將來可能有副作用的工具，這種邊界更加重要。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機測試發現這版 SDK 的 Interactions 重試設定與 generateContent 行為不一致；僅設 attempts 為零或一，仍可能多送一次。下載包透過公開 httpx_client 的請求 hook，限制每次明確 create 只傳送一次。遇到服務錯誤會停止，這個防護已有本機 HTTP 計數測試，升級 SDK 時應重新核對。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "二十三項整合測試中的工具分支使用作者合成回應；它們驗證程式、欄位與停止條件，不代表真實模型每次都會照預期選工具。雲端測試仍需保存自己的輸出與用量。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成後依序測正常、查無資料、額外參數與反覆呼叫。前兩項可用真實模型觀察，後兩項用固定故障回應才能穩定重現。實際模型是否遵守要求另記，不把「這次沒出錯」當成程式已有防護。接著可做 "
+            },
+            {
+              "type": "link",
+              "text": "搜尋引用解析",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-search-grounding-citations"
+            },
+            {
+              "type": "text",
+              "text": "，再把唯讀查詢整合進 "
+            },
+            {
+              "type": "link",
+              "text": "文件助手專案",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-service-capstone"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "工具宣告已限制參數，為什麼還要檢查？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "宣告是給模型的結構資訊；程式仍要處理錯誤輸入、SDK 變更和外部資料。執行權限只能由本機驗證決定。"
+        },
+        {
+          "type": "heading",
+          "text": "可以把工具函式直接交給 SDK 自動執行嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "部分介面有自動工具處理，但本篇刻意採手動流程，讓每個要求、結果與次數都能核對。不要把另一套介面的自動模式直接移植過來。"
+        },
+        {
+          "type": "heading",
+          "text": "達到上限後能不能自動再開一輪？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "那會使原上限失去作用。先查看要求是否重複、結果是否送錯 ID，再由操作者決定是否另開一次有預算的新實驗。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "API 檔案與 JSON：結構化輸出及驗證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "API 額度與錯誤：費用、重試與成本控制",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Gemini API 搜尋引用：Grounding 結果解析與來源呈現",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-search-grounding-citations"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 81 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-api-function-calling-workshop/lesson-81.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組 API 練習與本機檢查程式",
+          "url": "https://mokaair.com/guides/gemini-api-function-calling-workshop/api-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Function calling 官方教學",
+          "url": "https://ai.google.dev/gemini-api/docs/function-calling",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Interactions 官方說明",
+          "url": "https://ai.google.dev/gemini-api/docs/interactions-overview",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

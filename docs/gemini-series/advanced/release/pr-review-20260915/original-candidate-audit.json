@@ -1,0 +1,75 @@
+{
+  "date": "2026-09-15",
+  "status": "historical-candidate-stale-after-main-integration",
+  "releaseReady": false,
+  "candidateInputsChecked": 420,
+  "mismatches": [
+    {
+      "path": "apps/api/app/guides/content/gemini-canvas-guide.json",
+      "recordedSha256": "4abc4e66d52f676c4af3004cbad8e1214595195e3903838da3ddee1d86ba4107",
+      "currentSha256": "095308b2dc8dba92026a09c139f423be11140686cb886f934130a8315b4c77b6"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-deep-research-guide.json",
+      "recordedSha256": "d189003ea79b1f5918c04b6f45ed69486ef77a611d79993f45f48efb5c4d0504",
+      "currentSha256": "f3444936f27e4220512d02b3d69294ca9392a9b6e49efd4a0b09c0f7cae3a641"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-for-google-sheets-formulas.json",
+      "recordedSha256": "8381c21a38616d69d301480ee2ef7e7af55711452fe3251c2ba54ef0ac91d9ae",
+      "currentSha256": "aa59a2fcd7c6bf59c32118e9afffb80370aca78a5fad738773f01daf427d35a3"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-for-travel-planning.json",
+      "recordedSha256": "8ba73826891fbae6a07fedef2b2ef867bd83e232eac18597078a4a1c0f75d688",
+      "currentSha256": "67975822d40154a9949c04942851acdf4d64f418095d235675fa668a6c0e714b"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-in-chrome-guide.json",
+      "recordedSha256": "d0da91398deb1390a7bd5fde5e713a385577e7a9b47f97d7b526d42feda5f239",
+      "currentSha256": "90dd58bf04b20b81ecf677660d90c9ce2276f5186a1549ac08fdbde8ccca2ee8"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-in-gmail-docs-sheets.json",
+      "recordedSha256": "5b344fb856885d5028e2e45eaf8e9a563b163f122c5df9242d58b94f090e1fb0",
+      "currentSha256": "fa8b83d45ddca94d23d047f4744eff29e235c9d042ec1d18684ef1b30c68ec21"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-live-voice-camera.json",
+      "recordedSha256": "f0d988bb8b9142e57149ef62d7c292c8bbf9c3ed41eda891354196817f696076",
+      "currentSha256": "24f6248717d45800533d8d55b79425e75dcca72ea8580ba1adf6ec3f1aa57b71"
+    },
+    {
+      "path": "apps/api/app/guides/content/gemini-on-android-assistant.json",
+      "recordedSha256": "9a1d6c3942ece3c9760abbb8bd45ece4e9dd2090ce30e4326815a9a3beb5eb10",
+      "currentSha256": "980745c52c778cab2aaf91a17d2c1f2d199489a791bd4dabe409977d9686a3b5"
+    },
+    {
+      "path": "apps/api/app/guides/content/google-ai-mode-search.json",
+      "recordedSha256": "380508b01c79e7579fb48a23b2b6655ca23a3d6d876793afd2a9441a5dd8e139",
+      "currentSha256": "6c3d8741b64646f573e760d041a85c9f16fae04ea87d036c3ff43ac4a19b0bd7"
+    },
+    {
+      "path": "apps/api/app/guides/content/nano-banana-image-editing.json",
+      "recordedSha256": "c90c69765436d6cb81a94d310d5640fd33213f75802393bde189d126a999dbe8",
+      "currentSha256": "d93b71902ced20db4a3304acda523aecc67270da199e878a5b7c4c1ae727d220"
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-for-study-notes.json",
+      "recordedSha256": "0909a9ff367fc92dd502ba3abda6087f4ebe8a337ace1a2b43abf060eef1ed37",
+      "currentSha256": "649bfc96a3317a298199704420f785fe0d648010aedbe09a9a8a205037454819"
+    },
+    {
+      "path": "apps/api/app/guides/content/notebooklm-guide.json",
+      "recordedSha256": "93637d8dfdc8e642ce42155903604ffe33b0cf93843e9dae10514b1353a9912f",
+      "currentSha256": "0f7048e3f96053554faf01b79ed2cb9cf9edcb349a04d912e04a91cd546d4841"
+    },
+    {
+      "path": "apps/api/app/guides/content/veo-video-generation-guide.json",
+      "recordedSha256": "06fe438cdbcd769a8aaf8799b55db8dcf180d50cd99d07351a3cadf4633635ef",
+      "currentSha256": "cf44bf9f90e5030feb57fc2329d9d5d835cf52bbdc56ec74ce53cbc952b16963"
+    }
+  ],
+  "remainingAudit": "The strict audit stops on the first mismatch. This report lists input drift only; it does not claim all historical evidence passed.",
+  "nextStep": "Retain the historical receipt; integrate reviewed live revisions and re-create a candidate before publication."
+}

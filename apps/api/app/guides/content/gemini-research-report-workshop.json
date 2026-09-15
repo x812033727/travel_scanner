@@ -1,0 +1,338 @@
+{
+  "slug": "gemini-research-report-workshop",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 162,
+  "locales": {
+    "zh-TW": {
+      "title": "Deep Research 加 NotebookLM：完成有證據與更新紀錄的專題報告",
+      "description": "本篇用臺北 YouBike 官方即時資料的一次真實快照，練習完成有證據、限制與更新紀錄的專題報告。研究問題是「這份快照能描述哪些站點與資料品質特徵」，不是估算全年騎乘量。你會把 Deep Research 的研究計畫、NotebookLM 的來源查核與本機計算接在一起，最後保留至少三個未解問題。",
+      "hero": {
+        "src": "/guides/gemini-research-report-workshop/hero.jpg",
+        "alt": "研究報告：保存與重算教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "本篇用臺北 YouBike 官方即時資料的一次真實快照，練習完成有證據、限制與更新紀錄的專題報告。研究問題是「這份快照能描述哪些站點與資料品質特徵」，不是估算全年騎乘量。你會把 Deep Research 的研究計畫、NotebookLM 的來源查核與本機計算接在一起，最後保留至少三個未解問題。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-research-report-workshop/diagram-1.svg",
+          "alt": "範圍：官方歷史快照：不是全年使用量；計算：1800 個站點 ID：十三種地區標籤；查核：校區不是行政區：欄位對應待確認；更新：至少三項待查：新舊版本分開存",
+          "width": 1600,
+          "height": 900,
+          "caption": "一次快照能回答哪些問題？。公開資料已重算；模型研究待驗。這是原創概念圖，不是介面截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "準備：把研究計畫與實際證據分開",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成 "
+            },
+            {
+              "type": "link",
+              "text": "Deep Research",
+              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "來源版本管理",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-source-versioning"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "證據矩陣",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "研究比較",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-paper-comparison-matrix"
+            },
+            {
+              "type": "text",
+              "text": "。使用電腦瀏覽器、符合 Deep Research 可用條件的 Google 帳號；本次官方說明要求登入且年滿十八歲，其他額度請查 "
+            },
+            {
+              "type": "link",
+              "text": "方案篇",
+              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+            },
+            {
+              "type": "text",
+              "text": "。本機重算需 Python 3.11 以上，不需要 API 金鑰。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本次作者於 2026-09-14 擷取公開 JSON，保存原始位元組與雜湊，已完成本機統計及官方來源查核。實際 Gemini 研究計畫、模型報告與 NotebookLM 引用操作尚未執行；下載包的 report.md 是作者參考報告，不能標成 Deep Research 已產出的成果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料由臺北市政府交通局提供，依政府資料開放授權條款第 1 版使用，顯名與來源在 ATTRIBUTION.md。這份歷史快照不能用來保證你現在到站有車可借；若要安排真實行程，應另查當下資訊。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：限定問題並檢查研究計畫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "打開 research-brief.md，保留觀察時間、城市、資料來源與不回答的問題。在 Gemini 選擇 Deep Research，確認 Sources（來源）所選範圍，再送出需求。官方流程會先提出計畫，可編輯後才開始研究；請閱讀計畫是否偷換成「年度最熱門站點排名」，有偏離就先修正。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "研究計畫要求",
+          "code": "研究 2026-09-14 保存的臺北 YouBike 官方快照。\n回答：站點筆數、來源時間、地區標籤，以及欄位說明與實際 JSON 的差異。\n只用公開官方來源；區分擷取時間、資料時間和網站更新時間。\n不要用單次可借數推算年度使用量、需求或行政區服務優劣。\n先列研究計畫、所需來源與無法回答的問題；數字須附計算方法。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "開始研究前記錄實際來源選擇；Google 搜尋是官方說明中的預設來源之一，可以依需求調整。完成後開啟報告，另存原始版本與時間。模型若引用無法讀取的頁面，記錄缺口，不把摘要中的網址自動視為已核對證據。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：保存來源與重算數字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "來源表將 T1 設為官方資料集說明、T2 為原始 JSON 快照、T3 為授權條款。擷取時間為臺灣時間 2026-09-14 21:10:03 左右；各站 infoTime 為 21:08:03 到 21:08:19。原始站點時間沒有時區，本次分析按臺北資料採 UTC+8，這項解讀需在報告寫明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "解壓後執行下列指令，使用附帶的凍結檔案，不重新下載即時網址。檢查器先驗雜湊與欄位，再驗站點 ID 唯一、數量是非負整數、站點時間沒有晚於擷取時間。資料不合條件時停止，不把缺失數值補成零。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "本篇練習包解壓根目錄",
+          "code": "python research_checks.py transit 62\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "本次實際得到 1,800 筆、1,800 個唯一站點 ID，sarea 有十三種標籤。其中「臺大公館校區」有六十五筆，因此不能將十三種標籤直接寫成十三個行政區。act 的原始值「1」有 1,768 筆、「0」有三十二筆；本文只報欄位分布，不擅自將零解讀成永久停業。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：讓 Notebook 協助追查主張",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把來源說明、凍結資料的可讀摘要與作者計算結果加入獨立筆記本，逐份確認實際匯入內容。NotebookLM 在本次官方文件稱 Gemini Notebook。若直接上傳原始 JSON 不被當下介面接受，使用附帶的 Markdown 報告與來源清單，不改副檔名冒充支援；原始 JSON 仍留在本機供重算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先問「十三種地區標籤能否稱為十三個行政區」，要求指出校區項目與限制。再問「Quantity 能否直接當成總容量」。官方資料集頁仍列舊欄位 tot、sbi、bemp、lat、lng，實際 JSON 卻含 Quantity、available_rent_bikes 等新名稱；這是本次觀察到的說明與資料差異。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "主張",
+            "本次證據",
+            "結論邊界"
+          ],
+          "rows": [
+            [
+              "快照有 1,800 筆",
+              "T2 與本機去重計算",
+              "只描述此擷取檔"
+            ],
+            [
+              "地區欄有十三種值",
+              "sarea 分組，包含校區",
+              "不等於行政區數"
+            ],
+            [
+              "欄位名稱與說明不同",
+              "T1 欄位清單對照 T2",
+              "不能只靠名稱推定對應"
+            ],
+            [
+              "可推算全年需求嗎",
+              "只有一次站點狀態",
+              "缺連續歷史資料，不能推論"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "把上述每個主張寫進證據表，保留計算結果與原始欄位。即使模型把 Quantity 解釋得很合理，也必須找到正式定義後才能採用；本報告不把它自動映射成 tot，更不拿來計算使用率。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：完成報告、故障測試與更新表",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "作者參考報告包含問題、資料、方法、實際結果、限制、三項待查問題與來源。請以自己的模型報告對照，標出得到支持、缺少依據與需要更正的句子。引用原始網址還不夠，必須保留當時下載的檔案；未來同一個即時網址會變，否則無法重現今天的數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "故障練習在副本刪除一個必要欄位、重複一個站點 ID，或把可借車數改成文字。附帶測試會確認這些條件被拒絕；不要修改正式快照或把錯誤值轉零來讓報表完成。另一個語意故障是把校區算成行政區，程式只提供分組，仍需人工解釋分類。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "本機測試通過只表示凍結資料與計算條件一致。模型引用、研究計畫、公開頁面與實際交通狀況是不同驗收，本篇沒有用本機測試替它們填成功。"
+        },
+        {
+          "type": "paragraph",
+          "text": "至少保留三個後續問題：Quantity 的正式定義、校區與行政區如何對應、要回答需求趨勢還需哪些連續資料。每項填需要的新來源、負責確認的人或角色、預定檢查時間和目前狀態；未取得就維持待查。更新時另存新快照和報告版本，不覆蓋舊檔。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "模型算的總數和程式不同，該相信哪個？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "先比對是否使用同一份快照與同一篩選條件，再檢查重複和缺值。程式也要能重現並經過檢查，不能只以工具名稱判斷可信度。"
+        },
+        {
+          "type": "heading",
+          "text": "可借車數低就代表站點很熱門嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "單次狀態無法區分需求、補車、容量或其他因素。需要合適的歷史資料與定義才可分析，這份報告應保留未知。"
+        },
+        {
+          "type": "heading",
+          "text": "來源網址沒變，還需要保存版本嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "即時內容會變動。保存擷取時間、原始位元組、雜湊和計算版本，才能重現結論，並在下一版清楚說明哪些差異來自新資料。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 引用查核：矛盾資料、缺證據與未知答案",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 比較多篇研究：研究問題、方法與限制矩陣",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-paper-comparison-matrix"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 多格式教材：講義、語音與影片摘要一致性檢查",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-multiformat-lesson-pack"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 62 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-research-report-workshop/lesson-62.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組研究練習與本機檢查程式",
+          "url": "https://mokaair.com/guides/gemini-research-report-workshop/research-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Deep Research 操作",
+          "url": "https://support.google.com/gemini/answer/15719111?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Notebook 來源",
+          "url": "https://support.google.com/gemininotebook/answer/16215270?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "臺北 YouBike 資料集",
+          "url": "https://data.nat.gov.tw/dataset/147580",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方即時 JSON",
+          "url": "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "政府資料開放授權條款",
+          "url": "https://data.gov.tw/license",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

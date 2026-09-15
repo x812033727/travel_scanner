@@ -1,0 +1,64 @@
+name: Gemini tutorial report
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [fixture, live]
+        default: fixture
+      document:
+        type: choice
+        options: [doc01.md, doc02.md]
+        default: doc01.md
+      model:
+        type: string
+        default: ''
+permissions:
+  contents: read
+concurrency:
+  group: gemini-tutorial-report
+  cancel-in-progress: false
+jobs:
+  report:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    environment: gemini-tutorial
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+      - name: Install pinned CLI
+        if: inputs.mode == 'live'
+        run: npm install --global @google/gemini-cli@0.59.0
+      - name: Build fixture report
+        if: inputs.mode == 'fixture'
+        env:
+          LESSON_MODE: fixture
+          LESSON_DOCUMENT: ${{ inputs.document }}
+        run: python runner.py
+      - name: Build model report
+        if: inputs.mode == 'live'
+        env:
+          LESSON_MODE: live
+          LESSON_DOCUMENT: ${{ inputs.document }}
+          LESSON_MODEL: ${{ inputs.model }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python runner.py
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: gemini-tutorial-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            out/workflow.json
+            out/report/run-summary.json
+            out/report/results/*.json
+          if-no-files-found: error
+          retention-days: 3

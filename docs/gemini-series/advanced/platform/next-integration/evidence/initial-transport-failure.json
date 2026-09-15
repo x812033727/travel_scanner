@@ -1,0 +1,23 @@
+{
+  "scenario": "advanced desktop, Connected Apps lesson 19",
+  "traceSha256": "6060601f14ab52e89df60663a4dca61f06678d5abf975d6f3969f13b2128ba47",
+  "errors": [
+    {
+      "callId": "pw:api@2226",
+      "message": "Error: route.fetch: read ECONNRESET"
+    },
+    {
+      "callId": "pw:api@2225",
+      "message": "Error: route.fetch: read ECONNRESET"
+    },
+    {
+      "callId": "call@5785",
+      "message": "read ECONNRESET"
+    },
+    {
+      "callId": "call@5783",
+      "message": "read ECONNRESET"
+    }
+  ],
+  "change": "Loopback GET proxy retries ECONNRESET once via Playwright maxRetries. HTTP status errors and product assertions are unchanged."
+}

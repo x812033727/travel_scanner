@@ -6,7 +6,8 @@ import { cleanup } from "@testing-library/react";
 import { GeminiSeriesIndex } from "./series-index";
 import { SeriesNavigation } from "./gemini-series-navigation";
 import { GuideCodeBlock } from "@/components/guide-code-block";
-import { geminiSeries } from "@/lib/gemini-series";
+import { fixtureSeries } from "@/components/gemini-series/fixture.test-data";
+const geminiSeries = fixtureSeries();
 import { ContentBlocks } from "@/components/content-blocks";
 import { siteUrl } from "@/lib/seo";
 
@@ -14,18 +15,18 @@ afterEach(cleanup);
 
 describe("Gemini learning series", () => {
   it("server-renders all 50 lessons without JavaScript", () => {
-    const html = renderToStaticMarkup(<GeminiSeriesIndex />);
+    const html = renderToStaticMarkup(<GeminiSeriesIndex series={geminiSeries} />);
     for (const article of geminiSeries.articles) expect(html).toContain(`/zh-TW/life/${article.slug}`);
     expect(geminiSeries.articles).toHaveLength(50);
     expect(new Set(geminiSeries.articles.map((article) => article.slug)).size).toBe(50);
   });
   it.each(["MD", "GEMINI.md", "手機", "CLI", "/memory", "NotebookLM"])("finds lessons for %s", (query) => {
-    render(<GeminiSeriesIndex />);
+    render(<GeminiSeriesIndex series={geminiSeries} />);
     fireEvent.change(screen.getByRole("searchbox"), { target: { value: query } });
     expect(within(screen.getByTestId("series-lessons")).getAllByRole("link").length).toBeGreaterThan(0);
   });
   it("combines filters, handles empty results, and resets", () => {
-    render(<GeminiSeriesIndex />);
+    render(<GeminiSeriesIndex series={geminiSeries} />);
     fireEvent.change(screen.getByLabelText("主題分類"), { target: { value: "F" } });
     expect(within(screen.getByTestId("series-lessons")).getAllByRole("link")).toHaveLength(6);
     fireEvent.change(screen.getByRole("searchbox"), { target: { value: "不存在的功能xyz" } });
@@ -34,10 +35,10 @@ describe("Gemini learning series", () => {
     expect(within(screen.getByTestId("series-lessons")).getAllByRole("link")).toHaveLength(50);
   });
   it("handles the first and last lesson without circular next links", () => {
-    const { rerender } = render(<SeriesNavigation article={geminiSeries.articles[0]} position="bottom" />);
+    const { rerender } = render(<SeriesNavigation series={geminiSeries} number={1} position="bottom" />);
     expect(screen.queryByRole("link", { name: /上一篇/ })).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: /下一篇/ })).toHaveAttribute("href", expect.stringContaining(geminiSeries.articles[1].slug));
-    rerender(<SeriesNavigation article={geminiSeries.articles[49]} position="bottom" />);
+    rerender(<SeriesNavigation series={geminiSeries} number={50} position="bottom" />);
     expect(screen.queryByRole("link", { name: /下一篇/ })).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: "返回 Gemini 教學總目錄" })).toHaveAttribute("href", "/zh-TW/life/gemini-guide");
   });

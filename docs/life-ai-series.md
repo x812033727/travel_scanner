@@ -1,4 +1,5 @@
-# 生活分享：AI 工具介紹與教學系列（260 篇總表）
+# 生活分享：AI 工具介紹與教學系列（296 項編輯總表，含深入教學規劃）
+
 
 這份文件是「生活分享」（`kind: "life"`，`/{locale}/life/{slug}`）AI 系列的**編輯總表**：每一篇
 的 slug、標題、主題、配圖方式與合作連結在這裡定死，批次任務票的 `scope` 才能精確到檔案。
@@ -11,6 +12,8 @@
 （`docs/travel-guides.md`「What this is」）。讀者是台灣的一般使用者：會用手機和電腦，想知道
 ChatGPT、Claude、Gemini、Codex、MiniMax 這些東西是什麼、怎麼開始、要花多少錢、哪裡要小心；
 工程師向的內容只到「第一次呼叫 API」和「用 AI 寫程式工具做出東西」為止。
+
+2026-09-14 使用者另要求規劃 Gemini 深入教學；文末的第二階段為明確例外，延伸至帶先修與練習包的 CLI／API 專案。其餘原批次維持上面的入門定位。
 
 ## 政策
 
@@ -428,3 +431,50 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 258 | `ai-stock-research-boundaries` | 投資 AI 能幫什麼：整理財報與新聞、不能預測漲跌、金管會怎麼管 | ai, daily | 插 |  | ✓ |
 | 259 | `ai-legal-questions-boundaries` | 法律 AI：法律問題問 AI 能整理什麼、什麼要找律師 | ai, daily | 插 |  |  |
 | 260 | `ai-health-questions-boundaries` | 健康 AI：症狀整理、看診前準備與它不能取代的事 | ai, daily | 插 |  |  |
+
+## Gemini 深入教學第二階段（2026-09-15 本機製作完成，實測與發布待完成）
+
+本次使用者要求的深入系列新增 36 個編輯題目，主線總表由 260 項增至 296 項。**36 篇原稿、內容包、72 張配圖與練習素材均已製作，尚未整套發布。** 現有 Gemini 01–50 保留，第二階段使用 51–86；以下總表編號 261–296 與系列篇號是不同用途。
+
+完整 [36 篇課綱、先修、練習包與驗收](gemini-series/advanced/README.md)、[87 頁本機候選包](gemini-series/advanced/release/README.md) 和 [逐篇待驗成果](gemini-series/advanced/release/ACCEPTANCE.md) 已建立。網站的 50／86 篇可見性、搜尋、手機、無 JavaScript 與複製已完成本機整合驗證；後續已有真實帳號操作紀錄，最新進度依各批次任務及獨立修訂收據，實體手機依使用者要求先跳過；其餘驗收、當日價格與正式發布另行核對。正式 catalogue 保持 50 篇，候選包不可直接發布；全部驗收完成後一起開放深入目錄。
+
+本區擴充工程深度至有先修的 CLI 與 Python 專案；既有批次 04／08／09／10／11 的跨工具入門與比較仍照原分工，避免重複撰寫。新題目都使用原創封面與圖解，不新增合作連結；價格與額度集中更新第 02／49 篇。
+
+| # | slug | 標題 | topics | 圖 | 合作 | 易變 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 261 | `gemini-prompt-evaluation-workshop` | 提示詞改寫實驗：用固定題庫找出有效的修改 | ai, tutorial | 插 |  | ✓ |
+| 262 | `gemini-gems-support-playbook` | Gems 客服知識助手：資料更新、拒答與回歸測試 | ai, tutorial | 插 |  | ✓ |
+| 263 | `gemini-canvas-budget-calculator` | Canvas 實作活動預算計算器：需求、除錯與驗收 | ai, tutorial | 插 |  | ✓ |
+| 264 | `gemini-workspace-meeting-handoff` | Gmail 到 Docs、Sheets：把會議信件整理成可交接的待辦 | ai, tutorial | 插 |  | ✓ |
+| 265 | `gemini-mobile-field-notes` | 手機現場筆記：Gemini Live、照片與回到電腦整理 | ai, tutorial | 插 |  | ✓ |
+| 266 | `gemini-spark-weekly-digest` | Spark 每週資訊摘要：設定排程、檢查結果與停止任務 | ai, tutorial | 插 |  | ✓ |
+| 267 | `notebooklm-source-versioning` | NotebookLM 資料版本管理：來源清單、更新與過期內容 | ai, tutorial | 插 |  | ✓ |
+| 268 | `notebooklm-conflicting-sources` | NotebookLM 引用查核：矛盾資料、缺證據與未知答案 | ai, tutorial | 插 |  | ✓ |
+| 269 | `notebooklm-study-retrieval-practice` | NotebookLM 備考實作：題庫、錯題分類與間隔複習 | ai, tutorial | 插 |  | ✓ |
+| 270 | `notebooklm-paper-comparison-matrix` | NotebookLM 比較多篇研究：研究問題、方法與限制矩陣 | ai, tutorial | 插 |  | ✓ |
+| 271 | `notebooklm-multiformat-lesson-pack` | NotebookLM 多格式教材：講義、語音與影片摘要一致性檢查 | ai, tutorial | 插 |  | ✓ |
+| 272 | `gemini-research-report-workshop` | Deep Research 加 NotebookLM：完成有證據與更新紀錄的專題報告 | ai, tutorial | 插 |  | ✓ |
+| 273 | `gemini-image-consistent-series` | Gemini 圖片系列製作：參考圖、風格規格與一致性評分 | ai, tutorial | 插 |  | ✓ |
+| 274 | `gemini-image-editing-debugging` | Gemini 修圖除錯：局部修改、文字錯誤與多輪退化 | ai, tutorial | 插 |  | ✓ |
+| 275 | `google-flow-storyboard-workshop` | Google Flow 三鏡頭短片：腳本、分鏡與逐鏡生成 | ai, tutorial | 插 |  | ✓ |
+| 276 | `google-flow-shot-continuity` | Google Flow 畫面連貫：起訖影格、參考素材與轉場修正 | ai, tutorial | 插 |  | ✓ |
+| 277 | `gemini-sheets-data-audit-dashboard` | Gemini 與 Sheets 資料報表：清理 CSV、核對公式與圖表 | ai, tutorial | 插 |  | ✓ |
+| 278 | `gemini-content-production-handoff` | Gemini 內容專案交付：文章、圖片與短片的版本和素材清單 | ai, tutorial | 插 |  | ✓ |
+| 279 | `gemini-cli-memory-scope-lab` | GEMINI.md 載入實驗：親手驗證全域、專案與子目錄規則 | ai, tutorial | 插 |  | ✓ |
+| 280 | `gemini-cli-modular-project-rules` | GEMINI.md 團隊範本：拆分規則、匯入與維護責任 | ai, tutorial | 插 |  | ✓ |
+| 281 | `gemini-cli-settings-debug-lab` | settings.json 設定除錯：來源優先順序與升級前後比較 | ai, tutorial | 插 |  | ✓ |
+| 282 | `gemini-cli-custom-command-library` | 自訂 CLI 指令庫：程式審查、測試計畫與文件同步 | ai, tutorial | 插 |  | ✓ |
+| 283 | `gemini-cli-skill-extension-package` | 把 SKILL.md 打包成 Extension：安裝、更新與回退 | ai, tutorial | 插 |  | ✓ |
+| 284 | `gemini-cli-large-project-context` | 大型專案的 CLI 上下文：分段任務、Git 差異與恢復 | ai, tutorial | 插 |  | ✓ |
+| 285 | `gemini-cli-mcp-server-workshop` | MCP 實作：建立本機唯讀商品查詢工具並排除連線問題 | ai, tutorial | 插 |  | ✓ |
+| 286 | `gemini-cli-hooks-quality-gates` | Hooks 品質檢查：事件輸入、退出碼與失敗時停止 | ai, tutorial | 插 |  | ✓ |
+| 287 | `gemini-cli-subagent-review-workflow` | Subagents 審查工作流：任務契約、工具限制與結果整合 | ai, tutorial | 插 |  | ✓ |
+| 288 | `gemini-cli-resumable-batch-pipeline` | Headless 批次處理：JSONL、續跑與避免重複輸出 | ai, tutorial | 插 |  | ✓ |
+| 289 | `gemini-cli-github-actions-artifacts` | Gemini CLI 接 GitHub Actions：受控觸發與產生審查報告 | ai, tutorial | 插 |  | ✓ |
+| 290 | `gemini-cli-docs-maintenance-project` | CLI 完整專案：文件更新、連結檢查與人工審查交付 | ai, tutorial | 插 |  | ✓ |
+| 291 | `gemini-api-function-calling-workshop` | Function calling 實作：參數驗證、工具回傳與有限次迴圈 | ai, tutorial | 插 |  | ✓ |
+| 292 | `gemini-api-search-grounding-citations` | Gemini API 搜尋引用：Grounding 結果解析與來源呈現 | ai, tutorial | 插 |  | ✓ |
+| 293 | `gemini-api-file-search-rag-project` | File Search 知識庫實作：匯入、查詢、更新與刪除驗證 | ai, tutorial | 插 |  | ✓ |
+| 294 | `gemini-api-context-cache-experiment` | API 快取實驗：隱含快取、手動快取與實際成本核對 | ai, tutorial | 插 |  | ✓ |
+| 295 | `gemini-api-batch-recovery` | Batch API 批次評測：工作 ID、部分失敗與重送管理 | ai, tutorial | 插 |  | ✓ |
+| 296 | `gemini-api-document-service-capstone` | 文件助手進階專案：有引用的問答服務、評測與交接 | ai, tutorial | 插 |  | ✓ |

@@ -1,0 +1,346 @@
+{
+  "slug": "gemini-cli-github-actions-artifacts",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 179,
+  "locales": {
+    "zh-TW": {
+      "title": "Gemini CLI 接 GitHub Actions：受控觸發與產生審查報告",
+      "description": "把 Gemini CLI 放進 GitHub Actions，可以保留固定環境、執行紀錄與可下載報告，但不應一開始就讓它自動修改所有文件。本篇從手動觸發、單份合成資料與固定版本開始，先跑不需要金鑰的測試模式，再說明如何接上受控的模型呼叫。",
+      "hero": {
+        "src": "/guides/gemini-cli-github-actions-artifacts/hero.jpg",
+        "alt": "GitHub：保存審查報告教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "把 Gemini CLI 放進 GitHub Actions，可以保留固定環境、執行紀錄與可下載報告，但不應一開始就讓它自動修改所有文件。本篇從手動觸發、單份合成資料與固定版本開始，先跑不需要金鑰的測試模式，再說明如何接上受控的模型呼叫。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-github-actions-artifacts/diagram-1.svg",
+          "alt": "觸發：手動・預設分支：固定事件提交；環境：核對帳號條件：需要的審核另設；模式：fixture → live：一份資料先驗證；交付：下載 artifact：核對模式與結果",
+          "width": 1600,
+          "height": 900,
+          "caption": "先跑固定資料，再核對遠端產物。本機執行器已測；遠端工作流待驗。這是原創概念圖，不是介面截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "成品、先修與驗證範圍",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成 "
+            },
+            {
+              "type": "link",
+              "text": "權限與沙箱",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": " 及 "
+            },
+            {
+              "type": "link",
+              "text": "可續跑批次程式",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-resumable-batch-pipeline"
+            },
+            {
+              "type": "text",
+              "text": "。本篇提供獨立的工作流範例、兩份測試文件與執行器。將下載包放入新的測試 repository，先逐檔閱讀；不要直接把工作流複製進正式網站，因為工作流執行的是它所取出的程式。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "2026-09-14 的驗證涵蓋 Windows、Python 3.13.15 的本機執行器、YAML 結構、參數限制及無憑證反例。Actions 版本與完整提交識別已由各官方 repository 查證，但尚未在 GitHub hosted runner 實際觸發，也沒有真實雲端模型用量；這兩項是發布前待驗工作。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：建立最小且可讀的 repository",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "將 79 資料夾內的 runner.py、pipeline.py、no-tools.toml 及 docs/ 放在測試 repository 根目錄，再把 review.yml 放到 .github/workflows/review.yml。先確認 repository 只有教材需要的資料，README 清楚註明內容為合成範例。工作流檔若不在指定目錄，GitHub 不會把它當成可執行工作流。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先在本機執行下面命令，預設會使用 fixture 模式處理 doc01.md。成功後打開 out/workflow.json 與 out/report/results，確認模式標記與文件 ID。這一步可以在沒有 API 金鑰時完成，也方便在未啟用 Actions 前發現路徑或程式錯誤。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機：從教材 repository 根目錄執行",
+          "code": "python runner.py\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機第二次執行會遇到已存在的 selected 目錄，這是刻意保留的界線：工作流的每次 hosted run 通常使用新工作目錄，本機複驗則應複製到另一份教材目錄或先保存舊輸出。不要把不同執行的報告混在一起，再從檔名猜哪一份是最新結果。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：閱讀手動觸發與權限設定",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "範例只有 workflow_dispatch，沒有 push、排程或 pull request 觸發。輸入可選 fixture 或 live，文件只允許 doc01.md、doc02.md。選項在介面上受限，Python 執行器還會再驗證一次，因此不能只因網頁提供下拉選單，就假設任何事件資料都可信任。"
+        },
+        {
+          "type": "code",
+          "language": "yaml",
+          "label": "review.yml",
+          "code": "name: Gemini tutorial report\non:\n  workflow_dispatch:\n    inputs:\n      mode:\n        type: choice\n        options: [fixture, live]\n        default: fixture\n      document:\n        type: choice\n        options: [doc01.md, doc02.md]\n        default: doc01.md\n      model:\n        type: string\n        default: ''\npermissions:\n  contents: read\nconcurrency:\n  group: gemini-tutorial-report\n  cancel-in-progress: false\njobs:\n  report:\n    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)\n    runs-on: ubuntu-24.04\n    timeout-minutes: 5\n    environment: gemini-tutorial\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          ref: ${{ github.sha }}\n          persist-credentials: false\n      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0\n        with:\n          node-version: '24.19.0'\n      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0\n        with:\n          python-version: '3.13'\n      - name: Install pinned CLI\n        if: inputs.mode == 'live'\n        run: npm install --global @google/gemini-cli@0.59.0\n      - name: Build fixture report\n        if: inputs.mode == 'fixture'\n        env:\n          LESSON_MODE: fixture\n          LESSON_DOCUMENT: ${{ inputs.document }}\n        run: python runner.py\n      - name: Build model report\n        if: inputs.mode == 'live'\n        env:\n          LESSON_MODE: live\n          LESSON_DOCUMENT: ${{ inputs.document }}\n          LESSON_MODEL: ${{ inputs.model }}\n          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}\n        run: python runner.py\n      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1\n        if: always()\n        with:\n          name: gemini-tutorial-${{ github.run_id }}-${{ github.run_attempt }}\n          path: |\n            out/workflow.json\n            out/report/run-summary.json\n            out/report/results/*.json\n          if-no-files-found: error\n          retention-days: 3\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "工作流只申請 contents: read，並停用 checkout 的憑證保留。它僅允許預設分支的手動事件，checkout 使用該事件的提交識別，避免開始執行時才重新取可能已移動的分支。報告要保留相應 commit 與 run 網址，否則日後不容易確認驗證的是哪份程式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Actions 的 uses 欄位固定完整提交識別，旁邊註明查證時的版本。更新時先核對官方來源與變更，再在新分支跑一次 fixture。固定識別提供可重現的版本選擇，不是永久安全保證；讀者仍須依自己的 GitHub 組織政策與 runner 支援狀況維護。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：建立 Environment 並跑 fixture",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 repository 的 Settings 建立名為 gemini-tutorial 的 Environment，查看帳號方案提供哪些審核與分支限制。若可以設定必要審核人員，依團隊流程啟用；如果方案不提供某項控制，應記錄實際條件，不要因為 YAML 寫了 environment 名稱，就宣稱已經存在人工核准關卡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "進入 Actions，選擇 Gemini tutorial report，再選 Run workflow。先保留 fixture 與 doc01.md。確認使用預設分支，查看每個步驟的執行狀態；完成後下載 artifact，比對 mode、document、batch 的處理數量與結果檔內容。單看綠色勾號還不能證明下載包裡有正確報告。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "位置",
+            "要核對的內容",
+            "不能直接推論"
+          ],
+          "rows": [
+            [
+              "Actions 執行頁",
+              "run、commit、步驟結果",
+              "不等於模型品質已測"
+            ],
+            [
+              "workflow.json",
+              "模式、文件、整體狀態",
+              "不等於正式文件已更新"
+            ],
+            [
+              "run-summary.json",
+              "處理、跳過及失敗",
+              "不等於零成本"
+            ],
+            [
+              "results",
+              "文件 ID 與模式標記",
+              "fixture 不是模型回答"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "artifact 只包含工作流摘要、批次摘要與結果 JSON，沒有整包上傳 runtime 家目錄或原始環境。保留期限設定為三天，適合短期教學驗收；需要長期保留時，另行保存審閱過的證據。檔名包含執行識別與嘗試次數，避免重跑後把不同產物看成同一份。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：有條件地加入模型呼叫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "fixture 通過後，再決定是否配置 API 金鑰。將 GEMINI_API_KEY 放進指定 Environment 的秘密設定，不能寫進 repository、工作流正文或模型輸出。金鑰只傳給 live 那個步驟，安裝依賴與 fixture 步驟都不需要它；也不要在除錯時印出完整環境。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "執行 live 時輸入帳號可用的模型名稱，先處理一份文件。程式使用前篇的外層 CLI 與內層內容契約驗證，失敗就留下狀態，不會替你自動留言、提交、合併或部署。使用 API 金鑰會走相應計費管道，需到 "
+            },
+            {
+              "type": "link",
+              "text": "API 用量與費用教學",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": " 核對，不以 Gemini 訂閱費推論已包含呼叫。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "工作流的五分鐘上限與單份輸入能縮小一次執行的範圍，但不是帳號的金額硬上限。重複手動觸發、SDK 內部重試或其他程式仍可能使用同一把金鑰。第一次成功後先查用量，再決定是否增加資料，不要直接把 fixture 的二十份測試規模搬到付費環境。"
+        },
+        {
+          "type": "heading",
+          "text": "故障練習與處理方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個反例是不提供金鑰卻選 live。本機執行器已驗證會以失敗狀態結束，原因明確指出缺少模型或金鑰，不會把空檔案當成完成。第二個反例是傳入 ../private.txt，即使字串來自工作流輸入，也會被文件允許名單拒絕。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三個反例是模型回答格式錯誤。批次程式即使看到 CLI 退出成功，仍會檢查 response 與文件契約；不符合就保留失敗。上傳 artifact 的步驟使用 always，讓失敗時仍有機會取得摘要，但 artifact 存在不代表工作流成功，判讀時要一起看 job 結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若工作流根本沒有開始，先確認檔案是否已在預設分支、Actions 是否允許執行、Environment 是否存在及事件分支是否符合條件。若卡在等待審核，應由既定負責人處理，不要為了讓教學變綠而刪掉控制。本文沒有替使用者變更任何 GitHub 設定或觸發遠端工作。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "本批完成 YAML 與本機 adapter 驗證，實測 fixture、缺金鑰及越界輸入。GitHub 遠端執行、artifact 下載及真實模型用量尚待驗收，不能用本機成功取代它們。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "為什麼 Run workflow 沒出現？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "先確認有 workflow_dispatch，且工作流位於預設分支的 .github/workflows。再查看 repository 的 Actions 權限，避免只修改介面顯示名稱。"
+        },
+        {
+          "type": "heading",
+          "text": "可以直接改成 pull request 自動觸發嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "需要重新設計信任與秘密的邊界。本篇只涵蓋手動、預設分支與教材輸入，不能把這份驗證直接套用到外部 fork 或未審查程式。"
+        },
+        {
+          "type": "heading",
+          "text": "想產出文件修正而非摘要，下一步是什麼？",
+          "level": 3
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著做 "
+            },
+            {
+              "type": "link",
+              "text": "文件維護完整專案",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-docs-maintenance-project"
+            },
+            {
+              "type": "text",
+              "text": "，讓候選修改先經過連結與範圍檢查，再產生可審閱的差異。報告產出與修改被套用應維持可分辨的狀態。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "CLI 權限：忽略檔案、可信任資料夾與沙箱",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Headless 批次處理：JSONL、續跑與避免重複輸出",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-resumable-batch-pipeline"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "CLI 完整專案：文件更新、連結檢查與人工審查交付",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-docs-maintenance-project"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 79 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-cli-github-actions-artifacts/lesson-79.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組練習與本機驗證程式（CLI 0.59.0）",
+          "url": "https://mokaair.com/guides/gemini-cli-github-actions-artifacts/automation-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "GitHub Actions 工作流語法",
+          "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Actions 安全使用",
+          "url": "https://docs.github.com/en/actions/reference/security/secure-use",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Artifact 官方 Action",
+          "url": "https://github.com/actions/upload-artifact",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

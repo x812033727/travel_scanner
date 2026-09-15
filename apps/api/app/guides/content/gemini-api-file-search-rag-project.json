@@ -1,0 +1,367 @@
+{
+  "slug": "gemini-api-file-search-rag-project",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 183,
+  "locales": {
+    "zh-TW": {
+      "title": "File Search 知識庫實作：匯入、查詢、更新與刪除驗證",
+      "description": "本篇用十份虛構商品規格建立 File Search 知識庫，實作匯入、等待索引、引用查詢、版本更新與清理。你會為原始檔、處理作業和索引文件分別記錄識別碼，避免上傳完成後找不到真正可查詢的資料。最後以 S003 容量更新和不存在的 S011，檢查系統是否仍引用舊版或擅自補造答案。",
+      "hero": {
+        "src": "/guides/gemini-api-file-search-rag-project/hero.jpg",
+        "alt": "檔案索引：版本可追查教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "本篇用十份虛構商品規格建立 File Search 知識庫，實作匯入、等待索引、引用查詢、版本更新與清理。你會為原始檔、處理作業和索引文件分別記錄識別碼，避免上傳完成後找不到真正可查詢的資料。最後以 S003 容量更新和不存在的 S011，檢查系統是否仍引用舊版或擅自補造答案。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-api-file-search-rag-project/diagram-1.svg",
+          "alt": "匯入：保存原檔與操作：完成不代表答對；查詢：只讀目前版本：引文須能對到原文；更新：新版入庫後查核：刪除舊版再提問；清理：索引與原檔分開：只處理自己的帳本",
+          "width": 1600,
+          "height": 900,
+          "caption": "原始檔案、索引文件、操作各有身分。十份合成文件已備；雲端待驗。原創概念圖，不是操作截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "準備：文件、專案與資源紀錄",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀 "
+            },
+            {
+              "type": "link",
+              "text": "API 檔案輸入",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "引用查核",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+            },
+            {
+              "type": "text",
+              "text": "。本篇使用 google-genai 2.23.0：資源管理採 SDK 的 File Search 方法，問答採 Interactions API。十份資料都是作者原創合成文字，名稱 S001 至 S010；不使用正式公司的規格書或個人資料。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "解壓後先查看 specifications、revisions 和 documents.json。每份規格有 ID、版本、容量與用途，檔名包含版本；例如 S003-v1.txt 的容量為 260 毫升，修訂版改為 280 毫升。這些數字是練習設定，不是實際商品測量結果。第十份另含不可信指示，用來檢查資料能否越權。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "建立自己的虛擬環境並設定 API 專案與模型，費用看 "
+            },
+            {
+              "type": "link",
+              "text": "用量與成本控制",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": "。本次已驗證 SDK 的本機請求與狀態處理，尚未建立 Google 雲端 store。所有 --live 命令都應在自己的教學專案執行，並保存產生的 resource-ledger.json，清理時只根據它處理本次資源。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：建立 store，先記錄再送出",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "File Search store 是索引資料的容器，不等同於一份上傳檔案。本練習為它產生 teaching 開頭的唯一名稱，建立前先寫入 create_uncertain 狀態，收到資源 ID 才改為 ready。如果建立請求逾時，不能直接再執行 create；先查自己的資源清單，核對名稱與時間，避免多建一個容器。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "建立本次練習索引",
+          "code": ".venv/Scripts/python.exe 83/file-search-demo/main.py create --live --ledger resource-ledger.json\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "檢查 ledger 的 owner、display_name 與 store 欄位。owner 是本機程式用來辨識練習紀錄的標記，不是 Google 帳號的安全授權；真正資源存取仍由金鑰與專案決定。不要手填其他專案的 store ID 來通過本機檢查。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "識別資料",
+            "記錄內容",
+            "用途"
+          ],
+          "rows": [
+            [
+              "原始檔",
+              "本機 SHA-256、版本、Files ID",
+              "核對送出哪一份內容"
+            ],
+            [
+              "匯入作業",
+              "operation 名稱與狀態",
+              "恢復等待，不重複上傳"
+            ],
+            [
+              "索引文件",
+              "store 下的 document 名稱",
+              "更新、刪除與引用追查"
+            ],
+            [
+              "查詢結果",
+              "題目、來源檔名與引文",
+              "比對當前規格"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：匯入十份文件並等待索引",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先只匯入 S001，確認整條流程再處理其餘九份。import 命令先上傳原始檔，記錄 Files ID，再建立匯入作業。每個網路步驟都有中間狀態；若收到不確定結果，就停在該狀態等待核對，不把重新送出當作恢復方法。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "匯入與查看進度",
+          "code": ".venv/Scripts/python.exe 83/file-search-demo/main.py import --live --ledger resource-ledger.json --file 83/specifications/S001-v1.txt --id S001 --version v1\n.venv/Scripts/python.exe 83/file-search-demo/main.py poll --live --ledger resource-ledger.json --id S001 --version v1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "poll 每次最多查看三次，仍未完成就保存 pending，稍後對同一 operation 再查。done 也可能伴隨 error，不能只看到完成旗標就認為成功；成功時還要有屬於這個 store 的 document ID。程式使用 indexed_pending_review，提醒索引就緒仍不代表回答已驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "將相同流程套用 S002 至 S010，替換檔名和 ID，全部記入同一 ledger。先檢查每個 ID 是否只有一份當前版本，再進行問答。不要用單純檔案數量十份作為唯一標準：重複上傳同一文件，也可能讓總數看起來正確。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件區分暫時的 Files 資源與較持久的索引資料。原始上傳檔到期，不代表 store 裡的索引也一起消失；因此測試完成後仍需清理自己的索引。實際保存與限制請重查當日文件，不從本機檔案存在與否推斷雲端資源狀態。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：追到來源，再核對主張",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "確認匯入狀態後，query 只啟用 file_search，指向 ledger 記錄的容器。本練習與 "
+            },
+            {
+              "type": "link",
+              "text": "Google 搜尋引用",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-search-grounding-citations"
+            },
+            {
+              "type": "text",
+              "text": " 分開呼叫，沒有把公開搜尋和文件索引混在同一個請求中。先問 S003 的容量，再問資料不存在的 S011，觀察兩個結果是否不同。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "查詢指定規格",
+          "code": ".venv/Scripts/python.exe 83/file-search-demo/main.py query --live --ledger resource-ledger.json --question \"S003 的容量是多少？請附目前文件引用。\" --output S003-before.json\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在回應的 model_output 文字區塊找 file_citation，核對檔名與 source 引文。documents.json 是作者的本機對照資料；回答若引用 S003-v1.txt，就應能在該版本找到相同句子。不要將模型提供的檔名直接拼成任意檔案路徑，而應對照事先登記的文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下載包的 file_answer 會拒絕未知版本、重複檔名與找不到的引文，但即使引文存在，也只回傳 needs_claim_review。這表示還要讀原文判斷主張是否受支持：引到「容量 260 毫升」不能支持模型另外添加的價格、保固或使用限制。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "匯入就緒、引用能對上原文、答案正確，是不同驗收項目。本機測試不會把 indexed_pending_review 自動改成模型已驗收，也不以作者預期答案替代真實回應。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：更新、刪除與清理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "接著匯入 revisions/S003-v2.txt，ID 仍為 S003，版本改成 v2。新版本索引完成後，ledger 會暫時出現同一 ID 的兩個索引版本，查詢程式因此停止。先核對新 document ID，再刪除舊版，避免尚未準備好的更新讓知識庫缺資料。"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "刪除已被取代的舊版本",
+          "code": ".venv/Scripts/python.exe 83/file-search-demo/main.py delete-document --live --ledger resource-ledger.json --id S003 --version v1\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "程式刪除後重新列出本次 store 的文件，確認舊 ID 已不在清單，再標 deleted_from_index。接著重問同一題，預期來源變為 S003-v2.txt、容量改為 280 毫升；若仍得到 260，保存整份回應，先查引用版本，不要只修改畫面文字使答案合格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若要驗證刪除後查無資料，可在保存必要結果後刪除 S003 的當前版本，再問相同問題。這是新的觀察，不能用先前成功回覆證明資料已刪除。最後執行 cleanup，只清理 ledger 指向的 store 與本次 Files 資源；一般規格資料夾保留供重新練習。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "交付時附上十份原始檔、版本雜湊、實際資源紀錄、更新前後與刪除後的問答，以及清理結果。請勿把未執行欄位填成零費用或成功。完成後可進行 "
+            },
+            {
+              "type": "link",
+              "text": "快取實驗",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-context-cache-experiment"
+            },
+            {
+              "type": "text",
+              "text": "，或把引用對照整合到 "
+            },
+            {
+              "type": "link",
+              "text": "文件問答服務",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-service-capstone"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "上傳完成，為什麼還不能查詢？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "原始檔上傳與索引匯入是不同階段。查看 operation 是否完成、有沒有 error，以及是否取得正確 document ID。"
+        },
+        {
+          "type": "heading",
+          "text": "同名上傳會自動取代舊版嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "本練習不依賴這種假設。每版有獨立識別，明確完成新索引、移除舊索引，再用相同題目查驗。"
+        },
+        {
+          "type": "heading",
+          "text": "文件裡要求刪除訂單，模型可以照做嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "本次問答只提供 file_search，沒有刪除訂單工具。文件是資料來源，不應改變程式允許的操作；完整專案也會測這個情境。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "API 檔案與 JSON：結構化輸出及驗證",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "NotebookLM 引用查核：矛盾資料、缺證據與未知答案",
+              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "API 快取實驗：隱含快取、手動快取與實際成本核對",
+              "url": "https://mokaair.com/zh-TW/life/gemini-api-context-cache-experiment"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 83 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-api-file-search-rag-project/lesson-83.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載六組 API 練習與本機檢查程式",
+          "url": "https://mokaair.com/guides/gemini-api-file-search-rag-project/api-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "File Search 官方教學",
+          "url": "https://ai.google.dev/gemini-api/docs/file-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "官方 Python SDK",
+          "url": "https://googleapis.github.io/python-genai/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

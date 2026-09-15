@@ -1,0 +1,27 @@
+{
+  "checkedOn": "2026-09-14",
+  "platform": "Windows",
+  "cli": "0.59.0",
+  "state": "unresolved-native-terminal-exit",
+  "attempts": [
+    {
+      "node": "24.13.0",
+      "command": "gemini extensions install <isolated-original-local-extension> --consent",
+      "stdout": "Extension \"mokaair-doc-check\" installed successfully and enabled.",
+      "stderr": "Assertion failed: !(handle->flags & UV_HANDLE_CLOSING), file src\\win\\async.c, line 76",
+      "exitCode": 3221226505,
+      "classification": "failed; stopped before next write"
+    },
+    {
+      "node": "24.19.0",
+      "command": "gemini extensions disable mokaair-doc-check --scope user",
+      "stdout": "Extension \"mokaair-doc-check\" successfully disabled for scope \"user\".",
+      "stderr": "Assertion failed: !(handle->flags & UV_HANDLE_CLOSING), file src\\win\\async.c, line 94",
+      "exitCode": 3221226505,
+      "classification": "failed; stopped before next write"
+    }
+  ],
+  "followup": "A separate clean temporary home was used to test the actual ExtensionManager implementation. Module success does not clear the terminal failure. Recheck terminal lifecycle on the target supported runtime before publication.",
+  "cloudCalls": 0,
+  "userConfigurationModified": false
+}

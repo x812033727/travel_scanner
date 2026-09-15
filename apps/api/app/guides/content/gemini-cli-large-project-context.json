@@ -1,0 +1,373 @@
+{
+  "slug": "gemini-cli-large-project-context",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 174,
+  "locales": {
+    "zh-TW": {
+      "title": "大型專案的 CLI 上下文：分段任務、Git 差異與恢復",
+      "description": "大型專案使用 CLI 時，真正困難的往往不是讓助手讀更多檔案，而是說清楚這次可以改哪裡、原本有哪些未完成變更，以及中斷後如何確認現況。本篇用前後端兩個模組的小型 repository，練習修正一個數值下限，同時保留使用者既有的文件編輯。",
+      "hero": {
+        "src": "/guides/gemini-cli-large-project-context/hero.jpg",
+        "alt": "只改這裡：保留原有工作教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "大型專案使用 CLI 時，真正困難的往往不是讓助手讀更多檔案，而是說清楚這次可以改哪裡、原本有哪些未完成變更，以及中斷後如何確認現況。本篇用前後端兩個模組的小型 repository，練習修正一個數值下限，同時保留使用者既有的文件編輯。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-large-project-context/diagram-1.svg",
+          "alt": "先記錄：範圍 ＋ 原有差異：別漏掉未追蹤檔案；小修改：只改指定模組：用同一測試核對；保留：使用者草稿不覆寫：比較前後差異；恢復：對話 ≠ 檔案回復：先讀磁碟現況",
+          "width": 1600,
+          "height": 900,
+          "caption": "從範圍到恢復，每步都有證據。本機修正已測；登入會話恢復未測。本圖是概念整理，不是操作介面截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "成品、先修與實測範圍",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成 "
+            },
+            {
+              "type": "link",
+              "text": "對話與上下文管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "CLI 寫程式流程",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "link",
+              "text": "團隊規則範本",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-modular-project-rules"
+            },
+            {
+              "type": "text",
+              "text": "。下載包內有 sample-repo、expected-limit.mjs 和 resume-log.md。準備 Git、Node、CLI 0.59.0 與編輯器；範例不需要 npm 安裝依賴，也不需要資料庫或外部服務。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "2026-09-14 的實際本機測試使用 Windows、Node 24.19.0：初始測試故意失敗，套用教材參考修正後三項通過，原有文件差異仍保留。這不是模型生成的修改；本篇對話恢復命令依官方文件整理，尚未以已登入的雲端會話實測，因此會將檔案證據與會話證據分別記錄。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：先看清楚範圍與原有差異",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "將 sample-repo 複製到新的練習資料夾，從該根目錄開始。若它還不是 Git repository，可執行 git init，檢查所有檔案後建立一次教材基準提交。Git 作者身分使用你既有設定；不要為了教學改動整台電腦的全域帳號設定，也不要把這個小專案初始化在正式 repository 裡面。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機：檢查目前工作區",
+          "code": "git status --short\ngit diff --name-only\ngit diff -- apps/web/limit.mjs docs/editor-note.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "在編輯器為 docs/editor-note.md 加上一行「USER_EDIT：請保留這份草稿」，不要提交。再次執行上述命令，這份差異就是練習要保護的既有工作。未追蹤檔案要另外從 status 看，git diff 不會自動列出它們；沒有檢查到不代表它們不存在。"
+        },
+        {
+          "type": "paragraph",
+          "text": "範例的 apps/api/contract.json 定義下限 0、上限 10；apps/web/limit.mjs 是需要修改的地方。test.mjs 保存驗收。先讀 task-scope.md，確認本次只處理負數，不順便增加字串轉型、改後端欄位或重排文件。範圍愈明確，之後的差異愈容易判讀。"
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：提供剛好足夠的上下文",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用下面提示詞要求先調查。請求列出將讀取的檔案，再核對實際工具紀錄；如果助手額外讀了其他檔案，要求說明與本題的關係。這是任務規劃與檢核約定，不能替代真正的工具權限限制。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Gemini CLI 提示詞：第一輪只調查",
+          "code": "請讀 task-scope.md、apps/web/limit.mjs、apps/api/contract.json 與 test.mjs。\n先解釋負數案例失敗的原因與最小修正，不修改檔案。\ndocs/editor-note.md 有使用者未提交工作，必須保留。\n請列出已讀檔案、推論與尚未驗證的部分。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "避免一次把整個 repository 當作附件。目錄清單適合找到責任位置，實際檔案內容才用於判斷行為。GEMINI.md 也不必塞進所有程式碼；它應保存穩定要求，這次要修哪一個函式則放在 task-scope.md。大量日誌、產物或相同規則的多份副本只會增加核對負擔。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "範例 .geminiignore 排除 node_modules、coverage 與 log，目的是降低不相關內容。它不是作業系統權限邊界，不能用來保證 shell 或其他工具絕對讀不到檔案；需要限制執行與存取時，回到 "
+            },
+            {
+              "type": "link",
+              "text": "沙箱與權限教學",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": " 配置對應控制。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：先讓測試指出問題，再改一個檔案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在終端執行 node --test test.mjs。初始 displayLimit 只限制上限，輸入 -2 仍回傳 -2，因此 lower 案例應失敗，另外兩項正常。這是故障設計，不要先把預期值改成 -2 讓測試看起來全綠；本題需求已清楚要求下限為 0。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機：從 sample-repo 執行",
+          "code": "node --test test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著只允許修改 apps/web/limit.mjs。可請 CLI 依前一輪計畫執行，或先在編輯器對照下列參考答案理解變更。參考修正對原結果再套一個下限，保留正常值與上限行為；它沒有處理非數字輸入，因為那是另一個需要獨立需求的改動。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "expected-limit.mjs",
+          "code": "export const displayLimit = (value) => Math.max(0, Math.min(10, value));\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "改完重跑同一份測試，應有 normal、upper、lower 三個案例通過。再檢視 git diff --name-only：應看見程式修改與你原先的文件差異。兩個檔案有差異不等於兩個都是助手改的；需要與第一階段基準比較，確認 USER_EDIT 原文完整，沒有被覆寫、刪除或順便提交。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查時間",
+            "程式測試",
+            "文件草稿"
+          ],
+          "rows": [
+            [
+              "修正前",
+              "lower 失敗",
+              "原有編輯存在"
+            ],
+            [
+              "參考修正後",
+              "三項通過",
+              "原文完整保留"
+            ],
+            [
+              "重新開啟工作區",
+              "重新檢查實際檔案",
+              "與初始紀錄比較"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：中斷後重新確認狀態",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 resume-log.md 填入版本、時間、Git HEAD、允許修改範圍、已完成步驟、實際測試與下一步。記錄「已提出修正」和「已寫入檔案」的差別：對話中出現程式碼，不代表磁碟上的檔案已經改好；測試計畫也不等於測試執行結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你已有登入且存在可恢復會話，依官方方式以 gemini -r 恢復最近會話，或在 CLI 使用 /resume 挑選記錄。這些操作恢復對話狀態，不能直接當成 Git 回復命令。重新進入後先要求助手讀取實際 status、diff 與任務紀錄，再開始下一步。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Gemini CLI 提示詞：恢復後先核對",
+          "code": "先讀 resume-log.md，再檢查目前 Git 狀態與實際檔案。\n列出已完成、仍未完成、與對話記錄不一致的地方。\n在確認前不要覆寫檔案，也不要提交或還原使用者的草稿。\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "故障練習是：保存紀錄後，在編輯器額外改動文件，再恢復對話。正確的下一步是辨識這份新差異，而不是依舊對話內容把文件重建成先前版本。若檔案與紀錄不一致，先把差異列出；沒有授權前，不要用 git reset 或整份覆蓋來追求「乾淨」的狀態。"
+        },
+        {
+          "type": "heading",
+          "text": "壓縮上下文後保留什麼",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "長對話可依 "
+            },
+            {
+              "type": "link",
+              "text": "上下文管理",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+            },
+            {
+              "type": "text",
+              "text": " 了解 /compress，但壓縮後仍需要可讀的外部工作紀錄。保留需求、範圍、關鍵檔案、未解問題、已執行的命令與結果，比保存所有閒聊更實用。程式現況以檔案與版本控制為準，對話摘要只提供工作背景。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "當你要將這套流程做成 "
+            },
+            {
+              "type": "link",
+              "text": "技能或擴充套件",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-skill-extension-package"
+            },
+            {
+              "type": "text",
+              "text": "，先保存人工版本的成功條件與反例。只有自動產出漂亮的「完成報告」沒有幫助；報告必須能連回實際差異、保留的原有工作與測試結果，才能讓下一位接手者放心繼續。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "本篇已實測 Git 差異保留與參考修正的測試結果。登入會話的恢復、壓縮效果以及模型能否自行完成修正尚未實測，文中相應步驟依官方文件整理。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "恢復對話後程式為什麼沒有回到原樣？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "對話恢復與檔案還原是不同工作。先核對磁碟與 Git 差異，再選擇是否需要檔案回復；不要把恢復舊對話當成所有文件會自動撤銷的保證。"
+        },
+        {
+          "type": "heading",
+          "text": "可以把整個 repository 的 diff 貼進去嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "先看名稱與範圍，挑本題需要的內容。其他人未完成的變更、秘密或大量生成檔案不應為了方便而一起傳入；保留足夠的定位資訊，再依需要逐段讀取。"
+        },
+        {
+          "type": "heading",
+          "text": "測試全過就可以提交嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "仍要核對差異是否只包含預期修改，確認沒有夾帶使用者草稿。提交是下一個明確步驟；先讀懂每個變更，再依專案既定規則執行，不以測試通過取代範圍檢查。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "CLI 權限：忽略檔案、可信任資料夾與沙箱",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md 團隊範本：拆分規則、匯入與維護責任",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-modular-project-rules"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "把 SKILL.md 打包成 Extension：安裝、更新與回退",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-skill-extension-package"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 74 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-cli-large-project-context/lesson-74.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載本批本機驗證程式與六組練習（CLI 0.59.0）",
+          "url": "https://mokaair.com/guides/gemini-cli-large-project-context/md-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "會話恢復",
+          "url": "https://geminicli.com/docs/cli/tutorials/session-management/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "忽略檔案",
+          "url": "https://geminicli.com/docs/cli/gemini-ignore/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

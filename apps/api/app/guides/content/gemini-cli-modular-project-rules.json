@@ -1,0 +1,316 @@
+{
+  "slug": "gemini-cli-modular-project-rules",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 170,
+  "locales": {
+    "zh-TW": {
+      "title": "GEMINI.md 團隊範本：拆分規則、匯入與維護責任",
+      "description": "團隊共用 GEMINI.md 最常見的問題，是規則愈加愈多，檢查命令卻早已失效。本篇把一份主檔拆成風格、測試與責任三份文件，搭配不需額外依賴的小型 Node 專案，讓新成員能依照相同入口確認規則與命令仍然可用。",
+      "hero": {
+        "src": "/guides/gemini-cli-modular-project-rules/hero.jpg",
+        "alt": "團隊規則：拆分與維護教學封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "團隊共用 GEMINI.md 最常見的問題，是規則愈加愈多，檢查命令卻早已失效。本篇把一份主檔拆成風格、測試與責任三份文件，搭配不需額外依賴的小型 Node 專案，讓新成員能依照相同入口確認規則與命令仍然可用。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gemini-cli-modular-project-rules/diagram-1.svg",
+          "alt": "主檔：說清適用範圍：匯入三份共用規則；分工：風格・測試・責任：每條都有維護理由；測試：檔案存在不夠：命令也必須跑通；交接：保留變更原因：新成員能重做一次",
+          "width": 1600,
+          "height": 900,
+          "caption": "主檔短，責任與測試要清楚。反例：缺檔與衝突命令，都應被發現。本圖是概念整理，不是操作介面截圖。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "成品與開始前準備",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先完成 "
+            },
+            {
+              "type": "link",
+              "text": "記憶載入實驗",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-scope-lab"
+            },
+            {
+              "type": "text",
+              "text": "，並熟悉 "
+            },
+            {
+              "type": "link",
+              "text": "Markdown 基礎",
+              "url": "https://mokaair.com/zh-TW/life/gemini-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": "。下載練習包後進入 70/team-rules，準備 Node 24、CLI 0.59.0 與編輯器。2026-09-14 的本機驗證平台為 Windows、Node 24.19.0；測試執行與錯誤反例都有紀錄，模型是否全面遵循規則不在本篇實測範圍。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "最後成品包含 GEMINI.md、rules/style.md、rules/testing.md、rules/ownership.md，以及前後端各自的補充檔。主檔負責說明任務邊界與匯入位置；其他檔案各管一種責任。這個範例只有少數檔案，適合先理解分工，再依真實專案需要增加內容。"
+        },
+        {
+          "type": "heading",
+          "text": "第一階段：列出可以驗證的規則",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先在紙上列三欄：要求、適用位置、驗證方式。例如「公開函式使用英文名稱」適用 src/，「只報真正執行過的測試」適用所有交付記錄。「品質要很好」無法直接檢查，改成能看見的條件，例如空值要有測試、錯誤回報需要結束碼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每條規則另寫維護原因與負責角色，角色不用是某位員工的私人聯絡資料。ownership.md 的責任是人工審閱約定，不會自動設定 GitHub 審核人或限制寫入權限。若團隊需要真正的程式庫權限，另依平台機制配置，不能因為文件寫了某人負責就以為已受保護。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "規則檔",
+            "適用範圍",
+            "本篇驗證"
+          ],
+          "rows": [
+            [
+              "style.md",
+              "src/ 與文件用語",
+              "確認 ESM 範例可 import"
+            ],
+            [
+              "testing.md",
+              "根目錄測試命令",
+              "Node 測試兩案例通過"
+            ],
+            [
+              "ownership.md",
+              "前後端審閱責任",
+              "人工核對目錄與理由"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "heading",
+          "text": "第二階段：保持主檔短小",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用編輯器開啟主檔，確認下面三條匯入都以檔案所在位置為基準。團隊分享時優先使用專案內的相對路徑；寫入某台電腦的絕對路徑，會讓其他成員即使複製整個 repository 仍缺少規則。主檔避免同時再貼一遍子文件的完整要求。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "GEMINI.md",
+          "code": "# 海風範例專案\n只修改本次任務指定目錄。\n@./rules/style.md\n@./rules/testing.md\n@./rules/ownership.md\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "style.md 把 ESM 語法與文件語言說清楚；testing.md 保存唯一的測試入口；ownership.md 說明各目錄誰負責審閱。前端與後端補充檔只寫該目錄特有的驗證，不要在每一份文件重新發明一套根目錄命令。新增內容前，先搜尋主檔和三份共用檔是否已存在相同要求。"
+        },
+        {
+          "type": "heading",
+          "text": "第三階段：驗證路徑與命令",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 team-rules 根目錄執行以下兩行。第一個程式只檢查這份教材定義的三個共用匯入與已知衝突命令；它不是 Gemini 官方匯入器，也不是任意 Markdown 的完整分析器。第二行真的執行 src/title.mjs 的兩個案例，確認文件裡的命令能完成工作。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "終端機：從 team-rules 執行",
+          "code": "node check-rules.mjs\nnode --test test.mjs\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "預期第一行的 errors 是空陣列，第二行有兩個測試通過：去掉名稱左右空白，以及空值回傳「未命名」。請同時記錄結束碼。編輯器顯示檔案沒有紅線，只能說語法外觀看來正常；測試實際失敗時，不能把文件中預期的數字填成自己的實測結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再從相同根目錄啟動 CLI，用 /memory list 確認主檔位置，以 /memory show 搜尋 STYLE_RULE、TEST_RULE 和 OWNER_RULE。第一階段已說明匯入與檔案計數的差異；不要期待四份規則一定顯示成四個常駐檔案，也不要把子目錄 JIT 是否出現在 show 當成唯一判準。"
+        },
+        {
+          "type": "heading",
+          "text": "第四階段：讓故障能被定位",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先複製一份主檔備份，把 style.md 路徑改成 missing.md，再執行 check-rules.mjs。這次應回報 Missing or outside import 並以結束碼 1 結束。錯誤的重點是指出哪條引用失效；修回路徑後重跑，確認 errors 回到空陣列，再刪除自己建立的備份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個故障在 testing.md：暫時把檢查命令改成 npm test。教材沒有 package.json 的 test script，因此這是一條與已建立流程不一致的要求。檢查程式會回報 Conflicting test command。修正時回到實際可執行的 node --test test.mjs，不能只把檢查程式對錯誤的判斷刪掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這兩種反例刻意分開：前者有命令但檔案不存在，後者檔案存在卻內容失效。真實團隊還可能遇到規則互相矛盾，例如一份要求測試從根目錄跑，另一份要求先切進子目錄。此類自然語言衝突仍需人工讀取與命令驗證，不能因為教材檢查器通過就宣稱所有規則一致。"
+        },
+        {
+          "type": "heading",
+          "text": "寫給接手者的維護紀錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每次調整規則，在 CHANGELOG.md 記錄日期、改動原因、適用目錄與實際檢查結果。描述「把已移除的測試入口改成目前有效命令」比「更新設定」容易理解。若只改後端補充，先核對後端相關範例，不必在一次規則變更中順便重排所有其他文件。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "CHANGELOG.md 可複製格式",
+          "code": "## YYYY-MM-DD\n- 變更：\n- 原因與適用目錄：\n- 實際執行命令及結果：\n- 已知限制與負責角色：\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "新成員接手時，先讀主檔，再執行兩個本機命令，最後檢查 CLI 載入內容。若他使用不同版本或作業系統，保留那份觀察，不能直接覆蓋原驗證。規則改動與 CLI 升級最好分兩次處理；同時更動兩者時，很難判定是內容、版本還是工作目錄造成結果改變。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "操作提醒",
+          "text": "本篇四組本機紀錄涵蓋正確匯入、兩案例測試、缺檔反例與命令衝突反例。檢查器只驗教材約定，不是正式專案通用的規則審核工具。"
+        },
+        {
+          "type": "heading",
+          "text": "常見問題",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "應該分成愈多檔案愈好嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "依照維護責任拆分即可。只有一行、也沒有不同適用範圍的文件，可以留在同一份。拆得太碎會增加找資料與追查引用的成本，甚至讓主檔只剩一長串沒人檢查的路徑。"
+        },
+        {
+          "type": "heading",
+          "text": "可以將 API Key 放入共用規則嗎？",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "不要放入可分享的規則或練習包。規則只說明需要哪種認證與變數名稱；實際秘密應由既有認證流程提供。用非秘密的標記測試載入就足夠，沒有必要把真的金鑰送進上下文。"
+        },
+        {
+          "type": "heading",
+          "text": "規則載入正確，為何功能仍沒啟用？",
+          "level": 3
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "GEMINI.md 是自然語言指示，不是程式功能開關。若你要改介面、模型或其他 CLI 設定，接著做 "
+            },
+            {
+              "type": "link",
+              "text": "settings.json 除錯實驗",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings-debug-lab"
+            },
+            {
+              "type": "text",
+              "text": "，用有效設定來源來核對，避免把兩種檔案的責任混在一起。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "延伸閱讀："
+            },
+            {
+              "type": "link",
+              "text": "GEMINI.md 載入實驗：親手驗證全域、專案與子目錄規則",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-scope-lab"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "Markdown 基礎：建立 MD、標題與程式碼",
+              "url": "https://mokaair.com/zh-TW/life/gemini-markdown-basics"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "settings.json 設定除錯：來源優先順序與升級前後比較",
+              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings-debug-lab"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "下載第 70 篇完整練習包",
+          "url": "https://mokaair.com/guides/gemini-cli-modular-project-rules/lesson-70.zip"
+        },
+        {
+          "type": "link",
+          "text": "下載本批本機驗證程式與六組練習（CLI 0.59.0）",
+          "url": "https://mokaair.com/guides/gemini-cli-modular-project-rules/md-verification.zip"
+        },
+        {
+          "type": "link",
+          "text": "返回 Gemini 教學總目錄",
+          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "GEMINI.md 匯入",
+          "url": "https://geminicli.com/docs/cli/gemini-md/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Memory Import Processor",
+          "url": "https://geminicli.com/docs/reference/memport/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
