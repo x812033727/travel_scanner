@@ -35,6 +35,7 @@ results. Historical task notes describe their original snapshots, not necessaril
 | Privacy, terms, about, contact | Only the requested locale's published document is indexable |
 | Community/discovery/pet public shells | Existing `noindex` retained pending public server content |
 | Account, trips, alerts, search results, auth forms | `noindex` regardless of feature switches |
+| Article search (`/search/articles`) | `noindex, follow`: a result set is a different ranking of the same articles, and the articles are what rank; `follow` so a crawler arriving from a shared link still reaches them |
 | Admin | `noindex, nofollow`, plus robots exclusion |
 | Private/token links and machine endpoints | Existing privacy/auth checks plus robots exclusions |
 

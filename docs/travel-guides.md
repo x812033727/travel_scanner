@@ -211,6 +211,8 @@ GET /api/v1/guides/destinations?locale=&section=    destinations with a publishe
 GET /api/v1/guides/series?locale=                   every registered series hub published in the locale
 GET /api/v1/guides/sitemap?section=&locale=&cursor=&limit=   one child sitemap's rows, paged
 GET /api/v1/guides/sitemap/summary                  published rows per kind and locale
+GET /api/v1/guides/search?locale=&q=&section=&kind=&topic=&destination=&country=&limit=&offset=
+                                                    ranked full-text search over published articles
 GET /api/v1/guides/series/{series_slug}?locale=
 GET /api/v1/guides/{kind}/{slug}?locale=
 POST /api/v1/guides/{kind}/{slug}/partner-links/{key}/click?locale=   count one partner-link click, 204
@@ -243,6 +245,14 @@ for the sitemap index and the section hubs. The article response carries
 `published_locales` so the web layer can emit hreflang for the translations that actually
 exist.
 
+`GET /guides/search` is the reader's search box (see "Search" below): `q` is one to a
+hundred characters, `limit` at most 20 and `offset` at most 200, the other filters compose
+exactly as they do on the listing, and the answer is `{query, total, offset, limit,
+results, best_match, next_offset}` where each result is a `PublicSummary` plus `snippet`
+(the passage the first term was found in, or the description) and `matched` (the folded
+terms). A query with nothing searchable in it is a 422 `guide_search_query_invalid`; more
+than 120 queries a minute from one address is a 429.
+
 Admin (`content.manage` for writes):
 
 ```
@@ -268,6 +278,84 @@ Authoring lives in `app/guides/admin_service.py` and reading in `app/guides/serv
 The split is not only tidiness: `tests/test_error_localization.py` holds every non-operator
 module to a translated sentence for each error code it raises, so keeping operator errors
 out of the read path keeps that boundary honest.
+
+## Search
+
+The corpus is a few thousand documents in five languages, three of which `to_tsvector`
+cannot tokenise, so the search is a substring one over a flattened copy of each published
+translation, ranked by where the words were found. `app/guides/search.py` owns all of it;
+`admin_service._write_revision` calls it, nothing else does.
+
+**The index.** `guide_search_entries` holds one row per published (article, locale): the
+title and description as written, `title_norm`, `description_norm`, `headings_norm` and
+`aliases_norm` folded (NFKC, then casefold, whitespace collapsed), `body_text` readable
+(NFKC and whitespace only, for the snippet) and `search_text`, the folded concatenation the
+match runs on. `document_text` takes the prose block by block -- headings, paragraphs,
+rich-paragraph inlines, list items, link text, image alt and caption, table cells and
+caption, callout title and text, a code block's *label* (never its listing), offer
+headings, partner-link label and note, the hero alt and the source titles -- so a URL, a
+partner code or a line of shell can never match. Nothing else about the article is copied:
+kind, destination, topics, validity and the hidden switch stay on `guide_articles` and are
+joined at query time through `published_filters()`, so hiding or expiring an article takes
+it out of the results the moment it happens, and unhiding it needs no republication. The
+row also names the `revision_version` it was built from and the query requires it to equal
+`published_version`, so a row a failed hook left behind is invisible rather than stale.
+
+**Maintenance.** Publishing writes or rewrites the row and withdrawing deletes it, in the
+same transaction that moves the published pointer. Migration 0077 builds no rows: after
+deploying it, and after any bulk publish that bypassed the admin write path, run
+
+```bash
+cd apps/api && uv run python -m app.cli guides-search-reindex --dry-run   # then without the flag
+```
+
+which is idempotent (a row already at the published version is left alone) and drops rows
+no published translation backs. Hidden and expired articles are indexed too; the query
+decides.
+
+**Matching and ranking.** The query is folded the same way, split on whitespace and
+punctuation (`.`, `-`, `_`, `+` and `#` stay inside a term: `Next.js`, `GPT-4`, `C#`),
+stripped of lone ASCII characters (a lone CJK character is a word), and capped at six
+distinct terms. Every term must appear in `search_text` (`LIKE '%term%'` with the
+metacharacters escaped; never `ILIKE`, which SQLite lacks and whose `lower()` there stops
+at ASCII). Rows are ordered by the sum over terms of where each was found -- title 8,
+alias 6, description 4, heading 3, anywhere else 1 -- then newest first. On PostgreSQL the
+`LIKE` is served by a `pg_trgm` GIN index over `search_text` (`ix_guide_search_entries_search_text_trgm`,
+created by 0077 with `CREATE EXTENSION IF NOT EXISTS pg_trgm`; the extension is trusted,
+so the database owner can create it); without it the query is still correct, only slower.
+Trigrams over CJK need a UTF-8 `lc_ctype` (`SHOW lc_ctype;` after deploying). SQLite runs
+the same predicate as a scan.
+
+**Best match.** `guide_article_aliases` holds the other names an article answers to, per
+locale (`source`: `term` from the AI glossary, `series` from a catalogue's lesson keywords,
+`keyword` and `editor` reserved for the pack field and the admin panel). A folded query
+equal to an alias that exactly one visible article of the locale carries, or failing that
+to a title, is that article's exact match: it is returned as `best_match`, above the ranked
+list and left out of it. An alias several articles share ranks (weight 6) but names no
+best match. The seed:
+
+```bash
+cd apps/api && uv run python -m app.cli guides-aliases-seed --dry-run   # then without the flag
+```
+
+reads `docs/ai-terms-series/aliases.json` (a key names the `ai-term-<key>` pack, else the
+pack of that slug; one row per language the pack is written in) and the lesson `aliases`
+of every `series_data` catalogue, inserts only the rows that are not there yet, never
+deletes or rewrites, reports the slugs it could not find and the aliases several articles
+share, and refreshes the index rows it touched. `--terms-file` points it at a copy of the
+glossary list where the repository's `docs/` is not on disk.
+
+**Rate limit.** 120 queries a minute per address, counted with `over_named_rate_limit`,
+which fails *open*: a search that goes dark because Redis blinked is the worse outcome, and
+the hit is recorded (`record_rate_limit_hit`) so a threshold can be judged before it bites.
+
+**The web.** `/{locale}/search/articles?q=&section=&offset=` is the results page: a plain
+GET form, `noindex, follow`, the terms marked with `<mark>` in the title and the passage
+(`lib/guides.ts` `highlight`, which folds character by character so a full-width `ＡＩ` or
+an ellipsis that NFKC turns into three periods still marks the right characters). The
+header carries the same search as a combobox on wide screens and as a sheet that ⌘K /
+Ctrl+K and the phone header's icon open (`components/site-search`); the typeahead reads
+`/guides/search?limit=6` through the BFF after a 200 ms pause and treats a 422 as no match.
 
 ## Verification
 

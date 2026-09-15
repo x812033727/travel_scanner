@@ -63,8 +63,15 @@
 | `guides-hub-destinations-by-country-web` | 旅遊 hub「依目的地瀏覽」 |
 | `llms-txt-topic-hubs-and-series` | llms.txt 列父主題與系列（等 aio 任務合併） |
 
-### Phase 2 — 搜尋
-`guide-search-api`（0077 索引表＋別名表、pg_trgm、`GET /guides/search`）→ `article-search-results-page-web` → `site-search-header-web`。
+### Phase 2 — 搜尋（已落地，同一分支）
+| 任務 | 內容 |
+| --- | --- |
+| `guide-search-api` | 0077：`guide_search_entries`（發布寫入、撤下刪除，同一交易）與 `guide_article_aliases`；`GET /guides/search`（LIKE 子字串 AND、命中位置加權、別名／標題精確命中置頂 `best_match`）；PostgreSQL 建 pg_trgm GIN；`guides-search-reindex`、`guides-aliases-seed` CLI；限流 fail-open 120/60s |
+| `article-search-results-page-web` | `/search/articles?q=&section=&offset=`：純 GET 表單、noindex/follow、`<mark>` 標示、專區 chips、offset 分頁、422／故障分開文案、空結果列主題與系列 |
+| `site-search-header-web` | 桌機 header combobox typeahead（≤6 筆＋查看全部）、⌘K／Ctrl+K 與手機 icon 開同一個 sheet、頁尾連結 |
+
+細節見 `docs/travel-guides.md`「Search」。別名種子這次一併做了（`app/guides/aliases.py`）；
+`guide-aliases-seed-and-pack-field` 剩內容包欄位、後台欄位與 `docs/ai-suffix-keywords.md` 來源。
 
 ### Phase 3 — 互連
 `guide-aliases-seed-and-pack-field` → `pack-autolink-and-relink-cli` → `content-relink-autolink-life` / `-travel`；
@@ -106,9 +113,14 @@
 
 ## 部署與驗證
 
-- 部署順序：migrate（0076）→ API → web；之後 `python -m app.cli guides-import --actor-email … --dry-run` 應列出 430 筆 `taxonomy: update`，再正式匯入。
+- 部署順序：migrate（0076、0077）→ API → web；之後 `python -m app.cli guides-import --actor-email … --dry-run` 應列出 430 筆 `taxonomy: update`，再正式匯入。
+- Phase 2 部署後**必須**跑一次 `python -m app.cli guides-search-reindex`（索引只在發布時建，不跑則搜尋是空的），
+  再 `guides-aliases-seed --dry-run` → 正式跑；`SHOW lc_ctype;` 需為 UTF-8，`\di ix_guide_search_entries_search_text_trgm` 應存在。
+  驗證：`curl '/api/v1/guides/search?locale=zh-TW&q=機器學習'`（`best_match` 為名詞解釋篇）、`q=ＡＩ`、`q=%25%25`（0 筆不 500）、`q=a`（422）；
+  開 `/zh-TW/search/articles?q=Ollama`；桌機 header 輸入 `Codex`、⌘K；手機 icon；無 JS 時表單仍送出。
 - 驗證：`GET /api/v1/guides/topics?locale=zh-TW&section=life`（父 `parent:null`、子帶 `parent`、`count/counts`）、
   `GET /api/v1/guides?locale=zh-TW&kind=howto&country=japan`、`GET /api/v1/guides/destinations?locale=zh-TW`、`GET /api/v1/guides/series?locale=zh-TW`；
   開 `/zh-TW/life/topics/ai-terms`、`/zh-TW/guides/topics/transport`、`/en/life/topics/ai-terms`（應 noindex），看 canonical、robots、JSON-LD；`/sitemap.xml` 含主題 hub 列。
-- 風險：sitemap 文章列 986/1000（主題 hub 走靜態區不吃預算，Phase 2 之後的新頁面前先做 split）；
-  CJK 搜尋用 pg_trgm 需 UTF-8 `lc_ctype`；新 block 的 web 渲染器先於內容；別名同語系唯一。
+- 風險：sitemap 已拆成 index（每專區×語系一個子檔，`pack_cli lint` 4,000 列預警）；
+  CJK 搜尋用 pg_trgm 需 UTF-8 `lc_ctype`；新 block 的 web 渲染器先於內容；
+  別名以（文章、語系、別名）唯一，同語系多篇共用的別名只加權、不置頂（系列 lesson 的 `aliases` 有 346 個重複，如 `cli`、`手機`）。

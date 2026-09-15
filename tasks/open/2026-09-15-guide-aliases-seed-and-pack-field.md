@@ -54,3 +54,8 @@ cd apps/api && uv run pytest tests/test_guides_aliases.py tests/test_guides_cont
 ## Notes
 
 種子 `source` 保留（term/keyword/series），編輯欄位只覆蓋 `editor` 列。
+
+2026-09-15 更新：`guides-aliases-seed`（`app/guides/aliases.py`、`app/guides/search_cli.py`）已在 `guide-search-api` 先做，
+讀 `docs/ai-terms-series/aliases.json` 與 `series_data` 的 lesson `aliases`；表的唯一鍵是（article_id, locale, alias_norm），
+共用別名只加權不置頂。本票剩：`ArticlePack.aliases` 欄位（taxonomy-only import）、後台編輯、`docs/ai-suffix-keywords.md` 來源
+（`source="keyword"`），以及把 seed 改為也吃內容包欄位。
