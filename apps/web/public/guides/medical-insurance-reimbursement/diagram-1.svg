@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">一張收據如何對應到分項限額 / How one hospital bill maps to separate benefit caps</title>
+<desc id="desc">左右兩欄的對照圖。左欄是一次住院收據上的五組費用：超等住院之病房費差額與膳食、護理費差額；醫師指示用藥、血液、掛號費與超過健保給付之住院醫療費用；手術費中健保未給付的部分；健保已經給付的部分；以及美容手術、外科整型、健康檢查與外觀可見之天生畸形。右欄是保單的五格結果：每日病房費用保險金，假設上限每日兩千元；住院醫療費用保險金也就是雜費，假設上限每次住院六萬元；手術費用保險金，假設限額十萬元再乘以手術名稱及費用表的百分率；健保已給付的部分不再給付；屬於除外責任、不在給付範圍。前三組用實線箭頭連到對應的給付項目，後兩組用虛線箭頭，表示走不到給付。圖下方標示：同一張保單只能擇一，採各項保險金限額，或採每次住院總限額。</desc>
+<defs>
+<marker id="arrowT" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#0D6B68"/></marker>
+<marker id="arrowB" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#2F6F9F"/></marker>
+<marker id="arrowG" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#2E7D5B"/></marker>
+<marker id="arrowY" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#5C6B6B"/></marker>
+<marker id="arrowR" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#B8442D"/></marker>
+</defs>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">一張收據，對應到三個各有上限的給付項目</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">One hospital bill, three separate benefit caps</text>
+<text x="315" y="118" font-size="20" font-weight="700" fill="#5C6B6B" text-anchor="middle">醫療費用收據上的項目</text>
+<text x="1145" y="118" font-size="20" font-weight="700" fill="#5C6B6B" text-anchor="middle">保單的給付項目與各自的限額</text>
+<rect x="80" y="130" width="470" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="315" y="172" font-size="17" fill="#102A2B" text-anchor="middle">超等住院之病房費差額</text>
+<text x="315" y="204" font-size="17" fill="#102A2B" text-anchor="middle">管灌飲食以外之膳食費、護理費</text>
+<rect x="760" y="130" width="770" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="1145" y="170" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">每日病房費用保險金（示範條款第 5 條）</text>
+<text x="1145" y="202" font-size="17" fill="#5C6B6B" text-anchor="middle">假設上限：每日 2,000 元</text>
+<line x1="568" y1="178" x2="742" y2="178" stroke="#0D6B68" stroke-width="6" stroke-linecap="butt" marker-end="url(#arrowT)"/>
+<rect x="80" y="246" width="470" height="96" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="315" y="288" font-size="17" fill="#102A2B" text-anchor="middle">醫師指示用藥、血液、掛號費</text>
+<text x="315" y="320" font-size="17" fill="#102A2B" text-anchor="middle">超過健保給付之住院醫療費用</text>
+<rect x="760" y="246" width="770" height="96" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="1145" y="286" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">住院醫療費用保險金（雜費，第 6 條）</text>
+<text x="1145" y="318" font-size="17" fill="#5C6B6B" text-anchor="middle">假設上限：每次住院 60,000 元</text>
+<line x1="568" y1="294" x2="742" y2="294" stroke="#2F6F9F" stroke-width="6" stroke-linecap="butt" marker-end="url(#arrowB)"/>
+<rect x="80" y="362" width="470" height="96" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+<text x="315" y="418" font-size="17" fill="#102A2B" text-anchor="middle">手術費（健保未給付的部分）</text>
+<rect x="760" y="362" width="770" height="96" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+<text x="1145" y="402" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">手術費用保險金（第 7 條）</text>
+<text x="1145" y="434" font-size="17" fill="#5C6B6B" text-anchor="middle">假設限額 100,000 元 ×「手術名稱及費用表」百分率</text>
+<line x1="568" y1="410" x2="742" y2="410" stroke="#2E7D5B" stroke-width="6" stroke-linecap="butt" marker-end="url(#arrowG)"/>
+<rect x="80" y="478" width="470" height="96" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+<text x="315" y="534" font-size="17" fill="#102A2B" text-anchor="middle">健保已經給付的部分</text>
+<rect x="760" y="478" width="770" height="96" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+<text x="1145" y="534" font-size="19" fill="#102A2B" text-anchor="middle">健保已給付的部分不再給付（第 10 條）</text>
+<line x1="568" y1="526" x2="742" y2="526" stroke="#5C6B6B" stroke-width="6" stroke-linecap="butt" stroke-dasharray="14 10" marker-end="url(#arrowY)"/>
+<rect x="80" y="594" width="470" height="96" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+<text x="315" y="636" font-size="17" fill="#102A2B" text-anchor="middle">美容手術、外科整型、健康檢查</text>
+<text x="315" y="668" font-size="17" fill="#102A2B" text-anchor="middle">外觀可見之天生畸形</text>
+<rect x="760" y="594" width="770" height="96" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+<text x="1145" y="650" font-size="19" fill="#102A2B" text-anchor="middle">屬於除外責任，不在給付範圍（第 11 條）</text>
+<line x1="568" y1="642" x2="742" y2="642" stroke="#B8442D" stroke-width="6" stroke-linecap="butt" stroke-dasharray="14 10" marker-end="url(#arrowR)"/>
+<rect x="80" y="726" width="1450" height="86" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="805" y="760" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">同一張保單只能擇一：採各項保險金限額，或採每次住院總限額</text>
+<text x="805" y="792" font-size="17" fill="#5C6B6B" text-anchor="middle">分項限額的天花板各自獨立，用不完的額度不會挪到別格；總限額則只封一次住院的總額</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
