@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">用 AI 做筆記的三段流程插圖 / Illustration of a three-stage note-taking workflow</title>
+  <desc id="desc">一張幾何插圖。左邊是三張歪斜疊放的白色卡片，代表隨手收集、還沒整理的筆記。一支箭頭指向中間一個墨綠色圓角方框，裡面是九格整齊排列的小方塊，其中三格填成深綠色，代表整理後被分類的內容。第二支箭頭指向右邊一個藍色外框的對話框，裡面有三條橫線代表回答的文字，右下角壓著一個綠色圓形勾選標記，代表回想時要點開引用確認過的結論。畫面下方是一行文字：收集、整理、回想。整張圖沒有任何產品介面、標誌或人物。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 2 1 L 11 6 L 2 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+
+  <!-- left: loose captured notes -->
+  <g transform="rotate(-9 217.5 309)">
+    <rect x="130" y="250" width="175" height="118" rx="16" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="5"/>
+    <rect x="152" y="282" width="122" height="10" rx="5" fill="#D5CDC0"/>
+    <rect x="152" y="312" width="88" height="10" rx="5" fill="#D5CDC0"/>
+  </g>
+  <g transform="rotate(7 302.5 411)">
+    <rect x="215" y="352" width="175" height="118" rx="16" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="5"/>
+    <rect x="237" y="384" width="122" height="10" rx="5" fill="#D5CDC0"/>
+    <rect x="237" y="414" width="76" height="10" rx="5" fill="#D5CDC0"/>
+  </g>
+  <g transform="rotate(-4 212.5 517)">
+    <rect x="125" y="458" width="175" height="118" rx="16" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="5"/>
+    <rect x="147" y="490" width="122" height="10" rx="5" fill="#D5CDC0"/>
+    <rect x="147" y="520" width="95" height="10" rx="5" fill="#D5CDC0"/>
+  </g>
+
+  <line x1="460" y1="405" x2="600" y2="405" stroke="#0D6B68" stroke-width="9" marker-end="url(#arrow)"/>
+
+  <!-- middle: organised grid -->
+  <rect x="620" y="235" width="330" height="340" rx="24" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <rect x="639" y="259" width="88" height="88" rx="12" fill="#0D6B68"/>
+  <rect x="741" y="259" width="88" height="88" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="843" y="259" width="88" height="88" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="639" y="361" width="88" height="88" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="741" y="361" width="88" height="88" rx="12" fill="#0D6B68"/>
+  <rect x="843" y="361" width="88" height="88" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="639" y="463" width="88" height="88" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="741" y="463" width="88" height="88" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <rect x="843" y="463" width="88" height="88" rx="12" fill="#D97A2B"/>
+
+  <line x1="990" y1="405" x2="1120" y2="405" stroke="#0D6B68" stroke-width="9" marker-end="url(#arrow)"/>
+
+  <!-- right: grounded answer with a citation check -->
+  <rect x="1150" y="250" width="350" height="250" rx="32" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6"/>
+  <path d="M 1200 496 L 1200 572 L 1266 496" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="1190" y="300" width="230" height="12" rx="6" fill="#B9D4E6"/>
+  <rect x="1190" y="352" width="265" height="12" rx="6" fill="#B9D4E6"/>
+  <rect x="1190" y="404" width="175" height="12" rx="6" fill="#B9D4E6"/>
+  <circle cx="1470" cy="494" r="48" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="6"/>
+  <path d="M 1444 494 L 1463 514 L 1498 476" fill="none" stroke="#2E7D5B" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="800" y="772" font-size="56" font-weight="700" fill="#102A2B" text-anchor="middle">收集 · 整理 · 回想</text>
+</svg>

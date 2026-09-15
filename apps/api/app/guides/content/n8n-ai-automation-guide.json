@@ -1,0 +1,428 @@
+{
+  "slug": "n8n-ai-automation-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "productivity"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "n8n 入門：用 AI 節點做自動化工作流",
+      "description": "n8n 是能自架也有雲端版的工作流自動化軟體，用節點串起觸發、AI Agent、工具與輸出。本文照 2026 年 9 月 15 日的官方文件，說明各方案月費與每月執行數、Community Edition 的 Sustainable Use License 能做什麼、一行指令怎麼安裝、AI Agent 接哪些節點，以及執行數和模型 token 怎麼分開算。",
+      "hero": {
+        "src": "/guides/n8n-ai-automation-guide/hero.jpg",
+        "alt": "一條從觸發圖示出發的線，經過中央的齒輪圓盤與兩個工具方塊，再分岔到信封、表格與對話框三個輸出圖示。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "n8n 是一套工作流（workflow）自動化軟體，你在畫布上把節點（node）接起來，從觸發開始，中間可以放 AI Agent 節點呼叫語言模型，最後把結果送到信箱、試算表或聊天室。它可以用官方託管的 n8n Cloud，也可以照 Sustainable Use License 架在自己機器上，兩邊是同一套軟體，差別在誰顧主機、哪些功能要付費。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你看懂三件事：方案與授權怎麼選、自架要下哪一行指令、一個 AI 工作流從觸發到輸出由哪些節點組成。數字與節點名稱全部照 2026 年 9 月 15 日的官方文件與方案頁；本文沒有登入或實際跑過工作流，流程照官方說明寫，結果請你自己驗。"
+        },
+        {
+          "type": "heading",
+          "text": "n8n 是什麼：節點、觸發與「一次執行」",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "n8n 的基本單位是節點。一條工作流的第一個節點一定是觸發（trigger）節點，官方文件裡常見的有 n8n Form Trigger（由 n8n 產生一張表單網頁）、Webhook（別的系統打進來）、Schedule Trigger（照排程跑）與 Chat Trigger（聊天視窗）。後面的節點取資料、判斷、改格式或送出去，節點之間用線相連，整張圖就是一個工作流。官方 README 說 n8n 連得到 1500 個以上的整合，另有 9000 個以上的工作流範本可以套用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件把「一次執行（execution）」定義成整個工作流跑一次，跟裡面有幾個步驟、處理多少資料無關。執行分兩種模式：在編輯器裡按下執行的手動執行（Manual），以及工作流發布後自動跑的生產執行（Production）。"
+        },
+        {
+          "type": "heading",
+          "text": "Cloud 還是自架：方案、版本與每月執行數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官網把選擇拆成兩層：先決定雲端還是自架，再決定方案或版本。n8n Cloud 這邊是 Starter、Pro 與 Enterprise；自架這邊是免費的 Community edition、同樣免費但要註冊的 Registered Community edition，再往上是付費的 Business 與 Enterprise。方案頁上的 Business 卡片標的是自架，不是 Cloud 方案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想先試用，官方文件寫 n8n Cloud 的免費試用是 14 天、可以用到 Pro 等級的功能。方案頁的常見問題列出試用期上限：1000 次執行、5 個同時執行、180 秒的執行逾時與 1 個團隊專案，另附 800 點 AI Assistant credits、100 點 AI credits 與 20 點 AI Builder credits。Cloud 試用不需信用卡，Business 方案才需要。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案或版本",
+            "每月工作流執行數",
+            "月費（歐元）",
+            "備註"
+          ],
+          "rows": [
+            [
+              "Community edition（自架）",
+              "官網未列方案配額",
+              "免費",
+              "Sustainable Use License；沒有專案、SSO、環境、Git 版本控管等付費功能"
+            ],
+            [
+              "Registered Community edition（自架）",
+              "官網未列方案配額",
+              "免費",
+              "用電子郵件註冊換免費授權金鑰，多出資料夾、編輯器內除錯、自訂執行資料"
+            ],
+            [
+              "Starter（Cloud）",
+              "2500",
+              "月繳 24；年繳每月 20（一年 240）",
+              "1 個共用專案、5 個同時執行、每月 2300 點 AI credits"
+            ],
+            [
+              "Pro（Cloud）",
+              "10000",
+              "月繳 60；年繳每月 50（一年 600）",
+              "3 個共用專案、20 個同時執行；另有每月 50000 次執行的級距"
+            ],
+            [
+              "Business（自架）",
+              "40000",
+              "月繳 800；年繳每月 667（一年 8000）",
+              "SSO、SAML、LDAP、環境、Git 版本控管；論壇支援"
+            ],
+            [
+              "Enterprise（Cloud 或自架）",
+              "執行數客製",
+              "洽業務",
+              "200 個以上同時執行、外部密鑰管理、日誌串流、附 SLA 的專屬支援"
+            ]
+          ],
+          "caption": "資料照 n8n 官方方案頁，2026 年 9 月 15 日查證；幣別為歐元，「年繳每月」是官網以年繳總額換算的每月金額。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Community edition 幾乎就是完整的 n8n。官方列出的差別是沒有自訂變數、環境、外部密鑰、二進位資料外部儲存、日誌串流、multi-main 模式、專案、SSO、工作流與憑證共用，以及 Git 版本控管；一般日誌與佇列模式則是內建的。用電子郵件註冊換一把免費授權金鑰後，會多出資料夾、編輯器內除錯與自訂執行資料三項，這一層叫 Registered Community edition。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不想碰伺服器的話，也有不必自架的同類服務，計費單位和 n8n 的「一次執行」不同，值得先比較。"
+        },
+        {
+          "type": "link",
+          "text": "Zapier 與 Make 的 AI 自動化：計費方式與 AI 功能對照",
+          "url": "https://mokaair.com/zh-TW/life/zapier-make-ai-automation"
+        },
+        {
+          "type": "heading",
+          "text": "授權：Sustainable Use License 的三條限制",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "n8n 的 GitHub 倉庫走 fair-code 模式。官方授權檔寫明：master 分支上檔名不含 .ee. 的原始碼適用 Sustainable Use License 第 1.0 版，含 .ee. 的檔案要另外持有 n8n Enterprise License，master 以外的分支不授權。這份授權給你免費使用、修改、製作衍生作品與再散布的權利，但附三條限制。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "只能為你自己的內部商業用途、非商業用途或個人用途使用或修改這套軟體。",
+            "只有在免費且為非商業目的的前提下，才可以散布或提供給別人。",
+            "不可以更動、移除或遮蔽軟體裡任何授權、著作權或其他聲明；使用授權方的商標受相關法律規範。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件把「內部商業用途」講得更白：除非你賣的產品、服務或模組的價值幾乎全部來自 n8n 的功能，否則都算允許。文件舉的不允許例子是把 n8n 換皮賣給客戶、架好 n8n 再收費讓別人使用；允許的例子包括同步自家公司掌握的資料、替自家產品做一個 n8n 節點、提供 n8n 顧問服務、在公司內部伺服器架設與維護 n8n。條文另外寫到，違規使用會讓授權自動終止，但收到通知後 30 天內停止違規，授權會回溯恢復。"
+        },
+        {
+          "type": "heading",
+          "text": "自架安裝：一行指令，npm 版本要退場了",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件現在建議全新安裝用一行指令，前提是先裝好 Docker 與 docker compose v2 外掛。它會檢查 Docker、在目前的目錄建一個 n8n 資料夾、寫好設定檔、拉映像檔並啟動；跑完用瀏覽器打開本機的 5678 埠就是編輯器。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "官方文件的一行安裝指令（需要先安裝 Docker）",
+          "code": "curl -fsSL https://get.n8n.io | sh"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一頁也附了日常最常用的兩行：停止與升級。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "停止與升級 n8n（照官方文件原文）",
+          "code": "docker compose -f ./n8n/compose.yml down\ncurl -fsSL https://get.n8n.io | sh -s -- --upgrade"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你看到的舊教學寫 npx n8n 或 npm install n8n -g，要留意 npm 安裝的說明頁已標為「從 n8n 3.0 起淘汰」，而一行安裝那一頁寫 n8n 3.0 預定 2026 年 10 月推出，之後只透過 Docker 發行。現在仍要用 npm 的話，文件寫 Node.js 版本要落在 20.19 到 24.x 之間，而且明講只適合本機開發測試，不適合正式環境。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "舊的 npm 安裝方式（官方文件標示從 n8n 3.0 起淘汰）",
+          "code": "npx n8n\nnpm install n8n -g"
+        },
+        {
+          "type": "heading",
+          "text": "第一個 AI 工作流：觸發、AI Agent、工具與記憶、輸出",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "n8n 的 AI 功能是用叢集節點組起來的：一個 root node 加上掛在它下面的 sub-node。AI Agent 就是那個 root node，至少要接一個 chat model 節點，再接工具；官方文件明講 AI Agent 一定要連上至少一個工具 sub-node。文件也提醒，代理類型設定從 1.82.0 起淘汰，現在所有 AI Agent 節點都以 Tools Agent 的方式運作。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "放一個觸發節點：表單用 n8n Form Trigger，外部系統呼叫用 Webhook，定時用 Schedule Trigger，聊天視窗用 Chat Trigger。",
+            "接上 AI Agent 節點，在系統提示詞寫清楚任務範圍與不能做的事。",
+            "在 AI Agent 的 Chat Model 接點掛一個 chat model 節點，選好憑證。",
+            "在 Memory 接點掛記憶節點，最容易上手的是 Simple Memory。",
+            "在 Tool 接點掛工具節點，讓代理能查資料或動手。",
+            "最後接輸出節點，把結果送出去。",
+            "先用測試資料手動執行，逐一檢查每個節點的輸入輸出，確認沒問題再發布成生產工作流。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "chat model 節點依供應商命名，官方文件目前列出的包括 OpenAI Chat Model、Anthropic Chat Model、Google Gemini Chat Model、Google Vertex Chat Model、Ollama Chat Model、OpenRouter Chat Model、Groq Chat Model、Mistral Cloud Chat Model、DeepSeek Chat Model 與 xAI Grok Chat Model 等，完整清單以文件的 sub-nodes 目錄為準。想跑在自己機器上就選 Ollama Chat Model。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記憶節點負責把同一段對話的前文留住。官方文件說最容易上手的是 Simple Memory，它保存目前工作階段一段長度可調的聊天記錄；要存久一點可換成 Redis Chat Memory、Postgres Chat Memory 或 MongoDB Chat Memory。工具除了 Wikipedia、SerpApi 這類現成節點，文件點名三個：Call n8n Workflow Tool（把另一條工作流當工具）、Custom Code Tool 與 HTTP Request Tool。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/n8n-ai-automation-guide/diagram-1.svg",
+          "alt": "一條 n8n 工作流的流程圖，從四種觸發節點進入 AI Agent，兩側掛著模型、記憶與工具，右邊分出四個輸出節點。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：先選一個觸發節點，中間的 AI Agent 掛上模型、記憶與工具三種 sub-node，右邊是把結果送出去的一般節點。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "輸出端用的是一般節點：寄信用 Gmail、通知用 Slack、寫紀錄用 Google Sheets。要接 LINE 的人注意，官方文件寫 Line 節點從 n8n 1.64.0 起淘汰，因為 LINE Notify 已在 2025 年 4 月 1 日結束服務；要串 LINE 官方帳號，用 HTTP Request 節點自己呼叫 API。"
+        },
+        {
+          "type": "link",
+          "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 幫你做 LINE 機器人：從零到上線",
+          "url": "https://mokaair.com/zh-TW/life/ai-build-line-bot-tutorial"
+        },
+        {
+          "type": "heading",
+          "text": "接 MCP：n8n 可以當客戶端，也可以當伺服器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "要讓 n8n 的代理用別人做好的工具，就用 MCP Client Tool 節點。填入 MCP 伺服器的 SSE 端點與驗證方式（Bearer、單一標頭、多組標頭或 OAuth2），再決定開放給代理哪些工具：全部、只選幾個，或全部但排除幾個。節點面板另內建一份 MCP 伺服器登錄，裡面有的服務點選登入即可，n8n 會自動建憑證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "反過來，MCP Server Trigger 節點讓 n8n 自己變成 MCP 伺服器，把工作流當工具開放給外部的 AI 應用。它支援 SSE 與 streamable HTTP 兩種傳輸，官方文件明講目前不支援 stdio；節點有測試與正式兩組 MCP 網址，驗證可選不驗證、Bearer 或標頭。文件也附了在 Claude Desktop 設定檔裡透過 mcp-remote 轉接的寫法。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "官方文件示範：在 Claude Desktop 設定裡接 n8n 的 MCP Server Trigger",
+          "code": "{\n  \"mcpServers\": {\n    \"n8n\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"mcp-remote\",\n        \"<MCP_URL>\",\n        \"--header\",\n        \"Authorization: Bearer ${AUTH_TOKEN}\"\n      ],\n      \"env\": {\n        \"AUTH_TOKEN\": \"<MCP_BEARER_TOKEN>\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "該用內建節點還是 MCP 伺服器當工具，官方文件有一段對照：內建節點可以把參數固定住、只留幾格讓模型填，控制較緊；MCP 伺服器給代理的空間大，代價是控制力較低、每次呼叫吃掉的上下文視窗較多。"
+        },
+        {
+          "type": "link",
+          "text": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-model-context-protocol"
+        },
+        {
+          "type": "link",
+          "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
+          "url": "https://mokaair.com/zh-TW/life/mcp-servers-for-everyone"
+        },
+        {
+          "type": "heading",
+          "text": "費用怎麼算：執行數與模型 token 是兩本帳",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一本帳是執行數。官方文件說只有生產執行才算進方案配額，算法還要看觸發節點的種類：Schedule Trigger 每次觸發就算一次，不管跑出什麼結果；輪詢類節點只有抓到新資料才算；Webhook 則是每個成功啟動觸發的進站請求算一次，連內容是空的也算，但在工作流開始前就失敗的畸形請求不算。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在編輯器裡建置或測試時的手動執行。",
+            "用 Execute Sub-workflow 節點叫起來的子工作流，只算最上層那一次。",
+            "被設定為錯誤工作流的那條工作流自己的執行。",
+            "輪詢時沒有抓到新資料的那幾次。",
+            "在工作流開始前就被擋掉的畸形或被拒絕的請求。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "第二本帳是模型的錢。AI Agent 呼叫的是你自己接上去的模型供應商，那邊照 token 另外計費，和 n8n 的執行數互不相干。n8n Cloud 另有 Gateway credits，讓 Starter 與 Pro 方案在支援的節點上改用預付點數、不必自己申請 API 金鑰，官方文件寫它從 n8n 2.36.0 起提供，Enterprise 與自架版沒有。方案頁上的 AI credits 則是 AI Assistant（預覽版）的每月額度，Starter 每月 2300 點、Pro 依方案大小是 5700 或 13700 點，不能加購也不能累積到下個月。"
+        },
+        {
+          "type": "link",
+          "text": "OpenRouter：一把金鑰用遍各家模型",
+          "url": "https://mokaair.com/zh-TW/life/openrouter-multi-model-api"
+        },
+        {
+          "type": "heading",
+          "text": "安全：金鑰放憑證，外部內容一律當成不可信",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "金鑰不要打在節點的參數欄位裡，要建成憑證（credentials）。官方文件說憑證是被保管起來的驗證資訊，存檔時 n8n 會先測一次連不連得上。很多網頁 API 的憑證還有一個 Allowed HTTP Request Domains 欄位，限制這把憑證在 HTTP Request 節點裡可以打去哪些網域：全部、指定網域清單，或完全禁止，用來防止金鑰被送到不該去的地方。"
+        },
+        {
+          "type": "paragraph",
+          "text": "只要 AI 節點會讀到外部內容，不管是網頁、電子郵件還是別人送進來的表單，那些內容都要當成不可信的輸入，要防的是提示詞注入。先把權限縮到最小：能唯讀就不要給寫入、工具只開用得到的那幾個、先在測試帳號與測試資料上跑，再回頭看執行紀錄確認代理做了什麼。n8n 也有兩個對應的節點：Guardrails 可以在送進模型前或拿到輸出後檢查越獄、NSFW、個資、密鑰與離題；工具的人工審核（human-in-the-loop）則讓工作流在代理要動用某個工具前先停住，由人按核准或拒絕，適合寄信、改資料、刪資料這種不可逆的動作。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞注入（Prompt Injection）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "自架之前先想清楚誰要顧這台機器",
+          "text": "官網的對照表把自架列在「需要技術能力」與「維護是你的責任」那一欄：安裝、設定、擴充與安全都得自己來，不熟伺服器管理的人，官方建議直接用 n8n Cloud。另外，付費授權金鑰要每天回報給 n8n 的授權伺服器才維持有效，而 Business 是自助方案，附 SLA 的專屬支援只在 Enterprise 才有。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "n8n Plans and Pricing（官方方案頁）",
+          "url": "https://n8n.io/pricing/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Choose how to use n8n（n8n 官方文件）",
+          "url": "https://docs.n8n.io/choose-how-to-use-n8n/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Compare editions（n8n 官方文件）",
+          "url": "https://docs.n8n.io/deploy/host-n8n/community-edition-features/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Sustainable Use License（n8n 官方文件授權說明）",
+          "url": "https://docs.n8n.io/n8n-community-license/sustainable-use-license/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "LICENSE.md（n8n 官方 GitHub 倉庫的授權原文）",
+          "url": "https://github.com/n8n-io/n8n/blob/master/LICENSE.md",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "n8n README（官方 GitHub 倉庫首頁）",
+          "url": "https://github.com/n8n-io/n8n",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "One-line setup（n8n 官方文件）",
+          "url": "https://docs.n8n.io/deploy/host-n8n/install-options/one-line-setup/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Install with npm（n8n 官方文件）",
+          "url": "https://docs.n8n.io/deploy/host-n8n/install-options/install-with-npm/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Agent 節點（n8n 官方文件）",
+          "url": "https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "How memory works（n8n 官方文件）",
+          "url": "https://docs.n8n.io/build/integrate-ai/understand-ai-components/how-memory-works/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "How tools work（n8n 官方文件）",
+          "url": "https://docs.n8n.io/build/integrate-ai/understand-ai-components/how-tools-work/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "MCP Client Tool 節點（n8n 官方文件）",
+          "url": "https://docs.n8n.io/integrations/builtin/cluster-nodes/sub-nodes/n8n-nodes-langchain.toolmcp/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "MCP Server Trigger 節點（n8n 官方文件）",
+          "url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-langchain.mcptrigger/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "MCP servers（n8n 官方文件）",
+          "url": "https://docs.n8n.io/build/integrate-ai/mcp-servers/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Understand executions（n8n 官方文件）",
+          "url": "https://docs.n8n.io/build/understand-workflows/understand-executions/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Use Gateway credits（n8n 官方文件）",
+          "url": "https://docs.n8n.io/build/understand-workflows/use-gateway-credits/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Create and edit credentials（n8n 官方文件）",
+          "url": "https://docs.n8n.io/build/understand-workflows/create-and-edit-credentials/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Guardrails 節點（n8n 官方文件）",
+          "url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-langchain.guardrails/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Human-in-the-loop for tools（n8n 官方文件）",
+          "url": "https://docs.n8n.io/build/integrate-ai/ai-examples/human-in-the-loop-for-tools/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Line 節點（n8n 官方文件）",
+          "url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.line/",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

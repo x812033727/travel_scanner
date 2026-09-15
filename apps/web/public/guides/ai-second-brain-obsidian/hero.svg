@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">本機資料夾裡的筆記網絡接上三種工具 / A local folder of linked notes wired to three tools</title>
+  <desc id="desc">插圖：畫面左側是一個資料夾形狀的大方塊，裡面有七個圓點用線互相連成一張網，代表存在本機的筆記與它們之間的連結。資料夾右側伸出三條線，分別接到三個大小相同的圓角方塊，每個方塊裡有兩個小圓點，代表三種把 AI 接上筆記的方式。資料夾下方有一行字「第二大腦」。整張圖只用圓形、方塊與線條，沒有任何產品介面或標誌。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <g transform="translate(62,-48)">
+
+  <!-- folder -->
+  <path d="M 170 250 h 230 l 46 58 h 384 a 26 26 0 0 1 26 26 v 316 a 26 26 0 0 1 -26 26 h -660 a 26 26 0 0 1 -26 -26 v -374 a 26 26 0 0 1 26 -26 z" fill="#FFFFFF" stroke="#0D6B68" stroke-width="10" stroke-linejoin="round"/>
+
+  <!-- note graph inside the folder -->
+  <g stroke="#5C6B6B" stroke-width="6" stroke-linecap="round">
+    <line x1="300" y1="420" x2="450" y2="380"/>
+    <line x1="450" y1="380" x2="600" y2="440"/>
+    <line x1="300" y1="420" x2="380" y2="540"/>
+    <line x1="380" y1="540" x2="560" y2="570"/>
+    <line x1="600" y1="440" x2="560" y2="570"/>
+    <line x1="600" y1="440" x2="720" y2="380"/>
+    <line x1="560" y1="570" x2="700" y2="540"/>
+  </g>
+  <circle cx="300" cy="420" r="30" fill="#0D6B68"/>
+  <circle cx="450" cy="380" r="22" fill="#2F6F9F"/>
+  <circle cx="600" cy="440" r="34" fill="#0D6B68"/>
+  <circle cx="380" cy="540" r="22" fill="#D97A2B"/>
+  <circle cx="560" cy="570" r="28" fill="#2F6F9F"/>
+  <circle cx="720" cy="380" r="20" fill="#2E7D5B"/>
+  <circle cx="700" cy="540" r="20" fill="#D97A2B"/>
+
+  <!-- wires out to three connectors -->
+  <g fill="none" stroke="#5C6B6B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 856 450 h 46 v -170 h 78"/>
+    <path d="M 856 450 h 124"/>
+    <path d="M 856 450 h 46 v 170 h 78"/>
+  </g>
+
+  <rect x="980" y="215" width="340" height="130" rx="26" fill="#E3F0EF" stroke="#0D6B68" stroke-width="10"/>
+  <circle cx="1080" cy="280" r="20" fill="#0D6B68"/>
+  <circle cx="1160" cy="280" r="20" fill="#0D6B68"/>
+  <rect x="1220" y="260" width="60" height="40" rx="12" fill="#0D6B68"/>
+
+  <rect x="980" y="385" width="340" height="130" rx="26" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="10"/>
+  <circle cx="1080" cy="450" r="20" fill="#2F6F9F"/>
+  <circle cx="1160" cy="450" r="20" fill="#2F6F9F"/>
+  <rect x="1220" y="430" width="60" height="40" rx="12" fill="#2F6F9F"/>
+
+  <rect x="980" y="555" width="340" height="130" rx="26" fill="#FFFFFF" stroke="#D97A2B" stroke-width="10"/>
+  <circle cx="1080" cy="620" r="20" fill="#D97A2B"/>
+  <circle cx="1160" cy="620" r="20" fill="#D97A2B"/>
+  <rect x="1220" y="600" width="60" height="40" rx="12" fill="#D97A2B"/>
+
+  <text x="500" y="810" font-size="64" font-weight="bold" fill="#102A2B" text-anchor="middle">第二大腦</text>
+  </g>
+</svg>

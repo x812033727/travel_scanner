@@ -1,0 +1,366 @@
+{
+  "slug": "ai-note-taking-workflow",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "productivity",
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
+      "description": "Notion、Obsidian 與 NotebookLM（官網現稱 Gemini Notebook）不是三選一，而是同一套筆記工作流的三個位置。這篇照 2026 年 9 月的官方方案頁與說明文件，整理三者的免費層上限、AI 功能綁在哪個方案、資料放在雲端還是本機、能匯出成什麼格式，再給一條收集到整理到回想的流程、四段可直接貼的提示詞，以及三件不該交給 AI 的事。",
+      "hero": {
+        "src": "/guides/ai-note-taking-workflow/hero.jpg",
+        "alt": "抽象插圖：散落的筆記卡片流向整齊的格狀排列，再流向一個附勾選標記的對話框",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想用 AI 做筆記的人最常卡在一個問題：到底要用哪一個。這篇的結論是不必挑，Notion、Obsidian 與 NotebookLM 擅長的是筆記流程裡不同的段落，Notion 把事情結構化並放在雲端協作，Obsidian 把純文字檔留在自己的電腦上，NotebookLM 專門針對你丟進去的資料回答問題並附上可以點回原文的引用。三個分工，比硬挑一個好用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接下來會先把筆記拆成收集、整理、回想三段，說明每段交給誰、AI 在裡面做什麼；再照 2026 年 9 月 15 日當天的官方方案頁與說明文件，列出三者的免費層上限、AI 功能綁在哪個方案、資料放在哪、能匯出成什麼格式；最後給一條可以照抄的流程、四段可以直接貼的提示詞，以及三件不該交給 AI 的事。讀完你可以在一個下午把自己的筆記路線定下來。"
+        },
+        {
+          "type": "heading",
+          "text": "筆記其實是三件事：收集、整理、回想",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "筆記越記越亂，多半是因為把三件性質不同的事塞進同一個工具。收集要求快，看到的當下就要留得下來；整理要求結構，把散落的片段放進專案、標籤與日期；回想要求檢索，能在三個月後問出「當初那份資料怎麼寫的」，而且找得到出處。一個工具很難三段都最強，但三段之間的交接可以設計得很短。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "收集：瀏覽器擴充、手機上的快速記事、會議錄音。重點是零摩擦，這一步不做分類。",
+            "整理：每週固定一次把收件匣清空，替內容補上專案、標籤與日期。AI 在這裡做摘要、抽待辦與改寫。",
+            "回想：把要用的原始資料丟進一個能引用原文的問答工具，用問題把答案問出來，而不是靠記憶翻找。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 在這套流程裡的位置很固定：把長的變短、把散的變整齊、把看過的變成問題。真正決定筆記價值的兩件事，原始出處與你自己的判斷，要留在人手上，後面會再談。"
+        },
+        {
+          "type": "link",
+          "text": "讀完就忘怎麼整理筆記：用問題、自己的解釋與來源留下可用內容",
+          "url": "https://mokaair.com/zh-TW/life/reading-notes-that-you-reuse"
+        },
+        {
+          "type": "heading",
+          "text": "三個工具的免費層各能做到什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Notion 是雲端工作區。免費的 Free 方案每人每月 0 美元，個人使用的區塊數不限，兩人以上的工作區才有上限；檔案上傳每個限 5 MB，外部訪客上限 10 位，頁面歷史保留 7 天。Plus 是每人每月 10 美元，檔案上傳不限、頁面歷史 30 天，外部訪客不限。官網價格頁預設以美元、年繳顯示，月繳價要在頁面上切換，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Notion AI 的位置要看清楚。官方說明中心寫的是 Notion AI 只在 Business 與 Enterprise 方案提供，Business 每人每月 20 美元，內含會替你完成多步驟任務的 Notion Agent、AI Meeting Notes 與還在 Beta 的 Enterprise Search，頁面歷史 90 天；Enterprise 為客製報價，並且對 Notion AI 使用的大型語言模型供應商採零資料保留。Free 與 Plus 使用者拿到的是有限次數的免費回應，官網沒有公布確切次數，以官網為準，用完會出現升級提示。比較貴的高階模型另外需要 Notion credits，而且預設關閉，要由工作區擁有者或管理員開啟。"
+        },
+        {
+          "type": "link",
+          "text": "Notion AI 入門：哪個方案才有、能做什麼、資料怎麼處理",
+          "url": "https://mokaair.com/zh-TW/life/notion-ai-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "Obsidian 走另一條路。軟體本身免費而且不限功能、不需註冊，筆記就是你自己資料夾裡的 Markdown 純文字檔，官方文件把這個資料夾叫做 vault，同一個資料夾也收得下 .base、.canvas、圖片、音訊、影片與 PDF；核心外掛 Bases 可以用檔案的屬性做出類似資料庫的表格與卡片檢視。官方沒有任何 AI 方案，AI 要靠社群外掛接上去。付費的是加購服務：Sync Standard 每人每月 4 美元（年繳）或 5 美元（月繳），1 個遠端 vault、1 GB 空間、單檔上限 5 MB、版本歷史 1 個月；Sync Plus 每人每月 8 美元（年繳）或 10 美元（月繳），10 個遠端 vault、10 GB 空間、可加購到 100 GB、單檔上限 200 MB、版本歷史 12 個月。Publish 每站每月 8 美元（年繳）或 10 美元（月繳），商業授權每人每年 50 美元，官網明講不是強制。"
+        },
+        {
+          "type": "link",
+          "text": "Obsidian＋AI 打造第二大腦：外掛、程式代理與 MCP 三種接法",
+          "url": "https://mokaair.com/zh-TW/life/ai-second-brain-obsidian"
+        },
+        {
+          "type": "paragraph",
+          "text": "NotebookLM 在查證當天已經改名為 Gemini Notebook：舊的說明中心網址會轉到新的 Gemini Notebook 說明中心，產品頁標題也換了名字，本文其他段落沿用讀者熟悉的舊稱。它的邏輯是只讀你給的資料，把 PDF、網址、Google 文件、簡報、試算表、圖片、ePub、公開的 YouTube 影片、音訊檔或直接貼上的文字加進一本筆記本，然後在對話裡問問題，回答會附上可以點回原文的行內引用。單一來源上限 500,000 字，上傳檔案單檔上限 200 MB，Google 試算表這類來源另有 100,000 token 的限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上限照方案分層。免費層在官網叫 Gemini Notebook Standard，每位使用者 100 本筆記本、每本 50 個來源、每天 50 次對話、每天 3 份語音摘要與 3 份影片摘要、每天 10 份報告，Deep Research 每月 10 次。要提高上限就要買 Google AI 方案：AI Plus 每月 4.99 美元、AI Pro 每月 19.99 美元、AI Ultra 每月 99.99 美元起，另有每月 199.99 美元的級距。對應過來，Plus 是 200 本筆記本、每本 100 個來源、每天 200 次對話；Pro 是 500 本、每本 300 個來源、每天 500 次對話、每天 20 份語音摘要；Ultra 最高到每本 600 個來源、每天 5,000 次對話。官方說明頁標示 2026 年 9 月 2 日起使用上限會調整，也寫明數字可能變動。台灣在支援地區清單內，介面支援 80 種以上語言，新台幣定價官網沒有列，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "NotebookLM 入門：資料、筆記本與引用",
+          "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "免費層能做什麼",
+            "AI 在哪個方案",
+            "資料放哪"
+          ],
+          "rows": [
+            [
+              "Notion",
+              "個人區塊不限、2 人以上有上限；單檔 5 MB；訪客 10 位；頁面歷史 7 天",
+              "Notion AI 只在 Business（每人每月 20 美元）與 Enterprise；Free 與 Plus 只有有限次免費回應",
+              "雲端工作區；可匯出 PDF、HTML、Markdown 與 CSV"
+            ],
+            [
+              "Obsidian",
+              "軟體全功能免費、免註冊；可放 Markdown、Bases、Canvas、圖片、音訊、影片與 PDF",
+              "官方沒有 AI 方案，要靠社群外掛外接",
+              "自己電腦上的資料夾（vault）；Sync 每人每月 4 美元起為加購"
+            ],
+            [
+              "NotebookLM（官網現稱 Gemini Notebook）",
+              "100 本筆記本、每本 50 個來源、每天 50 次對話、每天 3 份語音摘要",
+              "內建，免費層就能用；上限隨 Google AI Plus、Pro、Ultra 提高",
+              "Google 雲端；從雲端硬碟匯入的來源每幾分鐘自動同步"
+            ]
+          ],
+          "caption": "三個工具的免費層、AI 方案與資料落點對照，數字查證於 2026 年 9 月。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-note-taking-workflow/diagram-1.svg",
+          "alt": "收集、整理、回想三段筆記工作流，每段標出用哪個工具、AI 做什麼、你自己要做什麼",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看：每一段先看用什麼工具，再看 AI 負責哪一塊，最下面那條是不要交給 AI 的部分。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "先寫再問：一條可以照抄的流程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "順序很重要。先寫，是指在問 AI 之前，你至少先用一句話寫下自己現在的理解或問題；先問，會讓你拿到一段讀起來很完整、但其實沒有經過你的文字。下面這條流程假設三個工具都只用免費層。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "看到就存：網頁用 Obsidian 的免費瀏覽器擴充 Web Clipper 或 Notion 的網頁擴充，丟進一個叫收件匣的資料夾或資料庫，只填標題與網址，不分類。",
+            "當下補一句：在剛存下的內容最上面寫一行「我為什麼存它」。這一行以後會變成你的檢索關鍵字。",
+            "每週整理：把收件匣清空，替每則內容補上專案、標籤與日期。這一步可以讓 AI 做摘要與抽待辦，但分類自己決定。",
+            "建立回想用的筆記本：把同一個主題的原始檔，也就是 PDF、網址、逐字稿，加進 NotebookLM 的一本筆記本，一本只放一個主題。",
+            "用問題回想：要用到的時候在筆記本裡問問題，而且每次都點開行內引用確認原文。",
+            "把答案寫回筆記：確認過的結論用自己的話寫回 Notion 或 Obsidian，附上來源連結。AI 的回答不是終點，是草稿。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "下面四段提示詞可以直接貼。它們的共同點是限制 AI 只能用你給的資料，並且要求標出出處，這樣你才有東西可以回查。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "摘要：把長文變成可以重讀的三段",
+          "code": "以下是我存下的資料。請用繁體中文整理成三段：\n1) 這份資料在講什麼，不超過 100 字\n2) 對我的問題「（把你的問題寫在這裡）」有幫助的三個重點，每一點標出它出自哪一段\n3) 這份資料沒有回答到的問題\n不要加入資料以外的資訊；找不到就寫「資料中沒有提到」。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "抽出待辦：把會議記錄變成可以指派的事項",
+          "code": "請從以下會議記錄抽出待辦事項，逐條列出：事項、負責人、期限、出處句子。\n只抽記錄中明確出現的事項；沒有寫負責人或期限就填「未指定」。\n不要推測，也不要補上記錄裡沒有的工作。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "產生複習問題：把讀過的內容變成自我測驗",
+          "code": "根據以下內容出 8 個繁體中文問答題，難度由淺到深：\n前 4 題問事實，答案要能在原文找到；後 4 題問應用或比較。\n每題附上答案，並標出答案來自原文的哪一段。\n不要出是非題。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "對照：把 AI 的草稿拉回自己的話",
+          "code": "以下是 AI 產生的摘要，以及我自己寫的筆記。\n請逐條列出兩者說法不一致的地方：AI 的說法、我的說法、需要回去查證的原文位置。\n不要幫我決定誰對，只要把差異列出來。"
+        },
+        {
+          "type": "link",
+          "text": "建立自己的提示詞庫：固定欄位、放在哪裡、怎麼管版本",
+          "url": "https://mokaair.com/zh-TW/life/ai-prompt-library-personal"
+        },
+        {
+          "type": "heading",
+          "text": "資料放在哪，以後搬得走嗎",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "選筆記工具其實是在選資料放在誰手上。Obsidian 的答案最直接：筆記就是硬碟上的 Markdown 檔案，用別的文字編輯器也能開，Obsidian 會自動跟上外部的修改；官方的 Importer 外掛支援從 Notion、Evernote、Apple Notes、Google Keep、OneNote、Roam、Logseq 等工具匯入。Notion 在雲端，官方支援把頁面或資料庫匯出成 PDF、HTML 以及 Markdown 與 CSV，其中含子頁面的選項要 Business 或 Enterprise 方案才能開，整個工作區的匯出官方說最久可能要 30 小時。NotebookLM 收的是你上傳或連結進去的副本，從 Google 雲端硬碟匯入的來源每幾分鐘自動同步，而且它不能刪除或修改雲端硬碟裡的原始檔。"
+        },
+        {
+          "type": "heading",
+          "text": "會議、讀書、專案：三種情境怎麼配",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一套流程換個情境，只是換掉收集那一端的工具。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "會議：錄音與逐字稿交給會議工具，決定、負責人與下一步寫回 Notion。Notion 自己的 AI Meeting Notes 在 Business 與 Enterprise 方案，官方說明寫至少要一分鐘錄音才會產生摘要，每位使用者每天上限 10 小時，支援語言包含中文，講者標記目前只有英文。",
+            "讀書與課程：教材原始檔進 NotebookLM 出複習題，自己的解釋寫進 Obsidian，兩邊不要互相取代。",
+            "專案與長期知識：要跟同事共用的放 Notion，只有自己看、要離線的放 Obsidian；如果你已經在用 ChatGPT 或 Claude 的專案功能，整理好的筆記也可以直接當專案資料。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "會議筆記怎麼寫才有人接手：把決定、負責人與下一步留下來",
+          "url": "https://mokaair.com/zh-TW/life/meeting-notes-action-template"
+        },
+        {
+          "type": "link",
+          "text": "NotebookLM 進階：測驗、語音與影片摘要",
+          "url": "https://mokaair.com/zh-TW/life/notebooklm-for-study-notes"
+        },
+        {
+          "type": "link",
+          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+        },
+        {
+          "type": "heading",
+          "text": "三件不要交給 AI 的事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 很會把東西寫得通順，但通順不等於正確。這三件事留給自己做，整套流程才站得住。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "原始出處：摘要可以讓 AI 做，連結、頁碼與日期要自己留。NotebookLM 的行內引用可以點回原文，這正是它適合放在流程最後一段的原因。",
+            "你自己的判斷：這件事對我的專案代表什麼，不能外包。AI 產生的分類與標籤當建議看，最後一下由你按。",
+            "敏感資料的落點：合約、健康、薪資這類內容要不要離開自己的電腦，是進流程之前就該決定的事，不是事後補救。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "接 AI 外掛之前，先看清楚外掛能做什麼",
+          "text": "Obsidian 預設開著限制模式，不執行第三方程式碼，要裝社群外掛就得先關掉。官方文件寫得很白：外掛會繼承 Obsidian 的存取權限，可以讀取你電腦上的檔案、連上網路、安裝其他程式，而且技術上沒辦法把外掛限制在特定權限內。要接 AI 外掛就挑官方會自動掃描、並在外掛目錄顯示安全評分的，先放在一個測試用的 vault 裡跑幾天，再決定要不要放進存了合約與健康資料的那一個。"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Notion Pricing（Notion 官方方案與價格頁）",
+          "url": "https://www.notion.com/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "What is Notion AI? FAQs（Notion 官方說明中心）",
+          "url": "https://www.notion.com/help/notion-ai-faqs",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Notion AI complimentary responses（Notion 官方說明中心）",
+          "url": "https://www.notion.com/help/complimentary-ai-responses",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "AI Meeting Notes（Notion 官方說明中心）",
+          "url": "https://www.notion.com/help/ai-meeting-notes",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Export your content（Notion 官方說明中心的匯出格式說明）",
+          "url": "https://www.notion.com/help/export-your-content",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Pricing（Obsidian 官方價格頁）",
+          "url": "https://obsidian.md/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Sync（Obsidian 官方產品頁，含 Sync Standard 與 Sync Plus 價格）",
+          "url": "https://obsidian.md/sync",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Plans and storage limits（Obsidian 官方說明的 Sync 方案上限）",
+          "url": "https://obsidian.md/help/sync/plans",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "How Obsidian stores data（Obsidian 官方說明的資料儲存方式）",
+          "url": "https://obsidian.md/help/data-storage",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Accepted file formats（Obsidian 官方說明的支援檔案格式）",
+          "url": "https://obsidian.md/help/file-formats",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Plugin security（Obsidian 官方說明的限制模式與外掛權限）",
+          "url": "https://obsidian.md/help/plugin-security",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Community plugins（Obsidian 官方說明的社群外掛安裝方式）",
+          "url": "https://obsidian.md/help/community-plugins",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Importer（Obsidian 官方說明的匯入工具）",
+          "url": "https://obsidian.md/help/plugins/importer",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Web Clipper（Obsidian 官方說明的瀏覽器擴充）",
+          "url": "https://obsidian.md/help/web-clipper",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Upgrade Gemini Notebook（Google 官方說明中心的方案與使用上限表）",
+          "url": "https://support.google.com/gemininotebook/answer/16213268",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Learn about Gemini Notebook（Google 官方說明中心的產品說明與支援地區）",
+          "url": "https://support.google.com/gemininotebook/answer/16164461",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Add or discover new sources for your notebook（Google 官方說明中心的來源類型與上限）",
+          "url": "https://support.google.com/gemininotebook/answer/16215270",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google AI plans（Gemini 官方訂閱方案頁）",
+          "url": "https://gemini.google/subscriptions/",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 會議記錄的會議前中後三段 / AI meeting notes: before, during, after</title>
+  <desc id="desc">流程圖由左至右分成三段。會議前：說明會錄音並問過所有人、設定會議語言（多數工具一次只吃一種）、決定錄音放雲端還是本機、確認手上的方案有這個功能。會議中：開啟錄音或轉錄並確認提示出現、口頭覆誦決議與負責人、講專有名詞時放慢並拼一次、重要數字順手打進聊天室。會議後：先讀逐字稿修掉聽錯的人名、用固定格式的提示詞整理決議與待辦、補上負責人與期限、依保留期限刪掉錄音檔。最下面一排是各家官網當天查到的數字：Otter 免費版每月 300 分鐘、Pro 每場上限 90 分鐘；Google Meet 幫我做筆記 8 種語言、不含中文；Microsoft Teams 即時逐字稿 57 種語言、含繁體中文；Zoom 會議摘要 32 種語言、含繁體中文；Notion 會議筆記 16 種語言、每人每日 10 小時。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">AI 會議記錄：會議前、中、後各做幾件事</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">AI meeting notes: what to do before, during and after a meeting</text>
+
+  <!-- column 1 : before -->
+  <rect x="70" y="124" width="440" height="58" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="290" y="162" text-anchor="middle" font-size="24" font-weight="bold" fill="#0D6B68">會議前｜設定與同意</text>
+  <rect x="70" y="196" width="440" height="382" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="98" y="244" font-size="17" fill="#102A2B">1. 說明這場會議會錄音，問過所有人</text>
+  <text x="98" y="276" font-size="17" fill="#5C6B6B">同意與說法留下紀錄</text>
+  <text x="98" y="326" font-size="17" fill="#102A2B">2. 先設定會議語言</text>
+  <text x="98" y="358" font-size="17" fill="#5C6B6B">多數工具一次只吃一種語言</text>
+  <text x="98" y="408" font-size="17" fill="#102A2B">3. 決定錄音放雲端還是本機</text>
+  <text x="98" y="440" font-size="17" fill="#5C6B6B">敏感內容就走本機轉錄</text>
+  <text x="98" y="490" font-size="17" fill="#102A2B">4. 確認手上的方案有這個功能</text>
+  <text x="98" y="522" font-size="17" fill="#5C6B6B">多半要付費方案或加購授權</text>
+
+  <!-- column 2 : during -->
+  <rect x="580" y="124" width="440" height="58" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="162" text-anchor="middle" font-size="24" font-weight="bold" fill="#2F6F9F">會議中｜錄好、講清楚</text>
+  <rect x="580" y="196" width="440" height="382" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="608" y="244" font-size="17" fill="#102A2B">1. 開啟錄音或轉錄</text>
+  <text x="608" y="276" font-size="17" fill="#5C6B6B">確認畫面上的錄製提示有出現</text>
+  <text x="608" y="326" font-size="17" fill="#102A2B">2. 口頭覆誦決議與負責人</text>
+  <text x="608" y="358" font-size="17" fill="#5C6B6B">講出來，摘要才抓得到</text>
+  <text x="608" y="408" font-size="17" fill="#102A2B">3. 專有名詞放慢、拼一次</text>
+  <text x="608" y="440" font-size="17" fill="#5C6B6B">人名與公司術語最容易錯</text>
+  <text x="608" y="490" font-size="17" fill="#102A2B">4. 重要數字打進聊天室</text>
+  <text x="608" y="522" font-size="17" fill="#5C6B6B">給自己一份可以對照的文字</text>
+
+  <!-- column 3 : after -->
+  <rect x="1090" y="124" width="440" height="58" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1310" y="162" text-anchor="middle" font-size="24" font-weight="bold" fill="#2E7D5B">會議後｜校對與收尾</text>
+  <rect x="1090" y="196" width="440" height="382" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1118" y="244" font-size="17" fill="#102A2B">1. 先讀逐字稿，修掉聽錯的人名</text>
+  <text x="1118" y="276" font-size="17" fill="#5C6B6B">官方文件都提醒要自己確認</text>
+  <text x="1118" y="326" font-size="17" fill="#102A2B">2. 用固定格式的提示詞整理</text>
+  <text x="1118" y="358" font-size="17" fill="#5C6B6B">決議、待辦、未解決、需確認</text>
+  <text x="1118" y="408" font-size="17" fill="#102A2B">3. 補上負責人與期限</text>
+  <text x="1118" y="440" font-size="17" fill="#5C6B6B">沒指定就寫「未指定」</text>
+  <text x="1118" y="490" font-size="17" fill="#102A2B">4. 依保留期限刪掉錄音檔</text>
+  <text x="1118" y="522" font-size="17" fill="#5C6B6B">開會前答應過的就要做到</text>
+
+  <line x1="516" y1="387" x2="572" y2="387" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1026" y1="387" x2="1082" y2="387" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="70" y="632" font-size="20" font-weight="bold" fill="#102A2B">挑工具時先看的官網數字（2026 年 9 月 15 日查證）</text>
+
+  <rect x="70" y="652" width="272" height="150" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="206" y="690" text-anchor="middle" font-size="19" font-weight="bold" fill="#102A2B">Otter.ai</text>
+  <text x="206" y="724" text-anchor="middle" font-size="16" fill="#5C6B6B">免費版每月 300 分鐘</text>
+  <text x="206" y="754" text-anchor="middle" font-size="16" fill="#5C6B6B">Pro 每場上限 90 分鐘</text>
+  <text x="206" y="784" text-anchor="middle" font-size="16" fill="#B8442D">中文為簡體、標示 beta</text>
+
+  <rect x="367" y="652" width="272" height="150" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="503" y="690" text-anchor="middle" font-size="19" font-weight="bold" fill="#102A2B">Google Meet</text>
+  <text x="503" y="724" text-anchor="middle" font-size="16" fill="#5C6B6B">幫我做筆記</text>
+  <text x="503" y="754" text-anchor="middle" font-size="16" fill="#5C6B6B">支援 8 種語言</text>
+  <text x="503" y="784" text-anchor="middle" font-size="16" fill="#B8442D">清單裡沒有中文</text>
+
+  <rect x="664" y="652" width="272" height="150" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="800" y="690" text-anchor="middle" font-size="19" font-weight="bold" fill="#102A2B">Microsoft Teams</text>
+  <text x="800" y="724" text-anchor="middle" font-size="16" fill="#5C6B6B">即時逐字稿</text>
+  <text x="800" y="754" text-anchor="middle" font-size="16" fill="#5C6B6B">支援 57 種語言</text>
+  <text x="800" y="784" text-anchor="middle" font-size="16" fill="#2E7D5B">含中文（繁體，台灣）</text>
+
+  <rect x="961" y="652" width="272" height="150" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1097" y="690" text-anchor="middle" font-size="19" font-weight="bold" fill="#102A2B">Zoom Workplace</text>
+  <text x="1097" y="724" text-anchor="middle" font-size="16" fill="#5C6B6B">會議摘要</text>
+  <text x="1097" y="754" text-anchor="middle" font-size="16" fill="#5C6B6B">支援 32 種語言</text>
+  <text x="1097" y="784" text-anchor="middle" font-size="16" fill="#2E7D5B">含中文（繁體）</text>
+
+  <rect x="1258" y="652" width="272" height="150" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1394" y="690" text-anchor="middle" font-size="19" font-weight="bold" fill="#102A2B">Notion 會議筆記</text>
+  <text x="1394" y="724" text-anchor="middle" font-size="16" fill="#5C6B6B">支援 16 種語言</text>
+  <text x="1394" y="754" text-anchor="middle" font-size="16" fill="#5C6B6B">每人每日 10 小時</text>
+  <text x="1394" y="784" text-anchor="middle" font-size="16" fill="#2E7D5B">清單裡有中文</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

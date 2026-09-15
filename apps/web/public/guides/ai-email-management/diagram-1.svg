@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">用 AI 管理 Email 的五段工作流 / An AI email workflow</title>
+  <desc id="desc">一條由左往右的流程：收信、分類、摘要、草稿、人工確認。收信與人工確認兩段是人的工作，中間的分類、摘要、草稿三段可以交給 AI。下半部是三家內建功能的對照表：Gmail 的分類是預設版面的分頁 5 類，摘要是 AI Overview 但官方語言清單只有 8 種、不含中文，草稿是「幫我寫」，摘要免費而草稿要方案；Outlook 的分類是焦點與其他兩個分頁，摘要是 Summary by Copilot，草稿是 Draft with Copilot，都需要 Copilot 授權；Apple 郵件的分類是郵件分類 4 類，摘要是郵件摘要，草稿是個人化智慧回覆，門檻在支援的裝置與語言。最下方提醒：匯款與帳號變更、密碼與驗證碼、法律與人事回覆不要交給 AI，而且摘要最常漏掉否定句與附帶條件。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">用 AI 管理 Email 的五段工作流</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Sort, summarise, draft, then confirm by hand</text>
+
+  <!-- stage boxes -->
+  <rect x="60" y="160" width="250" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="185" y="210" font-size="26" font-weight="bold" text-anchor="middle" fill="#102A2B">收信</text>
+  <text x="185" y="248" font-size="16" text-anchor="middle" fill="#5C6B6B">先處理來源</text>
+  <text x="185" y="276" font-size="16" text-anchor="middle" fill="#5C6B6B">退訂與分流</text>
+
+  <rect x="367" y="160" width="250" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="492" y="210" font-size="26" font-weight="bold" text-anchor="middle" fill="#102A2B">分類</text>
+  <text x="492" y="248" font-size="16" text-anchor="middle" fill="#5C6B6B">讓信自己排隊</text>
+  <text x="492" y="276" font-size="16" text-anchor="middle" fill="#5C6B6B">分頁或判優先度</text>
+
+  <rect x="674" y="160" width="250" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="799" y="210" font-size="26" font-weight="bold" text-anchor="middle" fill="#102A2B">摘要</text>
+  <text x="799" y="248" font-size="16" text-anchor="middle" fill="#5C6B6B">長串壓成幾行</text>
+  <text x="799" y="276" font-size="16" text-anchor="middle" fill="#5C6B6B">原文就在旁邊</text>
+
+  <rect x="981" y="160" width="250" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1106" y="210" font-size="26" font-weight="bold" text-anchor="middle" fill="#102A2B">草稿</text>
+  <text x="1106" y="248" font-size="16" text-anchor="middle" fill="#5C6B6B">重點展開成句</text>
+  <text x="1106" y="276" font-size="16" text-anchor="middle" fill="#5C6B6B">事實與承諾自己填</text>
+
+  <rect x="1288" y="160" width="250" height="150" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1413" y="210" font-size="26" font-weight="bold" text-anchor="middle" fill="#102A2B">人工確認</text>
+  <text x="1413" y="248" font-size="16" text-anchor="middle" fill="#5C6B6B">數字、日期、金額</text>
+  <text x="1413" y="276" font-size="16" text-anchor="middle" fill="#5C6B6B">收件人再看一遍</text>
+
+  <line x1="318" y1="235" x2="359" y2="235" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="625" y1="235" x2="666" y2="235" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="932" y1="235" x2="973" y2="235" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1239" y1="235" x2="1280" y2="235" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="799" y="340" font-size="17" text-anchor="middle" fill="#2E7D5B">中間這三段才是 AI 接手的地方</text>
+
+  <!-- comparison band -->
+  <rect x="60" y="360" width="1478" height="305" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="92" y="402" font-size="20" font-weight="bold" fill="#102A2B">三家內建功能對照</text>
+  <text x="492" y="440" font-size="18" text-anchor="middle" fill="#5C6B6B">分類</text>
+  <text x="799" y="440" font-size="18" text-anchor="middle" fill="#5C6B6B">摘要</text>
+  <text x="1106" y="440" font-size="18" text-anchor="middle" fill="#5C6B6B">草稿</text>
+  <text x="1413" y="440" font-size="18" text-anchor="middle" fill="#5C6B6B">要什麼</text>
+  <line x1="88" y1="456" x2="1510" y2="456" stroke="#E0D8CC" stroke-width="2"/>
+
+  <text x="92" y="498" font-size="20" font-weight="bold" fill="#102A2B">Gmail</text>
+  <text x="492" y="498" font-size="17" text-anchor="middle" fill="#102A2B">分頁 5 類</text>
+  <text x="799" y="498" font-size="17" text-anchor="middle" fill="#102A2B">AI Overview（8 種語言）</text>
+  <text x="1106" y="498" font-size="17" text-anchor="middle" fill="#102A2B">幫我寫</text>
+  <text x="1413" y="498" font-size="17" text-anchor="middle" fill="#D97A2B">摘要免費，草稿看方案</text>
+  <line x1="88" y1="522" x2="1510" y2="522" stroke="#E0D8CC" stroke-width="2"/>
+
+  <text x="92" y="564" font-size="20" font-weight="bold" fill="#102A2B">Outlook</text>
+  <text x="492" y="564" font-size="17" text-anchor="middle" fill="#102A2B">焦點與其他</text>
+  <text x="799" y="564" font-size="17" text-anchor="middle" fill="#102A2B">Summary by Copilot</text>
+  <text x="1106" y="564" font-size="17" text-anchor="middle" fill="#102A2B">Draft with Copilot</text>
+  <text x="1413" y="564" font-size="17" text-anchor="middle" fill="#D97A2B">需 Copilot 授權</text>
+  <line x1="88" y1="588" x2="1510" y2="588" stroke="#E0D8CC" stroke-width="2"/>
+
+  <text x="92" y="630" font-size="20" font-weight="bold" fill="#102A2B">Apple 郵件</text>
+  <text x="492" y="630" font-size="17" text-anchor="middle" fill="#102A2B">郵件分類 4 類</text>
+  <text x="799" y="630" font-size="17" text-anchor="middle" fill="#102A2B">郵件摘要</text>
+  <text x="1106" y="630" font-size="17" text-anchor="middle" fill="#102A2B">個人化智慧回覆</text>
+  <text x="1413" y="630" font-size="17" text-anchor="middle" fill="#D97A2B">看裝置與語言</text>
+
+  <!-- warning -->
+  <rect x="60" y="700" width="1478" height="112" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="799" y="748" font-size="20" font-weight="bold" text-anchor="middle" fill="#B8442D">不交給 AI：匯款與帳號變更、密碼與驗證碼、法律與人事回覆</text>
+  <text x="799" y="783" font-size="18" text-anchor="middle" fill="#5C6B6B">摘要最常漏掉否定句與附帶條件，看到「對方同意」要回原文確認</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

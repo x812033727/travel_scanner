@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">代理迴圈與三套框架的核心名詞 / The agent loop and each framework's core terms</title>
+<desc id="desc">左邊是代理迴圈：你的提示詞、工具定義與對話紀錄先進模型；模型判斷要回話還是呼叫工具；SDK 執行工具，讀檔、搜尋或呼叫 API；把結果送回模型；還沒做完就再轉一圈，每轉一圈算一個回合；直到模型給出沒有工具呼叫的回覆，迴圈結束並輸出。右邊是三套框架各自的核心名詞：OpenAI Agents SDK 用 Python 與 TypeScript、授權 MIT，名詞是 Agents、Handoffs、Guardrails、Sessions、Tracing 與 MCP 伺服器工具；Claude Agent SDK 用 Python 與 TypeScript、倉庫 LICENSE 為 MIT，名詞是 Tools、Permissions、Hooks、Subagents、Sessions 與 MCP，使用受 Anthropic 商業條款規範；LangGraph 用 Python 與 JavaScript、授權 MIT，名詞是 StateGraph、Node、Edge、State、Checkpointer 檢查點與 Store 長期記憶。三套框架本身免費開源，費用出在模型 API 的 token。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs>
+<marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+</marker>
+</defs>
+<text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">代理迴圈與三套框架的核心名詞</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">The agent loop, and what each framework calls its parts</text>
+
+<text x="60" y="120" font-size="20" font-weight="bold" fill="#102A2B">代理迴圈怎麼轉</text>
+
+<rect x="260" y="130" width="400" height="64" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+<text x="460" y="169" font-size="17" fill="#102A2B" text-anchor="middle">你的提示詞、工具定義、對話紀錄</text>
+<line x1="460" y1="194" x2="460" y2="230" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+<rect x="260" y="234" width="400" height="76" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="460" y="279" font-size="17" fill="#102A2B" text-anchor="middle">模型判斷：回話，還是呼叫工具</text>
+<line x1="460" y1="310" x2="460" y2="346" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+<rect x="260" y="350" width="400" height="76" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="460" y="395" font-size="17" fill="#102A2B" text-anchor="middle">執行工具：讀檔、搜尋、呼叫 API</text>
+<line x1="460" y1="426" x2="460" y2="462" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+<rect x="260" y="466" width="400" height="64" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+<text x="460" y="505" font-size="17" fill="#102A2B" text-anchor="middle">把結果送回模型</text>
+
+<path d="M 260 498 L 180 498 L 180 272 L 252 272" fill="none" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrow)"/>
+<text x="118" y="378" font-size="17" fill="#D97A2B" text-anchor="middle">還沒做完，</text>
+<text x="118" y="404" font-size="17" fill="#D97A2B" text-anchor="middle">再轉一圈</text>
+
+<line x1="460" y1="530" x2="460" y2="566" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="260" y="570" width="400" height="76" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+<text x="460" y="615" font-size="17" fill="#102A2B" text-anchor="middle">沒有工具呼叫，迴圈結束並輸出</text>
+<text x="460" y="684" font-size="16" fill="#5C6B6B" text-anchor="middle">每轉一圈算一個回合（turn）</text>
+
+<text x="740" y="120" font-size="20" font-weight="bold" fill="#102A2B">三套框架各自的核心名詞</text>
+
+<rect x="740" y="140" width="820" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="770" y="182" font-size="22" font-weight="bold" fill="#102A2B">OpenAI Agents SDK</text>
+<text x="770" y="214" font-size="16" fill="#5C6B6B">Python／TypeScript · 授權 MIT</text>
+<text x="770" y="252" font-size="17" fill="#102A2B">Agents、Handoffs、Guardrails</text>
+<text x="770" y="284" font-size="17" fill="#102A2B">Sessions、Tracing、MCP 伺服器工具</text>
+
+<rect x="740" y="340" width="820" height="180" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="770" y="382" font-size="22" font-weight="bold" fill="#102A2B">Claude Agent SDK</text>
+<text x="770" y="414" font-size="16" fill="#5C6B6B">Python／TypeScript · 倉庫 LICENSE 為 MIT</text>
+<text x="770" y="452" font-size="17" fill="#102A2B">Tools、Permissions、Hooks、Subagents</text>
+<text x="770" y="484" font-size="17" fill="#102A2B">Sessions、MCP；使用受 Anthropic 商業條款</text>
+
+<rect x="740" y="540" width="820" height="180" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="770" y="582" font-size="22" font-weight="bold" fill="#102A2B">LangGraph</text>
+<text x="770" y="614" font-size="16" fill="#5C6B6B">Python／JavaScript · 授權 MIT</text>
+<text x="770" y="652" font-size="17" fill="#102A2B">StateGraph、Node、Edge、State</text>
+<text x="770" y="684" font-size="17" fill="#102A2B">Checkpointer（檢查點）、Store（長期記憶）</text>
+
+<text x="460" y="778" font-size="18" fill="#102A2B" text-anchor="middle">回合上限與預算上限由你設</text>
+<text x="740" y="778" font-size="18" fill="#102A2B">框架本身免費開源，費用出在模型 API 的 token</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
