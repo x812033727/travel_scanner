@@ -12,7 +12,9 @@ branch:
 depends_on: []
 scope:
   - apps/api/app/admin/service.py
+  - apps/api/tests/test_admin_provider_settings.py
   - apps/web/components/admin-settings-panel.tsx
+  - apps/web/components/admin-settings-panel.test.tsx
   - apps/web/messages
 ---
 
@@ -34,7 +36,8 @@ runtime settings, so the values would be picked up with no change to the planner
 
 - [ ] The owner can lower both budgets from the back office and have the next planning
       request honour the new number.
-- [ ] The card explains what reaching the budget does, since it degrades rather than refuses
+- [ ] The card explains what reaching the budget does, since it degrades to the catalogue plan
+      rather than refusing (except on `/intents`, which answers 429 `planner_budget_reached`)
       and that is not what a reader expects a limit to do.
 
 ## Steps
@@ -46,7 +49,7 @@ runtime settings, so the values would be picked up with no change to the planner
 ## How to verify
 
 ```bash
-cd apps/api && uv run pytest tests/test_planner_budget.py tests/test_admin_settings.py -q
+cd apps/api && uv run pytest tests/test_planner_budget.py tests/test_admin_provider_settings.py -q
 npm run check:i18n && npm run test:web
 ```
 

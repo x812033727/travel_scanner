@@ -13,6 +13,11 @@ depends_on: []
 scope:
   - apps/api/app/trips/router.py
   - apps/api/app/usage/service.py
+  - apps/api/tests/test_trip_intents.py
+  - apps/api/tests/test_usage_settings.py
+  - apps/web/components/trip-editor.tsx
+  - apps/web/components/trip-editor.test.tsx
+  - apps/web/messages
 ---
 
 # Itinerary preview is limited but never charged

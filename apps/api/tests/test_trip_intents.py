@@ -926,11 +926,13 @@ def _stub_endpoint(
     order: list[str] | None = None,
     providers: list[object] | None = None,
     planning_calls: list[dict[str, object]] | None = None,
+    pool: list[AIPlannerCandidate] | None = None,
 ) -> fakeredis.aioredis.FakeRedis:
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
     trip = _trip()
     calls = order if order is not None else []
     roster = [object()] if providers is None else providers
+    trip_candidates = candidates() if pool is None else pool
 
     async def fake_settings(_session: object) -> object:
         calls.append("runtime_settings")
@@ -949,7 +951,7 @@ def _stub_endpoint(
     async def fake_planning(*_args: object, **kwargs: object) -> tuple[Any, ...]:
         if planning_calls is not None:
             planning_calls.append(kwargs)
-        return planning, [], [], candidates()
+        return planning, [], [], trip_candidates
 
     async def fake_envelope(*_args: object, **_kwargs: object) -> tuple[dict, dict]:
         envelope = {"preview_id": str(uuid4()), "base_version": trip.version, "days": []}
@@ -1144,6 +1146,55 @@ async def test_a_spent_planner_budget_is_not_reported_as_an_outage(
     assert raised.value.status == 429
     assert raised.value.code == "planner_budget_reached"
     # Nothing was produced, so the fair-use slots go back exactly as for an outage.
+    assert order[-2:] == ["refund:ai-itinerary-intent-trip", "refund:ai-itinerary-preview-user"]
+
+
+@pytest.mark.asyncio
+async def test_a_trip_with_no_candidates_is_not_reported_as_an_outage(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """An empty pool gets the catalogue without any provider being asked. That is a
+    property of the trip, so "try again later" would send the traveller back forever."""
+    order: list[str] = []
+    _stub_endpoint(
+        monkeypatch,
+        planning=planning_from(
+            [(MID_DAY, "hotspot:4", "10:00")], status="fallback", provider="catalog"
+        ),
+        existing=[row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00")],
+        order=order,
+        pool=[],
+    )
+    with pytest.raises(AppError) as raised:
+        await _post(TripIntentRequest(version=3, text="這天下雨，改室內", day_date=MID_DAY))
+    assert raised.value.status == 422
+    assert raised.value.code == "itinerary_exact_locations_required"
+    assert order[-2:] == ["refund:ai-itinerary-intent-trip", "refund:ai-itinerary-preview-user"]
+
+
+@pytest.mark.asyncio
+async def test_no_candidates_outranks_a_spent_planner_budget(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The budget turns over within the hour; a trip with nothing to plan from does not,
+    so the traveller hears the answer that stays true."""
+    order: list[str] = []
+    _stub_endpoint(
+        monkeypatch,
+        planning=planning_from(
+            [(MID_DAY, "hotspot:4", "10:00")],
+            status="fallback",
+            provider="catalog",
+            warnings=[PLANNER_WARNING_BUDGET_REACHED],
+        ),
+        existing=[row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00")],
+        order=order,
+        pool=[],
+    )
+    with pytest.raises(AppError) as raised:
+        await _post(TripIntentRequest(version=3, text="這天下雨，改室內", day_date=MID_DAY))
+    assert raised.value.status == 422
+    assert raised.value.code == "itinerary_exact_locations_required"
     assert order[-2:] == ["refund:ai-itinerary-intent-trip", "refund:ai-itinerary-preview-user"]
 
 

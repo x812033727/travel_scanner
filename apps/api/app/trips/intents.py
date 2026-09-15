@@ -402,11 +402,23 @@ async def create_trip_intent(
         # it never reads `notes`, so the sentence had no effect at all.
         # Shipping that as "your refinement" is the dishonesty this feature
         # exists to avoid, and it is not appliable either. Either every provider
-        # on the roster failed, or the planner budget was spent and none was
-        # asked; both come after the two limiters counted this call, and either
-        # way the traveller got nothing, so the slots go back.
+        # on the roster failed, or the planner budget was spent or the trip had
+        # no candidates and none was asked; all of these come after the two
+        # limiters counted this call, and either way the traveller got nothing,
+        # so the slots go back.
         await refund_named_rate_limit("ai-itinerary-intent-trip", f"{user.id}:{trip_id}")
         await refund_named_rate_limit("ai-itinerary-preview-user", str(user.id))
+        if not candidates:
+            # The planner answers an empty pool with the catalogue without asking
+            # anyone. Having no verified place to plan from is a property of the
+            # trip, not an outage, so "try again later" would never come true, and
+            # it outranks a spent budget for the same reason. This is the code and
+            # wording generate and apply already use for needs_setup.
+            raise AppError(
+                422,
+                "itinerary_exact_locations_required",
+                "正式景點或店家不足，原行程保持不變",
+            )
         if PLANNER_WARNING_BUDGET_REACHED in planning.planning.warnings:
             # Not an outage, so not the outage's words: "temporarily unavailable"
             # sends the traveller to retry a door that stays shut until their own

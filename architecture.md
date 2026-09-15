@@ -74,8 +74,11 @@ unbounded: every user-facing path onto the planner goes through `plan_within_bud
 which skips the roster when no candidate could survive normalization, when the
 planner is switched off, and when the caller has spent their per-account or
 per-address budget. Spending it degrades to the catalog planner rather than
-refusing, and the count is never refunded, which is what bounds a caller who can
-provoke a provider failure. AI
+refusing, except on `/intents`, which answers 429 `planner_budget_reached`
+because a catalog plan cannot carry the traveller's sentence. A count for an
+attempt that reached the provider roster is never refunded, which is what bounds
+a caller who can provoke a provider failure; the one refund is the account count
+for an attempt the address budget turned away, since no provider was asked. AI
 regeneration uses the usage reservation ledger and optimistic trip version.
 Only unlocked `generated_by=ai_planner` rows are replaceable; manual, provider,
 locked, and fixed-time rows are copied into the AI context without database IDs

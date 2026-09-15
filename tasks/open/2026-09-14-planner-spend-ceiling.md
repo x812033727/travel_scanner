@@ -22,6 +22,7 @@ scope:
   - apps/api/tests/test_trip_intents.py
   - apps/api/tests/test_trip_create_replay.py
   - apps/web/components/trip-editor.tsx
+  - apps/web/components/trip-editor.test.tsx
   - apps/web/messages
   - .env.example
   - docs/anti-scraping.md
@@ -202,3 +203,48 @@ that reach the roster stay counted, and a test pins that.
 Verified locally: `ruff`, `mypy app` (328 files), and `test_planner_budget.py`,
 `test_trip_intents.py`, `test_trip_create_replay.py`, `test_trip_preferences.py`,
 `test_ai_itinerary.py` -- 128 passed, 1 skipped.
+
+### Second review round (2026-09-15)
+
+The owner still saw problems, so the whole PR went through a six-lens review (abuse, gate
+logic, routes, web and i18n, tests and CI, docs and tasks). Every finding was then put in front
+of two adversarial verifiers. 9 findings survived; 2 were refuted, as was the one extra finding
+a completeness critic raised. All 9 are fixed here, and a second pair of reviewers checked the
+fixes. The scope above grew by `trip-editor.test.tsx`.
+
+- **Tests went red on the 29th-31st of every month.** The two POST /trips harness tests built
+  dates with `date.replace(year+1)` and `replace(day=min(day + 2, 28))`, which gives an end date
+  before the start on those days and raises on Feb 29. That is four failing cases in the
+  required `api` job, the first on 2026-09-29. They now use `timedelta`. Checked with
+  `date.today()` pinned to 2026-09-29 and to 2028-02-29.
+- **`/intents` on a trip with no plannable places said "temporarily unavailable, try again".**
+  The no-candidates guard returns a catalogue fallback, and the intent route read that as an
+  outage. It now answers `422 itinerary_exact_locations_required`, the wording generate and
+  apply already use for `needs_setup`. That check comes before the budget check, and the
+  intent slots are still refunded.
+- **The replan preview never said the budget was spent.** The reason only surfaced after Apply,
+  inside a collapsed panel. The preview overlay now leads with `preview.budgetReached` (five
+  locales, amber) and lists any other reminders under it, never repeating the budget line. The
+  post-Apply notice uses `aiBudgetReached`.
+- **en/ja/ko copy said "you used this hour's AI planning".** The address budget is shared, so
+  the traveller reading this may not be the one who spent it. All three are now neutral, in the
+  web messages and in the API detail.
+- **No web test pinned the budget headline.** Two tests now do: the post-Apply badge, and the
+  preview overlay with its Apply notice.
+- **Docs.** `docs/anti-scraping.md` and `architecture.md` still said "never a 429" and "never
+  refunded", and Known gaps put the residual ceiling at a third of its real size. That ceiling
+  is `AI_PLANNER_IP_BUDGET` per address, times the number of addresses.
+- **Tasks.** `2026-09-14-planner-budget-admin-card` named a test file that does not exist and
+  said the budget never refuses. `2026-09-14-preview-never-charged` had web checklist items but
+  no web scope.
+
+Refuted, not changed:
+- **"IPv6 addresses are keyed per /128, so a /64 has no address ceiling."** True of the code,
+  and of every other per-address limiter here (the nginx zones, `auth-register-ip`). But
+  `mokaair.com` publishes no AAAA record on 2026-09-15 (A `187.127.118.6` only), so callers
+  arrive over IPv4. If the site ever gains an AAAA record, this becomes worth grouping by prefix.
+- **"The task stays in `review` after merge."** That is the documented loop: `status review`
+  while the PR is open, `done` once it merges.
+- **"The intent limiters stop limiting."** The two new refunded outcomes (no candidates, spent
+  budget) never ask a provider and never produce an appliable preview. Every call that reaches
+  a provider is still counted.

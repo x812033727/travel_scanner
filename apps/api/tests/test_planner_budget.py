@@ -11,7 +11,7 @@ runs a Lua script and fakeredis has no Lua, which is the same reason the rest of
 patches the limiter instead of the client.
 """
 
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 from types import SimpleNamespace
 from uuid import uuid4
 
@@ -285,7 +285,7 @@ async def test_creating_a_manual_blank_trip_never_touches_the_planner_budget(
         raise AssertionError("a manual blank trip must never reach the planner")
 
     monkeypatch.setattr(trips, "plan_within_budget", spy)
-    start = date.today().replace(year=date.today().year + 1)
+    start = date.today() + timedelta(days=60)
     response = await harness["client"].post(
         "/trips",
         json={
@@ -294,7 +294,7 @@ async def test_creating_a_manual_blank_trip_never_touches_the_planner_budget(
             "name": "Tokyo by hand",
             "destination_name": "Tokyo",
             "start_date": start.isoformat(),
-            "end_date": start.replace(day=min(start.day + 2, 28)).isoformat(),
+            "end_date": (start + timedelta(days=2)).isoformat(),
             "routing": {"auto_compute": False},
         },
     )
@@ -312,7 +312,7 @@ async def test_creating_an_ai_draft_trip_meters_the_account_and_the_address(
         return itinerary_module.catalog_result(request, [], datetime.now(UTC))
 
     monkeypatch.setattr(trips, "plan_within_budget", spy)
-    start = date.today().replace(year=date.today().year + 1)
+    start = date.today() + timedelta(days=60)
     response = await harness["client"].post(
         "/trips",
         json={
@@ -321,7 +321,7 @@ async def test_creating_an_ai_draft_trip_meters_the_account_and_the_address(
             "name": "Tokyo drafted",
             "destination_name": "Tokyo",
             "start_date": start.isoformat(),
-            "end_date": start.replace(day=min(start.day + 2, 28)).isoformat(),
+            "end_date": (start + timedelta(days=2)).isoformat(),
             "routing": {"auto_compute": False},
         },
     )

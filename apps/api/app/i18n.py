@@ -240,8 +240,8 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "place_provider_not_found": "That place source is not supported",
         "plan_not_found": "That optimization result could not be found",
         "planner_budget_reached": (
-            "You have used this hour's AI planning, so your description was not read. Try "
-            "again later"
+            "AI planning has reached its limit for now, so your description was not read. "
+            "Try again later"
         ),
         "provider_not_configured": "No live pricing provider is available for this search",
         "provider_unavailable": "The original flight provider is unavailable right now",
@@ -441,7 +441,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "place_provider_not_found": "対応していない地点の提供元です",
         "plan_not_found": "最適化のプランが見つかりません",
         "planner_budget_reached": (
-            "この時間の AI 作成回数を使い切ったため、入力内容は読み取られませんでした。"
+            "現在 AI 作成の上限に達しているため、入力内容は読み取られませんでした。"
             "しばらくしてからお試しください"
         ),
         "provider_not_configured": "この検索に使えるリアルタイム価格の提供元がありません",
@@ -627,7 +627,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "place_provider_not_found": "지원하지 않는 장소 제공자입니다",
         "plan_not_found": "최적화 결과를 찾을 수 없습니다",
         "planner_budget_reached": (
-            "이 시간의 AI 일정 생성 횟수를 모두 사용해 입력한 "
+            "현재 AI 일정 생성 한도에 도달해 입력한 "
             "설명을 읽지 못했습니다. 잠시 후 다시 시도해 "
             "주세요"
         ),

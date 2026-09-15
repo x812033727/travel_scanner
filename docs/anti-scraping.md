@@ -136,26 +136,41 @@ from one machine. The account is counted first and the address only if the accou
 inside its own budget, so one caller on an office network cannot spend their colleagues'
 share on requests that were never going to run.
 
-### Over the budget nothing is refused
+### Over the budget, planning degrades instead of refusing
 
-This is the difference from every other limit in this document. A spent budget does not
-produce a `429`; it produces the itinerary the deterministic catalogue planner builds, which
-is the same plan a total provider outage produces. Refusing to create a trip is the harshest
-outcome available and teaches the caller to retry; a plainer first draft costs nothing and
-teaches them nothing. `apps/api/app/ai/trip_parser.py` already makes the same trade when its
-own gate closes.
+This is the difference from every other limit in this document. On trip creation
+(`ai_draft`), `/itinerary/preview` and the deprecated `/itinerary/generate`, a spent budget
+does not produce a `429`; it produces the itinerary the deterministic catalogue planner
+builds, which is the same plan a total provider outage produces. Refusing to create a trip is
+the harshest outcome available and teaches the caller to retry; a plainer first draft costs
+nothing and teaches them nothing. `apps/api/app/ai/trip_parser.py` already makes the same
+trade when its own gate closes.
 
 It says which of the two happened. A budget degrade carries `planner_budget_reached`, not
 `planner_fallback_used`, because the badge for a fallback reads "AI is temporarily
-unavailable" and that is false when the caller spent their own hour.
+unavailable" and that is false when a budget, not the roster, is what ran out.
 
-### The count is never refunded
+`POST /trips/{id}/intents` is the exception. A refinement is the traveller's sentence, and
+the catalogue planner never reads one, so a catalogue plan there would be the old itinerary
+re-sorted and presented as their request. A spent budget answers `429`
+`planner_budget_reached` instead, and the route still gives its two intent fair-use slots
+back, because the traveller got nothing; the planner budget itself is not given back. A trip
+with no plannable places answers `422` `itinerary_exact_locations_required` on the same
+route, since that is a property of the trip and waiting out a window would not change it.
+
+### A count for an attempt that reached the roster is never refunded
 
 The fair-use limiters around this one give a slot back when every provider failed
 (`trips/intents.py`), which is right: an outage should not also cost a traveller their hour.
 It is also why they cannot be the ceiling -- a caller who can provoke a failure gets the
-calls attempted and the budget handed back, indefinitely. This counter is never refunded, so
-it bounds the attempts themselves and the refunds above stay as they are.
+calls attempted and the budget handed back, indefinitely. This counter is never refunded for
+an attempt that reached the provider roster, so it bounds the attempts themselves and the
+refunds above stay as they are.
+
+The one refund is when the address budget turns an attempt away. The account is counted
+first, so by then it has already counted that attempt, and that count goes back: no provider
+was asked, and keeping it would let a busy NAT address spend every traveller's own hour on
+attempts that never cost anything.
 
 ### An unreachable counter counts as spent
 
@@ -197,9 +212,12 @@ with hundreds is what it is for.
   [`security-audit-2026-09.md`](security-audit-2026-09.md) is addressed on paper only.
 - **Account farming is bounded, not closed.** `AI_PLANNER_IP_BUDGET` is what stands between
   a scripted attacker and `AUTH_REGISTER_IP_LIMIT` fresh accounts an hour, each with its own
-  planner budget. That holds only while the addresses are few: registration is not email
-  verified, so the residual ceiling for someone with many addresses is per-account times
-  however many they have. Distinguishing that from a large office is the same measurement
+  planner budget. That bounds each address, not the attacker: registration is not email
+  verified, and `AUTH_REGISTER_IP_LIMIT` lets one address mint enough accounts to reach
+  `AI_PLANNER_IP_BUDGET` (three at the defaults, 120 / 40), so the residual ceiling for
+  someone with many addresses is `AI_PLANNER_IP_BUDGET` attempts per address per window
+  (120 an hour by default) times however many addresses they have, not the per-account
+  budget times that number. Distinguishing that from a large office is the same measurement
   problem as the read limits, and the counters above are how it gets answered.
 - **No WAF, CAPTCHA or challenge.** Out of scope by decision: the brief was to bound
   volume without a normal visitor noticing anything.
