@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AIO 指的是哪一個：三條路的辨識規則 / Telling the three referents of AIO apart</title>
+  <desc id="desc">一張三分支的辨識圖。最上面的問題是「句子裡的 AIO 站在什麼位置」，往下分成三條路。左路的測試是「螢幕上看得到、也關得掉」，例句是「AIO 出現在搜尋結果最上方」，結論是 AI Overviews，也就是 Google 搜尋的功能名稱，官方中文說明頁稱為「AI 摘要」，功能名稱不描述任何做法，官方文件說出現在裡面沒有額外要求。中路的測試是「有步驟、有工具、有人執行」，例句是「我們幫你做 AIO」，結論是 AI Optimization，行銷服務業自造的做法名稱，各家定義不一致，要追問是哪一種做法，官方文件沒有出現這個縮寫。右路的測試是「有方案、有價目、有合約期間」，例句是「AIO 方案包含網站與廣告」，結論是 All-in-One，也就是什麼都包的套裝服務，硬體與行銷文案都在用，跟生成式 AI 無關，比 AI 摘要早得多。圖的最下面寫著：三個測試互相排斥，三個都通不過，代表那段文字沒有把所指固定下來。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">AIO 指的是哪一個：三條路的辨識規則</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Telling the three referents of AIO apart</text>
+
+  <rect x="400" y="110" width="800" height="76" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="800" y="158" text-anchor="middle" font-size="24" fill="#102A2B">句子裡的 AIO 站在什麼位置？</text>
+
+  <path d="M800,186 V214 H325 V240" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M800,186 V240" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M800,186 V214 H1275 V240" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="115" y="246" width="420" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="325" y="292" text-anchor="middle" font-size="20" font-weight="bold" fill="#0D6B68">測試一：看得到嗎</text>
+  <text x="325" y="332" text-anchor="middle" font-size="17" fill="#102A2B">螢幕上看得到、也關得掉</text>
+  <text x="325" y="380" text-anchor="middle" font-size="16" fill="#5C6B6B">句型：AIO 出現在</text>
+  <text x="325" y="404" text-anchor="middle" font-size="16" fill="#5C6B6B">搜尋結果最上方</text>
+
+  <rect x="590" y="246" width="420" height="180" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="292" text-anchor="middle" font-size="20" font-weight="bold" fill="#2F6F9F">測試二：有人做嗎</text>
+  <text x="800" y="332" text-anchor="middle" font-size="17" fill="#102A2B">有步驟、有工具、有人執行</text>
+  <text x="800" y="392" text-anchor="middle" font-size="16" fill="#5C6B6B">句型：我們幫你做 AIO</text>
+
+  <rect x="1065" y="246" width="420" height="180" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1275" y="292" text-anchor="middle" font-size="20" font-weight="bold" fill="#D97A2B">測試三：買得到嗎</text>
+  <text x="1275" y="332" text-anchor="middle" font-size="17" fill="#102A2B">有方案、有價目、有合約期間</text>
+  <text x="1275" y="380" text-anchor="middle" font-size="16" fill="#5C6B6B">句型：AIO 方案</text>
+  <text x="1275" y="404" text-anchor="middle" font-size="16" fill="#5C6B6B">包含網站與廣告</text>
+
+  <path d="M325,426 V492" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M800,426 V492" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M1275,426 V492" fill="none" stroke="#5C6B6B" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="115" y="500" width="420" height="230" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="325" y="548" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">AI Overviews</text>
+  <text x="325" y="588" text-anchor="middle" font-size="17" fill="#102A2B">Google 搜尋的功能名稱</text>
+  <text x="325" y="616" text-anchor="middle" font-size="17" fill="#102A2B">官方中文說明頁稱「AI 摘要」</text>
+  <text x="325" y="662" text-anchor="middle" font-size="16" fill="#5C6B6B">功能名稱不描述任何做法</text>
+  <text x="325" y="690" text-anchor="middle" font-size="16" fill="#5C6B6B">官方文件說沒有額外要求</text>
+
+  <rect x="590" y="500" width="420" height="230" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="548" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">AI Optimization</text>
+  <text x="800" y="588" text-anchor="middle" font-size="17" fill="#102A2B">行銷服務業自造的做法名稱</text>
+  <text x="800" y="616" text-anchor="middle" font-size="17" fill="#102A2B">各家定義不一致</text>
+  <text x="800" y="662" text-anchor="middle" font-size="16" fill="#5C6B6B">要追問是哪一種做法</text>
+  <text x="800" y="690" text-anchor="middle" font-size="16" fill="#5C6B6B">官方文件沒有出現這個縮寫</text>
+
+  <rect x="1065" y="500" width="420" height="230" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1275" y="548" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">All-in-One</text>
+  <text x="1275" y="588" text-anchor="middle" font-size="17" fill="#102A2B">什麼都包的套裝服務</text>
+  <text x="1275" y="616" text-anchor="middle" font-size="17" fill="#102A2B">硬體與行銷文案都在用</text>
+  <text x="1275" y="662" text-anchor="middle" font-size="16" fill="#5C6B6B">跟生成式 AI 無關</text>
+  <text x="1275" y="690" text-anchor="middle" font-size="16" fill="#5C6B6B">比 AI 摘要早得多</text>
+
+  <rect x="115" y="768" width="1370" height="76" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="800" y="814" text-anchor="middle" font-size="18" fill="#102A2B">三個測試互相排斥；三個都通不過，代表那段文字沒有把所指固定下來</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

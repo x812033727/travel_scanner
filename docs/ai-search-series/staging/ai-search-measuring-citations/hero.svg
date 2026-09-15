@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">測得到與測不到 / What can and cannot be measured</title>
+  <desc id="desc">一張抽象插圖。畫面左邊直立著一支白底深色外框的量尺，尺上有一排刻度：最上面一段的刻度是深色的，往下的刻度轉成淺灰，代表量尺只量得到最上面那一格。畫面右邊由上而下排著三個圓角方框。最上面的方框是實線深綠外框、淺綠底，裡面有三條長短不一的色條，代表一份看得到、量得到的紀錄；量尺往這個方框拉出一條帶箭頭的橫線，表示這一格量得到。中間與下面兩個方框是灰色虛線外框、白底，裡面的色條是很淡的灰色，代表存在但從外部量不到的部分，它們和量尺之間沒有連線。畫面左下角有一行字寫著測得到與測不到。整張圖只用圓角矩形、線條與箭頭等基本幾何形狀，沒有任何商標、介面或人物。</desc>
+  <defs>
+    <marker id="heroarrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- ruler -->
+  <rect x="180" y="150" width="104" height="600" rx="20" fill="#FFFFFF" stroke="#102A2B" stroke-width="6"/>
+  <path d="M 180 200 L 256 200" stroke="#102A2B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 240 L 226 240" stroke="#102A2B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 280 L 256 280" stroke="#102A2B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 320 L 226 320" stroke="#102A2B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 360 L 256 360" stroke="#102A2B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 400 L 226 400" stroke="#C3CFCF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 440 L 256 440" stroke="#C3CFCF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 480 L 226 480" stroke="#C3CFCF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 520 L 256 520" stroke="#C3CFCF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 560 L 226 560" stroke="#C3CFCF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 600 L 256 600" stroke="#C3CFCF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 640 L 226 640" stroke="#C3CFCF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 680 L 256 680" stroke="#C3CFCF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 180 720 L 226 720" stroke="#C3CFCF" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- measured layer -->
+  <path d="M 300 230 L 456 230" stroke="#0D6B68" stroke-width="9" fill="none" stroke-linecap="round" marker-end="url(#heroarrow)"/>
+  <rect x="470" y="150" width="960" height="180" rx="28" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <circle cx="540" cy="200" r="16" fill="#0D6B68"/>
+  <rect x="580" y="188" width="700" height="24" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="540" cy="270" r="16" fill="#0D6B68"/>
+  <rect x="580" y="258" width="560" height="24" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+
+  <!-- unmeasured layers -->
+  <rect x="470" y="370" width="960" height="180" rx="28" fill="#FFFFFF" stroke="#9AA8A8" stroke-width="6" stroke-dasharray="20 16"/>
+  <rect x="540" y="408" width="640" height="24" rx="12" fill="#E4E9E9"/>
+  <rect x="540" y="478" width="760" height="24" rx="12" fill="#E4E9E9"/>
+
+  <rect x="470" y="590" width="960" height="180" rx="28" fill="#FFFFFF" stroke="#9AA8A8" stroke-width="6" stroke-dasharray="20 16"/>
+  <rect x="540" y="628" width="720" height="24" rx="12" fill="#E4E9E9"/>
+  <rect x="540" y="698" width="560" height="24" rx="12" fill="#E4E9E9"/>
+
+  <text x="180" y="838" font-size="56" font-weight="bold" fill="#102A2B">測得到與測不到</text>
+</svg>

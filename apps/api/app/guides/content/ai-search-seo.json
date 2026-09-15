@@ -1,0 +1,318 @@
+{
+  "slug": "ai-search-seo",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "SEO 是什麼：搜尋引擎最佳化在 AI 時代沒有改變的那一半",
+      "description": "這篇說明搜尋引擎最佳化（SEO）裡有官方文件可查的那一半：HTTP 成功、可被抓取、已被索引、出現在結果裡是四件事，canonical、hreflang、sitemap、robots.txt 各自解決不同問題。文中把每個說法分成官方文件說明的機制、業界慣例、廠商行銷主張三級，並說明為什麼生成式答案仍然從被索引的頁面取材。本文不承諾任何排名或引用結果。",
+      "hero": {
+        "src": "/guides/ai-search-seo/hero.jpg",
+        "alt": "原創插畫：一份文件經過四階台階通往一個對話框，代表頁面要先被讀到才可能出現在答案裡；非產品介面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這篇回答一個問題：生成式答案變多之後，搜尋引擎最佳化（SEO）還剩哪一半是確定的。結論是：可被抓取、可被索引、標準網址、網站地圖這條鏈沒有因為 AI 而改寫，而且整組新名詞裡只有這一段有數十年累積、隨時可查的一手官方文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇不教操作步驟，也不教怎麼看報表。它要把後面幾篇共用的詞彙先立起來：四種狀態怎麼分、robots.txt 到底管什麼、canonical 與 hreflang 各自解決什麼問題，以及一句話要怎麼判斷它屬於官方文件說明的機制、業界普遍做法，還是廠商的行銷主張。以下引用的官方文件都在 2026 年 9 月 14 日查證。"
+        },
+        {
+          "type": "heading",
+          "text": "四種狀態，不是同一件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網站經營者最常把四件事講成一件：頁面打得開、爬蟲讀得到、已經進了索引、在結果頁出現。Google 的搜尋運作說明把流程分成檢索、建立索引、提供搜尋結果三個階段，並直接寫出：即使頁面符合它的規範，Google 也不保證會檢索、建立索引或提供這個頁面。這是官方文件說明的機制。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "HTTP 成功：伺服器正常回應，回傳 200 成功狀態碼。這是 Google 技術需求頁列出的三項最低條件之一，另外兩項是 Googlebot 沒有被擋住，以及頁面有可索引的內容。",
+            "可被抓取：robots.txt 沒有用 disallow 擋住這個路徑。這一層只決定讀不讀得到，不決定收不收錄。",
+            "已被索引：Search Console 的網頁索引報表有「已檢索，目前尚未建立索引」這個狀態，官方說明寫的是將來可能建立索引也可能不會，不需要重新提交。",
+            "出現在結果裡：官方說明寫得更直白，網頁已建立索引不保證會出現在搜尋結果中，結果會隨使用者的搜尋紀錄與所在位置等變數而不同。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "這四層往下相依、往上不保證：下面那層沒過，上面那層一定不會發生；下面那層過了，上面那層仍然可能不發生。後面每一個縮寫的行銷說法，幾乎都是把有資格偷換成一定會。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-search-seo/diagram-1.svg",
+          "alt": "四層狀態由上往下是 HTTP 成功、可被抓取、已被索引、出現在結果裡，右側列出每一層在官方文件裡的控制項。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下讀四層狀態與各層的官方控制項：每一層只讓下一層有資格發生，沒有一層是保證。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "robots.txt 管的是抓取，不是收錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "robots.txt 的規範原文是 RFC 9309，標題是 Robots Exclusion Protocol，2022 年 9 月以標準軌發布，作者是 Martijn Koster 與 Google 的三位工程師。規範用 allow 與 disallow 描述哪些路徑可以抓，並寫明這些規則不是一種存取授權，也不能代替真正的內容安全措施。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 的 robots.txt 介紹頁把用途寫得一樣窄：它主要是為了避免網站被大量請求壓垮，不是用來讓網頁不出現在 Google 的機制；被擋住的網址如果有其他網站連過來，仍可能被建立索引，只是結果不會有說明文字。由此推出一個常被弄反的結果：頁面上放了 noindex 卻同時在 robots.txt 擋住那個路徑，爬蟲永遠讀不到那條規則，官方說明頁明寫，要讓 noindex 生效就不能被 robots.txt 擋住。AI 爬蟲名單那一面留給"
+            },
+            {
+              "type": "article",
+              "text": "llms.txt 與 robots.txt 真正能做的事",
+              "kind": "life",
+              "slug": "ai-search-llms-txt"
+            },
+            {
+              "type": "text",
+              "text": "，這裡不重複。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "canonical、hreflang、sitemap 各自解決什麼問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這三樣常被放在同一句話裡講成技術最佳化，但它們解決的是三個不同的問題，官方文件給它們的強度也不同。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "canonical（標準網址）處理同一份內容有多個網址。Google 的標準化說明頁寫明：指出標準網址的偏好是提示，不是規則，Google 可能選擇跟你不同的網址；文件把轉址列為最強的訊號，網頁上的連結註解次之，寫在網站地圖裡是弱訊號。",
+            "hreflang 處理同一份內容有多個語言或地區版本。官方文件有一個硬性條件：兩個網頁如果沒有互相指向對方，標記會被忽略，以免別的網站隨便宣稱自己是你的替代版本。",
+            "sitemap（網站地圖）處理的是告知：這個網站有哪些網址。sitemaps.org 的 0.9 版協定只有 loc 必填，協定原文自己說 changefreq 的值是提示不是命令，priority 不太可能影響網址在結果頁的位置；Google 的文件更直接，寫明忽略 priority 與 changefreq，只在 lastmod 一致且可驗證時才採用。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "這三樣沒有一樣是排名設定。canonical 說哪個網址代表這份內容，hreflang 說有哪些語言版本，sitemap 說這個網站有哪些網址。官方文件也寫過，網站地圖不保證裡面的每個項目都會被檢索與建立索引。"
+        },
+        {
+          "type": "heading",
+          "text": "一句話屬於哪一級",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這個系列會反覆用到一個判斷：眼前這句話是官方文件說明的機制、業界普遍做法但官方文件沒有確認，還是廠商或代理商的行銷主張。三者常出現在同一篇文章裡而沒有標示，另外還有一種情況是直接跟官方文件寫的相反。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "常見說法",
+            "屬於哪一級",
+            "依據"
+          ],
+          "rows": [
+            [
+              "robots.txt 擋住的頁面就不會被收錄",
+              "與官方文件相反",
+              "介紹頁寫明被擋的網址仍可能被建立索引，只是結果不會有說明文字"
+            ],
+            [
+              "canonical 指定了就一定生效",
+              "與官方文件相反",
+              "標準化說明頁寫的是提示，不是規則"
+            ],
+            [
+              "每一頁都放自我指向的 canonical",
+              "業界普遍做法，官方文件沒有要求",
+              "文件只說可以指出偏好，沒有規定每頁必須自我指向"
+            ],
+            [
+              "調高 sitemap 的 priority 有助排名",
+              "與官方文件相反",
+              "協定原文說 priority 不太可能影響位置，Google 寫明忽略這個欄位"
+            ],
+            [
+              "AI 時代要另做一套最佳化才會被引用",
+              "廠商與代理商的行銷主張",
+              "AI 功能說明頁寫的是沒有額外要求，也不需要其他特別的最佳化"
+            ]
+          ],
+          "caption": "分辨一句說法屬於哪一級的對照表，依 2026 年 9 月查證的官方文件整理。"
+        },
+        {
+          "type": "heading",
+          "text": "「SEO 已死」是誰在說的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「SEO 已死，現在要做別的」這類標題在中文與英文的行銷內容裡都很常見。判斷方法一樣：先看有沒有一手來源。Google 的 AI 功能說明頁寫的是，要出現在 AI 摘要或 AI 模式沒有額外要求，也不需要其他特別的最佳化；同一頁也寫明，網頁必須已建立索引、符合技術需求、有資格顯示摘要片段，才可能出現在這些功能裡。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "換句話說，生成式答案仍然從被索引的頁面取材。Bing 團隊 2025 年 7 月的網站管理員部落格也寫過同方向的話：在 AI 驅動的搜尋裡，讓網站可被檢索、保持更新、完整建立索引比以往更重要。要注意這兩份文件都只說明機制與資格條件，沒有任何一方承諾做了什麼就會被引用。至於某某最佳化取代 SEO 這個說法本身的分歧，"
+            },
+            {
+              "type": "article",
+              "text": "GEO（生成引擎最佳化）的論文定義與業界用法",
+              "kind": "life",
+              "slug": "ai-search-geo"
+            },
+            {
+              "type": "text",
+              "text": "那一篇會處理。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的 AI 功能說明頁同時列出站長可用的控制項：nosnippet、data-nosnippet、max-snippet、noindex，以及 robots.txt 針對 Googlebot 的規則，針對 AI 訓練用途的則是 Google-Extended。這些控制項能做的是限制內容被怎麼使用，不是把內容推進答案裡。同一頁說明它採用查詢展開的做法，但沒有公布挑選引用的排序規則。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "看到成效數字時先問三件事",
+          "text": "第一，這個數字是誰量的，是搜尋引擎自己公布的，還是賣服務的公司自己的報表。第二，量的母體是什麼，幾個查詢、哪一個引擎、哪一段時間。第三，有沒有可以對照的基準。缺一項就不是可稽核的成效，只是行銷素材。本文引用的官方文件都只說明機制與資格條件，本站沒有做過相關實測，也不宣稱任何做法會帶來排名、收錄、引用或流量的結果。"
+        },
+        {
+          "type": "heading",
+          "text": "這篇立起來的詞彙，後面幾篇會一直用",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接下來的篇章會把 GEO、AEO、AIO、LLMO、E-E-A-T、結構化資料與 llms.txt 一個一個拆開，每一篇都回到這裡的四層狀態問同一個問題：這個做法影響的是哪一層，或者根本不影響任何一層。"
+            },
+            {
+              "type": "article",
+              "text": "結構化資料與 Schema.org 能換到什麼",
+              "kind": "life",
+              "slug": "ai-search-structured-data"
+            },
+            {
+              "type": "text",
+              "text": "講的是標記能換到什麼資格；"
+            },
+            {
+              "type": "article",
+              "text": "名詞總索引",
+              "kind": "life",
+              "slug": "ai-search-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "把整組名詞的分歧點放在同一張表上。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "如果只記得一件事，記這個：官方文件講的是資格，不是結果。符合技術需求讓網頁有資格被建立索引，被建立索引讓它有資格出現在結果或生成式答案裡，任何把有資格講成一定會的說法，都已經超出它所引用的文件說過的範圍。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 搜尋中心：Google 搜尋的運作方式（檢索、建立索引、提供結果）",
+          "url": "https://developers.google.com/search/docs/fundamentals/how-search-works",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：搜尋基礎要素的技術需求",
+          "url": "https://developers.google.com/search/docs/essentials/technical",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：合併重複網址（rel 標準網址）",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：什麼是標準化（提示，不是規則）",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/canonicalization",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：網站地圖總覽",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：建立並提交網站地圖（忽略 priority 與 changefreq）",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：告知 Google 網頁的在地化版本（hreflang）",
+          "url": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：robots.txt 簡介與指南",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：使用 noindex 禁止建立索引",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/block-indexing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：AI 功能與你的網站",
+          "url": "https://developers.google.com/search/docs/appearance/ai-features",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Search Console 說明：網頁索引報表的狀態",
+          "url": "https://support.google.com/webmasters/answer/7440203",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "RFC 9309：Robots Exclusion Protocol（標準軌規範原文）",
+          "url": "https://www.rfc-editor.org/rfc/rfc9309.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "sitemaps.org：Sitemap 協定 0.9 版原文",
+          "url": "https://www.sitemaps.org/protocol.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bing 網站管理員部落格：在 AI 驅動的搜尋中用網站地圖維持可被發現",
+          "url": "https://blogs.bing.com/webmaster/July-2025/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
