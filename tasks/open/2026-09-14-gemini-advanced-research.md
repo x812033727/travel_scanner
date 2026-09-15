@@ -46,7 +46,7 @@ scope:
 ## Steps
 
 - [x] 57 `notebooklm-source-versioning`：NotebookLM 資料版本管理：來源清單、更新與過期內容。成果：建立能追蹤資料版本的專題筆記本。
-- [ ] 58 `notebooklm-conflicting-sources`：NotebookLM 引用查核：矛盾資料、缺證據與未知答案。成果：用證據矩陣辨識資料支持、矛盾及未回答的問題。
+- [x] 58 `notebooklm-conflicting-sources`：NotebookLM 引用查核：矛盾資料、缺證據與未知答案。成果：用證據矩陣辨識資料支持、矛盾及未回答的問題。
 - [ ] 59 `notebooklm-study-retrieval-practice`：NotebookLM 備考實作：題庫、錯題分類與間隔複習。成果：由兩章教材製作可檢查答案的複習流程。
 - [ ] 60 `notebooklm-paper-comparison-matrix`：NotebookLM 比較多篇研究：研究問題、方法與限制矩陣。成果：產出區分研究設計與結論強度的比較表。
 - [ ] 61 `notebooklm-multiformat-lesson-pack`：NotebookLM 多格式教材：講義、語音與影片摘要一致性檢查。成果：將同一份教材製作成可對照來源的三種學習材料。
@@ -74,7 +74,7 @@ scope:
 - [x] 22 項 fixture 測試通過，解壓整合包再跑 22 項通過；ZIP CRC／來源 bytes 一致。九張論文相關頁面已檢視。
 - [x] 六篇 pack lint、內容／連結檢查、Ruff、tasks 通過；先前 18 篇與原 51 頁檢查通過。相關 API 測試 38 passed／8 skipped，跳過需獨立 PostgreSQL 的分支；SQLite 已驗。
 - [x] 57 Drive 與上傳各 v1/v2 真實同步、引用、回答與舊產出重做紀錄。
-- [ ] 58 真實模型五列證據矩陣、引用點擊、未知回答及故障修正。
+- [x] 58 真實模型五列證據矩陣、引用點擊、未知回答及故障修正。
 - [ ] 59 Studio 題庫、實際十二題作答與間隔重測，不把預排日期當完成。
 - [ ] 60 模型論文矩陣、逐欄引用與錯誤跨指標排名修正。
 - [ ] 61 實際生成講義、音檔與影片、下載副檔名、30 筆一致性觀察。現只有作者教材／腳本，未完成真實媒體成品。
@@ -98,3 +98,22 @@ scope:
 - [ ] 58–62 真實操作仍照前述清單接續。整套 release 整合、公開頁面與 sitemap 驗證未做。
 
 私人筆記本及 Doc 連結在 verification/live-20260915/private/57-links.json（gitignored）；保留兩個筆記本和 Doc 為使用者成果，分享權限未改。原作者原稿與 runtime pack 不覆寫，發布時應採用新 revision 收據。所有原創配圖沿用並更新圖說，沒有新增未驗圖片。第 57 篇手動同步已驗，失去存取權、定期自動同步等待、手機與額外 Studio 媒體沒有實測。
+
+
+## 2026-09-15 第 58 篇實測與修訂交付
+
+個人 Google AI Pro，Windows／Chrome；三份原創虛構來源 E1–E3，三次人工提示。API 零次、額外支出 NT$0；手機依使用者要求先跳過。
+
+- [x] 五項原始回答、餐點／停車／退款未知題與修訂矩陣完成；三份原始回答及三份筆記保留。
+- [x] 十七筆回答引用觀察加一筆重開筆記日期引用，逐次保存來源文字與瀏覽器 FNV；三份原文均比對原教材。
+- [x] 第一輪預定日期被寫得過度確定、確認信擴大成唯一必要條件，未知題的查閱範圍與支持引文混淆，均依實際結果修正。沒有捏造模型答 54 人的案例。
+- [x] corrected.json 五列真實矩陣經人工審閱，整理 CSV 與兩項未知清單另存；不覆寫原始表格的 Markdown 層級及換行錯誤。
+- [x] 四組離線故障：正確矩陣 accepted、假引文 fabricated_quote、真引文搭錯誤主張仍 accepted（人工拒絕）、還原後 accepted。
+- [x] 重新整理後三份回答校驗值一致、來源仍勾選；修訂筆記重開內容一致且 E2 日期引用可追查。
+- [x] verification/live-20260915/58 保存完整證據；audit-live58.py 通過 31 個凍結檔、176 個原作者檔與第 57 篇既有修訂檔完整性核對。
+- [x] revisions/20260915-58 交付 2,594 字完整教學、隔離內容包與新版 ZIP；42 個來源檔案 CRC／位元組／解壓檢查通過，ArticlePack／pack lint／正文章節連結與 Ruff 通過。
+- [x] 第 58 篇候選圖解更新「模型引用待驗」頁腳，1600／360 像素重新渲染與目視查核；原作者圖片保留。
+- [x] 第 57 篇舊圖解頁腳也已修正：revisions/20260915-57-art 提供獨立 SVG 覆蓋檔與 1600／360 像素目視紀錄，整合時套在完整 20260915 revision 之後；原收據與原圖仍保持不變。
+- [ ] 第 59–62 篇繼續真實操作；間隔複習不可用預排日期冒充重測。全系列整合、發布、公開頁與 sitemap 仍未驗。
+
+私人筆記本連結在 verification/live-20260915/private/58-links.json（gitignored），保留為使用者成果且未改分享。這一輪未更新 runtime pack 或公開圖片目錄，沒有推送、PR、部署、匯入或發布。發布任務採新 revision 包並保留歷史作者證據；本研究票仍 open，不標 done。
