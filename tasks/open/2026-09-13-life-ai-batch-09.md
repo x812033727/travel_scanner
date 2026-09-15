@@ -1,11 +1,11 @@
 ---
 id: 2026-09-13-life-ai-batch-09
 title: 生活分享 AI 系列批次 09：工作流、效率與自動化（20 篇）
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-15T00:26:24Z
 created_at: 2026-09-13T11:56:00Z
 completed_at:
 branch:
