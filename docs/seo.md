@@ -115,6 +115,40 @@ routes are absent, and each feature can close/reopen without a rebuild. The brow
 additionally renders three synthetic articles into the XML Next actually emits, which is the only
 check that exercises `lastmod` serialisation and an article's partial hreflang set.
 
+## `/llms.txt`
+
+`app/llms.txt/route.ts` serves a short, annotated map of the site as `text/plain; charset=utf-8`
+with `Cache-Control: no-store`, in the shape [llmstxt.org](https://llmstxt.org/) describes: an
+H1, a blockquote, then H2 sections of `- [title](url): note` lines. Next has no file convention
+for it, so it is a Route Handler in a dotted folder, the pattern its own documentation names for
+`rss.xml`. `proxy.ts`'s matcher already excludes any path containing a dot, so next-intl never
+sees the request and no locale is inferred -- every URL in the file names its locale explicitly,
+and the annotations are English, the language `x-default` points at.
+
+The file is not a second sitemap and does not try to be. `/sitemap.xml` stays the complete list
+and the file says so in its own header. What llms.txt adds is what each section *is*, which the
+sitemap's bare URLs cannot carry.
+
+It reuses `SITEMAP_ROUTES` rather than restating which pages are public. The gating is four
+feature switches plus the discovery switch, and a second file re-deriving that list would
+advertise a `noindex` page the first time a route changed on one side only. A route module
+importing another route module is unusual here; drifting from the sitemap would be worse.
+Destination annotations come from the same catalogue read the destination index makes, and an
+outage leaves the destinations listed without their annotation rather than dropping the section --
+those pages are still there.
+
+**Who can actually read it.** Three of the agents that advertise consuming llms.txt -- `GPTBot`,
+`ClaudeBot` and `PerplexityBot` -- are refused in `robots.ts` under the policy recorded there, so
+they will never fetch this file. That is not a reason to revisit the refusals, and a flat metric
+here is not evidence that it should be. The readers it does have are the agents that fetch on a
+person's behalf and cite what they found (`ChatGPT-User`, `OAI-SearchBot`), ordinary search
+crawlers, and tooling. The convention also has no registered discovery directive -- a client
+probes the well-known path or does not -- so `robots.txt` is not modified to point at it.
+
+Serving the file implies nothing about being indexed, cited, or summarised anywhere. It is one
+document that costs one request; it is not a ranking mechanism, and no part of this repository
+should be read as claiming it is.
+
 ## Server content and data freshness
 
 - Discovery **off**: the homepage includes its real hero, search body and 19 city-guide links
@@ -152,10 +186,58 @@ so content cannot close its script tag. It emits only nonempty graphs that descr
 | ItemList | Destination index with actual guide URLs |
 | TouristDestination | Guide using public catalog names/country/coordinates |
 | Article | Published intel, how-to and lifestyle articles: real headline, body, `datePublished`, `dateModified`, and `image` only when the article has a hero |
+| CollectionPage + ItemList | A series hub, listing the members the series read actually returned |
+| citation | Every source the article lists, through the same sanitizer that draws the visible list |
+| WebPage `lastReviewed` / `reviewedBy` | The newest `checked_on` across those sources, on the article's `mainEntityOfPage` |
+| about | The article's destination, pointing at that destination's own page |
 
 There is no invented review or FAQ markup. `TouristDestination` is a Place, so it does
 not claim the CreativeWork-only `inLanguage` property. Purchases are not enabled; this work
 does not add Product/Offer markup or represent plans as bookable offers.
+
+### The article graph, and what it deliberately leaves out
+
+The article graph is built by `guideArticle()` in `lib/structured-data.ts`, not inline in the
+page. It used to be an object literal in `components/guides/article-page.tsx` -- the only graph
+on the site built outside that library, and so the only one with no unit test -- and it had
+drifted to six fields while the page under it rendered four more: the dated source list, the
+topic chips, the destination, and the reading time.
+
+`citation` is the point of the change. Every published document carries its sources and the page
+prints each with the date it was checked, so the graph states the same provenance a reader sees.
+The references are passed through `contentBlockLink` at the call site, exactly as the visible
+list is drawn, so the graph can never cite a link the page itself refused. `about` is emitted
+only for a `destination_id` that has a destination page behind it, so it can never point at a 404.
+
+Left out on purpose, each for a reason that is not "we ran out of time":
+
+- **`HowTo`, for the `howto` articles.** 20 of 106 slugs hold an ordered list at all, and those
+  are itineraries rather than procedures. `taoyuan-airport-departure-guide` holds two ordered
+  lists, one procedural and one enumerating who is *barred* from self-registration -- as
+  `HowToStep` that instructs a reader to obtain an exit ban. `ordered: true` in these packs means
+  "numbered for reading". A step list needs an author to declare one, not a renderer to infer it.
+- **`FAQPage`.** No FAQ member exists in `RichContentBlock` or in the API's block union, and
+  **no document** holds two question-heading-and-answer pairs: across 926 localized documents,
+  taking a heading that actually ends in `?`/`？` followed by a paragraph of 40 characters or
+  more, zero reach two. A looser detector -- a leading 怎麼/如何/為什麼 -- matches several hundred
+  headings, but they are section titles with colons (`怎麼去：JR 舞濱、迪士尼度假區線`), not
+  questions, which is exactly why the loose form must not be used. Google has restricted FAQ rich
+  results to health and government sites since 2023, so the only audience is machine readers --
+  who are also the audience that discounts a site whose markup does not match its page.
+- **`expires`, from an intel notice's `valid_until`.** schema.org reads `expires` as *stop
+  serving this*, and the product deliberately keeps an expired notice online with its URL
+  working; `components/guides/article.tsx` states that rule as "no expiry banner, no date it
+  applied until". Publishing the withheld date to ask an answer engine to stop citing the page
+  would be both dishonest and the opposite of what the graph is for.
+- **`author` as a Person.** No document carries a byline. The only `author` in the content schema
+  is a photographer's credit. An Organization author is accurate and is accepted.
+- **`dateAccessed` on a citation.** Not a schema.org property. `checked_on` says when *we* read
+  the source, which is `lastReviewed` on the WebPage node, not a claim about the source itself.
+
+`lastReviewed` is honest today -- the page prints the same dates -- but all 6,926 `checked_on`
+values in the corpus hold one of two dates, so it reads as a bulk verification stamp. It stays
+truthful only while re-verification actually happens on republication; if it stops, the graph will
+keep asserting a review that no longer occurs.
 
 An article with a hero image also puts it on the Open Graph and Twitter cards, restating the
 layout's locale and alternate locales beside it (Next replaces the whole `openGraph` key);
@@ -286,6 +368,8 @@ threshold, or never ran at all.
 - [Build and submit a sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
 - [Localized versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
 - [Sitelinks search box retirement](https://developers.google.com/search/blog/2024/10/sitelinks-search-box)
+- [schema.org `citation`](https://schema.org/citation), [`lastReviewed`](https://schema.org/lastReviewed) (WebPage only) and [`expires`](https://schema.org/expires)
+- [The llms.txt convention](https://llmstxt.org/)
 
 Next implementation details were checked against the bundled `node_modules/next/dist/docs`
 metadata, sitemap and fetch documentation, plus its current metadata resolver.
