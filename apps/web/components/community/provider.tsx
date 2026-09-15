@@ -78,10 +78,16 @@ function SessionCommunity({state, userId, children}: {state:CommunityState;userI
       });
       // Network reconnects use EventSource's Last-Event-ID for durable catch-up.
     };
+    // Going offline does not always break an open stream: events keep arriving while every
+    // fetch fails, so the refreshes they trigger fail too. The stream has already moved past
+    // those events and never dropped, so no reconnect replays them either. Catch up as soon as
+    // the browser is back online instead of waiting for the next event.
+    const online=()=>{if(!disposed)update();};
+    window.addEventListener("online",online);
     void api<{cursor:number}>("/community/events/cursor").then(({cursor})=>{
       if(disposed)return;lastCursor=cursor;update();connect();
     }).catch(()=>{if(!disposed){update();timer=setTimeout(connect,5000);}});
-    return ()=>{disposed=true;stream?.close();if(timer)clearTimeout(timer);};
+    return ()=>{disposed=true;window.removeEventListener("online",online);stream?.close();if(timer)clearTimeout(timer);};
   }, [userId,profileId,restricted,enabled,refresh,refreshFlags]);
   return <Context.Provider value={{...current,me,loading:Boolean(userId&&enabled&&!currentIdentity),error:currentIdentity?.error,unread:enabled&&unread?.userId===userId?unread?.count || 0:0,refresh,refreshFlags}}>{children}</Context.Provider>;
 }

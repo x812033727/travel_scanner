@@ -22,8 +22,13 @@ jobs:
         run: npx playwright test e2e/planner-route-tones.spec.ts e2e/planner-calm.spec.ts e2e/planner-premium.spec.ts e2e/trip-stay-areas.spec.ts e2e/stay22-maps.spec.ts --workers=1
         working-directory: apps/web
         env: { PLAYWRIGHT_SERVE_BUILD: "true" }
+      # Only when something failed or the job timed out (reported as cancelled). Every push runs
+      # this workflow for both the push and the pull_request event, and uploading passing runs'
+      # traces helped fill the repository with 122.7 GB of unexpired artifacts by 2026-09-14,
+      # when a required job went red on "Failed to FinalizeArtifact: ... (403) Forbidden" after
+      # every test had passed.
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        if: always()
+        if: failure() || cancelled()
         with:
           name: planner-premium-browser-results
           path: apps/web/test-results

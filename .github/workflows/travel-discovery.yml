@@ -42,8 +42,16 @@ jobs:
       COMMUNITY_SMTP_PORT: "1025"
       COMMUNITY_SMTP_STARTTLS: "false"
       COMMUNITY_MAIL_FROM: Mokaair CI <accounts@example.test>
+      # Named once so the pull and the run cannot name different tags.
+      MAILPIT_IMAGE: axllent/mailpit:latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # `docker run` pulls a missing image exactly once, and a single connection reset from
+      # auth.docker.io has failed this job while other jobs pulled the same image. The script
+      # retries transient failures (see its header), early and by name, before the build; the
+      # run below uses --pull=never so it cannot quietly pull without it.
+      - name: Pull container images
+        run: bash "$GITHUB_WORKSPACE/tools/ci/pull-images.sh" "$MAILPIT_IMAGE"
       - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
         with: { python-version: "3.13" }
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -60,7 +68,7 @@ jobs:
       - run: npm run build:web
       - name: Start isolated mail and bootstrap acceptance administrator
         run: |
-          docker run -d --name discovery-mail -p 127.0.0.1:1025:1025 -p 127.0.0.1:8025:8025 axllent/mailpit:latest
+          docker run --pull=never -d --name discovery-mail -p 127.0.0.1:1025:1025 -p 127.0.0.1:8025:8025 "$MAILPIT_IMAGE"
           cd apps/api
           printf '%s\n' 'discovery-ci-password-123' | uv run python -m app.cli create-admin --email discovery-admin@example.com --password-stdin
       - name: Start real API, worker and production Web
@@ -71,6 +79,12 @@ jobs:
           setsid uv run python -m app.worker > /tmp/discovery-worker.log 2>&1 &
           echo $! > "$RUNNER_TEMP/discovery-worker.pid"
           cd ../..
+          # The web start script (apps/web/package.json) carries --keepAliveTimeout 65000, the
+          # same as KEEP_ALIVE_TIMEOUT in docker-compose.prod.yml. Playwright's APIRequestContext
+          # reuses keep-alive sockets with no idle timeout of its own, and Next's default close
+          # (5 s, plus Node's 1 s buffer) raced the ~6 s gaps in community.spec.ts
+          # registerAndVerify, which came back as `read ECONNRESET`. These suites have the same
+          # shape: API requests separated by seconds of browser-only steps.
           setsid npm run start --workspace @travel-scanner/web -- --port 3000 > /tmp/discovery-web.log 2>&1 &
           echo $! > "$RUNNER_TEMP/discovery-web.pid"
       - name: Wait for readiness
@@ -87,15 +101,22 @@ jobs:
       - name: Unmocked login, invitations, private collections and public withdrawal
         run: npx playwright test e2e/discovery-full-stack.spec.ts e2e/frontend-flow-full-stack.spec.ts --workers=1 --output test-results/discovery-full-stack
         working-directory: apps/web
+      # Only when something failed or the job timed out (reported as cancelled). Every push runs
+      # this workflow for both the push and the pull_request event, and uploading passing runs'
+      # traces helped fill the repository with 122.7 GB of unexpired artifacts by 2026-09-14,
+      # when a required job went red on "Failed to FinalizeArtifact: ... (403) Forbidden" after
+      # every test had passed.
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        if: always()
+        if: failure() || cancelled()
         with:
           name: discovery-browser-results
           path: apps/web/test-results
           retention-days: 7
+      # The logs do not exist when setup failed before the servers started (a registry outage
+      # in "Pull container images"); that must not add a second, misleading red step.
       - name: Failure logs
         if: failure()
-        run: cat /tmp/discovery-api.log /tmp/discovery-worker.log /tmp/discovery-web.log
+        run: cat /tmp/discovery-api.log /tmp/discovery-worker.log /tmp/discovery-web.log 2>/dev/null || true
       - name: Stop test processes
         if: always()
         run: |
