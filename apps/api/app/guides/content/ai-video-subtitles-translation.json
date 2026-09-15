@@ -1,0 +1,357 @@
+{
+  "slug": "ai-video-subtitles-translation",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 上字幕與翻譯影片：CapCut、Whisper 與 YouTube 三條路",
+      "description": "CapCut 在時間軸上一次做完轉錄、翻譯與輸出，Whisper 在自己的電腦上轉出 srt 但只翻得到英文，YouTube 負責把字幕送到觀眾眼前、翻譯由觀眾自己開。這篇照 2026 年 9 月 14 日的官方說明整理三條路的步驟、輸出格式與費用寫法，加上字幕檔格式、時間軸與繁體術語的校正法，以及燒錄與外掛字幕的取捨。",
+      "hero": {
+        "src": "/guides/ai-video-subtitles-translation/hero.jpg",
+        "alt": "插圖：左邊一個螢幕下方有一條字幕棒，箭頭指向右邊另一個螢幕，字幕棒換成另一種顏色，旁邊有幾個語言泡泡",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "影片要上字幕、還要翻成另一種語言，常見的做法有三條：在 CapCut 這類剪輯軟體裡按一次自動字幕、在自己的電腦上用 Whisper 把聲音轉成字幕檔，或是上傳後讓 YouTube 自動產生字幕。結論先說：三條路做的不是同一段工作。CapCut 把轉錄、翻譯與輸出綁在同一條時間軸上；Whisper 只把語音變成字幕檔，官方的翻譯任務還只翻成英文；YouTube 負責把字幕送到觀眾眼前，翻譯是觀眾自己在播放器裡開的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下按各家官網、說明中心與官方原始碼在 2026 年 9 月 14 日的內容整理：三條路的輸出與費用、CapCut 的字幕步驟、Whisper 產生字幕檔的指令與限制、YouTube 支援的字幕檔格式，再加上校正與翻譯的做法，以及字幕該燒進畫面還是另外掛一個檔案。介面名稱以官網當天版本為準。"
+        },
+        {
+          "type": "heading",
+          "text": "三條路各做哪一段",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一支有翻譯字幕的影片，中間至少有四道手續：把聲音轉成文字、校正錯字與時間軸、翻成目標語言、把字幕交給播放器或平台。沒有一個工具四道都包得剛好，選工具其實是在決定你要自己接手哪一段。CapCut 的長處是四道都在同一個畫面裡；Whisper 的長處是字幕檔留在自己的硬碟上，想重跑幾次都行；YouTube 的長處是觀眾端零成本，短處是你只能改文字，控制不了觀眾看到的樣式。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "路線",
+            "工具",
+            "輸出",
+            "費用（官方頁面怎麼寫）"
+          ],
+          "rows": [
+            [
+              "剪輯軟體一次做完",
+              "CapCut 手機、桌面與網頁版",
+              "影片裡的字幕；官方功能頁說也能單獨匯出 SRT 檔",
+              "App 免費下載；Pro 與 Standard 的價格官方說隨方案、平台、帳號、地區與促銷而異，以登入後的官網為準"
+            ],
+            [
+              "本機轉錄",
+              "Whisper 指令列工具",
+              "txt、vtt、srt、tsv、json、jsonl",
+              "程式與模型權重採 MIT 授權，不收授權費"
+            ],
+            [
+              "平台內建",
+              "YouTube Studio 字幕頁",
+              "原始語言的自動字幕，或你上傳的字幕檔",
+              "隨 YouTube 帳號提供，官方頁沒有另外收費的說法"
+            ],
+            [
+              "翻譯這一段",
+              "CapCut 的字幕翻譯，或語言模型改寫字幕檔",
+              "翻好的字幕軌或字幕檔",
+              "看你用哪一個服務的哪一個方案"
+            ]
+          ],
+          "caption": "三條路線加上翻譯那一段的分工與費用，查證日 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-video-subtitles-translation/diagram-1.svg",
+          "alt": "流程圖：五個關卡由左到右排開，下方三列分別是 CapCut、Whisper 與 YouTube 在每一關要做的事",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右是五個關卡，往下三列是三條路線；同一欄比較的是同一道手續。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "CapCut：在時間軸上一次做完",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "CapCut 說明中心把入口寫得很清楚，三個平台的按鈕名稱不太一樣：網頁版在專案裡點 Text，選 Auto Captions，挑語言後按 Generate；桌面版點 Text 選 Auto Captions，挑語言與音軌後按 Recognize；手機版點 Text 選 Auto Captions，選好音訊來源等它跑完。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一篇官方文章也把話說在前面：自動字幕是語音辨識做的，會因為背景噪音、口音、語速或音質而認錯字，三個平台都能手動修正、重新斷句與重新辨識。官方給的動線是點字幕區塊開 Edit captions 逐行改字，網頁版按 B、桌面版按 Ctrl+B 或 Cmd+B 切開太長的一段；錯太多就整批刪掉，先把音樂與音效靜音、只留人聲再跑一次。官方還補一句：網頁版的辨識在 Chrome 或 Edge、單聲道清晰人聲下表現最好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "翻譯接在後面。官方功能頁寫產生好的字幕可以自動翻成另一種語言，並提醒發布前檢查人名、術語、斷行與時間；同一頁的常見問題也寫了 CapCut 桌面版與線上版都能單獨匯出 SRT 檔，方便拿去上傳。"
+        },
+        {
+          "type": "paragraph",
+          "text": "費用要自己查。官方說明中心寫 Pro 訂閱在手機、桌面與網頁都能用，Standard 只在部分地區供應、只在手機 App 生效，另一篇寫 Pro 含 100GB 雲端空間；至於月費，官方文章直接說價格、AI 點數、浮水印規則與匯出限制會隨方案、平台、帳號、地區與促銷而變，要在登入的帳號裡確認，所以這篇不寫數字，以官網為準。點數的官方說法是用在圖片生成、腳本轉影片、智慧去背、進階配音這類功能，執行前畫面會顯示這次扣多少點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個常被誤會的地方。浮水印：官方說明寫它多半來自範本自帶的片尾片段，不是匯出造成的，刪掉時間軸最後那段就能輸出乾淨的影片。台灣能不能用：用 Apple 的查詢介面指定台灣區查，CapCut 的 iOS App 上架中，開發者掛 BYTEDANCE PTE. LTD.，當天版本 19.4.0、2026 年 9 月 8 日更新、售價顯示免費。自動字幕的免費額度、長度上限與支援語言數官方沒有寫成數字，一樣以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "Whisper：轉出字幕檔，翻譯得另外做",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Whisper 是 OpenAI 釋出的語音辨識模型，官方 README 寫程式碼與模型權重採 MIT 授權，安裝後多一個 whisper 指令，另外需要系統裡有 ffmpeg。它和剪輯軟體最大的差別在輸出：官方原始碼的 CLI 參數 --output_format（縮寫 -f）預設是 all，可指定 txt、vtt、srt、tsv、json、jsonl 其中一種，--output_dir（縮寫 -o）決定檔案放哪，預設是目前資料夾。要一個乾淨的字幕檔，就把格式指定成 srt。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "安裝 Whisper 與 ffmpeg（指令取自官方 README）",
+          "code": "pip install -U openai-whisper\n\n# macOS 用 Homebrew 安裝 ffmpeg\nbrew install ffmpeg"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "只輸出一個 srt 字幕檔（參數見官方原始碼的 CLI 說明）",
+          "code": "whisper talk.mp3 --model turbo --output_format srt --output_dir subs"
+        },
+        {
+          "type": "paragraph",
+          "text": "要注意 Whisper 的「翻譯」跟一般想的不一樣。官方原始碼裡 --task 只有兩個值：transcribe 是原語言轉原語言，translate 的說明寫的是翻成英文。README 也提醒 turbo 模型沒有受過翻譯訓練，加上 --task translate 還是會回原語言，要翻譯得改用 medium 或 large。換句話說，它幫不了你把日文影片翻成繁體中文，只到英文為止。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "把非英語語音翻成英文（指令取自官方 README）",
+          "code": "whisper japanese.wav --model medium --language Japanese --task translate"
+        },
+        {
+          "type": "paragraph",
+          "text": "中文還有一個坑。官方原始碼的語言清單有 100 種語言，中文只有一個 chinese（代碼 zh，別名表裡 mandarin 也指向 zh），另外單列 cantonese（yue），沒有繁簡之分，所以輸出哪一種字形不保證，得自己轉換或在翻譯那一步一起處理。字幕斷行的 --max_line_width、--max_line_count 與 --max_words_per_line 三個參數，官方都註明要先把 --word_timestamps 設成 True，而那功能官方自己標示為實驗性質。模型怎麼挑、硬體要多好，站上已經寫過。"
+        },
+        {
+          "type": "link",
+          "text": "用 Whisper 本機轉錄逐字稿：會議與訪談的離線做法",
+          "url": "https://mokaair.com/zh-TW/life/whisper-local-transcription"
+        },
+        {
+          "type": "link",
+          "text": "逐字稿工具怎麼用：MacWhisper 與 Whisper 桌面工作流",
+          "url": "https://mokaair.com/zh-TW/life/transcription-desktop-tools"
+        },
+        {
+          "type": "heading",
+          "text": "YouTube：自動字幕、字幕檔與觀眾端翻譯",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一件是自動字幕。官方說明列出的可用語言有 67 種，中文與粵語（官方寫成 Cantonese/Hong Kong）都在裡面；影片有多條語音軌時，自動字幕只會是預設語言那一條。官方也列了產不出字幕的原因：音訊還在處理、語言不支援、影片太長、音質太差、開頭安靜太久，或多位講者重疊、一段裡混了多種語言。直播的自動字幕只有英文，官方寫明逐步開放給訂閱數超過 1,000 的頻道，串流要用一般延遲。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二件是上傳自己的字幕檔，也是把 Whisper 的成果接上平台的方法：在 YouTube Studio 左側選字幕，挑影片，按新增語言再按新增，然後選上傳檔案、自動同步或手動輸入。選上傳檔案要先決定含不含時間碼；選自動同步時，官方提醒逐字稿必須是語音辨識支援的語言、且與影片裡說的同一種語言，超過一小時或音質不佳的影片不建議這樣做。能上傳的格式官方列成三組，並註明基本格式不吃樣式標記、檔案必須是純 UTF-8。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "基本格式：SubRip（.srt）、SubViewer（.sbv 或 .sub）、MPsub（.mpsub）、LRC（.lrc）、Videotron Lambda（.cap）",
+            "進階格式：SAMI（.smi 或 .sami）、RealText（.rt）、WebVTT（.vtt）、TTML（.ttml）、DFXP（.ttml 或 .dfxp）",
+            "廣播格式：Scenarist Closed Caption（.scc）、EBU-STL（.stl）、Caption Center（.tds）等，官方說 .scc 是偏好格式"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "第三件是翻譯。YouTube 沒有讓創作者一鍵產生翻譯字幕的功能，翻譯發生在觀眾那一端：官方的字幕設定說明寫，播放器的字幕選單裡沒有想要的語言時，可以點自動翻譯。頻道設定裡「不顯示可能不當的字詞」預設會把字換成 [ __ ]，官方註明這設定同時作用在自動字幕與自動翻譯字幕上。另外還有自動配音，官方說它會產生翻譯後的語音軌、影片說明標上 auto-dubbed；超過 120 分鐘、沒有語音、原始語言不支援、語速太快或含著作權內容的影片不符資格，產生的配音不能編輯，不想要可在 Studio 的頻道設定取消勾選。"
+        },
+        {
+          "type": "heading",
+          "text": "校正與翻譯：時間軸、繁體用字與術語",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不論走哪條路，校正順序都一樣：先修字，再修斷句，最後才動時間。自動辨識錯的通常是詞不是時間點，先切段反而要重排時間軸。字幕檔本身是純文字：YouTube 官方文件給的 SubRip 時間碼範例是 00:00:00,599 --> 00:00:04,160，毫秒用逗號分隔；WebVTT 用小數點、小時位不一定寫出來，這也是 Whisper 官方原始碼裡兩種寫檔方式的差別，轉檔或手改時弄錯符號，平台就會判定格式不合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "翻譯交給語言模型的好處是可以一次交代術語與風格。最穩的做法是把整份字幕檔貼進去、要求保留序號與時間碼，並附上自己的術語表；太長就分批，但每批都要重申規則。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "翻譯字幕的提示詞範例（自己改成你的術語表）",
+          "code": "你是影片字幕的翻譯。我會貼上一份 SubRip 字幕檔。\n\n規則：\n1. 只翻譯字幕文字，序號與時間碼原樣保留，不要合併或拆開任何一段。\n2. 輸出繁體中文，用台灣的說法（軟體、網路、影片、使用者）。\n3. 術語照這張表：Whisper 維持原文、subtitle 譯成字幕、burn-in 譯成燒錄。\n4. 每段長度盡量貼近原文，太長就照原本的斷行位置分行。\n5. 人名、數字與單位照原文抄；不確定的地方在那一行結尾加上 [?]。\n\n字幕檔：\n（貼上內容）"
+        },
+        {
+          "type": "paragraph",
+          "text": "翻完不要直接上架。三個檢查點最會出事：數字（金額、日期、版本）有沒有被改掉、專有名詞前後是不是同一個譯法、每段字數會不會長到擋住畫面。方法很土但有效：把原文與譯文兩份字幕檔並排，先看序號對不對得上，再挑三到五段開影片對讀。"
+        },
+        {
+          "type": "link",
+          "text": "用 Claude 做中英日翻譯：語氣、專有名詞與術語表",
+          "url": "https://mokaair.com/zh-TW/life/claude-for-translation-zh-tw"
+        },
+        {
+          "type": "heading",
+          "text": "燒進畫面還是外掛字幕",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最後一步是決定字幕跟影片的關係。外掛字幕是獨立的 .srt 或 .vtt 檔，播放器或平台自己疊上去，觀眾可以關掉、可以換語言，你也隨時能改字重傳，上傳到 YouTube 的就是這一種。燒進畫面則是把字畫進畫面裡，字型、大小與位置由你決定，在自動播放又預設靜音的社群動態裡一定看得到，代價是改一個字就要重新輸出，觀眾也關不掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要燒字幕，ffmpeg 官方文件的 subtitles 濾鏡是最常見的做法：它用 libass 把字幕畫在影片上，官方註明編譯時要開 --enable-libass，也需要 libavcodec 與 libavformat 把字幕檔轉成 ASS 格式。官方寫的用法是 subtitles=sub.srt，等同 subtitles=filename=sub.srt；想改字型與顏色，官方提供 force_style 選項，用 ASS 的樣式鍵值對覆寫。實務上兩種一起留最省事：先存一份校好的字幕檔，社群平台的版本燒進畫面，影音平台的版本上傳字幕檔。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "把字幕燒進畫面（濾鏡寫法取自 ffmpeg 官方文件）",
+          "code": "ffmpeg -i INPUT -vf \"subtitles=sub.srt\" OUTPUT"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "自動字幕會錯，官方自己都這麼說",
+          "text": "YouTube 的說明寫自動字幕可能因為發音、口音、方言或背景噪音而誤判，要求創作者檢查過再發布；CapCut 的說明寫自動字幕可能因為噪音、口音、語速或音質而認錯字；YouTube 對自動配音也寫了同樣的話，還特別點名專有名詞、慣用語與行話難翻。不管哪一條路，發布前逐行看過人名、品牌、數字與單位是省不掉的一道工。用了 AI 配音或 AI 翻譯配音，還要看平台對合成內容的標示規範。"
+        },
+        {
+          "type": "link",
+          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+        },
+        {
+          "type": "paragraph",
+          "text": "字幕只是影片的一部分。旁白、示範畫面與講解節奏怎麼安排，站上另有一篇專門寫教學影片的剪法。"
+        },
+        {
+          "type": "link",
+          "text": "教學影片怎麼剪：旁白、示範畫面與學習節奏",
+          "url": "https://mokaair.com/zh-TW/life/course-video-editing"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Whisper 官方 README（安裝指令、模型清單、翻譯任務的限制與 MIT 授權）",
+          "url": "https://github.com/openai/whisper",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Whisper 官方原始碼 transcribe.py（CLI 參數：--output_format、--task、--word_timestamps 等）",
+          "url": "https://github.com/openai/whisper/blob/main/whisper/transcribe.py",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Whisper 官方原始碼 utils.py（SubRip 與 WebVTT 兩種字幕檔的時間碼寫法）",
+          "url": "https://github.com/openai/whisper/blob/main/whisper/utils.py",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Whisper 官方原始碼 tokenizer.py（語言清單與中文、粵語的代碼）",
+          "url": "https://github.com/openai/whisper/blob/main/whisper/tokenizer.py",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FFmpeg 官方文件：subtitles 濾鏡與 force_style 選項",
+          "url": "https://ffmpeg.org/ffmpeg-filters.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YouTube 說明：支援的字幕檔格式與 SubRip 時間碼範例",
+          "url": "https://support.google.com/youtube/answer/2734698",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YouTube 說明：新增字幕（上傳檔案、自動同步、手動輸入）",
+          "url": "https://support.google.com/youtube/answer/2734796",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YouTube 說明：使用自動字幕（語言清單、直播限制、產不出字幕的原因）",
+          "url": "https://support.google.com/youtube/answer/6373554",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YouTube 說明：字幕設定（播放器裡的自動翻譯）",
+          "url": "https://support.google.com/youtube/answer/100078",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YouTube 說明：使用自動配音（資格條件與品質說明）",
+          "url": "https://support.google.com/youtube/answer/15569972",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CapCut 說明中心：自動字幕不準確時怎麼修（三個平台的步驟與快速鍵）",
+          "url": "https://www.capcut.com/help/auto-captions-in-capcut",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CapCut 說明中心：用 AI 為廣告影片加旁白與字幕（步驟，以及方案、點數、浮水印以帳號為準的說明）",
+          "url": "https://www.capcut.com/help/add-voiceover-captions-to-ad-videos-ai",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CapCut 官方功能頁：為影片加字幕（步驟、翻譯與匯出 SRT 的常見問題）",
+          "url": "https://www.capcut.com/tools/add-subtitles-to-video",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CapCut 官方功能頁：字幕翻譯",
+          "url": "https://www.capcut.com/tools/subtitle-translator",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CapCut 說明中心：訂閱在多平台的使用範圍（Pro 與 Standard 的差別）",
+          "url": "https://www.capcut.com/help/capcut-subscription-multi-platform",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CapCut 說明中心：點數用在哪些 AI 功能",
+          "url": "https://www.capcut.com/help/how-to-use-credits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CapCut 說明中心：價格調整說明（Pro 含 100GB 雲端空間）",
+          "url": "https://www.capcut.com/help/adjusted-price",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "CapCut 說明中心：匯出影片時的浮水印來自範本片尾",
+          "url": "https://www.capcut.com/help/remove-watermark-when-exporting-video",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple App Store 查詢介面（台灣區 CapCut 的上架狀態與版本）",
+          "url": "https://itunes.apple.com/lookup?id=1500855883&country=tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "slug": "ai-generated-content-disclosure",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 內容標示：YouTube、Meta 與台灣的規定",
+      "description": "AI 生成的影片、聲音要不要標示？這篇照 YouTube、Meta 與 TikTok 官方規範當天的原文，整理三家各自要標什麼、在哪個開關標、不標會有什麼後果，再用全國法規資料庫的法條原文說明台灣目前的狀態：人工智慧基本法的透明原則寫給政府，選罷法與刑法處理的是深偽，沒有針對一般使用者的全面標示義務。最後給一套發布前用得上的判斷順序。",
+      "hero": {
+        "src": "/guides/ai-generated-content-disclosure/hero.jpg",
+        "alt": "插圖：一張內容卡片連到一個標示吊牌，下方三個平台方塊與一份法條卷軸，代表發布前先標示",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "AI 做的影片、聲音、圖片要不要標示，先分清楚兩件事：平台規範管的是你的帳號，法律管的是責任。三大平台的規則其實很一致——內容看起來像真的，而且是 AI 生成或大幅變造的，就要揭露；不像真的，或只是調色、美顏、裁切這類微調，就不用。台灣到今天為止沒有法律要求一般使用者為自己發布的 AI 內容加註標示，但深偽在選罷法與刑法裡各有規定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照 YouTube、Meta 與 TikTok 官方說明頁當天的寫法，逐條列出各家要標什麼、在哪個開關標、不標會有什麼後果，再用全國法規資料庫的法條原文說明台灣現在的狀態，最後給一套發布前用得上的判斷順序。規範與條文隨時會改，本篇只整理官方與主管機關怎麼寫，不做法律結論，個案請諮詢專業。"
+        },
+        {
+          "type": "heading",
+          "text": "先把三層規則分開",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一支影片可能同時被三種東西管住，但它們性質不同，混在一起想就容易得出「反正沒人管」或「隨便標一下最安全」兩種都不對的結論。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "平台規範：YouTube、Meta、TikTok 各自的社群規範與揭露設定。它們不是法律，代價是帳號層面的——內容被限制、被移除、被平台自己加上標籤，或失去營利資格。",
+            "法律：台灣現行法處理的是行為造成的損害與特定情境，例如深偽、不實性影像、選舉期間的不實訊息，而不是「有沒有加註 AI 標示」這件事本身。",
+            "技術訊號：C2PA 內容憑證、SynthID 這類嵌在檔案裡的資料。它是證據與線索，平台會讀它來自動加標籤，但它不等於你做了揭露。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "第三層怎麼嵌、怎麼查、什麼時候會消失，站上有專篇。"
+        },
+        {
+          "type": "link",
+          "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+        },
+        {
+          "type": "heading",
+          "text": "YouTube：只要「擬真」就要揭露",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "YouTube 說明頁把必須揭露的範圍寫成三句話：讓真實人物看起來說了或做了他們沒說沒做的事、加工真實事件或地點的影片片段、生成看似真實但從未發生的場景。官方舉的例子包括 AI 生成的音樂、替真實地點補拍的 AI 畫面、讓某個人看起來給了他沒給過的建議、把真實人物拍成被逮捕的樣子。反過來，不需要揭露的是非寫實內容與微幅編輯：美顏濾鏡、色彩與亮度調整、背景模糊等特效、用生成式 AI 做大綱腳本縮圖標題、字幕製作、畫質提升或修復，以及複製自己的聲音做旁白或配音。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "開啟 YouTube 工作室，照一般流程上傳內容。",
+            "在「屬性」專區找到「使用 AI 技術」。",
+            "符合揭露規定就選「是」，不符合就選「否」。",
+            "繼續填其他影片詳細資料，然後發布。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "標籤出現在哪裡，看內容有多逼真：極為逼真的 AI 內容，影片播放器中也可能顯示標籤；非極為逼真或以動畫呈現的，標籤可能顯示在展開後的說明欄。同一頁寫明，揭露 AI 內容不會限制影片的觀眾群，也不影響營利資格；怕被降觸及所以不標，這個顧慮官方直接否認了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "YouTube 也會自己加標籤：用 YouTube 自家生成式 AI 工具製作的內容、含有 C2PA 中繼資料的內容，以及系統判定為 AI 生成或變造的內容。自動加上時工作室會通知，多數情況創作者可以在揭露問卷裡改回「否」，但用 YouTube AI 工具製作、含 C2PA 中繼資料，或經人工審查後加上的標籤不能調整。持續選擇不揭露的風險寫在同一頁：可能被人工加上標籤，或受到移除內容、暫停 YouTube 合作夥伴計畫資格等處分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "情況反過來，是別人拿你的臉做 AI 內容時，YouTube 另有相似度偵測功能：年滿 18 歲的頻道擁有者或管理員完成身分驗證後，可以查看疑似變造或生成自己臉孔的影片，再依隱私權或著作權程序要求移除。"
+        },
+        {
+          "type": "link",
+          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+        },
+        {
+          "type": "heading",
+          "text": "Meta：影片和音訊要標，圖片不要求",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Meta 的規則分兩半。社群守則的不實資訊條目寫，發布含有擬真影片或聽起來真實的音訊、且是以數位方式生成或變造的原生內容時，必須使用 AI 揭露工具揭露，未揭露可能受到處罰。Facebook 說明頁講得更白：要求標示的是擬真影片與聽起來真實的音訊，例子包括一群人在戶外市集走動的逼真影片、兩個人談話的音訊檔、用 AI 生成聲音創作的歌；同一頁也寫明，Meta 不要求你標示以 AI 建立或修改的圖片。操作在貼文編輯器裡：點「已關閉 AI 標籤」，再開啟「新增 AI 標籤」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖片不用自己標，不代表不會被標。Meta 自 2024 年 5 月起，偵測到業界標準的 AI 影像指標、或使用者自行揭露時，就為影片、音訊與圖片加上標籤；標籤在 2024 年 7 月 1 日由「Made with AI」改名為「AI info」，2024 年 9 月 12 日起，只是用 AI 工具修改編輯的內容，標籤移進貼文選單，判定為 AI 生成的內容則照樣顯示在外面。對公共重要事務有特別高誤導風險的數位生成或變造內容，Meta 說明可能加上更明顯的標籤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "廣告是另一套標準，也更嚴。Meta 的社會議題、選舉或政治廣告標準寫，廣告含有以第三方生成式 AI 工具製作或編輯的擬真圖片、影片或聽起來真實的音訊時必須揭露；判定為未依規定揭露的廣告會被退件，反覆未揭露可能對廣告主處分。同一頁寫，自 2026 年 6 月 1 日起 Meta 也會用自動偵測技術找出這類內容，偵測到就在廣告詳細資料顯示 AI Info 標籤，廣告主不必另外動作。"
+        },
+        {
+          "type": "link",
+          "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
+          "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+        },
+        {
+          "type": "heading",
+          "text": "TikTok：逼真就要標，標了也不等於可以誤導",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "TikTok 的社群自律公約把規則寫在「經過編輯的媒體與 AI 生成內容」一節：要求創作者在展示逼真場景或人物的 AI 生成內容或經編輯的媒體內容時加註標示，並且根據可能造成的危害程度，未經標示的內容可能被移除、限制或由團隊加上標示。同一節寫明，即使經過標示，誤導公共重要事務或傷害個人的內容仍然不允許。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標示方式官方給兩種：用它的 AIGC 標籤，或自行加清晰的文字說明、貼圖或浮水印。需要揭露的情況包括換臉、AI 讓人看起來說了沒說過的話、以誤導的方式新增或移除背景物體或人物、AI 音訊模仿真人聲音；不需要揭露的包括色彩校正、重新構圖、裁切這類小幅編輯，動畫之類的藝術風格，以及非知名人物可辨識聲音的通用文字轉語音旁白。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自動辨識這一層 TikTok 走 C2PA。2024 年 5 月 9 日的官方文章寫，它是第一個導入內容憑證技術的影音分享平台，會讀內容憑證來辨識並標示 AI 生成內容。現行公約是 2025 年 8 月版、2025 年 9 月 13 日生效，頁面同時公告 2026 年 9 月 24 日換新版；新版頁面的 AI 生成內容一節文字與現行版相同，這一輪更新不影響上面的規則。App 裡開啟 AIGC 標籤的實際位置以官網當天版本為準。"
+        },
+        {
+          "type": "link",
+          "text": "短影音企劃：Reels 的腳本、製作與成效回顧",
+          "url": "https://mokaair.com/zh-TW/life/short-video-marketing"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-generated-content-disclosure/diagram-1.svg",
+          "alt": "判斷流程圖：先問內容像不像真的、是不是 AI 生成或大幅變造，需要標示時再分成三個平台的操作位置",
+          "width": 1600,
+          "height": 900,
+          "caption": "從上往下走兩個問題，兩個都是「是」才需要標示；再依平台找對應的開關，最下面一列是標了也不能做的事。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "平台",
+            "什麼一定要標",
+            "怎麼標",
+            "不標的後果（官方寫的）"
+          ],
+          "rows": [
+            [
+              "YouTube",
+              "擬真的 AI 生成或實質變造內容",
+              "工作室「屬性」的「使用 AI 技術」選「是」",
+              "可能被人工加上標籤、移除內容、暫停合作夥伴計畫資格"
+            ],
+            [
+              "Meta 一般貼文",
+              "擬真影片、聽起來真實的音訊；圖片不要求",
+              "貼文編輯器點「已關閉 AI 標籤」再開啟「新增 AI 標籤」",
+              "可能受到處罰；系統仍可能自動加上 AI info 標籤"
+            ],
+            [
+              "Meta 社會議題、選舉或政治廣告",
+              "以第三方生成式 AI 製作或編輯的擬真圖片、影片、音訊",
+              "投放流程中的揭露欄位",
+              "廣告退件，反覆未揭露可能對廣告主處分"
+            ],
+            [
+              "TikTok",
+              "展示逼真場景或人物的 AI 生成或重大編輯內容",
+              "AIGC 標籤，或自行加清晰的文字說明、貼圖、浮水印",
+              "可能被移除、限制，或由團隊加上標示"
+            ]
+          ],
+          "caption": "三家平台揭露規範對照，內容依各官方說明頁 2026 年 9 月 14 日的版本整理。"
+        },
+        {
+          "type": "heading",
+          "text": "台灣：法律管的是深偽，不是標示",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先講結論：查到今天為止，台灣沒有一條法律要求一般使用者為自己發布的 AI 內容加註標示。跟這題有關的規定分成三塊，都可以在全國法規資料庫讀到原文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一塊是人工智慧基本法，民國 115 年 1 月 14 日公布，全文 20 條，依第 20 條自公布之日起施行。最常被引用的是第 4 條第 5 款「透明與可解釋」，裡面確實寫了「人工智慧之產出應做適當資訊揭露或標記」；但第 4 條整條的主詞是「政府推動人工智慧之研發與應用」，是政府自己要遵循的原則，不是對一般使用者課標示義務。另一條跟標示有關的第 5 條第 2 項，對象是經認定為高風險應用的產品或系統。第 2 條寫明中央主管機關是國家科學及技術委員會；第 18 條要求政府在施行後二年內完成相關法規的制定、修正或廢止。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "人工智慧基本法（節錄原文，刪節處以省略號標示）",
+          "code": "第 4 條\n政府推動人工智慧之研發與應用，應在兼顧社會公益、數位平權、促進創新研發與強化\n國家競爭力之前提下，發展良善治理與基礎建設，並遵循下列原則：\n……\n五、透明與可解釋：人工智慧之產出應做適當資訊揭露或標記，以利評估可能風險，並\n    瞭解對相關權益之影響，進而提升人工智慧可信任度。\n\n第 5 條第 2 項\n政府應以兒少最佳利益為原則，人工智慧產品或系統經中央目的事業主管機關會商數位\n發展部認定為高風險應用者，應明確標示注意事項或警語。\n\n第 18 條第 1 項\n政府應依本法規定，檢討所主管之法規與行政措施；有不符合本法規定或無法規可適用\n者，應自本法施行後二年內，完成法規之制（訂）定、修正或廢止，及行政措施之改進。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二塊是選舉。公職人員選舉罷免法民國 115 年 7 月 1 日修正，第 51 條之 3 把深度偽造定義成「以電腦合成或其他科技方法製作本人不實之言行，並足使他人誤信為真之技術表現形式」，並給了當事人一套程序：向警察機關申請鑑識，再憑鑑識資料以書面請求平台處理；廣播電視事業、網際網路平臺提供者或網際網路應用服務提供者應於接獲請求之日起二日內停止刊播，或限制瀏覽、移除、下架，並自接獲請求之日起六個月內留存相關紀錄。申請鑑識的資格與程序由內政部定之。第 104 條第 2 項則規定，以散布候選人本人的深度偽造聲音、影像、電磁紀錄的方法散布謠言或不實之事，處七年以下有期徒刑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三塊是刑法第 319 條之 4：意圖散布而以電腦合成或其他科技方法製作關於他人不實之性影像、足以生損害於他人者，以及散布這類影像者，都有刑責。這三塊針對的都是內容造成的損害與特定情境，不是「AI 生成的東西要不要貼標籤」。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "公職人員選舉罷免法與刑法（節錄原文）",
+          "code": "公職人員選舉罷免法 第 51 條之 3 第 2 項\n前項所稱深度偽造，指以電腦合成或其他科技方法製作本人不實之言行，並足使他人誤\n信為真之技術表現形式。\n\n公職人員選舉罷免法 第 104 條第 2 項\n以散布、播送或以他法供人觀覽候選人、被罷免人、罷免案提議人之領銜人本人之深度\n偽造聲音、影像、電磁紀錄之方法，犯前項之罪者，處七年以下有期徒刑。\n\n中華民國刑法 第 319 條之 4 第 1 項\n意圖散布、播送、交付、公然陳列，或以他法供人觀覽，以電腦合成或其他科技方法製\n作關於他人不實之性影像，足以生損害於他人者，處五年以下有期徒刑、拘役或科或併\n科五十萬元以下罰金。"
+        },
+        {
+          "type": "paragraph",
+          "text": "往後會不會變？數位發展部的 AI 專區頁面寫，人工智慧基本法已正式公布施行，該部正在推動與國際介接的人工智慧風險分類框架，協助各目的事業主管機關訂定以風險為基礎的管理規範。至於主管機關之後會不會針對一般內容訂出標示規範，以官網為準，不要拿別國的規定當成台灣的規定。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "平台規範不是法律，但它先找上你",
+          "text": "多數人遇到的第一個後果不是法律責任，是帳號：內容被平台自己加上標籤、觸及被限制、被移除，或營利資格被暫停。反過來也要記住，照規定標示了不等於免責——三家平台都寫了同一件事：誤導公共重要事務或傷害個人的內容，標示了照樣會被處理。"
+        },
+        {
+          "type": "heading",
+          "text": "發布前的三個動作",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "先問自己一句話：這段內容會不會讓人以為某件沒發生的事真的發生過，或某個真實的人說了他沒說過的話。會，就標；不會，通常就落在各家「非寫實」或「微幅編輯」的免揭露清單裡。",
+            "標在平台的開關上，不要只寫在說明欄。開關會產生平台自己的標籤，跟著影片走；說明欄那行字被轉發、被下載重上傳之後就不見了。",
+            "需要留下證據時，連檔案一起標。內容憑證會跟著檔案走，平台也讀它來自動加標籤；但截圖與重新壓縮常把它洗掉，所以它是補強，不是替代。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "接案或幫客戶做內容時，把「哪些素材是 AI 生成的、誰負責在平台上揭露」寫進需求單或合約，比事後補標省事得多。至於輸出的所有權與商用條件，那是另一個題目，站上有專篇。"
+        },
+        {
+          "type": "link",
+          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+        },
+        {
+          "type": "link",
+          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+        }
+      ],
+      "sources": [
+        {
+          "title": "YouTube 說明 揭露使用生成式 AI 內容（須揭露與免揭露示例、工作室操作、標籤位置、自動偵測與風險）",
+          "url": "https://support.google.com/youtube/answer/14328491",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "YouTube 說明 相似度偵測功能（資格與移除要求途徑）",
+          "url": "https://support.google.com/youtube/answer/16440338",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meta 透明度中心 Labeling AI Content（AI Info 標籤與 2024 年 5 月起的標示做法）",
+          "url": "https://transparency.meta.com/governance/tracking-impact/labeling-ai-content/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meta 社群守則 Misinformation（AI 揭露工具與未揭露可能受罰）",
+          "url": "https://transparency.meta.com/policies/community-standards/misinformation/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Facebook 說明 Label AI content on Facebook（必須標示的內容、圖片不要求、貼文編輯器步驟）",
+          "url": "https://www.facebook.com/help/7434563519957988",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meta 廣告標準 Ads about Social Issues, Elections or Politics（生成式 AI 揭露義務與自動偵測）",
+          "url": "https://transparency.meta.com/policies/ad-standards/SIEP-advertising/SIEP/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meta Newsroom Our Approach to Labeling AI-Generated Content and Manipulated Media（標籤改名與位置調整的更新紀錄）",
+          "url": "https://about.fb.com/news/2024/04/metas-approach-to-labeling-ai-generated-content-and-manipulated-media/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TikTok 社群自律公約 Integrity and Authenticity（Edited Media and AI-Generated Content 一節與版本日期）",
+          "url": "https://www.tiktok.com/community-guidelines/en/integrity-authenticity",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TikTok 社群自律公約 正直與真實性 繁體中文版（AI 生成內容一節的中文原文）",
+          "url": "https://www.tiktok.com/community-guidelines/zh-Hant-TW/integrity-authenticity",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TikTok Newsroom Partnering with our industry to advance AI transparency and literacy（導入 C2PA 內容憑證）",
+          "url": "https://newsroom.tiktok.com/en-us/partnering-with-our-industry-to-advance-ai-transparency-and-literacy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "全國法規資料庫 人工智慧基本法 所有條文（公布日期、全文 20 條、第 4、5、18、20 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0160093",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "全國法規資料庫 公職人員選舉罷免法 所有條文（修正日期、第 51 條之 3、第 104 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0020010",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "全國法規資料庫 中華民國刑法第 319 條之 4（不實性影像的製作與散布）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=C0000001&flno=319-4",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "數位發展部 重點政策 數發部 AI 專區（人工智慧基本法公布施行與風險分類框架）",
+          "url": "https://moda.gov.tw/major-policies/ai/1781",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

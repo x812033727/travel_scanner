@@ -1,0 +1,373 @@
+{
+  "slug": "ai-remove-background-upscale",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 去背與放大：免費工具怎麼挑",
+      "description": "去背是把前景從背景分離，放大是讓 AI 補上原本沒有的像素，兩件事的免費層限制完全不同。這篇照 2026 年 9 月 14 日的官方頁面整理 remove.bg、Photoroom、Canva 背景移除與本機開源的 Upscayl：免費層的解析度與次數、付費價格、支援格式與檔案上限、Upscayl 的系統需求與 AGPL-3.0 授權，最後附一套自己比對邊緣與髮絲的自測法。",
+      "hero": {
+        "src": "/guides/ai-remove-background-upscale/hero.jpg",
+        "alt": "米色底上左邊一張照片被抬起主體、露出透明格線底，右邊一個小方塊放大成帶格點的大方塊",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "先講結論：去背和放大這兩件事，免費工具都做得到，但免費層幾乎都卡在同樣兩個地方——輸出解析度和商用權。remove.bg 的網站免費版只給 0.25 MP（約 625 × 400）的圖，條款寫明只能個人使用；Photoroom 的免費帳號同樣明文禁止商業用途。所以挑工具不是挑誰「效果最好」，而是先回答三個問題：這張圖要做什麼用、能不能上傳雲端、每個月要處理幾張。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇整理 remove.bg、Photoroom、Canva 的背景移除，以及本機開源的 Upscayl 在官方頁面上寫的能力與限制，附一張決策流程圖和一張免費層對照表。這篇不比效果、不打分數，因為去背品質和圖片內容高度相關，別人的排名換一張圖就翻盤；取而代之的是一套你自己就能跑的自測法：同一張圖丟三個工具，只看邊緣、髮絲、半透明和細節四個地方。價格、額度與版本都是 2026 年 9 月 14 日查官方頁面的結果，付款前請再看一次當天的頁面。"
+        },
+        {
+          "type": "heading",
+          "text": "去背與放大是兩件事，限制也不一樣",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "remove.bg 對去背的說明是：用 AI 技術偵測前景圖層、把它和背景分開，另外還有幾套演算法改善細節、避免色彩污染，成品是一張去掉背景的圖。放大（上採樣，upscale）方向相反。Upscayl 的常見問題寫得直白：它用 AI 模型「猜測細節可能長什麼樣」來增強圖片，底層是 Real-ESRGAN 與 Vulkan。Photoroom 的 Image Enhancer 把步驟拆得更細：先放大尺寸、增加像素數，再分析原圖，然後生成一張補上合理細節的新版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩件事常被包在同一個軟體裡，限制卻不同。Photoroom 的說明特別提醒，匯入的低解析度照片不會因為你選了 4032 × 4032 的版面就自動變清楚，被放進去的那塊影像還是原來的畫質；Upscayl 的常見問題也直說它不能去模糊、不能修對焦，整張糊掉或失焦的照片換哪個工具都一樣。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "想要透明背景、想把主體換到另一張底圖上：用去背工具",
+            "圖太小、印出來會糊、想放大上架或列印：用放大工具",
+            "原圖手震或失焦：這兩類工具都救不回來，重拍比較快"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "三個雲端工具的免費層，官方是這樣寫的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "remove.bg 的說明頁最直接：在網站上處理低解析度圖片（最高 0.25 MP）100% 免費，而且限個人使用；桌面軟體與 API 另外每個月給 50 次免費預覽。要拿到完整解析度就要用點數，一張圖扣 1 點（官方寫 1 credit），網站上的預覽不扣點，透過桌面軟體、Photoshop 外掛或 API 產生的預覽算 0.25 點。訂閱最小的 Personal 方案每月 40 張，月繳 9 美元、年繳等於每月 8.10 美元（整年 97.20 美元）；不想綁訂閱就買點數包，3 張 3 美元、10 張 9 美元、75 張 49 美元。訂閱的點數只在當月有效，不能累積到下個月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "格式與尺寸也寫在說明頁：上傳支援 JPG、PNG 與 WebP，單檔最大 22 MB；可上傳與可輸出的最高解析度都是 50 MP（例如 5774 × 8660），超過會自動縮小，預覽圖則固定只有 0.25 MP（例如 625 × 400）。走 API 的話輸出格式還有差別：PNG 只支援到 10 MP，更大張又要透明背景就得用 WebP 或 ZIP。"
+        },
+        {
+          "type": "link",
+          "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
+          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+        },
+        {
+          "type": "paragraph",
+          "text": "Photoroom 把 Background Remover 與 Image Enhancer 都歸在「免費工具」，不消耗 AI credits，但匯出會計入額度：免費帳號每週 25 張、每月 100 張，Pro 每週 250 張、每月 1,000 張，Max 是每月 3,000 張。解析度依平台而不同，網頁版免費帳號匯出最長邊 2000 px，Pro 可到 4032 × 4032（批次模式同樣是 2000 × 2000），手機版免費帳號只有 750 × 550。放大方面，Image Enhancer 在網頁版是 4 倍、最大 4000 × 4000，iOS 與 Android 是 2 倍、最大 1920 × 1920。免費帳號另有每日使用次數上限，官方說是為了防止濫用。月費會依地區顯示，定價頁上沒有固定金額，以官網當天為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Canva 的背景移除有專門的說明頁，不過這個頁面在查證當天跳出需要啟用 JavaScript 與 Cookie 的驗證，抄不到原文，所以免費層能用幾次、哪些方案包含這個功能、輸出到多大，這篇不猜數字，一律以 Canva 說明中心與定價頁當天的內容為準。有一件事倒是可以確認：remove.bg 網站頁尾標示自己是「a Canva Austria GmbH brand」，也就是 remove.bg 現在是 Canva 旗下的品牌。"
+        },
+        {
+          "type": "link",
+          "text": "Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算",
+          "url": "https://mokaair.com/zh-TW/life/canva-ai-features-guide"
+        },
+        {
+          "type": "heading",
+          "text": "不想上傳雲端：本機開源的 Upscayl",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "客戶的商品圖、家人的照片不方便上傳雲端時，就往本機走。Upscayl 是桌面放大軟體，原始碼在 GitHub 上，倉庫的 LICENSE 是 GNU Affero General Public License Version 3（AGPL-3.0），package.json 標的版本是 2.15.0。所有運算在自己的電腦上跑，不必連網，也沒有張數限制。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "在 macOS 用 Homebrew 安裝 Upscayl（官方 README 寫法）",
+          "code": "brew install --cask upscayl"
+        },
+        {
+          "type": "paragraph",
+          "text": "系統需求要先看清楚。README 的第一條提醒是：需要支援 Vulkan 的顯示卡，很多內建顯示晶片不行。倉庫 wiki 的相容性清單寫的是 Ubuntu 20.04 以上、Windows 10 以上、macOS 12 以上，顯示卡方面「支援 Vulkan 1.3 的大致沒問題」。Linux 可以用 Flathub、AppImage、AUR、Snap 或 RPM、DEB、ZIP 安裝，Windows 下載 exe，macOS 下載 dmg 或用上面那行指令。介面與安裝步驟以官網當天版本為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型選項也在官方文件裡。README 的致謝列出內建模型的來源，包括 High Fidelity（HFA2k）、Remacri、UltraSharp 與 Ultramix Balanced；wiki 寫預設模型只支援 4 倍，2.8 版之後其他倍率是把 4 倍的結果縮回去模擬的。要原生的 2 倍或 3 倍，得到官方的 custom-models 倉庫下載 realesr-animevideov3-x2、realesr-animevideov3-x3 這類模型，再從設定裡指定自訂模型資料夾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "費用部分要分清楚三種版本：從 GitHub 或 upscayl.org 下載的桌面版免費；Mac App Store 上架的版本在台灣區要 390 元新台幣（版本同樣是 2.15.0，需要 macOS 12 以上）；官網另有雲端服務 Upscayl Cloud，免費試用給 10 點，Pro 方案每月 24.99 美元含 300 點，頁面上標示可處理到 256MP 的圖。"
+        },
+        {
+          "type": "link",
+          "text": "本機跑 Stable Diffusion 與 Flux：ComfyUI 入門",
+          "url": "https://mokaair.com/zh-TW/life/stable-diffusion-comfyui-setup"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-remove-background-upscale/diagram-1.svg",
+          "alt": "決策流程圖：從用途、隱私、預算三個問題往下分岔，指向雲端免費層、付費方案或本機 Upscayl",
+          "width": 1600,
+          "height": 900,
+          "caption": "照用途、隱私、預算三個問題由上往下走：先看要不要商用，再看圖能不能上傳，最後才決定買點數包還是訂閱。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "免費層規格對照",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把上面的數字併成一張表比較好記。要注意三件事：免費層的解析度限制和商用限制通常是綁在一起的；Photoroom 與 Canva 的月費依地區顯示，表上不寫死金額；Topaz 這類付費軟體在這篇只是點名，價格與方案以它自己的定價頁為準。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "免費層限制",
+            "付費",
+            "輸出上限"
+          ],
+          "rows": [
+            [
+              "remove.bg（去背）",
+              "網站最高 0.25 MP、限個人使用；桌面軟體與 API 每月 50 次免費預覽",
+              "訂閱每月 40 張 9 美元起；點數包 3 張 3 美元、10 張 9 美元",
+              "完整輸出最高 50 MP；API 用 PNG 只到 10 MP"
+            ],
+            [
+              "Photoroom（去背＋放大）",
+              "免費帳號不得商用；每週 25 張、每月 100 張匯出；免費工具有每日次數上限",
+              "Pro／Max／Ultra 每月 8,000／25,000／75,000 AI credits，月費以官網為準",
+              "網頁免費最長邊 2000 px；Pro 4032 × 4032；Image Enhancer 網頁 4 倍"
+            ],
+            [
+              "Canva 背景移除",
+              "以 Canva 說明中心當天頁面為準",
+              "以 Canva 定價頁當天頁面為準",
+              "以官網為準"
+            ],
+            [
+              "Upscayl（本機、開源）",
+              "免費、不限張數，但需要支援 Vulkan 的顯示卡",
+              "桌面版免費（AGPL-3.0）；Mac App Store 版新台幣 390 元；Upscayl Cloud Pro 每月 24.99 美元",
+              "預設模型固定 4 倍；自訂模型可原生 2 倍、3 倍"
+            ],
+            [
+              "Topaz（只點名）",
+              "定價頁未列免費層",
+              "Topaz Studio 年繳 399 美元，官網當天另有限時折扣",
+              "以官網為準"
+            ]
+          ],
+          "caption": "2026 年 9 月 14 日查各家官方頁面；價格與額度會依地區、促銷變動，付款前請再看一次當天的定價頁。"
+        },
+        {
+          "type": "heading",
+          "text": "讀者自測法：同一張圖、三個工具、四個地方",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "去背和放大的效果跟圖片內容高度相關，別人的評分不一定適用你的素材，自己跑一次最準。先挑兩張代表性的圖：一張有毛邊或髮絲（毛衣、寵物、頭髮），一張是商品照。remove.bg 的建議可以當挑圖標準：前景與背景對比高、背景單純、主體對焦清楚的圖結果最好，前景本身模糊的部分可能整塊被當成背景刪掉，商品則要完整入鏡、不要被裁掉。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "同一張原圖丟進三個工具，中途不要改尺寸、不要重新壓縮",
+            "去背結果一律存 PNG（要保留透明），放大結果存同一種格式，檔名寫清楚工具與日期",
+            "在同一個看圖軟體放大到 100% 檢查，不要用縮圖判斷",
+            "把去背結果分別貼到深色與淺色底上，殘留的白邊、灰邊會立刻現形",
+            "放大測試改看細節：文字、織品紋理、樹葉；AI 補出來的是合理的細節，不等於原本的細節"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "每一輪只比四個地方：邊緣是不是鋸齒狀、髮絲與毛邊留下多少、半透明區域（玻璃、薄紗、陰影）被怎麼處理、原有細節有沒有被抹平成一片。比較時記得把免費層的解析度差異算進去：remove.bg 的免費預覽只有 0.25 MP，和 Photoroom 網頁版免費的 2000 px 不是同一個起點，要嘛都比預覽，要嘛都用付費輸出，否則比的是額度不是品質。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "自測時的檔名規則（自己訂，重點是事後看得懂）",
+          "code": "hair-01_original.png\nhair-01_toolA_2026-09-14.png\nhair-01_toolB_2026-09-14.png\nproduct-01_toolA_upscale4x.png"
+        },
+        {
+          "type": "paragraph",
+          "text": "測完就能把工具對應到用途。素材還散在手機相簿裡的話，先整理再挑會快很多；如果目標是修復泛黃、有刮痕的舊照片，那是另一組工具與另一套流程；如果是要放到網站上，放大之後還有尺寸與壓縮要處理，同一張圖不必上傳到超過版面需要的解析度。"
+        },
+        {
+          "type": "link",
+          "text": "手機照片整理順序：先保留，再刪重複，最後做真正會翻的相簿",
+          "url": "https://mokaair.com/zh-TW/life/phone-photo-declutter-workflow"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 修復老照片：去刮痕、放大與上色分開做，工具怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-photo-restoration-old-photos"
+        },
+        {
+          "type": "link",
+          "text": "網站圖片怎麼處理：尺寸、替代文字與搜尋可讀性",
+          "url": "https://mokaair.com/zh-TW/life/image-seo-workflow"
+        },
+        {
+          "type": "heading",
+          "text": "商用權：免費層幾乎都不能拿來做生意",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "remove.bg 有一頁專講商用：可商用的是訂閱方案與 Pay-as-you-go 的完整解析度圖片；Free 與未登入使用「僅限非商業用途」。官方自己舉的例子很好記——把去背結果拿去辦護照照片算個人用途，放到自己的網站上賣東西就算商業用途。Photoroom 則直接引用條款：沒有訂閱的帳號屬於 Free Account，授權範圍是「你自己的個人、非商業用途」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個常被混淆的問題是圖片歸誰。Photoroom 在說明頁寫明：不主張使用者提供或產生的內容的任何所有權，內容由使用者擁有，也由使用者負責確認符合各地法規。Upscayl 桌面版的原始碼是 AGPL-3.0，下載頁的常見問題另有商業使用與企業使用的專門問答，實際條件以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "賣家用 AI 做商品圖：四種用法、平台規範與紅線",
+          "url": "https://mokaair.com/zh-TW/life/ai-product-photo-for-sellers"
+        },
+        {
+          "type": "paragraph",
+          "text": "要一次處理幾百張圖通常會走 API。remove.bg 的官方範例就是一行 curl：帶上金鑰、送出檔案、指定 size 為 auto，輸出一張去背的 PNG。同一頁上方還掛著一則公告：2026 年 12 月 1 日起，背景移除會移到同屬 Canva 的 Leonardo.Ai，官方說整合方式相同並提供遷移工具。如果你的流程綁在這支 API 上，現在就該把遷移排進行程。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "remove.bg API 官方範例（金鑰與檔案路徑換成自己的）",
+          "code": "curl -H 'X-API-Key: INSERT_YOUR_API_KEY_HERE' \\\n     -F 'image_file=@/path/to/file.jpg' \\\n     -F 'size=auto' \\\n     -f https://api.remove.bg/v1.0/removebg -o no-bg.png"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "認明官方管道，別被假網站扣款",
+          "text": "remove.bg 有一頁專門提醒有仿冒網站與 App 在向使用者收費。官方列出的正式管道只有 remove.bg 網站、Google Play 上的 Android 版、Windows／Mac／Linux 桌面軟體、Photoshop 外掛與命令列工具，並寫明「目前沒有提供 iOS App，App Store 上任何去背 App 都與 remove.bg 無關」。訂閱前先確認網址與扣款名稱，免費層也記得看清楚是不是只能個人使用。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "remove.bg 定價頁（訂閱與點數包價格、點數規則 FAQ）",
+          "url": "https://www.remove.bg/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "remove.bg 說明中心：Is remove.bg free?（免費層 0.25 MP 與每月 50 次預覽）",
+          "url": "https://www.remove.bg/help/a/is-remove-bg-free-",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "remove.bg 說明中心：最大解析度與檔案大小",
+          "url": "https://www.remove.bg/help/a/what-is-the-maximum-image-resolution-file-size",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "remove.bg 說明中心：支援的圖片格式",
+          "url": "https://www.remove.bg/help/a/what-image-formats-are-supported",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "remove.bg 說明中心：可以用於商業用途嗎",
+          "url": "https://www.remove.bg/help/a/can-i-use-remove-bg-for-commercial-purposes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "remove.bg 說明中心：避開假冒 remove.bg 的網站與 App",
+          "url": "https://www.remove.bg/help/a/avoiding-fraudulent-websites-impersonating-remove-bg",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "remove.bg API 文件（curl 範例、輸出格式解析度上限、Leonardo.Ai 遷移公告）",
+          "url": "https://www.remove.bg/api",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Photoroom 定價頁（各方案 AI credits 與匯出張數、常見問題）",
+          "url": "https://www.photoroom.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Photoroom 說明中心：免費帳號與商業用途",
+          "url": "https://help.photoroom.com/en/articles/12523455-free-accounts-and-commercial-use",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Photoroom 說明中心：匯出的解析度上限",
+          "url": "https://help.photoroom.com/en/articles/4566301-image-resolution-limits-for-exports",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Photoroom 說明中心：匯出張數上限",
+          "url": "https://help.photoroom.com/en/articles/15284788-export-limit",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Photoroom 說明中心：免費工具的每日使用上限",
+          "url": "https://help.photoroom.com/en/articles/15934542-daily-usage-limits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Photoroom 說明中心：Image Enhancer 怎麼用（放大倍率與尺寸上限）",
+          "url": "https://help.photoroom.com/en/articles/16333311-how-to-use-image-enhancer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Photoroom 說明中心：圖片的所有權",
+          "url": "https://help.photoroom.com/en/articles/8519362-ownership-of-images",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Upscayl GitHub 倉庫 README（安裝方式、系統需求、內建模型致謝、常見問題）",
+          "url": "https://github.com/upscayl/upscayl",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Upscayl GitHub 倉庫 LICENSE（GNU Affero General Public License Version 3）",
+          "url": "https://github.com/upscayl/upscayl/blob/main/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Upscayl GitHub wiki：相容性清單（作業系統與顯示卡需求）",
+          "url": "https://github.com/upscayl/upscayl/wiki/Compatibility-List",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Upscayl 官網定價頁（Upscayl Cloud 免費試用與 Pro 方案）",
+          "url": "https://upscayl.org/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva 說明中心：移除相片與影片背景",
+          "url": "https://www.canva.com/help/background-remover/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Topaz Labs 定價頁",
+          "url": "https://www.topazlabs.com/pricing",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

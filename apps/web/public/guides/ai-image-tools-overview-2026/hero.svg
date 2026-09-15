@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一個提示詞，四條路線 / One prompt, four routes</title>
+  <desc id="desc">一張幾何插圖。左邊是一個白色圓角方框，裡面有三條長短不一的灰色橫條，代表一段打好的提示詞。方框右邊接出一條線，在一個圓點分成四條，分別通往右半邊的四個畫框：左上是淺綠底的方框，裡面有三條彩色橫條；右上是淺藍底的方框，裡面有一個橘色圓形和兩座三角形山；左下是白底橘框的方框，裡面排著三個大小相同的小方塊；右下畫成一台筆記型電腦，螢幕裡有一個小畫框和一個橘色圓點。左下角有一行字：一個提示詞，四條路線。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <rect x="80" y="350" width="380" height="200" rx="28" fill="#FFFFFF" stroke="#0D6B68" stroke-width="10"/>
+  <rect x="120" y="398" width="280" height="20" rx="10" fill="#0D6B68"/>
+  <rect x="120" y="443" width="230" height="20" rx="10" fill="#5C6B6B"/>
+  <rect x="120" y="488" width="180" height="20" rx="10" fill="#5C6B6B"/>
+
+  <line x1="460" y1="450" x2="546" y2="450" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="562" cy="450" r="16" fill="#0D6B68"/>
+
+  <path d="M 578 450 C 646 450 646 225 690 225" fill="none" stroke="#5C6B6B" stroke-width="8" marker-end="url(#arrow)"/>
+  <path d="M 578 450 C 646 450 646 675 690 675" fill="none" stroke="#5C6B6B" stroke-width="8" marker-end="url(#arrow)"/>
+  <path d="M 578 450 L 1180 450" fill="none" stroke="#5C6B6B" stroke-width="8"/>
+  <path d="M 1180 450 C 1268 450 1300 424 1330 360" fill="none" stroke="#5C6B6B" stroke-width="8" marker-end="url(#arrow)"/>
+  <path d="M 1180 450 C 1268 450 1300 478 1330 546" fill="none" stroke="#5C6B6B" stroke-width="8" marker-end="url(#arrow)"/>
+
+  <rect x="700" y="110" width="380" height="230" rx="18" fill="#E3F0EF" stroke="#0D6B68" stroke-width="10"/>
+  <rect x="745" y="160" width="200" height="28" rx="14" fill="#0D6B68"/>
+  <rect x="745" y="205" width="260" height="28" rx="14" fill="#2E7D5B"/>
+  <rect x="745" y="250" width="160" height="28" rx="14" fill="#D97A2B"/>
+
+  <rect x="1140" y="110" width="380" height="230" rx="18" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="10"/>
+  <circle cx="1235" cy="182" r="36" fill="#D97A2B"/>
+  <polygon points="1170,300 1270,190 1350,300" fill="#2E7D5B"/>
+  <polygon points="1300,300 1400,208 1488,300" fill="#2F6F9F"/>
+
+  <rect x="700" y="560" width="380" height="230" rx="18" fill="#FFFFFF" stroke="#D97A2B" stroke-width="10"/>
+  <rect x="745" y="615" width="95" height="115" rx="12" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <rect x="855" y="615" width="95" height="115" rx="12" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="6"/>
+  <rect x="965" y="615" width="95" height="115" rx="12" fill="#F7F1E8" stroke="#2E7D5B" stroke-width="6"/>
+
+  <rect x="1170" y="580" width="320" height="180" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="10"/>
+  <rect x="1215" y="620" width="230" height="100" rx="10" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+  <circle cx="1272" cy="656" r="18" fill="#D97A2B"/>
+  <rect x="1140" y="770" width="380" height="18" rx="9" fill="#102A2B"/>
+
+  <text x="80" y="695" font-size="46" font-weight="700" fill="#102A2B">一個提示詞，四條路線</text>
+</svg>

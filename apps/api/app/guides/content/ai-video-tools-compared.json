@@ -1,0 +1,365 @@
+{
+  "slug": "ai-video-tools-compared",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 影片工具比較：Veo、Sora、海螺、Kling 的方案與規格",
+      "description": "用 2026 年 9 月 14 日各家官網當天的資料，比較 Google Veo 與 Flow、MiniMax 海螺與 Kling，並附上 Runway 的價格。逐項列出方案月費、每月額度、可生成的秒數、解析度、有沒有原生音訊、浮水印與標示、台灣可用性，以及條款裡的商用權，最後給一套用同一段腳本各跑一次的自測法。OpenAI 的 Sora 已停止服務，本篇只留它的規格當對照。",
+      "hero": {
+        "src": "/guides/ai-video-tools-compared/hero.jpg",
+        "alt": "四張代表不同 AI 影片工具的卡片並排，上方一份腳本用細線連到每一張卡片，下方一條時間軸把四個點串起來。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "要挑一個 AI 影片工具，2026 年 9 月的答案和半年前不一樣：OpenAI 的 Sora 網站與 App 已在 2026 年 4 月 26 日停止，Videos API 也在 2026 年 9 月 24 日關閉。還能訂閱來用的是 Google 的 Veo 與 Flow、MiniMax 的海螺，以及 Kling。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇用 2026 年 9 月 14 日各家官網當天的寫法，列出入口、方案月費、每月額度、秒數、解析度、音訊、浮水印與標示、台灣可用性與條款裡的商用權，最後給一套自測法，不替任何一家打分數。"
+        },
+        {
+          "type": "heading",
+          "text": "四個入口，其中一個已經關門",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 這條線的入口是 Gemini App 與專做影片的 Google Flow，另外還有 Google Vids 與 Gemini API。官方模型頁寫的是 Veo 3.1，能原生生成音效、環境音與對白，輸出可以是 1080p 與 4K。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的 Sora 已經停止服務，不再是可選工具：網站與 App 在 2026 年 4 月 26 日停止，Videos API 在 2026 年 9 月 24 日關閉，官方請使用者到日落頁匯出作品，棄用表的建議替代欄全空。留下的官方規格可以當對照：sora-2 是 1280×720、每秒 0.10 美元，sora-2-pro 最高 1920×1080、每秒 0.30 到 0.70 美元，可生成 16 秒或 20 秒並帶音訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "海螺走網頁版，官網首頁當天掛的是 MiniMax H3；官方模型頁寫它最長 15 秒、最高 1440p 或 2K，生成帶原生立體聲的影片。Kling 走網頁與行動 App，主力模型是 Kling VIDEO 3.0；Runway 本篇只列價格。"
+        },
+        {
+          "type": "link",
+          "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+        },
+        {
+          "type": "heading",
+          "text": "方案與每月額度：官網當天的數字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 要分兩層看。訂閱價格在 Gemini 官網的台灣頁：Google AI Plus 每月 NT$165、Pro 每月 NT$650、Ultra 每月 NT$3,300 起，最高一階是每月 NT$6,500。影片實際扣的是 Flow 點數，官方寫不管有沒有訂閱，每人每天都有 50 點，訂閱再每月加 200、1,000、10,000 或 25,000 點，最後兩個對應 Ultra 的 100 美元與 200 美元級距。"
+        },
+        {
+          "type": "paragraph",
+          "text": "扣點也寫得很清楚：Veo 3.1 Lite 的 4、6、8 秒影片與延長是 10 點，Ultra 訂閱者 5 點；Fast 是 20 點；Quality 的 8 秒影片一律 100 點。升頻另計：1080p 升頻只有 Plus、Pro、Ultra 訂閱者能用、而且是 0 點，不訂閱的人不能升頻；4K 升頻 50 點且限 Ultra。Pro 的 1,000 點約等於 10 支 Quality 或 100 支 Lite，不訂閱的每天 50 點約 5 支 Lite。"
+        },
+        {
+          "type": "paragraph",
+          "text": "海螺的訂閱條款頁把方案列得很完整，從 Standard 每月 14.99 美元含 1,000 點，一路到 Max 199.99 美元含 20,000 點，每一層都寫明無浮水印下載；另有 94.99 美元的舊制 Unlimited 方案，官網註明只賣到 2025 年 6 月 18 日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kling 的方案頁是 Standard 每月 10 美元含 660 點、Pro 37 美元含 3,000 點、Premier 92 美元含 8,000 點。VIDEO 3.0 的說明頁把扣點寫成每秒計價，原生音訊 1080p 每秒 12 點、720p 9 點；一支 5 秒的 3.0 原生音訊 1080p 影片要 60 點。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "方案與價格（官網當天）",
+            "規格：長度／解析度／音訊",
+            "浮水印與標示"
+          ],
+          "rows": [
+            [
+              "Google Veo 3.1（Gemini、Flow）",
+              "台灣頁定價：Google AI Plus 每月 NT$165、Pro NT$650、Ultra NT$3,300 起（最高 NT$6,500）；Flow 每天 50 點，訂閱另加 200／1,000／10,000／25,000 點",
+              "Flow 可選 4、6、8 秒（Quality 只有 8 秒）；輸出 1080p 與 4K；原生生成音效、環境音與對白",
+              "一律嵌入 SynthID；Gemini Apps 另寫入 C2PA 內容憑證；可見浮水印可在設定關閉"
+            ],
+            [
+              "OpenAI Sora（已停止服務）",
+              "網站與 App 已於 2026 年 4 月 26 日停止；Videos API 於 2026 年 9 月 24 日關閉，官方棄用表的建議替代欄全空",
+              "官方留下的規格：sora-2 為 1280×720、每秒 0.10 美元；sora-2-pro 最高 1920×1080、每秒 0.30 到 0.70 美元；16 或 20 秒並帶音訊",
+              "官方頁面現在只剩停止服務與資料匯出公告"
+            ],
+            [
+              "MiniMax 海螺（MiniMax H3）",
+              "Standard 每月 14.99 美元含 1,000 點；Pro 54.99 美元含 4,500 點；Master 119.99 美元含 10,000 點；Ultra 124.99 美元含 12,000 點；Max 199.99 美元含 20,000 點",
+              "5 到 15 秒；最高 1440p 或 2K、24 FPS；比例 21:9 到 9:16 共六種；原生立體聲",
+              "免費下載帶浮水印，付費方案寫明無浮水印下載；條款禁止移除標示"
+            ],
+            [
+              "Kling VIDEO 3.0",
+              "Standard 每月 10 美元含 660 點；Pro 37 美元含 3,000 點；Premier 92 美元含 8,000 點",
+              "3 到 15 秒；說明頁列 720p 與 1080p，官方點數部落格另列原生 4K 每秒 30 點；可選原生音訊模式",
+              "免費層帶浮水印且須標示 Kling AI；會員可移除品牌浮水印"
+            ],
+            [
+              "Runway（只列價格）",
+              "免費 0 美元含 125 點一次性點數；Standard 年繳每月 12 美元含 625 點；Pro 28 美元含 2,250 點；Max 76 美元含 9,500 點",
+              "官網以各模型可生成的秒數換算額度，規格細節見專篇",
+              "Standard 起官網寫明無浮水印"
+            ]
+          ],
+          "caption": "各家官網 2026 年 9 月 14 日當天的寫法；Google 用官網台灣頁的新台幣定價，其餘照官網標示的幣別。"
+        },
+        {
+          "type": "heading",
+          "text": "規格：長度、解析度、音訊",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一次能生成的長度都比想像中短：Flow 裡 Veo 3.1 是 4、6、8 秒，其中 Quality 只有 8 秒；海螺 H3 是 5 到 15 秒，Kling VIDEO 3.0 是 3 到 15 秒。要更長就得靠延長一段一段接。"
+        },
+        {
+          "type": "paragraph",
+          "text": "解析度要分清楚是生成還是升頻。Veo 官方頁寫輸出可以是 1080p 與 4K，Flow 的點數表則把這兩者列成升頻步驟。海螺的模型頁寫最高 1440p 或 2K、24 FPS。Kling VIDEO 3.0 的說明頁列 720p 與 1080p，官方點數部落格另寫原生 4K 每秒 30 點。Flow 裡的 Gemini Omni Flash 1.1 可拉到 10 秒，但輸出只有 720p 或 360p。"
+        },
+        {
+          "type": "paragraph",
+          "text": "音訊是這一輪最大的分野，四家都做到原生生成：Veo 的音效、環境音與對白都是原生生成，MiniMax 寫 H3 帶原生立體聲，Kling VIDEO 3.0 分成原生音訊與無原生音訊兩種模式。對白與環境音不用另外配，配樂仍要自己處理。"
+        },
+        {
+          "type": "link",
+          "text": "Veo 與 Google Flow：影片、分鏡與匯出",
+          "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+          "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+        },
+        {
+          "type": "heading",
+          "text": "參考圖與角色一致性",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "想讓同一個角色出現在好幾顆鏡頭裡，各家的功能名稱不同。Veo 官方頁寫可以給場景、角色或物件的參考圖，也可以給風格參考圖，讓角色跨場景維持外觀；Flow 把它分成 Ingredients／References to Video 與 Frames to Video，而且 Veo 3.1 Lite 與 Fast 支援參考圖、Quality 不支援。海螺列的是 Character、Motion、Camera 與 Voice Reference，Kling 則叫 Element Reference，可把角色綁定，讓鏡頭移動時仍一致。"
+        },
+        {
+          "type": "link",
+          "text": "Gemini Omni 在 I/O 亮相：用對話改影片，素材與連續性仍要自己把關",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-omni-20260519"
+        },
+        {
+          "type": "heading",
+          "text": "浮水印與標示：SynthID、C2PA 與品牌標記",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 分三層：用 Gemini Apps 生成或編輯的 AI 媒體都帶看不見的 SynthID 浮水印，Veo 官方頁也寫 Veo 影片會標上 SynthID；Gemini Apps 另外寫入 Content Credentials（C2PA）中繼資料；看得見的浮水印是可以在設定關掉的開關，官方註明在印度、南韓與越南只有 AI Ultra 訂閱者看得到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外兩家走的是品牌浮水印。海螺的付費方案每層都寫無浮水印下載，等於免費下載會帶浮水印；服務條款也規定不得移除、遮蔽或變更官方用來標示 AI 生成內容的浮水印與中繼資料。Kling 的服務條款第 4.5 條要求散布時標上 Kling AI 的品牌與標誌，付費條款則寫會員享有移除品牌浮水印的專屬權益。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "關掉可見浮水印不等於沒有標示",
+          "text": "Gemini Apps 的說明頁寫得很直接：可見浮水印的開關只控制可見浮水印，不影響 SynthID，也不影響 Content Credentials。把看得見的那層關掉，檔案裡的中繼資料還在。反過來說，社群平台看的是你有沒有主動揭露，上傳前還是要照平台規範勾選 AI 生成。"
+        },
+        {
+          "type": "link",
+          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+        },
+        {
+          "type": "heading",
+          "text": "台灣能不能用，商用權怎麼寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Flow 的官方支援地區清單裡有台灣，頁面也寫明開放給 18 歲以上使用者。Kling 的官方 App 可靈 AI（發行商 KLING AI PTE. LTD.）在台灣區 App Store 上架。海螺官網沒有列支援地區，條款只寫營運公司在新加坡、提供給 16 歲以上使用者，台灣可用性以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "商用權要看條款原文，因為行銷頁和條款常常不一樣。海螺的訂閱條款寫付費訂閱者保有生成內容的一切智慧財產權（含商業使用），但一般服務條款寫服務供個人、非商業使用，合起來就是要商用得先付費。Kling 的落差更明顯：服務條款第 4.6 條寫未經書面許可不得為商業目的使用輸出，付費條款卻寫會員把輸出用於商業目的不受限制。"
+        },
+        {
+          "type": "heading",
+          "text": "不打分數：用同一段腳本自己跑一次",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "畫面好壞沒辦法靠一篇文章替你決定：各家每隔幾週換版本，同一段提示詞的反應也差很多。可行的做法是用同一段腳本在兩三家各跑一次，用同樣的問題看結果。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "跨工具自測用的固定腳本（貼進各家的提示詞欄位）",
+          "code": "場景：清晨的傳統市場，攤位蒸氣瀰漫，暖色晨光斜射。\n主體：一位戴灰色針織帽的攤販，正把一籠小籠包端上檯面。\n鏡頭：從中景緩慢推進到臉部特寫，帶輕微手持晃動。\n台詞（中文）：「剛蒸好的，小心燙。」\n動作：蒸籠蓋掀開，蒸氣往上竄，鏡頭不跟丟焦點。\n音訊：市場人聲、蒸籠金屬碰撞聲，加上台詞。\n比例：16:9。長度：取這個工具能選的最長一段。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "人臉在鏡頭推進時有沒有變形，或中途換人。",
+            "台詞的嘴形對不對得上，中文聽不聽得懂。",
+            "蒸氣、布料這種會動的細節，放大看是不是糊掉。",
+            "同一段提示詞再跑一次，兩次結果差多少。",
+            "下載回來的檔案帶不帶浮水印，這一輪扣了多少點。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "把五個答案寫成一張表，你多半會發現差別不在誰比較漂亮，而在誰能穩定給出可用的素材。換算一下：Google AI Pro 的 1,000 點約 10 支 Quality 影片，Kling Standard 的 660 點約 11 支 5 秒 1080p 影片。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一句話的結論：零成本先試手感用 Flow 每天的 50 點；要做完分鏡與延長走 Google AI Pro 的每月 NT$650；要 15 秒長鏡頭看海螺的 14.99 美元；要最低入門月費與明確的會員商用條款看 Kling 的 10 美元。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-video-tools-compared/diagram-1.svg",
+          "alt": "四條直向路線的決策圖，由上到下依序是用途、預算、規格，最後是建議先實測的工具。",
+          "width": 1600,
+          "height": 900,
+          "caption": "照用途、預算、規格三層往下讀，每一直欄就是一條選工具的路線。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "Kling 與 Runway：影片生成工具介紹",
+          "url": "https://mokaair.com/zh-TW/life/kling-runway-video-tools"
+        },
+        {
+          "type": "link",
+          "text": "Sora 影片生成教學：官方已停止服務，先匯出再挑替代工具",
+          "url": "https://mokaair.com/zh-TW/life/sora-video-guide"
+        },
+        {
+          "type": "link",
+          "text": "短影音企劃：Reels 的腳本、製作與成效回顧",
+          "url": "https://mokaair.com/zh-TW/life/short-video-marketing"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google DeepMind：Veo 模型頁（解析度、原生音訊、SynthID、參考圖）",
+          "url": "https://deepmind.google/models/veo/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini 官網台灣頁：Google AI 訂閱方案與新台幣月費",
+          "url": "https://gemini.google/subscriptions/?hl=zh-TW",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Flow 說明中心：管理 Flow 點數（每日額度與各模型扣點）",
+          "url": "https://support.google.com/flow/answer/16526234",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Flow 說明中心：支援的模型與功能（秒數、參考圖、延長）",
+          "url": "https://support.google.com/flow/answer/16352836",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Flow 說明中心：可以使用 Flow 的國家與地區",
+          "url": "https://support.google.com/flow/answer/16353544",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini Apps 說明中心：管理浮水印設定（SynthID 與 Content Credentials）",
+          "url": "https://support.google.com/gemini/answer/17405358",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心：Sora 停止服務說明",
+          "url": "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 開發者文件：影片生成指南（模型、秒數、延長上限）",
+          "url": "https://developers.openai.com/api/docs/guides/video-generation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 開發者文件：模型汰除清單（sora-2 關閉日期）",
+          "url": "https://developers.openai.com/api/docs/deprecations",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 開發者文件：Sora 2 模型頁（解析度與每秒計價）",
+          "url": "https://developers.openai.com/api/docs/models/sora-2",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hailuo AI：影片訂閱服務條款（方案、點數、無浮水印與商用）",
+          "url": "https://hailuoai.video/doc/payment-policy.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hailuo AI：服務條款（年齡、營運地、不得移除標示）",
+          "url": "https://hailuoai.video/doc/terms-of-service.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hailuo AI：MiniMax H3 模型頁（1440p、24 FPS、比例與參考功能）",
+          "url": "https://hailuoai.video/tools/minimax-h3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kling AI：會員方案與價格頁",
+          "url": "https://app.klingai.com/global/membership/membership-plan",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kling AI：VIDEO 3.0 模型使用說明（秒數、解析度、原生音訊、扣點）",
+          "url": "https://kling.ai/quickstart/klingai-video-3-model-user-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kling AI：服務條款（第 4.4、4.5、4.6 條）",
+          "url": "https://kling.ai/docs/user-policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kling AI 官方點數說明：VIDEO 3.0 的 4K 與每秒扣點",
+          "url": "https://kling.ai/blog/kling-video-3-0-credit-cost-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kling AI：付費服務條款（會員商用與移除浮水印）",
+          "url": "https://kling.ai/docs/payment-policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway：定價頁（方案、點數、無浮水印）",
+          "url": "https://runwayml.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple App Store 台灣區：可靈 AI（發行商 KLING AI PTE. LTD.）",
+          "url": "https://apps.apple.com/tw/app/id6738049229",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

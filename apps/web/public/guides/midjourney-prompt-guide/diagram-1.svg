@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">提示詞的結構拆解 / Anatomy of a Midjourney prompt</title>
+  <desc id="desc">一段完整提示詞由左到右拆成五段：媒材寫成 colored pencil illustration、主體寫成 three California poppies、光線寫成 soft morning light、構圖寫成 close-up，最後才接參數 --ar 16:9 --s 250 --no text。下方列出參數的三條格式規則：一律放在描述文字最後面、破折號前留一個半形空格、參數裡不加逗號等標點；最底下提醒版本差異，官方相容表把多重提示、--oref 與 --q 都標成 V8.1、V8.2 不支援。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">提示詞的結構拆解</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Anatomy of a Midjourney prompt</text>
+
+  <rect x="60" y="116" width="1480" height="112" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="84" y="150" font-size="17" fill="#5C6B6B">完整提示詞（描述在前，參數在後）</text>
+  <text x="84" y="198" font-size="19" fill="#102A2B"><tspan fill="#D97A2B">colored pencil illustration of </tspan><tspan fill="#0D6B68">three California poppies, </tspan><tspan fill="#2E7D5B">soft morning light, </tspan><tspan fill="#2F6F9F">close-up </tspan><tspan fill="#B8442D">--ar 16:9 --s 250 --no text</tspan></text>
+
+  <path d="M 218 232 L 198 288" stroke="#D97A2B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 468 232 L 499 288" stroke="#0D6B68" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 676 232 L 800 288" stroke="#2E7D5B" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 814 232 L 1101 288" stroke="#2F6F9F" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 980 232 L 1402 288" stroke="#B8442D" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="296" width="276" height="214" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="198" y="340" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">媒材 Medium</text>
+  <text x="198" y="384" font-size="17" fill="#D97A2B" text-anchor="middle">colored pencil</text>
+  <text x="198" y="410" font-size="17" fill="#D97A2B" text-anchor="middle">illustration</text>
+  <text x="198" y="462" font-size="16" fill="#5C6B6B" text-anchor="middle">畫成什麼形式</text>
+
+  <rect x="361" y="296" width="276" height="214" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="499" y="340" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">主體 Subject</text>
+  <text x="499" y="384" font-size="17" fill="#0D6B68" text-anchor="middle">three California</text>
+  <text x="499" y="410" font-size="17" fill="#0D6B68" text-anchor="middle">poppies</text>
+  <text x="499" y="462" font-size="16" fill="#5C6B6B" text-anchor="middle">數量寫具體</text>
+
+  <rect x="662" y="296" width="276" height="214" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="800" y="340" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">光線 Lighting</text>
+  <text x="800" y="384" font-size="17" fill="#2E7D5B" text-anchor="middle">soft morning</text>
+  <text x="800" y="410" font-size="17" fill="#2E7D5B" text-anchor="middle">light</text>
+  <text x="800" y="462" font-size="16" fill="#5C6B6B" text-anchor="middle">光線與色調</text>
+
+  <rect x="963" y="296" width="276" height="214" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1101" y="340" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">構圖 Composition</text>
+  <text x="1101" y="384" font-size="17" fill="#2F6F9F" text-anchor="middle">close-up</text>
+  <text x="1101" y="462" font-size="16" fill="#5C6B6B" text-anchor="middle">怎麼取景</text>
+
+  <rect x="1264" y="296" width="276" height="214" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1402" y="340" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">參數 Parameters</text>
+  <text x="1402" y="384" font-size="17" fill="#B8442D" text-anchor="middle">--ar 16:9 --s 250</text>
+  <text x="1402" y="410" font-size="17" fill="#B8442D" text-anchor="middle">--no text</text>
+  <text x="1402" y="462" font-size="16" fill="#5C6B6B" text-anchor="middle">一定放最後</text>
+
+  <rect x="60" y="548" width="1480" height="120" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="84" y="592" font-size="20" font-weight="700" fill="#102A2B">參數的三條格式規則</text>
+  <text x="84" y="634" font-size="17" fill="#102A2B">‧ 一律放在描述文字最後面</text>
+  <text x="600" y="634" font-size="17" fill="#102A2B">‧ 破折號前留一個半形空格</text>
+  <text x="1116" y="634" font-size="17" fill="#102A2B">‧ 參數裡不加逗號等標點</text>
+
+  <rect x="60" y="692" width="1480" height="120" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="84" y="736" font-size="20" font-weight="700" fill="#B8442D">版本差異：抄來的參數不一定能用</text>
+  <text x="84" y="778" font-size="17" fill="#102A2B">官方相容表把多重提示、--oref 與 --q 都標成 V8.1、V8.2 不支援</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

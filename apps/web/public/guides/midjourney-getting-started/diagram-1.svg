@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Midjourney 從提示詞到下載的流程 / From prompt to download in Midjourney</title>
+  <desc id="desc">六個步驟的流程圖，分成上下兩排。上排由左至右：輸入提示詞，網頁版在 Create 頁的 Imagine bar 打字、Discord 打 /imagine 指令；一次生成四張圖，SD 尺寸 1024 x 1024 像素，約 0.8 分鐘 GPU 時間，HD 提示詞約 1.3 分鐘；挑一張做變化，Vary 分 Subtle 小幅與 Strong 大幅，Discord 用 U1 到 U4 分圖、V1 到 V4 做變化，分圖不計費。流程接著折回下排左側，由左至右：放大 Upscale，Subtle 盡量維持原樣、Creative 放大時補新細節，尺寸變成 2048 x 2048，約 2 分鐘；編輯與外擴，Editor 裡有 Pan、Zoom Out 與 Vary Region 局部重繪，在 HD 圖上做會降回 SD；下載與整理，在 Organize 頁下載圖片，可排序、篩選、放進資料夾，也能框選多張批次處理。最下方一條提醒：參數一律寫在提示詞最後面，中間留一個空格、不加標點，例如 a paper boat on a wet street --ar 1:1 --v 8.2 --s 100。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">從提示詞到下載：Midjourney 的生成流程</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From prompt to download in Midjourney</text>
+
+  <!-- row 1 -->
+  <rect x="60" y="130" width="450" height="200" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="84" y="172" font-size="20" font-weight="700" fill="#102A2B">輸入提示詞</text>
+  <text x="84" y="212" font-size="17" fill="#5C6B6B">網頁版：Create 頁的 Imagine bar</text>
+  <text x="84" y="246" font-size="17" fill="#5C6B6B">Discord：打 /imagine 指令</text>
+  <text x="84" y="280" font-size="17" fill="#5C6B6B">送出前先設定比例與版本</text>
+
+  <line x1="518" y1="230" x2="560" y2="230" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="570" y="130" width="450" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="594" y="172" font-size="20" font-weight="700" fill="#102A2B">一次生成四張圖</text>
+  <text x="594" y="212" font-size="17" fill="#5C6B6B">SD 尺寸 1024 x 1024 像素</text>
+  <text x="594" y="246" font-size="17" fill="#5C6B6B">約 0.8 分鐘 GPU 時間</text>
+  <text x="594" y="280" font-size="17" fill="#5C6B6B">HD 提示詞約 1.3 分鐘</text>
+
+  <line x1="1028" y1="230" x2="1070" y2="230" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1080" y="130" width="450" height="200" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1104" y="172" font-size="20" font-weight="700" fill="#102A2B">挑一張做變化</text>
+  <text x="1104" y="212" font-size="17" fill="#5C6B6B">Vary：Subtle 小幅、Strong 大幅</text>
+  <text x="1104" y="246" font-size="17" fill="#5C6B6B">Discord 用 U1 到 U4 分圖</text>
+  <text x="1104" y="280" font-size="17" fill="#5C6B6B">V1 到 V4 做變化，分圖不計費</text>
+
+  <!-- snake connector -->
+  <polyline points="1305,330 1305,362 285,362 285,382" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- row 2 -->
+  <rect x="60" y="392" width="450" height="200" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="84" y="434" font-size="20" font-weight="700" fill="#102A2B">放大 Upscale</text>
+  <text x="84" y="474" font-size="17" fill="#5C6B6B">Subtle 盡量維持原樣</text>
+  <text x="84" y="508" font-size="17" fill="#5C6B6B">Creative 放大時補新細節</text>
+  <text x="84" y="542" font-size="17" fill="#5C6B6B">2048 x 2048，約 2 分鐘</text>
+
+  <line x1="518" y1="492" x2="560" y2="492" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="570" y="392" width="450" height="200" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="594" y="434" font-size="20" font-weight="700" fill="#102A2B">編輯與外擴</text>
+  <text x="594" y="474" font-size="17" fill="#5C6B6B">Editor：Pan、Zoom Out</text>
+  <text x="594" y="508" font-size="17" fill="#5C6B6B">Vary Region 局部重繪</text>
+  <text x="594" y="542" font-size="17" fill="#B8442D">在 HD 圖上做會降回 SD</text>
+
+  <line x1="1028" y1="492" x2="1070" y2="492" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1080" y="392" width="450" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1104" y="434" font-size="20" font-weight="700" fill="#102A2B">下載與整理</text>
+  <text x="1104" y="474" font-size="17" fill="#5C6B6B">Organize 頁下載圖片</text>
+  <text x="1104" y="508" font-size="17" fill="#5C6B6B">排序、篩選、放進資料夾</text>
+  <text x="1104" y="542" font-size="17" fill="#5C6B6B">可框選多張批次處理</text>
+
+  <!-- note band -->
+  <rect x="60" y="650" width="1470" height="140" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="90" y="700" font-size="20" font-weight="700" fill="#102A2B">參數一律寫在提示詞最後面，中間留一個空格、不加標點</text>
+  <text x="90" y="744" font-size="18" fill="#5C6B6B">例如：a paper boat on a wet street --ar 1:1 --v 8.2 --s 100</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

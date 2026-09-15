@@ -1,0 +1,385 @@
+{
+  "slug": "ai-image-copyright-taiwan",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 生成圖片的版權：台灣法規與商用注意事項",
+      "description": "智慧財產局的函釋怎麼看 AI 生成圖片：關鍵在創作過程有沒有人類實際的創意投入，完全由演算法獨立完成的產出無法享有著作權。這篇整理智財局兩則電子郵件函釋與著作權法第 3 條、第 10 條、第 10 條之 1 原文，對照 OpenAI、Google、Midjourney、Stability AI 等五家平台條款怎麼寫輸出所有權與商用條件，並給從生成到商用的 5 個檢查關卡。不做法律結論。",
+      "hero": {
+        "src": "/guides/ai-image-copyright-taiwan/hero.jpg",
+        "alt": "插圖：左邊一個畫框裡有簡單幾何圖形，一條箭頭指向右邊的盾牌與勾號，代表圖片生成之後先檢查權利再談商用。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "AI 生成的圖片能不能算你的著作？經濟部智慧財產局的公開函釋把判斷標準說得很清楚：看創作過程中有沒有人類實際的創意投入。有投入，完成的創作成果仍可受著作權保護；完全由 AI 的演算功能獨立進行完成、沒有人類創意投入，生成的內容就無法享有著作權。至於你能不能拿這張圖去做生意，那是另一件事，由你用的那個平台的條款決定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把兩件事分開講完：先讀智慧財產局函釋與著作權法條文的原文，再對照 OpenAI、Google、Midjourney、Stability AI 與 Black Forest Labs 五家平台的條款怎麼寫輸出的所有權與商用條件，最後給一份從生成到商用的 5 個檢查關卡，以及兩個最常見的誤解。這裡整理的是主管機關怎麼說、平台規範怎麼寫，不是法律意見；個案請諮詢專業人士。"
+        },
+        {
+          "type": "heading",
+          "text": "智慧財產局怎麼說：關鍵在有沒有人類的創意投入",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "智慧財產局的解釋資料檢索裡，有兩則直接談 AI 生成圖畫的電子郵件函釋。民國 114 年 5 月 22 日的電子郵件1140522c，回覆的正是「用 ChatGPT 輸入指令後生成的圖畫是否享有著作權」；民國 114 年 10 月 17 日的電子郵件1141017b 又把同一套標準重申一次。兩則的起點都是著作權法第 3 條第 1 項第 2 款與第 10 條。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "智慧財產局電子郵件1140522c 令函要旨（節錄原文）",
+          "code": "一、依我國著作權法第3條第1項第2款及第10條規定，著作人指創作著作之人，著作人於著作\n    完成時享有著作權。換言之，著作必須係以自然人或法人為權利義務主體的情形下，由自\n    然人所為的創作，方可能受到著作權的保護。故AI生成之圖畫是否享有著作權，應視創作\n    過程中有無人類實際的創意投入而定。\n\n二、(一)若只是把AI當作輔助工具(例如:繪圖軟體)來使用，而有人類實際的創意投入，則完\n        成的創作成果仍可受著作權保護，該圖畫之著作權歸屬，除有著作權法第11條(僱傭\n        關係)及第12條(出資聘用關係)之情形外，原則上由該實際創作之人(即投入實際創\n        意的自然人)享有。\n    (二)反之，若創作過程中完全是由AI的演算功能獨立進行完成，並無人類精神文明之投\n        入，則該AI生成的圖畫無法享有著作權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "函釋順手把歸屬也交代了：屬於第一種情形時，除了著作權法第 11 條的僱傭關係與第 12 條的出資聘用關係另有規定，原則上由實際投入創意的自然人享有。所以外包設計、請人幫你修圖的案子，誰是著作人、著作財產權歸誰，要回到契約怎麼約定，不是看誰按下生成鍵。"
+        },
+        {
+          "type": "paragraph",
+          "text": "函釋最後一段也畫了界線：著作權係屬私權，個案中利用 AI 生成之圖畫是否受著作權保護、是否侵害他人著作權，如有爭議仍應由司法機關就個案具體事實調查證據認定之。換句話說，智財局給的是判斷標準，不是逐案認定，更不是一張可以拿去主張權利的證明。"
+        },
+        {
+          "type": "heading",
+          "text": "法條原文：著作、著作人，以及只保護「表達」",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "全國法規資料庫上的著作權法，現行版本修正日期是民國 111 年 6 月 15 日，並沒有為 AI 生成內容另立條文。和 AI 圖片最相關的是下面三條，直接讀原文比讀轉述可靠。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "著作權法第 3 條、第 10 條、第 10 條之 1（全國法規資料庫原文）",
+          "code": "第 3 條（節錄）\n本法用詞，定義如下：\n一、著作：指屬於文學、科學、藝術或其他學術範圍之創作。\n二、著作人：指創作著作之人。\n三、著作權：指因著作完成所生之著作人格權及著作財產權。\n\n第 10 條\n著作人於著作完成時享有著作權。但本法另有規定者，從其規定。\n\n第 10 條之 1\n依本法取得之著作權，其保護僅及於該著作之表達，而不及於其所表達之思想、程序、製程、\n系統、操作方法、概念、原理、發現。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第 10 條之 1 在 AI 生圖的討論裡特別重要：著作權保護的是具體的表達，不及於思想與概念。「想畫一隻在雨中撐傘的貓」這個構想本身不是著作權保護的對象，畫面裡的構圖、線條、配色這些具體表達才是。這也是為什麼「做出某一類畫風」和「產出跟某張既有作品實質近似的圖」必須分開談，前者未必有事，後者才是風險所在。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外兩條處理歸屬。第 11 條寫受雇人於職務上完成之著作，以該受雇人為著作人，但契約約定以雇用人為著作人者從其約定；第 12 條寫出資聘請他人完成之著作，以該受聘人為著作人，未約定著作財產權歸屬者其著作財產權歸受聘人享有。公司內部同仁產出的 AI 圖、發包給外部設計師的案子，都照這兩條加上契約走。"
+        },
+        {
+          "type": "heading",
+          "text": "平台條款怎麼寫：誰擁有輸出、能不能商用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "平台條款和著作權法是兩層不同的東西。條款處理的是「你和平台之間」的關係，幾家的寫法都帶了 as between you and 這種限定語；它不會替你在著作權法上生出一個著作權，也管不到第三人的權利。下面是五家平台當天條款頁上的原文重點。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "OpenAI 服務條款（2026 年 1 月 1 日生效版本）寫：you (a) retain your ownership rights in Input and (b) own the Output，並把 OpenAI 自己對輸出的權利讓與使用者；同一份條款也提醒輸出可能不是唯一的，其他使用者可能收到相似的輸出。",
+            "Google 服務條款（2026 年 7 月 30 日生效版本）寫 Your content remains yours，你保留你在自己內容上的智慧財產權；禁止事項裡則明列不得誤導他人以為生成式 AI 內容是真人做的。",
+            "Gemini API 附加條款（2026 年 3 月 23 日生效版本）寫 Google won't claim ownership over that content，緊接著寫 Google 可能為其他人生成相同或相似的內容，並保留這麼做的權利。",
+            "Midjourney 服務條款（版本生效日 2026 年 5 月 27 日）寫 You own all Assets You create with the Services to the fullest extent possible under applicable law，但底下列了例外。",
+            "Stability AI 的 Community License 與 Black Forest Labs 的 FLUX dev 非商業授權，都寫平台不主張輸出的所有權，條件改寫在營收門檻與模型用途上。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "table",
+          "header": [
+            "平台或授權",
+            "條款怎麼寫輸出所有權",
+            "商用條件"
+          ],
+          "rows": [
+            [
+              "OpenAI（ChatGPT、Sora）",
+              "you (a) retain your ownership rights in Input and (b) own the Output，並將 OpenAI 對輸出的權利讓與你",
+              "條款未對輸出另訂營收門檻；同一份條款要求你自行確保內容不違法，並提醒輸出可能與他人相似"
+            ],
+            [
+              "Google 服務條款（帳號通用）",
+              "Your content remains yours，你保留你在自己內容上的智慧財產權",
+              "禁止讓人誤以為生成式 AI 內容是真人所做，也禁止拿服務產出的 AI 內容去訓練機器學習模型"
+            ],
+            [
+              "Gemini API 與 AI Studio 附加條款",
+              "Google won't claim ownership over that content",
+              "同段寫明 Google 可能為別人生成相同或相似內容並保留該權利；使用生成內容須遵守法律"
+            ],
+            [
+              "Midjourney",
+              "You own all Assets You create with the Services to the fullest extent possible under applicable law",
+              "年營收超過 1,000,000 美元的公司或其員工，須訂 Pro 或 Mega 方案才擁有輸出；放大他人圖片時原作者的權利不變"
+            ],
+            [
+              "Stability AI Community License",
+              "As between You and Stability AI, You own any outputs generated from the Models or Derivative Works",
+              "商用免權利金，但你或關係企業年營收超過 1,000,000 美元時授權終止，須另談授權"
+            ],
+            [
+              "Black Forest Labs FLUX dev 非商業授權 v2.0",
+              "We claim no ownership rights in and to the Outputs",
+              "模型本身只授權非商業用途，輸出可用於任何目的包含商業；須做內容過濾或人工審查，並依法標示由 AI 生成"
+            ]
+          ],
+          "caption": "五家平台條款頁的原文重點，2026 年 9 月查證；條款會改版，商用前以官網當天版本為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表裡兩個營收門檻值得單獨記起來：Midjourney 條款寫，年營收超過 1,000,000 美元的公司或其員工，必須訂閱 Pro 或 Mega 方案才擁有自己的輸出；Stability AI 的 Community License 則寫，當你或關係企業年營收超過 1,000,000 美元，授權即終止，要另外談。個人接案和小工作室多半碰不到這兩條，但公司採購前要先把數字算清楚。"
+        },
+        {
+          "type": "link",
+          "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-tools-overview-2026"
+        },
+        {
+          "type": "link",
+          "text": "Midjourney 入門：網頁版、參數與訂閱",
+          "url": "https://mokaair.com/zh-TW/life/midjourney-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "從生成到商用：5 個檢查關卡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把上面兩層合起來，圖要拿去商用之前，可以照下面 5 個關卡跑一次。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "有沒有人類實際的創意投入：你有沒有選圖、改圖、重排、多輪修正，還是輸入一句提示詞就直接拿來用。",
+            "平台條款怎麼寫：誰擁有輸出、有沒有營收門檻、免費方案和付費方案的條件差在哪裡。",
+            "素材來源乾不乾淨：你上傳的參考圖、照片、字型，自己要先有授權。",
+            "會不會撞到既有著作：畫面有沒有和某張既有作品構成實質近似，有沒有夾帶別人的商標或肖像。",
+            "要不要標示：投放平台的規範怎麼寫，以及要不要在檔案裡留下內容憑證。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-image-copyright-taiwan/diagram-1.svg",
+          "alt": "流程圖：AI 生成圖片商用前的 5 個檢查關卡，依序是人類創意投入、平台條款、素材來源、實質近似與是否標示。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下看：每一關左邊是要問自己的問題，右邊是判斷依據，最底下一行提醒這只是檢查順序，不是法律意見。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "這 5 個關卡沒有法律上的先後效力，它只是把「你可能被問到的問題」排成一條線。跑完之後把答案留成紀錄，日後真的被問起，才有東西拿得出來。"
+        },
+        {
+          "type": "heading",
+          "text": "兩個常見誤解",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "誤解一是「付費就有版權」。付月費買到的是平台在條款上對你做的承諾，例如 Midjourney 寫的 You own all Assets，意思是平台不跟你爭；至於著作權法上這張圖有沒有著作權，仍然回到第 10 條與有沒有人類實際的創意投入。付費不會自動製造一個著作權，也不會讓沒有創意投入的產出變成受保護的著作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "誤解二是「AI 圖沒有人能告我」。智財局電子郵件1140522c 第三點寫得很直接：如 AI 生成圖畫與用於 AI 訓練資料中之原始著作有構成實質近似之情境，後續將該 AI 生成圖畫作為商業用途，可能會因該圖案與原始著作構成實質近似而有侵權之問題。同一段建議先向 AI 模型之開發或管理者釐清有無取得著作財產權人之授權及得否轉授權第三人商業利用，並應遵循生成式 AI 提供者所訂定之使用規範。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "條款寫「你擁有輸出」不等於你有著作權",
+          "text": "幾家平台都用了 as between you and 這種限定語：意思是在你和平台之間，平台不主張這份輸出的權利。這句話不能拿去對抗第三人，也不能替代著作權法第 10 條的判斷。同一張圖完全可能同時是「平台不跟你爭」而且「在著作權法上不受保護」，別人拿去用你也未必攔得住。"
+        },
+        {
+          "type": "heading",
+          "text": "實務做法：留紀錄、避開特定創作者、確認素材授權",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有一套做法能保證安全，但下面幾件事在爭議真的發生時，是你唯一拿得出來的東西。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "保留提示詞與流程紀錄：原始提示詞、每一輪的修改、參考圖從哪裡來、最後用了哪個版本、用的是哪個工具與模型。",
+            "把人類的創意投入寫下來：你做了哪些選擇、改了哪些地方、為什麼這樣排。這正是智財局函釋要看的那一項。",
+            "不要指名在世創作者當風格指令。風格與構想本身不是著作權保護的對象（第 10 條之 1），但指名模仿容易做出實質近似的結果，也可能牽涉其他法律。",
+            "上傳的參考圖、照片、字型，先確認自己有授權；素材站的授權要逐案看用途、媒介與是否可再散布。",
+            "交件時附一份授權與紀錄清單給客戶，把用了什麼、責任範圍到哪裡講清楚。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "AI 生成圖片的紀錄欄位範本（可直接貼進專案文件）",
+          "code": "案件／用途：\n工具與模型版本：\n生成日期：\n原始提示詞：\n參考圖來源與授權：\n修改紀錄（第幾版、改了什麼）：\n人類創意投入說明：\n平台條款版本與訂閱方案：\n是否標示由 AI 生成：\n交付檔案與解析度："
+        },
+        {
+          "type": "paragraph",
+          "text": "素材授權這一塊，音樂與圖庫的邏輯是一樣的：先看授權涵蓋哪些用途，再看上架平台會不會誤判。標示與來源紀錄則有專門的做法，內容憑證會把生成與編輯歷程寫進檔案本身。"
+        },
+        {
+          "type": "link",
+          "text": "Envato 音樂素材怎麼用：專案授權與上傳後申訴",
+          "url": "https://mokaair.com/zh-TW/life/envato-music-license"
+        },
+        {
+          "type": "link",
+          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+        },
+        {
+          "type": "link",
+          "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+        },
+        {
+          "type": "link",
+          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+        },
+        {
+          "type": "heading",
+          "text": "人工智慧基本法與還在初稿的著作權指引",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "人工智慧基本法在民國 115 年 1 月 14 日公布，全文 20 條，自公布之日起施行。它是一部原則性的基本法，主要對象是政府：第 4 條列了政府推動 AI 研發與應用應遵循的七項原則，其中第 5 款「透明與可解釋」寫人工智慧之產出應做適當資訊揭露或標記；第 18 條要求政府在施行後 2 年內完成相關法規的制定、修正或廢止。它沒有規定 AI 生成圖片的著作權歸屬，也沒有直接對一般使用者課標示義務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "著作權這一側還在路上。智慧財產局在民國 115 年 7 月 20 日召開「生成式人工智慧著作權指引（初稿）」公聽會，會議紀錄於同年 8 月 3 日公布在著作權布告欄。也就是說，指引目前仍在初稿與徵詢意見的階段，正式版本以智財局公告為準；在那之前，可以引用的還是上面兩則電子郵件函釋與現行條文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後再說一次：這篇整理的是公開函釋、法條與平台條款當天的原文，不做法律結論。你的案子牽涉多少人類創意投入、用了哪些素材、要投放到哪裡，都會直接改變答案；金額大或對外公開的專案，請找智慧財產權方面的專業人士看過再上。"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-image-generation-guide"
+        },
+        {
+          "type": "link",
+          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+        }
+      ],
+      "sources": [
+        {
+          "title": "經濟部智慧財產局 著作權主題網 解釋資料檢索 電子郵件1140522c（AI 生成圖畫是否享有著作權、商用是否侵權）",
+          "url": "https://www.tipo.gov.tw/tw/copyright/692-34252.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "經濟部智慧財產局 著作權主題網 解釋資料檢索 電子郵件1141017b（利用 AI 生成作品是否享有著作權）",
+          "url": "https://www.tipo.gov.tw/tw/copyright/692-63403.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "經濟部智慧財產局 著作權布告欄 115年7月20日「生成式人工智慧著作權指引(初稿)公聽會」會議紀錄",
+          "url": "https://www.tipo.gov.tw/tw/copyright/721-90647.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "全國法規資料庫 著作權法第 3 條（著作與著作人定義）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070017&flno=3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "全國法規資料庫 著作權法第 10 條（著作人於著作完成時享有著作權）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070017&flno=10",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "全國法規資料庫 著作權法第 10 條之 1（保護及於表達不及於思想）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070017&flno=10-1",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "全國法規資料庫 著作權法第 11 條（僱傭關係的著作人與著作財產權歸屬）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070017&flno=11",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "全國法規資料庫 著作權法第 12 條（出資聘用關係的著作人與著作財產權歸屬）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070017&flno=12",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "全國法規資料庫 著作權法 所有條文（現行版本修正日期）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=J0070017",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "全國法規資料庫 人工智慧基本法（公布日期與全文 20 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0160093",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "數位發展部 重點政策 AI 基本法 治理與評測",
+          "url": "https://moda.gov.tw/major-policies/ai/governance/19248",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Terms of use（Ownership of content 一節）",
+          "url": "https://openai.com/policies/row-terms-of-use/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Terms of Service（Your content 一節與禁止事項）",
+          "url": "https://policies.google.com/terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini API Additional Terms of Service（Use of Generated Content 一節）",
+          "url": "https://ai.google.dev/gemini-api/terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney Terms of Service（Content Rights 一節）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32083055291277-Terms-of-Service",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Stability AI Community License Agreement（商用門檻與輸出所有權）",
+          "url": "https://stability.ai/community-license-agreement",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Stability AI License 說明頁（Core Models 商用條件問答）",
+          "url": "https://stability.ai/license",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Black Forest Labs FLUX dev Non-Commercial License v2.0（Outputs 一節）",
+          "url": "https://bfl.ai/legal/non-commercial-license-terms",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

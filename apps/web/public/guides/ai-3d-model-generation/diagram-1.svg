@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 生成 3D 模型的流程與免費層閘門 / From prompt to printable 3D file</title>
+  <desc id="desc">流程由左到右分成四格：輸入可以是文字提示詞、單張圖片或多視角圖片；生成階段產出網格與 PBR 貼圖，Meshy 7 的模型階段扣 25 點、Tripo 用 P1 影像轉模型含貼圖扣 50 點；後處理包含重拓樸 quad（Tripo 轉檔多扣 5 點）、貼圖 8K（Meshy 扣 15 點）與自動綁骨、切件；匯出格式有 GLB、FBX、OBJ、STL、3MF、USDZ，轉檔的 face_limit 預設 10000。之後分兩條路：匯入 Blender 編輯時 glTF 2.0 外掛預設啟用，匯出 glTF 會把四邊面轉成三角面；送進切片軟體列印則要封閉網格，單色用 STL、多色用 3MF，尺寸先在生成工具調好。最下方是免費層的三個閘門：Meshy 免費方案每月 100 點，但下載只給 Meshy 6 Lite、每月 10 次，產出授權是 CC BY 4.0 要標註；Hyper3D 免費方案先看結果再扣點、工作區限 10 個私有資產；Tripo 的 API 有 300 點、期限兩週。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">AI 生成 3D 模型：從輸入到能用的檔案</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From prompt to a printable or editable 3D file</text>
+
+  <!-- stage boxes -->
+  <rect x="60" y="120" width="310" height="250" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="215" y="162" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">輸入</text>
+  <text x="215" y="204" font-size="17" fill="#102A2B" text-anchor="middle">文字提示詞</text>
+  <text x="215" y="240" font-size="17" fill="#102A2B" text-anchor="middle">單張圖片</text>
+  <text x="215" y="276" font-size="17" fill="#102A2B" text-anchor="middle">多視角圖片</text>
+  <text x="215" y="318" font-size="15" fill="#5C6B6B" text-anchor="middle">三種輸入官方文件都列了</text>
+
+  <rect x="450" y="120" width="310" height="250" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="605" y="162" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">生成網格與貼圖</text>
+  <text x="605" y="204" font-size="17" fill="#102A2B" text-anchor="middle">網格加 PBR 貼圖</text>
+  <text x="605" y="240" font-size="17" fill="#102A2B" text-anchor="middle">Meshy 7 模型階段 25 點</text>
+  <text x="605" y="276" font-size="17" fill="#102A2B" text-anchor="middle">Tripo P1 含貼圖 50 點</text>
+  <text x="605" y="318" font-size="15" fill="#5C6B6B" text-anchor="middle">扣點各方案相同</text>
+
+  <rect x="840" y="120" width="310" height="250" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="995" y="162" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">後處理</text>
+  <text x="995" y="204" font-size="17" fill="#102A2B" text-anchor="middle">重拓樸 quad：多 5 點</text>
+  <text x="995" y="240" font-size="17" fill="#102A2B" text-anchor="middle">貼圖 8K：Meshy 15 點</text>
+  <text x="995" y="276" font-size="17" fill="#102A2B" text-anchor="middle">自動綁骨、切件</text>
+  <text x="995" y="318" font-size="15" fill="#5C6B6B" text-anchor="middle">綁骨後不能轉 OBJ、STL</text>
+
+  <rect x="1230" y="120" width="310" height="250" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1385" y="162" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">匯出格式</text>
+  <text x="1385" y="204" font-size="17" fill="#102A2B" text-anchor="middle">GLB／FBX／OBJ</text>
+  <text x="1385" y="240" font-size="17" fill="#102A2B" text-anchor="middle">STL／3MF／USDZ</text>
+  <text x="1385" y="276" font-size="17" fill="#102A2B" text-anchor="middle">face_limit 預設 10000</text>
+  <text x="1385" y="318" font-size="15" fill="#5C6B6B" text-anchor="middle">STL 不保留貼圖</text>
+
+  <line x1="376" y1="245" x2="444" y2="245" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="766" y1="245" x2="834" y2="245" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1156" y1="245" x2="1224" y2="245" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- split to two outcomes -->
+  <path d="M 1385 370 L 1385 404" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 430 404 L 1385 404" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <line x1="430" y1="404" x2="430" y2="434" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1170" y1="404" x2="1170" y2="434" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="230" y="440" width="400" height="190" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="430" y="484" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">匯入 Blender 編輯</text>
+  <text x="430" y="526" font-size="17" fill="#102A2B" text-anchor="middle">glTF 2.0 外掛預設啟用</text>
+  <text x="430" y="562" font-size="17" fill="#102A2B" text-anchor="middle">匯出時四邊面轉三角面</text>
+  <text x="430" y="598" font-size="17" fill="#102A2B" text-anchor="middle">減面、修法線再進引擎</text>
+
+  <rect x="970" y="440" width="400" height="190" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1170" y="484" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">送進切片軟體列印</text>
+  <text x="1170" y="526" font-size="17" fill="#102A2B" text-anchor="middle">網格要封閉才切得動</text>
+  <text x="1170" y="562" font-size="17" fill="#102A2B" text-anchor="middle">單色用 STL、多色用 3MF</text>
+  <text x="1170" y="598" font-size="17" fill="#102A2B" text-anchor="middle">尺寸先在生成工具調好</text>
+
+  <!-- free tier band -->
+  <rect x="60" y="680" width="1480" height="150" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="100" y="726" font-size="20" font-weight="bold" fill="#B8442D">免費層的三個閘門</text>
+  <text x="100" y="770" font-size="17" fill="#102A2B">Meshy 免費方案每月 100 點，但下載只給 Meshy 6 Lite、每月 10 次，產出授權是 CC BY 4.0，商用要標註</text>
+  <text x="100" y="806" font-size="17" fill="#102A2B">Hyper3D 免費方案先看結果再扣點、工作區限 10 個私有資產；Tripo 的 API 給 300 點，期限兩週</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
