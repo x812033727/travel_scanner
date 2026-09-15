@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">補全、Chat 與代理 / Completions, chat and agents</title>
+<desc id="desc">一張以幾何形狀構成的插圖。左邊是一個白底圓角矩形的螢幕，裡面有幾條深綠色與藍色的橫條代表程式碼，其中一條是灰色虛線外框，代表還沒被採用的補全建議，末端有一個游標。一條綠色虛線箭頭從螢幕指向右上方的藍色對話框，對話框裡有三條橫條，代表在 Chat 裡問與答。另一條綠色虛線箭頭從對話框指向右下方的橘色循環箭頭，圓圈中央是一個橘色圓角方塊，代表代理自己反覆執行任務。畫面下方有一行文字：補全 · Chat · 代理。</desc>
+<defs>
+<marker id="flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M0,0 L10,5 L0,10 z" fill="#2E7D5B"/>
+</marker>
+<marker id="loop" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3" markerHeight="3" orient="auto-start-reverse">
+<path d="M0,0 L10,5 L0,10 z" fill="#D97A2B"/>
+</marker>
+</defs>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+
+<rect x="110" y="190" width="640" height="450" rx="30" fill="#FFFFFF" stroke="#0D6B68" stroke-width="7"/>
+<rect x="165" y="245" width="290" height="24" rx="12" fill="#0D6B68"/>
+<rect x="200" y="293" width="380" height="24" rx="12" fill="#2F6F9F"/>
+<rect x="200" y="341" width="225" height="24" rx="12" fill="#5C6B6B"/>
+<rect x="200" y="389" width="415" height="24" rx="12" fill="none" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="11 9"/>
+<rect x="627" y="383" width="6" height="36" rx="3" fill="#102A2B"/>
+<rect x="165" y="437" width="330" height="24" rx="12" fill="#0D6B68"/>
+<rect x="165" y="485" width="215" height="24" rx="12" fill="#2F6F9F"/>
+<rect x="165" y="533" width="285" height="24" rx="12" fill="#E3F0EF"/>
+
+<path d="M772,320 C818,310 818,276 858,268" fill="none" stroke="#2E7D5B" stroke-width="6" stroke-dasharray="14 11" marker-end="url(#flow)"/>
+
+<path d="M975,380 L1065,380 L945,472 Z" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="7" stroke-linejoin="round"/>
+<rect x="880" y="140" width="430" height="250" rx="28" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="7"/>
+<rect x="935" y="202" width="320" height="22" rx="11" fill="#2F6F9F"/>
+<rect x="935" y="246" width="235" height="22" rx="11" fill="#5C6B6B"/>
+<rect x="935" y="290" width="290" height="22" rx="11" fill="#2F6F9F"/>
+
+<path d="M1318,332 C1368,368 1380,414 1352,458" fill="none" stroke="#2E7D5B" stroke-width="6" stroke-dasharray="14 11" marker-end="url(#flow)"/>
+
+<path d="M1330,500 A115,115 0 1 1 1215,615" fill="none" stroke="#D97A2B" stroke-width="13" stroke-linecap="round" marker-end="url(#loop)"/>
+<rect x="1293" y="578" width="74" height="74" rx="16" fill="#D97A2B"/>
+
+<text x="760" y="805" font-size="48" font-weight="bold" fill="#102A2B" text-anchor="middle">補全 · Chat · 代理</text>
+</svg>

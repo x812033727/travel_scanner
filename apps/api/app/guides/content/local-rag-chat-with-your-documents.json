@@ -1,0 +1,385 @@
+{
+  "slug": "local-rag-chat-with-your-documents",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "本機 RAG：跟自己的文件聊天",
+      "description": "把 PDF、Word 與純文字交給本機模型，靠檢索找出相關片段再回答，檔案不用上傳到雲端。這篇照官方文件走三條路：Open WebUI 的知識庫、LM Studio 直接把檔案拖進對話，以及用 Ollama 的嵌入 API 寫一支最小的 RAG 腳本；分段大小、重疊與取幾段只抄官方文件列出的數字，最後說清楚表格、掃描版 PDF 與上下文視窗這三個限制。",
+      "hero": {
+        "src": "/guides/local-rag-chat-with-your-documents/hero.jpg",
+        "alt": "插圖：一疊文件被切成數個小方塊，連成一條線進入一個對話框，旁邊有放大鏡與筆電。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "跟自己的文件聊天，靠的不是把整份檔案塞進模型，而是先把文件切成小段、算成向量存起來，提問時只撈出最相關的幾段放進提示詞。這整套流程在自己的電腦上就跑得完，文件不必離開硬碟，也不必申請帳號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你走三條路：用 Open WebUI 建一個知識庫、用 LM Studio 把檔案拖進對話、再用 Ollama 的嵌入 API 寫一支最小的 RAG 腳本。中間每個名詞都會連到系列裡的名詞篇，分段大小與取幾段只寫官方文件列出的數字，最後說清楚表格、掃描版 PDF 與上下文視窗為什麼會讓答案失準。"
+        },
+        {
+          "type": "link",
+          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+        },
+        {
+          "type": "heading",
+          "text": "拆開來看，文件對話只有五個步驟",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一步是分段。整份文件通常遠超過模型一次讀得下的量，所以要先切成一段一段的片段；相鄰兩段之間留一點重疊，是為了避免答案剛好被切在接縫上。Open WebUI 把這兩個值叫 Chunk Size 與 Chunk Overlap，環境變數表寫預設是 1000 與 100。"
+        },
+        {
+          "type": "link",
+          "text": "文件分塊（Chunking）：切多長，才不會把答案切斷",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-chunking"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二步是嵌入。每一段文字送進嵌入模型會變成一串數字，也就是向量，意思相近的段落在這個空間裡距離也相近。Ollama 說明文件寫向量長度看模型而定，常見是 384 到 1024 維，而 /api/embed 回傳的是 L2 正規化過的單位長度向量，所以算餘弦相似度時，把兩個向量逐項相乘再加總就是答案。"
+        },
+        {
+          "type": "link",
+          "text": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-embedding"
+        },
+        {
+          "type": "paragraph",
+          "text": "剩下三步是找、排、答。向量連同原文存進向量資料庫，提問時把問題用同一個嵌入模型算成向量，比對後取出最像的幾段；要更準就再加一層重排，把撈回來的片段重新打分數。Open WebUI 的混合搜尋就是這樣做的：BM25 關鍵字搜尋加上向量搜尋，再用 CrossEncoder 重排，官方文件寫這個開關預設是關的。最後一步才是生成，把選中的片段連同問題一起放進提示詞交給模型。"
+        },
+        {
+          "type": "link",
+          "text": "向量資料庫（Vector Database）：相似內容怎麼存、怎麼找",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-vector-database"
+        },
+        {
+          "type": "link",
+          "text": "重新排序（Reranking）：從找得到到把好答案排在前面",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-reranking"
+        },
+        {
+          "type": "link",
+          "text": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-hybrid-search"
+        },
+        {
+          "type": "image",
+          "src": "/guides/local-rag-chat-with-your-documents/diagram-1.svg",
+          "alt": "流程圖：文件經過分段、嵌入、檢索、重排四個方框後進入生成，下方標出各步驟的預設值。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看：一份文件先被切成有重疊的片段，每段算成向量存起來，提問時只有最相近的幾段會被撈出來放進提示詞。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "不用寫程式（一）：Open WebUI 的知識庫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open WebUI 的說明文件把建知識庫寫成四個動作，介面以官網當天版本為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在側邊欄點 Workspace，選 Knowledge。",
+            "在工作區標頭點 Create，填名稱與說明。",
+            "上傳檔案，或把既有的文件加進來。",
+            "到 Workspace > Models > Edit 把這個知識庫掛到某個模型上，或在對話裡打 # 叫出來用。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "要調的設定都在 Settings > Admin > Documents。嵌入模型預設是在本機跑的 sentence-transformers/all-MiniLM-L6-v2，也可以把嵌入引擎切成 Ollama 或 OpenAI；向量資料庫預設是 chroma，官方文件列出的選項有 13 種。文件另外提醒，掛上來的知識庫有兩種取用模式：預設的 Focused Retrieval 只塞進最相關的片段，Full Context 則是每則訊息都把整份文件放進去。"
+        },
+        {
+          "type": "link",
+          "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
+          "url": "https://mokaair.com/zh-TW/life/open-webui-chat-interface"
+        },
+        {
+          "type": "heading",
+          "text": "不用寫程式（二）：LM Studio 把檔案拖進對話",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LM Studio 的說明文件寫得更直接：可以把 .docx、.pdf、.txt 附到對話裡。文件短到塞得進模型的上下文視窗，它就整份放進去；文件很長才會改用檢索，只撈出相關的片段。官方的提醒是提問時盡量把你預期會出現在原文裡的字詞寫出來，檢索命中的機會比較大。"
+        },
+        {
+          "type": "paragraph",
+          "text": "離線這件事官方也寫清楚：把文件拖進 LM Studio 對話或做 RAG，文件會留在你的機器上，所有處理都在本機完成，不會離開這個應用程式。長度方面，官方文件說上下文視窗是用 token 計算的，一個 token 大約四分之三個英文字，估片段量時可以拿這個當粗略換算。"
+        },
+        {
+          "type": "link",
+          "text": "LM Studio 入門：圖形介面跑本機模型",
+          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "寫一點程式：一支最小的 RAG 腳本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不想被介面綁住就自己寫。下面四塊是照官方文件的範例組起來的：Ollama 說明文件的嵌入頁給了 ollama.embed 的單筆與批次用法，官方 Python 套件的說明給了 ollama.chat 的用法，湊起來就是一支能跑的腳本。先安裝套件，再拉一個嵌入模型和一個對話模型。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "安裝 Python 套件並拉模型（終端機）",
+          "code": "pip install ollama\nollama pull embeddinggemma\nollama pull gemma4"
+        },
+        {
+          "type": "paragraph",
+          "text": "embeddinggemma 是 Google 的 300M 參數嵌入模型，模型庫頁寫 622MB、2K 上下文視窗，也寫這個標籤需要 Ollama v0.11.10 以後的版本。想換別的，官方嵌入頁推薦的還有 qwen3-embedding（0.6b 是 639MB、32K 上下文視窗）與 all-minilm（22m 是 46MB、512 上下文視窗），另一個常見的 nomic-embed-text 是 274MB、2K 上下文視窗。先用 curl 確認端點真的會回向量。"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "確認嵌入端點會回向量（照官方文件的範例）",
+          "code": "curl -X POST http://localhost:11434/api/embed \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"model\": \"embeddinggemma\",\n    \"input\": \"The quick brown fox jumps over the lazy dog.\"\n  }'"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著是腳本本體。分段用最笨的切法：每 1000 個字元切一段、和前一段重疊 100 個字元，這兩個數字直接抄 Open WebUI 的預設值。嵌入一次送一批，官方文件寫 input 可以直接給一個字串陣列，回來的向量順序和送進去的片段一樣。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "分段、嵌入與檢索：用餘弦相似度取最相近的三段",
+          "code": "import ollama\n\nEMBED_MODEL = 'embeddinggemma'\n\n\ndef split(text, size=1000, overlap=100):\n    step = size - overlap\n    return [text[i:i + size] for i in range(0, len(text), step)]\n\n\ntext = open('notes.txt', encoding='utf-8').read()\nchunks = [c for c in split(text) if c.strip()]\n\n# /api/embed 回傳單位長度向量，逐項相乘再加總就是餘弦相似度\nvectors = ollama.embed(model=EMBED_MODEL, input=chunks)['embeddings']\n\nquestion = '理賠要準備哪些文件'\nquery = ollama.embed(model=EMBED_MODEL, input=question)['embeddings'][0]\n\n\ndef cosine(a, b):\n    return sum(x * y for x, y in zip(a, b))\n\n\nscored = sorted(zip(chunks, vectors), key=lambda pair: cosine(query, pair[1]), reverse=True)\ntop = [chunk for chunk, _ in scored[:3]]"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後把片段放進提示詞。要求模型只根據片段回答、找不到就說找不到，是讓答案有依據的第一道防線；官方 Python 套件的 chat 範例就是這樣呼叫的。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "把片段放進提示詞，交給本機模型回答",
+          "code": "context = '\\n\\n---\\n\\n'.join(top)\nprompt = (\n    '只根據下面的資料回答問題，資料裡沒有就說找不到，不要自己補。\\n\\n'\n    f'資料：\\n{context}\\n\\n'\n    f'問題：{question}'\n)\n\nresponse = ollama.chat(\n    model='gemma4',\n    messages=[{'role': 'user', 'content': prompt}],\n)\nprint(response['message']['content'])"
+        },
+        {
+          "type": "paragraph",
+          "text": "腳本跑得動之後要記得一件事：索引和查詢一定要用同一個嵌入模型，這是官方嵌入頁最後一行的提醒。換了模型，舊向量就不在同一個空間裡，比對出來沒有意義。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "步驟",
+            "做什麼",
+            "工具"
+          ],
+          "rows": [
+            [
+              "分段",
+              "把文件切成有重疊的片段，Open WebUI 預設 1000、重疊 100",
+              "Open WebUI 的 Chunk Size 與 Chunk Overlap；腳本裡自己切"
+            ],
+            [
+              "嵌入",
+              "每段算成向量存起來，長度常見 384 到 1024 維",
+              "Ollama 的 /api/embed 與 embeddinggemma；Open WebUI 預設存進 chroma"
+            ],
+            [
+              "檢索",
+              "問題也算成向量，取最相近的前幾段",
+              "Open WebUI 的 Top K，預設 3；腳本裡的餘弦相似度"
+            ],
+            [
+              "重排",
+              "把撈回來的片段重新打分數，該排前面的才排前面",
+              "Open WebUI 的混合搜尋加 CrossEncoder 重排，預設關閉"
+            ],
+            [
+              "生成",
+              "片段連同問題放進提示詞，模型才作答",
+              "Open WebUI 的 RAG 範本；腳本裡自己組字串"
+            ]
+          ],
+          "caption": "文件對話的五個步驟與對應工具，2026 年 9 月查證於各家官方文件。"
+        },
+        {
+          "type": "heading",
+          "text": "分段、重疊與取幾段：只抄官方文件的數字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這幾個數字每個人都有一套說法，這裡只寫官方文件列出的。Open WebUI 的環境變數表寫 CHUNK_SIZE 預設 1000、CHUNK_OVERLAP 預設 100、RAG_TOP_K 預設 3，重排用的 RAG_TOP_K_RERANKER 也是 3。疑難排解頁另外按情境給了三組建議值。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "本機模型、上下文視窗 8K token 以內：Chunk Size 1000、Chunk Overlap 100、Top K 取 3 到 5，並把分段方式改成 token。",
+            "雲端模型、上下文視窗 32K token 以上：Chunk Size 2000、Chunk Overlap 200、Top K 取 15 到 25。",
+            "本機與雲端混用：Chunk Size 1500、Chunk Overlap 200、Top K 取 10。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "同一頁還附了一段預算算法：片段 1000 token、Top K 取 5，檢索就會塞進大約 5000 token 的內容，再加上系統提示詞與對話紀錄，8K 的上下文視窗大概只剩兩三千 token 留給對話本身。另外，開了 Markdown 標題分段之後容易切出一堆碎片，官方建議把 Chunk Min Size Target 設成 Chunk Size 的五成到六成（例如 2000 配 1000），實測可以讓片段數少掉九成以上，而且準確度還變好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一條不能漏：換了嵌入模型一定要重新索引。官方文件寫不同模型的向量在不同的空間裡，彼此不相容，沒有重新索引，拿舊向量去比對只會得到很差或根本沒意義的結果。只改分段大小沒那麼嚴重，舊文件照樣能用，只是新舊品質會不一致。重新索引的按鈕在 Settings > Admin > Documents，文件也提醒它只處理知識庫裡的檔案，直接丟在對話裡的檔案要重新上傳。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "上下文視窗沒調大，檢索到的內容等於沒送到",
+          "text": "Open WebUI 的 RAG 文件在頁首就掛了一則警告：Ollama 預設的上下文長度會嚴重限制 RAG 的表現，檢索回來的資料可能只被用掉一部分，甚至完全沒被用到。官方解法是到 Settings > Admin > Models 編輯那個 Ollama 模型，在進階參數把上下文長度拉到 8192 以上，能到 16000 以上更好。至於預設值本身，Open WebUI 寫 2048，Ollama 的常見問題寫 4096 token，Ollama 的上下文長度頁又說會看顯示記憶體決定，三處寫法不同，以你安裝的版本實測為準；共通點是預設值對 RAG 來說都太小。"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼確認回答有依據，還有三件它做不到的事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一層檢查是引用。Open WebUI 的文件說 RAG 會在回答旁邊附上引用，讓人追得到餵給模型的是哪份文件的哪一段；把引用點開，確認那段話真的支持結論，答案才算數。第二層更基本：官方疑難排解頁的第一條就是上傳之後先預覽抽取出來的內容，如果是空白或缺了關鍵章節，那不是模型的問題，是檔案根本沒被讀進去。第三層是自己出題，拿文件裡你已經知道答案的幾個問題去問，對不上就別急著信其他答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方對幻覺的描述值得抄下來：模型不是因為想錯才編，而是一開始就沒拿到正確的內容。所以答案不對時，先回頭看檢索撈了什麼，再去怪模型。"
+        },
+        {
+          "type": "link",
+          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+        },
+        {
+          "type": "paragraph",
+          "text": "做不到的第一件事是掃描版 PDF。官方文件寫預設的 pypdf 抽取器碰到圖片型 PDF 常常抽不到字，要換成 Apache Tika 或 Docling，或在同一頁把 PDF 影像抽取（OCR）打開。第二件是表格與試算表：CSV 解析出來就只有一列一列的資料，問「總共幾筆」時模型只看得到被檢索到的那幾列，要開 ENABLE_RAG_CSV_SUMMARY 才會在檔案前面補上列數與欄位名稱，而且這個設定預設關閉、只對打開之後才上傳的檔案生效。第三件是上下文長度，前面那則警告已經說過。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果文件本來就短，手上又剛好有一台上下文視窗很大的模型，整份塞進去往往比檢索準，官方文件自己也這麼說，這時候本機 RAG 就不必硬上。"
+        },
+        {
+          "type": "link",
+          "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+          "url": "https://mokaair.com/zh-TW/life/claude-file-analysis-pdf-excel"
+        },
+        {
+          "type": "link",
+          "text": "NotebookLM 入門：資料、筆記本與引用",
+          "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ollama 說明文件：Embeddings（推薦嵌入模型、批次輸入、單位長度向量、餘弦相似度與同一模型的提醒）",
+          "url": "https://docs.ollama.com/capabilities/embeddings",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama API 文件：Generate embeddings（/api/embed 的 model、input、truncate、dimensions 參數）",
+          "url": "https://docs.ollama.com/api/embed",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：Quickstart（ollama run gemma4 的第一次對話）",
+          "url": "https://docs.ollama.com/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：FAQ（預設上下文視窗 4096 token 與 OLLAMA_CONTEXT_LENGTH）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：Context length（依顯示記憶體決定的預設上下文長度）",
+          "url": "https://docs.ollama.com/context-length",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：embeddinggemma（300M 參數、622MB、2K 上下文視窗、需 v0.11.10 以後）",
+          "url": "https://ollama.com/library/embeddinggemma",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：qwen3-embedding（0.6b 為 639MB、32K 上下文視窗）",
+          "url": "https://ollama.com/library/qwen3-embedding",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：all-minilm（22m 為 46MB、512 上下文視窗）",
+          "url": "https://ollama.com/library/all-minilm",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：nomic-embed-text（274MB、2K 上下文視窗）",
+          "url": "https://ollama.com/library/nomic-embed-text",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方 Python 套件 README（ollama.chat 與 ollama.embed 的範例）",
+          "url": "https://github.com/ollama/ollama-python",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 說明文件：Retrieval Augmented Generation（分段設定、混合搜尋、引用、重新索引、CSV 摘要）",
+          "url": "https://docs.openwebui.com/features/chat-conversations/rag",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 說明文件：Knowledge（建立知識庫的步驟、兩種取用模式、13 種向量資料庫）",
+          "url": "https://docs.openwebui.com/features/workspace/knowledge",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 說明文件：RAG 疑難排解（三種情境的分段與 Top K 建議值、抽取引擎與 PDF OCR）",
+          "url": "https://docs.openwebui.com/troubleshooting/rag",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 說明文件：環境變數（CHUNK_SIZE 1000、CHUNK_OVERLAP 100、RAG_TOP_K 3、VECTOR_DB 預設 chroma）",
+          "url": "https://docs.openwebui.com/reference/env-configuration",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：Chat with Documents（可附 .docx、.pdf、.txt，短文件整份進上下文視窗）",
+          "url": "https://lmstudio.ai/docs/app/basics/rag",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 說明文件：Offline Operation（文件留在本機、處理不離開應用程式）",
+          "url": "https://lmstudio.ai/docs/app/offline",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

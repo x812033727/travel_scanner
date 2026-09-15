@@ -1,0 +1,262 @@
+{
+  "slug": "sass-scss-workflow",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Sass 與 SCSS 怎麼用：變數、模組與編譯流程",
+      "description": "Sass 可以協助整理共用樣式，但瀏覽器使用的仍是編譯後 CSS。本文以原創桌遊活動網站為例，分清 SCSS 與縮排語法、Sass 變數與 CSS 自訂屬性，再說明入口檔、@use、@forward、監看編譯和輸出驗收。附操作步驟、比較表與原創圖解，並整理 Node Sass 停止維護、舊 @import 遷移及 source map 的注意事項，避免只改到會被覆寫的產出檔。",
+      "hero": {
+        "src": "/guides/sass-scss-workflow/hero.jpg",
+        "alt": "Mokaair 原創來源資料夾、編譯伺服器與瀏覽器畫面插圖，代表 Sass 模組轉換為 CSS 後的驗收流程。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "網站累積了活動卡片、場地資訊和報名按鈕後，共用顏色與間距可能散落在許多檔案。Sass 可以把這些設定與可重用規則整理成模組，但多了一個編譯步驟，也就需要知道原始檔在哪裡、誰負責產出 CSS。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下桌遊活動網站的檔名與樣式例子均為原創，依 2026 年 9 月 14 日查閱的 Sass 官方文件整理。本篇是工作流程教學，沒有替讀者安裝套件、改動既有專案或宣稱完成實際編譯測試。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Sass 是工具，SCSS 是其中一種語法"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sass 提供兩種主要寫法：.scss 使用大括號和分號，與一般 CSS 較接近；.sass 則以縮排和換行組織內容。它們都由 Sass 編譯器轉換成網站可用的 CSS，不能只把副檔名改成 .css 就當成已完成轉換。"
+        },
+        {
+          "type": "paragraph",
+          "text": "初學者若已經會基本 CSS，可以先選 SCSS，減少同時適應新語法的負擔。接手既有專案則先查看原本慣例，不需要為了統一偏好而改寫全部檔案。瀏覽器仍依 CSS 的選取器、層疊與盒模型排列內容，Sass 不會替你修正錯誤的排版邏輯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "現在 CSS 本身也有自訂屬性與原生巢狀寫法，不能再用 CSS 完全沒有變數或巢狀規則來解釋 Sass 的必要性。先看是否真的需要模組、編譯期運算和共用規則；只有少量樣式的頁面，直接維護 CSS 也可能更容易交接。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "確認現有建置方式，再加入編譯器"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方主要實作是 Dart Sass，可透過不同方式安裝；使用 Node.js 專案時會遇到 sass 套件。Node Sass 已於 2024 年宣布結束維護，舊教學中的 node-sass 不宜直接當成新專案起點。先確認框架與建置工具支援哪一種整合方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若專案已有 Sass 相依套件及編譯指令，先沿用它的入口與輸出位置，避免另外啟動一個編譯器覆寫同一份 CSS。新增工具時記錄套件與鎖定檔，讓協作者能取得一致版本；不要只依靠某台電腦全域安裝的工具而沒有專案說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在已正確安裝且 sass 指令可用的練習環境，可以用 sass styles/game-night.scss public/game-night.css，把入口轉為指定輸出。檔名是本篇示例，執行前先建立來源並確認目標不會覆寫手寫檔。網站要載入 public 中對外提供的 CSS 網址，而非直接載入 SCSS。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "分清編譯期變數與瀏覽器中的變數"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sass 變數以 $ 開頭，例如 $card-gap: 18px;，再於宣告中使用 gap: $card-gap;。編譯後使用的位置會成為相應值，瀏覽器不會保留這個 Sass 變數供 JavaScript 即時修改。因此修改它通常需要重新產出 CSS 才能更新網站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CSS 自訂屬性則使用 --card-gap 這類名稱，並以 var(--card-gap) 取值，會留在 CSS 中參與瀏覽器的計算與繼承。若希望依主題或特定容器在執行時改變值，可以考慮自訂屬性；若是產出多份樣式時的固定設定，Sass 變數也能提供便利。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩者可以一起使用，但要說清楚值在哪個階段決定。桌遊活動頁可把編譯時的基本間距與瀏覽器依主題調整的色彩分開管理。不要因為兩者都被叫作變數，就期待修改 Sass 來源後，已開啟的網頁會在沒有重新編譯或更新資源時自動改變。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "以 @use 管理來源，以 @forward 整理出口"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以把共用設定放在 styles/_tokens.scss，再於 styles/game-night.scss 的開頭寫 @use 'tokens';。如果模組定義了 $card-gap，就以 tokens.$card-gap 取得，讓讀者看得出數值從哪裡來。底線開頭的 partial 是供其他檔案載入的片段，通常不作獨立輸出入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "@use 載入的成員只在該份樣式表可見，其他模組若需要相同設定，仍要自行載入。相同模組產生的樣式在同一次編譯中只納入一次；這不代表所有入口產出的 CSS 合在網站上後，永遠沒有重複規則，仍要查看實際產出與載入方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模組變多時，@forward 可以將公開的變數、函式或 mixin 整理成一個對外入口；它不會自動讓轉出的成員在當前檔案中可直接使用，需要使用時仍加上 @use。初期先保留清楚命名空間，不急著用 as * 把所有名稱攤在一起。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "監看方便修改，輸出仍需驗收"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習時可使用 sass --watch styles/game-night.scss public/game-night.css，在來源變動後重新編譯。這個指令負責更新檔案，不等於會啟動網站伺服器或替瀏覽器重新整理。修改共用片段後，確認監看範圍包含它，且終端沒有報錯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dart Sass 的 expanded 輸出較方便閱讀；--style=compressed 可減少多餘字元，適合需要壓縮的產出流程，但不能保證樣式已經最佳化或相容。過深的巢狀選取器、大量重複展開的 mixin，也可能產生不易維護的 CSS，需要直接檢查輸出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "命令列預設會產生 source map，協助把編譯後規則對回來源。正式提供哪些對照資訊應依專案決定；若需要不產生對照檔，可查 --no-source-map。不要在樣式、註解或內嵌來源裡放機密資料，也不要只刪檔卻留下失效的對照連結。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "查看專案現有 Sass 版本、指令、入口及 CSS 載入位置。",
+            "建立小型 SCSS 入口與共用設定，以 @use 明確引用。",
+            "執行一次編譯，再啟動監看並確認修改能產出正確 CSS。",
+            "檢查警告、選取器、實際頁面及交接檔案，留下待遷移項目。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "處理舊專案時，不只消除警告文字"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sass 的 @import 及部分全域內建函式自 Dart Sass 1.80.0 起被標示為棄用。這與瀏覽器原生 CSS 的 @import 不是同一回事，也不表示所有舊 Sass 來源在查證日都已完全無法編譯。需要依實際版本與依賴套件安排遷移。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方提供 Sass migrator 協助轉成模組，但仍要核對來源順序、命名空間、設定方式與產出差異。先保留可還原版本，在副本或獨立分支處理；若問題來自第三方套件，查看其更新狀態。關閉警告顯示不等於已修正相容性問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "驗收時除了編譯成功，也要確認網站載入新 CSS、長文字與窄畫面沒有變壞、共用設定只影響預定元件。日常修正回到 SCSS 來源，避免手改生成檔後下次編譯全部消失。交接應包含來源、相依版本、建置指令與輸出位置，讓別人能重新產生相同成果。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/sass-scss-workflow/diagram-1.svg",
+          "alt": "四張卡片說明 SCSS 來源、模組載入、Dart Sass 編譯及 CSS 頁面檢查，提醒日常修改回到來源。",
+          "width": 1600,
+          "height": 900,
+          "caption": "修改來源、重新編譯、確認頁面；三件事都完成，變更才真正落到網站。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "發生在哪個階段",
+            "要確認什麼"
+          ],
+          "rows": [
+            [
+              ".scss／.sass",
+              "撰寫來源",
+              "同屬 Sass 的不同語法"
+            ],
+            [
+              "Sass $變數",
+              "編譯時",
+              "修改後需重新產出"
+            ],
+            [
+              "CSS --自訂屬性",
+              "瀏覽器計算時",
+              "使用 var() 與適用範圍"
+            ],
+            [
+              "@use",
+              "載入 Sass 模組",
+              "明確命名空間及來源"
+            ],
+            [
+              "@forward",
+              "整理模組公開入口",
+              "不自動供當前檔案使用"
+            ],
+            [
+              "CSS 與 source map",
+              "編譯輸出與除錯",
+              "網站網址及公開資訊"
+            ]
+          ],
+          "caption": "本表區分來源、編譯與瀏覽器執行，避免把語法整理誤認為實際頁面已驗收。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "生成的 CSS 不是日常修改起點",
+          "text": "先找到真正的 Sass 來源與建置流程。直接修改生成檔容易在下一次編譯被覆蓋；只看到編譯成功，也還需要確認頁面載入與版面結果。"
+        },
+        {
+          "type": "link",
+          "text": "先理解 CSS 選取器與盒模型",
+          "url": "https://mokaair.com/zh-TW/life/css-layout-basics"
+        },
+        {
+          "type": "link",
+          "text": "檢查響應式畫面的內容安排",
+          "url": "https://mokaair.com/zh-TW/life/responsive-layout-basics"
+        },
+        {
+          "type": "link",
+          "text": "整理網站設計到交付的流程",
+          "url": "https://mokaair.com/zh-TW/life/web-design-project-workflow"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sass：Basics",
+          "url": "https://sass-lang.com/guide/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sass：安裝方式",
+          "url": "https://sass-lang.com/install/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sass：Variables",
+          "url": "https://sass-lang.com/documentation/variables/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sass：@use",
+          "url": "https://sass-lang.com/documentation/at-rules/use/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sass：@forward",
+          "url": "https://sass-lang.com/documentation/at-rules/forward/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sass：Dart Sass CLI",
+          "url": "https://sass-lang.com/documentation/cli/dart-sass/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sass：@import 與全域函式棄用",
+          "url": "https://sass-lang.com/documentation/breaking-changes/import/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sass：Node Sass 結束維護",
+          "url": "https://sass-lang.com/blog/node-sass-is-end-of-life/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：CSS nesting",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">同一個需求，三個代理的操作步驟 / Same task, three coding agents step by step</title>
+  <desc id="desc">三欄對照圖。左欄依序列出五個步驟：安裝、登入、權限確認、脈絡檔案、看產出。Claude Code 用官方安裝指令或 Homebrew、WinGet 安裝，執行 claude 以訂閱或 Console 帳號登入，權限模式有 default、plan、acceptEdits、auto 等六個值，脈絡檔案是 CLAUDE.md，用 /diff 看變更、/rewind 回到檢查點。Codex CLI 用官方安裝指令或 npm、Homebrew 安裝，執行 codex login 以 ChatGPT 帳號或 API 金鑰登入，用 /permissions 選 Auto 或 Read Only 預設，脈絡檔案是 AGENTS.md，用 /diff 看變更、/review 再複查一次。Gemini CLI 用 npm 全域安裝，執行 gemini 後選 Login with Google，旗標 approval-mode 有 default、auto_edit、yolo 三個值，脈絡檔案是 GEMINI.md，先開 checkpointing 再用 /restore 還原。三者的脈絡檔案都用 /init 產生初稿。圖的最下方是三邊共用的驗收條件：同一份提示詞、同一個起點、同一張核對清單，每一輪都記下花了多少時間、用掉多少額度、你自己動手改了幾處。</desc>
+  <defs><marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L12 6 L0 12 z" fill="#5C6B6B"/></marker></defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="40" y="52" text-anchor="start" font-size="30" fill="#102A2B" font-weight="bold">同一個需求，三個代理的操作步驟</text>
+  <text x="40" y="84" text-anchor="start" font-size="18" fill="#5C6B6B">Same task, three coding agents: install to acceptance</text>
+  <rect x="306" y="108" width="406" height="52" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="509" y="142" text-anchor="middle" font-size="22" fill="#102A2B" font-weight="bold">Claude Code</text>
+  <rect x="728" y="108" width="406" height="52" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="931" y="142" text-anchor="middle" font-size="22" fill="#102A2B" font-weight="bold">Codex CLI</text>
+  <rect x="1150" y="108" width="406" height="52" rx="14" fill="#F7E7D5" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1353" y="142" text-anchor="middle" font-size="22" fill="#102A2B" font-weight="bold">Gemini CLI</text>
+  <rect x="40" y="170" width="250" height="100" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="165" y="210" text-anchor="middle" font-size="15" fill="#5C6B6B">步驟一</text>
+  <text x="165" y="240" text-anchor="middle" font-size="20" fill="#102A2B" font-weight="bold">安裝</text>
+  <rect x="306" y="170" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="509" y="212" text-anchor="middle" font-size="17" fill="#102A2B">官方安裝指令</text>
+  <text x="509" y="242" text-anchor="middle" font-size="17" fill="#5C6B6B">或 Homebrew、WinGet</text>
+  <rect x="728" y="170" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="931" y="212" text-anchor="middle" font-size="17" fill="#102A2B">官方安裝指令</text>
+  <text x="931" y="242" text-anchor="middle" font-size="17" fill="#5C6B6B">或 npm、Homebrew</text>
+  <rect x="1150" y="170" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1353" y="212" text-anchor="middle" font-size="17" fill="#102A2B">npm 全域安裝</text>
+  <text x="1353" y="242" text-anchor="middle" font-size="17" fill="#5C6B6B">也可用 npx、Homebrew</text>
+  <rect x="40" y="280" width="250" height="100" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="165" y="320" text-anchor="middle" font-size="15" fill="#5C6B6B">步驟二</text>
+  <text x="165" y="350" text-anchor="middle" font-size="20" fill="#102A2B" font-weight="bold">登入</text>
+  <rect x="306" y="280" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="509" y="322" text-anchor="middle" font-size="17" fill="#102A2B">執行 claude 登入</text>
+  <text x="509" y="352" text-anchor="middle" font-size="17" fill="#5C6B6B">訂閱或 Console 帳號</text>
+  <rect x="728" y="280" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="931" y="322" text-anchor="middle" font-size="17" fill="#102A2B">執行 codex login</text>
+  <text x="931" y="352" text-anchor="middle" font-size="17" fill="#5C6B6B">ChatGPT 帳號或 API 金鑰</text>
+  <rect x="1150" y="280" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1353" y="322" text-anchor="middle" font-size="17" fill="#102A2B">執行 gemini</text>
+  <text x="1353" y="352" text-anchor="middle" font-size="17" fill="#5C6B6B">選 Login with Google</text>
+  <rect x="40" y="390" width="250" height="100" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="165" y="430" text-anchor="middle" font-size="15" fill="#5C6B6B">步驟三</text>
+  <text x="165" y="460" text-anchor="middle" font-size="20" fill="#102A2B" font-weight="bold">權限確認</text>
+  <rect x="306" y="390" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="509" y="432" text-anchor="middle" font-size="17" fill="#102A2B">權限模式：default、plan、</text>
+  <text x="509" y="462" text-anchor="middle" font-size="17" fill="#5C6B6B">acceptEdits、auto 等六個</text>
+  <rect x="728" y="390" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="931" y="432" text-anchor="middle" font-size="17" fill="#102A2B">/permissions 選預設：</text>
+  <text x="931" y="462" text-anchor="middle" font-size="17" fill="#5C6B6B">Auto 或 Read Only</text>
+  <rect x="1150" y="390" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1353" y="432" text-anchor="middle" font-size="17" fill="#102A2B">旗標 approval-mode：</text>
+  <text x="1353" y="462" text-anchor="middle" font-size="17" fill="#5C6B6B">default／auto_edit／yolo</text>
+  <rect x="40" y="500" width="250" height="100" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="165" y="540" text-anchor="middle" font-size="15" fill="#5C6B6B">步驟四</text>
+  <text x="165" y="570" text-anchor="middle" font-size="20" fill="#102A2B" font-weight="bold">脈絡檔案</text>
+  <rect x="306" y="500" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="509" y="542" text-anchor="middle" font-size="17" fill="#102A2B">CLAUDE.md</text>
+  <text x="509" y="572" text-anchor="middle" font-size="17" fill="#5C6B6B">用 /init 產生初稿</text>
+  <rect x="728" y="500" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="931" y="542" text-anchor="middle" font-size="17" fill="#102A2B">AGENTS.md</text>
+  <text x="931" y="572" text-anchor="middle" font-size="17" fill="#5C6B6B">用 /init 產生初稿</text>
+  <rect x="1150" y="500" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1353" y="542" text-anchor="middle" font-size="17" fill="#102A2B">GEMINI.md</text>
+  <text x="1353" y="572" text-anchor="middle" font-size="17" fill="#5C6B6B">用 /init 產生初稿</text>
+  <rect x="40" y="610" width="250" height="100" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="165" y="650" text-anchor="middle" font-size="15" fill="#5C6B6B">步驟五</text>
+  <text x="165" y="680" text-anchor="middle" font-size="20" fill="#102A2B" font-weight="bold">看產出</text>
+  <rect x="306" y="610" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="509" y="652" text-anchor="middle" font-size="17" fill="#102A2B">/diff 看變更</text>
+  <text x="509" y="682" text-anchor="middle" font-size="17" fill="#5C6B6B">/rewind 回到檢查點</text>
+  <rect x="728" y="610" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="931" y="652" text-anchor="middle" font-size="17" fill="#102A2B">/diff 看變更</text>
+  <text x="931" y="682" text-anchor="middle" font-size="17" fill="#5C6B6B">/review 再複查一次</text>
+  <rect x="1150" y="610" width="406" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1353" y="652" text-anchor="middle" font-size="17" fill="#102A2B">開 checkpointing</text>
+  <text x="1353" y="682" text-anchor="middle" font-size="17" fill="#5C6B6B">用 /restore 還原</text>
+  <path d="M509 712 L509 738" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M931 712 L931 738" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M1353 712 L1353 738" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="40" y="744" width="1520" height="94" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="782" text-anchor="middle" font-size="20" fill="#102A2B" font-weight="bold">三邊共用的驗收條件：同一份提示詞、同一個起點、同一張核對清單</text>
+  <text x="800" y="814" text-anchor="middle" font-size="17" fill="#5C6B6B">每一輪都記三件事：花了多少時間、用掉多少額度、你自己動手改了幾處</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

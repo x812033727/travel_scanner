@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">VPS 上的一條連線：使用者、反向代理、Open WebUI 與 Ollama / One request path on a VPS: user, reverse proxy, Open WebUI and Ollama</title>
+  <desc id="desc">由左到右的四格架構圖。第一格是使用者，用瀏覽器或手機連線，對外只開 443 埠。往右的箭頭標著 HTTPS 443，連到第二格反向代理，由 Caddy 或 Nginx 擔任，會把 80 自動轉到 443，憑證 90 天自動續期。第二格往右的箭頭標著 127.0.0.1 冒號 3000，連到第三格 Open WebUI，容器內部埠是 8080，只發佈到 127.0.0.1 的 3000 埠，帳號與對話存在 volume 裡。第三格往右的箭頭標著 11434 埠，連到第四格 Ollama，它是 systemd 服務，環境變數 OLLAMA_HOST 設為 0.0.0.0 冒號 11434，模型檔放在主機硬碟。圖的下排有兩個提醒框：左邊是防火牆，ufw 只放行 22、80、443，11434 不對外因為本機 API 不需要驗證，而且 Docker 發佈埠會繞過 ufw，所以埠要綁 127.0.0.1；右邊是備份與更新，資料在 volume 裡，更新只換映像檔，更新前把 volume 打包成 tar.gz，備份檔要複製到這台機器以外的地方。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#2F6F9F"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">從瀏覽器到模型：連線走過的每一段</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">User to reverse proxy to Open WebUI to Ollama, all on one VPS</text>
+
+  <text x="200" y="228" font-size="19" font-weight="700" fill="#5C6B6B" text-anchor="middle">公開網路</text>
+  <text x="1000" y="228" font-size="19" font-weight="700" fill="#5C6B6B" text-anchor="middle">這台 VPS 裡面</text>
+  <line x1="400" y1="300" x2="400" y2="560" stroke="#5C6B6B" stroke-width="2" stroke-dasharray="10 8"/>
+
+  <text x="400" y="276" font-size="17" font-weight="700" fill="#2F6F9F" text-anchor="middle">HTTPS 443</text>
+  <text x="800" y="276" font-size="17" font-weight="700" fill="#0D6B68" text-anchor="middle">127.0.0.1:3000</text>
+  <text x="1200" y="276" font-size="17" font-weight="700" fill="#0D6B68" text-anchor="middle">11434 埠</text>
+
+  <line x1="368" y1="430" x2="432" y2="430" stroke="#2F6F9F" stroke-width="5" marker-end="url(#arrowBlue)"/>
+  <line x1="768" y1="430" x2="832" y2="430" stroke="#0D6B68" stroke-width="5" marker-end="url(#arrowTeal)"/>
+  <line x1="1168" y1="430" x2="1232" y2="430" stroke="#0D6B68" stroke-width="5" marker-end="url(#arrowTeal)"/>
+
+  <rect x="40" y="300" width="320" height="260" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="200" y="360" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">使用者</text>
+  <text x="200" y="412" font-size="17" fill="#102A2B" text-anchor="middle">瀏覽器或手機</text>
+  <text x="200" y="452" font-size="17" fill="#102A2B" text-anchor="middle">連的是你的網域</text>
+  <text x="200" y="500" font-size="16" fill="#5C6B6B" text-anchor="middle">對外只開 443 埠</text>
+
+  <rect x="440" y="300" width="320" height="260" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="600" y="360" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">反向代理</text>
+  <text x="600" y="412" font-size="17" fill="#102A2B" text-anchor="middle">Caddy 或 Nginx</text>
+  <text x="600" y="452" font-size="17" fill="#102A2B" text-anchor="middle">80 自動轉 443</text>
+  <text x="600" y="500" font-size="16" fill="#5C6B6B" text-anchor="middle">憑證 90 天自動續期</text>
+
+  <rect x="840" y="300" width="320" height="260" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1000" y="360" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">Open WebUI</text>
+  <text x="1000" y="412" font-size="17" fill="#102A2B" text-anchor="middle">容器內部埠 8080</text>
+  <text x="1000" y="452" font-size="17" fill="#102A2B" text-anchor="middle">只發佈給本機</text>
+  <text x="1000" y="500" font-size="16" fill="#5C6B6B" text-anchor="middle">帳號與對話存在 volume</text>
+
+  <rect x="1240" y="300" width="320" height="260" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1400" y="360" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">Ollama</text>
+  <text x="1400" y="412" font-size="17" fill="#102A2B" text-anchor="middle">systemd 服務</text>
+  <text x="1400" y="452" font-size="16" fill="#102A2B" text-anchor="middle">OLLAMA_HOST=0.0.0.0:11434</text>
+  <text x="1400" y="500" font-size="16" fill="#5C6B6B" text-anchor="middle">模型檔放在主機硬碟</text>
+
+  <rect x="40" y="630" width="740" height="200" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="410" y="684" font-size="22" font-weight="700" fill="#B8442D" text-anchor="middle">防火牆：只留三個埠</text>
+  <text x="410" y="728" font-size="17" fill="#102A2B" text-anchor="middle">ufw 只放行 22、80、443</text>
+  <text x="410" y="768" font-size="17" fill="#102A2B" text-anchor="middle">11434 不對外：本機 API 不需要驗證</text>
+  <text x="410" y="806" font-size="16" fill="#5C6B6B" text-anchor="middle">Docker 發佈埠會繞過 ufw，所以埠綁 127.0.0.1</text>
+
+  <rect x="820" y="630" width="740" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1190" y="684" font-size="22" font-weight="700" fill="#0D6B68" text-anchor="middle">備份與更新：資料在 volume 裡</text>
+  <text x="1190" y="728" font-size="17" fill="#102A2B" text-anchor="middle">更新只換映像檔，volume 不動</text>
+  <text x="1190" y="768" font-size="17" fill="#102A2B" text-anchor="middle">更新前把 volume 打包成 tar.gz</text>
+  <text x="1190" y="806" font-size="16" fill="#5C6B6B" text-anchor="middle">備份檔要複製到這台機器以外的地方</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

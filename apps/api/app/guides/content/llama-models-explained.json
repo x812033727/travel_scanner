@@ -1,0 +1,487 @@
+{
+  "slug": "llama-models-explained",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Llama 模型家族：授權與版本",
+      "description": "Meta 的 Llama 是可以下載權重、在自己電腦上執行的模型家族，授權卻不是 OSI 認可的開源。這篇照 2026 年 9 月 14 日的官方頁面整理：官網現在列出的版本與日期、各版本的參數與上下文視窗、Llama 4 社群授權的逐條要點（700 million 月活躍使用者門檻、Built with Llama 標示、命名規定與使用政策），從官網申請、Hugging Face 受管制倉庫到 Ollama 三條下載路線，以及 Llama 和 Meta 目前主力的 Muse 系列是什麼關係。",
+      "hero": {
+        "src": "/guides/llama-models-explained/hero.jpg",
+        "alt": "插圖：三張層疊的模型版本卡片、一台顯示下載箭頭的筆電，以及一份蓋了核可章的授權文件。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Llama 是 Meta 釋出、可以把權重下載回自己電腦執行的模型家族。到 2026 年 9 月 14 日為止，Meta 開發者網站上列出的 Llama 只到 2025 年 4 月 5 日的 Llama 4，而 Meta 現在主推的是另一條產品線 Muse 系列。Llama 的授權叫社群授權，可以商用，但附帶標示、命名、使用政策與月活躍使用者門檻等條件，不是 OSI 認可的開源授權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇會帶你看完官網現在列了哪些版本、每個版本的規模與上下文視窗、授權原文裡真正會影響你的那幾條，以及三條合法拿到權重的路線：在 Meta 開發者網站填表申請、在 Hugging Face 的受管制倉庫按同意，或直接用 Ollama 拉官方標籤。最後說明你在 WhatsApp、Instagram 裡用到的 Meta AI 和 Llama 是什麼關係。"
+        },
+        {
+          "type": "heading",
+          "text": "Llama 是一包可以下載的權重，不是一個聊天服務",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "和只能透過網站或 API 使用的雲端服務不同，Llama 提供的是模型權重檔案本身。你把檔案下載到自己的電腦或伺服器，用 Ollama、LM Studio 這類軟體載入，就能離線對話；資料不會離開你的機器，也不必按次計費。代價是速度與品質受硬體限制，輸出的內容也要你自己負責。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Meta 官方的 Llama 4 頁面把這一代描述成最容易取得、也最容易擴展的一代 Llama，並寫著所有 Llama 4 模型都採用原生多模態設計、運用早期融合（early fusion）：文字和影像由同一個模型一起處理，不是外掛一個看圖模組。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要先分清楚兩個名詞：能下載權重不等於開源。這一點在"
+            },
+            {
+              "type": "link",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+            },
+            {
+              "type": "text",
+              "text": "兩篇裡有完整說明，下面會用 Llama 的授權原文再示範一次。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "官網現在列出的版本與時間",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Meta 開發者網站的模型導覽目前只有 Llama 4 與 Llama 3 兩個項目；Llama 2 的社群授權全文還留在授權頁上，文件標示的版本日期是 2023 年 7 月 18 日。各版本的版本日期以官方授權文件為準，整理如下。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Llama 3：版本日期 2024 年 4 月 18 日。Hugging Face 的 meta-llama 組織頁上放的是 8B 與 70B 兩種指令微調版本。",
+            "Llama 3.1：版本日期 2024 年 7 月 23 日。官網列出 8B、70B 與 405B 三種，405B 被標為旗艦基礎模型。",
+            "Llama 3.2：版本日期 2024 年 9 月 25 日。1B 與 3B 是純文字的輕量版本，官網說是為裝置端與邊緣部署最佳化；11B 與 90B 是多模態，官網寫它們可以對高解析度影像推理。",
+            "Llama 3.3：版本日期 2024 年 12 月 6 日。只有 70B 純文字指令微調版，官網寫它接近 Llama 3.1 405B 的表現。",
+            "Llama 4：版本日期 2025 年 4 月 5 日，包含 Scout 與 Maverick 兩款，都是原生多模態。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Llama 4 兩款的官方模型卡寫得很清楚。Scout 是 17B 啟用參數、109B 總參數、16 個專家，上下文視窗 10M；Maverick 是 17B 啟用參數、400B 總參數、128 個專家，上下文視窗 1M。兩款都吃多語文字加影像、輸出多語文字與程式碼，模型卡列出的訓練資料截止時間是 2024 年 8 月。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "啟用參數、專家與上下文視窗這三個詞如果還不熟，"
+            },
+            {
+              "type": "link",
+              "text": "混合專家模型（Mixture of Experts）是什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "link",
+              "text": "模型參數（Model Parameters）是什麼",
+              "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "三篇各講一個，讀完再回來看上面的數字會比較有感覺。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/llama-models-explained/diagram-1.svg",
+          "alt": "Llama 各版本的時間軸，依年份分欄列出版本名稱、官方版本日期與規模，最後接上 Meta 的 Muse 系列。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右是官方授權文件標示的版本日期；綠色是可以下載權重的 Llama，橘色是 Meta 目前的主力 Muse 系列。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "版本",
+            "規模與上下文",
+            "授權要點"
+          ],
+          "rows": [
+            [
+              "Llama 3.1（2024 年 7 月 23 日）",
+              "8B、70B、405B；上下文以官網為準",
+              "Llama 3.1 社群授權，有 700 million 月活躍使用者門檻"
+            ],
+            [
+              "Llama 3.2（2024 年 9 月 25 日）",
+              "1B、3B 純文字；11B、90B 多模態；Ollama 標 128K",
+              "Llama 3.2 社群授權；多模態版本不授權給設籍歐盟的個人或主要營業地在歐盟的公司"
+            ],
+            [
+              "Llama 3.3（2024 年 12 月 6 日）",
+              "70B 純文字；Ollama 標 128K",
+              "Llama 3.3 社群授權，同樣有 700 million 門檻"
+            ],
+            [
+              "Llama 4 Scout（2025 年 4 月 5 日）",
+              "17B 啟用／109B 總參數、16 專家；上下文 10M",
+              "Llama 4 社群授權，須顯著標示 Built with Llama"
+            ],
+            [
+              "Llama 4 Maverick（2025 年 4 月 5 日）",
+              "17B 啟用／400B 總參數、128 專家；上下文 1M",
+              "同上；衍生模型的名稱開頭必須加 Llama"
+            ],
+            [
+              "Muse Glimmer 30B（2026 年 8 月）",
+              "約 29.6B 參數（含約 1.8B 視覺編碼器）；上下文 131,072 tokens 以上",
+              "Apache 2.0，不是 Llama 社群授權"
+            ]
+          ],
+          "caption": "數字取自 Meta 官方頁面、Hugging Face 模型卡與 Ollama 官方標籤頁，2026 年 9 月查證。"
+        },
+        {
+          "type": "heading",
+          "text": "社群授權原文怎麼寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Llama 4 社群授權的版本生效日是 2025 年 4 月 5 日，準據法是美國加州法。以下幾條是實務上最會遇到的，照原文整理。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "授權範圍（第 1(a) 條）：Meta 授予你一份非專屬、全球、不可轉讓且免權利金的有限授權，可以使用、重製、散布、複製、製作衍生作品與修改 Llama 素材。",
+            "標示義務（第 1(b)(i) 條）：散布 Llama 素材、衍生作品，或包含它們的產品或服務時，必須附上這份授權，並在相關網站、使用者介面、部落格文章、關於頁面或產品文件上顯著顯示 Built with Llama。",
+            "命名規定（同條後段）：如果你用 Llama 素材或它的輸出來建立、訓練、微調或改進另一個 AI 模型，而該模型會被散布或提供出去，該模型名稱的開頭必須加上 Llama。",
+            "附註檔（第 1(b)(iii) 條）：你散布的所有副本，都要在一個 Notice 文字檔裡保留指定的著作權聲明。",
+            "使用政策（第 1(b)(iv) 條）：你的使用必須遵守適用法律與法規（包含貿易合規法規），並遵守可接受使用政策，該政策以引用方式併入這份授權。",
+            "商業門檻（第 2 條）：在 Llama 4 版本發布日當天，若你或你的關係企業所提供的產品或服務，前一個日曆月的月活躍使用者超過 700 million，就必須另外向 Meta 申請授權，Meta 可以自行裁量是否給予。",
+            "商標（第 5(a) 條）：這份授權不授予任何商標授權；Meta 只授權你為了符合上面那條命名規定而使用 Llama 這個標誌。",
+            "終止（第 6 條）：違反條款時 Meta 可以終止授權，終止後你必須刪除並停止使用 Llama 素材。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "散布時必須保留在 Notice 檔裡的著作權聲明（Llama 4 社群授權第 1(b)(iii) 條原文）",
+          "code": "Llama 4 is licensed under the Llama 4 Community License, Copyright © Meta Platforms, Inc. All Rights Reserved."
+        },
+        {
+          "type": "paragraph",
+          "text": "被併進授權的可接受使用政策把禁止用途分成四大類：違反法律或他人權利，包含暴力或恐怖主義、兒童性剝削、人口販運、騷擾霸凌、就業與信貸住房上的歧視、未經授權從事金融法律醫療等專業、未經授權蒐集他人私密資料；可能造成死亡或身體傷害的活動，包含軍事、核武與間諜活動、槍枝與非法武器、非法藥物、自傷或傷害他人；蓄意欺騙或誤導，包含詐欺、不實訊息、誹謗、冒充他人，以及聲稱 Llama 4 的使用或輸出是人類產出的；還有未揭露已知風險與介接非法的第三方工具。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "最容易忘記的三件事",
+          "text": "第一，只要你把 Llama 或用它微調出來的模型放進對外的產品或服務，就要顯著標上 Built with Llama，並附上授權全文與 Notice 檔。第二，用 Llama 訓練或微調出來、又對外發布的模型，名稱開頭必須是 Llama。第三，700 million 月活躍使用者這個門檻算的是你整個產品或服務的使用者數，不是呼叫模型的次數；多數個人與中小團隊碰不到，但被大平台收購或整併時要重新確認。"
+        },
+        {
+          "type": "heading",
+          "text": "開源與開放權重：Llama 屬於後者",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "社群授權可以商用，但它對使用者規模設門檻、要求特定的標示與命名、把使用政策以引用方式併入合約，這些都限制了任何人、任何用途、任何領域都能自由使用的前提，所以它不是 OSI 認可的開源授權。比較精確的說法是開放權重：權重公開下載，條款自訂。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一家公司也可以兩種都做。Meta 在 2026 年 8 月放出的 Muse Glimmer 30B 用的是 Apache 2.0，那是標準的開源授權，Hugging Face 上的倉庫也沒有設存取限制；Llama 4 則要按同意才拿得到。所以看到開源模型四個字，先去模型卡上把授權名稱看清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "授權也可能綁地區。Llama 3.2 的多模態模型在官方模型卡的授權段落寫著：若你是設籍於歐盟的個人，或主要營業地在歐盟的公司，Llama 3.2 社群授權第 1(a) 條所授予的權利不會授予你；這條限制不適用於使用內含這些多模態模型的產品或服務的終端使用者。Llama 4 社群授權的原文裡沒有這一條，只在定義章節區分締約主體：位於歐洲經濟區或瑞士的是 Meta Platforms Ireland Limited，其他地區是 Meta Platforms, Inc.。"
+        },
+        {
+          "type": "heading",
+          "text": "在哪裡下載、怎麼在自己的電腦上跑",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方提供三條路，手續由繁到簡。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Meta 開發者網站的下載頁：填一份表單，欄位包含法定名字與姓氏、出生年月日、電子郵件、國家或地區、組織或所屬單位、職稱。頁面提醒務必填寫法定姓名，未依指示填寫可能無法存取任何模型。",
+            "Hugging Face 的受管制倉庫：meta-llama 組織頁寫著使用者必須接受授權條款與可接受使用政策才能存取模型，申請每小時處理一次。官方文件說明受管制模型會要求你同意把使用者名稱與電子郵件分享給模型作者；Llama 4 Scout 指令版的倉庫設定是人工審核，不是自動放行。要用腳本下載，機器得先登入。",
+            "Ollama：官方 library 已經把模型打包好，一行指令就能拉下來跑，不必自己處理權重檔與存取權。相對地，你拿到的是 Ollama 整理過的標籤與量化，不是原始權重檔。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 Ollama 拉官方標籤（指令照 Ollama library 頁面）",
+          "code": "ollama run llama3.2:1b\nollama run llama3.3:70b\nollama run llama4:scout\nollama run muse-glimmer"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用腳本下載 Hugging Face 受管制倉庫前，先在這台機器登入",
+          "code": "hf auth login"
+        },
+        {
+          "type": "paragraph",
+          "text": "檔案大小決定你跑不跑得動。Ollama 官方標籤頁當天列出的大小是：llama3.2:1b 為 1.3GB、llama3.2:3b 為 2.0GB，上下文都標 128K；llama3.3:70b 為 43GB、上下文 128K；llama4:16x17b 為 67GB、上下文 10M，llama4:128x17b 為 245GB、上下文 1M；muse-glimmer:30b 為 18GB、上下文 128K。一般筆電通常只跑得動前面兩個，43GB 以上要看顯示記憶體與記憶體夠不夠；官方頁面沒有逐一列出最低硬體需求，實際需求以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "LM Studio 走另一條路。官方文件說它內建模型下載器，可以下載 Hugging Face 上任何支援的模型，搜尋列輸入關鍵字、使用者名稱加模型名稱，甚至完整網址都可以；同一個模型會有 Q3_K_S、Q_8 這類不同量化版本，文件建議機器夠力就選 4-bit 以上。介面以官網當天版本為準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這三條路各有一篇更完整的教學："
+            },
+            {
+              "type": "link",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+            },
+            {
+              "type": "text",
+              "text": "講安裝與第一個模型，"
+            },
+            {
+              "type": "link",
+              "text": "Hugging Face 入門：找模型、看授權、下載",
+              "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+            },
+            {
+              "type": "text",
+              "text": "講帳號、受管制倉庫與下載指令，"
+            },
+            {
+              "type": "link",
+              "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+              "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+            },
+            {
+              "type": "text",
+              "text": "講檔名裡那些 Q4、Q8 到底差在哪。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Llama、Muse 與你手機裡的 Meta AI",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Meta 在 2026 年 4 月 8 日宣布 Muse Spark，由 Meta Superintelligence Labs 打造。官方公告說它是 Meta 目前最強的語言模型，用在 Meta AI 應用程式與 meta.ai 網站、WhatsApp、Instagram、Facebook、Messenger，以及 Ray-Ban Meta 與 Oakley Meta 眼鏡、Meta Ray-Ban Display 上。公告同時寫著希望未來的版本能開源，但目前只提供給部分夥伴的私有 API 預覽，沒有釋出權重。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一邊，Muse Glimmer 在 2026 年 8 月 9 日上架 Hugging Face 的 meta-models 組織。官網把它描述成為常駐本機代理打造的開放模型，針對工具使用、長任務與失敗復原調校。模型卡寫的是約 29.6B 總參數、其中約 1.8B 是視覺編碼器，密集因果 Transformer 架構、上下文 131,072 tokens 以上、訓練資料涵蓋超過 100 種語言，授權 Apache 2.0，並註明本模型不打算讓未滿 18 歲的個人下載或使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以要分成三件事看：你在 WhatsApp 裡用到的 Meta AI 是雲端服務，背後是沒有公開權重的 Muse Spark；Llama 4 是你可以自己下載、用社群授權的上一代開放權重模型；Muse Glimmer 是新的開放權重模型，走 Apache 2.0。Meta 開發者網站的導覽目前只列到 Llama 4 與 Llama 3，Llama 會不會有下一版，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
+          "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "其他家的開放權重模型也用同一套方法看："
+            },
+            {
+              "type": "link",
+              "text": "Gemma：Google 的開源模型怎麼用",
+              "url": "https://mokaair.com/zh-TW/life/gemma-google-open-models"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "link",
+              "text": "OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪",
+              "url": "https://mokaair.com/zh-TW/life/gpt-oss-openai-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "可以拿來和 Llama 的授權條款對照著讀。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "下載之前先確認的三件事",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "語言：Llama 4 模型卡列出的支援語言是阿拉伯文、英文、法文、德文、印地文、印尼文、義大利文、葡萄牙文、西班牙文、他加祿文、泰文與越南文，繁體中文不在列表裡；模型卡並寫明，以未明確列為支援的語言或能力使用屬於範圍外。",
+            "影像：Llama 4 模型卡寫明影像理解最多測試到 5 張輸入影像，超過就不在官方測試範圍內。",
+            "用途：範圍外使用還包含任何違反適用法律或法規（含貿易合規法規）的方式，以及可接受使用政策與 Llama 4 社群授權禁止的任何方式。商用前值得把這兩句完整讀過。"
+          ],
+          "ordered": false
+        }
+      ],
+      "sources": [
+        {
+          "title": "Meta AI 開發者網站首頁（Muse 與 Llama 產品線）",
+          "url": "https://developer.meta.com/ai/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meta 官方 Llama 4 模型頁",
+          "url": "https://developer.meta.com/ai/models/llama-4/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meta 官方 Llama 3 模型頁（3.1、3.2、3.3 規模）",
+          "url": "https://developer.meta.com/ai/models/llama-3/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meta 官方 Muse Glimmer 模型頁",
+          "url": "https://developer.meta.com/ai/models/muse-glimmer/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Llama 4 Community License Agreement 原文",
+          "url": "https://developer.meta.com/ai/llama4/license/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Llama 4 Acceptable Use Policy 原文",
+          "url": "https://developer.meta.com/ai/llama4/use-policy/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meta 模型下載申請頁（表單欄位與取得管道）",
+          "url": "https://developer.meta.com/ai/llama-downloads/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Meta 授權頁（Llama 2 社群授權全文與版本日期）",
+          "url": "https://developer.meta.com/ai/license/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub meta-llama/llama-models 的 Llama 4 LICENSE 原文",
+          "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face meta-llama 官方組織頁（存取條件與模型清單）",
+          "url": "https://huggingface.co/meta-llama",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型卡：Llama-4-Scout-17B-16E-Instruct",
+          "url": "https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型卡：Llama-4-Maverick-17B-128E-Instruct",
+          "url": "https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型卡：Llama-3.2-11B-Vision-Instruct（歐盟條款）",
+          "url": "https://huggingface.co/meta-llama/Llama-3.2-11B-Vision-Instruct",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 模型卡：meta-models/Muse-Glimmer-30B",
+          "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face 官方文件：Gated models",
+          "url": "https://huggingface.co/docs/hub/models-gated",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方 library：llama4 標籤與大小",
+          "url": "https://ollama.com/library/llama4",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方 library：llama3.3 標籤與大小",
+          "url": "https://ollama.com/library/llama3.3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方 library：llama3.2 標籤與大小",
+          "url": "https://ollama.com/library/llama3.2",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方 library：muse-glimmer 標籤與大小",
+          "url": "https://ollama.com/library/muse-glimmer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LM Studio 官方文件：Download an LLM",
+          "url": "https://lmstudio.ai/docs/app/basics/download-model",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

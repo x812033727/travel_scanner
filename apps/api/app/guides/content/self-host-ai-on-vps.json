@@ -1,0 +1,410 @@
+{
+  "slug": "self-host-ai-on-vps",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "在 VPS 上自架 AI 服務：Ollama＋Open WebUI",
+      "description": "自架 AI 只要一台 Linux VPS：把 Ollama 與 Open WebUI 架成自己或小團隊專用的服務，Ollama 用官方腳本裝成服務，Open WebUI 用 Docker 跑起來只綁 127.0.0.1，前面用 Caddy 或 Nginx 開 HTTPS。這篇照官方文件寫指令、環境變數、反向代理、關閉註冊與防火牆，說明為什麼 11434 埠不能對外，並交代備份、更新與費用。",
+      "hero": {
+        "src": "/guides/self-host-ai-on-vps/hero.jpg",
+        "alt": "插圖：一台筆電經過一把鎖連到一台伺服器主機，代表加密連線到自己的機器。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "把 Ollama 裝在自己的筆電上，只有坐在那台電腦前面才用得到。換成一台 Linux VPS，同一組工具就變成一個隨時開著、手機和公司電腦都連得上的服務：Ollama 負責跑模型，Open WebUI 負責介面與帳號，前面再放一台反向代理接上網域與 HTTPS。結論先講：指令都是現成的，真正要小心的是把埠關好，因為 Ollama 的本機 API 不需要任何驗證，這一點決定了整台機器的設定方式。搜「自架 AI」的人，重點不在指令，在把埠關好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你把六件事做完：挑機器規格、用官方腳本裝 Ollama 並改 systemd 的環境變數、用 Docker 跑 Open WebUI 並只綁在 127.0.0.1、用 Caddy 或 Nginx 加 Certbot 開 HTTPS、開好帳號與防火牆、安排備份與更新，最後把費用結構列清楚。租機器、設定網域 DNS、連 SSH 這些基礎步驟站上已經有一篇完整教學，照那篇做，這裡只補 AI 服務的部分。"
+        },
+        {
+          "type": "link",
+          "text": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
+          "url": "https://mokaair.com/zh-TW/life/deploy-ai-built-site-to-vps"
+        },
+        {
+          "type": "heading",
+          "text": "先決定機器：CPU、顯示卡與硬碟",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 在 Linux 上支援 Nvidia 與 AMD 的顯示卡：官方硬體支援頁寫 Nvidia 需要 compute capability 5.0 以上、驅動 550 以上，5.0 到 6.2 的卡則需要 570 以上，AMD 則需要 ROCm v7 的驅動，支援型號同一頁都列了。問題是一般 VPS 方案多半沒有顯示卡，模型會整顆跑在 CPU 與系統記憶體上。官方文件沒有給「幾核心、幾 GB 記憶體可以跑哪個模型、每秒幾個 token」的對照表，速度以官網與你自己實測為準，不要照來路不明的表格下單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "能先算清楚的是空間。Ollama 模型庫每個模型的 tags 頁都標了檔案大小，例如 llama3.2:1b 是 1.3GB、llama3.2:3b 是 2.0GB，兩個的上下文視窗都標 128K。模型下載後放在 /usr/share/ollama/.ollama/models，想換位置就設 OLLAMA_MODELS，並照官方註記把目錄的擁有者改成 ollama 這個使用者。另外 Ollama 預設的上下文視窗是 4096 個 token，要調大就設 OLLAMA_CONTEXT_LENGTH，但文件同時提醒：上下文開得越大，需要的記憶體越多。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "純 CPU 的方案：先用 1B 到 3B 這種小模型測，記憶體要放得下模型檔加上下文；官方沒有對照表，能不能接受以你實際試出來的速度為準。",
+            "有顯示卡的方案：照官方硬體支援頁對型號與驅動版本。Ollama 會依顯示記憶體決定預設上下文，小於 24 GiB 是 4k、24 到 48 GiB 是 32k、48 GiB 以上是 256k。",
+            "硬碟：模型檔之外還要放 Docker 映像檔，Open WebUI 官方文件寫 amd64 的標準映像檔下載約 1.8GB、slim 版約 1.5GB。",
+            "人多就更吃記憶體：官方 FAQ 寫同一個模型的並行請求會把上下文乘上請求數，記憶體不夠時新請求會排隊，塞太多會回 503。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "共享主機、VPS 與雲端代管：小網站的選擇順序",
+          "url": "https://mokaair.com/zh-TW/life/hosting-types-explained"
+        },
+        {
+          "type": "heading",
+          "text": "裝 Ollama：安裝腳本、systemd 與環境變數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方 Linux 安裝頁給的就是一行安裝腳本。跑完會建立一個 ollama 系統使用者，並把 Ollama 設成 systemd 服務（同一頁的解除安裝步驟就是停掉這個服務、刪掉服務檔，再把 ollama 使用者移除），所以之後的操作都是 systemctl 與 journalctl。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "裝 Ollama 並確認服務跑起來（照 docs.ollama.com 的 Linux 頁）",
+          "code": "curl -fsSL https://ollama.com/install.sh | sh   # 官方安裝腳本\nollama -v                                       # 確認版本\nsudo systemctl status ollama                    # 看服務狀態\nollama pull llama3.2:3b                         # 先拉一個小模型\njournalctl -e -u ollama                         # 服務日誌"
+        },
+        {
+          "type": "paragraph",
+          "text": "環境變數不能寫在你自己的 shell 設定檔裡，因為服務是以 ollama 這個使用者在跑。官方 FAQ 的做法是執行 systemctl edit ollama.service，在 [Service] 區段底下加 Environment 行，存檔後重新載入 systemd 再重啟。VPS 上最常加的一行是 OLLAMA_HOST。Ollama 預設只綁 127.0.0.1 的 11434 埠，而 Open WebUI 跑在 Docker 容器裡算是另一個網路介面，所以 Open WebUI 的疑難排解頁直接要你把 OLLAMA_HOST 設成 0.0.0.0 讓它聽所有介面。這一改，防火牆就從「建議」變成「必要」。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "systemctl edit ollama.service 的覆寫內容（照官方 FAQ 的 Linux 段）",
+          "code": "# sudo systemctl edit ollama.service\n[Service]\nEnvironment=\"OLLAMA_HOST=0.0.0.0:11434\"\nEnvironment=\"OLLAMA_CONTEXT_LENGTH=8192\"\n\n# 存檔離開後，照文件再跑這兩行：\n# sudo systemctl daemon-reload\n# sudo systemctl restart ollama"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        },
+        {
+          "type": "heading",
+          "text": "裝 Open WebUI：Docker Compose 只綁 127.0.0.1",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Docker 照官方文件用 apt 儲存庫裝（Open WebUI 的 Caddy 教學也是這樣做），要裝的套件是 docker-ce、docker-ce-cli、containerd.io、docker-buildx-plugin 與 docker-compose-plugin，最後一個提供的就是中間有空格的 docker compose 指令；舊教學裡帶連字號的寫法是第一版語法，官方文件要你用第二版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open WebUI 官方快速開始給的是一行 docker run，把容器內部的 8080 對應到主機的 3000。在 VPS 上要改一個地方：Docker 官方文件講得很白，發佈埠預設是不安全的，埠一發佈就不只主機看得到，外面也看得到；在發佈時加上 127.0.0.1，就只有這台主機連得進去。反向代理跟容器在同一台機器上，所以 3000 只留給本機就夠。"
+        },
+        {
+          "type": "code",
+          "language": "yaml",
+          "label": "docker-compose.yml（官方快速開始的 Compose 版本，埠改成只綁本機）",
+          "code": "services:\n  open-webui:\n    image: ghcr.io/open-webui/open-webui:main\n    ports:\n      - \"127.0.0.1:3000:8080\"\n    volumes:\n      - open-webui:/app/backend/data\n    extra_hosts:\n      - host.docker.internal:host-gateway\n    environment:\n      - WEBUI_SECRET_KEY=這裡貼 openssl rand -hex 32 的輸出\n      - OLLAMA_BASE_URL=http://host.docker.internal:11434\n      - WEBUI_URL=https://chat.example.com\n      - WEBUI_SESSION_COOKIE_SECURE=true\n    restart: unless-stopped\n\nvolumes:\n  open-webui:"
+        },
+        {
+          "type": "paragraph",
+          "text": "存好之後在同一個目錄執行 docker compose up -d。幾個欄位官方文件都有交代：WEBUI_SECRET_KEY 用 openssl rand -hex 32 產生並固定下來，容器重建時才不會把所有人登出，它同時用來簽發登入 token 與加密存放的敏感資料；volume 是對話、帳號、設定與上傳檔案的所在，文件的原話是絕對不要不掛 volume 就跑；OLLAMA_BASE_URL 在 Docker 裡的預設值本來就是 host.docker.internal 的 11434 埠，extra_hosts 那行讓容器找得到主機；WEBUI_URL 填公開網址，OAuth 與內部連結才會正確。介面的操作步驟以官網當天版本為準。"
+        },
+        {
+          "type": "link",
+          "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
+          "url": "https://mokaair.com/zh-TW/life/open-webui-chat-interface"
+        },
+        {
+          "type": "heading",
+          "text": "反向代理與 HTTPS：Caddy 或 Nginx 加 Certbot",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open WebUI 自己不處理 TLS，官方文件直接寫要放在反向代理後面由代理負責 HTTPS。同一頁列了四件跟代理有關的設定：WEBUI_URL 填公開網址、CORS_ALLOW_ORIGIN 要對得上公開網址（不然 WebSocket 會安靜地連不上）、關掉代理的緩衝（串流回應需要）、把讀取逾時至少拉到 300 秒，因為模型回一段長文可能要好幾分鐘。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Caddy 是最省事的一條路。官方的 Debian 與 Ubuntu 套件裝完會自動以名為 caddy 的 systemd 服務啟動，設定檔在 /etc/caddy/Caddyfile，寫上網域再加一行 reverse_proxy 就結束了。Caddy 會自己去 Let's Encrypt 或 ZeroSSL 這類公開 ACME 憑證機構取得憑證、自動續期，並把 HTTP（預設埠 80）轉到 HTTPS（預設埠 443）。前提是網域的 A 記錄已經指向這台機器，而且 80 與 443 從外面連得到。改完設定用 systemctl reload caddy 重新載入，官方文件特別說不要用 stop，那會造成停機。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Caddyfile：一行反向代理（照 Open WebUI 官方 Caddy 頁，埠換成本機的 3000）",
+          "code": "# /etc/caddy/Caddyfile\nchat.example.com {\n\treverse_proxy 127.0.0.1:3000\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "機器上已經在跑 Nginx 就走另一條：照 Open WebUI 的 Nginx 頁，一個 server 區塊聽 80，把 /.well-known/acme-challenge/ 留給憑證驗證、其他路徑 301 轉到 HTTPS；另一個聽 443 的區塊用 proxy_pass 指到 Open WebUI，帶上 proxy_http_version 1.1 與 Upgrade、Connection 標頭讓 WebSocket 過得去，加上 proxy_buffering off，並把 proxy_read_timeout 拉長，官方範例用的是 1800 秒。憑證交給 Certbot：官方指示是用 snap 安裝，再跑 certbot 的 nginx 模式，它會自動改好設定並裝上憑證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Let's Encrypt 官方說明憑證預設效期是 90 天，建議每 60 天續一次，而且不收費；Certbot 安裝時會附上 cron 或 systemd timer 自動續期，你只要跑一次演練指令確認它會動就好。防火牆也在這一步一起設：Ubuntu 官方文件的預設工具是 ufw，它一開始是關閉的，要自己打開。順序是先放行 22 再打開防火牆，反過來很容易把自己鎖在門外。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "Certbot 與 ufw：憑證自動續期，防火牆只留三個埠",
+          "code": "# Certbot：官方建議的 snap 安裝方式\nsudo snap install --classic certbot\nsudo ln -s /snap/bin/certbot /usr/local/bin/certbot\nsudo certbot --nginx          # 取得憑證並自動改 Nginx 設定\nsudo certbot renew --dry-run  # 演練自動續期\n\n# 防火牆：先放行 SSH，再打開\nsudo ufw allow 22\nsudo ufw allow 80\nsudo ufw allow 443\nsudo ufw enable\nsudo ufw status"
+        },
+        {
+          "type": "link",
+          "text": "讓網站使用 HTTPS：憑證、轉址與混合內容檢查",
+          "url": "https://mokaair.com/zh-TW/life/https-certificate-setup"
+        },
+        {
+          "type": "image",
+          "src": "/guides/self-host-ai-on-vps/diagram-1.svg",
+          "alt": "四段路的架構圖：使用者經 HTTPS 連到反向代理，代理轉給只綁本機的 Open WebUI，Open WebUI 再連到主機上的 Ollama。",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左到右看：只有反向代理站在公開網路上，後面兩段都留在這台機器裡面，下排是防火牆與備份的原則。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "帳號、關閉註冊與防火牆",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個註冊的帳號就是管理員，之後 Open WebUI 會自動把註冊關掉，這一步不用自己動手；新帳號的預設角色是 pending，要管理員核准才看得到東西。要讓同事自己註冊就把 ENABLE_SIGNUP 設成 true，但把 DEFAULT_USER_ROLE 留在 pending。要注意這兩個都是會寫進資料庫的設定，官方叫它 ConfigVar，第一次啟動之後再改環境變數不一定生效，官方建議直接在管理面板改。共用的機器還可以把登入 token 的效期縮短，JWT_EXPIRES_IN 預設是四週。"
+        },
+        {
+          "type": "paragraph",
+          "text": "防火牆是這整篇最重要的一步。Ollama 的 API 文件第一句話就是：在本機透過 11434 埠存取 API 不需要任何驗證。換句話說，那個埠只要對外開著，任何掃到你 IP 的人都能用你的機器跑模型。VPS 上只開 22、80、443，其他一律不開。還有一個容易中招的地方：Docker 官方文件寫明 Docker 與 ufw 的規則互不相容，容器發佈埠的流量走 nat 表，在抵達 ufw 使用的 INPUT 與 OUTPUT 鏈之前就被轉走，等於繞過你的防火牆設定。這就是上面把埠寫成只綁 127.0.0.1 的原因：不要指望用 ufw 擋容器的埠，一開始就不要把它發佈到公開介面。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "11434 與 3000 都不該出現在公開 IP 上",
+          "text": "Ollama 的本機 API 不需要驗證，Open WebUI 的登入也不是設計來獨自面對整個公開網路的：官方強化指南寫它是給私有、受信任的網路用的，建議放在 VPN、零信任存取代理，或有速率限制與 IP 允許清單的反向代理後面，DDoS 與暴力破解的防護也該在代理或網路那一層做。實務上的最低標準有三條：容器埠只綁 127.0.0.1、ufw 只開 22 與 80 與 443、把 OLLAMA_HOST 設成 0.0.0.0 之後從外面試一次連 11434 確認連不上。另外 WEBUI_SECRET_KEY 要自己固定一組並當成密碼保管，換掉它等於讓所有人重新登入。"
+        },
+        {
+          "type": "heading",
+          "text": "備份、更新與費用結構",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "資料不在容器裡，在 volume 裡：對話、使用者、設定、上傳的檔案都在那裡。官方備份做法是開一個臨時的 alpine 容器，把整個 volume 打包成 tar.gz，每次更新前做一次，平常照使用頻率定期做。還原指令會先清空 volume 再解開備份檔，執行前務必確認拿的是對的檔案。VPS 上要多做一件事：把備份檔複製到這台機器以外的地方，不然機器整台掛掉時備份也一起沒了。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "備份 volume 與更新兩個服務（照各自官方文件）",
+          "code": "# 備份 Open WebUI 的 volume（官方更新指南的做法）\ndocker run --rm -v open-webui:/data -v $(pwd):/backup \\\n  alpine tar czf /backup/openwebui-$(date +%Y%m%d).tar.gz /data\n\n# 更新 Open WebUI：換映像檔，volume 不動\ndocker compose pull\ndocker compose up -d\n\n# 更新 Ollama：再跑一次安裝腳本\ncurl -fsSL https://ollama.com/install.sh | sh"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新 Open WebUI 就是把容器換成新的映像檔，資料原封不動。官方對多人共用或正式環境的建議是釘一個版本標籤而不是跟著 main 走，升級前先看發行說明、先備份，因為含資料庫遷移的版本是單向的，很難退回去。Ollama 的更新是再跑一次安裝腳本。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "步驟",
+            "指令或設定",
+            "備註"
+          ],
+          "rows": [
+            [
+              "裝 Ollama",
+              "curl -fsSL https://ollama.com/install.sh | sh",
+              "官方 Linux 安裝腳本，裝完是名為 ollama 的 systemd 服務"
+            ],
+            [
+              "改 Ollama 設定",
+              "systemctl edit ollama.service，在 [Service] 加 Environment 行",
+              "常加 OLLAMA_HOST 與 OLLAMA_CONTEXT_LENGTH，改完 daemon-reload 再 restart"
+            ],
+            [
+              "裝 Docker",
+              "照官方 apt 儲存庫裝 docker-ce 等五個套件",
+              "docker-compose-plugin 提供中間有空格的 docker compose 指令"
+            ],
+            [
+              "跑 Open WebUI",
+              "ports 寫 127.0.0.1:3000:8080，volume 掛 open-webui:/app/backend/data",
+              "發佈埠預設對外開放，加上本機位址才只有這台機器連得到"
+            ],
+            [
+              "設定祕鑰",
+              "WEBUI_SECRET_KEY 填 openssl rand -hex 32 的輸出",
+              "不固定的話，容器一重建就把所有人登出"
+            ],
+            [
+              "反向代理",
+              "Caddyfile 裡一行 reverse_proxy 127.0.0.1:3000",
+              "Caddy 自動取得與續期憑證，並把 80 轉到 443"
+            ],
+            [
+              "憑證（Nginx 路線）",
+              "sudo certbot --nginx，再跑 sudo certbot renew --dry-run",
+              "Let's Encrypt 憑證 90 天，安裝時附的 cron 或 timer 會自動續"
+            ],
+            [
+              "帳號與註冊",
+              "第一個帳號自動成為管理員；ENABLE_SIGNUP 與 DEFAULT_USER_ROLE",
+              "兩個都是 ConfigVar，第一次啟動後建議在管理面板改"
+            ],
+            [
+              "防火牆",
+              "ufw allow 22 與 80 與 443，再 ufw enable",
+              "11434 不對外；Docker 發佈埠會繞過 ufw，所以埠綁本機"
+            ],
+            [
+              "備份",
+              "用臨時 alpine 容器把 volume 打包成 tar.gz",
+              "更新前一定先做；還原會先清空 volume"
+            ]
+          ],
+          "caption": "在 VPS 上架 Ollama 與 Open WebUI 的十個步驟，指令與變數名稱來自各專案官方文件，2026 年 9 月查證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "費用結構跟雲端 API 完全不同：你付的是機器，不是 token。固定支出是 VPS 月費（看規格，價格以主機商官網為準，這篇不列特定業者的數字）、網域年費，再加上放備份的空間；憑證從 Let's Encrypt 拿不用錢，Ollama 與 Open WebUI 本身也不用錢。會變動的是流量，以及你願不願意為了速度升級到有顯示卡的方案。要判斷划不划算，就拿這幾項跟你現在每個月付的訂閱或 API 帳單擺在一起比。"
+        },
+        {
+          "type": "link",
+          "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+          "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後提醒一件常被忽略的事：自架之後，這台機器的更新、備份、憑證、帳號與資料外洩風險都算你的。同一件事交給雲端服務商，責任分界不一樣；決定之前先想清楚你接得住哪些。模型要挑哪一個、蒸餾版和完整版差在哪，站上另有專文可以接著看。"
+        },
+        {
+          "type": "link",
+          "text": "SaaS、PaaS 與 IaaS：你使用服務，也接下哪些責任",
+          "url": "https://mokaair.com/zh-TW/life/saas-paas-iaas-responsibility"
+        },
+        {
+          "type": "link",
+          "text": "WordPress 主機比較怎麼做：用同一張需求表評估供應商",
+          "url": "https://mokaair.com/zh-TW/life/managed-hosting-comparison"
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ollama 官方文件：Linux 安裝、systemd 服務與更新",
+          "url": "https://docs.ollama.com/linux",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方文件：FAQ（環境變數、上下文視窗、模型位置、並行請求）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方文件：API 驗證（本機不需驗證）",
+          "url": "https://docs.ollama.com/api/authentication",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方文件：硬體支援（Nvidia 與 AMD 需求）",
+          "url": "https://docs.ollama.com/gpu",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官方文件：上下文長度與顯示記憶體對應",
+          "url": "https://docs.ollama.com/context-length",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：llama3.2 的標籤與檔案大小",
+          "url": "https://ollama.com/library/llama3.2/tags",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：快速開始（Docker、Compose、祕鑰、映像檔大小）",
+          "url": "https://docs.openwebui.com/getting-started/quick-start",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：環境變數（ENABLE_SIGNUP、DEFAULT_USER_ROLE、WEBUI_URL 等）",
+          "url": "https://docs.openwebui.com/reference/env-configuration",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：強化部署（網路位置、祕鑰、註冊、逾時與 cookie）",
+          "url": "https://docs.openwebui.com/getting-started/advanced-topics/hardening",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：HTTPS 與反向代理總覽",
+          "url": "https://docs.openwebui.com/reference/https",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：用 Caddy 開 HTTPS",
+          "url": "https://docs.openwebui.com/reference/https/caddy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：用 Nginx 與 Let's Encrypt 開 HTTPS",
+          "url": "https://docs.openwebui.com/reference/https/nginx",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：連線疑難排解（OLLAMA_HOST 設 0.0.0.0）",
+          "url": "https://docs.openwebui.com/troubleshooting/connection-error",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Open WebUI 官方文件：更新與備份還原",
+          "url": "https://docs.openwebui.com/getting-started/updating",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Docker 官方文件：發佈埠與埠對應（預設不安全、綁本機位址）",
+          "url": "https://docs.docker.com/engine/network/port-publishing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Docker 官方文件：封包過濾與防火牆（Docker 與 ufw 不相容）",
+          "url": "https://docs.docker.com/engine/network/packet-filtering-firewalls/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Caddy 官方文件：安裝、服務管理與自動 HTTPS",
+          "url": "https://caddyserver.com/docs/automatic-https",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Certbot 官方指示：Nginx on Linux（snap）與自動續期",
+          "url": "https://certbot.eff.org/instructions?ws=nginx&os=snap",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Let's Encrypt 官方常見問題：憑證效期 90 天、免費",
+          "url": "https://letsencrypt.org/docs/faq/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ubuntu 官方伺服器文件：防火牆與 ufw",
+          "url": "https://documentation.ubuntu.com/server/how-to/security/firewalls/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

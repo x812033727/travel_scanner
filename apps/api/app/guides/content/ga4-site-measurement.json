@@ -1,0 +1,268 @@
+{
+  "slug": "ga4-site-measurement",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "misc"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "GA4 網站量測入門：資料串流、事件與安裝驗收",
+      "description": "GA4 有出現流量，不代表安裝與事件都正確。本文以原創室內植物照護工作室為例，從帳戶、資源與網站資料串流開始，說明 Google 標籤的安裝選擇、事件與重要事件的差別，再用 Tag Assistant、即時報表與 DebugView 建立驗收流程。附操作步驟、比較表及原創圖解，協助網站負責人檢查重複追蹤、個資欄位與資料處理限制。",
+      "hero": {
+        "src": "/guides/ga4-site-measurement/hero.jpg",
+        "alt": "Mokaair 原創網站螢幕、資料伺服器與查核文件，表達 GA4 串流、事件及安裝驗收的資料路徑。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "植物照護工作室想知道，訪客讀完服務介紹後，有沒有送出到府照護需求。只看到 GA4 報表有訪客還不夠，因為瀏覽、按下送出與工作室真正收到需求，是三個不同的狀態。安裝前先把要回答的問題寫清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依 2026 年 9 月 14 日查閱的 Google Analytics 與 Tag Manager 官方文件整理，使用目前 GA4 與 Google 標籤名稱。工作室和驗收情境為原創示例，沒有代為建立帳戶、修改正式網站或執行真實顧客追蹤。"
+        },
+        {
+          "type": "heading",
+          "text": "先整理帳戶、資源與資料串流",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "GA4 的帳戶用來組織管理，資源承接網站或應用程式的量測，資料串流則是資料進入資源的來源。為工作室設定網站量測時，先確認登入的 Google 帳戶與選到的 Analytics 資源，避免把工作室網站接到另一個客戶或舊測試案中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新增資源時選定報表時區與幣別，再建立 Web 資料串流，填寫網站網址及辨識名稱。台灣工作室可依自己營運與對帳需求選擇相應時區與幣別，並把決定留在紀錄中。這些設定影響後續報表口徑，不應只因介面預選了某個值就直接略過。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在資料串流中查看量測 ID 與安裝指示，記下資源名稱、網站、ID、擁有者及維護人。原創工作室若委外建站，可要求交接時展示這份對照，確認品牌仍有適當管理權限。建立新資源不是修復所有問題的通用方法，先查既有資料與需求再決定。"
+        },
+        {
+          "type": "heading",
+          "text": "選定一種主要安裝方式，盤點既有標籤",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網站可能透過 CMS 的原生整合、Google 標籤程式碼，或 Google Tag Manager 載入量測。先查網站目前使用哪一種，再依官方安裝指示完成設定。若已由外掛提供相同量測，再把同一套追蹤貼進主題與 GTM，可能讓原本一個動作被重複記錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 GTM 時，目前官方流程是建立 Google tag，再設定 Tag ID 與觸發條件；不能只安裝 GTM 容器就以為 GA4 已完成。較舊文件或影片可能仍使用 GA4 Configuration 名稱，操作時應核對當前 Google 標籤教學，不必為了找舊按鈕而新增無關項目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原創工作室可先列出 CMS 外掛、主題自訂程式碼、GTM 容器與第三方服務的追蹤來源，指定保留的主要方式。若需要調整，記錄修改前後版本及負責人，並安排驗收。不要在不明白用途時一次刪除所有標籤，否則也可能中斷其他已使用的服務量測。"
+        },
+        {
+          "type": "heading",
+          "text": "事件描述行為，重要事件對應業務目標",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "GA4 透過事件記錄互動，部分由基本安裝或加強型評估提供，其他則需要自行設定。官方加強型評估包含表單開始與送出等互動，但仍應在自己的表單實作上核對。看到 form_submit 名稱，不足以替代工作室確認真正收到了可處理的需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以原創需求表為例，先區分查看服務頁、開始填寫、資料不完整而失敗，以及成功建立需求。可依官方建議事件中的 generate_lead 規劃成功產生名單的紀錄，並讓網站以真正成功的狀態觸發。事件與參數的實際串接交由了解表單流程的人處理，避免只以送出按鈕被點擊為依據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "當事件能可靠代表重要動作，再評估是否標記成重要事件。官方說明標記從建立當下起影響後續報表，不會把過去資料全部重新算成重要事件。改名、改觸發條件或改價值時都要留日期，否則前後數字可能是在比較不同事情。"
+        },
+        {
+          "type": "heading",
+          "text": "用自己的測試裝置逐步核對",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先以 Tag Assistant 或 GTM 預覽連接測試網站，確認載入的是預期標籤與資料目的地。接著在 GA4 即時報表確認有接收資料，再用 DebugView 看測試裝置的事件與參數順序。DebugView 需要啟用偵錯模式，排錯時優先針對自己的裝置，讓資料容易辨識。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原創驗收清單包含正常開啟服務頁、開始填寫、送出失敗、成功送出、重新整理成功頁與回到上一頁。每一項先寫預期結果，再觀察實際事件；失敗不應被算成成功名單，重新整理也不應無故多出另一筆新需求。具體去重方式應依網站實作決定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若看不到偵錯事件，先核對資源、裝置、標籤、同意狀態及瀏覽器阻擋。官方指出部分隱私控制或未同意 Analytics Cookie 的情況會讓事件不出現在 DebugView。不能因此要求所有訪客關閉保護，再把能看到事件當作正式同意流程已完成驗證。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "確認帳戶資源、時區幣別與 Web 資料串流，保留量測 ID 對照。",
+            "盤點網站既有追蹤，依選定方式安裝並核對標籤目的地。",
+            "逐項測試正常、失敗及重複操作，確認事件名稱與參數。",
+            "檢查個資與資料排除設定，完成交接並追蹤正式報表處理結果。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "驗收內容也要包含個資與資料排除",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 政策禁止將可供辨識個人的資料傳入一般 Analytics 量測，例如電子郵件與個人手機號碼。檢查範圍不只是事件欄位，也包括頁面網址、查詢參數、標題與表單內容。原創工作室不應把客戶姓名、住址或照護需求全文放進事件名稱，當作日後找客戶的工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "將網站收集的服務資料留在適當的業務系統，分析工具只傳送量測所需且符合政策的資訊。若使用自訂分類，可先採照護服務種類等不含個人內容的值，並核對每個欄位的來源。增加一個參數前，先說明它要回答哪個問題，避免因為技術上取得到就全部傳送。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GA4 資料篩選器與報表篩選不同。官方說明排除型資料篩選一旦生效，被排除資料不會在 Analytics 或 BigQuery 中恢復，且不回溯歷史。排除內部或開發流量前先確認範圍與影響；如果只是想在特定報表暫時不看某群資料，應先評估報表篩選。"
+        },
+        {
+          "type": "heading",
+          "text": "把安裝完成與報表可用分開驗收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "看見即時資料是接收檢查，並不等於歷史報表、來源歸因與營收都已正確。DebugView 本來就提供有限的歸因分析；需要評估來源時，應使用相應獲客報表並等待資料處理。不要因為剛裝好幾分鐘的畫面沒有完整欄位，就反覆重裝而製造更多變數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原創工作室可留一份交接紀錄：安裝位置、資源名稱、主要事件、參數範圍、測試日期、已知限制及誰能維護。測試紀錄只使用必要資訊，不留下真實客戶表單內容的截圖。日後表單或網站改版時，直接沿用同一份清單重新驗證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "首次回顧先確認網站真實收到的需求與分析事件是否有合理對應，再看訪客從哪裡來、哪些頁面協助完成操作。不同工具可能有阻擋、處理與歸因差異，不必追求所有數字完全相同，但每個重要差異應有待查原因。能追查到設定與事件，資料才有助於改善服務。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ga4-site-measurement/diagram-1.svg",
+          "alt": "四張卡片依序說明資源串流、網站標籤、事件驗收及資料範圍，協助分開檢查安裝、業務意義與隱私。",
+          "width": 1600,
+          "height": 900,
+          "caption": "即時看到資料是開始，事件與業務意義對得上才完成驗收。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "驗收層次",
+            "可用工具或紀錄",
+            "需要確認"
+          ],
+          "rows": [
+            [
+              "網站安裝",
+              "CMS 設定或 Tag Assistant",
+              "標籤及資料目的地正確"
+            ],
+            [
+              "資料接收",
+              "GA4 即時報表",
+              "預期操作有送入目前資源"
+            ],
+            [
+              "事件細節",
+              "DebugView 與測試清單",
+              "成功、失敗與重複情境符合定義"
+            ],
+            [
+              "業務意義",
+              "表單成功狀態與事件表",
+              "重要事件代表可處理的需求"
+            ],
+            [
+              "隱私及排除",
+              "參數與篩選設定紀錄",
+              "不傳個資，不誤排永久資料"
+            ],
+            [
+              "後續分析",
+              "獲客報表及內部紀錄",
+              "等待處理，解釋口徑差異"
+            ]
+          ],
+          "caption": "原創工作室驗收分工。單一畫面有資料不能證明所有層次都已正確。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "按下送出與成功收到要分開",
+          "text": "先在自己的表單測試失敗、成功及重新整理，確認量測依據。事件名稱看起來正確，仍需要實際流程驗收。"
+        },
+        {
+          "type": "link",
+          "text": "在 WordPress 查看 Site Kit 的資料分工",
+          "url": "https://mokaair.com/zh-TW/life/google-site-kit-setup"
+        },
+        {
+          "type": "link",
+          "text": "先定義顧客流程中的重要動作",
+          "url": "https://mokaair.com/zh-TW/life/customer-journey-funnel"
+        },
+        {
+          "type": "link",
+          "text": "用一致的價值與成本讀廣告報酬",
+          "url": "https://mokaair.com/zh-TW/life/marketing-metrics-roi-roas"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Analytics：建立 GA4 資源與資料串流",
+          "url": "https://support.google.com/analytics/answer/14183469?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Tag Manager：設定 Google 標籤",
+          "url": "https://support.google.com/tagmanager/answer/9442095?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Analytics：加強型評估事件",
+          "url": "https://support.google.com/analytics/answer/9216061?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Developers：generate_lead 建議事件",
+          "url": "https://developers.google.com/analytics/devguides/collection/ga4/reference/events#generate_lead",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Analytics：標記重要事件",
+          "url": "https://support.google.com/analytics/answer/13128484",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Analytics：DebugView 偵錯與限制",
+          "url": "https://support.google.com/analytics/answer/7201382?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Analytics：避免傳送個人識別資訊",
+          "url": "https://support.google.com/analytics/answer/6366371?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Analytics：資料篩選器",
+          "url": "https://support.google.com/analytics/answer/13296761?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,18 +1,19 @@
 ---
 id: 2026-09-14-airalo-feed-utf16-doctype
 title: Airalo feed XXE guard misses a UTF-16 encoded DOCTYPE
-status: open
+status: review
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-14T11:14:43Z
 created_at: 2026-09-14T01:09:19Z
 completed_at:
-branch:
+branch: claude/security-check-o5zaj1
 depends_on: []
 scope:
   - apps/api/app/travel_services/jobs.py
-  - apps/api/tests/test_travel_services.py
+  - apps/api/tests/test_travel_services_jobs.py
+  - apps/api/pyproject.toml
 ---
 
 # Airalo feed XXE guard misses a UTF-16 encoded DOCTYPE
@@ -49,35 +50,62 @@ the rule on and then suppressed it for this file pending this task.
 
 ## Definition of done
 
-- [ ] A UTF-16LE and a UTF-16BE feed carrying `<!DOCTYPE` or `<!ENTITY` are refused, the same
+- [x] A UTF-16LE and a UTF-16BE feed carrying `<!DOCTYPE` or `<!ENTITY` are refused, the same
       as the UTF-8 form.
-- [ ] A normal UTF-8 feed still parses and still produces the same products.
-- [ ] `app/travel_services/jobs.py` no longer needs the `S314` per-file ignore in
-      `pyproject.toml`, or the ignore's comment says why it still does.
+- [x] A normal UTF-8 feed still parses and still produces the same products.
+- [x] `app/travel_services/jobs.py` no longer needs the `S314` per-file ignore — **it does
+      still need it**, and the comment in `pyproject.toml` now says why: the rule objects to
+      `ElementTree` at all, not to this guard, and replacing it means taking on `defusedxml`.
+      See the decision below.
 
-## Steps
+## What was done
 
-- [ ] Cheapest fix that closes it without a dependency: strip NUL bytes before the marker
-      test (`body.replace(b"\x00", b"")`), which folds UTF-16 down to ASCII for the purpose
-      of the scan while leaving `body` itself untouched for the parser.
-- [ ] Consider `defusedxml` instead. It is the correct answer to this whole class rather than
-      to this one encoding, but it is a new dependency for one feed — weigh that, and write
-      the decision down here either way.
-- [ ] Whatever is chosen, keep the size limit: it is the other half of the DoS defence and
-      does not depend on encoding.
+`_declares_dtd(body)` replaces the inline scan, and drops NUL bytes before matching:
+
+```python
+flattened = body.replace(b"\x00", b"").upper()
+return b"<!DOCTYPE" in flattened or b"<!ENTITY" in flattened
+```
+
+That folds UTF-16 and UTF-32 down to the ASCII the scan can read, and cannot hide anything a
+real feed contains, because NUL is not a valid XML character in any encoding — so a UTF-8
+body has none to drop.
+
+Confirmed first that the hole was real rather than theoretical: `ElementTree.fromstring`
+does parse a UTF-16 document, so the declaration the old guard missed would have been parsed.
+
+## `defusedxml` was weighed and declined
+
+It is the right answer to the whole class rather than to one encoding, and it is already in
+the environment — but only as a transitive **dev** dependency, under `pip-audit`. Using it in
+`app/` means promoting it to a runtime dependency, in the image and the lock file, for one
+feed on one hardcoded URL whose other defences (the 15 MB cap, no external entity resolution
+in `ElementTree`) are unchanged. That is disproportionate. If a second XML source ever
+arrives, revisit it then — and that is the moment the `S314` suppression should be revisited
+too.
 
 ## How to verify
 
 ```bash
-cd apps/api && uv run pytest tests/test_travel_services.py -q
+cd apps/api && uv run pytest tests/test_travel_services_jobs.py -q
 ```
 
-Add a case per encoding: `"<!DOCTYPE x>...".encode("utf-16-le")` and `utf-16-be`, both
-refused, plus the existing UTF-8 feed still parsing.
+The tests were checked against the old guard, not just the new one: restoring
+`flattened = body.upper()` fails the two UTF-16 cases and the padded-body case, and passes
+everything else. A test that cannot fail on the bug it names is not evidence.
 
 ## Notes
 
-- Do not "fix" this by decoding the body to text and scanning that: guessing an encoding to
-  decide whether to trust a document is the same mistake one layer up.
-- Filed while working `2026-09-13-ruff-flake8-bandit`, which is where the `S314` suppression
-  and its comment live.
+- The tests live in a new `tests/test_travel_services_jobs.py` — see the scope note below.
+- Writing them turned up an unrelated trap worth knowing: expat rejects `UTF-16-LE` and
+  `UTF-16-BE` as *declared* encoding labels. A UTF-16 document declares `UTF-16` and relies on
+  a byte order mark, so the test helper pairs each codec with the label and BOM that actually
+  parse. Naming the codec twice does not work.
+- Filed by the 2026-09-13 security review, found while triaging `S314` for
+  `2026-09-13-ruff-flake8-bandit`.
+- **Scope narrowed 2026-09-14.** This originally listed `tests/test_travel_services.py`, which
+  `2026-09-12-trip-partner-offer-availability` (`claude-fable-5-1`) is mid-edit on, and
+  `claim` refused it. Rather than take over a task whose claim is merely stale, the feed tests
+  go in a new `tests/test_travel_services_jobs.py`. `parse_airalo` lives in
+  `app/travel_services/jobs.py` and had no test module of its own, so that is where these
+  belong anyway — the collision just made it obvious.

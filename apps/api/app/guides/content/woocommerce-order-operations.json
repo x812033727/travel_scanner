@@ -1,0 +1,253 @@
+{
+  "slug": "woocommerce-order-operations",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "WooCommerce 出貨工作流：通知、明細與列印",
+      "description": "WooCommerce 出貨需要串起接單、付款核對、揀貨、交寄與通知。本文整理 OrderNotify 現行 LINE 推播的設定方向、訂單狀態的用途，以及 PDF 明細與包裝單的列印和覆核方法，協助台灣小型商店建立可交接的工作流，並檢查中文顯示、收件資料、重送通知和單據權限，降低漏單與重複出貨的機會。",
+      "hero": {
+        "src": "/guides/woocommerce-order-operations/hero.jpg",
+        "alt": "原創文件、資料夾與螢幕圖示，代表訂單核對、包裝交接與出貨通知。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "當店裡只有一個人，看到新訂單信就開始包貨似乎很方便；一旦有人協助揀貨，或付款與物流分開處理，就容易發生兩人包同一單、未付款先交寄、改地址後還印舊單等問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "出貨工作流應讓每張訂單都有明確的下一步和負責人。以下以 WooCommerce 訂單、OrderNotify 通知及 PDF 單據為例，整理從接單到交寄的檢查方式。通知可協助提醒，實際出貨仍需有人核對商品與物流紀錄。"
+        },
+        {
+          "type": "heading",
+          "text": "為訂單狀態建立店內作業定義",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先用一張表寫下待付款、保留中、處理中與完成各由誰接手。WooCommerce 的處理中通常表示已收到款項、等待履行訂單；保留中則可能仍待確認付款。實際金流外掛和貨到付款的流程還要另外核對，不能只看名稱就判定可以交寄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在倉庫端再記錄待揀貨、已包裝、已交寄等作業資訊，並指定管理方式。如果採用外掛增加出貨狀態，確認它如何連動原有通知與金流，不能把自訂的「已出貨」當成所有 WooCommerce 商店都內建的選項。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每天開始揀貨前先篩選可處理的訂單，查看付款備註、地址變更與取消需求。挑出的單號形成當日工作清單，由同一人分派；遇到缺貨或金額不符，放入待處理清單並寫原因，避免下一位同事重複追查。"
+        },
+        {
+          "type": "heading",
+          "text": "用 OrderNotify 設定適合的通知規則",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OrderNotify for WooCommerce 由 WP 開發日常提供，可依訂單事件設定 LINE 通知及資料欄位。舊的 LINE Notify 已於 2025 年 3 月 31 日結束服務，目前應查看 Messaging API 與官方帳號的設定文件，不沿用舊 Token 教學。"
+        },
+        {
+          "type": "paragraph",
+          "text": "依開發者文件完成官方帳號、Messaging API 憑證與 LINE Login 設定，再讓顧客帳號建立所需綁定。後續通知需要可識別的收件對象；顧客只在備註寫 LINE 暱稱，並不代表網站已取得能推播的識別資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新增規則時分別選事件、條件、通知方式和內容。例如包裹交寄後才寄追蹤資訊，等待付款時只說明付款步驟。物流外掛提供的門市或追蹤欄位，要從支援的參數選取，再以測試訂單確認，不直接複製其他商店的變數名稱。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "先畫出要通知的事件與收件者，區分顧客與工作人員。",
+            "完成憑證及帳號綁定，用測試帳號建立一條簡單規則。",
+            "加入必要單號與狀態資訊，核對收件者及動態欄位。",
+            "觸發測試事件並查看推播紀錄，再逐條增加其他情境。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "為通知失敗與重送留下處理方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE 推播會涉及官方帳號的訊息額度，方案與地區有關，超過可發送上限可能回傳錯誤。估算時把顧客通知和管理員通知都算進去，檢查當月用量；外掛授權費不能視為已包含所有 LINE 訊息費。"
+        },
+        {
+          "type": "paragraph",
+          "text": "管理員提醒宜指定收件人，內容放單號、待辦事項與需登入的後台入口。不要把完整地址與電話廣播給商店官方帳號的所有好友。顧客通知則保留必要交易資訊，讓未綁定或封鎖帳號的顧客仍能透過訂單信和會員頁查詢。"
+        },
+        {
+          "type": "paragraph",
+          "text": "測試同一訂單重複變更狀態、人工重送和物流重複回報的結果。建立通知紀錄與交寄紀錄兩欄：訊息重送不應讓倉庫重新包貨，通知未成功也不應把已交寄訂單誤判為尚未出貨。"
+        },
+        {
+          "type": "heading",
+          "text": "分清楚訂單明細、包裝單與其他文件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Overnight 的 PDF Invoices & Packing Slips for WooCommerce 可從訂單管理頁下載或批次產生 PDF 明細與包裝單，也能設定特定通知附上文件。先確認所需功能屬於基本外掛或額外方案，再安裝一套符合工作流的工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "內部揀貨需要商品編號、規格、數量和訂單編號；隨貨包裝單則可能需要收件人與商品清單。贈禮訂單若不適合讓收件者看到價格，應選擇合適版型並實際檢查，不能只把檔名改成包裝單就認為金額已隱藏。"
+        },
+        {
+          "type": "paragraph",
+          "text": "PDF 文件名稱含 Invoice，不足以證明已完成台灣電子發票開立。需要電子發票時，另外確認採用服務、開立資料和作廢折讓流程。物流託運標籤也要依承運商或整合工具產生，普通地址明細不能代替可交寄的託運單。"
+        },
+        {
+          "type": "heading",
+          "text": "列印前驗收中文、資料和文件權限",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在文件設定中填妥商店資訊、紙張尺寸與所需欄位，用中文姓名、長地址、多項商品及不同規格建立測試文件。中文缺字時查看外掛提供的 Unicode 或 CJK 字型擴充，不能以網頁顯示正常推論 PDF 也會正常。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先下載 PDF 檢查分頁、數量與金額，再用實際印表機試印。確認縮放不會裁掉單號，雙面列印不會把兩位顧客的單據混在一起。批次列印時保留訂單範圍與份數，重印另外標記，減少重複包裝。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Overnight 的文件連結有登入與開放連結等權限選項。需要給倉庫使用時，先安排必要帳號權限；不要為了方便就讓持有連結的人都能讀取顧客文件。下載檔案和紙本也應限定保管位置，交接完成後依店內規則整理。"
+        },
+        {
+          "type": "heading",
+          "text": "把異動、交寄和例外納入每日收尾",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "顧客修改地址或取消部分商品後，重新比對訂單與待出貨文件，收回舊紙本再印新版。外掛可能保留文件建立時的商店資料，版型更新也不一定改動既有文件；先確認當次文件內容，不為了統一外觀批次重建歷史單據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "包裝完成時覆核商品規格、件數、收件人和配送方式，交寄後再回填可查證的託運編號。若拆成兩箱或部分出貨，記錄各箱內容與剩餘項目，避免一個完成狀態掩蓋尚未交付的商品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每日收尾對照可出貨清單、實際交寄清單與例外清單，追查有列印卻未交寄、有交寄卻缺通知的項目。用一筆改地址、一筆缺貨與一筆通知失敗的情境演練交接，確認任何接班者都知道下一步要做什麼。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/woocommerce-order-operations/diagram-1.svg",
+          "alt": "四個方框依序呈現接單核對付款、揀貨比對規格、交寄留下託運紀錄、通知檢查收件與失敗重送。",
+          "width": 1600,
+          "height": 900,
+          "caption": "以實際作業推動狀態；重送通知不等於重新出貨。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "紀錄或文件",
+            "主要用途",
+            "不能單獨證明"
+          ],
+          "rows": [
+            [
+              "訂單狀態",
+              "安排下一階段作業",
+              "款項與物流全部正確"
+            ],
+            [
+              "LINE 推播紀錄",
+              "確認通知處理情形",
+              "包裹已實際交寄"
+            ],
+            [
+              "揀貨／包裝單",
+              "核對商品與件數",
+              "台灣發票已開立"
+            ],
+            [
+              "託運及交寄紀錄",
+              "核對包裹交付與追蹤",
+              "顧客已讀通知"
+            ]
+          ],
+          "caption": "每份紀錄負責回答不同問題，出貨時交叉核對。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先完成一單，再批次放大",
+          "text": "設定完成後，先走完接單、付款核對、列印、交寄與通知的完整演練，留下單號和每一步結果。批次操作前再確認篩選範圍，讓方便的批次工具不會把同一個錯誤放大到整天訂單。"
+        },
+        {
+          "type": "link",
+          "text": "設定 WooCommerce 訂單信與驗收寄送",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-order-email"
+        },
+        {
+          "type": "link",
+          "text": "整理配送區域與運費規則",
+          "url": "https://mokaair.com/zh-TW/life/woocommerce-shipping-rules"
+        }
+      ],
+      "sources": [
+        {
+          "title": "WooCommerce 訂單狀態",
+          "url": "https://woocommerce.com/document/managing-orders/order-statuses/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OrderNotify LINE 訂單推播文件",
+          "url": "https://oberonlai.blog/docs/ordernotify-for-woocommerce/tutorial/line-order-notify/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OrderNotify LINE Notify 替代方案",
+          "url": "https://oberonlai.blog/docs/ordernotify-for-woocommerce/settings/line-notify-alternative/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Notify 結束服務公告",
+          "url": "https://notify-bot.line.me/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Messaging API 計價方式",
+          "url": "https://developers.line.biz/en/docs/messaging-api/pricing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Overnight PDF Invoices & Packing Slips",
+          "url": "https://wordpress.org/plugins/woocommerce-pdf-invoices-packing-slips/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "PDF 文件讀取權限",
+          "url": "https://docs.wpovernight.com/woocommerce-pdf-invoices-packing-slips/pdf-documents-view-permissions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "既有 PDF 與最新設定",
+          "url": "https://docs.wpovernight.com/woocommerce-pdf-invoices-packing-slips/show-pdf-documents-with-the-latest-settings/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

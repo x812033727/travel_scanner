@@ -1,0 +1,333 @@
+{
+  "slug": "ai-search-llmo",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "LLMO 是什麼：和 LLMOps 差在哪，哪些說法無法驗證",
+      "description": "LLMO（大型語言模型最佳化）和 LLMOps（大型語言模型維運）只是縮寫像，是兩個不相干的詞。本文把 LLMO 的主張拆成檢索當下與訓練當下兩類：前者因為回答會附來源，影響看得到；後者從外部無法驗證，訓練資料截止日也讓它在時間上不可能即時反映。讀完能分辨眼前那份提案在講哪一種，以及哪些說法從外面根本測不出來。",
+      "hero": {
+        "src": "/guides/ai-search-llmo/hero.jpg",
+        "alt": "插圖：一個問號分成兩條路，一條通往附有來源清單的回答框，另一條通往看不進去的封閉方塊。",
+        "width": 1,
+        "height": 1
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在中文搜尋結果裡，LLMO 幾乎都被寫成一套「讓內容被 ChatGPT、Gemini 這類模型看見」的做法。這個詞沒有官方定義，也沒有引擎或廠商用它命名過功能，它是行銷業界造的標籤。結論很短：LLMO 底下混著兩種性質不同的主張，一種的影響看得到，另一種從外面測不出來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇先把 LLMO 和拼寫相近的 LLMOps 分開，那是軟體維運的工作，跟搜尋曝光無關；再把 LLMO 的主張拆成「檢索當下」與「訓練當下」，說明各自能拿什麼證據檢查；本文查證日為 2026 年 9 月 14 日；本站沒有做過相關實測，不承諾排名、索引、引用或流量結果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "LLMO 與 LLMOps：只是縮寫像"
+        },
+        {
+          "type": "paragraph",
+          "text": "LLMOps 是 Large Language Model Operations 的縮寫，中文說大型語言模型維運。依照 Microsoft 的 LLMOps 指引這份官方文件，它是管理 LLM 應用從開發、部署到維護的工具與流程，工作項目包含資料整理、實驗、評估、部署、監測與回饋收集。"
+        },
+        {
+          "type": "paragraph",
+          "text": "LLMO 指的是另一件事：讓自己的內容出現在別人家模型的回答裡，兩者可用的證據完全不同。LLMOps 的對象是你能改的程式、提示詞與資料，好壞可以用自己的評測集量；LLMO 的對象是別人家的模型與檢索系統，你連它讀了什麼都看不到。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "站上的 "
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型維運（LLMOps）是什麼",
+              "kind": "life",
+              "slug": "ai-term-llmops"
+            },
+            {
+              "type": "text",
+              "text": "把維運的生命週期講得比較細；要找「自己的 AI 助理上線後怎麼管」，那一篇才是你要的。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "兩類主張：檢索當下與訓練當下"
+        },
+        {
+          "type": "paragraph",
+          "text": "檢索當下指模型在回答這一題時去查了網路或搜尋索引，再依查回來的內容組答案；訓練當下指你的文字在訓練階段被讀進去，成為模型權重的一部分。兩者發生的時間可以差上好幾個月，取證難度也完全不同；提案沒講清楚要影響哪一條，後面的說法就無從檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "廠商的爬蟲文件把這條線畫得很清楚，以下都是官方文件說明的機制。OpenAI 的爬蟲說明把 GPTBot 寫成抓取可能用於訓練生成式 AI 基礎模型的內容；OAI-SearchBot 用於在 ChatGPT 的搜尋功能呈現網站，ChatGPT-User 是使用者提問時才訪問網頁。Anthropic 的爬蟲說明也分成訓練、回答個別提問、改善搜尋品質三種。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 另有一個產品權杖 Google-Extended，官方文件寫明它控制內容是否用於訓練未來的 Gemini 模型，以及是否用於接地（grounding，提問當下把搜尋索引的內容給模型參考）；同一份文件也寫著它不影響網站在 Google 搜尋的收錄，也不是排名訊號。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-search-llmo/diagram-1.svg",
+          "alt": "把 LLMO 的主張分成檢索當下與訓練當下兩條路徑，標出每一條各自看得到什麼證據。",
+          "width": 1,
+          "height": 1,
+          "caption": "這張圖從上往下讀：先問一條主張要影響哪一邊，再問它拿得出什麼證據。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "檢索當下：影響看得到，因為回答會附來源"
+        },
+        {
+          "type": "paragraph",
+          "text": "這一類可以觀察的理由很直接：生成式答案通常會列出引用的網址。Google 的 Gemini API 官方文件描述接地流程是模型先判斷搜尋能否讓答案更好，需要時自動產生查詢並執行，再把結果整合成回答，回傳內容包含引用註記與跑過的查詢，也寫著這讓模型能引用超出知識截止日的來源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的說明中心同樣寫著回答可能附上引用，點一下就能打開來源。但看得到不等於可以承諾：同一份說明寫著 ChatGPT 用多項因素排序搜尋結果，並直接寫上不保證版位，也提醒引用可能不完整或錯誤；Google 搜尋中心的生成式 AI 指引則寫著，出現在 AI 摘要或 AI 模式沒有額外要求，不需要特殊最佳化。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "引用能不能量、量到的是什麼，"
+            },
+            {
+              "type": "article",
+              "text": "怎麼量 AI 引用：測得到的、測不到的，與不能相信的分數",
+              "kind": "life",
+              "slug": "ai-search-measuring-citations"
+            },
+            {
+              "type": "text",
+              "text": "那一篇專門處理。這裡只留一句：看得到來源清單，和能證明某個做法造成它，是兩件事。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "訓練當下：從外部無法驗證"
+        },
+        {
+          "type": "paragraph",
+          "text": "訓練資料收了哪些頁面，你在外面查不到；廠商公開的是類別層級的描述，不是可查詢的清單。Anthropic 的模型文件把訓練資料寫成公開網路資訊、公開與非公開資料集，以及其他模型生成的合成資料的組合；OpenAI 依歐盟 AI 法規公布的訓練內容摘要，同樣只到公開資料集、第三方資料集與合成資料這種層級。"
+        },
+        {
+          "type": "paragraph",
+          "text": "時間上也對不起來。廠商給的是一個截止日，同一個模型還可能有兩個不同的日期。Anthropic 的模型總覽把 Claude Opus 5 的可靠知識截止日與訓練資料截止日都寫成 2026 年 5 月，Claude Haiku 4.5 則是可靠知識截止 2025 年 2 月、訓練資料截止 2025 年 7 月；OpenAI 的模型頁把 GPT-6 Astra 的知識截止日寫成 2026 年 4 月 30 日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "截止日也不見得是乾淨的一條線。Google DeepMind 的 Gemini 3.8 Flash 模型卡寫知識截止日為 2026 年 3 月，接著補一句：部分領域可以期待更新的資訊，另一些領域仍停在 2025 年 1 月。連廠商都用視領域而定來描述，外部更沒辦法從回答反推某一頁在不在訓練資料裡。所以「今天改寫內容，模型就會學起來」在時間上站不住：已經上線的模型不會因為你改了頁面就改變權重。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「讓品牌被 LLM 記住」為什麼不可稽核"
+        },
+        {
+          "type": "paragraph",
+          "text": "這句口號的問題不在於它一定是假的，而在於它沒有可以被推翻的形式。要稽核它，至少需要訓練資料清單、模型在你做這件事前後的兩份權重，以及一套能把回答差異歸因到你那份內容的方法；三樣外部都拿不到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "回答裡出現你的品牌名也不能當證據。若那次回答有開檢索，來源就是當下查到的網頁，跟訓練無關；若沒開檢索，你分不出它是從訓練資料學到的、從別處學到的，還是生成出來的。同一題問兩次結果就可能不同，這種比對不構成量測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這類主張在中文內容裡很常見，來源多半是行銷文；台灣電商服務商 91APP 的行銷部落格把 LLMO 定義成大型語言模型最佳化，並稱維基百科是 ChatGPT、Gemini、Claude 等模型的重要訓練資料來源之一；行銷公司 awoo 的部落格則把它定義成讓內容在大型語言模型與 AI 結果中取得更高可見度。兩份都是該公司的行銷內容，不是模型廠商的技術文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "至於全網湊品牌提及，Google 搜尋中心在生成式 AI 指引裡列進了不需要做的事：該文件寫在網路各處尋求不真實的「提及」並沒有看起來那麼有用。這是官方文件的立場，與上面的行銷主張相反；兩邊都在本文來源裡，本文採用前者。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "主張的類別",
+            "實際發生什麼",
+            "外部拿得到的證據",
+            "能不能稽核"
+          ],
+          "rows": [
+            [
+              "檢索當下",
+              "回答當下去查網路或搜尋索引",
+              "回答附的引用清單、伺服器的爬蟲記錄",
+              "部分可以：看得到來源，但官方不保證版位"
+            ],
+            [
+              "訓練當下",
+              "內容被收進訓練資料，成為權重",
+              "沒有：只有類別層級摘要與截止日",
+              "不行：拿不到清單，也拿不到兩份權重"
+            ],
+            [
+              "LLMOps（另一個詞）",
+              "自己的應用怎麼開發、部署、監測",
+              "自己的版本紀錄、評測集與監測",
+              "可以：對象是自己的系統"
+            ]
+          ],
+          "caption": "LLMO 的兩類主張與 LLMOps 的對照（2026 年 9 月查證）"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "分不出屬於哪一類，就沒辦法驗收",
+          "text": "拿到一份 LLMO 提案，先逐條標出它要影響檢索當下還是訓練當下。講檢索的，要求對方指出哪一份廠商文件寫了那個機制；講訓練的，請對方說明用什麼證據證明它成立——訓練資料清單與權重都不公開，通常得不到答案。得不到答案不代表對方說謊，但代表那條主張無法驗證，不該寫成可驗收項目。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "看到 LLMO 提案時可以逐條問的問題"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "這一條要影響檢索當下還是訓練當下？講不清楚就先擱著。",
+            "它引用誰寫的文件？廠商或引擎的開發者文件，還是沒註明來源的部落格？",
+            "如果是檢索當下，用什麼觀察？來源清單與伺服器記錄可以談，算不出來歷的分數不行。",
+            "如果是訓練當下，用什麼證明它成立？請對方寫出方法，因為外部沒有證據可拿。",
+            "這份文件是行銷內容還是技術文件？兩種都能讀，但不是同一種證據。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這幾個問題不需要懂模型內部，只要分辨「誰說的」跟「能不能查」，也適用於其他幾個縮寫："
+            },
+            {
+              "type": "article",
+              "text": "GEO（生成引擎最佳化）是什麼",
+              "kind": "life",
+              "slug": "ai-search-geo"
+            },
+            {
+              "type": "text",
+              "text": "那一篇處理的是論文定義與行銷業用法的落差，做法一樣：先看提出者怎麼定義，再看別人怎麼改。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "最後提醒一件小事：把 LLMO 寫成 LLMOps 或反過來，在技術討論裡會造成誤會。"
+            },
+            {
+              "type": "article",
+              "text": "GEO、AEO、AIO 與 SEO 名詞總索引",
+              "kind": "life",
+              "slug": "ai-search-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "收了本系列各篇與彼此的差異對照，想一次看完可以從那裡開始。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Models overview（訓練資料截止日與可靠知識截止日）",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic：Transparency Hub（訓練資料的類別層級描述）",
+          "url": "https://www.anthropic.com/transparency",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic Support：Anthropic 的爬蟲與站方阻擋方式（ClaudeBot、Claude-User、Claude-SearchBot）",
+          "url": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI：Models（各模型的知識截止日）",
+          "url": "https://developers.openai.com/api/docs/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI：Bots（GPTBot、OAI-SearchBot、ChatGPT-User 的用途）",
+          "url": "https://developers.openai.com/api/docs/bots",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Help Center：Searching the web with ChatGPT（引用、排序與不保證版位）",
+          "url": "https://help.openai.com/en/articles/9237897-chatgpt-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI Help Center：Publishers and Developers FAQ（爬蟲與收錄）",
+          "url": "https://help.openai.com/en/articles/12627856-publishers-and-developers-faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI：GPT-6 Astra 依歐盟 AI 法規公布的訓練內容公開摘要",
+          "url": "https://cdn.openai.com/pdf/gpt-6-astra-eu-ai-act-public-summary-of-training-content.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google AI for Developers：Grounding with Google Search（接地流程與引用）",
+          "url": "https://ai.google.dev/gemini-api/docs/google-search",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google DeepMind：Gemini 3.8 Flash 模型卡（知識截止日與領域差異）",
+          "url": "https://deepmind.google/models/model-cards/gemini-3-8-flash/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：生成式 AI 功能最佳化指引（官方文件）",
+          "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：AI features and your website（預覽控制項與沒有額外要求）",
+          "url": "https://developers.google.com/search/docs/appearance/ai-features",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜尋中心：Google 常見爬蟲（Google-Extended 的用途與界線）",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Learn：LLMOps - Operational management of LLMs",
+          "url": "https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/mlops-in-openai/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "91APP 部落格：LLMO 破解生成式搜尋引擎推薦密碼（該公司的行銷內容，作為用詞佐證）",
+          "url": "https://91app.com/blog/what-is-llmo/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "awoo 部落格：LLMO 對內容 SEO 帶來的挑戰（該公司的行銷內容，作為用詞佐證）",
+          "url": "https://www.awoo.ai/zh-hant/blog/llmo-for-content-seo-how-to-face/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

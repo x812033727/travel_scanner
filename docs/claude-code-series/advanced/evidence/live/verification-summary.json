@@ -1,0 +1,389 @@
+{
+  "checked_at": "2026-09-14T14:19:22.338366+00:00",
+  "git_base": "95ff5c352c6eecd473b79d041db0e95c0c380c5d",
+  "scope": "Historical local full frontend and isolated PostgreSQL checks; source applicability is explicitly recorded below. Current-head CI is recorded separately.",
+  "web": {
+    "environment": "Windows",
+    "source": "web-full.json",
+    "files": 258,
+    "tests": 2809,
+    "total_tests": 2809,
+    "failed": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  "web_runs": [
+    {
+      "environment": "Windows",
+      "source": "web-full.json",
+      "files": 258,
+      "tests": 2809,
+      "total_tests": 2809,
+      "failed": 0,
+      "skipped": 0,
+      "passed": true
+    }
+  ],
+  "other_web_attempts": [
+    {
+      "environment": "WSL Ubuntu / Linux ARM64",
+      "passed": false,
+      "source": "web-linux-validation.json"
+    }
+  ],
+  "api": {
+    "passed": true,
+    "tests": 164,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "postgresql_version": "17.11",
+    "source": "postgres-validation.json",
+    "test_report": "postgres-tests.xml",
+    "environment": "Windows; disposable PostgreSQL 17 and SQLite",
+    "server_stopped": true,
+    "remaining_test_schemas": 0
+  },
+  "temporary_postgresql_files_removed": false,
+  "cleanup_note": "Initial automatic cleanup encountered a Windows DLL lock after successful shutdown. Follow-up deletion of the verified disposable directory was rejected by automatic approval review (blocked by policy); remaining temporary files were preserved.",
+  "source_hash_verification": {
+    "files": 2761,
+    "changed": [
+      "apps/api/app/guides/content/claude-code-advanced-capstone.json",
+      "apps/api/app/guides/content/claude-code-agent-sdk-stateful-runner.json",
+      "apps/api/app/guides/content/claude-code-agent-teams-integration-lab.json",
+      "apps/api/app/guides/content/claude-code-github-actions-review-workshop.json",
+      "apps/api/app/guides/content/claude-code-hook-file-boundaries.json",
+      "apps/api/app/guides/content/claude-code-hook-quality-gates.json",
+      "apps/api/app/guides/content/claude-code-hook-scoped-formatting.json",
+      "apps/api/app/guides/content/claude-code-legacy-refactoring-workshop.json",
+      "apps/api/app/guides/content/claude-code-mcp-failure-contract-tests.json",
+      "apps/api/app/guides/content/claude-code-mcp-http-auth-workshop.json",
+      "apps/api/app/guides/content/claude-code-mcp-tool-contracts.json",
+      "apps/api/app/guides/content/claude-code-scheduled-workflow-reliability.json",
+      "apps/api/app/guides/content/claude-code-skill-invocation-control.json",
+      "apps/api/app/guides/content/claude-code-skill-resource-design.json",
+      "apps/api/app/guides/content/claude-code-subagent-review-workshop.json",
+      "apps/web/package.json",
+      "apps/web/public/guides/claude-code-advanced-capstone/diagram-1.svg",
+      "apps/web/public/tutorials/claude-code/advanced/automation-lab.zip",
+      "apps/web/public/tutorials/claude-code/advanced/config-lab.zip",
+      "apps/web/public/tutorials/claude-code/advanced/hook-lab.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-61.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-62.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-63.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-64.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-65.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-66.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-67.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-68.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-69.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-70.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-71.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-72.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-73.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-74.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-75.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-76.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-77.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-78.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-79.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-80.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-81.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-82.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-83.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-84.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-85.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-86.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-87.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-88.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-89.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-90.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-91.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-92.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-93.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-94.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-95.zip",
+      "apps/web/public/tutorials/claude-code/advanced/lesson-96.zip",
+      "apps/web/public/tutorials/claude-code/advanced/mcp-lab.zip",
+      "apps/web/public/tutorials/claude-code/advanced/skill-kit.zip",
+      "apps/web/public/tutorials/claude-code/advanced/todo-workbench.zip",
+      "package-lock.json",
+      "package.json"
+    ],
+    "matches_current_worktree": false,
+    "source": "web-linux-source-hashes.json"
+  },
+  "content": {
+    "pages": 97,
+    "passed": true,
+    "source": "content-recheck.json"
+  },
+  "tools": {
+    "command": "npm run test:tools",
+    "passed": true,
+    "tests": 52,
+    "failed": 0,
+    "exit": 0,
+    "source": "tools-final.log",
+    "initial_attempt": "51 passed, 1 failed because version comments were absent; fixed using verified tags before rerun"
+  },
+  "pending": [
+    "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
+    "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
+    "Supported OS Bash sandbox; WSL setup could not complete",
+    "Merge/register the manual Actions workflow and run baseline; paid model job awaits dedicated ANTHROPIC_API_KEY",
+    "Additional product-specific failure and full Teams feature-integration exercises beyond the documented smoke scope",
+    "Phase 2 PR and merge",
+    "Deployment, content import and publication"
+  ],
+  "real_operations": {
+    "checked_at": "2026-09-14T14:15:40.078727+00:00",
+    "scope": "Supplementary actual Claude, browser cloud task and SDK smoke checks; not complete per-lesson failure coverage",
+    "cli": {
+      "passed": true,
+      "version": "2.1.233 (Claude Code)",
+      "lessons": [
+        61,
+        67,
+        73,
+        79,
+        91
+      ],
+      "source": "claude-live-all.json",
+      "hook_event_source": "hook-trigger.json"
+    },
+    "web": {
+      "passed": true,
+      "source": "browser-validation.json",
+      "result": {
+        "marker": "MOKAAIR-WEB-SMOKE-20260914",
+        "total": 3,
+        "completed": 1,
+        "pendingIds": [
+          "b",
+          "c"
+        ]
+      },
+      "repository_changes": false
+    },
+    "sdk": {
+      "passed": true,
+      "version": "0.3.270",
+      "cases": [
+        "authored-runner-query",
+        "authored-runner-same-session-resume",
+        "separate-streaming-input-abort-controller-probe"
+      ],
+      "sources": [
+        "sdk-query-resume.json",
+        "sdk-cancel.json",
+        "sdk-recovery.json",
+        "sdk-terminal-recovery.json"
+      ],
+      "limitations": [
+        "Ctrl+C was sent through a real terminal PTY by the verifier, not a human keyboard. No network interruption or external side effect rollback is claimed."
+      ],
+      "sources_checked_on": "2026-09-14",
+      "official_source": "https://code.claude.com/docs/en/agent-sdk/streaming-vs-single-mode",
+      "recovery_passed": true,
+      "recovery_cases": [
+        "missing-session",
+        "incompatible-session",
+        "executable-startup-failure",
+        "fresh-query-after-startup-failure"
+      ],
+      "terminal_cancel_resume_passed": true,
+      "runner_driver_version": 2
+    },
+    "github_actions": {
+      "repository": "x812033727/travel_scanner",
+      "repository_secret_count": 0,
+      "environment_count": 1,
+      "required_example_environment": "claude-lab",
+      "required_example_secret": "ANTHROPIC_API_KEY",
+      "live_model_workflow_run": false,
+      "reason": "Dedicated claude-lab environment exists with a main-only branch policy. Manual workflow awaits merge and baseline dispatch; the model job requires the user to add ANTHROPIC_API_KEY.",
+      "registered_claude_workflows": [],
+      "local_workflow_prepared": true,
+      "workflow_path": ".github/workflows/claude-tutorial-validation.yml",
+      "local_validation_source": "ci-workflow-validation.json",
+      "environment_created": true,
+      "branch_policy": "main only",
+      "environment_secret_count": 0
+    },
+    "pending": [
+      "Physical phone reconnection, sleep and recovery; browser Remote Control device verification",
+      "A real remote MCP HTTP/OAuth service for authorization, revocation and recovery",
+      "Supported OS Bash sandbox; WSL setup could not complete",
+      "Merge/register the manual Actions workflow and run baseline; paid model job awaits dedicated ANTHROPIC_API_KEY",
+      "Additional product-specific failure and full Teams feature-integration exercises beyond the documented smoke scope"
+    ],
+    "cli_boundaries": {
+      "passed": true,
+      "source": "cli-boundaries.json",
+      "case_count": 7,
+      "cases": [
+        {
+          "name": "rules-child",
+          "lessons": [
+            62,
+            63
+          ],
+          "passed": true
+        },
+        {
+          "name": "skill-missing-argument",
+          "lessons": [
+            67,
+            68
+          ],
+          "passed": true
+        },
+        {
+          "name": "skill-automatic",
+          "lessons": [
+            70
+          ],
+          "passed": true
+        },
+        {
+          "name": "permission-denied",
+          "lessons": [
+            64
+          ],
+          "passed": true
+        },
+        {
+          "name": "hook-protected-write",
+          "lessons": [
+            73,
+            76
+          ],
+          "passed": true
+        },
+        {
+          "name": "mcp-startup-failure",
+          "lessons": [
+            79,
+            82
+          ],
+          "passed": true
+        },
+        {
+          "name": "readonly-subagent",
+          "lessons": [
+            87
+          ],
+          "passed": true
+        }
+      ],
+      "limits": [
+        "One readonly subagent with Haiku is not an Agent Teams or model comparison test",
+        "Read denial does not test Bash sandbox",
+        "MCP startup failure does not verify remote OAuth or all protocol errors"
+      ]
+    },
+    "capstone": {
+      "passed": true,
+      "lesson": 96,
+      "scope": "Actual model-authored local feature, independent assertions, browser workflow, specified failure and repair, fresh extracted replay; no physical phone or deployment",
+      "sources": [
+        "capstone-implementation.json",
+        "capstone-tests.json",
+        "capstone-browser.json",
+        "capstone-repair.json",
+        "capstone-clean-replay.json"
+      ],
+      "archive": "capstone-result.zip",
+      "archive_sha256": "87cdbe8031e2508274b917bb25f9c671e11924e347ea9f61b8fc6fcca16dba3f",
+      "project_tests": 9,
+      "independent_tests": 3,
+      "browser_cases": 10,
+      "verifier_corrections": [
+        "Handoff: mixed arrays retain valid items; malformed JSON/non-array returns empty. Added actual browser evidence and explicit server stop instructions."
+      ],
+      "test_server_stopped": true
+    },
+    "extra_boundaries": {
+      "passed": true,
+      "source": "extra-boundaries.json",
+      "case_count": 6,
+      "cases": [
+        {
+          "name": "rules-conflict",
+          "lessons": [
+            61,
+            63
+          ]
+        },
+        {
+          "name": "skill-data-resources",
+          "lessons": [
+            69
+          ]
+        },
+        {
+          "name": "skill-missing-resource",
+          "lessons": [
+            69
+          ]
+        },
+        {
+          "name": "hook-command-failure",
+          "lessons": [
+            73,
+            78
+          ]
+        },
+        {
+          "name": "mcp-untrusted-output",
+          "lessons": [
+            83
+          ]
+        },
+        {
+          "name": "mcp-invalid-input",
+          "lessons": [
+            80,
+            82
+          ]
+        }
+      ]
+    },
+    "teams": {
+      "passed": true,
+      "source": "interactive-products.json",
+      "scope": "Two named in-process teammates, independent reads, task assignment, mailbox replies and a follow-up in the same teammate; not the full UI feature integration exercise"
+    },
+    "schedule": {
+      "passed": true,
+      "source": "interactive-products.json",
+      "scope": "Session CronCreate/CronList with a real one-shot trigger reading local synthetic data; not cloud/desktop scheduling, sleep recovery or the lesson job runner"
+    },
+    "workflow_comparison": {
+      "passed": true,
+      "source": "workflow-observations.json",
+      "scope": "Exploratory single observation of each workflow; not a performance benchmark"
+    },
+    "remote_control": {
+      "local_session_started": true,
+      "browser_history_visible": true,
+      "browser_command_sent": false,
+      "passed": false,
+      "session_stopped": true,
+      "session_url": "https://claude.ai/code/session_01AtAGQZpAd4QrtVs7P7ix5o",
+      "reason": "Browser required elevated device verification (device_key_missing). Google sign-in did not navigate in the in-app browser; no remote command or physical phone recovery is claimed."
+    },
+    "sandbox": {
+      "passed": false,
+      "environment": "WSL Ubuntu ARM64",
+      "preflight": {
+        "bubblewrap_present": true,
+        "socat_present": false,
+        "linux_claude_present": false
+      },
+      "reason": "During dependency setup WSL became unresponsive, including a read-only process listing. Only the three owned Windows WSL client trees were stopped; Linux installation outcome is unconfirmed. No WSL shutdown or sandbox weakening was used."
+    }
+  }
+}

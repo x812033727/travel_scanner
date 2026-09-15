@@ -1,0 +1,415 @@
+{
+  "slug": "ai-photo-restoration-old-photos",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "daily"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 AI 修復老照片：去刮痕、放大與上色分開做，工具怎麼選",
+      "description": "老照片修復是三件不同的工作：去刮痕與噪點、放大、上色。這篇把 Google 相簿、Photoshop 神經濾鏡、Topaz Photo、Remini 與開源的 GFPGAN、CodeFormer 官方頁寫的能力、價格與上傳後保留幾天整理成對照表，附掃描解析度建議與照 README 原文的安裝指令，並說明上色只是推測。數字為 2026 年 9 月 14 日查官方頁的結果，環境無法實測，不做評分。",
+      "hero": {
+        "src": "/guides/ai-photo-restoration-old-photos/hero.jpg",
+        "alt": "左邊是一張佈滿裂痕的灰色方框，中間一條箭頭路徑通往右邊乾淨而帶顏色的方框，旁邊有放大鏡與色塊",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "抽屜底下那疊泛黃、有摺痕的老照片，用 AI 救得回來嗎？救得回一部分，但要先拆開來看：修復不是一個按鈕，而是三件不同的工作——去掉刮痕與噪點、把尺寸放大、把黑白照上色。三件事背後的模型不一樣，可信度也不一樣，其中上色那一件嚴格說起來不算還原。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照著掃描、修復、放大、上色、保存的順序走一遍，每個工具能做什麼、要多少錢、照片上傳之後放在誰的伺服器上多久，都以 2026 年 9 月 14 日當天查到的官方頁面為準，查不到的就寫「以官網為準」。本文的環境沒辦法上傳照片實測，所以不給評分，只寫官方文件寫得出來的能力與限制，最後附上你可以自己做的比對方法。"
+        },
+        {
+          "type": "heading",
+          "text": "修復老照片其實是三件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把「修復」拆成三件事，選工具就容易多了。第一件是去掉物理損傷與感光顆粒：灰塵、刮痕、摺痕、噪點。第二件是放大：老照片的細節有限，放大模型會補出原本不存在的像素。第三件是上色：黑白底片根本沒有記錄顏色，模型只能依訓練資料猜一組合理的顏色。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "去刮痕與噪點：這一件最接近「修復」，因為原始資訊還在，只是被雜訊蓋住了。",
+            "放大：把小尺寸照片撐到能列印的大小，補出來的細節是模型生成的，不是底片上本來就有的。",
+            "上色：黑白照片沒有顏色資訊，模型給的是推測值，衣服、招牌、油漆的顏色都可能猜錯。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "順序是先掃描、再修瑕疵、然後放大、最後才上色，因為前一步留下的雜訊都會被後面放大。不管走哪一條路，掃描出來的原始檔都要另外留一份，不要讓修復結果蓋掉它。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-photo-restoration-old-photos/diagram-1.svg",
+          "alt": "五個步驟由左到右串成一條流程：掃描、修瑕疵、放大、上色、保存，每一步下面標出重點與注意事項",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右照著做：掃描定上限，修瑕疵在放大之前，上色放最後，原始檔從頭到尾不覆蓋。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "第一步：掃描決定了後面能做到哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 模型只能處理你餵給它的像素，掃描解析度太低，後面的修復與放大都是在猜。Epson 的掃描解析度指引把用途分成兩類：在螢幕上看、寄電子郵件或放到網路上，建議 96 到 200 dpi；要列印、傳真、做文字辨識（OCR）或做成可搜尋的 PDF，建議 200 到 300 dpi。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要放大的話，官方的算法很直白：影像放大幾倍，解析度就提高幾倍。指引裡的例子是原本設 300 dpi，之後想把影像放大成兩倍，就把解析度改成 600 dpi。這也回答了「是不是設越高越好」——先想清楚最後要印多大再回推 dpi，不要一律拉到最高，把檔案撐爆又沒有多出細節。"
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有掃描器就用手機。Google 相簿的官方說明頁介紹 PhotoScan：它會偵測邊緣、把影像拉正、轉到正確方向，並且去除反光。官方寫的做法是把照片放在平坦、背景對比明顯的桌面上，手機不要傾斜、方向要跟照片一致，開閃光燈可以減少反光與陰影，照片先從相框或護套裡拿出來再掃。同一頁沒有寫 PhotoScan 輸出多少 dpi，想要固定解析度還是得用掃描器。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "把照片從相框、護套裡取出，用軟刷或吹球把灰塵撥掉，不要用衛生紙擦。",
+            "有掃描器就按用途設 dpi：只在螢幕上看 96 到 200 dpi，要列印 200 到 300 dpi，之後要放大兩倍就設到 600 dpi。",
+            "沒有掃描器就用 PhotoScan，放在平坦、對比明顯的桌面上，手機不要傾斜。",
+            "掃描完先存一份原始檔並備份，之後所有修復都從複本開始做。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "四個現成工具，官方頁各自寫了什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 相簿的 iPhone 與 iPad 版官方說明頁，把自動修圖建議列成 Enhance、Dynamic 與 AI Enhance，Actions 分頁裡點 Magic Eraser 移除干擾物，另外還有 Unblur。兩個官方寫明的限制：改良版的 Unblur 需要裝置至少 6 GB 記憶體，AI Enhance 官方頁寫目前只在美國提供，而且 Google 帳戶語言要設成英文（美國）。介面以官網當天版本為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更接近「修復老照片」的是對話式編輯。Google 在 2025 年 8 月 20 日的官方部落格裡示範的講法就是 restore this old photo；同一篇寫這個功能先在美國的 Pixel 10 上線，也寫到相簿要支援 C2PA 內容憑證（Content Credentials），用來顯示一張圖是怎麼拍、怎麼編輯的。台灣什麼時候拿得到，以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+        },
+        {
+          "type": "paragraph",
+          "text": "Photoshop 的神經濾鏡（Neural Filters）從 Filter > Neural Filters 進去。官方的濾鏡清單裡，Photo Restoration 屬於 Beta 類，官方描述是用人工智慧修你的老家族照片或翻拍的相片；Colorize 同樣在 Beta 類，官方說明是幫黑白照片快速加上顏色；另外還有清掉壓縮痕跡的 JPEG Artifacts Removal 與補細節的 Super Zoom。官方頁註明有些濾鏡需要網路連線才能處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Topaz Photo 是裝在 Mac 與 Windows 上的桌面軟體。官方產品頁把老照片列成一個使用情境 Archival Images，寫的是移除灰塵與刮痕、調整光線與顏色，把影像修回原本的銳利度；方案頁列出的模型包含 Dust & Scratch、Denoise、Sharpen、Recover Faces 與 Upscale。官方定價頁寫個人版 39 美元一個月或 199 美元一年，官方文件寫的最低需求是 16 GB 記憶體。"
+        },
+        {
+          "type": "paragraph",
+          "text": "產品頁同時寫了兩種算圖方式，這一段對家族照片特別重要：本機算圖那段寫「你的檔案不會離開你的電腦」，雲端算圖那段寫把負擔交給雲端可以拿到最快的處理速度與最新的模型。照片會不會被上傳，取決於你選哪一種。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Remini 是 Bending Spoons 旗下的服務，官方網站把功能拆成 Old Photos Restorer、Unblur & Sharpener、Denoiser、Image Enlarger、Color Fixer、Face Enhancer 等等。官方頁寫 Image Enlarger 可以把照片放大到最多兩倍、最高 4096 乘 4096 像素；Color Fixer 的官方描述是調整曝光、飽和度與鮮豔度，把褪色的照片調回來，屬於色彩修正，不是幫黑白照上色。App Store 台灣區可以下載 Remini - AI Photo Enhancer，下載免費，訂閱價格以官網為準。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "能做什麼",
+            "價格",
+            "照片去哪裡"
+          ],
+          "rows": [
+            [
+              "Google 相簿",
+              "官方列出 Unblur、Enhance、AI Enhance；對話式編輯可以直接說 restore this old photo",
+              "免費；備份會用掉 Google 帳戶儲存空間，個人帳戶最多 15 GB，與 Drive、Gmail 共用",
+              "上傳到你的 Google 帳戶；官方寫不販售個人資訊、不把 Photos 內容用於廣告"
+            ],
+            [
+              "Photoshop 神經濾鏡",
+              "Photo Restoration（Beta）修刮痕、Colorize（Beta）上色、JPEG Artifacts Removal、Super Zoom",
+              "需要 Adobe 訂閱，方案與價格以 Adobe 官網當地頁面為準",
+              "官方頁寫有些濾鏡需要網路連線才能處理；影像送到哪裡、留多久以 Adobe 官網為準"
+            ],
+            [
+              "Topaz Photo",
+              "Dust & Scratch、Denoise、Sharpen、Recover Faces、Upscale，官方把老照片列為 Archival Images 情境",
+              "個人版 39 美元一個月或 199 美元一年",
+              "可選本機算圖（官方寫檔案不會離開你的電腦）或雲端算圖"
+            ],
+            [
+              "Remini",
+              "Old Photos Restorer、Unblur & Sharpener、Denoiser、Image Enlarger（最多兩倍、4096 乘 4096）、Color Fixer",
+              "App Store 台灣區下載免費，訂閱價格以官網為準",
+              "上傳到伺服器；政策寫有訂閱最多保留 20 天、沒訂閱最多 7 天，兩年內刪除"
+            ],
+            [
+              "GFPGAN",
+              "人臉修復，背景可搭 Real-ESRGAN；V1 模型帶上色、V1.2 不帶上色",
+              "免費開源，Apache License 2.0",
+              "在自己的電腦上跑，照片不離開本機"
+            ],
+            [
+              "CodeFormer",
+              "人臉修復、整張照片增強、人臉上色、人臉修補",
+              "免費開源，S-Lab License 1.0，授權條文寫明非商業用途",
+              "在自己的電腦上跑，照片不離開本機"
+            ]
+          ],
+          "caption": "六個工具的能力、價格與照片存放位置對照，內容為 2026 年 9 月查各家官方頁面的結果，價格照官網幣別呈現。"
+        },
+        {
+          "type": "heading",
+          "text": "上色是推測，不是還原",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Photoshop 的 Colorize 官方說明寫得很清楚：這個濾鏡會用 AI 自動幫影像指派顏色，你可以在預覽圖上放下定位點、用檢色器改成別的顏色，例如換掉人像身上衣服的顏色。「自動指派」就是重點——模型給的是一組看起來合理的顏色，不是照片當年真正的顏色。"
+        },
+        {
+          "type": "paragraph",
+          "text": "濾鏡清單頁也寫了限制：褪色，或曝光過度、曝光不足的影像，預測出來的顏色會比較不準，官方建議先用曲線（Curves）或 Camera Raw 調整亮度與對比再套用濾鏡。這就是上色要放在最後的原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "底層原理上，這類模型跟現在的生圖模型是同一個家族：它們從資料學到的分布裡取樣出一個結果，而不是從你的照片裡讀出答案，所以同一張照片跑兩次可能得到兩種顏色。"
+        },
+        {
+          "type": "link",
+          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "上色的顏色是猜的，不要當成史料",
+          "text": "黑白底片沒有記錄顏色，AI 上色給的是一組推測值。制服、軍裝、招牌配色這些有考據價值的細節，建議在檔名或說明裡標注「AI 上色版」，並完整保留黑白原檔。要用在族譜、地方志或展覽時，顏色請以文字紀錄、實物或當事人的記憶為準。"
+        },
+        {
+          "type": "heading",
+          "text": "想在自己電腦跑：GFPGAN 與 CodeFormer",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不想把家族照片上傳到任何公司的伺服器，就用開源模型在自己的電腦上跑。GFPGAN 的 README 把自己定位成真實世界人臉修復的實用演算法；CodeFormer 的 README 標題是 NeurIPS 2022 的論文「Towards Robust Blind Face Restoration with Codebook Lookup Transformer」。兩個都是專門修臉的模型，背景要交給 Real-ESRGAN。以下指令照 README 原文，不要自己改。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "GFPGAN：取得原始碼與安裝套件（照 README 原文）",
+          "code": "git clone https://github.com/TencentARC/GFPGAN.git\ncd GFPGAN\npip install basicsr\npip install facexlib\npip install -r requirements.txt\npython setup.py develop\npip install realesrgan"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "GFPGAN：下載權重並跑一張圖",
+          "code": "wget https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth -P experiments/pretrained_models\npython inference_gfpgan.py -i inputs/whole_imgs -o results -v 1.3 -s 2"
+        },
+        {
+          "type": "paragraph",
+          "text": "README 說明 -s 是最後的放大倍率，預設 2；-v 是模型版本，預設 1.3。模型清單那一段還寫了一件跟上色直接有關的事：V1 是論文裡的模型，帶上色；V1.2 沒有上色——同一個專案裡不同版本的權重，對「要不要幫你上色」的答案就不一樣。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "CodeFormer：建立環境與安裝（照 README 原文）",
+          "code": "git clone https://github.com/sczhou/CodeFormer\ncd CodeFormer\nconda create -n codeformer python=3.8 -y\nconda activate codeformer\npip3 install -r requirements.txt\npython basicsr/setup.py develop"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "CodeFormer：下載權重、修復整張照片，以及黑白人臉上色",
+          "code": "python scripts/download_pretrained_models.py facelib\npython scripts/download_pretrained_models.py CodeFormer\npython inference_codeformer.py -w 0.7 --input_path [image folder]|[image path]\npython inference_colorization.py --input_path [image folder]|[image path]"
+        },
+        {
+          "type": "paragraph",
+          "text": "README 解釋 -w 是保真度權重，範圍 0 到 1：值越小畫面品質越高，值越大越忠於原圖；整張照片的範例用 0.7，裁切並對齊過的人臉範例用 0.5。上色用的 inference_colorization.py，官方註明是給裁切並對齊過的 512 乘 512 人臉使用。授權要看清楚：GFPGAN 是 Apache License 2.0，CodeFormer 是 S-Lab License 1.0，授權條文第一句就寫明重新散布與使用限於非商業用途。"
+        },
+        {
+          "type": "link",
+          "text": "AI 去背與放大：免費工具怎麼挑",
+          "url": "https://mokaair.com/zh-TW/life/ai-remove-background-upscale"
+        },
+        {
+          "type": "heading",
+          "text": "家族照片上傳前，先讀保留期限那一段",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "免費的線上修復工具最值得先讀的不是功能介紹，是隱私政策裡講保留期限的那幾句。Remini 的隱私政策（最後更新 2026 年 7 月 20 日）寫：你上傳的圖片與影片，有訂閱的保留最多二十（20）天、沒有訂閱的保留最多七（7）天，從最近一次使用該功能起算，無論如何都會在上傳後兩（2）年內刪除。同一頁也寫「你的圖片與影片不會被用來訓練我們的 AI 技術，除非你明確選擇加入」，以及「我們不會販售、交易或主張擁有你的任何圖片或影片」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 這邊，相簿的隱私說明頁寫「我們不會把你的個人資訊賣給任何人，也不會把你存在 Photos 裡的內容用於廣告」；Gemini 功能的隱私說明頁寫「我們不會用你在 Google 相簿裡的個人資料，訓練 Google 相簿以外的生成式 AI 模型」，並寫人工審閱者不會看 Ask Photos 的回應，除非你提供意見回饋，或在極少數處理濫用的情況下。使用這些功能還有條件：年滿 18 歲、身在已推出的地區、開啟臉部分組。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Photoshop 這邊，官方頁只寫「有些濾鏡需要網路連線才能處理」，Colorize 的官方步驟也寫第一次使用要先從雲端下載這個濾鏡；影像實際送到哪裡、留多久，官方頁沒有寫，以 Adobe 官網為準。Topaz 則是讓你在本機與雲端之間自己選。"
+        },
+        {
+          "type": "paragraph",
+          "text": "存放位置也要一起想。Google 相簿本身免費，但備份會用掉 Google 帳戶的儲存空間——官方說明寫個人帳戶最多 15 GB，且 Drive、Gmail 與 Photos 共用，掃描一整箱老照片很容易用完。"
+        },
+        {
+          "type": "heading",
+          "text": "保存：原檔永遠不要被蓋掉",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "修復完成之後，真正要長久留下來的是三個東西：掃描出來的原始檔、修復後的版本，以及你用哪個工具、什麼設定做的那行筆記。原始檔用無失真格式存好再備份，修復版另存壓縮格式給家人傳閱，兩者不要用同一個檔名互相覆蓋。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "原始掃描檔：不要一再另存成 JPEG，每存一次就再壓一次，細節只會越來越少。",
+            "修復版：檔名標注工具與日期，日後才知道是怎麼做出來的。",
+            "上色版：檔名一定要看得出來是 AI 上色，避免多年後被家人當成原始彩色照片。",
+            "備份：至少兩個地方，其中一個離線，例如外接硬碟；只放雲端不算兩份。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
+          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+        },
+        {
+          "type": "link",
+          "text": "手機照片整理順序：先保留，再刪重複，最後做真正會翻的相簿",
+          "url": "https://mokaair.com/zh-TW/life/phone-photo-declutter-workflow"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "同一張照片跑兩三個工具，只比三個地方",
+          "text": "本文環境無法上傳照片實測，你可以自己做一個小測試：挑一張有臉、也有文字（招牌或制服上的字）的老照片，用兩三個工具各跑一次，放大倍率固定成兩倍，然後只看三個地方——眼睛與牙齒有沒有變成別人、背景的直線有沒有扭曲、照片上的文字有沒有被改寫。這三處最容易露出模型在生成而不是修復。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 相簿說明｜Edit your photos，iPhone 與 iPad 版（自動修圖建議、AI Enhance 地區限制、Unblur 記憶體需求）",
+          "url": "https://support.google.com/photos/answer/6128850?hl=en&co=GENIE.Platform%3DiOS",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 官方部落格｜Google Photos now lets you edit images using AI（restore this old photo、Pixel 10、C2PA）",
+          "url": "https://blog.google/products-and-platforms/products/photos/ai-photo-editing-google-photos/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 相簿說明｜Scan your photos（PhotoScan 的去反光與拍攝建議）",
+          "url": "https://support.google.com/photos/answer/7177983",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 相簿說明｜How Google Photos protects your privacy（不販售個人資訊、不用於廣告）",
+          "url": "https://support.google.com/photos/answer/12840331",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 相簿說明｜Gemini features in Photos privacy hub（訓練、人工審閱與使用條件）",
+          "url": "https://support.google.com/photos/answer/15344015",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 雲端硬碟說明｜Google 帳戶儲存空間（個人帳戶 15 GB，Drive、Gmail 與 Photos 共用）",
+          "url": "https://support.google.com/drive/answer/6374270",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe 說明｜Apply Neural Filters in Photoshop（入口路徑、Beta 濾鏡、有些濾鏡需要網路連線才能處理）",
+          "url": "https://helpx.adobe.com/photoshop/desktop/effects-filters/neural-filters/use-neural-filters-to-enhance-images.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe 說明｜Neural Filters list and FAQ（Photo Restoration、Colorize、JPEG Artifacts Removal、Super Zoom 與褪色影像限制）",
+          "url": "https://helpx.adobe.com/photoshop/using/neural-filters-list-and-faq.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe 說明｜Learn how to Colorize images with Neural Filters（自動指派顏色、定位點與檢色器、第一次要從雲端下載濾鏡）",
+          "url": "https://helpx.adobe.com/photoshop/using/colorize.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Topaz Labs｜Topaz Photo 產品頁（Archival Images 情境、本機與雲端算圖）",
+          "url": "https://www.topazlabs.com/topaz-photo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Topaz Labs｜Pricing（Topaz Photo 個人版月費與年費、模型清單）",
+          "url": "https://www.topazlabs.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Topaz Labs 文件｜Topaz Photo system requirements（最低記憶體需求）",
+          "url": "https://docs.topazlabs.com/topaz-photo/system-requirements",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Remini｜Photo restorer 官方頁（老照片修復的官方描述）",
+          "url": "https://remini.ai/photo-restorer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Remini｜Image enlarger 官方頁（最多兩倍、最高 4096 乘 4096 像素）",
+          "url": "https://remini.ai/image-enlarger",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Remini｜Color fixer 官方頁（色彩修正的官方描述）",
+          "url": "https://remini.ai/color-fixer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bending Spoons｜Remini 隱私政策（上傳圖片的保留期限與訓練條款）",
+          "url": "https://support.bendingspoons.com/privacy?app=1470373330",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "App Store 台灣區｜Remini - AI Photo Enhancer（台灣可下載、下載免費）",
+          "url": "https://apps.apple.com/tw/app/remini-ai-photo-enhancer/id1470373330",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub｜TencentARC/GFPGAN README（安裝指令、推論參數、模型版本與授權）",
+          "url": "https://github.com/TencentARC/GFPGAN",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub｜sczhou/CodeFormer README（安裝指令、保真度權重、上色腳本與授權）",
+          "url": "https://github.com/sczhou/CodeFormer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Epson 支援文件｜Scan Resolution Guidelines（各用途建議 dpi 與放大時的換算）",
+          "url": "https://files.support.epson.com/docid/cs/cpd52019/source/scanners/source/scanning_software/concepts/scan_resolution_guidelines_escan2.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

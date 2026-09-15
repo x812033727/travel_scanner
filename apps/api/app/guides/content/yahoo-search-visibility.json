@@ -1,0 +1,268 @@
+{
+  "slug": "yahoo-search-visibility",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Yahoo 搜尋能見度怎麼檢查：來源、收錄與流量判讀",
+      "description": "網站在 Google 找得到，卻不一定能用相同查詢在 Yahoo 看見。本文說明 Yahoo 一般搜尋與 Bing 的關係，整理網站驗證、網址檢查、Sitemap 與 IndexNow 的操作順序，再用網站分析資料辨識 Yahoo 相關來源。附比較表與原創圖解，協助台灣網站維護者分清提交、收錄、搜尋呈現和實際流量，避免把付費曝光或單次查詢當成自然排名成果。",
+      "hero": {
+        "src": "/guides/yahoo-search-visibility/hero.jpg",
+        "alt": "Mokaair 原創文件、伺服器與螢幕圖像，說明 Yahoo 一般搜尋的網址檢查、索引與流量觀察。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "工作室換了新網站，有人在 Google 找得到，卻說 Yahoo 搜尋還顯示舊頁面。這時應先確認對方看到的是一般網頁結果、Yahoo 內的內容模組，還是廣告，再檢查對應網址。只說 Yahoo 沒更新，往往不足以找到可以處理的問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以台灣工作室的搬站後檢查為原創情境，聚焦 Yahoo 一般網頁搜尋。依 2026 年 9 月 14 日查閱的官方資料整理，沒有實際登入站長帳戶、提交網址或驗證任何網站排名，操作結果仍需由維護者在自己的網站確認。"
+        },
+        {
+          "type": "heading",
+          "text": "先確認 Yahoo 一般搜尋的資料關係",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Yahoo 官方說明，一般演算法搜尋結果由 Microsoft Bing 提供；網站提交也導向 Bing Webmaster Tools。因此，要排查一般網頁是否被發現與收錄，Bing 的站長工具是合理起點，而不是去找已過時的網站目錄登錄服務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個 Yahoo 搜尋頁也可能有獨立內容模組，不能假定所有區塊都以相同方式產生。檢查時保存搜尋字詞、結果連結和區塊名稱，確認目標是自己的網頁，還是 Yahoo 平台內的內容。不同內容的問題應找相應來源處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方也明確區分自然排名與廣告：付費不能直接提升演算法排名。工作室若同時有投放廣告，報告應將廣告呈現與自然搜尋分開。看到自家名稱出現在上方，還要核對版位與連結，不把一次付費曝光當成收錄或 SEO 改善的證明。"
+        },
+        {
+          "type": "heading",
+          "text": "建立 Bing Webmaster Tools 的正確網站範圍",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先由網站擁有者或被授權的維護者進入 Bing Webmaster Tools，新增要檢查的網站。可以依介面提供的驗證方式證明管理權，也可在已有正確 Google Search Console 權限時，選擇匯入已驗證網站。驗證完成只代表取得管理工具存取權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "匯入前核對選取的網址與權限範圍，不要把測試站、舊網域或別人的客戶站誤加入。官方說明，從 Search Console 匯入需要授權，後續會定期核對擁有權並可能匯入新的 Sitemap。採用前應確認團隊是否接受這個持續連接方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工作室搬站時，可以保留新舊網址對照，逐筆確認舊頁應移轉到哪一頁。不要為了讓工具通過驗證而移除整站安全限制或公開測試內容。只對預定公開的正式頁面安排搜尋檢查，並記錄誰負責權限與後續通知。"
+        },
+        {
+          "type": "heading",
+          "text": "用 URL Inspection 分開看索引與即時抓取",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在已選定的網站中開啟 URL Inspection，輸入要檢查的完整網址。Index card 顯示 Bing 已知的索引與抓取資訊；Live URL 則可檢查當下抓取情況。兩種觀察要分開：目前能讀取頁面，不表示索引中的版本已更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若頁面未被收錄，先看工具指出的原因，例如伺服器回應、抓取阻擋或內容問題，再處理對應設定。檢查頁面是否有不應存在的 noindex、舊網址是否正確重新導向，以及重要內容能否被讀取。不要看到未收錄就直接刪除全部 robots.txt 規則。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修正後保存日期與檢查結果，再依目前介面和可用額度提出索引要求。提交表示告知搜尋引擎有需要查看的網址，還需後續抓取與評估。即使 Bing 已顯示收錄，也不能據此保證 Yahoo 在指定字詞下會立即出現同樣位置。"
+        },
+        {
+          "type": "heading",
+          "text": "用 Sitemap 維持清單，用 IndexNow 通知變動",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Sitemap 用來提供網站公開網址清單，可以在 Bing Webmaster Tools 的 Sitemaps 區域提交並查看處理資訊。先核對清單是否仍包含已刪除頁面、舊網域或測試網址，再修正產生來源。工具能讀取 Sitemap，不等於其中每一頁都已收錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "IndexNow 用於通知參與的搜尋引擎：哪些網址新增、更新或刪除。先檢查 CMS、主機或既有 SEO 外掛是否已有支援，避免同一變更被多個整合反覆送出。它與 Sitemap 的用途可以並存，一個描述清單，另一個通知近期變動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "IndexNow 官方提醒，提交後仍由搜尋引擎決定抓取與索引，並不保證立即收錄。工作室只需對有意義的變動通知，保存成功或錯誤狀態，再看後續索引。反覆提交同一個未修改網址，不應當成催促排名的日常工作。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "保存 Yahoo 查詢條件與結果網址，辨認一般搜尋、模組或廣告。",
+            "驗證正確網站範圍，用 Bing URL Inspection 檢查目標頁面。",
+            "修正抓取與網址問題，更新 Sitemap 並通知有意義的內容變動。",
+            "另用相同條件查看 Yahoo 呈現，配合網站來源資料觀察後續流量。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Yahoo 來源流量要回到網站分析核對",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Bing Webmaster Tools 的成效報表是 Bing 所定義範圍的搜尋資料，不能直接改名成 Yahoo 專屬流量報告。若要知道網站收到多少 Yahoo 相關造訪，可以到 GA4 的流量開發報表，選擇 Session source / medium，核對帳戶實際出現的來源與媒介值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先搜尋與 Yahoo 相關的來源，再看媒介是否屬於自然搜尋、推薦連結或付費活動。不要把所有含 yahoo 的字串相加就稱為 Yahoo 搜尋，因為來源可能來自不同產品或標記方式。保留原始值與分類規則，才方便下次用相同方式整理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GA4 的工作階段來源與首次使用者來源也不一樣。要觀察這段期間從哪裡進站，應確認使用的是適合的工作階段維度；若需要看最初如何認識網站，則是另一個問題。報告中寫清楚指標名稱，避免把搜尋點擊與工作階段數強行對齊。"
+        },
+        {
+          "type": "heading",
+          "text": "以內容問題與可見證據決定下一步",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "若舊網址仍出現，先確認重新導向與新頁是否持續可用，再比較索引記錄和查詢畫面。若網址已收錄卻找不到某個泛用詞，可能是排名與需求匹配問題，不能再以提交網站當作唯一解法。應檢查頁面是否清楚回答該詞對應的讀者問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工作室可以建立一張簡單紀錄：查詢字詞、目標網址、索引狀態、即時抓取、Yahoo 當次呈現、來源造訪及修改日期。數量小時先記錄事實，不急著用一兩次點擊判斷趨勢。不同裝置與地區的觀察，也要各自保留條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後將需要處理的項目交給明確負責人。技術問題由維護者修正，過時資訊由內容作者更新，來源分類則由分析人員核對。只有將可控制的工作與需要持續觀察的結果分開，才能避免每次搜尋畫面變動，就重做整套網站設定。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/yahoo-search-visibility/diagram-1.svg",
+          "alt": "四欄呈現先辨認 Yahoo 結果類型，再到 Bing 檢查索引與抓取，修正並通知變動，最後核對 Yahoo 當次呈現與網站來源流量。",
+          "width": 1600,
+          "height": 900,
+          "caption": "提交、收錄、呈現與流量各有證據，不能用其中一步代替全部。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "檢查位置",
+            "能確認什麼",
+            "仍不能證明什麼"
+          ],
+          "rows": [
+            [
+              "網站驗證",
+              "對站長工具的管理權",
+              "所有頁面已收錄"
+            ],
+            [
+              "URL Inspection 索引",
+              "Bing 已知版本與狀態",
+              "Yahoo 特定字詞排名"
+            ],
+            [
+              "Live URL",
+              "當下抓取情況",
+              "索引版本已更新"
+            ],
+            [
+              "Sitemap / IndexNow",
+              "清單或變動通知",
+              "每頁立即出現在搜尋"
+            ],
+            [
+              "網站來源報表",
+              "依設定記錄的造訪來源",
+              "全部 Yahoo 區塊的曝光"
+            ]
+          ],
+          "caption": "各階段用途不同，驗證與提交通過後仍需核對索引、呈現與流量。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先找到要處理的那個網址",
+          "text": "保存結果連結與區塊類型，比只說搜尋不到更有用。每次修正後記錄日期，以便區分已完成的設定與仍待觀察的搜尋結果。"
+        },
+        {
+          "type": "link",
+          "text": "檢查網站 Sitemap 的公開網址",
+          "url": "https://mokaair.com/zh-TW/life/sitemap-website-submission"
+        },
+        {
+          "type": "link",
+          "text": "整理網址重新導向的用途",
+          "url": "https://mokaair.com/zh-TW/life/redirects-301-302"
+        },
+        {
+          "type": "link",
+          "text": "理解搜尋版位與點擊率",
+          "url": "https://mokaair.com/zh-TW/life/search-results-clickthrough"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Yahoo 一般搜尋結果與排名說明",
+          "url": "https://uk.help.yahoo.com/kb/SLN35619.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Yahoo 網站提交說明",
+          "url": "https://in.help.yahoo.com/kb/SLN2217.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bing 官方站長工具入門與 Yahoo 關係",
+          "url": "https://blogs.bing.com/webmaster/June-2025/Start-Using-Bing-Webmaster-Tools-to-Improve-Your-Site-Visibility",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bing 新增與驗證網站",
+          "url": "https://www.bing.com/webmasters/help/add-and-verify-site-12184f8b",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bing URL Inspection 索引與即時抓取",
+          "url": "https://www.bing.com/webmasters/help/URL-Inspection-55a30305",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bing Sitemap 處理與提交",
+          "url": "https://www2.bing.com/webmasters/help/sitemaps-3b5cf6ed",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IndexNow 通知與索引限制",
+          "url": "https://www.indexnow.org/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bing 成效報表的資料範圍",
+          "url": "https://www.bing.com/webmasters/help/search-performance-c680da36",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GA4 流量開發與工作階段來源",
+          "url": "https://support.google.com/analytics/answer/12923437?co=GENIE.Platform%3DDesktop&hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

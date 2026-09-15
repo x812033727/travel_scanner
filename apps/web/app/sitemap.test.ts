@@ -7,6 +7,8 @@ import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
 import { guideSitemapEntries, type GuideSitemapEntry } from "@/lib/guides.server";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
+import { getCommunityState } from "@/lib/community/server";
+import { closedCommunity, type CommunityState } from "@/lib/community/types";
 import sitemap, { dynamic, SITEMAP_ROUTES } from "./sitemap";
 
 vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: vi.fn() }));
@@ -14,13 +16,17 @@ vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: vi.fn() }));
 // listed behind it, and every count below is of the routes that do not depend on it.
 vi.mock("@/lib/discovery-status.server", () => ({ getDiscoveryStatus: vi.fn() }));
 
-/** The routes listed whatever the discovery switch says. */
-const STATIC_ROUTES = SITEMAP_ROUTES.filter((route) => !route.discovery);
+/** The routes listed whatever the discovery and community switches say. */
+const STATIC_ROUTES = SITEMAP_ROUTES.filter((route) => !route.discovery && !route.community);
 // Defaulting to an unreadable enumeration is what keeps every assertion below about the
 // static routes exactly as it was, including the whole-array comparison: with no complete
 // publication picture every section hub stays listed in all five languages. The guide cases
 // opt in, and the hub cases opt in to `complete` as well.
 vi.mock("@/lib/guides.server", () => ({ guideSitemapEntries: vi.fn() }));
+// The real module is `server-only`, and the community is off in production, so that is the
+// default here too: /pet-friendly is the one route listed behind it.
+vi.mock("@/lib/community/server", () => ({ getCommunityState: vi.fn() }));
+const OPEN_COMMUNITY: CommunityState = { status: "ready", flags: { ...closedCommunity.flags, enabled: true } };
 
 const APP = import.meta.dirname;
 // Both trees serve /{locale}/…: the second is a route group with its own root layout.
@@ -59,6 +65,7 @@ describe("sitemap", () => {
     vi.mocked(getSiteVisibility).mockReset().mockResolvedValue({ status: "ready", features: openSiteVisibility });
     vi.mocked(guideSitemapEntries).mockReset().mockResolvedValue({ entries: [], complete: false });
     vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
+    vi.mocked(getCommunityState).mockReset().mockResolvedValue(closedCommunity);
     entries = await sitemap();
   });
 
@@ -154,11 +161,33 @@ describe("sitemap", () => {
     expect(routeExists("/destinations/tokyo/nope")).toBe(false);
   });
 
+  it("lists /pet-friendly only while the community switch is on", async () => {
+    // With the switch off the route renders the "closed" notice and its own metadata says
+    // noindex, so the sitemap must not advertise it either.
+    for (const locale of locales) expect(entries.map((entry) => entry.url)).not.toContain(`${siteUrl}/${locale}/pet-friendly`);
+    vi.mocked(getCommunityState).mockResolvedValue(OPEN_COMMUNITY);
+    const open = await sitemap();
+    expect(open).toHaveLength(entries.length + locales.length);
+    for (const locale of locales) expect(open.map((entry) => entry.url)).toContain(`${siteUrl}/${locale}/pet-friendly`);
+    // The rest of the community stays out: those routes are a member feed and a sign-in
+    // prompt, not content waiting on server rendering.
+    for (const path of ["/community", "/community/collections", "/community/drafts", "/community/settings"]) {
+      expect(open.map((entry) => entry.url)).not.toContain(`${siteUrl}/en${path}`);
+    }
+  });
+
+  it("treats an unreachable community as closed", async () => {
+    // Failing open would advertise a directory that answers with the closed notice.
+    vi.mocked(getCommunityState).mockResolvedValue({ status: "unavailable", flags: { ...closedCommunity.flags, enabled: true } });
+    const closed = await sitemap();
+    expect(closed.map((entry) => entry.url)).not.toContain(`${siteUrl}/en/pet-friendly`);
+  });
+
   it("leaves out routes that are still noindex", () => {
-    // Managed documents are noindex until published; explore, pet-friendly and community send an
-    // empty shell. Listing any of them would only collect "Excluded by noindex".
+    // Managed documents are noindex until published; explore/collections and the member
+    // community routes send an empty shell. Listing any would collect "Excluded by noindex".
     const paths = SITEMAP_ROUTES.map((route) => route.path);
-    for (const path of ["/about", "/privacy", "/terms", "/contact", "/explore/collections", "/pet-friendly"]) {
+    for (const path of ["/about", "/privacy", "/terms", "/contact", "/explore/collections", "/community"]) {
       expect(paths).not.toContain(path);
     }
   });
@@ -194,6 +223,7 @@ describe("guide articles in the sitemap", () => {
     vi.mocked(getSiteVisibility).mockReset().mockResolvedValue({ status: "ready", features: openSiteVisibility });
     vi.mocked(guideSitemapEntries).mockReset().mockResolvedValue({ entries, complete });
     vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
+    vi.mocked(getCommunityState).mockReset().mockResolvedValue(closedCommunity);
     return sitemap();
   }
 

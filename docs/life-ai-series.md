@@ -1,4 +1,5 @@
-# 生活分享：AI 工具介紹與教學系列（285 項編輯總表，含深入教學規劃）
+# 生活分享：AI 工具介紹與教學系列（296 項編輯總表，含深入教學規劃）
+
 
 這份文件是「生活分享」（`kind: "life"`，`/{locale}/life/{slug}`）AI 系列的**編輯總表**：每一篇
 的 slug、標題、主題、配圖方式與合作連結在這裡定死，批次任務票的 `scope` 才能精確到檔案。
@@ -28,6 +29,8 @@ ChatGPT、Claude、Gemini、Codex、MiniMax 這些東西是什麼、怎麼開始
   「以官網為準」。「易變」欄打勾的篇要定期回查（`valid_until` 維持 null，life 文章不走到期邏輯）。
 - **主題：** 只用 life 詞彙（`ai`、`tutorial`、`software`、`gadgets`、`productivity`、`daily`、`misc`）；
   `destination_id` 一律 null。
+- **字尾關鍵字：** 「翻譯 AI」「簡報 AI」這類字尾型搜尋詞的對照、寫法與批次 12 的由來見
+  [`docs/ai-suffix-keywords.md`](ai-suffix-keywords.md)；已寫的篇只補 description 與導言，不改標題。
 
 ## 狀態怎麼看
 
@@ -46,7 +49,6 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 
 | 批次 | 主題 | 任務票 |
 | --- | --- | --- |
-
 | 01 | AI 入門與各工具總覽（先寫，之後每篇深入文都連回這 20 篇） | `2026-09-13-life-ai-batch-01` |
 | 02 | ChatGPT 教學 | `2026-09-13-life-ai-batch-02` |
 | 03 | Claude 教學 | `2026-09-13-life-ai-batch-03` |
@@ -58,6 +60,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 09 | 工作流、效率與自動化 | `2026-09-13-life-ai-batch-09` |
 | 10 | 比較、費用、資安與法律 | `2026-09-13-life-ai-batch-10` |
 | 11 | 生活應用、3C 與旅途中的 AI | `2026-09-13-life-ai-batch-11` |
+| 12 | 字尾關鍵字補位（11 篇，不是 20；`docs/ai-suffix-keywords.md`） | `2026-09-14-life-ai-batch-12-suffix-keywords` |
 
 工具與 brief：`2026-09-13-life-ai-series-tooling`；這份總表：`2026-09-13-life-ai-series-catalogue`。
 
@@ -167,7 +170,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 70 | `cursor-editor-guide` | Cursor 編輯器入門：Tab 補全、Chat 與代理模式 | ai, software | 插 |  | ✓ |
 | 71 | `github-copilot-guide` | GitHub Copilot 入門：VS Code 裡的補全、Chat 與代理 | ai, software | 插 |  | ✓ |
 | 72 | `vibe-coding-first-website` | Vibe coding：不會寫程式也能做出第一個網站 | ai, tutorial | 插 | H |  |
-| 73 | `ai-coding-agents-compared` | AI 寫程式代理實測比較：同一個需求三個工具怎麼做 | ai | 插 |  | ✓ |
+| 73 | `ai-coding-agents-compared` | AI 寫程式代理操作步驟比較：同一個需求在三個工具怎麼做 | ai | 插 |  | ✓ |
 | 74 | `deploy-ai-built-site-to-vps` | 把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定 | tutorial, software | 插 | H |  |
 | 75 | `ai-coding-git-basics` | 用 AI 寫程式前該懂的 Git：分支、提交與還原 | tutorial, software | 插 |  |  |
 | 76 | `ai-code-review-safety` | AI 寫的程式能信嗎：審查、測試與安全檢查清單 | ai, tutorial | 插 |  |  |
@@ -205,23 +208,23 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 
 | # | slug | 標題 | topics | 圖 | 合作 | 易變 |
 |---|---|---|---|---|---|---|
-| 101 | `minimax-hailuo-video-guide` | MiniMax 海螺影片生成教學 | ai, tutorial | 插 |  | ✓ |
-| 102 | `minimax-speech-tts-guide` | MiniMax 語音合成：中文配音與有聲書 | ai, tutorial | 插 |  | ✓ |
-| 103 | `minimax-music-generation` | MiniMax 音樂生成怎麼用 | ai, tutorial | 插 |  | ✓ |
-| 104 | `minimax-m-series-models-explained` | MiniMax M 系列模型：開源權重與 API | ai | 插 |  | ✓ |
-| 105 | `minimax-agent-guide` | MiniMax Agent：一句話做出網頁與報告 | ai, tutorial | 插 |  | ✓ |
-| 106 | `deepseek-chat-and-reasoner` | DeepSeek 對話與推理模式怎麼用 | ai, tutorial | 插 |  | ✓ |
+| 101 | `minimax-hailuo-video-guide` | MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片 | ai, tutorial | 插 |  | ✓ |
+| 102 | `minimax-speech-tts-guide` | MiniMax 語音合成：中文配音、有聲書與影片旁白 | ai, tutorial | 插 |  | ✓ |
+| 103 | `minimax-music-generation` | MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌 | ai, tutorial | 插 |  | ✓ |
+| 104 | `minimax-m-series-models-explained` | MiniMax M 系列模型：開放權重、授權條款與 API 價格 | ai | 插 |  | ✓ |
+| 105 | `minimax-agent-guide` | MiniMax Agent 怎麼用：一句話做出網頁、報告與簡報 | ai, tutorial | 插 |  | ✓ |
+| 106 | `deepseek-chat-and-reasoner` | DeepSeek 對話與深度思考：哪些題目該開推理模式 | ai, tutorial | 插 |  | ✓ |
 | 107 | `deepseek-privacy-and-data-flow` | DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨 | ai, misc | 插 |  |  |
 | 108 | `deepseek-local-with-ollama` | 在自己電腦跑 DeepSeek：Ollama 蒸餾版教學 | ai, tutorial | 插 |  | ✓ |
-| 109 | `qwen-alibaba-models-guide` | 通義千問 Qwen：開源模型家族與 Qwen Chat | ai | 插 |  | ✓ |
+| 109 | `qwen-alibaba-models-guide` | 通義千問 Qwen：開放權重模型家族與 Qwen Studio | ai | 插 |  | ✓ |
 | 110 | `kimi-moonshot-guide` | Kimi（月之暗面）：長文件與 K 系列模型 | ai | 插 |  | ✓ |
 | 111 | `doubao-bytedance-guide` | 豆包（字節跳動）：功能與台灣可用性 | ai | 插 |  | ✓ |
 | 112 | `chinese-ai-models-comparison` | 中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax | ai | 插 |  | ✓ |
 | 113 | `chinese-ai-apps-security-checklist` | 使用中國系 AI App 前的資安檢查清單 | ai, misc | 插 |  |  |
-| 114 | `mistral-le-chat-guide` | Mistral Le Chat：歐洲的 AI 助手 | ai | 插 |  | ✓ |
-| 115 | `grok-xai-guide` | Grok（xAI）：X 上的 AI 助手與注意事項 | ai | 插 |  | ✓ |
-| 116 | `perplexity-ai-search-guide` | Perplexity：AI 搜尋引擎入門 | ai, productivity | 插 |  | ✓ |
-| 117 | `microsoft-copilot-windows-office` | Microsoft Copilot：Windows 與 Office 裡的 AI | ai, software | 插 |  | ✓ |
+| 114 | `mistral-le-chat-guide` | Mistral Vibe（原 Le Chat）：歐洲 AI 助手的方案、功能與資料存放 | ai | 插 |  | ✓ |
+| 115 | `grok-xai-guide` | Grok（xAI）怎麼用：三個入口、方案價格與資料訓練開關 | ai | 插 |  | ✓ |
+| 116 | `perplexity-ai-search-guide` | Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定 | ai, productivity | 插 |  | ✓ |
+| 117 | `microsoft-copilot-windows-office` | Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關 | ai, software | 插 |  | ✓ |
 | 118 | `meta-ai-whatsapp-instagram` | Meta AI：WhatsApp、Instagram 裡的 AI 與隱私 | ai, daily | 插 |  | ✓ |
 | 119 | `apple-intelligence-guide` | Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援 | ai, gadgets | 照 |  | ✓ |
 | 120 | `line-ai-features-taiwan` | LINE 裡的 AI：聊天、翻譯與台灣可用功能 | ai, daily | 照 |  | ✓ |
@@ -242,39 +245,39 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 130 | `gpt-oss-openai-open-weights` | OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪 | ai | 插 |  | ✓ |
 | 131 | `gemma-google-open-models` | Gemma：Google 的開源模型怎麼用 | ai | 插 |  | ✓ |
 | 132 | `qwen-local-deployment` | 本機跑 Qwen：中文表現與設定 | ai, tutorial | 插 |  | ✓ |
-| 133 | `whisper-local-transcription` | 用 Whisper 本機轉錄逐字稿：會議與訪談 | ai, tutorial | 照 |  |  |
+| 133 | `whisper-local-transcription` | 用 Whisper 本機轉錄逐字稿：會議與訪談的離線做法 | ai, tutorial | 照 |  |  |
 | 134 | `stable-diffusion-comfyui-setup` | 本機跑 Stable Diffusion 與 Flux：ComfyUI 入門 | ai, tutorial | 插 |  | ✓ |
-| 135 | `local-ai-on-mac-mini` | Mac mini 當家用 AI 伺服器 | ai, gadgets | 照 |  | ✓ |
+| 135 | `local-ai-on-mac-mini` | Mac mini 當家用 AI 伺服器：統一記憶體、售價與區網設定 | ai, gadgets | 照 |  | ✓ |
 | 136 | `local-ai-gpu-buying-guide` | 為 AI 選顯示卡：顯示記憶體優先與預算配置 | gadgets, ai | 照 |  | ✓ |
 | 137 | `huggingface-guide` | Hugging Face 入門：找模型、看授權、下載 | ai, tutorial | 插 |  |  |
 | 138 | `self-host-ai-on-vps` | 在 VPS 上自架 AI 服務：Ollama＋Open WebUI | tutorial, software | 插 | H |  |
-| 139 | `local-vs-cloud-ai-cost` | 本機 vs 雲端 AI 成本試算 | ai, software | 插 |  | ✓ |
+| 139 | `local-vs-cloud-ai-cost` | 本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算 | ai, software | 插 |  | ✓ |
 | 140 | `openrouter-multi-model-api` | OpenRouter：一把金鑰用遍各家模型 | ai, tutorial | 插 |  | ✓ |
 
 ### 批次 08｜圖片、影片、音樂生成
 
 | # | slug | 標題 | topics | 圖 | 合作 | 易變 |
 |---|---|---|---|---|---|---|
-| 141 | `ai-image-tools-overview-2026` | AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux | ai, software | 插 |  | ✓ |
+| 141 | `ai-image-tools-overview-2026` | AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選 | ai, software | 插 |  | ✓ |
 | 142 | `midjourney-getting-started` | Midjourney 入門：網頁版、參數與訂閱 | ai, tutorial | 插 |  | ✓ |
 | 143 | `midjourney-prompt-guide` | Midjourney 提示詞：風格、比例、參考圖 | ai, tutorial | 插 |  |  |
-| 144 | `sora-video-guide` | Sora 影片生成教學 | ai, tutorial | 插 |  | ✓ |
-| 145 | `ai-video-tools-compared` | AI 影片工具比較：Veo、Sora、海螺、Kling | ai | 插 |  | ✓ |
+| 144 | `sora-video-guide` | Sora 影片生成教學：官方已停止服務，先匯出再挑替代工具 | ai, tutorial | 插 |  | ✓ |
+| 145 | `ai-video-tools-compared` | AI 影片工具比較：Veo、Sora、海螺、Kling 的方案與規格 | ai | 插 |  | ✓ |
 | 146 | `kling-runway-video-tools` | Kling 與 Runway：影片生成工具介紹 | ai | 插 |  | ✓ |
-| 147 | `suno-music-generation-guide` | Suno 做歌：從歌詞到成品 | ai, tutorial | 插 |  | ✓ |
-| 148 | `ai-voice-cloning-elevenlabs` | ElevenLabs 與語音克隆：配音與注意事項 | ai, tutorial | 插 |  | ✓ |
-| 149 | `ai-image-copyright-taiwan` | AI 生成圖片的版權：台灣法規與商用注意 | ai, misc | 插 |  |  |
+| 147 | `suno-music-generation-guide` | Suno 做歌：從歌詞到成品，方案、下載與商用權怎麼算 | ai, tutorial | 插 |  | ✓ |
+| 148 | `ai-voice-cloning-elevenlabs` | ElevenLabs 與語音克隆：配音、方案與同意規則怎麼看 | ai, tutorial | 插 |  | ✓ |
+| 149 | `ai-image-copyright-taiwan` | AI 生成圖片的版權：台灣法規與商用注意事項 | ai, misc | 插 |  |  |
 | 150 | `ai-image-watermark-c2pa` | AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識 | ai, misc | 插 |  |  |
-| 151 | `ai-remove-background-upscale` | AI 去背與放大：免費工具實測 | ai, tutorial | 照 |  |  |
-| 152 | `ai-photo-restoration-old-photos` | 用 AI 修復老照片 | ai, daily | 照 |  |  |
-| 153 | `canva-ai-features-guide` | Canva 的 AI 功能怎麼用 | ai, software | 插 |  | ✓ |
+| 151 | `ai-remove-background-upscale` | AI 去背與放大：免費工具怎麼挑 | ai, tutorial | 照 |  |  |
+| 152 | `ai-photo-restoration-old-photos` | 用 AI 修復老照片：去刮痕、放大與上色分開做，工具怎麼選 | ai, daily | 照 |  |  |
+| 153 | `canva-ai-features-guide` | Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算 | ai, software | 插 |  | ✓ |
 | 154 | `ai-slides-generation-tools` | AI 做簡報：Gamma、Copilot 與 Gemini | ai, productivity | 插 |  | ✓ |
-| 155 | `ai-product-photo-for-sellers` | 賣家用 AI 做商品圖：注意事項 | ai, daily | 照 |  |  |
-| 156 | `ai-video-subtitles-translation` | AI 上字幕與翻譯影片：CapCut、Whisper | ai, tutorial | 插 |  |  |
-| 157 | `ai-avatar-video-tools` | AI 虛擬主播與數位分身：HeyGen 等工具 | ai | 插 |  | ✓ |
+| 155 | `ai-product-photo-for-sellers` | 賣家用 AI 做商品圖：四種用法、平台規範與紅線 | ai, daily | 照 |  |  |
+| 156 | `ai-video-subtitles-translation` | AI 上字幕與翻譯影片：CapCut、Whisper 與 YouTube 三條路 | ai, tutorial | 插 |  |  |
+| 157 | `ai-avatar-video-tools` | AI 虛擬主播與數位分身：HeyGen 的方案、同意規則與標示怎麼看 | ai | 插 |  | ✓ |
 | 158 | `ai-generated-content-disclosure` | AI 內容標示：YouTube、Meta 與台灣的規定 | ai, misc | 插 |  | ✓ |
 | 159 | `ai-art-prompt-styles-reference` | AI 繪圖風格提示參考：50 種風格描述 | ai, tutorial | 插 |  |  |
-| 160 | `ai-3d-model-generation` | AI 生成 3D 模型入門 | ai | 插 |  | ✓ |
+| 160 | `ai-3d-model-generation` | AI 生成 3D 模型入門：從文字或圖片到能列印的檔案 | ai | 插 |  | ✓ |
 
 ### 批次 09｜工作流、效率與自動化
 
@@ -366,6 +369,10 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
   本批列了批次 04／10／11 的篇名，八篇共 13 個連結指向不存在的文章，收尾時才由 `normalise_links.py` 的 missing target 抓到並移除。
   撰稿代理會繼承 session 的 plan mode，開著時代理只寫計畫檔；`ExitPlanMode` 後用 SendMessage 讓同一個代理接著執行即可，查證不用重做。
   總表標題以實際篇名為準（本批同步 5 列，其中「兩家寫作比一比」因為我們無法真的實測，改寫成讀者自測法）。
+- 批次 04（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-04.md`）：教學文很需要 `code` 區塊（指令、設定檔、範例提示詞），撰稿補充要明寫可用；連結文字直接取目標文章標題（同批會寫的篇用指派給的標題，收完後再統一一次）；無法實測的「比較」題改寫成操作步驟比較與讀者自測法。官方文件會搬家（Codex 文件轉到 learn.chatgpt.com），sources 記實際生效的網址。合作連結沒有聯盟網址就不放，總表的 H 標記只是允許。
+- 批次 06（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-06.md`）：中國系與其他家的產品名、模型版本、授權與方案半年內幾乎全換過（Le Chat→Vibe、Qwen Chat→Qwen Studio、MiniMax Agent→Mavis、Copilot Pro 停售），指派裡的「例如」只能當起點，寫手照當天官網寫、審稿再用 curl／Hugging Face API／iTunes lookup 逐篇複核；台灣可用性用 App Store／Google Play 官方查詢，查不到就寫查不到；政府禁令只引公告原文並限定公務機關；x.ai、help.x.com、perplexity.ai、volcengine 對機房 IP 回 403，寫手改讀 .md 版文件、說明中心的 Intercom 網址或 Wayback 快照並在 notes 記讀法。一波七個 Opus 代理會撞帳號的五小時額度，撞到就等重置再重跑。
+- 批次 07（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-07.md`）：本機與開源模型的授權要逐版本用 Hugging Face API 的 license 標籤與 LICENSE 原文核對，不能用家族名稱推論（Gemma 4 是 Apache 2.0 但 Gemma 3 仍是 Gemma Terms；FLUX.2 klein 4B 可商用但 9B 非商用；Qwen 只有 Flash-Next 是自訂授權；SDXL Turbo 的 HF 標籤與 LICENSE 檔不一致）。官方文件自己也會前後不一致（Ollama 預設上下文、Open WebUI 向量庫數、Whisper turbo 參數），正文擇一並註明出處。openai.com 與 help.openai.com 對本環境 403，Wayback 的 `id_` 原始快照要 `--compressed`；amd.com 要 `--http1.1` 加瀏覽器 UA；developer.apple.com 走 `tutorials/data/...json`；apple.com/tw 售價在 JSON-LD。硬體與價格只抄官網當天數字、不做效能推估；sitemap 已到 926/1,000 列。
+- 批次 08（2026-09-14，`tasks/open/2026-09-13-life-ai-batch-08.md`）：圖片、影片、音樂工具改版比模型更快，指派裡的產品現況要當作假設（Sora 已停止服務、Midjourney 預設 V8.2 且 `--cref` 已被 Edit Model 取代、Canva 的 Magic Studio 改名、remove.bg 將併入 Leonardo.Ai、Luma 已無 3D 產品），寫手照當天官網寫、審稿逐篇用 Zendesk／Intercom 內容 API、Wayback、WebFetch 與 iTunes lookup 複核；價格照官網幣別，但 Google 訂閱有台灣頁就寫新台幣；法規與平台規範只引 law.moj.gov.tw 與官方頁原文、不下法律結論；免費層常見的坑是「能生成、不能下載或不能商用」（Meshy、Suno、remove.bg、Photoroom、HeyGen），表格要把這件事寫成獨立欄位。docs.midjourney.com 與 help.runwayml.com 走 Zendesk API，helpx.adobe.com 要完整瀏覽器標頭，canva.com 只能讀 Wayback，Meta 頁面要用 WebFetch。
 - Commons 照片：工具的 User-Agent 要有聯絡信箱，而且請求要走 urllib（httpx 的連線被 Wikimedia 擋 403）；十個代理同時搜 Commons 會被 429，工具會退避重試。
 
 ## Gemini 完整系列補充（2026-09-14）
@@ -404,50 +411,68 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 | 248 | `gemini-api-cost-errors-guide` | API 額度與錯誤：費用、重試與成本控制 | ai, tutorial | 插 |  | ✓ |
 | 249 | `gemini-api-document-assistant` | 完整實作：文件摘要與資料擷取工具 | ai, tutorial | 插 |  | ✓ |
 
+### 批次 12｜字尾關鍵字補位（11 篇）
+
+字尾型搜尋詞（「〇〇 AI」）哪裡都對不到文章的，排在這裡；對照表、寫法與四篇待拍板的敏感題見
+[`docs/ai-suffix-keywords.md`](ai-suffix-keywords.md)。第 250 篇是索引 hub，`featured: false`、`display_order: 100`，只連已寫的篇。
+
+| # | slug | 標題 | topics | 圖 | 合作 | 易變 |
+|---|---|---|---|---|---|---|
+| 250 | `ai-tools-by-search-term` | 〇〇 AI 怎麼找：從你會搜的字找到對的工具與教學 | ai, misc | 插 |  | ✓ |
+| 251 | `ai-image-to-text-ocr` | 圖片轉文字 AI：截圖、掃描件與手寫筆記變成可編輯文字 | ai, tutorial | 插 |  | ✓ |
+| 252 | `ai-taiwanese-hokkien-hakka-tools` | 台語 AI 與客語 AI：語音辨識、合成與翻譯工具有哪些、準不準 | ai, daily | 照 |  | ✓ |
+| 253 | `ai-line-sticker-creation` | 貼圖 AI：用 AI 做 LINE 貼圖的生成、去背、審核規則與版權 | ai, daily | 插 |  | ✓ |
+| 254 | `ai-interior-design-visualization` | 裝潢 AI：把房間照片變成設計提案，哪些不能靠 AI | ai, daily | 照 |  | ✓ |
+| 255 | `ai-id-photo-rules-taiwan` | 證件照 AI：AI 修圖或生成的證件照能不能用，護照與身分證規定 | ai, daily | 插 |  | ✓ |
+| 256 | `ai-naming-brainstorm-checks` | 取名 AI：品牌、公司與商品名的提示詞，以及預查與商標檢索 | ai, daily | 插 |  |  |
+| 257 | `ai-fortune-telling-apps-caution` | 算命 AI 在做什麼：生成式回答的原理、個資流向與付費陷阱 | ai, daily | 插 |  |  |
+| 258 | `ai-stock-research-boundaries` | 投資 AI 能幫什麼：整理財報與新聞、不能預測漲跌、金管會怎麼管 | ai, daily | 插 |  | ✓ |
+| 259 | `ai-legal-questions-boundaries` | 法律 AI：法律問題問 AI 能整理什麼、什麼要找律師 | ai, daily | 插 |  |  |
+| 260 | `ai-health-questions-boundaries` | 健康 AI：症狀整理、看診前準備與它不能取代的事 | ai, daily | 插 |  |  |
 
 ## Gemini 深入教學第二階段（2026-09-15 本機製作完成，實測與發布待完成）
 
-本次使用者要求的深入系列新增 36 個編輯題目，總表由 249 項增至 285 項。**36 篇原稿、內容包、72 張配圖與練習素材均已製作，尚未整套發布。** 現有 Gemini 01–50 保留，第二階段使用 51–86；以下總表編號 250–285 與系列篇號是不同用途。
+本次使用者要求的深入系列新增 36 個編輯題目，主線總表由 260 項增至 296 項。**36 篇原稿、內容包、72 張配圖與練習素材均已製作，尚未整套發布。** 現有 Gemini 01–50 保留，第二階段使用 51–86；以下總表編號 261–296 與系列篇號是不同用途。
 
-完整 [36 篇課綱、先修、練習包與驗收](gemini-series/advanced/README.md)、[87 頁本機候選包](gemini-series/advanced/release/README.md) 和 [逐篇待驗成果](gemini-series/advanced/release/ACCEPTANCE.md) 已建立。網站的 50／86 篇可見性、搜尋、手機、無 JavaScript 與複製已完成本機整合驗證；33 篇仍需真實帳號、模型或裝置實測，當日價格與正式發布另行核對。正式 catalogue 保持 50 篇，候選包不可直接發布；全部驗收完成後一起開放深入目錄。
+完整 [36 篇課綱、先修、練習包與驗收](gemini-series/advanced/README.md)、[87 頁本機候選包](gemini-series/advanced/release/README.md) 和 [逐篇待驗成果](gemini-series/advanced/release/ACCEPTANCE.md) 已建立。網站的 50／86 篇可見性、搜尋、手機、無 JavaScript 與複製已完成本機整合驗證；後續已有真實帳號操作紀錄，最新進度依各批次任務及獨立修訂收據，實體手機依使用者要求先跳過；其餘驗收、當日價格與正式發布另行核對。正式 catalogue 保持 50 篇，候選包不可直接發布；全部驗收完成後一起開放深入目錄。
 
 本區擴充工程深度至有先修的 CLI 與 Python 專案；既有批次 04／08／09／10／11 的跨工具入門與比較仍照原分工，避免重複撰寫。新題目都使用原創封面與圖解，不新增合作連結；價格與額度集中更新第 02／49 篇。
 
 | # | slug | 標題 | topics | 圖 | 合作 | 易變 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 250 | `gemini-prompt-evaluation-workshop` | 提示詞改寫實驗：用固定題庫找出有效的修改 | ai, tutorial | 插 |  | ✓ |
-| 251 | `gemini-gems-support-playbook` | Gems 客服知識助手：資料更新、拒答與回歸測試 | ai, tutorial | 插 |  | ✓ |
-| 252 | `gemini-canvas-budget-calculator` | Canvas 實作活動預算計算器：需求、除錯與驗收 | ai, tutorial | 插 |  | ✓ |
-| 253 | `gemini-workspace-meeting-handoff` | Gmail 到 Docs、Sheets：把會議信件整理成可交接的待辦 | ai, tutorial | 插 |  | ✓ |
-| 254 | `gemini-mobile-field-notes` | 手機現場筆記：Gemini Live、照片與回到電腦整理 | ai, tutorial | 插 |  | ✓ |
-| 255 | `gemini-spark-weekly-digest` | Spark 每週資訊摘要：設定排程、檢查結果與停止任務 | ai, tutorial | 插 |  | ✓ |
-| 256 | `notebooklm-source-versioning` | NotebookLM 資料版本管理：來源清單、更新與過期內容 | ai, tutorial | 插 |  | ✓ |
-| 257 | `notebooklm-conflicting-sources` | NotebookLM 引用查核：矛盾資料、缺證據與未知答案 | ai, tutorial | 插 |  | ✓ |
-| 258 | `notebooklm-study-retrieval-practice` | NotebookLM 備考實作：題庫、錯題分類與間隔複習 | ai, tutorial | 插 |  | ✓ |
-| 259 | `notebooklm-paper-comparison-matrix` | NotebookLM 比較多篇研究：研究問題、方法與限制矩陣 | ai, tutorial | 插 |  | ✓ |
-| 260 | `notebooklm-multiformat-lesson-pack` | NotebookLM 多格式教材：講義、語音與影片摘要一致性檢查 | ai, tutorial | 插 |  | ✓ |
-| 261 | `gemini-research-report-workshop` | Deep Research 加 NotebookLM：完成有證據與更新紀錄的專題報告 | ai, tutorial | 插 |  | ✓ |
-| 262 | `gemini-image-consistent-series` | Gemini 圖片系列製作：參考圖、風格規格與一致性評分 | ai, tutorial | 插 |  | ✓ |
-| 263 | `gemini-image-editing-debugging` | Gemini 修圖除錯：局部修改、文字錯誤與多輪退化 | ai, tutorial | 插 |  | ✓ |
-| 264 | `google-flow-storyboard-workshop` | Google Flow 三鏡頭短片：腳本、分鏡與逐鏡生成 | ai, tutorial | 插 |  | ✓ |
-| 265 | `google-flow-shot-continuity` | Google Flow 畫面連貫：起訖影格、參考素材與轉場修正 | ai, tutorial | 插 |  | ✓ |
-| 266 | `gemini-sheets-data-audit-dashboard` | Gemini 與 Sheets 資料報表：清理 CSV、核對公式與圖表 | ai, tutorial | 插 |  | ✓ |
-| 267 | `gemini-content-production-handoff` | Gemini 內容專案交付：文章、圖片與短片的版本和素材清單 | ai, tutorial | 插 |  | ✓ |
-| 268 | `gemini-cli-memory-scope-lab` | GEMINI.md 載入實驗：親手驗證全域、專案與子目錄規則 | ai, tutorial | 插 |  | ✓ |
-| 269 | `gemini-cli-modular-project-rules` | GEMINI.md 團隊範本：拆分規則、匯入與維護責任 | ai, tutorial | 插 |  | ✓ |
-| 270 | `gemini-cli-settings-debug-lab` | settings.json 設定除錯：來源優先順序與升級前後比較 | ai, tutorial | 插 |  | ✓ |
-| 271 | `gemini-cli-custom-command-library` | 自訂 CLI 指令庫：程式審查、測試計畫與文件同步 | ai, tutorial | 插 |  | ✓ |
-| 272 | `gemini-cli-skill-extension-package` | 把 SKILL.md 打包成 Extension：安裝、更新與回退 | ai, tutorial | 插 |  | ✓ |
-| 273 | `gemini-cli-large-project-context` | 大型專案的 CLI 上下文：分段任務、Git 差異與恢復 | ai, tutorial | 插 |  | ✓ |
-| 274 | `gemini-cli-mcp-server-workshop` | MCP 實作：建立本機唯讀商品查詢工具並排除連線問題 | ai, tutorial | 插 |  | ✓ |
-| 275 | `gemini-cli-hooks-quality-gates` | Hooks 品質檢查：事件輸入、退出碼與失敗時停止 | ai, tutorial | 插 |  | ✓ |
-| 276 | `gemini-cli-subagent-review-workflow` | Subagents 審查工作流：任務契約、工具限制與結果整合 | ai, tutorial | 插 |  | ✓ |
-| 277 | `gemini-cli-resumable-batch-pipeline` | Headless 批次處理：JSONL、續跑與避免重複輸出 | ai, tutorial | 插 |  | ✓ |
-| 278 | `gemini-cli-github-actions-artifacts` | Gemini CLI 接 GitHub Actions：受控觸發與產生審查報告 | ai, tutorial | 插 |  | ✓ |
-| 279 | `gemini-cli-docs-maintenance-project` | CLI 完整專案：文件更新、連結檢查與人工審查交付 | ai, tutorial | 插 |  | ✓ |
-| 280 | `gemini-api-function-calling-workshop` | Function calling 實作：參數驗證、工具回傳與有限次迴圈 | ai, tutorial | 插 |  | ✓ |
-| 281 | `gemini-api-search-grounding-citations` | Gemini API 搜尋引用：Grounding 結果解析與來源呈現 | ai, tutorial | 插 |  | ✓ |
-| 282 | `gemini-api-file-search-rag-project` | File Search 知識庫實作：匯入、查詢、更新與刪除驗證 | ai, tutorial | 插 |  | ✓ |
-| 283 | `gemini-api-context-cache-experiment` | API 快取實驗：隱含快取、手動快取與實際成本核對 | ai, tutorial | 插 |  | ✓ |
-| 284 | `gemini-api-batch-recovery` | Batch API 批次評測：工作 ID、部分失敗與重送管理 | ai, tutorial | 插 |  | ✓ |
-| 285 | `gemini-api-document-service-capstone` | 文件助手進階專案：有引用的問答服務、評測與交接 | ai, tutorial | 插 |  | ✓ |
+| 261 | `gemini-prompt-evaluation-workshop` | 提示詞改寫實驗：用固定題庫找出有效的修改 | ai, tutorial | 插 |  | ✓ |
+| 262 | `gemini-gems-support-playbook` | Gems 客服知識助手：資料更新、拒答與回歸測試 | ai, tutorial | 插 |  | ✓ |
+| 263 | `gemini-canvas-budget-calculator` | Canvas 實作活動預算計算器：需求、除錯與驗收 | ai, tutorial | 插 |  | ✓ |
+| 264 | `gemini-workspace-meeting-handoff` | Gmail 到 Docs、Sheets：把會議信件整理成可交接的待辦 | ai, tutorial | 插 |  | ✓ |
+| 265 | `gemini-mobile-field-notes` | 手機現場筆記：Gemini Live、照片與回到電腦整理 | ai, tutorial | 插 |  | ✓ |
+| 266 | `gemini-spark-weekly-digest` | Spark 每週資訊摘要：設定排程、檢查結果與停止任務 | ai, tutorial | 插 |  | ✓ |
+| 267 | `notebooklm-source-versioning` | NotebookLM 資料版本管理：來源清單、更新與過期內容 | ai, tutorial | 插 |  | ✓ |
+| 268 | `notebooklm-conflicting-sources` | NotebookLM 引用查核：矛盾資料、缺證據與未知答案 | ai, tutorial | 插 |  | ✓ |
+| 269 | `notebooklm-study-retrieval-practice` | NotebookLM 備考實作：題庫、錯題分類與間隔複習 | ai, tutorial | 插 |  | ✓ |
+| 270 | `notebooklm-paper-comparison-matrix` | NotebookLM 比較多篇研究：研究問題、方法與限制矩陣 | ai, tutorial | 插 |  | ✓ |
+| 271 | `notebooklm-multiformat-lesson-pack` | NotebookLM 多格式教材：講義、語音與影片摘要一致性檢查 | ai, tutorial | 插 |  | ✓ |
+| 272 | `gemini-research-report-workshop` | Deep Research 加 NotebookLM：完成有證據與更新紀錄的專題報告 | ai, tutorial | 插 |  | ✓ |
+| 273 | `gemini-image-consistent-series` | Gemini 圖片系列製作：參考圖、風格規格與一致性評分 | ai, tutorial | 插 |  | ✓ |
+| 274 | `gemini-image-editing-debugging` | Gemini 修圖除錯：局部修改、文字錯誤與多輪退化 | ai, tutorial | 插 |  | ✓ |
+| 275 | `google-flow-storyboard-workshop` | Google Flow 三鏡頭短片：腳本、分鏡與逐鏡生成 | ai, tutorial | 插 |  | ✓ |
+| 276 | `google-flow-shot-continuity` | Google Flow 畫面連貫：起訖影格、參考素材與轉場修正 | ai, tutorial | 插 |  | ✓ |
+| 277 | `gemini-sheets-data-audit-dashboard` | Gemini 與 Sheets 資料報表：清理 CSV、核對公式與圖表 | ai, tutorial | 插 |  | ✓ |
+| 278 | `gemini-content-production-handoff` | Gemini 內容專案交付：文章、圖片與短片的版本和素材清單 | ai, tutorial | 插 |  | ✓ |
+| 279 | `gemini-cli-memory-scope-lab` | GEMINI.md 載入實驗：親手驗證全域、專案與子目錄規則 | ai, tutorial | 插 |  | ✓ |
+| 280 | `gemini-cli-modular-project-rules` | GEMINI.md 團隊範本：拆分規則、匯入與維護責任 | ai, tutorial | 插 |  | ✓ |
+| 281 | `gemini-cli-settings-debug-lab` | settings.json 設定除錯：來源優先順序與升級前後比較 | ai, tutorial | 插 |  | ✓ |
+| 282 | `gemini-cli-custom-command-library` | 自訂 CLI 指令庫：程式審查、測試計畫與文件同步 | ai, tutorial | 插 |  | ✓ |
+| 283 | `gemini-cli-skill-extension-package` | 把 SKILL.md 打包成 Extension：安裝、更新與回退 | ai, tutorial | 插 |  | ✓ |
+| 284 | `gemini-cli-large-project-context` | 大型專案的 CLI 上下文：分段任務、Git 差異與恢復 | ai, tutorial | 插 |  | ✓ |
+| 285 | `gemini-cli-mcp-server-workshop` | MCP 實作：建立本機唯讀商品查詢工具並排除連線問題 | ai, tutorial | 插 |  | ✓ |
+| 286 | `gemini-cli-hooks-quality-gates` | Hooks 品質檢查：事件輸入、退出碼與失敗時停止 | ai, tutorial | 插 |  | ✓ |
+| 287 | `gemini-cli-subagent-review-workflow` | Subagents 審查工作流：任務契約、工具限制與結果整合 | ai, tutorial | 插 |  | ✓ |
+| 288 | `gemini-cli-resumable-batch-pipeline` | Headless 批次處理：JSONL、續跑與避免重複輸出 | ai, tutorial | 插 |  | ✓ |
+| 289 | `gemini-cli-github-actions-artifacts` | Gemini CLI 接 GitHub Actions：受控觸發與產生審查報告 | ai, tutorial | 插 |  | ✓ |
+| 290 | `gemini-cli-docs-maintenance-project` | CLI 完整專案：文件更新、連結檢查與人工審查交付 | ai, tutorial | 插 |  | ✓ |
+| 291 | `gemini-api-function-calling-workshop` | Function calling 實作：參數驗證、工具回傳與有限次迴圈 | ai, tutorial | 插 |  | ✓ |
+| 292 | `gemini-api-search-grounding-citations` | Gemini API 搜尋引用：Grounding 結果解析與來源呈現 | ai, tutorial | 插 |  | ✓ |
+| 293 | `gemini-api-file-search-rag-project` | File Search 知識庫實作：匯入、查詢、更新與刪除驗證 | ai, tutorial | 插 |  | ✓ |
+| 294 | `gemini-api-context-cache-experiment` | API 快取實驗：隱含快取、手動快取與實際成本核對 | ai, tutorial | 插 |  | ✓ |
+| 295 | `gemini-api-batch-recovery` | Batch API 批次評測：工作 ID、部分失敗與重送管理 | ai, tutorial | 插 |  | ✓ |
+| 296 | `gemini-api-document-service-capstone` | 文件助手進階專案：有引用的問答服務、評測與交接 | ai, tutorial | 插 |  | ✓ |

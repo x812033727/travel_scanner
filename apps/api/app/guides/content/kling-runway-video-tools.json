@@ -1,0 +1,377 @@
+{
+  "slug": "kling-runway-video-tools",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Kling 與 Runway：影片生成工具介紹",
+      "description": "Kling 與 Runway 都能把提示詞或圖片變成影片，但方案、點數與條款差很多。這篇以 2026 年 9 月 14 日兩家官網為準，整理模型版本（Kling VIDEO 3.0、Runway Gen-4.5）、影片長度與解析度、每秒扣幾點、月費與每月點數、影片延長與修改功能的官方名稱，以及條款裡的所有權、商用權與訓練用途條文，最後說明台灣的上架狀況與免費方案限制。",
+      "hero": {
+        "src": "/guides/kling-runway-video-tools/hero.jpg",
+        "alt": "插圖：左邊的文字方塊與圖片方塊匯流成一條膠卷，膠卷右端分出延長與修改兩條路徑。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Kling 與 Runway 都能把提示詞或圖片變成一小段影片，差別不在畫面誰好看，而在官網的規則：Kling 單次可到 15 秒、有原生 4K，但免費帳號的產出依條款不得商用；Runway 一律先產 720p 再放大成 4K、最長 10 秒，免費方案帶浮水印，條款卻寫不限制商用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把兩家在 2026 年 9 月 14 日官網查得到的欄位排成對照：模型版本與規格、功能名稱、每秒扣幾點、月費與每月點數、誰擁有產出、素材會不會被拿去訓練，以及台灣的上架狀況。"
+        },
+        {
+          "type": "heading",
+          "text": "兩家的入口與定位",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Kling 的營運主體在付費條款裡寫的是 Kling AI Pte. Ltd.，網域已從 klingai.com 換成 kling.ai。影片、圖片、音效與特效收在同一個創意工作室裡，另有 iOS、Android、macOS 與 Windows 版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Runway 的主體是 Runway AI, Inc.，網域同樣從 runwayml.com 換到 runway.com。它比較像一條製作流程：定價頁直接列出可在同一介面叫用的第三方模型，包含 Seedance 2.5、Kling 3.0 與 Nano Banana Pro。訂了 Runway 也用得到 Kling 的模型，但點數與條款各算各的。"
+        },
+        {
+          "type": "link",
+          "text": "AI 影片工具比較：Veo、Sora、海螺、Kling 的方案與規格",
+          "url": "https://mokaair.com/zh-TW/life/ai-video-tools-compared"
+        },
+        {
+          "type": "heading",
+          "text": "模型版本、長度與輸出規格",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Kling 的主力是 VIDEO 3.0 與 VIDEO 3.0 Omni，官方快速上手頁寫它們分別接替 VIDEO 2.6 與 VIDEO O1。單次長度 3 到 15 秒可調，解析度 720p 與 1080p，VIDEO 3.0 系列另有原生 4K；原生音訊與對嘴的語言官方列的是中、英、日、韓與西班牙文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Runway 的主力是 Gen-4.5，說明中心寫它現階段只有文生影片與圖生影片，長度 2 到 10 秒，需要 Standard 以上方案，影格率可選 24 或 25 fps。輸出一律 720p，要更高就按生成結果下方的 Upscale to 4K。比例方面文生影片只有 16:9 的 1280x720，圖生影片另有 9:16、1:1、4:3 等五種。"
+        },
+        {
+          "type": "link",
+          "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+        },
+        {
+          "type": "heading",
+          "text": "功能清單：從素材到影片，再到延長與修改",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Kling 的功能名稱在官方 API 定價頁列得最完整。「影片延長」寫在付費會員權益裡，免費帳號沒有。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "生成：文生影片、圖生影片、多圖生影片、首尾幀",
+            "延長與編輯：影片延長（Video Extension）、多元素影片編輯",
+            "角色動作：Motion Control 用參考影片驅動靜態人物圖，官方寫它跑在 Kling 3.0 上；另有 Avatar 與對嘴（Lip Sync）",
+            "聲音：文字轉音訊、影片轉音訊、影片特效",
+            "敘事：Multi-Shot 一次排好幾顆鏡頭"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Runway 把每個能力做成獨立的 App，沒有「把同一段往後續接」的按鈕；官方文章教的是先分鏡、每顆鏡頭 5 到 10 秒各自生成，再剪接起來。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "生成：Gen-4.5 文生與圖生影片，另有 Multi-Shot Video 與 Scene Builder",
+            "改既有影片：Edit Studio 由 Aleph 2.0 驅動，一句提示詞換背景、換服裝或重打光，最長 30 秒",
+            "表演捕捉：Act-Two 用真人表演影片驅動角色圖，最長 30 秒",
+            "接片：Stitch Videos 把多段合成一支，總長上限 60 分鐘"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "image",
+          "src": "/guides/kling-runway-video-tools/diagram-1.svg",
+          "alt": "流程對照圖：上排是 Kling 從素材到生成、延長與輸出，下排是 Runway 從素材到生成、修改接片與輸出。",
+          "width": 1600,
+          "height": 900,
+          "caption": "上下兩排對照同一條路線：素材進來、生成一段、再決定要延長還是要改，最後決定輸出規格。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "Veo 與 Google Flow：影片、分鏡與匯出",
+          "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+        },
+        {
+          "type": "heading",
+          "text": "方案、月費與點數怎麼換算",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Kling 的點數政策頁寫得很直接：標準定價是 1 美元換 66 點。訂閱送的點數按月發放、自發放日起 1 個月到期，另外購買的點數效期 2 年。付費條款也寫明費用一經開通不退。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每秒扣幾點列在官方 VIDEO 3.0 指南：原生音訊 1080p 每秒 12 點、720p 9 點；關掉原生音訊是 1080p 8 點、720p 6 點；聲音控制每秒再多 2 點。同一頁的例子是 5 秒原生音訊 1080p 花 60 點、5 秒無原生音訊 720p 花 30 點。那張表只有 1080p 與 720p 兩欄，原生 4K 每秒 30 點是寫在官方的點數說明文章裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Runway 是另一套。免費方案給一次性 125 點，不過期也不續發；Standard 每月 625 點、Pro 2250 點、Max 9500 點、Team 每席 6,900 點。官方例子是 Gen-4.5 每秒 12 點，5 秒 60 點、10 秒 120 點；定價頁另列 Aleph 2.0 每 5 秒 140 點。月點數在 Standard 與 Pro 每期歸零，Max 可結轉一個月，加購的點數不過期。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "Kling",
+            "Runway"
+          ],
+          "rows": [
+            [
+              "單次長度",
+              "3 到 15 秒可調",
+              "Gen-4.5 為 2 到 10 秒"
+            ],
+            [
+              "輸出解析度",
+              "720p、1080p、原生 4K",
+              "一律 720p，可放大到 4K"
+            ],
+            [
+              "點數牌價",
+              "1 美元換 66 點",
+              "1 點 0.01 美元，最少加購 1,000 點"
+            ],
+            [
+              "每月點數",
+              "660、3000、8000、26000",
+              "625、2250、9500"
+            ],
+            [
+              "月費（美元）",
+              "首次訂閱 6.99 到 127.99",
+              "月繳 15 到 95，年繳 12 到 76"
+            ],
+            [
+              "免費方案",
+              "無每月點數，產出不得商用",
+              "一次性 125 點，影片帶浮水印"
+            ],
+            [
+              "延長與修改",
+              "影片延長、多元素編輯",
+              "Edit Studio 30 秒、Stitch 60 分鐘"
+            ],
+            [
+              "商用與訓練",
+              "付費會員可商用；Input 可訓練",
+              "不限商用；產出可用於訓練"
+            ],
+            [
+              "台灣 App Store",
+              "可靈AI，免費，12+",
+              "Runway，免費，4+"
+            ]
+          ],
+          "caption": "欄位取自 2026 年 9 月 14 日兩家官網、說明中心與條款頁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kling 訂閱頁把首次訂閱價與原價並排：Standard 每月 6.99 美元（原價 10）660 點、Pro 25.99（37）3000 點、Premier 64.99（92）8000 點、Ultra 127.99（180）26000 點，折扣只算第一次。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "用官網牌價估一支 10 秒影片的成本（實際扣點以生成頁面顯示為準）",
+          "code": "Kling：VIDEO 3.0 原生音訊 1080p\n  每秒 12 點 x 10 秒 = 120 點\n  120 點 / 66 點 = 約 1.82 美元（標準定價 1 美元 = 66 點）\n\nRunway：Gen-4.5\n  每秒 12 點 x 10 秒 = 120 點\n  120 點 x 0.01 美元 = 1.2 美元（加購點數牌價）\n\n關掉原生音訊、改成 720p 可以少掉一半：\n  Kling 720p 無原生音訊 每秒 6 點 x 10 秒 = 60 點"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方 VIDEO 3.0 指南的示範提示詞用時間點分段描述動作，規格一起寫進去可以少燒幾次點數。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "照官方指南結構整理的提示詞骨架",
+          "code": "[鏡頭] 中景平移，手持微晃，冷藍夜色\n[主體] 一名穿深綠長裙的女子在月光草地上奔跑\n[時間軸] 第 4 秒鏡頭向前加速；第 8 秒推成中景；第 12 秒她把白花拋向空中\n[聲音] 只要現場風聲與呼吸聲，不要旁白\n[規格] 1080p、15 秒、16:9"
+        },
+        {
+          "type": "heading",
+          "text": "商用權、資料政策與隱私",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Kling 服務條款第 4.4 條寫「You own all intellectual property rights」，官方不主張內容的所有權；但第 4.6 條接著寫，未經書面許可不得將 Output 用於任何商業目的。解除這一條的是付費條款：會員權益列了去品牌浮水印、影片延長、圖片放大與「commercial purposes is not restricted」。非會員則依第 7.2 條必須在產出上標示 Kling 品牌。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料政策上，Kling 第 4.7.1 條取得對 Input 與 Output 的非專屬、免權利金授權，第 4.7.3 條 (f) 款寫明可用使用資料、彙整資料或 Input 來「create, test, improve, train」它的模型，第 4.7.4 條給了退出方式：寄信到官方支援信箱撤回。隱私權政策寫資料存在新加坡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Runway 的方向不同。條款同樣寫官方不主張 Inputs 與 Outputs 的所有權，也寫不限制你商用 Outputs，說明中心列出可用在營利影片、社群短影片、影展投件與產品廣告，且不要求標註 Runway。代價寫在同一份條款：你授予官方非專屬、不可撤銷、永久、全球、免權利金且可再授權的授權，並承認 Inputs 與 Outputs 可用來訓練與改進它的模型，個人方案沒有退出機制；隱私權政策則寫資料會傳到美國等地處理。兩家最低年齡都是 13 歲。"
+        },
+        {
+          "type": "link",
+          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "免費層最容易踩的兩個坑",
+          "text": "Kling 的 Basic 沒有每月點數，依條款非會員的產出未經書面許可不得商用、還得標示 Kling 品牌。Runway 的免費方案是一次性 125 點、用完不續發，生成的影片都帶浮水印，而且免費帳號不能加購點數。"
+        },
+        {
+          "type": "heading",
+          "text": "台灣可用性與怎麼挑",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "兩家官網都沒有公布支援地區清單，網頁版能不能註冊以官網當下為準；能查證的是行動 App。台灣區 App Store 當天查得到可靈AI，免費、版本 3.8.20、分級 12+，語言列了中、英、日、韓文；Runway: AI Image & Video 同樣免費、版本 96.0.2、分級 4+，語言只列英文。兩家付款都是美元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要挑哪一個，先看成品。要人物講話、要中文對嘴、想一次拿到 15 秒或原生 4K，Kling 的規格寫得比較滿；素材已拍好、要的是換背景這類修改，Runway 的 Edit Studio 更直接。"
+        },
+        {
+          "type": "link",
+          "text": "Sora 影片生成教學：官方已停止服務，先匯出再挑替代工具",
+          "url": "https://mokaair.com/zh-TW/life/sora-video-guide"
+        },
+        {
+          "type": "link",
+          "text": "Frame.io 影片審稿：版本、時間碼與客戶回饋",
+          "url": "https://mokaair.com/zh-TW/life/frameio-video-review"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+          "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kling AI 會員方案與點數（官方定價說明）",
+          "url": "https://kling.ai/blog/kling-video-3-0-credit-cost-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kling AI 點數政策（Credits Policy 官方頁）",
+          "url": "https://kling.ai/docs/point-policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kling VIDEO 3.0 模型使用指南（官方快速上手）",
+          "url": "https://kling.ai/quickstart/klingai-video-3-model-user-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kling AI API 定價（官方模型與費率頁）",
+          "url": "https://kling.ai/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kling AI 服務條款（Terms of Service）",
+          "url": "https://kling.ai/docs/user-policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kling AI 付費服務條款（Terms of Paid Service）",
+          "url": "https://kling.ai/docs/payment-policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kling AI 隱私權政策（官方頁）",
+          "url": "https://kling.ai/docs/privacy-policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kling AI Motion Control 功能頁（官方）",
+          "url": "https://kling.ai/feature/ai-motion-control",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway 定價頁（官方方案、點數與費率）",
+          "url": "https://runway.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway 說明中心：How do credits work?",
+          "url": "https://help.runwayml.com/hc/en-us/articles/15124877443219-How-do-credits-work",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway 說明中心：Free plan details",
+          "url": "https://help.runwayml.com/hc/en-us/articles/50404627334547-Free-plan-details",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway 說明中心：Creating with Gen-4.5",
+          "url": "https://help.runwayml.com/hc/en-us/articles/46974685288467-Creating-with-Gen-4-5",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway 說明中心：Creating with Edit Studio（Aleph 2.0）",
+          "url": "https://help.runwayml.com/hc/en-us/articles/51683104370451-Creating-with-Edit-Studio",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway 說明中心：Performance Capture with Act-Two",
+          "url": "https://help.runwayml.com/hc/en-us/articles/42311337895827-Performance-Capture-with-Act-Two",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway 說明中心：Stitch Videos",
+          "url": "https://help.runwayml.com/hc/en-us/articles/51322758699411-Stitch-Videos",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway 說明中心：Will unused credits carry over after my billing day?",
+          "url": "https://help.runwayml.com/hc/en-us/articles/23987639973267-Will-unused-credits-carry-over-after-my-billing-day",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway 說明中心：Usage rights（產出所有權與商用）",
+          "url": "https://help.runwayml.com/hc/en-us/articles/18927776141715-Usage-rights",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway 說明中心：Unlimited plan is switching to Max",
+          "url": "https://help.runwayml.com/hc/en-us/articles/52068047744019-Unlimited-plan-is-switching-to-Max",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway 使用條款（Terms of Use）",
+          "url": "https://runway.com/terms-of-use",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Runway 隱私權政策（官方頁）",
+          "url": "https://runway.com/privacy-policy",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

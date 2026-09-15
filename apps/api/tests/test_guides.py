@@ -1004,8 +1004,10 @@ async def test_topics_belong_to_one_section_and_are_refused_in_the_other(
             assert {row["section"] for row in rows} == {section}
             assert set(slugs) <= {row["slug"] for row in rows}
         life_rows = (await api.get("/guides/topics", params={"section": "life"})).json()["topics"]
+        # Seeded display_order, so this is the reader's chip order, not an accident of slug
+        # sorting. New vocabulary is appended: 0075 put `finance` after 0074's seven.
         assert [row["slug"] for row in life_rows] == [
-            "ai", "tutorial", "software", "gadgets", "productivity", "daily", "misc",
+            "ai", "tutorial", "software", "gadgets", "productivity", "daily", "misc", "finance",
         ]
         unfiltered = (await api.get("/guides/topics", params={"locale": "zh-TW"})).json()["topics"]
         assert len(unfiltered) == len(life_rows) + 19

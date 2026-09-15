@@ -1,0 +1,46 @@
+{
+  "release_sha": "96ee71d6e17d09d44c32c0939cacf378c9217055",
+  "checked_at": "2026-09-14T16:04:03.697217+00:00",
+  "owned_hold_cleared": true,
+  "public_qa": {
+    "release_sha": "96ee71d6e17d09d44c32c0939cacf378c9217055",
+    "locale_documents": 110,
+    "desktop_mobile_pages": 220,
+    "assets": 220,
+    "all_passed": true,
+    "checked_at": "2026-09-14T15:28:10.086Z",
+    "total_news_articles": 31,
+    "total_index_articles": 1,
+    "all_language_documents": 160
+  },
+  "services": {
+    "api": {
+      "image": "sha256:eca904d2728c0d6ac3b9a2c3ee30d4b2fdd2f4569a3c5249c9d3f86041aa9bd4",
+      "running": true
+    },
+    "web": {
+      "image": "sha256:d796e5d6d505186c9f54e85c6fc355fa231ed9322642b62993f46a65c7fd8958",
+      "running": true
+    }
+  },
+  "health_checks": [
+    {
+      "url": "http://127.0.0.1:8090/health",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8090/ready",
+      "status": 200,
+      "body": {
+        "status": "ready",
+        "database": "ok",
+        "redis": "ok",
+        "schema": "0074_lifestyle_guides"
+      }
+    },
+    {
+      "url": "http://127.0.0.1:8091/zh-TW",
+      "status": 200
+    }
+  ]
+}

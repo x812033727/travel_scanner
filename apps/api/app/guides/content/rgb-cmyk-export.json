@@ -1,0 +1,253 @@
+{
+  "slug": "rgb-cmyk-export",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "RGB 與 CMYK 怎麼選：螢幕、印刷與檔案輸出",
+      "description": "同一張活動視覺放上網站很鮮明，印成傳單卻可能出現不同色彩。本文用原創社區交換市集素材，解釋 RGB、CMYK、色彩描述檔與螢幕校樣的關係，整理網頁版和印刷版的輸出步驟、交接比較表及原創圖解。協助一般使用者先確認用途與印刷條件，再選擇適當轉換方式，避免把指定描述檔當成轉色，或只改檔名就交付。",
+      "hero": {
+        "src": "/guides/rgb-cmyk-export/hero.jpg",
+        "alt": "Mokaair 原創素材資料夾、螢幕與印刷文件插圖，代表數位與印刷需要不同輸出準備。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "社區交換市集需要一張網路宣傳圖和一份印刷傳單，主辦人把同一個檔案寄出去，卻收到顏色模式、描述檔和輸出設定的問題。RGB 與 CMYK 確實是常見分界，但真正交接時，還需要知道圖片會在哪裡呈現、誰負責色彩轉換。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以這組原創市集素材示範整理方式，依 2026 年 9 月 14 日查閱的 Adobe 官方色彩文件說明。沒有實際印刷打樣或設備測試，也不替任何印刷廠指定通用設定；示例重點是讓檔案用途、轉換條件與驗收責任說得清楚。"
+        },
+        {
+          "type": "heading",
+          "text": "RGB 與 CMYK 表示不同的色彩組成",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RGB 以紅、綠、藍通道描述色彩，常用於螢幕與數位影像；CMYK 以青、洋紅、黃、黑等印刷色通道描述色彩，常見於四色印刷流程。螢幕上查看 CMYK 圖片時，軟體仍要把顏色轉成螢幕可以顯示的形式，不會真的讓螢幕發出油墨。"
+        },
+        {
+          "type": "paragraph",
+          "text": "RGB 的色彩範圍會隨指定的色彩空間而變；CMYK 也會受到印刷設備、油墨、紙張與條件影響。因此，說檔案是 RGB 或 CMYK 還不夠完整。交接時最好一併提供色彩描述檔及用途，避免對方以不同假設解讀相同數值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "市集網路圖可以先在 RGB 工作流程中編輯照片和圖形，印刷版則依承印方規格準備。若照片還需要多次修圖，保留可編輯的原始版本，再建立輸出副本。不要反覆把同一份檔案在不同模式間來回轉換，期待顏色能自動恢復原狀。"
+        },
+        {
+          "type": "heading",
+          "text": "描述檔讓色彩數值有解讀依據",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "色彩描述檔用來描述色彩空間或設備的色彩特性，協助支援色彩管理的軟體轉換與呈現。sRGB 是常見的網路影像色彩空間；印刷用描述檔則應對應實際輸出條件。網路上找到某個檔案可下載，不代表它就適合自己的紙張或印刷流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同樣的 RGB 數字，在不同描述檔下可能代表不同的顏色。若來源檔沒有嵌入描述檔，不應隨便挑一個讓畫面暫時好看的設定就當作修復完成。先了解檔案來自哪個工具、當時的工作空間與是否經過轉換，才能降低誤判。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對一般主辦人而言，最有用的交接資訊是原始檔、目前模式、目前描述檔及預定用途。若無法確認，就坦白標示未知並請製作端協助查核。不要只傳通訊軟體裡的截圖來確認色差，因為那無法完整保留原檔的色彩處理條件。"
+        },
+        {
+          "type": "heading",
+          "text": "分清指定描述檔與轉換描述檔",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Photoshop 的 Assign Profile，也就是指定描述檔，不會改變文件的色彩數值，而是改變這些數值的解讀方式，所以外觀可能明顯改變。Convert to Profile 則依目的色彩空間轉換數值。兩者處理的問題不同，不能把指定新描述檔當成一般輸出轉換。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設市集照片已知是某個 RGB 色彩空間，現在需要製作網頁版，可在副本中使用轉換至描述檔，選擇預定的 sRGB 目標並預覽結果。若是處理遺失或錯誤描述檔，則需要先確認來源；不要只為了讓顏色更鮮豔而任意指定另一個空間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe 目前桌面版文件將這兩項放在 Edit 選單下，轉換時可選擇目的描述檔及相關轉換選項。不同版本或語言介面名稱可能略有差異，操作後應核對文件實際狀態，再保存支援嵌入描述檔的格式，而不是只看選單曾經按過哪一項。"
+        },
+        {
+          "type": "heading",
+          "text": "分別準備網路版與印刷版",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網路版先確認發布位置需要的像素尺寸、比例與格式，再以合適的 RGB 色彩空間輸出。Adobe 對一般網路影像的公開指引以 sRGB 為建議起點；這是便於相容與交接的選擇，不表示現代螢幕與瀏覽器只能處理 sRGB。"
+        },
+        {
+          "type": "paragraph",
+          "text": "印刷版先向承印方取得檔案規格：收 PDF 還是其他格式、是否接受保留 RGB 物件、誰負責轉換、需要哪個輸出描述檔與 PDF 設定。某些流程會在後端處理轉色，因此不能把所有印刷檔都必須由作者先轉 CMYK 當成唯一做法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份 PDF 可能含 RGB、CMYK、灰階或特別色等不同物件，副檔名本身不代表色彩已統一。也不能只因排版文件設定為 CMYK，就假設每張置入圖片都已完成相同轉換。輸出後仍需依交件規格檢查文件內容。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "確認網路與印刷用途，取得發布位置及承印方的實際規格。",
+            "保存原始可編輯檔，檢查目前模式與色彩描述檔。",
+            "建立用途別副本，依約定執行轉換、輸出及嵌入描述檔。",
+            "重新開啟成品檢查，必要時打樣，交付版本及色彩處理紀錄。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "用螢幕校樣預覽差異，重要印件再打樣",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "螢幕校樣可利用指定的輸出描述檔，預覽文件在某個輸出條件下的色彩表現。Photoshop 官方方式是先設定 View 裡的 Proof Setup，再以 Proof Colors 切換預覽。這種預覽不等於已把原始圖片轉成印刷色彩。"
+        },
+        {
+          "type": "paragraph",
+          "text": "校樣可靠度受到螢幕、螢幕與輸出描述檔及環境光影響。未校正的螢幕或不對應紙張的描述檔，都可能讓預覽和成品不同。若市集視覺包含需要準確辨識的商品色或品牌色，應和承印方安排合適打樣，不能只靠手機上的畫面核准顏色。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對色彩超出目的輸出範圍的部分，轉換需要做對應處理，未必能保持原本的鮮明程度。發現變化時，先確認描述檔和轉換條件，再在輸出副本上調整；不要一味增加飽和度，因為這可能讓其他區域失去層次，也未必解決真正原因。"
+        },
+        {
+          "type": "heading",
+          "text": "交付時把色彩、尺寸與版本一起核對",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "色彩模式與解析度是不同問題。把圖片轉成 CMYK，不會增加缺少的細節；把低像素圖片的解析度欄位改大，也不等於取得更多真實影像資訊。印刷尺寸、影像有效解析度、出血與裁切位置，都應依成品和承印方要求確認。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可把網路版與印刷版分成清楚命名的檔案，附上完成日期、用途、描述檔與是否已轉色。若有修改文字或照片，重新輸出後更新版本，不要讓舊的印刷 PDF 和新的網路圖共用同一個含糊的最終版名稱，增加交錯使用的機會。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後重新開啟實際交付檔，檢查圖片、文字、頁面範圍及色彩狀態，並確認收件端使用的版本。對於特別色、疊印、總墨量或特殊紙材，將問題交給承印方依流程核對。清楚的交接比猜一組通用 CMYK 數值，更能幫助成品接近預期。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/rgb-cmyk-export/diagram-1.svg",
+          "alt": "三張卡片說明保留原稿、網路版輸出與印刷版交件的重點，沒有把螢幕示意當成實際印刷色樣。",
+          "width": 1600,
+          "height": 900,
+          "caption": "RGB、CMYK 與描述檔要連同用途一起交代，副檔名不能代替驗收。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "處理項目",
+            "主要用途",
+            "容易混淆的地方"
+          ],
+          "rows": [
+            [
+              "RGB 影像",
+              "螢幕及數位影像工作",
+              "仍需知道色彩空間"
+            ],
+            [
+              "CMYK 影像",
+              "對應四色印刷流程",
+              "各輸出條件可能不同"
+            ],
+            [
+              "指定描述檔",
+              "修正或指定數值解讀",
+              "不改原本色彩數值"
+            ],
+            [
+              "轉換至描述檔",
+              "依目的空間轉換色彩",
+              "結果受目標與選項影響"
+            ],
+            [
+              "螢幕校樣",
+              "模擬指定輸出條件",
+              "預覽不是實際轉換"
+            ],
+            [
+              "印刷交件 PDF",
+              "承載版面及輸出資訊",
+              "可能含多種色彩物件"
+            ]
+          ],
+          "caption": "依官方色彩文件與原創交接情境整理，實際印刷規格由承印方確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先問交件規格，再決定誰來轉色",
+          "text": "印刷設備和流程不同，描述檔與 PDF 要求也可能不同。保留原始檔與處理紀錄，避免作者和承印方重複轉換，或各自假設另一方已經完成。"
+        },
+        {
+          "type": "link",
+          "text": "先建立網站色彩與對比規則",
+          "url": "https://mokaair.com/zh-TW/life/website-color-system"
+        },
+        {
+          "type": "link",
+          "text": "整理排版的資訊層級",
+          "url": "https://mokaair.com/zh-TW/life/web-layout-hierarchy"
+        },
+        {
+          "type": "link",
+          "text": "把交接條件放進專案流程",
+          "url": "https://mokaair.com/zh-TW/life/web-design-project-workflow"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Adobe：RGB 與 CMYK 色彩模式",
+          "url": "https://helpx.adobe.com/photoshop/using/color-modes.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：指定與轉換色彩描述檔",
+          "url": "https://helpx.adobe.com/photoshop/desktop/adjust-color/color-profiles/change-color-profile-for-documents.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：網路影像的色彩管理",
+          "url": "https://helpx.adobe.com/photoshop/using/color-managing-documents-online-viewing.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：螢幕校樣與限制",
+          "url": "https://helpx.adobe.com/photoshop/using/proofing-colors.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe Acrobat：PDF 色彩轉換及物件管理",
+          "url": "https://helpx.adobe.com/acrobat/using/color-conversion-ink-management-acrobat.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

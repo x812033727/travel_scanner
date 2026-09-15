@@ -1,0 +1,444 @@
+{
+  "slug": "microsoft-copilot-windows-office",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
+      "description": "Copilot 是 Windows 與 Office AI 的共同名字，底下其實有四種東西：免費的 Copilot 應用程式、Microsoft 365 訂閱裡的 Copilot、Copilot+ PC 的裝置端功能，以及另外收費的 GitHub Copilot。這篇用 2026 年 9 月微軟官網的台灣售價與說明把四者分開，並整理個人版與商業版的資料用途差別，以及關掉 Copilot 的路徑。",
+      "hero": {
+        "src": "/guides/microsoft-copilot-windows-office/hero.jpg",
+        "alt": "自繪插圖：一台筆電螢幕旁邊接著手機、對話框與一顆晶片，代表同一個助理散落在網頁、手機、Office 與電腦硬體四處。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在 Windows 工作列看到 Copilot、在 Word 的功能區也看到 Copilot，很容易以為是同一個東西。「Copilot」其實是微軟掛在許多產品上的共同名字，底下至少四套服務：免費的 Copilot 應用程式、Microsoft 365 訂閱裡的 Copilot、只在特定硬體上跑的 Copilot+ PC 功能，以及要另外付費的 GitHub Copilot。先分清楚遇到的是哪一個，才知道要不要付錢、資料會怎麼被使用。搜「Office AI」「Windows AI」找到的，多半也是這四套裡的一種。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你做三件事：確認手上這台電腦與這個帳號能用到哪一種 Copilot；看懂微軟對個人版與商業版在「資料會不會拿去訓練模型」上的不同寫法；以及在 Windows 與 Office 把 Copilot 關掉。方案、功能與價格都是 2026 年 9 月 14 日在微軟官網查到的，變動很快，購買前以官網當下顯示為準。"
+        },
+        {
+          "type": "heading",
+          "text": "一個名字，四套東西",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "微軟支援頁把消費者會遇到的 Copilot 分層。最外層是免費的 Microsoft Copilot，官方寫它「非常適合一般問題與解答、第一次嘗試 AI 的人，以及 Web 型工作」。往內是 Microsoft 365 個人版、家庭版、進階版與專業版訂閱裡的 Copilot，訂閱擁有者可在桌面版 Word、Excel、PowerPoint、Outlook 與 OneNote 使用。再往內是給組織的版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外兩條線跟訂閱無關。Copilot+ PC 講的是硬體規格，指 NPU 效能達到門檻的 Windows 11 電腦，功能跑在裝置上，不需要另外訂閱；GitHub Copilot 則是寫程式用的獨立產品，不含在 Microsoft 365 裡。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "免費 Copilot：網頁、Windows 與 Mac 應用程式、iOS 與 Android、Edge；官方寫「登入不是必要的」",
+            "Microsoft 365 裡的 Copilot：跟著訂閱走，AI 權益只有訂閱擁有者能用",
+            "組織版本：合格的商務訂閱自動有 Copilot Chat，完整功能另外加購 Microsoft 365 Copilot Business",
+            "Copilot+ PC：看硬體規格，不看訂閱",
+            "GitHub Copilot：另外一套產品與訂閱"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "image",
+          "src": "/guides/microsoft-copilot-windows-office/diagram-1.svg",
+          "alt": "Copilot 家族地圖，把免費 Copilot、Microsoft 365 裡的 Copilot、Copilot+ PC 與 GitHub Copilot 四者的使用位置、費用與代表功能並排比較。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左上到右下依序是免費版、訂閱版、硬體功能與程式開發版；先看「哪裡用」那一列，就知道自己遇到的是哪一個。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "GitHub Copilot 入門：VS Code 裡的補全、Chat 與代理",
+          "url": "https://mokaair.com/zh-TW/life/github-copilot-guide"
+        },
+        {
+          "type": "heading",
+          "text": "免費的 Copilot：入口與能做的事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "微軟中文產品頁的「即刻免費開始使用」按鈕指向 copilot.microsoft.com，支援頁另外列出 copilot.com 與 copilot.cloud.microsoft，三個都是官方入口。支援頁寫免費版可以跟 AI 聊天，取得撰寫、腦力激盪、摘要等協助，根據網頁搜尋取得即時解答，並用 Edge 中的 Copilot 做網頁摘要。登入不是必要的，但登入可存取聊天記錄、影像建立、較長的交談與語音互動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "應用程式有三種拿法：Windows 與 Mac 桌面版、網頁版，以及 iOS（需 16.0 或更新版本）與 Android 行動版。官方也註明「Microsoft 365 Copilot 應用程式現在稱為 Microsoft Copilot 應用程式」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 版另有別處沒有的功能：用 Copilot 鍵或 Windows 鍵加 C 叫出來、說「嗨 Copilot」喚醒、Copilot 視覺、檔案搜尋、擷取螢幕畫面、在交談旁檢視網頁內容，以及引導你到對應的 Windows 設定。檔案搜尋可讀 .docx、.xlsx、.pptx、.txt、.pdf 與 .json。官方說新的 Windows 11 電腦預設已安裝。"
+        },
+        {
+          "type": "paragraph",
+          "text": "地區方面，支援頁寫 Copilot 可在全球 170 多個市場使用，例外是中國（不包括香港）與禁運市場；支援語言的文字回應含中文（繁體）。"
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "heading",
+          "text": "Microsoft 365 裡的 Copilot：台灣售價與 AI 點數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "microsoft.com/zh-tw 的方案頁列出四個個人方案：個人版 NT$309.00 一個月、NT$3,090.00 一年；家用版 NT$419.00 一個月、NT$4,190.00 一年；進階版 NT$669.00 一個月、NT$6,690.00 一年；專業版 NT$3,299.00 一個月，且註明僅每月計費。個人版供 1 人使用、可同時登入 5 台裝置、有 1 TB 雲端儲存空間；家用版與進階版適用 1 至 6 人、最高 6 TB。四個方案都寫「搭載 Microsoft Copilot 的生產力應用程式」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這裡有個容易誤會的限制：方案頁註腳寫「AI 功能僅供訂閱擁有者使用，不可共用」，家用版雖然最多六人，AI 也只有買的人能用；同一份註腳還寫「Microsoft 365 基本版不提供 AI 功能」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用量用兩套機制算。官方定義「AI 點數可測量您在 Microsoft 365 和 Windows 應用程式中對 AI 功能的使用」，例如要求 Copilot「摘要我的收件匣」會扣除一點；用 Designer、相片、小畫家、記事本、Word 和 Excel 裡的 AI 功能時自動扣除。另一套是功能限制，指特定時間內能用某功能的總次數。這頁上次更新於 2026 年 9 月，方案對照表改用「廣泛使用」「Standard 用法」「最高使用量」「無法使用」描述，沒寫每月幾點，實際數字以官網與帳戶裡的「服務與訂閱」為準。研究工具與 Analyst 兩項在個人版與家用版標「無法使用」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你在找 Copilot Pro，官方支援頁的說法是「Copilot Pro 已不再提供購買；現有訂閱者可持續使用，直到 2026 年 8 月 1 日取消或支援終止」，並建議想要大量 Copilot 使用量的人改看 Microsoft 365 進階版。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "產品",
+            "哪裡用",
+            "方案",
+            "價格（2026 年 9 月）"
+          ],
+          "rows": [
+            [
+              "Microsoft Copilot（免費）",
+              "網頁、Windows 與 Mac、iOS 與 Android、Edge",
+              "免費，登入非必要",
+              "免費"
+            ],
+            [
+              "Microsoft 365 裡的 Copilot",
+              "Word、Excel、PowerPoint、Outlook 桌面版",
+              "Microsoft 365 個人版",
+              "NT$309.00 一個月／NT$3,090.00 一年"
+            ],
+            [
+              "Microsoft 365 裡的 Copilot",
+              "同上，AI 僅限訂閱擁有者",
+              "Microsoft 365 家用版",
+              "NT$419.00 一個月／NT$4,190.00 一年"
+            ],
+            [
+              "Microsoft 365 裡的 Copilot",
+              "同上，另含研究工具與 Analyst",
+              "Microsoft 365 進階版",
+              "NT$669.00 一個月／NT$6,690.00 一年"
+            ],
+            [
+              "Microsoft 365 裡的 Copilot",
+              "同上，官網標示最高使用量",
+              "Microsoft 365 專業版",
+              "NT$3,299.00 一個月（僅每月計費）"
+            ],
+            [
+              "Microsoft 365 Copilot Business",
+              "公司或學校帳戶的 Office 應用程式與 Copilot Chat",
+              "附加元件授權，需年度履約承諾",
+              "NT$675.00 使用者／月（年付）；月付 NT$810.00"
+            ],
+            [
+              "Copilot+ PC 功能",
+              "符合硬體條件的 Windows 11 電腦，在裝置上執行",
+              "隨裝置提供，不需訂閱",
+              "含在電腦售價裡"
+            ],
+            [
+              "GitHub Copilot",
+              "程式編輯器",
+              "獨立訂閱",
+              "以 GitHub 官網為準"
+            ]
+          ],
+          "caption": "價格取自 microsoft.com/zh-tw，2026 年 9 月 14 日查證；商務價格官網註明不含營業稅。"
+        },
+        {
+          "type": "link",
+          "text": "用 ChatGPT 寫 Excel 公式與 VBA：從問題描述到可貼上的公式",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-for-excel-formulas"
+        },
+        {
+          "type": "heading",
+          "text": "Word、Excel、PowerPoint、Outlook 各能做什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "支援頁對每個應用程式列的能力不同。Word 的 Copilot 可以開始草稿、以既有檔案或電子郵件或會議為基礎建立新文件、把內容加進現有文件；提示方塊輸入斜線再打檔名就能指定來源，建立新文件時最多可選 20 個項目參考。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Excel 的 Copilot 列了八項：編輯工作表、產生資料和公式、建立圖表與樞紐分析表與圖形、識別深入解析、醒目提示與排序與篩選、網路搜尋、從其他活頁簿匯入資料、用自訂技能完成可重複的工作。它有編輯、規劃、聊天三種模式，預設編輯模式會直接改活頁簿；只想看分析就切到聊天模式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "PowerPoint 的官方步驟是開新簡報後點右下角 Copilot 圖示，在「新增內容」選單選 Agent 模式並描述簡報；它可能先反問目標受眾與樣式，產生大綱後才生成投影片。從 Word 轉簡報建議先用樣式整理結構，官方提醒「Copilot 最適合搭配小於 24 MB 的 Word 文件使用」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Outlook 的 Copilot Chat 要用公司或學校帳戶登入。沒有附加元件授權時可以問收件匣、行事曆與會議的問題並直接採取行動；有授權時還能跨聊天與文件綜合脈絡。官方舉的提示包括摘要上週某專案的信、問下一次一對一會議時間、排程會議、標幟主管寄來的未讀信、設定自動回覆。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "官方支援頁列出的提示詞範例（可以直接改成自己的內容）",
+          "code": "Word：為 Contoso 的銷售職位撰寫錄取信。開始日期為 8 月 1 日，而薪資是每年 $60,000 美元加上獎勵。\nOutlook：摘要我上週與 [專案或客戶名稱] 相關的電子郵件。\nOutlook：草擬一封電子郵件更新，摘要說明本週以來的客戶呈報。\nOutlook：設定下星期五的自動回覆。"
+        },
+        {
+          "type": "paragraph",
+          "text": "四個應用程式共通的提醒，官方寫在 Word 那頁：「請記得，Copilot 會產生草稿。您將需要驗證和修改詳細資料，以確保內容正確且符合您的語調和風格。」它一樣會產生幻覺，數字與引用要自己核對。"
+        },
+        {
+          "type": "link",
+          "text": "Gmail、Docs 與 Slides：信件、文件與簡報",
+          "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+        },
+        {
+          "type": "heading",
+          "text": "組織版本：Copilot Business 的價格與企業資料保護",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "microsoft.com/zh-tw 的商務定價頁把附加元件叫 Microsoft 365 Copilot Business，原價 NT$675.00 使用者／月按年付費，頁面另列促銷價 NT$578.58；條款寫「此折扣方案可於 2026 年 7 月 1 日至 2026 年 12 月 31 日取得」，需年度履約承諾且僅適用第一年。月付是 NT$810.00 每個使用者每個月。也有綁在一起的方案，例如商務標準版加 Copilot Business NT$755.00、商務進階版加 Copilot Business NT$1,030.00。頁面註明價格不含營業稅。"
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有加購授權也不是完全沒有 AI：官網寫「Microsoft 365 Copilot Chat 免費提供給所有擁有合格 Microsoft 365 訂閱的 Microsoft Entra 帳戶使用者」，含網頁型 AI 聊天、檔案上傳、影像產生與代理（Agent）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "商業版和個人版最大的差別是一份叫「企業資料保護」（EDP）的承諾。微軟技術文件寫，提示和回應受到與 Exchange 電子郵件、SharePoint 檔案相同的合約條款保護，資料加密、租用戶之間隔離，支援 GDPR、歐盟資料邊界與 ISO/IEC 27018；Copilot 會尊重你的權限、繼承敏感度標籤、套用保留原則，而且「透過 Microsoft Graph 存取的提示、回應和資料不會用來訓練基礎模型」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份文件標出兩個例外：網頁搜尋查詢會另外送到 Bing 搜尋服務，雖然移除了使用者與租用戶識別碼、不與廣告商共用、也不用來訓練基礎模型，但適用的是 Microsoft 服務合約；歐盟資料邊界與 HIPAA 合規也都不涵蓋網頁搜尋查詢。文件另註明「Microsoft 365 Copilot 現在名為 Microsoft Copilot」，新舊名稱會並存一陣子。"
+        },
+        {
+          "type": "link",
+          "text": "小團隊使用 Workspace AI：帳號與管理",
+          "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+        },
+        {
+          "type": "heading",
+          "text": "Copilot+ PC：硬體門檻與裝置端功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 11 規格頁對 Copilot+ PC 的要求很明確：NPU 能執行 40+ TOPS、16 GB DDR5 或 LPDDR5 記憶體、256 GB SSD 或 UFS 儲存空間，處理器限 AMD Ryzen AI 300 和 400 系列、Intel Core Ultra 200V 和 300V 系列，或 Snapdragon X 系列。這是硬體規格，不能靠更新或訂閱補上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方列的 Copilot+ 功能包括設定中的代理程式、自動超解析度、按一下執行、改良的 Windows 搜尋、即時字幕、小畫家的 Cocreator、相片的改變影像風格、回顧（預覽）、剪取工具的完美螢幕擷取畫面，以及 Windows 工作室效果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個功能對台灣讀者要先看語言支援。即時字幕在 Copilot+ PC 上可把超過 40 種語言的即時或預錄影片翻成英文、把 27 種語言翻成中文（簡體），官方明講音訊處理與字幕產生都在裝置上進行、不會離開裝置；回顧（Recall）則「針對特定語言進行優化：英語、中文（簡體）、法語、德語、日語及西班牙語」。兩份清單都沒有中文（繁體）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "回顧的門檻更高：需要符合 Secured-core 標準的 Copilot+ PC、40 TOPS NPU、16 GB 記憶體、256 GB 儲存容量，啟用時至少要有 50 GB 可用空間，裝置儲存空間少於 25 GB 會自動暫停儲存快照，還要開啟裝置加密或 BitLocker 並註冊 Windows Hello 增強登入安全。官方寫快照預設不會儲存、要自己選擇開啟，加密後存在本機硬碟，「不會與 Microsoft 或第三方分享」。"
+        },
+        {
+          "type": "heading",
+          "text": "隱私：個人版與商業版不同，以及怎麼關",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先看 Office 這一側。家用版的隱私說明寫得很直接：「使用 Microsoft 365 應用程式中的 Copilot 時，提示、回應和您的檔案內容不會用來訓練基礎模型。」同一頁也寫連線體驗收集的個人資料不會用來訓練大型語言模型，並提醒 Copilot 只會使用你正在處理的檔案，或你要求它查看的其他檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "獨立的 Copilot 應用程式（個人 Microsoft 帳戶）規則不同。隱私權常見問題集寫交談預設會儲存、交談活動預設保留 18 個月，可隨時刪除單一交談或整個交談記錄；也寫明微軟讓你自己決定要不要把對話用於個人化，以及用於「訓練我們的生成型 AI 模型」，兩者都能關掉。Microsoft 隱私權聲明也寫「我們可能會使用您的資料來開發、訓練及微調我們的 AI 模型，包括大型語言模型（LLM）」。這份常見問題集標示只適用舊版應用程式，新版自 2026 年 8 月 18 日起推出，開關位置以你裝的版本與官網說明為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一個容易忽略的差異：官方寫「如果您使用 Microsoft Copilot 但沒有 Microsoft 365 訂閱，您可能會在 Copilot 中看到廣告」，在設定的個人化裡可以關掉「允許廣告個人化」，且不論設定為何都不會對 18 歲以下使用者顯示個人化廣告。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想關掉 Office 裡的 Copilot，官方提供的是每個應用程式各自的「啟用 Copilot」核取方塊。Windows 上到檔案、選項、Copilot 清除它，按確定後重開應用程式；Mac 上走喜好設定、製作和校訂工具、Copilot。它只影響那台裝置上的那個應用程式，且會對使用該裝置的所有人生效。自 2025 年 3 月 13 日起提供，Windows 需要 Word 2412、Excel 2501、PowerPoint 2501、OneNote 2502 以上，Mac 需要 Word 16.93、Excel 與 PowerPoint 16.93.2 以上。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "官方支援頁的關閉路徑（Word、Excel、PowerPoint、Outlook 與 Windows）",
+          "code": "Windows 的 Word / Excel / PowerPoint：檔案 > 選項 > Copilot > 清除「啟用 Copilot」\nMac 的 Word / Excel / PowerPoint：喜好設定 > 製作和校訂工具 > Copilot > 清除「啟用 Copilot」\nOutlook（新版 Windows、Mac、Web）：設定 > Copilot > 關閉「開啟 Copilot」\nOutlook（iOS / Android）：快速設定 > Copilot > 關閉「開啟 Copilot」\nWindows 11 移除 Copilot 應用程式：設定 > 應用程式 > 已安裝的應用程式 > Copilot > 其他選項 > 解除安裝\nWindows 11 關閉回顧快照：設定 > 隱私權與安全性 > 回顧與快照 > 關閉「儲存快照」"
+        },
+        {
+          "type": "paragraph",
+          "text": "Outlook 走另一條路：在設定裡的 Copilot 找「開啟 Copilot」切換開關，自 2025 年 6 月 3 日起提供，同一個帳號的選擇會套用到所有裝置；官方註明傳統 Windows 版 Outlook 目前沒有這個開關。iOS、Android 與網頁版的 Word、Excel、PowerPoint 不能關 Copilot，只能改帳戶隱私權設定，但那會連帶關掉建議回覆、文字預測與自動替代文字等連線體驗。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "家用版不等於免費版，兩套隱私規則不一樣",
+          "text": "Word 裡的 Copilot 和桌面上的 Copilot 應用程式，官方是兩份不同的隱私說明。前者寫提示、回應與檔案內容不會用來訓練基礎模型；後者用個人 Microsoft 帳戶登入時，交談活動預設保留 18 個月，要自己去設定裡決定對話能不能用於個人化與模型訓練。把公司文件貼進免費的 Copilot 聊天視窗，和在 Word 裡按 Copilot，適用的條款並不相同。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "接下來看什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "其他家的內建 AI 也各有一套帳號與隱私規則，可以一起比較；不確定某件事該找哪個工具做，先看依任務分類的那篇。"
+        },
+        {
+          "type": "link",
+          "text": "Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援",
+          "url": "https://mokaair.com/zh-TW/life/apple-intelligence-guide"
+        },
+        {
+          "type": "link",
+          "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
+          "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+        },
+        {
+          "type": "link",
+          "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+        }
+      ],
+      "sources": [
+        {
+          "title": "比較所有 Microsoft 365 產品（官方方案與台灣售價）",
+          "url": "https://www.microsoft.com/zh-tw/microsoft-365/buy/compare-all-microsoft-365-products",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft 365 Copilot 個人版方案與定價（官方）",
+          "url": "https://www.microsoft.com/zh-tw/microsoft-365-copilot/pricing/individuals",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft 365 Copilot for Business 方案與定價（官方）",
+          "url": "https://www.microsoft.com/zh-tw/microsoft-365-copilot/business",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft 365 訂閱的 AI 點數和限制（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/microsoft-365-copilot/ai-credits-and-limits-for-microsoft-365-subscriptions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "關於 Microsoft Copilot Pro（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/microsoft-365-copilot/about-microsoft-copilot-pro",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Copilot（免費）與 Microsoft 365 中的 Copilot 有什麼不同（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/microsoft-365-copilot/what-s-the-difference-between-microsoft-copilot-free-and-copilot-in-microsoft-365",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "開始使用 Microsoft Copilot 應用程式（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/microsoft-365-copilot/what-is-microsoft-copilot-app",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "開始使用 Windows 版 Copilot（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/microsoft-copilot/getting-started-with-copilot-on-windows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "在 Word 中使用 Copilot 草擬和新增內容（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/copilot-word",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "開始使用 Excel 中的 Copilot（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/copilot-excel",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "使用 PowerPoint 中的 Copilot 建立新簡報（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/copilot-powerpoint",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "與 Copilot in Outlook 聊天（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/copilot-outlook",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Copilot 和 Microsoft Copilot Chat 中的企業資料保護（Microsoft Learn）",
+          "url": "https://learn.microsoft.com/zh-tw/copilot/microsoft-365/enterprise-data-protection",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Windows 11 規格與系統需求（含 Copilot+ PC 硬體需求）",
+          "url": "https://www.microsoft.com/zh-TW/windows/windows-11-specifications",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "使用「回顧」重新追蹤您的步驟（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/windows/retrace-your-steps-with-recall-aa03f8a0-a78b-4b3e-b0a1-2eb8ac48701c",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "使用即時字幕來更了解音訊（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/windows/use-live-captions-to-better-understand-audio-b52da59c-14b8-4031-aeeb-f6a47e6055df",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "家用版 Microsoft 365 應用程式中的 Copilot：您的資料和隱私權（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/privacy/copilot-in-microsoft-365-apps-for-home-your-data-and-privacy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "關閉 Microsoft 365 應用程式中的 Copilot（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/privacy/turn-off-copilot-in-microsoft-365-apps",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Copilot 的隱私權常見問題集（Microsoft 支援服務）",
+          "url": "https://support.microsoft.com/zh-tw/microsoft-copilot/privacy-faq-for-microsoft-copilot",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft 隱私權聲明（2026 年 9 月更新）",
+          "url": "https://privacy.microsoft.com/zh-TW/privacystatement",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

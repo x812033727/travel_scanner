@@ -1,0 +1,1488 @@
+﻿2026-09-14T15:16:45.0925598Z Current runner version: '2.337.0'
+2026-09-14T15:16:45.0947115Z ##[group]Runner Image Provisioner
+2026-09-14T15:16:45.0948065Z Hosted Compute Agent
+2026-09-14T15:16:45.0948861Z Version: 20260828.587
+2026-09-14T15:16:45.0949625Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-14T15:16:45.0950488Z Build Date: 2026-08-28T16:44:25Z
+2026-09-14T15:16:45.0951339Z Worker ID: {8922eba6-f3ca-4828-acba-ce0aa5dcd53a}
+2026-09-14T15:16:45.0952196Z Azure Region: westus3
+2026-09-14T15:16:45.0952679Z ##[endgroup]
+2026-09-14T15:16:45.0954010Z ##[group]Operating System
+2026-09-14T15:16:45.0954534Z Ubuntu
+2026-09-14T15:16:45.0955037Z 24.04.5
+2026-09-14T15:16:45.0955484Z LTS
+2026-09-14T15:16:45.0955943Z ##[endgroup]
+2026-09-14T15:16:45.0956476Z ##[group]Runner Image
+2026-09-14T15:16:45.0957181Z Image: ubuntu-24.04
+2026-09-14T15:16:45.0957696Z Version: 20260907.300.1
+2026-09-14T15:16:45.0958757Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+2026-09-14T15:16:45.0960078Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260907.300
+2026-09-14T15:16:45.0960876Z ##[endgroup]
+2026-09-14T15:16:45.0961854Z ##[group]GITHUB_TOKEN Permissions
+2026-09-14T15:16:45.0963849Z Contents: read
+2026-09-14T15:16:45.0964395Z Metadata: read
+2026-09-14T15:16:45.0964896Z ##[endgroup]
+2026-09-14T15:16:45.0966968Z Secret source: Actions
+2026-09-14T15:16:45.0967929Z Cache mode: write
+2026-09-14T15:16:45.0968684Z Prepare workflow directory
+2026-09-14T15:16:45.2630397Z Prepare all required actions
+2026-09-14T15:16:45.2684962Z Getting action download info
+2026-09-14T15:16:45.5956222Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-09-14T15:16:45.8773853Z Download action repository 'astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4' (SHA:bec219d24cd3e171d82865faccec33120bb574f4)
+2026-09-14T15:16:46.9313220Z Complete job name: api
+2026-09-14T15:16:46.9817369Z ##[group]Checking docker version
+2026-09-14T15:16:46.9828450Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-09-14T15:16:47.0413826Z '1.48'
+2026-09-14T15:16:47.0427350Z Docker daemon API version: '1.48'
+2026-09-14T15:16:47.0428565Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2026-09-14T15:16:47.0568190Z '1.48'
+2026-09-14T15:16:47.0578431Z Docker client API version: '1.48'
+2026-09-14T15:16:47.0584390Z ##[endgroup]
+2026-09-14T15:16:47.0586747Z ##[group]Clean up resources from previous jobs
+2026-09-14T15:16:47.0592535Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=386472"
+2026-09-14T15:16:47.0727165Z ##[command]/usr/bin/docker network prune --force --filter "label=386472"
+2026-09-14T15:16:47.0846401Z ##[endgroup]
+2026-09-14T15:16:47.0847459Z ##[group]Create local container network
+2026-09-14T15:16:47.0856430Z ##[command]/usr/bin/docker network create --label 386472 github_network_f79bb5b0d06043bfaa721907cca67e6b
+2026-09-14T15:16:47.1718798Z 60bd5878ce98a6472323ef951a564b548b66f0360fc6728c175cfa0a6c49083e
+2026-09-14T15:16:47.1737183Z ##[endgroup]
+2026-09-14T15:16:47.1759677Z ##[group]Starting postgres service container
+2026-09-14T15:16:47.1778541Z ##[command]/usr/bin/docker pull postgres:17-alpine
+2026-09-14T15:16:47.9665729Z 17-alpine: Pulling from library/postgres
+2026-09-14T15:16:48.1934111Z 55afa1ecc21d: Already exists
+2026-09-14T15:16:48.1961284Z 4d80c046a9c7: Pulling fs layer
+2026-09-14T15:16:48.1961775Z 592349920552: Pulling fs layer
+2026-09-14T15:16:48.1962109Z a12187db4b17: Pulling fs layer
+2026-09-14T15:16:48.1962419Z 5858a3f690ea: Pulling fs layer
+2026-09-14T15:16:48.1962730Z 75de48f507ff: Pulling fs layer
+2026-09-14T15:16:48.1963041Z d884d6f49732: Pulling fs layer
+2026-09-14T15:16:48.1963370Z b36c1b75fdb7: Pulling fs layer
+2026-09-14T15:16:48.1963706Z f070a6577866: Pulling fs layer
+2026-09-14T15:16:48.1964005Z 7f3590dcd843: Pulling fs layer
+2026-09-14T15:16:48.1964301Z d884d6f49732: Waiting
+2026-09-14T15:16:48.1964627Z b36c1b75fdb7: Waiting
+2026-09-14T15:16:48.1965194Z f070a6577866: Waiting
+2026-09-14T15:16:48.1965463Z 7f3590dcd843: Waiting
+2026-09-14T15:16:48.1965742Z 5858a3f690ea: Waiting
+2026-09-14T15:16:48.1966010Z 75de48f507ff: Waiting
+2026-09-14T15:16:48.3722145Z 4d80c046a9c7: Verifying Checksum
+2026-09-14T15:16:48.3722734Z 4d80c046a9c7: Download complete
+2026-09-14T15:16:48.3729096Z a12187db4b17: Download complete
+2026-09-14T15:16:48.3802239Z 592349920552: Download complete
+2026-09-14T15:16:48.5429062Z d884d6f49732: Download complete
+2026-09-14T15:16:48.5541837Z 75de48f507ff: Verifying Checksum
+2026-09-14T15:16:48.5542270Z 75de48f507ff: Download complete
+2026-09-14T15:16:48.7088918Z b36c1b75fdb7: Verifying Checksum
+2026-09-14T15:16:48.7089388Z b36c1b75fdb7: Download complete
+2026-09-14T15:16:48.7325172Z f070a6577866: Download complete
+2026-09-14T15:16:48.7970321Z 5858a3f690ea: Verifying Checksum
+2026-09-14T15:16:48.7970620Z 5858a3f690ea: Download complete
+2026-09-14T15:16:48.8798276Z 7f3590dcd843: Verifying Checksum
+2026-09-14T15:16:53.7361980Z 7f3590dcd843: Download complete
+2026-09-14T15:16:53.7362337Z 4d80c046a9c7: Pull complete
+2026-09-14T15:16:53.7984034Z 592349920552: Pull complete
+2026-09-14T15:16:53.8135436Z a12187db4b17: Pull complete
+2026-09-14T15:16:57.0521007Z 5858a3f690ea: Pull complete
+2026-09-14T15:16:57.0697562Z 75de48f507ff: Pull complete
+2026-09-14T15:16:57.0796572Z d884d6f49732: Pull complete
+2026-09-14T15:16:57.0931374Z b36c1b75fdb7: Pull complete
+2026-09-14T15:16:57.1036673Z f070a6577866: Pull complete
+2026-09-14T15:16:57.1128830Z 7f3590dcd843: Pull complete
+2026-09-14T15:16:57.1166163Z Digest: sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73
+2026-09-14T15:16:57.1177831Z Status: Downloaded newer image for postgres:17-alpine
+2026-09-14T15:16:57.1186099Z docker.io/library/postgres:17-alpine
+2026-09-14T15:16:57.1238179Z ##[command]/usr/bin/docker create --name d990e02ae88d4e7ea626799a129add71_postgres17alpine_e21c59 --label 386472 --network github_network_f79bb5b0d06043bfaa721907cca67e6b --network-alias postgres -p 5432:5432 --health-cmd "pg_isready -U travel -d travel_scanner" --health-interval 5s --health-timeout 3s --health-retries 10 -e "POSTGRES_DB=travel_scanner" -e "POSTGRES_USER=travel" -e "POSTGRES_PASSWORD=travel" -e GITHUB_ACTIONS=true -e CI=true postgres:17-alpine
+2026-09-14T15:16:57.1479090Z 9ccf36b83df7713f6d9d26a00cf834793193462cdb382b3261d41b8cd6b23315
+2026-09-14T15:16:57.1497190Z ##[command]/usr/bin/docker start 9ccf36b83df7713f6d9d26a00cf834793193462cdb382b3261d41b8cd6b23315
+2026-09-14T15:16:57.3074850Z 9ccf36b83df7713f6d9d26a00cf834793193462cdb382b3261d41b8cd6b23315
+2026-09-14T15:16:57.3092421Z ##[command]/usr/bin/docker ps --all --filter id=9ccf36b83df7713f6d9d26a00cf834793193462cdb382b3261d41b8cd6b23315 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-09-14T15:16:57.3218122Z 9ccf36b83df7713f6d9d26a00cf834793193462cdb382b3261d41b8cd6b23315 Up Less than a second (health: starting)
+2026-09-14T15:16:57.3238834Z ##[command]/usr/bin/docker port 9ccf36b83df7713f6d9d26a00cf834793193462cdb382b3261d41b8cd6b23315
+2026-09-14T15:16:57.3352731Z 5432/tcp -> 0.0.0.0:5432
+2026-09-14T15:16:57.3353392Z 5432/tcp -> [::]:5432
+2026-09-14T15:16:57.3395339Z ##[endgroup]
+2026-09-14T15:16:57.3396249Z ##[group]Starting redis service container
+2026-09-14T15:16:57.3397569Z ##[command]/usr/bin/docker pull redis:7.4-alpine
+2026-09-14T15:16:58.2942008Z 7.4-alpine: Pulling from library/redis
+2026-09-14T15:16:58.6421375Z 897d797d2723: Pulling fs layer
+2026-09-14T15:16:58.6421966Z d85eda7b0b14: Pulling fs layer
+2026-09-14T15:16:58.6422325Z 9516b0cd89c9: Pulling fs layer
+2026-09-14T15:16:58.6422640Z de4b872bfdc3: Pulling fs layer
+2026-09-14T15:16:58.6422961Z 2c96e5a02ba0: Pulling fs layer
+2026-09-14T15:16:58.6423264Z 4f4fb700ef54: Pulling fs layer
+2026-09-14T15:16:58.6423575Z 41caa0265cb5: Pulling fs layer
+2026-09-14T15:16:58.6423868Z de4b872bfdc3: Waiting
+2026-09-14T15:16:58.6424147Z 2c96e5a02ba0: Waiting
+2026-09-14T15:16:58.6424413Z 4f4fb700ef54: Waiting
+2026-09-14T15:16:58.6424720Z 41caa0265cb5: Waiting
+2026-09-14T15:16:58.8106418Z 9516b0cd89c9: Verifying Checksum
+2026-09-14T15:16:58.8124950Z 9516b0cd89c9: Download complete
+2026-09-14T15:16:58.8155527Z d85eda7b0b14: Download complete
+2026-09-14T15:16:58.8364935Z 897d797d2723: Verifying Checksum
+2026-09-14T15:16:58.8365627Z 897d797d2723: Download complete
+2026-09-14T15:16:58.9219086Z 897d797d2723: Pull complete
+2026-09-14T15:16:59.0188530Z 2c96e5a02ba0: Verifying Checksum
+2026-09-14T15:16:59.0188943Z 4f4fb700ef54: Verifying Checksum
+2026-09-14T15:16:59.0189733Z 4f4fb700ef54: Download complete
+2026-09-14T15:16:59.0189963Z 2c96e5a02ba0: Download complete
+2026-09-14T15:16:59.0231934Z d85eda7b0b14: Pull complete
+2026-09-14T15:16:59.0577036Z de4b872bfdc3: Verifying Checksum
+2026-09-14T15:16:59.0577673Z de4b872bfdc3: Download complete
+2026-09-14T15:16:59.1844132Z 41caa0265cb5: Verifying Checksum
+2026-09-14T15:16:59.1844836Z 41caa0265cb5: Download complete
+2026-09-14T15:16:59.2358813Z 9516b0cd89c9: Pull complete
+2026-09-14T15:16:59.5278430Z de4b872bfdc3: Pull complete
+2026-09-14T15:16:59.5365181Z 2c96e5a02ba0: Pull complete
+2026-09-14T15:16:59.5464428Z 4f4fb700ef54: Pull complete
+2026-09-14T15:16:59.5562235Z 41caa0265cb5: Pull complete
+2026-09-14T15:16:59.5595428Z Digest: sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf
+2026-09-14T15:16:59.5605105Z Status: Downloaded newer image for redis:7.4-alpine
+2026-09-14T15:16:59.5612558Z docker.io/library/redis:7.4-alpine
+2026-09-14T15:16:59.5627658Z ##[command]/usr/bin/docker create --name 63c7a59d257e4fefaf4872f708cbfdd7_redis74alpine_1e0e28 --label 386472 --network github_network_f79bb5b0d06043bfaa721907cca67e6b --network-alias redis -p 6379:6379  -e GITHUB_ACTIONS=true -e CI=true redis:7.4-alpine
+2026-09-14T15:16:59.5825268Z ad70070ba986d83b0a51abc23d767716401c3586223cde975a5f52e7223fd768
+2026-09-14T15:16:59.5837134Z ##[command]/usr/bin/docker start ad70070ba986d83b0a51abc23d767716401c3586223cde975a5f52e7223fd768
+2026-09-14T15:16:59.6985620Z ad70070ba986d83b0a51abc23d767716401c3586223cde975a5f52e7223fd768
+2026-09-14T15:16:59.6998940Z ##[command]/usr/bin/docker ps --all --filter id=ad70070ba986d83b0a51abc23d767716401c3586223cde975a5f52e7223fd768 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-09-14T15:16:59.7105175Z ad70070ba986d83b0a51abc23d767716401c3586223cde975a5f52e7223fd768 Up Less than a second
+2026-09-14T15:16:59.7116758Z ##[command]/usr/bin/docker port ad70070ba986d83b0a51abc23d767716401c3586223cde975a5f52e7223fd768
+2026-09-14T15:16:59.7215062Z 6379/tcp -> 0.0.0.0:6379
+2026-09-14T15:16:59.7215408Z 6379/tcp -> [::]:6379
+2026-09-14T15:16:59.7285996Z ##[endgroup]
+2026-09-14T15:16:59.7295830Z ##[group]Waiting for all services to be ready
+2026-09-14T15:16:59.7307121Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 9ccf36b83df7713f6d9d26a00cf834793193462cdb382b3261d41b8cd6b23315
+2026-09-14T15:16:59.7409077Z starting
+2026-09-14T15:16:59.7427651Z postgres service is starting, waiting 2 seconds before checking again.
+2026-09-14T15:17:01.7430742Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 9ccf36b83df7713f6d9d26a00cf834793193462cdb382b3261d41b8cd6b23315
+2026-09-14T15:17:01.7533378Z starting
+2026-09-14T15:17:01.7544178Z postgres service is starting, waiting 3 seconds before checking again.
+2026-09-14T15:17:05.4238531Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 9ccf36b83df7713f6d9d26a00cf834793193462cdb382b3261d41b8cd6b23315
+2026-09-14T15:17:05.4346754Z healthy
+2026-09-14T15:17:05.4361936Z postgres service is healthy.
+2026-09-14T15:17:05.4362641Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" ad70070ba986d83b0a51abc23d767716401c3586223cde975a5f52e7223fd768
+2026-09-14T15:17:05.4472749Z redis service is healthy.
+2026-09-14T15:17:05.4473351Z ##[endgroup]
+2026-09-14T15:17:05.4693422Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-09-14T15:17:05.4694122Z with:
+2026-09-14T15:17:05.4694316Z   repository: x812033727/travel_scanner
+2026-09-14T15:17:05.4696256Z   token: ***
+2026-09-14T15:17:05.4696435Z   ssh-strict: true
+2026-09-14T15:17:05.4696614Z   ssh-user: git
+2026-09-14T15:17:05.4696796Z   persist-credentials: true
+2026-09-14T15:17:05.4697161Z   clean: true
+2026-09-14T15:17:05.4697342Z   sparse-checkout-cone-mode: true
+2026-09-14T15:17:05.4697553Z   fetch-depth: 1
+2026-09-14T15:17:05.4697726Z   fetch-tags: false
+2026-09-14T15:17:05.4697905Z   show-progress: true
+2026-09-14T15:17:05.4698084Z   lfs: false
+2026-09-14T15:17:05.4698240Z   submodules: false
+2026-09-14T15:17:05.4698407Z   set-safe-directory: true
+2026-09-14T15:17:05.4698610Z   allow-unsafe-pr-checkout: false
+2026-09-14T15:17:05.4698959Z ##[endgroup]
+2026-09-14T15:17:05.5509386Z Syncing repository: x812033727/travel_scanner
+2026-09-14T15:17:05.5511083Z ##[group]Getting Git version info
+2026-09-14T15:17:05.5511595Z Working directory is '/home/runner/work/travel_scanner/travel_scanner'
+2026-09-14T15:17:05.5512359Z [command]/usr/bin/git version
+2026-09-14T15:17:05.5552872Z git version 2.55.0
+2026-09-14T15:17:05.5570122Z ##[endgroup]
+2026-09-14T15:17:05.5579418Z Temporarily overriding HOME='/home/runner/work/_temp/7a1756d7-bab0-45b4-b67c-98184dc71e02' before making global git config changes
+2026-09-14T15:17:05.5580486Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-14T15:17:05.5585044Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/travel_scanner/travel_scanner
+2026-09-14T15:17:05.5629094Z Deleting the contents of '/home/runner/work/travel_scanner/travel_scanner'
+2026-09-14T15:17:05.5632583Z ##[group]Determining repository object format
+2026-09-14T15:17:05.5633888Z ##[endgroup]
+2026-09-14T15:17:05.5634348Z ##[group]Initializing the repository
+2026-09-14T15:17:05.5639193Z [command]/usr/bin/git init /home/runner/work/travel_scanner/travel_scanner
+2026-09-14T15:17:05.5716496Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-14T15:17:05.5717496Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-09-14T15:17:05.5721343Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-09-14T15:17:05.5721828Z hint: call:
+2026-09-14T15:17:05.5722320Z hint:
+2026-09-14T15:17:05.5722876Z hint: 	git config --global init.defaultBranch <name>
+2026-09-14T15:17:05.5723428Z hint:
+2026-09-14T15:17:05.5724002Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-14T15:17:05.5724813Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-14T15:17:05.5725263Z hint:
+2026-09-14T15:17:05.5725523Z hint: 	git branch -m <name>
+2026-09-14T15:17:05.5725822Z hint:
+2026-09-14T15:17:05.5726234Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-09-14T15:17:05.5727554Z Initialized empty Git repository in /home/runner/work/travel_scanner/travel_scanner/.git/
+2026-09-14T15:17:05.5731822Z [command]/usr/bin/git remote add origin https://github.com/x812033727/travel_scanner
+2026-09-14T15:17:05.5772064Z ##[endgroup]
+2026-09-14T15:17:05.5772555Z ##[group]Disabling automatic garbage collection
+2026-09-14T15:17:05.5775615Z [command]/usr/bin/git config --local gc.auto 0
+2026-09-14T15:17:05.5805281Z ##[endgroup]
+2026-09-14T15:17:05.5805816Z ##[group]Setting up auth
+2026-09-14T15:17:05.5806209Z Removing SSH command configuration
+2026-09-14T15:17:05.5811852Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-14T15:17:05.5853483Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-14T15:17:05.6148782Z Removing HTTP extra header
+2026-09-14T15:17:05.6155041Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-14T15:17:05.6190794Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-14T15:17:05.6387125Z Removing includeIf entries pointing to credentials config files
+2026-09-14T15:17:05.6393070Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-14T15:17:05.6426160Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-14T15:17:05.6629659Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-90a3f746-47a3-4469-a794-7a6c96ce2473.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-14T15:17:05.6667707Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/travel_scanner/travel_scanner/.git.path /home/runner/work/_temp/git-credentials-90a3f746-47a3-4469-a794-7a6c96ce2473.config
+2026-09-14T15:17:05.6697847Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/travel_scanner/travel_scanner/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-90a3f746-47a3-4469-a794-7a6c96ce2473.config
+2026-09-14T15:17:05.6730093Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-90a3f746-47a3-4469-a794-7a6c96ce2473.config
+2026-09-14T15:17:05.6759796Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-90a3f746-47a3-4469-a794-7a6c96ce2473.config
+2026-09-14T15:17:05.6786677Z ##[endgroup]
+2026-09-14T15:17:05.6787276Z ##[group]Fetching the repository
+2026-09-14T15:17:05.6793370Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +556efbcc85bdb6a329aea42b2b602b8a08b850fa:refs/remotes/origin/codex/claude-code-advanced-tutorials
+2026-09-14T15:17:41.5069105Z From https://github.com/x812033727/travel_scanner
+2026-09-14T15:17:41.5069700Z  * [new ref]         556efbcc85bdb6a329aea42b2b602b8a08b850fa -> origin/codex/claude-code-advanced-tutorials
+2026-09-14T15:17:41.5078312Z [command]/usr/bin/git branch --list --remote origin/codex/claude-code-advanced-tutorials
+2026-09-14T15:17:41.5104282Z   origin/codex/claude-code-advanced-tutorials
+2026-09-14T15:17:41.5112187Z [command]/usr/bin/git rev-parse refs/remotes/origin/codex/claude-code-advanced-tutorials
+2026-09-14T15:17:41.5135480Z 556efbcc85bdb6a329aea42b2b602b8a08b850fa
+2026-09-14T15:17:41.5138563Z ##[endgroup]
+2026-09-14T15:17:41.5138986Z ##[group]Determining the checkout info
+2026-09-14T15:17:41.5139485Z ##[endgroup]
+2026-09-14T15:17:41.5142441Z [command]/usr/bin/git sparse-checkout disable
+2026-09-14T15:17:41.5185243Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-09-14T15:17:41.5212862Z ##[group]Checking out the ref
+2026-09-14T15:17:41.5216544Z [command]/usr/bin/git checkout --progress --force -B codex/claude-code-advanced-tutorials refs/remotes/origin/codex/claude-code-advanced-tutorials
+2026-09-14T15:17:42.5332301Z Updating files:  90% (8225/9047)
+2026-09-14T15:17:42.5428757Z Updating files:  91% (8233/9047)
+2026-09-14T15:17:42.5521363Z Updating files:  92% (8324/9047)
+2026-09-14T15:17:42.5572908Z Updating files:  93% (8414/9047)
+2026-09-14T15:17:42.5616454Z Updating files:  94% (8505/9047)
+2026-09-14T15:17:42.5665920Z Updating files:  95% (8595/9047)
+2026-09-14T15:17:42.5716003Z Updating files:  96% (8686/9047)
+2026-09-14T15:17:42.5760481Z Updating files:  97% (8776/9047)
+2026-09-14T15:17:42.5802367Z Updating files:  98% (8867/9047)
+2026-09-14T15:17:42.5852380Z Updating files:  99% (8957/9047)
+2026-09-14T15:17:42.5853027Z Updating files: 100% (9047/9047)
+2026-09-14T15:17:42.5853573Z Updating files: 100% (9047/9047), done.
+2026-09-14T15:17:42.5939913Z Switched to a new branch 'codex/claude-code-advanced-tutorials'
+2026-09-14T15:17:42.5944754Z branch 'codex/claude-code-advanced-tutorials' set up to track 'origin/codex/claude-code-advanced-tutorials'.
+2026-09-14T15:17:42.5995262Z ##[endgroup]
+2026-09-14T15:17:42.6042039Z [command]/usr/bin/git log -1 --format=%H
+2026-09-14T15:17:42.6082759Z 556efbcc85bdb6a329aea42b2b602b8a08b850fa
+2026-09-14T15:17:42.6315360Z ##[group]Run astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4
+2026-09-14T15:17:42.6315667Z with:
+2026-09-14T15:17:42.6315835Z   python-version: 3.13
+2026-09-14T15:17:42.6316031Z   activate-environment: false
+2026-09-14T15:17:42.6316232Z   no-project: false
+2026-09-14T15:17:42.6316482Z   working-directory: /home/runner/work/travel_scanner/travel_scanner
+2026-09-14T15:17:42.6318614Z   github-token: ***
+2026-09-14T15:17:42.6318802Z   enable-cache: auto
+2026-09-14T15:17:42.6319241Z   cache-dependency-glob: **/*requirements*.txt
+**/*requirements*.in
+**/*constraints*.txt
+**/*constraints*.in
+**/pyproject.toml
+**/uv.lock
+**/*.py.lock
+
+2026-09-14T15:17:42.6319718Z   restore-cache: true
+2026-09-14T15:17:42.6319897Z   save-cache: true
+2026-09-14T15:17:42.6320078Z   prune-cache: false
+2026-09-14T15:17:42.6320255Z   cache-python: false
+2026-09-14T15:17:42.6320443Z   ignore-nothing-to-cache: false
+2026-09-14T15:17:42.6320655Z   ignore-empty-workdir: false
+2026-09-14T15:17:42.6320897Z   download-from-astral-mirror: true
+2026-09-14T15:17:42.6321120Z   add-problem-matchers: true
+2026-09-14T15:17:42.6321310Z   quiet: false
+2026-09-14T15:17:42.6321483Z   resolution-strategy: highest
+2026-09-14T15:17:42.6321680Z ##[endgroup]
+2026-09-14T15:17:42.7751593Z Trying to find version for uv in: /home/runner/work/travel_scanner/travel_scanner/uv.toml
+2026-09-14T15:17:42.7752641Z Could not find file: /home/runner/work/travel_scanner/travel_scanner/uv.toml
+2026-09-14T15:17:42.7753646Z Trying to find version for uv in: /home/runner/work/travel_scanner/travel_scanner/pyproject.toml
+2026-09-14T15:17:42.7754417Z Could not find file: /home/runner/work/travel_scanner/travel_scanner/pyproject.toml
+2026-09-14T15:17:42.7755175Z Could not determine uv version from uv.toml or pyproject.toml. Falling back to latest.
+2026-09-14T15:17:42.7756433Z Fetching manifest data from https://raw.githubusercontent.com/astral-sh/versions/main/v1/uv.ndjson ...
+2026-09-14T15:17:42.8410044Z Downloading uv from "https://releases.astral.sh/github/uv/releases/download/0.12.13/uv-x86_64-unknown-linux-gnu.tar.gz" ...
+2026-09-14T15:17:43.0948629Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/632f9de1-a018-43ec-bbe8-e0cad3b0898e -f /home/runner/work/_temp/8b9e14ed-7fda-4c55-96a7-d1da916e7bde
+2026-09-14T15:17:43.5132705Z Added /home/runner/.local/bin to the path
+2026-09-14T15:17:43.5134998Z Added /opt/hostedtoolcache/uv/0.12.13/x86_64 to the path
+2026-09-14T15:17:43.5136320Z Set UV_PYTHON_INSTALL_DIR to /home/runner/work/_temp/uv-python-dir
+2026-09-14T15:17:43.5136671Z Added /home/runner/work/_temp/uv-python-dir to the path
+2026-09-14T15:17:43.5137524Z Set UV_PYTHON to 3.13
+2026-09-14T15:17:43.5154828Z Set UV_CACHE_DIR to /home/runner/work/_temp/setup-uv-cache
+2026-09-14T15:17:43.5155176Z Successfully installed uv version 0.12.13
+2026-09-14T15:17:43.5156576Z Searching files using cache dependency glob: /home/runner/work/travel_scanner/travel_scanner/**/*requirements*.txt,/home/runner/work/travel_scanner/travel_scanner/**/*requirements*.in,/home/runner/work/travel_scanner/travel_scanner/**/*constraints*.txt,/home/runner/work/travel_scanner/travel_scanner/**/*constraints*.in,/home/runner/work/travel_scanner/travel_scanner/**/pyproject.toml,/home/runner/work/travel_scanner/travel_scanner/**/uv.lock,/home/runner/work/travel_scanner/travel_scanner/**/*.py.lock
+2026-09-14T15:17:43.7305954Z /home/runner/work/travel_scanner/travel_scanner/apps/api/pyproject.toml
+2026-09-14T15:17:43.7480643Z /home/runner/work/travel_scanner/travel_scanner/apps/api/uv.lock
+2026-09-14T15:17:44.1540394Z /home/runner/work/travel_scanner/travel_scanner/docs/gemini-series/examples/requirements.txt
+2026-09-14T15:17:44.2304945Z Found 3 files to hash.
+2026-09-14T15:17:44.2364798Z Trying to restore cache from GitHub Actions cache with key: setup-uv-2-x86_64-unknown-linux-gnu-ubuntu-24.04-3.13-3fe59997f92ced99b032c831ded729943f811292f3c18eae624384d3fb16db7b
+2026-09-14T15:17:44.4520175Z Cache hit for: setup-uv-2-x86_64-unknown-linux-gnu-ubuntu-24.04-3.13-3fe59997f92ced99b032c831ded729943f811292f3c18eae624384d3fb16db7b
+2026-09-14T15:17:45.6727599Z Received 33554432 of 130633012 (25.7%), 32.0 MBs/sec
+2026-09-14T15:17:46.3090823Z Received 130633012 of 130633012 (100.0%), 76.1 MBs/sec
+2026-09-14T15:17:46.3091475Z Cache Size: ~125 MB (130633012 B)
+2026-09-14T15:17:46.3190664Z [command]/usr/bin/tar -xf /home/runner/work/_temp/79dae92d-bd63-47fc-a346-49099dbff2e9/cache.tzst -P -C /home/runner/work/travel_scanner/travel_scanner --use-compress-program unzstd
+2026-09-14T15:17:47.0814077Z Cache restored successfully
+2026-09-14T15:17:47.0869978Z cache restored from GitHub Actions cache with key: setup-uv-2-x86_64-unknown-linux-gnu-ubuntu-24.04-3.13-3fe59997f92ced99b032c831ded729943f811292f3c18eae624384d3fb16db7b
+2026-09-14T15:17:47.2008574Z ##[group]Run uv sync --frozen
+2026-09-14T15:17:47.2008876Z [36;1muv sync --frozen[0m
+2026-09-14T15:17:47.2044579Z shell: /usr/bin/bash -e {0}
+2026-09-14T15:17:47.2044794Z env:
+2026-09-14T15:17:47.2045032Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-14T15:17:47.2045314Z   UV_PYTHON: 3.13
+2026-09-14T15:17:47.2045546Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-14T15:17:47.2045789Z ##[endgroup]
+2026-09-14T15:17:47.3214869Z Downloading cpython-3.13.15-linux-x86_64-gnu (download) (33.2MiB)
+2026-09-14T15:17:48.0951828Z  Downloaded cpython-3.13.15-linux-x86_64-gnu (download)
+2026-09-14T15:17:48.2207961Z Using CPython 3.13.15
+2026-09-14T15:17:48.2208364Z Creating virtual environment at: .venv
+2026-09-14T15:17:48.2269223Z    Building travel-scanner-api @ file:///home/runner/work/travel_scanner/travel_scanner/apps/api
+2026-09-14T15:17:48.6882288Z       Built travel-scanner-api @ file:///home/runner/work/travel_scanner/travel_scanner/apps/api
+2026-09-14T15:17:48.6892879Z Prepared 1 package in 462ms
+2026-09-14T15:17:48.7930704Z Installed 101 packages in 103ms
+2026-09-14T15:17:48.7931121Z  + absl-py==2.5.0
+2026-09-14T15:17:48.7931399Z  + aiosqlite==0.22.1
+2026-09-14T15:17:48.7931768Z  + alembic==1.19.2
+2026-09-14T15:17:48.7932080Z  + annotated-doc==0.0.5
+2026-09-14T15:17:48.7932425Z  + annotated-types==0.8.0
+2026-09-14T15:17:48.7934038Z  + anyio==4.14.2
+2026-09-14T15:17:48.7934715Z  + argon2-cffi==25.1.0
+2026-09-14T15:17:48.7935059Z  + argon2-cffi-bindings==26.1.0
+2026-09-14T15:17:48.7935386Z  + ast-serialize==0.11.2
+2026-09-14T15:17:48.7935670Z  + asyncpg==0.31.0
+2026-09-14T15:17:48.7935934Z  + boolean-py==5.0
+2026-09-14T15:17:48.7936285Z  + boto3==1.43.92
+2026-09-14T15:17:48.7936546Z  + boto3-stubs==1.43.89
+2026-09-14T15:17:48.7936814Z  + botocore==1.43.93
+2026-09-14T15:17:48.7937430Z  + botocore-stubs==1.43.67
+2026-09-14T15:17:48.7937719Z  + cachecontrol==0.14.4
+2026-09-14T15:17:48.7938001Z  + certifi==2026.7.22
+2026-09-14T15:17:48.7938293Z  + cffi==2.1.1
+2026-09-14T15:17:48.7938564Z  + charset-normalizer==3.5.1
+2026-09-14T15:17:48.7938854Z  + click==8.5.0
+2026-09-14T15:17:48.7939127Z  + coverage==7.16.0
+2026-09-14T15:17:48.7939376Z  + croniter==6.2.4
+2026-09-14T15:17:48.7939639Z  + cryptography==50.0.1
+2026-09-14T15:17:48.7939934Z  + cyclonedx-python-lib==11.12.0
+2026-09-14T15:17:48.7940247Z  + defusedxml==0.7.1
+2026-09-14T15:17:48.7940507Z  + dnspython==2.8.0
+2026-09-14T15:17:48.7940769Z  + email-validator==2.3.0
+2026-09-14T15:17:48.7941048Z  + fakeredis==2.38.0
+2026-09-14T15:17:48.7941376Z  + fastapi==0.141.1
+2026-09-14T15:17:48.7941917Z  + filelock==3.32.4
+2026-09-14T15:17:48.7942446Z  + greenlet==3.5.5
+2026-09-14T15:17:48.7943009Z  + h11==0.16.0
+2026-09-14T15:17:48.7943514Z  + httpcore==1.0.9
+2026-09-14T15:17:48.7943989Z  + httptools==0.8.0
+2026-09-14T15:17:48.7944523Z  + httpx==0.28.1
+2026-09-14T15:17:48.7944840Z  + idna==3.19
+2026-09-14T15:17:48.7945272Z  + immutabledict==4.3.1
+2026-09-14T15:17:48.7945654Z  + iniconfig==2.3.0
+2026-09-14T15:17:48.7946142Z  + jmespath==1.1.0
+2026-09-14T15:17:48.7946418Z  + librt==0.15.0
+2026-09-14T15:17:48.7946771Z  + license-expression==30.4.4
+2026-09-14T15:17:48.7947222Z  + mako==1.4.1
+2026-09-14T15:17:48.7947580Z  + markdown-it-py==4.2.0
+2026-09-14T15:17:48.7947938Z  + markupsafe==3.0.3
+2026-09-14T15:17:48.7948353Z  + mdurl==0.1.2
+2026-09-14T15:17:48.7948665Z  + msgpack==1.2.2
+2026-09-14T15:17:48.7949032Z  + mypy==2.3.1
+2026-09-14T15:17:48.7949472Z  + mypy-boto3-s3==1.43.66
+2026-09-14T15:17:48.7949861Z  + mypy-extensions==1.1.0
+2026-09-14T15:17:48.7950252Z  + numpy==2.5.2
+2026-09-14T15:17:48.7950585Z  + orjson==3.12.0
+2026-09-14T15:17:48.7951019Z  + ortools==9.15.6755
+2026-09-14T15:17:48.7951368Z  + packageurl-python==0.17.6
+2026-09-14T15:17:48.7951741Z  + packaging==26.3
+2026-09-14T15:17:48.7952120Z  + pandas==3.0.5
+2026-09-14T15:17:48.7952532Z  + pathspec==1.1.1
+2026-09-14T15:17:48.7952870Z  + pillow==12.3.0
+2026-09-14T15:17:48.7953278Z  + pip==26.2.1
+2026-09-14T15:17:48.7953689Z  + pip-api==0.0.34
+2026-09-14T15:17:48.7954262Z  + pip-audit==2.10.1
+2026-09-14T15:17:48.7954552Z  + pip-requirements-parser==32.0.1
+2026-09-14T15:17:48.7954892Z  + platformdirs==4.11.5
+2026-09-14T15:17:48.7955195Z  + pluggy==1.6.0
+2026-09-14T15:17:48.7955568Z  + protobuf==6.33.6
+2026-09-14T15:17:48.7955976Z  + pwdlib==0.3.1
+2026-09-14T15:17:48.7956370Z  + py-serializable==2.1.0
+2026-09-14T15:17:48.7956660Z  + pycparser==3.0
+2026-09-14T15:17:48.7977543Z  + pydantic==2.13.5
+2026-09-14T15:17:48.7977944Z  + pydantic-core==2.46.5
+2026-09-14T15:17:48.7978265Z  + pydantic-settings==2.15.0
+2026-09-14T15:17:48.7978578Z  + pygments==2.21.0
+2026-09-14T15:17:48.7978851Z  + pyjwt==2.13.0
+2026-09-14T15:17:48.7979114Z  + pyparsing==3.3.2
+2026-09-14T15:17:48.7979298Z  + pytest==9.1.1
+2026-09-14T15:17:48.7979477Z  + pytest-asyncio==1.4.0
+2026-09-14T15:17:48.7979665Z  + pytest-cov==7.1.0
+2026-09-14T15:17:48.7979857Z  + python-dateutil==2.9.0.post0
+2026-09-14T15:17:48.7980089Z  + python-dotenv==1.2.3
+2026-09-14T15:17:48.7980285Z  + pyyaml==6.0.3
+2026-09-14T15:17:48.7980470Z  + redis==6.4.0
+2026-09-14T15:17:48.7980641Z  + requests==2.34.2
+2026-09-14T15:17:48.7980808Z  + rich==15.0.0
+2026-09-14T15:17:48.7980963Z  + rq==2.12.0
+2026-09-14T15:17:48.7981135Z  + ruff==0.16.7
+2026-09-14T15:17:48.7981301Z  + s3transfer==0.19.2
+2026-09-14T15:17:48.7981473Z  + six==1.17.0
+2026-09-14T15:17:48.7981643Z  + sortedcontainers==2.4.0
+2026-09-14T15:17:48.7981837Z  + sqlalchemy==2.0.52
+2026-09-14T15:17:48.7982007Z  + starlette==1.6.0
+2026-09-14T15:17:48.7982173Z  + tomli==2.4.1
+2026-09-14T15:17:48.7982334Z  + tomli-w==1.2.0
+2026-09-14T15:17:48.7982664Z  + travel-scanner-api==0.1.0 (from file:///home/runner/work/travel_scanner/travel_scanner/apps/api)
+2026-09-14T15:17:48.7983082Z  + types-s3transfer==0.16.0
+2026-09-14T15:17:48.7983290Z  + typing-extensions==4.16.0
+2026-09-14T15:17:48.7983490Z  + typing-inspection==0.4.4
+2026-09-14T15:17:48.7983677Z  + unidecode==1.4.0
+2026-09-14T15:17:48.7983852Z  + urllib3==2.7.0
+2026-09-14T15:17:48.7984016Z  + uvicorn==0.52.4
+2026-09-14T15:17:48.7984189Z  + uvloop==0.22.1
+2026-09-14T15:17:48.7984353Z  + watchfiles==1.2.0
+2026-09-14T15:17:48.7984532Z  + websockets==17.1
+2026-09-14T15:17:48.8072740Z ##[group]Run uv run pip-audit --local --skip-editable
+2026-09-14T15:17:48.8073086Z [36;1muv run pip-audit --local --skip-editable[0m
+2026-09-14T15:17:48.8105240Z shell: /usr/bin/bash -e {0}
+2026-09-14T15:17:48.8105456Z env:
+2026-09-14T15:17:48.8105700Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-14T15:17:48.8105975Z   UV_PYTHON: 3.13
+2026-09-14T15:17:48.8106180Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-14T15:17:48.8106424Z ##[endgroup]
+2026-09-14T15:17:50.8609949Z No known vulnerabilities found
+2026-09-14T15:17:50.8618342Z Name               Skip Reason
+2026-09-14T15:17:50.8618687Z ------------------ -------------------------------
+2026-09-14T15:17:50.8619124Z travel-scanner-api distribution marked as editable
+2026-09-14T15:17:50.9135973Z ##[group]Run uv run ruff check .
+2026-09-14T15:17:50.9136237Z [36;1muv run ruff check .[0m
+2026-09-14T15:17:50.9168079Z shell: /usr/bin/bash -e {0}
+2026-09-14T15:17:50.9168294Z env:
+2026-09-14T15:17:50.9168545Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-14T15:17:50.9168834Z   UV_PYTHON: 3.13
+2026-09-14T15:17:50.9169053Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-14T15:17:50.9169293Z ##[endgroup]
+2026-09-14T15:17:51.0595874Z All checks passed!
+2026-09-14T15:17:51.0642488Z ##[group]Run uv run mypy app
+2026-09-14T15:17:51.0642745Z [36;1muv run mypy app[0m
+2026-09-14T15:17:51.0674242Z shell: /usr/bin/bash -e {0}
+2026-09-14T15:17:51.0674456Z env:
+2026-09-14T15:17:51.0674711Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-14T15:17:51.0674998Z   UV_PYTHON: 3.13
+2026-09-14T15:17:51.0675220Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-14T15:17:51.0675468Z ##[endgroup]
+2026-09-14T15:18:08.1548065Z Success: no issues found in 328 source files
+2026-09-14T15:18:08.1968698Z ##[group]Run uv run pytest tests/test_schema.py -q -p no:cacheprovider
+2026-09-14T15:18:08.1969134Z [36;1muv run pytest tests/test_schema.py -q -p no:cacheprovider[0m
+2026-09-14T15:18:08.2000554Z shell: /usr/bin/bash -e {0}
+2026-09-14T15:18:08.2000774Z env:
+2026-09-14T15:18:08.2001022Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-14T15:18:08.2001308Z   UV_PYTHON: 3.13
+2026-09-14T15:18:08.2001524Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-14T15:18:08.2001783Z ##[endgroup]
+2026-09-14T15:18:10.3669403Z ....                                                                     [100%]
+2026-09-14T15:18:10.3669842Z 4 passed in 1.52s
+2026-09-14T15:18:10.6116271Z ##[group]Run uv run pytest tests/test_admin_operations_migration.py -q -p no:cacheprovider
+2026-09-14T15:18:10.6116785Z [36;1muv run pytest tests/test_admin_operations_migration.py -q -p no:cacheprovider[0m
+2026-09-14T15:18:10.6149123Z shell: /usr/bin/bash -e {0}
+2026-09-14T15:18:10.6149345Z env:
+2026-09-14T15:18:10.6149592Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-14T15:18:10.6149895Z   UV_PYTHON: 3.13
+2026-09-14T15:18:10.6150109Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-14T15:18:10.6150360Z   RUN_MIGRATION_TESTS: 1
+2026-09-14T15:18:10.6150557Z ##[endgroup]
+2026-09-14T15:18:14.9458113Z ..                                                                       [100%]
+2026-09-14T15:18:14.9458560Z 2 passed in 4.11s
+2026-09-14T15:18:15.0401040Z ##[group]Run uv run pytest tests/test_site_pages_migration.py -q -p no:cacheprovider
+2026-09-14T15:18:15.0401524Z [36;1muv run pytest tests/test_site_pages_migration.py -q -p no:cacheprovider[0m
+2026-09-14T15:18:15.0433019Z shell: /usr/bin/bash -e {0}
+2026-09-14T15:18:15.0433253Z env:
+2026-09-14T15:18:15.0433492Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-14T15:18:15.0433772Z   UV_PYTHON: 3.13
+2026-09-14T15:18:15.0433984Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-14T15:18:15.0434239Z   RUN_INTEGRATION_TESTS: 1
+2026-09-14T15:18:15.0434442Z   RUN_MIGRATION_TESTS: 1
+2026-09-14T15:18:15.0434629Z ##[endgroup]
+2026-09-14T15:18:16.0217409Z ....                                                                     [100%]
+2026-09-14T15:18:16.0217771Z 4 passed in 0.70s
+2026-09-14T15:18:16.2491569Z ##[group]Run uv run alembic upgrade head
+2026-09-14T15:18:16.2491863Z [36;1muv run alembic upgrade head[0m
+2026-09-14T15:18:16.2523368Z shell: /usr/bin/bash -e {0}
+2026-09-14T15:18:16.2523582Z env:
+2026-09-14T15:18:16.2523815Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-14T15:18:16.2524092Z   UV_PYTHON: 3.13
+2026-09-14T15:18:16.2524305Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-14T15:18:16.2524560Z ##[endgroup]
+2026-09-14T15:18:16.8127888Z INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+2026-09-14T15:18:16.8128765Z INFO  [alembic.runtime.migration] Will assume transactional DDL.
+2026-09-14T15:18:16.8478100Z INFO  [alembic.runtime.migration] Running upgrade  -> 0001_initial, Initial Travel Scanner schema.
+2026-09-14T15:18:17.6938149Z INFO  [alembic.runtime.migration] Running upgrade 0001_initial -> 0002_itinerary_sharing, Add editable itinerary and secret trip sharing.
+2026-09-14T15:18:17.7135827Z INFO  [alembic.runtime.migration] Running upgrade 0002_itinerary_sharing -> 0003_usage_packs, Replace monthly credits with non-expiring usage packs.
+2026-09-14T15:18:17.7809367Z INFO  [alembic.runtime.migration] Running upgrade 0003_usage_packs -> 0004_itinerary_route_planner, Add itinerary route-planner fields.
+2026-09-14T15:18:17.7883237Z INFO  [alembic.runtime.migration] Running upgrade 0004_itinerary_route_planner -> 0005_admin_provider_settings, Add encrypted provider settings and administrator audit records.
+2026-09-14T15:18:17.8050989Z INFO  [alembic.runtime.migration] Running upgrade 0005_admin_provider_settings -> 0006_affiliate_clicks, Add append-only affiliate click tracking.
+2026-09-14T15:18:17.8099774Z INFO  [alembic.runtime.migration] Running upgrade 0006_affiliate_clicks -> 0007_alert_integrity, Add alert ownership lookup and duplicate protection.
+2026-09-14T15:18:17.8265877Z INFO  [alembic.runtime.migration] Running upgrade 0007_alert_integrity -> 0008_flight_status_lookups, Add minimized flight status lookups.
+2026-09-14T15:18:17.8303581Z INFO  [alembic.runtime.migration] Running upgrade 0008_flight_status_lookups -> 0009_usage_account_status, Keep legacy usage-account status insertable.
+2026-09-14T15:18:17.8353220Z INFO  [alembic.runtime.migration] Running upgrade 0009_usage_account_status -> 0010_hotspot_intelligence, Add searchable travel hotspots, signals, and ranking snapshots.
+2026-09-14T15:18:17.8374574Z INFO  [alembic.runtime.migration] Running upgrade 0010_hotspot_intelligence -> 0011_auth_session_version, Add an authentication version for server-side session invalidation.
+2026-09-14T15:18:17.8438349Z INFO  [alembic.runtime.migration] Running upgrade 0011_auth_session_version -> 0012_line_price_alerts, Add LINE account connections and scheduled price-alert delivery state.
+2026-09-14T15:18:17.8576237Z INFO  [alembic.runtime.migration] Running upgrade 0012_line_price_alerts -> 0013_hotspot_discovery, Add hotspot discovery and review workflow fields.
+2026-09-14T15:18:17.8844932Z INFO  [alembic.runtime.migration] Running upgrade 0013_hotspot_discovery -> 0014_user_preferred_locale, Add the user's persisted UI locale.
+2026-09-14T15:18:17.8901764Z INFO  [alembic.runtime.migration] Running upgrade 0014_user_preferred_locale -> 0015_hotspot_depth_travel, Add explainable deep-travel fields to hotspots.
+2026-09-14T15:18:17.9009586Z INFO  [alembic.runtime.migration] Running upgrade 0015_hotspot_depth_travel -> 0016_trip_route_segments, Persist selected itinerary routes and daily routing settings.
+2026-09-14T15:18:17.9028758Z INFO  [alembic.runtime.migration] Running upgrade 0016_trip_route_segments -> 0017_usage_settings, Add configurable usage packages and operation costs.
+2026-09-14T15:18:17.9286176Z INFO  [alembic.runtime.migration] Running upgrade 0017_usage_settings -> 0018_hotspot_multilingual_guides, Add multilingual attraction guides and privacy-preserving click totals.
+2026-09-14T15:18:17.9306319Z INFO  [alembic.runtime.migration] Running upgrade 0018_hotspot_multilingual_guides -> 0019_hotspot_destination_id, Add stable destination identity to hotspots.
+2026-09-14T15:18:17.9491126Z INFO  [alembic.runtime.migration] Running upgrade 0019_hotspot_destination_id -> 0020_itinerary_system_slots, Add fixed meal slots and daily hotel anchors.
+2026-09-14T15:18:17.9569556Z INFO  [alembic.runtime.migration] Running upgrade 0020_itinerary_system_slots -> 0021_hotspot_guide_ai_search, Add auditable AI-assisted hotspot guide search runs.
+2026-09-14T15:18:17.9580635Z INFO  [alembic.runtime.migration] Running upgrade 0021_hotspot_guide_ai_search -> 0022_food_catalog, Add the curated country food catalog.
+2026-09-14T15:18:17.9599526Z INFO  [alembic.runtime.migration] Running upgrade 0022_food_catalog -> 0023_flight_anchors, Add outbound and return flight itinerary anchors.
+2026-09-14T15:18:17.9643784Z INFO  [alembic.runtime.migration] Running upgrade 0023_flight_anchors -> 0024_deployment_center, Add deployment runs and events.
+2026-09-14T15:18:17.9663236Z INFO  [alembic.runtime.migration] Running upgrade 0024_deployment_center -> 0025_hotspot_place_enrichment, Add policy-aware Google place profiles and enrichment runs.
+2026-09-14T15:18:17.9690454Z INFO  [alembic.runtime.migration] Running upgrade 0025_hotspot_place_enrichment -> 0026_food_merchants_map_refs, Add reviewed food merchants and named map references.
+2026-09-14T15:18:17.9963203Z INFO  [alembic.runtime.migration] Running upgrade 0026_food_merchants_map_refs -> 0027_hotspot_restaurants, Add hotspot restaurant discovery identities and scan progress.
+2026-09-14T15:18:17.9983971Z INFO  [alembic.runtime.migration] Running upgrade 0027_hotspot_restaurants -> 0028_restaurant_sources, Add restaurant identity, editorial sources and favorites.
+2026-09-14T15:18:18.0213375Z INFO  [alembic.runtime.migration] Running upgrade 0028_restaurant_sources -> 0029_ui_saved_items, Add account-synced hotspot and food favorites.
+2026-09-14T15:18:18.0231122Z INFO  [alembic.runtime.migration] Running upgrade 0029_ui_saved_items -> 0030_analytics_events, Add privacy-preserving analytics events and daily rollups.
+2026-09-14T15:18:18.0246535Z INFO  [alembic.runtime.migration] Running upgrade 0030_analytics_events -> 0031_trip_item_coordinates, Add coordinate provenance columns to trip plan items.
+2026-09-14T15:18:18.0405048Z INFO  [alembic.runtime.migration] Running upgrade 0031_trip_item_coordinates -> 0032_remove_plus_codes, Remove Plus Code storage from hotspots, food merchants and trip items.
+2026-09-14T15:18:18.0860499Z INFO  [alembic.runtime.migration] Running upgrade 0032_remove_plus_codes -> 0033_social_login, Add Google, LINE and Apple login identities.
+2026-09-14T15:18:18.0926419Z INFO  [alembic.runtime.migration] Running upgrade 0033_social_login -> 0034_route_alternatives, Persist the selected provider route alternative.
+2026-09-14T15:18:18.0965007Z INFO  [alembic.runtime.migration] Running upgrade 0034_route_alternatives -> 0035_hotspot_area_code, Store the geographic area a hotspot's coordinates resolve to.
+2026-09-14T15:18:18.1094894Z INFO  [alembic.runtime.migration] Running upgrade 0035_hotspot_area_code -> 0036_food_taxonomy, Add food areas, categories, merchant taxonomy links and merchant favorites.
+2026-09-14T15:18:18.1267430Z INFO  [alembic.runtime.migration] Running upgrade 0036_food_taxonomy -> 0037_user_preferred_currency, Add the user's persisted display currency.
+2026-09-14T15:18:18.1322256Z INFO  [alembic.runtime.migration] Running upgrade 0037_user_preferred_currency -> 0038_trip_metadata, Trip metadata: lifecycle status and cover image.
+2026-09-14T15:18:18.1448834Z INFO  [alembic.runtime.migration] Running upgrade 0038_trip_metadata -> 0039_repair_dead_food_sources, Repair the two official food source URLs that no longer point at a food page.
+2026-09-14T15:18:18.1502614Z INFO  [alembic.runtime.migration] Running upgrade 0039_repair_dead_food_sources -> 0040_localized_names, Five-locale plus original names on trip items and food merchants.
+2026-09-14T15:18:18.1573308Z INFO  [alembic.runtime.migration] Running upgrade 0040_localized_names -> 0041_ai_itinerary_refine, Seed the ai_itinerary_refine operation cost at zero uses.
+2026-09-14T15:18:18.1595072Z INFO  [alembic.runtime.migration] Running upgrade 0041_ai_itinerary_refine -> 0042_trip_notes, Give a trip a real notes column and per-day notes.
+2026-09-14T15:18:18.1644122Z INFO  [alembic.runtime.migration] Running upgrade 0042_trip_notes -> 0043_trip_expenses, A per-day expense ledger, with its own budget and currency.
+2026-09-14T15:18:18.1692757Z INFO  [alembic.runtime.migration] Running upgrade 0043_trip_expenses -> 0044_repair_quoted_review_status, Repair three hotspots whose review_status is the literal string 'approved', quotes included.
+2026-09-14T15:18:18.1732941Z INFO  [alembic.runtime.migration] Running upgrade 0044_repair_quoted_review_status -> 0045_food_seed_ownership, Record who owns a dish row and each of its localizations: the seed catalog or an admin.
+2026-09-14T15:18:18.1783961Z INFO  [alembic.runtime.migration] Running upgrade 0045_food_seed_ownership -> 0046_guide_backfill_attempts, A ledger of which (hotspot, locale) pairs the automatic guide backfill has searched.
+2026-09-14T15:18:18.1800456Z INFO  [alembic.runtime.migration] Running upgrade 0046_guide_backfill_attempts -> 0047_ai_vendor_settings, Move the AI vendor keys and Base URLs onto one ``ai_vendors`` provider row.
+2026-09-14T15:18:18.1830583Z INFO  [alembic.runtime.migration] Running upgrade 0047_ai_vendor_settings -> 0048_repair_merchant_citations, Repair the five first-party merchant citations that no longer open.
+2026-09-14T15:18:18.1887527Z INFO  [alembic.runtime.migration] Running upgrade 0048_repair_merchant_citations -> 0049_trip_place_candidates, The waiting list a traveller pastes links into.
+2026-09-14T15:18:18.1902162Z INFO  [alembic.runtime.migration] Running upgrade 0049_trip_place_candidates -> 0050_hotspot_themes_intros, Hotspot themes (season and shop-type tags), first-party intros and their AI runs.
+2026-09-14T15:18:18.1917602Z INFO  [alembic.runtime.migration] Running upgrade 0050_hotspot_themes_intros -> 0051_guide_run_gemini, Let a guide AI search record a Gemini run.
+2026-09-14T15:18:18.1935564Z INFO  [alembic.runtime.migration] Running upgrade 0051_guide_run_gemini -> 0052_repair_trend_merchant_names, Give the 28 imported merchants the English label their name column is for.
+2026-09-14T15:18:18.2125423Z INFO  [alembic.runtime.migration] Running upgrade 0052_repair_trend_merchant_names -> 0053_ui_text_overrides, Administrator overrides for the web UI copy, layered over the JSON catalogs.
+2026-09-14T15:18:18.2145469Z INFO  [alembic.runtime.migration] Running upgrade 0053_ui_text_overrides -> 0054_catalog_review, Persist bounded Gemini catalog review/discovery runs and their immutable snapshots.
+2026-09-14T15:18:18.2160548Z INFO  [alembic.runtime.migration] Running upgrade 0054_catalog_review -> 0055_analytics_event_names, Let the event vocabulary live in Python, not in a database CHECK.
+2026-09-14T15:18:18.2186097Z INFO  [alembic.runtime.migration] Running upgrade 0055_analytics_event_names -> 0056_travel_services, Reviewed travel services and anonymous affiliate click dimensions.
+2026-09-14T15:18:18.2252527Z INFO  [alembic.runtime.migration] Running upgrade 0056_travel_services -> 0057_hotel_booking_options, Independent reviewed hotel identities; retain IDs and project-free ordinary links.
+2026-09-14T15:18:18.2621353Z INFO  [alembic.runtime.migration] Running upgrade 0057_hotel_booking_options -> 0058_community, Public community tables; compatible with fresh metadata-based installs.
+2026-09-14T15:18:18.2670467Z INFO  [alembic.runtime.migration] Running upgrade 0058_community -> 0059_pet_friendly, Reviewed pet places and evidence; guarded for current-metadata fresh installs.
+2026-09-14T15:18:18.2686309Z INFO  [alembic.runtime.migration] Running upgrade 0059_pet_friendly -> 0060_community_places, Typed catalog references on immutable post versions; legacy pet IDs remain readable.
+2026-09-14T15:18:18.2724506Z INFO  [alembic.runtime.migration] Running upgrade 0060_community_places -> 0061_merchant_styles, Independent, source-backed merchant style reviews (no automatic approvals).
+2026-09-14T15:18:18.2740181Z INFO  [alembic.runtime.migration] Running upgrade 0061_merchant_styles -> 0062_merchant_platform_links, Add manually reviewed reservation-platform pages for food merchants.
+2026-09-14T15:18:18.2755211Z INFO  [alembic.runtime.migration] Running upgrade 0062_merchant_platform_links -> 0063_destination_offers, Add reviewed Travelpayouts offers scoped to a destination.
+2026-09-14T15:18:18.2775535Z INFO  [alembic.runtime.migration] Running upgrade 0063_destination_offers -> 0064_klook_affiliate_channels, Separate direct Klook enrollment from Travelpayouts without changing existing IDs.
+2026-09-14T15:18:18.2840384Z INFO  [alembic.runtime.migration] Running upgrade 0064_klook_affiliate_channels -> 0065_travel_discovery, Private, erasable explicit discovery preferences; no content or browsing log.
+2026-09-14T15:18:18.2855911Z INFO  [alembic.runtime.migration] Running upgrade 0065_travel_discovery -> 0066_discovery_community, Invitation-gated creators and reference-only videos on reviewed snapshots.
+2026-09-14T15:18:18.2903401Z INFO  [alembic.runtime.migration] Running upgrade 0066_discovery_community -> 0067_collection_inbox, Identify a private saved-reference inbox without moving existing favorites.
+2026-09-14T15:18:18.2959662Z INFO  [alembic.runtime.migration] Running upgrade 0067_collection_inbox -> 0068_admin_operations_center, Capability roles and safe administration operations.
+2026-09-14T15:18:18.3126755Z INFO  [alembic.runtime.migration] Running upgrade 0068_admin_operations_center -> 0069_site_pages, Versioned drafts and explicit publication of public information pages.
+2026-09-14T15:18:18.3154603Z INFO  [alembic.runtime.migration] Running upgrade 0069_site_pages -> 0070_map_identity_metadata, Add supplemental map identity review facts without changing catalog publication.
+2026-09-14T15:18:18.3181460Z INFO  [alembic.runtime.migration] Running upgrade 0070_map_identity_metadata -> 0071_collection_item_lookup, Index collection references by (kind, target) so a saved count can be read directly.
+2026-09-14T15:18:18.3212823Z INFO  [alembic.runtime.migration] Running upgrade 0071_collection_item_lookup -> 0072_travel_guides, First-party travel intel and guide articles with per-locale publication.
+2026-09-14T15:18:18.3273207Z INFO  [alembic.runtime.migration] Running upgrade 0072_travel_guides -> 0073_catalog_run_enrich_mode, Let a catalog review run record the merchant enrichment mode.
+2026-09-14T15:18:18.3290685Z INFO  [alembic.runtime.migration] Running upgrade 0073_catalog_run_enrich_mode -> 0074_lifestyle_guides, Lifestyle articles: a third article kind and a section on every topic.
+2026-09-14T15:18:18.5127254Z ##[group]Run docker run -d --name community-test-storage -p 127.0.0.1:9000:9000 \
+2026-09-14T15:18:18.5127932Z [36;1mdocker run -d --name community-test-storage -p 127.0.0.1:9000:9000 \[0m
+2026-09-14T15:18:18.5128590Z [36;1m  -e MINIO_ROOT_USER=community-test -e MINIO_ROOT_PASSWORD=community-test-only-password \[0m
+2026-09-14T15:18:18.5129235Z [36;1m  quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z server /data[0m
+2026-09-14T15:18:18.5129618Z [36;1mfor attempt in {1..30}; do[0m
+2026-09-14T15:18:18.5129988Z [36;1m  if curl --fail --silent http://127.0.0.1:9000/minio/health/live >/dev/null; then exit 0; fi[0m
+2026-09-14T15:18:18.5130343Z [36;1m  sleep 1[0m
+2026-09-14T15:18:18.5130518Z [36;1mdone[0m
+2026-09-14T15:18:18.5130714Z [36;1mdocker logs community-test-storage[0m
+2026-09-14T15:18:18.5130940Z [36;1mexit 1[0m
+2026-09-14T15:18:18.5162295Z shell: /usr/bin/bash -e {0}
+2026-09-14T15:18:18.5162505Z env:
+2026-09-14T15:18:18.5162769Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-14T15:18:18.5163070Z   UV_PYTHON: 3.13
+2026-09-14T15:18:18.5163279Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-14T15:18:18.5163527Z ##[endgroup]
+2026-09-14T15:18:18.5308599Z Unable to find image 'quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z' locally
+2026-09-14T15:18:19.4026324Z RELEASE.2025-09-07T16-13-09Z: Pulling from minio/minio
+2026-09-14T15:18:19.6313911Z b83ce1c86227: Pulling fs layer
+2026-09-14T15:18:19.6314335Z f94d28849fa3: Pulling fs layer
+2026-09-14T15:18:19.6314654Z 81260b173076: Pulling fs layer
+2026-09-14T15:18:19.6314872Z f9c0805c25ee: Pulling fs layer
+2026-09-14T15:18:19.6315198Z 1008deaf6ec4: Pulling fs layer
+2026-09-14T15:18:19.6315403Z 71e9fc939447: Pulling fs layer
+2026-09-14T15:18:19.6315632Z c1bc68842c41: Pulling fs layer
+2026-09-14T15:18:19.6315934Z 0288b5a0d7e7: Pulling fs layer
+2026-09-14T15:18:19.6316225Z 34013573f278: Pulling fs layer
+2026-09-14T15:18:19.6316457Z 71e9fc939447: Waiting
+2026-09-14T15:18:19.6316685Z c1bc68842c41: Waiting
+2026-09-14T15:18:19.6317004Z 0288b5a0d7e7: Waiting
+2026-09-14T15:18:19.6317234Z 34013573f278: Waiting
+2026-09-14T15:18:19.6317697Z f9c0805c25ee: Waiting
+2026-09-14T15:18:19.6318002Z 1008deaf6ec4: Waiting
+2026-09-14T15:18:20.0601667Z 81260b173076: Download complete
+2026-09-14T15:18:20.0913058Z f94d28849fa3: Verifying Checksum
+2026-09-14T15:18:20.0913573Z f94d28849fa3: Download complete
+2026-09-14T15:18:20.1497847Z b83ce1c86227: Download complete
+2026-09-14T15:18:20.3440536Z 1008deaf6ec4: Verifying Checksum
+2026-09-14T15:18:20.3441082Z 1008deaf6ec4: Download complete
+2026-09-14T15:18:20.3744195Z f9c0805c25ee: Download complete
+2026-09-14T15:18:20.4179687Z 71e9fc939447: Verifying Checksum
+2026-09-14T15:18:20.4180104Z 71e9fc939447: Download complete
+2026-09-14T15:18:20.5303800Z b83ce1c86227: Pull complete
+2026-09-14T15:18:20.5637440Z c1bc68842c41: Verifying Checksum
+2026-09-14T15:18:20.5637747Z c1bc68842c41: Download complete
+2026-09-14T15:18:20.6014750Z 0288b5a0d7e7: Verifying Checksum
+2026-09-14T15:18:20.6015235Z 0288b5a0d7e7: Download complete
+2026-09-14T15:18:20.6282607Z 34013573f278: Verifying Checksum
+2026-09-14T15:18:20.6283085Z 34013573f278: Download complete
+2026-09-14T15:18:23.9913402Z f94d28849fa3: Pull complete
+2026-09-14T15:18:24.0052285Z 81260b173076: Pull complete
+2026-09-14T15:18:24.9849501Z f9c0805c25ee: Pull complete
+2026-09-14T15:18:25.2782858Z 1008deaf6ec4: Pull complete
+2026-09-14T15:18:25.3316139Z 71e9fc939447: Pull complete
+2026-09-14T15:18:25.3577149Z c1bc68842c41: Pull complete
+2026-09-14T15:18:25.3654908Z 0288b5a0d7e7: Pull complete
+2026-09-14T15:18:25.3730746Z 34013573f278: Pull complete
+2026-09-14T15:18:25.3767571Z Digest: sha256:14cea493d9a34af32f524e538b8346cf79f3321eff8e708c1e2960462bd8936e
+2026-09-14T15:18:25.3776647Z Status: Downloaded newer image for quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z
+2026-09-14T15:18:25.3892325Z 2e410fada0d282258099cb06dcc4e5b4e6aaf8b2ed4b8ff0f2397095f1f5f66c
+2026-09-14T15:18:26.5075453Z ##[group]Run uv run pytest --cov=app
+2026-09-14T15:18:26.5075729Z [36;1muv run pytest --cov=app[0m
+2026-09-14T15:18:26.5107302Z shell: /usr/bin/bash -e {0}
+2026-09-14T15:18:26.5107534Z env:
+2026-09-14T15:18:26.5107769Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-14T15:18:26.5108049Z   UV_PYTHON: 3.13
+2026-09-14T15:18:26.5108264Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-14T15:18:26.5108528Z   RUN_INTEGRATION_TESTS: 1
+2026-09-14T15:18:26.5108719Z   COMMUNITY_TEST_S3: 1
+2026-09-14T15:18:26.5108944Z   COMMUNITY_S3_ENDPOINT: http://127.0.0.1:9000
+2026-09-14T15:18:26.5109218Z   COMMUNITY_S3_PUBLIC_ENDPOINT: http://127.0.0.1:9000
+2026-09-14T15:18:26.5109482Z   COMMUNITY_S3_ACCESS_KEY: community-test
+2026-09-14T15:18:26.5109750Z   COMMUNITY_S3_SECRET_KEY: community-test-only-password
+2026-09-14T15:18:26.5110004Z ##[endgroup]
+2026-09-14T15:18:42.9794591Z ============================= test session starts ==============================
+2026-09-14T15:18:42.9839558Z platform linux -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0
+2026-09-14T15:18:42.9840160Z rootdir: /home/runner/work/travel_scanner/travel_scanner/apps/api
+2026-09-14T15:18:42.9840627Z configfile: pyproject.toml
+2026-09-14T15:18:42.9840950Z testpaths: tests
+2026-09-14T15:18:42.9841259Z plugins: cov-7.1.0, anyio-4.14.2, asyncio-1.4.0
+2026-09-14T15:18:42.9841990Z asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+2026-09-14T15:18:42.9842670Z collected 4198 items
+2026-09-14T15:18:42.9842848Z 
+2026-09-14T15:18:42.9843109Z tests/test_admin_dashboard.py .                                          [  0%]
+2026-09-14T15:18:47.1016828Z tests/test_admin_domain_filters.py ....                                  [  0%]
+2026-09-14T15:18:47.8987297Z tests/test_admin_hotels.py ...............                               [  0%]
+2026-09-14T15:18:47.9052862Z tests/test_admin_listing.py .....                                        [  0%]
+2026-09-14T15:18:47.9855539Z tests/test_admin_operations.py ................                          [  0%]
+2026-09-14T15:18:48.3017026Z tests/test_admin_operations_migration.py .s                              [  1%]
+2026-09-14T15:18:49.1355754Z tests/test_admin_provider_settings.py .................................. [  1%]
+2026-09-14T15:18:50.8916390Z .........................................................                [  3%]
+2026-09-14T15:18:51.1891415Z tests/test_admin_rbac.py ............................................... [  4%]
+2026-09-14T15:18:51.1969052Z ..                                                                       [  4%]
+2026-09-14T15:18:51.2057250Z tests/test_admin_readiness.py ...........                                [  4%]
+2026-09-14T15:18:51.3507703Z tests/test_admin_user_activity.py .                                      [  4%]
+2026-09-14T15:18:51.4315089Z tests/test_admin_users.py ............                                   [  4%]
+2026-09-14T15:18:53.6059121Z tests/test_admin_users_integration.py ...                                [  5%]
+2026-09-14T15:18:53.6420727Z tests/test_ads_config.py ...........................                     [  5%]
+2026-09-14T15:18:55.4061921Z tests/test_affiliate_brand_channels.py ..............                    [  5%]
+2026-09-14T15:18:55.6762508Z tests/test_affiliate_sub_id.py ............................              [  6%]
+2026-09-14T15:18:56.1356526Z tests/test_affiliates.py .....................                           [  7%]
+2026-09-14T15:18:56.1609212Z tests/test_ai_catalog.py .....                                           [  7%]
+2026-09-14T15:18:56.3295799Z tests/test_ai_itinerary.py ..........................                    [  7%]
+2026-09-14T15:18:56.3442597Z tests/test_ai_parser.py .......                                          [  8%]
+2026-09-14T15:18:57.4393999Z tests/test_ai_trip_parser_llm.py ......................................  [  8%]
+2026-09-14T15:18:57.4660144Z tests/test_ai_vendor_settings_migration.py ...                           [  9%]
+2026-09-14T15:18:57.7622408Z tests/test_airline_crawlers.py .................                         [  9%]
+2026-09-14T15:18:57.7640003Z tests/test_alert_policy.py ..                                            [  9%]
+2026-09-14T15:18:59.3825638Z tests/test_alerts_integration.py ....                                    [  9%]
+2026-09-14T15:18:59.5187665Z tests/test_analytics.py .......                                          [  9%]
+2026-09-14T15:18:59.9552642Z tests/test_analytics_affiliates.py ...                                   [  9%]
+2026-09-14T15:18:59.9626331Z tests/test_analytics_events.py .......                                   [  9%]
+2026-09-14T15:19:00.5576814Z tests/test_analytics_integration.py ...                                  [ 10%]
+2026-09-14T15:19:01.2271109Z tests/test_auth_hardening.py .....................                       [ 10%]
+2026-09-14T15:19:01.2367540Z tests/test_auth_preferences.py .......                                   [ 10%]
+2026-09-14T15:19:01.3186781Z tests/test_auth_usage.py .......                                         [ 10%]
+2026-09-14T15:19:01.5994151Z tests/test_back_to_back_fares.py ....................                    [ 11%]
+2026-09-14T15:19:01.7640704Z tests/test_booking_demand_probe.py ......                                [ 11%]
+2026-09-14T15:19:01.8937507Z tests/test_booking_provider.py .....                                     [ 11%]
+2026-09-14T15:19:01.9567684Z tests/test_catalog_content_review_followup.py ...........                [ 11%]
+2026-09-14T15:19:02.0015298Z tests/test_catalog_review.py ........................................... [ 12%]
+2026-09-14T15:19:02.4885081Z ...............................................................          [ 14%]
+2026-09-14T15:19:03.5699255Z tests/test_catalog_review_enrich_cli.py ......                           [ 14%]
+2026-09-14T15:19:03.5892016Z tests/test_catalog_review_enrichment.py ...................              [ 15%]
+2026-09-14T15:19:04.3628010Z tests/test_catalog_review_imports.py ................................    [ 15%]
+2026-09-14T15:19:05.5761515Z tests/test_catalog_review_integration.py ..................              [ 16%]
+2026-09-14T15:19:06.2799258Z tests/test_catalog_review_jobs.py .....................................  [ 17%]
+2026-09-14T15:19:06.6056362Z tests/test_catalog_review_provider.py .................................. [ 17%]
+2026-09-14T15:19:08.2821356Z ........................................................................ [ 19%]
+2026-09-14T15:19:08.3372750Z ..                                                                       [ 19%]
+2026-09-14T15:19:38.2003771Z tests/test_catalog_review_scope.py ..................................... [ 20%]
+2026-09-14T15:20:18.5428751Z ....................................                                     [ 21%]
+2026-09-14T15:20:18.9595666Z tests/test_change_password.py .....                                      [ 21%]
+2026-09-14T15:20:18.9730899Z tests/test_collection_item_lookup_migration.py ...                       [ 21%]
+2026-09-14T15:20:56.0111378Z tests/test_community_foundation.py .............s...........s.sss...s... [ 22%]
+2026-09-14T15:21:35.3140043Z ..........................................s.                             [ 23%]
+2026-09-14T15:21:35.3172183Z tests/test_coordinate_scope.py ...                                       [ 23%]
+2026-09-14T15:21:35.6145399Z tests/test_database_admin.py ........................                    [ 24%]
+2026-09-14T15:21:35.7388138Z tests/test_database_operations_center.py .......                         [ 24%]
+2026-09-14T15:21:35.8755013Z tests/test_deployment_agent_contract.py .......                          [ 24%]
+2026-09-14T15:21:36.2580412Z tests/test_deployment_center.py .....................                    [ 24%]
+2026-09-14T15:21:36.6649070Z tests/test_deployments_integration.py .                                  [ 25%]
+2026-09-14T15:21:36.7197331Z tests/test_destinations_localized.py ...............                     [ 25%]
+2026-09-14T15:21:51.8390788Z tests/test_discovery_community.py ...................................... [ 26%]
+2026-09-14T15:22:12.2766224Z .................s.                                                      [ 26%]
+2026-09-14T15:22:16.9579623Z tests/test_discovery_display_topics.py .............                     [ 27%]
+2026-09-14T15:22:32.6428126Z tests/test_discovery_flow.py ........................................... [ 28%]
+2026-09-14T15:22:48.7373513Z .............................................                            [ 29%]
+2026-09-14T15:22:48.7962520Z tests/test_discovery_metrics.py ....                                     [ 29%]
+2026-09-14T15:22:48.9585540Z tests/test_discovery_migration.py .....                                  [ 29%]
+2026-09-14T15:22:48.9672483Z tests/test_discovery_summary_sanitising.py ........                      [ 29%]
+2026-09-14T15:22:48.9705820Z tests/test_e2e_deploy_agent_fixture.py .                                 [ 29%]
+2026-09-14T15:22:49.0029854Z tests/test_error_localization.py ...                                     [ 29%]
+2026-09-14T15:22:49.0052393Z tests/test_flexible_dates.py ..                                          [ 29%]
+2026-09-14T15:22:49.0115179Z tests/test_food_admin_payloads.py .......                                [ 29%]
+2026-09-14T15:22:49.0199929Z tests/test_food_catalog.py ........                                      [ 30%]
+2026-09-14T15:22:49.0726387Z tests/test_food_coordinate_fill.py ....................................  [ 30%]
+2026-09-14T15:22:49.0894029Z tests/test_food_coordinate_queue.py ............                         [ 31%]
+2026-09-14T15:22:51.2354031Z tests/test_food_enrichment.py ...................................        [ 32%]
+2026-09-14T15:22:53.1888162Z tests/test_food_enrichment_import.py .............................       [ 32%]
+2026-09-14T15:23:06.3419877Z tests/test_food_integration.py ........                                  [ 32%]
+2026-09-14T15:23:06.5819360Z tests/test_food_place_matching.py .............                          [ 33%]
+2026-09-14T15:23:06.6215645Z tests/test_food_platform_links.py ...................................... [ 34%]
+2026-09-14T15:23:06.6965897Z ........................................................................ [ 35%]
+2026-09-14T15:23:07.3110283Z ........................................................................ [ 37%]
+2026-09-14T15:23:09.3493553Z .......                                                                  [ 37%]
+2026-09-14T15:23:10.1980802Z tests/test_food_platform_review_import.py ...........                    [ 37%]
+2026-09-14T15:23:10.2082393Z tests/test_food_public_router.py .......                                 [ 38%]
+2026-09-14T15:23:10.2585534Z tests/test_food_seed_ownership.py .............                          [ 38%]
+2026-09-14T15:23:10.2677312Z tests/test_food_taxonomy_catalog.py ......                               [ 38%]
+2026-09-14T15:23:10.2755865Z tests/test_fx_rates.py ..                                                [ 38%]
+2026-09-14T15:23:27.5509220Z tests/test_gemini_series.py ..                                           [ 38%]
+2026-09-14T15:23:27.7814221Z tests/test_google_places.py ..........                                   [ 38%]
+2026-09-14T15:23:27.8643474Z tests/test_google_weather.py ...                                         [ 38%]
+2026-09-14T15:23:27.8821134Z tests/test_guest_discovery.py ..                                         [ 39%]
+2026-09-14T15:23:38.8551799Z tests/test_guide_partner_links.py ...................................... [ 39%]
+2026-09-14T15:23:42.9320903Z .......................................                                  [ 40%]
+2026-09-14T15:23:43.2180625Z tests/test_guide_review.py ........                                      [ 41%]
+2026-09-14T15:23:44.4805196Z tests/test_guide_rich_blocks.py ..........                               [ 41%]
+2026-09-14T15:23:58.3409058Z tests/test_guide_series.py ..............................                [ 42%]
+2026-09-14T15:23:58.3834227Z tests/test_guided_discovery.py ..                                        [ 42%]
+2026-09-14T15:24:21.3306327Z tests/test_guides.py ................................................... [ 43%]
+2026-09-14T15:24:44.3650244Z ........................................................................ [ 44%]
+2026-09-14T15:24:47.9817358Z ...........                                                              [ 45%]
+2026-09-14T15:24:54.0920224Z tests/test_guides_content_pack.py ..............                         [ 45%]
+2026-09-14T15:24:54.3698675Z tests/test_guides_migration.py ........                                  [ 45%]
+2026-09-14T15:25:04.5752490Z tests/test_guides_pack_ingest.py ..........................              [ 46%]
+2026-09-14T15:25:04.7951704Z tests/test_health.py ..                                                  [ 46%]
+2026-09-14T15:25:05.7693939Z tests/test_hotel_content_package.py .................................... [ 47%]
+2026-09-14T15:25:05.8325174Z .............                                                            [ 47%]
+2026-09-14T15:25:05.8773280Z tests/test_hotel_direct_booking.py ......................                [ 48%]
+2026-09-14T15:25:07.0551141Z tests/test_hotel_operating_integration.py .............................. [ 48%]
+2026-09-14T15:25:07.7653302Z .............                                                            [ 49%]
+2026-09-14T15:25:07.8075888Z tests/test_hotel_operating_rules.py .................................... [ 50%]
+2026-09-14T15:25:07.8231069Z ..............                                                           [ 50%]
+2026-09-14T15:25:08.1343528Z tests/test_hotel_options.py .............................                [ 51%]
+2026-09-14T15:25:08.3573663Z tests/test_hotel_platform_migration.py .                                 [ 51%]
+2026-09-14T15:25:08.4064070Z tests/test_hotel_platforms.py .....................                      [ 51%]
+2026-09-14T15:25:08.4111585Z tests/test_hotspot_admin_depth.py .....                                  [ 51%]
+2026-09-14T15:25:08.4214904Z tests/test_hotspot_admin_guides.py .......                               [ 51%]
+2026-09-14T15:25:10.6717825Z tests/test_hotspot_admin_integration.py .                                [ 51%]
+2026-09-14T15:25:10.6764620Z tests/test_hotspot_admin_place_profile.py .....                          [ 52%]
+2026-09-14T15:25:10.7060452Z tests/test_hotspot_admin_themes.py ...............                       [ 52%]
+2026-09-14T15:25:10.7535805Z tests/test_hotspot_ai_search.py .................                        [ 52%]
+2026-09-14T15:25:10.7576702Z tests/test_hotspot_ai_tasks.py ..                                        [ 52%]
+2026-09-14T15:25:10.7887590Z tests/test_hotspot_areas.py .......                                      [ 52%]
+2026-09-14T15:25:10.8098245Z tests/test_hotspot_candidate_generation.py ............                  [ 53%]
+2026-09-14T15:25:10.8262542Z tests/test_hotspot_candidate_import.py ........                          [ 53%]
+2026-09-14T15:25:10.8362897Z tests/test_hotspot_candidates.py ..........                              [ 53%]
+2026-09-14T15:25:10.8397942Z tests/test_hotspot_depth_catalog.py ...                                  [ 53%]
+2026-09-14T15:25:10.8552582Z tests/test_hotspot_discovery.py ............                             [ 54%]
+2026-09-14T15:25:10.9404629Z tests/test_hotspot_gemini_guides.py ........                             [ 54%]
+2026-09-14T15:25:11.3075090Z tests/test_hotspot_guides.py .......................................     [ 55%]
+2026-09-14T15:25:11.3793737Z tests/test_hotspot_intro_generate_endpoint.py ...                        [ 55%]
+2026-09-14T15:25:11.4434770Z tests/test_hotspot_intro_generation.py ...............                   [ 55%]
+2026-09-14T15:25:11.4789274Z tests/test_hotspot_intros.py ................                            [ 55%]
+2026-09-14T15:25:11.6389359Z tests/test_hotspot_place_matching.py ......                              [ 56%]
+2026-09-14T15:25:11.6419322Z tests/test_hotspot_place_tasks.py .                                      [ 56%]
+2026-09-14T15:25:11.8428629Z tests/test_hotspot_places.py .................                           [ 56%]
+2026-09-14T15:25:11.8455478Z tests/test_hotspot_ranking.py ...                                        [ 56%]
+2026-09-14T15:25:11.9434832Z tests/test_hotspot_restaurants.py ..........                             [ 56%]
+2026-09-14T15:25:11.9691052Z tests/test_hotspot_review_identity_editor.py ........................... [ 57%]
+2026-09-14T15:25:13.1407621Z ....................................                                     [ 58%]
+2026-09-14T15:25:13.1445434Z tests/test_hotspot_seed_categories.py ....                               [ 58%]
+2026-09-14T15:25:13.1866538Z tests/test_hotspot_seed_ownership.py ................                    [ 58%]
+2026-09-14T15:25:26.2880099Z tests/test_hotspot_seed_reconciliation.py ....                           [ 58%]
+2026-09-14T15:25:26.3030890Z tests/test_hotspot_theme_catalog.py ..............                       [ 59%]
+2026-09-14T15:25:29.2608606Z tests/test_hotspot_themes_integration.py ....                            [ 59%]
+2026-09-14T15:25:29.2785994Z tests/test_hotspot_wikimedia.py ......                                   [ 59%]
+2026-09-14T15:25:29.2899072Z tests/test_i18n.py ..........                                            [ 59%]
+2026-09-14T15:25:41.2155109Z tests/test_integration_postgres_redis.py .........................       [ 60%]
+2026-09-14T15:25:41.2601024Z tests/test_itinerary.py .........                                        [ 60%]
+2026-09-14T15:25:41.2657528Z tests/test_itinerary_ordering.py .....                                   [ 60%]
+2026-09-14T15:25:41.2737988Z tests/test_kanto_expansion.py ....                                       [ 60%]
+2026-09-14T15:25:41.6027928Z tests/test_klook_affiliates.py ......................................... [ 61%]
+2026-09-14T15:25:41.7329524Z .............                                                            [ 62%]
+2026-09-14T15:25:42.9288544Z tests/test_klook_catalog.py ....................................         [ 62%]
+2026-09-14T15:25:48.1599469Z tests/test_korea_dual_maps.py .......................................... [ 63%]
+2026-09-14T15:25:54.2602873Z ..............................                                           [ 64%]
+2026-09-14T15:25:54.6495358Z tests/test_korea_transit_google_fallback.py ....................         [ 65%]
+2026-09-14T15:25:54.6505097Z tests/test_line_client.py .                                              [ 65%]
+2026-09-14T15:25:54.6678518Z tests/test_line_webhook.py ....................                          [ 65%]
+2026-09-14T15:25:54.6746800Z tests/test_live_back_to_back.py ..                                       [ 65%]
+2026-09-14T15:25:54.7773167Z tests/test_live_providers.py ....                                        [ 65%]
+2026-09-14T15:25:54.7889498Z tests/test_localized_names.py .............                              [ 66%]
+2026-09-14T15:25:54.8134647Z tests/test_map_identities.py ....................                        [ 66%]
+2026-09-14T15:26:00.2580460Z tests/test_map_identity_review.py ......................                 [ 67%]
+2026-09-14T15:26:27.8054991Z tests/test_merchant_styles.py .........s...........................      [ 67%]
+2026-09-14T15:26:27.9270911Z tests/test_met_norway_weather.py ....                                    [ 68%]
+2026-09-14T15:26:28.0241365Z tests/test_migration_0047_ai_vendors.py ....                             [ 68%]
+2026-09-14T15:26:28.2180904Z tests/test_migration_0050_hotspot_themes.py .                            [ 68%]
+2026-09-14T15:26:28.3088328Z tests/test_migration_0073_catalog_run_mode.py ..                         [ 68%]
+2026-09-14T15:26:28.7092421Z tests/test_migration_dead_branches.py ..........                         [ 68%]
+2026-09-14T15:26:28.7176679Z tests/test_migration_sql_dialect.py ..                                   [ 68%]
+2026-09-14T15:26:28.7225383Z tests/test_mock_providers.py ..                                          [ 68%]
+2026-09-14T15:26:28.9135764Z tests/test_naver_maps.py ........                                        [ 68%]
+2026-09-14T15:26:29.0408144Z tests/test_new_flight_providers.py ....                                  [ 68%]
+2026-09-14T15:26:29.5225973Z tests/test_places_discover_contract.py ..                                [ 68%]
+2026-09-14T15:26:29.5588077Z tests/test_planner_candidates.py ..............                          [ 69%]
+2026-09-14T15:26:31.5702834Z tests/test_plus_code_removal.py ...                                      [ 69%]
+2026-09-14T15:26:31.6224986Z tests/test_precise_locations.py ......                                   [ 69%]
+2026-09-14T15:26:31.6915540Z tests/test_pricing_optimizer.py ......                                   [ 69%]
+2026-09-14T15:26:31.7392809Z tests/test_provider_request_limits.py ..                                 [ 69%]
+2026-09-14T15:26:31.9196493Z tests/test_provider_runner.py ..                                         [ 69%]
+2026-09-14T15:26:32.5926156Z tests/test_provider_settings_concurrency.py ....                         [ 69%]
+2026-09-14T15:26:32.6636081Z tests/test_provider_usage_meter.py ...........                           [ 70%]
+2026-09-14T15:26:32.6969160Z tests/test_public_holidays.py ...........                                [ 70%]
+2026-09-14T15:26:32.8037221Z tests/test_public_provider_auth.py .....                                 [ 70%]
+2026-09-14T15:26:33.2406356Z tests/test_public_read_rate_limit.py ...............                     [ 70%]
+2026-09-14T15:26:33.2911362Z tests/test_rakuten_japan.py ...........................................  [ 71%]
+2026-09-14T15:26:33.3262845Z tests/test_registration_settings.py ...                                  [ 71%]
+2026-09-14T15:26:33.9817446Z tests/test_registration_settings_integration.py .                        [ 71%]
+2026-09-14T15:26:34.4405810Z tests/test_reservation_platform_auth.py .........                        [ 72%]
+2026-09-14T15:26:34.4864595Z tests/test_restaurant_search_replay.py .                                 [ 72%]
+2026-09-14T15:26:34.5443762Z tests/test_restaurant_sources.py ......                                  [ 72%]
+2026-09-14T15:27:12.6818922Z tests/test_saved_flow.py .............................................   [ 73%]
+2026-09-14T15:27:16.9676297Z tests/test_saved_flow_integration.py ....s.s.                            [ 73%]
+2026-09-14T15:27:17.4729334Z tests/test_saved_items_integration.py .                                  [ 73%]
+2026-09-14T15:27:17.5286163Z tests/test_schema.py ....                                                [ 73%]
+2026-09-14T15:27:17.5353598Z tests/test_search_flight_sources.py .......                              [ 73%]
+2026-09-14T15:27:17.5573575Z tests/test_search_from_trip.py ....................                      [ 74%]
+2026-09-14T15:27:17.5757851Z tests/test_secondary_destinations.py ....                                [ 74%]
+2026-09-14T15:27:18.3105927Z tests/test_security_config.py ............................               [ 75%]
+2026-09-14T15:27:18.3208254Z tests/test_shopping_bootstrap.py ........                                [ 75%]
+2026-09-14T15:27:18.4188815Z tests/test_simplified_names.py ........                                  [ 75%]
+2026-09-14T15:27:18.4940463Z tests/test_site_pages.py ............................................... [ 76%]
+2026-09-14T15:27:28.8273589Z .....................................s.....s.                            [ 77%]
+2026-09-14T15:27:28.9002076Z tests/test_site_pages_drafts.py ...............................          [ 78%]
+2026-09-14T15:27:29.0097377Z tests/test_site_pages_migration.py ....                                  [ 78%]
+2026-09-14T15:27:29.0150383Z tests/test_site_visibility.py .                                          [ 78%]
+2026-09-14T15:27:29.1648395Z tests/test_skyscanner_provider.py .....                                  [ 78%]
+2026-09-14T15:27:29.2789942Z tests/test_social_login.py ......                                        [ 78%]
+2026-09-14T15:27:29.5757110Z tests/test_stay22_admin.py ............                                  [ 79%]
+2026-09-14T15:27:29.6249145Z tests/test_stay22_clickout.py .......................................... [ 80%]
+2026-09-14T15:27:29.6644820Z .......................................                                  [ 80%]
+2026-09-14T15:27:30.8007132Z tests/test_stay22_context.py ........................................... [ 81%]
+2026-09-14T15:27:30.8245690Z .                                                                        [ 81%]
+2026-09-14T15:27:33.9512531Z tests/test_stay22_routes.py ............................................ [ 83%]
+2026-09-14T15:27:34.9804929Z ...............                                                          [ 83%]
+2026-09-14T15:27:36.3704972Z tests/test_stay22_script.py ............................................ [ 84%]
+2026-09-14T15:27:36.3720820Z                                                                          [ 84%]
+2026-09-14T15:27:36.3939267Z tests/test_structured_output.py ..............                           [ 84%]
+2026-09-14T15:27:43.7887502Z tests/test_travel_discovery.py ................                          [ 85%]
+2026-09-14T15:27:44.0384664Z tests/test_travel_services.py .......................................... [ 86%]
+2026-09-14T15:27:44.2707833Z ...............                                                          [ 86%]
+2026-09-14T15:27:46.6746020Z tests/test_travel_services_integration.py .....................          [ 87%]
+2026-09-14T15:27:46.6922430Z tests/test_travel_services_jobs.py ........                              [ 87%]
+2026-09-14T15:27:46.7539036Z tests/test_trend_import.py ...............................               [ 87%]
+2026-09-14T15:27:48.2053341Z tests/test_trend_import_integration.py .                                 [ 87%]
+2026-09-14T15:27:48.2179181Z tests/test_trip_cover_image.py ...........                               [ 88%]
+2026-09-14T15:28:08.6334228Z tests/test_trip_create_replay.py ................s.                      [ 88%]
+2026-09-14T15:28:08.6581421Z tests/test_trip_creation.py ................                             [ 89%]
+2026-09-14T15:28:08.6662369Z tests/test_trip_expenses.py .........                                    [ 89%]
+2026-09-14T15:28:08.6764232Z tests/test_trip_hours.py ............                                    [ 89%]
+2026-09-14T15:28:08.6835420Z tests/test_trip_ics.py ......                                            [ 89%]
+2026-09-14T15:28:08.7614086Z tests/test_trip_intents.py ......................................        [ 90%]
+2026-09-14T15:28:08.8062724Z tests/test_trip_item_localization.py ...............                     [ 90%]
+2026-09-14T15:28:10.2958793Z tests/test_trip_localization_integration.py ..                           [ 90%]
+2026-09-14T15:28:10.3002613Z tests/test_trip_name_backfill.py ....                                    [ 91%]
+2026-09-14T15:28:10.3045108Z tests/test_trip_notes.py .....                                           [ 91%]
+2026-09-14T15:28:10.4039310Z tests/test_trip_optimization_preview.py ........                         [ 91%]
+2026-09-14T15:28:10.4216062Z tests/test_trip_place_ingest.py ........                                 [ 91%]
+2026-09-14T15:28:30.0833689Z tests/test_trip_place_options.py ..................................      [ 92%]
+2026-09-14T15:29:08.7753433Z tests/test_trip_preferences.py ......................................... [ 93%]
+2026-09-14T15:29:43.6571166Z ............................                                             [ 94%]
+2026-09-14T15:29:43.6651077Z tests/test_trip_pricing.py .......                                       [ 94%]
+2026-09-14T15:29:43.7202583Z tests/test_trip_reschedule.py ........................                   [ 94%]
+2026-09-14T15:29:43.8241247Z tests/test_trip_route_planner.py ..............                          [ 95%]
+2026-09-14T15:29:44.0700507Z tests/test_trip_route_tasks.py .........                                 [ 95%]
+2026-09-14T15:29:45.1822651Z tests/test_trip_routing.py ............................................  [ 96%]
+2026-09-14T15:29:45.2312968Z tests/test_trip_schedule.py ....................................         [ 97%]
+2026-09-14T15:29:45.2335480Z tests/test_trip_share_fork.py ..                                         [ 97%]
+2026-09-14T15:29:45.2375348Z tests/test_trip_share_payload.py ....                                    [ 97%]
+2026-09-14T15:29:45.3482686Z tests/test_trip_stay_areas.py ...............                            [ 97%]
+2026-09-14T15:29:45.7987100Z tests/test_trip_stay_router.py .............                             [ 98%]
+2026-09-14T15:29:45.8229192Z tests/test_trip_weather.py .                                             [ 98%]
+2026-09-14T15:29:45.9054417Z tests/test_ui_text.py ...........................                        [ 98%]
+2026-09-14T15:29:46.2544665Z tests/test_ui_text_integration.py .                                      [ 98%]
+2026-09-14T15:29:46.2651872Z tests/test_usage_idempotency.py ....                                     [ 98%]
+2026-09-14T15:29:46.2660709Z tests/test_usage_migration.py s                                          [ 98%]
+2026-09-14T15:29:46.2742893Z tests/test_usage_release.py ...                                          [ 98%]
+2026-09-14T15:29:46.3208603Z tests/test_usage_settings.py ..................                          [ 99%]
+2026-09-14T15:29:47.1160093Z tests/test_usage_settings_integration.py .                               [ 99%]
+2026-09-14T15:29:47.1976676Z tests/test_warning_codes.py ......                                       [ 99%]
+2026-09-14T15:29:47.3112353Z tests/test_weather_service.py ...                                        [ 99%]
+2026-09-14T15:29:47.3407347Z tests/test_wikidata_labels.py ...............                            [ 99%]
+2026-09-14T15:29:57.2108850Z tests/test_worker.py ..                                                  [100%]
+2026-09-14T15:29:57.2109284Z 
+2026-09-14T15:29:57.2109465Z =============================== warnings summary ===============================
+2026-09-14T15:29:57.2109848Z <frozen importlib._bootstrap>:488
+2026-09-14T15:29:57.2110140Z <frozen importlib._bootstrap>:488
+2026-09-14T15:29:57.2111615Z   <frozen importlib._bootstrap>:488: DeprecationWarning: Bitwise inversion '~' on bool is deprecated and will be removed in Python 3.16. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+2026-09-14T15:29:57.2113291Z 
+2026-09-14T15:29:57.2113588Z tests/test_usage_settings.py::test_reservation_requires_the_entire_configured_cost
+2026-09-14T15:29:57.2114497Z   /home/runner/work/travel_scanner/travel_scanner/apps/api/app/admin/service.py:539: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+2026-09-14T15:29:57.2115348Z     return list((await session.scalars(select(ProviderConfig))).all())
+2026-09-14T15:29:57.2115851Z   Enable tracemalloc to get traceback where the object was allocated.
+2026-09-14T15:29:57.2116547Z   See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+2026-09-14T15:29:57.2117267Z 
+2026-09-14T15:29:57.2117504Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2026-09-14T15:29:57.2118002Z ================================ tests coverage ================================
+2026-09-14T15:29:57.2118521Z _______________ coverage: platform linux, python 3.13.15-final-0 _______________
+2026-09-14T15:29:57.2118837Z 
+2026-09-14T15:29:57.2118981Z Name                                      Stmts   Miss  Cover
+2026-09-14T15:29:57.2119357Z -------------------------------------------------------------
+2026-09-14T15:29:57.2119758Z app/__init__.py                               0      0   100%
+2026-09-14T15:29:57.2120161Z app/admin/__init__.py                         0      0   100%
+2026-09-14T15:29:57.2120586Z app/admin/audit_safety.py                    31      1    97%
+2026-09-14T15:29:57.2121020Z app/admin/dashboard_router.py                38     20    47%
+2026-09-14T15:29:57.2121438Z app/admin/listing.py                         26      0   100%
+2026-09-14T15:29:57.2122066Z app/admin/operations_router.py               39      4    90%
+2026-09-14T15:29:57.2122498Z app/admin/operations_schemas.py              48      0   100%
+2026-09-14T15:29:57.2122918Z app/admin/operations_service.py             143     36    75%
+2026-09-14T15:29:57.2123336Z app/admin/router.py                          29      5    83%
+2026-09-14T15:29:57.2123744Z app/admin/schemas.py                        123      0   100%
+2026-09-14T15:29:57.2124156Z app/admin/security_router.py                 37      4    89%
+2026-09-14T15:29:57.2124565Z app/admin/service.py                        749    169    77%
+2026-09-14T15:29:57.2124984Z app/admin/user_router.py                     54      5    91%
+2026-09-14T15:29:57.2125407Z app/admin/user_schemas.py                   160      0   100%
+2026-09-14T15:29:57.2125820Z app/admin/users.py                          421     90    79%
+2026-09-14T15:29:57.2126223Z app/ads/__init__.py                           0      0   100%
+2026-09-14T15:29:57.2126624Z app/ads/router.py                            15      0   100%
+2026-09-14T15:29:57.2127201Z app/ads/service.py                           14      0   100%
+2026-09-14T15:29:57.2127606Z app/affiliates/__init__.py                    0      0   100%
+2026-09-14T15:29:57.2128022Z app/affiliates/content_links.py              82      3    96%
+2026-09-14T15:29:57.2128450Z app/affiliates/registry.py                   36      2    94%
+2026-09-14T15:29:57.2128877Z app/affiliates/router.py                    176     50    72%
+2026-09-14T15:29:57.2129297Z app/affiliates/schemas.py                    37      0   100%
+2026-09-14T15:29:57.2129728Z app/affiliates/service.py                   149      9    94%
+2026-09-14T15:29:57.2130143Z app/affiliates/sub_id.py                     21      0   100%
+2026-09-14T15:29:57.2130552Z app/ai/__init__.py                            0      0   100%
+2026-09-14T15:29:57.2130943Z app/ai/catalog.py                            34      0   100%
+2026-09-14T15:29:57.2131332Z app/ai/gemini.py                             44      3    93%
+2026-09-14T15:29:57.2131720Z app/ai/itinerary.py                         483     25    95%
+2026-09-14T15:29:57.2132124Z app/ai/parser.py                            107      6    94%
+2026-09-14T15:29:57.2132646Z app/ai/router.py                             20      0   100%
+2026-09-14T15:29:57.2133059Z app/ai/structured_output.py                 117      9    92%
+2026-09-14T15:29:57.2133478Z app/ai/trip_parser.py                       271      7    97%
+2026-09-14T15:29:57.2133888Z app/alerts/__init__.py                        0      0   100%
+2026-09-14T15:29:57.2134282Z app/alerts/jobs.py                            9      9     0%
+2026-09-14T15:29:57.2134679Z app/alerts/monitor.py                       194    194     0%
+2026-09-14T15:29:57.2135086Z app/alerts/monitoring.py                     17      6    65%
+2026-09-14T15:29:57.2135502Z app/alerts/policy.py                         18      0   100%
+2026-09-14T15:29:57.2135906Z app/alerts/router.py                        178     76    57%
+2026-09-14T15:29:57.2136323Z app/alerts/scheduler.py                      39     39     0%
+2026-09-14T15:29:57.2136736Z app/alerts/worker.py                         11     11     0%
+2026-09-14T15:29:57.2137269Z app/analytics/__init__.py                     0      0   100%
+2026-09-14T15:29:57.2137694Z app/analytics/affiliates.py                  37      0   100%
+2026-09-14T15:29:57.2138108Z app/analytics/context.py                     26      0   100%
+2026-09-14T15:29:57.2138526Z app/analytics/discovery.py                   38      7    82%
+2026-09-14T15:29:57.2138934Z app/analytics/jobs.py                        38     38     0%
+2026-09-14T15:29:57.2139348Z app/analytics/router.py                      27      4    85%
+2026-09-14T15:29:57.2139775Z app/analytics/scheduler.py                   22     22     0%
+2026-09-14T15:29:57.2140207Z app/analytics/schemas.py                     36      1    97%
+2026-09-14T15:29:57.2140639Z app/analytics/service.py                    323     32    90%
+2026-09-14T15:29:57.2141199Z app/auth/__init__.py                          0      0   100%
+2026-09-14T15:29:57.2141595Z app/auth/jobs.py                             30     17    43%
+2026-09-14T15:29:57.2141993Z app/auth/oauth.py                           254    130    49%
+2026-09-14T15:29:57.2142396Z app/auth/passwords.py                        43      2    95%
+2026-09-14T15:29:57.2142801Z app/auth/router.py                          146     47    68%
+2026-09-14T15:29:57.2143198Z app/auth/schemas.py                          77      0   100%
+2026-09-14T15:29:57.2143595Z app/auth/service.py                         277     17    94%
+2026-09-14T15:29:57.2144009Z app/catalog_review/__init__.py                0      0   100%
+2026-09-14T15:29:57.2144431Z app/catalog_review/budget.py                  8      0   100%
+2026-09-14T15:29:57.2144839Z app/catalog_review/enrich_cli.py             83      2    98%
+2026-09-14T15:29:57.2145310Z app/catalog_review/enrichment.py            180     13    93%
+2026-09-14T15:29:57.2145715Z app/catalog_review/errors.py                 40      1    98%
+2026-09-14T15:29:57.2146124Z app/catalog_review/evidence.py              204     13    94%
+2026-09-14T15:29:57.2146547Z app/catalog_review/jobs.py                  508     24    95%
+2026-09-14T15:29:57.2147065Z app/catalog_review/provider.py              483     35    93%
+2026-09-14T15:29:57.2147494Z app/catalog_review/repository.py            211      5    98%
+2026-09-14T15:29:57.2147918Z app/catalog_review/router.py                 55     21    62%
+2026-09-14T15:29:57.2148328Z app/catalog_review/schemas.py                57      0   100%
+2026-09-14T15:29:57.2148732Z app/catalog_review/scope.py                  13      1    92%
+2026-09-14T15:29:57.2149141Z app/catalog_review/service.py               364     12    97%
+2026-09-14T15:29:57.2149519Z app/cli.py                                  489    402    18%
+2026-09-14T15:29:57.2149910Z app/community/__init__.py                     0      0   100%
+2026-09-14T15:29:57.2150328Z app/community/accounts.py                   120     44    63%
+2026-09-14T15:29:57.2150746Z app/community/admin.py                      262    180    31%
+2026-09-14T15:29:57.2151174Z app/community/collections.py                 96     15    84%
+2026-09-14T15:29:57.2151735Z app/community/content.py                    112     45    60%
+2026-09-14T15:29:57.2152146Z app/community/discovery.py                  287    156    46%
+2026-09-14T15:29:57.2152561Z app/community/invitations.py                 30      6    80%
+2026-09-14T15:29:57.2152977Z app/community/jobs.py                       278     67    76%
+2026-09-14T15:29:57.2153386Z app/community/media.py                      122     38    69%
+2026-09-14T15:29:57.2153784Z app/community/messaging.py                  216    162    25%
+2026-09-14T15:29:57.2154199Z app/community/models.py                     208      0   100%
+2026-09-14T15:29:57.2154619Z app/community/pet_models.py                  56      0   100%
+2026-09-14T15:29:57.2155041Z app/community/pet_planning.py               102     51    50%
+2026-09-14T15:29:57.2155457Z app/community/pet_schemas.py                107      9    92%
+2026-09-14T15:29:57.2155872Z app/community/pets.py                       254    161    37%
+2026-09-14T15:29:57.2156290Z app/community/places.py                      33      8    76%
+2026-09-14T15:29:57.2156707Z app/community/policy.py                     112     29    74%
+2026-09-14T15:29:57.2157283Z app/community/router.py                     308    213    31%
+2026-09-14T15:29:57.2157696Z app/community/schemas.py                    155      6    96%
+2026-09-14T15:29:57.2158111Z app/community/translation.py                 95     70    26%
+2026-09-14T15:29:57.2158535Z app/community/videos.py                      61      4    93%
+2026-09-14T15:29:57.2158926Z app/config.py                               481      7    99%
+2026-09-14T15:29:57.2159312Z app/crawlers/__init__.py                      0      0   100%
+2026-09-14T15:29:57.2159725Z app/crawlers/airlines.py                    404     98    76%
+2026-09-14T15:29:57.2160269Z app/crawlers/back_to_back.py                305     31    90%
+2026-09-14T15:29:57.2160676Z app/crawlers/fx.py                          111     20    82%
+2026-09-14T15:29:57.2161082Z app/crawlers/router.py                       78     51    35%
+2026-09-14T15:29:57.2161505Z app/crawlers/schemas.py                     276      8    97%
+2026-09-14T15:29:57.2161921Z app/crawlers/verification.py                 41      0   100%
+2026-09-14T15:29:57.2162341Z app/database_admin/__init__.py                0      0   100%
+2026-09-14T15:29:57.2162766Z app/database_admin/agent.py                  49     29    41%
+2026-09-14T15:29:57.2163196Z app/database_admin/router.py                 59     14    76%
+2026-09-14T15:29:57.2163610Z app/database_admin/schemas.py               122      0   100%
+2026-09-14T15:29:57.2164025Z app/database_admin/service.py               240     67    72%
+2026-09-14T15:29:57.2164408Z app/db.py                                    14      0   100%
+2026-09-14T15:29:57.2164814Z app/deployments/__init__.py                   0      0   100%
+2026-09-14T15:29:57.2165233Z app/deployments/agent.py                     53     32    40%
+2026-09-14T15:29:57.2165663Z app/deployments/router.py                    33      6    82%
+2026-09-14T15:29:57.2166090Z app/deployments/schemas.py                  102      0   100%
+2026-09-14T15:29:57.2166520Z app/deployments/service.py                  174    115    34%
+2026-09-14T15:29:57.2167069Z app/destinations/__init__.py                  2      0   100%
+2026-09-14T15:29:57.2167497Z app/destinations/catalog.py                  61      1    98%
+2026-09-14T15:29:57.2167910Z app/destinations/localized.py               172      6    97%
+2026-09-14T15:29:57.2168360Z app/discovery/__init__.py                     0      0   100%
+2026-09-14T15:29:57.2168779Z app/discovery/details.py                    106     53    50%
+2026-09-14T15:29:57.2169210Z app/discovery/display_topics.py              25      0   100%
+2026-09-14T15:29:57.2169655Z app/discovery/models.py                      20      0   100%
+2026-09-14T15:29:57.2170071Z app/discovery/policy.py                      43      4    91%
+2026-09-14T15:29:57.2170498Z app/discovery/preferences.py                 34     12    65%
+2026-09-14T15:29:57.2171055Z app/discovery/router.py                     136     32    76%
+2026-09-14T15:29:57.2171473Z app/discovery/schemas.py                     72      1    99%
+2026-09-14T15:29:57.2171885Z app/discovery/service.py                    177     46    74%
+2026-09-14T15:29:57.2172307Z app/discovery/sources.py                    158     29    82%
+2026-09-14T15:29:57.2172732Z app/discovery/taxonomy.py                    23      9    61%
+2026-09-14T15:29:57.2173150Z app/flights/__init__.py                       0      0   100%
+2026-09-14T15:29:57.2173568Z app/flights/router.py                        79     51    35%
+2026-09-14T15:29:57.2173986Z app/flights/schemas.py                       15      6    60%
+2026-09-14T15:29:57.2174392Z app/foods/__init__.py                         0      0   100%
+2026-09-14T15:29:57.2174808Z app/foods/admin_router.py                   931    325    65%
+2026-09-14T15:29:57.2175217Z app/foods/area_catalog.py                    87     22    75%
+2026-09-14T15:29:57.2175636Z app/foods/catalog.py                         60      7    88%
+2026-09-14T15:29:57.2176061Z app/foods/category_catalog.py                59     10    83%
+2026-09-14T15:29:57.2176483Z app/foods/coordinate_fill.py                243      6    98%
+2026-09-14T15:29:57.2177043Z app/foods/coordinate_fill_cli.py             93     10    89%
+2026-09-14T15:29:57.2177893Z app/foods/coordinate_queue.py               128     31    76%
+2026-09-14T15:29:57.2178430Z app/foods/enrichment.py                     203      5    98%
+2026-09-14T15:29:57.2179199Z app/foods/enrichment_import.py              306     16    95%
+2026-09-14T15:29:57.2179744Z app/foods/merchant_catalog.py                99     13    87%
+2026-09-14T15:29:57.2180313Z app/foods/place_matching.py                  84      2    98%
+2026-09-14T15:29:57.2181041Z app/foods/place_matching_cli.py              14      7    50%
+2026-09-14T15:29:57.2181570Z app/foods/platform_link_catalog.py           14      0   100%
+2026-09-14T15:29:57.2192064Z app/foods/platform_links.py                 160      8    95%
+2026-09-14T15:29:57.2192651Z app/foods/platform_review_import.py         175     18    90%
+2026-09-14T15:29:57.2193114Z app/foods/publication.py                     15      0   100%
+2026-09-14T15:29:57.2193539Z app/foods/router.py                          78     25    68%
+2026-09-14T15:29:57.2193948Z app/foods/schemas.py                        119      0   100%
+2026-09-14T15:29:57.2194340Z app/foods/selection.py                       41     24    41%
+2026-09-14T15:29:57.2194755Z app/foods/service.py                        436     19    96%
+2026-09-14T15:29:57.2195144Z app/foods/styles.py                          64     22    66%
+2026-09-14T15:29:57.2195558Z app/foods/trend_import.py                   240     29    88%
+2026-09-14T15:29:57.2195963Z app/fx/__init__.py                            0      0   100%
+2026-09-14T15:29:57.2196369Z app/fx/router.py                             20      0   100%
+2026-09-14T15:29:57.2196769Z app/guides/__init__.py                        0      0   100%
+2026-09-14T15:29:57.2197353Z app/guides/admin_service.py                 322     88    73%
+2026-09-14T15:29:57.2197772Z app/guides/content_pack.py                  170      9    95%
+2026-09-14T15:29:57.2198183Z app/guides/models.py                         61      0   100%
+2026-09-14T15:29:57.2198581Z app/guides/pack_cli.py                       57     57     0%
+2026-09-14T15:29:57.2198988Z app/guides/pack_ingest.py                   507     74    85%
+2026-09-14T15:29:57.2199415Z app/guides/publication.py                    34      2    94%
+2026-09-14T15:29:57.2199843Z app/guides/router.py                         90      4    96%
+2026-09-14T15:29:57.2200254Z app/guides/schemas.py                       377      3    99%
+2026-09-14T15:29:57.2200669Z app/guides/series.py                        106     32    70%
+2026-09-14T15:29:57.2201084Z app/guides/service.py                       149     37    75%
+2026-09-14T15:29:57.2201499Z app/guides/taxonomy.py                       22      1    95%
+2026-09-14T15:29:57.2202101Z app/holidays/__init__.py                      0      0   100%
+2026-09-14T15:29:57.2202510Z app/holidays/refresh.py                     148     43    71%
+2026-09-14T15:29:57.2202936Z app/holidays/router.py                       44      1    98%
+2026-09-14T15:29:57.2203354Z app/holidays/service.py                      63      5    92%
+2026-09-14T15:29:57.2203780Z app/hotspots/__init__.py                      0      0   100%
+2026-09-14T15:29:57.2204198Z app/hotspots/admin_router.py                917    370    60%
+2026-09-14T15:29:57.2204623Z app/hotspots/ai_search.py                   404    209    48%
+2026-09-14T15:29:57.2205043Z app/hotspots/ai_tasks.py                     56     10    82%
+2026-09-14T15:29:57.2205459Z app/hotspots/areas.py                        60      0   100%
+2026-09-14T15:29:57.2205891Z app/hotspots/candidate_cli.py                43     14    67%
+2026-09-14T15:29:57.2206325Z app/hotspots/candidate_generation.py        115     29    75%
+2026-09-14T15:29:57.2206752Z app/hotspots/candidate_import.py             79      1    99%
+2026-09-14T15:29:57.2207310Z app/hotspots/candidate_sources.py            74     56    24%
+2026-09-14T15:29:57.2207741Z app/hotspots/candidates.py                   89      3    97%
+2026-09-14T15:29:57.2208180Z app/hotspots/catalog.py                     117      8    93%
+2026-09-14T15:29:57.2208598Z app/hotspots/cities.py                       30      0   100%
+2026-09-14T15:29:57.2209022Z app/hotspots/discovery.py                   101      8    92%
+2026-09-14T15:29:57.2209450Z app/hotspots/guide_review.py                129      4    97%
+2026-09-14T15:29:57.2209883Z app/hotspots/guides.py                      483    106    78%
+2026-09-14T15:29:57.2210299Z app/hotspots/intro_generation.py            110     18    84%
+2026-09-14T15:29:57.2210880Z app/hotspots/intro_tasks.py                  84     84     0%
+2026-09-14T15:29:57.2211303Z app/hotspots/intros.py                      100     26    74%
+2026-09-14T15:29:57.2211718Z app/hotspots/jobs.py                         33     22    33%
+2026-09-14T15:29:57.2212137Z app/hotspots/maps.py                         33      0   100%
+2026-09-14T15:29:57.2212560Z app/hotspots/place_matching.py               83     16    81%
+2026-09-14T15:29:57.2212985Z app/hotspots/place_tasks.py                  89     65    27%
+2026-09-14T15:29:57.2213401Z app/hotspots/places.py                      326     69    79%
+2026-09-14T15:29:57.2213811Z app/hotspots/ranking.py                      69      2    97%
+2026-09-14T15:29:57.2214205Z app/hotspots/router.py                      163     80    51%
+2026-09-14T15:29:57.2214617Z app/hotspots/scheduler.py                    22     22     0%
+2026-09-14T15:29:57.2215024Z app/hotspots/service.py                     528    165    69%
+2026-09-14T15:29:57.2215443Z app/hotspots/simplified_names.py             89      8    91%
+2026-09-14T15:29:57.2215854Z app/hotspots/theme_catalog.py                56     10    82%
+2026-09-14T15:29:57.2216278Z app/hotspots/themes.py                      144     20    86%
+2026-09-14T15:29:57.2216691Z app/hotspots/wikidata_labels.py             138      5    96%
+2026-09-14T15:29:57.2217223Z app/hotspots/wikimedia.py                    57      3    95%
+2026-09-14T15:29:57.2217621Z app/i18n.py                                  53      0   100%
+2026-09-14T15:29:57.2218005Z app/infra.py                                 84     17    80%
+2026-09-14T15:29:57.2218393Z app/line/__init__.py                          0      0   100%
+2026-09-14T15:29:57.2218786Z app/line/client.py                           57     32    44%
+2026-09-14T15:29:57.2219177Z app/line/router.py                          212    152    28%
+2026-09-14T15:29:57.2219594Z app/localized_names.py                       93      1    99%
+2026-09-14T15:29:57.2220018Z app/locations/__init__.py                     0      0   100%
+2026-09-14T15:29:57.2220437Z app/locations/coordinates.py                 22      2    91%
+2026-09-14T15:29:57.2220841Z app/locations/google_match.py                17      1    94%
+2026-09-14T15:29:57.2221400Z app/locations/map_identity.py               107      5    95%
+2026-09-14T15:29:57.2221810Z app/locations/map_identity_review.py        161     11    93%
+2026-09-14T15:29:57.2222218Z app/locations/map_identity_router.py        115     16    86%
+2026-09-14T15:29:57.2222634Z app/locations/map_identity_tasks.py          87     32    63%
+2026-09-14T15:29:57.2223033Z app/main.py                                 166     10    94%
+2026-09-14T15:29:57.2223421Z app/middleware.py                           107      5    95%
+2026-09-14T15:29:57.2223815Z app/models.py                              1277      0   100%
+2026-09-14T15:29:57.2224216Z app/optimization/__init__.py                  0      0   100%
+2026-09-14T15:29:57.2224640Z app/optimization/engine.py                  177      6    97%
+2026-09-14T15:29:57.2225070Z app/optimization/hotel_filters.py            64      4    94%
+2026-09-14T15:29:57.2225482Z app/places/__init__.py                        0      0   100%
+2026-09-14T15:29:57.2225875Z app/places/google.py                        229     54    76%
+2026-09-14T15:29:57.2226272Z app/places/naver.py                         125     20    84%
+2026-09-14T15:29:57.2226669Z app/places/router.py                        271     44    84%
+2026-09-14T15:29:57.2227193Z app/pricing/__init__.py                       0      0   100%
+2026-09-14T15:29:57.2227584Z app/pricing/engine.py                        44      0   100%
+2026-09-14T15:29:57.2227975Z app/problems.py                              43      4    91%
+2026-09-14T15:29:57.2228367Z app/providers/__init__.py                     0      0   100%
+2026-09-14T15:29:57.2228776Z app/providers/amadeus.py                    260     34    87%
+2026-09-14T15:29:57.2229180Z app/providers/base.py                        27      0   100%
+2026-09-14T15:29:57.2229727Z app/providers/booking.py                    264     43    84%
+2026-09-14T15:29:57.2230145Z app/providers/duffel.py                     145     28    81%
+2026-09-14T15:29:57.2230557Z app/providers/flight_keys.py                 11      0   100%
+2026-09-14T15:29:57.2230966Z app/providers/flight_router.py               63     47    25%
+2026-09-14T15:29:57.2231388Z app/providers/flightaware.py                 86     27    69%
+2026-09-14T15:29:57.2231802Z app/providers/google_travel_impact.py        96     13    86%
+2026-09-14T15:29:57.2232216Z app/providers/live_back_to_back.py          116      5    96%
+2026-09-14T15:29:57.2232635Z app/providers/mock.py                       106     11    90%
+2026-09-14T15:29:57.2233049Z app/providers/registry.py                   198     24    88%
+2026-09-14T15:29:57.2233457Z app/providers/router.py                      10      1    90%
+2026-09-14T15:29:57.2233870Z app/providers/runner.py                      32      0   100%
+2026-09-14T15:29:57.2234294Z app/providers/schemas.py                    162      0   100%
+2026-09-14T15:29:57.2234715Z app/providers/skyscanner.py                 274     49    82%
+2026-09-14T15:29:57.2235134Z app/providers/usage_meter.py                342     35    90%
+2026-09-14T15:29:57.2235563Z app/restaurants/__init__.py                   0      0   100%
+2026-09-14T15:29:57.2235983Z app/restaurants/admin_router.py             110     71    35%
+2026-09-14T15:29:57.2236413Z app/restaurants/admin_sources_router.py     243    147    40%
+2026-09-14T15:29:57.2236990Z app/restaurants/editorial.py                 91     37    59%
+2026-09-14T15:29:57.2237415Z app/restaurants/google.py                   144     31    78%
+2026-09-14T15:29:57.2237841Z app/restaurants/imports.py                   99     13    87%
+2026-09-14T15:29:57.2238258Z app/restaurants/router.py                    51      6    88%
+2026-09-14T15:29:57.2238671Z app/restaurants/service.py                  293    216    26%
+2026-09-14T15:29:57.2239089Z app/restaurants/tasks.py                     79     57    28%
+2026-09-14T15:29:57.2239508Z app/restaurants/user_router.py               84     47    44%
+2026-09-14T15:29:57.2239908Z app/saved/__init__.py                         0      0   100%
+2026-09-14T15:29:57.2240454Z app/saved/api.py                             56      5    91%
+2026-09-14T15:29:57.2240837Z app/saved/router.py                         103     48    53%
+2026-09-14T15:29:57.2241237Z app/saved/service.py                        378    104    72%
+2026-09-14T15:29:57.2241614Z app/schema.py                                25      1    96%
+2026-09-14T15:29:57.2241997Z app/search/__init__.py                        0      0   100%
+2026-09-14T15:29:57.2242390Z app/search/events.py                         11      0   100%
+2026-09-14T15:29:57.2242801Z app/search/orchestrator.py                  262     96    63%
+2026-09-14T15:29:57.2243201Z app/search/router.py                        267    188    30%
+2026-09-14T15:29:57.2243598Z app/search/schemas.py                       142      5    96%
+2026-09-14T15:29:57.2243995Z app/search/tasks.py                          39     17    56%
+2026-09-14T15:29:57.2244390Z app/site_pages/__init__.py                    0      0   100%
+2026-09-14T15:29:57.2244788Z app/site_pages/router.py                     37      0   100%
+2026-09-14T15:29:57.2245265Z app/site_pages/schemas.py                   142      0   100%
+2026-09-14T15:29:57.2245673Z app/site_pages/service.py                   135      4    97%
+2026-09-14T15:29:57.2246076Z app/travel_services/__init__.py               0      0   100%
+2026-09-14T15:29:57.2246479Z app/travel_services/admin.py                453    197    57%
+2026-09-14T15:29:57.2246995Z app/travel_services/channels.py             101      1    99%
+2026-09-14T15:29:57.2247412Z app/travel_services/errors.py                 1      0   100%
+2026-09-14T15:29:57.2247819Z app/travel_services/hotel_admin.py           71      2    97%
+2026-09-14T15:29:57.2248237Z app/travel_services/hotel_operating.py       61      4    93%
+2026-09-14T15:29:57.2248792Z app/travel_services/hotel_options.py         97     21    78%
+2026-09-14T15:29:57.2249216Z app/travel_services/hotel_quotes.py         126      4    97%
+2026-09-14T15:29:57.2249641Z app/travel_services/imports.py              163     35    79%
+2026-09-14T15:29:57.2250049Z app/travel_services/jobs.py                 164     97    41%
+2026-09-14T15:29:57.2250463Z app/travel_services/klook_catalog.py        278     28    90%
+2026-09-14T15:29:57.2250879Z app/travel_services/network.py               89      7    92%
+2026-09-14T15:29:57.2251287Z app/travel_services/rakuten.py               18      0   100%
+2026-09-14T15:29:57.2251690Z app/travel_services/registry.py              44      0   100%
+2026-09-14T15:29:57.2252106Z app/travel_services/router.py               387    124    68%
+2026-09-14T15:29:57.2252518Z app/travel_services/schemas.py              480     19    96%
+2026-09-14T15:29:57.2252926Z app/travel_services/service.py              230     24    90%
+2026-09-14T15:29:57.2253343Z app/travel_services/stay22.py                59      0   100%
+2026-09-14T15:29:57.2253764Z app/travel_services/stay22_script.py         35      0   100%
+2026-09-14T15:29:57.2254173Z app/trips/__init__.py                         0      0   100%
+2026-09-14T15:29:57.2254571Z app/trips/expenses.py                        58      5    91%
+2026-09-14T15:29:57.2254979Z app/trips/export_router.py                   26      6    77%
+2026-09-14T15:29:57.2255383Z app/trips/flight_anchor.py                   43      0   100%
+2026-09-14T15:29:57.2255789Z app/trips/hours.py                           88     13    85%
+2026-09-14T15:29:57.2256174Z app/trips/ics.py                             90      2    98%
+2026-09-14T15:29:57.2256559Z app/trips/ingest.py                          69      2    97%
+2026-09-14T15:29:57.2257088Z app/trips/ingest_router.py                   67     24    64%
+2026-09-14T15:29:57.2257490Z app/trips/intents.py                        138      1    99%
+2026-09-14T15:29:57.2257894Z app/trips/itinerary.py                      240      7    97%
+2026-09-14T15:29:57.2258299Z app/trips/map_identities.py                  49      1    98%
+2026-09-14T15:29:57.2258710Z app/trips/name_backfill.py                  106      0   100%
+2026-09-14T15:29:57.2259279Z app/trips/place_options.py                  136      9    93%
+2026-09-14T15:29:57.2259714Z app/trips/pricing.py                         84      0   100%
+2026-09-14T15:29:57.2260108Z app/trips/replan.py                         221      9    96%
+2026-09-14T15:29:57.2260514Z app/trips/reschedule.py                     233     13    94%
+2026-09-14T15:29:57.2260929Z app/trips/route_planner.py                  177     13    93%
+2026-09-14T15:29:57.2261337Z app/trips/route_tasks.py                    163     54    67%
+2026-09-14T15:29:57.2261745Z app/trips/router.py                        2436   1148    53%
+2026-09-14T15:29:57.2262141Z app/trips/routing.py                       1214    174    86%
+2026-09-14T15:29:57.2262527Z app/trips/schedule.py                       241      9    96%
+2026-09-14T15:29:57.2262933Z app/trips/search_criteria.py                114      8    93%
+2026-09-14T15:29:57.2263337Z app/trips/share_router.py                    54     24    56%
+2026-09-14T15:29:57.2263735Z app/trips/stay_areas.py                     364     10    97%
+2026-09-14T15:29:57.2264145Z app/trips/stay_router.py                    277     17    94%
+2026-09-14T15:29:57.2264535Z app/ui_text/__init__.py                       0      0   100%
+2026-09-14T15:29:57.2264919Z app/ui_text/router.py                        32      1    97%
+2026-09-14T15:29:57.2265304Z app/ui_text/schemas.py                       44      0   100%
+2026-09-14T15:29:57.2265697Z app/ui_text/service.py                      175      7    96%
+2026-09-14T15:29:57.2266087Z app/usage/__init__.py                         0      0   100%
+2026-09-14T15:29:57.2266465Z app/usage/router.py                          74      8    89%
+2026-09-14T15:29:57.2266974Z app/usage/schemas.py                         75      2    97%
+2026-09-14T15:29:57.2267522Z app/usage/service.py                        224     75    67%
+2026-09-14T15:29:57.2267928Z app/warnings.py                              14      4    71%
+2026-09-14T15:29:57.2268333Z app/weather/__init__.py                       0      0   100%
+2026-09-14T15:29:57.2268750Z app/weather/google.py                       154     26    83%
+2026-09-14T15:29:57.2269162Z app/weather/met_norway.py                   235     30    87%
+2026-09-14T15:29:57.2269565Z app/weather/schemas.py                       43      0   100%
+2026-09-14T15:29:57.2269979Z app/weather/service.py                       34      0   100%
+2026-09-14T15:29:57.2270378Z app/worker.py                                13      1    92%
+2026-09-14T15:29:57.2270770Z -------------------------------------------------------------
+2026-09-14T15:29:57.2271141Z TOTAL                                     44514  10101    77%
+2026-09-14T15:30:01.2647984Z =========== 4182 passed, 16 skipped, 3 warnings in 690.39s (0:11:30) ===========
+2026-09-14T15:30:12.4236019Z Post job cleanup.
+2026-09-14T15:30:12.5148231Z UV_CACHE_DIR is already set to /home/runner/work/_temp/setup-uv-cache
+2026-09-14T15:30:12.5151979Z UV_PYTHON_INSTALL_DIR is already set to /home/runner/work/_temp/uv-python-dir
+2026-09-14T15:30:12.5153601Z Cache hit occurred on key setup-uv-2-x86_64-unknown-linux-gnu-ubuntu-24.04-3.13-3fe59997f92ced99b032c831ded729943f811292f3c18eae624384d3fb16db7b, not saving cache.
+2026-09-14T15:30:12.6260464Z Post job cleanup.
+2026-09-14T15:30:12.6964971Z [command]/usr/bin/git version
+2026-09-14T15:30:12.7010305Z git version 2.55.0
+2026-09-14T15:30:12.7039598Z Temporarily overriding HOME='/home/runner/work/_temp/770ab0ae-f012-45ae-9d89-1cdbd6b54528' before making global git config changes
+2026-09-14T15:30:12.7040646Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-14T15:30:12.7042496Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/travel_scanner/travel_scanner
+2026-09-14T15:30:12.7073688Z Removing SSH command configuration
+2026-09-14T15:30:12.7079553Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-14T15:30:12.7111024Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-14T15:30:12.7332839Z Removing HTTP extra header
+2026-09-14T15:30:12.7338121Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-14T15:30:12.7369575Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-14T15:30:12.7602438Z Removing includeIf entries pointing to credentials config files
+2026-09-14T15:30:12.7608209Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-14T15:30:12.7640155Z includeif.gitdir:/home/runner/work/travel_scanner/travel_scanner/.git.path
+2026-09-14T15:30:12.7659938Z includeif.gitdir:/home/runner/work/travel_scanner/travel_scanner/.git/worktrees/*.path
+2026-09-14T15:30:12.7660745Z includeif.gitdir:/github/workspace/.git.path
+2026-09-14T15:30:12.7661374Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-09-14T15:30:12.7663071Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/travel_scanner/travel_scanner/.git.path
+2026-09-14T15:30:12.7683912Z /home/runner/work/_temp/git-credentials-90a3f746-47a3-4469-a794-7a6c96ce2473.config
+2026-09-14T15:30:12.7697528Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/travel_scanner/travel_scanner/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-90a3f746\-47a3\-4469\-a794\-7a6c96ce2473\.config
+2026-09-14T15:30:12.7748427Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/travel_scanner/travel_scanner/.git/worktrees/*.path
+2026-09-14T15:30:12.7800459Z /home/runner/work/_temp/git-credentials-90a3f746-47a3-4469-a794-7a6c96ce2473.config
+2026-09-14T15:30:12.7805650Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/travel_scanner/travel_scanner/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-90a3f746\-47a3\-4469\-a794\-7a6c96ce2473\.config
+2026-09-14T15:30:12.7845892Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-09-14T15:30:12.7871661Z /github/runner_temp/git-credentials-90a3f746-47a3-4469-a794-7a6c96ce2473.config
+2026-09-14T15:30:12.7878686Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-90a3f746\-47a3\-4469\-a794\-7a6c96ce2473\.config
+2026-09-14T15:30:12.7913157Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-09-14T15:30:12.7938093Z /github/runner_temp/git-credentials-90a3f746-47a3-4469-a794-7a6c96ce2473.config
+2026-09-14T15:30:12.7946316Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-90a3f746\-47a3\-4469\-a794\-7a6c96ce2473\.config
+2026-09-14T15:30:12.7981329Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-14T15:30:12.8209578Z Removing credentials config '/home/runner/work/_temp/git-credentials-90a3f746-47a3-4469-a794-7a6c96ce2473.config'
+2026-09-14T15:30:12.8319856Z Print service container logs: d990e02ae88d4e7ea626799a129add71_postgres17alpine_e21c59
+2026-09-14T15:30:12.8323847Z ##[command]/usr/bin/docker logs --details 9ccf36b83df7713f6d9d26a00cf834793193462cdb382b3261d41b8cd6b23315
+2026-09-14T15:30:12.8448655Z  sh: locale: not found
+2026-09-14T15:30:12.8450640Z  2026-09-14 15:16:57.687 UTC [35] WARNING:  no usable system locales were found
+2026-09-14T15:30:12.8451452Z  The files belonging to this database system will be owned by user "postgres".
+2026-09-14T15:30:12.8452423Z  initdb: warning: enabling "trust" authentication for local connections
+2026-09-14T15:30:12.8452932Z  This user must also own the server process.
+2026-09-14T15:30:12.8464884Z  
+2026-09-14T15:30:12.8474500Z  initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+2026-09-14T15:30:12.8475752Z  2026-09-14 15:16:58.920 UTC [1] LOG:  starting PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+2026-09-14T15:30:12.8476347Z  The database cluster will be initialized with locale "en_US.utf8".
+2026-09-14T15:30:12.8477312Z  The default database encoding has accordingly been set to "UTF8".
+2026-09-14T15:30:12.8477809Z  The default text search configuration will be set to "english".
+2026-09-14T15:30:12.8478217Z  
+2026-09-14T15:30:12.8478458Z  Data page checksums are disabled.
+2026-09-14T15:30:12.8478756Z  
+2026-09-14T15:30:12.8479033Z  fixing permissions on existing directory /var/lib/postgresql/data ... ok
+2026-09-14T15:30:12.8479347Z  creating subdirectories ... ok
+2026-09-14T15:30:12.8479602Z  selecting dynamic shared memory implementation ... posix
+2026-09-14T15:30:12.8479896Z  selecting default "max_connections" ... 100
+2026-09-14T15:30:12.8480142Z  selecting default "shared_buffers" ... 128MB
+2026-09-14T15:30:12.8480383Z  selecting default time zone ... UTC
+2026-09-14T15:30:12.8480599Z  creating configuration files ... ok
+2026-09-14T15:30:12.8480817Z  running bootstrap script ... ok
+2026-09-14T15:30:12.8481059Z  performing post-bootstrap initialization ... ok
+2026-09-14T15:30:12.8481322Z  syncing data to disk ... ok
+2026-09-14T15:30:12.8481510Z  
+2026-09-14T15:30:12.8481653Z  
+2026-09-14T15:30:12.8481836Z  Success. You can now start the database server using:
+2026-09-14T15:30:12.8482069Z  
+2026-09-14T15:30:12.8482257Z      pg_ctl -D /var/lib/postgresql/data -l logfile start
+2026-09-14T15:30:12.8482493Z  
+2026-09-14T15:30:12.8482921Z  waiting for server to start....2026-09-14 15:16:58.541 UTC [41] LOG:  starting PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+2026-09-14T15:30:12.8483522Z  2026-09-14 15:16:58.542 UTC [41] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-09-14T15:30:12.8483966Z  2026-09-14 15:16:58.544 UTC [44] LOG:  database system was shut down at 2026-09-14 15:16:58 UTC
+2026-09-14T15:30:12.8484359Z  2026-09-14 15:16:58.547 UTC [41] LOG:  database system is ready to accept connections
+2026-09-14T15:30:12.8484647Z   done
+2026-09-14T15:30:12.8484808Z  server started
+2026-09-14T15:30:12.8484976Z  CREATE DATABASE
+2026-09-14T15:30:12.8485141Z  
+2026-09-14T15:30:12.8485291Z  
+2026-09-14T15:30:12.8485544Z  /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+2026-09-14T15:30:12.8485848Z  
+2026-09-14T15:30:12.8486129Z  waiting for server to shut down....2026-09-14 15:16:58.695 UTC [41] LOG:  received fast shutdown request
+2026-09-14T15:30:12.8486536Z  2026-09-14 15:16:58.695 UTC [41] LOG:  aborting any active transactions
+2026-09-14T15:30:12.8487142Z  2026-09-14 15:16:58.699 UTC [41] LOG:  background worker "logical replication launcher" (PID 47) exited with exit code 1
+2026-09-14T15:30:12.8487556Z  2026-09-14 15:16:58.699 UTC [42] LOG:  shutting down
+2026-09-14T15:30:12.8487864Z  2026-09-14 15:16:58.717 UTC [42] LOG:  checkpoint starting: shutdown immediate
+2026-09-14T15:30:12.8488924Z  2026-09-14 15:16:58.830 UTC [42] LOG:  checkpoint complete: wrote 926 buffers (5.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.074 s, sync=0.037 s, total=0.131 s; sync files=301, longest=0.019 s, average=0.001 s; distance=4266 kB, estimate=4266 kB; lsn=0/191E818, redo lsn=0/191E818
+2026-09-14T15:30:12.8489720Z  2026-09-14 15:16:58.839 UTC [41] LOG:  database system is shut down
+2026-09-14T15:30:12.8489974Z   done
+2026-09-14T15:30:12.8490131Z  server stopped
+2026-09-14T15:30:12.8490295Z  
+2026-09-14T15:30:12.8490499Z  PostgreSQL init process complete; ready for start up.
+2026-09-14T15:30:12.8490735Z  
+2026-09-14T15:30:12.8491149Z  2026-09-14 15:16:58.920 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-09-14T15:30:12.8491777Z  2026-09-14 15:16:58.920 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-09-14T15:30:12.8492694Z  2026-09-14 15:16:58.922 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-09-14T15:30:12.8493410Z  2026-09-14 15:16:58.925 UTC [57] LOG:  database system was shut down at 2026-09-14 15:16:58 UTC
+2026-09-14T15:30:12.8494100Z  2026-09-14 15:16:58.932 UTC [1] LOG:  database system is ready to accept connections
+2026-09-14T15:30:12.8494668Z  2026-09-14 15:18:14.337 UTC [174] ERROR:  usage_ledger is append-only
+2026-09-14T15:30:12.8495329Z  2026-09-14 15:18:14.337 UTC [174] CONTEXT:  PL/pgSQL function prevent_usage_ledger_mutation() line 3 at RAISE
+2026-09-14T15:30:12.8496162Z  2026-09-14 15:18:14.337 UTC [174] STATEMENT:  UPDATE usage_ledger SET metadata_json = '{}'::json WHERE id = $1
+2026-09-14T15:30:12.8497004Z  2026-09-14 15:18:14.345 UTC [174] ERROR:  affiliate_clicks is append-only
+2026-09-14T15:30:12.8497675Z  2026-09-14 15:18:14.345 UTC [174] CONTEXT:  PL/pgSQL function prevent_affiliate_click_mutation() line 23 at RAISE
+2026-09-14T15:30:12.8498486Z  2026-09-14 15:18:14.345 UTC [174] STATEMENT:  UPDATE affiliate_clicks SET status = 'failed' WHERE id = $1
+2026-09-14T15:30:12.8499152Z  2026-09-14 15:18:14.359 UTC [174] ERROR:  affiliate_clicks is append-only
+2026-09-14T15:30:12.8499791Z  2026-09-14 15:18:14.359 UTC [174] CONTEXT:  PL/pgSQL function prevent_affiliate_click_mutation() line 23 at RAISE
+2026-09-14T15:30:12.8500520Z  2026-09-14 15:18:14.359 UTC [174] STATEMENT:  DELETE FROM affiliate_clicks WHERE id = $1
+2026-09-14T15:30:12.8501321Z  2026-09-14 15:18:14.398 UTC [174] ERROR:  duplicate key value violates unique constraint "uq_database_operation_one_active"
+2026-09-14T15:30:12.8502028Z  2026-09-14 15:18:14.398 UTC [174] DETAIL:  Key ((1))=(1) already exists.
+2026-09-14T15:30:12.8502468Z  2026-09-14 15:18:14.398 UTC [174] STATEMENT:  
+2026-09-14T15:30:12.8502865Z  	                    INSERT INTO database_operation_runs
+2026-09-14T15:30:12.8503349Z  	                        (id, requested_by_user_id, idempotency_key, operation_type,
+2026-09-14T15:30:12.8503883Z  	                         status, metadata_json, created_at, updated_at)
+2026-09-14T15:30:12.8504372Z  	                    VALUES ($1, $2, 'active-analyze', 'analyze', 'running',
+2026-09-14T15:30:12.8504808Z  	                            '{}'::json, $3, $3)
+2026-09-14T15:30:12.8505136Z  	                    
+2026-09-14T15:30:12.8505702Z  2026-09-14 15:18:14.401 UTC [174] ERROR:  duplicate key value violates unique constraint "uq_account_erasure_one_active"
+2026-09-14T15:30:12.8506541Z  2026-09-14 15:18:14.401 UTC [174] DETAIL:  Key (user_id)=(ff5ce907-bc86-4f7d-9c2a-109f23095ed2) already exists.
+2026-09-14T15:30:12.8507263Z  2026-09-14 15:18:14.401 UTC [174] STATEMENT:  
+2026-09-14T15:30:12.8507653Z  	                    INSERT INTO account_erasure_requests
+2026-09-14T15:30:12.8508238Z  	                        (id, user_id, requested_by_user_id, idempotency_key, status,
+2026-09-14T15:30:12.8508757Z  	                         reason, scheduled_for, created_at, updated_at)
+2026-09-14T15:30:12.8509263Z  	                    VALUES ($1, $2, $3, 'second-active-erasure', 'processing',
+2026-09-14T15:30:12.8509712Z  	                            'must conflict', $4, $4, $4)
+2026-09-14T15:30:12.8510066Z  	                    
+2026-09-14T15:30:12.8510666Z  2026-09-14 15:18:14.433 UTC [55] LOG:  checkpoint starting: immediate force wait
+2026-09-14T15:30:12.8511996Z  2026-09-14 15:18:14.872 UTC [55] LOG:  checkpoint complete: wrote 47 buffers (0.3%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.404 s, sync=0.010 s, total=0.439 s; sync files=14, longest=0.005 s, average=0.001 s; distance=8751 kB, estimate=8751 kB; lsn=0/21AA4C8, redo lsn=0/21AA470
+2026-09-14T15:30:12.8513312Z  2026-09-14 15:18:15.901 UTC [175] ERROR:  site_page_revisions is append-only
+2026-09-14T15:30:12.8514076Z  2026-09-14 15:18:15.901 UTC [175] CONTEXT:  PL/pgSQL function public.prevent_site_page_revision_mutation() line 11 at RAISE
+2026-09-14T15:30:12.8514894Z  2026-09-14 15:18:15.901 UTC [175] STATEMENT:  UPDATE site_page_revisions SET document_json=$1::JSON
+2026-09-14T15:30:12.8515716Z  2026-09-14 15:18:15.902 UTC [175] ERROR:  site_page_revisions is append-only
+2026-09-14T15:30:12.8516453Z  2026-09-14 15:18:15.902 UTC [175] CONTEXT:  PL/pgSQL function public.prevent_site_page_revision_mutation() line 11 at RAISE
+2026-09-14T15:30:12.8517343Z  2026-09-14 15:18:15.902 UTC [175] STATEMENT:  DELETE FROM site_page_revisions
+2026-09-14T15:30:12.8518030Z  2026-09-14 15:21:29.336 UTC [618] ERROR:  duplicate key value violates unique constraint "uq_community_metric"
+2026-09-14T15:30:12.8519039Z  2026-09-14 15:21:29.336 UTC [618] DETAIL:  Key (day, user_id, kind, target)=(2026-09-14, 74899b61-c917-48d3-a921-90da35e4fc0e, read, already-there) already exists.
+2026-09-14T15:30:12.8520387Z  2026-09-14 15:21:29.336 UTC [618] STATEMENT:  INSERT INTO community_metrics (id, day, user_id, kind, target, created_at) VALUES ($1::UUID, $2::VARCHAR, $3::UUID, $4::VARCHAR, $5::VARCHAR, $6::TIMESTAMP WITH TIME ZONE)
+2026-09-14T15:30:12.8521436Z  2026-09-14 15:23:14.304 UTC [55] LOG:  checkpoint starting: time
+2026-09-14T15:30:12.8522084Z  2026-09-14 15:24:23.767 UTC [1915] ERROR:  duplicate key value violates unique constraint "uq_guide_article_slug"
+2026-09-14T15:30:12.8523788Z  2026-09-14 15:24:23.767 UTC [1915] DETAIL:  Key (slug)=(narita-to-tokyo) already exists.
+2026-09-14T15:30:12.8525668Z  2026-09-14 15:24:23.767 UTC [1915] STATEMENT:  INSERT INTO guides_test_5309fb7d3dec470ab9378596f8d3387a.guide_articles (id, slug, kind, destination_id, valid_until, featured, display_order, is_active, version, created_at, updated_at) VALUES ($1::UUID, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::DATE, $6::BOOLEAN, $7::INTEGER, $8::BOOLEAN, $9::INTEGER, $10::TIMESTAMP WITH TIME ZONE, $11::TIMESTAMP WITH TIME ZONE)
+2026-09-14T15:30:12.8528008Z  2026-09-14 15:24:54.357 UTC [2338] ERROR:  guide_article_revisions is append-only
+2026-09-14T15:30:12.8528813Z  2026-09-14 15:24:54.357 UTC [2338] CONTEXT:  PL/pgSQL function public.prevent_guide_article_revision_mutation() line 11 at RAISE
+2026-09-14T15:30:12.8529680Z  2026-09-14 15:24:54.357 UTC [2338] STATEMENT:  UPDATE guide_article_revisions SET document_json=$1::JSON
+2026-09-14T15:30:12.8530366Z  2026-09-14 15:24:54.358 UTC [2338] ERROR:  guide_article_revisions is append-only
+2026-09-14T15:30:12.8531153Z  2026-09-14 15:24:54.358 UTC [2338] CONTEXT:  PL/pgSQL function public.prevent_guide_article_revision_mutation() line 11 at RAISE
+2026-09-14T15:30:12.8531915Z  2026-09-14 15:24:54.358 UTC [2338] STATEMENT:  DELETE FROM guide_article_revisions
+2026-09-14T15:30:12.8532713Z  2026-09-14 15:25:13.080 UTC [2372] ERROR:  duplicate key value violates unique constraint "ix_travel_hotspots_wikidata_item_id"
+2026-09-14T15:30:12.8533854Z  2026-09-14 15:25:13.080 UTC [2372] DETAIL:  Key (wikidata_item_id)=(Q999) already exists.
+2026-09-14T15:30:12.8535262Z  2026-09-14 15:25:13.080 UTC [2372] STATEMENT:  UPDATE travel_hotspots SET wikidata_item_id=$1::VARCHAR, review_reason=$2::VARCHAR, reviewed_at=$3::TIMESTAMP WITH TIME ZONE, reviewed_by_user_id=$4::UUID, updated_at=$5::TIMESTAMP WITH TIME ZONE WHERE travel_hotspots.id = $6::UUID
+2026-09-14T15:30:12.8536573Z  2026-09-14 15:25:29.334 UTC [2398] ERROR:  affiliate_clicks is append-only
+2026-09-14T15:30:12.8537625Z  2026-09-14 15:25:29.334 UTC [2398] CONTEXT:  PL/pgSQL function prevent_affiliate_click_mutation() line 23 at RAISE
+2026-09-14T15:30:12.8538613Z  2026-09-14 15:25:29.334 UTC [2398] STATEMENT:  UPDATE affiliate_clicks SET destination_summary=$1::VARCHAR WHERE affiliate_clicks.id = $2::UUID
+2026-09-14T15:30:12.8539408Z  2026-09-14 15:25:31.547 UTC [2410] ERROR:  usage_ledger is append-only
+2026-09-14T15:30:12.8540096Z  2026-09-14 15:25:31.547 UTC [2410] CONTEXT:  PL/pgSQL function prevent_usage_ledger_mutation() line 3 at RAISE
+2026-09-14T15:30:12.8540974Z  2026-09-14 15:25:31.547 UTC [2410] STATEMENT:  UPDATE usage_ledger SET summary=$1::VARCHAR WHERE usage_ledger.reference = $2::VARCHAR
+2026-09-14T15:30:12.8541927Z  2026-09-14 15:26:28.199 UTC [2525] ERROR:  new row for relation "hotspot_themes" violates check constraint "ck_hotspot_theme_kind"
+2026-09-14T15:30:12.8543325Z  2026-09-14 15:26:28.199 UTC [2525] DETAIL:  Failing row contains (ec94d7f3-c416-4739-9207-df01c2bb12ae, bogus-kind, festival, {}, [], 1, t, seed, 2026-09-14 15:26:28.0487+00, 2026-09-14 15:26:28.0487+00).
+2026-09-14T15:30:12.8544976Z  2026-09-14 15:26:28.199 UTC [2525] STATEMENT:  INSERT INTO hotspot_themes (id, slug, kind, names_json, months_json, display_order, is_active, source,  created_at, updated_at) VALUES (gen_random_uuid(), $1, $2, '{}', '[]', 1, true, $3,  now(), now())
+2026-09-14T15:30:12.8546390Z  2026-09-14 15:26:28.201 UTC [2525] ERROR:  new row for relation "hotspot_themes" violates check constraint "ck_hotspot_theme_source"
+2026-09-14T15:30:12.8547838Z  2026-09-14 15:26:28.201 UTC [2525] DETAIL:  Failing row contains (23775c42-cc43-4dc0-9bac-1bbd822623b8, bogus-source, shop, {}, [], 1, t, import, 2026-09-14 15:26:28.0487+00, 2026-09-14 15:26:28.0487+00).
+2026-09-14T15:30:12.8549496Z  2026-09-14 15:26:28.201 UTC [2525] STATEMENT:  INSERT INTO hotspot_themes (id, slug, kind, names_json, months_json, display_order, is_active, source,  created_at, updated_at) VALUES (gen_random_uuid(), $1, $2, '{}', '[]', 1, true, $3,  now(), now())
+2026-09-14T15:30:12.8550834Z  2026-09-14 15:26:28.202 UTC [2525] ERROR:  duplicate key value violates unique constraint "hotspot_themes_slug_key"
+2026-09-14T15:30:12.8551556Z  2026-09-14 15:26:28.202 UTC [2525] DETAIL:  Key (slug)=(sakura) already exists.
+2026-09-14T15:30:12.8552747Z  2026-09-14 15:26:28.202 UTC [2525] STATEMENT:  INSERT INTO hotspot_themes (id, slug, kind, names_json, months_json, display_order, is_active, source,  created_at, updated_at) VALUES (gen_random_uuid(), $1, $2, '{}', '[]', 1, true, $3,  now(), now())
+2026-09-14T15:30:12.8554160Z  2026-09-14 15:26:28.254 UTC [2526] ERROR:  new row for relation "catalog_review_runs" violates check constraint "ck_catalog_run_mode"
+2026-09-14T15:30:12.8556405Z  2026-09-14 15:26:28.254 UTC [2526] DETAIL:  Failing row contains (b9a53929-863b-4f5a-98a2-78ffe283c768, e4796a81-ebab-4676-8c3a-8ce33545837d, 9711596694f44ced8f9f6cd5eabcc1e3, 0000000000000000000000000000000000000000000000000000000000000000, {"mode": "enrich_merchants", "scope": "foods"}, enrich_merchants, enrich_merchants, completed, fixture, 1, {}, {}, null, null, null, null, null, 2026-09-14 15:26:28.253234+00, 2026-09-14 15:26:28.253236+00).
+2026-09-14T15:30:12.8560486Z  2026-09-14 15:26:28.254 UTC [2526] STATEMENT:  INSERT INTO catalog_review_runs (id, actor_user_id, idempotency_key, request_hash, request_json, mode, phase, status, model, version, usage_json, result_json, error_code, error_message, lease_token, lease_until, completed_at, created_at, updated_at) VALUES ($1::UUID, $2::UUID, $3::VARCHAR, $4::VARCHAR, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::VARCHAR, $9::VARCHAR, $10::INTEGER, $11::JSON, $12::JSON, $13::VARCHAR, $14::VARCHAR, $15::VARCHAR, $16::TIMESTAMP WITH TIME ZONE, $17::TIMESTAMP WITH TIME ZONE, $18::TIMESTAMP WITH TIME ZONE, $19::TIMESTAMP WITH TIME ZONE)
+2026-09-14T15:30:12.8563264Z  2026-09-14 15:26:28.270 UTC [2526] ERROR:  new row for relation "catalog_review_runs" violates check constraint "ck_catalog_run_mode"
+2026-09-14T15:30:12.8565562Z  2026-09-14 15:26:28.270 UTC [2526] DETAIL:  Failing row contains (7188bfc1-ece9-484e-944f-7b94beb1e7aa, a653001e-ec89-4343-b555-3e73dbb44a3b, 91eecdfc3e594ef4aadbf7e26abc66c5, 0000000000000000000000000000000000000000000000000000000000000000, {"mode": "bogus", "scope": "foods"}, bogus, bogus, completed, fixture, 1, {}, {}, null, null, null, null, null, 2026-09-14 15:26:28.270539+00, 2026-09-14 15:26:28.270541+00).
+2026-09-14T15:30:12.8569510Z  2026-09-14 15:26:28.270 UTC [2526] STATEMENT:  INSERT INTO catalog_review_runs (id, actor_user_id, idempotency_key, request_hash, request_json, mode, phase, status, model, version, usage_json, result_json, error_code, error_message, lease_token, lease_until, completed_at, created_at, updated_at) VALUES ($1::UUID, $2::UUID, $3::VARCHAR, $4::VARCHAR, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::VARCHAR, $9::VARCHAR, $10::INTEGER, $11::JSON, $12::JSON, $13::VARCHAR, $14::VARCHAR, $15::VARCHAR, $16::TIMESTAMP WITH TIME ZONE, $17::TIMESTAMP WITH TIME ZONE, $18::TIMESTAMP WITH TIME ZONE, $19::TIMESTAMP WITH TIME ZONE)
+2026-09-14T15:30:12.8572555Z  2026-09-14 15:26:28.295 UTC [2526] ERROR:  new row for relation "catalog_review_runs" violates check constraint "ck_catalog_run_mode"
+2026-09-14T15:30:12.8574797Z  2026-09-14 15:26:28.295 UTC [2526] DETAIL:  Failing row contains (0d12ddbc-603f-4355-9ad7-1c0fc5568f2b, 85d7d8f7-926e-433b-afc9-27555f5ee67f, 9f31b3006a55441bb5ed6fefeafd0677, 0000000000000000000000000000000000000000000000000000000000000000, {"mode": "enrich_merchants", "scope": "foods"}, enrich_merchants, enrich_merchants, completed, fixture, 1, {}, {}, null, null, null, null, null, 2026-09-14 15:26:28.294484+00, 2026-09-14 15:26:28.294487+00).
+2026-09-14T15:30:12.8579088Z  2026-09-14 15:26:28.295 UTC [2526] STATEMENT:  INSERT INTO catalog_review_runs (id, actor_user_id, idempotency_key, request_hash, request_json, mode, phase, status, model, version, usage_json, result_json, error_code, error_message, lease_token, lease_until, completed_at, created_at, updated_at) VALUES ($1::UUID, $2::UUID, $3::VARCHAR, $4::VARCHAR, $5::JSON, $6::VARCHAR, $7::VARCHAR, $8::VARCHAR, $9::VARCHAR, $10::INTEGER, $11::JSON, $12::JSON, $13::VARCHAR, $14::VARCHAR, $15::VARCHAR, $16::TIMESTAMP WITH TIME ZONE, $17::TIMESTAMP WITH TIME ZONE, $18::TIMESTAMP WITH TIME ZONE, $19::TIMESTAMP WITH TIME ZONE)
+2026-09-14T15:30:12.8581916Z  2026-09-14 15:26:28.506 UTC [2528] ERROR:  check constraint "ck_travel_hotspot_review_status" of relation "travel_hotspots" is violated by some row
+2026-09-14T15:30:12.8583249Z  2026-09-14 15:26:28.506 UTC [2528] STATEMENT:  ALTER TABLE travel_hotspots ADD CONSTRAINT ck_travel_hotspot_review_status CHECK (review_status IN ('pending', 'approved', 'rejected', 'disabled'))
+2026-09-14T15:30:12.8584433Z  2026-09-14 15:27:12.880 UTC [2637] ERROR:  duplicate key value violates unique constraint "uq_collection_system_role"
+2026-09-14T15:30:12.8585382Z  2026-09-14 15:27:12.880 UTC [2637] DETAIL:  Key (user_id, system_role)=(d3ff5aca-ece3-40c6-a058-24bf4d6c6841, inbox) already exists.
+2026-09-14T15:30:12.8586771Z  2026-09-14 15:27:12.880 UTC [2637] STATEMENT:  INSERT INTO community_collections (id, user_id, name, system_role, created_at, updated_at) VALUES ($1::UUID, $2::UUID, $3::VARCHAR, $4::VARCHAR, $5::TIMESTAMP WITH TIME ZONE, $6::TIMESTAMP WITH TIME ZONE)
+2026-09-14T15:30:12.8588353Z  2026-09-14 15:27:13.001 UTC [2638] ERROR:  duplicate key value violates unique constraint "uq_collection_system_role"
+2026-09-14T15:30:12.8589246Z  2026-09-14 15:27:13.001 UTC [2638] DETAIL:  Key (user_id, system_role)=(da6edc32-d742-4170-b6af-cba28cd38298, inbox) already exists.
+2026-09-14T15:30:12.8590640Z  2026-09-14 15:27:13.001 UTC [2638] STATEMENT:  INSERT INTO community_collections (id, user_id, name, system_role, created_at, updated_at) VALUES ($1::UUID, $2::UUID, $3::VARCHAR, $4::VARCHAR, $5::TIMESTAMP WITH TIME ZONE, $6::TIMESTAMP WITH TIME ZONE)
+2026-09-14T15:30:12.8591818Z  2026-09-14 15:27:28.997 UTC [2836] ERROR:  site_page_revisions is append-only
+2026-09-14T15:30:12.8592753Z  2026-09-14 15:27:28.997 UTC [2836] CONTEXT:  PL/pgSQL function public.prevent_site_page_revision_mutation() line 11 at RAISE
+2026-09-14T15:30:12.8593573Z  2026-09-14 15:27:28.997 UTC [2836] STATEMENT:  UPDATE site_page_revisions SET document_json=$1::JSON
+2026-09-14T15:30:12.8594212Z  2026-09-14 15:27:28.999 UTC [2836] ERROR:  site_page_revisions is append-only
+2026-09-14T15:30:12.8594960Z  2026-09-14 15:27:28.999 UTC [2836] CONTEXT:  PL/pgSQL function public.prevent_site_page_revision_mutation() line 11 at RAISE
+2026-09-14T15:30:12.8595708Z  2026-09-14 15:27:28.999 UTC [2836] STATEMENT:  DELETE FROM site_page_revisions
+2026-09-14T15:30:12.8597239Z  2026-09-14 15:27:51.880 UTC [55] LOG:  checkpoint complete: wrote 6423 buffers (39.2%); 0 WAL file(s) added, 0 removed, 28 recycled; write=269.737 s, sync=6.688 s, total=277.576 s; sync files=112455, longest=0.039 s, average=0.001 s; distance=466721 kB, estimate=466721 kB; lsn=0/2D5B01C0, redo lsn=0/1E972AA8
+2026-09-14T15:30:12.8598725Z  2026-09-14 15:28:14.521 UTC [55] LOG:  checkpoint starting: time
+2026-09-14T15:30:12.8605965Z Stop and remove container: d990e02ae88d4e7ea626799a129add71_postgres17alpine_e21c59
+2026-09-14T15:30:12.8612698Z ##[command]/usr/bin/docker rm --force 9ccf36b83df7713f6d9d26a00cf834793193462cdb382b3261d41b8cd6b23315
+2026-09-14T15:30:13.0321430Z 9ccf36b83df7713f6d9d26a00cf834793193462cdb382b3261d41b8cd6b23315
+2026-09-14T15:30:13.0338756Z Print service container logs: 63c7a59d257e4fefaf4872f708cbfdd7_redis74alpine_1e0e28
+2026-09-14T15:30:13.0339899Z ##[command]/usr/bin/docker logs --details ad70070ba986d83b0a51abc23d767716401c3586223cde975a5f52e7223fd768
+2026-09-14T15:30:13.0447471Z  1:C 14 Sep 2026 15:16:59.702 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+2026-09-14T15:30:13.0449002Z  1:C 14 Sep 2026 15:16:59.702 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+2026-09-14T15:30:13.0449417Z  1:C 14 Sep 2026 15:16:59.702 * Redis version=7.4.11, bits=64, commit=00000000, modified=0, pid=1, just started
+2026-09-14T15:30:13.0450117Z  1:C 14 Sep 2026 15:16:59.702 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+2026-09-14T15:30:13.0450735Z  1:M 14 Sep 2026 15:16:59.703 * monotonic clock: POSIX clock_gettime
+2026-09-14T15:30:13.0451082Z  1:M 14 Sep 2026 15:16:59.703 * Running mode=standalone, port=6379.
+2026-09-14T15:30:13.0451409Z  1:M 14 Sep 2026 15:16:59.703 * Server initialized
+2026-09-14T15:30:13.0451696Z  1:M 14 Sep 2026 15:16:59.703 * Ready to accept connections tcp
+2026-09-14T15:30:13.0452082Z  1:M 14 Sep 2026 15:25:30.464 * 100 changes in 300 seconds. Saving...
+2026-09-14T15:30:13.0452389Z  1:M 14 Sep 2026 15:25:30.464 * Background saving started by pid 16
+2026-09-14T15:30:13.0452741Z  16:C 14 Sep 2026 15:25:30.468 * DB saved on disk
+2026-09-14T15:30:13.0453075Z  16:C 14 Sep 2026 15:25:30.468 * Fork CoW for RDB: current 0 MB, peak 0 MB, average 0 MB
+2026-09-14T15:30:13.0453486Z  1:M 14 Sep 2026 15:25:30.565 * Background saving terminated with success
+2026-09-14T15:30:13.0464745Z Stop and remove container: 63c7a59d257e4fefaf4872f708cbfdd7_redis74alpine_1e0e28
+2026-09-14T15:30:13.0465414Z ##[command]/usr/bin/docker rm --force ad70070ba986d83b0a51abc23d767716401c3586223cde975a5f52e7223fd768
+2026-09-14T15:30:13.1533915Z ad70070ba986d83b0a51abc23d767716401c3586223cde975a5f52e7223fd768
+2026-09-14T15:30:13.1551865Z Remove container network: github_network_f79bb5b0d06043bfaa721907cca67e6b
+2026-09-14T15:30:13.1555142Z ##[command]/usr/bin/docker network rm github_network_f79bb5b0d06043bfaa721907cca67e6b
+2026-09-14T15:30:13.2392158Z github_network_f79bb5b0d06043bfaa721907cca67e6b
+2026-09-14T15:30:13.2453961Z Cleaning up orphan processes

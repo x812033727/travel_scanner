@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">老照片修復流程 / Old photo restoration workflow</title>
+  <desc id="desc">由左到右五個步驟。掃描：決定後面的上限，在螢幕上看設 96 到 200 dpi，要列印設 200 到 300 dpi，之後要放大兩倍就設 600 dpi。修瑕疵：去刮痕、灰塵與噪點，原始資訊還在，最接近修復。放大：補出新的像素，細節是生成的，固定放大 2 倍比較，先修瑕疵再放大。上色：AI 自動指派顏色，是推測不是還原，褪色照片更不準，成品要標注 AI 上色版。保存：原始掃描檔、修復版與上色版分開存，兩處備份其中一處離線。兩條橫幅提醒：原始掃描檔全程不覆蓋；上傳雲端前先看保留期限，本機算圖檔案不離開電腦，雲端算圖會把照片送到服務商的伺服器。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">老照片修復流程：掃描 → 修瑕疵 → 放大 → 上色 → 保存</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Scan, repair, upscale, colorize, archive</text>
+
+  <!-- column 1: 掃描 -->
+  <rect x="60" y="125" width="260" height="360" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="190" y="180" font-size="28" font-weight="bold" fill="#2F6F9F" text-anchor="middle">掃描</text>
+  <line x1="90" y1="202" x2="290" y2="202" stroke="#2F6F9F" stroke-width="2"/>
+  <text x="190" y="248" font-size="16" fill="#102A2B" text-anchor="middle">決定後面的上限</text>
+  <text x="190" y="288" font-size="16" fill="#102A2B" text-anchor="middle">螢幕看 96 到 200 dpi</text>
+  <text x="190" y="328" font-size="16" fill="#102A2B" text-anchor="middle">要列印 200 到 300 dpi</text>
+  <text x="190" y="368" font-size="16" fill="#102A2B" text-anchor="middle">放大兩倍設 600 dpi</text>
+  <text x="190" y="408" font-size="16" fill="#5C6B6B" text-anchor="middle">沒掃描器用手機掃</text>
+  <text x="190" y="448" font-size="16" fill="#5C6B6B" text-anchor="middle">先存一份原始檔</text>
+
+  <!-- column 2: 修瑕疵 -->
+  <rect x="365" y="125" width="260" height="360" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="495" y="180" font-size="28" font-weight="bold" fill="#0D6B68" text-anchor="middle">修瑕疵</text>
+  <line x1="395" y1="202" x2="595" y2="202" stroke="#0D6B68" stroke-width="2"/>
+  <text x="495" y="248" font-size="16" fill="#102A2B" text-anchor="middle">去刮痕、去灰塵</text>
+  <text x="495" y="288" font-size="16" fill="#102A2B" text-anchor="middle">去噪點與顆粒</text>
+  <text x="495" y="328" font-size="16" fill="#102A2B" text-anchor="middle">原始資訊還在</text>
+  <text x="495" y="368" font-size="16" fill="#102A2B" text-anchor="middle">最接近「修復」</text>
+  <text x="495" y="408" font-size="16" fill="#5C6B6B" text-anchor="middle">排在放大之前</text>
+  <text x="495" y="448" font-size="16" fill="#5C6B6B" text-anchor="middle">從複本開始做</text>
+
+  <!-- column 3: 放大 -->
+  <rect x="670" y="125" width="260" height="360" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="180" font-size="28" font-weight="bold" fill="#0D6B68" text-anchor="middle">放大</text>
+  <line x1="700" y1="202" x2="900" y2="202" stroke="#0D6B68" stroke-width="2"/>
+  <text x="800" y="248" font-size="16" fill="#102A2B" text-anchor="middle">補出新的像素</text>
+  <text x="800" y="288" font-size="16" fill="#102A2B" text-anchor="middle">細節是生成的</text>
+  <text x="800" y="328" font-size="16" fill="#102A2B" text-anchor="middle">不是底片上原有</text>
+  <text x="800" y="368" font-size="16" fill="#102A2B" text-anchor="middle">固定放大 2 倍比較</text>
+  <text x="800" y="408" font-size="16" fill="#5C6B6B" text-anchor="middle">先看背景直線</text>
+  <text x="800" y="448" font-size="16" fill="#5C6B6B" text-anchor="middle">再看臉與文字</text>
+
+  <!-- column 4: 上色 -->
+  <rect x="975" y="125" width="260" height="360" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1105" y="180" font-size="28" font-weight="bold" fill="#D97A2B" text-anchor="middle">上色</text>
+  <line x1="1005" y1="202" x2="1205" y2="202" stroke="#D97A2B" stroke-width="2"/>
+  <text x="1105" y="248" font-size="16" fill="#102A2B" text-anchor="middle">AI 自動指派顏色</text>
+  <text x="1105" y="288" font-size="16" fill="#B8442D" text-anchor="middle">是推測不是還原</text>
+  <text x="1105" y="328" font-size="16" fill="#102A2B" text-anchor="middle">褪色照片更不準</text>
+  <text x="1105" y="368" font-size="16" fill="#102A2B" text-anchor="middle">先調亮度與對比</text>
+  <text x="1105" y="408" font-size="16" fill="#5C6B6B" text-anchor="middle">標注「AI 上色版」</text>
+  <text x="1105" y="448" font-size="16" fill="#5C6B6B" text-anchor="middle">黑白原檔要留著</text>
+
+  <!-- column 5: 保存 -->
+  <rect x="1280" y="125" width="260" height="360" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="1410" y="180" font-size="28" font-weight="bold" fill="#2E7D5B" text-anchor="middle">保存</text>
+  <line x1="1310" y1="202" x2="1510" y2="202" stroke="#2E7D5B" stroke-width="2"/>
+  <text x="1410" y="248" font-size="16" fill="#102A2B" text-anchor="middle">原始掃描檔</text>
+  <text x="1410" y="288" font-size="16" fill="#102A2B" text-anchor="middle">修復版另存</text>
+  <text x="1410" y="328" font-size="16" fill="#102A2B" text-anchor="middle">上色版標注清楚</text>
+  <text x="1410" y="368" font-size="16" fill="#102A2B" text-anchor="middle">檔名寫工具與日期</text>
+  <text x="1410" y="408" font-size="16" fill="#5C6B6B" text-anchor="middle">兩處備份</text>
+  <text x="1410" y="448" font-size="16" fill="#5C6B6B" text-anchor="middle">其中一處離線</text>
+
+  <!-- arrows -->
+  <line x1="328" y1="320" x2="357" y2="320" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="633" y1="320" x2="662" y2="320" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="938" y1="320" x2="967" y2="320" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1243" y1="320" x2="1272" y2="320" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- band 1 -->
+  <rect x="60" y="555" width="1480" height="100" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="597" font-size="20" font-weight="bold" fill="#0D6B68" text-anchor="middle">原始掃描檔全程不覆蓋</text>
+  <text x="800" y="633" font-size="17" fill="#102A2B" text-anchor="middle">每一步都從複本開始，修復版與上色版各自另存，檔名看得出用了哪個工具</text>
+
+  <!-- band 2 -->
+  <rect x="60" y="685" width="1480" height="100" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="800" y="727" font-size="20" font-weight="bold" fill="#B8442D" text-anchor="middle">上傳雲端前，先讀隱私政策裡的保留期限</text>
+  <text x="800" y="763" font-size="17" fill="#102A2B" text-anchor="middle">本機算圖檔案不離開你的電腦；雲端算圖會把家族照片送到服務商的伺服器</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,437 @@
+{
+  "slug": "ai-build-line-bot-tutorial",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 AI 幫你做 LINE 機器人：從零到上線",
+      "description": "不自己寫程式，也能做出一個會回話的 LINE 機器人 AI（LINE 官方帳號機器人）。這篇走完全部關卡：建官方帳號並啟用 Messaging API、取得 channel access token 與 channel secret、讓 AI 產生回聲機器人、用通道工具在本機測試、填 Webhook URL 按 Verify、關掉後台自動回應、部署上線，並附台灣方案的免費訊息則數與四個常見錯誤。",
+      "hero": {
+        "src": "/guides/ai-build-line-bot-tutorial/hero.jpg",
+        "alt": "插圖：兩個抽象對話框透過箭頭連到一台伺服器圖形，再繞回對話框，形成一個來回的迴圈",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "台灣讀者最熟的平台是 LINE，官方帳號接上 Messaging API 就能變成會回話的機器人。程式碼可以整段交給 AI 代理，真正卡住人的是設定：帳號怎麼開、金鑰在哪拿、webhook 為什麼要 HTTPS 公開網址、簽章怎麼驗。搜「LINE 機器人 AI」找到的教學，多半也卡在同一個地方。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你做一個回聲機器人：你傳什麼，它就回什麼，通了再加小功能。過程分成建帳號、拿金鑰、本機測試、部署上線四段，每段都有能自己確認的檢查點。"
+        },
+        {
+          "type": "link",
+          "text": "Vibe coding：不會寫程式也能做出第一個網站",
+          "url": "https://mokaair.com/zh-TW/life/vibe-coding-first-website"
+        },
+        {
+          "type": "heading",
+          "text": "先分清楚官方帳號、channel 與 webhook",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE 官方帳號是使用者加為好友的那個帳號，由 LINE Official Account Manager 管理。channel（頻道）是程式和平台之間的通道，設定都掛在它身上；依官方文件，要先建官方帳號、再替它啟用 Messaging API，channel 才會產生。"
+        },
+        {
+          "type": "paragraph",
+          "text": "webhook 是平台通知你的方式：使用者傳訊息或加好友時，平台會對你登記的網址發一個 HTTP POST 請求，內容是事件物件，標頭帶著簽章。伺服器驗簽章、讀事件，再用裡面的 reply token 回覆。"
+        },
+        {
+          "type": "heading",
+          "text": "建官方帳號，再啟用 Messaging API",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這一步改過。官方文件寫明自 2024 年 9 月 4 日起，不能直接在 LINE Developers Console 建 Messaging API channel。現在要先註冊 Business ID、填申請表開帳號，再到 Official Account Manager 啟用 Messaging API。"
+        },
+        {
+          "type": "paragraph",
+          "text": "啟用時要選一個 provider 管理這個帳號。官方提醒 provider 一旦指定就不能更換或解除，一個開發者最多建 10 個；練習用的自己開一個，別跟公司的混在一起。"
+        },
+        {
+          "type": "heading",
+          "text": "兩把金鑰：channel access token 與 channel secret",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "channel access token 是程式呼叫 Messaging API 的憑證，放在 Authorization 標頭。官方列出四種，建議用可自訂到期時間的 v2.1，最長 30 天；另有 15 分鐘的 stateless、30 天的短期，以及不會過期的長期 token。"
+        },
+        {
+          "type": "paragraph",
+          "text": "channel secret 在 Basic settings 分頁，是驗簽章用的雜湊金鑰。token 代表「我有資格發訊息」，secret 確認「這請求真的來自 LINE 平台」，兩者都別寫死在程式裡。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "金鑰放環境變數，不要貼進對話",
+          "text": "請 AI 產生程式時，讓它一律從環境變數讀金鑰，別把真正的值貼進對話，也別提交到版本庫。channel secret 一旦重新發行舊的立刻失效，本來會過的簽章驗證會整批失敗。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜專案資料與操作安全",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-project-data-safety"
+        },
+        {
+          "type": "heading",
+          "text": "讓 AI 產生一個回聲機器人",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這支程式很短，可以整段交給 AI 代理，重點是把邊界講清楚：用哪個官方 SDK、金鑰從哪讀、回什麼狀態碼。Node.js 用 @line/bot-sdk，官方寫需要 Node.js 22 以上；Python 用 line-bot-sdk，需要 Python 3.10 以上。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "給 AI 代理的提示範例：環境那一行換成你自己的選擇",
+          "code": "請幫我做一個 LINE 回聲機器人，使用者傳什麼文字，它就回同樣的文字。\n\n環境：Node.js，使用官方 SDK @line/bot-sdk 加 Express。\n金鑰：從環境變數 CHANNEL_ACCESS_TOKEN 與 CHANNEL_SECRET 讀取，不要寫死在程式裡，也不要印出來。\n路由：POST /callback 當作 webhook 端點。\n安全：用 SDK 的 middleware 驗證 x-line-signature 標頭，驗不過就回 400。\n回應：webhook 一律先回 HTTP 200，只處理 type 是 message 且 message.type 是 text 的事件，其他忽略。\n回覆：用事件裡的 replyToken 呼叫 Reply API 回一則文字訊息。\n\n另外請給我 package.json、.gitignore（要包含 .env），以及在本機啟動的步驟。\n不要產生任何金鑰的實際值，也不要把金鑰寫進範例檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "產出大致長成下面這樣，節錄自官方 SDK 的說明。看懂三件事就夠：middleware 驗簽章、不是文字訊息就忽略、回覆時把文字原樣送回。"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "官方 Node.js SDK 的回聲處理（節錄自 line-bot-sdk-nodejs 的 Basic Usage）",
+          "code": "app.post('/callback', line.middleware(config), (req, res) => {\n  Promise.all(req.body.events.map(handleEvent))\n    .then((result) => res.json(result))\n    .catch(() => res.status(500).end());\n});\n\nfunction handleEvent(event) {\n  if (event.type !== 'message' || event.message.type !== 'text') {\n    return Promise.resolve(null);\n  }\n  return client.replyMessage({\n    replyToken: event.replyToken,\n    messages: [{ type: 'text', text: event.message.text }],\n  });\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "讓代理自己跑安裝指令前，先確認它的執行範圍限制在這個專案資料夾裡。程式到手先在本機跑起來，看有沒有印出監聽的埠號。"
+        },
+        {
+          "type": "link",
+          "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-sandbox"
+        },
+        {
+          "type": "link",
+          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+        },
+        {
+          "type": "heading",
+          "text": "本機測試：把本機開到公網",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE 平台送 webhook 的對象必須是 HTTPS 網址，憑證要由瀏覽器普遍信任的公開憑證機構簽發，自簽的不行，還要支援 TLS 1.2 或 1.3。所以本機測試需要通道工具，把埠對應成公開的 HTTPS 網址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件沒指定通道工具，任何能給 HTTPS 公開網址的服務都行，ngrok 是常見的一種。免費通道網址通常重開就換，換了要回 Console 重填 Webhook URL，這是最常見的「昨天還好好的」。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-build-line-bot-tutorial/diagram-1.svg",
+          "alt": "流程圖：訊息從使用者的 LINE 送到 LINE 平台，再以 HTTPS 送到你的 webhook 伺服器，伺服器驗簽章並回 200，最後用 reply token 回覆",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左看到右：每一格上面是誰在做事，下面是這一格要檢查的東西；卡住時先判斷斷在哪一格。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "填 Webhook URL、按 Verify，再關掉自動回應",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Console 打開 channel、切到 Messaging API 分頁，於 Webhook URL 按 Edit 填網址（結尾帶程式裡的路徑），按 Update 再按 Verify。Verify 送來的請求不含事件，只有 destination 和空的 events 陣列，伺服器要回 200 才顯示 Success。之後記得打開 Use webhook。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一半設定在 Official Account Manager：進「設定」的「回應設定」，可切換「聊天機器人」與「聊天」模式，也能開關「加入好友的歡迎訊息」與「自動回應訊息」。官方建議第一次做機器人時兩項都停用，否則使用者會同時收到後台與程式的回覆。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "步驟",
+            "在哪裡做",
+            "檢查什麼"
+          ],
+          "rows": [
+            [
+              "1. 建官方帳號",
+              "Business ID 與申請表",
+              "Manager 裡看得到帳號"
+            ],
+            [
+              "2. 啟用 Messaging API",
+              "Manager",
+              "選好的 provider 下出現 channel"
+            ],
+            [
+              "3. 取得 channel secret",
+              "Console／Basic settings",
+              "值已進環境變數"
+            ],
+            [
+              "4. 發行 access token",
+              "Console／Messaging API",
+              "同上，記下到期時間"
+            ],
+            [
+              "5. 本機啟動、開通道",
+              "你的電腦",
+              "拿到 HTTPS 公開網址"
+            ],
+            [
+              "6. 填 Webhook URL 並 Verify",
+              "Console／Messaging API",
+              "Success，Use webhook 已開"
+            ],
+            [
+              "7. 關歡迎與自動回應",
+              "Manager／回應設定",
+              "兩項都顯示停用"
+            ],
+            [
+              "8. 加好友實測",
+              "分頁上的 QR code",
+              "傳一句話，回同一句"
+            ]
+          ],
+          "caption": "做一個 LINE 機器人的八個關卡與各自的檢查點（2026 年 9 月查證）"
+        },
+        {
+          "type": "heading",
+          "text": "通了之後，再加一個小功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "回聲機器人會動之後，加功能只是改一個函式。挑不需要資料庫的開始，例如關鍵字回覆、報日期、單位換算，並要求 AI 只改事件處理那段。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "加一個小功能的提示範例：先圈出不准動的部分",
+          "code": "在現有的回聲機器人上加一個功能，其他部分不要動：\n\n使用者傳「今天」時，回覆今天的日期，時區用 Asia/Taipei。\n使用者傳的文字以「換算」開頭、後面接一個數字加單位（公里或公尺）時，回覆換算結果。\n其他文字維持原本的回聲行為。\n\n不要修改簽章驗證的 middleware，也不要改 webhook 回 HTTP 200 的那一段。\n改完請告訴我你改了哪幾行，以及我要怎麼在本機分別測這兩種輸入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改完自己看一遍再測。最值得檢查的是：金鑰有沒有被寫進檔案、使用者傳來的內容會不會被當成指令執行、例外時伺服器會不會停掉。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+        },
+        {
+          "type": "heading",
+          "text": "部署上線",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "通道工具只適合測試。要一直在線，程式得跑在常開的機器上並有固定 HTTPS 網址：租一台 VPS 或雲端主機、把網域指過去、申請憑證（官方文件點名 Let's Encrypt 這類免費憑證可用）、讓程式背景常駐，最後換正式網址再 Verify。"
+        },
+        {
+          "type": "paragraph",
+          "text": "部署前先把程式放進版本控制，環境變數檔留在本機；換網址後一定要重新 Verify 並自己傳一句話確認。"
+        },
+        {
+          "type": "link",
+          "text": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
+          "url": "https://mokaair.com/zh-TW/life/deploy-ai-built-site-to-vps"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+        },
+        {
+          "type": "heading",
+          "text": "費用：官方帳號方案與訊息則數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Messaging API 本身不另外收費，花錢的是方案的訊息則數。台灣分輕用量、中用量、高用量，每月免費訊息分別是 200 則、3,000 則、6,000 則。依 LINE Biz-Solutions 台灣 2026 年 9 月 1 日公告，自 2026 年 11 月 1 日起中用量月費由 800 元調為 1,000 元、高用量由 1,200 元調為 1,400 元（未稅），免費則數不變。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "固定月費（未稅）",
+            "每月免費訊息"
+          ],
+          "rows": [
+            [
+              "輕用量",
+              "0 元",
+              "200 則"
+            ],
+            [
+              "中用量",
+              "800 元，11 月起 1,000 元",
+              "3,000 則"
+            ],
+            [
+              "高用量",
+              "1,200 元，11 月起 1,400 元",
+              "6,000 則"
+            ]
+          ],
+          "caption": "台灣 LINE 官方帳號方案（2026 年 9 月 14 日查 LINE Biz-Solutions 官網，以官網公告為準）"
+        },
+        {
+          "type": "paragraph",
+          "text": "對回聲機器人有個好消息：依官方計費說明，只有推播、群發、分眾這類主動發送才計入則數，用 reply token 回覆的 Reply API 不計費，台灣官網也把它列為免付費訊息。只在使用者開口時回話的機器人，輕用量就夠。"
+        },
+        {
+          "type": "heading",
+          "text": "四個最常見的卡關",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "簽章驗證失敗：多半是驗證前就把 body 反序列化或重排版。要拿原始字串算 HMAC-SHA256，編碼固定 UTF-8；用錯 channel 的 secret 也會失敗。",
+            "webhook 沒回 200：20x 以外都算錯誤，超過 2 秒沒回應算逾時。先回 200 再處理事件。Console 打開錯誤統計後，可在 Webhook errors 分頁看出原因。",
+            "reply token 逾時：只能用一次，要在收到 webhook 後 1 分鐘內用掉，超過會拿到 Invalid reply token；一次最多帶 5 則訊息物件。",
+            "加好友後沒反應：先確認 Use webhook 開著、Verify 是 Success、通道網址沒換，再確認後台自動回應已停用，不然那句其實是後台送的。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "一次只改一件事",
+          "text": "Verify 顯示 Success 代表 LINE 找得到你的伺服器；日誌出現事件代表請求真的送到；收到回覆代表 reply token 用成功。卡住時先判斷斷在哪段，再改那一段。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code 入門：認識工具與第一條學習路線",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-getting-started"
+        }
+      ],
+      "sources": [
+        {
+          "title": "LINE Developers：Get started with the Messaging API（官方文件）",
+          "url": "https://developers.line.biz/en/docs/messaging-api/getting-started/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：Build a bot（官方文件）",
+          "url": "https://developers.line.biz/en/docs/messaging-api/building-bot/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：Receive messages (webhook)（官方文件）",
+          "url": "https://developers.line.biz/en/docs/messaging-api/receiving-messages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：Verify webhook signature（官方文件）",
+          "url": "https://developers.line.biz/en/docs/messaging-api/verify-webhook-signature/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：Verify webhook URL（官方文件）",
+          "url": "https://developers.line.biz/en/docs/messaging-api/verify-webhook-url/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：Messaging API reference（官方 API 參考）",
+          "url": "https://developers.line.biz/en/reference/messaging-api/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：Channel access token（官方文件）",
+          "url": "https://developers.line.biz/en/docs/basics/channel-access-token/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：Messaging API pricing（官方文件）",
+          "url": "https://developers.line.biz/en/docs/messaging-api/pricing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：SSL/TLS specification of the webhook source（官方文件）",
+          "url": "https://developers.line.biz/en/docs/messaging-api/ssl-tls-spec-of-the-webhook-source/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：Check webhook error causes and statistics（官方文件）",
+          "url": "https://developers.line.biz/en/docs/messaging-api/check-webhook-error-statistics/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：LINE Messaging API SDKs（官方文件）",
+          "url": "https://developers.line.biz/en/docs/messaging-api/line-bot-sdk/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：Messaging API development guidelines（官方文件）",
+          "url": "https://developers.line.biz/en/docs/messaging-api/development-guidelines/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Developers：LINE Developers Console overview（官方文件）",
+          "url": "https://developers.line.biz/en/docs/line-developers-console/overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "line-bot-sdk-nodejs：官方 Node.js SDK 原始碼與說明",
+          "url": "https://github.com/line/line-bot-sdk-nodejs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "line-bot-sdk-nodejs：Basic Usage（官方 SDK 文件）",
+          "url": "https://line.github.io/line-bot-sdk-nodejs/getting-started/basic-usage.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "line-bot-sdk-python：官方 Python SDK 原始碼與說明",
+          "url": "https://github.com/line/line-bot-sdk-python",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Biz-Solutions 台灣：LINE 官方帳號（方案與費用說明）",
+          "url": "https://tw.linebiz.com/service/account-solutions/line-official-account/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Biz-Solutions 台灣：2026 年 LINE 官方帳號方案價格調整（官方公告）",
+          "url": "https://tw.linebiz.com/column/LINEOA-2026-Price-Plan/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Biz-Solutions 台灣：官方帳號操作手冊 - 自動回應訊息與回應設定",
+          "url": "https://tw.linebiz.com/manual/line-official-account/oa-manager-autoreply/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE Biz-Solutions 台灣：官方帳號操作手冊 - 聊天",
+          "url": "https://tw.linebiz.com/manual/line-official-account/oa-manager-chatting/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "slug": "midjourney-getting-started",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Midjourney 入門：網頁版、參數與訂閱",
+      "description": "Midjourney 在網頁版與 Discord 都沒有免費試用，要先訂閱才畫得到第一張圖。這篇依 2026 年 9 月當天的官方文件，寫清楚註冊方式、Basic 到 Mega 四個方案的月費年費與 Fast GPU 時數、Fast 與 Relax 與 Turbo 各吃多少分鐘、拿到四張圖後怎麼用 Vary、Upscale、Pan、Zoom Out 修改與下載、常用參數寫法、預設版本 V8.2，以及條款裡的所有權、年營收 100 萬美元門檻與 Stealth 屬於哪個方案。",
+      "hero": {
+        "src": "/guides/midjourney-getting-started/hero.jpg",
+        "alt": "米色底上一個深綠色的輸入框，右邊四個圓角方塊排成兩排代表四張預覽圖，其中一個被放大成大方塊並連到一個下載箭頭",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Midjourney 是一套用文字描述生成圖片的服務，官方文件寫得很直接：網頁版 midjourney.com 與 Discord 目前都沒有免費試用，唯一的限量試用在 niji·journey 手機 App 上，所以想畫出第一張圖就得先訂閱。這篇回答四件事：四個方案差在哪、一張圖會吃掉多少 GPU 時間、提示詞送出後那四張圖可以怎麼往下做，以及條款對所有權與商用是怎麼寫的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會知道該用 Discord 還是 Google 帳號註冊、四個方案的月費與年費、Fast 與 Relax 差在哪裡、生成後的 Vary 與 Upscale 各做什麼，也會拿到一份常用參數清單與可以直接貼上的範例提示詞。價格、時數、版本與條款全部以 2026 年 9 月 14 日的官方頁面為準，訂閱前請再看一次當天的頁面。"
+        },
+        {
+          "type": "heading",
+          "text": "註冊與訂閱：先決定用哪個帳號登入",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件說目前無法建立只屬於 Midjourney 的帳號密碼，註冊時只有兩個選項：Continue with Discord（同一組登入資訊同時通往 Discord 與網站）或 Continue with Google（用 Google 帳號登入 midjourney.com）。之後可以到 Account Settings 補上另一種登入方式；但如果你的 Discord 帳號以前就用 Midjourney 畫過圖，官方會把你算成回鍋的使用者，必須用 Discord 登入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "免費試用的部分官方寫得很清楚：限量試用只在 niji·journey 的 iOS 與 Android App 上提供，Discord 與 midjourney.com 網站目前都沒有免費試用。訂閱在網站的 Manage Subscription 頁完成，用金流商 Stripe 結帳；要注意頁面預設選的是年繳，而且結帳用的帳單 email 可能和登入用的不同，發票開出後不能更改。介面以官網當天版本為準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "到 midjourney.com 按 Sign Up，選 Continue with Discord 或 Continue with Google",
+            "登入後開啟 Manage Subscription 頁，往下捲到方案區",
+            "想按月付款先點 Monthly Billing 分頁，否則預設是年繳一次付清",
+            "按方案下方的 Subscribe，用 Stripe 完成結帳",
+            "收到含發票與收據的確認信，回 Manage Subscription 頁確認方案已啟用"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "四個方案：月費、年費與每月 Fast 時數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件列出四個方案：Basic、Standard、Pro 與 Mega，全部都是訂閱制，不取消就按月或按年自動續訂。選年繳可以省兩成（官網寫的是 20% 折扣），代價是整年費用一次付清。方案之間最主要的差別是每月的 Fast GPU 時間、能不能用 Relax 模式無限生成圖片，以及有沒有 Stealth 隱私模式。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "月費（年繳均攤）",
+            "官網寫的每月額度",
+            "備註"
+          ],
+          "rows": [
+            [
+              "Basic",
+              "10 美元（年繳 96 美元，每月 8 美元）",
+              "Fast GPU 時間 3.3 小時（200 分鐘）",
+              "沒有 Relax 模式；同時最多 3 個 Fast 圖片任務"
+            ],
+            [
+              "Standard",
+              "30 美元（年繳 288 美元，每月 24 美元）",
+              "Fast GPU 時間 15 小時，Relax 模式圖片無限",
+              "沒有 Stealth；同時最多 3 個 Fast 或 Relax 圖片任務"
+            ],
+            [
+              "Pro",
+              "60 美元（年繳 576 美元，每月 48 美元）",
+              "Fast GPU 時間 30 小時，Relax 圖片與 SD 影片無限",
+              "有 Stealth 隱私模式；年營收破百萬美元的公司要用這個或 Mega"
+            ],
+            [
+              "Mega",
+              "120 美元（年繳 1,152 美元，每月 96 美元）",
+              "Fast GPU 時間 60 小時，Relax 圖片與 SD 影片無限",
+              "有 Stealth；同時最多 12 個 Fast 或 3 個 Relax 圖片任務"
+            ]
+          ],
+          "caption": "資料來源：Midjourney 官方文件 Comparing Midjourney Plans，2026 年 9 月查證；官網註明方案與功能隨時可能調整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "四個方案在使用權那一列寫的都是同一句 General Commercial Terms。Fast 時間不夠用時，四個方案都可以在 Manage Subscription 頁以每小時 4 美元加購，官網也提到可以在網站上完成任務換取免費的 Fast 時間。Relax 模式的無限圖片要 Standard 以上才有，Relax 的影片生成與 Stealth 隱私模式則只有 Pro 與 Mega。"
+        },
+        {
+          "type": "heading",
+          "text": "Fast、Relax 與 Turbo：時數是怎麼被吃掉的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方把 GPU 時間比喻成手機方案的流量：訂閱買的是使用 GPU 的時間，而且只有 Midjourney 正在替你算圖的那段時間才計算。Fast 時間每次續訂就重置，沒用完不會累積到下個月，所以官方建議月底前用掉。要查還剩多少，網頁看 Manage Subscription 頁的用量細節，Discord 用 info 指令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三種速度的差別是：Fast 吃每月附的 Fast 時間；Relax 吃的是無限的 Relax 時間，代價是排隊，官方寫等待時間大約 0 到 30 分鐘，用得越兇排得越久，而且排列組合提示詞、repeat 參數與 HD 解析度影片在 Relax 下不能用；Turbo 用的也是 Fast 時間，速度最多快四倍，但每張圖吃雙倍 Fast 時間，官方註明它是實驗性功能，而且 V8.1 目前不支援 Turbo。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方列出的大致 GPU 成本如下，實際會隨比例、版本與設定變動。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "SD 提示詞約 0.8 分鐘 GPU 時間，HD 提示詞約 1.3 分鐘",
+            "變化（Variation）不到 1 分鐘",
+            "Creative 或 Subtle 放大約 2 分鐘",
+            "Edit Model 的 SD 提示詞約 1 分鐘、HD 約 2.3 分鐘",
+            "一批四支 SD 影片約 8 分鐘，一批四支 HD 影片約 26 分鐘",
+            "Discord 四宮格的 U1 到 U4 分圖不計費"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "單次切換生成速度：把參數寫在提示詞最後面",
+          "code": "a paper boat on a wet street --relax\na paper boat on a wet street --fast\na paper boat on a wet street --turbo"
+        },
+        {
+          "type": "paragraph",
+          "text": "這三個參數只影響那一次生成；要改預設值，網頁版在設定面板選 GPU 速度，Discord 用 relax、fast、turbo 指令。官方提醒網站與 Discord 的設定是同步的，一邊改另一邊也會變。"
+        },
+        {
+          "type": "heading",
+          "text": "從提示詞到四張圖：生成與修改流程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "網頁版的主戰場是 Create 頁：頁面上方的 Imagine bar 就是輸入提示詞的地方，打完按 Enter 或送出鈕，Midjourney 會生出一組四張圖，畫面上能即時看到生成過程，跑到 100% 就完成。點 Imagine bar 的設定鈕可以把比例、模型版本、SD 或 HD、風格化、怪異度、變化度、GPU 速度與 Stealth設成之後每次都套用的預設值；官方也註明上傳的圖片檔案最大 10MB。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Discord 的做法是打 /imagine 指令，把提示詞填進 prompt 欄位送出，第一次還要先接受服務條款。官方文件說 Bot 會在一分鐘內給出四張圖，圖下面有兩排按鈕：U1 到 U4 是把其中一張從四宮格分出來，V5 之後的版本這個動作不會放大圖片、也不吃 GPU 時間；V1 到 V4 則是用那張圖再生成變化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖出來之後，網頁版點開圖片會看到 Creation Actions 這一區，官方列出的工具包括：Vary（Subtle 小幅變化、Strong 大幅變化）、Upscale（Subtle 盡量維持原樣、Creative 放大時補上新細節）、Remix（改提示詞再跑一次）、Editor（把 Pan、Zoom Out 與 Vary Region 局部重繪放在同一個介面）、Use 按鈕（把這張圖當成 Image Prompt 或 Style Reference 再用）以及 Animate（做成 5 秒影片）。下載與整理在 Organize 頁，可以排序、篩選、放進資料夾，也能框選多張批次處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "尺寸方面，官方文件寫 V8.2 的 SD 圖片在預設 1:1 比例下是 1024 x 1024 像素，用 Creative 或 Subtle 放大後變成 2048 x 2048；HD 圖片一開始就是 2048 x 2048，目前不能再往上放大。要注意在 HD 圖片上使用 Pan、Zoom Out 或 Vary Region 這類外擴與局部重繪工具，結果會被降回 SD，想拿回高解析度得再放大一次。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/midjourney-getting-started/diagram-1.svg",
+          "alt": "五個步驟的流程圖，從輸入提示詞、生成四張預覽、挑一張做變化或放大、用編輯工具外擴或局部重繪，到在 Organize 頁下載",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左至右看：提示詞送出後先得到四張預覽，挑一張才進入變化與放大，最後在 Organize 頁下載；框裡的分鐘數是官方列的大致 GPU 成本。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+        },
+        {
+          "type": "heading",
+          "text": "常用參數：一律寫在提示詞最後面",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "參數是寫在提示詞尾巴的指令，官方把用法歸成三條規則：參數一定放在描述文字之後、描述與兩個減號之間要留一個空格、參數裡不要出現逗號句號之類的標點。文件也舉了四種出錯寫法：減號前沒空格、兩個減號中間多打空格、參數後面加逗號、描述文字寫在參數後面。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範例提示詞：三組常用的參數組合",
+          "code": "a paper boat floating on a rainy street, warm street lights --ar 16:9 --v 8.2\nan isometric paper model of a night market stall --ar 2:3 --s 250 --c 20\na single ceramic teacup on a wooden table --ar 1:1 --raw --seed 1234"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是官方參數清單裡入門最常用到的幾個，括號裡是文件寫的預設值與範圍。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "--ar 或 --aspect：比例，預設 1:1，不能寫小數（要寫 139:100，不能寫 1.39:1）",
+            "--v 或 --version：模型版本，目前預設是 V8.2",
+            "--s 或 --stylize：風格化強度，預設 100，最新版本可以調 0 到 1000",
+            "--c 或 --chaos：變化度，網頁版叫 Variety，預設 0，可設 0 到 100",
+            "--seed：鎖定起始雜訊，填 0 到 4294967295 的整數；官方註明 V8.X 的種子是 99% 相同，不要在 Turbo 模式下使用",
+            "--no：告訴模型不要出現什麼",
+            "--q 或 --quality：控制細節程度與處理時間",
+            "--raw：去掉預設的美化風格，讓成品更貼著提示詞",
+            "--tile：做出可以無縫重複的圖樣",
+            "--sref 與 --sw：風格參考圖與它的權重",
+            "--iw：控制圖片提示詞的影響力",
+            "--stealth 與 --public：單次切換公開或私密",
+            "--fast、--relax、--turbo：單次切換生成速度",
+            "--sd 與 --hd：標準解析度（1024 像素）或高解析度（2048 像素）圖片",
+            "--niji：切換到主打動漫與東方美學的 niji 模型"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "Midjourney 提示詞：風格、比例、參考圖",
+          "url": "https://mokaair.com/zh-TW/life/midjourney-prompt-guide"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "版本更新：現在的預設是 V8.2",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方 Version 頁面寫的目前預設版本是 V8.2，於 2026 年 7 月 24 日成為預設，重點放在美感、影像品質與 Personalization，並帶來取代 Omni Reference 與 Character Reference 的 Edit Model。前一代 V8.1 在 2026 年 4 月 14 日發布、2026 年 6 月 10 日到 7 月 23 日是預設版本，官方說它是目前最快的模型，標準任務大約比更早的版本快 4 到 5 倍，也是 HD 高解析度圖片的起點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "V7 在 2025 年 4 月 3 日發布，從 2025 年 6 月 17 日一路當到 2026 年 6 月 9 日的預設版本，它帶來了 Draft Mode 與 Omni Reference；主打動漫與東方美學的 Niji 7 在 2026 年 1 月 9 日推出。用 --v 指定版本時要留意各版本支援的功能不一樣，官方附了一張相容性對照表：例如 Pan、Zoom Out 與 Editor 在 V8 系列是透過 Edit Model 運作，最大比例 V6、V7 與 V8 系列都是 14:1，但 HD 圖片是 4:1。"
+        },
+        {
+          "type": "heading",
+          "text": "下載之後：所有權、商用與隱私",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "服務條款（頁面標的生效日是 2026 年 5 月 27 日）第 4 節 Content Rights 的第一句是「You own all Assets You create with the Services to the fullest extent possible under applicable law」，也就是在法律允許的範圍內，你擁有自己生成的資產，後面接著三個例外：所有權仍受本協議的義務與第三方權利限制；年營收超過 100 萬美元的公司或其員工，必須訂閱 Pro 或 Mega 才擁有這些資產；放大別人的圖，那張圖仍然屬於原作者。條款也寫明，之後降級或取消訂閱，你對已生成資產的所有權仍然存在。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一面是你給 Midjourney 的授權：使用服務即表示你授予 Midjourney 一份永久、全球、非專屬、可再授權、免費且不可撤銷的著作權授權，可以重製、改作、公開展示、公開演出、再授權與散布你輸入的內容與生成的資產，而且這份授權在協議終止後仍然存續。條款同時說明 Midjourney 是開放社群，預設情況下你的內容其他人看得到，也可以拿去 remix。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想讓作品不公開就要用 Stealth 隱私模式，而 Stealth 只有 Pro 與 Mega 方案能用。取消或降級之後，已經設為私密的內容會維持私密；但升級方案或把預設改成 Stealth 都不會自動把既有的公開作品變私密，要自己一張一張改，或在 Organize 頁批次處理。還有一點常被忽略：在 Discord 公開頻道裡生成的圖，就算開了 Stealth，同頻道的人還是看得到；要完全不公開，得用網頁的 Create 頁、Discord 私訊，或自己的私人伺服器。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "商用前先看營收門檻與放大別人的圖",
+          "text": "條款裡兩個最容易踩到的點：公司年營收超過 100 萬美元時，公司與其員工必須訂閱 Pro 或 Mega 才擁有生成的資產；放大其他使用者的圖，那張圖的所有權仍屬原作者，要使用就得先取得對方同意。官方也明說 Midjourney 不提供著作權指導，各國法規不同，個案請諮詢法律專業人士。"
+        },
+        {
+          "type": "link",
+          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+        },
+        {
+          "type": "paragraph",
+          "text": "還在猶豫要不要付訂閱費的話，可以先用免費能試的工具練手感，再回頭比較各家方案。"
+        },
+        {
+          "type": "link",
+          "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-image-tools-overview-2026"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-image-generation-guide"
+        },
+        {
+          "type": "link",
+          "text": "AI 繪圖風格提示參考：50 種風格描述",
+          "url": "https://mokaair.com/zh-TW/life/ai-art-prompt-styles-reference"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Midjourney 官方文件：Getting Started Guide（Create 頁、Imagine bar、一次四張圖）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/33329261836941-Getting-Started-Guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Comparing Midjourney Plans（四個方案的月費、年費、Fast 時數、Relax 與 Stealth）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/27870484040333-Comparing-Midjourney-Plans",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Free Trials（只有 niji·journey App 有限量試用）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/27870399340173-Free-Trials",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：How to Subscribe（Manage Subscription 頁、Stripe、預設年繳）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/31974654274573-How-to-Subscribe",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Logging In & Connecting Accounts（只能用 Discord 或 Google 註冊）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/33390994570509-Logging-In-Connecting-Accounts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Parameter List（參數寫法規則與完整參數清單）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Version（預設 V8.2、各版本發布日與相容性對照表）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32199405667853-Version",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：GPU Speed (Fast, Relax, Turbo)（各種任務的 GPU 成本與三種速度）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32016412137741-GPU-Speed-Fast-Relax-Turbo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Stealth Mode（只有 Pro 與 Mega 可用、Discord 公開頻道例外）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32019750070669-Stealth-Mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Using Images & Videos Commercially（所有權與 100 萬美元門檻）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/27870375276557-Using-Images-Videos-Commercially",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 服務條款：Terms of Service（第 4 節 Content Rights 原文、生效日 2026 年 5 月 27 日）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32083055291277-Terms-of-Service",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Upscalers（Subtle 與 Creative、1024 與 2048 像素）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32804058614669-Upscalers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Modifying Your Creations（Vary、Upscale、Remix、Editor、Animate）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/33329329805581-Modifying-Your-Creations",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Creating on Web（Imagine bar、設定面板、10MB 上傳上限）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/33390732264589-Creating-on-Web",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Discord Quick Start（/imagine、U1 到 U4、V1 到 V4）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32631709682573-Discord-Quick-Start",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方首頁（當天橫幅寫 V8.2 is live）",
+          "url": "https://www.midjourney.com/home",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Aspect Ratio（預設 1:1、不能寫小數）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/31894244298125-Aspect-Ratio",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Stylize（預設 100、範圍 0 到 1000）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32196176868109-Stylize",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Chaos / Variety（預設 0、範圍 0 到 100）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32099348346765-Chaos-Variety",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Midjourney 官方文件：Seeds（0 到 4294967295、V8.X 種子 99% 相同）",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32604356340877-Seeds",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

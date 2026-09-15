@@ -1,0 +1,258 @@
+{
+  "slug": "transcription-desktop-tools",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "逐字稿工具怎麼用：MacWhisper 與 Whisper 桌面工作流",
+      "description": "搜「逐字稿 AI」找到的工具，錄音變成文字後，還需要核對講者、繁體用字和時間碼。本文以原創社區口述訪談情境，介紹 MacWhisper 與 Const-me WhisperDesktop 的桌面轉寫流程，區分本機模型、雲端轉寫與 AI 摘要的資料流。附工具比較表、操作步驟及自繪圖解，協助你保留原始錄音、整理可追溯逐字稿，再輸出適合閱讀或影片使用的字幕檔。",
+      "hero": {
+        "src": "/guides/transcription-desktop-tools/hero.jpg",
+        "alt": "Mokaair 原創資料夾、文件與螢幕插圖，象徵保存音訊、校對逐字稿和回放字幕。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "社區口述訪談錄了兩位居民的故事，整理者想快速找出店名、年份與可剪進影片的段落。如果只有一份流暢摘要，卻不知道誰說了什麼、原話在幾分幾秒，後續仍得重聽整段錄音。逐字稿工具的價值，是幫你建立可回到聲音核對的文字。這也是挑逐字稿 AI 時最該看的一點：能不能回到聲音核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以原創訪談流程說明，資料查閱日期為 2026 年 9 月 14 日。沒有執行軟體、錄製受訪者或比較辨識速度；MacWhisper 與 Windows 的 Const-me WhisperDesktop 是不同開發者的產品，不能把一方的功能或版本說明套到另一方。"
+        },
+        {
+          "type": "heading",
+          "text": "先分清逐字稿、整理稿與摘要",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "逐字稿保留說話內容，整理稿可能調整斷句、贅詞與格式，摘要則挑選重點。先約定交付哪一種，才知道自動清理功能能開到什麼程度。本例需要保留居民的原意，因此先保存未潤飾版本，另建立閱讀版，不讓後續改寫覆蓋唯一紀錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "錄音前和參與者確認用途、保存方式及分享範圍，轉寫既有檔案也一樣。檔名可包含日期、訪談代號與段次，另記錄講者對照和錄音起點。這些是本文工作建議，不是聲稱任何錄音只要告知就一定符合所有規則。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先用播放器確認檔案能開啟、兩人的聲音都存在，保留原檔，再用副本處理。轉成高位元率檔案不會憑空補回原本沒有的聲音；若有爆音、重疊談話或遠距離收音，把該段標成需要人工複查，避免期待軟體替你推測全部內容。"
+        },
+        {
+          "type": "heading",
+          "text": "選工具時，先確認平台與維護狀態",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MacWhisper 由 Good Snooze 開發，官方網站提供下載與支援入口，有免費與 Pro 功能，也能選不同轉寫引擎。購買前核對目前 macOS、晶片與所選模型的需求；某個模型可在你的電腦使用，不代表全部模型都具有相同語言、速度或講者辨識能力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇的 WhisperDesktop 特指 GitHub 上 Const-me/Whisper 專案。README 列出 64 位元 Windows、Direct3D 11 顯示晶片及 AVX、F16C 等條件，並提供圖形介面下載方式。這是特定桌面實作，不是所有名稱含 Whisper 的網站、App 或雲端 API 的通稱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "查閱時該專案最新 Release 仍是 2023 年 7 月的 1.12.0，應特別核對目前系統及模型相容性。README 也提醒有冒用專案名稱的網站，下載以原始 GitHub Releases 為準。本篇將它保留為有明確來源的既有 Windows 選項，不宣稱它持續支援最新模型或一定適合每部電腦。"
+        },
+        {
+          "type": "heading",
+          "text": "在 MacWhisper 建立一份可校對的轉寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開啟 MacWhisper 後，先在模型選擇區確認要用本機或雲端引擎，再加入一小段非敏感錄音。本機模型需要先下載，選擇時核對支援語言與電腦資源。先驗收代表性的對話段落，再處理整批，並記下模型名稱與版本，方便之後比較同一段錄音。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若需要區分兩位受訪者，選擇有講者辨識支援的模型。工具會以 Speaker 1、Speaker 2 等標籤分組，仍可能把同一個人拆成兩位，或把段落歸錯。本例先聽開頭的自我介紹，手動命名，再抽查交談快速來回處，必要時調整或合併講者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "MacWhisper 的中文說明承認可能混用繁體與簡體；加入語境提示可能有所幫助，但不保證修正。應逐段檢查人名、地名、年份及台灣用語。多語混說的支援依引擎而異，不把介面列出很多語言解讀成每個模型都能完美辨認同一句中的語言切換。"
+        },
+        {
+          "type": "heading",
+          "text": "Windows 工作流要核對模型與輸出選項",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "從 Const-me 專案 Releases 取得 WhisperDesktop 壓縮檔，解壓縮後啟動程式，依載入模型畫面指定相容模型。本篇沒有要求改安全設定或執行來源不明的安裝腳本。若系統阻擋或模型載入失敗，先確認來源、需求與錯誤訊息，再決定是否繼續。"
+        },
+        {
+          "type": "paragraph",
+          "text": "進入檔案轉寫畫面後，選擇錄音、來源語言及要執行的轉寫工作，先處理短檔。README 目前列出尚未實作自動語言偵測，因此不要依賴它自行判定。本例需要保留中文原話，應確認工作模式沒有選成翻譯，再核對輸出的文字和時間位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型檔案不能只憑名稱相近就替換。不同實作、格式或模型世代未必相容，遇到錯誤應回到專案文件查證。輸出以程式提供的格式選項為準，將結果開啟重聽驗收；不把開源模型的能力清單當成這個較早期桌面程式已全部支援的功能。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "確認錄音用途與分享範圍，保存原檔及講者對照。",
+            "從正式來源選工具，核對平台、模型和本機或雲端設定。",
+            "先轉寫短段，檢查語言、講者、年份與難辨識片段。",
+            "完整校對後另存整理稿及字幕，回放驗收時間碼。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "本機轉寫之後，摘要仍可能送往雲端",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MacWhisper 的本機轉寫是在裝置上處理，但選用雲端轉寫時會把音訊送給供應商。之後若執行翻譯、摘要或提問，也可能把文字送到另一個服務。必須逐步確認資料流，不能只看到本機模型已下載，就認定整個工作流程都沒有對外傳送。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方將 AI 服務設定與轉寫模型分開；更換摘要供應商不會自動更換音訊轉寫引擎。需要本機處理時，可評估相容的本機文字模型，但仍要確認實際連線位址與其他整合。自動匯出到筆記工具、同步資料夾或分享連結，也要納入檔案去向的檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "軟體授權、Assistant 訂閱與外接 API 用量不是同一筆費用。官方說明外部供應商會另行計費，Assistant 目前則和 App Store 版本相關。先看自己安裝的版本及方案，不把購買 Pro 解讀成所有雲端服務免費；API 金鑰也不要放進截圖或共享逐字稿。"
+        },
+        {
+          "type": "heading",
+          "text": "輸出字幕前，再做一次聽覺驗收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "閱讀用文字與影片字幕需要不同格式。MacWhisper 可輸出文字及 SRT、VTT 等字幕，部分其他格式受方案限制。先問接收者需要可編輯文字、字幕檔或兩者都有，再設定輸出；純文字即使每段都有時間描述，也未必可直接當標準字幕匯入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把字幕載入播放器或剪輯軟體，從頭、中間、結尾各檢查一次，並特別回放快速對話與靜音段。看字幕出現和消失是否配合說話、是否遮住重要畫面，以及一行是否長到來不及讀。為了可讀性分段時，保留語意，不把一句限制條件切成容易誤解的兩句。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後交付原始音訊、校對版本及必要字幕，依已約定的範圍管理存取。聽不清楚的地方加上時間碼與待確認標記，不補成確定語句；摘要若提到某個結論，應能回到已核對的段落。這樣即使日後換工具，資料仍然能被重新理解與修正。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/transcription-desktop-tools/diagram-1.svg",
+          "alt": "四張卡片分別呈現原檔、轉寫、校對與輸出，提醒記錄模型與資料去向，並用時間碼連回聲音。",
+          "width": 1600,
+          "height": 900,
+          "caption": "工具先建立草稿，原始錄音與人工校對決定文字是否能被可靠使用。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "選項",
+            "主要用途",
+            "先確認的限制"
+          ],
+          "rows": [
+            [
+              "MacWhisper 本機模型",
+              "音訊轉文字與校對",
+              "模型語言、硬體及講者支援"
+            ],
+            [
+              "MacWhisper 雲端轉寫",
+              "由供應商處理音訊",
+              "音訊傳送、保存與計費"
+            ],
+            [
+              "MacWhisper AI 服務",
+              "對逐字稿摘要或提問",
+              "文字去向及另計用量"
+            ],
+            [
+              "Const-me WhisperDesktop",
+              "Windows 桌面轉寫",
+              "2023 年發行版及模型相容性"
+            ],
+            [
+              "人工校對與字幕回放",
+              "確認原意與時間位置",
+              "保留原檔、標記聽不清楚處"
+            ]
+          ],
+          "caption": "這是工作流比較，不是速度、準確率排名；功能以安裝版本及選定模型為準。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "講者標籤不是身分查證",
+          "text": "Speaker 1 只是一個分組結果。命名之前回聽確認，遇到同時說話或被分錯的片段，保留疑問並人工調整。"
+        },
+        {
+          "type": "link",
+          "text": "翻譯後核對字幕與專有名詞",
+          "url": "https://mokaair.com/zh-TW/life/immersive-translate-guide"
+        },
+        {
+          "type": "link",
+          "text": "讓短影片的內容與字幕更清楚",
+          "url": "https://mokaair.com/zh-TW/life/short-video-marketing"
+        }
+      ],
+      "sources": [
+        {
+          "title": "MacWhisper：官方功能與下載入口",
+          "url": "https://www.macwhisper.com/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MacWhisper：轉寫資料與隱私",
+          "url": "https://docs.macwhisper.com/article/52-keeping-transcriptions-private",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MacWhisper：AI 供應商與獨立計費",
+          "url": "https://docs.macwhisper.com/article/58-setting-up-ai-providers-in-macwhisper",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MacWhisper：講者辨識與調整",
+          "url": "https://docs.macwhisper.com/article/32-automatic-speaker-recognition-in-macwhisper",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MacWhisper：中文繁簡辨識問題",
+          "url": "https://docs.macwhisper.com/article/9-chinese-simplied-and-traditional-troubleshooting",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MacWhisper：模型、語言及輸出格式說明",
+          "url": "https://docs.macwhisper.com/article/57-macwhisper-command-line-tool",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Const-me Whisper：README 與平台需求",
+          "url": "https://github.com/Const-me/Whisper/blob/master/Readme.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Const-me Whisper：正式版本清單",
+          "url": "https://github.com/Const-me/Whisper/releases",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,389 @@
+{
+  "slug": "apple-intelligence-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "gadgets"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援",
+      "description": "Apple Intelligence 是 iPhone、iPad 與 Mac 內建的手機 AI 功能，官網列的支援語言含繁體中文，地區限制只寫歐盟與中國大陸。這篇照 apple.com/tw 與 Apple 支援文件當天的說明，整理支援機型與系統需求、繁體中文支援到哪些功能、書寫工具與即時翻譯怎麼用、在台灣的開啟步驟，以及裝置端、私密雲端運算、ChatGPT 三層的資料流向和關閉位置。",
+      "hero": {
+        "src": "/guides/apple-intelligence-guide/hero.jpg",
+        "alt": "插圖：一個實心圓分出三條路徑，分別通往一枚晶片、一朵雲，以及一個對話框，代表資料可能走到的三層",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Apple Intelligence 是 Apple 內建在 iPhone、iPad 與 Mac 的 AI 功能，不必另外下載 App，也不用再開帳號。官網列的支援語言含繁體中文，點名有地區限制的只有歐盟與中國大陸，沒有提到台灣。搜「手機 AI」想知道 iPhone 有什麼的，先看支援機型與語言。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照 apple.com/tw 產品頁、Apple 支援的〈如何取得 Apple Intelligence〉與 iPhone 使用手冊在 2026 年 9 月 14 日的說明整理：機型條件、繁體中文支援到哪、功能怎麼用、怎麼開，以及資料走的三層。"
+        },
+        {
+          "type": "heading",
+          "text": "哪些機型能用，系統要什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "裝置需求照支援文件〈如何取得 Apple Intelligence〉。這是硬條件，舊機不會靠更新補上；要為此換機，先寫清楚要解決的問題再比規格。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "iPhone：iPhone 15 Pro 機型，以及 iPhone 16 機型或後續機型；同一代的 iPhone 15 與 15 Plus 不在清單上。",
+            "iPad：iPad mini（A17 Pro），以及配備 M1 或更新的晶片的 iPad 機型。",
+            "Mac：配備 Apple 晶片的 Mac；產品頁另外點名 MacBook Neo（A18 Pro）、Mac Studio（M1 Max 以上）與 Mac Pro（M2 Ultra）。",
+            "Apple Vision Pro（M2 以上），以及和已啟用的 iPhone 配對的 Apple Watch；錶款範圍兩處官網寫法不同，以官網為準。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "系統需求是 iOS 18.1、iPadOS 18.1、macOS Sequoia 15.1、visionOS 2.4 或 watchOS 11 以上版本，裝置要留 7 GB 儲存空間，且裝置語言和 Siri 語言要設成同一種支援語言。"
+        },
+        {
+          "type": "link",
+          "text": "買新 3C 前先寫需求：從真實問題、相容性到維修與退場成本",
+          "url": "https://mokaair.com/zh-TW/life/gadget-purchase-needs-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "繁體中文支援到哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple 在 2025 年 11 月 4 日的台灣 Newsroom 公告〈Apple Intelligence 功能現已推出繁體中文版〉，一次新增八種語言。支援文件現在寫：在 iOS 26.1、iPadOS 26.1 和 macOS 26.1 中，全球大部分地區的相容機型支援 16 種語言，繁體中文在列。"
+        },
+        {
+          "type": "paragraph",
+          "text": "地區只針對歐盟居民與中國大陸居民另外說明，沒有寫台灣，也寫明開始使用後前往其他地區仍會繼續運作。但官網反覆提醒適用性可能因平台、語言和地區而異，下面幾項明寫只到英文。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Siri AI：產品頁寫首先以英文推出，註腳寫初期先支援英文。",
+            "「訊息」和「郵件」的主動給建議、聽寫準確度提升：標示適用於英文。",
+            "Workout Buddy：支援文件寫僅限英文；產品頁把視覺智慧擴大到 iPad 與 Mac 那段，註腳也寫裝置語言要設為英文變體。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "官網列出的功能，各自怎麼用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "支援文件按平台分三塊列功能，挑最常用的幾個說在哪裡點。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "「書寫工具」：選取文字後點浮動選單或鍵盤右上角的按鈕，可校對、改寫（平易近人、專業、簡潔或自己描述）、生成摘要或整理成表格。",
+            "「即時翻譯」：整合在「訊息」、FaceTime 和「電話」，用之前要先下載語言；手冊寫它完全在裝置上執行。",
+            "視覺智慧：按住「相機控制」對準招牌、動植物或文字；要問螢幕內容就按拍截圖的同一組按鈕。iPhone 17e、16e 與 15 Pro 系列改用「動作」按鈕。",
+            "「影像樂園」與 Genmoji：最多結合七個元素，風格有動畫、插畫、塗鴉；開了 ChatGPT 延伸功能才多出「任何風格」。",
+            "「照片」：點編輯再點「清除」圈掉干擾物；找照片直接用一句話描述畫面。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "沉浸式翻譯怎麼設定：網頁、文件與內容校對",
+          "url": "https://mokaair.com/zh-TW/life/immersive-translate-guide"
+        },
+        {
+          "type": "table",
+          "header": [
+            "功能",
+            "哪裡用",
+            "繁體中文支援（照官網）"
+          ],
+          "rows": [
+            [
+              "書寫工具",
+              "任何能打字的地方",
+              "在支援語言清單內"
+            ],
+            [
+              "「訊息」即時翻譯",
+              "「訊息」App",
+              "支援，清單含繁體中文"
+            ],
+            [
+              "「電話」與 FaceTime 即時翻譯",
+              "一對一通話",
+              "支援繁體中文（國語）"
+            ],
+            [
+              "AirPods 即時翻譯",
+              "AirPods 4 ANC、Pro 2 以上",
+              "支援繁體中文；未開放歐盟"
+            ],
+            [
+              "視覺智慧（相機辨識地點）",
+              "相機控制、動作按鈕",
+              "官網寫支援語言含中文"
+            ],
+            [
+              "影像樂園、Genmoji、影像魔杖",
+              "影像樂園、鍵盤、備忘錄",
+              "在清單內；影像魔杖限 iOS、iPadOS"
+            ],
+            [
+              "語音留言與備忘錄逐字稿摘要",
+              "「電話」與「備忘錄」App",
+              "官網寫支援繁體中文"
+            ],
+            [
+              "Siri AI",
+              "Siri、Siri App",
+              "官網寫首先以英文推出"
+            ]
+          ],
+          "caption": "照 apple.com/tw 與 Apple 支援文件 2026 年 9 月 14 日的說明整理；適用性可能因平台、語言和地區而異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "版本分兩層看。支援文件以 iOS 26、iPadOS 26、macOS Tahoe 26 和以上版本為準；apple.com/tw 的作業系統頁寫 iOS 27 與 macOS 27 Golden Gate 於 9 月 15 日推出，產品頁註腳寫 Siri AI Beta 版隨這批 27 版系統推出、初期先支援英文，新增項目有空間重構、延伸、增強的清除與通話情境。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "伺服器端功能有每日使用限制",
+          "text": "產品頁註腳寫明，部分仰賴伺服器端模型的功能有每日使用限制，包含但不限於 Siri AI、智慧照片編輯工具、影像樂園和捷徑中的 AFM 3 雲端模型，限制視功能、需求複雜度與系統政策而異，未來可透過付費取得額外使用權限。"
+        },
+        {
+          "type": "heading",
+          "text": "在台灣怎麼開起來",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "關鍵是兩個欄位：裝置語言和 Siri 語言，都要是支援語言且一致。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "把 iPhone、iPad 或 Mac 更新到最新軟體版本。",
+            "確認裝置語言：「設定」→「一般」→「語言與地區」。",
+            "到「設定」→「Apple Intelligence 與 Siri」開啟它；Mac 是「系統設定」同一位置。",
+            "在同一頁點「語言」，把 Siri 語言設成和裝置語言相同；改完要等新語言下載完才會恢復。",
+            "等裝置端模型下載完成，期間保持連接 Wi-Fi 和電源。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Apple Intelligence 會用到的四個設定路徑",
+          "code": "iPhone / iPad\n設定 → 一般 → 語言與地區                      裝置語言\n設定 → Apple Intelligence 與 Siri            總開關、Siri 語言、ChatGPT\n設定 → 通知 → 生成通知摘要                    通知摘要開關\n設定 → 隱私權與安全性 → Apple Intelligence 報告\n\nMac\n系統設定 → Apple Intelligence 與 Siri"
+        },
+        {
+          "type": "heading",
+          "text": "隱私：裝置端、私密雲端運算、ChatGPT 三層",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple 的說法是三層，每層的資料流向與開關都不同。第一層是裝置端：手冊寫基礎在於裝置端處理，無須收集便能瞭解你的個人資訊，「即時翻譯」也完全在裝置上執行。"
+        },
+        {
+          "type": "link",
+          "text": "小型語言模型（Small Language Model）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-small-language-model"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二層是「私密雲端運算」（Private Cloud Compute）。系統先分析要求能不能在裝置上處理，複雜的才送到搭載 Apple 晶片的伺服器；手冊寫只有與要求相關的資料會在那裡處理，處理完便會移除，不會儲存也不提供給 Apple 取用，獨立研究者可檢查伺服器上的程式碼來驗證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三層是 ChatGPT 整合，這層才會離開 Apple。Apple 的〈ChatGPT延伸功能與隱私權〉寫：延伸功能預設關閉，開啟後才會在 Siri、「書寫工具」、視覺智慧、「影像樂園」與「捷徑」出現，分享前都會徵求你同意。傳出去的是要求和附件，加上時區、國家、裝置類型、語言與正在使用的功能；IP 位址不會顯示給 ChatGPT。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有沒有連帳號差很多。不連帳號時，Apple 寫明 OpenAI 必須只能以完成你要求為目的處理資訊，除非法律要求否則不得儲存你的資訊或回應，也不能用來改進或訓練模型。一旦連結 ChatGPT 帳號，就套用你的帳號設定與 OpenAI 的資料隱私權政策：OpenAI 可能會記錄你的要求、附件和階段記錄，並用來訓練或改進其模型。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/apple-intelligence-guide/diagram-1.svg",
+          "alt": "三層資料流向圖：裝置端、私密雲端運算與 ChatGPT 整合分別處理什麼要求、資料留不留",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看：要求先在裝置上處理，複雜的才上私密雲端運算；只有你開了延伸功能並同意，資料才會離開 Apple 進到 ChatGPT。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "連不連 ChatGPT 帳號，先想清楚",
+          "text": "不連帳號等於套用 Apple 談好的那份規則：不儲存、不拿去訓練、也看不到你的 Apple 帳號。連了帳號會拿到訂閱者的進階功能，要求也會留進 ChatGPT 聊天記錄，但規則換成 OpenAI 自己的帳號政策。手冊也寫明使用 ChatGPT 必須年滿 13 歲。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "不想用的功能在哪裡關",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "整套關掉：「設定」→「Apple Intelligence 與 Siri」關閉它，關閉後裝置端模型會從裝置移除。",
+            "只關 ChatGPT：同一頁進 ChatGPT 關閉「使用 ChatGPT」；關掉「確認 ChatGPT 要求」後 Siri 不再每次問你。",
+            "通知摘要：「設定」→「通知」→「生成通知摘要」，可整個關或只挑要摘要的 App；同區的「優先顯示通知」管重要通知。",
+            "給小孩的裝置：「螢幕使用時間」→「內容與隱私權限制」→「智慧功能與 Siri」，可分別限制「書寫工具」、「影像製作」與「智慧延伸功能」。",
+            "查有沒有上雲端：「設定」→「隱私權與安全性」→「Apple Intelligence 報告」，可選 15 分鐘或 7 天。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-mobile-app-tips"
+        },
+        {
+          "type": "link",
+          "text": "iPhone 與 iPad：安裝、語音與照片",
+          "url": "https://mokaair.com/zh-TW/life/gemini-ios-app-guide"
+        },
+        {
+          "type": "link",
+          "text": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
+          "url": "https://mokaair.com/zh-TW/life/microsoft-copilot-windows-office"
+        },
+        {
+          "type": "link",
+          "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
+          "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+        },
+        {
+          "type": "link",
+          "text": "LINE 裡的 AI：聊天、翻譯與台灣可用功能",
+          "url": "https://mokaair.com/zh-TW/life/line-ai-features-taiwan"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Apple Intelligence 與 Siri（apple.com 台灣官方產品頁：功能清單、相容裝置表、支援語言與每日使用限制註腳）",
+          "url": "https://www.apple.com/tw/apple-intelligence/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "如何取得 Apple Intelligence（Apple 支援官方文件：裝置需求、系統需求、支援語言與地區、各平台功能清單）",
+          "url": "https://support.apple.com/zh-tw/121115",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple Intelligence Usage Terms（Apple 支援官方條款頁：使用限制、可用性、年齡限制）",
+          "url": "https://support.apple.com/en-us/148587",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ChatGPT延伸功能與隱私權（Apple 法律／資料與隱私權官方頁面，繁體中文版）",
+          "url": "https://www.apple.com/tw/legal/privacy/data/zh-tw/chatgpt-extension/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "在 iPhone 上搭配 Apple Intelligence 使用 ChatGPT（iPhone 使用手冊官方頁面：設定路徑、聊天記錄與年齡限制）",
+          "url": "https://support.apple.com/zh-tw/guide/iphone/iph00fd3c8c2/ios",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "iPhone 上的 Apple Intelligence 與隱私權（iPhone 使用手冊官方頁面：裝置端處理、私密雲端運算、Apple Intelligence 報告）",
+          "url": "https://support.apple.com/zh-tw/guide/iphone/iphe3f499e0e/ios",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Private Cloud Compute: A new frontier for AI privacy in the cloud（Apple Security Research 官方技術文章）",
+          "url": "https://security.apple.com/blog/private-cloud-compute/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "在 iPhone 上透過 Apple Intelligence 為通知生成摘要和降低干擾（iPhone 使用手冊官方頁面）",
+          "url": "https://support.apple.com/zh-tw/guide/iphone/iph1fbe7d2b9/ios",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "在 iPhone 上的「螢幕使用時間」中阻擋取用 Apple Intelligence 功能（iPhone 使用手冊官方頁面）",
+          "url": "https://support.apple.com/zh-tw/guide/iphone/iph3fed3f2c3/ios",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "在 iPhone 上搭配 Apple Intelligence 使用「書寫工具」（iPhone 使用手冊官方頁面）",
+          "url": "https://support.apple.com/zh-tw/guide/iphone/iph6f08da1d2/ios",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "在 iPhone 上翻譯訊息、通話和對話（iPhone 使用手冊官方頁面：即時翻譯支援語言與裝置端處理）",
+          "url": "https://support.apple.com/zh-tw/guide/iphone/iph22b72984d/ios",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "在 iPhone 上使用視覺智慧（iPhone 使用手冊官方頁面：啟動方式與可用操作）",
+          "url": "https://support.apple.com/zh-tw/guide/iphone/iph12eb1545e/ios",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "在 iPhone 上使用「影像樂園」製作原創影像（iPhone 使用手冊官方頁面：元素數量與風格）",
+          "url": "https://support.apple.com/zh-tw/guide/iphone/iph0063238b5/ios",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "在 iPhone 上的「照片」中使用 Apple Intelligence（iPhone 使用手冊官方頁面：自然語言搜尋與清除）",
+          "url": "https://support.apple.com/zh-tw/guide/iphone/iphf7de217f0/ios",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Apple Intelligence 功能現已推出繁體中文版（Apple Newsroom 台灣官方公告，2025 年 11 月 4 日）",
+          "url": "https://www.apple.com/tw/newsroom/2025/11/apple-intelligence-features-are-now-available-in-traditional-chinese/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "iOS 27（apple.com 台灣官方作業系統頁面：推出日期、新功能與適用機型註腳）",
+          "url": "https://www.apple.com/tw/os/ios/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "macOS 27 Golden Gate（apple.com 台灣官方作業系統頁面：推出日期與新功能）",
+          "url": "https://www.apple.com/tw/os/macos/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "更改 iPhone 上的 Siri 設定（iPhone 使用手冊官方頁面：Siri 語言設定位置）",
+          "url": "https://support.apple.com/zh-tw/guide/iphone/iphc28624b81abc/ios",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "在 iPhone 上更改語言和地區（iPhone 使用手冊官方頁面：裝置語言設定位置）",
+          "url": "https://support.apple.com/zh-tw/guide/iphone/iphce20717a3/ios",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

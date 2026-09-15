@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">標記換得到什麼、換不到什麼 / What structured data can and cannot buy</title>
+  <desc id="desc">上排由左到右三步：頁面上真的有、使用者看得到的內容，接著是描述它的標記（JSON-LD、微資料或 RDFa），再接到資格門檻，門檻寫著符合指南才有資格、是否顯示由搜尋引擎決定。門檻往下分成兩個結果：左邊綠框是換得到的資格，有資格顯示為複合式搜尋結果但不保證顯示，標記使用者看不到的內容就會失去這個資格；右邊紅框是換不到的東西，包括排名加分與被 AI 摘要引用的保證。最下排把同一個主張分成三級：官方文件說明的機制、業界普遍做法但官方文件沒有說明、廠商或代理商的行銷主張（句子裡要寫出是誰說的）。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">標記換得到什麼、換不到什麼</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Structured data: eligibility, not ranking</text>
+
+  <rect x="60" y="140" width="420" height="150" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="270" y="205" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">頁面上真的有的內容</text>
+  <text x="270" y="245" font-size="18" fill="#5C6B6B" text-anchor="middle">使用者在頁面上看得到</text>
+
+  <line x1="490" y1="215" x2="580" y2="215" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="590" y="140" width="420" height="150" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="205" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">描述它的標記</text>
+  <text x="800" y="245" font-size="18" fill="#5C6B6B" text-anchor="middle">JSON-LD／微資料／RDFa</text>
+
+  <line x1="1020" y1="215" x2="1110" y2="215" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="1120" y="140" width="420" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1330" y="196" font-size="26" font-weight="bold" fill="#102A2B" text-anchor="middle">資格門檻</text>
+  <text x="1330" y="234" font-size="18" fill="#102A2B" text-anchor="middle">符合指南才有資格</text>
+  <text x="1330" y="264" font-size="18" fill="#5C6B6B" text-anchor="middle">是否顯示由搜尋引擎決定</text>
+
+  <path d="M 1330 290 L 1330 310 L 460 310" fill="none" stroke="#5C6B6B" stroke-width="4"/>
+  <line x1="460" y1="310" x2="460" y2="352" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1140" y1="310" x2="1140" y2="352" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="200" y="356" width="520" height="164" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="460" y="404" font-size="22" font-weight="bold" fill="#2E7D5B" text-anchor="middle">換得到：一個資格</text>
+  <text x="460" y="446" font-size="18" fill="#102A2B" text-anchor="middle">有資格顯示為複合式搜尋結果</text>
+  <text x="460" y="478" font-size="17" fill="#5C6B6B" text-anchor="middle">但官方文件寫明不保證顯示</text>
+
+  <rect x="880" y="356" width="520" height="164" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1140" y="404" font-size="22" font-weight="bold" fill="#B8442D" text-anchor="middle">換不到的東西</text>
+  <text x="1140" y="446" font-size="18" fill="#102A2B" text-anchor="middle">排名加分</text>
+  <text x="1140" y="478" font-size="18" fill="#102A2B" text-anchor="middle">被 AI 摘要引用的保證</text>
+
+  <text x="60" y="576" font-size="20" font-weight="bold" fill="#102A2B">聽到一句主張，先分三級</text>
+
+  <rect x="60" y="600" width="460" height="170" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="290" y="664" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">官方文件說明的機制</text>
+  <text x="290" y="706" font-size="18" fill="#5C6B6B" text-anchor="middle">搜尋引擎自己的文件寫的</text>
+
+  <rect x="570" y="600" width="460" height="170" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="664" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">業界普遍做法</text>
+  <text x="800" y="706" font-size="18" fill="#5C6B6B" text-anchor="middle">官方文件沒有說明</text>
+
+  <rect x="1080" y="600" width="460" height="170" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1310" y="664" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">廠商或代理商的行銷主張</text>
+  <text x="1310" y="706" font-size="18" fill="#5C6B6B" text-anchor="middle">句子裡要寫出是誰說的</text>
+
+  <text x="60" y="822" font-size="17" fill="#5C6B6B">標記使用者看不到的內容，會失去的是這個資格，不是網頁搜尋的排名。</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

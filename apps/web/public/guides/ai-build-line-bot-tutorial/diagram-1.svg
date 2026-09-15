@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">一則訊息的來回路徑 / How a LINE message reaches your bot and comes back</title>
+  <desc id="desc">四格流程圖，上排由左到右三格，第四格在下排，箭頭最後繞回第一格。第一格，使用者的 LINE：在聊天室傳一句話給你的官方帳號；要檢查的是已經加為好友、而且沒有封鎖。第二格，LINE 平台：產生 webhook 事件並算出簽章，用 HTTPS 的 POST 請求送到你登記的 Webhook URL；要檢查的是 Verify 顯示 Success、Use webhook 已經打開。第三格，你的 webhook 伺服器：用 channel secret 以 HMAC-SHA256 驗證簽章，並在 2 秒內回 HTTP 200；要檢查的是伺服器日誌看得到事件。第四格，回覆：用事件裡的 reply token 呼叫 Reply API，這個 token 只能用一次、要在 1 分鐘內用掉；要檢查的是自己的 LINE 裡收到同一句話。最後箭頭從第四格繞回第一格，回到使用者的聊天室。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">一則訊息的來回路徑</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">How a LINE message reaches your bot and comes back</text>
+
+  <!-- box A: the user -->
+  <rect x="90" y="150" width="380" height="300" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="142" cy="206" r="30" fill="#2F6F9F"/>
+  <text x="142" y="217" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="190" y="216" font-size="24" font-weight="700" fill="#102A2B">使用者的 LINE</text>
+  <text x="120" y="282" font-size="17" fill="#5C6B6B">在聊天室傳一句話給</text>
+  <text x="120" y="314" font-size="17" fill="#5C6B6B">你的官方帳號</text>
+  <line x1="110" y1="348" x2="450" y2="348" stroke="#D8CFC2" stroke-width="2"/>
+  <text x="120" y="380" font-size="15" fill="#5C6B6B">做完要檢查</text>
+  <text x="120" y="414" font-size="17" fill="#2E7D5B">已加好友、沒有封鎖</text>
+
+  <line x1="470" y1="300" x2="600" y2="300" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="535" y="282" font-size="15" fill="#5C6B6B" text-anchor="middle">訊息</text>
+
+  <!-- box B: the LINE platform -->
+  <rect x="610" y="150" width="380" height="300" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="662" cy="206" r="30" fill="#0D6B68"/>
+  <text x="662" y="217" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="710" y="216" font-size="24" font-weight="700" fill="#102A2B">LINE 平台</text>
+  <text x="640" y="282" font-size="17" fill="#5C6B6B">產生 webhook 事件與簽章</text>
+  <text x="640" y="314" font-size="17" fill="#5C6B6B">POST 到你的 Webhook URL</text>
+  <line x1="630" y1="348" x2="970" y2="348" stroke="#BBD4D2" stroke-width="2"/>
+  <text x="640" y="380" font-size="15" fill="#5C6B6B">做完要檢查</text>
+  <text x="640" y="414" font-size="17" fill="#2E7D5B">Verify 顯示 Success</text>
+
+  <line x1="990" y1="300" x2="1120" y2="300" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="1055" y="282" font-size="15" fill="#5C6B6B" text-anchor="middle">HTTPS</text>
+
+  <!-- box C: your server -->
+  <rect x="1130" y="150" width="380" height="300" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <circle cx="1182" cy="206" r="30" fill="#D97A2B"/>
+  <text x="1182" y="217" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="1230" y="216" font-size="24" font-weight="700" fill="#102A2B">你的伺服器</text>
+  <text x="1160" y="282" font-size="17" fill="#5C6B6B">驗簽章：HMAC-SHA256</text>
+  <text x="1160" y="314" font-size="17" fill="#B8442D">2 秒內回 HTTP 200</text>
+  <line x1="1150" y1="348" x2="1490" y2="348" stroke="#D8CFC2" stroke-width="2"/>
+  <text x="1160" y="380" font-size="15" fill="#5C6B6B">做完要檢查</text>
+  <text x="1160" y="414" font-size="17" fill="#2E7D5B">日誌看得到事件</text>
+
+  <!-- return path: C down and left into D -->
+  <polyline points="1320,450 1320,700 1010,700" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- box D: the reply -->
+  <rect x="610" y="555" width="380" height="290" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="662" cy="611" r="30" fill="#2E7D5B"/>
+  <text x="662" y="622" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text x="710" y="621" font-size="24" font-weight="700" fill="#102A2B">回覆</text>
+  <text x="640" y="685" font-size="17" fill="#5C6B6B">用 reply token 呼叫 Reply API</text>
+  <text x="640" y="717" font-size="17" fill="#B8442D">只能用一次、1 分鐘內用掉</text>
+  <line x1="630" y1="751" x2="970" y2="751" stroke="#C2D4E2" stroke-width="2"/>
+  <text x="640" y="781" font-size="15" fill="#5C6B6B">做完要檢查</text>
+  <text x="640" y="815" font-size="17" fill="#2E7D5B">LINE 裡收到同一句話</text>
+
+  <!-- return path: D left and up into A -->
+  <polyline points="610,700 280,700 280,460" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="420" y="682" font-size="15" fill="#5C6B6B" text-anchor="middle">回到使用者的聊天室</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

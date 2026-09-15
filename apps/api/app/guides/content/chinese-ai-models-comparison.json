@@ -1,0 +1,399 @@
+{
+  "slug": "chinese-ai-models-comparison",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+      "description": "中國 AI 模型怎麼比？把 DeepSeek、阿里 Qwen、月之暗面 Kimi、字節跳動豆包與 MiniMax 放進同一套欄位：旗艦模型、開放權重與授權、上下文視窗、API 每百萬 token 價格、台灣區 App Store 查詢結果，以及隱私政策寫的資料存放地與訓練用途。數字全部在 2026 年 9 月 14 日查自官網，只比官方頁寫的內容，不排名也不引跑分。",
+      "hero": {
+        "src": "/guides/chinese-ai-models-comparison/hero.jpg",
+        "alt": "插圖：五張並排的卡片放在同一條刻度線上，代表用同一套欄位比較五家 AI",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "中國系的 AI 模型這兩年名字愈出愈多，但真正決定你能不能用、要付多少錢的，是幾個很具體的欄位：旗艦模型叫什麼、權重能不能下載、授權允許你做什麼、上下文視窗多大、API 每百萬 token 多少錢、台灣區的 App Store 有沒有上架，以及隱私政策寫資料存在哪一國。這篇把 DeepSeek、阿里巴巴的 Qwen、月之暗面的 Kimi、字節跳動的豆包與 MiniMax 五家，放進同一套欄位一次看完。搜「中國 AI」想找哪一家能用的，看這幾欄就夠。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表上的每一個數字，都是 2026 年 9 月 14 日當天在各家官網、官方文件與模型卡上查到的，只寫官方頁面寫了的內容：不排名、不引第三方跑分、不對任何公司或國家做評價。讀完你會有兩張可以自己複查的對照表，加上一組依用途決定先試哪一家的判斷方式。這些頁面改版很頻繁，看到與這裡不同的數字，以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "五家是誰、旗艦模型叫什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeek 的營運主體是杭州深度求索人工智能基礎技術研究有限公司。官方 API 文件的定價頁目前只列兩個模型名：deepseek-flash（版本 DeepSeek-V4.1-Flash）與 deepseek-v4-pro（版本 DeepSeek-V4-Pro-0813），兩個都標上下文長度 1M、最大輸出 384K，flash 支援圖像理解、v4-pro 標示不支援。兩個版本的權重都放在官方的 Hugging Face 帳號上，模型卡標 MIT 授權，是五家裡附加條件最少的一種。"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 對話與深度思考：哪些題目該開推理模式",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-chat-and-reasoner"
+        },
+        {
+          "type": "paragraph",
+          "text": "Qwen（通義千問）是阿里巴巴的模型家族，消費者入口現在叫 Qwen Studio，國際站的 API 平台是 Qwen Cloud。旗艦 API 模型 qwen3.8-max 的模型頁標 Context 1M，輸入可以是文字、圖片與影片，輸出是文字；對應的開放權重是 Qwen3.8-2.4T-A95B，模型卡寫總參數 2.4T、啟用 95B，原生上下文 262,144 token、可延伸到 1,010,000 token。隱私政策寫這些服務由 Alibaba Cloud (Singapore) Private Limited 提供。"
+        },
+        {
+          "type": "link",
+          "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
+          "url": "https://mokaair.com/zh-TW/life/qwen-alibaba-models-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kimi 出自北京月之暗面科技股份有限公司，聊天入口是 kimi.com，開發者平台分成國際站與中國站兩套定價。旗艦是 Kimi K3，模型卡寫總參數 2.8T、啟用參數 104B、上下文長度 1,048,576 token，並寫明完整權重以 Kimi K3 License 釋出。同一張定價表上還有給程式任務用的 kimi-k2.7-code 與較便宜的 kimi-k2.6，這兩個的上下文都是 262,144 token。"
+        },
+        {
+          "type": "link",
+          "text": "Kimi（月之暗面）：長文件與 K 系列模型",
+          "url": "https://mokaair.com/zh-TW/life/kimi-moonshot-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "豆包是字節跳動的 AI 助理，軟體與服務由北京春田知韻科技有限公司及／或關聯方提供，模型線叫 Seed，API 賣在火山引擎的火山方舟。官方模型列表上的旗艦是 doubao-seed-2-1-pro-260628，上下文視窗 256k、最大輸入 256k、最大回答 256k。五家裡只有它的旗艦沒有公開權重，官方的 Hugging Face 組織上放的是另一批研究用模型。"
+        },
+        {
+          "type": "link",
+          "text": "豆包（字節跳動）：功能與台灣可用性",
+          "url": "https://mokaair.com/zh-TW/life/doubao-bytedance-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "MiniMax 的國際站是 minimax.io，API 平台的隱私政策寫營運主體是新加坡公司 Nanonoble Pte. Ltd.。旗艦 MiniMax-M3 的模型卡寫它是原生多模態模型、約 428B 參數、啟用約 23B、上下文 1M，權重以 MiniMax Community License 釋出。它和另外四家最不一樣的地方是產品線：同一個定價頁上還有影片模型 MiniMax-H3、語音、音樂與圖片模型。"
+        },
+        {
+          "type": "link",
+          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+        },
+        {
+          "type": "heading",
+          "text": "同一套欄位：權重、上下文與 API 價格",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下面這張表把五家的旗艦放進同一組欄位。價格一律照官網的幣別寫，不換算台幣：DeepSeek、Qwen Cloud、Kimi 國際站與 MiniMax 標美元，火山方舟標「元」；同一家的中國站與國際站價格也不是匯率換算的結果，所以分開寫。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "家（營運主體）",
+            "旗艦模型",
+            "開放權重與授權",
+            "上下文視窗",
+            "API 價格（每百萬 token）"
+          ],
+          "rows": [
+            [
+              "DeepSeek（杭州深度求索）",
+              "deepseek-v4-pro（DeepSeek-V4-Pro-0813）",
+              "有，模型卡標 MIT",
+              "1M，最大輸出 384K",
+              "離峰輸入 0.66 美元、輸出 1.98 美元；高峰 1.32 與 3.96 美元"
+            ],
+            [
+              "Qwen（Alibaba Cloud Singapore）",
+              "qwen3.8-max（權重版 Qwen3.8-2.4T-A95B）",
+              "有，Qwen3.8-Max 自訂授權",
+              "Qwen Cloud 標 1M；權重模型卡標原生 262,144",
+              "輸入 2 美元、輸出 6 美元"
+            ],
+            [
+              "Kimi（北京月之暗面）",
+              "kimi-k3",
+              "有，Kimi K3 自訂授權",
+              "1,048,576",
+              "國際站輸入 3.00 美元、輸出 15.00 美元；中國站 20.00 元與 100.00 元"
+            ],
+            [
+              "豆包 Seed（北京春田知韻）",
+              "doubao-seed-2-1-pro-260628",
+              "旗艦沒有公開權重",
+              "256k",
+              "輸入 6.00 元、輸出 30.00 元（火山方舟）"
+            ],
+            [
+              "MiniMax（Nanonoble Pte. Ltd.）",
+              "MiniMax-M3",
+              "有，MiniMax Community License",
+              "1,000,000",
+              "輸入 0.30 美元、輸出 1.20 美元（輸入 512k 以內）"
+            ]
+          ],
+          "caption": "五家旗艦模型的官方數字，查證日 2026 年 9 月 14 日；價格照官網幣別，未換算台幣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "看價格前有幾個規則要先知道。DeepSeek 的定價頁把價格分成離峰與高峰，離峰價是高峰價的一半，高峰時段是週一到週五、世界標準時間 01:00 到 04:00 與 06:00 到 10:00；同一頁還有快取命中價，deepseek-v4-pro 命中時每百萬輸入 token 只要 0.022 美元。Kimi 的國際站也分快取命中與未命中，kimi-k3 命中 0.30 美元、未命中 3.00 美元，中國站同一個模型寫 2.00 元與 20.00 元。火山方舟則是依輸入長度分段計價，表上寫的是輸入長度 0 到 256 千 token 這一段的單價。"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "heading",
+          "text": "台灣可用性與資料存放地",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣可用性用同一個方法查：在台灣區的 App Store 用官方 App 的編號查詢，看查不查得到、標價是不是免費、開發者掛誰。資料存放地與訓練用途則只抄各家隱私政策的原文，官方沒有寫的就寫沒有寫，不替它補。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "家",
+            "App Store 台灣區（2026 年 9 月 14 日查）",
+            "資料存放地（政策原文）",
+            "訓練用途與退出方式"
+          ],
+          "rows": [
+            [
+              "DeepSeek",
+              "查得到，「DeepSeek - AI 智能助手」，免費",
+              "政策原文寫直接在中華人民共和國境內蒐集、處理與儲存個人資料（store your Personal Data in People's Republic of China）",
+              "政策寫會用來訓練與改進技術；權利清單有拒絕用於訓練的權利，但寫明視你居住的地方而定"
+            ],
+            [
+              "Qwen",
+              "查得到，「Qwen Studio - 遇事不決找千問！」，免費",
+              "政策原文寫在新加坡與中國大陸儲存或處理個人資料（in Singapore and Mainland China）",
+              "政策寫會用去識別化的使用者內容訓練與改進 AI 模型；權利清單有反對或限制處理、撤回同意，政策沒有寫一鍵開關"
+            ],
+            [
+              "Kimi",
+              "查得到，「Kimi」，免費",
+              "政策第 5.1 條寫「我們將您的個人信息存儲於中華人民共和國境內」",
+              "去識別化後用來優化模型；不希望被用於訓練，要照政策寫的聯絡客服提出要求"
+            ],
+            [
+              "豆包",
+              "本站當天查不到官方版，搜尋結果前排是名字相近的第三方 App",
+              "政策第 4.1 條寫儲存於中華人民共和國境內，目前不會傳輸到境外",
+              "未按讚、按踩或回饋時可能用於模型訓練；個人版可在設定、隱私與權限、幫助模型改進效果關閉"
+            ],
+            [
+              "MiniMax",
+              "本站當天查不到官方 App",
+              "API 平台政策原文寫資料存放在位於美國的資料中心（data center located in the United States）",
+              "政策沒有寫會把輸入內容用於模型訓練，也沒有寫退出開關，以官網為準"
+            ]
+          ],
+          "caption": "台灣可用性與資料存放地，查證日 2026 年 9 月 14 日；上架狀態與政策條文都會改，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩點補充。第一，查不到官方 App 不等於不能用：豆包與 MiniMax 都有網頁版，Google Play 的情況也和 App Store 不一樣，要用官網給的連結自己確認；本站查證時不是從台灣的網路環境連線，網頁版在台灣實際打不打得開、訂閱能不能用台灣的付款方式，以你自己連線的結果與官網公告為準。第二，資料存放地那一欄抄的是政策原文，不是機房位置；政策本身改得很快，DeepSeek 標最後更新 2026 年 2 月 10 日、Qwen 標 2026 年 5 月 19 日、MiniMax 的 API 政策標 2026 年 3 月 30 日、Kimi 標版本更新日期 2026 年 8 月 24 日、豆包標更新日期 2026 年 9 月 10 日。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/chinese-ai-models-comparison/diagram-1.svg",
+          "alt": "圖解：五家 AI 依旗艦權重能不能下載、以及台灣區 App Store 查不查得到，排成的定位圖",
+          "width": 1600,
+          "height": 900,
+          "caption": "橫向三段是旗艦權重的授權狀況，上下兩列是台灣區 App Store 當天的查詢結果。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "link",
+          "text": "使用中國系 AI App 前的資安檢查清單",
+          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "怎麼選：先看用途，再看官方文件寫了什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "五家的官方文件都不會互相比較，所以「哪一家比較強」這種問題，官網不會給你答案。能從官方文件直接看出差別的，是下面這幾件事。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "寫作與對話：五家都有消費者入口，但台灣區 App Store 當天只查得到 DeepSeek、Qwen Studio 與 Kimi 三個官方 App，另外兩家得走網頁版。",
+            "程式：Kimi 有專門的 kimi-k2.7-code，國際站未命中快取輸入 0.95 美元、輸出 4.00 美元；豆包的模型列表另有 doubao-seed-2-0-code；DeepSeek 的定價頁同時列出 OpenAI 格式與 Anthropic 格式的呼叫網址，Qwen 的模型頁也把內建工具分成 Responses API、Completions API 與 Anthropic API 三類。",
+            "長文件：四家旗艦都標到百萬級（DeepSeek 1M、Qwen Cloud 1M、Kimi 1,048,576、MiniMax 1,000,000），豆包旗艦標 256k。這些是 API 的規格，網頁版與 App 吃得下多長，各家另有說明，以官網為準。",
+            "圖片與影片：火山方舟的價格頁列圖片模型 doubao-seedream-4-5，輸出每張 0.25 元，另有 doubao-seedance 系列影片模型；MiniMax 的定價頁列影片 MiniMax-H3，768P 每秒 0.08 美元，圖片 image-01 每張 0.0035 美元。DeepSeek 的定價頁標 deepseek-flash 支援圖像理解、不生成圖片。",
+            "本機跑：要自己下載權重，先看授權。DeepSeek 的模型卡標 MIT，條件最少；Qwen、Kimi、MiniMax 的旗艦都是自訂授權，商用另有條件；豆包旗艦沒有權重可下載。這些旗艦動輒 2.4T、2.8T 參數，一般電腦跑不動，真的要在自己電腦跑，通常會挑小很多的版本。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        },
+        {
+          "type": "link",
+          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+        },
+        {
+          "type": "heading",
+          "text": "五家共同的注意事項",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最後是五家共同、而且值得每隔一陣子重看一次的幾件事。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "資料存放地與留存期間：五家的政策都寫了資料存在哪裡，但留存期間多半只寫「為實現目的所必需的期間」，沒有具體天數。",
+            "內容規範：可以問什麼、輸出能怎麼用，各家條款都有規定；實際哪些題目會被擋下來，官方沒有列清單，以實際使用為準。",
+            "政府規範只看公告原文：台灣的資通安全署在 2025 年 2 月 20 日的新聞稿寫「公務機關立即全面禁用 DeepSeek AI服務，包含雲端服務、APP及地端下載等方式」，同一份稿也寫「目前未進一步限制業者提供民眾下載及使用」。那份公告只點名 DeepSeek，不是對所有中國系服務的規範。",
+            "以官網為準的項目：價格與峰谷時段、模型改版與下架、App 上架狀態、會員方案與免費額度、訂閱在台灣能不能付款，這幾項改得最快，查證日一過就可能不同。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "資料存放地照官方寫的，禁用公告只針對公務機關",
+          "text": "DeepSeek、Kimi 與豆包的隱私政策都寫個人資料存在中華人民共和國境內，Qwen 寫存放或處理在新加坡與中國大陸，MiniMax 的 API 平台政策寫存在美國的資料中心。台灣的資通安全署公告是對公務機關的規範，同一份稿也寫明目前未進一步限制民眾下載及使用。一般使用者真正要自己判斷的是輸入的內容：公司機密、客戶名單、還沒公開的財務數字，不管用哪一家都不該直接貼進對話框。"
+        },
+        {
+          "type": "link",
+          "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+        },
+        {
+          "type": "link",
+          "text": "基準測試（Benchmark）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-benchmark"
+        }
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek API 文件：Models & Pricing（官方定價頁）",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek Privacy Policy（官方隱私政策）",
+          "url": "https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DeepSeek-V4-Pro-0813 模型卡（官方 Hugging Face 帳號）",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "App Store 台灣區：DeepSeek - AI 智能助手（官方上架頁）",
+          "url": "https://apps.apple.com/tw/app/id6737597349",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen Cloud：Qwen3.8-Max 模型頁（官方定價與規格）",
+          "url": "https://www.qwencloud.com/models/qwen3.8-max",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen3.8-2.4T-A95B 模型卡（官方 Hugging Face 組織）",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Qwen Privacy Policy（官方隱私政策）",
+          "url": "https://qwen.ai/privacypolicy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax API Privacy Policy（開放平台官方隱私政策）",
+          "url": "https://platform.minimax.io/protocol/privacy-policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "App Store 台灣區：Qwen Studio（官方上架頁）",
+          "url": "https://apps.apple.com/tw/app/id6743778442",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 開放平台國際站：模型推理定價（官方文件）",
+          "url": "https://platform.kimi.ai/docs/pricing/chat",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 開放平台中國站：模型推理定價（官方文件）",
+          "url": "https://platform.kimi.com/docs/pricing/chat",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi-K3 模型卡（官方 Hugging Face 組織）",
+          "url": "https://huggingface.co/moonshotai/Kimi-K3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kimi 隱私政策（官方，v2 版本）",
+          "url": "https://www.kimi.com/user/agreement/userPrivacy?version=v2",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "App Store 台灣區：Kimi（官方上架頁）",
+          "url": "https://apps.apple.com/tw/app/kimi/id6474233312",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "火山方舟：模型價格（火山引擎官方文件）",
+          "url": "https://www.volcengine.com/docs/82379/1099320",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "火山方舟：模型列表（火山引擎官方文件）",
+          "url": "https://www.volcengine.com/docs/82379/1330310",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "豆包隱私政策（官方）",
+          "url": "https://www.doubao.com/legal/privacy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax 開放平台：Pay as You Go 定價（官方文件）",
+          "url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MiniMax-M3 模型卡（官方 Hugging Face 組織）",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "資通安全署新聞稿：公務機關全面禁用DeepSeek AI 服務，未限制一般民間使用",
+          "url": "https://moda.gov.tw/ACS/press/news/press/15296",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

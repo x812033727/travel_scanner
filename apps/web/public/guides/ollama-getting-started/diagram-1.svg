@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Ollama 從安裝到接上 API 的四個步驟 / From install to the local API</title>
+  <desc id="desc">上排四個方框是順序步驟：一、安裝，官網下載頁一行指令，macOS 需要 14 Sonoma 以上、Windows 需要 10 22H2 以上，也可以下載 dmg 或 exe 安裝檔；二、拉模型，指令是 ollama pull gemma4，在模型庫頁看標籤、大小與上下文，例如 9.6GB 與 128K，大小欄是下載大小；三、對話，指令是 ollama run gemma4，離開輸入斜線 bye，用 ollama ps 看 PROCESSOR 欄是 100% GPU 還是 100% CPU；四、接 API，本機位址是 localhost 冒號 11434，路徑有 /api/chat 與 /v1/chat/completions，curl 或 Python 都可以呼叫。下排三個方框是這四步之間會用到的設定：模型放在哪，預設在 .ollama/models，三個系統路徑不同，換磁碟要設 OLLAMA_MODELS；跑在 GPU 還是 CPU，用 ollama ps 看 PROCESSOR 欄，100% GPU 代表全在顯示記憶體，48%/52% CPU/GPU 代表被拆成兩邊；本機還是雲端，標籤結尾帶 cloud 就是雲端，大小欄顯示一個橫線，要全部關掉就設 OLLAMA_NO_CLOUD 等於 1。最下面一條是預設上下文視窗：常見問答寫預設 4096 個 token，可用 OLLAMA_CONTEXT_LENGTH 覆寫，另外依顯示記憶體分級，小於 24 GiB 給 4K，24 到 48 GiB 給 32K，48 GiB 以上給 256K。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">Ollama：從安裝到接上本機 API</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Install, pull a model, chat, then call the local API</text>
+
+  <!-- step 1 -->
+  <rect x="60" y="118" width="310" height="210" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="215" y="160" text-anchor="middle" font-size="20" font-weight="bold" fill="#0D6B68">一　安裝</text>
+  <text x="215" y="200" text-anchor="middle" font-size="17" fill="#102A2B">官網下載頁一行指令</text>
+  <text x="215" y="232" text-anchor="middle" font-size="17" fill="#102A2B">macOS 14 Sonoma 以上</text>
+  <text x="215" y="264" text-anchor="middle" font-size="17" fill="#102A2B">Windows 10 22H2 以上</text>
+  <text x="215" y="296" text-anchor="middle" font-size="17" fill="#5C6B6B">或下載 dmg 與 exe</text>
+
+  <!-- step 2 -->
+  <rect x="450" y="118" width="310" height="210" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="605" y="160" text-anchor="middle" font-size="20" font-weight="bold" fill="#0D6B68">二　拉模型</text>
+  <text x="605" y="200" text-anchor="middle" font-size="17" fill="#102A2B">ollama pull gemma4</text>
+  <text x="605" y="232" text-anchor="middle" font-size="17" fill="#102A2B">看標籤、大小、上下文</text>
+  <text x="605" y="264" text-anchor="middle" font-size="17" fill="#102A2B">例：9.6GB／128K</text>
+  <text x="605" y="296" text-anchor="middle" font-size="17" fill="#5C6B6B">大小欄是下載大小</text>
+
+  <!-- step 3 -->
+  <rect x="840" y="118" width="310" height="210" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="995" y="160" text-anchor="middle" font-size="20" font-weight="bold" fill="#0D6B68">三　對話</text>
+  <text x="995" y="200" text-anchor="middle" font-size="17" fill="#102A2B">ollama run gemma4</text>
+  <text x="995" y="232" text-anchor="middle" font-size="17" fill="#102A2B">離開輸入 /bye</text>
+  <text x="995" y="264" text-anchor="middle" font-size="17" fill="#102A2B">ollama ps 看 PROCESSOR</text>
+  <text x="995" y="296" text-anchor="middle" font-size="17" fill="#5C6B6B">確認有沒有用到顯示卡</text>
+
+  <!-- step 4 -->
+  <rect x="1230" y="118" width="310" height="210" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1385" y="160" text-anchor="middle" font-size="20" font-weight="bold" fill="#0D6B68">四　接 API</text>
+  <text x="1385" y="200" text-anchor="middle" font-size="17" fill="#102A2B">localhost:11434</text>
+  <text x="1385" y="232" text-anchor="middle" font-size="17" fill="#102A2B">/api/chat</text>
+  <text x="1385" y="264" text-anchor="middle" font-size="17" fill="#102A2B">/v1/chat/completions</text>
+  <text x="1385" y="296" text-anchor="middle" font-size="17" fill="#5C6B6B">curl 或 Python 都可以</text>
+
+  <line x1="378" y1="223" x2="436" y2="223" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="768" y1="223" x2="826" y2="223" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1158" y1="223" x2="1216" y2="223" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="60" y="386" font-size="20" font-weight="bold" fill="#102A2B">這四步之間會用到的三個設定</text>
+
+  <!-- setting A -->
+  <rect x="60" y="406" width="470" height="200" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="295" y="452" text-anchor="middle" font-size="19" font-weight="bold" fill="#2F6F9F">模型放在哪</text>
+  <text x="295" y="496" text-anchor="middle" font-size="17" fill="#102A2B">預設在 .ollama/models</text>
+  <text x="295" y="530" text-anchor="middle" font-size="17" fill="#102A2B">三個系統的路徑各不同</text>
+  <text x="295" y="564" text-anchor="middle" font-size="17" fill="#102A2B">換磁碟：設 OLLAMA_MODELS</text>
+
+  <!-- setting B -->
+  <rect x="565" y="406" width="470" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="452" text-anchor="middle" font-size="19" font-weight="bold" fill="#0D6B68">跑在 GPU 還是 CPU</text>
+  <text x="800" y="496" text-anchor="middle" font-size="17" fill="#102A2B">ollama ps 看 PROCESSOR 欄</text>
+  <text x="800" y="530" text-anchor="middle" font-size="17" fill="#102A2B">100% GPU：全在顯示記憶體</text>
+  <text x="800" y="564" text-anchor="middle" font-size="17" fill="#102A2B">48%/52% CPU/GPU：拆成兩邊</text>
+
+  <!-- setting C -->
+  <rect x="1070" y="406" width="470" height="200" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1305" y="452" text-anchor="middle" font-size="19" font-weight="bold" fill="#D97A2B">本機還是雲端</text>
+  <text x="1305" y="496" text-anchor="middle" font-size="17" fill="#102A2B">標籤結尾帶 cloud 就是雲端</text>
+  <text x="1305" y="530" text-anchor="middle" font-size="17" fill="#102A2B">模型頁的大小欄只有一橫</text>
+  <text x="1305" y="564" text-anchor="middle" font-size="17" fill="#102A2B">全關：OLLAMA_NO_CLOUD=1</text>
+
+  <!-- context strip -->
+  <rect x="60" y="648" width="1480" height="160" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="800" y="696" text-anchor="middle" font-size="19" font-weight="bold" fill="#2E7D5B">預設上下文視窗</text>
+  <text x="800" y="738" text-anchor="middle" font-size="17" fill="#102A2B">常見問答：預設 4096 個 token，可用 OLLAMA_CONTEXT_LENGTH 覆寫</text>
+  <text x="800" y="774" text-anchor="middle" font-size="17" fill="#102A2B">上下文長度頁：小於 24 GiB 給 4K，24 到 48 GiB 給 32K，48 GiB 以上給 256K</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

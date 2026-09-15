@@ -1,0 +1,358 @@
+{
+  "slug": "vibe-coding-first-website",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Vibe coding：不會寫程式也能做出第一個網站",
+      "description": "完全不會寫程式，也能靠做網站 AI 用對話做出一頁個人網站。這篇示範怎麼把需求寫成一段話、選一個能直接預覽的 AI 工具、把產出的單一 HTML 檔在瀏覽器打開來看、用三組提示詞改配色與手機版排版，最後用 GitHub Pages 或 Cloudflare Pages 的免費方案放上網，並列出圖片版權、個資與金鑰、廣告追蹤這幾個最常踩的坑。",
+      "hero": {
+        "src": "/guides/vibe-coding-first-website/hero.jpg",
+        "alt": "插圖：一個對話框用箭頭連到一個瀏覽器視窗，再連到一個代表網址的地球圖形，下方有一行短標題",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "不會寫程式也想要一頁自己的網站，現在的做法不是先學 HTML，而是把想要的東西用中文描述清楚，讓 AI 產生一個單一的 HTML 檔，在瀏覽器打開來看，再用對話一次改一件事，最後放到免費的靜態網站服務上。這種做法通常稱為 vibe coding（氛圍編碼）。搜「做網站 AI」或「架站 AI」找到的工具，大多走的就是這條路。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇不教 HTML，教的是三件事：需求怎麼描述、產出怎麼看、修改怎麼要求。走完一次，你會得到一頁可以公開的個人介紹。過程不需要安裝開發工具，只要一個瀏覽器、一個 AI 對話工具帳號和一個代管服務帳號。"
+        },
+        {
+          "type": "heading",
+          "text": "先把需求寫成一段話",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "產出的品質幾乎完全由你給的描述決定。描述要寫滿四個面向：目的、內容、風格、不要什麼。第四項最容易被跳過卻最有效：沒寫清楚不要什麼，模型會自動補上一堆你不需要的東西。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再加一段技術邊界，可以省掉後面一半的麻煩：只要一個檔案、檔名叫 index.html、樣式寫在同一個檔案裡、不連外部字型或圖片、不用需要安裝的框架。這樣的檔案點兩下就能看，搬到任何代管服務也不會壞掉。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "目的：給誰看、看完要做什麼，寫成一句話。",
+            "內容：把真正要出現的文字貼進去，不要讓模型幫你編。",
+            "風格：用具體的形容，例如米白底、深綠色重點、圓角卡片。",
+            "不要什麼：不要動畫、不要留言功能、不要廣告或追蹤程式碼。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "需求描述範本：把括號裡的內容換成你自己的，整段貼進對話",
+          "code": "請幫我做一個單一檔案的個人網站，檔名 index.html。\n\n目的：讓別人在半分鐘內知道我是誰、做什麼、怎麼找到我。\n內容：\n- 標題：（你的名字）\n- 一句話介紹：（你實際在做的事）\n- 三個作品連結：（你自己的三個網址與說明）\n- 聯絡方式：（你願意公開的信箱）\n風格：米白底、深綠色重點、圓角卡片、標題置中、字級大一點。\n不要：不要動畫、不要留言功能、不要廣告或追蹤程式碼、不要連外部圖片或字型。\n技術：只產生一個 HTML 檔，CSS 全部寫在同一個檔案裡，不要用任何框架。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+        },
+        {
+          "type": "heading",
+          "text": "選一個能直接預覽的工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三家主要的對話工具都能一邊產生、一邊在旁邊顯示成品，差別在名稱與方案，而這些在 2026 年變動得很快，決定前以官網當天的說明為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 的 Artifacts 把獨立、超過十五行的產出放到對話旁邊的視窗，官方列出的類型就包含單頁 HTML 網站，Free、Pro、Max、Team、Enterprise 都支援，右下角可以複製或下載檔案。優點是免費方案就能預覽與下載；缺點是要先在設定裡開啟程式執行與檔案建立，每個 artifact 20 MB 的持續儲存空間只給付費方案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 這邊名稱換過。官方更新記錄寫著，2026 年 5 月 28 日起 canvas 不再出現在 GPT-5.5 Instant 與 GPT-5.5 Thinking，寫作與程式改成在對話裡用寫作區塊與程式區塊呈現。要在 ChatGPT 裡做出網站並預覽，現在的功能叫 ChatGPT Sites，2026 年 7 月 9 日起公開測試，開放 Plus、Pro 與工作區帳號，Free 與 Go 沒有，推出時歐洲經濟區、瑞士與英國也不提供。優點是描述、預覽、發布在同一處；缺點是免費方案用不到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 的 Canvas 在同一個面板裡做文件、簡報、程式與網頁，按右上角的程式碼可以直接改，旁邊就是預覽，出錯時能打開主控台看訊息，完成後用分享與匯出複製連結。缺點是官方說明只寫必須登入 Gemini 系列應用程式，沒有標示需要哪一種付費方案，免費帳號的實際額度以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Artifacts 教學：不會寫程式也能在對話裡做出網頁、圖表與小工具",
+          "url": "https://mokaair.com/zh-TW/life/claude-artifacts-guide"
+        },
+        {
+          "type": "link",
+          "text": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
+          "url": "https://mokaair.com/zh-TW/life/chatgpt-canvas-writing"
+        },
+        {
+          "type": "link",
+          "text": "Canvas：編輯文章、簡報與製作小工具",
+          "url": "https://mokaair.com/zh-TW/life/gemini-canvas-guide"
+        },
+        {
+          "type": "heading",
+          "text": "產出之後，先在瀏覽器打開檔案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "預覽面板看起來沒問題，不代表檔案本身沒問題。把產出下載成 index.html，放進一個新資料夾，點兩下用瀏覽器打開，這才是讀者會看到的樣子。這一關看的是畫面與文字，不是程式碼。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "把文字讀一次，找錯字，也找模型自己補出來的經歷或作品。",
+            "每個連結都點一次，確認連到你要的地方。",
+            "把視窗拉窄到手機的寬度，看排版有沒有擠在一起或橫向捲動。",
+            "按右鍵選檢視原始碼，搜尋自己的電話、地址與任何金鑰。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "修改：一次只講一件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不要一次丟五個要求，模型會顧此失彼，常常改好一個地方、弄壞另一個。一次一件事，改完看一次，不滿意就說回到上一版。描述要指到具體位置與具體結果，不要用好看一點這種沒有標準的說法。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "修改提示一：只換配色",
+          "code": "只改配色，其他都不要動。\n背景改成米白色，重點色改成深綠色，內文用接近黑的深灰。\n標題與內文的對比要夠，在戶外的手機螢幕上也看得清楚。\n改完請告訴我你動了哪幾個顏色。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "修改提示二：加一段內容",
+          "code": "在作品和聯絡方式中間加一個新的區塊，標題是「最近在做什麼」。\n內容用我給的這三行，照抄，不要改寫：\n- （第一行）\n- （第二行）\n- （第三行）\n樣式沿用現有的卡片，不要新增字型或任何外部資源。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "修改提示三：手機版排版",
+          "code": "只調整手機版的排版，桌機版維持現狀。\n在螢幕寬度 480 像素以下：\n- 卡片改成單欄\n- 左右各留 16 像素的邊\n- 標題字級縮小一級\n- 按鈕改成整行寬\n- 任何情況都不要出現橫向捲動\n改完請說明你用了哪一個斷點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每改完一輪就重新下載檔案、重新打開來看。對話裡的預覽和你手上的檔案是兩件事，改了幾輪之後最容易把中途某一版傳上網。每滿意一次就另存一份備份。"
+        },
+        {
+          "type": "heading",
+          "text": "存檔與放上網",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "檔案準備好之後，把資料夾整理成最單純的樣子：一個 index.html，圖片放在同一個資料夾裡，檔名全用英文小寫、不要有空白。首頁檔名一定要叫 index.html，兩家服務都把它當成入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GitHub Pages 把儲存庫裡的 HTML、CSS 與 JavaScript 直接發布成網站。GitHub Free 的個人帳號就能用，但官方文件寫明免費方案限公開儲存庫，要把 Pages 設成私人的，組織必須使用 GitHub Enterprise Cloud；網址是帳號名稱接上 github.io，專案網站再接儲存庫名稱。官方列出的限制是來源儲存庫建議 1 GB 以內、網站不得超過 1 GB、每月頻寬軟性上限 100 GB、每小時建置軟性上限 10 次。建立儲存庫與指定發布來源的步驟以官方文件為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudflare Pages 可以完全不碰 Git：在控制台進入 Workers 與 Pages，選建立應用程式，把資料夾拖進去，輸入專案名稱後按部署，網址就是專案名稱接上 pages.dev。官方列出的免費方案限制是每月 500 次建置、同時只能跑 1 個建置、每個網站最多 20,000 個檔案、單一檔案最多 25 MiB、每個帳號最多 100 個專案；拖放上傳一次最多 1,000 個檔案。官方現在建議新專案改用 Workers，介面文字可能不同，以官網為準。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/vibe-coding-first-website/diagram-1.svg",
+          "alt": "流程圖：從把需求寫成一段話開始，經過產生 HTML 檔、下載後用瀏覽器打開、一次改一件事，最後放到免費的靜態網站服務並拿到網址",
+          "width": 1600,
+          "height": 900,
+          "caption": "從上往下讀：五個方框是五個步驟，每格中間那行是要做的事，綠色那行是做完要檢查的東西。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "步驟",
+            "用什麼",
+            "檢查什麼"
+          ],
+          "rows": [
+            [
+              "步驟 1：把需求寫成一段話",
+              "文字編輯器或對話輸入框",
+              "目的、內容、風格、不要什麼、技術邊界都寫到了"
+            ],
+            [
+              "步驟 2：產生一個 HTML 檔",
+              "Claude 的 Artifacts、ChatGPT Sites 或 Gemini 的 Canvas",
+              "只有一個檔、檔名是 index.html、沒有連外部資源"
+            ],
+            [
+              "步驟 3：下載後用瀏覽器打開",
+              "你自己的瀏覽器",
+              "錯字、每個連結、視窗拉窄後的排版、原始碼裡沒有個資"
+            ],
+            [
+              "步驟 4：一次只要求改一件事",
+              "同一個對話",
+              "每改一次就重新下載確認，並留一份備份"
+            ],
+            [
+              "步驟 5：放上網",
+              "GitHub Pages 或 Cloudflare Pages 免費方案",
+              "網址打得開、手機上打得開、原始碼裡沒有金鑰"
+            ]
+          ],
+          "caption": "五個步驟與各自的檢查點；方案名稱與限制為 2026 年 9 月 14 日查證，之後以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "四個最常踩的坑",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個是圖片版權。從搜尋結果直接抓圖放上網站是最常見的違規。Creative Commons 的六種授權當中，CC BY 與 CC BY-SA 允許商業使用，帶 NC 的三種只限非商業用途，帶 ND 的兩種不允許改作，六種都要求標示原作者。最安全的還是自己拍、自己畫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個是個資與金鑰。網頁原始碼任何人都能看，GitHub Pages 的網站本來就是發布給所有人看的，不要把身分證號、住家地址或不想公開的電話寫進去，更不要把 API 金鑰貼進 HTML。GitHub 對公開儲存庫免費執行密鑰掃描，但那是事後補救；官方建議一旦外洩就立刻輪換憑證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三個是 AI 產生的內容要自己讀過。模型很會補細節，包括你沒說過的經歷、沒得過的獎、不存在的連結，這就是幻覺。OpenAI 對 ChatGPT Sites 的說明寫得很直接：你要為自己的網站與網站上的內容負責，包含訪客提交的內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第四個是廣告與追蹤。想放廣告或加流量分析，先看代管服務的條款：官方文件寫明，一旦你開始蒐集訪客資訊，就要自己了解並遵守適用的隱私與資料保護法規。免費方案的頻寬與建置次數都是軟性上限。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "上線前最後一次檢查",
+          "text": "把 index.html 用純文字編輯器打開，搜尋自己的電話、住家地址、身分證號，以及任何看起來像金鑰的字串。頁面原始碼所有人都看得到，事後刪掉也可能留在別人的快取裡。已經貼出去的金鑰要當作外洩處理，立刻作廢並重發一組。"
+        },
+        {
+          "type": "heading",
+          "text": "做完第一頁之後",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一頁網站做完，你已經走完描述、產出、檢查、修改、發布這一整圈，換到任何題目都適用。接下來想加頁面與文章列表，會碰到靜態網站產生器；想要自己的網域與主機，會碰到伺服器；想讓 AI 做比較大的功能，就要把需求拆成規劃、實作與驗證三段。"
+        },
+        {
+          "type": "link",
+          "text": "氛圍編碼（Vibe Coding）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-vibe-coding"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 做個人部落格：靜態網站產生器與部署",
+          "url": "https://mokaair.com/zh-TW/life/ai-build-personal-blog-tutorial"
+        },
+        {
+          "type": "link",
+          "text": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
+          "url": "https://mokaair.com/zh-TW/life/deploy-ai-built-site-to-vps"
+        },
+        {
+          "type": "link",
+          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 說明中心：What are artifacts and how do I use them?（官方說明頁）",
+          "url": "https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Claude 說明中心：Publish and share artifacts（官方說明頁）",
+          "url": "https://support.claude.com/en/articles/9547008-publish-and-share-artifacts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心：ChatGPT Release Notes（官方更新記錄）",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心：Creating and managing ChatGPT Sites（官方說明頁）",
+          "url": "https://help.openai.com/en/articles/20001339-creating-and-managing-chatgpt-sites",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 說明中心：Understanding responsibilities for your ChatGPT Sites（官方說明頁）",
+          "url": "https://help.openai.com/en/articles/20001337-understanding-responsibilities-for-your-chatgpt-sites",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gemini 應用程式說明：Create docs, apps & more with Canvas（官方說明頁）",
+          "url": "https://support.google.com/gemini/answer/16047321",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：What is GitHub Pages?（官方文件）",
+          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：GitHub Pages limits（官方文件）",
+          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：GitHub's plans（官方文件）",
+          "url": "https://docs.github.com/en/get-started/learning-about-github/githubs-plans",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：Changing the visibility of your GitHub Pages site（官方文件）",
+          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/changing-the-visibility-of-your-github-pages-site",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GitHub Docs：About secret scanning（官方文件）",
+          "url": "https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare Docs：Cloudflare Pages 總覽（官方文件）",
+          "url": "https://developers.cloudflare.com/pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare Docs：Pages limits（官方文件）",
+          "url": "https://developers.cloudflare.com/pages/platform/limits/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare Docs：Direct Upload（官方文件）",
+          "url": "https://developers.cloudflare.com/pages/get-started/direct-upload/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Creative Commons：About CC Licenses（官方說明頁）",
+          "url": "https://creativecommons.org/share-your-work/cclicenses/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

@@ -29,15 +29,15 @@ from typing import Annotated, Any, Literal
 from uuid import UUID
 from zoneinfo import ZoneInfo
 
-from fastapi import APIRouter, Depends, Header
+from fastapi import APIRouter, Depends, Header, Request
 from pydantic import BaseModel, Field, field_validator, model_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.ai.itinerary import AIPlannerCandidate, planner_providers
+from app.ai.itinerary import PLANNER_WARNING_BUDGET_REACHED, AIPlannerCandidate, planner_providers
 from app.auth.service import CurrentUser
 from app.db import get_session
-from app.infra import enforce_named_rate_limit, get_redis, refund_named_rate_limit
+from app.infra import client_ip, enforce_named_rate_limit, get_redis, refund_named_rate_limit
 from app.models import TripPlanItem
 from app.problems import AppError
 from app.trips.itinerary import ItineraryItem
@@ -60,6 +60,7 @@ Session = Annotated[AsyncSession, Depends(get_session)]
 
 INTENT_MAX_LENGTH = 400
 UNAVAILABLE_DETAIL = "AI 規劃暫時無法使用，這次沒有讀到你的描述，請稍後再試"
+BUDGET_REACHED_DETAIL = "這段時間的 AI 排程次數已用完，這次沒有讀到你的描述，請稍後再試"
 # Shared with /itinerary/preview: an intent preview costs the same provider call
 # as a planner preview, so the two draw on one hourly budget.
 INTENT_PREVIEW_LIMIT = 12
@@ -353,6 +354,7 @@ async def create_trip_intent(
     user: CurrentUser,
     session: Session,
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+    request: Request,
 ) -> dict[str, Any]:
     redis = get_redis()
     request_key = _intent_request_key(user.id, trip_id, idempotency_key, payload)
@@ -393,17 +395,35 @@ async def create_trip_intent(
         day_date=payload.day_date,
     )
     planning, preserved, planning_preserved, candidates = await _build_ai_planning(
-        session, trip, generation, extra_notes=payload.text
+        session, trip, generation, extra_notes=payload.text, source_ip=client_ip(request)
     )
     if planning.planning.status == "fallback":
         # The catalog fallback re-sorts approved places by coordinate and pace;
         # it never reads `notes`, so the sentence had no effect at all.
         # Shipping that as "your refinement" is the dishonesty this feature
-        # exists to avoid, and it is not appliable either. Every provider on the
-        # roster failed after both limiters had counted this call; the traveller
-        # got nothing, so the slots go back.
+        # exists to avoid, and it is not appliable either. Either every provider
+        # on the roster failed, or the planner budget was spent or the trip had
+        # no candidates and none was asked; all of these come after the two
+        # limiters counted this call, and either way the traveller got nothing,
+        # so the slots go back.
         await refund_named_rate_limit("ai-itinerary-intent-trip", f"{user.id}:{trip_id}")
         await refund_named_rate_limit("ai-itinerary-preview-user", str(user.id))
+        if not candidates:
+            # The planner answers an empty pool with the catalogue without asking
+            # anyone. Having no verified place to plan from is a property of the
+            # trip, not an outage, so "try again later" would never come true, and
+            # it outranks a spent budget for the same reason. This is the code and
+            # wording generate and apply already use for needs_setup.
+            raise AppError(
+                422,
+                "itinerary_exact_locations_required",
+                "正式景點或店家不足，原行程保持不變",
+            )
+        if PLANNER_WARNING_BUDGET_REACHED in planning.planning.warnings:
+            # Not an outage, so not the outage's words: "temporarily unavailable"
+            # sends the traveller to retry a door that stays shut until their own
+            # window turns over. The planner budget itself is not refunded here.
+            raise AppError(429, "planner_budget_reached", BUDGET_REACHED_DETAIL)
         raise AppError(503, "ai_planner_unavailable", UNAVAILABLE_DETAIL)
     result, cached_payload = await build_itinerary_preview_envelope(
         session,

@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">ComfyUI 文字生圖工作流的五個節點 / The five nodes of a ComfyUI text-to-image workflow</title>
+  <desc id="desc">由左到右的五格流程圖。第一格 Load Checkpoint 載入模型，分出 MODEL、CLIP、VAE 三條線，整包的 checkpoint 放在 models 底下的 checkpoints 資料夾，拆開的擴散模型放在 diffusion_models。第二格 CLIP Text Encode 寫提示詞，上面那個接 Positive 放你要的東西，下面那個接 Negative 放你不要的東西。第三格 KSampler 在潛在空間逐步去雜訊，主要參數是 seed 控制隨機性、steps 決定去雜訊次數、cfg 決定提示詞約束力、denoise 決定去雜訊強度。第四格 VAE Decode 把潛在空間換回像素空間，VAE 必須跟 checkpoint 同一個家族，混用會出現通道數對不上的張量錯誤。第五格 Save Image 把圖存進 ComfyUI 的 output 資料夾，圖的中繼資料帶著整份工作流與種子，拖回畫面即可還原。下方另外註明兩條線：Empty Latent Image 決定畫布尺寸並接到 KSampler 的 latent_image 輸入；Load Checkpoint 分出來的 VAE 要一路接到最後的 VAE Decode。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">ComfyUI 文字生圖工作流：五個節點怎麼接</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">How the five nodes of a ComfyUI text-to-image workflow connect</text>
+
+  <!-- stage 1 -->
+  <rect x="55" y="140" width="250" height="190" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="180" y="186" text-anchor="middle" font-size="16" fill="#5C6B6B">Load Checkpoint</text>
+  <text x="180" y="222" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">載入模型</text>
+  <text x="180" y="263" text-anchor="middle" font-size="16" fill="#102A2B">分出 MODEL、CLIP</text>
+  <text x="180" y="291" text-anchor="middle" font-size="16" fill="#102A2B">與 VAE 三條線</text>
+
+  <!-- stage 2 -->
+  <rect x="365" y="140" width="250" height="190" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="490" y="186" text-anchor="middle" font-size="16" fill="#5C6B6B">CLIP Text Encode</text>
+  <text x="490" y="222" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">寫提示詞</text>
+  <text x="490" y="263" text-anchor="middle" font-size="16" fill="#102A2B">正向一個、負向一個</text>
+  <text x="490" y="291" text-anchor="middle" font-size="16" fill="#102A2B">編碼成語意向量</text>
+
+  <!-- stage 3 (highlight) -->
+  <rect x="675" y="140" width="250" height="190" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="186" text-anchor="middle" font-size="16" fill="#5C6B6B">KSampler</text>
+  <text x="800" y="222" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">取樣去雜訊</text>
+  <text x="800" y="263" text-anchor="middle" font-size="16" fill="#102A2B">在潛在空間裡</text>
+  <text x="800" y="291" text-anchor="middle" font-size="16" fill="#102A2B">一步一步去掉雜訊</text>
+
+  <!-- stage 4 -->
+  <rect x="985" y="140" width="250" height="190" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1110" y="186" text-anchor="middle" font-size="16" fill="#5C6B6B">VAE Decode</text>
+  <text x="1110" y="222" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">解碼</text>
+  <text x="1110" y="263" text-anchor="middle" font-size="16" fill="#102A2B">潛在空間換回</text>
+  <text x="1110" y="291" text-anchor="middle" font-size="16" fill="#102A2B">看得見的像素空間</text>
+
+  <!-- stage 5 -->
+  <rect x="1295" y="140" width="250" height="190" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1420" y="186" text-anchor="middle" font-size="16" fill="#5C6B6B">Save Image</text>
+  <text x="1420" y="222" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">存檔</text>
+  <text x="1420" y="263" text-anchor="middle" font-size="16" fill="#102A2B">預覽並存進</text>
+  <text x="1420" y="291" text-anchor="middle" font-size="16" fill="#102A2B">ComfyUI/output</text>
+
+  <!-- arrows between stages -->
+  <line x1="311" y1="235" x2="357" y2="235" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="621" y1="235" x2="667" y2="235" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="931" y1="235" x2="977" y2="235" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1241" y1="235" x2="1287" y2="235" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- detail cards -->
+  <rect x="55" y="372" width="250" height="196" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="180" y="410" text-anchor="middle" font-size="17" font-weight="bold" fill="#2F6F9F">模型檔放哪裡</text>
+  <text x="180" y="446" text-anchor="middle" font-size="15" fill="#102A2B">整包 checkpoint 放</text>
+  <text x="180" y="474" text-anchor="middle" font-size="15" fill="#102A2B">models/checkpoints</text>
+  <text x="180" y="508" text-anchor="middle" font-size="15" fill="#102A2B">拆開的擴散模型放</text>
+  <text x="180" y="536" text-anchor="middle" font-size="15" fill="#102A2B">models/diffusion_models</text>
+
+  <rect x="365" y="372" width="250" height="196" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="490" y="410" text-anchor="middle" font-size="17" font-weight="bold" fill="#2F6F9F">兩個提示詞節點</text>
+  <text x="490" y="446" text-anchor="middle" font-size="15" fill="#102A2B">接 Positive 的那個</text>
+  <text x="490" y="474" text-anchor="middle" font-size="15" fill="#102A2B">寫你要的東西</text>
+  <text x="490" y="508" text-anchor="middle" font-size="15" fill="#102A2B">接 Negative 的那個</text>
+  <text x="490" y="536" text-anchor="middle" font-size="15" fill="#102A2B">寫你不要的東西</text>
+
+  <rect x="675" y="372" width="250" height="196" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="410" text-anchor="middle" font-size="17" font-weight="bold" fill="#2F6F9F">主要參數</text>
+  <text x="800" y="446" text-anchor="middle" font-size="15" fill="#102A2B">seed 控制隨機性</text>
+  <text x="800" y="474" text-anchor="middle" font-size="15" fill="#102A2B">steps 去雜訊次數</text>
+  <text x="800" y="508" text-anchor="middle" font-size="15" fill="#102A2B">cfg 提示詞約束力</text>
+  <text x="800" y="536" text-anchor="middle" font-size="15" fill="#102A2B">denoise 去雜訊強度</text>
+
+  <rect x="985" y="372" width="250" height="196" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1110" y="410" text-anchor="middle" font-size="17" font-weight="bold" fill="#2F6F9F">最常見的錯誤</text>
+  <text x="1110" y="446" text-anchor="middle" font-size="15" fill="#102A2B">VAE 要跟 checkpoint</text>
+  <text x="1110" y="474" text-anchor="middle" font-size="15" fill="#102A2B">同一個家族</text>
+  <text x="1110" y="508" text-anchor="middle" font-size="15" fill="#102A2B">混用會出現通道數</text>
+  <text x="1110" y="536" text-anchor="middle" font-size="15" fill="#102A2B">對不上的張量錯誤</text>
+
+  <rect x="1295" y="372" width="250" height="196" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1420" y="410" text-anchor="middle" font-size="17" font-weight="bold" fill="#2F6F9F">輸出在哪裡</text>
+  <text x="1420" y="446" text-anchor="middle" font-size="15" fill="#102A2B">存進 ComfyUI/output</text>
+  <text x="1420" y="474" text-anchor="middle" font-size="15" fill="#102A2B">圖的中繼資料帶著</text>
+  <text x="1420" y="508" text-anchor="middle" font-size="15" fill="#102A2B">整份工作流與種子</text>
+  <text x="1420" y="536" text-anchor="middle" font-size="15" fill="#102A2B">拖回畫面就能還原</text>
+
+  <!-- note band -->
+  <rect x="55" y="620" width="1490" height="182" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="90" y="666" font-size="20" font-weight="bold" fill="#D97A2B">圖上沒單獨畫、但一定要接的兩條線</text>
+  <text x="90" y="708" font-size="17" fill="#102A2B">Empty Latent Image（空白潛在影像）決定畫布尺寸，接到 KSampler 的 latent_image 輸入。</text>
+  <text x="90" y="742" font-size="17" fill="#102A2B">Load Checkpoint 分出來的 VAE，要一路接到最後的 VAE Decode；新一代模型改由分開的載入節點提供這三條線。</text>
+  <text x="90" y="776" font-size="17" fill="#5C6B6B">按 Run 或 Ctrl + Enter 排入佇列；只有輸入齊全的部分會執行，第二次只重跑有變動的部分。</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

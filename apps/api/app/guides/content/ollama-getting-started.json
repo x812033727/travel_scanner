@@ -1,0 +1,405 @@
+{
+  "slug": "ollama-getting-started",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+      "description": "Ollama 是在自己電腦跑本機 AI 的入門工具，官網下載頁寫 macOS 要 14 Sonoma 或更新版本、Windows 要 10 或更新版本。這篇照官方文件走完安裝、第一次對話、看懂模型庫的標籤與大小、用 ollama ps 確認模型跑在顯示卡還是 CPU，再從 curl 與 Python 呼叫本機 11434 埠的 API，最後說清楚結尾帶 cloud 的標籤是雲端模型、怎麼關掉。",
+      "hero": {
+        "src": "/guides/ollama-getting-started/hero.jpg",
+        "alt": "插圖：一台筆電螢幕上的對話框，旁邊有下載箭頭、硬碟與晶片，一條線連到程式端點。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Ollama 把開放權重模型下載到自己的電腦上執行，官方對三個作業系統各給一行安裝指令，裝完在終端機打一個字就能開始對話，本機執行不需要帳號，打進去的字不會送出去。搜「本機 AI」找到 Ollama 的人，裝完先跑這一步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你做四件事：照官方需求裝好、拉一個模型開始聊、看懂模型庫頁的標籤與檔案大小、從 curl 或 Python 呼叫本機端點。模型存在哪裡、有沒有用到顯示卡、哪些標籤其實是雲端模型也會一起講。"
+        },
+        {
+          "type": "heading",
+          "text": "安裝：三個系統各一行指令",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官網下載頁對 macOS 與 Linux 給同一行：把安裝腳本交給 shell 執行；Windows 則是在 PowerShell 裡執行 install.ps1。不想跑腳本，下載頁也各有安裝檔，macOS 是 Ollama.dmg、Windows 是 OllamaSetup.exe。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "安裝 Ollama（macOS 與 Linux 終端機）",
+          "code": "curl -fsSL https://ollama.com/install.sh | sh"
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "label": "安裝 Ollama（Windows PowerShell）",
+          "code": "irm https://ollama.com/install.ps1 | iex"
+        },
+        {
+          "type": "paragraph",
+          "text": "系統需求分散在官方的 macOS、Windows 與硬體支援三頁："
+        },
+        {
+          "type": "list",
+          "items": [
+            "macOS：Sonoma（14）或更新版本；Apple M 系列可用 CPU 與 GPU，x86 只有 CPU。",
+            "Windows：10 22H2 或更新版本，Home 或 Pro 都可以。",
+            "顯示卡：NVIDIA 要 compute capability 5.0 以上與 550 以上驅動，5.0 到 6.2 的卡要 570 以上；Windows 那頁寫 551.61 以上。AMD 走 ROCm v7 或 Vulkan。",
+            "硬碟：Windows 文件寫安裝本身至少 4GB，模型另外算，官方形容是「幾十到幾百 GB」。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "macOS 建議掛載 dmg、把 Ollama 拖進「應用程式」；Windows 的安裝程式不需要管理員權限，裝在使用者目錄，裝完在背景執行，cmd 與 PowerShell 都有 ollama 指令。兩邊另有桌面程式，官方文件提到設定頁可以登入帳號、拉滑桿改上下文長度，介面以官網當天版本為準。"
+        },
+        {
+          "type": "link",
+          "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+        },
+        {
+          "type": "heading",
+          "text": "第一次對話：ollama、ollama run、/bye",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方快速入門拆成兩步：終端機輸入 ollama 會開一個互動選單，可以選跑模型或把 Ollama 接到 Claude Code、VS Code 這類工具；想直接開始就用 ollama run 加模型名稱。官方示範的是 Gemma 4，指令寫成 gemma4，離開對話輸入 /bye。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "從安裝到第一次對話",
+          "code": "ollama                 # 打開互動選單\nollama pull gemma4     # 先把模型下載下來\nollama run gemma4      # 進入對話\n/bye                   # 離開對話"
+        },
+        {
+          "type": "heading",
+          "text": "常用指令：一張表看完",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "要記的指令不多，下面是官方 CLI 參考頁列出的常用項目，模型名稱換成你拉的那個即可。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "指令",
+            "做什麼"
+          ],
+          "rows": [
+            [
+              "ollama",
+              "打開互動選單，選模型或整合"
+            ],
+            [
+              "ollama run gemma4",
+              "執行模型並進入對話"
+            ],
+            [
+              "ollama pull gemma4",
+              "只下載模型，不對話"
+            ],
+            [
+              "ollama ls",
+              "列出已下載的模型"
+            ],
+            [
+              "ollama ps",
+              "列出記憶體裡的模型，看它跑在哪"
+            ],
+            [
+              "ollama stop gemma4",
+              "把模型從記憶體卸載"
+            ],
+            [
+              "ollama rm gemma4",
+              "刪掉模型，把空間拿回來"
+            ],
+            [
+              "ollama launch claude",
+              "設定外部程式用 Ollama 模型"
+            ],
+            [
+              "ollama serve --help",
+              "列出所有可以設定的環境變數"
+            ]
+          ],
+          "caption": "來源：Ollama 官方 CLI 參考頁，2026 年 9 月查證。"
+        },
+        {
+          "type": "link",
+          "text": "把本機模型接到編輯器：Continue、Cursor 與 Ollama",
+          "url": "https://mokaair.com/zh-TW/life/ollama-with-code-editors"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ollama-getting-started/diagram-1.svg",
+          "alt": "四格流程圖：安裝、拉模型、對話、接 API，下方一排是模型位置、GPU 確認與雲端標籤三個檢查點。",
+          "width": 1600,
+          "height": 900,
+          "caption": "上排是從安裝到接 API 的四個步驟與每一步的指令，下排是這四步中間會用到的三個設定。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "看懂模型庫頁：標籤、大小與上下文",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型清單在官網的 library 頁，預設照 Popular 排序，也能切成 Newest；卡片上寫有哪些標籤與 tools、thinking、vision、cloud 這類能力標記。點進去的清單分四欄：名稱、大小與用量、上下文、輸入型態。以 gemma4 為例，當天標示共 50 個標籤："
+        },
+        {
+          "type": "list",
+          "items": [
+            "gemma4:e2b：7.2GB、128K 上下文視窗；官網說 E 代表有效參數，給邊緣裝置。",
+            "gemma4:e4b：9.6GB、128K，官網標示 latest 指向它，所以跟 gemma4:latest 同一個。",
+            "gemma4:12b：7.6GB、256K。",
+            "gemma4:26b：19GB、256K，官網註明是 4B 活躍參數的混合專家模型。",
+            "gemma4:31b：20GB、256K，是密集模型。",
+            "gemma4:cloud 與 gemma4:31b-cloud：大小欄是「-」，不用下載。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "兩件事先弄清楚：大小欄是下載大小不是參數量，同一個參數規模常有好幾個大小不同的標籤，差在用幾位元存放參數；上下文欄是模型支援的上限，不等於你實際拿到多少。標籤旁的 MLX 之類標記是另一種建置版本，用途以官網為準。"
+        },
+        {
+          "type": "link",
+          "text": "模型參數（Model Parameters）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+        },
+        {
+          "type": "link",
+          "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+          "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+        },
+        {
+          "type": "link",
+          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+        },
+        {
+          "type": "heading",
+          "text": "模型放在哪、有沒有跑在 GPU 上",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方常見問答列出預設位置：macOS 在使用者目錄底下的 .ollama/models，Linux 在 /usr/share/ollama/.ollama/models，Windows 在使用者資料夾底下的 .ollama\\models。系統碟撐不住幾十 GB，就設 OLLAMA_MODELS 環境變數指到別的磁碟；Windows 在「編輯這個帳戶的環境變數」裡新增，存檔後結束 Ollama 重開。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有沒有用到顯示卡，用 ollama ps 看得到，官方給的輸出長這樣："
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "ollama ps 的輸出（官方文件範例）",
+          "code": "NAME             ID              SIZE      PROCESSOR    CONTEXT    UNTIL\ngemma4:latest    c6eb396dbd59    9.6 GB    100% GPU     131072     2 minutes from now"
+        },
+        {
+          "type": "paragraph",
+          "text": "PROCESSOR 那欄有三種讀法：100% GPU 是整個模型進了顯示記憶體，100% CPU 是全靠系統記憶體，48%/52% CPU/GPU 是被拆成兩邊、速度會掉，官方建議別落到 CPU。模型載入後預設留在記憶體 5 分鐘才卸載。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上下文長度有兩個官方說法：常見問答寫預設 4096 個 token，可用 OLLAMA_CONTEXT_LENGTH 覆寫；上下文長度那頁寫 Ollama 依顯示記憶體給預設值，小於 24 GiB 給 4K、24 到 48 GiB 給 32K、48 GiB 以上給 256K，並建議代理與寫程式至少設到 64000 個 token。"
+        },
+        {
+          "type": "link",
+          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+        },
+        {
+          "type": "heading",
+          "text": "接上本機 API：REST 與 OpenAI 相容端點",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "裝好之後 API 就自己跑起來，官方寫的本機基底網址是 localhost:11434 底下的 /api。下面兩個 curl 是最短的呼叫：前一個是 Ollama 的 REST API，後一個是 OpenAI 相容端點，路徑換成 /v1。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "用 curl 呼叫本機的兩個端點",
+          "code": "# Ollama 自己的 REST API\ncurl http://localhost:11434/api/chat -d '{\n  \"model\": \"gemma4\",\n  \"messages\": [{\"role\": \"user\", \"content\": \"Why is the sky blue?\"}],\n  \"stream\": false\n}'\n\n# OpenAI 相容端點\ncurl -X POST http://localhost:11434/v1/chat/completions \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n  \"model\": \"gpt-oss:20b\",\n  \"messages\": [{ \"role\": \"user\", \"content\": \"Say this is a test\" }]\n}'"
+        },
+        {
+          "type": "paragraph",
+          "text": "Python 兩種寫法都照官方文件原文。官方套件最短；已經用 OpenAI 函式庫寫好的程式，只要把 base_url 指到本機的 /v1，金鑰隨便填，官方註解寫這欄必填但會被忽略。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "Python：官方套件與 OpenAI 相容寫法",
+          "code": "# 官方 ollama 套件（先 pip install ollama）\nfrom ollama import chat\n\nresponse = chat(\n    model='gemma4',\n    messages=[{'role': 'user', 'content': 'Why is the sky blue?'}],\n)\nprint(response.message.content)\n\n# OpenAI 函式庫改個網址就能用\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url='http://localhost:11434/v1/',\n    api_key='ollama',  # required but ignored\n)\n\nchat_completion = client.chat.completions.create(\n    messages=[{'role': 'user', 'content': 'Say this is a test'}],\n    model='gpt-oss:20b',\n)\nprint(chat_completion.choices[0].message.content)"
+        },
+        {
+          "type": "paragraph",
+          "text": "相容到什麼程度官方逐項列了：聊天端點支援串流、JSON 模式、看圖與工具呼叫，不支援 tool_choice；另外還有模型清單、嵌入與 0.13.3 版加入的 responses 端點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個端點預設只綁 127.0.0.1 的 11434 埠。要讓區網其他裝置連得到得改 OLLAMA_HOST，官方例子是 0.0.0.0:11434。沒需要就不要改：那等於把不用密碼的模型端點開給整個網路。"
+        },
+        {
+          "type": "link",
+          "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
+          "url": "https://mokaair.com/zh-TW/life/open-webui-chat-interface"
+        },
+        {
+          "type": "heading",
+          "text": "哪些標籤其實是雲端：cloud 與 OLLAMA_NO_CLOUD",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官網上架的模型不是全部都在你的電腦上跑。雲端模型那頁寫得很清楚：這種模型會自動轉到 Ollama 的雲端服務執行，不用強力顯示卡也能跑裝不下的大模型，用法跟本機一樣，但要先 ollama signin 登入。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "結尾帶 cloud 的標籤不是在你的電腦上跑",
+          "text": "本機與雲端模型在同一個模型庫、同一行指令底下，差別只在標籤。跑之前看三件事：標籤結尾有沒有 cloud、大小欄是不是「-」、有沒有要你登入。想讓整台機器完全不碰雲端，官方給兩個做法：在使用者目錄的 .ollama/server.json 裡把 disable_ollama_cloud 設成 true，或設 OLLAMA_NO_CLOUD=1，重開後日誌會出現「Ollama cloud disabled: true」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "隱私問題官方常見問答的原文是：「Ollama runs locally. We don't see your prompts or data when you run locally.」用雲端模型時官方寫會處理提示詞與回應以提供服務，但不儲存、不記錄，也不拿去訓練。"
+        },
+        {
+          "type": "paragraph",
+          "text": "費用只有雲端才有。官網 Pricing 頁列 Free 每月 0 美元、Pro 每月 20 美元、Max 每月 100 美元，雲端模型按每百萬 token 計價，單價以該頁為準。在自己電腦上跑不用付錢，也不用帳號。"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "paragraph",
+          "text": "不想碰終端機，圖形介面的工具是另一條路；想拿一個具體模型從頭走一次，站上有一篇專講在 Ollama 上跑 DeepSeek 蒸餾版。"
+        },
+        {
+          "type": "link",
+          "text": "LM Studio 入門：圖形介面跑本機模型",
+          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+        },
+        {
+          "type": "link",
+          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ollama 官網下載頁（安裝指令、Ollama.dmg 與 OllamaSetup.exe、macOS 14 Sonoma 與 Windows 10 的需求）",
+          "url": "https://ollama.com/download",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama GitHub README（三個系統的安裝方式、REST API 與 Python 範例、ollama launch）",
+          "url": "https://github.com/ollama/ollama",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：快速入門（ollama 選單、ollama run gemma4、/bye）",
+          "url": "https://docs.ollama.com/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：CLI 參考（run、launch、pull、rm、ls、ps、stop、signin、serve 等指令）",
+          "url": "https://docs.ollama.com/cli",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：macOS（系統需求、dmg 安裝方式、檔案與日誌位置）",
+          "url": "https://docs.ollama.com/macos",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：Windows（Windows 10 22H2、4GB 安裝空間、OLLAMA_MODELS 設定步驟、11434 埠）",
+          "url": "https://docs.ollama.com/windows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：Linux（安裝腳本與手動安裝）",
+          "url": "https://docs.ollama.com/linux",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：硬體支援（NVIDIA compute capability 與驅動版本、AMD ROCm 與 Vulkan）",
+          "url": "https://docs.ollama.com/gpu",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：上下文長度（依顯示記憶體的 4K／32K／256K 預設值、64000 token 建議、App 滑桿）",
+          "url": "https://docs.ollama.com/context-length",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：常見問答（4096 預設上下文、ollama ps 的 PROCESSOR 欄、模型存放位置、環境變數、隱私、關閉雲端）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：API 介紹（本機基底網址 localhost:11434）",
+          "url": "https://docs.ollama.com/api/introduction",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：OpenAI 相容性（/v1 端點、支援欄位、responses 端點與 0.13.3 版）",
+          "url": "https://docs.ollama.com/api/openai-compatibility",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 說明文件：雲端模型（需要登入、自動轉到 Ollama 雲端執行）",
+          "url": "https://docs.ollama.com/cloud",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫首頁（Popular 與 Newest 排序、能力標記）",
+          "url": "https://ollama.com/library",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 模型庫：gemma4（各標籤的下載大小、上下文視窗、輸入型態與 cloud 標籤）",
+          "url": "https://ollama.com/library/gemma4",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ollama 官網 Pricing 頁（Free、Pro、Max、Team 月費與雲端模型計價）",
+          "url": "https://ollama.com/pricing",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

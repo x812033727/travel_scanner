@@ -1,0 +1,114 @@
+
+> build:web
+> npm run build --workspace @travel-scanner/web
+
+
+> @travel-scanner/web@0.1.0 build
+> next build
+
+▲ Next.js 16.3.4 (Turbopack)
+✓ Running next.config.ts took 2.1s
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 77s
+  Running TypeScript ...
+  Finished TypeScript in 2.4min ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/293) ...
+  Generating static pages using 7 workers (73/293) 
+  Generating static pages using 7 workers (146/293) 
+  Generating static pages using 7 workers (219/293) 
+✓ Generating static pages using 7 workers (293/293) in 13.2s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /[locale]
+├ ƒ /[locale]/[...rest]
+├ ƒ /[locale]/about
+├ ƒ /[locale]/account
+├ ƒ /[locale]/account/confirm
+├ ƒ /[locale]/admin
+├ ƒ /[locale]/admin/analytics
+├ ƒ /[locale]/admin/audit
+├ ƒ /[locale]/admin/catalog-review
+├ ƒ /[locale]/admin/community
+├ ƒ /[locale]/admin/database
+├ ƒ /[locale]/admin/deployments
+├ ƒ /[locale]/admin/foods
+├ ƒ /[locale]/admin/guides
+├ ƒ /[locale]/admin/hotels
+├ ƒ /[locale]/admin/hotspots
+├ ƒ /[locale]/admin/layout-settings
+├ ƒ /[locale]/admin/partners
+├ ƒ /[locale]/admin/pet-friendly
+├ ƒ /[locale]/admin/settings
+├ ƒ /[locale]/admin/site-pages
+├ ƒ /[locale]/admin/system-settings
+├ ƒ /[locale]/admin/travel-services
+├ ƒ /[locale]/admin/ui-text
+├ ƒ /[locale]/admin/usage-settings
+├ ƒ /[locale]/admin/users
+├ ƒ /[locale]/alerts
+├ ƒ /[locale]/community
+├ ƒ /[locale]/community/collections
+├ ƒ /[locale]/community/drafts
+├ ƒ /[locale]/community/messages
+├ ƒ /[locale]/community/new
+├ ƒ /[locale]/community/posts/[id]
+├ ƒ /[locale]/community/posts/[id]/edit
+├ ƒ /[locale]/community/profiles/[handle]
+├ ƒ /[locale]/community/search
+├ ƒ /[locale]/community/settings
+├ ƒ /[locale]/contact
+├ ƒ /[locale]/destinations
+├ ƒ /[locale]/destinations/[destinationId]
+├ ƒ /[locale]/destinations/[destinationId]/services
+├ ƒ /[locale]/explore
+├ ƒ /[locale]/explore/collections
+├ ƒ /[locale]/flights/status
+├ ƒ /[locale]/foods
+├ ƒ /[locale]/forgot-password
+├ ƒ /[locale]/guides
+├ ƒ /[locale]/guides/[kind]
+├ ƒ /[locale]/guides/[kind]/[slug]
+├ ƒ /[locale]/hotels/[productId]
+├ ƒ /[locale]/hotspots
+├ ƒ /[locale]/labs/airlines
+├ ƒ /[locale]/life
+├ ƒ /[locale]/life/[slug]
+├ ƒ /[locale]/line/link
+├ ƒ /[locale]/login
+├ ƒ /[locale]/my
+├ ƒ /[locale]/out/guides/[guideId]
+├ ƒ /[locale]/out/hotspots/[hotspotId]/source
+├ ƒ /[locale]/pet-friendly
+├ ƒ /[locale]/pet-friendly/[id]
+├ ƒ /[locale]/pricing
+├ ƒ /[locale]/privacy
+├ ƒ /[locale]/register
+├ ƒ /[locale]/search
+├ ƒ /[locale]/search/new
+├ ƒ /[locale]/share-target
+├ ƒ /[locale]/share/[token]
+├ ƒ /[locale]/terms
+├ ƒ /[locale]/trips
+├ ƒ /[locale]/trips/[id]
+├ ƒ /[locale]/trips/[id]/print
+├ ƒ /[locale]/trips/new
+├ ƒ /api/auth/oauth/[provider]/callback
+├ ƒ /api/auth/oauth/[provider]/start
+├ ƒ /api/line/webhook
+├ ƒ /api/travel/[...path]
+├ ○ /apple-icon.png
+├ ○ /icon.svg
+├ ○ /manifest.webmanifest
+├ ○ /robots.txt
+└ ƒ /sitemap.xml
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

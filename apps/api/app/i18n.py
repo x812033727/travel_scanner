@@ -1,5 +1,5 @@
 from contextvars import ContextVar, Token
-from typing import Annotated, Literal, cast
+from typing import Annotated, Literal
 
 from fastapi import Header
 
@@ -239,6 +239,10 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "place_provider_not_configured": "Place search for South Korea is not enabled",
         "place_provider_not_found": "That place source is not supported",
         "plan_not_found": "That optimization result could not be found",
+        "planner_budget_reached": (
+            "AI planning has reached its limit for now, so your description was not read. "
+            "Try again later"
+        ),
         "provider_not_configured": "No live pricing provider is available for this search",
         "provider_unavailable": "The original flight provider is unavailable right now",
         "rate_limit_unavailable": "The safety check service is temporarily unavailable",
@@ -436,6 +440,10 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "place_provider_not_configured": "韓国の地点検索は有効になっていません",
         "place_provider_not_found": "対応していない地点の提供元です",
         "plan_not_found": "最適化のプランが見つかりません",
+        "planner_budget_reached": (
+            "現在 AI 作成の上限に達しているため、入力内容は読み取られませんでした。"
+            "しばらくしてからお試しください"
+        ),
         "provider_not_configured": "この検索に使えるリアルタイム価格の提供元がありません",
         "provider_unavailable": "元の航空券の提供元が現在利用できません",
         "rate_limit_unavailable": "安全確認のサービスが一時的に利用できません",
@@ -618,6 +626,11 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "place_provider_not_configured": "한국 장소 검색이 활성화되지 않았습니다",
         "place_provider_not_found": "지원하지 않는 장소 제공자입니다",
         "plan_not_found": "최적화 결과를 찾을 수 없습니다",
+        "planner_budget_reached": (
+            "현재 AI 일정 생성 한도에 도달해 입력한 "
+            "설명을 읽지 못했습니다. 잠시 후 다시 시도해 "
+            "주세요"
+        ),
         "provider_not_configured": "이 검색에 사용할 실시간 가격 공급사가 없습니다",
         "provider_unavailable": "원래 항공권 공급사를 지금 사용할 수 없습니다",
         "rate_limit_unavailable": "보안 확인 서비스를 일시적으로 사용할 수 없습니다",
@@ -804,6 +817,9 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "place_provider_not_configured": "韩国地点搜索服务尚未启用",
         "place_provider_not_found": "不支持的地点来源",
         "plan_not_found": "找不到最佳化方案",
+        "planner_budget_reached": (
+            "这段时间的 AI 排程次数已用完，这次没有读到你的描述，请稍后再试"
+        ),
         "provider_not_configured": "目前没有可用于这次搜索的实时查价供应商",
         "provider_unavailable": "原始航班供应商目前无法使用",
         "rate_limit_unavailable": "安全验证服务暂时无法使用",
@@ -1890,7 +1906,7 @@ def active_locale() -> Locale:
 
 def normalize_locale(value: str | None) -> Locale:
     if value in LOCALES:
-        return cast(Locale, value)
+        return value
     return DEFAULT_LOCALE
 
 

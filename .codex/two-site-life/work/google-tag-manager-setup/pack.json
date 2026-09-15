@@ -1,0 +1,257 @@
+{
+  "slug": "google-tag-manager-setup",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "misc"
+  ],
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Google Tag Manager 上手：標籤、觸發條件與發布紀錄",
+      "description": "Google Tag Manager 可以集中管理網站標籤，但建立容器、儲存設定與正式發布是不同步驟。本文以原創帆布修補店為例，說明標籤、觸發條件與變數如何配合，整理容器安裝、資料層事件、同意設定、預覽與版本紀錄。附操作流程、比較表及原創圖解，協助網站負責人把每次追蹤修改做成可以檢查、交接與復原的工作。",
+      "hero": {
+        "src": "/guides/google-tag-manager-setup/hero.jpg",
+        "alt": "Mokaair 原創設定文件、網站螢幕與版本資料夾，表達 GTM 的觸發條件、草稿預覽及發布交接流程。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "帆布修補店想知道訪客是否查看估價說明，行銷人員希望加追蹤，建站人員則擔心每次改頁面都要重新貼程式碼。GTM 可以集中管理標籤，但前提是知道每個標籤負責什麼、何時執行，以及哪個版本已經上線。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇依 2026 年 9 月 14 日查閱的 Google Tag Manager 官方文件整理，以網站 Web 容器為範圍。修補店、命名與交接情境皆為原創，沒有替任何網站安裝容器或發布標籤；實際操作仍要核對網站目前的整合方式和管理權限。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分清楚容器、標籤、觸發條件與變數"
+        },
+        {
+          "type": "paragraph",
+          "text": "GTM 帳戶協助管理組織的容器，網站容器則收納標籤、觸發條件與變數。標籤決定要執行的量測或服務設定，觸發條件決定何時執行，變數提供頁面網址、事件名稱等可用值。它不是 GA4 報表本身，安裝 GTM 也不代表已自動取得所有網站成效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以原創修補店的估價說明下載為例，先決定要記錄的行為，再選對應標籤與觸發條件。需要的變數可以是文件類別或連結網址；如果需求只是分辨說明文件，不需要附上客戶姓名。每個欄位都應有用途，讓未參與建置的人也能理解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開始前整理既有 CMS 外掛、主題追蹤及其他容器，避免把相同服務重複搬進 GTM。工作室可用用途、事件及適用頁面來命名，例如估價說明下載，而不是只叫新標籤。命名是團隊約定，不是 Google 強制格式，重點在交接時能找得到。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "建立 Web 容器並安裝正確的程式碼"
+        },
+        {
+          "type": "paragraph",
+          "text": "在官方 Tag Manager 入口選擇適當帳戶，建立以網站辨識的容器並選 Web 類型。一般不需要每個網頁各開一個容器；若接手已有網站，先確認既有容器的用途與權限，再決定是否真的需要新增。容器 ID 與 GA4 的量測 ID 各有用途，不要填到錯的欄位。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手動安裝時，官方提供兩段容器程式碼：第一段放在 head 區域盡可能前方，第二段緊接在 body 起始標籤後方，並使用自己的容器 ID。若透過 CMS 外掛或整合處理，依該工具的正確方式設定，避免外掛已插入後又手動貼一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝後先驗證主要頁面確實載入預期容器，包括使用不同樣板的服務頁與表單頁。原創修補店可能首頁正常、估價頁卻由另一套樣板產生，因此不能只測首頁就交件。若無權修改網站程式，將容器資訊交給維護者處理，不要用不明來源腳本替代正式安裝。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "標籤要搭配明確事件與可用資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要 GA4 時，依目前官方流程建立 Google tag，填入正確 Tag ID，再配置後續事件；其他服務則使用其相應範本和文件。Google 官方提醒，不應用 Custom HTML 來部署以 gtag.js 為基礎的 Google 量測碼，已有原生範本時先沿用支援方式，方便檢查設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果網站的操作結果需要自行傳遞，可請維護者透過資料層提供事件名稱與所需值，再讓自訂事件觸發條件監聽。原創店家可約定估價說明的文件類別，在事件發生時一併提供。不要只依按鈕顏色、排列位置或某段容易更動的文字，判斷最重要的業務事件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料層不是長期保存客戶資料的資料庫。官方要求不要覆寫已存在的 dataLayer，且要維持命名與大小寫一致；事件與值的送入順序也會影響標籤取得的內容。若某事件需要當下的新值，應讓技術人員一起設計和驗證，不要在介面隨意補一個變數就假設資料已存在。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把使用者選擇接到標籤行為"
+        },
+        {
+          "type": "paragraph",
+          "text": "同意模式用來傳遞使用者的同意狀態，並依狀態調整支援標籤的行為，它本身不提供 Cookie 橫幅。網站仍需安排取得選擇的介面、傳遞選擇的方法，以及各標籤如何反應。裝了橫幅或啟用某個範本，都不能單獨當作整套流程已驗證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Consent Initialization 觸發條件是給設定或更新同意狀態的標籤使用，不是所有想提早執行的標籤都放進去。一般初始化與同意初始化用途不同；需要同意管理時，依官方支援的範本及介面設定，避免把一般分析事件放在最早階段，反而破壞既定順序。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方區分基本與進階同意模式；進階模式在拒絕時仍可能傳送無 Cookie 訊號，所以拒絕不一定等於完全沒有網路請求。原創修補店應記下選用方式及預期行為，分別測試尚未選擇、同意與拒絕。第三方標籤是否有內建檢查也要各自核對，不能假設全部會自動遵從。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先用預覽檢查，再決定正式發布"
+        },
+        {
+          "type": "paragraph",
+          "text": "在正確工作區選 Preview，輸入已安裝容器的網站網址並連線，回 Tag Assistant 查看事件順序與標籤。預覽讓測試瀏覽器以草稿設定操作，並不是讓所有一般訪客都使用草稿。可檢查哪些標籤觸發、哪些沒有觸發，以及當下傳遞的值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原創驗收可測估價說明連結、其他無關連結與重複操作，確認只有目標情境符合條件。若事件應代表下載連結點擊，就不要在報告寫成顧客已讀完文件；若要代表表單成功，則須另外驗證成功狀態。標籤顯示已觸發，也還要到資料目的地確認收到正確資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "準備發布時，查看 Workspace Changes，確認這次包含的所有標籤、觸發條件和變數，不只剛才改的那一項。由有權限的人選 Submit，填寫版本名稱、說明與適當環境，再發布。只選 Create Version 是保存版本，不會等同 Publish and Create Version 的上線動作。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "確認帳戶容器與網站安裝來源，盤點既有追蹤及負責人。",
+            "定義標籤用途、觸發事件和變數，核對資料層與同意設定。",
+            "用預覽測目標、非目標及同意情境，核對資料目的地。",
+            "檢查完整變更清單後發布，記錄版本並安排發布後驗收。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "版本紀錄要讓下一個人能接手"
+        },
+        {
+          "type": "paragraph",
+          "text": "GTM 版本是某個時間點的容器設定快照，發布歷史可查看何時由誰上線。原創修補店的版本說明可以寫新增估價說明連結量測、適用頁面及已測情境，並附負責人的交接紀錄。只寫修正或最新版，過一陣子就很難判斷應回到哪個狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "發現問題時，先確認是新版本設定、網站改版或資料接收造成，再評估是否發布先前已驗證的版本。Set as Latest Version 是把舊設定帶回目前草稿，仍需適當發布才會改變上線狀態。回復容器也不會刪除已送出的事件，或把網站本身的程式改版一併復原。"
+        },
+        {
+          "type": "paragraph",
+          "text": "發布後離開預覽，用一般瀏覽情境再檢查目前正式版本的行為，並核對接收資料。若多人維護，先約定誰能編輯、誰能發布及如何交接；GTM 360 的內建核准流程不是所有帳戶都有。清楚的人工檢查和版本說明，仍能讓小團隊降低誤發與重複追蹤的機會。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/google-tag-manager-setup/diagram-1.svg",
+          "alt": "四張卡片依序顯示容器盤點、事件設定、草稿預覽與版本發布，提醒資料接收與正式狀態要另外驗證。",
+          "width": 1600,
+          "height": 900,
+          "caption": "儲存、預覽、發布與接收資料，各自有不同的完成依據。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "負責的事情",
+            "常見誤解"
+          ],
+          "rows": [
+            [
+              "Web 容器",
+              "集中管理網站標籤設定",
+              "每個頁面都要新容器"
+            ],
+            [
+              "標籤",
+              "執行特定量測或服務",
+              "裝 GTM 就自動完成 GA4"
+            ],
+            [
+              "觸發條件",
+              "判斷何時執行",
+              "只要事件名字像成功就算成功"
+            ],
+            [
+              "變數與資料層",
+              "提供標籤需要的值",
+              "建立變數就會自動產生資料"
+            ],
+            [
+              "Preview",
+              "在測試情境驗證草稿",
+              "預覽通過代表全站已發布"
+            ],
+            [
+              "版本與發布",
+              "保存設定並控制上線",
+              "存版本或回草稿就會立即上線"
+            ]
+          ],
+          "caption": "原創工作分工表，以 Web 容器為範圍，不混用伺服器容器或應用程式 SDK 的操作。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "發布前看完整變更清單",
+          "text": "一個工作區可能累積多人的調整。發布會帶出該版本的設定，先確認所有項目及資料目的地，再由有權限的人執行。"
+        },
+        {
+          "type": "link",
+          "text": "先確認 GA4 資源與事件的安裝驗收",
+          "url": "https://mokaair.com/zh-TW/life/ga4-site-measurement"
+        },
+        {
+          "type": "link",
+          "text": "看懂 GA4 工作階段與互動指標",
+          "url": "https://mokaair.com/zh-TW/life/ga4-sessions-engagement"
+        },
+        {
+          "type": "link",
+          "text": "盤點網站使用的行銷工具與責任",
+          "url": "https://mokaair.com/zh-TW/life/martech-tool-stack"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Tag Manager：建立帳戶及容器",
+          "url": "https://support.google.com/tagmanager/answer/14842164",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Tag Manager：安裝 Web 容器",
+          "url": "https://support.google.com/tagmanager/answer/14847097?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Tag Manager：設定 Google 標籤",
+          "url": "https://support.google.com/tagmanager/answer/9442095?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Developers：資料層與事件順序",
+          "url": "https://developers.google.com/tag-platform/tag-manager/datalayer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：GTM 同意設定支援",
+          "url": "https://support.google.com/analytics/answer/10718549?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Tag Manager：基本與進階同意模式",
+          "url": "https://support.google.com/tagmanager/answer/10000067?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Tag Manager：預覽與偵錯容器",
+          "url": "https://support.google.com/tagmanager/answer/6107056?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Tag Manager：發布、版本與核准",
+          "url": "https://support.google.com/tagmanager/answer/6107163?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

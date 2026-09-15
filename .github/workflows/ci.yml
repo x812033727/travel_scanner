@@ -22,8 +22,8 @@ jobs:
         ports: ["6379:6379"]
     defaults: { run: { working-directory: apps/api } }
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
-      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
         with: { python-version: "3.13" }
       - run: uv sync --frozen
       # Same shape as the npm audit below: the advisory lookup needs PyPI at request time,
@@ -71,8 +71,8 @@ jobs:
   web:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with: { node-version: 24, cache: npm }
       - run: npm ci
       # Advisory lookups hit registry.npmjs.org at request time, so an outage there used
@@ -96,7 +96,7 @@ jobs:
         # Serve the build from the step above instead of a dev server that compiles
         # each page on first visit; see playwright.config.ts.
         env: { PLAYWRIGHT_SERVE_BUILD: "true" }
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: site-experience-browser-results
@@ -105,7 +105,7 @@ jobs:
   containers:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - run: cp .env.example .env
       - run: docker compose config
       - run: docker compose build api worker
@@ -191,10 +191,10 @@ jobs:
       COMMUNITY_SMTP_STARTTLS: "false"
       COMMUNITY_MAIL_FROM: Mokaair CI <accounts@example.test>
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
-      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
         with: { python-version: "3.13" }
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with: { node-version: 24, cache: npm }
       - run: uv sync --frozen
         working-directory: apps/api
@@ -251,7 +251,7 @@ jobs:
         run: npx playwright test e2e/full-stack.spec.ts
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true" }
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: failure() && steps.travel-journeys.outcome == 'failure'
         with:
           name: travel-browser-failure
@@ -272,7 +272,7 @@ jobs:
         run: npx playwright test e2e/admin-operations-full-stack.spec.ts --workers=1
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true", ADMIN_OPERATIONS_E2E: "1" }
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: community-browser-results

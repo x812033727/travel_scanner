@@ -1,0 +1,36 @@
+{
+  "checked_at": "2026-09-14T13:48:45.945723+00:00",
+  "scope": "Historical local workflow checks before synchronizing main; current workflow and tool check are recorded in tools-main.log and the PR CI run",
+  "workflow": ".github/workflows/claude-tutorial-validation.yml",
+  "workflow_sha256": "2c6a3b841d6cfff769010ed35dc2cdddad973db9eb2974eee7b708fc2561e3a4",
+  "official_action_source": "https://github.com/anthropics/claude-code-action/blob/9cdae7f0d995e3ba7c33f226087fdf82a59cd520/action.yml",
+  "source_checked_on": "2026-09-14",
+  "checks": [
+    {
+      "command": "node --test tools/claude-code-series.test.mjs",
+      "cwd": "repository root",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "exit": 0
+    },
+    {
+      "command": "node --test tests/model.test.mjs tests/automation.test.mjs tests/sdk-state.test.mjs",
+      "cwd": "tools/claude-code-series/advanced/lab",
+      "tests": 8,
+      "passed": 8,
+      "failed": 0,
+      "exit": 0
+    }
+  ],
+  "remote_workflow_run": false,
+  "full_tools": {
+    "command": "npm run test:tools",
+    "passed": true,
+    "tests": 52,
+    "failed": 0,
+    "exit": 0,
+    "source": "tools-final.log",
+    "initial_attempt": "51 passed, 1 failed because version comments were absent; fixed using verified tags before rerun"
+  }
+}

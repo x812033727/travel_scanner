@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">日本八城市櫻花花期：氣象庁平年值與 2021–2026 年實績 / Cherry blossom dates in eight Japanese cities</title>
+  <desc id="desc">這張圖是日本氣象庁的平年值（1991–2020 年平均）與 2021–2026 年實際觀測，不是 2027 年預測。橫軸是 3 月中旬到 5 月上旬，由上到下是福岡、廣島、東京、名古屋、京都、大阪、仙台、札幌。每個城市的深綠色條是平年開花到平年滿開：福岡 3/22 到 3/31、廣島 3/25 到 4/3、東京 3/24 到 3/31、名古屋 3/24 到 4/2、京都 3/26 到 4/4、大阪 3/27 到 4/4、仙台 4/8 到 4/13、札幌 5/1 到 5/6。色條下方的淺綠細線是 2021–2026 年滿開最早到最晚：福岡 3/22–4/3、廣島 3/25–4/5、東京 3/22–4/4、名古屋 3/27–4/7、京都 3/24–4/5、大阪 3/27–4/6、仙台 3/31–4/11、札幌 4/21–4/27。珊瑚色點是 2026 年開花、深棕色點是 2026 年滿開：福岡 3/24、4/3，廣島 3/19、3/30，東京 3/19、3/28，名古屋 3/17、3/30，京都 3/23、3/30，大阪 3/26、4/3，仙台 3/31、4/4，札幌 4/18、4/24。背景色帶是連假：日本三連休 3 月 20–22 日、台灣清明連假 4 月 3–6 日、台灣勞動節 4 月 30 日–5 月 2 日、日本 5 月 1–5 日連休。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">日本八城市櫻花花期：氣象庁平年值與 2021–2026 年實績</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">JMA normals (1991–2020 average) and 2021–2026 records, not a 2027 forecast</text>
+
+  <!-- legend -->
+  <rect x="1000" y="16" width="570" height="88" rx="14" fill="#FFFFFF" stroke="#D8CCBB" stroke-width="2"/>
+  <rect x="1024" y="38" width="48" height="16" rx="8" fill="#0D6B68"/>
+  <text x="1084" y="53" font-size="16" fill="#102A2B">平年開花→平年滿開</text>
+  <line x1="1262" y1="46" x2="1306" y2="46" stroke="#7FB8B4" stroke-width="6" stroke-linecap="round"/>
+  <text x="1320" y="53" font-size="16" fill="#102A2B">2021–2026 年滿開範圍</text>
+  <circle cx="1048" cy="78" r="9" fill="#E0664A" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="1084" y="84" font-size="16" fill="#102A2B">2026 年開花</text>
+  <circle cx="1284" cy="78" r="9" fill="#6B4A3A" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="1320" y="84" font-size="16" fill="#102A2B">2026 年滿開</text>
+
+  <!-- holiday bands -->
+  <rect x="460" y="118" width="63" height="732" fill="#DCEAF5" opacity="0.9"/>
+  <rect x="754" y="118" width="84" height="732" fill="#F8E0C8" opacity="0.85"/>
+  <defs>
+    <pattern id="laborHatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="7" height="14" fill="#F3CDA6"/>
+    </pattern>
+  </defs>
+  <rect x="1342" y="118" width="105" height="732" fill="#DCEAF5" opacity="0.9"/>
+  <rect x="1321" y="118" width="21" height="732" fill="#F8E0C8" opacity="0.85"/>
+  <rect x="1342" y="118" width="42" height="732" fill="url(#laborHatch)" opacity="0.9"/>
+
+  <text x="491" y="140" font-size="16" font-weight="700" fill="#2F6F9F" text-anchor="middle">日本三連休</text>
+  <text x="491" y="162" font-size="16" fill="#2F6F9F" text-anchor="middle">3 月 20–22 日</text>
+  <text x="796" y="140" font-size="16" font-weight="700" fill="#A9561C" text-anchor="middle">台灣清明連假</text>
+  <text x="796" y="162" font-size="16" fill="#A9561C" text-anchor="middle">4 月 3–6 日</text>
+  <text x="1314" y="140" font-size="16" font-weight="700" fill="#A9561C" text-anchor="end">台灣勞動節</text>
+  <text x="1314" y="162" font-size="16" fill="#A9561C" text-anchor="end">4 月 30 日–5 月 2 日</text>
+  <text x="1454" y="140" font-size="16" font-weight="700" fill="#2F6F9F">日本連休</text>
+  <text x="1454" y="162" font-size="16" fill="#2F6F9F">5 月 1–5 日</text>
+
+  <!-- month labels -->
+  <text x="355" y="198" font-size="18" font-weight="700" fill="#5C6B6B" text-anchor="middle">3 月 March</text>
+  <text x="1027" y="198" font-size="18" font-weight="700" fill="#5C6B6B" text-anchor="middle">4 月 April</text>
+  <text x="1500" y="198" font-size="18" font-weight="700" fill="#5C6B6B" text-anchor="middle">5 月 May</text>
+
+  <!-- 5-day grid -->
+  <g stroke="#E3D9CB" stroke-width="1.5">
+    <line x1="250" y1="210" x2="250" y2="850"/>
+    <line x1="355" y1="210" x2="355" y2="850"/>
+    <line x1="460" y1="210" x2="460" y2="850"/>
+    <line x1="565" y1="210" x2="565" y2="850"/>
+    <line x1="670" y1="210" x2="670" y2="850"/>
+    <line x1="775" y1="210" x2="775" y2="850"/>
+    <line x1="880" y1="210" x2="880" y2="850"/>
+    <line x1="985" y1="210" x2="985" y2="850"/>
+    <line x1="1090" y1="210" x2="1090" y2="850"/>
+    <line x1="1195" y1="210" x2="1195" y2="850"/>
+    <line x1="1300" y1="210" x2="1300" y2="850"/>
+    <line x1="1405" y1="210" x2="1405" y2="850"/>
+    <line x1="1510" y1="210" x2="1510" y2="850"/>
+    <line x1="1552" y1="210" x2="1552" y2="850"/>
+  </g>
+  <!-- month boundaries -->
+  <g stroke="#B3A692" stroke-width="2.5">
+    <line x1="712" y1="206" x2="712" y2="850"/>
+    <line x1="1342" y1="206" x2="1342" y2="850"/>
+  </g>
+  <!-- row separators -->
+  <g stroke="#E3D9CB" stroke-width="1.5">
+    <line x1="60" y1="290" x2="1552" y2="290"/>
+    <line x1="60" y1="370" x2="1552" y2="370"/>
+    <line x1="60" y1="450" x2="1552" y2="450"/>
+    <line x1="60" y1="530" x2="1552" y2="530"/>
+    <line x1="60" y1="610" x2="1552" y2="610"/>
+    <line x1="60" y1="690" x2="1552" y2="690"/>
+    <line x1="60" y1="770" x2="1552" y2="770"/>
+    <line x1="60" y1="850" x2="1552" y2="850"/>
+  </g>
+
+  <!-- city labels -->
+  <g font-size="20" font-weight="700" fill="#102A2B">
+    <text x="60" y="257">福岡 <tspan font-size="16" font-weight="400" fill="#5C6B6B">Fukuoka</tspan></text>
+    <text x="60" y="337">廣島 <tspan font-size="16" font-weight="400" fill="#5C6B6B">Hiroshima</tspan></text>
+    <text x="60" y="417">東京 <tspan font-size="16" font-weight="400" fill="#5C6B6B">Tokyo</tspan></text>
+    <text x="60" y="497">名古屋 <tspan font-size="16" font-weight="400" fill="#5C6B6B">Nagoya</tspan></text>
+    <text x="60" y="577">京都 <tspan font-size="16" font-weight="400" fill="#5C6B6B">Kyoto</tspan></text>
+    <text x="60" y="657">大阪 <tspan font-size="16" font-weight="400" fill="#5C6B6B">Osaka</tspan></text>
+    <text x="60" y="737">仙台 <tspan font-size="16" font-weight="400" fill="#5C6B6B">Sendai</tspan></text>
+    <text x="60" y="817">札幌 <tspan font-size="16" font-weight="400" fill="#5C6B6B">Sapporo</tspan></text>
+  </g>
+
+  <!-- 2021-2026 full-bloom ranges -->
+  <g stroke="#7FB8B4" stroke-width="6" stroke-linecap="round">
+    <line x1="512.5" y1="264" x2="764.5" y2="264"/>
+    <line x1="575.5" y1="344" x2="806.5" y2="344"/>
+    <line x1="512.5" y1="424" x2="785.5" y2="424"/>
+    <line x1="617.5" y1="504" x2="848.5" y2="504"/>
+    <line x1="554.5" y1="584" x2="806.5" y2="584"/>
+    <line x1="617.5" y1="664" x2="827.5" y2="664"/>
+    <line x1="701.5" y1="744" x2="932.5" y2="744"/>
+    <line x1="1142.5" y1="824" x2="1268.5" y2="824"/>
+  </g>
+
+  <!-- normal first bloom to full bloom -->
+  <g fill="#0D6B68">
+    <rect x="512.5" y="228" width="189" height="18" rx="9"/>
+    <rect x="575.5" y="308" width="189" height="18" rx="9"/>
+    <rect x="554.5" y="388" width="147" height="18" rx="9"/>
+    <rect x="554.5" y="468" width="189" height="18" rx="9"/>
+    <rect x="596.5" y="548" width="189" height="18" rx="9"/>
+    <rect x="617.5" y="628" width="168" height="18" rx="9"/>
+    <rect x="869.5" y="708" width="105" height="18" rx="9"/>
+    <rect x="1352.5" y="788" width="105" height="18" rx="9"/>
+  </g>
+
+  <!-- 2026 first bloom (coral) and full bloom (mocha) -->
+  <g stroke="#FFFFFF" stroke-width="3">
+    <circle cx="554.5" cy="237" r="9" fill="#E0664A"/>
+    <circle cx="764.5" cy="237" r="9" fill="#6B4A3A"/>
+    <circle cx="449.5" cy="317" r="9" fill="#E0664A"/>
+    <circle cx="680.5" cy="317" r="9" fill="#6B4A3A"/>
+    <circle cx="449.5" cy="397" r="9" fill="#E0664A"/>
+    <circle cx="638.5" cy="397" r="9" fill="#6B4A3A"/>
+    <circle cx="407.5" cy="477" r="9" fill="#E0664A"/>
+    <circle cx="680.5" cy="477" r="9" fill="#6B4A3A"/>
+    <circle cx="533.5" cy="557" r="9" fill="#E0664A"/>
+    <circle cx="680.5" cy="557" r="9" fill="#6B4A3A"/>
+    <circle cx="596.5" cy="637" r="9" fill="#E0664A"/>
+    <circle cx="764.5" cy="637" r="9" fill="#6B4A3A"/>
+    <circle cx="701.5" cy="717" r="9" fill="#E0664A"/>
+    <circle cx="785.5" cy="717" r="9" fill="#6B4A3A"/>
+    <circle cx="1079.5" cy="797" r="9" fill="#E0664A"/>
+    <circle cx="1205.5" cy="797" r="9" fill="#6B4A3A"/>
+  </g>
+
+  <text x="60" y="880" font-size="15" fill="#5C6B6B">資料：氣象庁さくらの開花日、満開日，2026 年 9 月查證。平年值為 1991–2020 年平均；背景色帶是日本與台灣的連假。</text>
+  <text x="1540" y="880" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

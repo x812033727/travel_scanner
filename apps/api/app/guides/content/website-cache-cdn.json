@@ -1,0 +1,248 @@
+{
+  "slug": "website-cache-cdn",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "網站快取與 CDN：更新沒出現時該清哪一層",
+      "description": "網站已更新，手機卻還看到舊內容，可能是不同位置保留了快取。本文以台灣工作室修改營業時間為例，整理瀏覽器、WordPress／主機和 CDN 的分工，說明快取回應、到期時間與定點清除的判斷方式。附操作順序、比較表和原創圖解，協助網站管理者查出舊版本來源，也兼顧會員與購物流程的正確性。",
+      "hero": {
+        "src": "/guides/website-cache-cdn/hero.jpg",
+        "alt": "原創文件、伺服器與螢幕圖像，表示確認來源內容並逐層驗證讀者收到的版本。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "工作室把週日營業時間改好了，後台預覽已經正確，客人手機卻還顯示原來的時間。這時需要找出舊版本存在哪裡：可能是編輯尚未公開、網站伺服器保留舊頁面，也可能是圖片或瀏覽器的快取。"
+        },
+        {
+          "type": "paragraph",
+          "text": "快取是把可重用的結果暫存，減少重複下載或運算。它讓網站更有效率，也帶來版本更新的管理工作。只要知道每一層由誰控制、快取哪些內容，以及更新時如何驗證，就能把排查變成有順序的流程。"
+        },
+        {
+          "type": "heading",
+          "text": "先辨認舊的是文字、圖片還是整個版面",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把有問題的完整網址與舊內容記下來。文章文字、營業時間圖片和樣式檔是不同資源，即使出現在同一頁，也可能各自被快取。若只有時間表圖片沒更新，先核對圖片網址與檔案內容，別直接重建整個網站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "回到編輯後台確認已儲存並公開在正確環境，排除只改到草稿、排程文章或測試站。接著用未登入環境查看同一網址。部分網站對管理者和一般訪客採不同快取策略，所以登入後看到新內容，只能證明那個狀態下的輸出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以修改營業時間為例，記下預期文字、公開頁面實際文字、時間表圖片版本與檢查時間。這四項資訊能讓主機商或工程師知道正在追哪一份資料，避免大家各自看不同頁面，卻都說自己這邊沒有問題。"
+        },
+        {
+          "type": "heading",
+          "text": "分清瀏覽器、網站與 CDN 的位置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "瀏覽器快取保留在讀者裝置上，網站端快取可能由 WordPress 外掛或主機服務管理，CDN 則在分散的節點提供可重用內容。清除其中一層，不會自動證明其他層也已更新；無痕視窗也仍可能取得同一份 CDN 回應。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CDN 可讓圖片、樣式等檔案從較接近訪客的節點傳送，也能減少來源主機重複處理。它不會代替網站資料庫、內容編輯與所有應用程式工作。來源主機本來就輸出錯誤的營業時間時，CDN 再快也可能只是在傳送錯誤內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以 Cloudflare 為例，預設依副檔名快取一部分資源，HTML 和 JSON 預設不快取；網站可以透過規則改變行為。因此看到網域使用 Cloudflare，不能直接推論整頁 HTML 已被它快取，還要查看實際規則與回應。"
+        },
+        {
+          "type": "heading",
+          "text": "到期時間與快取狀態要一起看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "TTL 表示快取可保留的時間設定，但瀏覽器與 CDN 邊緣節點的時間可以分開管理。Cloudflare 文件特別區分 Edge Cache TTL 和 Browser Cache TTL。不要只改其中一個數值，就假設所有讀者手上的舊檔案會立即消失。"
+        },
+        {
+          "type": "paragraph",
+          "text": "請工程師或熟悉工具的管理者查看回應標頭。Cloudflare 的 CF-Cache-Status: HIT 表示從其快取找到資源；MISS 表示該次可快取資源未在快取中，需向來源取得。MISS 仍可能取得來源主機自己的舊快取，不能當作內容必然最新的證明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cache-Control 中的 no-cache 是重用前需重新驗證，並不等於完全禁止儲存；no-store 才表示不要儲存該回應。這些名稱容易誤會，而且服務的自訂規則也可能改變實際行為。一般管理者先讀懂現況，再請負責人調整，無須盲目拼湊一串標頭。"
+        },
+        {
+          "type": "heading",
+          "text": "確認來源更新後，針對正確資源清除",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先確認網站產生的內容已經是新版本，必要時依外掛或主機文件清除相關頁面快取。接著再處理外層 CDN，避免外層剛清完又取回來源的舊頁面。每做一步都重新讀取並記錄結果，才能知道是哪一層造成差異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用 Cloudflare，官方定點清除流程是在快取設定中選 Custom Purge，以 URL 填入要清除的完整資源網址，核對後執行。時間表圖片和文章頁面要分別辨認；清掉文章 HTML 的位置，不表示獨立的圖片檔也已清掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自訂快取鍵若包含特定標頭或 Cookie，控制台的單一網址清除可能無法涵蓋所有版本，需要依官方方式由負責人處理。單檔清除也不接受萬用字元。不要在沒看懂範圍時隨手填星號，或直接假設清除成功訊息代表每種變體都已驗證。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "確認公開來源內容已更新，列出受影響頁面與資源網址。",
+            "依網站外掛或主機的設定，處理對應頁面的快取。",
+            "若 CDN 確實快取該資源，依其規則執行定點清除。",
+            "重新讀取並核對內容版本，另用新的瀏覽環境複查。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "會員與購物內容不能只套用公開頁規則",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文章介紹頁可以讓很多人共用同一份結果，會員資料、購物車與個人訂單則依使用者而變。若把個人化內容錯放進共用快取，可能讓別人看到不屬於自己的資料。設定時需依網站架構排除或正確區分，不能把「全部快取」當成通用加速方案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cookie 的存在本身不保證回應就是私有。應由負責人核對應用程式回應、主機快取與 CDN 規則如何共同處理登入狀態。測試時用分開的測試帳號確認購物車與資料各自獨立，並避免在紀錄中保存真實顧客的個人內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "動態功能的正確性優先於快取命中率。若更新後出現錯誤價格、登入狀態或其他人的內容，應立即停用有問題的相關規則並排查。不能只要求使用者清瀏覽器，因為共用層設定錯誤可能持續把同一問題送給其他人。"
+        },
+        {
+          "type": "heading",
+          "text": "讓發布流程知道哪些快取需要更新",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "整理一份簡單的管理表，列出內容類型、負責快取的服務、清除入口、到期策略與驗收方法。營業時間文字、封面圖片和整站樣式可以有不同更新路徑。固定記錄比每次改完都把所有快取清光，更容易維持穩定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對需要長期快取的靜態檔案，可由建置或素材流程使用帶版本的檔名，更新時讓頁面引用新檔案。文章主要網址則應保持穩定，不需要為了換一張圖片反覆改路徑。舊資產何時清理，也要考慮仍可能引用它的頁面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後確認實際送出的內容，而不是只看控制台成功提示。把清除時間、網址、前後版本和檢查環境留下來；若又出現舊資料，才能判斷是某個快取層、來源內容或發布流程出了問題，並把修正落在真正需要改的地方。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-cache-cdn/diagram-1.svg",
+          "alt": "四個步驟列出確認新舊內容、核對網站來源、清除對應 CDN 資源與在讀者環境複查，避免只看成功提示。",
+          "width": 1600,
+          "height": 900,
+          "caption": "每一層分別確認，才能知道舊版本從哪裡被送出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "位置",
+            "通常由誰管理",
+            "清除後仍需確認"
+          ],
+          "rows": [
+            [
+              "瀏覽器快取",
+              "使用者裝置與回應策略",
+              "外層是否仍提供舊內容"
+            ],
+            [
+              "WordPress／主機",
+              "外掛或主機管理者",
+              "來源頁面是否重新產生"
+            ],
+            [
+              "CDN 節點",
+              "CDN 規則與管理者",
+              "網址、變體和來源版本"
+            ],
+            [
+              "個人化內容",
+              "應用與各層共同設定",
+              "不同使用者資料仍獨立"
+            ]
+          ],
+          "caption": "這是管理分工表；實際網站不一定啟用每一層。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "清除成功不等於內容正確",
+          "text": "快取重新建立時仍會依來源取資料。先核對來源版本，再確認外層與讀者端實際收到什麼，才算完成更新驗收。"
+        },
+        {
+          "type": "link",
+          "text": "建立可比較的速度量測",
+          "url": "https://mokaair.com/zh-TW/life/pagespeed-performance-review"
+        },
+        {
+          "type": "link",
+          "text": "排查分享預覽的舊圖片",
+          "url": "https://mokaair.com/zh-TW/life/open-graph-sharing"
+        },
+        {
+          "type": "link",
+          "text": "整理網站日常維護流程",
+          "url": "https://mokaair.com/zh-TW/life/website-maintenance-routine"
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN HTTP 快取原理",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 效能最佳化與主機配置",
+          "url": "https://developer.wordpress.org/advanced-administration/performance/optimization/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare 預設快取行為",
+          "url": "https://developers.cloudflare.com/cache/concepts/default-cache-behavior/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare Edge 與 Browser TTL",
+          "url": "https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare 單一檔案快取清除",
+          "url": "https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare 快取回應狀態",
+          "url": "https://developers.cloudflare.com/cache/concepts/cache-responses/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

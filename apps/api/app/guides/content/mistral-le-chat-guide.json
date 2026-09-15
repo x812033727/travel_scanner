@@ -1,0 +1,397 @@
+{
+  "slug": "mistral-le-chat-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Mistral Vibe（原 Le Chat）：歐洲 AI 助手的方案、功能與資料存放",
+      "description": "法國 Mistral AI 的 Le Chat 已改名為 Vibe，分成 Work、Code、Chat 三種模式。這篇整理官網當天的內容：台灣怎麼註冊與下載、Free 與每月 14.99 美元的 Pro 等四個方案給什麼、官方列出的功能、Mistral Large 3 等模型與 Apache 2.0 開放權重、API 每百萬 token 價格，以及資料預設存在歐盟、訓練開關怎麼關。",
+      "hero": {
+        "src": "/guides/mistral-le-chat-guide/hero.jpg",
+        "alt": "插圖：一個對話框分出三條路徑，分別通往工作、程式與對話三個方塊，右邊另有一個可以搬走的模型盒子",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "法國 Mistral AI 的 Le Chat 已經改名。官網產品頁的標題現在寫「Mistral Vibe (formerly Le Chat)」，說明中心也有一篇就叫「Le Chat is now Vibe」的公告，寫明帳號、方案與對話紀錄全部沿用，入口網址沒變。結論先說：它值得花時間的理由有兩個，一是資料預設存放在歐盟，二是它有一整批能自己下載回來跑的開放權重模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇帶你做到五件事：看懂三種模式、比對四個方案的價格與額度、確認官方列出的功能、分辨哪些模型是開放權重，以及把訓練用途的開關關掉。所有價格與模型都在 2026 年 9 月 14 日查自官網，官網沒寫的就寫「以官網為準」。"
+        },
+        {
+          "type": "heading",
+          "text": "Le Chat 現在叫 Vibe：三種模式與從台灣怎麼開始",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件把 Vibe 拆成三種模式，同一個帳號、同一個網頁，在左側切換。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Work：多步驟的工作任務。文件寫它會自己拆步驟、呼叫工具、即時顯示待辦清單，網頁與手機 App 都有。",
+            "Code：給開發者。有終端機指令列工具、VS Code 擴充套件，以及跑在雲端沙箱的遠端工作階段。",
+            "Chat：原本 Le Chat 那種一問一答，舊功能留在這裡。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "文件也把舊功能對應到新位置：Agents 對應 Work 的 Skills，Think mode 改由模型自動決定推理程度，Deep Research 只剩 Work 裡的一個 Skill，Code Interpreter 換成內建的 TypeScript 執行環境，Memories 對應 Knowledge Base。"
+        },
+        {
+          "type": "link",
+          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+        },
+        {
+          "type": "paragraph",
+          "text": "歐盟以外的一般使用者適用法律中心的「ROW - Terms of Service」：年滿 13 歲、未成年人要法定代理人同意，一個人只能開一個帳號。爭議準據法按地區分，亞太地區適用新加坡法、由新加坡法院管轄；出口管制那條列出的受制裁地區不含台灣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣區 App Store 當天查得到「Vibe by Mistral (ex-Le Chat)」，開發者 MISTRAL AI，免費、分級 12+、需要 iOS 16.4 以上，版本 2.11.0；商店頁列的介面語言是荷、英、法、德、義、波、葡、西、烏九種，沒有中文。Android 版也有，說明中心的手機訂閱說明同時寫了兩邊的步驟。"
+        },
+        {
+          "type": "paragraph",
+          "text": "帳號用 Email 與密碼，密碼至少 8 個字元、不能是外洩過的常見密碼，並可在「Security & Access」開 TOTP 兩步驟驗證。登入頁另有第三方登入與 SSO 入口，但本站撰稿時從台灣以外的環境讀取只拿得到防機器人驗證頁，究竟支援 Google、Apple 還是 Microsoft，以官網為準；網頁版在台灣連線的實際畫面也無法代讀，同樣以官網為準。"
+        },
+        {
+          "type": "heading",
+          "text": "方案與價格：Free、Pro、Team、Enterprise",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "定價頁可切換美元與歐元，兩種幣別的數字目前一樣：Pro 是 14.99、Team 是 24.99、學生方案是 5.99，全部未稅，稅金照帳單國家的稅率外加。Free 不用付費，網頁與手機都能用，訊息與網路搜尋次數有限、程式工作階段有限，可以生成圖片、在 Studio 試模型，附每月 10 美元 API 額度與 100 多個連接器。Pro 加上整天寫程式與每月 15 美元 API 額度；學生與教師通過學校機構信箱驗證後是 5.99 美元，最多 12 個月、API 額度改成 30 美元，官網寫 Gmail、iCloud 這類一般信箱與學生證都不算。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "價格（美元／月，未稅）",
+            "主要內容"
+          ],
+          "rows": [
+            [
+              "Free",
+              "0",
+              "網頁與手機、訊息與搜尋有限、圖片生成、10 美元 API 額度"
+            ],
+            [
+              "Pro",
+              "14.99",
+              "訊息與搜尋更多、整天寫程式、15 美元 API 額度、聊天與 Email 客服"
+            ],
+            [
+              "學生／教師",
+              "5.99",
+              "同 Pro，需機構信箱，最多 12 個月，API 額度 30 美元"
+            ],
+            [
+              "Team",
+              "24.99／人（最低 50）",
+              "每人 30GB 儲存、網域驗證、資料匯出"
+            ],
+            [
+              "Enterprise",
+              "洽詢",
+              "客製模型與代理、稽核紀錄、SAML SSO、白牌"
+            ]
+          ],
+          "caption": "四個方案的價格與內容，查自官網定價頁，2026 年 9 月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "額度的寫法要注意：比較表大多用倍數而非絕對次數，訊息最多是免費版的 6 倍、網路搜尋 5 倍、圖片生成 40 倍。常見問題只舉了一個絕對數字，Flash answers 在 Team 是每天 200 次、Pro 每天 150 次。排程任務免費版最多 5 個，檔案空間 Pro 最多 15GB。確切的每日訊息上限官網沒有公布，以官網為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "月繳年繳分開看：網頁定價頁只列月費。說明中心的手機訂閱那篇寫，App 內購買時可以選月繳或年繳，年繳金額官網沒有列，一樣以官網為準。Android 付款後還要回 Google Play 的「付款與訂閱」把購買確認掉，3 天內沒確認會被取消並退款。"
+        },
+        {
+          "type": "link",
+          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+        },
+        {
+          "type": "heading",
+          "text": "官方文件列出的功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下只列官網與官方文件寫出來的。Work 取得脈絡的方式，文件分成五類。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "連接器：文件點名 Gmail、Outlook、Slack、Notion、Linear、GitHub、Google Drive、SharePoint、Stripe，產品頁寫超過 100 個工具，也相容 MCP。",
+            "資料庫（Libraries）：已經上傳並建立索引的文件集合。",
+            "Skills：把重複的做法、檢查清單或範本存起來重用。",
+            "檔案與 Canvas：定價頁列的格式是 PDF、圖片、CSV、純文字檔與 Office 檔（ppt、xls、docx）。",
+            "網路搜尋與開啟指定網址：可以搜尋，也可以叫它去讀某一頁。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "比較表裡的其他功能還有語音模式（產品頁寫語音輸入由 Voxtral 提供）、圖片生成、專案資料夾（最多 1,000 個）、排程任務、工作流程、Verified news，以及寫程式端的 Hooks、遠端代理（Agent）與 Teleport。安全設計官方也寫清楚了：Work 會即時顯示每一次工具呼叫，寄信、建立行事曆、刪除議題這類敏感動作先要你核准。同一頁也要求把輸出當草稿看，日期、姓名、表格與引用自己核對過再用，這是避免幻覺變成交出去檔案的唯一辦法。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "官方文件示範的 Work 起手式提示詞",
+          "code": "Research this topic and create a one-page brief I can share with my team.\nSummarize this PDF and extract owners, deadlines, and action items.\nCompare these two documents and highlight the main differences."
+        },
+        {
+          "type": "paragraph",
+          "text": "文件列出一句好提示詞該有的四件事：你要的結果、它該參考的來源或工具、成品給誰看，以及長度、語氣、格式或期限。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+        },
+        {
+          "type": "heading",
+          "text": "模型家族與開放權重：哪些能自己下載",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件的模型總覽頁在每個模型旁邊直接標授權名稱。撰稿當天列出的通用模型是這幾個。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Mistral Medium 3.5（v26.04）：Modified MIT，官方定位是主力多模態模型。",
+            "Mistral Small 4（v26.03）：Apache 2.0，把指令、推理與程式合在同一個模型。",
+            "Mistral Large 3（v25.12）：Apache 2.0，官方寫是開放權重的旗艦通用多模態模型。",
+            "Ministral 3 的 14B、8B、3B（v25.12）：Apache 2.0，走裝置端與低成本路線。",
+            "Z.ai GLM 5.2（v5.2）：第三方模型，文件寫有 1M token 的上下文視窗。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "其他類別：Voxtral Small 是 Apache 2.0，Voxtral TTS 是 CC BY-NC 4.0（禁止商業使用），Shieldstral 1.0 與 Leanstral 1.5 是 Apache 2.0；OCR 4.1、Codestral、Mistral Embed 標的是 Premier，只能透過官方服務用。過去常被提到的 Magistral、Devstral 與 Pixtral，在同一頁的「Deprecated」表裡已經是停用或退役，不要再照舊資料寫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "說明中心補了關鍵一句：多數開放模型用 Apache 2.0，可以任意用途使用、自由散布、修改與分享修改後的版本；另一部分用「modified MIT」，權限相同，但月營收超過 2,000 萬美元的公司必須另外取得商業授權，或改成透過 Studio 使用。實際條款以模型卡上寫的為準。想知道有多少能下載，看 Hugging Face 上的 mistralai 官方組織：撰稿當天用官方 API 數出 75 個模型庫，其中 65 個標 apache-2.0、9 個標 other、1 個標 cc-by-nc-4.0。"
+        },
+        {
+          "type": "link",
+          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+        },
+        {
+          "type": "heading",
+          "text": "Studio 與 API：每百萬 token 多少錢",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者這一端叫 Mistral Studio。官方快速上手寫，Studio 的免費模式預設就開著、不用綁信用卡，在主控台按 Create new key 就能拿到金鑰，而且金鑰只會顯示一次，弄丟就得重發。之後把它設成環境變數，裝好官方套件就能送出第一次呼叫。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "官方快速上手的第一次 API 呼叫",
+          "code": "import os\nfrom mistralai.client import Mistral\n\nclient = Mistral(api_key=os.environ[\"MISTRAL_API_KEY\"])\nresponse = client.chat.complete(\n    model=\"mistral-large-latest\",\n    messages=[{\"role\": \"user\", \"content\": \"What is Mistral AI?\"}],\n)\nprint(response.choices[0].message.content)"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 定價頁的標準價格，單位是每百萬 token、美元：Mistral Large 3 輸入 0.5、輸出 1.5；Mistral Medium 3.5 輸入 1.5、輸出 7.5；Mistral Small 4 輸入 0.15、輸出 0.6；Codestral 輸入 0.3、輸出 0.9。折扣與加價寫在同一頁：批次處理打五折，快取輸入最多省 90% 輸入費用，區域推論端點加 10%，企業版 API 是牌價再加 75%。不是每個服務都照 token 算，OCR 是每 1,000 頁 4 美元，網路搜尋與程式執行各是每 1,000 次 30 美元。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/mistral-le-chat-guide/diagram-1.svg",
+          "alt": "結構圖：左邊是訂閱制的 Vibe 三種模式，中間是 Studio 的 API，右邊是可以自己下載的開放權重模型，三者共用同一批模型",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看：同一批模型，三種取得方式。左邊按月付訂閱，中間按 token 付費，右邊自己下載自己跑。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "資料放在哪裡、會不會拿去訓練、怎麼關掉",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "說明中心寫得很短：預設你的資料存放在歐盟；如果你明確使用美國的 API 端點，資料就存在美國。同一篇也寫，依你用到的功能，資料可能暫時傳到歐盟以外，地點列在官網信任中心的「Subprocessors」頁，對這類傳輸他們用 GDPR 第 46 條的保障措施並附上歐盟執委會最新版的標準契約條款。企業版可以在組織層級關掉部分會把資料送出歐盟的功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "留存多久，隱私政策分開寫：Vibe 的輸入與輸出留到你刪除帳號或刪掉那則對話為止；API 除了特定 API 以外，輸入輸出只留到產生回答所需的時間，再加 30 個滾動天數用來監控濫用。姓名等身分資料在契約結束後留 5 年，其他註冊資料在刪帳號後留 1 年，發票留 10 年。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "訓練開關預設是開的",
+          "text": "說明中心寫得很直白：Vibe 的輸入與輸出「預設」會被用來訓練模型，除非你自己去關；只有 Enterprise 預設關閉、由管理員決定要不要開。Vibe 與 API 是兩個各自獨立的開關，關掉一個不等於關掉另一個。還有一個例外：不論哪個方案，只要按了讚或倒讚並留言，就等於授權他們使用你的評分與那一次的輸入與輸出。上傳到 Vibe 的檔案也算輸入資料。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "網頁版：進 Admin 面板，在 Manage 區選 Vibe，到 Privacy 區把「Allow your interactions to be used to train our models」關掉。",
+            "手機 App：設定頁 → Account 區的 Data & Account Controls → 取消勾選「Enable data sharing」。",
+            "Studio 與 API：Admin 面板左側選 Privacy，在「Anonymous improvement data」區把開關關掉。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "Memories 是 beta 功能，可以完全不開，開了也能隨時查看、編輯、刪除；說明中心特別提醒「關掉 Memories 不會自動刪掉已經存進去的內容」，要清乾淨得先按「Clear all Memories」再關。零資料留存只開放給隨用隨付的無狀態 API 呼叫，Work 與 Chat 不論方案都沒有，而且要申請、經審核才會出現在設定裡。輸入與輸出的所有權則寫明是使用者的。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一類的助手還有 ChatGPT、Gemini、Claude、Grok 與 Perplexity，各家的方案結構、資料流向與能不能下載都不一樣，這篇不做沒查過的比較；要對照就看以下幾篇。"
+        },
+        {
+          "type": "link",
+          "text": "三大助手日常比較：同題操作與評分方法",
+          "url": "https://mokaair.com/zh-TW/life/gemini-vs-chatgpt-vs-claude-daily"
+        },
+        {
+          "type": "link",
+          "text": "Grok（xAI）怎麼用：三個入口、方案價格與資料訓練開關",
+          "url": "https://mokaair.com/zh-TW/life/grok-xai-guide"
+        },
+        {
+          "type": "link",
+          "text": "Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/perplexity-ai-search-guide"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mistral AI — Vibe 產品頁（原 Le Chat）",
+          "url": "https://mistral.ai/products/vibe/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral AI — 方案定價頁（Free／Pro／Team／Enterprise 與功能比較表）",
+          "url": "https://mistral.ai/pricing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral AI — API 定價頁（每百萬 token 價格與工具計價）",
+          "url": "https://mistral.ai/pricing/api/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral Docs — Models Overview（模型清單、版本與授權）",
+          "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral Docs — Choose Chat, Work, or Code（三種模式與舊功能對應）",
+          "url": "https://docs.mistral.ai/vibe/choose-chat-work-code",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral Docs — Get started with Work（功能、核准機制與提示詞寫法）",
+          "url": "https://docs.mistral.ai/vibe/work/get-started",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral Docs — Send your first API request（Studio 金鑰與第一次呼叫範例）",
+          "url": "https://docs.mistral.ai/getting-started/quickstarts/developer/first-api-request",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral 說明中心 — Le Chat is now Vibe（改名公告）",
+          "url": "https://help.mistral.ai/en/articles/682992-le-chat-is-now-vibe",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral 說明中心 — Where do you store my data or my Organization's data?",
+          "url": "https://help.mistral.ai/en/articles/347629-where-do-you-store-my-data-or-my-organization-s-data",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral 說明中心 — Do you use my user data to train your AI models?",
+          "url": "https://help.mistral.ai/en/articles/347617-do-you-use-my-user-data-to-train-your-artificial-intelligence-models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral 說明中心 — Can I opt out of my input or output data being used for training?",
+          "url": "https://help.mistral.ai/en/articles/455207-can-i-opt-out-of-my-input-or-output-data-being-used-for-training",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral 說明中心 — Under which license are Mistral's open models available?",
+          "url": "https://help.mistral.ai/en/articles/347393-under-which-license-are-mistral-s-open-models-available",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral 說明中心 — Can I activate Zero Data Retention (ZDR)?",
+          "url": "https://help.mistral.ai/en/articles/347612-can-i-activate-zero-data-retention-zdr",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral 說明中心 — How do you handle my data when using the Memories feature?",
+          "url": "https://help.mistral.ai/en/articles/396497-how-do-you-handle-my-data-when-using-the-memories-feature",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral 說明中心 — 更新帳號資訊（Email、密碼與 2FA）",
+          "url": "https://help.mistral.ai/en/articles/448331-how-do-i-update-my-account-information-email-password-and-2fa",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral 說明中心 — 在手機上訂閱 Pro（月繳／年繳與 Google Play 確認）",
+          "url": "https://help.mistral.ai/en/articles/392903-how-can-i-subscribe-to-pro-on-mobile",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral 法律中心 — 歐盟以外消費者服務條款（ROW Terms of Service）",
+          "url": "https://legal.mistral.ai/terms/row-consumer-terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mistral 法律中心 — 隱私政策（資料留存期間與境外傳輸）",
+          "url": "https://legal.mistral.ai/terms/privacy-policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face — mistralai 官方組織（開放權重模型與授權標籤）",
+          "url": "https://huggingface.co/mistralai",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "App Store 台灣 — Vibe by Mistral (ex-Le Chat)（版本、分級與支援語言）",
+          "url": "https://apps.apple.com/tw/app/vibe-by-mistral-ex-le-chat/id6740410176",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

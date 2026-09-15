@@ -1,0 +1,415 @@
+{
+  "slug": "openrouter-multi-model-api",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "OpenRouter：一把金鑰用遍各家模型",
+      "description": "OpenRouter 用一個 OpenAI 相容端點接上各家模型，官網 FAQ 寫儲值收 5.5% 手續費、token 價格不加價。這篇照 openrouter.ai 當天的文件走完註冊與金鑰、儲值與退款規則、模型頁每百萬 token 價格怎麼讀、免費模型每天能跑幾次、provider 欄位怎麼指定路由與資料留存，附 Python 與 curl 最小範例，以及誰適合、誰不適合。",
+      "hero": {
+        "src": "/guides/openrouter-multi-model-api/hero.jpg",
+        "alt": "插圖：一把金鑰連到中央的圓形節點，節點再分出六條線連向六個顏色不同的圓角方塊。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenRouter 把各家模型放在同一個端點後面：註冊一次、拿一把金鑰、把程式裡的 base URL 換成 openrouter.ai 的 API 網址，就能用同一份 OpenAI 格式的程式碼呼叫 Anthropic、Google、OpenAI、DeepSeek 等公司的模型。官網 FAQ 寫得很直白：token 價格照供應商原價、不加價，OpenRouter 的收入來自你儲值時收的手續費。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照 openrouter.ai 在 2026 年 9 月 14 日的文件、定價頁與條款走一遍：開帳號拿金鑰、儲值手續費、模型頁那兩個「每百萬 token」的數字怎麼讀、免費模型一天能打幾次、供應商掛掉時 fallback 怎麼接手，還有隱私分成哪兩層、哪一層一定要自己設定。"
+        },
+        {
+          "type": "heading",
+          "text": "OpenRouter 是什麼：一個端點接上四百多個模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方快速入門的第一句話是「OpenRouter 透過單一 API 端點提供數百個 AI 模型」，並說它會自動處理 fallback、為每個請求挑成本最划算的選項。文件的模型頁寫「400+ models and providers」；當天用公開的模型 API 查，只算文字輸出的模型是 447 個，把圖像、語音、嵌入全算進去是 602 個。定價頁的方案表寫付費方案「500+ models」「80+ providers」，免費方案「25+ free models」「4 free providers」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最關鍵的一句在 FAQ：OpenRouter 沿用底層供應商的價格、不加價，同時把各家的可用時間集中起來，所以你付的 token 價格和直接找供應商一樣，但多了統一的 API 與 fallback。定價頁的問答更短：「我們不會在供應商價格上加價，模型目錄上顯示的價格就是你付的價格。」"
+        },
+        {
+          "type": "paragraph",
+          "text": "介面沿用 OpenAI 的規格。FAQ 寫「OpenRouter 是 OpenAI 的 drop-in replacement，因此任何預設支援 OpenAI 的 SDK 也都支援 OpenRouter」；定價頁的遷移問答只有一行：改 base URL 和模型名稱就好。"
+        },
+        {
+          "type": "heading",
+          "text": "開帳號、金鑰與第一次呼叫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "金鑰在官網的金鑰頁建立。官方的驗證文件寫：建好金鑰時給它一個名字，也可以選擇性地設一個額度上限（credit limit）；呼叫時把金鑰放進 Authorization 標頭當 Bearer token。同一頁特別提醒，OpenRouter 的金鑰比直接向供應商申請的金鑰「更有力」，因為它能為應用程式設額度上限，也能用在 OAuth 流程裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件的安全提醒值得照做：金鑰絕對不要提交到公開的儲存庫，強烈建議放在環境變數。OpenRouter 是 GitHub secret scanning 的合作夥伴，判定金鑰外洩會寄信通知；收到通知就到金鑰設定頁刪掉舊的、再建一把新的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最小的呼叫就是把 OpenAI SDK 的 base_url 指過來。下面兩段照官方 quickstart 的原文，只把模型代號換成當天模型頁上的 anthropic/claude-sonnet-5；兩個 OpenRouter 專用標頭是選用的，設了你的應用程式才會出現在官網排行榜上。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "用 OpenAI 的 Python SDK 呼叫 OpenRouter（照官方 quickstart）",
+          "code": "from openai import OpenAI\n\nclient = OpenAI(\n  base_url=\"https://openrouter.ai/api/v1\",\n  api_key=\"<OPENROUTER_API_KEY>\",\n)\n\ncompletion = client.chat.completions.create(\n  extra_headers={\n    \"HTTP-Referer\": \"<YOUR_SITE_URL>\",       # 選用，排行榜用\n    \"X-OpenRouter-Title\": \"<YOUR_SITE_NAME>\", # 選用，排行榜用\n  },\n  model=\"anthropic/claude-sonnet-5\",\n  messages=[\n    {\"role\": \"user\", \"content\": \"What is the meaning of life?\"}\n  ]\n)\n\nprint(completion.choices[0].message.content)"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "同一個請求的 curl 版本（照官方 quickstart）",
+          "code": "curl https://openrouter.ai/api/v1/chat/completions \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $OPENROUTER_API_KEY\" \\\n  -d '{\n  \"model\": \"anthropic/claude-sonnet-5\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the meaning of life?\"\n    }\n  ]\n}'"
+        },
+        {
+          "type": "paragraph",
+          "text": "和直接呼叫單一家的 API 幾乎一樣，差別只在 base URL、金鑰，以及模型代號要寫成「公司／模型」。想先從單一家做起，站上另有兩篇從頭走一次的教學。"
+        },
+        {
+          "type": "link",
+          "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
+          "url": "https://mokaair.com/zh-TW/life/claude-api-first-call"
+        },
+        {
+          "type": "link",
+          "text": "AI Studio 與第一個 Gemini API 呼叫",
+          "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+        },
+        {
+          "type": "heading",
+          "text": "儲值、手續費與價格欄位怎麼讀",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenRouter 用點數（credits）制，基準貨幣是美元。FAQ 寫：建好帳號後到 Credits 頁加值，點數就是存在 OpenRouter 上、用來做推論的錢，每次呼叫依該模型與供應商的價格從點數裡扣。服務條款第 4.1 條寫每筆交易最少 5 美元、最多 25,000 美元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手續費只在儲值時收。FAQ 的「Pricing and fees」寫：購買點數收 5.5% 的手續費（最低 0.80 美元），加密貨幣付款收 5%。定價頁的方案表把它拆成四欄：免費方案的平台手續費寫 N/A，Pay-as-you-go 是 5.5%，Business 是 8%，Enterprise 寫「可談折扣」。定價頁的問答再補一句：8% 只在買點數時收，不是按每次 API 請求收，各方案的 token 價格完全一樣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "退款與到期也寫在條款裡：未使用的點數可以在交易後 24 小時內用 Credits 頁的退款鈕申請，超過就不能退，平台手續費一律不退，加密貨幣付款永遠不退；第 4.2 條寫 OpenRouter 保留在購買後 365 天讓未使用點數到期的權利。定價頁另註明價格未含稅。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型頁的價格是兩個並排的數字，寫成「$2 /M input tokens」與「$10 /M output tokens」，也就是每一百萬個輸入 token 和每一百萬個輸出 token 各多少美元。以 2026 年 9 月 14 日的模型頁為例：Claude Sonnet 5 是輸入 2 美元、輸出 10 美元，上下文視窗 1.0M；Gemini 3.8 Flash 是 0.75 與 3.75；gpt-oss-20b 是 0.03 與 0.13。點進單一模型頁往下拉，還有每一家代管供應商各自的輸入、輸出與快取讀取價格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不想開網頁也可以直接查。公開的模型 API 不需要金鑰，回傳的 pricing 欄位是「每一個 token 多少美元」，乘以一百萬才是模型頁上看到的數字；文件寫值為 0 代表該項免費。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "不需金鑰的模型與價格查詢（照官方模型文件）",
+          "code": "# 全部模型與價格\ncurl \"https://openrouter.ai/api/v1/models\"\n\n# 只看一個模型\ncurl \"https://openrouter.ai/api/v1/model/anthropic/claude-sonnet-5\"\n\n# 只看支援工具呼叫的模型\ncurl \"https://openrouter.ai/api/v1/models?supported_parameters=tools\""
+        },
+        {
+          "type": "paragraph",
+          "text": "有些模型的價格會隨條件變。文件的 pricing.overrides 欄位就是用來表示長上下文或離峰時段的另一組價格，例如當天的 GPT-5.6 Luna 基本價是輸入 0.2、輸出 1.2 美元，提示詞超過 272,000 個 token 之後改成 0.4 與 1.8。輸入快取讀取是獨立的一欄，通常比原價便宜一截。"
+        },
+        {
+          "type": "link",
+          "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+        },
+        {
+          "type": "link",
+          "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching"
+        },
+        {
+          "type": "paragraph",
+          "text": "免費模型是模型代號結尾加 :free 的變體。FAQ 寫這類模型「永遠免費、速率限制很低」，也直說通常不適合正式上線使用。限制寫在 API 文件的 Limits 頁：不論有沒有儲值都是每分鐘 20 次；累計儲值不到 10 美元每天 50 次，滿 10 美元每天 1,000 次。定價頁的問答補充，熱門模型的免費額度在尖峰時段還可能被供應商那邊限流，失敗的嘗試一樣算進當天配額。"
+        },
+        {
+          "type": "paragraph",
+          "text": "當天用公開 API 查，結尾是 :free 的模型在文字模型裡有 19 個，把所有輸出型態算進來是 25 個。想讓 OpenRouter 自己挑一個免費模型，文件提供 openrouter/free 這個代號。免費清單裡不少是開放權重模型，同一個模型你也可以選擇拉回自己的電腦跑。"
+        },
+        {
+          "type": "link",
+          "text": "OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪",
+          "url": "https://mokaair.com/zh-TW/life/gpt-oss-openai-open-weights"
+        },
+        {
+          "type": "heading",
+          "text": "路由與 fallback：一家壞掉自動換下一家",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個模型常常有好幾家公司代管。模型頁的說明寫：不同公司代管同一個模型，OpenRouter 依你選的路由模式送到其中一家，模式有 Balanced（價格加速度）、Nitro（最快）與 Exacto（工具呼叫準確度最高）。預設是價格優先的負載平衡，路由文件把規則列成三步：先排掉最近 30 秒內出現明顯故障的供應商；在穩定的供應商裡看價格最低的幾家，依價格平方的倒數加權挑一家；剩下的當備援。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件自己舉的例子最好懂：供應商 A 每百萬 token 1 美元、B 是 2 美元、C 是 3 美元，而 B 最近出過錯。請求會先送 A，送到 A 的機率是 C 的 9 倍（1 除以 3 的平方等於九分之一）；A 失敗換 C，C 也失敗才輪到 B。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要自己決定就用請求裡的 provider 物件。文件列出的欄位包含 order（依序嘗試的供應商）、allow_fallbacks（預設 true，關掉就只讓最優先那家服務）、only 與 ignore（只用或跳過某幾家）、require_parameters（預設 false，開了只用支援你所有參數的供應商）、sort（照 price、throughput 或 latency 排序）、max_price 等。文件提醒：設了 sort 或 order，預設的負載平衡就會停用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型層級的備援是另一個欄位：把 models 寫成一個陣列，主模型的供應商全掛、被限流或因內容審核拒答時，OpenRouter 會照順序試下一個模型。定價頁的問答寫得很乾脆：啟用路由或 fallback 時只有成功跑完的那一次會計費，失敗與備援的嘗試都不收錢，官網叫它 Zero Completion Insurance。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "同時指定模型備援與供應商偏好（照官方路由文件的欄位）",
+          "code": "{\n  \"models\": [\"anthropic/claude-sonnet-5\", \"google/gemini-3.8-flash\"],\n  \"messages\": [{ \"role\": \"user\", \"content\": \"Hello\" }],\n  \"provider\": {\n    \"order\": [\"anthropic\", \"google\"],\n    \"allow_fallbacks\": false,\n    \"require_parameters\": true,\n    \"data_collection\": \"deny\",\n    \"zdr\": true\n  }\n}"
+        },
+        {
+          "type": "image",
+          "src": "/guides/openrouter-multi-model-api/diagram-1.svg",
+          "alt": "路由圖：應用程式用一把金鑰送到 OpenRouter，再由 OpenRouter 依價格與故障狀況分送到三家供應商。",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左看到右：你的程式只認得一個端點，挑哪一家代管、哪一家當備援由 OpenRouter 決定，右下角是 provider 物件能覆寫的部分。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "不是每個模型都吃同樣的參數。定價頁的問答寫：底層模型如果支援 tools 或 function calling，你就能透過同一個 API 使用它——支不支援看模型本身，不是 OpenRouter 幫你補上。當天用模型 API 的 supported_parameters=tools 篩選，447 個文字模型裡有 358 個列出工具呼叫。路由文件也提到，請求帶了 tools 或 tool_choice 時，OpenRouter 會盡量路由到已知支援工具使用的供應商。"
+        },
+        {
+          "type": "link",
+          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+        },
+        {
+          "type": "heading",
+          "text": "隱私：OpenRouter 這層與供應商那層",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "資料政策要分兩層看。OpenRouter 自己這層，資料蒐集文件的第一句是：「OpenRouter 上的任何提示詞留存一律是選擇加入。OpenRouter 從未把底層提示詞資料分享、販售或授權給任何第三方。」內文接著寫，OpenRouter 不儲存你的提示詞與回覆，除非你自己打開兩個開關之一：一個是把提示詞與回覆記進自己的紀錄供除錯與比較（預設關閉，組織裡只有管理員看得到），另一個是讓 OpenRouter 用你的資料改善產品，交換條件是所有模型用量 1% 的折扣（預設關閉）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "即使兩個都不開，請求的中繼資料還是會存：文件寫的是 token 數、延遲這類資訊，不含內容本身，用來做報表與模型排行。官網另外會抽樣少量提示詞做主題分類；文件寫，若你沒有加入「改善產品」那一項，分類結果會完全匿名儲存、不關聯到你的帳號或使用者 ID。隱私政策（最後更新 2026 年 8 月 31 日）另有一句直述：OpenRouter 不會用你的輸入或輸出訓練模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二層是模型供應商。隱私政策寫：你送出的輸入會傳給你選的、或自動路由選到的模型供應商，各家對於是否留存、是否拿去訓練或改善模型的做法都不一樣，有些供應商可能會拿你的輸入與輸出去訓練；使用某個模型之前應該先看那家的資料做法，若不希望輸入被拿去訓練，就選承諾不這麼做的模型或供應商。FAQ 說會記錄或政策無法確認的供應商不會被路由到，除非你在隱私設定裡打開訓練開關；付費模型與免費模型可以分開設。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要逐次請求控制，就用前面那個 provider 物件：data_collection 設成 deny 只會用不蒐集使用者資料的供應商（預設是 allow，允許會非暫時性儲存、並可能拿去訓練的供應商）；zdr 設成 true 則只路由到採零資料留存政策的端點。零資料留存文件補充，有些供應商不訓練但為了偵測濫用或法規要求仍會留存，所以這兩件事分成兩個開關。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "設得太嚴，請求會直接失敗",
+          "text": "FAQ 寫：如果你在請求裡指定了 provider 路由，但沒有任何供應商符合帳號設定的隱私等級，你會收到錯誤、請求不會完成——不是默默降級去用比較寬鬆的那家。零資料留存也有邊界：文件註明這項強制只涵蓋推論請求的供應商路由，不涵蓋你自己啟用的外掛與工具（例如網頁搜尋），那些各有自己的資料留存政策。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "適合誰、不適合誰",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "適合的情況很具體：想把同一份提示詞丟到好幾家模型上比一比、不想為每家供應商各申請一把金鑰各管一份帳單、需要在一家掛掉時自動換人、或想用一個 OpenAI 相容介面接上還沒有官方 SDK 的新模型。定價頁的問答也點名兩個做法：用不同金鑰把開發與正式環境分開，各有自己的上限與紀錄；把模型代號寫死成明確版本，避免版本變動帶來意外。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不適合的情況同樣清楚。路由文件裡之所以有 require_parameters 這個欄位，正是因為不是每家供應商都支援你送出的每一個參數，要用某一家的獨門功能時，相容層反而是限制。對延遲敏感的應用也要留意：定價頁寫路由提升的是可靠度，延遲會隨模型、供應商與區域而變，需要穩定延遲就要把模型與區域釘死；把推論限制在歐盟或美國境內的 in-region routing，定價頁寫只包含在 Business 與 Enterprise 方案裡。資料完全不離開自己機器的需求，這類雲端服務本來就做不到。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "官網怎麼寫"
+          ],
+          "rows": [
+            [
+              "儲值手續費",
+              "FAQ：購買點數收 5.5%（最低 0.80 美元）；加密貨幣付款收 5%"
+            ],
+            [
+              "各方案平台手續費",
+              "定價頁：免費方案 N/A、Pay-as-you-go 5.5%、Business 8%、Enterprise 可談折扣"
+            ],
+            [
+              "token 價格",
+              "定價頁問答：不在供應商價格上加價，模型目錄顯示的價格就是你付的價格"
+            ],
+            [
+              "單筆儲值金額",
+              "條款 4.1：每筆交易最少 5 美元、最多 25,000 美元"
+            ],
+            [
+              "退款",
+              "條款 4.1：24 小時內可退未使用點數，平台手續費不退，加密貨幣付款永遠不退"
+            ],
+            [
+              "點數到期",
+              "條款 4.2：保留在購買後 365 天讓未使用點數到期的權利"
+            ],
+            [
+              "免費模型速率",
+              "Limits 頁：每分鐘 20 次；累計儲值未滿 10 美元每天 50 次，滿 10 美元每天 1,000 次"
+            ],
+            [
+              "失敗與備援請求",
+              "定價頁問答：啟用路由或 fallback 時，只對成功跑完的那一次計費"
+            ],
+            [
+              "OpenRouter 是否記錄提示詞",
+              "資料蒐集頁：不儲存提示詞與回覆，除非你自己打開記錄或改善產品的開關"
+            ],
+            [
+              "OpenRouter 是否拿去訓練",
+              "隱私政策：OpenRouter 不會用你的輸入或輸出訓練模型"
+            ],
+            [
+              "供應商是否拿去訓練",
+              "隱私政策：有些供應商可能拿去訓練或改善，使用前先看那家的資料做法"
+            ],
+            [
+              "工具呼叫",
+              "定價頁問答：底層模型支援 tools 或 function calling，才能透過同一個 API 使用"
+            ]
+          ],
+          "caption": "項目照 openrouter.ai 的 FAQ、定價頁、服務條款、隱私政策與 API 文件，查證日 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還在猶豫要走雲端 API 還是把模型拉回自己的電腦，站上有一篇把兩邊成本攤開算，一篇從安裝帶你跑第一個本機模型。"
+        },
+        {
+          "type": "link",
+          "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+          "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenRouter Quickstart（單一端點、自動 fallback、OpenAI SDK 與 curl 範例）",
+          "url": "https://openrouter.ai/docs/quickstart",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Frequently Asked Questions（手續費 5.5% 與 0.80 美元下限、免費模型每日次數、資料記錄、退款）",
+          "url": "https://openrouter.ai/docs/faq",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Pricing（方案平台手續費、免費方案模型數、in-region routing、計費與限速問答）",
+          "url": "https://openrouter.ai/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Terms of Service（第 4.1 條儲值上下限與退款、第 4.2 條點數到期）",
+          "url": "https://openrouter.ai/terms",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Privacy Policy（模型供應商資料做法、OpenRouter 不用輸入輸出訓練模型）",
+          "url": "https://openrouter.ai/privacy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Docs：Data Collection（提示詞留存一律選擇加入、兩個開關與 1% 折扣、中繼資料）",
+          "url": "https://openrouter.ai/docs/guides/privacy/data-collection",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Docs：Provider Logging（供應商訓練與留存政策、帳號層級設定、付費與免費分開設）",
+          "url": "https://openrouter.ai/docs/guides/privacy/provider-logging",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Docs：Zero Data Retention（zdr 的涵蓋範圍與外掛工具的例外）",
+          "url": "https://openrouter.ai/docs/guides/features/zdr",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Docs：Provider Routing（provider 物件欄位、預設負載平衡與 30 秒故障規則、data_collection）",
+          "url": "https://openrouter.ai/docs/guides/routing/provider-selection",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Docs：Model Fallbacks（models 陣列的模型層級備援）",
+          "url": "https://openrouter.ai/docs/guides/routing/model-fallbacks",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Docs：Free Variant（:free 變體的用法與說明）",
+          "url": "https://openrouter.ai/docs/guides/routing/model-variants/free",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Docs：Limits（免費模型每分鐘 20 次、每天 50 或 1,000 次的對照表）",
+          "url": "https://openrouter.ai/docs/api_reference/limits",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Docs：Authentication（金鑰建立、Bearer token、金鑰外洩處理）",
+          "url": "https://openrouter.ai/docs/api_reference/authentication",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Docs：Models（400+ 模型、pricing 欄位單位與 overrides、單一模型查詢）",
+          "url": "https://openrouter.ai/docs/guides/overview/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Models API（當天模型數與各模型每 token 價格的一手資料）",
+          "url": "https://openrouter.ai/api/v1/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Models（模型頁的每百萬 token 輸入與輸出價格欄位）",
+          "url": "https://openrouter.ai/models",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter：Anthropic Claude Sonnet 5 模型頁（每百萬 token 2 與 10 美元、各供應商價格與路由模式說明）",
+          "url": "https://openrouter.ai/anthropic/claude-sonnet-5",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenRouter Docs：OpenAI SDK（把 baseURL 指向 OpenRouter 的官方寫法）",
+          "url": "https://openrouter.ai/docs/guides/community/openai-sdk",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

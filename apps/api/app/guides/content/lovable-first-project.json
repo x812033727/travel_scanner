@@ -1,0 +1,273 @@
+{
+  "slug": "lovable-first-project",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tutorial",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Lovable 製作網站：需求、資料連線與交付驗收",
+      "description": "Lovable 是一個能從需求產生網站與後端功能的架站 AI，但能顯示畫面不等於已完成可用產品。本文以原創共享工具借用網站為例，整理需求拆分、Cloud 資料連線、使用者權限、目前 credits 計費與發布流程，並說明 GitHub 程式碼同步和資料搬遷的差別。附操作步驟、驗收比較表與自繪圖解，協助逐項確認功能與交付範圍，不把 AI 的完成回覆當成實際測試證據。",
+      "hero": {
+        "src": "/guides/lovable-first-project/hero.jpg",
+        "alt": "Mokaair 原創網站畫面、資料伺服器與權限保護插圖，代表 Lovable 專案從需求到後端驗收。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "社區想建立工具借用網站，讓住戶查看器材、提出申請，再由管理員核准。用一句話請 AI 做出網站，可能很快看見列表和按鈕；但借用是否重複、誰能看申請人資料，以及重新整理後紀錄是否仍在，還需要逐一確認。這是用任何架站 AI 都要走的驗收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是原創示例，依 2026 年 9 月 14 日查閱的 Lovable 官方文件整理。本文沒有建立帳號、連接真實資料庫或發布網站，也不宣稱特定提示詞能一次生成合格成品。配圖呈現的是需求與驗收流程，不是平台實際操作截圖。"
+        },
+        {
+          "type": "heading",
+          "text": "把想做的網站寫成可驗收需求",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先列出訪客、借用者與管理員各自要做的事。本例訪客可看公開器材，借用者只能查看自己的申請，管理員可核准或拒絕。每項功能都寫出輸入、結果和失敗情境，例如器材不可借時應顯示原因，不能只讓送出按鈕變成成功樣式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一輪只做器材列表與詳情，用明確標記的假資料確認資訊結構；第二輪才加入登入與申請，再加入管理功能。提示詞可寫成：建立繁體中文工具列表，顯示可借狀態，未接後端時明確標示示範資料。這比同時要求所有功能完成更容易看出差異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要求 Lovable 說明本次改了哪些頁面、資料表及規則，並列出還沒完成的事項。缺少決策時先列為待確認，不讓 AI 自行猜測借用天數、罰款或個資保存時間。每輪修正都保留驗收結果，避免只在對話裡追著外觀變動。"
+        },
+        {
+          "type": "heading",
+          "text": "確認後端在哪裡，再讓資料真的保存",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Lovable Cloud 提供資料庫、登入、檔案儲存與後端功能，也可以依需求連接自己的 Supabase。Cloud 使用 Supabase 的開源基礎，但內建 Cloud 和自行管理的 Supabase 專案是不同安排；選擇前先確認帳號、資料位置與管理責任。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前 Cloud 工具支援 Always allow、Ask each time 與 Never allow，官方列出的預設多為自動允許。新增資料或修改資料庫可能因此直接執行。練習時先查看 Connectors 中 Cloud 的代理權限，需要逐次確認的操作改成 Ask each time，而不是只在提示詞寫一句不要亂改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "從 More 進入 Cloud 檢查資料表與紀錄。本例先新增一筆測試申請，再重新載入頁面確認仍存在，接著查看對應資料是否正確。官方也提醒 draft 使用同一專案資料庫；不能因為正在草稿預覽，就假設所有讀寫都與正式資料隔離。"
+        },
+        {
+          "type": "heading",
+          "text": "登入、網站可見範圍與資料權限是不同層",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "登入代表知道使用者是誰，資料權限還要限制他能做什麼。本例借用者甲不能讀取乙的聯絡方式或核准申請。資料庫的 RLS 規則負責限制資料列讀寫，應在 Cloud 的資料庫權限頁檢查；前台隱藏管理按鈕不能取代後端授權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上傳檔案也要另外確認。Cloud Storage 的 Private 檔案由權限規則控制，Public 檔案則可能由持有網址的人讀取。借用證明或個人文件不應因方便顯示就改成公開；先設計誰可下載、何時可以分享，再檢查實際連結與存取行為。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三方服務的私密 API 金鑰應透過 Secrets 與後端處理，不放在瀏覽器程式碼或公開儲存庫。Lovable 會協助偵測和安排金鑰，但不能把這當成可以直接貼出秘密的保證。連線完成後也要測試未登入、登入但無權限，以及授權正常的情境。"
+        },
+        {
+          "type": "heading",
+          "text": "費用同時包含製作與持續執行",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "目前官方正在逐步推出統一 credits 餘額，涵蓋 Build、Cloud 與 AI gateway 使用；部分工作區仍可能看到舊的 Cloud 與 AI 餘額介面。查看 Plans & credit usage 的實際分類，不再把舊文章中兩套獨立餘額當成所有帳號的現況。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Build 用於規劃、生成和修改網站；Cloud 用於主機、資料庫、儲存及網路等資源；AI gateway 則是網站使用者呼叫 AI 的費用。特定用途補助會先使用，用完可能轉用一般 credits。即使不再修改程式，網站仍可能因運作而持續消耗額度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本次官方列 Free 每日建置額度及每月上限，付費方案另有月額度、補充與控制功能，實際價格應在方案頁與結帳頁確認。先估算本例的使用量，設定可接受支出，再檢查自動加值和用量限制；不要把免費補助或一次成功測試解讀成長期零成本。"
+        },
+        {
+          "type": "heading",
+          "text": "發布前用不同角色檢查結果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Lovable 的專案存取控制誰能進編輯器，網站存取則控制誰能開啟發布網址，兩者獨立。Free 與 Pro 的發布網站對持有連結者開放，Business 與 Enterprise 可選工作區或自訂對象。這層網站入口限制仍不替代應用程式內的資料權限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "發布視窗會執行 Basic scan，檢查常見資料庫設定與相依套件問題；Deep scan 增加程式碼與授權等檢查。官方明確說明掃描無法保證完整安全。先處理嚴重發現，再用測試帳號實際確認越權被拒絕、錯誤可理解，以及重複送出不造成多筆申請。"
+        },
+        {
+          "type": "paragraph",
+          "text": "準備好後從 Publish 確認網址與可見範圍再發布，後續改動需使用 Publish changes 更新。接受 draft 也不等於發布；同時還要注意共享資料庫的變更。發布完成後再走一次實際網址的登入、申請與查詢流程，記錄檢查的是哪個版本。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "寫出角色、資料與成功條件，先用假資料建立最小畫面。",
+            "核對 Cloud 或外部後端，設定代理操作和資料存取權限。",
+            "用不同角色驗證保存、拒絕存取、錯誤與重複操作情境。",
+            "確認費用、程式碼與資料交接，再發布並檢查正式網址。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "交付程式碼時，也要交代資料與維運",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Lovable 可透過 GitHub Git sync 匯出並雙向同步程式碼，目前一次編輯與同步一個作用中分支。連接時確認授權給哪個帳號或組織、哪些儲存庫，以及由誰管理。不要把能看到 GitHub 連線圖示，當成已確認全部變更都同步成功。"
+        },
+        {
+          "type": "paragraph",
+          "text": "程式碼備份不包含運行中的完整資料。Cloud 的資料庫匯出含結構與資料，但官方說明不含 Storage 檔案、Edge Function 程式與 Secrets；使用者密碼也不能直接以可用形式搬走。換平台時要分別安排檔案、設定、登入流程及必要的密碼重設。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本例交付時應列出專案與網域管理者、資料表、權限規則、外部服務、支出控制和還原方式。接手者需要能用自己的權限維護網站，並知道哪項測試仍未完成。把 AI 生成結果變成可交付產品，靠的是需求、資料和驗收紀錄都有對應。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/lovable-first-project/diagram-1.svg",
+          "alt": "四張卡片呈現需求、資料、驗證和交接，強調角色權限、執行額度及程式碼以外的資料責任。",
+          "width": 1600,
+          "height": 900,
+          "caption": "網站能開啟只是起點；資料權限、運作費用與接手方式都需要可查的紀錄。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "看到的結果",
+            "接著要驗證",
+            "不能直接推論"
+          ],
+          "rows": [
+            [
+              "列表與按鈕出現",
+              "資料來源與點擊流程",
+              "功能已完成"
+            ],
+            [
+              "登入成功",
+              "角色與資料列讀寫限制",
+              "所有資料都受保護"
+            ],
+            [
+              "申請顯示成功",
+              "重新載入與資料表內容",
+              "已永久保存正確紀錄"
+            ],
+            [
+              "安全掃描通過",
+              "實際授權與錯誤情境",
+              "不存在任何漏洞"
+            ],
+            [
+              "GitHub 同步成功",
+              "分支、版本與資料匯出",
+              "資料庫和檔案也已備份"
+            ],
+            [
+              "正式網址可開啟",
+              "角色流程與執行額度",
+              "之後不需維運成本"
+            ]
+          ],
+          "caption": "原創共享工具借用示例的驗收表；平台功能、介面及計費依查閱日期與工作區狀態核對。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "草稿畫面不保證使用另一份資料庫",
+          "text": "檢查每次測試實際連接的資料環境。以假資料與可辨識的測試帳號操作，重大資料修改前保留可還原備份。"
+        },
+        {
+          "type": "link",
+          "text": "把 AI 設計需求寫成可檢查的提示",
+          "url": "https://mokaair.com/zh-TW/life/ai-design-prompt-workflow"
+        },
+        {
+          "type": "link",
+          "text": "安排網站製作與驗收階段",
+          "url": "https://mokaair.com/zh-TW/life/web-design-project-workflow"
+        },
+        {
+          "type": "link",
+          "text": "先用原型確認操作流程",
+          "url": "https://mokaair.com/zh-TW/life/wireframe-prototype-testing"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Lovable：內建 Cloud 與代理權限",
+          "url": "https://docs.lovable.dev/features/cloud",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lovable：資料庫與 RLS",
+          "url": "https://docs.lovable.dev/features/database",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lovable：檔案儲存與存取",
+          "url": "https://docs.lovable.dev/features/storage",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lovable：安全掃描與金鑰管理",
+          "url": "https://docs.lovable.dev/features/security",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lovable：Credits 與使用量",
+          "url": "https://docs.lovable.dev/introduction/credits-and-usage",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lovable：訂閱方案",
+          "url": "https://docs.lovable.dev/introduction/subscription-plans",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lovable：發布與網站存取",
+          "url": "https://docs.lovable.dev/features/publish",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lovable：GitHub 程式碼同步",
+          "url": "https://docs.lovable.dev/integrations/github",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lovable：資料匯出與進階設定",
+          "url": "https://docs.lovable.dev/features/advanced-settings",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}

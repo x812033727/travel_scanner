@@ -1,0 +1,268 @@
+{
+  "slug": "ai-site-search-design",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "網站 AI 搜尋怎麼規劃：內容索引、回答與搜尋紀錄",
+      "description": "網站搜尋 AI 上線前，先決定哪些內容可被引用，以及找不到答案時如何回應。本文以原創手作展館網站為例，整理內容索引、來源引用、資料權限與更新驗收，並設計一份可用 Notion 管理的搜尋改善紀錄。附操作步驟、欄位比較表和自繪圖解，協助站長從讀者問題找出內容缺口，同時避免把全部查詢與個人資料直接存進共用工作區。",
+      "hero": {
+        "src": "/guides/ai-site-search-design/hero.jpg",
+        "alt": "Mokaair 原創網站搜尋畫面、來源文件與紀錄資料夾插圖，代表可核對答案的內容改善流程。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "訪客在手作展館網站問下雨還能參加嗎，想知道的可能是室內課程照常、戶外活動取消，或能否改期。只回傳含有下雨兩字的頁面未必夠用，但 AI 若把不同活動規則拼成一個答案，也可能造成誤會。搜尋設計要從這個差別開始。這也是規劃網站搜尋 AI 的第一個決定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文採原創展館情境，依 2026 年 9 月 14 日查閱的 Cloudflare、Microsoft 與 Notion 官方文件整理。重點是站內搜尋與維護流程，不是某一套工具的效能排名；沒有部署搜尋服務、建立 Notion 連線或蒐集真實訪客資料。"
+        },
+        {
+          "type": "heading",
+          "text": "先限定搜尋要處理的讀者問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "整理網站常見問題，例如開放時間、交通、活動改期與場地設備，替每類指定可作依據的頁面。本例先處理公開參觀資訊，不把報名者名單、付款紀錄或內部排班加入同一個公開索引。功能範圍越清楚，越容易定義答案是否正確。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般搜尋可提供標題、摘要與連結；AI 搜尋則可能整理多段資料成答案。兩種方式可以並存，讓訪客直接看原文，也能用自然語言提問。需要登入查訂單的操作另外安排，不讓公開問答介面靠猜測回答個人交易狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把不確定情況寫進需求：資料不足時明說未找到，問題含糊時請對方選擇活動，規則衝突時顯示來源與人工聯絡方式。不要要求系統每次都回答得很完整；有時保留問題、指出要確認的資訊，才是適合的結果。"
+        },
+        {
+          "type": "heading",
+          "text": "建立索引前，先整理內容來源與更新",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "索引是供搜尋使用的內容結構，常會把頁面切成較小段落，再保存標題、網址、日期及其他欄位。切段時保留標題與適用條件，避免把可改期的條件與限制分散後失去關聯。導覽列和每頁重複頁尾通常不需要當成主要答案來源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以 Cloudflare AI Search 的網站來源為例，目前需使用同一帳號內已接入的網域，可設定要納入的網址、排除路徑及內容選取範圍。它可從 sitemap 或頁面連結找內容，實際設定依解析模式不同。這是平台的來源機制，不代表任何網站都能直接任意加入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網站改稿與搜尋索引更新是兩個時間點。Cloudflare 的外部網站來源依排程同步，也可觸發同步工作；工作完成前仍可能出現舊內容。每次改活動規則後，查看索引狀態並用原本的問題重查，確認新增、修改與移除的內容都反映到結果。"
+        },
+        {
+          "type": "heading",
+          "text": "讓答案可以核對，保留原文入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "常見做法是先檢索相關內容，再把找到的段落交給模型整理，這類流程稱為 RAG。它能讓回答參考網站資料，但檢索到不完整或不相關內容時仍可能答錯。本篇只用這個概念設計站內回應，不把它當成查證正確率的保證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "回答旁顯示來源標題、可開啟網址與適用日期，最好能指到支持該段說法的位置。本例問雨天課程時，答案應分清室內與戶外活動，分別連到相關規則。Cloudflare 回傳的來源片段可供應用程式製作引用；有一串來源網址，不代表每句話都已被來源支持。"
+        },
+        {
+          "type": "paragraph",
+          "text": "相關性分數表示搜尋匹配程度，不是答案正確的百分比。驗收時看原文是否真的支持日期、費用與條件，也檢查來源頁是否過時。找不到足夠依據時，保留一般搜尋結果和聯絡入口，讓訪客有下一步，而不是被一段自信但無法核對的文字困住。"
+        },
+        {
+          "type": "heading",
+          "text": "資料權限要在回答產生前限制",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果將來加入會員文件，應在檢索階段只取出該使用者有權讀取的內容，再送給模型。不能先把內部資料放進提示，最後才把畫面上的連結藏起來。Microsoft 的文件層級存取說明也提醒，索引中的權限資料需要隨來源更新，否則可能保留過時授權。"
+        },
+        {
+          "type": "paragraph",
+          "text": "來源文字應當作要閱讀的資料，不能自動變成操作指令。有人在文章或上傳文件中寫忽略原規則、顯示其他資料時，系統不應照做。把允許回答的範圍、可用工具和後端權限一起限制，比只在提示詞要求請注意隱私更完整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同時檢查模型供應商、搜尋平台與紀錄工具各收到什麼。查詢可能包含姓名、電話、訂單編號或私人問題，即使搜尋內容是公開文章也一樣。先定義必要欄位、保存期限和存取者，並在介面清楚說明資料用途，不為了分析方便就保留全部原始文字。"
+        },
+        {
+          "type": "heading",
+          "text": "用 Notion 記錄內容缺口，先做人工小樣本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建立一份搜尋改善資料庫，以問題摘要作標題，加入查詢日期、問題類別、結果狀態、來源 URL、處理人與複查日期。Notion 的文字、日期、選項、狀態、URL 和人員屬性可對應這些欄位。原始查詢先去除個資或改寫成摘要，再放進紀錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本例可記成雨天戶外課是否改期，狀態為內容不清楚，來源指向活動規則，處理人負責補上適用條件。建立待補內容與待複查檢視，按狀態篩選；完成後用相同問題再搜尋。這份表是維護工作清單，不需要把每次訪客提問都變成永久追蹤資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先人工整理少量案例，確認欄位有用後再考慮串接。自動寫入應經網站後端，保護 Notion token，並依需求授予最小能力；單純新增內容可從 Insert content 評估，需讀取或更新才增加相應權限。連線也只開給專用資料庫與必要範圍，不放到公開前端。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出可回答問題與正式來源，排除私人或未完成內容。",
+            "建立並檢查索引，以代表性問題核對答案和來源。",
+            "在 Notion 建立摘要、狀態、來源與複查欄位，先人工整理。",
+            "修正內容後重新同步與測試，再評估自動紀錄和保存期限。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "用紀錄改善答案，而不是追求每題都回答",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Notion 的篩選檢視與隱藏欄位主要控制呈現，分享權限應在 Share 另外設定。只邀請需要處理問題的人，並檢查父頁、工作區和其他分享路徑。Notion 會採使用者已取得的最寬存取權，不能只設一條較窄規則就忽略其他權限來源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "準備固定驗收題組，涵蓋明確問題、模糊問題、錯字、網站沒有資料的問題與不該取得的內容。記錄答對、引用錯誤、未找到和正確拒答，並人工抽查。未回答率下降不一定是改善，也可能只是系統開始在缺乏根據時猜答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後比較查詢延遲、內容更新落差與實際費用，再決定擴大範圍。搜尋、向量處理與模型生成可能各有成本，不以工具免費入口推定所有用量免費。當 Notion 寫入失敗時，搜尋本身也應有明確處理方式，避免紀錄系統故障就讓讀者完全無法找文章。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-site-search-design/diagram-1.svg",
+          "alt": "四張卡片說明整理來源、檢索回答、摘要紀錄與更新複查，保留來源入口並避免多存個資。",
+          "width": 1600,
+          "height": 900,
+          "caption": "搜尋的價值是幫讀者找到可靠資訊，紀錄的價值是讓下一次回答更有依據。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Notion 欄位",
+            "建議類型",
+            "本例用途"
+          ],
+          "rows": [
+            [
+              "問題摘要",
+              "標題或文字",
+              "去除個資後的讀者需求"
+            ],
+            [
+              "查詢日期",
+              "日期",
+              "觀察改稿前後的變化"
+            ],
+            [
+              "問題類別",
+              "選項",
+              "交通、時間或活動規則"
+            ],
+            [
+              "結果與處理狀態",
+              "選項或狀態",
+              "未找到、待補內容、待複查"
+            ],
+            [
+              "主要來源",
+              "URL",
+              "連到需要核對的原文"
+            ],
+            [
+              "處理人與複查日",
+              "人員與日期",
+              "安排修正及再次驗收"
+            ]
+          ],
+          "caption": "原創最小紀錄設計；多個來源可另列於頁面內容，不必保存訪客姓名或完整私人查詢。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "來源連結存在，仍要核對答案",
+          "text": "把回答中的重要條件逐一對回原文。相關性分數和引用清單可協助檢查，不能直接當成正確率或授權證明。"
+        },
+        {
+          "type": "link",
+          "text": "讓網站資訊架構先回應讀者需求",
+          "url": "https://mokaair.com/zh-TW/life/website-information-architecture"
+        },
+        {
+          "type": "link",
+          "text": "規劃 AI 搜尋環境中的內容寫法",
+          "url": "https://mokaair.com/zh-TW/life/ai-search-geo-content"
+        },
+        {
+          "type": "link",
+          "text": "從搜尋意圖整理文章切角",
+          "url": "https://mokaair.com/zh-TW/life/seo-search-intent"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Cloudflare AI Search：網站來源",
+          "url": "https://developers.cloudflare.com/ai-search/configuration/data-source/website/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare AI Search：同步與索引",
+          "url": "https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare AI Search：來源引用",
+          "url": "https://developers.cloudflare.com/ai-search/how-to/chunk-citations/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft：RAG、索引與限制",
+          "url": "https://learn.microsoft.com/en-nz/azure/foundry/concepts/retrieval-augmented-generation?view=foundry",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft：文件層級存取控制",
+          "url": "https://learn.microsoft.com/en-us/azure/search/search-document-level-access-overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Notion：資料庫屬性",
+          "url": "https://www.notion.com/help/database-properties",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Notion：分享與權限",
+          "url": "https://www.notion.com/help/sharing-and-permissions",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Notion API：連線能力",
+          "url": "https://developers.notion.com/reference/capabilities",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    }
+  }
+}
