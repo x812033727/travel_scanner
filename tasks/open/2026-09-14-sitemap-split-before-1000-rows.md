@@ -1,8 +1,8 @@
 ---
 id: 2026-09-14-sitemap-split-before-1000-rows
-title: sitemap 拆成 sitemap index：926 列已過 800 警戒線
+title: sitemap 拆成 sitemap index：966 列，下一批 20 篇就破 1,000
 status: open
-priority: P2
+priority: P1
 area: web
 owner:
 claimed_at:
@@ -29,15 +29,15 @@ scope:
   - docs/travel-guides.md
 ---
 
-# sitemap 拆成 sitemap index：926 列已過 800 警戒線
+# sitemap 拆成 sitemap index：966 列，下一批 20 篇就破 1,000
 
 ## Why
 
-`guides-pack lint` 現在算到 926 個 (article, locale) 列，早就過了 `SITEMAP_WARN_ROWS = 800`
+`guides-pack lint` 現在算到 966 個 (article, locale) 列（#513 之後、含 #515 財經系列的 40 篇），早就過了 `SITEMAP_WARN_ROWS = 800`
 （`apps/api/app/guides/pack_ingest.py`）的警戒線；兩個專區共用一個 1,000 列的 sitemap（`SITEMAP_LIMIT`
 在 `apps/api/app/guides/service.py`、`SITEMAP_GUIDE_ENTRY_LIMIT` 在 `apps/web/lib/guides.server.ts`），新的先進、
-舊的被擠出，被擠出的文章仍可索引但不再被 sitemap 宣告、也沒有 `lastmod`。生活分享 AI 系列批次 08–11 還有 80 篇、
-批次 12 有 11 篇要進來，926＋91 會在批次 11 落地時超過 1,000。
+舊的被擠出，被擠出的文章仍可索引但不再被 sitemap 宣告、也沒有 `lastmod`。生活分享 AI 系列批次 08–11 還有 80 篇、批次 12 有 11 篇、
+財經系列（`docs/life-finance-series.md`）還有 80 篇要進來：966 列再加任何一批 20 篇就超過 1,000，全部進來會到 1,137。
 
 `GET /guides/sitemap`（`apps/api/app/guides/router.py`）沒有分頁參數，所以不能只在 web 端拆；`docs/seo.md`
 寫的「No sitemap index is needed」與 `docs/travel-guides.md` 的「Still open」都要一起改。
@@ -67,6 +67,8 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life
 部署後抓 `/sitemap.xml` 與每個子 sitemap，確認總列數等於已發布的 (article, locale) 數。
 
 ## Notes
+
+- 2026-09-15 提到 P1：#515 財經系列一次加了 40 列，966 已經離上限 34 列，任何一批 20 篇落地就會開始把最舊的文章擠出 sitemap。
 
 - `guides.server.ts` 與 `pack_ingest.py` 目前被 review 中的 `2026-09-14-claude-code-tutorial-center`、`2026-09-14-pack-ingest-urlopen-scheme` 持有，所以先 depends_on 那兩張。
 - `2026-09-14-guide-listing-curated-order` 也會改 `service.py`；先合併的那張，後面那張要 rebase。
