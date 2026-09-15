@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">你的任務對到哪個榜 / Match your task to the right leaderboard</title>
+<desc id="desc">一張三欄對照表。左欄「你的任務」由上到下五列：日常問答與寫作、寫程式與修 bug、代理跑多步任務、專業知識與數學、長文件與長對話。中欄「該看哪個榜」依序對應：Arena 文字榜與子分類，由人類盲測投票以 Bradley-Terry 算分；SWE-bench Verified 的 Bash Only 榜，500 題放在同一個極簡環境；Arena 代理榜，2026 年 8 月 14 日起依任務分類並標出成本；各家 model card 裡的 GPQA 與 AIME，由廠商自己跑、自己寫條件；長上下文題庫，官方會寫測的是哪個長度。右欄「看數字前先確認」依序對應：分數旁的 95% 信賴區間與有沒有標 AutoEval；是不是同一個子集、外框與嘗試次數對不對；任務類別對不對、一次任務要花多少錢；有沒有給工具、跑幾次取平均；測的是多長的內容、是累積分還是單點分。最下方一條橫帶寫著三個陷阱：題目外洩與過擬合、廠商自報數字的測試條件、榜單更新速度與方法都會變；並提醒三個都對不上時，自己出五題，同一份提示詞讓兩個候選各跑一次。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs>
+<marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+<path d="M 0 0 L 8 4 L 0 8 z" fill="#5C6B6B"/>
+</marker>
+</defs>
+
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">你的任務對到哪個榜</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">Match your task to the right leaderboard</text>
+
+<text x="260" y="152" text-anchor="middle" font-size="20" font-weight="700" fill="#0D6B68">你的任務</text>
+<text x="780" y="152" text-anchor="middle" font-size="20" font-weight="700" fill="#2F6F9F">該看哪個榜</text>
+<text x="1320" y="152" text-anchor="middle" font-size="20" font-weight="700" fill="#D97A2B">看數字前先確認</text>
+
+<g stroke-width="4">
+<rect x="60" y="180" width="400" height="88" rx="14" fill="#E3F0EF" stroke="#0D6B68"/>
+<rect x="520" y="180" width="520" height="88" rx="14" fill="#FFFFFF" stroke="#2F6F9F"/>
+<rect x="1100" y="180" width="440" height="88" rx="14" fill="#FFFFFF" stroke="#D97A2B"/>
+
+<rect x="60" y="282" width="400" height="88" rx="14" fill="#E3F0EF" stroke="#0D6B68"/>
+<rect x="520" y="282" width="520" height="88" rx="14" fill="#FFFFFF" stroke="#2F6F9F"/>
+<rect x="1100" y="282" width="440" height="88" rx="14" fill="#FFFFFF" stroke="#D97A2B"/>
+
+<rect x="60" y="384" width="400" height="88" rx="14" fill="#E3F0EF" stroke="#0D6B68"/>
+<rect x="520" y="384" width="520" height="88" rx="14" fill="#FFFFFF" stroke="#2F6F9F"/>
+<rect x="1100" y="384" width="440" height="88" rx="14" fill="#FFFFFF" stroke="#D97A2B"/>
+
+<rect x="60" y="486" width="400" height="88" rx="14" fill="#E3F0EF" stroke="#0D6B68"/>
+<rect x="520" y="486" width="520" height="88" rx="14" fill="#FFFFFF" stroke="#2F6F9F"/>
+<rect x="1100" y="486" width="440" height="88" rx="14" fill="#FFFFFF" stroke="#D97A2B"/>
+
+<rect x="60" y="588" width="400" height="88" rx="14" fill="#E3F0EF" stroke="#0D6B68"/>
+<rect x="520" y="588" width="520" height="88" rx="14" fill="#FFFFFF" stroke="#2F6F9F"/>
+<rect x="1100" y="588" width="440" height="88" rx="14" fill="#FFFFFF" stroke="#D97A2B"/>
+</g>
+
+<g stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)">
+<line x1="470" y1="224" x2="508" y2="224"/>
+<line x1="1050" y1="224" x2="1088" y2="224"/>
+<line x1="470" y1="326" x2="508" y2="326"/>
+<line x1="1050" y1="326" x2="1088" y2="326"/>
+<line x1="470" y1="428" x2="508" y2="428"/>
+<line x1="1050" y1="428" x2="1088" y2="428"/>
+<line x1="470" y1="530" x2="508" y2="530"/>
+<line x1="1050" y1="530" x2="1088" y2="530"/>
+<line x1="470" y1="632" x2="508" y2="632"/>
+<line x1="1050" y1="632" x2="1088" y2="632"/>
+</g>
+
+<g text-anchor="middle" font-size="19" fill="#102A2B">
+<text x="260" y="232">日常問答與寫作</text>
+<text x="260" y="334">寫程式、修 bug</text>
+<text x="260" y="436">代理跑多步任務</text>
+<text x="260" y="538">專業知識與數學</text>
+<text x="260" y="640">長文件與長對話</text>
+</g>
+
+<g text-anchor="middle" font-size="17" fill="#102A2B">
+<text x="780" y="216">Arena 文字榜與其中的子分類</text>
+<text x="780" y="246" fill="#5C6B6B">人類盲測投票，Bradley-Terry 算分</text>
+<text x="780" y="318">SWE-bench Verified 的 Bash Only 榜</text>
+<text x="780" y="348" fill="#5C6B6B">500 題，全部同一個極簡環境</text>
+<text x="780" y="420">Arena 代理榜（2026 年 8 月 14 日改版）</text>
+<text x="780" y="450" fill="#5C6B6B">依任務分類，並標出任務成本</text>
+<text x="780" y="522">各家 model card 裡的 GPQA、AIME</text>
+<text x="780" y="552" fill="#5C6B6B">廠商自己跑、自己寫條件</text>
+<text x="780" y="624">長上下文題庫</text>
+<text x="780" y="654" fill="#5C6B6B">官方會寫測的是哪個長度</text>
+</g>
+
+<g text-anchor="middle" font-size="17" fill="#102A2B">
+<text x="1320" y="216">看分數旁的 95% 信賴區間</text>
+<text x="1320" y="246" fill="#5C6B6B">以及有沒有標 AutoEval</text>
+<text x="1320" y="318">是不是同一個子集</text>
+<text x="1320" y="348" fill="#5C6B6B">外框與嘗試次數對不對</text>
+<text x="1320" y="420">任務類別對不對</text>
+<text x="1320" y="450" fill="#5C6B6B">一次任務要花多少錢</text>
+<text x="1320" y="522">有沒有給工具</text>
+<text x="1320" y="552" fill="#5C6B6B">跑幾次取平均</text>
+<text x="1320" y="624">測的是多長的內容</text>
+<text x="1320" y="654" fill="#5C6B6B">累積分還是單點分</text>
+</g>
+
+<rect x="60" y="706" width="1480" height="106" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+<text x="800" y="750" text-anchor="middle" font-size="19" font-weight="700" fill="#B8442D">三個陷阱：題目外洩與過擬合　廠商自報數字的測試條件　榜單更新速度與方法都會變</text>
+<text x="800" y="784" text-anchor="middle" font-size="17" fill="#5C6B6B">三個都對不上時，自己出五題，同一份提示詞讓兩個候選各跑一次</text>
+
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

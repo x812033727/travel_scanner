@@ -1,0 +1,414 @@
+{
+  "slug": "ai-companion-mental-health-caution",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "daily"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 陪伴與心理健康：可以與不可以",
+      "description": "AI 可以陪你把話說出口，但各家官方政策都把診斷、處方與危機處理擋在門外。這篇攤開 OpenAI、Anthropic、Character.AI 與 Meta AI 條款當天寫的原文，整理出可以做的三件事（練習表達、歸納情緒日記、準備就醫）與不可以做的三件事，再對照衛生福利部 1925 安心專線、1995 生命線與各縣市社區心理衛生中心，附判斷流程圖與一張可以、不可以、該找誰的對照表。",
+      "hero": {
+        "src": "/guides/ai-companion-mental-health-caution/hero.jpg",
+        "alt": "左邊一個圓角對話框裡有三個圓點，一條虛線彎向右邊的同心圓，象徵從打字說出口走到有人接聽，下方一行短句",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "AI 可以陪你把話說出口，但它不能替你做診斷，也不能在危急時刻代替真人。這不是使用者謹慎一點的問題，而是各家官方使用政策白紙黑字寫著的界線。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把 OpenAI、Anthropic、Character.AI 與 Meta 四家官方政策當天寫的原文攤開來看，整理出可以交給 AI 的事與一定要交給真人的事，再對照衛生福利部與國際生命線台灣總會的官方求助管道。本文不做任何診斷、治療或醫療建議；覺得撐不住的時候，請直接撥打衛生福利部 1925 安心專線。"
+        },
+        {
+          "type": "heading",
+          "text": "四家官方政策，原文怎麼寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 把規則寫在使用政策（Usage Policies）裡，本文讀到的版本標示生效日為 2025 年 10 月 29 日，現行條文以官網為準。在「Protect people」那一節，禁止清單包含自殺、自傷與飲食失調的提倡或協助；同一節還有一條和心理健康直接相關：未經具執照專業人員適當參與，不得提供需要執照的量身建議，法律與醫療建議是它舉的例子。另一節「Keep minors safe」則寫明不得讓未成年人接觸不適齡內容，其中點名了圖像化的自傷內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的使用政策生效日是 2025 年 9 月 15 日，有一整節專講不得製造心理或情緒上的有害內容（Do Not Create Psychologically or Emotionally Harmful Content），第一條就是不得促成、宣揚或美化任何形式的自殺或自傷，包含飲食失調與不健康的強迫性運動。更值得注意的是「高風險使用情境」那一節：醫療保健被列了進去，定義裡直接寫了治療與心理健康，這類用途官方要求兩件事，一是必須有該領域合格專業人員在產出或決定送出前審閱，二是必須在每次工作階段開始時告知對方正在使用 AI。睡眠、壓力、營養、運動這類健康生活建議，政策則明文寫它不算在這一類。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "四家官方政策裡與心理健康有關的原文，2026 年 9 月 15 日查得",
+          "code": "【OpenAI Usage Policies｜Effective: October 29, 2025】\n\"suicide, self-harm, or disordered eating promotion or facilitation\"\n\"provision of tailored advice that requires a license, such as legal or medical advice, without appropriate involvement by a licensed professional\"\n（自殺、自傷或飲食失調的提倡或協助；未經具執照專業人員適當參與，提供需要執照的量身建議，例如法律或醫療建議）\n\n【Anthropic Usage Policy｜Effective September 15, 2025】\n\"Facilitate, promote, or glamorize any form of suicide or self-harm, including disordered eating and unhealthy or compulsive exercise\"\n\"Healthcare: Use cases related to healthcare decisions, medical diagnosis, patient care, therapy, mental health, or other medical guidance.\"\n（促成、宣揚或美化任何形式的自殺或自傷，包含飲食失調與不健康的強迫性運動；醫療保健：涉及醫療決策、醫療診斷、病患照護、治療、心理健康或其他醫療指引的使用情境）\n\n【Character.AI Safety Center｜說明中心，2026-09-14 更新】\n\"Users must be at least 13 years old (at least 16 years old in Europe).\"\n（使用者必須年滿 13 歲，在歐洲必須年滿 16 歲）\n\n【Meta AI Terms｜Effective May 13, 2026】\n\"you cannot access AIs if you are under the age of 13\"\n\"YOU SHOULD NOT RELY UPON OUTPUTS FOR ANY PURPOSE OR USE OUTPUTS TO INFORM PROFESSIONAL ADVICE OR DECISIONS RELATED TO MEDICINE, FINANCE, LAW, OR PHARMACEUTICALS.\"\n（未滿 13 歲不得使用；不應為任何目的依賴輸出內容，或用輸出內容形成醫學、財務、法律或藥物相關的專業建議或決定）"
+        },
+        {
+          "type": "paragraph",
+          "text": "Character.AI 的定位寫得很直接，說明中心把自己稱為互動娛樂平台，註冊年齡下限是至少 13 歲、歐洲至少 16 歲。2025 年 10 月 29 日的官方公告更進一步，宣布移除未滿 18 歲使用者的開放式聊天功能，不晚於 11 月 25 日生效，過渡期間先把每日聊天時間限制在兩小時；11 月 21 日的後續公告寫明從 11 月 24 日起在美國分兩批關閉，並把 ThroughLine 的求助專線網絡整合進產品，官方描述那個網絡涵蓋 170 個國家、1,500 個服務。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Meta 的 AI 使用條款生效日是 2026 年 5 月 13 日，年齡門檻是未滿 13 歲不得使用；禁止事項包含產生或散布可能傷害他人的內容，其中明列鼓勵自傷。條款也用全大寫寫著不應依賴輸出內容，或用它形成醫學、財務、法律或藥物方面的專業建議或決定。這些條款管到的是 WhatsApp 與 Instagram 裡的同一個助理，實際位置與隱私設定可以看 "
+            },
+            {
+              "type": "link",
+              "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
+              "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "可以：練習說出口、整理情緒、準備就醫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "政策禁止的是取代專業與鼓勵傷害，不是談心情。Anthropic 在 2025 年 12 月 18 日的官方公告裡把界線講得很清楚：Claude 不是專業建議或醫療照護的替代品；當有人表達自殺或自傷的個人困擾時，Claude 應該以關懷與同理回應，並在可能的情況下把人指向真人支持，也就是求助專線、心理健康專業人員，或是信任的朋友與家人。把這句話當成使用方式的說明書來看，能做的事就浮出來了。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "練習表達：把想跟醫師、家人或主管說的話先講一次，請它整理成三句話，真的要開口時不會卡住。",
+            "整理情緒日記：把一段時間的零散紀錄丟進去，請它只做歸納，列出重複出現的情境與時間點，不要下結論。",
+            "準備就醫：把睡眠、食慾、情緒起伏整理成一張時間軸，看診時直接拿出來，省下現場回想的時間。",
+            "找資源：請它列出你所在縣市有哪幾類官方管道，再自己回官方網站核對號碼與服務時間。",
+            "換個說法：同一段話請它用比較中性的語氣重寫一次，看看自己是不是把事情說得比實際更絕對。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "三段可以直接貼的提示詞：練習開口、歸納情緒日記、準備第一次看診",
+          "code": "【練習開口】\n我想跟家人說我最近狀況不好，但不知道怎麼開頭。我想講的是：<寫下來>。\n請幫我整理成三句話，語氣平靜、不指責對方，也不要幫我分析原因。\n\n【歸納情緒日記】\n以下是我這兩週零散的紀錄：<貼上>。\n請只做歸納，列出重複出現的情境、時間點與當下正在做的事，用條列呈現。\n不要推測原因，不要給建議，也不要對我的狀態下任何結論。\n\n【準備第一次看診】\n我下週第一次去身心科看診。以下是我這一個月的睡眠、食慾與情緒起伏：<貼上>。\n請整理成一張時間軸，再列出五個我應該主動告訴醫師的重點，以及三個我可以問醫師的問題。\n不要判斷我可能是什麼狀況。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "不想打字的話，用講的也可以，做法見 "
+            },
+            {
+              "type": "link",
+              "text": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
+              "url": "https://mokaair.com/zh-TW/life/chatgpt-voice-mode-guide"
+            },
+            {
+              "type": "text",
+              "text": "；要帶家裡長輩一起用，先從 "
+            },
+            {
+              "type": "link",
+              "text": "長輩的第一堂 AI 課：用語音跟 AI 聊天、查資料、寫訊息",
+              "url": "https://mokaair.com/zh-TW/life/ai-for-seniors-first-steps"
+            },
+            {
+              "type": "text",
+              "text": " 的設定開始比較順。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "不可以：診斷、開藥、危機時取代真人",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三件事在各家政策裡都寫死了。第一，不要拿它當診斷：Anthropic 把心理健康列進高風險使用情境，要求合格專業人員審閱；OpenAI 禁止在沒有具執照專業人員適當參與的情況下提供需要執照的量身建議。第二，不要拿它調整藥物：Meta 的條款直接寫著不應用輸出內容形成醫學或藥物方面的專業建議或決定。第三，危機的時候不要只靠它。OpenAI 說明中心寫明，可信任聯絡人不是緊急服務、不是危機應變系統，也不是心理健康照護的替代品；家長控制的安全通知同樣寫著它不是即時監控，可能不會辨識出每一個狀況，也不能取代專業照護或緊急服務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "產品端確實有安全網，但要知道它是什麼。Anthropic 的公告寫著 Claude.ai 上有一個自殺與自傷分類器，掃描進行中的對話，偵測到可能需要進一步資源時會跳出橫幅，把人導向真人支持；Claude 說明中心補充，那個橫幅是由另一套偵測系統呈現的，不是 Claude 本身給的，關掉之後不會因此對帳號有任何影響。OpenAI 在產品裡也有類似的輕量訊息，說明中心寫明那只是溫和的關心，不是判斷。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "還有一個容易忽略的坑：AI 講出來的專線號碼、服務時間與地址可能是錯的。這不是它壞掉，是語言模型本來就會把不存在的細節說得很流暢，成因與查證方法可以看 "
+            },
+            {
+              "type": "link",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+            },
+            {
+              "type": "text",
+              "text": "。凡是要撥的電話、要去的地方、要帶的證件，一律回官方頁面核對一次再行動。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "從「想找 AI 聊」到「該找真人」：台灣的官方資源",
+          "level": 2
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-companion-mental-health-caution/diagram-1.svg",
+          "alt": "三段式判斷流程圖：只是想抒發時 AI 可以陪，困擾超過兩週要換成真人，出現傷害念頭時停止對話直接撥官方專線",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下看：先判斷自己落在哪一段，再往下看那一欄該做什麼，三條路的終點都是有真人接聽的電話。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "判斷線只有三段。第一段是日常：想抒發、想整理、想練習怎麼開口，AI 可以陪你走完。第二段是持續：同一件事困擾超過兩週，睡不著、吃不下、做什麼都提不起勁，這時候該把主角換成真人，AI 只負責把資料整理好。第三段是危急：出現傷害自己或別人的念頭，就停止跟 AI 對話，直接撥電話；人已經處於立即危險時撥 110 報警或 119 叫救護車。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "撐不住的時候，先打這幾支電話",
+          "text": "衛生福利部 1925 安心專線提供 24 小時免付費心理諮詢服務；1995 生命線官方寫的是全日 24 小時的電話守候；人已經有立即危險時，直接撥 110 報警或 119 叫救護車。不用等到自己覺得「夠嚴重」才打，衛福部的說明頁寫的是「倘有心理壓力或情緒困擾」就可以撥。"
+        },
+        {
+          "type": "paragraph",
+          "text": "衛生福利部心理健康司的「全國諮詢及救援服務專線」把號碼整理在同一張表上：安心專線 1925（依舊愛我）、生命線 1995、張老師 1980、113 保護專線、社福專線 1957、長照專線 1966，報案與救護是 110 與 119。1925 的專頁寫的是 24 小時免付費心理諮詢服務；國際生命線台灣總會的官方介紹寫著生命線藉著全日 24 小時的電話守候致力於自殺防治，目前台灣 23 個縣市都有生命線協會，電話或手機直撥 1995 就會接到當地的協會。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想要的是面對面而不是電話，官方也有兩條路。一條是各縣市的社區心理衛生中心與衛生局心理諮詢專線，衛福部的「各縣市社區心理諮商服務一覽表」列出每個縣市的窗口與電話，例如新北市社區心理衛生中心 02-2257-2623、臺北市政府衛生局心理衛生中心 02-3393-7885、高雄市政府衛生局 07-716-1925。另一條是青壯世代心理健康支持方案：衛福部 115 年 1 月的焦點新聞寫明，方案自 113 年 8 月 1 日上路，提供 15 歲到 45 歲的本國籍民眾或持有健保卡的外籍人士每人 3 次免費心理諮商，115 年繼續推動，113 到 114 年用過的人 115 年可以再用，合作機構名單在方案網站上查。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "可以（AI 幫得上）",
+            "不可以（別交給 AI）",
+            "該找誰"
+          ],
+          "rows": [
+            [
+              "練習怎麼跟醫師或家人開口",
+              "判斷自己是不是有某種疾病",
+              "身心科、心理諮商所"
+            ],
+            [
+              "把一段時間的情緒紀錄歸納成重點",
+              "解讀量表分數或檢查報告",
+              "原本看診的醫療院所"
+            ],
+            [
+              "列出看診時要問的問題清單",
+              "建議吃什麼藥、自己加減劑量",
+              "精神科醫師或藥師"
+            ],
+            [
+              "查官方求助管道有哪幾類",
+              "直接相信它報出來的電話號碼",
+              "衛福部官方頁面，或撥 1925 確認"
+            ],
+            [
+              "把同一段話換成比較中性的說法",
+              "有自傷念頭時只跟 AI 講",
+              "1925 安心專線、1995 生命線"
+            ],
+            [
+              "幫忙寫給自己的提醒與作息表",
+              "取代持續進行的心理治療",
+              "社區心理衛生中心、青壯世代方案"
+            ]
+          ],
+          "caption": "依 2026 年 9 月 15 日各家官方使用政策與衛生福利部官方頁面整理，不構成醫療建議。"
+        },
+        {
+          "type": "heading",
+          "text": "隱私：這些話會留在哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "心情是最私密的資料，所以開口之前先確認兩件事：對話會不會被拿去訓練，以及刪不刪得掉。另一個常被誤會的地方是求助專線的介接：OpenAI 說明中心寫著，危機專線與目錄是獨立組織，你聯絡的是那個服務而不是 OpenAI，OpenAI 不會把 ChatGPT 對話分享給危機專線，專線人員也看不到你的 OpenAI 帳號；Anthropic 的說明頁同樣寫著它不會把對話送給專線，專線對你跟 Claude 談過什麼沒有任何資訊。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "三家的訓練與隱私開關整理在 "
+            },
+            {
+              "type": "link",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+            },
+            {
+              "type": "text",
+              "text": "；Claude 記住什麼、怎麼清掉，見 "
+            },
+            {
+              "type": "link",
+              "text": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
+              "url": "https://mokaair.com/zh-TW/life/claude-memory-and-privacy"
+            },
+            {
+              "type": "text",
+              "text": "；想把聊過的內容整批帶走或刪掉，做法見 "
+            },
+            {
+              "type": "link",
+              "text": "匯出與刪除你的 AI 對話記錄",
+              "url": "https://mokaair.com/zh-TW/life/ai-chat-history-export-delete"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "給家人與朋友：官方寫的觀察與回應方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "陪在旁邊的人能做什麼，官方文件寫得比想像中具體。OpenAI 的家長控制說明中心列出安全通知會在哪些情況寄出：受過專門訓練的審查人員判定有嚴重自傷疑慮、判定出可能與飲食失調有關而可能構成健康疑慮的行為，或是帳號因暴力相關對話被停用。通知裡包含疑慮類型的簡短說明、必要時的帳號停用資訊與相關支援資源，但不包含對話內容、逐字稿或對話紀錄。收到通知後該做什麼，同一頁寫的是：去問問你的孩子，問他當下安不安全，不帶評判地聽，並協助他聯絡信任的人、合格專業人員或危機專線；如果你認為他可能傷害自己或面臨立即威脅，聯絡當地緊急服務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "其他家走的是不同路線。OpenAI 的 ChatGPT for Teens 說明頁寫明，家長控制不讓家長讀取或監看青少年的對話。Character.AI 的家長洞察由青少年自己在偏好設定裡邀請家長，家長同意後每週收到一份活動報告，內容是使用時間與互動最多的 Characters。Anthropic 則是直接畫年齡線：官方公告寫著要求 Claude.ai 使用者年滿 18 歲，建立帳號時必須確認，若使用者在對話中自述未滿 18 歲，分類器會標記送審，確認屬於未成年的帳號會被停用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "家裡有小孩要用 AI，各家的年齡限制與可以先打開的設定，完整版見下面這篇。"
+        },
+        {
+          "type": "link",
+          "text": "家長指南：孩子用 AI 的年齡限制與設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-for-kids-parent-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後把話說回來：這篇整理的是各家官方政策與台灣官方求助管道，不是診斷，也不是治療建議。AI 適合做的是把難以啟齒的情緒變成可以說出口的句子；判斷、處方，以及陪你度過最危險的那一刻，要交給真人。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Usage Policies（Effective: October 29, 2025；Protect people 節列出自殺、自傷或飲食失調的提倡或協助，以及未經具執照專業人員適當參與的量身建議；Keep minors safe 節列出圖像化自傷內容）",
+          "url": "https://openai.com/policies/usage-policies/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心 Crisis Helpline Support in ChatGPT（與 ThroughLine 合作、危機專線是獨立組織、OpenAI 不分享對話、Help is available 與 Just checking in 的產品內訊息）",
+          "url": "https://help.openai.com/en/articles/12677603-crisis-helpline-support-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心 Trusted contacts in ChatGPT（可信任聯絡人不是緊急服務、不是危機應變系統、也不是心理健康照護的替代品；限 18 歲以上個人帳號）",
+          "url": "https://help.openai.com/en/articles/20001105-trusted-contacts-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心 Managing parental controls in ChatGPT（安全通知的三種寄送情況、不含對話內容與逐字稿、不是即時監控、不能取代專業照護或緊急服務、收到通知後的回應建議）",
+          "url": "https://help.openai.com/en/articles/12315553-parental-controls-on-chatgpt-faq",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心 ChatGPT for Teens（家長控制不讓家長讀取或監看青少年的對話）",
+          "url": "https://help.openai.com/en/articles/20001421-chatgpt-for-teens",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic Usage Policy（Effective September 15, 2025；心理與情緒有害內容禁止節、高風險使用情境的 Healthcare 定義、人工審閱與告知要求、健康生活建議除外）",
+          "url": "https://www.anthropic.com/legal/aup",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 公告 Protecting the wellbeing of our users（Dec 18, 2025；Claude 不是專業建議或醫療照護的替代品、自殺與自傷分類器與橫幅、ThroughLine 170+ 國家、Claude.ai 18 歲以上規定）",
+          "url": "https://www.anthropic.com/news/protecting-well-being-of-users",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心 Crisis Helpline Support in Claude（橫幅由另一套偵測系統呈現、約兩小時內不再出現、對帳號無影響、Anthropic 不把對話送給專線）",
+          "url": "https://support.claude.com/en/articles/13171706-crisis-helpline-support-in-claude",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Character.AI 說明中心 Safety Center（互動娛樂平台定位、註冊須至少 13 歲、歐洲至少 16 歲、未成年模型與分類器、政策不允許傷害自己或他人的內容）",
+          "url": "https://support.character.ai/hc/en-us/articles/21704914723995-Safety-Center",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Character.AI 說明中心 Important Changes for Teens on Character.ai（移除未成年開放式聊天、11 月 24 日開始推出、過渡期每日 2 小時上限、年齡驗證）",
+          "url": "https://support.character.ai/hc/en-us/articles/42645561782555-Important-Changes-for-Teens-on-Character-ai",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Character.AI 官方部落格 Taking Bold Steps to Keep Teen Users Safe on Character.AI（Oct 29, 2025；不晚於 11 月 25 日生效、過渡期每日兩小時、AI Safety Lab）",
+          "url": "https://blog.character.ai/u18-chat-announcement/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Character.AI 官方部落格 An Update On Changes to Our Under-18 Experience（Nov 21, 2025；11 月 24 日在美國分兩批關閉、ThroughLine 170 國 1,500 個服務、Koko 合作）",
+          "url": "https://blog.character.ai/an-update-on-changes-to-our-under-18-experience/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Character.AI 官網 Safety Center（Parental Insights 邀請流程與每週活動報告內容）",
+          "url": "https://character.ai/safety",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta's AI terms of use（Effective May 13, 2026；未滿 13 歲不得使用、禁止鼓勵自傷等傷害他人的內容、不應依賴輸出形成醫學財務法律藥物的專業建議或決定）",
+          "url": "https://www.facebook.com/legal/ai-terms",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "衛生福利部心理健康司：1925安心專線（依舊愛我）（24 小時免付費心理諮詢服務；更新時間 114-08-28）",
+          "url": "https://dep.mohw.gov.tw/DOMHAOH/cp-4906-54077-107.html",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "衛生福利部心理健康司：全國諮詢及救援服務專線（安心專線 1925、生命線 1995、張老師 1980、113、1957、1966、110、119 等號碼表；更新時間 114-07-09）",
+          "url": "https://dep.mohw.gov.tw/DOMHAOH/cp-327-8715-107.html",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "衛生福利部心理健康司：各縣市社區心理諮商服務一覽表（新北 02-2257-2623、臺北 02-3393-7885、高雄 07-716-1925 等縣市窗口與心理諮詢專線；更新時間 115-06-30）",
+          "url": "https://dep.mohw.gov.tw/DOMHAOH/cp-4558-69568-107.html",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "衛生福利部心理健康司焦點新聞：健康「心」生活！115年續推青壯世代心理健康支持方案（113 年 8 月 1 日上路、15 至 45 歲每人 3 次免費心理諮商、115 年續推）",
+          "url": "https://dep.mohw.gov.tw/DOMHAOH/cp-502-85046-107.html",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "社團法人國際生命線台灣總會：關於生命線（全日 24 小時電話守候致力於自殺防治、民國 87 年設置 1995 專線、台灣 23 個縣市都有生命線協會）",
+          "url": "https://www.life1995.org.tw/?aid=1",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "社團法人國際生命線台灣總會：生命線服務（求助管道：電話或手機直撥 1995，並列出各縣市生命線協會服務電話）",
+          "url": "https://www.life1995.org.tw/?aid=2",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

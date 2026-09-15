@@ -1,11 +1,11 @@
 ---
 id: 2026-09-13-life-ai-batch-11
 title: 生活分享 AI 系列批次 11：生活應用、3C 與旅途中的 AI（20 篇）
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-15T08:19:21Z
 created_at: 2026-09-13T11:56:00Z
 completed_at:
 branch:

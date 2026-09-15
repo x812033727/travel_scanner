@@ -1,0 +1,407 @@
+{
+  "slug": "ai-second-brain-obsidian",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "productivity",
+    "software"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "Obsidian＋AI 打造第二大腦：外掛、程式代理與 MCP 三種接法",
+      "description": "Obsidian 把筆記存成本機資料夾裡的 Markdown 檔，軟體免費、也沒有內建 AI，所以 AI 是你自己接上去的。這篇拆解三種接法：社群外掛、把程式代理開在 vault 資料夾、以及內建 MCP 伺服器的外掛，各自要準備什麼、內容送到哪一家、授權與費用怎麼算，另附本機模型 Ollama 的設定重點與每天 10 分鐘的流程與提示詞，內容以 2026 年 9 月 15 日官方頁面為準。",
+      "hero": {
+        "src": "/guides/ai-second-brain-obsidian/hero.jpg",
+        "alt": "插圖：一個資料夾形狀的方塊裡有連成網狀的筆記節點，右側三條線分別接向三個不同形狀的插頭。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "把 Obsidian 當第二大腦再接上 AI，要先回答的只有一個問題：你的筆記會走到哪裡去。官方說明寫得直白，筆記就是本機資料夾（vault）裡的 Markdown 純文字檔，軟體本身沒有內建 AI，AI 一定是你自己接上去的。結論先講：先決定資料流向，再從社群外掛、程式代理、MCP 三條路挑一條，不要同時開三條。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇會走完三種接法各自要準備什麼、內容送到哪一家、授權與費用怎麼算，最後給一套每天 10 分鐘的流程與提示詞。價格與版本照 2026 年 9 月 15 日的官方頁面；本文無法登入實測，只寫官方文件寫得出來的能力與限制。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
+          "url": "https://mokaair.com/zh-TW/life/ai-note-taking-workflow"
+        },
+        {
+          "type": "heading",
+          "text": "Obsidian 憑什麼當第二大腦：檔案還在你手上",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方說明頁寫明，筆記存成 Markdown 純文字檔放在本機的 vault 資料夾裡，你用別的文字編輯器改它也會自動跟上；vault 根目錄下的 .obsidian 資料夾放的是這個 vault 專屬的設定與外掛。這正是它適合接 AI 的原因：AI 讀的是檔案，你可以精確決定它讀得到哪個資料夾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "定價頁寫著「Free without limits」，不限功能、不必註冊帳號，用在工作上也一樣免費。選購授權屬支持性質：Catalyst 一次性 25 美元，商業授權每人每年 50 美元，FAQ 明說商用不是必須付費。跨裝置同步與發佈網站才收費："
+        },
+        {
+          "type": "list",
+          "items": [
+            "Sync Standard 每人每月 4 美元（年繳）或 5 美元（月繳）：1 個遠端 vault、1 GB 空間、單檔 5 MB、版本歷史 1 個月。",
+            "Sync Plus 每人每月 8 美元（年繳）或 10 美元（月繳）：10 個遠端 vault、10 GB（可加購到 100 GB）、單檔 200 MB、版本歷史 12 個月。",
+            "Publish 每站每月 8 美元（年繳）或 10 美元（月繳）；支援的檔案格式是 .md、.base、.canvas、圖片、音訊、影片與 .pdf。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "先把 vault 整理好：每日筆記、屬性與 Bases",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "PARA 或 Zettelkasten 說到底只是資料夾與連結的命名習慣。真正有用的是三個核心外掛：每日筆記（預設用 YYYY-MM-DD 當檔名，可指定資料夾與範本）、範本（支援 title、date、time 三個變數），以及 Bases —— 官方說明寫它用筆記的屬性做出表格與卡片檢視，資料仍存在本機的 Markdown 檔與屬性裡。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "每日筆記範本（存進範本資料夾，在每日筆記設定裡指定）",
+          "code": "---\ndate: \"{{date}}\"\ntags:\n  - daily\n---\n\n# {{date:YYYY-MM-DD}}\n\n## 今天發生什麼\n\n## 待辦\n- [ ] \n\n## 想法（自己的話，不要交給 AI 寫）\n\n## 出處\n- "
+        },
+        {
+          "type": "paragraph",
+          "text": "屬性是結構化欄位，代理可以只讀 Daily 這個資料夾，而不是把整個 vault 倒進上下文視窗。原始出處與你自己的判斷請永遠手寫，一旦交給 AI，之後就分不出哪一句是你想的、哪一句是模型補的。"
+        },
+        {
+          "type": "link",
+          "text": "讀完就忘怎麼整理筆記：用問題、自己的解釋與來源留下可用內容",
+          "url": "https://mokaair.com/zh-TW/life/reading-notes-that-you-reuse"
+        },
+        {
+          "type": "heading",
+          "text": "接法一：社群外掛，先過限制模式那一關",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Obsidian 預設在限制模式（Restricted Mode）下執行，不跑第三方程式碼，要裝社群外掛得先關掉它。官方的外掛安全說明講得比多數人以為的嚴重：因為技術限制，官方無法可靠地把外掛限制在特定權限，外掛會繼承 Obsidian 的存取權限，可以讀你電腦上的檔案、可以連網、可以安裝其他程式。官方的做法是自動掃描每個版本並顯示安全評分，揭露欄會寫出它有沒有存取剪貼簿、對外部網域發出請求、用到讀寫 vault 的介面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三個在 GitHub 官方倉庫有 README 與授權檔的 AI 外掛，資料取自當天的倉庫："
+        },
+        {
+          "type": "list",
+          "items": [
+            "Copilot（logancyang/obsidian-copilot，4.0.8，AGPL-3.0）：把 opencode、Claude Code、Codex 這類代理接進 vault；可填自己的金鑰、接本機模型或沿用既有 CLI 登入，金鑰存在裝置的 Obsidian Keychain。",
+            "Smart Connections（brianpetro/obsidian-smart-connections，4.7.2）：內建本機嵌入模型、不需金鑰，用語意相似度找相關筆記；授權是自訂的 Smart Plugins License Agreement。",
+            "Text Generator（nhaouari/obsidian-textgenerator-plugin，0.8.7，MIT）：用範本產生文字，可接 OpenAI、Google 的生成式 AI 或 Hugging Face，金鑰要自己填。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "外掛不幫你出錢也不幫你保密：要嘛填自己的金鑰，要嘛接一台本機模型。裝之前先看目錄頁的揭露欄；筆記裡有客戶資料或個資時，官方建議先做獨立的安全稽核。"
+        },
+        {
+          "type": "heading",
+          "text": "接法二：把程式代理開在 vault 資料夾",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第二條路不裝外掛：直接在 vault 資料夾裡啟動 Claude Code 這類程式代理，把筆記當一個專案來改。官方安全說明寫，手動模式下代理只能寫入啟動時所在的資料夾與其子資料夾，讀取以外的路徑也會先問你，要擴充才用 --add-dir 參數或 /add-dir 指令；第一次在一個資料夾啟動會出現信任確認，這一步不要亂按。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接著在 vault 根目錄放一份 CLAUDE.md。官方文件建議控制在 200 行以內，因為它每次開新對話都整份進上下文視窗，太長反而降低遵守率。"
+        },
+        {
+          "type": "code",
+          "language": "markdown",
+          "label": "放在 vault 根目錄的 CLAUDE.md 範例",
+          "code": "# 這個資料夾是我的 Obsidian vault\n\n## 規則\n- 只在 `Inbox/` 與 `Daily/` 裡新增或修改檔案。\n- 不要碰 `.obsidian/`，不要改既有筆記的「出處」與「我的想法」段落。\n- 新筆記用 Markdown，檔名 `YYYY-MM-DD-主題.md`，開頭要有 `date` 與 `tags` 屬性。\n- 內部連結用 `[[雙中括號]]`，不要自己發明資料夾。\n- 摘要一律標出來源檔名，找不到出處就寫「找不到」。\n\n## 不要做的事\n- 不要刪檔案，要移除就搬到 `Trash/`。\n- 不要一次改超過 5 個檔案，先列清單給我看。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜CLAUDE.md 完整教學",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-claude-md-guide"
+        },
+        {
+          "type": "paragraph",
+          "text": "三個容易踩的坑：同步中的 vault 一邊被代理改、一邊被同步服務寫，衝突很難查，先在小的測試 vault 跑過；.obsidian 是設定不是筆記，用權限規則擋掉最省事；官方文件也提醒，寫在 CLAUDE.md 裡的「不要刪檔案」只是建議，權限規則才是工具真的會強制執行的那一層。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜提供檔案與專案上下文",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-files-and-context"
+        },
+        {
+          "type": "heading",
+          "text": "接法三：MCP 伺服器，以及完全不出門的本機模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第三條路是讓 AI 客戶端透過 MCP 伺服器跟 Obsidian 對話。當天查倉庫會看到跟舊印象不同的事：原本的 Local REST API 外掛已改名為 Local REST API with MCP（coddingtonbear/obsidian-local-rest-api，5.1.0、MIT、僅桌面版），本身就內建一台 MCP 伺服器，跑在本機 127.0.0.1 的 27124 連接埠，用外掛設定頁裡的 API 金鑰當權杖；README 也直接寫著第三方的 Obsidian MCP 伺服器已不再必要。"
+        },
+        {
+          "type": "paragraph",
+          "text": "它提供的工具包含 vault_list、vault_read、vault_write、vault_patch、search_simple 與 command_execute 等；vault_write 覆寫整個檔案、vault_delete 會刪檔，第一次接上時只開讀取類的工具最安全。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "把 Obsidian 的 MCP 伺服器加進 Claude Code（README 原文）",
+          "code": "claude mcp add --transport http obsidian https://127.0.0.1:27124/mcp/ \\\n  --header \"Authorization: Bearer <your-api-key>\""
+        },
+        {
+          "type": "link",
+          "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
+          "url": "https://mokaair.com/zh-TW/life/mcp-servers-for-everyone"
+        },
+        {
+          "type": "paragraph",
+          "text": "想讓內容完全不出電腦，官方自己就有一條路：免費的 Obsidian Web Clipper 擴充裡有 Interpreter，可以用自然語言提示詞處理正在看的網頁再存進 vault，而它的預設供應商清單裡，Ollama 是唯一不需要 API 金鑰的那一個。Ollama 是 MIT 授權，預設綁在本機 127.0.0.1 的 11434 連接埠；官方 FAQ 說要讓瀏覽器擴充連得上，得用 OLLAMA_ORIGINS 允許擴充來源，否則會收到 403。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "允許瀏覽器擴充連本機 Ollama（Ollama 官方 FAQ 原文）",
+          "code": "OLLAMA_ORIGINS=chrome-extension://*,moz-extension://*,safari-web-extension://* ollama serve"
+        },
+        {
+          "type": "paragraph",
+          "text": "一個容易誤判的細節：Ollama 官方 FAQ 寫預設上下文視窗是 4096 個 token，可用 OLLAMA_CONTEXT_LENGTH 或 num_ctx 調大（Obsidian 說明頁寫的是 2048，以你的設定為準）。網頁太長超過上限時模型不會報錯，只會安靜地回出不相干的內容。"
+        },
+        {
+          "type": "link",
+          "text": "把本機模型接到編輯器：Continue、Cursor 與 Ollama",
+          "url": "https://mokaair.com/zh-TW/life/ollama-with-code-editors"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-second-brain-obsidian/diagram-1.svg",
+          "alt": "圖解：中央是本機 vault 資料夾，往外連到社群外掛、程式代理與 MCP 伺服器三種接法，每一條標出內容送到哪裡。",
+          "width": 1600,
+          "height": 900,
+          "caption": "從中間的 vault 往外看三條線，看的是每一條把內容送出去多遠。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "接法",
+            "要準備什麼",
+            "內容會送到哪",
+            "授權與費用"
+          ],
+          "rows": [
+            [
+              "外掛 Copilot",
+              "關掉限制模式，填金鑰或接本機模型",
+              "你選的供應商；金鑰存在裝置的 Keychain",
+              "AGPL-3.0，付費方案以其官網為準"
+            ],
+            [
+              "外掛 Smart Connections",
+              "關掉限制模式，不必填金鑰",
+              "嵌入向量預設在本機產生",
+              "Smart Plugins License Agreement"
+            ],
+            [
+              "外掛 Text Generator",
+              "關掉限制模式，填一家供應商的金鑰",
+              "你填了金鑰的那一家",
+              "MIT，用量算你的金鑰"
+            ],
+            [
+              "程式代理開在 vault",
+              "啟動代理、寫 CLAUDE.md、設拒絕規則",
+              "代理背後的模型；讀到的檔案進上下文視窗",
+              "依訂閱或 API 用量，以官網為準"
+            ],
+            [
+              "Local REST API with MCP",
+              "複製 API 金鑰、把本機端點加進客戶端",
+              "呼叫工具的 AI 客戶端，伺服器只在你電腦上",
+              "MIT，外掛免費"
+            ],
+            [
+              "Web Clipper 接 Ollama",
+              "裝擴充與 Ollama、設 OLLAMA_ORIGINS",
+              "本機的 Ollama，內容不出這台電腦",
+              "Web Clipper 免費，Ollama MIT"
+            ]
+          ],
+          "caption": "三種接法的準備與資料流向，2026 年 9 月 15 日查 obsidian.md、各外掛 GitHub 倉庫與 Ollama 官方文件。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "外掛與代理都會照著別人寫的字做事",
+          "text": "只要 AI 讀得到的內容不是你自己寫的，就有提示詞注入的風險：剪進來的網頁、別人寄來的附件，裡面都可能藏著一段對模型說話的指令，而代理與 MCP 工具有寫入、刪除甚至執行 Obsidian 指令的能力。三件事一定要做：權限先只給讀取；第一次在測試 vault 或備份過的副本上跑；每次動作後看一遍改了哪些檔案。"
+        },
+        {
+          "type": "link",
+          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+        },
+        {
+          "type": "heading",
+          "text": "每天 10 分鐘：一套跑得動的流程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "接好之後，決定成敗的是每天的固定動作。下面五步刻意做得很小，因為第二大腦壞掉通常不是工具不夠強，而是收集完就沒再回頭看。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "早上 2 分鐘：打開今天的每日筆記，把昨天沒做完的待辦搬過來。",
+            "白天隨手收集：用 Web Clipper 把網頁剪進 Inbox 資料夾，需要摘要就讓 Interpreter 順手做掉。",
+            "晚上 5 分鐘：替 Inbox 裡的每則各補一句「我為什麼留這個」，再讓 AI 做摘要與抽待辦。",
+            "每週一次：讓語意搜尋類的外掛找出相關但沒連起來的舊筆記，手動補上內部連結。",
+            "每月一次：檢查外掛更新，官方說社群外掛基於安全考量不會自動更新。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞一：整理當天的 Inbox（貼進代理或外掛的對話框）",
+          "code": "你是我的筆記助理。請只讀 Inbox/ 資料夾裡今天新增的檔案，逐一輸出：\n1. 一句話摘要（20 字以內）\n2. 三個關鍵詞，用來當標籤\n3. 這份筆記可以回答的一個問題\n4. 待辦事項（沒有就寫「無」）\n每一項後面標出來源檔名。不確定的地方寫「不確定」，不要自己補上內容。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞二：週回顧，把筆記變成複習題",
+          "code": "讀我指定的這幾則筆記，幫我做一份複習清單：\n- 先列出這幾則筆記共同談到的三個主題\n- 每個主題出兩題問答題，答案只能用筆記裡出現過的句子，並標出處檔名\n- 最後列出筆記裡互相矛盾、或我寫得不夠清楚的地方\n不要引用筆記以外的知識。"
+        },
+        {
+          "type": "paragraph",
+          "text": "怎麼確認真的有用？隨機挑 5 則 AI 摘要逐句對回原始筆記，看有沒有出處對不上的句子；一個月後再問自己，有沒有哪一次是因為語意搜尋翻出舊筆記而省下重做的時間。"
+        },
+        {
+          "type": "link",
+          "text": "建立自己的提示詞庫：固定欄位、放在哪裡、怎麼管版本",
+          "url": "https://mokaair.com/zh-TW/life/ai-prompt-library-personal"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Obsidian：Pricing（定價與商用授權 FAQ）",
+          "url": "https://obsidian.md/pricing",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian：Sync（Sync Standard 與 Plus 的價格與額度）",
+          "url": "https://obsidian.md/sync",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Help：Plans and storage limits（Sync 方案比較表）",
+          "url": "https://obsidian.md/help/sync/plans",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Help：How Obsidian stores data（vault 與資料存放）",
+          "url": "https://obsidian.md/help/data-storage",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Help：Accepted file formats（支援的檔案格式）",
+          "url": "https://obsidian.md/help/file-formats",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Help：Plugin security（限制模式與外掛權限）",
+          "url": "https://obsidian.md/help/plugin-security",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Help：Community plugins（安裝與更新社群外掛）",
+          "url": "https://obsidian.md/help/community-plugins",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Help：Community directory（外掛目錄的評分與揭露欄）",
+          "url": "https://obsidian.md/help/community-directory",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Help：Introduction to Bases（Bases 核心外掛）",
+          "url": "https://obsidian.md/help/bases",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Help：Daily notes（每日筆記核心外掛）",
+          "url": "https://obsidian.md/help/plugins/daily-notes",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Help：Templates（範本核心外掛與變數）",
+          "url": "https://obsidian.md/help/plugins/templates",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Help：Interpreter（Web Clipper 的自然語言功能與供應商清單）",
+          "url": "https://obsidian.md/help/web-clipper/interpreter",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Obsidian Help：Introduction to Obsidian Web Clipper（擴充與隱私說明）",
+          "url": "https://obsidian.md/help/web-clipper",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GitHub：logancyang/obsidian-copilot（README、manifest 與 LICENSE）",
+          "url": "https://raw.githubusercontent.com/logancyang/obsidian-copilot/master/README.md",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GitHub：brianpetro/obsidian-smart-connections（README、manifest 與 LICENSE）",
+          "url": "https://raw.githubusercontent.com/brianpetro/obsidian-smart-connections/main/README.md",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GitHub：nhaouari/obsidian-textgenerator-plugin（README、manifest 與 LICENSE）",
+          "url": "https://raw.githubusercontent.com/nhaouari/obsidian-textgenerator-plugin/master/README.md",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GitHub：coddingtonbear/obsidian-local-rest-api（Local REST API with MCP 的 README 與 manifest）",
+          "url": "https://raw.githubusercontent.com/coddingtonbear/obsidian-local-rest-api/main/README.md",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude Code 文件：Security（工作目錄邊界與提示詞注入防護）",
+          "url": "https://code.claude.com/docs/en/security",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude Code 文件：Memory（CLAUDE.md 位置與長度建議）",
+          "url": "https://code.claude.com/docs/en/memory",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Ollama 文件：FAQ（OLLAMA_ORIGINS、連接埠與上下文視窗預設值）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

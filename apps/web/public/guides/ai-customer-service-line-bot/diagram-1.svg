@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">LINE 客服機器人的一則訊息走過哪些關卡 / How one LINE message becomes a reply</title>
+  <desc id="desc">由左至右的流程圖。顧客在 LINE 傳一句話，LINE 平台用 HTTPS POST 把 webhook 事件送到你設定的網址，憑證不可自簽。你的 webhook 端點做三件事：比對 x-line-signature、立刻回 200 給 LINE、判斷要走哪一條路；LINE 不公開送出 webhook 的來源 IP，所以用簽章驗證而不是 IP 白名單。之後分成三條：關鍵字命中就由後台的自動回應訊息回覆，關鍵字上限 51 個且不計訊息費；查得到的問題交給知識庫加模型，用 Reply API 回覆，回覆權杖 1 分鐘內有效、一次最多 5 則，多數端點每秒 2,000 次請求上限；不能承諾或要查訂單的問題轉真人，在回應設定切到「聊天」由值班同事接手。底部說明：回覆訊息不計入方案的訊息則數，會計費的是主動推播與群發。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">LINE 客服機器人：一則訊息走過哪些關卡</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">How one customer message becomes a reply, or a human</text>
+
+  <rect x="60" y="400" width="230" height="140" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="175" y="442" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">顧客傳一句話</text>
+  <text x="175" y="478" font-size="17" fill="#102A2B" text-anchor="middle">「你們幾點關？」</text>
+  <text x="175" y="510" font-size="17" fill="#102A2B" text-anchor="middle">「可以退貨嗎？」</text>
+
+  <path d="M 296 470 L 342 470" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="350" y="350" width="250" height="220" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="475" y="392" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">LINE 平台</text>
+  <text x="475" y="432" font-size="16" fill="#102A2B" text-anchor="middle">把 webhook 事件</text>
+  <text x="475" y="464" font-size="16" fill="#102A2B" text-anchor="middle">用 HTTPS POST</text>
+  <text x="475" y="496" font-size="16" fill="#102A2B" text-anchor="middle">送到你設定的網址</text>
+  <text x="475" y="528" font-size="16" fill="#5C6B6B" text-anchor="middle">憑證不可自簽</text>
+
+  <path d="M 606 470 L 652 470" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="660" y="290" width="300" height="300" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="810" y="332" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">你的 webhook 端點</text>
+  <text x="684" y="378" font-size="16" fill="#102A2B">1. 比對 x-line-signature</text>
+  <text x="684" y="414" font-size="16" fill="#102A2B">2. 立刻回 200 給 LINE</text>
+  <text x="684" y="450" font-size="16" fill="#102A2B">3. 判斷要走哪一條</text>
+  <text x="684" y="500" font-size="15" fill="#5C6B6B">LINE 不公開送出 webhook 的 IP，</text>
+  <text x="684" y="524" font-size="15" fill="#5C6B6B">請用簽章驗證，別用 IP 白名單</text>
+
+  <path d="M 966 400 L 994 400 L 994 245 L 1012 245" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 966 465 L 1012 465" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 966 530 L 994 530 L 994 690 L 1012 690" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="1020" y="170" width="520" height="150" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1044" y="212" font-size="20" font-weight="bold" fill="#102A2B">關鍵字命中：後台自動回應訊息</text>
+  <text x="1044" y="250" font-size="17" fill="#102A2B">關鍵字上限 51 個，不分大小寫與全形半形</text>
+  <text x="1044" y="284" font-size="17" fill="#5C6B6B">不寫程式，也不計訊息費</text>
+
+  <rect x="1020" y="370" width="520" height="190" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1044" y="412" font-size="20" font-weight="bold" fill="#102A2B">查得到的問題：知識庫＋模型</text>
+  <text x="1044" y="450" font-size="17" fill="#102A2B">規則寫在系統提示詞，資料裡沒有的就說不知道</text>
+  <text x="1044" y="484" font-size="17" fill="#102A2B">用 Reply API 回：權杖 1 分鐘內、一次最多 5 則</text>
+  <text x="1044" y="518" font-size="17" fill="#5C6B6B">多數端點每秒 2,000 次請求上限</text>
+
+  <rect x="1020" y="610" width="520" height="160" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1044" y="652" font-size="20" font-weight="bold" fill="#102A2B">不能承諾或要查訂單：轉真人</text>
+  <text x="1044" y="690" font-size="17" fill="#102A2B">價格、退款、法律、醫療一律不自動回</text>
+  <text x="1044" y="724" font-size="17" fill="#5C6B6B">回應設定切到「聊天」，值班同事接手</text>
+
+  <text x="60" y="828" font-size="17" fill="#102A2B">回覆訊息不計入方案的訊息則數；會計費的是你主動推播與群發的訊息。</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

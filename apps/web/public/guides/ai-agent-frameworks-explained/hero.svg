@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">代理框架與代理迴圈示意 / Agent frameworks and the agent loop, illustrated</title>
+<desc id="desc">一張幾何插圖。畫面中央是一個大圓環，圓環上有三段帶箭頭的弧線，順時針串起三個圖形：正上方是一個白色對話框，代表使用者的提示詞；右下是一個綠色六角形，代表語言模型；左下是一個橘色齒輪，代表被呼叫的工具。三者繞成一圈，表示代理判斷、呼叫工具、收到結果後再判斷的迴圈。畫面下方並排三個圓角方塊，裡面各有兩條短線，代表三套代理框架。上方寫著「代理框架怎麼選」。圖中沒有任何產品標誌、介面或人物。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs>
+<marker id="a" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4" markerHeight="4" orient="auto">
+<path d="M 0 0 L 8 4 L 0 8 z" fill="#0D6B68"/>
+</marker>
+</defs>
+
+<text x="800" y="165" text-anchor="middle" font-size="56" font-weight="700" fill="#102A2B">代理框架怎麼選</text>
+
+<circle cx="800" cy="480" r="210" fill="none" stroke="#E3F0EF" stroke-width="30"/>
+<path d="M 935 319 A 210 210 0 0 1 1010 480" fill="none" stroke="#0D6B68" stroke-width="14" stroke-linecap="round" marker-end="url(#a)"/>
+<path d="M 905 662 A 210 210 0 0 1 695 662" fill="none" stroke="#0D6B68" stroke-width="14" stroke-linecap="round" marker-end="url(#a)"/>
+<path d="M 593 444 A 210 210 0 0 1 665 319" fill="none" stroke="#0D6B68" stroke-width="14" stroke-linecap="round" marker-end="url(#a)"/>
+
+<path d="M 745 318 L 745 386 L 802 330 z" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="12" stroke-linejoin="round"/>
+<rect x="690" y="210" width="220" height="122" rx="30" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="12"/>
+<line x1="726" y1="252" x2="874" y2="252" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+<line x1="726" y1="292" x2="826" y2="292" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+
+<polygon points="1060,585 1021,653 943,653 904,585 943,517 1021,517" fill="#E3F0EF" stroke="#0D6B68" stroke-width="12" stroke-linejoin="round"/>
+<circle cx="982" cy="585" r="26" fill="#0D6B68"/>
+
+<g fill="#D97A2B">
+<rect x="606" y="503" width="24" height="24" rx="6"/>
+<rect x="606" y="503" width="24" height="24" rx="6" transform="rotate(45 618 585)"/>
+<rect x="606" y="503" width="24" height="24" rx="6" transform="rotate(90 618 585)"/>
+<rect x="606" y="503" width="24" height="24" rx="6" transform="rotate(135 618 585)"/>
+<rect x="606" y="503" width="24" height="24" rx="6" transform="rotate(180 618 585)"/>
+<rect x="606" y="503" width="24" height="24" rx="6" transform="rotate(225 618 585)"/>
+<rect x="606" y="503" width="24" height="24" rx="6" transform="rotate(270 618 585)"/>
+<rect x="606" y="503" width="24" height="24" rx="6" transform="rotate(315 618 585)"/>
+</g>
+<circle cx="618" cy="585" r="70" fill="#FFFFFF" stroke="#D97A2B" stroke-width="12"/>
+<circle cx="618" cy="585" r="24" fill="#D97A2B"/>
+
+<rect x="370" y="740" width="260" height="100" rx="24" fill="#FFFFFF" stroke="#0D6B68" stroke-width="10"/>
+<line x1="400" y1="778" x2="600" y2="778" stroke="#0D6B68" stroke-width="8" stroke-linecap="round"/>
+<line x1="400" y1="808" x2="540" y2="808" stroke="#0D6B68" stroke-width="8" stroke-linecap="round"/>
+
+<rect x="670" y="740" width="260" height="100" rx="24" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="10"/>
+<line x1="700" y1="778" x2="900" y2="778" stroke="#2F6F9F" stroke-width="8" stroke-linecap="round"/>
+<line x1="700" y1="808" x2="840" y2="808" stroke="#2F6F9F" stroke-width="8" stroke-linecap="round"/>
+
+<rect x="970" y="740" width="260" height="100" rx="24" fill="#FFFFFF" stroke="#D97A2B" stroke-width="10"/>
+<line x1="1000" y1="778" x2="1200" y2="778" stroke="#D97A2B" stroke-width="8" stroke-linecap="round"/>
+<line x1="1000" y1="808" x2="1140" y2="808" stroke="#D97A2B" stroke-width="8" stroke-linecap="round"/>
+</svg>

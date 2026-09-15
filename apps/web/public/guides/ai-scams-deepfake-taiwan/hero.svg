@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">真的與合成的並排，用放大鏡查證 / Verify before you believe</title>
+  <desc id="desc">兩個並排的圓角方框，各裝著由圓形與圓角長方形組成的抽象人形剪影。左邊的框與剪影是完整的實線，右邊的框與剪影由斷開的虛線組成，中間三個小圓點把兩邊連起來。右下角有一個放大鏡圈住虛線那一側。畫面下方是一行字：查證再相信。</desc>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- left: the real one, solid -->
+  <rect x="230" y="140" width="470" height="520" rx="36" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+  <circle cx="465" cy="330" r="88" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+  <rect x="345" y="460" width="240" height="150" rx="75" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+
+  <!-- dots linking the two panels -->
+  <circle cx="752" cy="400" r="13" fill="#D97A2B"/>
+  <circle cx="800" cy="400" r="13" fill="#D97A2B"/>
+  <circle cx="848" cy="400" r="13" fill="#D97A2B"/>
+
+  <!-- right: the synthetic one, broken lines -->
+  <rect x="900" y="140" width="470" height="520" rx="36" fill="#FFFFFF" stroke="#B8442D" stroke-width="8" stroke-dasharray="34 22"/>
+  <circle cx="1135" cy="330" r="88" fill="#FFFFFF" stroke="#B8442D" stroke-width="8" stroke-dasharray="26 18"/>
+  <rect x="1015" y="460" width="240" height="150" rx="75" fill="#FFFFFF" stroke="#B8442D" stroke-width="8" stroke-dasharray="30 20"/>
+
+  <!-- magnifier over the synthetic side -->
+  <circle cx="1292" cy="556" r="118" fill="none" stroke="#102A2B" stroke-width="12"/>
+  <line x1="1375" y1="639" x2="1472" y2="736" stroke="#102A2B" stroke-width="18" stroke-linecap="round"/>
+
+  <!-- small accents -->
+  <circle cx="150" cy="742" r="18" fill="#0D6B68"/>
+  <circle cx="212" cy="742" r="12" fill="#2F6F9F"/>
+  <circle cx="262" cy="742" r="8" fill="#D97A2B"/>
+
+  <text x="800" y="828" text-anchor="middle" font-size="72" font-weight="bold" fill="#102A2B">查證再相信</text>
+</svg>

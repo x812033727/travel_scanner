@@ -1,0 +1,447 @@
+{
+  "slug": "mcp-servers-for-everyone",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
+      "description": "MCP 伺服器就是讓 AI 助理碰得到某樣東西的插頭。這篇整理四類日常用得到的伺服器：本機檔案的 filesystem、Google 的雲端硬碟與行事曆與 Gmail、Notion 代管的遠端伺服器，以及 Playwright 與 Chrome DevTools。每一個都寫清楚誰維護、授權、需要哪個方案、官方設定片段怎麼填，並附上只接信任來源、唯讀優先、提示詞注入與金鑰保管的安全檢查，內容以 2026 年 9 月 15 日官方文件為準。",
+      "hero": {
+        "src": "/guides/mcp-servers-for-everyone/hero.jpg",
+        "alt": "插圖：一個對話框從中央的插座往外連到四個圖形，分別代表資料夾、雲端、筆記本與瀏覽器視窗。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "知道 MCP 是一套讓 AI 應用連上外部工具的開放協定之後，下一個問題通常是：那到底有哪些伺服器值得接？答案比想像中少。官方參考伺服器只有七個，日常真正用得到的大致就是檔案、Google、Notion 與瀏覽器這四類，其餘多半是各家服務自己代管的遠端伺服器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇把四類各自的維護者、授權、需要的方案與官方設定片段整理成清單，你可以照著接起第一台。最後兩節是安全檢查與驗收步驟，因為接上一台 MCP 伺服器，等於把你的檔案、信箱或筆記交給一個會自己讀內容、也會自己動手的程式。本文不能登入實測，能力與限制都照官方文件寫。"
+        },
+        {
+          "type": "heading",
+          "text": "先分清楚：伺服器、客戶端與連接器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MCP 官方文件把這個協定比喻成 AI 應用的 USB-C 連接埠。伺服器（MCP 伺服器）是插頭那一端，負責把某樣東西包成 AI 看得懂的工具，可能是你的一個資料夾、你的 Notion 工作區，也可能是一顆瀏覽器；客戶端是插座那一端，也就是你正在用的 AI 應用。目前的協定版本是 2026-07-28。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一件事各家取的名字不一樣。Claude 把接上去的伺服器叫連接器（connector），桌面版另外還有桌面擴充功能；ChatGPT 的官方說明中心叫它 app，而且自 2026 年 7 月 9 日起，原本的 app 目錄已經併進外掛（plugin）目錄；Claude Code 與 Gemini CLI 則直接叫 MCP 伺服器。名字不同，底下是同一套協定。"
+        },
+        {
+          "type": "link",
+          "text": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-model-context-protocol"
+        },
+        {
+          "type": "heading",
+          "text": "哪些 AI 客戶端接得上",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MCP 官方首頁點名支援的客戶端包含 Claude、ChatGPT、Visual Studio Code 與 Cursor 等。對一般使用者來說，差別主要在這台伺服器是跑在自己的電腦上，還是架在網路上的遠端服務。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Claude：網頁連接器對 Claude、Cowork、Claude 桌面版與手機版（iOS 與 Android）的所有使用者開放，桌面擴充功能對 Claude 桌面版的所有使用者開放。",
+            "Claude 的自訂連接器（接任意一台遠端 MCP 伺服器）在 Free、Pro、Max、Team 與 Enterprise 方案都能用，Free 只能加一個；Team 與 Enterprise 要由擁有者先在組織設定裡加，成員再各自認證。",
+            "Claude 桌面版的本機伺服器是另一套機制，寫在 claude_desktop_config.json 這個設定檔裡，走你這台電腦自己的網路；claude.ai 與 Cowork 沒有這個入口。",
+            "ChatGPT：完整的 MCP 支援（含寫入與修改動作）與開發者模式以 beta 形式開放給 ChatGPT Business 與 Enterprise／Edu 客戶，在 ChatGPT 網頁版使用，而且只有管理員或擁有者能開啟開發者模式與發布 app。",
+            "Claude Code：用 claude mcp add 指令加，官方文件列出 HTTP、SSE、本機 stdio 與 WebSocket 四種接法，其中 HTTP 是遠端伺服器的建議選項。",
+            "Gemini CLI：寫在 settings.json 的 mcpServers 物件裡，支援 Stdio、SSE 與 Streamable HTTP 三種傳輸，並用 /mcp 指令列出每台伺服器的工具、提示詞與資源。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "有個差別很容易踩到：Claude 的自訂連接器是從 Anthropic 的雲端連到你的伺服器，不是從你的電腦連出去，所以那台伺服器必須能從公開網際網路連得到。架在內網、VPN 後面或被防火牆擋住的伺服器接不上，就算你自己連得到也一樣。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/mcp-servers-for-everyone/diagram-1.svg",
+          "alt": "連接圖：左邊是四種 AI 客戶端，中間是 MCP 協定，右邊是檔案、Google、Notion、瀏覽器四類伺服器，底下是三條安全原則。",
+          "width": 1600,
+          "height": 900,
+          "caption": "從左往右看：你用的 AI 客戶端經過 MCP 接到四類伺服器，本機伺服器跑在你的電腦上，遠端伺服器架在服務商那邊；底下三條是每一類都適用的安全原則。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "第一類：檔案，官方參考伺服器 filesystem",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "modelcontextprotocol/servers 這個倉庫由 MCP 指導小組維護，今天上面的參考伺服器只有七個：Everything、Fetch、Filesystem、Git、Memory、Sequential Thinking 與 Time。原本的 Google 雲端硬碟、GitHub、Slack、PostgreSQL 等已經移到封存倉庫。授權正在從 MIT 轉成 Apache License 2.0，README 寫的是新貢獻用 Apache-2.0、既有程式仍是 MIT；同一頁也提醒這些是示範協定功能的參考實作，不是可以直接上線的成品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "日常最實用的是 filesystem，它讓助理讀寫你指定的資料夾。官方教學給的 Claude 桌面版設定長這樣；設定檔在 macOS 位於使用者資料庫底下的 Claude 資料夾，在 Windows 位於 APPDATA 底下，桌面版的設定頁有按鈕可直接開啟。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "MCP 官方教學：claude_desktop_config.json 只開放兩個資料夾給 filesystem",
+          "code": "{\n  \"mcpServers\": {\n    \"filesystem\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@modelcontextprotocol/server-filesystem\",\n        \"/Users/username/Desktop\",\n        \"/Users/username/Downloads\"\n      ]\n    }\n  }\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "args 後面那幾個路徑就是權限範圍，沒寫進去的資料夾它碰不到。官方在同一頁提醒：只開放你願意讓 Claude 讀寫的目錄，因為伺服器是用你的帳號權限在跑。Windows 要把 npx 用 cmd /c 包起來，執行前也要先裝好 Node.js。這台伺服器的每個工具都標了唯讀或具破壞性的提示，讀取類的是唯讀，寫入與搬移類的會覆蓋或刪掉東西。"
+        },
+        {
+          "type": "heading",
+          "text": "第二類：Google 的雲端硬碟、行事曆與 Gmail",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般使用者最省事的接法不是自己架伺服器，而是用 Claude 或 ChatGPT 的官方連接器。Claude 的 Google Workspace 連接器（Gmail、Google 行事曆、Google 雲端硬碟）對 Claude 與 Claude 桌面版的所有使用者開放，Team 與 Enterprise 要擁有者先在組織層級開啟。官方說明寫得很清楚：Claude 只讀得到你連的那個 Google 帳號的資料；寄信、回信、轉寄與分享、搬移、丟掉檔案，預設都要你逐次核准；雲端硬碟只抽取文字內容，文件裡嵌的圖片不處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 這邊對應的是 Google 雲端硬碟 app，在外掛或 app 頁面連上 Google 帳號、走完授權流程之後，可以搜尋檔案、引用 Google 文件與試算表與簡報。官方說明強調可用性要看你的方案、所在地區、工作區設定與 Google Workspace 政策，而管理員管理的同步索引只給符合資格的受管理工作區，個人帳號設定不了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你要的是真正的 MCP 伺服器：Google 確實有官方的遠端 Workspace MCP 伺服器，Gmail、雲端硬碟、文件、試算表、簡報、行事曆、Chat 與 People 各一個。但它列在 Google Workspace 開發者預覽計畫底下，要自己在 Google Cloud 專案裡啟用對應的 API 與 MCP 服務，再自備 OAuth 用戶端 ID 與密鑰；行事曆那頁也寫明，要在 Claude.ai 或 Claude 桌面版使用，得有 Claude Enterprise、Pro、Max 或 Team 方案。門檻不是為不寫程式的人設計的，一般情況用上面兩個官方連接器就夠。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "Google 官方文件的行事曆遠端 MCP 伺服器設定（需自備 OAuth 用戶端）",
+          "code": "{\n  \"mcpServers\": {\n    \"calendar\": {\n      \"serverUrl\": \"https://calendarmcp.googleapis.com/mcp/v1\",\n      \"oauth\": {\n        \"clientId\": \"OAUTH_CLIENT_ID\",\n        \"clientSecret\": \"OAUTH_CLIENT_SECRET\"\n      }\n    }\n  }\n}"
+        },
+        {
+          "type": "heading",
+          "text": "第三類：Notion",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Notion MCP 是 Notion 自己代管的遠端伺服器。用 OAuth 授權之後，客戶端就能讀取與更新你在那個工作區裡本來就有權限看的內容：搜尋 Notion 與已連來源、讀取與建立與更新內容、建立頁面與資料庫。官方建議的端點走 Streamable HTTP，另有 SSE 端點當備援，只在客戶端不支援時才用。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "Notion 官方文件的 MCP 設定（Streamable HTTP）",
+          "code": "{\n  \"mcpServers\": {\n    \"notion\": {\n      \"url\": \"https://mcp.notion.com/mcp\"\n    }\n  }\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Code 使用者不必改設定檔，官方文件給了一行指令，跑完再用 /mcp 走 OAuth 授權。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "Notion 官方文件：在 Claude Code 加入 Notion MCP 伺服器",
+          "code": "claude mcp add --transport http notion https://mcp.notion.com/mcp"
+        },
+        {
+          "type": "paragraph",
+          "text": "工作區擁有者可以在 Notion 的設定與連線頁管理哪些 MCP 客戶端能存取，組織擁有者還能用 Admin API 列出與撤銷成員的連線。"
+        },
+        {
+          "type": "link",
+          "text": "Notion AI 入門：哪個方案才有、能做什麼、資料怎麼處理",
+          "url": "https://mokaair.com/zh-TW/life/notion-ai-guide"
+        },
+        {
+          "type": "heading",
+          "text": "第四類：瀏覽器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "想讓助理真的去開網頁、點按鈕、填表單或量網站速度，就要接瀏覽器伺服器，這一類有兩個官方倉庫。Playwright MCP 由 Microsoft 維護，授權 Apache-2.0，需要 Node.js 18 或更新的版本；它的特點是讀網頁的無障礙樹（accessibility tree）而不是截圖，所以不需要視覺模型。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "Playwright MCP 官方 README 的標準設定",
+          "code": "{\n  \"mcpServers\": {\n    \"playwright\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"@playwright/mcp@latest\"\n      ]\n    }\n  }\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "Chrome DevTools MCP 由 Chrome DevTools 團隊維護，授權同樣是 Apache-2.0，需要 Node.js 的 LTS 版本與目前穩定版或更新的 Chrome，官方只保證支援 Google Chrome 與 Chrome for Testing。它能錄效能追蹤、看網路請求與主控台訊息。官方免責聲明直說：這台伺服器會把瀏覽器裡的內容暴露給 MCP 客戶端，不想分享的敏感或個人資料就不要放在那顆瀏覽器裡。使用統計預設是開的，加上關閉使用統計的參數可以停掉。"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "Chrome DevTools MCP 官方 README 的設定（含關閉使用統計的參數）",
+          "code": "{\n  \"mcpServers\": {\n    \"chrome-devtools\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"chrome-devtools-mcp@latest\", \"--no-usage-statistics\"]\n    }\n  }\n}"
+        },
+        {
+          "type": "link",
+          "text": "AI 瀏覽器怎麼選：Comet、Dia、Chrome 的 Gemini 與代理風險",
+          "url": "https://mokaair.com/zh-TW/life/ai-browsers-guide"
+        },
+        {
+          "type": "heading",
+          "text": "順帶一提：GitHub 的官方伺服器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你會看程式碼倉庫，GitHub 官方維護的 github-mcp-server 值得一提，授權是 MIT。它有 GitHub 自己代管的遠端版本，也可以在本機跑。本機版支援一個唯讀旗標，開了就只提供唯讀工具，不會改動倉庫、議題或拉取請求；用 Docker 跑時改設唯讀環境變數。它還能用工具集參數只開你要的幾組工具。這是把唯讀優先做成開關的好例子。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "伺服器",
+            "能碰什麼",
+            "維護者與授權",
+            "怎麼接"
+          ],
+          "rows": [
+            [
+              "filesystem（官方參考伺服器）",
+              "你指定的本機資料夾：讀寫檔案、搜尋、看檔案資訊",
+              "MCP 指導小組；倉庫新貢獻為 Apache-2.0，既有程式仍是 MIT",
+              "本機執行，在設定檔裡用 npx 啟動並列出允許的目錄"
+            ],
+            [
+              "Google Workspace 連接器",
+              "Gmail、Google 行事曆、Google 雲端硬碟",
+              "Anthropic 官方連接器",
+              "Claude 與 Claude 桌面版的所有使用者；Team 與 Enterprise 由擁有者先開啟"
+            ],
+            [
+              "Google 雲端硬碟 app",
+              "搜尋檔案、引用 Google 文件、試算表與簡報",
+              "OpenAI 官方 app",
+              "在 ChatGPT 的外掛或 app 頁面連上 Google 帳號；可用性看方案、地區與工作區設定"
+            ],
+            [
+              "Google Workspace 遠端 MCP",
+              "Gmail、雲端硬碟、文件、試算表、簡報、行事曆、Chat、People",
+              "Google；Workspace 開發者預覽計畫",
+              "遠端網址加自備的 OAuth 用戶端；接 Claude 需要 Enterprise、Pro、Max 或 Team 方案"
+            ],
+            [
+              "Notion MCP",
+              "搜尋、讀取、建立與更新你有權限的 Notion 內容",
+              "Notion 官方代管",
+              "遠端網址，走 OAuth 授權；擁有者可在設定裡管理與撤銷"
+            ],
+            [
+              "Playwright MCP",
+              "開網頁、點擊、填表單，讀網頁的無障礙樹",
+              "Microsoft；Apache-2.0",
+              "本機執行，用 npx 啟動；需要 Node.js 18 或更新"
+            ],
+            [
+              "Chrome DevTools MCP",
+              "控制 Chrome、錄效能追蹤、看網路請求與主控台訊息",
+              "Chrome DevTools 團隊；Apache-2.0",
+              "本機執行，用 npx 啟動；需要 Node.js LTS 與穩定版 Chrome"
+            ],
+            [
+              "GitHub MCP Server",
+              "倉庫、議題、拉取請求、Actions 與安全性發現",
+              "GitHub；MIT",
+              "GitHub 代管的遠端版本，或本機執行並開啟唯讀旗標"
+            ]
+          ],
+          "caption": "四類實用 MCP 伺服器與延伸的 GitHub 伺服器；維護者、授權與接法以 2026 年 9 月 15 日各家官方文件與官方倉庫為準。"
+        },
+        {
+          "type": "heading",
+          "text": "安全：接之前先確認四件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一，只接你信任的伺服器。Claude Code 的官方文件直接寫著：連接前先確認你信任這台伺服器，會抓取外部內容的伺服器會讓你暴露在提示詞注入的風險裡。Notion 的安全頁也說只連你信任的客戶端，從第三方市集安裝前要先確認市集與伺服器網址。Playwright MCP 的 README 更直白：它不是一道安全邊界，連限定或封鎖來源網域的兩個參數，官方都註明不作為安全邊界。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二，唯讀優先，能只給讀就不要給寫。filesystem 只列出你真的要它碰的資料夾；GitHub 伺服器開唯讀旗標；Claude 的連接器可以在工具權限裡把每一類工具設成一律允許、需要核准或封鎖；ChatGPT 的 app 權限預設是重要動作要先問你，選項還有一律詢問與只允許讀取；Gemini CLI 能用納入或排除清單挑掉不需要的工具，而它那個跳過所有工具確認的信任開關預設是關的，沒有特別理由別打開。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三，把伺服器回傳的內容當成資料，不是指令。Notion 的安全頁把情境寫得很具體：攻擊者可以把惡意指示藏進客戶端會讀到的內容裡，客戶端如果照做，就可能在你沒有意圖的情況下洩漏資料或改掉內容。對策是在會改動內容的動作前保留確認步驟，而且自己看過再按同意。"
+        },
+        {
+          "type": "link",
+          "text": "提示詞注入（Prompt Injection）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+        },
+        {
+          "type": "paragraph",
+          "text": "第四，金鑰不要貼進聊天視窗，也不要寫死在設定檔裡。Gemini CLI 預設會把名稱含有 TOKEN、SECRET、PASSWORD、KEY、AUTH、CREDENTIAL 的環境變數從繼承來的環境裡濾掉，就是怕它們漏給第三方伺服器；官方做法是要傳就在 env 欄位明寫，而且用環境變數展開取值，不要把字串直接貼上去。遠端伺服器盡量走 OAuth 授權，不要自己貼一組長期有效的權杖。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "一次只接一台，先在不重要的資料上試",
+          "text": "MCP 伺服器一接上，助理就能用它的工具，而工具多半不會每一步都問你。務實的做法：一次只啟用一台，第一次先指向測試資料夾、測試頁面或測試帳號，把這台能做什麼、哪些動作會跳出核准視窗看清楚，再換成真的資料。Claude 的官方說明也提醒，只有在你信任那台伺服器與那個工具、願意讓它無人監督地執行時，才按下一律允許；另外 Claude 的進階研究功能目前無法呼叫本機 MCP 伺服器的工具。"
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜MCP 回傳含有指令時：資料與操作權限分開",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-mcp-untrusted-output"
+        },
+        {
+          "type": "heading",
+          "text": "接好之後自己怎麼驗收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇整理的是官方文件寫得出來的能力與限制，沒有替你實測。接上之後照這五步自己確認一遍，比看任何評測都準。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "把伺服器的工具清單叫出來看一遍：Claude 桌面版點聊天框左下角的加號，移到連接器再選管理連接器；Claude Code 與 Gemini CLI 都用 /mcp 指令。",
+            "先下一個唯讀指令，例如請它列出某個資料夾裡有哪些檔案，確認它真的只碰得到你開放的範圍。",
+            "再下一個會改東西的指令，看客戶端有沒有跳出核准視窗，而且視窗上寫的動作跟你以為的一不一樣。",
+            "在 Claude Code 裡用 /context 看每台伺服器吃掉多少上下文視窗，太貴又不常用的就先關掉。",
+            "不用的伺服器就移除：Claude Code 用 claude mcp remove，Claude 的連接器在自訂與連接器頁面移除，Notion 那邊可由工作區擁有者撤銷連線。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "link",
+          "text": "Claude Code｜MCP 安裝、設定與排錯",
+          "url": "https://mokaair.com/zh-TW/life/claude-code-mcp-setup-troubleshooting"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後提醒：這份清單會過期。伺服器會改名、會封存、方案會調整，官方參考倉庫就把好幾台移進了封存區。要接哪一台之前，花一分鐘打開它的官方倉庫或說明頁看一眼維護狀態與授權，比照著任何一篇文章直接複製設定安全得多。"
+        },
+        {
+          "type": "link",
+          "text": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
+          "url": "https://mokaair.com/zh-TW/life/claude-mcp-explained"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Model Context Protocol：Versioning（協定版本說明）",
+          "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/versioning",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Model Context Protocol：Connect to local MCP servers（官方本機伺服器教學）",
+          "url": "https://modelcontextprotocol.io/docs/2026-07-28/develop/connect-local-servers",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GitHub：modelcontextprotocol/servers（官方參考伺服器倉庫 README）",
+          "url": "https://github.com/modelcontextprotocol/servers",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GitHub：modelcontextprotocol/servers 的 filesystem 伺服器說明",
+          "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Get started with custom connectors using remote MCP",
+          "url": "https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Use connectors to extend Claude's capabilities",
+          "url": "https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Use Google Workspace connectors",
+          "url": "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude Code 官方文件：Connect Claude Code to tools via MCP",
+          "url": "https://code.claude.com/docs/en/mcp",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Apps in ChatGPT",
+          "url": "https://help.openai.com/en/articles/11487775-connectors-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Developer mode and MCP apps in ChatGPT",
+          "url": "https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Google Drive app and setup in ChatGPT",
+          "url": "https://help.openai.com/en/articles/10929079-google-drive-app-and-setup-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Notion 開發者文件：Notion MCP（總覽）",
+          "url": "https://developers.notion.com/guides/mcp/overview",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Notion 開發者文件：Connect to Notion MCP（各客戶端設定）",
+          "url": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Notion 開發者文件：Security best practices（MCP 安全建議）",
+          "url": "https://developers.notion.com/guides/mcp/mcp-security-best-practices",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GitHub：microsoft/playwright-mcp（官方倉庫 README 與授權）",
+          "url": "https://github.com/microsoft/playwright-mcp",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GitHub：ChromeDevTools/chrome-devtools-mcp（官方倉庫 README 與授權）",
+          "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GitHub：github/github-mcp-server（官方倉庫 README 與授權）",
+          "url": "https://github.com/github/github-mcp-server",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google for Developers：Configure the Google Workspace MCP servers",
+          "url": "https://developers.google.com/workspace/guides/configure-mcp-servers",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google for Developers：Configure the Calendar MCP server",
+          "url": "https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "GitHub：google-gemini/gemini-cli 的 MCP servers 文件",
+          "url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}

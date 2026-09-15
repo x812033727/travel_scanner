@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">Obsidian vault 接上 AI 的三種接法 / Three ways to connect AI to an Obsidian vault</title>
+  <desc id="desc">左邊是本機的 vault 資料夾，裡面是 Markdown 純文字檔、.obsidian 設定，以及每日筆記、屬性與 Bases。中間三個方框是三種接法：接法一是社群外掛，要先關掉限制模式，外掛會繼承 Obsidian 的存取權限，例子有 Copilot、Smart Connections 與 Text Generator；接法二是把程式代理開在 vault 資料夾，CLAUDE.md 放在根目錄，代理只能寫入啟動時所在的資料夾；接法三是 MCP 伺服器，Local REST API with MCP 跑在本機 27124 連接埠並用金鑰當權杖，第一次只開讀取類工具。右邊三個方框對應內容會送到哪裡：你填金鑰的那一家雲端模型、代理背後的模型服務、呼叫工具的 AI 客戶端。最下面一條是完全不出門的那條路：Web Clipper 的 Interpreter 接本機 Ollama 的 11434 連接埠，內容不離開這台電腦。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">Obsidian vault 接上 AI 的三種接法與資料流向</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Three ways to connect AI to an Obsidian vault</text>
+
+  <!-- vault -->
+  <rect x="60" y="280" width="370" height="320" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="245" y="330" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">本機 vault 資料夾</text>
+  <text x="245" y="368" font-size="16" fill="#5C6B6B" text-anchor="middle">檔案都在你的電腦上</text>
+  <text x="88" y="418" font-size="17" fill="#102A2B">Markdown 純文字檔</text>
+  <text x="88" y="456" font-size="17" fill="#102A2B">.obsidian 設定資料夾</text>
+  <text x="88" y="494" font-size="17" fill="#102A2B">每日筆記、屬性、Bases</text>
+  <text x="88" y="532" font-size="17" fill="#102A2B">軟體本身沒有內建 AI</text>
+  <text x="245" y="572" font-size="16" fill="#0D6B68" text-anchor="middle">AI 是你自己接上去的</text>
+
+  <!-- arrows vault -> methods -->
+  <path d="M 430 440 H 462 V 230 H 494" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 430 440 H 494" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 430 440 H 462 V 650 H 494" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- method 1 -->
+  <rect x="500" y="140" width="560" height="180" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="524" y="186" font-size="20" font-weight="bold" fill="#102A2B">接法一　社群外掛</text>
+  <text x="524" y="224" font-size="16" fill="#102A2B">先關掉限制模式才裝得起來</text>
+  <text x="524" y="258" font-size="16" fill="#102A2B">外掛繼承 Obsidian 的存取權限</text>
+  <text x="524" y="292" font-size="16" fill="#5C6B6B">Copilot、Smart Connections、Text Generator</text>
+
+  <!-- method 2 -->
+  <rect x="500" y="350" width="560" height="180" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="524" y="396" font-size="20" font-weight="bold" fill="#102A2B">接法二　程式代理開在資料夾</text>
+  <text x="524" y="434" font-size="16" fill="#102A2B">CLAUDE.md 放在 vault 根目錄</text>
+  <text x="524" y="468" font-size="16" fill="#102A2B">只能寫入啟動時所在的資料夾</text>
+  <text x="524" y="502" font-size="16" fill="#5C6B6B">要擋就設拒絕規則，不是寫在提示詞裡</text>
+
+  <!-- method 3 -->
+  <rect x="500" y="560" width="560" height="180" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="524" y="606" font-size="20" font-weight="bold" fill="#102A2B">接法三　MCP 伺服器</text>
+  <text x="524" y="644" font-size="16" fill="#102A2B">Local REST API with MCP</text>
+  <text x="524" y="678" font-size="16" fill="#102A2B">本機 27124 連接埠，金鑰當權杖</text>
+  <text x="524" y="712" font-size="16" fill="#5C6B6B">第一次只開讀取類工具</text>
+
+  <!-- arrows methods -> destinations -->
+  <path d="M 1060 230 H 1114" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1060 440 H 1114" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 1060 650 H 1114" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="1330" y="118" font-size="18" font-weight="bold" fill="#5C6B6B" text-anchor="middle">內容會送到哪</text>
+
+  <rect x="1120" y="150" width="420" height="160" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1330" y="208" font-size="18" font-weight="bold" fill="#102A2B" text-anchor="middle">你填了金鑰的那一家</text>
+  <text x="1330" y="244" font-size="16" fill="#5C6B6B" text-anchor="middle">或你接的本機模型</text>
+  <text x="1330" y="278" font-size="16" fill="#5C6B6B" text-anchor="middle">用量算在你的金鑰上</text>
+
+  <rect x="1120" y="360" width="420" height="160" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1330" y="418" font-size="18" font-weight="bold" fill="#102A2B" text-anchor="middle">代理背後的模型服務</text>
+  <text x="1330" y="454" font-size="16" fill="#5C6B6B" text-anchor="middle">讀到的檔案會進入</text>
+  <text x="1330" y="488" font-size="16" fill="#5C6B6B" text-anchor="middle">上下文視窗</text>
+
+  <rect x="1120" y="570" width="420" height="160" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="1330" y="628" font-size="18" font-weight="bold" fill="#102A2B" text-anchor="middle">呼叫工具的 AI 客戶端</text>
+  <text x="1330" y="664" font-size="16" fill="#5C6B6B" text-anchor="middle">伺服器本身只跑在</text>
+  <text x="1330" y="698" font-size="16" fill="#5C6B6B" text-anchor="middle">你的電腦上</text>
+
+  <!-- local route -->
+  <rect x="60" y="772" width="1480" height="76" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="800" y="819" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">完全不出門的那條路：Web Clipper 的 Interpreter 接本機 Ollama 的 11434 連接埠，內容不離開這台電腦</text>
+
+  <text x="1540" y="880" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

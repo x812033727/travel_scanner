@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">資料不是指令 / Data is not an instruction</title>
+  <desc id="desc">左邊是一疊藍框文件，最上面那份用幾條橫線代表內文，其中一條是紅色的，代表夾在資料裡的一句指令。文件往右送出兩條線：下面那條深綠色的線穿過中間兩根綠色柱子之間的開口，接到右邊一個圓形、一個圓角方形與另一個圓形，代表通過授權關卡之後才發生的動作；上面那條紅色的線撞到上方的柱子就停住，代表資料裡的指令沒有辦法變成授權。畫面四周散著幾個橘色、藍色與綠色的小圓點，下方置中寫著六個字「資料不是指令」。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <!-- stacked documents -->
+  <rect x="140" y="270" width="240" height="300" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+  <rect x="172" y="302" width="240" height="300" rx="22" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+  <rect x="204" y="334" width="240" height="300" rx="22" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="8"/>
+  <rect x="240" y="382" width="172" height="16" rx="8" fill="#2F6F9F" opacity="0.55"/>
+  <rect x="240" y="424" width="140" height="16" rx="8" fill="#2F6F9F" opacity="0.55"/>
+  <rect x="240" y="466" width="172" height="16" rx="8" fill="#B8442D"/>
+  <rect x="240" y="508" width="112" height="16" rx="8" fill="#2F6F9F" opacity="0.55"/>
+  <rect x="240" y="550" width="156" height="16" rx="8" fill="#2F6F9F" opacity="0.55"/>
+
+  <!-- blocked red path -->
+  <line x1="480" y1="352" x2="782" y2="352" stroke="#B8442D" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- allowed data path through the gate -->
+  <line x1="480" y1="492" x2="1028" y2="492" stroke="#0D6B68" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- gate pillars -->
+  <rect x="798" y="252" width="36" height="170" rx="18" fill="#0D6B68"/>
+  <rect x="798" y="562" width="36" height="170" rx="18" fill="#0D6B68"/>
+
+  <!-- actions on the far side -->
+  <circle cx="1090" cy="492" r="58" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+  <line x1="1152" y1="492" x2="1190" y2="492" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <rect x="1194" y="434" width="116" height="116" rx="26" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+  <line x1="1314" y1="492" x2="1336" y2="492" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="1398" cy="492" r="58" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="8"/>
+
+  <!-- dots -->
+  <circle cx="556" cy="238" r="12" fill="#D97A2B"/>
+  <circle cx="640" cy="668" r="14" fill="#2E7D5B"/>
+  <circle cx="1000" cy="252" r="12" fill="#2F6F9F"/>
+  <circle cx="1284" cy="672" r="12" fill="#D97A2B"/>
+  <circle cx="944" cy="684" r="9" fill="#5C6B6B" opacity="0.6"/>
+  <circle cx="1112" cy="672" r="9" fill="#2F6F9F" opacity="0.6"/>
+
+  <text x="800" y="812" text-anchor="middle" font-size="64" font-weight="bold" fill="#102A2B">資料不是指令</text>
+</svg>

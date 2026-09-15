@@ -1,0 +1,430 @@
+{
+  "slug": "ai-for-kids-parent-guide",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "daily"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "家長指南：孩子用 AI 的年齡限制與設定",
+      "description": "孩子能不能用 AI，先看各家官網寫的年齡門檻：ChatGPT 未滿 13 歲不得使用、13 到 18 歲要家長同意，Gemini 跟著 Google 帳號年齡走、未滿 13 歲由家長在 Family Link 開啟，Claude 條款寫 18 歲，Character.AI 已移除未滿 18 歲的開放式對話。這篇照 2026 年 9 月官方頁整理最低年齡、家長控制與資料處理，附年齡層設定流程與官方求助管道。",
+      "hero": {
+        "src": "/guides/ai-for-kids-parent-guide/hero.jpg",
+        "alt": "一個青綠色對話框旁邊立著三個由低到高的圓角方塊，每塊上方浮著一顆同色圓點，全部站在一條橫線上，上方寫著孩子用 AI 的年齡與設定",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "孩子能不能用某個 AI，第一個要看的是各家官網寫的年齡門檻，而五家寫的都不一樣：ChatGPT 未滿 13 歲不得使用、13 到 18 歲要家長同意；Gemini 跟著 Google 帳號年齡走，未滿 13 歲得由家長在 Family Link 開啟；Claude 的消費者條款寫 18 歲；Meta AI 寫未滿 13 歲不能用；Character.AI 已經移除未滿 18 歲的開放式對話。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照 2026 年 9 月 15 日各家官方說明頁與使用條款當天的內容，把五家的最低年齡、家長控制管得到與管不到的事、資料處理放進同一張表，另附依年齡層的設定流程、一份家庭使用約定範本、教育部的官方注意事項重點，以及出事時的官方管道。本環境不能登入實測，步驟照官方說明頁寫。"
+        },
+        {
+          "type": "heading",
+          "text": "先看年齡門檻：五家寫的不一樣",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT 的說法最直白：官方說明中心的教育常見問答寫著 ChatGPT 並非為未滿 13 歲的孩子設計，13 到 18 歲須先取得家長同意；同一頁還寫，教育情境裡若對象未滿 13 歲，實際與 ChatGPT 互動的必須是成年人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 沒有自己的年齡數字，跟著 Google 帳號走。Google 帳號的年齡要求頁列出各國門檻，沒被列到的國家一律 13 歲，台灣不在名單上，被列出的例如南韓 14 歲、越南 15 歲。未滿 13 歲用的是 Family Link 監督帳號，家長要先開啟；用公司的 Google 帳號則寫明要 18 歲以上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 最單純。消費者服務條款的最低年齡一節原文是「You must be at least 18 years old or the minimum age required to consent to use the Services in your location, whichever is higher」，也就是 18 歲，或當地同意年齡取較高者。說明中心另寫，偵測到可能未滿 18 歲時會要求先驗證年齡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "陪伴型的兩家：Meta AI 的使用條款寫明未滿 13 歲不能使用其 AI，當地法規要求更高年齡時從高者；Character.AI 則在 2025 年 10 月 29 日的官方公告宣布，移除未滿 18 歲使用者的開放式對話。"
+        },
+        {
+          "type": "heading",
+          "text": "ChatGPT：家長控制管得到什麼、管不到什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "家長控制是把家長帳號跟孩子的帳號連起來。任一方都可以發起：在設定裡打開家長控制，用手機號碼或電子郵件送出邀請，對方接受後名字會出現在家庭成員底下。一位家長可以連多個孩子，一個孩子同時只能連一位家長。連起來之後可以管這些設定。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "減少敏感內容：預設開啟。官方寫明關掉它只動這一項，不會讓帳號變成成人帳號。",
+            "改善模型：控制孩子的對話能不能拿來改進模型，預設開啟。",
+            "參照已儲存的記憶、語音模式、生成圖片，以及 ChatGPT Work 的程式網路存取與雲端瀏覽器：預設都開啟。",
+            "讀書模式與讀書時段：預設關閉，開了只是讓新對話從讀書模式開始，不會擋住使用。",
+            "安靜時段：預設關閉。設定後孩子在那幾段時間不能使用 ChatGPT，可以設多段。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "管不到的是對話。官方常見問題直接回答不行：家長控制不會讓家長讀到孩子的對話、對話紀錄或即時活動。送到家長手上的只有安全通知，時機有三種：審查人員判斷有嚴重自我傷害疑慮、判斷出可能與飲食失調有關的行為，以及帳號因涉及暴力行為被停用。官方寫明這不是即時監控，通知裡不含對話內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "任一方都可以隨時解除連結，孩子自己解除時家長會收到通知。當 ChatGPT 判定帳號屬於 18 歲以上的人，青少年防護會預設關閉、家長控制一併解除。判定年齡除了註冊填的生日還有一套年齡預測，官方列的訊號包括常聊的主題、使用時段與帳號存在多久；被誤判的成年人可以用 Persona 驗證，Persona 會在七天內刪掉上傳的證件或自拍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "青少年版本叫 ChatGPT for Teens。官方寫從 8 月 18 日起向符合資格的免費與付費個人方案帳號全球推出，澳洲預計 9 月 8 日全面開放；符合資格時系統自動啟用，家長控制則是選配。"
+        },
+        {
+          "type": "heading",
+          "text": "Gemini：未滿 13 歲走 Family Link",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "步驟照官方說明頁：打開 Family Link 網站或 App，選孩子，點控制項裡的 Gemini，再把 Gemini Apps 開啟或關閉。孩子第一次啟用時家長會收到電子郵件通知，改完可能要幾個小時才生效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方也寫明兩個限制。第一，Gemini Apps 對監督帳號是逐步開放的，就算在 Family Link 開了也可能還輪不到；歐洲經濟區、瑞士與英國的監督帳號則完全不提供，台灣不在這份排除名單裡。第二，「Hey Google」與 Voice Match 不能給未滿 13 歲的使用者搭配 Gemini Apps 用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "未成年帳號另有加強的內容過濾：在給所有人的過濾之外，登入 Google 帳號的未成年人會多一層，包括避免 Gemini 宣稱自己是人或有人類情緒、避免扮演有害角色；同一頁也承認過濾不完美。資料這一邊，未滿 13 歲沒有「保留活動記錄」這個設定；一般帳號的活動記錄預設 18 個月後自動刪除，關掉保留後對話仍會留 72 小時。三家的隱私開關整理在 "
+            },
+            {
+              "type": "link",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Claude、Meta AI 與 Character.AI",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 是 18 歲門檻，也就沒有家長控制可設。說明中心寫，偵測到可能未滿 18 歲的訊號時會要求驗證年齡，驗證交給第三方的 Yoti，Anthropic 只收到通過與否，不會看到證件或照片。手機版另有一種情況：美國部分州的新法要求應用程式商店查核年齡並提供給開發者，Claude 用這個資訊執行年齡限制；帳號在 Family Link 或 Apple 家庭共享裡時，生日可能是家長當初設定的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Meta AI 要分成已公告與已上線兩件事看。Meta 在 2025 年 10 月 17 日公告要給家長三個工具：整個關掉青少年與 AI 角色的一對一對話、封鎖特定角色、看見孩子跟 AI 聊的主題。這篇公告後來加了兩次更新：2026 年 1 月 23 日寫在新版體驗準備好之前，青少年將無法在 Meta 各個 App 使用 AI 角色；4 月 16 日的更新寫那組家長控制仍在開發中。真正上線的是主題摘要，2026 年 4 月 23 日的公告寫，監督青少年帳號的家長可以看到孩子最近 7 天問過 Meta AI 的主題，先在美國、英國、澳洲、加拿大與巴西開放。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Character.AI 的 2025 年 10 月 29 日公告寫，移除未滿 18 歲的開放式對話，過渡期先把每天對話時間限制在 2 小時再往下調。11 月 21 日的後續公告寫美國已降到每天 1 小時，並從 11 月 24 日開始分兩批移除，其他市場陸續跟進。未滿 18 歲仍可以用非對話的功能，過去的對話與角色也留著。"
+        },
+        {
+          "type": "link",
+          "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
+          "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+        },
+        {
+          "type": "link",
+          "text": "AI 陪伴與心理健康：可以與不可以",
+          "url": "https://mokaair.com/zh-TW/life/ai-companion-mental-health-caution"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-for-kids-parent-guide/diagram-1.svg",
+          "alt": "依年齡層分成未滿 13 歲、13 歲到未滿 18 歲、18 歲以上三欄的設定流程圖，下方是共通的三件事與官方求助管道",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右照孩子的年齡挑一欄，每欄由上往下三步；最下面那一條不分年齡都要做。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "平台",
+            "最低年齡",
+            "家長控制",
+            "資料處理"
+          ],
+          "rows": [
+            [
+              "ChatGPT",
+              "未滿 13 歲不得使用；13 到 18 歲需家長同意",
+              "連結帳號後可管敏感內容、語音、生成圖片、安靜時段與讀書時段，並收安全通知",
+              "改善模型預設開啟、家長可關；家長看不到對話"
+            ],
+            [
+              "Gemini",
+              "依 Google 帳號年齡，台灣為 13 歲；工作帳號 18 歲",
+              "未滿 13 歲由家長在 Family Link 開關 Gemini Apps；未成年另有內容過濾",
+              "未滿 13 歲沒有保留活動記錄設定；活動記錄預設 18 個月自動刪除"
+            ],
+            [
+              "Claude",
+              "18 歲，或當地同意年齡取較高者",
+              "沒有家長控制；偵測到未成年會要求用 Yoti 驗證",
+              "驗證由 Yoti 處理，Anthropic 只收到通過與否"
+            ],
+            [
+              "Meta AI",
+              "未滿 13 歲不得使用，當地要求更高時從高",
+              "AI 角色自 2026 年 1 月起停止對青少年開放；家長可看最近 7 天的主題",
+              "監督頁只顯示主題分類，不顯示對話內容"
+            ],
+            [
+              "Character.AI",
+              "未滿 18 歲已無開放式對話；註冊年齡以官網為準",
+              "官方的家長洞察工具；年齡判斷用自建模型加 Persona",
+              "以官網為準"
+            ]
+          ],
+          "caption": "五家的最低年齡、家長控制與資料處理，查證於 2026 年 9 月，以各官方說明頁與使用條款當天頁面為準。"
+        },
+        {
+          "type": "heading",
+          "text": "教育部怎麼說：注意事項 2.1",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣這邊有官方文件可以照著看：教育部的「中小學使用『生成式人工智慧』注意事項2.1（教師、行政人員及家長版）」在 115 年 2 月 11 日核定，前兩次核定是 113 年 7 月 1 日與 114 年 12 月 23 日，電子檔放在教育部推動中小學數位學習精進方案入口網。"
+        },
+        {
+          "type": "paragraph",
+          "text": "跟年齡最直接相關的是第七點，原文寫「教師、父母或監護人應提醒學生，使用『生成式人工智慧』工具應遵守各平臺註冊年齡限制及相關規範」。同一點建議中小學生使用為教育目的設計的工具，舉的例子是教育部因材網的生成式 AI 學習夥伴 e度、酷英網 E-BOT 與均一教育平臺；在校應在教師引導下使用，不在學校用時也請家長陪伴。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "另外兩點家長也用得到。第五點提醒學生避免輸入自己的姓名、照片、聯絡方式或家庭資訊，並要求建立家長知情與同意機制。第三點寫 AI 內容辨識工具只能作為初步篩檢，學校處理作業爭議時應結合教師專業判斷、作品內容與學習歷程綜合研判，不把偵測結果當唯一依據。作業能不能用、怎麼標示，接著看 "
+            },
+            {
+              "type": "link",
+              "text": "學生怎麼用 AI 不踩線：學習、整理筆記與學術誠信",
+              "url": "https://mokaair.com/zh-TW/life/ai-for-students-honest-use"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "和孩子談的三件事，加一份家庭約定",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一件是幻覺。Google 給家長的頁面寫得很直接：Gemini 會產生幻覺、把不正確的資訊當成事實呈現，家長要協助孩子對回答保持批判。教育部的文件講得更細：訓練資料帶有成見或錯誤時產出就會偏差，而工具沒辦法自行判斷答案正不正確。實際做法是讓孩子看到人名、日期、書名、法條就去查原始出處。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二件是隱私。官方頁的說法一致：Google 要家長提醒孩子不要在對話裡分享住址、學校名稱或家庭資訊；教育部的文件列出姓名、照片、聯絡方式、住址、學號，以及家庭與學校的機密資訊都不要輸入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三件是不當內容，以及「它不是人」。Google 的家長頁要求家長讓孩子理解，Gemini 雖然會對話，但不是人、不會自己思考也沒有情緒，回答有時聽起來過度鼓勵或支持，不該被當成朋友，也不該拿來談個人煩惱或祕密。ChatGPT 的年齡預測說明頁列出的青少年敏感內容則包括血腥暴力、可能鼓動危險行為的網路挑戰，以及性、浪漫或暴力的角色扮演。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "家庭 AI 使用約定範本，照你家的狀況改數字與名單後貼進家庭群組",
+          "code": "【我們家的 AI 使用約定】\n1. 可以用的工具：<列出名稱>。不在這張清單上的，先問過家長再用。\n2. 年齡與帳號：帳號用真實生日註冊；未滿門檻的平台不註冊，也不借用大人的帳號。\n3. 不輸入的東西：姓名、照片、住址、學校名稱、班級、學號、聯絡方式、家人的資訊、任何密碼。\n4. 查證：作業、報告、健康、法律、金錢相關的回答，至少查一個原始出處再用。\n5. 標示：學校規定可以用的時候，照規定寫清楚用了什麼工具、用在哪一段。\n6. 它不是朋友：心情不好、被欺負、被嚇到的時候，先找爸媽、老師或專線，不是先找 AI。\n7. 遇到不舒服的內容：不要繼續看、不要轉傳，截圖給家長，我們一起處理。\n8. 時間：每天 <填時段>，睡前 <填時間> 之後不使用。\n9. 大人的部分：家長每 <填頻率> 跟你聊一次最近用 AI 做了什麼，不翻你的對話。\n10. 這份約定可以改：任何一方想改，就一起坐下來談。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第 4 條最常被跳過，幻覺長什麼樣、怎麼拆成可以查的主張，可以看 "
+            },
+            {
+              "type": "link",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+            },
+            {
+              "type": "text",
+              "text": "；孩子第一次開帳號要選什麼，看 "
+            },
+            {
+              "type": "link",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "。把規矩先講清楚再放手，跟 "
+            },
+            {
+              "type": "link",
+              "text": "零用錢怎麼給：把金錢觀教給孩子的實際做法",
+              "url": "https://mokaair.com/zh-TW/life/kids-allowance-money-education"
+            },
+            {
+              "type": "text",
+              "text": " 是同一套做法。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "家長控制看得到設定，看不到對話",
+          "text": "三家官方頁都寫明同一件事：連結家長帳號不會讓你讀到孩子的對話內容，Meta 的監督頁也只顯示主題分類。安全通知不是即時監控，官方明說不一定會抓到每一次狀況，也不能取代專業協助或緊急服務。有效的做法不是把設定開好就放著，而是固定跟孩子聊他最近拿 AI 做了什麼。"
+        },
+        {
+          "type": "heading",
+          "text": "出事的時候：官方管道",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "教育部注意事項的第四點寫了處理順序：發現學生接觸或遭受深偽技術製作的不當性影像，或涉及色情、暴力等違反兒少保護的內容時，教師與家長應優先協助學生截圖保留證據，切勿轉傳以免造成二度傷害；性影像事件向衛生福利部性影像處理中心申訴，其他不當內容向 iWIN 網路內容防護機構檢舉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "iWIN 的法源是兒童及少年福利與權益保障法第 46 條：為防止兒童及少年接觸有害其身心發展的網際網路內容，由通訊傳播主管機關召集各目的事業主管機關委託民間團體成立內容防護機構，辦理申訴機制、內容分級、過濾軟體與上網安全教育宣導等事項。iWIN 官網頁尾標的諮詢專線是 02-2577-5118，服務時間週一到週五 9:00 到 12:00、13:00 到 18:00。"
+        },
+        {
+          "type": "paragraph",
+          "text": "心理這一塊，衛福部心理健康司的頁面寫，有心理壓力或情緒困擾可以撥打 1925 安心專線，提供 24 小時免付費心理諮詢服務。孩子跟 AI 聊到讓你擔心的內容時，先找專線與專業人員。"
+        },
+        {
+          "type": "link",
+          "text": "AI 詐騙與 Deepfake：台灣案例與防範",
+          "url": "https://mokaair.com/zh-TW/life/ai-scams-deepfake-taiwan"
+        },
+        {
+          "type": "link",
+          "text": "匯出與刪除你的 AI 對話記錄",
+          "url": "https://mokaair.com/zh-TW/life/ai-chat-history-export-delete"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 說明中心：Is ChatGPT safe for all ages?（未滿 13 歲不適用；13 到 18 歲須家長同意；教育情境中未滿 13 歲須由成年人操作）",
+          "url": "https://help.openai.com/en/articles/8313401-is-chatgpt-safe-for-all-ages",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Managing parental controls in ChatGPT（連結流程、可管設定與預設值、安靜時段、安全通知、看不到對話、滿 18 歲後解除）",
+          "url": "https://help.openai.com/en/articles/12315553-parental-controls-on-chatgpt-faq",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：ChatGPT for Teens（8 月 18 日起全球推出、澳洲 9 月 8 日；符合資格自動啟用；家長控制為選配）",
+          "url": "https://help.openai.com/en/articles/20001421-chatgpt-for-teens",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "OpenAI 說明中心：Age prediction in ChatGPT（年齡預測訊號、青少年敏感內容類型、Persona 驗證與證件 7 天內刪除）",
+          "url": "https://help.openai.com/en/articles/12652064-age-prediction-in-chatgpt",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini Apps 說明：Guide your child's Gemini Apps experience（Family Link 開關步驟、監督帳號逐步開放、EEA 與瑞士英國不提供、未成年加強過濾、未滿 13 歲無保留活動記錄）",
+          "url": "https://support.google.com/gemini/answer/16109150",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini Apps 說明：What you need to sign in to Gemini Apps（個人、公司與學校帳號的條件；公司帳號須 18 歲以上）",
+          "url": "https://support.google.com/gemini/answer/13278668",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Google 帳戶說明：Age requirements on Google Accounts（未列出的國家一律 13 歲；南韓 14 歲、越南 15 歲）",
+          "url": "https://support.google.com/accounts/answer/1350409",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Gemini Apps 隱私權中心：活動記錄預設 18 個月自動刪除、可改 3 或 36 個月、關閉保留後仍留 72 小時",
+          "url": "https://support.google.com/gemini/answer/13594961",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Anthropic 消費者服務條款（2025 年 10 月 8 日生效）：Minimum age 一節要求至少 18 歲或當地同意年齡取較高者",
+          "url": "https://www.anthropic.com/legal/consumer-terms",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Age assurance on Claude（僅提供 18 歲以上；偵測到未成年要求驗證；Yoti 驗證且 Anthropic 只收到通過與否）",
+          "url": "https://support.claude.com/en/articles/15171100-age-assurance-on-claude",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Claude 說明中心：Minimum age requirement access restriction（應用程式商店年齡資訊、Family Link 與 Apple 家庭共享可能由家長設定生日）",
+          "url": "https://support.claude.com/en/articles/13117299-minimum-age-requirement-access-restriction",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta AI 使用條款（2026 年 5 月 13 日生效）：未滿 13 歲不得使用，當地法規要求更高年齡時從高",
+          "url": "https://www.facebook.com/policies/other-policies/ais-terms",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta 公告：Our Approach to Teen AI Safety（2025 年 10 月 17 日；含 2026 年 1 月 23 日暫停青少年使用 AI 角色與 4 月 16 日更新）",
+          "url": "https://about.fb.com/news/2025/10/teen-ai-safety-approach/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Meta 公告：Helping Parents Understand the Conversations Their Teens Are Having With AI（2026 年 4 月 23 日；最近 7 天主題、監督頁新分頁、首波五國）",
+          "url": "https://about.fb.com/news/2026/04/helping-parents-understand-conversations-their-teens-are-having-with-ai/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Character.AI 官方公告：Taking Bold Steps to Keep Teen Users Safe（2025 年 10 月 29 日；移除未滿 18 歲開放式對話、每天 2 小時上限、年齡判斷與 Persona）",
+          "url": "https://blog.character.ai/u18-chat-announcement/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "Character.AI 官方公告：An Update On Changes to Our Under-18 Experience（2025 年 11 月 21 日；美國降至每天 1 小時、11 月 24 日起分兩批移除、其他市場跟進）",
+          "url": "https://blog.character.ai/an-update-on-changes-to-our-under-18-experience/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "教育部：中小學使用「生成式人工智慧」注意事項2.1（教師、行政人員及家長版），115 年 2 月 11 日核定，載於推動中小學數位學習精進方案入口網資料下載",
+          "url": "https://pads.moe.edu.tw/download.php",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "全國法規資料庫：兒童及少年福利與權益保障法第 46 條（內容防護機構的設立與辦理事項）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0050001&flno=46",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "iWIN 網路內容防護機構官網（頁尾諮詢專線 02-2577-5118 與服務時間）",
+          "url": "https://i.win.org.tw/",
+          "checked_on": "2026-09-15"
+        },
+        {
+          "title": "衛生福利部心理健康司：1925 安心專線（依舊愛我），24 小時免付費心理諮詢服務",
+          "url": "https://dep.mohw.gov.tw/DOMHAOH/cp-4906-54077-107.html",
+          "checked_on": "2026-09-15"
+        }
+      ]
+    }
+  }
+}
