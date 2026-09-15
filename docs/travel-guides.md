@@ -209,7 +209,8 @@ GET /api/v1/guides?locale=&kind=&section=&destination=&country=&topic=&cursor=&l
 GET /api/v1/guides/topics?locale=&section=          parents then children, with per-locale counts
 GET /api/v1/guides/destinations?locale=&section=    destinations with a published article, by country
 GET /api/v1/guides/series?locale=                   every registered series hub published in the locale
-GET /api/v1/guides/sitemap
+GET /api/v1/guides/sitemap?section=&locale=&cursor=&limit=   one child sitemap's rows, paged
+GET /api/v1/guides/sitemap/summary                  published rows per kind and locale
 GET /api/v1/guides/series/{series_slug}?locale=
 GET /api/v1/guides/{kind}/{slug}?locale=
 POST /api/v1/guides/{kind}/{slug}/partner-links/{key}/click?locale=   count one partner-link click, 204
@@ -231,8 +232,16 @@ article and the sub-topic a series belongs to, and the row shows in a locale onl
 that hub article is published there.
 
 `GET /guides/sitemap` is the publication-aware enumeration `apps/web/app/sitemap.ts` consumes:
-one row per published, non-expired article × locale, capped at 1,000 and ordered newest first. The article response carries `published_locales` so the web layer can emit
-hreflang for the translations that actually exist.
+one row per published, non-expired article × locale, newest first, with the slug and the
+locale as tiebreakers so rows published in the same second page cleanly. `section` and
+`locale` narrow it to one child sitemap, `limit` (default and maximum 1,000) is the page and
+`next_cursor` the keyset to follow; a call without parameters still answers the newest
+thousand rows in one page, as it did before paging. Each row names every locale its article
+is published in (`locales`), which is what lets a one-language child carry the article's
+full hreflang set. `GET /guides/sitemap/summary` counts published rows per kind and locale
+for the sitemap index and the section hubs. The article response carries
+`published_locales` so the web layer can emit hreflang for the translations that actually
+exist.
 
 Admin (`content.manage` for writes):
 
@@ -650,10 +659,12 @@ The other, a `link` block that published tracked URLs undisclosed and uncounted,
 by the partner-link work: tracked ordinary URLs are refused on write and paid links have a
 block of their own (see "Partner links").
 
-Both sections share one 1,000-row sitemap budget, newest first, with no per-section cap
-(`SITEMAP_LIMIT`, `SITEMAP_GUIDE_ENTRY_LIMIT`). That is 2% of Google's per-file limit and
-about 200 articles across five locales; an evicted article stays indexable, just
-unadvertised. Worth splitting only if the combined count approaches ~800.
+The sitemap is an index over one child per section and locale (`docs/seo.md`), each child
+holding up to 5,000 (article, locale) rows read from `GET /guides/sitemap` in pages; the
+shared 1,000-row budget the two sections used to compete for is gone. `pack_cli lint` warns
+per child at 4,000 rows (`SITEMAP_WARN_ROWS`), naming the child, so the next split -- most
+likely `life-zh-TW`, which carries the bulk of the lifestyle section -- is planned before a
+row is evicted rather than after.
 
 ## Advertising
 

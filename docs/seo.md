@@ -53,15 +53,26 @@ may execute JavaScript, but that is not a substitute for verified public/private
 
 ## Runtime sitemap and robots
 
-`robots.ts` points to `/sitemap.xml`. The sitemap uses `dynamic = "force-dynamic"` and reads
-the six public visibility flags once at request time with `no-store`. This avoids freezing
-deployment-time flags or needing the API during `next build`.
+`robots.ts` points to `/sitemap.xml`, which is a **sitemap index** (`app/sitemap.xml/route.ts`)
+over eleven children served at `/sitemaps/sitemap/<id>.xml` by `app/sitemaps/sitemap.ts`
+through Next's `generateSitemaps`: `static` for the routes below, and `{travel,life}-{locale}`
+for each section's topic hubs and articles in that language. Next writes the children but
+never an index, and it refuses `app/sitemap.ts` beside `app/sitemap.xml/route.ts` as one route
+declared twice (`next build`: "Conflicting route and metadata at /sitemap.xml"), which is why
+the index is hand-written and the children live one folder down. The child ids are a
+constant, not a row count, because Next calls `generateSitemaps` during `next build` where
+there is no API. Every child and the index use `dynamic = "force-dynamic"`: the public
+visibility flags and the publication picture are read at request time with `no-store`, never
+frozen at build. The index lists a section child only while `GET /guides/sitemap/summary`
+reports a published row for it, and every child when the summary cannot be read -- an
+outage is not an empty section, and an empty child is a valid file.
 
-The static list is at most **385 URLs**: five locales times eleven base routes, 33
+The static child is at most **385 URLs**: five locales times eleven base routes, 33
 destination guides, and 33 services pages. Four base routes are conditional; all four
 closed/unavailable gives **365 URLs**. The three `/guides` hubs and `/life` carry no feature
 switch, so they are never among the conditional ones -- but they are listed per locale rather
-than per route, which is the second way the static count can fall short of 385.
+than per route (from the same summary), which is the second way the static count can fall
+short of 385.
 
 ### An article hub in a locale that has nothing published
 
@@ -79,11 +90,11 @@ content, and there is nothing on them to rank. So:
   Advertising an alternate that answers `noindex` would contradict this file's own output.
 
 **An API failure is not an empty section.** `loadGuideList` reports `available`, and
-`guideSitemapEntries` reports `complete`; the rules above apply only to a read that actually
-answered and was not truncated at the entry cap. A guides outage therefore leaves every hub
-exactly as indexable and as listed as it is today, rather than `noindex`-ing all five locales
-at once. A hub returns to the index and to the sitemap with the first article published in
-that locale, with no deployment.
+`guideSitemapSummary` reports `available` too; the rules above apply only to a read that
+actually answered. A guides outage therefore leaves every hub exactly as indexable and as
+listed as it is today, rather than `noindex`-ing all five locales at once. A hub returns to
+the index and to the sitemap with the first article published in that locale, with no
+deployment.
 
 ### Topic hubs
 
@@ -95,8 +106,8 @@ the section hubs and no `lastmod`. The hub's own `generateMetadata` applies the 
 `noindex, follow` when the locale has nothing under the topic, when the URL carries a
 `?cursor=`, or when the vocabulary could not be read (an outage must not claim a topic is
 gone -- an unknown topic, by contrast, is a 404). A listing's older `?topic=` view is the
-same collection and names the hub as its canonical. These rows live outside the 1,000-row
-article budget below; there are at most a few dozen per locale.
+same collection and names the hub as its canonical. A topic hub's row lives in the child of
+its own section and language, ahead of that child's articles.
 
 `/life` is listed at `priority 0.6` / `changeFrequency weekly`, matching `/guides/howto`
 rather than the dated `/guides/intel` feed: its articles are evergreen and are emitted at
@@ -104,18 +115,20 @@ rather than the dated `/guides/intel` feed: its articles are evergreen and are e
 false-freshness signal this file warns about below. This file has never carried a priority
 policy; that reasoning lives in a comment beside the route list. Static destination IDs come from `PUBLIC_DESTINATIONS`; no names or
 authenticated data are needed to enumerate them. All entries include language alternates.
-No sitemap index is needed.
 
-Published guide articles are appended after that static list, one entry per published
-translation, capped at `SITEMAP_GUIDE_ENTRY_LIMIT` (1000) so one large response cannot dominate
-the file. They are the one publication-aware section, enumerated through `GET /guides/sitemap`,
-and the only entries carrying `lastmod`: the timestamp of the revision readers currently see
-(`modified_at`), which moves on every republication, falling back to the first `published_at`
-when an older API omits it. An article's
-alternates name only the locales it is genuinely published in, with `x-default` only where
-English is one of them, and an expired intel notice leaves the sitemap while keeping its page.
-If the guides API fails or times out, the sitemap degrades to exactly its static entries rather
-than failing or emptying.
+Published guide articles live in the section children, one entry per published translation in
+the child of its section and language, enumerated through `GET /guides/sitemap?section=&locale=`
+in pages of `SITEMAP_PAGE_SIZE` (500) followed by `next_cursor`, up to `SITEMAP_CHILD_LIMIT`
+(5,000) rows per child -- a self-imposed bound far under Google's 50,000, with the content
+lint warning at 80% of it per child. They are the only entries carrying `lastmod`: the
+timestamp of the revision readers currently see (`modified_at`), which moves on every
+republication, falling back to the first `published_at` when an older API omits it. An
+article's alternates name only the locales it is genuinely published in (the API sends
+them on every row, so a one-language child can still point at the others), with `x-default`
+only where English is one of them, and an expired intel notice leaves the sitemap while
+keeping its page. If the guides API fails or times out, the static child is unaffected and
+each section child degrades to the pages it did read, or to an empty file, rather than the
+index failing or emptying.
 
 The four managed site documents stay outside the sitemap. `site-information-page.tsx` returns
 `noindex` until an administrator publishes that locale's document, so listing them now would
@@ -126,8 +139,9 @@ last moved.
 
 Tests verify each listed path resolves to an App Router page, language URLs agree, private
 routes are absent, and each feature can close/reopen without a rebuild. The browser suite
-additionally renders three synthetic articles into the XML Next actually emits, which is the only
-check that exercises `lastmod` serialisation and an article's partial hreflang set.
+additionally walks the index to its children and renders three synthetic articles into the
+XML Next actually emits, which is the only check that exercises `lastmod` serialisation, an
+article's partial hreflang set, and the index's child list.
 
 ## `/llms.txt`
 

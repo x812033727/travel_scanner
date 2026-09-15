@@ -238,9 +238,14 @@ export type GuideSitemapEntry = {
   locales: Locale[];
 };
 
-/** Google's per-file limit is 50,000 URLs; this is a far lower self-imposed bound that keeps
- *  one slow response from dominating the sitemap. The API applies the same cap. */
-export const SITEMAP_GUIDE_ENTRY_LIMIT = 1000;
+/**
+ * The most rows one child sitemap carries. Google's per-file limit is 50,000 URLs; this is a
+ * far lower self-imposed bound that keeps one runaway enumeration from dominating a child,
+ * read in pages of `SITEMAP_PAGE_SIZE` so a child never waits on more than a handful of
+ * calls. The lint in `apps/api/app/guides/pack_ingest.py` warns at 80% of it, per child.
+ */
+export const SITEMAP_CHILD_LIMIT = 5000;
+export const SITEMAP_PAGE_SIZE = 500;
 
 /** The slug grammar the API enforces on write (`SLUG_PATTERN`, apps/api/app/guides/schemas.py). */
 const SITEMAP_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -248,61 +253,107 @@ const SITEMAP_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 /**
  * The enumeration, plus whether it is the complete publication picture.
  *
- * `complete` is what lets the sitemap leave a section hub out of a language with nothing
- * published in it. A failed read returns no entries, and a response at the cap returns the
- * newest slice of them; in both cases "this language has no articles of this kind" is
- * unknowable, so the hubs stay listed for every language.
+ * `complete` is false after a failed page or a child that hit `SITEMAP_CHILD_LIMIT`. A
+ * failed first page returns no entries at all; a failed later page keeps the rows already
+ * read, because a child with most of its articles beats a child with none -- but either way
+ * the caller must not read an absence here as "not published".
  */
 export type GuideSitemapResult = { entries: GuideSitemapEntry[]; complete: boolean };
 
-/**
- * Publication-aware enumeration for `app/sitemap.ts`.
- *
- * Returns no entries on any failure. The sitemap must degrade to its static list rather than
- * disappear: an empty sitemap tells Google the site has no pages, which is far worse than
- * one missing section.
- */
-export async function guideSitemapEntries(): Promise<GuideSitemapResult> {
-  const row = await fetchJson("/guides/sitemap", defaultLocale);
-  const body = row as Record<string, unknown> | null;
-  if (!body || !Array.isArray(body.entries)) return { entries: [], complete: false };
+/** Which child's rows to enumerate: one section, one locale. Empty means every row. */
+export type GuideSitemapFilters = { section?: GuideSection; locale?: Locale };
 
+/**
+ * Publication-aware enumeration for `app/sitemap.ts`, following `next_cursor` until the API
+ * says the page was the last one.
+ *
+ * Returns no entries on a failed first page. The sitemap must degrade to its static child
+ * rather than disappear: an empty sitemap tells Google the site has no pages, which is far
+ * worse than one missing section.
+ */
+export async function guideSitemapEntries(filters: GuideSitemapFilters = {}): Promise<GuideSitemapResult> {
+  const rows: Array<Omit<GuideSitemapEntry, "locales"> & { apiLocales?: Locale[] }> = [];
   const byArticle = new Map<string, Locale[]>();
-  const rows: Array<Omit<GuideSitemapEntry, "locales">> = [];
-  for (const value of body.entries) {
-    const entry = value as Record<string, unknown> | null;
-    if (!entry || typeof entry.slug !== "string" || typeof entry.published_at !== "string") continue;
-    if (!isGuideKind(entry.kind) || !locales.includes(entry.locale as Locale)) continue;
-    // Neither of these is reachable through today's API, which validates the slug on write and
-    // types published_at as a datetime. They are here because either one costs the whole file
-    // rather than one URL. Next interpolates the URL into <loc> and into every alternate's href
-    // with no escaping (next/dist/build/webpack/loaders/metadata/resolve-route-data.js), so a
-    // slug holding `&` or `<` makes the document unparseable; and a date that does not parse
-    // becomes an Invalid Date, which is truthy and is a Date, so the same serialiser calls
-    // toISOString() on it and throws -- a 500 on /sitemap.xml rather than a missing entry.
-    if (!SITEMAP_SLUG.test(entry.slug)) continue;
-    if (!Number.isFinite(Date.parse(entry.published_at))) continue;
-    const locale = entry.locale as Locale;
-    const key = `${entry.kind}:${entry.slug}`;
-    byArticle.set(key, [...(byArticle.get(key) ?? []), locale]);
-    // Same guard as published_at, but a bad value here costs only the lastmod, never the URL.
-    const modified = typeof entry.modified_at === "string" && Number.isFinite(Date.parse(entry.modified_at))
-      ? { modified_at: entry.modified_at } : {};
-    rows.push({ kind: entry.kind, slug: entry.slug, locale, published_at: entry.published_at, ...modified });
-  }
+  let cursor: string | null = null;
+  let complete = true;
+  do {
+    const params = new URLSearchParams({ limit: String(SITEMAP_PAGE_SIZE) });
+    if (filters.section) params.set("section", filters.section);
+    if (filters.locale) params.set("locale", filters.locale);
+    if (cursor) params.set("cursor", cursor);
+    const row: unknown = await fetchJson(`/guides/sitemap?${params.toString()}`, defaultLocale);
+    const body = row as Record<string, unknown> | null;
+    if (!body || !Array.isArray(body.entries)) {
+      // A failed page: keep what earlier pages gave, and say the picture is not whole.
+      complete = false;
+      break;
+    }
+    for (const value of body.entries) {
+      const entry = value as Record<string, unknown> | null;
+      if (!entry || typeof entry.slug !== "string" || typeof entry.published_at !== "string") continue;
+      if (!isGuideKind(entry.kind) || !locales.includes(entry.locale as Locale)) continue;
+      // Neither of these is reachable through today's API, which validates the slug on write and
+      // types published_at as a datetime. They are here because either one costs the whole file
+      // rather than one URL. Next interpolates the URL into <loc> and into every alternate's href
+      // with no escaping (next/dist/build/webpack/loaders/metadata/resolve-route-data.js), so a
+      // slug holding `&` or `<` makes the document unparseable; and a date that does not parse
+      // becomes an Invalid Date, which is truthy and is a Date, so the same serialiser calls
+      // toISOString() on it and throws -- a 500 on the child rather than a missing entry.
+      if (!SITEMAP_SLUG.test(entry.slug)) continue;
+      if (!Number.isFinite(Date.parse(entry.published_at))) continue;
+      const locale = entry.locale as Locale;
+      const key = `${entry.kind}:${entry.slug}`;
+      byArticle.set(key, [...(byArticle.get(key) ?? []), locale]);
+      // Same guard as published_at, but a bad value here costs only the lastmod, never the URL.
+      const modified = typeof entry.modified_at === "string" && Number.isFinite(Date.parse(entry.modified_at))
+        ? { modified_at: entry.modified_at } : {};
+      // The API names every locale the article is published in; a child that holds one locale
+      // could not learn the others from its own rows. An older API sends none, and then the
+      // rows this read saw are the best picture there is.
+      const apiLocales = Array.isArray(entry.locales)
+        && entry.locales.every((item) => locales.includes(item as Locale)) && entry.locales.includes(locale)
+        ? { apiLocales: entry.locales as Locale[] } : {};
+      rows.push({ kind: entry.kind, slug: entry.slug, locale, published_at: entry.published_at, ...modified, ...apiLocales });
+    }
+    cursor = typeof body.next_cursor === "string" && body.next_cursor ? body.next_cursor : null;
+    if (rows.length >= SITEMAP_CHILD_LIMIT && cursor) {
+      // Rows beyond the cap stay unadvertised rather than unbounded; the lint warns long before.
+      complete = false;
+      break;
+    }
+  } while (cursor);
 
   return {
-    entries: rows.slice(0, SITEMAP_GUIDE_ENTRY_LIMIT).map((entry) => ({
+    entries: rows.slice(0, SITEMAP_CHILD_LIMIT).map(({ apiLocales, ...entry }) => ({
       ...entry,
       // Ordered by the site's own locale list rather than the API's row order, so two runs
       // cannot produce differently ordered alternates for the same article.
-      locales: locales.filter((value) => byArticle.get(`${entry.kind}:${entry.slug}`)?.includes(value)),
+      locales: locales.filter((value) => (apiLocales ?? byArticle.get(`${entry.kind}:${entry.slug}`))?.includes(value)),
     })),
-    // A response that filled the cap may have left rows behind, including the only article of
-    // some kind in some language. Dropped rows are always the oldest, and a hub is exactly as
-    // absent for one missing article as for a thousand.
-    complete: rows.length <= SITEMAP_GUIDE_ENTRY_LIMIT,
+    complete,
   };
+}
+
+/** Published rows per kind and locale, from `GET /guides/sitemap/summary`. */
+export type GuideSitemapCount = { kind: GuideKind; locale: Locale; count: number };
+export type GuideSitemapSummary = { counts: GuideSitemapCount[]; available: boolean };
+
+/**
+ * What the sitemap index and the section hubs decide from: which kinds publish in which
+ * locales. `available: false` is a failed read, and only a read that answered may leave a
+ * hub or a child out -- an outage must keep every hub listed in every language, which is the
+ * behaviour before this read existed.
+ */
+export async function guideSitemapSummary(): Promise<GuideSitemapSummary> {
+  const row = await fetchJson("/guides/sitemap/summary", defaultLocale);
+  const body = row as Record<string, unknown> | null;
+  if (!body || !Array.isArray(body.counts)) return { counts: [], available: false };
+  const counts = body.counts.filter((value): value is GuideSitemapCount => {
+    const entry = value as Record<string, unknown> | null;
+    return !!entry && isGuideKind(entry.kind) && locales.includes(entry.locale as Locale)
+      && Number.isInteger(entry.count) && Number(entry.count) >= 0;
+  });
+  return { counts, available: true };
 }
 
 export const getGuideList = cache(loadGuideList);

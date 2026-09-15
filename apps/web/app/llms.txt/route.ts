@@ -6,7 +6,7 @@ import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { HREFLANG_DEFAULT, localeUrl, siteUrl } from "@/lib/seo";
 import { featureEnabled } from "@/lib/site-features";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
-import { SITEMAP_ROUTES } from "../sitemap";
+import { SITEMAP_ROUTES } from "../sitemaps/sitemap";
 
 /**
  * `/llms.txt` -- the short, annotated map of what this site authoritatively covers.

@@ -82,22 +82,49 @@ for (const locale of locales) {
 }
 
 test("runtime sitemap exposes only public routes and stable localized alternate URLs", async ({ request }) => {
-  const response = await request.get("/sitemap.xml");
-  expect(response.status()).toBe(200);
-  // Next's metadata route handler may retain its explicit max-age=0/must-revalidate
-  // header even for force-dynamic routes. Both forms require a fresh response.
-  const cacheControl = response.headers()["cache-control"];
-  expect(cacheControl).toMatch(/no-store|no-cache|max-age=0/);
-  if (!/no-store|no-cache/.test(cacheControl)) expect(cacheControl).toContain("must-revalidate");
-  expect(cacheControl).not.toMatch(/(?:s-maxage|max-age)=[1-9]\d*/);
-  const xml = await response.text();
+  // `/sitemap.xml` is an index; the rows live in its children. Both must answer fresh: Next's
+  // metadata route handler may retain its explicit max-age=0/must-revalidate header even for
+  // force-dynamic routes, and the hand-written index declares the same.
+  const fresh = (cacheControl: string) => {
+    expect(cacheControl).toMatch(/no-store|no-cache|max-age=0/);
+    if (!/no-store|no-cache/.test(cacheControl)) expect(cacheControl).toContain("must-revalidate");
+    expect(cacheControl).not.toMatch(/(?:s-maxage|max-age)=[1-9]\d*/);
+  };
+  const index = await request.get("/sitemap.xml");
+  expect(index.status()).toBe(200);
+  fresh(index.headers()["cache-control"]);
+  const indexXml = await index.text();
+  expect(indexXml).toContain("<sitemapindex");
+  expect(indexXml).not.toContain("<urlset");
+  const children = [...indexXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
+  // The static child always; a section child only in the languages the fixture publishes it:
+  // intel in zh-TW and ja, how-to in en, lifestyle in zh-TW. Nothing in Korean or zh-CN.
+  expect([...children].sort()).toEqual([
+    "/sitemaps/sitemap/life-zh-TW.xml", "/sitemaps/sitemap/static.xml",
+    "/sitemaps/sitemap/travel-en.xml", "/sitemaps/sitemap/travel-ja.xml", "/sitemaps/sitemap/travel-zh-TW.xml",
+  ]);
+  const documents = await Promise.all(children.map(async (path) => {
+    const response = await request.get(path);
+    expect(response.status(), path).toBe(200);
+    fresh(response.headers()["cache-control"]);
+    const body = await response.text();
+    expect(body, path).toContain("<urlset");
+    return body;
+  }));
+  // The assertions below are about the whole index: the children joined read as one file.
+  const xml = documents.join("\n");
   // Seven unconditional base routes, 33 destination guides and 33 services pages, times five
   // locales, with the fixture's public switches all enabled; plus the four article hubs, which
   // are listed per language rather than per route -- /guides wherever either travel kind
   // publishes (zh-TW, ja, en), /guides/intel in zh-TW and ja, /guides/howto in en and /life in
   // zh-TW, which is seven of their twenty possible URLs; plus the four synthetic article
-  // translations the fixture API publishes (three travel, one lifestyle).
+  // translations the fixture API publishes (three travel, one lifestyle), each in the child of
+  // its own section and language.
   expect(xml.match(/<url>/g)).toHaveLength(5 * (7 + 33 + 33) + 7 + 4);
+  expect(documents[children.indexOf("/sitemaps/sitemap/static.xml")].match(/<url>/g)).toHaveLength(5 * (7 + 33 + 33) + 7);
+  expect(documents[children.indexOf("/sitemaps/sitemap/life-zh-TW.xml")]).toContain("/zh-TW/life/synthetic-ai-notes</loc>");
+  expect(documents[children.indexOf("/sitemaps/sitemap/travel-ja.xml")]).toContain("/ja/guides/intel/synthetic-fare-notice</loc>");
+  expect(documents[children.indexOf("/sitemaps/sitemap/travel-ja.xml")]).not.toContain("/zh-TW/guides/intel/synthetic-fare-notice</loc>");
   // Each hub in exactly the languages the fixture publishes its kinds in, and in no other:
   // intel in zh-TW and ja, how-to in en, lifestyle in zh-TW. Nothing at all in Korean, so
   // every Korean hub is an empty page -- absent here, and `noindex` on the page itself.

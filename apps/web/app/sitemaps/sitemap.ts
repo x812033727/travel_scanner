@@ -1,10 +1,12 @@
 import type { MetadataRoute } from "next";
 import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
 import { locales, type Locale } from "@/i18n/routing";
-import { guideHref, guideTopicHref, type GuideKind } from "@/lib/guides";
+import { guideHref, guideSection, guideTopicHref, type GuideKind, type GuideSection } from "@/lib/guides";
 import { HREFLANG_DEFAULT, languageAlternates, localeUrl } from "@/lib/seo";
 import { featureEnabled, type SiteFeature } from "@/lib/site-features";
-import { guideSitemapEntries, guideTopicSitemapEntries } from "@/lib/guides.server";
+import {
+  guideSitemapEntries, guideSitemapSummary, guideTopicSitemapEntries, type GuideSitemapSummary,
+} from "@/lib/guides.server";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { getCommunityState } from "@/lib/community/server";
@@ -96,6 +98,65 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
 ];
 
 /**
+ * The children of the sitemap index, by id. `static` carries every route below; each
+ * `{section}-{locale}` child carries that section's topic hubs and articles in that
+ * language. Fixed, not derived from a row count: Next calls `generateSitemaps` during
+ * `next build`, where there is no API to ask, so the list has to be knowable without one.
+ * A child with nothing published answers an empty file, and the index (`sitemap.xml/route.ts`)
+ * leaves it out while the summary can be read.
+ */
+export const SITEMAP_SECTIONS: readonly GuideSection[] = ["travel", "life"];
+export const SITEMAP_CHILDREN: readonly string[] = [
+  "static",
+  ...SITEMAP_SECTIONS.flatMap((section) => locales.map((locale) => `${section}-${locale}`)),
+];
+
+/**
+ * Where Next serves a child: `/sitemaps/sitemap/<id>.xml`. This module lives one folder down
+ * because Next refuses `app/sitemap.ts` next to `app/sitemap.xml/route.ts` as one route
+ * declared twice, index or not -- so the index keeps the address and the children take the
+ * folder's. The `.xml` matters too: `proxy.ts` skips paths with a dot, so next-intl never
+ * tries to locale-prefix a sitemap.
+ */
+export function sitemapChildPath(id: string): string {
+  return `/sitemaps/sitemap/${id}.xml`;
+}
+
+/** The section and locale a child id names, or null for `static` and anything unknown. */
+export function parseSitemapChild(id: string): { section: GuideSection; locale: Locale } | null {
+  for (const section of SITEMAP_SECTIONS) {
+    for (const locale of locales) {
+      if (id === `${section}-${locale}`) return { section, locale };
+    }
+  }
+  return null;
+}
+
+export async function generateSitemaps(): Promise<{ id: string }[]> {
+  return SITEMAP_CHILDREN.map((id) => ({ id }));
+}
+
+/**
+ * One child of the index. Next hands the id from the URL (a promise since Next 16); an id
+ * outside `SITEMAP_CHILDREN` never reaches here because Next answers 404 for it, and the
+ * empty array is only insurance against that changing.
+ */
+export default async function sitemap({ id }: { id: Promise<string> }): Promise<MetadataRoute.Sitemap> {
+  const child = await id;
+  if (child === "static") return staticSitemap();
+  const target = parseSitemapChild(child);
+  return target ? sectionSitemap(target) : [];
+}
+
+/** A hub advertises only the languages it is listed in, for the reason an article does:
+ *  hreflang pointing at a page this file just decided not to index is a contradiction, and
+ *  x-default belongs to English only while English has the section. */
+const hubAlternates = (available: readonly Locale[], path: string): Record<string, string> => ({
+  ...Object.fromEntries(available.map((locale) => [locale, localeUrl(locale, path)])),
+  ...(available.includes(HREFLANG_DEFAULT) ? { "x-default": localeUrl(HREFLANG_DEFAULT, path) } : {}),
+});
+
+/**
  * One entry per locale per route, each carrying the full alternate set. Google wants those
  * reciprocal and self-inclusive, and Next does not add the self link.
  *
@@ -104,36 +165,25 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
  * unavailable features are noindex and must not be advertised here. Core pages remain listed
  * if the settings service is unavailable. The canonical origin is still fixed at build time.
  */
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [visibility, guides, discovery, community, topics] = await Promise.all([
-    getSiteVisibility(), guideSitemapEntries(), getDiscoveryStatus(), getCommunityState(),
-    guideTopicSitemapEntries(),
+async function staticSitemap(): Promise<MetadataRoute.Sitemap> {
+  const [visibility, summary, discovery, community] = await Promise.all([
+    getSiteVisibility(), guideSitemapSummary(), getDiscoveryStatus(), getCommunityState(),
   ]);
   const communityOpen = community.status === "ready" && community.flags.enabled;
 
   /**
-   * Which languages each hub has something to show, from the enumeration this route already
-   * reads -- no second API call, and the same source the article entries below come from, so
-   * a hub can never be listed while every article under it is absent.
+   * Which languages each hub has something to show, from the same summary the index reads,
+   * so a hub can never be listed while every article under it is absent from its child.
    *
-   * Only an answer known to be complete may remove anything. A failed or capped read leaves
-   * every hub listed for every language, which is the behaviour before this filter existed.
+   * Only an answer that arrived may remove anything. A failed read leaves every hub listed
+   * for every language, which is the behaviour before this filter existed.
    */
-  const published = new Set(guides.entries.map((entry) => `${entry.kind}:${entry.locale}`));
   const hubLocales = (route: SitemapRoute): readonly Locale[] =>
-    !route.hub || !guides.complete
+    !route.hub || !summary.available
       ? locales
-      : locales.filter((locale) => route.hub!.some((kind) => published.has(`${kind}:${locale}`)));
+      : locales.filter((locale) => publishes(summary, route.hub!, locale));
 
-  /** A hub advertises only the languages it is listed in, for the reason an article does:
-   *  hreflang pointing at a page this file just decided not to index is a contradiction, and
-   *  x-default belongs to English only while English has the section. */
-  const hubAlternates = (available: readonly Locale[], path: string): Record<string, string> => ({
-    ...Object.fromEntries(available.map((locale) => [locale, localeUrl(locale, path)])),
-    ...(available.includes(HREFLANG_DEFAULT) ? { "x-default": localeUrl(HREFLANG_DEFAULT, path) } : {}),
-  });
-
-  const routes = SITEMAP_ROUTES.filter(
+  return SITEMAP_ROUTES.filter(
     (route) => (!route.feature || featureEnabled(visibility, route.feature))
       && (!route.discovery || discovery.enabled)
       && (!route.community || communityOpen),
@@ -153,27 +203,61 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       alternates: { languages },
     }));
   });
+}
+
+/** Whether any of `kinds` has a published row in `locale`, per the summary. */
+function publishes(summary: GuideSitemapSummary, kinds: readonly GuideKind[], locale: Locale): boolean {
+  return summary.counts.some((row) => kinds.includes(row.kind) && row.locale === locale && row.count > 0);
+}
+
+/**
+ * One section in one language: its topic hubs, then its articles.
+ *
+ * Two things here deliberately differ from the static child, and both follow from the
+ * section publishing one locale at a time:
+ *
+ * - `lastModified` is real on an article. It is false of a city guide and true here: the API
+ *   returns when the version readers see went live (falling back to the first publication
+ *   for an older API), and for a corrected notice that signal is the point.
+ * - The alternates carry only the locales an article is genuinely published in, never the
+ *   full five. Advertising a translation nobody wrote is the one thing per-locale
+ *   publication exists to prevent, and the article page's own hreflang agrees with this.
+ *   The API names those locales on every row, which is what lets a child that holds one
+ *   language still point at the others.
+ */
+async function sectionSitemap({ section, locale }: { section: GuideSection; locale: Locale }): Promise<MetadataRoute.Sitemap> {
+  const [topics, guides] = await Promise.all([
+    guideTopicSitemapEntries(),
+    guideSitemapEntries({ section, locale }),
+  ]);
 
   /**
-   * Guide articles, appended after the static routes so their exact order stays testable.
-   *
-   * Two things here deliberately differ from every route above, and both follow from the
-   * section publishing one locale at a time:
-   *
-   * - `lastModified` is real. The comment above is true of a city guide and false of an
-   *   article: the API returns when the version readers see went live (falling back to the
-   *   first publication for an older API), and for a corrected notice that signal is the point.
-   * - The alternates carry only the locales an article is genuinely published in, never the
-   *   full five. Advertising a translation nobody wrote is the one thing per-locale
-   *   publication exists to prevent, and the article page's own hreflang agrees with this.
+   * Topic hubs first. Like an article hub, a topic hub is listed in a language only while
+   * that language has something under the topic, and like the static routes it carries no
+   * `lastModified`: the API knows when an article changed, not when a collection did. Its
+   * alternates are the languages it is listed in, wherever those children live.
    */
-  // The API's unique keys on the article and its locale already rule a repeated row out. Keeping
-  // the guard here makes "no duplicate URL" a property of this file rather than an assumption
-  // about the query behind it -- and keeps the test of that name able to fail.
+  const topicHubs = topics
+    .filter((entry) => entry.section === section && entry.locales.includes(locale))
+    .map((entry) => {
+      const path = guideTopicHref(entry.section, entry.slug);
+      return {
+        url: localeUrl(locale, path),
+        changeFrequency: "weekly" as const,
+        priority: 0.6,
+        alternates: { languages: hubAlternates(entry.locales, path) },
+      };
+    });
+
+  // The API's unique keys on the article and its locale already rule a repeated row out, and
+  // the filters keep another section's or language's row out. Keeping both guards here makes
+  // "this child holds only its own URLs, once" a property of this file rather than an
+  // assumption about the query behind it -- and keeps the tests of that name able to fail.
   const listed = new Set<string>();
   const articles = guides.entries.flatMap((entry) => {
+    if (guideSection(entry.kind) !== section || entry.locale !== locale) return [];
     const path = guideHref(entry.kind, entry.slug);
-    const url = localeUrl(entry.locale, path);
+    const url = localeUrl(locale, path);
     if (listed.has(url)) return [];
     listed.add(url);
     return [{
@@ -185,28 +269,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(entry.modified_at ?? entry.published_at),
       alternates: {
         languages: {
-          ...Object.fromEntries(entry.locales.map((locale) => [locale, localeUrl(locale, path)])),
+          ...Object.fromEntries(entry.locales.map((item) => [item, localeUrl(item, path)])),
           ...(entry.locales.includes("en") ? { "x-default": localeUrl("en", path) } : {}),
         },
       },
     }];
   });
 
-  /**
-   * Topic hubs, between the static hubs and the articles. Like an article hub, a topic hub
-   * is listed in a language only while that language has something under the topic, and
-   * like the static routes it carries no `lastModified`: the API knows when an article
-   * changed, not when a collection did. Its alternates are the languages it is listed in.
-   */
-  const topicHubs = topics.flatMap((entry) => {
-    const path = guideTopicHref(entry.section, entry.slug);
-    return entry.locales.map((locale) => ({
-      url: localeUrl(locale, path),
-      changeFrequency: "weekly" as const,
-      priority: 0.6,
-      alternates: { languages: hubAlternates(entry.locales, path) },
-    }));
-  });
-
-  return [...routes, ...topicHubs, ...articles];
+  return [...topicHubs, ...articles];
 }

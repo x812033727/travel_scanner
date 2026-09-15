@@ -1,14 +1,14 @@
 ---
 id: 2026-09-14-guide-sitemap-capacity
 title: Paginate guide sitemap before the next large multilingual publication
-status: open
+status: done
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-15T15:42:45Z
 created_at: 2026-09-14T15:12:12Z
-completed_at:
-branch:
+completed_at: 2026-09-15T15:52:20Z
+branch: claude/travel-article-structure-search-sr9jiq
 depends_on: []
 scope:
   - apps/web/lib/guides.server.ts
@@ -28,14 +28,14 @@ The content-pack inventory already reported 836 potential article/locale rows af
 
 ## Definition of done
 
-- [ ] Every eligible published translation remains discoverable through a sitemap even when there are more than 1,000 guide entries.
-- [ ] Expired, unpublished and hidden content stays excluded; locale alternates and publication dates remain correct.
-- [ ] Enumeration remains bounded through pagination or sitemap partitioning and preserves existing failure behavior.
+- [x] Every eligible published translation remains discoverable through a sitemap even when there are more than 1,000 guide entries.
+- [x] Expired, unpublished and hidden content stays excluded; locale alternates and publication dates remain correct.
+- [x] Enumeration remains bounded through pagination or sitemap partitioning and preserves existing failure behavior.
 
 ## Steps
 
-- [ ] Confirm live eligible row counts and current API/frontend cap behavior before choosing a compatible pagination design.
-- [ ] Implement complete enumeration, test beyond the cap, and validate XML plus existing metadata behavior.
+- [x] Confirm live eligible row counts and current API/frontend cap behavior before choosing a compatible pagination design.
+- [x] Implement complete enumeration, test beyond the cap, and validate XML plus existing metadata behavior.
 
 ## How to verify
 
@@ -43,4 +43,5 @@ Add focused API and frontend regression coverage with more than 1,000 eligible t
 
 ## Notes
 
+- 2026-09-15：由 `2026-09-14-sitemap-split-before-1000-rows` 涵蓋（同一 PR）：sitemap index + 每專區×語系子檔、API 分頁；本票標 done 不另做。
 Filed from the news publication's scoped content lint, recorded in docs/ai-news-2026-ytd/validation.json. The warning counts repository content packs, which must remain distinct from actual publication state. No sitemap implementation changes are part of the news release.
