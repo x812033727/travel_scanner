@@ -16,7 +16,19 @@ vi.mock("@/lib/guide-series.json", async () => {
 });
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 vi.mock("@/lib/adsense.server", () => ({ getAdsenseSlot: async () => ({ enabled: false }) }));
-vi.mock("@/lib/guides.server", () => ({ getGuideArticle: mocks.article, getGuideList: mocks.list, getGuideTopics: async () => [], getGuideSeries: async () => null, hubIsEmpty: () => false }));
+// The life hub takes the Gemini hub's publication from the series registry (a `web-gemini`
+// row shows only while the hub is published), so the registry is stubbed as published here;
+// the article page still reuses the hub article's own state.
+vi.mock("@/lib/guides.server", async (original) => ({
+  ...await original<typeof import("@/lib/guides.server")>(),
+  getGuideArticle: mocks.article, getGuideList: mocks.list, getGuideTopics: async () => [], getGuideSeries: async () => null,
+  hubIsEmpty: () => false,
+  getSeriesIndex: async () => [
+    { slug: "claude-code", section: "life", hub: { kind: "life", slug: "claude-code-tutorials", title: "Claude Code 教學中心" }, source: "api-series", topic: "claude-code", entries: 96 },
+    { slug: "gemini", section: "life", hub: { kind: "life", slug: "gemini-guide", title: "Gemini 完整教學" }, source: "web-gemini", topic: "ai-chat", entries: null },
+  ],
+  guideSitemapSummary: async () => ({ counts: [], available: false }),
+}));
 const deep = catalogue.articles[50];
 function state(slug: string): GuideArticleState {
   const article = catalogue.articles.find(entry => entry.slug === slug);
