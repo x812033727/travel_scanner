@@ -54,6 +54,7 @@ from app.guides.schemas import (
     ArticleInline,
     CalloutBlock,
     CodeBlock,
+    FaqBlock,
     GuideDocument,
     ImageBlock,
     ImageCredit,
@@ -61,6 +62,7 @@ from app.guides.schemas import (
     LinkInline,
     PartnerLinkBlock,
     RichParagraphBlock,
+    SummaryBlock,
     TableBlock,
     section_of,
 )
@@ -170,6 +172,10 @@ def _body_length(document: GuideDocument) -> int:
                 parts.extend(row)
         elif isinstance(block, CalloutBlock):
             parts.extend((block.title, block.text))
+        elif isinstance(block, SummaryBlock):
+            parts.extend(block.items)
+        elif isinstance(block, FaqBlock):
+            parts.extend(f"{item.question}{item.answer}" for item in block.items)
     return sum(len(re.sub(r"\s+", "", part)) for part in parts)
 
 
@@ -221,6 +227,15 @@ def lint_document(document: GuideDocument, kind: Kind) -> list[Problem]:
         )
     if not any(isinstance(b, ImageBlock) and b.src.endswith(".svg") for b in document.blocks):
         problems.append(Problem("warning", "no_diagram", "no self-drawn SVG diagram in the body"))
+    if kind != "intel" and not any(isinstance(b, SummaryBlock) for b in document.blocks):
+        problems.append(
+            Problem(
+                "warning",
+                "no_summary",
+                "no summary block: the answer in two to five sentences, before the first "
+                "section, is what a reader skims and an answer engine quotes",
+            )
+        )
     if not any(
         (isinstance(b, LinkBlock) and b.url.startswith(SITE_ORIGIN))
         or (

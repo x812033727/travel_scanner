@@ -1670,3 +1670,76 @@ async def test_modified_at_moves_on_republication_while_published_at_stays(
         assert entry["published_at"] == after["document"]["published_at"]
         assert entry["modified_at"] == after["document"]["modified_at"]
         assert entry["modified_at"] > entry["published_at"]
+
+
+def summarised_document(**overrides):
+    """A document that opens with its answer and ends with the questions readers ask."""
+    doc = document()
+    doc["blocks"] = [
+        {"type": "summary", "items": ["Skyliner 最快。", "利木津巴士最省力。", "JR 最便宜。"]},
+        *doc["blocks"],
+        {
+            "type": "faq",
+            "items": [
+                {"question": "深夜還有車嗎？", "answer": "末班車後只剩計程車。"},
+                {"question": "行李多怎麼辦？", "answer": "選利木津巴士。"},
+            ],
+        },
+    ]
+    doc.update(overrides)
+    return doc
+
+
+async def test_a_summary_and_a_faq_round_trip_to_the_reader(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        created = await create_article(api, document=summarised_document())
+        assert (await publish(api, created["id"], "zh-TW", created["version"])).status_code == 200
+        body = (await api.get("/guides/howto/narita-to-tokyo", params={"locale": "zh-TW"})).json()
+        types = [block["type"] for block in body["document"]["blocks"]]
+        assert types[0] == "summary" and types[-1] == "faq"
+        assert body["document"]["blocks"][-1]["items"][0] == {
+            "question": "深夜還有車嗎？", "answer": "末班車後只剩計程車。",
+        }
+
+
+@pytest.mark.parametrize(
+    "blocks",
+    [
+        # Two summaries.
+        [
+            {"type": "summary", "items": ["一", "二"]},
+            {"type": "summary", "items": ["三", "四"]},
+            {"type": "paragraph", "text": "內文"},
+        ],
+        # A summary after the first heading is a recap, not an opening.
+        [
+            {"type": "heading", "text": "一節", "level": 2},
+            {"type": "summary", "items": ["一", "二"]},
+        ],
+        # Two FAQ sections.
+        [
+            {"type": "paragraph", "text": "內文"},
+            {"type": "faq", "items": [
+                {"question": "一？", "answer": "一。"}, {"question": "二？", "answer": "二。"},
+            ]},
+            {"type": "faq", "items": [
+                {"question": "三？", "answer": "三。"}, {"question": "四？", "answer": "四。"},
+            ]},
+        ],
+        # Too few items.
+        [{"type": "summary", "items": ["只有一句"]}, {"type": "paragraph", "text": "內文"}],
+    ],
+)
+async def test_a_document_carries_at_most_one_opening_summary_and_one_faq(
+    database, actor, blocks
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        response = await api.post(
+            "/admin/guides",
+            json={
+                "slug": "narita-to-tokyo", "kind": "howto", "destination_id": "tokyo",
+                "topics": ["transport"], "document": document() | {"blocks": blocks},
+                "locale": "zh-TW",
+            },
+        )
+        assert response.status_code == 422, response.text

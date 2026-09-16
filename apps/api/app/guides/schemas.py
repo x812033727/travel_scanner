@@ -307,6 +307,32 @@ class PartnerLinkBlock(StrictModel):
     note: PlainText = Field(default="", max_length=200)
 
 
+class SummaryBlock(StrictModel):
+    """The article's answer, in two to five sentences a reader (or an answer engine) can
+    take away without reading further. One per article, ahead of the first section: it is
+    the opening, not a recap. Written by the editor, never generated -- an article whose
+    summary the text does not support is worse than one without."""
+
+    type: Literal["summary"]
+    items: list[Annotated[NonemptyText, Field(max_length=300)]] = Field(
+        min_length=2, max_length=5
+    )
+
+
+class FaqItem(StrictModel):
+    question: NonemptyText = Field(max_length=200)
+    answer: NonemptyText = Field(max_length=1000)
+
+
+class FaqBlock(StrictModel):
+    """Questions readers actually ask, each with its answer, as a section of the article.
+    One per article. Google has shown FAQ rich results only for government and health
+    sites since 2023; the value here is the reader and the answer engines."""
+
+    type: Literal["faq"]
+    items: list[FaqItem] = Field(min_length=2, max_length=10)
+
+
 GuideBlock = Annotated[
     HeadingBlock
     | ParagraphBlock
@@ -318,7 +344,9 @@ GuideBlock = Annotated[
     | OfferBlock
     | PartnerLinkBlock
     | RichParagraphBlock
-    | CodeBlock,
+    | CodeBlock
+    | SummaryBlock
+    | FaqBlock,
     Field(discriminator="type"),
 ]
 
@@ -336,6 +364,23 @@ class GuideDocument(StrictModel):
     def limit_document_size(self) -> Self:
         if len(json.dumps(self.model_dump(mode="json"), ensure_ascii=False)) > 120_000:
             raise ValueError("document exceeds 120000 characters")
+        return self
+
+    @model_validator(mode="after")
+    def one_summary_one_faq(self) -> Self:
+        """At most one summary and one FAQ, and the summary before the first section: a
+        summary halfway down is a recap, and two of them contradict each other."""
+        if sum(isinstance(block, SummaryBlock) for block in self.blocks) > 1:
+            raise ValueError("an article carries at most one summary block")
+        if sum(isinstance(block, FaqBlock) for block in self.blocks) > 1:
+            raise ValueError("an article carries at most one faq block")
+        for block in self.blocks:
+            if isinstance(block, HeadingBlock):
+                break
+            if isinstance(block, SummaryBlock):
+                return self
+        if any(isinstance(block, SummaryBlock) for block in self.blocks):
+            raise ValueError("the summary block belongs before the first heading")
         return self
 
 
@@ -753,6 +798,9 @@ class PublicArticle(BaseModel):
     # The other names this article answers to in this locale (glossary, keyword list and
     # editor; not a series catalogue's keyword hints).
     aliases: list[str] = Field(default_factory=list)
+    # The glossary this article is an entry of, when it belongs to a catalogue-type series
+    # (``series_registry.json``): the web marks such an article up as a DefinedTerm in that set.
+    term_set: ArticleReference | None = None
 
 
 class SitemapEntry(BaseModel):

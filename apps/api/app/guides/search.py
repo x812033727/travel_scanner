@@ -138,6 +138,12 @@ def document_text(document: GuideDocument) -> DocumentText:
                 text.body.append(block.heading)
         elif block.type == "partner_link":
             text.body.extend(part for part in (block.label, block.note) if part)
+        elif block.type == "summary":
+            # The answer in brief ranks like a heading: it names what the article is about.
+            text.headings.extend(block.items)
+        elif block.type == "faq":
+            text.headings.extend(item.question for item in block.items)
+            text.body.extend(item.answer for item in block.items)
     text.body.extend(source.title for source in document.sources)
     return text
 

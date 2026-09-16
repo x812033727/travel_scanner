@@ -61,6 +61,10 @@ def good_document(**overrides: object) -> dict[str, object]:
         },
         "blocks": [
             {
+                "type": "summary",
+                "items": ["先註冊，用 Google 帳號最快。", "免費版夠日常用，付費版多額度與新模型。"],
+            },
+            {
                 "type": "paragraph",
                 "text": "先說結論：免費版每月 1000 次夠一般人用，早上 6:30 也能用。",
             },
@@ -120,6 +124,13 @@ def test_lint_document_accepts_a_complete_article_and_names_what_is_missing() ->
     )
     codes = {problem.code: problem.level for problem in lint_document(stripped, "life")}
     assert codes["too_few_headings"] == "error"
+    # The fixture keeps its summary, so the missing one is only reported without it -- and
+    # never for intel, whose notices are too short to summarise.
+    without = GuideDocument.model_validate(
+        good_document(blocks=[b for b in good_document()["blocks"] if b["type"] != "summary"])
+    )
+    assert {p.code for p in lint_document(without, "life")} >= {"no_summary"}
+    assert "no_summary" not in {p.code for p in lint_document(without, "intel")}
     assert codes["no_table"] == "error"
     assert codes["no_callout"] == "error"
     assert codes["no_hero"] == "error"

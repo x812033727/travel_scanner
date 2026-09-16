@@ -189,6 +189,21 @@ async def resolve_article_links(
     return [ref for ref, _ in (await published_documents(session, locale, targets)).values()]
 
 
+async def term_set_for(
+    session: AsyncSession, locale: Locale, slug: str, topic_slugs: list[str]
+) -> ArticleReference | None:
+    """The glossary hub an article is an entry of: the registry's catalogue-type series
+    whose topic the article carries, when that hub is published here. The hub itself is
+    not an entry of its own set."""
+    for entry in registry():
+        if entry.source != "catalogue" or entry.topic not in topic_slugs or entry.hub_slug == slug:
+            continue
+        visible = await published_documents(session, locale, {(entry.hub_kind, entry.hub_slug)})
+        if entry.hub_slug in visible:
+            return visible[entry.hub_slug][0]
+    return None
+
+
 async def public_series_index(session: AsyncSession, locale: Locale) -> SeriesIndex:
     """Every registered series whose hub is published in ``locale``, in registry order."""
     entries = registry()

@@ -53,7 +53,7 @@ from app.guides.schemas import (
     SitemapSummary,
     TopicOption,
 )
-from app.guides.series import article_navigation, resolve_article_links
+from app.guides.series import article_navigation, resolve_article_links, term_set_for
 from app.guides.taxonomy import parent_slugs, topic_ids_including_children, topic_option
 from app.i18n import LOCALES, Locale
 from app.models import AffiliateClick
@@ -354,6 +354,9 @@ async def public_article(
         related=[] if document is None else await links.related_articles(session, article, locale),
         backlinks=[] if document is None else await links.backlinks(session, article.id, locale),
         aliases=await search_aliases(session, article.id, locale),
+        term_set=await term_set_for(
+            session, locale, article.slug, [topic.slug for topic in topics]
+        ),
     )
 
 

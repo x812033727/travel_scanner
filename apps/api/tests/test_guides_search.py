@@ -420,8 +420,13 @@ def test_document_text_takes_prose_from_every_block_and_nothing_else() -> None:
         {
             **guides.rich_document(heading="先買車票"),
             "blocks": [
+                {"type": "summary", "items": ["摘要第一句。", "摘要第二句。"]},
                 *guides.rich_document(heading="先買車票")["blocks"],
                 {"type": "list", "items": ["第一項", "第二項"], "ordered": True},
+                {"type": "faq", "items": [
+                    {"question": "常見問題一？", "answer": "答案一。"},
+                    {"question": "常見問題二？", "answer": "答案二。"},
+                ]},
                 {"type": "link", "text": "官方網站", "url": "https://example.com/secret-path"},
                 {
                     "type": "rich_paragraph",
@@ -448,7 +453,11 @@ def test_document_text_takes_prose_from_every_block_and_nothing_else() -> None:
     )
     text = search.document_text(doc)
     assert text.title == doc.title and text.description == doc.description
-    assert text.headings == ["三種選擇"]
+    # The summary and the FAQ questions rank like headings; the answers like body text.
+    assert text.headings == [
+        "摘要第一句。", "摘要第二句。", "三種選擇", "常見問題一？", "常見問題二？",
+    ]
+    assert "答案一。" in text.body and "答案二。" in text.body
     joined = " ".join(text.body)
     for expected in (
         "Skyliner 停在成田機場月台",  # hero alt

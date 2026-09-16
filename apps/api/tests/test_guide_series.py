@@ -397,3 +397,45 @@ async def test_inline_affiliate_link_cannot_bypass_partner_disclosure(database, 
         )
         assert response.status_code == 422
         assert response.json()["code"] == "content_link_affiliate"
+
+
+async def test_a_glossary_entry_names_its_set_and_the_hub_and_others_do_not(database, actor):
+    """An article filed under a catalogue-type series' topic is an entry of that glossary
+    (the web marks it up as a DefinedTerm); the hub itself and an article under another
+    topic are not, and the set is named only while the hub is published here."""
+    async with guides.client(guides.make_app(database, actor)) as api:
+        hub = await guides.create_article(
+            api, "ai-terms-index", "life", destination_id=None, topics=["ai", "ai-terms"],
+            document=guides.document(title="AI 名詞總索引", description="所有名詞"),
+        )
+        entry = await guides.create_article(
+            api, "ai-term-machine-learning", "life", destination_id=None, topics=["ai-terms"],
+            document=guides.document(title="機器學習"),
+        )
+        other = await guides.create_article(
+            api, "ai-news-today", "life", destination_id=None, topics=["ai-news"],
+        )
+        for created in (hub, entry, other):
+            await guides.publish(api, created["id"], "zh-TW", created["version"])
+
+        read = lambda slug: api.get(f"/guides/life/{slug}", params={"locale": "zh-TW"})  # noqa: E731
+        assert (await read("ai-term-machine-learning")).json()["term_set"] == {
+            "kind": "life",
+            "slug": "ai-terms-index",
+            "title": "AI 名詞總索引",
+            "description": "所有名詞",
+        }
+        assert (await read("ai-terms-index")).json()["term_set"] is None
+        assert (await read("ai-news-today")).json()["term_set"] is None
+
+        detail = (await api.get(f"/admin/guides/{hub['id']}")).json()
+        withdrawn = await api.post(
+            f"/admin/guides/{hub['id']}/zh-TW/unpublish",
+            json={
+                "expected_version": detail["locales"][0]["version"],
+                "confirmed": True,
+                "reason": "下架",
+            },
+        )
+        assert withdrawn.status_code == 200, withdrawn.text
+        assert (await read("ai-term-machine-learning")).json()["term_set"] is None
