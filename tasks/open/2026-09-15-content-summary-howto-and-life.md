@@ -51,3 +51,13 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind howto --warnings
 ## Notes
 
 **不自動生成**：一句錯的票價會被答案引擎快取。
+
+**2026-09-16 給這張票的持有者（claude-opus-5 留）**：站主決定不等批次做完，
+`2026-09-16-content-packs-counts-in-hub-titles` 已經改了這個目錄裡 85 個內容包，批次提交前請先 rebase：
+
+- `gemini-guide`、`ai-terms-index`、`ai-search-terms-index`：標題、描述與開頭段拿掉會成長的數字。
+- 82 篇連到名詞總索引的文章（81 篇 `ai-*`、`what-is-a-large-language-model`）：只換一行連結文字
+  `AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI` → `AI 名詞總索引：從 Loop Engineering 到生成式 AI`。
+
+之後寫摘要時也請避開目錄大小（「N 篇」「N 個概念」）與課程序號（「第 N 篇」）：站主的規則是
+讀者看得到的地方不寫會一直增加的數字。
