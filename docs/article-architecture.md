@@ -57,7 +57,7 @@
 | --- | --- |
 | `guide-topic-hierarchy-api` | 0076：`parent_id`、`descriptions_json`、兩個新父主題與 23 個子主題種子；`?topic=` 含子主題；`?country=`；`GET /guides/destinations`；保留 slug |
 | `guide-retopic-cli` | `pack_cli retopic`：依前綴與系列成員提案，`--apply` 只改 `topics`。已對 `ai-term-`、`claude-code-`、`codex-`、`gemini-`、`ai-news-`、`ai-search-`、`wordpress-`、`woocommerce-`、`chatgpt-` 共 430 篇套用 |
-| `content-retopic-life-remaining-a-m` / `-n-z` / `content-retopic-finance` | 其餘無前綴文章由編輯審 dry-run 表後套用 |
+| `content-retopic-life-remaining-a-m` / `-n-z` / `content-retopic-finance` | 2026-09-16 已審 367 筆提案並套用；21 篇留在單層父主題（productivity／daily／software） |
 | `series-registry` | `series_registry.json` + `GET /guides/series` |
 | `topic-hub-pages-web` | 主題 hub 頁、chips 改連 hub、`?topic=` canonical、sitemap 主題列、`docs/seo.md` |
 | `guides-hub-destinations-by-country-web` | 旅遊 hub「依目的地瀏覽」 |
