@@ -9,6 +9,9 @@ the task board; ``guides-import`` (the deploy-time import) stays there.
         [--render-dir <dir>] [--catalogue <md>]
     uv run python -m app.guides.pack_cli retopic [--kind life] [--prefix p]... [--slug s]... \\
         [--apply]
+    uv run python -m app.guides.pack_cli relink [--kind k] [--prefix p]... [--slug s]... [--apply]
+    uv run python -m app.guides.pack_cli autolink [--kind k] [--prefix p]... [--slug s]... \\
+        [--limit 8] [--apply]
 """
 
 from __future__ import annotations
@@ -18,7 +21,7 @@ import sys
 from pathlib import Path
 from typing import cast
 
-from app.guides import retopic
+from app.guides import autolink, retopic
 from app.guides.content_pack import default_directory
 from app.guides.pack_ingest import (
     PackIngestError,
@@ -75,9 +78,43 @@ def main(argv: list[str] | None = None) -> int:
     )
     retopic_parser.add_argument("--dry-run", action="store_true", help="The default: print only")
 
+    for name, help_text in (
+        ("relink", "Turn raw site URLs to articles into article inlines"),
+        ("autolink", "Link the first mention of a glossary term or keyword to its article"),
+    ):
+        link_parser = commands.add_parser(name, help=help_text)
+        link_parser.add_argument("--kind", choices=("intel", "howto", "life"))
+        link_parser.add_argument("--prefix", action="append", default=[])
+        link_parser.add_argument("--slug", action="append")
+        link_parser.add_argument(
+            "--apply", action="store_true", help="Rewrite the blocks of the changed packs"
+        )
+        link_parser.add_argument("--dry-run", action="store_true", help="The default: print only")
+        if name == "autolink":
+            link_parser.add_argument(
+                "--limit", type=int, default=autolink.MAX_AUTOLINKS, help="Links per article"
+            )
+
     args = parser.parse_args(argv)
     content_dir = args.content_dir or default_directory()
     public_dir = args.public_dir or default_public_dir()
+
+    if args.command in {"relink", "autolink"}:
+        proposals = autolink.proposals(
+            content_dir,
+            cast(autolink.Mode, args.command),
+            kind=cast(Kind | None, args.kind),
+            prefixes=tuple(args.prefix),
+            slugs=set(args.slug) if args.slug else None,
+            limit=getattr(args, "limit", autolink.MAX_AUTOLINKS),
+        )
+        print(autolink.render_table(proposals))
+        if args.apply and not args.dry_run:
+            for path in autolink.apply(proposals, content_dir):
+                print(f"wrote {path}")
+        else:
+            print("dry run: nothing written")
+        return 0
 
     if args.command == "retopic":
         rows = retopic.proposals(

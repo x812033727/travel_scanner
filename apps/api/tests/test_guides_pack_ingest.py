@@ -83,10 +83,12 @@ def good_document(**overrides: object) -> dict[str, object]:
                 "height": 1,
                 "caption": "三種方式",
             },
+            # A site link that is not an article: an article link would be flagged as a
+            # raw URL (``raw_internal_url``), which the relink command turns into an inline.
             {
                 "type": "link",
-                "text": "AI 工具全景",
-                "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview",
+                "text": "生活分享",
+                "url": "https://mokaair.com/zh-TW/life",
             },
         ],
         "sources": [

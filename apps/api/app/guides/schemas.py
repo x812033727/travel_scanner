@@ -414,6 +414,17 @@ class ArticleCreate(StrictModel):
         return article_slug(value)
 
 
+# Another name a reader may type for an article (``ML``, ``機器學習``). Per locale, and few:
+# a dozen is a glossary entry's worth, more is a keyword list nobody reviews.
+Alias = Annotated[str, Field(min_length=1, max_length=120)]
+MAX_ALIASES_PER_LOCALE = 12
+# Editor-chosen further reading. Four is what the end of an article can show without the
+# grid reading as a listing.
+MAX_RELATED = 4
+AliasMap = dict[Locale, Annotated[list[Alias], Field(max_length=MAX_ALIASES_PER_LOCALE)]]
+RelatedSlugs = Annotated[list[str], Field(max_length=MAX_RELATED)]
+
+
 class ArticleUpdate(StrictModel):
     """Taxonomy only. The text of a translation is changed through its own draft, and
     whether the article is hidden through ``VisibilityWrite``: a classification save must
@@ -426,6 +437,19 @@ class ArticleUpdate(StrictModel):
     valid_until: date | None = None
     featured: bool = False
     display_order: int = Field(default=100, ge=0, le=100_000)
+    # ``None`` leaves the names alone; a locale listed here replaces that locale's
+    # editor-written names (``[]`` clears them). Names the seed wrote (glossary, keyword
+    # list, series catalogue) are not the editor's to lose and stay either way.
+    aliases: AliasMap | None = None
+    # ``None`` leaves the list alone; a list replaces it, in the order shown.
+    related: RelatedSlugs | None = None
+
+    @field_validator("related")
+    @classmethod
+    def normalize_related(cls, value: list[str] | None) -> list[str] | None:
+        if value is None:
+            return None
+        return list(dict.fromkeys(article_slug(slug) for slug in value if slug.strip()))
 
 
 class DraftWrite(StrictModel):
@@ -529,6 +553,10 @@ class ArticleSummary(BaseModel):
     version: int
     locales: list[LocaleState]
     updated_at: datetime
+    # The editor-written names per locale and the curated further reading, filled on the
+    # detail read (the list has no use for them and would pay a query per row).
+    aliases: dict[str, list[str]] = Field(default_factory=dict)
+    related: list[str] = Field(default_factory=list)
 
 
 class FacetCount(BaseModel):
@@ -628,6 +656,10 @@ class ArticleReference(BaseModel):
     kind: Kind
     slug: str
     title: str
+    # The published description, when the reference was built from a published revision:
+    # what a definition card shows under a term link. Optional so a reference built
+    # elsewhere (a catalogue row, an older API) still parses.
+    description: str | None = None
 
 
 class SeriesEntry(ArticleReference):
@@ -712,6 +744,15 @@ class PublicArticle(BaseModel):
     partner_links: list[PublicPartnerLink] = Field(default_factory=list)
     article_links: list[ArticleReference] = Field(default_factory=list)
     series: SeriesNavigation | None = None
+    # Further reading: the editor's picks first, then articles that share a sub-topic, a
+    # parent topic, a destination or a series group (``links.related_articles``). Ordinary
+    # links, so they stay under an expired notice where the partner buttons do not.
+    related: list[ArticleReference] = Field(default_factory=list)
+    # Published articles whose text links here, newest first.
+    backlinks: list[ArticleReference] = Field(default_factory=list)
+    # The other names this article answers to in this locale (glossary, keyword list and
+    # editor; not a series catalogue's keyword hints).
+    aliases: list[str] = Field(default_factory=list)
 
 
 class SitemapEntry(BaseModel):

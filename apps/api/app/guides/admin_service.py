@@ -21,7 +21,8 @@ from app.admin.schemas import AdminAuditView
 from app.affiliates.content_links import affiliate_marker, partner_link_problem
 from app.db import escape_like
 from app.destinations.catalog import destination_for_id
-from app.guides import search
+from app.guides import links, search
+from app.guides.alias_store import editor_aliases
 from app.guides.models import (
     GuideArticle,
     GuideArticleLocale,
@@ -334,8 +335,10 @@ async def _write_revision(
         )
         if changed is None:
             raise AppError(409, "guide_version_conflict", "這篇文章已被更新，請重新載入後再操作")
-        # The search index moves with the published pointer, in the same transaction: a
-        # reader can never find a withdrawn translation or miss a published one.
+        # The search index and the link graph move with the published pointer, in the
+        # same transaction: a reader can never find a withdrawn translation or miss a
+        # published one, and a "cited by" list never names a link nobody can follow.
+        unresolved_links: list[str] = []
         if action == "published":
             await search.index_locale(
                 session,
@@ -345,8 +348,12 @@ async def _write_revision(
                 version=new_version,
                 published_at=values["published_at"],
             )
+            unresolved_links = await links.materialize_inline(
+                session, article.id, row.locale, document
+            )
         elif action == "unpublished":
             await search.drop_locale(session, article.id, row.locale)
+            await links.drop_inline(session, article.id, row.locale)
         session.add(
             GuideArticleRevision(
                 id=revision_id,
@@ -382,6 +389,10 @@ async def _write_revision(
                     "document_sha256": document_hash(encoded),
                     "source_revision_id": str(source_revision_id) if source_revision_id else None,
                     "operator_confirmed": action in {"published", "unpublished"},
+                    # In-text links to an article that does not exist at all. Recorded,
+                    # not refused: the editor publishes on a date, and a dangling link
+                    # renders as plain text until its target exists.
+                    "unresolved_links": unresolved_links,
                 },
             )
         )
@@ -491,6 +502,11 @@ async def update_article(
         if any(row.published_version is not None for row in rows):
             raise AppError(409, "guide_kind_locked", "已發布的文章不能換專區，請先撤下所有語言版本")
     topics = await _resolve_topics(session, payload.topics, section)
+    related = (
+        await links.resolve_related(session, article, payload.related)
+        if payload.related is not None
+        else None
+    )
     before = {
         "kind": article.kind,
         "destination_id": article.destination_id,
@@ -520,6 +536,13 @@ async def update_article(
         if changed is None:
             raise AppError(409, "guide_version_conflict", "這篇文章已被更新，請重新載入後再操作")
         await _set_topics(session, article, topics)
+        if related is not None:
+            await links.set_related(session, article, related)
+        aliases = (
+            await search.replace_editor_aliases(session, article.id, payload.aliases)
+            if payload.aliases is not None
+            else None
+        )
         session.add(
             AdminAuditLog(
                 actor_user_id=actor.id,
@@ -540,6 +563,9 @@ async def update_article(
                         "display_order": payload.display_order,
                     },
                     "topics": [topic.slug for topic in topics],
+                    # Only what the payload set: ``None`` means the editor did not touch it.
+                    "related": [item.slug for item in related] if related is not None else None,
+                    "aliases": aliases,
                 },
             )
         )
@@ -900,7 +926,9 @@ async def article_detail(session: AsyncSession, article_id: UUID, locale: Locale
         .limit(20)
     )
     return ArticleDetail(
-        **_summary(article, rows, topics, locale).model_dump(),
+        **_summary(article, rows, topics, locale).model_dump(exclude={"aliases", "related"}),
+        aliases=(await editor_aliases(session, [article.id])).get(article.id, {}),
+        related=(await links.related_slugs(session, [article.id])).get(article.id, []),
         locale=locale,
         draft=GuideDocument.model_validate(row.draft_json),
         published=await _published_document(session, row),

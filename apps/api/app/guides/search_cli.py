@@ -31,11 +31,12 @@ async def reindex_guide_search(
 async def seed_guide_aliases(
     *,
     terms_file: Path | None = None,
+    keywords_file: Path | None = None,
     dry_run: bool = False,
     factory: async_sessionmaker[AsyncSession] | None = None,
 ) -> dict[str, Any]:
     try:
-        rows = aliases.seed_rows(terms_file)
+        rows = aliases.seed_rows(terms_file, keywords_file=keywords_file)
     except FileNotFoundError as error:
         raise SystemExit(f"Alias file not found: {error}") from error
     async with (factory or SessionFactory)() as session:

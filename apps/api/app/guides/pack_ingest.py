@@ -48,6 +48,7 @@ from PIL import Image
 from pydantic import ValidationError
 
 from app.guides import admin_service
+from app.guides.autolink import SITE_LINK
 from app.guides.content_pack import ArticlePack, ContentPackError, load_packs
 from app.guides.schemas import (
     ArticleInline,
@@ -57,6 +58,7 @@ from app.guides.schemas import (
     ImageBlock,
     ImageCredit,
     Kind,
+    LinkInline,
     PartnerLinkBlock,
     RichParagraphBlock,
     TableBlock,
@@ -171,6 +173,16 @@ def _body_length(document: GuideDocument) -> int:
     return sum(len(re.sub(r"\s+", "", part)) for part in parts)
 
 
+def _raw_site_urls(document: GuideDocument) -> Iterator[str]:
+    for block in document.blocks:
+        if isinstance(block, LinkBlock):
+            yield block.url
+        elif isinstance(block, RichParagraphBlock):
+            for node in block.inlines:
+                if isinstance(node, LinkInline):
+                    yield node.url
+
+
 def lint_document(document: GuideDocument, kind: Kind) -> list[Problem]:
     """The review standard in ``docs/travel-guides.md`` "Editorial rules", as far as a machine
     can read it. Errors are what a reviewer would send back; warnings are worth a look."""
@@ -222,6 +234,20 @@ def lint_document(document: GuideDocument, kind: Kind) -> list[Problem]:
                 "warning",
                 "no_internal_link",
                 f"no link block into this site ({SITE_ORIGIN}...): readers have nowhere to go next",
+            )
+        )
+    raw_urls = [
+        url
+        for url in _raw_site_urls(document)
+        if SITE_LINK.match(url) is not None
+    ]
+    if raw_urls:
+        problems.append(
+            Problem(
+                "warning",
+                "raw_internal_url",
+                f"{len(raw_urls)} article link(s) as raw URLs; run `pack_cli relink` so they "
+                "become article inlines that follow the target's publication",
             )
         )
     encoded = len(json.dumps(document.model_dump(mode="json"), ensure_ascii=False))
@@ -875,9 +901,14 @@ def ingest(
             report.written.append(target / file.name)
         content_dir.mkdir(parents=True, exist_ok=True)
         pack_path = content_dir / f"{slug}.json"
+        encoded = pack.model_dump(mode="json")
+        # The optional link fields are left out while empty, so a pack reads as it did
+        # before they existed and a later ``relink``/``autolink`` diff is the links alone.
+        for optional in ("aliases", "related"):
+            if not encoded.get(optional):
+                encoded.pop(optional, None)
         pack_path.write_text(
-            json.dumps(pack.model_dump(mode="json"), ensure_ascii=False, indent=2) + "\n",
-            encoding="utf-8",
+            json.dumps(encoded, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
         report.written.append(pack_path)
     return report

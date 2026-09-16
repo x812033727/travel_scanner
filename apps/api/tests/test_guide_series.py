@@ -74,6 +74,7 @@ async def test_the_series_index_lists_only_hubs_published_in_the_locale(database
                         "kind": "life",
                         "slug": "claude-code-tutorials",
                         "title": "成田機場到東京車站怎麼走",
+                        "description": "三種交通方式的時間與票價比較",
                     },
                     "source": "api-series",
                     "topic": "claude-code",

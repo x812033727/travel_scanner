@@ -164,7 +164,12 @@ async def published_documents(
         if revision is None:
             raise AppError(503, "guide_article_unavailable", "暫時無法取得這篇文章，請稍後再試")
         document = GuideDocument.model_validate(revision.document_json)
-        reference = ArticleReference(kind=article.kind, slug=article.slug, title=document.title)
+        reference = ArticleReference(
+            kind=article.kind,
+            slug=article.slug,
+            title=document.title,
+            description=document.description,
+        )
         found[article.slug] = (reference, document)
     return found
 
@@ -239,7 +244,7 @@ async def public_series(
         )
         entries.append(
             SeriesEntry(
-                **reference.model_dump(),
+                **reference.model_dump(exclude={"description"}),
                 number=item.number,
                 group=item.group,
                 level=item.level,

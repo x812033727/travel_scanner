@@ -11,6 +11,7 @@ ranking but names no best match, and the seed says so rather than picking one.
 from __future__ import annotations
 
 import json
+import re
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
@@ -82,6 +83,62 @@ def term_aliases(terms_file: Path | None = None, packs: Path | None = None) -> l
     return rows
 
 
+def default_keywords_file() -> Path:
+    """The suffix-keyword table, which also ships with the repository rather than the package."""
+    return Path(__file__).resolve().parents[4] / "docs" / "ai-suffix-keywords.md"
+
+
+# One data row of the keyword table: keyword, variants, what the reader wants to do, the
+# slug cell. The remaining columns (status, action, Search Console figures) are not read.
+_KEYWORD_ROW = re.compile(
+    r"^\|\s*(?P<keyword>[^|]*?)\s*\|\s*(?P<variants>[^|]*?)\s*\|[^|]*\|\s*(?P<slugs>[^|]*?)\s*\|"
+)
+_KEYWORD_SLUG = re.compile(r"(?P<fallback>備\s*)?`(?P<slug>[a-z0-9]+(?:-[a-z0-9]+)*)`")
+KEYWORD_LOCALES = ("zh-TW", "zh-CN")
+
+
+def keyword_aliases(
+    keywords_file: Path | None = None, packs: Path | None = None
+) -> list[SeedAlias]:
+    """The suffix-keyword table's rows: the keyword and its variants become names of the
+    row's primary landing article, or of its fallback (``備``) when the primary has no pack
+    yet -- the table's own rule. The keywords are Chinese search phrases, so they attach
+    only to the Chinese locales the pack is written in."""
+    path = keywords_file or default_keywords_file()
+    if not path.is_file():
+        if keywords_file is not None:
+            raise FileNotFoundError(path)
+        return []
+    directory = packs or default_directory()
+    rows: list[SeedAlias] = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        match = _KEYWORD_ROW.match(line)
+        if match is None:
+            continue
+        keyword = match.group("keyword")
+        if not keyword or keyword == "關鍵字" or set(keyword) <= {"-", " "}:
+            continue
+        primary = [
+            item.group("slug")
+            for item in _KEYWORD_SLUG.finditer(match.group("slugs"))
+            if not item.group("fallback") and (directory / f"{item.group('slug')}.json").is_file()
+        ]
+        fallback = [
+            item.group("slug")
+            for item in _KEYWORD_SLUG.finditer(match.group("slugs"))
+            if item.group("fallback") and (directory / f"{item.group('slug')}.json").is_file()
+        ]
+        slug = next(iter(primary), None) or next(iter(fallback), None)
+        if slug is None:
+            continue
+        names = [keyword, *(part.strip() for part in match.group("variants").split("、"))]
+        for locale in _pack_locales(directory, slug):
+            if locale not in KEYWORD_LOCALES:
+                continue
+            rows.extend(SeedAlias(slug, locale, name, "keyword") for name in names if name)
+    return rows
+
+
 def series_aliases() -> list[SeedAlias]:
     return [
         SeedAlias(lesson.slug, catalogue.locale, alias, "series")
@@ -91,12 +148,22 @@ def series_aliases() -> list[SeedAlias]:
     ]
 
 
-def seed_rows(terms_file: Path | None = None, packs: Path | None = None) -> list[SeedAlias]:
-    """Every alias the two sources name, deduplicated per (slug, locale, folded alias);
-    empty or over-long aliases are left out rather than refused at the database."""
+def seed_rows(
+    terms_file: Path | None = None,
+    packs: Path | None = None,
+    *,
+    keywords_file: Path | None = None,
+) -> list[SeedAlias]:
+    """Every alias the three sources name, deduplicated per (slug, locale, folded alias);
+    empty or over-long aliases are left out rather than refused at the database. The
+    glossary comes first, so a name both it and the keyword table give keeps ``term``."""
     seen: set[tuple[str, str, str]] = set()
     rows: list[SeedAlias] = []
-    for row in [*term_aliases(terms_file, packs), *series_aliases()]:
+    for row in [
+        *term_aliases(terms_file, packs),
+        *keyword_aliases(keywords_file, packs),
+        *series_aliases(),
+    ]:
         folded = row.alias_norm
         key = (row.slug, row.locale, folded)
         if not folded or len(row.alias) > MAX_ALIAS_LENGTH or key in seen:

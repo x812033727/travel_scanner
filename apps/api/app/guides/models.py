@@ -259,3 +259,39 @@ class GuideArticleAlias(Base):
     alias_norm: Mapped[str] = mapped_column(String(120))
     source: Mapped[str] = mapped_column(String(16))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class GuideArticleLink(Base):
+    """One article pointing at another: the graph the end-of-article reading list and the
+    "cited by" list are read from.
+
+    ``inline`` rows are written when a translation is published, from the ``article``
+    inlines of its published text, and deleted when it is withdrawn -- so they are per
+    locale, and a link a reader cannot follow is never in the table. ``related`` rows are
+    the editor's further-reading picks, on the identity rather than a translation, so
+    their ``locale`` is NULL and uniqueness is kept by the replace-all write that maintains
+    them (the same way topics are). Whether a target is *visible* is still decided at read
+    time through ``published_filters``: the row says the link exists, not that it may show.
+    """
+
+    __tablename__ = "guide_article_links"
+    __table_args__ = (
+        UniqueConstraint(
+            "source_article_id", "locale", "relation", "target_article_id",
+            name="uq_guide_article_link",
+        ),
+        CheckConstraint("relation IN ('inline', 'related')", name="ck_guide_article_link_relation"),
+        CheckConstraint(f"locale IS NULL OR {LOCALE_CHECK}", name="ck_guide_article_link_locale"),
+        Index("ix_guide_article_links_target", "target_article_id", "locale"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    source_article_id: Mapped[UUID] = mapped_column(
+        ForeignKey("guide_articles.id", ondelete="CASCADE"), index=True
+    )
+    target_article_id: Mapped[UUID] = mapped_column(
+        ForeignKey("guide_articles.id", ondelete="CASCADE")
+    )
+    locale: Mapped[str | None] = mapped_column(String(16), nullable=True)
+    relation: Mapped[str] = mapped_column(String(16))
+    position: Mapped[int] = mapped_column(Integer, default=0)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)

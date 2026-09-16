@@ -26,6 +26,7 @@ from app.db import Base, get_session
 from app.guides.models import (
     GuideArticle,
     GuideArticleAlias,
+    GuideArticleLink,
     GuideArticleLocale,
     GuideArticleRevision,
     GuideArticleTopic,
@@ -48,6 +49,8 @@ TABLES = [
     # Publication writes the search row and withdrawal deletes it (tests/test_guides_search.py).
     GuideSearchEntry.__table__,
     GuideArticleAlias.__table__,
+    # Publication writes the inline link rows (tests/test_guides_links.py).
+    GuideArticleLink.__table__,
     AdminAuditLog.__table__,
     # Partner-link clicks are counted here (tests/test_guide_partner_links.py).
     AffiliateClick.__table__,

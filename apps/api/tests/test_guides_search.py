@@ -547,7 +547,7 @@ def test_the_shipped_seed_is_well_formed() -> None:
     rows = aliases.seed_rows()
     assert rows, "the series catalogues alone should contribute aliases"
     assert all(row.alias_norm and len(row.alias) <= aliases.MAX_ALIAS_LENGTH for row in rows)
-    assert {row.source for row in rows} <= {"term", "series"}
+    assert {row.source for row in rows} <= {"term", "keyword", "series"}
     if aliases.default_terms_file().is_file():
         term_slugs = {row.slug for row in rows if row.source == "term"}
         assert term_slugs, "the glossary keys must map to shipped packs"

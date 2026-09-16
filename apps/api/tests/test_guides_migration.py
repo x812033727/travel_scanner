@@ -40,6 +40,7 @@ GUIDE_TABLES = (
     "guide_article_topics",
     "guide_search_entries",
     "guide_article_aliases",
+    "guide_article_links",
 )
 
 
@@ -681,6 +682,50 @@ def test_0077_creates_the_search_tables_once_and_its_rollback_drops_only_them(
             module.downgrade()
             names = set(sa.inspect(connection).get_table_names())
             assert not names & {"guide_search_entries", "guide_article_aliases"}
+            assert {"guide_articles", "guide_article_locales", "guide_article_revisions"} <= names
+            assert connection.scalar(sa.select(sa.func.count()).select_from(GuideArticle)) == 1
+    engine.dispose()
+
+
+@pytest.mark.parametrize("fresh_metadata", [False, True])
+def test_0078_creates_the_link_table_once_and_its_rollback_drops_only_it(
+    monkeypatch, fresh_metadata
+):
+    """0078 on both shapes: a database 0077 upgraded, and a fresh one where 0001 already
+    built the table from the model. The table exists afterwards with its constraints, a
+    re-run is a no-op, and the rollback drops exactly it while the article tables stay."""
+    from app.guides.models import GuideArticleLink
+
+    module = migration("0078_guide_article_links")
+    monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
+    engine = sa.create_engine("sqlite://")
+    with engine.begin() as connection:
+        tables = [
+            User.__table__,
+            GuideTopic.__table__,
+            GuideArticle.__table__,
+            GuideArticleLocale.__table__,
+            GuideArticleRevision.__table__,
+        ]
+        if fresh_metadata:
+            tables += [GuideArticleLink.__table__]
+        Base.metadata.create_all(connection, tables=tables)
+        plant_history(connection)
+        with Operations.context(MigrationContext.configure(connection)):
+            module.upgrade()
+            inspector = sa.inspect(connection)
+            assert "guide_article_links" in inspector.get_table_names()
+            unique = {c["name"] for c in inspector.get_unique_constraints("guide_article_links")}
+            assert "uq_guide_article_link" in unique
+            indexes = {i["name"] for i in inspector.get_indexes("guide_article_links")}
+            assert "ix_guide_article_links_target" in indexes
+            assert connection.scalar(sa.select(sa.func.count()).select_from(GuideArticleLink)) == 0
+
+            module.upgrade()  # a re-run finds the table and does nothing
+
+            module.downgrade()
+            names = set(sa.inspect(connection).get_table_names())
+            assert "guide_article_links" not in names
             assert {"guide_articles", "guide_article_locales", "guide_article_revisions"} <= names
             assert connection.scalar(sa.select(sa.func.count()).select_from(GuideArticle)) == 1
     engine.dispose()

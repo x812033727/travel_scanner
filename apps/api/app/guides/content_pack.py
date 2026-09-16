@@ -29,15 +29,18 @@ from pydantic import Field, ValidationError, field_validator
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.guides import admin_service
+from app.guides import admin_service, links
+from app.guides.alias_store import editor_aliases
 from app.guides.models import GuideArticle
 from app.guides.schemas import (
+    AliasMap,
     ArticleCreate,
     ArticleUpdate,
     DraftWrite,
     GuideDocument,
     Kind,
     PublishWrite,
+    RelatedSlugs,
     article_slug,
     section_of,
 )
@@ -66,6 +69,12 @@ class ArticlePack(StrictModel):
     valid_until: date | None = None
     featured: bool = False
     display_order: int = Field(default=100, ge=0, le=100_000)
+    # Other names the article answers to, per locale (the editor's; the glossary and the
+    # keyword table seed their own). Written to the database as the editor's names.
+    aliases: AliasMap = Field(default_factory=dict)
+    # Further reading the editor chose, by slug, in the order shown. Resolved after every
+    # pack of the run is written, so a pick may name a pack later in the same import.
+    related: RelatedSlugs = Field(default_factory=list)
     # Insertion order matters: the first locale is the one the article is created with.
     locales: dict[Locale, GuideDocument] = Field(min_length=1)
 
@@ -73,6 +82,15 @@ class ArticlePack(StrictModel):
     @classmethod
     def normalize_slug(cls, value: str) -> str:
         return article_slug(value)
+
+    @field_validator("related")
+    @classmethod
+    def normalize_related(cls, value: list[str]) -> list[str]:
+        return list(dict.fromkeys(article_slug(slug) for slug in value if slug.strip()))
+
+    def taxonomy_only(self) -> bool:
+        """Whether the pack sets anything ``ArticleCreate`` cannot carry."""
+        return self.featured or self.display_order != 100 or bool(self.aliases)
 
 
 def default_directory() -> Path:
@@ -147,10 +165,28 @@ def _key(slug: str, locale: str) -> str:
     return f"{slug}:{locale}"
 
 
+def _pack_aliases(pack: ArticlePack) -> dict[str, list[str]]:
+    """The editor names the pack sets, for every locale it is written in: a locale the
+    field leaves out is a locale whose editor names the import clears."""
+    return {
+        locale: [" ".join(name.split()) for name in pack.aliases.get(locale, [])]
+        for locale in pack.locales
+    }
+
+
 def _same_taxonomy(
-    article: GuideArticle, pack: ArticlePack, destination: str | None, topics: list[str]
+    article: GuideArticle,
+    pack: ArticlePack,
+    destination: str | None,
+    topics: list[str],
+    aliases: dict[str, list[str]],
+    related: list[str],
 ) -> bool:
     wanted = {slug.strip().casefold() for slug in pack.topics if slug.strip()}
+    same_aliases = all(
+        sorted(names) == sorted(aliases.get(locale, []))
+        for locale, names in _pack_aliases(pack).items()
+    )
     return (
         article.kind == pack.kind
         and article.destination_id == destination
@@ -158,6 +194,8 @@ def _same_taxonomy(
         and article.featured == pack.featured
         and article.display_order == pack.display_order
         and set(topics) == wanted
+        and same_aliases
+        and related == list(pack.related)
     )
 
 
@@ -201,6 +239,8 @@ async def plan_import(
         topics = [
             row.slug for row in (await _topics_for(session, [article.id])).get(article.id, [])
         ]
+        aliases = (await editor_aliases(session, [article.id])).get(article.id, {})
+        related = (await links.related_slugs(session, [article.id])).get(article.id, [])
         rows = {
             cast(Locale, row.locale): row
             for row in (await _locale_rows(session, [article.id])).get(article.id, [])
@@ -234,7 +274,7 @@ async def plan_import(
                 pack=pack,
                 article_id=article.id,
                 taxonomy="unchanged"
-                if _same_taxonomy(article, pack, destination, topics)
+                if _same_taxonomy(article, pack, destination, topics, aliases, related)
                 else "update",
                 locales=locale_plans,
             )
@@ -262,7 +302,9 @@ class ImportReport:
         }
 
 
-def _taxonomy_payload(pack: ArticlePack, expected_version: int) -> ArticleUpdate:
+def _taxonomy_payload(
+    pack: ArticlePack, expected_version: int, *, related: list[str] | None = None
+) -> ArticleUpdate:
     return ArticleUpdate(
         expected_version=expected_version,
         kind=pack.kind,
@@ -271,6 +313,8 @@ def _taxonomy_payload(pack: ArticlePack, expected_version: int) -> ArticleUpdate
         valid_until=pack.valid_until,
         featured=pack.featured,
         display_order=pack.display_order,
+        aliases=cast(dict[Locale, list[str]], _pack_aliases(pack)),
+        related=related,
     )
 
 
@@ -301,8 +345,8 @@ async def _apply_article(
         )
         article_id = detail.id
         report.created.append(_key(pack.slug, first.locale))
-        # ``ArticleCreate`` carries neither flag, so the defaults are corrected right after.
-        if pack.featured or pack.display_order != 100:
+        # ``ArticleCreate`` carries neither flag nor the names, so they are set right after.
+        if pack.taxonomy_only():
             await admin_service.update_article(
                 session, actor, article_id, _taxonomy_payload(pack, detail.version), first.locale
             )
@@ -374,4 +418,35 @@ async def apply_import(
         except AppError as error:
             report.failed = f"{entry.pack.slug}: {error.code}: {error.detail}"
             break
+    if report.failed is None:
+        # The editor's picks last, once every pack of the run exists: a pick may name an
+        # article created a few packs later, and a pick that still names nothing is the
+        # one refusal the run ends on.
+        try:
+            await _apply_related(session, actor, plan, report)
+        except AppError as error:
+            report.failed = f"related: {error.code}: {error.detail}"
     return report
+
+
+async def _apply_related(
+    session: AsyncSession, actor: User, plan: ImportPlan, report: ImportReport
+) -> None:
+    for entry in plan.articles:
+        article = await session.scalar(
+            select(GuideArticle).where(GuideArticle.slug == entry.pack.slug)
+        )
+        if article is None:
+            continue
+        current = (await links.related_slugs(session, [article.id])).get(article.id, [])
+        if current == list(entry.pack.related):
+            continue
+        await admin_service.update_article(
+            session,
+            actor,
+            article.id,
+            _taxonomy_payload(entry.pack, article.version, related=list(entry.pack.related)),
+            entry.locales[0].locale,
+        )
+        if entry.pack.slug not in report.taxonomy_updated:
+            report.taxonomy_updated.append(entry.pack.slug)

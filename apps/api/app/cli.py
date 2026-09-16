@@ -35,6 +35,7 @@ from app.foods.service import seed_food_catalog
 from app.foods.trend_import import DEFAULT_FILE as TREND_MERCHANTS_FILE
 from app.foods.trend_import import backfill_english_names, import_trend_merchants
 from app.guides.content_pack import ContentPackError, apply_import, load_packs, plan_import
+from app.guides.links_cli import check_guide_links, rebuild_guide_links
 from app.guides.search_cli import reindex_guide_search, seed_guide_aliases
 from app.holidays.refresh import HolidaySourceError
 from app.holidays.refresh import refresh as refresh_holidays
@@ -950,8 +951,30 @@ def main() -> None:
         "--terms-file", help="Path to aliases.json (defaults to docs/ai-terms-series/aliases.json)"
     )
     guides_aliases.add_argument(
+        "--keywords-file",
+        help="Path to the suffix-keyword table (defaults to docs/ai-suffix-keywords.md)",
+    )
+    guides_aliases.add_argument(
         "--dry-run", action="store_true", help="Report what would be inserted without writing"
     )
+    guides_links_rebuild = subparsers.add_parser(
+        "guides-links-rebuild",
+        help=(
+            "Rebuild the article link graph from the published revisions. Run once after "
+            "migration 0078 and after any bulk publish that bypassed the admin write path."
+        ),
+    )
+    guides_links_rebuild.add_argument(
+        "--dry-run", action="store_true", help="Report what would change without writing"
+    )
+    guides_links_check = subparsers.add_parser(
+        "guides-links-check",
+        help=(
+            "List in-text links of published articles that point at a missing, wrong-kind, "
+            "unpublished, hidden or expired article, and raw site URLs; exit 1 when any"
+        ),
+    )
+    guides_links_check.add_argument("--locale", help="Only this locale")
     guide_review = subparsers.add_parser(
         "review-pending-guides",
         help=(
@@ -1053,10 +1076,19 @@ def main() -> None:
         outcome = asyncio.run(
             seed_guide_aliases(
                 terms_file=Path(args.terms_file) if args.terms_file else None,
+                keywords_file=Path(args.keywords_file) if args.keywords_file else None,
                 dry_run=args.dry_run,
             )
         )
         print(json.dumps(outcome, ensure_ascii=False, indent=2))
+    elif args.command == "guides-links-rebuild":
+        outcome = asyncio.run(rebuild_guide_links(dry_run=args.dry_run))
+        print(json.dumps(outcome, ensure_ascii=False, indent=2))
+    elif args.command == "guides-links-check":
+        outcome = asyncio.run(check_guide_links(locale=args.locale))
+        print(json.dumps(outcome, ensure_ascii=False, indent=2))
+        if outcome.get("findings"):
+            raise SystemExit(1)
     elif args.command == "create-admin":
         asyncio.run(create_admin(args.email, _read_password(args.password_stdin)))
     elif args.command == "verify-airline-crawlers":

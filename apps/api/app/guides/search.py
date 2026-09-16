@@ -18,8 +18,9 @@ from __future__ import annotations
 import operator
 import re
 import unicodedata
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from functools import reduce
 from typing import Any, cast
 from uuid import UUID
@@ -231,6 +232,53 @@ async def drop_locale(session: AsyncSession, article_id: UUID, locale: str) -> N
             GuideSearchEntry.article_id == article_id, GuideSearchEntry.locale == locale
         )
     )
+
+
+async def replace_editor_aliases(
+    session: AsyncSession, article_id: UUID, aliases: Mapping[Any, Sequence[str]]
+) -> dict[str, list[str]]:
+    """Make each listed locale's editor-written names exactly ``aliases[locale]``.
+
+    Locales not listed are left alone. A name the seed already wrote for the article
+    (glossary, keyword list, series) is not duplicated under the editor's source -- it is
+    already there and already ranks -- and the index row is refreshed so the search sees
+    the change without a republication. Not committed here.
+    """
+    stored: dict[str, list[str]] = {}
+    for locale, names in aliases.items():
+        await session.execute(
+            delete(GuideArticleAlias).where(
+                GuideArticleAlias.article_id == article_id,
+                GuideArticleAlias.locale == locale,
+                GuideArticleAlias.source == "editor",
+            )
+        )
+        await session.flush()
+        present = set(await article_aliases(session, article_id, locale))
+        kept: list[str] = []
+        stamp = datetime.now(UTC)
+        for offset, name in enumerate(names):
+            cleaned = " ".join(name.split())
+            folded = normalize(cleaned)
+            if not cleaned or not folded or folded in present:
+                continue
+            present.add(folded)
+            kept.append(cleaned)
+            session.add(
+                GuideArticleAlias(
+                    article_id=article_id,
+                    locale=locale,
+                    alias=cleaned,
+                    alias_norm=folded,
+                    source="editor",
+                    # Insertion order is the editor's order; the read sorts by this stamp.
+                    created_at=stamp + timedelta(microseconds=offset),
+                )
+            )
+        stored[locale] = kept
+        await session.flush()
+        await refresh_aliases(session, article_id, locale)
+    return stored
 
 
 async def refresh_aliases(session: AsyncSession, article_id: UUID, locale: str) -> bool:

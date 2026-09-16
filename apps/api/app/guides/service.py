@@ -23,6 +23,8 @@ from app.affiliates.content_links import PARTNERS_BY_CODE, link_key, partner_lin
 from app.affiliates.sub_id import coarse_sub_id
 from app.destinations.catalog import DESTINATIONS, DestinationProfile, destination_for_id
 from app.destinations.localized import city_name, country_label
+from app.guides import links
+from app.guides.alias_store import public_aliases as search_aliases
 from app.guides.models import (
     GuideArticle,
     GuideArticleLocale,
@@ -349,6 +351,9 @@ async def public_article(
         if document is None
         else await resolve_article_links(session, locale, document),
         series=None if expired else await article_navigation(session, kind, slug, locale),
+        related=[] if document is None else await links.related_articles(session, article, locale),
+        backlinks=[] if document is None else await links.backlinks(session, article.id, locale),
+        aliases=await search_aliases(session, article.id, locale),
     )
 
 
