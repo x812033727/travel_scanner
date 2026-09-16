@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-plan-articles-batch-7
 title: 規劃第七批旅遊文章：喀比優先，再補仙台、大邱、清萊、大叻、順化、全州
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-16T16:31:57Z
 created_at: 2026-09-14T13:37:34Z
-completed_at:
+completed_at: 2026-09-16T23:07:35Z
 branch: claude/new-travel-guide-k2q5h3
 depends_on: []
 scope:
