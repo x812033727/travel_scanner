@@ -87,6 +87,13 @@ LIFE_SEED_TOPICS: tuple[tuple[str, Labels], ...] = (
         "marketing",
         ("Marketing & SEO", "マーケティング・SEO", "마케팅·SEO", "行銷與 SEO", "营销与 SEO"),
     ),
+    # 0079 seeds this one, as the parent for news that is neither AI nor a 3C device:
+    # chips, telecoms, platforms and the regulation of them. ``gadgets`` and ``software``
+    # stay single-level, so there was nowhere else for it to hang.
+    (
+        "tech",
+        ("Tech & industry", "テクノロジー・業界", "테크·산업", "科技與產業", "科技与产业"),
+    ),
 )
 
 # slug, parent slug, (en, ja, ko, zh-TW, zh-CN). Seeded by 0076 in this order; the same
@@ -229,6 +236,25 @@ LIFE_SEED_SUBTOPICS: tuple[tuple[str, str, Labels], ...] = (
         "finance",
         ("Investing basics", "投資の基本", "투자 입문", "投資入門", "投资入门"),
     ),
+    # 0079 seeds these two. ``crypto`` hangs under ``finance`` rather than standing alone:
+    # it is the same YMYL subject under the same review standard, and ``pack_ingest``'s
+    # ``finance_no_disclaimer`` keys on it for exactly that reason.
+    (
+        "tech-news",
+        "tech",
+        ("Tech news", "テックニュース", "테크 뉴스", "科技新聞", "科技新闻"),
+    ),
+    (
+        "crypto",
+        "finance",
+        (
+            "Crypto & blockchain",
+            "暗号資産・ブロックチェーン",
+            "가상자산·블록체인",
+            "加密貨幣與區塊鏈",
+            "加密货币与区块链",
+        ),
+    ),
 )
 
 # The lead paragraph of a topic's hub page, per locale. Seeded by 0076 only where a topic
@@ -295,6 +321,21 @@ LIFE_TOPIC_DESCRIPTIONS: dict[str, dict[str, str]] = {
     "credit": {"zh-TW": "信用卡怎麼選、聯徵信用分數與分期的取捨。"},
     "tax-insurance": {"zh-TW": "所得稅、勞健保、勞退與保險的制度說明。"},
     "investing": {"zh-TW": "投資的觀念、台股與海外投資的開戶與流程，不含任何買賣建議。"},
+    "tech": {
+        "zh-TW": "晶片、裝置、平台與電信的產業消息：只記錄查證過的事實與日期，不做推薦。",
+        "en": (
+            "Chips, devices, platforms and telecoms: verified facts and dates, "
+            "never a recommendation."
+        ),
+    },
+    "tech-news": {
+        "zh-TW": "非 AI 的科技與產業消息：發布、法規、資安事件與服務變動，附官方來源與查核日。"
+    },
+    "crypto": {
+        "zh-TW": (
+            "加密貨幣與區塊鏈的法規、技術與產業動態。只講制度與運作方式，不寫價格、漲跌或買賣時機。"
+        )
+    },
 }
 
 

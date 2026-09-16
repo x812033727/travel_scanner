@@ -36,7 +36,7 @@ import tempfile
 import time
 import urllib.error
 import urllib.request
-from collections.abc import Callable, Iterable, Iterator
+from collections.abc import Callable, Iterable, Iterator, Sequence
 from dataclasses import dataclass, field
 from glob import glob
 from pathlib import Path
@@ -89,6 +89,39 @@ DOCUMENT_JSON_LIMIT = 110_000
 MIN_LABEL_PX = 15
 DIAGRAM_VIEWBOX = "0 0 1600 900"
 SITE_ORIGIN = "https://mokaair.com/"
+#: The disclaimer template in ``docs/life-finance-series-brief.md`` and the crypto brief must
+#: contain one of these verbatim. ``lint_all`` lints one locale document at a time and is not
+#: told which locale it is looking at, so any of the five satisfies the rule; a Chinese-only
+#: marker would turn the four translations of every multilingual finance article into errors.
+#: Compared casefolded, so an English sentence may open "This is not investment advice".
+FINANCE_DISCLAIMER_MARKERS = (
+    "不是投資建議",  # zh-TW
+    "不是投资建议",  # zh-CN
+    "not investment advice",  # en
+    "投資助言ではありません",  # ja
+    "투자 조언이 아닙니다",  # ko
+)
+_CASEFOLDED_MARKERS = tuple(marker.casefold() for marker in FINANCE_DISCLAIMER_MARKERS)
+#: The investment-shaped topics, which are not the whole money vertical. ``finance`` is what
+#: the finance series carries, ``investing`` its investment children, and ``crypto`` matters on
+#: its own because ``retopic`` only supplies a missing parent for the two post-split ones
+#: (``website``, ``marketing``) -- ``finance`` is one of the original eight, so a ``crypto-*``
+#: article is never given it automatically and would otherwise escape the rule.
+#:
+#: ``banking``, ``credit``, ``tax-insurance`` and ``finance-basics`` are deliberately absent.
+#: Four shipped articles carry one of them and no disclaimer -- registering a company, a Wise
+#: transfer checklist, YouTube payment tax, a household inventory spreadsheet -- and none is
+#: about investing. Demanding 「不是投資建議」 there is the false positive the ticket's own notes
+#: warn about: it would teach writers that the callout is boilerplate to paste, which is how a
+#: disclaimer stops being read.
+FINANCE_TOPICS = frozenset({"finance", "investing", "crypto"})
+#: Absolute promises a finance article must not make in its own voice. A *warning*, not an
+#: error: ``investment-scam-red-flags`` quotes these very phrases as the marks of a scam, and
+#: an error there would either block a legitimate article or teach the next writer to spell
+#: its way around the linter.
+FINANCE_CLAIM_WORDS = re.compile(
+    r"保證(獲利|賺|不賠)|穩賺|包賺|必漲|必跌|無風險|報明牌|飆股|老師帶單|躺著賺"
+)
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 MOKAAIR_CREDIT = ImageCredit(author="Mokaair", license="© Mokaair")
 #: Wikimedia's robot policy wants ``name/version (contact)``; without an address it answers 403
@@ -152,9 +185,10 @@ def _document_text(document: GuideDocument) -> str:
     return "\n".join(part for part in parts if part)
 
 
-def _body_length(document: GuideDocument) -> int:
-    """Characters of running text -- what "an article runs about 1,800–3,000 characters" counts:
-    paragraphs, lists, tables and callouts, not the title, captions or link labels."""
+def _body_parts(document: GuideDocument) -> list[str]:
+    """The running text, block by block: paragraphs, lists, tables and callouts, not the title,
+    captions or link labels. ``_body_length`` counts it and ``finance_claim_language`` reads it,
+    so a block type added to one is never missing from the other."""
     parts: list[str] = []
     for block in document.blocks:
         if isinstance(block, ParagraphBlock):
@@ -173,7 +207,12 @@ def _body_length(document: GuideDocument) -> int:
             parts.extend(block.items)
         elif isinstance(block, FaqBlock):
             parts.extend(f"{item.question}{item.answer}" for item in block.items)
-    return sum(len(re.sub(r"\s+", "", part)) for part in parts)
+    return parts
+
+
+def _body_length(document: GuideDocument) -> int:
+    """Characters of running text -- what "an article runs about 1,800–3,000 characters" counts."""
+    return sum(len(re.sub(r"\s+", "", part)) for part in _body_parts(document))
 
 
 def _raw_site_urls(document: GuideDocument) -> Iterator[str]:
@@ -186,9 +225,16 @@ def _raw_site_urls(document: GuideDocument) -> Iterator[str]:
                     yield node.url
 
 
-def lint_document(document: GuideDocument, kind: Kind) -> list[Problem]:
+def lint_document(
+    document: GuideDocument, kind: Kind, *, topics: Sequence[str] = ()
+) -> list[Problem]:
     """The review standard in ``docs/travel-guides.md`` "Editorial rules", as far as a machine
-    can read it. Errors are what a reviewer would send back; warnings are worth a look."""
+    can read it. Errors are what a reviewer would send back; warnings are worth a look.
+
+    ``topics`` carries the pack's subjects because two of the rules only apply to one of them:
+    finance is a YMYL subject, and Taiwan's 證券投資信託及顧問法 restricts who may
+    offer securities analysis for reward. It is keyword-only with a default so a caller that
+    has no pack in hand -- every test that lints a bare document -- keeps working unchanged."""
     problems: list[Problem] = []
     headings = [b for b in document.blocks if isinstance(b, HeadingBlock) and b.level == 2]
     if len(headings) < MIN_LEVEL_2_HEADINGS:
@@ -282,6 +328,48 @@ def lint_document(document: GuideDocument, kind: Kind) -> list[Problem]:
                 "warning",
                 "text_length",
                 f"{length} characters of body text; the guideline for {kind} is {low}–{high}",
+            )
+        )
+    problems.extend(_finance_problems(document, topics))
+    return problems
+
+
+def _finance_problems(document: GuideDocument, topics: Sequence[str]) -> list[Problem]:
+    """The two rules that only a ``finance`` article answers to.
+
+    The template check is an error and the wording check a warning, and the split is the whole
+    point: whether the disclaimer is present is a fact a machine settles, while "does this
+    amount to recommending a security" is a judgement it does not. Every batch ticket keeps
+    that second reading with a person; this function only promises the paragraph is there."""
+    if not FINANCE_TOPICS.intersection(topic.casefold() for topic in topics):
+        return []
+    problems: list[Problem] = []
+    if not any(
+        isinstance(block, CalloutBlock)
+        and any(marker in block.text.casefold() for marker in _CASEFOLDED_MARKERS)
+        for block in document.blocks
+    ):
+        problems.append(
+            Problem(
+                "error",
+                "finance_no_disclaimer",
+                "a finance article needs a callout whose text contains one of "
+                + "、".join(FINANCE_DISCLAIMER_MARKERS)
+                + "; see the template in docs/life-finance-series-brief.md",
+            )
+        )
+    claims = sorted(
+        {m.group(0) for part in _body_parts(document) for m in FINANCE_CLAIM_WORDS.finditer(part)}
+    )
+    if claims:
+        problems.append(
+            Problem(
+                "warning",
+                "finance_claim_language",
+                "absolute claims in a finance article: "
+                + "、".join(claims)
+                + " -- fine when the article is quoting them as a scam's own words, "
+                "otherwise rewrite",
             )
         )
     return problems
@@ -873,7 +961,7 @@ def ingest(
         for locale, document_model in pack.locales.items():
             report.problems.extend(
                 Problem(p.level, p.code, f"{locale}: {p.message}")
-                for p in lint_document(document_model, pack.kind)
+                for p in lint_document(document_model, pack.kind, topics=pack.topics)
             )
             for block_model in document_model.blocks:
                 if isinstance(block_model, ImageBlock) and block_model.src.endswith(".svg"):
@@ -973,7 +1061,7 @@ def lint_all(
         for locale, document in pack.locales.items():
             problems.extend(
                 Problem(p.level, p.code, f"{locale}: {p.message}")
-                for p in lint_document(document, pack.kind)
+                for p in lint_document(document, pack.kind, topics=pack.topics)
             )
             pictures = [document.hero.src] if document.hero else []
             pictures += [b.src for b in document.blocks if isinstance(b, ImageBlock)]

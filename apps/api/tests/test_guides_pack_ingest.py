@@ -18,6 +18,7 @@ import pytest
 from PIL import Image
 
 from app.guides.pack_ingest import (
+    FINANCE_DISCLAIMER_MARKERS,
     HERO_MAX_BYTES,
     PHOTO_MAX_BYTES,
     PackIngestError,
@@ -138,6 +139,86 @@ def test_lint_document_accepts_a_complete_article_and_names_what_is_missing() ->
     assert codes["no_diagram"] == "warning"
     assert codes["no_internal_link"] == "warning"
     assert codes["text_length"] == "warning"
+
+
+def test_finance_rules_only_apply_to_finance_articles() -> None:
+    """The disclaimer is a template check and the wording one a prompt for the reviewer, so
+    one is an error and the other a warning. Both stay silent on every other subject."""
+    plain = GuideDocument.model_validate(good_document())
+    missing = {p.code: p.level for p in lint_document(plain, "life", topics=("finance",))}
+    assert missing["finance_no_disclaimer"] == "error"
+
+    with_disclaimer = GuideDocument.model_validate(
+        good_document(
+            blocks=[
+                *good_document()["blocks"],  # type: ignore[misc]
+                {
+                    "type": "callout",
+                    "tone": "warning",
+                    "title": "\u672c\u6587\u4e0d\u662f\u6295\u8cc7\u5efa\u8b70",
+                    "text": (
+                        "\u672c\u6587\u6574\u7406\u7684\u662f\u5236\u5ea6\u8207\u65b9\u6cd5\uff0c"
+                        "\u4e0d\u662f\u6295\u8cc7\u5efa\u8b70\uff0c\u4e5f\u4e0d\u63a8\u85a6\u4efb\u4f55\u5546\u54c1\u3002"
+                    ),
+                },
+            ]
+        )
+    )
+    codes = {p.code for p in lint_document(with_disclaimer, "life", topics=("finance",))}
+    assert "finance_no_disclaimer" not in codes
+
+    # lint_all lints one locale document at a time and is never told which locale it holds,
+    # so each language's own marker has to satisfy the rule on its own. A Chinese-only marker
+    # would have failed four of the five documents of every translated finance article.
+    for marker in FINANCE_DISCLAIMER_MARKERS:
+        translated = GuideDocument.model_validate(
+            good_document(
+                blocks=[
+                    *good_document()["blocks"],  # type: ignore[misc]
+                    {
+                        "type": "callout",
+                        "tone": "warning",
+                        "title": "Disclaimer",
+                        "text": f"This is {marker}.",
+                    },
+                ]
+            )
+        )
+        found = {p.code for p in lint_document(translated, "life", topics=("finance",))}
+        assert "finance_no_disclaimer" not in found, marker
+
+    # retopic never adds ``finance`` to a crypto-* article, because ``finance`` is one of the
+    # original eight parents it leaves alone. The rule keys on the whole money vertical so
+    # that gap cannot silently switch the disclaimer off.
+    assert "finance_no_disclaimer" in {
+        p.code for p in lint_document(plain, "life", topics=("crypto",))
+    }
+
+    # The scan reads the running text, so a claim buried in a table cell counts too.
+    shouting = good_document()["blocks"]
+    shouting[3] = {  # type: ignore[index]
+        "type": "paragraph",
+        "text": "\u9019\u500b\u65b9\u6cd5\u7a69\u8cfa\uff0c\u5b8c\u5168\u7121\u98a8\u96aa\u3002"
+        * 60,
+    }
+    loud = GuideDocument.model_validate(good_document(blocks=shouting))
+    claims = {p.code: p.level for p in lint_document(loud, "life", topics=("finance",))}
+    assert claims["finance_claim_language"] == "warning"
+
+    # Money that is not investing -- a Wise transfer checklist, registering a company -- is
+    # outside the rule on purpose: a disclaimer pasted where it does not belong is how one
+    # stops being read. Four shipped articles are in exactly that position.
+    for topics in (("banking",), ("tax-insurance",), ("finance-basics",), ("credit",)):
+        assert "finance_no_disclaimer" not in {
+            p.code for p in lint_document(plain, "life", topics=topics)
+        }
+
+    # Same words, a different subject: neither rule has anything to say, and neither does a
+    # caller that passes no topics at all.
+    for topics in (("ai",), ()):
+        quiet = {p.code for p in lint_document(loud, "life", topics=topics)}
+        assert "finance_claim_language" not in quiet
+        assert "finance_no_disclaimer" not in quiet
 
 
 def test_check_svg_holds_the_diagram_rules() -> None:

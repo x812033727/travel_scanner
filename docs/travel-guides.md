@@ -645,6 +645,38 @@ Text:
 - Internal links are `link` blocks with absolute site URLs (destination page, food
   directory); the renderer keeps them in the same tab.
 
+Finance articles (any pack whose `topics` carry `finance`, `investing` or `crypto`):
+
+- **`finance_no_disclaimer` is an error.** One `callout` must contain one of the marker
+  sentences in `FINANCE_DISCLAIMER_MARKERS` verbatim — 「不是投資建議」,「不是投资建议」,
+  "not investment advice",「投資助言ではありません」or「투자 조언이 아닙니다」. The template lives in
+  `docs/life-finance-series-brief.md`. There is one marker per language because `lint_all`
+  lints a single locale document at a time and is never told which locale it holds; a
+  Chinese-only marker would fail all four translations of every multilingual finance article.
+  Finance is a YMYL subject and Taiwan's 證券投資信託及顧問法 restricts who may offer
+  securities analysis for reward, so this is the one paragraph no article may be missing.
+  A template check is deliberately brittle: it has no judgement to exercise and no false
+  positives to weigh, which is exactly why it is worth re-running over every finance pack
+  on every CI run rather than trusting a person to spot the one article that lost it.
+- **`finance_claim_language` is a warning.** Absolute promises in the running text
+  (保證獲利／穩賺／包賺／必漲／必跌／無風險／報明牌／飆股／老師帶單／躺著賺) are flagged for
+  the reviewer, not refused: `investment-scam-red-flags` quotes those very phrases as the
+  marks of a scam, and an error would either block a legitimate article or teach the next
+  writer to spell its way around the linter.
+- The trigger is `finance`, `investing` and `crypto`, **not** the whole money vertical.
+  `banking`, `credit`, `tax-insurance` and `finance-basics` are deliberately outside it:
+  four shipped articles carry one of them and no disclaimer — registering a company, a Wise
+  transfer checklist, YouTube payment tax, a household inventory spreadsheet — and none is
+  about investing. `crypto` is named separately because `retopic` only supplies a missing
+  parent for `website` and `marketing`; `finance` is one of the original eight, so a
+  `crypto-*` article never acquires it automatically and would otherwise escape the rule.
+- Both rules read `ArticlePack.topics`, so they are silent on every other subject. What a
+  machine cannot read stays with a person: whether an article amounts to recommending a
+  security, and whether it states the risks fully, are judgements each batch ticket keeps
+  in its own definition of done. Do not try to extend the regular expression to cover them
+  — it would misfire on the educational sentences this series exists to write, while
+  suggesting the question had been settled.
+
 ## The reader's side
 
 ```
