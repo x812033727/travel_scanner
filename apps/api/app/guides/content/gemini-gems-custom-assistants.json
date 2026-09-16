@@ -60,9 +60,10 @@
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞練習",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
@@ -126,18 +127,20 @@
               "text": "從 Drive 加入檔案需要相應的 Google Workspace 連線及活動設定。官方說明指出 Drive 檔案可反映最新內容，因此檔案更新後也要重新測試；本機上傳的檔案則不要假設會隨電腦修改自動同步。連線條件請看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "連結的應用程式",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
               "text": "，檔案辨識請看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案分析",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -179,27 +182,30 @@
               "text": "Gems 的指示在 Gemini 介面設定；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": "提供 Gemini CLI 的專案指示；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Agent Skills",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+              "kind": "life",
+              "slug": "gemini-cli-agent-skills"
             },
             {
               "type": "text",
               "text": "則是 CLI 可重複使用的工作方法。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Spark 的 Skills",
-              "url": "https://mokaair.com/zh-TW/life/gemini-spark-workflows-guide"
+              "kind": "life",
+              "slug": "gemini-spark-workflows-guide"
             },
             {
               "type": "text",
@@ -232,9 +238,10 @@
               "text": "「可以用 Gem 直接做 Live 對話嗎？」查證當日官方仍列為不支援。想練習連續語音時，使用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Live",
-              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+              "kind": "life",
+              "slug": "gemini-live-voice-camera"
             },
             {
               "type": "text",
@@ -283,18 +290,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞怎麼寫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
@@ -303,9 +312,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

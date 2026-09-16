@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Gemini CLI 的登入方式會影響可使用的服務、額度與計費歸屬。本篇帶你比較 Google 帳號登入、Gemini API Key 與 Vertex AI，完成適合自己的認證，並用最小對話驗證。重點是知道目前到底使用哪個帳號與專案，而不是只看到登入成功就假設所有功能都包含在訂閱裡。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Gemini CLI 的登入方式會影響可使用的服務、額度與計費歸屬。本篇帶你比較 Google 帳號登入、Gemini API Key 與 Vertex "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "，完成適合自己的認證，並用最小對話驗證。重點是知道目前到底使用哪個帳號與專案，而不是只看到登入成功就假設所有功能都包含在訂閱裡。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -56,9 +71,10 @@
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 安裝",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+              "kind": "life",
+              "slug": "gemini-cli-getting-started"
             },
             {
               "type": "text",
@@ -78,9 +94,10 @@
               "text": "認證選擇與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini 消費者方案",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -131,9 +148,10 @@
               "text": "到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI Studio",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+              "kind": "life",
+              "slug": "gemini-api-ai-studio-first-call"
             },
             {
               "type": "text",
@@ -159,9 +177,10 @@
               "text": "使用 API Key 的請求與 API 專案額度相關，請到 AI Studio 用量與計費頁核對。先確認是否為免費或付費層、使用什麼模型，再開始大量工作。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 成本與錯誤處理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -209,9 +228,10 @@
               "text": "若個人帳號出現組織訂閱資格提示，官方疑難排解檔案提到，GOOGLE_CLOUD_PROJECT 等環境變數可能影響服務檢查。先確認它們是否為本次工作需要，再在目前環境調整。修正後重跑相同提示詞，並記錄哪個變數造成差異，詳見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "排解流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+              "kind": "life",
+              "slug": "gemini-cli-troubleshooting"
             },
             {
               "type": "text",
@@ -236,9 +256,10 @@
               "text": "「金鑰可以放在 settings.json 嗎」優先採環境變數或受控秘密管理，不把真實金鑰放在可分享的專案設定。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "設定檔教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings"
+              "kind": "life",
+              "slug": "gemini-cli-settings"
             },
             {
               "type": "text",
@@ -254,9 +275,10 @@
               "text": "「換電腦後為什麼不能直接用」新環境可能沒有登入憑證、相同 PATH 或必要專案設定。重新確認認證流程，再測試短對話，最後才搬入"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "批次腳本",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-headless-automation"
+              "kind": "life",
+              "slug": "gemini-cli-headless-automation"
             },
             {
               "type": "text",
@@ -305,18 +327,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini CLI 安裝",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+              "kind": "life",
+              "slug": "gemini-cli-getting-started"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 額度與錯誤",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -325,9 +349,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

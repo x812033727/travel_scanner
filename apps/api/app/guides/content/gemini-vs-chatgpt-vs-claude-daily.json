@@ -82,18 +82,20 @@
               "text": "Gemini 可在對話加入支援檔案，並透過 Gems 保存指示與參考資料；資料位於 Google 服務時，可檢查 Connected Apps 或 Workspace 原生整合。這有助於減少某些工作中的複製步驟，但不保證答案較正確。操作細節見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案分析",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gems",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
@@ -117,9 +119,10 @@
               "text": "三者的共用指示都應寫明來源與缺漏規則，但不用假設它們讀取相同本機檔案。尤其"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
@@ -178,9 +181,10 @@
               "text": "三者都有官方文件說明的網路搜尋能力，但入口和開啟條件不同。ChatGPT 可明確要求查詢最新資訊並查看搜尋與引用；Claude 可在加號選單啟用 Web search，團隊帳號可能先需管理者開放；Gemini 的搜尋與資料連線另見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -202,9 +206,10 @@
               "text": "這題檢查來源是否真的來自官方、能否開啟、是否支持旁邊的說法，以及有沒有混淆產品。不要只計算連結數量；三個無關首頁比一個精準章節更難核對。對版本相關說法，可用本系列"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "記憶載入與作用範圍",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+              "kind": "life",
+              "slug": "gemini-cli-memory-hierarchy"
             },
             {
               "type": "text",
@@ -289,18 +294,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞怎麼寫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "讀 PDF、圖片與表格",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -309,9 +316,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

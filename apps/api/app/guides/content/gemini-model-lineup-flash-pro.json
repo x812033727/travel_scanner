@@ -56,9 +56,10 @@
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "新手入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+              "kind": "life",
+              "slug": "gemini-beginner-guide"
             },
             {
               "type": "text",
@@ -67,8 +68,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Google AI Pro 是訂閱方案名稱，Gemini Pro 是模型系列，兩者不是同一層。官網也可能同時出現最新研究模型、API 模型識別碼與應用程式中的簡短名稱。請記錄實際使用入口，不要把開發者文件列出的某個型號，直接當成每個手機帳號都能選到的專案。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Pro 是訂閱方案名稱，Gemini Pro 是模型系列，兩者不是同一層。官網也可能同時出現最新研究模型、API 模型識別碼與應用程式中的簡短名稱。請記錄實際使用入口，不要把開發者文件列出的某個型號，直接當成每個手機帳號都能選到的專案。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -91,9 +107,10 @@
               "text": "模型、工具與資料來源也要分開。換模型不等於已啟用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research",
-              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
             },
             {
               "type": "text",
@@ -144,9 +161,10 @@
               "text": "若兩個模型都在同一處失敗，先改善"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
@@ -171,9 +189,10 @@
               "text": "大量重複的資料擷取，除了模型能力還要考慮可驗證格式與成本。一般使用者可以先把少量範例整理好；需要程式化處理時，接著讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 結構化輸出",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
@@ -189,9 +208,10 @@
               "text": "需要最新訊息時，請求來源與查證日期比只指定「用最強模型」更有幫助。已經有固定資料集的讀書筆記，可考慮"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+              "kind": "life",
+              "slug": "notebooklm-guide"
             },
             {
               "type": "text",
@@ -212,9 +232,10 @@
               "text": "「模型選項變灰了怎麼辦？」先閱讀旁邊的額度或資格訊息。達到限制時，依帳號當下提供的較輕量模型或恢復時間安排工作。不要把灰色選單直接當成安裝損壞；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案與額度",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -271,18 +292,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "免費與付費方案",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞怎麼寫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
@@ -291,9 +314,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

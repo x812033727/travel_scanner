@@ -60,18 +60,20 @@
               "text": "把需求分成三件事：檢視已儲存的對話、調整未來是否保留活動、處理某次已上傳或分享的資料。這些操作目的不同。刪除聊天不等於取消訂閱，也不會自動刪掉你匯出到 Drive 的檔案；付款管理請看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案篇",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
               "text": "，連線權限請看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -111,8 +113,23 @@
           "text": "官方說明列出個人活動記錄預設十八個月自動刪除，可調整為三個月、三十六個月或不自動刪除；實際以你的帳號畫面為準。要變更時，閱讀預覽影響範圍，確認是否涉及既有資料，再完成選擇。期間設定不是備份方案，重要成果仍應自己儲存。"
         },
         {
-          "type": "paragraph",
-          "text": "關閉保留活動後，未來對話不會顯示在活動中；官方仍說明會為提供服務與安全等用途保留最多七十二小時。未提交回饋的情況下，關閉後的未來對話不用於改善 AI 模型；若主動提交回饋，相關內容有另外的使用方式。不能把關閉開關理解成完全不處理任何資料。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "關閉保留活動後，未來對話不會顯示在活動中；官方仍說明會為提供服務與安全等用途保留最多七十二小時。未提交回饋的情況下，關閉後的未來對話不用於改善 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 模型；若主動提交回饋，相關內容有另外的使用方式。不能把關閉開關理解成完全不處理任何資料。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -144,9 +161,10 @@
           "type": "rich_paragraph",
           "inlines": [
             {
-              "type": "link",
+              "type": "article",
               "text": "Live",
-              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+              "kind": "life",
+              "slug": "gemini-live-voice-camera"
             },
             {
               "type": "text",
@@ -162,18 +180,20 @@
               "text": "手機的相機、麥克風、照片與位置權限由作業系統管理，Android 某些助理能力還透過 Google 應用程式提供。調整前確認會影響哪些功能；只想移除照片存取時，不必同時更改所有服務。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Android",
-              "url": "https://mokaair.com/zh-TW/life/gemini-on-android-assistant"
+              "kind": "life",
+              "slug": "gemini-on-android-assistant"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone／iPad",
-              "url": "https://mokaair.com/zh-TW/life/gemini-ios-app-guide"
+              "kind": "life",
+              "slug": "gemini-ios-app-guide"
             },
             {
               "type": "text",
@@ -189,18 +209,20 @@
               "text": "Gemini 活動設定不會自動改變其他 Google 服務的設定，也不會刪除那些服務儲存的資料。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Spark",
-              "url": "https://mokaair.com/zh-TW/life/gemini-spark-workflows-guide"
+              "kind": "life",
+              "slug": "gemini-spark-workflows-guide"
             },
             {
               "type": "text",
               "text": "的遠端瀏覽器與執行資料另有管理控制；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+              "kind": "life",
+              "slug": "notebooklm-guide"
             },
             {
               "type": "text",
@@ -279,18 +301,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gems 自訂助手",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -299,9 +323,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

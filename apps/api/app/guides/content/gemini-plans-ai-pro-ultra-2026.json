@@ -28,8 +28,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "選擇 Google AI 方案，先看自己需要什麼功能、多久碰到限制，再比較月費。這篇把台灣公開方案、額度讀法與訂閱檢查集中在一起，讓其他教學能引用同一份資訊。價格查證於 2026 年 9 月 14 日；以下為台灣官網公開月費，個別帳號的優惠、付款週期與最後結帳條件仍需另行確認。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "選擇 Google "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 方案，先看自己需要什麼功能、多久碰到限制，再比較月費。這篇把台灣公開方案、額度讀法與訂閱檢查集中在一起，讓其他教學能引用同一份資訊。價格查證於 2026 年 9 月 14 日；以下為台灣官網公開月費，個別帳號的優惠、付款週期與最後結帳條件仍需另行確認。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -61,18 +76,20 @@
               "text": "先記下付費帳號、付款管道及預定用途。如果主要工作在公司 Gmail 或共用檔案中，先問管理員目前版本涵蓋哪些功能，再讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "小團隊 Workspace 匯入",
-              "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+              "kind": "life",
+              "slug": "google-workspace-ai-for-small-business"
             },
             {
               "type": "text",
               "text": "。如果要寫程式大量整理資料，另看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 費用與用量",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -101,9 +118,10 @@
               "text": "影片創作另有點數概念。查證當日的 Flow 月點數依上述四級為 200、1,000、10,000、25,000 點；不同模型與生成操作的消耗可能不同。這些點數不能直接換算成相同數量的完整影片。練習"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Flow 與 Veo",
-              "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+              "kind": "life",
+              "slug": "veo-video-generation-guide"
             },
             {
               "type": "text",
@@ -119,9 +137,10 @@
               "text": "方案權益還有國家、年齡、語言、裝置及分批開放條件。台灣價格頁上出現某功能，不代表該功能已在台灣全面提供，例如頁面仍對部分搜尋及代理功能附有地區說明。想用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini Spark",
-              "url": "https://mokaair.com/zh-TW/life/gemini-spark-workflows-guide"
+              "kind": "life",
+              "slug": "gemini-spark-workflows-guide"
             },
             {
               "type": "text",
@@ -164,9 +183,10 @@
               "text": "完成評估後，應能用一句話說出「我為了哪個可用功能或實際遇到的額度限制，選擇多少費用的方案」。如果答案只是模型名稱聽起來比較厲害，先回到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型選擇",
-              "url": "https://mokaair.com/zh-TW/life/gemini-model-lineup-flash-pro"
+              "kind": "life",
+              "slug": "gemini-model-lineup-flash-pro"
             },
             {
               "type": "text",
@@ -253,18 +273,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini 模型怎麼選",
-              "url": "https://mokaair.com/zh-TW/life/gemini-model-lineup-flash-pro"
+              "kind": "life",
+              "slug": "gemini-model-lineup-flash-pro"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 額度與錯誤",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -273,9 +295,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Gemini Spark 是可管理多步驟工作的代理功能，使用任務、排程與 Skills 組織工作。本篇先用公開公告摘要做一次短任務，再說明如何儲存方法、安排執行時間與停止。Spark 仍屬官方標示的實驗功能；本篇依 2026 年 9 月 14 日文件整理，未以實際訂閱帳號執行。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Gemini Spark 是可管理多步驟工作的代理功能，使用任務、排程與 "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": " 組織工作。本篇先用公開公告摘要做一次短任務，再說明如何儲存方法、安排執行時間與停止。Spark 仍屬官方標示的實驗功能；本篇依 2026 年 9 月 14 日文件整理，未以實際訂閱帳號執行。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -49,8 +64,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "查證當日官方必要條件是年滿十八歲、個人 Google 帳號、Google AI Pro 或 Ultra 訂閱，以及開啟保留活動記錄；公司或學校帳號不適用。官方支援範圍列為 Gemini 可用地區，但排除歐洲經濟區、奈及利亞、瑞士與英國。台灣不在該排除清單，仍須以帳號實際開放的入口確認。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "查證當日官方必要條件是年滿十八歲、個人 Google 帳號、Google "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Pro 或 Ultra 訂閱，以及開啟保留活動記錄；公司或學校帳號不適用。官方支援範圍列為 Gemini 可用地區，但排除歐洲經濟區、奈及利亞、瑞士與英國。台灣不在該排除清單，仍須以帳號實際開放的入口確認。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -60,18 +90,20 @@
               "text": "文件列出手機、Mac 應用程式與 Gemini 網頁入口；本篇採電腦網頁流程。Windows 原生版、Chrome 自動瀏覽與特定連線功能應各自檢視條件，不能因 Spark 可用就認定所有操作方式都已開放。先閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "訂閱條件",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "活動設定",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
@@ -96,9 +128,10 @@
               "text": "初學時先選唯讀、資料範圍清楚的工作。不要一開始就交代整理整個信箱、退訂或刪除檔案；先確認來源讀取與摘要品質，再逐步增加動作。需要其他服務的資料時，檢視"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -145,9 +178,10 @@
               "text": "如果任務讀錯網頁，先補充正確網址與要看的段落，再讓它修正。若只是暫時無法存取某來源，保留缺口，不要改用內容不明的網站補成完整報告。需要更完整的研究方法，可參考"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research 的來源查核",
-              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
             },
             {
               "type": "text",
@@ -172,9 +206,10 @@
               "text": "官方也支援上傳 SKILL.md，或主資料夾含 SKILL.md 的 ZIP，需符合文字檔及其他上傳限制；需連網的腳本目前不支援。第一次先用介面建立較容易核對，不必為了使用技能而加入程式。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI Skills",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+              "kind": "life",
+              "slug": "gemini-cli-agent-skills"
             },
             {
               "type": "text",
@@ -265,18 +300,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Agent Skills",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+              "kind": "life",
+              "slug": "gemini-cli-agent-skills"
             },
             {
               "type": "text",
@@ -285,9 +322,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

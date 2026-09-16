@@ -56,9 +56,10 @@
               "text": "準備 Gemini CLI 0.59.0 與已完成的"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "登入認證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+              "kind": "life",
+              "slug": "gemini-cli-authentication"
             },
             {
               "type": "text",
@@ -74,9 +75,10 @@
               "text": "本篇不把排程帳號假設成你正在使用的桌面帳號。工作排程器或伺服器可能使用不同家目錄、PATH、環境變數與設定檔；手動登入成功，不代表另一個執行環境也成功。認證資訊應由受控環境提供，不寫進腳本或提交到版本庫，額度與計費請參考"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 成本與錯誤處理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -139,8 +141,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "若使用 -o stream-json，輸出會是逐行 JSON 事件，適合顯示進度或接到其他程式。不能把整份輸出一次交給普通 JSON 物件解析器；應逐行解析，並等到最終結果事件後再標記完成。只有收到部分文字、程式被中斷或逾時，都不能當作成功。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若使用 -o stream-json，輸出會是逐行 JSON 事件，適合顯示進度或接到其他程式。不能把整份輸出一次交給普通 JSON 物件解析器；應逐行解析，並等到最終結果事件後再"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "完成。只有收到部分文字、程式被中斷或逾時，都不能當作成功。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -150,18 +167,20 @@
               "text": "需要工具的批次任務，要先在最小範圍確認"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "權限設定",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hooks",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks"
+              "kind": "life",
+              "slug": "gemini-cli-hooks"
             },
             {
               "type": "text",
@@ -194,9 +213,10 @@
               "text": "「可以失敗就無限重試嗎」不適合。額度、認證與無效輸入應先分類，只有暫時性失敗才採有限次數與間隔重試。每份公告使用唯一編號，避免重新產生同名成果。需要嚴格欄位、服務端驗證與長期維護的應用，可接著學"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 結構化輸出",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
@@ -245,18 +265,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hooks",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks"
+              "kind": "life",
+              "slug": "gemini-cli-hooks"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 額度與錯誤",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -265,9 +287,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

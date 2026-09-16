@@ -56,27 +56,30 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "對話與上下文管理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+              "kind": "life",
+              "slug": "gemini-cli-sessions-context"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 寫程式流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+              "kind": "life",
+              "slug": "gemini-cli-coding-workflow"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "團隊規則範本",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-modular-project-rules"
+              "kind": "life",
+              "slug": "gemini-cli-modular-project-rules"
             },
             {
               "type": "text",
@@ -138,9 +141,10 @@
               "text": "範例 .geminiignore 排除 node_modules、coverage 與 log，目的是降低不相關內容。它不是作業系統權限邊界，不能用來保證 shell 或其他工具絕對讀不到檔案；需要限制執行與存取時，回到 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "沙箱與權限教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
@@ -239,9 +243,10 @@
               "text": "長對話可依 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文管理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+              "kind": "life",
+              "slug": "gemini-cli-sessions-context"
             },
             {
               "type": "text",
@@ -257,9 +262,10 @@
               "text": "當你要將這套流程做成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "技能或擴充套件",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-skill-extension-package"
+              "kind": "life",
+              "slug": "gemini-cli-skill-extension-package"
             },
             {
               "type": "text",
@@ -313,27 +319,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 權限：忽略檔案、可信任資料夾與沙箱",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 團隊範本：拆分規則、匯入與維護責任",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-modular-project-rules"
+              "kind": "life",
+              "slug": "gemini-cli-modular-project-rules"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "把 SKILL.md 打包成 Extension：安裝、更新與回退",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-skill-extension-package"
+              "kind": "life",
+              "slug": "gemini-cli-skill-extension-package"
             },
             {
               "type": "text",
@@ -352,9 +361,15 @@
           "url": "https://mokaair.com/guides/gemini-cli-large-project-context/md-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

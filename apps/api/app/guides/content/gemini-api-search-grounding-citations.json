@@ -56,27 +56,40 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+              "kind": "life",
+              "slug": "gemini-api-ai-studio-first-call"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "資料結構驗證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
-              "text": "。本篇使用 Python、google-genai 2.23.0 與 Interactions API。查證日的官方例子採 gemini-3.8-flash，但是否可用仍由專案、模型和工具條件決定；搜尋使用量也與純文字生成不同，計費集中看 "
+              "text": "。本篇使用 Python、google-"
             },
             {
-              "type": "link",
+              "type": "article",
+              "text": "genai",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 2.23.0 與 Interactions API。查證日的官方例子採 gemini-3.8-flash，但是否可用仍由專案、模型和工具條件決定；搜尋使用量也與純文字生成不同，計費集中看 "
+            },
+            {
+              "type": "article",
               "text": "API 費用",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -92,9 +105,10 @@
               "text": "Google Search grounding 是讓模型使用 Google 搜尋資訊的工具，不等於自己抓取某個網址全文，也不等於 NotebookLM 的指定來源問答。想只查自己匯入的十份文件，應接著使用 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "File Search 知識庫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-file-search-rag-project"
+              "kind": "life",
+              "slug": "gemini-api-file-search-rag-project"
             },
             {
               "type": "text",
@@ -231,9 +245,10 @@
               "text": "交付時保留題目、模型、SDK、日期、請求是否搜尋及顯示測試結果。真實 Grounding 的回答和搜尋建議有專屬使用及保存要求，本教材只配送原創合成 fixtures，不建立真實搜尋結果資料庫。下一步可將同樣的引用核對原則帶到文件知識庫與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "完整文件助手",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-service-capstone"
+              "kind": "life",
+              "slug": "gemini-api-document-service-capstone"
             },
             {
               "type": "text",
@@ -281,27 +296,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI Studio 與第一個 Gemini API 呼叫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+              "kind": "life",
+              "slug": "gemini-api-ai-studio-first-call"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 檔案與 JSON：結構化輸出及驗證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "File Search 知識庫實作：匯入、查詢、更新與刪除驗證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-file-search-rag-project"
+              "kind": "life",
+              "slug": "gemini-api-file-search-rag-project"
             },
             {
               "type": "text",
@@ -320,9 +338,15 @@
           "url": "https://mokaair.com/guides/gemini-api-search-grounding-citations/api-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

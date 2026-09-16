@@ -60,9 +60,10 @@
               "text": "先理解"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "專案記憶",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+              "kind": "life",
+              "slug": "gemini-cli-memory-hierarchy"
             },
             {
               "type": "text",
@@ -126,9 +127,10 @@
               "text": "/compress 會用摘要取代部分上下文，適合對話變長後保留重點。壓縮可能省略細節，因此操作後先問它目前理解的限制與下一步，再與你的交接筆記比對。固定不能遺失的規則應儲存在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
@@ -158,9 +160,10 @@
               "text": "執行匯出後，依畫面回報確認實際檔案存在且可開啟。只看到「準備匯出」不能算完成；如果目標檔名已存在，也要先了解覆寫行為。需要把工作結果交給腳本處理，可閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Headless 模式",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-headless-automation"
+              "kind": "life",
+              "slug": "gemini-cli-headless-automation"
             },
             {
               "type": "text",
@@ -194,9 +197,10 @@
               "text": "「恢復後怎麼找不到之前的檔案」可能啟動於另一個資料夾，或檔案已移動。先用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "目錄與檔案工具",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+              "kind": "life",
+              "slug": "gemini-cli-files-and-shell"
             },
             {
               "type": "text",
@@ -220,18 +224,20 @@
               "text": "每次暫停前留下已完成、未完成、驗證結果與下一步；重新開始時先對照現況。配合"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "程式修改流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+              "kind": "life",
+              "slug": "gemini-cli-coding-workflow"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "疑難排解",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+              "kind": "life",
+              "slug": "gemini-cli-troubleshooting"
             },
             {
               "type": "text",
@@ -280,18 +286,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 進階",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+              "kind": "life",
+              "slug": "gemini-cli-memory-hierarchy"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 疑難排解",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+              "kind": "life",
+              "slug": "gemini-cli-troubleshooting"
             },
             {
               "type": "text",
@@ -300,9 +308,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -27,8 +27,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Subagents（子代理）讓 Gemini CLI 把範圍明確的工作交給獨立上下文處理，再將結果交回主對話。本篇建立一個只讀指定檔案、找出資料缺漏的子代理，練習任務拆分、工具限制與結果整合。重點是交付可核對的證據，而不是同時開越多代理越好。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Subagents（"
+            },
+            {
+              "type": "article",
+              "text": "子代理",
+              "kind": "life",
+              "slug": "ai-term-subagent"
+            },
+            {
+              "type": "text",
+              "text": "）讓 Gemini CLI 把範圍明確的工作交給獨立上下文處理，再將結果交回主對話。本篇建立一個只讀指定檔案、找出資料缺漏的子代理，練習任務拆分、工具限制與結果整合。重點是交付可核對的證據，而不是同時開越"
+            },
+            {
+              "type": "article",
+              "text": "多代理",
+              "kind": "life",
+              "slug": "ai-term-multi-agent-system"
+            },
+            {
+              "type": "text",
+              "text": "越好。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -56,27 +81,30 @@
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 寫程式工作流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+              "kind": "life",
+              "slug": "gemini-cli-coding-workflow"
             },
             {
               "type": "text",
               "text": "，理解"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "工具權限",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
@@ -96,9 +124,10 @@
               "text": "子代理與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Agent Skills",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+              "kind": "life",
+              "slug": "gemini-cli-agent-skills"
             },
             {
               "type": "text",
@@ -193,9 +222,10 @@
               "text": "完成這個練習後，再考慮需要外部資料的"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "MCP 擴充",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-mcp-extensions"
+              "kind": "life",
+              "slug": "gemini-cli-mcp-extensions"
             },
             {
               "type": "text",
@@ -244,18 +274,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 寫程式",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+              "kind": "life",
+              "slug": "gemini-cli-coding-workflow"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Agent Skills",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+              "kind": "life",
+              "slug": "gemini-cli-agent-skills"
             },
             {
               "type": "text",
@@ -264,9 +296,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

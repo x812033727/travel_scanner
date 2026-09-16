@@ -56,18 +56,20 @@
               "text": "先讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "settings.json 基礎",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings"
+              "kind": "life",
+              "slug": "gemini-cli-settings"
             },
             {
               "type": "text",
               "text": "，完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "隔離環境實驗",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-scope-lab"
+              "kind": "life",
+              "slug": "gemini-cli-memory-scope-lab"
             },
             {
               "type": "text",
@@ -112,8 +114,23 @@
           "text": "第一組只有使用者值，實際得到 DefaultLight。第二組加入專案值，得到 DefaultDark。第三組加入系統強制值，得到 GitHub。系統路徑在教材驗證中以專用環境變數指向暫存檔，沒有把練習值寫入電腦的 ProgramData；一般讀者可以先完成前兩組，再閱讀第三組的可重現紀錄。"
         },
         {
-          "type": "paragraph",
-          "text": "第四組示範設定值中的環境變數展開。user.json 使用 ${LESSON_MODEL}，測試程式設定一個刻意不存在的模型標記，再確認載入器輸出相同文字。這只驗證字串替換，沒有呼叫模型，也不代表該模型可用；不要把這個標記當成真正模型名稱去送出對話。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第四組示範設定值中的環境變數展開。user.json 使用 ${LESSON_MODEL}，測試程式設定一個刻意不存在的模型"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，再確認載入器輸出相同文字。這只驗證字串替換，沒有呼叫模型，也不代表該模型可用；不要把這個標記當成真正模型名稱去送出對話。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -129,9 +146,10 @@
               "text": "若正式環境需要選模型，回到目前官方模型清單核對可用名稱。環境變數替換成功、CLI 接受設定、帳號可用模型，是三個不同檢查。本文不在其他地方重列價格與額度；需要評估實際呼叫時再讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 計費與錯誤教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -277,9 +295,10 @@
               "text": "重複提示詞應做成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "TOML 指令庫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-command-library"
+              "kind": "life",
+              "slug": "gemini-cli-custom-command-library"
             },
             {
               "type": "text",
@@ -295,27 +314,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "settings.json：全域、專案與環境變數",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings"
+              "kind": "life",
+              "slug": "gemini-cli-settings"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 載入實驗：親手驗證全域、專案與子目錄規則",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-scope-lab"
+              "kind": "life",
+              "slug": "gemini-cli-memory-scope-lab"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "自訂 CLI 指令庫：程式審查、測試計畫與文件同步",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-command-library"
+              "kind": "life",
+              "slug": "gemini-cli-custom-command-library"
             },
             {
               "type": "text",
@@ -334,9 +356,15 @@
           "url": "https://mokaair.com/guides/gemini-cli-settings-debug-lab/md-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

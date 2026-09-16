@@ -56,18 +56,20 @@
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 安裝",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+              "kind": "life",
+              "slug": "gemini-cli-getting-started"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "登入",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+              "kind": "life",
+              "slug": "gemini-cli-authentication"
             },
             {
               "type": "text",
@@ -83,18 +85,20 @@
               "text": "練習時先不要引用整個家目錄或大型專案。檔案越多，不代表模型越容易抓到重點；不相關內容也會增加上下文與核對成本。需要固定專案規則時用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": "，需要排除不應探索的檔案時閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "忽略與權限",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
@@ -174,9 +178,10 @@
               "text": "直接 ! 命令與模型自行提出工具呼叫的流程也有差異。模型提出的執行請求可能需要核准，依當前政策與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "沙箱設定",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
@@ -198,12 +203,23 @@
           "inlines": [
             {
               "type": "text",
-              "text": "用 /tools desc 可以看目前工具用途；MCP 工具還需依"
+              "text": "用 /tools desc 可以看目前工具用途；"
             },
             {
-              "type": "link",
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 工具還需依"
+            },
+            {
+              "type": "article",
               "text": "連線教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-mcp-extensions"
+              "kind": "life",
+              "slug": "gemini-cli-mcp-extensions"
             },
             {
               "type": "text",
@@ -232,9 +248,10 @@
               "text": "「引用了資料夾，為什麼少了一些檔案」可能受到忽略規則、工具限制或檔案型態影響。先列出實際讀取清單，必要時直接指定檔案；但忽略規則不是所有工具的安全邊界，詳細差異請看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "存取控制篇",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
@@ -254,27 +271,30 @@
               "text": "完成後，把常用且已驗證的操作寫進"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "自訂指令",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+              "kind": "life",
+              "slug": "gemini-cli-custom-commands"
             },
             {
               "type": "text",
               "text": "或"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "技能",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+              "kind": "life",
+              "slug": "gemini-cli-agent-skills"
             },
             {
               "type": "text",
               "text": "，但保留輸入範圍與完成條件。對需要多步修改的工作，接著閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "寫程式流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+              "kind": "life",
+              "slug": "gemini-cli-coding-workflow"
             },
             {
               "type": "text",
@@ -323,18 +343,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 權限",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 寫程式",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+              "kind": "life",
+              "slug": "gemini-cli-coding-workflow"
             },
             {
               "type": "text",
@@ -343,9 +365,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

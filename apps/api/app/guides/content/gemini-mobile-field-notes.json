@@ -56,36 +56,40 @@
               "text": "先讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Android 使用方法",
-              "url": "https://mokaair.com/zh-TW/life/gemini-on-android-assistant"
+              "kind": "life",
+              "slug": "gemini-on-android-assistant"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone 與 iPad 入口",
-              "url": "https://mokaair.com/zh-TW/life/gemini-ios-app-guide"
+              "kind": "life",
+              "slug": "gemini-ios-app-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini Live 操作",
-              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+              "kind": "life",
+              "slug": "gemini-live-voice-camera"
             },
             {
               "type": "text",
               "text": " 及 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "圖片分析核對",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -107,8 +111,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "在本機開啟照片，先不用 AI，寫下自己能直接看見的事物。原圖左邊有透明帶夾的外形與黑色零件，中間上方有長透明管狀物，下方有細長筆芯樣物，右側另有黑色小件。這些是作者對圖像的視覺描述，不保證每個零件的精確名稱、材質或品牌。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在本機開啟照片，先不用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "，寫下自己能直接看見的事物。原圖左邊有透明帶夾的外形與黑色零件，中間上方有長透明管狀物，下方有細長筆芯樣物，右側另有黑色小件。這些是作者對圖像的視覺描述，不保證每個零件的精確名稱、材質或品牌。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -174,9 +193,10 @@
               "text": "若把現場資訊交給同事，附上照片檔名與原始來源，再寫你的人工補充。不能將模型說法直接改成「現場已確認」。需要形成工作待辦時，可沿用 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "附來源的交接表",
-              "url": "https://mokaair.com/zh-TW/life/gemini-workspace-meeting-handoff"
+              "kind": "life",
+              "slug": "gemini-workspace-meeting-handoff"
             },
             {
               "type": "text",
@@ -274,9 +294,10 @@
               "text": "先確認資料完整與分享範圍，再規劃整理工作。若想練習固定來源的定期資訊整理，可以接著做 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Spark 每週摘要",
-              "url": "https://mokaair.com/zh-TW/life/gemini-spark-weekly-digest"
+              "kind": "life",
+              "slug": "gemini-spark-weekly-digest"
             },
             {
               "type": "text",
@@ -292,27 +313,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini Live：語音、鏡頭與螢幕分享",
-              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+              "kind": "life",
+              "slug": "gemini-live-voice-camera"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "讀 PDF、圖片與表格：摘要、比對與驗證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Spark 每週資訊摘要：設定排程、檢查結果與停止任務",
-              "url": "https://mokaair.com/zh-TW/life/gemini-spark-weekly-digest"
+              "kind": "life",
+              "slug": "gemini-spark-weekly-digest"
             },
             {
               "type": "text",
@@ -331,9 +355,15 @@
           "url": "https://mokaair.com/guides/gemini-mobile-field-notes/work-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

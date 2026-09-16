@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "同樣叫 GEMINI.md，放在家目錄、專案根目錄或子目錄，載入時間可能不同。本篇用五個可辨識標記建立記憶實驗，讓你親手判讀啟動、讀檔與重新載入的差別。完成後會得到一份操作紀錄，能回答規則從哪裡來，而不是只憑模型回答的語氣猜測。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同樣叫 GEMINI.md，放在家目錄、專案根目錄或子目錄，載入時間可能不同。本篇用五個可辨識"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "建立記憶實驗，讓你親手判讀啟動、讀檔與重新載入的差別。完成後會得到一份操作紀錄，能回答規則從哪裡來，而不是只憑模型回答的語氣猜測。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -56,18 +71,20 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "記憶階層教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+              "kind": "life",
+              "slug": "gemini-cli-memory-hierarchy"
             },
             {
               "type": "text",
@@ -160,8 +177,23 @@
           "text": "再做故障練習：把全域要求暫時寫成「回答使用英文」，並在專案規則加上「回答使用繁體中文」，觀察兩段內容是否同時存在，隨後恢復原檔。這個實驗的通過條件是找出衝突，而非期待下層永遠覆寫上層。自然語言指示不是程式變數，載入順序無法保證模型每次都遵守某一句。"
         },
         {
-          "type": "paragraph",
-          "text": "不信任工作區的本機反例使用 CLI 的信任狀態介面，確認專案與 JIT 內容不被加入，但全域內容仍存在。實際互動操作若出現信任詢問，先確認路徑確實是自己的練習專案；不要為了看到相同畫面就把整個磁碟設成可信任。讀取限制與沙箱可回看相關基礎篇。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "不信任工作區的本機反例使用 CLI 的信任狀態介面，確認專案與 JIT 內容不被加入，但全域內容仍存在。實際互動操作若出現信任詢問，先確認路徑確實是自己的練習專案；不要為了看到相同畫面就把整個磁碟設成可信任。讀取限制與"
+            },
+            {
+              "type": "article",
+              "text": "沙箱",
+              "kind": "life",
+              "slug": "ai-term-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "可回看相關基礎篇。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -250,9 +282,10 @@
               "text": "標記適合除錯，正式規則應保留具體要求與維護原因。先整理不重複的規則，再依 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "團隊規則範本",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-modular-project-rules"
+              "kind": "life",
+              "slug": "gemini-cli-modular-project-rules"
             },
             {
               "type": "text",
@@ -268,27 +301,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 入門：建立規則與 /init",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 進階：範圍、匯入與 /memory",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+              "kind": "life",
+              "slug": "gemini-cli-memory-hierarchy"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 團隊範本：拆分規則、匯入與維護責任",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-modular-project-rules"
+              "kind": "life",
+              "slug": "gemini-cli-modular-project-rules"
             },
             {
               "type": "text",
@@ -307,9 +343,15 @@
           "url": "https://mokaair.com/guides/gemini-cli-memory-scope-lab/md-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

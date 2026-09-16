@@ -56,13 +56,24 @@
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一次 API 呼叫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+              "kind": "life",
+              "slug": "gemini-api-ai-studio-first-call"
             },
             {
               "type": "text",
-              "text": "，使用相同的 Python 環境、金鑰與模型設定。本篇採 google-genai 2.23.0、Pydantic 2.12.5 與 Interactions API；程式語法及資料驗證可在本機確認，真實 PDF 辨識品質要在你的授權資料與登入環境中測試。"
+              "text": "，使用相同的 Python 環境、金鑰與模型設定。本篇採 google-"
+            },
+            {
+              "type": "article",
+              "text": "genai",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 2.23.0、Pydantic 2.12.5 與 Interactions API；程式語法及資料驗證可在本機確認，真實 PDF 辨識品質要在你的授權資料與登入環境中測試。"
             }
           ]
         },
@@ -136,9 +147,10 @@
               "text": "第二層核對可以從簡單規則開始：已知欄位是否存在原文、日期有沒有自行轉換、金額單位是否保留、同一份公告的兩個場次是否混在一起。若需要自動核對，要求每個欄位附逐字引用，再由程式確認引用片段；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "完整檔案助理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-assistant"
+              "kind": "life",
+              "slug": "gemini-api-document-assistant"
             },
             {
               "type": "text",
@@ -180,9 +192,10 @@
               "text": "「PDF 可以用檔名代替內容嗎」只把 sample.pdf 的名字放進提示詞，API 不會因此讀取你電腦上的檔案。必須提供檔案資料或已上傳的 uri。這與 CLI 的"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "本機檔案引用",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+              "kind": "life",
+              "slug": "gemini-cli-files-and-shell"
             },
             {
               "type": "text",
@@ -198,9 +211,10 @@
               "text": "「解析失敗能直接要求模型修 JSON 嗎」先確認錯誤原因。截斷、空白、拒絕與欄位不符應分別處理；重試要有次數上限，並保留原始失敗狀態。若是檔案本身缺資料，重新生成也不應變出答案。接著閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "成本與錯誤處理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -249,18 +263,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI Studio 與第一個 Gemini API 呼叫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+              "kind": "life",
+              "slug": "gemini-api-ai-studio-first-call"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "完整實作",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-assistant"
+              "kind": "life",
+              "slug": "gemini-api-document-assistant"
             },
             {
               "type": "text",
@@ -269,9 +285,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

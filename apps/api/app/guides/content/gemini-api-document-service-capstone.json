@@ -56,27 +56,30 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "只讀工具呼叫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-function-calling-workshop"
+              "kind": "life",
+              "slug": "gemini-api-function-calling-workshop"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "File Search 索引管理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-file-search-rag-project"
+              "kind": "life",
+              "slug": "gemini-api-file-search-rag-project"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "批次評測與結果追蹤",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-batch-recovery"
+              "kind": "life",
+              "slug": "gemini-api-batch-recovery"
             },
             {
               "type": "text",
@@ -85,8 +88,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "本篇固定 Python 3.13.15、google-genai 2.23.0、FastAPI 0.141.1 與 Uvicorn 0.52.4，使用 Windows 本機測試。預設 author_fixture 是作者合成回應模式；它沒有金鑰也可操作，目的是先檢查介面與資料流，不代表 Gemini 已答對二十題。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇固定 Python 3.13.15、google-"
+            },
+            {
+              "type": "article",
+              "text": "genai",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 2.23.0、FastAPI 0.141.1 與 Uvicorn 0.52.4，使用 Windows 本機測試。預設 author_fixture 是作者合成回應模式；它沒有金鑰也可操作，目的是先檢查介面與資料流，不代表 Gemini 已答對二十題。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -172,9 +190,10 @@
               "text": "即使引文存在，仍可能與答案中的主張無關，所以狀態命名為 needs_claim_review，表示需要核對主張。不要把它改成「已驗證正確」後直接公開給客戶。需要公開資訊搜尋的應用，另依 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "搜尋來源與顯示要求",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-search-grounding-citations"
+              "kind": "life",
+              "slug": "gemini-api-search-grounding-citations"
             },
             {
               "type": "text",
@@ -188,8 +207,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "另開終端機執行 evaluate.py。它先查健康狀態，預設只允許作者模式；若服務已切成真實模式，必須明確加入 --live 才會執行固定題庫。每題完成立即寫入評測檔，保留部分進度，不等全部成功才留下紀錄。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "另開終端機執行 evaluate.py。它先查健康狀態，預設只允許作者模式；若服務已切成真實模式，必須明確加入 --live 才會執行固定題庫。每題完成立即寫入"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "檔，保留部分進度，不等全部成功才留下紀錄。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -240,9 +274,10 @@
               "text": "這份服務供單人在本機學習，沒有多人登入、持久佇列與正式部署設定。若要擴充，先從現有題庫增加需求與失敗條件，再設計身分、用量控制與紀錄保存。成本比較可接著使用 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "快取實驗",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-context-cache-experiment"
+              "kind": "life",
+              "slug": "gemini-api-context-cache-experiment"
             },
             {
               "type": "text",
@@ -290,27 +325,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "File Search 知識庫實作：匯入、查詢、更新與刪除驗證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-file-search-rag-project"
+              "kind": "life",
+              "slug": "gemini-api-file-search-rag-project"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Batch API 批次評測：工作 ID、部分失敗與重送管理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-batch-recovery"
+              "kind": "life",
+              "slug": "gemini-api-batch-recovery"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 額度與錯誤：費用、重試與成本控制",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -329,9 +367,15 @@
           "url": "https://mokaair.com/guides/gemini-api-document-service-capstone/api-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

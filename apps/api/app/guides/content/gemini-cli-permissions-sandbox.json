@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Gemini CLI 能讀取檔案與呼叫工具，因此開始使用前，要理解忽略檔案、資料夾信任與沙箱各控制什麼。本篇在獨立練習專案中建立 .geminiignore，檢查資料夾信任選項，再辨識啟動沙箱所需條件。完成後，你能說明每一層的用途，而不會把文字規則當成檔案存取的完整隔離。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Gemini CLI 能讀取檔案與呼叫工具，因此開始使用前，要理解忽略檔案、資料夾信任與"
+            },
+            {
+              "type": "article",
+              "text": "沙箱",
+              "kind": "life",
+              "slug": "ai-term-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "各控制什麼。本篇在獨立練習專案中建立 .geminiignore，檢查資料夾信任選項，再辨識啟動沙箱所需條件。完成後，你能說明每一層的用途，而不會把文字規則當成檔案存取的完整隔離。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -56,18 +71,20 @@
               "text": "建立一個不含私人資料的練習資料夾，內含 README.md、output 目錄與一個叫 private-demo.txt 的虛構檔案。最後一個檔案可以只寫「測試資料」，不要放真的密碼。先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 安裝",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+              "kind": "life",
+              "slug": "gemini-cli-getting-started"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "設定檔入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings"
+              "kind": "life",
+              "slug": "gemini-cli-settings"
             },
             {
               "type": "text",
@@ -76,8 +93,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "如果你從網路下載專案，不要先執行其中的腳本來「看看會發生什麼」。先檢視 GEMINI.md、.gemini 設定、MCP、擴充與 hooks 內容，瞭解它們可能載入什麼工具或命令。資料夾信任是一個有實際後果的設定，應在理解內容後再決定。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果你從網路下載專案，不要先執行其中的腳本來「看看會發生什麼」。先檢視 GEMINI.md、.gemini 設定、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": "、擴充與 hooks 內容，瞭解它們可能載入什麼工具或命令。資料夾信任是一個有實際後果的設定，應在理解內容後再決定。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -143,8 +175,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "測試時讓檔案內容包含容易辨識的虛構標記，例如「測試資料甲」。先列出可見檔案，再要求讀取指定檔案，分別記錄兩個結果；這樣能分清楚探索被忽略與直接讀取被阻擋的差異。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "測試時讓檔案內容包含容易辨識的虛構"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，例如「測試資料甲」。先列出可見檔案，再要求讀取指定檔案，分別記錄兩個結果；這樣能分清楚探索被忽略與直接讀取被阻擋的差異。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -158,9 +205,10 @@
               "text": "「信任後為什麼多了指令或工具？」專案可能帶有自訂命令、MCP 或擴充設定。回到 .gemini 檢查來源，使用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "MCP 與 Extensions 教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-mcp-extensions"
+              "kind": "life",
+              "slug": "gemini-cli-mcp-extensions"
             },
             {
               "type": "text",
@@ -176,9 +224,10 @@
               "text": "「怎麼讓所有操作都不用問？」入門練習不需要開啟全面自動核准。先把工作切成小步，確認常見工具動作與結果，再按實際需求設計核准政策。Headless 自動化也應有清楚的輸入範圍、失敗處理與結果檢查；詳見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "批次模式教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-headless-automation"
+              "kind": "life",
+              "slug": "gemini-cli-headless-automation"
             },
             {
               "type": "text",
@@ -231,18 +280,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 檔案與命令",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+              "kind": "life",
+              "slug": "gemini-cli-files-and-shell"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "settings.json",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings"
+              "kind": "life",
+              "slug": "gemini-cli-settings"
             },
             {
               "type": "text",
@@ -251,9 +302,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -60,27 +60,30 @@
               "text": "登入 Gemini 後，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "電腦網頁",
-              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+              "kind": "life",
+              "slug": "gemini-web-desktop-guide"
             },
             {
               "type": "text",
               "text": "或手機教學找到新增檔案入口。從 Drive 選檔還需要相應帳號與連線權限，詳見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
               "text": "。上傳大小、數量及用量依當下支援條件與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -163,9 +166,10 @@
               "text": "本例合計應是 12 乘 100 加 8 乘 50，得到 1,600 元。如果回答不同，先追查讀取的人數與單價，再看計算式。模型生成的圖表也要核對軸標、單位與資料範圍；想把方法直接放進 Google Sheets，接著看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "公式與資料整理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-for-google-sheets-formulas"
+              "kind": "life",
+              "slug": "gemini-for-google-sheets-formulas"
             },
             {
               "type": "text",
@@ -194,18 +198,20 @@
               "text": "主要需求是圍繞固定資料讀書、追查引用，可以使用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+              "kind": "life",
+              "slug": "notebooklm-guide"
             },
             {
               "type": "text",
               "text": "。需要用程式批次讀檔案、驗證 JSON，則看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 檔案與結構化輸出",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
@@ -271,18 +277,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research",
-              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 入門",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+              "kind": "life",
+              "slug": "notebooklm-guide"
             },
             {
               "type": "text",
@@ -291,9 +299,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

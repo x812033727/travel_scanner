@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Gemini Live 讓你用連續對話處理問題，適合口語排練、發想與討論眼前的物品。本篇以手機為主要入口，先練習純語音，再加入鏡頭與螢幕分享，並確認如何停止。本次未以實機執行 Live；操作依 Android 與 iPhone／iPad 官方說明整理。語音 AI 的第一課，是知道怎麼停下來。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Gemini Live 讓你用連續對話處理問題，適合口語排練、發想與討論眼前的物品。本篇以手機為主要入口，先練習純語音，再加入鏡頭與螢幕分享，並確認如何停止。本次未以實機執行 Live；操作依 Android 與 iPhone／iPad 官方說明整理。語音 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 的第一課，是知道怎麼停下來。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -56,27 +71,30 @@
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Android",
-              "url": "https://mokaair.com/zh-TW/life/gemini-on-android-assistant"
+              "kind": "life",
+              "slug": "gemini-on-android-assistant"
             },
             {
               "type": "text",
               "text": "或"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone／iPad",
-              "url": "https://mokaair.com/zh-TW/life/gemini-ios-app-guide"
+              "kind": "life",
+              "slug": "gemini-ios-app-guide"
             },
             {
               "type": "text",
               "text": "安裝，更新 Gemini 及相關 Google 應用程式，登入具備 Live 資格的帳號。年齡、語言、地區與管理帳號條件仍需核對。Chrome 也有自己的 Live 入口與分頁脈絡，請另看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Chrome 內建 Gemini",
-              "url": "https://mokaair.com/zh-TW/life/gemini-in-chrome-guide"
+              "kind": "life",
+              "slug": "gemini-in-chrome-guide"
             },
             {
               "type": "text",
@@ -127,9 +145,10 @@
               "text": "語音辨識可能把人名、地名與數字聽錯。重要資訊用短句重述，必要時改用文字確認。口語流暢不等於事實正確，練習中的活動資料仍要回到原始筆記；需要整理成正式通知時，可接著用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞方法",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
@@ -154,9 +173,10 @@
               "text": "需要停止鏡頭時，再按相機控制並確認畫面分享狀態。不要只把鏡頭轉向桌面就當成已停止串流。模型能討論可見內容，不能保證讀到物品底部、背面或鏡頭外的資訊；要核對細小標示，可改拍清楚照片，用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "圖片分析",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -198,9 +218,10 @@
               "text": "背景使用、鎖定畫面與暫停後的恢復行為依平臺及設定不同。第一次練習可主動暫停一次、返回一次，再結束，觀察狀態變化；不熟悉前先留在 Live 畫面完成短對話。活動儲存與轉錄資料的處理，另看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "隱私與活動記錄",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
@@ -216,9 +237,10 @@
               "text": "若帳號提供連結服務，可透過 Live 討論日曆或其他工作；支援服務與一般文字對話未必完全相同。要真正建立專案，先確認"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -243,9 +265,10 @@
               "text": "「能直接使用我的 Gem 嗎？」查證當日官方仍說明 Live 不支援 Gems。要使用同樣工作方式，先在 Live 說明必要條件，或回到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gem 自訂助手",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
@@ -298,18 +321,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Android 版",
-              "url": "https://mokaair.com/zh-TW/life/gemini-on-android-assistant"
+              "kind": "life",
+              "slug": "gemini-on-android-assistant"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone 與 iPad",
-              "url": "https://mokaair.com/zh-TW/life/gemini-ios-app-guide"
+              "kind": "life",
+              "slug": "gemini-ios-app-guide"
             },
             {
               "type": "text",
@@ -318,9 +343,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

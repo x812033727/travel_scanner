@@ -108,9 +108,10 @@
               "text": "某些連線設定可以引用環境變數，讓公開設定只記錄變數名稱。這與直接把金鑰貼進 JSON 不同；但也不代表任何環境變數都會自動被 CLI 視為認證。認證所需名稱與登入方式，請依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 認證教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+              "kind": "life",
+              "slug": "gemini-cli-authentication"
             },
             {
               "type": "text",
@@ -163,9 +164,10 @@
               "text": "「換資料夾後行為改變」要檢查新的專案設定與信任狀態。全域偏好不需要複製到每個專案；專案限定設定也不應留在家目錄影響所有工作。完成後可以接著設定"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "自訂指令",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+              "kind": "life",
+              "slug": "gemini-cli-custom-commands"
             },
             {
               "type": "text",
@@ -214,18 +216,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 進階",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+              "kind": "life",
+              "slug": "gemini-cli-memory-hierarchy"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 權限",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
@@ -234,9 +238,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

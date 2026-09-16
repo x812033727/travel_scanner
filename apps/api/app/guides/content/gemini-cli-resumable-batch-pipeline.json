@@ -56,18 +56,20 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Headless 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-headless-automation"
+              "kind": "life",
+              "slug": "gemini-cli-headless-automation"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 費用及錯誤處理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -99,8 +101,23 @@
           "code": "python pipeline.py documents output --fixture --stop-after 5\n"
         },
         {
-          "type": "paragraph",
-          "text": "預期結果是 processed 為 5、interrupted 為 true，命令結束碼為 3。這是教材刻意安排的中斷，不代表前五份結果毀損。打開 output/results 與 checkpoint.json，核對成品數量和記錄；每個結果都應帶 authored-fixture 標記，不會假裝是模型摘要。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "預期結果是 processed 為 5、interrupted 為 true，命令結束碼為 3。這是教材刻意安排的中斷，不代表前五份結果毀損。打開 output/results 與 checkpoint.json，核對成品數量和記錄；每個結果都應帶 authored-fixture "
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，不會假裝是模型摘要。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -210,8 +227,23 @@
           "code": "python pipeline.py pilot-docs pilot-output --live-config live-config.json\n"
         },
         {
-          "type": "paragraph",
-          "text": "本篇只需要整理 stdin 中的文件，不需要任何工具。程式會建立獨立執行目錄與測試家目錄，使用政策檔拒絕工具呼叫，再送出提示詞。實際 CLI 政策模組已驗證對讀檔、寫檔、shell 與 MCP 四種名稱回傳 deny；完整帶模型的 Headless 流程仍待補驗，不能只憑政策檔存在便宣稱整條路徑完成。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇只需要整理 stdin 中的文件，不需要任何工具。程式會建立獨立執行目錄與測試家目錄，使用政策檔拒絕工具呼叫，再送出提示詞。實際 CLI 政策模組已驗證對讀檔、寫檔、shell 與 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 四種名稱回傳 deny；完整帶模型的 Headless 流程仍待補驗，不能只憑政策檔存在便宣稱整條路徑完成。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -278,18 +310,20 @@
               "text": "可以依 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "受控工作流教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-github-actions-artifacts"
+              "kind": "life",
+              "slug": "gemini-cli-github-actions-artifacts"
             },
             {
               "type": "text",
               "text": " 從手動觸發與單份文件開始。後續做 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "文件維護專案",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-docs-maintenance-project"
+              "kind": "life",
+              "slug": "gemini-cli-docs-maintenance-project"
             },
             {
               "type": "text",
@@ -305,27 +339,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Headless 模式：批次、JSON 與腳本",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-headless-automation"
+              "kind": "life",
+              "slug": "gemini-cli-headless-automation"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 額度與錯誤：費用、重試與成本控制",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini CLI 接 GitHub Actions：受控觸發與產生審查報告",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-github-actions-artifacts"
+              "kind": "life",
+              "slug": "gemini-cli-github-actions-artifacts"
             },
             {
               "type": "text",
@@ -344,9 +381,15 @@
           "url": "https://mokaair.com/guides/gemini-cli-resumable-batch-pipeline/automation-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

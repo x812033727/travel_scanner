@@ -56,22 +56,34 @@
               "text": "先讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 檔案輸入",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "引用查核",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+              "kind": "life",
+              "slug": "notebooklm-conflicting-sources"
             },
             {
               "type": "text",
-              "text": "。本篇使用 google-genai 2.23.0：資源管理採 SDK 的 File Search 方法，問答採 Interactions API。十份資料都是作者原創合成文字，名稱 S001 至 S010；不使用正式公司的規格書或個人資料。"
+              "text": "。本篇使用 google-"
+            },
+            {
+              "type": "article",
+              "text": "genai",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 2.23.0：資源管理採 SDK 的 File Search 方法，問答採 Interactions API。十份資料都是作者原創合成文字，名稱 S001 至 S010；不使用正式公司的規格書或個人資料。"
             }
           ]
         },
@@ -87,9 +99,10 @@
               "text": "建立自己的虛擬環境並設定 API 專案與模型，費用看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "用量與成本控制",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -113,8 +126,23 @@
           "code": ".venv/Scripts/python.exe 83/file-search-demo/main.py create --live --ledger resource-ledger.json\n"
         },
         {
-          "type": "paragraph",
-          "text": "檢查 ledger 的 owner、display_name 與 store 欄位。owner 是本機程式用來辨識練習紀錄的標記，不是 Google 帳號的安全授權；真正資源存取仍由金鑰與專案決定。不要手填其他專案的 store ID 來通過本機檢查。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "檢查 ledger 的 owner、display_name 與 store 欄位。owner 是本機程式用來辨識練習紀錄的"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，不是 Google 帳號的安全授權；真正資源存取仍由金鑰與專案決定。不要手填其他專案的 store ID 來通過本機檢查。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -187,9 +215,10 @@
               "text": "確認匯入狀態後，query 只啟用 file_search，指向 ledger 記錄的容器。本練習與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Google 搜尋引用",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-search-grounding-citations"
+              "kind": "life",
+              "slug": "gemini-api-search-grounding-citations"
             },
             {
               "type": "text",
@@ -248,18 +277,20 @@
               "text": "交付時附上十份原始檔、版本雜湊、實際資源紀錄、更新前後與刪除後的問答，以及清理結果。請勿把未執行欄位填成零費用或成功。完成後可進行 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "快取實驗",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-context-cache-experiment"
+              "kind": "life",
+              "slug": "gemini-api-context-cache-experiment"
             },
             {
               "type": "text",
               "text": "，或把引用對照整合到 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "文件問答服務",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-service-capstone"
+              "kind": "life",
+              "slug": "gemini-api-document-service-capstone"
             },
             {
               "type": "text",
@@ -307,27 +338,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 檔案與 JSON：結構化輸出及驗證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 引用查核：矛盾資料、缺證據與未知答案",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+              "kind": "life",
+              "slug": "notebooklm-conflicting-sources"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 快取實驗：隱含快取、手動快取與實際成本核對",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-context-cache-experiment"
+              "kind": "life",
+              "slug": "gemini-api-context-cache-experiment"
             },
             {
               "type": "text",
@@ -346,9 +380,15 @@
           "url": "https://mokaair.com/guides/gemini-api-file-search-rag-project/api-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Android 版 Gemini 既能作為聊天應用程式，也能在支援的手機上成為主要數位助理。本篇先完成打字、語音與照片提問，再說明預設助理和畫面內容的設定。操作依官方文件整理；不同品牌的按鈕名稱與手勢可能不同，請以手機當下顯示為準。手機 AI 最實用的差別，在它能不能讀到你畫面上的內容。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Android 版 Gemini 既能作為聊天應用程式，也能在支援的手機上成為主要數位助理。本篇先完成打字、語音與照片提問，再說明預設助理和畫面內容的設定。操作依官方文件整理；不同品牌的按鈕名稱與手勢可能不同，請以手機當下顯示為準。"
+            },
+            {
+              "type": "article",
+              "text": "手機 AI",
+              "kind": "life",
+              "slug": "apple-intelligence-guide"
+            },
+            {
+              "type": "text",
+              "text": " 最實用的差別，在它能不能讀到你畫面上的內容。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -68,9 +83,10 @@
               "text": "先用文字問一句簡單問題，確認網路與帳號正常。價格與用量另看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案篇",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -130,9 +146,10 @@
               "text": "拍照角度、反光與文字大小會影響結果。先補拍清楚的局部區域，再追問同一件事，比連續要求「仔細看」更有幫助。涉及公告數字或表格時，回到原始頁面核對；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "圖片與檔案分析",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -153,9 +170,10 @@
               "text": "麥克風按鈕是單次語音提示詞入口；Gemini Live 則用於持續交談。想練習對話節奏、鏡頭與分享螢幕，請看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Live 教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+              "kind": "life",
+              "slug": "gemini-live-voice-camera"
             },
             {
               "type": "text",
@@ -184,9 +202,10 @@
               "text": "Android 的助理功能可能透過 Google 應用程式處理位置與其他能力，權限不一定只列在 Gemini 名稱下。調整前先閱讀該選項影響哪些服務；只想練習物品辨識，不需要主動加入精確位置。活動儲存及刪除方式則另看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "隱私設定",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
@@ -202,9 +221,10 @@
               "text": "如果請 Gemini 建立提醒或操作其他服務，核對目的應用程式中的實際專案。回答「可以」與真正建立成功並不相同；時間、時區、重複頻率與通知都要看結果。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -270,18 +290,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini Live",
-              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+              "kind": "life",
+              "slug": "gemini-live-voice-camera"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -290,9 +312,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

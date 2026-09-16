@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "同一場活動的信件、企劃文件與簡報，經常因來回複製而出現不同版本。本篇用虛構的社區講座練習：先從 Gmail 找出確定事項，在 Docs 整理工作稿，再把核對後的內容放進 Slides。學完可完成一份有來源、能交接的活動提案，而不是只有三份看起來相似的摘要。把 Gmail AI 與文件 AI 用在同一份資料的三個階段，比各自生成三份摘要可靠。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一場活動的信件、企劃文件與簡報，經常因來回複製而出現不同版本。本篇用虛構的社區講座練習：先從 Gmail 找出確定事項，在 Docs 整理工作稿，再把核對後的內容放進 Slides。學完可完成一份有來源、能交接的活動提案，而不是只有三份看起來相似的摘要。把 Gmail "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 與文件 AI 用在同一份資料的三個階段，比各自生成三份摘要可靠。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -56,9 +71,10 @@
               "text": "準備可使用 Gemini 功能的 Google AI 或 Workspace 帳號，以及電腦瀏覽器。公司帳號要先確認管理員設定，個人訂閱可看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -123,9 +139,10 @@
               "text": "如需模仿既有文件樣式，可在支援的來源選取中使用 @ 指定那份文件，先看清檔名與內容。參考版型只代表沿用結構，不能將去年活動的日期、合作單位或金額一起帶入。這類資料引用與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -158,9 +175,10 @@
               "text": "完成後以簡報模式檢查每張的字級和截行，在最後一張列出內部工作稿連結。匯出的檔案不一定保留原本分享限制；寄送之前應開啟實際匯出檔確認內容，並讓資料負責人檢閱。需要公式、名單分類或預算核對時，接著看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Sheets 教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-for-google-sheets-formulas"
+              "kind": "life",
+              "slug": "gemini-for-google-sheets-formulas"
             },
             {
               "type": "text",
@@ -202,13 +220,24 @@
               "text": "「想每次沿用相同格式？」把欄位與核對規則整理成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gems 自訂助手",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
-              "text": "，或保留團隊工作稿範本。先測試不同資料是否仍保留缺漏標記，再交給其他人重複使用。"
+              "text": "，或保留團隊工作稿範本。先測試不同資料是否仍保留缺漏"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，再交給其他人重複使用。"
             }
           ]
         },
@@ -253,18 +282,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Google Sheets",
-              "url": "https://mokaair.com/zh-TW/life/gemini-for-google-sheets-formulas"
+              "kind": "life",
+              "slug": "gemini-for-google-sheets-formulas"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "小團隊使用 Workspace AI",
-              "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+              "kind": "life",
+              "slug": "google-workspace-ai-for-small-business"
             },
             {
               "type": "text",
@@ -273,9 +304,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

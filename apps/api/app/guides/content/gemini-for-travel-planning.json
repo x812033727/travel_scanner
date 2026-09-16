@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "用 Gemini 排旅行，最容易出錯的地方是把「有趣的推薦」直接變成「今天走得完的行程」。本篇用臺北兩天一夜的規劃練習，從需求、資料、路線、預算到出發前核對走一遍。完成後會得到一份能修改、標清楚假設和待查資訊的行程草稿。如果你搜的是「旅遊 AI」或「行程 AI」想直接拿到能訂的行程，Mokaair 的旅遊攻略與規劃工具可以接在這份草稿之後。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用 Gemini 排旅行，最容易出錯的地方是把「有趣的推薦」直接變成「今天走得完的行程」。本篇用臺北兩天一夜的規劃練習，從需求、資料、路線、預算到出發前核對走一遍。完成後會得到一份能修改、標清楚假設和待查資訊的行程草稿。如果你搜的是「旅遊 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "」或「行程 AI」想直接拿到能訂的行程，Mokaair 的旅遊攻略與規劃工具可以接在這份草稿之後。"
+            }
+          ]
         },
         {
           "type": "link",
@@ -65,18 +80,20 @@
               "text": "2026 年 9 月 14 日已查閱 Gemini 搜尋與連線說明、臺北捷運官方查詢入口，以及中央氣象署臺北市預報頁。本文沒有宣稱取得未來出發日的即時票價、天氣或營業時間。學習前可先看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞寫法",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
               "text": "和"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "搜尋來源判讀",
-              "url": "https://mokaair.com/zh-TW/life/google-ai-mode-search"
+              "kind": "life",
+              "slug": "google-ai-mode-search"
             },
             {
               "type": "text",
@@ -107,9 +124,10 @@
               "text": "回答缺漏問題後，請它把確認條件整理成短清單，再開始查資料。若同行者最多連續步行二十分鐘，就明確寫入；「輕鬆行程」每個人的理解不同。需求清單可以保留在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gems",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
@@ -176,9 +194,10 @@
               "text": "找到可預訂商品後，把含稅價格、入住人數、日期、取消條件與付款幣別填入，再算總額。不要把每人價格當成兩人總價，也不要把「起」的最低價當成你選的日期一定有房。需要用試算表核對可看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Sheets 公式與驗算",
-              "url": "https://mokaair.com/zh-TW/life/gemini-for-google-sheets-formulas"
+              "kind": "life",
+              "slug": "gemini-for-google-sheets-formulas"
             },
             {
               "type": "text",
@@ -214,9 +233,10 @@
               "text": "最後應有需求清單、兩天草稿、來源與查證日期、估算／實價預算，以及雨天備案。將仍待確認的場館時段、票務或交通放在最前面，同行者一眼就知道哪些還沒完成。若要寫入日曆，另依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "連線與事件核對",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -281,18 +301,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞怎麼寫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research",
-              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
             },
             {
               "type": "text",
@@ -301,9 +323,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [
