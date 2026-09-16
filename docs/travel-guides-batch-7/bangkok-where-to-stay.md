@@ -12,7 +12,7 @@
 | display_order | `1070` |
 
 規格 2026-09-16 定稿：一輪查核加三輪一致性審查，已對照 main 上的既有文章（曼谷機場交通篇、曼谷市區交通篇、曼谷四天行程篇）與 `seoul-where-to-stay`、`tokyo-where-to-stay`、`osaka-kyoto-where-to-stay` 三篇既有的「住哪」文。官方來源的數字是規劃時讀到的，
-撰稿當天要再打開一次核對，`checked_on` 填實際打開那天。通用規則見 [README](../travel-guides-batch-6/README.md)，本批的差異見 `spec-brief`（summary 區塊、article inline、related／aliases、4 欄表格）。
+撰稿當天要再打開一次核對，`checked_on` 填實際打開那天。通用規則見本批 [README](README.md)，第六批的 [README](../travel-guides-batch-6/README.md) 與 [ERRATA](../travel-guides-batch-6/ERRATA.md) 仍然適用。
 
 ## 切角與段落
 
@@ -78,6 +78,8 @@
 (12) 結尾：一句「景點怎麼排、哪一天去舊城哪一天逛商場」連曼谷四天行程篇（howto，`bangkok-4-day-itinerary`）；可選一句「曼谷玩完接喀比的人」連第 3 篇喀比交通篇（howto，`krabi-airport-transport-where-to-stay`）；再放 `destinations/bangkok` 與 `foods?destination_id=bangkok` 兩個 link 區塊。
 `related`：`bangkok-airport-to-city`、`bangkok-bts-mrt-boat-guide`、`bangkok-4-day-itinerary`、`southeast-asia-seasons-when-to-go`。
 `aliases`（zh-TW，只列讀者真的會搜的別名）：「素坤逸」「席隆」「沙通」「拷山路」。
+
+照片：hero 用 Commons 的橫幅實景照（素坤逸或是隆一帶的 BTS 高架與街景），內文照片 1 到 2 張（例如昭披耶河與河岸、考山路或水門市場），分別放在分區表之後與河岸那一區的段末，授權與挑法照 README；同一張照片不能當兩篇的 hero，曼谷既有三篇用過的照片不要再用。
 
 ## 官方來源
 

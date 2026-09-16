@@ -12,7 +12,7 @@
 | display_order | `1200` |
 
 規格 2026-09-16 定稿：一輪查核加三輪一致性審查，已對照 main 上的既有文章（新加坡四天篇、樟宜機場交通篇、濱海灣花園篇）。官方來源的數字是規劃時讀到的，
-撰稿當天要再打開一次核對，`checked_on` 填實際打開那天。通用規則見 [README](../travel-guides-batch-6/README.md)，本批的差異見 `spec-brief`（summary 區塊、article inline、related／aliases、4 欄表格）。
+撰稿當天要再打開一次核對，`checked_on` 填實際打開那天。通用規則見本批 [README](README.md)，第六批的 [README](../travel-guides-batch-6/README.md) 與 [ERRATA](../travel-guides-batch-6/ERRATA.md) 仍然適用。
 
 ## 切角與段落
 

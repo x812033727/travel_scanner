@@ -85,6 +85,8 @@ H3「Grab 怎麼叫、17 號門在哪」：喀比機場的國際線是 Terminal 
 `related`（最多 4）：`krabi-ao-nang-railay-4-islands`、`phuket-airport-transport-where-to-stay`、`southeast-asia-seasons-when-to-go`、`thailand-esim-sim-wifi`。
 `aliases`：「甲米」「甲米機場」「萊利」（Railay 另一個常見譯法；正文統一用目的地目錄的「萊雷」）。
 
+照片：hero 用 Commons 的橫幅實景照（奧南海灘或喀比的石灰岩海岸），內文照片 1 到 2 張（例如萊雷的岩壁與長尾船、克隆芒一帶的海灘），放在 H2-3「萊雷只能搭船」與住哪一區那段的段末，授權與挑法照 README；同一張照片不能當兩篇的 hero，和第 4 篇喀比跳島篇的撰稿人先對一下用哪張。
+
 ## 官方來源
 
 已確認讀得到（2026-09-16，研究代理或規格撰寫時再打開；curl 一律帶 `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`）：

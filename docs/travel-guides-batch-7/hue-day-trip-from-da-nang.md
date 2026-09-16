@@ -129,6 +129,8 @@ list（6 到 8 條，都是通則，不重複數字）：電子票先買好、�
 - `related`（4 個）：`da-nang-hoi-an-4-day-itinerary`、`vietnam-domestic-flights-train-guide`、`vietnam-money-sim-grab-guide`、`ha-long-bay-cruise-from-hanoi`（本批第 16 篇；第 16 篇若沒上線就換成 `hanoi-4-day-itinerary`）。
 - `aliases`：`{"zh-TW": ["大內", "順化古都", "順化皇城"]}`（「大內」是 Đại Nội 常見的中文寫法，正文一律用目的地目錄的「皇城」）。
 
+照片：hero 用 Commons 的橫幅實景照（順化皇城的午門或香江），內文照片 1 到 2 張（例如啟定陵、天姥寺塔），放在皇城那一段與陵墓那一段的段末，授權與挑法照 README；同一張照片不能當兩篇的 hero，峴港會安篇用過的不要再用。
+
 ## 官方來源
 
 checked_on 填撰稿當天。以下是 2026-09-16 研究代理與本規格撰寫時實際讀到的頁；curl 一律帶 `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，不放任何個人姓名或 email。

@@ -84,6 +84,8 @@ Korail 官網這次讀不到，KTX 票價一律寫「以 Korail 官網為準」�
 `related`（最多 4）：`daegu-2-day-itinerary`、`korea-ktx-srt-ticket-guide`、`korea-naver-map-kakao-t-guide`、`seoul-subway-t-money-guide`。
 `aliases`：留空（大邱只有一種中文寫法；「大邱機場」「東大邱站」正文本來就有，不必當別名）。
 
+照片：hero 用 Commons 的橫幅實景照（東大邱站或大邱市區的高架與街景），內文照片 1 到 2 張（例如大邱地鐵月台、東大邱站站前），放在進大邱那一段與地鐵那一段的段末，授權與挑法照 README；同一張照片不能當兩篇的 hero，和第 14 篇大邱兩天篇的撰稿人先對一下用哪張。
+
 ## 官方來源
 
 已確認讀得到（2026-09-16 規格撰寫時重讀；curl 一律帶 `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`）：
