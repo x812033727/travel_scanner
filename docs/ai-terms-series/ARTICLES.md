@@ -4,7 +4,7 @@
 
 正式發表：2026-09-14 15:36（台灣時間，索引最後公開）。全批 83 個頁面為 77 新增、6 更新、0 排除。
 
-- [AI 名詞總索引：81 個概念](https://mokaair.com/zh-TW/life/ai-terms-index)
+- [AI 名詞總索引：從 Loop Engineering 到生成式 AI](https://mokaair.com/zh-TW/life/ai-terms-index)
 - [保留原網址並更新的 50 詞速查](https://mokaair.com/zh-TW/life/ai-glossary-50-terms)
 
 | 分類 | 名稱 | 最終標題 | 處理 | 網址 |

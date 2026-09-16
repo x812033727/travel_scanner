@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-stop-showing-article-counts-and-lesson
 title: Stop showing article counts and lesson numbers; series move into topics
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-16T06:13:26Z
 created_at: 2026-09-16T06:05:00Z
-completed_at:
+completed_at: 2026-09-16T08:53:19Z
 branch: claude/hub-counts-and-series-topics
 depends_on: []
 scope:

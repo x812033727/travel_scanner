@@ -26,7 +26,7 @@
 | 8 | `ai-search-llms-txt` | llms.txt 是什麼：一份社群提案，以及 robots.txt 真正能做的事 | 2,835 | 8 | 12 | 易變 |
 | 9 | `ai-search-generated-answers` | AI 摘要與 AI 模式：生成式答案怎麼組出來，站長能控制什麼 | 2,900 | 6 | 11 | 易變 |
 | 10 | `ai-search-measuring-citations` | 怎麼量 AI 引用：測得到的、測不到的，與不能相信的分數 | 2,872 | 7 | 15 | 易變 |
-| 11 | `ai-search-terms-index` | GEO、AEO、AIO 與 SEO 名詞總索引：10 篇看懂差在哪 | 2,013 | 8 | 8 |  |
+| 11 | `ai-search-terms-index` | GEO、AEO、AIO 與 SEO 名詞總索引：四個縮寫差在哪 | 2,013 | 8 | 8 |  |
 
 字數是 `pack_ingest._body_length` 算出的正文字數（不含標題、圖說、連結文字與來源）。
 「易變」欄打勾的三篇要定期回查：llms.txt 的採用狀況、AI 模式的開放地區、

@@ -25,7 +25,7 @@ callout = next(b for b in doc["blocks"] if b["type"] == "callout")
 callout.update(title="先分清楚概念，再查產品設定", text="相同名稱在不同工具中可能有不同範圍。需要決定是否上傳資料、開啟記憶或支付費用時，請查看該服務當期的官方說明。本文的速查定義可用來理解問題；若要看原理、情境和限制，請從 AI 名詞總索引進入各詞專文。")
 index_url = "https://mokaair.com/zh-TW/life/ai-terms-index"
 doc["blocks"] = [b for b in doc["blocks"] if not (b["type"] == "link" and b["url"] == index_url)]
-doc["blocks"].insert(2, {"type": "link", "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI", "url": index_url})
+doc["blocks"].insert(2, {"type": "link", "text": "AI 名詞總索引：從 Loop Engineering 到生成式 AI", "url": index_url})
 doc["sources"] = data["sources"]
 path.write_text(json.dumps(pack, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 print("Refreshed 50 definitions, 10 comparisons and index link; retained slug and artwork.")
