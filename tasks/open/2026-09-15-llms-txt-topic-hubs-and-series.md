@@ -1,7 +1,7 @@
 ---
 id: 2026-09-15-llms-txt-topic-hubs-and-series
 title: llms.txt 列出父主題與系列 hub
-status: in-progress
+status: review
 priority: P3
 area: web
 owner: claude-fable-5-1

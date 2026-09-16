@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-guide-listing-curated-order
 title: 文章列表不看精選與排序：/life 總覽篇排第 29、「精選攻略」列的是最後匯入的那批
-status: in-progress
+status: review
 priority: P2
 area: api
 owner: claude-fable-5-1

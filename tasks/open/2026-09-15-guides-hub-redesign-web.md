@@ -1,7 +1,7 @@
 ---
 id: 2026-09-15-guides-hub-redesign-web
 title: 旅遊攻略 hub 重設計：hero 搜尋、主題 tile、系列列、精選／最新、目的地分組
-status: in-progress
+status: review
 priority: P2
 area: web
 owner: claude-fable-5-1

@@ -1,7 +1,7 @@
 ---
 id: 2026-09-15-article-reading-polish-web
 title: 文章閱讀打磨：卡片變體、摘要卡字體、名詞連結樣式、延伸閱讀格距、系列上下篇
-status: in-progress
+status: review
 priority: P3
 area: web
 owner: claude-fable-5-1

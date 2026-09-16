@@ -1,7 +1,7 @@
 ---
 id: 2026-09-15-listing-toolbar-web
 title: 列表 sticky 工具列：ChipRow 主題 chips、目的地／國家、排序切換、結果數、空狀態
-status: in-progress
+status: review
 priority: P3
 area: web
 owner: claude-fable-5-1

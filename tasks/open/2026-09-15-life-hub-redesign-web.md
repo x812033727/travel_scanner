@@ -1,7 +1,7 @@
 ---
 id: 2026-09-15-life-hub-redesign-web
 title: 生活分享 hub 重設計：與旅遊 hub 同構，三段手寫 aside 改由系列列取代
-status: in-progress
+status: review
 priority: P2
 area: web
 owner: claude-fable-5-1
