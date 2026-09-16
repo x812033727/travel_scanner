@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">同一張表裡的兩種欄位 / Two kinds of column in one table</title>
+  <desc id="desc">左邊由上而下是旗艦級、中階級、輕量級與開放權重四個級距的方塊，四個方塊接到中間一條縱向的線，再分成兩條箭頭指向右邊兩個面板。上面的綠色面板寫「可以直接比」，列出上下文視窗、最大輸出、每百萬 token 價與權重授權，因為各家官網的寫法一致。下面的紅色面板寫「不能直接比」，列出官方自報分數，因為各家用的 benchmark 與測試條件不同。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">同一張表裡的兩種欄位</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Two kinds of column in one table</text>
+  <text x="60" y="136" font-size="20" font-weight="bold" fill="#102A2B">四個級距</text>
+
+  <rect x="60" y="165" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="207" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">旗艦級</text>
+  <text x="260" y="241" text-anchor="middle" font-size="16" fill="#5C6B6B">最貴、各家標榜最強的一支</text>
+
+  <rect x="60" y="287" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="329" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">中階級</text>
+  <text x="260" y="363" text-anchor="middle" font-size="16" fill="#5C6B6B">正式產品流量最常落在這層</text>
+
+  <rect x="60" y="409" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="451" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">輕量級</text>
+  <text x="260" y="485" text-anchor="middle" font-size="16" fill="#5C6B6B">跑量、分類與即時回應</text>
+
+  <rect x="60" y="531" width="400" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="260" y="573" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">開放權重</text>
+  <text x="260" y="607" text-anchor="middle" font-size="16" fill="#5C6B6B">下載回來自己跑，看的是授權</text>
+
+  <path d="M 460 215 L 540 215" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 460 337 L 540 337" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 460 459 L 540 459" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 460 581 L 540 581" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 540 215 L 540 581" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 540 330 L 690 285" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 540 470 L 690 605" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="700" y="170" width="840" height="255" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="740" y="222" font-size="24" font-weight="bold" fill="#0D6B68">可以直接比</text>
+  <text x="740" y="266" font-size="17" fill="#102A2B">上下文視窗　各家官網都以 token 為單位，欄位對得起來</text>
+  <text x="740" y="304" font-size="17" fill="#102A2B">最大輸出　　單次回應的上限，寫法一致</text>
+  <text x="740" y="342" font-size="17" fill="#102A2B">每百萬 token 輸入與輸出價　同一個幣別、同一個單位</text>
+  <text x="740" y="380" font-size="17" fill="#102A2B">權重授權　　照權重庫 LICENSE 檔的正式名稱</text>
+  <text x="740" y="412" font-size="16" fill="#5C6B6B">所以同一個級距裡，這幾欄可以橫著比</text>
+
+  <rect x="700" y="490" width="840" height="240" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="740" y="542" font-size="24" font-weight="bold" fill="#B8442D">不能直接比</text>
+  <text x="740" y="586" font-size="17" fill="#102A2B">官方自報分數　有的家公布、有的家只給相對說法</text>
+  <text x="740" y="624" font-size="17" fill="#102A2B">各家挑的 benchmark 幾乎沒有交集</text>
+  <text x="740" y="662" font-size="17" fill="#102A2B">給不給工具、取樣幾次、用誰的 scaffold 都會動到分數</text>
+  <text x="740" y="702" font-size="16" fill="#5C6B6B">所以這一欄只能各自看，不能相減排名次</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
