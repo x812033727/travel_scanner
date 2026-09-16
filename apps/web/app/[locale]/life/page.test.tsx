@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import catalogue from "@/lib/guide-series.json";
 import LifeHubPage, { generateMetadata } from "./page";
@@ -135,31 +135,48 @@ describe("the lifestyle listing", () => {
     expect(screen.getByRole("link", { name: "Gemini 第一課" }).getAttribute("href")).toBe(`/life/${catalogue.articles[0].slug}`);
   });
 
-  it("opens with the newest news from the news topic, with the topic hub as see-all, on the plain page only", async () => {
-    const news = { ...summary, slug: "ai-news-openai-devday", title: "OpenAI DevDay 重點", topics: [{ slug: "ai-news", label: "AI 新聞與趨勢", section: "life" as const }] };
+  it("opens with the latest twenty stories by the day the news happened, one line each, on the plain page only", async () => {
+    const topic = [{ slug: "ai-news", label: "AI 新聞與趨勢", section: "life" as const }];
+    const newer = { ...summary, slug: "ai-news-siri-20260914", title: "Siri AI 隨 iOS 27 推出", topics: topic, news_date: "2026-09-14" };
+    const older = { ...summary, slug: "ai-news-devday-20260710", title: "OpenAI DevDay 重點", topics: topic, news_date: "2026-07-10" };
+    // The topic's evergreen piece: not a story, so it stays off the hub's news list.
+    const evergreen = { ...summary, slug: "ai-news-sources-to-follow", title: "追新聞的來源", topics: topic, news_date: null };
     mocks.list.mockImplementation(async (_locale: string, filters: { topic?: string }) =>
       filters.topic === "ai-news"
-        ? { articles: [news], next_cursor: null, available: true }
+        ? { articles: [newer, older, evergreen], next_cursor: null, available: true }
         : { articles: [summary], next_cursor: null, available: true });
     mocks.topics.mockResolvedValue([
       { slug: "ai", label: "AI 工具", section: "life", parent: null, count: 5 },
       { slug: "ai-news", label: "AI 新聞與趨勢", section: "life", parent: "ai", description: "這週的 AI 大事。", count: 3 },
     ]);
     render(await LifeHubPage({ params, searchParams: search() }));
-    // Newest first is the API's default order, so no `sort` rides along.
-    expect(mocks.list).toHaveBeenCalledWith("zh-TW", { kind: "life", topic: "ai-news" }, 6);
+    // By the news day, not by when a batch import published it.
+    expect(mocks.list).toHaveBeenCalledWith("zh-TW", { kind: "life", topic: "ai-news", sort: "news" }, 20);
     const block = screen.getByTestId("life-news");
     expect(block.querySelector("h2")?.textContent).toBe("最新新聞");
-    expect(screen.getByText("這週的 AI 大事。")).toBeTruthy();
+    // The topic's lead is not repeated here.
+    expect(screen.queryByText("這週的 AI 大事。")).toBeNull();
     expect(screen.getByRole("link", { name: "看全部" }).getAttribute("href")).toBe("/life/topics/ai-news");
-    expect(screen.getByRole("link", { name: "OpenAI DevDay 重點" }).getAttribute("href")).toBe("/life/ai-news-openai-devday");
+    const rows = within(within(block).getByTestId("news-list")).getAllByRole("listitem");
+    expect(rows.map((row) => row.textContent)).toEqual(["2026-09-14Siri AI 隨 iOS 27 推出", "2026-07-10OpenAI DevDay 重點"]);
+    expect(within(rows[0]).getByRole("link").getAttribute("href")).toBe("/life/ai-news-siri-20260914");
+    expect(within(block).queryByText("追新聞的來源")).toBeNull();
     // The news comes right after the hero, before the topics.
     expect(block.compareDocumentPosition(screen.getByTestId("topic-tiles")) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     cleanup();
     mocks.list.mockClear();
     render(await LifeHubPage({ params, searchParams: search({ topic: "ai" }) }));
     expect(screen.queryByTestId("life-news")).toBeNull();
-    expect(mocks.list).not.toHaveBeenCalledWith("zh-TW", expect.objectContaining({ topic: "ai-news" }), 6);
+    expect(mocks.list).not.toHaveBeenCalledWith("zh-TW", expect.objectContaining({ topic: "ai-news" }), 20);
+  });
+
+  it("draws no news block while no story carries a news day", async () => {
+    // What the page shows between a deploy and the import that writes the days.
+    const undated = { ...summary, slug: "ai-news-thing", title: "某則新聞", news_date: null };
+    mocks.list.mockImplementation(async (_locale: string, filters: { topic?: string }) =>
+      ({ articles: filters.topic === "ai-news" ? [undated] : [summary], next_cursor: null, available: true }));
+    render(await LifeHubPage({ params, searchParams: search() }));
+    expect(screen.queryByTestId("life-news")).toBeNull();
   });
 
   it("lists in the editor's order, so the overview leads whatever batch came last", async () => {
